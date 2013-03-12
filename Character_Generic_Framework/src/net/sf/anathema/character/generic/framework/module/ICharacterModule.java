@@ -7,15 +7,13 @@ import net.sf.anathema.lib.resources.IResources;
 
 public interface ICharacterModule<M extends ICharacterModuleObject> {
 
-  void initModuleObject(ICharacterGenerics characterGenerics);
+  void initModuleObject(ICharacterGenerics characterGenerics, IResources resources);
 
   void addCharacterTemplates(ICharacterGenerics characterGenerics);
 
   void addBackgroundTemplates(ICharacterGenerics generics);
 
   void addAdditionalTemplateData(ICharacterGenerics characterGenerics) throws InitializationException;
-
-  void addReportTemplates(ICharacterGenerics generics, IResources resources);
 
   void registerCommonData(ICharacterGenerics characterGenerics);
 

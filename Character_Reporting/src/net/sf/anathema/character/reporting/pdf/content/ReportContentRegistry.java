@@ -8,11 +8,12 @@ import java.util.Collection;
 
 public class ReportContentRegistry {
 
-  private IResources resources;
-  private Instantiater instantiater;
+  private final IResources resources;
+  private final Instantiater instantiater;
 
-  public ReportContentRegistry(Instantiater instantiater) {
+  public ReportContentRegistry(Instantiater instantiater, IResources resources) {
     this.instantiater = instantiater;
+    this.resources = resources;
   }
 
   @SuppressWarnings("unchecked")
@@ -32,9 +33,5 @@ public class ReportContentRegistry {
     } catch (InitializationException e) {
       throw new RuntimeException("Could not create content for " + contentClass.getName(), e);
     }
-  }
-
-  public void setResources(IResources resources) {
-    this.resources = resources;
   }
 }

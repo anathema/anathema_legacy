@@ -11,17 +11,12 @@ public class CharacterReportingModule extends CharacterModuleAdapter<CharacterRe
   private CharacterReportingModuleObject moduleObject;
 
   @Override
-  public void initModuleObject(ICharacterGenerics characterGenerics) {
-    this.moduleObject = new CharacterReportingModuleObject(characterGenerics.getInstantiater());
+  public void initModuleObject(ICharacterGenerics characterGenerics, IResources resources) {
+    this.moduleObject = new CharacterReportingModuleObject(characterGenerics.getInstantiater(), resources);
   }
 
   @Override
   public CharacterReportingModuleObject getModuleObject() {
     return moduleObject;
-  }
-
-  @Override
-  public void addReportTemplates(ICharacterGenerics generics, IResources resources) {
-    moduleObject.getContentRegistry().setResources(resources);
   }
 }

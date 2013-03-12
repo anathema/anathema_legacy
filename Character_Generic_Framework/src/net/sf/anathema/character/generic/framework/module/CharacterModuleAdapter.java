@@ -11,7 +11,6 @@ import net.sf.anathema.initialization.InitializationException;
 import net.sf.anathema.lib.exception.PersistenceException;
 import net.sf.anathema.lib.logging.Logger;
 import net.sf.anathema.lib.registry.IRegistry;
-import net.sf.anathema.lib.resources.IResources;
 import net.sf.anathema.lib.resources.ResourceFile;
 
 public abstract class CharacterModuleAdapter<M extends ICharacterModuleObject> implements ICharacterModule<M> {
@@ -28,11 +27,6 @@ public abstract class CharacterModuleAdapter<M extends ICharacterModuleObject> i
 
   @Override
   public void addBackgroundTemplates(ICharacterGenerics generics) {
-    // Nothing to do
-  }
-
-  @Override
-  public void addReportTemplates(ICharacterGenerics generics, IResources resources) {
     // Nothing to do
   }
 

@@ -5,6 +5,7 @@ import net.sf.anathema.character.reporting.pdf.content.ReportContentRegistry;
 import net.sf.anathema.character.reporting.pdf.rendering.boxes.EncoderRegistry;
 import net.sf.anathema.character.reporting.pdf.rendering.pages.PageRegistry;
 import net.sf.anathema.initialization.Instantiater;
+import net.sf.anathema.lib.resources.IResources;
 
 public class CharacterReportingModuleObject implements ICharacterModuleObject {
 
@@ -12,9 +13,9 @@ public class CharacterReportingModuleObject implements ICharacterModuleObject {
   private final EncoderRegistry encoderRegistry;
   private final PageRegistry additionalPageRegistry;
 
-  public CharacterReportingModuleObject(Instantiater instantiater) {
+  public CharacterReportingModuleObject(Instantiater instantiater, IResources resources) {
     this.encoderRegistry = new EncoderRegistry(instantiater);
-    this.contentRegistry = new ReportContentRegistry(instantiater);
+    this.contentRegistry = new ReportContentRegistry(instantiater, resources);
     this.additionalPageRegistry = new PageRegistry(instantiater);
   }
 

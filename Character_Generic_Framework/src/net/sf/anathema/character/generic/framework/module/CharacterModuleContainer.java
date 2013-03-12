@@ -24,13 +24,12 @@ public class CharacterModuleContainer {
   }
 
   public void addCharacterGenericsModule(ICharacterModule<?> module) throws InitializationException {
-    module.initModuleObject(characterGenerics);
+    module.initModuleObject(characterGenerics, resources);
     module.registerCommonData(characterGenerics);
     registerTemplateParsers();
     module.addCharacterTemplates(characterGenerics);
     module.addBackgroundTemplates(characterGenerics);
     module.addAdditionalTemplateData(characterGenerics);
-    module.addReportTemplates(characterGenerics, resources);
     characterGenerics.getModuleObjectMap().addModule(module);
   }
 
