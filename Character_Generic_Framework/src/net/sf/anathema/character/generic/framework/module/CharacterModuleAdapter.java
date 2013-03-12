@@ -2,7 +2,6 @@ package net.sf.anathema.character.generic.framework.module;
 
 import net.sf.anathema.character.generic.framework.ICharacterGenerics;
 import net.sf.anathema.character.generic.framework.ICharacterTemplateRegistryCollection;
-import net.sf.anathema.character.generic.framework.module.object.ICharacterModuleObject;
 import net.sf.anathema.character.generic.framework.xml.CharacterTemplateParser;
 import net.sf.anathema.character.generic.framework.xml.GenericCharacterTemplate;
 import net.sf.anathema.character.generic.framework.xml.additional.IAdditionalTemplateParser;
@@ -13,7 +12,7 @@ import net.sf.anathema.lib.logging.Logger;
 import net.sf.anathema.lib.registry.IRegistry;
 import net.sf.anathema.lib.resources.ResourceFile;
 
-public abstract class CharacterModuleAdapter<M extends ICharacterModuleObject> implements ICharacterModule<M> {
+public abstract class CharacterModuleAdapter implements ICharacterModule {
 
   @Override
   public void addAdditionalTemplateData(ICharacterGenerics characterGenerics) throws InitializationException {

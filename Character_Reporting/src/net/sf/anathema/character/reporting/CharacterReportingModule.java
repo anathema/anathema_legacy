@@ -7,7 +7,7 @@ import net.sf.anathema.initialization.Instantiater;
 import net.sf.anathema.lib.resources.IResources;
 
 @CharacterModule
-public class CharacterReportingModule extends CharacterModuleAdapter<CharacterReportingModuleObject> {
+public class CharacterReportingModule extends CharacterModuleAdapter {
 
   @Override
   public void initModuleObject(ICharacterGenerics characterGenerics, IResources resources) {

@@ -7,18 +7,17 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class CharacterModuleObjectMap implements ICharacterModuleObjectMap {
-  private final Map<Class<? extends ICharacterModule<?>>, ICharacterModuleObject> moduleObjects = new HashMap<>();
+  private final Map<Class<? extends ICharacterModule>, ICharacterModuleObject> moduleObjects = new HashMap<>();
 
   @Override
   @SuppressWarnings("unchecked")
-  public <T extends ICharacterModuleObject> T getModuleObject(Class<? extends ICharacterModule<T>> moduleClass) {
+  public <T extends ICharacterModuleObject> T getModuleObject(Class<? extends ICharacterModule> moduleClass) {
     Preconditions.checkArgument(ICharacterModule.class.isAssignableFrom(moduleClass), "Must implement ICharacterModule");
     return (T) moduleObjects.get(moduleClass);
   }
 
   @Override
-  @SuppressWarnings("unchecked")
-  public <T extends ICharacterModuleObject> void addModule(ICharacterModule<T> module, T moduleObject) {
+  public void addModule(ICharacterModule module, ICharacterModuleObject moduleObject) {
       moduleObjects.put(module.getClass(), moduleObject);
   }
 }

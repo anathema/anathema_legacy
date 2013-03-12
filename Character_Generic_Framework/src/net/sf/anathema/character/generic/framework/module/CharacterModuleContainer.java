@@ -23,7 +23,7 @@ public class CharacterModuleContainer {
     this.characterGenerics = new CharacterGenerics(dataFileProvider, instantiater, dataSetProvider);
   }
 
-  public void addCharacterGenericsModule(ICharacterModule<?> module) throws InitializationException {
+  public void addCharacterGenericsModule(ICharacterModule module) throws InitializationException {
     module.initModuleObject(characterGenerics, resources);
     module.registerCommonData(characterGenerics);
     registerTemplateParsers();

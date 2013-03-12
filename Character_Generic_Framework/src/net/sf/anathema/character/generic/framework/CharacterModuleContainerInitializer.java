@@ -35,8 +35,8 @@ public class CharacterModuleContainerInitializer {
   }
 
   private void addModules(CharacterModuleContainer container) {
-    Collection<ICharacterModule<?>> modules = instantiater.instantiateOrdered(CharacterModule.class);
-    for (ICharacterModule<?> module : modules) {
+    Collection<ICharacterModule> modules = instantiater.instantiateOrdered(CharacterModule.class);
+    for (ICharacterModule module : modules) {
       container.addCharacterGenericsModule(module);
     }
   }
