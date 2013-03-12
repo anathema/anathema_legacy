@@ -16,6 +16,4 @@ public interface ICharacterModule<M extends ICharacterModuleObject> {
   void addAdditionalTemplateData(ICharacterGenerics characterGenerics) throws InitializationException;
 
   void registerCommonData(ICharacterGenerics characterGenerics);
-
-  M getModuleObject();
 }

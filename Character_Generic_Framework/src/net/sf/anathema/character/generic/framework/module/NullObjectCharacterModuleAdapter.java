@@ -11,8 +11,4 @@ public abstract class NullObjectCharacterModuleAdapter extends CharacterModuleAd
     // nothing to do
   }
 
-  @Override
-  public final NullCharacterModuleObject getModuleObject() {
-    return null;
-  }
 }

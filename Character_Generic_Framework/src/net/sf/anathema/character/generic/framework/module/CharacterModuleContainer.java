@@ -30,7 +30,6 @@ public class CharacterModuleContainer {
     module.addCharacterTemplates(characterGenerics);
     module.addBackgroundTemplates(characterGenerics);
     module.addAdditionalTemplateData(characterGenerics);
-    characterGenerics.getModuleObjectMap().addModule(module);
   }
 
   private void registerTemplateParsers() {
