@@ -88,7 +88,7 @@ public class CreationOverviewPresenter implements Presenter {
       String categoryId = model.getCategoryId();
       IOverviewCategory category = categoriesById.get(categoryId);
       if (category == null) {
-        category = view.addOverviewCategory(getString("Overview.Creation.Category." + categoryId)); //$NON-NLS-1$
+        category = view.addOverviewCategory(getString("Overview.Creation.Category." + categoryId)); 
         categoriesById.put(categoryId, category);
       }
     }
@@ -102,7 +102,7 @@ public class CreationOverviewPresenter implements Presenter {
   }
 
   private String getLabelString(IOverviewModel visitedModel) {
-    return getString("Overview.Creation." + visitedModel.getCategoryId() + "." + visitedModel.getId()); //$NON-NLS-1$ //$NON-NLS-2$
+    return getString("Overview.Creation." + visitedModel.getCategoryId() + "." + visitedModel.getId());  
   }
 
   private String getString(String string) {
@@ -110,8 +110,8 @@ public class CreationOverviewPresenter implements Presenter {
   }
 
   private void initConcept() {
-    IOverviewCategory category = view.addOverviewCategory(getString("Overview.Creation.Category.Concept")); //$NON-NLS-1$
-    if (template.getCasteCollection().getAllCasteTypes(template.getTemplateType()).length > 0) {
+    IOverviewCategory category = view.addOverviewCategory(getString("Overview.Creation.Category.Concept")); 
+    if (!template.getCasteCollection().isEmpty()) {
       IValueView<String> casteView = category.addStringValueView(getString(template.getPresentationProperties().getCasteLabelResource()));
       IValueModel<String> casteModel = new IValueModel<String>() {
         @Override
@@ -131,7 +131,7 @@ public class CreationOverviewPresenter implements Presenter {
 
         @Override
         public String getCategoryId() {
-          return "Concept"; //$NON-NLS-1$
+          return "Concept"; 
         }
       };
       presenters.add(new StringSubPresenter(casteModel, casteView, resources));
@@ -156,7 +156,7 @@ public class CreationOverviewPresenter implements Presenter {
 
       @Override
       public String getCategoryId() {
-        return "Concept"; //$NON-NLS-1$
+        return "Concept"; 
       }
     };
     presenters.add(new StringSubPresenter(willpowerModel, willpowerView, resources));
@@ -166,7 +166,7 @@ public class CreationOverviewPresenter implements Presenter {
     if (character.getCharacterConcept().getWillpowerRegainingConcept().getDescription().isEmpty()) {
       return "";
     }
-    return "Overview.Creation.Concept.Motivation.Selected"; //$NON-NLS-1$
+    return "Overview.Creation.Concept.Motivation.Selected"; 
   }
 
   private String getCasteValueResourceKey() {
@@ -174,6 +174,6 @@ public class CreationOverviewPresenter implements Presenter {
     if (casteType.equals(ICasteType.NULL_CASTE_TYPE)) {
       return "";
     }
-    return "Caste." + casteType.getId(); //$NON-NLS-1$
+    return "Caste." + casteType.getId(); 
   }
 }

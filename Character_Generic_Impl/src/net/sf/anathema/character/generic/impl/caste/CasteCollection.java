@@ -32,6 +32,11 @@ public class CasteCollection implements ICasteCollection {
   }
 
   @Override
+  public boolean isEmpty() {
+    return allTypes.length <= 0;
+  }
+
+  @Override
   public boolean containsCasteType(String casteTypeId) {
     for (ICasteType type : allTypes) {
       if (type.getId().equals(casteTypeId)) {
