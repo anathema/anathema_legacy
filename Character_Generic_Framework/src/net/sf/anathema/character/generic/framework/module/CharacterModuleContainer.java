@@ -7,24 +7,19 @@ import net.sf.anathema.character.generic.framework.xml.additional.IAdditionalTem
 import net.sf.anathema.initialization.InitializationException;
 import net.sf.anathema.initialization.Instantiater;
 import net.sf.anathema.initialization.repository.IDataFileProvider;
-import net.sf.anathema.lib.resources.IResources;
 
 import java.util.Collection;
 
 public class CharacterModuleContainer {
 
   private final CharacterGenerics characterGenerics;
-  private final IResources resources;
 
-  public CharacterModuleContainer(IResources resources, IExtensibleDataSetProvider dataSetProvider,
-                                  IDataFileProvider dataFileProvider,
+  public CharacterModuleContainer(IExtensibleDataSetProvider dataSetProvider, IDataFileProvider dataFileProvider,
                                   Instantiater instantiater) throws InitializationException {
-    this.resources = resources;
     this.characterGenerics = new CharacterGenerics(dataFileProvider, instantiater, dataSetProvider);
   }
 
   public void addCharacterGenericsModule(ICharacterModule module) throws InitializationException {
-    module.initModuleObject(characterGenerics, resources);
     module.registerCommonData(characterGenerics);
     registerTemplateParsers();
     module.addCharacterTemplates(characterGenerics);

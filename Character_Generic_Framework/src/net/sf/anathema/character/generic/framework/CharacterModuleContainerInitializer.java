@@ -8,7 +8,6 @@ import net.sf.anathema.initialization.InitializationException;
 import net.sf.anathema.initialization.Instantiater;
 import net.sf.anathema.initialization.reflections.ResourceLoader;
 import net.sf.anathema.initialization.repository.IDataFileProvider;
-import net.sf.anathema.lib.resources.IResources;
 
 import java.util.Collection;
 
@@ -22,16 +21,15 @@ public class CharacterModuleContainerInitializer {
     this.instantiater = instantiater;
   }
 
-  public CharacterModuleContainer initContainer(IResources resources,
-                                                IDataFileProvider dataFileProvider) throws InitializationException {
-    CharacterModuleContainer container = createModuleContainer(resources, dataFileProvider);
+  public CharacterModuleContainer initContainer(IDataFileProvider dataFileProvider) throws InitializationException {
+    CharacterModuleContainer container = createModuleContainer(dataFileProvider);
     addModules(container);
     return container;
   }
 
-  private CharacterModuleContainer createModuleContainer(IResources resources, IDataFileProvider dataFileProvider) {
+  private CharacterModuleContainer createModuleContainer(IDataFileProvider dataFileProvider) {
     IExtensibleDataSetProvider dataSetManager = loadExtensibleResources();
-    return new CharacterModuleContainer(resources, dataSetManager, dataFileProvider, instantiater);
+    return new CharacterModuleContainer(dataSetManager, dataFileProvider, instantiater);
   }
 
   private void addModules(CharacterModuleContainer container) {

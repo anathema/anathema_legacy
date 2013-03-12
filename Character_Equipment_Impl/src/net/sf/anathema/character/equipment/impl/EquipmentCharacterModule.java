@@ -11,7 +11,7 @@ import net.sf.anathema.character.equipment.impl.item.model.gson.GsonEquipmentDat
 import net.sf.anathema.character.equipment.item.model.IEquipmentTemplateProvider;
 import net.sf.anathema.character.generic.framework.ICharacterGenerics;
 import net.sf.anathema.character.generic.framework.module.CharacterModule;
-import net.sf.anathema.character.generic.framework.module.NullObjectCharacterModuleAdapter;
+import net.sf.anathema.character.generic.framework.module.CharacterModuleAdapter;
 import net.sf.anathema.initialization.InitializationException;
 import net.sf.anathema.initialization.Instantiater;
 
@@ -20,7 +20,7 @@ import java.nio.file.Path;
 import static net.sf.anathema.character.equipment.impl.item.model.gson.GsonEquipmentDatabase.DATABASE_FOLDER;
 
 @CharacterModule
-public class EquipmentCharacterModule extends NullObjectCharacterModuleAdapter {
+public class EquipmentCharacterModule extends CharacterModuleAdapter {
 
   @Override
   public void addAdditionalTemplateData(ICharacterGenerics characterGenerics) throws InitializationException {

@@ -31,7 +31,7 @@ public class AnathemaModelInitializer {
   public IApplicationModel initializeModel(IResources resources, AnnotationFinder finder, ResourceLoader loader) throws InitializationException {
     ApplicationModel model = createModel(resources, loader);
     for (ExtensionWithId extension : extensions) {
-      extension.register(model, resources, finder, loader);
+      extension.register(model, finder, loader);
     }
     for (IItemTypeConfiguration itemTypeConfiguration : itemTypeConfigurations) {
       model.getItemTypeRegistry().registerItemType(itemTypeConfiguration.getItemType());

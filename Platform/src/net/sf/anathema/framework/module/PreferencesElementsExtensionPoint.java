@@ -6,7 +6,6 @@ import net.sf.anathema.initialization.Extension;
 import net.sf.anathema.initialization.reflections.AnnotationFinder;
 import net.sf.anathema.initialization.reflections.ResourceLoader;
 import net.sf.anathema.initialization.repository.IDataFileProvider;
-import net.sf.anathema.lib.resources.IResources;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -18,8 +17,7 @@ public class PreferencesElementsExtensionPoint implements IAnathemaExtension {
   private final List<IPreferencesElement> elements = new ArrayList<>();
 
   @Override
-  public void initialize(IResources resources, IDataFileProvider dataFileProvider, AnnotationFinder finder,
-                         ResourceLoader loader) {
+  public void initialize(IDataFileProvider dataFileProvider, AnnotationFinder finder, ResourceLoader loader) {
     // nothing to do
   }
 

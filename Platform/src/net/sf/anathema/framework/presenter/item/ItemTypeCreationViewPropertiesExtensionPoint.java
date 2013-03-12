@@ -8,7 +8,6 @@ import net.sf.anathema.initialization.reflections.AnnotationFinder;
 import net.sf.anathema.initialization.reflections.ResourceLoader;
 import net.sf.anathema.initialization.repository.IDataFileProvider;
 import net.sf.anathema.lib.registry.Registry;
-import net.sf.anathema.lib.resources.IResources;
 
 @Extension(id = "net.sf.anathema.framework.presenter.item.ItemTypeCreationViewPropertiesExtensionPoint")
 public class ItemTypeCreationViewPropertiesExtensionPoint extends Registry<IItemType, IItemTypeViewProperties> implements IAnathemaExtension {
@@ -16,8 +15,7 @@ public class ItemTypeCreationViewPropertiesExtensionPoint extends Registry<IItem
   public static final String ID = ItemTypeCreationViewPropertiesExtensionPoint.class.getName();
 
   @Override
-  public void initialize(IResources resources, IDataFileProvider dataFileProvider, AnnotationFinder finder,
-                         ResourceLoader loader) {
+  public void initialize(IDataFileProvider dataFileProvider, AnnotationFinder finder, ResourceLoader loader) {
     // nothing to do
   }
 }

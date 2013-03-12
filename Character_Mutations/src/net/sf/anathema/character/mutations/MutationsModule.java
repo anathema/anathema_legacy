@@ -5,14 +5,14 @@ import net.sf.anathema.character.generic.framework.additionaltemplate.IAdditiona
 import net.sf.anathema.character.generic.framework.additionaltemplate.model.IAdditionalModelFactory;
 import net.sf.anathema.character.generic.framework.additionaltemplate.persistence.IAdditionalPersisterFactory;
 import net.sf.anathema.character.generic.framework.module.CharacterModule;
-import net.sf.anathema.character.generic.framework.module.NullObjectCharacterModuleAdapter;
+import net.sf.anathema.character.generic.framework.module.CharacterModuleAdapter;
 import net.sf.anathema.character.mutations.model.MutationsModelFactory;
 import net.sf.anathema.character.mutations.persistence.MutationPersisterFactory;
 import net.sf.anathema.character.mutations.template.MutationsTemplate;
 import net.sf.anathema.lib.registry.IRegistry;
 
 @CharacterModule
-public class MutationsModule extends NullObjectCharacterModuleAdapter {
+public class MutationsModule extends CharacterModuleAdapter {
 
   @Override
   public void addAdditionalTemplateData(ICharacterGenerics characterGenerics) {

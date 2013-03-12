@@ -5,7 +5,7 @@ import net.sf.anathema.character.generic.backgrounds.IBackgroundTemplate;
 import net.sf.anathema.character.generic.framework.ICharacterGenerics;
 import net.sf.anathema.character.generic.framework.additionaltemplate.model.IAdditionalModelFactory;
 import net.sf.anathema.character.generic.framework.module.CharacterModule;
-import net.sf.anathema.character.generic.framework.module.NullObjectCharacterModuleAdapter;
+import net.sf.anathema.character.generic.framework.module.CharacterModuleAdapter;
 import net.sf.anathema.character.generic.impl.backgrounds.TemplateTypeBackgroundTemplate;
 import net.sf.anathema.character.generic.template.ITemplateType;
 import net.sf.anathema.character.generic.template.TemplateType;
@@ -21,7 +21,7 @@ import net.sf.anathema.lib.registry.IRegistry;
 import net.sf.anathema.lib.util.Identifier;
 
 @CharacterModule
-public class GodBloodedCharacterModule extends NullObjectCharacterModuleAdapter {
+public class GodBloodedCharacterModule extends CharacterModuleAdapter {
 
   public static final String BACKGROUND_ID_INHERITANCE = "Inheritance"; //$NON-NLS-1$
 

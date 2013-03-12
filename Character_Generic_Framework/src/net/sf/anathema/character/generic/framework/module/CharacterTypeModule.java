@@ -13,7 +13,7 @@ import net.sf.anathema.lib.resources.ResourceFile;
 import java.util.ArrayList;
 import java.util.List;
 
-public abstract class CharacterTypeModule extends NullObjectCharacterModuleAdapter {
+public abstract class CharacterTypeModule extends CharacterModuleAdapter {
 
   @Override
   public void addCharacterTemplates(ICharacterGenerics characterGenerics) {
