@@ -112,26 +112,65 @@
           <charmAttribute attribute="Mortal"/>
           <source source="SecondEdition" page="187"/>
      </genericCharm>
-     <genericCharm id="Abyssal.RaveningMouth" exalt="Abyssal">
-          <genericTraitSet>
-               <genericTrait id="Archery" />
-               <genericTrait id="MartialArts" />
-               <genericTrait id="Melee" />
-               <genericTrait id="Thrown" />
-          </genericTraitSet>
-          <prerequisite>
-               <trait value="4" />
-               <essence value="3" />
-               <genericCharmAttributeRequirement attribute="Excellency" />
-          </prerequisite>
-          <cost>
-               <essence cost="3" />
-          </cost>
-          <duration amount="1" unit="scene" />
-          <charmtype type="Reflexive" />
-          <genericCharmAttribute attribute="Excellency" />
-          <charmAttribute attribute="Mortal" />
-          <charmAttribute attribute="Combo-OK" visualize="true" />
-          <source source="Abyssals2nd" page="122"/>
-     </genericCharm>
+    <!--Urs, 2013-03-17: To keep our code simple, Ravening Mouth is not modeled as a generic Charm-->
+    <charm id="Abyssal.RaveningMouth.Archery" exalt="Abyssal" group="Archery">
+        <prerequisite>
+            <trait id="Archery" value="4" />
+            <essence value="3" />
+            <charmAttributeRequirement attribute="ExcellencyArchery" />
+        </prerequisite>
+        <cost>
+            <essence cost="3" />
+        </cost>
+        <duration amount="1" unit="scene" />
+        <charmtype type="Reflexive" />
+        <charmAttribute attribute="Mortal" />
+        <charmAttribute attribute="Combo-OK" visualize="true" />
+        <source source="Abyssals2nd" page="122"/>
+    </charm>
+    <charm id="Abyssal.RaveningMouth.MartialArts" exalt="Abyssal" group="MartialArts">
+        <prerequisite>
+            <trait id="MartialArts" value="4" />
+            <essence value="3" />
+            <charmAttributeRequirement attribute="ExcellencyMartialArts" />
+        </prerequisite>
+        <cost>
+            <essence cost="3" />
+        </cost>
+        <duration amount="1" unit="scene" />
+        <charmtype type="Reflexive" />
+        <charmAttribute attribute="Mortal" />
+        <charmAttribute attribute="Combo-OK" visualize="true" />
+        <source source="Abyssals2nd" page="122"/>
+    </charm>
+    <charm id="Abyssal.RaveningMouth.Melee" exalt="Abyssal" group="Melee">
+        <prerequisite>
+            <trait id="Melee" value="4" />
+            <essence value="3" />
+            <charmAttributeRequirement attribute="ExcellencyMelee" />
+        </prerequisite>
+        <cost>
+            <essence cost="3" />
+        </cost>
+        <duration amount="1" unit="scene" />
+        <charmtype type="Reflexive" />
+        <charmAttribute attribute="Mortal" />
+        <charmAttribute attribute="Combo-OK" visualize="true" />
+        <source source="Abyssals2nd" page="122"/>
+    </charm>
+    <charm id="Abyssal.RaveningMouth.Thrown" exalt="Abyssal" group="Thrown">
+        <prerequisite>
+            <trait id="Thrown" value="4" />
+            <essence value="3" />
+            <charmAttributeRequirement attribute="ExcellencyThrown" />
+        </prerequisite>
+        <cost>
+            <essence cost="3" />
+        </cost>
+        <duration amount="1" unit="scene" />
+        <charmtype type="Reflexive" />
+        <charmAttribute attribute="Mortal" />
+        <charmAttribute attribute="Combo-OK" visualize="true" />
+        <source source="Abyssals2nd" page="122"/>
+    </charm>
 </charmlist>

@@ -43,7 +43,6 @@ public interface ICharmXMLConstants {
   String TAG_CHARM = "charm"; //$NON-NLS-1$
   String TAG_GENERIC_CHARM = "genericCharm"; //$NON-NLS-1$
   String TAG_GENERIC_TRAIT = "genericTrait"; //$NON-NLS-1$
-  String TAG_GENERIC_TRAIT_SET = "genericTraitSet"; //$NON-NLS-1$
   String TAG_CHARM_ATTRIBUTE_REQUIREMENT = "charmAttributeRequirement"; //$NON-NLS-1$
   String TAG_CHARM_REFERENCE = "charmReference"; //$NON-NLS-1$
   String TAG_GENERIC_CHARM_REFERENCE = "genericCharmReference"; //$NON-NLS-1$
@@ -60,9 +59,6 @@ public interface ICharmXMLConstants {
   String TAG_SELECTIVE_CHARM_GROUP = "selectiveCharmGroup"; //$NON-NLS-1$
   String TAG_RESTRICTIONS = "restrictions"; //$NON-NLS-1$
   String TAG_SOURCE = "source"; //$NON-NLS-1$
-  String TAG_WILLPOWER_COST = "willpower"; //$NON-NLS-1$
-  String TAG_ESSENCE_COST = "essence"; //$NON-NLS-1$
-  String TAG_HEALTH_COST = "health"; //$NON-NLS-1$
 
   String ATTRIB_COST = "cost"; //$NON-NLS-1$
   String ATTRIB_TEXT = "text"; //$NON-NLS-1$
