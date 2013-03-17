@@ -83,7 +83,6 @@ public class ExaltedCharacter implements ICharacter {
     this.characterTemplate = template;
     this.concept = initConcept();
     this.traitConfiguration = createTraitConfiguration(template, generics);
-    new CharacterTraitListening(traitConfiguration, context.getCharacterListening()).initListening();
     this.health = new HealthConfiguration(getTraitArray(template.getToughnessControllingTraitTypes()), traitConfiguration,
             template.getBaseHealthProviders());
     this.charms = new CharmConfiguration(health, context, generics.getCharacterTypes(), generics.getTemplateRegistry(), generics.getCharmProvider());
@@ -119,7 +118,9 @@ public class ExaltedCharacter implements ICharacter {
 
   private CoreTraitConfiguration createTraitConfiguration(ICharacterTemplate template, ICharacterGenerics generics) {
     Collection<TraitRegistrar> registrars = generics.getInstantiater().instantiateAll(RegisteredTrait.class);
-    return new CoreTraitConfiguration(template, context, generics.getBackgroundRegistry(), registrars);
+    CoreTraitConfiguration configuration = new CoreTraitConfiguration(template, context, generics.getBackgroundRegistry(), registrars);
+    new CharacterTraitListening(configuration, context.getCharacterListening(), registrars).initListening();
+    return configuration;
   }
 
   @Override

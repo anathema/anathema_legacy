@@ -5,8 +5,8 @@ import net.sf.anathema.character.generic.traits.groups.ITraitTypeGroup;
 import net.sf.anathema.character.generic.traits.groups.TraitTypeGroup;
 import net.sf.anathema.character.generic.traits.types.OtherTraitType;
 import net.sf.anathema.character.generic.traits.types.VirtueType;
-import net.sf.anathema.character.generic.traits.types.YoziType;
 import net.sf.anathema.character.impl.model.context.CharacterListening;
+import net.sf.anathema.character.impl.model.traits.TraitRegistrar;
 import net.sf.anathema.character.library.trait.ITrait;
 import net.sf.anathema.character.library.trait.favorable.FavorableState;
 import net.sf.anathema.character.library.trait.favorable.IFavorableStateChangedListener;
@@ -18,26 +18,32 @@ import net.sf.anathema.character.model.background.IBackground;
 import net.sf.anathema.character.model.background.IBackgroundListener;
 import net.sf.anathema.character.model.traits.ICoreTraitConfiguration;
 
+import java.util.Collection;
+
 public class CharacterTraitListening {
 
   private final CharacterListening listening;
+  private Collection<TraitRegistrar> registrars;
   private final ICoreTraitConfiguration traitConfiguration;
 
-  public CharacterTraitListening(ICoreTraitConfiguration traitConfiguration, CharacterListening listening) {
+  public CharacterTraitListening(ICoreTraitConfiguration traitConfiguration, CharacterListening listening, Collection<TraitRegistrar> registrars) {
     this.traitConfiguration = traitConfiguration;
     this.listening = listening;
+    this.registrars = registrars;
   }
 
   public void initListening() {
     initAttributeListening();
     initAbilityListening();
-    initYoziListening();
     initBackgroundListening();
     for (ITrait virtue : traitConfiguration.getTraits(VirtueType.values())) {
       listening.addTraitListening(virtue);
     }
     listening.addTraitListening(traitConfiguration.getTrait(OtherTraitType.Willpower));
     listening.addTraitListening(traitConfiguration.getTrait(OtherTraitType.Essence));
+    for (TraitRegistrar registrar : registrars) {
+      registrar.initListening(traitConfiguration, listening);
+    }
   }
 
   private void initBackgroundListening() {
@@ -100,23 +106,6 @@ public class CharacterTraitListening {
           listening.fireCharacterChanged();
         }
       });
-    }
-  }
-
-  private void initYoziListening() {
-    for (YoziType yoziType : YoziType.values()) {
-      try {
-        IFavorableTrait yozi = traitConfiguration.getFavorableTrait(yoziType);
-        listening.addTraitListening(yozi);
-        yozi.getFavorization().addFavorableStateChangedListener(new IFavorableStateChangedListener() {
-          @Override
-          public void favorableStateChanged(FavorableState state) {
-            listening.fireCharacterChanged();
-          }
-        });
-      } catch (UnsupportedOperationException e) {
-        break; //template does not support yozis
-      }
     }
   }
 }

@@ -71,7 +71,7 @@ public class CoreTraitConfiguration extends AbstractTraitCollection implements I
     addTrait(traitFactory.createTrait(OtherTraitType.Willpower));
     addAttributes(template);
     for (TraitRegistrar registrar : registrars) {
-      registrar.addTraits(template, this);
+      registrar.addTraits(this, template);
     }
     IDefaultTrait willpower = TraitCollectionUtilities.getWillpower(this);
     IDefaultTrait[] virtues = TraitCollectionUtilities.getVirtues(this);
