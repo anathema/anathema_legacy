@@ -36,33 +36,27 @@ public class HealthTemplateParser extends AbstractXmlTemplateParser<GenericHealt
   }
 
   private void setToughnessControllingTrait(Element generalElement, GenericHealthTemplate basicTemplate) {
-	List<ITraitType> traits = new ArrayList<>();
-	for (Object element : generalElement.elements(TAG_TOUGHNESS_TRAIT))
-	{
-		Element toughnessElement = (Element)element;
-		String traitTypeString = toughnessElement.attributeValue(ATTRIB_TYPE);
-		traits.add(new TraitTypeUtils().getTraitTypeById(traitTypeString));
-	}
-	ITraitType[] traitArray = new ITraitType[traits.size()];
-	traits.toArray(traitArray);
+    List<ITraitType> traits = new ArrayList<>();
+    for (Object element : generalElement.elements(TAG_TOUGHNESS_TRAIT)) {
+      Element toughnessElement = (Element) element;
+      String traitTypeString = toughnessElement.attributeValue(ATTRIB_TYPE);
+      traits.add(new TraitTypeUtils().getTraitTypeById(traitTypeString));
+    }
+    ITraitType[] traitArray = new ITraitType[traits.size()];
+    traits.toArray(traitArray);
     basicTemplate.setToughnessControllingTraitTypes(traitArray);
   }
-  
-  private void setBaseProviders(Element generalElement, GenericHealthTemplate template)
-  {
-	  List<String> baseHealthProviders = new ArrayList<>();
-	  
-	  try
-	  {
-		  for (Object element : generalElement.elements(TAG_BASE_PROVIDER))
-			  baseHealthProviders.add(ElementUtilities.getRequiredAttrib((Element)element, ATTRIB_PATH));
-	  }
-	  catch (Exception e)
-	  {
-		  e.printStackTrace();
-	  }
-	  String[] providerArray = new String[baseHealthProviders.size()];
-	  baseHealthProviders.toArray(providerArray);
-	  template.setBaseProviders(providerArray);
+
+  private void setBaseProviders(Element generalElement, GenericHealthTemplate template) {
+    List<String> baseHealthProviders = new ArrayList<>();
+    try {
+      for (Object element : generalElement.elements(TAG_BASE_PROVIDER))
+        baseHealthProviders.add(ElementUtilities.getRequiredAttrib((Element) element, ATTRIB_PATH));
+    } catch (Exception e) {
+      e.printStackTrace();
+    }
+    String[] providerArray = new String[baseHealthProviders.size()];
+    baseHealthProviders.toArray(providerArray);
+    template.setBaseProviders(providerArray);
   }
 }

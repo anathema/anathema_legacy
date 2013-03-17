@@ -13,11 +13,11 @@ import java.util.List;
 
 public class TraitTypeGroupTemplateParser extends AbstractXmlTemplateParser<GenericGroupedTraitTypeProvider> {
 
-  private static final String ATTRIB_ID = "id"; //$NON-NLS-1$
-  private static final String CASTE_ID = "casteId"; //$NON-NLS-1$
-  private static final String ATTRIB_TYPE = "type"; //$NON-NLS-1$
-  private static final String TAG_GROUP = "group"; //$NON-NLS-1$
-  private static final String TAG_TRAIT = "trait"; //$NON-NLS-1$
+  private static final String ATTRIB_ID = "id";
+  private static final String CASTE_ID = "casteId";
+  private static final String ATTRIB_TYPE = "type";
+  private static final String TAG_GROUP = "group";
+  private static final String TAG_TRAIT = "trait";
   private final ITraitTypeGroup traitTypeGroup;
 
   public TraitTypeGroupTemplateParser(IXmlTemplateRegistry<GenericGroupedTraitTypeProvider> templateRegistry,

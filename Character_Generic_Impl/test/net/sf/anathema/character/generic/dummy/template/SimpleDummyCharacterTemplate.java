@@ -53,11 +53,6 @@ public class SimpleDummyCharacterTemplate implements ICharacterTemplate {
   }
 
   @Override
-  public GroupedTraitType[] getYoziGroups() {
-    return new GroupedTraitType[0];
-  }
-
-  @Override
   public IAdditionalRules getAdditionalRules() {
     return new NullAdditionalRules();
   }

@@ -45,7 +45,6 @@ public class GenericCharacterTemplate implements ICharacterTemplate, ICloneable<
   private GenericEssenceTemplate essenceTemplate;
   private GroupedTraitType[] abilityGroups;
   private GroupedTraitType[] attributeGroups;
-  private GroupedTraitType[] yoziGroups;
   private GenericPresentationTemplate presentationTemplate;
   private ICasteCollection casteCollection = new CasteCollection(new ICasteType[0]);
   // This is volatile instead of final to allow clone to be implemented
@@ -62,11 +61,6 @@ public class GenericCharacterTemplate implements ICharacterTemplate, ICloneable<
   @Override
   public GroupedTraitType[] getAbilityGroups() {
     return abilityGroups;
-  }
-
-  @Override
-  public GroupedTraitType[] getYoziGroups() {
-    return yoziGroups;
   }
 
   @Override
@@ -140,10 +134,6 @@ public class GenericCharacterTemplate implements ICharacterTemplate, ICloneable<
 
   public void setAbilityGroups(GroupedTraitType[] abilityGroups) {
     this.abilityGroups = abilityGroups;
-  }
-
-  public void setYoziGroups(GroupedTraitType[] yoziGroups) {
-    this.yoziGroups = yoziGroups;
   }
 
   public void setEssenceTemplate(GenericEssenceTemplate essenceTemplate) {

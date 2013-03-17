@@ -17,8 +17,6 @@ public interface ICharacterTemplate extends ICharacterExternalsTemplate {
 
   GroupedTraitType[] getAttributeGroups();
   
-  GroupedTraitType[] getYoziGroups();
-
   IAdditionalRules getAdditionalRules();
 
   IBonusPointCosts getBonusPointCosts();

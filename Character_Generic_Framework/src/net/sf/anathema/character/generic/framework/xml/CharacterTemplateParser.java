@@ -32,8 +32,6 @@ import net.sf.anathema.character.generic.template.ITemplateType;
 import net.sf.anathema.character.generic.template.additional.IAdditionalTemplate;
 import net.sf.anathema.character.generic.traits.groups.AllAbilityTraitTypeGroup;
 import net.sf.anathema.character.generic.traits.groups.AllAttributeTraitTypeGroup;
-import net.sf.anathema.character.generic.traits.groups.TraitTypeGroup;
-import net.sf.anathema.character.generic.traits.types.YoziType;
 import net.sf.anathema.character.generic.type.CharacterTypes;
 import net.sf.anathema.character.generic.type.ICharacterType;
 import net.sf.anathema.lib.exception.PersistenceException;
@@ -42,28 +40,26 @@ import net.sf.anathema.lib.registry.IRegistry;
 import net.sf.anathema.lib.xml.ElementUtilities;
 import org.dom4j.Element;
 
-import java.util.Collections;
 import java.util.List;
 
 public class CharacterTemplateParser extends AbstractXmlTemplateParser<GenericCharacterTemplate> {
 
-  private static final String TAG_ABILITY_GROUPS = "abilityGroups"; //$NON-NLS-1$
-  private static final String TAG_ATTRIBUTE_GROUPS = "attributeGroups"; //$NON-NLS-1$
-  private static final String TAG_YOZI_GROUPS = "yoziGroups"; //$NON-NLS-1$
-  private static final String TAG_CREATION = "creation"; //$NON-NLS-1$
-  private static final String TAG_CREATION_POINTS = "creationPoints"; //$NON-NLS-1$
-  private static final String TAG_ESSENCE = "essence"; //$NON-NLS-1$
-  private static final String TAG_EXPERIENCE = "experience"; //$NON-NLS-1$
-  private static final String TAG_GENERAL = "general"; //$NON-NLS-1$
-  private static final String TAG_EXPERIENCE_POINT_COST = "experiencePointCost"; //$NON-NLS-1$
-  private static final String TAG_TRAIT_COLLECTION = "traitCollection"; //$NON-NLS-1$
-  private static final String TAG_MAGIC_TEMPLATE = "magicTemplate"; //$NON-NLS-1$
-  private static final String TAG_PRESENTATION_TEMPLATE = "presentation"; //$NON-NLS-1$
-  private static final String TAG_ADDITIONAL_TEMPLATES = "additionalTemplates"; //$NON-NLS-1$
-  private static final String TAG_TEMPLATE = "template"; //$NON-NLS-1$
-  private static final String ATTRIB_ID = "id"; //$NON-NLS-1$
-  private static final String TAG_HEALTH_TEMPLATE = "healthTemplate"; //$NON-NLS-1$
-  private static final String TAG_ADDITIONAL_RULES = "additionalRules"; //$NON-NLS-1$
+  private static final String TAG_ABILITY_GROUPS = "abilityGroups";
+  private static final String TAG_ATTRIBUTE_GROUPS = "attributeGroups";
+  private static final String TAG_CREATION = "creation";
+  private static final String TAG_CREATION_POINTS = "creationPoints";
+  private static final String TAG_ESSENCE = "essence";
+  private static final String TAG_EXPERIENCE = "experience";
+  private static final String TAG_GENERAL = "general";
+  private static final String TAG_EXPERIENCE_POINT_COST = "experiencePointCost";
+  private static final String TAG_TRAIT_COLLECTION = "traitCollection";
+  private static final String TAG_MAGIC_TEMPLATE = "magicTemplate";
+  private static final String TAG_PRESENTATION_TEMPLATE = "presentation";
+  private static final String TAG_ADDITIONAL_TEMPLATES = "additionalTemplates";
+  private static final String TAG_TEMPLATE = "template";
+  private static final String ATTRIB_ID = "id";
+  private static final String TAG_HEALTH_TEMPLATE = "healthTemplate";
+  private static final String TAG_ADDITIONAL_RULES = "additionalRules";
   private static final String TAG_NPC_ONLY = "npcOnly";
 
   private CharacterTypes characterTypes;
@@ -144,27 +140,6 @@ public class CharacterTemplateParser extends AbstractXmlTemplateParser<GenericCh
     characterTemplate.setAbilityGroups(abilityGroups.getTraitTypeGroups());
   }
 
-  private void setYoziGroups(Element generalElement,
-                             GenericCharacterTemplate characterTemplate) throws PersistenceException {
-    Element yoziGroupElement = generalElement.element(TAG_YOZI_GROUPS);
-    GenericGroupedTraitTypeProvider provider = createYoziGroupProvider(yoziGroupElement);
-    characterTemplate.setYoziGroups(provider.getTraitTypeGroups());
-  }
-
-  private GenericGroupedTraitTypeProvider createYoziGroupProvider(Element yoziGroupElement) {
-    TraitTypeGroup yoziTypeGroup = new TraitTypeGroup(YoziType.values());
-    if (yoziGroupElement == null) {
-      GenericGroupedTraitTypeProvider provider = new GenericGroupedTraitTypeProvider(yoziTypeGroup);
-      for (YoziType yozi : YoziType.values()) {
-        provider.addGroupedAbilityType(yozi.getId(), yozi.getId(), Collections.<String>emptyList());
-      }
-      return provider;
-    }
-    IXmlTemplateRegistry<GenericGroupedTraitTypeProvider> registry = registryCollection.getTraitGroupTemplateRegistry();
-    TraitTypeGroupTemplateParser parser = new TraitTypeGroupTemplateParser(registry, yoziTypeGroup);
-    return parser.parseTemplate(yoziGroupElement);
-  }
-
   private void setAttributeGroups(Element generalElement,
                                   GenericCharacterTemplate characterTemplate) throws PersistenceException {
     Element attributeGroupElement = generalElement.element(TAG_ATTRIBUTE_GROUPS);
@@ -180,7 +155,7 @@ public class CharacterTemplateParser extends AbstractXmlTemplateParser<GenericCh
 
   private void setBonusPoints(GenericCharacterTemplate characterTemplate,
                               Element creationElement) throws PersistenceException {
-    Element bonusPointsElement = creationElement.element("bonusPointCosts"); //$NON-NLS-1$
+    Element bonusPointsElement = creationElement.element("bonusPointCosts");
     if (bonusPointsElement == null) {
       return;
     }
@@ -245,7 +220,6 @@ public class CharacterTemplateParser extends AbstractXmlTemplateParser<GenericCh
     setAdditionalModelTemplates(generalElement, characterTemplate);
     setAdditionalRules(generalElement, characterTemplate);
     setToughnessControllingTrait(generalElement, characterTemplate);
-    setYoziGroups(generalElement, characterTemplate);
   }
 
   private void setNpcOnly(Element generalElement, GenericCharacterTemplate characterTemplate) {
