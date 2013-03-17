@@ -1,7 +1,8 @@
-package net.sf.anathema.character.impl.model.traits.creation;
+package net.sf.anathema.character.infernal.traits;
 
 import net.sf.anathema.character.generic.traits.ITraitType;
 import net.sf.anathema.character.generic.traits.types.YoziType;
+import net.sf.anathema.character.impl.model.traits.creation.FavoredIncrementChecker;
 import net.sf.anathema.character.library.trait.favorable.IIncrementChecker;
 import net.sf.anathema.character.model.traits.ICoreTraitConfiguration;
 

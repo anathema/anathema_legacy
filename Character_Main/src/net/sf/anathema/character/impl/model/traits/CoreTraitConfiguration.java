@@ -7,7 +7,6 @@ import net.sf.anathema.character.generic.framework.additionaltemplate.model.ICha
 import net.sf.anathema.character.generic.framework.additionaltemplate.model.ITraitContext;
 import net.sf.anathema.character.generic.template.ICharacterTemplate;
 import net.sf.anathema.character.generic.template.ITraitTemplateCollection;
-import net.sf.anathema.character.generic.template.abilities.GroupedTraitType;
 import net.sf.anathema.character.generic.traits.ITraitType;
 import net.sf.anathema.character.generic.traits.groups.IIdentifiedCasteTraitTypeGroup;
 import net.sf.anathema.character.generic.traits.groups.IIdentifiedTraitTypeGroup;
@@ -20,8 +19,6 @@ import net.sf.anathema.character.impl.model.traits.creation.AttributeTypeGroupFa
 import net.sf.anathema.character.impl.model.traits.creation.DefaultTraitFactory;
 import net.sf.anathema.character.impl.model.traits.creation.FavorableTraitFactory;
 import net.sf.anathema.character.impl.model.traits.creation.FavoredIncrementChecker;
-import net.sf.anathema.character.impl.model.traits.creation.YoziFavoredIncrementChecker;
-import net.sf.anathema.character.impl.model.traits.creation.YoziTypeGroupFactory;
 import net.sf.anathema.character.impl.model.traits.listening.WillpowerListening;
 import net.sf.anathema.character.library.trait.AbstractTraitCollection;
 import net.sf.anathema.character.library.trait.ITrait;
@@ -41,6 +38,7 @@ import net.sf.anathema.exaltedengine.attributes.Attribute;
 import net.sf.anathema.lib.registry.IIdentificateRegistry;
 
 import java.util.ArrayList;
+import java.util.Collection;
 import java.util.Collections;
 import java.util.Iterator;
 import java.util.List;
@@ -57,7 +55,7 @@ public class CoreTraitConfiguration extends AbstractTraitCollection implements I
   private final Persona persona = new ExaltedEngine().createCharacter();
 
   public CoreTraitConfiguration(ICharacterTemplate template, ICharacterModelContext modelContext,
-                                IIdentificateRegistry<IBackgroundTemplate> backgroundRegistry) {
+                                IIdentificateRegistry<IBackgroundTemplate> backgroundRegistry, Collection<TraitRegistrar> registrars) {
     ICasteCollection casteCollection = template.getCasteCollection();
     this.abilityTraitGroups = new AbilityTypeGroupFactory().createTraitGroups(casteCollection, template.getAbilityGroups());
     this.attributeTraitGroups = new AttributeTypeGroupFactory().createTraitGroups(casteCollection, template.getAttributeGroups());
@@ -72,7 +70,9 @@ public class CoreTraitConfiguration extends AbstractTraitCollection implements I
     addTraits(traitFactory.createTraits(VirtueType.values()));
     addTrait(traitFactory.createTrait(OtherTraitType.Willpower));
     addAttributes(template);
-    addYozis(template);
+    for (TraitRegistrar registrar : registrars) {
+      registrar.addTraits(template, this);
+    }
     IDefaultTrait willpower = TraitCollectionUtilities.getWillpower(this);
     IDefaultTrait[] virtues = TraitCollectionUtilities.getVirtues(this);
     if (additionalTraitRules.isWillpowerVirtueBased()) {
@@ -100,15 +100,8 @@ public class CoreTraitConfiguration extends AbstractTraitCollection implements I
     addFavorableTraits(abilityTraitGroups, incrementChecker);
   }
 
-  private void addYozis(ICharacterTemplate template) {
-    ICasteCollection casteCollection = template.getCasteCollection();
-    GroupedTraitType[] yoziGroups = template.getYoziGroups();
-    IIdentifiedCasteTraitTypeGroup[] yoziTraitGroups = new YoziTypeGroupFactory().createTraitGroups(casteCollection, yoziGroups);
-    IIncrementChecker incrementChecker = YoziFavoredIncrementChecker.create(this);
-    addFavorableTraits(yoziTraitGroups, incrementChecker);
-  }
-
-  private void addFavorableTraits(IIdentifiedCasteTraitTypeGroup[] traitGroups, IIncrementChecker incrementChecker) {
+  @Override
+  public void addFavorableTraits(IIdentifiedCasteTraitTypeGroup[] traitGroups, IIncrementChecker incrementChecker) {
     for (IIdentifiedCasteTraitTypeGroup traitGroup : traitGroups) {
       addTraits(favorableTraitFactory.createTraits(traitGroup, incrementChecker));
     }

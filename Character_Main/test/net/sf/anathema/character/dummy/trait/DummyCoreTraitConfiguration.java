@@ -13,6 +13,7 @@ import net.sf.anathema.character.library.trait.AbstractTraitCollection;
 import net.sf.anathema.character.library.trait.ITrait;
 import net.sf.anathema.character.library.trait.TraitGroup;
 import net.sf.anathema.character.library.trait.favorable.IFavorableTrait;
+import net.sf.anathema.character.library.trait.favorable.IIncrementChecker;
 import net.sf.anathema.character.library.trait.specialties.ISpecialtiesConfiguration;
 import net.sf.anathema.character.library.trait.specialties.SpecialtiesConfiguration;
 import net.sf.anathema.character.model.background.IBackgroundConfiguration;
@@ -25,6 +26,9 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
+import static net.sf.anathema.character.generic.traits.types.AttributeGroupType.Mental;
+import static net.sf.anathema.character.generic.traits.types.AttributeGroupType.Physical;
+import static net.sf.anathema.character.generic.traits.types.AttributeGroupType.Social;
 import static net.sf.anathema.lib.lang.ArrayUtilities.getFirst;
 
 public class DummyCoreTraitConfiguration extends AbstractTraitCollection implements ICoreTraitConfiguration {
@@ -86,8 +90,11 @@ public class DummyCoreTraitConfiguration extends AbstractTraitCollection impleme
 
   @Override
   public final IIdentifiedCasteTraitTypeGroup[] getAttributeTypeGroups() {
-    return new IIdentifiedCasteTraitTypeGroup[]{new IdentifiedAttributeTypeGroup(AttributeGroupType.Physical),
-            new IdentifiedAttributeTypeGroup(AttributeGroupType.Social), new IdentifiedAttributeTypeGroup(AttributeGroupType.Mental)};
+    return new IIdentifiedCasteTraitTypeGroup[]{
+            new IdentifiedAttributeTypeGroup(Physical),
+            new IdentifiedAttributeTypeGroup(Social),
+            new IdentifiedAttributeTypeGroup(Mental)
+    };
   }
 
   public void addAbilityTypeToGroup(AbilityType traitType, String id) {
@@ -101,5 +108,10 @@ public class DummyCoreTraitConfiguration extends AbstractTraitCollection impleme
       Collections.addAll(abilityTypes, group.getAllGroupTypes());
     }
     return getFavorableTraits(abilityTypes.toArray(new ITraitType[abilityTypes.size()]));
+  }
+
+  @Override
+  public void addFavorableTraits(IIdentifiedCasteTraitTypeGroup[] traitGroups, IIncrementChecker incrementChecker) {
+    throw new NotYetImplementedException();
   }
 }

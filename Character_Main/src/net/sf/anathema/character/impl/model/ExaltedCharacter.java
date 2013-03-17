@@ -19,6 +19,8 @@ import net.sf.anathema.character.impl.model.concept.Motivation;
 import net.sf.anathema.character.impl.model.context.CharacterModelContext;
 import net.sf.anathema.character.impl.model.statistics.ExtendedConfiguration;
 import net.sf.anathema.character.impl.model.traits.CoreTraitConfiguration;
+import net.sf.anathema.character.impl.model.traits.RegisteredTrait;
+import net.sf.anathema.character.impl.model.traits.TraitRegistrar;
 import net.sf.anathema.character.impl.model.traits.essence.EssencePoolConfiguration;
 import net.sf.anathema.character.impl.model.traits.listening.CharacterTraitListening;
 import net.sf.anathema.character.model.ICharacter;
@@ -38,6 +40,8 @@ import net.sf.anathema.framework.presenter.itemmanagement.PrintNameAdjuster;
 import net.sf.anathema.lib.control.IChangeListener;
 import net.sf.anathema.lib.control.ObjectValueListener;
 import net.sf.anathema.lib.registry.IRegistry;
+
+import java.util.Collection;
 
 public class ExaltedCharacter implements ICharacter {
 
@@ -78,7 +82,7 @@ public class ExaltedCharacter implements ICharacter {
     description.addOverallChangeListener(management.getDescriptionChangeListener());
     this.characterTemplate = template;
     this.concept = initConcept();
-    this.traitConfiguration = new CoreTraitConfiguration(template, context, generics.getBackgroundRegistry());
+    this.traitConfiguration = createTraitConfiguration(template, generics);
     new CharacterTraitListening(traitConfiguration, context.getCharacterListening()).initListening();
     this.health = new HealthConfiguration(getTraitArray(template.getToughnessControllingTraitTypes()), traitConfiguration,
             template.getBaseHealthProviders());
@@ -111,6 +115,11 @@ public class ExaltedCharacter implements ICharacter {
     addAdditionalModels(generics, template.getAdditionalTemplates());
     addCompulsiveCharms(template);
     getCharacterContext().getCharacterListening().addChangeListener(management.getStatisticsChangeListener());
+  }
+
+  private CoreTraitConfiguration createTraitConfiguration(ICharacterTemplate template, ICharacterGenerics generics) {
+    Collection<TraitRegistrar> registrars = generics.getInstantiater().instantiateAll(RegisteredTrait.class);
+    return new CoreTraitConfiguration(template, context, generics.getBackgroundRegistry(), registrars);
   }
 
   @Override
