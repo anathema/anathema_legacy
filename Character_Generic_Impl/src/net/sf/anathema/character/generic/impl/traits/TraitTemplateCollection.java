@@ -61,7 +61,7 @@ public class TraitTemplateCollection implements ITraitTemplateCollection {
 
       @Override
       public void visitCustomTraitType(ITraitType visitedType) {
-        throw new UnsupportedOperationException("Trait Template Collection can't handle custom trait types"); //$NON-NLS-1$
+        throw new UnsupportedOperationException("Trait Template Collection can't handle custom trait types");
       }
     });
     return traitTemplate[0];
