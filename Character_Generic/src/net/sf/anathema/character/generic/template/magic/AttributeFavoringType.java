@@ -6,12 +6,12 @@ import net.sf.anathema.character.generic.traits.types.AttributeType;
 public class AttributeFavoringType implements FavoringTraitType {
   @Override
   public AttributeType[] getTraitTypesForGenericCharms() {
-    return net.sf.anathema.character.generic.traits.types.AttributeType.values();
+    return AttributeType.values();
   }
 
   @Override
   public ITraitType getSpellFavoringType() {
-    return net.sf.anathema.character.generic.traits.types.AttributeType.Intelligence;
+    return AttributeType.Intelligence;
   }
 
   @Override

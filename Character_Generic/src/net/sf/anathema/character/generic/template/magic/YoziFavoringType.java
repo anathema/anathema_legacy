@@ -1,17 +1,18 @@
 package net.sf.anathema.character.generic.template.magic;
 
 import net.sf.anathema.character.generic.traits.ITraitType;
+import net.sf.anathema.character.generic.traits.types.AbilityType;
 import net.sf.anathema.character.generic.traits.types.YoziType;
 
 public class YoziFavoringType implements FavoringTraitType {
   @Override
   public YoziType[] getTraitTypesForGenericCharms() {
-    return net.sf.anathema.character.generic.traits.types.YoziType.values();
+    return YoziType.values();
   }
 
   @Override
   public ITraitType getSpellFavoringType() {
-    return net.sf.anathema.character.generic.traits.types.AbilityType.Occult;
+    return AbilityType.Occult;
   }
 
   @Override

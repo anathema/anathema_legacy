@@ -6,12 +6,12 @@ import net.sf.anathema.character.generic.traits.types.AbilityType;
 public class AbilityFavoringType implements FavoringTraitType {
   @Override
   public AbilityType[] getTraitTypesForGenericCharms() {
-    return net.sf.anathema.character.generic.traits.types.AbilityType.values();
+    return AbilityType.values();
   }
 
   @Override
   public ITraitType getSpellFavoringType() {
-    return net.sf.anathema.character.generic.traits.types.AbilityType.Occult;
+    return AbilityType.Occult;
   }
   @Override
   public String getId() {

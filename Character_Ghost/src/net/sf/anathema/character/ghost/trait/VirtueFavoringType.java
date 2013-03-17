@@ -7,7 +7,7 @@ import net.sf.anathema.character.generic.traits.types.VirtueType;
 public class VirtueFavoringType implements FavoringTraitType {
   @Override
   public VirtueType[] getTraitTypesForGenericCharms() {
-    return net.sf.anathema.character.generic.traits.types.VirtueType.values();
+    return VirtueType.values();
   }
 
   @Override
