@@ -1,5 +1,6 @@
-package net.sf.anathema.character.generic.template.magic;
+package net.sf.anathema.character.infernal.traits;
 
+import net.sf.anathema.character.generic.template.magic.FavoringTraitType;
 import net.sf.anathema.character.generic.traits.ITraitType;
 import net.sf.anathema.character.generic.traits.types.AbilityType;
 import net.sf.anathema.character.generic.traits.types.YoziType;
