@@ -32,7 +32,7 @@ import net.sf.anathema.character.generic.template.ITemplateType;
 import net.sf.anathema.character.generic.template.additional.IAdditionalTemplate;
 import net.sf.anathema.character.generic.traits.groups.AllAbilityTraitTypeGroup;
 import net.sf.anathema.character.generic.traits.groups.AllAttributeTraitTypeGroup;
-import net.sf.anathema.character.generic.traits.groups.AllYoziTraitTypeGroup;
+import net.sf.anathema.character.generic.traits.groups.TraitTypeGroup;
 import net.sf.anathema.character.generic.traits.types.YoziType;
 import net.sf.anathema.character.generic.type.CharacterTypes;
 import net.sf.anathema.character.generic.type.ICharacterType;
@@ -148,15 +148,15 @@ public class CharacterTemplateParser extends AbstractXmlTemplateParser<GenericCh
                              GenericCharacterTemplate characterTemplate) throws PersistenceException {
     Element yoziGroupElement = generalElement.element(TAG_YOZI_GROUPS);
     GenericGroupedTraitTypeProvider provider;
+    TraitTypeGroup yoziTypeGroup = new TraitTypeGroup(YoziType.values());
     if (yoziGroupElement == null) {
-      provider = new GenericGroupedTraitTypeProvider(AllYoziTraitTypeGroup.getInstance());
+      provider = new GenericGroupedTraitTypeProvider(yoziTypeGroup);
       for (YoziType yozi : YoziType.values()) {
         provider.addGroupedAbilityType(yozi.getId(), yozi.getId(), Collections.<String>emptyList());
       }
     } else {
       IXmlTemplateRegistry<GenericGroupedTraitTypeProvider> registry = registryCollection.getTraitGroupTemplateRegistry();
-      TraitTypeGroupTemplateParser parser = new TraitTypeGroupTemplateParser(registry,
-              AllYoziTraitTypeGroup.getInstance());
+      TraitTypeGroupTemplateParser parser = new TraitTypeGroupTemplateParser(registry, yoziTypeGroup);
       provider = parser.parseTemplate(yoziGroupElement);
     }
     characterTemplate.setYoziGroups(provider.getTraitTypeGroups());
