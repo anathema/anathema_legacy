@@ -14,6 +14,7 @@ import net.sf.anathema.character.generic.magic.charms.MartialArtsLevel;
 import net.sf.anathema.character.generic.magic.spells.CircleType;
 import net.sf.anathema.character.generic.template.ICharacterTemplate;
 import net.sf.anathema.character.generic.template.magic.FavoringTraitType;
+import net.sf.anathema.character.generic.template.magic.FavoringTraitTypeEnum;
 import net.sf.anathema.character.generic.template.magic.ICharmSet;
 import net.sf.anathema.character.generic.template.magic.ISpellMagicTemplate;
 import net.sf.anathema.character.generic.template.magic.IUniqueCharmType;
@@ -86,7 +87,7 @@ public class GenericMagicTemplateParser extends AbstractXmlTemplateParser<Generi
       return;
     }
     String type = ElementUtilities.getRequiredAttrib(traitTypeElement, ATTRIB_TYPE);
-    FavoringTraitType traitTypeType = FavoringTraitType.valueOf(type);
+    FavoringTraitType traitTypeType = FavoringTraitTypeEnum.valueOf(type);
     basicTemplate.setFavoringTraitType(traitTypeType);
   }
 

@@ -6,6 +6,7 @@ import net.sf.anathema.character.generic.magic.ICharm;
 import net.sf.anathema.character.generic.magic.IMagic;
 import net.sf.anathema.character.generic.magic.IMagicStats;
 import net.sf.anathema.character.generic.template.magic.FavoringTraitType;
+import net.sf.anathema.character.generic.template.magic.FavoringTraitTypeEnum;
 import net.sf.anathema.character.generic.traits.ITraitType;
 import net.sf.anathema.character.generic.traits.groups.IIdentifiedTraitTypeGroup;
 import net.sf.anathema.character.generic.traits.groups.ITraitTypeGroup;
@@ -66,7 +67,7 @@ public class GenericCharmUtilities {
   public static List<ITraitType> getGenericCharmTraits(IGenericCharacter character) {
     List<ITraitType> traits = new ArrayList<>();
     FavoringTraitType type = character.getTemplate().getMagicTemplate().getFavoringTraitType();
-    if (type == FavoringTraitType.YoziType) {
+    if (type.equals(FavoringTraitTypeEnum.YoziType)) {
       Collections.addAll(traits, type.getTraitTypesForGenericCharms());
     } else {
       for (ITraitTypeGroup group : getCharmTraitGroups(character)) {
@@ -78,10 +79,10 @@ public class GenericCharmUtilities {
 
   private static IIdentifiedTraitTypeGroup[] getCharmTraitGroups(IGenericCharacter character) {
     FavoringTraitType type = character.getTemplate().getMagicTemplate().getFavoringTraitType();
-    if (type == FavoringTraitType.AbilityType) {
+    if (type.equals(FavoringTraitTypeEnum.AbilityType)) {
       return character.getAbilityTypeGroups();
     }
-    if (type == FavoringTraitType.AttributeType) {
+    if (type.equals(FavoringTraitTypeEnum.AttributeType)) {
       return character.getAttributeTypeGroups();
     }
     return new IIdentifiedTraitTypeGroup[0];

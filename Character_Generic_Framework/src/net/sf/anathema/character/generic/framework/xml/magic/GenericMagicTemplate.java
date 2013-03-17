@@ -3,6 +3,7 @@ package net.sf.anathema.character.generic.framework.xml.magic;
 import com.google.common.base.Predicate;
 import net.sf.anathema.character.generic.magic.IMagic;
 import net.sf.anathema.character.generic.template.magic.FavoringTraitType;
+import net.sf.anathema.character.generic.template.magic.FavoringTraitTypeEnum;
 import net.sf.anathema.character.generic.template.magic.ICharmTemplate;
 import net.sf.anathema.character.generic.template.magic.IMagicTemplate;
 import net.sf.anathema.character.generic.template.magic.ISpellMagicTemplate;
@@ -13,7 +14,7 @@ public class GenericMagicTemplate extends ReflectionCloneableObject<GenericMagic
   private Predicate<IMagic> predicate;
   private ICharmTemplate charmTemplate;
   private ISpellMagicTemplate spellTemplate;
-  private FavoringTraitType favoringTraitType = FavoringTraitType.AbilityType;
+  private FavoringTraitType favoringTraitType = FavoringTraitTypeEnum.AbilityType;
 
   @Override
   public boolean canBuyFromFreePicks(IMagic magic) {

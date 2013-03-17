@@ -7,7 +7,6 @@ import net.sf.anathema.character.generic.magic.ICharm;
 import net.sf.anathema.character.generic.magic.ISpell;
 import net.sf.anathema.character.generic.template.experience.ICurrentRatingCosts;
 import net.sf.anathema.character.generic.template.experience.IExperiencePointCosts;
-import net.sf.anathema.character.generic.template.magic.FavoringTraitType;
 import net.sf.anathema.character.library.trait.ITrait;
 import net.sf.anathema.character.library.trait.experience.TraitRatingCostCalculator;
 import net.sf.anathema.character.library.trait.subtrait.ISubTrait;
@@ -81,7 +80,7 @@ public class ExperiencePointCostCalculator implements IPointCostCalculator {
   }
 
   @Override
-  public int getCharmCosts(ICharm charm, IBasicCharacterData basicCharacter, IGenericTraitCollection traitCollection, FavoringTraitType type) {
+  public int getCharmCosts(ICharm charm, IBasicCharacterData basicCharacter, IGenericTraitCollection traitCollection) {
     return costs.getCharmCosts(charm, new CostAnalyzer(basicCharacter, traitCollection));
   }
 }

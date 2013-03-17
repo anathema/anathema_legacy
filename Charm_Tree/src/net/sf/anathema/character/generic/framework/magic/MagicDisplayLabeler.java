@@ -5,6 +5,7 @@ import net.sf.anathema.character.generic.magic.IMagic;
 import net.sf.anathema.character.generic.template.magic.FavoringTraitType;
 import net.sf.anathema.character.generic.traits.ITraitType;
 import net.sf.anathema.lib.resources.IResources;
+import net.sf.anathema.lib.util.Identified;
 
 public class MagicDisplayLabeler {
 	private IResources resources;
@@ -24,8 +25,8 @@ public class MagicDisplayLabeler {
 	
 	public String getGenericLabelForMagic(IMagic magic) {
 		if (magic instanceof ICharm && ((ICharm)magic).isInstanceOfGenericCharm()) {
-			FavoringTraitType charmType = ((ICharm)magic).getCharacterType().getFavoringTraitType();
-			String traitString = "(" + resources.getString(charmType.getId()) + ")";
+			Identified favoringTraitType = ((ICharm)magic).getCharacterType().getFavoringTraitType();
+			String traitString = "(" + resources.getString(favoringTraitType.getId()) + ")";
 			String baseCharmId = getGenericCharmBaseId((ICharm) magic);
 			return resources.getString(baseCharmId, traitString);
 		}

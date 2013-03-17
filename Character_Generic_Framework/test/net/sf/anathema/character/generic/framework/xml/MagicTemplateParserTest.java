@@ -9,7 +9,7 @@ import net.sf.anathema.character.generic.framework.xml.magic.GenericMagicTemplat
 import net.sf.anathema.character.generic.impl.template.magic.DefaultMartialArtsRules;
 import net.sf.anathema.character.generic.magic.charms.MartialArtsLevel;
 import net.sf.anathema.character.generic.magic.spells.CircleType;
-import net.sf.anathema.character.generic.template.magic.FavoringTraitType;
+import net.sf.anathema.character.generic.template.magic.FavoringTraitTypeEnum;
 import net.sf.anathema.character.generic.template.magic.ICharmTemplate;
 import net.sf.anathema.dummy.character.magic.DummyCharm;
 import net.sf.anathema.dummy.character.magic.DummyCharmUtilities;
@@ -172,7 +172,7 @@ public class MagicTemplateParserTest {
   public void testFavoringTraitTypeUnmodified() throws Exception {
     Element templateElement = DocumentUtilities.read(xml).getRootElement();
     GenericMagicTemplate template = parser.parseTemplate(templateElement);
-    assertEquals(FavoringTraitType.AbilityType, template.getFavoringTraitType());
+    assertEquals(FavoringTraitTypeEnum.AbilityType, template.getFavoringTraitType());
   }
 
   @Test
@@ -183,7 +183,7 @@ public class MagicTemplateParserTest {
       + "</magicTemplate>"; //$NON-NLS-1$
     Element templateElement = DocumentUtilities.read(typeXml).getRootElement();
     GenericMagicTemplate template = parser.parseTemplate(templateElement);
-    assertEquals(FavoringTraitType.AttributeType, template.getFavoringTraitType());
+    assertEquals(FavoringTraitTypeEnum.AttributeType, template.getFavoringTraitType());
   }
 
   @Test

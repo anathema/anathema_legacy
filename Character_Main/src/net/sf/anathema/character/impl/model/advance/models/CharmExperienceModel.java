@@ -50,21 +50,20 @@ public class CharmExperienceModel extends AbstractIntegerValueModel {
 
   private int calculateCharmCost(ICharmConfiguration charmConfiguration, ICharm charm, Set<ICharm> charmsCalculated) {
     ISpecialCharmConfiguration specialCharm = charmConfiguration.getSpecialCharmConfiguration(charm);
-    int charmCost = calculator
-            .getCharmCosts(charm, basicCharacter, traitConfiguration, character.getCharacterTemplate().getMagicTemplate().getFavoringTraitType());
+    int charmCost = calculator.getCharmCosts(charm, basicCharacter, traitConfiguration);
     if (specialCharm != null) {
       int timesLearnedWithExperience = specialCharm.getCurrentLearnCount() - specialCharm.getCreationLearnCount();
       int specialCharmCost = timesLearnedWithExperience * charmCost;
       if (specialCharm instanceof IUpgradableCharmConfiguration) {
         return (costsExperience(charmConfiguration, charm, charmsCalculated) ? charmCost : 0) +
-               ((IUpgradableCharmConfiguration) specialCharm).getUpgradeXPCost();
+                ((IUpgradableCharmConfiguration) specialCharm).getUpgradeXPCost();
       }
       if (!(specialCharm instanceof ISubeffectCharmConfiguration)) {
         return specialCharmCost;
       }
       ISubeffectCharmConfiguration subeffectCharmConfiguration = (ISubeffectCharmConfiguration) specialCharm;
       int count = Math.max(0, (subeffectCharmConfiguration.getExperienceLearnedSubeffectCount() -
-                               (subeffectCharmConfiguration.getCreationLearnedSubeffectCount() == 0 ? 1 : 0)));
+              (subeffectCharmConfiguration.getCreationLearnedSubeffectCount() == 0 ? 1 : 0)));
       int subeffectCost = (int) Math.ceil(count * subeffectCharmConfiguration.getPointCostPerEffect() * 2);
       return subeffectCost + specialCharmCost;
     }

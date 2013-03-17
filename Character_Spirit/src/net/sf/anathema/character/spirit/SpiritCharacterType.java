@@ -1,6 +1,7 @@
 package net.sf.anathema.character.spirit;
 
 import net.sf.anathema.character.generic.template.magic.FavoringTraitType;
+import net.sf.anathema.character.generic.template.magic.FavoringTraitTypeEnum;
 import net.sf.anathema.character.generic.type.CharacterType;
 import net.sf.anathema.character.generic.type.ICharacterType;
 import net.sf.anathema.initialization.reflections.Weight;
@@ -21,7 +22,7 @@ public class SpiritCharacterType implements ICharacterType {
 
   @Override
   public FavoringTraitType getFavoringTraitType() {
-    return FavoringTraitType.AbilityType;
+    return FavoringTraitTypeEnum.AbilityType;
   }
 
   @Override

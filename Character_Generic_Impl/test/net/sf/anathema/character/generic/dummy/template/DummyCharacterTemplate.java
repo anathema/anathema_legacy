@@ -24,6 +24,7 @@ import net.sf.anathema.character.generic.template.creation.ICreationPoints;
 import net.sf.anathema.character.generic.template.essence.IEssenceTemplate;
 import net.sf.anathema.character.generic.template.experience.IExperiencePointCosts;
 import net.sf.anathema.character.generic.template.magic.FavoringTraitType;
+import net.sf.anathema.character.generic.template.magic.FavoringTraitTypeEnum;
 import net.sf.anathema.character.generic.template.magic.ICharmTemplate;
 import net.sf.anathema.character.generic.template.magic.IMagicTemplate;
 import net.sf.anathema.character.generic.template.magic.ISpellMagicTemplate;
@@ -169,7 +170,7 @@ public class DummyCharacterTemplate implements ICharacterTemplate {
 
       @Override
       public FavoringTraitType getFavoringTraitType() {
-        return FavoringTraitType.AbilityType;
+        return FavoringTraitTypeEnum.AbilityType;
       }
     };
   }

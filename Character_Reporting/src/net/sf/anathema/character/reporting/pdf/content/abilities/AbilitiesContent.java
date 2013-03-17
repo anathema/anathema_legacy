@@ -2,7 +2,7 @@ package net.sf.anathema.character.reporting.pdf.content.abilities;
 
 import net.sf.anathema.character.generic.character.IGenericCharacter;
 import net.sf.anathema.character.generic.character.IGenericTraitCollection;
-import net.sf.anathema.character.generic.template.magic.FavoringTraitType;
+import net.sf.anathema.character.generic.template.magic.FavoringTraitTypeEnum;
 import net.sf.anathema.character.generic.traits.ITraitType;
 import net.sf.anathema.character.generic.traits.groups.IIdentifiedTraitTypeGroup;
 import net.sf.anathema.character.generic.traits.types.AbilityType;
@@ -25,7 +25,7 @@ public class AbilitiesContent extends FavorableTraitContent {
 
   @Override
   public boolean shouldShowExcellencies() {
-    return getCharacter().getTemplate().getMagicTemplate().getFavoringTraitType() == FavoringTraitType.AbilityType;
+    return getCharacter().getTemplate().getMagicTemplate().getFavoringTraitType().equals(FavoringTraitTypeEnum.AbilityType);
   }
 
   @Override

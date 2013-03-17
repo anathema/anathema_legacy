@@ -3,6 +3,7 @@ package net.sf.anathema.character.generic.impl.template.magic;
 import com.google.common.base.Predicate;
 import net.sf.anathema.character.generic.magic.IMagic;
 import net.sf.anathema.character.generic.template.magic.FavoringTraitType;
+import net.sf.anathema.character.generic.template.magic.FavoringTraitTypeEnum;
 import net.sf.anathema.character.generic.template.magic.ICharmTemplate;
 import net.sf.anathema.character.generic.template.magic.IMagicTemplate;
 import net.sf.anathema.character.generic.template.magic.ISpellMagicTemplate;
@@ -39,6 +40,6 @@ public class CustomizableMagicTemplate implements IMagicTemplate {
 
   @Override
   public FavoringTraitType getFavoringTraitType() {
-    return FavoringTraitType.AbilityType;
+    return FavoringTraitTypeEnum.AbilityType;
   }
 }

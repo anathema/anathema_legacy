@@ -7,7 +7,7 @@ import net.sf.anathema.character.reporting.pdf.rendering.boxes.RegisteredEncoder
 import net.sf.anathema.character.reporting.pdf.rendering.general.box.ContentEncoder;
 import net.sf.anathema.lib.resources.IResources;
 
-import static net.sf.anathema.character.generic.template.magic.FavoringTraitType.AttributeType;
+import static net.sf.anathema.character.generic.template.magic.FavoringTraitTypeEnum.AttributeType;
 
 @RegisteredEncoderFactory
 public class AttributesEncoderFactory extends AbstractEncoderFactory {
