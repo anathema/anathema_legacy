@@ -31,11 +31,6 @@ public class CommonSpecialCharmList implements SpecialCharmList {
   }
 
   @Override
-  public void hideAllViews() {
-    container.hideSpecialCharmViews();
-  }
-
-  @Override
   public void showViews() {
     for (ISpecialNodeView charmView : specialCharmViews) {
       boolean isVisible = isVisible(charmView);

@@ -143,7 +143,7 @@ public class DummyCharmConfiguration implements ICharmConfiguration {
 
   @Override
   public String getCharmTrueName(String charmName) {
-    // TODO Auto-generated method stub
+    // Nothing to do
     return null;
   }
 

@@ -8,7 +8,6 @@ import javax.swing.JScrollPane;
 import java.util.ArrayList;
 import java.util.List;
 
-//TODO: Cannot implement IView, because the interface resides in Lib_GUI. Move?
 public class TaskPaneView<V extends ITaskPaneGroupView> {
 
   private final JXTaskPaneContainer taskPane = new JXTaskPaneContainer();

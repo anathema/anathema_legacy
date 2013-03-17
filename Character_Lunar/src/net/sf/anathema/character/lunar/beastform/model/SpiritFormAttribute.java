@@ -12,24 +12,22 @@ import net.sf.anathema.character.library.trait.visitor.IDefaultTrait;
 import net.sf.anathema.character.lunar.beastform.presenter.IBeastformAttribute;
 import net.sf.anathema.lib.control.IIntValueChangedListener;
 
-public class SpiritFormAttribute implements IBeastformAttribute
-{
+public class SpiritFormAttribute implements IBeastformAttribute {
   private final IDefaultTrait spiritTrait;
   private int newValue = 0;
 
   // TODO: Available dots limit max. value
   public SpiritFormAttribute(
-      IGenericTrait baseTrait,
-      final ICharacterModelContext charContext)
-  {
-	ITraitContext context = charContext.getTraitContext();
+          IGenericTrait baseTrait,
+          final ICharacterModelContext charContext) {
+    ITraitContext context = charContext.getTraitContext();
     ITraitTemplate template = SimpleTraitTemplate.createStaticLimitedTemplate(1, 12);
     TraitRules traitRules = new TraitRules(baseTrait.getType(), template, context.getLimitationContext());
     IValueChangeChecker incrementChecker = new IValueChangeChecker() {
       @Override
       public boolean isValidNewValue(int value) {
-    	  return value != spiritTrait.getCurrentValue() &&
-    	  	!charContext.getBasicCharacterContext().isExperienced();
+        return value != spiritTrait.getCurrentValue() &&
+                !charContext.getBasicCharacterContext().isExperienced();
       }
     };
     spiritTrait = new DefaultTrait(traitRules, context, incrementChecker);

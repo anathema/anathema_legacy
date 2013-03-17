@@ -52,7 +52,7 @@ public class CreationOverviewPresenter implements Presenter {
       model.accept(new IOverviewModelVisitor() {
         @Override
         public void visitStringValueModel(IValueModel<String> visitedModel) {
-          // TODO : Implement
+          //Nothing to do
         }
 
         @Override

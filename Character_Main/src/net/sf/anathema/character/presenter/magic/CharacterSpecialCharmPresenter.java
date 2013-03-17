@@ -28,8 +28,7 @@ public class CharacterSpecialCharmPresenter implements SpecialCharmViewPresenter
   }
 
   @Override
-  public void resetSpecialViewsAndTooltipsWhenCursorLeavesCharmArea() {
-    list.hideAllViews();
+  public void resetTooltipsWhenCursorLeavesCharmArea() {
     ToolTipManager.sharedInstance().setEnabled(false);
     ToolTipManager.sharedInstance().setEnabled(true);
   }

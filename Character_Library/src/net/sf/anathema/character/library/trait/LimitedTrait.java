@@ -10,7 +10,6 @@ public class LimitedTrait extends DefaultTrait {
 
   private final IIncrementChecker incrementChecker;
 
-  // todo vom (06.01.2006) (sieroux): Den incrementChecker auf valueChangeChecker umstellen
   public LimitedTrait(
       ITraitType type,
       ITraitTemplate template,

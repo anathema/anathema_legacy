@@ -17,8 +17,6 @@ import net.sf.anathema.character.generic.framework.additionaltemplate.model.ITra
 import net.sf.anathema.character.generic.framework.additionaltemplate.model.ITraitValueStrategy;
 import net.sf.anathema.character.generic.template.ICharacterTemplate;
 import net.sf.anathema.character.generic.template.presentation.IPresentationProperties;
-import net.sf.anathema.character.generic.traits.INamedGenericTrait;
-import net.sf.anathema.character.generic.traits.ITraitType;
 import net.sf.anathema.character.impl.model.context.BasicCharacterContext;
 import net.sf.anathema.character.impl.model.context.CharacterListening;
 import net.sf.anathema.character.impl.model.context.trait.CreationTraitValueStrategy;
@@ -69,10 +67,6 @@ public class DummyCharacterModelContext implements ICharacterModelContext {
     return getCharacter().getTemplate().getAdditionalRules();
   }
 
-  public INamedGenericTrait[] getSpecialties(ITraitType traitType) {
-    return getCharacter().getSpecialties(traitType);
-  }
-
   @Override
   public ICharmContext getCharmContext() {
     return charmContext;
@@ -110,14 +104,13 @@ public class DummyCharacterModelContext implements ICharacterModelContext {
 
   @Override
   public boolean isFullyLoaded() {
-    // TODO Auto-generated method stub
+    // Nothing to do
     return false;
   }
 
   @Override
   public void setFullyLoaded(boolean loaded) {
-    // TODO Auto-generated method stub
-
+    // Nothing to do
   }
 
   @Override

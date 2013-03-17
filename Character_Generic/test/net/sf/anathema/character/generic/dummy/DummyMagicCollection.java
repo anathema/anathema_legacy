@@ -33,7 +33,6 @@ public class DummyMagicCollection implements IMagicCollection {
 
 	@Override
 	public void setLearnCount(String charmName, int newValue) {
-		// TODO Auto-generated method stub
-		
+      // Nothing to do
 	}
 }

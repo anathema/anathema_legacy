@@ -71,10 +71,6 @@ public class Repository implements IRepository {
   @Override
   public synchronized IRepositoryWriteAccess createWriteAccess(IItemType type, String id) throws RepositoryException {
     try {
-      // TODO: Handle non-unique ID
-      // if (item.getId() == null) {
-      // item.getRepositoryLocation().setId(createUniqueRepositoryId(item.getRepositoryLocation()));
-      // }
       if (type.getRepositoryConfiguration().isItemSavedToSingleFile()) {
         return createSingleFileWriteAccess(type, id);
       }
@@ -110,6 +106,7 @@ public class Repository implements IRepository {
     return createSingleFileWriteAccess(file);
   }
 
+  @SuppressWarnings("ResultOfMethodCallIgnored")
   private IRepositoryWriteAccess createSingleFileWriteAccess(File file) throws RepositoryException {
     if (!file.exists()) {
       try {

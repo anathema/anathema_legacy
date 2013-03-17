@@ -54,9 +54,4 @@ public class CharmView extends AbstractCascadeSelectionView implements ICharmVie
       getCharmTreeView().addSpecialControl(charmView.getNodeId(), charmView);
     }
   }
-
-  @Override
-  public void hideSpecialCharmViews() {
-    //TODO: Implement
-  }
 }

@@ -5,7 +5,6 @@ import net.sf.anathema.lib.util.Identified;
 import java.util.ArrayList;
 import java.util.List;
 
-//TODO: Find a way to operate with circletypes without breaking compareTo
 public enum CircleType implements Identified {
 
   Terrestrial {
@@ -146,6 +145,7 @@ public enum CircleType implements Identified {
   
   public abstract boolean isSorceryCircle();
   
+  @SuppressWarnings("UnusedDeclaration")
   public abstract boolean isNecromancyCircle();
 
   public static CircleType[] getSorceryCircles() {

@@ -7,7 +7,7 @@ public class NullSpecialCharmPresenter implements SpecialCharmViewPresenter {
   }
 
   @Override
-  public void resetSpecialViewsAndTooltipsWhenCursorLeavesCharmArea() {
+  public void resetTooltipsWhenCursorLeavesCharmArea() {
     //nothing to do
   }
 

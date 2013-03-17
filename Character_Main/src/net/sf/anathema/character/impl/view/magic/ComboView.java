@@ -47,11 +47,10 @@ public class ComboView implements IComboView {
 
   @Override
   public void setEditButtonsVisible(boolean enabled) {
-    if (!enabled) {
-      taskPaneGroup.remove(deleteComponent);
-      net.sf.anathema.lib.gui.swing.GuiUtilities.revalidateTree(taskPaneGroup);
-    } else {
-      // todo vom (04.04.2005) (sieroux): Komponenten einfuegen falls noch nicht enthalten
+    if (enabled) {
+      return;
     }
+    taskPaneGroup.remove(deleteComponent);
+    net.sf.anathema.lib.gui.swing.GuiUtilities.revalidateTree(taskPaneGroup);
   }
 }

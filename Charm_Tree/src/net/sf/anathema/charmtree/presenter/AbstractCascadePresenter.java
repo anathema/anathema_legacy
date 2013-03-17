@@ -86,7 +86,7 @@ public abstract class AbstractCascadePresenter implements ICascadeSelectionPrese
     getCharmComponent().addMouseListener(new MouseAdapter() {
       @Override
       public void mouseExited(MouseEvent e) {
-        specialCharmPresenter.resetSpecialViewsAndTooltipsWhenCursorLeavesCharmArea();
+        specialCharmPresenter.resetTooltipsWhenCursorLeavesCharmArea();
       }
     });
   }
