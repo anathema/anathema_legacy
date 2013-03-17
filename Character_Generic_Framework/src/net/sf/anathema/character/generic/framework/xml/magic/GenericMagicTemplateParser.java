@@ -13,8 +13,6 @@ import net.sf.anathema.character.generic.impl.template.magic.SpellMagicTemplate;
 import net.sf.anathema.character.generic.magic.charms.MartialArtsLevel;
 import net.sf.anathema.character.generic.magic.spells.CircleType;
 import net.sf.anathema.character.generic.template.ICharacterTemplate;
-import net.sf.anathema.character.generic.template.magic.FavoringTraitType;
-import net.sf.anathema.character.generic.template.magic.FavoringTraitTypeEnum;
 import net.sf.anathema.character.generic.template.magic.ICharmSet;
 import net.sf.anathema.character.generic.template.magic.ISpellMagicTemplate;
 import net.sf.anathema.character.generic.template.magic.IUniqueCharmType;
@@ -42,7 +40,6 @@ public class GenericMagicTemplateParser extends AbstractXmlTemplateParser<Generi
   private static final Object VALUE_NONE = "None"; //$NON-NLS-1$
   private static final String TAG_SPELL_TEMPLATE = "spellTemplate"; //$NON-NLS-1$
   private static final String ATTRIB_MAXIMUM_SORCERY_CIRCLE = "maximumSorceryCircle"; //$NON-NLS-1$
-  private static final String TAG_FAVORING_TRAIT_TYPE = "favoringTraitType"; //$NON-NLS-1$
   private static final String ATTRIB_MAXIMUM_NECROMANCY_CIRCLE = "maximumNecromancyCircle"; //$NON-NLS-1$
   private static final String TAG_CASTE = "caste"; //$NON-NLS-1$
   private static final String TAG_ALIEN_CHARMS = "alienCharms"; //$NON-NLS-1$
@@ -75,20 +72,9 @@ public class GenericMagicTemplateParser extends AbstractXmlTemplateParser<Generi
   public GenericMagicTemplate parseTemplate(Element element) throws PersistenceException {
     GenericMagicTemplate basicTemplate = getBasicTemplate(element);
     setFreePicksPredicate(basicTemplate, element);
-    setFavoringTraitType(basicTemplate, element);
     setCharmTemplate(basicTemplate, element);
     setSpellTemplate(basicTemplate, element);
     return basicTemplate;
-  }
-
-  private void setFavoringTraitType(GenericMagicTemplate basicTemplate, Element element) throws PersistenceException {
-    Element traitTypeElement = element.element(TAG_FAVORING_TRAIT_TYPE);
-    if (traitTypeElement == null) {
-      return;
-    }
-    String type = ElementUtilities.getRequiredAttrib(traitTypeElement, ATTRIB_TYPE);
-    FavoringTraitType traitTypeType = FavoringTraitTypeEnum.valueOf(type);
-    basicTemplate.setFavoringTraitType(traitTypeType);
   }
 
   @SuppressWarnings("unchecked")
@@ -146,10 +132,10 @@ public class GenericMagicTemplateParser extends AbstractXmlTemplateParser<Generi
       uniqueCharms = new UniqueCharmType(specialType, specialLabel, specialKeyword);
     }
     if (charmType.equals(VALUE_NONE)) {
-        charmSet = new NullCharmSet();
-      } else {
-        charmSet = CharmSet.createRegularCharmSet(cache, characterTypes.findById(charmType), uniqueCharms);
-      }
+      charmSet = new NullCharmSet();
+    } else {
+      charmSet = CharmSet.createRegularCharmSet(cache, characterTypes.findById(charmType), uniqueCharms);
+    }
     CharmTemplate charmTemplate = new CharmTemplate(createMartialArtsRules(charmTemplateElement), charmSet,
             uniqueCharms);
     setAlienAllowedCastes(charmTemplate, charmTemplateElement);

@@ -1,7 +1,7 @@
 package net.sf.anathema.character.mortal;
 
+import net.sf.anathema.character.generic.template.magic.AbilityFavoringType;
 import net.sf.anathema.character.generic.template.magic.FavoringTraitType;
-import net.sf.anathema.character.generic.template.magic.FavoringTraitTypeEnum;
 import net.sf.anathema.character.generic.type.CharacterType;
 import net.sf.anathema.character.generic.type.ICharacterType;
 import net.sf.anathema.initialization.reflections.Weight;
@@ -22,7 +22,7 @@ public class MortalCharacterType implements ICharacterType {
 
   @Override
   public FavoringTraitType getFavoringTraitType() {
-    return FavoringTraitTypeEnum.AbilityType;
+    return new AbilityFavoringType();
   }
 
   @Override

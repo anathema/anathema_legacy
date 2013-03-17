@@ -1,6 +1,5 @@
 <magicTemplate>
 	<freePicksPredicate defaultResponse="true"/>
-	<favoringTraitType type="VirtueType"/>
 	<charmTemplate charmType="Ghost">
 		<martialArts level="Mortal"/>
 	</charmTemplate>

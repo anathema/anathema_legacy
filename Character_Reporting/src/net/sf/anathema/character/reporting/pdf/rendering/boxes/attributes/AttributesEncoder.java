@@ -6,8 +6,8 @@ import net.sf.anathema.character.generic.character.IGenericTraitCollection;
 import net.sf.anathema.character.generic.magic.IMagic;
 import net.sf.anathema.character.generic.magic.IMagicStats;
 import net.sf.anathema.character.generic.template.abilities.GroupedTraitType;
+import net.sf.anathema.character.generic.template.magic.AttributeFavoringType;
 import net.sf.anathema.character.generic.template.magic.FavoringTraitType;
-import net.sf.anathema.character.generic.template.magic.FavoringTraitTypeEnum;
 import net.sf.anathema.character.generic.traits.ITraitTemplate;
 import net.sf.anathema.character.generic.traits.ITraitType;
 import net.sf.anathema.character.reporting.pdf.content.ReportSession;
@@ -47,8 +47,8 @@ public class AttributesEncoder implements ContentEncoder {
 
   protected IMagicStats[] getExcellencies(IGenericCharacter character) {
     List<IMagicStats> excellencies = new ArrayList<>();
-    FavoringTraitType type = character.getTemplate().getMagicTemplate().getFavoringTraitType();
-    if (type.equals(FavoringTraitTypeEnum.AttributeType)) {
+    FavoringTraitType type = character.getTemplate().getTemplateType().getCharacterType().getFavoringTraitType();
+    if (type.equals(new AttributeFavoringType())) {
       for (IMagicStats stats : GenericCharmUtilities.getGenericCharmStats(character)) {
         String genericId = stats.getName().getId();
         if (genericId.endsWith("Excellency")) {

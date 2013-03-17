@@ -4,7 +4,7 @@ import net.sf.anathema.character.generic.additionalrules.IAdditionalRules;
 import net.sf.anathema.character.generic.caste.ICasteCollection;
 import net.sf.anathema.character.generic.impl.additional.NullAdditionalRules;
 import net.sf.anathema.character.generic.impl.template.essence.NullEssenceTemplate;
-import net.sf.anathema.character.generic.impl.template.magic.CustomizableMagicTemplate;
+import net.sf.anathema.character.generic.impl.template.magic.DummyMagicTemplate;
 import net.sf.anathema.character.generic.template.ICharacterTemplate;
 import net.sf.anathema.character.generic.template.ITemplateType;
 import net.sf.anathema.character.generic.template.ITraitTemplateCollection;
@@ -120,7 +120,7 @@ public class SimpleDummyCharacterTemplate implements ICharacterTemplate {
   @Override
   public IMagicTemplate getMagicTemplate() {
     ICharmTemplate charmTemplate = new DummyCharmTemplate();
-    return new CustomizableMagicTemplate(null, charmTemplate, null);
+    return new DummyMagicTemplate(null, charmTemplate, null);
   }
 
   @Override

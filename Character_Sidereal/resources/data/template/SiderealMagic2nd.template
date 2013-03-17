@@ -1,6 +1,5 @@
 <magicTemplate>
 	<freePicksPredicate defaultResponse="true"/>
-	<favoringTraitType type="AbilityType"/>
 	<charmTemplate charmType="Sidereal">
 		<martialArts rulesClass="net.sf.anathema.character.sidereal.template.SiderealMartialArtsRules" level="Sidereal" highLevel="true" /> 
 	</charmTemplate>

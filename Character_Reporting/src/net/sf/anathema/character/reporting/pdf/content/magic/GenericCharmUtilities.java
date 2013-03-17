@@ -5,8 +5,10 @@ import net.sf.anathema.character.generic.framework.configuration.AnathemaCharact
 import net.sf.anathema.character.generic.magic.ICharm;
 import net.sf.anathema.character.generic.magic.IMagic;
 import net.sf.anathema.character.generic.magic.IMagicStats;
+import net.sf.anathema.character.generic.template.magic.AbilityFavoringType;
+import net.sf.anathema.character.generic.template.magic.AttributeFavoringType;
 import net.sf.anathema.character.generic.template.magic.FavoringTraitType;
-import net.sf.anathema.character.generic.template.magic.FavoringTraitTypeEnum;
+import net.sf.anathema.character.generic.template.magic.YoziFavoringType;
 import net.sf.anathema.character.generic.traits.ITraitType;
 import net.sf.anathema.character.generic.traits.groups.IIdentifiedTraitTypeGroup;
 import net.sf.anathema.character.generic.traits.groups.ITraitTypeGroup;
@@ -66,8 +68,8 @@ public class GenericCharmUtilities {
 
   public static List<ITraitType> getGenericCharmTraits(IGenericCharacter character) {
     List<ITraitType> traits = new ArrayList<>();
-    FavoringTraitType type = character.getTemplate().getMagicTemplate().getFavoringTraitType();
-    if (type.equals(FavoringTraitTypeEnum.YoziType)) {
+    FavoringTraitType type = character.getTemplate().getTemplateType().getCharacterType().getFavoringTraitType();
+    if (type.equals(new YoziFavoringType())) {
       Collections.addAll(traits, type.getTraitTypesForGenericCharms());
     } else {
       for (ITraitTypeGroup group : getCharmTraitGroups(character)) {
@@ -78,11 +80,11 @@ public class GenericCharmUtilities {
   }
 
   private static IIdentifiedTraitTypeGroup[] getCharmTraitGroups(IGenericCharacter character) {
-    FavoringTraitType type = character.getTemplate().getMagicTemplate().getFavoringTraitType();
-    if (type.equals(FavoringTraitTypeEnum.AbilityType)) {
+    FavoringTraitType type = character.getTemplate().getTemplateType().getCharacterType().getFavoringTraitType();
+    if (type.equals(new AbilityFavoringType())) {
       return character.getAbilityTypeGroups();
     }
-    if (type.equals(FavoringTraitTypeEnum.AttributeType)) {
+    if (type.equals(new AttributeFavoringType())) {
       return character.getAttributeTypeGroups();
     }
     return new IIdentifiedTraitTypeGroup[0];

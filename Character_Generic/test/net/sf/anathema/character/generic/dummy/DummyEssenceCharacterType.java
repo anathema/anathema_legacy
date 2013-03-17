@@ -1,7 +1,7 @@
 package net.sf.anathema.character.generic.dummy;
 
+import net.sf.anathema.character.generic.template.magic.AbilityFavoringType;
 import net.sf.anathema.character.generic.template.magic.FavoringTraitType;
-import net.sf.anathema.character.generic.template.magic.FavoringTraitTypeEnum;
 import net.sf.anathema.character.generic.type.ICharacterType;
 
 public class DummyEssenceCharacterType implements ICharacterType {
@@ -18,7 +18,7 @@ public class DummyEssenceCharacterType implements ICharacterType {
 
   @Override
   public FavoringTraitType getFavoringTraitType() {
-    return FavoringTraitTypeEnum.AbilityType;
+    return new AbilityFavoringType();
   }
 
   @Override

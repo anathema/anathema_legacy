@@ -1,7 +1,7 @@
 package net.sf.anathema.character.sidereal;
 
+import net.sf.anathema.character.generic.template.magic.AbilityFavoringType;
 import net.sf.anathema.character.generic.template.magic.FavoringTraitType;
-import net.sf.anathema.character.generic.template.magic.FavoringTraitTypeEnum;
 import net.sf.anathema.character.generic.type.CharacterType;
 import net.sf.anathema.character.generic.type.ICharacterType;
 import net.sf.anathema.initialization.reflections.Weight;
@@ -22,7 +22,7 @@ public class SiderealCharacterType implements ICharacterType {
 
   @Override
   public FavoringTraitType getFavoringTraitType() {
-    return FavoringTraitTypeEnum.AttributeType;
+    return new AbilityFavoringType();
   }
 
   @Override

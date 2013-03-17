@@ -9,7 +9,6 @@ import net.sf.anathema.character.generic.framework.xml.magic.GenericMagicTemplat
 import net.sf.anathema.character.generic.impl.template.magic.DefaultMartialArtsRules;
 import net.sf.anathema.character.generic.magic.charms.MartialArtsLevel;
 import net.sf.anathema.character.generic.magic.spells.CircleType;
-import net.sf.anathema.character.generic.template.magic.FavoringTraitTypeEnum;
 import net.sf.anathema.character.generic.template.magic.ICharmTemplate;
 import net.sf.anathema.dummy.character.magic.DummyCharm;
 import net.sf.anathema.dummy.character.magic.DummyCharmUtilities;
@@ -166,24 +165,6 @@ public class MagicTemplateParserTest {
     Element templateElement = DocumentUtilities.read(celestialXml).getRootElement();
     GenericMagicTemplate template = parser.parseTemplate(templateElement);
     Assert.assertTrue(template.getCharmTemplate().getMartialArtsRules() instanceof DummyMartialArtsRules);
-  }
-
-  @Test
-  public void testFavoringTraitTypeUnmodified() throws Exception {
-    Element templateElement = DocumentUtilities.read(xml).getRootElement();
-    GenericMagicTemplate template = parser.parseTemplate(templateElement);
-    assertEquals(FavoringTraitTypeEnum.AbilityType, template.getFavoringTraitType());
-  }
-
-  @Test
-  public void testFavoringTraitTypeModified() throws Exception {
-    String typeXml = "<magicTemplate>" //$NON-NLS-1$
-      + "<freePicksPredicate type=\"Default\"/>"//$NON-NLS-1$
-      + "<favoringTraitType type =\"AttributeType\"/>" //$NON-NLS-1$
-      + "</magicTemplate>"; //$NON-NLS-1$
-    Element templateElement = DocumentUtilities.read(typeXml).getRootElement();
-    GenericMagicTemplate template = parser.parseTemplate(templateElement);
-    assertEquals(FavoringTraitTypeEnum.AttributeType, template.getFavoringTraitType());
   }
 
   @Test

@@ -9,6 +9,4 @@ public interface IMagicTemplate {
   ISpellMagicTemplate getSpellMagic();
 
   ICharmTemplate getCharmTemplate();
-
-  FavoringTraitType getFavoringTraitType();
 }

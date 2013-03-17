@@ -1,6 +1,5 @@
 <magicTemplate>
 	<freePicksPredicate defaultResponse="true"/>
-	<favoringTraitType type="AttributeType"/>
 	<charmTemplate charmType="Lunar">
 	    <hasUniqueCharmType type="Knacks" label="Lunar.Knacks" keyword="Knack"/>
 		<martialArts level="Celestial" highLevel="false" /> 
