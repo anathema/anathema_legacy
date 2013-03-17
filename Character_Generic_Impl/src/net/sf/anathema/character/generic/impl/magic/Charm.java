@@ -368,8 +368,7 @@ public class Charm extends Identifier implements ICharm {
     if (getPrerequisites().length <= 0) {
       return false;
     }
-
-    final ITraitType primaryTraitType = getPrimaryTraitType();
+    ITraitType primaryTraitType = getPrimaryTraitType();
     if (hasAttribute(new Identifier("MartialArts")) &&
             ((IFavorableGenericTrait) traitCollection.getTrait(MartialArts)).isCasteOrFavored()) {
       return true;

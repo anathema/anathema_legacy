@@ -13,7 +13,7 @@ public class GroupStringBuilder {
       value = trait.getType().getId();
     }
     if (value == null) {
-      throw new CharmException("No group identification found, default value (primary trait) was null."); //$NON-NLS-1$
+      throw new CharmException("Cannot determine group: No group identification found and no primary trait set to default to.");
     }
     return value;
   }
