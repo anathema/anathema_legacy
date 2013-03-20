@@ -50,7 +50,7 @@ public final class DummyAdditionalRules implements IAdditionalRules, IAdditional
   }
 
   @Override
-  public ITraitCostModifier getCostModifier(ITraitType type) {
+  public ITraitCostModifier getBackgroundCostModifier(ITraitType background) {
     return new DefaultTraitCostModifier();
   }
 

@@ -49,7 +49,7 @@ public class NullAdditionalRules implements IAdditionalRules, IAdditionalTraitRu
   }
 
   @Override
-  public ITraitCostModifier getCostModifier(ITraitType type) {
+  public ITraitCostModifier getBackgroundCostModifier(ITraitType backgroundType) {
     return new DefaultTraitCostModifier();
   }
 

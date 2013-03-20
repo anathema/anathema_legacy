@@ -2,7 +2,7 @@ package net.sf.anathema.character.generic.framework.xml.trait;
 
 import net.sf.anathema.character.generic.backgrounds.IBackgroundTemplate;
 import net.sf.anathema.character.generic.framework.xml.trait.pool.GenericTraitTemplatePool;
-import net.sf.anathema.character.generic.impl.traits.ITraitTemplateFactory;
+import net.sf.anathema.character.generic.template.ITraitTemplateFactory;
 import net.sf.anathema.character.generic.impl.traits.SimpleTraitTemplate;
 import net.sf.anathema.character.generic.traits.ITraitTemplate;
 import net.sf.anathema.character.generic.traits.types.AbilityType;

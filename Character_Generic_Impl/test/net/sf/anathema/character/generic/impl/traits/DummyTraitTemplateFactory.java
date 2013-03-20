@@ -1,6 +1,7 @@
 package net.sf.anathema.character.generic.impl.traits;
 
 import net.sf.anathema.character.generic.backgrounds.IBackgroundTemplate;
+import net.sf.anathema.character.generic.template.ITraitTemplateFactory;
 import net.sf.anathema.character.generic.traits.ITraitTemplate;
 import net.sf.anathema.character.generic.traits.LowerableState;
 import net.sf.anathema.character.generic.traits.types.AbilityType;

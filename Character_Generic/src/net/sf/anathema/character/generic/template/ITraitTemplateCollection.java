@@ -7,5 +7,5 @@ public interface ITraitTemplateCollection {
 
   ITraitTemplate getTraitTemplate(ITraitType traitType);
   
-  ITraitTemplate getDefaultTraitTemplate(ITraitType traitType);
+  ITraitTemplateFactory getTraitTemplateFactory();
 }

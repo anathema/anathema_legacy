@@ -2,10 +2,10 @@ package net.sf.anathema.character.generic.impl.traits;
 
 import net.sf.anathema.character.generic.backgrounds.IBackgroundTemplate;
 import net.sf.anathema.character.generic.template.ITraitTemplateCollection;
+import net.sf.anathema.character.generic.template.ITraitTemplateFactory;
 import net.sf.anathema.character.generic.traits.ITraitTemplate;
 import net.sf.anathema.character.generic.traits.ITraitType;
 import net.sf.anathema.character.generic.traits.types.AbilityType;
-import net.sf.anathema.character.generic.traits.types.AbstractTraitTypeVisitor;
 import net.sf.anathema.character.generic.traits.types.AttributeType;
 import net.sf.anathema.character.generic.traits.types.ITraitTypeVisitor;
 import net.sf.anathema.character.generic.traits.types.OtherTraitType;
@@ -68,14 +68,7 @@ public class TraitTemplateCollection implements ITraitTemplateCollection {
   }
 
   @Override
-  public final ITraitTemplate getDefaultTraitTemplate(ITraitType traitType) {
-    final ITraitTemplate[] traitTemplate = new ITraitTemplate[1];
-    traitType.accept(new AbstractTraitTypeVisitor() {
-      @Override
-      public void visitBackground(IBackgroundTemplate template) {
-        traitTemplate[0] = templateFactory.createDefaultBackgroundTemplate();
-      }
-    });
-    return traitTemplate[0];
+  public ITraitTemplateFactory getTraitTemplateFactory() {
+    return templateFactory;
   }
 }

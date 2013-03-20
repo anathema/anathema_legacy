@@ -37,7 +37,7 @@ public class BackgroundBonusPointCostCalculator {
 
   private void handleBackground(IDefaultTrait background) {
     int backgroundValue = background.getCalculationValue();
-    ITraitCostModifier costModifier = rules.getCostModifier(background.getType());
+    ITraitCostModifier costModifier =  rules.getBackgroundCostModifier(background.getType());
     int additionalDotsToSpend = costModifier.getAdditionalDotsToSpend(backgroundValue);
     int additionalBonusPointsToSpend = costModifier.getAdditionalBonusPointsToSpend(backgroundValue);
     int modifiedTotalBackgroundValue = backgroundValue + additionalDotsToSpend;

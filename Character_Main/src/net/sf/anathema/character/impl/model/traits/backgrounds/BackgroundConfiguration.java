@@ -7,7 +7,7 @@ import com.google.common.collect.Iterables;
 import net.sf.anathema.character.generic.backgrounds.IBackgroundTemplate;
 import net.sf.anathema.character.generic.framework.additionaltemplate.model.ITraitContext;
 import net.sf.anathema.character.generic.impl.backgrounds.CustomizedBackgroundTemplate;
-import net.sf.anathema.character.generic.template.ITraitTemplateCollection;
+import net.sf.anathema.character.generic.template.ITraitTemplateFactory;
 import net.sf.anathema.character.generic.traits.ITraitTemplate;
 import net.sf.anathema.character.library.trait.FriendlyValueChangeChecker;
 import net.sf.anathema.character.library.trait.rules.TraitRules;
@@ -26,11 +26,11 @@ public class BackgroundConfiguration implements IBackgroundConfiguration {
   private final List<IBackground> backgrounds = new ArrayList<>();
   private final Announcer<IBackgroundListener> listeners = Announcer.to(IBackgroundListener.class);
   private final IIdentificateRegistry<IBackgroundTemplate> backgroundRegistry;
-  private final ITraitTemplateCollection traitTemplates;
+  private final ITraitTemplateFactory traitTemplates;
   private final ITraitContext context;
   private final IBackgroundArbitrator backgroundArbitrator;
 
-  public BackgroundConfiguration(IBackgroundArbitrator arbitrator, ITraitTemplateCollection traitTemplates, ITraitContext context,
+  public BackgroundConfiguration(IBackgroundArbitrator arbitrator, ITraitTemplateFactory traitTemplates, ITraitContext context,
                                  IIdentificateRegistry<IBackgroundTemplate> backgroundRegistry) {
     backgroundArbitrator = arbitrator;
     this.context = context;
@@ -43,7 +43,7 @@ public class BackgroundConfiguration implements IBackgroundConfiguration {
     //load starting backgrounds from template
     List<IBackground> otherBackgroundsToInit = new ArrayList<>(backgrounds);
     for (IBackgroundTemplate background : getAllAvailableBackgroundTemplates()) {
-      ITraitTemplate traitTemplate = traitTemplates.getTraitTemplate(background);
+      ITraitTemplate traitTemplate = traitTemplates.createBackgroundTemplate(background);
       if (traitTemplate.getStartValue() > 0) {
         otherBackgroundsToInit.remove(addBackground(background, traitTemplate.getTag(), true));
       }
@@ -98,9 +98,9 @@ public class BackgroundConfiguration implements IBackgroundConfiguration {
       }
       return loadIfExists ? foundBackground : null;
     }
-    ITraitTemplate traitTemplate = traitTemplates.getTraitTemplate(backgroundType);
+    ITraitTemplate traitTemplate = traitTemplates.createBackgroundTemplate(backgroundType);
     if (traitTemplate.getTag() != null && !traitTemplate.getTag().equals(description)) {
-      traitTemplate = traitTemplates.getDefaultTraitTemplate(backgroundType);
+      traitTemplate = traitTemplates.createDefaultBackgroundTemplate();
     }
     TraitRules rules = new TraitRules(backgroundType, traitTemplate, context.getLimitationContext());
     IBackground background = new Background(description, rules, context, new FriendlyValueChangeChecker());

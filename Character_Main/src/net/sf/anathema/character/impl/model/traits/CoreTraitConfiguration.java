@@ -81,7 +81,7 @@ public class CoreTraitConfiguration extends AbstractTraitCollection implements I
       willpower.setModifiedCreationRange(5, 10);
     }
     addAbilities(template);
-    this.backgrounds = new BackgroundConfiguration(new BackgroundArbitrator(template), traitTemplateCollection, traitContext, backgroundRegistry);
+    this.backgrounds = new BackgroundConfiguration(new BackgroundArbitrator(template), traitTemplateCollection.getTraitTemplateFactory(), traitContext, backgroundRegistry);
     this.specialtyConfiguration = new SpecialtiesConfiguration(this, abilityTraitGroups, modelContext);
     getTrait(OtherTraitType.Essence).addCurrentValueListener(new EssenceLimitationListener(new AllTraits(), modelContext));
   }

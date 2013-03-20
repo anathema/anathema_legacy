@@ -15,7 +15,7 @@ public interface IAdditionalRules {
   
   boolean isRevisedIntimacies();
 
-  ITraitCostModifier getCostModifier(ITraitType type);
+  ITraitCostModifier getBackgroundCostModifier(ITraitType backgroundType);
 
   String[] getCompulsiveCharmIDs();
 

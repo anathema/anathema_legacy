@@ -171,8 +171,8 @@ public class AdditionalRulesTemplateParserTest {
     String xml = "<rules><additionalCost><costModifier><backgroundReference id=\"Background\"/><bonusModification thresholdLevel=\"1\" multiplier=\"2\"/></costModifier></additionalCost> </rules>"; //$NON-NLS-1$
     Element rootElement = DocumentUtilities.read(xml).getRootElement();
     GenericAdditionalRules template = ownParser.parseTemplate(rootElement);
-    assertEquals(0, template.getCostModifier(type).getAdditionalDotsToSpend(5));
-    assertEquals(8, template.getCostModifier(type).getAdditionalBonusPointsToSpend(5));
+    assertEquals(0, template.getBackgroundCostModifier(type).getAdditionalDotsToSpend(5));
+    assertEquals(8, template.getBackgroundCostModifier(type).getAdditionalBonusPointsToSpend(5));
   }
 
   @Test
@@ -186,16 +186,16 @@ public class AdditionalRulesTemplateParserTest {
     String xml = "<rules><additionalCost><costModifier><backgroundReference id=\"Background\"/><dotCostModification thresholdLevel=\"1\" multiplier=\"1\"/></costModifier></additionalCost> </rules>"; //$NON-NLS-1$
     Element rootElement = DocumentUtilities.read(xml).getRootElement();
     GenericAdditionalRules template = ownParser.parseTemplate(rootElement);
-    assertEquals(2, template.getCostModifier(type).getAdditionalDotsToSpend(3));
-    assertEquals(0, template.getCostModifier(type).getAdditionalBonusPointsToSpend(5));
+    assertEquals(2, template.getBackgroundCostModifier(type).getAdditionalDotsToSpend(3));
+    assertEquals(0, template.getBackgroundCostModifier(type).getAdditionalBonusPointsToSpend(5));
   }
 
   @Test
   public void testStandardCostForBackground() throws Exception {
     IBackgroundTemplate type = new CustomizedBackgroundTemplate("Background"); //$NON-NLS-1$
     GenericAdditionalRules template = parseEmptyRuleset();
-    assertEquals(0, template.getCostModifier(type).getAdditionalDotsToSpend(5));
-    assertEquals(0, template.getCostModifier(type).getAdditionalBonusPointsToSpend(5));
+    assertEquals(0, template.getBackgroundCostModifier(type).getAdditionalDotsToSpend(5));
+    assertEquals(0, template.getBackgroundCostModifier(type).getAdditionalBonusPointsToSpend(5));
   }
 
   @Test

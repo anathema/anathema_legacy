@@ -8,7 +8,6 @@ import net.sf.anathema.character.generic.backgrounds.IBackgroundTemplate;
 import net.sf.anathema.character.generic.impl.additional.DefaultTraitCostModifier;
 import net.sf.anathema.character.generic.impl.additional.NullAdditionalRules;
 import net.sf.anathema.character.generic.traits.ITraitType;
-import net.sf.anathema.character.generic.traits.types.AbstractTraitTypeVisitor;
 import net.sf.anathema.lib.exception.UnreachableCodeReachedException;
 import net.sf.anathema.lib.lang.clone.ICloneable;
 
@@ -33,17 +32,9 @@ public class GenericAdditionalRules extends NullAdditionalRules implements IClon
     this.compulsiveCharmIds = compulsiveCharmIds;
   }
 
-  public void addCompulsiveCharmIds(String[] compulsiveCharmIds) {
-    this.compulsiveCharmIds = net.sf.anathema.lib.lang.ArrayUtilities.concat(String.class, this.compulsiveCharmIds, compulsiveCharmIds);
-  }
-
   @Override
   public String[] getCompulsiveCharmIDs() {
     return compulsiveCharmIds;
-  }
-
-  public void setAdditionalEssencePools(IAdditionalEssencePool[] pools) {
-    this.essencePools = pools;
   }
 
   public void addAdditionalEssencePools(IAdditionalEssencePool[] pools) {
@@ -64,10 +55,6 @@ public class GenericAdditionalRules extends NullAdditionalRules implements IClon
     this.magicPools = magicPools;
   }
 
-  public void addMagicPools(IAdditionalMagicLearnPool[] magicPools) {
-    this.magicPools = net.sf.anathema.lib.lang.ArrayUtilities.concat(IAdditionalMagicLearnPool.class, this.magicPools, magicPools);
-  }
-
   @Override
   public boolean isRejected(IBackgroundTemplate backgroundTemplate) {
     return net.sf.anathema.lib.lang.ArrayUtilities.containsValue(rejectedBackgroundIds, backgroundTemplate.getId());
@@ -75,10 +62,6 @@ public class GenericAdditionalRules extends NullAdditionalRules implements IClon
 
   public void setRejectedBackgrounds(String[] backgroundIds) {
     this.rejectedBackgroundIds = backgroundIds;
-  }
-
-  public void addRejectedBackgrounds(String[] backgroundIds) {
-    this.rejectedBackgroundIds = net.sf.anathema.lib.lang.ArrayUtilities.concat(String.class, this.rejectedBackgroundIds, rejectedBackgroundIds);
   }
 
   @Override
@@ -100,15 +83,8 @@ public class GenericAdditionalRules extends NullAdditionalRules implements IClon
   }
 
   @Override
-  public ITraitCostModifier getCostModifier(ITraitType type) {
-    final ITraitCostModifier[] modifier = new ITraitCostModifier[1];
-    type.accept(new AbstractTraitTypeVisitor() {
-      @Override
-      public void visitBackground(IBackgroundTemplate template) {
-        modifier[0] = Functions.forMap(backgroundCostModifiers, new DefaultTraitCostModifier()).apply(template.getId());
-      }
-    });
-    return modifier[0];
+  public ITraitCostModifier getBackgroundCostModifier(ITraitType backgroundType) {
+    return Functions.forMap(backgroundCostModifiers, new DefaultTraitCostModifier()).apply(backgroundType.getId());
   }
 
   public void addBackgroundCostModifier(String backgroundId, ITraitCostModifier modifier) {
