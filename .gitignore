@@ -2,7 +2,6 @@
 build/
 bin/
 .gradle/
-Anathema*.zip
 *.iml
 *.ipr
 *.iws
@@ -14,7 +13,6 @@ out/
 *.pdf
 *.zip
 Thumbs.db
-Anathema/anathema.properties
 *.log
 
 # Repository
@@ -22,11 +20,10 @@ repository.version
 *.item
 *.ecg
 *.yap
-/Anathema/repository/*
 *.mdsc
 *.srs
 *.not
 
-# Copied from /Development_Code/.cvsignore
-/Development_Code/*.pdf
-/Development_Code/*.jasper
+# Runtime
+/Anathema/repository/*
+/Anathema/anathema.properties
