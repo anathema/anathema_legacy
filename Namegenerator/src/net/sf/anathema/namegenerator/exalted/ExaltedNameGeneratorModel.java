@@ -7,7 +7,6 @@ import net.sf.anathema.lib.util.Identifier;
 import net.sf.anathema.namegenerator.domain.INameGenerator;
 import net.sf.anathema.namegenerator.domain.realm.RealmNameGenerator;
 import net.sf.anathema.namegenerator.exalted.domain.ThresholdNameGenerator;
-import net.sf.anathema.namegenerator.presenter.model.IGeneratorTypeModel;
 import net.sf.anathema.namegenerator.presenter.model.INameGeneratorModel;
 import org.jmock.example.announcer.Announcer;
 

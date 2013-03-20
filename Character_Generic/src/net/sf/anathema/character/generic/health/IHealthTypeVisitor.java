@@ -7,5 +7,4 @@ public interface IHealthTypeVisitor {
   void visitLethal(HealthType lethal);
 
   void visitAggravated(HealthType aggrevated);
-
 }

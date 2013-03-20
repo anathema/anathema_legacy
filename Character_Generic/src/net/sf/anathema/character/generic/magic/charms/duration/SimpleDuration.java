@@ -32,9 +32,4 @@ public class SimpleDuration implements IDuration {
   public String getText(IStringResourceHandler resources) {
     return resources.getString("Charm.Duration." + getText()); //$NON-NLS-1$
   }
-
-  @Override
-  public void accept(IDurationVisitor visitor) {
-    visitor.visitSimpleDuration(this);
-  }
 }

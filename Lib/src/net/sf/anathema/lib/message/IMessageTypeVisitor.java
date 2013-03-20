@@ -11,5 +11,4 @@ public interface IMessageTypeVisitor {
   void visitInformation(MessageType visitedType);
 
   void visitQuestion(MessageType visitedType);
-
 }

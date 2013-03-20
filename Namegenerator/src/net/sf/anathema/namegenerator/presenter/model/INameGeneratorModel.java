@@ -7,8 +7,6 @@ public interface INameGeneratorModel {
 
   void addGeneratorTypeChangeListener(IChangeListener listener);
 
-  IGeneratorTypeModel getGeneratorTypeModel(Identified type);
-
   Identified[] getGeneratorTypes();
 
   Identified getSelectedGeneratorType();
