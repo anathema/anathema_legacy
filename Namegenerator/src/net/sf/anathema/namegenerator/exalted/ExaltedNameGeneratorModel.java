@@ -17,7 +17,6 @@ public class ExaltedNameGeneratorModel implements INameGeneratorModel {
 
   public static final Identifier THRESHOLD_ID = new Identifier("Threshold"); //$NON-NLS-1$
   private final Identified[] nameGeneratorTypes = new Identified[] { new Identifier("Realm"), THRESHOLD_ID }; //$NON-NLS-1$
-  private final Map<Identified, IGeneratorTypeModel> typeModelsByType = new HashMap<>();
   private Identified selectedGeneratorType = nameGeneratorTypes[1];
   private final Announcer<IChangeListener> selectedGeneratorTypeListeners = Announcer.to(IChangeListener.class);
   private final Map<Identified, INameGenerator> generatorsByIdentificate = new HashMap<>();
@@ -30,11 +29,6 @@ public class ExaltedNameGeneratorModel implements INameGeneratorModel {
   @Override
   public Identified[] getGeneratorTypes() {
     return nameGeneratorTypes;
-  }
-
-  @Override
-  public IGeneratorTypeModel getGeneratorTypeModel(Identified type) {
-    return typeModelsByType.get(type);
   }
 
   @Override

@@ -9,10 +9,6 @@ import static net.sf.anathema.lib.lang.ArrayUtilities.transform;
 
 public class TraitCollectionUtilities {
 
-  private TraitCollectionUtilities() {
-    // nothing to do
-  }
-
   public static IDefaultTrait[] getVirtues(ITraitCollection collection) {
     return transform(
             collection.getTraits(VirtueType.values()),

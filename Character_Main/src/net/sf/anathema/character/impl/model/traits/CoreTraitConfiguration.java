@@ -19,6 +19,7 @@ import net.sf.anathema.character.impl.model.traits.creation.AttributeTypeGroupFa
 import net.sf.anathema.character.impl.model.traits.creation.DefaultTraitFactory;
 import net.sf.anathema.character.impl.model.traits.creation.FavorableTraitFactory;
 import net.sf.anathema.character.impl.model.traits.creation.FavoredIncrementChecker;
+import net.sf.anathema.character.impl.model.traits.creation.TypedTraitTemplateFactory;
 import net.sf.anathema.character.impl.model.traits.listening.WillpowerListening;
 import net.sf.anathema.character.library.trait.AbstractTraitCollection;
 import net.sf.anathema.character.library.trait.ITrait;
@@ -62,14 +63,14 @@ public class CoreTraitConfiguration extends AbstractTraitCollection implements I
     ITraitContext traitContext = modelContext.getTraitContext();
     ITraitTemplateCollection traitTemplateCollection = template.getTraitTemplateCollection();
     IAdditionalTraitRules additionalTraitRules = template.getAdditionalRules().getAdditionalTraitRules();
-    DefaultTraitFactory traitFactory = new DefaultTraitFactory(traitContext, traitTemplateCollection, additionalTraitRules);
     this.favorableTraitFactory =
             new FavorableTraitFactory(traitContext, traitTemplateCollection, additionalTraitRules, modelContext.getBasicCharacterContext(),
                     modelContext.getCharacterListening());
-    addTrait(traitFactory.createTrait(OtherTraitType.Essence));
-    addTraits(traitFactory.createTraits(VirtueType.values()));
-    addTrait(traitFactory.createTrait(OtherTraitType.Willpower));
+    addEssence(traitContext, traitTemplateCollection, additionalTraitRules);
+    addVirtues(traitContext, traitTemplateCollection, additionalTraitRules);
+    addWillpower(traitContext, traitTemplateCollection, additionalTraitRules);
     addAttributes(template);
+    addAbilities(template);
     for (TraitRegistrar registrar : registrars) {
       registrar.addTraits(this, template);
     }
@@ -80,10 +81,30 @@ public class CoreTraitConfiguration extends AbstractTraitCollection implements I
     } else {
       willpower.setModifiedCreationRange(5, 10);
     }
-    addAbilities(template);
     this.backgrounds = new BackgroundConfiguration(new BackgroundArbitrator(template), traitTemplateCollection.getTraitTemplateFactory(), traitContext, backgroundRegistry);
     this.specialtyConfiguration = new SpecialtiesConfiguration(this, abilityTraitGroups, modelContext);
     getTrait(OtherTraitType.Essence).addCurrentValueListener(new EssenceLimitationListener(new AllTraits(), modelContext));
+  }
+
+  private void addEssence(ITraitContext traitContext, ITraitTemplateCollection traitTemplateCollection,
+                          IAdditionalTraitRules additionalTraitRules) {
+    TypedTraitTemplateFactory templateFactory = new EssenceTemplateFactory(traitTemplateCollection.getTraitTemplateFactory());
+    DefaultTraitFactory traitFactory = new DefaultTraitFactory(traitContext, additionalTraitRules, templateFactory);
+    addTrait(traitFactory.createTrait(OtherTraitType.Essence));
+  }
+
+  private void addVirtues(ITraitContext traitContext, ITraitTemplateCollection traitTemplateCollection,
+                          IAdditionalTraitRules additionalTraitRules) {
+    TypedTraitTemplateFactory templateFactory = new VirtueTemplateFactory(traitTemplateCollection.getTraitTemplateFactory());
+    DefaultTraitFactory traitFactory = new DefaultTraitFactory(traitContext, additionalTraitRules, templateFactory);
+    addTraits(traitFactory.createTraits(VirtueType.values()));
+  }
+
+  private void addWillpower(ITraitContext traitContext, ITraitTemplateCollection traitTemplateCollection,
+                            IAdditionalTraitRules additionalTraitRules) {
+    TypedTraitTemplateFactory templateFactory = new WillpowerTemplateFactory(traitTemplateCollection.getTraitTemplateFactory());
+    DefaultTraitFactory traitFactory = new DefaultTraitFactory(traitContext, additionalTraitRules, templateFactory);
+    addTrait(traitFactory.createTrait(OtherTraitType.Willpower));
   }
 
   private void addAttributes(ICharacterTemplate template) {

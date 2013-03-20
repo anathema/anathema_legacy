@@ -16,13 +16,13 @@ import java.util.List;
 public class DefaultTraitFactory extends AbstractTraitFactory {
 
   private final ITraitContext traitContext;
-  private final ITraitTemplateCollection templateCollection;
+  private TypedTraitTemplateFactory factory;
 
-  public DefaultTraitFactory(ITraitContext traitContext, ITraitTemplateCollection templateCollection,
-                             IAdditionalTraitRules additionalRules) {
+  public DefaultTraitFactory(ITraitContext traitContext, IAdditionalTraitRules additionalRules,
+                             TypedTraitTemplateFactory factory) {
     super(traitContext, additionalRules);
     this.traitContext = traitContext;
-    this.templateCollection = templateCollection;
+    this.factory = factory;
   }
 
   public IDefaultTrait[] createTraits(ITraitType[] traitTypes) {
@@ -34,7 +34,7 @@ public class DefaultTraitFactory extends AbstractTraitFactory {
   }
 
   public IDefaultTrait createTrait(ITraitType traitType) {
-    ITraitTemplate traitTemplate = templateCollection.getTraitTemplate(traitType);
+    ITraitTemplate traitTemplate = factory.create(traitType);
     IValueChangeChecker checker = createValueIncrementChecker(traitType);
     TraitRules rules = new TraitRules(traitType, traitTemplate, traitContext.getLimitationContext());
     return new DefaultTrait(rules, traitContext, checker);

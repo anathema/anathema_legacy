@@ -15,6 +15,7 @@ import net.sf.anathema.character.generic.template.TemplateType;
 import net.sf.anathema.character.generic.traits.types.AbilityType;
 import net.sf.anathema.character.generic.traits.types.OtherTraitType;
 import net.sf.anathema.character.generic.type.ICharacterType;
+import net.sf.anathema.character.impl.model.traits.EssenceTemplateFactory;
 import net.sf.anathema.character.impl.model.traits.creation.DefaultTraitFactory;
 import net.sf.anathema.character.impl.model.traits.creation.FavorableTraitFactory;
 import net.sf.anathema.character.library.trait.favorable.FriendlyIncrementChecker;
@@ -26,7 +27,7 @@ public abstract class AbstractBonusPointTestCase {
     NullAdditionalRules additionalRules = new NullAdditionalRules();
     TraitTemplateCollection templateCollection = new TraitTemplateCollection(new DummyTraitTemplateFactory());
     DummyTraitContext traitContext = new DummyTraitContext(coreTraits);
-    DefaultTraitFactory traitFactory = new DefaultTraitFactory(traitContext, templateCollection, additionalRules);
+    DefaultTraitFactory traitFactory = new DefaultTraitFactory(traitContext, additionalRules, new EssenceTemplateFactory(new DummyTraitTemplateFactory()));
     coreTraits.addTestTrait(traitFactory.createTrait(OtherTraitType.Essence));
     FavorableTraitFactory favorableTraitFactory =
             new FavorableTraitFactory(traitContext, templateCollection, new NullAdditionalRules(), new IBasicCharacterData() {
