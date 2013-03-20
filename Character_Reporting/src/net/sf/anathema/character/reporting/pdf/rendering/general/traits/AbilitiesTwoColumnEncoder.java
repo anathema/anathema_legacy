@@ -15,7 +15,6 @@ public class AbilitiesTwoColumnEncoder extends FavorableTraitContentEncoder<Abil
 
   private IResources resources;
 
-
   public AbilitiesTwoColumnEncoder(IResources resources) {
     super(AbilitiesContent.class);
     this.resources = resources;
