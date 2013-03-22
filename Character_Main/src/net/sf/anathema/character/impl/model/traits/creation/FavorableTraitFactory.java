@@ -46,7 +46,7 @@ public class FavorableTraitFactory extends AbstractTraitFactory {
     return newTraits.toArray(new IFavorableTrait[newTraits.size()]);
   }
 
-  public IFavorableTrait createTrait(ITraitType traitType, ICasteType[] casteTypes, IIncrementChecker favoredIncrementChecker) {
+  private IFavorableTrait createTrait(ITraitType traitType, ICasteType[] casteTypes, IIncrementChecker favoredIncrementChecker) {
     ITraitTemplate traitTemplate = templateCollection.getTraitTemplate(traitType);
     FavorableTraitRules favorableTraitRules = new FavorableTraitRules(traitType, traitTemplate, traitContext.getLimitationContext());
     IValueChangeChecker valueChecker = createValueIncrementChecker(traitType);

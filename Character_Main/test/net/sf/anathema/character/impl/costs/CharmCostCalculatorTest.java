@@ -24,13 +24,12 @@ import static org.junit.Assert.assertEquals;
 public class CharmCostCalculatorTest extends AbstractBonusPointTestCase {
 
   private MagicCostCalculator calculator;
-  private DummyCharmConfiguration charms;
   private ISpellConfiguration spells;
   private DummyCoreTraitConfiguration traitConfiguration;
 
   @Before
   public void setUp() throws Exception {
-    charms = new DummyCharmConfiguration();
+    DummyCharmConfiguration charms = new DummyCharmConfiguration();
     spells = new DummySpellConfiguration();
     traitConfiguration = new DummyCoreTraitConfiguration();
     addAbilityAndEssence(traitConfiguration);
