@@ -118,20 +118,21 @@ public class CoreTraitConfiguration extends AbstractTraitCollection implements I
     if (useGenericEngine) {
       persona.doForEachDisregardingRules(ExaltedEngine.ATTRIBUTE, new AddTraitBasedOnQuality());
     } else {
-      addFavorableTraits(attributeTraitGroups, incrementChecker);
+      addFavorableTraits(attributeTraitGroups, incrementChecker,
+              new AttributeTemplateFactory(traitTemplateCollection.getTraitTemplateFactory()));
     }
   }
 
   private void addAbilities(ICharacterTemplate template) {
     IIncrementChecker incrementChecker = FavoredIncrementChecker.createFavoredAbilityIncrementChecker(template, this);
-    addFavorableTraits(abilityTraitGroups, incrementChecker);
+    addFavorableTraits(abilityTraitGroups, incrementChecker, new AbilityTemplateFactory(traitTemplateCollection.getTraitTemplateFactory()));
   }
 
   @Override
-  public void addFavorableTraits(IIdentifiedCasteTraitTypeGroup[] traitGroups, IIncrementChecker incrementChecker) {
+  public void addFavorableTraits(IIdentifiedCasteTraitTypeGroup[] traitGroups, IIncrementChecker incrementChecker,
+                                 TypedTraitTemplateFactory factory) {
     for (IIdentifiedCasteTraitTypeGroup traitGroup : traitGroups) {
-      IFavorableTrait[] traits = favorableTraitFactory.createTraits(traitGroup, incrementChecker,
-              new GenericTraitTemplateFactory());
+      IFavorableTrait[] traits = favorableTraitFactory.createTraits(traitGroup, incrementChecker, factory);
       addTraits(traits);
     }
   }

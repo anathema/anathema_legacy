@@ -4,6 +4,7 @@ import com.google.common.base.Functions;
 import net.sf.anathema.character.generic.caste.ICasteCollection;
 import net.sf.anathema.character.generic.caste.ICasteType;
 import net.sf.anathema.character.generic.template.ICharacterTemplate;
+import net.sf.anathema.character.generic.template.ITraitTemplateFactory;
 import net.sf.anathema.character.generic.template.abilities.GroupedTraitType;
 import net.sf.anathema.character.generic.traits.groups.IIdentifiedCasteTraitTypeGroup;
 import net.sf.anathema.character.generic.traits.types.YoziType;
@@ -40,9 +41,12 @@ public class YoziRegistrar implements TraitRegistrar {
   public void addTraits(ICoreTraitConfiguration configuration, ICharacterTemplate template) {
     ICasteCollection casteCollection = template.getCasteCollection();
     GroupedTraitType[] yoziGroups = groupYozi(casteCollection);
-    IIdentifiedCasteTraitTypeGroup[] yoziTraitGroups = new YoziTypeGroupFactory().createTraitGroups(casteCollection, yoziGroups);
+    IIdentifiedCasteTraitTypeGroup[] yoziTraitGroups = new YoziTypeGroupFactory().createTraitGroups(casteCollection,
+            yoziGroups);
     IIncrementChecker incrementChecker = YoziFavoredIncrementChecker.create(configuration);
-    configuration.addFavorableTraits(yoziTraitGroups, incrementChecker);
+    ITraitTemplateFactory traitTemplateFactory = template.getTraitTemplateCollection().getTraitTemplateFactory();
+    YoziTemplateFactory factory = new YoziTemplateFactory(traitTemplateFactory);
+    configuration.addFavorableTraits(yoziTraitGroups, incrementChecker, factory);
   }
 
   @Override

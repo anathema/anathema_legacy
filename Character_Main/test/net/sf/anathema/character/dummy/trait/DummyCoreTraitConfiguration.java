@@ -9,6 +9,7 @@ import net.sf.anathema.character.generic.traits.groups.IdentifiedAttributeTypeGr
 import net.sf.anathema.character.generic.traits.groups.IdentifiedTraitTypeGroup;
 import net.sf.anathema.character.generic.traits.types.AbilityType;
 import net.sf.anathema.character.generic.traits.types.AttributeGroupType;
+import net.sf.anathema.character.impl.model.traits.creation.TypedTraitTemplateFactory;
 import net.sf.anathema.character.library.trait.AbstractTraitCollection;
 import net.sf.anathema.character.library.trait.ITrait;
 import net.sf.anathema.character.library.trait.TraitGroup;
@@ -100,7 +101,7 @@ public class DummyCoreTraitConfiguration extends AbstractTraitCollection impleme
   }
 
   @Override
-  public void addFavorableTraits(IIdentifiedCasteTraitTypeGroup[] traitGroups, IIncrementChecker incrementChecker) {
+  public void addFavorableTraits(IIdentifiedCasteTraitTypeGroup[] traitGroups, IIncrementChecker incrementChecker, TypedTraitTemplateFactory factory) {
     throw new NotYetImplementedException();
   }
 }
