@@ -15,6 +15,9 @@ import net.sf.anathema.character.library.trait.favorable.IFavorableTrait;
 import org.junit.Before;
 import org.junit.Test;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import static org.junit.Assert.assertEquals;
 
 public class AbilityCostCalculatorTest extends AbstractBonusPointTestCase {
@@ -99,8 +102,13 @@ public class AbilityCostCalculatorTest extends AbstractBonusPointTestCase {
     }
   }
 
-  private IFavorableTrait[] getAllAbilities() {
-    return traitConfiguration.getAllAbilities();
+  private List<IFavorableTrait> getAllAbilities() {
+    List<IFavorableTrait> abilities = new ArrayList<>();
+    for (AbilityType type : AbilityType.values()) {
+      IFavorableTrait trait = traitConfiguration.getFavorableTrait(type);
+      abilities.add(trait);
+    }
+    return abilities;
   }
 
   @Test

@@ -24,7 +24,6 @@ import net.sf.anathema.character.impl.model.traits.listening.WillpowerListening;
 import net.sf.anathema.character.library.trait.AbstractTraitCollection;
 import net.sf.anathema.character.library.trait.ITrait;
 import net.sf.anathema.character.library.trait.TraitCollectionUtilities;
-import net.sf.anathema.character.library.trait.favorable.IFavorableTrait;
 import net.sf.anathema.character.library.trait.favorable.IIncrementChecker;
 import net.sf.anathema.character.library.trait.specialties.ISpecialtiesConfiguration;
 import net.sf.anathema.character.library.trait.specialties.SpecialtiesConfiguration;
@@ -38,11 +37,8 @@ import net.sf.anathema.exaltedengine.ExaltedEngine;
 import net.sf.anathema.exaltedengine.attributes.Attribute;
 import net.sf.anathema.lib.registry.IIdentificateRegistry;
 
-import java.util.ArrayList;
 import java.util.Collection;
-import java.util.Collections;
 import java.util.Iterator;
-import java.util.List;
 
 import static java.util.Arrays.asList;
 
@@ -152,15 +148,6 @@ public class CoreTraitConfiguration extends AbstractTraitCollection implements I
   @Override
   public final IIdentifiedCasteTraitTypeGroup[] getAttributeTypeGroups() {
     return attributeTraitGroups;
-  }
-
-  @Override
-  public IFavorableTrait[] getAllAbilities() {
-    List<ITraitType> abilityTypes = new ArrayList<>();
-    for (IIdentifiedTraitTypeGroup group : getAbilityTypeGroups()) {
-      Collections.addAll(abilityTypes, group.getAllGroupTypes());
-    }
-    return getFavorableTraits(abilityTypes.toArray(new ITraitType[abilityTypes.size()]));
   }
 
   @Override

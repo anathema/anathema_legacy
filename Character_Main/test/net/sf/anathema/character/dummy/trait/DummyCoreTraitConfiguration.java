@@ -12,7 +12,6 @@ import net.sf.anathema.character.generic.traits.types.AttributeGroupType;
 import net.sf.anathema.character.library.trait.AbstractTraitCollection;
 import net.sf.anathema.character.library.trait.ITrait;
 import net.sf.anathema.character.library.trait.TraitGroup;
-import net.sf.anathema.character.library.trait.favorable.IFavorableTrait;
 import net.sf.anathema.character.library.trait.favorable.IIncrementChecker;
 import net.sf.anathema.character.library.trait.specialties.ISpecialtiesConfiguration;
 import net.sf.anathema.character.library.trait.specialties.SpecialtiesConfiguration;
@@ -23,7 +22,6 @@ import net.sf.anathema.lib.exception.NotYetImplementedException;
 import net.sf.anathema.lib.util.Identifier;
 
 import java.util.ArrayList;
-import java.util.Collections;
 import java.util.List;
 
 import static net.sf.anathema.character.generic.traits.types.AttributeGroupType.Mental;
@@ -99,15 +97,6 @@ public class DummyCoreTraitConfiguration extends AbstractTraitCollection impleme
 
   public void addAbilityTypeToGroup(AbilityType traitType, String id) {
     abilityGroupsByType.add(id, traitType);
-  }
-
-  @Override
-  public IFavorableTrait[] getAllAbilities() {
-    List<ITraitType> abilityTypes = new ArrayList<>();
-    for (IIdentifiedTraitTypeGroup group : getAbilityTypeGroups()) {
-      Collections.addAll(abilityTypes, group.getAllGroupTypes());
-    }
-    return getFavorableTraits(abilityTypes.toArray(new ITraitType[abilityTypes.size()]));
   }
 
   @Override

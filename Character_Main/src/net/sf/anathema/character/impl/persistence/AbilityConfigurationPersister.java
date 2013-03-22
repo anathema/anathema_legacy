@@ -27,14 +27,15 @@ import static net.sf.anathema.character.impl.persistence.ICharacterXmlConstants.
 
 public class AbilityConfigurationPersister {
 
+  private final TraitPersister persister = new TraitPersister();
+
   public void save(Element parent, ICoreTraitConfiguration configuration) {
     Element abilitiesElement = parent.addElement(TAG_ABILITIES);
-    for (IFavorableTrait ability : configuration.getAllAbilities()) {
+    for (AbilityType abilityType : AbilityType.values()) {
+      IFavorableTrait ability = configuration.getFavorableTrait(abilityType);
       saveAbility(abilitiesElement, ability, configuration.getSpecialtyConfiguration());
     }
   }
-
-  private final TraitPersister persister = new TraitPersister();
 
   private void saveAbility(Element parent, IFavorableTrait ability, final ISpecialtiesConfiguration specialtyConfiguration) {
     ITraitType traitType = ability.getType();
