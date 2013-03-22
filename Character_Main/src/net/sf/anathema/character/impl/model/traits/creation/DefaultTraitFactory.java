@@ -17,7 +17,7 @@ public class DefaultTraitFactory {
 
   private final ITraitContext traitContext;
   private final IAdditionalTraitRules additionalRules;
-  private TypedTraitTemplateFactory factory;
+  private final TypedTraitTemplateFactory factory;
 
   public DefaultTraitFactory(ITraitContext traitContext, IAdditionalTraitRules additionalRules,
                              TypedTraitTemplateFactory factory) {

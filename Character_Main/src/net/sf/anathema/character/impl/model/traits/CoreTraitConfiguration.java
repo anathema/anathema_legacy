@@ -136,7 +136,7 @@ public class CoreTraitConfiguration extends AbstractTraitCollection implements I
     if (traitType instanceof IBackgroundTemplate) {
       return getBackgrounds().getBackgroundByTemplate((IBackgroundTemplate) traitType);
     }
-    throw new UnsupportedOperationException("Unsupported trait type " + traitType); //$NON-NLS-1$
+    throw new UnsupportedOperationException("Unsupported trait type " + traitType);
   }
 
   @Override
