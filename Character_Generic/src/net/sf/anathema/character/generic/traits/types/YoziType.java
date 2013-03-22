@@ -15,6 +15,6 @@ public enum YoziType implements ITraitType {
 
   @Override
   public void accept(ITraitTypeVisitor visitor) {
-    visitor.visitYozi(this);
+    visitor.visitCustomTraitType(this);
   }
 }

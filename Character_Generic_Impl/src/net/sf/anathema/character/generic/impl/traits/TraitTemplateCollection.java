@@ -10,7 +10,6 @@ import net.sf.anathema.character.generic.traits.types.AttributeType;
 import net.sf.anathema.character.generic.traits.types.ITraitTypeVisitor;
 import net.sf.anathema.character.generic.traits.types.OtherTraitType;
 import net.sf.anathema.character.generic.traits.types.VirtueType;
-import net.sf.anathema.character.generic.traits.types.YoziType;
 
 public class TraitTemplateCollection implements ITraitTemplateCollection {
 
@@ -52,11 +51,6 @@ public class TraitTemplateCollection implements ITraitTemplateCollection {
       @Override
       public void visitAbility(AbilityType type) {
         traitTemplate[0] = templateFactory.createAbilityTemplate(type);
-      }
-
-      @Override
-      public void visitYozi(YoziType type) {
-        traitTemplate[0] = templateFactory.createYoziTemplate(type);
       }
 
       @Override

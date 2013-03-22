@@ -14,8 +14,6 @@ public interface ITraitTypeVisitor {
   void visitEssence(OtherTraitType type);
 
   void visitWillpower(OtherTraitType type);
-  
-  void visitYozi(YoziType type);
 
   void visitBackground(IBackgroundTemplate template);
 

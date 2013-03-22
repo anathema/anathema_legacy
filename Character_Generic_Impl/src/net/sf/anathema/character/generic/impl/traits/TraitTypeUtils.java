@@ -21,7 +21,7 @@ public class TraitTypeUtils {
         return type;
       }
     }
-    throw new IllegalArgumentException("No trait type with id: " + id); //$NON-NLS-1$
+    throw new IllegalArgumentException("No trait type with id: " + id);
   }
 
   private Iterable<ITraitType> getAllCoreTraitTypes() {

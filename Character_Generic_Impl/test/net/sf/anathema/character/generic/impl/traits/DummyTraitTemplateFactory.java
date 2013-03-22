@@ -7,7 +7,6 @@ import net.sf.anathema.character.generic.traits.LowerableState;
 import net.sf.anathema.character.generic.traits.types.AbilityType;
 import net.sf.anathema.character.generic.traits.types.AttributeType;
 import net.sf.anathema.character.generic.traits.types.VirtueType;
-import net.sf.anathema.character.generic.traits.types.YoziType;
 
 public class DummyTraitTemplateFactory implements ITraitTemplateFactory {
 
@@ -45,9 +44,5 @@ public class DummyTraitTemplateFactory implements ITraitTemplateFactory {
   public ITraitTemplate createAbilityTemplate(AbilityType type) {
     return SimpleTraitTemplate.createEssenceLimitedTemplate(0);
   }
-  
-  @Override
-  public ITraitTemplate createYoziTemplate(YoziType type) {
-	return SimpleTraitTemplate.createEssenceLimitedTemplate(0);
-  }
+
 }
