@@ -18,6 +18,8 @@ public class HealthTemplateParser extends AbstractXmlTemplateParser<GenericHealt
   private static final String ATTRIB_TYPE = "type"; //$NON-NLS-1$
   private static final String ATTRIB_PATH = "path";
 
+  private final TraitTypeUtils traitTypeUtils = new TraitTypeUtils();
+
   public HealthTemplateParser(IXmlTemplateRegistry<GenericHealthTemplate> registry) {
     super(registry);
   }
@@ -40,7 +42,7 @@ public class HealthTemplateParser extends AbstractXmlTemplateParser<GenericHealt
     for (Object element : generalElement.elements(TAG_TOUGHNESS_TRAIT)) {
       Element toughnessElement = (Element) element;
       String traitTypeString = toughnessElement.attributeValue(ATTRIB_TYPE);
-      traits.add(new TraitTypeUtils().getTraitTypeById(traitTypeString));
+      traits.add(traitTypeUtils.getTraitTypeById(traitTypeString));
     }
     ITraitType[] traitArray = new ITraitType[traits.size()];
     traits.toArray(traitArray);
