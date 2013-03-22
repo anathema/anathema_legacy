@@ -7,7 +7,6 @@ import net.sf.anathema.character.generic.traits.types.AbilityType;
 import net.sf.anathema.character.generic.traits.types.AttributeType;
 import net.sf.anathema.character.generic.traits.types.OtherTraitType;
 import net.sf.anathema.character.generic.traits.types.VirtueType;
-import net.sf.anathema.character.generic.traits.types.YoziType;
 
 public class ComplexPoolExpressionParameter implements ExpressionParameter {
   
@@ -40,8 +39,6 @@ public class ComplexPoolExpressionParameter implements ExpressionParameter {
             return OtherTraitType.valueOf(name);
           case "Virtue":
             return VirtueType.valueOf(name);
-          case "Yozi":
-            return YoziType.valueOf(name);
         }
       }
       catch (IllegalArgumentException e) {
