@@ -22,11 +22,6 @@ import net.sf.anathema.character.generic.traits.ITraitType;
 import net.sf.anathema.character.generic.type.ICharacterType;
 import net.sf.anathema.lib.util.Identifier;
 
-import static net.sf.anathema.character.generic.impl.traits.SimpleTraitTemplate.createStaticLimitedTemplate;
-import static org.mockito.Matchers.isA;
-import static org.mockito.Mockito.mock;
-import static org.mockito.Mockito.when;
-
 public class SimpleDummyCharacterTemplate implements ICharacterTemplate {
 
   private final String subtype;
@@ -97,9 +92,7 @@ public class SimpleDummyCharacterTemplate implements ICharacterTemplate {
 
   @Override
   public ITraitTemplateCollection getTraitTemplateCollection() {
-    ITraitTemplateCollection collection = mock(ITraitTemplateCollection.class);
-    when(collection.getTraitTemplate(isA(ITraitType.class))).thenReturn(createStaticLimitedTemplate(0, 5));
-    return collection;
+    return new DummyTraitTemplateCollection();
   }
 
   @Override
