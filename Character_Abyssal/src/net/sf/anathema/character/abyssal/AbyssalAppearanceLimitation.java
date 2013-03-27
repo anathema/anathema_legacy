@@ -6,6 +6,7 @@ import net.sf.anathema.character.generic.traits.types.AttributeType;
 import net.sf.anathema.character.generic.traits.types.OtherTraitType;
 import net.sf.anathema.lib.exception.UnreachableCodeReachedException;
 
+@SuppressWarnings("UnusedDeclaration")
 public class AbyssalAppearanceLimitation implements ITraitLimitation {
 
   @Override

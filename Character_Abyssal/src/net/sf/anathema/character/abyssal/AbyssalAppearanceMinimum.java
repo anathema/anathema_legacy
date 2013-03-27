@@ -7,6 +7,7 @@ import net.sf.anathema.character.generic.traits.types.AttributeType;
 import net.sf.anathema.character.generic.traits.types.OtherTraitType;
 import net.sf.anathema.lib.lang.ReflectionEqualsObject;
 
+@SuppressWarnings("UnusedDeclaration")
 public class AbyssalAppearanceMinimum extends ReflectionEqualsObject implements IExtendedMinimum {
   int currentMinimum = 1;
 
