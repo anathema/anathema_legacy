@@ -9,12 +9,13 @@ public class GroupStringBuilder {
 
   public String build(Element rootElement, IGenericTrait trait) throws CharmException {
     String value = rootElement.attributeValue(ICharmXMLConstants.ATTRIB_GROUP);
-    if (value == null && trait != null) {
-      value = trait.getType().getId();
+    if (value != null) {
+      return value;
     }
-    if (value == null) {
-      throw new CharmException("Cannot determine group: No group identification found and no primary trait set to default to.");
+    if (trait != null) {
+      return trait.getType().getId();
     }
-    return value;
+    throw new CharmException(
+            "Cannot determine group: No group identification found and no primary trait set to default to.");
   }
 }
