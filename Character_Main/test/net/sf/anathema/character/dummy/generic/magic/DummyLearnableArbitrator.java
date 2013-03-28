@@ -3,6 +3,7 @@ package net.sf.anathema.character.dummy.generic.magic;
 import net.sf.anathema.character.generic.magic.ICharm;
 import net.sf.anathema.character.model.charm.ICharmLearnListener;
 import net.sf.anathema.character.model.charm.IExtendedCharmLearnableArbitrator;
+import org.apache.commons.lang3.ArrayUtils;
 
 public class DummyLearnableArbitrator implements IExtendedCharmLearnableArbitrator {
 
@@ -14,7 +15,7 @@ public class DummyLearnableArbitrator implements IExtendedCharmLearnableArbitrat
 
   @Override
   public boolean isLearnable(ICharm charm) {
-    return net.sf.anathema.lib.lang.ArrayUtilities.containsValue(learnableCharmIds, charm.getId());
+    return ArrayUtils.contains(learnableCharmIds, charm.getId());
   }
 
   @Override

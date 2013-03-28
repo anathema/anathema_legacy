@@ -12,6 +12,7 @@ import net.sf.anathema.lib.control.IChangeListener;
 import net.sf.anathema.lib.data.Range;
 import net.sf.anathema.lib.workflow.intvalue.IIntValueModel;
 import net.sf.anathema.lib.workflow.intvalue.RangedIntValueModel;
+import org.apache.commons.lang3.ArrayUtils;
 import org.jmock.example.announcer.Announcer;
 
 public class EquipmentStatisticsCreationModel implements IEquipmentStatisticsCreationModel {
@@ -97,6 +98,6 @@ public class EquipmentStatisticsCreationModel implements IEquipmentStatisticsCre
 
   @Override
   public boolean isNameUnique(String name) {
-    return !net.sf.anathema.lib.lang.ArrayUtilities.containsValue(existingNames, name);
+    return !ArrayUtils.contains(existingNames, name);
   }
 }

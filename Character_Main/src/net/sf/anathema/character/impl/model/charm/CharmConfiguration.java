@@ -44,6 +44,7 @@ import net.sf.anathema.charmtree.filters.ICharmFilter;
 import net.sf.anathema.charmtree.presenter.view.ICharmGroupArbitrator;
 import net.sf.anathema.lib.control.IChangeListener;
 import net.sf.anathema.lib.util.Identified;
+import org.apache.commons.lang3.ArrayUtils;
 import org.jmock.example.announcer.Announcer;
 
 import java.util.ArrayList;
@@ -562,7 +563,7 @@ public class CharmConfiguration implements ICharmConfiguration {
   @Override
   public final boolean isCompulsiveCharm(ICharm charm) {
     String[] compulsiveCharmIDs = context.getAdditionalRules().getCompulsiveCharmIDs();
-    return net.sf.anathema.lib.lang.ArrayUtilities.containsValue(compulsiveCharmIDs, charm.getId());
+    return ArrayUtils.contains(compulsiveCharmIDs, charm.getId());
   }
 
   @Override

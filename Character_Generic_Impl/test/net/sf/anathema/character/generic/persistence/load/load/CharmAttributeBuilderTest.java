@@ -6,6 +6,7 @@ import net.sf.anathema.character.generic.magic.charms.ICharmAttribute;
 import net.sf.anathema.character.generic.traits.types.AbilityType;
 import net.sf.anathema.character.generic.traits.types.ValuedTraitType;
 import net.sf.anathema.lib.xml.DocumentUtilities;
+import org.apache.commons.lang3.ArrayUtils;
 import org.dom4j.Element;
 import org.junit.Test;
 
@@ -20,6 +21,6 @@ public class CharmAttributeBuilderTest {
     ICharmAttribute[] attribute = new CharmAttributeBuilder().buildCharmAttributes(rootElement, new ValuedTraitType(
         AbilityType.MartialArts,
         3));
-    assertTrue(net.sf.anathema.lib.lang.ArrayUtilities.containsValue(attribute, new CharmAttribute("testMartialArts", false))); //$NON-NLS-1$
+    assertTrue(ArrayUtils.contains(attribute, new CharmAttribute("testMartialArts", false))); //$NON-NLS-1$
   }
 }

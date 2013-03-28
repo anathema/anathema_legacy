@@ -12,6 +12,7 @@ import net.sf.anathema.character.generic.magic.ISpell;
 import net.sf.anathema.character.generic.magic.spells.CircleType;
 import net.sf.anathema.character.generic.traits.IGenericTrait;
 import net.sf.anathema.character.generic.util.IPointModification;
+import org.apache.commons.lang3.ArrayUtils;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -101,6 +102,6 @@ public class GenericMagicLearnPool implements IAdditionalMagicLearnPool {
   }
 
   private boolean isSpellCircleGreaterThanMaximumCircle(CircleType type) {
-    return !net.sf.anathema.lib.lang.ArrayUtilities.containsValue(type.getComparableCircles(), maximumCircle) || (maximumCircle.compareTo(type) < 0);
+    return !ArrayUtils.contains(type.getComparableCircles(), maximumCircle) || (maximumCircle.compareTo(type) < 0);
   }
 }

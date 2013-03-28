@@ -5,6 +5,7 @@ import net.sf.anathema.character.generic.magic.charms.ICharmTypeVisitor;
 import net.sf.anathema.character.generic.magic.charms.IComboRestrictions;
 import net.sf.anathema.character.generic.magic.charms.type.CharmType;
 import net.sf.anathema.character.model.charm.ICombo;
+import org.apache.commons.lang3.ArrayUtils;
 
 public abstract class ComboArbitrator implements IComboArbitrator {
 
@@ -53,8 +54,8 @@ public abstract class ComboArbitrator implements IComboArbitrator {
 
   protected boolean specialRestrictionsApply(ICharm charm1, ICharm charm2) {
     IComboRestrictions comboRules = charm1.getComboRules();
-    return comboRules.isRestrictedCharm(charm2) ||
-           net.sf.anathema.lib.lang.ArrayUtilities.containsValue(comboRules.getRestrictedTraitTypes(), charm2.getPrimaryTraitType());
+    return comboRules.isRestrictedCharm(charm2) || ArrayUtils.contains(comboRules.getRestrictedTraitTypes(),
+            charm2.getPrimaryTraitType());
   }
 
   private boolean handleComboRules(final ICharm charm1, final ICharm charm2) {

@@ -14,6 +14,7 @@ import net.sf.anathema.dummy.character.magic.DummyCharm;
 import net.sf.anathema.dummy.character.magic.DummyCharmUtilities;
 import net.sf.anathema.lib.util.Identified;
 import net.sf.anathema.lib.xml.DocumentUtilities;
+import org.apache.commons.lang3.ArrayUtils;
 import org.dom4j.Element;
 import org.junit.Assert;
 import org.junit.Before;
@@ -110,9 +111,9 @@ public class MagicTemplateParserTest {
       + "</magicTemplate>"; //$NON-NLS-1$
     Element templateElement = DocumentUtilities.read(celestialXml).getRootElement();
     GenericMagicTemplate template = parser.parseTemplate(templateElement);
-    assertTrue(net.sf.anathema.lib.lang.ArrayUtilities.containsValue(template.getSpellMagic().getNecromancyCircles(), CircleType.Shadowlands));
-    assertTrue(net.sf.anathema.lib.lang.ArrayUtilities.containsValue(template.getSpellMagic().getNecromancyCircles(), CircleType.Labyrinth));
-    assertFalse(net.sf.anathema.lib.lang.ArrayUtilities.containsValue(template.getSpellMagic().getNecromancyCircles(), CircleType.Void));
+    assertTrue(ArrayUtils.contains(template.getSpellMagic().getNecromancyCircles(), CircleType.Shadowlands));
+    assertTrue(ArrayUtils.contains(template.getSpellMagic().getNecromancyCircles(), CircleType.Labyrinth));
+    assertFalse(ArrayUtils.contains(template.getSpellMagic().getNecromancyCircles(), CircleType.Void));
   }
 
   @Test

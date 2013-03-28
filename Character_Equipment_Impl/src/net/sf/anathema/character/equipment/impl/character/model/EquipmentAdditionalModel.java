@@ -29,7 +29,7 @@ import net.sf.anathema.character.generic.traits.types.AbilityType;
 import net.sf.anathema.character.generic.type.ICharacterType;
 import net.sf.anathema.lib.control.IChangeListener;
 import net.sf.anathema.lib.control.ICollectionListener;
-import net.sf.anathema.lib.lang.ArrayUtilities;
+import org.apache.commons.lang3.ArrayUtils;
 import org.jmock.example.announcer.Announcer;
 
 import java.util.ArrayList;
@@ -55,9 +55,9 @@ public class EquipmentAdditionalModel extends AbstractAdditionalModelAdapter imp
   };
 
   public EquipmentAdditionalModel(ICharacterType characterType, IArmourStats naturalArmour,
-                                  IEquipmentTemplateProvider equipmentTemplateProvider, IGenericSpecialtyContext context,
-                                  IEquipmentCharacterDataProvider dataProvider, MaterialRules materialRules,
-                                  IEquipmentTemplate... naturalWeapons) {
+                                  IEquipmentTemplateProvider equipmentTemplateProvider,
+                                  IGenericSpecialtyContext context, IEquipmentCharacterDataProvider dataProvider,
+                                  MaterialRules materialRules, IEquipmentTemplate... naturalWeapons) {
     this.printModel = new EquipmentPrintModel(this, naturalArmour);
     this.characterType = characterType;
     this.defaultMaterial = evaluateDefaultMaterial(materialRules);
@@ -193,10 +193,10 @@ public class EquipmentAdditionalModel extends AbstractAdditionalModelAdapter imp
         List<IEquipmentStatsOption> specialtyList = optionsTable.remove(fromItem, fromStats);
         boolean printCheckboxEnabled = fromItem.isPrintEnabled(fromStats);
         IEquipmentStats toStats = toItem.getStat(fromStats.getId());
-      
+
         if (toStats != null) {
           transferred = true;
-          if( specialtyList != null) {
+          if (specialtyList != null) {
             optionsTable.put(toItem, toStats, specialtyList);
           }
           toItem.setPrintEnabled(toStats, printCheckboxEnabled);
@@ -253,7 +253,7 @@ public class EquipmentAdditionalModel extends AbstractAdditionalModelAdapter imp
     item.removeChangeListener(itemChangePropagator);
     fireModelChanged();
   }
-  
+
   @Override
   public void updateItem(IEquipmentItem item) {
     fireModelChanged();
@@ -348,24 +348,19 @@ public class EquipmentAdditionalModel extends AbstractAdditionalModelAdapter imp
     }
 
     private boolean characterStillHasCorrespondingSpecialty(IEquipmentStatsOption option) {
-      try {
-        AbilityType trait = AbilityType.valueOf(option.getType());
-        INamedGenericTrait[] specialties = dataProvider.getSpecialties(trait);
-        ArrayUtilities.indexOf(specialties, option.getUnderlyingTrait());
-        return true;
-      } catch (IllegalArgumentException e) {
-        return false;
-      }
+      AbilityType trait = AbilityType.valueOf(option.getType());
+      INamedGenericTrait[] specialties = dataProvider.getSpecialties(trait);
+      return ArrayUtils.contains(specialties, option.getUnderlyingTrait());
     }
   }
 
-	@Override
-	public String[] getAllAvailableTemplateIds() {
-		return equipmentTemplateProvider.getAllAvailableTemplateIds();
-	}
-	
-	@Override
-	public IEquipmentTemplate loadTemplate(String templateId) {
-		return equipmentTemplateProvider.loadTemplate(templateId);
-	}
+  @Override
+  public String[] getAllAvailableTemplateIds() {
+    return equipmentTemplateProvider.getAllAvailableTemplateIds();
+  }
+
+  @Override
+  public IEquipmentTemplate loadTemplate(String templateId) {
+    return equipmentTemplateProvider.loadTemplate(templateId);
+  }
 }

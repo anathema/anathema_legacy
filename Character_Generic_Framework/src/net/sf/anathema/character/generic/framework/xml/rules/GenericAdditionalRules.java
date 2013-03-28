@@ -10,6 +10,7 @@ import net.sf.anathema.character.generic.impl.additional.NullAdditionalRules;
 import net.sf.anathema.character.generic.traits.ITraitType;
 import net.sf.anathema.lib.exception.UnreachableCodeReachedException;
 import net.sf.anathema.lib.lang.clone.ICloneable;
+import org.apache.commons.lang3.ArrayUtils;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -57,7 +58,7 @@ public class GenericAdditionalRules extends NullAdditionalRules implements IClon
 
   @Override
   public boolean isRejected(IBackgroundTemplate backgroundTemplate) {
-    return net.sf.anathema.lib.lang.ArrayUtilities.containsValue(rejectedBackgroundIds, backgroundTemplate.getId());
+    return ArrayUtils.contains(rejectedBackgroundIds, backgroundTemplate.getId());
   }
 
   public void setRejectedBackgrounds(String[] backgroundIds) {

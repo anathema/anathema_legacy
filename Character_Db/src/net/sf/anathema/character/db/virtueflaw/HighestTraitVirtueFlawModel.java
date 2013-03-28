@@ -8,6 +8,7 @@ import net.sf.anathema.character.generic.traits.IGenericTrait;
 import net.sf.anathema.character.generic.traits.ITraitType;
 import net.sf.anathema.character.generic.traits.types.VirtueType;
 import net.sf.anathema.character.library.virtueflaw.model.VirtueFlawModel;
+import org.apache.commons.lang3.ArrayUtils;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -29,7 +30,7 @@ public class HighestTraitVirtueFlawModel extends VirtueFlawModel {
       @Override
       public void configuredChangeOccured() {
         ITraitType[] flawVirtueTypes = getFlawVirtueTypes();
-        if (!net.sf.anathema.lib.lang.ArrayUtilities.containsValue(flawVirtueTypes, getVirtueFlaw().getRoot())) {
+        if (!ArrayUtils.contains(flawVirtueTypes, getVirtueFlaw().getRoot())) {
           getVirtueFlaw().setRoot(sorter.sortDescending(virtues).get(0).getType());
         }
       }

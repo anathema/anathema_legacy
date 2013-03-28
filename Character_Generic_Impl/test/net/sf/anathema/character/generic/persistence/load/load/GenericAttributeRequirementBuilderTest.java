@@ -6,6 +6,7 @@ import net.sf.anathema.character.generic.impl.magic.persistence.builder.prerequi
 import net.sf.anathema.character.generic.magic.charms.IndirectCharmRequirement;
 import net.sf.anathema.character.generic.traits.types.AbilityType;
 import net.sf.anathema.lib.xml.DocumentUtilities;
+import org.apache.commons.lang3.ArrayUtils;
 import org.dom4j.Element;
 import org.junit.Test;
 
@@ -20,8 +21,8 @@ public class GenericAttributeRequirementBuilderTest {
     GenericAttributeRequirementBuilder builder = new GenericAttributeRequirementBuilder();
     builder.setType(AbilityType.Investigation);
     IndirectCharmRequirement[] indirectRequirements = builder.getCharmAttributeRequirements(rootElement);
-    assertTrue(net.sf.anathema.lib.lang.ArrayUtilities.containsValue(indirectRequirements, new CharmAttributeRequirement(new CharmAttribute(
-            "genericInvestigation", //$NON-NLS-1$
-            false), 1)));
+    assertTrue(ArrayUtils.contains(indirectRequirements,
+            new CharmAttributeRequirement(new CharmAttribute("genericInvestigation", //$NON-NLS-1$
+                    false), 1)));
   }
 }

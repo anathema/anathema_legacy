@@ -33,6 +33,7 @@ import net.sf.anathema.character.generic.health.HealthType;
 import net.sf.anathema.character.generic.traits.ITraitType;
 import net.sf.anathema.character.generic.util.IProxy;
 import net.sf.anathema.lib.util.Identified;
+import org.apache.commons.lang3.ArrayUtils;
 
 public class ProxyWeaponStats extends AbstractStats implements IWeaponStats, IProxy<IWeaponStats> {
 
@@ -76,14 +77,14 @@ public class ProxyWeaponStats extends AbstractStats implements IWeaponStats, IPr
   }
 
   private WeaponStatsType getWeaponStatsType() {
-    if (net.sf.anathema.lib.lang.ArrayUtilities.containsValue(getTags(), WeaponTag.BowType)) {
+    if (ArrayUtils.contains(getTags(), WeaponTag.BowType)) {
       return WeaponStatsType.Bow;
     }
-    if (net.sf.anathema.lib.lang.ArrayUtilities.containsValue(getTags(), WeaponTag.FlameType)) {
+    if (ArrayUtils.contains(getTags(), WeaponTag.FlameType)) {
       return WeaponStatsType.Flame;
     }
-    if (net.sf.anathema.lib.lang.ArrayUtilities.containsValue(getTags(), WeaponTag.Thrown)) {
-      if (net.sf.anathema.lib.lang.ArrayUtilities.containsValue(getTags(), WeaponTag.BowBonuses)) {
+    if (ArrayUtils.contains(getTags(), WeaponTag.Thrown)) {
+      if (ArrayUtils.contains(getTags(), WeaponTag.BowBonuses)) {
         return WeaponStatsType.Thrown_BowBonuses;
       } else {
         return WeaponStatsType.Thrown;

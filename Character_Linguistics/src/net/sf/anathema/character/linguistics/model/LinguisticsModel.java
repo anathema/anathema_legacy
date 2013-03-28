@@ -13,6 +13,7 @@ import net.sf.anathema.lib.control.IChangeListener;
 import net.sf.anathema.lib.lang.StringUtilities;
 import net.sf.anathema.lib.util.Identified;
 import net.sf.anathema.lib.util.Identifier;
+import org.apache.commons.lang3.ArrayUtils;
 import org.jmock.example.announcer.Announcer;
 
 import java.util.Arrays;
@@ -68,7 +69,7 @@ public class LinguisticsModel extends AbstractRemovableEntryModel<Identified> im
 
   @Override
   public boolean isPredefinedLanguage(Object object) {
-    return net.sf.anathema.lib.lang.ArrayUtilities.containsValue(languages, object);
+    return ArrayUtils.contains(languages, object);
   }
 
   @Override

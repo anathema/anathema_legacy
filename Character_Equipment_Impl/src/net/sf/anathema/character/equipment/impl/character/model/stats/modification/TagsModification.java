@@ -4,9 +4,9 @@ import com.google.common.collect.Lists;
 import net.sf.anathema.character.equipment.impl.creation.model.WeaponTag;
 import net.sf.anathema.lib.util.Identified;
 import net.sf.anathema.lib.util.Identifier;
+import org.apache.commons.lang3.ArrayUtils;
 
 import static net.sf.anathema.character.equipment.impl.creation.model.WeaponTag.Piercing;
-import static net.sf.anathema.lib.lang.ArrayUtilities.containsValue;
 
 public class TagsModification {
   private BaseMaterial material;
@@ -20,7 +20,7 @@ public class TagsModification {
     if (!material.isAdamantBased()) {
       return tags;
     }
-    if (!containsValue(tags, Piercing)) {
+    if (!ArrayUtils.contains(tags, Piercing)) {
       return addPiercing(tags);
     }
     return addAdamantPiercing(tags);

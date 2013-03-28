@@ -18,6 +18,7 @@ import net.sf.anathema.lib.control.ObjectValueListener;
 import net.sf.anathema.lib.gui.IView;
 import net.sf.anathema.lib.resources.IResources;
 import net.sf.anathema.lib.util.Identified;
+import org.apache.commons.lang3.ArrayUtils;
 
 import javax.swing.JList;
 import javax.swing.event.ListSelectionEvent;
@@ -152,7 +153,7 @@ public class SpellPresenter implements DetailDemandingMagicPresenter {
   private ISpell[] getCircleFilteredSpellList(ISpell[] spells) {
     List<ISpell> spellList = new ArrayList<>();
     for (ISpell spell : spells) {
-      if (net.sf.anathema.lib.lang.ArrayUtilities.containsValue(spellModel.getCircles(), spell.getCircleType())) {
+      if (ArrayUtils.contains(spellModel.getCircles(), spell.getCircleType())) {
         spellList.add(spell);
       }
     }

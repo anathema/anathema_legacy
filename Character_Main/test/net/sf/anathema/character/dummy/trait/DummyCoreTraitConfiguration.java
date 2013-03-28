@@ -21,6 +21,7 @@ import net.sf.anathema.character.model.traits.ICoreTraitConfiguration;
 import net.sf.anathema.lib.collection.MultiEntryMap;
 import net.sf.anathema.lib.exception.NotYetImplementedException;
 import net.sf.anathema.lib.util.Identifier;
+import org.apache.commons.lang3.ArrayUtils;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -58,7 +59,7 @@ public class DummyCoreTraitConfiguration extends AbstractTraitCollection impleme
 
   public boolean containsAllTraits(AttributeGroupType attributeGroupType, ITrait[] traits) {
     for (ITrait trait : traits) {
-      if (!net.sf.anathema.lib.lang.ArrayUtilities.containsValue(getAllTraits(attributeGroupType), trait)) {
+      if (!ArrayUtils.contains(getAllTraits(attributeGroupType), trait)) {
         return false;
       }
     }

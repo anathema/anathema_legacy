@@ -1,14 +1,11 @@
 package net.sf.anathema.lib.lang;
 
 import com.google.common.base.Function;
-import com.google.common.base.Objects;
-import com.google.common.base.Preconditions;
 import com.google.common.base.Predicate;
 import org.apache.commons.lang3.ArrayUtils;
 
 import java.lang.reflect.Array;
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.Collections;
 import java.util.HashMap;
 import java.util.Map;
@@ -21,23 +18,6 @@ public class ArrayUtilities {
       indexArray[index] = index;
     }
     return indexArray;
-  }
-
-  public static Integer[] createIntegerArray(int maximalValue) {
-    Integer[] ranks = new Integer[Math.abs(maximalValue) + 1];
-    for (int index = 0; index < ranks.length; index++) {
-      ranks[index] = Integer.signum(maximalValue) * index;
-    }
-    return ranks;
-  }
-
-  public static Integer[] createIntegerArray(int minimalValue, int maximalValue) {
-    Preconditions.checkState(minimalValue < maximalValue, "MinimalValue must be lower than mximalValue"); //$NON-NLS-1$
-    Integer[] ranks = new Integer[maximalValue - minimalValue + 1];
-    for (int index = 0; index < ranks.length; index++) {
-      ranks[index] = minimalValue + index;
-    }
-    return ranks;
   }
 
   public static <T> T find(Predicate<T> predicate, T[] inputArray) {
@@ -55,13 +35,6 @@ public class ArrayUtilities {
       return index;
     }
     throw new IllegalArgumentException("Value not contained in array: " + value); //$NON-NLS-1$
-  }
-
-  public static int max(int[] array) {
-    int[] arrayCopy = new int[array.length];
-    System.arraycopy(array, 0, arrayCopy, 0, array.length);
-    Arrays.sort(arrayCopy);
-    return arrayCopy[arrayCopy.length - 1];
   }
 
   public static <T> void reorder(T[] objects, int[] originalIndices, int[] newIndices) {
@@ -91,15 +64,6 @@ public class ArrayUtilities {
     Collections.addAll(list, array1);
     Collections.addAll(list, array2);
     return list.toArray(new ArrayFactory<>(clazz).createArray(list.size()));
-  }
-
-  public static <T> boolean containsValue(T[] array, final T value) {
-    for (T element : array) {
-      if (Objects.equal(value, element)) {
-        return true;
-      }
-    }
-    return false;
   }
 
   public static <T> T getFirst(T[] array, Predicate<T> predicate) {
