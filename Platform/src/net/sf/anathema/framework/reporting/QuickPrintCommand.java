@@ -29,6 +29,6 @@ public class QuickPrintCommand implements Command {
       return;
     }
     QuickFileChooser fileChooser = new QuickFileChooser(item, resources);
-    new PrintCommand(resources, model, parent, item, report, fileChooser).execute();
+    new PrintCommand(resources, parent, item, report, fileChooser).execute();
   }
 }

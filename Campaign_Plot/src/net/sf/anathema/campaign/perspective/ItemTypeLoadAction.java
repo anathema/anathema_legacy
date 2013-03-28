@@ -41,13 +41,13 @@ public class ItemTypeLoadAction extends AbstractItemAction {
   }
 
   public static String createToolTip(IResources resources) {
-    return resources.getString("AnathemaPersistence.LoadMenu.Name"); //$NON-NLS-1$
+    return resources.getString("AnathemaPersistence.LoadMenu.Name");
   }
 
   private ItemTypeLoadAction(IApplicationModel anathemaModel, IItemType itemType, IResources resources) {
     super(anathemaModel, resources);
     IItemManagementModel itemManagementModel = anathemaModel.getItemManagement();
-    this.itemCreationOperator = new ItemCreationOperator(new LoadItemCreator(anathemaModel), resources, itemManagementModel, anathemaModel);
+    this.itemCreationOperator = new ItemCreationOperator(new LoadItemCreator(anathemaModel), itemManagementModel);
     this.itemType = itemType;
     new LoadActionEnabler(anathemaModel.getRepository(), itemManagementModel, this, itemType).init();
   }

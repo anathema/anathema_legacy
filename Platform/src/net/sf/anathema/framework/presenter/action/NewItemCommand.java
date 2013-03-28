@@ -35,7 +35,7 @@ public class NewItemCommand implements Command {
   public NewItemCommand(IItemType type, IApplicationModel model, IResources resources, ItemReceiver itemReceiver) {
     this.model = model;
     this.resources = resources;
-    this.itemCreationOperator = new ItemCreationOperator(new NewItemCreator(model), resources, itemReceiver, model);
+    this.itemCreationOperator = new ItemCreationOperator(new NewItemCreator(model), itemReceiver);
     this.type = type;
     this.parent = SwingApplicationFrame.getParentComponent();
   }

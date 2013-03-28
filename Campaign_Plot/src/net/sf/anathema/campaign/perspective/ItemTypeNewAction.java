@@ -38,7 +38,7 @@ public class ItemTypeNewAction extends AbstractItemAction {
   }
 
   public static String createToolTip(IResources resources) {
-    return resources.getString("AnathemaCore.Tools.New.Name"); //$NON-NLS-1$
+    return resources.getString("AnathemaCore.Tools.New.Name");
   }
 
   public static Icon getButtonIcon(IResources resources) {
@@ -47,7 +47,7 @@ public class ItemTypeNewAction extends AbstractItemAction {
 
   public ItemTypeNewAction(IItemType type, IApplicationModel model, IResources resources) {
     super(model, resources);
-    this.itemCreationOperator = new ItemCreationOperator(new NewItemCreator(model), resources, model.getItemManagement(), model);
+    this.itemCreationOperator = new ItemCreationOperator(new NewItemCreator(model), model.getItemManagement());
     this.type = type;
   }
 

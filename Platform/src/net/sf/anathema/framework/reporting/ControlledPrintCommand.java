@@ -35,7 +35,7 @@ public class ControlledPrintCommand implements Command {
       return;
     }
     ControlledFileChooser fileChooser = new ControlledFileChooser(item, resources, parent);
-    new PrintCommand(resources, model, parent, item, report, fileChooser).execute();
+    new PrintCommand(resources, parent, item, report, fileChooser).execute();
   }
 
   private Report selectReport(IItem item) {

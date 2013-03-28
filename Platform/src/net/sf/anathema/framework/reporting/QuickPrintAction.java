@@ -12,8 +12,8 @@ import javax.swing.KeyStroke;
 import java.awt.Component;
 import java.awt.Toolkit;
 import java.awt.event.KeyEvent;
+import java.io.FileNotFoundException;
 import java.io.IOException;
-import java.lang.reflect.InvocationTargetException;
 import java.nio.file.Files;
 import java.nio.file.Path;
 
@@ -74,12 +74,13 @@ public class QuickPrintAction extends AbstractPrintAction {
     }
     try {
       Path selectedFile = getPrintFile(item);
-      printWithProgress(parentComponent, item, selectedReport, selectedFile);
+      performPrint(item, selectedReport, selectedFile);
       openFile(selectedFile);
+
+    } catch (FileNotFoundException e) {
+      handleAlreadyOpenException(parentComponent, e);
     } catch (IOException e) {
       handleFailedToOpenException(parentComponent, e);
-    } catch (InvocationTargetException e) {
-      handleInvocationTargetException(parentComponent, e);
     } catch (Exception e) {
       handleGeneralException(parentComponent, e);
     }
