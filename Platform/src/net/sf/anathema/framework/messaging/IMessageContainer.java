@@ -8,6 +8,4 @@ public interface IMessageContainer {
   void addChangeListener(IChangeListener listener);
 
   IBasicMessage getLatestMessage();
-
-  IBasicMessage[] getAllMessages();
 }

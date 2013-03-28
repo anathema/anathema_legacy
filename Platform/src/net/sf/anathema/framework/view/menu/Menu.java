@@ -31,8 +31,4 @@ public class Menu implements IMenuBarView {
     menu.addSeparator();
   }
 
-  @Override
-  public void setMnemonic(char c) {
-    menu.setMnemonic(c);
-  }
 }

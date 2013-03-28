@@ -40,11 +40,6 @@ public class Messaging implements IMessaging, IMessageContainer {
     changeControl.addListener(listener);
   }
 
-  @Override
-  public synchronized IBasicMessage[] getAllMessages() {
-    return messages.toArray(new IBasicMessage[messages.size()]);
-  }
-
   private int getMessageLimit() {
     return 100;
   }

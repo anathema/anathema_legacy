@@ -5,7 +5,6 @@ import net.sf.anathema.framework.item.IItemType;
 import net.sf.anathema.framework.itemdata.model.IItemData;
 import net.sf.anathema.framework.presenter.itemmanagement.PrintNameAdjuster;
 import net.sf.anathema.lib.control.IChangeListener;
-import net.sf.anathema.lib.util.Identified;
 
 public class AnathemaDataItem extends AbstractAnathemaItem {
 
@@ -15,13 +14,6 @@ public class AnathemaDataItem extends AbstractAnathemaItem {
     super(type);
     Preconditions.checkArgument(type.supportsRepository());
     Preconditions.checkNotNull(itemData); //$NON-NLS-1$
-    this.itemData = itemData;
-    itemData.setPrintNameAdjuster(new PrintNameAdjuster(this));
-  }
-
-  public AnathemaDataItem(IItemType type, Identified identificate, IItemData itemData) {
-    super(type, identificate);
-    Preconditions.checkNotNull(itemData);
     this.itemData = itemData;
     itemData.setPrintNameAdjuster(new PrintNameAdjuster(this));
   }

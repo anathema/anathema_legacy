@@ -30,12 +30,13 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.util.List;
 
-import static net.sf.anathema.campaign.persistence.ISeriesPersistenceConstants.ATTRIB_REPOSITORY_ID;
-import static net.sf.anathema.campaign.persistence.ISeriesPersistenceConstants.ATTRIB_REPOSITORY_PRINT_NAME;
 import static net.sf.anathema.campaign.persistence.ISeriesPersistenceConstants.TAG_NAME;
 import static net.sf.anathema.campaign.persistence.ISeriesPersistenceConstants.TAG_PLOT;
 import static net.sf.anathema.campaign.persistence.ISeriesPersistenceConstants.TAG_SERIES_ROOT;
 import static net.sf.anathema.campaign.persistence.ISeriesPersistenceConstants.TAG_SUMMARY;
+
+import static net.sf.anathema.framework.persistence.IAnathemaXmlConstants.ATTRIB_REPOSITORY_ID;
+import static net.sf.anathema.framework.persistence.IAnathemaXmlConstants.ATTRIB_REPOSITORY_PRINT_NAME;
 
 public class SeriesPersister implements IRepositoryItemPersister {
 
@@ -57,9 +58,8 @@ public class SeriesPersister implements IRepositoryItemPersister {
     DocumentUtilities.save(mainDocument, writeAccess.createMainOutputStream());
   }
 
-  private void saveSeries(IRepositoryWriteAccess writeAccess, Element rootElement, ISeries series)
-      throws RepositoryException,
-      IOException {
+  private void saveSeries(IRepositoryWriteAccess writeAccess, Element rootElement,
+                          ISeries series) throws RepositoryException, IOException {
     saveItemDescription(rootElement, series.getPlot().getRootElement().getDescription());
     savePlot(series.getPlot(), rootElement, writeAccess);
   }
@@ -69,15 +69,13 @@ public class SeriesPersister implements IRepositoryItemPersister {
     textPersister.saveTextualDescription(rootElement, TAG_SUMMARY, description.getContent());
   }
 
-  private void savePlot(IPlotModel plot, Element parent, IRepositoryWriteAccess writeAccess)
-      throws RepositoryException,
-      IOException {
+  private void savePlot(IPlotModel plot, Element parent,
+                        IRepositoryWriteAccess writeAccess) throws RepositoryException, IOException {
     saveSubElements(plot.getRootElement(), parent.addElement(TAG_PLOT), writeAccess);
   }
 
-  private void saveSubElements(IPlotElement plotElement, Element parent, IRepositoryWriteAccess writeAccess)
-      throws RepositoryException,
-      IOException {
+  private void saveSubElements(IPlotElement plotElement, Element parent,
+                               IRepositoryWriteAccess writeAccess) throws RepositoryException, IOException {
     if (!plotElement.getTimeUnit().hasSuccessor()) {
       return;
     }
@@ -93,9 +91,8 @@ public class SeriesPersister implements IRepositoryItemPersister {
     }
   }
 
-  private void savePlotFile(IPlotElement subElement, IRepositoryWriteAccess writeAccess)
-      throws RepositoryException,
-      IOException {
+  private void savePlotFile(IPlotElement subElement,
+                            IRepositoryWriteAccess writeAccess) throws RepositoryException, IOException {
     Element plotXMLElement = DocumentHelper.createElement(subElement.getTimeUnit().getId());
     plotXMLElement.addAttribute(ATTRIB_REPOSITORY_ID, subElement.getId());
     plotXMLElement.addAttribute(ATTRIB_REPOSITORY_PRINT_NAME, subElement.getDescription().getName().getText());
@@ -120,18 +117,15 @@ public class SeriesPersister implements IRepositoryItemPersister {
       SAXReader saxReader = new SAXReader();
       Document document = saxReader.read(stream);
       return load(document, readAccess);
-    }
-    catch (DocumentException e) {
+    } catch (DocumentException e) {
       throw new PersistenceException(e);
-    }
-    finally {
+    } finally {
       IOUtils.closeQuietly(stream);
     }
   }
 
-  private IItem load(Document xmlDocument, IRepositoryReadAccess readAccess)
-      throws PersistenceException,
-      RepositoryException {
+  private IItem load(Document xmlDocument,
+                     IRepositoryReadAccess readAccess) throws PersistenceException, RepositoryException {
     ISeries seriesData = new Series();
     IItem item = new AnathemaDataItem(campaignType, seriesData);
     Element documentRoot = xmlDocument.getRootElement();
@@ -141,9 +135,8 @@ public class SeriesPersister implements IRepositoryItemPersister {
     return item;
   }
 
-  private void loadPlot(IPlotModel plot, Element parent, IRepositoryReadAccess readAccess)
-      throws RepositoryException,
-      PersistenceException {
+  private void loadPlot(IPlotModel plot, Element parent,
+                        IRepositoryReadAccess readAccess) throws RepositoryException, PersistenceException {
     Element plotElement = parent.element(TAG_PLOT);
     if (plotElement == null) {
       return;
@@ -151,23 +144,20 @@ public class SeriesPersister implements IRepositoryItemPersister {
     loadPlotElement(plotElement, plot.getRootElement(), readAccess);
   }
 
-  private void loadPlotElement(Element element, IPlotElement parentElement, IRepositoryReadAccess readAccess)
-      throws RepositoryException,
-      PersistenceException {
+  private void loadPlotElement(Element element, IPlotElement parentElement,
+                               IRepositoryReadAccess readAccess) throws RepositoryException, PersistenceException {
     List<Element> subXMLElements = ElementUtilities.elements(element);
     for (Object elementObject : subXMLElements) {
       Element plotItemXMLElement = (Element) elementObject;
       String repositoryId = plotItemXMLElement.attributeValue(ATTRIB_REPOSITORY_ID);
-      IPlotElement subElement = parentElement.addChild(
-          loadPlotElementDescription(repositoryId, readAccess),
-          repositoryId);
+      IPlotElement subElement = parentElement.addChild(loadPlotElementDescription(repositoryId, readAccess),
+              repositoryId);
       loadPlotElement(plotItemXMLElement, subElement, readAccess);
     }
   }
 
-  private IItemDescription loadPlotElementDescription(String repositoryId, IRepositoryReadAccess readAccess)
-      throws RepositoryException,
-      PersistenceException {
+  private IItemDescription loadPlotElementDescription(String repositoryId,
+                                                      IRepositoryReadAccess readAccess) throws RepositoryException, PersistenceException {
     InputStream stream = null;
     try {
       stream = readAccess.openSubInputStream(repositoryId);
@@ -176,11 +166,9 @@ public class SeriesPersister implements IRepositoryItemPersister {
       IItemDescription description = new ItemDescription();
       restoreItemDescription(subFileRootElement, description);
       return description;
-    }
-    catch (DocumentException e) {
+    } catch (DocumentException e) {
       throw new PersistenceException(e);
-    }
-    finally {
+    } finally {
       IOUtils.closeQuietly(stream);
     }
   }

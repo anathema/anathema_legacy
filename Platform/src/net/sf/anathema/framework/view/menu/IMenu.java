@@ -7,6 +7,4 @@ public interface IMenu {
   void addMenuItem(Action action);
 
   void addSeparator();
-
-  void setMnemonic(char c);
 }

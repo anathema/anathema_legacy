@@ -15,8 +15,4 @@ public class NullMenu implements IMenu {
     //nothing to do
   }
 
-  @Override
-  public void setMnemonic(char c) {
-    //nothing to do
-  }
 }

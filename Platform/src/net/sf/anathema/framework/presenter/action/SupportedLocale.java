@@ -10,7 +10,7 @@ public enum SupportedLocale {
 
   Spanish(new Locale("es", "", "")),
       
-  Portuguese(new Locale("pt", "", "")); //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$ //$NON-NLS-4$
+  Portuguese(new Locale("pt", "", ""));
 
   private final Locale locale;
 

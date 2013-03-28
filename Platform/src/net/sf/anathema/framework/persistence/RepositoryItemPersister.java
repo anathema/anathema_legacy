@@ -6,7 +6,10 @@ import net.sf.anathema.lib.exception.PersistenceException;
 import net.sf.anathema.lib.xml.ElementUtilities;
 import org.dom4j.Element;
 
-public class RepositoryItemPersister implements IAnathemaXmlConstants {
+import static net.sf.anathema.framework.persistence.IAnathemaXmlConstants.ATTRIB_REPOSITORY_ID;
+import static net.sf.anathema.framework.persistence.IAnathemaXmlConstants.ATTRIB_REPOSITORY_PRINT_NAME;
+
+public class RepositoryItemPersister {
 
   public void save(Element element, IItem item) {
     String repositoryId = item.getId();
