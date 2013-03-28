@@ -4,7 +4,6 @@ import com.google.common.base.Function;
 import com.google.common.base.Objects;
 import com.google.common.base.Preconditions;
 import com.google.common.base.Predicate;
-import net.sf.anathema.lib.util.CastingTransformer;
 import org.apache.commons.lang3.ArrayUtils;
 
 import java.lang.reflect.Array;
@@ -122,9 +121,5 @@ public class ArrayUtilities {
       transformed[i] = transformer.apply(array[i]);
     }
     return transformed;
-  }
-
-  public static <I, O> O[] transform(I[] array, Class<O> clazz) {
-    return transform(array, clazz, new CastingTransformer<I, O>());
   }
 }

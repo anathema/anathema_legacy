@@ -5,25 +5,23 @@ import com.google.common.base.Objects;
 import javax.swing.AbstractListModel;
 import javax.swing.MutableComboBoxModel;
 import java.io.Serializable;
+import java.util.Collections;
 import java.util.List;
 import java.util.Vector;
 
 public class UnselectingComboBoxModel extends AbstractListModel implements MutableComboBoxModel, Serializable {
-  private List<Object> objects;
+  private final List<Object> objects = new Vector<>();
   private Object selectedObject;
 
-  public UnselectingComboBoxModel() {
-    objects = new Vector<>();
-  }
-
   public UnselectingComboBoxModel(Object items[]) {
-    this();
     if (items == null) {
       return;
     }
-    for (Object item : items) {
-      objects.add(item);
-    }
+    Collections.addAll(objects, items);
+  }
+
+  public UnselectingComboBoxModel() {
+    //nothing to do
   }
 
   @Override
