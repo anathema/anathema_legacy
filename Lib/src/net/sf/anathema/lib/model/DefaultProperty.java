@@ -8,7 +8,7 @@ public class DefaultProperty<T> implements IProperty<T> {
   private T value;
 
   @Override
-  public T getValue() {
+  public T get() {
     return value;
   }
 

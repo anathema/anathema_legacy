@@ -45,7 +45,7 @@ public abstract class SmartChangeableModel implements Cloneable, IChangeableMode
     Lock readLock = readWriteLock.readLock();
     readLock.lock();
     try {
-      return property.getValue();
+      return property.get();
     }
     finally {
       readLock.unlock();
@@ -56,7 +56,7 @@ public abstract class SmartChangeableModel implements Cloneable, IChangeableMode
     Lock writeLock = readWriteLock.writeLock();
     writeLock.lock();
     try {
-      if (Objects.equal(property.getValue(), value)) {
+      if (Objects.equal(property.get(), value)) {
         return;
       }
       property.setValue(value);

@@ -1,8 +1,8 @@
 package net.sf.anathema.lib.gui.dialog.widgets;
 
 import com.google.common.base.Preconditions;
+import com.google.common.base.Supplier;
 import net.sf.anathema.lib.model.ObjectModel;
-import net.sf.anathema.lib.provider.Provider;
 
 import java.awt.Toolkit;
 import java.awt.datatransfer.Clipboard;
@@ -14,12 +14,12 @@ public final class TextComponentKeyListener extends KeyAdapter {
 
   private final TextContent content;
   private final ObjectModel<TextSelection> selectionModel;
-  private final Provider<Toolkit> toolkitProvider;
+  private final Supplier<Toolkit> toolkitProvider;
 
   public TextComponentKeyListener(
       TextContent content,
       ObjectModel<TextSelection> selectionModel,
-      Provider<Toolkit> toolkitProvider) {
+      Supplier<Toolkit> toolkitProvider) {
     Preconditions.checkNotNull(content);
     Preconditions.checkNotNull(selectionModel);
     Preconditions.checkNotNull(toolkitProvider);
@@ -44,12 +44,11 @@ public final class TextComponentKeyListener extends KeyAdapter {
     if (e.getKeyCode() == 'C') {
       copyToClipboard();
       e.consume();
-      return;
     }
   }
 
   private void copyToClipboard() {
-    TextSelection selection = selectionModel.getValue();
+    TextSelection selection = selectionModel.get();
     TextPosition start = selection == null ? new TextPosition(0, 0) : selection.startPosition;
     TextPosition end = selection == null
         ? content.getLastTextPosition()
@@ -60,7 +59,7 @@ public final class TextComponentKeyListener extends KeyAdapter {
 
   private void writeToSystemClipboard(String string) {
     StringSelection stringSelection = new StringSelection(string);
-    Clipboard clipboard = toolkitProvider.getValue().getSystemClipboard();
+    Clipboard clipboard = toolkitProvider.get().getSystemClipboard();
     clipboard.setContents(stringSelection, stringSelection);
   }
 

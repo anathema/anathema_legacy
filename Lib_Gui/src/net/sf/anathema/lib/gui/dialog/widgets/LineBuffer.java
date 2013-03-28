@@ -77,11 +77,11 @@ public class LineBuffer {
       TextBlock block = buffer.get(blockIndex).block;
       int blockWidth = metrics.stringWidth(block.text);
       int absoluteBlockIndex = blockIndex + blockIndexOffset;
-      Range selectionRange = getSelectionRangeIfAny(selectionModel.getValue(), absoluteBlockIndex, block);
+      Range selectionRange = getSelectionRangeIfAny(selectionModel.get(), absoluteBlockIndex, block);
       blockRenderer.handleText(absoluteBlockIndex, block.text, x, lineIndex, metrics.getHeight(), selectionRange);
       x += blockWidth;
       TextBlockDelimiter delimiter = block.delimiter;
-      boolean delimiterSelected = isDelimiterSelected(selectionModel.getValue(), block.text.length(), absoluteBlockIndex);
+      boolean delimiterSelected = isDelimiterSelected(selectionModel.get(), block.text.length(), absoluteBlockIndex);
       if (delimiter.isNewLine()) {
         blockRenderer.handleLineEndsAt(absoluteBlockIndex, block.text.length(), x, lineIndex, metrics.getHeight());
       } else if (delimiter.isWhitespace()) {

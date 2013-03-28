@@ -1,7 +1,7 @@
 package net.sf.anathema.lib.model;
 
-import net.sf.anathema.lib.provider.Provider;
+import com.google.common.base.Supplier;
 
-public interface IProperty<T> extends ISettable<T>, Provider<T> {
+public interface IProperty<T> extends ISettable<T>, Supplier<T> {
   //nothing to do
 }

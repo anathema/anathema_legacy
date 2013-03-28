@@ -65,7 +65,7 @@ public class DialogHeaderPanel {
   }
 
   private void updateDescription() {
-    String description = descriptionModel.getValue();
+    String description = descriptionModel.get();
     descriptionLabel.setText(description);
   }
 }

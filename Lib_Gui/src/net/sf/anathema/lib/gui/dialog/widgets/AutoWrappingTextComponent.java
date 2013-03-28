@@ -1,10 +1,10 @@
 package net.sf.anathema.lib.gui.dialog.widgets;
 
 import com.google.common.base.Preconditions;
+import com.google.common.base.Supplier;
 import net.sf.anathema.lib.control.IChangeListener;
 import net.sf.anathema.lib.gui.swing.SwingColors;
 import net.sf.anathema.lib.model.ObjectModel;
-import net.sf.anathema.lib.provider.Provider;
 import net.sf.anathema.lib.text.TextAlignment;
 
 import javax.swing.JComponent;
@@ -55,8 +55,7 @@ public class AutoWrappingTextComponent extends JComponent {
           return;
         }
         clearSelection();
-        TextPosition position = getTextPositionAt(e.getPoint());
-        startPosition = position;
+        startPosition = getTextPositionAt(e.getPoint());
         requestFocus();
       }
 
@@ -97,9 +96,9 @@ public class AutoWrappingTextComponent extends JComponent {
         repaint();
       }
     });
-    addKeyListener(new TextComponentKeyListener(content, selectionModel, new Provider<Toolkit>() {
+    addKeyListener(new TextComponentKeyListener(content, selectionModel, new Supplier<Toolkit>() {
       @Override
-      public Toolkit getValue() {
+      public Toolkit get() {
         return getToolkit();
       }
     }));
