@@ -14,17 +14,12 @@ public class ToolBarUtilities {
 
   public static AbstractButton createToolBarButton(Action action) {
     AbstractButton button = createButton(action);
-    button.setAction(action);
-    configureToolBarButton(button, new DefaultToolBarButtonConfiguration());
+    configureToolBarButton(button);
     return button;
   }
 
   public static void configureToolBarButton(AbstractButton button) {
-    configureToolBarButton(button, new DefaultToolBarButtonConfiguration());
-  }
-
-  private static void configureToolBarButton(AbstractButton button, IToolBarButtonConfiguration configuration) {
-    button.setFocusPainted(configuration.isFocusPainted());
+    button.setFocusPainted(false);
     button.setMargin(TOOLBAR_BUTTON_MARGIN);
     if (button.getToolTipText() == null) {
       button.setToolTipText(button.getText());
@@ -38,7 +33,7 @@ public class ToolBarUtilities {
     if (action instanceof SmartToggleAction) {
       return ActionWidgetFactory.createToggleButton((SmartToggleAction) action);
     } else {
-      return new JButton();
+      return new JButton(action);
     }
   }
 }
