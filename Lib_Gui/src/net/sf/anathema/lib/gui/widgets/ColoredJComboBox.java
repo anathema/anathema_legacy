@@ -13,7 +13,6 @@ import java.awt.Color;
 
 public class ColoredJComboBox extends JComboBox {
 
-
 	public ColoredJComboBox(ComboBoxModel model) {
 		super(model);
 	}
