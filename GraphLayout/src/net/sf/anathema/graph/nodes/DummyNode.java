@@ -1,7 +1,6 @@
 package net.sf.anathema.graph.nodes;
 
 import com.google.common.base.Preconditions;
-import org.apache.commons.lang3.ArrayUtils;
 
 public class DummyNode implements ISimpleNode {
 
