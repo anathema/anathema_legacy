@@ -10,6 +10,4 @@ public interface IActionAddableListView<T> {
   T[] getSelectedItems();
 
   void addAction(Action action);
-
-  void refreshView();
 }
