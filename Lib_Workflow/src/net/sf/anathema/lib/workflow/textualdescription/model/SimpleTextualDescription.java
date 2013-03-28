@@ -1,8 +1,8 @@
 package net.sf.anathema.lib.workflow.textualdescription.model;
 
 import com.google.common.base.Objects;
+import com.google.common.base.Strings;
 import net.sf.anathema.lib.control.ObjectValueListener;
-import net.sf.anathema.lib.lang.StringUtilities;
 import net.sf.anathema.lib.workflow.textualdescription.ITextualDescription;
 import org.jmock.example.announcer.Announcer;
 
@@ -50,6 +50,6 @@ public class SimpleTextualDescription extends AbstractTextualDescription impleme
 
   @Override
   public boolean isEmpty() {
-    return StringUtilities.isNullOrEmpty(getText());
+    return Strings.isNullOrEmpty(getText());
   }
 }

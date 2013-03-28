@@ -1,11 +1,11 @@
 package net.sf.anathema.framework.persistence;
 
+import com.google.common.base.Strings;
 import net.sf.anathema.framework.styledtext.model.IStyledTextualDescription;
 import net.sf.anathema.framework.styledtext.model.ITextFormat;
 import net.sf.anathema.framework.styledtext.model.ITextPart;
 import net.sf.anathema.framework.styledtext.presentation.TextFormat;
 import net.sf.anathema.framework.styledtext.presentation.TextPart;
-import net.sf.anathema.lib.lang.StringUtilities;
 import net.sf.anathema.lib.text.FontStyle;
 import net.sf.anathema.lib.workflow.textualdescription.ITextualDescription;
 import net.sf.anathema.lib.xml.ElementUtilities;
@@ -22,7 +22,7 @@ public class TextPersister {
   private static final String TAG_PART = "Part"; //$NON-NLS-1$
 
   public void saveNonEmptyText(Element parent, String tagName, String text) {
-    if (StringUtilities.isNullOrEmpty(text)) {
+    if (Strings.isNullOrEmpty(text)) {
       return;
     }
     parent.addElement(tagName).addCDATA(text);

@@ -1,5 +1,6 @@
 package net.sf.anathema.character.linguistics.view;
 
+import com.google.common.base.Strings;
 import net.miginfocom.layout.CC;
 import net.sf.anathema.framework.presenter.view.IButtonControlledObjectSelectionView;
 import net.sf.anathema.framework.presenter.view.ITextFieldComboBoxEditor;
@@ -7,7 +8,6 @@ import net.sf.anathema.lib.control.ObjectValueListener;
 import net.sf.anathema.lib.gui.dialog.events.AbstractDocumentChangeListener;
 import net.sf.anathema.lib.gui.layout.LayoutUtils;
 import net.sf.anathema.lib.gui.widgets.ColoredJComboBox;
-import net.sf.anathema.lib.lang.StringUtilities;
 
 import javax.swing.DefaultComboBoxModel;
 import javax.swing.Icon;
@@ -46,10 +46,10 @@ public class ButtonControlledObjectSelectionView<V> implements IButtonControlled
       editField.getDocument().addDocumentListener(new AbstractDocumentChangeListener() {
         @Override
         protected void documentChanged() {
-          addButton.setEnabled(!StringUtilities.isNullOrEmpty(editField.getText()));
+          addButton.setEnabled(!Strings.isNullOrEmpty(editField.getText()));
         }
       });
-      addButton.setEnabled(!StringUtilities.isNullOrEmpty(editField.getText()));
+      addButton.setEnabled(!Strings.isNullOrEmpty(editField.getText()));
     }
   }
 

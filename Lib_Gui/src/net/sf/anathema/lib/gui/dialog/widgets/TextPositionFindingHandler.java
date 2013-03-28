@@ -1,7 +1,7 @@
 package net.sf.anathema.lib.gui.dialog.widgets;
 
 import com.google.common.base.Preconditions;
-import net.sf.anathema.lib.util.Range;
+import net.sf.anathema.lib.number.Range;
 
 import java.awt.FontMetrics;
 import java.awt.Point;

@@ -1,7 +1,7 @@
 package net.sf.anathema.lib.gui.dialog.widgets;
 
 import net.sf.anathema.lib.number.MaxIntegerValueBuilder;
-import net.sf.anathema.lib.util.Range;
+import net.sf.anathema.lib.number.Range;
 
 public class LineCountingRenderingHandler implements IBlockRenderingHandler {
   private final MaxIntegerValueBuilder maxLineNumberBuilder = new MaxIntegerValueBuilder(0);

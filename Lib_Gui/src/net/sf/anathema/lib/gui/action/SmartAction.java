@@ -1,10 +1,10 @@
 package net.sf.anathema.lib.gui.action;
 
 import com.google.common.base.Preconditions;
+import com.google.common.base.Strings;
 import net.sf.anathema.lib.gui.icon.IconImageIcon;
 import net.sf.anathema.lib.gui.swing.GuiUtilities;
 import net.sf.anathema.lib.gui.swing.IEnableable;
-import net.sf.anathema.lib.lang.StringUtilities;
 
 import javax.swing.AbstractAction;
 import javax.swing.Action;
@@ -37,7 +37,7 @@ public abstract class SmartAction extends AbstractAction implements IEnableable 
     setName(configuration.getName());
     setIcon(configuration.getIcon());
     String toolTipText = configuration.getToolTipText();
-    setToolTipText(StringUtilities.isNullOrEmpty(toolTipText) ? null : toolTipText);
+    setToolTipText(Strings.isNullOrEmpty(toolTipText) ? null : toolTipText);
   }
 
   @Override

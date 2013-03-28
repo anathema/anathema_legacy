@@ -1,6 +1,6 @@
 package net.sf.anathema.namegenerator.exalted.domain;
 
-import net.sf.anathema.lib.random.RandomUtilities;
+import net.sf.anathema.lib.util.RandomUtilities;
 import net.sf.anathema.namegenerator.domain.INameGenerator;
 import net.sf.anathema.namegenerator.domain.category.CategorizedTokenNameFactory;
 import net.sf.anathema.namegenerator.domain.category.CategorizedTokenNameTemplate;

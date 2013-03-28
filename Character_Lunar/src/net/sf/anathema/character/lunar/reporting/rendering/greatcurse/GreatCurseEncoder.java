@@ -1,5 +1,6 @@
 package net.sf.anathema.character.lunar.reporting.rendering.greatcurse;
 
+import com.google.common.base.Strings;
 import com.itextpdf.text.Chunk;
 import com.itextpdf.text.DocumentException;
 import com.itextpdf.text.Font;
@@ -44,7 +45,7 @@ public class GreatCurseEncoder implements ContentEncoder {
     String name = virtueFlaw.getName().getText();
     String condition = virtueFlaw.getLimitBreak().getText();
     boolean nameDefined = !StringUtilities.isNullOrTrimmedEmpty(name);
-    boolean conditionDefined = !StringUtilities.isNullOrEmpty(condition);
+    boolean conditionDefined = !Strings.isNullOrEmpty(condition);
     if (!nameDefined && !conditionDefined) {
       encodeLines(graphics, bounds, leading, textBounds.getMaxY());
     }

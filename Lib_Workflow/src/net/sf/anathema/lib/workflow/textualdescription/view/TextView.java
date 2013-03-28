@@ -1,9 +1,9 @@
 package net.sf.anathema.lib.workflow.textualdescription.view;
 
 import com.google.common.base.Objects;
+import com.google.common.base.Strings;
 import net.sf.anathema.lib.control.ObjectValueListener;
 import net.sf.anathema.lib.gui.event.AbstractDocumentListener;
-import net.sf.anathema.lib.lang.StringUtilities;
 import net.sf.anathema.lib.workflow.textualdescription.SwingTextView;
 
 import javax.swing.JComponent;
@@ -38,7 +38,7 @@ public class TextView implements SwingTextView {
       @Override
       protected void updateText(DocumentEvent e) {
         String currentText = textComponent.getText();
-        listener.valueChanged(StringUtilities.isNullOrEmpty(currentText) ? null : currentText);
+        listener.valueChanged(Strings.isNullOrEmpty(currentText) ? null : currentText);
       }
     });
   }

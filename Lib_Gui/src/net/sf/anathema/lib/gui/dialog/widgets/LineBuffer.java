@@ -2,7 +2,7 @@ package net.sf.anathema.lib.gui.dialog.widgets;
 
 import net.sf.anathema.lib.model.ObjectModel;
 import net.sf.anathema.lib.text.TextAlignment;
-import net.sf.anathema.lib.util.Range;
+import net.sf.anathema.lib.number.Range;
 
 import java.awt.FontMetrics;
 import java.util.ArrayList;

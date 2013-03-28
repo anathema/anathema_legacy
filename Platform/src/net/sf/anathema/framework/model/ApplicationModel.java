@@ -14,7 +14,7 @@ import net.sf.anathema.framework.reporting.IReportRegistry;
 import net.sf.anathema.framework.repository.IRepository;
 import net.sf.anathema.framework.repository.Repository;
 import net.sf.anathema.initialization.reflections.ResourceLoader;
-import net.sf.anathema.lib.random.RandomUtilities;
+import net.sf.anathema.lib.util.RandomUtilities;
 import net.sf.anathema.lib.registry.IRegistry;
 import net.sf.anathema.lib.registry.Registry;
 import net.sf.anathema.lib.resources.IResources;

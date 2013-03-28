@@ -1,5 +1,6 @@
 package net.sf.anathema.character.reporting.text;
 
+import com.google.common.base.Strings;
 import com.itextpdf.text.Document;
 import com.itextpdf.text.DocumentException;
 import com.itextpdf.text.Phrase;
@@ -13,7 +14,6 @@ import net.sf.anathema.framework.reporting.ReportException;
 import net.sf.anathema.framework.reporting.pdf.AbstractPdfReport;
 import net.sf.anathema.framework.reporting.pdf.PdfReportUtils;
 import net.sf.anathema.framework.repository.IItem;
-import net.sf.anathema.lib.lang.StringUtilities;
 import net.sf.anathema.lib.resources.IResources;
 
 public class TextReport extends AbstractPdfReport {
@@ -55,7 +55,7 @@ public class TextReport extends AbstractPdfReport {
   private void createConceptParagraph(MultiColumnText columnText, GenericDescription description) throws DocumentException {
     TextPartFactory factory = new TextPartFactory(utils);
     String conceptText = description.getConceptText();
-    if (!StringUtilities.isNullOrEmpty(conceptText)) {
+    if (!Strings.isNullOrEmpty(conceptText)) {
       Phrase conceptPhrase =
               factory.createTextParagraph(factory.createBoldTitle(resources.getString("Sheet.Label.Concept") + " ")); //$NON-NLS-1$ //$NON-NLS-2$
       conceptPhrase.add(factory.createTextChunk(conceptText));
@@ -72,9 +72,6 @@ public class TextReport extends AbstractPdfReport {
 
   @Override
   public boolean supports(IItem item) {
-    if (item == null) {
-      return false;
-    }
-    return item.getItemData() instanceof ICharacter;
+    return item != null && item.getItemData() instanceof ICharacter;
   }
 }

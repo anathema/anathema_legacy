@@ -103,7 +103,7 @@ public class StringUtilities {
 
   public static String joinStringsWithDelimiter(String[] stringsToJoin, String delimiter, String nullString) {
     String finalText = Joiner.on(delimiter).join(stringsToJoin);
-    if (isNullOrEmpty(finalText)) {
+    if (Strings.isNullOrEmpty(finalText)) {
       finalText = nullString;
     }
     return finalText;
@@ -115,10 +115,6 @@ public class StringUtilities {
 
   public static String cutOffLastCharacters(String string, int characterCount) {
     return string.substring(0, string.length() - characterCount);
-  }
-
-  public static boolean isNullOrEmpty(String text) {
-    return text == null || text.length() == 0;
   }
 
   public static boolean isNullOrTrimmedEmpty(String text) {

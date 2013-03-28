@@ -1,8 +1,8 @@
 package net.sf.anathema.lib.gui.ui;
 
 import com.google.common.base.Preconditions;
+import com.google.common.base.Strings;
 import net.sf.anathema.lib.gui.icon.DisabledIconDecorator;
-import net.sf.anathema.lib.lang.StringUtilities;
 
 import javax.swing.DefaultListCellRenderer;
 import javax.swing.Icon;
@@ -30,7 +30,7 @@ public class ObjectUiListCellRenderer extends DefaultListCellRenderer {
     String label = ui.getLabel(value);
     setText(label == null || label.equals("") ? " " : label);
     String toolTipText = ui.getToolTipText(value);
-    setToolTipText(StringUtilities.isNullOrEmpty(toolTipText) ? null : toolTipText);
+    setToolTipText(Strings.isNullOrEmpty(toolTipText) ? null : toolTipText);
     return this;
   }
 }

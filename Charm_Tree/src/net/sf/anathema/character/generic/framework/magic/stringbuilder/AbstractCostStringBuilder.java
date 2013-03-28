@@ -1,11 +1,11 @@
 package net.sf.anathema.character.generic.framework.magic.stringbuilder;
 
+import com.google.common.base.Strings;
 import net.sf.anathema.character.generic.magic.general.ICost;
 import net.sf.anathema.lib.gui.TooltipBuilder;
 import net.sf.anathema.lib.resources.IResources;
 
 import static net.sf.anathema.lib.lang.StringUtilities.EMPTY_STRING;
-import static net.sf.anathema.lib.lang.StringUtilities.isNullOrEmpty;
 
 public abstract class AbstractCostStringBuilder<T extends ICost> implements ICostStringBuilder<T> {
 
@@ -31,11 +31,11 @@ public abstract class AbstractCostStringBuilder<T extends ICost> implements ICos
       }
     }
     catch (NumberFormatException e) {
-      if (!isNullOrEmpty(value)) {
+      if (!Strings.isNullOrEmpty(value)) {
         costString = value;
       }
     }
-    if (!isNullOrEmpty(text)) {
+    if (!Strings.isNullOrEmpty(text)) {
       costString = costString.concat(TooltipBuilder.Space + text);
     }
     return costString;

@@ -1,5 +1,6 @@
 package net.sf.anathema.character.library.trait.specialties;
 
+import com.google.common.base.Strings;
 import net.sf.anathema.character.generic.framework.ITraitReference;
 import net.sf.anathema.character.generic.framework.additionaltemplate.listening.ICharacterChangeListener;
 import net.sf.anathema.character.generic.framework.additionaltemplate.model.ICharacterModelContext;
@@ -15,7 +16,6 @@ import net.sf.anathema.character.library.trait.visitor.IAggregatedTrait;
 import net.sf.anathema.character.library.trait.visitor.IDefaultTrait;
 import net.sf.anathema.character.library.trait.visitor.ITraitVisitor;
 import net.sf.anathema.lib.control.IChangeListener;
-import net.sf.anathema.lib.lang.StringUtilities;
 import org.jmock.example.announcer.Announcer;
 
 import java.util.ArrayList;
@@ -165,7 +165,7 @@ public class SpecialtiesConfiguration implements ISpecialtiesConfiguration {
 
   @Override
   public boolean isEntryComplete() {
-    return !StringUtilities.isNullOrEmpty(currentName) && currentType != null;
+    return !Strings.isNullOrEmpty(currentName) && currentType != null;
   }
 
   @Override

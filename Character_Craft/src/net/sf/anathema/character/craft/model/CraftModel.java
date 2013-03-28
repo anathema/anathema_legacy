@@ -1,5 +1,6 @@
 package net.sf.anathema.character.craft.model;
 
+import com.google.common.base.Strings;
 import net.sf.anathema.character.craft.presenter.ICraftModel;
 import net.sf.anathema.character.generic.framework.additionaltemplate.listening.ICharacterChangeListener;
 import net.sf.anathema.character.generic.framework.additionaltemplate.model.ICharacterModelContext;
@@ -8,7 +9,6 @@ import net.sf.anathema.character.library.removableentry.presenter.IRemovableEntr
 import net.sf.anathema.character.library.trait.subtrait.ISubTrait;
 import net.sf.anathema.character.library.trait.subtrait.ISubTraitListener;
 import net.sf.anathema.character.library.trait.visitor.IAggregatedTrait;
-import net.sf.anathema.lib.lang.StringUtilities;
 import org.jmock.example.announcer.Announcer;
 
 import java.util.Arrays;
@@ -64,7 +64,7 @@ public class CraftModel implements ICraftModel {
   }
 
   private boolean isEntryAllowed() {
-    return !StringUtilities.isNullOrEmpty(currentName);
+    return !Strings.isNullOrEmpty(currentName);
   }
 
   @Override

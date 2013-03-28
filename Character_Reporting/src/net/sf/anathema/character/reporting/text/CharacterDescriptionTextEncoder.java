@@ -1,5 +1,6 @@
 package net.sf.anathema.character.reporting.text;
 
+import com.google.common.base.Strings;
 import com.itextpdf.text.Chunk;
 import com.itextpdf.text.DocumentException;
 import com.itextpdf.text.Element;
@@ -9,7 +10,6 @@ import com.itextpdf.text.Phrase;
 import com.itextpdf.text.pdf.MultiColumnText;
 import net.sf.anathema.character.generic.character.IGenericDescription;
 import net.sf.anathema.framework.reporting.pdf.PdfReportUtils;
-import net.sf.anathema.lib.lang.StringUtilities;
 import net.sf.anathema.lib.resources.IResources;
 
 public class CharacterDescriptionTextEncoder extends AbstractTextEncoder {
@@ -20,29 +20,30 @@ public class CharacterDescriptionTextEncoder extends AbstractTextEncoder {
 
   public void createParagraphs(MultiColumnText columnText, IGenericDescription description) throws DocumentException {
     columnText.addElement(createNameParagraph(description.getName()));
-    if (!StringUtilities.isNullOrEmpty(description.getPeriphrase())) {
+    if (!Strings.isNullOrEmpty(description.getPeriphrase())) {
       Paragraph periphrasis = new Paragraph(description.getPeriphrase(), getUtils().createDefaultFont(8, Font.ITALIC));
       periphrasis.setAlignment(Element.ALIGN_CENTER);
       columnText.addElement(periphrasis);
     }
-    if (StringUtilities.isNullOrEmpty(description.getCharacterization()) && StringUtilities.isNullOrEmpty(description.getPhysicalAppearance()) &&
-            StringUtilities.isNullOrEmpty(description.getNotes())) {
+    if (Strings.isNullOrEmpty(description.getCharacterization()) && Strings.isNullOrEmpty(
+            description.getPhysicalAppearance()) &&
+            Strings.isNullOrEmpty(description.getNotes())) {
       return;
     }
     Phrase descriptionPhrase = createTextParagraph(createBoldTitle(getString("TextDescription.Label.Description") + ": ")); //$NON-NLS-1$
     // //$NON-NLS-2$
     boolean isFirst = true;
-    if (!StringUtilities.isNullOrEmpty(description.getCharacterization())) {
+    if (!Strings.isNullOrEmpty(description.getCharacterization())) {
       descriptionPhrase.add(createTextChunk(description.getCharacterization()));
       columnText.addElement(descriptionPhrase);
       isFirst = false;
     }
-    if (!StringUtilities.isNullOrEmpty(description.getPhysicalAppearance())) {
+    if (!Strings.isNullOrEmpty(description.getPhysicalAppearance())) {
       Chunk descriptionChunk = createTextChunk(description.getPhysicalAppearance());
       addTextualDescriptionPart(columnText, descriptionPhrase, isFirst, descriptionChunk);
       isFirst = false;
     }
-    if (!StringUtilities.isNullOrEmpty(description.getNotes())) {
+    if (!Strings.isNullOrEmpty(description.getNotes())) {
       Chunk noteChunk = createTextChunk(description.getNotes());
       addTextualDescriptionPart(columnText, descriptionPhrase, isFirst, noteChunk);
     }

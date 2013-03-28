@@ -1,6 +1,6 @@
 package net.sf.anathema.lib.gui.dialog.widgets;
 
-import net.sf.anathema.lib.util.Range;
+import net.sf.anathema.lib.number.Range;
 
 public interface IBlockRenderingHandler {
 

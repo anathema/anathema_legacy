@@ -1,5 +1,6 @@
 package net.sf.anathema.character.generic.impl.magic.persistence.builder;
 
+import com.google.common.base.Strings;
 import net.sf.anathema.character.generic.impl.magic.charm.type.CharmTypeModel;
 import net.sf.anathema.character.generic.impl.magic.charm.type.ReflexiveSpecialsModel;
 import net.sf.anathema.character.generic.impl.magic.charm.type.SimpleSpecialsModel;
@@ -11,7 +12,6 @@ import net.sf.anathema.character.generic.magic.charms.type.ISimpleSpecialsModel;
 import net.sf.anathema.character.generic.magic.charms.type.ITypeSpecialsModel;
 import net.sf.anathema.character.generic.magic.charms.type.TurnType;
 import net.sf.anathema.lib.exception.PersistenceException;
-import net.sf.anathema.lib.lang.StringUtilities;
 import net.sf.anathema.lib.xml.ElementUtilities;
 import org.dom4j.Element;
 
@@ -83,7 +83,7 @@ public class CharmTypeBuilder {
     try {
       Integer primaryStep = ElementUtilities.getRequiredIntOrVariesAttrib(element, ATTRIB_PRIMARY_STEP);
       String secondStepString = element.attributeValue(ATTRIB_SECONDARY_STEP);
-      if (StringUtilities.isNullOrEmpty(secondStepString)) {
+      if (Strings.isNullOrEmpty(secondStepString)) {
         return new ReflexiveSpecialsModel(primaryStep, null);
       }
       Integer secondStep = Integer.valueOf(secondStepString);

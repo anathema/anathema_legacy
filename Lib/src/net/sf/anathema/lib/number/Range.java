@@ -1,4 +1,4 @@
-package net.sf.anathema.lib.util;
+package net.sf.anathema.lib.number;
 
 public class Range {
 

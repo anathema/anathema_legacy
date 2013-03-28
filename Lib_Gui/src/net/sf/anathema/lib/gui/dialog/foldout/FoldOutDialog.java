@@ -1,10 +1,10 @@
 package net.sf.anathema.lib.gui.dialog.foldout;
 
+import com.google.common.base.Strings;
 import net.sf.anathema.lib.gui.action.IActionConfiguration;
 import net.sf.anathema.lib.gui.action.MnemonicLabel;
 import net.sf.anathema.lib.gui.action.MnemonicLabelParser;
 import net.sf.anathema.lib.gui.dialog.userdialog.UserDialog;
-import net.sf.anathema.lib.lang.StringUtilities;
 
 import javax.swing.BorderFactory;
 import javax.swing.JButton;
@@ -80,7 +80,7 @@ public class FoldOutDialog extends UserDialog {
       button.setMnemonic(label.getMnemonicCharacter().charValue());
     }
     String toolTipText = actionConfiguration.getToolTipText();
-    button.setToolTipText(StringUtilities.isNullOrEmpty(toolTipText) ? null : toolTipText);
+    button.setToolTipText(Strings.isNullOrEmpty(toolTipText) ? null : toolTipText);
     button.setIcon(actionConfiguration.getIcon());
   }
 

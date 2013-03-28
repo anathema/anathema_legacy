@@ -1,6 +1,6 @@
 package net.sf.anathema.namegenerator.domain.realm;
 
-import net.sf.anathema.lib.random.RandomUtilities;
+import net.sf.anathema.lib.util.RandomUtilities;
 import net.sf.anathema.namegenerator.domain.syllable.ICountCalculator;
 
 public class RealmWordCalculator implements ICountCalculator {

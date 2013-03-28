@@ -1,11 +1,11 @@
 package net.sf.anathema.character.reporting.pdf.content.stats.magic;
 
 import com.google.common.base.Joiner;
+import com.google.common.base.Strings;
 import com.itextpdf.text.Font;
 import com.itextpdf.text.pdf.PdfPTable;
 import net.sf.anathema.character.generic.magic.IMagicStats;
 import net.sf.anathema.character.reporting.pdf.content.stats.AbstractTextStatsGroup;
-import net.sf.anathema.lib.lang.StringUtilities;
 import net.sf.anathema.lib.resources.IResources;
 
 public class MagicDetailsStatsGroup extends AbstractTextStatsGroup<IMagicStats> {
@@ -23,7 +23,7 @@ public class MagicDetailsStatsGroup extends AbstractTextStatsGroup<IMagicStats> 
     } else {
       String[] details = stats.getDetailStrings(resources);
       String detailText = Joiner.on(", ").join(details);
-      if (StringUtilities.isNullOrEmpty(detailText)) {
+      if (Strings.isNullOrEmpty(detailText)) {
         detailText = "-"; //$NON-NLS-1$
       }
       table.addCell(createTextCell(font, detailText));

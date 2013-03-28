@@ -24,6 +24,6 @@ public class ObjectModel<T> extends SmartChangeableModel implements IObjectModel
 
   @Override
   public String toString() {
-    return "ObjectModel{" + property.get() + "}"; //$NON-NLS-1$ //$NON-NLS-2$
+    return "ObjectModel{" + property.get() + "}";
   }
 }

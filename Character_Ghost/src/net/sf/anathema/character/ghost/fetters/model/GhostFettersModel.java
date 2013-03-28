@@ -1,5 +1,6 @@
 package net.sf.anathema.character.ghost.fetters.model;
 
+import com.google.common.base.Strings;
 import net.sf.anathema.character.generic.additionaltemplate.AbstractAdditionalModelAdapter;
 import net.sf.anathema.character.generic.additionaltemplate.AdditionalModelType;
 import net.sf.anathema.character.generic.additionaltemplate.IAdditionalModelBonusPointCalculator;
@@ -12,7 +13,6 @@ import net.sf.anathema.character.generic.traits.types.OtherTraitType;
 import net.sf.anathema.character.ghost.fetters.GhostFettersTemplate;
 import net.sf.anathema.lib.control.IChangeListener;
 import net.sf.anathema.lib.control.IIntValueChangedListener;
-import net.sf.anathema.lib.lang.StringUtilities;
 import org.jmock.example.announcer.Announcer;
 
 import java.util.ArrayList;
@@ -165,7 +165,7 @@ public class GhostFettersModel extends AbstractAdditionalModelAdapter implements
 
   @Override
   public boolean isEntryComplete() {
-    return !StringUtilities.isNullOrEmpty(currentName);
+    return !Strings.isNullOrEmpty(currentName);
   }
 
   @Override

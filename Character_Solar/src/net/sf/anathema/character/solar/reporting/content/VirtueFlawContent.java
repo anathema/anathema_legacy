@@ -1,5 +1,6 @@
 package net.sf.anathema.character.solar.reporting.content;
 
+import com.google.common.base.Strings;
 import net.sf.anathema.character.generic.character.IGenericCharacter;
 import net.sf.anathema.character.library.virtueflaw.model.IDescriptiveVirtueFlaw;
 import net.sf.anathema.character.library.virtueflaw.presenter.IDescriptiveVirtueFlawModel;
@@ -39,7 +40,7 @@ public class VirtueFlawContent extends AbstractSubBoxContent {
   }
 
   public boolean isConditionDefined() {
-    return !StringUtilities.isNullOrEmpty(getLimitBreakCondition());
+    return !Strings.isNullOrEmpty(getLimitBreakCondition());
   }
 
   private IDescriptiveVirtueFlaw getVirtueFlawModel() {

@@ -3,7 +3,7 @@ package net.sf.anathema.framework.model;
 import net.sf.anathema.framework.messaging.IMessaging;
 import net.sf.anathema.lib.message.BasicMessage;
 import net.sf.anathema.lib.message.MessageType;
-import net.sf.anathema.lib.random.RandomUtilities;
+import net.sf.anathema.lib.util.RandomUtilities;
 
 import java.util.List;
 
