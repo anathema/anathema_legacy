@@ -2,7 +2,7 @@ package net.sf.anathema.lib.gui.ui;
 
 import javax.swing.Icon;
 
-public abstract class AbstractObjectUi<T> implements IObjectUi<T> {
+public abstract class AbstractObjectUi<T> implements ObjectUi<T> {
 
   @Override
   public Icon getIcon(T value) {

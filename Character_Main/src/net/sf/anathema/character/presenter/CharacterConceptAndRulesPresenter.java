@@ -20,7 +20,7 @@ import net.sf.anathema.lib.control.IChangeListener;
 import net.sf.anathema.lib.control.ObjectValueListener;
 import net.sf.anathema.lib.gui.action.SmartAction;
 import net.sf.anathema.lib.gui.selection.IObjectSelectionView;
-import net.sf.anathema.lib.gui.ui.IObjectUi;
+import net.sf.anathema.lib.gui.ui.ObjectUi;
 import net.sf.anathema.lib.gui.ui.ObjectUiListCellRenderer;
 import net.sf.anathema.lib.resources.IResources;
 import net.sf.anathema.lib.workflow.textualdescription.ITextView;
@@ -166,7 +166,7 @@ public class CharacterConceptAndRulesPresenter implements IContentPresenter {
       return false;
     }
     String casteLabelResourceKey = template.getPresentationProperties().getCasteLabelResource();
-    IObjectUi<Object> casteUi = new CasteSelectObjectUi(resources, template.getPresentationProperties());
+    ObjectUi<Object> casteUi = new CasteSelectObjectUi(resources, template.getPresentationProperties());
     ICasteType[] casteTypes = template.getCasteCollection().getAllCasteTypes(character.getCharacterTemplate().getTemplateType());
     final IObjectSelectionView<ICasteType> casteView = view.addObjectSelectionView(
             resources.getString(casteLabelResourceKey), casteTypes, new ObjectUiListCellRenderer(casteUi), false);

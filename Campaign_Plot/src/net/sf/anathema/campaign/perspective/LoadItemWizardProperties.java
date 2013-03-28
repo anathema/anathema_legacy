@@ -1,6 +1,6 @@
 package net.sf.anathema.campaign.perspective;
 
-import net.sf.anathema.lib.gui.ui.IObjectUi;
+import net.sf.anathema.lib.gui.ui.ObjectUi;
 import net.sf.anathema.lib.gui.ui.ObjectUiListCellRenderer;
 import net.sf.anathema.lib.message.BasicMessage;
 import net.sf.anathema.lib.message.IBasicMessage;
@@ -14,7 +14,7 @@ public class LoadItemWizardProperties implements IObjectSelectionProperties {
   private final IResources resources;
   private final ListCellRenderer renderer;
 
-  public LoadItemWizardProperties(IResources resources, IObjectUi<Object> ui) {
+  public LoadItemWizardProperties(IResources resources, ObjectUi<Object> ui) {
     this.resources = resources;
     this.renderer = new ObjectUiListCellRenderer(ui);
   }

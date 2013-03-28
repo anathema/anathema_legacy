@@ -1,7 +1,7 @@
 package net.sf.anathema.framework.item.repository.creation;
 
 import net.sf.anathema.framework.item.IItemType;
-import net.sf.anathema.lib.gui.ui.IObjectUi;
+import net.sf.anathema.lib.gui.ui.ObjectUi;
 import net.sf.anathema.lib.gui.ui.ObjectUiListCellRenderer;
 import net.sf.anathema.lib.message.BasicMessage;
 import net.sf.anathema.lib.message.IBasicMessage;
@@ -17,9 +17,9 @@ public class ItemTypeSelectionProperties implements IObjectSelectionProperties {
 
   private final IResources resources;
   private final ILegalityProvider<IItemType> provider;
-  private final IObjectUi<Object> ui;
+  private final ObjectUi<Object> ui;
 
-  public ItemTypeSelectionProperties(IResources resources, ILegalityProvider<IItemType> provider, IObjectUi<Object> ui) {
+  public ItemTypeSelectionProperties(IResources resources, ILegalityProvider<IItemType> provider, ObjectUi<Object> ui) {
     this.resources = resources;
     this.provider = provider;
     this.ui = ui;

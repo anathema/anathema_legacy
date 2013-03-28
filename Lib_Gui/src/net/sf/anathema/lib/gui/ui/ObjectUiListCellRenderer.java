@@ -11,9 +11,9 @@ import java.awt.Component;
 
 public class ObjectUiListCellRenderer extends DefaultListCellRenderer {
 
-  private final IObjectUi ui;
+  private final ObjectUi ui;
 
-  public ObjectUiListCellRenderer(IObjectUi ui) {
+  public ObjectUiListCellRenderer(ObjectUi ui) {
     Preconditions.checkNotNull(ui);
     this.ui = ui;
   }

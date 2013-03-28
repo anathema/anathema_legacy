@@ -8,12 +8,12 @@ import net.sf.anathema.character.generic.equipment.weapon.IArmourStats;
 import net.sf.anathema.character.generic.equipment.weapon.IEquipmentStats;
 import net.sf.anathema.character.generic.equipment.weapon.IWeaponStats;
 import net.sf.anathema.lib.exception.UnreachableCodeReachedException;
-import net.sf.anathema.lib.gui.ui.IObjectUi;
+import net.sf.anathema.lib.gui.ui.ObjectUi;
 import net.sf.anathema.lib.resources.IResources;
 
 import javax.swing.Icon;
 
-public final class EquipmentStatsUi implements IObjectUi<Object> {
+public final class EquipmentStatsUi implements ObjectUi<Object> {
 
   private final EquipmentUI equipmentUI;
 

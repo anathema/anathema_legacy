@@ -1,6 +1,6 @@
 package net.sf.anathema.character.equipment.creation.presenter.stats.properties;
 
-import net.sf.anathema.lib.gui.ui.IObjectUi;
+import net.sf.anathema.lib.gui.ui.ObjectUi;
 import net.sf.anathema.lib.resources.IResources;
 
 public class WeaponDamageProperties extends AbstractProperties {
@@ -20,7 +20,7 @@ public class WeaponDamageProperties extends AbstractProperties {
     return getLabelString("Equipment.Stats.Long.Damage"); //$NON-NLS-1$
   }
 
-  public IObjectUi<Object> getHealthTypeUi() {
+  public ObjectUi<Object> getHealthTypeUi() {
     return new HealthTypeUi(resources);
   }
 }

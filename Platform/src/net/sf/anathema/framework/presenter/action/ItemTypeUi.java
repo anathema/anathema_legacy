@@ -2,12 +2,12 @@ package net.sf.anathema.framework.presenter.action;
 
 import net.sf.anathema.framework.item.IItemType;
 import net.sf.anathema.framework.presenter.item.ItemTypeCreationViewPropertiesExtensionPoint;
-import net.sf.anathema.lib.gui.ui.IObjectUi;
+import net.sf.anathema.lib.gui.ui.ObjectUi;
 import net.sf.anathema.lib.resources.IResources;
 
 import javax.swing.Icon;
 
-public class ItemTypeUi implements IObjectUi<Object> {
+public class ItemTypeUi implements ObjectUi<Object> {
   private final ItemTypeCreationViewPropertiesExtensionPoint extension;
   private final IResources resources;
 

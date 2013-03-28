@@ -1,12 +1,12 @@
 package net.sf.anathema.framework.view.renderer;
 
-import net.sf.anathema.lib.gui.ui.IObjectUi;
+import net.sf.anathema.lib.gui.ui.ObjectUi;
 import net.sf.anathema.lib.resources.IResources;
 
 import javax.swing.Icon;
 
 @SuppressWarnings("unchecked")
-public abstract class AbstractSelectObjectUi<V> implements IObjectUi<Object> {
+public abstract class AbstractSelectObjectUi<V> implements ObjectUi<Object> {
 
   private final IResources resources;
 

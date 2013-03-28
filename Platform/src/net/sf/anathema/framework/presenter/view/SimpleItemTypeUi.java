@@ -1,10 +1,10 @@
 package net.sf.anathema.framework.presenter.view;
 
-import net.sf.anathema.lib.gui.ui.IObjectUi;
+import net.sf.anathema.lib.gui.ui.ObjectUi;
 
 import javax.swing.Icon;
 
-public class SimpleItemTypeUi implements IObjectUi<Object> {
+public class SimpleItemTypeUi implements ObjectUi<Object> {
 
   private final Icon icon;
 

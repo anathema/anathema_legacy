@@ -1,7 +1,7 @@
 package net.sf.anathema.framework.presenter.view;
 
 import net.sf.anathema.framework.item.IItemType;
-import net.sf.anathema.lib.gui.ui.IObjectUi;
+import net.sf.anathema.lib.gui.ui.ObjectUi;
 
 import javax.swing.Icon;
 
@@ -9,9 +9,9 @@ public abstract class AbstractItemTypeViewProperties implements IItemTypeViewPro
 
   private final Icon icon;
   private final IItemType type;
-  private final IObjectUi<Object> ui;
+  private final ObjectUi<Object> ui;
 
-  public AbstractItemTypeViewProperties(IItemType type, Icon icon, IObjectUi<Object> ui) {
+  public AbstractItemTypeViewProperties(IItemType type, Icon icon, ObjectUi<Object> ui) {
     this.type = type;
     this.icon = icon;
     this.ui = ui;
@@ -23,7 +23,7 @@ public abstract class AbstractItemTypeViewProperties implements IItemTypeViewPro
   }
 
   @Override
-  public IObjectUi<Object> getItemTypeUI() {
+  public ObjectUi<Object> getItemTypeUI() {
     return ui;
   }
 

@@ -4,15 +4,15 @@ import net.sf.anathema.framework.item.IItemType;
 import net.sf.anathema.framework.presenter.action.ItemTypeUi;
 import net.sf.anathema.framework.presenter.item.ItemTypeCreationViewPropertiesExtensionPoint;
 import net.sf.anathema.framework.view.PrintNameFile;
-import net.sf.anathema.lib.gui.ui.IObjectUi;
+import net.sf.anathema.lib.gui.ui.ObjectUi;
 import net.sf.anathema.lib.resources.IResources;
 
 import javax.swing.Icon;
 
-public class ItemTypeTreeUi implements IObjectUi<Object> {
+public class ItemTypeTreeUi implements ObjectUi<Object> {
 
   private final ItemTypeCreationViewPropertiesExtensionPoint extension;
-  private final IObjectUi<Object> itemtypeUi;
+  private final ObjectUi<Object> itemtypeUi;
 
   public ItemTypeTreeUi(IResources resources, ItemTypeCreationViewPropertiesExtensionPoint extension) {
     this.extension = extension;

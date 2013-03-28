@@ -2,7 +2,7 @@ package net.sf.anathema.lib.gui.ui;
 
 import javax.swing.Icon;
 
-public interface IObjectUi<T> {
+public interface ObjectUi<T> {
 
   Icon getIcon(T value);
 

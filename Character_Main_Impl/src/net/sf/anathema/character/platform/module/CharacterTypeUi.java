@@ -5,13 +5,13 @@ import net.sf.anathema.character.generic.caste.ICasteType;
 import net.sf.anathema.character.generic.framework.resources.CharacterUI;
 import net.sf.anathema.character.generic.type.ICharacterType;
 import net.sf.anathema.framework.view.PrintNameFile;
-import net.sf.anathema.lib.gui.ui.IObjectUi;
+import net.sf.anathema.lib.gui.ui.ObjectUi;
 import net.sf.anathema.lib.resources.IResources;
 import net.sf.anathema.lib.util.Identified;
 
 import javax.swing.Icon;
 
-public class CharacterTypeUi implements IObjectUi<Object> {
+public class CharacterTypeUi implements ObjectUi<Object> {
 
   private final IResources resources;
   private final CharacterPrintNameFileScanner scanner;
