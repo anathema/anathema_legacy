@@ -25,9 +25,6 @@ public class InfernalSpellMagicTemplate extends SpellMagicTemplate {
   @Override
   public boolean canLearnSpell(final ISpell spell, final ICharm[] knownCharms) {
     final boolean canLearn[] = new boolean[1];
-
-    // may be some special spell specific stuff here for demon summoning
-
     spell.getCircleType().accept(new ICircleTypeVisitor() {
       @Override
       public void visitTerrestrial(CircleType type) {
@@ -91,10 +88,11 @@ public class InfernalSpellMagicTemplate extends SpellMagicTemplate {
 
   private boolean canLearnSorcerySpell(ISpell spell, ICharm[] knownCharms) {
     String[] charmNames = getInitiations(spell.getCircleType());
-
-    for (String charm : charmNames)
-      if (knowsCharm(charm, knownCharms))
+    for (String charm : charmNames) {
+      if (knowsCharm(charm, knownCharms)) {
         return true;
+      }
+    }
     return false;
   }
 
@@ -138,9 +136,7 @@ public class InfernalSpellMagicTemplate extends SpellMagicTemplate {
         }
       });
     }
-    String[] charms = new String[names.size()];
-    names.toArray(charms);
-    return charms;
+    return names.toArray(new String[names.size()]);
   }
 
 }
