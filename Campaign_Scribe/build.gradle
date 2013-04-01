@@ -7,10 +7,8 @@ sourceSets {
 }
 
 dependencies {
-    provided files("${System.properties['java.home']}/lib/jfxrt.jar")
     compile 'com.github.rjeschke:txtmark:0.8'
     compile project(':Platform')
     compile project(':Platform_FX')
-    compile 'com.miglayout:miglayout-javafx:4.2'
     testCompile parent.ext.testDependencies
 }
