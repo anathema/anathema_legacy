@@ -16,7 +16,6 @@ import javax.swing.JComponent;
 import javax.swing.JPanel;
 import javax.swing.JRadioButton;
 import java.awt.BorderLayout;
-import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.HashMap;
@@ -32,7 +31,6 @@ public class NameGeneratorView implements INameGeneratorView {
   private final Map<JRadioButton, Object> generatorsByButton = new HashMap<>();
   private final Map<Object, JRadioButton> buttonsByGenerator = new HashMap<>();
   private final Announcer<IChangeListener> generatorListeners = Announcer.to(IChangeListener.class);
-  private final JPanel generateButtonPanel = new JPanel(new GridLayout());
   private final ActionListener generatorButtonListener = new ActionListener() {
     @Override
     public void actionPerformed(ActionEvent e) {
@@ -47,7 +45,6 @@ public class NameGeneratorView implements INameGeneratorView {
 
   private JComponent createSecondColumn() {
     JPanel panel = new JPanel(new BorderLayout());
-    panel.add(generateButtonPanel, BorderLayout.NORTH);
     panel.add(resultTextView.getComponent(), BorderLayout.CENTER);
     return panel;
   }
@@ -95,6 +92,6 @@ public class NameGeneratorView implements INameGeneratorView {
 
   @Override
   public void addGenerationAction(Action action) {
-    generateButtonPanel.add(new JButton(action));
+    firstColumn.add(new JButton(action));
   }
 }

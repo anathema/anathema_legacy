@@ -8,8 +8,6 @@ import net.sf.anathema.character.perspective.model.model.CharacterIdentifier;
 import net.sf.anathema.lib.resources.IStringResourceHandler;
 import net.sf.anathema.lib.util.Identified;
 
-import javax.annotation.Nullable;
-
 import static net.sf.anathema.character.generic.caste.ICasteType.NULL_CASTE_TYPE;
 import static net.sf.anathema.character.generic.impl.persistence.SecondEdition.SECOND_EDITION;
 
@@ -20,9 +18,8 @@ public class ToCharacterButtonDto implements Function<DescriptiveFeatures, Chara
     this.resources = resources;
   }
 
-  @Nullable
   @Override
-  public CharacterButtonDto apply(@Nullable DescriptiveFeatures input) {
+  public CharacterButtonDto apply(DescriptiveFeatures input) {
     String text = input.getPrintName();
     CharacterIdentifier identifier = input.getIdentifier();
     ITemplateType templateType = input.getTemplateType();

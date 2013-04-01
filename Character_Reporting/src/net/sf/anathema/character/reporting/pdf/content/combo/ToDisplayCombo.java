@@ -6,8 +6,6 @@ import net.sf.anathema.character.generic.magic.IGenericCombo;
 import net.sf.anathema.character.reporting.pdf.content.magic.CharmPrintNameTransformer;
 import net.sf.anathema.lib.resources.IResources;
 
-import javax.annotation.Nullable;
-
 public class ToDisplayCombo implements Function<IGenericCombo, DisplayCombo> {
 
   private IResources resources;
@@ -17,7 +15,7 @@ public class ToDisplayCombo implements Function<IGenericCombo, DisplayCombo> {
   }
 
   @Override
-  public DisplayCombo apply(@Nullable IGenericCombo combo) {
+  public DisplayCombo apply(IGenericCombo combo) {
     String displayName = getDisplayName(combo);
     String displayCharms = getCharmString(combo);
     return new DisplayCombo(displayName, displayCharms);
