@@ -128,7 +128,8 @@ public class CharacterSystemModel implements ItemSystemModel {
 
   @Override
   public void printCurrentItemQuickly(IResources resources) {
-    new QuickPrintCommand(resources, model, getCurrentItem()).execute();
+    CharacterReportFinder reportFinder = new CharacterReportFinder(model, resources);
+    new QuickPrintCommand(resources, getCurrentItem(), reportFinder).execute();
   }
 
   @Override

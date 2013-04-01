@@ -35,7 +35,7 @@ public class QuickPrintAction extends AbstractPrintAction {
 
   @Override
   protected IItemManagementModelListener createEnablingListener() {
-    return new QuickPrintEnabledListener(this, new DefaultReportFinder(anathemaModel, resources));
+    return new PrintEnabledListener(this, anathemaModel.getReportRegistry());
   }
 
   @Override
@@ -44,6 +44,7 @@ public class QuickPrintAction extends AbstractPrintAction {
     if (item == null) {
       return;
     }
-    new QuickPrintCommand(resources, anathemaModel, item).execute();
+    FirstReportFinder reportFinder = new FirstReportFinder(anathemaModel);
+    new QuickPrintCommand(resources, item, reportFinder).execute();
   }
 }
