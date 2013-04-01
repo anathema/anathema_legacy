@@ -11,6 +11,7 @@ import javafx.scene.control.RadioButton;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.Toggle;
 import javafx.scene.control.ToggleGroup;
+import net.miginfocom.layout.CC;
 import net.miginfocom.layout.LC;
 import net.sf.anathema.interaction.Command;
 import net.sf.anathema.lib.control.IChangeListener;
@@ -116,7 +117,7 @@ public class FxNameGeneratorView implements NameGeneratorView {
             command.execute();
           }
         });
-        navigation.add(button);
+        navigation.add(button, new CC().grow().pushX());
       }
     });
   }
