@@ -23,6 +23,10 @@ public class BasicUi extends AbstractUI {
     return getIcon("ButtonCross16.png"); //$NON-NLS-1$
   }
 
+  public Icon getClearTaskbarIcon() {
+    return getIcon("ButtonCross24.png"); //$NON-NLS-1$
+  }
+
   public Icon getLeftArrowIcon() {
     return getIcon("ButtonArrowLeft16.png"); //$NON-NLS-1$
   }

@@ -28,7 +28,7 @@ public final class SaveEquipmentTemplateAction extends SmartAction {
   };
 
   public SaveEquipmentTemplateAction(IResources resources, IEquipmentDatabaseManagement model) {
-    super(new PlatformUI(resources).getSaveIcon());
+    super(new PlatformUI(resources).getSaveTaskBarIcon());
     this.resources = resources;
     this.model = model;
     model.getTemplateEditModel().getDescription().getName().addTextChangedListener(stringChangeListener);

@@ -53,8 +53,8 @@ public class EquipmentDatabasePresenter implements Presenter {
 
   private void addEditTemplateActions() {
     view.addEditTemplateAction(new NewEquipmentTemplateAction(resources, model));
-    view.addEditTemplateAction(new CopyEquipmentTemplateAction(resources, model));
     view.addEditTemplateAction(new SaveEquipmentTemplateAction(resources, model));
+    view.addEditTemplateAction(new CopyEquipmentTemplateAction(resources, model));
     view.addEditTemplateAction(new RemoveEquipmentTemplateAction(resources, model, view));
   }
 

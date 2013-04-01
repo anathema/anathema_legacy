@@ -11,12 +11,12 @@ public class FileUi extends AbstractUI {
     super(resources);
   }
 
-  public Icon getAddFileIcon() {
-    return getIcon("ButtonAddFile16.png"); //$NON-NLS-1$
-  }
-
   public Icon getRemoveFileIcon() {
     return getIcon("ButtonRemoveFile16.png"); //$NON-NLS-1$
+  }
+
+  public Icon getDuplicateFileTaskbarIcon() {
+    return getIcon("ButtonDuplicate24.png"); //$NON-NLS-1$
   }
 
   public Icon getDuplicateFileIcon() {

@@ -4,19 +4,16 @@ import net.miginfocom.layout.CC;
 import net.miginfocom.swing.MigLayout;
 import net.sf.anathema.character.equipment.item.view.IEquipmentDatabaseView;
 import net.sf.anathema.character.generic.equipment.weapon.IEquipmentStats;
+import net.sf.anathema.framework.perspective.PerspectiveToolBar;
+import net.sf.anathema.framework.perspective.SwingPerspectivePane;
 import net.sf.anathema.lib.gui.container.TitledPanel;
 import net.sf.anathema.lib.gui.layout.LayoutUtils;
 import net.sf.anathema.lib.gui.list.actionview.IActionAddableListView;
 import net.sf.anathema.lib.gui.list.actionview.SingleSelectionActionAddableListView;
 import net.sf.anathema.lib.gui.selection.IListObjectSelectionView;
 import net.sf.anathema.lib.gui.selection.ListObjectSelectionView;
-import net.sf.anathema.framework.perspective.SwingPerspectivePane;
-import net.sf.anathema.lib.gui.swing.GuiUtilities;
-import net.sf.anathema.lib.gui.toolbar.ToolBarUtilities;
 
-import javax.swing.AbstractButton;
 import javax.swing.Action;
-import javax.swing.JButton;
 import javax.swing.JComponent;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
@@ -31,7 +28,7 @@ public class EquipmentDatabaseView implements IEquipmentDatabaseView {
   private final JPanel descriptionPanel = new JPanel(new MigLayout(withoutInsets().wrapAfter(1)));
   private final ListObjectSelectionView<String> templateListView = new ListObjectSelectionView<>(String.class);
   private SingleSelectionActionAddableListView<IEquipmentStats> statsListView;
-  private final JPanel editTemplateButtonPanel = new JPanel(new MigLayout(withoutInsets()));
+  private final PerspectiveToolBar editTemplateButtonPanel = new PerspectiveToolBar();
   private final JComponent templateListPanel = new JScrollPane(templateListView.getComponent());
   private final JPanel statsPanel = new JPanel(new MigLayout(fillWithoutInsets().wrapAfter(1)));
   private final TitledPanel statsTitlePanel = new TitledPanel("", statsPanel);
@@ -45,7 +42,7 @@ public class EquipmentDatabaseView implements IEquipmentDatabaseView {
       statsPanel.add(new JScrollPane(statsListView.getComponent()), new CC().grow().push());
       detailPanel.add(descriptionPanel, new CC().grow().pushX());
       detailPanel.add(statsTitlePanel, new CC().grow().push());
-      navigationPanel.add(editTemplateButtonPanel);
+      navigationPanel.add(editTemplateButtonPanel.getComponent());
       navigationPanel.add(templateListPanel, new CC().grow().push());
       perspectivePane.setContentComponent(detailPanel);
       perspectivePane.setNavigationComponent(navigationPanel);
@@ -82,7 +79,6 @@ public class EquipmentDatabaseView implements IEquipmentDatabaseView {
 
   @Override
   public void addEditTemplateAction(Action action) {
-    AbstractButton button = ToolBarUtilities.createToolBarButton(action);
-    editTemplateButtonPanel.add(button);
+    editTemplateButtonPanel.addTools(action);
   }
 }

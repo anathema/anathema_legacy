@@ -14,7 +14,7 @@ public final class CopyEquipmentTemplateAction extends SmartAction {
   private final IResources resources;
 
   public CopyEquipmentTemplateAction(IResources resources, IEquipmentDatabaseManagement model) {
-    super(new FileUi(resources).getDuplicateFileIcon());
+    super(new FileUi(resources).getDuplicateFileTaskbarIcon());
     this.resources = resources;
     this.model = model;
     model.getTemplateEditModel().getDescription().getName().addTextChangedListener(new ObjectValueListener<String>() {
