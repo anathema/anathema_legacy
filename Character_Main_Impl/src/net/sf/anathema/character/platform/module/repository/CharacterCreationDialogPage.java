@@ -56,22 +56,16 @@ public class CharacterCreationDialogPage extends AbstractDialogPage {
 
   @Override
   public String getTitle() {
-    return  properties.getDescription();
+    return  properties.getTitle();
   }
 
   @Override
   public String getDescription() {
-    return properties.getDescription();
+    return properties.getTitle();
   }
 
   @Override
   public IBasicMessage createCurrentMessage() {
-    if (!model.isCharacterTypeSelected()) {
-      return properties.getSelectCharacterTypeMessage();
-    }
-    if (model.getAvailableTemplates().length == 0) {
-      return properties.getNoTemplatesAvailableMessage();
-    }
     return properties.getConfirmMessage();
   }
 

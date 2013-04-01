@@ -24,25 +24,16 @@ public class CharacterCreationPageProperties {
     this.iconProvider = new CharacterUI(resources);
   }
 
-  public String getDescription() {
-    return resources.getString("CharacterDialog.Description"); //$NON-NLS-1$
+  public String getTitle() {
+    return resources.getString("CharacterDialog.Title");
   }
 
   public IBasicMessage getConfirmMessage() {
-    return new BasicMessage(resources.getString("CharacterDialog.Message.Confirm"), MessageType.NORMAL); //$NON-NLS-1$
-  }
-
-  public IBasicMessage getSelectCharacterTypeMessage() {
-    return new BasicMessage(resources.getString("CharacterDialog.Message.SelectType"), MessageType.ERROR); //$NON-NLS-1$
-  }
-
-  public IBasicMessage getNoTemplatesAvailableMessage() {
-    return new BasicMessage(resources.getString("CharacterDialog.Message.NoTemplates"), MessageType.ERROR); //$NON-NLS-1$
+    return new BasicMessage(resources.getString("CharacterDialog.Message.Confirm"), MessageType.NORMAL);
   }
 
   public String getTypeString(ICharacterType type) {
-    return resources.getString("CharacterGenerator.NewCharacter." //$NON-NLS-1$
-                               + type.getId() + ".Name"); //$NON-NLS-1$
+    return resources.getString("CharacterGenerator.NewCharacter." + type.getId() + ".Name");
   }
 
   public Icon getTypeIcon(ICharacterType type) {
