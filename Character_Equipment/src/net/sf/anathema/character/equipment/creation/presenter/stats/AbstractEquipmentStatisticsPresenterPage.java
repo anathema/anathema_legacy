@@ -10,7 +10,7 @@ import net.sf.anathema.lib.gui.layout.AdditiveView;
 import net.sf.anathema.lib.gui.widgets.IntegerSpinner;
 import net.sf.anathema.lib.gui.wizard.AbstractAnathemaWizardPage;
 import net.sf.anathema.lib.gui.wizard.workflow.CheckInputListener;
-import net.sf.anathema.lib.gui.wizard.workflow.ICondition;
+import net.sf.anathema.lib.data.ICondition;
 import net.sf.anathema.lib.message.IBasicMessage;
 import net.sf.anathema.lib.resources.IResources;
 import net.sf.anathema.lib.workflow.intvalue.IIntValueModel;

@@ -6,7 +6,7 @@ import net.sf.anathema.character.equipment.item.view.IEquipmentDatabaseView;
 import net.sf.anathema.lib.control.IChangeListener;
 import net.sf.anathema.lib.control.ObjectValueListener;
 import net.sf.anathema.lib.gui.Presenter;
-import net.sf.anathema.lib.gui.wizard.workflow.ICondition;
+import net.sf.anathema.lib.data.ICondition;
 import net.sf.anathema.lib.resources.IResources;
 
 import java.util.Arrays;

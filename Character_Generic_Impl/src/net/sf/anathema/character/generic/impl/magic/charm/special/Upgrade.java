@@ -1,7 +1,7 @@
 package net.sf.anathema.character.generic.impl.magic.charm.special;
 
 import net.sf.anathema.character.generic.IBasicCharacterData;
-import net.sf.anathema.lib.gui.wizard.workflow.ICondition;
+import net.sf.anathema.lib.data.ICondition;
 
 public class Upgrade extends Subeffect {
   private int bpCost;

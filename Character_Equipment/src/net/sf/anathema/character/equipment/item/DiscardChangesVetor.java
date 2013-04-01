@@ -7,7 +7,7 @@ import net.sf.anathema.lib.gui.dialog.message.MessageUserDialogConfiguration;
 import net.sf.anathema.lib.gui.dialog.userdialog.UserDialog;
 import net.sf.anathema.lib.gui.dialog.userdialog.buttons.DialogButtonConfiguration;
 import net.sf.anathema.lib.gui.list.veto.IVetor;
-import net.sf.anathema.lib.gui.wizard.workflow.ICondition;
+import net.sf.anathema.lib.data.ICondition;
 import net.sf.anathema.lib.message.IMessage;
 import net.sf.anathema.lib.message.Message;
 import net.sf.anathema.lib.message.MessageType;

@@ -1,6 +1,6 @@
 package net.sf.anathema.character.generic.dummy;
 
-import net.sf.anathema.lib.gui.wizard.workflow.ICondition;
+import net.sf.anathema.lib.data.ICondition;
 
 public class DummyCondition implements ICondition {
 
