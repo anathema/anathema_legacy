@@ -12,6 +12,7 @@ import net.sf.anathema.character.equipment.creation.presenter.stats.properties.E
 import net.sf.anathema.character.equipment.item.EquipmentTemplateNameComparator;
 import net.sf.anathema.character.equipment.item.personalization.EquipmentPersonalizationModel;
 import net.sf.anathema.character.equipment.item.personalization.EquipmentPersonalizationPresenterPage;
+import net.sf.anathema.character.equipment.item.personalization.EquipmentPersonalizationProperties;
 import net.sf.anathema.framework.presenter.resources.BasicUi;
 import net.sf.anathema.lib.control.IChangeListener;
 import net.sf.anathema.lib.control.ICollectionListener;
@@ -19,9 +20,8 @@ import net.sf.anathema.lib.control.ObjectValueListener;
 import net.sf.anathema.lib.gui.Presenter;
 import net.sf.anathema.lib.gui.action.SmartAction;
 import net.sf.anathema.lib.gui.dialog.core.IDialogResult;
-import net.sf.anathema.lib.gui.dialog.wizard.WizardDialog;
+import net.sf.anathema.lib.gui.dialog.userdialog.UserDialog;
 import net.sf.anathema.lib.gui.selection.IListObjectSelectionView;
-import net.sf.anathema.lib.gui.wizard.AnathemaWizardDialog;
 import net.sf.anathema.lib.resources.IResources;
 
 import javax.swing.Action;
@@ -59,8 +59,7 @@ public class EquipmentAdditionalPresenter implements Presenter {
       }
     });
   }
-  
-  
+
 
   @Override
   public void initPresentation() {
@@ -163,38 +162,38 @@ public class EquipmentAdditionalPresenter implements Presenter {
     viewsByItem.put(selectedObject, objectView);
     List<Action> actions = new ArrayList<>();
     if (model.canBeRemoved(selectedObject)) {
-    	if (AnathemaEquipmentPreferences.getDefaultPreferences().getEnablePersonalization()) {
-    		actions.add(new SmartAction(resources.getString("AdditionalTemplateView.Personalize.Action.Name"), //$NON-NLS-1$
-                        editIcon) {
- 	            @Override
- 	            protected void execute(Component parentComponent) {
- 	            	doPersonalization(selectedObject, parentComponent);
- 	            }
-             });
-    	}
-        actions.add(new SmartAction(resources.getString("AdditionalTemplateView.RemoveTemplate.Action.Name"), //$NON-NLS-1$
-                       removeIcon) {
-	            @Override
-	            protected void execute(Component parentComponent) {
-	                 model.removeItem(selectedObject);
-	            }
-            });
+      if (AnathemaEquipmentPreferences.getDefaultPreferences().getEnablePersonalization()) {
+        actions.add(new SmartAction(resources.getString("AdditionalTemplateView.Personalize.Action.Name"), //$NON-NLS-1$
+                editIcon) {
+          @Override
+          protected void execute(Component parentComponent) {
+            doPersonalization(selectedObject, parentComponent);
+          }
+        });
+      }
+      actions.add(new SmartAction(resources.getString("AdditionalTemplateView.RemoveTemplate.Action.Name"), //$NON-NLS-1$
+              removeIcon) {
+        @Override
+        protected void execute(Component parentComponent) {
+          model.removeItem(selectedObject);
+        }
+      });
     }
     new EquipmentObjectPresenter(selectedObject, objectView, resourceBuilder, model.getCharacterDataProvider(),
             model.getCharacterOptionProvider(), resources, actions.toArray(new Action[actions.size()])).initPresentation();
     view.revalidateEquipmentViews();
   }
-  
+
   private void doPersonalization(IEquipmentItem item, Component component) {
-	  EquipmentPersonalizationModel model = new EquipmentPersonalizationModel(item);
-	  EquipmentPersonalizationPresenterPage page =
-   			new EquipmentPersonalizationPresenterPage(resources, model);
-      WizardDialog dialog = new AnathemaWizardDialog(component, page);
-      IDialogResult result = dialog.show();
-      if (!result.isCanceled()) {
-    	  item.setPersonalization(model.getTitle(), model.getDescription());
-          initEquipmentObjectPresentation(item);
-          this.model.updateItem(item);
-      }
+    EquipmentPersonalizationModel model = new EquipmentPersonalizationModel(item);
+    EquipmentPersonalizationPresenterPage page =
+            new EquipmentPersonalizationPresenterPage(model, new EquipmentPersonalizationProperties(resources));
+    UserDialog dialog = new UserDialog(component, page);
+    IDialogResult result = dialog.show();
+    if (!result.isCanceled()) {
+      item.setPersonalization(model.getTitle(), model.getDescription());
+      initEquipmentObjectPresentation(item);
+      this.model.updateItem(item);
+    }
   }
 }
