@@ -11,15 +11,14 @@ import net.sf.anathema.interaction.Command;
 import net.sf.anathema.lib.exception.PersistenceException;
 import net.sf.anathema.lib.gui.dialog.core.IDialogResult;
 import net.sf.anathema.lib.gui.dialog.core.ISwingFrameOrDialog;
-import net.sf.anathema.lib.gui.dialog.wizard.WizardDialog;
+import net.sf.anathema.lib.gui.dialog.userdialog.UserDialog;
+import net.sf.anathema.lib.gui.dialog.userdialog.page.IDialogPage;
 import net.sf.anathema.lib.gui.swing.GuiUtilities;
-import net.sf.anathema.lib.gui.wizard.AnathemaWizardDialog;
-import net.sf.anathema.lib.gui.wizard.IAnathemaWizardPage;
 import net.sf.anathema.lib.message.Message;
 import net.sf.anathema.lib.registry.IRegistry;
 import net.sf.anathema.lib.resources.IResources;
-import net.sf.anathema.lib.workflow.wizard.selection.IAnathemaWizardModelTemplate;
-import net.sf.anathema.lib.workflow.wizard.selection.IWizardFactory;
+import net.sf.anathema.lib.workflow.wizard.selection.DialogBasedTemplateFactory;
+import net.sf.anathema.lib.workflow.wizard.selection.IDialogModelTemplate;
 
 import javax.swing.JComponent;
 import java.awt.Component;
@@ -45,11 +44,11 @@ public class NewItemCommand implements Command {
     IRegistry<String, IAnathemaExtension> registry = model.getExtensionPointRegistry();
     ItemTypeCreationViewPropertiesExtensionPoint extension =
             (ItemTypeCreationViewPropertiesExtensionPoint) registry.get(ItemTypeCreationViewPropertiesExtensionPoint.ID);
-    IWizardFactory factory = extension.get(type).getNewItemWizardFactory();
-    IAnathemaWizardModelTemplate template = factory.createTemplate();
+    DialogBasedTemplateFactory factory = extension.get(type).getNewItemWizardFactory();
+    IDialogModelTemplate template = factory.createTemplate();
     if (factory.needsFurtherDetails()) {
-      IAnathemaWizardPage startPage = factory.createPage(template);
-      boolean canceled = showDialog(parent, startPage);
+      IDialogPage page = factory.createPage(template);
+      boolean canceled = showDialog(parent, page);
       if (canceled) {
         return;
       }
@@ -62,9 +61,9 @@ public class NewItemCommand implements Command {
     }
   }
 
-  private boolean showDialog(Component parentComponent, IAnathemaWizardPage startPage) {
-    WizardDialog dialog = new AnathemaWizardDialog(parentComponent, startPage);
-    ISwingFrameOrDialog configuredDialog = dialog.getConfiguredDialog();
+  private boolean showDialog(Component parentComponent, IDialogPage page) {
+    UserDialog dialog = new UserDialog(parentComponent, page);
+    ISwingFrameOrDialog configuredDialog = dialog.getDialog();
     configuredDialog.setResizable(false);
     GuiUtilities.centerToParent(configuredDialog.getWindow());
     IDialogResult result = dialog.show();

@@ -1,6 +1,7 @@
 package net.sf.anathema.lib.gui.dialog.userdialog.page;
 
 import com.google.common.base.Preconditions;
+import net.sf.anathema.lib.control.IChangeListener;
 import net.sf.anathema.lib.message.BasicMessage;
 import net.sf.anathema.lib.message.IBasicMessage;
 
@@ -10,6 +11,11 @@ public abstract class AbstractDialogPage implements IDialogPage {
   public AbstractDialogPage(String defaultMessageText) {
     Preconditions.checkNotNull(defaultMessageText, "DefaultMessage text must not be null.");
     this.defaultMessage = new BasicMessage(defaultMessageText);
+  }
+
+  @Override
+  public void setInputValidListener(IChangeListener inputValidListener) {
+    //nothing to do
   }
 
   @Override

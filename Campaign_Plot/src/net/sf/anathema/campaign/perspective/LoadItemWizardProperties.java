@@ -5,7 +5,7 @@ import net.sf.anathema.lib.gui.ui.ObjectUiListCellRenderer;
 import net.sf.anathema.lib.message.BasicMessage;
 import net.sf.anathema.lib.message.IBasicMessage;
 import net.sf.anathema.lib.resources.IResources;
-import net.sf.anathema.lib.workflow.wizard.selection.IObjectSelectionProperties;
+import net.sf.anathema.campaign.load.selection.IObjectSelectionProperties;
 
 import javax.swing.ListCellRenderer;
 

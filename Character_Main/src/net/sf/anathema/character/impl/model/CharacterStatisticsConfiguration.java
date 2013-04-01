@@ -1,9 +1,9 @@
 package net.sf.anathema.character.impl.model;
 
 import net.sf.anathema.character.generic.template.ICharacterTemplate;
-import net.sf.anathema.lib.workflow.wizard.selection.IAnathemaWizardModelTemplate;
+import net.sf.anathema.lib.workflow.wizard.selection.IDialogModelTemplate;
 
-public class CharacterStatisticsConfiguration implements IAnathemaWizardModelTemplate {
+public class CharacterStatisticsConfiguration implements IDialogModelTemplate {
 
   private ICharacterTemplate template;
 

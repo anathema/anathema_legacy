@@ -6,41 +6,77 @@ import net.sf.anathema.character.view.repository.ITemplateTypeAggregation;
 import net.sf.anathema.lib.control.IChangeListener;
 import net.sf.anathema.lib.control.ObjectValueListener;
 import net.sf.anathema.lib.gui.action.SmartAction;
-import net.sf.anathema.lib.gui.dialog.core.IPageContent;
+import net.sf.anathema.lib.gui.dialog.userdialog.page.AbstractDialogPage;
 import net.sf.anathema.lib.gui.selection.IListObjectSelectionView;
-import net.sf.anathema.lib.gui.wizard.AbstractAnathemaWizardPage;
-import net.sf.anathema.lib.gui.wizard.workflow.CheckInputListener;
 import net.sf.anathema.lib.message.IBasicMessage;
-import net.sf.anathema.lib.resources.IResources;
 
+import javax.swing.JComponent;
 import javax.swing.JToggleButton;
 import java.awt.Component;
 import java.util.Arrays;
 import java.util.Comparator;
 
-public class CharacterCreationWizardPage extends AbstractAnathemaWizardPage {
+public class CharacterCreationDialogPage extends AbstractDialogPage {
   private final CharacterCreationPageProperties properties;
   private final ICharacterItemCreationModel model;
   private final ICharacterItemCreationView view;
 
-  public CharacterCreationWizardPage(ICharacterItemCreationModel model, ICharacterItemCreationView view, IResources resources) {
+  public CharacterCreationDialogPage(ICharacterItemCreationModel model, ICharacterItemCreationView view, CharacterCreationPageProperties properties) {
+    super(properties.getConfirmMessage().getText());
     this.model = model;
     this.view = view;
-    this.properties = new CharacterCreationPageProperties(resources);
+    this.properties = properties;
   }
 
   @Override
-  protected void addFollowUpPages(CheckInputListener inputListener) {
-    //nothing to do;
+  public void setInputValidListener(IChangeListener inputValidListener) {
+    model.addListener(inputValidListener);
+  }
+
+  protected void refreshList(IListObjectSelectionView<ITemplateTypeAggregation> list) {
+    ITemplateTypeAggregation[] availableTemplates = model.getAvailableTemplates();
+    Arrays.sort(availableTemplates, new Comparator<ITemplateTypeAggregation>() {
+      @Override
+      public int compare(ITemplateTypeAggregation o1, ITemplateTypeAggregation o2) {
+        return getTemplateResource(o1).compareTo(getTemplateResource(o2));
+      }
+    });
+    list.setObjects(availableTemplates);
+    list.setSelectedObject(model.getSelectedTemplate());
+  }
+
+  private String getTemplateResource(ITemplateTypeAggregation o1) {
+    return o1.getPresentationProperties().getNewActionResource();
   }
 
   @Override
-  protected void initModelListening(CheckInputListener inputListener) {
-    model.addListener(inputListener);
+  public boolean canFinish() {
+    return model.isSelectionComplete();
   }
 
   @Override
-  protected void initPageContent() {
+  public String getTitle() {
+    return  properties.getDescription();
+  }
+
+  @Override
+  public String getDescription() {
+    return properties.getDescription();
+  }
+
+  @Override
+  public IBasicMessage createCurrentMessage() {
+    if (!model.isCharacterTypeSelected()) {
+      return properties.getSelectCharacterTypeMessage();
+    }
+    if (model.getAvailableTemplates().length == 0) {
+      return properties.getNoTemplatesAvailableMessage();
+    }
+    return properties.getConfirmMessage();
+  }
+
+  @Override
+  public JComponent createContent() {
     IToggleButtonPanel panel = view.addToggleButtonPanel();
     for (final ICharacterType type : model.getAvailableCharacterTypes()) {
       JToggleButton button = panel.addButton(new SmartAction(properties.getTypeIcon(type)) {
@@ -69,47 +105,6 @@ public class CharacterCreationWizardPage extends AbstractAnathemaWizardPage {
       }
     });
     refreshList(list);
-  }
-
-  protected void refreshList(IListObjectSelectionView<ITemplateTypeAggregation> list) {
-    ITemplateTypeAggregation[] availableTemplates = model.getAvailableTemplates();
-    Arrays.sort(availableTemplates, new Comparator<ITemplateTypeAggregation>() {
-      @Override
-      public int compare(ITemplateTypeAggregation o1, ITemplateTypeAggregation o2) {
-        return getTemplateResource(o1).compareTo(getTemplateResource(o2));
-      }
-    });
-    list.setObjects(availableTemplates);
-    list.setSelectedObject(model.getSelectedTemplate());
-  }
-
-  private String getTemplateResource(ITemplateTypeAggregation o1) {
-    return o1.getPresentationProperties().getNewActionResource();
-  }
-
-  @Override
-  public boolean canFinish() {
-    return model.isSelectionComplete();
-  }
-
-  @Override
-  public String getDescription() {
-    return properties.getDescription();
-  }
-
-  @Override
-  public IBasicMessage getMessage() {
-    if (!model.isCharacterTypeSelected()) {
-      return properties.getSelectCharacterTypeMessage();
-    }
-    if (model.getAvailableTemplates().length == 0) {
-      return properties.getNoTemplatesAvailableMessage();
-    }
-    return properties.getConfirmMessage();
-  }
-
-  @Override
-  public IPageContent getPageContent() {
-    return view;
+    return view.getContent();
   }
 }

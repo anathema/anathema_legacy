@@ -10,10 +10,10 @@ import net.sf.anathema.framework.presenter.resources.PlatformUI;
 import net.sf.anathema.framework.presenter.view.IItemTypeViewProperties;
 import net.sf.anathema.lib.exception.PersistenceException;
 import net.sf.anathema.lib.gui.action.SmartAction;
-import net.sf.anathema.lib.gui.wizard.IAnathemaWizardPage;
+import net.sf.anathema.lib.gui.dialog.userdialog.page.IDialogPage;
 import net.sf.anathema.lib.message.Message;
 import net.sf.anathema.lib.resources.IResources;
-import net.sf.anathema.lib.workflow.wizard.selection.IAnathemaWizardModelTemplate;
+import net.sf.anathema.lib.workflow.wizard.selection.IDialogModelTemplate;
 
 import javax.swing.Action;
 import javax.swing.Icon;
@@ -58,10 +58,10 @@ public class ItemTypeLoadAction extends AbstractItemAction {
             (ItemTypeCreationViewPropertiesExtensionPoint) getAnathemaModel().getExtensionPointRegistry()
                     .get(ItemTypeCreationViewPropertiesExtensionPoint.ID);
     IItemTypeViewProperties properties = extension.get(itemType);
-    ItemSelectionWizardPageFactory factory = new ItemSelectionWizardPageFactory(itemType, getAnathemaModel().getRepository().getPrintNameFileAccess(),
+    ItemSelectionTemplateFactory factory = new ItemSelectionTemplateFactory(itemType, getAnathemaModel().getRepository().getPrintNameFileAccess(),
             new LoadItemWizardProperties(getResources(), properties.getItemTypeUI()));
-    IAnathemaWizardModelTemplate template = factory.createTemplate();
-    IAnathemaWizardPage startPage = factory.createPage(template);
+    IDialogModelTemplate template = factory.createTemplate();
+    IDialogPage startPage = factory.createPage(template);
     boolean canceled = showDialog(parentComponent, startPage);
     if (canceled) {
       return;

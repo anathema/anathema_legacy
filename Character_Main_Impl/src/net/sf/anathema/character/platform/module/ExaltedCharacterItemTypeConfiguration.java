@@ -15,7 +15,7 @@ import net.sf.anathema.character.library.intvalue.IntValueDisplayFactoryPrototyp
 import net.sf.anathema.character.model.ICharacter;
 import net.sf.anathema.character.model.advance.IExperiencePointManagement;
 import net.sf.anathema.character.model.creation.IBonusPointManagement;
-import net.sf.anathema.character.platform.module.repository.CharacterCreationWizardPageFactory;
+import net.sf.anathema.character.platform.module.repository.CharacterCreationTemplateFactory;
 import net.sf.anathema.character.presenter.CharacterPresenter;
 import net.sf.anathema.character.presenter.PlayerCharacterPointPresentation;
 import net.sf.anathema.character.presenter.PointPresentationStrategy;
@@ -79,7 +79,7 @@ public class ExaltedCharacterItemTypeConfiguration extends AbstractPersistableIt
         PointPresentationStrategy pointPresentation =
                 choosePointPresentation(character, characterView, bonusPointManagement, experiencePointManagement, resources);
         new CharacterPresenter((ICharacter) item.getItemData(), characterView, resources, anathemaModel, pointPresentation).initPresentation();
-        ((ICharacter) item.getItemData()).setClean();
+        item.getItemData().setClean();
         return characterView;
       }
     };
@@ -97,7 +97,7 @@ public class ExaltedCharacterItemTypeConfiguration extends AbstractPersistableIt
   @Override
   protected IItemTypeViewProperties createItemTypeCreationProperties(IApplicationModel anathemaModel, IResources resources) {
     ICharacterGenerics generics = CharacterGenericsExtractor.getGenerics(anathemaModel);
-    CharacterCreationWizardPageFactory factory = new CharacterCreationWizardPageFactory(generics, resources);
+    CharacterCreationTemplateFactory factory = new CharacterCreationTemplateFactory(generics, resources);
     IRegistry<ICharacterType, ICasteCollection> casteCollectionIRegistry = generics.getCasteCollectionRegistry();
     IRepositoryFileResolver fileResolver = anathemaModel.getRepository().getRepositoryFileResolver();
     CharacterPrintNameFileScanner scanner =

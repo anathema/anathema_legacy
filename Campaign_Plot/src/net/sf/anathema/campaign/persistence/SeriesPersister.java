@@ -16,7 +16,7 @@ import net.sf.anathema.framework.repository.RepositoryException;
 import net.sf.anathema.framework.repository.access.IRepositoryReadAccess;
 import net.sf.anathema.framework.repository.access.IRepositoryWriteAccess;
 import net.sf.anathema.lib.exception.PersistenceException;
-import net.sf.anathema.lib.workflow.wizard.selection.IAnathemaWizardModelTemplate;
+import net.sf.anathema.lib.workflow.wizard.selection.IDialogModelTemplate;
 import net.sf.anathema.lib.xml.DocumentUtilities;
 import net.sf.anathema.lib.xml.ElementUtilities;
 import org.apache.commons.io.IOUtils;
@@ -174,7 +174,7 @@ public class SeriesPersister implements IRepositoryItemPersister {
   }
 
   @Override
-  public IItem createNew(IAnathemaWizardModelTemplate template) {
+  public IItem createNew(IDialogModelTemplate template) {
     return new AnathemaDataItem(campaignType, new Series());
   }
 }

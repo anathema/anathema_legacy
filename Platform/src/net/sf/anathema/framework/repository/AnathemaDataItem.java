@@ -13,7 +13,7 @@ public class AnathemaDataItem extends AbstractAnathemaItem {
   public AnathemaDataItem(IItemType type, IItemData itemData) {
     super(type);
     Preconditions.checkArgument(type.supportsRepository());
-    Preconditions.checkNotNull(itemData); //$NON-NLS-1$
+    Preconditions.checkNotNull(itemData);
     this.itemData = itemData;
     itemData.setPrintNameAdjuster(new PrintNameAdjuster(this));
   }

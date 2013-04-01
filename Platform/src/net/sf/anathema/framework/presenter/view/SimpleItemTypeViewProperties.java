@@ -1,8 +1,8 @@
 package net.sf.anathema.framework.presenter.view;
 
 import net.sf.anathema.framework.item.IItemType;
-import net.sf.anathema.framework.module.NullWizardPageFactory;
-import net.sf.anathema.lib.workflow.wizard.selection.IWizardFactory;
+import net.sf.anathema.framework.module.NullTemplateFactory;
+import net.sf.anathema.lib.workflow.wizard.selection.DialogBasedTemplateFactory;
 
 import javax.swing.Icon;
 
@@ -13,7 +13,7 @@ public class SimpleItemTypeViewProperties extends AbstractItemTypeViewProperties
   }
 
   @Override
-  public IWizardFactory getNewItemWizardFactory() {
-    return new NullWizardPageFactory();
+  public DialogBasedTemplateFactory getNewItemWizardFactory() {
+    return new NullTemplateFactory();
   }
 }

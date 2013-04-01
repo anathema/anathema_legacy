@@ -9,7 +9,7 @@ import net.sf.anathema.framework.repository.IItem;
 import net.sf.anathema.framework.repository.RepositoryException;
 import net.sf.anathema.framework.repository.access.IRepositoryReadAccess;
 import net.sf.anathema.lib.exception.PersistenceException;
-import net.sf.anathema.lib.workflow.wizard.selection.IAnathemaWizardModelTemplate;
+import net.sf.anathema.lib.workflow.wizard.selection.IDialogModelTemplate;
 
 public class LoadItemCreator implements IItemCreator {
 
@@ -20,7 +20,7 @@ public class LoadItemCreator implements IItemCreator {
   }
 
   @Override
-  public IItem createItem(IItemType type, IAnathemaWizardModelTemplate template) throws PersistenceException {
+  public IItem createItem(IItemType type, IDialogModelTemplate template) throws PersistenceException {
     IRepositoryItemPersister persister = model.getPersisterRegistry().get(type);
     try {
       IRepositoryReadAccess readAccess = model.getRepository().openReadAccess(type, (IFileProvider) template);

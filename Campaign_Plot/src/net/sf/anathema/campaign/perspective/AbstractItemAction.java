@@ -6,10 +6,9 @@ import net.sf.anathema.framework.item.IItemTypeRegistry;
 import net.sf.anathema.lib.gui.action.SmartAction;
 import net.sf.anathema.lib.gui.dialog.core.IDialogResult;
 import net.sf.anathema.lib.gui.dialog.core.ISwingFrameOrDialog;
-import net.sf.anathema.lib.gui.dialog.wizard.WizardDialog;
+import net.sf.anathema.lib.gui.dialog.userdialog.UserDialog;
+import net.sf.anathema.lib.gui.dialog.userdialog.page.IDialogPage;
 import net.sf.anathema.lib.gui.swing.GuiUtilities;
-import net.sf.anathema.lib.gui.wizard.AnathemaWizardDialog;
-import net.sf.anathema.lib.gui.wizard.IAnathemaWizardPage;
 import net.sf.anathema.lib.resources.IResources;
 
 import java.awt.Component;
@@ -29,9 +28,9 @@ public abstract class AbstractItemAction extends SmartAction {
     this.resources = resources;
   }
 
-  protected final boolean showDialog(Component parentComponent, IAnathemaWizardPage startPage) {
-    WizardDialog dialog = new AnathemaWizardDialog(parentComponent, startPage);
-    ISwingFrameOrDialog configuredDialog = dialog.getConfiguredDialog();
+  protected final boolean showDialog(Component parentComponent, IDialogPage startPage) {
+    UserDialog dialog = new UserDialog(parentComponent, startPage);
+    ISwingFrameOrDialog configuredDialog = dialog.getDialog();
     configuredDialog.setResizable(false);
     GuiUtilities.centerToParent(configuredDialog.getWindow());
     IDialogResult result = dialog.show();

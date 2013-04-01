@@ -8,7 +8,7 @@ import net.sf.anathema.framework.persistence.RepositoryItemPersister;
 import net.sf.anathema.framework.repository.AnathemaDataItem;
 import net.sf.anathema.framework.repository.IItem;
 import net.sf.anathema.lib.exception.PersistenceException;
-import net.sf.anathema.lib.workflow.wizard.selection.IAnathemaWizardModelTemplate;
+import net.sf.anathema.lib.workflow.wizard.selection.IDialogModelTemplate;
 import net.sf.anathema.lib.xml.DocumentUtilities;
 import org.dom4j.Document;
 import org.dom4j.DocumentHelper;
@@ -49,7 +49,7 @@ public class BasicDataItemPersister extends AbstractSingleFileItemPersister {
   }
 
   @Override
-  public IItem createNew(IAnathemaWizardModelTemplate template) {
+  public IItem createNew(IDialogModelTemplate template) {
     return new AnathemaDataItem(type, new BasicItemData());
   }
 }

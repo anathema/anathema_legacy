@@ -13,7 +13,7 @@ import net.sf.anathema.framework.repository.AnathemaDataItem;
 import net.sf.anathema.framework.repository.IItem;
 import net.sf.anathema.lib.exception.PersistenceException;
 import net.sf.anathema.lib.message.MessageType;
-import net.sf.anathema.lib.workflow.wizard.selection.IAnathemaWizardModelTemplate;
+import net.sf.anathema.lib.workflow.wizard.selection.IDialogModelTemplate;
 import net.sf.anathema.lib.xml.DocumentUtilities;
 import org.dom4j.Document;
 import org.dom4j.DocumentHelper;
@@ -66,7 +66,7 @@ public class ExaltedCharacterPersister extends AbstractSingleFileItemPersister {
   }
 
   @Override
-  public IItem createNew(IAnathemaWizardModelTemplate template) throws PersistenceException {
+  public IItem createNew(IDialogModelTemplate template) throws PersistenceException {
     if (!(template instanceof CharacterStatisticsConfiguration)) {
       throw new IllegalArgumentException("Bad template type for character creation."); //$NON-NLS-1$
     }

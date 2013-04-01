@@ -1,41 +1,40 @@
 package net.sf.anathema.campaign.perspective;
 
+import net.sf.anathema.campaign.load.selection.IObjectSelectionProperties;
+import net.sf.anathema.campaign.load.selection.IObjectSelectionView;
+import net.sf.anathema.campaign.load.selection.IObjectSelectionWizardModel;
+import net.sf.anathema.campaign.load.selection.LenientLegalityProvider;
+import net.sf.anathema.campaign.load.selection.ListObjectSelectionPageView;
+import net.sf.anathema.campaign.load.selection.ObjectSelectionDialogPage;
+import net.sf.anathema.campaign.load.selection.ObjectSelectionWizardModel;
 import net.sf.anathema.framework.item.IItemType;
 import net.sf.anathema.framework.presenter.action.ConfigurableFileProvider;
 import net.sf.anathema.framework.repository.access.printname.IPrintNameFileAccess;
 import net.sf.anathema.framework.view.PrintNameFile;
 import net.sf.anathema.lib.control.IChangeListener;
-import net.sf.anathema.lib.gui.wizard.IAnathemaWizardPage;
-import net.sf.anathema.lib.registry.Registry;
-import net.sf.anathema.lib.workflow.wizard.selection.IAnathemaWizardModelTemplate;
-import net.sf.anathema.lib.workflow.wizard.selection.IObjectSelectionProperties;
-import net.sf.anathema.lib.workflow.wizard.selection.IObjectSelectionView;
-import net.sf.anathema.lib.workflow.wizard.selection.IObjectSelectionWizardModel;
-import net.sf.anathema.lib.workflow.wizard.selection.IWizardFactory;
-import net.sf.anathema.lib.workflow.wizard.selection.LenientLegalityProvider;
-import net.sf.anathema.lib.workflow.wizard.selection.ListObjectSelectionPageView;
-import net.sf.anathema.lib.workflow.wizard.selection.ObjectSelectionWizardModel;
-import net.sf.anathema.lib.workflow.wizard.selection.ObjectSelectionWizardPage;
+import net.sf.anathema.lib.gui.dialog.userdialog.page.IDialogPage;
+import net.sf.anathema.lib.workflow.wizard.selection.DialogBasedTemplateFactory;
+import net.sf.anathema.lib.workflow.wizard.selection.IDialogModelTemplate;
 
 import java.util.Collection;
 
-public class ItemSelectionWizardPageFactory implements IWizardFactory {
+public class ItemSelectionTemplateFactory implements DialogBasedTemplateFactory {
 
   private final IItemType type;
   private final IPrintNameFileAccess access;
   private final IObjectSelectionProperties selectionProperties;
 
-  public ItemSelectionWizardPageFactory(
-      IItemType type,
-      IPrintNameFileAccess access,
-      IObjectSelectionProperties selectionProperties) {
+  public ItemSelectionTemplateFactory(
+          IItemType type,
+          IPrintNameFileAccess access,
+          IObjectSelectionProperties selectionProperties) {
     this.type = type;
     this.access = access;
     this.selectionProperties = selectionProperties;
   }
 
   @Override
-  public IAnathemaWizardPage createPage(final IAnathemaWizardModelTemplate template) {
+  public IDialogPage createPage(final IDialogModelTemplate template) {
     if (!(template instanceof ConfigurableFileProvider)) {
       throw new IllegalArgumentException("Bad template type."); //$NON-NLS-1$
     }
@@ -51,17 +50,14 @@ public class ItemSelectionWizardPageFactory implements IWizardFactory {
       }
     });
     IObjectSelectionView<PrintNameFile> view = new ListObjectSelectionPageView<>(PrintNameFile.class);
-    Registry<PrintNameFile, IAnathemaWizardModelTemplate> modelTemplateRegistry = new Registry<>();
-    return new ObjectSelectionWizardPage<>(
-        new NullWizardPageRegistry(),
-        modelTemplateRegistry,
+    return new ObjectSelectionDialogPage<>(
         model,
         view,
         selectionProperties);
   }
 
   @Override
-  public IAnathemaWizardModelTemplate createTemplate() {
+  public IDialogModelTemplate createTemplate() {
     return new ConfigurableFileProvider();
   }
 
