@@ -10,8 +10,8 @@ import net.sf.anathema.lib.resources.IResources;
 import net.sf.anathema.namegenerator.exalted.ExaltedNameGeneratorModel;
 import net.sf.anathema.namegenerator.presenter.NameGeneratorPresenter;
 import net.sf.anathema.namegenerator.presenter.model.INameGeneratorModel;
-import net.sf.anathema.namegenerator.presenter.view.INameGeneratorView;
-import net.sf.anathema.namegenerator.view.NameGeneratorView;
+import net.sf.anathema.namegenerator.presenter.view.NameGeneratorView;
+import net.sf.anathema.namegenerator.view.SimpleNameGeneratorView;
 
 @PerspectiveAutoCollector
 @Weight(weight = 7000)
@@ -25,7 +25,7 @@ public class NameGeneratorPerspective implements Perspective {
 
   @Override
   public void initContent(Container container, IApplicationModel applicationModel, IResources resources) {
-    INameGeneratorView view = new NameGeneratorView();
+    NameGeneratorView view = new SimpleNameGeneratorView();
     INameGeneratorModel generatorModel = new ExaltedNameGeneratorModel();
     new NameGeneratorPresenter(resources, view, generatorModel).initPresentation();
     container.setSwingContent(view.getComponent());
