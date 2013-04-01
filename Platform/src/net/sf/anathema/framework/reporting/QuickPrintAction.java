@@ -12,10 +12,6 @@ import javax.swing.KeyStroke;
 import java.awt.Component;
 import java.awt.Toolkit;
 import java.awt.event.KeyEvent;
-import java.io.FileNotFoundException;
-import java.io.IOException;
-import java.nio.file.Files;
-import java.nio.file.Path;
 
 import static javax.swing.KeyStroke.getKeyStroke;
 
@@ -23,14 +19,8 @@ public class QuickPrintAction extends AbstractPrintAction {
 
   public static Action createToolAction(IApplicationModel model, IResources resources) {
     SmartAction action = new QuickPrintAction(model, resources);
-    action.setToolTipText(resources.getString("Anathema.Reporting.Menu.QuickPrint.Tooltip")); //$NON-NLS-1$
+    action.setToolTipText(resources.getString("Anathema.Reporting.Menu.QuickPrint.Tooltip"));
     action.setIcon(new PlatformUI(resources).getPDFTaskBarIcon());
-    return action;
-  }
-
-  public static Action createMenuAction(IApplicationModel model, IResources resources) {
-    SmartAction action = new QuickPrintAction(model, resources);
-    action.setName(resources.getString("Anathema.Reporting.Menu.QuickPrint.Name") + "\u2026");
     return action;
   }
 
@@ -48,41 +38,12 @@ public class QuickPrintAction extends AbstractPrintAction {
     return new QuickPrintEnabledListener(this, new DefaultReportFinder(anathemaModel, resources));
   }
 
-  private Path getPrintFile(IItem item) {
-    try {
-      String baseName = getBaseName(item);
-      while (baseName.length() < 3) {
-        baseName = baseName.concat("_");
-      }
-      Path path = Files.createTempFile(baseName, PDF_EXTENSION);
-      path.toFile().deleteOnExit();
-      return path;
-    } catch (IOException e) {
-      throw new RuntimeException(resources.getString("Anathema.Reporting.Message.FileCreationFailed"), e);
-    }
-  }
-
   @Override
   protected void execute(Component parentComponent) {
     IItem item = anathemaModel.getItemManagement().getSelectedItem();
     if (item == null) {
       return;
     }
-    Report selectedReport = new DefaultReportFinder(anathemaModel, resources).getDefaultReport(item);
-    if (selectedReport == null) {
-      return;
-    }
-    try {
-      Path selectedFile = getPrintFile(item);
-      performPrint(item, selectedReport, selectedFile);
-      openFile(selectedFile);
-
-    } catch (FileNotFoundException e) {
-      handleAlreadyOpenException(parentComponent, e);
-    } catch (IOException e) {
-      handleFailedToOpenException(parentComponent, e);
-    } catch (Exception e) {
-      handleGeneralException(parentComponent, e);
-    }
+    new QuickPrintCommand(resources, anathemaModel, item).execute();
   }
 }
