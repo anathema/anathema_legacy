@@ -1,15 +1,13 @@
 package net.sf.anathema.namegenerator.presenter;
 
 import com.google.common.base.Joiner;
+import net.sf.anathema.interaction.Command;
 import net.sf.anathema.lib.control.IChangeListener;
 import net.sf.anathema.lib.gui.Presenter;
-import net.sf.anathema.lib.gui.action.SmartAction;
 import net.sf.anathema.lib.resources.IResources;
 import net.sf.anathema.lib.util.Identified;
 import net.sf.anathema.namegenerator.presenter.model.INameGeneratorModel;
 import net.sf.anathema.namegenerator.presenter.view.INameGeneratorView;
-
-import java.awt.Component;
 
 public class NameGeneratorPresenter implements Presenter {
 
@@ -34,13 +32,13 @@ public class NameGeneratorPresenter implements Presenter {
   }
 
   private void initGenerationPresentation() {
-    view.addGenerationAction(
-            new SmartAction(resources.getString("NameGeneratorPresenter.GenerateButtonLabel")) { //$NON-NLS-1$
-
+    String label = resources.getString("NameGeneratorPresenter.GenerateButtonLabel");
+    view.addGenerationAction(label,
+            new Command() {
               @Override
-              protected void execute(Component parentComponent) {
+              public void execute() {
                 String[] generatedNames = model.generateNames(50);
-                view.setResult(Joiner.on("\n").join(generatedNames)); //$NON-NLS-1$
+                view.setResult(Joiner.on("\n").join(generatedNames));
               }
             });
   }

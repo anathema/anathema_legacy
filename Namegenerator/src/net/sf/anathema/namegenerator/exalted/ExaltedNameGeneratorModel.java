@@ -10,25 +10,25 @@ import net.sf.anathema.namegenerator.exalted.domain.ThresholdNameGenerator;
 import net.sf.anathema.namegenerator.presenter.model.INameGeneratorModel;
 import org.jmock.example.announcer.Announcer;
 
-import java.util.HashMap;
+import java.util.LinkedHashMap;
 import java.util.Map;
+import java.util.Set;
 
 public class ExaltedNameGeneratorModel implements INameGeneratorModel {
 
-  public static final Identifier THRESHOLD_ID = new Identifier("Threshold"); //$NON-NLS-1$
-  private final Identified[] nameGeneratorTypes = new Identified[] { new Identifier("Realm"), THRESHOLD_ID }; //$NON-NLS-1$
-  private Identified selectedGeneratorType = nameGeneratorTypes[1];
+  private Identified selectedGeneratorType;
   private final Announcer<IChangeListener> selectedGeneratorTypeListeners = Announcer.to(IChangeListener.class);
-  private final Map<Identified, INameGenerator> generatorsByIdentificate = new HashMap<>();
+  private final Map<Identified, INameGenerator> generatorsByIdentificate = new LinkedHashMap<>();
 
   public ExaltedNameGeneratorModel() {
-    generatorsByIdentificate.put(nameGeneratorTypes[0], new RealmNameGenerator());
-    generatorsByIdentificate.put(nameGeneratorTypes[1], new ThresholdNameGenerator());
+    generatorsByIdentificate.put(new Identifier("Realm"), new RealmNameGenerator());
+    generatorsByIdentificate.put(new Identifier("Threshold"), new ThresholdNameGenerator());
+    selectedGeneratorType = generatorsByIdentificate.keySet().iterator().next();
   }
 
   @Override
-  public Identified[] getGeneratorTypes() {
-    return nameGeneratorTypes;
+  public Set<Identified> getGeneratorTypes() {
+    return generatorsByIdentificate.keySet();
   }
 
   @Override

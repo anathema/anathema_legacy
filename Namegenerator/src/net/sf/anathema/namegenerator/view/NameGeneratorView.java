@@ -4,18 +4,20 @@ import net.miginfocom.layout.AC;
 import net.miginfocom.layout.CC;
 import net.miginfocom.layout.LC;
 import net.miginfocom.swing.MigLayout;
+import net.sf.anathema.interaction.Command;
 import net.sf.anathema.lib.control.IChangeListener;
+import net.sf.anathema.lib.gui.action.SmartAction;
 import net.sf.anathema.lib.workflow.textualdescription.view.AreaTextView;
 import net.sf.anathema.namegenerator.presenter.view.INameGeneratorView;
 import org.jmock.example.announcer.Announcer;
 
-import javax.swing.Action;
 import javax.swing.ButtonGroup;
 import javax.swing.JButton;
 import javax.swing.JComponent;
 import javax.swing.JPanel;
 import javax.swing.JRadioButton;
 import java.awt.BorderLayout;
+import java.awt.Component;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.HashMap;
@@ -45,7 +47,7 @@ public class NameGeneratorView implements INameGeneratorView {
 
   private JComponent createSecondColumn() {
     JPanel panel = new JPanel(new BorderLayout());
-    panel.add(resultTextView.getComponent(), BorderLayout.CENTER);
+    panel.add(resultTextView.getComponent());
     return panel;
   }
 
@@ -91,7 +93,12 @@ public class NameGeneratorView implements INameGeneratorView {
   }
 
   @Override
-  public void addGenerationAction(Action action) {
-    firstColumn.add(new JButton(action));
+  public void addGenerationAction(String label, final Command command) {
+    firstColumn.add(new JButton(new SmartAction(label) {
+      @Override
+      protected void execute(Component parentComponent) {
+        command.execute();
+      }
+    }));
   }
 }

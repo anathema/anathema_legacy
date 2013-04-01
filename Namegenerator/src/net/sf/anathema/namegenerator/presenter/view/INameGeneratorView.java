@@ -1,9 +1,8 @@
 package net.sf.anathema.namegenerator.presenter.view;
 
+import net.sf.anathema.interaction.Command;
 import net.sf.anathema.lib.control.IChangeListener;
 import net.sf.anathema.lib.gui.IView;
-
-import javax.swing.Action;
 
 public interface INameGeneratorView extends IView {
 
@@ -17,5 +16,5 @@ public interface INameGeneratorView extends IView {
 
   void setSelectedGeneratorType(Object generatorType);
 
-  void addGenerationAction(Action action);
+  void addGenerationAction(String label, Command command);
 }
