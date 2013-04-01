@@ -1,4 +1,4 @@
-package net.sf.anathema.lib.gui.wizard.workflow;
+package net.sf.anathema.lib.gui.wizard;
 
 import net.sf.anathema.lib.control.IBooleanValueChangedListener;
 import net.sf.anathema.lib.control.IChangeListener;

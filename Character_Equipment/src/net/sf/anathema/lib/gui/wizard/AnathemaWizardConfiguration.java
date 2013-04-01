@@ -4,7 +4,6 @@ import com.google.common.base.Preconditions;
 import net.sf.anathema.lib.gui.dialog.wizard.AbstractWizardConfiguration;
 import net.sf.anathema.lib.gui.dialog.wizard.IWizardContainer;
 import net.sf.anathema.lib.gui.dialog.wizard.IWizardPage;
-import net.sf.anathema.lib.gui.wizard.workflow.CheckInputListener;
 
 public class AnathemaWizardConfiguration extends AbstractWizardConfiguration {
 

@@ -1,7 +1,6 @@
 package net.sf.anathema.lib.gui.wizard;
 
 import net.sf.anathema.lib.gui.dialog.wizard.IWizardPage;
-import net.sf.anathema.lib.gui.wizard.workflow.CheckInputListener;
 import net.sf.anathema.lib.data.ICondition;
 import net.sf.anathema.lib.message.BasicMessage;
 import net.sf.anathema.lib.message.IBasicMessage;
