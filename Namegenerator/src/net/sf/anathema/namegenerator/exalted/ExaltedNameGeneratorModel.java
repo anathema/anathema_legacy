@@ -21,8 +21,8 @@ public class ExaltedNameGeneratorModel implements INameGeneratorModel {
   private final Map<Identified, INameGenerator> generatorsByIdentificate = new LinkedHashMap<>();
 
   public ExaltedNameGeneratorModel() {
-    generatorsByIdentificate.put(new Identifier("Realm"), new RealmNameGenerator());
-    generatorsByIdentificate.put(new Identifier("Threshold"), new ThresholdNameGenerator());
+    generatorsByIdentificate.put(new Identifier("Namegenerator.Realm"), new RealmNameGenerator());
+    generatorsByIdentificate.put(new Identifier("Namegenerator.Threshold"), new ThresholdNameGenerator());
     selectedGeneratorType = generatorsByIdentificate.keySet().iterator().next();
   }
 

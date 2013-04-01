@@ -24,7 +24,7 @@ public class NameGeneratorPresenter implements Presenter {
   @Override
   public void initPresentation() {
     for (Identified generatorType : model.getGeneratorTypes()) {
-      String formattedLabel = resources.getString("NameGeneratorPresenter." + generatorType); //$NON-NLS-1$
+      String formattedLabel = resources.getString(generatorType.getId());
       view.addNameGeneratorType(formattedLabel, generatorType);
     }
     initSelectedGeneratorTypePresentation();
@@ -32,7 +32,7 @@ public class NameGeneratorPresenter implements Presenter {
   }
 
   private void initGenerationPresentation() {
-    String label = resources.getString("NameGeneratorPresenter.GenerateButtonLabel");
+    String label = resources.getString("Namegenerator.GenerateButton.Label");
     view.addGenerationAction(label,
             new Command() {
               @Override
