@@ -82,7 +82,7 @@ public class EquipmentDatabasePresenter implements Presenter {
     });
     final CostSelectionView costView = new CostSelectionView(getColonString("Equipment.Creation.Basics.Cost"),
             backgrounds, getIntValueDisplayFactory());
-    panelBuilder.addView(costView, new CC().split(2));
+    panelBuilder.addView(costView, new CC().split(2).pushX());
     compositionView.addObjectSelectionChangedListener(new ObjectValueListener<MaterialComposition>() {
       @Override
       public void valueChanged(MaterialComposition newValue) {
