@@ -11,7 +11,10 @@ import net.sf.anathema.lib.gui.list.actionview.SingleSelectionActionAddableListV
 import net.sf.anathema.lib.gui.selection.IListObjectSelectionView;
 import net.sf.anathema.lib.gui.selection.ListObjectSelectionView;
 import net.sf.anathema.framework.perspective.SwingPerspectivePane;
+import net.sf.anathema.lib.gui.swing.GuiUtilities;
+import net.sf.anathema.lib.gui.toolbar.ToolBarUtilities;
 
+import javax.swing.AbstractButton;
 import javax.swing.Action;
 import javax.swing.JButton;
 import javax.swing.JComponent;
@@ -79,6 +82,7 @@ public class EquipmentDatabaseView implements IEquipmentDatabaseView {
 
   @Override
   public void addEditTemplateAction(Action action) {
-    editTemplateButtonPanel.add(new JButton(action));
+    AbstractButton button = ToolBarUtilities.createToolBarButton(action);
+    editTemplateButtonPanel.add(button);
   }
 }

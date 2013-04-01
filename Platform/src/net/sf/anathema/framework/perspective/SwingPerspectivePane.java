@@ -1,5 +1,9 @@
 package net.sf.anathema.framework.perspective;
 
+import net.miginfocom.layout.AC;
+import net.miginfocom.layout.CC;
+import net.miginfocom.layout.LC;
+import net.miginfocom.swing.MigLayout;
 import net.sf.anathema.lib.gui.IView;
 
 import javax.swing.BorderFactory;
@@ -10,7 +14,7 @@ import java.awt.Dimension;
 
 public class SwingPerspectivePane implements IView {
 
-  private final JPanel panel = new JPanel(new BorderLayout());
+  private final JPanel panel = new JPanel(new MigLayout(new LC().fill(), new AC().grow().fill()));
   private final JPanel navigationPanel = new JPanel(new BorderLayout());
   private final JPanel contentPanel = new JPanel(new BorderLayout());
 
@@ -18,8 +22,8 @@ public class SwingPerspectivePane implements IView {
     navigationPanel.setMinimumSize(new Dimension(200, 0));
     navigationPanel.setPreferredSize(new Dimension(200, 0));
     navigationPanel.setMaximumSize(new Dimension(200, Integer.MAX_VALUE));
-    panel.add(wrap(navigationPanel), BorderLayout.WEST);
-    panel.add(wrap(contentPanel), BorderLayout.CENTER);
+    panel.add(wrap(navigationPanel),new CC().dockWest());
+    panel.add(wrap(contentPanel), new CC().push().grow());
   }
 
   private JPanel wrap(JComponent component) {
