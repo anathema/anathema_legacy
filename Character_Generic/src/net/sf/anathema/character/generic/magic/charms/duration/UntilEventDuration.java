@@ -19,7 +19,7 @@ public class UntilEventDuration extends ReflectionEqualsObject implements IDurat
 
   @Override
   public String getText(IStringResourceHandler resources) {
-    String eventText = resources.getString("Charm.Event." + getEvent()); //$NON-NLS-1$
-    return resources.getString("Charm.UntilEvent", new Object[] { eventText }); //$NON-NLS-1$
+    String eventText = resources.getString("Charm.Event." + getEvent());
+    return resources.getString("Charm.UntilEvent", eventText);
   }
 }

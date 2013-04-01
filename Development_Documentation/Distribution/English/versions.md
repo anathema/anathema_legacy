@@ -22,6 +22,7 @@ leading us to the assumption that not many of you used it.
 * Equipment can handle specialty names containing ampersands '&'.
 * Sidereals pay extra for their Celestial Manses.
 * Serenity Sidereals no longer get two free dots under some circumstances.
+* Durations of the Until...-type are properly shown once more.
 
 ## Release 5.0.1
 
