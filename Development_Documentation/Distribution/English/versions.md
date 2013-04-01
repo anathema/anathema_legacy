@@ -23,6 +23,7 @@ leading us to the assumption that not many of you used it.
 * Sidereals pay extra for their Celestial Manses.
 * Serenity Sidereals no longer get two free dots under some circumstances.
 * Durations of the Until...-type are properly shown once more.
+* Corrects cost of [Solar/Resistance] "Spirit Strengthens the Skin"
 
 ## Release 5.0.1
 

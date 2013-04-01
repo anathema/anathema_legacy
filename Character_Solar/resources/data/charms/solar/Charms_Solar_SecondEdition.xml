@@ -1392,7 +1392,7 @@
 			<charmReference id="Solar.DurabilityOakMeditation"/>
 		</prerequisite>
 		<cost>
-			<essence cost="1" text="per pre-soak damage die removed"/>
+			<essence cost="1" text="per post-soak damage die removed"/>
 		</cost>
 		<duration duration="Instant"/>
 		<charmtype type="Reflexive">
