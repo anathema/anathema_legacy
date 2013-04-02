@@ -2,70 +2,92 @@ package net.sf.anathema.character.equipment.item;
 
 import net.sf.anathema.character.equipment.item.model.IEquipmentDatabaseManagement;
 import net.sf.anathema.character.equipment.item.model.IEquipmentTemplateEditModel;
+import net.sf.anathema.character.equipment.item.view.IEquipmentDatabaseView;
 import net.sf.anathema.character.equipment.template.IEquipmentTemplate;
-import net.sf.anathema.framework.presenter.resources.PlatformUI;
+import net.sf.anathema.framework.view.SwingApplicationFrame;
+import net.sf.anathema.interaction.Command;
+import net.sf.anathema.interaction.Tool;
 import net.sf.anathema.lib.control.IChangeListener;
 import net.sf.anathema.lib.control.ObjectValueListener;
-import net.sf.anathema.lib.gui.action.SmartAction;
 import net.sf.anathema.lib.resources.IResources;
 
-import java.awt.Component;
-
-public final class SaveEquipmentTemplateAction extends SmartAction {
+public final class SaveEquipmentTemplateAction {
   private final IResources resources;
   private final IEquipmentDatabaseManagement model;
-  private final IChangeListener changeListener = new IChangeListener() {
-    @Override
-    public void changeOccurred() {
-      updateEnabled();
-    }
-  };
-  private final ObjectValueListener<String> stringChangeListener = new ObjectValueListener<String>() {
-    @Override
-    public void valueChanged(String newValue) {
-      updateEnabled();
-    }
-  };
 
   public SaveEquipmentTemplateAction(IResources resources, IEquipmentDatabaseManagement model) {
-    super(new PlatformUI(resources).getSaveTaskBarIcon());
     this.resources = resources;
     this.model = model;
-    model.getTemplateEditModel().getDescription().getName().addTextChangedListener(stringChangeListener);
-    model.getTemplateEditModel().getDescription().getContent().addTextChangedListener(stringChangeListener);
+  }
+
+  public void addToolTo(IEquipmentDatabaseView view) {
+    Tool saveTool = view.addEditTemplateTool();
+    saveTool.setIcon("icons/TaskBarSave24.png");
+    saveTool.setTooltip(resources.getString("Equipment.Creation.Item.SaveActionTooltip"));
+    initListening(saveTool);
+    saveTool.setCommand(new SaveChangedEquipment());
+  }
+
+  private void initListening(Tool saveTool) {
+    UpdateOnChange changeListener = new UpdateOnChange(saveTool);
+    model.getTemplateEditModel().getDescription().getName().addTextChangedListener(changeListener);
+    model.getTemplateEditModel().getDescription().getContent().addTextChangedListener(changeListener);
     model.getTemplateEditModel().addStatsChangeListener(changeListener);
     model.getTemplateEditModel().addCompositionChangeListener(changeListener);
     model.getTemplateEditModel().addCostChangeListener(changeListener);
     model.getTemplateEditModel().addMagicalMaterialChangeListener(changeListener);
-    updateEnabled();
-    setToolTipText(resources.getString("Equipment.Creation.Item.SaveActionTooltip")); //$NON-NLS-1$
+    updateEnabled(saveTool);
   }
 
-  private void updateEnabled() {
-    setEnabled(!model.getTemplateEditModel().getDescription().getName().isEmpty()
-        && model.getTemplateEditModel().isDirty());
+  private void updateEnabled(Tool tool) {
+    if (!model.getTemplateEditModel().getDescription().getName().isEmpty()
+            && model.getTemplateEditModel().isDirty()) {
+      tool.enable();
+    } else {
+      tool.disable();
+    }
   }
 
-  @Override
-  protected void execute(Component parentComponent) {
-    IEquipmentTemplateEditModel editModel = model.getTemplateEditModel();
-    IEquipmentTemplate saveTemplate = editModel.createTemplate();
-    String editTemplateId = editModel.getEditTemplateId();
-    if (!saveTemplate.getName().equals(editTemplateId)) {
-      IEquipmentTemplate existingTemplate = model.getDatabase().loadTemplate(saveTemplate.getName());
-      if (existingTemplate != null) {
-        if (new OverwriteItemsVetor(parentComponent, resources).vetos()) {
-          return;
+
+  private class UpdateOnChange implements ObjectValueListener<String>, IChangeListener {
+    private Tool saveTool;
+
+    public UpdateOnChange(Tool saveTool) {
+      this.saveTool = saveTool;
+    }
+
+    @Override
+    public void valueChanged(String newValue) {
+      updateEnabled(saveTool);
+    }
+
+    @Override
+    public void changeOccurred() {
+      updateEnabled(saveTool);
+    }
+  }
+
+  private class SaveChangedEquipment implements Command {
+    @Override
+    public void execute() {
+      IEquipmentTemplateEditModel editModel = model.getTemplateEditModel();
+      IEquipmentTemplate saveTemplate = editModel.createTemplate();
+      String editTemplateId = editModel.getEditTemplateId();
+      if (!saveTemplate.getName().equals(editTemplateId)) {
+        IEquipmentTemplate existingTemplate = model.getDatabase().loadTemplate(saveTemplate.getName());
+        if (existingTemplate != null) {
+          if (new OverwriteItemsVetor(SwingApplicationFrame.getParentComponent(), resources).vetos()) {
+            return;
+          }
+          model.getDatabase().deleteTemplate(existingTemplate.getName());
         }
-        model.getDatabase().deleteTemplate(existingTemplate.getName());
       }
+      if (editTemplateId != null) {
+        model.getDatabase().updateTemplate(editTemplateId, saveTemplate);
+      } else {
+        model.getDatabase().saveTemplate(saveTemplate);
+      }
+      editModel.setEditTemplate(saveTemplate.getName());
     }
-    if (editTemplateId != null) {
-      model.getDatabase().updateTemplate(editTemplateId, saveTemplate);
-    }
-    else {
-      model.getDatabase().saveTemplate(saveTemplate);
-    }
-    editModel.setEditTemplate(saveTemplate.getName());
   }
 }

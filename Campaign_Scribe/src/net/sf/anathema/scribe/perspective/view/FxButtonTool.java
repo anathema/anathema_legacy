@@ -7,7 +7,7 @@ import javafx.scene.control.Tooltip;
 import javafx.scene.image.ImageView;
 import net.sf.anathema.interaction.Command;
 import net.sf.anathema.scribe.perspective.NodeHolder;
-import net.sf.anathema.scribe.perspective.presenter.Tool;
+import net.sf.anathema.interaction.Tool;
 
 public class FxButtonTool implements Tool {
 

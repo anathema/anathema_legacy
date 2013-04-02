@@ -1,6 +1,7 @@
 package net.sf.anathema.scribe.perspective.presenter;
 
 import net.sf.anathema.interaction.Command;
+import net.sf.anathema.interaction.Tool;
 import net.sf.anathema.lib.resources.IResources;
 import net.sf.anathema.scribe.editor.presenter.ScrollPresenter;
 import net.sf.anathema.scribe.perspective.model.ScribeModel;

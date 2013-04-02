@@ -1,6 +1,4 @@
-package net.sf.anathema.scribe.perspective.presenter;
-
-import net.sf.anathema.interaction.Command;
+package net.sf.anathema.interaction;
 
 public interface Tool {
 

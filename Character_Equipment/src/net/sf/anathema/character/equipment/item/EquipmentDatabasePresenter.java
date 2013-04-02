@@ -52,10 +52,10 @@ public class EquipmentDatabasePresenter implements Presenter {
   }
 
   private void addEditTemplateActions() {
-    view.addEditTemplateAction(new NewEquipmentTemplateAction(resources, model));
-    view.addEditTemplateAction(new SaveEquipmentTemplateAction(resources, model));
-    view.addEditTemplateAction(new CopyEquipmentTemplateAction(resources, model));
-    view.addEditTemplateAction(new RemoveEquipmentTemplateAction(resources, model, view));
+    new NewEquipmentTemplateAction(resources, model).addToolTo(view);
+    new SaveEquipmentTemplateAction(resources, model).addToolTo(view);
+    new CopyEquipmentTemplateAction(resources, model).addToolTo(view);
+    new RemoveEquipmentTemplateAction(resources, model).addToolTo(view);
   }
 
   private void initBasicDetailsView() {

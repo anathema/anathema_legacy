@@ -1,35 +1,43 @@
 package net.sf.anathema.character.equipment.item;
 
 import net.sf.anathema.character.equipment.item.model.IEquipmentDatabaseManagement;
-import net.sf.anathema.framework.presenter.resources.PlatformUI;
-import net.sf.anathema.lib.gui.action.SmartAction;
+import net.sf.anathema.character.equipment.item.view.IEquipmentDatabaseView;
+import net.sf.anathema.framework.view.SwingApplicationFrame;
+import net.sf.anathema.interaction.Command;
+import net.sf.anathema.interaction.Tool;
 import net.sf.anathema.lib.data.ICondition;
 import net.sf.anathema.lib.resources.IResources;
 
-import java.awt.Component;
+public class NewEquipmentTemplateAction {
 
-public final class NewEquipmentTemplateAction extends SmartAction {
-  private final IEquipmentDatabaseManagement model;
   private final IResources resources;
+  private final IEquipmentDatabaseManagement model;
 
   public NewEquipmentTemplateAction(IResources resources, IEquipmentDatabaseManagement model) {
-    super(new PlatformUI(resources).getNewIcon());
     this.resources = resources;
     this.model = model;
-    setToolTipText(resources.getString("Equipment.Creation.Item.NewActionTooltip")); //$NON-NLS-1$
   }
 
-  @Override
-  protected void execute(Component parentComponent) {
-    DiscardChangesVetor vetor = new DiscardChangesVetor(resources, new ICondition() {
-      @Override
-      public boolean isFulfilled() {
-        return model.getTemplateEditModel().isDirty();
+  public void addToolTo(IEquipmentDatabaseView view) {
+    Tool newTool = view.addEditTemplateTool();
+    newTool.setIcon("icons/TaskBarNew24.png");
+    newTool.setTooltip(resources.getString("Equipment.Creation.Item.NewActionTooltip"));
+    newTool.setCommand(new NewEquipmentItem());
+  }
+
+  private class NewEquipmentItem implements Command {
+    @Override
+    public void execute() {
+      DiscardChangesVetor vetor = new DiscardChangesVetor(resources, new ICondition() {
+        @Override
+        public boolean isFulfilled() {
+          return model.getTemplateEditModel().isDirty();
+        }
+      }, SwingApplicationFrame.getParentComponent());
+      if (vetor.vetos()) {
+        return;
       }
-    }, parentComponent);
-    if (vetor.vetos()) {
-      return;
+      model.getTemplateEditModel().setNewTemplate();
     }
-    model.getTemplateEditModel().setNewTemplate();
   }
 }

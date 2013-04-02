@@ -6,6 +6,7 @@ import net.sf.anathema.character.equipment.item.view.IEquipmentDatabaseView;
 import net.sf.anathema.character.generic.equipment.weapon.IEquipmentStats;
 import net.sf.anathema.framework.perspective.PerspectiveToolBar;
 import net.sf.anathema.framework.perspective.SwingPerspectivePane;
+import net.sf.anathema.interaction.Tool;
 import net.sf.anathema.lib.gui.container.TitledPanel;
 import net.sf.anathema.lib.gui.layout.LayoutUtils;
 import net.sf.anathema.lib.gui.list.actionview.IActionAddableListView;
@@ -13,7 +14,6 @@ import net.sf.anathema.lib.gui.list.actionview.SingleSelectionActionAddableListV
 import net.sf.anathema.lib.gui.selection.IListObjectSelectionView;
 import net.sf.anathema.lib.gui.selection.ListObjectSelectionView;
 
-import javax.swing.Action;
 import javax.swing.JComponent;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
@@ -78,7 +78,9 @@ public class EquipmentDatabaseView implements IEquipmentDatabaseView {
   }
 
   @Override
-  public void addEditTemplateAction(Action action) {
-    editTemplateButtonPanel.addTools(action);
+  public Tool addEditTemplateTool() {
+    SwingActionTool tool = new SwingActionTool();
+    editTemplateButtonPanel.addTools(tool.getAction());
+    return tool;
   }
 }
