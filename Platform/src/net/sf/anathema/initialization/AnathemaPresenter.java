@@ -39,7 +39,6 @@ public class AnathemaPresenter {
       configuration.registerViewFactory(model, resources);
     }
     runBootJobs();
-    new AnathemaCoreMenu().add(resources, model, view.getMenuBar());
     initializeReports();
     IMessageContainer messageContainer = model.getMessageContainer();
     init(messageContainer);

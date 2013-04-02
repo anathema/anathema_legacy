@@ -5,7 +5,9 @@ import net.sf.anathema.ProxySplashscreen;
 import net.sf.anathema.framework.IApplicationModel;
 import net.sf.anathema.framework.Version;
 import net.sf.anathema.framework.configuration.IInitializationPreferences;
+import net.sf.anathema.framework.module.AnathemaCoreMenu;
 import net.sf.anathema.framework.presenter.AnathemaViewProperties;
+import net.sf.anathema.framework.resources.AnathemaResources;
 import net.sf.anathema.framework.view.ApplicationView;
 import net.sf.anathema.framework.view.SwingApplicationFrame;
 import net.sf.anathema.framework.view.perspective.PerspectivePaneFactory;
@@ -16,6 +18,12 @@ public class GuiInitializer extends Initializer {
 
   public GuiInitializer(IInitializationPreferences initializationPreferences) throws InitializationException {
     super(initializationPreferences);
+  }
+
+  @Override
+  protected void initPresentation(AnathemaResources resources, IApplicationModel model, ApplicationView view) {
+    super.initPresentation(resources, model, view);
+    new AnathemaCoreMenu().add(resources, model, view.getMenuBar());
   }
 
   public ApplicationView initialize() throws InitializationException {

@@ -46,7 +46,7 @@ public abstract class Initializer {
     return new InitializedModelAndView(view, anathemaModel);
   }
 
-  private void initPresentation(AnathemaResources resources, IApplicationModel anathemaModel, ApplicationView view) {
+  protected void initPresentation(AnathemaResources resources, IApplicationModel anathemaModel, ApplicationView view) {
     Collection<IItemTypeConfiguration> itemTypes = itemTypeCollection.getItemTypes();
     AnathemaPresenter presenter = new AnathemaPresenter(anathemaModel, view, resources, itemTypes, objectFactory);
     presenter.initPresentation();
