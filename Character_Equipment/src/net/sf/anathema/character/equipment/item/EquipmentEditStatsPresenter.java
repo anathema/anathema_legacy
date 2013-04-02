@@ -7,7 +7,6 @@ import net.sf.anathema.character.generic.equipment.weapon.IEquipmentStats;
 import net.sf.anathema.lib.control.IChangeListener;
 import net.sf.anathema.lib.gui.Presenter;
 import net.sf.anathema.lib.gui.list.actionview.IActionAddableListView;
-import net.sf.anathema.lib.gui.ui.ObjectUiListCellRenderer;
 import net.sf.anathema.lib.resources.IResources;
 
 public class EquipmentEditStatsPresenter implements Presenter {
@@ -25,8 +24,7 @@ public class EquipmentEditStatsPresenter implements Presenter {
 
   @Override
   public void initPresentation() {
-    ObjectUiListCellRenderer statsRenderer = new ObjectUiListCellRenderer(new EquipmentStatsUi(resources));
-    final IActionAddableListView<IEquipmentStats> statsListView = view.initStatsListView(statsRenderer);
+    final IActionAddableListView<IEquipmentStats> statsListView = view.initStatsListView(new EquipmentStatsUIConfiguration(resources));
     view.setStatsListHeader(resources.getString("Equipment.Creation.Stats")); //$NON-NLS-1$
     model.getTemplateEditModel().addStatsChangeListener(new IChangeListener() {
       @Override

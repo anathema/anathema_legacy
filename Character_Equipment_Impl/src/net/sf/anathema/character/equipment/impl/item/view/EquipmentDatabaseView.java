@@ -2,6 +2,8 @@ package net.sf.anathema.character.equipment.impl.item.view;
 
 import net.miginfocom.layout.CC;
 import net.miginfocom.swing.MigLayout;
+import net.sf.anathema.character.equipment.item.ConfigurableSwingUI;
+import net.sf.anathema.character.equipment.item.TechnologyAgnosticUIConfiguration;
 import net.sf.anathema.character.equipment.item.view.IEquipmentDatabaseView;
 import net.sf.anathema.character.generic.equipment.weapon.IEquipmentStats;
 import net.sf.anathema.framework.perspective.PerspectiveToolBar;
@@ -13,6 +15,7 @@ import net.sf.anathema.lib.gui.list.actionview.IActionAddableListView;
 import net.sf.anathema.lib.gui.list.actionview.SingleSelectionActionAddableListView;
 import net.sf.anathema.lib.gui.selection.IListObjectSelectionView;
 import net.sf.anathema.lib.gui.selection.ListObjectSelectionView;
+import net.sf.anathema.lib.gui.ui.ObjectUiListCellRenderer;
 
 import javax.swing.JComponent;
 import javax.swing.JPanel;
@@ -51,8 +54,9 @@ public class EquipmentDatabaseView implements IEquipmentDatabaseView {
   }
 
   @Override
-  public IActionAddableListView<IEquipmentStats> initStatsListView(ListCellRenderer renderer) {
+  public IActionAddableListView<IEquipmentStats> initStatsListView(TechnologyAgnosticUIConfiguration<IEquipmentStats> configuration) {
     statsListView = new SingleSelectionActionAddableListView<>(IEquipmentStats.class);
+    ListCellRenderer renderer = new ObjectUiListCellRenderer(new ConfigurableSwingUI<>(configuration));
     statsListView.setListCellRenderer(renderer);
     return statsListView;
   }
