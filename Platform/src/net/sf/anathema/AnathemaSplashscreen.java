@@ -4,6 +4,7 @@ import java.awt.Color;
 import java.awt.Font;
 import java.awt.GradientPaint;
 import java.awt.Graphics2D;
+import java.awt.GraphicsEnvironment;
 import java.awt.Paint;
 import java.awt.SplashScreen;
 import java.awt.font.FontRenderContext;
@@ -68,6 +69,6 @@ public class AnathemaSplashscreen implements ISplashscreen {
   }
 
   private boolean hasSplashscreen() {
-    return SplashScreen.getSplashScreen() != null;
+    return GraphicsEnvironment.isHeadless() || SplashScreen.getSplashScreen() != null;
   }
 }
