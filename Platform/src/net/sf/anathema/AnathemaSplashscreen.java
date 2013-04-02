@@ -69,6 +69,6 @@ public class AnathemaSplashscreen implements ISplashscreen {
   }
 
   private boolean hasSplashscreen() {
-    return GraphicsEnvironment.isHeadless() || SplashScreen.getSplashScreen() != null;
+    return !GraphicsEnvironment.isHeadless() && SplashScreen.getSplashScreen() != null;
   }
 }
