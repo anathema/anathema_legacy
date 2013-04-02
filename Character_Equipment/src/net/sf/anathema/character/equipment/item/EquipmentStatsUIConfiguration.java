@@ -1,7 +1,6 @@
 package net.sf.anathema.character.equipment.item;
 
 import net.sf.anathema.character.equipment.character.EquipmentStringBuilder;
-import net.sf.anathema.character.equipment.item.model.EquipmentStatisticsType;
 import net.sf.anathema.character.generic.equipment.IArtifactStats;
 import net.sf.anathema.character.generic.equipment.ITraitModifyingStats;
 import net.sf.anathema.character.generic.equipment.weapon.IArmourStats;
@@ -21,24 +20,20 @@ public class EquipmentStatsUIConfiguration implements TechnologyAgnosticUIConfig
   public String getIconsRelativePath(IEquipmentStats value) {
     if (value instanceof IWeaponStats) {
       if (((IWeaponStats) value).isRangedCombat()) {
-        return getStandardIcon(EquipmentStatisticsType.RangedCombat);
+        return "icons/RangedCombat16.png";
       }
-      return getStandardIcon(EquipmentStatisticsType.CloseCombat);
+      return "icons/CloseCombat16.png";
     }
     if (value instanceof IArmourStats) {
-      return getStandardIcon(EquipmentStatisticsType.Armor);
+      return "icons/Armor16.png";
     }
     if (value instanceof IArtifactStats) {
-      return getStandardIcon(EquipmentStatisticsType.Artifact);
+      return "icons/Artifact16.png";
     }
     if (value instanceof ITraitModifyingStats) {
-      return getStandardIcon(EquipmentStatisticsType.TraitModifying);
+      return "icons/TraitModifying16.png";
     }
     throw new UnreachableCodeReachedException("All subclasses covered. Something appears to be wrong.");
-  }
-
-  private String getStandardIcon(EquipmentStatisticsType type) {
-    return "icons/" + type.name() + "16.png";
   }
 
   @Override

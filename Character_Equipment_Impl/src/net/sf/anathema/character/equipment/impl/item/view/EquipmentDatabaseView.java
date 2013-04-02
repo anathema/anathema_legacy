@@ -9,10 +9,11 @@ import net.sf.anathema.character.generic.equipment.weapon.IEquipmentStats;
 import net.sf.anathema.framework.perspective.PerspectiveToolBar;
 import net.sf.anathema.framework.perspective.SwingPerspectivePane;
 import net.sf.anathema.interaction.Tool;
+import net.sf.anathema.lib.gui.SwingActionTool;
 import net.sf.anathema.lib.gui.container.TitledPanel;
 import net.sf.anathema.lib.gui.layout.LayoutUtils;
-import net.sf.anathema.lib.gui.list.actionview.IActionAddableListView;
-import net.sf.anathema.lib.gui.list.actionview.SingleSelectionActionAddableListView;
+import net.sf.anathema.lib.gui.list.actionview.ToolListView;
+import net.sf.anathema.lib.gui.list.actionview.SingleSelectionToolListView;
 import net.sf.anathema.lib.gui.selection.IListObjectSelectionView;
 import net.sf.anathema.lib.gui.selection.ListObjectSelectionView;
 import net.sf.anathema.lib.gui.ui.ObjectUiListCellRenderer;
@@ -30,7 +31,7 @@ public class EquipmentDatabaseView implements IEquipmentDatabaseView {
   private SwingPerspectivePane perspectivePane;
   private final JPanel descriptionPanel = new JPanel(new MigLayout(withoutInsets().wrapAfter(1)));
   private final ListObjectSelectionView<String> templateListView = new ListObjectSelectionView<>(String.class);
-  private SingleSelectionActionAddableListView<IEquipmentStats> statsListView;
+  private SingleSelectionToolListView<IEquipmentStats> statsListView;
   private final PerspectiveToolBar editTemplateButtonPanel = new PerspectiveToolBar();
   private final JComponent templateListPanel = new JScrollPane(templateListView.getComponent());
   private final JPanel statsPanel = new JPanel(new MigLayout(fillWithoutInsets().wrapAfter(1)));
@@ -54,8 +55,8 @@ public class EquipmentDatabaseView implements IEquipmentDatabaseView {
   }
 
   @Override
-  public IActionAddableListView<IEquipmentStats> initStatsListView(TechnologyAgnosticUIConfiguration<IEquipmentStats> configuration) {
-    statsListView = new SingleSelectionActionAddableListView<>(IEquipmentStats.class);
+  public ToolListView<IEquipmentStats> initStatsListView(TechnologyAgnosticUIConfiguration<IEquipmentStats> configuration) {
+    statsListView = new SingleSelectionToolListView<>(IEquipmentStats.class);
     ListCellRenderer renderer = new ObjectUiListCellRenderer(new ConfigurableSwingUI<>(configuration));
     statsListView.setListCellRenderer(renderer);
     return statsListView;

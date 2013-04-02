@@ -1,4 +1,4 @@
-package net.sf.anathema.character.equipment.impl.item.view;
+package net.sf.anathema.lib.gui;
 
 import net.sf.anathema.framework.resources.ImageProvider;
 import net.sf.anathema.interaction.Command;

@@ -6,7 +6,7 @@ import net.sf.anathema.character.equipment.item.view.IEquipmentDatabaseView;
 import net.sf.anathema.character.generic.equipment.weapon.IEquipmentStats;
 import net.sf.anathema.lib.control.IChangeListener;
 import net.sf.anathema.lib.gui.Presenter;
-import net.sf.anathema.lib.gui.list.actionview.IActionAddableListView;
+import net.sf.anathema.lib.gui.list.actionview.ToolListView;
 import net.sf.anathema.lib.resources.IResources;
 
 public class EquipmentEditStatsPresenter implements Presenter {
@@ -24,7 +24,7 @@ public class EquipmentEditStatsPresenter implements Presenter {
 
   @Override
   public void initPresentation() {
-    final IActionAddableListView<IEquipmentStats> statsListView = view.initStatsListView(new EquipmentStatsUIConfiguration(resources));
+    final ToolListView<IEquipmentStats> statsListView = view.initStatsListView(new EquipmentStatsUIConfiguration(resources));
     view.setStatsListHeader(resources.getString("Equipment.Creation.Stats")); //$NON-NLS-1$
     model.getTemplateEditModel().addStatsChangeListener(new IChangeListener() {
       @Override
@@ -35,14 +35,14 @@ public class EquipmentEditStatsPresenter implements Presenter {
     initButtons(statsListView);
   }
 
-  private void initButtons(IActionAddableListView<IEquipmentStats> statsListView) {
+  private void initButtons(ToolListView<IEquipmentStats> statsListView) {
     IEquipmentTemplateEditModel editModel = model.getTemplateEditModel();
-    statsListView.addAction(new AddNewStatsAction(resources, editModel, model.getStatsCreationFactory()));
-    statsListView.addAction(new RemoveStatsAction(resources, editModel, statsListView));
-    statsListView.addAction(new EditStatsAction(resources, editModel, statsListView, model.getStatsCreationFactory()));
+    new AddNewStatsAction(resources, editModel, model.getStatsCreationFactory()).addToolTo(statsListView);
+    new RemoveStatsAction(resources, editModel).addToolTo(statsListView);
+    new EditStatsAction(resources, editModel, model.getStatsCreationFactory()).addToolTo(statsListView);
   }
 
-  private void updateStatListContent(IActionAddableListView<IEquipmentStats> statsListView) {
+  private void updateStatListContent(ToolListView<IEquipmentStats> statsListView) {
     statsListView.setObjects(model.getTemplateEditModel().getStats());
   }
 }
