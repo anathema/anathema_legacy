@@ -6,12 +6,11 @@ import javafx.geometry.Insets;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.layout.BorderPane;
-import net.sf.anathema.lib.gui.IView;
 import net.sf.anathema.lib.lang.ArrayUtilities;
 
 import javax.swing.JComponent;
 
-public class PerspectivePane implements IView {
+public class PerspectivePane {
 
   private class SceneParentHolder implements ParentHolder {
     @Override
@@ -57,7 +56,6 @@ public class PerspectivePane implements IView {
     outerPane.getStyleClass().add(styleClass);
   }
 
-  @Override
   public JComponent getComponent() {
     return bridgePanel;
   }

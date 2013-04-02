@@ -4,7 +4,6 @@ import net.miginfocom.layout.CC;
 import net.miginfocom.swing.MigLayout;
 import net.sf.anathema.lib.control.IIntValueChangedListener;
 import net.sf.anathema.lib.control.ObjectValueListener;
-import net.sf.anathema.lib.gui.IView;
 import net.sf.anathema.lib.gui.layout.LayoutUtils;
 import net.sf.anathema.lib.gui.widgets.IntegerSpinner;
 import net.sf.anathema.lib.workflow.textualdescription.SwingTextView;
@@ -20,7 +19,7 @@ import java.awt.event.ActionListener;
 
 import static net.sf.anathema.lib.gui.layout.LayoutUtils.withoutInsets;
 
-public class AnimalFormSelectionView implements IAnimalFormSelectionView, IView {
+public class AnimalFormSelectionView implements IAnimalFormSelectionView {
   private SwingTextView textField;
   private IntegerSpinner strengthSpinner;
   private IntegerSpinner dexteritySpinner;
@@ -58,7 +57,6 @@ public class AnimalFormSelectionView implements IAnimalFormSelectionView, IView 
     return spinner;
   }
 
-  @Override
   public JComponent getComponent() {
     JPanel panel = new JPanel(new MigLayout(withoutInsets()));
     panel.add(new JLabel(animalFormString));
