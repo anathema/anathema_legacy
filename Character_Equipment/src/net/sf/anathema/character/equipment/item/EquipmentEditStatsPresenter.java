@@ -1,6 +1,5 @@
 package net.sf.anathema.character.equipment.item;
 
-import net.sf.anathema.character.equipment.character.EquipmentStringBuilder;
 import net.sf.anathema.character.equipment.item.model.IEquipmentDatabaseManagement;
 import net.sf.anathema.character.equipment.item.model.IEquipmentTemplateEditModel;
 import net.sf.anathema.character.equipment.item.view.IEquipmentDatabaseView;
@@ -10,10 +9,6 @@ import net.sf.anathema.lib.gui.Presenter;
 import net.sf.anathema.lib.gui.list.actionview.IActionAddableListView;
 import net.sf.anathema.lib.gui.ui.ObjectUiListCellRenderer;
 import net.sf.anathema.lib.resources.IResources;
-
-import javax.swing.JComponent;
-import javax.swing.JList;
-import java.awt.Component;
 
 public class EquipmentEditStatsPresenter implements Presenter {
 
@@ -30,18 +25,7 @@ public class EquipmentEditStatsPresenter implements Presenter {
 
   @Override
   public void initPresentation() {
-    final EquipmentStringBuilder equipmentStringBuilder = new EquipmentStringBuilder(resources);
-    ObjectUiListCellRenderer statsRenderer = new ObjectUiListCellRenderer(new EquipmentStatsUi(resources)) {
-
-      @Override
-      public Component getListCellRendererComponent(JList list, Object value, int index, boolean isSelected,
-                                                    boolean cellHasFocus) {
-        JComponent component = (JComponent) super.getListCellRendererComponent(list, value, index, isSelected,
-                cellHasFocus);
-        component.setToolTipText(equipmentStringBuilder.createString(null, (IEquipmentStats) value));
-        return component;
-      }
-    };
+    ObjectUiListCellRenderer statsRenderer = new ObjectUiListCellRenderer(new EquipmentStatsUi(resources));
     final IActionAddableListView<IEquipmentStats> statsListView = view.initStatsListView(statsRenderer);
     view.setStatsListHeader(resources.getString("Equipment.Creation.Stats")); //$NON-NLS-1$
     model.getTemplateEditModel().addStatsChangeListener(new IChangeListener() {

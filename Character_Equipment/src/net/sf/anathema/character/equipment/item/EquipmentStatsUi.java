@@ -1,5 +1,6 @@
 package net.sf.anathema.character.equipment.item;
 
+import net.sf.anathema.character.equipment.character.EquipmentStringBuilder;
 import net.sf.anathema.character.equipment.creation.presenter.stats.properties.EquipmentUI;
 import net.sf.anathema.character.equipment.item.model.EquipmentStatisticsType;
 import net.sf.anathema.character.generic.equipment.IArtifactStats;
@@ -16,9 +17,11 @@ import javax.swing.Icon;
 public final class EquipmentStatsUi implements ObjectUi<Object> {
 
   private final EquipmentUI equipmentUI;
+  private final EquipmentStringBuilder tooltipFactory;
 
   public EquipmentStatsUi(IResources resources) {
     this.equipmentUI = new EquipmentUI(resources);
+    this.tooltipFactory = new EquipmentStringBuilder(resources);
   }
 
   @Override
@@ -49,6 +52,6 @@ public final class EquipmentStatsUi implements ObjectUi<Object> {
 
   @Override
   public String getToolTipText(Object value) {
-    return null;
+    return tooltipFactory.createString(null, (IEquipmentStats) value);
   }
 }
