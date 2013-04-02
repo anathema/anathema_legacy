@@ -12,8 +12,8 @@ import net.sf.anathema.interaction.Tool;
 import net.sf.anathema.lib.gui.SwingActionTool;
 import net.sf.anathema.lib.gui.container.TitledPanel;
 import net.sf.anathema.lib.gui.layout.LayoutUtils;
-import net.sf.anathema.lib.gui.list.actionview.ToolListView;
 import net.sf.anathema.lib.gui.list.actionview.SingleSelectionToolListView;
+import net.sf.anathema.lib.gui.list.actionview.ToolListView;
 import net.sf.anathema.lib.gui.selection.IListObjectSelectionView;
 import net.sf.anathema.lib.gui.selection.ListObjectSelectionView;
 import net.sf.anathema.lib.gui.ui.ObjectUiListCellRenderer;
@@ -37,7 +37,6 @@ public class EquipmentDatabaseView implements IEquipmentDatabaseView {
   private final JPanel statsPanel = new JPanel(new MigLayout(fillWithoutInsets().wrapAfter(1)));
   private final TitledPanel statsTitlePanel = new TitledPanel("", statsPanel);
 
-  @Override
   public JComponent getComponent() {
     if (perspectivePane == null) {
       perspectivePane = new SwingPerspectivePane();

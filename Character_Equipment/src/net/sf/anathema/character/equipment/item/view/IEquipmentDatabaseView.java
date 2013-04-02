@@ -19,6 +19,4 @@ public interface IEquipmentDatabaseView {
   Tool addEditTemplateTool();
 
   void setStatsListHeader(String headerText);
-
-  JComponent getComponent();
 }

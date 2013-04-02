@@ -65,12 +65,12 @@ public class EquipmentDatabasePresenter implements Presenter {
     ITextView descriptionView = panelBuilder.addAreaTextView(getColonString("Equipment.Creation.Basics.Description"), 5);
     new TextualPresentation().initView(descriptionView, model.getTemplateEditModel().getDescription().getContent());
     final ObjectSelectionView<MaterialComposition> compositionView = new ObjectSelectionView<>(
-            getColonString("Equipment.Creation.Basics.Composition"), //$NON-NLS-1$
-            new IdentificateSelectCellRenderer("MaterialComposition.", resources), //$NON-NLS-1$
+            getColonString("Equipment.Creation.Basics.Composition"),
+            new IdentificateSelectCellRenderer("MaterialComposition.", resources),
             MaterialComposition.values());
     final ObjectSelectionView<MagicalMaterial> materialView = new ObjectSelectionView<>(
-            getColonString("Equipment.Creation.Basics.Material"), //$NON-NLS-1$
-            new IdentificateSelectCellRenderer("MagicMaterial.", resources), //$NON-NLS-1$
+            getColonString("Equipment.Creation.Basics.Material"),
+            new IdentificateSelectCellRenderer("MagicMaterial.", resources),
             MagicalMaterial.values());
     panelBuilder.addView(compositionView, new CC().split(3).gapAfter("15"));
     panelBuilder.addView(materialView, new CC());
