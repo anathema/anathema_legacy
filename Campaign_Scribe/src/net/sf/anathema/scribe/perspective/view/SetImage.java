@@ -24,6 +24,6 @@ public class SetImage implements Runnable {
   private Image createImage(String pathToImage) {
     ResourceLoader resourceLoader = new ResourceLoader();
     InputStream imageStream = resourceLoader.loadResource(pathToImage);
-    return new Image(imageStream, 30, 30, true, true);
+    return new Image(imageStream, 20, 20, true, true);
   }
 }
