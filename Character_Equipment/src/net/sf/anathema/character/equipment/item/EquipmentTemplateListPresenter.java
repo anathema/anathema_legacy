@@ -3,6 +3,7 @@ package net.sf.anathema.character.equipment.item;
 import net.sf.anathema.character.equipment.item.model.IEquipmentDatabaseManagement;
 import net.sf.anathema.character.equipment.item.model.IEquipmentTemplateEditModel;
 import net.sf.anathema.character.equipment.item.view.IEquipmentDatabaseView;
+import net.sf.anathema.framework.view.SwingApplicationFrame;
 import net.sf.anathema.lib.control.IChangeListener;
 import net.sf.anathema.lib.control.ObjectValueListener;
 import net.sf.anathema.lib.gui.Presenter;
@@ -52,7 +53,7 @@ public class EquipmentTemplateListPresenter implements Presenter {
         IEquipmentTemplateEditModel editModel = model.getTemplateEditModel();
         return editModel.isDirty();
       }
-    }, view.getTemplateListView().getComponent()));
+    }, SwingApplicationFrame.getParentComponent()));
     view.getTemplateListView().addObjectSelectionChangedListener(new EquipmentTemplateLoadListener());
   }
 
