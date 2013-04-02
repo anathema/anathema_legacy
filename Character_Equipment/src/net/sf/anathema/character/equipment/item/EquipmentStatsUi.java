@@ -14,7 +14,7 @@ import net.sf.anathema.lib.resources.IResources;
 
 import javax.swing.Icon;
 
-public final class EquipmentStatsUi implements ObjectUi<Object> {
+public final class EquipmentStatsUi implements ObjectUi<IEquipmentStats> {
 
   private final EquipmentUI equipmentUI;
   private final EquipmentStringBuilder tooltipFactory;
@@ -25,13 +25,12 @@ public final class EquipmentStatsUi implements ObjectUi<Object> {
   }
 
   @Override
-  public String getLabel(Object value) {
-	IEquipmentStats stats = (IEquipmentStats)value;
-    return stats.getName().getId();
+  public String getLabel(IEquipmentStats value) {
+    return value.getName().getId();
   }
 
   @Override
-  public Icon getIcon(Object value) {
+  public Icon getIcon(IEquipmentStats value) {
     if (value instanceof IWeaponStats) {
       if (((IWeaponStats) value).isRangedCombat()) {
         return equipmentUI.getStandardIcon(EquipmentStatisticsType.RangedCombat);
@@ -51,7 +50,7 @@ public final class EquipmentStatsUi implements ObjectUi<Object> {
   }
 
   @Override
-  public String getToolTipText(Object value) {
-    return tooltipFactory.createString(null, (IEquipmentStats) value);
+  public String getToolTipText(IEquipmentStats value) {
+    return tooltipFactory.createString(null, value);
   }
 }
