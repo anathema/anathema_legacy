@@ -1,6 +1,6 @@
 package net.sf.anathema.lib.gui;
 
-import net.sf.anathema.framework.resources.ImageProvider;
+import net.sf.anathema.lib.gui.icon.ImageProvider;
 import net.sf.anathema.lib.gui.ui.ObjectUi;
 
 import javax.swing.Icon;

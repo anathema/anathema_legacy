@@ -1,7 +1,8 @@
 package net.sf.anathema.framework.resources;
 
+import net.sf.anathema.lib.gui.icon.ImageProvider;
 import net.sf.anathema.lib.resources.DefaultStringProvider;
-import net.sf.anathema.lib.resources.IAnathemaImageProvider;
+import net.sf.anathema.lib.resources.IImageProvider;
 import net.sf.anathema.lib.resources.IResources;
 import net.sf.anathema.lib.resources.MultiSourceStringProvider;
 import net.sf.anathema.lib.resources.ResourceFile;
@@ -12,7 +13,7 @@ import java.util.Locale;
 
 public class AnathemaResources implements IResources {
 
-  private final IAnathemaImageProvider imageProvider = new ImageProvider("icons"); //$NON-NLS-1$
+  private final IImageProvider imageProvider = new ImageProvider("icons"); //$NON-NLS-1$
   private final MultiSourceStringProvider stringHandler = new MultiSourceStringProvider();
   private final StringProviderFactory factory = new StringProviderFactory(getLocale());
 

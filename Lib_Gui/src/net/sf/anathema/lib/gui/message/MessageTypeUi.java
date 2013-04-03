@@ -1,7 +1,7 @@
 package net.sf.anathema.lib.gui.message;
 
+import net.sf.anathema.lib.gui.icon.ImageProvider;
 import net.sf.anathema.lib.gui.icon.EmptyIcon;
-import net.sf.anathema.lib.gui.image.LibGuiImageProvider;
 import net.sf.anathema.lib.message.IMessageTypeVisitor;
 import net.sf.anathema.lib.message.MessageType;
 
@@ -10,10 +10,10 @@ import javax.swing.Icon;
 public class MessageTypeUi extends AbstractMessageTypeUi {
 
   public static final Icon normalIcon = EmptyIcon.DEFAULT_ICON;
-  public static final Icon errorIcon = LibGuiImageProvider.getInstance().getImageIcon("message/small/error.gif"); //$NON-NLS-1$
-  public static final Icon warningIcon = LibGuiImageProvider.getInstance().getImageIcon("message/small/warning.gif"); //$NON-NLS-1$
-  public static final Icon infoIcon = LibGuiImageProvider.getInstance().getImageIcon("message/small/info.gif"); //$NON-NLS-1$
-  public static final Icon questionIcon = LibGuiImageProvider.getInstance().getImageIcon("message/small/question.gif"); //$NON-NLS-1$
+  public static final Icon errorIcon = new ImageProvider(".").getImageIcon(MessageTypeUi.class, "icons/error.gif");
+  public static final Icon warningIcon = new ImageProvider(".").getImageIcon(MessageTypeUi.class, "icons/warning.gif");
+  public static final Icon infoIcon = new ImageProvider(".").getImageIcon(MessageTypeUi.class, "icons/info.gif");
+  public static final Icon questionIcon = new ImageProvider(".").getImageIcon(MessageTypeUi.class, "icons/question.gif");
 
   private static MessageTypeUi instance = new MessageTypeUi();
 
