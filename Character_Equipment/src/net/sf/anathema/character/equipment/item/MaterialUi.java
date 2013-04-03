@@ -17,6 +17,9 @@ public class MaterialUi implements TechnologyAgnosticUIConfiguration<MagicalMate
 
   @Override
   public String getLabel(MagicalMaterial value) {
+    if (value == null) {
+      return NO_LABEL;
+    }
     return resources.getString("MagicMaterial." + value.getId());
   }
 
