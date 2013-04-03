@@ -1,4 +1,4 @@
-package net.sf.anathema.character.equipment.item;
+package net.sf.anathema.character.equipment.item.view.swing;
 
 import net.sf.anathema.framework.value.IntValueDisplayGraphics;
 import net.sf.anathema.lib.gui.image.ImageProvider;

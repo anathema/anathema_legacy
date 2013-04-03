@@ -1,12 +1,12 @@
-package net.sf.anathema.character.equipment.impl.item.view;
+package net.sf.anathema.character.equipment.item.view.swing;
 
 import net.miginfocom.layout.CC;
 import net.miginfocom.swing.MigLayout;
 import net.sf.anathema.character.equipment.item.ConfigurableSwingUI;
-import net.sf.anathema.character.equipment.item.EquipmentDescriptionPanel;
-import net.sf.anathema.character.equipment.item.SwingEquipmentDescriptionPanel;
+import net.sf.anathema.character.equipment.item.view.EquipmentDescriptionPanel;
 import net.sf.anathema.character.equipment.item.TechnologyAgnosticUIConfiguration;
 import net.sf.anathema.character.equipment.item.view.EquipmentDatabaseView;
+import net.sf.anathema.character.equipment.item.view.ToolListView;
 import net.sf.anathema.character.generic.equipment.weapon.IEquipmentStats;
 import net.sf.anathema.framework.perspective.PerspectiveToolBar;
 import net.sf.anathema.framework.perspective.SwingPerspectivePane;
@@ -14,8 +14,6 @@ import net.sf.anathema.interaction.Tool;
 import net.sf.anathema.lib.gui.SwingActionTool;
 import net.sf.anathema.lib.gui.container.TitledPanel;
 import net.sf.anathema.lib.gui.layout.LayoutUtils;
-import net.sf.anathema.lib.gui.list.actionview.SingleSelectionToolListView;
-import net.sf.anathema.lib.gui.list.actionview.ToolListView;
 import net.sf.anathema.lib.gui.selection.IListObjectSelectionView;
 import net.sf.anathema.lib.gui.selection.ListObjectSelectionView;
 import net.sf.anathema.lib.gui.ui.ObjectUiListCellRenderer;

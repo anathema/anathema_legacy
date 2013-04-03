@@ -7,7 +7,7 @@ import net.sf.anathema.character.generic.equipment.weapon.IEquipmentStats;
 import net.sf.anathema.framework.view.SwingApplicationFrame;
 import net.sf.anathema.interaction.Command;
 import net.sf.anathema.interaction.Tool;
-import net.sf.anathema.lib.gui.list.actionview.ToolListView;
+import net.sf.anathema.character.equipment.item.view.ToolListView;
 import net.sf.anathema.lib.resources.IResources;
 
 import java.util.ArrayList;

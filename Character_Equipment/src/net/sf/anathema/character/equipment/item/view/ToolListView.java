@@ -1,4 +1,4 @@
-package net.sf.anathema.lib.gui.list.actionview;
+package net.sf.anathema.character.equipment.item.view;
 
 import net.sf.anathema.interaction.Tool;
 

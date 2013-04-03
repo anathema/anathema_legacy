@@ -6,7 +6,7 @@ import net.sf.anathema.character.equipment.item.view.EquipmentDatabaseView;
 import net.sf.anathema.character.generic.equipment.weapon.IEquipmentStats;
 import net.sf.anathema.lib.control.IChangeListener;
 import net.sf.anathema.lib.gui.Presenter;
-import net.sf.anathema.lib.gui.list.actionview.ToolListView;
+import net.sf.anathema.character.equipment.item.view.ToolListView;
 import net.sf.anathema.lib.resources.IResources;
 
 public class EquipmentEditStatsPresenter implements Presenter {

@@ -1,7 +1,9 @@
-package net.sf.anathema.character.equipment.item.view;
+package net.sf.anathema.character.equipment.item.view.swing;
 
 import net.miginfocom.layout.CC;
 import net.sf.anathema.character.equipment.ItemCost;
+import net.sf.anathema.character.equipment.item.view.CostSelectionView;
+import net.sf.anathema.character.equipment.item.view.SelectableIntValueView;
 import net.sf.anathema.framework.value.IntegerViewFactory;
 import net.sf.anathema.lib.gui.layout.AdditiveView;
 import net.sf.anathema.lib.gui.selection.ISelectionIntValueChangedListener;
@@ -10,12 +12,12 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 
 public class SwingCostSelectionView implements AdditiveView, CostSelectionView {
-  private final ISelectableIntValueView<String> selection;
+  private final SelectableIntValueView<String> selection;
   protected final JLabel label;
 
   public SwingCostSelectionView(String labelText, IntegerViewFactory factory) {
     this.label = new JLabel(labelText);
-    this.selection = new SelectableIntValueView<>(factory, 0, 6);
+    this.selection = new SwingSelectableIntValueView<>(factory, 0, 6);
   }
 
   @Override

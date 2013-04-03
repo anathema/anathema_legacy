@@ -1,10 +1,12 @@
-package net.sf.anathema.character.equipment.item;
+package net.sf.anathema.character.equipment.item.view.swing;
 
 import net.miginfocom.layout.CC;
 import net.sf.anathema.character.equipment.MagicalMaterial;
 import net.sf.anathema.character.equipment.MaterialComposition;
+import net.sf.anathema.character.equipment.item.ConfigurableSwingUI;
+import net.sf.anathema.character.equipment.item.view.EquipmentDescriptionPanel;
+import net.sf.anathema.character.equipment.item.TechnologyAgnosticUIConfiguration;
 import net.sf.anathema.character.equipment.item.view.CostSelectionView;
-import net.sf.anathema.character.equipment.item.view.SwingCostSelectionView;
 import net.sf.anathema.framework.value.MarkerIntValueDisplayFactory;
 import net.sf.anathema.lib.gui.selection.IObjectSelectionView;
 import net.sf.anathema.lib.gui.selection.ObjectSelectionView;

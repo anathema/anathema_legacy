@@ -1,8 +1,8 @@
-package net.sf.anathema.character.equipment.item;
+package net.sf.anathema.character.equipment.item.view;
 
 import net.sf.anathema.character.equipment.MagicalMaterial;
 import net.sf.anathema.character.equipment.MaterialComposition;
-import net.sf.anathema.character.equipment.item.view.CostSelectionView;
+import net.sf.anathema.character.equipment.item.TechnologyAgnosticUIConfiguration;
 import net.sf.anathema.lib.gui.selection.IObjectSelectionView;
 import net.sf.anathema.lib.workflow.textualdescription.ITextView;
 

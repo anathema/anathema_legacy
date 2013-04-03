@@ -1,7 +1,8 @@
-package net.sf.anathema.lib.gui.list.actionview;
+package net.sf.anathema.character.equipment.item.view.swing;
 
 import net.miginfocom.layout.CC;
 import net.miginfocom.swing.MigLayout;
+import net.sf.anathema.character.equipment.item.view.ToolListView;
 import net.sf.anathema.interaction.Tool;
 import net.sf.anathema.lib.gui.SwingActionTool;
 import net.sf.anathema.lib.gui.list.SmartJList;
@@ -11,6 +12,7 @@ import javax.swing.JComponent;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.ListCellRenderer;
+import javax.swing.ListSelectionModel;
 import javax.swing.event.ListSelectionEvent;
 import javax.swing.event.ListSelectionListener;
 import java.awt.GridLayout;
@@ -18,14 +20,15 @@ import java.awt.GridLayout;
 import static net.sf.anathema.lib.gui.layout.LayoutUtils.fillWithoutInsets;
 import static net.sf.anathema.lib.gui.layout.LayoutUtils.getComponentSpacing;
 
-public class SwingToolListView<T> implements ToolListView<T> {
+public class SingleSelectionToolListView<T> implements ToolListView<T> {
 
   private final SmartJList<T> list;
   private final JPanel buttonPanel = new JPanel(new GridLayout(1, 0, getComponentSpacing(), getComponentSpacing()));
   private JPanel content;
 
-  public SwingToolListView(Class<T> contentClass) {
+  public SingleSelectionToolListView(Class<T> contentClass) {
     list = new SmartJList<>(contentClass);
+    getList().getSelectionModel().setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
   }
 
   @Override

@@ -1,7 +1,7 @@
 package net.sf.anathema.character.equipment.impl.module;
 
 import net.sf.anathema.character.equipment.impl.item.model.EquipmentDatabaseManagement;
-import net.sf.anathema.character.equipment.impl.item.view.SwingEquipmentDatabaseView;
+import net.sf.anathema.character.equipment.item.view.swing.SwingEquipmentDatabaseView;
 import net.sf.anathema.character.equipment.item.EquipmentDatabasePresenter;
 import net.sf.anathema.character.equipment.item.model.IEquipmentDatabase;
 import net.sf.anathema.character.equipment.item.model.IEquipmentDatabaseManagement;

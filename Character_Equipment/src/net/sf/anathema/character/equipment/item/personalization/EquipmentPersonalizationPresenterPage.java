@@ -1,9 +1,7 @@
 package net.sf.anathema.character.equipment.item.personalization;
 
 import net.sf.anathema.character.equipment.character.model.IEquipmentPersonalizationModel;
-import net.sf.anathema.character.equipment.item.view.EquipmentPersonalizationView;
 import net.sf.anathema.lib.gui.dialog.userdialog.page.AbstractDialogPage;
-import net.sf.anathema.lib.message.BasicMessage;
 import net.sf.anathema.lib.message.IBasicMessage;
 
 import javax.swing.JComponent;

@@ -1,4 +1,4 @@
-package net.sf.anathema.character.equipment.item.view;
+package net.sf.anathema.character.equipment.item.personalization;
 
 import javax.swing.JTextField;
 
