@@ -28,7 +28,7 @@ public class EquipmentPerspective implements Perspective {
     IEquipmentDatabaseManagement databaseManagement = createDatabaseManagement(applicationModel, resources);
     SwingEquipmentDatabaseView view = new SwingEquipmentDatabaseView();
     new EquipmentDatabasePresenter(resources, databaseManagement, view).initPresentation();
-    container.setSwingContent(view.getComponent());
+    container.setSwingContent(view.perspectivePane.getComponent());
   }
 
   private IEquipmentDatabaseManagement createDatabaseManagement(IApplicationModel model, IResources resources) {
