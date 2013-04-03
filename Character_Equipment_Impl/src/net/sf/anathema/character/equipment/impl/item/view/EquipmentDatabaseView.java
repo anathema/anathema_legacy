@@ -3,6 +3,8 @@ package net.sf.anathema.character.equipment.impl.item.view;
 import net.miginfocom.layout.CC;
 import net.miginfocom.swing.MigLayout;
 import net.sf.anathema.character.equipment.item.ConfigurableSwingUI;
+import net.sf.anathema.character.equipment.item.EquipmentDescriptionPanel;
+import net.sf.anathema.character.equipment.item.SwingEquipmentDescriptionPanel;
 import net.sf.anathema.character.equipment.item.TechnologyAgnosticUIConfiguration;
 import net.sf.anathema.character.equipment.item.view.IEquipmentDatabaseView;
 import net.sf.anathema.character.generic.equipment.weapon.IEquipmentStats;
@@ -72,8 +74,10 @@ public class EquipmentDatabaseView implements IEquipmentDatabaseView {
   }
 
   @Override
-  public void fillDescriptionPanel(JComponent component) {
-    this.descriptionPanel.add(component, new CC().push().grow());
+  public EquipmentDescriptionPanel addDescriptionPanel(String title) {
+    SwingEquipmentDescriptionPanel panel = new SwingEquipmentDescriptionPanel(title);
+    this.descriptionPanel.add(panel.getContent(), new CC().push().grow());
+    return panel;
   }
 
   @Override

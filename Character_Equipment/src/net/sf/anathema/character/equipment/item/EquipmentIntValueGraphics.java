@@ -1,30 +1,26 @@
 package net.sf.anathema.character.equipment.item;
 
 import net.sf.anathema.framework.value.IntValueDisplayGraphics;
-import net.sf.anathema.lib.resources.IResources;
+import net.sf.anathema.lib.gui.image.ImageProvider;
 
 import javax.swing.Icon;
 
 public class EquipmentIntValueGraphics implements IntValueDisplayGraphics {
 
-  private IResources resources;
-
-  public EquipmentIntValueGraphics(IResources resources) {
-    this.resources = resources;
-  }
+  private final ImageProvider imageProvider = new ImageProvider(".");
 
   @Override
   public Icon getActiveIcon() {
-    return new EquipmentUI(resources).getActiveIcon();
+    return imageProvider.getImageIcon("icons/BorderEquipmentButton16.png");
   }
 
   @Override
   public Icon getPassiveIcon() {
-    return new EquipmentUI(resources).getPassiveIcon();
+    return imageProvider.getImageIcon("icons/BorderUnselectedButton16.png");
   }
 
   @Override
   public Icon getBlockedIcon() {
-    return new EquipmentUI(resources).getBlockedIcon();
+    return imageProvider.getImageIcon("icons/BorderUnselectableButton16.png");
   }
 }

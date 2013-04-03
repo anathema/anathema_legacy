@@ -1,27 +1,20 @@
 package net.sf.anathema.character.equipment.item;
 
 import com.google.common.base.Function;
-import net.miginfocom.layout.CC;
 import net.sf.anathema.character.equipment.ItemCost;
 import net.sf.anathema.character.equipment.MagicalMaterial;
 import net.sf.anathema.character.equipment.MaterialComposition;
 import net.sf.anathema.character.equipment.item.model.IEquipmentDatabaseManagement;
 import net.sf.anathema.character.equipment.item.view.CostSelectionView;
 import net.sf.anathema.character.equipment.item.view.IEquipmentDatabaseView;
-import net.sf.anathema.framework.value.IntegerViewFactory;
-import net.sf.anathema.framework.value.MarkerIntValueDisplayFactory;
-import net.sf.anathema.framework.view.IdentificateSelectCellRenderer;
 import net.sf.anathema.lib.control.IChangeListener;
 import net.sf.anathema.lib.control.ObjectValueListener;
 import net.sf.anathema.lib.gui.Presenter;
+import net.sf.anathema.lib.gui.selection.IObjectSelectionView;
 import net.sf.anathema.lib.gui.selection.ISelectionIntValueChangedListener;
-import net.sf.anathema.lib.gui.selection.ObjectSelectionView;
 import net.sf.anathema.lib.resources.IResources;
-import net.sf.anathema.lib.workflow.container.factory.MigPanelBuilder;
 import net.sf.anathema.lib.workflow.textualdescription.ITextView;
 import net.sf.anathema.lib.workflow.textualdescription.TextualPresentation;
-
-import javax.swing.JComponent;
 
 import static net.sf.anathema.lib.lang.ArrayUtilities.transform;
 
@@ -59,30 +52,23 @@ public class EquipmentDatabasePresenter implements Presenter {
   }
 
   private void initBasicDetailsView() {
-    MigPanelBuilder panelBuilder = new MigPanelBuilder();
-    ITextView nameView = panelBuilder.addLineTextView(getColonString("Equipment.Creation.Basics.Name"));
+    EquipmentDescriptionPanel descriptionPanel = view.addDescriptionPanel(resources.getString("Equipment.Creation.Basics"));
+    ITextView nameView = descriptionPanel.addNameView(getColonString("Equipment.Creation.Basics.Name"));
     new TextualPresentation().initView(nameView, model.getTemplateEditModel().getDescription().getName());
-    ITextView descriptionView = panelBuilder.addAreaTextView(getColonString("Equipment.Creation.Basics.Description"), 5);
+    ITextView descriptionView = descriptionPanel.addDescriptionView(getColonString("Equipment.Creation.Basics.Description"));
     new TextualPresentation().initView(descriptionView, model.getTemplateEditModel().getDescription().getContent());
-    final ObjectSelectionView<MaterialComposition> compositionView = new ObjectSelectionView<>(
-            getColonString("Equipment.Creation.Basics.Composition"),
-            new IdentificateSelectCellRenderer("MaterialComposition.", resources),
-            MaterialComposition.values());
-    final ObjectSelectionView<MagicalMaterial> materialView = new ObjectSelectionView<>(
-            getColonString("Equipment.Creation.Basics.Material"),
-            new IdentificateSelectCellRenderer("MagicMaterial.", resources),
-            MagicalMaterial.values());
-    panelBuilder.addView(compositionView, new CC().split(3).gapAfter("15"));
-    panelBuilder.addView(materialView, new CC());
+    final IObjectSelectionView<MaterialComposition> compositionView = descriptionPanel.addCompositionView(getColonString("Equipment.Creation.Basics.Composition"), new CompositionUi(resources));
+    compositionView.setObjects(MaterialComposition.values());
+    final IObjectSelectionView<MagicalMaterial> materialView = descriptionPanel.addMaterialView(getColonString("Equipment.Creation.Basics.Material"), new MaterialUi(resources));
+    materialView.setObjects(MagicalMaterial.values());
     String[] backgrounds = transform(defaultCostBackgrounds, String.class, new Function<String, String>() {
       @Override
       public String apply(String arg0) {
         return resources.getString("BackgroundType.Name." + arg0);
       }
     });
-    final CostSelectionView costView = new CostSelectionView(getColonString("Equipment.Creation.Basics.Cost"),
-            backgrounds, getIntValueDisplayFactory());
-    panelBuilder.addView(costView, new CC().split(2).pushX());
+    final CostSelectionView costView = descriptionPanel.addCostView(getColonString("Equipment.Creation.Basics.Cost"));
+    costView.setSelectableBackgrounds(backgrounds);
     compositionView.addObjectSelectionChangedListener(new ObjectValueListener<MaterialComposition>() {
       @Override
       public void valueChanged(MaterialComposition newValue) {
@@ -127,11 +113,5 @@ public class EquipmentDatabasePresenter implements Presenter {
         costView.setValue(model.getTemplateEditModel().getCost());
       }
     });
-    JComponent titledContent = panelBuilder.getTitledContent(resources.getString("Equipment.Creation.Basics"));
-    view.fillDescriptionPanel(titledContent);
-  }
-
-  private IntegerViewFactory getIntValueDisplayFactory() {
-    return new MarkerIntValueDisplayFactory(new EquipmentIntValueGraphics(resources));
   }
 }

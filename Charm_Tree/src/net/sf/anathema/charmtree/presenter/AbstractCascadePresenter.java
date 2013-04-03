@@ -101,7 +101,7 @@ public abstract class AbstractCascadePresenter implements ICascadeSelectionPrese
 
   protected void createCharmGroupSelector() {
     ICharmGroup[] allGroups = charmGroups.getCharmGroups();
-    IdentificateSelectCellRenderer renderer = new IdentificateSelectCellRenderer("", getResources()); //$NON-NLS-1$
+    IdentificateSelectCellRenderer renderer = new IdentificateSelectCellRenderer(getResources());
     Dimension preferredSize = net.sf.anathema.lib.gui.swing.GuiUtilities.calculateComboBoxSize(allGroups, renderer);
     view.addCharmGroupSelector(getResources().getString("CardView.CharmConfiguration.AlienCharms.CharmGroup"), renderer, changeListener, preferredSize);
   }
@@ -109,7 +109,7 @@ public abstract class AbstractCascadePresenter implements ICascadeSelectionPrese
   protected void createCharmTypeSelector() {
     Identified[] types = charmTypes.getCurrentCharmTypes();
     view.addCharmTypeSelector(getResources().getString("CharmTreeView.GUI.CharmType"), types,
-                              new IdentificateSelectCellRenderer("", getResources())); //$NON-NLS-1$
+            new IdentificateSelectCellRenderer(getResources()));
   }
 
   protected void createFilterButton(ICascadeSelectionView selectionView) {
@@ -142,7 +142,7 @@ public abstract class AbstractCascadePresenter implements ICascadeSelectionPrese
     };
     selectionView.addCharmFilterButton(buttonAction, resources.getString("CharmFilters.Filters"));
   }
-	
+
   private void createHelpText() {
     view.addCharmCascadeHelp(resources.getString("CharmTreeView.GUI.HelpText"));
   }
