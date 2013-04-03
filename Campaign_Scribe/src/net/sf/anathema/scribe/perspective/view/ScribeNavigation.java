@@ -10,6 +10,8 @@ import net.miginfocom.layout.LC;
 import net.sf.anathema.interaction.Command;
 import net.sf.anathema.platform.fx.FxThreading;
 import net.sf.anathema.interaction.Tool;
+import net.sf.anathema.platform.tool.Execute;
+import net.sf.anathema.platform.tool.FxButtonTool;
 import net.sf.anathema.scribe.scroll.persistence.ScrollReference;
 import org.tbee.javafx.scene.layout.MigPane;
 

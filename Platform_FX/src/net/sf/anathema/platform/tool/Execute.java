@@ -1,4 +1,4 @@
-package net.sf.anathema.scribe.perspective.view;
+package net.sf.anathema.platform.tool;
 
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;

@@ -1,6 +1,8 @@
 package net.sf.anathema.character.equipment.impl.module;
 
 import net.sf.anathema.character.equipment.impl.item.model.EquipmentDatabaseManagement;
+import net.sf.anathema.character.equipment.item.view.EquipmentDatabaseView;
+import net.sf.anathema.character.equipment.item.view.fx.FxEquipmentDatabaseView;
 import net.sf.anathema.character.equipment.item.view.swing.SwingEquipmentDatabaseView;
 import net.sf.anathema.character.equipment.item.EquipmentDatabasePresenter;
 import net.sf.anathema.character.equipment.item.model.IEquipmentDatabase;
@@ -16,6 +18,7 @@ import net.sf.anathema.lib.resources.IResources;
 @PerspectiveAutoCollector
 @Weight(weight = 5000)
 public class EquipmentPerspective implements Perspective {
+  private static final boolean USE_FX = false;
 
   @Override
   public void configureToggle(PerspectiveToggle toggle) {
@@ -26,9 +29,27 @@ public class EquipmentPerspective implements Perspective {
   @Override
   public void initContent(Container container, IApplicationModel applicationModel, IResources resources) {
     IEquipmentDatabaseManagement databaseManagement = createDatabaseManagement(applicationModel, resources);
-    SwingEquipmentDatabaseView view = new SwingEquipmentDatabaseView();
-    new EquipmentDatabasePresenter(resources, databaseManagement, view).initPresentation();
+    if (USE_FX) {
+      initInFx(container, resources, databaseManagement);
+    } else {
+      initInSwing(container, resources, databaseManagement);
+    }
+  }
+
+  private void initInFx(Container container, IResources resources, IEquipmentDatabaseManagement databaseManagement) {
+    FxEquipmentDatabaseView view = new FxEquipmentDatabaseView();
+    initPresentation(resources, databaseManagement, view);
     container.setSwingContent(view.perspectivePane.getComponent());
+  }
+
+  private void initInSwing(Container container, IResources resources, IEquipmentDatabaseManagement databaseManagement) {
+    SwingEquipmentDatabaseView view = new SwingEquipmentDatabaseView();
+    initPresentation(resources, databaseManagement, view);
+    container.setSwingContent(view.perspectivePane.getComponent());
+  }
+
+  private void initPresentation(IResources resources, IEquipmentDatabaseManagement databaseManagement, EquipmentDatabaseView view) {
+    new EquipmentDatabasePresenter(resources, databaseManagement, view).initPresentation();
   }
 
   private IEquipmentDatabaseManagement createDatabaseManagement(IApplicationModel model, IResources resources) {

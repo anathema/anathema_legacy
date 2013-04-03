@@ -1,4 +1,4 @@
-package net.sf.anathema.scribe.perspective;
+package net.sf.anathema.platform.fx;
 
 import javafx.scene.Node;
 

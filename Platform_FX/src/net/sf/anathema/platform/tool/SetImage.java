@@ -1,9 +1,9 @@
-package net.sf.anathema.scribe.perspective.view;
+package net.sf.anathema.platform.tool;
 
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import net.sf.anathema.platform.fx.ResourceLoader;
-import net.sf.anathema.scribe.perspective.NodeHolder;
+import net.sf.anathema.platform.fx.NodeHolder;
 
 import java.io.InputStream;
 

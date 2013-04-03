@@ -1,4 +1,4 @@
-package net.sf.anathema.scribe.perspective.view;
+package net.sf.anathema.platform.tool;
 
 import javafx.application.Platform;
 import javafx.scene.Node;
@@ -6,7 +6,7 @@ import javafx.scene.control.Button;
 import javafx.scene.control.Tooltip;
 import javafx.scene.image.ImageView;
 import net.sf.anathema.interaction.Command;
-import net.sf.anathema.scribe.perspective.NodeHolder;
+import net.sf.anathema.platform.fx.NodeHolder;
 import net.sf.anathema.interaction.Tool;
 
 public class FxButtonTool implements Tool {
