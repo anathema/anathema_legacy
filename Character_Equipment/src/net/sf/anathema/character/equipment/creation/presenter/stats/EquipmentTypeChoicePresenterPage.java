@@ -6,9 +6,9 @@ import net.sf.anathema.character.equipment.creation.view.IEquipmentTypeChoiceVie
 import net.sf.anathema.character.equipment.item.model.EquipmentStatisticsType;
 import net.sf.anathema.lib.gui.action.SmartAction;
 import net.sf.anathema.lib.gui.dialog.core.IPageContent;
-import net.sf.anathema.lib.gui.wizard.AbstractAnathemaWizardPage;
-import net.sf.anathema.lib.gui.wizard.IAnathemaWizardPage;
-import net.sf.anathema.lib.gui.wizard.CheckInputListener;
+import net.sf.anathema.character.equipment.wizard.AbstractAnathemaWizardPage;
+import net.sf.anathema.character.equipment.wizard.IAnathemaWizardPage;
+import net.sf.anathema.character.equipment.wizard.CheckInputListener;
 import net.sf.anathema.lib.data.ICondition;
 import net.sf.anathema.lib.message.BasicMessage;
 import net.sf.anathema.lib.message.IBasicMessage;

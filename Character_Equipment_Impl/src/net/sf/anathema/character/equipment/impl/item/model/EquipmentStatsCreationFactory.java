@@ -35,7 +35,7 @@ import net.sf.anathema.character.generic.health.HealthType;
 import net.sf.anathema.lib.exception.NotYetImplementedException;
 import net.sf.anathema.lib.gui.dialog.core.IDialogResult;
 import net.sf.anathema.lib.gui.dialog.wizard.WizardDialog;
-import net.sf.anathema.lib.gui.wizard.AnathemaWizardDialog;
+import net.sf.anathema.character.equipment.wizard.AnathemaWizardDialog;
 import net.sf.anathema.lib.resources.IResources;
 import net.sf.anathema.lib.util.Identified;
 import net.sf.anathema.lib.util.Identifier;
