@@ -13,7 +13,7 @@ import net.sf.anathema.lib.resources.IResources;
 import java.util.ArrayList;
 import java.util.List;
 
-public final class AddNewStatsAction {
+public class AddNewStatsAction {
   private final IEquipmentStatsCreationFactory statsFactory;
   private final IResources resources;
   private final IEquipmentTemplateEditModel editModel;

@@ -9,7 +9,7 @@ import net.sf.anathema.lib.control.ObjectValueListener;
 import net.sf.anathema.lib.data.ICondition;
 import net.sf.anathema.lib.resources.IResources;
 
-public final class CopyEquipmentTemplateAction {
+public class CopyEquipmentTemplateAction {
   private final IEquipmentDatabaseManagement model;
   private final IResources resources;
 

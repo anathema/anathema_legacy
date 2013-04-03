@@ -11,7 +11,7 @@ import net.sf.anathema.lib.control.IChangeListener;
 import net.sf.anathema.lib.control.ObjectValueListener;
 import net.sf.anathema.lib.resources.IResources;
 
-public final class SaveEquipmentTemplateAction {
+public class SaveEquipmentTemplateAction {
   private final IResources resources;
   private final IEquipmentDatabaseManagement model;
 
