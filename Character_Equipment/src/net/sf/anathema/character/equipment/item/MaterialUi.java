@@ -12,7 +12,7 @@ public class MaterialUi implements TechnologyAgnosticUIConfiguration<MagicalMate
 
   @Override
   public String getIconsRelativePath(MagicalMaterial value) {
-    return null;
+    return NO_ICON;
   }
 
   @Override
@@ -22,6 +22,6 @@ public class MaterialUi implements TechnologyAgnosticUIConfiguration<MagicalMate
 
   @Override
   public String getToolTipText(MagicalMaterial value) {
-    return null;
+    return NO_TOOLTIP;
   }
 }

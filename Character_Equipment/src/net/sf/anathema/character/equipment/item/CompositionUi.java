@@ -12,7 +12,7 @@ public class CompositionUi implements TechnologyAgnosticUIConfiguration<Material
 
   @Override
   public String getIconsRelativePath(MaterialComposition value) {
-    return null;
+    return NO_ICON;
   }
 
   @Override
@@ -22,6 +22,6 @@ public class CompositionUi implements TechnologyAgnosticUIConfiguration<Material
 
   @Override
   public String getToolTipText(MaterialComposition value) {
-    return null;
+    return NO_TOOLTIP;
   }
 }
