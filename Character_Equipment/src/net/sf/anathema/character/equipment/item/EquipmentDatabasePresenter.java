@@ -6,7 +6,7 @@ import net.sf.anathema.character.equipment.MagicalMaterial;
 import net.sf.anathema.character.equipment.MaterialComposition;
 import net.sf.anathema.character.equipment.item.model.IEquipmentDatabaseManagement;
 import net.sf.anathema.character.equipment.item.view.CostSelectionView;
-import net.sf.anathema.character.equipment.item.view.IEquipmentDatabaseView;
+import net.sf.anathema.character.equipment.item.view.EquipmentDatabaseView;
 import net.sf.anathema.lib.control.IChangeListener;
 import net.sf.anathema.lib.control.ObjectValueListener;
 import net.sf.anathema.lib.gui.Presenter;
@@ -20,12 +20,12 @@ import static net.sf.anathema.lib.lang.ArrayUtilities.transform;
 
 public class EquipmentDatabasePresenter implements Presenter {
   private final IResources resources;
-  private final IEquipmentDatabaseView view;
+  private final EquipmentDatabaseView view;
   private final IEquipmentDatabaseManagement model;
   private final String[] defaultCostBackgrounds = {"Artifact", "Manse", "Resources"};
 
   public EquipmentDatabasePresenter(IResources resources, IEquipmentDatabaseManagement model,
-                                    IEquipmentDatabaseView view) {
+                                    EquipmentDatabaseView view) {
     this.resources = resources;
     this.model = model;
     this.view = view;

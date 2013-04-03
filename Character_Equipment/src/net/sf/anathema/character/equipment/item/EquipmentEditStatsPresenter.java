@@ -2,7 +2,7 @@ package net.sf.anathema.character.equipment.item;
 
 import net.sf.anathema.character.equipment.item.model.IEquipmentDatabaseManagement;
 import net.sf.anathema.character.equipment.item.model.IEquipmentTemplateEditModel;
-import net.sf.anathema.character.equipment.item.view.IEquipmentDatabaseView;
+import net.sf.anathema.character.equipment.item.view.EquipmentDatabaseView;
 import net.sf.anathema.character.generic.equipment.weapon.IEquipmentStats;
 import net.sf.anathema.lib.control.IChangeListener;
 import net.sf.anathema.lib.gui.Presenter;
@@ -12,11 +12,11 @@ import net.sf.anathema.lib.resources.IResources;
 public class EquipmentEditStatsPresenter implements Presenter {
 
   private final IResources resources;
-  private final IEquipmentDatabaseView view;
+  private final EquipmentDatabaseView view;
   private final IEquipmentDatabaseManagement model;
 
   public EquipmentEditStatsPresenter(IResources resources, IEquipmentDatabaseManagement model,
-                                     IEquipmentDatabaseView view) {
+                                     EquipmentDatabaseView view) {
     this.resources = resources;
     this.model = model;
     this.view = view;

@@ -1,7 +1,7 @@
 package net.sf.anathema.character.equipment.impl.module;
 
 import net.sf.anathema.character.equipment.impl.item.model.EquipmentDatabaseManagement;
-import net.sf.anathema.character.equipment.impl.item.view.EquipmentDatabaseView;
+import net.sf.anathema.character.equipment.impl.item.view.SwingEquipmentDatabaseView;
 import net.sf.anathema.character.equipment.item.EquipmentDatabasePresenter;
 import net.sf.anathema.character.equipment.item.model.IEquipmentDatabase;
 import net.sf.anathema.character.equipment.item.model.IEquipmentDatabaseManagement;
@@ -26,7 +26,7 @@ public class EquipmentPerspective implements Perspective {
   @Override
   public void initContent(Container container, IApplicationModel applicationModel, IResources resources) {
     IEquipmentDatabaseManagement databaseManagement = createDatabaseManagement(applicationModel, resources);
-    EquipmentDatabaseView view = new EquipmentDatabaseView();
+    SwingEquipmentDatabaseView view = new SwingEquipmentDatabaseView();
     new EquipmentDatabasePresenter(resources, databaseManagement, view).initPresentation();
     container.setSwingContent(view.getComponent());
   }

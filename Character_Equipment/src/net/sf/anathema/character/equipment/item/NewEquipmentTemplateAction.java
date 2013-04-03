@@ -1,7 +1,7 @@
 package net.sf.anathema.character.equipment.item;
 
 import net.sf.anathema.character.equipment.item.model.IEquipmentDatabaseManagement;
-import net.sf.anathema.character.equipment.item.view.IEquipmentDatabaseView;
+import net.sf.anathema.character.equipment.item.view.EquipmentDatabaseView;
 import net.sf.anathema.framework.view.SwingApplicationFrame;
 import net.sf.anathema.interaction.Command;
 import net.sf.anathema.interaction.Tool;
@@ -18,7 +18,7 @@ public class NewEquipmentTemplateAction {
     this.model = model;
   }
 
-  public void addToolTo(IEquipmentDatabaseView view) {
+  public void addToolTo(EquipmentDatabaseView view) {
     Tool newTool = view.addEditTemplateTool();
     newTool.setIcon("icons/TaskBarNew24.png");
     newTool.setTooltip(resources.getString("Equipment.Creation.Item.NewActionTooltip"));

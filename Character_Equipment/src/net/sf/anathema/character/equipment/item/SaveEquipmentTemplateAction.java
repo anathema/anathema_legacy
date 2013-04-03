@@ -2,7 +2,7 @@ package net.sf.anathema.character.equipment.item;
 
 import net.sf.anathema.character.equipment.item.model.IEquipmentDatabaseManagement;
 import net.sf.anathema.character.equipment.item.model.IEquipmentTemplateEditModel;
-import net.sf.anathema.character.equipment.item.view.IEquipmentDatabaseView;
+import net.sf.anathema.character.equipment.item.view.EquipmentDatabaseView;
 import net.sf.anathema.character.equipment.template.IEquipmentTemplate;
 import net.sf.anathema.framework.view.SwingApplicationFrame;
 import net.sf.anathema.interaction.Command;
@@ -20,7 +20,7 @@ public final class SaveEquipmentTemplateAction {
     this.model = model;
   }
 
-  public void addToolTo(IEquipmentDatabaseView view) {
+  public void addToolTo(EquipmentDatabaseView view) {
     Tool saveTool = view.addEditTemplateTool();
     saveTool.setIcon("icons/TaskBarSave24.png");
     saveTool.setTooltip(resources.getString("Equipment.Creation.Item.SaveActionTooltip"));
