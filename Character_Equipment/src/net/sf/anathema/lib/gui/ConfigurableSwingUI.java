@@ -1,11 +1,9 @@
-package net.sf.anathema.character.equipment.item;
+package net.sf.anathema.lib.gui;
 
 import net.sf.anathema.framework.resources.ImageProvider;
 import net.sf.anathema.lib.gui.ui.ObjectUi;
 
 import javax.swing.Icon;
-
-import static net.sf.anathema.character.equipment.item.TechnologyAgnosticUIConfiguration.NO_ICON;
 
 public class ConfigurableSwingUI<T> implements ObjectUi<T> {
 
@@ -15,10 +13,11 @@ public class ConfigurableSwingUI<T> implements ObjectUi<T> {
     this.configuration = configuration;
   }
 
+  @SuppressWarnings("StringEquality")
   @Override
   public Icon getIcon(T value) {
     String relativePath = configuration.getIconsRelativePath(value);
-    if (relativePath == NO_ICON) {
+    if (relativePath == TechnologyAgnosticUIConfiguration.NO_ICON) {
       return null;
     }
     return new ImageProvider(".").getImageIcon(this.getClass(), relativePath);

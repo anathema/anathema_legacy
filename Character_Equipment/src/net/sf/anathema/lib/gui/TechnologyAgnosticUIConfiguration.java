@@ -1,4 +1,4 @@
-package net.sf.anathema.character.equipment.item;
+package net.sf.anathema.lib.gui;
 
 public interface TechnologyAgnosticUIConfiguration<T> {
   String NO_ICON = null;

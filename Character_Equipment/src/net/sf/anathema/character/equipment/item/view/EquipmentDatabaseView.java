@@ -1,6 +1,6 @@
 package net.sf.anathema.character.equipment.item.view;
 
-import net.sf.anathema.character.equipment.item.TechnologyAgnosticUIConfiguration;
+import net.sf.anathema.lib.gui.TechnologyAgnosticUIConfiguration;
 import net.sf.anathema.character.generic.equipment.weapon.IEquipmentStats;
 import net.sf.anathema.interaction.Tool;
 import net.sf.anathema.lib.gui.selection.IVetoableObjectSelectionView;

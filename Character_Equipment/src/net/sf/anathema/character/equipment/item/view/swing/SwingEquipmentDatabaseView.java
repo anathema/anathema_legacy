@@ -2,9 +2,9 @@ package net.sf.anathema.character.equipment.item.view.swing;
 
 import net.miginfocom.layout.CC;
 import net.miginfocom.swing.MigLayout;
-import net.sf.anathema.character.equipment.item.ConfigurableSwingUI;
+import net.sf.anathema.lib.gui.ConfigurableSwingUI;
 import net.sf.anathema.character.equipment.item.view.EquipmentDescriptionPanel;
-import net.sf.anathema.character.equipment.item.TechnologyAgnosticUIConfiguration;
+import net.sf.anathema.lib.gui.TechnologyAgnosticUIConfiguration;
 import net.sf.anathema.character.equipment.item.view.EquipmentDatabaseView;
 import net.sf.anathema.character.equipment.item.view.ToolListView;
 import net.sf.anathema.character.generic.equipment.weapon.IEquipmentStats;
