@@ -11,7 +11,7 @@ public class SubeffectTest {
   @Test
   public void testIsCorrectlyLearned() throws Exception {
     DummyCondition condition = new DummyCondition();
-    Subeffect subeffect = new Subeffect("Effective", new DummyBasicCharacterData(), condition); //$NON-NLS-1$
+    Subeffect subeffect = new Subeffect("Effective", new DummyBasicCharacterData(), condition);
     subeffect.setLearned(true);
     Assert.assertFalse(subeffect.isLearned());
     condition.setValue(true);

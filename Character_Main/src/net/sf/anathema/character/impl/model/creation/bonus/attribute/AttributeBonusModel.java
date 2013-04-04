@@ -10,7 +10,7 @@ public class AttributeBonusModel extends AbstractSpendingModel {
   private final ICreationPoints creationPoints;
 
   public AttributeBonusModel(AttributeCostCalculator attributeCalculator, AttributeGroupPriority priority, ICreationPoints creationPoints) {
-    super("Attributes", priority.getId()); //$NON-NLS-1$
+    super("Attributes", priority.getId());
     this.attributeCalculator = attributeCalculator;
     this.priority = priority;
     this.creationPoints = creationPoints;

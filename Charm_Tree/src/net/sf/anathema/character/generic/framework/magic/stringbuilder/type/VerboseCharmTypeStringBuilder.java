@@ -20,11 +20,11 @@ public class VerboseCharmTypeStringBuilder extends AbstractCharmTypeStringBuilde
     if (!defaultSpeed || longAction) {
       builder.append(TooltipBuilder.CommaSpace);
     }
-    builder.append(getResources().getString("CharmTreeView.ToolTip.Type.Defense")); //$NON-NLS-1$
+    builder.append(getResources().getString("CharmTreeView.ToolTip.Type.Defense"));
     builder.append(TooltipBuilder.Space);
     int defenseModifier = model.getDefenseModifier();
     if (defenseModifier == 0) {
-      builder.append("-"); //$NON-NLS-1$
+      builder.append("-");
     }
     builder.append(defenseModifier);
     return builder;
@@ -33,28 +33,28 @@ public class VerboseCharmTypeStringBuilder extends AbstractCharmTypeStringBuilde
   @Override
   protected StringBuilder buildSpeedString(ISimpleSpecialsModel model) {
     StringBuilder builder = new StringBuilder();
-    builder.append(getResources().getString("CharmTreeView.ToolTip.Type.Speed")); //$NON-NLS-1$
+    builder.append(getResources().getString("CharmTreeView.ToolTip.Type.Speed"));
     builder.append(TooltipBuilder.Space);
     builder.append(model.getSpeed());
     if (model.getTurnType() == TurnType.LongTick) {
       builder.append(TooltipBuilder.Space);
-      builder.append(getResources().getString("CharmTreeView.ToolTip.Type.LongTick")); //$NON-NLS-1$
+      builder.append(getResources().getString("CharmTreeView.ToolTip.Type.LongTick"));
     }
     return builder;
   }
 
   @Override
   protected String getDramaticActionKey() {
-    return "CharmTreeView.ToolTip.Type.DramaticAction"; //$NON-NLS-1$
+    return "CharmTreeView.ToolTip.Type.DramaticAction";
   }
 
   @Override
   protected String getReflexiveDualStepPattern() {
-    return "CharmTreeView.ToolTip.Type.DualStep"; //$NON-NLS-1$
+    return "CharmTreeView.ToolTip.Type.DualStep";
   }
 
   @Override
   protected String getReflexiveSingleStepPattern() {
-    return "CharmTreeView.ToolTip.Type.SingleStep"; //$NON-NLS-1$
+    return "CharmTreeView.ToolTip.Type.SingleStep";
   }
 }

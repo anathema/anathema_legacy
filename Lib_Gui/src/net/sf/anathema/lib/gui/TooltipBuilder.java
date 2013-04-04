@@ -4,10 +4,10 @@ import static net.sf.anathema.lib.lang.StringUtilities.createFixedWidthParagraph
 
 public class TooltipBuilder {
 
-  public static final String HtmlLineBreak = "<br>"; //$NON-NLS-1$
-  public static final String CommaSpace = ", "; //$NON-NLS-1$
-  public static final String Space = " "; //$NON-NLS-1$
-  public static final String ColonSpace = ": "; //$NON-NLS-1$
+  public static final String HtmlLineBreak = "<br>";
+  public static final String CommaSpace = ", ";
+  public static final String Space = " ";
+  public static final String ColonSpace = ": ";
   public static final int DEFAULT_TOOLTIP_WIDTH = 80;
 
   private final StringBuilder builder = new StringBuilder();
@@ -41,11 +41,11 @@ public class TooltipBuilder {
   }
 
   private void appendItalic(String label) {
-    builder.append("<i>" + label + "</i>");
+    builder.append("<i>").append(label).append("</i>");
   }
 
   private void appendBold(String label) {
-    builder.append("<b>" + label + "</b>");
+    builder.append("<b>").append(label).append("</b>");
   }
 
   public String build() {

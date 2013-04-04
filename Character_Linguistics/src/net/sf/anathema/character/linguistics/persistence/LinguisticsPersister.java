@@ -11,8 +11,8 @@ import org.dom4j.Element;
 
 public class LinguisticsPersister implements IAdditionalPersister {
 
-  private static final String TAG_LANGUAGES = "linguistics"; //$NON-NLS-1$
-  private static final String TAG_LANGUAGE = "language"; //$NON-NLS-1$
+  private static final String TAG_LANGUAGES = "linguistics";
+  private static final String TAG_LANGUAGE = "language";
 
   @Override
   public void load(Element parent, IAdditionalModel additionalModel) throws PersistenceException {

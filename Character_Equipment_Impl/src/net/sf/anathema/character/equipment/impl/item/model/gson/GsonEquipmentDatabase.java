@@ -19,7 +19,7 @@ import java.util.List;
 import static net.sf.anathema.character.equipment.impl.module.EquipmentDatabaseItemTypeConfiguration.EQUIPMENT_DATABASE_ITEM_TYPE_ID;
 
 public class GsonEquipmentDatabase extends NonPersistableItemData implements IEquipmentDatabase {
-  public static final String DATABASE_FOLDER = "equipment"; //$NON-NLS-1$
+  public static final String DATABASE_FOLDER = "equipment";
 
   public static GsonEquipmentDatabase CreateFrom(IApplicationModel anathemaModel) {
     IRepository repository = anathemaModel.getRepository();

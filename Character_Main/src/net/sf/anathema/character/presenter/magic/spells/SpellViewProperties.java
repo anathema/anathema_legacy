@@ -34,7 +34,7 @@ public class SpellViewProperties extends AbstractMagicLearnProperties implements
 
   @Override
   public String getCircleLabel() {
-    return getResources().getString("CardView.CharmConfiguration.Spells.Circle"); //$NON-NLS-1$
+    return getResources().getString("CardView.CharmConfiguration.Spells.Circle");
   }
 
   @Override
@@ -73,12 +73,12 @@ public class SpellViewProperties extends AbstractMagicLearnProperties implements
 
   @Override
   public String getAddButtonToolTip() {
-    return getResources().getString("CardView.CharmConfiguration.Spells.AddToolTip"); //$NON-NLS-1$  
+    return getResources().getString("CardView.CharmConfiguration.Spells.AddToolTip");
   }
 
   @Override
   public String getRemoveButtonToolTip() {
-    return getResources().getString("CardView.CharmConfiguration.Spells.RemoveToolTip"); //$NON-NLS-1$
+    return getResources().getString("CardView.CharmConfiguration.Spells.RemoveToolTip");
   }
 
   @Override
@@ -88,7 +88,7 @@ public class SpellViewProperties extends AbstractMagicLearnProperties implements
       public void valueChanged(ListSelectionEvent e) {
         boolean enabled = !list.isSelectionEmpty();
         if (enabled && character.isExperienced()) {
-          for (Object spellObject : list.getSelectedValues()) {
+          for (Object spellObject : list.getSelectedValuesList()) {
             ISpell spell = (ISpell) spellObject;
             if (spellConfiguration.isLearnedOnCreation(spell)) {
               enabled = false;

@@ -50,7 +50,7 @@ public class FavorableTraitConfigurationPresenter {
 
   public void init(String typePrefix) {
     for (IIdentifiedTraitTypeGroup traitTypeGroup : traitTypeGroups) {
-      configurationView.startNewTraitGroup(resources.getString(typePrefix + "." + traitTypeGroup.getGroupId().getId())); //$NON-NLS-1$
+      configurationView.startNewTraitGroup(resources.getString(typePrefix + "." + traitTypeGroup.getGroupId().getId()));
       addTraitViews(traitConfiguration.getFavorableTraits(traitTypeGroup.getAllGroupTypes()));
     }
     characterListening.addChangeListener(new DedicatedCharacterChangeAdapter() {

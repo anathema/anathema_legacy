@@ -122,7 +122,7 @@ public class NaturalSoak extends AbstractCombatStats implements IArmourStats {
 
   @Override
   public Identified getName() {
-    return new Identifier("NaturalSoak"); //$NON-NLS-1$
+    return new Identifier("NaturalSoak");
   }
 
   @Override

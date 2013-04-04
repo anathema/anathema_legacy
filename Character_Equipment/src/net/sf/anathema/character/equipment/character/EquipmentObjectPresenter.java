@@ -21,8 +21,8 @@ import java.util.Map;
 
 public class EquipmentObjectPresenter implements Presenter {
 
-  public static final String EQUIPMENT_NAME_PREFIX = "Equipment.Name."; //$NON-NLS-1$
-  private static final String DESCRIPTION_PREFIX = "Equipment.Description."; //$NON-NLS-1$
+  public static final String EQUIPMENT_NAME_PREFIX = "Equipment.Name.";
+  private static final String DESCRIPTION_PREFIX = "Equipment.Description.";
   private final Map<IEquipmentStats, BooleanModel> attuneStatFlags = new HashMap<>();
   private final Map<IEquipmentStats, BooleanModel> otherStatFlags = new HashMap<>();
   private final IEquipmentItem model;
@@ -54,8 +54,8 @@ public class EquipmentObjectPresenter implements Presenter {
       itemTitle = resources.getString(EQUIPMENT_NAME_PREFIX + itemTitle);
     }
     if (!customTitle && model.getMaterialComposition() == MaterialComposition.Variable) {
-      String materialString = resources.getString("MagicMaterial." + model.getMaterial().name()); //$NON-NLS-1$
-      itemTitle += " (" + materialString + ")"; //$NON-NLS-1$ //$NON-NLS-2$
+      String materialString = resources.getString("MagicMaterial." + model.getMaterial().name());
+      itemTitle += " (" + materialString + ")";
     }
     view.setItemTitle(itemTitle);
     String description = model.getDescription();

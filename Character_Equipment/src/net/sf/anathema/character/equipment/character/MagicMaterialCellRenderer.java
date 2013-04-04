@@ -23,11 +23,11 @@ private final Resources resources;
       boolean cellHasFocus) {
     String text;
     if (value == null) {
-      text = resources.getString("MagicMaterial.Unavailable"); //$NON-NLS-1$
+      text = resources.getString("MagicMaterial.Unavailable");
     }
     else {
       MagicalMaterial material = (MagicalMaterial) value;
-      text = resources.getString("MagicMaterial." + material.name()); //$NON-NLS-1$
+      text = resources.getString("MagicMaterial." + material.name());
     }
     return super.getListCellRendererComponent(list, text, index, isSelected, cellHasFocus);
   }

@@ -158,7 +158,7 @@ public class ComboConfigurationView implements IComboConfigurationView {
 
       @Override
       public void magicAdded(Object[] addedMagic) {
-        Preconditions.checkArgument(addedMagic.length == 1, "Only one charm may be added."); //$NON-NLS-1$
+        Preconditions.checkArgument(addedMagic.length == 1, "Only one charm may be added.");
         listener.charmAdded(addedMagic[0]);
       }
     });
@@ -176,7 +176,7 @@ public class ComboConfigurationView implements IComboConfigurationView {
     textView.addTextChangedListener(new ObjectValueListener<String>() {
       @Override
       public void valueChanged(String newValue) {
-        isNameEntered = newValue != null && !newValue.equals(""); //$NON-NLS-1$
+        isNameEntered = newValue != null && !newValue.equals("");
         clearButton.setEnabled(isDescriptionEntered || isNameEntered || learnedListModelSize > 0);
       }
     });
@@ -209,7 +209,7 @@ public class ComboConfigurationView implements IComboConfigurationView {
     textView.addTextChangedListener(new ObjectValueListener<String>() {
       @Override
       public void valueChanged(String newValue) {
-        isDescriptionEntered = newValue != null && !newValue.equals(""); //$NON-NLS-1$
+        isDescriptionEntered = newValue != null && !newValue.equals("");
         clearButton.setEnabled(isDescriptionEntered || isNameEntered || learnedListModelSize > 0);
       }
     });

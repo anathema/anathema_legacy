@@ -21,7 +21,7 @@ public class CostStringBuilder extends AbstractCostStringBuilder<ICost> {
     return intValue
         + TooltipBuilder.Space
         + (cost.isPermanent()
-            ? getResources().getString("Magic.Cost.Permanent") + TooltipBuilder.Space : StringUtilities.EMPTY_STRING) //$NON-NLS-1$
+            ? getResources().getString("Magic.Cost.Permanent") + TooltipBuilder.Space : StringUtilities.EMPTY_STRING)
         + getResources().getString(intValue == 1 ? getSingularKey() : getPluralKey());
   }
 }

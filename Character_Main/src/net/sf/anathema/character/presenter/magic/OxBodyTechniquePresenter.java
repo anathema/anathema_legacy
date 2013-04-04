@@ -23,7 +23,7 @@ public class OxBodyTechniquePresenter implements Presenter {
   @Override
   public void initPresentation() {
     for (OxBodyCategory category : model.getCategories()) {
-      String label = resources.getString("OxBodyTechnique." + category.getId()); //$NON-NLS-1$
+      String label = resources.getString("OxBodyTechnique." + category.getId());
       IIntValueView display = view.addCategory(label, category.getMaximalValue(), category.getCurrentValue());
       new TraitPresenter(category, display).initPresentation();
     }

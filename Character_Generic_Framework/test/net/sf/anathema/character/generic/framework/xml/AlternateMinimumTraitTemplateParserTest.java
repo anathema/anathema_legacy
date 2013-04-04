@@ -10,16 +10,16 @@ import net.sf.anathema.lib.xml.DocumentUtilities;
 public class AlternateMinimumTraitTemplateParserTest extends TestCase {
 
   public void test() throws Exception {
-    String xml = "<alternateMinimumTraits count=\"1\" value=\"1\">" //$NON-NLS-1$
-        + "           <trait id=\"Archery\" startValue=\"0\" lowerableState=\"Default\" zeroLevel=\"0\">" //$NON-NLS-1$
-        + "               <limitation type=\"Essence\"/>" //$NON-NLS-1$
-        + "               <minimum value=\"0\"/>" //$NON-NLS-1$
-        + "           </trait>" //$NON-NLS-1$
-        + "           <trait id=\"MartialArts\" startValue=\"1\" lowerableState=\"Default\" zeroLevel=\"0\">" //$NON-NLS-1$
-        + "               <limitation type=\"Essence\"/>" //$NON-NLS-1$
-        + "               <minimum value=\"0\"/>" //$NON-NLS-1$
-        + "           </trait>" //$NON-NLS-1$
-        + "       </alternateMinimumTraits>"; //$NON-NLS-1$
+    String xml = "<alternateMinimumTraits count=\"1\" value=\"1\">"
+        + "           <trait id=\"Archery\" startValue=\"0\" lowerableState=\"Default\" zeroLevel=\"0\">"
+        + "               <limitation type=\"Essence\"/>"
+        + "               <minimum value=\"0\"/>"
+        + "           </trait>"
+        + "           <trait id=\"MartialArts\" startValue=\"1\" lowerableState=\"Default\" zeroLevel=\"0\">"
+        + "               <limitation type=\"Essence\"/>"
+        + "               <minimum value=\"0\"/>"
+        + "           </trait>"
+        + "       </alternateMinimumTraits>";
     AlternateMinimumTraitTemplateParser parser = new AlternateMinimumTraitTemplateParser(
         AllAbilityTraitTypeGroup.getInstance());
     GenericRestrictedTraitTemplate[] templates = parser.parseAlternateMinimumTraits(DocumentUtilities.read(xml)

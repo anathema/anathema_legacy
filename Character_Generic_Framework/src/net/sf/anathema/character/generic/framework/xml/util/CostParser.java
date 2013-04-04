@@ -6,8 +6,8 @@ import org.dom4j.Element;
 
 public class CostParser {
 
-  private static final String TAG_FIXED_COST = "fixedCost"; //$NON-NLS-1$
-  private static final String ATTRIB_COST = "cost"; //$NON-NLS-1$
+  private static final String TAG_FIXED_COST = "fixedCost";
+  private static final String ATTRIB_COST = "cost";
 
   public int getFixedCostFromRequiredElement(Element element, String elementName) throws PersistenceException {
     Element parentElement = ElementUtilities.getRequiredElement(element, elementName);

@@ -13,9 +13,9 @@ import java.util.List;
 
 public class HealthTemplateParser extends AbstractXmlTemplateParser<GenericHealthTemplate> {
 
-  private static final String TAG_TOUGHNESS_TRAIT = "toughnessControllingTrait"; //$NON-NLS-1$
+  private static final String TAG_TOUGHNESS_TRAIT = "toughnessControllingTrait";
   private static final String TAG_BASE_PROVIDER = "usesBaseProvider";
-  private static final String ATTRIB_TYPE = "type"; //$NON-NLS-1$
+  private static final String ATTRIB_TYPE = "type";
   private static final String ATTRIB_PATH = "path";
 
   private final TraitTypeUtils traitTypeUtils = new TraitTypeUtils();

@@ -26,7 +26,7 @@ public class CharacterTypeUi implements ObjectUi<Object> {
     PrintNameFile file = (PrintNameFile) value;
     String printName = file.getPrintName();
     ICharacterType characterType = scanner.getCharacterType(file);
-    String characterString = resources.getString("CharacterGenerator.NewCharacter." + characterType.getId() + ".Name"); //$NON-NLS-1$//$NON-NLS-2$
+    String characterString = resources.getString("CharacterGenerator.NewCharacter." + characterType.getId() + ".Name");
     Identified casteType = scanner.getCasteType(file);
     if (casteType == ICasteType.NULL_CASTE_TYPE) {
       return resources.getString("LoadCharacter.PrintNameFile.ShortMessage", printName, characterString);

@@ -5,31 +5,31 @@ package net.sf.anathema.lib.message;
  */
 public enum MessageType {
 
-  ERROR("Fehler") { //$NON-NLS-1$
+  ERROR("Fehler") {
     @Override
     public void accept(IMessageTypeVisitor visitor) {
       visitor.visitError(this);
     }
   },
-  WARNING("Warnung") { //$NON-NLS-1$
+  WARNING("Warnung") {
     @Override
     public void accept(IMessageTypeVisitor visitor) {
       visitor.visitWarning(this);
     }
   },
-  INFORMATION("Information") { //$NON-NLS-1$
+  INFORMATION("Information") {
     @Override
     public void accept(IMessageTypeVisitor visitor) {
       visitor.visitInformation(this);
     }
   },
-  NORMAL("Normal") { //$NON-NLS-1$
+  NORMAL("Normal") {
     @Override
     public void accept(IMessageTypeVisitor visitor) {
       visitor.visitNormal(this);
     }
   },
-  QUESTION("Question") { //$NON-NLS-1$
+  QUESTION("Question") {
     @Override
     public void accept(IMessageTypeVisitor visitor) {
       visitor.visitQuestion(this);

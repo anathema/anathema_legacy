@@ -13,7 +13,7 @@ import org.dom4j.Element;
 
 public class SiderealCollegePersister implements IAdditionalPersister {
 
-  private static final String TAG_COLLEGES = "Colleges"; //$NON-NLS-1$
+  private static final String TAG_COLLEGES = "Colleges";
   private final TraitPersister traitPersister = new TraitPersister();
 
   @Override

@@ -13,7 +13,7 @@ import static net.sf.anathema.character.impl.persistence.ICharacterXmlConstants.
 
 public class BackgroundConfigurationPersister {
 
-  private static final String TAG_BACKGROUND = "Background"; //$NON-NLS-1$
+  private static final String TAG_BACKGROUND = "Background";
   private static final String TAG_DESCRIPTION = "Description";
   private final IIdentificateRegistry<IBackgroundTemplate> backgroundRegistry;
   private final TraitPersister persister = new TraitPersister();
@@ -62,7 +62,7 @@ public class BackgroundConfigurationPersister {
       background = backgrounds.addBackground(backgroundId, description, true);
     }
     if (background == null) {
-      throw new PersistenceException("Error reading Background: " + backgroundId); //$NON-NLS-1$
+      throw new PersistenceException("Error reading Background: " + backgroundId);
     }
     persister.restoreTrait(element, background);
   }

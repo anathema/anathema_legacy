@@ -10,31 +10,31 @@ public class ArmourStatisticsProperties extends AbstractEquipmentStatisticsPrope
 
   public ArmourStatisticsProperties(Resources resources) {
     super(resources);
-    this.defaultMessage = new BasicMessage(getString("Equipment.Creation.Armour.DefaultMessage")); //$NON-NLS-1$
+    this.defaultMessage = new BasicMessage(getString("Equipment.Creation.Armour.DefaultMessage"));
   }
 
   public String getBashingSoakLabel() {
-    return getLabelString("Equipment.Stats.Long.BashingSoak"); //$NON-NLS-1$
+    return getLabelString("Equipment.Stats.Long.BashingSoak");
   }
 
   public String getLethalSoakLabel() {
-    return getLabelString("Equipment.Stats.Long.LethalSoak"); //$NON-NLS-1$
+    return getLabelString("Equipment.Stats.Long.LethalSoak");
   }
 
   public String getBashingHardnessLabel() {
-    return getLabelString("Equipment.Stats.Long.BashingHardness"); //$NON-NLS-1$
+    return getLabelString("Equipment.Stats.Long.BashingHardness");
   }
 
   public String getLethalHardnessLabel() {
-    return getLabelString("Equipment.Stats.Long.LethalHardness"); //$NON-NLS-1$
+    return getLabelString("Equipment.Stats.Long.LethalHardness");
   }
 
   public String getMobilityPenaltyLabel() {
-    return getLabelString("Equipment.Stats.Long.MobilityPenalty"); //$NON-NLS-1$
+    return getLabelString("Equipment.Stats.Long.MobilityPenalty");
   }
 
   public String getFatigueLabel() {
-    return getLabelString("Equipment.Stats.Long.Fatigue"); //$NON-NLS-1$
+    return getLabelString("Equipment.Stats.Long.Fatigue");
   }
 
   @Override
@@ -44,19 +44,19 @@ public class ArmourStatisticsProperties extends AbstractEquipmentStatisticsPrope
 
   @Override
   public String getPageDescription() {
-    return getString("Equipment.Creation.Armour.PageTitle"); //$NON-NLS-1$
+    return getString("Equipment.Creation.Armour.PageTitle");
   }
 
   @Override
   public String getDefaultName() {
-    return getString("Equipment.Creation.Armour.DefaultName"); //$NON-NLS-1$
+    return getString("Equipment.Creation.Armour.DefaultName");
   }
 
   public String getLinkSoakLabel() {
-    return getString("Equipment.Creation.Armour.LinkSoak"); //$NON-NLS-1$
+    return getString("Equipment.Creation.Armour.LinkSoak");
   }
 
   public String getAggravatedSoakLabel() {
-    return getLabelString("Equipment.Stats.Long.AggravatedSoak"); //$NON-NLS-1$
+    return getLabelString("Equipment.Stats.Long.AggravatedSoak");
   }
 }

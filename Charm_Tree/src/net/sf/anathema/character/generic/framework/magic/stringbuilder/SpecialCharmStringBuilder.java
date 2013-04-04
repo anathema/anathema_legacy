@@ -14,7 +14,7 @@ import net.sf.anathema.lib.gui.TooltipBuilder;
 import net.sf.anathema.lib.resources.Resources;
 
 public class SpecialCharmStringBuilder implements IMagicTooltipStringBuilder {
-  private static final String HtmlLineBreak = "<br>"; //$NON-NLS-1$
+  private static final String HtmlLineBreak = "<br>";
   private Resources resources;
 
   public SpecialCharmStringBuilder(Resources resources) {

@@ -26,7 +26,7 @@ public class FileExporter {
 
   public PrintNameFile[] exportToZip(Path saveFile) throws IOException {
     ZipOutputStream zipOutputStream = new ZipOutputStream(Files.newOutputStream(saveFile));
-    zipOutputStream.setComment(resources.getString("Anathema.Version.Numeric")); //$NON-NLS-1$
+    zipOutputStream.setComment(resources.getString("Anathema.Version.Numeric"));
     PrintNameFile[] printNameFiles = model.getPrintNameFilesInSelection();
     for (PrintNameFile printNameFile : printNameFiles) {
       IRepositoryFileAccess access = model.getFileAccess(printNameFile);
@@ -46,7 +46,7 @@ public class FileExporter {
   ZipEntry createZipEntry(File file, PrintNameFile printNameFile) {
     ZipEntry entry = new ZipEntry(creator.createZipPath(file));
     entry.setComment(resources.getString(
-            "Anathema.Version.Numeric") + "#" + printNameFile.getItemType() + "#" + printNameFile.getRepositoryId()); //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
+            "Anathema.Version.Numeric") + "#" + printNameFile.getItemType() + "#" + printNameFile.getRepositoryId());
     return entry;
   }
 }

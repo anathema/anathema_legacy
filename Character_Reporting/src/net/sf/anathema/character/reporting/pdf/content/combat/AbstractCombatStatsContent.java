@@ -33,20 +33,20 @@ public abstract class AbstractCombatStatsContent extends AbstractSubBoxContent {
   }
 
   public String getKnockdownLabel() {
-    return getString("Sheet.Combat.Knockdown"); //$NON-NLS-1$
+    return getString("Sheet.Combat.Knockdown");
   }
 
   public String getStunningLabel() {
-    return getString("Sheet.Combat.Stunning"); //$NON-NLS-1$
+    return getString("Sheet.Combat.Stunning");
   }
 
   public String getThresholdPoolLabel() {
-    return getString("Sheet.Combat.ThresholdPool"); //$NON-NLS-1$
+    return getString("Sheet.Combat.ThresholdPool");
   }
 
   @Override
   public String getHeaderKey() {
-    return "Combat"; //$NON-NLS-1$
+    return "Combat";
   }
 
   @Override

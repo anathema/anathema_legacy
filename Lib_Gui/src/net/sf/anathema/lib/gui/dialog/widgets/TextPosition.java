@@ -7,10 +7,10 @@ public class TextPosition {
 
   public TextPosition(int blockIndex, int indexInBlock) {
     if (blockIndex < 0) {
-      throw new IllegalArgumentException("Illegal block index " + blockIndex); //$NON-NLS-1$
+      throw new IllegalArgumentException("Illegal block index " + blockIndex);
     }
     if (indexInBlock < 0) {
-      throw new IllegalArgumentException("Illegal index in block " + indexInBlock); //$NON-NLS-1$
+      throw new IllegalArgumentException("Illegal index in block " + indexInBlock);
     }
     this.blockIndex = blockIndex;
     this.indexInBlock = indexInBlock;

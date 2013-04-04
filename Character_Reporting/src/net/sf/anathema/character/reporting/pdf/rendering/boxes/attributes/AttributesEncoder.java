@@ -79,7 +79,7 @@ public class AttributesEncoder implements ContentEncoder {
         y -= groupSpacing;
       }
       ITraitType traitType = groupedTraitType.getTraitType();
-      String traitLabel = resources.getString("AttributeType.Name." + traitType.getId()); //$NON-NLS-1$
+      String traitLabel = resources.getString("AttributeType.Name." + traitType.getId());
       int value = traitCollection.getTrait(traitType).getCurrentValue();
       Position position = new Position(contentBounds.x, y);
       if (!encodeFavored) {
@@ -88,7 +88,7 @@ public class AttributesEncoder implements ContentEncoder {
         boolean favored = traitCollection.getFavorableTrait(traitType).isCasteOrFavored();
         boolean[] excellencyLearned = new boolean[excellencies.length];
         for (int i = 0; i < excellencies.length; i++) {
-          String charmId = excellencies[i].getName().getId() + "." + traitType.getId(); //$NON-NLS-1$
+          String charmId = excellencies[i].getName().getId() + "." + traitType.getId();
           excellencyLearned[i] = MagicLearnUtilities.isCharmLearned(allLearnedMagic, charmId);
         }
         y -= smallTraitEncoder.encodeWithExcellencies(graphics, traitLabel, position, contentBounds.width, value, favored, excellencyLearned, traitMax);

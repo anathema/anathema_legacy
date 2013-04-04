@@ -163,7 +163,7 @@ public class ColorFilterGraphics extends Graphics2D {
 
   @Override
   public void drawImage(BufferedImage img, BufferedImageOp op, int x, int y) {
-    throw new NotYetImplementedException(); //$NON-NLS-1$
+    throw new NotYetImplementedException();
   }
 
   @Override
@@ -231,6 +231,7 @@ public class ColorFilterGraphics extends Graphics2D {
     delegate.drawString(iterator, x, y);
   }
 
+  @SuppressWarnings("EqualsWhichDoesntCheckParameterClass")
   @Override
   public boolean equals(Object obj) {
     return delegate.equals(obj);
@@ -299,6 +300,7 @@ public class ColorFilterGraphics extends Graphics2D {
   /**
    * @deprecated As of JDK version 1.1
    */
+  @SuppressWarnings("deprecation")
   @Deprecated
   @Override
   public Rectangle getClipRect() {

@@ -9,7 +9,7 @@ public class DefaultAbilityBonusModel extends AbstractSpendingModel {
   private final ICreationPoints creationPoints;
 
   public DefaultAbilityBonusModel(IFavorableTraitCostCalculator abilityCalculator, ICreationPoints creationPoints) {
-    super("Abilities", "General"); //$NON-NLS-1$ //$NON-NLS-2$
+    super("Abilities", "General");
     this.abilityCalculator = abilityCalculator;
     this.creationPoints = creationPoints;
   }

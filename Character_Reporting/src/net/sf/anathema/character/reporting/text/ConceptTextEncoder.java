@@ -19,15 +19,15 @@ public class ConceptTextEncoder extends AbstractTextEncoder {
     ICasteType casteType = character.getCasteType();
     if (casteType != ICasteType.NULL_CASTE_TYPE) {
       Phrase castePhrase = createTextParagraph(createBoldTitle(getString(
-              "Sheet.Label.Caste." + character.getTemplate().getTemplateType().getCharacterType().getId()) + ": ")); //$NON-NLS-1$ //$NON-NLS-2$
+              "Sheet.Label.Caste." + character.getTemplate().getTemplateType().getCharacterType().getId()) + ": "));
       String casteId = casteType.getId();
       castePhrase.add(createTextChunk(casteId));
       columnText.addElement(castePhrase);
     }
     String willpowerRegainingConceptName = character.getConcept().getWillpowerRegainingConceptName();
     if (!StringUtilities.isNullOrTrimmedEmpty(willpowerRegainingConceptName)) {
-      String motivationLabel = getString("Sheet.Label.Motivation"); //$NON-NLS-1$ //$NON-NLS-2$
-      Phrase willpowerRegainPhrase = createTextParagraph(createBoldTitle(motivationLabel + ": ")); //$NON-NLS-1$
+      String motivationLabel = getString("Sheet.Label.Motivation");
+      Phrase willpowerRegainPhrase = createTextParagraph(createBoldTitle(motivationLabel + ": "));
       willpowerRegainPhrase.add(createTextChunk(willpowerRegainingConceptName));
       columnText.addElement(willpowerRegainPhrase);
     }

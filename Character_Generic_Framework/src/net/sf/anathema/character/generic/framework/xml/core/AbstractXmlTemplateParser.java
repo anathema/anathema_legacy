@@ -10,8 +10,8 @@ public abstract class AbstractXmlTemplateParser<T extends ICloneable<T>> impleme
 
   private final IXmlTemplateRegistry<T> templateRegistry;
 
-  private static final String ATTRIB_USES = "uses"; //$NON-NLS-1$
-  private static final String ATTRIB_PREFIX = "prefix"; //$NON-NLS-1$
+  private static final String ATTRIB_USES = "uses";
+  private static final String ATTRIB_PREFIX = "prefix";
 
   private final IWorkingTemplateFactory<T> workingTemplateFactory = new ClonedInstanceWorkingTemplateFactory<>();
 
@@ -38,7 +38,7 @@ public abstract class AbstractXmlTemplateParser<T extends ICloneable<T>> impleme
       }
     }
     if (template == null) {
-      throw new PersistenceException("Template not found: " + templateId); //$NON-NLS-1$
+      throw new PersistenceException("Template not found: " + templateId);
     }
     return template;
   }

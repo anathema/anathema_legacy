@@ -10,7 +10,7 @@ public class GenericAttributeDotBonusModel extends AbstractSpendingModel {
   private final boolean isExtraDots;
 
   public GenericAttributeDotBonusModel(AttributeCostCalculator attributeCalculator, ICreationPoints creationPoints, boolean isExtraDots) {
-    super("Attributes", isExtraDots ? "ExtraDots" : "Dots"); //$NON-NLS-1$ //$NON-NLS-2$
+    super("Attributes", isExtraDots ? "ExtraDots" : "Dots");
     this.attributeCalculator = attributeCalculator;
     this.creationPoints = creationPoints;
     this.isExtraDots = isExtraDots;

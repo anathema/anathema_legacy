@@ -23,32 +23,32 @@ import net.sf.anathema.lib.util.Identifier;
 @CharacterModule
 public class GodBloodedCharacterModule extends CharacterModuleAdapter {
 
-  public static final String BACKGROUND_ID_INHERITANCE = "Inheritance"; //$NON-NLS-1$
+  public static final String BACKGROUND_ID_INHERITANCE = "Inheritance";
 
   private static final TemplateType godBloodedType = new TemplateType(new SpiritCharacterType(), new Identifier(
-          "GodBlooded")); //$NON-NLS-1$
+          "GodBlooded"));
   private static final TemplateType demonBloodedType = new TemplateType(new SpiritCharacterType(), new Identifier(
-          "DemonBlooded")); //$NON-NLS-1$
+          "DemonBlooded"));
   private static final TemplateType ghostBloodedType = new TemplateType(new GhostCharacterType(), new Identifier(
-          "GhostBlooded")); //$NON-NLS-1$
+          "GhostBlooded"));
   private static final TemplateType halfCasteAbyssalType = new TemplateType(new AbyssalCharacterType(), new Identifier(
-          "HalfCasteAbyssal")); //$NON-NLS-1$
+          "HalfCasteAbyssal"));
   private static final TemplateType halfCasteLunarType = new TemplateType(new LunarCharacterType(), new Identifier(
-          "HalfCasteLunar")); //$NON-NLS-1$
+          "HalfCasteLunar"));
   private static final TemplateType halfCasteSiderealType = new TemplateType(new SiderealCharacterType(), new Identifier(
-          "HalfCasteSidereal")); //$NON-NLS-1$
+          "HalfCasteSidereal"));
   private static final TemplateType halfCasteSolarType = new TemplateType(new SolarCharacterType(), new Identifier(
-          "HalfCasteSolar")); //$NON-NLS-1$
+          "HalfCasteSolar"));
 
   @Override
   public void addCharacterTemplates(ICharacterGenerics characterGenerics) {
-    registerParsedTemplate(characterGenerics, "template/GodBlooded2nd.template", "godblooded/"); //$NON-NLS-1$
-    registerParsedTemplate(characterGenerics, "template/DemonBlooded2nd.template", "godblooded/"); //$NON-NLS-1$
-    registerParsedTemplate(characterGenerics, "template/GhostBlooded2nd.template", "godblooded/"); //$NON-NLS-1$
-    registerParsedTemplate(characterGenerics, "template/HalfCasteAbyssal2nd.template", "godblooded/"); //$NON-NLS-1$
-    registerParsedTemplate(characterGenerics, "template/HalfCasteLunar2nd.template", "godblooded/"); //$NON-NLS-1$
-    registerParsedTemplate(characterGenerics, "template/HalfCasteSidereal2nd.template", "godblooded/"); //$NON-NLS-1$
-    registerParsedTemplate(characterGenerics, "template/HalfCasteSolar2nd.template", "godblooded/"); //$NON-NLS-1$
+    registerParsedTemplate(characterGenerics, "template/GodBlooded2nd.template", "godblooded/");
+    registerParsedTemplate(characterGenerics, "template/DemonBlooded2nd.template", "godblooded/");
+    registerParsedTemplate(characterGenerics, "template/GhostBlooded2nd.template", "godblooded/");
+    registerParsedTemplate(characterGenerics, "template/HalfCasteAbyssal2nd.template", "godblooded/");
+    registerParsedTemplate(characterGenerics, "template/HalfCasteLunar2nd.template", "godblooded/");
+    registerParsedTemplate(characterGenerics, "template/HalfCasteSidereal2nd.template", "godblooded/");
+    registerParsedTemplate(characterGenerics, "template/HalfCasteSolar2nd.template", "godblooded/");
   }
 
   @Override

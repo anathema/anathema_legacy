@@ -62,7 +62,7 @@ public class SiderealCollegeContent extends FavorableTraitContent {
 
   @Override
   public String getTraitTypePrefix() {
-    return "AstrologicalCollege.Label."; //$NON-NLS-1$
+    return "AstrologicalCollege.Label.";
   }
 
   @Override
@@ -82,6 +82,6 @@ public class SiderealCollegeContent extends FavorableTraitContent {
 
   @Override
   public String getHeaderKey() {
-    return "Sidereal.Colleges"; //$NON-NLS-1$
+    return "Sidereal.Colleges";
   }
 }

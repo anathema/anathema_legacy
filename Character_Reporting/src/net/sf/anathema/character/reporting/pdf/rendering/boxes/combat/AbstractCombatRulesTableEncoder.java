@@ -35,7 +35,7 @@ public abstract class AbstractCombatRulesTableEncoder extends AbstractTableEncod
   protected abstract void addThirdCell(SheetGraphics graphics, ReportSession reportSession, PdfPTable table);
 
   private PdfPCell createSpaceCell(SheetGraphics graphics) {
-    return new TableCell(new Phrase(" ", graphics.createTextFont()), Rectangle.NO_BORDER); //$NON-NLS-1$
+    return new TableCell(new Phrase(" ", graphics.createTextFont()), Rectangle.NO_BORDER);
   }
 
   protected PdfPCell createContentCell(Phrase phrase) {
@@ -50,7 +50,7 @@ public abstract class AbstractCombatRulesTableEncoder extends AbstractTableEncod
     table.addCell(createContentCell(knockdownAndStunningPhrase));
   }
 
-  private final Chunk createChunk(SheetGraphics graphics, QualifiedText text) {
+  private Chunk createChunk(SheetGraphics graphics, QualifiedText text) {
     Font font = text.type == TextType.Comment ? graphics.createCommentFont() : graphics.createTextFont();
     return new Chunk(text.text, font);
   }

@@ -23,11 +23,11 @@ public class CharmKeywordsStringBuilder implements IMagicTooltipStringBuilder {
           if (listBuilder.length() != 0) {
             listBuilder.append(TooltipBuilder.CommaSpace);
           }
-          listBuilder.append(resources.getString("Keyword." + attribute.getId())); //$NON-NLS-1$
+          listBuilder.append(resources.getString("Keyword." + attribute.getId()));
         }
       }
       if (listBuilder.length() > 0) {
-        listBuilder.insert(0, resources.getString("CharmTreeView.ToolTip.Keywords") + TooltipBuilder.ColonSpace); //$NON-NLS-1$
+        listBuilder.insert(0, resources.getString("CharmTreeView.ToolTip.Keywords") + TooltipBuilder.ColonSpace);
         listBuilder.append(TooltipBuilder.HtmlLineBreak);
       }
       builder.append(listBuilder);

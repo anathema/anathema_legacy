@@ -19,13 +19,13 @@ public abstract class AbstractFoldOutDialogConfiguration<P extends IDialogPage> 
 
   @Override
   public IActionConfiguration getFoldOutButtonConfiguration() {
-    String label = DialogMessages.getString("FoldOutDialog.Button.showDetails.text"); //$NON-NLS-1$
+    String label = DialogMessages.getString("FoldOutDialog.Button.showDetails.text");
     return new ActionConfiguration(label);
   }
 
   @Override
   public IActionConfiguration getFoldInButtonConfiguration() {
-    String label = DialogMessages.getString("FoldOutDialog.Button.hideDetails.text"); //$NON-NLS-1$
+    String label = DialogMessages.getString("FoldOutDialog.Button.hideDetails.text");
     return new ActionConfiguration(label);
   }
 

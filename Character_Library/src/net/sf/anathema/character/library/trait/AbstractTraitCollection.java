@@ -35,10 +35,11 @@ public abstract class AbstractTraitCollection implements ITraitCollection {
     return traits;
   }
 
+  @SuppressWarnings("ConstantConditions")
   @Override
   public IFavorableTrait getFavorableTrait(ITraitType traitType) {
     ITrait favorableTrait = getTrait(traitType);
-    Preconditions.checkArgument(favorableTrait instanceof IFavorableTrait, "No favorable trait type " + traitType); //$NON-NLS-1$
+    Preconditions.checkArgument(favorableTrait instanceof IFavorableTrait, "No favorable trait type " + traitType);
     return (IFavorableTrait) favorableTrait;
   }
 
@@ -52,7 +53,7 @@ public abstract class AbstractTraitCollection implements ITraitCollection {
   }
 
   protected final void addTrait(ITrait trait) {
-    Preconditions.checkArgument(!contains(trait.getType()), "Trait of type already contained " + trait.getType()); //$NON-NLS-1$
+    Preconditions.checkArgument(!contains(trait.getType()), "Trait of type already contained " + trait.getType());
     traitsByType.put(trait.getType(), trait);
   }
 

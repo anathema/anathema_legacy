@@ -26,24 +26,24 @@ public class SolarCharacterModule extends CharacterTypeModule {
   public static final ICharacterType type = new SolarCharacterType();
   @SuppressWarnings("unused")
   private static final TemplateType solarTemplateType = new TemplateType(type);
-  private static final TemplateType dreamsSolarTemplateType = new TemplateType(type, new Identifier("Dreams")); //$NON-NLS-1$
-  private static final TemplateType dreamsSolarEstablished = new TemplateType(type, new Identifier("DreamsEstablished")); //$NON-NLS-1$
-  private static final TemplateType dreamsSolarInfluential = new TemplateType(type, new Identifier("DreamsInfluential")); //$NON-NLS-1$
-  private static final TemplateType dreamsSolarLegendary = new TemplateType(type, new Identifier("DreamsLegendary")); //$NON-NLS-1$
+  private static final TemplateType dreamsSolarTemplateType = new TemplateType(type, new Identifier("Dreams"));
+  private static final TemplateType dreamsSolarEstablished = new TemplateType(type, new Identifier("DreamsEstablished"));
+  private static final TemplateType dreamsSolarInfluential = new TemplateType(type, new Identifier("DreamsInfluential"));
+  private static final TemplateType dreamsSolarLegendary = new TemplateType(type, new Identifier("DreamsLegendary"));
 
   private static final TemplateType[] dreams = {dreamsSolarTemplateType, dreamsSolarEstablished, dreamsSolarInfluential, dreamsSolarLegendary};
 
-  public static final String BACKGROUND_ID_ARSENAL = "SolarDreamsArsenal"; //$NON-NLS-1$
-  public static final String BACKGROUND_ID_COMMAND = "SolarDreamsCommand"; //$NON-NLS-1$
-  public static final String BACKGROUND_ID_CONNECTIONS = "SolarDreamsConnections"; //$NON-NLS-1$
-  public static final String BACKGROUND_ID_HENCHMEN = "SolarDreamsHenchmen"; //$NON-NLS-1$
-  public static final String BACKGROUND_ID_PANOPLY = "SolarDreamsPanoply"; //$NON-NLS-1$
-  public static final String BACKGROUND_ID_REPUTATION = "SolarDreamsReputation"; //$NON-NLS-1$
-  public static final String BACKGROUND_ID_RETAINERS = "SolarDreamsRetainers"; //$NON-NLS-1$
-  public static final String BACKGROUND_ID_SALARY = "SolarDreamsSalary"; //$NON-NLS-1$
-  public static final String BACKGROUND_ID_SAVANT = "SolarDreamsSavant"; //$NON-NLS-1$
-  public static final String BACKGROUND_ID_SIFU = "SolarDreamsSifu"; //$NON-NLS-1$
-  public static final String BACKGROUND_ID_WEALTH = "SolarDreamsWealth"; //$NON-NLS-1$
+  public static final String BACKGROUND_ID_ARSENAL = "SolarDreamsArsenal";
+  public static final String BACKGROUND_ID_COMMAND = "SolarDreamsCommand";
+  public static final String BACKGROUND_ID_CONNECTIONS = "SolarDreamsConnections";
+  public static final String BACKGROUND_ID_HENCHMEN = "SolarDreamsHenchmen";
+  public static final String BACKGROUND_ID_PANOPLY = "SolarDreamsPanoply";
+  public static final String BACKGROUND_ID_REPUTATION = "SolarDreamsReputation";
+  public static final String BACKGROUND_ID_RETAINERS = "SolarDreamsRetainers";
+  public static final String BACKGROUND_ID_SALARY = "SolarDreamsSalary";
+  public static final String BACKGROUND_ID_SAVANT = "SolarDreamsSavant";
+  public static final String BACKGROUND_ID_SIFU = "SolarDreamsSifu";
+  public static final String BACKGROUND_ID_WEALTH = "SolarDreamsWealth";
 
   @Override
   public void registerCommonData(ICharacterGenerics characterGenerics) {

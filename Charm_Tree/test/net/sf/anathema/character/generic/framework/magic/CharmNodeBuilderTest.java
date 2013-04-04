@@ -35,7 +35,7 @@ public class CharmNodeBuilderTest {
 
   @Test
   public void testSingleCharm() throws Exception {
-    String name = "dummy";//$NON-NLS-1$
+    String name = "dummy";
     DummyCharm charm = new DummyCharm(name);
     list.add(charm);
     buildNodes();
@@ -47,9 +47,9 @@ public class CharmNodeBuilderTest {
 
   @Test
   public void testMultipleCharms() throws Exception {
-    String name = "dummy";//$NON-NLS-1$
+    String name = "dummy";
     DummyCharm dummy = new DummyCharm(name);
-    String otherName = "dommy";//$NON-NLS-1$
+    String otherName = "dommy";
     DummyCharm dommy = new DummyCharm(otherName);
     list.add(dummy);
     list.add(dommy);
@@ -65,8 +65,8 @@ public class CharmNodeBuilderTest {
 
   @Test
   public void testExternalCharmSingleOccurence() throws Exception {
-    String parentName = "ExternalParent";//$NON-NLS-1$
-    String childName = "Child"; //$NON-NLS-1$
+    String parentName = "ExternalParent";
+    String childName = "Child";
     DummyCharm externalParent = new DummyCharm(parentName);
     DummyCharm child = new DummyCharm(childName, new ICharm[]{externalParent});
     list.add(child);
@@ -78,9 +78,9 @@ public class CharmNodeBuilderTest {
 
   @Test
   public void testExternalCharmMultipleOccurence() throws Exception {
-    String parentName = "ExternalParent";//$NON-NLS-1$
-    String firstChildName = "Child1"; //$NON-NLS-1$
-    String secondChildName = "Child2"; //$NON-NLS-1$
+    String parentName = "ExternalParent";
+    String firstChildName = "Child1";
+    String secondChildName = "Child2";
     DummyCharm externalParent = new DummyCharm(parentName);
     DummyCharm firstChild = new DummyCharm(firstChildName, new ICharm[]{externalParent});
     DummyCharm secondChild = new DummyCharm(secondChildName, new ICharm[]{externalParent});
@@ -94,7 +94,7 @@ public class CharmNodeBuilderTest {
 
   @Test
   public void testNoAttributes() throws Exception {
-    DummyCharm charm = new DummyCharm("No Attribs"); //$NON-NLS-1$
+    DummyCharm charm = new DummyCharm("No Attribs");
     list.add(charm);
     buildNodes();
     assertEquals(1, nodes.size());
@@ -102,14 +102,14 @@ public class CharmNodeBuilderTest {
 
   @Test
   public void testRequirementNodeId() throws Exception {
-    String charmName = "One Attribute"; //$NON-NLS-1$
-    String attributeName = "Attribute"; //$NON-NLS-1$
+    String charmName = "One Attribute";
+    String attributeName = "Attribute";
     DummyCharm charm = new DummyCharm(charmName);
     charm.addAttributeRequirement(new CharmAttributeRequirement(new CharmAttribute(attributeName, true), 3));
     list.add(charm);
     buildNodes();
     assertEquals(2, nodes.size());
-    IIdentifiedRegularNode attributeNode = nodes.get("Requirement.Attribute.3"); //$NON-NLS-1$
+    IIdentifiedRegularNode attributeNode = nodes.get("Requirement.Attribute.3");
     assertNotNull(attributeNode);
   }
 

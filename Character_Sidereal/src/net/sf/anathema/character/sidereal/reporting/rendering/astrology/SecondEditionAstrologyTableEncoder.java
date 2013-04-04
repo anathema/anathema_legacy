@@ -28,28 +28,28 @@ public class SecondEditionAstrologyTableEncoder extends AbstractTableEncoder<Rep
     Font commentFont = graphics.createCommentFont();
     Font font = graphics.createTableFont();
     TableList list = new TableList(commentFont, new CellPadding(2, 0, 1, 1));
-    TableCell spaceCell = new TableCell(new Phrase(" ", commentFont), Rectangle.NO_BORDER); //$NON-NLS-1$
+    TableCell spaceCell = new TableCell(new Phrase(" ", commentFont), Rectangle.NO_BORDER);
     spaceCell.setPadding(0);
 
-    list.addHeader(new Chunk(resources.getString("Sheet.Header.Sidereal.Astrology"), font), true); //$NON-NLS-1$
-    list.addItem(resources.getString("Sheet.Astrology.PrayerPhase")); //$NON-NLS-1$
-    list.addSubItem(resources.getString("Sheet.Astrology.Charms")); //$NON-NLS-1$
-    list.addSubItem(resources.getString("Sheet.Astrology.LengthyPrayer2nd")); //$NON-NLS-1$
-    list.addSubItem(resources.getString("Sheet.Astrology.CreatePetition2nd")); //$NON-NLS-1$
-    list.addSubItem(resources.getString("Sheet.Astrology.Cosignatures2nd")); //$NON-NLS-1$
-    list.addSubItem(resources.getString("Sheet.Astrology.Countersignatures2nd")); //$NON-NLS-1$
+    list.addHeader(new Chunk(resources.getString("Sheet.Header.Sidereal.Astrology"), font), true);
+    list.addItem(resources.getString("Sheet.Astrology.PrayerPhase"));
+    list.addSubItem(resources.getString("Sheet.Astrology.Charms"));
+    list.addSubItem(resources.getString("Sheet.Astrology.LengthyPrayer2nd"));
+    list.addSubItem(resources.getString("Sheet.Astrology.CreatePetition2nd"));
+    list.addSubItem(resources.getString("Sheet.Astrology.Cosignatures2nd"));
+    list.addSubItem(resources.getString("Sheet.Astrology.Countersignatures2nd"));
     list.addCell(spaceCell);
     list.addCell(spaceCell);
-    list.addItem(resources.getString("Sheet.Astrology.EffectRoll")); //$NON-NLS-1$
-    list.addSubItem(resources.getString("Sheet.Astrology.ComposePlans")); //$NON-NLS-1$
-    list.addSubItem(resources.getString("Sheet.Astrology.ComputeHoroscopes2nd")); //$NON-NLS-1$
-    list.addSubItem(resources.getString("Sheet.Astrology.RitualBehaviour2nd")); //$NON-NLS-1$
-    list.addSubItem(resources.getString("Sheet.Astrology.MultipleParticipants2nd")); //$NON-NLS-1$
+    list.addItem(resources.getString("Sheet.Astrology.EffectRoll"));
+    list.addSubItem(resources.getString("Sheet.Astrology.ComposePlans"));
+    list.addSubItem(resources.getString("Sheet.Astrology.ComputeHoroscopes2nd"));
+    list.addSubItem(resources.getString("Sheet.Astrology.RitualBehaviour2nd"));
+    list.addSubItem(resources.getString("Sheet.Astrology.MultipleParticipants2nd"));
     list.addCell(spaceCell);
     list.addCell(spaceCell);
-    list.addItem(resources.getString("Sheet.Astrology.EffectPhase")); //$NON-NLS-1$
-    list.addSubItem(resources.getString("Sheet.Astrology.ChooseEffect")); //$NON-NLS-1$
-    list.addSubItem(resources.getString("Sheet.Astrology.ParadoxRoll")); //$NON-NLS-1$
+    list.addItem(resources.getString("Sheet.Astrology.EffectPhase"));
+    list.addSubItem(resources.getString("Sheet.Astrology.ChooseEffect"));
+    list.addSubItem(resources.getString("Sheet.Astrology.ParadoxRoll"));
     list.addCell(spaceCell);
     list.addCell(spaceCell);
 

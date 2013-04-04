@@ -19,15 +19,15 @@ public class ShortCharmTypeStringBuilderTest extends AbstractCharmTypeStringBuil
   @Before
   public void setUp() throws Exception {
     DummyResources resources = new DummyResources();
-    resources.putString("CharmTreeView.ToolTip.Type", "Type"); //$NON-NLS-1$ //$NON-NLS-2$
-    resources.putString("ExtraAction", "Extra Action"); //$NON-NLS-1$ //$NON-NLS-2$
-    resources.putString("Simple", "Simple"); //$NON-NLS-1$ //$NON-NLS-2$     
-    resources.putString("Supplemental", "Supplemental"); //$NON-NLS-1$ //$NON-NLS-2$     
-    resources.putString("Reflexive", "Reflexive"); //$NON-NLS-1$ //$NON-NLS-2$     
-    resources.putString("CharmTreeView.ToolTip.Type.LongTick.Short", "LT"); //$NON-NLS-1$ //$NON-NLS-2$
-    resources.putString("CharmTreeView.ToolTip.Type.DramaticAction.Short", "DA"); //$NON-NLS-1$ //$NON-NLS-2$
-    resources.putString("CharmTreeView.ToolTip.Type.SingleStep.Short", "{0, number, integer}"); //$NON-NLS-1$ //$NON-NLS-2$
-    resources.putString("CharmTreeView.ToolTip.Type.DualStep.Short", "{0, number, integer}/{1, number, integer}"); //$NON-NLS-1$ //$NON-NLS-2$
+    resources.putString("CharmTreeView.ToolTip.Type", "Type");
+    resources.putString("ExtraAction", "Extra Action");
+    resources.putString("Simple", "Simple");
+    resources.putString("Supplemental", "Supplemental");
+    resources.putString("Reflexive", "Reflexive");
+    resources.putString("CharmTreeView.ToolTip.Type.LongTick.Short", "LT");
+    resources.putString("CharmTreeView.ToolTip.Type.DramaticAction.Short", "DA");
+    resources.putString("CharmTreeView.ToolTip.Type.SingleStep.Short", "{0, number, integer}");
+    resources.putString("CharmTreeView.ToolTip.Type.DualStep.Short", "{0, number, integer}/{1, number, integer}");
     builder = new ShortCharmTypeStringBuilder(resources);
   }
 
@@ -42,7 +42,7 @@ public class ShortCharmTypeStringBuilderTest extends AbstractCharmTypeStringBuil
     charmTypeModel.setCharmType(CharmType.Reflexive);
     charmTypeModel.setSpecialModel(new ReflexiveSpecialsModel(1, 2));
     String string = builder.createTypeString(charmTypeModel);
-    assertEquals("Reflexive (1/2)", string); //$NON-NLS-1$
+    assertEquals("Reflexive (1/2)", string);
   }
 
   @Test
@@ -51,7 +51,7 @@ public class ShortCharmTypeStringBuilderTest extends AbstractCharmTypeStringBuil
     charmTypeModel.setCharmType(CharmType.Reflexive);
     charmTypeModel.setSpecialModel(new ReflexiveSpecialsModel(4, null));
     String string = builder.createTypeString(charmTypeModel);
-    assertEquals("Reflexive (4)", string); //$NON-NLS-1$
+    assertEquals("Reflexive (4)", string);
   }
 
   @Test
@@ -60,7 +60,7 @@ public class ShortCharmTypeStringBuilderTest extends AbstractCharmTypeStringBuil
     charmTypeModel.setCharmType(CharmType.Simple);
     charmTypeModel.setSpecialModel(new SimpleSpecialsModel(4, TurnType.Tick, -1));
     String string = builder.createTypeString(charmTypeModel);
-    assertEquals("Simple (4, -1)", string); //$NON-NLS-1$
+    assertEquals("Simple (4, -1)", string);
   }
 
   @Test
@@ -69,7 +69,7 @@ public class ShortCharmTypeStringBuilderTest extends AbstractCharmTypeStringBuil
     charmTypeModel.setCharmType(CharmType.Simple);
     charmTypeModel.setSpecialModel(new SimpleSpecialsModel(6, TurnType.Tick, -0));
     String string = builder.createTypeString(charmTypeModel);
-    assertEquals("Simple (6, -0)", string); //$NON-NLS-1$
+    assertEquals("Simple (6, -0)", string);
   }
 
   @Test
@@ -78,7 +78,7 @@ public class ShortCharmTypeStringBuilderTest extends AbstractCharmTypeStringBuil
     charmTypeModel.setCharmType(CharmType.Simple);
     charmTypeModel.setSpecialModel(new SimpleSpecialsModel(3, TurnType.Tick, -2));
     String string = builder.createTypeString(charmTypeModel);
-    assertEquals("Simple (3, -2)", string); //$NON-NLS-1$
+    assertEquals("Simple (3, -2)", string);
   }
 
   @Test
@@ -87,7 +87,7 @@ public class ShortCharmTypeStringBuilderTest extends AbstractCharmTypeStringBuil
     charmTypeModel.setCharmType(CharmType.Simple);
     charmTypeModel.setSpecialModel(new SimpleSpecialsModel(3, TurnType.LongTick, -1));
     String string = builder.createTypeString(charmTypeModel);
-    assertEquals("Simple (3 LT, -1)", string); //$NON-NLS-1$
+    assertEquals("Simple (3 LT, -1)", string);
   }
 
   @Test
@@ -96,7 +96,7 @@ public class ShortCharmTypeStringBuilderTest extends AbstractCharmTypeStringBuil
     charmTypeModel.setCharmType(CharmType.Simple);
     charmTypeModel.setSpecialModel(new SimpleSpecialsModel(6, TurnType.LongTick, -1));
     String string = builder.createTypeString(charmTypeModel);
-    assertEquals("Simple (6 LT, -1)", string); //$NON-NLS-1$
+    assertEquals("Simple (6 LT, -1)", string);
   }
 
   @Test
@@ -105,7 +105,7 @@ public class ShortCharmTypeStringBuilderTest extends AbstractCharmTypeStringBuil
     charmTypeModel.setCharmType(CharmType.Simple);
     charmTypeModel.setSpecialModel(new SimpleSpecialsModel(3, TurnType.DramaticAction, -1));
     String string = builder.createTypeString(charmTypeModel);
-    assertEquals("Simple (DA, -1)", string); //$NON-NLS-1$
+    assertEquals("Simple (DA, -1)", string);
   }
 
   @Test
@@ -114,6 +114,6 @@ public class ShortCharmTypeStringBuilderTest extends AbstractCharmTypeStringBuil
     charmTypeModel.setCharmType(CharmType.Simple);
     charmTypeModel.setSpecialModel(new SimpleSpecialsModel(3, TurnType.DramaticAction, -6));
     String string = builder.createTypeString(charmTypeModel);
-    assertEquals("Simple (DA, -6)", string); //$NON-NLS-1$
+    assertEquals("Simple (DA, -6)", string);
   }
 }

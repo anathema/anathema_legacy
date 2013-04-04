@@ -23,7 +23,7 @@ public class GhostFetterContent extends AbstractSubBoxContent {
 
   @Override
   public String getHeaderKey() {
-    return "Ghost.Fetters"; //$NON-NLS-1$
+    return "Ghost.Fetters";
   }
 
   public List<NamedValue> getFetters() {

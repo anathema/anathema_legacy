@@ -25,11 +25,11 @@ import net.sf.anathema.lib.registry.IRegistry;
 @CharacterModule
 public class InfernalCharacterModule extends CharacterTypeModule {
   public static final ICharacterType type = new InfernalCharacterType();
-  public static final String BACKGROUND_ID_UNWOVEN_COADJUTOR = "UnwovenCoadjutor"; //$NON-NLS-1$
-  public static final String BACKGROUND_ID_DEMONIC_FAMILIAR = "DemonicFamiliar"; //$NON-NLS-1$
-  public static final String BACKGROUND_ID_PAST_LIFE = "PastLife"; //$NON-NLS-1$
-  public static final String BACKGROUND_ID_SAVANT = "InfernalSavant"; //$NON-NLS-1$
-  public static final String BACKGROUND_ID_SPIES = "Spies"; //$NON-NLS-1$
+  public static final String BACKGROUND_ID_UNWOVEN_COADJUTOR = "UnwovenCoadjutor";
+  public static final String BACKGROUND_ID_DEMONIC_FAMILIAR = "DemonicFamiliar";
+  public static final String BACKGROUND_ID_PAST_LIFE = "PastLife";
+  public static final String BACKGROUND_ID_SAVANT = "InfernalSavant";
+  public static final String BACKGROUND_ID_SPIES = "Spies";
 
   @Override
   public void registerCommonData(ICharacterGenerics characterGenerics) {

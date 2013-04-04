@@ -18,7 +18,7 @@ public class MartialArtsCharmStringBuilder implements IMagicTooltipStringBuilder
   public void buildStringForMagic(StringBuilder builder, IMagic magic, Object details) {
     if (magic instanceof ICharm && MartialArtsUtilities.isMartialArtsCharm((ICharm) magic)) {
       MartialArtsLevel level = MartialArtsUtilities.getLevel((ICharm) magic);
-      builder.append(resources.getString("CharmTreeView.ToolTip.MartialArtsLevel")); //$NON-NLS-1$
+      builder.append(resources.getString("CharmTreeView.ToolTip.MartialArtsLevel"));
       builder.append(TooltipBuilder.ColonSpace);
       builder.append(resources.getString(level.getId()));
       builder.append(TooltipBuilder.HtmlLineBreak);

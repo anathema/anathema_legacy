@@ -48,7 +48,7 @@ public abstract class AbstractCharmStats extends AbstractMagicStats<ICharm> {
     for (ICharmAttribute attribute : getMagic().getAttributes()) {
       String attributeId = attribute.getId();
       if (attribute.isVisualized()) {
-        details.add("Keyword." + attributeId); //$NON-NLS-1$
+        details.add("Keyword." + attributeId);
       }
     }
     return details.toArray(new String[details.size()]);

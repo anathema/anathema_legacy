@@ -79,6 +79,7 @@ public class Combo implements ICombo {
     fireComboChanged();
   }
 
+  @SuppressWarnings("CloneDoesntDeclareCloneNotSupportedException")
   @Override
   public Combo clone() {
     Combo clone;
@@ -119,8 +120,8 @@ public class Combo implements ICombo {
   @Override
   public void clear() {
     id = null;
-    name.setText(""); //$NON-NLS-1$
-    description.setText(""); //$NON-NLS-1$
+    name.setText("");
+    description.setText("");
     removeCharms(creationCharmList.toArray(new ICharm[creationCharmList.size()]));
     removeCharms(experiencedCharmList.toArray(new ICharm[experiencedCharmList.size()]));
   }

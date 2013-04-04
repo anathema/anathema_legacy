@@ -90,7 +90,7 @@ public abstract class SmartAction extends AbstractAction implements IEnableable 
   public final void setMnemonic(char character) {
     char ch = Character.toUpperCase(character);
     if (!isLetter(ch) && !isDigit(ch)) {
-      throw new IllegalArgumentException("Unsupported mnemonic character'" + character + "'."); //$NON-NLS-1$ //$NON-NLS-2$
+      throw new IllegalArgumentException("Unsupported mnemonic character'" + character + "'.");
     }
     setMnemonic((int) ch);
   }

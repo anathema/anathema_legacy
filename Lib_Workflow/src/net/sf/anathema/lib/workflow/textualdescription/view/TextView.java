@@ -29,7 +29,7 @@ public class TextView implements SwingTextView {
     if (Objects.equal(textComponent.getText(), text)) {
       return;
     }
-    textComponent.setText(text == null ? "" : text); //$NON-NLS-1$
+    textComponent.setText(text == null ? "" : text);
   }
 
   @Override
@@ -56,8 +56,8 @@ public class TextView implements SwingTextView {
     textComponent.setEditable(enabled);
     getComponent().setEnabled(enabled);
     UIDefaults defaults = UIManager.getDefaults();
-    Color enabledColor = defaults.getColor("TextField.background"); //$NON-NLS-1$
-    Color disabledColor = defaults.getColor("TextField.disabledBackground"); //$NON-NLS-1$
+    Color enabledColor = defaults.getColor("TextField.background");
+    Color disabledColor = defaults.getColor("TextField.disabledBackground");
     getTextComponent().setBackground(enabled ? enabledColor : disabledColor);
   }
 }

@@ -24,7 +24,7 @@ public class MagicDetailsStatsGroup extends AbstractTextStatsGroup<IMagicStats> 
       String[] details = stats.getDetailStrings(resources);
       String detailText = Joiner.on(", ").join(details);
       if (Strings.isNullOrEmpty(detailText)) {
-        detailText = "-"; //$NON-NLS-1$
+        detailText = "-";
       }
       table.addCell(createTextCell(font, detailText));
     }
@@ -37,6 +37,6 @@ public class MagicDetailsStatsGroup extends AbstractTextStatsGroup<IMagicStats> 
 
   @Override
   public String getTitle() {
-    return resources.getString("Sheet.Magic.Details"); //$NON-NLS-1$
+    return resources.getString("Sheet.Magic.Details");
   }
 }

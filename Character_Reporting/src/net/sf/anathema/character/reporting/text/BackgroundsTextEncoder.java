@@ -24,20 +24,20 @@ public class BackgroundsTextEncoder extends AbstractTextEncoder {
     if (backgrounds.length == 0) {
       return;
     }
-    Phrase traitPhrase = createTextParagraph(createBoldTitle(getString(getLabelKey()) + ": ")); //$NON-NLS-1$
+    Phrase traitPhrase = createTextParagraph(createBoldTitle(getString(getLabelKey()) + ": "));
     for (int index = 0; index < backgrounds.length; index++) {
       if (index > 0) {
-        traitPhrase.add(createTextChunk(", ")); //$NON-NLS-1$
+        traitPhrase.add(createTextChunk(", "));
       }
       IGenericTrait trait = backgrounds[index];
       traitPhrase.add(createTextChunk(internationalizer.getDisplayName((IBackgroundTemplate) trait.getType())));
-      traitPhrase.add(createTextChunk(" " + String.valueOf(trait.getCurrentValue()))); //$NON-NLS-1$
+      traitPhrase.add(createTextChunk(" " + String.valueOf(trait.getCurrentValue())));
     }
     columnText.addElement(traitPhrase);
   }
 
   private String getLabelKey() {
-    return "TextDescription.Label.Backgrounds"; //$NON-NLS-1$
+    return "TextDescription.Label.Backgrounds";
   }
 
 }

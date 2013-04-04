@@ -61,7 +61,7 @@ public class ComboConfiguration implements IComboConfiguration {
     if (rules.canBeAddedToCombo(getEditCombo(), charm)) {
       getEditCombo().addCharm(charm, experienced);
     } else {
-      throw new IllegalArgumentException("The charm " + charm.getId() + " is illegal in this combo."); //$NON-NLS-1$ //$NON-NLS-2$
+      throw new IllegalArgumentException("The charm " + charm.getId() + " is illegal in this combo.");
     }
   }
 

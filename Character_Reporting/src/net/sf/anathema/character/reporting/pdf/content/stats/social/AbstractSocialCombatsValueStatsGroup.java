@@ -12,6 +12,6 @@ public abstract class AbstractSocialCombatsValueStatsGroup extends AbstractValue
 
   @Override
   protected String getHeaderResourceBase() {
-    return "Sheet.SocialCombat."; //$NON-NLS-1$
+    return "Sheet.SocialCombat.";
   }
 }

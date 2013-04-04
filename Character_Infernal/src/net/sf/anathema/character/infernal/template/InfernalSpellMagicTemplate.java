@@ -14,7 +14,7 @@ import java.util.List;
 @SuppressWarnings("UnusedDeclaration")
 public class InfernalSpellMagicTemplate extends SpellMagicTemplate {
   
-  private static final String NECROMANCY_INITIATION = "Infernal.UltimateDarknessInternalization"; //$NON-NLS-1$
+  private static final String NECROMANCY_INITIATION = "Infernal.UltimateDarknessInternalization";
   
   public InfernalSpellMagicTemplate(CircleType[] sorceryCircles,
                                     CircleType[] necromancyCircles,

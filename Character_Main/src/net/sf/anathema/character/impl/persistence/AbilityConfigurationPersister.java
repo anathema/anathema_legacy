@@ -50,7 +50,7 @@ public class AbilityConfigurationPersister {
           for (ISubTrait subTrait : visitedTrait.getSubTraits().getSubTraits()) {
             Element subTraitElement = getSubTraitElement(abilityElement, subTrait);
             if (subTraitElement == null) {
-              throw new PersistenceException("No element found for SubTrait " + subTrait.getName()); //$NON-NLS-1$
+              throw new PersistenceException("No element found for SubTrait " + subTrait.getName());
             }
             SubTraitReference reference = new SubTraitReference(subTrait);
             saveSpecialties(specialtyConfiguration, subTraitElement, reference);

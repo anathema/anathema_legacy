@@ -10,10 +10,6 @@ public class NullBoxContentEncoder implements ContentEncoder {
 
   private final String headerKey;
 
-  public NullBoxContentEncoder() {
-    this("Null"); //$NON-NLS-1$
-  }
-
   public NullBoxContentEncoder(String headerKey) {
     this.headerKey = headerKey;
   }

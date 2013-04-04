@@ -12,7 +12,7 @@ public class QualifiedAmountDurationTest {
   @Test
   public void testSingularKey() throws Exception {
     Resources resources = new NullResources();
-    final QualifiedAmountDuration duration = new QualifiedAmountDuration("1", "unit"); //$NON-NLS-1$ //$NON-NLS-2$
-    assertEquals("Charm.QualifiedAmount,Charm.Amount.1,Charm.Unit.unit.Singular,", duration.getText(resources)); //$NON-NLS-1$
+    final QualifiedAmountDuration duration = new QualifiedAmountDuration("1", "unit");
+    assertEquals("Charm.QualifiedAmount,Charm.Amount.1,Charm.Unit.unit.Singular,", duration.getText(resources));
   }
 }

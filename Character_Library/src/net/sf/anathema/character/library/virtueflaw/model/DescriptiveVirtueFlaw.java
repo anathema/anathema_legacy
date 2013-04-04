@@ -6,8 +6,8 @@ import net.sf.anathema.lib.workflow.textualdescription.model.SimpleTextualDescri
 
 public class DescriptiveVirtueFlaw extends VirtueFlaw implements IDescriptiveVirtueFlaw {
 
-  private final ITextualDescription description = new SimpleTextualDescription(""); //$NON-NLS-1$
-  private final ITextualDescription limitBreak = new SimpleTextualDescription(""); //$NON-NLS-1$
+  private final ITextualDescription description = new SimpleTextualDescription("");
+  private final ITextualDescription limitBreak = new SimpleTextualDescription("");
 
   public DescriptiveVirtueFlaw(ICharacterModelContext context) {
     super(context);

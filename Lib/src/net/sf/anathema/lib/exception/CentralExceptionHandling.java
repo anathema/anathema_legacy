@@ -7,7 +7,6 @@ import java.lang.Thread.UncaughtExceptionHandler;
  * Threads. The {@link java.lang.Throwable} objects will be delegated to an attached {@link
  * IExceptionHandler} object, see {@link
  * #setHandler(IExceptionHandler)}.
- * @published
  */
 public class CentralExceptionHandling {
 
@@ -42,12 +41,12 @@ public class CentralExceptionHandling {
       handler.handle(exception);
     }
     else {
-      System.err.println("Exception occurred during event dispatching:"); //$NON-NLS-1$
+      System.err.println("Exception occurred during event dispatching:");
       exception.printStackTrace();
     }
   }
 
   private void attachForEventDispatchExceptionHandling() {
-    System.setProperty("sun.awt.exception.handler", InternalAwtExceptionHandler.class.getName()); //$NON-NLS-1$
+    System.setProperty("sun.awt.exception.handler", InternalAwtExceptionHandler.class.getName());
   }
 }

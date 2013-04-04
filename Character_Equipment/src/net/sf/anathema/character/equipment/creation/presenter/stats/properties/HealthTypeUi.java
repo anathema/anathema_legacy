@@ -22,10 +22,10 @@ public class HealthTypeUi implements ObjectUi<Object> {
   @Override
   public String getLabel(Object value) {
     if (value == null) {
-      return resources.getString("ComboBox.SelectLabel"); //$NON-NLS-1$
+      return resources.getString("ComboBox.SelectLabel");
     }
     HealthType healthType = (HealthType) value;
-    return resources.getString("HealthType." + healthType.name() + ".Capitalized"); //$NON-NLS-1$//$NON-NLS-2$
+    return resources.getString("HealthType." + healthType.name() + ".Capitalized");
   }
 
   @Override

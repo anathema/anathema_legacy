@@ -70,8 +70,8 @@ public class CopyrightEncoder {
   }
 
   private Anchor createAnchor(SheetGraphics graphics, String text, String reference) {
-    Anchor phrase = new Anchor(text, getFont(graphics)); //$NON-NLS-1$
-    phrase.setReference(reference); //$NON-NLS-1$
+    Anchor phrase = new Anchor(text, getFont(graphics));
+    phrase.setReference(reference);
     return phrase;
   }
 

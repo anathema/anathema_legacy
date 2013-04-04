@@ -21,7 +21,7 @@ public class ItemTypeNewAction extends AbstractItemAction {
     List<Action> actions = new ArrayList<>();
     for (IItemType type : collectItemTypes(model)) {
       ItemTypeNewAction action = new ItemTypeNewAction(type, model, resources);
-      action.setName(resources.getString("ItemType." + type.getId() + ".PrintName")); //$NON-NLS-1$ //$NON-NLS-2$
+      action.setName(resources.getString("ItemType." + type.getId() + ".PrintName"));
       actions.add(action);
     }
     return actions.toArray(new Action[actions.size()]);

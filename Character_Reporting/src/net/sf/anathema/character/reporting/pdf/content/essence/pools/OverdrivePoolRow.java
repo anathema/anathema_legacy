@@ -15,7 +15,7 @@ public class OverdrivePoolRow extends AbstractPoolRow {
 
   @Override
   public String getLabel() {
-    return resources.getString("Sheet.Essence.OverdrivePool"); //$NON-NLS-1$
+    return resources.getString("Sheet.Essence.OverdrivePool");
   }
 
   @Override

@@ -22,7 +22,7 @@ public class ReflectionCharacterTypes implements CharacterTypes {
         return type;
       }
     }
-    throw new IllegalArgumentException("No type defined for id:" + id); //$NON-NLS-1$
+    throw new IllegalArgumentException("No type defined for id:" + id);
   }
 
   @Override

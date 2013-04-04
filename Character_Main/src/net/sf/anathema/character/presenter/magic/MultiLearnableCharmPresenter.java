@@ -22,7 +22,7 @@ public class MultiLearnableCharmPresenter implements Presenter {
 
   @Override
   public void initPresentation() {
-    String label = resources.getString("MultiLearnableCharm.Label"); //$NON-NLS-1$
+    String label = resources.getString("MultiLearnableCharm.Label");
     IDefaultTrait category = model.getCategory();
     IIntValueView display = view.addCategory(label, category.getMaximalValue(), category.getCurrentValue());
     new TraitPresenter(category, display).initPresentation();

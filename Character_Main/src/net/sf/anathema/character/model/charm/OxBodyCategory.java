@@ -13,7 +13,7 @@ public class OxBodyCategory extends LimitedTrait {
   private final HealthLevelType[] healthLevelTypes;
 
   public OxBodyCategory(ITraitContext context, HealthLevelType[] healthLevelTypes, String id, IIncrementChecker incrementChecker) {
-    super(new TraitType("OxBodyTechnique"), //$NON-NLS-1$
+    super(new TraitType("OxBodyTechnique"),
             SimpleTraitTemplate.createEssenceLimitedTemplate(0), incrementChecker, context);
     this.healthLevelTypes = healthLevelTypes;
     this.id = id;

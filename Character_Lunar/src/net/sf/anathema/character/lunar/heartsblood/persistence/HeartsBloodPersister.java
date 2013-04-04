@@ -10,13 +10,13 @@ import org.dom4j.Element;
 
 public class HeartsBloodPersister implements IAdditionalPersister {
 
-  private static final String TAG_HEARTS_BLOOD = "HeartsBlood"; //$NON-NLS-1$
-  private static final String TAG_ANIMAL_FORM = "AnimalForm"; //$NON-NLS-1$
-  private static final String ATTRIB_NAME = "name"; //$NON-NLS-1$
-  private static final String ATTRIB_STRENGTH_VALUE = "animalStrength"; //$NON-NLS-1$
-  private static final String ATTRIB_STAMINA_VALUE = "animalStamina"; //$NON-NLS-1$
-  private static final String ATTRIB_DEXTERITY_VALUE = "animalDexterity"; //$NON-NLS-1$
-  private static final String ATTRIB_APPEARANCE_VALUE = "animalAppearance"; //$NON-NLS-1$
+  private static final String TAG_HEARTS_BLOOD = "HeartsBlood";
+  private static final String TAG_ANIMAL_FORM = "AnimalForm";
+  private static final String ATTRIB_NAME = "name";
+  private static final String ATTRIB_STRENGTH_VALUE = "animalStrength";
+  private static final String ATTRIB_STAMINA_VALUE = "animalStamina";
+  private static final String ATTRIB_DEXTERITY_VALUE = "animalDexterity";
+  private static final String ATTRIB_APPEARANCE_VALUE = "animalAppearance";
 
   @Override
   public void save(Element parent, IAdditionalModel model) {

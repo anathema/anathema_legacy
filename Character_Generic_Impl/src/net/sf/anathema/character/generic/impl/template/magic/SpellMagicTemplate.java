@@ -93,32 +93,32 @@ public class SpellMagicTemplate implements ISpellMagicTemplate {
     type.accept(new ICircleTypeVisitor() {
       @Override
       public void visitTerrestrial(CircleType type) {
-        initiation[0] = template.getTemplateType().getCharacterType().getId() + ".TerrestrialCircleSorcery"; //$NON-NLS-1$
+        initiation[0] = template.getTemplateType().getCharacterType().getId() + ".TerrestrialCircleSorcery";
       }
 
       @Override
       public void visitCelestial(CircleType type) {
-        initiation[0] = template.getTemplateType().getCharacterType().getId() + ".CelestialCircleSorcery"; //$NON-NLS-1$
+        initiation[0] = template.getTemplateType().getCharacterType().getId() + ".CelestialCircleSorcery";
       }
 
       @Override
       public void visitSolar(CircleType type) {
-        initiation[0] = template.getTemplateType().getCharacterType().getId() + ".SolarCircleSorcery"; //$NON-NLS-1$
+        initiation[0] = template.getTemplateType().getCharacterType().getId() + ".SolarCircleSorcery";
       }
 
       @Override
       public void visitShadowland(CircleType type) {
-        initiation[0] = template.getTemplateType().getCharacterType().getId() + ".ShadowlandsCircleNecromancy"; //$NON-NLS-1$        
+        initiation[0] = template.getTemplateType().getCharacterType().getId() + ".ShadowlandsCircleNecromancy";
       }
 
       @Override
       public void visitLabyrinth(CircleType type) {
-        initiation[0] = template.getTemplateType().getCharacterType().getId() + ".LabyrinthCircleNecromancy"; //$NON-NLS-1$        
+        initiation[0] = template.getTemplateType().getCharacterType().getId() + ".LabyrinthCircleNecromancy";
       }
 
       @Override
       public void visitVoid(CircleType type) {
-        initiation[0] = template.getTemplateType().getCharacterType().getId() + ".VoidCircleNecromancy"; //$NON-NLS-1$        
+        initiation[0] = template.getTemplateType().getCharacterType().getId() + ".VoidCircleNecromancy";
       }
     });
     return initiation[0];

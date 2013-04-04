@@ -181,7 +181,7 @@ public class AttributeCostCalculator extends AbstractFavorableTraitCostCalculato
         return cost;
       }
     }
-    throw new IllegalArgumentException("Unknown Attribute Group"); //$NON-NLS-1$
+    throw new IllegalArgumentException("Unknown Attribute Group");
   }
 
   @Override

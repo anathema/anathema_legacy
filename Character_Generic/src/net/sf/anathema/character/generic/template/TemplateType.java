@@ -6,7 +6,7 @@ import net.sf.anathema.lib.util.Identifier;
 
 public final class TemplateType implements ITemplateType {
 
-  public static final Identified DEFAULT_SUB_TYPE = new Identifier("TemplateType.Default"); //$NON-NLS-1$
+  public static final Identified DEFAULT_SUB_TYPE = new Identifier("TemplateType.Default");
 
   private final ICharacterType characterType;
   private final Identified subType;

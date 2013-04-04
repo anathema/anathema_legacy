@@ -17,10 +17,10 @@ public class AnimaTableEncoder extends net.sf.anathema.character.reporting.pdf.r
 
   @Override
   protected ColumnDescriptor[] getColumns() {
-    return new ColumnDescriptor[]{new ColumnDescriptor(0.135f, "Sheet.AnimaTable.Header.Motes"), //$NON-NLS-1$
-            new ColumnDescriptor(0.495f, "Sheet.AnimaTable.Header.BannerFlare"), //$NON-NLS-1$
-            new ColumnDescriptor(0.145f, "Sheet.AnimaTable.Header.FormsLocked"), //$NON-NLS-1$
-            new ColumnDescriptor(0.225f, "Sheet.AnimaTable.Header.Stealth")}; //$NON-NLS-1$
+    return new ColumnDescriptor[]{new ColumnDescriptor(0.135f, "Sheet.AnimaTable.Header.Motes"),
+            new ColumnDescriptor(0.495f, "Sheet.AnimaTable.Header.BannerFlare"),
+            new ColumnDescriptor(0.145f, "Sheet.AnimaTable.Header.FormsLocked"),
+            new ColumnDescriptor(0.225f, "Sheet.AnimaTable.Header.Stealth")};
   }
 
   @Override
@@ -33,7 +33,7 @@ public class AnimaTableEncoder extends net.sf.anathema.character.reporting.pdf.r
 
   protected final PdfPCell createFormCell(SheetGraphics graphics, int level) {
     if (level < 2) {
-      return createContentCell(graphics, ""); //$NON-NLS-1$
+      return createContentCell(graphics, "");
     }
     PdfPCell cell = new PdfPCell(new Phrase(graphics.createSymbolChunk()));
     configureCell(cell);

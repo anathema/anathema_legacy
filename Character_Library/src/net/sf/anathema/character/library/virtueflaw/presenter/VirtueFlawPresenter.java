@@ -67,7 +67,7 @@ public class VirtueFlawPresenter implements Presenter {
         new AbstractSelectCellRenderer<ITraitType>(resources) {
           @Override
           protected String getCustomizedDisplayValue(ITraitType value) {
-            return resources.getString("VirtueType.Name." + value.getId()); //$NON-NLS-1$
+            return resources.getString("VirtueType.Name." + value.getId());
           }
 
           @Override
@@ -113,7 +113,7 @@ public class VirtueFlawPresenter implements Presenter {
   }
 
   protected ITextView initNamePresentation(IVirtueFlaw virtueFlaw) {
-    ITextView titleView = view.addTextView(resources.getString("VirtueFlaw.Name.Name"), 30); //$NON-NLS-1$
+    ITextView titleView = view.addTextView(resources.getString("VirtueFlaw.Name.Name"), 30);
     new TextualPresentation().initView(titleView, virtueFlaw.getName());
     return titleView;
   }

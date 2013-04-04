@@ -30,7 +30,7 @@ public class CreationTraitValueStrategy implements ITraitValueStrategy {
 
   @Override
   public void notifyOnLearnedValueChange(int value, Announcer<IIntValueChangedListener> currentValueControl) {
-    // throw new IllegalStateException("No changes on learn value should occur in character creation."); //$NON-NLS-1$
+    // throw new IllegalStateException("No changes on learn value should occur in character creation.");
   }
 
   @Override

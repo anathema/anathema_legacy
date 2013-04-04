@@ -23,7 +23,7 @@ public class NoteReport extends AbstractPdfReport {
   @Override
   public void performPrint(IItem item, Document document, PdfWriter writer) throws ReportException {
     if (!supports(item)) {
-      throw new IllegalArgumentException("Item not supported: " + item.getDisplayName()); //$NON-NLS-1$
+      throw new IllegalArgumentException("Item not supported: " + item.getDisplayName());
     }
     IItemDescription noteDescription = ((IBasicItemData) item.getItemData()).getDescription();
     ITextPart[] text = noteDescription.getContent().getTextParts();

@@ -18,7 +18,7 @@ public class WillpowerContent extends AbstractSubBoxContent {
 
   @Override
   public String getHeaderKey() {
-    return "Willpower"; //$NON-NLS-1$
+    return "Willpower";
   }
 
   public int getWillpowerValue() {

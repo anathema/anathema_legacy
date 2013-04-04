@@ -48,14 +48,14 @@ public class PrerequisiteListBuilder {
   private IGenericTrait buildEssencePrerequisite(Element prerequisiteListElement) throws CharmException {
     Element essenceElement = prerequisiteListElement.element(TAG_ESSENCE);
     if (essenceElement == null) {
-      throw new CharmException("Cannot process Charm without essence prerequisite."); //$NON-NLS-1$
+      throw new CharmException("Cannot process Charm without essence prerequisite.");
     }
     int minValue;
     try {
       minValue = Integer.parseInt(essenceElement.attributeValue(ATTRIB_VALUE));
     }
     catch (NumberFormatException e) {
-      throw new CharmException("Bad value on essence prerequisite."); //$NON-NLS-1$
+      throw new CharmException("Bad value on essence prerequisite.");
     }
     return new ValuedTraitType(Essence, minValue);
   }

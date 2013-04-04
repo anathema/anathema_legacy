@@ -48,7 +48,7 @@ public class GuiInitializer extends Initializer {
 
   @Override
   protected void displayMessage(String message) {
-    getSplashscreen().displayStatusMessage(message); //$NON-NLS-1$
+    getSplashscreen().displayStatusMessage(message);
   }
 
   private ISplashscreen getSplashscreen() {

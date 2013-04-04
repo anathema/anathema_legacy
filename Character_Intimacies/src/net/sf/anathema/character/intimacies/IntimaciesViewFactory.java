@@ -30,7 +30,7 @@ public class IntimaciesViewFactory implements IAdditionalViewFactory {
 
       @Override
       public String getToolTipText() {
-        return resources.getString("Intimacies.LockButton.Tooltip"); //$NON-NLS-1$
+        return resources.getString("Intimacies.LockButton.Tooltip");
       }
     };
     IntimaciesView view = new IntimaciesView(

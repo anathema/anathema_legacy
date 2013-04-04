@@ -24,13 +24,13 @@ public class EquipmentPrintNameFactory {
       return builder.toString();
     }
     if (!hasSingleOriginalStat(item)) {
-      builder.append(" - "); //$NON-NLS-1$
+      builder.append(" - ");
       builder.append(stats.getName());
     }
     if (Collections.frequency(getStatNames(item, new ArrayList<Identified>()), stats.getName()) > 1) {
-      builder.append(" ("); //$NON-NLS-1$
+      builder.append(" (");
       builder.append(resources.getString(stats.getTraitType().getId()));
-      builder.append(")"); //$NON-NLS-1$
+      builder.append(")");
     }
     return builder.toString();
   }

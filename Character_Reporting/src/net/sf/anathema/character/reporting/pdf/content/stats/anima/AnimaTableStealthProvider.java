@@ -37,15 +37,15 @@ public class AnimaTableStealthProvider implements IAnimaTableStealthProvider {
   }
 
   private String getDifficultStealth() {
-    return "+2"; //$NON-NLS-1$
+    return "+2";
   }
 
   private String getImpossibleStealth() {
-    return resources.getString("Sheet.AnimaTable.StealthImpossible"); //$NON-NLS-1$
+    return resources.getString("Sheet.AnimaTable.StealthImpossible");
   }
 
   protected String getNormalStealth() {
-    return resources.getString("Sheet.AnimaTable.StealthNormal"); //$NON-NLS-1$
+    return resources.getString("Sheet.AnimaTable.StealthNormal");
   }
 
   protected String getString(String key) {

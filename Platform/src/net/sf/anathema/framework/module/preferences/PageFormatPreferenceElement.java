@@ -26,8 +26,8 @@ public class PageFormatPreferenceElement implements IPreferencesElement {
 
   @Override
   public void addComponent(JPanel panel, Resources resources) {
-    String labelText = resources.getString("AnathemaReporting.Tools.Preferences.PageFormat") + ":"; //$NON-NLS-1$ //$NON-NLS-2$
-    EnumSelectCellRenderer renderer = new EnumSelectCellRenderer("PageSize.", resources); //$NON-NLS-1$
+    String labelText = resources.getString("AnathemaReporting.Tools.Preferences.PageFormat") + ":";
+    EnumSelectCellRenderer renderer = new EnumSelectCellRenderer("PageSize.", resources);
     box = new LabelledPreferenceComboBox<>(labelText, renderer, PageSize.values());
     box.addActionListener(new ActionListener() {
       @Override

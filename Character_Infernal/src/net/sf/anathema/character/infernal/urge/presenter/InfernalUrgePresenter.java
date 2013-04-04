@@ -34,7 +34,7 @@ public class InfernalUrgePresenter extends VirtueFlawPresenter {
 
   private void initDescriptionPresentation(InfernalUrge virtueFlaw, TextualPresentation textualPresentation) {
     ITextView descriptionView = view.addTextView(getResources().getString("VirtueFlaw.Description.Name"), 30,
-            3); //$NON-NLS-1$
+            3);
     textualPresentation.initView(descriptionView, virtueFlaw.getDescription());
   }
 }

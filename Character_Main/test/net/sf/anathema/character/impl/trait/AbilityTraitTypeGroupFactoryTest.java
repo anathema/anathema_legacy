@@ -4,11 +4,9 @@ import net.sf.anathema.character.generic.caste.ICasteCollection;
 import net.sf.anathema.character.generic.caste.ICasteType;
 import net.sf.anathema.character.generic.dummy.DummyCasteType;
 import net.sf.anathema.character.generic.impl.caste.CasteCollection;
-import net.sf.anathema.character.generic.template.abilities.AbilityGroupType;
 import net.sf.anathema.character.generic.template.abilities.GroupedTraitType;
 import net.sf.anathema.character.generic.traits.ITraitType;
 import net.sf.anathema.character.generic.traits.groups.IIdentifiedTraitTypeGroup;
-import net.sf.anathema.character.generic.traits.types.AbilityType;
 import net.sf.anathema.character.impl.model.traits.creation.AbilityTypeGroupFactory;
 import org.junit.Test;
 
@@ -57,7 +55,7 @@ public class AbilityTraitTypeGroupFactoryTest {
 
   @Test
   public void testCasteAsGroupIdentificate() throws Exception {
-    DummyCasteType caste = new DummyCasteType("Caste"); //$NON-NLS-1$
+    DummyCasteType caste = new DummyCasteType("Caste");
     ICasteCollection casteCollection = new CasteCollection(new ICasteType[]{caste});
     GroupedTraitType[] abilityTypes = new GroupedTraitType[]{
             new GroupedTraitType(Archery, caste.getId(), Collections.singletonList(caste.getId())),

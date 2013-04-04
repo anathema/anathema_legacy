@@ -86,7 +86,7 @@ public class CharmBuilder implements ICharmBuilder {
       try {
         temporaryCost = costListBuilder.buildCostList(charmElement.element(TAG_COST));
       } catch (PersistenceException e) {
-        throw new CharmException("Error building costlist for charm " + id, e); //$NON-NLS-1$
+        throw new CharmException("Error building costlist for charm " + id, e);
       }
       IComboRestrictions comboRules = comboBuilder.buildComboRules(charmElement);
       IDuration duration = buildDuration(charmElement);
@@ -118,7 +118,7 @@ public class CharmBuilder implements ICharmBuilder {
       }
       return charm;
     } catch (PersistenceException e) {
-      throw new PersistenceException("Parsing error for Charm " + id, e); //$NON-NLS-1$
+      throw new PersistenceException("Parsing error for Charm " + id, e);
     }
   }
 
@@ -127,7 +127,7 @@ public class CharmBuilder implements ICharmBuilder {
     try {
       duration = durationBuilder.buildDuration(charmElement.element(TAG_DURATION));
     } catch (PersistenceException e) {
-      throw new CharmException("Error in Charm duration.", e); //$NON-NLS-1$
+      throw new CharmException("Error in Charm duration.", e);
     }
     return duration;
   }
@@ -137,7 +137,7 @@ public class CharmBuilder implements ICharmBuilder {
       Element prerequisiteListElement = ElementUtilities.getRequiredElement(charmElement, TAG_PREREQUISITE_LIST);
       return new PrerequisiteListBuilder(traitsBuilder, attributeRequirementsBuilder, charmPrerequisiteBuilder).buildPrerequisiteList(prerequisiteListElement);
     } catch (PersistenceException e) {
-      throw new CharmException("Error in Charm prerequisites.", e); //$NON-NLS-1$
+      throw new CharmException("Error in Charm prerequisites.", e);
     }
   }
 
@@ -147,7 +147,7 @@ public class CharmBuilder implements ICharmBuilder {
     try {
       characterType = characterTypes.findById(typeAttribute);
     } catch (IllegalArgumentException e) {
-      throw new CharmException("No chararacter type given.", e); //$NON-NLS-1$
+      throw new CharmException("No chararacter type given.", e);
     }
     return characterType;
   }

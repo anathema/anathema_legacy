@@ -25,7 +25,7 @@ public class ExtendedIntimaciesContent extends AbstractSubBoxContent {
 
   @Override
   public String getHeaderKey() {
-    return "Intimacies"; //$NON-NLS-1$
+    return "Intimacies";
   }
 
   public int getTraitMaxValue() {

@@ -13,7 +13,7 @@ public class ArmourStatsDecorationFactory implements IEquipmentStatsDecorationFa
   private String createItemName(IEquipmentItem item, IEquipmentStats stats) {
     String itemName = item.getTitle();
     if (getListedStats(item) > 1) {
-      itemName += " - " + stats.getName(); //$NON-NLS-1$
+      itemName += " - " + stats.getName();
     }
     return itemName;
   }

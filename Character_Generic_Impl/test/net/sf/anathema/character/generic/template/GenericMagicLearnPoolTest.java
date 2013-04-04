@@ -18,7 +18,7 @@ public class GenericMagicLearnPoolTest {
 
   @Before
   public void setUp() {
-    this.background = new CustomizedBackgroundTemplate("Background");//$NON-NLS-1$
+    this.background = new CustomizedBackgroundTemplate("Background");
     this.pool = new GenericMagicLearnPool(background, true);
     this.collection = new DummyGenericTraitCollection();
     collection.setValue(background, 0);
@@ -34,7 +34,7 @@ public class GenericMagicLearnPoolTest {
   @Test
   public void exceptionChangesResponse() throws Exception {
     this.pool = new GenericMagicLearnPool(background, false);
-    String string = "Test"; //$NON-NLS-1$
+    String string = "Test";
     DummySpell dummySpell = new DummySpell(string);
     dummySpell.setCircleType(CircleType.Terrestrial);
     pool.addIdException(string);

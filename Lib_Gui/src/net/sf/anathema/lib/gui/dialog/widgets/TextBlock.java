@@ -30,6 +30,6 @@ public class TextBlock {
 
   @Override
   public String toString() {
-    return getClass().getSimpleName() + "{" + "text='" + text + "', delimiter=" + delimiter + "}"; //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$ //$NON-NLS-4$
+    return getClass().getSimpleName() + "{" + "text='" + text + "', delimiter=" + delimiter + "}";
   }
 }

@@ -40,26 +40,26 @@ public class AbilitiesContent extends FavorableTraitContent {
 
   @Override
   public String getGroupNamePrefix() {
-    return "AbilityGroup."; //$NON-NLS-1$
+    return "AbilityGroup.";
   }
 
   @Override
   public String getTraitTypePrefix() {
-    return ""; //$NON-NLS-1$
+    return "";
   }
 
   @Override
   public String getMarkerCommentKey() {
-    return "Sheet.Comment.AbilityMobility"; //$NON-NLS-1$
+    return "Sheet.Comment.AbilityMobility";
   }
 
   @Override
   public String getExcellencyCommentKey() {
-    return "Sheet.Comment.AbilityExcellency"; //$NON-NLS-1$
+    return "Sheet.Comment.AbilityExcellency";
   }
 
   @Override
   public String getHeaderKey() {
-    return "Abilities"; //$NON-NLS-1$
+    return "Abilities";
   }
 }

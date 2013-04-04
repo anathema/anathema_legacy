@@ -20,6 +20,6 @@ public class WeightedNode {
 
   @Override
   public String toString() {
-    return node + "(" + weight + ")"; //$NON-NLS-1$ //$NON-NLS-2$
+    return node + "(" + weight + ")";
   }
 }

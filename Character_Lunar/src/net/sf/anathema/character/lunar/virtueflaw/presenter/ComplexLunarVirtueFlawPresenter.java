@@ -27,7 +27,7 @@ public class ComplexLunarVirtueFlawPresenter extends VirtueFlawPresenter {
   }
 
   private void initDescriptionPresentation(IDescriptiveVirtueFlaw virtueFlaw, TextualPresentation textualPresentation) {
-    ITextView descriptionView = view.addTextView(getResources().getString("VirtueFlaw.Description.Name"), 30, 3); //$NON-NLS-1$
+    ITextView descriptionView = view.addTextView(getResources().getString("VirtueFlaw.Description.Name"), 30, 3);
     textualPresentation.initView(descriptionView, virtueFlaw.getDescription());
   }
 }

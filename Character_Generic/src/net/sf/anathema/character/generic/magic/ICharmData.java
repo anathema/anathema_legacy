@@ -15,13 +15,13 @@ import java.util.List;
 import java.util.Set;
 
 public interface ICharmData extends IMagicData {
-  Identified FORM_ATTRIBUTE = new Identifier("Form"); //$NON-NLS-1$
-  Identified MERGED_ATTRIBUTE = new Identifier("Merged"); //$NON-NLS-1$
-  Identified ALLOWS_CELESTIAL_ATTRIBUTE = new Identifier("AllowsCelestial"); //$NON-NLS-1$
-  Identified UNRESTRICTED_ATTRIBUTE = new Identifier("Unrestricted"); //$NON-NLS-1$
-  Identified NO_STYLE_ATTRIBUTE = new Identifier("NoStyle"); //$NON-NLS-1$
-  Identified NATIVE = new Identifier("Native"); //$NON-NLS-1$
-  String FAVORED_CASTE_PREFIX = "FavoredCaste."; //$NON-NLS-1$
+  Identified FORM_ATTRIBUTE = new Identifier("Form");
+  Identified MERGED_ATTRIBUTE = new Identifier("Merged");
+  Identified ALLOWS_CELESTIAL_ATTRIBUTE = new Identifier("AllowsCelestial");
+  Identified UNRESTRICTED_ATTRIBUTE = new Identifier("Unrestricted");
+  Identified NO_STYLE_ATTRIBUTE = new Identifier("NoStyle");
+  Identified NATIVE = new Identifier("Native");
+  String FAVORED_CASTE_PREFIX = "FavoredCaste.";
 
   ICharacterType getCharacterType();
 

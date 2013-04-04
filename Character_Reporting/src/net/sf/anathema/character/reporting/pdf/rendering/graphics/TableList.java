@@ -49,13 +49,13 @@ public class TableList {
   }
 
   public void addItem(String text) {
-    table.addCell(createCell(index++ + ".", Element.ALIGN_RIGHT)); //$NON-NLS-1$
+    table.addCell(createCell(index++ + ".", Element.ALIGN_RIGHT));
     table.addCell(createCell(text, Element.ALIGN_LEFT));
   }
 
   public void addSubItem(String text) {
-    table.addCell(createCell("", Element.ALIGN_RIGHT)); //$NON-NLS-1$
-    table.addCell(createCell(" " + text, Element.ALIGN_LEFT)); //$NON-NLS-1$
+    table.addCell(createCell("", Element.ALIGN_RIGHT));
+    table.addCell(createCell(" " + text, Element.ALIGN_LEFT));
   }
 
   private PdfPCell createCell(String content, int horizontalAlignment) {

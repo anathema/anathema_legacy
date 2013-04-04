@@ -12,10 +12,10 @@ import org.dom4j.Element;
 
 public class AdditionalModelPersister {
 
-  private static final String TAG_MODEL = "Model"; //$NON-NLS-1$
-  private static final String ATTRIB_TEMPLATE_ID = "templateId"; //$NON-NLS-1$
-  private static final String TAG_ADDITIONAL_MODELS = "AdditionalModels"; //$NON-NLS-1$
-  private static final String TAG_CONTENT = "Content"; //$NON-NLS-1$
+  private static final String TAG_MODEL = "Model";
+  private static final String ATTRIB_TEMPLATE_ID = "templateId";
+  private static final String TAG_ADDITIONAL_MODELS = "AdditionalModels";
+  private static final String TAG_CONTENT = "Content";
 
   private final IRegistry<String, IAdditionalPersisterFactory> registry;
   private final IMessaging messaging;
@@ -34,7 +34,7 @@ public class AdditionalModelPersister {
       String templateId = modelElement.attributeValue(ATTRIB_TEMPLATE_ID);
       IAdditionalModel model = findModel(additionalModels, templateId);
       if (model == null) {
-        throw new PersistenceException("No model for template id " + templateId); //$NON-NLS-1$
+        throw new PersistenceException("No model for template id " + templateId);
       }
       IAdditionalPersisterFactory factory = registry.get(templateId);
       factory.createPersister(messaging).load(modelElement.element(TAG_CONTENT), model);

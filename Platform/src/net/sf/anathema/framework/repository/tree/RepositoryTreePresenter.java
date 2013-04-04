@@ -35,9 +35,9 @@ public class RepositoryTreePresenter implements Presenter {
     this.repositoryModel = repositoryModel;
     this.treeView = treeView;
     this.renderer = renderer;
-    this.root = new DefaultMutableTreeNode(resources.getString(rootKey) + " [" //$NON-NLS-1$
+    this.root = new DefaultMutableTreeNode(resources.getString(rootKey) + " ["
         + repositoryModel.getRepositoryPath()
-        + "]", true); //$NON-NLS-1$
+        + "]", true);
     this.treeModel = new DefaultTreeModel(root);
     repositoryModel.addRepositoryTreeModelListener(new IRepositoryTreeModelListener() {
       @Override

@@ -26,7 +26,7 @@ public class PossessionsContent extends AbstractSubBoxContent implements ListSub
 
   @Override
   public String getHeaderKey() {
-    return "Possessions"; //$NON-NLS-1$
+    return "Possessions";
   }
 
   @Override

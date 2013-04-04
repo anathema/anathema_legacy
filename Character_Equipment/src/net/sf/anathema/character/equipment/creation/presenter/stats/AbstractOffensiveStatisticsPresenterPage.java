@@ -41,7 +41,7 @@ public abstract class AbstractOffensiveStatisticsPresenterPage<O extends IOffens
     }
     else {
       secondComponent = new JPanel();
-      labels = new String[] { getProperties().getAccuracyLabel(), "" }; //$NON-NLS-1$
+      labels = new String[] { getProperties().getAccuracyLabel(), "" };
     }
     addLabelledComponentRow(labels, new Component[] {
         initIntegerSpinner(getPageModel().getAccuracyModel()).getComponent(),

@@ -26,6 +26,6 @@ public class KnackSourceStatsGroup extends AbstractTextStatsGroup<IKnackStats> {
 
   @Override
   public String getTitle() {
-    return resources.getString("Sheet.Magic.Source"); //$NON-NLS-1$
+    return resources.getString("Sheet.Magic.Source");
   }
 }

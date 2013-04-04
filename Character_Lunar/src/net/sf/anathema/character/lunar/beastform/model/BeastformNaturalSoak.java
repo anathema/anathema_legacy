@@ -53,13 +53,13 @@ public class BeastformNaturalSoak extends AbstractCombatStats implements IArmour
         return getStaminaValue();
       }
       default: {
-        throw new UnreachableCodeReachedException("Illegal Health Type"); //$NON-NLS-1$
+        throw new UnreachableCodeReachedException("Illegal Health Type");
       }
     }
   }
 
   private int getUncappedSoak(HealthType type) {
-    Preconditions.checkArgument(type != HealthType.Aggravated, "Aggravated Soak not supported"); //$NON-NLS-1$
+    Preconditions.checkArgument(type != HealthType.Aggravated, "Aggravated Soak not supported");
     int staminaValue = getStaminaValue();
     return doMutations(type, staminaValue);
   }
@@ -118,7 +118,7 @@ public class BeastformNaturalSoak extends AbstractCombatStats implements IArmour
 
   @Override
   public Identified getName() {
-    return new Identifier("NaturalSoak"); //$NON-NLS-1$
+    return new Identifier("NaturalSoak");
   }
 
   @Override

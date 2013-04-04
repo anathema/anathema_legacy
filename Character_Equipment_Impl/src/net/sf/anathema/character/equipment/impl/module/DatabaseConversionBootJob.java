@@ -17,12 +17,12 @@ import java.nio.file.Path;
 @Weight(weight = 10)
 public class DatabaseConversionBootJob implements IBootJob {
 
-  public static final String OLD_DATABASE_FILE = "Equipment.yap"; //$NON-NLS-1$
-  public static final String OLD_DATABASE_FOLDER = "equipment"; //$NON-NLS-1$
+  public static final String OLD_DATABASE_FILE = "Equipment.yap";
+  public static final String OLD_DATABASE_FOLDER = "equipment";
 
   @Override
   public void run(Resources resources, IApplicationModel anathemaModel) {
-    ProxySplashscreen.getInstance().displayStatusMessage(resources.getString("Equipment.Bootjob.Splashmessage")); //$NON-NLS-1$
+    ProxySplashscreen.getInstance().displayStatusMessage(resources.getString("Equipment.Bootjob.Splashmessage"));
     Path oldFile = anathemaModel.getRepository().getDataBaseDirectory(OLD_DATABASE_FOLDER).resolve(OLD_DATABASE_FILE);
     if (!Files.exists(oldFile)) {
       return;

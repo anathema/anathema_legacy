@@ -15,7 +15,7 @@ import java.util.List;
 
 public class GhostPassionsPersister implements IAdditionalPersister {
 
-  private static final String TAG_PASSION = "Passion"; //$NON-NLS-1$
+  private static final String TAG_PASSION = "Passion";
   private static final String ATTRIB_NAME = "name";
   private static final String ATTRIB_VIRTUE = "virtue";
   private final TraitPersister persister = new TraitPersister();

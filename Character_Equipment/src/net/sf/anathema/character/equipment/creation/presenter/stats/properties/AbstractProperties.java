@@ -14,7 +14,7 @@ public class AbstractProperties {
   }
 
   protected final String getLabelString(String key) {
-    return getString(key) + ":"; //$NON-NLS-1$
+    return getString(key) + ":";
   }
 
   protected final Resources getResources() {

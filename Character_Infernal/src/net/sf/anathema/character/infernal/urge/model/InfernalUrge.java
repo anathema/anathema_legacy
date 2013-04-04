@@ -6,7 +6,7 @@ import net.sf.anathema.lib.workflow.textualdescription.ITextualDescription;
 import net.sf.anathema.lib.workflow.textualdescription.model.SimpleTextualDescription;
 
 public class InfernalUrge extends VirtueFlaw {
-  private final ITextualDescription description = new SimpleTextualDescription(""); //$NON-NLS-1$
+  private final ITextualDescription description = new SimpleTextualDescription("");
 
   public InfernalUrge(ICharacterModelContext context) {
     super(context);

@@ -28,7 +28,7 @@ import java.awt.Component;
  */
 public class WizardDialog extends AbstractDialog implements IWizardContainer, IDialogConstants {
 
-  public static final String FINISH_BUTTON_NAME = "WizardDialog.FinishButton.ComponentName"; //$NON-NLS-1$
+  public static final String FINISH_BUTTON_NAME = "WizardDialog.FinishButton.ComponentName";
   private JButton finishButton;
   private JButton backButton;
   private JButton nextButton;
@@ -182,16 +182,16 @@ public class WizardDialog extends AbstractDialog implements IWizardContainer, ID
   public ISwingFrameOrDialog getConfiguredDialog() {
     IWizardPage startingPage = configuration.getStartingPage();
     if (startingPage == null) {
-      throw new RuntimeException("Starting page may not be null in IWizard.getStartingPage()"); //$NON-NLS-1$
+      throw new RuntimeException("Starting page may not be null in IWizard.getStartingPage()");
     }
     showPage(startingPage);
     ISwingFrameOrDialog configuredDialog = getDialog();
     if (configuredDialog == null) {
       throw new IllegalStateException(
-          "WizardDialog is already disposed and may not be shown more often than once"); //$NON-NLS-1$
+          "WizardDialog is already disposed and may not be shown more often than once");
     }
     if (configuredDialog.isVisible()) {
-      throw new IllegalStateException("WizardDialog is already visible"); //$NON-NLS-1$
+      throw new IllegalStateException("WizardDialog is already visible");
     }
     return configuredDialog;
   }

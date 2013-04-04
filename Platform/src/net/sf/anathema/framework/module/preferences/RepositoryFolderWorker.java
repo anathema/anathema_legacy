@@ -41,6 +41,6 @@ public class RepositoryFolderWorker {
     if (cause == null) {
       cause = e;
     }
-    showMessageDialog(null, new Message(message + cause.getMessage(), cause)); //$NON-NLS-1$
+    showMessageDialog(null, new Message(message + cause.getMessage(), cause));
   }
 }

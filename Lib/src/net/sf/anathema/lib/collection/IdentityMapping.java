@@ -10,17 +10,9 @@ public class IdentityMapping<K, V> {
 
   public void put(K key, V value) {
     if (get(key) != null) {
-      throw new IllegalArgumentException("Key " + key + " already mapped"); //$NON-NLS-1$ //$NON-NLS-2$
+      throw new IllegalArgumentException("Key " + key + " already mapped");
     }
     mappings.add(new KeyValueMapping<>(key, value));
-  }
-
-  public List<V> getAllValues() {
-    List<V> list = new ArrayList<>();
-    for (KeyValueMapping<K, V> mapping : mappings) {
-      list.add(mapping.getValue());
-    }
-    return list;
   }
 
   public List<K> getAllKeys() {

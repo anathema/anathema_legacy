@@ -15,9 +15,10 @@ public class ValuedTraitTypeTest {
     assertTrue(original.equals(original));
   }
 
+  @SuppressWarnings("EqualsBetweenInconvertibleTypes")
   @Test
   public void testOtherClassDoesntEqual() throws Exception {
-    assertFalse(new ValuedTraitType(AbilityType.Archery, 2).equals("Hallo?")); //$NON-NLS-1$
+    assertFalse(new ValuedTraitType(AbilityType.Archery, 2).equals("Hallo?"));
   }
 
   @Test

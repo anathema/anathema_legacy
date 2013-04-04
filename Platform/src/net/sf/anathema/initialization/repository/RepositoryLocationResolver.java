@@ -18,7 +18,7 @@ public class RepositoryLocationResolver implements IStringResolver {
   }
   
   private String parseOutUserHome( String directory ) {
-    return new LeadingPropertyResolver(System.getProperties(), "%USER_HOME%", "user.home").parse(directory); //$NON-NLS-1$//$NON-NLS-2$
+    return new LeadingPropertyResolver(System.getProperties(), "%USER_HOME%", "user.home").parse(directory);
   }
 
   private String findRepositoryLocationDescription() {
@@ -30,9 +30,9 @@ public class RepositoryLocationResolver implements IStringResolver {
   }
   
   public String getDefaultLocation() {
-      String repository = System.getProperty("repository"); //$NON-NLS-1$         // handles linux
+      String repository = System.getProperty("repository");          // handles linux
       if( repository == null ) {
-          repository = System.getProperty("defaultrepository"); //$NON-NLS-1$     // handles mac
+          repository = System.getProperty("defaultrepository");      // handles mac
       }
       if( repository == null ) {
           repository = DEFAULT_REPOSITORY_LOCATION;                               // handles everything else

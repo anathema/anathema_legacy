@@ -30,8 +30,8 @@ public class CharacterDescriptionTextEncoder extends AbstractTextEncoder {
             Strings.isNullOrEmpty(description.getNotes())) {
       return;
     }
-    Phrase descriptionPhrase = createTextParagraph(createBoldTitle(getString("TextDescription.Label.Description") + ": ")); //$NON-NLS-1$
-    // //$NON-NLS-2$
+    Phrase descriptionPhrase = createTextParagraph(createBoldTitle(getString("TextDescription.Label.Description") + ": "));
+    //
     boolean isFirst = true;
     if (!Strings.isNullOrEmpty(description.getCharacterization())) {
       descriptionPhrase.add(createTextChunk(description.getCharacterization()));

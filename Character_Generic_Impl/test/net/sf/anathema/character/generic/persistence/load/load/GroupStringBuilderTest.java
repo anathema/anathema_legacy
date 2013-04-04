@@ -16,22 +16,22 @@ public class GroupStringBuilderTest {
 
   @Test
   public void testBuildGroupFromAttribute() throws Exception {
-    String xml = "<charm group=\"group\"/>"; //$NON-NLS-1$
+    String xml = "<charm group=\"group\"/>";
     Element rootElement = DocumentUtilities.read(xml).getRootElement();
     String id = builder.build(rootElement, null);
-    assertEquals("group", id); //$NON-NLS-1$
+    assertEquals("group", id);
   }
 
   @Test
   public void testBuildGroupFromPrimaryTrait() throws Exception {
-    String xml = "<charm />"; //$NON-NLS-1$
+    String xml = "<charm />";
     Element rootElement = DocumentUtilities.read(xml).getRootElement();
     String id = builder.build(rootElement, new ValuedTraitType(AttributeType.Appearance, 5));
-    assertEquals("Appearance", id); //$NON-NLS-1$
+    assertEquals("Appearance", id);
   }
   @Test(expected=CharmException.class)
   public void testBuildGroupWithoutPrimaryTrait() throws Exception {
-        String xml = "<charm />"; //$NON-NLS-1$
+        String xml = "<charm />";
         Element rootElement = DocumentUtilities.read(xml).getRootElement();
         builder.build(rootElement, null);
   }

@@ -3,8 +3,8 @@ package net.sf.anathema.character.generic.magic.charms.duration;
 import net.sf.anathema.lib.resources.Resources;
 
 public class SimpleDuration implements IDuration {
-  public static final String INSTANT = "Instant";//$NON-NLS-1$
-  private static final String PERMANENT = "Permanent"; //$NON-NLS-1$
+  public static final String INSTANT = "Instant";
+  private static final String PERMANENT = "Permanent";
   public static final SimpleDuration INSTANT_DURATION = new SimpleDuration(INSTANT);
   public static final SimpleDuration PERMANENT_DURATION = new SimpleDuration(PERMANENT);
 
@@ -30,6 +30,6 @@ public class SimpleDuration implements IDuration {
 
   @Override
   public String getText(Resources resources) {
-    return resources.getString("Charm.Duration." + getText()); //$NON-NLS-1$
+    return resources.getString("Charm.Duration." + getText());
   }
 }

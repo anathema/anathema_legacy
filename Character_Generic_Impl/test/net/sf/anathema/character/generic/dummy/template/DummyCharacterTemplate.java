@@ -37,7 +37,7 @@ import net.sf.anathema.lib.exception.NotYetImplementedException;
 
 public class DummyCharacterTemplate implements ICharacterTemplate {
 
-  private static final String DUMMYGROUP = "DummyGroup"; //$NON-NLS-1$
+  private static final String DUMMYGROUP = "DummyGroup";
   private final ITraitTemplateCollection traitTemplateCollection = new TraitTemplateCollection(
           new DummyTraitTemplateFactory());
   private ITemplateType type = new TemplateType(new DummyMundaneCharacterType());

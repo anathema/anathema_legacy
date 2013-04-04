@@ -52,7 +52,7 @@ public class GreatCurseEncoder implements ContentEncoder {
     if (nameDefined && conditionDefined) {
       Phrase phrase = new Phrase();
       phrase.add(new Chunk(name, nameFont));
-      phrase.add(new Chunk(": ", nameFont)); //$NON-NLS-1$
+      phrase.add(new Chunk(": ", nameFont));
       phrase.add(new Chunk(condition, font));
       graphics.createSimpleColumn(textBounds).withLeading(leading).andTextPart(phrase).encode();
     }
@@ -66,8 +66,8 @@ public class GreatCurseEncoder implements ContentEncoder {
       Phrase phrase = new Phrase();
       Font undefinedFont = new Font(nameFont);
       undefinedFont.setStyle(Font.UNDERLINE);
-      phrase.add(new Chunk("                                          ", undefinedFont)); //$NON-NLS-1$
-      phrase.add(new Chunk(": ", nameFont)); //$NON-NLS-1$
+      phrase.add(new Chunk("                                          ", undefinedFont));
+      phrase.add(new Chunk(": ", nameFont));
       phrase.add(new Chunk(condition, font));
       graphics.createSimpleColumn(textBounds).withLeading(leading).andTextPart(phrase).encode();
     }

@@ -4,6 +4,6 @@ public class SpaceTokenFactory implements INameTokenFactory {
 
   @Override
   public String createToken() {
-    return " "; //$NON-NLS-1$
+    return " ";
   }
 }

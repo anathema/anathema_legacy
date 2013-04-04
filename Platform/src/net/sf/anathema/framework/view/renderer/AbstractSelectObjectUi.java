@@ -32,7 +32,7 @@ public abstract class AbstractSelectObjectUi<V> implements ObjectUi<Object> {
   @Override
   public String getLabel(Object value) {
     if (value == null) {
-      return resources.getString("ComboBox.SelectLabel"); //$NON-NLS-1$
+      return resources.getString("ComboBox.SelectLabel");
     }
     return getNonNullLabel((V) value);
   }

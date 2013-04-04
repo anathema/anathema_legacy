@@ -29,10 +29,10 @@ public class CharmTest {
     CharmTypeModel model = new CharmTypeModel();
     model.setCharmType(CharmType.Simple);
     try {
-      new Charm(new DummyExaltCharacterType(), "ATTRIBUTES", //$NON-NLS-1$
-              "Group", //$NON-NLS-1$
+      new Charm(new DummyExaltCharacterType(), "ATTRIBUTES",
+              "Group",
               false, prerequisiteList, new CostList(null, null, null, null), new ComboRestrictions(), SimpleDuration.getDuration("Duration"),
-              //$NON-NLS-1$
+
               model, null);
       fail();
     } catch (NullPointerException e) {

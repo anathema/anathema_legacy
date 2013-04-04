@@ -125,7 +125,7 @@ public class OxBodyTechniqueConfiguration implements IOxBodyTechniqueConfigurati
         return category;
       }
     }
-    throw new IllegalArgumentException("No ox body category found with id " + id); //$NON-NLS-1$
+    throw new IllegalArgumentException("No ox body category found with id " + id);
   }
 
   @Override

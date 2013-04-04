@@ -20,29 +20,29 @@ public class RepositoryFolderCreatorTest {
 
   @Test
   public void testExistingFolder() throws Exception {
-    dummyFileSystemAbstraction.addExistingFile(new File("folder")); //$NON-NLS-1$
-    File repositoryFolder = createRepositoryFolder("folder"); //$NON-NLS-1$
+    dummyFileSystemAbstraction.addExistingFile(new File("folder"));
+    File repositoryFolder = createRepositoryFolder("folder");
     Assert.assertFalse(dummyFileSystemAbstraction.wasCreated(repositoryFolder));
-    Assert.assertEquals(repositoryFolder, new File("folder")); //$NON-NLS-1$
+    Assert.assertEquals(repositoryFolder, new File("folder"));
   }
 
   @Test
   public void testNonExistingFoldersWillBeCreated() throws Exception {
-    File repositoryFolder = createRepositoryFolder("nonExistingFolder"); //$NON-NLS-1$
-    Assert.assertEquals(repositoryFolder, new File("nonExistingFolder")); //$NON-NLS-1$
-    Assert.assertTrue(dummyFileSystemAbstraction.wasCreated(new File("nonExistingFolder"))); //$NON-NLS-1$
+    File repositoryFolder = createRepositoryFolder("nonExistingFolder");
+    Assert.assertEquals(repositoryFolder, new File("nonExistingFolder"));
+    Assert.assertTrue(dummyFileSystemAbstraction.wasCreated(new File("nonExistingFolder")));
   }
 
   @Test(expected = RepositoryException.class)
   public void testWriteProtectedFile() throws Exception {
-    final String writeProtectedFilePath = "writeProtected"; //$NON-NLS-1$
+    final String writeProtectedFilePath = "writeProtected";
     dummyFileSystemAbstraction.addWriteProtectedFile(new File(writeProtectedFilePath));
     createRepositoryFolder(writeProtectedFilePath);
   }
 
   @Test(expected = RepositoryException.class)
   public void testReadProtectedFile() throws Exception {
-    final String readProtectedFilePath = "readProtected"; //$NON-NLS-1$
+    final String readProtectedFilePath = "readProtected";
     dummyFileSystemAbstraction.addReadProtectedFile(new File(readProtectedFilePath));
     createRepositoryFolder(readProtectedFilePath);
   }

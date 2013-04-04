@@ -41,13 +41,13 @@ public class DefaultNodeProperties implements NodeProperties {
   }
 
   private String textForRequirementNode(String nodeId) {
-    String requirementWithCount = nodeId.replaceFirst(REQUIREMENT + ".", ""); //$NON-NLS-1$ //$NON-NLS-2$
-    String[] strings = requirementWithCount.split("\\."); //$NON-NLS-1$
+    String requirementWithCount = nodeId.replaceFirst(REQUIREMENT + ".", "");
+    String[] strings = requirementWithCount.split("\\.");
     int requirementCount = Integer.parseInt(strings[1]);
-    String requirementName = resources.getString(REQUIREMENT + "." + strings[0]); //$NON-NLS-1$
+    String requirementName = resources.getString(REQUIREMENT + "." + strings[0]);
     String charmString = resources.getString(
-            requirementCount == 1 ? "Charms.Charm.Single" : "Charms.Charm.Multiple"); //$NON-NLS-1$//$NON-NLS-2$
-    return resources.getString("Requirement.Message", requirementCount, requirementName, charmString); //$NON-NLS-1$
+            requirementCount == 1 ? "Charms.Charm.Single" : "Charms.Charm.Multiple");
+    return resources.getString("Requirement.Message", requirementCount, requirementName, charmString);
   }
 
   private String getNodeName(ICharm charm) {

@@ -23,22 +23,22 @@ public class ParadoxInfoEncoder implements ContentEncoder {
 
   @Override
   public void encode(SheetGraphics graphics, ReportSession reportSession, Bounds bounds) throws DocumentException {
-    Phrase phrase = new Phrase("", graphics.createFont(fontSize)); //$NON-NLS-1$
+    Phrase phrase = new Phrase("", graphics.createFont(fontSize));
     Chunk symbolChunk = graphics.createSymbolChunk();
     phrase.add(symbolChunk);
-    phrase.add(resources.getString("Sheet.Paradox.OutOfCharacter") + "\n"); //$NON-NLS-1$//$NON-NLS-2$
+    phrase.add(resources.getString("Sheet.Paradox.OutOfCharacter") + "\n");
     phrase.add(symbolChunk);
-    phrase.add(resources.getString("Sheet.Paradox.Resident") + "\n"); //$NON-NLS-1$//$NON-NLS-2$
+    phrase.add(resources.getString("Sheet.Paradox.Resident") + "\n");
     phrase.add(symbolChunk);
-    phrase.add(resources.getString("Sheet.Paradox.Anima") + "\n"); //$NON-NLS-1$//$NON-NLS-2$
-    phrase.add(resources.getString("Sheet.Paradox.AnimaLow") + "\n"); //$NON-NLS-1$//$NON-NLS-2$
-    phrase.add(resources.getString("Sheet.Paradox.AnimaHigh2nd") + "\n"); //$NON-NLS-1$
+    phrase.add(resources.getString("Sheet.Paradox.Anima") + "\n");
+    phrase.add(resources.getString("Sheet.Paradox.AnimaLow") + "\n");
+    phrase.add(resources.getString("Sheet.Paradox.AnimaHigh2nd") + "\n");
     phrase.add(symbolChunk);
-    phrase.add(resources.getString("Sheet.Paradox.ConfusionExalted") + "\n"); //$NON-NLS-1$//$NON-NLS-2$
+    phrase.add(resources.getString("Sheet.Paradox.ConfusionExalted") + "\n");
     phrase.add(symbolChunk);
-    phrase.add(resources.getString("Sheet.Paradox.ConfusionResplendent") + "\n"); //$NON-NLS-1$//$NON-NLS-2$
-    phrase.add(resources.getString("Sheet.Paradox.ConfusionResplendentImitation") + "\n"); //$NON-NLS-1$//$NON-NLS-2$
-    phrase.add(resources.getString("Sheet.Paradox.ConfusionResplendentSupernatural") + "\n"); //$NON-NLS-1$//$NON-NLS-2$
+    phrase.add(resources.getString("Sheet.Paradox.ConfusionResplendent") + "\n");
+    phrase.add(resources.getString("Sheet.Paradox.ConfusionResplendentImitation") + "\n");
+    phrase.add(resources.getString("Sheet.Paradox.ConfusionResplendentSupernatural") + "\n");
     graphics.createSimpleColumn(bounds).withLeading(lineHeight).andTextPart(phrase).encode();
   }
 

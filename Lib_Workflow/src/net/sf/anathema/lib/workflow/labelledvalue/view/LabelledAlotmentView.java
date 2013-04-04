@@ -21,7 +21,7 @@ public class LabelledAlotmentView extends AbstractLabelledIntegerValueView imple
         createLengthString(maxValueLength),
         SwingConstants.RIGHT,
         true);
-    this.seperatorLabel = createLabel("/", "/", SwingConstants.CENTER, true); //$NON-NLS-1$//$NON-NLS-2$
+    this.seperatorLabel = createLabel("/", "/", SwingConstants.CENTER, true);
   }
 
   public void addTo(JPanel panel) {

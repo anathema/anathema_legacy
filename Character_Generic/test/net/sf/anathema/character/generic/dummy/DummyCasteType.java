@@ -6,7 +6,7 @@ import net.sf.anathema.lib.util.Identifier;
 public class DummyCasteType extends Identifier implements ICasteType {
 
   public DummyCasteType() {
-    this("DummyCaste"); //$NON-NLS-1$
+    this("DummyCaste");
   }
 
   public DummyCasteType(String id) {

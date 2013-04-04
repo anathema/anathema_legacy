@@ -11,7 +11,7 @@ public class IdStringBuilder implements IIdStringBuilder {
   public String build(Element element) throws CharmException {
     String value = element.attributeValue(ICharmXMLConstants.ATTRIB_ID);
     if (StringUtilities.isNullOrTrimmedEmpty(value)) {
-      throw new CharmException("Id must not be empty."); //$NON-NLS-1$
+      throw new CharmException("Id must not be empty.");
     }
     return value;
   }

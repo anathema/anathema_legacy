@@ -10,7 +10,7 @@ public class WillpowerExperienceModel extends AbstractIntegerValueModel {
   private final IPointCostCalculator calculator;
 
   public WillpowerExperienceModel(ICoreTraitConfiguration traitConfiguration, IPointCostCalculator calculator) {
-    super("Experience", "Willpower"); //$NON-NLS-1$ //$NON-NLS-2$
+    super("Experience", "Willpower");
     this.traitConfiguration = traitConfiguration;
     this.calculator = calculator;
   }

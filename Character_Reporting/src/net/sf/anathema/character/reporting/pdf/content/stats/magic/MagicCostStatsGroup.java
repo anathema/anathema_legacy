@@ -27,6 +27,6 @@ public class MagicCostStatsGroup extends AbstractTextStatsGroup<IMagicStats> {
 
   @Override
   public String getTitle() {
-    return resources.getString("Sheet.Magic.Cost"); //$NON-NLS-1$
+    return resources.getString("Sheet.Magic.Cost");
   }
 }

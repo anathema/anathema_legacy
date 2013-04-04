@@ -14,7 +14,7 @@ public class CharmTest {
   @Test
   public void testParentCharmsNotOverwritten() throws Exception {
     DummyCharmData data = new DummyCharmData();
-    DummyCharm dummy = new DummyCharm("OtherDummy"); //$NON-NLS-1$
+    DummyCharm dummy = new DummyCharm("OtherDummy");
     data.setParentCharms(new ICharm[] { dummy });
     Charm charm = new Charm(data);
     charm.extractParentCharms(new HashMap<String, Charm>());

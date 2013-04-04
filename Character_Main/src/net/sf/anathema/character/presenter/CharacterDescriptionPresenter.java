@@ -41,32 +41,32 @@ public class CharacterDescriptionPresenter implements IContentPresenter {
   public void initPresentation() {
     TextualPresentation presentation = new TextualPresentation();
     initNameLineView(0, presentation);
-    initLineView("CharacterDescription.Label.Player", description.getPlayer(), presentation); //$NON-NLS-1$
-    initLineView("Label.Concept", description.getConcept(), presentation); //$NON-NLS-1$
-    initAreaView("CharacterDescription.Label.Characterization", description.getCharacterization(), presentation); //$NON-NLS-1$
-    initAreaView("CharacterDescription.Label.PhysicalDescription", description.getPhysicalDescription(), presentation); //$NON-NLS-1$
+    initLineView("CharacterDescription.Label.Player", description.getPlayer(), presentation);
+    initLineView("Label.Concept", description.getConcept(), presentation);
+    initAreaView("CharacterDescription.Label.Characterization", description.getCharacterization(), presentation);
+    initAreaView("CharacterDescription.Label.PhysicalDescription", description.getPhysicalDescription(), presentation);
     initMinorTraits(presentation);
     if (hasAnima) {
-      initLineView("CharacterDescription.Label.Anima", description.getAnima(), presentation); //$NON-NLS-1$
+      initLineView("CharacterDescription.Label.Anima", description.getAnima(), presentation);
     }
-    initAreaView("CharacterDescription.Label.Notes", description.getNotes(), presentation); //$NON-NLS-1$
+    initAreaView("CharacterDescription.Label.Notes", description.getNotes(), presentation);
   }
 
   @Override
   public ContentView getTabContent() {
-    String title = resources.getString("CardView.CharacterDescription.Title");//$NON-NLS-1$
+    String title = resources.getString("CardView.CharacterDescription.Title");
     return new ViewTabContentView(descriptionView, new ContentProperties(title));
   }
 
   private void initNameLineView(int row, TextualPresentation presentation) {
-    initLineView("CharacterDescription.Label.Name", description.getName(), presentation); //$NON-NLS-1$
+    initLineView("CharacterDescription.Label.Name", description.getName(), presentation);
     CharacterUI characterUI = new CharacterUI();
     descriptionView.addEditAction(
-            new NameGeneratorAction(characterUI.getRandomRealmNameIcon(), resources.getString("CharacterDescription.Tooltip.RealmName"), //$NON-NLS-1$
+            new NameGeneratorAction(characterUI.getRandomRealmNameIcon(), resources.getString("CharacterDescription.Tooltip.RealmName"),
                     description.getName(), new RealmNameGenerator()), row);
     descriptionView.addEditAction(
             new NameGeneratorAction(characterUI.getRandomThresholdNameIcon(), resources.getString("CharacterDescription.Tooltip.ThresholdName"),
-                    //$NON-NLS-1$
+
                     description.getName(), new ThresholdNameGenerator()), row);
   }
 

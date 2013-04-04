@@ -70,7 +70,7 @@ public class AnathemaSaveAllAction extends SmartAction {
 
   public static Action createToolAction(IApplicationModel model, Resources resources) {
     SmartAction action = new AnathemaSaveAllAction(model, resources);
-    action.setToolTipText(resources.getString("AnathemaPersistence.SaveAllAction.Tooltip")); //$NON-NLS-1$
+    action.setToolTipText(resources.getString("AnathemaPersistence.SaveAllAction.Tooltip"));
     action.setIcon(new PlatformUI().getSaveAllTaskBarIcon());
     return action;
   }
@@ -96,7 +96,7 @@ public class AnathemaSaveAllAction extends SmartAction {
           item.setClean();
         } catch (IOException | RepositoryException e) {
           MessageUtilities.indicateMessage(getClass(), parentComponent,
-                  new Message(resources.getString("AnathemaPersistence.SaveAction.Message.Error"), e)); //$NON-NLS-1$
+                  new Message(resources.getString("AnathemaPersistence.SaveAction.Message.Error"), e));
         } finally {
           parentComponent.setCursor(Cursor.getPredefinedCursor(Cursor.DEFAULT_CURSOR));
         }

@@ -7,9 +7,9 @@ import javax.swing.UIManager;
 import javax.swing.UnsupportedLookAndFeelException;
 
 public class LookAndFeelInitializer {
-  private static final String AQUA_LOOK_AND_FEEL_CLASSNAME = "apple.laf.AquaLookAndFeel"; //$NON-NLS-1$
-  private static final String AQUA_USE_SCREEN_MENU_BAR = "apple.laf.useScreenMenuBar"; //$NON-NLS-1$
-  private static final String AQUA_APPLICATION_NAME = "com.apple.mrj.application.apple.menu.about.name"; //$NON-NLS-1$
+  private static final String AQUA_LOOK_AND_FEEL_CLASSNAME = "apple.laf.AquaLookAndFeel";
+  private static final String AQUA_USE_SCREEN_MENU_BAR = "apple.laf.useScreenMenuBar";
+  private static final String AQUA_APPLICATION_NAME = "com.apple.mrj.application.apple.menu.about.name";
   private final IInitializationPreferences initializationPreferences;
 
   public LookAndFeelInitializer(IInitializationPreferences initializationPreferences) {
@@ -27,7 +27,7 @@ public class LookAndFeelInitializer {
   }
 
   private void makeCombosLookBetterOnAnyLookAndFeel() {
-    System.getProperties().put("swing.addon", "org.jdesktop.swingx.plaf.macosx.MacOSXLookAndFeelAddons"); //$NON-NLS-1$//$NON-NLS-2$
+    System.getProperties().put("swing.addon", "org.jdesktop.swingx.plaf.macosx.MacOSXLookAndFeelAddons");
   }
 
   private String getLookAndFeelToUse() {
@@ -58,7 +58,7 @@ public class LookAndFeelInitializer {
       return true;
     } catch (Exception e) {
       Logger logger = Logger.getLogger(LookAndFeelInitializer.class);
-      logger.warn("Failed to use the Look and Feel: " + lafClassName, e); //$NON-NLS-1$
+      logger.warn("Failed to use the Look and Feel: " + lafClassName, e);
       return false;
     }
   }
@@ -68,7 +68,7 @@ public class LookAndFeelInitializer {
   }
 
   private void integrateMenuWithMacOS() {
-    System.setProperty(AQUA_USE_SCREEN_MENU_BAR, "true"); //$NON-NLS-1$
-    System.setProperty(AQUA_APPLICATION_NAME, "Anathema"); //$NON-NLS-1$ //$NON-NLS-2$
+    System.setProperty(AQUA_USE_SCREEN_MENU_BAR, "true");
+    System.setProperty(AQUA_APPLICATION_NAME, "Anathema");
   }
 }

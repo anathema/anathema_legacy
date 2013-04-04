@@ -29,11 +29,12 @@ public class MultiplyRatingCosts implements ICurrentRatingCosts {
       return currentRating * factor + summand;
     }
     if (initalCost <= 0) {
-      throw new UnsupportedOperationException("Illegal learning"); //$NON-NLS-1$
+      throw new UnsupportedOperationException("Illegal learning");
     }
     return initalCost;
   }
 
+  @SuppressWarnings("EqualsWhichDoesntCheckParameterClass")
   @Override
   public boolean equals(Object obj) {
     return EqualsBuilder.reflectionEquals(this, obj);
@@ -46,6 +47,6 @@ public class MultiplyRatingCosts implements ICurrentRatingCosts {
 
   @Override
   public String toString() {
-    return "MultiplyRatingCost " + factor + "/" + summand + "/" + initalCost; //$NON-NLS-1$//$NON-NLS-2$ //$NON-NLS-3$
+    return "MultiplyRatingCost " + factor + "/" + summand + "/" + initalCost;
   }
 }

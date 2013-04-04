@@ -21,7 +21,7 @@ public class StringSubPresenter implements IOverviewSubPresenter {
   public void update() {
     String value = model.getValue();
     boolean nullOrEmptyValue = Strings.isNullOrEmpty(value);
-    view.setValue(nullOrEmptyValue ? "" : resources.getString(value)); //$NON-NLS-1$
+    view.setValue(nullOrEmptyValue ? "" : resources.getString(value));
     view.setTextColor(nullOrEmptyValue ? LegalityColorProvider.COLOR_LOW : LegalityColorProvider.COLOR_OKAY);
   }
 }

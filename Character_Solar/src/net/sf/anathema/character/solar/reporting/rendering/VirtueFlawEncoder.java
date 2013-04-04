@@ -59,8 +59,8 @@ public class VirtueFlawEncoder extends AbstractContentEncoder<VirtueFlawContent>
     Phrase phrase = new Phrase();
     Font undefinedFont = new Font(createNameFont(graphics));
     undefinedFont.setStyle(Font.UNDERLINE);
-    phrase.add(new Chunk("                                          : ", undefinedFont)); //$NON-NLS-1$
-    phrase.add(new Chunk(": ", createNameFont(graphics))); //$NON-NLS-1$
+    phrase.add(new Chunk("                                          : ", undefinedFont));
+    phrase.add(new Chunk(": ", createNameFont(graphics)));
     phrase.add(new Chunk(content.getLimitBreakCondition(), createConditionFont(graphics)));
     graphics.createSimpleColumn(textBounds).withLeading(REDUCED_LINE_HEIGHT).andTextPart(phrase).encode();
   }

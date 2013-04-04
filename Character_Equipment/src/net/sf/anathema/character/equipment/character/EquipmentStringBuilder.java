@@ -28,20 +28,20 @@ public class EquipmentStringBuilder implements IEquipmentStringBuilder {
     } else {
       stringBuilder.append(new WeaponStatsNameStringFactory(resources).create(item, weapon));
     }
-    stringBuilder.append(":"); //$NON-NLS-1$
-    stringBuilder.append(getStatsString("Speed", weapon.getSpeed(), false)); //$NON-NLS-1$
-    stringBuilder.append(getStatsString("Accuracy", weapon.getAccuracy(), true)); //$NON-NLS-1$
+    stringBuilder.append(":");
+    stringBuilder.append(getStatsString("Speed", weapon.getSpeed(), false));
+    stringBuilder.append(getStatsString("Accuracy", weapon.getAccuracy(), true));
     if (weapon.inflictsNoDamage()) {
-      stringBuilder.append(" " + resources.getString("Equipment.Stats.Short.Damage") + ":-"); //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
+      stringBuilder.append(" ").append(resources.getString("Equipment.Stats.Short.Damage")).append(":-");
     } else {
-      stringBuilder.append(getStatsString("Damage", weapon.getDamage(), weapon.getDamageTraitType() != null)); //$NON-NLS-1$
-      stringBuilder.append(resources.getString("HealthType." + weapon.getDamageType().getId() + ".Short")); //$NON-NLS-1$ //$NON-NLS-2$
+      stringBuilder.append(getStatsString("Damage", weapon.getDamage(), weapon.getDamageTraitType() != null));
+      stringBuilder.append(resources.getString("HealthType." + weapon.getDamageType().getId() + ".Short"));
       if (weapon.getMinimumDamage() > 1)
-    	  stringBuilder.append("/" + weapon.getMinimumDamage());
+    	  stringBuilder.append("/").append(weapon.getMinimumDamage());
     }
-    stringBuilder.append(getStatsString("Defence", weapon.getDefence(), true)); //$NON-NLS-1$
-    stringBuilder.append(getStatsString("Range", weapon.getRange(), false)); //$NON-NLS-1$
-    stringBuilder.append(getStatsString("Rate", weapon.getRate(), false)); //$NON-NLS-1$
+    stringBuilder.append(getStatsString("Defence", weapon.getDefence(), true));
+    stringBuilder.append(getStatsString("Range", weapon.getRange(), false));
+    stringBuilder.append(getStatsString("Rate", weapon.getRate(), false));
     stringBuilder.append( getTagsString( weapon.getTags() ) );
     
     return stringBuilder.toString();
@@ -49,22 +49,22 @@ public class EquipmentStringBuilder implements IEquipmentStringBuilder {
 
   private String getStatsString(String keyPart, Integer value, boolean printSignum) {
     if (value == null) {
-      return ""; //$NON-NLS-1$
+      return "";
     }
-    String signum = printSignum && value >= 0 ? "+" : ""; //$NON-NLS-1$ //$NON-NLS-2$
+    String signum = printSignum && value >= 0 ? "+" : "";
     return createtNewStatsStart(keyPart) + signum + value;
   }
   
   private String getTagsString( Identified[] tags ) {
       StringBuilder result = new StringBuilder();
       for( Identified tag : tags ) {
-          result.append( " " + tag.getId() );
+          result.append(" ").append(tag.getId());
       }
       return result.toString();
   }
 
   private String createtNewStatsStart(String keyPart) {
-    return " " + resources.getString("Equipment.Stats.Short." + keyPart) + ":"; //$NON-NLS-1$//$NON-NLS-2$ //$NON-NLS-3$
+    return " " + resources.getString("Equipment.Stats.Short." + keyPart) + ":";
   }
 
   @Override
@@ -82,7 +82,7 @@ public class EquipmentStringBuilder implements IEquipmentStringBuilder {
       return createArtifactString((IArtifactStats) equipment);
     if (equipment instanceof ITraitModifyingStats)
       return createTraitModifyingString((ITraitModifyingStats) equipment);
-    throw new UnreachableCodeReachedException("All subclasses covered. Something appears to be wrong."); //$NON-NLS-1$
+    throw new UnreachableCodeReachedException("All subclasses covered. Something appears to be wrong.");
   }
 
   private String createArtifactString(IArtifactStats stats) {
@@ -95,11 +95,11 @@ public class EquipmentStringBuilder implements IEquipmentStringBuilder {
   private String createShieldString(IShieldStats stats) {
     StringBuilder stringBuilder = new StringBuilder();
     stringBuilder.append(stats.getName().getId());
-    stringBuilder.append(":"); //$NON-NLS-1$
-    stringBuilder.append(getStatsString("CloseDV", stats.getCloseCombatBonus(), true)); //$NON-NLS-1$
-    stringBuilder.append(getStatsString("RangedDV", stats.getRangedCombatBonus(), true)); //$NON-NLS-1$
-    stringBuilder.append(getStatsString("MobilityPenalty", stats.getMobilityPenalty(), false)); //$NON-NLS-1$
-    stringBuilder.append(getStatsString("Fatigue", stats.getFatigue(), false)); //$NON-NLS-1$
+    stringBuilder.append(":");
+    stringBuilder.append(getStatsString("CloseDV", stats.getCloseCombatBonus(), true));
+    stringBuilder.append(getStatsString("RangedDV", stats.getRangedCombatBonus(), true));
+    stringBuilder.append(getStatsString("MobilityPenalty", stats.getMobilityPenalty(), false));
+    stringBuilder.append(getStatsString("Fatigue", stats.getFatigue(), false));
     return stringBuilder.toString();
   }
 
@@ -143,23 +143,23 @@ public class EquipmentStringBuilder implements IEquipmentStringBuilder {
   private String createArmourString(IArmourStats armourStats) {
     StringBuilder stringBuilder = new StringBuilder();
     stringBuilder.append(armourStats.getName().getId());
-    stringBuilder.append(":"); //$NON-NLS-1$
-    stringBuilder.append(createtNewStatsStart("Soak")); //$NON-NLS-1$
-    stringBuilder.append(createArmourStat(armourStats.getSoak(HealthType.Bashing), "+")); //$NON-NLS-1$
-    stringBuilder.append("/"); //$NON-NLS-1$
-    stringBuilder.append(createArmourStat(armourStats.getSoak(HealthType.Lethal), "+")); //$NON-NLS-1$
-    stringBuilder.append("/"); //$NON-NLS-1$
-    stringBuilder.append(createArmourStat(armourStats.getSoak(HealthType.Aggravated), "+")); //$NON-NLS-1$
-    stringBuilder.append(createtNewStatsStart("Hardness")); //$NON-NLS-1$
-    stringBuilder.append(createArmourStat(armourStats.getHardness(HealthType.Bashing), "")); //$NON-NLS-1$
-    stringBuilder.append("/"); //$NON-NLS-1$
-    stringBuilder.append(createArmourStat(armourStats.getHardness(HealthType.Lethal), "")); //$NON-NLS-1$
-    stringBuilder.append(getStatsString("MobilityPenalty", armourStats.getMobilityPenalty(), false)); //$NON-NLS-1$
-    stringBuilder.append(getStatsString("Fatigue", armourStats.getFatigue(), false)); //$NON-NLS-1$
+    stringBuilder.append(":");
+    stringBuilder.append(createtNewStatsStart("Soak"));
+    stringBuilder.append(createArmourStat(armourStats.getSoak(HealthType.Bashing), "+"));
+    stringBuilder.append("/");
+    stringBuilder.append(createArmourStat(armourStats.getSoak(HealthType.Lethal), "+"));
+    stringBuilder.append("/");
+    stringBuilder.append(createArmourStat(armourStats.getSoak(HealthType.Aggravated), "+"));
+    stringBuilder.append(createtNewStatsStart("Hardness"));
+    stringBuilder.append(createArmourStat(armourStats.getHardness(HealthType.Bashing), ""));
+    stringBuilder.append("/");
+    stringBuilder.append(createArmourStat(armourStats.getHardness(HealthType.Lethal), ""));
+    stringBuilder.append(getStatsString("MobilityPenalty", armourStats.getMobilityPenalty(), false));
+    stringBuilder.append(getStatsString("Fatigue", armourStats.getFatigue(), false));
     return stringBuilder.toString();
   }
 
   private CharSequence createArmourStat(Integer soak, String prefix) {
-    return soak == null ? "-" : prefix + soak; //$NON-NLS-1$
+    return soak == null ? "-" : prefix + soak;
   }
 }

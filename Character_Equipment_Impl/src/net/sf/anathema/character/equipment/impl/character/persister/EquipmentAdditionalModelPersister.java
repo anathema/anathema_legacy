@@ -20,15 +20,15 @@ import org.dom4j.Element;
 
 public class EquipmentAdditionalModelPersister implements IAdditionalPersister {
 
-  private static final String TAG_ITEM = "item"; //$NON-NLS-1$
-  private static final String TAG_TEMPLATE_ID = "templateId"; //$NON-NLS-1$
-  private static final String TAG_PRINT_STATS = "printedStats"; //$NON-NLS-1$
-  private static final String TAG_SPECIALTY_OPTION = "specialty"; //$NON-NLS-1$
-  private static final String TAG_CUSTOM_TITLE = "customTitle"; //$NON-NLS-1$
-  private static final String TAG_CUSTOM_DESCRIPTION = "customDescription"; //$NON-NLS-1$
-  private static final String ATTRIB_NAME = "name"; //$NON-NLS-1$
-  private static final String ATTRIB_TYPE = "type"; //$NON-NLS-1$
-  private static final String TAG_MATERIAL = "material"; //$NON-NLS-1$
+  private static final String TAG_ITEM = "item";
+  private static final String TAG_TEMPLATE_ID = "templateId";
+  private static final String TAG_PRINT_STATS = "printedStats";
+  private static final String TAG_SPECIALTY_OPTION = "specialty";
+  private static final String TAG_CUSTOM_TITLE = "customTitle";
+  private static final String TAG_CUSTOM_DESCRIPTION = "customDescription";
+  private static final String ATTRIB_NAME = "name";
+  private static final String ATTRIB_TYPE = "type";
+  private static final String TAG_MATERIAL = "material";
   private IMessaging messageIndicator;
 
   public EquipmentAdditionalModelPersister(IMessaging messageIndicator) {
@@ -85,12 +85,12 @@ public class EquipmentAdditionalModelPersister implements IAdditionalPersister {
       try {
         item = equipmentModel.addEquipmentObjectFor(templateId, magicalMaterial);
       } catch (MissingMaterialException e) {
-        messageIndicator.addMessage("EquipmentPersistence.NoMaterialFound", //$NON-NLS-1$
+        messageIndicator.addMessage("EquipmentPersistence.NoMaterialFound",
                 MessageType.WARNING, templateId);
         continue;
       }
       if (item == null) {
-        messageIndicator.addMessage("EquipmentPersistence.NoTemplateFound", //$NON-NLS-1$
+        messageIndicator.addMessage("EquipmentPersistence.NoTemplateFound",
                 MessageType.WARNING, templateId);
         continue;
       }

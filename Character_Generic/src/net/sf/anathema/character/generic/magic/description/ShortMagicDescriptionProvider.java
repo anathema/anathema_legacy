@@ -41,11 +41,11 @@ public class ShortMagicDescriptionProvider implements MagicDescriptionProvider {
       }
 
       private String getDescriptionPattern(String id, String genericId) {
-        if (resources.supportsKey(id + ".Description")) { //$NON-NLS-1$
-          return resources.getString(id + ".Description"); //$NON-NLS-1$
+        if (resources.supportsKey(id + ".Description")) {
+          return resources.getString(id + ".Description");
         }
-        if (resources.supportsKey(genericId + ".Description.Long")) {//$NON-NLS-1$
-          return resources.getString(genericId + ".Description.Long"); //$NON-NLS-1$
+        if (resources.supportsKey(genericId + ".Description.Long")) {
+          return resources.getString(genericId + ".Description.Long");
         }
         return "";
       }

@@ -33,10 +33,7 @@ public class LookAndFeelPreferencesElement implements IPreferencesElement {
   }
 
   private static boolean compareClassNames(String name1, String name2) {
-    if (name1 == null || name2 == null) {
-      return false;
-    }
-    return name1.equals(name2);
+    return !(name1 == null || name2 == null) && name1.equals(name2);
   }
 
   private void selectClass(String className) {
@@ -83,9 +80,10 @@ public class LookAndFeelPreferencesElement implements IPreferencesElement {
     }
   }
 
+  @SuppressWarnings("unchecked")
   @Override
   public void addComponent(JPanel panel, Resources resources) {
-    JLabel label = new JLabel(resources.getString("AnathemaCore.Tools.Preferences.LookAndFeelCaption")); //$NON-NLS-1$
+    JLabel label = new JLabel(resources.getString("AnathemaCore.Tools.Preferences.LookAndFeelCaption"));
     // This implementation is a bit nasty but I (kelemen@github.com) was not sure
     // about the intended contract of some methods. So to be on the safe side,
     // I simply mimicked the previous implementation.
@@ -135,6 +133,7 @@ public class LookAndFeelPreferencesElement implements IPreferencesElement {
     return className == null || isLookAndFeelClass(className);
   }
 
+  @SuppressWarnings("SimplifiableIfStatement")
   @Override
   public boolean isDirty() {
     LookAndFeelItem currentSelected = selected;

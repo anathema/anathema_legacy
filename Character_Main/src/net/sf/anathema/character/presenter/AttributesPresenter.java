@@ -20,7 +20,7 @@ public class AttributesPresenter implements IContentPresenter {
     IIdentifiedTraitTypeGroup[] traitTypeGroups = character.getTraitConfiguration().getAttributeTypeGroups();
     this.attributeView = factory.createView(1);
     this.presenter = new FavorableTraitConfigurationPresenter(traitTypeGroups, character, attributeView, resources);
-    this.contentHeader = resources.getString("CardView.AttributeConfiguration.Title"); //$NON-NLS-1$
+    this.contentHeader = resources.getString("CardView.AttributeConfiguration.Title");
   }
 
   @Override
@@ -30,6 +30,6 @@ public class AttributesPresenter implements IContentPresenter {
 
   @Override
   public void initPresentation() {
-    presenter.init("AttributeGroupType.Name"); //$NON-NLS-1$
+    presenter.init("AttributeGroupType.Name");
   }
 }

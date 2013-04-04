@@ -26,7 +26,7 @@ public class SecondEditionPowersEncoder implements ContentEncoder {
   private final boolean isHorizontal;
   private int tellMDV;
 
-  private static final TemplateType castelessType = new TemplateType(LunarCharacterModule.type, new Identifier("Casteless")); //$NON-NLS-1$
+  private static final TemplateType castelessType = new TemplateType(LunarCharacterModule.type, new Identifier("Casteless"));
 
   public SecondEditionPowersEncoder(Resources resources, boolean isHorizontal) {
     this.resources = resources;

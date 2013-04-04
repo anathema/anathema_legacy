@@ -25,7 +25,7 @@ public class PropertiesMatcher {
 
   public static void main(String[] args) throws IOException {
     SupportedLocale locale = (SupportedLocale) JOptionPane.showInputDialog(null, "Choose Locale:", "Locale",
-            JOptionPane.QUESTION_MESSAGE, null, SupportedLocale.values(), null); //$NON-NLS-1$ //$NON-NLS-2$
+            JOptionPane.QUESTION_MESSAGE, null, SupportedLocale.values(), null);
     JDirectoryChooser chooser = new JDirectoryChooser();
     if (chooser.showOpenDialog(null) != JFileChooser.APPROVE_OPTION) {
       return;

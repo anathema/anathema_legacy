@@ -50,15 +50,15 @@ public class RepositoryItemImportPresenter implements Presenter {
       protected void execute(Component parentComponent) {
         try {
           Path loadFile = FileChoosingUtilities.chooseFile(
-              resources.getString("AnathemaCore.Tools.RepositoryView.ImportOk"), parentComponent, new ZipFileFilter(resources)); //$NON-NLS-1$
+              resources.getString("AnathemaCore.Tools.RepositoryView.ImportOk"), parentComponent, new ZipFileFilter(resources));
           if (loadFile == null) {
             return;
           }
           ZipFile importZipFile = new ZipFile(loadFile.toFile());
           MultiEntryMap<String, ZipEntry> entriesByItem = groupEntriesByItems(importZipFile);
           for (String comment : entriesByItem.keySet()) {
-            String[] splitComment = comment.split("#", 3); //$NON-NLS-1$
-            if (!splitComment[0].equals(resources.getString("Anathema.Version.Numeric"))) { //$NON-NLS-1$
+            String[] splitComment = comment.split("#", 3);
+            if (!splitComment[0].equals(resources.getString("Anathema.Version.Numeric"))) {
               continue;
             }
             IItemType type = model.getItemTypeForId(splitComment[1]);
@@ -73,29 +73,29 @@ public class RepositoryItemImportPresenter implements Presenter {
             model.refreshItem(type, handler.getNewId());
           }
           importZipFile.close();
-          messaging.addMessage("AnathemaCore.Tools.RepositoryView.ImportDoneMessage", entriesByItem.keySet().size()); //$NON-NLS-1$
+          messaging.addMessage("AnathemaCore.Tools.RepositoryView.ImportDoneMessage", entriesByItem.keySet().size());
         }
         catch (ZipException e) {
           MessageDialogFactory.showMessageDialog(parentComponent, new Message(
-              resources.getString("AnathemaCore.Tools.RepositoryView.NoZipFileError"), //$NON-NLS-1$
+              resources.getString("AnathemaCore.Tools.RepositoryView.NoZipFileError"),
               e));
           Logger.getLogger(getClass()).error(e);
         }
         catch (IOException e) {
           MessageDialogFactory.showMessageDialog(parentComponent, new Message(
-              resources.getString("AnathemaCore.Tools.RepositoryView.FileError"), //$NON-NLS-1$
+              resources.getString("AnathemaCore.Tools.RepositoryView.FileError"),
               e));
           Logger.getLogger(getClass()).error(e);
         }
         catch (RepositoryException e) {
           MessageDialogFactory.showMessageDialog(parentComponent, new Message(
-              resources.getString("AnathemaCore.Tools.RepositoryView.RepositoryError"), //$NON-NLS-1$
+              resources.getString("AnathemaCore.Tools.RepositoryView.RepositoryError"),
               e));
           Logger.getLogger(getClass()).error(e);
         }
       }
     };
-    action.setToolTipText(resources.getString("AnathemaCore.Tools.RepositoryView.ImportToolTip")); //$NON-NLS-1$
+    action.setToolTipText(resources.getString("AnathemaCore.Tools.RepositoryView.ImportToolTip"));
     view.addActionButton(action);
   }
 

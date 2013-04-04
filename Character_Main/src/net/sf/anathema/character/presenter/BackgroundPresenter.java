@@ -74,7 +74,7 @@ public class BackgroundPresenter implements IContentPresenter {
   public void initPresentation() {
     Icon addIcon = new BasicUi().getAddIcon();
     final IButtonControlledComboEditView<Object> view =
-            configurationView.addBackgroundSelectionView(resources.getString("BackgroundConfigurationView.SelectionCombo.Label"), //$NON-NLS-1$
+            configurationView.addBackgroundSelectionView(resources.getString("BackgroundConfigurationView.SelectionCombo.Label"),
                     new BackgroundListRenderer(displayer), new BackgroundBoxEditor(displayer), addIcon);
     view.addEditChangedListener(new ObjectValueListener<String>() {
       @Override

@@ -10,7 +10,7 @@ public class StaticPainToleranceCharm extends StaticMultiLearnableCharm implemen
 
   public StaticPainToleranceCharm(String charmId, int learnCount, int[] painToleranceLevels) {
     super(charmId, learnCount);
-    Preconditions.checkArgument(painToleranceLevels.length == learnCount, "Number of pain tolerance levels must equal learn count."); //$NON-NLS-1$
+    Preconditions.checkArgument(painToleranceLevels.length == learnCount, "Number of pain tolerance levels must equal learn count.");
     this.painToleranceLevels = painToleranceLevels;
   }
 

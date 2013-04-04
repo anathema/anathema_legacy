@@ -16,40 +16,40 @@ import net.sf.anathema.lib.xml.DocumentUtilities;
 import org.dom4j.Element;
 
 public class GenericTraitTemplateFactoryParserTest extends TestCase {
-  String xml = "<traitTemplates >" //$NON-NLS-1$
-      + "<backgrounds>" //$NON-NLS-1$
-      + "<defaultTrait startValue=\"0\" lowerableState=\"LowerableRegain\">" //$NON-NLS-1$
-      + "<limitation type=\"Static\" value=\"5\"/>" //$NON-NLS-1$
-      + "<minimum value=\"0\"/>" //$NON-NLS-1$
-      + "</defaultTrait>" //$NON-NLS-1$
-      + "</backgrounds>" //$NON-NLS-1$
-      + "<abilities>" //$NON-NLS-1$
-      + "<defaultTrait startValue=\"0\" lowerableState=\"Default\">" //$NON-NLS-1$
-      + "<limitation type=\"Essence\"/>" //$NON-NLS-1$
-      + "<minimum value=\"0\"/>" //$NON-NLS-1$
-      + "</defaultTrait>" //$NON-NLS-1$
-      + "</abilities>" //$NON-NLS-1$
-      + "<attributes>" //$NON-NLS-1$
-      + "<defaultTrait startValue=\"1\" lowerableState=\"Default\">" //$NON-NLS-1$
-      + "<limitation type=\"Essence\"/>" //$NON-NLS-1$
-      + "<minimum value=\"1\"/>" //$NON-NLS-1$
-      + "</defaultTrait>" //$NON-NLS-1$
-      + "</attributes>" //$NON-NLS-1$
-      + "<virtues>" //$NON-NLS-1$
-      + "<defaultTrait startValue=\"1\" lowerableState=\"Default\">" //$NON-NLS-1$
-      + "<limitation type=\"Static\" value=\"5\"/>" //$NON-NLS-1$
-      + "<minimum value=\"1\"/>" //$NON-NLS-1$
-      + "</defaultTrait>" //$NON-NLS-1$
-      + "</virtues>" //$NON-NLS-1$
-      + "<essence startValue=\"1\" lowerableState=\"Default\">" //$NON-NLS-1$
-      + "<limitation type=\"Static\" value=\"1\"/>" //$NON-NLS-1$
-      + "<minimum value=\"1\"/>" //$NON-NLS-1$
-      + "</essence>" //$NON-NLS-1$
-      + "<willpower startValue=\"2\" lowerableState=\"Default\">" //$NON-NLS-1$
-      + "<limitation type=\"Static\" value=\"10\"/>" //$NON-NLS-1$
-      + "<minimum value=\"2\"/>" //$NON-NLS-1$
-      + "</willpower>" //$NON-NLS-1$
-      + "</traitTemplates>"; //$NON-NLS-1$
+  String xml = "<traitTemplates >"
+      + "<backgrounds>"
+      + "<defaultTrait startValue=\"0\" lowerableState=\"LowerableRegain\">"
+      + "<limitation type=\"Static\" value=\"5\"/>"
+      + "<minimum value=\"0\"/>"
+      + "</defaultTrait>"
+      + "</backgrounds>"
+      + "<abilities>"
+      + "<defaultTrait startValue=\"0\" lowerableState=\"Default\">"
+      + "<limitation type=\"Essence\"/>"
+      + "<minimum value=\"0\"/>"
+      + "</defaultTrait>"
+      + "</abilities>"
+      + "<attributes>"
+      + "<defaultTrait startValue=\"1\" lowerableState=\"Default\">"
+      + "<limitation type=\"Essence\"/>"
+      + "<minimum value=\"1\"/>"
+      + "</defaultTrait>"
+      + "</attributes>"
+      + "<virtues>"
+      + "<defaultTrait startValue=\"1\" lowerableState=\"Default\">"
+      + "<limitation type=\"Static\" value=\"5\"/>"
+      + "<minimum value=\"1\"/>"
+      + "</defaultTrait>"
+      + "</virtues>"
+      + "<essence startValue=\"1\" lowerableState=\"Default\">"
+      + "<limitation type=\"Static\" value=\"1\"/>"
+      + "<minimum value=\"1\"/>"
+      + "</essence>"
+      + "<willpower startValue=\"2\" lowerableState=\"Default\">"
+      + "<limitation type=\"Static\" value=\"10\"/>"
+      + "<minimum value=\"2\"/>"
+      + "</willpower>"
+      + "</traitTemplates>";
   private DummyXmlTemplateRegistry<GenericTraitTemplateFactory> templateFactoryRegistry;
   private GenericTraitTemplateFactoryParser parser;
   private DummyXmlTemplateRegistry<GenericTraitTemplatePool> templatePoolRegistry;
@@ -81,7 +81,7 @@ public class GenericTraitTemplateFactoryParserTest extends TestCase {
   public void testParseBackground() throws Exception {
     Element traitCollectionElement = DocumentUtilities.read(xml).getRootElement();
     GenericTraitTemplateFactory templateFactory = parser.parseTemplate(traitCollectionElement);
-    IBackgroundTemplate backgroundType = new SimpleBackgroundTemplate("testBackground"); //$NON-NLS-1$
+    IBackgroundTemplate backgroundType = new SimpleBackgroundTemplate("testBackground");
     ITraitTemplate backgroundTraitTemplate = templateFactory.createBackgroundTemplate(backgroundType);
     AnathemaCharacterAssert.assertStaticSimpleTraitTemplate(0, 0, 0, 5, backgroundTraitTemplate);
   }

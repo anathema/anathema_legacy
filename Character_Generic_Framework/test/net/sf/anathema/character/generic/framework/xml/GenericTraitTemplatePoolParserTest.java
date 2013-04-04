@@ -22,12 +22,12 @@ public class GenericTraitTemplatePoolParserTest extends TestCase {
   }
 
   public void testParseDefault() throws Exception {
-    String xml = "<backgrounds>" //$NON-NLS-1$
-        + "<defaultTrait startValue=\"0\" lowerableState=\"LowerableRegain\">" //$NON-NLS-1$
-        + "<limitation type=\"Static\" value=\"5\"/>" //$NON-NLS-1$
-        + "<minimum value=\"0\"/>" //$NON-NLS-1$
-        + "</defaultTrait>" //$NON-NLS-1$
-        + "</backgrounds>";//$NON-NLS-1$
+    String xml = "<backgrounds>"
+        + "<defaultTrait startValue=\"0\" lowerableState=\"LowerableRegain\">"
+        + "<limitation type=\"Static\" value=\"5\"/>"
+        + "<minimum value=\"0\"/>"
+        + "</defaultTrait>"
+        + "</backgrounds>";
     Element traitCollectionElement = DocumentUtilities.read(xml).getRootElement();
     GenericTraitTemplatePool pool = abilityParser.parseTemplate(traitCollectionElement);
     ITraitTemplate traitTemplate = pool.getTemplate(AbilityType.Archery);
@@ -35,16 +35,16 @@ public class GenericTraitTemplatePoolParserTest extends TestCase {
   }
 
   public void testParseSpecialTemplate() throws Exception {
-    String specialXml = "<root>" //$NON-NLS-1$
-        + "<defaultTrait startValue=\"0\" lowerableState=\"Default\">" //$NON-NLS-1$
-        + "<limitation type=\"Static\" value=\"5\"/>" //$NON-NLS-1$
-        + "<minimum value=\"0\"/>" //$NON-NLS-1$
-        + "</defaultTrait>" //$NON-NLS-1$
-        + "<specialTrait id=\"Sail\" startValue=\"2\" zeroLevel=\"0\" lowerableState=\"Default\">" //$NON-NLS-1$
-        + "<limitation type=\"Static\" value=\"7\"/>" //$NON-NLS-1$
-        + "<minimum value=\"2\"/>" //$NON-NLS-1$
-        + "</specialTrait>" //$NON-NLS-1$
-        + "</root>";//$NON-NLS-1$
+    String specialXml = "<root>"
+        + "<defaultTrait startValue=\"0\" lowerableState=\"Default\">"
+        + "<limitation type=\"Static\" value=\"5\"/>"
+        + "<minimum value=\"0\"/>"
+        + "</defaultTrait>"
+        + "<specialTrait id=\"Sail\" startValue=\"2\" zeroLevel=\"0\" lowerableState=\"Default\">"
+        + "<limitation type=\"Static\" value=\"7\"/>"
+        + "<minimum value=\"2\"/>"
+        + "</specialTrait>"
+        + "</root>";
     Element traitCollectionElement = DocumentUtilities.read(specialXml).getRootElement();
     GenericTraitTemplatePool pool = abilityParser.parseTemplate(traitCollectionElement);
     ITraitTemplate traitTemplate = pool.getTemplate(AbilityType.Archery);
@@ -66,18 +66,18 @@ public class GenericTraitTemplatePoolParserTest extends TestCase {
   }
 
   public void testAlternateMinimumAbilityXml() throws Exception {
-    String xml = "<root>" //$NON-NLS-1$
-        + "       <alternateMinimumTraits count=\"1\" value=\"1\">" //$NON-NLS-1$
-        + "           <trait id=\"Archery\" startValue=\"0\" lowerableState=\"Default\" zeroLevel=\"0\">" //$NON-NLS-1$
-        + "               <limitation type=\"Essence\"/>" //$NON-NLS-1$
-        + "               <minimum value=\"0\"/>" //$NON-NLS-1$
-        + "           </trait>" //$NON-NLS-1$
-        + "           <trait id=\"MartialArts\" startValue=\"1\" lowerableState=\"Default\" zeroLevel=\"0\">" //$NON-NLS-1$
-        + "               <limitation type=\"Essence\"/>" //$NON-NLS-1$
-        + "               <minimum value=\"0\"/>" //$NON-NLS-1$
-        + "           </trait>" //$NON-NLS-1$
-        + "       </alternateMinimumTraits>" //$NON-NLS-1$
-        + "   </root>"; //$NON-NLS-1$
+    String xml = "<root>"
+        + "       <alternateMinimumTraits count=\"1\" value=\"1\">"
+        + "           <trait id=\"Archery\" startValue=\"0\" lowerableState=\"Default\" zeroLevel=\"0\">"
+        + "               <limitation type=\"Essence\"/>"
+        + "               <minimum value=\"0\"/>"
+        + "           </trait>"
+        + "           <trait id=\"MartialArts\" startValue=\"1\" lowerableState=\"Default\" zeroLevel=\"0\">"
+        + "               <limitation type=\"Essence\"/>"
+        + "               <minimum value=\"0\"/>"
+        + "           </trait>"
+        + "       </alternateMinimumTraits>"
+        + "   </root>";
     GenericTraitTemplatePool pool = abilityParser.parseTemplate(DocumentUtilities.read(xml).getRootElement());
     ITraitTemplate brawlTemplate = pool.getTemplate(AbilityType.MartialArts);
     assertEquals(1, brawlTemplate.getStartValue());

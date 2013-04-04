@@ -91,7 +91,8 @@ public class ProperHierarchicalGraph implements IProperHierarchicalGraph, Clonea
 
   @Override
   public ISimpleNode[] getNodesByLayer(int layer) {
-    return nodesByLayer.get(layer).toArray(new ISimpleNode[0]);
+    List<ISimpleNode> nodeList = nodesByLayer.get(layer);
+    return nodeList.toArray(new ISimpleNode[nodeList.size()]);
   }
 
   @Override
@@ -106,7 +107,7 @@ public class ProperHierarchicalGraph implements IProperHierarchicalGraph, Clonea
     List<ISimpleNode> orderedNodeList = Arrays.asList(orderedNodes);
     boolean newNodes = !layerNodes.containsAll(orderedNodeList);
     if (!equalSize || newNodes) {
-      throw new IllegalArgumentException("Layer content must not be changed " + Arrays.deepToString(orderedNodes)); //$NON-NLS-1$
+      throw new IllegalArgumentException("Layer content must not be changed " + Arrays.deepToString(orderedNodes));
     }
     nodesByLayer.put(layer, orderedNodeList);
     if (layer == 1) {
@@ -148,6 +149,7 @@ public class ProperHierarchicalGraph implements IProperHierarchicalGraph, Clonea
     return crossCount;
   }
 
+  @SuppressWarnings("CloneDoesntDeclareCloneNotSupportedException")
   @Override
   public ProperHierarchicalGraph clone() {
     ProperHierarchicalGraph clone;

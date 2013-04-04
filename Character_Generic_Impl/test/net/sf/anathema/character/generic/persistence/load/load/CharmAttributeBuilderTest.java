@@ -16,11 +16,11 @@ public class CharmAttributeBuilderTest {
 
   @Test
   public void testGenericAttributes() throws Exception {
-    String xml = "<charm><genericCharmAttribute attribute=\"test\"/></charm>"; //$NON-NLS-1$
+    String xml = "<charm><genericCharmAttribute attribute=\"test\"/></charm>";
     Element rootElement = DocumentUtilities.read(xml).getRootElement();
     ICharmAttribute[] attribute = new CharmAttributeBuilder().buildCharmAttributes(rootElement, new ValuedTraitType(
         AbilityType.MartialArts,
         3));
-    assertTrue(ArrayUtils.contains(attribute, new CharmAttribute("testMartialArts", false))); //$NON-NLS-1$
+    assertTrue(ArrayUtils.contains(attribute, new CharmAttribute("testMartialArts", false)));
   }
 }

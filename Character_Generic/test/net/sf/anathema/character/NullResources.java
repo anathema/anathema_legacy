@@ -11,10 +11,10 @@ public class NullResources implements Resources {
     }
     StringBuilder stringBuilder = new StringBuilder();
     stringBuilder.append(key);
-    stringBuilder.append(","); //$NON-NLS-1$
+    stringBuilder.append(",");
     for (Object arg : arguments) {
       stringBuilder.append(String.valueOf(arg));
-      stringBuilder.append(","); //$NON-NLS-1$
+      stringBuilder.append(",");
     }
     return stringBuilder.toString();
   }

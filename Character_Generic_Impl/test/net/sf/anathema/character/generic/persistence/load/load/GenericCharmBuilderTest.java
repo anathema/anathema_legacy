@@ -35,10 +35,10 @@ public class GenericCharmBuilderTest {
 
   @Test
   public void testReadGenericCharmId() throws Exception {
-    Element xml = CharmXmlTestUtils.createCharmElement("Dummy.Generic"); //$NON-NLS-1$
+    Element xml = CharmXmlTestUtils.createCharmElement("Dummy.Generic");
     builder.setType(AbilityType.Archery);
     Charm charm = builder.buildCharm(xml);
-    assertEquals("Dummy.Generic.Archery", charm.getId()); //$NON-NLS-1$
+    assertEquals("Dummy.Generic.Archery", charm.getId());
   }
 
   private void removeAttribute(Element element, String attribute) {
@@ -47,39 +47,39 @@ public class GenericCharmBuilderTest {
 
   @Test
   public void testReadGenericCharmGroup() throws Exception {
-    Element xml = CharmXmlTestUtils.createCharmElement("Dummy.Generic"); //$NON-NLS-1$
+    Element xml = CharmXmlTestUtils.createCharmElement("Dummy.Generic");
     builder.setType(AbilityType.Archery);
-    removeAttribute(xml, "group"); //$NON-NLS-1$
+    removeAttribute(xml, "group");
     Charm charm = builder.buildCharm(xml);
-    assertEquals("Archery", charm.getGroupId()); //$NON-NLS-1$
+    assertEquals("Archery", charm.getGroupId());
   }
 
   @Test
   public void testReadGenericPrerequisiteFirst() throws Exception {
-    Element xml = CharmXmlTestUtils.createCharmElement("Dummy.Generic"); //$NON-NLS-1$
+    Element xml = CharmXmlTestUtils.createCharmElement("Dummy.Generic");
     builder.setType(AbilityType.Archery);
-    Element prerequisites = xml.element("prerequisite"); //$NON-NLS-1$
-    removeAttribute(prerequisites.element("trait"), "id"); //$NON-NLS-1$ //$NON-NLS-2$
+    Element prerequisites = xml.element("prerequisite");
+    removeAttribute(prerequisites.element("trait"), "id");
     Charm charm = builder.buildCharm(xml);
     assertEquals(AbilityType.Archery, charm.getPrimaryTraitType());
   }
 
   @Test
   public void testReadGenericPrerequisiteSecond() throws Exception {
-    Element xml = CharmXmlTestUtils.createCharmElement("Dummy.Generic"); //$NON-NLS-1$
+    Element xml = CharmXmlTestUtils.createCharmElement("Dummy.Generic");
     builder.setType(AbilityType.Athletics);
-    Element prerequisites = xml.element("prerequisite"); //$NON-NLS-1$
-    removeAttribute(prerequisites.element("trait"), "id"); //$NON-NLS-1$//$NON-NLS-2$
+    Element prerequisites = xml.element("prerequisite");
+    removeAttribute(prerequisites.element("trait"), "id");
     Charm charm = builder.buildCharm(xml);
     assertEquals(AbilityType.Athletics, charm.getPrimaryTraitType());
   }
 
   @Test
   public void testReadGenericPrerequisiteHigherValue() throws Exception {
-    Element xml = CharmXmlTestUtils.createCharmElement("Dummy.Generic"); //$NON-NLS-1$
+    Element xml = CharmXmlTestUtils.createCharmElement("Dummy.Generic");
     builder.setType(AbilityType.Archery);
-    Element prerequisites = xml.element("prerequisite"); //$NON-NLS-1$
-    prerequisites.element("trait").addAttribute("value", "3"); //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
+    Element prerequisites = xml.element("prerequisite");
+    prerequisites.element("trait").addAttribute("value", "3");
     Charm charm = builder.buildCharm(xml);
     assertEquals(3, charm.getPrerequisites()[0].getCurrentValue());
   }

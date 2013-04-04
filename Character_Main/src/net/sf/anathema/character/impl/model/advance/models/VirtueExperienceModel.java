@@ -11,7 +11,7 @@ public class VirtueExperienceModel extends AbstractIntegerValueModel {
   private final IPointCostCalculator calculator;
 
   public VirtueExperienceModel(ICoreTraitConfiguration traitConfiguration, IPointCostCalculator calculator) {
-    super("Experience", "Virtues"); //$NON-NLS-1$ //$NON-NLS-2$
+    super("Experience", "Virtues");
     this.traitConfiguration = traitConfiguration;
     this.calculator = calculator;
   }

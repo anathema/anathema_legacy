@@ -89,14 +89,14 @@ public class ExperienceConfigurationPresenter implements IContentPresenter {
 
   @Override
   public ContentView getTabContent() {
-    String title = resources.getString("CardView.ExperienceConfiguration.Title");//$NON-NLS-1$
+    String title = resources.getString("CardView.ExperienceConfiguration.Title");
     return new SimpleViewContentView(new ContentProperties(title), experienceView);
   }
 
   private void initTableModel() {
     String[] headers = new String[2];
-    headers[DESCRIPTION_INDEX] = resources.getString("CardView.Experience.Description"); //$NON-NLS-1$
-    headers[VALUE_INDEX] = resources.getString("CardView.Experience.ExperiencePoints"); //$NON-NLS-1$
+    headers[DESCRIPTION_INDEX] = resources.getString("CardView.Experience.Description");
+    headers[VALUE_INDEX] = resources.getString("CardView.Experience.ExperiencePoints");
     this.tableModel = new DefaultTableModel(headers, 0);
     for (IExperiencePointEntry entry : experiencePoints.getAllEntries()) {
       addToView(entry);

@@ -15,7 +15,7 @@ public abstract class AbstractDefenceWeaponStatsGroup extends AbstractValueEquip
 
   public AbstractDefenceWeaponStatsGroup(Resources resources, IGenericCharacter character,
                                          IGenericTraitCollection traitCollection) {
-    super(resources, "Defence"); //$NON-NLS-1$
+    super(resources, "Defence");
     this.character = character;
     this.traitCollection = traitCollection;
   }

@@ -85,7 +85,7 @@ public class FangStats extends AbstractCombatStats implements IWeaponStats {
 
   @Override
   public Identified getName() {
-    return new Identifier("Abyssal.Fangs"); //$NON-NLS-1$
+    return new Identifier("Abyssal.Fangs");
   }
 
   @Override

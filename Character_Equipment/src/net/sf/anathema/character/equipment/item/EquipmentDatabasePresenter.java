@@ -42,7 +42,7 @@ public class EquipmentDatabasePresenter implements Presenter {
   }
 
   private String getColonString(String key) {
-    return resources.getString(key) + ":"; //$NON-NLS-1$
+    return resources.getString(key) + ":";
   }
 
   private void addEditTemplateActions() {

@@ -51,12 +51,12 @@ public class BeastformGenericTraitCollection implements IGenericTraitCollection 
 
   @Override
   public IFavorableGenericTrait getFavorableTrait(ITraitType type) {
-    throw new UnsupportedOperationException("Irrelevant for DBTGenericTraitCollection."); //$NON-NLS-1$
+    throw new UnsupportedOperationException("Irrelevant for DBTGenericTraitCollection.");
   }
 
   @Override
   public IGenericTrait[] getTraits(ITraitType[] traitTypes) {
-    throw new UnsupportedOperationException("Irrelevant for DBTGenericTraitCollection."); //$NON-NLS-1$
+    throw new UnsupportedOperationException("Irrelevant for DBTGenericTraitCollection.");
   }
 
   @Override

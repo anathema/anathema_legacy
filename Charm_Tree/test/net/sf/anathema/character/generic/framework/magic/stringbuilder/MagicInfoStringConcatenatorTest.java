@@ -11,34 +11,34 @@ public class MagicInfoStringConcatenatorTest extends TestCase {
   protected void setUp() throws Exception {
     super.setUp();
     DummyResources resources = new DummyResources();
-    resources.putString("Charms.Cost.None", "None"); //$NON-NLS-1$//$NON-NLS-2$
+    resources.putString("Charms.Cost.None", "None");
     concatenator = new MagicInfoStringConcatenator(resources);
   }
 
   public void testNoCost() throws Exception {
-    String displayString = concatenator.buildCostString("", "", "", ""); //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$ //$NON-NLS-4$
-    assertEquals("None", displayString); //$NON-NLS-1$
+    String displayString = concatenator.buildCostString("", "", "", "");
+    assertEquals("None", displayString);
   }
 
   public void testOneValueOnly() throws Exception {
-    String expected = "Cost"; //$NON-NLS-1$
+    String expected = "Cost";
     String displayString;
-    displayString = concatenator.buildCostString(expected, "", "", "");//$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
+    displayString = concatenator.buildCostString(expected, "", "", "");
     assertEquals(expected, displayString);
-    displayString = concatenator.buildCostString("", expected, "", ""); //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
+    displayString = concatenator.buildCostString("", expected, "", "");
     assertEquals(expected, displayString);
-    displayString = concatenator.buildCostString("", "", expected, ""); //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
+    displayString = concatenator.buildCostString("", "", expected, "");
     assertEquals(expected, displayString);
-    displayString = concatenator.buildCostString("", "", "", expected); //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
+    displayString = concatenator.buildCostString("", "", "", expected);
     assertEquals(expected, displayString);
   }
 
   public void testTwoValues() throws Exception {
-    String expected = "Cost"; //$NON-NLS-1$
+    String expected = "Cost";
     String displayString;
-    displayString = concatenator.buildCostString(expected, expected, "", "");//$NON-NLS-1$ //$NON-NLS-2$
-    assertEquals(expected + ", " + expected, displayString); //$NON-NLS-1$
-    displayString = concatenator.buildCostString("", expected, "", expected); //$NON-NLS-1$ //$NON-NLS-2$
-    assertEquals(expected + ", " + expected, displayString); //$NON-NLS-1$
+    displayString = concatenator.buildCostString(expected, expected, "", "");
+    assertEquals(expected + ", " + expected, displayString);
+    displayString = concatenator.buildCostString("", expected, "", expected);
+    assertEquals(expected + ", " + expected, displayString);
   }
 }

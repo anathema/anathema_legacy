@@ -17,25 +17,25 @@ public class AnathemaPreferencesTest {
 
   @Before
   public void setUp() throws Exception {
-    preferences = Preferences.userRoot().node("testRoot"); //$NON-NLS-1$
+    preferences = Preferences.userRoot().node("testRoot");
     initializationPreferences = new InitializationPreferences(preferences);
   }
 
   @Test
   public void testDefaultRepository() throws Exception {
-    Assert.assertEquals("./repository/", initializationPreferences.getRepositoryLocationPreference(null)); //$NON-NLS-1$
+    Assert.assertEquals("./repository/", initializationPreferences.getRepositoryLocationPreference(null));
   }
 
   @Test
   public void testCustomizedRepository() throws Exception {
-    preferences.put("RepositoryForAnathema4orHigher", "C:/exalted/ist/toll/"); //$NON-NLS-1$//$NON-NLS-2$
-    Assert.assertEquals("C:/exalted/ist/toll/", initializationPreferences.getRepositoryLocationPreference(null)); //$NON-NLS-1$
+    preferences.put("RepositoryForAnathema4orHigher", "C:/exalted/ist/toll/");
+    Assert.assertEquals("C:/exalted/ist/toll/", initializationPreferences.getRepositoryLocationPreference(null));
   }
 
   @Test
   public void customizedDefaultRepository() throws Exception {
     Assert.assertEquals(
-      "C:/exalted/ist/toll/", initializationPreferences.getRepositoryLocationPreference("C:/exalted/ist/toll/")); //$NON-NLS-1$ //$NON-NLS-2$
+      "C:/exalted/ist/toll/", initializationPreferences.getRepositoryLocationPreference("C:/exalted/ist/toll/"));
   }
 
   @Test
@@ -45,7 +45,7 @@ public class AnathemaPreferencesTest {
 
   @Test
   public void testInitMaximized() throws Exception {
-    preferences.putBoolean("Maximize", true); //$NON-NLS-1$
+    preferences.putBoolean("Maximize", true);
     Assert.assertTrue(initializationPreferences.initMaximized());
   }
 
@@ -57,7 +57,7 @@ public class AnathemaPreferencesTest {
   @Test
   public void testUserLookAndFeel() throws Exception {
     String metalName = MetalLookAndFeel.class.getName();
-    preferences.put("UserLookAndFeel", metalName); //$NON-NLS-1$
+    preferences.put("UserLookAndFeel", metalName);
     Assert.assertEquals(metalName, initializationPreferences.getUserLookAndFeel());
   }
 
@@ -68,19 +68,19 @@ public class AnathemaPreferencesTest {
 
   @Test
   public void testChangedToolTipTime() throws Exception {
-    preferences.putInt("ToolTipTime", 14); //$NON-NLS-1$
+    preferences.putInt("ToolTipTime", 14);
     Assert.assertEquals(14, initializationPreferences.getTooltipTimePreference());
   }
 
   @Test
   public void testDefaultLocale() throws Exception {
-    Assert.assertEquals("en", initializationPreferences.getPreferredLocale().getLanguage()); //$NON-NLS-1$
+    Assert.assertEquals("en", initializationPreferences.getPreferredLocale().getLanguage());
   }
 
   @Test
   public void testSpanishLocale() throws Exception {
-    preferences.put("Locale", "Spanish"); //$NON-NLS-1$ //$NON-NLS-2$
-    Assert.assertEquals("es", initializationPreferences.getPreferredLocale().getLanguage()); //$NON-NLS-1$
+    preferences.put("Locale", "Spanish");
+    Assert.assertEquals("es", initializationPreferences.getPreferredLocale().getLanguage());
   }
 
   @After

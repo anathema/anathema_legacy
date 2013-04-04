@@ -22,7 +22,7 @@ public abstract class AbstractDelegatingCellEditor extends AbstractCellEditor im
     delegate = createDelegate(editorComponent);
     try {
       Method addActionListener = editorComponent.getClass().getMethod(
-              "addActionListener", new Class[]{ActionListener.class}); //$NON-NLS-1$
+              "addActionListener", new Class[]{ActionListener.class});
       addActionListener.invoke(editorComponent, delegate);
     } catch (Exception exception) {
       // ignore problems - we don't know wether an action listener can be registered at all

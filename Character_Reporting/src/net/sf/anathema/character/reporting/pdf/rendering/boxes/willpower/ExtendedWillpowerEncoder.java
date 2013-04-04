@@ -47,16 +47,16 @@ public class ExtendedWillpowerEncoder extends AbstractContentEncoder<WillpowerCo
     float columnWidth = (width - columnPadding) / 2f;
 
     Bounds spendingBounds = new Bounds(leftX, yPosition - height, columnWidth, height);
-    Phrase spendingPhrase = new Phrase("", graphics.createCommentFont());  //$NON-NLS-1$
+    Phrase spendingPhrase = new Phrase("", graphics.createCommentFont());
     BulletList willpowerSpendingRules = content.getWillpowerSpendingRules();
     Chunk symbolChunk = graphics.createSymbolChunk();
     ListUtils.addBulletList(spendingPhrase, symbolChunk, willpowerSpendingRules.header, willpowerSpendingRules.items);
-    spendingPhrase.add("\n" + content.getWillpowerSpendingNote() + "\n"); //$NON-NLS-1$
+    spendingPhrase.add("\n" + content.getWillpowerSpendingNote() + "\n");
     graphics.createSimpleColumn(spendingBounds).withLeading(lineHeight).andTextPart(spendingPhrase).encode().getYLine();
 
     float centerX = leftX + columnWidth + columnPadding;
     Bounds regainingBounds = new Bounds(centerX, yPosition - height, columnWidth, height);
-    Phrase regainingPhrase = new Phrase("", graphics.createCommentFont());   //$NON-NLS-1$
+    Phrase regainingPhrase = new Phrase("", graphics.createCommentFont());
     BulletList willpowerRegainingRules = content.getWillpowerRegainingRules();
     ListUtils.addBulletList(regainingPhrase, symbolChunk, willpowerRegainingRules.header, willpowerRegainingRules.items);
     graphics.createSimpleColumn(regainingBounds).withLeading(lineHeight).andTextPart(regainingPhrase).encode().getYLine();

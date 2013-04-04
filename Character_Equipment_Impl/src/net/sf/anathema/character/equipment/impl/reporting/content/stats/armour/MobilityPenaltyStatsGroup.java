@@ -11,7 +11,7 @@ public class MobilityPenaltyStatsGroup extends AbstractValueEquipmentStatsGroup<
         IArmourStatsGroup {
 
   public MobilityPenaltyStatsGroup(Resources resources) {
-    super(resources, "MobilityPenalty"); //$NON-NLS-1$
+    super(resources, "MobilityPenalty");
   }
 
   @Override
@@ -35,6 +35,6 @@ public class MobilityPenaltyStatsGroup extends AbstractValueEquipmentStatsGroup<
 
   @Override
   protected String getZeroPrefix() {
-    return "-"; //$NON-NLS-1$
+    return "-";
   }
 }

@@ -26,12 +26,12 @@ import static org.junit.Assert.assertTrue;
 
 public class MagicTemplateParserTest {
 
-  String xml = "<magicTemplate>" //$NON-NLS-1$
-    + "<freePicksPredicate defaultResponse=\"true\"/>" //$NON-NLS-1$
-    + "<charmTemplate charmType=\"None\">" //$NON-NLS-1$
-    + "<martialArts level=\"Mortal\"/></charmTemplate>" //$NON-NLS-1$
-    + "<spellTemplate maximumSorceryCircle=\"None\" maximumNecromancyCircle=\"None\"/>" //$NON-NLS-1$
-    + "</magicTemplate>"; //$NON-NLS-1$
+  String xml = "<magicTemplate>"
+    + "<freePicksPredicate defaultResponse=\"true\"/>"
+    + "<charmTemplate charmType=\"None\">"
+    + "<martialArts level=\"Mortal\"/></charmTemplate>"
+    + "<spellTemplate maximumSorceryCircle=\"None\" maximumNecromancyCircle=\"None\"/>"
+    + "</magicTemplate>";
   private GenericMagicTemplateParser parser;
 
   @Before
@@ -44,48 +44,48 @@ public class MagicTemplateParserTest {
   public void testDefaultFreePicksPredicate() throws Exception {
     Element templateElement = DocumentUtilities.read(xml).getRootElement();
     GenericMagicTemplate template = parser.parseTemplate(templateElement);
-    assertTrue(template.canBuyFromFreePicks(DummyCharmUtilities.createCharm("TestCharm", "Group"))); //$NON-NLS-1$ //$NON-NLS-2$
+    assertTrue(template.canBuyFromFreePicks(DummyCharmUtilities.createCharm("TestCharm", "Group")));
   }
 
   @Test
   public void testFalseFreePicksPredicate() throws Exception {
-    String customXml = "<magicTemplate>" //$NON-NLS-1$
-      + "<freePicksPredicate defaultResponse=\"false\"/>" //$NON-NLS-1$
-      + "<charmTemplate charmType=\"None\">" //$NON-NLS-1$
-      + "<martialArts level=\"Mortal\"/></charmTemplate>" //$NON-NLS-1$
-      + "<spellTemplate maximumSorceryCircle=\"None\" maximumNecromancyCircle=\"None\"/>" //$NON-NLS-1$
-      + "</magicTemplate>"; //$NON-NLS-1$
+    String customXml = "<magicTemplate>"
+      + "<freePicksPredicate defaultResponse=\"false\"/>"
+      + "<charmTemplate charmType=\"None\">"
+      + "<martialArts level=\"Mortal\"/></charmTemplate>"
+      + "<spellTemplate maximumSorceryCircle=\"None\" maximumNecromancyCircle=\"None\"/>"
+      + "</magicTemplate>";
     Element templateElement = DocumentUtilities.read(customXml).getRootElement();
     GenericMagicTemplate template = parser.parseTemplate(templateElement);
-    assertFalse(template.canBuyFromFreePicks(DummyCharmUtilities.createCharm("TestCharm", "Group"))); //$NON-NLS-1$ //$NON-NLS-2$
+    assertFalse(template.canBuyFromFreePicks(DummyCharmUtilities.createCharm("TestCharm", "Group")));
   }
 
   @Test
   public void testIdExceptionInFreePicksPredicate() throws Exception {
-    String customXml = "<magicTemplate>" //$NON-NLS-1$
-      + "<freePicksPredicate defaultResponse=\"false\"><idException id=\"ExpectedId\"/></freePicksPredicate>" //$NON-NLS-1$
-      + "<charmTemplate charmType=\"None\">" //$NON-NLS-1$
-      + "<martialArts level=\"Mortal\"/></charmTemplate>" //$NON-NLS-1$
-      + "<spellTemplate maximumSorceryCircle=\"None\" maximumNecromancyCircle=\"None\"/>" //$NON-NLS-1$
-      + "</magicTemplate>"; //$NON-NLS-1$
+    String customXml = "<magicTemplate>"
+      + "<freePicksPredicate defaultResponse=\"false\"><idException id=\"ExpectedId\"/></freePicksPredicate>"
+      + "<charmTemplate charmType=\"None\">"
+      + "<martialArts level=\"Mortal\"/></charmTemplate>"
+      + "<spellTemplate maximumSorceryCircle=\"None\" maximumNecromancyCircle=\"None\"/>"
+      + "</magicTemplate>";
     Element templateElement = DocumentUtilities.read(customXml).getRootElement();
     GenericMagicTemplate template = parser.parseTemplate(templateElement);
-    assertFalse(template.canBuyFromFreePicks(DummyCharmUtilities.createCharm("BadId", "Group"))); //$NON-NLS-1$ //$NON-NLS-2$
-    assertTrue(template.canBuyFromFreePicks(DummyCharmUtilities.createCharm("ExpectedId", "Group"))); //$NON-NLS-1$ //$NON-NLS-2$
+    assertFalse(template.canBuyFromFreePicks(DummyCharmUtilities.createCharm("BadId", "Group")));
+    assertTrue(template.canBuyFromFreePicks(DummyCharmUtilities.createCharm("ExpectedId", "Group")));
   }
 
   @Test
   public void testGroupExceptionInFreePicksPredicate() throws Exception {
-    String customXml = "<magicTemplate>" //$NON-NLS-1$
-      + "<freePicksPredicate defaultResponse=\"false\"><groupException id=\"ExpectedGroup\"/></freePicksPredicate>" //$NON-NLS-1$
-      + "<charmTemplate charmType=\"None\">" //$NON-NLS-1$
-      + "<martialArts level=\"Mortal\"/></charmTemplate>" //$NON-NLS-1$
-      + "<spellTemplate maximumSorceryCircle=\"None\" maximumNecromancyCircle=\"None\"/>" //$NON-NLS-1$
-      + "</magicTemplate>"; //$NON-NLS-1$
+    String customXml = "<magicTemplate>"
+      + "<freePicksPredicate defaultResponse=\"false\"><groupException id=\"ExpectedGroup\"/></freePicksPredicate>"
+      + "<charmTemplate charmType=\"None\">"
+      + "<martialArts level=\"Mortal\"/></charmTemplate>"
+      + "<spellTemplate maximumSorceryCircle=\"None\" maximumNecromancyCircle=\"None\"/>"
+      + "</magicTemplate>";
     Element templateElement = DocumentUtilities.read(customXml).getRootElement();
     GenericMagicTemplate template = parser.parseTemplate(templateElement);
-    assertFalse(template.canBuyFromFreePicks(DummyCharmUtilities.createCharm("ExpectedId", "UnexpectedGroup"))); //$NON-NLS-1$ //$NON-NLS-2$
-    assertTrue(template.canBuyFromFreePicks(DummyCharmUtilities.createCharm("ExpectedId", "ExpectedGroup"))); //$NON-NLS-1$ //$NON-NLS-2$
+    assertFalse(template.canBuyFromFreePicks(DummyCharmUtilities.createCharm("ExpectedId", "UnexpectedGroup")));
+    assertTrue(template.canBuyFromFreePicks(DummyCharmUtilities.createCharm("ExpectedId", "ExpectedGroup")));
   }
 
   @Test
@@ -106,9 +106,9 @@ public class MagicTemplateParserTest {
 
   @Test
   public void testParsesMaximumNecromancyCircle() throws Exception {
-    String celestialXml = "<magicTemplate>" + //$NON-NLS-1$
-      "<spellTemplate maximumSorceryCircle=\"Solar\" maximumNecromancyCircle=\"Labyrinth\"/>" //$NON-NLS-1$
-      + "</magicTemplate>"; //$NON-NLS-1$
+    String celestialXml = "<magicTemplate>" +
+      "<spellTemplate maximumSorceryCircle=\"Solar\" maximumNecromancyCircle=\"Labyrinth\"/>"
+      + "</magicTemplate>";
     Element templateElement = DocumentUtilities.read(celestialXml).getRootElement();
     GenericMagicTemplate template = parser.parseTemplate(templateElement);
     assertTrue(ArrayUtils.contains(template.getSpellMagic().getNecromancyCircles(), CircleType.Shadowlands));
@@ -118,15 +118,15 @@ public class MagicTemplateParserTest {
 
   @Test
   public void testHighLevelSettingUnmodified() throws Exception {
-    String celestialXml = "<magicTemplate>" + //$NON-NLS-1$
-      "<charmTemplate charmType=\"None\"><martialArts level=\"Terrestrial\"/></charmTemplate>" //$NON-NLS-1$
-      + "</magicTemplate>"; //$NON-NLS-1$
+    String celestialXml = "<magicTemplate>" +
+      "<charmTemplate charmType=\"None\"><martialArts level=\"Terrestrial\"/></charmTemplate>"
+      + "</magicTemplate>";
     Element templateElement = DocumentUtilities.read(celestialXml).getRootElement();
     GenericMagicTemplate template = parser.parseTemplate(templateElement);
-    DummyCharm dummyMartialArtsCharm = new DummyCharm("Dummy") { //$NON-NLS-1$
+    DummyCharm dummyMartialArtsCharm = new DummyCharm("Dummy") {
       @Override
       public boolean hasAttribute(Identified attribute) {
-        return attribute.getId().equals("MartialArts") || attribute.getId().equals("Celestial"); //$NON-NLS-1$ //$NON-NLS-2$
+        return attribute.getId().equals("MartialArts") || attribute.getId().equals("Celestial");
       }
     };
     assertFalse(template.getCharmTemplate().getMartialArtsRules().isCharmAllowed(dummyMartialArtsCharm, null, false));
@@ -134,15 +134,15 @@ public class MagicTemplateParserTest {
 
   @Test
   public void testHighLevelSettingModified() throws Exception {
-    String celestialXml = "<magicTemplate>" + //$NON-NLS-1$
-      "<charmTemplate charmType=\"None\" ><martialArts level=\"Terrestrial\" highLevel=\"true\"/></charmTemplate>" //$NON-NLS-1$
-      + "</magicTemplate>"; //$NON-NLS-1$
+    String celestialXml = "<magicTemplate>" +
+      "<charmTemplate charmType=\"None\" ><martialArts level=\"Terrestrial\" highLevel=\"true\"/></charmTemplate>"
+      + "</magicTemplate>";
     Element templateElement = DocumentUtilities.read(celestialXml).getRootElement();
     GenericMagicTemplate template = parser.parseTemplate(templateElement);
-    DummyCharm dummyMartialArtsCharm = new DummyCharm("Dummy") { //$NON-NLS-1$
+    DummyCharm dummyMartialArtsCharm = new DummyCharm("Dummy") {
       @Override
       public boolean hasAttribute(Identified attribute) {
-        return attribute.getId().equals("MartialArts") || attribute.getId().equals("Celestial"); //$NON-NLS-1$ //$NON-NLS-2$
+        return attribute.getId().equals("MartialArts") || attribute.getId().equals("Celestial");
       }
     };
     assertTrue(template.getCharmTemplate().getMartialArtsRules().isCharmAllowed(dummyMartialArtsCharm, null, false));
@@ -150,9 +150,9 @@ public class MagicTemplateParserTest {
 
   @Test
   public void testDefaultRulesSetting() throws Exception {
-    String celestialXml = "<magicTemplate>" + //$NON-NLS-1$
-      "<charmTemplate charmType=\"None\" ><martialArts level=\"Terrestrial\" /></charmTemplate>" //$NON-NLS-1$
-      + "</magicTemplate>"; //$NON-NLS-1$
+    String celestialXml = "<magicTemplate>" +
+      "<charmTemplate charmType=\"None\" ><martialArts level=\"Terrestrial\" /></charmTemplate>"
+      + "</magicTemplate>";
     Element templateElement = DocumentUtilities.read(celestialXml).getRootElement();
     GenericMagicTemplate template = parser.parseTemplate(templateElement);
     Assert.assertTrue(template.getCharmTemplate().getMartialArtsRules() instanceof DefaultMartialArtsRules);
@@ -160,9 +160,9 @@ public class MagicTemplateParserTest {
 
   @Test
   public void picksUpMartialArtsRules() throws Exception {
-    String celestialXml = "<magicTemplate>" + //$NON-NLS-1$
-      "<charmTemplate charmType=\"None\" ><martialArts rulesClass=\"net.sf.anathema.character.generic.dummy.magic.DummyMartialArtsRules\" level=\"Terrestrial\" /></charmTemplate>" //$NON-NLS-1$
-      + "</magicTemplate>"; //$NON-NLS-1$
+    String celestialXml = "<magicTemplate>" +
+      "<charmTemplate charmType=\"None\" ><martialArts rulesClass=\"net.sf.anathema.character.generic.dummy.magic.DummyMartialArtsRules\" level=\"Terrestrial\" /></charmTemplate>"
+      + "</magicTemplate>";
     Element templateElement = DocumentUtilities.read(celestialXml).getRootElement();
     GenericMagicTemplate template = parser.parseTemplate(templateElement);
     Assert.assertTrue(template.getCharmTemplate().getMartialArtsRules() instanceof DummyMartialArtsRules);
@@ -170,14 +170,14 @@ public class MagicTemplateParserTest {
 
   @Test
   public void testAlienCharmsAllowed() throws Exception {
-    String typeXml = "<magicTemplate>" //$NON-NLS-1$
-      + "<charmTemplate charmType=\"None\">" //$NON-NLS-1$
-      + " <alienCharms> <caste type=\"DummyCaste\"/></alienCharms>" //$NON-NLS-1$
-      + "<martialArts level=\"Celestial\" highLevel=\"false\" />" //$NON-NLS-1$
-      + "</charmTemplate>" //$NON-NLS-1$
-      + "</magicTemplate>"; //$NON-NLS-1$
+    String typeXml = "<magicTemplate>"
+      + "<charmTemplate charmType=\"None\">"
+      + " <alienCharms> <caste type=\"DummyCaste\"/></alienCharms>"
+      + "<martialArts level=\"Celestial\" highLevel=\"false\" />"
+      + "</charmTemplate>"
+      + "</magicTemplate>";
     Element templateElement = DocumentUtilities.read(typeXml).getRootElement();
     GenericMagicTemplate template = parser.parseTemplate(templateElement);
-    assertTrue(template.getCharmTemplate().isAllowedAlienCharms(new DummyCasteType("DummyCaste"))); //$NON-NLS-1$
+    assertTrue(template.getCharmTemplate().isAllowedAlienCharms(new DummyCasteType("DummyCaste")));
   }
 }

@@ -20,7 +20,7 @@ public class CharacterCreationTemplateFactory implements DialogBasedTemplateFact
   @Override
   public IDialogPage createPage(IDialogModelTemplate template) {
     if (!(template instanceof CharacterStatisticsConfiguration)) {
-      throw new IllegalArgumentException("Bad template type for character creation wizard"); //$NON-NLS-1$
+      throw new IllegalArgumentException("Bad template type for character creation wizard");
     }
     CharacterItemCreationModel model = new CharacterItemCreationModel(generics, (CharacterStatisticsConfiguration) template);
     CharacterItemCreationView view = new CharacterItemCreationView();

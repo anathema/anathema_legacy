@@ -24,6 +24,7 @@ public abstract class AbstractHealthAndMovementEncoder implements ContentEncoder
     this.resources = resources;
   }
 
+  @SuppressWarnings("unchecked")
   @Override
   public void encode(SheetGraphics graphics, ReportSession reportSession, Bounds bounds) throws DocumentException {
     Bounds tableBounds = new Bounds(bounds.x, bounds.y, (bounds.width * 0.66f), bounds.height);
@@ -54,28 +55,27 @@ public abstract class AbstractHealthAndMovementEncoder implements ContentEncoder
     PdfTemplate bashingTemplate = HealthTemplateFactory.createBashingTemplate(graphics.getDirectContent(), BaseColor.GRAY);
     graphics.getDirectContent().addTemplate(bashingTemplate, xPosition, rectYPosition);
     xPosition += rectangleOffset;
-    String createSpacedString = createSpacedString(resources.getString("Sheet.Health.Comment.MarkDamageBashing")); //$NON-NLS-1$
-    String bashingString = createSpacedString;
+    String bashingString = createSpacedString(resources.getString("Sheet.Health.Comment.MarkDamageBashing"));
     graphics.drawComment(bashingString, new Position(xPosition, textYPosition), Element.ALIGN_LEFT);
     xPosition += graphics.getTextMetrics().getCommentTextWidth(bashingString);
     graphics.getDirectContent().addTemplate(rectTemplate, xPosition, rectYPosition);
     PdfTemplate lethalTemplate = HealthTemplateFactory.createLethalTemplate(graphics.getDirectContent(), BaseColor.GRAY);
     graphics.getDirectContent().addTemplate(lethalTemplate, xPosition, rectYPosition);
     xPosition += rectangleOffset;
-    String lethalString = createSpacedString(resources.getString("Sheet.Health.Comment.MarkDamageLethal")); //$NON-NLS-1$
+    String lethalString = createSpacedString(resources.getString("Sheet.Health.Comment.MarkDamageLethal"));
     graphics.drawComment(lethalString, new Position(xPosition, textYPosition), Element.ALIGN_LEFT);
     xPosition += graphics.getTextMetrics().getCommentTextWidth(lethalString);
     graphics.getDirectContent().addTemplate(rectTemplate, xPosition, rectYPosition);
     PdfTemplate aggravatedTemplate = HealthTemplateFactory.createAggravatedTemplate(graphics.getDirectContent(), BaseColor.GRAY);
     graphics.getDirectContent().addTemplate(aggravatedTemplate, xPosition, rectYPosition);
     xPosition += rectangleOffset;
-    String aggravatedString = createSpacedString(resources.getString("Sheet.Health.Comment.MarkDamageAggravated")); //$NON-NLS-1$
+    String aggravatedString = createSpacedString(resources.getString("Sheet.Health.Comment.MarkDamageAggravated"));
     graphics.drawComment(aggravatedString, new Position(xPosition, textYPosition), Element.ALIGN_LEFT);
     xPosition += graphics.getTextMetrics().getCommentTextWidth(lethalString);
   }
 
   private String createSpacedString(String string) {
-    return " " + string + "   "; //$NON-NLS-1$ //$NON-NLS-2$
+    return " " + string + "   ";
   }
 
   protected final Resources getResources() {
@@ -85,23 +85,23 @@ public abstract class AbstractHealthAndMovementEncoder implements ContentEncoder
   private Paragraph createHealthRulesPhrase(SheetGraphics graphics, Font headerFont, Font commentFont, Font commentTitleFont) {
     Paragraph healthText = new Paragraph();
     healthText.setAlignment(Element.ALIGN_JUSTIFIED_ALL);
-    Chunk seperator = new Chunk(": ", commentTitleFont); //$NON-NLS-1$
-    Chunk newLine = new Chunk("\n", commentFont); //$NON-NLS-1$
-    Chunk header = new Chunk(resources.getString("Sheet.Health.Comment.Rules"), headerFont); //$NON-NLS-1$
+    Chunk seperator = new Chunk(": ", commentTitleFont);
+    Chunk newLine = new Chunk("\n", commentFont);
+    Chunk header = new Chunk(resources.getString("Sheet.Health.Comment.Rules"), headerFont);
     healthText.add(header);
     healthText.add(newLine);
     healthText.add(graphics.createSymbolChunk());
-    healthText.add(new Chunk(resources.getString("Sheet.Health.Comment.HealthHeader"), commentTitleFont)); //$NON-NLS-1$
+    healthText.add(new Chunk(resources.getString("Sheet.Health.Comment.HealthHeader"), commentTitleFont));
     healthText.add(seperator);
-    healthText.add(new Chunk(resources.getString("Sheet.Health.Comment.HealthText"), commentFont)); //$NON-NLS-1$
+    healthText.add(new Chunk(resources.getString("Sheet.Health.Comment.HealthText"), commentFont));
     healthText.add(newLine);
     healthText.add(graphics.createSymbolChunk());
-    healthText.add(new Chunk(resources.getString("Sheet.Health.Comment.DeathHeader"), commentTitleFont)); //$NON-NLS-1$
+    healthText.add(new Chunk(resources.getString("Sheet.Health.Comment.DeathHeader"), commentTitleFont));
     healthText.add(seperator);
-    healthText.add(new Chunk(resources.getString("Sheet.Health.Comment.DeathText"), commentFont)); //$NON-NLS-1$ //$NON-NLS-2$
+    healthText.add(new Chunk(resources.getString("Sheet.Health.Comment.DeathText"), commentFont));
     healthText.add(newLine);
     healthText.add(graphics.createSymbolChunk());
-    healthText.add(new Chunk(resources.getString("Sheet.Health.Comment.MarkDamageHeader"), commentTitleFont)); //$NON-NLS-1$
+    healthText.add(new Chunk(resources.getString("Sheet.Health.Comment.MarkDamageHeader"), commentTitleFont));
     healthText.add(seperator);
     return healthText;
   }

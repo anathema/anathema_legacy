@@ -21,13 +21,14 @@ public class WeaponStatsNameStringFactory {
   public String create(IEquipmentItem item, IWeaponStats stats) {
     StringBuilder builder = new StringBuilder(stats.getName().getId());
     if (hasMultipleViews(item, stats)) {
-      builder.append(" ("); //$NON-NLS-1$
+      builder.append(" (");
       builder.append(resources.getString(stats.getTraitType().getId()));
-      builder.append(")"); //$NON-NLS-1$
+      builder.append(")");
     }
     return builder.toString();
   }
 
+  @SuppressWarnings("SimplifiableIfStatement")
   private boolean hasMultipleViews(IEquipmentItem item, IWeaponStats stats) {
     if (item == null) {
       return true;

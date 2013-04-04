@@ -14,8 +14,8 @@ public class HierarchyBuilderTest {
 
   @Test
   public void testSimpleDummyEdge() throws Exception {
-    IRegularNode leaf = NodeFactory.createChildlessNode(3, "leaf"); //$NON-NLS-1$
-    IRegularNode root = NodeFactory.createSingleChildNode(1, leaf, "root"); //$NON-NLS-1$
+    IRegularNode leaf = NodeFactory.createChildlessNode(3, "leaf");
+    IRegularNode root = NodeFactory.createSingleChildNode(1, leaf, "root");
     IHierachyBuilder builder = new HierarchyBuilder();
     ISimpleNode[] graph = builder.removeLongEdges(new IRegularNode[]{leaf, root});
     assertEquals(3, graph.length);

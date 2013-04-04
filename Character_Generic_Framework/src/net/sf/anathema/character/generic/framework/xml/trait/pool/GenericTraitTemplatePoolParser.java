@@ -23,10 +23,10 @@ import java.util.List;
 
 public class GenericTraitTemplatePoolParser extends AbstractXmlTemplateParser<GenericTraitTemplatePool> {
 
-  private static final String TAG_DEFAULT_TRAIT = "defaultTrait"; //$NON-NLS-1$
-  private static final String TAG_SPECIAL_TRAIT = "specialTrait"; //$NON-NLS-1$
+  private static final String TAG_DEFAULT_TRAIT = "defaultTrait";
+  private static final String TAG_SPECIAL_TRAIT = "specialTrait";
   private static final String TAG_ALLOCATION_MINIMUM_TRAITS = "allocationMinimumTraits";
-  private static final String TAG_ALTERNATE_MINMUM_TRAITS = "alternateMinimumTraits"; //$NON-NLS-1$
+  private static final String TAG_ALTERNATE_MINMUM_TRAITS = "alternateMinimumTraits";
   private static final String TAG_CASTE_MINIMUM_TRAITS = "casteMinimumTraits";
   private final ITraitTypeGroup traitTypeGroup;
   private final List<AllocationMinimumRestriction> family = new ArrayList<>();
@@ -66,7 +66,7 @@ public class GenericTraitTemplatePoolParser extends AbstractXmlTemplateParser<Ge
   private void parseSpecialTraitTemplates(GenericTraitTemplatePool pool, Element element) throws PersistenceException {
     for (Element specialTraitElement : ElementUtilities.elements(element, TAG_SPECIAL_TRAIT)) {
       ITraitType traitType;
-      String traitTypeId = ElementUtilities.getRequiredAttrib(specialTraitElement, "id"); //$NON-NLS-1$
+      String traitTypeId = ElementUtilities.getRequiredAttrib(specialTraitElement, "id");
       traitType = traitTypeGroup.getById(traitTypeId);
       IClonableTraitTemplate specialTraitTemplate = GenericTraitTemplateParser.parseTraitTemplate(specialTraitElement, traitType);
       pool.setSpecialTemplate(traitType, specialTraitTemplate);

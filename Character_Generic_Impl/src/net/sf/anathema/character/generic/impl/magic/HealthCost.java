@@ -6,7 +6,7 @@ import net.sf.anathema.character.generic.magic.general.IHealthCost;
 
 public class HealthCost extends Cost implements IHealthCost {
 
-  public static final IHealthCost NULL_HEALTH_COST = new HealthCost(0, "", false, HealthType.Lethal); //$NON-NLS-1$
+  public static final IHealthCost NULL_HEALTH_COST = new HealthCost(0, "", false, HealthType.Lethal);
   private final HealthType type;
 
   public HealthCost(int cost, String text, boolean permanent, HealthType type) {

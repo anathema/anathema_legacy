@@ -66,6 +66,6 @@ public class DummyNode implements ISimpleNode {
 
   @Override
   public String toString() {
-    return "Dummynode (Layer:" + getLayer() + ")"; //$NON-NLS-1$ //$NON-NLS-2$
+    return "Dummynode (Layer:" + getLayer() + ")";
   }
 }

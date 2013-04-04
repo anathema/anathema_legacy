@@ -17,18 +17,18 @@ public class CharmGraphNodeBuilderTest
 {
   @Test
   public void testExternalCharmSingleOccurence() throws Exception {
-    String parentName = "ExternalParent";//$NON-NLS-1$
+    String parentName = "ExternalParent";
     DummyCharm externalParent = new DummyCharm(parentName);
-    DummyCharm child = new DummyCharm("Child", new ICharm[] { externalParent }); //$NON-NLS-1$
+    DummyCharm child = new DummyCharm("Child", new ICharm[] { externalParent });
     List<ICharm> list = new ArrayList<>();
     list.add(child);
     Collection<IIdentifiedRegularNode> nodes = CharmGraphNodeBuilder.createNodesFromCharms(list);
     for (IIdentifiedRegularNode node : nodes) {
       if (node.getId().equals(parentName)) {
         assertTrue(node.getLowerToChildren());
-        assertEquals("Child", ((IIdentifiedRegularNode) node.getChildren()[0]).getId()); //$NON-NLS-1$
+        assertEquals("Child", ((IIdentifiedRegularNode) node.getChildren()[0]).getId());
       }
-      if (node.getId().equals("Child")) { //$NON-NLS-1$
+      if (node.getId().equals("Child")) {
         assertFalse(node.getLowerToChildren());
         assertEquals(parentName, ((IIdentifiedRegularNode) node.getParents()[0]).getId());
       }
@@ -37,9 +37,9 @@ public class CharmGraphNodeBuilderTest
 
   @Test
   public void testExternalCharmMultipleOccurence() throws Exception {
-    String parentName = "ExternalParent";//$NON-NLS-1$
-    String firstChildName = "Child1"; //$NON-NLS-1$
-    String secondChildName = "Child2"; //$NON-NLS-1$
+    String parentName = "ExternalParent";
+    String firstChildName = "Child1";
+    String secondChildName = "Child2";
     DummyCharm externalParent = new DummyCharm(parentName);
     DummyCharm firstChild = new DummyCharm(firstChildName, new ICharm[] { externalParent });
     DummyCharm secondChild = new DummyCharm(secondChildName, new ICharm[] { externalParent });

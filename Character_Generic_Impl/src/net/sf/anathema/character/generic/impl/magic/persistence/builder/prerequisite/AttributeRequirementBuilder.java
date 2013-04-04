@@ -44,7 +44,7 @@ public class AttributeRequirementBuilder implements IAttributeRequirementBuilder
       return ElementUtilities.getIntAttrib(attributeRequirementElement, ATTRIB_COUNT, 1);
     }
     catch (PersistenceException e) {
-      throw new CharmException("Error reading attribute requirement count.", e); //$NON-NLS-1$
+      throw new CharmException("Error reading attribute requirement count.", e);
     }
   }
 }

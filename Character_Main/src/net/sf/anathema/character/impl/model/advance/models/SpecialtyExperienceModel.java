@@ -15,7 +15,7 @@ public class SpecialtyExperienceModel extends AbstractIntegerValueModel {
   private final ICoreTraitConfiguration configuration;
 
   public SpecialtyExperienceModel(ICoreTraitConfiguration configuration, IPointCostCalculator calculator) {
-    super("Experience", "Specialties"); //$NON-NLS-1$//$NON-NLS-2$
+    super("Experience", "Specialties");
     this.configuration = configuration;
     this.calculator = calculator;
   }

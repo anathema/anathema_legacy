@@ -9,11 +9,11 @@ import java.util.List;
 
 public class ListUtils {
 
-  public final static String[] RESOURCE_ID = new String[]{"First", "Second", //$NON-NLS-1$ //$NON-NLS-2$
-          "Third", "Fourth", //$NON-NLS-1$ //$NON-NLS-2$
-          "Fifth", "Sixth", //$NON-NLS-1$ //$NON-NLS-2$
-          "Seventh", "Eighth", //$NON-NLS-1$ //$NON-NLS-2$
-          "Ninth", "Tenth"}; //$NON-NLS-1$ //$NON-NLS-2$
+  public final static String[] RESOURCE_ID = new String[]{"First", "Second",
+          "Third", "Fourth",
+          "Fifth", "Sixth",
+          "Seventh", "Eighth",
+          "Ninth", "Tenth"};
 
   public static void addBulletedListText(Resources resources, Chunk symbolChunk, String resourceBase, Phrase phrase,
                                          boolean showHeader) {
@@ -24,11 +24,11 @@ public class ListUtils {
 
   public static void addBulletList(Phrase phrase, Chunk symbolChunk, String header, String[] items) {
     if (header != null) {
-      phrase.add(header + "\n"); //$NON-NLS-1$
+      phrase.add(header + "\n");
     }
     for (String lineItem : items) {
       phrase.add(symbolChunk);
-      phrase.add(lineItem + "\n"); //$NON-NLS-1$
+      phrase.add(lineItem + "\n");
     }
   }
 
@@ -52,7 +52,7 @@ public class ListUtils {
     if (resourceId == null) {
       baseId = resourceBase;
     } else {
-      baseId = resourceBase + "." + resourceId; //$NON-NLS-1$
+      baseId = resourceBase + "." + resourceId;
     }
 
     String resource = null;

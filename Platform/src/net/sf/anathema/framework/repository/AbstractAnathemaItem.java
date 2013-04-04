@@ -16,7 +16,7 @@ public abstract class AbstractAnathemaItem implements IItem {
   private final Announcer<IItemListener> repositoryItemListeners = Announcer.to(IItemListener.class);
 
   public AbstractAnathemaItem(IItemType type) {
-    Preconditions.checkArgument(type.supportsRepository(), "Use second constructor for non-persisted items."); //$NON-NLS-1$
+    Preconditions.checkArgument(type.supportsRepository(), "Use second constructor for non-persisted items.");
     this.itemType = type;
     this.repositoryLocation = new RepositoryLocation(this);
     this.identificate = new Identified() {
@@ -25,12 +25,6 @@ public abstract class AbstractAnathemaItem implements IItem {
         return repositoryLocation.getId();
       }
     };
-  }
-
-  public AbstractAnathemaItem(IItemType type, Identified identificate) {
-    this.itemType = type;
-    this.repositoryLocation = null;
-    this.identificate = identificate;
   }
 
   @Override
@@ -81,6 +75,6 @@ public abstract class AbstractAnathemaItem implements IItem {
 
   @Override
   public String toString() {
-    return getItemType() + ": " + getDisplayName(); //$NON-NLS-1$
+    return getItemType() + ": " + getDisplayName();
   }
 }

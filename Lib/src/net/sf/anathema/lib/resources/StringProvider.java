@@ -17,7 +17,7 @@ public class StringProvider implements Resources {
 
   private void setLocale(Locale locale, String resourceBundleName) {
     if (locale == null) {
-      throw new IllegalArgumentException("locale is null."); //$NON-NLS-1$
+      throw new IllegalArgumentException("locale is null.");
     }
     resourceBundle = ResourceBundle.getBundle(resourceBundleName, locale);
     for (Enumeration<String> keys = resourceBundle.getKeys(); keys.hasMoreElements();) {

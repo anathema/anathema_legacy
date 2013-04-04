@@ -20,47 +20,47 @@ public class EquipmentStringBuilderTest {
   @Before
   public void setUp() throws Exception {
     DummyResources resources = new DummyResources();
-    resources.putString("Equipment.Stats.Short.Speed", "Speed"); //$NON-NLS-1$ //$NON-NLS-2$
-    resources.putString("Equipment.Stats.Short.Accuracy", "Acc"); //$NON-NLS-1$ //$NON-NLS-2$
-    resources.putString("Equipment.Stats.Short.Damage", "Dam"); //$NON-NLS-1$ //$NON-NLS-2$
-    resources.putString("Equipment.Stats.Short.Range", "Range"); //$NON-NLS-1$ //$NON-NLS-2$
-    resources.putString("Equipment.Stats.Short.Rate", "Rate"); //$NON-NLS-1$ //$NON-NLS-2$
-    resources.putString("Equipment.Stats.Short.Defence", "Def"); //$NON-NLS-1$ //$NON-NLS-2$
-    resources.putString("Equipment.Stats.Short.Soak", "Soak(B/L/A)"); //$NON-NLS-1$ //$NON-NLS-2$
-    resources.putString("Equipment.Stats.Short.Hardness", "Hardness(B/L/A)"); //$NON-NLS-1$ //$NON-NLS-2$
-    resources.putString("HealthType.Bashing.Short", "B"); //$NON-NLS-1$ //$NON-NLS-2$
-    resources.putString("HealthType.Lethal.Short", "L"); //$NON-NLS-1$ //$NON-NLS-2$
-    resources.putString("HealthType.Aggravated.Short", "A"); //$NON-NLS-1$ //$NON-NLS-2$
-    resources.putString("Melee", "Melee"); //$NON-NLS-1$ //$NON-NLS-2$
-    resources.putString("MartialArts", "Martial Arts"); //$NON-NLS-1$ //$NON-NLS-2$
+    resources.putString("Equipment.Stats.Short.Speed", "Speed");
+    resources.putString("Equipment.Stats.Short.Accuracy", "Acc");
+    resources.putString("Equipment.Stats.Short.Damage", "Dam");
+    resources.putString("Equipment.Stats.Short.Range", "Range");
+    resources.putString("Equipment.Stats.Short.Rate", "Rate");
+    resources.putString("Equipment.Stats.Short.Defence", "Def");
+    resources.putString("Equipment.Stats.Short.Soak", "Soak(B/L/A)");
+    resources.putString("Equipment.Stats.Short.Hardness", "Hardness(B/L/A)");
+    resources.putString("HealthType.Bashing.Short", "B");
+    resources.putString("HealthType.Lethal.Short", "L");
+    resources.putString("HealthType.Aggravated.Short", "A");
+    resources.putString("Melee", "Melee");
+    resources.putString("MartialArts", "Martial Arts");
     equipmentStringBuilder = new EquipmentStringBuilder(resources);
   }
 
   @Test
   public void testMeleeWeapon() {
-    DemoMeleeWeapon weapon = new DemoMeleeWeapon(new Identifier("Sword"), 5, 2, 7, 1, HealthType.Lethal, -1, 0, 2); //$NON-NLS-1$
+    DemoMeleeWeapon weapon = new DemoMeleeWeapon(new Identifier("Sword"), 5, 2, 7, 1, HealthType.Lethal, -1, 0, 2);
     assertEquals(
-      "Sword (Melee): Speed:5 Acc:+2 Dam:+7L Def:-1 Rate:2", equipmentStringBuilder.createString(null, weapon)); //$NON-NLS-1$
+      "Sword (Melee): Speed:5 Acc:+2 Dam:+7L Def:-1 Rate:2", equipmentStringBuilder.createString(null, weapon));
   }
 
   @Test
   public void testFixedDamageRangedWeapon() {
-    DemoRangeWeapon weapon = new DemoRangeWeapon(new Identifier("Bow"), 5, 2, 17, 1, HealthType.Bashing, 200, 4, false); //$NON-NLS-1$
+    DemoRangeWeapon weapon = new DemoRangeWeapon(new Identifier("Bow"), 5, 2, 17, 1, HealthType.Bashing, 200, 4, false);
     assertEquals(
-      "Bow (Martial Arts): Speed:5 Acc:+2 Dam:17B Range:200 Rate:4", equipmentStringBuilder.createString(null, weapon)); //$NON-NLS-1$
+      "Bow (Martial Arts): Speed:5 Acc:+2 Dam:17B Range:200 Rate:4", equipmentStringBuilder.createString(null, weapon));
   }
 
   @Test
   public void testNoDamageRangedWeapon() {
-    DemoRangeWeapon weapon = new DemoRangeWeapon(new Identifier("Bow"), 5, 2, 17, 1, HealthType.Bashing, 200, 4, true); //$NON-NLS-1$
-    assertEquals("Bow (Martial Arts): Speed:5 Acc:+2 Dam:- Range:200 Rate:4", equipmentStringBuilder.createString(null, weapon)); //$NON-NLS-1$
+    DemoRangeWeapon weapon = new DemoRangeWeapon(new Identifier("Bow"), 5, 2, 17, 1, HealthType.Bashing, 200, 4, true);
+    assertEquals("Bow (Martial Arts): Speed:5 Acc:+2 Dam:- Range:200 Rate:4", equipmentStringBuilder.createString(null, weapon));
   }
 
   @Test
   public void testNaturalArmour() throws Exception {
-    DemoNaturalArmour armour = new DemoNaturalArmour(new Identifier("Natural"), 5, 2); //$NON-NLS-1$
+    DemoNaturalArmour armour = new DemoNaturalArmour(new Identifier("Natural"), 5, 2);
     String result = equipmentStringBuilder.createString(null, armour);
     assertEquals(
-      "Natural: Soak(B/L/A):+5/+2/- Hardness(B/L/A):-/-", result); //$NON-NLS-1$
+      "Natural: Soak(B/L/A):+5/+2/- Hardness(B/L/A):-/-", result);
   }
 }

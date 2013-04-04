@@ -81,6 +81,7 @@ public class AggregatedSpecialtiesContainer implements ISubTraitContainer {
     containers.add(subContainer);
   }
 
+  @SuppressWarnings("SuspiciousMethodCalls")
   public void removeContainer(ISubTraitContainer subContainer) {
     subContainer.removeSubTraitListener(listener);
     containers.remove(subContainer);
@@ -88,27 +89,27 @@ public class AggregatedSpecialtiesContainer implements ISubTraitContainer {
 
   @Override
   public ISubTrait addSubTrait(String subName) {
-    throw new UnsupportedOperationException("Add to subcontainers instead."); //$NON-NLS-1$
+    throw new UnsupportedOperationException("Add to subcontainers instead.");
   }
 
   @Override
   public ISubTrait getSubTrait(String traitName) {
-    throw new UnsupportedOperationException("Get from subcontainers instead."); //$NON-NLS-1$
+    throw new UnsupportedOperationException("Get from subcontainers instead.");
   }
 
   @Override
   public boolean isRemovable(ISubTrait subTrait) {
-    throw new UnsupportedOperationException("Ask subcontainers instead."); //$NON-NLS-1$
+    throw new UnsupportedOperationException("Ask subcontainers instead.");
   }
 
   @Override
   public void removeSubTrait(ISubTrait specialty) {
-    throw new UnsupportedOperationException("Remove from subcontainers instead."); //$NON-NLS-1$
+    throw new UnsupportedOperationException("Remove from subcontainers instead.");
   }
 
   @Override
   public void dispose() {
-    throw new UnsupportedOperationException("Dispose subcontainers instead."); //$NON-NLS-1$
+    throw new UnsupportedOperationException("Dispose subcontainers instead.");
   }
 
 	@Override

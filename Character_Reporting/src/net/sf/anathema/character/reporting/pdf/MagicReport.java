@@ -42,7 +42,7 @@ public class MagicReport extends AbstractPdfReport {
 
   @Override
   public String toString() {
-    return resources.getString("MagicReport.Name"); //$NON-NLS-1$
+    return resources.getString("MagicReport.Name");
   }
 
   @Override

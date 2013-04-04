@@ -28,7 +28,7 @@ public class TaskPaneView<V extends ITaskPaneGroupView> {
   }
 
   public void removeEquipmentObjectView(V taskView) {
-    Preconditions.checkArgument(taskViews.contains(taskView), "Tried to remove unmanaged task view."); //$NON-NLS-1$
+    Preconditions.checkArgument(taskViews.contains(taskView), "Tried to remove unmanaged task view.");
     taskViews.remove(taskView);
     taskPane.remove(taskView.getTaskGroup());
     revalidateView();

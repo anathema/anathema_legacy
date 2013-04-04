@@ -27,18 +27,18 @@ public class EquipmentItemPresenterTest extends TestCase {
   private IEquipmentStringBuilder equipmentStringBuilder = new IEquipmentStringBuilder() {
     @Override
     public String createString(IEquipmentItem item, IEquipmentStats equipment) {
-      if (equipment.getName().getId().equals("Sword")) { //$NON-NLS-1$
-        return "Passt!"; //$NON-NLS-1$
+      if (equipment.getName().getId().equals("Sword")) {
+        return "Passt!";
       }
       throw new IllegalArgumentException();
     }
   };
 
   public void testNameOnlyEquipment() throws Exception {
-    IEquipmentItem model = new DummyEquipmentObject("First and Forsaken Weapon", null); //$NON-NLS-1$
+    IEquipmentItem model = new DummyEquipmentObject("First and Forsaken Weapon", null);
     IEquipmentObjectView view = mock(IEquipmentObjectView.class);
     initPresentation(model, view);
-    verify(view).setItemTitle("First and Forsaken Weapon"); //$NON-NLS-1$;
+    verify(view).setItemTitle("First and Forsaken Weapon");
   }
 
   private void initPresentation(IEquipmentItem model, IEquipmentObjectView view) {
@@ -51,30 +51,30 @@ public class EquipmentItemPresenterTest extends TestCase {
 
   public void testEquipmentWithoutStats() throws Exception {
     IEquipmentObjectView view = mock(IEquipmentObjectView.class);
-    DummyEquipmentObject model = new DummyEquipmentObject("First and Forsaken Weapon", //$NON-NLS-1$
-      "Abyssal-Weapon mit Bums"); //$NON-NLS-1$
+    DummyEquipmentObject model = new DummyEquipmentObject("First and Forsaken Weapon",
+      "Abyssal-Weapon mit Bums");
     initPresentation(model, view);
-    verify(view).setItemTitle("First and Forsaken Weapon"); //$NON-NLS-1$
-    verify(view).setItemDescription("Abyssal-Weapon mit Bums"); //$NON-NLS-1$)
+    verify(view).setItemTitle("First and Forsaken Weapon");
+    verify(view).setItemDescription("Abyssal-Weapon mit Bums");
   }
 
   public void testEquipmentWithCloseCombatStats() throws Exception {
     IEquipmentObjectView view = mock(IEquipmentObjectView.class);
-    view.setItemTitle("Title"); //$NON-NLS-1$
+    view.setItemTitle("Title");
     BooleanModel isPrintSelectedModel = new BooleanModel();
-    when(view.addStats("Passt!")).thenReturn(isPrintSelectedModel); //$NON-NLS-1$
-    DummyEquipmentObject model = new DummyEquipmentObject("Title", null); //$NON-NLS-1$
-    model.addEquipment(new DemoMeleeWeapon(new Identifier("Sword"), 5, 2, 7, 1, HealthType.Lethal, -1, 0, 2)); //$NON-NLS-1$
+    when(view.addStats("Passt!")).thenReturn(isPrintSelectedModel);
+    DummyEquipmentObject model = new DummyEquipmentObject("Title", null);
+    model.addEquipment(new DemoMeleeWeapon(new Identifier("Sword"), 5, 2, 7, 1, HealthType.Lethal, -1, 0, 2));
     initPresentation(model, view);
   }
 
   public void testPrintModelInitialization() throws Exception {
     IEquipmentObjectView view = mock(IEquipmentObjectView.class);
-    view.setItemTitle("Title"); //$NON-NLS-1$
+    view.setItemTitle("Title");
     BooleanModel isPrintSelectedModel = new BooleanModel();
-    when(view.addStats("Passt!")).thenReturn(isPrintSelectedModel); //$NON-NLS-1$
-    DummyEquipmentObject model = new DummyEquipmentObject("Title", null); //$NON-NLS-1$
-    model.addEquipment(new DemoMeleeWeapon(new Identifier("Sword"), 5, 2, 7, 1, HealthType.Lethal, -1, 0, 2)); //$NON-NLS-1$
+    when(view.addStats("Passt!")).thenReturn(isPrintSelectedModel);
+    DummyEquipmentObject model = new DummyEquipmentObject("Title", null);
+    model.addEquipment(new DemoMeleeWeapon(new Identifier("Sword"), 5, 2, 7, 1, HealthType.Lethal, -1, 0, 2));
     initPresentation(model, view);
     assertFalse(isPrintSelectedModel.getValue());
   }

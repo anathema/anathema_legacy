@@ -13,36 +13,36 @@ import java.util.Map;
 
 public class BonusPointCostTemplateParser extends AbstractXmlTemplateParser<GenericBonusPointCosts> {
 
-  private static final String ATTRIB_DOTS = "dots"; //$NON-NLS-1$
-  private static final String ATTRIB_RANK = "rank"; //$NON-NLS-1$
+  private static final String ATTRIB_DOTS = "dots";
+  private static final String ATTRIB_RANK = "rank";
   private static final String ATTRIB_KEYWORD = "keyword";
   private static final String ATTRIB_GENERAL_COST = "generalCost";
   private static final String ATTRIB_FAVORED_COST = "favoredCost";
 
-  private static final String TAG_ATTRIBUTES = "attributes"; //$NON-NLS-1$
-  private static final String TAG_GENERAL_ATTRIBUTE = "generalAttribute"; //$NON-NLS-1$
-  private static final String TAG_FAVORED_ATTRIBUTE = "favoredAttribute"; //$NON-NLS-1$
-  private static final String TAG_ABILITIES = "abilities"; //$NON-NLS-1$
-  private static final String TAG_GENERAL_ABILITY = "generalAbility"; //$NON-NLS-1$
-  private static final String TAG_FAVORED_ABILITY = "favoredAbility"; //$NON-NLS-1$
-  private static final String TAG_SPECIALTIES = "specialties"; //$NON-NLS-1$
-  private static final String TAG_GENERAL_DOTS_PER_POINT = "generalDotsPerPoint"; //$NON-NLS-1$
-  private static final String TAG_FAVORED_DOTS_PER_POINT = "favoredDotsPerPoint"; //$NON-NLS-1$
-  private static final String TAG_ADVANTAGES = "advantages"; //$NON-NLS-1$
-  private static final String TAG_BACKGROUNDS = "backgrounds"; //$NON-NLS-1$
-  private static final String TAG_LOW_RATINGS = "lowRatings"; //$NON-NLS-1$
-  private static final String TAG_HIGH_RATINGS = "highRatings"; //$NON-NLS-1$
-  private static final String TAG_VIRTUES = "virtues"; //$NON-NLS-1$
-  private static final String TAG_WILLPOWER = "willpower"; //$NON-NLS-1$
-  private static final String TAG_ESSENCE = "essence"; //$NON-NLS-1$
-  private static final String TAG_CHARMS = "charms"; //$NON-NLS-1$
-  private static final String TAG_GENERAL_CHARMS = "generalCharms"; //$NON-NLS-1$
-  private static final String TAG_FAVORED_CHARMS = "favoredCharms"; //$NON-NLS-1$
+  private static final String TAG_ATTRIBUTES = "attributes";
+  private static final String TAG_GENERAL_ATTRIBUTE = "generalAttribute";
+  private static final String TAG_FAVORED_ATTRIBUTE = "favoredAttribute";
+  private static final String TAG_ABILITIES = "abilities";
+  private static final String TAG_GENERAL_ABILITY = "generalAbility";
+  private static final String TAG_FAVORED_ABILITY = "favoredAbility";
+  private static final String TAG_SPECIALTIES = "specialties";
+  private static final String TAG_GENERAL_DOTS_PER_POINT = "generalDotsPerPoint";
+  private static final String TAG_FAVORED_DOTS_PER_POINT = "favoredDotsPerPoint";
+  private static final String TAG_ADVANTAGES = "advantages";
+  private static final String TAG_BACKGROUNDS = "backgrounds";
+  private static final String TAG_LOW_RATINGS = "lowRatings";
+  private static final String TAG_HIGH_RATINGS = "highRatings";
+  private static final String TAG_VIRTUES = "virtues";
+  private static final String TAG_WILLPOWER = "willpower";
+  private static final String TAG_ESSENCE = "essence";
+  private static final String TAG_CHARMS = "charms";
+  private static final String TAG_GENERAL_CHARMS = "generalCharms";
+  private static final String TAG_FAVORED_CHARMS = "favoredCharms";
   private static final String TAG_KEYWORD_CHARMS = "keywordCharms";
-  private static final String TAG_MAXIMUM_FREE_ABILITY_RANK = "maximumFreeAbilityRank"; //$NON-NLS-1$
-  private static final String TAG_MAXIMUM_FREE_VIRTUE_RANK = "maximumFreeVirtueRank"; //$NON-NLS-1$
-  private static final String TAG_GENERAL_MARTIAL_ARTS_CHARMS = "generalHighLevelMartialArtsCharms"; //$NON-NLS-1$
-  private static final String TAG_FAVORED_MARTIAL_ARTS_CHARMS = "favoredHighLevelMartialArtsCharms"; //$NON-NLS-1$
+  private static final String TAG_MAXIMUM_FREE_ABILITY_RANK = "maximumFreeAbilityRank";
+  private static final String TAG_MAXIMUM_FREE_VIRTUE_RANK = "maximumFreeVirtueRank";
+  private static final String TAG_GENERAL_MARTIAL_ARTS_CHARMS = "generalHighLevelMartialArtsCharms";
+  private static final String TAG_FAVORED_MARTIAL_ARTS_CHARMS = "favoredHighLevelMartialArtsCharms";
 
   private final CostParser costParser = new CostParser();
   private final MartialArtsLevel standardMartialArtsLevel;

@@ -10,7 +10,7 @@ public class BackgroundExperienceModel extends AbstractIntegerValueModel {
   private final IExperiencePointCosts experiencePointCosts;
 
   public BackgroundExperienceModel(ICoreTraitConfiguration configuration, IExperiencePointCosts experiencePointCosts) {
-    super("Experience", "Backgrounds"); //$NON-NLS-1$ //$NON-NLS-2$
+    super("Experience", "Backgrounds");
     this.configuration = configuration;
     this.experiencePointCosts = experiencePointCosts;
   }

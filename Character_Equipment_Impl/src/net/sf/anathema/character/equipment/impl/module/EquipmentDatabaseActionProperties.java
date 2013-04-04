@@ -8,8 +8,6 @@ import net.sf.anathema.lib.resources.Resources;
 
 public class EquipmentDatabaseActionProperties implements IDatabaseActionProperties {
 
-  private static final String EQUIPMENT_DATABASE_ITEM_ID = "EquipmentDatabase.Item"; //$NON-NLS-1$
-
   private final Resources resources;
   private final IApplicationModel anathemaModel;
 
@@ -20,7 +18,7 @@ public class EquipmentDatabaseActionProperties implements IDatabaseActionPropert
 
   @Override
   public String getToolTipText() {
-    return resources.getString("EquipmentDatabase.NewAction.Tooltip"); //$NON-NLS-1$
+    return resources.getString("EquipmentDatabase.NewAction.Tooltip");
   }
 
   @Override

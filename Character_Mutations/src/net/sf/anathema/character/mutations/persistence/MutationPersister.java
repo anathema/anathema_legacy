@@ -15,10 +15,10 @@ import static net.sf.anathema.character.library.quality.persistence.IQualityPers
 import static net.sf.anathema.character.library.quality.persistence.IQualityPersistenceXmlConstants.ATTRIB_VALUE;
 
 public class MutationPersister extends AbstractQualityPersister<IMutation> {
-  private static final String TAG_MUTATIONS = "Mutations"; //$NON-NLS-1$
-  private static final String TAG_MUTATION = "Mutation"; //$NON-NLS-1$
-  private static final String TAG_GIFTS = "Gifts"; //$NON-NLS-1$
-  private static final String TAG_GIFT = "Gift"; //$NON-NLS-1$
+  private static final String TAG_MUTATIONS = "Mutations";
+  private static final String TAG_MUTATION = "Mutation";
+  private static final String TAG_GIFTS = "Gifts";
+  private static final String TAG_GIFT = "Gift";
 
   @Override
   public void load(Element parent, IQualityModel<IMutation> model) throws PersistenceException {

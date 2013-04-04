@@ -46,7 +46,7 @@ public class AnathemaModelInitializer {
     try {
       return new ApplicationModel(createRepositoryFolder(), resources, resourceLoader);
     } catch (RepositoryException e) {
-      throw new InitializationException("Failed to create repository folder.\nPlease check read/write permissions.", e); //$NON-NLS-1$
+      throw new InitializationException("Failed to create repository folder.\nPlease check read/write permissions.", e);
     }
   }
 

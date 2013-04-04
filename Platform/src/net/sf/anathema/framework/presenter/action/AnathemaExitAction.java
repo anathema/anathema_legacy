@@ -15,7 +15,7 @@ public class AnathemaExitAction extends SmartAction {
 
   public static Action createMenuAction(Resources resources) {
     SmartAction action = new AnathemaExitAction();
-    action.setName(resources.getString("AnathemaCore.Tools.Exit.Name")); //$NON-NLS-1$
+    action.setName(resources.getString("AnathemaCore.Tools.Exit.Name"));
     return action;
   }
 }

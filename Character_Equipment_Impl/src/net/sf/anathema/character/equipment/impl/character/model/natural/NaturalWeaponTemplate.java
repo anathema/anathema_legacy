@@ -8,7 +8,7 @@ import net.sf.anathema.character.generic.equipment.weapon.IEquipmentStats;
 
 public class NaturalWeaponTemplate implements IEquipmentTemplate {
 
-  private static final String NATURAL = "Natural"; //$NON-NLS-1$
+  private static final String NATURAL = "Natural";
 
   @Override
   public String getDescription() {

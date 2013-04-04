@@ -10,7 +10,6 @@ import net.sf.anathema.character.reporting.pdf.content.essence.pools.PeripheralP
 import net.sf.anathema.character.reporting.pdf.content.essence.pools.PersonalPoolRow;
 import net.sf.anathema.character.reporting.pdf.content.essence.pools.PoolRow;
 import net.sf.anathema.character.reporting.pdf.content.essence.recovery.NaturalRecoveryRow;
-import net.sf.anathema.character.reporting.pdf.content.essence.recovery.NullRecoveryRow;
 import net.sf.anathema.character.reporting.pdf.content.essence.recovery.RecoveryRow;
 import net.sf.anathema.character.reporting.pdf.content.essence.recovery.SpecialRecoveryRow;
 import net.sf.anathema.character.reporting.pdf.content.essence.recovery.TotalRecoveryRow;
@@ -35,15 +34,9 @@ public class ExtendedEssenceContent extends AbstractSubBoxContent {
     return rows;
   }
 
-  public List<RecoveryRow> getRecoveryRows() {
-    List<RecoveryRow> rows = getAvailableRecoveryRows();
-    addMissingRecoveryRows(rows);
-    return rows;
-  }
-
   @Override
   public String getHeaderKey() {
-    return "Essence"; //$NON-NLS-1$
+    return "Essence";
   }
 
   public int getNumberOfContentLines() {
@@ -100,19 +93,8 @@ public class ExtendedEssenceContent extends AbstractSubBoxContent {
     }
   }
 
-  private void addMissingRecoveryRows(List<RecoveryRow> rows) {
-    int missingCount = getNumberOfContentLines() - rows.size();
-    for (int index = 0; index < missingCount; index++)  {
-      rows.add(rows.size() - 1, new NullRecoveryRow());
-    }
-  }
-
   public int getEssenceValue() {
     return  character.getTraitCollection().getTrait(OtherTraitType.Essence).getCurrentValue();
-  }
-
-  public String getRegainHeaderLabel() {
-    return getResources().getString("Sheet.Essence.Regaining");
   }
 
   public String getEssenceTotalHeaderLabel() {
@@ -125,14 +107,6 @@ public class ExtendedEssenceContent extends AbstractSubBoxContent {
 
   public String getAvailableHeaderLabel() {
     return getResources().getString("Sheet.Essence.Available");
-  }
-
-  public String getAtEaseHeaderLabel() {
-    return getResources().getString("Sheet.Essence.AtEase");
-  }
-
-  public String getRelaxHeaderLabel() {
-    return getResources().getString("Sheet.Essence.Relaxed");
   }
 
   public int getEssenceMax() {

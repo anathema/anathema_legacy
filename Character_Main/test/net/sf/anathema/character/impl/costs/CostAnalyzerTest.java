@@ -19,7 +19,7 @@ import static org.mockito.Mockito.when;
 
 public class CostAnalyzerTest {
 
-  private static final String CHARM_ID = "charmId"; //$NON-NLS-1$
+  private static final String CHARM_ID = "charmId";
   private DummyCoreTraitConfiguration dummyCoreTraitConfiguration = new DummyCoreTraitConfiguration();
   private DummyBasicCharacterData basicCharacterData = new DummyBasicCharacterData();
   private CostAnalyzer costAnalyzer = new CostAnalyzer(basicCharacterData, dummyCoreTraitConfiguration);
@@ -40,7 +40,7 @@ public class CostAnalyzerTest {
     assertEquals(MartialArtsLevel.Terrestrial, costAnalyzer.getMartialArtsLevel(new DummyCharm(CHARM_ID) {
       @Override
       public boolean hasAttribute(Identified attribute) {
-        return attribute.getId().equals("MartialArts") || attribute.getId().equals("Terrestrial"); //$NON-NLS-1$ //$NON-NLS-2$
+        return attribute.getId().equals("MartialArts") || attribute.getId().equals("Terrestrial");
       }
     }));
   }

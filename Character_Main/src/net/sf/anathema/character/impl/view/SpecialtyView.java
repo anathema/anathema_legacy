@@ -20,7 +20,7 @@ import java.awt.event.ActionEvent;
 public class SpecialtyView extends AbstractTraitView implements ISpecialtyView {
   private final Announcer<IChangeListener> control = Announcer.to(IChangeListener.class);
   private final Component abilityLabel;
-  private final Component separatorLabel = new JLabel("-"); //$NON-NLS-1$
+  private final Component separatorLabel = new JLabel("-");
   private final Component specialtyLabel;
   private JButton deleteButton;
   private JPanel traitPanel;

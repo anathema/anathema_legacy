@@ -12,7 +12,7 @@ public abstract class AbstractFileTypeFilter extends FileFilter implements java.
       return null;
     }
     if (lastDotIndex == fileName.length() - 1) {
-      return ""; //$NON-NLS-1$
+      return "";
     }
     return fileName.substring(lastDotIndex + 1).toLowerCase();
   }
@@ -23,10 +23,7 @@ public abstract class AbstractFileTypeFilter extends FileFilter implements java.
       return acceptDirectory(f);
     }
     String extension = getExtension(f);
-    if (extension != null) {
-      return acceptExtension(extension);
-    }
-    return false;
+    return extension != null && acceptExtension(extension);
   }
 
   protected abstract boolean acceptExtension(String extension);

@@ -35,27 +35,27 @@ public class PresentationPropertiesParserTest {
 
   @Test
   public void testParseXmlWithoutAbilityBallResources() throws Exception {
-    String xml = "<presentation />"; //$NON-NLS-1$
+    String xml = "<presentation />";
     GenericPresentationTemplate presentationProperties = parseXml(xml);
     GenericCharacterTemplate parentTemplate = new GenericCharacterTemplate();
     parentTemplate.setTemplateType(new TemplateType(new DummyExaltCharacterType()));
     presentationProperties.setParentTemplate(parentTemplate);
     assertEquals("icons/DummyButtonLifeSecondEdition16.png",
-            presentationProperties.getSmallCasteIconResource(AbilityGroupType.Life.getId(), new SecondEdition().getId())); //$NON-NLS-1$
+            presentationProperties.getSmallCasteIconResource(AbilityGroupType.Life.getId(), new SecondEdition().getId()));
   }
 
   @Test
   public void testSetsColorOnCharmPresentationProperties() throws Exception {
-    String xml = "<presentation>" //$NON-NLS-1$
-                 + "\t<color red=\"139\" green=\"123\" blue=\"255\" />" //$NON-NLS-1$
-                 + "</presentation>"; //$NON-NLS-1$
+    String xml = "<presentation>"
+                 + "\t<color red=\"139\" green=\"123\" blue=\"255\" />"
+                 + "</presentation>";
     IPresentationProperties presentationProperties = parseXml(xml);
     assertEquals(new Color(139, 123, 255), presentationProperties.getCharmPresentationProperties().getColor());
   }
 
   @Test
   public void testDefaultsToWhiteIfNoColorIsSet() throws Exception {
-    String xml = "<presentation/>"; //$NON-NLS-1$
+    String xml = "<presentation/>";
     IPresentationProperties presentationProperties = parseXml(xml);
     assertEquals(Color.WHITE, presentationProperties.getCharmPresentationProperties().getColor());
   }

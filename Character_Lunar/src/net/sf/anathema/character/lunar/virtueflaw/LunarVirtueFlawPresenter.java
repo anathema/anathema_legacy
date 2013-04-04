@@ -21,7 +21,7 @@ public class LunarVirtueFlawPresenter extends VirtueFlawPresenter {
     virtueFlaw.addRootChangeListener(new IChangeListener() {
       @Override
       public void changeOccurred() {
-        virtueFlaw.getName().setText(getResources().getString("Lunar.VirtueFlaw.Name." + virtueFlaw.getRoot().getId())); //$NON-NLS-1$
+        virtueFlaw.getName().setText(getResources().getString("Lunar.VirtueFlaw.Name." + virtueFlaw.getRoot().getId()));
       }
     });
     return nameView;

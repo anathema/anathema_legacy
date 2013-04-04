@@ -23,7 +23,7 @@ public class LinguisticsContent extends AbstractSubBoxContent implements ListSub
 
   @Override
   public String getHeaderKey() {
-    return "Languages"; //$NON-NLS-1$
+    return "Languages";
   }
 
   @Override
@@ -33,7 +33,7 @@ public class LinguisticsContent extends AbstractSubBoxContent implements ListSub
     for (Identified language : model.getEntries()) {
       String text = language.getId();
       if (model.isPredefinedLanguage(language)) {
-        text = getString("Language." + text); //$NON-NLS-1$
+        text = getString("Language." + text);
       }
       printLanguages.add(text);
     }

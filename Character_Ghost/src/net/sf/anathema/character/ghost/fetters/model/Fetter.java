@@ -13,7 +13,7 @@ public class Fetter extends DefaultTrait {
   private final String subTraitName;
 
   public Fetter(String fetterName, ITraitContext context, IGhostFettersModel model) {
-    super(new TraitRules(new TraitType("Fetter (" + fetterName + ")"), //$NON-NLS-1$
+    super(new TraitRules(new TraitType("Fetter (" + fetterName + ")"),
       SimpleTraitTemplate.createStaticLimitedTemplate(0, 5), context.getLimitationContext()), context, new FriendlyValueChangeChecker());
     this.subTraitName = fetterName;
     this.model = model;

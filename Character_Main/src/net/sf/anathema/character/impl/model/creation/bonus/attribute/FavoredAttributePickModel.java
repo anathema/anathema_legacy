@@ -10,7 +10,7 @@ public class FavoredAttributePickModel extends AbstractSpendingModel {
   private final ICreationPoints creationPoints;
 
   public FavoredAttributePickModel(IFavorableTraitCostCalculator attributeCalculator, ICreationPoints creationPoints) {
-    super("Attributes", "FavoredPick"); //$NON-NLS-1$ //$NON-NLS-2$
+    super("Attributes", "FavoredPick");
     this.attributeCalculator = attributeCalculator;
     this.creationPoints = creationPoints;
   }

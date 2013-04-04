@@ -19,15 +19,15 @@ public class ProperHierarchicalGraphTest {
 
   @Test
   public void testSingleNodeGraph() throws Exception {
-    IRegularNode node = NodeFactory.createChildlessNode(1, "node"); //$NON-NLS-1$
+    IRegularNode node = NodeFactory.createChildlessNode(1, "node");
     LayeredGraph graph = new ProperHierarchicalGraph(new ISimpleNode[]{node}, 1);
     assertNotNull(graph);
   }
 
   @Test
   public void testDualLayerGraph() throws Exception {
-    ISimpleNode node = NodeFactory.createChildlessNode(2, "node"); //$NON-NLS-1$
-    ISimpleNode root = NodeFactory.createSingleChildNode(1, node, "root"); //$NON-NLS-1$
+    ISimpleNode node = NodeFactory.createChildlessNode(2, "node");
+    ISimpleNode root = NodeFactory.createSingleChildNode(1, node, "root");
     LayeredGraph graph = new ProperHierarchicalGraph(new ISimpleNode[]{root, node}, 2);
     assertEquals(root, graph.getNodesByLayer(1)[0]);
     assertEquals(node, graph.getNodesByLayer(2)[0]);
@@ -36,8 +36,8 @@ public class ProperHierarchicalGraphTest {
   @Test
   public void testLongEdgeException() throws Exception {
     try {
-      ISimpleNode node = NodeFactory.createChildlessNode(3, "node"); //$NON-NLS-1$
-      ISimpleNode root = NodeFactory.createSingleChildNode(1, node, "root"); //$NON-NLS-1$
+      ISimpleNode node = NodeFactory.createChildlessNode(3, "node");
+      ISimpleNode root = NodeFactory.createSingleChildNode(1, node, "root");
       new ProperHierarchicalGraph(new ISimpleNode[]{root, node}, 3);
       fail();
     } catch (IllegalArgumentException e) {
@@ -47,9 +47,9 @@ public class ProperHierarchicalGraphTest {
 
   @Test
   public void testLayerOrderUnchanged() throws Exception {
-    ISimpleNode node1 = NodeFactory.createChildlessNode(1, "node1"); //$NON-NLS-1$
-    ISimpleNode node2 = NodeFactory.createChildlessNode(1, "node2"); //$NON-NLS-1$
-    ISimpleNode node3 = NodeFactory.createChildlessNode(1, "node3"); //$NON-NLS-1$
+    ISimpleNode node1 = NodeFactory.createChildlessNode(1, "node1");
+    ISimpleNode node2 = NodeFactory.createChildlessNode(1, "node2");
+    ISimpleNode node3 = NodeFactory.createChildlessNode(1, "node3");
     ISimpleNode[] originalNodeArray = new ISimpleNode[]{node1, node2, node3};
     LayeredGraph graph = new ProperHierarchicalGraph(originalNodeArray, 1);
     ISimpleNode[] layerOneNodes = graph.getNodesByLayer(1);
@@ -58,9 +58,9 @@ public class ProperHierarchicalGraphTest {
 
   @Test
   public void testSetNewLayerOrder() throws Exception {
-    ISimpleNode node1 = NodeFactory.createChildlessNode(1, "node1"); //$NON-NLS-1$
-    ISimpleNode node2 = NodeFactory.createChildlessNode(1, "node2"); //$NON-NLS-1$
-    ISimpleNode node3 = NodeFactory.createChildlessNode(1, "node3"); //$NON-NLS-1$
+    ISimpleNode node1 = NodeFactory.createChildlessNode(1, "node1");
+    ISimpleNode node2 = NodeFactory.createChildlessNode(1, "node2");
+    ISimpleNode node3 = NodeFactory.createChildlessNode(1, "node3");
     IProperHierarchicalGraph graph = new ProperHierarchicalGraph(new ISimpleNode[]{node1, node2, node3}, 1);
     ISimpleNode[] reorderedNodes = new ISimpleNode[]{node2, node3, node1};
     graph.setNewLayerOrder(1, reorderedNodes);
@@ -69,10 +69,10 @@ public class ProperHierarchicalGraphTest {
 
   @Test
   public void testNodeExchangedException() throws Exception {
-    ISimpleNode node1 = NodeFactory.createChildlessNode(1, "node1"); //$NON-NLS-1$
-    ISimpleNode node2 = NodeFactory.createChildlessNode(1, "node2"); //$NON-NLS-1$
-    ISimpleNode node3 = NodeFactory.createChildlessNode(1, "node3"); //$NON-NLS-1$
-    ISimpleNode secondLayerNode = NodeFactory.createChildlessNode(2, "secondLayer"); //$NON-NLS-1$
+    ISimpleNode node1 = NodeFactory.createChildlessNode(1, "node1");
+    ISimpleNode node2 = NodeFactory.createChildlessNode(1, "node2");
+    ISimpleNode node3 = NodeFactory.createChildlessNode(1, "node3");
+    ISimpleNode secondLayerNode = NodeFactory.createChildlessNode(2, "secondLayer");
     IProperHierarchicalGraph graph = new ProperHierarchicalGraph(new ISimpleNode[]{
       node1,
       node2,
@@ -89,9 +89,9 @@ public class ProperHierarchicalGraphTest {
 
   @Test
   public void testNodeRemovedException() throws Exception {
-    ISimpleNode node1 = NodeFactory.createChildlessNode(1, "node1"); //$NON-NLS-1$
-    ISimpleNode node2 = NodeFactory.createChildlessNode(1, "node2"); //$NON-NLS-1$
-    ISimpleNode node3 = NodeFactory.createChildlessNode(1, "node3"); //$NON-NLS-1$
+    ISimpleNode node1 = NodeFactory.createChildlessNode(1, "node1");
+    ISimpleNode node2 = NodeFactory.createChildlessNode(1, "node2");
+    ISimpleNode node3 = NodeFactory.createChildlessNode(1, "node3");
     IProperHierarchicalGraph graph = new ProperHierarchicalGraph(new ISimpleNode[]{node1, node2, node3}, 1);
     try {
       ISimpleNode[] reorderedNodes = new ISimpleNode[]{node2, node3};

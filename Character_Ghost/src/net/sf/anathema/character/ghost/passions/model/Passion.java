@@ -23,7 +23,7 @@ public class Passion extends DefaultTrait implements IPassion {
       ITraitReference reference,
       String passionName,
       ITraitContext context) {
-    super(new TraitRules(new TraitType("Passion (" + passionName + ")"), //$NON-NLS-1$
+    super(new TraitRules(new TraitType("Passion (" + passionName + ")"),
         SimpleTraitTemplate.createStaticLimitedTemplate(0, 5),
         context.getLimitationContext()), context, new FriendlyValueChangeChecker());
     this.container = (PassionsContainer)container;

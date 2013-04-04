@@ -13,7 +13,7 @@ import java.util.List;
 
 public class GhostFettersPersister implements IAdditionalPersister
 {
-  private static final String TAG_FETTER = "Fetter"; //$NON-NLS-1$
+  private static final String TAG_FETTER = "Fetter";
   private static final String ATTRIB_NAME = "name";
   private final TraitPersister persister = new TraitPersister();
 

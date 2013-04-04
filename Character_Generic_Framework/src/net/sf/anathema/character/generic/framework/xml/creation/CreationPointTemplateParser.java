@@ -10,23 +10,23 @@ import org.dom4j.Element;
 
 public class CreationPointTemplateParser extends AbstractXmlTemplateParser<GenericCreationPoints> {
 
-  private static final String ATTRIB_COUNT = "count"; //$NON-NLS-1$
-  private static final String ATTRIB_FAVORED = "favored"; //$NON-NLS-1$
-  private static final String ATTRIB_FAVORED_PICKS = "favoredPicks"; //$NON-NLS-1$
-  private static final String ATTRIB_FAVORED_DOTS = "favoredDots"; //$NON-NLS-1$
+  private static final String ATTRIB_COUNT = "count";
+  private static final String ATTRIB_FAVORED = "favored";
+  private static final String ATTRIB_FAVORED_PICKS = "favoredPicks";
+  private static final String ATTRIB_FAVORED_DOTS = "favoredDots";
   private static final String ATTRIB_GENERIC_DOTS = "genericDots";
-  private static final String ATTRIB_UNIQUE = "unique"; //$NON-NLS-1$
-  private static final String ATTRIB_GENERAL = "general"; //$NON-NLS-1$
-  private static final String ATTRIB_PRIMARY = "primary"; //$NON-NLS-1$
-  private static final String ATTRIB_SECONDARY = "secondary"; //$NON-NLS-1$
-  private static final String ATTRIB_TERTIARY = "tertiary"; //$NON-NLS-1$
-  private static final String TAG_ABILITY_DOTS = "abilityDots"; //$NON-NLS-1$
-  private static final String TAG_CHARM_PICKS = "charmPicks"; //$NON-NLS-1$
-  private static final String TAG_ATTRIBUTE_DOTS = "attributeDots"; //$NON-NLS-1$
-  private static final String TAG_BACKGROUND_DOTS = "backgroundDots"; //$NON-NLS-1$
-  private static final String TAG_SPECIALTY_DOTS = "specialtyDots"; //$NON-NLS-1$
-  private static final String TAG_VIRTUE_DOTS = "virtueDots"; //$NON-NLS-1$
-  private static final String TAG_BONUS_POINTS = "bonusPoints"; //$NON-NLS-1$
+  private static final String ATTRIB_UNIQUE = "unique";
+  private static final String ATTRIB_GENERAL = "general";
+  private static final String ATTRIB_PRIMARY = "primary";
+  private static final String ATTRIB_SECONDARY = "secondary";
+  private static final String ATTRIB_TERTIARY = "tertiary";
+  private static final String TAG_ABILITY_DOTS = "abilityDots";
+  private static final String TAG_CHARM_PICKS = "charmPicks";
+  private static final String TAG_ATTRIBUTE_DOTS = "attributeDots";
+  private static final String TAG_BACKGROUND_DOTS = "backgroundDots";
+  private static final String TAG_SPECIALTY_DOTS = "specialtyDots";
+  private static final String TAG_VIRTUE_DOTS = "virtueDots";
+  private static final String TAG_BONUS_POINTS = "bonusPoints";
 
   public CreationPointTemplateParser(IXmlTemplateRegistry<GenericCreationPoints> templateRegistry) {
     super(templateRegistry);

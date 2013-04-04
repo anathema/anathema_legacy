@@ -32,6 +32,7 @@ public class GenericAnimaEncoder implements ContentEncoder {
     this.tableEncoder = encoder;
   }
 
+  @SuppressWarnings("unchecked")
   @Override
   public void encode(SheetGraphics graphics, ReportSession reportSession, Bounds bounds) throws DocumentException {
     float powerHeight = bounds.getHeight() - AnimaTableEncoder.TABLE_HEIGHT - IVoidStateFormatConstants.TEXT_PADDING / 2f;
@@ -43,15 +44,15 @@ public class GenericAnimaEncoder implements ContentEncoder {
   }
 
   private void encodeAnimaPowers(SheetGraphics graphics, IGenericCharacter character, Bounds bounds) throws DocumentException {
-    Phrase phrase = new Phrase("", graphics.createFont(fontSize)); //$NON-NLS-1$
+    Phrase phrase = new Phrase("", graphics.createFont(fontSize));
     // Add standard powers for character type
     Chunk symbolChunk = graphics.createSymbolChunk();
     ICharacterType characterType = character.getTemplate().getTemplateType().getCharacterType();
-    ListUtils.addBulletedListText(resources, symbolChunk, "Sheet.AnimaPower." + characterType.getId(), phrase, false);  //$NON-NLS-1$
-    String casteResourceKey = "Sheet.AnimaPower." + character.getCasteType().getId() + "." + SECOND_EDITION; //$NON-NLS-1$ //$NON-NLS-2$
+    ListUtils.addBulletedListText(resources, symbolChunk, "Sheet.AnimaPower." + characterType.getId(), phrase, false);
+    String casteResourceKey = "Sheet.AnimaPower." + character.getCasteType().getId() + "." + SECOND_EDITION;
     if (resources.supportsKey(casteResourceKey)) {
       phrase.add(symbolChunk);
-      phrase.add(resources.getString(casteResourceKey) + "\n"); //$NON-NLS-1$
+      phrase.add(resources.getString(casteResourceKey) + "\n");
     }
     phrase.add(symbolChunk);
     float yPosition = graphics.createSimpleColumn(bounds).withLeading(lineHeight).andTextPart(phrase).encode().getYLine();

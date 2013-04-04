@@ -35,14 +35,14 @@ public class HealthAndMovementTableEncoder extends AbstractHealthAndMovementTabl
 
   @Override
   protected final Phrase createIncapacitatedComment(SheetGraphics graphics) {
-    return new Phrase(getResources().getString("Sheet.Movement.Comment.Mobility"), createCommentFont(graphics)); //$NON-NLS-1$
+    return new Phrase(getResources().getString("Sheet.Movement.Comment.Mobility"), createCommentFont(graphics));
   }
 
   @Override
   protected final void addMovementHeader(SheetGraphics graphics, PdfPTable table) {
-    table.addCell(createHeaderCell(graphics, getResources().getString("Sheet.Movement.Move"), 2)); //$NON-NLS-1$
-    table.addCell(createHeaderCell(graphics, getResources().getString("Sheet.Movement.Dash"), 2)); //$NON-NLS-1$
-    table.addCell(createHeaderCell(graphics, getResources().getString("Sheet.Movement.Jump"), 3)); //$NON-NLS-1$
+    table.addCell(createHeaderCell(graphics, getResources().getString("Sheet.Movement.Move"), 2));
+    table.addCell(createHeaderCell(graphics, getResources().getString("Sheet.Movement.Dash"), 2));
+    table.addCell(createHeaderCell(graphics, getResources().getString("Sheet.Movement.Jump"), 3));
   }
 
   @Override

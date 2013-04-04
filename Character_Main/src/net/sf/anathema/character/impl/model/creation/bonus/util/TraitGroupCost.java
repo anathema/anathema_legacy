@@ -37,7 +37,7 @@ public class TraitGroupCost {
 
   public void addTraitToCost(ITrait trait, ElementCreationCost cost) {
     if (!unhandledTraits.contains(trait)) {
-      throw new IllegalArgumentException("Trait " + trait.getType().getId() + " not expected."); //$NON-NLS-1$//$NON-NLS-2$
+      throw new IllegalArgumentException("Trait " + trait.getType().getId() + " not expected.");
     }
     dotsSpent += cost.getDotsSpent();
     bonusPointsSpent += cost.getBonusPointsSpent();

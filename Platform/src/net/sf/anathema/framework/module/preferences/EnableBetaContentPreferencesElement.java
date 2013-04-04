@@ -33,7 +33,7 @@ public class EnableBetaContentPreferencesElement extends AbstractCheckBoxPrefere
 
   @Override
   protected String getLabelKey() {
-    return "AnathemaCore.Tools.Preferences.EnableBetaContent"; //$NON-NLS-1$
+    return "AnathemaCore.Tools.Preferences.EnableBetaContent";
   }
 
   @Override

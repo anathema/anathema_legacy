@@ -17,15 +17,15 @@ public class AnathemaViewProperties {
   }
 
   public String getDefaultFrameTitle() {
-    return resources.getString("MainFrame.Title"); //$NON-NLS-1$;
+    return resources.getString("MainFrame.Title");
   }
 
   public Image getFrameIcon() {
-    return new ImageProvider(".").getImage(this.getClass(), "icons/AnathemaIcon.png"); //$NON-NLS-1$
+    return new ImageProvider(".").getImage(this.getClass(), "icons/AnathemaIcon.png");
   }
 
   public String getMainMenuName() {
-    return resources.getString("AnathemaCore.MainMenu.Name"); //$NON-NLS-1$
+    return resources.getString("AnathemaCore.MainMenu.Name");
   }
 
   public int getLaunchState() {
@@ -33,6 +33,6 @@ public class AnathemaViewProperties {
   }
 
   public String getHelpMenuName() {
-    return resources.getString("AnathemaCore.HelpMenu.Name"); //$NON-NLS-1$;
+    return resources.getString("AnathemaCore.HelpMenu.Name");
   }
 }

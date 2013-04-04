@@ -12,9 +12,9 @@ import net.sf.anathema.lib.registry.IIdentificateRegistry;
 @Weight(weight = 0) //Must be the first so others can depend on it
 public class BasicExaltCharacterModule extends CharacterModuleAdapter {
 
-  public static final String BACKGROUND_ID_FACE = "Face"; //$NON-NLS-1$
-  public static final String BACKGROUND_ID_MANSE = "Manse"; //$NON-NLS-1$
-  public static final String BACKGROUND_ID_ARTIFACT = "Artifact"; //$NON-NLS-1$
+  public static final String BACKGROUND_ID_FACE = "Face";
+  public static final String BACKGROUND_ID_MANSE = "Manse";
+  public static final String BACKGROUND_ID_ARTIFACT = "Artifact";
 
   @Override
   public void addBackgroundTemplates(ICharacterGenerics generics) {

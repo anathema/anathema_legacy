@@ -5,8 +5,8 @@ import net.sf.anathema.lib.resources.Resources;
 
 public class TraitInternationalizer {
 
-  private static final String SHEET_MESSAGE = "SubtraitSheetMessage";//$NON-NLS-1$
-  private static final String SCREEN_MESSAGE = "SubtraitScreenMessage";//$NON-NLS-1$
+  private static final String SHEET_MESSAGE = "SubtraitSheetMessage";
+  private static final String SCREEN_MESSAGE = "SubtraitScreenMessage";
   private final Resources resources;
 
   public TraitInternationalizer(Resources resources) {
@@ -28,7 +28,7 @@ public class TraitInternationalizer {
     if (name == null) {
       return i18nedId;
     }
-    String subtraitNameKey = id + "." + name; //$NON-NLS-1$
+    String subtraitNameKey = id + "." + name;
     if (!resources.supportsKey(subtraitNameKey)) {
       return resources.getString(message, i18nedId, name);
     }

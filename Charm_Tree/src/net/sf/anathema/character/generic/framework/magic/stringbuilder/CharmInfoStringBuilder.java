@@ -31,11 +31,11 @@ public class CharmInfoStringBuilder implements ICharmInfoStringBuilder {
   public final String getInfoString(ICharm charm, ISpecialCharm specialDetails) {
     Preconditions.checkNotNull(charm);
     StringBuilder builder = new StringBuilder();
-    builder.append("<html><body>"); //$NON-NLS-1$
+    builder.append("<html><body>");
     for (IMagicTooltipStringBuilder lineBuilder : builders) {
       lineBuilder.buildStringForMagic(builder, charm, specialDetails);
     }
-    builder.append("</body></html>"); //$NON-NLS-1$
+    builder.append("</body></html>");
     return builder.toString();
   }
 }

@@ -7,35 +7,35 @@ import javax.swing.Icon;
 
 public class CharacterUI extends AbstractUI {
   public Icon getCharacterDescriptionTabIcon() {
-    return getIcon("icons/TabDescription16.png"); //$NON-NLS-1$
+    return getIcon("icons/TabDescription16.png");
   }
 
   public Icon getLinkIcon() {
-    return getIcon("icons/ButtonLink16b.png"); //$NON-NLS-1$
+    return getIcon("icons/ButtonLink16b.png");
   }
 
   public Icon getRandomRealmNameIcon() {
-    return getIcon("icons/ButtonRandomNameC16.png"); //$NON-NLS-1$
+    return getIcon("icons/ButtonRandomNameC16.png");
   }
 
   public Icon getRandomThresholdNameIcon() {
-    return getIcon("icons/ButtonRandomNameB16.png"); //$NON-NLS-1$
+    return getIcon("icons/ButtonRandomNameB16.png");
   }
 
   public Icon getCancelComboEditIcon() {
-    return getIcon("icons/ButtonUndo16.png"); //$NON-NLS-1$
+    return getIcon("icons/ButtonUndo16.png");
   }
 
   public Icon getFinalizeIcon() {
-    return getIcon("icons/ButtonCheck16.png"); //$NON-NLS-1$
+    return getIcon("icons/ButtonCheck16.png");
   }
 
   public Icon getFinalizeXPIcon() {
-    return getIcon("icons/ButtonCheckXP16.png"); //$NON-NLS-1$
+    return getIcon("icons/ButtonCheckXP16.png");
   }
 
   public Icon getSmallTypeIcon(ICharacterType characterType) {
-    return getIcon(getSmallTypeIconPath(characterType)); //$NON-NLS-1$
+    return getIcon(getSmallTypeIconPath(characterType));
   }
 
   public String getSmallTypeIconPath(ICharacterType characterType) {
@@ -47,14 +47,14 @@ public class CharacterUI extends AbstractUI {
   }
 
   public Icon getMediumBallResource(ICharacterType characterType) {
-    return getIcon("icons/Border" + characterType.getId() + "Button16.png"); //$NON-NLS-1$ //$NON-NLS-2$
+    return getIcon("icons/Border" + characterType.getId() + "Button16.png");
   }
 
   public Icon getUnselectedBallResource() {
-    return getIcon("icons/BorderUnselectedButton16.png"); //$NON-NLS-1$
+    return getIcon("icons/BorderUnselectedButton16.png");
   }
 
   public Icon getUnselectableBallResource() {
-    return getIcon("icons/BorderUnselectableButton16.png"); //$NON-NLS-1$
+    return getIcon("icons/BorderUnselectableButton16.png");
   }
 }

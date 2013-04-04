@@ -24,14 +24,14 @@ public class OverwriteItemsVetor {
   }
 
   public boolean vetos() {
-    String messageText = resources.getString("Equipment.Creation.OverwriteMessage.Text"); //$NON-NLS-1$
+    String messageText = resources.getString("Equipment.Creation.OverwriteMessage.Text");
     IMessage message = new Message(messageText, MessageType.WARNING);
     MessageUserDialogConfiguration configuration = new MessageUserDialogConfiguration(
         message,
         new DialogButtonConfiguration() {
           @Override
           public IActionConfiguration getOkActionConfiguration() {
-            return new ActionConfiguration(resources.getString("Equipment.Creation.OverwriteMessage.OKButton")); //$NON-NLS-1$
+            return new ActionConfiguration(resources.getString("Equipment.Creation.OverwriteMessage.OKButton"));
           }
         });
     UserDialog userDialog = new UserDialog(parentComponent, configuration);

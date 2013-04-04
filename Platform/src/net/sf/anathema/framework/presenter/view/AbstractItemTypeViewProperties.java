@@ -29,6 +29,6 @@ public abstract class AbstractItemTypeViewProperties implements IItemTypeViewPro
 
   @Override
   public String getLabelKey() {
-    return "ItemType." + type.getId() + ".PrintName"; //$NON-NLS-1$ //$NON-NLS-2$
+    return "ItemType." + type.getId() + ".PrintName";
   }
 }

@@ -15,7 +15,7 @@ public class ItemDescription implements IItemDescription {
   private final Announcer<IChangeListener> control = Announcer.to(IChangeListener.class);
 
   public ItemDescription() {
-    this(""); //$NON-NLS-1$
+    this("");
   }
 
   public ItemDescription(String initialName) {

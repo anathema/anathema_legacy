@@ -57,11 +57,11 @@ public class TextEditor implements IStyledTextView, IView {
 
     int keyMask = Toolkit.getDefaultToolkit().getMenuShortcutKeyMask();
     // styles
-    inputMap.put(KeyStroke.getKeyStroke(KeyEvent.VK_B, keyMask), "font-bold"); //$NON-NLS-1$
-    inputMap.put(KeyStroke.getKeyStroke(KeyEvent.VK_F, keyMask), "font-bold"); //$NON-NLS-1$
-    inputMap.put(KeyStroke.getKeyStroke(KeyEvent.VK_I, keyMask), "font-italic"); //$NON-NLS-1$
-    inputMap.put(KeyStroke.getKeyStroke(KeyEvent.VK_K, keyMask), "font-italic"); //$NON-NLS-1$
-    inputMap.put(KeyStroke.getKeyStroke(KeyEvent.VK_U, keyMask), "font-underline"); //$NON-NLS-1$
+    inputMap.put(KeyStroke.getKeyStroke(KeyEvent.VK_B, keyMask), "font-bold");
+    inputMap.put(KeyStroke.getKeyStroke(KeyEvent.VK_F, keyMask), "font-bold");
+    inputMap.put(KeyStroke.getKeyStroke(KeyEvent.VK_I, keyMask), "font-italic");
+    inputMap.put(KeyStroke.getKeyStroke(KeyEvent.VK_K, keyMask), "font-italic");
+    inputMap.put(KeyStroke.getKeyStroke(KeyEvent.VK_U, keyMask), "font-underline");
     // selection
     inputMap.put(createSelectKeyStroke(KeyEvent.VK_BEGIN), DefaultEditorKit.selectionBeginAction);
     inputMap.put(createSelectKeyStroke(KeyEvent.VK_DOWN), DefaultEditorKit.selectionDownAction);

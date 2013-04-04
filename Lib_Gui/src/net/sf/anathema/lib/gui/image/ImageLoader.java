@@ -60,11 +60,10 @@ public class ImageLoader {
           }
         }
         if (!succeeded) {
-          throw new RuntimeException("error while loading image."); //$NON-NLS-1$
+          throw new RuntimeException("error while loading image.");
         }
       }
     }
-
   }
 
   public static class LoadingException extends RuntimeException {
@@ -73,19 +72,15 @@ public class ImageLoader {
     }
 
     private LoadingException(String message, Throwable cause) {
-      super(message + " :" + cause.getMessage()); //$NON-NLS-1$
+      super(message + " :" + cause.getMessage());
     }
-  }
-
-  public static Image getImageWithoutCaching(InputStream inputStream) throws IOException {
-    return readImage(inputStream);
   }
 
   public static Image getMemoryImageWithoutCaching(InputStream inputStream) throws IOException {
     try {
       return createMemoryImage(readImage(inputStream));
     } catch (LoadingException e) {
-      throw new IOException("Loading: " + e.getMessage()); //$NON-NLS-1$
+      throw new IOException("Loading: " + e.getMessage());
     }
   }
 
@@ -104,7 +99,7 @@ public class ImageLoader {
       w = dimensionGetter.getWidth();
       h = dimensionGetter.getHeight();
     } catch (Exception e) {
-      throw new LoadingException("image missing or corrupted", e); //$NON-NLS-1$
+      throw new LoadingException("image missing or corrupted", e);
     }
 
     int[] pixels = new int[w * h];
@@ -112,10 +107,10 @@ public class ImageLoader {
     try {
       pixelGrabber.grabPixels();
     } catch (InterruptedException e) {
-      throw new LoadingException("interrupted waiting for pixels!", e); //$NON-NLS-1$
+      throw new LoadingException("interrupted waiting for pixels!", e);
     }
     if ((pixelGrabber.getStatus() & ImageObserver.ABORT) != 0) {
-      throw new LoadingException("image fetch aborted or errored"); //$NON-NLS-1$
+      throw new LoadingException("image fetch aborted or errored");
     }
 
     MemoryImageSource memoryImageSource = new MemoryImageSource(w, h, pixels, 0, w);

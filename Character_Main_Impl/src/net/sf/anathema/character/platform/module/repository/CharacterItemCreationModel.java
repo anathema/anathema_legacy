@@ -91,7 +91,7 @@ public class CharacterItemCreationModel implements ICharacterItemCreationModel {
           return;
         }
       }
-      throw new IllegalStateException("Template not contained in aggregations."); //$NON-NLS-1$
+      throw new IllegalStateException("Template not contained in aggregations.");
     }
   }
 

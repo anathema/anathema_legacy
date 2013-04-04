@@ -19,7 +19,7 @@ public class InfernalUrgeContent extends AbstractSubBoxContent {
 
   @Override
   public String getHeaderKey() {
-    return "InfernalUrge.Title"; //$NON-NLS-1$
+    return "InfernalUrge.Title";
   }
 
   public int getLimitValue() {

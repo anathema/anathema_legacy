@@ -5,7 +5,7 @@ import net.sf.anathema.framework.itemdata.model.IItemData;
 
 public interface IItem extends IChangeManagement {
 
-  String DEFAULT_PRINT_NAME = "Unnamed"; //$NON-NLS-1$
+  String DEFAULT_PRINT_NAME = "Unnamed";
 
   IItemData getItemData();
 

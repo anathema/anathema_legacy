@@ -69,7 +69,7 @@ public class SpecialtiesConfigurationPresenter implements Presenter {
     initTraitListening();
     Icon addIcon = new BasicUi().getAddIcon();
     final IButtonControlledComboEditView<ITraitReference> specialtySelectionView =
-            configurationView.addSpecialtySelectionView(resources.getString("SpecialtyConfigurationView.SelectionCombo.Label"), //$NON-NLS-1$
+            configurationView.addSpecialtySelectionView(resources.getString("SpecialtyConfigurationView.SelectionCombo.Label"),
                     new AbstractSelectCellRenderer<ITraitReference>(resources) {
 
                       @Override

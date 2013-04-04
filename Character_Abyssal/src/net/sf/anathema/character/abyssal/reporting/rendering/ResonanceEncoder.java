@@ -25,13 +25,13 @@ public class ResonanceEncoder extends AbstractContentEncoder<AbyssalResonanceCon
   public void encode(SheetGraphics graphics, ReportSession reportSession, Bounds bounds) throws DocumentException {
     AbyssalResonanceContent content = createContent(reportSession);
     Bounds textBounds = traitEncoder.encode(graphics, bounds, content.getLimitValue());
-    Phrase phrase = new Phrase("", createDefaultFont(graphics)); //$NON-NLS-1$
+    Phrase phrase = new Phrase("", createDefaultFont(graphics));
     phrase.add(new Chunk(content.getFlawedVirtueLabel(), createNameFont(graphics)));
     if (content.isComplete()) {
       phrase.add(new Chunk(content.getFlawedVirtue()));
-      phrase.add(".\n");  //$NON-NLS-1$
+      phrase.add(".\n");
     } else {
-      phrase.add(new Chunk("                                          ", createUndefinedFont(graphics))); //$NON-NLS-1$
+      phrase.add(new Chunk("                                          ", createUndefinedFont(graphics)));
       phrase.add(".\n");
     }
     phrase.add(content.getResonanceReference());

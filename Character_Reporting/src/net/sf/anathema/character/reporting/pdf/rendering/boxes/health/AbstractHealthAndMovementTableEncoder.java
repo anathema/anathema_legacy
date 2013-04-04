@@ -126,7 +126,7 @@ public abstract class AbstractHealthAndMovementTableEncoder implements ITableEnc
 
   private void addHeaders(SheetGraphics graphics, PdfPTable table) {
     addMovementHeader(graphics, table);
-    table.addCell(createHeaderCell(graphics, resources.getString("Sheet.Health.Levels"), 13)); //$NON-NLS-1$
+    table.addCell(createHeaderCell(graphics, resources.getString("Sheet.Health.Levels"), 13));
   }
 
   protected abstract void addMovementHeader(SheetGraphics graphics, PdfPTable table);
@@ -140,7 +140,7 @@ public abstract class AbstractHealthAndMovementTableEncoder implements ITableEnc
 
   protected void addHealthPenaltyCells(SheetGraphics graphics, PdfPTable table, HealthLevelType level, int painTolerance) {
     Font font = createDefaultFont(graphics);
-    String healthPenText = resources.getString("HealthLevelType." + level.getId() + ".Short"); //$NON-NLS-1$ //$NON-NLS-2$
+    String healthPenText = resources.getString("HealthLevelType." + level.getId() + ".Short");
     Phrase healthPenaltyPhrase = new Phrase(healthPenText, font);
     PdfPCell healthPdfPCell = new TableCell(healthPenaltyPhrase, Rectangle.NO_BORDER);
     if (level == HealthLevelType.INCAPACITATED) {
@@ -148,10 +148,10 @@ public abstract class AbstractHealthAndMovementTableEncoder implements ITableEnc
       table.addCell(healthPdfPCell);
     } else {
       table.addCell(healthPdfPCell);
-      String painToleranceText = " "; //$NON-NLS-1$
+      String painToleranceText = " ";
       if (painTolerance > 0) {
         int value = getPenalty(level, painTolerance);
-        painToleranceText = "(" + (value == 0 ? "-" : "") + value + ")"; //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$ //$NON-NLS-4$
+        painToleranceText = "(" + (value == 0 ? "-" : "") + value + ")";
       }
       TableCell painToleranceCell = new TableCell(new Phrase(painToleranceText, font), Rectangle.NO_BORDER);
       painToleranceCell.setHorizontalAlignment(Element.ALIGN_CENTER);
@@ -173,7 +173,7 @@ public abstract class AbstractHealthAndMovementTableEncoder implements ITableEnc
     int additionalCount = 9;
     if (level == HealthLevelType.FOUR) {
       addSpaceCells(graphics, table, 1);
-      TableCell cell = new TableCell(new Phrase(resources.getString("HealthLevelType.Dying.Short"), createCommentFont(graphics)), Rectangle.BOTTOM); //$NON-NLS-1$
+      TableCell cell = new TableCell(new Phrase(resources.getString("HealthLevelType.Dying.Short"), createCommentFont(graphics)), Rectangle.BOTTOM);
       cell.setHorizontalAlignment(Element.ALIGN_CENTER);
       cell.setVerticalAlignment(Element.ALIGN_BOTTOM);
       cell.setColspan(additionalCount - 1);
@@ -225,7 +225,7 @@ public abstract class AbstractHealthAndMovementTableEncoder implements ITableEnc
   }
 
   private PdfPCell createSpaceCell(SheetGraphics graphics) {
-    PdfPCell spaceCell = new PdfPCell(new Phrase(" ", createDefaultFont(graphics))); //$NON-NLS-1$
+    PdfPCell spaceCell = new PdfPCell(new Phrase(" ", createDefaultFont(graphics)));
     spaceCell.setBorder(Rectangle.NO_BORDER);
     return spaceCell;
   }

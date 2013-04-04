@@ -9,12 +9,12 @@ public class ScreenDisplayInfoStringBuilder extends MagicInfoStringBuilder imple
   private Resources resources;
 
   public ScreenDisplayInfoStringBuilder(Resources resources) {
-    super(resources, new CostStringBuilder(resources, "CharmTreeView.ToolTip.Mote", "CharmTreeView.ToolTip.Motes"), //$NON-NLS-1$ //$NON-NLS-2$
-            new CostStringBuilder(resources, "WillpowerType.Name"), //$NON-NLS-1$
-            new HealthCostStringBuilder(resources, "CharmTreeView.ToolTip.HealthLevel", //$NON-NLS-1$
-                    "CharmTreeView.ToolTip.HealthLevels"), //$NON-NLS-1$
+    super(resources, new CostStringBuilder(resources, "CharmTreeView.ToolTip.Mote", "CharmTreeView.ToolTip.Motes"),
+            new CostStringBuilder(resources, "WillpowerType.Name"),
+            new HealthCostStringBuilder(resources, "CharmTreeView.ToolTip.HealthLevel",
+                    "CharmTreeView.ToolTip.HealthLevels"),
             new CostStringBuilder(resources, "CharmTreeView.ToolTip.ExperiencePoint",
-                    "CharmTreeView.ToolTip.ExperiencePoints"));//$NON-NLS-1$//$NON-NLS-2$
+                    "CharmTreeView.ToolTip.ExperiencePoints"));
     this.resources = resources;
   }
 

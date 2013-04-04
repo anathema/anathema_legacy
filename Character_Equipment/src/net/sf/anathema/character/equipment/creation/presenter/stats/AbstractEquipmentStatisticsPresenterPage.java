@@ -6,11 +6,11 @@ import net.sf.anathema.character.equipment.creation.model.stats.IEquipmentStatis
 import net.sf.anathema.character.equipment.creation.model.stats.IEquipmentStatisticsModel;
 import net.sf.anathema.character.equipment.creation.presenter.stats.properties.AbstractEquipmentStatisticsProperties;
 import net.sf.anathema.character.equipment.creation.view.IWeaponStatisticsView;
-import net.sf.anathema.lib.gui.layout.AdditiveView;
-import net.sf.anathema.lib.gui.widgets.IntegerSpinner;
 import net.sf.anathema.character.equipment.wizard.AbstractAnathemaWizardPage;
 import net.sf.anathema.character.equipment.wizard.CheckInputListener;
 import net.sf.anathema.lib.data.ICondition;
+import net.sf.anathema.lib.gui.layout.AdditiveView;
+import net.sf.anathema.lib.gui.widgets.IntegerSpinner;
 import net.sf.anathema.lib.message.IBasicMessage;
 import net.sf.anathema.lib.resources.Resources;
 import net.sf.anathema.lib.workflow.intvalue.IIntValueModel;
@@ -139,7 +139,7 @@ public abstract class AbstractEquipmentStatisticsPresenterPage<M extends IEquipm
   }
 
   protected final void addLabelledComponentRow(final String[] labels, final Component[] contents) {
-    Preconditions.checkArgument(labels.length == contents.length, "Same number of labels and content items required"); //$NON-NLS-1$
+    Preconditions.checkArgument(labels.length == contents.length, "Same number of labels and content items required");
     getPageContent().addView(new AdditiveView() {
       @Override
       public void addTo(JPanel panel, CC data) {

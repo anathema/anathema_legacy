@@ -26,10 +26,11 @@ public class LanguagePreferencesElement implements IPreferencesElement {
   private boolean dirty;
   private JComboBox languageBox;
 
+  @SuppressWarnings("unchecked")
   @Override
   public void addComponent(JPanel panel, Resources resources) {
     JLabel languageLabel = new JLabel(
-            resources.getString("AnathemaCore.Tools.Preferences.Language") + ":"); //$NON-NLS-1$ //$NON-NLS-2$
+            resources.getString("AnathemaCore.Tools.Preferences.Language") + ":");
     languageBox = new JComboBox(SupportedLocale.values());
     languageBox.setRenderer(new DefaultListCellRenderer() {
       @Override

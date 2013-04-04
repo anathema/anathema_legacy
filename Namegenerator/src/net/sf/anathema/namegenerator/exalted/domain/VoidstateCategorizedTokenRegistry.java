@@ -14,40 +14,40 @@ import java.util.Map;
 
 public class VoidstateCategorizedTokenRegistry implements ICategorizedTokenConfiguration {
 
-  public static final TokenCategory COLOR = new TokenCategory("Tokenss.Color"); //$NON-NLS-1$
-  public static final TokenCategory CONDITION = new TokenCategory("Tokens.Condition"); //$NON-NLS-1$
-  public static final TokenCategory EMOTION_NEGATIVE = new TokenCategory("Tokens.EmotionNegative"); //$NON-NLS-1$
-  public static final TokenCategory EMOTION_POSITIVE = new TokenCategory("Tokens.EmotionPositive"); //$NON-NLS-1$
-  public static final TokenCategory HEROIC = new TokenCategory("Tokens.Heroic"); //$NON-NLS-1$
-  public static final TokenCategory MOVEMENT = new TokenCategory("Tokens.Movement"); //$NON-NLS-1$
-  public static final TokenCategory NUMBER = new TokenCategory("Tokens.Number"); //$NON-NLS-1$
-  public static final TokenCategory ANIMAL = new TokenCategory("Tokens.Animal"); //$NON-NLS-1$
-  public static final TokenCategory BODY_PART = new TokenCategory("Tokens.BodyPart"); //$NON-NLS-1$
-  public static final TokenCategory BUILDING = new TokenCategory("Tokens.Building"); //$NON-NLS-1$
-  public static final TokenCategory CELESTIAL_BODY = new TokenCategory("Tokens.CelestialBody"); //$NON-NLS-1$
-  public static final TokenCategory CHARM_GENERAL = new TokenCategory("Tokens.General"); //$NON-NLS-1$
-  public static final TokenCategory CHARM_COMBAT = new TokenCategory("Tokens.CharmCombat"); //$NON-NLS-1$
-  public static final TokenCategory LOCATION = new TokenCategory("Tokens.Location"); //$NON-NLS-1$
-  public static final TokenCategory METAL_STONE = new TokenCategory("Tokens.MetalStone"); //$NON-NLS-1$
-  public static final TokenCategory NATURAL_OBJECT = new TokenCategory("Tokens.NaturalObject"); //$NON-NLS-1$
-  public static final TokenCategory NEGATIVE = new TokenCategory("Tokens.Negative"); //$NON-NLS-1$
-  public static final TokenCategory PERSON = new TokenCategory("Tokens.Person"); //$NON-NLS-1$
-  public static final TokenCategory PRECIOUS_MATERIAL = new TokenCategory("Tokens.PreciousMaterial"); //$NON-NLS-1$
-  public static final TokenCategory RELATION = new TokenCategory("Tokens.Relation"); //$NON-NLS-1$
-  public static final TokenCategory WEAPON = new TokenCategory("Tokens.Weapon"); //$NON-NLS-1$
-  public static final TokenCategory DESTROYING = new TokenCategory("Tokens.Destroying"); //$NON-NLS-1$
-  public static final TokenCategory LOVING = new TokenCategory("Tokens.Loving"); //$NON-NLS-1$
-  public static final TokenCategory AND = new TokenCategory("Tokens.And"); //$NON-NLS-1$
-  public static final TokenCategory OF = new TokenCategory("Tokens.Of"); //$NON-NLS-1$
-  public static final TokenCategory FROM = new TokenCategory("Tokens.From"); //$NON-NLS-1$
-  public static final TokenCategory IN = new TokenCategory("Tokens.In"); //$NON-NLS-1$
-  public static final TokenCategory THE = new TokenCategory("Tokens.The"); //$NON-NLS-1$
+  public static final TokenCategory COLOR = new TokenCategory("Tokenss.Color");
+  public static final TokenCategory CONDITION = new TokenCategory("Tokens.Condition");
+  public static final TokenCategory EMOTION_NEGATIVE = new TokenCategory("Tokens.EmotionNegative");
+  public static final TokenCategory EMOTION_POSITIVE = new TokenCategory("Tokens.EmotionPositive");
+  public static final TokenCategory HEROIC = new TokenCategory("Tokens.Heroic");
+  public static final TokenCategory MOVEMENT = new TokenCategory("Tokens.Movement");
+  public static final TokenCategory NUMBER = new TokenCategory("Tokens.Number");
+  public static final TokenCategory ANIMAL = new TokenCategory("Tokens.Animal");
+  public static final TokenCategory BODY_PART = new TokenCategory("Tokens.BodyPart");
+  public static final TokenCategory BUILDING = new TokenCategory("Tokens.Building");
+  public static final TokenCategory CELESTIAL_BODY = new TokenCategory("Tokens.CelestialBody");
+  public static final TokenCategory CHARM_GENERAL = new TokenCategory("Tokens.General");
+  public static final TokenCategory CHARM_COMBAT = new TokenCategory("Tokens.CharmCombat");
+  public static final TokenCategory LOCATION = new TokenCategory("Tokens.Location");
+  public static final TokenCategory METAL_STONE = new TokenCategory("Tokens.MetalStone");
+  public static final TokenCategory NATURAL_OBJECT = new TokenCategory("Tokens.NaturalObject");
+  public static final TokenCategory NEGATIVE = new TokenCategory("Tokens.Negative");
+  public static final TokenCategory PERSON = new TokenCategory("Tokens.Person");
+  public static final TokenCategory PRECIOUS_MATERIAL = new TokenCategory("Tokens.PreciousMaterial");
+  public static final TokenCategory RELATION = new TokenCategory("Tokens.Relation");
+  public static final TokenCategory WEAPON = new TokenCategory("Tokens.Weapon");
+  public static final TokenCategory DESTROYING = new TokenCategory("Tokens.Destroying");
+  public static final TokenCategory LOVING = new TokenCategory("Tokens.Loving");
+  public static final TokenCategory AND = new TokenCategory("Tokens.And");
+  public static final TokenCategory OF = new TokenCategory("Tokens.Of");
+  public static final TokenCategory FROM = new TokenCategory("Tokens.From");
+  public static final TokenCategory IN = new TokenCategory("Tokens.In");
+  public static final TokenCategory THE = new TokenCategory("Tokens.The");
 
   private final Map<TokenCategory, String[]> tokensByCategory = new HashMap<>();
   private final TokenCategory[] rootTokenCategories = new TokenCategory[] {
-      new AggregatedTokenCategory("Tokens.Adjectives", new TokenCategory[] { //$NON-NLS-1$
+      new AggregatedTokenCategory("Tokens.Adjectives", new TokenCategory[] {
           COLOR, CONDITION, EMOTION_NEGATIVE, EMOTION_POSITIVE, HEROIC, MOVEMENT, NUMBER }),
-      new AggregatedTokenCategory("Tokens.Nouns", new TokenCategory[] { //$NON-NLS-1$
+      new AggregatedTokenCategory("Tokens.Nouns", new TokenCategory[] {
               ANIMAL,
               BODY_PART,
               BUILDING,
@@ -64,9 +64,9 @@ public class VoidstateCategorizedTokenRegistry implements ICategorizedTokenConfi
               WEAPON,
               DESTROYING,
               LOVING }),
-      new AggregatedTokenCategory("Tokens.Verbs", new TokenCategory[] { //$NON-NLS-1$
+      new AggregatedTokenCategory("Tokens.Verbs", new TokenCategory[] {
           DESTROYING, LOVING, }),
-      new AggregatedTokenCategory("Tokens.Glues", new TokenCategory[] { AND, FROM, IN, OF, THE }) }; //$NON-NLS-1$
+      new AggregatedTokenCategory("Tokens.Glues", new TokenCategory[] { AND, FROM, IN, OF, THE }) };
 
   public VoidstateCategorizedTokenRegistry() {
     tokensByCategory.put(COLOR, IVoidstateTokenCollection.COLOR_TOKENS);
@@ -92,11 +92,11 @@ public class VoidstateCategorizedTokenRegistry implements ICategorizedTokenConfi
     tokensByCategory.put(WEAPON, IVoidstateTokenCollection.WEAPON_TOKENS);
     tokensByCategory.put(DESTROYING, IVoidstateTokenCollection.DESTROYING_TOKENS);
     tokensByCategory.put(LOVING, IVoidstateTokenCollection.LOVING_TOKENS);
-    tokensByCategory.put(AND, new String[] { "and" }); //$NON-NLS-1$
-    tokensByCategory.put(FROM, new String[] { "from" }); //$NON-NLS-1$
-    tokensByCategory.put(IN, new String[] { "in" }); //$NON-NLS-1$
-    tokensByCategory.put(OF, new String[] { "of" }); //$NON-NLS-1$
-    tokensByCategory.put(THE, new String[] { "the" }); //$NON-NLS-1$
+    tokensByCategory.put(AND, new String[] { "and" });
+    tokensByCategory.put(FROM, new String[] { "from" });
+    tokensByCategory.put(IN, new String[] { "in" });
+    tokensByCategory.put(OF, new String[] { "of" });
+    tokensByCategory.put(THE, new String[] { "the" });
   }
 
   @Override

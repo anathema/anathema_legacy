@@ -25,7 +25,7 @@ public class SelectiveCharmGroup {
   public void extractCharms(Map<String, ? extends Charm> charmsById, Charm child) {
     for (String charmId : template.getGroupCharmIds()) {
       Charm groupCharm = charmsById.get(charmId);
-      Preconditions.checkNotNull(groupCharm, "Charm not found for id " + charmId); //$NON-NLS-1$
+      Preconditions.checkNotNull(groupCharm, "Charm not found for id " + charmId);
       charms.add(groupCharm);
       groupCharm.addChild(child);
     }

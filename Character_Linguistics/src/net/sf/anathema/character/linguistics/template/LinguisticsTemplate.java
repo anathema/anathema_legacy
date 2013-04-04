@@ -4,7 +4,7 @@ import net.sf.anathema.character.generic.template.additional.IGlobalAdditionalTe
 
 public class LinguisticsTemplate implements IGlobalAdditionalTemplate {
 
-  public static final String ID = "Linguistics"; //$NON-NLS-1$
+  public static final String ID = "Linguistics";
 
   @Override
   public String getId() {

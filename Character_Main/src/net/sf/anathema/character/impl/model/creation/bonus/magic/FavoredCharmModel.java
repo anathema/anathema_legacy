@@ -8,7 +8,7 @@ public class FavoredCharmModel extends AbstractSpendingModel {
   private final ICreationPoints creationPoints;
 
   public FavoredCharmModel(MagicCostCalculator magicCalculator, ICreationPoints creationPoints) {
-    super("Charms", "Favored"); //$NON-NLS-1$ //$NON-NLS-2$
+    super("Charms", "Favored");
     this.magicCalculator = magicCalculator;
     this.creationPoints = creationPoints;
   }

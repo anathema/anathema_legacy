@@ -10,7 +10,7 @@ public class RangedCombatStatisticsProperties extends OffensiveStatisticsPropert
 
   public RangedCombatStatisticsProperties(Resources resources) {
     super(resources);
-    this.defaultMessage = new BasicMessage(getString("Equipment.Creation.RangedCombat.DefaultMessage")); //$NON-NLS-1$
+    this.defaultMessage = new BasicMessage(getString("Equipment.Creation.RangedCombat.DefaultMessage"));
   }
 
   @Override
@@ -20,15 +20,15 @@ public class RangedCombatStatisticsProperties extends OffensiveStatisticsPropert
 
   @Override
   public String getPageDescription() {
-    return getString("Equipment.Creation.RangedCombat.PageTitle"); //$NON-NLS-1$
+    return getString("Equipment.Creation.RangedCombat.PageTitle");
   }
 
   public String getRangeLabel() {
-    return getLabelString("Equipment.Stats.Long.Range"); //$NON-NLS-1$
+    return getLabelString("Equipment.Stats.Long.Range");
   }
 
   @Override
   public String getDefaultName() {
-    return getString("Equipment.Creation.RangedCombat.DefaultName"); //$NON-NLS-1$
+    return getString("Equipment.Creation.RangedCombat.DefaultName");
   }
 }

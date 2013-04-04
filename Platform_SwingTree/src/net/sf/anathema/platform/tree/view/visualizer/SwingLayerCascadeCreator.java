@@ -49,7 +49,7 @@ public class SwingLayerCascadeCreator {
       node.accept(new IVisualizableNodeVisitor() {
         @Override
         public void visitHorizontalMetaNode(HorizontalMetaNode visitedNode) {
-          throw new IllegalStateException("Unroll Metanodes before positioning."); //$NON-NLS-1$
+          throw new IllegalStateException("Unroll Metanodes before positioning.");
         }
 
         @Override

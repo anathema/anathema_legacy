@@ -24,7 +24,7 @@ public class DbGreatCurseContent extends AbstractSubBoxContent {
   public String getGreatCurseMessage() {
     String virtue = getVirtueString();
     String aspect = getAspectString();
-    return getString("Sheet.GreatCurse.Message.SecondEdition", virtue, aspect); //$NON-NLS-1$
+    return getString("Sheet.GreatCurse.Message.SecondEdition", virtue, aspect);
   }
 
   private String getVirtueString() {
@@ -32,19 +32,19 @@ public class DbGreatCurseContent extends AbstractSubBoxContent {
       ITraitType rootVirtue = getVirtueFlaw().getRoot();
       return getString(rootVirtue.getId());
     }
-    return getString("Sheet.GreatCurse.UnknownVirtue"); //$NON-NLS-1$
+    return getString("Sheet.GreatCurse.UnknownVirtue");
   }
 
   private String getAspectString() {
     String casteTypeString = character.getCasteType().getId();
     if (casteTypeString != null) {
-      String casteType = getString("Caste." + casteTypeString); //$NON-NLS-1$
-      return getString("Sheet.GreatCurse.AspectMessage", casteType); //$NON-NLS-1$
+      String casteType = getString("Caste." + casteTypeString);
+      return getString("Sheet.GreatCurse.AspectMessage", casteType);
     }
     if (isRootSelected()) {
-      return getString("Sheet.GreatCurse.UnknownAspectKnownVirtue"); //$NON-NLS-1$
+      return getString("Sheet.GreatCurse.UnknownAspectKnownVirtue");
     }
-    return getString("Sheet.GreatCurse.UnknownAspectUnknownVirtue"); //$NON-NLS-1$
+    return getString("Sheet.GreatCurse.UnknownAspectUnknownVirtue");
   }
 
   private boolean isRootSelected() {
@@ -62,6 +62,6 @@ public class DbGreatCurseContent extends AbstractSubBoxContent {
 
   @Override
   public String getHeaderKey() {
-    return "GreatCurse.Dragon-Blooded"; //$NON-NLS-1$
+    return "GreatCurse.Dragon-Blooded";
   }
 }

@@ -10,7 +10,7 @@ import net.sf.anathema.lib.resources.Resources;
 public class FatigueStatsGroup extends AbstractValueEquipmentStatsGroup<IDefensiveStats> implements IArmourStatsGroup {
 
   public FatigueStatsGroup(Resources resources) {
-    super(resources, "Fatigue"); //$NON-NLS-1$
+    super(resources, "Fatigue");
   }
 
   @Override
@@ -34,7 +34,7 @@ public class FatigueStatsGroup extends AbstractValueEquipmentStatsGroup<IDefensi
 
   @Override
   protected String getPositivePrefix() {
-    return ""; //$NON-NLS-1$
+    return "";
   }
 
   @Override

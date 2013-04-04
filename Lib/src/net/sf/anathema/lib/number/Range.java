@@ -7,9 +7,9 @@ public class Range {
 
   public Range(int lowerBound, int upperBound) {
     if (lowerBound > upperBound) {
-      throw new IllegalArgumentException("LowerBound may not be less than upperBound: " //$NON-NLS-1$
+      throw new IllegalArgumentException("LowerBound may not be less than upperBound: "
           + lowerBound
-          + " " //$NON-NLS-1$
+          + " "
           + upperBound);
     }
     this.lowerBound = lowerBound;
@@ -26,6 +26,6 @@ public class Range {
 
   @Override
   public String toString() {
-    return "Range[" + getLowerBound() + "," + getUpperBound() + "]"; //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
+    return "Range[" + getLowerBound() + "," + getUpperBound() + "]";
   }
 }

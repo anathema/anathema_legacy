@@ -23,7 +23,7 @@ import java.util.List;
 
 public abstract class AbstractDialog {
 
-  private static final String INITIAL_DIALOG_TITLE = "!Dialog.title!"; //$NON-NLS-1$
+  private static final String INITIAL_DIALOG_TITLE = "!Dialog.title!";
 
   private final WindowAdapter cancelingWindowListener = new WindowAdapter() {
     @Override

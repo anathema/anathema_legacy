@@ -19,13 +19,13 @@ public final class EquipmentNameStatsGroup<T extends IEquipmentStats> extends Ab
 
   @Override
   protected String getHeaderResourceKey() {
-    return "Sheet.Equipment.Header.Name"; //$NON-NLS-1$
+    return "Sheet.Equipment.Header.Name";
   }
 
   @Override
   public void addContent(PdfPTable table, Font font, T stats) {
     if (stats == null) {
-      table.addCell(createTextCell(font, "")); //$NON-NLS-1$
+      table.addCell(createTextCell(font, ""));
     } else {
       String name = stats.getName().getId();
       String resourceKey = getResourceBase() + name;

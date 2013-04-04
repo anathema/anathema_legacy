@@ -20,7 +20,7 @@ public class PreferencesPage extends AbstractDialogPage {
   private IPreferencesElement[] elements;
 
   public PreferencesPage(Resources resources, IPreferencesElement[] elements) {
-    super(resources.getString("AnathemaCore.Tools.Preferences.Instruction")); //$NON-NLS-1$
+    super(resources.getString("AnathemaCore.Tools.Preferences.Instruction"));
     this.resources = resources;
     this.elements = elements;
   }
@@ -32,7 +32,7 @@ public class PreferencesPage extends AbstractDialogPage {
 
   @Override
   public String getTitle() {
-    return resources.getString("AnathemaCore.Tools.Preferences.Name"); //$NON-NLS-1$
+    return resources.getString("AnathemaCore.Tools.Preferences.Name");
   }
 
   @Override

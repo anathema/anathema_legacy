@@ -13,7 +13,7 @@ import static org.junit.Assert.assertEquals;
 
 public class HealthTemplateParserTest {
 
-  private static final String ORIGINAL_TEMPLATE_ID = "original"; //$NON-NLS-1$
+  private static final String ORIGINAL_TEMPLATE_ID = "original";
   private DummyXmlTemplateRegistry<GenericHealthTemplate> registry;
   private HealthTemplateParser parser;
   private GenericHealthTemplate originalTemplate;
@@ -28,7 +28,7 @@ public class HealthTemplateParserTest {
 
   @Test
   public void testSetToughnessControllingTrait() throws Exception {
-    String xml = "<healthTemplate><toughnessControllingTrait type=\"Stamina\"/></healthTemplate>"; //$NON-NLS-1$
+    String xml = "<healthTemplate><toughnessControllingTrait type=\"Stamina\"/></healthTemplate>";
     Element templateElement = DocumentUtilities.read(xml).getRootElement();
     GenericHealthTemplate template = parser.parseTemplate(templateElement);
     assertEquals(AttributeType.Stamina, template.getToughnessControllingTraits()[0]);

@@ -30,7 +30,7 @@ public class Anathema {
   }
 
   private void prepareEnvironment(IInitializationPreferences initializationPreferences) throws ClassNotFoundException, InstantiationException, IllegalAccessException, UnsupportedLookAndFeelException {
-    displayStatus("Preparing Environment..."); //$NON-NLS-1$
+    displayStatus("Preparing Environment...");
     AnathemaEnvironment.initLocale(initializationPreferences);
     AnathemaEnvironment.initLookAndFeel(initializationPreferences);
     AnathemaEnvironment.initTooltipManager(initializationPreferences);
@@ -49,7 +49,7 @@ public class Anathema {
 
   private ApplicationFrame createView(IInitializationPreferences initializationPreferences) {
     try {
-      displayStatus("Starting Platform..."); //$NON-NLS-1$
+      displayStatus("Starting Platform...");
       return new GuiInitializer(initializationPreferences).initialize().getWindow();
     } catch (InitializationException e) {
       LoggerFactory.getLogger(Anathema.class).error("Could not start platform.", e);

@@ -12,8 +12,8 @@ public class AmountMessaging {
 
   public AmountMessaging(IMessaging messaging, Resources resources) {
     this.messaging = messaging;
-    this.singleItem = resources.getString("AnathemaCore.Tools.RepositoryView.Item"); //$NON-NLS-1$
-    this.multiItem = resources.getString("AnathemaCore.Tools.RepositoryView.Items"); //$NON-NLS-1$
+    this.singleItem = resources.getString("AnathemaCore.Tools.RepositoryView.Item");
+    this.multiItem = resources.getString("AnathemaCore.Tools.RepositoryView.Items");
   }
 
   public void addMessage(String messagePattern, int amount) {

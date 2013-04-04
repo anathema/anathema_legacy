@@ -11,7 +11,7 @@ public class DummyCharacterTypes implements CharacterTypes {
     if (type.getId().equals(id)) {
       return type;
     }
-    throw new IllegalArgumentException("No type defined for id:" + id); //$NON-NLS-1$
+    throw new IllegalArgumentException("No type defined for id:" + id);
   }
 
   @Override

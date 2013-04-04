@@ -13,11 +13,11 @@ public class WeaponDamageProperties extends AbstractProperties {
   }
   
   public String getMinDamageLabel() {
-	return getLabelString("Equipment.Stats.Long.MinDamage"); //$NON-NLS-1$
+	return getLabelString("Equipment.Stats.Long.MinDamage");
   }
 
   public String getDamageLabel() {
-    return getLabelString("Equipment.Stats.Long.Damage"); //$NON-NLS-1$
+    return getLabelString("Equipment.Stats.Long.Damage");
   }
 
   public ObjectUi<Object> getHealthTypeUi() {

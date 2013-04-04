@@ -32,7 +32,7 @@ public class EssenceConfigurationPresenter implements Presenter {
   @Override
   public void initPresentation() {
     ITrait essenceTrait = traitConfiguration.getTrait(OtherTraitType.Essence);
-    IIntValueView essenceView = view.addEssenceView(resources.getString("Essence.Name"), //$NON-NLS-1$
+    IIntValueView essenceView = view.addEssenceView(resources.getString("Essence.Name"),
             essenceTrait.getCurrentValue(), essenceTrait.getMaximalValue(), (IModifiableCapTrait) essenceTrait);
     if (essence.isEssenceUser()) {
       String key = "EssencePool.Name.Personal";

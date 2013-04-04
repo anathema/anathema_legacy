@@ -26,7 +26,7 @@ public class RepositoryFolderCreator {
       }
     }
     if (!fileSystem.canRead(file) || !fileSystem.canWrite(file)) {
-      throw new RepositoryException("Read/Write error on repository at " + file.getAbsolutePath()); //$NON-NLS-1$
+      throw new RepositoryException("Read/Write error on repository at " + file.getAbsolutePath());
     }
     return file;
   }

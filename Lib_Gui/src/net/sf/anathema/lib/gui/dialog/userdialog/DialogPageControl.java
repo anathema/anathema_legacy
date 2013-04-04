@@ -5,8 +5,8 @@ import com.google.common.base.Preconditions;
 import net.sf.anathema.lib.exception.ContractFailedException;
 import net.sf.anathema.lib.gui.dialog.core.DialogPageInputValidCheckable;
 import net.sf.anathema.lib.gui.dialog.core.IDialogControl;
-import net.sf.anathema.lib.gui.dialog.events.InputValidAfterChangeListener;
 import net.sf.anathema.lib.gui.dialog.events.IInputValidCheckable;
+import net.sf.anathema.lib.gui.dialog.events.InputValidAfterChangeListener;
 import net.sf.anathema.lib.gui.dialog.userdialog.page.IDialogPage;
 import net.sf.anathema.lib.message.IBasicMessage;
 
@@ -55,7 +55,7 @@ public class DialogPageControl implements IInputValidCheckable, IMessageSetable 
     if (content == null) {
       content = dialogPage.createContent();
       if (content == null) {
-        throw new ContractFailedException("Method createContent() must not return null in " //$NON-NLS-1$
+        throw new ContractFailedException("Method createContent() must not return null in "
                                           + dialogPage.getClass().getName());
       }
       dialogPage.setInputValidListener(new InputValidAfterChangeListener(new DialogPageInputValidCheckable(this, dialogPage)));

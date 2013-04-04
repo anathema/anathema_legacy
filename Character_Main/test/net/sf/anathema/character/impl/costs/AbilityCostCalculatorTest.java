@@ -53,9 +53,9 @@ public class AbilityCostCalculatorTest extends AbstractBonusPointTestCase {
     if (ability.getType() == AbilityType.Craft) {
       return;
     }
-    assertEquals("Ability " + ability, 0, abilityCost[0].getBonusCost()); //$NON-NLS-1$
-    assertEquals("Ability " + ability, 0, abilityCost[0].getFavoredPointCost()); //$NON-NLS-1$
-    assertEquals("Ability " + ability, 0, abilityCost[0].getGeneralPointCost()); //$NON-NLS-1$
+    assertEquals("Ability " + ability, 0, abilityCost[0].getBonusCost());
+    assertEquals("Ability " + ability, 0, abilityCost[0].getFavoredPointCost());
+    assertEquals("Ability " + ability, 0, abilityCost[0].getGeneralPointCost());
   }
 
   private DummyCoreTraitConfiguration traitConfiguration;
@@ -124,21 +124,21 @@ public class AbilityCostCalculatorTest extends AbstractBonusPointTestCase {
       if (ability == firstFavored) {
         FavorableTraitCost[] allAbilityCost = calculator.getCosts(ability);
         FavorableTraitCost abilityCost = allAbilityCost[0];
-        assertEquals("Ability " + ability, 0, abilityCost.getBonusCost()); //$NON-NLS-1$
-        assertEquals("Ability " + ability, 3, abilityCost.getFavoredPointCost()); //$NON-NLS-1$
-        assertEquals("Ability " + ability, 0, abilityCost.getGeneralPointCost()); //$NON-NLS-1$
+        assertEquals("Ability " + ability, 0, abilityCost.getBonusCost());
+        assertEquals("Ability " + ability, 3, abilityCost.getFavoredPointCost());
+        assertEquals("Ability " + ability, 0, abilityCost.getGeneralPointCost());
       } else if (ability == secondFavored) {
         FavorableTraitCost[] allAbilityCost = calculator.getCosts(ability);
         FavorableTraitCost abilityCost = allAbilityCost[0];
-        assertEquals("Ability " + ability, 3, abilityCost.getBonusCost()); //$NON-NLS-1$
-        assertEquals("Ability " + ability, 0, abilityCost.getFavoredPointCost()); //$NON-NLS-1$
-        assertEquals("Ability " + ability, 0, abilityCost.getGeneralPointCost()); //$NON-NLS-1$
+        assertEquals("Ability " + ability, 3, abilityCost.getBonusCost());
+        assertEquals("Ability " + ability, 0, abilityCost.getFavoredPointCost());
+        assertEquals("Ability " + ability, 0, abilityCost.getGeneralPointCost());
       } else if (ability == unfavoredAbility) {
         FavorableTraitCost[] allAbilityCost = calculator.getCosts(ability);
         FavorableTraitCost abilityCost = allAbilityCost[0];
-        assertEquals("Ability " + ability, 2, abilityCost.getBonusCost()); //$NON-NLS-1$
-        assertEquals("Ability " + ability, 0, abilityCost.getFavoredPointCost()); //$NON-NLS-1$
-        assertEquals("Ability " + ability, 2, abilityCost.getGeneralPointCost()); //$NON-NLS-1$
+        assertEquals("Ability " + ability, 2, abilityCost.getBonusCost());
+        assertEquals("Ability " + ability, 0, abilityCost.getFavoredPointCost());
+        assertEquals("Ability " + ability, 2, abilityCost.getGeneralPointCost());
       } else {
         assertEmptyCosts(calculator, ability);
       }
@@ -157,15 +157,15 @@ public class AbilityCostCalculatorTest extends AbstractBonusPointTestCase {
       if (ability == firstFavored) {
         FavorableTraitCost[] allAbilityCost = calculator.getCosts(ability);
         FavorableTraitCost abilityCost = allAbilityCost[0];
-        assertEquals("Ability " + ability, 0, abilityCost.getBonusCost()); //$NON-NLS-1$
-        assertEquals("Ability " + ability, 3, abilityCost.getFavoredPointCost()); //$NON-NLS-1$
-        assertEquals("Ability " + ability, 0, abilityCost.getGeneralPointCost()); //$NON-NLS-1$
+        assertEquals("Ability " + ability, 0, abilityCost.getBonusCost());
+        assertEquals("Ability " + ability, 3, abilityCost.getFavoredPointCost());
+        assertEquals("Ability " + ability, 0, abilityCost.getGeneralPointCost());
       } else if (ability == secondFavored) {
         FavorableTraitCost[] allAbilityCost = calculator.getCosts(ability);
         FavorableTraitCost abilityCost = allAbilityCost[0];
-        assertEquals("Ability " + ability, 0, abilityCost.getBonusCost()); //$NON-NLS-1$
-        assertEquals("Ability " + ability, 1, abilityCost.getFavoredPointCost()); //$NON-NLS-1$
-        assertEquals("Ability " + ability, 2, abilityCost.getGeneralPointCost()); //$NON-NLS-1$
+        assertEquals("Ability " + ability, 0, abilityCost.getBonusCost());
+        assertEquals("Ability " + ability, 1, abilityCost.getFavoredPointCost());
+        assertEquals("Ability " + ability, 2, abilityCost.getGeneralPointCost());
       } else {
         assertEmptyCosts(calculator, ability);
       }
@@ -183,9 +183,9 @@ public class AbilityCostCalculatorTest extends AbstractBonusPointTestCase {
       if (ability == favoredAbility) {
         FavorableTraitCost[] allAbilityCost = calculator.getCosts(ability);
         FavorableTraitCost abilityCost = allAbilityCost[0];
-        assertEquals("Ability " + ability, 0, abilityCost.getBonusCost()); //$NON-NLS-1$
-        assertEquals("Ability " + ability, 3, abilityCost.getFavoredPointCost()); //$NON-NLS-1$
-        assertEquals("Ability " + ability, 0, abilityCost.getGeneralPointCost()); //$NON-NLS-1$
+        assertEquals("Ability " + ability, 0, abilityCost.getBonusCost());
+        assertEquals("Ability " + ability, 3, abilityCost.getFavoredPointCost());
+        assertEquals("Ability " + ability, 0, abilityCost.getGeneralPointCost());
       } else {
         assertEmptyCosts(calculator, ability);
       }
@@ -203,9 +203,9 @@ public class AbilityCostCalculatorTest extends AbstractBonusPointTestCase {
       if (ability == unfavoredAbility) {
         FavorableTraitCost[] allAbilityCost = calculator.getCosts(ability);
         FavorableTraitCost abilityCost = allAbilityCost[0];
-        assertEquals("Ability " + ability, 0, abilityCost.getBonusCost()); //$NON-NLS-1$
-        assertEquals("Ability " + ability, 0, abilityCost.getFavoredPointCost()); //$NON-NLS-1$
-        assertEquals("Ability " + ability, 3, abilityCost.getGeneralPointCost()); //$NON-NLS-1$
+        assertEquals("Ability " + ability, 0, abilityCost.getBonusCost());
+        assertEquals("Ability " + ability, 0, abilityCost.getFavoredPointCost());
+        assertEquals("Ability " + ability, 3, abilityCost.getGeneralPointCost());
       } else {
         assertEmptyCosts(calculator, ability);
       }
@@ -223,9 +223,9 @@ public class AbilityCostCalculatorTest extends AbstractBonusPointTestCase {
       if (ability == favoredAbility) {
         FavorableTraitCost[] allAbilityCost = calculator.getCosts(ability);
         FavorableTraitCost abilityCost = allAbilityCost[0];
-        assertEquals("Ability " + ability, 1, abilityCost.getBonusCost()); //$NON-NLS-1$
-        assertEquals("Ability " + ability, 3, abilityCost.getFavoredPointCost()); //$NON-NLS-1$
-        assertEquals("Ability " + ability, 0, abilityCost.getGeneralPointCost()); //$NON-NLS-1$
+        assertEquals("Ability " + ability, 1, abilityCost.getBonusCost());
+        assertEquals("Ability " + ability, 3, abilityCost.getFavoredPointCost());
+        assertEquals("Ability " + ability, 0, abilityCost.getGeneralPointCost());
       } else {
         assertEmptyCosts(calculator, ability);
       }
@@ -243,9 +243,9 @@ public class AbilityCostCalculatorTest extends AbstractBonusPointTestCase {
       if (ability == unfavoredAbility) {
         FavorableTraitCost[] allAbilityCost = calculator.getCosts(ability);
         FavorableTraitCost abilityCost = allAbilityCost[0];
-        assertEquals("Ability " + ability, 2, abilityCost.getBonusCost()); //$NON-NLS-1$
-        assertEquals("Ability " + ability, 0, abilityCost.getFavoredPointCost()); //$NON-NLS-1$
-        assertEquals("Ability " + ability, 3, abilityCost.getGeneralPointCost()); //$NON-NLS-1$
+        assertEquals("Ability " + ability, 2, abilityCost.getBonusCost());
+        assertEquals("Ability " + ability, 0, abilityCost.getFavoredPointCost());
+        assertEquals("Ability " + ability, 3, abilityCost.getGeneralPointCost());
       } else {
         assertEmptyCosts(calculator, ability);
       }

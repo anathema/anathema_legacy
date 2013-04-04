@@ -25,7 +25,7 @@ public class PrintZeroCraftsPreferencesElement extends AbstractCheckBoxPreferenc
 
   @Override
   protected String getLabelKey() {
-    return "Character.Tools.Preferences.PrintZeroCrafts"; //$NON-NLS-1$
+    return "Character.Tools.Preferences.PrintZeroCrafts";
   }
 
   @Override

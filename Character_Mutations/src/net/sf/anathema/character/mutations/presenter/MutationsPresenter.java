@@ -110,7 +110,7 @@ public class MutationsPresenter implements Presenter {
       @Override
       protected String getString(Resources sorterResources, IMutation mutation) {
         String typeString = sorterResources.getString("Mutations.Type." + mutation.getType().getId());
-        String mutationString = sorterResources.getString("Mutations.Mutation." //$NON-NLS-1$
+        String mutationString = sorterResources.getString("Mutations.Mutation."
                                                           + mutation.getId());
         return "(" + typeString + ") " + mutationString;
       }

@@ -13,7 +13,7 @@ public class SourceBuilderTest {
 
   @Test
   public void testCasteBookAir() throws Exception {
-    String xml = "<parent><source source=\"ABAir\" /></parent>";//$NON-NLS-1$
+    String xml = "<parent><source source=\"ABAir\" /></parent>";
     Element rootElement = DocumentUtilities.read(xml).getRootElement();
     SourceBuilder sourceBuilder = new SourceBuilder();
     IExaltedSourceBook[] sources = sourceBuilder.buildSourceList(rootElement);

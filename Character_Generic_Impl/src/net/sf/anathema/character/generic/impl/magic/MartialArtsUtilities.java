@@ -32,7 +32,7 @@ public class MartialArtsUtilities {
     }
     String pattern = "Martial Arts Charm without level: {0}. Please ensure it has a Martial Arts level as a 'charmAttribute'.";
     String message = MessageFormat.format(pattern, charm.getId());
-    throw new IllegalStateException(message); //$NON-NLS-1$
+    throw new IllegalStateException(message);
   }
 
   public static boolean hasLevel(MartialArtsLevel level, ICharm charm) {

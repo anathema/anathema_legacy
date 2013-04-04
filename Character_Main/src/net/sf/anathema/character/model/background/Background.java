@@ -28,7 +28,7 @@ public class Background extends DefaultTrait implements IBackground {
     if (type instanceof CustomizedBackgroundTemplate) {
       return backgroundId;
     }
-    return resources.getString("BackgroundType.Name." + type.getId()); //$NON-NLS-1$
+    return resources.getString("BackgroundType.Name." + type.getId());
   }
 
 }

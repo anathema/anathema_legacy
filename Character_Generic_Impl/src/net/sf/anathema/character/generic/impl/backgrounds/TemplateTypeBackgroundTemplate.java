@@ -24,7 +24,7 @@ public class TemplateTypeBackgroundTemplate extends AbstractBackgroundTemplate {
   }
 
   public void addContent(TemplateTypeBackgroundTemplate template) {
-    Preconditions.checkArgument(getId().equals(template.getId()), "Combine only identical backgrounds"); //$NON-NLS-1$
+    Preconditions.checkArgument(getId().equals(template.getId()), "Combine only identical backgrounds");
     types.addAll(template.types);
   }
 

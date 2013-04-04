@@ -24,19 +24,19 @@ public class ArcaneFateInfoEncoder implements ContentEncoder {
   @Override
   public void encode(SheetGraphics graphics, ReportSession reportSession, Bounds bounds) throws DocumentException {
     Chunk symbolChunk = graphics.createSymbolChunk();
-    Phrase phrase = new Phrase("", graphics.createFont(fontSize)); //$NON-NLS-1$
+    Phrase phrase = new Phrase("", graphics.createFont(fontSize));
     phrase.add(symbolChunk);
-    phrase.add(resources.getString("Sheet.ArcaneFate.Masquerade") + "\n"); //$NON-NLS-1$//$NON-NLS-2$
+    phrase.add(resources.getString("Sheet.ArcaneFate.Masquerade") + "\n");
     phrase.add(symbolChunk);
-    phrase.add(resources.getString("Sheet.ArcaneFate.Disguise") + "\n"); //$NON-NLS-1$//$NON-NLS-2$
+    phrase.add(resources.getString("Sheet.ArcaneFate.Disguise") + "\n");
     phrase.add(symbolChunk);
-    phrase.add(resources.getString("Sheet.ArcaneFate.Destiny") + "\n"); //$NON-NLS-1$//$NON-NLS-2$
+    phrase.add(resources.getString("Sheet.ArcaneFate.Destiny") + "\n");
     phrase.add(symbolChunk);
-    phrase.add(resources.getString("Sheet.ArcaneFate.Relationship") + "\n"); //$NON-NLS-1$//$NON-NLS-2$
+    phrase.add(resources.getString("Sheet.ArcaneFate.Relationship") + "\n");
     phrase.add(symbolChunk);
-    phrase.add(resources.getString("Sheet.ArcaneFate.Stealth") + "\n"); //$NON-NLS-1$//$NON-NLS-2$
+    phrase.add(resources.getString("Sheet.ArcaneFate.Stealth") + "\n");
     phrase.add(symbolChunk);
-    phrase.add(resources.getString("Sheet.ArcaneFate.Remembering2nd") + "\n"); //$NON-NLS-1$
+    phrase.add(resources.getString("Sheet.ArcaneFate.Remembering2nd") + "\n");
     graphics.createSimpleColumn(bounds).withLeading(lineHeight).andTextPart(phrase).encode();
   }
 

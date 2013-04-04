@@ -16,13 +16,13 @@ public class GenericAttributeRequirementBuilderTest {
 
   @Test
   public void testReadGenericAttributeRequirement() throws Exception {
-    String xml = "<element><genericCharmAttributeRequirement attribute=\"generic\"/></element>"; //$NON-NLS-1$
+    String xml = "<element><genericCharmAttributeRequirement attribute=\"generic\"/></element>";
     Element rootElement = DocumentUtilities.read(xml).getRootElement();
     GenericAttributeRequirementBuilder builder = new GenericAttributeRequirementBuilder();
     builder.setType(AbilityType.Investigation);
     IndirectCharmRequirement[] indirectRequirements = builder.getCharmAttributeRequirements(rootElement);
     assertTrue(ArrayUtils.contains(indirectRequirements,
-            new CharmAttributeRequirement(new CharmAttribute("genericInvestigation", //$NON-NLS-1$
+            new CharmAttributeRequirement(new CharmAttribute("genericInvestigation",
                     false), 1)));
   }
 }

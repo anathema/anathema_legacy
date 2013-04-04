@@ -35,10 +35,6 @@ public class DummySpellConfiguration implements ISpellConfiguration {
     throw new NotYetImplementedException();
   }
 
-  public ISpell[] getAllSpells() {
-    throw new NotYetImplementedException();
-  }
-
   @Override
   public boolean isSpellAllowed(ISpell spell) {
     throw new NotYetImplementedException();
@@ -62,7 +58,7 @@ public class DummySpellConfiguration implements ISpellConfiguration {
   @Override
   public ISpell[] getLearnedSpells(boolean experienced) {
     if (experienced) {
-      throw new IllegalArgumentException("Not implemented"); //$NON-NLS-1$
+      throw new IllegalArgumentException("Not implemented");
     }
     return spells.toArray(new ISpell[spells.size()]);
   }
@@ -75,7 +71,7 @@ public class DummySpellConfiguration implements ISpellConfiguration {
   @Override
   public void removeSpells(ISpell[] removedSpells, boolean experienced) {
     if (experienced) {
-      throw new IllegalArgumentException("Not implemented"); //$NON-NLS-1$
+      throw new IllegalArgumentException("Not implemented");
     }
     spells.removeAll(Arrays.asList(removedSpells));
   }

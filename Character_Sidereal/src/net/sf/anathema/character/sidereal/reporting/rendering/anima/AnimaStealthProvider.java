@@ -16,6 +16,6 @@ public class AnimaStealthProvider extends AnimaTableStealthProvider {
 
   @Override
   protected String getLevelThreeStealth() {
-    return getString("Sheet.AnimaTable.Stealth2InDark"); //$NON-NLS-1$
+    return getString("Sheet.AnimaTable.Stealth2InDark");
   }
 }

@@ -11,7 +11,7 @@ import java.util.TreeSet;
 
 public class StringUtilities {
 
-  public static final String EMPTY_STRING = ""; //$NON-NLS-1$
+  public static final String EMPTY_STRING = "";
 
   public static String getFileNameRepresentation(String string) {
     StringBuilder fileName = new StringBuilder(string.length());
@@ -23,7 +23,7 @@ public class StringUtilities {
     }
     if (Strings.isNullOrEmpty(string)) {
       fileName.setLength(0);
-      fileName.append("None"); //$NON-NLS-1$
+      fileName.append("None");
     }
     return fileName.toString();
   }

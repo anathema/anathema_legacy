@@ -52,7 +52,7 @@ public class Range implements IOverline {
 
   @Override
   public String toString() {
-    return "[" + low + "," + high + "]"; //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
+    return "[" + low + "," + high + "]";
   }
 
   public void setLowerBound(int value) {

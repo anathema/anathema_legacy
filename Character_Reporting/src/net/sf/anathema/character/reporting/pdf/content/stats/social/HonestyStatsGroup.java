@@ -8,7 +8,7 @@ import net.sf.anathema.lib.resources.Resources;
 public class HonestyStatsGroup extends AbstractSocialCombatsValueStatsGroup {
 
   public HonestyStatsGroup(Resources resources) {
-    super(resources, "Honesty"); //$NON-NLS-1$
+    super(resources, "Honesty");
   }
 
   @Override

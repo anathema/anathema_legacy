@@ -24,7 +24,7 @@ public class CharmStats extends AbstractCharmStats {
     Collections.addAll(details, detailKeys);
     if (character.isSubeffectCharm(getMagic())) {
       for (String subeffectId : character.getLearnedEffects(getMagic())) {
-        details.add(getMagic().getId() + ".Subeffects." + subeffectId);//$NON-NLS-1$
+        details.add(getMagic().getId() + ".Subeffects." + subeffectId);
       }
     }
     return details.toArray(new String[details.size()]);
@@ -36,9 +36,9 @@ public class CharmStats extends AbstractCharmStats {
     nameString.append(resources.getString(getMagic().getId()));
     int learnCount = character.getLearnCount(getMagic());
     if (learnCount > 1) {
-      nameString.append(" ("); //$NON-NLS-1$
+      nameString.append(" (");
       nameString.append(learnCount);
-      nameString.append("x)"); //$NON-NLS-1$
+      nameString.append("x)");
     }
     return nameString.toString();
   }

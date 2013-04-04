@@ -22,7 +22,7 @@ public class UpdateAction extends SmartAction {
 
   public static Action createMenuAction(Resources resources) {
     UpdateAction action = new UpdateAction(resources);
-    action.setName(resources.getString("Help.UpdateCheck.Title")); //$NON-NLS-1$
+    action.setName(resources.getString("Help.UpdateCheck.Title"));
     return action;
   }
 
@@ -32,6 +32,7 @@ public class UpdateAction extends SmartAction {
     this.resources = resources;
   }
 
+  @SuppressWarnings("unchecked")
   @Override
   protected void execute(Component parentComponent) {
     Version currentVersion = getCurrentVersion();
@@ -79,7 +80,7 @@ public class UpdateAction extends SmartAction {
   }
 
   private Version getCurrentVersion() {
-    net.sf.anathema.framework.Version version = new net.sf.anathema.framework.Version(resources);//$NON-NLS-1$
+    net.sf.anathema.framework.Version version = new net.sf.anathema.framework.Version(resources);
     return new NumericVersion(version.getMajorVersion(), version.getMinorVersion(), version.getRevision());
   }
 

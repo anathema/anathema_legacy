@@ -26,7 +26,7 @@ public class MultipleEffectCharmConfigurationTest {
   public void learnsEffects() throws Exception {
     IBasicCharacterData data = createData();
     DummyCondition condition = createCondition();
-    Subeffect effect = new Subeffect("id", data, condition); //$NON-NLS-1$
+    Subeffect effect = new Subeffect("id", data, condition);
     IMultipleEffectCharm charm = createCharm(effect);
     MultipleEffectCharmConfiguration configuration = new MultipleEffectCharmConfiguration(new DummyCharacterModelContext(), null, charm, null);
     effect.setExperienceLearned(true);

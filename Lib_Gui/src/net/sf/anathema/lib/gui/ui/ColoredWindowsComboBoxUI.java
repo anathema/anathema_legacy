@@ -41,8 +41,8 @@ public class ColoredWindowsComboBoxUI extends WindowsComboBoxUI {
 
   private boolean isXP() {
     Toolkit toolkit = Toolkit.getDefaultToolkit();
-    boolean themeActive = Boolean.TRUE.equals(toolkit.getDesktopProperty("win.xpstyle.themeActive")); //$NON-NLS-1$
-    boolean noXP = System.getProperty("swing.noxp") != null; //$NON-NLS-1$
+    boolean themeActive = Boolean.TRUE.equals(toolkit.getDesktopProperty("win.xpstyle.themeActive"));
+    boolean noXP = System.getProperty("swing.noxp") != null;
     boolean runsClassic = UIManager.getLookAndFeel() instanceof WindowsClassicLookAndFeel;
     return themeActive && noXP && !runsClassic;
   }

@@ -26,6 +26,6 @@ public class HeartsBloodAppearanceStatsGroup extends AbstractTextStatsGroup<IHea
 
   @Override
   public String getTitle() {
-    return resources.getString("Sheet.Lunar.HeartsBlood.Appearance"); //$NON-NLS-1$
+    return resources.getString("Sheet.Lunar.HeartsBlood.Appearance");
   }
 }

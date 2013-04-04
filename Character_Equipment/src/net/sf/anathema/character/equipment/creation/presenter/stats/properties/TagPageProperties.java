@@ -14,24 +14,24 @@ public class TagPageProperties {
   }
 
   public IBasicMessage getDefaultMessage() {
-    return new BasicMessage(resources.getString("Equipment.Creation.Tags.DefaultMessage")); //$NON-NLS-1$
+    return new BasicMessage(resources.getString("Equipment.Creation.Tags.DefaultMessage"));
   }
 
   public String getPageTitle() {
-    return resources.getString("Equipment.Creation.Tags.PageTitle"); //$NON-NLS-1$
+    return resources.getString("Equipment.Creation.Tags.PageTitle");
   }
 
   public String getLabel(IWeaponTag tag) {
-    return resources.getString("Equipment.Tag." + tag.getId()); //$NON-NLS-1$
+    return resources.getString("Equipment.Tag." + tag.getId());
   }
 
   public IBasicMessage getSelectRangedWeaponTagMessage() {
-    return new BasicMessage(resources.getString("Equipment.Creation.Tags.SelectRangedTagMessage")); //$NON-NLS-1$
+    return new BasicMessage(resources.getString("Equipment.Creation.Tags.SelectRangedTagMessage"));
   }
 
   public IBasicMessage getThrownTagButNotThrownTypeMessage() {
     return new BasicMessage(
-            resources.getString("Equipment.Creation.Tags.ThrownTagButNotThrownTypeMessage")); //$NON-NLS-1$
+            resources.getString("Equipment.Creation.Tags.ThrownTagButNotThrownTypeMessage"));
   }
 
   public String getToolTip(IWeaponTag tag) {

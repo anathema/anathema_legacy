@@ -9,10 +9,10 @@ import net.sf.anathema.lib.resources.Resources;
 
 public class SoakArmourStatsGroup extends AbstractValueEquipmentStatsGroup<IArmourStats> implements IArmourStatsGroup {
 
-  private String valuePrefix = ""; //$NON-NLS-1$
+  private String valuePrefix = "";
 
   public SoakArmourStatsGroup(Resources resources) {
-    super(resources, "Soak"); //$NON-NLS-1$
+    super(resources, "Soak");
   }
 
   @Override
@@ -26,7 +26,7 @@ public class SoakArmourStatsGroup extends AbstractValueEquipmentStatsGroup<IArmo
       table.addCell(createEquipmentValueCell(font, armour.getSoak(HealthType.Lethal)));
       table.addCell(createEquipmentValueCell(font, armour.getSoak(HealthType.Aggravated)));
     }
-    valuePrefix = "+"; //$NON-NLS-1$
+    valuePrefix = "+";
   }
 
   @Override

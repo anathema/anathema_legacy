@@ -34,8 +34,8 @@ public class CombatRulesTableEncoder extends AbstractCombatRulesTableEncoder {
 
   private PdfPTable createCombatAttackList(SheetGraphics graphics, CombatStatsContent content) {
     TableList list = new TableList(graphics.createCommentFont());
-    list.addHeader(new Chunk(content.getAttackHeader(), graphics.createTextFont()), true); //$NON-NLS-1$
-    list.addHeader(new Chunk("\n", graphics.createCommentFont()), false); //$NON-NLS-1$
+    list.addHeader(new Chunk(content.getAttackHeader(), graphics.createTextFont()), true);
+    list.addHeader(new Chunk("\n", graphics.createCommentFont()), false);
     for (String attack : content.getAttacks()) {
       list.addItem(attack);
     }
@@ -43,7 +43,7 @@ public class CombatRulesTableEncoder extends AbstractCombatRulesTableEncoder {
     list.addCell(createSpaceCell(graphics));
     list.addCell(createSpaceCell(graphics));
     TableCell rulesCommentCell =
-            new TableCell(new Phrase(content.getAttackComment(), graphics.createCommentFont()), Rectangle.NO_BORDER); //$NON-NLS-1$
+            new TableCell(new Phrase(content.getAttackComment(), graphics.createCommentFont()), Rectangle.NO_BORDER);
     list.addCell(rulesCommentCell);
     return list.getTable();
   }

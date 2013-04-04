@@ -4,12 +4,12 @@ import net.sf.anathema.character.equipment.creation.model.stats.IEquipmentStatis
 import net.sf.anathema.character.equipment.creation.presenter.stats.properties.EquipmentTypeChoiceProperties;
 import net.sf.anathema.character.equipment.creation.view.IEquipmentTypeChoiceView;
 import net.sf.anathema.character.equipment.item.model.EquipmentStatisticsType;
+import net.sf.anathema.character.equipment.wizard.AbstractAnathemaWizardPage;
+import net.sf.anathema.character.equipment.wizard.CheckInputListener;
+import net.sf.anathema.character.equipment.wizard.IAnathemaWizardPage;
+import net.sf.anathema.lib.data.ICondition;
 import net.sf.anathema.lib.gui.action.SmartAction;
 import net.sf.anathema.lib.gui.dialog.core.IPageContent;
-import net.sf.anathema.character.equipment.wizard.AbstractAnathemaWizardPage;
-import net.sf.anathema.character.equipment.wizard.IAnathemaWizardPage;
-import net.sf.anathema.character.equipment.wizard.CheckInputListener;
-import net.sf.anathema.lib.data.ICondition;
 import net.sf.anathema.lib.message.BasicMessage;
 import net.sf.anathema.lib.message.IBasicMessage;
 import net.sf.anathema.lib.resources.Resources;
@@ -66,7 +66,7 @@ public class EquipmentTypeChoicePresenterPage extends AbstractAnathemaWizardPage
     this.view = viewFactory.createTypeChoiceView();
     String label = properties.getOffensiveLabel();
     addStatisticsTypeRow(label, EquipmentStatisticsType.CloseCombat);
-    addStatisticsTypeRow("", EquipmentStatisticsType.RangedCombat); //$NON-NLS-1$
+    addStatisticsTypeRow("", EquipmentStatisticsType.RangedCombat);
     view.addHorizontalLine();
     addStatisticsTypeRow(properties.getDefensiveLabel(), EquipmentStatisticsType.Armor);
     view.addHorizontalLine();

@@ -13,9 +13,9 @@ public class GenericIdStringBuilder extends IdStringBuilder implements IIdString
   @Override
   public String build(Element element) throws CharmException {
     if (type == null) {
-      throw new IllegalStateException("Type not set."); //$NON-NLS-1$
+      throw new IllegalStateException("Type not set.");
     }
-    return super.build(element) + "." + type.getId(); //$NON-NLS-1$
+    return super.build(element) + "." + type.getId();
   }
 
   @Override

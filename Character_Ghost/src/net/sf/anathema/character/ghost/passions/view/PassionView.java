@@ -20,7 +20,7 @@ import static net.sf.anathema.lib.gui.layout.LayoutUtils.constraintsForImageButt
 public class PassionView extends AbstractTraitView implements IPassionView {
   private final Announcer<IChangeListener> control = Announcer.to(IChangeListener.class);
   private final Component abilityLabel;
-  private final Component separatorLabel = new JLabel("-"); //$NON-NLS-1$
+  private final Component separatorLabel = new JLabel("-");
   private final Component passionLabel;
   private JButton deleteButton;
   private JPanel traitPanel;

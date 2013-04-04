@@ -32,7 +32,7 @@ public class EssencePoolConfiguration implements IEssencePoolConfiguration {
     if (!hasAdditionalPools()) {
       return String.valueOf(poolStrategy.getStandardPersonalPool());
     }
-    return poolStrategy.getStandardPersonalPool() + " (" + poolStrategy.getExtendedPersonalPool() + ")"; //$NON-NLS-1$//$NON-NLS-2$
+    return poolStrategy.getStandardPersonalPool() + " (" + poolStrategy.getExtendedPersonalPool() + ")";
   }
 
   @Override
@@ -46,7 +46,7 @@ public class EssencePoolConfiguration implements IEssencePoolConfiguration {
     if (!hasAdditionalPools()) {
       return String.valueOf(poolStrategy.getStandardPeripheralPool());
     }
-    return poolStrategy.getStandardPeripheralPool() + " (" + poolStrategy.getExtendedPeripheralPool() + ")"; //$NON-NLS-1$//$NON-NLS-2$
+    return poolStrategy.getStandardPeripheralPool() + " (" + poolStrategy.getExtendedPeripheralPool() + ")";
   }
 
   @Override

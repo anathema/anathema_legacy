@@ -12,11 +12,11 @@ import org.dom4j.Element;
 
 public class IntimaciesPersister implements IAdditionalPersister {
 
-  private static final String TAG_INTIMACIES = "Intimacies"; //$NON-NLS-1$
-  private static final String TAG_INTIMACY = "Intimacy"; //$NON-NLS-1$
-  private static final String ATTRIB_NAME = "name"; //$NON-NLS-1$
-  private static final String TAG_TRAIT = "Trait"; //$NON-NLS-1$
-  private static final String ATTRIB_COMPLETE = "complete"; //$NON-NLS-1$
+  private static final String TAG_INTIMACIES = "Intimacies";
+  private static final String TAG_INTIMACY = "Intimacy";
+  private static final String ATTRIB_NAME = "name";
+  private static final String TAG_TRAIT = "Trait";
+  private static final String ATTRIB_COMPLETE = "complete";
   private final TraitPersister traitPersister = new TraitPersister();
 
   @Override

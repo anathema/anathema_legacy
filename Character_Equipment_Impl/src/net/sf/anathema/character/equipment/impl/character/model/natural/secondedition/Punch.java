@@ -62,6 +62,6 @@ public class Punch extends AbstractNaturalWeaponStats {
 
   @Override
   public Identified getName() {
-    return new Identifier("Punch"); //$NON-NLS-1$
+    return new Identifier("Punch");
   }
 }

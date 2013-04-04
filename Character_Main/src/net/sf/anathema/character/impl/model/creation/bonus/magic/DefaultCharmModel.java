@@ -14,7 +14,7 @@ public class DefaultCharmModel extends AbstractAdditionalSpendingModel {
 
   public DefaultCharmModel(MagicCostCalculator magicCalculator, IAdditionalMagicLearnPointManagement magicAdditionalPools,
                            ICreationPoints creationPoints, IAdditionalRules additionalRules) {
-    super("Charms", "General"); //$NON-NLS-1$//$NON-NLS-2$
+    super("Charms", "General");
     this.magicCalculator = magicCalculator;
     this.magicAdditionalPools = magicAdditionalPools;
     this.creationPoints = creationPoints;

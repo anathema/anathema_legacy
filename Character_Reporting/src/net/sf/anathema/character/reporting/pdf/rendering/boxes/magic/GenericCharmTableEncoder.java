@@ -94,7 +94,7 @@ public class GenericCharmTableEncoder extends AbstractTableEncoder<ReportSession
   }
 
   private PdfPCell createGenericCell(IGenericCharacter character, ITraitType type, String genericId, PdfTemplate learnedTemplate, PdfTemplate notLearnedTemplate) throws DocumentException {
-    final String charmId = genericId + "." + type.getId(); //$NON-NLS-1$
+    final String charmId = genericId + "." + type.getId();
     List<IMagic> allLearnedMagic = character.getAllLearnedMagic();
     boolean isLearned = MagicLearnUtilities.isCharmLearned(allLearnedMagic, charmId);
     Image image = Image.getInstance(isLearned ? learnedTemplate : notLearnedTemplate);

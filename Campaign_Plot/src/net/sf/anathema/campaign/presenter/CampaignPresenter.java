@@ -22,8 +22,6 @@ public class CampaignPresenter implements Presenter {
   public void initPresentation() {
     new PlotPresenter(
         resources,
-        campaignView.addPlotView(resources.getString("CampaignDescription.BorderTitle")), campaign.getPlot()).initPresentation(); //$NON-NLS-1$
-    // new CampaignContentPresenter(campaignView.addContentView(configuration.getResources().getString(
-    // "CampaignContent.BorderTitle")), configuration, campaign, anathemaModel).initPresentation(); //$NON-NLS-1$
+        campaignView.addPlotView(resources.getString("CampaignDescription.BorderTitle")), campaign.getPlot()).initPresentation();
   }
 }

@@ -10,7 +10,6 @@ import net.sf.anathema.character.reporting.pdf.rendering.extent.Bounds;
 import net.sf.anathema.character.reporting.pdf.rendering.general.box.AbstractContentEncoder;
 import net.sf.anathema.character.reporting.pdf.rendering.graphics.SheetGraphics;
 import net.sf.anathema.character.reporting.pdf.rendering.graphics.SimpleColumn;
-import net.sf.anathema.character.reporting.pdf.rendering.page.IVoidStateFormatConstants;
 
 import java.util.List;
 
@@ -63,13 +62,8 @@ public class ComboEncoder extends AbstractContentEncoder<ComboContent> {
 
   private Phrase createPhrase(SheetGraphics graphics, DisplayCombo combo) {
     Phrase phrase = new Phrase();
-    phrase.add(new Chunk(combo.name + ": ", graphics.createBoldFont())); //$NON-NLS-1$
+    phrase.add(new Chunk(combo.name + ": ", graphics.createBoldFont()));
     phrase.add(new Chunk(combo.charms, graphics.createTextFont()));
     return phrase;
-  }
-
-  public Bounds calculateActualBoxBounds(Bounds restOfPage, float textEndY) {
-    float boxY = textEndY - IVoidStateFormatConstants.TEXT_PADDING;
-    return new Bounds(restOfPage.x, boxY, restOfPage.width, restOfPage.getMaxY() - boxY);
   }
 }

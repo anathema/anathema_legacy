@@ -16,6 +16,6 @@ public class RepositoryZipPathCreator {
   }
 
   public String createZipPath(String path) {
-    return path.replace(repositoryPath, "").replace(File.separatorChar, '/'); //$NON-NLS-1$
+    return path.replace(repositoryPath, "").replace(File.separatorChar, '/');
   }
 }

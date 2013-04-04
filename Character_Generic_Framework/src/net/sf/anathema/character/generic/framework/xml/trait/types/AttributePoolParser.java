@@ -8,7 +8,7 @@ import net.sf.anathema.character.generic.traits.groups.TraitTypeGroup;
 
 public class AttributePoolParser extends AbstractPoolTemplateParser {
 
-  private static final String TAG_ATTRIBUTES = "attributes"; //$NON-NLS-1$
+  private static final String TAG_ATTRIBUTES = "attributes";
 
   public AttributePoolParser(
       IXmlTemplateRegistry<GenericTraitTemplatePool> poolTemplateRegistry,

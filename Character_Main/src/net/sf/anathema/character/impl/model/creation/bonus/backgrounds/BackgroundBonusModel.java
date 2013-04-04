@@ -9,7 +9,7 @@ public class BackgroundBonusModel extends AbstractSpendingModel {
   private final ICreationPoints creationPoints;
 
   public BackgroundBonusModel(BackgroundBonusPointCostCalculator backgroundCalculator, ICreationPoints creationPoints) {
-    super("Advantages", "Backgrounds"); //$NON-NLS-1$ //$NON-NLS-2$
+    super("Advantages", "Backgrounds");
     this.backgroundCalculator = backgroundCalculator;
     this.creationPoints = creationPoints;
   }

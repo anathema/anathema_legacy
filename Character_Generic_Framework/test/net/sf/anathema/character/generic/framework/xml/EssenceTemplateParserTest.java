@@ -16,27 +16,27 @@ import org.dom4j.Document;
 
 public class EssenceTemplateParserTest extends TestCase {
 
-  private static final String TESTID = "TestDocument"; //$NON-NLS-1$
+  private static final String TESTID = "TestDocument";
 
   private static Document createTestDocument() throws AnathemaException {
-    String xml = "<essence isEssenceUser=\"true\">" //$NON-NLS-1$
-        + "<personalPool>" //$NON-NLS-1$
-        + "   <essencePart multiplier=\"3\" />" //$NON-NLS-1$
-        + "   <willpowerPart multiplier=\"1\" />" //$NON-NLS-1$
-        + "</personalPool>" //$NON-NLS-1$
-        + "<peripheralPool>" //$NON-NLS-1$
-        + "   <essencePart multiplier=\"7\" />" //$NON-NLS-1$
-        + "   <willpowerPart multiplier=\"1\" />" //$NON-NLS-1$
-        + "   <virtuePart>" //$NON-NLS-1$
-        + "       <virtueRanks count=\"4\" multiplier=\"1\" />" //$NON-NLS-1$
-        + "   </virtuePart>" //$NON-NLS-1$
-        + "</peripheralPool>" //$NON-NLS-1$
-        + "</essence>"; //$NON-NLS-1$
+    String xml = "<essence isEssenceUser=\"true\">"
+        + "<personalPool>"
+        + "   <essencePart multiplier=\"3\" />"
+        + "   <willpowerPart multiplier=\"1\" />"
+        + "</personalPool>"
+        + "<peripheralPool>"
+        + "   <essencePart multiplier=\"7\" />"
+        + "   <willpowerPart multiplier=\"1\" />"
+        + "   <virtuePart>"
+        + "       <virtueRanks count=\"4\" multiplier=\"1\" />"
+        + "   </virtuePart>"
+        + "</peripheralPool>"
+        + "</essence>";
     return DocumentUtilities.read(xml);
   }
 
   private static Document createUsesTestDocument() throws AnathemaException {
-    String xml = "<essence uses=\"" + TESTID + "\"/>"; //$NON-NLS-1$ //$NON-NLS-2$
+    String xml = "<essence uses=\"" + TESTID + "\"/>";
     return DocumentUtilities.read(xml);
   }
 

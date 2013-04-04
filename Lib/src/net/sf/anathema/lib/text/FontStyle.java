@@ -43,7 +43,7 @@ public enum FontStyle {
         return fontStyle;
       }
     }
-    throw new IllegalArgumentException("No font style defined for name " + name); //$NON-NLS-1$
+    throw new IllegalArgumentException("No font style defined for name " + name);
   }
 
   public static FontStyle getStyle(boolean isBold, boolean isItalic) {
@@ -63,6 +63,6 @@ public enum FontStyle {
         return style;
       }
     }
-    throw new UnreachableCodeReachedException("(ip)"); //$NON-NLS-1$
+    throw new UnreachableCodeReachedException("(ip)");
   }
 }

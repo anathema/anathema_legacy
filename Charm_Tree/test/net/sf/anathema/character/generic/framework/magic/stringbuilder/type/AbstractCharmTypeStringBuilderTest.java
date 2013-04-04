@@ -14,7 +14,7 @@ public abstract class AbstractCharmTypeStringBuilderTest{
     final CharmTypeModel charmTypeModel = new CharmTypeModel();
     charmTypeModel.setCharmType(CharmType.ExtraAction);
     String string = getBuilder().createTypeString(charmTypeModel);
-    assertEquals("Extra Action", string); //$NON-NLS-1$
+    assertEquals("Extra Action", string);
   }
 
   protected abstract ICharmTypeStringBuilder getBuilder();

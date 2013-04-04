@@ -135,8 +135,8 @@ public class CharmConfigurationPersister {
                                           ISpecialCharmPersister specialPersister) throws PersistenceException {
     String groupName = groupElement.attributeValue(ATTRIB_NAME);
     String groupType = groupElement.attributeValue(ATTRIB_TYPE);
-    if (groupName.equals("Generics")) { //$NON-NLS-1$
-      groupName = "MartialArts"; //$NON-NLS-1$
+    if (groupName.equals("Generics")) {
+      groupName = "MartialArts";
     }
     ILearningCharmGroup group = loadCharmGroup(charmConfiguration, groupName, groupType);
     for (Object charmObjectElement : groupElement.elements()) {
@@ -154,7 +154,7 @@ public class CharmConfigurationPersister {
     try {
       return charmConfiguration.getGroup(groupType, groupName);
     } catch (IllegalArgumentException e) {
-      messageIndicator.addMessage("CharmPersistence.NoGroupFound", //$NON-NLS-1$
+      messageIndicator.addMessage("CharmPersistence.NoGroupFound",
               MessageType.WARNING, groupName);
       return new NullLearningCharmGroup();
     }
@@ -172,10 +172,10 @@ public class CharmConfigurationPersister {
       if (specialElement != null && specialConfiguration != null) {
         specialPersister.loadConfiguration(specialElement, specialConfiguration);
       } else if (specialConfiguration instanceof IMultiLearnableCharmConfiguration) {
-        ((IMultiLearnableCharmConfiguration) specialConfiguration).learn(isExperienceLearned(charmElement));
+        specialConfiguration.learn(isExperienceLearned(charmElement));
       }
     } catch (IllegalArgumentException e) {
-      messageIndicator.addMessage("CharmPersistence.NoCharmFound", //$NON-NLS-1$
+      messageIndicator.addMessage("CharmPersistence.NoCharmFound",
               MessageType.WARNING, charmId);
     }
   }
@@ -244,7 +244,7 @@ public class CharmConfigurationPersister {
           ICharm comboCharm = charms.getCharmById(charmId);
           comboConfiguration.addCharmToCombo(comboCharm, charmExperiencedLearned);
         } catch (IllegalArgumentException e) {
-          messageIndicator.addMessage("CharmPersistence.NoCharmFound", //$NON-NLS-1$
+          messageIndicator.addMessage("CharmPersistence.NoCharmFound",
                   MessageType.WARNING, charmId);
         }
       }

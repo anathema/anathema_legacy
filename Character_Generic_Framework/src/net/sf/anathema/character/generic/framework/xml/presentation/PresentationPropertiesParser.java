@@ -33,9 +33,9 @@ public class PresentationPropertiesParser extends AbstractXmlTemplateParser<Gene
     if (colorElement == null) {
       return;
     }
-    int red = ElementUtilities.getRequiredIntAttrib(colorElement, "red"); //$NON-NLS-1$
-    int green = ElementUtilities.getRequiredIntAttrib(colorElement, "green"); //$NON-NLS-1$
-    int blue = ElementUtilities.getRequiredIntAttrib(colorElement, "blue"); //$NON-NLS-1$
+    int red = ElementUtilities.getRequiredIntAttrib(colorElement, "red");
+    int green = ElementUtilities.getRequiredIntAttrib(colorElement, "green");
+    int blue = ElementUtilities.getRequiredIntAttrib(colorElement, "blue");
     Color color = new Color(red, green, blue);
     basicTemplate.getCharmPresentationProperties().setColor(color);
   }

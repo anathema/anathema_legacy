@@ -33,7 +33,7 @@ public abstract class AbstractCharmTreeViewProperties implements ICharmTreeViewP
 
   private ICharm findNonNullCharm(final String charmId) {
     ICharm charm = getCharmById(charmId);
-    Preconditions.checkNotNull(charm, "Charm with id '" + charmId + "' not found."); //$NON-NLS-1$ //$NON-NLS-2$
+    Preconditions.checkNotNull(charm, "Charm with id '" + charmId + "' not found.");
     return charm;
   }
 

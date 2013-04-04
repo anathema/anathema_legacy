@@ -56,7 +56,7 @@ public class NewItemCommand implements Command {
     try {
       itemCreationOperator.operate(parent, type, template);
     } catch (PersistenceException e) {
-      Message message = new Message(resources.getString("AnathemaPersistence.NewMenu.Message.Error"), e); //$NON-NLS-1$
+      Message message = new Message(resources.getString("AnathemaPersistence.NewMenu.Message.Error"), e);
       MessageUtilities.indicateMessage(NewItemCommand.class, parent, message);
     }
   }

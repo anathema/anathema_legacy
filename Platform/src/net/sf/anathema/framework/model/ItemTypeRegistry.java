@@ -17,7 +17,7 @@ public class ItemTypeRegistry implements IItemTypeRegistry {
         return itemType;
       }
     }
-    throw new IllegalArgumentException("No item type registered for id: " + id); //$NON-NLS-1$
+    throw new IllegalArgumentException("No item type registered for id: " + id);
   }
 
   @Override

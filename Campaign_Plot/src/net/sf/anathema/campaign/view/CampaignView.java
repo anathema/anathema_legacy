@@ -22,7 +22,7 @@ public class CampaignView extends AbstractItemView implements ISeriesView {
 
   @Override
   public IPlotView addPlotView(String title) {
-    Preconditions.checkArgument(plotView == null, "Only one view allowed."); //$NON-NLS-1$
+    Preconditions.checkArgument(plotView == null, "Only one view allowed.");
     this.plotView = new PlotView(editorProperties);
     return plotView;
   }

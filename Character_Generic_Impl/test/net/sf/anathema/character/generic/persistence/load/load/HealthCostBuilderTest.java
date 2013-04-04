@@ -38,30 +38,30 @@ public class HealthCostBuilderTest {
   @Test
   public void testCostAttributeOnly() throws Exception {
     Element healthElement = getHealthElement();
-    healthElement.addAttribute("cost", "4"); //$NON-NLS-1$//$NON-NLS-2$
+    healthElement.addAttribute("cost", "4");
     IHealthCost cost = builder.buildCost(healthElement);
-    assertEquals("4", cost.getCost()); //$NON-NLS-1$
+    assertEquals("4", cost.getCost());
     assertEquals(null, cost.getText());
     assertEquals(HealthType.Lethal, cost.getType());
   }
   @Test
   public void testCostAndTextAttributes() throws Exception {
     Element healthElement = getHealthElement();
-    healthElement.addAttribute("cost", "4"); //$NON-NLS-1$//$NON-NLS-2$
-    String expected = "and then some"; //$NON-NLS-1$
-    healthElement.addAttribute("text", expected); //$NON-NLS-1$
+    healthElement.addAttribute("cost", "4");
+    String expected = "and then some";
+    healthElement.addAttribute("text", expected);
     IHealthCost cost = builder.buildCost(healthElement);
-    assertEquals("4", cost.getCost()); //$NON-NLS-1$
+    assertEquals("4", cost.getCost());
     assertEquals(expected, cost.getText());
     assertEquals(HealthType.Lethal, cost.getType());
   }
   @Test
   public void testCostAttributeAndTypeAttribute() throws Exception {
     Element healthElement = getHealthElement();
-    healthElement.addAttribute("cost", "2"); //$NON-NLS-1$//$NON-NLS-2$
-    healthElement.addAttribute("type", "Bashing"); //$NON-NLS-1$//$NON-NLS-2$
+    healthElement.addAttribute("cost", "2");
+    healthElement.addAttribute("type", "Bashing");
     IHealthCost cost = builder.buildCost(healthElement);
-    assertEquals("2", cost.getCost()); //$NON-NLS-1$
+    assertEquals("2", cost.getCost());
     assertEquals(null, cost.getText());
     assertEquals(HealthType.Bashing, cost.getType());
   }

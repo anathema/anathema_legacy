@@ -13,10 +13,10 @@ public class MartialArtsUtilitiesTest {
 
   @Test
   public void testIsMartialArtsCharm() {
-    ICharm charm = new DummyCharm("Dummy") { //$NON-NLS-1$
+    ICharm charm = new DummyCharm("Dummy") {
       @Override
       public boolean hasAttribute(Identified attribute) {
-        return attribute.getId().equals("MartialArts"); //$NON-NLS-1$
+        return attribute.getId().equals("MartialArts");
       }
     };
     assertTrue(MartialArtsUtilities.isMartialArtsCharm(charm));
@@ -24,10 +24,10 @@ public class MartialArtsUtilitiesTest {
 
   @Test
   public void testIsFormCharm() throws Exception {
-    ICharm charm = new DummyCharm("Dummy") { //$NON-NLS-1$
+    ICharm charm = new DummyCharm("Dummy") {
       @Override
       public boolean hasAttribute(Identified attribute) {
-        return attribute.getId().equals("Form"); //$NON-NLS-1$
+        return attribute.getId().equals("Form");
       }
     };
     assertTrue(MartialArtsUtilities.isFormCharm(charm));
@@ -35,10 +35,10 @@ public class MartialArtsUtilitiesTest {
 
   @Test
   public void testGetMartialArtsLevel() throws Exception {
-    DummyCharm charm = new DummyCharm("Dummy") { //$NON-NLS-1$
+    DummyCharm charm = new DummyCharm("Dummy") {
       @Override
       public boolean hasAttribute(Identified attribute) {
-        return attribute.getId().equals("MartialArts") || attribute.getId().equals("Terrestrial"); //$NON-NLS-1$ //$NON-NLS-2$
+        return attribute.getId().equals("MartialArts") || attribute.getId().equals("Terrestrial");
       }
     };
     assertEquals(MartialArtsLevel.Terrestrial, MartialArtsUtilities.getLevel(charm));
@@ -46,10 +46,10 @@ public class MartialArtsUtilitiesTest {
 
   @Test
   public void testHasMartialArtsLevel() throws Exception {
-    DummyCharm charm = new DummyCharm("Dummy") { //$NON-NLS-1$
+    DummyCharm charm = new DummyCharm("Dummy") {
       @Override
       public boolean hasAttribute(Identified attribute) {
-        return attribute.getId().equals("MartialArts") || attribute.getId().equals("Terrestrial"); //$NON-NLS-1$ //$NON-NLS-2$
+        return attribute.getId().equals("MartialArts") || attribute.getId().equals("Terrestrial");
       }
     };
     assertTrue(MartialArtsUtilities.hasLevel(MartialArtsLevel.Terrestrial, charm));

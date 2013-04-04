@@ -43,23 +43,23 @@ public class RepositoryItemExportPresenter implements Presenter {
       @Override
       protected void execute(Component parentComponent) {
         try {
-          Path saveFile = FileChoosingUtilities.selectSaveFile(parentComponent, "Export.zip"); //$NON-NLS-1$
+          Path saveFile = FileChoosingUtilities.selectSaveFile(parentComponent, "Export.zip");
           if (saveFile == null) {
             return;
           }
           PrintNameFile[] printNameFiles = fileExporter.exportToZip(saveFile);
-          messaging.addMessage("AnathemaCore.Tools.RepositoryView.ExportDoneMessage", printNameFiles.length); //$NON-NLS-1$
+          messaging.addMessage("AnathemaCore.Tools.RepositoryView.ExportDoneMessage", printNameFiles.length);
         }
         catch (IOException e) {
           MessageDialogFactory.showMessageDialog(parentComponent, new Message(
-              resources.getString("AnathemaCore.Tools.RepositoryView.FileError"), //$NON-NLS-1$
+              resources.getString("AnathemaCore.Tools.RepositoryView.FileError"),
               e));
           Logger.getLogger(getClass()).error(e);
         }
       }
 
     };
-    action.setToolTipText(resources.getString("AnathemaCore.Tools.RepositoryView.ExportToolTip")); //$NON-NLS-1$
+    action.setToolTipText(resources.getString("AnathemaCore.Tools.RepositoryView.ExportToolTip"));
     view.addActionButton(action);
     model.addTreeSelectionChangeListener(new IChangeListener() {
       @Override

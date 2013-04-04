@@ -35,7 +35,7 @@ public class RepositoryImportHandler {
   private void writeMainFile(InputStream inputStream) throws RepositoryException, IOException {
     String string = IOUtils.toString(inputStream);
     string = string.replaceFirst("repositoryId=\"" + oldId + "\"",
-            "repositoryId=\"" + newId + "\""); //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$ //$NON-NLS-4$
+            "repositoryId=\"" + newId + "\"");
     ByteArrayInputStream modifiedInput = new ByteArrayInputStream(string.getBytes());
     OutputStream outputStream = access.createMainOutputStream();
     importStreamToRepository(modifiedInput, outputStream);
@@ -45,7 +45,7 @@ public class RepositoryImportHandler {
 
   private void writeSubFile(InputStream inputStream, String entryName) throws RepositoryException, IOException {
     String unextendedFileName = entryName.substring(entryName.lastIndexOf(File.separator) + 1,
-            entryName.lastIndexOf(".")); //$NON-NLS-1$ //$NON-NLS-2$
+            entryName.lastIndexOf("."));
     OutputStream outputStream = access.createSubOutputStream(unextendedFileName);
     importStreamToRepository(inputStream, outputStream);
     outputStream.close();

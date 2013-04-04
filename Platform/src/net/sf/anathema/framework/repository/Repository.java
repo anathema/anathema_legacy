@@ -63,7 +63,7 @@ public class Repository implements IRepository {
       }
       return createMultiFileWriteAccess(item);
     } catch (RepositoryException e) {
-      String pattern = "Could not create RepositoryItem for {0}, {1}."; //$NON-NLS-1$
+      String pattern = "Could not create RepositoryItem for {0}, {1}.";
       throw new RepositoryException(MessageFormat.format(pattern, item.getItemType(), item.getId()), e);
     }
   }
@@ -76,7 +76,7 @@ public class Repository implements IRepository {
       }
       return createMultiFileWriteAccess(type, id);
     } catch (RepositoryException e) {
-      String pattern = "Could not create RepositoryItem for {0}, {1}."; //$NON-NLS-1$
+      String pattern = "Could not create RepositoryItem for {0}, {1}.";
       throw new RepositoryException(MessageFormat.format(pattern, type, id), e);
     }
   }
@@ -112,7 +112,7 @@ public class Repository implements IRepository {
       try {
         file.createNewFile();
       } catch (IOException e) {
-        throw new RepositoryException("Error creating file: " + file, e); //$NON-NLS-1$
+        throw new RepositoryException("Error creating file: " + file, e);
       }
     }
     return new SingleFileWriteAccess(file);
@@ -186,7 +186,7 @@ public class Repository implements IRepository {
       }
       refresh();
     } catch (IOException e) {
-      throw new RepositoryException("Deletion failed.", e); //$NON-NLS-1$
+      throw new RepositoryException("Deletion failed.", e);
     }
   }
 

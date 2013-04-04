@@ -28,10 +28,6 @@ public class OpenPdfPreferencesElement extends AbstractCheckBoxPreferencesElemen
     return openPdf;
   }
 
-  public static boolean openDocumentAfterPrint() {
-    return SYSTEM_PREFERENCES.getBoolean(OPEN_PDF_PREFERENCE, true);
-  }
-
   @Override
   public void savePreferences() {
     SYSTEM_PREFERENCES.putBoolean(OPEN_PDF_PREFERENCE, openPdf);
@@ -44,7 +40,7 @@ public class OpenPdfPreferencesElement extends AbstractCheckBoxPreferencesElemen
 
   @Override
   protected String getLabelKey() {
-    return "AnathemaCore.Tools.Preferences.OpenPdf"; //$NON-NLS-1$
+    return "AnathemaCore.Tools.Preferences.OpenPdf";
   }
 
   @Override

@@ -28,7 +28,7 @@ public class LoadItemCreator implements IItemCreator {
       item.setClean();
       return item;
     } catch (RepositoryException e) {
-      throw new PersistenceException("An exception occured while loading.", e); //$NON-NLS-1$
+      throw new PersistenceException("An exception occured while loading.", e);
     }
   }
 }

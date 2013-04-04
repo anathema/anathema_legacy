@@ -17,7 +17,7 @@ public class PdfReportPrinter {
       writer.setPdfVersion(PdfWriter.VERSION_1_5);
       writer.setViewerPreferences(PdfWriter.DisplayDocTitle);
       document.addTitle(item.getDisplayName());
-      document.addCreator("Anathema"); //$NON-NLS-1$
+      document.addCreator("Anathema");
       document.open();
       report.performPrint(item, document, writer);
     } catch (DocumentException de) {

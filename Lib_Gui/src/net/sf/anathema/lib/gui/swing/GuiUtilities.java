@@ -30,7 +30,7 @@ import java.util.Set;
 
 public class GuiUtilities {
 
-  public static final String ENABLED_PROPERTY_NAME = "enabled"; //$NON-NLS-1$
+  public static final String ENABLED_PROPERTY_NAME = "enabled";
 
   public static Window getWindowFor(EventObject event) {
     if (event == null) {
@@ -202,6 +202,7 @@ public class GuiUtilities {
     return setSubComponentsEnabled(c, enable, components, enabledComps);
   }
 
+  @SuppressWarnings("SuspiciousMethodCalls")
   private static Set<Container> setSubComponentsEnabled(Container c, boolean enable, Set<Container> components, Set<Container> enabledComps) {
     Component[] comps = c.getComponents();
     for (Component comp : comps) {

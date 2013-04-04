@@ -17,7 +17,7 @@ public class TraitPrerequisiteBuilderTest {
 
   @Test
   public void testTraitPrerequisiteBuilder() throws Exception {
-    String xml = "<trait id=\"Larceny\" value=\"3\"/>";//$NON-NLS-1$
+    String xml = "<trait id=\"Larceny\" value=\"3\"/>";
     Element rootElement = DocumentUtilities.read(xml).getRootElement();
     IGenericTrait trait = builder.build(rootElement);
     assertEquals(AbilityType.Larceny, trait.getType());
@@ -26,7 +26,7 @@ public class TraitPrerequisiteBuilderTest {
 
   @Test(expected=PersistenceException.class)
   public void testValueMissing() throws Exception {
-        String xml = "<trait id=\"Larceny\" />";//$NON-NLS-1$
+        String xml = "<trait id=\"Larceny\" />";
         Element rootElement = DocumentUtilities.read(xml).getRootElement();
         builder.build(rootElement);
   }

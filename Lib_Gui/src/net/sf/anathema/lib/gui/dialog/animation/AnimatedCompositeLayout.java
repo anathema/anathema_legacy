@@ -25,7 +25,7 @@ public class AnimatedCompositeLayout implements LayoutManager2 {
   public void addLayoutComponent(String name, Component comp) {
     if (comp != baseComponent && comp != overlaidComponent) {
       throw new IllegalArgumentException(
-          "No other components may be added to an animated composite panel, tried to add " + comp); //$NON-NLS-1$
+          "No other components may be added to an animated composite panel, tried to add " + comp);
     }
   }
 
@@ -33,7 +33,7 @@ public class AnimatedCompositeLayout implements LayoutManager2 {
   public void addLayoutComponent(Component comp, Object constraints) {
     if (comp != baseComponent && comp != overlaidComponent) {
       throw new IllegalArgumentException(
-          "No other components may be added to an animated composite panel, tried to add " + comp); //$NON-NLS-1$
+          "No other components may be added to an animated composite panel, tried to add " + comp);
     }
   }
 

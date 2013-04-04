@@ -58,12 +58,12 @@ public class ComboConfigurationPresenter implements IContentPresenter {
   public void initPresentation() {
     view.initGui(new ComboViewProperties(resources, comboConfiguration, comboModel.getMagicDescriptionProvider()));
     initCharmLearnListening(view);
-    ITextView nameView = view.addComboNameView(resources.getString("CardView.CharmConfiguration.ComboCreation.NameLabel")); //$NON-NLS-1$);
+    ITextView nameView = view.addComboNameView(resources.getString("CardView.CharmConfiguration.ComboCreation.NameLabel"));
     ICombo editCombo = comboConfiguration.getEditCombo();
     TextualPresentation textualPresentation = new TextualPresentation();
     textualPresentation.initView(nameView, editCombo.getName());
     ITextView descriptionView =
-            view.addComboDescriptionView(resources.getString("CardView.CharmConfiguration.ComboCreation.DescriptionLabel")); //$NON-NLS-1$);
+            view.addComboDescriptionView(resources.getString("CardView.CharmConfiguration.ComboCreation.DescriptionLabel"));
     textualPresentation.initView(descriptionView, editCombo.getDescription());
     updateCharmListsInView(view);
     initViewListening(view);
@@ -80,7 +80,7 @@ public class ComboConfigurationPresenter implements IContentPresenter {
 
   @Override
   public ContentView getTabContent() {
-    String header = resources.getString("CardView.CharmConfiguration.ComboCreation.Title"); //$NON-NLS-1$
+    String header = resources.getString("CardView.CharmConfiguration.ComboCreation.Title");
     return new SimpleViewContentView(new ContentProperties(header), view);
   }
 
@@ -128,7 +128,7 @@ public class ComboConfigurationPresenter implements IContentPresenter {
   private String createComboNameString(ICombo combo) {
     String comboName = combo.getName().getText();
     if (Strings.isNullOrEmpty(comboName)) {
-      comboName = resources.getString("CardView.CharmConfiguration.ComboCreation.UnnamedCombo"); //$NON-NLS-1$
+      comboName = resources.getString("CardView.CharmConfiguration.ComboCreation.UnnamedCombo");
     }
     return comboName;
   }
@@ -152,7 +152,7 @@ public class ComboConfigurationPresenter implements IContentPresenter {
 
   private void addComboToView(IComboConfigurationView comboConfigurationView, final ICombo combo) {
     SmartAction deleteAction = new SmartAction(resources.getString("CardView.CharmConfiguration.ComboCreation.DeleteLabel"),
-            new BasicUi().getClearIcon()) { //$NON-NLS-1$
+            new BasicUi().getClearIcon()) {
 
       @Override
       protected void execute(Component parentComponent) {
@@ -160,7 +160,7 @@ public class ComboConfigurationPresenter implements IContentPresenter {
       }
     };
     SmartAction editAction = new SmartAction(resources.getString("CardView.CharmConfiguration.ComboCreation.EditLabel"),
-            new BasicUi().getEditIcon()) {//$NON-NLS-1$
+            new BasicUi().getEditIcon()) {
 
       @Override
       protected void execute(Component parentComponent) {
@@ -174,24 +174,24 @@ public class ComboConfigurationPresenter implements IContentPresenter {
   private String convertToHtml(ICombo combo) {
     String text = combo.getDescription().getText();
     ICharm[] charms = combo.getCharms();
-    String charmList = "<b>"; //$NON-NLS-1$
+    String charmList = "<b>";
     Iterator<ICharm> charmIterator = Arrays.asList(charms).iterator();
     if (charmIterator.hasNext()) {
       charmList = charmList.concat(labeler.getLabelForMagic(charmIterator.next()));
     }
     while (charmIterator.hasNext()) {
-      charmList = charmList.concat(", " + labeler.getLabelForMagic(charmIterator.next())); //$NON-NLS-1$
+      charmList = charmList.concat(", " + labeler.getLabelForMagic(charmIterator.next()));
     }
-    charmList += "</b>"; //$NON-NLS-1$
+    charmList += "</b>";
     if (Strings.isNullOrEmpty(text)) {
       return wrapHtml(charmList);
     }
-    String converted = text.replace("\n", "<br>"); //$NON-NLS-1$ //$NON-NLS-2$
-    return wrapHtml(charmList + " - <i>" + converted + "</i>"); //$NON-NLS-1$//$NON-NLS-2$
+    String converted = text.replace("\n", "<br>");
+    return wrapHtml(charmList + " - <i>" + converted + "</i>");
   }
 
   private String wrapHtml(String text) {
-    return "<html><body>" + text + "</body></html>"; //$NON-NLS-1$//$NON-NLS-2$
+    return "<html><body>" + text + "</body></html>";
   }
 
   private void updateCharmListsInView(IComboConfigurationView comboView) {
@@ -240,17 +240,17 @@ public class ComboConfigurationPresenter implements IContentPresenter {
 
   private void setViewToEditing(ICombo combo) {
     IComboView comboView = viewsByCombo.get(combo);
-    comboView.setEditText(resources.getString("CardView.CharmConfiguration.ComboCreation.RestartEditLabel")); //$NON-NLS-1$
+    comboView.setEditText(resources.getString("CardView.CharmConfiguration.ComboCreation.RestartEditLabel"));
     createComboNameString(combo);
-    comboView.updateCombo(createComboNameString(combo) + " (" //$NON-NLS-1$
-                          + resources.getString("CardView.CharmConfiguration.ComboCreation.EditingLabel") //$NON-NLS-1$
-                          + ")", convertToHtml(combo)); //$NON-NLS-1$
+    comboView.updateCombo(createComboNameString(combo) + " ("
+            + resources.getString("CardView.CharmConfiguration.ComboCreation.EditingLabel")
+            + ")", convertToHtml(combo));
   }
 
   private void setViewsToNotEditing() {
     for (ICombo currentCombo : viewsByCombo.keySet()) {
       IComboView comboView = viewsByCombo.get(currentCombo);
-      comboView.setEditText(resources.getString("CardView.CharmConfiguration.ComboCreation.EditLabel")); //$NON-NLS-1$
+      comboView.setEditText(resources.getString("CardView.CharmConfiguration.ComboCreation.EditLabel"));
       comboView.updateCombo(createComboNameString(currentCombo), convertToHtml(currentCombo));
     }
   }

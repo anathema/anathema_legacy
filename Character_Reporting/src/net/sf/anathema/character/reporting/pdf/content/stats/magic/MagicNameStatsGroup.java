@@ -22,7 +22,7 @@ public class MagicNameStatsGroup extends AbstractTextStatsGroup<IMagicStats> {
   @Override
   public void addContent(PdfPTable table, Font font, IMagicStats stats) {
     if (stats == null) {
-      table.addCell(createTextCell(font, "")); //$NON-NLS-1$
+      table.addCell(createTextCell(font, ""));
     } else {
       table.addCell(createTextCell(font, stats.getNameString(resources)));
     }
@@ -30,6 +30,6 @@ public class MagicNameStatsGroup extends AbstractTextStatsGroup<IMagicStats> {
 
   @Override
   public String getTitle() {
-    return resources.getString("Sheet.Magic.Name"); //$NON-NLS-1$
+    return resources.getString("Sheet.Magic.Name");
   }
 }

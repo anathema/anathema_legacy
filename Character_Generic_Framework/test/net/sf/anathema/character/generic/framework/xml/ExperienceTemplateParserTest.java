@@ -19,43 +19,43 @@ import static org.junit.Assert.assertEquals;
 
 public class ExperienceTemplateParserTest {
 
-  String xml = "<dummyExperienceTemplate>" //$NON-NLS-1$
-    + "<attributes>" //$NON-NLS-1$
-    + "<generalCosts>" //$NON-NLS-1$
-    + "<currentRating multiplier=\"4\" />" //$NON-NLS-1$
-    + "</generalCosts>" //$NON-NLS-1$
-    + "<favoredCosts>" //$NON-NLS-1$
-    + "<currentRating multiplier=\"3\" />" //$NON-NLS-1$
-    + "</favoredCosts>" //$NON-NLS-1$
-    + "</attributes>" //$NON-NLS-1$
-    + "<abilities>" //$NON-NLS-1$
-    + "  <generalCosts>" //$NON-NLS-1$
-    + "    <currentRating multiplier=\"2\" initialCosts=\"3\"/>" //$NON-NLS-1$
-    + "  </generalCosts>" //$NON-NLS-1$
-    + "  <favoredCosts>" //$NON-NLS-1$
-    + "    <currentRating multiplier=\"2\" summand=\"-1\" initialCosts=\"3\"/>" //$NON-NLS-1$
-    + "  </favoredCosts>" //$NON-NLS-1$
-    + "  <specialties>" //$NON-NLS-1$
-    + "    <fixedCost cost=\"3\" />" //$NON-NLS-1$
-    + "  </specialties>" //$NON-NLS-1$
-    + "</abilities>" //$NON-NLS-1$
-    + "<advantages>" //$NON-NLS-1$
-    + "<willpower>" //$NON-NLS-1$
-    + "<currentRating multiplier=\"2\" />" //$NON-NLS-1$
-    + "</willpower>" //$NON-NLS-1$
-    + "<virtues>" //$NON-NLS-1$
-    + "<currentRating multiplier=\"3\" />" //$NON-NLS-1$
-    + "</virtues>" //$NON-NLS-1$
-    + "<essence>" //$NON-NLS-1$
-    + "<currentRating multiplier=\"8\" />" //$NON-NLS-1$
-    + "</essence>" //$NON-NLS-1$
-    + "</advantages>" //$NON-NLS-1$
-    + "<magic>" //$NON-NLS-1$
-    + " <charms favored=\"8\" general=\"10\">" //$NON-NLS-1$
-    + "<highLevelMartialArts favored=\"13\" general=\"15\"/>" //$NON-NLS-1$
-    + "</charms>" //$NON-NLS-1$
-    + "</magic>" //$NON-NLS-1$
-    + "</dummyExperienceTemplate>"; //$NON-NLS-1$
+  String xml = "<dummyExperienceTemplate>"
+    + "<attributes>"
+    + "<generalCosts>"
+    + "<currentRating multiplier=\"4\" />"
+    + "</generalCosts>"
+    + "<favoredCosts>"
+    + "<currentRating multiplier=\"3\" />"
+    + "</favoredCosts>"
+    + "</attributes>"
+    + "<abilities>"
+    + "  <generalCosts>"
+    + "    <currentRating multiplier=\"2\" initialCosts=\"3\"/>"
+    + "  </generalCosts>"
+    + "  <favoredCosts>"
+    + "    <currentRating multiplier=\"2\" summand=\"-1\" initialCosts=\"3\"/>"
+    + "  </favoredCosts>"
+    + "  <specialties>"
+    + "    <fixedCost cost=\"3\" />"
+    + "  </specialties>"
+    + "</abilities>"
+    + "<advantages>"
+    + "<willpower>"
+    + "<currentRating multiplier=\"2\" />"
+    + "</willpower>"
+    + "<virtues>"
+    + "<currentRating multiplier=\"3\" />"
+    + "</virtues>"
+    + "<essence>"
+    + "<currentRating multiplier=\"8\" />"
+    + "</essence>"
+    + "</advantages>"
+    + "<magic>"
+    + " <charms favored=\"8\" general=\"10\">"
+    + "<highLevelMartialArts favored=\"13\" general=\"15\"/>"
+    + "</charms>"
+    + "</magic>"
+    + "</dummyExperienceTemplate>";
   private DummyXmlTemplateRegistry<GenericExperiencePointCosts> templateRegistry;
   private ExperienceTemplateParser parser;
 
@@ -122,7 +122,7 @@ public class ExperienceTemplateParserTest {
   public void testGeneralMagicCosts() throws Exception {
     Element element = createElement();
     GenericExperiencePointCosts costs = parser.parseTemplate(element);
-    assertEquals(10, costs.getCharmCosts(new DummyCharm("Charm"), new ICostAnalyzer() { //$NON-NLS-1$
+    assertEquals(10, costs.getCharmCosts(new DummyCharm("Charm"), new ICostAnalyzer() {
       @Override
       public boolean isOccultFavored() {
         return false;
@@ -144,7 +144,7 @@ public class ExperienceTemplateParserTest {
   public void testFavoredMagicCosts() throws Exception {
     Element element = createElement();
     GenericExperiencePointCosts costs = parser.parseTemplate(element);
-    assertEquals(8, costs.getCharmCosts(new DummyCharm("Charm"), new ICostAnalyzer() { //$NON-NLS-1$
+    assertEquals(8, costs.getCharmCosts(new DummyCharm("Charm"), new ICostAnalyzer() {
       @Override
       public boolean isOccultFavored() {
         return true;
@@ -166,7 +166,7 @@ public class ExperienceTemplateParserTest {
   public void testCelestialMartialArtsCost() throws Exception {
     Element element = createElement();
     GenericExperiencePointCosts costs = parser.parseTemplate(element);
-    assertEquals(10, costs.getCharmCosts(new DummyCharm("Charm"), new ICostAnalyzer() { //$NON-NLS-1$
+    assertEquals(10, costs.getCharmCosts(new DummyCharm("Charm"), new ICostAnalyzer() {
       @Override
       public boolean isOccultFavored() {
         return true;
@@ -188,7 +188,7 @@ public class ExperienceTemplateParserTest {
   public void testUnfavoredHighLevelMartialArtsCost() throws Exception {
     Element element = createElement();
     GenericExperiencePointCosts costs = parser.parseTemplate(element);
-    assertEquals(15, costs.getCharmCosts(new DummyCharm("Charm"), new ICostAnalyzer() { //$NON-NLS-1$
+    assertEquals(15, costs.getCharmCosts(new DummyCharm("Charm"), new ICostAnalyzer() {
       @Override
       public boolean isOccultFavored() {
         return true;
@@ -210,7 +210,7 @@ public class ExperienceTemplateParserTest {
   public void testFavoredHighLevelMartialArtsCost() throws Exception {
     Element element = createElement();
     GenericExperiencePointCosts costs = parser.parseTemplate(element);
-    assertEquals(13, costs.getCharmCosts(new DummyCharm("Charm"), new ICostAnalyzer() { //$NON-NLS-1$
+    assertEquals(13, costs.getCharmCosts(new DummyCharm("Charm"), new ICostAnalyzer() {
       @Override
       public boolean isOccultFavored() {
         return true;

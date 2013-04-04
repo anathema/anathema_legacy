@@ -14,11 +14,11 @@ public class YesNoDialogButtonConfiguration extends DialogButtonConfiguration {
 
   @Override
   public IActionConfiguration getCancelActionConfiguration() {
-    return new ActionConfiguration(resources.getString("AnathemaCore.Tools.Question.Cancel")); //$NON-NLS-1$
+    return new ActionConfiguration(resources.getString("AnathemaCore.Tools.Question.Cancel"));
   }
 
   @Override
   public IActionConfiguration getOkActionConfiguration() {
-    return new ActionConfiguration(resources.getString("AnathemaCore.Tools.Question.Okay")); //$NON-NLS-1$
+    return new ActionConfiguration(resources.getString("AnathemaCore.Tools.Question.Okay"));
   }
 }

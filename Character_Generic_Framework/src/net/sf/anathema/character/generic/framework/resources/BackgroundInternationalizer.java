@@ -5,7 +5,7 @@ import net.sf.anathema.character.generic.impl.backgrounds.CustomizedBackgroundTe
 import net.sf.anathema.lib.resources.Resources;
 
 public class BackgroundInternationalizer {
-  private static final String BACKGROUND_TYPE_RESOURCE_KEY_PREFIX = "BackgroundType.Name."; //$NON-NLS-1$
+  private static final String BACKGROUND_TYPE_RESOURCE_KEY_PREFIX = "BackgroundType.Name.";
   private final Resources resources;
 
   public BackgroundInternationalizer(Resources resources) {

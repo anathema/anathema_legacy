@@ -22,19 +22,19 @@ public class ResplendentDestinyEncoder implements ContentEncoder {
   @Override
   public void encode(SheetGraphics graphics, ReportSession reportSession, Bounds bounds) throws DocumentException {
     int yPosition = (int) (bounds.getMaxY() - lineHeight);
-    graphics.drawLabelledContent(getLabel("Label.College"), null, new Position(bounds.x, yPosition), bounds.width); //$NON-NLS-1$
+    graphics.drawLabelledContent(getLabel("Label.College"), null, new Position(bounds.x, yPosition), bounds.width);
     yPosition -= lineHeight;
-    graphics.drawLabelledContent(getLabel("Label.Name"), null, new Position(bounds.x, yPosition), bounds.width); //$NON-NLS-1$
+    graphics.drawLabelledContent(getLabel("Label.Name"), null, new Position(bounds.x, yPosition), bounds.width);
     yPosition -= lineHeight;
-    graphics.drawLabelledContent(getLabel("Label.EffectDice"), null, new Position(bounds.x, yPosition), bounds.width); //$NON-NLS-1$
+    graphics.drawLabelledContent(getLabel("Label.EffectDice"), null, new Position(bounds.x, yPosition), bounds.width);
     yPosition -= lineHeight;
-    graphics.drawLabelledContent(getLabel("Label.Duration"), null, new Position(bounds.x, yPosition), bounds.width); //$NON-NLS-1$
+    graphics.drawLabelledContent(getLabel("Label.Duration"), null, new Position(bounds.x, yPosition), bounds.width);
     yPosition -= lineHeight;
-    graphics.drawLabelledContent(getLabel("Label.Effects"), null, new Position(bounds.x, yPosition), bounds.width); //$NON-NLS-1$
+    graphics.drawLabelledContent(getLabel("Label.Effects"), null, new Position(bounds.x, yPosition), bounds.width);
     yPosition -= lineHeight;
     encodeLines(graphics, bounds, new Position(bounds.x, yPosition), 4);
     yPosition -= 4 * lineHeight;
-    graphics.drawLabelledContent(getLabel("Label.Trappings"), null, new Position(bounds.x, yPosition), bounds.width); //$NON-NLS-1$
+    graphics.drawLabelledContent(getLabel("Label.Trappings"), null, new Position(bounds.x, yPosition), bounds.width);
     yPosition -= lineHeight;
     encodeLines(graphics, bounds, new Position(bounds.x, yPosition), 5);
   }
@@ -46,7 +46,7 @@ public class ResplendentDestinyEncoder implements ContentEncoder {
   }
 
   protected final String getLabel(String key) {
-    return resources.getString("Sheet.ResplendentDestiny." + key) + ":"; //$NON-NLS-1$ //$NON-NLS-2$
+    return resources.getString("Sheet.ResplendentDestiny." + key) + ":";
   }
 
   @Override

@@ -25,7 +25,7 @@ public class MutationContent extends AbstractSubBoxContent implements ListSubBox
 
   @Override
   public String getHeaderKey() {
-    return "Mutations"; //$NON-NLS-1$
+    return "Mutations";
   }
 
   @Override
@@ -41,7 +41,7 @@ public class MutationContent extends AbstractSubBoxContent implements ListSubBox
     IQualitySelection<IMutation>[] mutations = model.getSelectedQualities();
     for (IQualitySelection<IMutation> mutation : mutations) {
       Identified quality = mutation.getQuality();
-      printMutations.add(getResources().getString("Mutations.Mutation." + quality.getId())); //$NON-NLS-1$
+      printMutations.add(getResources().getString("Mutations.Mutation." + quality.getId()));
     }
     return printMutations;
   }

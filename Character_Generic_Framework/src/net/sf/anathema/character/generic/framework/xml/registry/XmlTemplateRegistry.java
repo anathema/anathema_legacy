@@ -55,7 +55,7 @@ public class XmlTemplateRegistry<T> implements IXmlTemplateRegistry<T> {
       @Override
       public InputStream openDocument() throws Exception {
         InputStream resourceAsStream = XmlTemplateRegistry.class.getClassLoader().getResourceAsStream(
-                prefix + "data/" + id); //$NON-NLS-1$
+                prefix + "data/" + id);
         if (resourceAsStream == null) {
           resourceAsStream = XmlTemplateRegistry.class.getClassLoader().getResourceAsStream(id);
         }
@@ -81,7 +81,7 @@ public class XmlTemplateRegistry<T> implements IXmlTemplateRegistry<T> {
     }
     Preconditions.checkNotNull(templateParser);
     if (idsInProgress.contains(id)) {
-      throw new PersistenceException("Illegal recursion in template file:" + id); //$NON-NLS-1$
+      throw new PersistenceException("Illegal recursion in template file:" + id);
     }
     idsInProgress.add(id);
     Document document = readDocument(id, opener);

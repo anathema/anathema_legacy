@@ -21,7 +21,7 @@ public class ModelViewMapping implements IModelViewMapping {
 
   @Override
   public synchronized void addModelAndView(IItem model, final IItemView view) {
-    Preconditions.checkArgument(!viewByModel.containsKey(model), "Model already managed."); //$NON-NLS-1$
+    Preconditions.checkArgument(!viewByModel.containsKey(model), "Model already managed.");
     modelByView.put(view, model);
     IItemListener listener = new IItemListener() {
       @Override

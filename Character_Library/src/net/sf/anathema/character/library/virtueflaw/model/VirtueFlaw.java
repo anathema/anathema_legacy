@@ -17,7 +17,7 @@ public class VirtueFlaw implements IVirtueFlaw {
 
   private ITraitType root;
   private IDefaultTrait limitTrait;
-  private final ITextualDescription name = new SimpleTextualDescription(""); //$NON-NLS-1$
+  private final ITextualDescription name = new SimpleTextualDescription("");
   private final Announcer<IChangeListener> control = Announcer.to(IChangeListener.class);
   private final ICharacterModelContext context;
 

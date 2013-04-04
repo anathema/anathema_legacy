@@ -43,7 +43,7 @@ public class TableOfContentsPrinter {
     float yCoordinate = document.top() - 35;
     yCoordinate -= 15;
     for (ContentEntry entry : entryList) {
-      seriesUtils.textLine(writer.getDirectContent(), yCoordinate, document.left(), document.right(), ".", //$NON-NLS-1$
+      seriesUtils.textLine(writer.getDirectContent(), yCoordinate, document.left(), document.right(), ".",
               reportUtils.createDefaultFont(11, Font.NORMAL),
               entry.getText(),
               entry.getPageAsString(),

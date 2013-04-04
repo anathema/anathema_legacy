@@ -33,13 +33,13 @@ public class RepositoryItemDeletionPresenter implements Presenter {
 
   @Override
   public void initPresentation() {
-    final SmartAction action = new SmartAction(resources.getString("AnathemaCore.Tools.RepositoryView.DeleteName"), //$NON-NLS-1$
+    final SmartAction action = new SmartAction(resources.getString("AnathemaCore.Tools.RepositoryView.DeleteName"),
         new FileUi().getRemoveFileIcon()) {
 
       @Override
       protected void execute(Component parentComponent) {
-        String message = resources.getString("AnathemaCore.Tools.RepositoryView.DeleteMessage"); //$NON-NLS-1$
-        String okButton = resources.getString("AnathemaCore.Tools.RepositoryView.DeleteOk"); //$NON-NLS-1$
+        String message = resources.getString("AnathemaCore.Tools.RepositoryView.DeleteMessage");
+        String okButton = resources.getString("AnathemaCore.Tools.RepositoryView.DeleteOk");
         ConfigurableVetor vetor = new ConfigurableVetor(parentComponent, message, okButton);
         if (vetor.vetos()) {
           return;
@@ -47,16 +47,16 @@ public class RepositoryItemDeletionPresenter implements Presenter {
         try {
           int itemCount = repositoryModel.getPrintNameFilesInSelection().length;
           repositoryModel.deleteSelection();
-          messaging.addMessage("AnathemaCore.Tools.RepositoryView.DeleteDoneMessage", itemCount); //$NON-NLS-1$
+          messaging.addMessage("AnathemaCore.Tools.RepositoryView.DeleteDoneMessage", itemCount);
         }
         catch (RepositoryException e) {
           MessageDialogFactory.showMessageDialog(parentComponent, new Message(
-              resources.getString("AnathemaCore.Tools.RepositoryView.RepositoryError"), e)); //$NON-NLS-1$
+              resources.getString("AnathemaCore.Tools.RepositoryView.RepositoryError"), e));
           Logger.getLogger(getClass()).error(e);
         }
       }
     };
-    action.setToolTipText(resources.getString("AnathemaCore.Tools.RepositoryView.DeleteToolTip")); //$NON-NLS-1$
+    action.setToolTipText(resources.getString("AnathemaCore.Tools.RepositoryView.DeleteToolTip"));
     treeView.addActionButton(action);
     repositoryModel.addTreeSelectionChangeListener(new IChangeListener() {
       @Override

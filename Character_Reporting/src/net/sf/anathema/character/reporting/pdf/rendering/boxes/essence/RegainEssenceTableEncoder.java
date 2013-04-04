@@ -58,7 +58,7 @@ public class RegainEssenceTableEncoder implements ITableEncoder<RegainEssenceCon
     return table;
   }
 
-  private final void addHeader(SheetGraphics graphics, PdfPTable table, RegainEssenceContent content) {
+  private void addHeader(SheetGraphics graphics, PdfPTable table, RegainEssenceContent content) {
     PdfPCell spaceCell = createSpaceCell(graphics);
     Font font = getDefaultFont(graphics);
     table.addCell(spaceCell);
@@ -97,12 +97,12 @@ public class RegainEssenceTableEncoder implements ITableEncoder<RegainEssenceCon
   }
 
   private PdfPCell createSpaceCell(SheetGraphics graphics) {
-    PdfPCell spaceCell = new PdfPCell(new Phrase(" ", getDefaultFont(graphics))); //$NON-NLS-1$
+    PdfPCell spaceCell = new PdfPCell(new Phrase(" ", getDefaultFont(graphics)));
     spaceCell.setBorder(HEADER_BORDER);
     return spaceCell;
   }
 
-  private final Font getDefaultFont(SheetGraphics graphics) {
+  private Font getDefaultFont(SheetGraphics graphics) {
     return graphics.createTableFont();
   }
 

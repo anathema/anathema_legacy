@@ -138,7 +138,7 @@ public class SpecialCharmManager implements ISpecialCharmManager {
   private void addSpecialCharmConfiguration(final ICharm charm, final ILearningCharmGroup group, final ISpecialCharmConfiguration configuration,
                                             boolean learnListener, final boolean forgetAtZero) {
     if (specialConfigurationsByCharm.containsKey(charm)) {
-      throw new IllegalArgumentException("Special configuration already defined for charm " + charm.getId()); //$NON-NLS-1$
+      throw new IllegalArgumentException("Special configuration already defined for charm " + charm.getId());
     }
     specialConfigurationsByCharm.put(charm, configuration);
     if (learnListener) {

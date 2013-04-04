@@ -16,28 +16,28 @@ import java.util.Map;
 public class ExperienceTemplateParser extends AbstractXmlTemplateParser<GenericExperiencePointCosts> {
 
   private static final String ATTRIB_KEYWORD = "keyword";
-  private static final String ATTRIB_FAVORED = "favored"; //$NON-NLS-1$
-  private static final String ATTRIB_GENERAL = "general"; //$NON-NLS-1$
-  private static final String ATTRIB_INITIALCOST = "initialCosts"; //$NON-NLS-1$
-  private static final String ATTRIB_MULTIPLIER = "multiplier"; //$NON-NLS-1$
-  private static final String ATTRIB_SUMMAND = "summand"; //$NON-NLS-1$
+  private static final String ATTRIB_FAVORED = "favored";
+  private static final String ATTRIB_GENERAL = "general";
+  private static final String ATTRIB_INITIALCOST = "initialCosts";
+  private static final String ATTRIB_MULTIPLIER = "multiplier";
+  private static final String ATTRIB_SUMMAND = "summand";
   private static final String ATTRIB_COST = "cost";
 
-  private static final String TAG_ATTRIBUTES = "attributes"; //$NON-NLS-1$
-  private static final String TAG_GENERAL_COSTS = "generalCosts"; //$NON-NLS-1$
-  private static final String TAG_CURRENT_RATING_COSTS = "currentRating"; //$NON-NLS-1$
-  private static final String TAG_ABILITIES = "abilities"; //$NON-NLS-1$
-  private static final String TAG_FAVORED_COSTS = "favoredCosts"; //$NON-NLS-1$
-  private static final String TAG_SPECIALTIES = "specialties"; //$NON-NLS-1$
-  private static final String TAG_ADVANTAGES = "advantages"; //$NON-NLS-1$
-  private static final String TAG_WILLPOWER = "willpower"; //$NON-NLS-1$
-  private static final String TAG_VIRTUE = "virtues"; //$NON-NLS-1$
-  private static final String TAG_ESSENCE = "essence"; //$NON-NLS-1$
-  private static final String TAG_MAGIC = "magic"; //$NON-NLS-1$
-  private static final String TAG_CHARMS = "charms"; //$NON-NLS-1$
-  private static final String TAG_SPELLS = "spells"; //$NON-NLS-1$
+  private static final String TAG_ATTRIBUTES = "attributes";
+  private static final String TAG_GENERAL_COSTS = "generalCosts";
+  private static final String TAG_CURRENT_RATING_COSTS = "currentRating";
+  private static final String TAG_ABILITIES = "abilities";
+  private static final String TAG_FAVORED_COSTS = "favoredCosts";
+  private static final String TAG_SPECIALTIES = "specialties";
+  private static final String TAG_ADVANTAGES = "advantages";
+  private static final String TAG_WILLPOWER = "willpower";
+  private static final String TAG_VIRTUE = "virtues";
+  private static final String TAG_ESSENCE = "essence";
+  private static final String TAG_MAGIC = "magic";
+  private static final String TAG_CHARMS = "charms";
+  private static final String TAG_SPELLS = "spells";
   private static final String TAG_KEYWORD_CHARMS = "keywordCharms";
-  private static final String TAG_MARTIAL_ARTS = "highLevelMartialArts"; //$NON-NLS-1$
+  private static final String TAG_MARTIAL_ARTS = "highLevelMartialArts";
   private static final String TAG_BACKGROUNDS = "backgrounds";
   private final CostParser costParser = new CostParser();
   private final MartialArtsLevel standardLevel;

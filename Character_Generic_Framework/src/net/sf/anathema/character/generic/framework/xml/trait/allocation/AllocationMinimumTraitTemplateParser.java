@@ -15,9 +15,9 @@ import java.util.List;
 
 public class AllocationMinimumTraitTemplateParser
 {
-  private static final String ATTRIB_COUNT = "count"; //$NON-NLS-1$
-  private static final String TAG_TRAIT = "trait"; //$NON-NLS-1$
-  private static final String ATTRIB_ID = "id"; //$NON-NLS-1$
+  private static final String ATTRIB_COUNT = "count";
+  private static final String TAG_TRAIT = "trait";
+  private static final String ATTRIB_ID = "id";
   private static final String TAG_FREEBIE = "isFreebie";
   private static final String ATTRIB_START_VALUE = "startValue";
   private final ITraitTypeGroup traitTypeGroup;

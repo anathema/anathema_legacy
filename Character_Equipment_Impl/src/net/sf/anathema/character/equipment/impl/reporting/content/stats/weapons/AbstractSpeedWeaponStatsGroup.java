@@ -12,7 +12,7 @@ public abstract class AbstractSpeedWeaponStatsGroup extends AbstractValueEquipme
   private final ICharacterStatsModifiers equipment;
 
   public AbstractSpeedWeaponStatsGroup(Resources resources, ICharacterStatsModifiers equipment) {
-    super(resources, "Speed"); //$NON-NLS-1$
+    super(resources, "Speed");
     this.equipment = equipment;
   }
 

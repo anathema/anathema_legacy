@@ -9,7 +9,7 @@ public class SelectiveCharmGroupTemplate {
   private final String label;
 
   public SelectiveCharmGroupTemplate(String[] groupCharmIds, int threshold, String label) {
-    Preconditions.checkArgument(groupCharmIds.length > 0, "No selective charm groups without charms."); //$NON-NLS-1$
+    Preconditions.checkArgument(groupCharmIds.length > 0, "No selective charm groups without charms.");
     this.groupCharmIds = groupCharmIds;
     this.threshold = threshold;
     this.label = label;

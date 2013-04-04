@@ -242,13 +242,13 @@ public class CharmConfiguration implements ICharmConfiguration {
   }
 
   private ICharacterType getCharacterType(String charmId) {
-    String characterType = charmId.substring(0, charmId.indexOf(".")); //$NON-NLS-1$
+    String characterType = charmId.substring(0, charmId.indexOf("."));
     for (ICharacterType type : types) {
       if (type.getId().equals(characterType)) {
         return type;
       }
     }
-    throw new IllegalArgumentException("Charm Id did not contain a valid character type"); //$NON-NLS-1$
+    throw new IllegalArgumentException("Charm Id did not contain a valid character type");
   }
 
   @Override
@@ -276,7 +276,7 @@ public class CharmConfiguration implements ICharmConfiguration {
         return charm;
       }
     }
-    throw new IllegalArgumentException("No charm found for id \"" + charmId + "\""); //$NON-NLS-1$ //$NON-NLS-2$
+    throw new IllegalArgumentException("No charm found for id \"" + charmId + "\"");
   }
 
   private ICharmIdMap getCharmTree(Identified type) {
@@ -586,7 +586,7 @@ public class CharmConfiguration implements ICharmConfiguration {
         return group;
       }
     }
-    throw new IllegalArgumentException("No charm group defined for Id: " + groupId + "," + characterType); //$NON-NLS-1$ //$NON-NLS-2$
+    throw new IllegalArgumentException("No charm group defined for Id: " + groupId + "," + characterType);
   }
 
   @Override

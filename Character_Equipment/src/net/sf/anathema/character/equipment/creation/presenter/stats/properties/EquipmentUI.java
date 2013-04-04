@@ -13,10 +13,10 @@ public class EquipmentUI extends AbstractUI {
   }
 
   public Icon getIcon(EquipmentStatisticsType type) {
-    return getIcon(getIconName(type)); //$NON-NLS-1$
+    return getIcon(getIconName(type));
   }
 
   public Icon getRefreshIcon() {
-    return getIcon("icons/ButtonRefresh16.png"); //$NON-NLS-1$
+    return getIcon("icons/ButtonRefresh16.png");
   }
 }

@@ -15,7 +15,7 @@ public class AnathemaAboutAction extends SmartAction {
 
   public static Action createMenuAction(Resources resources) {
     SmartAction action = new AnathemaAboutAction(resources);
-    action.setName(resources.getString("Help.AboutDialog.Title")); //$NON-NLS-1$
+    action.setName(resources.getString("Help.AboutDialog.Title"));
     return action;
   }
 
@@ -23,10 +23,11 @@ public class AnathemaAboutAction extends SmartAction {
     this.resources = resources;
   }
 
+  @SuppressWarnings("unchecked")
   @Override
   protected void execute(Component parentComponent) {
     IDialogPage page = new AboutDialogPage(resources);
-    DefaultDialogConfiguration dialogConfiguration = DefaultDialogConfiguration.createWithOkOnly(page);
+    DefaultDialogConfiguration<IDialogPage> dialogConfiguration = DefaultDialogConfiguration.createWithOkOnly(page);
     UserDialog dialog = new UserDialog(parentComponent, dialogConfiguration);
     dialog.show();
   }

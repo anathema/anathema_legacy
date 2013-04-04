@@ -13,11 +13,11 @@ import org.dom4j.Element;
 
 public class VirtueFlawPersister implements IAdditionalPersister {
 
-  public static final String TAG_ROOT_VIRTUE = "RootVirtue"; //$NON-NLS-1$
-  public static final String TAG_VIRTUE_FLAW = "VirtueFlaw"; //$NON-NLS-1$
-  public static final String TAG_NAME = "Name"; //$NON-NLS-1$
+  public static final String TAG_ROOT_VIRTUE = "RootVirtue";
+  public static final String TAG_VIRTUE_FLAW = "VirtueFlaw";
+  public static final String TAG_NAME = "Name";
   public static final String TAG_LIMIT = "Limit";
-  public static final String ATTRIB_NAME = "name"; //$NON-NLS-1$
+  public static final String ATTRIB_NAME = "name";
   private final TextPersister textPersister = new TextPersister();
   private final TraitPersister traitPersister = new TraitPersister();
 

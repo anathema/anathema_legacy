@@ -22,8 +22,8 @@ public class LongestPathLayererTest {
 
   @Test
   public void testLayerSingleChild() throws Exception {
-    IRegularNode leaf = NodeFactory.createChildlessNode("leaf"); //$NON-NLS-1$
-    IRegularNode root = new IdentifiedRegularNode("root", leaf); //$NON-NLS-1$
+    IRegularNode leaf = NodeFactory.createChildlessNode("leaf");
+    IRegularNode root = new IdentifiedRegularNode("root", leaf);
     IRegularNode[] acyclicGraph = new IRegularNode[]{leaf, root};
     int deepestLayer = layerer.layerGraph(acyclicGraph);
     assertEquals(2, deepestLayer);
@@ -33,9 +33,9 @@ public class LongestPathLayererTest {
 
   @Test
   public void testLayerDualChild() throws Exception {
-    IRegularNode leaf1 = NodeFactory.createChildlessNode("leaf1"); //$NON-NLS-1$
-    IRegularNode leaf2 = NodeFactory.createChildlessNode("leaf2"); //$NON-NLS-1$
-    IRegularNode root = new IdentifiedRegularNode("root", leaf1, leaf2); //$NON-NLS-1$
+    IRegularNode leaf1 = NodeFactory.createChildlessNode("leaf1");
+    IRegularNode leaf2 = NodeFactory.createChildlessNode("leaf2");
+    IRegularNode root = new IdentifiedRegularNode("root", leaf1, leaf2);
     IRegularNode[] acyclicGraph = new IRegularNode[]{leaf1, leaf2, root};
     int deepestLayer = layerer.layerGraph(acyclicGraph);
     assertEquals(2, deepestLayer);
@@ -47,10 +47,10 @@ public class LongestPathLayererTest {
   @Test
   @Ignore(value = "Apparently this optimization leads to questionable results.")
   public void testLayerDualRootDualChild() throws Exception {
-    IRegularNode leaf1 = NodeFactory.createChildlessNode("leaf1"); //$NON-NLS-1$
-    IRegularNode leaf2 = NodeFactory.createChildlessNode("leaf2"); //$NON-NLS-1$
-    IRegularNode root1 = new IdentifiedRegularNode("root1", leaf1, leaf2); //$NON-NLS-1$
-    IRegularNode root2 = new IdentifiedRegularNode("root2", leaf1, leaf2); //$NON-NLS-1$
+    IRegularNode leaf1 = NodeFactory.createChildlessNode("leaf1");
+    IRegularNode leaf2 = NodeFactory.createChildlessNode("leaf2");
+    IRegularNode root1 = new IdentifiedRegularNode("root1", leaf1, leaf2);
+    IRegularNode root2 = new IdentifiedRegularNode("root2", leaf1, leaf2);
     IRegularNode[] acyclicGraph = new IRegularNode[]{leaf1, leaf2, root1, root2};
     connect(acyclicGraph);
     int deepestLayer = layerer.layerGraph(acyclicGraph);
@@ -73,11 +73,11 @@ public class LongestPathLayererTest {
 
   @Test
   public void testLayerDualRootTripleChild() throws Exception {
-    IRegularNode leaf1 = NodeFactory.createChildlessNode("leaf1"); //$NON-NLS-1$
-    IRegularNode leaf2 = NodeFactory.createChildlessNode("leaf2"); //$NON-NLS-1$
-    IRegularNode leaf3 = NodeFactory.createChildlessNode("leaf3"); //$NON-NLS-1$
-    IRegularNode root1 = new IdentifiedRegularNode("root1", leaf1, leaf2, leaf3); //$NON-NLS-1$
-    IRegularNode root2 = new IdentifiedRegularNode("root2", leaf1, leaf2, leaf3); //$NON-NLS-1$
+    IRegularNode leaf1 = NodeFactory.createChildlessNode("leaf1");
+    IRegularNode leaf2 = NodeFactory.createChildlessNode("leaf2");
+    IRegularNode leaf3 = NodeFactory.createChildlessNode("leaf3");
+    IRegularNode root1 = new IdentifiedRegularNode("root1", leaf1, leaf2, leaf3);
+    IRegularNode root2 = new IdentifiedRegularNode("root2", leaf1, leaf2, leaf3);
     IRegularNode[] acyclicGraph = new IRegularNode[]{leaf1, leaf2, leaf3, root1, root2};
     connect(acyclicGraph);
     int deepestLayer = layerer.layerGraph(acyclicGraph);

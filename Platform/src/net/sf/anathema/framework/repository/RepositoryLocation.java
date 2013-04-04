@@ -20,7 +20,7 @@ public class RepositoryLocation implements IItemRepositoryLocation {
 
   @Override
   public synchronized void setId(String id) {
-    Preconditions.checkArgument(this.id == null, "Item's id must not be changed."); //$NON-NLS-1$
+    Preconditions.checkArgument(this.id == null, "Item's id must not be changed.");
     this.id = id;
   }
 

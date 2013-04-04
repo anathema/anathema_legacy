@@ -10,7 +10,7 @@ import net.sf.anathema.lib.resources.Resources;
 public class HardnessStatsGroup extends AbstractValueEquipmentStatsGroup<IArmourStats> implements IArmourStatsGroup {
 
   public HardnessStatsGroup(Resources resources) {
-    super(resources, "Hardness"); //$NON-NLS-1$
+    super(resources, "Hardness");
   }
 
   @Override
@@ -37,11 +37,11 @@ public class HardnessStatsGroup extends AbstractValueEquipmentStatsGroup<IArmour
 
   @Override
   protected String getZeroPrefix() {
-    return ""; //$NON-NLS-1$
+    return "";
   }
 
   @Override
   protected String getPositivePrefix() {
-    return ""; //$NON-NLS-1$
+    return "";
   }
 }

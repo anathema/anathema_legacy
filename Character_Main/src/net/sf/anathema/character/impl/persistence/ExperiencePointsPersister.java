@@ -9,9 +9,9 @@ import org.dom4j.Element;
 
 public class ExperiencePointsPersister {
 
-  private static final String ATTRIB_POINTS = "points"; //$NON-NLS-1$
-  private static final String TAG_ENTRY = "Entry"; //$NON-NLS-1$
-  private static final String TAG_EXPERIENCE = "Experience"; //$NON-NLS-1$
+  private static final String ATTRIB_POINTS = "points";
+  private static final String TAG_ENTRY = "Entry";
+  private static final String TAG_EXPERIENCE = "Experience";
 
   private final TextPersister textPersister = new TextPersister();
 

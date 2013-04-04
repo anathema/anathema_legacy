@@ -34,7 +34,7 @@ public abstract class AbstractSelectCellRenderer<T> extends DefaultListCellRende
   }
 
   protected String getNullValue() {
-    return resources.getString("ComboBox.SelectLabel"); //$NON-NLS-1$
+    return resources.getString("ComboBox.SelectLabel");
   }
 
   protected abstract String getCustomizedDisplayValue(T value);

@@ -24,7 +24,7 @@ public class GhostPassionContent extends AbstractSubBoxContent {
 
   @Override
   public String getHeaderKey() {
-    return "Ghost.Passions"; //$NON-NLS-1$
+    return "Ghost.Passions";
   }
 
   public List<NamedValue> getPrintPassions() {

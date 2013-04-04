@@ -13,7 +13,7 @@ public class ShowPreferencesAction extends SmartAction {
 
   public static Action createMenuAction(Resources resources, IPreferencesElement[] elements) {
     SmartAction action = new ShowPreferencesAction(resources, elements);
-    action.setName(resources.getString("AnathemaCore.Tools.Preferences.Name") + "\u2026"); //$NON-NLS-1$ //$NON-NLS-2$
+    action.setName(resources.getString("AnathemaCore.Tools.Preferences.Name") + "\u2026");
     return action;
   }
 
@@ -52,7 +52,6 @@ public class ShowPreferencesAction extends SmartAction {
             }
             else {
               confirmed = false;
-              continue;
             }
           }
         }
@@ -65,7 +64,7 @@ public class ShowPreferencesAction extends SmartAction {
       }
     }
     if (dirty) {
-      JOptionPane.showMessageDialog(parentComponent, resources.getString("AnathemaCore.Tools.Preferences.Restart")); //$NON-NLS-1$
+      JOptionPane.showMessageDialog(parentComponent, resources.getString("AnathemaCore.Tools.Preferences.Restart"));
     }
   }
 }

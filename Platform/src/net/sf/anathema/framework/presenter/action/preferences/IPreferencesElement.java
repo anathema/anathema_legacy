@@ -12,7 +12,7 @@ import static net.sf.anathema.framework.presenter.action.preferences.IAnathemaPr
 public interface IPreferencesElement {
 
   Preferences SYSTEM_PREFERENCES = Preferences.userRoot().node(SYSTEM_PREFERENCES_NODE);
-  Identified SYSTEM_CATEGORY = new Identifier("System"); //$NON-NLS-1$
+  Identified SYSTEM_CATEGORY = new Identifier("System");
 
   void savePreferences();
   

@@ -49,6 +49,7 @@ public class SwingFrame implements ISwingFrameOrDialog {
     return frame.getContentPane();
   }
 
+  @SuppressWarnings("MagicConstant")
   @Override
   public void setDefaultCloseOperation(int closeOperation) {
     frame.setDefaultCloseOperation(closeOperation);
@@ -116,7 +117,7 @@ public class SwingFrame implements ISwingFrameOrDialog {
             ((MenuComponent) source).dispatchEvent(event);
           }
           else {
-            System.err.println("Unable to dispatch: " + event); //$NON-NLS-1$
+            System.err.println("Unable to dispatch: " + event);
           }
         }
       }

@@ -11,14 +11,14 @@ public class SpellMapper implements ISpellMapper {
   private final Map<String, String> spellMap2e = new HashMap<>();
 
   public SpellMapper() {
-    spellMap2e.put("Terrestrial.DragonSmokeSerpentFlame", "Terrestrial.DragonSmokeFlame"); //$NON-NLS-1$ //$NON-NLS-2$
-    spellMap2e.put("Celestial.GeyserCorruption", "Celestial.GeyserCorrosion"); //$NON-NLS-1$ //$NON-NLS-2$
-    spellMap2e.put("Shadowlands.InvisibleDoorway", "Shadowlands.DoorDead"); //$NON-NLS-1$ //$NON-NLS-2$
-    spellMap2e.put("Shadowlands.RingingHunRebuke", "Shadowlands.RingingRebuke"); //$NON-NLS-1$ //$NON-NLS-2$
-    spellMap2e.put("Labyrinth.BanefulSun", "Labyrinth.BanefulSunShadow"); //$NON-NLS-1$ //$NON-NLS-2$
-    spellMap2e.put("Labyrinth.BlackVial", "Labyrinth.BlackVialMedicine"); //$NON-NLS-1$ //$NON-NLS-2$
-    spellMap2e.put("Labyrinth.WhiteShard", "Labyrinth.WhiteShardFuneral"); //$NON-NLS-1$ //$NON-NLS-2$
-    spellMap2e.put("Void.BlackstormWagon", "Void.BlackstormCoffle"); //$NON-NLS-1$ //$NON-NLS-2$
+    spellMap2e.put("Terrestrial.DragonSmokeSerpentFlame", "Terrestrial.DragonSmokeFlame");
+    spellMap2e.put("Celestial.GeyserCorruption", "Celestial.GeyserCorrosion");
+    spellMap2e.put("Shadowlands.InvisibleDoorway", "Shadowlands.DoorDead");
+    spellMap2e.put("Shadowlands.RingingHunRebuke", "Shadowlands.RingingRebuke");
+    spellMap2e.put("Labyrinth.BanefulSun", "Labyrinth.BanefulSunShadow");
+    spellMap2e.put("Labyrinth.BlackVial", "Labyrinth.BlackVialMedicine");
+    spellMap2e.put("Labyrinth.WhiteShard", "Labyrinth.WhiteShardFuneral");
+    spellMap2e.put("Void.BlackstormWagon", "Void.BlackstormCoffle");
   }
 
   @Override

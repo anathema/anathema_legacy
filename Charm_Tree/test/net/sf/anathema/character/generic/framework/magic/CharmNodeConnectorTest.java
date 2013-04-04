@@ -33,8 +33,8 @@ public class CharmNodeConnectorTest {
 
   @Test
   public void testSingleParentOnlyChild() throws Exception {
-    String parentName = "Parent";//$NON-NLS-1$
-    String childName = "Child"; //$NON-NLS-1$
+    String parentName = "Parent";
+    String childName = "Child";
     DummyCharm parent = new DummyCharm(parentName);
     DummyCharm child = new DummyCharm(childName, new ICharm[]{parent});
     list.add(child);
@@ -49,9 +49,9 @@ public class CharmNodeConnectorTest {
 
   @Test
   public void testSingleParentMultiChild() throws Exception {
-    String parentName = "Parent";//$NON-NLS-1$
-    String firstChildName = "Child1"; //$NON-NLS-1$
-    String secondChildName = "Child2"; //$NON-NLS-1$
+    String parentName = "Parent";
+    String firstChildName = "Child1";
+    String secondChildName = "Child2";
     DummyCharm parent = new DummyCharm(parentName);
     DummyCharm firstChild = new DummyCharm(firstChildName, new ICharm[]{parent});
     DummyCharm secondChild = new DummyCharm(secondChildName, new ICharm[]{parent});
@@ -75,13 +75,13 @@ public class CharmNodeConnectorTest {
 
   @Test
   public void testAttributeNodeConnection() throws Exception {
-    String charmName = "One Attribute"; //$NON-NLS-1$
+    String charmName = "One Attribute";
     DummyCharm charm = new DummyCharm(charmName);
-    charm.addAttributeRequirement(new CharmAttributeRequirement(new CharmAttribute("Attribute", true), 2)); //$NON-NLS-1$
+    charm.addAttributeRequirement(new CharmAttributeRequirement(new CharmAttribute("Attribute", true), 2));
     IIdentifiedRegularNode charmNode = NodeFactory.createChildlessNode(charmName);
     list.add(charm);
     nodes.put(charmName, charmNode);
-    String attributeId = "Requirement.Attribute.2"; //$NON-NLS-1$
+    String attributeId = "Requirement.Attribute.2";
     nodes.put(attributeId, NodeFactory.createChildlessNode(attributeId));
     connectNodes();
     assertEquals(2, nodes.size());

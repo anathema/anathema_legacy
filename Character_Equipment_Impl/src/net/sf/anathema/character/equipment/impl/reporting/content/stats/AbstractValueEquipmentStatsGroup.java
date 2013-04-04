@@ -13,6 +13,6 @@ public abstract class AbstractValueEquipmentStatsGroup<T extends IEquipmentStats
 
   @Override
   protected String getHeaderResourceBase() {
-    return "Sheet.Equipment.Header."; //$NON-NLS-1$
+    return "Sheet.Equipment.Header.";
   }
 }

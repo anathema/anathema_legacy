@@ -8,7 +8,7 @@ public class RandomChoosingTokenFactory implements INameTokenFactory {
   private String[] tokens;
 
   public RandomChoosingTokenFactory(String[] tokens) {
-    Preconditions.checkArgument(tokens.length > 0, "At least one token must be given."); //$NON-NLS-1$
+    Preconditions.checkArgument(tokens.length > 0, "At least one token must be given.");
     this.tokens = tokens;
   }
 

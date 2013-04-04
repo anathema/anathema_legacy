@@ -47,27 +47,27 @@ public abstract class AbstractMessageTypeUi extends AbstractObjectUi<MessageType
     type.accept(new IMessageTypeVisitor() {
       @Override
       public void visitInformation(MessageType visitedType) {
-        label[0] = LibGuiMessages.getString("MessageTypeUi.information.label"); //$NON-NLS-1$
+        label[0] = LibGuiMessages.getString("MessageTypeUi.information.label");
       }
 
       @Override
       public void visitWarning(MessageType visitedType) {
-        label[0] = LibGuiMessages.getString("MessageTypeUi.warning.label"); //$NON-NLS-1$
+        label[0] = LibGuiMessages.getString("MessageTypeUi.warning.label");
       }
 
       @Override
       public void visitNormal(MessageType visitedType) {
-        label[0] = LibGuiMessages.getString("MessageTypeUi.normal.label"); //$NON-NLS-1$
+        label[0] = LibGuiMessages.getString("MessageTypeUi.normal.label");
       }
 
       @Override
       public void visitError(MessageType visitedType) {
-        label[0] = LibGuiMessages.getString("MessageTypeUi.error.label"); //$NON-NLS-1$
+        label[0] = LibGuiMessages.getString("MessageTypeUi.error.label");
       }
 
       @Override
       public void visitQuestion(MessageType visitedType) {
-        label[0] = LibGuiMessages.getString("MessageTypeUi.question.label"); //$NON-NLS-1$
+        label[0] = LibGuiMessages.getString("MessageTypeUi.question.label");
       }
     });
     return label[0];

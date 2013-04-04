@@ -32,20 +32,17 @@ public final class ComboViewProperties extends AbstractMagicLearnProperties impl
 
   @Override
   public String getAvailableComboCharmsLabel() {
-    return getResources().getString("CardView.CharmConfiguration.ComboCreation.AvailableLabel"); //$NON-NLS-1$
+    return getResources().getString("CardView.CharmConfiguration.ComboCreation.AvailableLabel");
   }
 
   @Override
   public String getComboedCharmsLabel() {
-    return getResources().getString("CardView.CharmConfiguration.ComboCreation.SelectedLabel"); //$NON-NLS-1$
+    return getResources().getString("CardView.CharmConfiguration.ComboCreation.SelectedLabel");
   }
 
   @Override
   public boolean isMagicSelectionAvailable(Object object) {
-    if (object == null) {
-      return false;
-    }
-    return comboConfiguration.isComboLegal((ICharm) object);
+    return object != null && comboConfiguration.isComboLegal((ICharm) object);
   }
 
   @Override
@@ -75,22 +72,22 @@ public final class ComboViewProperties extends AbstractMagicLearnProperties impl
 
   @Override
   public String getFinalizeButtonToolTip() {
-    return getResources().getString("CardView.CharmConfiguration.ComboCreation.FinalizeToolTip"); //$NON-NLS-1$
+    return getResources().getString("CardView.CharmConfiguration.ComboCreation.FinalizeToolTip");
   }
 
   @Override
   public String getClearButtonToolTip() {
     return getResources().getString("CardView.CharmConfiguration.ComboCreation.ClearToolTip");
-  } //$NON-NLS-1$
+  }
 
   @Override
   public String getAddButtonToolTip() {
-    return getResources().getString("CardView.CharmConfiguration.ComboCreation.AddToolTip"); //$NON-NLS-1$
+    return getResources().getString("CardView.CharmConfiguration.ComboCreation.AddToolTip");
   }
 
   @Override
   public String getRemoveButtonToolTip() {
-    return getResources().getString("CardView.CharmConfiguration.ComboCreation.RemoveToolTip"); //$NON-NLS-1$  
+    return getResources().getString("CardView.CharmConfiguration.ComboCreation.RemoveToolTip");
   }
 
   @Override
@@ -100,11 +97,11 @@ public final class ComboViewProperties extends AbstractMagicLearnProperties impl
 
   @Override
   public String getFinalizeButtonEditToolTip() {
-    return getResources().getString("CardView.CharmConfiguration.ComboCreation.FinalizeEditToolTip"); //$NON-NLS-1$  }
+    return getResources().getString("CardView.CharmConfiguration.ComboCreation.FinalizeEditToolTip");
   }
 
   @Override
   public String getCancelButtonEditToolTip() {
-    return getResources().getString("CardView.CharmConfiguration.ComboCreation.ClearEditToolTip"); //$NON-NLS-1$
+    return getResources().getString("CardView.CharmConfiguration.ComboCreation.ClearEditToolTip");
   }
 }

@@ -5,7 +5,7 @@ import net.sf.anathema.lib.util.Identifier;
 
 public class SpecialtiesTemplate extends Identifier implements IGlobalAdditionalTemplate {
 
-  public static final String ID = "Specialties"; //$NON-NLS-1$
+  public static final String ID = "Specialties";
 
   public SpecialtiesTemplate() {
     super(ID);

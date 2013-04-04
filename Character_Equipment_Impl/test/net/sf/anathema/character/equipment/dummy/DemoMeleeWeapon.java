@@ -9,7 +9,6 @@ import net.sf.anathema.character.generic.traits.ITraitType;
 import net.sf.anathema.character.generic.traits.types.AbilityType;
 import net.sf.anathema.character.generic.traits.types.AttributeType;
 import net.sf.anathema.lib.util.Identified;
-import net.sf.anathema.lib.util.Identifier;
 
 public class DemoMeleeWeapon extends AbstractCombatStats implements IWeaponStats {
 
@@ -23,20 +22,6 @@ public class DemoMeleeWeapon extends AbstractCombatStats implements IWeaponStats
   private final int mobility;
   private final WeaponTag[] tags;
   private Identified name;
-
-  public DemoMeleeWeapon() {
-    this(new Identifier("Melee"), //$NON-NLS-1$
-        2,
-        -5,
-        3,
-        1,
-        HealthType.Aggravated,
-        -1,
-        0,
-        6,
-        WeaponTag.ClinchEnhancer,
-        WeaponTag.Piercing);
-  }
 
   public DemoMeleeWeapon(
       Identified name,

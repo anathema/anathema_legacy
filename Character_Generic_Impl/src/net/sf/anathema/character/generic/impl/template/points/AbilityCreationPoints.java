@@ -41,10 +41,10 @@ public class AbilityCreationPoints extends ReflectionCloneableObject<IAbilityCre
 
   @Override
   public String toString() {
-    return "[favored:" //$NON-NLS-1$
-            + getFavorableTraitCount() + ",favoredDots:" //$NON-NLS-1$
-            + getFavoredDotCount() + ",defaultDots:" //$NON-NLS-1$
-            + getDefaultDotCount() + "]"; //$NON-NLS-1$
+    return "[favored:"
+            + getFavorableTraitCount() + ",favoredDots:"
+            + getFavoredDotCount() + ",defaultDots:"
+            + getDefaultDotCount() + "]";
   }
 
   @Override

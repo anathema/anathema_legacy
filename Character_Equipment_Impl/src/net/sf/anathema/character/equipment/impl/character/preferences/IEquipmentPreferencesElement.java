@@ -11,5 +11,5 @@ import static net.sf.anathema.character.equipment.character.preference.IEquipmen
 public interface IEquipmentPreferencesElement extends IPreferencesElement {
 
   Preferences EQUIPMENT_PREFERENCES = Preferences.userRoot().node(EQUIPMENT_PREFERENCES_NODE);
-  Identified EQUIPMENT_CATEGORY = new Identifier("Equipment"); //$NON-NLS-1$
+  Identified EQUIPMENT_CATEGORY = new Identifier("Equipment");
 }

@@ -28,7 +28,7 @@ public class CasteCollection implements ICasteCollection {
         return type;
       }
     }
-    throw new IllegalArgumentException("No caste with found for id " + casteTypeId); //$NON-NLS-1$
+    throw new IllegalArgumentException("No caste with found for id " + casteTypeId);
   }
 
   @Override

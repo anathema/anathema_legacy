@@ -22,20 +22,20 @@ public class QualifiedAmountDuration extends ReflectionEqualsObject implements I
 
   @Override
   public String getText(Resources resources) {
-    String amountText = resources.getString("Charm.Amount." + getAmount()); //$NON-NLS-1$
+    String amountText = resources.getString("Charm.Amount." + getAmount());
     String unitText = resources.getString(getUnitKey());
-    return resources.getString("Charm.QualifiedAmount", amountText, unitText); //$NON-NLS-1$
+    return resources.getString("Charm.QualifiedAmount", amountText, unitText);
   }
 
   private String getUnitKey() {
     try {
       if (Integer.parseInt(getAmount()) == 1) {
-        return "Charm.Unit." + unit + ".Singular"; //$NON-NLS-1$ //$NON-NLS-2$
+        return "Charm.Unit." + unit + ".Singular";
       }
     }
     catch (NumberFormatException e) {
       // Nothing to do
     }
-    return "Charm.Unit." + unit + ".Plural"; //$NON-NLS-1$ //$NON-NLS-2$
+    return "Charm.Unit." + unit + ".Plural";
   }
 }

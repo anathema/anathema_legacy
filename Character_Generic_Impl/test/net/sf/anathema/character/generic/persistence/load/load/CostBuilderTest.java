@@ -28,36 +28,36 @@ public class CostBuilderTest{
   @Test
   public void testValueButNoText() throws Exception {
     Element costElement = getCostElement();
-    costElement.addAttribute("cost", "5"); //$NON-NLS-1$//$NON-NLS-2$
+    costElement.addAttribute("cost", "5");
     ICost cost = builder.buildCost(costElement);
-    assertEquals("5", cost.getCost()); //$NON-NLS-1$
+    assertEquals("5", cost.getCost());
     assertEquals(null, cost.getText());
   }
   @Test
   public void testValueAndText() throws Exception {
     Element costElement = getCostElement();
-    costElement.addAttribute("cost", "7"); //$NON-NLS-1$//$NON-NLS-2$
-    String expectedText = "expectedText"; //$NON-NLS-1$
-    costElement.addAttribute("text", expectedText); //$NON-NLS-1$
+    costElement.addAttribute("cost", "7");
+    String expectedText = "expectedText";
+    costElement.addAttribute("text", expectedText);
     ICost cost = builder.buildCost(costElement);
-    assertEquals("7", cost.getCost()); //$NON-NLS-1$
+    assertEquals("7", cost.getCost());
     assertEquals(expectedText, cost.getText());
   }
   @Test
   public void testNonIntegerValue() throws Exception {
     Element costElement = getCostElement();
-    String expectedText = "10+"; //$NON-NLS-1$
-    costElement.addAttribute("cost", expectedText); //$NON-NLS-1$
+    String expectedText = "10+";
+    costElement.addAttribute("cost", expectedText);
     ICost cost = builder.buildCost(costElement);
     assertEquals(expectedText, cost.getCost());
   }
   @Test
   public void testNonIntegerValueAndText() throws Exception {
     Element costElement = getCostElement();
-    String expectedText1 = "Some motes"; //$NON-NLS-1$
-    String expectedText2 = "and some more"; //$NON-NLS-1$
-    costElement.addAttribute("cost", expectedText1); //$NON-NLS-1$
-    costElement.addAttribute("text", expectedText2); //$NON-NLS-1$
+    String expectedText1 = "Some motes";
+    String expectedText2 = "and some more";
+    costElement.addAttribute("cost", expectedText1);
+    costElement.addAttribute("text", expectedText2);
     ICost cost = builder.buildCost(costElement);
     assertEquals(expectedText1, cost.getCost());
     assertEquals(expectedText2, cost.getText());

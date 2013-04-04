@@ -44,7 +44,7 @@ public class EquipmentItem implements IEquipmentItem {
                        ItemAttunementEvaluator provider, ModifierFactory modifiers) {
     this.modifiers = modifiers;
     if (template.getComposition() == Variable && material == null) {
-      throw new MissingMaterialException("Variable material items must be created with material."); //$NON-NLS-1$
+      throw new MissingMaterialException("Variable material items must be created with material.");
     }
     this.template = template;
     this.material = material != null ? material : template.getMaterial();

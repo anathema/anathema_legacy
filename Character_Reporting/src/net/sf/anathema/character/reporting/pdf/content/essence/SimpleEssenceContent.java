@@ -16,7 +16,7 @@ public class SimpleEssenceContent extends AbstractSubBoxContent {
 
   @Override
   public String getHeaderKey() {
-    return "Essence"; //$NON-NLS-1$
+    return "Essence";
   }
 
   @Override
@@ -53,18 +53,18 @@ public class SimpleEssenceContent extends AbstractSubBoxContent {
   }
 
   public String getPersonalPoolLabel() {
-    return getResources().getString("Sheet.Essence.PersonalPool"); //$NON-NLS-1$
+    return getResources().getString("Sheet.Essence.PersonalPool");
   }
 
   public String getPeripheralPoolLabel() {
-    return getResources().getString("Sheet.Essence.PeripheralPool"); //$NON-NLS-1$
+    return getResources().getString("Sheet.Essence.PeripheralPool");
   }
 
   public String getAvailableText() {
-    return " " + getResources().getString("Sheet.Essence.Available"); //$NON-NLS-1$ //$NON-NLS-2$
+    return " " + getResources().getString("Sheet.Essence.Available");
   }
 
   public String getTotalString(String poolValue) {
-    return  poolValue + " " + getResources().getString("Sheet.Essence.Total") + " / "; //$NON-NLS-1$ //$NON-NLS-2$
+    return  poolValue + " " + getResources().getString("Sheet.Essence.Total") + " / ";
   }
 }

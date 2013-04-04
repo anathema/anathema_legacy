@@ -10,11 +10,11 @@ public class LabelledAdditionalAlotmentView extends LabelledAlotmentView impleme
 
   @Override
   public void setAlotment(int alotment, int additionalAlotment) {
-    maxPointLabel.setText(String.valueOf(alotment) + "+" + String.valueOf(additionalAlotment)); //$NON-NLS-1$
+    maxPointLabel.setText(String.valueOf(alotment) + "+" + String.valueOf(additionalAlotment));
   }
 
   @Override
   public void setValue(int value, int additionalValue) {
-    valueLabel.setText(String.valueOf(value) + "+" + String.valueOf(additionalValue)); //$NON-NLS-1$
+    valueLabel.setText(String.valueOf(value) + "+" + String.valueOf(additionalValue));
   }
 }

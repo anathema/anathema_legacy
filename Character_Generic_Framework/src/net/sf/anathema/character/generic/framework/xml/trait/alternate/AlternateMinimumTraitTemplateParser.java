@@ -15,10 +15,10 @@ import java.util.List;
 
 public class AlternateMinimumTraitTemplateParser {
 
-  private static final String ATTRIB_COUNT = "count"; //$NON-NLS-1$
-  private static final String ATTRIB_VALUE = "value"; //$NON-NLS-1$
-  private static final String TAG_TRAIT = "trait"; //$NON-NLS-1$
-  private static final String ATTRIB_ID = "id"; //$NON-NLS-1$
+  private static final String ATTRIB_COUNT = "count";
+  private static final String ATTRIB_VALUE = "value";
+  private static final String TAG_TRAIT = "trait";
+  private static final String ATTRIB_ID = "id";
   private static final String TAG_FREEBIE = "isFreebie";
   private final ITraitTypeGroup traitTypeGroup;
 

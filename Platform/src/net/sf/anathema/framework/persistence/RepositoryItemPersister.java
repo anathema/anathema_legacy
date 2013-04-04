@@ -13,7 +13,7 @@ public class RepositoryItemPersister {
 
   public void save(Element element, IItem item) {
     String repositoryId = item.getId();
-    Preconditions.checkNotNull(repositoryId, "Repository item must have an id for saving."); //$NON-NLS-1$
+    Preconditions.checkNotNull(repositoryId, "Repository item must have an id for saving.");
     element.addAttribute(ATTRIB_REPOSITORY_ID, repositoryId);
     element.addAttribute(ATTRIB_REPOSITORY_PRINT_NAME, item.getDisplayName());
   }

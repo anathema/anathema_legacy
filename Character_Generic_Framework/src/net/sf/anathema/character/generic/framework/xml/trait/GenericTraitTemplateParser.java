@@ -12,21 +12,21 @@ import org.dom4j.Element;
 
 public class GenericTraitTemplateParser {
 
-  private static final String ATTRIB_START_VALUE = "startValue"; //$NON-NLS-1$
-  private static final String ATTRIB_ZERO_LEVEL = "zeroLevel"; //$NON-NLS-1$
-  private static final String ATTRIB_LOWERABLE_STATE = "lowerableState"; //$NON-NLS-1$
-  private static final String ATTRIB_VALUE = "value"; //$NON-NLS-1$
-  private static final String ATTRIB_TYPE = "type"; //$NON-NLS-1$
-  private static final String ATTRIB_USES = "uses"; //$NON-NLS-1$
-  private static final String ATTRIB_IS_REQUIRED_FAVORED = "isRequiredFavored"; //$NON-NLS-1$
+  private static final String ATTRIB_START_VALUE = "startValue";
+  private static final String ATTRIB_ZERO_LEVEL = "zeroLevel";
+  private static final String ATTRIB_LOWERABLE_STATE = "lowerableState";
+  private static final String ATTRIB_VALUE = "value";
+  private static final String ATTRIB_TYPE = "type";
+  private static final String ATTRIB_USES = "uses";
+  private static final String ATTRIB_IS_REQUIRED_FAVORED = "isRequiredFavored";
   private static final String ATTRIB_MINIMUM = "minimum";
   private static final String ATTRIB_FREEBIE = "isFreebie";
-  private static final String TAG_MINIMUM = "minimum"; //$NON-NLS-1$
-  private static final String TAG_LIMITATION = "limitation"; //$NON-NLS-1$
+  private static final String TAG_MINIMUM = "minimum";
+  private static final String TAG_LIMITATION = "limitation";
   private static final String TAG_TAG = "tag";
-  private static final String VALUE_STATIC = "Static"; //$NON-NLS-1$
-  private static final String VALUE_ESSENCE = "Essence"; //$NON-NLS-1$
-  private static final String VALUE_AGE = "Age"; //$NON-NLS-1$
+  private static final String VALUE_STATIC = "Static";
+  private static final String VALUE_ESSENCE = "Essence";
+  private static final String VALUE_AGE = "Age";
 
   public static IClonableTraitTemplate parseTraitTemplate(Element traitElement) throws PersistenceException {
 	  return parseTraitTemplate(traitElement, null);
@@ -124,6 +124,6 @@ public class GenericTraitTemplateParser {
     	int staticLimit = ElementUtilities.getRequiredIntAttrib(limitationElement, ATTRIB_VALUE);
         return new AgeBasedLimitation(staticLimit);
       }
-    throw new PersistenceException("Limitation Type not defined: " + typeId + "."); //$NON-NLS-1$//$NON-NLS-2$
+    throw new PersistenceException("Limitation Type not defined: " + typeId + ".");
   }
 }

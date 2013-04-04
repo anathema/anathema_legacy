@@ -55,18 +55,18 @@ public class SpellTooltipBuilder {
   }
 
   public String getUndefinedString() {
-    return resources.getString("CardView.CharmConfiguration.Spells.Target.Undefined"); //$NON-NLS-1$
+    return resources.getString("CardView.CharmConfiguration.Spells.Target.Undefined");
   }
 
   private String getTargetLabel() {
-    return resources.getString("CardView.CharmConfiguration.Spells.Target"); //$NON-NLS-1$
+    return resources.getString("CardView.CharmConfiguration.Spells.Target");
   }
 
   private String getSourceLabel() {
-    return resources.getString("CardView.CharmConfiguration.Spells.Source"); //$NON-NLS-1$
+    return resources.getString("CardView.CharmConfiguration.Spells.Source");
   }
 
   private String getCostLabel() {
-    return resources.getString("CardView.CharmConfiguration.Spells.Cost"); //$NON-NLS-1$
+    return resources.getString("CardView.CharmConfiguration.Spells.Cost");
   }
 }

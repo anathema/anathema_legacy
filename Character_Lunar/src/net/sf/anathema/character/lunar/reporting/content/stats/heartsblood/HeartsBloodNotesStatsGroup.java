@@ -26,6 +26,6 @@ public class HeartsBloodNotesStatsGroup extends AbstractTextStatsGroup<IHeartsBl
 
   @Override
   public String getTitle() {
-    return resources.getString("Sheet.Lunar.HeartsBlood.Notes"); //$NON-NLS-1$
+    return resources.getString("Sheet.Lunar.HeartsBlood.Notes");
   }
 }

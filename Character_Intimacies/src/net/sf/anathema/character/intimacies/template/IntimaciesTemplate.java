@@ -5,7 +5,7 @@ import net.sf.anathema.lib.util.Identifier;
 
 public class IntimaciesTemplate extends Identifier implements IGlobalAdditionalTemplate {
 
-  public static final String ID = "Intimacies"; //$NON-NLS-1$
+  public static final String ID = "Intimacies";
 
   public IntimaciesTemplate() {
     super(ID);

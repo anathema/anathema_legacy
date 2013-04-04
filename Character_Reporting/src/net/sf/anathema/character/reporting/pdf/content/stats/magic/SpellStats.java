@@ -18,7 +18,7 @@ public class SpellStats extends AbstractMagicStats<ISpell> {
 
   @Override
   public String getGroupName(Resources resources) {
-    return resources.getString("Sheet.Magic.Group.Sorcery"); //$NON-NLS-1$
+    return resources.getString("Sheet.Magic.Group.Sorcery");
   }
 
   @Override
@@ -28,7 +28,7 @@ public class SpellStats extends AbstractMagicStats<ISpell> {
 
   @Override
   public String getDurationString(Resources resources) {
-    return "-"; //$NON-NLS-1$
+    return "-";
   }
 
   @Override
@@ -40,7 +40,7 @@ public class SpellStats extends AbstractMagicStats<ISpell> {
   protected String[] getDetailKeys() {
     String target = getMagic().getTarget();
     if (target != null) {
-      return new String[]{"Spells.Target." + target}; //$NON-NLS-1$
+      return new String[]{"Spells.Target." + target};
     }
     return new String[0];
   }
@@ -73,6 +73,7 @@ public class SpellStats extends AbstractMagicStats<ISpell> {
     return r;
   }
 
+  @SuppressWarnings("SimplifiableIfStatement")
   @Override
   public boolean equals(Object obj) {
     if (obj == null || obj.getClass() != getClass()) {

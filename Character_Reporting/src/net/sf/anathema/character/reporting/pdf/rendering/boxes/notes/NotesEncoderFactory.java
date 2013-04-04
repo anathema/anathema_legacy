@@ -17,6 +17,6 @@ public class NotesEncoderFactory extends GlobalEncoderFactory {
 
   @Override
   public ContentEncoder create(Resources resources, BasicContent content) {
-    return new HorizontalLineBoxContentEncoder(1, resources, "Notes"); //$NON-NLS-1$
+    return new HorizontalLineBoxContentEncoder(1, resources, "Notes");
   }
 }

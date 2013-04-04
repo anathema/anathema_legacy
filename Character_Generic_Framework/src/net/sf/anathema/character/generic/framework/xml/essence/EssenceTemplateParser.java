@@ -9,17 +9,17 @@ import org.dom4j.Element;
 
 public class EssenceTemplateParser extends AbstractXmlTemplateParser<GenericEssenceTemplate> {
 
-  private static final String ATTRIB_COUNT = "count"; //$NON-NLS-1$
-  private static final String ATTRIB_IS_ESSENCE_USER = "isEssenceUser"; //$NON-NLS-1$
-  private static final String ATTRIB_MULTIPLIER = "multiplier"; //$NON-NLS-1$
-  private static final String ATTRIB_TRAIT_TYPE = "traitType"; //$NON-NLS-1$
-  private static final String TAG_ESSENCE_PART = "essencePart"; //$NON-NLS-1$
-  private static final String TAG_PERIPHERAL_POOL = "peripheralPool"; //$NON-NLS-1$
-  private static final String TAG_PERSONAL_POOL = "personalPool"; //$NON-NLS-1$
-  private static final String TAG_VIRTUE_PART = "virtuePart"; //$NON-NLS-1$
-  private static final String TAG_WILLPOWER_PART = "willpowerPart"; //$NON-NLS-1$
-  private static final String TAG_VIRTUE_RANKS = "virtueRanks"; //$NON-NLS-1$
-  private static final String TAG_VIRTUE_TYPE = "virtueType"; //$NON-NLS-1$
+  private static final String ATTRIB_COUNT = "count";
+  private static final String ATTRIB_IS_ESSENCE_USER = "isEssenceUser";
+  private static final String ATTRIB_MULTIPLIER = "multiplier";
+  private static final String ATTRIB_TRAIT_TYPE = "traitType";
+  private static final String TAG_ESSENCE_PART = "essencePart";
+  private static final String TAG_PERIPHERAL_POOL = "peripheralPool";
+  private static final String TAG_PERSONAL_POOL = "personalPool";
+  private static final String TAG_VIRTUE_PART = "virtuePart";
+  private static final String TAG_WILLPOWER_PART = "willpowerPart";
+  private static final String TAG_VIRTUE_RANKS = "virtueRanks";
+  private static final String TAG_VIRTUE_TYPE = "virtueType";
 
   public EssenceTemplateParser(IXmlTemplateRegistry<GenericEssenceTemplate> templateRegistry) {
     super(templateRegistry);

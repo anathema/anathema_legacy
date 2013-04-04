@@ -32,36 +32,36 @@ import static net.sf.anathema.lib.lang.ArrayUtilities.getFirst;
 
 public class AdditionalRulesTemplateParser extends AbstractXmlTemplateParser<GenericAdditionalRules> {
 
-  private static final String TAG_REQUIRED_MAGIC = "requiredMagic"; //$NON-NLS-1$
-  private static final String TAG_MAGIC = "magic"; //$NON-NLS-1$
-  private static final String ATTRIB_TYPE = "type"; //$NON-NLS-1$
-  private static final Object VALUE_CHARM = "charm"; //$NON-NLS-1$
-  private static final String ATTRIB_ID = "id"; //$NON-NLS-1$
-  private static final String ATTRIB_GROUP = "group"; //$NON-NLS-1$
-  private static final String TAG_ADDITIONAL_POOLS = "additionalPools"; //$NON-NLS-1$
-  private static final String TAG_LEARNABLE_POOL = "learnablePool"; //$NON-NLS-1$
-  private static final String TAG_MULTI_LEARNABLE_POOL = "multilearnablePool"; //$NON-NLS-1$
-  private static final String TAG_CHARM_REFERENCE = "charmReference"; //$NON-NLS-1$
-  private static final String TAG_PERSONAL_POOL = "personalPool"; //$NON-NLS-1$
-  private static final String TAG_PERIPHERAL_POOL = "peripheralPool"; //$NON-NLS-1$
-  private static final String TAG_OTHER_POOL = "otherPool"; //$NON-NLS-1$
-  private static final String ATTRIB_MULTIPLIER = "multiplier"; //$NON-NLS-1$
-  private static final String TAG_BACKGROUND_REFERENCE = "backgroundReference"; //$NON-NLS-1$
-  private static final String TAG_FORBIDDEN_BACKGROUNDS = "forbiddenBackgrounds"; //$NON-NLS-1$
-  private static final String ATTRIB_MODIFIES_BASE = "modifiesBase"; //$NON-NLS-1$
-  private static final String TAG_FIXED_VALUE = "fixedValue"; //$NON-NLS-1$
-  private static final String ATTRIB_VALUE = "value"; //$NON-NLS-1$
-  private static final String ATTRIB_FORMULA = "formula"; //$NON-NLS-1$
-  private static final String ATTRIB_POOL = "pool"; //$NON-NLS-1$
-  private static final String TAG_ADDITIONAL_MAGIC = "additionalMagic"; //$NON-NLS-1$
-  private static final String TAG_MAGIC_POOL = "magicPool"; //$NON-NLS-1$
-  private static final String TAG_ADDITIONAL_COST = "additionalCost"; //$NON-NLS-1$
-  private static final String TAG_COST_MODIFIER = "costModifier"; //$NON-NLS-1$
-  private static final String TAG_BONUS_MODIFICATION = "bonusModification"; //$NON-NLS-1$
-  private static final String ATTRIB_MINIMUM_VALUE = "thresholdLevel"; //$NON-NLS-1$
-  private static final String ATTRIB_DEFAULT_RESPONSE = "defaultResponse"; //$NON-NLS-1$
-  private static final String TAG_SPELL_REFERENCE = "spellReference"; //$NON-NLS-1$
-  private static final String TAG_DOT_COST_MODIFICATION = "dotCostModification"; //$NON-NLS-1$
+  private static final String TAG_REQUIRED_MAGIC = "requiredMagic";
+  private static final String TAG_MAGIC = "magic";
+  private static final String ATTRIB_TYPE = "type";
+  private static final Object VALUE_CHARM = "charm";
+  private static final String ATTRIB_ID = "id";
+  private static final String ATTRIB_GROUP = "group";
+  private static final String TAG_ADDITIONAL_POOLS = "additionalPools";
+  private static final String TAG_LEARNABLE_POOL = "learnablePool";
+  private static final String TAG_MULTI_LEARNABLE_POOL = "multilearnablePool";
+  private static final String TAG_CHARM_REFERENCE = "charmReference";
+  private static final String TAG_PERSONAL_POOL = "personalPool";
+  private static final String TAG_PERIPHERAL_POOL = "peripheralPool";
+  private static final String TAG_OTHER_POOL = "otherPool";
+  private static final String ATTRIB_MULTIPLIER = "multiplier";
+  private static final String TAG_BACKGROUND_REFERENCE = "backgroundReference";
+  private static final String TAG_FORBIDDEN_BACKGROUNDS = "forbiddenBackgrounds";
+  private static final String ATTRIB_MODIFIES_BASE = "modifiesBase";
+  private static final String TAG_FIXED_VALUE = "fixedValue";
+  private static final String ATTRIB_VALUE = "value";
+  private static final String ATTRIB_FORMULA = "formula";
+  private static final String ATTRIB_POOL = "pool";
+  private static final String TAG_ADDITIONAL_MAGIC = "additionalMagic";
+  private static final String TAG_MAGIC_POOL = "magicPool";
+  private static final String TAG_ADDITIONAL_COST = "additionalCost";
+  private static final String TAG_COST_MODIFIER = "costModifier";
+  private static final String TAG_BONUS_MODIFICATION = "bonusModification";
+  private static final String ATTRIB_MINIMUM_VALUE = "thresholdLevel";
+  private static final String ATTRIB_DEFAULT_RESPONSE = "defaultResponse";
+  private static final String TAG_SPELL_REFERENCE = "spellReference";
+  private static final String TAG_DOT_COST_MODIFICATION = "dotCostModification";
   private static final String ATTRIB_FIXED_COST = "fixedCost";
   private static final String TAG_REVISED_INTIMACIES = "revisedIntimacies";
   private static final String TAG_WILLPOWER_VIRTUE_BASED = "willpowerVirtueBased";
@@ -173,7 +173,7 @@ public class AdditionalRulesTemplateParser extends AbstractXmlTemplateParser<Gen
         charm.setCharacterType(characterTypes.findById(ElementUtilities.getRequiredAttrib(charmReference, ATTRIB_TYPE)));
         pools.add(new LearnableCharmPool(charm, personalPool, peripheralPool, complexPools));
       } else {
-        throw new ContractFailedException("CharmReference required."); //$NON-NLS-1$
+        throw new ContractFailedException("CharmReference required.");
       }
     }
     for (Element multiPool : ElementUtilities.elements(additionalPoolsElement, TAG_MULTI_LEARNABLE_POOL)) {
@@ -190,14 +190,14 @@ public class AdditionalRulesTemplateParser extends AbstractXmlTemplateParser<Gen
           }
         });
         if (!(charm instanceof IMultiLearnableCharm)) {
-          throw new ContractFailedException("No such multi-learnable Charm found."); //$NON-NLS-1$
+          throw new ContractFailedException("No such multi-learnable Charm found.");
         }
         pools.add(new MultiLearnableCharmPool((IMultiLearnableCharm) charm, personalPool, peripheralPool, complexPools));
       } else if (multiPool.element(TAG_BACKGROUND_REFERENCE) != null) {
         boolean modifiesBase = ElementUtilities.getBooleanAttribute(multiPool, ATTRIB_MODIFIES_BASE, false);
         pools.add(new BackgroundPool(getBackgroundTemplate(multiPool), personalPool, peripheralPool, complexPools, modifiesBase));
       } else {
-        throw new ContractFailedException("Either CharmReference or BackgroundReference required."); //$NON-NLS-1$
+        throw new ContractFailedException("Either CharmReference or BackgroundReference required.");
       }
     }
     basicTemplate.addAdditionalEssencePools(pools.toArray(new IAdditionalEssencePool[pools.size()]));

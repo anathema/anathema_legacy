@@ -18,7 +18,7 @@ public class AbyssalResonanceContent extends AbstractSubBoxContent {
 
   @Override
   public String getHeaderKey() {
-    return "GreatCurse.Abyssal"; //$NON-NLS-1$
+    return "GreatCurse.Abyssal";
   }
 
   private IVirtueFlaw getResonance() {
@@ -34,7 +34,7 @@ public class AbyssalResonanceContent extends AbstractSubBoxContent {
   }
 
   public String getFlawedVirtueLabel() {
-    return getString("Sheet.GreatCurse.FlawedVirtue") + ": ";   //$NON-NLS-1$ //$NON-NLS-2$
+    return getString("Sheet.GreatCurse.FlawedVirtue") + ": ";
   }
 
   public String getFlawedVirtue() {
@@ -42,6 +42,6 @@ public class AbyssalResonanceContent extends AbstractSubBoxContent {
   }
 
   public String getResonanceReference() {
-    return getString("Sheet.GreatCurse.ResonanceReference");  //$NON-NLS-1$
+    return getString("Sheet.GreatCurse.ResonanceReference");
   }
 }

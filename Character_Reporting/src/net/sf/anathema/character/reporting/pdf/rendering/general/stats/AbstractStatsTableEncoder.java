@@ -81,7 +81,7 @@ public abstract class AbstractStatsTableEncoder<T extends IStats, C> extends Abs
   }
 
   protected PdfPCell createSpaceCell(SheetGraphics graphics) {
-    PdfPCell cell = new PdfPCell(new Phrase("", createFont(graphics))); //$NON-NLS-1$
+    PdfPCell cell = new PdfPCell(new Phrase("", createFont(graphics)));
     cell.setBorder(Rectangle.NO_BORDER);
     return cell;
   }

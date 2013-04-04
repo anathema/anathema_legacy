@@ -33,14 +33,14 @@ public class ParadoxEncoder implements ContentEncoder {
     Bounds textBounds = new VirtueFlawBoxEncoder().encode(graphics, bounds,
             virtueFlaw.getLimitTrait().getCurrentValue());
     float lineHeight = (textBounds.height - TEXT_PADDING) / 2;
-    String effects = resources.getString("Sheet.GreatCurse.Sidereal.CurrentEffects") + ":"; //$NON-NLS-1$ //$NON-NLS-2$
+    String effects = resources.getString("Sheet.GreatCurse.Sidereal.CurrentEffects") + ":";
     graphics.drawLabelledContent(effects, null, new Position(textBounds.x, textBounds.getMaxY() - lineHeight),
             bounds.width);
 
     Font font = TableEncodingUtilities.createTableFont(graphics.getBaseFont());
-    Phrase phrase = new Phrase("", font); //$NON-NLS-1$
+    Phrase phrase = new Phrase("", font);
     phrase.add(graphics.createSymbolChunk());
-    phrase.add(resources.getString("Sheet.GreatCurse.Sidereal.2E.RulesPages")); //$NON-NLS-1$
+    phrase.add(resources.getString("Sheet.GreatCurse.Sidereal.2E.RulesPages"));
     Bounds infoBounds = new Bounds(bounds.x, bounds.y, bounds.width, textBounds.height - lineHeight);
     graphics.createSimpleColumn(infoBounds).withLeading(REDUCED_LINE_HEIGHT).andTextPart(phrase).encode();
   }

@@ -25,7 +25,7 @@ import static net.sf.anathema.lib.message.MessageType.ERROR;
 import static net.sf.anathema.lib.message.MessageType.INFORMATION;
 
 public class UpdateDialogPage extends AbstractDialogPage {
-  private final JLabel latestVersionLabel = new JLabel("?.?.?"); //$NON-NLS-1$
+  private final JLabel latestVersionLabel = new JLabel("?.?.?");
   private final JButton updateButton = new JButton("Install update");
   private final Resources resources;
   private final Version installedVersion;
@@ -36,7 +36,7 @@ public class UpdateDialogPage extends AbstractDialogPage {
   private JTextArea changelogDisplay = new JTextArea("Loading changelog...", 10, 0);
 
   public UpdateDialogPage(Resources resources, Version installedVersion) {
-    super(resources.getString("Help.UpdateCheck.Checking")); //$NON-NLS-1$
+    super(resources.getString("Help.UpdateCheck.Checking"));
     this.resources = resources;
     this.installedVersion = installedVersion;
     this.updateProgress.setStringPainted(true);
@@ -70,15 +70,15 @@ public class UpdateDialogPage extends AbstractDialogPage {
   public String getDescription() {
     switch (state) {
       case Checking:
-        return getString("Help.UpdateCheck.Checking"); //$NON-NLS-1$
+        return getString("Help.UpdateCheck.Checking");
       case CheckSuccessful:
-        return getString("Help.UpdateCheck.Success"); //$NON-NLS-1$
+        return getString("Help.UpdateCheck.Success");
       case CheckFailed:
-        return getString("Help.UpdateCheck.Failure"); //$NON-NLS-1$
+        return getString("Help.UpdateCheck.Failure");
       case InstallationRunning:
-        return getString("Help.UpdateInstallation.Running"); //$NON-NLS-1$
+        return getString("Help.UpdateInstallation.Running");
       case InstallationDone:
-        return getString("Help.UpdateInstallation.Completed"); //$NON-NLS-1$
+        return getString("Help.UpdateInstallation.Completed");
       default:
         throw new IllegalStateException("Unknown state");
     }
@@ -86,7 +86,7 @@ public class UpdateDialogPage extends AbstractDialogPage {
 
   @Override
   public String getTitle() {
-    return getString("Help.UpdateCheck.Title"); //$NON-NLS-1$
+    return getString("Help.UpdateCheck.Title");
   }
 
   public void setErrorState(String key) {

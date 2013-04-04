@@ -10,18 +10,18 @@ public class EquipmentPersonalizationProperties {
   }
   
   public String getPersonalizeMessage() {
-	   return resources.getString("Equipment.Personalization.DefaultMessage"); //$NON-NLS-1$    
+	   return resources.getString("Equipment.Personalization.DefaultMessage");
   }
   
   public String getPersonalizeDetails() {
-	   return resources.getString("Equipment.Personalization.Details"); //$NON-NLS-1$    
+	   return resources.getString("Equipment.Personalization.Details");
  }
   
   public String getTitleMessage() {
-	   return resources.getString("Equipment.Personalization.CustomTitle"); //$NON-NLS-1$    
+	   return resources.getString("Equipment.Personalization.CustomTitle");
   }
   
   public String getDescriptionMessage() {
-	   return resources.getString("Equipment.Personalization.CustomDescription"); //$NON-NLS-1$    
+	   return resources.getString("Equipment.Personalization.CustomDescription");
   }
 }

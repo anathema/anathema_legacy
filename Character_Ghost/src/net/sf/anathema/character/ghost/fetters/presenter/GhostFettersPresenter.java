@@ -49,11 +49,11 @@ public class GhostFettersPresenter implements Presenter {
 
   @Override
   public void initPresentation() {
-    final IOverviewCategory creationOverview = view.createOverview(resources.getString("Overview.Title")); //$NON-NLS-1$
+    final IOverviewCategory creationOverview = view.createOverview(resources.getString("Overview.Title"));
     final IOverviewCategory experienceOverview = view.createOverview(resources.getString("Overview.Title"));
     creationMaxFetterView = creationOverview.addAlotmentView(resources.getString("Fetters.Overview.Max"), 2);
     experienceMaxFetterView = experienceOverview.addAlotmentView(resources.getString("Fetters.Overview.Max"), 2);
-    freeFetterView = creationOverview.addAlotmentView(resources.getString("Fetters.Overview.Dots"), 1); //$NON-NLS-1$
+    freeFetterView = creationOverview.addAlotmentView(resources.getString("Fetters.Overview.Dots"), 1);
     bonusView = creationOverview.addIntegerValueView(resources.getString("Fetters.Overview.Bonus"), 2);
     experienceView = experienceOverview.addIntegerValueView(resources.getString("Fetters.Overview.Experience"), 2);
 

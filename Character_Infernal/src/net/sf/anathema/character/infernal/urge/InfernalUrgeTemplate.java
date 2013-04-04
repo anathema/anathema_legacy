@@ -4,7 +4,7 @@ import net.sf.anathema.character.generic.template.additional.IAdditionalTemplate
 
 public class InfernalUrgeTemplate implements IAdditionalTemplate {
 
-  public static final String ID = "Infernal.Urge.Template"; //$NON-NLS-1$
+  public static final String ID = "Infernal.Urge.Template";
 
   @Override
   public String getId() {

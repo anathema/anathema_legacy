@@ -23,11 +23,11 @@ import net.sf.anathema.lib.registry.IRegistry;
 public class AbyssalCharacterModule extends CharacterTypeModule {
 
   public static final ICharacterType type = new AbyssalCharacterType();
-  public static final String BACKGROUND_ID_ABYSSAL_COMMAND = "AbyssalCommand"; //$NON-NLS-1$
-  public static final String BACKGROUND_ID_LIEGE = "Liege"; //$NON-NLS-1$
-  public static final String BACKGROUND_ID_SPIES = "AbyssalSpies"; //$NON-NLS-1$
-  public static final String BACKGROUND_ID_UNDERWORLD_MANSE = "UnderworldManse"; //$NON-NLS-1$
-  public static final String BACKGROUND_ID_WHISPERS = "Whispers"; //$NON-NLS-1$
+  public static final String BACKGROUND_ID_ABYSSAL_COMMAND = "AbyssalCommand";
+  public static final String BACKGROUND_ID_LIEGE = "Liege";
+  public static final String BACKGROUND_ID_SPIES = "AbyssalSpies";
+  public static final String BACKGROUND_ID_UNDERWORLD_MANSE = "UnderworldManse";
+  public static final String BACKGROUND_ID_WHISPERS = "Whispers";
 
   @Override
   public void registerCommonData(ICharacterGenerics characterGenerics) {

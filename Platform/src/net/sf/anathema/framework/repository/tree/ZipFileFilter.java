@@ -5,7 +5,7 @@ import net.sf.anathema.lib.resources.Resources;
 
 public final class ZipFileFilter extends AbstractFileTypeFilter {
 
-  private static final String ZIP = "zip"; //$NON-NLS-1$
+  private static final String ZIP = "zip";
   private final Resources resources;
 
   public ZipFileFilter(Resources resources) {
@@ -19,6 +19,6 @@ public final class ZipFileFilter extends AbstractFileTypeFilter {
 
   @Override
   public String getDescription() {
-    return resources.getString("Filetype.zip"); //$NON-NLS-1$
+    return resources.getString("Filetype.zip");
   }
 }

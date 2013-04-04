@@ -20,7 +20,7 @@ public class CentralExceptionHandler implements IExceptionHandler {
 
   @Override
   public void handle(Throwable exception) {
-    Logger.getLogger(getClass()).error("Uncaught Exception", exception); //$NON-NLS-1$
+    Logger.getLogger(getClass()).error("Uncaught Exception", exception);
     if (exception instanceof Exception) {
       indicateException((Exception) exception);
     }
@@ -31,8 +31,8 @@ public class CentralExceptionHandler implements IExceptionHandler {
 
   protected void indicateError(Throwable exception) {
     logger.error(exception);
-    String message = getString("CentralExceptionHandling.ErrorOccured.Message"); //$NON-NLS-1$
-    String title = getString("CentralExceptionHandling.ErrorOccured.Title"); //$NON-NLS-1$
+    String message = getString("CentralExceptionHandling.ErrorOccured.Message");
+    String title = getString("CentralExceptionHandling.ErrorOccured.Title");
     int answer = JOptionPane.showConfirmDialog(null, message, title, JOptionPane.YES_NO_OPTION);
     if (answer == JOptionPane.YES_OPTION) {
       System.exit(0);
@@ -44,7 +44,7 @@ public class CentralExceptionHandler implements IExceptionHandler {
   }
 
   protected void indicateException(Exception exception) {
-    String message = getString("CentralExceptionHandling.ExceptionOccured.Message"); //$NON-NLS-1$
+    String message = getString("CentralExceptionHandling.ExceptionOccured.Message");
     logger.error(message, exception);
     MessageDialogFactory.showMessageDialog(JOptionPane.getRootFrame(), new Message(message, exception));
   }

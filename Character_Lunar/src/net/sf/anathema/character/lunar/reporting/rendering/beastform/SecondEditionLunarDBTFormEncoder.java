@@ -84,7 +84,7 @@ public class SecondEditionLunarDBTFormEncoder implements ContentEncoder {
       }
 
       ITraitType traitType = groupedTraitType.getTraitType();
-      String traitLabel = resources.getString("AttributeType.Name." + traitType.getId()); //$NON-NLS-1$
+      String traitLabel = resources.getString("AttributeType.Name." + traitType.getId());
       int value = traitCollection.getTrait(traitType).getCurrentValue();
       Position position = new Position(contentBounds.x, y);
       y -= smallTraitEncoder.encodeWithText(graphics, traitLabel, position, width, value, maximum);

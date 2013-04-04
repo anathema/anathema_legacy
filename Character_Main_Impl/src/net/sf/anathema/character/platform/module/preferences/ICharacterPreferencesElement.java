@@ -11,5 +11,5 @@ import static net.sf.anathema.character.generic.framework.configuration.ICharact
 public interface ICharacterPreferencesElement extends IPreferencesElement {
 
   Preferences CHARACTER_PREFERENCES = Preferences.userRoot().node(CHARACTER_PREFERENCES_NODE);
-  Identified CHARACTER_CATEGORY = new Identifier("Character"); //$NON-NLS-1$
+  Identified CHARACTER_CATEGORY = new Identifier("Character");
 }

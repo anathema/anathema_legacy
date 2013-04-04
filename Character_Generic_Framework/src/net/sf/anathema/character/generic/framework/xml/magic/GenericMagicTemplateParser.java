@@ -28,27 +28,27 @@ import java.util.List;
 
 public class GenericMagicTemplateParser extends AbstractXmlTemplateParser<GenericMagicTemplate> {
 
-  private static final String TAG_UNIQUE_CHARM_TYPE = "hasUniqueCharmType"; //$NON-NLS-1$
-  private static final String TAG_FREE_PICKS_PREDICATE = "freePicksPredicate"; //$NON-NLS-1$
-  private static final String ATTRIB_TYPE = "type"; //$NON-NLS-1$
-  private static final String ATTRIB_LABEL = "label"; //$NON-NLS-1$
-  private static final String ATTRIB_KEYWORD = "keyword"; //$NON-NLS-1$
-  private static final String TAG_CHARM_TEMPLATE = "charmTemplate"; //$NON-NLS-1$
-  private static final String ATTRIB_MARTIAL_ARTS_LEVEL = "level"; //$NON-NLS-1$
-  private static final String ATTRIB_HIGH_LEVEL_MARTIAL_ARTS = "highLevel"; //$NON-NLS-1$
-  private static final String ATTRIB_CHARM_TYPE = "charmType"; //$NON-NLS-1$
-  private static final Object VALUE_NONE = "None"; //$NON-NLS-1$
-  private static final String TAG_SPELL_TEMPLATE = "spellTemplate"; //$NON-NLS-1$
-  private static final String ATTRIB_MAXIMUM_SORCERY_CIRCLE = "maximumSorceryCircle"; //$NON-NLS-1$
-  private static final String ATTRIB_MAXIMUM_NECROMANCY_CIRCLE = "maximumNecromancyCircle"; //$NON-NLS-1$
-  private static final String TAG_CASTE = "caste"; //$NON-NLS-1$
-  private static final String TAG_ALIEN_CHARMS = "alienCharms"; //$NON-NLS-1$
-  private static final String TAG_MARTIAL_ARTS = "martialArts"; //$NON-NLS-1$
-  private static final String ATTRIB_RULES_CLASS = "rulesClass"; //$NON-NLS-1$
-  private static final String ATTRIB_DEFAULT_RESPONSE = "defaultResponse"; //$NON-NLS-1$
-  private static final String TAG_ID_EXCEPTION = "idException"; //$NON-NLS-1$
-  private static final String ATTRIB_ID = "id"; //$NON-NLS-1$
-  private static final String TAG_GROUP_EXCEPTION = "groupException"; //$NON-NLS-1$
+  private static final String TAG_UNIQUE_CHARM_TYPE = "hasUniqueCharmType";
+  private static final String TAG_FREE_PICKS_PREDICATE = "freePicksPredicate";
+  private static final String ATTRIB_TYPE = "type";
+  private static final String ATTRIB_LABEL = "label";
+  private static final String ATTRIB_KEYWORD = "keyword";
+  private static final String TAG_CHARM_TEMPLATE = "charmTemplate";
+  private static final String ATTRIB_MARTIAL_ARTS_LEVEL = "level";
+  private static final String ATTRIB_HIGH_LEVEL_MARTIAL_ARTS = "highLevel";
+  private static final String ATTRIB_CHARM_TYPE = "charmType";
+  private static final Object VALUE_NONE = "None";
+  private static final String TAG_SPELL_TEMPLATE = "spellTemplate";
+  private static final String ATTRIB_MAXIMUM_SORCERY_CIRCLE = "maximumSorceryCircle";
+  private static final String ATTRIB_MAXIMUM_NECROMANCY_CIRCLE = "maximumNecromancyCircle";
+  private static final String TAG_CASTE = "caste";
+  private static final String TAG_ALIEN_CHARMS = "alienCharms";
+  private static final String TAG_MARTIAL_ARTS = "martialArts";
+  private static final String ATTRIB_RULES_CLASS = "rulesClass";
+  private static final String ATTRIB_DEFAULT_RESPONSE = "defaultResponse";
+  private static final String TAG_ID_EXCEPTION = "idException";
+  private static final String ATTRIB_ID = "id";
+  private static final String TAG_GROUP_EXCEPTION = "groupException";
   private static final String ATTRIB_SUB_TEMPLATE = "subTemplate";
   private final ICharacterTemplate hostTemplate;
   private final ICharmCache cache;

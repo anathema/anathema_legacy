@@ -6,17 +6,17 @@ import net.sf.anathema.namegenerator.domain.syllable.SimpleWordFactory;
 
 public class RealmWordFactory implements IWordFactory {
 
-  private final String[] commonFamilyNames = new String[] { "Cathak", //$NON-NLS-1$
-      "Cynis", //$NON-NLS-1$
-      "Iselsi", //$NON-NLS-1$
-      "Ledaal", //$NON-NLS-1$
-      "Mnemon", //$NON-NLS-1$
-      "Nellens", //$NON-NLS-1$
-      "Peleps", //$NON-NLS-1$
-      "Ragara", //$NON-NLS-1$
-      "Sesus", //$NON-NLS-1$
-      "Tepet", //$NON-NLS-1$
-      "V'Neef" }; //$NON-NLS-1$
+  private final String[] commonFamilyNames = new String[] { "Cathak",
+      "Cynis",
+      "Iselsi",
+      "Ledaal",
+      "Mnemon",
+      "Nellens",
+      "Peleps",
+      "Ragara",
+      "Sesus",
+      "Tepet",
+      "V'Neef" };
 
   private final SimpleWordFactory wordFactory = new SimpleWordFactory(
       new RealmSyllableFactory(),

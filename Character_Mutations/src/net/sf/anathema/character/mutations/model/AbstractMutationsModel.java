@@ -42,8 +42,8 @@ public abstract class AbstractMutationsModel extends AbstractQualityModel<IMutat
         return Mutation;
       }
     }
-    throw new IllegalArgumentException("No Mutation found for id \"" //$NON-NLS-1$
-            + MutationId + "\"."); //$NON-NLS-1$
+    throw new IllegalArgumentException("No Mutation found for id \""
+            + MutationId + "\".");
   }
 
   @Override

@@ -22,7 +22,7 @@ public class TextEditorProperties implements ITextEditorProperties {
 
   @Override
   public void initBoldAction(Action action) {
-    initWithIcon(action, new Font("Serif", Font.BOLD, 12), resources.getString("TextEditor.BoldLetter")); //$NON-NLS-1$ //$NON-NLS-2$
+    initWithIcon(action, new Font("Serif", Font.BOLD, 12), resources.getString("TextEditor.BoldLetter"));
   }
 
   @Override

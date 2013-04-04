@@ -27,7 +27,7 @@ public abstract class AbstractNameStatsGroup<T extends IStats> extends AbstractT
   @Override
   public void addContent(PdfPTable table, Font font, T stats) {
     if (stats == null) {
-      table.addCell(createTextCell(font, "")); //$NON-NLS-1$
+      table.addCell(createTextCell(font, ""));
     } else {
       String resourceKey = getResourceBase() + stats.getName().getId();
       table.addCell(createTextCell(font, resources.getString(resourceKey)));

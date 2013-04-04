@@ -28,7 +28,7 @@ public class BooleanModel extends AbstractChangeableModel implements IModifiable
 
   @Override
   public String toString() {
-    return "BooleanModel: " + value; //$NON-NLS-1$
+    return "BooleanModel: " + value;
   }
 
 }

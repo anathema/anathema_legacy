@@ -15,12 +15,12 @@ public class SecondEditionBeastformViewProperties implements IBeastformViewPrope
 
   @Override
   public String getAttributesString() {
-    return resources.getString("Lunar.DeadlyBeastmanTransformation.Attributes.Label"); //$NON-NLS-1$
+    return resources.getString("Lunar.DeadlyBeastmanTransformation.Attributes.Label");
   }
 
   @Override
   public String getGiftsString() {
-    return resources.getString("Lunar.DeadlyBeastmanTransformation.Gifts.Label_2nd"); //$NON-NLS-1$
+    return resources.getString("Lunar.DeadlyBeastmanTransformation.Gifts.Label_2nd");
   }
 
   @Override

@@ -24,7 +24,7 @@ public class MaximizePreferencesElement extends AbstractCheckBoxPreferencesEleme
 
   @Override
   protected String getLabelKey() {
-    return "AnathemaCore.Tools.Preferences.Maximize"; //$NON-NLS-1$
+    return "AnathemaCore.Tools.Preferences.Maximize";
   }
 
   @Override

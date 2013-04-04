@@ -13,14 +13,14 @@ public class WillpowerCostStringBuilderTest extends TestCase {
   protected void setUp() throws Exception {
     super.setUp();
     DummyResources resources = new DummyResources();
-    resources.putString("WillpowerType.Name", "Willpower"); //$NON-NLS-1$ //$NON-NLS-2$
-    resources.putString("Magic.Cost.Permanent", "permanent"); //$NON-NLS-1$//$NON-NLS-2$
-    builder = new CostStringBuilder(resources, "WillpowerType.Name"); //$NON-NLS-1$
+    resources.putString("WillpowerType.Name", "Willpower");
+    resources.putString("Magic.Cost.Permanent", "permanent");
+    builder = new CostStringBuilder(resources, "WillpowerType.Name");
   }
 
   public void testNoWillpowerCost() throws Exception {
     String costString = getDisplayString(Cost.NULL_COST);
-    assertEquals("", costString); //$NON-NLS-1$
+    assertEquals("", costString);
   }
 
   private String getDisplayString(ICost cost) {
@@ -28,22 +28,22 @@ public class WillpowerCostStringBuilderTest extends TestCase {
   }
 
   public void testValueOnly() throws Exception {
-    String costString = getDisplayString(new Cost("2", null, false)); //$NON-NLS-1$
-    assertEquals("2 Willpower", costString); //$NON-NLS-1$
+    String costString = getDisplayString(new Cost("2", null, false));
+    assertEquals("2 Willpower", costString);
   }
 
   public void testValueAndText() throws Exception {
-    String costString = getDisplayString(new Cost("2", "or more", false)); //$NON-NLS-1$ //$NON-NLS-2$
-    assertEquals("2 Willpower or more", costString); //$NON-NLS-1$
+    String costString = getDisplayString(new Cost("2", "or more", false));
+    assertEquals("2 Willpower or more", costString);
   }
 
   public void testTextOnly() throws Exception {
-    String costString = getDisplayString(new Cost(null, "Special", false)); //$NON-NLS-1$
-    assertEquals(" Special", costString); //$NON-NLS-1$
+    String costString = getDisplayString(new Cost(null, "Special", false));
+    assertEquals(" Special", costString);
   }
 
   public void testPermanentCost() throws Exception {
-    String costString = getDisplayString(new Cost("2", null, true)); //$NON-NLS-1$
-    assertEquals("2 permanent Willpower", costString); //$NON-NLS-1$
+    String costString = getDisplayString(new Cost("2", null, true));
+    assertEquals("2 permanent Willpower", costString);
   }
 }

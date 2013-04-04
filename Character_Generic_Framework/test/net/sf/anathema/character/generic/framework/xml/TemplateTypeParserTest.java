@@ -23,7 +23,7 @@ public class TemplateTypeParserTest {
 
   @Test
   public void discoversType() throws Exception {
-    String xml = "<template characterType=\"Dummy\" />"; //$NON-NLS-1$
+    String xml = "<template characterType=\"Dummy\" />";
     Element element = DocumentUtilities.read(xml).getRootElement();
     ITemplateType templateType = new TemplateTypeParser(types).parse(element);
     assertEquals(type, templateType.getCharacterType());
@@ -32,7 +32,7 @@ public class TemplateTypeParserTest {
 
   @Test
   public void testParseWithoutSubtemplateSpecification() throws Exception {
-    String xml = "<template characterType=\"Dummy\" />"; //$NON-NLS-1$
+    String xml = "<template characterType=\"Dummy\" />";
     Element element = DocumentUtilities.read(xml).getRootElement();
     ITemplateType templateType = new TemplateTypeParser(types).parse(element);
     assertEquals(TemplateType.DEFAULT_SUB_TYPE, templateType.getSubType());
@@ -40,15 +40,15 @@ public class TemplateTypeParserTest {
 
   @Test
   public void testParseWithSpecifiedSubtemplate() throws Exception {
-    String xml = "<template characterType=\"Dummy\" subtemplate=\"special\"/>"; //$NON-NLS-1$
+    String xml = "<template characterType=\"Dummy\" subtemplate=\"special\"/>";
     Element element = DocumentUtilities.read(xml).getRootElement();
     ITemplateType templateType = new TemplateTypeParser(types).parse(element);
-    assertEquals("special", templateType.getSubType().getId()); //$NON-NLS-1$
+    assertEquals("special", templateType.getSubType().getId());
   }
 
   @Test
   public void testParseWithSpecifiedDefaultSubtemplate() throws Exception {
-    String xml = "<template characterType=\"Dummy\" subtemplate=\"default\"/>"; //$NON-NLS-1$
+    String xml = "<template characterType=\"Dummy\" subtemplate=\"default\"/>";
     Element element = DocumentUtilities.read(xml).getRootElement();
     ITemplateType templateType = new TemplateTypeParser(types).parse(element);
     assertEquals(TemplateType.DEFAULT_SUB_TYPE, templateType.getSubType());

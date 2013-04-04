@@ -77,17 +77,19 @@ public class SpellConfiguration implements ISpellConfiguration {
           creationLearnedList.add(spell);
         }
       } else {
-        throw new IllegalArgumentException("Cannot learn Spell: " + spell); //$NON-NLS-1$
+        throw new IllegalArgumentException("Cannot learn Spell: " + spell);
       }
     }
     fireSpellsAddedEvent(addedSpells);
   }
 
+  @SuppressWarnings("unchecked")
   private void fireSpellsAddedEvent(ISpell[] addedSpells) {
     magicLearnControl.announce().magicLearned(addedSpells);
     changeControl.announce().changeOccurred();
   }
 
+  @SuppressWarnings("unchecked")
   private void fireSpellsForgottenEvent(ISpell[] removedSpells) {
     magicLearnControl.announce().magicForgotten(removedSpells);
     changeControl.announce().changeOccurred();
@@ -149,7 +151,7 @@ public class SpellConfiguration implements ISpellConfiguration {
         return spell;
       }
     }
-    throw new IllegalArgumentException("No Spell for id: " + id); //$NON-NLS-1$
+    throw new IllegalArgumentException("No Spell for id: " + id);
   }
 
   private Iterable<ISpell> getAllSpells() {

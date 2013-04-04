@@ -18,7 +18,7 @@ import net.sf.anathema.lib.resources.Resources;
 @ItemTypeConfiguration
 public final class MagicDescriptionItemTypeConfiguration extends AbstractItemTypeConfiguration {
 
-  public static final String MAGIC_DESCRIPTION_ITEM_TYPE_ID = "MagicDescription"; //$NON-NLS-1$
+  public static final String MAGIC_DESCRIPTION_ITEM_TYPE_ID = "MagicDescription";
   private static final RepositoryConfiguration REPOSITORY_CONFIGURATION = new RepositoryConfiguration(".mdsc", "MagicDescription/");
 
   public MagicDescriptionItemTypeConfiguration() {

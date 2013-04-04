@@ -6,7 +6,7 @@ import net.sf.anathema.character.sidereal.colleges.model.ICollegeBonusPointCosts
 import net.sf.anathema.character.sidereal.template.ICollegeExperienceCosts;
 
 public class SiderealCollegeTemplate implements IAdditionalTemplate {
-  public static final String ID = "SiderealColleges"; //$NON-NLS-1$
+  public static final String ID = "SiderealColleges";
   private final IFavorableTraitCreationPoints points;
   private final ICollegeBonusPointCosts bonusPointCosts;
   private final ICollegeExperienceCosts experiencePointCosts;

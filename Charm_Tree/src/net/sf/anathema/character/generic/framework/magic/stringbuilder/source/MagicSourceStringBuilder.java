@@ -25,7 +25,7 @@ public class MagicSourceStringBuilder<T extends IMagic> implements IMagicSourceS
   @SuppressWarnings("unchecked")
   @Override
   public void buildStringForMagic(StringBuilder builder, IMagic magic, Object specialDetails) {
-    String descriptionString = resources.getString("CharmTreeView.ToolTip.Source"); //$NON-NLS-1$
+    String descriptionString = resources.getString("CharmTreeView.ToolTip.Source");
     descriptionString += TooltipBuilder.ColonSpace;
     descriptionString += createSourceString((T) magic);
     descriptionString = createFixedWidthParagraph(descriptionString, TooltipBuilder.HtmlLineBreak, TooltipBuilder.DEFAULT_TOOLTIP_WIDTH);
@@ -43,7 +43,7 @@ public class MagicSourceStringBuilder<T extends IMagic> implements IMagicSourceS
       String pageKey = createPageKey(t.getId(), sources[i]);
       if (resources.supportsKey(pageKey)) {
         builder.append(TooltipBuilder.CommaSpace);
-        builder.append(resources.getString("CharmTreeView.ToolTip.Page")); //$NON-NLS-1$
+        builder.append(resources.getString("CharmTreeView.ToolTip.Page"));
         builder.append(TooltipBuilder.Space);
         builder.append(resources.getString(pageKey));
       }
@@ -54,11 +54,11 @@ public class MagicSourceStringBuilder<T extends IMagic> implements IMagicSourceS
   }
 
   private String createSourceBookKey(IExaltedSourceBook source) {
-    return "ExaltedSourceBook." + source.getId(); //$NON-NLS-1$
+    return "ExaltedSourceBook." + source.getId();
   }
 
   private String createPageKey(String id, IExaltedSourceBook source) {
-    return source.getId() + "." + id + ".Page"; //$NON-NLS-1$ //$NON-NLS-2$
+    return source.getId() + "." + id + ".Page";
   }
 
   @Override
@@ -74,7 +74,7 @@ public class MagicSourceStringBuilder<T extends IMagic> implements IMagicSourceS
 
   public String createShortSourceString(IExaltedSourceBook source, String magicId) {
     StringBuilder builder = new StringBuilder();
-    builder.append(resources.getString(createSourceBookKey(source) + ".Short")); //$NON-NLS-1$
+    builder.append(resources.getString(createSourceBookKey(source) + ".Short"));
     String pageKey = createPageKey(magicId, source);
     if (resources.supportsKey(pageKey)) {
       builder.append(TooltipBuilder.CommaSpace);

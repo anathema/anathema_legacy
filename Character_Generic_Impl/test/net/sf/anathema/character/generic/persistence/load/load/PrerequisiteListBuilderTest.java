@@ -16,7 +16,7 @@ import static org.junit.Assert.assertEquals;
 public class PrerequisiteListBuilderTest {
 
   private static Element createBasicCharmPrerequisiteXml() {
-    Element prerequisiteListElement = DocumentHelper.createElement("prerequisiteListElement"); //$NON-NLS-1$
+    Element prerequisiteListElement = DocumentHelper.createElement("prerequisiteListElement");
     CharmXmlTestUtils.fillBasicPrerequisites(prerequisiteListElement);
     return prerequisiteListElement;
   }
@@ -29,10 +29,10 @@ public class PrerequisiteListBuilderTest {
   @Test
   public void testCorrectCharmWithMultiplePrerequisiteCharms() throws Exception {
     Element prerequisiteListElement = createBasicCharmPrerequisiteXml();
-    String correctId1 = "Solar.CorrectId1"; //$NON-NLS-1$
-    prerequisiteListElement.addElement(ICharmXMLConstants.TAG_CHARM_REFERENCE).addAttribute("id", correctId1); //$NON-NLS-1$
-    String correctId2 = "Solar.CorrectId2"; //$NON-NLS-1$
-    prerequisiteListElement.addElement(ICharmXMLConstants.TAG_CHARM_REFERENCE).addAttribute("id", correctId2); //$NON-NLS-1$
+    String correctId1 = "Solar.CorrectId1";
+    prerequisiteListElement.addElement(ICharmXMLConstants.TAG_CHARM_REFERENCE).addAttribute("id", correctId1);
+    String correctId2 = "Solar.CorrectId2";
+    prerequisiteListElement.addElement(ICharmXMLConstants.TAG_CHARM_REFERENCE).addAttribute("id", correctId2);
     CharmPrerequisiteList prerequisiteList = parsePrerequisiteList(prerequisiteListElement);
     assertEquals(correctId1, prerequisiteList.getParentIDs()[0]);
     assertEquals(correctId2, prerequisiteList.getParentIDs()[1]);
@@ -41,8 +41,8 @@ public class PrerequisiteListBuilderTest {
   @Test
   public void testCorrectCharmWithPrerequisiteCharm() throws Exception {
     Element prerequisiteListElement = createBasicCharmPrerequisiteXml();
-    String correctId = "Solar.CorrectId"; //$NON-NLS-1$
-    prerequisiteListElement.addElement(ICharmXMLConstants.TAG_CHARM_REFERENCE).addAttribute("id", correctId); //$NON-NLS-1$
+    String correctId = "Solar.CorrectId";
+    prerequisiteListElement.addElement(ICharmXMLConstants.TAG_CHARM_REFERENCE).addAttribute("id", correctId);
     CharmPrerequisiteList prerequisiteList = parsePrerequisiteList(prerequisiteListElement);
     assertEquals(correctId, prerequisiteList.getParentIDs()[0]);
   }

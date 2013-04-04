@@ -30,7 +30,7 @@ public class CraftPresenter extends AbstractStringEntryTraitPresenter<ISubTrait>
 
   @Override
   public void initPresentation() {
-    String labelText = resources.getString("Crafts.SelectionLabel"); //$NON-NLS-1$
+    String labelText = resources.getString("Crafts.SelectionLabel");
     BasicUi basicUi = new BasicUi();
     IStringSelectionView selectionView = view.addSelectionView(labelText, basicUi.getAddIcon());
     initSelectionViewListening(selectionView);
@@ -71,7 +71,7 @@ public class CraftPresenter extends AbstractStringEntryTraitPresenter<ISubTrait>
   }
 
   private void addFixedSubView(BasicUi basicUi, ISubTrait craft) {
-    IRemovableTraitView< ? > subView = createSubView(basicUi, craft, resources.getString("Craft." + craft.getName())); //$NON-NLS-1$
+    IRemovableTraitView< ? > subView = createSubView(basicUi, craft, resources.getString("Craft." + craft.getName()));
     subView.setButtonEnabled(false);
     addSubView(craft, subView);
   }

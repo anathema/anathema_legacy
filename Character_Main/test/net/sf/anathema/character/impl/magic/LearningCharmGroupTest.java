@@ -47,8 +47,8 @@ public class LearningCharmGroupTest {
 
   @Test
   public void testIsLearnedCreationCharmOnCreation() throws Exception {
-    ICharm learnableCharm = new DummyCharm("learnableDummyCharm"); //$NON-NLS-1$
-    IExtendedCharmLearnableArbitrator learnableArbitrator = new DummyLearnableArbitrator(new String[]{learnableCharm.getId()});
+    ICharm learnableCharm = new DummyCharm("learnableDummyCharm");
+    IExtendedCharmLearnableArbitrator learnableArbitrator = new DummyLearnableArbitrator(learnableCharm.getId());
     LearningCharmGroup learningCharmGroup = createSolarMeleeGroup(learnableArbitrator);
     container.setLearningCharmGroup(learningCharmGroup);
     assertFalse(learningCharmGroup.isLearned(learnableCharm));
@@ -58,8 +58,8 @@ public class LearningCharmGroupTest {
 
   @Test
   public void testLearnedCreationCharmsUnlearnableOnCreation() throws Exception {
-    ICharm learnableCharm = new DummyCharm("learnableDummyCharm"); //$NON-NLS-1$
-    IExtendedCharmLearnableArbitrator learnableArbitrator = new DummyLearnableArbitrator(new String[]{learnableCharm.getId()});
+    ICharm learnableCharm = new DummyCharm("learnableDummyCharm");
+    IExtendedCharmLearnableArbitrator learnableArbitrator = new DummyLearnableArbitrator(learnableCharm.getId());
     LearningCharmGroup learningCharmGroup = createSolarMeleeGroup(learnableArbitrator);
     container.setLearningCharmGroup(learningCharmGroup);
     assertFalse(learningCharmGroup.isUnlearnable(learnableCharm));
@@ -69,9 +69,9 @@ public class LearningCharmGroupTest {
 
   @Test
   public void testMultipleGroupsPrerequisiteCharms() throws Exception {
-    String internalPrerequisiteId = "internalPrerquisite"; //$NON-NLS-1$
-    String externalPrerequisiteId = "externalPrerquisite"; //$NON-NLS-1$
-    String learCharmID = "learnCharm"; //$NON-NLS-1$
+    String internalPrerequisiteId = "internalPrerquisite";
+    String externalPrerequisiteId = "externalPrerquisite";
+    String learCharmID = "learnCharm";
     DummyCharm internalPrerequisite =
             new DummyCharm(internalPrerequisiteId, new ICharm[0], new IGenericTrait[]{new ValuedTraitType(AbilityType.Melee, 1)});
     DummyCharm externalPrerequisite =
@@ -81,7 +81,7 @@ public class LearningCharmGroupTest {
     ICharmTree charmTree = new CharmTree(new ICharm[]{internalPrerequisite, externalPrerequisite, learnCharm});
     externalPrerequisite.addLearnFollowUpCharm(learnCharm);
     IExtendedCharmLearnableArbitrator learnableArbitrator =
-            new DummyLearnableArbitrator(new String[]{externalPrerequisiteId, internalPrerequisiteId, learCharmID});
+            new DummyLearnableArbitrator(externalPrerequisiteId, internalPrerequisiteId, learCharmID);
     LearningCharmGroup internalGroup = createSolarGroup(learnableArbitrator, charmTree, AbilityType.Melee.getId());
     LearningCharmGroup externalGroup = createSolarGroup(learnableArbitrator, charmTree, AbilityType.Archery.getId());
     container.setLearningCharmGroups(new ILearningCharmGroup[]{internalGroup, externalGroup});

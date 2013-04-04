@@ -30,7 +30,7 @@ public class DefaultBonusPointCosts implements IBonusPointCosts {
     if (martialArtsLevel.compareTo(MartialArtsLevel.Sidereal) < 0) {
       return favored ? 4 : 5;
     }
-    throw new IllegalArgumentException("Sidereal Martial Arts shan't be learned at Character Creation!"); //$NON-NLS-1$
+    throw new IllegalArgumentException("Sidereal Martial Arts shan't be learned at Character Creation!");
   }
 
   @Override

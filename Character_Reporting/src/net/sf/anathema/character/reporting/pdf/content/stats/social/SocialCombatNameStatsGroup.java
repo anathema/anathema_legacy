@@ -17,11 +17,11 @@ public class SocialCombatNameStatsGroup extends AbstractNameStatsGroup<ISocialCo
 
   @Override
   protected String getHeaderResourceKey() {
-    return getResourceBase() + "AttackName"; //$NON-NLS-1$
+    return getResourceBase() + "AttackName";
   }
 
   @Override
   protected String getResourceBase() {
-    return "Sheet.SocialCombat."; //$NON-NLS-1$
+    return "Sheet.SocialCombat.";
   }
 }

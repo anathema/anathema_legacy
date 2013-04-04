@@ -31,11 +31,11 @@ public class HeartsBloodPresenter implements Presenter {
 
   @Override
   public void initPresentation() {
-    String animalFormString = resources.getString("Lunar.HeartsBlood.AnimalForm"); //$NON-NLS-1$
-    String animalStaminaString = resources.getString("Lunar.HeartsBlood.AnimalStamina"); //$NON-NLS-1$
-    String animalDexterityString = resources.getString("Lunar.HeartsBlood.AnimalDexterity"); //$NON-NLS-1$
-    String animalStrengthString = resources.getString("Lunar.HeartsBlood.AnimalStrength"); //$NON-NLS-1$
-    String animalAppearanceString = resources.getString("Lunar.HeartsBlood.AnimalAppearance"); //$NON-NLS-1$
+    String animalFormString = resources.getString("Lunar.HeartsBlood.AnimalForm");
+    String animalStaminaString = resources.getString("Lunar.HeartsBlood.AnimalStamina");
+    String animalDexterityString = resources.getString("Lunar.HeartsBlood.AnimalDexterity");
+    String animalStrengthString = resources.getString("Lunar.HeartsBlood.AnimalStrength");
+    String animalAppearanceString = resources.getString("Lunar.HeartsBlood.AnimalAppearance");
     BasicUi basicUi = new BasicUi();
     IAnimalFormSelectionView selectionView = view.createAnimalFormSelectionView(basicUi.getAddIcon(), animalFormString, animalStrengthString,
             animalDexterityString, animalStaminaString, animalAppearanceString);

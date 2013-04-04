@@ -10,7 +10,7 @@ public class LookAndFeelItem {
   public LookAndFeelItem(Resources resources, String name, String className) {
     this.name = name != null
             ? name
-            : resources.getString("AnathemaCore.Tools.Preferences.CustomLookAndFeel"); //$NON-NLS-1$
+            : resources.getString("AnathemaCore.Tools.Preferences.CustomLookAndFeel");
     this.className = !"".equals(className) ? className : null;
   }
 

@@ -73,7 +73,7 @@ public class ArtifactStatsDecorator extends AbstractStats implements IArtifactSt
 
   @Override
   public String getId() {
-    return getName().getId() + "." + type.name(); //$NON-NLS-1$
+    return getName().getId() + "." + type.name();
   }
 
   @Override

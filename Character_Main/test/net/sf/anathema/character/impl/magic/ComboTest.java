@@ -33,7 +33,7 @@ public class ComboTest {
     if (comboRules.canBeAddedToCombo(combo, charm)) {
       combo.addCharm(charm, false);
     } else {
-      throw new IllegalArgumentException("The charm " + charm.getId() + " is illegal in this combo."); //$NON-NLS-1$ //$NON-NLS-2$
+      throw new IllegalArgumentException("The charm " + charm.getId() + " is illegal in this combo.");
     }
   }
 
@@ -67,15 +67,15 @@ public class ComboTest {
   public void testOnlyInstantDurationCombos() throws Exception {
     final ICharm dummy1 = DummyCharmUtilities.createCharm(CharmType.Reflexive);
     assertTrue(comboRules.canBeAddedToCombo(combo, dummy1));
-    final ICharm dummy2 = DummyCharmUtilities.createCharm("Other", new ComboRestrictions()); //$NON-NLS-1$
+    final ICharm dummy2 = DummyCharmUtilities.createCharm("Other", new ComboRestrictions());
     assertFalse(comboRules.canBeAddedToCombo(combo, dummy2));
   }
 
   @Test
   public void testComboRestrictionComboAllowed() throws Exception {
-    assertFalse(comboRules.canBeAddedToCombo(combo, createCharm("Instant", new ComboRestrictions( //$NON-NLS-1$
+    assertFalse(comboRules.canBeAddedToCombo(combo, createCharm("Instant", new ComboRestrictions(
             false, Boolean.FALSE))));
-    assertTrue(comboRules.canBeAddedToCombo(combo, createCharm("Other", new ComboRestrictions( //$NON-NLS-1$
+    assertTrue(comboRules.canBeAddedToCombo(combo, createCharm("Other", new ComboRestrictions(
             false, Boolean.TRUE))));
   }
 

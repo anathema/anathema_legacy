@@ -20,7 +20,7 @@ public class VirtueFlawContent extends AbstractSubBoxContent {
 
   @Override
   public String getHeaderKey() {
-    return "GreatCurse.Solar"; //$NON-NLS-1$
+    return "GreatCurse.Solar";
   }
 
   public String getVirtueFlawName() {

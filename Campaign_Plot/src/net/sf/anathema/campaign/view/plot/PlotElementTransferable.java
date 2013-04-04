@@ -11,7 +11,7 @@ public final class PlotElementTransferable implements Transferable {
 
   private static DataFlavor createFlavorConstant() {
     try {
-      return new DataFlavor(DataFlavor.javaJVMLocalObjectMimeType + ";class=" + PlotElementTransferable.class.getName(), null, PlotElementTransferable.class.getClassLoader()); //$NON-NLS-1$
+      return new DataFlavor(DataFlavor.javaJVMLocalObjectMimeType + ";class=" + PlotElementTransferable.class.getName(), null, PlotElementTransferable.class.getClassLoader());
     }
     catch (ClassNotFoundException e) {
       throw new RuntimeException("Did you specify the correct classloader?", e);

@@ -13,7 +13,7 @@ public class DefaultStringProvider implements Resources {
   @Override
   public String getString(String key, Object... arguments) {
     if (arguments.length == 0) {
-      String[] splitKey = key.split("\\."); //$NON-NLS-1$
+      String[] splitKey = key.split("\\.");
       if (splitKey[splitKey.length - 1].equals(defaultKey)) {
         return splitKey[splitKey.length - 2];
       }
@@ -24,6 +24,6 @@ public class DefaultStringProvider implements Resources {
 
   @Override
   public boolean supportsKey(String key) {
-    return key.endsWith("." + defaultKey); //$NON-NLS-1$
+    return key.endsWith("." + defaultKey);
   }
 }

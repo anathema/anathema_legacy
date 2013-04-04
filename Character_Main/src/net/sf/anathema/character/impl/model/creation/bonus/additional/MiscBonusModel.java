@@ -9,7 +9,7 @@ public class MiscBonusModel extends AbstractIntegerValueModel {
   private final List<IAdditionalModelBonusPointCalculator> additionalCalculators;
 
   public MiscBonusModel(List<IAdditionalModelBonusPointCalculator> additionalCalculators) {
-    super("Bonus", "MiscPoints"); //$NON-NLS-1$//$NON-NLS-2$
+    super("Bonus", "MiscPoints");
     this.additionalCalculators = additionalCalculators;
   }
 

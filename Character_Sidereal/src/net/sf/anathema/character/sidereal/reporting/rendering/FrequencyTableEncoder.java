@@ -30,16 +30,16 @@ public class FrequencyTableEncoder extends AbstractTableEncoder<ReportSession> {
     Font boldCommentFont = graphics.createCommentFont();
     boldCommentFont.setStyle(Font.BOLD);
     TableList list = new TableList(commentFont, new CellPadding(2, 0, 1, 1));
-    TableCell spaceCell = new TableCell(new Phrase(" ", commentFont), Rectangle.NO_BORDER); //$NON-NLS-1$
+    TableCell spaceCell = new TableCell(new Phrase(" ", commentFont), Rectangle.NO_BORDER);
     spaceCell.setPadding(0);
 
-    list.addHeader(new Chunk(resources.getString("Sheet.Astrology.Frequency"), font), true); //$NON-NLS-1$
+    list.addHeader(new Chunk(resources.getString("Sheet.Astrology.Frequency"), font), true);
     list.addCell(spaceCell);
     list.addCell(spaceCell);
-    list.addItem(resources.getString("Sheet.Astrology.Frequency.Weekly")); //$NON-NLS-1$
-    list.addItem(resources.getString("Sheet.Astrology.Frequency.Daily")); //$NON-NLS-1$
-    list.addItem(resources.getString("Sheet.Astrology.Frequency.Scene")); //$NON-NLS-1$
-    list.addItem(resources.getString("Sheet.Astrology.Frequency.Anytime")); //$NON-NLS-1$
+    list.addItem(resources.getString("Sheet.Astrology.Frequency.Weekly"));
+    list.addItem(resources.getString("Sheet.Astrology.Frequency.Daily"));
+    list.addItem(resources.getString("Sheet.Astrology.Frequency.Scene"));
+    list.addItem(resources.getString("Sheet.Astrology.Frequency.Anytime"));
     list.addCell(spaceCell);
     list.addCell(spaceCell);
 

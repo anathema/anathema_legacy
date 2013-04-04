@@ -15,7 +15,7 @@ public final class RepositoryViewAction extends SmartAction {
 
   public static Action createMenuAction(Resources resources, IApplicationModel anathemaModel) {
     SmartAction action = new RepositoryViewAction(anathemaModel, resources);
-    action.setName(resources.getString("AnathemaCore.Tools.RepositoryView.ActionTitle") + "\u2026"); //$NON-NLS-1$ //$NON-NLS-2$
+    action.setName(resources.getString("AnathemaCore.Tools.RepositoryView.ActionTitle") + "\u2026");
     return action;
   }
 
@@ -24,6 +24,7 @@ public final class RepositoryViewAction extends SmartAction {
     this.resources = resources;
   }
 
+  @SuppressWarnings("unchecked")
   @Override
   protected void execute(Component parentComponent) {
     RepositoryBrowserDialogPage page = new RepositoryBrowserDialogPage(resources, model);

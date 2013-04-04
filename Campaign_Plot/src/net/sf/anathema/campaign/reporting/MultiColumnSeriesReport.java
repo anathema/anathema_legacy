@@ -39,7 +39,7 @@ public class MultiColumnSeriesReport extends AbstractPdfReport {
   @Override
   public void performPrint(IItem item, Document document, PdfWriter writer) throws ReportException {
     if (!supports(item)) {
-      throw new IllegalArgumentException("Item not supported: " + item.getDisplayName()); //$NON-NLS-1$
+      throw new IllegalArgumentException("Item not supported: " + item.getDisplayName());
     }
     contentTable.reset();
     writer.setSpaceCharRatio(PdfWriter.NO_SPACE_CHAR_RATIO);
@@ -63,9 +63,9 @@ public class MultiColumnSeriesReport extends AbstractPdfReport {
       new PdfOutline(
               rootOutline,
               new PdfAction(PdfAction.FIRSTPAGE),
-              resources.getString("SeriesReport.Header.TableOfContents")); //$NON-NLS-1$
+              resources.getString("SeriesReport.Header.TableOfContents"));
       document.newPage();
-      String synopsis = resources.getString("SeriesReport.Header.Synopsis");//$NON-NLS-1$
+      String synopsis = resources.getString("SeriesReport.Header.Synopsis");
       Paragraph synopsisParagraph = createTitleParagraph(synopsis, 13);
       document.add(synopsisParagraph);
       addOutline(rootOutline, synopsis);
@@ -86,7 +86,7 @@ public class MultiColumnSeriesReport extends AbstractPdfReport {
         addTextAndChildren(columnText, story, storyOutline, new int[]{storyNumber++});
         writeColumnText(document, columnText);
       }
-      contentTable.performPrint(seriesTitle, resources.getString("SeriesReport.Header.TableOfContents"), //$NON-NLS-1$
+      contentTable.performPrint(seriesTitle, resources.getString("SeriesReport.Header.TableOfContents"),
               document,
               writer);
     } catch (DocumentException e) {
@@ -158,7 +158,7 @@ public class MultiColumnSeriesReport extends AbstractPdfReport {
   private String createSectionTitle(IItemDescription description, int[] sectionMarking) {
     String prepend = "";
     for (int mark : sectionMarking) {
-      prepend = prepend.concat(mark + "."); //$NON-NLS-1$
+      prepend = prepend.concat(mark + ".");
     }
     return prepend + " " + description.getName().getText();
   }

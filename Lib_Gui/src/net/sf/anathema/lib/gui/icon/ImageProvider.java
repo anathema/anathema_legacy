@@ -27,10 +27,10 @@ public class ImageProvider implements IImageProvider {
 
   private InputStream getInputStream(Class<?> requestor, String relativePath) {
     Preconditions.checkNotNull(relativePath);
-    String resourceName = rootPath + "/" + relativePath; //$NON-NLS-1$
+    String resourceName = rootPath + "/" + relativePath;
     InputStream inputStream = requestor.getClassLoader().getResourceAsStream(resourceName);
     if (inputStream == null) {
-      throw new ImageLoadingException("Cannot find image resource: " + resourceName); //$NON-NLS-1$
+      throw new ImageLoadingException("Cannot find image resource: " + resourceName);
     }
     return inputStream;
   }
@@ -39,7 +39,7 @@ public class ImageProvider implements IImageProvider {
     try {
       return ImageLoader.getMemoryImageWithoutCaching(inputStream);
     } catch (IOException e) {
-      throw new ImageLoadingException("Cannot open image: " + e.getMessage()); //$NON-NLS-1$
+      throw new ImageLoadingException("Cannot open image: " + e.getMessage());
     }
   }
 

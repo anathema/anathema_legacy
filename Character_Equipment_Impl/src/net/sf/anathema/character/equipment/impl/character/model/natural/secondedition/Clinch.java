@@ -62,6 +62,6 @@ public class Clinch extends AbstractNaturalWeaponStats {
 
   @Override
   public Identified getName() {
-    return new Identifier("Clinch"); //$NON-NLS-1$
+    return new Identifier("Clinch");
   }
 }

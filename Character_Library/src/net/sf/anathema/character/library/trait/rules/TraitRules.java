@@ -16,8 +16,8 @@ public class TraitRules implements ITraitRules {
   private Range modifiedCreationRange;
 
   public TraitRules(ITraitType traitType, ITraitTemplate template, ILimitationContext limitationContext) {
-    Preconditions.checkNotNull(traitType, "TemplateType must not be null."); //$NON-NLS-1$
-    Preconditions.checkNotNull(template, "Template must not be null."); //$NON-NLS-1$
+    Preconditions.checkNotNull(traitType, "TemplateType must not be null.");
+    Preconditions.checkNotNull(template, "Template must not be null.");
     this.traitType = traitType;
     this.template = template;
     this.limitationContext = limitationContext;

@@ -16,7 +16,7 @@ public class BasicItemDataTest {
 
   @Test
   public void hasNoContentAfterCreation() throws Exception {
-    assertEquals("", itemData.getDescription().getName().getText()); //$NON-NLS-1$
+    assertEquals("", itemData.getDescription().getName().getText());
     assertArrayEquals(new ITextPart[0], itemData.getDescription().getContent().getTextParts());
   }
 
@@ -24,7 +24,7 @@ public class BasicItemDataTest {
   public void usesAdjusterForPrintName() throws Exception {
     IItem item = mock(IItem.class);
     itemData.setPrintNameAdjuster(new PrintNameAdjuster(item));
-    itemData.getDescription().getName().setText("New Name"); //$NON-NLS-1$
+    itemData.getDescription().getName().setText("New Name");
     verify(item).setPrintName("New Name");
   }
 }

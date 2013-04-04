@@ -19,25 +19,25 @@ public class CostParserTest extends BasicTemplateParsingTestCase {
 
   @Test
   public void testRequiredFixedCostOne() throws Exception {
-    final Element rootElement = getDocumentRoot("<template><cost><fixedCost cost=\"1\"/></cost></template>"); //$NON-NLS-1$
-    assertEquals(1, costParser.getFixedCostFromRequiredElement(rootElement, "cost")); //$NON-NLS-1$
+    final Element rootElement = getDocumentRoot("<template><cost><fixedCost cost=\"1\"/></cost></template>");
+    assertEquals(1, costParser.getFixedCostFromRequiredElement(rootElement, "cost"));
   }
 
   @Test
   public void testRequiredFixedCostTwo() throws Exception {
-    final Element rootElement = getDocumentRoot("<template><cost><fixedCost cost=\"2\"/></cost></template>"); //$NON-NLS-1$
-    assertEquals(2, costParser.getFixedCostFromRequiredElement(rootElement, "cost")); //$NON-NLS-1$
+    final Element rootElement = getDocumentRoot("<template><cost><fixedCost cost=\"2\"/></cost></template>");
+    assertEquals(2, costParser.getFixedCostFromRequiredElement(rootElement, "cost"));
   }
 
   @Test(expected = PersistenceException.class)
   public void testPersistenceExepctionOnReadRequiredFixedCostFromMissingElement() throws Exception {
-    final Element rootElement = getDocumentRoot("<template />"); //$NON-NLS-1$
-    costParser.getFixedCostFromRequiredElement(rootElement, "cost"); //$NON-NLS-1$
+    final Element rootElement = getDocumentRoot("<template />");
+    costParser.getFixedCostFromRequiredElement(rootElement, "cost");
   }
 
   @Test(expected = PersistenceException.class)
   public void testPersistenceExepctionOnReadRequiredFixedCostWithMissingFixedCostElement() throws Exception {
-    final Element rootElement = getDocumentRoot("<template><cost /></template>"); //$NON-NLS-1$
-    costParser.getFixedCostFromRequiredElement(rootElement, "cost"); //$NON-NLS-1$
+    final Element rootElement = getDocumentRoot("<template><cost /></template>");
+    costParser.getFixedCostFromRequiredElement(rootElement, "cost");
   }
 }

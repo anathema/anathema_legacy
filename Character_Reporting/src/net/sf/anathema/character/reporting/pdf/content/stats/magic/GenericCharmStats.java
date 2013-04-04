@@ -22,7 +22,7 @@ public class GenericCharmStats extends CharmStats {
   @Override
   public String[] getDetailStrings(Resources resources) {
 	  String description = resources.getString(getName() + ".Description.Short");
-	  return new String[]{description}; //$NON-NLS-1$
+	  return new String[]{description};
   }
   
   @Override
@@ -38,7 +38,7 @@ public class GenericCharmStats extends CharmStats {
   
   @Override
   public final String getGroupName(Resources resources) {
-    return resources.getString("Generics"); //$NON-NLS-1$
+    return resources.getString("Generics");
   }
   
   @Override

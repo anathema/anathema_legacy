@@ -27,10 +27,10 @@ public class SecondEditionDBTCombatEncoder implements ContentEncoder {
 
   @Override
   public void encode(SheetGraphics graphics, ReportSession reportSession, Bounds bounds) {
-    String joinLabel = resources.getString("Sheet.Combat.JoinBattle"); //$NON-NLS-1$
-    String dodgeLabel = resources.getString("Sheet.Combat.DodgeDV"); //$NON-NLS-1$
-    String knockdownLabel = resources.getString("Sheet.Combat.Knockdown"); //$NON-NLS-1$
-    String stunningLabel = resources.getString("Sheet.Combat.Stunning"); //$NON-NLS-1$
+    String joinLabel = resources.getString("Sheet.Combat.JoinBattle");
+    String dodgeLabel = resources.getString("Sheet.Combat.DodgeDV");
+    String knockdownLabel = resources.getString("Sheet.Combat.Knockdown");
+    String stunningLabel = resources.getString("Sheet.Combat.Stunning");
     IBeastformModel additionalModel = (IBeastformModel) reportSession.getCharacter().getAdditionalModel(BeastformTemplate.TEMPLATE_ID);
     IGenericTraitCollection traitCollection = additionalModel.getBeastTraitCollection();
     ICharacterType characterType = reportSession.getCharacter().getTemplate().getTemplateType().getCharacterType();
@@ -47,9 +47,9 @@ public class SecondEditionDBTCombatEncoder implements ContentEncoder {
     int stunningThreshold = CharacterUtilities.getStunningThreshold(traitCollection);
     int stunningPool = CharacterUtilities.getStunningPool(traitCollection);
 
-    String joinSpecialtyLabel = resources.getString("Sheet.Combat.NormalSpecialty") + awarenessSpecialty; //$NON-NLS-1$
-    String dodgeSpecialtyLabel = resources.getString("Sheet.Combat.NormalSpecialty") + dodgeSpecialty; //$NON-NLS-1$
-    String thresholdPoolLabel = resources.getString("Sheet.Combat.ThresholdPool"); //$NON-NLS-1$
+    String joinSpecialtyLabel = resources.getString("Sheet.Combat.NormalSpecialty") + awarenessSpecialty;
+    String dodgeSpecialtyLabel = resources.getString("Sheet.Combat.NormalSpecialty") + dodgeSpecialty;
+    String thresholdPoolLabel = resources.getString("Sheet.Combat.ThresholdPool");
     Position upperLeftCorner = new Position(bounds.x, bounds.getMaxY());
     LabelledValueEncoder encoder = new LabelledValueEncoder(2, upperLeftCorner, bounds.width, 3);
     displayJoinBattleWithSpecialty( graphics, encoder, joinLabel, joinBattle, joinBattleWithSpecialty, joinSpecialtyLabel);

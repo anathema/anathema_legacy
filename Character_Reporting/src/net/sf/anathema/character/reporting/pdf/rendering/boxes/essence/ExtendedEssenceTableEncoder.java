@@ -10,15 +10,11 @@ import com.itextpdf.text.Phrase;
 import com.itextpdf.text.Rectangle;
 import com.itextpdf.text.pdf.PdfPCell;
 import com.itextpdf.text.pdf.PdfPTable;
-import net.sf.anathema.character.generic.character.IGenericCharacter;
-import net.sf.anathema.character.generic.character.IGenericTraitCollection;
 import net.sf.anathema.character.reporting.pdf.content.essence.ExtendedEssenceContent;
 import net.sf.anathema.character.reporting.pdf.content.essence.pools.PoolRow;
-import net.sf.anathema.character.reporting.pdf.content.essence.recovery.RecoveryRow;
 import net.sf.anathema.character.reporting.pdf.rendering.extent.Bounds;
 import net.sf.anathema.character.reporting.pdf.rendering.extent.Position;
 import net.sf.anathema.character.reporting.pdf.rendering.general.table.ITableEncoder;
-import net.sf.anathema.character.reporting.pdf.rendering.general.table.TableEncodingUtilities;
 import net.sf.anathema.character.reporting.pdf.rendering.general.traits.PdfTraitEncoder;
 import net.sf.anathema.character.reporting.pdf.rendering.graphics.GraphicsTemplate;
 import net.sf.anathema.character.reporting.pdf.rendering.graphics.SheetGraphics;
@@ -52,7 +48,7 @@ public class ExtendedEssenceTableEncoder implements ITableEncoder<ExtendedEssenc
     return ArrayUtils.toPrimitive(getEssenceColumns());
   }
 
-  public final float getTableHeight(ExtendedEssenceContent content, float width) throws DocumentException {
+  public final float getTableHeight(ExtendedEssenceContent content) throws DocumentException {
     int lines = content.getOverallLineCount();
     return traitEncoder.getTraitHeight() + lines * BARE_LINE_HEIGHT + 1.75f * TEXT_PADDING;
   }
@@ -63,10 +59,6 @@ public class ExtendedEssenceTableEncoder implements ITableEncoder<ExtendedEssenc
     table.setWidthPercentage(100);
     graphics.createSimpleColumn(bounds).withElement(table).encode();
     return table.getTotalHeight();
-  }
-
-  protected IGenericTraitCollection getTraits(IGenericCharacter character) {
-    return character.getTraitCollection();
   }
 
   protected final PdfPTable createTable(SheetGraphics graphics, ExtendedEssenceContent content) throws DocumentException {
@@ -84,7 +76,7 @@ public class ExtendedEssenceTableEncoder implements ITableEncoder<ExtendedEssenc
     return template.getImageInstance();
   }
 
-  private final void addEssenceHeader(SheetGraphics graphics, PdfPTable table, Image firstCell, ExtendedEssenceContent content) {
+  private void addEssenceHeader(SheetGraphics graphics, PdfPTable table, Image firstCell, ExtendedEssenceContent content) {
     PdfPCell spaceCell = createSpaceCell(graphics);
     Font font = getDefaultFont(graphics);
     TableCell headerCell = new TableCell(firstCell);
@@ -102,13 +94,6 @@ public class ExtendedEssenceTableEncoder implements ITableEncoder<ExtendedEssenc
     for (int index = 0; index < content.getNumberOfContentLines(); index++) {
       addPoolCells(getDefaultFont(graphics), table, poolRows.get(index));
     }
-  }
-
-  private TableCell markCell(RecoveryRow recoveryRow, TableCell cell) {
-    if (recoveryRow.isMarked()) {
-      cell.setBorderWidth(cell.getBorderWidthTop() * 2f);
-    }
-    return cell;
   }
 
   private void addPoolCells(Font font, PdfPTable table, PoolRow poolRow) {
@@ -135,17 +120,13 @@ public class ExtendedEssenceTableEncoder implements ITableEncoder<ExtendedEssenc
   }
 
   private PdfPCell createSpaceCell(SheetGraphics graphics) {
-    PdfPCell spaceCell = new PdfPCell(new Phrase(" ", getDefaultFont(graphics))); //$NON-NLS-1$
+    PdfPCell spaceCell = new PdfPCell(new Phrase(" ", getDefaultFont(graphics)));
     spaceCell.setBorder(HEADER_BORDER);
     return spaceCell;
   }
 
-  private final Font getDefaultFont(SheetGraphics graphics) {
+  private Font getDefaultFont(SheetGraphics graphics) {
     return graphics.createTableFont();
-  }
-
-  private final Font getBoldFont(SheetGraphics graphics) {
-    return TableEncodingUtilities.createBoldTableFont(graphics.getBaseFont());
   }
 
   @Override

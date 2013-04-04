@@ -20,7 +20,7 @@ public class ExtendedEssenceEncoder extends AbstractContentEncoder<ExtendedEssen
   public float getRequestedHeight(SheetGraphics graphics, ReportSession session, float width) {
     try {
       ExtendedEssenceContent essenceContent = createContent(session);
-      return poolTable.getTableHeight(essenceContent, width);
+      return poolTable.getTableHeight(essenceContent);
     } catch (DocumentException e) {
       return 100;
     }

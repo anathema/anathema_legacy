@@ -2,7 +2,7 @@ package net.sf.anathema.lib.text;
 
 public enum FontStyleProperty {
 
-  BOLD("Bold"), ITALICS("Italics"); //$NON-NLS-1$ //$NON-NLS-2$
+  BOLD("Bold"), ITALICS("Italics");
 
   private final String name;
 

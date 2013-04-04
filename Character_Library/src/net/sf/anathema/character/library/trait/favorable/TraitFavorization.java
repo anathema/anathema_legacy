@@ -36,7 +36,7 @@ public class TraitFavorization implements ITraitFavorization {
   @Override
   public final void setFavorableState(FavorableState state) {
     if (state == FavorableState.Caste && isRequiredFavored) {
-      throw new IllegalStateException("Traits with required favored must not  be of any caste"); //$NON-NLS-1$
+      throw new IllegalStateException("Traits with required favored must not  be of any caste");
     }
     if (this.state == state && state != FavorableState.Caste) {
       return;

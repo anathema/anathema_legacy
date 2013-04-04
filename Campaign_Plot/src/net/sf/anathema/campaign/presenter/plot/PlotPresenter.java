@@ -166,11 +166,11 @@ public class PlotPresenter implements Presenter {
   }
 
   private void addNewTo(IPlotElementContainer container) {
-    container.addChild(container.getTimeUnit().getSuccessor().getId() + " " + (container.getChildren().length + 1)); //$NON-NLS-1$
+    container.addChild(container.getTimeUnit().getSuccessor().getId() + " " + (container.getChildren().length + 1));
   }
 
   private void initDescriptionViewPresentation(IBasicItemDescriptionView descriptionView) {
-    itemNameView = descriptionView.addLineTextView(resources.getString("SeriesPlot.ElementName.Label") + ":"); //$NON-NLS-1$//$NON-NLS-2$
+    itemNameView = descriptionView.addLineTextView(resources.getString("SeriesPlot.ElementName.Label") + ":");
     itemNameView.setEnabled(false);
     itemNameView.addTextChangedListener(new ObjectValueListener<String>() {
       @Override
@@ -206,7 +206,7 @@ public class PlotPresenter implements Presenter {
     view.initSeriesHierarchyView(
             treeModel,
             new PlotTreeCellRenderer(),
-            resources.getString("SeriesPlot.PlotTree.BorderTitle") + ":"); //$NON-NLS-1$ //$NON-NLS-2$
+            resources.getString("SeriesPlot.PlotTree.BorderTitle") + ":");
     IBasicItemDescriptionView descriptionView = view.initBasicItemDescriptionView();
     initDescriptionViewPresentation(descriptionView);
     view.initGui(new PlotViewProperties(resources));

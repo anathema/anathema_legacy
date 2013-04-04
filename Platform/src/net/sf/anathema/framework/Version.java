@@ -7,7 +7,7 @@ public class Version implements Comparable<Version> {
 
   public static boolean isParseable(String versionString) {
     try {
-      String[] split = versionString.split("\\."); //$NON-NLS-1$ //$NON-NLS-2$
+      String[] split = versionString.split("\\.");
       for (String numbers : split) {
         Integer.valueOf(numbers);
       }
@@ -43,7 +43,7 @@ public class Version implements Comparable<Version> {
   }
 
   private void parseVersion(String string) {
-    String[] split = string.split("\\."); //$NON-NLS-1$ //$NON-NLS-2$
+    String[] split = string.split("\\.");
     majorVersion = Integer.valueOf(split[0]);
     minorVersion = Integer.valueOf(split[1]);
     if (split.length > 2) {
@@ -71,12 +71,12 @@ public class Version implements Comparable<Version> {
     return 0;
   }
 
+  @SuppressWarnings("SimplifiableIfStatement")
   @Override
   public boolean equals(Object obj) {
     if (obj == null || obj.getClass() != getClass()) {
       return false;
     }
-
     return compareTo((Version) obj) == 0;
   }
 

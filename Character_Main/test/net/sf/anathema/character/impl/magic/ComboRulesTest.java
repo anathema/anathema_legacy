@@ -25,7 +25,7 @@ public class ComboRulesTest extends AbstractComboRulesTestCase {
 
   @Test
   public void testDurationComboLegal() throws Exception {
-    assertTrue(rules.isCharmComboLegal(new DummyCharm("Instant", //$NON-NLS-1$
+    assertTrue(rules.isCharmComboLegal(new DummyCharm("Instant",
             CharmType.Reflexive, new ComboRestrictions(), null)));
   }
 
@@ -37,15 +37,15 @@ public class ComboRulesTest extends AbstractComboRulesTestCase {
         return false;
       }
     };
-    assertFalse(rules.isCharmComboLegal(new DummyCharm("Other", //$NON-NLS-1$
+    assertFalse(rules.isCharmComboLegal(new DummyCharm("Other",
             CharmType.Reflexive, new ComboRestrictions(), null)));
   }
 
   @Test
   public void testRestrictionComboLegal() throws Exception {
-    assertFalse(rules.isCharmComboLegal(DummyCharmUtilities.createCharm("Instant", new ComboRestrictions( //$NON-NLS-1$
+    assertFalse(rules.isCharmComboLegal(DummyCharmUtilities.createCharm("Instant", new ComboRestrictions(
             false, Boolean.FALSE))));
-    assertTrue(rules.isCharmComboLegal(DummyCharmUtilities.createCharm("DurationType", new ComboRestrictions( //$NON-NLS-1$
+    assertTrue(rules.isCharmComboLegal(DummyCharmUtilities.createCharm("DurationType", new ComboRestrictions(
             false, Boolean.TRUE))));
   }
 
@@ -61,7 +61,7 @@ public class ComboRulesTest extends AbstractComboRulesTestCase {
   @Test
   public void testRestrictionById() throws Exception {
     ComboRestrictions restrictions = new ComboRestrictions();
-    String forbiddenId = "DummyCharm";//$NON-NLS-1$
+    String forbiddenId = "DummyCharm";
     restrictions.addRestrictedCharmId(forbiddenId);
     ICharm charm1 = DummyCharmUtilities.createCharm(CharmType.Supplemental, restrictions, new ValuedTraitType(AbilityType.Archery, 3));
     DummyCharm charm2 = new DummyCharm(forbiddenId);

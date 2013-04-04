@@ -1,11 +1,11 @@
 package net.sf.anathema.campaign.perspective;
 
+import net.sf.anathema.campaign.load.selection.IObjectSelectionProperties;
 import net.sf.anathema.lib.gui.ui.ObjectUi;
 import net.sf.anathema.lib.gui.ui.ObjectUiListCellRenderer;
 import net.sf.anathema.lib.message.BasicMessage;
 import net.sf.anathema.lib.message.IBasicMessage;
 import net.sf.anathema.lib.resources.Resources;
-import net.sf.anathema.campaign.load.selection.IObjectSelectionProperties;
 
 import javax.swing.ListCellRenderer;
 
@@ -26,11 +26,11 @@ public class LoadItemWizardProperties implements IObjectSelectionProperties {
 
   @Override
   public IBasicMessage getSelectMessage() {
-    return new BasicMessage(resources.getString("AnathemaPersistence.LoadAction.Message.Default")); //$NON-NLS-1$
+    return new BasicMessage(resources.getString("AnathemaPersistence.LoadAction.Message.Default"));
   }
 
   @Override
   public String getSelectionTitle() {
-    return resources.getString("AnathemaPersistence.LoadMenu.Name"); //$NON-NLS-1$
+    return resources.getString("AnathemaPersistence.LoadMenu.Name");
   }
 }

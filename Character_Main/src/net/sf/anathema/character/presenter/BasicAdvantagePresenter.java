@@ -48,17 +48,17 @@ public class BasicAdvantagePresenter implements IContentPresenter {
   private class BasicAdvantageViewProperties implements IAdvantageViewProperties {
     @Override
     public String getVirtueTitle() {
-      return resources.getString("AdvantagesView.Virtues.Title"); //$NON-NLS-1$
+      return resources.getString("AdvantagesView.Virtues.Title");
     }
 
     @Override
     public String getWillpowerTitle() {
-      return resources.getString("AdvantagesView.Willpower.Title"); //$NON-NLS-1$
+      return resources.getString("AdvantagesView.Willpower.Title");
     }
 
     @Override
     public String getEssenceTitle() {
-      return resources.getString("AdvantagesView.Essence.Title"); //$NON-NLS-1$
+      return resources.getString("AdvantagesView.Essence.Title");
     }
   }
 }

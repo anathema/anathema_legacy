@@ -66,7 +66,7 @@ public class AnathemaSaveAction extends SmartAction {
 
   public static Action createToolAction(IApplicationModel model, Resources resources) {
     SmartAction action = new AnathemaSaveAction(model, resources);
-    action.setToolTipText(resources.getString("AnathemaPersistence.SaveAction.Tooltip")); //$NON-NLS-1$
+    action.setToolTipText(resources.getString("AnathemaPersistence.SaveAction.Tooltip"));
     action.setIcon(new PlatformUI().getSaveTaskBarIcon());
     return action;
   }
@@ -92,7 +92,7 @@ public class AnathemaSaveAction extends SmartAction {
       selectedItem.setClean();
     } catch (IOException | RepositoryException e) {
       MessageDialogFactory
-              .showMessageDialog(parentComponent, new Message(resources.getString("AnathemaPersistence.SaveAction.Message.Error"), e)); //$NON-NLS-1$
+              .showMessageDialog(parentComponent, new Message(resources.getString("AnathemaPersistence.SaveAction.Message.Error"), e));
       Logger.getLogger(getClass()).error(e);
     } finally {
       IOUtils.closeQuietly(stream);

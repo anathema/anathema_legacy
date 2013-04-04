@@ -57,7 +57,7 @@ public class EffectiveArmour extends AbstractCombatStats implements IArmourStats
 
   @Override
   public Identified getName() {
-    return new Identifier("EffectiveArmour"); //$NON-NLS-1$
+    return new Identifier("EffectiveArmour");
   }
 
   public void addArmour(IArmourStats armour) {

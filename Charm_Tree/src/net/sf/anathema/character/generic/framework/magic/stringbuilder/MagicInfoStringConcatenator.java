@@ -18,7 +18,7 @@ public class MagicInfoStringConcatenator {
     appendToString(builder, healthCost);
     appendToString(builder, xpCost);
     if (builder.length() == 0) {
-      return resources.getString("Charms.Cost.None"); //$NON-NLS-1$
+      return resources.getString("Charms.Cost.None");
     }
     return builder.toString();
   }
@@ -31,7 +31,7 @@ public class MagicInfoStringConcatenator {
       builder.append(appendix);
       return;
     }
-    builder.append(", "); //$NON-NLS-1$
+    builder.append(", ");
     builder.append(appendix);
   }
 }

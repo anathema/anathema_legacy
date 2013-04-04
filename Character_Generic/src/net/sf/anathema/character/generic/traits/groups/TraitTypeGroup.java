@@ -30,7 +30,7 @@ public class TraitTypeGroup implements ITraitTypeGroup {
         return element;
       }
     }
-    throw new IllegalArgumentException("No trait type with found in group with id " + typeId); //$NON-NLS-1$
+    throw new IllegalArgumentException("No trait type with found in group with id " + typeId);
   }
 
   @Override

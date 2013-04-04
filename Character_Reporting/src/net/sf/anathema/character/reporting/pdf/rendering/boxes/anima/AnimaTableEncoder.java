@@ -56,7 +56,7 @@ public class AnimaTableEncoder extends AbstractTableEncoder<ReportSession> {
       table.addCell(createHeaderCell(graphics, getString(column.getHeaderKey())));
     }
     ICharacterType type = session.getCharacter().getTemplate().getTemplateType().getCharacterType();
-    String descriptionPrefix = "Sheet.AnimaTable.Description." + type; //$NON-NLS-1$
+    String descriptionPrefix = "Sheet.AnimaTable.Description." + type;
     for (int index = 0; index < 5; index++) {
       addAnimaRow(graphics, table, index, session, descriptionPrefix);
     }
@@ -74,7 +74,7 @@ public class AnimaTableEncoder extends AbstractTableEncoder<ReportSession> {
   }
 
   protected PdfPCell createDescriptionCell(SheetGraphics graphics, int level, String descriptionPrefix) {
-    return createContentCell(graphics, getString(descriptionPrefix + "." + AnimaUtils.resourceIds[level])); //$NON-NLS-1$
+    return createContentCell(graphics, getString(descriptionPrefix + "." + AnimaUtils.resourceIds[level]));
   }
 
   protected PdfPCell createRangeCell(SheetGraphics graphics, int level, IGenericCharacter character) {
@@ -90,9 +90,9 @@ public class AnimaTableEncoder extends AbstractTableEncoder<ReportSession> {
   }
 
   protected ColumnDescriptor[] getColumns() {
-    return new ColumnDescriptor[]{new ColumnDescriptor(0.15f, "Sheet.AnimaTable.Header.Motes"), //$NON-NLS-1$
-            new ColumnDescriptor(0.6f, "Sheet.AnimaTable.Header.BannerFlare"), //$NON-NLS-1$
-            new ColumnDescriptor(0.25f, "Sheet.AnimaTable.Header.Stealth")}; //$NON-NLS-1$
+    return new ColumnDescriptor[]{new ColumnDescriptor(0.15f, "Sheet.AnimaTable.Header.Motes"),
+            new ColumnDescriptor(0.6f, "Sheet.AnimaTable.Header.BannerFlare"),
+            new ColumnDescriptor(0.25f, "Sheet.AnimaTable.Header.Stealth")};
   }
 
   protected final PdfPCell createContentCell(SheetGraphics graphics, String text) {

@@ -23,12 +23,12 @@ public class ToDisplayCombo implements Function<IGenericCombo, DisplayCombo> {
 
   private String getDisplayName(IGenericCombo combo) {
     String name = combo.getName();
-    return name == null ? "???" : name; //$NON-NLS-1$
+    return name == null ? "???" : name;
   }
 
   private String getCharmString(IGenericCombo combo) {
     CharmPrintNameTransformer transformer = new CharmPrintNameTransformer(resources);
     String[] charmNames = net.sf.anathema.lib.lang.ArrayUtilities.transform(combo.getCharms(), String.class, transformer);
-    return Joiner.on(", ").join(charmNames); //$NON-NLS-1$
+    return Joiner.on(", ").join(charmNames);
   }
 }

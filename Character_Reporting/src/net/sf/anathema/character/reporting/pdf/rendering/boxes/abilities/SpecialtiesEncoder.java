@@ -28,7 +28,7 @@ public class SpecialtiesEncoder extends AbstractNamedTraitEncoder implements INa
   @Override
   public float encode(SheetGraphics graphics, ReportSession session, Position position, float width, float height) {
     IGenericCharacter character = session.getCharacter();
-    String title = getResources().getString("Sheet.AbilitySubHeader.Specialties"); //$NON-NLS-1$
+    String title = getResources().getString("Sheet.AbilitySubHeader.Specialties");
     List<IValuedTraitReference> references = new ArrayList<>();
     for (IIdentifiedTraitTypeGroup group : character.getAbilityTypeGroups()) {
       for (ITraitType traitType : group.getAllGroupTypes()) {

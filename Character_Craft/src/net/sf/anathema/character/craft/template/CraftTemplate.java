@@ -5,7 +5,7 @@ import net.sf.anathema.lib.util.Identifier;
 
 public class CraftTemplate extends Identifier implements IGlobalAdditionalTemplate {
 
-  public static final String ID = "Craft"; //$NON-NLS-1$
+  public static final String ID = "Craft";
 
   public CraftTemplate() {
     super(ID);

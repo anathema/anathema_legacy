@@ -22,7 +22,7 @@ public final class TagsStatsGroup implements IEquipmentStatsGroup<IWeaponStats> 
 
   public TagsStatsGroup(Resources resources) {
     this.resources = resources;
-    this.title = resources.getString("Sheet.Equipment.Header.Tags"); //$NON-NLS-1$ ;
+    this.title = resources.getString("Sheet.Equipment.Header.Tags");
   }
 
   @Override
@@ -49,7 +49,7 @@ public final class TagsStatsGroup implements IEquipmentStatsGroup<IWeaponStats> 
       String[] values = transform(tags, String.class, new Function<Identified, String>() {
         @Override
         public String apply(Identified input) {
-          return resources.getString("Weapons.Tags." + input.getId() + ".Short"); //$NON-NLS-1$ //$NON-NLS-2$
+          return resources.getString("Weapons.Tags." + input.getId() + ".Short");
         }
       });
       String valueString = values.length == 0 ? " " : Joiner.on(",").join(values);
@@ -58,7 +58,7 @@ public final class TagsStatsGroup implements IEquipmentStatsGroup<IWeaponStats> 
   }
 
   private PdfPCell createEmptyNameCell(Font font) {
-    return createFilledContentCell(font, " "); //$NON-NLS-1$
+    return createFilledContentCell(font, " ");
   }
 
   private PdfPCell createFilledContentCell(Font font, String text) {

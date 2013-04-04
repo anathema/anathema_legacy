@@ -28,7 +28,7 @@ public abstract class AbstractCharmTypeStringBuilder implements ICharmTypeString
   @Override
   public void buildStringForMagic(StringBuilder builder, IMagic magic, Object details) {
     if (magic instanceof ICharm) {
-      builder.append(resources.getString("CharmTreeView.ToolTip.Type")); //$NON-NLS-1$
+      builder.append(resources.getString("CharmTreeView.ToolTip.Type"));
       builder.append(TooltipBuilder.ColonSpace);
       builder.append(createTypeString(((ICharm) magic).getCharmTypeModel()));
       builder.append(TooltipBuilder.HtmlLineBreak);
@@ -41,8 +41,8 @@ public abstract class AbstractCharmTypeStringBuilder implements ICharmTypeString
   private StringBuilder buildReflexiveModelString(IReflexiveSpecialsModel model) {
     StringBuilder builder = new StringBuilder();
     builder.append(TooltipBuilder.Space);
-    builder.append("("); //$NON-NLS-1$    
-    MessageFormat formatter = new MessageFormat(""); //$NON-NLS-1$
+    builder.append("(");
+    MessageFormat formatter = new MessageFormat("");
     Object[] objects;
     if (model.getSecondaryStep() == null) {
       formatter.applyPattern(getResources().getString(getReflexiveSingleStepPattern()));
@@ -60,7 +60,7 @@ public abstract class AbstractCharmTypeStringBuilder implements ICharmTypeString
       }
     }
     builder.append(formatter.format(objects));
-    builder.append(")"); //$NON-NLS-1$
+    builder.append(")");
     return builder;
   }
 
@@ -73,7 +73,7 @@ public abstract class AbstractCharmTypeStringBuilder implements ICharmTypeString
       return builder;
     }
     builder.append(TooltipBuilder.Space);
-    builder.append("("); //$NON-NLS-1$
+    builder.append("(");
     boolean dramaticAction = model.getTurnType() == TurnType.DramaticAction;
     boolean longTick = model.getTurnType() == TurnType.LongTick;
     if (dramaticAction) {
@@ -86,7 +86,7 @@ public abstract class AbstractCharmTypeStringBuilder implements ICharmTypeString
     if (!defaultDefense || displayDefaultValues) {
       builder.append(buildDefenseString(model, defaultSpeed, dramaticAction || longTick));
     }
-    builder.append(")"); //$NON-NLS-1$
+    builder.append(")");
     return builder;
   }
 

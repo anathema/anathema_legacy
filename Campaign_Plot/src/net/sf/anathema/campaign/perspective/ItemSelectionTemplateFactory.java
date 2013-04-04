@@ -36,7 +36,7 @@ public class ItemSelectionTemplateFactory implements DialogBasedTemplateFactory 
   @Override
   public IDialogPage createPage(final IDialogModelTemplate template) {
     if (!(template instanceof ConfigurableFileProvider)) {
-      throw new IllegalArgumentException("Bad template type."); //$NON-NLS-1$
+      throw new IllegalArgumentException("Bad template type.");
     }
     Collection<PrintNameFile> printNameFiles = access.collectClosedPrintNameFiles(type);
     PrintNameFile[] fileArray = printNameFiles.toArray(new PrintNameFile[printNameFiles.size()]);

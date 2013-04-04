@@ -9,7 +9,7 @@ import net.sf.anathema.lib.resources.Resources;
 public class RangeWeaponStatsGroup extends AbstractValueEquipmentStatsGroup<IWeaponStats> {
 
   public RangeWeaponStatsGroup(Resources resources) {
-    super(resources, "Range"); //$NON-NLS-1$
+    super(resources, "Range");
   }
 
   @Override

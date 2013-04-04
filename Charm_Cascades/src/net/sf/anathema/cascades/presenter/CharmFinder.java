@@ -31,7 +31,7 @@ public class CharmFinder {
   }
 
   private ICharm searchCharmByCharacterType() {
-    String[] idParts = id.split("\\."); //$NON-NLS-1$
+    String[] idParts = id.split("\\.");
     try {
     	ICharacterType characterTypeId = characterTypes.findById(idParts[0]);
     	return findCharm(characterTypeId);

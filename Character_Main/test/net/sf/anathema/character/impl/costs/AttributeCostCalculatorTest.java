@@ -89,7 +89,7 @@ public class AttributeCostCalculatorTest {
     for (AttributeGroupType attributeGroupType : AttributeGroupType.values()) {
       TraitGroupCost attributePoints = calculator.getAttributePoints(attributeGroupType);
       Integer groupDotsToSpend = attributePoints.getPointsToSpend();
-      assertTrue("Not contains dotCount " + groupDotsToSpend, dotsToSpendList.contains(groupDotsToSpend)); //$NON-NLS-1$
+      assertTrue("Not contains dotCount " + groupDotsToSpend, dotsToSpendList.contains(groupDotsToSpend));
       dotsToSpendList.remove(groupDotsToSpend);
     }
     assertTrue(dotsToSpendList.isEmpty());

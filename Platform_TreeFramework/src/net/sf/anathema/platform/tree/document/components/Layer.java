@@ -72,7 +72,7 @@ public class Layer implements ILayer {
         }
       }
     }
-    throw new IllegalArgumentException("Children not found on layer " + nextLayer); //$NON-NLS-1$
+    throw new IllegalArgumentException("Children not found on layer " + nextLayer);
   }
 
   @Override
@@ -93,7 +93,7 @@ public class Layer implements ILayer {
         }
       }
     }
-    throw new IllegalArgumentException("Children not found on layer " + nextLayer); //$NON-NLS-1$
+    throw new IllegalArgumentException("Children not found on layer " + nextLayer);
   }
 
   @Override

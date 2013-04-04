@@ -22,7 +22,7 @@ import java.util.List;
 public class DocumentUtilities {
 
   // We should save all documents in an encoding which can encode any valid string.
-  private static final String DEFAULT_ENCODING = "UTF-8"; //$NON-NLS-1$
+  private static final String DEFAULT_ENCODING = "UTF-8";
 
   public static void save(Document document, OutputStream outputStream) throws IOException {
     save(document, new XMLWriter(outputStream, createOutputFormat()));

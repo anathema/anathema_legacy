@@ -105,15 +105,15 @@ public class ExperiencePointManagement implements IExperiencePointManagement {
 
   @Override
   public String toString() {
-    return "Abilities: " //$NON-NLS-1$
-           + getAbilityModel().getValue() + "\nAttributes: " //$NON-NLS-1$
-           + getAttributeModel().getValue() + "\nCharms: " //$NON-NLS-1$
-           + getCharmModel().getValue() + "\nEssence: " //$NON-NLS-1$
-           + getEssenceModel().getValue() + "\nSpecialties: " //$NON-NLS-1$
-           + getSpecialtyModel().getValue() + "\nSpells: " //$NON-NLS-1$
-           + getSpellModel().getValue() + "\nVirtues: " //$NON-NLS-1$
-           + getVirtueModel().getValue() + "\nWillpower: " //$NON-NLS-1$
-           + getWillpowerModel().getValue() + "\nMisc: " //$NON-NLS-1$
-           + getMiscModel().getValue() + "\nOverall: " + getTotalCosts(); //$NON-NLS-1$
+    return "Abilities: "
+           + getAbilityModel().getValue() + "\nAttributes: "
+           + getAttributeModel().getValue() + "\nCharms: "
+           + getCharmModel().getValue() + "\nEssence: "
+           + getEssenceModel().getValue() + "\nSpecialties: "
+           + getSpecialtyModel().getValue() + "\nSpells: "
+           + getSpellModel().getValue() + "\nVirtues: "
+           + getVirtueModel().getValue() + "\nWillpower: "
+           + getWillpowerModel().getValue() + "\nMisc: "
+           + getMiscModel().getValue() + "\nOverall: " + getTotalCosts();
   }
 }

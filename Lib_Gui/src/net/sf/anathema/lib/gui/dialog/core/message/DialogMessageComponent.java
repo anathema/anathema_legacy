@@ -26,7 +26,7 @@ public class DialogMessageComponent extends JPanel {
     setBackground(IDialogConstants.HEADER_BACKGROUND_COLOR);
 
     iconLabel = new JLabel();
-    messageLabel = new AutoWrappingLabel("!Dialog.message!", 330); //$NON-NLS-1$
+    messageLabel = new AutoWrappingLabel("!Dialog.message!", 330);
     messageLabel.setBackground(IDialogConstants.HEADER_BACKGROUND_COLOR);
     messageLabel.setForeground(IDialogConstants.HEADER_TEXT_COLOR);
     messageLabel.setFont(IDialogConstants.MESSAGE_LABEL_FONT);

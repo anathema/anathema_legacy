@@ -28,7 +28,7 @@ public class TextReport extends AbstractPdfReport {
 
   @Override
   public String toString() {
-    return resources.getString("CharacterModule.Reporting.Text.Name"); //$NON-NLS-1$
+    return resources.getString("CharacterModule.Reporting.Text.Name");
   }
 
   @Override
@@ -57,7 +57,7 @@ public class TextReport extends AbstractPdfReport {
     String conceptText = description.getConceptText();
     if (!Strings.isNullOrEmpty(conceptText)) {
       Phrase conceptPhrase =
-              factory.createTextParagraph(factory.createBoldTitle(resources.getString("Sheet.Label.Concept") + " ")); //$NON-NLS-1$ //$NON-NLS-2$
+              factory.createTextParagraph(factory.createBoldTitle(resources.getString("Sheet.Label.Concept") + " "));
       conceptPhrase.add(factory.createTextChunk(conceptText));
       columnText.addElement(conceptPhrase);
     }

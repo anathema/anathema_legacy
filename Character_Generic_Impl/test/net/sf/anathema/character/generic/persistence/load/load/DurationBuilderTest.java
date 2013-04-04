@@ -21,8 +21,8 @@ public class DurationBuilderTest{
   @Test
   public void testAnyDuration() throws Exception {
     Element durationElement = getDurationElement();
-    String text = "One Tudeldu"; //$NON-NLS-1$
-    durationElement.addAttribute("duration", text); //$NON-NLS-1$
+    String text = "One Tudeldu";
+    durationElement.addAttribute("duration", text);
     IDuration duration = builder.buildDuration(durationElement);
     assertFalse(duration == SimpleDuration.INSTANT_DURATION);
     assertFalse(duration == SimpleDuration.PERMANENT_DURATION);
@@ -30,39 +30,39 @@ public class DurationBuilderTest{
   }
 
   private Element getDurationElement() {
-    return new DefaultElement("duration"); //$NON-NLS-1$
+    return new DefaultElement("duration");
   }
   @Test
   public void testInstantDuration() throws Exception {
     Element durationElement = getDurationElement();
-    String text = "Instant"; //$NON-NLS-1$
-    durationElement.addAttribute("duration", text); //$NON-NLS-1$
+    String text = "Instant";
+    durationElement.addAttribute("duration", text);
     IDuration duration = builder.buildDuration(durationElement);
     assertEquals(SimpleDuration.INSTANT_DURATION, duration);
   }
   @Test
   public void testPermanentDuration() throws Exception {
     Element durationElement = getDurationElement();
-    String text = "Permanent"; //$NON-NLS-1$
-    durationElement.addAttribute("duration", text); //$NON-NLS-1$
+    String text = "Permanent";
+    durationElement.addAttribute("duration", text);
     IDuration duration = builder.buildDuration(durationElement);
     assertEquals(SimpleDuration.PERMANENT_DURATION, duration);
   }
   @Test
   public void testQualifiedAmountDuration() throws Exception {
     Element durationElement = getDurationElement();
-    String amount = "this amount"; //$NON-NLS-1$
-    String unit = "that unit"; //$NON-NLS-1$
-    durationElement.addAttribute("amount", amount); //$NON-NLS-1$
-    durationElement.addAttribute("unit", unit); //$NON-NLS-1$
+    String amount = "this amount";
+    String unit = "that unit";
+    durationElement.addAttribute("amount", amount);
+    durationElement.addAttribute("unit", unit);
     IDuration duration = builder.buildDuration(durationElement);
     assertEquals(new QualifiedAmountDuration(amount, unit), duration);
   }
   @Test
   public void testUntilEventDuration() throws Exception {
     Element durationElement = getDurationElement();
-    String event = "an event"; //$NON-NLS-1$
-    durationElement.addAttribute("event", event); //$NON-NLS-1$
+    String event = "an event";
+    durationElement.addAttribute("event", event);
     IDuration duration = builder.buildDuration(durationElement);
     assertEquals(new UntilEventDuration(event), duration);
   }

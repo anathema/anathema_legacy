@@ -32,6 +32,7 @@ public class ComboBoxPainter {
     this.currentValuePane = currentValuePane;
   }
 
+  @SuppressWarnings("unchecked")
   public void paintBasicComboBoxUI(Graphics g, Rectangle bounds, boolean focussed, boolean popUpVisible, ComponentUI ui) {
     ListCellRenderer renderer = comboBox.getRenderer();
     Component c;
@@ -41,7 +42,7 @@ public class ComboBoxPainter {
     }
     else {
       c = renderer.getListCellRendererComponent(listBox, comboBox.getSelectedItem(), -1, false, false);
-      c.setBackground(UIManager.getColor("ComboBox.background")); //$NON-NLS-1$
+      c.setBackground(UIManager.getColor("ComboBox.background"));
     }
     c.setFont(comboBox.getFont());
     if (focussed && !popUpVisible) {
@@ -55,7 +56,7 @@ public class ComboBoxPainter {
       }
       else {
         c.setForeground(disabledForegroundColor);
-        c.setBackground(DefaultLookup.getColor(comboBox, ui, "ComboBox.disabledBackground", null)); //$NON-NLS-1$
+        c.setBackground(DefaultLookup.getColor(comboBox, ui, "ComboBox.disabledBackground", null));
       }
     }
     // Fix for 4238829: should lay out the JPanel.

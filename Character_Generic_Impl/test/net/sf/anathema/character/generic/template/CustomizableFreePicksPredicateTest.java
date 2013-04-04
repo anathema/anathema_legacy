@@ -21,7 +21,7 @@ public class CustomizableFreePicksPredicateTest {
   @Test
   public void testIdException() throws Exception {
     CustomizableFreePicksPredicate predicate = new CustomizableFreePicksPredicate(true);
-    String id = "Dummy"; //$NON-NLS-1$
+    String id = "Dummy";
     predicate.addIdException(id);
     Assert.assertFalse(predicate.apply(new DummyCharm(id)));
   }
@@ -29,9 +29,9 @@ public class CustomizableFreePicksPredicateTest {
   @Test
   public void testCharmGroupException() throws Exception {
     CustomizableFreePicksPredicate predicate = new CustomizableFreePicksPredicate(true);
-    final String id = "DummyGroup"; //$NON-NLS-1$
+    final String id = "DummyGroup";
     predicate.addCharmGroupException(id);
-    Assert.assertFalse(predicate.apply(new DummyCharm("Dummy") { //$NON-NLS-1$
+    Assert.assertFalse(predicate.apply(new DummyCharm("Dummy") {
       @Override
       public String getGroupId() {
         return id;

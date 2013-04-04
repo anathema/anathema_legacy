@@ -26,7 +26,7 @@ public class CharmPrerequisitesStringBuilder implements IMagicTooltipStringBuild
       if (prerequisite.getCurrentValue() == 0) {
         continue;
       }
-      builder.append(resources.getString("CharmTreeView.ToolTip.Minimum")); //$NON-NLS-1$
+      builder.append(resources.getString("CharmTreeView.ToolTip.Minimum"));
       builder.append(TooltipBuilder.Space);
       builder.append(resources.getString(prerequisite.getType().getId()));
       builder.append(TooltipBuilder.ColonSpace);

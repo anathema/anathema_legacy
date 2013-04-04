@@ -5,9 +5,9 @@ import net.sf.anathema.lib.workflow.labelledvalue.IValueView;
 public abstract class AbstractLabelledIntegerValueView extends AbstractLabelledValueView implements IValueView<Integer> {
 
   protected static String createLengthString(int length) {
-    String lengthString = "0"; //$NON-NLS-1$
+    String lengthString = "0";
     for (int index = 0; index < length - 1; index++) {
-      lengthString = lengthString.concat("0"); //$NON-NLS-1$
+      lengthString = lengthString.concat("0");
     }
     return lengthString;
   }

@@ -15,11 +15,11 @@ import java.util.List;
 
 public class TextPersister {
 
-  private static final String TAG_TEXT = "Text"; //$NON-NLS-1$
-  private static final String ATTRIB_FONT_STYLE = "fontStyle"; //$NON-NLS-1$
-  private static final String ATTRIB_IS_UNDERLINE = "isUnderline"; //$NON-NLS-1$
-  private static final String TAG_FORMAT = "Format"; //$NON-NLS-1$
-  private static final String TAG_PART = "Part"; //$NON-NLS-1$
+  private static final String TAG_TEXT = "Text";
+  private static final String ATTRIB_FONT_STYLE = "fontStyle";
+  private static final String ATTRIB_IS_UNDERLINE = "isUnderline";
+  private static final String TAG_FORMAT = "Format";
+  private static final String TAG_PART = "Part";
 
   public void saveNonEmptyText(Element parent, String tagName, String text) {
     if (Strings.isNullOrEmpty(text)) {

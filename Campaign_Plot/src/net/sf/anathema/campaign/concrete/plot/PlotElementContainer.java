@@ -42,7 +42,7 @@ public class PlotElementContainer extends Identifier implements IPlotElementCont
 
   @Override
   public IPlotElement addChild(String name) {
-    Preconditions.checkArgument(unit.hasSuccessor(), "Tried to add to non-successable plot element container."); //$NON-NLS-1$
+    Preconditions.checkArgument(unit.hasSuccessor(), "Tried to add to non-successable plot element container.");
     PlotElement plotElement = new PlotElement(provider, getTimeUnit().getSuccessor(), name);
     children.add(plotElement);
     fireChildAddedEvent(plotElement);
@@ -51,7 +51,7 @@ public class PlotElementContainer extends Identifier implements IPlotElementCont
 
   @Override
   public IPlotElement addChild(IItemDescription description, String repositoryId) {
-    Preconditions.checkArgument(unit.hasSuccessor(), "Tried to add to non-successable plot element container."); //$NON-NLS-1$
+    Preconditions.checkArgument(unit.hasSuccessor(), "Tried to add to non-successable plot element container.");
     PlotElement plotElement = new PlotElement(provider, getTimeUnit().getSuccessor(), description, repositoryId);
     children.add(plotElement);
     fireChildAddedEvent(plotElement);
@@ -76,7 +76,7 @@ public class PlotElementContainer extends Identifier implements IPlotElementCont
 
   @Override
   public void removeChild(IPlotElement element) {
-    Preconditions.checkArgument(unit.hasSuccessor(), "Tried to remove from non-successable plot element container."); //$NON-NLS-1$
+    Preconditions.checkArgument(unit.hasSuccessor(), "Tried to remove from non-successable plot element container.");
     if (!children.remove(element)) {
       for (IPlotElement child : children) {
         if (child.getTimeUnit().hasSuccessor()) {

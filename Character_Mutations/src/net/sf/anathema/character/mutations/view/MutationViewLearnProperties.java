@@ -30,12 +30,12 @@ public class MutationViewLearnProperties extends AbstractMagicLearnProperties im
 
   @Override
   public String getAddButtonToolTip() {
-    return getResources().getString("Mutations.Tooltips.AddTooltip"); //$NON-NLS-1$
+    return getResources().getString("Mutations.Tooltips.AddTooltip");
   }
 
   @Override
   public String getRemoveButtonToolTip() {
-    return getResources().getString("Mutations.Tooltips.RemoveTooltip"); //$NON-NLS-1$
+    return getResources().getString("Mutations.Tooltips.RemoveTooltip");
   }
 
   @Override
@@ -71,7 +71,7 @@ public class MutationViewLearnProperties extends AbstractMagicLearnProperties im
       Integer page = mutation.getPage();
       if (page != null) {
         builder.append(TooltipBuilder.CommaSpace);
-        builder.append(getResources().getString("CharmTreeView.ToolTip.Page")); //$NON-NLS-1$
+        builder.append(getResources().getString("CharmTreeView.ToolTip.Page"));
         builder.append(TooltipBuilder.Space);
         builder.append(page);
       }
@@ -81,7 +81,7 @@ public class MutationViewLearnProperties extends AbstractMagicLearnProperties im
   }
 
   private String createSourceBookKey(IExaltedSourceBook source) {
-    return "ExaltedSourceBook." + source.getId(); //$NON-NLS-1$
+    return "ExaltedSourceBook." + source.getId();
   }
 
   @Override
@@ -113,7 +113,7 @@ public class MutationViewLearnProperties extends AbstractMagicLearnProperties im
 
   private String getMutationString(IMutation mutation, boolean showType) {
     String typeString = getResources().getString("Mutations.Type." + mutation.getType().getId());
-    String mutationString = getResources().getString("Mutations.Mutation." //$NON-NLS-1$
+    String mutationString = getResources().getString("Mutations.Mutation."
             + mutation.getId());
     return (showType ? "(" + typeString + ") " : "") + mutationString;
   }

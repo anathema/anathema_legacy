@@ -28,7 +28,7 @@ public class SheetGraphics {
     return new Font(Font.FontFamily.HELVETICA, 7, Font.NORMAL, BaseColor.BLACK).getCalculatedBaseFont(true);
   }
 
-  private static final String SYMBOL = "\u2022  "; //$NON-NLS-1$
+  private static final String SYMBOL = "\u2022  ";
   private static final int SYMBOL_FONT_SIZE = FONT_SIZE - 1;
   private final PdfContentByte directContent;
   private final BaseFont baseFont;
@@ -180,14 +180,6 @@ public class SheetGraphics {
 
   public Line createHorizontalLineByCoordinate(Position startPoint, float endX) {
     return new Line(directContent, startPoint, new Position(endX, startPoint.y));
-  }
-
-  public Line createHorizontalLineByLength(Position startPoint, float length) {
-    return createHorizontalLineByCoordinate(startPoint, startPoint.x + length);
-  }
-
-  public Line createVerticalLineByLength(Position startPoint, float length) {
-    return createVerticalLineByCoordinate(startPoint, startPoint.y + length);
   }
 
   public Line createVerticalLineByCoordinate(Position startPoint, float endY) {

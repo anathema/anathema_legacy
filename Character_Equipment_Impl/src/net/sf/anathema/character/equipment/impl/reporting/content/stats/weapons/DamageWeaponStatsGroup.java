@@ -15,7 +15,7 @@ public class DamageWeaponStatsGroup extends AbstractValueEquipmentStatsGroup<IWe
   private final IGenericTraitCollection collection;
 
   public DamageWeaponStatsGroup(Resources resources, IGenericTraitCollection collection) {
-    super(resources, "Damage"); //$NON-NLS-1$
+    super(resources, "Damage");
     this.collection = collection;
   }
 
@@ -58,6 +58,6 @@ public class DamageWeaponStatsGroup extends AbstractValueEquipmentStatsGroup<IWe
   }
 
   private String getDamageTypeLabel(HealthType damageType) {
-    return getResources().getString("HealthType." + damageType.getId() + ".Short"); //$NON-NLS-1$ //$NON-NLS-2$
+    return getResources().getString("HealthType." + damageType.getId() + ".Short");
   }
 }

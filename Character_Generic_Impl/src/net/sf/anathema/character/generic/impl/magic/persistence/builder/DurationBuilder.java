@@ -14,7 +14,7 @@ public class DurationBuilder {
 
   public IDuration buildDuration(Element durationElement) throws PersistenceException {
     if (durationElement == null) {
-      throw new CharmException("Duration not specified for Charm"); //$NON-NLS-1$
+      throw new CharmException("Duration not specified for Charm");
     }
     String durationString = durationElement.attributeValue(ICharmXMLConstants.ATTRIB_DURATION);
     if (durationString != null) {
@@ -29,6 +29,6 @@ public class DurationBuilder {
     if (event != null) {
       return new UntilEventDuration(event);
     }
-    throw new PersistenceException("No legal duration definition found"); //$NON-NLS-1$
+    throw new PersistenceException("No legal duration definition found");
   }
 }

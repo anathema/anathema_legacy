@@ -24,7 +24,7 @@ public class GiftContent extends AbstractSubBoxContent implements ListSubBoxCont
 
   @Override
   public String getHeaderKey() {
-    return "Lunar.Gifts"; //$NON-NLS-1$
+    return "Lunar.Gifts";
   }
 
   @Override

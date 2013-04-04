@@ -9,7 +9,7 @@ public class EssenceExperienceModel extends AbstractIntegerValueModel {
   private final IPointCostCalculator calculator;
 
   public EssenceExperienceModel(ITraitCollection traitCollection, IPointCostCalculator calculator) {
-    super("Experience", "Essence"); //$NON-NLS-1$//$NON-NLS-2$
+    super("Experience", "Essence");
     this.traitCollection = traitCollection;
     this.calculator = calculator;
   }

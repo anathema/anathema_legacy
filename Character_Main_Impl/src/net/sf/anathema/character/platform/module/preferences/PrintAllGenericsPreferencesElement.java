@@ -25,7 +25,7 @@ public class PrintAllGenericsPreferencesElement extends AbstractCheckBoxPreferen
 
   @Override
   protected String getLabelKey() {
-    return "Character.Tools.Preferences.PrintAllGenerics"; //$NON-NLS-1$
+    return "Character.Tools.Preferences.PrintAllGenerics";
   }
 
   @Override

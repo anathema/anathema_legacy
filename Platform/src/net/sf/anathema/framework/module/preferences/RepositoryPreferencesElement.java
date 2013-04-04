@@ -50,7 +50,7 @@ public class RepositoryPreferencesElement implements IPreferencesElement {
       Throwable cause = e.getCause();
       MessageDialogFactory.showMessageDialog(null,
               new Message("An error occured while setting up the repository paths: " + cause.getMessage(),
-                      cause)); //$NON-NLS-1$
+                      cause));
     }
   }
 
@@ -64,7 +64,7 @@ public class RepositoryPreferencesElement implements IPreferencesElement {
       Throwable cause = e.getCause();
       MessageDialogFactory.showMessageDialog(null,
               new Message("An error occured while setting up the repository paths: " + cause.getMessage(),
-                      cause)); //$NON-NLS-1$
+                      cause));
     }
   }
 
@@ -73,7 +73,7 @@ public class RepositoryPreferencesElement implements IPreferencesElement {
     verifyDirectoriesExist();
     this.resources = resource;
     final JLabel repositoryLabel = new JLabel(resources.getString(
-            "AnathemaCore.Tools.Preferences.RepositoryDirectory.Label") + ":"); //$NON-NLS-1$ //$NON-NLS-2$
+            "AnathemaCore.Tools.Preferences.RepositoryDirectory.Label") + ":");
     repositoryTextField = new JTextField(45);
     repositoryTextField.setEditable(false);
     setDisplayedPath(repositoryDirectory);
@@ -96,7 +96,7 @@ public class RepositoryPreferencesElement implements IPreferencesElement {
 
   private JButton createBrowseButton() {
     return new JButton(new SmartAction(
-            resources.getString("AnathemaCore.Tools.Preferences.RepositoryDirectory.ChooseDirectory")) { //$NON-NLS-1$
+            resources.getString("AnathemaCore.Tools.Preferences.RepositoryDirectory.ChooseDirectory")) {
       @Override
       protected void execute(Component parent) {
         Path selectedDir = DirectoryFileChooser.createDirectoryChooser(repositoryDirectory,
@@ -140,7 +140,7 @@ public class RepositoryPreferencesElement implements IPreferencesElement {
                   Throwable cause = e.getCause();
                   MessageDialogFactory.showMessageDialog(null,
                           new Message("An error occured while opening the repository path: " + cause.getMessage(),
-                                  cause)); //$NON-NLS-1$
+                                  cause));
                 }
               }
             });
@@ -161,7 +161,7 @@ public class RepositoryPreferencesElement implements IPreferencesElement {
       }
       MessageDialogFactory.showMessageDialog(null,
               new Message("An error occured while saving the repository preferences: " + cause.getMessage(),
-                      cause)); //$NON-NLS-1$
+                      cause));
     }
   }
 

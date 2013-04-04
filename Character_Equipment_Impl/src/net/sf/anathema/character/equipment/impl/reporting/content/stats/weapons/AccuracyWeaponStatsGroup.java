@@ -24,7 +24,7 @@ public class AccuracyWeaponStatsGroup extends AbstractValueEquipmentStatsGroup<I
   public AccuracyWeaponStatsGroup(Resources resources, IGenericTraitCollection collection,
                                   IEquipmentCharacterDataProvider provider,
                                   IEquipmentCharacterOptionProvider optionProvider) {
-    super(resources, "Accuracy"); //$NON-NLS-1$
+    super(resources, "Accuracy");
     this.collection = collection;
     this.optionProvider = optionProvider;
     this.provider = provider;

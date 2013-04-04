@@ -21,7 +21,7 @@ public class Specialty extends DefaultTrait implements ISpecialty {
       ITraitReference reference,
       String specialtyName,
       ITraitContext context) {
-    super(new TraitRules(new TraitType("Specialty"), //$NON-NLS-1$
+    super(new TraitRules(new TraitType("Specialty"),
         SimpleTraitTemplate.createStaticLimitedTemplate(0, 3),
         context.getLimitationContext()), context, new FriendlyValueChangeChecker());
     this.container = container;

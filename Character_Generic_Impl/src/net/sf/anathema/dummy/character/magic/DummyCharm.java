@@ -34,7 +34,6 @@ import java.util.Set;
 
 public class DummyCharm extends Identifier implements ICharm {
 
-  private ValuedTraitType essence;
   private IDuration duration;
   private IComboRestrictions comboRestrictions = new ComboRestrictions();
   private IGenericTrait[] prerequisites;
@@ -43,7 +42,6 @@ public class DummyCharm extends Identifier implements ICharm {
   private List<IndirectCharmRequirement> requirements = new ArrayList<>();
   private ICharacterType characterType;
   private String groupId;
-  private CostList temporaryCost;
   private CharmTypeModel model = new CharmTypeModel();
   private List<ICharmAttribute> attributes = new ArrayList<>();
 
@@ -55,7 +53,7 @@ public class DummyCharm extends Identifier implements ICharm {
 
   public DummyCharm(String duration, CharmType charmType, IComboRestrictions comboRestrictions,
                     IGenericTrait[] prerequisites) {
-    super("DummyCharmDefaultId"); //$NON-NLS-1$
+    super("DummyCharmDefaultId");
     this.prerequisites = prerequisites;
     this.duration = SimpleDuration.getDuration(duration);
     this.comboRestrictions = comboRestrictions;
@@ -131,7 +129,7 @@ public class DummyCharm extends Identifier implements ICharm {
 
   @Override
   public IGenericTrait getEssence() {
-    return essence;
+    return null;
   }
 
   @Override
@@ -183,11 +181,7 @@ public class DummyCharm extends Identifier implements ICharm {
 
   @Override
   public CostList getTemporaryCost() {
-    return temporaryCost;
-  }
-
-  public void setTemporaryCost(CostList list) {
-    temporaryCost = list;
+    return null;
   }
 
   @Override
@@ -254,10 +248,6 @@ public class DummyCharm extends Identifier implements ICharm {
 
   public void setDuration(IDuration duration) {
     this.duration = duration;
-  }
-
-  public void setEssence(ValuedTraitType essence) {
-    this.essence = essence;
   }
 
   public void setPrerequisites(ValuedTraitType[] prerequisites) {

@@ -6,19 +6,19 @@ import java.util.Map;
 
 public enum TextBlockDelimiter {
 
-  SPACE(' ', " ", " ", false, true, false), //$NON-NLS-1$ //$NON-NLS-2$
+  SPACE(' ', " ", " ", false, true, false),
   //  
-  TAB('\t', "\t", "        ", false, true, false), //$NON-NLS-1$//$NON-NLS-2$
+  TAB('\t', "\t", "        ", false, true, false),
   //  
-  NEWLINE('\n', "\n", "\n", true, false, false), //$NON-NLS-1$ //$NON-NLS-2$
+  NEWLINE('\n', "\n", "\n", true, false, false),
   //  
-  END_OF_TEXT((char) 0, "", "", true, false, false), //$NON-NLS-1$ //$NON-NLS-2$
+  END_OF_TEXT((char) 0, "", "", true, false, false),
   //      
-  HYPHEN('-', "", "-", false, false, true), //$NON-NLS-1$//$NON-NLS-2$
+  HYPHEN('-', "", "-", false, false, true),
   //      
-  COMMA(',', "", "", false, false, true), //$NON-NLS-1$ //$NON-NLS-2$
+  COMMA(',', "", "", false, false, true),
   //  
-  SEMICOLON(';', "", ";", false, false, true); //$NON-NLS-1$ //$NON-NLS-2$
+  SEMICOLON(';', "", ";", false, false, true);
 
   private static Map<Character, TextBlockDelimiter> DELIMITER_MAP = new HashMap<>();
 

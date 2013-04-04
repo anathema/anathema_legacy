@@ -22,7 +22,7 @@ import static net.sf.anathema.framework.presenter.action.preferences.IPreference
 @BootJob
 @Weight(weight = 20)
 public class LookAndFeelNormalizerBootJob implements IBootJob {
-  private static final String LOOK_AND_FEEL_PREFERENCE = "ForceMetalLookAndFeel"; //$NON-NLS-1$
+  private static final String LOOK_AND_FEEL_PREFERENCE = "ForceMetalLookAndFeel";
 
   @Override
   public void run(Resources resources, IApplicationModel model) {

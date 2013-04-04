@@ -79,12 +79,12 @@ public class GhostPassionsPresenter implements Presenter {
   @Override
   public void initPresentation() {
     initTraitListening();
-    IOverviewCategory overview = view.createOverview(resources.getString("Astrology.Overview.Title")); //$NON-NLS-1$
-    maxPassionView = overview.addAlotmentView(resources.getString("Passions.Overview.Max"), 2); //$NON-NLS-1$
-    compassionView = overview.addAlotmentView(resources.getString("Compassion"), 2); //$NON-NLS-1$
-    convictionView = overview.addAlotmentView(resources.getString("Conviction"), 2); //$NON-NLS-1$
-    temperanceView = overview.addAlotmentView(resources.getString("Temperance"), 2); //$NON-NLS-1$
-    valorView = overview.addAlotmentView(resources.getString("Valor"), 2); //$NON-NLS-1$
+    IOverviewCategory overview = view.createOverview(resources.getString("Astrology.Overview.Title"));
+    maxPassionView = overview.addAlotmentView(resources.getString("Passions.Overview.Max"), 2);
+    compassionView = overview.addAlotmentView(resources.getString("Compassion"), 2);
+    convictionView = overview.addAlotmentView(resources.getString("Conviction"), 2);
+    temperanceView = overview.addAlotmentView(resources.getString("Temperance"), 2);
+    valorView = overview.addAlotmentView(resources.getString("Valor"), 2);
 
     Icon addIcon = new BasicUi().getAddIcon();
     passionSelectionView = view.addPassionSelectionView(resources.getString("PassionView.SelectionCombo.Label"),

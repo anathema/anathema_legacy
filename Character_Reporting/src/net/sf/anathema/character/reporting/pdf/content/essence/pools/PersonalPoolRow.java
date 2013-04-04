@@ -15,7 +15,7 @@ public class PersonalPoolRow extends AbstractPoolRow {
 
   @Override
   public String getLabel() {
-    return resources.getString("Sheet.Essence.PersonalPool"); //$NON-NLS-1$
+    return resources.getString("Sheet.Essence.PersonalPool");
   }
 
   @Override

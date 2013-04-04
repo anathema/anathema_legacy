@@ -20,7 +20,7 @@ public class SimpleSyllableNameGenerator implements INameGenerator {
       int wordCount = wordCalculator.calculateNamePartCount();
       for (int wordIndex = 0; wordIndex < wordCount; wordIndex++) {
         if (wordIndex != 0) {
-          name.append(" "); //$NON-NLS-1$
+          name.append(" ");
         }
         name.append(wordFactory.createWord(wordIndex));
       }

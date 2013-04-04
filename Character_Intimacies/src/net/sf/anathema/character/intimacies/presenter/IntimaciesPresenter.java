@@ -46,7 +46,7 @@ public class IntimaciesPresenter extends AbstractStringEntryTraitPresenter<IInti
 
   @Override
   public void initPresentation() {
-    String labelText = resources.getString("Intimacies.SelectionLabel"); //$NON-NLS-1$
+    String labelText = resources.getString("Intimacies.SelectionLabel");
     BasicUi basicUi = new BasicUi();
     IStringSelectionView selectionView = view.addSelectionView(labelText, basicUi.getAddIcon());
     initSelectionViewListening(selectionView);
@@ -59,16 +59,16 @@ public class IntimaciesPresenter extends AbstractStringEntryTraitPresenter<IInti
   }
 
   private void initOverviewView() {
-    final IOverviewCategory creationOverview = view.createOverview(resources.getString("Intimacies.Overview.BorderLabel")); //$NON-NLS-1$    
+    final IOverviewCategory creationOverview = view.createOverview(resources.getString("Intimacies.Overview.BorderLabel"));
     final ILabelledAlotmentView freeIntimaciesView = creationOverview.addAlotmentView(
-        resources.getString("Intimacies.Overview.Free"), 2); //$NON-NLS-1$
+        resources.getString("Intimacies.Overview.Free"), 2);
     final ILabelledAlotmentView totalIntimaciesView = creationOverview.addAlotmentView(
-        resources.getString("Intimacies.Overview.Maximum"), 2); //$NON-NLS-1$    
+        resources.getString("Intimacies.Overview.Maximum"), 2);
     final IValueView<Integer> bonusPointsView = creationOverview.addIntegerValueView(
-        resources.getString("Intimacies.Overview.BonusPoints"), 2); //$NON-NLS-1$
-    final IOverviewCategory experienceOverview = view.createOverview(resources.getString("Intimacies.Overview.BorderLabel")); //$NON-NLS-1$    
+        resources.getString("Intimacies.Overview.BonusPoints"), 2);
+    final IOverviewCategory experienceOverview = view.createOverview(resources.getString("Intimacies.Overview.BorderLabel"));
     final ILabelledAlotmentView experienceMaximumView = experienceOverview.addAlotmentView(
-        resources.getString("Intimacies.Overview.Maximum"), 2); //$NON-NLS-1$
+        resources.getString("Intimacies.Overview.Maximum"), 2);
     model.addModelChangeListener(new IChangeListener() {
       @Override
       public void changeOccurred() {

@@ -17,7 +17,7 @@ public class AbilityExperienceModel extends AbstractIntegerValueModel {
   private final ICharacter character;
 
   public AbilityExperienceModel(ICoreTraitConfiguration traitConfiguration, IPointCostCalculator calculator, ICharacter character) {
-    super("Experience", "Abilities"); //$NON-NLS-1$ //$NON-NLS-2$
+    super("Experience", "Abilities");
     this.traitConfiguration = traitConfiguration;
     this.calculator = calculator;
     this.character = character;

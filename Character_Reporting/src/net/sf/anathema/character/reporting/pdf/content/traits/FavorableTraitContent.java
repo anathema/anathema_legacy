@@ -69,7 +69,7 @@ public abstract class FavorableTraitContent extends AbstractSubBoxContent {
     List<IMagic> allLearnedMagic = character.getAllLearnedMagic();
     boolean[] excellencyLearned = new boolean[excellencies.length];
     for (int i = 0; i < excellencies.length; i++) {
-      String charmId = excellencies[i].getName().getId() + "." + traitType.getId(); //$NON-NLS-1$
+      String charmId = excellencies[i].getName().getId() + "." + traitType.getId();
       excellencyLearned[i] = MagicLearnUtilities.isCharmLearned(allLearnedMagic, charmId);
     }
     return excellencyLearned;
@@ -94,7 +94,7 @@ public abstract class FavorableTraitContent extends AbstractSubBoxContent {
 
   public String getGroupLabel(Identified groupId) {
     String groupIdAsString = groupId.getId();
-    String resourceKey = groupId instanceof ICasteType ? "Caste." + groupIdAsString : getGroupNamePrefix() + groupIdAsString; //$NON-NLS-1$
+    String resourceKey = groupId instanceof ICasteType ? "Caste." + groupIdAsString : getGroupNamePrefix() + groupIdAsString;
     return getString(resourceKey);
   }
 
@@ -111,7 +111,7 @@ public abstract class FavorableTraitContent extends AbstractSubBoxContent {
   protected abstract String getTraitTypePrefix();
 
   public String getMobilityPenaltyText() {
-    return " : " + getString(getMarkerCommentKey()); //$NON-NLS-1$
+    return " : " + getString(getMarkerCommentKey());
   }
 
   public abstract String getMarkerCommentKey();

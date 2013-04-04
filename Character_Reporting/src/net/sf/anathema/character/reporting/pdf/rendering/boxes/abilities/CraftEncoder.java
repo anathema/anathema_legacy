@@ -30,7 +30,7 @@ public class CraftEncoder extends AbstractNamedTraitEncoder implements INamedTra
     IGenericCharacter character = session.getCharacter();
     int essenceMax = character.getEssenceLimitation().getAbsoluteLimit(character);
     int traitMax = Math.max(5, essenceMax);
-    String title = getResources().getString("Sheet.AbilitySubHeader.Crafts"); //$NON-NLS-1$
+    String title = getResources().getString("Sheet.AbilitySubHeader.Crafts");
     INamedGenericTrait[] traits = character.getSubTraits(AbilityType.Craft);
     if (!AnathemaCharacterPreferences.getDefaultPreferences().printZeroCrafts()) {
       List<INamedGenericTrait> nonZeroCrafts = new ArrayList<>();

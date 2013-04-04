@@ -49,6 +49,6 @@ public class BasicMessage implements IBasicMessage {
 
   @Override
   public String toString() {
-    return getType() + ": " + getText(); //$NON-NLS-1$
+    return getType() + ": " + getText();
   }
 }

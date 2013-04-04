@@ -25,6 +25,6 @@ public class TextPart implements ITextPart {
 
   @Override
   public String toString() {
-    return "[" + text + ", " + format + "]"; //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
+    return "[" + text + ", " + format + "]";
   }
 }

@@ -44,9 +44,9 @@ public class ExperiencedOverviewPresenter implements Presenter {
 
   @Override
   public void initPresentation() {
-    IOverviewCategory category = view.addOverviewCategory(getString("Overview.Experience.Title")); //$NON-NLS-1$
+    IOverviewCategory category = view.addOverviewCategory(getString("Overview.Experience.Title"));
     for (IValueModel<Integer> model : management.getAllModels()) {
-      IValueView<Integer> valueView = category.addIntegerValueView(getString("Overview.Experience." + model.getId()), 2); //$NON-NLS-1$
+      IValueView<Integer> valueView = category.addIntegerValueView(getString("Overview.Experience." + model.getId()), 2);
       presenters.add(new ValueSubPresenter(model, valueView));
     }
     initTotal(category);
@@ -54,7 +54,7 @@ public class ExperiencedOverviewPresenter implements Presenter {
   }
 
   private void initTotal(IOverviewCategory category) {
-    totalView = category.addAlotmentView(getString("Overview.Experience.Total"), 4); //$NON-NLS-1$
+    totalView = category.addAlotmentView(getString("Overview.Experience.Total"), 4);
     character.getExperiencePoints().addExperiencePointConfigurationListener(new IExperiencePointConfigurationListener() {
       @Override
       public void entryAdded(IExperiencePointEntry entry) {

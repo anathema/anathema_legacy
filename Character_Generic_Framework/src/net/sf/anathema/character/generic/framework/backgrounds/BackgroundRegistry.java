@@ -9,13 +9,14 @@ import net.sf.anathema.lib.registry.IdentificateRegistry;
 
 public class BackgroundRegistry extends IdentificateRegistry<IBackgroundTemplate> {
 
+  @SuppressWarnings("ConstantConditions")
   @Override
   public void add(IBackgroundTemplate... newBackgrounds) {
     for (IBackgroundTemplate background : newBackgrounds) {
       String backgroundId = background.getId();
       if (idRegistered(backgroundId)) {
         IBackgroundTemplate registeredBackground = getById(backgroundId);
-        String message = "Duplicated background with id " + backgroundId; //$NON-NLS-1$
+        String message = "Duplicated background with id " + backgroundId;
         if (registeredBackground instanceof TemplateTypeBackgroundTemplate) {
           Preconditions.checkArgument(background instanceof TemplateTypeBackgroundTemplate, message);
           ((TemplateTypeBackgroundTemplate) registeredBackground).addContent((TemplateTypeBackgroundTemplate) background);

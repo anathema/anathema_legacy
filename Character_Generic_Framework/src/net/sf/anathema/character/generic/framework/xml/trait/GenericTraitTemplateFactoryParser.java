@@ -15,9 +15,9 @@ import org.dom4j.Element;
 
 public class GenericTraitTemplateFactoryParser extends AbstractXmlTemplateParser<GenericTraitTemplateFactory> {
 
-  private static final String TAG_BACKGROUNDS = "backgrounds"; //$NON-NLS-1$
-  private static final String TAG_ESSENCE = "essence"; //$NON-NLS-1$
-  private static final String TAG_WILLPOWER = "willpower"; //$NON-NLS-1$
+  private static final String TAG_BACKGROUNDS = "backgrounds";
+  private static final String TAG_ESSENCE = "essence";
+  private static final String TAG_WILLPOWER = "willpower";
   private final IXmlTemplateRegistry<GenericTraitTemplatePool> poolTemplateRegistry;
   private final IIdentificateRegistry<IBackgroundTemplate> backgroundRegistry;
 

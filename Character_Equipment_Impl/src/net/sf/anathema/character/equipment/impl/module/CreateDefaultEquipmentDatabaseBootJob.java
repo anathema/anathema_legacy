@@ -8,8 +8,8 @@ import net.sf.anathema.initialization.BootJob;
 import net.sf.anathema.initialization.IBootJob;
 import net.sf.anathema.initialization.reflections.ResourceLoader;
 import net.sf.anathema.initialization.reflections.Weight;
-import net.sf.anathema.lib.resources.Resources;
 import net.sf.anathema.lib.resources.ResourceFile;
+import net.sf.anathema.lib.resources.Resources;
 
 import java.io.IOException;
 import java.io.InputStream;
@@ -26,7 +26,7 @@ public class CreateDefaultEquipmentDatabaseBootJob implements IBootJob {
     GsonEquipmentDatabase database = GsonEquipmentDatabase.CreateFrom(anathemaModel);
     boolean thereIsNoDataYet = database.isEmpty();
     if (thereIsNoDataYet) {
-      ProxySplashscreen.getInstance().displayStatusMessage(resources.getString("Equipment.Bootjob.DefaultDatabaseSplashmessage")); //$NON-NLS-1$
+      ProxySplashscreen.getInstance().displayStatusMessage(resources.getString("Equipment.Bootjob.DefaultDatabaseSplashmessage"));
       populateRepository(database, anathemaModel.getResourceLoader());
     }
   }

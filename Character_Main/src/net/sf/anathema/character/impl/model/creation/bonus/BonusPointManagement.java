@@ -192,7 +192,7 @@ public class BonusPointManagement implements IBonusPointManagement {
 
   @Override
   public IAdditionalSpendingModel getTotalModel() {
-    return new AbstractAdditionalSpendingModel("Bonus", "Total") { //$NON-NLS-1$ //$NON-NLS-2$
+    return new AbstractAdditionalSpendingModel("Bonus", "Total") {
       @Override
       public int getAdditionalRestrictedAlotment() {
         return getAdditionalBonusPointAmount();

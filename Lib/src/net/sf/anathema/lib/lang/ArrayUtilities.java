@@ -34,7 +34,7 @@ public class ArrayUtilities {
     if (index != ArrayUtils.INDEX_NOT_FOUND) {
       return index;
     }
-    throw new IllegalArgumentException("Value not contained in array: " + value); //$NON-NLS-1$
+    throw new IllegalArgumentException("Value not contained in array: " + value);
   }
 
   public static <T> void reorder(T[] objects, int[] originalIndices, int[] newIndices) {

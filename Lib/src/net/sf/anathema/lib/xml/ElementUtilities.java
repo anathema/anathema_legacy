@@ -21,7 +21,7 @@ public class ElementUtilities {
       return Integer.parseInt(value);
     }
     catch (NumberFormatException e) {
-      String message = "Attribute " + name + " must be of value integer, but was: " + value; //$NON-NLS-1$ //$NON-NLS-2$
+      String message = "Attribute " + name + " must be of value integer, but was: " + value;
       throw new PersistenceException(message);
     }
   }
@@ -35,7 +35,7 @@ public class ElementUtilities {
       if (value.equals("Varies")) {
         return null;
       } else {
-        String message = "Attribute " + name + " must be of value \"Varies\" or integer, but was: " + value; //$NON-NLS-1$ //$NON-NLS-2$
+        String message = "Attribute " + name + " must be of value \"Varies\" or integer, but was: " + value;
         throw new PersistenceException(message);
       }
     }
@@ -50,7 +50,7 @@ public class ElementUtilities {
       return Integer.parseInt(value);
     }
     catch (NumberFormatException e) {
-      String message = "Attribute " + name + " must be of value integer, but was: " + value; //$NON-NLS-1$ //$NON-NLS-2$
+      String message = "Attribute " + name + " must be of value integer, but was: " + value;
       throw new PersistenceException(message);
     }
   }
@@ -58,7 +58,7 @@ public class ElementUtilities {
   public static String getRequiredAttrib(Element element, String name) throws PersistenceException {
     String value = element.attributeValue(name);
     if (value == null) {
-      throw new PersistenceException("Required attribute not found " + name);//$NON-NLS-1$
+      throw new PersistenceException("Required attribute not found " + name);
     }
     return value;
   }
@@ -66,7 +66,7 @@ public class ElementUtilities {
   public static Element getRequiredElement(Element parent, String tagName) throws PersistenceException {
     Element element = parent.element(tagName);
     if (element == null) {
-      throw new PersistenceException("Required element not found " + tagName); //$NON-NLS-1$
+      throw new PersistenceException("Required element not found " + tagName);
     }
     return element;
   }

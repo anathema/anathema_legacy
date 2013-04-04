@@ -76,37 +76,37 @@ public class GenericCreationPoints extends ReflectionCloneableObject<GenericCrea
   }
 
   public void setBackgroundPointCount(int backgroundPointCount) {
-    Preconditions.checkArgument(backgroundPointCount >= 0, "Background point count must be positive."); //$NON-NLS-1$
+    Preconditions.checkArgument(backgroundPointCount >= 0, "Background point count must be positive.");
     this.backgroundPointCount = backgroundPointCount;
   }
 
   public void setBonusPointCount(int bonusPointCount) {
-    Preconditions.checkArgument(bonusPointCount >= 0, "Bonus point count must be positive."); //$NON-NLS-1$
+    Preconditions.checkArgument(bonusPointCount >= 0, "Bonus point count must be positive.");
     this.bonusPointCount = bonusPointCount;
   }
 
   public void setGeneralCreationCharmCount(int charmCount) {
-    Preconditions.checkArgument(charmCount >= 0, "Default charm count must be positive."); //$NON-NLS-1$
+    Preconditions.checkArgument(charmCount >= 0, "Default charm count must be positive.");
     this.defaultCreationCharmCount = charmCount;
   }
 
   public void setFavoredCreationCharmCount(int charmCount) {
-    Preconditions.checkArgument(charmCount >= 0, "Favored charm count must be positive."); //$NON-NLS-1$
+    Preconditions.checkArgument(charmCount >= 0, "Favored charm count must be positive.");
     this.favoredCreationCharmCount = charmCount;
   }
 
   public void setUniqueCreationCharmCount(int charmCount) {
-    Preconditions.checkArgument(charmCount >= 0, "Unique charm count must be positive."); //$NON-NLS-1$
+    Preconditions.checkArgument(charmCount >= 0, "Unique charm count must be positive.");
     this.uniqueCreationCharmCount = charmCount;
   }
 
   public void setVirtueCreationPoints(int virtueCreationPoints) {
-    Preconditions.checkArgument(virtueCreationPoints >= 0, "Virtue creation points must be positive."); //$NON-NLS-1$
+    Preconditions.checkArgument(virtueCreationPoints >= 0, "Virtue creation points must be positive.");
     this.virtueCreationPoints = virtueCreationPoints;
   }
 
   public void setSpecialityPoints(int specialityCreationPoints) {
-    Preconditions.checkArgument(specialityCreationPoints >= 0, "Speciality creation points must be positive."); //$NON-NLS-1$
+    Preconditions.checkArgument(specialityCreationPoints >= 0, "Speciality creation points must be positive.");
     this.specialityCreationPoints = specialityCreationPoints;
   }
 

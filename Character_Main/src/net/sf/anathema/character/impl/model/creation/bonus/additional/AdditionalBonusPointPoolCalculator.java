@@ -1,6 +1,5 @@
 package net.sf.anathema.character.impl.model.creation.bonus.additional;
 
-import com.google.common.base.Preconditions;
 import net.sf.anathema.character.generic.additionalrules.IAdditionalBonusPointPool;
 import net.sf.anathema.character.generic.character.IGenericTraitCollection;
 import net.sf.anathema.character.generic.magic.IMagic;
@@ -24,11 +23,6 @@ public class AdditionalBonusPointPoolCalculator {
     this.poolTemplate = poolTemplate;
     this.collection = collection;
     this.specialtyCalculator = new SpecialtyCalculator(collection, 0);
-  }
-
-  public void spendPoints(int pointsToSpent) {
-    Preconditions.checkArgument(pointsSpent <= getRemainingPoints(), "Too many bonuspoints spent."); //$NON-NLS-1$
-    pointsSpent += pointsToSpent;
   }
 
   public int getRemainingPoints() {

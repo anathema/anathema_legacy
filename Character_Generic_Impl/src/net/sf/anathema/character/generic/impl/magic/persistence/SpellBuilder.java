@@ -24,21 +24,21 @@ public class SpellBuilder {
   public ISpell[] buildSpells(Document spellDocument) throws PersistenceException {
     Element spellListElement = spellDocument.getRootElement();
     List<ISpell> spellList = new ArrayList<>();
-    for (Object spellObject : spellListElement.elements("spell")) { //$NON-NLS-1$
+    for (Object spellObject : spellListElement.elements("spell")) {
       Element spellElement = (Element) spellObject;
       buildSpell(spellElement, spellList);
     }
-    return spellList.toArray(new ISpell[0]);
+    return spellList.toArray(new ISpell[spellList.size()]);
   }
 
   private void buildSpell(Element spellElement, List<ISpell> spellList) throws PersistenceException {
-    String id = spellElement.attributeValue("id"); //$NON-NLS-1$
-    String circleId = spellElement.attributeValue("circle"); //$NON-NLS-1$
-    ICostList temporaryCost = costListBuilder.buildCostList(spellElement.element("cost")); //$NON-NLS-1$
-    Element targetElement = spellElement.element("target"); //$NON-NLS-1$
+    String id = spellElement.attributeValue("id");
+    String circleId = spellElement.attributeValue("circle");
+    ICostList temporaryCost = costListBuilder.buildCostList(spellElement.element("cost"));
+    Element targetElement = spellElement.element("target");
     String target = null;
     if (targetElement != null) {
-      target = targetElement.attributeValue("target"); //$NON-NLS-1$
+      target = targetElement.attributeValue("target");
     }
     ISourceList sourceList = buildSource(spellElement);
     if (sourceList.isEmpty()) {

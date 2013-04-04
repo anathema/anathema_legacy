@@ -14,16 +14,16 @@ public class GenericIdStringBuilderTest {
   public void testGenerateHeaderString() throws Exception {
     GenericIdStringBuilder builder = new GenericIdStringBuilder();
     builder.setType(AbilityType.MartialArts);
-    String xml = "<charm id=\"test\"/>"; //$NON-NLS-1$
+    String xml = "<charm id=\"test\"/>";
     Element rootElement = DocumentUtilities.read(xml).getRootElement();
     String id = builder.build(rootElement);
-    assertEquals("test.MartialArts", id); //$NON-NLS-1$
+    assertEquals("test.MartialArts", id);
   }
 
   @Test(expected = IllegalStateException.class)
   public void testTypeNotSet() throws Exception {
     GenericIdStringBuilder builder = new GenericIdStringBuilder();
-    String xml = "<charm id=\"test\"/>"; //$NON-NLS-1$
+    String xml = "<charm id=\"test\"/>";
     Element rootElement = DocumentUtilities.read(xml).getRootElement();
     builder.build(rootElement);
   }

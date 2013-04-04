@@ -85,14 +85,14 @@ public class SiderealDetailsPageEncoder implements PageEncoder {
     } else {
       boxBounds = configuration.getColumnRectangle(distanceFromTop, height, 1, PageConfiguration.Offset(1));
     }
-    ContentEncoder encoder = new HorizontalLineBoxContentEncoder(4, resources, "Sidereal.Connections"); //$NON-NLS-1$
+    ContentEncoder encoder = new HorizontalLineBoxContentEncoder(4, resources, "Sidereal.Connections");
     boxEncoder.encodeBox(session, graphics, encoder, boxBounds);
   }
 
   private float encodeAcquaintances(SheetGraphics graphics, ReportSession session, float distanceFromTop,
                                     float height) throws DocumentException {
     Bounds boxBounds = configuration.getColumnRectangle(distanceFromTop, height, 1, PageConfiguration.Offset(1));
-    ContentEncoder encoder = new HorizontalLineBoxContentEncoder(1, resources, "Sidereal.Acquaintances"); //$NON-NLS-1$
+    ContentEncoder encoder = new HorizontalLineBoxContentEncoder(1, resources, "Sidereal.Acquaintances");
     boxEncoder.encodeBox(session, graphics, encoder, boxBounds);
     return height;
   }
@@ -152,6 +152,7 @@ public class SiderealDetailsPageEncoder implements PageEncoder {
     return height;
   }
 
+  @SuppressWarnings("unchecked")
   private float encodeColleges(SheetGraphics graphics, ReportSession session,
                                float distanceFromTop) throws DocumentException {
     float height = COLLEGE_HEIGHT;

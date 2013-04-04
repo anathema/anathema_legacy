@@ -7,35 +7,35 @@ import javax.swing.Icon;
 public class BasicUi extends AbstractUI {
 
   public Icon getRemoveIcon() {
-    return getIcon("icons/ButtonMinus16.png"); //$NON-NLS-1$
+    return getIcon("icons/ButtonMinus16.png");
   }
 
   public Icon getAddIcon() {
-    return getIcon("icons/ButtonPlus16.png"); //$NON-NLS-1$
+    return getIcon("icons/ButtonPlus16.png");
   }
 
   public Icon getClearIcon() {
-    return getIcon("icons/ButtonCross16.png"); //$NON-NLS-1$
+    return getIcon("icons/ButtonCross16.png");
   }
 
   @SuppressWarnings("UnusedDeclaration")
   public Icon getLeftArrowIcon() {
-    return getIcon("icons/ButtonArrowLeft16.png"); //$NON-NLS-1$
+    return getIcon("icons/ButtonArrowLeft16.png");
   }
 
   public Icon getRightArrowIcon() {
-    return getIcon("icons/ButtonArrowRight16.png"); //$NON-NLS-1$
+    return getIcon("icons/ButtonArrowRight16.png");
   }
 
   public Icon getUpArrowIcon() {
-    return getIcon("icons/ButtonArrowUp16.png"); //$NON-NLS-1$
+    return getIcon("icons/ButtonArrowUp16.png");
   }
 
   public Icon getDownArrowIcon() {
-    return getIcon("icons/ButtonArrowDown16.png"); //$NON-NLS-1$
+    return getIcon("icons/ButtonArrowDown16.png");
   }
 
   public Icon getEditIcon() {
-    return getIcon("icons/ButtonEdit16.png"); //$NON-NLS-1$
+    return getIcon("icons/ButtonEdit16.png");
   }
 }

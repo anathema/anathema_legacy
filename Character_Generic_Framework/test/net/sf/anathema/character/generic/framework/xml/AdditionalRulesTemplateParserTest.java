@@ -30,7 +30,7 @@ import static org.junit.Assert.assertTrue;
 
 public class AdditionalRulesTemplateParserTest {
 
-  private static final String ORIGINAL_TEMPLATE_ID = "original"; //$NON-NLS-1$
+  private static final String ORIGINAL_TEMPLATE_ID = "original";
   private DummyXmlTemplateRegistry<GenericAdditionalRules> registry;
   private final CharacterTypes characterTypes = new DummyCharacterTypes();
   private AdditionalRulesTemplateParser parser;
@@ -50,16 +50,16 @@ public class AdditionalRulesTemplateParserTest {
   }
 
   private GenericAdditionalRules parseEmptyRuleset() throws AnathemaException {
-    String xml = "<rules/>"; //$NON-NLS-1$
+    String xml = "<rules/>";
     Element rootElement = DocumentUtilities.read(xml).getRootElement();
     return parser.parseTemplate(rootElement);
   }
   @Test
   public void testRequiredCharm() throws Exception {
-    String xml = "<rules><requiredMagic><magic type=\"charm\" id=\"Charm\" /></requiredMagic> </rules>"; //$NON-NLS-1$
+    String xml = "<rules><requiredMagic><magic type=\"charm\" id=\"Charm\" /></requiredMagic> </rules>";
     Element rootElement = DocumentUtilities.read(xml).getRootElement();
     GenericAdditionalRules template = parser.parseTemplate(rootElement);
-    assertEquals("Charm", template.getCompulsiveCharmIDs()[0]); //$NON-NLS-1$
+    assertEquals("Charm", template.getCompulsiveCharmIDs()[0]);
   }
   @Test
   public void testNoAdditionalPools() throws Exception {
@@ -69,11 +69,11 @@ public class AdditionalRulesTemplateParserTest {
 
   @Test
   public void testCharmMultiLearnableEssencePool() throws Exception {
-    final StaticMultiLearnableCharm charm = new StaticMultiLearnableCharm("Charm", 3); //$NON-NLS-1$
+    final StaticMultiLearnableCharm charm = new StaticMultiLearnableCharm("Charm", 3);
     AdditionalRulesTemplateParser ownParser = new AdditionalRulesTemplateParser(
       registry,
       new ISpecialCharm[]{charm}, characterTypes);
-    String xml = "<rules><additionalPools><multilearnablePool><charmReference id=\"Charm\"/><personalPool multiplier=\"5\"/><peripheralPool multiplier=\"10\"/></multilearnablePool></additionalPools> </rules>"; //$NON-NLS-1$
+    String xml = "<rules><additionalPools><multilearnablePool><charmReference id=\"Charm\"/><personalPool multiplier=\"5\"/><peripheralPool multiplier=\"10\"/></multilearnablePool></additionalPools> </rules>";
     Element rootElement = DocumentUtilities.read(xml).getRootElement();
     GenericAdditionalRules template = ownParser.parseTemplate(rootElement);
     assertEquals(1, template.getAdditionalEssencePools().length);
@@ -86,13 +86,13 @@ public class AdditionalRulesTemplateParserTest {
 
   @Test
   public void testBackgroundMultiLearnableEssencePool() throws Exception {
-    IBackgroundTemplate type = new CustomizedBackgroundTemplate("Background"); //$NON-NLS-1$
+    IBackgroundTemplate type = new CustomizedBackgroundTemplate("Background");
     BackgroundRegistry backgroundRegistry = new BackgroundRegistry();
     backgroundRegistry.add(type);
     AdditionalRulesTemplateParser ownParser = new AdditionalRulesTemplateParser(
       registry,
       new ISpecialCharm[0], characterTypes);
-    String xml = "<rules><additionalPools><multilearnablePool><backgroundReference id=\"Background\"/><personalPool multiplier=\"1\"/><peripheralPool><fixedValue value=\"0\" pool=\"0\"/><fixedValue value=\"1\" pool=\"2\"/><fixedValue value=\"2\" pool=\"3\"/></peripheralPool></multilearnablePool></additionalPools> </rules>"; //$NON-NLS-1$
+    String xml = "<rules><additionalPools><multilearnablePool><backgroundReference id=\"Background\"/><personalPool multiplier=\"1\"/><peripheralPool><fixedValue value=\"0\" pool=\"0\"/><fixedValue value=\"1\" pool=\"2\"/><fixedValue value=\"2\" pool=\"3\"/></peripheralPool></multilearnablePool></additionalPools> </rules>";
     Element rootElement = DocumentUtilities.read(xml).getRootElement();
     GenericAdditionalRules template = ownParser.parseTemplate(rootElement);
     assertEquals(1, template.getAdditionalEssencePools().length);
@@ -117,13 +117,13 @@ public class AdditionalRulesTemplateParserTest {
 
   @Test
   public void testAdditionalMagicPool() throws Exception {
-    IBackgroundTemplate type = new CustomizedBackgroundTemplate("Background"); //$NON-NLS-1$
+    IBackgroundTemplate type = new CustomizedBackgroundTemplate("Background");
     BackgroundRegistry backgroundRegistry = new BackgroundRegistry();
     backgroundRegistry.add(type);
     AdditionalRulesTemplateParser ownParser = new AdditionalRulesTemplateParser(
       registry,
       new ISpecialCharm[0], characterTypes);
-    String xml = "<rules><additionalMagic><magicPool><backgroundReference id=\"Background\"/></magicPool></additionalMagic> </rules>"; //$NON-NLS-1$
+    String xml = "<rules><additionalMagic><magicPool><backgroundReference id=\"Background\"/></magicPool></additionalMagic> </rules>";
     Element rootElement = DocumentUtilities.read(xml).getRootElement();
     GenericAdditionalRules template = ownParser.parseTemplate(rootElement);
     DummyGenericTraitCollection collection = new DummyGenericTraitCollection();
@@ -139,20 +139,20 @@ public class AdditionalRulesTemplateParserTest {
 
   @Test
   public void testDenyingAdditionalMagicPool() throws Exception {
-    IBackgroundTemplate type = new CustomizedBackgroundTemplate("Background"); //$NON-NLS-1$
+    IBackgroundTemplate type = new CustomizedBackgroundTemplate("Background");
     BackgroundRegistry backgroundRegistry = new BackgroundRegistry();
     backgroundRegistry.add(type);
     AdditionalRulesTemplateParser ownParser = new AdditionalRulesTemplateParser(
       registry,
       new ISpecialCharm[0], characterTypes);
-    String xml = "<rules><additionalMagic><magicPool defaultResponse=\"false\"><backgroundReference id=\"Background\"/><spellReference id=\"Expected\"/></magicPool></additionalMagic> </rules>"; //$NON-NLS-1$
+    String xml = "<rules><additionalMagic><magicPool defaultResponse=\"false\"><backgroundReference id=\"Background\"/><spellReference id=\"Expected\"/></magicPool></additionalMagic> </rules>";
     Element rootElement = DocumentUtilities.read(xml).getRootElement();
     GenericAdditionalRules template = ownParser.parseTemplate(rootElement);
     DummyGenericTraitCollection collection = new DummyGenericTraitCollection();
-    DummySpell dummySpell = new DummySpell("id"); //$NON-NLS-1$
+    DummySpell dummySpell = new DummySpell("id");
     dummySpell.setCircleType(CircleType.Terrestrial);
     assertFalse(template.getAdditionalMagicLearnPools()[0].isAllowedFor(collection, dummySpell));
-    DummySpell expectedSpell = new DummySpell("Expected"); //$NON-NLS-1$
+    DummySpell expectedSpell = new DummySpell("Expected");
     expectedSpell.setCircleType(CircleType.Terrestrial);
     assertFalse(template.getAdditionalMagicLearnPools()[0].isAllowedFor(
       collection,
@@ -162,13 +162,13 @@ public class AdditionalRulesTemplateParserTest {
 
   @Test
   public void testAdditionalBonusCostForBackground() throws Exception {
-    IBackgroundTemplate type = new CustomizedBackgroundTemplate("Background"); //$NON-NLS-1$
+    IBackgroundTemplate type = new CustomizedBackgroundTemplate("Background");
     BackgroundRegistry backgroundRegistry = new BackgroundRegistry();
     backgroundRegistry.add(type);
     AdditionalRulesTemplateParser ownParser = new AdditionalRulesTemplateParser(
       registry,
       new ISpecialCharm[0], characterTypes);
-    String xml = "<rules><additionalCost><costModifier><backgroundReference id=\"Background\"/><bonusModification thresholdLevel=\"1\" multiplier=\"2\"/></costModifier></additionalCost> </rules>"; //$NON-NLS-1$
+    String xml = "<rules><additionalCost><costModifier><backgroundReference id=\"Background\"/><bonusModification thresholdLevel=\"1\" multiplier=\"2\"/></costModifier></additionalCost> </rules>";
     Element rootElement = DocumentUtilities.read(xml).getRootElement();
     GenericAdditionalRules template = ownParser.parseTemplate(rootElement);
     assertEquals(0, template.getBackgroundCostModifier(type).getAdditionalDotsToSpend(5));
@@ -177,13 +177,13 @@ public class AdditionalRulesTemplateParserTest {
 
   @Test
   public void testAdditionalDotsForBackground() throws Exception {
-    IBackgroundTemplate type = new CustomizedBackgroundTemplate("Background"); //$NON-NLS-1$
+    IBackgroundTemplate type = new CustomizedBackgroundTemplate("Background");
     BackgroundRegistry backgroundRegistry = new BackgroundRegistry();
     backgroundRegistry.add(type);
     AdditionalRulesTemplateParser ownParser = new AdditionalRulesTemplateParser(
       registry,
       new ISpecialCharm[0], characterTypes);
-    String xml = "<rules><additionalCost><costModifier><backgroundReference id=\"Background\"/><dotCostModification thresholdLevel=\"1\" multiplier=\"1\"/></costModifier></additionalCost> </rules>"; //$NON-NLS-1$
+    String xml = "<rules><additionalCost><costModifier><backgroundReference id=\"Background\"/><dotCostModification thresholdLevel=\"1\" multiplier=\"1\"/></costModifier></additionalCost> </rules>";
     Element rootElement = DocumentUtilities.read(xml).getRootElement();
     GenericAdditionalRules template = ownParser.parseTemplate(rootElement);
     assertEquals(2, template.getBackgroundCostModifier(type).getAdditionalDotsToSpend(3));
@@ -192,7 +192,7 @@ public class AdditionalRulesTemplateParserTest {
 
   @Test
   public void testStandardCostForBackground() throws Exception {
-    IBackgroundTemplate type = new CustomizedBackgroundTemplate("Background"); //$NON-NLS-1$
+    IBackgroundTemplate type = new CustomizedBackgroundTemplate("Background");
     GenericAdditionalRules template = parseEmptyRuleset();
     assertEquals(0, template.getBackgroundCostModifier(type).getAdditionalDotsToSpend(5));
     assertEquals(0, template.getBackgroundCostModifier(type).getAdditionalBonusPointsToSpend(5));
@@ -200,7 +200,7 @@ public class AdditionalRulesTemplateParserTest {
 
   @Test
   public void testForbiddenBackgrounds() throws Exception {
-    String xml = "<rules><forbiddenBackgrounds><backgroundReference id=\"forbidden\" /></forbiddenBackgrounds> </rules>"; //$NON-NLS-1$
+    String xml = "<rules><forbiddenBackgrounds><backgroundReference id=\"forbidden\" /></forbiddenBackgrounds> </rules>";
     Element rootElement = DocumentUtilities.read(xml).getRootElement();
     GenericAdditionalRules template = parser.parseTemplate(rootElement);
     assertTrue(template.isRejected(getDummyBackgroundTemplate()));
@@ -231,7 +231,7 @@ public class AdditionalRulesTemplateParserTest {
 
       @Override
       public String getId() {
-        return "forbidden"; //$NON-NLS-1$
+        return "forbidden";
       }
     };
   }

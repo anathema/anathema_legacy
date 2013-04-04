@@ -113,6 +113,6 @@ public class IdentifiedRegularNode extends Identifier implements IIdentifiedRegu
 
   @Override
   public String toString() {
-    return getId() + " (Layer:" + getLayer() + ")"; //$NON-NLS-1$//$NON-NLS-2$
+    return getId() + " (Layer:" + getLayer() + ")";
   }
 }

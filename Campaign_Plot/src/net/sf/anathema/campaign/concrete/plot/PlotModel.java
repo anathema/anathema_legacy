@@ -7,10 +7,10 @@ import net.sf.anathema.lib.control.IChangeListener;
 
 public class PlotModel implements IPlotModel, IChangeManagement {
 
-  public static final String ID_SERIES = "Series"; //$NON-NLS-1$
-  public static final String ID_STORY = "Story"; //$NON-NLS-1$
-  public static final String ID_SCENE = "Scene"; //$NON-NLS-1$
-  public static final String ID_EPISODE = "Episode"; //$NON-NLS-1$
+  public static final String ID_SERIES = "Series";
+  public static final String ID_STORY = "Story";
+  public static final String ID_SCENE = "Scene";
+  public static final String ID_EPISODE = "Episode";
   private PlotElement root;
   private final PlotIDProvider provider;
   private final PlotTimeUnit rootUnit;

@@ -23,7 +23,7 @@ public class SimpleIntimaciesContent extends AbstractSubBoxContent implements Li
 
   @Override
   public String getHeaderKey() {
-    return "Intimacies"; //$NON-NLS-1$
+    return "Intimacies";
   }
 
   @Override
@@ -32,7 +32,7 @@ public class SimpleIntimaciesContent extends AbstractSubBoxContent implements Li
     for (IIntimacy intimacy : getModel().getEntries()) {
       String text = intimacy.getName();
       if (!intimacy.isComplete()) {
-        text += " (" + intimacy.getTrait().getCurrentValue() + "/" + intimacy.getTrait().getMaximalValue() + ")"; //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
+        text += " (" + intimacy.getTrait().getCurrentValue() + "/" + intimacy.getTrait().getMaximalValue() + ")";
       }
       printIntimacies.add(text);
     }

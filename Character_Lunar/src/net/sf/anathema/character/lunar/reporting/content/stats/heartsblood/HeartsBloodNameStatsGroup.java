@@ -13,7 +13,7 @@ public class HeartsBloodNameStatsGroup extends AbstractNameStatsGroup<IHeartsBlo
 
   @Override
   protected String getHeaderResourceKey() {
-    return "Sheet.Lunar.HeartsBlood.Name"; //$NON-NLS-1$
+    return "Sheet.Lunar.HeartsBlood.Name";
   }
 
   @Override
@@ -24,7 +24,7 @@ public class HeartsBloodNameStatsGroup extends AbstractNameStatsGroup<IHeartsBlo
   @Override
   public void addContent(PdfPTable table, Font font, IHeartsBloodStats stats) {
     if (stats == null) {
-      table.addCell(createTextCell(font, "")); //$NON-NLS-1$
+      table.addCell(createTextCell(font, ""));
     } else {
       String name = stats.getName().getId();
       table.addCell(createTextCell(font, name));

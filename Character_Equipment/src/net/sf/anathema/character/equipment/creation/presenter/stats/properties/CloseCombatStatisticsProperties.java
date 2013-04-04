@@ -10,7 +10,7 @@ public class CloseCombatStatisticsProperties extends OffensiveStatisticsProperti
 
   public CloseCombatStatisticsProperties(Resources resources) {
     super(resources);
-    this.defaultMessage = new BasicMessage(getString("Equipment.Creation.CloseCombat.DefaultMessage")); //$NON-NLS-1$
+    this.defaultMessage = new BasicMessage(getString("Equipment.Creation.CloseCombat.DefaultMessage"));
   }
 
   @Override
@@ -20,15 +20,15 @@ public class CloseCombatStatisticsProperties extends OffensiveStatisticsProperti
 
   @Override
   public String getPageDescription() {
-    return getString("Equipment.Creation.CloseCombat.PageTitle"); //$NON-NLS-1$
+    return getString("Equipment.Creation.CloseCombat.PageTitle");
   }
 
   public String getDefenseLabel() {
-    return getLabelString("Equipment.Stats.Long.Defence"); //$NON-NLS-1$
+    return getLabelString("Equipment.Stats.Long.Defence");
   }
 
   @Override
   public String getDefaultName() {
-    return getString("Equipment.Creation.CloseCombat.DefaultName"); //$NON-NLS-1$
+    return getString("Equipment.Creation.CloseCombat.DefaultName");
   }
 }

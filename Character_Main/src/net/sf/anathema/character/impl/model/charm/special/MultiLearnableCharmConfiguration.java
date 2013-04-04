@@ -38,7 +38,7 @@ public class MultiLearnableCharmConfiguration implements IMultiLearnableCharmCon
     this.charm = charm;
     this.specialCharm = specialCharm;
     this.arbitrator = arbitrator;
-    this.trait = new LimitedTrait(new TraitType(charm.getId()), SimpleTraitTemplate.createStaticLimitedTemplate( //$NON-NLS-1$
+    this.trait = new LimitedTrait(new TraitType(charm.getId()), SimpleTraitTemplate.createStaticLimitedTemplate(
             0, specialCharm.getAbsoluteLearnLimit()), new MultiLearnableIncrementChecker(), context.getTraitContext());
     this.trait.addCurrentValueListener(new IIntValueChangedListener() {
       @Override

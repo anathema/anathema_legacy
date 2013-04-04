@@ -19,6 +19,6 @@ public abstract class AbstractEssenceTemplate implements IEssenceTemplate {
         return trait;
       }
     }
-    throw new IllegalArgumentException("No trait given for type " + traitType); //$NON-NLS-1$
+    throw new IllegalArgumentException("No trait given for type " + traitType);
   }
 }

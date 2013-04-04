@@ -57,24 +57,24 @@ public class RepositoryItemDuplicationPresenter implements Presenter {
               inputStream.close();
             }
             model.refreshItem(type, handler.getNewId());
-            messaging.addMessage("AnathemaCore.Tools.RepositoryView.DuplicateDoneMessage", MessageType.INFORMATION); //$NON-NLS-1$
+            messaging.addMessage("AnathemaCore.Tools.RepositoryView.DuplicateDoneMessage", MessageType.INFORMATION);
           }
         }
         catch (RepositoryException e) {
           showMessageDialog(parentComponent, new Message(
-              resources.getString("AnathemaCore.Tools.RepositoryView.RepositoryError"), //$NON-NLS-1$
+              resources.getString("AnathemaCore.Tools.RepositoryView.RepositoryError"),
               e));
           Logger.getLogger(getClass()).error(e);
         }
         catch (IOException e) {
           showMessageDialog(parentComponent, new Message(
-              resources.getString("AnathemaCore.Tools.RepositoryView.FileError"), //$NON-NLS-1$
+              resources.getString("AnathemaCore.Tools.RepositoryView.FileError"),
               e));
           Logger.getLogger(getClass()).error(e);
         }
       }
     };
-    action.setToolTipText(resources.getString("AnathemaCore.Tools.RepositoryView.DuplicateToolTip")); //$NON-NLS-1$
+    action.setToolTipText(resources.getString("AnathemaCore.Tools.RepositoryView.DuplicateToolTip"));
     view.addActionButton(action);
     model.addTreeSelectionChangeListener(new IChangeListener() {
       @Override

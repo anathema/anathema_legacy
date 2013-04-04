@@ -17,12 +17,12 @@ public class CharmAttributeRequirement extends ReflectionEqualsObject implements
 
   @Override
   public String getStringRepresentation() {
-    return "Requirement." + attribute.getId() + "." + count; //$NON-NLS-1$//$NON-NLS-2$
+    return "Requirement." + attribute.getId() + "." + count;
   }
 
   @Override
   public String toString() {
-    return attribute.toString() + "x" + count; //$NON-NLS-1$
+    return attribute.toString() + "x" + count;
   }
 
   @Override

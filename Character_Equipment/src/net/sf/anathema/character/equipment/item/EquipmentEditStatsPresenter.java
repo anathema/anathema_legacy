@@ -3,10 +3,10 @@ package net.sf.anathema.character.equipment.item;
 import net.sf.anathema.character.equipment.item.model.IEquipmentDatabaseManagement;
 import net.sf.anathema.character.equipment.item.model.IEquipmentTemplateEditModel;
 import net.sf.anathema.character.equipment.item.view.EquipmentDatabaseView;
+import net.sf.anathema.character.equipment.item.view.ToolListView;
 import net.sf.anathema.character.generic.equipment.weapon.IEquipmentStats;
 import net.sf.anathema.lib.control.IChangeListener;
 import net.sf.anathema.lib.gui.Presenter;
-import net.sf.anathema.character.equipment.item.view.ToolListView;
 import net.sf.anathema.lib.resources.Resources;
 
 public class EquipmentEditStatsPresenter implements Presenter {
@@ -25,7 +25,7 @@ public class EquipmentEditStatsPresenter implements Presenter {
   @Override
   public void initPresentation() {
     final ToolListView<IEquipmentStats> statsListView = view.initStatsListView(new EquipmentStatsUIConfiguration(resources));
-    view.setStatsListHeader(resources.getString("Equipment.Creation.Stats")); //$NON-NLS-1$
+    view.setStatsListHeader(resources.getString("Equipment.Creation.Stats"));
     model.getTemplateEditModel().addStatsChangeListener(new IChangeListener() {
       @Override
       public void changeOccurred() {

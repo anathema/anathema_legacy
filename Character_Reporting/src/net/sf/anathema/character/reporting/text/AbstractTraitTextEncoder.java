@@ -16,7 +16,7 @@ public abstract class AbstractTraitTextEncoder extends AbstractTextEncoder {
   }
 
   public void createParagraphs(MultiColumnText columnText, IGenericCharacter genericCharacter) throws DocumentException {
-    Phrase traitPhrase = createTextParagraph(createBoldTitle(getString(getLabelKey()) + ": ")); //$NON-NLS-1$
+    Phrase traitPhrase = createTextParagraph(createBoldTitle(getString(getLabelKey()) + ": "));
     boolean firstPrinted = true;
     for (ITraitType type : getTypes(genericCharacter)) {
       IFavorableGenericTrait trait = genericCharacter.getTraitCollection().getFavorableTrait(type);
@@ -24,14 +24,14 @@ public abstract class AbstractTraitTextEncoder extends AbstractTextEncoder {
         continue;
       }
       if (!firstPrinted) {
-        traitPhrase.add(createTextChunk(", ")); //$NON-NLS-1$
+        traitPhrase.add(createTextChunk(", "));
       }
       firstPrinted = false;
       if (trait.isCasteOrFavored()) {
-        traitPhrase.add(createTextChunk("*")); //$NON-NLS-1$
+        traitPhrase.add(createTextChunk("*"));
       }
       traitPhrase.add(createTextChunk(getString(trait.getType().getId())));
-      traitPhrase.add(createTextChunk(" " + String.valueOf(trait.getCurrentValue()))); //$NON-NLS-1$
+      traitPhrase.add(createTextChunk(" " + String.valueOf(trait.getCurrentValue())));
     }
     columnText.addElement(traitPhrase);
   }

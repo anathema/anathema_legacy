@@ -31,8 +31,8 @@ public class FlawedFateEncoder implements ContentEncoder {
     IVirtueFlaw virtueFlaw = ((IVirtueFlawModel) reportSession.getCharacter().getAdditionalModel(SiderealFlawedFateTemplate.ID)).getVirtueFlaw();
     Bounds textBounds = traitEncoder.encode(graphics, bounds, virtueFlaw.getLimitTrait().getCurrentValue());
     Font font = graphics.createTableFont();
-    Phrase phrase = new Phrase("", font); //$NON-NLS-1$
-    phrase.add(new Chunk(resources.getString("Sheet.GreatCurse.Sidereal.LimitBreak") + ": ", boldFont)); //$NON-NLS-1$
+    Phrase phrase = new Phrase("", font);
+    phrase.add(new Chunk(resources.getString("Sheet.GreatCurse.Sidereal.LimitBreak") + ": ", boldFont));
     String fateString = resources.getString("Sheet.GreatCurse.Sidereal.FlawedFate." + reportSession.getCharacter().getCasteType().getId()) + "\n";
     if (fateString.startsWith("#")) {
       fateString = "\n";

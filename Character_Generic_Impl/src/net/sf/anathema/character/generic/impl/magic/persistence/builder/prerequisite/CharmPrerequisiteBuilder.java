@@ -27,7 +27,7 @@ public class CharmPrerequisiteBuilder implements ICharmPrerequisiteBuilder {
     for (Element element : prerequisiteCharmList) {
       String id = element.attributeValue(ATTRIB_ID);
       if (Strings.isNullOrEmpty(id)) {
-        throw new CharmException("Prerequisite charm id is null or empty."); //$NON-NLS-1$
+        throw new CharmException("Prerequisite charm id is null or empty.");
       }
       prerequisiteCharmIds.add(id);
     }

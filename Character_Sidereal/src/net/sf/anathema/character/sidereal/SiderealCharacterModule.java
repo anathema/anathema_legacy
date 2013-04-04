@@ -34,25 +34,25 @@ import net.sf.anathema.lib.util.Identifier;
 @CharacterModule
 public class SiderealCharacterModule extends CharacterTypeModule {
   public static final ICharacterType type = new SiderealCharacterType();
-  public static final String BACKGROUND_ID_ACQUAINTANCES = "Acquaintances"; //$NON-NLS-1$
-  public static final String BACKGROUND_ID_CONNECTIONS = "Connections"; //$NON-NLS-1$
-  public static final String BACKGROUND_ID_CELESTIAL_MANSE = "CelestialManse"; //$NON-NLS-1$
-  public static final String BACKGROUND_ID_SALARY = "Salary"; //$NON-NLS-1$
-  public static final String BACKGROUND_ID_SAVANT = "Savant"; //$NON-NLS-1$
-  public static final String BACKGROUND_ID_SIFU = "Sifu"; //$NON-NLS-1$
+  public static final String BACKGROUND_ID_ACQUAINTANCES = "Acquaintances";
+  public static final String BACKGROUND_ID_CONNECTIONS = "Connections";
+  public static final String BACKGROUND_ID_CELESTIAL_MANSE = "CelestialManse";
+  public static final String BACKGROUND_ID_SALARY = "Salary";
+  public static final String BACKGROUND_ID_SAVANT = "Savant";
+  public static final String BACKGROUND_ID_SIFU = "Sifu";
 
-  private static final TemplateType defaultTemplateType = new TemplateType(type); //$NON-NLS-1$
-  public static final TemplateType dreamsType = new TemplateType(type, new Identifier("Dreams")); //$NON-NLS-1$
+  private static final TemplateType defaultTemplateType = new TemplateType(type);
+  public static final TemplateType dreamsType = new TemplateType(type, new Identifier("Dreams"));
 
   private static final TemplateType[] dreams = {dreamsType};
 
-  public static final String BACKGROUND_ID_ARSENAL = "SiderealDreamsArsenal"; //$NON-NLS-1$
-  public static final String BACKGROUND_ID_COMMAND = "SiderealDreamsCommand"; //$NON-NLS-1$
-  public static final String BACKGROUND_ID_HENCHMEN = "SiderealDreamsHenchmen"; //$NON-NLS-1$
-  public static final String BACKGROUND_ID_PANOPLY = "SiderealDreamsPanoply"; //$NON-NLS-1$
-  public static final String BACKGROUND_ID_REPUTATION = "SiderealDreamsReputation"; //$NON-NLS-1$
-  public static final String BACKGROUND_ID_RETAINERS = "SiderealDreamsRetainers"; //$NON-NLS-1$
-  public static final String BACKGROUND_ID_WEALTH = "SiderealDreamsWealth"; //$NON-NLS-1$
+  public static final String BACKGROUND_ID_ARSENAL = "SiderealDreamsArsenal";
+  public static final String BACKGROUND_ID_COMMAND = "SiderealDreamsCommand";
+  public static final String BACKGROUND_ID_HENCHMEN = "SiderealDreamsHenchmen";
+  public static final String BACKGROUND_ID_PANOPLY = "SiderealDreamsPanoply";
+  public static final String BACKGROUND_ID_REPUTATION = "SiderealDreamsReputation";
+  public static final String BACKGROUND_ID_RETAINERS = "SiderealDreamsRetainers";
+  public static final String BACKGROUND_ID_WEALTH = "SiderealDreamsWealth";
 
   @Override
   public void registerCommonData(ICharacterGenerics characterGenerics) {

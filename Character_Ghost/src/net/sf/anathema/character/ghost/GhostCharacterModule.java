@@ -29,15 +29,15 @@ import net.sf.anathema.lib.util.Identifier;
 @CharacterModule
 public class GhostCharacterModule extends CharacterTypeModule {
   public static final ICharacterType type = new GhostCharacterType();
-  public static final String BACKGROUND_ID_AGE = "Age"; //$NON-NLS-1$
-  public static final String BACKGROUND_ID_ANCESTOR_CULT = "AncestorCult"; //$NON-NLS-1$
-  public static final String BACKGROUND_ID_GRAVE_GOODS = "GraveGoods"; //$NON-NLS-1$
-  public static final String BACKGROUND_ID_UNDERWORLD_MANSE = "GhostUnderworldManse"; //$NON-NLS-1$
-  public static final String BACKGROUND_ID_UNDERWORLD_CULT = "UnderworldCult"; //$NON-NLS-1$
-  public static final String BACKGROUND_ID_WHISPERS = "GhostWhispers"; //$NON-NLS-1$
+  public static final String BACKGROUND_ID_AGE = "Age";
+  public static final String BACKGROUND_ID_ANCESTOR_CULT = "AncestorCult";
+  public static final String BACKGROUND_ID_GRAVE_GOODS = "GraveGoods";
+  public static final String BACKGROUND_ID_UNDERWORLD_MANSE = "GhostUnderworldManse";
+  public static final String BACKGROUND_ID_UNDERWORLD_CULT = "UnderworldCult";
+  public static final String BACKGROUND_ID_WHISPERS = "GhostWhispers";
 
   private static final TemplateType heroicType = new TemplateType(type);
-  private static final TemplateType commonType = new TemplateType(type, new Identifier("CommonGhost")); //$NON-NLS-1$
+  private static final TemplateType commonType = new TemplateType(type, new Identifier("CommonGhost"));
 
   private final TemplateType[] trueGhosts = {heroicType, commonType};
 

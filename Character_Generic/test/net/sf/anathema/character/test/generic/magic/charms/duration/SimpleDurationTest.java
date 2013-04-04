@@ -11,21 +11,21 @@ public class SimpleDurationTest {
 
   @Test
   public void testInstantDuration() throws Exception {
-    IDuration duration = SimpleDuration.getDuration("Instant"); //$NON-NLS-1$
+    IDuration duration = SimpleDuration.getDuration("Instant");
     assertEquals(SimpleDuration.INSTANT_DURATION, duration);
   }
 
   @Test
   public void testOtherDuration() throws Exception {
-    SimpleDuration duration = SimpleDuration.getDuration("OtherDuration"); //$NON-NLS-1$
+    SimpleDuration duration = SimpleDuration.getDuration("OtherDuration");
     assertFalse(SimpleDuration.INSTANT_DURATION == duration);
     assertFalse(SimpleDuration.PERMANENT_DURATION == duration);
-    assertEquals("OtherDuration", duration.getText()); //$NON-NLS-1$
+    assertEquals("OtherDuration", duration.getText());
   }
 
   @Test
   public void testPermanentDuration() throws Exception {
-    IDuration duration = SimpleDuration.getDuration("Permanent"); //$NON-NLS-1$
+    IDuration duration = SimpleDuration.getDuration("Permanent");
     assertEquals(SimpleDuration.PERMANENT_DURATION, duration);
   }
 }

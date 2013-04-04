@@ -13,27 +13,27 @@ public class AnathemaDialogProperties implements IDialogProperties {
 
   @Override
   public String getOkButtonText() {
-    return resources.getString("UserDialog.OkayButton.Text"); //$NON-NLS-1$
+    return resources.getString("UserDialog.OkayButton.Text");
   }
 
   @Override
   public String getCancelButtonText() {
-    return resources.getString("UserDialog.CancelButton.Text"); //$NON-NLS-1$
+    return resources.getString("UserDialog.CancelButton.Text");
   }
 
   @Override
   public String getHelpButtonText() {
-    return resources.getString("UserDialog.HelpButton.Text"); //$NON-NLS-1$
+    return resources.getString("UserDialog.HelpButton.Text");
   }
 
   @Override
   public String getFoldOutButtonText() {
-    return resources.getString("FoldoutDialog.Foldout.Button.Text"); //$NON-NLS-1$
+    return resources.getString("FoldoutDialog.Foldout.Button.Text");
   }
 
   @Override
   public String getFoldInButtonText() {
-    return resources.getString("FoldoutDialog.Foldin.Button.Text"); //$NON-NLS-1$
+    return resources.getString("FoldoutDialog.Foldin.Button.Text");
   }
 
   protected final Resources getResources() {

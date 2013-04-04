@@ -14,7 +14,7 @@ public class CharmAttributeRequirementTest {
 
   @Before
   public void createAttribute() {
-    this.attribute = new CharmAttribute("Expected", false); //$NON-NLS-1$
+    this.attribute = new CharmAttribute("Expected", false);
   }
 
   @Test

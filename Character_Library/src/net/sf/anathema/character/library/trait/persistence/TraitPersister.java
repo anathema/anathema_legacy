@@ -45,10 +45,10 @@ public class TraitPersister {
     }
   }
 
-  public static final String TAG_TRAIT_NAME = "traitName"; //$NON-NLS-1$
-  public static final String TAG_SUB_TRAIT = "subTrait"; //$NON-NLS-1$
-  public static final String ATTRIB_CREATION_VALUE = "creationValue"; //$NON-NLS-1$
-  public static final String ATTRIB_EXPERIENCED_VALUE = "experiencedValue"; //$NON-NLS-1$
+  public static final String TAG_TRAIT_NAME = "traitName";
+  public static final String TAG_SUB_TRAIT = "subTrait";
+  public static final String ATTRIB_CREATION_VALUE = "creationValue";
+  public static final String ATTRIB_EXPERIENCED_VALUE = "experiencedValue";
 
   public final Element saveTrait(Element parent, String tagName, ITrait trait) {
     final Element traitElement = parent.addElement(tagName);

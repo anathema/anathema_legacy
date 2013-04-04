@@ -18,13 +18,13 @@ public class ExperienceContent extends AbstractSubBoxContent {
   public String getExperienceText() {
     int totalPoints = character.getTotalExperiencePoints();
     int spentPoints = character.getSpentExperiencePoints();
-    String experienceMessage = getResources().getString("Sheet.Experience.MessageFormat"); //$NON-NLS-1$
+    String experienceMessage = getResources().getString("Sheet.Experience.MessageFormat");
     return MessageFormat.format(experienceMessage, totalPoints, spentPoints, totalPoints - spentPoints);
   }
 
   @Override
   public String getHeaderKey() {
-    return "Experience"; //$NON-NLS-1$
+    return "Experience";
   }
 
   @Override

@@ -35,22 +35,22 @@ public class SiderealCollegePresenter implements Presenter {
 
   @Override
   public void initPresentation() {
-    final IOverviewCategory creationOverview = view.createOverview(resources.getString("Astrology.Overview.Title")); //$NON-NLS-1$
+    final IOverviewCategory creationOverview = view.createOverview(resources.getString("Astrology.Overview.Title"));
     final ILabelledAlotmentView favoredView = creationOverview.addAlotmentView(
-        resources.getString("Astrology.Overview.FavoredDots"), 2); //$NON-NLS-1$
+        resources.getString("Astrology.Overview.FavoredDots"), 2);
     final ILabelledAlotmentView generalView = creationOverview.addAlotmentView(
-        resources.getString("Astrology.Overview.GeneralDots"), 2); //$NON-NLS-1$
+        resources.getString("Astrology.Overview.GeneralDots"), 2);
     final IValueView<Integer> bonusView = creationOverview.addIntegerValueView(
-        resources.getString("Astrology.Overview.BonusPoints"), 2); //$NON-NLS-1$
-    final IOverviewCategory experienceOverview = view.createOverview(resources.getString("Overview.Title")); //$NON-NLS-1$
+        resources.getString("Astrology.Overview.BonusPoints"), 2);
+    final IOverviewCategory experienceOverview = view.createOverview(resources.getString("Overview.Title"));
     final IValueView<Integer> experienceView = experienceOverview.addIntegerValueView(
-        resources.getString("Astrology.Overview.Experience"), 3); //$NON-NLS-1$
+        resources.getString("Astrology.Overview.Experience"), 3);
     IntegerViewFactory factory = IntValueDisplayFactoryPrototype.createWithMarkerForCharacterType(
             SiderealCharacterModule.type);
     for (final IAstrologicalHouse house : model.getAllHouses()) {
-      view.startGroup(resources.getString("AstrologicalHouses.GroupLabel." + house.getId())); //$NON-NLS-1$
+      view.startGroup(resources.getString("AstrologicalHouses.GroupLabel." + house.getId()));
       for (final IFavorableDefaultTrait college : house.getColleges()) {
-        String collegeName = resources.getString("AstrologicalCollege.Label." + college.getType().getId()); //$NON-NLS-1$
+        String collegeName = resources.getString("AstrologicalCollege.Label." + college.getType().getId());
         IIconToggleButtonProperties properties = new IIconToggleButtonProperties() {
           @Override
           public Icon createUnselectedIcon() {

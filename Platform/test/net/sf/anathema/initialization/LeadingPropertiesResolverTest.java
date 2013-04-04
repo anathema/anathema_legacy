@@ -9,9 +9,9 @@ import java.util.Properties;
 
 public class LeadingPropertiesResolverTest {
 
-  private static final String PROPERTY_NAME = "propertyName"; //$NON-NLS-1$
-  private static final String WILDCARD = "%WILDCARD%"; //$NON-NLS-1$
-  private static final String PROPERTY_VALUE = "propertyValue"; //$NON-NLS-1$
+  private static final String PROPERTY_NAME = "propertyName";
+  private static final String WILDCARD = "%WILDCARD%";
+  private static final String PROPERTY_VALUE = "propertyValue";
   private Properties properties;
 
   @Before
@@ -22,7 +22,7 @@ public class LeadingPropertiesResolverTest {
 
   @Test
   public void testStandardString() throws Exception {
-    assertParsesTo("NoSpecials", "NoSpecials"); //$NON-NLS-1$ //$NON-NLS-2$
+    assertParsesTo("NoSpecials", "NoSpecials");
   }
 
   @Test
@@ -33,7 +33,7 @@ public class LeadingPropertiesResolverTest {
   @Test
   public void testExtendedUserHomeString() throws Exception {
 
-    assertParsesTo(PROPERTY_VALUE + "/und drinnen", WILDCARD + "/und drinnen"); //$NON-NLS-1$//$NON-NLS-2$
+    assertParsesTo(PROPERTY_VALUE + "/und drinnen", WILDCARD + "/und drinnen");
   }
 
   private void assertParsesTo(String expected, String path) {

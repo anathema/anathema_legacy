@@ -4,7 +4,7 @@ import net.sf.anathema.platform.tree.presenter.view.ToolTipProperties;
 
 public interface ICharmTreeViewProperties extends ToolTipProperties {
 
-  String REQUIREMENT = "Requirement"; //$NON-NLS-1$
+  String REQUIREMENT = "Requirement";
 
   boolean isRequirementNode(String nodeId);
 }

@@ -1,6 +1,6 @@
 package net.sf.anathema.lib.testing.clone;
 
-import junit.framework.Assert;
+import org.junit.Assert;
 
 import java.awt.Color;
 import java.lang.reflect.AccessibleObject;
@@ -49,17 +49,17 @@ public class DeepCloneChecker {
       return;
     }
     if (first == null) {
-      Assert.assertNull("Must be null " + currentField, second); //$NON-NLS-1$
+      Assert.assertNull("Must be null " + currentField, second);
       return;
     }
     Class< ? > firstClazz = first.getClass();
-    Assert.assertNotNull("Must not be null " + currentField, second); //$NON-NLS-1$
+    Assert.assertNotNull("Must not be null " + currentField, second);
     Assert.assertSame(firstClazz, second.getClass());
     if (currentField.isEnumConstant() || checkEqualsClasses.contains(firstClazz)) {
-      Assert.assertEquals("Enum " + currentField, first, second); //$NON-NLS-1$
+      Assert.assertEquals("Enum " + currentField, first, second);
       return;
     }
-    Assert.assertNotSame("Field " + currentField, first, second); //$NON-NLS-1$
+    Assert.assertNotSame("Field " + currentField, first, second);
     assertDeepClonedIgnoringTransientField(first, second);
   }
 }

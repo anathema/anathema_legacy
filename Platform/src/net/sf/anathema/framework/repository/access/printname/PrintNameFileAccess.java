@@ -23,13 +23,13 @@ import java.util.regex.Pattern;
 
 public class PrintNameFileAccess implements IPrintNameFileAccess {
   // Used for backward compatibility when all fails ...
-  public static final String COMPATIBILITY_ENCODING = "ISO-8859-1"; //$NON-NLS-1$
+  public static final String COMPATIBILITY_ENCODING = "ISO-8859-1";
   private static final Logger logger = Logger.getLogger(PrintNameFileAccess.class);
 
   private static final String PRINT_NAME_ATTR = "repositoryPrintName";
   private static final String ID_ATTR = "repositoryId";
-  private static final Pattern PRINT_NAME_PATTERN = Pattern.compile(PRINT_NAME_ATTR + "=\"(.*?)\""); //$NON-NLS-1$
-  private static final Pattern ID_PATTERN = Pattern.compile(ID_ATTR + "=\"(.*?)\""); //$NON-NLS-1$
+  private static final Pattern PRINT_NAME_PATTERN = Pattern.compile(PRINT_NAME_ATTR + "=\"(.*?)\"");
+  private static final Pattern ID_PATTERN = Pattern.compile(ID_ATTR + "=\"(.*?)\"");
   private final IRepositoryFileResolver resolver;
   private final IItemManagementModel itemManagement;
 

@@ -41,7 +41,7 @@ public class LineFillingContentEncoder<C extends ListSubBoxContent> extends Abst
   private void addToPhrase(C content, Font font, Phrase phrase) {
     for (Iterator<String> entry = content.getPrintEntries().iterator(); entry.hasNext(); ) {
       String text = entry.next();
-      text += entry.hasNext() ? ", " : ""; //$NON-NLS-1$ //$NON-NLS-2$
+      text += entry.hasNext() ? ", " : "";
       phrase.add(new Chunk(text, font));
     }
   }

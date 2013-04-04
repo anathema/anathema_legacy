@@ -28,30 +28,30 @@ import net.sf.anathema.lib.util.Identifier;
 public class DbCharacterModule extends CharacterTypeModule {
 
   public static final ICharacterType type = new DbCharacterType();
-  public static final String BACKGROUND_ID_ARSENAL = "Arsenal"; //$NON-NLS-1$
-  public static final String BACKGROUND_ID_BREEDING = "Breeding"; //$NON-NLS-1$
-  public static final String BACKGROUND_ID_FAMILY = "Family"; //$NON-NLS-1$
-  public static final String BACKGROUND_ID_COMMAND = "Command"; //$NON-NLS-1$
-  public static final String BACKGROUND_ID_CONNECTIONS = "Connections"; //$NON-NLS-1$
-  public static final String BACKGROUND_ID_HENCHMEN = "Henchmen"; //$NON-NLS-1$
-  public static final String BACKGROUND_ID_REPUTATION = "Reputation"; //$NON-NLS-1$
-  public static final String BACKGROUND_ID_RETAINERS = "Retainers"; //$NON-NLS-1$
-  public static final String BACKGROUND_ID_PANOPLY = "DBDreamsPanoply"; //$NON-NLS-1$
-  public static final String BACKGROUND_ID_SAVANT = "DBDreamsSavant"; //$NON-NLS-1$
-  public static final String BACKGROUND_ID_SIFU = "DBDreamsSifu"; //$NON-NLS-1$
+  public static final String BACKGROUND_ID_ARSENAL = "Arsenal";
+  public static final String BACKGROUND_ID_BREEDING = "Breeding";
+  public static final String BACKGROUND_ID_FAMILY = "Family";
+  public static final String BACKGROUND_ID_COMMAND = "Command";
+  public static final String BACKGROUND_ID_CONNECTIONS = "Connections";
+  public static final String BACKGROUND_ID_HENCHMEN = "Henchmen";
+  public static final String BACKGROUND_ID_REPUTATION = "Reputation";
+  public static final String BACKGROUND_ID_RETAINERS = "Retainers";
+  public static final String BACKGROUND_ID_PANOPLY = "DBDreamsPanoply";
+  public static final String BACKGROUND_ID_SAVANT = "DBDreamsSavant";
+  public static final String BACKGROUND_ID_SIFU = "DBDreamsSifu";
   private static final TemplateType dynastTemplateType = new TemplateType(type);
   private static final TemplateType lookshyNativeTemplateType = new TemplateType(type,
-          new Identifier("LookshySubtype")); //$NON-NLS-1$
+          new Identifier("LookshySubtype"));
   private static final TemplateType lookshyOutcasteTemplateType = new TemplateType(type,
-          new Identifier("LookshyOutcasteSubtype")); //$NON-NLS-1$
+          new Identifier("LookshyOutcasteSubtype"));
   private static final TemplateType lookshyRealmTemplateType = new TemplateType(type,
-          new Identifier("LookshyRealmSubtype")); //$NON-NLS-1$
+          new Identifier("LookshyRealmSubtype"));
   private static final TemplateType cherakiTemplateType = new TemplateType(type,
-          new Identifier("Cherak")); //$NON-NLS-1$
+          new Identifier("Cherak"));
   private static final TemplateType immaculateTemplateType = new TemplateType(type,
-          new Identifier("ImmaculateSubtype")); //$NON-NLS-1$
+          new Identifier("ImmaculateSubtype"));
   private static final TemplateType dreamsTemplateType = new TemplateType(type,
-          new Identifier("DreamsSubtype")); //$NON-NLS-1$
+          new Identifier("DreamsSubtype"));
   private static final TemplateType[] dreams = {dreamsTemplateType};
 
   @Override

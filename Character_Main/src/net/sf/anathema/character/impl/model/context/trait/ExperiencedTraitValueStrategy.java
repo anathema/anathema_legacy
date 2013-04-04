@@ -29,7 +29,7 @@ public class ExperiencedTraitValueStrategy implements ITraitValueStrategy {
 
   @Override
   public void notifyOnCreationValueChange(int value, Announcer<IIntValueChangedListener> currentValueControl) {
-    // throw new IllegalStateException("No changes on creation value should occur in experienced mode."); //$NON-NLS-1$
+    // throw new IllegalStateException("No changes on creation value should occur in experienced mode.");
   }
 
   @Override

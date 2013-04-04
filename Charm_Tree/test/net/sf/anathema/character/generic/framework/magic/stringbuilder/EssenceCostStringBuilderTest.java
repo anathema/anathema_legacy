@@ -13,14 +13,14 @@ public class EssenceCostStringBuilderTest extends TestCase {
   protected void setUp() throws Exception {
     super.setUp();
     DummyResources resources = new DummyResources();
-    resources.putString("CharmTreeView.ToolTip.Mote", "mote"); //$NON-NLS-1$ //$NON-NLS-2$
-    resources.putString("CharmTreeView.ToolTip.Motes", "motes"); //$NON-NLS-1$ //$NON-NLS-2$     
-    builder = new CostStringBuilder(resources, "CharmTreeView.ToolTip.Mote", "CharmTreeView.ToolTip.Motes"); //$NON-NLS-1$//$NON-NLS-2$
+    resources.putString("CharmTreeView.ToolTip.Mote", "mote");
+    resources.putString("CharmTreeView.ToolTip.Motes", "motes");
+    builder = new CostStringBuilder(resources, "CharmTreeView.ToolTip.Mote", "CharmTreeView.ToolTip.Motes");
   }
 
   public void testNoEssenceCost() throws Exception {
     String costString = getCostString(Cost.NULL_COST);
-    assertEquals("", costString); //$NON-NLS-1$
+    assertEquals("", costString);
   }
 
   private String getCostString(ICost cost) {
@@ -28,22 +28,22 @@ public class EssenceCostStringBuilderTest extends TestCase {
   }
 
   public void testPluralValue() throws Exception {
-    String costString = getCostString(new Cost("2", null, false)); //$NON-NLS-1$
-    assertEquals("2 motes", costString); //$NON-NLS-1$
+    String costString = getCostString(new Cost("2", null, false));
+    assertEquals("2 motes", costString);
   }
 
   public void testSingularValue() throws Exception {
-    String costString = getCostString(new Cost("1", null, false)); //$NON-NLS-1$
-    assertEquals("1 mote", costString); //$NON-NLS-1$
+    String costString = getCostString(new Cost("1", null, false));
+    assertEquals("1 mote", costString);
   }
 
   public void testValueAndText() throws Exception {
-    String costString = getCostString(new Cost("4", "or more", false)); //$NON-NLS-1$ //$NON-NLS-2$
-    assertEquals("4 motes or more", costString); //$NON-NLS-1$
+    String costString = getCostString(new Cost("4", "or more", false));
+    assertEquals("4 motes or more", costString);
   }
 
   public void testTextOnly() throws Exception {
-    String costString = getCostString(new Cost(null, "Special", false)); //$NON-NLS-1$
-    assertEquals(" Special", costString); //$NON-NLS-1$
+    String costString = getCostString(new Cost(null, "Special", false));
+    assertEquals(" Special", costString);
   }
 }

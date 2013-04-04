@@ -15,10 +15,10 @@ public class CostListBuilder implements ICostListBuilder {
   @Override
   public ICostList buildCostList(Element costListElement) throws PersistenceException {
     try {
-      ICost essenceCost = costBuilder.buildCost(costListElement.element("essence")); //$NON-NLS-1$
-      ICost willpowerCost = costBuilder.buildCost(costListElement.element("willpower")); //$NON-NLS-1$
-      IHealthCost healthCost = healthCostBuilder.buildCost(costListElement.element("health")); //$NON-NLS-1$
-      ICost xpCost = costBuilder.buildCost(costListElement.element("experience")); //$NON-NLS-1$
+      ICost essenceCost = costBuilder.buildCost(costListElement.element("essence"));
+      ICost willpowerCost = costBuilder.buildCost(costListElement.element("willpower"));
+      IHealthCost healthCost = healthCostBuilder.buildCost(costListElement.element("health"));
+      ICost xpCost = costBuilder.buildCost(costListElement.element("experience"));
       return new CostList(essenceCost, willpowerCost, healthCost, xpCost);
     }
     catch(Exception e) {

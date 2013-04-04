@@ -104,7 +104,7 @@ public class EquipmentAdditionalPresenter implements Presenter {
   }
 
   private void initMaterialView(IMagicalMaterialView magicMaterialView) {
-    String label = resources.getString("MagicMaterial.Label") + ":"; //$NON-NLS-1$ //$NON-NLS-2$
+    String label = resources.getString("MagicMaterial.Label") + ":";
     DefaultListCellRenderer renderer = new MagicMaterialCellRenderer(resources);
     magicMaterialView.initView(label, renderer, MagicalMaterial.values());
   }
@@ -119,7 +119,7 @@ public class EquipmentAdditionalPresenter implements Presenter {
       }
     };
     refreshAction.setToolTipText(
-            resources.getString("AdditionalTemplateView.RefreshDatabase.Action.Tooltip")); //$NON-NLS-1$
+            resources.getString("AdditionalTemplateView.RefreshDatabase.Action.Tooltip"));
     return refreshAction;
   }
 
@@ -137,7 +137,7 @@ public class EquipmentAdditionalPresenter implements Presenter {
         model.addEquipmentObjectFor(equipmentTemplatePickList.getSelectedObject(), materialView.getSelectedMaterial());
       }
     };
-    addAction.setToolTipText(resources.getString("AdditionalTemplateView.AddTemplate.Action.Tooltip")); //$NON-NLS-1$
+    addAction.setToolTipText(resources.getString("AdditionalTemplateView.AddTemplate.Action.Tooltip"));
     equipmentTemplatePickList.addObjectSelectionChangedListener(new ObjectValueListener<String>() {
       @Override
       public void valueChanged(String newValue) {
@@ -163,7 +163,7 @@ public class EquipmentAdditionalPresenter implements Presenter {
     List<Action> actions = new ArrayList<>();
     if (model.canBeRemoved(selectedObject)) {
       if (AnathemaEquipmentPreferences.getDefaultPreferences().getEnablePersonalization()) {
-        actions.add(new SmartAction(resources.getString("AdditionalTemplateView.Personalize.Action.Name"), //$NON-NLS-1$
+        actions.add(new SmartAction(resources.getString("AdditionalTemplateView.Personalize.Action.Name"),
                 editIcon) {
           @Override
           protected void execute(Component parentComponent) {
@@ -171,7 +171,7 @@ public class EquipmentAdditionalPresenter implements Presenter {
           }
         });
       }
-      actions.add(new SmartAction(resources.getString("AdditionalTemplateView.RemoveTemplate.Action.Name"), //$NON-NLS-1$
+      actions.add(new SmartAction(resources.getString("AdditionalTemplateView.RemoveTemplate.Action.Name"),
               removeIcon) {
         @Override
         protected void execute(Component parentComponent) {

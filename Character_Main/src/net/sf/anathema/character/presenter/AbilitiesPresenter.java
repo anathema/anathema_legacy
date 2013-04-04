@@ -21,7 +21,7 @@ public class AbilitiesPresenter implements IContentPresenter {
     int columnCount = 2;
     this.abilityView = factory.createView(columnCount);
     this.presenter = new FavorableTraitConfigurationPresenter(traitTypeGroups, character, abilityView, resources);
-    this.contentHeader = resources.getString("CardView.AbilityConfiguration.Title"); //$NON-NLS-1$
+    this.contentHeader = resources.getString("CardView.AbilityConfiguration.Title");
   }
 
   @Override
@@ -31,6 +31,6 @@ public class AbilitiesPresenter implements IContentPresenter {
 
   @Override
   public void initPresentation() {
-    presenter.init("AbilityGroup"); //$NON-NLS-1$
+    presenter.init("AbilityGroup");
   }
 }

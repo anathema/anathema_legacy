@@ -45,6 +45,6 @@ public class ExperienceConfigurationViewProperties implements IExperienceConfigu
 
   @Override
   public String getTotalString() {
-    return resources.getString("CardView.Experience.Total"); //$NON-NLS-1$
+    return resources.getString("CardView.Experience.Total");
   }
 }

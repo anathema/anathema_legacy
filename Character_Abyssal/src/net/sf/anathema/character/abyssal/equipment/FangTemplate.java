@@ -11,7 +11,7 @@ import net.sf.anathema.character.generic.equipment.weapon.IEquipmentStats;
 public class FangTemplate implements IEquipmentTemplate {
 
   private static final FangStats FANG_STATS = new FangStats();
-  private static final String FANG = "Abyssal.Fangs"; //$NON-NLS-1$
+  private static final String FANG = "Abyssal.Fangs";
 
   @Override
   public MaterialComposition getComposition() {

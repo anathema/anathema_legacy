@@ -32,7 +32,7 @@ public class DialogHeaderPanel {
     Preconditions.checkNotNull(descriptionModel);
     this.descriptionModel = descriptionModel;
     messagePanel = new DialogMessagePanel(messageModel);
-    descriptionLabel = new JLabel("!Dialog.description!", SwingConstants.LEFT); //$NON-NLS-1$
+    descriptionLabel = new JLabel("!Dialog.description!", SwingConstants.LEFT);
     descriptionLabel.setForeground(IDialogConstants.HEADER_TEXT_COLOR);
     descriptionLabel.setFont(IDialogConstants.HEADER_TITLE_FONT);
     descriptionModel.addChangeListener(new IChangeListener() {

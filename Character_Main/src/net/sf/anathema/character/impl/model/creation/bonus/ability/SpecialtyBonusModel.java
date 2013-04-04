@@ -8,7 +8,7 @@ public class SpecialtyBonusModel extends AbstractSpendingModel {
   private final ICreationPoints creationPoints;
 
   public SpecialtyBonusModel(IAbilityCostCalculator abilityCalculator, ICreationPoints creationPoints) {
-    super("Abilities", "Specialties"); //$NON-NLS-1$ //$NON-NLS-2$
+    super("Abilities", "Specialties");
     this.abilityCalculator = abilityCalculator;
     this.creationPoints = creationPoints;
   }

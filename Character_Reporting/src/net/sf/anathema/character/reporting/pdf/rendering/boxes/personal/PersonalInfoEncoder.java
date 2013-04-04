@@ -36,11 +36,11 @@ public class PersonalInfoEncoder implements IVariableContentEncoder {
 
     float firstRowY = (int) (bounds.getMaxY() - lineHeight);
     String conceptContent = reportSession.getDescription().getConceptText();
-    String conceptLabel = getLabel("Concept"); //$NON-NLS-1$
+    String conceptLabel = getLabel("Concept");
     if (characterType.isExaltType()) {
       graphics.drawLabelledContent(conceptLabel, conceptContent, new Position(firstColumnX, firstRowY), entryWidth);
       String casteContent = getCasteString(reportSession.getCharacter().getConcept().getCasteType());
-      graphics.drawLabelledContent(getLabel("Caste." + characterType.getId()), casteContent, new Position(secondColumnX, firstRowY), entryWidth); //$NON-NLS-1$
+      graphics.drawLabelledContent(getLabel("Caste." + characterType.getId()), casteContent, new Position(secondColumnX, firstRowY), entryWidth);
     } else {
       graphics.drawLabelledContent(conceptLabel, conceptContent, new Position(firstColumnX, firstRowY), 2 * entryWidth + TEXT_PADDING);
     }
@@ -56,20 +56,20 @@ public class PersonalInfoEncoder implements IVariableContentEncoder {
       shortColumnX[i] = bounds.x + i * (shortEntryWidth + TEXT_PADDING);
     }
     String ageContent = Integer.toString(reportSession.getCharacter().getAge());
-    graphics.drawLabelledContent(getLabel("Age"), ageContent, new Position(shortColumnX[0], thirdRowY), shortEntryWidth); //$NON-NLS-1$
+    graphics.drawLabelledContent(getLabel("Age"), ageContent, new Position(shortColumnX[0], thirdRowY), shortEntryWidth);
     String sexContent = reportSession.getDescription().getSex();
-    graphics.drawLabelledContent(getLabel("Sex"), sexContent, new Position(shortColumnX[1], thirdRowY), shortEntryWidth); //$NON-NLS-1$
+    graphics.drawLabelledContent(getLabel("Sex"), sexContent, new Position(shortColumnX[1], thirdRowY), shortEntryWidth);
     String hairContent = reportSession.getDescription().getHair();
-    graphics.drawLabelledContent(getLabel("Hair"), hairContent, new Position(shortColumnX[2], thirdRowY), shortEntryWidth); //$NON-NLS-1$
+    graphics.drawLabelledContent(getLabel("Hair"), hairContent, new Position(shortColumnX[2], thirdRowY), shortEntryWidth);
     String skinContent = reportSession.getDescription().getSkin();
-    graphics.drawLabelledContent(getLabel("Skin"), skinContent, new Position(shortColumnX[3], thirdRowY), shortEntryWidth); //$NON-NLS-1$
+    graphics.drawLabelledContent(getLabel("Skin"), skinContent, new Position(shortColumnX[3], thirdRowY), shortEntryWidth);
     String eyesContent = reportSession.getDescription().getEyes();
-    graphics.drawLabelledContent(getLabel("Eyes"), eyesContent, new Position(shortColumnX[4], thirdRowY), shortEntryWidth); //$NON-NLS-1$
+    graphics.drawLabelledContent(getLabel("Eyes"), eyesContent, new Position(shortColumnX[4], thirdRowY), shortEntryWidth);
 
     if (characterType.isExaltType()) {
       float fourthRowY = thirdRowY - lineHeight;
       String animaContent = reportSession.getDescription().getAnima();
-      graphics.drawLabelledContent(getLabel("Anima"), animaContent, new Position(firstColumnX, fourthRowY), bounds.width); //$NON-NLS-1$
+      graphics.drawLabelledContent(getLabel("Anima"), animaContent, new Position(firstColumnX, fourthRowY), bounds.width);
     }
   }
 
@@ -85,11 +85,11 @@ public class PersonalInfoEncoder implements IVariableContentEncoder {
     if (casteType == null || casteType == ICasteType.NULL_CASTE_TYPE) {
       return null;
     }
-    return resources.getString("Caste." + casteType.getId()); //$NON-NLS-1$
+    return resources.getString("Caste." + casteType.getId());
   }
 
   protected final String getLabel(String key) {
-    return resources.getString("Sheet.Label." + key) + ":"; //$NON-NLS-1$ //$NON-NLS-2$
+    return resources.getString("Sheet.Label." + key) + ":";
   }
 
   @Override
@@ -100,7 +100,7 @@ public class PersonalInfoEncoder implements IVariableContentEncoder {
   @Override
   public String getHeader(ReportSession session) {
     String name = session.getDescription().getName();
-    return StringUtilities.isNullOrTrimmedEmpty(name) ? resources.getString("Sheet.Header.PersonalInfo") : name; //$NON-NLS-1$
+    return StringUtilities.isNullOrTrimmedEmpty(name) ? resources.getString("Sheet.Header.PersonalInfo") : name;
   }
 
   @Override

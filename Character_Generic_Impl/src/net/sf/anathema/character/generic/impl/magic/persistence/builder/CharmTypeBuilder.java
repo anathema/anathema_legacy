@@ -33,10 +33,10 @@ public class CharmTypeBuilder {
       charmType = CharmType.valueOf(typeElement.attributeValue(ATTRIB_TYPE));
     }
     catch (IllegalArgumentException e) {
-      throw new CharmException("Bad type in charm. (Type unreadable)"); //$NON-NLS-1$
+      throw new CharmException("Bad type in charm. (Type unreadable)");
     }
     catch (NullPointerException e) {
-      throw new CharmException("Bad type in charm. (Element required)"); //$NON-NLS-1$
+      throw new CharmException("Bad type in charm. (Element required)");
     }
 
     final CharmTypeModel charmTypeModel = new CharmTypeModel();

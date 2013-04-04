@@ -13,9 +13,9 @@ import net.sf.anathema.lib.xml.ElementUtilities;
 import org.dom4j.Element;
 
 public class BeastformPersister implements IAdditionalPersister {
-  private static final String TAG_BEASTFORM = "Beastform"; //$NON-NLS-1$
-  private static final String TAG_BEAST_ATTRIBUTES = "BeastAttributes"; //$NON-NLS-1$
-  private static final String TAG_SPIRIT_ATTRIBUTES = "SpiritAttributes"; //$NON-NLS-1$
+  private static final String TAG_BEASTFORM = "Beastform";
+  private static final String TAG_BEAST_ATTRIBUTES = "BeastAttributes";
+  private static final String TAG_SPIRIT_ATTRIBUTES = "SpiritAttributes";
   private static final String ATTRIB_SPIRIT_SHAPE = "shape";
   private final TraitPersister traitPersister = new TraitPersister();
 

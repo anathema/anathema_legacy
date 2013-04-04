@@ -26,7 +26,7 @@ public class EnablePersonalizationPreferencesElement extends AbstractCheckBoxPre
 
   @Override
   protected String getLabelKey() {
-    return "Equipment.Tools.Preferences.EnablePersonalization"; //$NON-NLS-1$
+    return "Equipment.Tools.Preferences.EnablePersonalization";
   }
 
   @Override

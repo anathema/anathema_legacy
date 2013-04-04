@@ -18,26 +18,26 @@ public class EquipmentTypeChoiceProperties {
   }
 
   public String getLabel(EquipmentStatisticsType type) {
-    return resources.getString("EquipmentStats." + type.name()); //$NON-NLS-1$
+    return resources.getString("EquipmentStats." + type.name());
   }
 
   public String getOffensiveLabel() {
-    return resources.getString("Equipment.Creation.SelectType.OffensiveLabel") + ":"; //$NON-NLS-1$ //$NON-NLS-2$
+    return resources.getString("Equipment.Creation.SelectType.OffensiveLabel") + ":";
   }
 
   public String getDefensiveLabel() {
-    return resources.getString("Equipment.Creation.SelectType.DefensiveLabel") + ":"; //$NON-NLS-1$ //$NON-NLS-2$
+    return resources.getString("Equipment.Creation.SelectType.DefensiveLabel") + ":";
   }
 
   public String getOtherLabel() {
-    return resources.getString("Equipment.Creation.SelectType.OtherLabel") + ":"; //$NON-NLS-1$ //$NON-NLS-2$
+    return resources.getString("Equipment.Creation.SelectType.OtherLabel") + ":";
   }
 
   public String getTypeChoiceTitle() {
-    return resources.getString("Equipment.Creation.SelectType.PageTitle"); //$NON-NLS-1$
+    return resources.getString("Equipment.Creation.SelectType.PageTitle");
   }
 
   public String getTypeChoiceMessage() {
-    return resources.getString("Equipment.Creation.SelectType.DefaultMessage"); //$NON-NLS-1$    
+    return resources.getString("Equipment.Creation.SelectType.DefaultMessage");
   }
 }

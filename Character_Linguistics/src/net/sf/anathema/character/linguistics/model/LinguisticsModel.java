@@ -21,8 +21,8 @@ import java.util.Arrays;
 public class LinguisticsModel extends AbstractRemovableEntryModel<Identified> implements ILinguisticsModel {
 
   private static final int barbarianLanguagesPerPoint= 4;
-  private final Identified[] languages = new Identified[] { new Identifier("HighRealm"), //$NON-NLS-1$
-      new Identifier("LowRealm"), new Identifier("OldRealm"), new Identifier("Riverspeak"), new Identifier("Skytongue"), new Identifier("Flametongue"), new Identifier("Seatongue"), new Identifier("Foresttongue"), new Identifier("GuildCant"), new Identifier("ClawSpeak"), new Identifier("HighHolySpeech"), new Identifier("Pelagial") }; //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$ //$NON-NLS-4$ //$NON-NLS-5$ //$NON-NLS-6$ //$NON-NLS-7$ //$NON-NLS-8$ //$NON-NLS-9$ //$NON-NLS-10$ //$NON-NLS-11$
+  private final Identified[] languages = new Identified[] { new Identifier("HighRealm"),
+      new Identifier("LowRealm"), new Identifier("OldRealm"), new Identifier("Riverspeak"), new Identifier("Skytongue"), new Identifier("Flametongue"), new Identifier("Seatongue"), new Identifier("Foresttongue"), new Identifier("GuildCant"), new Identifier("ClawSpeak"), new Identifier("HighHolySpeech"), new Identifier("Pelagial") };          //$NON-NLS-10$ //$NON-NLS-11$
 
   private Identified selection;
   private int languagePointsAllowed;

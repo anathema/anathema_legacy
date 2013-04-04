@@ -46,7 +46,7 @@ public class CharmAlternativeBuilder {
           return candidate.getId().equals(charmId);
         }
       });
-      Preconditions.checkNotNull(charm, "Charm not found " + charmId); //$NON-NLS-1$
+      Preconditions.checkNotNull(charm, "Charm not found " + charmId);
       charms.add(charm);
     }
     for (ICharm charm : charms) {

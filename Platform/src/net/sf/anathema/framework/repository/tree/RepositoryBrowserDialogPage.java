@@ -16,7 +16,7 @@ public class RepositoryBrowserDialogPage extends AbstractDialogPage {
   private final IApplicationModel model;
 
   public RepositoryBrowserDialogPage(Resources resources, IApplicationModel model) {
-    super(resources.getString("AnathemaCore.Tools.RepositoryView.DialogMessage")); //$NON-NLS-1$
+    super(resources.getString("AnathemaCore.Tools.RepositoryView.DialogMessage"));
     this.resources = resources;
     this.model = model;
   }
@@ -29,7 +29,7 @@ public class RepositoryBrowserDialogPage extends AbstractDialogPage {
     ObjectUiTreeCellRenderer renderer = new ObjectUiTreeCellRenderer(new ItemTypeTreeUi(resources, extension));
     RepositoryTreeModel repositoryTreeModel = new RepositoryTreeModel(model.getRepository(), model.getItemManagement(), model.getItemTypeRegistry());
     new RepositoryTreePresenter(resources, repositoryTreeModel, treeView, renderer, "AnathemaCore.Tools.RepositoryView.TreeRoot")
-            .initPresentation(); //$NON-NLS-1$
+            .initPresentation();
     IMessaging messaging = model.getMessaging();
     AmountMessaging fileCountMessaging = new AmountMessaging(messaging, resources);
     new RepositoryItemDeletionPresenter(resources, repositoryTreeModel, treeView, fileCountMessaging).initPresentation();
@@ -42,11 +42,11 @@ public class RepositoryBrowserDialogPage extends AbstractDialogPage {
 
   @Override
   public IBasicMessage createCurrentMessage() {
-    return new BasicMessage(resources.getString("AnathemaCore.Tools.RepositoryView.DialogMessage")); //$NON-NLS-1$
+    return new BasicMessage(resources.getString("AnathemaCore.Tools.RepositoryView.DialogMessage"));
   }
 
   @Override
   public String getTitle() {
-    return resources.getString("AnathemaCore.Tools.RepositoryView.DialogTitle"); //$NON-NLS-1$
+    return resources.getString("AnathemaCore.Tools.RepositoryView.DialogTitle");
   }
 }

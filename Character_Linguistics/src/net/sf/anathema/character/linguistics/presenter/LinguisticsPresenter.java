@@ -46,13 +46,13 @@ public class LinguisticsPresenter implements Presenter {
   }
 
   private void initPointPresentation() {
-    IOverviewCategory overview = view.addOverview(resources.getString("Linguistics.Overview.Border")); //$NON-NLS-1$
+    IOverviewCategory overview = view.addOverview(resources.getString("Linguistics.Overview.Border"));
     final IValueView<Integer> familyView = overview.addIntegerValueView(
-        resources.getString("Linguistics.Overview.Families"), 1); //$NON-NLS-1$
+        resources.getString("Linguistics.Overview.Families"), 1);
     final IValueView<Integer> barbarianView = overview.addIntegerValueView(
-        resources.getString("Linguistics.Overview.Barbarian"), 2); //$NON-NLS-1$
+        resources.getString("Linguistics.Overview.Barbarian"), 2);
     final ILabelledAlotmentView totalView = overview.addAlotmentView(
-        resources.getString("Linguistics.Overview.Total"), 2); //$NON-NLS-1$
+        resources.getString("Linguistics.Overview.Total"), 2);
     model.addModelChangeListener(new IRemovableEntryListener<Identified>() {
       @Override
       public void entryAdded(Identified entry) {
@@ -98,7 +98,7 @@ public class LinguisticsPresenter implements Presenter {
 
   @SuppressWarnings("serial")
 private void initEntryPresentation() {
-    String labelText = resources.getString("Linguistics.SelectionView.Label"); //$NON-NLS-1$
+    String labelText = resources.getString("Linguistics.SelectionView.Label");
     final BasicUi basicUi = new BasicUi();
     Icon addIcon = basicUi.getAddIcon();
     ProxyComboBoxEditor editor = new ProxyComboBoxEditor() {
@@ -202,7 +202,7 @@ private void initEntryPresentation() {
       return null;
     }
     if (model.isPredefinedLanguage(object)) {
-      return resources.getString("Language." + ((Identified) object).getId()); //$NON-NLS-1$
+      return resources.getString("Language." + ((Identified) object).getId());
     }
     return object.toString();
   }

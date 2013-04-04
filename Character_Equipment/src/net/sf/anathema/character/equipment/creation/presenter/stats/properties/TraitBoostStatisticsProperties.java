@@ -10,67 +10,67 @@ public class TraitBoostStatisticsProperties extends AbstractEquipmentStatisticsP
 
   public TraitBoostStatisticsProperties(Resources resources) {
     super(resources);
-    this.defaultMessage = new BasicMessage(getString("Equipment.Creation.TraitModifying.DefaultMessage")); //$NON-NLS-1$
+    this.defaultMessage = new BasicMessage(getString("Equipment.Creation.TraitModifying.DefaultMessage"));
   }
 
   public String getDDVLabel() {
-    return getLabelString("Equipment.Stats.Long.DDV"); //$NON-NLS-1$
+    return getLabelString("Equipment.Stats.Long.DDV");
   }
   
   public String getPDVLabel() {
-	    return getLabelString("Equipment.Stats.Long.PDV"); //$NON-NLS-1$
+	    return getLabelString("Equipment.Stats.Long.PDV");
 	  }
   
   public String getMDDVLabel() {
-	    return getLabelString("Equipment.Stats.Long.MDDV"); //$NON-NLS-1$
+	    return getLabelString("Equipment.Stats.Long.MDDV");
 	  }
   
   public String getMPDVLabel() {
-	    return getLabelString("Equipment.Stats.Long.MPDV"); //$NON-NLS-1$
+	    return getLabelString("Equipment.Stats.Long.MPDV");
 	  }
   
   public String getMeleeSpeedLabel() {
-	    return getLabelString("Equipment.Stats.Long.MeleeSpeed"); //$NON-NLS-1$
+	    return getLabelString("Equipment.Stats.Long.MeleeSpeed");
 	  }
   
   public String getMeleeAccuracyLabel() {
-	    return getLabelString("Equipment.Stats.Long.MeleeAccuracy"); //$NON-NLS-1$
+	    return getLabelString("Equipment.Stats.Long.MeleeAccuracy");
 	  }
   
   public String getMeleeDamageLabel() {
-	    return getLabelString("Equipment.Stats.Long.MeleeDamage"); //$NON-NLS-1$
+	    return getLabelString("Equipment.Stats.Long.MeleeDamage");
 	  }
   
   public String getMeleeRateLabel() {
-	    return getLabelString("Equipment.Stats.Long.MeleeRate"); //$NON-NLS-1$
+	    return getLabelString("Equipment.Stats.Long.MeleeRate");
 	  }
 
   public String getRangedSpeedLabel() {
-	    return getLabelString("Equipment.Stats.Long.RangedSpeed"); //$NON-NLS-1$
+	    return getLabelString("Equipment.Stats.Long.RangedSpeed");
 	  }
 
 	public String getRangedAccuracyLabel() {
-		    return getLabelString("Equipment.Stats.Long.RangedAccuracy"); //$NON-NLS-1$
+		    return getLabelString("Equipment.Stats.Long.RangedAccuracy");
 		  }
 	
 	public String getRangedDamageLabel() {
-		    return getLabelString("Equipment.Stats.Long.RangedDamage"); //$NON-NLS-1$
+		    return getLabelString("Equipment.Stats.Long.RangedDamage");
 		  }
 	
 	public String getRangedRateLabel() {
-		    return getLabelString("Equipment.Stats.Long.RangedRate"); //$NON-NLS-1$
+		    return getLabelString("Equipment.Stats.Long.RangedRate");
 		  }
 	
 	public String getJoinBattleLabel() {
-	    return getLabelString("Equipment.Stats.Long.JoinBattle"); //$NON-NLS-1$
+	    return getLabelString("Equipment.Stats.Long.JoinBattle");
 	  }
 	
 	public String getJoinDebateLabel() {
-	    return getLabelString("Equipment.Stats.Long.JoinDebate"); //$NON-NLS-1$
+	    return getLabelString("Equipment.Stats.Long.JoinDebate");
 	  }
 	
 	public String getJoinWarLabel() {
-	    return getLabelString("Equipment.Stats.Long.JoinWar"); //$NON-NLS-1$
+	    return getLabelString("Equipment.Stats.Long.JoinWar");
 	  }
 
   @Override
@@ -80,11 +80,11 @@ public class TraitBoostStatisticsProperties extends AbstractEquipmentStatisticsP
 
   @Override
   public String getPageDescription() {
-    return getString("Equipment.Creation.TraitModifying.PageTitle"); //$NON-NLS-1$
+    return getString("Equipment.Creation.TraitModifying.PageTitle");
   }
 
   @Override
   public String getDefaultName() {
-    return getString("Equipment.Creation.TraitModifying.DefaultName"); //$NON-NLS-1$
+    return getString("Equipment.Creation.TraitModifying.DefaultName");
   }
 }

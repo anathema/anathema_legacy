@@ -118,7 +118,7 @@ public class DefaultTrait extends AbstractFavorableTrait implements IFavorableDe
 
   @Override
   public String toString() {
-    return getType() + ":" + getCreationValue(); //$NON-NLS-1$
+    return getType() + ":" + getCreationValue();
   }
 
   @Override

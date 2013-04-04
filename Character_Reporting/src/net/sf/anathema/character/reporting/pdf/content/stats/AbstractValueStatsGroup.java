@@ -37,7 +37,7 @@ public abstract class AbstractValueStatsGroup<T extends IStats> implements IStat
   }
 
   protected final PdfPCell createFinalValueCell(Font font) {
-    return createContentCellTable(BaseColor.BLACK, " ", font, 0.75f, true); //$NON-NLS-1$
+    return createContentCellTable(BaseColor.BLACK, " ", font, 0.75f, true);
   }
 
   protected final PdfPCell createFinalValueCell(Font font, Integer value) {
@@ -45,17 +45,17 @@ public abstract class AbstractValueStatsGroup<T extends IStats> implements IStat
   }
 
   protected final PdfPCell createFinalValueCell(Font font, String text) {
-    String content = text != null ? text : " "; //$NON-NLS-1$
+    String content = text != null ? text : " ";
     return createContentCellTable(BaseColor.BLACK, content, font, 0.75f, text != null);
   }
 
   protected final PdfPCell createFinalValueCell(Font font, String text, int alignment) {
-    String content = text != null ? text : " "; //$NON-NLS-1$
+    String content = text != null ? text : " ";
     return createContentCellTable(BaseColor.BLACK, content, font, 0.75f, alignment, text != null);
   }
 
   protected final PdfPCell createEmptyValueCell(Font font) {
-    return createContentCellTable(BaseColor.GRAY, " ", font, 0.5f, true); //$NON-NLS-1$
+    return createContentCellTable(BaseColor.GRAY, " ", font, 0.5f, true);
   }
 
   protected final PdfPCell createEquipmentValueCell(Font font, Integer value) {
@@ -65,7 +65,7 @@ public abstract class AbstractValueStatsGroup<T extends IStats> implements IStat
 
   private String getStatsValueString(Integer value) {
     if (value == null) {
-      return " "; //$NON-NLS-1$
+      return " ";
     }
     StringBuilder stringBuilder = new StringBuilder(value.toString());
     if (value == 0) {
@@ -78,11 +78,11 @@ public abstract class AbstractValueStatsGroup<T extends IStats> implements IStat
   }
 
   protected String getPositivePrefix() {
-    return "+"; //$NON-NLS-1$
+    return "+";
   }
 
   protected String getZeroPrefix() {
-    return "+"; //$NON-NLS-1$
+    return "+";
   }
 
   private PdfPCell createContentCellTable(BaseColor borderColor, String text, Font font, float borderWidth, boolean enabled) {

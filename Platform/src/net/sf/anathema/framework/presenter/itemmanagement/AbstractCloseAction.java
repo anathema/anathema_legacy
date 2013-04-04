@@ -30,10 +30,6 @@ public abstract class AbstractCloseAction extends SmartAction {
     management.addListener(itemActionEnabler);
   }
 
-  protected final IItemManagementModel getManagement() {
-    return management;
-  }
-
   protected abstract IItem getItemToClose();
 
   @Override
@@ -43,7 +39,7 @@ public abstract class AbstractCloseAction extends SmartAction {
       return;
     }
     if (selectedItem.isDirty()) {
-      String messageText = resources.getString("AnathemaCore.Tools.Close.DirtyQuestion"); //$NON-NLS-1$
+      String messageText = resources.getString("AnathemaCore.Tools.Close.DirtyQuestion");
       IMessage message = new Message(messageText, MessageType.WARNING);
       DialogButtonConfiguration buttonConfiguration = new YesNoDialogButtonConfiguration(resources);
       MessageUserDialogConfiguration configuration = new MessageUserDialogConfiguration(message, buttonConfiguration);
