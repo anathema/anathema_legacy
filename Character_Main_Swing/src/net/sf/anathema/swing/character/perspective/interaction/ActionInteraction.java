@@ -4,6 +4,7 @@ import net.sf.anathema.framework.perspective.ToolBar;
 import net.sf.anathema.interaction.CommandProxy;
 import net.sf.anathema.interaction.Interaction;
 import net.sf.anathema.lib.gui.action.SmartAction;
+import net.sf.anathema.lib.gui.icon.ImageProvider;
 import net.sf.anathema.lib.resources.IResources;
 
 import java.awt.Component;
@@ -27,7 +28,7 @@ public class ActionInteraction implements Interaction {
 
   @Override
   public void setIcon(String relativePath) {
-    action.setIcon(resources.getImageIcon(inquirer, relativePath));
+    action.setIcon(new ImageProvider(".").getImageIcon(inquirer, relativePath));
   }
 
   @Override

@@ -1,42 +1,37 @@
 package net.sf.anathema.character.generic.framework.resources;
 
 import net.sf.anathema.character.generic.type.ICharacterType;
-import net.sf.anathema.lib.resources.AbstractUI;
-import net.sf.anathema.lib.resources.IResources;
+import net.sf.anathema.lib.gui.ui.AbstractUI;
 
 import javax.swing.Icon;
 
 public class CharacterUI extends AbstractUI {
-  public CharacterUI(IResources resources) {
-    super(resources);
-  }
-
   public Icon getCharacterDescriptionTabIcon() {
-    return getIcon("TabDescription16.png"); //$NON-NLS-1$
+    return getIcon("icons/TabDescription16.png"); //$NON-NLS-1$
   }
 
   public Icon getLinkIcon() {
-    return getIcon("ButtonLink16b.png"); //$NON-NLS-1$
+    return getIcon("icons/ButtonLink16b.png"); //$NON-NLS-1$
   }
 
   public Icon getRandomRealmNameIcon() {
-    return getIcon("ButtonRandomNameC16.png"); //$NON-NLS-1$
+    return getIcon("icons/ButtonRandomNameC16.png"); //$NON-NLS-1$
   }
 
   public Icon getRandomThresholdNameIcon() {
-    return getIcon("ButtonRandomNameB16.png"); //$NON-NLS-1$
+    return getIcon("icons/ButtonRandomNameB16.png"); //$NON-NLS-1$
   }
 
   public Icon getCancelComboEditIcon() {
-    return getIcon("ButtonUndo16.png"); //$NON-NLS-1$
+    return getIcon("icons/ButtonUndo16.png"); //$NON-NLS-1$
   }
 
   public Icon getFinalizeIcon() {
-    return getIcon("ButtonCheck16.png"); //$NON-NLS-1$
+    return getIcon("icons/ButtonCheck16.png"); //$NON-NLS-1$
   }
 
   public Icon getFinalizeXPIcon() {
-    return getIcon("ButtonCheckXP16.png"); //$NON-NLS-1$
+    return getIcon("icons/ButtonCheckXP16.png"); //$NON-NLS-1$
   }
 
   public Icon getSmallTypeIcon(ICharacterType characterType) {
@@ -44,22 +39,22 @@ public class CharacterUI extends AbstractUI {
   }
 
   public String getSmallTypeIconPath(ICharacterType characterType) {
-    return characterType.getId() + "Icon16.png";
+    return "icons/" + characterType.getId() + "Icon16.png";
   }
 
   public String getLargeTypeIconPath(ICharacterType characterType) {
-    return characterType.getId() + "Icon100.png";
+    return "icons/"+characterType.getId() + "Icon100.png";
   }
 
   public Icon getMediumBallResource(ICharacterType characterType) {
-    return getIcon("Border" + characterType.getId() + "Button16.png"); //$NON-NLS-1$ //$NON-NLS-2$
+    return getIcon("icons/Border" + characterType.getId() + "Button16.png"); //$NON-NLS-1$ //$NON-NLS-2$
   }
 
   public Icon getUnselectedBallResource() {
-    return getIcon("BorderUnselectedButton16.png"); //$NON-NLS-1$
+    return getIcon("icons/BorderUnselectedButton16.png"); //$NON-NLS-1$
   }
-  
+
   public Icon getUnselectableBallResource() {
-	return getIcon("BorderUnselectableButton16.png"); //$NON-NLS-1$
+    return getIcon("icons/BorderUnselectableButton16.png"); //$NON-NLS-1$
   }
 }

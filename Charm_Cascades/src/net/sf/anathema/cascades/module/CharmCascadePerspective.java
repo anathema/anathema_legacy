@@ -18,7 +18,7 @@ import net.sf.anathema.lib.resources.IResources;
 public class CharmCascadePerspective implements Perspective {
   @Override
   public void configureToggle(PerspectiveToggle toggle) {
-    toggle.setIcon("toolbar/TaskBarCharms24.png");
+    toggle.setIcon("icons/toolbar/TaskBarCharms24.png");
     toggle.setTooltip("ItemType.CharmCascades.PrintName");
   }
 

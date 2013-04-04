@@ -23,7 +23,7 @@ public class ControlledPrintInteractionPresenter {
   }
 
   private void initializeAppearance() {
-    interaction.setIcon("TaskBarPDFArrow24.png");
+    interaction.setIcon("icons/TaskBarPDFArrow24.png");
     interaction.setTooltip("Anathema.Reporting.Menu.PrintItem.Name");
   }
 

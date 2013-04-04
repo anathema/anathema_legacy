@@ -60,7 +60,7 @@ public class ExaltedCharacterItemTypeConfiguration extends AbstractPersistableIt
       public IItemView createView(IItem item) throws AnathemaException {
         String printName = item.getDisplayName();
         ICharacter character = (ICharacter) item.getItemData();
-        CharacterUI characterUI = new CharacterUI(resources);
+        CharacterUI characterUI = new CharacterUI();
         if (character == null) {
           Icon icon = characterUI.getCharacterDescriptionTabIcon();
           ICharacterView characterView = new TaskedCharacterView(null, printName, icon, null);
@@ -69,9 +69,9 @@ public class ExaltedCharacterItemTypeConfiguration extends AbstractPersistableIt
           return characterView;
         }
         ICharacterType characterType = ((ICharacter) item.getItemData()).getCharacterTemplate().getTemplateType().getCharacterType();
-        IntegerViewFactory intValueDisplayFactory = IntValueDisplayFactoryPrototype.createWithMarkerForCharacterType(resources, characterType);
+        IntegerViewFactory intValueDisplayFactory = IntValueDisplayFactoryPrototype.createWithMarkerForCharacterType(characterType);
         IntegerViewFactory markerLessIntValueDisplayFactory =
-                IntValueDisplayFactoryPrototype.createWithoutMarkerForCharacterType(resources, characterType);
+                IntValueDisplayFactoryPrototype.createWithoutMarkerForCharacterType(characterType);
         Icon typeIcon = characterUI.getSmallTypeIcon(characterType);
         ICharacterView characterView = new TaskedCharacterView(intValueDisplayFactory, printName, typeIcon, markerLessIntValueDisplayFactory);
         IBonusPointManagement bonusPointManagement = new BonusPointManagement(((ICharacter) item.getItemData()));

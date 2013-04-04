@@ -37,7 +37,7 @@ public class ArmourStatisticsPresenterPage extends AbstractEquipmentStatisticsPr
             new String[]{getProperties().getLethalSoakLabel(), getProperties().getLethalHardnessLabel()},
             new Component[]{initIntegerSpinner(lethalSoakModel).getComponent(), initIntegerSpinner(
                     getPageModel().getLethalHardnessModel()).getComponent()});
-    final IconToggleButton linkToggleButton = new IconToggleButton(new CharacterUI(getResources()).getLinkIcon());
+    final IconToggleButton linkToggleButton = new IconToggleButton(new CharacterUI().getLinkIcon());
     final IIntValueModel aggravatedSoakModel = getPageModel().getSoakModel(HealthType.Aggravated);
     final JComponent aggravatedSoakSpinner = initIntegerSpinner(aggravatedSoakModel).getComponent();
     getPageContent().addView(new AdditiveView() {

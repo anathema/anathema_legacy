@@ -86,9 +86,8 @@ public class GhostPassionsPresenter implements Presenter {
     temperanceView = overview.addAlotmentView(resources.getString("Temperance"), 2); //$NON-NLS-1$
     valorView = overview.addAlotmentView(resources.getString("Valor"), 2); //$NON-NLS-1$
 
-    Icon addIcon = new BasicUi(resources).getAddIcon();
+    Icon addIcon = new BasicUi().getAddIcon();
     passionSelectionView = view.addPassionSelectionView(resources.getString("PassionView.SelectionCombo.Label"),
-            //$NON-NLS-1$
             new AbstractSelectCellRenderer<ITraitReference>(resources) {
 
               @Override
@@ -220,7 +219,7 @@ public class GhostPassionsPresenter implements Presenter {
     final ITraitReference traitReference = passion.getTraitReference();
     String traitName = i18ner.getScreenName(traitReference);
     String passionName = passion.getName();
-    Icon deleteIcon = new BasicUi(resources).getRemoveIcon();
+    Icon deleteIcon = new BasicUi().getRemoveIcon();
     IPassionView passionView = view.addPassionView(traitName, passionName, deleteIcon, passion.getCurrentValue(),
             passion.getMaximalValue());
     new TraitPresenter(passion, passionView).initPresentation();

@@ -47,7 +47,7 @@ public class IntimaciesPresenter extends AbstractStringEntryTraitPresenter<IInti
   @Override
   public void initPresentation() {
     String labelText = resources.getString("Intimacies.SelectionLabel"); //$NON-NLS-1$
-    BasicUi basicUi = new BasicUi(resources);
+    BasicUi basicUi = new BasicUi();
     IStringSelectionView selectionView = view.addSelectionView(labelText, basicUi.getAddIcon());
     initSelectionViewListening(selectionView);
     initOverviewView();

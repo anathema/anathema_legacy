@@ -58,7 +58,7 @@ public class GhostFettersPresenter implements Presenter {
     experienceView = experienceOverview.addIntegerValueView(resources.getString("Fetters.Overview.Experience"), 2);
 
 
-    Icon addIcon = new BasicUi(resources).getAddIcon();
+    Icon addIcon = new BasicUi().getAddIcon();
     fetterSelectionView = view.addFetterSelectionView(resources.getString("View.SelectionCombo.Label"), addIcon);
     fetterSelectionView.addEditChangedListener(new ObjectValueListener<String>() {
       @Override
@@ -140,7 +140,7 @@ public class GhostFettersPresenter implements Presenter {
 
   private void addFetterView(final Fetter fetter) {
     String fetterName = fetter.getName();
-    Icon deleteIcon = new BasicUi(resources).getRemoveIcon();
+    Icon deleteIcon = new BasicUi().getRemoveIcon();
     IFetterView fetterView = view.addFetterView(fetterName, deleteIcon, fetter.getCurrentValue(),
             fetter.getMaximalValue());
     new TraitPresenter(fetter, fetterView).initPresentation();

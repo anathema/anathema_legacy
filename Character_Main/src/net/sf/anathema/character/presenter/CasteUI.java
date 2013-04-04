@@ -4,8 +4,7 @@ import net.sf.anathema.character.generic.caste.ICasteType;
 import net.sf.anathema.character.generic.impl.persistence.SecondEdition;
 import net.sf.anathema.character.generic.template.presentation.IPresentationProperties;
 import net.sf.anathema.lib.gui.icon.EmptyIcon;
-import net.sf.anathema.lib.resources.AbstractUI;
-import net.sf.anathema.lib.resources.IResources;
+import net.sf.anathema.lib.gui.ui.AbstractUI;
 
 import javax.swing.Icon;
 import java.awt.Dimension;
@@ -14,8 +13,7 @@ public class CasteUI extends AbstractUI {
 
   private final IPresentationProperties properties;
 
-  public CasteUI(IResources resources, IPresentationProperties properties) {
-    super(resources);
+  public CasteUI(IPresentationProperties properties) {
     this.properties = properties;
   }
 

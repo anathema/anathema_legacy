@@ -15,7 +15,7 @@ public class GhostPassionsViewFactory implements IAdditionalViewFactory {
   @Override
   public IView createView(IAdditionalModel model, IResources resources, ICharacterType type) {
     GhostPassionsConfigurationView view = new GhostPassionsConfigurationView(
-            IntValueDisplayFactoryPrototype.createWithMarkerForCharacterType(resources, type));
+            IntValueDisplayFactoryPrototype.createWithMarkerForCharacterType(type));
     new GhostPassionsPresenter(resources, view, (IGhostPassionsModel) model).initPresentation();
     return view;
   }

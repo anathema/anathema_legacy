@@ -5,20 +5,19 @@ import net.sf.anathema.character.generic.type.ICharacterType;
 import net.sf.anathema.framework.value.IntegerViewFactory;
 import net.sf.anathema.framework.value.MarkerIntValueDisplayFactory;
 import net.sf.anathema.framework.value.MarkerLessIntValueDisplayFactory;
-import net.sf.anathema.lib.resources.IResources;
 
 public class IntValueDisplayFactoryPrototype {
-  public static IntegerViewFactory createWithoutMarkerForCharacterType(IResources resources, ICharacterType type) {
-    CharacterIntValueGraphics graphics = createGraphics(resources, type);
+  public static IntegerViewFactory createWithoutMarkerForCharacterType(ICharacterType type) {
+    CharacterIntValueGraphics graphics = createGraphics(type);
     return new MarkerLessIntValueDisplayFactory(graphics);
   }
 
-  public static IntegerViewFactory createWithMarkerForCharacterType(IResources resources, ICharacterType type) {
-    CharacterIntValueGraphics graphics = createGraphics(resources, type);
+  public static IntegerViewFactory createWithMarkerForCharacterType(ICharacterType type) {
+    CharacterIntValueGraphics graphics = createGraphics(type);
     return new MarkerIntValueDisplayFactory(graphics);
   }
 
-  private static CharacterIntValueGraphics createGraphics(IResources resources, ICharacterType type) {
-    return new CharacterIntValueGraphics(resources, type);
+  private static CharacterIntValueGraphics createGraphics(ICharacterType type) {
+    return new CharacterIntValueGraphics(type);
   }
 }

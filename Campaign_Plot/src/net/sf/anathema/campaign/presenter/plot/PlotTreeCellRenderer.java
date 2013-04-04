@@ -3,7 +3,6 @@ package net.sf.anathema.campaign.presenter.plot;
 import net.sf.anathema.campaign.concrete.plot.PlotModel;
 import net.sf.anathema.campaign.model.plot.IPlotElement;
 import net.sf.anathema.campaign.module.PlotUI;
-import net.sf.anathema.lib.resources.IResources;
 
 import javax.swing.Icon;
 import javax.swing.JLabel;
@@ -19,8 +18,8 @@ public class PlotTreeCellRenderer extends DefaultTreeCellRenderer {
 
   private final Map<String, Icon> iconsByTimeUnitId = new HashMap<>();
 
-  public PlotTreeCellRenderer(IResources resources) {
-    PlotUI plotUI = new PlotUI(resources);
+  public PlotTreeCellRenderer() {
+    PlotUI plotUI = new PlotUI();
     iconsByTimeUnitId.put(PlotModel.ID_EPISODE, plotUI.getEpisodeIcon());
     iconsByTimeUnitId.put(PlotModel.ID_SERIES, plotUI.getSeriesIcon());
     iconsByTimeUnitId.put(PlotModel.ID_STORY, plotUI.getStoryIcon());

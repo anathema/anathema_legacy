@@ -17,7 +17,7 @@ public class CraftViewFactory implements IAdditionalViewFactory {
     ICraftAdditionalModel additionalModel = (ICraftAdditionalModel) model;
     ICraftModel craftModel = additionalModel.getCraftModel();
     int maximum = craftModel.getAbsoluteMaximum();
-    CraftView view = new CraftView(IntValueDisplayFactoryPrototype.createWithMarkerForCharacterType(resources, type), maximum);
+    CraftView view = new CraftView(IntValueDisplayFactoryPrototype.createWithMarkerForCharacterType(type), maximum);
     new CraftPresenter(craftModel, view, resources).initPresentation();
     return view;
   }

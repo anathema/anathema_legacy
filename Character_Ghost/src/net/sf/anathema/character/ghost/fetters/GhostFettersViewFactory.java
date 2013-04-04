@@ -15,7 +15,7 @@ public class GhostFettersViewFactory implements IAdditionalViewFactory {
   @Override
   public IView createView(IAdditionalModel model, IResources resources, ICharacterType type) {
     GhostFettersConfigurationView view = new GhostFettersConfigurationView(
-            IntValueDisplayFactoryPrototype.createWithMarkerForCharacterType(resources, type));
+            IntValueDisplayFactoryPrototype.createWithMarkerForCharacterType(type));
     new GhostFettersPresenter(resources, view, (IGhostFettersModel) model).initPresentation();
     return view;
   }

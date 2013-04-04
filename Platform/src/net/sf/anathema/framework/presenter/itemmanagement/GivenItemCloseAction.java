@@ -14,7 +14,7 @@ public class GivenItemCloseAction extends AbstractCloseAction {
 
   public static Action createForItem(IItemManagementModel model, IResources resources, IItem item) {
     SmartAction action = new GivenItemCloseAction(model, item, resources);
-    action.setIcon(new BasicUi(resources).getClearIcon());
+    action.setIcon(new BasicUi().getClearIcon());
     return action;
   }
 

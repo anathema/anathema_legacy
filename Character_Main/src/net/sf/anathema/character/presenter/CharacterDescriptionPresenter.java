@@ -60,7 +60,7 @@ public class CharacterDescriptionPresenter implements IContentPresenter {
 
   private void initNameLineView(int row, TextualPresentation presentation) {
     initLineView("CharacterDescription.Label.Name", description.getName(), presentation); //$NON-NLS-1$
-    CharacterUI characterUI = new CharacterUI(resources);
+    CharacterUI characterUI = new CharacterUI();
     descriptionView.addEditAction(
             new NameGeneratorAction(characterUI.getRandomRealmNameIcon(), resources.getString("CharacterDescription.Tooltip.RealmName"), //$NON-NLS-1$
                     description.getName(), new RealmNameGenerator()), row);

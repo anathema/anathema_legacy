@@ -71,13 +71,7 @@ public class AnathemaSaveAllAction extends SmartAction {
   public static Action createToolAction(IApplicationModel model, IResources resources) {
     SmartAction action = new AnathemaSaveAllAction(model, resources);
     action.setToolTipText(resources.getString("AnathemaPersistence.SaveAllAction.Tooltip")); //$NON-NLS-1$
-    action.setIcon(new PlatformUI(resources).getSaveAllTaskBarIcon());
-    return action;
-  }
-
-  public static Action createMenuAction(IApplicationModel model, IResources resources) {
-    SmartAction action = new AnathemaSaveAllAction(model, resources);
-    action.setName(resources.getString("AnathemaPersistence.SaveAllAction.Name")); //$NON-NLS-1$
+    action.setIcon(new PlatformUI().getSaveAllTaskBarIcon());
     return action;
   }
 

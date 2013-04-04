@@ -18,7 +18,7 @@ public class ExperienceConfigurationViewProperties implements IExperienceConfigu
   private IResources resources;
 
   public ExperienceConfigurationViewProperties(IResources resources, TableModel tableModel) {
-    this.basicUi = new BasicUi(resources);
+    this.basicUi = new BasicUi();
     this.tableModel = tableModel;
     this.resources = resources;
   }

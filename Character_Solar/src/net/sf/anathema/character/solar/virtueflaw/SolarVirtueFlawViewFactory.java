@@ -16,7 +16,7 @@ public class SolarVirtueFlawViewFactory implements IAdditionalViewFactory {
 
   @Override
   public IView createView(IAdditionalModel model, IResources resources, ICharacterType type) {
-    IntegerViewFactory viewFactory = IntValueDisplayFactoryPrototype.createWithMarkerForCharacterType(resources, type);
+    IntegerViewFactory viewFactory = IntValueDisplayFactoryPrototype.createWithMarkerForCharacterType(type);
     IDescriptiveVirtueFlawView virtueFlawView = new DescriptiveVirtueFlawView(viewFactory);
     SolarVirtueFlawPresenter presenter = new SolarVirtueFlawPresenter(resources, virtueFlawView, (IDescriptiveVirtueFlawModel) model);
     presenter.initPresentation();

@@ -15,7 +15,7 @@ public class SpecialtiesViewFactory implements IAdditionalViewFactory {
   @Override
   public IView createView(IAdditionalModel model, IResources resources, ICharacterType type) {
     ISpecialtiesConfiguration specialtiesModel = ((ISpecialtiesAdditionalModel) model).getSpecialtiesModel();
-    SpecialtiesView view = new SpecialtiesView(IntValueDisplayFactoryPrototype.createWithMarkerForCharacterType(resources, type));
+    SpecialtiesView view = new SpecialtiesView(IntValueDisplayFactoryPrototype.createWithMarkerForCharacterType(type));
     new SpecialtiesConfigurationPresenter(specialtiesModel, view, resources).initPresentation();
     return view;
   }

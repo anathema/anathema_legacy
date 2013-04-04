@@ -10,10 +10,11 @@ import javax.swing.Icon;
 public class MessageTypeUi extends AbstractMessageTypeUi {
 
   public static final Icon normalIcon = EmptyIcon.DEFAULT_ICON;
-  public static final Icon errorIcon = new ImageProvider(".").getImageIcon(MessageTypeUi.class, "icons/error.gif");
-  public static final Icon warningIcon = new ImageProvider(".").getImageIcon(MessageTypeUi.class, "icons/warning.gif");
-  public static final Icon infoIcon = new ImageProvider(".").getImageIcon(MessageTypeUi.class, "icons/info.gif");
-  public static final Icon questionIcon = new ImageProvider(".").getImageIcon(MessageTypeUi.class, "icons/question.gif");
+  private static final ImageProvider imageProvider = new ImageProvider(".");
+  public static final Icon errorIcon = imageProvider.getImageIcon(MessageTypeUi.class, "icons/error.gif");
+  public static final Icon warningIcon = imageProvider.getImageIcon(MessageTypeUi.class, "icons/warning.gif");
+  public static final Icon infoIcon = imageProvider.getImageIcon(MessageTypeUi.class, "icons/info.gif");
+  public static final Icon questionIcon = imageProvider.getImageIcon(MessageTypeUi.class, "icons/question.gif");
 
   private static MessageTypeUi instance = new MessageTypeUi();
 

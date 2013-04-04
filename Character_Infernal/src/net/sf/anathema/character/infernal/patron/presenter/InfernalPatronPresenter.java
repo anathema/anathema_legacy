@@ -46,13 +46,13 @@ public class InfernalPatronPresenter implements Presenter {
     view.setOverview(overview);
     final ILabelledAlotmentView favoredView = overview.addAlotmentView(
             resources.getString("Infernal.Overview.FavoredYozis"), 1);
-    IntegerViewFactory factory = IntValueDisplayFactoryPrototype.createWithMarkerForCharacterType(resources,
+    IntegerViewFactory factory = IntValueDisplayFactoryPrototype.createWithMarkerForCharacterType(
             InfernalCharacterModule.type);
     view.startGroup(resources.getString("Yozis.Yozis"));
     for (final IFavorableDefaultTrait yozi : model.getAllYozis()) {
       String yoziName = resources.getString(yozi.getType().getId());
       IIconToggleButtonProperties properties = new FavorableTraitViewProperties(context.getPresentationProperties(),
-              context.getBasicCharacterContext(), yozi, resources);
+              context.getBasicCharacterContext(), yozi);
       final IToggleButtonTraitView<?> yoziView = view.addYoziSelectionView(yoziName, factory, properties,
               yozi.getFavorization().isCasteOrFavored());
       new TraitPresenter(yozi, yoziView).initPresentation();

@@ -6,29 +6,29 @@ import net.sf.anathema.character.generic.template.presentation.IPresentationProp
 import net.sf.anathema.lib.lang.clone.ReflectionCloneableObject;
 
 public class GenericPresentationTemplate extends ReflectionCloneableObject<GenericPresentationTemplate> implements
-    IPresentationProperties {
+        IPresentationProperties {
 
   private GenericCharmPresentationProperties charmPresentationProperties = new GenericCharmPresentationProperties();
   private ITemplateType templateType;
 
   @Override
   public String getSmallCasteIconResource(String casteId, String editionId) {
-    return getCharacterTypeId() + "Button" + casteId + editionId + "16.png"; //$NON-NLS-1$//$NON-NLS-2$
+    return "icons/" + getCharacterTypeId() + "Button" + casteId + editionId + "16.png";
   }
 
   @Override
   public String getLargeCasteIconResource(String casteId, String editionId) {
-    return getCharacterTypeId() + "Button" + casteId + editionId + "100.png"; //$NON-NLS-1$//$NON-NLS-2$
+    return "icons/" + getCharacterTypeId() + "Button" + casteId + editionId + "100.png";
   }
 
   @Override
   public String getNewActionResource() {
-    return "CharacterGenerator.Templates." + getCharacterTypeId() + "." + getSubTypeId(); //$NON-NLS-1$//$NON-NLS-2$
+    return "CharacterGenerator.Templates." + getCharacterTypeId() + "." + getSubTypeId();
   }
 
   @Override
   public String getCasteLabelResource() {
-    return getCharacterTypeId() + ".Caste.Label"; //$NON-NLS-1$;
+    return getCharacterTypeId() + ".Caste.Label";
   }
 
   @Override

@@ -21,7 +21,7 @@ public class CharacterCreationPageProperties {
 
   public CharacterCreationPageProperties(IResources resources) {
     this.resources = resources;
-    this.iconProvider = new CharacterUI(resources);
+    this.iconProvider = new CharacterUI();
   }
 
   public String getTitle() {

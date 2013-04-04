@@ -20,7 +20,7 @@ public class IntimaciesViewFactory implements IAdditionalViewFactory {
     IIconToggleButtonProperties properties = new IIconToggleButtonProperties() {
       @Override
       public Icon createStandardIcon() {
-        return new CharacterUI(resources).getLinkIcon();
+        return new CharacterUI().getLinkIcon();
       }
 
       @Override
@@ -34,7 +34,7 @@ public class IntimaciesViewFactory implements IAdditionalViewFactory {
       }
     };
     IntimaciesView view = new IntimaciesView(
-            IntValueDisplayFactoryPrototype.createWithMarkerForCharacterType(resources, type), properties);
+            IntValueDisplayFactoryPrototype.createWithMarkerForCharacterType(type), properties);
     new IntimaciesPresenter(((IIntimaciesAdditionalModel) model).getIntimaciesModel(), model, view, resources).initPresentation();
     return view;
   }

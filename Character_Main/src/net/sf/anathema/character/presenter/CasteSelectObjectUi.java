@@ -13,12 +13,12 @@ public class CasteSelectObjectUi extends AbstractSelectObjectUi<ICasteType> {
 
   public CasteSelectObjectUi(IResources resources, IPresentationProperties properties) {
     super(resources);
-    this.casteUI = new CasteUI(resources, properties);
+    this.casteUI = new CasteUI(properties);
   }
 
   @Override
   protected String getNonNullLabel(ICasteType value) {
-    return getResources().getString("Caste." + value.getId()); //$NON-NLS-1$
+    return getResources().getString("Caste." + value.getId());
   }
 
   @Override

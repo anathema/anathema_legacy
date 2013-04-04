@@ -20,7 +20,7 @@ public class QuickPrintAction extends AbstractPrintAction {
   public static Action createToolAction(IApplicationModel model, IResources resources) {
     SmartAction action = new QuickPrintAction(model, resources);
     action.setToolTipText(resources.getString("Anathema.Reporting.Menu.QuickPrint.Tooltip"));
-    action.setIcon(new PlatformUI(resources).getPDFTaskBarIcon());
+    action.setIcon(new PlatformUI().getPDFTaskBarIcon());
     return action;
   }
 

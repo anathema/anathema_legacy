@@ -40,7 +40,7 @@ public class SeriesTypeConfiguration extends AbstractPersistableItemTypeConfigur
       @Override
       public IItemView createView(IItem item) throws AnathemaException {
         String printName = item.getDisplayName();
-        Icon icon = new PlotUI(resources).getSeriesTabIcon();
+        Icon icon = new PlotUI().getSeriesTabIcon();
         ITextEditorProperties editorProperties = new TextEditorProperties(resources);
         ISeriesView campaignView = new CampaignView(printName, icon, editorProperties);
         ISeries seriesData = (ISeries) item.getItemData();
@@ -57,6 +57,6 @@ public class SeriesTypeConfiguration extends AbstractPersistableItemTypeConfigur
 
   @Override
   protected IItemTypeViewProperties createItemTypeCreationProperties(IApplicationModel anathemaModel, IResources resources) {
-    return new SimpleItemTypeViewProperties(getItemType(), new PlotUI(resources).getSeriesTabIcon());
+    return new SimpleItemTypeViewProperties(getItemType(), new PlotUI().getSeriesTabIcon());
   }
 }

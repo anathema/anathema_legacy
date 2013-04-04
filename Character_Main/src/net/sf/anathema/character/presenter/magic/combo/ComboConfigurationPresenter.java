@@ -152,7 +152,7 @@ public class ComboConfigurationPresenter implements IContentPresenter {
 
   private void addComboToView(IComboConfigurationView comboConfigurationView, final ICombo combo) {
     SmartAction deleteAction = new SmartAction(resources.getString("CardView.CharmConfiguration.ComboCreation.DeleteLabel"),
-            new BasicUi(resources).getClearIcon()) { //$NON-NLS-1$
+            new BasicUi().getClearIcon()) { //$NON-NLS-1$
 
       @Override
       protected void execute(Component parentComponent) {
@@ -160,7 +160,7 @@ public class ComboConfigurationPresenter implements IContentPresenter {
       }
     };
     SmartAction editAction = new SmartAction(resources.getString("CardView.CharmConfiguration.ComboCreation.EditLabel"),
-            new BasicUi(resources).getEditIcon()) {//$NON-NLS-1$
+            new BasicUi().getEditIcon()) {//$NON-NLS-1$
 
       @Override
       protected void execute(Component parentComponent) {

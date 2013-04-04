@@ -90,14 +90,14 @@ public class FavorableTraitConfigurationPresenter {
         view[0] = configurationView
                 .addMarkerLessTraitView(resources.getString(id), favorableTrait.getCurrentValue(), favorableTrait.getMaximalValue(),
                         visitedTrait.getFallbackTrait(), favorableTrait.getFavorization().isFavored(),
-                        new FavorableTraitViewProperties(presentationProperties, basicCharacterData, favorableTrait, resources));
+                        new FavorableTraitViewProperties(presentationProperties, basicCharacterData, favorableTrait));
       }
 
       @Override
       public void visitDefaultTrait(IDefaultTrait visitedTrait) {
         view[0] = configurationView.addTraitView(resources.getString(id), favorableTrait.getCurrentValue(), favorableTrait.getMaximalValue(),
                 (IModifiableCapTrait) favorableTrait, favorableTrait.getFavorization().isFavored(),
-                new FavorableTraitViewProperties(presentationProperties, basicCharacterData, favorableTrait, resources));
+                new FavorableTraitViewProperties(presentationProperties, basicCharacterData, favorableTrait));
       }
     });
     final IToggleButtonTraitView<?> traitView = view[0];

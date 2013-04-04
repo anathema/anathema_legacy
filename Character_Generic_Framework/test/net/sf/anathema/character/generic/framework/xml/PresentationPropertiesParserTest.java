@@ -40,7 +40,7 @@ public class PresentationPropertiesParserTest {
     GenericCharacterTemplate parentTemplate = new GenericCharacterTemplate();
     parentTemplate.setTemplateType(new TemplateType(new DummyExaltCharacterType()));
     presentationProperties.setParentTemplate(parentTemplate);
-    assertEquals("DummyButtonLifeSecondEdition16.png",
+    assertEquals("icons/DummyButtonLifeSecondEdition16.png",
             presentationProperties.getSmallCasteIconResource(AbilityGroupType.Life.getId(), new SecondEdition().getId())); //$NON-NLS-1$
   }
 

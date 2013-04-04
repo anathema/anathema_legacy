@@ -110,7 +110,7 @@ public class EquipmentAdditionalPresenter implements Presenter {
   }
 
   private SmartAction createRefreshAction(final IListObjectSelectionView<String> equipmentTemplatePickList) {
-    SmartAction refreshAction = new SmartAction(new EquipmentUI(resources).getRefreshIcon()) {
+    SmartAction refreshAction = new SmartAction(new EquipmentUI().getRefreshIcon()) {
 
       @Override
       protected void execute(Component parentComponent) {
@@ -131,7 +131,7 @@ public class EquipmentAdditionalPresenter implements Presenter {
 
   private SmartAction createTemplateAddAction(final IListObjectSelectionView<String> equipmentTemplatePickList,
                                               final IMagicalMaterialView materialView) {
-    final SmartAction addAction = new SmartAction(new BasicUi(resources).getRightArrowIcon()) {
+    final SmartAction addAction = new SmartAction(new BasicUi().getRightArrowIcon()) {
       @Override
       protected void execute(Component parentComponent) {
         model.addEquipmentObjectFor(equipmentTemplatePickList.getSelectedObject(), materialView.getSelectedMaterial());
@@ -157,8 +157,8 @@ public class EquipmentAdditionalPresenter implements Presenter {
     IEquipmentObjectView objectView = viewsByItem.get(selectedObject);
     objectView = objectView == null ? view.addEquipmentObjectView() : objectView;
     IEquipmentStringBuilder resourceBuilder = new EquipmentStringBuilder(resources);
-    Icon removeIcon = new BasicUi(resources).getRemoveIcon();
-    Icon editIcon = new BasicUi(resources).getEditIcon();
+    Icon removeIcon = new BasicUi().getRemoveIcon();
+    Icon editIcon = new BasicUi().getEditIcon();
     viewsByItem.put(selectedObject, objectView);
     List<Action> actions = new ArrayList<>();
     if (model.canBeRemoved(selectedObject)) {

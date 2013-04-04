@@ -7,7 +7,6 @@ import com.itextpdf.text.Phrase;
 import com.itextpdf.text.Rectangle;
 import com.itextpdf.text.pdf.PdfContentByte;
 import net.sf.anathema.cards.ICard;
-import net.sf.anathema.lib.resources.IResources;
 
 public class DemocritusCardLayout extends AbstractCardLayout {
 
@@ -34,9 +33,9 @@ public class DemocritusCardLayout extends AbstractCardLayout {
 	private final ICardReportResourceProvider provider;
 	private final float scale;
 	
-	public DemocritusCardLayout(IResources resources, float scale) {
+	public DemocritusCardLayout(float scale) {
 		this.scale = scale;
-		this.provider = new DemocritusCardResourceProvider(resources);
+		this.provider = new DemocritusCardResourceProvider();
 	}
 
 	@Override

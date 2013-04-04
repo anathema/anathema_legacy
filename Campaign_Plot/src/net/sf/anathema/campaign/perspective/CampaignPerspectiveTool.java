@@ -23,12 +23,12 @@ public class CampaignPerspectiveTool {
   }
 
   private void addLoadAction(IResources resources, IApplicationModel model, ToolBar toolbar) {
-    toolbar.addMenu(ItemTypeLoadAction.getButtonIcon(resources), ItemTypeLoadAction.createToolActions(model, resources),
+    toolbar.addMenu(ItemTypeLoadAction.getButtonIcon(), ItemTypeLoadAction.createToolActions(model, resources),
             ItemTypeLoadAction.createToolTip(resources));
   }
 
   private void addNewAction(IResources resources, IApplicationModel model, ToolBar toolbar) {
-    toolbar.addMenu(ItemTypeNewAction.getButtonIcon(resources), ItemTypeNewAction.createToolActions(model, resources),
+    toolbar.addMenu(ItemTypeNewAction.getButtonIcon(), ItemTypeNewAction.createToolActions(model, resources),
             ItemTypeNewAction.createToolTip(resources));
   }
 

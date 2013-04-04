@@ -20,8 +20,8 @@ public class LunarVirtueFlawViewFactory implements IAdditionalViewFactory {
 
   @Override
   public IView createView(IAdditionalModel model, IResources resources, ICharacterType type) {
-    IView virtueFlawView = null;
-    IntegerViewFactory factory = IntValueDisplayFactoryPrototype.createWithMarkerForCharacterType(resources, type);
+    IView virtueFlawView;
+    IntegerViewFactory factory = IntValueDisplayFactoryPrototype.createWithMarkerForCharacterType(type);
     if (model instanceof DescriptiveVirtueFlawModel) {
       virtueFlawView = new DescriptiveVirtueFlawView(factory);
       new ComplexLunarVirtueFlawPresenter(resources, (IDescriptiveVirtueFlawView) virtueFlawView, (IDescriptiveVirtueFlawModel) model).initPresentation();

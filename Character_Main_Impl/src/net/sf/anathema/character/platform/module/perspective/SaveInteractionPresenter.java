@@ -24,7 +24,7 @@ public class SaveInteractionPresenter {
 
   private void initializeAppearance() {
     interaction.setTooltip("AnathemaPersistence.SaveAction.Tooltip");
-    interaction.setIcon("TaskBarSave24.png");
+    interaction.setIcon("icons/TaskBarSave24.png");
   }
 
   private void initializeEnabling() {

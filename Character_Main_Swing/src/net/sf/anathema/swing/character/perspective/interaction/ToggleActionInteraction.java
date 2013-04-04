@@ -5,6 +5,7 @@ import net.sf.anathema.interaction.Command;
 import net.sf.anathema.interaction.CommandProxy;
 import net.sf.anathema.interaction.ToggleInteraction;
 import net.sf.anathema.lib.gui.action.SmartAction;
+import net.sf.anathema.lib.gui.icon.ImageProvider;
 import net.sf.anathema.lib.resources.IResources;
 
 import javax.swing.JToggleButton;
@@ -30,7 +31,7 @@ public class ToggleActionInteraction implements ToggleInteraction {
 
   @Override
   public void setIcon(String relativePath) {
-    action.setIcon(resources.getImageIcon(inquirer, relativePath));
+    action.setIcon(new ImageProvider(".").getImageIcon(inquirer, relativePath));
   }
 
   @Override

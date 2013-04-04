@@ -22,7 +22,7 @@ public class ExperiencedInteractionPresenter {
   }
 
   private void initializeAppearance() {
-    interaction.setIcon("ToolXp.png");
+    interaction.setIcon("icons/ToolXp.png");
     interaction.setTooltip("CharacterTool.ToExperienced.Tooltip");
   }
 

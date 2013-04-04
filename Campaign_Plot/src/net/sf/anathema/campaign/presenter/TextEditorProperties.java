@@ -27,12 +27,12 @@ public class TextEditorProperties implements ITextEditorProperties {
 
   @Override
   public void initItalicAction(Action action) {
-    initWithIcon(action, new Font("Serif", Font.ITALIC, 12), resources.getString("TextEditor.ItalicsLetter")); //$NON-NLS-1$ //$NON-NLS-2$
+    initWithIcon(action, new Font("Serif", Font.ITALIC, 12), resources.getString("TextEditor.ItalicsLetter"));
   }
 
   @Override
   public void initUnderlineAction(Action action) {
-    action.putValue(Action.SMALL_ICON, new PlotUI(resources).getUnderlineButtonIcon());
+    action.putValue(Action.SMALL_ICON, new PlotUI().getUnderlineButtonIcon());
   }
 
   private void initWithIcon(final Action action, final Font font, final String letter) {

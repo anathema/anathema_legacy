@@ -9,12 +9,11 @@ import javax.swing.Icon;
 
 public class PlotViewProperties implements IPlotViewProperties {
 
-  private final BasicUi basicUi;
+  private final BasicUi basicUi = new BasicUi();
   private final IResources resources;
 
   public PlotViewProperties(IResources resources) {
     this.resources = resources;
-    this.basicUi = new BasicUi(resources);
   }
 
   @Override

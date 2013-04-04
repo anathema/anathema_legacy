@@ -29,20 +29,18 @@ public class CharacterTypeUi implements ObjectUi<Object> {
     String characterString = resources.getString("CharacterGenerator.NewCharacter." + characterType.getId() + ".Name"); //$NON-NLS-1$//$NON-NLS-2$
     Identified casteType = scanner.getCasteType(file);
     if (casteType == ICasteType.NULL_CASTE_TYPE) {
-      return resources.getString("LoadCharacter.PrintNameFile.ShortMessage", new Object[]{ //$NON-NLS-1$
-              printName, characterString});
+      return resources.getString("LoadCharacter.PrintNameFile.ShortMessage", printName, characterString);
     }
-    String casteTypeString = resources.getString("Caste." + casteType.getId()); //$NON-NLS-1$
-    String casteString = resources.getString(characterType.getId() + ".Caste.Label"); //$NON-NLS-1$
-    return resources.getString("LoadCharacter.PrintNameFile.Message", new Object[]{ //$NON-NLS-1$
-            printName, characterString, casteTypeString, casteString});
+    String casteTypeString = resources.getString("Caste." + casteType.getId());
+    String casteString = resources.getString(characterType.getId() + ".Caste.Label");
+    return resources.getString("LoadCharacter.PrintNameFile.Message", printName, characterString, casteTypeString, casteString);
   }
 
   @Override
   public Icon getIcon(Object value) {
     PrintNameFile file = (PrintNameFile) value;
     ICharacterType characterType = scanner.getCharacterType(file);
-    return new CharacterUI(resources).getSmallTypeIcon(characterType);
+    return new CharacterUI().getSmallTypeIcon(characterType);
   }
 
   @Override

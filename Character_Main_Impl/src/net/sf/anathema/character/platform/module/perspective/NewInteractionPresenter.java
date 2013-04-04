@@ -44,7 +44,7 @@ public class NewInteractionPresenter {
 
   private void initializeAppearance() {
     interaction.setTooltip("AnathemaCore.Tools.New.Name");
-    interaction.setIcon("TaskBarNew24.png");
+    interaction.setIcon("icons/TaskBarNew24.png");
   }
 
   private void initializeCommand() {

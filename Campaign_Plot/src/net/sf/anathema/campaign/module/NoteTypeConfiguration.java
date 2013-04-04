@@ -47,7 +47,7 @@ public class NoteTypeConfiguration extends AbstractPersistableItemTypeConfigurat
       @Override
       public IItemView createView(IItem item) throws AnathemaException {
         String printName = item.getDisplayName();
-        Icon icon = new PlotUI(resources).getNoteTabIcon();
+        Icon icon = new PlotUI().getNoteTabIcon();
         NoteView basicItemView = new SwingNoteView(printName, icon, new TextEditorProperties(resources));
         IBasicItemData basicItem = (IBasicItemData) item.getItemData();
         new NotePresenter(basicItemView, resources, basicItem).initPresentation();
@@ -58,6 +58,6 @@ public class NoteTypeConfiguration extends AbstractPersistableItemTypeConfigurat
 
   @Override
   protected IItemTypeViewProperties createItemTypeCreationProperties(IApplicationModel anathemaModel, IResources resources) {
-    return new SimpleItemTypeViewProperties(getItemType(), new PlotUI(resources).getNoteTabIcon());
+    return new SimpleItemTypeViewProperties(getItemType(), new PlotUI().getNoteTabIcon());
   }
 }

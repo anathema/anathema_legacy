@@ -179,7 +179,7 @@ public class PlotPresenter implements Presenter {
           return;
         }
         ((IPlotElement) selectedNode.getUserObject()).getDescription().getName().setText(newValue);
-        view.setHierarchieTreeCellRenderer(new PlotTreeCellRenderer(resources));
+        view.setHierarchieTreeCellRenderer(new PlotTreeCellRenderer());
       }
     });
     itemSummaryView = descriptionView.addStyledTextView(resources.getString("SeriesPlot.ElementSummary.Label") + ":");
@@ -205,7 +205,7 @@ public class PlotPresenter implements Presenter {
     view.addPlotViewListener(viewListener);
     view.initSeriesHierarchyView(
             treeModel,
-            new PlotTreeCellRenderer(resources),
+            new PlotTreeCellRenderer(),
             resources.getString("SeriesPlot.PlotTree.BorderTitle") + ":"); //$NON-NLS-1$ //$NON-NLS-2$
     IBasicItemDescriptionView descriptionView = view.initBasicItemDescriptionView();
     initDescriptionViewPresentation(descriptionView);

@@ -28,7 +28,7 @@ public class QuickPrintInteractionPresenter {
   }
 
   private void initializeAppearance() {
-    interaction.setIcon("TaskBarPDF24.png");
+    interaction.setIcon("icons/TaskBarPDF24.png");
     interaction.setTooltip("Anathema.Reporting.Menu.QuickPrint.Name");
   }
 

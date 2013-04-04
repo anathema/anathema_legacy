@@ -21,7 +21,7 @@ public class BeastformViewFactory implements IAdditionalViewFactory {
   @Override
   public IView createView(IAdditionalModel model, final IResources resources, ICharacterType type) {
     IntegerViewFactory intValueDisplayFactory = IntValueDisplayFactoryPrototype.createWithMarkerForCharacterType(
-            resources, type);
+            type);
     SecondEditionBeastformModel secondmodel = (SecondEditionBeastformModel) model;
     IBeastformViewProperties properties = new SecondEditionBeastformViewProperties(resources, secondmodel);
     IBeastformView view = new SecondEditionBeastformView(intValueDisplayFactory, properties);

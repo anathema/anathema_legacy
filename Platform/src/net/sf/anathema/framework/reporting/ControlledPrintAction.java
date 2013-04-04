@@ -21,7 +21,7 @@ public class ControlledPrintAction extends AbstractPrintAction {
   public static Action createToolAction(IApplicationModel model, IResources resources) {
     SmartAction action = new ControlledPrintAction(model, resources);
     action.setToolTipText(resources.getString("Anathema.Reporting.Menu.PrintItem.Name"));
-    action.setIcon(new PlatformUI(resources).getPDFTaskBarIcon());
+    action.setIcon(new PlatformUI().getPDFTaskBarIcon());
     return action;
   }
 

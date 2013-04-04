@@ -15,7 +15,7 @@ public class InfernalUrgeViewFactory implements IAdditionalViewFactory {
   @Override
   public IView createView(IAdditionalModel model, IResources resources, ICharacterType type) {
     InfernalUrgeView view = new InfernalUrgeView(
-            IntValueDisplayFactoryPrototype.createWithMarkerForCharacterType(resources, type));
+            IntValueDisplayFactoryPrototype.createWithMarkerForCharacterType(type));
     new InfernalUrgePresenter(resources, view, (IInfernalUrgeModel) model).initPresentation();
     return view;
   }

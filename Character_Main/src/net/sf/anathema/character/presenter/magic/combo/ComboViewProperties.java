@@ -27,7 +27,7 @@ public final class ComboViewProperties extends AbstractMagicLearnProperties impl
 
   @Override
   public Icon getFinalizeButtonIcon() {
-    return new CharacterUI(getResources()).getFinalizeIcon();
+    return new CharacterUI().getFinalizeIcon();
   }
 
   @Override
@@ -70,7 +70,7 @@ public final class ComboViewProperties extends AbstractMagicLearnProperties impl
 
   @Override
   public Icon getClearButtonIcon() {
-    return new BasicUi(getResources()).getClearIcon();
+    return new BasicUi().getClearIcon();
   }
 
   @Override
@@ -95,7 +95,7 @@ public final class ComboViewProperties extends AbstractMagicLearnProperties impl
 
   @Override
   public Icon getCancelEditButtonIcon() {
-    return new CharacterUI(getResources()).getCancelComboEditIcon();
+    return new CharacterUI().getCancelComboEditIcon();
   }
 
   @Override

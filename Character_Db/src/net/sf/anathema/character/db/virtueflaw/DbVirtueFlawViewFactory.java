@@ -15,7 +15,7 @@ public class DbVirtueFlawViewFactory implements IAdditionalViewFactory {
   @Override
   public IView createView(IAdditionalModel model, IResources resources, ICharacterType type) {
     IVirtueFlawView virtueFlawView = new VirtueFlawView(
-            IntValueDisplayFactoryPrototype.createWithMarkerForCharacterType(resources, type));
+            IntValueDisplayFactoryPrototype.createWithMarkerForCharacterType(type));
     new DbVirtueFlawPresenter(resources, virtueFlawView, (IVirtueFlawModel) model).initPresentation();
     return virtueFlawView;
   }

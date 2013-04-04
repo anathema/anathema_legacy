@@ -1,37 +1,28 @@
 package net.sf.anathema.framework.presenter.resources;
 
-import net.sf.anathema.lib.resources.AbstractUI;
-import net.sf.anathema.lib.resources.IResources;
+import net.sf.anathema.lib.gui.ui.AbstractUI;
 
 import javax.swing.Icon;
 
 public class PlatformUI extends AbstractUI {
 
-  public PlatformUI(IResources resources) {
-    super(resources);
-  }
-
   public Icon getPDFTaskBarIcon() {
-    return getIcon("TaskBarPDF24.png"); //$NON-NLS-1$
+    return getIcon("icons/TaskBarPDF24.png"); //$NON-NLS-1$
   }
 
   public Icon getSaveTaskBarIcon() {
-    return getIcon("TaskBarSave24.png"); //$NON-NLS-1$
-  }
-
-  public Icon getNewIcon() {
-    return getIcon("TaskBarNew24.png"); //$NON-NLS-1$
+    return getIcon("icons/TaskBarSave24.png"); //$NON-NLS-1$
   }
 
   public Icon getSaveAllTaskBarIcon() {
-    return getIcon("TaskBarSaveAll24.png"); //$NON-NLS-1$
+    return getIcon("icons/TaskBarSaveAll24.png"); //$NON-NLS-1$
   }
 
   public Icon getNewToolBarIcon() {
-    return getIcon("TaskBarNewArrow24.png"); //$NON-NLS-1$
+    return getIcon("icons/TaskBarNewArrow24.png"); //$NON-NLS-1$
   }
 
   public Icon getLoadToolBarIcon() {
-    return getIcon("TaskBarOpenArrow24.png"); //$NON-NLS-1$;
+    return getIcon("icons/TaskBarOpenArrow24.png"); //$NON-NLS-1$;
   }
 }

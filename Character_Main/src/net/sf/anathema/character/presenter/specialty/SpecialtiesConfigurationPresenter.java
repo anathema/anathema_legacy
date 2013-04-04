@@ -67,7 +67,7 @@ public class SpecialtiesConfigurationPresenter implements Presenter {
   @Override
   public void initPresentation() {
     initTraitListening();
-    Icon addIcon = new BasicUi(resources).getAddIcon();
+    Icon addIcon = new BasicUi().getAddIcon();
     final IButtonControlledComboEditView<ITraitReference> specialtySelectionView =
             configurationView.addSpecialtySelectionView(resources.getString("SpecialtyConfigurationView.SelectionCombo.Label"), //$NON-NLS-1$
                     new AbstractSelectCellRenderer<ITraitReference>(resources) {
@@ -178,7 +178,7 @@ public class SpecialtiesConfigurationPresenter implements Presenter {
     final ITraitReference traitReference = specialty.getTraitReference();
     String traitName = i18ner.getScreenName(traitReference);
     String specialtyName = specialty.getName();
-    Icon deleteIcon = new BasicUi(resources).getRemoveIcon();
+    Icon deleteIcon = new BasicUi().getRemoveIcon();
     ISpecialtyView specialtyView =
             configurationView.addSpecialtyView(traitName, specialtyName, deleteIcon, specialty.getCurrentValue(), specialty.getMaximalValue());
     new TraitPresenter(specialty, specialtyView).initPresentation();

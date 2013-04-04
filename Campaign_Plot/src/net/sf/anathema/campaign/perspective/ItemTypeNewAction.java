@@ -31,8 +31,8 @@ public class ItemTypeNewAction extends AbstractItemAction {
     return resources.getString("AnathemaCore.Tools.New.Name");
   }
 
-  public static Icon getButtonIcon(IResources resources) {
-    return new PlatformUI(resources).getNewToolBarIcon();
+  public static Icon getButtonIcon() {
+    return new PlatformUI().getNewToolBarIcon();
   }
 
   public ItemTypeNewAction(IItemType type, IApplicationModel model, IResources resources) {

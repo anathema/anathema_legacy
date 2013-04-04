@@ -37,9 +37,9 @@ public class ToCharacterButtonDto implements Function<DescriptiveFeatures, Chara
   }
 
   private String getPathToImage(ITemplateType templateType, Identified casteType) {
-    StringBuilder imagePath = new StringBuilder("icons/");
+    StringBuilder imagePath = new StringBuilder();
     if (casteType == NULL_CASTE_TYPE) {
-      imagePath.append(new CharacterUI(null).getLargeTypeIconPath(templateType.getCharacterType()));
+      imagePath.append(new CharacterUI().getLargeTypeIconPath(templateType.getCharacterType()));
     } else {
       GenericPresentationTemplate presentationTemplate = new GenericPresentationTemplate();
       presentationTemplate.setParentTemplate(templateType);

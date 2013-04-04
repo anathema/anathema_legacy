@@ -31,7 +31,7 @@ public class CraftPresenter extends AbstractStringEntryTraitPresenter<ISubTrait>
   @Override
   public void initPresentation() {
     String labelText = resources.getString("Crafts.SelectionLabel"); //$NON-NLS-1$
-    BasicUi basicUi = new BasicUi(resources);
+    BasicUi basicUi = new BasicUi();
     IStringSelectionView selectionView = view.addSelectionView(labelText, basicUi.getAddIcon());
     initSelectionViewListening(selectionView);
     initModelListening(basicUi, selectionView);

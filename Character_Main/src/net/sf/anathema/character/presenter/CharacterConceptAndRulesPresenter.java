@@ -61,13 +61,13 @@ public class CharacterConceptAndRulesPresenter implements IContentPresenter {
   private void initMotivationPresentation(final IMotivation motivation) {
     final ITextView textView = initTextualDescriptionPresentation(motivation.getEditableDescription(),
             "Label.Motivation"); 
-    final SmartAction beginEditAction = new SmartAction(new BasicUi(resources).getEditIcon()) {
+    final SmartAction beginEditAction = new SmartAction(new BasicUi().getEditIcon()) {
       @Override
       protected void execute(Component parentComponent) {
         motivation.beginEdit();
       }
     };
-    CharacterUI characterUI = new CharacterUI(resources);
+    CharacterUI characterUI = new CharacterUI();
     beginEditAction.setToolTipText(resources.getString("CharacterConcept.Motivation.BeginEdit.Tooltip")); 
     final SmartAction cancelEditAction = new SmartAction(characterUI.getCancelComboEditIcon()) {
       @Override

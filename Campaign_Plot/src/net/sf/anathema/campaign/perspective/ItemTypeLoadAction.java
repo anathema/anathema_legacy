@@ -36,8 +36,8 @@ public class ItemTypeLoadAction extends AbstractItemAction {
     return actions.toArray(new Action[actions.size()]);
   }
 
-  public static Icon getButtonIcon(IResources resources) {
-    return new PlatformUI(resources).getLoadToolBarIcon();
+  public static Icon getButtonIcon() {
+    return new PlatformUI().getLoadToolBarIcon();
   }
 
   public static String createToolTip(IResources resources) {

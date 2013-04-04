@@ -45,7 +45,7 @@ public class SiderealCollegePresenter implements Presenter {
     final IOverviewCategory experienceOverview = view.createOverview(resources.getString("Overview.Title")); //$NON-NLS-1$
     final IValueView<Integer> experienceView = experienceOverview.addIntegerValueView(
         resources.getString("Astrology.Overview.Experience"), 3); //$NON-NLS-1$
-    IntegerViewFactory factory = IntValueDisplayFactoryPrototype.createWithMarkerForCharacterType(resources,
+    IntegerViewFactory factory = IntValueDisplayFactoryPrototype.createWithMarkerForCharacterType(
             SiderealCharacterModule.type);
     for (final IAstrologicalHouse house : model.getAllHouses()) {
       view.startGroup(resources.getString("AstrologicalHouses.GroupLabel." + house.getId())); //$NON-NLS-1$
@@ -59,7 +59,7 @@ public class SiderealCollegePresenter implements Presenter {
 
           @Override
           public Icon createStandardIcon() {
-            return new SiderealCasteUI(resources).getCasteIcon(house);
+            return new SiderealCasteUI().getCasteIcon(house);
           }
 
           @Override

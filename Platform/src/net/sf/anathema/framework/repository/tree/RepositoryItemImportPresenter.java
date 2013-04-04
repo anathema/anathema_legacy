@@ -44,7 +44,7 @@ public class RepositoryItemImportPresenter implements Presenter {
   @Override
   public void initPresentation() {
     SmartAction action = new SmartAction(
-        resources.getString("AnathemaCore.Tools.RepositoryView.ImportName"), new FileUi(resources).getImportFileIcon()) { //$NON-NLS-1$
+        resources.getString("AnathemaCore.Tools.RepositoryView.ImportName"), new FileUi().getImportFileIcon()) {
 
       @Override
       protected void execute(Component parentComponent) {

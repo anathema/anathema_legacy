@@ -26,13 +26,12 @@ public class PlotPopUpMenuProvider {
   };
   private final IPlotModel plotModel;
   private final IResources resources;
-  private final BasicUi basicUi;
+  private final BasicUi basicUi = new BasicUi();
 
   public PlotPopUpMenuProvider(ITreeView treeView, IPlotModel plotModel, IResources resources) {
     this.treeView = treeView;
     this.plotModel = plotModel;
     this.resources = resources;
-    this.basicUi = new BasicUi(resources);
   }
 
   public void initPopupMousing() {

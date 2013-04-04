@@ -14,7 +14,7 @@ public class CharacterViewProperties extends AbstractItemTypeViewProperties {
 
   public CharacterViewProperties(IItemType type, IResources resources, CharacterCreationTemplateFactory factory,
                                  CharacterPrintNameFileScanner scanner) {
-    super(type, new CharacterUI(resources).getCharacterDescriptionTabIcon(), new CharacterTypeUi(resources, scanner));
+    super(type, new CharacterUI().getCharacterDescriptionTabIcon(), new CharacterTypeUi(resources, scanner));
     this.factory = factory;
   }
 

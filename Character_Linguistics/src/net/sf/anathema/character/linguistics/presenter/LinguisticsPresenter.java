@@ -99,7 +99,7 @@ public class LinguisticsPresenter implements Presenter {
   @SuppressWarnings("serial")
 private void initEntryPresentation() {
     String labelText = resources.getString("Linguistics.SelectionView.Label"); //$NON-NLS-1$
-    final BasicUi basicUi = new BasicUi(resources);
+    final BasicUi basicUi = new BasicUi();
     Icon addIcon = basicUi.getAddIcon();
     ProxyComboBoxEditor editor = new ProxyComboBoxEditor() {
       @Override

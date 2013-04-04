@@ -72,7 +72,7 @@ public class BackgroundPresenter implements IContentPresenter {
 
   @Override
   public void initPresentation() {
-    Icon addIcon = new BasicUi(resources).getAddIcon();
+    Icon addIcon = new BasicUi().getAddIcon();
     final IButtonControlledComboEditView<Object> view =
             configurationView.addBackgroundSelectionView(resources.getString("BackgroundConfigurationView.SelectionCombo.Label"), //$NON-NLS-1$
                     new BackgroundListRenderer(displayer), new BackgroundBoxEditor(displayer), addIcon);
@@ -115,7 +115,7 @@ public class BackgroundPresenter implements IContentPresenter {
   }
 
   private synchronized void addBackgroundView(final IBackground background) {
-    Icon deleteIcon = new BasicUi(resources).getRemoveIcon();
+    Icon deleteIcon = new BasicUi().getRemoveIcon();
     String backgroundString = new BackgroundTextCompiler(displayer).compileDisplayedText(background);
     IRemovableTraitView<?> backgroundView =
             configurationView.addBackgroundView(deleteIcon, backgroundString, background.getCurrentValue(), background.getMaximalValue());

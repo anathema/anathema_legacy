@@ -14,7 +14,7 @@ public class EquipmentTypeChoiceProperties {
   }
 
   public Icon getIcon(EquipmentStatisticsType type) {
-    return new EquipmentUI(resources).getIcon(type);
+    return new EquipmentUI().getIcon(type);
   }
 
   public String getLabel(EquipmentStatisticsType type) {

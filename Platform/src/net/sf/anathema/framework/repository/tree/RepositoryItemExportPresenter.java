@@ -37,8 +37,8 @@ public class RepositoryItemExportPresenter implements Presenter {
 
   @Override
   public void initPresentation() {
-    final SmartAction action = new SmartAction(resources.getString("AnathemaCore.Tools.RepositoryView.ExportName"), //$NON-NLS-1$
-        new FileUi(resources).getExportFileIcon()) {
+    final SmartAction action = new SmartAction(resources.getString("AnathemaCore.Tools.RepositoryView.ExportName"),
+        new FileUi().getExportFileIcon()) {
 
       @Override
       protected void execute(Component parentComponent) {
