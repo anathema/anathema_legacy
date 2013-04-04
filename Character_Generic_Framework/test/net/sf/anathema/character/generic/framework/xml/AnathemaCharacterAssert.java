@@ -1,9 +1,9 @@
 package net.sf.anathema.character.generic.framework.xml;
 
-import junit.framework.Assert;
 import net.sf.anathema.character.generic.impl.traits.limitation.EssenceBasedLimitation;
 import net.sf.anathema.character.generic.impl.traits.limitation.StaticTraitLimitation;
 import net.sf.anathema.character.generic.traits.ITraitTemplate;
+import org.junit.Assert;
 
 public class AnathemaCharacterAssert {
 
