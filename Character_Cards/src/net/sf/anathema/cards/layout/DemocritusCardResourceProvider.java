@@ -17,18 +17,7 @@ import java.util.Map;
 
 public class DemocritusCardResourceProvider implements ICardReportResourceProvider {
 
-  private final String basePath = "democritus_base/";
-  private final static String characterPath = "character/";
-  private final static String traitPath = "traits/";
-  private final static String spellPath = "spell/";
-  private final static String martialArtPath = "martial_art/";
-  private final static String martialArtLevelPath = "martial_art_level/";
-  private final static String cardBackground = "card_base.png";
-  private final static String cardStatBlock = "card_stats.png";
-  private final static String cardBodyBlock = "card_body.png";
-  private final static String cardIconBlock = "card_icon.png";
-  private final static String cardIconShadow = "card_icon_shadow.png";
-  private final String nullIcon = "null.png";
+  private final static String nullIcon = "icons/null.png";
 
   private final Map<String, Image> imageMap = new HashMap<>();
 
@@ -52,52 +41,52 @@ public class DemocritusCardResourceProvider implements ICardReportResourceProvid
 
   @Override
   public Image getCardBaseImage() {
-    return getImage(basePath + cardBackground);
+    return getImage("democritus_base/card_base.png");
   }
 
   @Override
   public Image getCardStatBlockImage() {
-    return getImage(basePath + cardStatBlock);
+    return getImage("icons/democritus_base/card_stats.png");
   }
 
   @Override
   public Image getCardBodyBlockImage() {
-    return getImage(basePath + cardBodyBlock);
+    return getImage("icons/democritus_base/card_body.png");
   }
 
   @Override
   public Image getCardIconBlockImage() {
-    return getImage(basePath + cardIconBlock);
+    return getImage("icons/democritus_base/card_icon.png");
   }
 
   @Override
   public Image getCardIconShadowImage() {
-    return getImage(basePath + cardIconShadow);
+    return getImage("icons/democritus_base/card_icon_shadow.PNG");
   }
 
   @Override
   public Image getCharacterIcon(ICharacterType type) {
-    return getImage(characterPath + type.getId() + ".png");
+    return getImage("icons/character/" + type.getId() + ".png");
   }
 
   @Override
   public Image getTraitIcon(ITraitType trait) {
-    return getImage(traitPath + trait.getId() + ".png");
+    return getImage("icons/traits/" + trait.getId() + ".png");
   }
 
   @Override
   public Image getSpellIcon(CircleType circle) {
-    return getImage(spellPath + circle.getId() + ".png");
+    return getImage("icons/spell/" + circle.getId() + ".png");
   }
 
   @Override
   public Image getMartialArtLevelIcon(MartialArtsLevel level) {
-    return getImage(martialArtLevelPath + level.getId() + ".png");
+    return getImage("icons/martial_art_level/" + level.getId() + ".png");
   }
 
   @Override
   public Image getMartialArtIcon(String groupId) {
-    return getImage(martialArtPath + groupId + ".png");
+    return getImage("icons/martial_art/" + groupId + ".png");
   }
 
   @Override
@@ -110,7 +99,7 @@ public class DemocritusCardResourceProvider implements ICardReportResourceProvid
     try {
       Image image = imageMap.get(filePath);
       if (image == null) {
-        java.awt.Image javaImage = new ImageProvider().getImage("icons/" + filePath);
+        java.awt.Image javaImage = new ImageProvider().getImage(filePath);
         image = Image.getInstance(javaImage, null);
         imageMap.put(filePath, image);
       }
