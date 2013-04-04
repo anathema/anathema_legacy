@@ -3,7 +3,7 @@ package net.sf.anathema.character.equipment.creation.presenter.stats;
 import net.sf.anathema.character.equipment.creation.model.stats.IEquipmentStatisticsCreationModel;
 import net.sf.anathema.character.equipment.creation.model.stats.IRangedCombatStatisticsModel;
 import net.sf.anathema.character.equipment.creation.presenter.stats.properties.RangedCombatStatisticsProperties;
-import net.sf.anathema.lib.resources.IResources;
+import net.sf.anathema.lib.resources.Resources;
 
 import java.awt.Component;
 
@@ -11,7 +11,7 @@ public class RangedCombatStatisticsPresenterPage extends
     AbstractOffensiveStatisticsPresenterPage<IRangedCombatStatisticsModel, RangedCombatStatisticsProperties> {
 
   public RangedCombatStatisticsPresenterPage(
-      IResources resources,
+      Resources resources,
       IEquipmentStatisticsCreationModel model,
       IEquipmentStatisticsCreationViewFactory viewFactory) {
     super(

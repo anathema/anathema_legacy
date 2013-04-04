@@ -2,11 +2,11 @@ package net.sf.anathema.character.reporting.pdf.content.stats.social;
 
 import net.sf.anathema.character.generic.social.ISocialCombatStats;
 import net.sf.anathema.character.reporting.pdf.content.stats.AbstractNameStatsGroup;
-import net.sf.anathema.lib.resources.IResources;
+import net.sf.anathema.lib.resources.Resources;
 
 public class SocialCombatNameStatsGroup extends AbstractNameStatsGroup<ISocialCombatStats> {
 
-  public SocialCombatNameStatsGroup(IResources resources) {
+  public SocialCombatNameStatsGroup(Resources resources) {
     super(resources);
   }
 

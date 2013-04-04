@@ -4,13 +4,13 @@ import com.itextpdf.text.Font;
 import com.itextpdf.text.pdf.PdfPTable;
 import net.sf.anathema.character.generic.magic.IMagicStats;
 import net.sf.anathema.character.reporting.pdf.content.stats.AbstractTextStatsGroup;
-import net.sf.anathema.lib.resources.IResources;
+import net.sf.anathema.lib.resources.Resources;
 
 public class MagicTypeStatsGroup extends AbstractTextStatsGroup<IMagicStats> {
 
-  private final IResources resources;
+  private final Resources resources;
 
-  public MagicTypeStatsGroup(IResources resources) {
+  public MagicTypeStatsGroup(Resources resources) {
     this.resources = resources;
   }
 

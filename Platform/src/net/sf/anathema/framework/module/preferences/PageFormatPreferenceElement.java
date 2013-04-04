@@ -5,7 +5,7 @@ import net.sf.anathema.framework.reporting.pdf.PageSize;
 import net.sf.anathema.framework.view.EnumSelectCellRenderer;
 import net.sf.anathema.initialization.PreferenceElement;
 import net.sf.anathema.initialization.reflections.Weight;
-import net.sf.anathema.lib.resources.IResources;
+import net.sf.anathema.lib.resources.Resources;
 import net.sf.anathema.lib.util.Identified;
 
 import javax.swing.JPanel;
@@ -25,7 +25,7 @@ public class PageFormatPreferenceElement implements IPreferencesElement {
   private LabelledPreferenceComboBox<PageSize> box;
 
   @Override
-  public void addComponent(JPanel panel, IResources resources) {
+  public void addComponent(JPanel panel, Resources resources) {
     String labelText = resources.getString("AnathemaReporting.Tools.Preferences.PageFormat") + ":"; //$NON-NLS-1$ //$NON-NLS-2$
     EnumSelectCellRenderer renderer = new EnumSelectCellRenderer("PageSize.", resources); //$NON-NLS-1$
     box = new LabelledPreferenceComboBox<>(labelText, renderer, PageSize.values());

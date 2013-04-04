@@ -9,7 +9,7 @@ import net.sf.anathema.lib.control.ObjectValueListener;
 import net.sf.anathema.lib.gui.Presenter;
 import net.sf.anathema.lib.gui.ui.ObjectUiListCellRenderer;
 import net.sf.anathema.lib.gui.widgets.IntegerSpinner;
-import net.sf.anathema.lib.resources.IResources;
+import net.sf.anathema.lib.resources.Resources;
 import net.sf.anathema.lib.workflow.intvalue.IntValuePresentation;
 
 public class WeaponDamagePresenter implements Presenter {
@@ -18,7 +18,7 @@ public class WeaponDamagePresenter implements Presenter {
   private final IWeaponDamageView view;
   private final WeaponDamageProperties properties;
 
-  public WeaponDamagePresenter(IResources resources, IWeaponDamageModel model, IWeaponDamageView view) {
+  public WeaponDamagePresenter(Resources resources, IWeaponDamageModel model, IWeaponDamageView view) {
     this.model = model;
     this.view = view;
     this.properties = new WeaponDamageProperties(resources);

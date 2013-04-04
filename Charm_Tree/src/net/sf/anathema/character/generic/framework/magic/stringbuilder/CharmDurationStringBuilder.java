@@ -3,12 +3,12 @@ package net.sf.anathema.character.generic.framework.magic.stringbuilder;
 import net.sf.anathema.character.generic.magic.ICharm;
 import net.sf.anathema.character.generic.magic.IMagic;
 import net.sf.anathema.lib.gui.TooltipBuilder;
-import net.sf.anathema.lib.resources.IResources;
+import net.sf.anathema.lib.resources.Resources;
 
 public class CharmDurationStringBuilder implements IMagicTooltipStringBuilder {
-  private final IResources resources;
+  private final Resources resources;
 
-  public CharmDurationStringBuilder(IResources resources) {
+  public CharmDurationStringBuilder(Resources resources) {
     this.resources = resources;
   }
 

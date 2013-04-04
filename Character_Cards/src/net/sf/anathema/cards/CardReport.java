@@ -11,7 +11,7 @@ import net.sf.anathema.character.model.ICharacter;
 import net.sf.anathema.framework.reporting.ReportException;
 import net.sf.anathema.framework.reporting.pdf.AbstractPdfReport;
 import net.sf.anathema.framework.repository.IItem;
-import net.sf.anathema.lib.resources.IResources;
+import net.sf.anathema.lib.resources.Resources;
 
 import java.util.ArrayList;
 import java.util.Collections;
@@ -19,11 +19,11 @@ import java.util.List;
 
 public class CardReport extends AbstractPdfReport {
 
-	private IResources resources;
+	private Resources resources;
 	private ICardLayout layout;
 	private ICardDataProvider[] cardDataProviders;
 	
-	public CardReport(IResources resources, ICardLayout layout, ICardDataProvider... cardProviders) {
+	public CardReport(Resources resources, ICardLayout layout, ICardDataProvider... cardProviders) {
 		this.resources = resources;
 		this.cardDataProviders = cardProviders;
 		this.layout = layout;

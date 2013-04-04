@@ -11,13 +11,13 @@ import net.sf.anathema.character.generic.magic.IMagic;
 import net.sf.anathema.character.generic.magic.charms.special.ISpecialCharm;
 import net.sf.anathema.character.generic.traits.types.OtherTraitType;
 import net.sf.anathema.lib.gui.TooltipBuilder;
-import net.sf.anathema.lib.resources.IResources;
+import net.sf.anathema.lib.resources.Resources;
 
 public class SpecialCharmStringBuilder implements IMagicTooltipStringBuilder {
   private static final String HtmlLineBreak = "<br>"; //$NON-NLS-1$
-  private IResources resources;
+  private Resources resources;
 
-  public SpecialCharmStringBuilder(IResources resources) {
+  public SpecialCharmStringBuilder(Resources resources) {
     this.resources = resources;
   }
 

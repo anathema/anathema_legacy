@@ -1,14 +1,14 @@
 package net.sf.anathema.framework.repository.tree;
 
 import net.sf.anathema.lib.io.AbstractFileTypeFilter;
-import net.sf.anathema.lib.resources.IResources;
+import net.sf.anathema.lib.resources.Resources;
 
 public final class ZipFileFilter extends AbstractFileTypeFilter {
 
   private static final String ZIP = "zip"; //$NON-NLS-1$
-  private final IResources resources;
+  private final Resources resources;
 
-  public ZipFileFilter(IResources resources) {
+  public ZipFileFilter(Resources resources) {
     this.resources = resources;
   }
 

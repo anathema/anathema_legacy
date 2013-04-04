@@ -15,7 +15,7 @@ import net.sf.anathema.character.sidereal.presentation.SiderealCasteUI;
 import net.sf.anathema.framework.value.IntegerViewFactory;
 import net.sf.anathema.lib.control.IChangeListener;
 import net.sf.anathema.lib.gui.Presenter;
-import net.sf.anathema.lib.resources.IResources;
+import net.sf.anathema.lib.resources.Resources;
 import net.sf.anathema.lib.workflow.labelledvalue.ILabelledAlotmentView;
 import net.sf.anathema.lib.workflow.labelledvalue.IValueView;
 
@@ -23,11 +23,11 @@ import javax.swing.Icon;
 
 public class SiderealCollegePresenter implements Presenter {
 
-  private final IResources resources;
+  private final Resources resources;
   private final ISiderealCollegeView view;
   private final ISiderealCollegeModel model;
 
-  public SiderealCollegePresenter(IResources resources, ISiderealCollegeView view, ISiderealCollegeModel model) {
+  public SiderealCollegePresenter(Resources resources, ISiderealCollegeView view, ISiderealCollegeModel model) {
     this.resources = resources;
     this.view = view;
     this.model = model;

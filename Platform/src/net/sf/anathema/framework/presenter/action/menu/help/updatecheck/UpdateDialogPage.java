@@ -10,7 +10,7 @@ import net.sf.anathema.lib.gui.action.SmartAction;
 import net.sf.anathema.lib.gui.dialog.userdialog.page.AbstractDialogPage;
 import net.sf.anathema.lib.message.BasicMessage;
 import net.sf.anathema.lib.message.IBasicMessage;
-import net.sf.anathema.lib.resources.IResources;
+import net.sf.anathema.lib.resources.Resources;
 
 import javax.swing.JButton;
 import javax.swing.JComponent;
@@ -27,7 +27,7 @@ import static net.sf.anathema.lib.message.MessageType.INFORMATION;
 public class UpdateDialogPage extends AbstractDialogPage {
   private final JLabel latestVersionLabel = new JLabel("?.?.?"); //$NON-NLS-1$
   private final JButton updateButton = new JButton("Install update");
-  private final IResources resources;
+  private final Resources resources;
   private final Version installedVersion;
   private UpdateState state = UpdateState.Checking;
   private IMessageData messageData;
@@ -35,7 +35,7 @@ public class UpdateDialogPage extends AbstractDialogPage {
   private final JProgressBar fileProgress = new JProgressBar();
   private JTextArea changelogDisplay = new JTextArea("Loading changelog...", 10, 0);
 
-  public UpdateDialogPage(IResources resources, Version installedVersion) {
+  public UpdateDialogPage(Resources resources, Version installedVersion) {
     super(resources.getString("Help.UpdateCheck.Checking")); //$NON-NLS-1$
     this.resources = resources;
     this.installedVersion = installedVersion;

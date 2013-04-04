@@ -3,13 +3,13 @@ package net.sf.anathema.character.lunar.reporting.content.stats.knacks;
 import com.itextpdf.text.Font;
 import com.itextpdf.text.pdf.PdfPTable;
 import net.sf.anathema.character.reporting.pdf.content.stats.AbstractTextStatsGroup;
-import net.sf.anathema.lib.resources.IResources;
+import net.sf.anathema.lib.resources.Resources;
 
 public class KnackNameStatsGroup extends AbstractTextStatsGroup<IKnackStats> {
 
-  private final IResources resources;
+  private final Resources resources;
 
-  public KnackNameStatsGroup(IResources resources) {
+  public KnackNameStatsGroup(Resources resources) {
     this.resources = resources;
   }
 

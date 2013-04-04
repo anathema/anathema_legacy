@@ -12,7 +12,7 @@ import net.sf.anathema.lib.exception.PersistenceException;
 import net.sf.anathema.lib.gui.action.SmartAction;
 import net.sf.anathema.lib.gui.dialog.userdialog.page.IDialogPage;
 import net.sf.anathema.lib.message.Message;
-import net.sf.anathema.lib.resources.IResources;
+import net.sf.anathema.lib.resources.Resources;
 import net.sf.anathema.lib.workflow.wizard.selection.IDialogModelTemplate;
 
 import javax.swing.Action;
@@ -26,7 +26,7 @@ public class ItemTypeLoadAction extends AbstractItemAction {
   private final IItemType itemType;
   private final ItemCreationOperator itemCreationOperator;
 
-  public static Action[] createToolActions(IApplicationModel model, IResources resources) {
+  public static Action[] createToolActions(IApplicationModel model, Resources resources) {
     List<Action> actions = new ArrayList<>();
     for (IItemType type : collectItemTypes(model)) {
       SmartAction action = new ItemTypeLoadAction(model, type, resources);
@@ -40,11 +40,11 @@ public class ItemTypeLoadAction extends AbstractItemAction {
     return new PlatformUI().getLoadToolBarIcon();
   }
 
-  public static String createToolTip(IResources resources) {
+  public static String createToolTip(Resources resources) {
     return resources.getString("AnathemaPersistence.LoadMenu.Name");
   }
 
-  private ItemTypeLoadAction(IApplicationModel anathemaModel, IItemType itemType, IResources resources) {
+  private ItemTypeLoadAction(IApplicationModel anathemaModel, IItemType itemType, Resources resources) {
     super(anathemaModel, resources);
     IItemManagementModel itemManagementModel = anathemaModel.getItemManagement();
     this.itemCreationOperator = new ItemCreationOperator(new LoadItemCreator(anathemaModel), itemManagementModel);

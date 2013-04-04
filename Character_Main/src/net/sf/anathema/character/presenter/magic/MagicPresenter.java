@@ -26,7 +26,7 @@ import net.sf.anathema.framework.presenter.view.ContentView;
 import net.sf.anathema.framework.presenter.view.MultipleContentView;
 import net.sf.anathema.initialization.Instantiater;
 import net.sf.anathema.lib.logging.Logger;
-import net.sf.anathema.lib.resources.IResources;
+import net.sf.anathema.lib.resources.Resources;
 import net.sf.anathema.platform.tree.document.visualizer.ITreePresentationProperties;
 
 import java.util.ArrayList;
@@ -38,9 +38,9 @@ public class MagicPresenter implements IContentPresenter {
   private final Logger logger = Logger.getLogger(MagicPresenter.class);
   private final List<IContentPresenter> subPresenters = new ArrayList<>();
   private IApplicationModel anathemaModel;
-  private IResources resources;
+  private Resources resources;
 
-  public MagicPresenter(ICharacter character, IMagicViewFactory factory, IResources resources, IApplicationModel anathemaModel) {
+  public MagicPresenter(ICharacter character, IMagicViewFactory factory, Resources resources, IApplicationModel anathemaModel) {
     this.resources = resources;
     ITemplateRegistry templateRegistry = CharacterGenericsExtractor.getGenerics(anathemaModel).getTemplateRegistry();
     this.anathemaModel = anathemaModel;
@@ -53,7 +53,7 @@ public class MagicPresenter implements IContentPresenter {
     addSpellPresenter(character, factory, resources);
   }
 
-  private void addSpellPresenter(ICharacter character, IMagicViewFactory factory, IResources resources) {
+  private void addSpellPresenter(ICharacter character, IMagicViewFactory factory, Resources resources) {
     ISpellMagicTemplate spellMagic = character.getCharacterTemplate().getMagicTemplate().getSpellMagic();
     if (spellMagic.canLearnSorcery()) {
       subPresenters.add(SpellContentPresenter.ForSorcery(createMagicDetailPresenter(), character, resources, factory, getMagicDescriptionProvider()));
@@ -72,7 +72,7 @@ public class MagicPresenter implements IContentPresenter {
     return CharmDescriptionProviderExtractor.CreateFor(anathemaModel, resources);
   }
 
-  private MagicAndDetailPresenter createCharmPresenter(ICharacter character, IMagicViewFactory factory, IResources resources,
+  private MagicAndDetailPresenter createCharmPresenter(ICharacter character, IMagicViewFactory factory, Resources resources,
                                                        ITemplateRegistry templateRegistry) {
     CharacterCharmModel model = new CharacterCharmModel(character, getMagicDescriptionProvider());
     ITreePresentationProperties presentationProperties =

@@ -5,7 +5,7 @@ import net.sf.anathema.character.infernal.urge.model.InfernalUrge;
 import net.sf.anathema.character.infernal.urge.view.IInfernalUrgeView;
 import net.sf.anathema.character.library.virtueflaw.model.IVirtueFlaw;
 import net.sf.anathema.character.library.virtueflaw.presenter.VirtueFlawPresenter;
-import net.sf.anathema.lib.resources.IResources;
+import net.sf.anathema.lib.resources.Resources;
 import net.sf.anathema.lib.workflow.textualdescription.ITextView;
 import net.sf.anathema.lib.workflow.textualdescription.TextualPresentation;
 
@@ -13,7 +13,7 @@ public class InfernalUrgePresenter extends VirtueFlawPresenter {
   private final IInfernalUrgeView view;
   private final IInfernalUrgeModel model;
 
-  public InfernalUrgePresenter(IResources resources, IInfernalUrgeView urgeView, IInfernalUrgeModel model) {
+  public InfernalUrgePresenter(Resources resources, IInfernalUrgeView urgeView, IInfernalUrgeModel model) {
     super(resources, urgeView, model);
     this.view = urgeView;
     this.model = model;

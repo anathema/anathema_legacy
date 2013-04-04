@@ -5,13 +5,13 @@ import net.sf.anathema.character.reporting.pdf.content.ReportSession;
 import net.sf.anathema.character.reporting.pdf.rendering.extent.Bounds;
 import net.sf.anathema.character.reporting.pdf.rendering.general.box.ContentEncoder;
 import net.sf.anathema.character.reporting.pdf.rendering.graphics.SheetGraphics;
-import net.sf.anathema.lib.resources.IResources;
+import net.sf.anathema.lib.resources.Resources;
 
 public class AstrologyInfoEncoder implements ContentEncoder {
 
-  private final IResources resources;
+  private final Resources resources;
 
-  public AstrologyInfoEncoder(IResources resources) {
+  public AstrologyInfoEncoder(Resources resources) {
     this.resources = resources;
   }
 

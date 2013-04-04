@@ -6,19 +6,19 @@ import net.sf.anathema.character.generic.magic.IMagic;
 import net.sf.anathema.character.generic.rules.IExaltedSourceBook;
 import net.sf.anathema.lib.gui.TooltipBuilder;
 import net.sf.anathema.lib.lang.StringUtilities;
-import net.sf.anathema.lib.resources.IResources;
+import net.sf.anathema.lib.resources.Resources;
 
 import static net.sf.anathema.lib.lang.StringUtilities.createFixedWidthParagraph;
 
 public class MagicSourceStringBuilder<T extends IMagic> implements IMagicSourceStringBuilder<T>, IMagicTooltipStringBuilder {
 
-  private final IResources resources;
+  private final Resources resources;
 
-  public MagicSourceStringBuilder(IResources resources) {
+  public MagicSourceStringBuilder(Resources resources) {
     this.resources = resources;
   }
 
-  protected IResources getResources() {
+  protected Resources getResources() {
     return resources;
   }
 

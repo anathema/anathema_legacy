@@ -12,7 +12,7 @@ import net.sf.anathema.lib.control.IChangeListener;
 import net.sf.anathema.lib.control.ObjectValueListener;
 import net.sf.anathema.lib.gui.Presenter;
 import net.sf.anathema.lib.gui.selection.IObjectSelectionView;
-import net.sf.anathema.lib.resources.IResources;
+import net.sf.anathema.lib.resources.Resources;
 import net.sf.anathema.lib.workflow.textualdescription.ITextView;
 import net.sf.anathema.lib.workflow.textualdescription.TextualPresentation;
 
@@ -20,11 +20,11 @@ import java.awt.Component;
 
 public class VirtueFlawPresenter implements Presenter {
 
-  private final IResources resources;
+  private final Resources resources;
   private final IVirtueFlawView view;
   private final IVirtueFlawModel model;
 
-  public VirtueFlawPresenter(IResources resources, IVirtueFlawView virtueFlawView, IVirtueFlawModel model) {
+  public VirtueFlawPresenter(Resources resources, IVirtueFlawView virtueFlawView, IVirtueFlawModel model) {
     this.resources = resources;
     this.view = virtueFlawView;
     this.model = model;
@@ -132,7 +132,7 @@ public class VirtueFlawPresenter implements Presenter {
     return model;
   }
 
-  protected final IResources getResources() {
+  protected final Resources getResources() {
     return resources;
   }
 }

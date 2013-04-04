@@ -7,14 +7,14 @@ import net.sf.anathema.character.reporting.pdf.rendering.extent.Position;
 import net.sf.anathema.character.reporting.pdf.rendering.general.HorizontalLineEncoder;
 import net.sf.anathema.character.reporting.pdf.rendering.general.box.ContentEncoder;
 import net.sf.anathema.character.reporting.pdf.rendering.graphics.SheetGraphics;
-import net.sf.anathema.lib.resources.IResources;
+import net.sf.anathema.lib.resources.Resources;
 
 public class ResplendentDestinyEncoder implements ContentEncoder {
 
-  private IResources resources;
+  private Resources resources;
   private float lineHeight;
 
-  public ResplendentDestinyEncoder(int fontSize, IResources resources) {
+  public ResplendentDestinyEncoder(int fontSize, Resources resources) {
     this.resources = resources;
     this.lineHeight = fontSize * 1.5f;
   }

@@ -3,15 +3,15 @@ package net.sf.anathema.character.generic.framework.magic.stringbuilder;
 import net.sf.anathema.character.generic.magic.general.ICost;
 import net.sf.anathema.lib.gui.TooltipBuilder;
 import net.sf.anathema.lib.lang.StringUtilities;
-import net.sf.anathema.lib.resources.IResources;
+import net.sf.anathema.lib.resources.Resources;
 
 public class CostStringBuilder extends AbstractCostStringBuilder<ICost> {
 
-  public CostStringBuilder(IResources resources, String key) {
+  public CostStringBuilder(Resources resources, String key) {
     super(resources, key, key);
   }
 
-  public CostStringBuilder(IResources resources, String singularKey, String pluralKey) {
+  public CostStringBuilder(Resources resources, String singularKey, String pluralKey) {
     super(resources, singularKey, pluralKey);
   }
 

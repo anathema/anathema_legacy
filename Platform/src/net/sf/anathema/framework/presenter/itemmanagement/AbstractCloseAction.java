@@ -12,7 +12,7 @@ import net.sf.anathema.lib.gui.dialog.userdialog.buttons.YesNoDialogButtonConfig
 import net.sf.anathema.lib.message.IMessage;
 import net.sf.anathema.lib.message.Message;
 import net.sf.anathema.lib.message.MessageType;
-import net.sf.anathema.lib.resources.IResources;
+import net.sf.anathema.lib.resources.Resources;
 
 import java.awt.Component;
 import java.awt.Cursor;
@@ -20,10 +20,10 @@ import java.awt.Cursor;
 public abstract class AbstractCloseAction extends SmartAction {
 
   private final IItemManagementModel management;
-  private final IResources resources;
+  private final Resources resources;
   private final SelectedItemActionEnabler itemActionEnabler;
 
-  public AbstractCloseAction(IItemManagementModel management, IResources resources) {
+  public AbstractCloseAction(IItemManagementModel management, Resources resources) {
     this.management = management;
     this.resources = resources;
     this.itemActionEnabler = new SelectedItemActionEnabler(this, management.getSelectedItem());

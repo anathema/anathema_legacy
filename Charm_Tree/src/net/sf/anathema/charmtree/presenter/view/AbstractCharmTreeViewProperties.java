@@ -6,13 +6,13 @@ import net.sf.anathema.character.generic.framework.magic.stringbuilder.ICharmInf
 import net.sf.anathema.character.generic.magic.ICharm;
 import net.sf.anathema.character.generic.magic.charms.special.ISpecialCharm;
 import net.sf.anathema.character.generic.magic.description.MagicDescriptionProvider;
-import net.sf.anathema.lib.resources.IResources;
+import net.sf.anathema.lib.resources.Resources;
 
 public abstract class AbstractCharmTreeViewProperties implements ICharmTreeViewProperties {
 
   private final ICharmInfoStringBuilder tooltipTextProvider;
 
-  public AbstractCharmTreeViewProperties(IResources resources, MagicDescriptionProvider magicDescriptionProvider) {
+  public AbstractCharmTreeViewProperties(Resources resources, MagicDescriptionProvider magicDescriptionProvider) {
     this.tooltipTextProvider = new CharmInfoStringBuilder(resources, magicDescriptionProvider);
   }
 

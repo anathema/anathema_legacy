@@ -36,7 +36,7 @@ import net.sf.anathema.lib.exception.NotYetImplementedException;
 import net.sf.anathema.lib.gui.dialog.core.IDialogResult;
 import net.sf.anathema.lib.gui.dialog.wizard.WizardDialog;
 import net.sf.anathema.character.equipment.wizard.AnathemaWizardDialog;
-import net.sf.anathema.lib.resources.IResources;
+import net.sf.anathema.lib.resources.Resources;
 import net.sf.anathema.lib.util.Identified;
 import net.sf.anathema.lib.util.Identifier;
 
@@ -51,21 +51,21 @@ public class EquipmentStatsCreationFactory implements IEquipmentStatsCreationFac
   }
 
   @Override
-  public IEquipmentStats createNewStats(Component parentComponent, IResources resources, String[] definedNames,
+  public IEquipmentStats createNewStats(Component parentComponent, Resources resources, String[] definedNames,
                                         MaterialComposition materialComposition) {
     IEquipmentStatisticsCreationModel model = new EquipmentStatisticsCreationModel(definedNames);
     return runDialog(parentComponent, resources, model, materialComposition);
   }
 
   @Override
-  public IEquipmentStats editStats(Component parentComponent, IResources resources, String[] definedNames,
+  public IEquipmentStats editStats(Component parentComponent, Resources resources, String[] definedNames,
                                    IEquipmentStats stats, MaterialComposition materialComposition) {
     IEquipmentStatisticsCreationModel model = new EquipmentStatisticsCreationModel(definedNames);
     createModel(model, stats);
     return runDialog(parentComponent, resources, model, materialComposition);
   }
 
-  private IEquipmentStats runDialog(Component parentComponent, IResources resources,
+  private IEquipmentStats runDialog(Component parentComponent, Resources resources,
                                     IEquipmentStatisticsCreationModel model, MaterialComposition materialComposition) {
     IEquipmentStatisticsCreationViewFactory viewFactory = new EquipmentStatisticsCreationViewFactory();
     boolean canHaveArtifactStats = materialComposition != MaterialComposition.None;

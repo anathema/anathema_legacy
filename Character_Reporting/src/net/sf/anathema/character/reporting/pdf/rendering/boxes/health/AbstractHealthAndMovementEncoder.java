@@ -14,13 +14,13 @@ import net.sf.anathema.character.reporting.pdf.rendering.general.box.ContentEnco
 import net.sf.anathema.character.reporting.pdf.rendering.general.table.ITableEncoder;
 import net.sf.anathema.character.reporting.pdf.rendering.graphics.SheetGraphics;
 import net.sf.anathema.character.reporting.pdf.rendering.page.IVoidStateFormatConstants;
-import net.sf.anathema.lib.resources.IResources;
+import net.sf.anathema.lib.resources.Resources;
 
 public abstract class AbstractHealthAndMovementEncoder implements ContentEncoder {
 
-  private final IResources resources;
+  private final Resources resources;
 
-  public AbstractHealthAndMovementEncoder(IResources resources) {
+  public AbstractHealthAndMovementEncoder(Resources resources) {
     this.resources = resources;
   }
 
@@ -78,7 +78,7 @@ public abstract class AbstractHealthAndMovementEncoder implements ContentEncoder
     return " " + string + "   "; //$NON-NLS-1$ //$NON-NLS-2$
   }
 
-  protected final IResources getResources() {
+  protected final Resources getResources() {
     return resources;
   }
 

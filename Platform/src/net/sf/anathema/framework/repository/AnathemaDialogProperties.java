@@ -1,13 +1,13 @@
 package net.sf.anathema.framework.repository;
 
 import net.sf.anathema.framework.IDialogProperties;
-import net.sf.anathema.lib.resources.IResources;
+import net.sf.anathema.lib.resources.Resources;
 
 public class AnathemaDialogProperties implements IDialogProperties {
 
-  private final IResources resources;
+  private final Resources resources;
 
-  public AnathemaDialogProperties(IResources resources) {
+  public AnathemaDialogProperties(Resources resources) {
     this.resources = resources;
   }
 
@@ -36,7 +36,7 @@ public class AnathemaDialogProperties implements IDialogProperties {
     return resources.getString("FoldoutDialog.Foldin.Button.Text"); //$NON-NLS-1$
   }
 
-  protected final IResources getResources() {
+  protected final Resources getResources() {
     return resources;
   }
 }

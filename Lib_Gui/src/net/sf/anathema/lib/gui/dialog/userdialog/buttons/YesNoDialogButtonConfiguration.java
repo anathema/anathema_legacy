@@ -2,13 +2,13 @@ package net.sf.anathema.lib.gui.dialog.userdialog.buttons;
 
 import net.sf.anathema.lib.gui.action.ActionConfiguration;
 import net.sf.anathema.lib.gui.action.IActionConfiguration;
-import net.sf.anathema.lib.resources.IResources;
+import net.sf.anathema.lib.resources.Resources;
 
 public class YesNoDialogButtonConfiguration extends DialogButtonConfiguration {
 
-  private final IResources resources;
+  private final Resources resources;
 
-  public YesNoDialogButtonConfiguration(IResources resources) {
+  public YesNoDialogButtonConfiguration(Resources resources) {
     this.resources = resources;
   }
 

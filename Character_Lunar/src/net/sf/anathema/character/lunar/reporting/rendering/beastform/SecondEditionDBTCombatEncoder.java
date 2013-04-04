@@ -15,13 +15,13 @@ import net.sf.anathema.character.reporting.pdf.rendering.extent.Position;
 import net.sf.anathema.character.reporting.pdf.rendering.general.LabelledValueEncoder;
 import net.sf.anathema.character.reporting.pdf.rendering.general.box.ContentEncoder;
 import net.sf.anathema.character.reporting.pdf.rendering.graphics.SheetGraphics;
-import net.sf.anathema.lib.resources.IResources;
+import net.sf.anathema.lib.resources.Resources;
 
 public class SecondEditionDBTCombatEncoder implements ContentEncoder {
 
-  private final IResources resources;
+  private final Resources resources;
 
-  public SecondEditionDBTCombatEncoder(IResources resources) {
+  public SecondEditionDBTCombatEncoder(Resources resources) {
     this.resources = resources;
   }
 

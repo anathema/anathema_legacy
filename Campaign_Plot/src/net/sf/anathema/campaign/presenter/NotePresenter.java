@@ -8,7 +8,7 @@ import net.sf.anathema.framework.styledtext.model.IStyledTextChangeListener;
 import net.sf.anathema.framework.styledtext.model.IStyledTextualDescription;
 import net.sf.anathema.framework.styledtext.model.ITextPart;
 import net.sf.anathema.framework.styledtext.presentation.StyledText;
-import net.sf.anathema.lib.resources.IResources;
+import net.sf.anathema.lib.resources.Resources;
 import net.sf.anathema.lib.workflow.textualdescription.ITextView;
 import net.sf.anathema.lib.workflow.textualdescription.TextualPresentation;
 
@@ -16,10 +16,10 @@ public class NotePresenter {
   private static final String NOTE_NAME_LABEL = "NoteDescription.NoteName.Label";
   private static final String NOTE_CONTENT_LABEL = "NoteDescription.NoteContent.Label";
   private final NoteView view;
-  private final IResources resources;
+  private final Resources resources;
   private final IBasicItemData item;
 
-  public NotePresenter(NoteView view, IResources resources, IBasicItemData itemData) {
+  public NotePresenter(NoteView view, Resources resources, IBasicItemData itemData) {
     this.view = view;
     this.resources = resources;
     this.item = itemData;

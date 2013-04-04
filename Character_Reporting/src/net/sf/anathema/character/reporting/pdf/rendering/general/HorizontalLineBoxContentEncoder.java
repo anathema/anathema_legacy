@@ -6,16 +6,16 @@ import net.sf.anathema.character.reporting.pdf.rendering.extent.Bounds;
 import net.sf.anathema.character.reporting.pdf.rendering.general.box.ContentEncoder;
 import net.sf.anathema.character.reporting.pdf.rendering.graphics.SheetGraphics;
 import net.sf.anathema.character.reporting.pdf.rendering.page.IVoidStateFormatConstants;
-import net.sf.anathema.lib.resources.IResources;
+import net.sf.anathema.lib.resources.Resources;
 
 public class HorizontalLineBoxContentEncoder implements ContentEncoder {
 
   private static final float LINE_HEIGHT = IVoidStateFormatConstants.LINE_HEIGHT - 2f;
   private final int columnCount;
-  private IResources resources;
+  private Resources resources;
   private final String headerKey;
 
-  public HorizontalLineBoxContentEncoder(int columnCount, IResources resources, String headerKey) {
+  public HorizontalLineBoxContentEncoder(int columnCount, Resources resources, String headerKey) {
     this.columnCount = columnCount;
     this.resources = resources;
     this.headerKey = headerKey;

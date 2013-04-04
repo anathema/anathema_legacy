@@ -1,15 +1,15 @@
 package net.sf.anathema.character.equipment.creation.presenter.stats.properties;
 
 import net.sf.anathema.character.equipment.item.model.EquipmentStatisticsType;
-import net.sf.anathema.lib.resources.IResources;
+import net.sf.anathema.lib.resources.Resources;
 
 import javax.swing.Icon;
 
 public class EquipmentTypeChoiceProperties {
 
-  private final IResources resources;
+  private final Resources resources;
 
-  public EquipmentTypeChoiceProperties(IResources resources) {
+  public EquipmentTypeChoiceProperties(Resources resources) {
     this.resources = resources;
   }
 

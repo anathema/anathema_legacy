@@ -4,19 +4,19 @@ import net.sf.anathema.character.generic.framework.magic.view.CharmDescriptionPr
 import net.sf.anathema.character.generic.magic.IMagic;
 import net.sf.anathema.character.generic.magic.description.MagicDescription;
 import net.sf.anathema.framework.IApplicationModel;
-import net.sf.anathema.lib.resources.IResources;
+import net.sf.anathema.lib.resources.Resources;
 
 public abstract class AbstractMagicCardDataProvider implements ICardDataProvider {
 
   private final IApplicationModel model;
-  private final IResources resources;
+  private final Resources resources;
 
-  protected AbstractMagicCardDataProvider(IApplicationModel model, IResources resources) {
+  protected AbstractMagicCardDataProvider(IApplicationModel model, Resources resources) {
     this.model = model;
     this.resources = resources;
   }
 
-  protected IResources getResources() {
+  protected Resources getResources() {
     return resources;
   }
 

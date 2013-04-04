@@ -4,7 +4,7 @@ import net.sf.anathema.framework.IApplicationModel;
 import net.sf.anathema.initialization.BootJob;
 import net.sf.anathema.initialization.IBootJob;
 import net.sf.anathema.initialization.reflections.Weight;
-import net.sf.anathema.lib.resources.IResources;
+import net.sf.anathema.lib.resources.Resources;
 
 import javax.swing.plaf.metal.MetalLookAndFeel;
 
@@ -25,7 +25,7 @@ public class LookAndFeelNormalizerBootJob implements IBootJob {
   private static final String LOOK_AND_FEEL_PREFERENCE = "ForceMetalLookAndFeel"; //$NON-NLS-1$
 
   @Override
-  public void run(IResources resources, IApplicationModel model) {
+  public void run(Resources resources, IApplicationModel model) {
     String storedClassName = SYSTEM_PREFERENCES.get(USER_LOOK_AND_FEEL_CLASSNAME, null);
     if (storedClassName == null) {
       if (SYSTEM_PREFERENCES.getBoolean(LOOK_AND_FEEL_PREFERENCE, false)) {

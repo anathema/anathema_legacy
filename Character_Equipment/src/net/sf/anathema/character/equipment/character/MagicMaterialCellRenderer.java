@@ -1,16 +1,16 @@
 package net.sf.anathema.character.equipment.character;
 
 import net.sf.anathema.character.equipment.MagicalMaterial;
-import net.sf.anathema.lib.resources.IResources;
+import net.sf.anathema.lib.resources.Resources;
 
 import javax.swing.DefaultListCellRenderer;
 import javax.swing.JList;
 import java.awt.Component;
 
 public final class MagicMaterialCellRenderer extends DefaultListCellRenderer {
-private final IResources resources;
+private final Resources resources;
 
-  public MagicMaterialCellRenderer(IResources resources) {
+  public MagicMaterialCellRenderer(Resources resources) {
     this.resources = resources;
   }
 

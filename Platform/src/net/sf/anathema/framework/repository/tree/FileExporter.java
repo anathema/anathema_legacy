@@ -2,7 +2,7 @@ package net.sf.anathema.framework.repository.tree;
 
 import net.sf.anathema.framework.repository.access.IRepositoryFileAccess;
 import net.sf.anathema.framework.view.PrintNameFile;
-import net.sf.anathema.lib.resources.IResources;
+import net.sf.anathema.lib.resources.Resources;
 import org.apache.commons.io.IOUtils;
 
 import java.io.File;
@@ -16,9 +16,9 @@ import java.util.zip.ZipOutputStream;
 public class FileExporter {
   private RepositoryZipPathCreator creator;
   private ExportModel model;
-  private IResources resources;
+  private Resources resources;
 
-  public FileExporter(RepositoryZipPathCreator repositoryZipPathCreator, ExportModel model, IResources resources) {
+  public FileExporter(RepositoryZipPathCreator repositoryZipPathCreator, ExportModel model, Resources resources) {
     this.creator = repositoryZipPathCreator;
     this.model = model;
     this.resources = resources;

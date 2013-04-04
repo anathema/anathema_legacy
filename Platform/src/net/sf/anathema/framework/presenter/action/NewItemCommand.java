@@ -16,7 +16,7 @@ import net.sf.anathema.lib.gui.dialog.userdialog.page.IDialogPage;
 import net.sf.anathema.lib.gui.swing.GuiUtilities;
 import net.sf.anathema.lib.message.Message;
 import net.sf.anathema.lib.registry.IRegistry;
-import net.sf.anathema.lib.resources.IResources;
+import net.sf.anathema.lib.resources.Resources;
 import net.sf.anathema.lib.workflow.wizard.selection.DialogBasedTemplateFactory;
 import net.sf.anathema.lib.workflow.wizard.selection.IDialogModelTemplate;
 
@@ -27,11 +27,11 @@ public class NewItemCommand implements Command {
 
   private final ItemCreationOperator itemCreationOperator;
   private IApplicationModel model;
-  private IResources resources;
+  private Resources resources;
   private final IItemType type;
   private final JComponent parent;
 
-  public NewItemCommand(IItemType type, IApplicationModel model, IResources resources, ItemReceiver itemReceiver) {
+  public NewItemCommand(IItemType type, IApplicationModel model, Resources resources, ItemReceiver itemReceiver) {
     this.model = model;
     this.resources = resources;
     this.itemCreationOperator = new ItemCreationOperator(new NewItemCreator(model), itemReceiver);

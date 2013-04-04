@@ -8,17 +8,17 @@ import net.sf.anathema.framework.view.SwingApplicationFrame;
 import net.sf.anathema.interaction.Command;
 import net.sf.anathema.interaction.Tool;
 import net.sf.anathema.character.equipment.item.view.ToolListView;
-import net.sf.anathema.lib.resources.IResources;
+import net.sf.anathema.lib.resources.Resources;
 
 import java.util.ArrayList;
 import java.util.List;
 
 public class EditStatsAction {
   private final IEquipmentStatsCreationFactory factory;
-  private final IResources resources;
+  private final Resources resources;
   private final IEquipmentTemplateEditModel editModel;
 
-  public EditStatsAction(IResources resources, IEquipmentTemplateEditModel editModel,
+  public EditStatsAction(Resources resources, IEquipmentTemplateEditModel editModel,
                          IEquipmentStatsCreationFactory factory) {
     this.resources = resources;
     this.editModel = editModel;

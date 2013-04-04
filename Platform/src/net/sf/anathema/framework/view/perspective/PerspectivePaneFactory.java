@@ -5,7 +5,7 @@ import net.miginfocom.swing.MigLayout;
 import net.sf.anathema.framework.IApplicationModel;
 import net.sf.anathema.framework.view.ViewFactory;
 import net.sf.anathema.initialization.Instantiater;
-import net.sf.anathema.lib.resources.IResources;
+import net.sf.anathema.lib.resources.Resources;
 
 import javax.swing.JComponent;
 import javax.swing.JPanel;
@@ -15,10 +15,10 @@ public class PerspectivePaneFactory implements ViewFactory {
 
   private final PerspectiveStack perspectiveStack;
   private final PerspectiveSelectionBar selectionBar;
-  private final IResources resources;
+  private final Resources resources;
   private final Instantiater instantiater;
 
-  public PerspectivePaneFactory(IApplicationModel model, IResources resources, Instantiater instantiater) {
+  public PerspectivePaneFactory(IApplicationModel model, Resources resources, Instantiater instantiater) {
     this.resources = resources;
     this.instantiater = instantiater;
     this.perspectiveStack = new PerspectiveStack(model, resources);

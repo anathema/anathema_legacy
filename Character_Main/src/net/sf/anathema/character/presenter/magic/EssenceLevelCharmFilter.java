@@ -4,7 +4,7 @@ import net.sf.anathema.character.generic.magic.ICharm;
 import net.sf.anathema.charmtree.filters.EssenceLevelCharmFilterPage;
 import net.sf.anathema.charmtree.filters.ICharmFilter;
 import net.sf.anathema.lib.exception.PersistenceException;
-import net.sf.anathema.lib.resources.IResources;
+import net.sf.anathema.lib.resources.Resources;
 import net.sf.anathema.lib.xml.ElementUtilities;
 import org.dom4j.Element;
 
@@ -69,7 +69,7 @@ public class EssenceLevelCharmFilter implements ICharmFilter {
   }
 
   @Override
-  public JPanel getFilterPreferencePanel(IResources resources) {
+  public JPanel getFilterPreferencePanel(Resources resources) {
     workingEnabled[0] = enabled;
     workingEssenceLevel[0] = essenceLevel;
     return new EssenceLevelCharmFilterPage(resources, workingEnabled, workingEssenceLevel).getContent();

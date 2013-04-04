@@ -10,7 +10,7 @@ import net.sf.anathema.character.mutations.model.AbstractMutationsModel;
 import net.sf.anathema.character.mutations.model.IMutation;
 import net.sf.anathema.character.mutations.model.MutationProvider;
 import net.sf.anathema.lib.control.IIntValueChangedListener;
-import net.sf.anathema.lib.resources.IResources;
+import net.sf.anathema.lib.resources.Resources;
 import net.sf.anathema.lib.workflow.labelledvalue.ILabelledAlotmentView;
 
 public class SecondEditionMutationModel extends AbstractMutationsModel {
@@ -50,7 +50,7 @@ public class SecondEditionMutationModel extends AbstractMutationsModel {
   }
 
   @Override
-  public void designOverview(IOverviewCategory category, IResources resources) {
+  public void designOverview(IOverviewCategory category, Resources resources) {
     counter = category.addAlotmentView(resources.getString("Lunar.DeadlyBeastmanTransformation.Gifts.Label_2nd"), 2);
     updateOverview();
   }

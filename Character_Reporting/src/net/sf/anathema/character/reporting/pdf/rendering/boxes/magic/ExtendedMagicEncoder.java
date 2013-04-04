@@ -16,7 +16,7 @@ import net.sf.anathema.character.reporting.pdf.content.stats.magic.SpellStats;
 import net.sf.anathema.character.reporting.pdf.rendering.extent.Bounds;
 import net.sf.anathema.character.reporting.pdf.rendering.general.box.ContentEncoder;
 import net.sf.anathema.character.reporting.pdf.rendering.graphics.SheetGraphics;
-import net.sf.anathema.lib.resources.IResources;
+import net.sf.anathema.lib.resources.Resources;
 import net.sf.anathema.lib.util.Identified;
 import net.sf.anathema.lib.util.Identifier;
 
@@ -25,7 +25,7 @@ import java.util.List;
 
 public class ExtendedMagicEncoder<C extends AbstractMagicContent> implements ContentEncoder {
   static Identified KNACK = new Identifier("Knack");
-  private IResources resources;
+  private Resources resources;
 
   public static List<IMagicStats> collectPrintCharms(ReportSession session) {
     return collectPrintMagic(session.getCharacter(), false, true);
@@ -85,7 +85,7 @@ public class ExtendedMagicEncoder<C extends AbstractMagicContent> implements Con
   private final MagicTableEncoder tableEncoder;
   private final String headerKey;
 
-  public ExtendedMagicEncoder(IResources resources, Class<C> contentClass, boolean sectionHeaderLines, String headerKey) {
+  public ExtendedMagicEncoder(Resources resources, Class<C> contentClass, boolean sectionHeaderLines, String headerKey) {
     this.resources = resources;
     this.tableEncoder = new MagicTableEncoder(sectionHeaderLines, contentClass);
     this.headerKey = headerKey;

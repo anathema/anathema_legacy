@@ -9,17 +9,17 @@ import net.sf.anathema.character.presenter.overview.ExperiencedOverviewPresenter
 import net.sf.anathema.character.view.OverviewContainer;
 import net.sf.anathema.character.view.overview.CategorizedOverview;
 import net.sf.anathema.lib.gui.Presenter;
-import net.sf.anathema.lib.resources.IResources;
+import net.sf.anathema.lib.resources.Resources;
 
 public class OverviewPresenter implements Presenter {
 
-  private IResources resources;
+  private Resources resources;
   private ICharacter character;
   private OverviewContainer container;
   private IBonusPointManagement bonusPoints;
   private IExperiencePointManagement experiencePoints;
 
-  public OverviewPresenter(IResources resources, ICharacter character, OverviewContainer container, IBonusPointManagement bonusPoints,
+  public OverviewPresenter(Resources resources, ICharacter character, OverviewContainer container, IBonusPointManagement bonusPoints,
                            IExperiencePointManagement experiencePoints) {
     this.resources = resources;
     this.character = character;

@@ -4,15 +4,15 @@ import net.sf.anathema.character.generic.magic.IMagic;
 import net.sf.anathema.character.generic.magic.description.MagicDescription;
 import net.sf.anathema.character.generic.magic.description.MagicDescriptionProvider;
 import net.sf.anathema.lib.gui.TooltipBuilder;
-import net.sf.anathema.lib.resources.IResources;
+import net.sf.anathema.lib.resources.Resources;
 
 import static java.text.MessageFormat.format;
 
 public class MagicDescriptionStringBuilder implements IMagicTooltipStringBuilder {
-  private final IResources resources;
+  private final Resources resources;
   private MagicDescriptionProvider magicDescriptionProvider;
 
-  public MagicDescriptionStringBuilder(IResources resources, MagicDescriptionProvider magicDescriptionProvider) {
+  public MagicDescriptionStringBuilder(Resources resources, MagicDescriptionProvider magicDescriptionProvider) {
     this.resources = resources;
     this.magicDescriptionProvider = magicDescriptionProvider;
   }

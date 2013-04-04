@@ -5,7 +5,7 @@ import net.sf.anathema.framework.presenter.action.ItemTypeUi;
 import net.sf.anathema.framework.presenter.item.ItemTypeCreationViewPropertiesExtensionPoint;
 import net.sf.anathema.framework.view.PrintNameFile;
 import net.sf.anathema.lib.gui.ui.ObjectUi;
-import net.sf.anathema.lib.resources.IResources;
+import net.sf.anathema.lib.resources.Resources;
 
 import javax.swing.Icon;
 
@@ -14,7 +14,7 @@ public class ItemTypeTreeUi implements ObjectUi<Object> {
   private final ItemTypeCreationViewPropertiesExtensionPoint extension;
   private final ObjectUi<Object> itemtypeUi;
 
-  public ItemTypeTreeUi(IResources resources, ItemTypeCreationViewPropertiesExtensionPoint extension) {
+  public ItemTypeTreeUi(Resources resources, ItemTypeCreationViewPropertiesExtensionPoint extension) {
     this.extension = extension;
     this.itemtypeUi = new ItemTypeUi(resources, extension);
   }

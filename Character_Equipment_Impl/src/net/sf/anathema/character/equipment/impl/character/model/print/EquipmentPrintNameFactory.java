@@ -3,7 +3,7 @@ package net.sf.anathema.character.equipment.impl.character.model.print;
 import net.sf.anathema.character.equipment.character.model.IEquipmentItem;
 import net.sf.anathema.character.generic.equipment.weapon.IEquipmentStats;
 import net.sf.anathema.character.generic.equipment.weapon.IWeaponStats;
-import net.sf.anathema.lib.resources.IResources;
+import net.sf.anathema.lib.resources.Resources;
 import net.sf.anathema.lib.util.Identified;
 
 import java.util.ArrayList;
@@ -12,9 +12,9 @@ import java.util.Collections;
 import java.util.HashSet;
 
 public class EquipmentPrintNameFactory {
-  private final IResources resources;
+  private final Resources resources;
 
-  public EquipmentPrintNameFactory(IResources resources) {
+  public EquipmentPrintNameFactory(Resources resources) {
     this.resources = resources;
   }
 

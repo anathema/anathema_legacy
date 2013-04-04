@@ -1,7 +1,7 @@
 package net.sf.anathema.lib.compare;
 
 import com.google.common.base.Preconditions;
-import net.sf.anathema.lib.resources.IResources;
+import net.sf.anathema.lib.resources.Resources;
 import net.sf.anathema.lib.util.Identified;
 
 import java.util.Arrays;
@@ -9,7 +9,7 @@ import java.util.Comparator;
 
 public class I18nedIdentificateSorter<T extends Identified> {
 
-  public T[] sortAscending(T[] originalGroup, T[] emptyArray, final IResources resources) {
+  public T[] sortAscending(T[] originalGroup, T[] emptyArray, final Resources resources) {
     Preconditions.checkState(originalGroup.length == emptyArray.length, "Arrays must be of equal length"); //$NON-NLS-1$
     System.arraycopy(originalGroup, 0, emptyArray, 0, emptyArray.length);
     Arrays.sort(emptyArray, new Comparator<T>() {
@@ -23,7 +23,7 @@ public class I18nedIdentificateSorter<T extends Identified> {
     return emptyArray;
   }
 
-  protected String getString(IResources resources, T group1) {
+  protected String getString(Resources resources, T group1) {
     return resources.getString(group1.getId());
   }
 }

@@ -8,7 +8,7 @@ import net.sf.anathema.character.reporting.pdf.content.BasicContent;
 import net.sf.anathema.character.reporting.pdf.rendering.boxes.AbstractEncoderFactory;
 import net.sf.anathema.character.reporting.pdf.rendering.boxes.RegisteredEncoderFactory;
 import net.sf.anathema.character.reporting.pdf.rendering.general.box.ContentEncoder;
-import net.sf.anathema.lib.resources.IResources;
+import net.sf.anathema.lib.resources.Resources;
 
 @RegisteredEncoderFactory
 public class FormArsenalEncoderFactory extends AbstractEncoderFactory {
@@ -19,7 +19,7 @@ public class FormArsenalEncoderFactory extends AbstractEncoderFactory {
   }
 
   @Override
-  public ContentEncoder create(IResources resources, BasicContent content) {
+  public ContentEncoder create(Resources resources, BasicContent content) {
     return new WeaponryEncoder(LunarWeaponryContent.class);
   }
 

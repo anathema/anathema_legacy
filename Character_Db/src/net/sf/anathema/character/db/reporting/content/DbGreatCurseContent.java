@@ -6,13 +6,13 @@ import net.sf.anathema.character.generic.traits.ITraitType;
 import net.sf.anathema.character.library.virtueflaw.model.IVirtueFlaw;
 import net.sf.anathema.character.library.virtueflaw.presenter.IVirtueFlawModel;
 import net.sf.anathema.character.reporting.pdf.content.AbstractSubBoxContent;
-import net.sf.anathema.lib.resources.IResources;
+import net.sf.anathema.lib.resources.Resources;
 
 public class DbGreatCurseContent extends AbstractSubBoxContent {
 
   private IGenericCharacter character;
 
-  public DbGreatCurseContent(IResources resources, IGenericCharacter character) {
+  public DbGreatCurseContent(Resources resources, IGenericCharacter character) {
     super(resources);
     this.character = character;
   }

@@ -13,16 +13,16 @@ import net.sf.anathema.character.reporting.pdf.rendering.general.box.ContentEnco
 import net.sf.anathema.character.reporting.pdf.rendering.general.table.TableEncodingUtilities;
 import net.sf.anathema.character.reporting.pdf.rendering.graphics.SheetGraphics;
 import net.sf.anathema.character.sidereal.paradox.SiderealParadoxTemplate;
-import net.sf.anathema.lib.resources.IResources;
+import net.sf.anathema.lib.resources.Resources;
 
 import static net.sf.anathema.character.reporting.pdf.rendering.page.IVoidStateFormatConstants.REDUCED_LINE_HEIGHT;
 import static net.sf.anathema.character.reporting.pdf.rendering.page.IVoidStateFormatConstants.TEXT_PADDING;
 
 public class ParadoxEncoder implements ContentEncoder {
 
-  private final IResources resources;
+  private final Resources resources;
 
-  public ParadoxEncoder(IResources resources) {
+  public ParadoxEncoder(Resources resources) {
     this.resources = resources;
   }
 

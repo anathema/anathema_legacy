@@ -14,7 +14,7 @@ import net.sf.anathema.character.reporting.pdf.rendering.general.box.ContentEnco
 import net.sf.anathema.character.reporting.pdf.rendering.general.table.ITableEncoder;
 import net.sf.anathema.character.reporting.pdf.rendering.graphics.SheetGraphics;
 import net.sf.anathema.character.reporting.pdf.rendering.page.IVoidStateFormatConstants;
-import net.sf.anathema.lib.resources.IResources;
+import net.sf.anathema.lib.resources.Resources;
 
 import static net.sf.anathema.character.generic.impl.persistence.SecondEdition.SECOND_EDITION;
 
@@ -22,10 +22,10 @@ public class GenericAnimaEncoder implements ContentEncoder {
 
   private final float fontSize;
   private final float lineHeight;
-  private final IResources resources;
+  private final Resources resources;
   private final ITableEncoder tableEncoder;
 
-  public GenericAnimaEncoder(IResources resources, float fontSize, ITableEncoder encoder) {
+  public GenericAnimaEncoder(Resources resources, float fontSize, ITableEncoder encoder) {
     this.resources = resources;
     this.fontSize = fontSize;
     this.lineHeight = fontSize * 1.5f;

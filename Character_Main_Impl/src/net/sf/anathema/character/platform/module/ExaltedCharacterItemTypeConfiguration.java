@@ -35,7 +35,7 @@ import net.sf.anathema.initialization.ItemTypeConfiguration;
 import net.sf.anathema.initialization.reflections.Weight;
 import net.sf.anathema.lib.exception.AnathemaException;
 import net.sf.anathema.lib.registry.IRegistry;
-import net.sf.anathema.lib.resources.IResources;
+import net.sf.anathema.lib.resources.Resources;
 
 import javax.swing.Icon;
 
@@ -54,7 +54,7 @@ public class ExaltedCharacterItemTypeConfiguration extends AbstractPersistableIt
   }
 
   @Override
-  protected IItemViewFactory createItemViewFactory(final IApplicationModel anathemaModel, final IResources resources) {
+  protected IItemViewFactory createItemViewFactory(final IApplicationModel anathemaModel, final Resources resources) {
     return new IItemViewFactory() {
       @Override
       public IItemView createView(IItem item) throws AnathemaException {
@@ -87,7 +87,7 @@ public class ExaltedCharacterItemTypeConfiguration extends AbstractPersistableIt
 
   private PointPresentationStrategy choosePointPresentation(ICharacter character, ICharacterView characterView,
                                                             IBonusPointManagement bonusPointManagement,
-                                                            IExperiencePointManagement experiencePointManagement, IResources resources) {
+                                                            IExperiencePointManagement experiencePointManagement, Resources resources) {
     if (character.getCharacterTemplate().isNpcOnly()) {
       return new NpcPointPresentation();
     }
@@ -95,7 +95,7 @@ public class ExaltedCharacterItemTypeConfiguration extends AbstractPersistableIt
   }
 
   @Override
-  protected IItemTypeViewProperties createItemTypeCreationProperties(IApplicationModel anathemaModel, IResources resources) {
+  protected IItemTypeViewProperties createItemTypeCreationProperties(IApplicationModel anathemaModel, Resources resources) {
     ICharacterGenerics generics = CharacterGenericsExtractor.getGenerics(anathemaModel);
     CharacterCreationTemplateFactory factory = new CharacterCreationTemplateFactory(generics, resources);
     IRegistry<ICharacterType, ICasteCollection> casteCollectionIRegistry = generics.getCasteCollectionRegistry();

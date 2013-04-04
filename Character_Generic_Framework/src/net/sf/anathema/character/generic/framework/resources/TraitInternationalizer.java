@@ -1,15 +1,15 @@
 package net.sf.anathema.character.generic.framework.resources;
 
 import net.sf.anathema.character.generic.framework.ITraitReference;
-import net.sf.anathema.lib.resources.IResources;
+import net.sf.anathema.lib.resources.Resources;
 
 public class TraitInternationalizer {
 
   private static final String SHEET_MESSAGE = "SubtraitSheetMessage";//$NON-NLS-1$
   private static final String SCREEN_MESSAGE = "SubtraitScreenMessage";//$NON-NLS-1$
-  private final IResources resources;
+  private final Resources resources;
 
-  public TraitInternationalizer(IResources resources) {
+  public TraitInternationalizer(Resources resources) {
     this.resources = resources;
   }
 

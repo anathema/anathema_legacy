@@ -8,13 +8,13 @@ import net.sf.anathema.character.generic.character.IGenericCharacter;
 import net.sf.anathema.character.generic.framework.resources.BackgroundInternationalizer;
 import net.sf.anathema.character.generic.traits.IGenericTrait;
 import net.sf.anathema.framework.reporting.pdf.PdfReportUtils;
-import net.sf.anathema.lib.resources.IResources;
+import net.sf.anathema.lib.resources.Resources;
 
 public class BackgroundsTextEncoder extends AbstractTextEncoder {
 
   private final BackgroundInternationalizer internationalizer;
 
-  public BackgroundsTextEncoder(PdfReportUtils utils, IResources resources) {
+  public BackgroundsTextEncoder(PdfReportUtils utils, Resources resources) {
     super(utils, resources);
     this.internationalizer = new BackgroundInternationalizer(resources);
   }

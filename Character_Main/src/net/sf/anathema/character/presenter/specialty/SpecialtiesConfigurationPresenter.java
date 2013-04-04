@@ -18,7 +18,7 @@ import net.sf.anathema.lib.collection.IdentityMapping;
 import net.sf.anathema.lib.control.IChangeListener;
 import net.sf.anathema.lib.control.ObjectValueListener;
 import net.sf.anathema.lib.gui.Presenter;
-import net.sf.anathema.lib.resources.IResources;
+import net.sf.anathema.lib.resources.Resources;
 
 import javax.swing.Icon;
 import java.awt.event.ActionEvent;
@@ -51,12 +51,12 @@ public class SpecialtiesConfigurationPresenter implements Presenter {
     }
   };
 
-  private final IResources resources;
+  private final Resources resources;
   private final ISpecialtiesConfigurationView configurationView;
   private final ISpecialtiesConfiguration specialtyManagement;
 
   public SpecialtiesConfigurationPresenter(ISpecialtiesConfiguration specialtyManagement, ISpecialtiesConfigurationView configurationView,
-                                           IResources resources) {
+                                           Resources resources) {
     this.specialtyManagement = specialtyManagement;
     this.configurationView = configurationView;
     this.resources = resources;

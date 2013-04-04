@@ -27,19 +27,19 @@ import net.sf.anathema.character.reporting.pdf.rendering.graphics.SheetGraphics;
 import net.sf.anathema.character.reporting.pdf.rendering.page.PageConfiguration;
 import net.sf.anathema.character.reporting.pdf.rendering.page.PageEncoder;
 import net.sf.anathema.framework.reporting.pdf.PageSize;
-import net.sf.anathema.lib.resources.IResources;
+import net.sf.anathema.lib.resources.Resources;
 
 import static net.sf.anathema.character.lunar.reporting.rendering.EncoderIds.ARSENAL_LUNAR;
 import static net.sf.anathema.character.reporting.pdf.rendering.page.IVoidStateFormatConstants.PADDING;
 
 public class LunarAdditionalPageEncoder implements PageEncoder {
-  private final IResources resources;
+  private final Resources resources;
 
   private final PageConfiguration pageConfiguration;
   private final PdfBoxEncoder boxEncoder;
   private EncoderRegistry encoderRegistry;
 
-  public LunarAdditionalPageEncoder(EncoderRegistry encoderRegistry, IResources resources, PageSize pageSize) {
+  public LunarAdditionalPageEncoder(EncoderRegistry encoderRegistry, Resources resources, PageSize pageSize) {
     this.encoderRegistry = encoderRegistry;
     this.resources = resources;
     this.pageConfiguration = PageConfiguration.ForPortrait(pageSize);

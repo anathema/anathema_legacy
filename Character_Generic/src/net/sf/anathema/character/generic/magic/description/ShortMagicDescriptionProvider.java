@@ -2,16 +2,16 @@ package net.sf.anathema.character.generic.magic.description;
 
 import net.sf.anathema.character.generic.magic.ICharm;
 import net.sf.anathema.character.generic.magic.IMagic;
-import net.sf.anathema.lib.resources.IResources;
+import net.sf.anathema.lib.resources.Resources;
 import org.apache.commons.lang3.StringUtils;
 
 import java.text.MessageFormat;
 
 public class ShortMagicDescriptionProvider implements MagicDescriptionProvider {
 
-  private IResources resources;
+  private Resources resources;
 
-  public ShortMagicDescriptionProvider(IResources resources) {
+  public ShortMagicDescriptionProvider(Resources resources) {
     this.resources = resources;
   }
 

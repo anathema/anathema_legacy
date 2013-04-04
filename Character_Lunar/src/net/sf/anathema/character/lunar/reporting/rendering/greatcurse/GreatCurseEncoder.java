@@ -17,16 +17,16 @@ import net.sf.anathema.character.reporting.pdf.rendering.general.box.ContentEnco
 import net.sf.anathema.character.reporting.pdf.rendering.general.table.TableEncodingUtilities;
 import net.sf.anathema.character.reporting.pdf.rendering.graphics.SheetGraphics;
 import net.sf.anathema.lib.lang.StringUtilities;
-import net.sf.anathema.lib.resources.IResources;
+import net.sf.anathema.lib.resources.Resources;
 
 import static net.sf.anathema.character.reporting.pdf.rendering.page.IVoidStateFormatConstants.REDUCED_LINE_HEIGHT;
 
 public class GreatCurseEncoder implements ContentEncoder {
 
   private final VirtueFlawBoxEncoder traitEncoder = new VirtueFlawBoxEncoder();
-  private IResources resources;
+  private Resources resources;
 
-  public GreatCurseEncoder(IResources resources) {
+  public GreatCurseEncoder(Resources resources) {
     this.resources = resources;
   }
 

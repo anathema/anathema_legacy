@@ -9,7 +9,7 @@ import de.idos.updates.store.ProgressReportAdapter;
 import net.sf.anathema.lib.gui.action.SmartAction;
 import net.sf.anathema.lib.gui.dialog.userdialog.DefaultDialogConfiguration;
 import net.sf.anathema.lib.gui.dialog.userdialog.UserDialog;
-import net.sf.anathema.lib.resources.IResources;
+import net.sf.anathema.lib.resources.Resources;
 import org.apache.commons.io.FilenameUtils;
 
 import javax.swing.Action;
@@ -20,15 +20,15 @@ import java.util.Properties;
 
 public class UpdateAction extends SmartAction {
 
-  public static Action createMenuAction(IResources resources) {
+  public static Action createMenuAction(Resources resources) {
     UpdateAction action = new UpdateAction(resources);
     action.setName(resources.getString("Help.UpdateCheck.Title")); //$NON-NLS-1$
     return action;
   }
 
-  private IResources resources;
+  private Resources resources;
 
-  public UpdateAction(IResources resources) {
+  public UpdateAction(Resources resources) {
     this.resources = resources;
   }
 

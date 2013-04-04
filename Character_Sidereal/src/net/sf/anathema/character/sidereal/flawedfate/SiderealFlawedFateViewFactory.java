@@ -9,12 +9,12 @@ import net.sf.anathema.character.library.virtueflaw.presenter.IVirtueFlawView;
 import net.sf.anathema.character.library.virtueflaw.view.VirtueFlawView;
 import net.sf.anathema.character.sidereal.flawedfate.presenter.SiderealFlawedFatePresenter;
 import net.sf.anathema.lib.gui.IView;
-import net.sf.anathema.lib.resources.IResources;
+import net.sf.anathema.lib.resources.Resources;
 
 public class SiderealFlawedFateViewFactory implements IAdditionalViewFactory {
 
   @Override
-  public IView createView(IAdditionalModel model, IResources resources, ICharacterType type) {
+  public IView createView(IAdditionalModel model, Resources resources, ICharacterType type) {
     IVirtueFlawView virtueFlawView = new VirtueFlawView(
             IntValueDisplayFactoryPrototype.createWithMarkerForCharacterType(type));
     new SiderealFlawedFatePresenter(resources, virtueFlawView, (IVirtueFlawModel) model).initPresentation();

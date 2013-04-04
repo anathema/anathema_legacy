@@ -8,7 +8,7 @@ import net.sf.anathema.character.reporting.pdf.content.essence.recovery.NullReco
 import net.sf.anathema.character.reporting.pdf.content.essence.recovery.RecoveryRow;
 import net.sf.anathema.character.reporting.pdf.content.essence.recovery.SpecialRecoveryRow;
 import net.sf.anathema.character.reporting.pdf.content.essence.recovery.TotalRecoveryRow;
-import net.sf.anathema.lib.resources.IResources;
+import net.sf.anathema.lib.resources.Resources;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -17,7 +17,7 @@ public class RegainEssenceContent extends AbstractSubContent implements SubBoxCo
 
   private IGenericCharacter character;
 
-  public RegainEssenceContent(IResources resources, IGenericCharacter character) {
+  public RegainEssenceContent(Resources resources, IGenericCharacter character) {
     super(resources);
     this.character = character;
   }

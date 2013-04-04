@@ -5,7 +5,7 @@ import net.sf.anathema.initialization.PreferenceElement;
 import net.sf.anathema.initialization.reflections.Weight;
 import net.sf.anathema.lib.control.IIntValueChangedListener;
 import net.sf.anathema.lib.gui.widgets.IntegerSpinner;
-import net.sf.anathema.lib.resources.IResources;
+import net.sf.anathema.lib.resources.Resources;
 import net.sf.anathema.lib.util.Identified;
 
 import javax.swing.JLabel;
@@ -21,7 +21,7 @@ public class ToolTipTimePreferencesElement implements IPreferencesElement {
   private IntegerSpinner spinner;
 
   @Override
-  public void addComponent(JPanel panel, IResources resources) {
+  public void addComponent(JPanel panel, Resources resources) {
     String text = resources.getString("AnathemaCore.Tools.Preferences.ToolTipTime") + ":";
     JLabel toolTipTimeLabel = new JLabel(text);
     spinner = new IntegerSpinner(toolTipTime);

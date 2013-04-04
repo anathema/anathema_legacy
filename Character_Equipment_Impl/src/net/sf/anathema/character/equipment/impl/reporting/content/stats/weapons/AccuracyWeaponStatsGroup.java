@@ -11,7 +11,7 @@ import net.sf.anathema.character.generic.character.IGenericTraitCollection;
 import net.sf.anathema.character.generic.equipment.weapon.IWeaponStats;
 import net.sf.anathema.character.generic.traits.IGenericTrait;
 import net.sf.anathema.character.generic.traits.types.AttributeType;
-import net.sf.anathema.lib.resources.IResources;
+import net.sf.anathema.lib.resources.Resources;
 
 import java.util.Arrays;
 
@@ -21,7 +21,7 @@ public class AccuracyWeaponStatsGroup extends AbstractValueEquipmentStatsGroup<I
   private final IEquipmentCharacterDataProvider provider;
   private IEquipmentCharacterOptionProvider optionProvider;
 
-  public AccuracyWeaponStatsGroup(IResources resources, IGenericTraitCollection collection,
+  public AccuracyWeaponStatsGroup(Resources resources, IGenericTraitCollection collection,
                                   IEquipmentCharacterDataProvider provider,
                                   IEquipmentCharacterOptionProvider optionProvider) {
     super(resources, "Accuracy"); //$NON-NLS-1$

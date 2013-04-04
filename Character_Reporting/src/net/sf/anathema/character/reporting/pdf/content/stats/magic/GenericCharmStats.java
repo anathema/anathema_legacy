@@ -4,7 +4,7 @@ import net.sf.anathema.character.generic.character.IGenericCharacter;
 import net.sf.anathema.character.generic.framework.magic.MagicDisplayLabeler;
 import net.sf.anathema.character.generic.magic.ICharm;
 import net.sf.anathema.character.generic.magic.IMagicStats;
-import net.sf.anathema.lib.resources.IResources;
+import net.sf.anathema.lib.resources.Resources;
 import net.sf.anathema.lib.util.Identified;
 import net.sf.anathema.lib.util.Identifier;
 
@@ -20,7 +20,7 @@ public class GenericCharmStats extends CharmStats {
   }
 
   @Override
-  public String[] getDetailStrings(IResources resources) {
+  public String[] getDetailStrings(Resources resources) {
 	  String description = resources.getString(getName() + ".Description.Short");
 	  return new String[]{description}; //$NON-NLS-1$
   }
@@ -31,13 +31,13 @@ public class GenericCharmStats extends CharmStats {
   }
   
   @Override
-  public String getNameString(IResources resources)
+  public String getNameString(Resources resources)
   {
 	  return new MagicDisplayLabeler(resources).getGenericLabelForMagic(getMagic());
   }
   
   @Override
-  public final String getGroupName(IResources resources) {
+  public final String getGroupName(Resources resources) {
     return resources.getString("Generics"); //$NON-NLS-1$
   }
   

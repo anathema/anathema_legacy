@@ -5,12 +5,12 @@ import net.sf.anathema.character.library.virtueflaw.presenter.IVirtueFlawModel;
 import net.sf.anathema.character.library.virtueflaw.presenter.IVirtueFlawView;
 import net.sf.anathema.character.library.virtueflaw.presenter.VirtueFlawPresenter;
 import net.sf.anathema.lib.control.ObjectValueListener;
-import net.sf.anathema.lib.resources.IResources;
+import net.sf.anathema.lib.resources.Resources;
 import net.sf.anathema.lib.workflow.textualdescription.ITextView;
 
 public class DbVirtueFlawPresenter extends VirtueFlawPresenter {
 
-  public DbVirtueFlawPresenter(IResources resources, IVirtueFlawView virtueFlawView, IVirtueFlawModel model) {
+  public DbVirtueFlawPresenter(Resources resources, IVirtueFlawView virtueFlawView, IVirtueFlawModel model) {
     super(resources, virtueFlawView, model);
   }
 

@@ -12,14 +12,14 @@ import net.sf.anathema.character.generic.magic.ICharm;
 import net.sf.anathema.character.generic.magic.description.MagicDescription;
 import net.sf.anathema.character.generic.traits.types.AbilityType;
 import net.sf.anathema.character.reporting.pdf.content.stats.magic.CharmStats;
-import net.sf.anathema.lib.resources.IResources;
+import net.sf.anathema.lib.resources.Resources;
 
 public class CharmCardData extends AbstractMagicCardData {
 	private ICharm charm;
 	private CharmStats stats;
 	
 	public CharmCardData(ICharm charm, CharmStats stats, MagicDescription description,
-			ICardReportResourceProvider fontProvider, IResources resources) {
+			ICardReportResourceProvider fontProvider, Resources resources) {
 		super(charm, description, fontProvider, resources);
 		this.charm = charm;
 		this.stats = stats;

@@ -3,16 +3,16 @@ package net.sf.anathema.character.perspective;
 import net.sf.anathema.character.perspective.model.model.CharacterIdentifier;
 import net.sf.anathema.character.perspective.model.model.CharacterModel;
 import net.sf.anathema.lib.control.IChangeListener;
-import net.sf.anathema.lib.resources.IStringResourceHandler;
+import net.sf.anathema.lib.resources.Resources;
 
 public class CharacterButtonPresenter {
 
-  private IStringResourceHandler resources;
+  private Resources resources;
   private Selector<CharacterIdentifier> selector;
   private CharacterModel character;
   private CharacterGridView view;
 
-  public CharacterButtonPresenter(IStringResourceHandler resources, Selector<CharacterIdentifier> selector, CharacterModel character,
+  public CharacterButtonPresenter(Resources resources, Selector<CharacterIdentifier> selector, CharacterModel character,
                                   CharacterGridView view) {
     this.resources = resources;
     this.selector = selector;

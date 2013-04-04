@@ -7,15 +7,15 @@ import net.sf.anathema.character.model.traits.ICoreTraitConfiguration;
 import net.sf.anathema.character.view.IBasicAdvantageView;
 import net.sf.anathema.framework.value.IIntValueView;
 import net.sf.anathema.lib.gui.Presenter;
-import net.sf.anathema.lib.resources.IResources;
+import net.sf.anathema.lib.resources.Resources;
 
 public class VirtueConfigurationPresenter implements Presenter {
 
   private final ITrait[] virtues;
   private final IBasicAdvantageView view;
-  private final IResources resources;
+  private final Resources resources;
 
-  public VirtueConfigurationPresenter(IResources resources, ICoreTraitConfiguration traits, IBasicAdvantageView view) {
+  public VirtueConfigurationPresenter(Resources resources, ICoreTraitConfiguration traits, IBasicAdvantageView view) {
     this.resources = resources;
     this.virtues = traits.getTraits(VirtueType.values());
     this.view = view;

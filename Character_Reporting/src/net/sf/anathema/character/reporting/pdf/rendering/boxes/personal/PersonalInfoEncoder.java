@@ -9,16 +9,16 @@ import net.sf.anathema.character.reporting.pdf.rendering.extent.Position;
 import net.sf.anathema.character.reporting.pdf.rendering.general.box.IVariableContentEncoder;
 import net.sf.anathema.character.reporting.pdf.rendering.graphics.SheetGraphics;
 import net.sf.anathema.lib.lang.StringUtilities;
-import net.sf.anathema.lib.resources.IResources;
+import net.sf.anathema.lib.resources.Resources;
 
 import static net.sf.anathema.character.reporting.pdf.rendering.page.IVoidStateFormatConstants.BARE_LINE_HEIGHT;
 import static net.sf.anathema.character.reporting.pdf.rendering.page.IVoidStateFormatConstants.TEXT_PADDING;
 
 public class PersonalInfoEncoder implements IVariableContentEncoder {
 
-  private final IResources resources;
+  private final Resources resources;
 
-  public PersonalInfoEncoder(IResources resources) {
+  public PersonalInfoEncoder(Resources resources) {
     this.resources = resources;
   }
 

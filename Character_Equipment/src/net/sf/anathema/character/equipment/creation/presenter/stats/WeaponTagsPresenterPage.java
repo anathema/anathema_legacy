@@ -11,7 +11,7 @@ import net.sf.anathema.lib.gui.dialog.core.IPageContent;
 import net.sf.anathema.character.equipment.wizard.AbstractAnathemaWizardPage;
 import net.sf.anathema.character.equipment.wizard.CheckInputListener;
 import net.sf.anathema.lib.message.IBasicMessage;
-import net.sf.anathema.lib.resources.IResources;
+import net.sf.anathema.lib.resources.Resources;
 import net.sf.anathema.lib.workflow.booleanvalue.BooleanValueModel;
 import net.sf.anathema.lib.workflow.booleanvalue.BooleanValuePresentation;
 
@@ -25,7 +25,7 @@ public class WeaponTagsPresenterPage extends AbstractAnathemaWizardPage {
   private IWeaponTagsView content;
 
   public WeaponTagsPresenterPage(
-      IResources resources,
+      Resources resources,
       IEquipmentStatisticsCreationModel model,
       IEquipmentStatisticsCreationViewFactory viewFactory) {
     this.model = model;

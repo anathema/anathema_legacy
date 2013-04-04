@@ -8,12 +8,12 @@ import net.sf.anathema.character.library.trait.specialties.ISpecialtiesConfigura
 import net.sf.anathema.character.presenter.specialty.ISpecialtiesAdditionalModel;
 import net.sf.anathema.character.presenter.specialty.SpecialtiesConfigurationPresenter;
 import net.sf.anathema.lib.gui.IView;
-import net.sf.anathema.lib.resources.IResources;
+import net.sf.anathema.lib.resources.Resources;
 
 public class SpecialtiesViewFactory implements IAdditionalViewFactory {
 
   @Override
-  public IView createView(IAdditionalModel model, IResources resources, ICharacterType type) {
+  public IView createView(IAdditionalModel model, Resources resources, ICharacterType type) {
     ISpecialtiesConfiguration specialtiesModel = ((ISpecialtiesAdditionalModel) model).getSpecialtiesModel();
     SpecialtiesView view = new SpecialtiesView(IntValueDisplayFactoryPrototype.createWithMarkerForCharacterType(type));
     new SpecialtiesConfigurationPresenter(specialtiesModel, view, resources).initPresentation();

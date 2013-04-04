@@ -14,14 +14,14 @@ import net.sf.anathema.framework.reporting.ReportException;
 import net.sf.anathema.framework.reporting.pdf.AbstractPdfReport;
 import net.sf.anathema.framework.reporting.pdf.PdfReportUtils;
 import net.sf.anathema.framework.repository.IItem;
-import net.sf.anathema.lib.resources.IResources;
+import net.sf.anathema.lib.resources.Resources;
 
 public class TextReport extends AbstractPdfReport {
 
-  private final IResources resources;
+  private final Resources resources;
   private final PdfReportUtils utils;
 
-  public TextReport(IResources resources) {
+  public TextReport(Resources resources) {
     this.resources = resources;
     utils = new PdfReportUtils();
   }

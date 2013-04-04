@@ -7,7 +7,7 @@ import net.sf.anathema.character.generic.magic.charms.ICharmGroup;
 import net.sf.anathema.character.generic.rules.IExaltedSourceBook;
 import net.sf.anathema.charmtree.filters.ICharmFilter;
 import net.sf.anathema.charmtree.filters.SourceBookCharmFilterPage;
-import net.sf.anathema.lib.resources.IResources;
+import net.sf.anathema.lib.resources.Resources;
 
 import javax.swing.JPanel;
 import java.util.ArrayList;
@@ -56,7 +56,7 @@ public abstract class SourceBookCharmFilter implements ICharmFilter {
   protected abstract boolean mustBeShownDueToCircumstance(ICharm charm);
 
   @Override
-  public JPanel getFilterPreferencePanel(IResources resources) {
+  public JPanel getFilterPreferencePanel(Resources resources) {
     workingExcludedMaterial = new ArrayList<>(excludedMaterial);
     workingIncludePrereqs[0] = includePrereqs;
     SourceBookCharmFilterPage page = new SourceBookCharmFilterPage(resources, getApprovedList(), workingExcludedMaterial, workingIncludePrereqs);

@@ -3,7 +3,7 @@ package net.sf.anathema.framework.presenter.action.preferences;
 import net.miginfocom.swing.MigLayout;
 import net.sf.anathema.lib.gui.dialog.userdialog.page.AbstractDialogPage;
 import net.sf.anathema.lib.message.IBasicMessage;
-import net.sf.anathema.lib.resources.IResources;
+import net.sf.anathema.lib.resources.Resources;
 
 import javax.swing.JComponent;
 import javax.swing.JPanel;
@@ -16,10 +16,10 @@ import static net.sf.anathema.lib.gui.layout.LayoutUtils.withoutInsets;
 public class PreferencesPage extends AbstractDialogPage {
 
   private final Map<String, JPanel> panelsByName = new LinkedHashMap<>();
-  private IResources resources;
+  private Resources resources;
   private IPreferencesElement[] elements;
 
-  public PreferencesPage(IResources resources, IPreferencesElement[] elements) {
+  public PreferencesPage(Resources resources, IPreferencesElement[] elements) {
     super(resources.getString("AnathemaCore.Tools.Preferences.Instruction")); //$NON-NLS-1$
     this.resources = resources;
     this.elements = elements;

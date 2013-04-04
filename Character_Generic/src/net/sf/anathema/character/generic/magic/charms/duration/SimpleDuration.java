@@ -1,6 +1,6 @@
 package net.sf.anathema.character.generic.magic.charms.duration;
 
-import net.sf.anathema.lib.resources.IStringResourceHandler;
+import net.sf.anathema.lib.resources.Resources;
 
 public class SimpleDuration implements IDuration {
   public static final String INSTANT = "Instant";//$NON-NLS-1$
@@ -29,7 +29,7 @@ public class SimpleDuration implements IDuration {
   }
 
   @Override
-  public String getText(IStringResourceHandler resources) {
+  public String getText(Resources resources) {
     return resources.getString("Charm.Duration." + getText()); //$NON-NLS-1$
   }
 }

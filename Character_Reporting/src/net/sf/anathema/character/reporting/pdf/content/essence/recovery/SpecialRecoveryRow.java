@@ -1,14 +1,14 @@
 package net.sf.anathema.character.reporting.pdf.content.essence.recovery;
 
 import net.sf.anathema.character.reporting.pdf.content.essence.pools.AbstractRecoveryRow;
-import net.sf.anathema.lib.resources.IResources;
+import net.sf.anathema.lib.resources.Resources;
 
 public class SpecialRecoveryRow extends AbstractRecoveryRow {
 
-  private IResources resources;
+  private Resources resources;
   private String labelKey;
 
-  public SpecialRecoveryRow(IResources resources, String labelKey) {
+  public SpecialRecoveryRow(Resources resources, String labelKey) {
     this.resources = resources;
     this.labelKey = labelKey;
   }

@@ -6,7 +6,7 @@ import net.sf.anathema.character.linguistics.presenter.ILinguisticsModel;
 import net.sf.anathema.character.linguistics.template.LinguisticsTemplate;
 import net.sf.anathema.character.reporting.pdf.content.AbstractSubBoxContent;
 import net.sf.anathema.character.reporting.pdf.content.ListSubBoxContent;
-import net.sf.anathema.lib.resources.IResources;
+import net.sf.anathema.lib.resources.Resources;
 import net.sf.anathema.lib.util.Identified;
 
 import java.util.ArrayList;
@@ -16,7 +16,7 @@ public class LinguisticsContent extends AbstractSubBoxContent implements ListSub
 
   private IGenericCharacter character;
 
-  public LinguisticsContent(IResources resources, IGenericCharacter character) {
+  public LinguisticsContent(Resources resources, IGenericCharacter character) {
     super(resources);
     this.character = character;
   }

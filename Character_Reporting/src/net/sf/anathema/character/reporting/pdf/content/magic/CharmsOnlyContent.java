@@ -7,7 +7,7 @@ import net.sf.anathema.character.generic.magic.IMagicVisitor;
 import net.sf.anathema.character.reporting.pdf.content.ReportSession;
 import net.sf.anathema.character.reporting.pdf.rendering.boxes.magic.ExtendedMagicEncoder;
 import net.sf.anathema.character.reporting.pdf.rendering.boxes.magic.MagicStatsFactoryVisitor;
-import net.sf.anathema.lib.resources.IResources;
+import net.sf.anathema.lib.resources.Resources;
 
 import java.util.ArrayList;
 import java.util.Collections;
@@ -18,7 +18,7 @@ public class CharmsOnlyContent extends AbstractMagicContent {
   private IGenericCharacter character;
   private ReportSession session;
 
-  public CharmsOnlyContent(IGenericCharacter character, ReportSession session, IResources resources) {
+  public CharmsOnlyContent(IGenericCharacter character, ReportSession session, Resources resources) {
     super(resources);
     this.character = character;
     this.session = session;

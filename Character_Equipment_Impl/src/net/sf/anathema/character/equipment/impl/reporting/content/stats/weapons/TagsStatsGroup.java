@@ -11,16 +11,16 @@ import com.itextpdf.text.pdf.PdfPTable;
 import net.sf.anathema.character.equipment.impl.reporting.content.stats.IEquipmentStatsGroup;
 import net.sf.anathema.character.generic.equipment.weapon.IWeaponStats;
 import net.sf.anathema.character.reporting.pdf.rendering.general.table.TableEncodingUtilities;
-import net.sf.anathema.lib.resources.IResources;
+import net.sf.anathema.lib.resources.Resources;
 import net.sf.anathema.lib.util.Identified;
 
 import static net.sf.anathema.lib.lang.ArrayUtilities.transform;
 
 public final class TagsStatsGroup implements IEquipmentStatsGroup<IWeaponStats> {
   private final String title;
-  private final IResources resources;
+  private final Resources resources;
 
-  public TagsStatsGroup(IResources resources) {
+  public TagsStatsGroup(Resources resources) {
     this.resources = resources;
     this.title = resources.getString("Sheet.Equipment.Header.Tags"); //$NON-NLS-1$ ;
   }

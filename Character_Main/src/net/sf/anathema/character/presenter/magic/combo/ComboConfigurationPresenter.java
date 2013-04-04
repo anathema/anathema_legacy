@@ -23,7 +23,7 @@ import net.sf.anathema.framework.view.util.ContentProperties;
 import net.sf.anathema.lib.compare.I18nedIdentificateComparator;
 import net.sf.anathema.lib.control.IChangeListener;
 import net.sf.anathema.lib.gui.action.SmartAction;
-import net.sf.anathema.lib.resources.IResources;
+import net.sf.anathema.lib.resources.Resources;
 import net.sf.anathema.lib.workflow.textualdescription.ITextView;
 import net.sf.anathema.lib.workflow.textualdescription.TextualPresentation;
 
@@ -41,11 +41,11 @@ public class ComboConfigurationPresenter implements IContentPresenter {
   private final IComboConfiguration comboConfiguration;
   private final Map<ICombo, IComboView> viewsByCombo = new HashMap<>();
   private final ComboConfigurationModel comboModel;
-  private final IResources resources;
+  private final Resources resources;
   private final IComboConfigurationView view;
   private final MagicDisplayLabeler labeler;
 
-  public ComboConfigurationPresenter(IResources resources, ComboConfigurationModel comboModel, IMagicViewFactory factory) {
+  public ComboConfigurationPresenter(Resources resources, ComboConfigurationModel comboModel, IMagicViewFactory factory) {
     this.resources = resources;
     this.comboModel = comboModel;
     this.charmConfiguration = comboModel.getCharmConfiguration();

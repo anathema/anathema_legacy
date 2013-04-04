@@ -1,12 +1,8 @@
 package net.sf.anathema.character;
 
-import net.sf.anathema.character.generic.data.IExtensibleDataSet;
-import net.sf.anathema.lib.resources.IResources;
+import net.sf.anathema.lib.resources.Resources;
 
-import javax.swing.Icon;
-import java.awt.Image;
-
-public class NullResources implements IResources {
+public class NullResources implements Resources {
 
   @Override
   public String getString(String key, Object... arguments) {
@@ -26,19 +22,5 @@ public class NullResources implements IResources {
   @Override
   public boolean supportsKey(String key) {
     return true;
-  }
-
-  @Override
-  public Image getImage(Class< ? > requestor, String relativePath) {
-    return null;
-  }
-
-  @Override
-  public Icon getImageIcon(Class< ? > requestor, String relativePath) {
-    return null;
-  }
-  
-  public <T extends IExtensibleDataSet> T getDataSet(Class<T> set) {
-	return null;
   }
 }

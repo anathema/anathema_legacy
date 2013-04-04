@@ -1,7 +1,7 @@
 package net.sf.anathema.framework;
 
 import net.sf.anathema.lib.logging.Logger;
-import net.sf.anathema.lib.resources.IResources;
+import net.sf.anathema.lib.resources.Resources;
 
 public class Version implements Comparable<Version> {
 
@@ -27,7 +27,7 @@ public class Version implements Comparable<Version> {
     this.revision = revision;
   }
 
-  public Version(IResources resources) {
+  public Version(Resources resources) {
     this(resources.getString("Anathema.Version.Numeric"));
   }
 

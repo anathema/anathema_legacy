@@ -9,7 +9,7 @@ import net.sf.anathema.character.generic.magic.description.MagicDescriptionProvi
 import net.sf.anathema.character.model.charm.IComboConfiguration;
 import net.sf.anathema.character.view.magic.IComboViewProperties;
 import net.sf.anathema.framework.presenter.resources.BasicUi;
-import net.sf.anathema.lib.resources.IResources;
+import net.sf.anathema.lib.resources.Resources;
 
 import javax.swing.Icon;
 import javax.swing.ListCellRenderer;
@@ -19,7 +19,7 @@ public final class ComboViewProperties extends AbstractMagicLearnProperties impl
   private final IComboConfiguration comboConfiguration;
   private final ICharmInfoStringBuilder charmInfoStringProvider;
 
-  ComboViewProperties(IResources resources, IComboConfiguration comboConfiguration, MagicDescriptionProvider magicDescriptionProvider) {
+  ComboViewProperties(Resources resources, IComboConfiguration comboConfiguration, MagicDescriptionProvider magicDescriptionProvider) {
     super(resources);
     this.charmInfoStringProvider = new CharmInfoStringBuilder(getResources(), magicDescriptionProvider);
     this.comboConfiguration = comboConfiguration;

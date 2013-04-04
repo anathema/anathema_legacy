@@ -3,17 +3,17 @@ package net.sf.anathema.character.generic.framework.magic.stringbuilder;
 import com.google.common.base.Strings;
 import net.sf.anathema.character.generic.magic.general.ICost;
 import net.sf.anathema.lib.gui.TooltipBuilder;
-import net.sf.anathema.lib.resources.IResources;
+import net.sf.anathema.lib.resources.Resources;
 
 import static net.sf.anathema.lib.lang.StringUtilities.EMPTY_STRING;
 
 public abstract class AbstractCostStringBuilder<T extends ICost> implements ICostStringBuilder<T> {
 
-  private final IResources resources;
+  private final Resources resources;
   private final String singularKey;
   private final String pluralKey;
 
-  public AbstractCostStringBuilder(IResources resources, String singularKey, String pluralKey) {
+  public AbstractCostStringBuilder(Resources resources, String singularKey, String pluralKey) {
     this.resources = resources;
     this.singularKey = singularKey;
     this.pluralKey = pluralKey;
@@ -41,7 +41,7 @@ public abstract class AbstractCostStringBuilder<T extends ICost> implements ICos
     return costString;
   }
 
-  protected final IResources getResources() {
+  protected final Resources getResources() {
     return resources;
   }
 

@@ -2,7 +2,7 @@ package net.sf.anathema.character.reporting.pdf.content.stats.magic;
 
 import net.sf.anathema.character.generic.magic.ICharm;
 import net.sf.anathema.character.generic.magic.IMagicStats;
-import net.sf.anathema.lib.resources.IResources;
+import net.sf.anathema.lib.resources.Resources;
 
 public class MultipleEffectCharmStats extends AbstractCharmStats implements IMagicStats {
 
@@ -14,7 +14,7 @@ public class MultipleEffectCharmStats extends AbstractCharmStats implements IMag
   }
 
   @Override
-  public String getNameString(IResources resources) {
+  public String getNameString(Resources resources) {
     String effectString = resources.getString(getMagic().getId() + ".Subeffects." + effect); //$NON-NLS-1$    
     return resources.getString(getMagic().getId() + ".PrintPattern", effectString); //$NON-NLS-1$
   }

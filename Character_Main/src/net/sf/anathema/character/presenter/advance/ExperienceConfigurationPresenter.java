@@ -9,7 +9,7 @@ import net.sf.anathema.character.view.advance.IExperienceConfigurationViewListen
 import net.sf.anathema.framework.presenter.view.ContentView;
 import net.sf.anathema.framework.presenter.view.SimpleViewContentView;
 import net.sf.anathema.framework.view.util.ContentProperties;
-import net.sf.anathema.lib.resources.IResources;
+import net.sf.anathema.lib.resources.Resources;
 
 import javax.swing.event.TableModelEvent;
 import javax.swing.event.TableModelListener;
@@ -26,9 +26,9 @@ public class ExperienceConfigurationPresenter implements IContentPresenter {
   private DefaultTableModel tableModel;
   private final Map<Integer, IExperiencePointEntry> entriesByIndex = new HashMap<>();
   private final Map<IExperiencePointEntry, Integer> indexByEntry = new HashMap<>();
-  private final IResources resources;
+  private final Resources resources;
 
-  public ExperienceConfigurationPresenter(IResources resources, IExperiencePointConfiguration experiencePoints,
+  public ExperienceConfigurationPresenter(Resources resources, IExperiencePointConfiguration experiencePoints,
                                           IExperienceConfigurationView experienceView) {
     this.resources = resources;
     this.experiencePoints = experiencePoints;

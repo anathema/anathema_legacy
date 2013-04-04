@@ -4,7 +4,7 @@ import net.sf.anathema.character.generic.magic.ICharm;
 import net.sf.anathema.character.model.charm.ICharmConfiguration;
 import net.sf.anathema.charmtree.filters.ICharmFilter;
 import net.sf.anathema.charmtree.filters.ObtainableCharmFilterPage;
-import net.sf.anathema.lib.resources.IResources;
+import net.sf.anathema.lib.resources.Resources;
 import org.dom4j.Element;
 
 import javax.swing.JPanel;
@@ -48,7 +48,7 @@ public class ObtainableCharmFilter implements ICharmFilter {
   }
 
   @Override
-  public JPanel getFilterPreferencePanel(IResources resources) {
+  public JPanel getFilterPreferencePanel(Resources resources) {
     workingEnabled[0] = enabled;
     return new ObtainableCharmFilterPage(resources, workingEnabled).getContent();
   }

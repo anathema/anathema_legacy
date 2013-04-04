@@ -2,7 +2,7 @@ package net.sf.anathema.character.generic.magic.charms.duration;
 
 import com.google.common.base.Preconditions;
 import net.sf.anathema.lib.lang.ReflectionEqualsObject;
-import net.sf.anathema.lib.resources.IStringResourceHandler;
+import net.sf.anathema.lib.resources.Resources;
 
 public class QualifiedAmountDuration extends ReflectionEqualsObject implements IDuration {
 
@@ -21,10 +21,10 @@ public class QualifiedAmountDuration extends ReflectionEqualsObject implements I
   }
 
   @Override
-  public String getText(IStringResourceHandler resources) {
+  public String getText(Resources resources) {
     String amountText = resources.getString("Charm.Amount." + getAmount()); //$NON-NLS-1$
     String unitText = resources.getString(getUnitKey());
-    return resources.getString("Charm.QualifiedAmount", new Object[] { amountText, unitText }); //$NON-NLS-1$
+    return resources.getString("Charm.QualifiedAmount", amountText, unitText); //$NON-NLS-1$
   }
 
   private String getUnitKey() {

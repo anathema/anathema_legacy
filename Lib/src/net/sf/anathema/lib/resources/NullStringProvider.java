@@ -1,6 +1,6 @@
 package net.sf.anathema.lib.resources;
 
-public class NullStringProvider implements IStringResourceHandler {
+public class NullStringProvider implements Resources {
   @Override
   public boolean supportsKey(String key) {
     return false;

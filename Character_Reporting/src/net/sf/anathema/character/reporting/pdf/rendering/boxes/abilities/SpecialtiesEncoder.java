@@ -10,7 +10,7 @@ import net.sf.anathema.character.reporting.pdf.rendering.general.traits.Abstract
 import net.sf.anathema.character.reporting.pdf.rendering.general.traits.INamedTraitEncoder;
 import net.sf.anathema.character.reporting.pdf.rendering.general.traits.PdfTraitEncoder;
 import net.sf.anathema.character.reporting.pdf.rendering.graphics.SheetGraphics;
-import net.sf.anathema.lib.resources.IResources;
+import net.sf.anathema.lib.resources.Resources;
 
 import java.util.ArrayList;
 import java.util.Collections;
@@ -20,7 +20,7 @@ public class SpecialtiesEncoder extends AbstractNamedTraitEncoder implements INa
 
   private final int specialtyCount;
 
-  public SpecialtiesEncoder(IResources resources, PdfTraitEncoder encoder, int specialtyCount) {
+  public SpecialtiesEncoder(Resources resources, PdfTraitEncoder encoder, int specialtyCount) {
     super(resources, encoder);
     this.specialtyCount = specialtyCount;
   }

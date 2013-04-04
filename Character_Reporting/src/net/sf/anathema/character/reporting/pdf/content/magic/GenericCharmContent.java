@@ -3,7 +3,7 @@ package net.sf.anathema.character.reporting.pdf.content.magic;
 import net.sf.anathema.character.generic.character.IGenericCharacter;
 import net.sf.anathema.character.generic.traits.ITraitType;
 import net.sf.anathema.character.reporting.pdf.content.SubBoxContent;
-import net.sf.anathema.lib.resources.IResources;
+import net.sf.anathema.lib.resources.Resources;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -12,10 +12,10 @@ import static net.sf.anathema.character.reporting.pdf.rendering.page.IVoidStateF
 
 public class GenericCharmContent implements SubBoxContent {
 
-  private IResources resources;
+  private Resources resources;
   private IGenericCharacter character;
 
-  public GenericCharmContent(IResources resources, IGenericCharacter character) {
+  public GenericCharmContent(Resources resources, IGenericCharacter character) {
     this.resources = resources;
     this.character = character;
   }

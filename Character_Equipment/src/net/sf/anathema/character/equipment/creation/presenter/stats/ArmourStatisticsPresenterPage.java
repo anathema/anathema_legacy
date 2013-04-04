@@ -10,7 +10,7 @@ import net.sf.anathema.framework.value.IconToggleButton;
 import net.sf.anathema.lib.control.IIntValueChangedListener;
 import net.sf.anathema.lib.gui.layout.AdditiveView;
 import net.sf.anathema.lib.gui.layout.LayoutUtils;
-import net.sf.anathema.lib.resources.IResources;
+import net.sf.anathema.lib.resources.Resources;
 import net.sf.anathema.lib.workflow.intvalue.IIntValueModel;
 
 import javax.swing.JComponent;
@@ -21,7 +21,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 public class ArmourStatisticsPresenterPage extends AbstractEquipmentStatisticsPresenterPage<IArmourStatisticsModel, ArmourStatisticsProperties> {
-  public ArmourStatisticsPresenterPage(IResources resources, IEquipmentStatisticsCreationModel model,
+  public ArmourStatisticsPresenterPage(Resources resources, IEquipmentStatisticsCreationModel model,
                                        IEquipmentStatisticsCreationViewFactory viewFactory) {
     super(resources, new ArmourStatisticsProperties(resources), model, model.getArmourStatisticsModel(), viewFactory);
   }

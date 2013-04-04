@@ -4,11 +4,11 @@ import net.sf.anathema.character.generic.character.IGenericCharacter;
 import net.sf.anathema.character.generic.traits.ITraitType;
 import net.sf.anathema.character.generic.traits.types.VirtueType;
 import net.sf.anathema.framework.reporting.pdf.PdfReportUtils;
-import net.sf.anathema.lib.resources.IResources;
+import net.sf.anathema.lib.resources.Resources;
 
 public class VirtueTextEncoder extends AbstractTraitTextEncoder {
 
-  public VirtueTextEncoder(PdfReportUtils utils, IResources resources) {
+  public VirtueTextEncoder(PdfReportUtils utils, Resources resources) {
     super(utils, resources);
   }
 

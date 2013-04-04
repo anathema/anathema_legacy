@@ -6,17 +6,17 @@ import net.sf.anathema.framework.item.IItemType;
 import net.sf.anathema.framework.repository.IRepository;
 import net.sf.anathema.framework.repository.tree.FileExporter;
 import net.sf.anathema.framework.repository.tree.RepositoryZipPathCreator;
-import net.sf.anathema.lib.resources.IResources;
+import net.sf.anathema.lib.resources.Resources;
 
 import java.io.IOException;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 
 public class RepositoryBackup {
-  private IResources resources;
+  private Resources resources;
   private IApplicationModel model;
 
-  public RepositoryBackup(IResources resources, IApplicationModel model) {
+  public RepositoryBackup(Resources resources, IApplicationModel model) {
     this.resources = resources;
     this.model = model;
   }

@@ -8,12 +8,12 @@ import net.sf.anathema.character.ghost.fetters.presenter.GhostFettersPresenter;
 import net.sf.anathema.character.ghost.fetters.view.GhostFettersConfigurationView;
 import net.sf.anathema.character.library.intvalue.IntValueDisplayFactoryPrototype;
 import net.sf.anathema.lib.gui.IView;
-import net.sf.anathema.lib.resources.IResources;
+import net.sf.anathema.lib.resources.Resources;
 
 public class GhostFettersViewFactory implements IAdditionalViewFactory {
 
   @Override
-  public IView createView(IAdditionalModel model, IResources resources, ICharacterType type) {
+  public IView createView(IAdditionalModel model, Resources resources, ICharacterType type) {
     GhostFettersConfigurationView view = new GhostFettersConfigurationView(
             IntValueDisplayFactoryPrototype.createWithMarkerForCharacterType(type));
     new GhostFettersPresenter(resources, view, (IGhostFettersModel) model).initPresentation();

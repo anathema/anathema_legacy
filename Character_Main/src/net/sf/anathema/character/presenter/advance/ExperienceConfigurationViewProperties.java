@@ -5,7 +5,7 @@ import net.sf.anathema.framework.presenter.resources.BasicUi;
 import net.sf.anathema.lib.gui.table.columsettings.ITableColumnViewSettings;
 import net.sf.anathema.lib.gui.table.columsettings.IntegerTableColumnSettings;
 import net.sf.anathema.lib.gui.table.columsettings.StringTableColumnSettings;
-import net.sf.anathema.lib.resources.IResources;
+import net.sf.anathema.lib.resources.Resources;
 
 import javax.swing.Icon;
 import javax.swing.table.TableModel;
@@ -15,9 +15,9 @@ public class ExperienceConfigurationViewProperties implements IExperienceConfigu
 
   private final TableModel tableModel;
   private final BasicUi basicUi;
-  private IResources resources;
+  private Resources resources;
 
-  public ExperienceConfigurationViewProperties(IResources resources, TableModel tableModel) {
+  public ExperienceConfigurationViewProperties(Resources resources, TableModel tableModel) {
     this.basicUi = new BasicUi();
     this.tableModel = tableModel;
     this.resources = resources;

@@ -8,7 +8,7 @@ import net.sf.anathema.character.lunar.reporting.content.stats.knacks.KnackSourc
 import net.sf.anathema.character.lunar.reporting.content.stats.knacks.KnackStats;
 import net.sf.anathema.character.reporting.pdf.content.AbstractSubBoxContent;
 import net.sf.anathema.character.reporting.pdf.content.stats.IStatsGroup;
-import net.sf.anathema.lib.resources.IResources;
+import net.sf.anathema.lib.resources.Resources;
 import net.sf.anathema.lib.util.Identified;
 import net.sf.anathema.lib.util.Identifier;
 
@@ -21,13 +21,13 @@ public class KnackContent extends AbstractSubBoxContent {
 
   private IGenericCharacter character;
 
-  public KnackContent(IResources resources, IGenericCharacter character) {
+  public KnackContent(Resources resources, IGenericCharacter character) {
     super(resources);
     this.character = character;
   }
 
   public IStatsGroup<IKnackStats>[] createStatsGroups() {
-    IResources resources = getResources();
+    Resources resources = getResources();
     return new IStatsGroup[]{new KnackNameStatsGroup(resources), new KnackSourceStatsGroup(resources)};
   }
 

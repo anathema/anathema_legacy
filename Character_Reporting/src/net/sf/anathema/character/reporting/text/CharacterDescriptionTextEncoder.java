@@ -10,11 +10,11 @@ import com.itextpdf.text.Phrase;
 import com.itextpdf.text.pdf.MultiColumnText;
 import net.sf.anathema.character.generic.character.IGenericDescription;
 import net.sf.anathema.framework.reporting.pdf.PdfReportUtils;
-import net.sf.anathema.lib.resources.IResources;
+import net.sf.anathema.lib.resources.Resources;
 
 public class CharacterDescriptionTextEncoder extends AbstractTextEncoder {
 
-  public CharacterDescriptionTextEncoder(PdfReportUtils utils, IResources resources) {
+  public CharacterDescriptionTextEncoder(PdfReportUtils utils, Resources resources) {
     super(utils, resources);
   }
 

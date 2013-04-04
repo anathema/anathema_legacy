@@ -2,13 +2,13 @@ package net.sf.anathema.character.generic.framework.resources;
 
 import net.sf.anathema.character.generic.backgrounds.IBackgroundTemplate;
 import net.sf.anathema.character.generic.impl.backgrounds.CustomizedBackgroundTemplate;
-import net.sf.anathema.lib.resources.IResources;
+import net.sf.anathema.lib.resources.Resources;
 
 public class BackgroundInternationalizer {
   private static final String BACKGROUND_TYPE_RESOURCE_KEY_PREFIX = "BackgroundType.Name."; //$NON-NLS-1$
-  private final IResources resources;
+  private final Resources resources;
 
-  public BackgroundInternationalizer(IResources resources) {
+  public BackgroundInternationalizer(Resources resources) {
     this.resources = resources;
   }
 

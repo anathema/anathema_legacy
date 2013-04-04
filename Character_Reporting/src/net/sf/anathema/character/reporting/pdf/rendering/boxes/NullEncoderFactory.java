@@ -3,7 +3,7 @@ package net.sf.anathema.character.reporting.pdf.rendering.boxes;
 import net.sf.anathema.character.reporting.pdf.content.BasicContent;
 import net.sf.anathema.character.reporting.pdf.rendering.general.NullBoxContentEncoder;
 import net.sf.anathema.character.reporting.pdf.rendering.general.box.ContentEncoder;
-import net.sf.anathema.lib.resources.IResources;
+import net.sf.anathema.lib.resources.Resources;
 import net.sf.anathema.lib.util.Identifier;
 
 public class NullEncoderFactory extends Identifier implements EncoderFactory {
@@ -14,7 +14,7 @@ public class NullEncoderFactory extends Identifier implements EncoderFactory {
   }
 
   @Override
-  public ContentEncoder create(IResources resources, BasicContent content) {
+  public ContentEncoder create(Resources resources, BasicContent content) {
     return NULL_ENCODER;
   }
 

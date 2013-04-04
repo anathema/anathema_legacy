@@ -5,7 +5,7 @@ import net.sf.anathema.interaction.CommandProxy;
 import net.sf.anathema.interaction.Interaction;
 import net.sf.anathema.lib.gui.action.SmartAction;
 import net.sf.anathema.lib.gui.icon.ImageProvider;
-import net.sf.anathema.lib.resources.IResources;
+import net.sf.anathema.lib.resources.Resources;
 
 import java.awt.Component;
 
@@ -18,10 +18,10 @@ public class ActionInteraction implements Interaction {
       commandProxy.execute();
     }
   };
-  private final IResources resources;
+  private final Resources resources;
   private final Class<?> inquirer;
 
-  public ActionInteraction(IResources resources, Class<?> inquirer) {
+  public ActionInteraction(Resources resources, Class<?> inquirer) {
     this.resources = resources;
     this.inquirer = inquirer;
   }

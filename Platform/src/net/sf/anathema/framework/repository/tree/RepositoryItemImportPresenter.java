@@ -10,7 +10,7 @@ import net.sf.anathema.lib.gui.dialog.message.MessageDialogFactory;
 import net.sf.anathema.lib.gui.file.FileChoosingUtilities;
 import net.sf.anathema.lib.logging.Logger;
 import net.sf.anathema.lib.message.Message;
-import net.sf.anathema.lib.resources.IResources;
+import net.sf.anathema.lib.resources.Resources;
 
 import java.awt.Component;
 import java.io.IOException;
@@ -23,14 +23,14 @@ import java.util.zip.ZipFile;
 
 public class RepositoryItemImportPresenter implements Presenter {
 
-  private final IResources resources;
+  private final Resources resources;
   private final IRepositoryTreeModel model;
   private final IRepositoryTreeView view;
   private final RepositoryZipPathCreator creator;
   private final AmountMessaging messaging;
 
   public RepositoryItemImportPresenter(
-      IResources resources,
+      Resources resources,
       IRepositoryTreeModel repositoryTreeModel,
       IRepositoryTreeView treeView,
       AmountMessaging fileCountMessaging) {

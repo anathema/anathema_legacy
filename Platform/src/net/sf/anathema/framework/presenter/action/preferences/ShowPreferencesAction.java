@@ -3,7 +3,7 @@ package net.sf.anathema.framework.presenter.action.preferences;
 import net.sf.anathema.lib.gui.action.SmartAction;
 import net.sf.anathema.lib.gui.dialog.core.IDialogResult;
 import net.sf.anathema.lib.gui.dialog.userdialog.UserDialog;
-import net.sf.anathema.lib.resources.IResources;
+import net.sf.anathema.lib.resources.Resources;
 
 import javax.swing.Action;
 import javax.swing.JOptionPane;
@@ -11,16 +11,16 @@ import java.awt.Component;
 
 public class ShowPreferencesAction extends SmartAction {
 
-  public static Action createMenuAction(IResources resources, IPreferencesElement[] elements) {
+  public static Action createMenuAction(Resources resources, IPreferencesElement[] elements) {
     SmartAction action = new ShowPreferencesAction(resources, elements);
     action.setName(resources.getString("AnathemaCore.Tools.Preferences.Name") + "\u2026"); //$NON-NLS-1$ //$NON-NLS-2$
     return action;
   }
 
-  private final IResources resources;
+  private final Resources resources;
   private final IPreferencesElement[] elements;
 
-  public ShowPreferencesAction(IResources resources, IPreferencesElement[] elements) {
+  public ShowPreferencesAction(Resources resources, IPreferencesElement[] elements) {
     this.resources = resources;
     this.elements = elements;
   }

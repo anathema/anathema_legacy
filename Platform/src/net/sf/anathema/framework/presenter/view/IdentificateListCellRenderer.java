@@ -1,6 +1,6 @@
 package net.sf.anathema.framework.presenter.view;
 
-import net.sf.anathema.lib.resources.IResources;
+import net.sf.anathema.lib.resources.Resources;
 import net.sf.anathema.lib.util.Identified;
 
 import javax.swing.DefaultListCellRenderer;
@@ -9,9 +9,9 @@ import java.awt.Component;
 
 public class IdentificateListCellRenderer extends DefaultListCellRenderer {
 
-  private final IResources resources;
+  private final Resources resources;
 
-  public IdentificateListCellRenderer(IResources resources) {
+  public IdentificateListCellRenderer(Resources resources) {
     this.resources = resources;
   }
 

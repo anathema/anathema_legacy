@@ -23,18 +23,18 @@ import net.sf.anathema.framework.reporting.ReportException;
 import net.sf.anathema.framework.reporting.pdf.AbstractPdfReport;
 import net.sf.anathema.framework.reporting.pdf.PageSize;
 import net.sf.anathema.framework.repository.IItem;
-import net.sf.anathema.lib.resources.IResources;
+import net.sf.anathema.lib.resources.Resources;
 
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
 public class LandscapeExaltSheetReport extends AbstractPdfReport {
-  private IResources resources;
+  private Resources resources;
   private PageSizePreference pageSizePreference;
   private final CharacterReportingModuleObject reportingModuleObject;
 
-  public LandscapeExaltSheetReport(IResources resources, ICharacterGenerics characterGenerics,
+  public LandscapeExaltSheetReport(Resources resources, ICharacterGenerics characterGenerics,
                                    PageSizePreference pageSizePreference) {
     this.resources = resources;
     this.pageSizePreference = pageSizePreference;

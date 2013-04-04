@@ -1,12 +1,12 @@
 package net.sf.anathema.character.reporting.pdf.content.stats.anima;
 
-import net.sf.anathema.lib.resources.IResources;
+import net.sf.anathema.lib.resources.Resources;
 
 public class AnimaTableStealthProvider implements IAnimaTableStealthProvider {
 
-  private final IResources resources;
+  private final Resources resources;
 
-  public AnimaTableStealthProvider(IResources resources) {
+  public AnimaTableStealthProvider(Resources resources) {
     this.resources = resources;
   }
 

@@ -13,7 +13,7 @@ import net.sf.anathema.framework.styledtext.model.IStyledTextChangeListener;
 import net.sf.anathema.framework.styledtext.model.ITextPart;
 import net.sf.anathema.lib.control.ObjectValueListener;
 import net.sf.anathema.lib.gui.Presenter;
-import net.sf.anathema.lib.resources.IResources;
+import net.sf.anathema.lib.resources.Resources;
 import net.sf.anathema.lib.workflow.textualdescription.ITextView;
 
 import javax.swing.tree.DefaultMutableTreeNode;
@@ -136,9 +136,9 @@ public class PlotPresenter implements Presenter {
       itemSummaryView.setText(description.getContent().getTextParts());
     }
   };
-  private final IResources resources;
+  private final Resources resources;
 
-  public PlotPresenter(IResources resources, IPlotView plotView, IPlotModel plotModel) {
+  public PlotPresenter(Resources resources, IPlotView plotView, IPlotModel plotModel) {
     this.resources = resources;
     this.view = plotView;
     this.plotModel = plotModel;

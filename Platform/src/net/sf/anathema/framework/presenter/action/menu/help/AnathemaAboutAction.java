@@ -4,22 +4,22 @@ import net.sf.anathema.lib.gui.action.SmartAction;
 import net.sf.anathema.lib.gui.dialog.userdialog.DefaultDialogConfiguration;
 import net.sf.anathema.lib.gui.dialog.userdialog.UserDialog;
 import net.sf.anathema.lib.gui.dialog.userdialog.page.IDialogPage;
-import net.sf.anathema.lib.resources.IResources;
+import net.sf.anathema.lib.resources.Resources;
 
 import javax.swing.Action;
 import java.awt.Component;
 
 public class AnathemaAboutAction extends SmartAction {
 
-  private final IResources resources;
+  private final Resources resources;
 
-  public static Action createMenuAction(IResources resources) {
+  public static Action createMenuAction(Resources resources) {
     SmartAction action = new AnathemaAboutAction(resources);
     action.setName(resources.getString("Help.AboutDialog.Title")); //$NON-NLS-1$
     return action;
   }
 
-  private AnathemaAboutAction(IResources resources) {
+  private AnathemaAboutAction(Resources resources) {
     this.resources = resources;
   }
 

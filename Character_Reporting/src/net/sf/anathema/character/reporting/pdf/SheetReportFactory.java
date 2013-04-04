@@ -10,7 +10,7 @@ import net.sf.anathema.framework.reporting.Report;
 import net.sf.anathema.framework.reporting.pdf.AbstractPdfReport;
 import net.sf.anathema.initialization.ReportFactoryAutoCollector;
 import net.sf.anathema.initialization.reflections.Weight;
-import net.sf.anathema.lib.resources.IResources;
+import net.sf.anathema.lib.resources.Resources;
 
 import java.util.List;
 
@@ -21,7 +21,7 @@ import static net.sf.anathema.framework.module.preferences.EnableBetaContentPref
 public class SheetReportFactory implements IReportFactory {
 
   @Override
-  public Report[] createReport(IResources resources, IApplicationModel model) {
+  public Report[] createReport(Resources resources, IApplicationModel model) {
     ICharacterGenerics characterGenerics = CharacterGenericsExtractor.getGenerics(model);
     PageSizePreference pageSizePreference = new PageSizePreference();
     List<AbstractPdfReport> reports = Lists.newArrayList(new PortraitSimpleExaltSheetReport(resources, characterGenerics, pageSizePreference),

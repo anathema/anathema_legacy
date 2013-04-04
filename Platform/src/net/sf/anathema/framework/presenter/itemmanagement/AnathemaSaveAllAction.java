@@ -11,7 +11,7 @@ import net.sf.anathema.framework.repository.access.IRepositoryWriteAccess;
 import net.sf.anathema.lib.control.IChangeListener;
 import net.sf.anathema.lib.gui.action.SmartAction;
 import net.sf.anathema.lib.message.Message;
-import net.sf.anathema.lib.resources.IResources;
+import net.sf.anathema.lib.resources.Resources;
 
 import javax.swing.Action;
 import javax.swing.KeyStroke;
@@ -66,16 +66,16 @@ public class AnathemaSaveAllAction extends SmartAction {
   }
 
   private IApplicationModel model;
-  private IResources resources;
+  private Resources resources;
 
-  public static Action createToolAction(IApplicationModel model, IResources resources) {
+  public static Action createToolAction(IApplicationModel model, Resources resources) {
     SmartAction action = new AnathemaSaveAllAction(model, resources);
     action.setToolTipText(resources.getString("AnathemaPersistence.SaveAllAction.Tooltip")); //$NON-NLS-1$
     action.setIcon(new PlatformUI().getSaveAllTaskBarIcon());
     return action;
   }
 
-  private AnathemaSaveAllAction(IApplicationModel model, IResources resources) {
+  private AnathemaSaveAllAction(IApplicationModel model, Resources resources) {
     this.model = model;
     SaveAllEnabledListener listener = new SaveAllEnabledListener();
     setAcceleratorKey(KeyStroke.getKeyStroke(KeyEvent.VK_S, InputEvent.SHIFT_MASK | Toolkit.getDefaultToolkit().getMenuShortcutKeyMask()));

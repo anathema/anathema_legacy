@@ -13,13 +13,13 @@ import net.sf.anathema.character.reporting.pdf.rendering.general.table.AbstractT
 import net.sf.anathema.character.reporting.pdf.rendering.graphics.SheetGraphics;
 import net.sf.anathema.character.reporting.pdf.rendering.graphics.TableCell;
 import net.sf.anathema.character.reporting.pdf.rendering.graphics.TableList;
-import net.sf.anathema.lib.resources.IResources;
+import net.sf.anathema.lib.resources.Resources;
 
 public class FrequencyTableEncoder extends AbstractTableEncoder<ReportSession> {
 
-  private final IResources resources;
+  private final Resources resources;
 
-  public FrequencyTableEncoder(IResources resources) {
+  public FrequencyTableEncoder(Resources resources) {
     this.resources = resources;
   }
 

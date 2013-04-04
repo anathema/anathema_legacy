@@ -3,15 +3,15 @@ package net.sf.anathema.framework.presenter.action;
 import net.sf.anathema.framework.item.IItemType;
 import net.sf.anathema.framework.presenter.item.ItemTypeCreationViewPropertiesExtensionPoint;
 import net.sf.anathema.lib.gui.ui.ObjectUi;
-import net.sf.anathema.lib.resources.IResources;
+import net.sf.anathema.lib.resources.Resources;
 
 import javax.swing.Icon;
 
 public class ItemTypeUi implements ObjectUi<Object> {
   private final ItemTypeCreationViewPropertiesExtensionPoint extension;
-  private final IResources resources;
+  private final Resources resources;
 
-  public ItemTypeUi(IResources resources, ItemTypeCreationViewPropertiesExtensionPoint extension) {
+  public ItemTypeUi(Resources resources, ItemTypeCreationViewPropertiesExtensionPoint extension) {
     this.resources = resources;
     this.extension = extension;
   }

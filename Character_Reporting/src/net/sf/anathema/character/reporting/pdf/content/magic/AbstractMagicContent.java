@@ -10,15 +10,15 @@ import net.sf.anathema.character.reporting.pdf.content.stats.magic.MagicDuration
 import net.sf.anathema.character.reporting.pdf.content.stats.magic.MagicNameStatsGroup;
 import net.sf.anathema.character.reporting.pdf.content.stats.magic.MagicSourceStatsGroup;
 import net.sf.anathema.character.reporting.pdf.content.stats.magic.MagicTypeStatsGroup;
-import net.sf.anathema.lib.resources.IResources;
+import net.sf.anathema.lib.resources.Resources;
 
 import java.util.List;
 
 public abstract class AbstractMagicContent extends AbstractSubBoxContent {
 
-  private IResources resources;
+  private Resources resources;
 
-  public AbstractMagicContent(IResources resources) {
+  public AbstractMagicContent(Resources resources) {
     super(resources);
     this.resources = resources;
   }

@@ -1,14 +1,14 @@
 package net.sf.anathema.character.reporting.pdf.content.essence.pools;
 
 import net.sf.anathema.character.generic.character.IGenericCharacter;
-import net.sf.anathema.lib.resources.IResources;
+import net.sf.anathema.lib.resources.Resources;
 
 public class OverdrivePoolRow extends AbstractPoolRow {
 
-  private IResources resources;
+  private Resources resources;
   private IGenericCharacter character;
 
-  public OverdrivePoolRow(IResources resources, IGenericCharacter character) {
+  public OverdrivePoolRow(Resources resources, IGenericCharacter character) {
     this.resources = resources;
     this.character = character;
   }

@@ -2,17 +2,17 @@ package net.sf.anathema.framework.view.perspective;
 
 import net.sf.anathema.lib.gui.action.SmartAction;
 import net.sf.anathema.lib.gui.icon.ImageProvider;
-import net.sf.anathema.lib.resources.IResources;
+import net.sf.anathema.lib.resources.Resources;
 
 import javax.swing.Icon;
 
 public class ActionPerspectiveToggle implements PerspectiveToggle {
 
   private SmartAction action;
-  private IResources resources;
+  private Resources resources;
   private Class<?> parent;
 
-  public ActionPerspectiveToggle(SmartAction action, IResources resources, Class<?> parent) {
+  public ActionPerspectiveToggle(SmartAction action, Resources resources, Class<?> parent) {
     this.action = action;
     this.resources = resources;
     this.parent = parent;

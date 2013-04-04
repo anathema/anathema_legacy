@@ -5,16 +5,16 @@ import net.sf.anathema.character.generic.framework.resources.CharacterUI;
 import net.sf.anathema.character.generic.framework.xml.presentation.GenericPresentationTemplate;
 import net.sf.anathema.character.generic.template.ITemplateType;
 import net.sf.anathema.character.perspective.model.model.CharacterIdentifier;
-import net.sf.anathema.lib.resources.IStringResourceHandler;
+import net.sf.anathema.lib.resources.Resources;
 import net.sf.anathema.lib.util.Identified;
 
 import static net.sf.anathema.character.generic.caste.ICasteType.NULL_CASTE_TYPE;
 import static net.sf.anathema.character.generic.impl.persistence.SecondEdition.SECOND_EDITION;
 
 public class ToCharacterButtonDto implements Function<DescriptiveFeatures, CharacterButtonDto> {
-  private final IStringResourceHandler resources;
+  private final Resources resources;
 
-  public ToCharacterButtonDto(IStringResourceHandler resources) {
+  public ToCharacterButtonDto(Resources resources) {
     this.resources = resources;
   }
 

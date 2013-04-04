@@ -9,7 +9,7 @@ import net.sf.anathema.framework.presenter.resources.BasicUi;
 import net.sf.anathema.lib.control.IIntValueChangedListener;
 import net.sf.anathema.lib.control.ObjectValueListener;
 import net.sf.anathema.lib.gui.Presenter;
-import net.sf.anathema.lib.resources.IResources;
+import net.sf.anathema.lib.resources.Resources;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -20,10 +20,10 @@ public class HeartsBloodPresenter implements Presenter {
 
   private final IHeartsBloodModel model;
   private final HeartsBloodView view;
-  private final IResources resources;
+  private final Resources resources;
   private final Map<IAnimalForm, IRemovableEntryView> viewsByForm = new HashMap<>();
 
-  public HeartsBloodPresenter(IHeartsBloodModel model, HeartsBloodView view, IResources resources) {
+  public HeartsBloodPresenter(IHeartsBloodModel model, HeartsBloodView view, Resources resources) {
     this.model = model;
     this.view = view;
     this.resources = resources;

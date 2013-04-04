@@ -2,12 +2,12 @@ package net.sf.anathema.character.equipment.character.model;
 
 import net.sf.anathema.character.generic.equipment.weapon.IArmourStats;
 import net.sf.anathema.character.generic.equipment.weapon.IWeaponStats;
-import net.sf.anathema.lib.resources.IResources;
+import net.sf.anathema.lib.resources.Resources;
 
 public interface IEquipmentPrintModel {
   IArmourStats[] getPrintArmours();
 
-  IArmourStats getEffectivePrintArmour(IResources resources, int lineCount);
+  IArmourStats getEffectivePrintArmour(Resources resources, int lineCount);
 
-  IWeaponStats[] getPrintWeapons(IResources resources);
+  IWeaponStats[] getPrintWeapons(Resources resources);
 }

@@ -7,12 +7,12 @@ import net.sf.anathema.character.lunar.heartsblood.presenter.HeartsBloodPresente
 import net.sf.anathema.character.lunar.heartsblood.presenter.IHeartsBloodModel;
 import net.sf.anathema.character.lunar.heartsblood.view.HeartsBloodView;
 import net.sf.anathema.lib.gui.IView;
-import net.sf.anathema.lib.resources.IResources;
+import net.sf.anathema.lib.resources.Resources;
 
 public class HeartsBloodViewFactory implements IAdditionalViewFactory {
 
   @Override
-  public IView createView(IAdditionalModel model, IResources resources, ICharacterType type) {
+  public IView createView(IAdditionalModel model, Resources resources, ICharacterType type) {
     HeartsBloodView view = new HeartsBloodView();
     new HeartsBloodPresenter((IHeartsBloodModel) model, view, resources).initPresentation();
     return view;

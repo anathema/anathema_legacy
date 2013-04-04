@@ -5,14 +5,14 @@ import com.itextpdf.text.pdf.PdfPTable;
 import net.sf.anathema.character.equipment.character.EquipmentObjectPresenter;
 import net.sf.anathema.character.generic.equipment.weapon.IEquipmentStats;
 import net.sf.anathema.character.reporting.pdf.content.stats.AbstractNameStatsGroup;
-import net.sf.anathema.lib.resources.IResources;
+import net.sf.anathema.lib.resources.Resources;
 
 public final class EquipmentNameStatsGroup<T extends IEquipmentStats> extends AbstractNameStatsGroup<T> implements
         IEquipmentStatsGroup<T> {
 
-  private final IResources resources;
+  private final Resources resources;
 
-  public EquipmentNameStatsGroup(IResources resources) {
+  public EquipmentNameStatsGroup(Resources resources) {
     super(resources);
     this.resources = resources;
   }

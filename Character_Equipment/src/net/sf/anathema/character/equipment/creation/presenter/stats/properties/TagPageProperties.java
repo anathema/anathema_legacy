@@ -3,13 +3,13 @@ package net.sf.anathema.character.equipment.creation.presenter.stats.properties;
 import net.sf.anathema.character.equipment.creation.model.stats.IWeaponTag;
 import net.sf.anathema.lib.message.BasicMessage;
 import net.sf.anathema.lib.message.IBasicMessage;
-import net.sf.anathema.lib.resources.IResources;
+import net.sf.anathema.lib.resources.Resources;
 
 public class TagPageProperties {
 
-  private final IResources resources;
+  private final Resources resources;
 
-  public TagPageProperties(IResources resources) {
+  public TagPageProperties(Resources resources) {
     this.resources = resources;
   }
 

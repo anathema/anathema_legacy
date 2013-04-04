@@ -5,7 +5,7 @@ import net.sf.anathema.character.generic.framework.magic.stringbuilder.ICharmInf
 import net.sf.anathema.character.generic.magic.ICharm;
 import net.sf.anathema.character.generic.magic.IMagic;
 import net.sf.anathema.lib.gui.list.LegalityCheckListCellRenderer;
-import net.sf.anathema.lib.resources.IResources;
+import net.sf.anathema.lib.resources.Resources;
 
 import javax.swing.JComponent;
 import javax.swing.JList;
@@ -16,7 +16,7 @@ public abstract class LegalityCharmRenderer extends LegalityCheckListCellRendere
   private final ICharmInfoStringBuilder charmInfoStringProvider;
   private final MagicDisplayLabeler labeler;
 
-  public LegalityCharmRenderer(IResources resources, ICharmInfoStringBuilder charmInfoStringProvider) {
+  public LegalityCharmRenderer(Resources resources, ICharmInfoStringBuilder charmInfoStringProvider) {
     super(resources);
     this.charmInfoStringProvider = charmInfoStringProvider;
     this.labeler = new MagicDisplayLabeler(resources);
@@ -31,7 +31,7 @@ public abstract class LegalityCharmRenderer extends LegalityCheckListCellRendere
   }
 
   @Override
-  protected String getPrintName(IResources resources, Object value) {
+  protected String getPrintName(Resources resources, Object value) {
     return labeler.getLabelForMagic((IMagic) value);
   }
 }

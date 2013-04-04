@@ -10,7 +10,7 @@ import net.sf.anathema.character.library.trait.subtrait.ISubTrait;
 import net.sf.anathema.character.library.trait.view.SimpleTraitView;
 import net.sf.anathema.framework.presenter.resources.BasicUi;
 import net.sf.anathema.lib.gui.Presenter;
-import net.sf.anathema.lib.resources.IResources;
+import net.sf.anathema.lib.resources.Resources;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -19,9 +19,9 @@ public class CraftPresenter extends AbstractStringEntryTraitPresenter<ISubTrait>
 
   private final ICraftModel model;
   private final IRemovableStringEntriesView<SimpleTraitView> view;
-  private final IResources resources;
+  private final Resources resources;
 
-  public CraftPresenter(ICraftModel model, IRemovableStringEntriesView<SimpleTraitView> view, IResources resources) {
+  public CraftPresenter(ICraftModel model, IRemovableStringEntriesView<SimpleTraitView> view, Resources resources) {
     super(model, view);
     this.model = model;
     this.view = view;

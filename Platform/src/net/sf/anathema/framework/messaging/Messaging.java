@@ -4,7 +4,7 @@ import net.sf.anathema.lib.control.IChangeListener;
 import net.sf.anathema.lib.message.BasicMessage;
 import net.sf.anathema.lib.message.IBasicMessage;
 import net.sf.anathema.lib.message.MessageType;
-import net.sf.anathema.lib.resources.IResources;
+import net.sf.anathema.lib.resources.Resources;
 import org.jmock.example.announcer.Announcer;
 
 import java.util.ArrayList;
@@ -12,11 +12,11 @@ import java.util.List;
 
 public class Messaging implements IMessaging, IMessageContainer {
 
-  private final IResources resources;
+  private final Resources resources;
   private final List<IBasicMessage> messages = new ArrayList<>();
   private final Announcer<IChangeListener> changeControl = Announcer.to(IChangeListener.class);
 
-  public Messaging(IResources resources) {
+  public Messaging(Resources resources) {
     this.resources = resources;
   }
 

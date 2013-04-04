@@ -5,16 +5,16 @@ import net.sf.anathema.character.model.charm.special.IMultipleEffectCharmConfigu
 import net.sf.anathema.lib.control.IBooleanValueChangedListener;
 import net.sf.anathema.lib.control.IChangeListener;
 import net.sf.anathema.lib.gui.Presenter;
-import net.sf.anathema.lib.resources.IResources;
+import net.sf.anathema.lib.resources.Resources;
 import net.sf.anathema.lib.workflow.booleanvalue.IBooleanValueView;
 
 public class MultipleEffectCharmPresenter implements Presenter {
 
-  private final IResources resources;
+  private final Resources resources;
   private final ToggleButtonSpecialNodeView view;
   private final IMultipleEffectCharmConfiguration model;
 
-  public MultipleEffectCharmPresenter(IResources resources, ToggleButtonSpecialNodeView subeffectView, IMultipleEffectCharmConfiguration model) {
+  public MultipleEffectCharmPresenter(Resources resources, ToggleButtonSpecialNodeView subeffectView, IMultipleEffectCharmConfiguration model) {
     this.resources = resources;
     this.view = subeffectView;
     this.model = model;

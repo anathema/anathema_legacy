@@ -1,11 +1,11 @@
 package net.sf.anathema.character.equipment.creation.presenter.stats.properties;
 
-import net.sf.anathema.lib.resources.IResources;
+import net.sf.anathema.lib.resources.Resources;
 
 public class AbstractProperties {
-  private final IResources resources;
+  private final Resources resources;
 
-  public AbstractProperties(IResources resources) {
+  public AbstractProperties(Resources resources) {
     this.resources = resources;
   }
 
@@ -17,7 +17,7 @@ public class AbstractProperties {
     return getString(key) + ":"; //$NON-NLS-1$
   }
 
-  protected final IResources getResources() {
+  protected final Resources getResources() {
     return resources;
   }
 }

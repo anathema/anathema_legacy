@@ -5,7 +5,7 @@ import net.miginfocom.layout.LC;
 import net.miginfocom.swing.MigLayout;
 import net.sf.anathema.character.generic.magic.ICharm;
 import net.sf.anathema.charmtree.filters.ICharmFilter;
-import net.sf.anathema.lib.resources.IResources;
+import net.sf.anathema.lib.resources.Resources;
 
 import javax.swing.JComponent;
 import javax.swing.JPanel;
@@ -31,7 +31,7 @@ public class CharmFilterSet {
     }
   }
 
-  public JComponent createFilterPanel(IResources resources) {
+  public JComponent createFilterPanel(Resources resources) {
     JPanel panel = new JPanel(new MigLayout(new LC().wrapAfter(1).fill()));
     for (ICharmFilter filter : filterSet) {
       panel.add(filter.getFilterPreferencePanel(resources));

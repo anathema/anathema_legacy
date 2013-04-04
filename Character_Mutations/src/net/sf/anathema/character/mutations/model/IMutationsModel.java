@@ -4,10 +4,10 @@ import net.sf.anathema.character.generic.framework.additionaltemplate.listening.
 import net.sf.anathema.character.library.overview.IOverviewCategory;
 import net.sf.anathema.character.library.quality.presenter.IQualityModel;
 import net.sf.anathema.lib.control.IChangeListener;
-import net.sf.anathema.lib.resources.IResources;
+import net.sf.anathema.lib.resources.Resources;
 
 public interface IMutationsModel extends IQualityModel<IMutation> {
-  void designOverview(IOverviewCategory category, IResources resources);
+  void designOverview(IOverviewCategory category, Resources resources);
 
   void updateOverview();
 

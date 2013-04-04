@@ -20,7 +20,7 @@ import net.sf.anathema.character.sidereal.reporting.rendering.astrology.SecondEd
 import net.sf.anathema.character.sidereal.reporting.rendering.greatcurse.ParadoxEncoder;
 import net.sf.anathema.character.sidereal.reporting.rendering.resplendentdestiny.ResplendentDestinyEncoder;
 import net.sf.anathema.framework.reporting.pdf.PageSize;
-import net.sf.anathema.lib.resources.IResources;
+import net.sf.anathema.lib.resources.Resources;
 
 import static net.sf.anathema.character.reporting.pdf.rendering.page.IVoidStateFormatConstants.PADDING;
 import static net.sf.anathema.character.sidereal.SiderealCharacterModule.dreamsType;
@@ -30,12 +30,12 @@ public class SiderealDetailsPageEncoder implements PageEncoder {
   private final static float COLLEGE_HEIGHT = 312;
   private final static float DESTINY_HEIGHT = (COLLEGE_HEIGHT - PADDING) / 2;
   private final static float PARADOX_HEIGHT = 45;
-  private final IResources resources;
+  private final Resources resources;
   private final PdfBoxEncoder boxEncoder;
   private final PageConfiguration configuration;
   private final int fontSize;
 
-  public SiderealDetailsPageEncoder(IResources resources, PageSize pageSize) {
+  public SiderealDetailsPageEncoder(Resources resources, PageSize pageSize) {
     this.resources = resources;
     this.fontSize = IVoidStateFormatConstants.SMALLER_FONT_SIZE;
     this.configuration = PageConfiguration.ForPortrait(pageSize);

@@ -7,7 +7,7 @@ import net.sf.anathema.initialization.BootJob;
 import net.sf.anathema.initialization.IBootJob;
 import net.sf.anathema.initialization.reflections.Weight;
 import net.sf.anathema.lib.logging.Logger;
-import net.sf.anathema.lib.resources.IResources;
+import net.sf.anathema.lib.resources.Resources;
 
 import javax.swing.UIManager;
 
@@ -29,7 +29,7 @@ import javax.swing.UIManager;
 @Weight(weight = 30)
 public class LookAndFeelOverrideBootjob implements IBootJob {
   @Override
-  public void run(IResources resources, IApplicationModel model) {
+  public void run(Resources resources, IApplicationModel model) {
     if (userRequestedLookAndFeelOverride()) {
       resetLookAndFeelPreference();
       if (currentLookAndFeelIsNotSystemLookAndFeel()) {

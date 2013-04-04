@@ -4,7 +4,7 @@ import net.sf.anathema.framework.perspective.PerspectiveToolBar;
 import net.sf.anathema.interaction.Interaction;
 import net.sf.anathema.interaction.ToggleInteraction;
 import net.sf.anathema.lib.gui.IView;
-import net.sf.anathema.lib.resources.IResources;
+import net.sf.anathema.lib.resources.Resources;
 import net.sf.anathema.swing.character.perspective.interaction.ActionInteraction;
 import net.sf.anathema.swing.character.perspective.interaction.ToggleActionInteraction;
 
@@ -19,7 +19,7 @@ public class InteractionView implements IView {
   private final ActionInteraction controlledPrintInteraction;
   private final ToggleActionInteraction experiencedInteraction;
 
-  public InteractionView(IResources resources) {
+  public InteractionView(Resources resources) {
     this.newInteraction = new ActionInteraction(resources, this.getClass());
     this.saveInteraction = new ActionInteraction(resources, this.getClass());
     this.quickPrintInteraction = new ActionInteraction(resources, this.getClass());

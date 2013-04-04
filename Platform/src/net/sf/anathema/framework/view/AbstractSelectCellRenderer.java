@@ -1,6 +1,6 @@
 package net.sf.anathema.framework.view;
 
-import net.sf.anathema.lib.resources.IResources;
+import net.sf.anathema.lib.resources.Resources;
 
 import javax.swing.DefaultListCellRenderer;
 import javax.swing.JList;
@@ -8,9 +8,9 @@ import java.awt.Component;
 
 public abstract class AbstractSelectCellRenderer<T> extends DefaultListCellRenderer {
 
-  private final IResources resources;
+  private final Resources resources;
 
-  public AbstractSelectCellRenderer(IResources resources) {
+  public AbstractSelectCellRenderer(Resources resources) {
     this.resources = resources;
   }
 
@@ -39,7 +39,7 @@ public abstract class AbstractSelectCellRenderer<T> extends DefaultListCellRende
 
   protected abstract String getCustomizedDisplayValue(T value);
 
-  protected final IResources getResources() {
+  protected final Resources getResources() {
     return resources;
   }
 }

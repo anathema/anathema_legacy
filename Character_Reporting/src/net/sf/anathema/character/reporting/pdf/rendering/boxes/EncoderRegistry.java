@@ -7,7 +7,7 @@ import net.sf.anathema.initialization.InitializationException;
 import net.sf.anathema.initialization.Instantiater;
 import net.sf.anathema.lib.collection.MultiEntryMap;
 import net.sf.anathema.lib.logging.Logger;
-import net.sf.anathema.lib.resources.IResources;
+import net.sf.anathema.lib.resources.Resources;
 
 import java.util.Collection;
 
@@ -24,7 +24,7 @@ public class EncoderRegistry {
     return !(findFactory(session, id) instanceof NullEncoderFactory);
   }
 
-  public ContentEncoder createEncoder(IResources resource, ReportSession session, String... ids) {
+  public ContentEncoder createEncoder(Resources resource, ReportSession session, String... ids) {
     return findFactory(session, ids).create(resource, createBasicContent(session));
   }
 

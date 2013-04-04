@@ -9,7 +9,7 @@ import net.sf.anathema.character.reporting.pdf.content.combat.AbstractCombatStat
 import net.sf.anathema.character.reporting.pdf.content.combat.CombatAction;
 import net.sf.anathema.character.reporting.pdf.content.general.QualifiedText;
 import net.sf.anathema.character.reporting.pdf.rendering.boxes.StatsModifierFactory;
-import net.sf.anathema.lib.resources.IResources;
+import net.sf.anathema.lib.resources.Resources;
 
 import static net.sf.anathema.character.reporting.pdf.content.general.TextType.Comment;
 import static net.sf.anathema.character.reporting.pdf.content.general.TextType.Normal;
@@ -20,7 +20,7 @@ public class CombatStatsContent extends AbstractCombatStatsContent {
   private HighestSpecialty awarenessSpecialty;
   private ICharacterStatsModifiers equipment;
 
-  protected CombatStatsContent(IGenericCharacter character, IResources resources) {
+  protected CombatStatsContent(IGenericCharacter character, Resources resources) {
     super(resources, character);
     dodgeSpecialty = new HighestSpecialty(character, AbilityType.Dodge);
     awarenessSpecialty = new HighestSpecialty(character, AbilityType.Awareness);

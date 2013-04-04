@@ -18,29 +18,29 @@ import net.sf.anathema.character.reporting.pdf.content.stats.anima.IAnimaTableSt
 import net.sf.anathema.character.reporting.pdf.rendering.extent.Bounds;
 import net.sf.anathema.character.reporting.pdf.rendering.general.table.AbstractTableEncoder;
 import net.sf.anathema.character.reporting.pdf.rendering.graphics.SheetGraphics;
-import net.sf.anathema.lib.resources.IResources;
+import net.sf.anathema.lib.resources.Resources;
 
 public class AnimaTableEncoder extends AbstractTableEncoder<ReportSession> {
 
   public final static float TABLE_HEIGHT = 58f;
 
-  private final IResources resources;
+  private final Resources resources;
   private final float fontSize;
   private final IAnimaTableRangeProvider rangeProvider;
   private final IAnimaTableStealthProvider stealthProvider;
 
-  public AnimaTableEncoder(IResources resources, float fontSize) {
+  public AnimaTableEncoder(Resources resources, float fontSize) {
     this(resources, fontSize, new AnimaTableRangeProvider());
   }
 
-  public AnimaTableEncoder(IResources resources, float fontSize, IAnimaTableRangeProvider rangeProvider) {
+  public AnimaTableEncoder(Resources resources, float fontSize, IAnimaTableRangeProvider rangeProvider) {
     this.resources = resources;
     this.fontSize = fontSize;
     this.rangeProvider = rangeProvider;
     this.stealthProvider = new AnimaTableStealthProvider(resources);
   }
 
-  public AnimaTableEncoder(IResources resources, float fontSize, IAnimaTableStealthProvider stealthProvider) {
+  public AnimaTableEncoder(Resources resources, float fontSize, IAnimaTableStealthProvider stealthProvider) {
     this.resources = resources;
     this.fontSize = fontSize;
     this.rangeProvider = new AnimaTableRangeProvider();

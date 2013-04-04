@@ -3,7 +3,7 @@ package net.sf.anathema.framework.reporting;
 import net.sf.anathema.framework.repository.IItem;
 import net.sf.anathema.lib.gui.file.FileChoosingUtilities;
 import net.sf.anathema.lib.lang.StringUtilities;
-import net.sf.anathema.lib.resources.IResources;
+import net.sf.anathema.lib.resources.Resources;
 
 import javax.swing.JComponent;
 import javax.swing.JOptionPane;
@@ -14,10 +14,10 @@ import java.nio.file.Path;
 public class ControlledFileChooser implements FileChooser {
 
   private IItem item;
-  private IResources resources;
+  private Resources resources;
   private JComponent parent;
 
-  public ControlledFileChooser(IItem item, IResources resources, JComponent parent) {
+  public ControlledFileChooser(IItem item, Resources resources, JComponent parent) {
     this.item = item;
     this.resources = resources;
     this.parent = parent;

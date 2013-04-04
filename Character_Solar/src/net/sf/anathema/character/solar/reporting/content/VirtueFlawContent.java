@@ -7,13 +7,13 @@ import net.sf.anathema.character.library.virtueflaw.presenter.IDescriptiveVirtue
 import net.sf.anathema.character.reporting.pdf.content.AbstractSubBoxContent;
 import net.sf.anathema.character.solar.virtueflaw.SolarVirtueFlawTemplate;
 import net.sf.anathema.lib.lang.StringUtilities;
-import net.sf.anathema.lib.resources.IResources;
+import net.sf.anathema.lib.resources.Resources;
 
 public class VirtueFlawContent extends AbstractSubBoxContent {
 
   private IGenericCharacter character;
 
-  protected VirtueFlawContent(IResources resources, IGenericCharacter character) {
+  protected VirtueFlawContent(Resources resources, IGenericCharacter character) {
     super(resources);
     this.character = character;
   }

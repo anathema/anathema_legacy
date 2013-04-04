@@ -1,7 +1,7 @@
 package net.sf.anathema.character.lunar.reporting.content.stats.knacks;
 
 import net.sf.anathema.character.generic.util.IStats;
-import net.sf.anathema.lib.resources.IResources;
+import net.sf.anathema.lib.resources.Resources;
 import net.sf.anathema.lib.util.Identified;
 
 public interface IKnackStats extends IStats {
@@ -9,11 +9,11 @@ public interface IKnackStats extends IStats {
   @Override
   Identified getName();
 
-  String getGroupName(IResources resources);
+  String getGroupName(Resources resources);
 
-  String getSourceString(IResources resources);
+  String getSourceString(Resources resources);
   
-  String[] getDetailString(IResources resources);
+  String[] getDetailString(Resources resources);
 
-  String getNameString(IResources resources);
+  String getNameString(Resources resources);
 }

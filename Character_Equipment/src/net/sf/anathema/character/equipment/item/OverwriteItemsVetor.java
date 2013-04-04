@@ -9,16 +9,16 @@ import net.sf.anathema.lib.gui.dialog.userdialog.buttons.DialogButtonConfigurati
 import net.sf.anathema.lib.message.IMessage;
 import net.sf.anathema.lib.message.Message;
 import net.sf.anathema.lib.message.MessageType;
-import net.sf.anathema.lib.resources.IResources;
+import net.sf.anathema.lib.resources.Resources;
 
 import java.awt.Component;
 
 public class OverwriteItemsVetor {
 
   private final Component parentComponent;
-  private final IResources resources;
+  private final Resources resources;
 
-  public OverwriteItemsVetor(Component parentComponent, IResources resources) {
+  public OverwriteItemsVetor(Component parentComponent, Resources resources) {
     this.parentComponent = parentComponent;
     this.resources = resources;
   }

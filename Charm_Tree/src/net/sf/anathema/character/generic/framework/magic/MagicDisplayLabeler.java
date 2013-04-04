@@ -2,15 +2,14 @@ package net.sf.anathema.character.generic.framework.magic;
 
 import net.sf.anathema.character.generic.magic.ICharm;
 import net.sf.anathema.character.generic.magic.IMagic;
-import net.sf.anathema.character.generic.template.magic.FavoringTraitType;
 import net.sf.anathema.character.generic.traits.ITraitType;
-import net.sf.anathema.lib.resources.IResources;
+import net.sf.anathema.lib.resources.Resources;
 import net.sf.anathema.lib.util.Identified;
 
 public class MagicDisplayLabeler {
-	private IResources resources;
+	private Resources resources;
 	
-	public MagicDisplayLabeler(IResources resources) {
+	public MagicDisplayLabeler(Resources resources) {
 		this.resources = resources;
 	}
 	

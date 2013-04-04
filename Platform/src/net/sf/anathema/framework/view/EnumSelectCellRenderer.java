@@ -1,13 +1,13 @@
 package net.sf.anathema.framework.view;
 
-import net.sf.anathema.lib.resources.IResources;
+import net.sf.anathema.lib.resources.Resources;
 
 public class EnumSelectCellRenderer extends AbstractSelectCellRenderer<Enum> {
 
   private final String resourceKeyPrefix;
   private final String resourceKeySuffix;
 
-  public EnumSelectCellRenderer(String resourceKeyPrefix, IResources resources) {
+  public EnumSelectCellRenderer(String resourceKeyPrefix, Resources resources) {
     super(resources);
     this.resourceKeyPrefix = resourceKeyPrefix;
     this.resourceKeySuffix = null;

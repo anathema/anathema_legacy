@@ -12,7 +12,7 @@ import net.sf.anathema.framework.view.MenuBar;
 import net.sf.anathema.framework.view.menu.IMenu;
 import net.sf.anathema.lib.gui.action.SmartAction;
 import net.sf.anathema.lib.registry.IRegistry;
-import net.sf.anathema.lib.resources.IResources;
+import net.sf.anathema.lib.resources.Resources;
 
 import javax.swing.Action;
 import javax.swing.KeyStroke;
@@ -21,7 +21,7 @@ import java.awt.event.KeyEvent;
 
 public class AnathemaCoreMenu {
 
-  public void add(IResources resources, IApplicationModel model, MenuBar menubar) {
+  public void add(Resources resources, IApplicationModel model, MenuBar menubar) {
     IMenu mainMenu = menubar.getMainMenu();
     mainMenu.addMenuItem(createExportImportAction(resources, model));
     mainMenu.addSeparator();
@@ -33,7 +33,7 @@ public class AnathemaCoreMenu {
     helpMenu.addMenuItem(AnathemaAboutAction.createMenuAction(resources));
   }
 
-  private static Action createExportImportAction(IResources resources, IApplicationModel model) {
+  private static Action createExportImportAction(Resources resources, IApplicationModel model) {
     Action action = RepositoryViewAction.createMenuAction(resources, model);
     if (action instanceof SmartAction) {
       SmartAction smartAction = (SmartAction) action;

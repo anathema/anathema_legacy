@@ -11,7 +11,7 @@ import net.sf.anathema.framework.view.perspective.Perspective;
 import net.sf.anathema.framework.view.perspective.PerspectiveAutoCollector;
 import net.sf.anathema.framework.view.perspective.PerspectiveToggle;
 import net.sf.anathema.initialization.reflections.Weight;
-import net.sf.anathema.lib.resources.IResources;
+import net.sf.anathema.lib.resources.Resources;
 
 @PerspectiveAutoCollector
 @Weight(weight = 6000)
@@ -23,7 +23,7 @@ public class CharmCascadePerspective implements Perspective {
   }
 
   @Override
-  public void initContent(Container container, IApplicationModel applicationModel, IResources resources) {
+  public void initContent(Container container, IApplicationModel applicationModel, Resources resources) {
     CharmCascadeModuleView view = new CharmCascadeModuleView();
     ICharacterGenerics characterGenerics = CharacterGenericsExtractor.getGenerics(applicationModel);
     MagicDescriptionProvider magicDescriptionProvider = getCharmDescriptionProvider(applicationModel, resources);
@@ -31,7 +31,7 @@ public class CharmCascadePerspective implements Perspective {
     container.setSwingContent(view.getComponent());
   }
 
-  private MagicDescriptionProvider getCharmDescriptionProvider(IApplicationModel model, IResources resources) {
+  private MagicDescriptionProvider getCharmDescriptionProvider(IApplicationModel model, Resources resources) {
     return CharmDescriptionProviderExtractor.CreateFor(model, resources);
   }
 }

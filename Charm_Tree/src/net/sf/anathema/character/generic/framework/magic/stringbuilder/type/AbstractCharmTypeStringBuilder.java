@@ -11,16 +11,16 @@ import net.sf.anathema.character.generic.magic.charms.type.IReflexiveSpecialsMod
 import net.sf.anathema.character.generic.magic.charms.type.ISimpleSpecialsModel;
 import net.sf.anathema.character.generic.magic.charms.type.TurnType;
 import net.sf.anathema.lib.gui.TooltipBuilder;
-import net.sf.anathema.lib.resources.IResources;
+import net.sf.anathema.lib.resources.Resources;
 
 import java.text.MessageFormat;
 
 public abstract class AbstractCharmTypeStringBuilder implements ICharmTypeStringBuilder, IMagicTooltipStringBuilder {
 
   private final boolean displayDefaultValues;
-  private final IResources resources;
+  private final Resources resources;
 
-  public AbstractCharmTypeStringBuilder(IResources resources, boolean displayDefaultValues) {
+  public AbstractCharmTypeStringBuilder(Resources resources, boolean displayDefaultValues) {
     this.resources = resources;
     this.displayDefaultValues = displayDefaultValues;
   }
@@ -139,7 +139,7 @@ public abstract class AbstractCharmTypeStringBuilder implements ICharmTypeString
 
   protected abstract String getReflexiveSingleStepPattern();
 
-  protected IResources getResources() {
+  protected Resources getResources() {
     return resources;
   }
 

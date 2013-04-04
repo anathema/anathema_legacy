@@ -10,14 +10,14 @@ import net.sf.anathema.character.reporting.pdf.rendering.general.box.ContentEnco
 import net.sf.anathema.character.reporting.pdf.rendering.general.box.PdfBoxEncoder;
 import net.sf.anathema.character.reporting.pdf.rendering.graphics.GraphicsTemplate;
 import net.sf.anathema.character.reporting.pdf.rendering.graphics.SheetGraphics;
-import net.sf.anathema.lib.resources.IResources;
+import net.sf.anathema.lib.resources.Resources;
 
 public class RegisteredEncoderList {
-  private final IResources resources;
+  private final Resources resources;
   private final EncoderRegistry encoderRegistry;
   private final PdfBoxEncoder boxEncoder = new PdfBoxEncoder();
 
-  public RegisteredEncoderList(IResources resources, EncoderRegistry encoderRegistry) {
+  public RegisteredEncoderList(Resources resources, EncoderRegistry encoderRegistry) {
     this.resources = resources;
     this.encoderRegistry = encoderRegistry;
   }

@@ -7,7 +7,7 @@ import net.sf.anathema.character.reporting.pdf.rendering.boxes.AbstractEncoderFa
 import net.sf.anathema.character.reporting.pdf.rendering.boxes.RegisteredEncoderFactory;
 import net.sf.anathema.character.reporting.pdf.rendering.general.DotBoxContentEncoder;
 import net.sf.anathema.character.reporting.pdf.rendering.general.box.ContentEncoder;
-import net.sf.anathema.lib.resources.IResources;
+import net.sf.anathema.lib.resources.Resources;
 
 @RegisteredEncoderFactory
 public class WillpowerDotEncoderFactory extends AbstractEncoderFactory {
@@ -17,7 +17,7 @@ public class WillpowerDotEncoderFactory extends AbstractEncoderFactory {
   }
 
   @Override
-  public ContentEncoder create(IResources resources, BasicContent content) {
+  public ContentEncoder create(Resources resources, BasicContent content) {
     return new DotBoxContentEncoder(OtherTraitType.Willpower, 10, resources, "Willpower");
   }
 

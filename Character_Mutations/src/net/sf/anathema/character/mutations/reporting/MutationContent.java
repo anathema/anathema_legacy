@@ -8,7 +8,7 @@ import net.sf.anathema.character.mutations.model.MutationsAdditionalModel;
 import net.sf.anathema.character.mutations.template.MutationsTemplate;
 import net.sf.anathema.character.reporting.pdf.content.AbstractSubBoxContent;
 import net.sf.anathema.character.reporting.pdf.content.ListSubBoxContent;
-import net.sf.anathema.lib.resources.IResources;
+import net.sf.anathema.lib.resources.Resources;
 import net.sf.anathema.lib.util.Identified;
 
 import java.util.ArrayList;
@@ -18,7 +18,7 @@ public class MutationContent extends AbstractSubBoxContent implements ListSubBox
 
   private IGenericCharacter character;
 
-  public MutationContent(IResources resources, IGenericCharacter character) {
+  public MutationContent(Resources resources, IGenericCharacter character) {
     super(resources);
     this.character = character;
   }

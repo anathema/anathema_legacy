@@ -4,13 +4,13 @@ import net.sf.anathema.character.generic.character.IGenericCharacter;
 import net.sf.anathema.character.reporting.pdf.content.RegisteredReportContent;
 import net.sf.anathema.character.reporting.pdf.content.ReportContentFactory;
 import net.sf.anathema.character.reporting.pdf.content.ReportSession;
-import net.sf.anathema.lib.resources.IResources;
+import net.sf.anathema.lib.resources.Resources;
 
 @RegisteredReportContent(produces = GhostFetterContent.class)
 public class GhostFetterContentFactory implements ReportContentFactory<GhostFetterContent> {
-  private IResources resources;
+  private Resources resources;
 
-  public GhostFetterContentFactory(IResources resources) {
+  public GhostFetterContentFactory(Resources resources) {
     this.resources = resources;
   }
 

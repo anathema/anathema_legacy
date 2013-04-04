@@ -5,14 +5,14 @@ import net.sf.anathema.framework.repository.IObjectSelectionProperties;
 import net.sf.anathema.lib.message.BasicMessage;
 import net.sf.anathema.lib.message.IBasicMessage;
 import net.sf.anathema.lib.message.MessageType;
-import net.sf.anathema.lib.resources.IResources;
+import net.sf.anathema.lib.resources.Resources;
 
 public final class DefaultObjectSelectionProperties extends AnathemaDialogProperties implements
     IObjectSelectionProperties {
   final String loadMessageKey;
   final String titleKey;
 
-  public DefaultObjectSelectionProperties(IResources resources, String loadMessageKey, String titleKey) {
+  public DefaultObjectSelectionProperties(Resources resources, String loadMessageKey, String titleKey) {
     super(resources);
     this.loadMessageKey = loadMessageKey;
     this.titleKey = titleKey;

@@ -8,7 +8,7 @@ import net.sf.anathema.initialization.BootJob;
 import net.sf.anathema.initialization.IBootJob;
 import net.sf.anathema.initialization.reflections.ResourceLoader;
 import net.sf.anathema.initialization.reflections.Weight;
-import net.sf.anathema.lib.resources.IResources;
+import net.sf.anathema.lib.resources.Resources;
 import net.sf.anathema.lib.resources.ResourceFile;
 
 import java.io.IOException;
@@ -22,7 +22,7 @@ public class CreateDefaultEquipmentDatabaseBootJob implements IBootJob {
   private final static String EQUIPMENT_REGEX = "^.*\\.item$";
 
   @Override
-  public void run(IResources resources, IApplicationModel anathemaModel) {
+  public void run(Resources resources, IApplicationModel anathemaModel) {
     GsonEquipmentDatabase database = GsonEquipmentDatabase.CreateFrom(anathemaModel);
     boolean thereIsNoDataYet = database.isEmpty();
     if (thereIsNoDataYet) {

@@ -7,13 +7,13 @@ import net.sf.anathema.interaction.Command;
 import net.sf.anathema.interaction.Tool;
 import net.sf.anathema.lib.control.ObjectValueListener;
 import net.sf.anathema.lib.data.ICondition;
-import net.sf.anathema.lib.resources.IResources;
+import net.sf.anathema.lib.resources.Resources;
 
 public class CopyEquipmentTemplateAction {
   private final IEquipmentDatabaseManagement model;
-  private final IResources resources;
+  private final Resources resources;
 
-  public CopyEquipmentTemplateAction(IResources resources, IEquipmentDatabaseManagement model) {
+  public CopyEquipmentTemplateAction(Resources resources, IEquipmentDatabaseManagement model) {
     this.resources = resources;
     this.model = model;
   }

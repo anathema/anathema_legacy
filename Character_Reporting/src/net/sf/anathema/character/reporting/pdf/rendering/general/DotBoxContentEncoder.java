@@ -9,17 +9,17 @@ import net.sf.anathema.character.reporting.pdf.rendering.general.box.ContentEnco
 import net.sf.anathema.character.reporting.pdf.rendering.general.traits.PdfTraitEncoder;
 import net.sf.anathema.character.reporting.pdf.rendering.graphics.SheetGraphics;
 import net.sf.anathema.character.reporting.pdf.rendering.page.IVoidStateFormatConstants;
-import net.sf.anathema.lib.resources.IResources;
+import net.sf.anathema.lib.resources.Resources;
 
 public class DotBoxContentEncoder implements ContentEncoder {
 
   private PdfTraitEncoder traitEncoder;
   private OtherTraitType trait;
-  private IResources resources;
+  private Resources resources;
   private final int traitMax;
   private String traitHeaderKey;
 
-  public DotBoxContentEncoder(OtherTraitType trait, int traitMax, IResources resources, String traitHeaderKey) {
+  public DotBoxContentEncoder(OtherTraitType trait, int traitMax, Resources resources, String traitHeaderKey) {
     this.traitMax = traitMax;
     this.trait = trait;
     this.resources = resources;

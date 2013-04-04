@@ -8,7 +8,7 @@ import net.sf.anathema.initialization.IBootJob;
 import net.sf.anathema.initialization.reflections.Weight;
 import net.sf.anathema.lib.message.Message;
 import net.sf.anathema.lib.message.MessageType;
-import net.sf.anathema.lib.resources.IResources;
+import net.sf.anathema.lib.resources.Resources;
 
 import java.nio.file.Files;
 import java.nio.file.Path;
@@ -21,7 +21,7 @@ public class DatabaseConversionBootJob implements IBootJob {
   public static final String OLD_DATABASE_FOLDER = "equipment"; //$NON-NLS-1$
 
   @Override
-  public void run(IResources resources, IApplicationModel anathemaModel) {
+  public void run(Resources resources, IApplicationModel anathemaModel) {
     ProxySplashscreen.getInstance().displayStatusMessage(resources.getString("Equipment.Bootjob.Splashmessage")); //$NON-NLS-1$
     Path oldFile = anathemaModel.getRepository().getDataBaseDirectory(OLD_DATABASE_FOLDER).resolve(OLD_DATABASE_FILE);
     if (!Files.exists(oldFile)) {

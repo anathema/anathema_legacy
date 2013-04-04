@@ -6,14 +6,14 @@ import net.sf.anathema.framework.view.SwingApplicationFrame;
 import net.sf.anathema.interaction.Command;
 import net.sf.anathema.interaction.Tool;
 import net.sf.anathema.lib.data.ICondition;
-import net.sf.anathema.lib.resources.IResources;
+import net.sf.anathema.lib.resources.Resources;
 
 public class NewEquipmentTemplateAction {
 
-  private final IResources resources;
+  private final Resources resources;
   private final IEquipmentDatabaseManagement model;
 
-  public NewEquipmentTemplateAction(IResources resources, IEquipmentDatabaseManagement model) {
+  public NewEquipmentTemplateAction(Resources resources, IEquipmentDatabaseManagement model) {
     this.resources = resources;
     this.model = model;
   }

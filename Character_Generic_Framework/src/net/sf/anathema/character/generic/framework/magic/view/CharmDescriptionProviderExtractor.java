@@ -7,13 +7,13 @@ import net.sf.anathema.character.generic.magic.description.MagicDescriptionProvi
 import net.sf.anathema.character.generic.magic.description.RegisteredMagicDescriptionProviderFactory;
 import net.sf.anathema.framework.IApplicationModel;
 import net.sf.anathema.initialization.Instantiater;
-import net.sf.anathema.lib.resources.IResources;
+import net.sf.anathema.lib.resources.Resources;
 
 import java.util.Collection;
 
 public class CharmDescriptionProviderExtractor {
 
-  public static MagicDescriptionProvider CreateFor(IApplicationModel model, IResources resources) {
+  public static MagicDescriptionProvider CreateFor(IApplicationModel model, Resources resources) {
     AggregatedCharmDescriptionProvider provider = new AggregatedCharmDescriptionProvider(resources);
     Collection<MagicDescriptionProviderFactory> factories = findFactories(model);
     for (MagicDescriptionProviderFactory factory : factories) {

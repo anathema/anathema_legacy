@@ -1,7 +1,7 @@
 package net.sf.anathema.charmtree.filters;
 
 import net.sf.anathema.character.generic.magic.ICharm;
-import net.sf.anathema.lib.resources.IResources;
+import net.sf.anathema.lib.resources.Resources;
 import org.dom4j.Element;
 
 import javax.swing.JPanel;
@@ -19,5 +19,5 @@ public interface ICharmFilter {
 
   boolean load(Element node);
 
-  JPanel getFilterPreferencePanel(IResources resources);
+  JPanel getFilterPreferencePanel(Resources resources);
 }

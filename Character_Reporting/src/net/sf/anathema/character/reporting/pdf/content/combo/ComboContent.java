@@ -3,7 +3,7 @@ package net.sf.anathema.character.reporting.pdf.content.combo;
 import net.sf.anathema.character.generic.character.IGenericCharacter;
 import net.sf.anathema.character.generic.magic.IGenericCombo;
 import net.sf.anathema.character.reporting.pdf.content.AbstractSubBoxContent;
-import net.sf.anathema.lib.resources.IResources;
+import net.sf.anathema.lib.resources.Resources;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -15,7 +15,7 @@ public class ComboContent extends AbstractSubBoxContent {
 
   private IGenericCharacter character;
 
-  public ComboContent(IGenericCharacter character, IResources resources) {
+  public ComboContent(IGenericCharacter character, Resources resources) {
     super(resources);
     this.character = character;
   }

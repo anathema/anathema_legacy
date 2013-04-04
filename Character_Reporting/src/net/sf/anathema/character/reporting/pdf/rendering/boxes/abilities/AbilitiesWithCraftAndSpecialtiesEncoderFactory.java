@@ -8,7 +8,7 @@ import net.sf.anathema.character.reporting.pdf.rendering.boxes.RegisteredEncoder
 import net.sf.anathema.character.reporting.pdf.rendering.general.box.ContentEncoder;
 import net.sf.anathema.character.reporting.pdf.rendering.general.traits.FavorableTraitContentEncoder;
 import net.sf.anathema.character.reporting.pdf.rendering.general.traits.PdfTraitEncoder;
-import net.sf.anathema.lib.resources.IResources;
+import net.sf.anathema.lib.resources.Resources;
 
 @RegisteredEncoderFactory
 public class AbilitiesWithCraftAndSpecialtiesEncoderFactory extends GlobalEncoderFactory {
@@ -18,7 +18,7 @@ public class AbilitiesWithCraftAndSpecialtiesEncoderFactory extends GlobalEncode
   }
 
   @Override
-  public ContentEncoder create(IResources resources, BasicContent content) {
+  public ContentEncoder create(Resources resources, BasicContent content) {
     FavorableTraitContentEncoder<AbilitiesContent> encoder = new FavorableTraitContentEncoder<>(AbilitiesContent.class);
     PdfTraitEncoder traitEncoder = encoder.getTraitEncoder();
     encoder.addNamedTraitEncoder(new CraftEncoder(resources, traitEncoder, 9));

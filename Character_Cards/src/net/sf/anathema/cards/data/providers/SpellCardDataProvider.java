@@ -7,14 +7,14 @@ import net.sf.anathema.character.generic.magic.ISpell;
 import net.sf.anathema.character.model.ICharacter;
 import net.sf.anathema.character.reporting.pdf.content.stats.magic.SpellStats;
 import net.sf.anathema.framework.IApplicationModel;
-import net.sf.anathema.lib.resources.IResources;
+import net.sf.anathema.lib.resources.Resources;
 
 import java.util.ArrayList;
 import java.util.List;
 
 public class SpellCardDataProvider extends AbstractMagicCardDataProvider {
 
-  public SpellCardDataProvider(IApplicationModel model, IResources resources) {
+  public SpellCardDataProvider(IApplicationModel model, Resources resources) {
     super(model, resources);
   }
 

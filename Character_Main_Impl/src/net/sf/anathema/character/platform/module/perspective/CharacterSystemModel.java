@@ -20,7 +20,7 @@ import net.sf.anathema.framework.repository.IItem;
 import net.sf.anathema.framework.repository.IRepositoryFileResolver;
 import net.sf.anathema.framework.view.PrintNameFile;
 import net.sf.anathema.lib.control.IChangeListener;
-import net.sf.anathema.lib.resources.IResources;
+import net.sf.anathema.lib.resources.Resources;
 import org.jmock.example.announcer.Announcer;
 
 import java.io.IOException;
@@ -127,18 +127,18 @@ public class CharacterSystemModel implements ItemSystemModel {
   }
 
   @Override
-  public void printCurrentItemQuickly(IResources resources) {
+  public void printCurrentItemQuickly(Resources resources) {
     CharacterReportFinder reportFinder = new CharacterReportFinder(model, resources);
     new QuickPrintCommand(resources, getCurrentItem(), reportFinder).execute();
   }
 
   @Override
-  public void printCurrentItemControlled(IResources resources) {
+  public void printCurrentItemControlled(Resources resources) {
     new ControlledPrintCommand(resources, model, getCurrentItem()).execute();
   }
 
   @Override
-  public void createNew(final IResources resources) {
+  public void createNew(final Resources resources) {
     ItemReceiver receiver = new ItemReceiver() {
       @Override
       public void addItem(IItem item) {

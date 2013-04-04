@@ -1,15 +1,12 @@
 package net.sf.anathema.lib.dummy;
 
 import net.sf.anathema.lib.exception.NotYetImplementedException;
-import net.sf.anathema.lib.resources.IResources;
+import net.sf.anathema.lib.resources.Resources;
 
-import javax.swing.Icon;
-import java.awt.Image;
 import java.util.HashMap;
 import java.util.Map;
 
-public class DummyResources implements IResources {
-  public static final Icon ANY_ICON = new EmptyIcon();
+public class DummyResources implements Resources {
   private final Map<String, String> stringMap = new HashMap<>();
 
   @Override
@@ -27,15 +24,5 @@ public class DummyResources implements IResources {
       return stringMap.get(key);
     }
     throw new NotYetImplementedException();
-  }
-
-  @Override
-  public Image getImage(Class< ? > requestor, String relativePath) {
-    throw new NotYetImplementedException();
-  }
-  
-  @Override
-  public Icon getImageIcon(Class< ? > requestor, String relativePath) {
-    return ANY_ICON;
   }
 }

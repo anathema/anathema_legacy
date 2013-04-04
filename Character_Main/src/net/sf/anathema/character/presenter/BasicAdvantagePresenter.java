@@ -11,7 +11,7 @@ import net.sf.anathema.framework.presenter.view.ContentView;
 import net.sf.anathema.framework.presenter.view.SimpleViewContentView;
 import net.sf.anathema.framework.view.util.ContentProperties;
 import net.sf.anathema.lib.gui.Presenter;
-import net.sf.anathema.lib.resources.IResources;
+import net.sf.anathema.lib.resources.Resources;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -19,9 +19,9 @@ import java.util.List;
 public class BasicAdvantagePresenter implements IContentPresenter {
   private final List<Presenter> subPresenters = new ArrayList<>();
   private final IBasicAdvantageView view;
-  private final IResources resources;
+  private final Resources resources;
 
-  public BasicAdvantagePresenter(IResources resources, ICharacter character, IAdvantageViewFactory factory) {
+  public BasicAdvantagePresenter(Resources resources, ICharacter character, IAdvantageViewFactory factory) {
     this.resources = resources;
     this.view = factory.createBasicAdvantageView();
     ICoreTraitConfiguration traitConfiguration = character.getTraitConfiguration();

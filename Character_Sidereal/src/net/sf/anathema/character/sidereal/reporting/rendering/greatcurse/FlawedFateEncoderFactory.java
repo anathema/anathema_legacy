@@ -6,7 +6,7 @@ import net.sf.anathema.character.reporting.pdf.rendering.boxes.AbstractEncoderFa
 import net.sf.anathema.character.reporting.pdf.rendering.boxes.RegisteredEncoderFactory;
 import net.sf.anathema.character.reporting.pdf.rendering.general.box.ContentEncoder;
 import net.sf.anathema.character.sidereal.flawedfate.SiderealFlawedFateTemplate;
-import net.sf.anathema.lib.resources.IResources;
+import net.sf.anathema.lib.resources.Resources;
 
 @RegisteredEncoderFactory
 public class FlawedFateEncoderFactory extends AbstractEncoderFactory {
@@ -16,7 +16,7 @@ public class FlawedFateEncoderFactory extends AbstractEncoderFactory {
   }
 
   @Override
-  public ContentEncoder create(IResources resources, BasicContent content) {
+  public ContentEncoder create(Resources resources, BasicContent content) {
     return new FlawedFateEncoder(resources);
   }
 

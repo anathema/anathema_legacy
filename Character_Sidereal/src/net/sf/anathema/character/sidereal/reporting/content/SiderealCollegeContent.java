@@ -11,14 +11,14 @@ import net.sf.anathema.character.sidereal.colleges.SiderealCollegeTemplate;
 import net.sf.anathema.character.sidereal.colleges.presenter.IAstrologicalHouse;
 import net.sf.anathema.character.sidereal.colleges.presenter.ISiderealCollegeModel;
 import net.sf.anathema.character.sidereal.reporting.rendering.colleges.SiderealCollegeTraitCollection;
-import net.sf.anathema.lib.resources.IResources;
+import net.sf.anathema.lib.resources.Resources;
 
 import java.util.ArrayList;
 import java.util.List;
 
 public class SiderealCollegeContent extends FavorableTraitContent {
 
-  public SiderealCollegeContent(IGenericCharacter character, IResources resources) {
+  public SiderealCollegeContent(IGenericCharacter character, Resources resources) {
     super(character, resources);
   }
 

@@ -3,13 +3,13 @@ package net.sf.anathema.character.reporting.pdf.content.stats;
 import com.itextpdf.text.Font;
 import com.itextpdf.text.pdf.PdfPTable;
 import net.sf.anathema.character.generic.util.IStats;
-import net.sf.anathema.lib.resources.IResources;
+import net.sf.anathema.lib.resources.Resources;
 
 public abstract class AbstractNameStatsGroup<T extends IStats> extends AbstractTextStatsGroup<T> {
   private final String title;
-  private final IResources resources;
+  private final Resources resources;
 
-  public AbstractNameStatsGroup(IResources resources) {
+  public AbstractNameStatsGroup(Resources resources) {
     this.resources = resources;
     this.title = resources.getString(getHeaderResourceKey());
   }

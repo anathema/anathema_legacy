@@ -9,14 +9,14 @@ import net.sf.anathema.character.generic.equipment.weapon.IShieldStats;
 import net.sf.anathema.character.generic.equipment.weapon.IWeaponStats;
 import net.sf.anathema.character.generic.health.HealthType;
 import net.sf.anathema.lib.exception.UnreachableCodeReachedException;
-import net.sf.anathema.lib.resources.IResources;
+import net.sf.anathema.lib.resources.Resources;
 import net.sf.anathema.lib.util.Identified;
 
 public class EquipmentStringBuilder implements IEquipmentStringBuilder {
 
-  private final IResources resources;
+  private final Resources resources;
 
-  public EquipmentStringBuilder(IResources resources) {
+  public EquipmentStringBuilder(Resources resources) {
     this.resources = resources;
   }
 

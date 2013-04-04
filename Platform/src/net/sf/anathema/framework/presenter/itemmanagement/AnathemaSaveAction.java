@@ -12,7 +12,7 @@ import net.sf.anathema.lib.gui.action.SmartAction;
 import net.sf.anathema.lib.gui.dialog.message.MessageDialogFactory;
 import net.sf.anathema.lib.logging.Logger;
 import net.sf.anathema.lib.message.Message;
-import net.sf.anathema.lib.resources.IResources;
+import net.sf.anathema.lib.resources.Resources;
 import org.apache.commons.io.IOUtils;
 
 import javax.swing.Action;
@@ -62,16 +62,16 @@ public class AnathemaSaveAction extends SmartAction {
   }
 
   private IApplicationModel model;
-  private IResources resources;
+  private Resources resources;
 
-  public static Action createToolAction(IApplicationModel model, IResources resources) {
+  public static Action createToolAction(IApplicationModel model, Resources resources) {
     SmartAction action = new AnathemaSaveAction(model, resources);
     action.setToolTipText(resources.getString("AnathemaPersistence.SaveAction.Tooltip")); //$NON-NLS-1$
     action.setIcon(new PlatformUI().getSaveTaskBarIcon());
     return action;
   }
 
-  private AnathemaSaveAction(IApplicationModel model, IResources resources) {
+  private AnathemaSaveAction(IApplicationModel model, Resources resources) {
     SaveEnabledListener listener = new SaveEnabledListener(this);
     setAcceleratorKey(KeyStroke.getKeyStroke(KeyEvent.VK_S, Toolkit.getDefaultToolkit().getMenuShortcutKeyMask()));
     model.getItemManagement().addListener(listener);

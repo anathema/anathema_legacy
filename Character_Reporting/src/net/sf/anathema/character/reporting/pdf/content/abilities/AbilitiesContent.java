@@ -7,14 +7,14 @@ import net.sf.anathema.character.generic.traits.ITraitType;
 import net.sf.anathema.character.generic.traits.groups.IIdentifiedTraitTypeGroup;
 import net.sf.anathema.character.generic.traits.types.AbilityType;
 import net.sf.anathema.character.reporting.pdf.content.traits.FavorableTraitContent;
-import net.sf.anathema.lib.resources.IResources;
+import net.sf.anathema.lib.resources.Resources;
 
 import java.util.Arrays;
 import java.util.List;
 
 public class AbilitiesContent extends FavorableTraitContent {
 
-  public AbilitiesContent(IGenericCharacter character, IResources resources) {
+  public AbilitiesContent(IGenericCharacter character, Resources resources) {
     super(character, resources);
   }
 

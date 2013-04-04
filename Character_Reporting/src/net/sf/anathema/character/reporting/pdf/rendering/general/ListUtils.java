@@ -2,7 +2,7 @@ package net.sf.anathema.character.reporting.pdf.rendering.general;
 
 import com.itextpdf.text.Chunk;
 import com.itextpdf.text.Phrase;
-import net.sf.anathema.lib.resources.IResources;
+import net.sf.anathema.lib.resources.Resources;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -15,7 +15,7 @@ public class ListUtils {
           "Seventh", "Eighth", //$NON-NLS-1$ //$NON-NLS-2$
           "Ninth", "Tenth"}; //$NON-NLS-1$ //$NON-NLS-2$
 
-  public static void addBulletedListText(IResources resources, Chunk symbolChunk, String resourceBase, Phrase phrase,
+  public static void addBulletedListText(Resources resources, Chunk symbolChunk, String resourceBase, Phrase phrase,
                                          boolean showHeader) {
     String header = showHeader ? getRequiredString(resources, resourceBase) : null;
     String[] items = getAvailableLineItems(resources, resourceBase);
@@ -32,7 +32,7 @@ public class ListUtils {
     }
   }
 
-  public static String[] getAvailableLineItems(IResources resources, String resourceBase) {
+  public static String[] getAvailableLineItems(Resources resources, String resourceBase) {
     List<String> items = new ArrayList<>();
     for (String itemId : ListUtils.RESOURCE_ID) {
       String lineItem = getRequiredString(resources, resourceBase, itemId);
@@ -43,11 +43,11 @@ public class ListUtils {
     return items.toArray(new String[items.size()]);
   }
 
-  public static String getRequiredString(IResources resources, String resourceBase) {
+  public static String getRequiredString(Resources resources, String resourceBase) {
     return getRequiredString(resources, resourceBase, null);
   }
 
-  private static String getRequiredString(IResources resources, String resourceBase, String resourceId) {
+  private static String getRequiredString(Resources resources, String resourceBase, String resourceId) {
     String baseId;
     if (resourceId == null) {
       baseId = resourceBase;

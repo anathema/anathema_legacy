@@ -7,12 +7,12 @@ import net.sf.anathema.character.sidereal.colleges.presenter.ISiderealCollegeMod
 import net.sf.anathema.character.sidereal.colleges.presenter.SiderealCollegePresenter;
 import net.sf.anathema.character.sidereal.colleges.view.SiderealCollegeView;
 import net.sf.anathema.lib.gui.IView;
-import net.sf.anathema.lib.resources.IResources;
+import net.sf.anathema.lib.resources.Resources;
 
 public class SiderealCollegeViewFactory implements IAdditionalViewFactory {
 
   @Override
-  public IView createView(IAdditionalModel model, IResources resources, ICharacterType type) {
+  public IView createView(IAdditionalModel model, Resources resources, ICharacterType type) {
     SiderealCollegeView view = new SiderealCollegeView();
     new SiderealCollegePresenter(resources, view, (ISiderealCollegeModel) model).initPresentation();
     return view;

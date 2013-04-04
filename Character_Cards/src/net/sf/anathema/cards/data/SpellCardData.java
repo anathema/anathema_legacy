@@ -9,14 +9,14 @@ import net.sf.anathema.cards.layout.ICardReportResourceProvider;
 import net.sf.anathema.character.generic.magic.ISpell;
 import net.sf.anathema.character.generic.magic.description.MagicDescription;
 import net.sf.anathema.character.reporting.pdf.content.stats.magic.SpellStats;
-import net.sf.anathema.lib.resources.IResources;
+import net.sf.anathema.lib.resources.Resources;
 
 public class SpellCardData extends AbstractMagicCardData {
 	private ISpell spell;
 	private SpellStats spellStats;
 	
 	public SpellCardData(ISpell spell, SpellStats stats, MagicDescription description,
-			ICardReportResourceProvider properties, IResources resources) {
+			ICardReportResourceProvider properties, Resources resources) {
 		super(spell, description, properties, resources);
 		this.spell = spell;
 		this.spellStats = stats;

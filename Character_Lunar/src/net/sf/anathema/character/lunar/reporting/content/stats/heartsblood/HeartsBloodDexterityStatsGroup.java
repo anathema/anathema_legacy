@@ -3,13 +3,13 @@ package net.sf.anathema.character.lunar.reporting.content.stats.heartsblood;
 import com.itextpdf.text.Font;
 import com.itextpdf.text.pdf.PdfPTable;
 import net.sf.anathema.character.reporting.pdf.content.stats.AbstractTextStatsGroup;
-import net.sf.anathema.lib.resources.IResources;
+import net.sf.anathema.lib.resources.Resources;
 
 public class HeartsBloodDexterityStatsGroup extends AbstractTextStatsGroup<IHeartsBloodStats> {
 
-  private final IResources resources;
+  private final Resources resources;
 
-  public HeartsBloodDexterityStatsGroup(IResources resources) {
+  public HeartsBloodDexterityStatsGroup(Resources resources) {
     this.resources = resources;
   }
 

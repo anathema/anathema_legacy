@@ -6,7 +6,7 @@ import net.sf.anathema.initialization.InitializationException;
 import net.sf.anathema.initialization.InitializedModelAndView;
 import net.sf.anathema.initialization.Initializer;
 import net.sf.anathema.initialization.Instantiater;
-import net.sf.anathema.lib.resources.IResources;
+import net.sf.anathema.lib.resources.Resources;
 import net.sf.anathema.view.NullMainView;
 
 import static net.sf.anathema.framework.configuration.InitializationPreferences.getDefaultPreferences;
@@ -22,7 +22,7 @@ public class TestInitializer extends Initializer {
   }
 
   @Override
-  protected void showVersion(IResources resources) {
+  protected void showVersion(Resources resources) {
     //nothing to do
   }
 
@@ -32,7 +32,7 @@ public class TestInitializer extends Initializer {
   }
 
   @Override
-  protected ApplicationFrameView initView(IResources resources, IApplicationModel anathemaModel, Instantiater objectFactory) {
+  protected ApplicationFrameView initView(Resources resources, IApplicationModel anathemaModel, Instantiater objectFactory) {
     return new NullMainView();
   }
 }

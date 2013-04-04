@@ -8,7 +8,7 @@ import net.sf.anathema.lib.control.IChangeListener;
 import net.sf.anathema.lib.control.ObjectValueListener;
 import net.sf.anathema.lib.gui.Presenter;
 import net.sf.anathema.lib.data.ICondition;
-import net.sf.anathema.lib.resources.IResources;
+import net.sf.anathema.lib.resources.Resources;
 
 import java.util.Arrays;
 
@@ -25,12 +25,12 @@ public class EquipmentTemplateListPresenter implements Presenter {
     }
   }
 
-  private final IResources resources;
+  private final Resources resources;
   private final EquipmentDatabaseView view;
   private final IEquipmentDatabaseManagement model;
 
   public EquipmentTemplateListPresenter(
-      IResources resources,
+      Resources resources,
       IEquipmentDatabaseManagement model,
       EquipmentDatabaseView view) {
     this.resources = resources;

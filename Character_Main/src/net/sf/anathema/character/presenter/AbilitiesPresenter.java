@@ -8,7 +8,7 @@ import net.sf.anathema.character.view.IGroupedFavorableTraitViewFactory;
 import net.sf.anathema.framework.presenter.view.ContentView;
 import net.sf.anathema.framework.presenter.view.SimpleViewContentView;
 import net.sf.anathema.framework.view.util.ContentProperties;
-import net.sf.anathema.lib.resources.IResources;
+import net.sf.anathema.lib.resources.Resources;
 
 public class AbilitiesPresenter implements IContentPresenter {
 
@@ -16,7 +16,7 @@ public class AbilitiesPresenter implements IContentPresenter {
   private final FavorableTraitConfigurationPresenter presenter;
   private final String contentHeader;
 
-  public AbilitiesPresenter(ICharacter character, IResources resources, IGroupedFavorableTraitViewFactory factory) {
+  public AbilitiesPresenter(ICharacter character, Resources resources, IGroupedFavorableTraitViewFactory factory) {
     IIdentifiedTraitTypeGroup[] traitTypeGroups = character.getTraitConfiguration().getAbilityTypeGroups();
     int columnCount = 2;
     this.abilityView = factory.createView(columnCount);

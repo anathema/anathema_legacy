@@ -4,7 +4,7 @@ import net.sf.anathema.character.generic.character.IGenericCharacter;
 import net.sf.anathema.character.infernal.urge.InfernalUrgeTemplate;
 import net.sf.anathema.character.infernal.urge.model.IInfernalUrgeModel;
 import net.sf.anathema.character.reporting.pdf.content.AbstractSubBoxContent;
-import net.sf.anathema.lib.resources.IResources;
+import net.sf.anathema.lib.resources.Resources;
 
 import static java.text.MessageFormat.format;
 
@@ -12,7 +12,7 @@ public class InfernalUrgeContent extends AbstractSubBoxContent {
 
   private IGenericCharacter character;
 
-  public InfernalUrgeContent(IResources resources, IGenericCharacter character) {
+  public InfernalUrgeContent(Resources resources, IGenericCharacter character) {
     super(resources);
     this.character = character;
   }

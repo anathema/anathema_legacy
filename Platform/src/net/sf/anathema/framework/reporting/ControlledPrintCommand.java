@@ -8,7 +8,7 @@ import net.sf.anathema.framework.repository.IObjectSelectionProperties;
 import net.sf.anathema.interaction.Command;
 import net.sf.anathema.lib.gui.dialog.core.IDialogResult;
 import net.sf.anathema.lib.gui.dialog.userdialog.UserDialog;
-import net.sf.anathema.lib.resources.IResources;
+import net.sf.anathema.lib.resources.Resources;
 
 import javax.swing.JComponent;
 import javax.swing.JFrame;
@@ -16,12 +16,12 @@ import javax.swing.JOptionPane;
 
 public class ControlledPrintCommand implements Command {
 
-  private IResources resources;
+  private Resources resources;
   private IApplicationModel model;
   private JComponent parent;
   private IItem item;
 
-  public ControlledPrintCommand(IResources resources, IApplicationModel model, IItem item) {
+  public ControlledPrintCommand(Resources resources, IApplicationModel model, IItem item) {
     this.resources = resources;
     this.model = model;
     this.parent = (JComponent) ((JFrame) JOptionPane.getRootFrame()).getContentPane();

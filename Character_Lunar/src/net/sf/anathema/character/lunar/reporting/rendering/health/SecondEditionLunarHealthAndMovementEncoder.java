@@ -7,11 +7,11 @@ import net.sf.anathema.character.lunar.beastform.presenter.IBeastformModel;
 import net.sf.anathema.character.reporting.pdf.rendering.general.table.ITableEncoder;
 import net.sf.anathema.character.reporting.second.rendering.health.HealthAndMovementEncoder;
 import net.sf.anathema.character.reporting.second.rendering.health.HealthAndMovementTableEncoder;
-import net.sf.anathema.lib.resources.IResources;
+import net.sf.anathema.lib.resources.Resources;
 
 public class SecondEditionLunarHealthAndMovementEncoder extends HealthAndMovementEncoder {
 
-  public SecondEditionLunarHealthAndMovementEncoder(IResources resources) {
+  public SecondEditionLunarHealthAndMovementEncoder(Resources resources) {
     super(resources);
   }
 

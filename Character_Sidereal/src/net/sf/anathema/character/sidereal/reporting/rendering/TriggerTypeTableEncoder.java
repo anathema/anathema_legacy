@@ -12,13 +12,13 @@ import net.sf.anathema.character.reporting.pdf.rendering.extent.Bounds;
 import net.sf.anathema.character.reporting.pdf.rendering.general.table.AbstractTableEncoder;
 import net.sf.anathema.character.reporting.pdf.rendering.graphics.SheetGraphics;
 import net.sf.anathema.character.reporting.pdf.rendering.graphics.TableCell;
-import net.sf.anathema.lib.resources.IResources;
+import net.sf.anathema.lib.resources.Resources;
 
 public class TriggerTypeTableEncoder extends AbstractTableEncoder<ReportSession> {
 
-  private final IResources resources;
+  private final Resources resources;
 
-  public TriggerTypeTableEncoder(IResources resources) {
+  public TriggerTypeTableEncoder(Resources resources) {
     this.resources = resources;
   }
 

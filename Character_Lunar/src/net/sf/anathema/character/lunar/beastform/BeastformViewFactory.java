@@ -14,12 +14,12 @@ import net.sf.anathema.character.mutations.view.IMutationsView;
 import net.sf.anathema.character.mutations.view.MutationsView;
 import net.sf.anathema.framework.value.IntegerViewFactory;
 import net.sf.anathema.lib.gui.IView;
-import net.sf.anathema.lib.resources.IResources;
+import net.sf.anathema.lib.resources.Resources;
 
 public class BeastformViewFactory implements IAdditionalViewFactory {
 
   @Override
-  public IView createView(IAdditionalModel model, final IResources resources, ICharacterType type) {
+  public IView createView(IAdditionalModel model, final Resources resources, ICharacterType type) {
     IntegerViewFactory intValueDisplayFactory = IntValueDisplayFactoryPrototype.createWithMarkerForCharacterType(
             type);
     SecondEditionBeastformModel secondmodel = (SecondEditionBeastformModel) model;

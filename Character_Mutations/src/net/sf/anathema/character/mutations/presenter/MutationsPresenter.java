@@ -13,15 +13,15 @@ import net.sf.anathema.character.mutations.view.MutationViewLearnProperties;
 import net.sf.anathema.lib.compare.I18nedIdentificateSorter;
 import net.sf.anathema.lib.control.IChangeListener;
 import net.sf.anathema.lib.gui.Presenter;
-import net.sf.anathema.lib.resources.IResources;
+import net.sf.anathema.lib.resources.Resources;
 
 public class MutationsPresenter implements Presenter {
 
   private final IMutationsView view;
   private final IMutationsModel model;
-  private final IResources resources;
+  private final Resources resources;
 
-  public MutationsPresenter(IMutationsView view, IMutationsModel model, IResources resources) {
+  public MutationsPresenter(IMutationsView view, IMutationsModel model, Resources resources) {
     this.view = view;
     this.model = model;
     this.resources = resources;
@@ -108,7 +108,7 @@ public class MutationsPresenter implements Presenter {
   private I18nedIdentificateSorter<IMutation> createSorter() {
     return new I18nedIdentificateSorter<IMutation>() {
       @Override
-      protected String getString(IResources sorterResources, IMutation mutation) {
+      protected String getString(Resources sorterResources, IMutation mutation) {
         String typeString = sorterResources.getString("Mutations.Type." + mutation.getType().getId());
         String mutationString = sorterResources.getString("Mutations.Mutation." //$NON-NLS-1$
                                                           + mutation.getId());

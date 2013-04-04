@@ -13,7 +13,7 @@ import net.sf.anathema.framework.presenter.view.ViewTabContentView;
 import net.sf.anathema.framework.view.util.ContentProperties;
 import net.sf.anathema.lib.control.IIntValueChangedListener;
 import net.sf.anathema.lib.gui.widgets.IIntegerView;
-import net.sf.anathema.lib.resources.IResources;
+import net.sf.anathema.lib.resources.Resources;
 import net.sf.anathema.lib.workflow.textualdescription.ITextView;
 import net.sf.anathema.lib.workflow.textualdescription.ITextualDescription;
 import net.sf.anathema.lib.workflow.textualdescription.TextualPresentation;
@@ -26,9 +26,9 @@ public class CharacterDescriptionPresenter implements IContentPresenter {
   private final ICharacterConcept characterConcept;
   private final ICharacterDescriptionView descriptionView;
   private final boolean hasAnima;
-  private final IResources resources;
+  private final Resources resources;
 
-  public CharacterDescriptionPresenter(IResources resources, ICharacterDescription description, ICharacterConcept characterConcept,
+  public CharacterDescriptionPresenter(Resources resources, ICharacterDescription description, ICharacterConcept characterConcept,
                                        ICharacterDescriptionView descriptionView, boolean hasAnima) {
     this.resources = resources;
     this.description = description;

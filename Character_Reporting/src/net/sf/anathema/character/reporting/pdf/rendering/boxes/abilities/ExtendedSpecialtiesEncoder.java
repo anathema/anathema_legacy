@@ -10,7 +10,7 @@ import net.sf.anathema.character.reporting.pdf.rendering.general.box.ContentEnco
 import net.sf.anathema.character.reporting.pdf.rendering.general.traits.AbstractNamedTraitEncoder;
 import net.sf.anathema.character.reporting.pdf.rendering.general.traits.PdfTraitEncoder;
 import net.sf.anathema.character.reporting.pdf.rendering.graphics.SheetGraphics;
-import net.sf.anathema.lib.resources.IResources;
+import net.sf.anathema.lib.resources.Resources;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -23,7 +23,7 @@ import static net.sf.anathema.character.reporting.pdf.rendering.page.IVoidStateF
 
 public class ExtendedSpecialtiesEncoder extends AbstractNamedTraitEncoder implements ContentEncoder {
 
-  public ExtendedSpecialtiesEncoder(IResources resources) {
+  public ExtendedSpecialtiesEncoder(Resources resources) {
     super(resources, PdfTraitEncoder.createSmallTraitEncoder());
   }
 

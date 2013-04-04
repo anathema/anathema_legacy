@@ -1,7 +1,7 @@
 package net.sf.anathema.framework.view.perspective;
 
 import net.sf.anathema.lib.gui.action.SmartAction;
-import net.sf.anathema.lib.resources.IResources;
+import net.sf.anathema.lib.resources.Resources;
 
 import javax.swing.ButtonGroup;
 import javax.swing.JComponent;
@@ -19,14 +19,14 @@ public class PerspectiveSelectionBar {
     this.toolbar.setFloatable(false);
   }
 
-  public void addPerspective(final Perspective perspective, IResources resources) {
+  public void addPerspective(final Perspective perspective, Resources resources) {
     SmartAction action = createAction(perspective, resources);
     JToggleButton selectionButton = new JToggleButton(action);
     toolbar.add(selectionButton);
     buttonGroup.add(selectionButton);
   }
 
-  private SmartAction createAction(final Perspective perspective, IResources resources) {
+  private SmartAction createAction(final Perspective perspective, Resources resources) {
     SmartAction action = new SmartAction() {
       @Override
       protected void execute(Component parentComponent) {

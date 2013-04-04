@@ -10,7 +10,7 @@ import net.sf.anathema.initialization.reflections.ResourceLoader;
 import net.sf.anathema.initialization.repository.IOFileSystemAbstraction;
 import net.sf.anathema.initialization.repository.RepositoryFolderCreator;
 import net.sf.anathema.initialization.repository.RepositoryLocationResolver;
-import net.sf.anathema.lib.resources.IResources;
+import net.sf.anathema.lib.resources.Resources;
 
 import java.io.File;
 import java.util.Collection;
@@ -28,7 +28,7 @@ public class AnathemaModelInitializer {
     this.extensions = extensions;
   }
 
-  public IApplicationModel initializeModel(IResources resources, AnnotationFinder finder, ResourceLoader loader) throws InitializationException {
+  public IApplicationModel initializeModel(Resources resources, AnnotationFinder finder, ResourceLoader loader) throws InitializationException {
     ApplicationModel model = createModel(resources, loader);
     for (ExtensionWithId extension : extensions) {
       extension.register(model, finder, loader);
@@ -42,7 +42,7 @@ public class AnathemaModelInitializer {
     return model;
   }
 
-  private ApplicationModel createModel(IResources resources, ResourceLoader resourceLoader) throws InitializationException {
+  private ApplicationModel createModel(Resources resources, ResourceLoader resourceLoader) throws InitializationException {
     try {
       return new ApplicationModel(createRepositoryFolder(), resources, resourceLoader);
     } catch (RepositoryException e) {

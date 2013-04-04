@@ -20,15 +20,15 @@ import net.sf.anathema.character.reporting.pdf.rendering.general.box.ContentEnco
 import net.sf.anathema.character.reporting.pdf.rendering.general.table.ITableEncoder;
 import net.sf.anathema.character.reporting.pdf.rendering.graphics.SheetGraphics;
 import net.sf.anathema.character.reporting.pdf.rendering.graphics.TableCell;
-import net.sf.anathema.lib.resources.IResources;
+import net.sf.anathema.lib.resources.Resources;
 
 import static net.sf.anathema.character.reporting.pdf.rendering.page.IVoidStateFormatConstants.COMMENT_FONT_SIZE;
 
 public class SocialCombatStatsBoxEncoder implements ContentEncoder {
 
-  private final IResources resources;
+  private final Resources resources;
 
-  public SocialCombatStatsBoxEncoder(IResources resources) {
+  public SocialCombatStatsBoxEncoder(Resources resources) {
     this.resources = resources;
   }
 

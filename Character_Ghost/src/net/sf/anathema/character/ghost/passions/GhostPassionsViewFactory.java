@@ -8,12 +8,12 @@ import net.sf.anathema.character.ghost.passions.presenter.GhostPassionsPresenter
 import net.sf.anathema.character.ghost.passions.view.GhostPassionsConfigurationView;
 import net.sf.anathema.character.library.intvalue.IntValueDisplayFactoryPrototype;
 import net.sf.anathema.lib.gui.IView;
-import net.sf.anathema.lib.resources.IResources;
+import net.sf.anathema.lib.resources.Resources;
 
 public class GhostPassionsViewFactory implements IAdditionalViewFactory {
 
   @Override
-  public IView createView(IAdditionalModel model, IResources resources, ICharacterType type) {
+  public IView createView(IAdditionalModel model, Resources resources, ICharacterType type) {
     GhostPassionsConfigurationView view = new GhostPassionsConfigurationView(
             IntValueDisplayFactoryPrototype.createWithMarkerForCharacterType(type));
     new GhostPassionsPresenter(resources, view, (IGhostPassionsModel) model).initPresentation();

@@ -11,14 +11,14 @@ import net.sf.anathema.character.equipment.impl.reporting.content.stats.weapons.
 import net.sf.anathema.character.equipment.impl.reporting.content.stats.weapons.SecondEditionSpeedWeaponStatsGroup;
 import net.sf.anathema.character.generic.character.IGenericCharacter;
 import net.sf.anathema.character.reporting.pdf.content.SubBoxContent;
-import net.sf.anathema.lib.resources.IResources;
+import net.sf.anathema.lib.resources.Resources;
 
 public class WeaponryContent extends AbstractWeaponryContent implements SubBoxContent {
 
   private final IEquipmentCharacterDataProvider provider;
   private final IEquipmentCharacterOptionProvider optionProvider;
 
-  public WeaponryContent(IResources resources, IGenericCharacter character) {
+  public WeaponryContent(Resources resources, IGenericCharacter character) {
     super(resources, character);
     IEquipmentAdditionalModel additionalModel =
             (IEquipmentAdditionalModel) character.getAdditionalModel(EquipmentAdditionalModelTemplate.ID);

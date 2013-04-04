@@ -2,7 +2,7 @@ package net.sf.anathema.framework.module.preferences;
 
 import net.miginfocom.layout.CC;
 import net.sf.anathema.framework.presenter.action.preferences.IPreferencesElement;
-import net.sf.anathema.lib.resources.IResources;
+import net.sf.anathema.lib.resources.Resources;
 
 import javax.swing.JCheckBox;
 import javax.swing.JComponent;
@@ -15,7 +15,7 @@ public abstract class AbstractCheckBoxPreferencesElement implements IPreferences
   private JCheckBox checkBox;
 
   @Override
-  public void addComponent(JPanel panel, IResources resources) {
+  public void addComponent(JPanel panel, Resources resources) {
     JComponent component = createCheckBox(resources);
     panel.add(component, new CC().spanX());
   }
@@ -26,7 +26,7 @@ public abstract class AbstractCheckBoxPreferencesElement implements IPreferences
 
   protected abstract String getLabelKey();
 
-  private JComponent createCheckBox(IResources resources) {
+  private JComponent createCheckBox(Resources resources) {
     checkBox = new JCheckBox(resources.getString(getLabelKey()), getBooleanParameter());
     checkBox.addActionListener(new ActionListener() {
       @Override

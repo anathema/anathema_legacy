@@ -11,7 +11,7 @@ import net.sf.anathema.lib.data.ICondition;
 import net.sf.anathema.lib.message.IMessage;
 import net.sf.anathema.lib.message.Message;
 import net.sf.anathema.lib.message.MessageType;
-import net.sf.anathema.lib.resources.IResources;
+import net.sf.anathema.lib.resources.Resources;
 
 import java.awt.Component;
 
@@ -19,9 +19,9 @@ public class DiscardChangesVetor implements IVetor {
 
   private final ICondition preCondition;
   private final Component parentComponent;
-  private final IResources resources;
+  private final Resources resources;
 
-  public DiscardChangesVetor(IResources resources, ICondition preCondition, Component parentComponent) {
+  public DiscardChangesVetor(Resources resources, ICondition preCondition, Component parentComponent) {
     this.resources = resources;
     this.preCondition = preCondition;
     this.parentComponent = parentComponent;

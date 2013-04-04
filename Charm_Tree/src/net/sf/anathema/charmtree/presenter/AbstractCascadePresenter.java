@@ -13,7 +13,7 @@ import net.sf.anathema.lib.control.ObjectValueListener;
 import net.sf.anathema.lib.gui.action.SmartAction;
 import net.sf.anathema.lib.gui.dialog.core.IDialogResult;
 import net.sf.anathema.lib.gui.dialog.userdialog.UserDialog;
-import net.sf.anathema.lib.resources.IResources;
+import net.sf.anathema.lib.resources.Resources;
 import net.sf.anathema.lib.util.Identified;
 import net.sf.anathema.platform.tree.presenter.view.CascadeLoadedListener;
 
@@ -27,7 +27,7 @@ import java.util.List;
 
 public abstract class AbstractCascadePresenter implements ICascadeSelectionPresenter {
 
-  private final IResources resources;
+  private final Resources resources;
   protected CharmFilterSet filterSet = new CharmFilterSet();
   private ICharmGroupChangeListener changeListener;
   private Identified currentType;
@@ -39,7 +39,7 @@ public abstract class AbstractCascadePresenter implements ICascadeSelectionPrese
   private AlienCharmPresenter alienPresenter = new NullAlienCharmPresenter();
   private CharmInteractionPresenter interactionPresenter = new NullInteractionPresenter();
 
-  public AbstractCascadePresenter(IResources resources) {
+  public AbstractCascadePresenter(Resources resources) {
     this.resources = resources;
   }
 
@@ -95,7 +95,7 @@ public abstract class AbstractCascadePresenter implements ICascadeSelectionPrese
     return view.getCharmComponent();
   }
 
-  protected IResources getResources() {
+  protected Resources getResources() {
     return resources;
   }
 

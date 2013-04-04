@@ -3,12 +3,12 @@ package net.sf.anathema.character.generic.framework.magic.stringbuilder;
 import net.sf.anathema.character.generic.framework.magic.MagicDisplayLabeler;
 import net.sf.anathema.character.generic.magic.IMagic;
 import net.sf.anathema.lib.gui.TooltipBuilder;
-import net.sf.anathema.lib.resources.IResources;
+import net.sf.anathema.lib.resources.Resources;
 
 public class MagicNameStringBuilder implements IMagicTooltipStringBuilder {
   private final MagicDisplayLabeler labeler;
 
-  public MagicNameStringBuilder(IResources resources) {
+  public MagicNameStringBuilder(Resources resources) {
     this.labeler = new MagicDisplayLabeler(resources);
   }
 

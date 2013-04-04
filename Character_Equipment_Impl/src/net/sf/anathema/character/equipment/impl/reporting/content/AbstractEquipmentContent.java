@@ -9,14 +9,14 @@ import net.sf.anathema.character.generic.equipment.ICharacterStatsModifiers;
 import net.sf.anathema.character.generic.equipment.weapon.IEquipmentStats;
 import net.sf.anathema.character.reporting.pdf.content.AbstractSubContent;
 import net.sf.anathema.character.reporting.pdf.content.stats.FixedLineStatsContent;
-import net.sf.anathema.lib.resources.IResources;
+import net.sf.anathema.lib.resources.Resources;
 
 public abstract class AbstractEquipmentContent<STATS extends IEquipmentStats> extends AbstractSubContent
   implements FixedLineStatsContent<STATS> {
 
   private IGenericCharacter character;
 
-  public AbstractEquipmentContent(IResources resources, IGenericCharacter character) {
+  public AbstractEquipmentContent(Resources resources, IGenericCharacter character) {
     super(resources);
     this.character = character;
   }

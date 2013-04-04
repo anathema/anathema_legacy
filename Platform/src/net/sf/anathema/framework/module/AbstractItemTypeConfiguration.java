@@ -4,7 +4,7 @@ import net.sf.anathema.framework.IApplicationModel;
 import net.sf.anathema.framework.item.IItemType;
 import net.sf.anathema.framework.presenter.IItemViewFactory;
 import net.sf.anathema.lib.registry.IRegistry;
-import net.sf.anathema.lib.resources.IResources;
+import net.sf.anathema.lib.resources.Resources;
 
 public abstract class AbstractItemTypeConfiguration implements IItemTypeConfiguration {
 
@@ -15,7 +15,7 @@ public abstract class AbstractItemTypeConfiguration implements IItemTypeConfigur
   }
 
   @Override
-  public final void registerViewFactory(IApplicationModel anathemaModel, IResources resources) {
+  public final void registerViewFactory(IApplicationModel anathemaModel, Resources resources) {
     IRegistry<IItemType, IItemViewFactory> viewFactoryRegistry = anathemaModel.getViewFactoryRegistry();
     viewFactoryRegistry.register(type, createItemViewFactory(anathemaModel, resources));
   }
@@ -25,5 +25,5 @@ public abstract class AbstractItemTypeConfiguration implements IItemTypeConfigur
     return type;
   }
 
-  protected abstract IItemViewFactory createItemViewFactory(IApplicationModel anathemaModel, IResources resources);
+  protected abstract IItemViewFactory createItemViewFactory(IApplicationModel anathemaModel, Resources resources);
 }

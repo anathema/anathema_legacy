@@ -3,14 +3,14 @@ package net.sf.anathema.character.platform.module.perspective;
 import net.sf.anathema.character.perspective.model.model.ItemSelectionModel;
 import net.sf.anathema.interaction.Command;
 import net.sf.anathema.interaction.Interaction;
-import net.sf.anathema.lib.resources.IResources;
+import net.sf.anathema.lib.resources.Resources;
 
 public class ControlledPrintInteractionPresenter {
   private ItemSelectionModel model;
   private Interaction interaction;
-  private IResources resources;
+  private Resources resources;
 
-  public ControlledPrintInteractionPresenter(ItemSelectionModel model, Interaction interaction, IResources resources) {
+  public ControlledPrintInteractionPresenter(ItemSelectionModel model, Interaction interaction, Resources resources) {
     this.model = model;
     this.interaction = interaction;
     this.resources = resources;

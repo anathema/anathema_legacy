@@ -7,15 +7,15 @@ import net.sf.anathema.character.reporting.pdf.content.ReportSession;
 import net.sf.anathema.character.reporting.pdf.rendering.extent.Bounds;
 import net.sf.anathema.character.reporting.pdf.rendering.general.box.ContentEncoder;
 import net.sf.anathema.character.reporting.pdf.rendering.graphics.SheetGraphics;
-import net.sf.anathema.lib.resources.IResources;
+import net.sf.anathema.lib.resources.Resources;
 
 public class ArcaneFateInfoEncoder implements ContentEncoder {
 
-  private final IResources resources;
+  private final Resources resources;
   private final int fontSize;
   private float lineHeight;
 
-  public ArcaneFateInfoEncoder(int fontSize, IResources resources) {
+  public ArcaneFateInfoEncoder(int fontSize, Resources resources) {
     this.fontSize = fontSize;
     this.resources = resources;
     this.lineHeight = fontSize * 1.5f;

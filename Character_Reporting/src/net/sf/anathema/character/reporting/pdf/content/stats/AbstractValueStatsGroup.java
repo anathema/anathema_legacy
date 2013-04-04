@@ -8,21 +8,21 @@ import com.itextpdf.text.pdf.PdfPCell;
 import net.sf.anathema.character.generic.traits.IGenericTrait;
 import net.sf.anathema.character.generic.util.IStats;
 import net.sf.anathema.character.reporting.pdf.rendering.general.table.TableEncodingUtilities;
-import net.sf.anathema.lib.resources.IResources;
+import net.sf.anathema.lib.resources.Resources;
 
 public abstract class AbstractValueStatsGroup<T extends IStats> implements IStatsGroup<T> {
 
   private final String title;
-  private final IResources resources;
+  private final Resources resources;
 
-  public AbstractValueStatsGroup(IResources resources, String resourceKey) {
+  public AbstractValueStatsGroup(Resources resources, String resourceKey) {
     this.resources = resources;
     this.title = resources.getString(getHeaderResourceBase() + resourceKey);
   }
 
   protected abstract String getHeaderResourceBase();
 
-  public final IResources getResources() {
+  public final Resources getResources() {
     return resources;
   }
 

@@ -2,13 +2,13 @@ package net.sf.anathema.character.lunar.beastform;
 
 import net.sf.anathema.character.lunar.beastform.model.SecondEditionBeastformModel;
 import net.sf.anathema.character.lunar.beastform.view.IBeastformViewProperties;
-import net.sf.anathema.lib.resources.IResources;
+import net.sf.anathema.lib.resources.Resources;
 
 public class SecondEditionBeastformViewProperties implements IBeastformViewProperties {
-  private final IResources resources;
+  private final Resources resources;
   private final SecondEditionBeastformModel secondmodel;
 
-  public SecondEditionBeastformViewProperties(IResources resources, SecondEditionBeastformModel secondmodel) {
+  public SecondEditionBeastformViewProperties(Resources resources, SecondEditionBeastformModel secondmodel) {
     this.resources = resources;
     this.secondmodel = secondmodel;
   }

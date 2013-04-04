@@ -4,17 +4,17 @@ import net.sf.anathema.lib.gui.ui.ObjectUi;
 import net.sf.anathema.lib.gui.ui.ObjectUiListCellRenderer;
 import net.sf.anathema.lib.message.BasicMessage;
 import net.sf.anathema.lib.message.IBasicMessage;
-import net.sf.anathema.lib.resources.IResources;
+import net.sf.anathema.lib.resources.Resources;
 import net.sf.anathema.campaign.load.selection.IObjectSelectionProperties;
 
 import javax.swing.ListCellRenderer;
 
 public class LoadItemWizardProperties implements IObjectSelectionProperties {
 
-  private final IResources resources;
+  private final Resources resources;
   private final ListCellRenderer renderer;
 
-  public LoadItemWizardProperties(IResources resources, ObjectUi<Object> ui) {
+  public LoadItemWizardProperties(Resources resources, ObjectUi<Object> ui) {
     this.resources = resources;
     this.renderer = new ObjectUiListCellRenderer(ui);
   }

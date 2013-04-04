@@ -10,17 +10,17 @@ import net.sf.anathema.character.mutations.view.IMutationsView;
 import net.sf.anathema.framework.value.IIntValueView;
 import net.sf.anathema.lib.control.ObjectValueListener;
 import net.sf.anathema.lib.gui.Presenter;
-import net.sf.anathema.lib.resources.IResources;
+import net.sf.anathema.lib.resources.Resources;
 
 public class SecondEditionBeastformPresenter implements Presenter {
 
-  private final IResources resources;
+  private final Resources resources;
   private final IBeastformView view;
   private final IBeastformModel model;
   private final IMutationsModel mutationModel;
   private final IMutationsView mutationView;
 
-  public SecondEditionBeastformPresenter(IResources resources, IBeastformView view, IBeastformModel model,
+  public SecondEditionBeastformPresenter(Resources resources, IBeastformView view, IBeastformModel model,
                                          IMutationsModel mutationModel, IMutationsView mutationView) {
     this.resources = resources;
     this.view = view;

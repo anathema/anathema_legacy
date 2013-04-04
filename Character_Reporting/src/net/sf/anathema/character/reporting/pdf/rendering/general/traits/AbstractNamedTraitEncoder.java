@@ -8,7 +8,7 @@ import net.sf.anathema.character.reporting.pdf.content.stats.IValuedTraitReferen
 import net.sf.anathema.character.reporting.pdf.content.stats.NamedGenericTraitReference;
 import net.sf.anathema.character.reporting.pdf.rendering.extent.Position;
 import net.sf.anathema.character.reporting.pdf.rendering.graphics.SheetGraphics;
-import net.sf.anathema.lib.resources.IResources;
+import net.sf.anathema.lib.resources.Resources;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -16,15 +16,15 @@ import java.util.List;
 import static net.sf.anathema.character.reporting.pdf.rendering.page.IVoidStateFormatConstants.SUBSECTION_FONT_SIZE;
 
 public abstract class AbstractNamedTraitEncoder {
-  private final IResources resources;
+  private final Resources resources;
   private final PdfTraitEncoder traitEncoder;
 
-  public AbstractNamedTraitEncoder(IResources resources, PdfTraitEncoder traitEncoder) {
+  public AbstractNamedTraitEncoder(Resources resources, PdfTraitEncoder traitEncoder) {
     this.resources = resources;
     this.traitEncoder = traitEncoder;
   }
 
-  protected IResources getResources() {
+  protected Resources getResources() {
     return resources;
   }
 

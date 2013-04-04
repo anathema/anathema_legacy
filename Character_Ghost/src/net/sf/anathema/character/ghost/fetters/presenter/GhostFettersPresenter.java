@@ -16,7 +16,7 @@ import net.sf.anathema.lib.control.IChangeListener;
 import net.sf.anathema.lib.control.IIntValueChangedListener;
 import net.sf.anathema.lib.control.ObjectValueListener;
 import net.sf.anathema.lib.gui.Presenter;
-import net.sf.anathema.lib.resources.IResources;
+import net.sf.anathema.lib.resources.Resources;
 import net.sf.anathema.lib.workflow.labelledvalue.ILabelledAlotmentView;
 import net.sf.anathema.lib.workflow.labelledvalue.IValueView;
 import org.jmock.example.announcer.Announcer;
@@ -37,11 +37,11 @@ public class GhostFettersPresenter implements Presenter {
   private final Announcer<IChangeListener> control = Announcer.to(IChangeListener.class);
   private final IdentityMapping<Fetter, IFetterView> viewsByFetter = new IdentityMapping<>();
 
-  private final IResources resources;
+  private final Resources resources;
   private final IGhostFettersConfigurationView view;
   private final IGhostFettersModel model;
 
-  public GhostFettersPresenter(IResources resources, IGhostFettersConfigurationView view, IGhostFettersModel model) {
+  public GhostFettersPresenter(Resources resources, IGhostFettersConfigurationView view, IGhostFettersModel model) {
     this.model = model;
     this.view = view;
     this.resources = resources;

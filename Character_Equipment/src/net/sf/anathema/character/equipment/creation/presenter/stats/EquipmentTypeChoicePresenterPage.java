@@ -12,7 +12,7 @@ import net.sf.anathema.character.equipment.wizard.CheckInputListener;
 import net.sf.anathema.lib.data.ICondition;
 import net.sf.anathema.lib.message.BasicMessage;
 import net.sf.anathema.lib.message.IBasicMessage;
-import net.sf.anathema.lib.resources.IResources;
+import net.sf.anathema.lib.resources.Resources;
 
 import javax.swing.Action;
 import java.awt.Component;
@@ -21,13 +21,13 @@ public class EquipmentTypeChoicePresenterPage extends AbstractAnathemaWizardPage
 
   private final EquipmentTypeChoiceProperties properties;
   private final BasicMessage defaultMessage;
-  private final IResources resources;
+  private final Resources resources;
   private final IEquipmentStatisticsCreationModel model;
   private final IEquipmentStatisticsCreationViewFactory viewFactory;
   private IEquipmentTypeChoiceView view;
   private final boolean canHaveArtifactStats;
 
-  public EquipmentTypeChoicePresenterPage(IResources resources, IEquipmentStatisticsCreationModel model,
+  public EquipmentTypeChoicePresenterPage(Resources resources, IEquipmentStatisticsCreationModel model,
                                           IEquipmentStatisticsCreationViewFactory viewFactory, boolean canHaveArtifactStats) {
     this.canHaveArtifactStats = canHaveArtifactStats;
     this.properties = new EquipmentTypeChoiceProperties(resources);

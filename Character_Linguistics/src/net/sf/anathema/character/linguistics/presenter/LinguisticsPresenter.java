@@ -10,7 +10,7 @@ import net.sf.anathema.lib.control.IChangeListener;
 import net.sf.anathema.lib.control.ObjectValueListener;
 import net.sf.anathema.lib.control.legality.LegalityColorProvider;
 import net.sf.anathema.lib.gui.Presenter;
-import net.sf.anathema.lib.resources.IResources;
+import net.sf.anathema.lib.resources.Resources;
 import net.sf.anathema.lib.util.Identified;
 import net.sf.anathema.lib.workflow.labelledvalue.ILabelledAlotmentView;
 import net.sf.anathema.lib.workflow.labelledvalue.IValueView;
@@ -29,11 +29,11 @@ public class LinguisticsPresenter implements Presenter {
 
   private final ILinguisticsModel model;
   private final ILinguisticsView view;
-  private final IResources resources;
+  private final Resources resources;
   private final Map<Identified, IRemovableEntryView> viewsByEntry = new HashMap<>();
   private final Map<String, Identified> languagesByDisplayName = new HashMap<>();
 
-  public LinguisticsPresenter(ILinguisticsModel model, ILinguisticsView view, IResources resources) {
+  public LinguisticsPresenter(ILinguisticsModel model, ILinguisticsView view, Resources resources) {
     this.model = model;
     this.view = view;
     this.resources = resources;

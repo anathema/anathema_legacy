@@ -5,14 +5,14 @@ import net.sf.anathema.character.reporting.pdf.content.ReportSession;
 import net.sf.anathema.character.reporting.pdf.rendering.extent.Bounds;
 import net.sf.anathema.character.reporting.pdf.rendering.general.box.IVariableContentEncoder;
 import net.sf.anathema.character.reporting.pdf.rendering.graphics.SheetGraphics;
-import net.sf.anathema.lib.resources.IResources;
+import net.sf.anathema.lib.resources.Resources;
 
 public class GenericCharmEncoder implements IVariableContentEncoder {
 
   private final GenericCharmTableEncoder tableEncoder;
-  private IResources resources;
+  private Resources resources;
 
-  public GenericCharmEncoder(IResources resources) {
+  public GenericCharmEncoder(Resources resources) {
     this.resources = resources;
     this.tableEncoder = new GenericCharmTableEncoder(resources);
   }

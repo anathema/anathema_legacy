@@ -6,16 +6,16 @@ import net.sf.anathema.framework.presenter.item.ItemTypeCreationViewPropertiesEx
 import net.sf.anathema.lib.gui.dialog.userdialog.page.AbstractDialogPage;
 import net.sf.anathema.lib.message.BasicMessage;
 import net.sf.anathema.lib.message.IBasicMessage;
-import net.sf.anathema.lib.resources.IResources;
+import net.sf.anathema.lib.resources.Resources;
 
 import javax.swing.JComponent;
 
 public class RepositoryBrowserDialogPage extends AbstractDialogPage {
 
-  private final IResources resources;
+  private final Resources resources;
   private final IApplicationModel model;
 
-  public RepositoryBrowserDialogPage(IResources resources, IApplicationModel model) {
+  public RepositoryBrowserDialogPage(Resources resources, IApplicationModel model) {
     super(resources.getString("AnathemaCore.Tools.RepositoryView.DialogMessage")); //$NON-NLS-1$
     this.resources = resources;
     this.model = model;

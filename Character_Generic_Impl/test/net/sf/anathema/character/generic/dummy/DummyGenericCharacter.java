@@ -22,7 +22,7 @@ import net.sf.anathema.character.generic.traits.ITraitType;
 import net.sf.anathema.character.generic.traits.groups.IIdentifiedTraitTypeGroup;
 import net.sf.anathema.lib.control.IChangeListener;
 import net.sf.anathema.lib.exception.NotYetImplementedException;
-import net.sf.anathema.lib.resources.IResources;
+import net.sf.anathema.lib.resources.Resources;
 import net.sf.anathema.lib.util.IdentifiedInteger;
 
 import java.util.ArrayList;
@@ -184,7 +184,7 @@ public class DummyGenericCharacter implements IGenericCharacter {
       }
 
       @Override
-      public String getWillpowerRegainingComment(IResources resources) {
+      public String getWillpowerRegainingComment(Resources resources) {
         return null;
       }
     };

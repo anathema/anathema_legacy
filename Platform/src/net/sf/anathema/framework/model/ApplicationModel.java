@@ -14,10 +14,10 @@ import net.sf.anathema.framework.reporting.IReportRegistry;
 import net.sf.anathema.framework.repository.IRepository;
 import net.sf.anathema.framework.repository.Repository;
 import net.sf.anathema.initialization.reflections.ResourceLoader;
+import net.sf.anathema.lib.resources.Resources;
 import net.sf.anathema.lib.util.RandomUtilities;
 import net.sf.anathema.lib.registry.IRegistry;
 import net.sf.anathema.lib.registry.Registry;
-import net.sf.anathema.lib.resources.IResources;
 
 import java.io.File;
 import java.util.List;
@@ -35,7 +35,7 @@ public class ApplicationModel implements IApplicationModel {
   private final ResourceLoader resourceLoader;
   private final InformativeMessages informativeMessages;
 
-  public ApplicationModel(File repositoryFolder, IResources resources, ResourceLoader resourceLoader) {
+  public ApplicationModel(File repositoryFolder, Resources resources, ResourceLoader resourceLoader) {
     this.repository = new Repository(repositoryFolder, itemManagment);
     this.messaging = new Messaging(resources);
     this.informativeMessages = new WordsOfTheWise(resourceLoader);

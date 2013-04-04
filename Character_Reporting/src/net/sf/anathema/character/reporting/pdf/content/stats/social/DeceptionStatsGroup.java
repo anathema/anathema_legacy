@@ -3,11 +3,11 @@ package net.sf.anathema.character.reporting.pdf.content.stats.social;
 import com.itextpdf.text.Font;
 import com.itextpdf.text.pdf.PdfPTable;
 import net.sf.anathema.character.generic.social.ISocialCombatStats;
-import net.sf.anathema.lib.resources.IResources;
+import net.sf.anathema.lib.resources.Resources;
 
 public class DeceptionStatsGroup extends AbstractSocialCombatsValueStatsGroup {
 
-  public DeceptionStatsGroup(IResources resources) {
+  public DeceptionStatsGroup(Resources resources) {
     super(resources, "Deception"); //$NON-NLS-1$
   }
 

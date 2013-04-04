@@ -1,11 +1,11 @@
 package net.sf.anathema.character.equipment.item.personalization;
 
-import net.sf.anathema.lib.resources.IResources;
+import net.sf.anathema.lib.resources.Resources;
 
 public class EquipmentPersonalizationProperties {
-  private final IResources resources;
+  private final Resources resources;
 
-  public EquipmentPersonalizationProperties(IResources resources) {
+  public EquipmentPersonalizationProperties(Resources resources) {
 	   this.resources = resources;
   }
   

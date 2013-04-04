@@ -1,12 +1,12 @@
 package net.sf.anathema.campaign.presenter;
 
-import net.sf.anathema.lib.resources.IResources;
+import net.sf.anathema.lib.resources.Resources;
 
 public class CampaignContentViewProperties implements ICampaignContentViewProperties {
 
-  private final IResources resources;
+  private final Resources resources;
 
-  public CampaignContentViewProperties(IResources resources) {
+  public CampaignContentViewProperties(Resources resources) {
     this.resources = resources;
   }
 

@@ -3,11 +3,11 @@ package net.sf.anathema.character.generic.framework.magic.stringbuilder.type;
 import net.sf.anathema.character.generic.magic.charms.type.ISimpleSpecialsModel;
 import net.sf.anathema.character.generic.magic.charms.type.TurnType;
 import net.sf.anathema.lib.gui.TooltipBuilder;
-import net.sf.anathema.lib.resources.IResources;
+import net.sf.anathema.lib.resources.Resources;
 
 public class ShortCharmTypeStringBuilder extends AbstractCharmTypeStringBuilder {
 
-  public ShortCharmTypeStringBuilder(IResources resources) {
+  public ShortCharmTypeStringBuilder(Resources resources) {
     super(resources, true);
   }
 

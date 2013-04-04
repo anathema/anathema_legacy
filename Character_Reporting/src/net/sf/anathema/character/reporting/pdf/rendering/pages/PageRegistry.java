@@ -8,7 +8,7 @@ import net.sf.anathema.framework.reporting.pdf.PageSize;
 import net.sf.anathema.initialization.InitializationException;
 import net.sf.anathema.initialization.Instantiater;
 import net.sf.anathema.lib.logging.Logger;
-import net.sf.anathema.lib.resources.IResources;
+import net.sf.anathema.lib.resources.Resources;
 
 import java.util.Collection;
 import java.util.Collections;
@@ -21,7 +21,7 @@ public class PageRegistry {
     this.instantiater = instantiater;
   }
 
-  public PageEncoder[] createEncoders(PageSize pageSize, EncoderRegistry encoderRegistry, IResources resources,
+  public PageEncoder[] createEncoders(PageSize pageSize, EncoderRegistry encoderRegistry, Resources resources,
           ReportSession session) {
     return findFactory(session).create(encoderRegistry, resources, pageSize);
   }

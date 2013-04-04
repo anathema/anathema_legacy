@@ -5,7 +5,7 @@ import net.sf.anathema.framework.repository.IItem;
 import net.sf.anathema.interaction.Command;
 import net.sf.anathema.lib.io.PathUtils;
 import net.sf.anathema.lib.message.Message;
-import net.sf.anathema.lib.resources.IResources;
+import net.sf.anathema.lib.resources.Resources;
 import org.apache.commons.io.IOUtils;
 
 import javax.swing.JComponent;
@@ -20,7 +20,7 @@ import static java.awt.Desktop.isDesktopSupported;
 public class PrintCommand implements Command {
 
   public static final String PDF_EXTENSION = ".pdf";
-  private final IResources resources;
+  private final Resources resources;
   private final JComponent parent;
   private final IItem item;
   private final Report report;
@@ -30,7 +30,7 @@ public class PrintCommand implements Command {
     return isDesktopSupported();
   }
 
-  public PrintCommand(IResources resources, JComponent parent, IItem item, Report report, FileChooser fileChooser) {
+  public PrintCommand(Resources resources, JComponent parent, IItem item, Report report, FileChooser fileChooser) {
     this.resources = resources;
     this.parent = parent;
     this.item = item;

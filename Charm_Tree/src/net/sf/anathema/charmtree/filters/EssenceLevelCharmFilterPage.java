@@ -1,7 +1,7 @@
 package net.sf.anathema.charmtree.filters;
 
 import net.sf.anathema.character.generic.impl.traits.EssenceTemplate;
-import net.sf.anathema.lib.resources.IResources;
+import net.sf.anathema.lib.resources.Resources;
 
 import javax.swing.BorderFactory;
 import javax.swing.JCheckBox;
@@ -16,11 +16,11 @@ import java.awt.event.ItemListener;
 
 public class EssenceLevelCharmFilterPage implements ICharmFilterPage
 {
-	IResources resources;
+	Resources resources;
 	boolean[] enabled;
 	int[] essence;
 	
-	public EssenceLevelCharmFilterPage(IResources resources, boolean[] enabled, int[] essence)
+	public EssenceLevelCharmFilterPage(Resources resources, boolean[] enabled, int[] essence)
 	{
 		this.resources = resources;
 		this.enabled = enabled;

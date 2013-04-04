@@ -12,16 +12,16 @@ import net.sf.anathema.character.reporting.pdf.rendering.extent.Bounds;
 import net.sf.anathema.character.reporting.pdf.rendering.general.box.ContentEncoder;
 import net.sf.anathema.character.reporting.pdf.rendering.graphics.SheetGraphics;
 import net.sf.anathema.character.sidereal.flawedfate.SiderealFlawedFateTemplate;
-import net.sf.anathema.lib.resources.IResources;
+import net.sf.anathema.lib.resources.Resources;
 
 import static net.sf.anathema.character.reporting.pdf.rendering.page.IVoidStateFormatConstants.REDUCED_LINE_HEIGHT;
 
 public class FlawedFateEncoder implements ContentEncoder {
 
-  private final IResources resources;
+  private final Resources resources;
   private final VirtueFlawBoxEncoder traitEncoder = new VirtueFlawBoxEncoder();
 
-  public FlawedFateEncoder(IResources resources) {
+  public FlawedFateEncoder(Resources resources) {
     this.resources = resources;
   }
 

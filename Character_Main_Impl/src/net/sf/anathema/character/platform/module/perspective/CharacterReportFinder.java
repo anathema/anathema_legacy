@@ -4,14 +4,14 @@ import net.sf.anathema.framework.IApplicationModel;
 import net.sf.anathema.framework.reporting.DefaultReportFinder;
 import net.sf.anathema.framework.reporting.Report;
 import net.sf.anathema.framework.repository.IItem;
-import net.sf.anathema.lib.resources.IResources;
+import net.sf.anathema.lib.resources.Resources;
 
 public class CharacterReportFinder implements DefaultReportFinder {
 
   private IApplicationModel anathemaModel;
-  private IResources resources;
+  private Resources resources;
 
-  public CharacterReportFinder(IApplicationModel anathemaModel, IResources resources) {
+  public CharacterReportFinder(IApplicationModel anathemaModel, Resources resources) {
     this.anathemaModel = anathemaModel;
     this.resources = resources;
   }

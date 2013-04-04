@@ -2,13 +2,13 @@ package net.sf.anathema.character.equipment.creation.presenter.stats.properties;
 
 import net.sf.anathema.lib.message.BasicMessage;
 import net.sf.anathema.lib.message.IBasicMessage;
-import net.sf.anathema.lib.resources.IResources;
+import net.sf.anathema.lib.resources.Resources;
 
 public class TraitBoostStatisticsProperties extends AbstractEquipmentStatisticsProperties {
 
   private final BasicMessage defaultMessage;
 
-  public TraitBoostStatisticsProperties(IResources resources) {
+  public TraitBoostStatisticsProperties(Resources resources) {
     super(resources);
     this.defaultMessage = new BasicMessage(getString("Equipment.Creation.TraitModifying.DefaultMessage")); //$NON-NLS-1$
   }

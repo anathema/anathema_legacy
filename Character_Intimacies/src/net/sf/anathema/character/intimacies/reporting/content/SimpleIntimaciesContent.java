@@ -7,7 +7,7 @@ import net.sf.anathema.character.intimacies.presenter.IIntimaciesModel;
 import net.sf.anathema.character.intimacies.template.IntimaciesTemplate;
 import net.sf.anathema.character.reporting.pdf.content.AbstractSubBoxContent;
 import net.sf.anathema.character.reporting.pdf.content.ListSubBoxContent;
-import net.sf.anathema.lib.resources.IResources;
+import net.sf.anathema.lib.resources.Resources;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -16,7 +16,7 @@ public class SimpleIntimaciesContent extends AbstractSubBoxContent implements Li
 
   private IGenericCharacter character;
 
-  public SimpleIntimaciesContent(IResources resources, IGenericCharacter character) {
+  public SimpleIntimaciesContent(Resources resources, IGenericCharacter character) {
     super(resources);
     this.character = character;
   }

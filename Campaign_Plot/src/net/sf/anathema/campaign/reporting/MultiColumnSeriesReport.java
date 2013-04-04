@@ -21,7 +21,7 @@ import net.sf.anathema.framework.reporting.pdf.AbstractPdfReport;
 import net.sf.anathema.framework.reporting.pdf.PdfReportUtils;
 import net.sf.anathema.framework.repository.IItem;
 import net.sf.anathema.framework.styledtext.model.ITextPart;
-import net.sf.anathema.lib.resources.IResources;
+import net.sf.anathema.lib.resources.Resources;
 
 import java.util.HashMap;
 
@@ -30,9 +30,9 @@ public class MultiColumnSeriesReport extends AbstractPdfReport {
   private final PdfReportUtils reportUtils = new PdfReportUtils();
   private final SeriesReportUtils seriesUtils = new SeriesReportUtils();
   private final TableOfContentsPrinter contentTable = new TableOfContentsPrinter();
-  private final IResources resources;
+  private final Resources resources;
 
-  public MultiColumnSeriesReport(IResources resources) {
+  public MultiColumnSeriesReport(Resources resources) {
     this.resources = resources;
   }
 

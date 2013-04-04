@@ -1,11 +1,11 @@
 package net.sf.anathema.character.sidereal.reporting.rendering.anima;
 
 import net.sf.anathema.character.reporting.pdf.content.stats.anima.AnimaTableStealthProvider;
-import net.sf.anathema.lib.resources.IResources;
+import net.sf.anathema.lib.resources.Resources;
 
 public class AnimaStealthProvider extends AnimaTableStealthProvider {
 
-  public AnimaStealthProvider(IResources resources) {
+  public AnimaStealthProvider(Resources resources) {
     super(resources);
   }
 

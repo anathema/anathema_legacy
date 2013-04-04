@@ -7,11 +7,11 @@ import net.sf.anathema.character.generic.caste.ICasteType;
 import net.sf.anathema.character.generic.character.IGenericCharacter;
 import net.sf.anathema.framework.reporting.pdf.PdfReportUtils;
 import net.sf.anathema.lib.lang.StringUtilities;
-import net.sf.anathema.lib.resources.IResources;
+import net.sf.anathema.lib.resources.Resources;
 
 public class ConceptTextEncoder extends AbstractTextEncoder {
 
-  public ConceptTextEncoder(PdfReportUtils utils, IResources resources) {
+  public ConceptTextEncoder(PdfReportUtils utils, Resources resources) {
     super(utils, resources);
   }
 

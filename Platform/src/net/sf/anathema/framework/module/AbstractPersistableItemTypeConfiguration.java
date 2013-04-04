@@ -8,7 +8,7 @@ import net.sf.anathema.framework.presenter.item.ItemTypeCreationViewPropertiesEx
 import net.sf.anathema.framework.presenter.view.IItemTypeViewProperties;
 import net.sf.anathema.framework.view.ApplicationView;
 import net.sf.anathema.lib.registry.IRegistry;
-import net.sf.anathema.lib.resources.IResources;
+import net.sf.anathema.lib.resources.Resources;
 
 public abstract class AbstractPersistableItemTypeConfiguration extends AbstractItemTypeConfiguration {
 
@@ -17,7 +17,7 @@ public abstract class AbstractPersistableItemTypeConfiguration extends AbstractI
   }
 
   @Override
-  public void fillPresentationExtensionPoints(IRegistry<String, IAnathemaExtension> extensionPointRegistry, IResources resources,
+  public void fillPresentationExtensionPoints(IRegistry<String, IAnathemaExtension> extensionPointRegistry, Resources resources,
                                               IApplicationModel model, ApplicationView view) {
     ItemTypeCreationViewPropertiesExtensionPoint itemCreationExtensionPoint =
             (ItemTypeCreationViewPropertiesExtensionPoint) extensionPointRegistry.get(ItemTypeCreationViewPropertiesExtensionPoint.ID);
@@ -29,7 +29,7 @@ public abstract class AbstractPersistableItemTypeConfiguration extends AbstractI
     model.getPersisterRegistry().register(getItemType(), createPersister(model));
   }
 
-  protected abstract IItemTypeViewProperties createItemTypeCreationProperties(IApplicationModel anathemaModel, IResources resources);
+  protected abstract IItemTypeViewProperties createItemTypeCreationProperties(IApplicationModel anathemaModel, Resources resources);
 
   protected abstract IRepositoryItemPersister createPersister(IApplicationModel model);
 }

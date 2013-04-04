@@ -7,15 +7,15 @@ import net.sf.anathema.character.reporting.pdf.rendering.boxes.abilities.Special
 import net.sf.anathema.character.reporting.pdf.rendering.extent.Bounds;
 import net.sf.anathema.character.reporting.pdf.rendering.extent.Position;
 import net.sf.anathema.character.reporting.pdf.rendering.graphics.SheetGraphics;
-import net.sf.anathema.lib.resources.IResources;
+import net.sf.anathema.lib.resources.Resources;
 
 import static net.sf.anathema.character.reporting.pdf.rendering.page.IVoidStateFormatConstants.PADDING;
 
 public class AbilitiesTwoColumnEncoder extends FavorableTraitContentEncoder<AbilitiesContent> {
 
-  private IResources resources;
+  private Resources resources;
 
-  public AbilitiesTwoColumnEncoder(IResources resources) {
+  public AbilitiesTwoColumnEncoder(Resources resources) {
     super(AbilitiesContent.class);
     this.resources = resources;
   }

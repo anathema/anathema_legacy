@@ -6,7 +6,7 @@ import net.sf.anathema.character.view.repository.ITemplateTypeAggregation;
 import net.sf.anathema.lib.message.BasicMessage;
 import net.sf.anathema.lib.message.IBasicMessage;
 import net.sf.anathema.lib.message.MessageType;
-import net.sf.anathema.lib.resources.IResources;
+import net.sf.anathema.lib.resources.Resources;
 
 import javax.swing.DefaultListCellRenderer;
 import javax.swing.Icon;
@@ -16,10 +16,10 @@ import java.awt.Component;
 
 public class CharacterCreationPageProperties {
 
-  private final IResources resources;
+  private final Resources resources;
   private final CharacterUI iconProvider;
 
-  public CharacterCreationPageProperties(IResources resources) {
+  public CharacterCreationPageProperties(Resources resources) {
     this.resources = resources;
     this.iconProvider = new CharacterUI();
   }

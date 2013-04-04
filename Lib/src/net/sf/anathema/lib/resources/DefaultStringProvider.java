@@ -2,7 +2,7 @@ package net.sf.anathema.lib.resources;
 
 import java.text.MessageFormat;
 
-public class DefaultStringProvider implements IStringResourceHandler {
+public class DefaultStringProvider implements Resources {
   
   private final String defaultKey;
 

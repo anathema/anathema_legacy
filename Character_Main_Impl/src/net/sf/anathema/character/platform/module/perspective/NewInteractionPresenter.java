@@ -9,17 +9,17 @@ import net.sf.anathema.character.perspective.model.model.ItemSelectionModel;
 import net.sf.anathema.character.perspective.model.model.NewCharacterListener;
 import net.sf.anathema.interaction.Command;
 import net.sf.anathema.interaction.Interaction;
-import net.sf.anathema.lib.resources.IResources;
+import net.sf.anathema.lib.resources.Resources;
 
 public class NewInteractionPresenter {
 
   private final ItemSelectionModel model;
   private final Interaction interaction;
-  private IResources resources;
+  private Resources resources;
   private CharacterGridView view;
   private Selector<CharacterIdentifier> selector;
 
-  public NewInteractionPresenter(ItemSelectionModel model, Interaction interaction, IResources resources, CharacterGridView view,
+  public NewInteractionPresenter(ItemSelectionModel model, Interaction interaction, Resources resources, CharacterGridView view,
                                  Selector<CharacterIdentifier> selector) {
     this.model = model;
     this.interaction = interaction;

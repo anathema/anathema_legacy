@@ -8,7 +8,7 @@ import net.sf.anathema.character.reporting.pdf.rendering.boxes.combat.CombatStat
 import net.sf.anathema.character.reporting.pdf.rendering.general.box.ContentEncoder;
 import net.sf.anathema.character.reporting.pdf.rendering.general.box.IContentEncoder;
 import net.sf.anathema.character.reporting.pdf.rendering.general.table.ITableEncoder;
-import net.sf.anathema.lib.resources.IResources;
+import net.sf.anathema.lib.resources.Resources;
 
 @RegisteredEncoderFactory
 public class CombatBoxEncoderFactory extends AbstractEncoderFactory {
@@ -18,7 +18,7 @@ public class CombatBoxEncoderFactory extends AbstractEncoderFactory {
   }
 
   @Override
-  public ContentEncoder create(IResources resources, BasicContent content) {
+  public ContentEncoder create(Resources resources, BasicContent content) {
     IContentEncoder valueEncoder = new CombatValueEncoder();
     ITableEncoder rulesEncoder = new CombatRulesTableEncoder();
     return new CombatStatsContentBoxEncoder(resources, rulesEncoder, valueEncoder);

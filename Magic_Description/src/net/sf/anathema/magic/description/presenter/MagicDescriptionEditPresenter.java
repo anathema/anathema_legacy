@@ -5,7 +5,7 @@ import net.sf.anathema.character.presenter.magic.detail.MagicDetailPresenter;
 import net.sf.anathema.lib.control.IChangeListener;
 import net.sf.anathema.lib.control.ObjectValueListener;
 import net.sf.anathema.lib.gui.IView;
-import net.sf.anathema.lib.resources.IResources;
+import net.sf.anathema.lib.resources.Resources;
 import net.sf.anathema.magic.description.model.MagicDescriptionEditDetailModel;
 import net.sf.anathema.magic.description.model.MagicDescriptionEditModel;
 import net.sf.anathema.magic.description.view.MagicDescriptionEditView;
@@ -14,9 +14,9 @@ public class MagicDescriptionEditPresenter implements MagicDetailPresenter {
 
   private final MagicDescriptionEditView view;
   private final MagicDescriptionEditModel model;
-  private IResources resources;
+  private Resources resources;
 
-  public MagicDescriptionEditPresenter(MagicDescriptionEditView view, MagicDescriptionEditModel model, IResources resources) {
+  public MagicDescriptionEditPresenter(MagicDescriptionEditView view, MagicDescriptionEditModel model, Resources resources) {
     this.view = view;
     this.model = model;
     this.resources = resources;

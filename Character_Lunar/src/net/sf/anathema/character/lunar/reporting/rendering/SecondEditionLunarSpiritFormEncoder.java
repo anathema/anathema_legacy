@@ -16,16 +16,16 @@ import net.sf.anathema.character.reporting.pdf.rendering.extent.Position;
 import net.sf.anathema.character.reporting.pdf.rendering.general.box.ContentEncoder;
 import net.sf.anathema.character.reporting.pdf.rendering.general.traits.PdfTraitEncoder;
 import net.sf.anathema.character.reporting.pdf.rendering.graphics.SheetGraphics;
-import net.sf.anathema.lib.resources.IResources;
+import net.sf.anathema.lib.resources.Resources;
 
 import static net.sf.anathema.character.reporting.pdf.rendering.page.IVoidStateFormatConstants.LINE_HEIGHT;
 
 public class SecondEditionLunarSpiritFormEncoder implements ContentEncoder {
 
-  private final IResources resources;
+  private final Resources resources;
   private final PdfTraitEncoder smallTraitEncoder = PdfTraitEncoder.createSmallTraitEncoder();
 
-  public SecondEditionLunarSpiritFormEncoder(IResources resources) {
+  public SecondEditionLunarSpiritFormEncoder(Resources resources) {
     this.resources = resources;
   }
 

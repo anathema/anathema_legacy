@@ -2,7 +2,7 @@ package net.sf.anathema.character.reporting.pdf.content.experience;
 
 import net.sf.anathema.character.generic.character.IGenericCharacter;
 import net.sf.anathema.character.reporting.pdf.content.AbstractSubBoxContent;
-import net.sf.anathema.lib.resources.IResources;
+import net.sf.anathema.lib.resources.Resources;
 
 import java.text.MessageFormat;
 
@@ -10,7 +10,7 @@ public class ExperienceContent extends AbstractSubBoxContent {
 
   private IGenericCharacter character;
 
-  public ExperienceContent(IResources resources, IGenericCharacter character) {
+  public ExperienceContent(Resources resources, IGenericCharacter character) {
     super(resources);
     this.character = character;
   }

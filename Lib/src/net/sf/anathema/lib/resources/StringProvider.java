@@ -7,7 +7,7 @@ import java.util.List;
 import java.util.Locale;
 import java.util.ResourceBundle;
 
-public class StringProvider implements IStringResourceHandler {
+public class StringProvider implements Resources {
   private ResourceBundle resourceBundle;
   private final List<String> keyList = new ArrayList<>();
 

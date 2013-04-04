@@ -16,7 +16,7 @@ import net.sf.anathema.lib.compare.I18nedIdentificateComparator;
 import net.sf.anathema.lib.compare.I18nedIdentificateSorter;
 import net.sf.anathema.lib.control.ObjectValueListener;
 import net.sf.anathema.lib.gui.IView;
-import net.sf.anathema.lib.resources.IResources;
+import net.sf.anathema.lib.resources.Resources;
 import net.sf.anathema.lib.util.Identified;
 import org.apache.commons.lang3.ArrayUtils;
 
@@ -30,13 +30,13 @@ import java.util.List;
 
 public class SpellPresenter implements DetailDemandingMagicPresenter {
 
-  public static SpellPresenter ForSorcery(ICharacter character, IResources resources, IMagicViewFactory factory,
+  public static SpellPresenter ForSorcery(ICharacter character, Resources resources, IMagicViewFactory factory,
                                           MagicDescriptionProvider magicDescriptionProvider) {
     SpellModel spellModel = new SorceryModel(character);
     return new SpellPresenter(spellModel, character, resources, factory, magicDescriptionProvider);
   }
 
-  public static SpellPresenter ForNecromancy(ICharacter character, IResources resources, IMagicViewFactory factory,
+  public static SpellPresenter ForNecromancy(ICharacter character, Resources resources, IMagicViewFactory factory,
                                              MagicDescriptionProvider magicDescriptionProvider) {
     SpellModel spellModel = new NecromancyModel(character);
     return new SpellPresenter(spellModel, character, resources, factory, magicDescriptionProvider);
@@ -45,12 +45,12 @@ public class SpellPresenter implements DetailDemandingMagicPresenter {
   private final ISpellConfiguration spellConfiguration;
   private SpellModel spellModel;
   private final ICharacter character;
-  private final IResources resources;
+  private final Resources resources;
   private CircleType circle;
   private final SpellViewProperties properties;
   private final ISpellView view;
 
-  public SpellPresenter(SpellModel spellModel, ICharacter character, IResources resources, IMagicViewFactory factory,
+  public SpellPresenter(SpellModel spellModel, ICharacter character, Resources resources, IMagicViewFactory factory,
                         MagicDescriptionProvider magicDescriptionProvider) {
     this.spellModel = spellModel;
     this.character = character;

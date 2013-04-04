@@ -9,7 +9,7 @@ import net.sf.anathema.character.model.advance.IExperiencePointManagement;
 import net.sf.anathema.character.view.overview.CategorizedOverview;
 import net.sf.anathema.lib.control.legality.LegalityColorProvider;
 import net.sf.anathema.lib.gui.Presenter;
-import net.sf.anathema.lib.resources.IResources;
+import net.sf.anathema.lib.resources.Resources;
 import net.sf.anathema.lib.workflow.labelledvalue.ILabelledAlotmentView;
 import net.sf.anathema.lib.workflow.labelledvalue.IValueView;
 
@@ -21,12 +21,12 @@ public class ExperiencedOverviewPresenter implements Presenter {
   private final IExperiencePointManagement management;
   private final CategorizedOverview view;
   private final ICharacter character;
-  private final IResources resources;
+  private final Resources resources;
   private final List<IOverviewSubPresenter> presenters = new ArrayList<>();
 
   private ILabelledAlotmentView totalView;
 
-  public ExperiencedOverviewPresenter(IResources resources, final ICharacter character, CategorizedOverview overview,
+  public ExperiencedOverviewPresenter(Resources resources, final ICharacter character, CategorizedOverview overview,
                                       IExperiencePointManagement experiencePoints) {
     this.resources = resources;
     this.character = character;

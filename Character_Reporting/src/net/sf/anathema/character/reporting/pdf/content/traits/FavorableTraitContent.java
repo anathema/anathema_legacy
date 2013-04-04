@@ -11,7 +11,7 @@ import net.sf.anathema.character.generic.traits.groups.IIdentifiedTraitTypeGroup
 import net.sf.anathema.character.reporting.pdf.content.AbstractSubBoxContent;
 import net.sf.anathema.character.reporting.pdf.content.magic.GenericCharmUtilities;
 import net.sf.anathema.character.reporting.pdf.util.MagicLearnUtilities;
-import net.sf.anathema.lib.resources.IResources;
+import net.sf.anathema.lib.resources.Resources;
 import net.sf.anathema.lib.util.Identified;
 
 import java.util.ArrayList;
@@ -23,7 +23,7 @@ public abstract class FavorableTraitContent extends AbstractSubBoxContent {
 
   private IGenericCharacter character;
 
-  public FavorableTraitContent(IGenericCharacter character, IResources resources) {
+  public FavorableTraitContent(IGenericCharacter character, Resources resources) {
     super(resources);
     this.character = character;
   }

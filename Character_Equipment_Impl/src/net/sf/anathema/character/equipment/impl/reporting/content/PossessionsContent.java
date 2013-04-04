@@ -7,7 +7,7 @@ import net.sf.anathema.character.generic.character.IGenericCharacter;
 import net.sf.anathema.character.generic.equipment.weapon.IEquipmentStats;
 import net.sf.anathema.character.reporting.pdf.content.AbstractSubBoxContent;
 import net.sf.anathema.character.reporting.pdf.content.ListSubBoxContent;
-import net.sf.anathema.lib.resources.IResources;
+import net.sf.anathema.lib.resources.Resources;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -19,7 +19,7 @@ public class PossessionsContent extends AbstractSubBoxContent implements ListSub
 
   private IGenericCharacter character;
 
-  public PossessionsContent(IResources resources, IGenericCharacter character) {
+  public PossessionsContent(Resources resources, IGenericCharacter character) {
     super(resources);
     this.character = character;
   }

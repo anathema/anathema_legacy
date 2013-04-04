@@ -2,7 +2,7 @@ package net.sf.anathema.character.generic.magic.description;
 
 import com.google.common.base.Function;
 import net.sf.anathema.character.generic.magic.IMagic;
-import net.sf.anathema.lib.resources.IResources;
+import net.sf.anathema.lib.resources.Resources;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -13,7 +13,7 @@ public class AggregatedCharmDescriptionProvider implements MagicDescriptionProvi
 
   private final List<MagicDescriptionProvider> providerList = new ArrayList<>();
 
-  public AggregatedCharmDescriptionProvider(IResources resources) {
+  public AggregatedCharmDescriptionProvider(Resources resources) {
     providerList.add(new ShortMagicDescriptionProvider(resources));
   }
 

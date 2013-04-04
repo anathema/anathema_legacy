@@ -4,7 +4,7 @@ import net.sf.anathema.framework.IApplicationModel;
 import net.sf.anathema.framework.configuration.IInitializationPreferences;
 import net.sf.anathema.framework.exception.CentralExceptionHandler;
 import net.sf.anathema.framework.module.IItemTypeConfiguration;
-import net.sf.anathema.framework.resources.AnathemaResources;
+import net.sf.anathema.framework.resources.LocaleResources;
 import net.sf.anathema.framework.view.ApplicationView;
 import net.sf.anathema.initialization.reflections.AggregatedResourceLoader;
 import net.sf.anathema.initialization.reflections.CustomDataResourceLoader;
@@ -13,7 +13,7 @@ import net.sf.anathema.initialization.reflections.ReflectionObjectFactory;
 import net.sf.anathema.initialization.reflections.ResourceLoader;
 import net.sf.anathema.initialization.repository.RepositoryLocationResolver;
 import net.sf.anathema.lib.exception.CentralExceptionHandling;
-import net.sf.anathema.lib.resources.IResources;
+import net.sf.anathema.lib.resources.Resources;
 import net.sf.anathema.lib.resources.ResourceFile;
 
 import java.util.Collection;
@@ -37,7 +37,7 @@ public abstract class Initializer {
 
   protected InitializedModelAndView initializeModelViewAndPresentation() throws InitializationException {
     ResourceLoader loader = createResourceLoaderForInternalAndCustomResources();
-    AnathemaResources resources = initResources(loader);
+    LocaleResources resources = initResources(loader);
     showVersion(resources);
     configureExceptionHandling(resources);
     IApplicationModel anathemaModel = initModel(resources, loader);
@@ -46,26 +46,26 @@ public abstract class Initializer {
     return new InitializedModelAndView(view, anathemaModel);
   }
 
-  protected void initPresentation(AnathemaResources resources, IApplicationModel anathemaModel, ApplicationView view) {
+  protected void initPresentation(LocaleResources resources, IApplicationModel anathemaModel, ApplicationView view) {
     Collection<IItemTypeConfiguration> itemTypes = itemTypeCollection.getItemTypes();
     AnathemaPresenter presenter = new AnathemaPresenter(anathemaModel, view, resources, itemTypes, objectFactory);
     presenter.initPresentation();
   }
 
-  private void configureExceptionHandling(AnathemaResources resources) {
+  private void configureExceptionHandling(LocaleResources resources) {
     CentralExceptionHandling.setHandler(new CentralExceptionHandler(resources));
   }
 
-  private IApplicationModel initModel(IResources resources, ResourceLoader loader) throws InitializationException {
+  private IApplicationModel initModel(Resources resources, ResourceLoader loader) throws InitializationException {
     displayMessage("Creating Model...");
     Collection<IItemTypeConfiguration> itemTypes = itemTypeCollection.getItemTypes();
     AnathemaModelInitializer modelInitializer = new AnathemaModelInitializer(initializationPreferences, itemTypes, extensionCollection);
     return modelInitializer.initializeModel(resources, reflections, loader);
   }
 
-  private AnathemaResources initResources(ResourceLoader loader) {
+  private LocaleResources initResources(ResourceLoader loader) {
     displayMessage("Loading Resources...");
-    AnathemaResources resources = new AnathemaResources();
+    LocaleResources resources = new LocaleResources();
     Set<ResourceFile> resourcesInPaths = loader.getResourcesMatching(".*\\.properties");
     for (ResourceFile resource : resourcesInPaths) {
       resources.addResourceBundle(resource);
@@ -83,9 +83,9 @@ public abstract class Initializer {
     return initializationPreferences;
   }
 
-  protected abstract void showVersion(IResources resources);
+  protected abstract void showVersion(Resources resources);
 
   protected abstract void displayMessage(String message);
 
-  protected abstract ApplicationFrameView initView(IResources resources, IApplicationModel anathemaModel, Instantiater objectFactory);
+  protected abstract ApplicationFrameView initView(Resources resources, IApplicationModel anathemaModel, Instantiater objectFactory);
 }

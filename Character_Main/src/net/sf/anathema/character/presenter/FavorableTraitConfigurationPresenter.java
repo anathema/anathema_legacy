@@ -20,7 +20,7 @@ import net.sf.anathema.character.model.traits.ICoreTraitConfiguration;
 import net.sf.anathema.character.view.IGroupedFavorableTraitConfigurationView;
 import net.sf.anathema.lib.collection.IdentityMapping;
 import net.sf.anathema.lib.control.IBooleanValueChangedListener;
-import net.sf.anathema.lib.resources.IResources;
+import net.sf.anathema.lib.resources.Resources;
 
 import static net.sf.anathema.character.library.trait.favorable.FavorableState.Caste;
 import static net.sf.anathema.character.library.trait.favorable.FavorableState.Default;
@@ -30,7 +30,7 @@ public class FavorableTraitConfigurationPresenter {
 
   private final IGroupedFavorableTraitConfigurationView configurationView;
   private final IdentityMapping<IFavorableTrait, IToggleButtonTraitView<?>> traitViewsByTrait = new IdentityMapping<>();
-  private final IResources resources;
+  private final Resources resources;
   private final IIdentifiedTraitTypeGroup[] traitTypeGroups;
   private final ICoreTraitConfiguration traitConfiguration;
   private final IBasicCharacterData basicCharacterData;
@@ -38,7 +38,7 @@ public class FavorableTraitConfigurationPresenter {
   private final IPresentationProperties presentationProperties;
 
   public FavorableTraitConfigurationPresenter(IIdentifiedTraitTypeGroup[] traitTypeGroups, ICharacter character,
-                                              IGroupedFavorableTraitConfigurationView configurationView, IResources resources) {
+                                              IGroupedFavorableTraitConfigurationView configurationView, Resources resources) {
     this.traitTypeGroups = traitTypeGroups;
     this.traitConfiguration = character.getTraitConfiguration();
     this.basicCharacterData = character.getCharacterContext().getBasicCharacterContext();

@@ -13,19 +13,19 @@ import net.sf.anathema.lib.control.ObjectValueListener;
 import net.sf.anathema.lib.gui.Presenter;
 import net.sf.anathema.lib.gui.selection.IObjectSelectionView;
 import net.sf.anathema.lib.gui.selection.ISelectionIntValueChangedListener;
-import net.sf.anathema.lib.resources.IResources;
+import net.sf.anathema.lib.resources.Resources;
 import net.sf.anathema.lib.workflow.textualdescription.ITextView;
 import net.sf.anathema.lib.workflow.textualdescription.TextualPresentation;
 
 import static net.sf.anathema.lib.lang.ArrayUtilities.transform;
 
 public class EquipmentDatabasePresenter implements Presenter {
-  private final IResources resources;
+  private final Resources resources;
   private final EquipmentDatabaseView view;
   private final IEquipmentDatabaseManagement model;
   private final String[] defaultCostBackgrounds = {"Artifact", "Manse", "Resources"};
 
-  public EquipmentDatabasePresenter(IResources resources, IEquipmentDatabaseManagement model,
+  public EquipmentDatabasePresenter(Resources resources, IEquipmentDatabaseManagement model,
                                     EquipmentDatabaseView view) {
     this.resources = resources;
     this.model = model;

@@ -15,19 +15,19 @@ import net.sf.anathema.character.generic.equipment.ArtifactAttuneType;
 import net.sf.anathema.character.generic.equipment.IArtifactStats;
 import net.sf.anathema.character.generic.equipment.weapon.IEquipmentStats;
 import net.sf.anathema.character.model.ICharacter;
-import net.sf.anathema.lib.resources.IResources;
+import net.sf.anathema.lib.resources.Resources;
 
 import java.util.ArrayList;
 import java.util.List;
 
 public class EquipmentCardDataProvider implements ICardDataProvider {
 
-  private final IResources resources;
+  private final Resources resources;
   private final IEquipmentStringBuilder stringBuilder;
   // value of black circle character in standard symbol font
   private final static char SYMBOL_BLACK_CIRCLE = (char) 183;
 
-  public EquipmentCardDataProvider(IResources resources) {
+  public EquipmentCardDataProvider(Resources resources) {
     this.resources = resources;
     this.stringBuilder = new EquipmentStringBuilder(resources);
   }

@@ -7,13 +7,13 @@ import net.sf.anathema.character.generic.magic.description.MagicDescriptionProvi
 import net.sf.anathema.character.model.charm.ICharmConfiguration;
 import net.sf.anathema.charmtree.presenter.view.AbstractCharmTreeViewProperties;
 import net.sf.anathema.charmtree.presenter.view.NullSpecialCharm;
-import net.sf.anathema.lib.resources.IResources;
+import net.sf.anathema.lib.resources.Resources;
 
 public class CharacterCharmTreeViewProperties extends AbstractCharmTreeViewProperties implements ICharmIdMap {
 
   private final ICharmConfiguration configuration;
 
-  public CharacterCharmTreeViewProperties(IResources resources, ICharmConfiguration configuration,
+  public CharacterCharmTreeViewProperties(Resources resources, ICharmConfiguration configuration,
                                           MagicDescriptionProvider magicDescriptionProvider) {
     super(resources, magicDescriptionProvider);
     this.configuration = configuration;

@@ -6,7 +6,7 @@ import net.sf.anathema.character.generic.traits.ITraitType;
 import net.sf.anathema.character.library.trait.DefaultTrait;
 import net.sf.anathema.character.library.trait.IValueChangeChecker;
 import net.sf.anathema.character.library.trait.rules.ITraitRules;
-import net.sf.anathema.lib.resources.IResources;
+import net.sf.anathema.lib.resources.Resources;
 
 public class Background extends DefaultTrait implements IBackground {
   private final String description;
@@ -22,7 +22,7 @@ public class Background extends DefaultTrait implements IBackground {
   }
 
   @Override
-  public String getName(IResources resources) {
+  public String getName(Resources resources) {
     ITraitType type = getType();
     String backgroundId = type.getId();
     if (type instanceof CustomizedBackgroundTemplate) {

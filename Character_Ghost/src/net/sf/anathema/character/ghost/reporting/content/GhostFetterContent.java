@@ -6,7 +6,7 @@ import net.sf.anathema.character.ghost.fetters.model.Fetter;
 import net.sf.anathema.character.ghost.fetters.model.IGhostFettersModel;
 import net.sf.anathema.character.reporting.pdf.content.AbstractSubBoxContent;
 import net.sf.anathema.character.reporting.pdf.content.general.NamedValue;
-import net.sf.anathema.lib.resources.IResources;
+import net.sf.anathema.lib.resources.Resources;
 
 import java.util.Arrays;
 import java.util.List;
@@ -16,7 +16,7 @@ import static com.google.common.collect.Lists.transform;
 public class GhostFetterContent extends AbstractSubBoxContent {
   private IGenericCharacter character;
 
-  public GhostFetterContent(IResources resources, IGenericCharacter character) {
+  public GhostFetterContent(Resources resources, IGenericCharacter character) {
     super(resources);
     this.character = character;
   }

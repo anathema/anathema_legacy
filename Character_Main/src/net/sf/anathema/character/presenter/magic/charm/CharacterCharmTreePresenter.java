@@ -23,7 +23,7 @@ import net.sf.anathema.charmtree.presenter.CharmFilterContainer;
 import net.sf.anathema.charmtree.presenter.view.CharmDisplayPropertiesMap;
 import net.sf.anathema.charmtree.presenter.view.DefaultNodeProperties;
 import net.sf.anathema.charmtree.presenter.view.ICharmView;
-import net.sf.anathema.lib.resources.IResources;
+import net.sf.anathema.lib.resources.Resources;
 import net.sf.anathema.lib.util.Identified;
 import net.sf.anathema.platform.tree.document.visualizer.ITreePresentationProperties;
 
@@ -32,7 +32,7 @@ public class CharacterCharmTreePresenter extends AbstractCascadePresenter implem
   private final ICharmView view;
   private final CharacterCharmModel model;
 
-  public CharacterCharmTreePresenter(IResources resources, IMagicViewFactory factory, CharacterCharmModel charmModel,
+  public CharacterCharmTreePresenter(Resources resources, IMagicViewFactory factory, CharacterCharmModel charmModel,
                                      ITreePresentationProperties presentationProperties, CharmDisplayPropertiesMap displayPropertiesMap) {
     super(resources);
     this.model = charmModel;
@@ -56,7 +56,7 @@ public class CharacterCharmTreePresenter extends AbstractCascadePresenter implem
     setCharmGroups(new CharacterGroupCollection(model));
   }
 
-  private SpecialCharmViewBuilder createSpecialCharmViewBuilder(IResources resources, ICharmConfiguration charmConfiguration) {
+  private SpecialCharmViewBuilder createSpecialCharmViewBuilder(Resources resources, ICharmConfiguration charmConfiguration) {
     return new SwingSpecialCharmViewBuilder(resources, charmConfiguration);
   }
 

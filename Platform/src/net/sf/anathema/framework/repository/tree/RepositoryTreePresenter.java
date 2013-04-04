@@ -4,7 +4,7 @@ import com.google.common.base.Function;
 import net.sf.anathema.framework.item.IItemType;
 import net.sf.anathema.framework.view.PrintNameFile;
 import net.sf.anathema.lib.gui.Presenter;
-import net.sf.anathema.lib.resources.IResources;
+import net.sf.anathema.lib.resources.Resources;
 import net.sf.anathema.lib.util.TreeUtilities;
 
 import javax.swing.JTree;
@@ -27,7 +27,7 @@ public class RepositoryTreePresenter implements Presenter {
   private final TreeCellRenderer renderer;
 
   public RepositoryTreePresenter(
-      IResources resources,
+      Resources resources,
       IRepositoryTreeModel repositoryModel,
       IRepositoryTreeView treeView,
       TreeCellRenderer renderer,

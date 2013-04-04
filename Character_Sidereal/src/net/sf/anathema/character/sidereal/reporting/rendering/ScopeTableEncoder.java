@@ -14,13 +14,13 @@ import net.sf.anathema.character.reporting.pdf.rendering.general.table.AbstractT
 import net.sf.anathema.character.reporting.pdf.rendering.graphics.SheetGraphics;
 import net.sf.anathema.character.reporting.pdf.rendering.graphics.TableCell;
 import net.sf.anathema.character.reporting.pdf.rendering.graphics.TableList;
-import net.sf.anathema.lib.resources.IResources;
+import net.sf.anathema.lib.resources.Resources;
 
 public class ScopeTableEncoder extends AbstractTableEncoder<ReportSession> {
 
-  private final IResources resources;
+  private final Resources resources;
 
-  public ScopeTableEncoder(IResources resources) {
+  public ScopeTableEncoder(Resources resources) {
     this.resources = resources;
   }
 

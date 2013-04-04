@@ -9,7 +9,7 @@ import net.sf.anathema.lib.gui.dialog.core.ISwingFrameOrDialog;
 import net.sf.anathema.lib.gui.dialog.userdialog.UserDialog;
 import net.sf.anathema.lib.gui.dialog.userdialog.page.IDialogPage;
 import net.sf.anathema.lib.gui.swing.GuiUtilities;
-import net.sf.anathema.lib.resources.IResources;
+import net.sf.anathema.lib.resources.Resources;
 
 import java.awt.Component;
 import java.util.ArrayList;
@@ -20,10 +20,10 @@ import static net.sf.anathema.campaign.module.SeriesTypeConfiguration.SERIES_ITE
 
 public abstract class AbstractItemAction extends SmartAction {
 
-  private final IResources resources;
+  private final Resources resources;
   private final IApplicationModel anathemaModel;
 
-  public AbstractItemAction(IApplicationModel anathemaModel, IResources resources) {
+  public AbstractItemAction(IApplicationModel anathemaModel, Resources resources) {
     this.anathemaModel = anathemaModel;
     this.resources = resources;
   }
@@ -41,7 +41,7 @@ public abstract class AbstractItemAction extends SmartAction {
     return anathemaModel;
   }
 
-  protected IResources getResources() {
+  protected Resources getResources() {
     return resources;
   }
 

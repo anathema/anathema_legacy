@@ -3,14 +3,14 @@ package net.sf.anathema.character.reporting.text;
 import com.itextpdf.text.Chunk;
 import com.itextpdf.text.Paragraph;
 import net.sf.anathema.framework.reporting.pdf.PdfReportUtils;
-import net.sf.anathema.lib.resources.IResources;
+import net.sf.anathema.lib.resources.Resources;
 
 public class AbstractTextEncoder {
   private final PdfReportUtils utils;
-  private final IResources resources;
+  private final Resources resources;
   private final TextPartFactory factory;
 
-  public AbstractTextEncoder(PdfReportUtils utils, IResources resources) {
+  public AbstractTextEncoder(PdfReportUtils utils, Resources resources) {
     this.utils = utils;
     this.resources = resources;
     this.factory = new TextPartFactory(utils);

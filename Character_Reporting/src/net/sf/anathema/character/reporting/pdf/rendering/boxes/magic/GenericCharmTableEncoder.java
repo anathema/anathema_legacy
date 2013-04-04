@@ -26,16 +26,16 @@ import net.sf.anathema.character.reporting.pdf.rendering.graphics.SheetGraphics;
 import net.sf.anathema.character.reporting.pdf.rendering.graphics.TableCell;
 import net.sf.anathema.character.reporting.pdf.rendering.page.IVoidStateFormatConstants;
 import net.sf.anathema.character.reporting.pdf.util.MagicLearnUtilities;
-import net.sf.anathema.lib.resources.IResources;
+import net.sf.anathema.lib.resources.Resources;
 
 import java.util.Arrays;
 import java.util.List;
 
 public class GenericCharmTableEncoder extends AbstractTableEncoder<ReportSession> {
 
-  private final IResources resources;
+  private final Resources resources;
 
-  public GenericCharmTableEncoder(IResources resources) {
+  public GenericCharmTableEncoder(Resources resources) {
     this.resources = resources;
   }
 

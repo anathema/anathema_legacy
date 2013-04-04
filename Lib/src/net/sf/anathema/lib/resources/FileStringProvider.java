@@ -11,7 +11,7 @@ import java.text.MessageFormat;
 import java.util.Locale;
 import java.util.Properties;
 
-public class FileStringProvider implements IStringResourceHandler {
+public class FileStringProvider implements Resources {
 
   private final Properties properties = new Properties();
 

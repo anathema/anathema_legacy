@@ -5,7 +5,7 @@ import net.sf.anathema.framework.presenter.IItemManagementModelListener;
 import net.sf.anathema.framework.presenter.resources.PlatformUI;
 import net.sf.anathema.framework.repository.IItem;
 import net.sf.anathema.lib.gui.action.SmartAction;
-import net.sf.anathema.lib.resources.IResources;
+import net.sf.anathema.lib.resources.Resources;
 
 import javax.swing.Action;
 import javax.swing.KeyStroke;
@@ -17,14 +17,14 @@ import static javax.swing.KeyStroke.getKeyStroke;
 
 public class QuickPrintAction extends AbstractPrintAction {
 
-  public static Action createToolAction(IApplicationModel model, IResources resources) {
+  public static Action createToolAction(IApplicationModel model, Resources resources) {
     SmartAction action = new QuickPrintAction(model, resources);
     action.setToolTipText(resources.getString("Anathema.Reporting.Menu.QuickPrint.Tooltip"));
     action.setIcon(new PlatformUI().getPDFTaskBarIcon());
     return action;
   }
 
-  private QuickPrintAction(IApplicationModel anathemaModel, IResources resources) {
+  private QuickPrintAction(IApplicationModel anathemaModel, Resources resources) {
     super(anathemaModel, resources);
   }
 

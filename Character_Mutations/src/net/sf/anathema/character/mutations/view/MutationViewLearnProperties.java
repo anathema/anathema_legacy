@@ -7,7 +7,7 @@ import net.sf.anathema.character.mutations.model.IMutation;
 import net.sf.anathema.character.mutations.model.IMutationsModel;
 import net.sf.anathema.lib.gui.TooltipBuilder;
 import net.sf.anathema.lib.gui.list.LegalityCheckListCellRenderer;
-import net.sf.anathema.lib.resources.IResources;
+import net.sf.anathema.lib.resources.Resources;
 
 import javax.swing.DefaultListCellRenderer;
 import javax.swing.JButton;
@@ -23,7 +23,7 @@ public class MutationViewLearnProperties extends AbstractMagicLearnProperties im
 
   private final IMutationsModel model;
 
-  public MutationViewLearnProperties(IResources resources, IMutationsModel model) {
+  public MutationViewLearnProperties(Resources resources, IMutationsModel model) {
     super(resources);
     this.model = model;
   }
@@ -55,7 +55,7 @@ public class MutationViewLearnProperties extends AbstractMagicLearnProperties im
       }
 
       @Override
-      protected String getPrintName(IResources res, Object value) {
+      protected String getPrintName(Resources res, Object value) {
         return getMutationString((IMutation) value, true);
       }
     };

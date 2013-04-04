@@ -12,13 +12,13 @@ import net.sf.anathema.character.reporting.pdf.rendering.boxes.StatsModifierFact
 import net.sf.anathema.character.reporting.pdf.rendering.boxes.health.AbstractHealthAndMovementTableEncoder;
 import net.sf.anathema.character.reporting.pdf.rendering.extent.Bounds;
 import net.sf.anathema.character.reporting.pdf.rendering.graphics.SheetGraphics;
-import net.sf.anathema.lib.resources.IResources;
+import net.sf.anathema.lib.resources.Resources;
 
 public class HealthAndMovementTableEncoder extends AbstractHealthAndMovementTableEncoder {
   
   private int mobilityPenalty;
   
-  public HealthAndMovementTableEncoder(IResources resources) {
+  public HealthAndMovementTableEncoder(Resources resources) {
     super(resources);
   }
   

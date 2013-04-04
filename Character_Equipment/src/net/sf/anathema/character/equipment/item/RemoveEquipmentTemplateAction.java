@@ -7,13 +7,13 @@ import net.sf.anathema.interaction.Command;
 import net.sf.anathema.interaction.Tool;
 import net.sf.anathema.lib.control.ObjectValueListener;
 import net.sf.anathema.lib.gui.dialog.userdialog.buttons.ConfigurableVetor;
-import net.sf.anathema.lib.resources.IResources;
+import net.sf.anathema.lib.resources.Resources;
 
 public class RemoveEquipmentTemplateAction {
   private final IEquipmentDatabaseManagement model;
-  private final IResources resources;
+  private final Resources resources;
 
-  public RemoveEquipmentTemplateAction(IResources resources, IEquipmentDatabaseManagement model) {
+  public RemoveEquipmentTemplateAction(Resources resources, IEquipmentDatabaseManagement model) {
     this.resources = resources;
     this.model = model;
   }

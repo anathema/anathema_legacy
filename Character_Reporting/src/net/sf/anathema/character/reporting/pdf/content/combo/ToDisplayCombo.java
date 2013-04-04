@@ -4,13 +4,13 @@ import com.google.common.base.Function;
 import com.google.common.base.Joiner;
 import net.sf.anathema.character.generic.magic.IGenericCombo;
 import net.sf.anathema.character.reporting.pdf.content.magic.CharmPrintNameTransformer;
-import net.sf.anathema.lib.resources.IResources;
+import net.sf.anathema.lib.resources.Resources;
 
 public class ToDisplayCombo implements Function<IGenericCombo, DisplayCombo> {
 
-  private IResources resources;
+  private Resources resources;
 
-  public ToDisplayCombo(IResources resources) {
+  public ToDisplayCombo(Resources resources) {
     this.resources = resources;
   }
 

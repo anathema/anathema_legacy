@@ -8,7 +8,7 @@ import net.sf.anathema.lib.gui.action.SmartAction;
 import net.sf.anathema.lib.io.PathUtils;
 import net.sf.anathema.lib.lang.StringUtilities;
 import net.sf.anathema.lib.message.Message;
-import net.sf.anathema.lib.resources.IResources;
+import net.sf.anathema.lib.resources.Resources;
 import org.apache.commons.io.IOUtils;
 
 import javax.swing.KeyStroke;
@@ -24,9 +24,9 @@ import static java.awt.Desktop.isDesktopSupported;
 public abstract class AbstractPrintAction extends SmartAction {
   public static final String PDF_EXTENSION = ".pdf"; //$NON-NLS-1$
   protected final IApplicationModel anathemaModel;
-  protected final IResources resources;
+  protected final Resources resources;
 
-  public AbstractPrintAction(IApplicationModel anathemaModel, IResources resources) {
+  public AbstractPrintAction(IApplicationModel anathemaModel, Resources resources) {
     this.anathemaModel = anathemaModel;
     this.resources = resources;
     setHotKey();

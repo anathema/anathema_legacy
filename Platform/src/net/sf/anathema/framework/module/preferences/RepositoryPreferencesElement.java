@@ -11,7 +11,7 @@ import net.sf.anathema.lib.gui.action.SmartAction;
 import net.sf.anathema.lib.gui.dialog.message.MessageDialogFactory;
 import net.sf.anathema.lib.io.PathUtils;
 import net.sf.anathema.lib.message.Message;
-import net.sf.anathema.lib.resources.IResources;
+import net.sf.anathema.lib.resources.Resources;
 import net.sf.anathema.lib.util.Identified;
 import net.sf.anathema.lib.util.Identifier;
 
@@ -38,7 +38,7 @@ public class RepositoryPreferencesElement implements IPreferencesElement {
   private boolean dirty;
   private boolean modificationAllowed = false;
   private JTextField repositoryTextField;
-  private IResources resources;
+  private Resources resources;
 
   public RepositoryPreferencesElement() {
     try {
@@ -69,7 +69,7 @@ public class RepositoryPreferencesElement implements IPreferencesElement {
   }
 
   @Override
-  public void addComponent(JPanel panel, IResources resource) {
+  public void addComponent(JPanel panel, Resources resource) {
     verifyDirectoriesExist();
     this.resources = resource;
     final JLabel repositoryLabel = new JLabel(resources.getString(

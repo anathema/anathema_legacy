@@ -25,7 +25,7 @@ import net.sf.anathema.framework.reporting.ReportException;
 import net.sf.anathema.framework.reporting.pdf.AbstractPdfReport;
 import net.sf.anathema.framework.reporting.pdf.PageSize;
 import net.sf.anathema.framework.repository.IItem;
-import net.sf.anathema.lib.resources.IResources;
+import net.sf.anathema.lib.resources.Resources;
 
 import java.util.ArrayList;
 import java.util.Collections;
@@ -33,11 +33,11 @@ import java.util.List;
 
 public class ExtendedSheetReport extends AbstractPdfReport {
 
-  private final IResources resources;
+  private final Resources resources;
   private final PageSizePreference pageSizePreference;
   private CharacterReportingModuleObject reportingModuleObject;
 
-  public ExtendedSheetReport(IResources resources, ICharacterGenerics characterGenerics,
+  public ExtendedSheetReport(Resources resources, ICharacterGenerics characterGenerics,
                              PageSizePreference pageSizePreference) {
     this.resources = resources;
     this.pageSizePreference = pageSizePreference;

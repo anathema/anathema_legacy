@@ -10,7 +10,7 @@ import net.sf.anathema.character.view.IBasicAdvantageView;
 import net.sf.anathema.framework.value.IIntValueView;
 import net.sf.anathema.lib.control.IChangeListener;
 import net.sf.anathema.lib.gui.Presenter;
-import net.sf.anathema.lib.resources.IResources;
+import net.sf.anathema.lib.resources.Resources;
 import net.sf.anathema.lib.workflow.labelledvalue.IValueView;
 import net.sf.anathema.lib.workflow.labelledvalue.NullValueView;
 
@@ -18,10 +18,10 @@ public class EssenceConfigurationPresenter implements Presenter {
 
   private final IBasicAdvantageView view;
   private final IEssencePoolConfiguration essence;
-  private final IResources resources;
+  private final Resources resources;
   private final ICoreTraitConfiguration traitConfiguration;
 
-  public EssenceConfigurationPresenter(IResources resources, IEssencePoolConfiguration essence, ICoreTraitConfiguration traitConfiguration,
+  public EssenceConfigurationPresenter(Resources resources, IEssencePoolConfiguration essence, ICoreTraitConfiguration traitConfiguration,
                                        IBasicAdvantageView view) {
     this.resources = resources;
     this.essence = essence;

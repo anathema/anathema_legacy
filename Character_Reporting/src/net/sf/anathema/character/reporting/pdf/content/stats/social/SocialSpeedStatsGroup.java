@@ -3,11 +3,11 @@ package net.sf.anathema.character.reporting.pdf.content.stats.social;
 import com.itextpdf.text.Font;
 import com.itextpdf.text.pdf.PdfPTable;
 import net.sf.anathema.character.generic.social.ISocialCombatStats;
-import net.sf.anathema.lib.resources.IResources;
+import net.sf.anathema.lib.resources.Resources;
 
 public class SocialSpeedStatsGroup extends AbstractSocialCombatsValueStatsGroup {
 
-  public SocialSpeedStatsGroup(IResources resources) {
+  public SocialSpeedStatsGroup(Resources resources) {
     super(resources, "Speed"); //$NON-NLS-1$
   }
 

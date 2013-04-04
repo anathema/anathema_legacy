@@ -9,13 +9,13 @@ import net.sf.anathema.interaction.Command;
 import net.sf.anathema.interaction.Tool;
 import net.sf.anathema.lib.control.IChangeListener;
 import net.sf.anathema.lib.control.ObjectValueListener;
-import net.sf.anathema.lib.resources.IResources;
+import net.sf.anathema.lib.resources.Resources;
 
 public class SaveEquipmentTemplateAction {
-  private final IResources resources;
+  private final Resources resources;
   private final IEquipmentDatabaseManagement model;
 
-  public SaveEquipmentTemplateAction(IResources resources, IEquipmentDatabaseManagement model) {
+  public SaveEquipmentTemplateAction(Resources resources, IEquipmentDatabaseManagement model) {
     this.resources = resources;
     this.model = model;
   }

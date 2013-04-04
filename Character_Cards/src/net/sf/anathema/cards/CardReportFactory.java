@@ -12,7 +12,7 @@ import net.sf.anathema.framework.initialization.IReportFactory;
 import net.sf.anathema.framework.reporting.Report;
 import net.sf.anathema.initialization.ReportFactoryAutoCollector;
 import net.sf.anathema.initialization.reflections.Weight;
-import net.sf.anathema.lib.resources.IResources;
+import net.sf.anathema.lib.resources.Resources;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -21,7 +21,7 @@ import java.util.List;
 @Weight(weight = 40)
 public class CardReportFactory implements IReportFactory {
   @Override
-  public Report[] createReport(IResources resources, IApplicationModel model) {
+  public Report[] createReport(Resources resources, IApplicationModel model) {
     List<ICardDataProvider> dataProviders = new ArrayList<>();
     dataProviders.add(new CharmCardDataProvider(model, resources));
     dataProviders.add(new SpellCardDataProvider(model, resources));

@@ -7,13 +7,13 @@ import net.sf.anathema.character.generic.traits.types.VirtueType;
 import net.sf.anathema.character.reporting.pdf.content.AbstractSubBoxContent;
 import net.sf.anathema.character.reporting.pdf.content.general.NamedValue;
 import net.sf.anathema.character.reporting.pdf.content.general.PrintTrait;
-import net.sf.anathema.lib.resources.IResources;
+import net.sf.anathema.lib.resources.Resources;
 
 public class VirtueContent extends AbstractSubBoxContent {
 
   private IGenericCharacter character;
 
-  public VirtueContent(IResources resources, IGenericCharacter character) {
+  public VirtueContent(Resources resources, IGenericCharacter character) {
     super(resources);
     this.character = character;
   }
@@ -37,7 +37,7 @@ public class VirtueContent extends AbstractSubBoxContent {
   private NamedValue getVirtue(VirtueType type) {
     IGenericTraitCollection virtueCollection = getVirtueCollection();
     IGenericTrait virtue = virtueCollection.getTrait(type);
-    IResources resources = getResources();
+    Resources resources = getResources();
     return new PrintTrait(resources, virtue);
   }
 

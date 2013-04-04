@@ -1,6 +1,6 @@
 package net.sf.anathema.lib.gui.list;
 
-import net.sf.anathema.lib.resources.IResources;
+import net.sf.anathema.lib.resources.Resources;
 import net.sf.anathema.lib.util.Identified;
 
 import javax.swing.DefaultListCellRenderer;
@@ -8,9 +8,9 @@ import javax.swing.JList;
 import java.awt.Component;
 
 public abstract class LegalityCheckListCellRenderer extends DefaultListCellRenderer {
-  private final IResources resources;
+  private final Resources resources;
 
-  protected LegalityCheckListCellRenderer(IResources resources) {
+  protected LegalityCheckListCellRenderer(Resources resources) {
     this.resources = resources;
   }
 
@@ -27,7 +27,7 @@ public abstract class LegalityCheckListCellRenderer extends DefaultListCellRende
 
   protected abstract boolean isLegal(Object object);
 
-  protected String getPrintName(IResources res, Object value) {
+  protected String getPrintName(Resources res, Object value) {
     return res.getString(((Identified) value).getId());
   }
 }

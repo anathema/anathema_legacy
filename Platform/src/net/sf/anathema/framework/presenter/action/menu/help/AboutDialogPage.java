@@ -6,7 +6,7 @@ import net.miginfocom.swing.MigLayout;
 import net.sf.anathema.lib.gui.dialog.userdialog.page.AbstractDialogPage;
 import net.sf.anathema.lib.message.BasicMessage;
 import net.sf.anathema.lib.message.IBasicMessage;
-import net.sf.anathema.lib.resources.IResources;
+import net.sf.anathema.lib.resources.Resources;
 
 import javax.swing.JComponent;
 import javax.swing.JLabel;
@@ -14,9 +14,9 @@ import javax.swing.JPanel;
 
 public class AboutDialogPage extends AbstractDialogPage {
 
-  private final IResources resources;
+  private final Resources resources;
 
-  public AboutDialogPage(IResources resources) {
+  public AboutDialogPage(Resources resources) {
     super(resources.getString("Help.AboutDialog.CreatedLabel")+"\n\n"+resources.getString("Help.AboutDialog.LicenseLabel")); //$NON-NLS-1$
     this.resources = resources;
   }

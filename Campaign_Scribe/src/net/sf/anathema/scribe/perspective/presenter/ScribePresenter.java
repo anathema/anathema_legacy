@@ -2,7 +2,7 @@ package net.sf.anathema.scribe.perspective.presenter;
 
 import net.sf.anathema.interaction.Command;
 import net.sf.anathema.interaction.Tool;
-import net.sf.anathema.lib.resources.IResources;
+import net.sf.anathema.lib.resources.Resources;
 import net.sf.anathema.scribe.editor.presenter.ScrollPresenter;
 import net.sf.anathema.scribe.perspective.model.ScribeModel;
 import net.sf.anathema.scribe.perspective.view.ScribeView;
@@ -11,9 +11,9 @@ public class ScribePresenter {
 
   private ScribeView view;
   private ScribeModel model;
-  private IResources resources;
+  private Resources resources;
 
-  public ScribePresenter(ScribeModel model, ScribeView view, IResources resources) {
+  public ScribePresenter(ScribeModel model, ScribeView view, Resources resources) {
     this.view = view;
     this.model = model;
     this.resources = resources;

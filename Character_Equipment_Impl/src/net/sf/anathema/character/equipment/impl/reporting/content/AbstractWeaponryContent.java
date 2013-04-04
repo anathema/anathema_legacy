@@ -12,11 +12,11 @@ import net.sf.anathema.character.equipment.impl.reporting.content.stats.weapons.
 import net.sf.anathema.character.generic.character.IGenericCharacter;
 import net.sf.anathema.character.generic.character.IGenericTraitCollection;
 import net.sf.anathema.character.generic.equipment.weapon.IWeaponStats;
-import net.sf.anathema.lib.resources.IResources;
+import net.sf.anathema.lib.resources.Resources;
 
 public abstract class AbstractWeaponryContent extends AbstractEquipmentContent<IWeaponStats> {
 
-  public AbstractWeaponryContent(IResources resources, IGenericCharacter character) {
+  public AbstractWeaponryContent(Resources resources, IGenericCharacter character) {
     super(resources, character);
   }
 

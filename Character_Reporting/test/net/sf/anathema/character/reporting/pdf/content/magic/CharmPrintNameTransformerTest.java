@@ -5,7 +5,7 @@ import net.sf.anathema.character.generic.magic.ICharm;
 import net.sf.anathema.character.generic.traits.IGenericTrait;
 import net.sf.anathema.character.generic.traits.types.AbilityType;
 import net.sf.anathema.dummy.character.magic.DummyCharm;
-import net.sf.anathema.lib.resources.IResources;
+import net.sf.anathema.lib.resources.Resources;
 import org.junit.Before;
 import org.junit.Test;
 
@@ -15,7 +15,7 @@ import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.when;
 
 public class CharmPrintNameTransformerTest {
-  IResources resources = mock(IResources.class);
+  Resources resources = mock(Resources.class);
   DummyCharm charm = new DummyCharm("Abyssal.SecondExcellency.Archery", new ICharm[0],
           new IGenericTrait[]{new DummyGenericTrait(AbilityType.Archery, 5)});
 

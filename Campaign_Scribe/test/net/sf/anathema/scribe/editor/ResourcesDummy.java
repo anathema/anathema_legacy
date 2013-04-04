@@ -1,27 +1,15 @@
 package net.sf.anathema.scribe.editor;
 
-import net.sf.anathema.lib.resources.IResources;
+import net.sf.anathema.lib.resources.Resources;
 
-import javax.swing.Icon;
-import java.awt.Image;
 import java.util.HashMap;
 import java.util.Map;
 
 import static java.text.MessageFormat.format;
 
-public class ResourcesDummy implements IResources {
+public class ResourcesDummy implements Resources {
 
   public final Map<String, String> patternsByKey = new HashMap<>();
-
-  @Override
-  public Image getImage(Class<?> inquirer, String relativePath) {
-    throw new UnsupportedOperationException();
-  }
-
-  @Override
-  public Icon getImageIcon(Class<?> inquirer, String relativePath) {
-    throw new UnsupportedOperationException();
-  }
 
   @Override
   public boolean supportsKey(String key) {

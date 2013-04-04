@@ -8,16 +8,16 @@ import net.sf.anathema.character.reporting.pdf.rendering.boxes.EncodingMetrics;
 import net.sf.anathema.character.reporting.pdf.rendering.graphics.SheetGraphics;
 import net.sf.anathema.character.reporting.pdf.rendering.page.PageConfiguration;
 import net.sf.anathema.framework.reporting.pdf.PageSize;
-import net.sf.anathema.lib.resources.IResources;
+import net.sf.anathema.lib.resources.Resources;
 
 public class Sheet {
 
   private Document document;
   private final EncoderRegistry encoders;
-  private final IResources resources;
+  private final Resources resources;
   private PageSize pageSize;
 
-  public Sheet(Document document, EncoderRegistry encoders, IResources resources, PageSize pageSize) {
+  public Sheet(Document document, EncoderRegistry encoders, Resources resources, PageSize pageSize) {
     this.document = document;
     this.encoders = encoders;
     this.resources = resources;

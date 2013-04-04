@@ -1,6 +1,6 @@
 package net.sf.anathema.charmtree.filters;
 
-import net.sf.anathema.lib.resources.IResources;
+import net.sf.anathema.lib.resources.Resources;
 
 import javax.swing.BorderFactory;
 import javax.swing.JCheckBox;
@@ -11,10 +11,10 @@ import java.awt.event.ItemListener;
 
 public class ObtainableCharmFilterPage implements ICharmFilterPage
 {
-	IResources resources;
+	Resources resources;
 	boolean[] setting;
 	
-	public ObtainableCharmFilterPage(IResources resources, boolean[] setting)
+	public ObtainableCharmFilterPage(Resources resources, boolean[] setting)
 	{
 		this.resources = resources;
 		this.setting = setting;

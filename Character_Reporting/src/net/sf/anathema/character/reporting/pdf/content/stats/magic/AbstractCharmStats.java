@@ -8,7 +8,7 @@ import net.sf.anathema.character.generic.magic.ICharm;
 import net.sf.anathema.character.generic.magic.IMagicStats;
 import net.sf.anathema.character.generic.magic.charms.ICharmAttribute;
 import net.sf.anathema.character.generic.magic.charms.type.ICharmTypeModel;
-import net.sf.anathema.lib.resources.IResources;
+import net.sf.anathema.lib.resources.Resources;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -22,23 +22,23 @@ public abstract class AbstractCharmStats extends AbstractMagicStats<ICharm> {
   }
 
   @Override
-  public String getGroupName(IResources resources) {
+  public String getGroupName(Resources resources) {
     return resources.getString(getMagic().getGroupId());
   }
 
   @Override
-  public String getType(IResources resources) {
+  public String getType(Resources resources) {
     ICharmTypeModel model = getMagic().getCharmTypeModel();
     return new ShortCharmTypeStringBuilder(resources).createTypeString(model);
   }
 
   @Override
-  public String getDurationString(IResources resources) {
+  public String getDurationString(Resources resources) {
     return getMagic().getDuration().getText(resources);
   }
 
   @Override
-  public String getSourceString(IResources resources) {
+  public String getSourceString(Resources resources) {
     IMagicSourceStringBuilder<ICharm> stringBuilder = new MagicSourceStringBuilder<>(resources);
     return stringBuilder.createShortSourceString(getMagic());
   }
@@ -55,7 +55,7 @@ public abstract class AbstractCharmStats extends AbstractMagicStats<ICharm> {
   }
 
   @Override
-  public String[] getDetailStrings(final IResources resources) {
+  public String[] getDetailStrings(final Resources resources) {
     return transform(getDetailKeys(), String.class, new Function<String, String>() {
       @Override
       public String apply(String input) {

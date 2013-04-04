@@ -6,7 +6,7 @@ import net.sf.anathema.character.equipment.creation.model.stats.IOffensiveStatis
 import net.sf.anathema.character.equipment.creation.model.stats.IWeaponDamageModel;
 import net.sf.anathema.character.equipment.creation.presenter.stats.properties.OffensiveStatisticsProperties;
 import net.sf.anathema.character.equipment.creation.view.IWeaponDamageView;
-import net.sf.anathema.lib.resources.IResources;
+import net.sf.anathema.lib.resources.Resources;
 
 import javax.swing.JPanel;
 import java.awt.Component;
@@ -15,7 +15,7 @@ public abstract class AbstractOffensiveStatisticsPresenterPage<O extends IOffens
     AbstractEquipmentStatisticsPresenterPage<O, P> {
 
   public AbstractOffensiveStatisticsPresenterPage(
-      IResources resources,
+      Resources resources,
       P properties,
       IEquipmentStatisticsCreationModel overallModel,
       O pageModel,

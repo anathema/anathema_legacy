@@ -4,18 +4,18 @@ import net.sf.anathema.character.perspective.CharacterGridView;
 import net.sf.anathema.character.perspective.Selector;
 import net.sf.anathema.character.perspective.model.model.CharacterIdentifier;
 import net.sf.anathema.character.perspective.model.model.ItemSelectionModel;
-import net.sf.anathema.lib.resources.IResources;
+import net.sf.anathema.lib.resources.Resources;
 import net.sf.anathema.swing.character.perspective.InteractionView;
 
 public class InteractionPresenter {
 
   private ItemSelectionModel model;
   private InteractionView view;
-  private IResources resources;
+  private Resources resources;
   private CharacterGridView gridView;
   private Selector<CharacterIdentifier> selector;
 
-  public InteractionPresenter(ItemSelectionModel model, InteractionView view, IResources resources, CharacterGridView gridView,
+  public InteractionPresenter(ItemSelectionModel model, InteractionView view, Resources resources, CharacterGridView gridView,
                               Selector<CharacterIdentifier> selector) {
     this.model = model;
     this.view = view;

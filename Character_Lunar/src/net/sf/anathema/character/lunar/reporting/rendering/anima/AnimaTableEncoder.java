@@ -7,11 +7,11 @@ import com.itextpdf.text.pdf.PdfPTable;
 import net.sf.anathema.character.reporting.pdf.content.ReportSession;
 import net.sf.anathema.character.reporting.pdf.content.stats.anima.ColumnDescriptor;
 import net.sf.anathema.character.reporting.pdf.rendering.graphics.SheetGraphics;
-import net.sf.anathema.lib.resources.IResources;
+import net.sf.anathema.lib.resources.Resources;
 
 public class AnimaTableEncoder extends net.sf.anathema.character.reporting.pdf.rendering.boxes.anima.AnimaTableEncoder {
 
-  public AnimaTableEncoder(IResources resources, float fontSize) {
+  public AnimaTableEncoder(Resources resources, float fontSize) {
     super(resources, fontSize);
   }
 

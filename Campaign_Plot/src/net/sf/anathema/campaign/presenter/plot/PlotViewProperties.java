@@ -3,16 +3,16 @@ package net.sf.anathema.campaign.presenter.plot;
 import net.sf.anathema.campaign.presenter.view.plot.IPlotViewProperties;
 import net.sf.anathema.framework.presenter.resources.BasicUi;
 import net.sf.anathema.lib.gui.action.SmartAction;
-import net.sf.anathema.lib.resources.IResources;
+import net.sf.anathema.lib.resources.Resources;
 
 import javax.swing.Icon;
 
 public class PlotViewProperties implements IPlotViewProperties {
 
   private final BasicUi basicUi = new BasicUi();
-  private final IResources resources;
+  private final Resources resources;
 
-  public PlotViewProperties(IResources resources) {
+  public PlotViewProperties(Resources resources) {
     this.resources = resources;
   }
 

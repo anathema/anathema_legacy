@@ -3,7 +3,7 @@ package net.sf.anathema.character.equipment.creation.presenter.stats;
 import net.sf.anathema.character.equipment.creation.model.stats.IArtifactStatisticsModel;
 import net.sf.anathema.character.equipment.creation.model.stats.IEquipmentStatisticsCreationModel;
 import net.sf.anathema.character.equipment.creation.presenter.stats.properties.ArtifactStatisticsProperties;
-import net.sf.anathema.lib.resources.IResources;
+import net.sf.anathema.lib.resources.Resources;
 import net.sf.anathema.lib.workflow.booleanvalue.BooleanValuePresentation;
 
 import javax.swing.JCheckBox;
@@ -13,7 +13,7 @@ public class ArtifactStatisticsPresenterPage extends
     AbstractEquipmentStatisticsPresenterPage<IArtifactStatisticsModel, ArtifactStatisticsProperties> {
 
   public ArtifactStatisticsPresenterPage(
-      IResources resources,
+      Resources resources,
       IEquipmentStatisticsCreationModel model,
       IEquipmentStatisticsCreationViewFactory viewFactory) {
     super(resources, new ArtifactStatisticsProperties(resources), model, model.getArtifactStatisticsModel(), viewFactory);

@@ -2,15 +2,15 @@ package net.sf.anathema.character.generic.framework.magic.stringbuilder;
 
 import net.sf.anathema.character.generic.magic.general.IHealthCost;
 import net.sf.anathema.lib.gui.TooltipBuilder;
-import net.sf.anathema.lib.resources.IResources;
+import net.sf.anathema.lib.resources.Resources;
 
 public class HealthCostStringBuilder extends AbstractCostStringBuilder<IHealthCost> {
 
-  public HealthCostStringBuilder(IResources resources, String key) {
+  public HealthCostStringBuilder(Resources resources, String key) {
     super(resources, key, key);
   }
 
-  public HealthCostStringBuilder(IResources resources, String singularKey, String pluralKey) {
+  public HealthCostStringBuilder(Resources resources, String singularKey, String pluralKey) {
     super(resources, singularKey, pluralKey);
   }
 

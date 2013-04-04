@@ -6,15 +6,15 @@ import net.sf.anathema.character.generic.framework.magic.stringbuilder.source.Ma
 import net.sf.anathema.character.generic.magic.ISpell;
 import net.sf.anathema.character.generic.magic.description.MagicDescriptionProvider;
 import net.sf.anathema.lib.gui.TooltipBuilder;
-import net.sf.anathema.lib.resources.IResources;
+import net.sf.anathema.lib.resources.Resources;
 
 public class SpellTooltipBuilder {
 
-  private final IResources resources;
+  private final Resources resources;
   private final SpellViewProperties properties;
   private MagicDescriptionProvider magicDescriptionProvider;
 
-  public SpellTooltipBuilder(IResources resources, SpellViewProperties properties, MagicDescriptionProvider magicDescriptionProvider) {
+  public SpellTooltipBuilder(Resources resources, SpellViewProperties properties, MagicDescriptionProvider magicDescriptionProvider) {
     this.resources = resources;
     this.properties = properties;
     this.magicDescriptionProvider = magicDescriptionProvider;

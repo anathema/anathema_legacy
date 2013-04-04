@@ -8,7 +8,7 @@ import net.sf.anathema.framework.module.PreferencesElementsExtensionPoint;
 import net.sf.anathema.framework.presenter.action.preferences.IPreferencesElement;
 import net.sf.anathema.framework.view.ApplicationView;
 import net.sf.anathema.lib.control.IChangeListener;
-import net.sf.anathema.lib.resources.IResources;
+import net.sf.anathema.lib.resources.Resources;
 
 import java.util.Collection;
 
@@ -16,11 +16,11 @@ public class AnathemaPresenter {
 
   private final IApplicationModel model;
   private final ApplicationView view;
-  private final IResources resources;
+  private final Resources resources;
   private final Collection<IItemTypeConfiguration> itemTypeConfigurations;
   private final Instantiater instantiater;
 
-  public AnathemaPresenter(IApplicationModel model, ApplicationView view, IResources resources,
+  public AnathemaPresenter(IApplicationModel model, ApplicationView view, Resources resources,
                            Collection<IItemTypeConfiguration> itemTypeConfigurations, Instantiater instantiater) {
     this.instantiater = instantiater;
     this.model = model;

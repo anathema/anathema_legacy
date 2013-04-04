@@ -16,13 +16,13 @@ import net.sf.anathema.character.reporting.pdf.content.stats.social.SocialRateSt
 import net.sf.anathema.character.reporting.pdf.content.stats.social.SocialSpeedStatsGroup;
 import net.sf.anathema.character.reporting.pdf.rendering.boxes.StatsModifierFactory;
 import net.sf.anathema.character.reporting.pdf.rendering.general.stats.AbstractFixedLineStatsTableEncoder;
-import net.sf.anathema.lib.resources.IResources;
+import net.sf.anathema.lib.resources.Resources;
 
 public class SocialCombatStatsTableEncoder extends AbstractFixedLineStatsTableEncoder<ISocialCombatStats> {
 
-  private final IResources resources;
+  private final Resources resources;
 
-  public SocialCombatStatsTableEncoder(IResources resources) {
+  public SocialCombatStatsTableEncoder(Resources resources) {
     this.resources = resources;
   }
 

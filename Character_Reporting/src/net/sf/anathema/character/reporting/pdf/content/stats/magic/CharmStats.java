@@ -2,7 +2,7 @@ package net.sf.anathema.character.reporting.pdf.content.stats.magic;
 
 import net.sf.anathema.character.generic.character.IGenericCharacter;
 import net.sf.anathema.character.generic.magic.ICharm;
-import net.sf.anathema.lib.resources.IResources;
+import net.sf.anathema.lib.resources.Resources;
 
 import java.util.ArrayList;
 import java.util.Collections;
@@ -31,7 +31,7 @@ public class CharmStats extends AbstractCharmStats {
   }
 
   @Override
-  public String getNameString(IResources resources) {
+  public String getNameString(Resources resources) {
     StringBuilder nameString = new StringBuilder();
     nameString.append(resources.getString(getMagic().getId()));
     int learnCount = character.getLearnCount(getMagic());

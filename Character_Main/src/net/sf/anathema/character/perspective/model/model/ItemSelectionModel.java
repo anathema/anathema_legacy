@@ -1,7 +1,7 @@
 package net.sf.anathema.character.perspective.model.model;
 
 import net.sf.anathema.lib.control.IChangeListener;
-import net.sf.anathema.lib.resources.IResources;
+import net.sf.anathema.lib.resources.Resources;
 
 import java.io.IOException;
 
@@ -21,11 +21,11 @@ public interface ItemSelectionModel {
 
   void convertCurrentToExperienced();
 
-  void printCurrentItemQuickly(IResources resources);
+  void printCurrentItemQuickly(Resources resources);
 
-  void printCurrentItemControlled(IResources resources);
+  void printCurrentItemControlled(Resources resources);
 
-  void createNew(IResources resources);
+  void createNew(Resources resources);
 
   void whenNewCharacterIsAdded(NewCharacterListener listener);
 }

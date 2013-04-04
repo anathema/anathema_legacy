@@ -1,12 +1,12 @@
 package net.sf.anathema.character.reporting.pdf.content;
 
-import net.sf.anathema.lib.resources.IResources;
+import net.sf.anathema.lib.resources.Resources;
 
 public abstract class AbstractSubContent implements SubContent {
 
-  private IResources resources;
+  private Resources resources;
 
-  protected AbstractSubContent(IResources resources) {
+  protected AbstractSubContent(Resources resources) {
     this.resources = resources;
   }
   
@@ -14,7 +14,7 @@ public abstract class AbstractSubContent implements SubContent {
     return resources.getString(key, args);
   }
 
-  protected IResources getResources() {
+  protected Resources getResources() {
     return resources;
   }
 

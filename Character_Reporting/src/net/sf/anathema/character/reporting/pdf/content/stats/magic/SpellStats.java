@@ -5,7 +5,7 @@ import net.sf.anathema.character.generic.framework.magic.stringbuilder.IMagicSou
 import net.sf.anathema.character.generic.framework.magic.stringbuilder.source.MagicSourceStringBuilder;
 import net.sf.anathema.character.generic.magic.IMagicStats;
 import net.sf.anathema.character.generic.magic.ISpell;
-import net.sf.anathema.lib.resources.IResources;
+import net.sf.anathema.lib.resources.Resources;
 import org.apache.commons.lang3.builder.HashCodeBuilder;
 
 import static net.sf.anathema.lib.lang.ArrayUtilities.transform;
@@ -17,22 +17,22 @@ public class SpellStats extends AbstractMagicStats<ISpell> {
   }
 
   @Override
-  public String getGroupName(IResources resources) {
+  public String getGroupName(Resources resources) {
     return resources.getString("Sheet.Magic.Group.Sorcery"); //$NON-NLS-1$
   }
 
   @Override
-  public String getType(IResources resources) {
+  public String getType(Resources resources) {
     return resources.getString(getMagic().getCircleType().getId());
   }
 
   @Override
-  public String getDurationString(IResources resources) {
+  public String getDurationString(Resources resources) {
     return "-"; //$NON-NLS-1$
   }
 
   @Override
-  public String getSourceString(IResources resources) {
+  public String getSourceString(Resources resources) {
     IMagicSourceStringBuilder<ISpell> stringBuilder = new MagicSourceStringBuilder<>(resources);
     return stringBuilder.createShortSourceString(getMagic());
   }
@@ -46,7 +46,7 @@ public class SpellStats extends AbstractMagicStats<ISpell> {
   }
 
   @Override
-  public String[] getDetailStrings(final IResources resources) {
+  public String[] getDetailStrings(final Resources resources) {
     return transform(getDetailKeys(), String.class, new Function<String, String>() {
       @Override
       public String apply(String input) {
@@ -56,7 +56,7 @@ public class SpellStats extends AbstractMagicStats<ISpell> {
   }
 
   @Override
-  public String getNameString(IResources resources) {
+  public String getNameString(Resources resources) {
     return resources.getString(getMagic().getId());
   }
 

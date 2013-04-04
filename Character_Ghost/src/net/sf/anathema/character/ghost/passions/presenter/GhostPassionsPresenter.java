@@ -22,7 +22,7 @@ import net.sf.anathema.lib.collection.IdentityMapping;
 import net.sf.anathema.lib.control.IChangeListener;
 import net.sf.anathema.lib.control.ObjectValueListener;
 import net.sf.anathema.lib.gui.Presenter;
-import net.sf.anathema.lib.resources.IResources;
+import net.sf.anathema.lib.resources.Resources;
 import net.sf.anathema.lib.workflow.labelledvalue.ILabelledAlotmentView;
 
 import javax.swing.Icon;
@@ -64,11 +64,11 @@ public class GhostPassionsPresenter implements Presenter {
     }
   };
 
-  private final IResources resources;
+  private final Resources resources;
   private final IGhostPassionsConfigurationView view;
   private final IGhostPassionsModel model;
 
-  public GhostPassionsPresenter(IResources resources, IGhostPassionsConfigurationView view, IGhostPassionsModel model) {
+  public GhostPassionsPresenter(Resources resources, IGhostPassionsConfigurationView view, IGhostPassionsModel model) {
     this.model = model;
     this.view = view;
     this.resources = resources;

@@ -6,15 +6,15 @@ import net.sf.anathema.character.presenter.advance.ExperienceConfigurationPresen
 import net.sf.anathema.character.presenter.magic.IContentPresenter;
 import net.sf.anathema.character.view.ICharacterView;
 import net.sf.anathema.character.view.advance.IExperienceConfigurationView;
-import net.sf.anathema.lib.resources.IResources;
+import net.sf.anathema.lib.resources.Resources;
 
 public class ExperiencePointPresenter {
 
-  private IResources resources;
+  private Resources resources;
   private ICharacter character;
   private ICharacterView view;
 
-  public ExperiencePointPresenter(IResources resources, ICharacter character, ICharacterView view) {
+  public ExperiencePointPresenter(Resources resources, ICharacter character, ICharacterView view) {
     this.resources = resources;
     this.character = character;
     this.view = view;

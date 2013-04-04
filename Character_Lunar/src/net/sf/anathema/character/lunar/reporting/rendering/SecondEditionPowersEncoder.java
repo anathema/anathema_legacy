@@ -12,7 +12,7 @@ import net.sf.anathema.character.reporting.pdf.rendering.extent.Bounds;
 import net.sf.anathema.character.reporting.pdf.rendering.general.box.ContentEncoder;
 import net.sf.anathema.character.reporting.pdf.rendering.graphics.SheetGraphics;
 import net.sf.anathema.character.reporting.pdf.rendering.page.IVoidStateFormatConstants;
-import net.sf.anathema.lib.resources.IResources;
+import net.sf.anathema.lib.resources.Resources;
 import net.sf.anathema.lib.util.Identifier;
 
 import static net.sf.anathema.character.reporting.pdf.rendering.page.IVoidStateFormatConstants.COMMENT_FONT_SIZE;
@@ -22,13 +22,13 @@ public class SecondEditionPowersEncoder implements ContentEncoder {
   private Font font;
   private float lineHeight = IVoidStateFormatConstants.LINE_HEIGHT - 2;
   private static final String POWER_BASE = "Sheet.Lunar.Powers.";
-  private final IResources resources;
+  private final Resources resources;
   private final boolean isHorizontal;
   private int tellMDV;
 
   private static final TemplateType castelessType = new TemplateType(LunarCharacterModule.type, new Identifier("Casteless")); //$NON-NLS-1$
 
-  public SecondEditionPowersEncoder(IResources resources, boolean isHorizontal) {
+  public SecondEditionPowersEncoder(Resources resources, boolean isHorizontal) {
     this.resources = resources;
     this.isHorizontal = isHorizontal;
   }

@@ -1,10 +1,10 @@
 package net.sf.anathema.character.reporting.pdf.content;
 
-import net.sf.anathema.lib.resources.IResources;
+import net.sf.anathema.lib.resources.Resources;
 
 public abstract class AbstractSubBoxContent extends AbstractSubContent implements SubBoxContent {
 
-  protected AbstractSubBoxContent(IResources resources) {
+  protected AbstractSubBoxContent(Resources resources) {
     super(resources);
   }
 

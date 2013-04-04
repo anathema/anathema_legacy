@@ -4,7 +4,7 @@ import com.google.common.base.Joiner;
 import net.sf.anathema.interaction.Command;
 import net.sf.anathema.lib.control.IChangeListener;
 import net.sf.anathema.lib.gui.Presenter;
-import net.sf.anathema.lib.resources.IResources;
+import net.sf.anathema.lib.resources.Resources;
 import net.sf.anathema.lib.util.Identified;
 import net.sf.anathema.namegenerator.presenter.model.INameGeneratorModel;
 import net.sf.anathema.namegenerator.presenter.view.NameGeneratorView;
@@ -13,9 +13,9 @@ public class NameGeneratorPresenter implements Presenter {
 
   private final NameGeneratorView view;
   private final INameGeneratorModel model;
-  private final IResources resources;
+  private final Resources resources;
 
-  public NameGeneratorPresenter(IResources resources, NameGeneratorView view, INameGeneratorModel model) {
+  public NameGeneratorPresenter(Resources resources, NameGeneratorView view, INameGeneratorModel model) {
     this.view = view;
     this.model = model;
     this.resources = resources;

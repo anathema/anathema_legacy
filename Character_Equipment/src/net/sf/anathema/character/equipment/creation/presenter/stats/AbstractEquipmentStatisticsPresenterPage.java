@@ -12,7 +12,7 @@ import net.sf.anathema.character.equipment.wizard.AbstractAnathemaWizardPage;
 import net.sf.anathema.character.equipment.wizard.CheckInputListener;
 import net.sf.anathema.lib.data.ICondition;
 import net.sf.anathema.lib.message.IBasicMessage;
-import net.sf.anathema.lib.resources.IResources;
+import net.sf.anathema.lib.resources.Resources;
 import net.sf.anathema.lib.workflow.intvalue.IIntValueModel;
 import net.sf.anathema.lib.workflow.intvalue.IntValuePresentation;
 import net.sf.anathema.lib.workflow.textualdescription.ITextView;
@@ -30,11 +30,11 @@ public abstract class AbstractEquipmentStatisticsPresenterPage<M extends IEquipm
   private final M pageModel;
   private final IEquipmentStatisticsCreationModel overallModel;
   private final IEquipmentStatisticsCreationViewFactory viewFactory;
-  private final IResources resources;
+  private final Resources resources;
   private IWeaponStatisticsView view;
 
   public AbstractEquipmentStatisticsPresenterPage(
-      IResources resources,
+      Resources resources,
       P properties,
       IEquipmentStatisticsCreationModel overallModel,
       M pageModel,
@@ -62,7 +62,7 @@ public abstract class AbstractEquipmentStatisticsPresenterPage<M extends IEquipm
     return viewFactory;
   }
 
-  protected final IResources getResources() {
+  protected final Resources getResources() {
     return resources;
   }
 

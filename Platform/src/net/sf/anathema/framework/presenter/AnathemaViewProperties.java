@@ -1,17 +1,17 @@
 package net.sf.anathema.framework.presenter;
 
 import net.sf.anathema.lib.gui.icon.ImageProvider;
-import net.sf.anathema.lib.resources.IResources;
+import net.sf.anathema.lib.resources.Resources;
 
 import java.awt.Frame;
 import java.awt.Image;
 
 public class AnathemaViewProperties {
 
-  private final IResources resources;
+  private final Resources resources;
   private final boolean maximized;
 
-  public AnathemaViewProperties(IResources resources, boolean maximized) {
+  public AnathemaViewProperties(Resources resources, boolean maximized) {
     this.resources = resources;
     this.maximized = maximized;
   }

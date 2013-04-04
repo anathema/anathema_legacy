@@ -4,16 +4,16 @@ import net.sf.anathema.lib.exception.IExceptionHandler;
 import net.sf.anathema.lib.gui.dialog.message.MessageDialogFactory;
 import net.sf.anathema.lib.logging.Logger;
 import net.sf.anathema.lib.message.Message;
-import net.sf.anathema.lib.resources.IResources;
+import net.sf.anathema.lib.resources.Resources;
 
 import javax.swing.JOptionPane;
 
 public class CentralExceptionHandler implements IExceptionHandler {
 
   private static final Logger logger = Logger.getLogger(CentralExceptionHandler.class);
-  private final IResources resources;
+  private final Resources resources;
 
-  public CentralExceptionHandler(IResources resources) {
+  public CentralExceptionHandler(Resources resources) {
     this.resources = resources;
 
   }

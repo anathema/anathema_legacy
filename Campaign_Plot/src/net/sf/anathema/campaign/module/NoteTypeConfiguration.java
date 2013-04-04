@@ -21,7 +21,7 @@ import net.sf.anathema.framework.view.IItemView;
 import net.sf.anathema.initialization.ItemTypeConfiguration;
 import net.sf.anathema.initialization.reflections.Weight;
 import net.sf.anathema.lib.exception.AnathemaException;
-import net.sf.anathema.lib.resources.IResources;
+import net.sf.anathema.lib.resources.Resources;
 
 import javax.swing.Icon;
 
@@ -42,7 +42,7 @@ public class NoteTypeConfiguration extends AbstractPersistableItemTypeConfigurat
   }
 
   @Override
-  protected IItemViewFactory createItemViewFactory(IApplicationModel anathemaModel, final IResources resources) {
+  protected IItemViewFactory createItemViewFactory(IApplicationModel anathemaModel, final Resources resources) {
     return new IItemViewFactory() {
       @Override
       public IItemView createView(IItem item) throws AnathemaException {
@@ -57,7 +57,7 @@ public class NoteTypeConfiguration extends AbstractPersistableItemTypeConfigurat
   }
 
   @Override
-  protected IItemTypeViewProperties createItemTypeCreationProperties(IApplicationModel anathemaModel, IResources resources) {
+  protected IItemTypeViewProperties createItemTypeCreationProperties(IApplicationModel anathemaModel, Resources resources) {
     return new SimpleItemTypeViewProperties(getItemType(), new PlotUI().getNoteTabIcon());
   }
 }

@@ -13,15 +13,15 @@ import net.sf.anathema.character.reporting.pdf.rendering.extent.Bounds;
 import net.sf.anathema.character.reporting.pdf.rendering.general.box.IVariableContentEncoder;
 import net.sf.anathema.character.reporting.pdf.rendering.graphics.SheetGraphics;
 import net.sf.anathema.character.reporting.pdf.rendering.page.IVoidStateFormatConstants;
-import net.sf.anathema.lib.resources.IResources;
+import net.sf.anathema.lib.resources.Resources;
 
 public class PdfInitiationEncoder implements IVariableContentEncoder {
 
   private Font textFont;
   private Font headerFont;
-  private final IResources resources;
+  private final Resources resources;
 
-  public PdfInitiationEncoder(IResources resources, SheetGraphics graphics) {
+  public PdfInitiationEncoder(Resources resources, SheetGraphics graphics) {
     this.textFont = graphics.createTableFont();
     this.headerFont = new Font(textFont);
     this.headerFont.setStyle(Font.BOLD);

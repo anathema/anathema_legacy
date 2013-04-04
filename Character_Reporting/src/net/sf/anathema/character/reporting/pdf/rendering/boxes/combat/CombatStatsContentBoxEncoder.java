@@ -7,17 +7,17 @@ import net.sf.anathema.character.reporting.pdf.rendering.general.box.ContentEnco
 import net.sf.anathema.character.reporting.pdf.rendering.general.box.IContentEncoder;
 import net.sf.anathema.character.reporting.pdf.rendering.general.table.ITableEncoder;
 import net.sf.anathema.character.reporting.pdf.rendering.graphics.SheetGraphics;
-import net.sf.anathema.lib.resources.IResources;
+import net.sf.anathema.lib.resources.Resources;
 
 public class CombatStatsContentBoxEncoder implements ContentEncoder {
 
   private final static float PADDING = 3;
 
-  private IResources resources;
+  private Resources resources;
   private final ITableEncoder combatRulesEncoder;
   private final IContentEncoder combatValueEncoder;
 
-  public CombatStatsContentBoxEncoder(IResources resources, ITableEncoder combatRulesEncoder, IContentEncoder combatValueEncoder) {
+  public CombatStatsContentBoxEncoder(Resources resources, ITableEncoder combatRulesEncoder, IContentEncoder combatValueEncoder) {
     this.resources = resources;
     this.combatRulesEncoder = combatRulesEncoder;
     this.combatValueEncoder = combatValueEncoder;

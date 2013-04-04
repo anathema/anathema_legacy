@@ -8,7 +8,7 @@ import net.sf.anathema.character.library.trait.subtrait.ISubTrait;
 import net.sf.anathema.character.library.trait.subtrait.ISubTraitContainer;
 import net.sf.anathema.character.reporting.pdf.content.AbstractSubBoxContent;
 import net.sf.anathema.character.reporting.pdf.content.general.NamedValue;
-import net.sf.anathema.lib.resources.IResources;
+import net.sf.anathema.lib.resources.Resources;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -17,7 +17,7 @@ public class GhostPassionContent extends AbstractSubBoxContent {
 
   private IGenericCharacter character;
 
-  public GhostPassionContent(IResources resources, IGenericCharacter character) {
+  public GhostPassionContent(Resources resources, IGenericCharacter character) {
     super(resources);
     this.character = character;
   }

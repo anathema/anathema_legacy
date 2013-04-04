@@ -1,7 +1,7 @@
 package net.sf.anathema.framework.view.perspective;
 
 import net.sf.anathema.framework.IApplicationModel;
-import net.sf.anathema.lib.resources.IResources;
+import net.sf.anathema.lib.resources.Resources;
 
 import javax.swing.JComponent;
 import javax.swing.JPanel;
@@ -11,9 +11,9 @@ public class PerspectiveStack {
   private final CardLayout perspectiveStack = new CardLayout();
   private final JPanel cardPanel = new JPanel(perspectiveStack);
   private final IApplicationModel model;
-  private final IResources resources;
+  private final Resources resources;
 
-  public PerspectiveStack(IApplicationModel model, IResources resources) {
+  public PerspectiveStack(IApplicationModel model, Resources resources) {
     this.model = model;
     this.resources = resources;
   }

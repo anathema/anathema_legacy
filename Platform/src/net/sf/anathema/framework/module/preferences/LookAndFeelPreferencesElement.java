@@ -4,7 +4,7 @@ import net.sf.anathema.framework.configuration.InitializationPreferences;
 import net.sf.anathema.framework.presenter.action.preferences.IPreferencesElement;
 import net.sf.anathema.initialization.PreferenceElement;
 import net.sf.anathema.initialization.reflections.Weight;
-import net.sf.anathema.lib.resources.IResources;
+import net.sf.anathema.lib.resources.Resources;
 import net.sf.anathema.lib.util.Identified;
 
 import javax.swing.DefaultComboBoxModel;
@@ -84,7 +84,7 @@ public class LookAndFeelPreferencesElement implements IPreferencesElement {
   }
 
   @Override
-  public void addComponent(JPanel panel, IResources resources) {
+  public void addComponent(JPanel panel, Resources resources) {
     JLabel label = new JLabel(resources.getString("AnathemaCore.Tools.Preferences.LookAndFeelCaption")); //$NON-NLS-1$
     // This implementation is a bit nasty but I (kelemen@github.com) was not sure
     // about the intended contract of some methods. So to be on the safe side,
@@ -160,9 +160,9 @@ public class LookAndFeelPreferencesElement implements IPreferencesElement {
   }
 
   private class LookAndFeelChangeListener implements ActionListener {
-    private final IResources resources;
+    private final Resources resources;
 
-    public LookAndFeelChangeListener(IResources resources) {
+    public LookAndFeelChangeListener(Resources resources) {
       this.resources = resources;
     }
 

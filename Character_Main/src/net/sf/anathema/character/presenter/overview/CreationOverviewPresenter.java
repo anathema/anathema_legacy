@@ -9,7 +9,7 @@ import net.sf.anathema.character.model.ICharacter;
 import net.sf.anathema.character.model.creation.IBonusPointManagement;
 import net.sf.anathema.character.view.overview.CategorizedOverview;
 import net.sf.anathema.lib.gui.Presenter;
-import net.sf.anathema.lib.resources.IResources;
+import net.sf.anathema.lib.resources.Resources;
 import net.sf.anathema.lib.workflow.labelledvalue.ILabelledAlotmentView;
 import net.sf.anathema.lib.workflow.labelledvalue.IValueView;
 
@@ -20,7 +20,7 @@ import java.util.Map;
 
 public class CreationOverviewPresenter implements Presenter {
 
-  private final IResources resources;
+  private final Resources resources;
   private final CategorizedOverview view;
   private final ICharacter character;
   private final IBonusPointManagement management;
@@ -28,7 +28,7 @@ public class CreationOverviewPresenter implements Presenter {
   private final List<IOverviewSubPresenter> presenters = new ArrayList<>();
   private final Map<String, IOverviewCategory> categoriesById = new LinkedHashMap<>();
 
-  public CreationOverviewPresenter(IResources resources, ICharacter character, CategorizedOverview overviewView, IBonusPointManagement management) {
+  public CreationOverviewPresenter(Resources resources, ICharacter character, CategorizedOverview overviewView, IBonusPointManagement management) {
     this.management = management;
     this.resources = resources;
     this.character = character;

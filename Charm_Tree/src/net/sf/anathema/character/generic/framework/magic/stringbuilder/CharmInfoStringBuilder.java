@@ -6,7 +6,7 @@ import net.sf.anathema.character.generic.framework.magic.stringbuilder.type.Verb
 import net.sf.anathema.character.generic.magic.ICharm;
 import net.sf.anathema.character.generic.magic.charms.special.ISpecialCharm;
 import net.sf.anathema.character.generic.magic.description.MagicDescriptionProvider;
-import net.sf.anathema.lib.resources.IResources;
+import net.sf.anathema.lib.resources.Resources;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -14,7 +14,7 @@ import java.util.List;
 public class CharmInfoStringBuilder implements ICharmInfoStringBuilder {
   private final List<IMagicTooltipStringBuilder> builders = new ArrayList<>();
 
-  public CharmInfoStringBuilder(IResources resources, MagicDescriptionProvider magicDescriptionProvider) {
+  public CharmInfoStringBuilder(Resources resources, MagicDescriptionProvider magicDescriptionProvider) {
     builders.add(new MagicNameStringBuilder(resources));
     builders.add(new ScreenDisplayInfoStringBuilder(resources));
     builders.add(new CharmDurationStringBuilder(resources));

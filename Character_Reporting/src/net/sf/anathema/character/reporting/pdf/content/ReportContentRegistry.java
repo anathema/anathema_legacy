@@ -2,16 +2,16 @@ package net.sf.anathema.character.reporting.pdf.content;
 
 import net.sf.anathema.initialization.InitializationException;
 import net.sf.anathema.initialization.Instantiater;
-import net.sf.anathema.lib.resources.IResources;
+import net.sf.anathema.lib.resources.Resources;
 
 import java.util.Collection;
 
 public class ReportContentRegistry {
 
-  private final IResources resources;
+  private final Resources resources;
   private final Instantiater instantiater;
 
-  public ReportContentRegistry(Instantiater instantiater, IResources resources) {
+  public ReportContentRegistry(Instantiater instantiater, Resources resources) {
     this.instantiater = instantiater;
     this.resources = resources;
   }

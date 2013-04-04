@@ -18,17 +18,17 @@ import net.sf.anathema.character.reporting.pdf.rendering.general.box.PdfBoxEncod
 import net.sf.anathema.character.reporting.pdf.rendering.general.traits.PdfTraitEncoder;
 import net.sf.anathema.character.reporting.pdf.rendering.graphics.SheetGraphics;
 import net.sf.anathema.character.reporting.pdf.rendering.page.IVoidStateFormatConstants;
-import net.sf.anathema.lib.resources.IResources;
+import net.sf.anathema.lib.resources.Resources;
 
 public class SecondEditionLunarDBTFormEncoder implements ContentEncoder {
 
   private static final String NOTES = "Sheet.Lunar.WarForm";
   private final static int PHYSICAL_MAX = 15;
-  private final IResources resources;
+  private final Resources resources;
   private final PdfTraitEncoder smallTraitEncoder = PdfTraitEncoder.createSmallTraitEncoder();
   private static final float LINE_HEIGHT = IVoidStateFormatConstants.LINE_HEIGHT - 4;
 
-  public SecondEditionLunarDBTFormEncoder(IResources resources) {
+  public SecondEditionLunarDBTFormEncoder(Resources resources) {
     this.resources = resources;
   }
 

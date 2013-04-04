@@ -7,12 +7,12 @@ import net.sf.anathema.character.generic.additionaltemplate.IAdditionalModel;
 import net.sf.anathema.character.generic.framework.additionaltemplate.IAdditionalViewFactory;
 import net.sf.anathema.character.generic.type.ICharacterType;
 import net.sf.anathema.lib.gui.IView;
-import net.sf.anathema.lib.resources.IResources;
+import net.sf.anathema.lib.resources.Resources;
 
 public class EquipmentAdditionalViewFactory implements IAdditionalViewFactory {
 
   @Override
-  public IView createView(IAdditionalModel model, IResources resources, ICharacterType type) {
+  public IView createView(IAdditionalModel model, Resources resources, ICharacterType type) {
     IEquipmentAdditionalModel equipmentModel = (IEquipmentAdditionalModel) model;
     EquipmentAdditionalView view = new EquipmentAdditionalView();
     new EquipmentAdditionalPresenter(resources, equipmentModel, view).initPresentation();

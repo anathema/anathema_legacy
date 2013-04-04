@@ -9,24 +9,24 @@ import net.sf.anathema.character.generic.impl.magic.Cost;
 import net.sf.anathema.character.generic.impl.magic.HealthCost;
 import net.sf.anathema.character.generic.magic.IMagic;
 import net.sf.anathema.character.generic.magic.description.MagicDescription;
-import net.sf.anathema.lib.resources.IResources;
+import net.sf.anathema.lib.resources.Resources;
 
 public abstract class AbstractMagicCardData implements ICardData {
 
 	private IMagic magic;
-	private IResources resources;
+	private Resources resources;
 	private MagicDescription description;
 	private ICardReportResourceProvider resourceProvider;
 	
 	public AbstractMagicCardData(IMagic magic, MagicDescription description,
-			ICardReportResourceProvider resourceProvider, IResources resources) {
+			ICardReportResourceProvider resourceProvider, Resources resources) {
 		this.magic = magic;
 		this.resources = resources;
 		this.resourceProvider = resourceProvider;
 		this.description = description;
 	}
 	
-	protected IResources getResources() {
+	protected Resources getResources() {
 		return resources;
 	}
 	

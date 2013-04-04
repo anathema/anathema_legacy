@@ -2,7 +2,7 @@ package net.sf.anathema.framework.reporting;
 
 import net.sf.anathema.framework.repository.IItem;
 import net.sf.anathema.lib.lang.StringUtilities;
-import net.sf.anathema.lib.resources.IResources;
+import net.sf.anathema.lib.resources.Resources;
 
 import java.io.IOException;
 import java.nio.file.Files;
@@ -11,9 +11,9 @@ import java.nio.file.Path;
 public class QuickFileChooser implements FileChooser {
 
   private IItem item;
-  private IResources resources;
+  private Resources resources;
 
-  public QuickFileChooser(IItem item, IResources resources) {
+  public QuickFileChooser(IItem item, Resources resources) {
     this.item = item;
     this.resources = resources;
   }

@@ -5,7 +5,7 @@ import net.sf.anathema.framework.presenter.IItemManagementModelListener;
 import net.sf.anathema.framework.presenter.resources.PlatformUI;
 import net.sf.anathema.framework.repository.IItem;
 import net.sf.anathema.lib.gui.action.SmartAction;
-import net.sf.anathema.lib.resources.IResources;
+import net.sf.anathema.lib.resources.Resources;
 
 import javax.swing.Action;
 import javax.swing.KeyStroke;
@@ -18,14 +18,14 @@ import static javax.swing.KeyStroke.getKeyStroke;
 
 public class ControlledPrintAction extends AbstractPrintAction {
 
-  public static Action createToolAction(IApplicationModel model, IResources resources) {
+  public static Action createToolAction(IApplicationModel model, Resources resources) {
     SmartAction action = new ControlledPrintAction(model, resources);
     action.setToolTipText(resources.getString("Anathema.Reporting.Menu.PrintItem.Name"));
     action.setIcon(new PlatformUI().getPDFTaskBarIcon());
     return action;
   }
 
-  private ControlledPrintAction(IApplicationModel anathemaModel, IResources resources) {
+  private ControlledPrintAction(IApplicationModel anathemaModel, Resources resources) {
     super(anathemaModel, resources);
   }
 

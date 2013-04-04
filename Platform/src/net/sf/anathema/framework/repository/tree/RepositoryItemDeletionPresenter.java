@@ -9,19 +9,19 @@ import net.sf.anathema.lib.gui.dialog.message.MessageDialogFactory;
 import net.sf.anathema.lib.gui.dialog.userdialog.buttons.ConfigurableVetor;
 import net.sf.anathema.lib.logging.Logger;
 import net.sf.anathema.lib.message.Message;
-import net.sf.anathema.lib.resources.IResources;
+import net.sf.anathema.lib.resources.Resources;
 
 import java.awt.Component;
 
 public class RepositoryItemDeletionPresenter implements Presenter {
 
-  private final IResources resources;
+  private final Resources resources;
   private final IRepositoryTreeModel repositoryModel;
   private final RepositoryTreeView treeView;
   private final AmountMessaging messaging;
 
   public RepositoryItemDeletionPresenter(
-      IResources resources,
+      Resources resources,
       RepositoryTreeModel repositoryTreeModel,
       RepositoryTreeView treeView,
       AmountMessaging fileCountMessaging) {

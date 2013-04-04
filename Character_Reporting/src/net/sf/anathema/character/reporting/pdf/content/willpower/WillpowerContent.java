@@ -5,13 +5,13 @@ import net.sf.anathema.character.generic.traits.types.OtherTraitType;
 import net.sf.anathema.character.reporting.pdf.content.AbstractSubBoxContent;
 import net.sf.anathema.character.reporting.pdf.content.general.BulletList;
 import net.sf.anathema.character.reporting.pdf.rendering.general.ListUtils;
-import net.sf.anathema.lib.resources.IResources;
+import net.sf.anathema.lib.resources.Resources;
 
 public class WillpowerContent extends AbstractSubBoxContent {
 
   private IGenericCharacter character;
 
-  public WillpowerContent(IResources resources, IGenericCharacter character) {
+  public WillpowerContent(Resources resources, IGenericCharacter character) {
     super(resources);
     this.character = character;
   }

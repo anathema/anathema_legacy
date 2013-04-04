@@ -6,14 +6,14 @@ import net.sf.anathema.character.equipment.impl.reporting.content.stats.Abstract
 import net.sf.anathema.character.generic.character.IGenericCharacter;
 import net.sf.anathema.character.generic.character.IGenericTraitCollection;
 import net.sf.anathema.character.generic.equipment.weapon.IWeaponStats;
-import net.sf.anathema.lib.resources.IResources;
+import net.sf.anathema.lib.resources.Resources;
 
 public abstract class AbstractDefenceWeaponStatsGroup extends AbstractValueEquipmentStatsGroup<IWeaponStats> {
 
   private final IGenericCharacter character;
   private final IGenericTraitCollection traitCollection;
 
-  public AbstractDefenceWeaponStatsGroup(IResources resources, IGenericCharacter character,
+  public AbstractDefenceWeaponStatsGroup(Resources resources, IGenericCharacter character,
                                          IGenericTraitCollection traitCollection) {
     super(resources, "Defence"); //$NON-NLS-1$
     this.character = character;

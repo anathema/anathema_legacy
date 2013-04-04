@@ -4,7 +4,7 @@ import net.sf.anathema.character.generic.magic.IMagic;
 import net.sf.anathema.character.generic.magic.general.ICost;
 import net.sf.anathema.character.generic.magic.general.ICostList;
 import net.sf.anathema.character.generic.magic.general.IHealthCost;
-import net.sf.anathema.lib.resources.IResources;
+import net.sf.anathema.lib.resources.Resources;
 
 public class MagicInfoStringBuilder implements IMagicInfoStringBuilder {
 
@@ -15,7 +15,7 @@ public class MagicInfoStringBuilder implements IMagicInfoStringBuilder {
   private final MagicInfoStringConcatenator concatenator;
 
   public MagicInfoStringBuilder(
-      IResources resources,
+      Resources resources,
       ICostStringBuilder<ICost> essenceBuilder,
       ICostStringBuilder<ICost> willpowerBuilder,
       ICostStringBuilder<IHealthCost> healthBuilder,

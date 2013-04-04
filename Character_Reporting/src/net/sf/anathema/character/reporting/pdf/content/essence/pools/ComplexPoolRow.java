@@ -1,14 +1,14 @@
 package net.sf.anathema.character.reporting.pdf.content.essence.pools;
 
-import net.sf.anathema.lib.resources.IResources;
+import net.sf.anathema.lib.resources.Resources;
 import net.sf.anathema.lib.util.IdentifiedInteger;
 
 public class ComplexPoolRow extends AbstractPoolRow {
 
-  private IResources resources;
+  private Resources resources;
   private IdentifiedInteger complexPool;
 
-  public ComplexPoolRow(IResources resources, IdentifiedInteger pool) {
+  public ComplexPoolRow(Resources resources, IdentifiedInteger pool) {
     this.resources = resources;
     this.complexPool = pool;
   }

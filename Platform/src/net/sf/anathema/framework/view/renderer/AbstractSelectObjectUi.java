@@ -1,16 +1,16 @@
 package net.sf.anathema.framework.view.renderer;
 
 import net.sf.anathema.lib.gui.ui.ObjectUi;
-import net.sf.anathema.lib.resources.IResources;
+import net.sf.anathema.lib.resources.Resources;
 
 import javax.swing.Icon;
 
 @SuppressWarnings("unchecked")
 public abstract class AbstractSelectObjectUi<V> implements ObjectUi<Object> {
 
-  private final IResources resources;
+  private final Resources resources;
 
-  public AbstractSelectObjectUi(IResources resources) {
+  public AbstractSelectObjectUi(Resources resources) {
     this.resources = resources;
   }
   
@@ -39,7 +39,7 @@ public abstract class AbstractSelectObjectUi<V> implements ObjectUi<Object> {
 
   protected abstract String getNonNullLabel(V value);
 
-  protected final IResources getResources() {
+  protected final Resources getResources() {
     return resources;
   }
 }

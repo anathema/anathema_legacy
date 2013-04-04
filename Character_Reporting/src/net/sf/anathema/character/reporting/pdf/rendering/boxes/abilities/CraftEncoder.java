@@ -11,7 +11,7 @@ import net.sf.anathema.character.reporting.pdf.rendering.general.traits.Abstract
 import net.sf.anathema.character.reporting.pdf.rendering.general.traits.INamedTraitEncoder;
 import net.sf.anathema.character.reporting.pdf.rendering.general.traits.PdfTraitEncoder;
 import net.sf.anathema.character.reporting.pdf.rendering.graphics.SheetGraphics;
-import net.sf.anathema.lib.resources.IResources;
+import net.sf.anathema.lib.resources.Resources;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -20,7 +20,7 @@ public class CraftEncoder extends AbstractNamedTraitEncoder implements INamedTra
 
   private final int craftCount;
 
-  public CraftEncoder(IResources resources, PdfTraitEncoder encoder, int craftCount) {
+  public CraftEncoder(Resources resources, PdfTraitEncoder encoder, int craftCount) {
     super(resources, encoder);
     this.craftCount = craftCount;
   }

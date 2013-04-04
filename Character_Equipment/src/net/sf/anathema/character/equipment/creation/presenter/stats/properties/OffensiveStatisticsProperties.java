@@ -1,10 +1,10 @@
 package net.sf.anathema.character.equipment.creation.presenter.stats.properties;
 
-import net.sf.anathema.lib.resources.IResources;
+import net.sf.anathema.lib.resources.Resources;
 
 public abstract class OffensiveStatisticsProperties extends AbstractEquipmentStatisticsProperties {
 
-  public OffensiveStatisticsProperties(IResources resources) {
+  public OffensiveStatisticsProperties(Resources resources) {
     super(resources);
   }
 

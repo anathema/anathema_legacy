@@ -8,12 +8,12 @@ import net.sf.anathema.character.mutations.presenter.MutationsPresenter;
 import net.sf.anathema.character.mutations.view.IMutationsView;
 import net.sf.anathema.character.mutations.view.MutationsView;
 import net.sf.anathema.lib.gui.IView;
-import net.sf.anathema.lib.resources.IResources;
+import net.sf.anathema.lib.resources.Resources;
 
 public class MutationsViewFactory implements IAdditionalViewFactory {
 
   @Override
-  public IView createView(IAdditionalModel model, final IResources resources, ICharacterType type) {
+  public IView createView(IAdditionalModel model, final Resources resources, ICharacterType type) {
     IMutationsView view = new MutationsView();
     MutationsPresenter presenter = new MutationsPresenter(view, ((MutationsAdditionalModel) model).getModel(),
             resources);

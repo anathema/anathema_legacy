@@ -14,12 +14,12 @@ import net.sf.anathema.character.library.virtueflaw.view.VirtueFlawView;
 import net.sf.anathema.character.lunar.virtueflaw.presenter.ComplexLunarVirtueFlawPresenter;
 import net.sf.anathema.framework.value.IntegerViewFactory;
 import net.sf.anathema.lib.gui.IView;
-import net.sf.anathema.lib.resources.IResources;
+import net.sf.anathema.lib.resources.Resources;
 
 public class LunarVirtueFlawViewFactory implements IAdditionalViewFactory {
 
   @Override
-  public IView createView(IAdditionalModel model, IResources resources, ICharacterType type) {
+  public IView createView(IAdditionalModel model, Resources resources, ICharacterType type) {
     IView virtueFlawView;
     IntegerViewFactory factory = IntValueDisplayFactoryPrototype.createWithMarkerForCharacterType(type);
     if (model instanceof DescriptiveVirtueFlawModel) {

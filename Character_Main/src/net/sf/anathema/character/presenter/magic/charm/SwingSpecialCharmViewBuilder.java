@@ -18,16 +18,16 @@ import net.sf.anathema.character.presenter.magic.MultiLearnableCharmPresenter;
 import net.sf.anathema.character.presenter.magic.MultipleEffectCharmPresenter;
 import net.sf.anathema.character.presenter.magic.OxBodyTechniquePresenter;
 import net.sf.anathema.character.presenter.magic.SpecialCharmViewBuilder;
-import net.sf.anathema.lib.resources.IResources;
+import net.sf.anathema.lib.resources.Resources;
 import net.sf.anathema.platform.tree.presenter.view.ISpecialNodeView;
 
 public class SwingSpecialCharmViewBuilder implements SpecialCharmViewBuilder {
 
   private ISpecialNodeView result;
-  private final IResources resources;
+  private final Resources resources;
   private final ICharmConfiguration configuration;
 
-  public SwingSpecialCharmViewBuilder(IResources resources, ICharmConfiguration configuration) {
+  public SwingSpecialCharmViewBuilder(Resources resources, ICharmConfiguration configuration) {
     this.resources = resources;
     this.configuration = configuration;
   }

@@ -1,15 +1,15 @@
 package net.sf.anathema.lib.compare;
 
-import net.sf.anathema.lib.resources.IResources;
+import net.sf.anathema.lib.resources.Resources;
 import net.sf.anathema.lib.util.Identified;
 
 import java.util.Comparator;
 
 public class I18nedIdentificateComparator implements Comparator<Identified> {
 
-  private final IResources resources;
+  private final Resources resources;
 
-  public I18nedIdentificateComparator(IResources resources) {
+  public I18nedIdentificateComparator(Resources resources) {
     this.resources = resources;
   }
 

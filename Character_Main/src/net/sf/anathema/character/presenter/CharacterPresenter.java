@@ -23,7 +23,7 @@ import net.sf.anathema.framework.view.util.ContentProperties;
 import net.sf.anathema.lib.gui.IView;
 import net.sf.anathema.lib.gui.Presenter;
 import net.sf.anathema.lib.registry.IRegistry;
-import net.sf.anathema.lib.resources.IResources;
+import net.sf.anathema.lib.resources.Resources;
 
 import java.util.ArrayList;
 import java.util.Collections;
@@ -41,11 +41,11 @@ public class CharacterPresenter implements Presenter, MultipleContentViewPresent
   private final ICharacter character;
   private final ICharacterView characterView;
   private final IApplicationModel anathemaModel;
-  private final IResources resources;
+  private final Resources resources;
   private final PointPresentationStrategy pointPresentation;
   private MultipleContentView miscView;
 
-  public CharacterPresenter(ICharacter character, ICharacterView view, IResources resources, IApplicationModel anathemaModel,
+  public CharacterPresenter(ICharacter character, ICharacterView view, Resources resources, IApplicationModel anathemaModel,
                             PointPresentationStrategy pointPresentation) {
     this.character = character;
     this.characterView = view;

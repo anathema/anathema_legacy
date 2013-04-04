@@ -5,7 +5,7 @@ import net.sf.anathema.framework.extension.IAnathemaExtension;
 import net.sf.anathema.framework.item.IItemType;
 import net.sf.anathema.framework.view.ApplicationView;
 import net.sf.anathema.lib.registry.IRegistry;
-import net.sf.anathema.lib.resources.IResources;
+import net.sf.anathema.lib.resources.Resources;
 
 public abstract class AbstractNonPersistableItemTypeConfiguration implements IItemTypeConfiguration {
 
@@ -21,12 +21,12 @@ public abstract class AbstractNonPersistableItemTypeConfiguration implements IIt
   }
 
   @Override
-  public final void registerViewFactory(IApplicationModel anathemaModel, IResources resources) {
+  public final void registerViewFactory(IApplicationModel anathemaModel, Resources resources) {
     // nothing to do
   }
 
   @Override
-  public final void fillPresentationExtensionPoints(IRegistry<String, IAnathemaExtension> extensionPointRegistry, IResources resources,
+  public final void fillPresentationExtensionPoints(IRegistry<String, IAnathemaExtension> extensionPointRegistry, Resources resources,
                                                     IApplicationModel model, ApplicationView view) {
     //nothing to do
   }

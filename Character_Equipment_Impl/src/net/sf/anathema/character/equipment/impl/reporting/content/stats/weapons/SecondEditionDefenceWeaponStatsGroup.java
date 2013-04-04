@@ -7,14 +7,14 @@ import net.sf.anathema.character.generic.character.IGenericCharacter;
 import net.sf.anathema.character.generic.character.IGenericTraitCollection;
 import net.sf.anathema.character.generic.equipment.weapon.IWeaponStats;
 import net.sf.anathema.character.generic.traits.types.AttributeType;
-import net.sf.anathema.lib.resources.IResources;
+import net.sf.anathema.lib.resources.Resources;
 
 public class SecondEditionDefenceWeaponStatsGroup extends AbstractDefenceWeaponStatsGroup {
 
   private final IEquipmentCharacterDataProvider provider;
   private IEquipmentCharacterOptionProvider optionProvider;
 
-  public SecondEditionDefenceWeaponStatsGroup(IResources resources, IGenericCharacter character,
+  public SecondEditionDefenceWeaponStatsGroup(Resources resources, IGenericCharacter character,
                                               IGenericTraitCollection traitCollection,
                                               IEquipmentCharacterDataProvider provider,
                                               IEquipmentCharacterOptionProvider optionProvider) {

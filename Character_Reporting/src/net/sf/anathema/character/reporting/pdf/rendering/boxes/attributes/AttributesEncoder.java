@@ -18,7 +18,7 @@ import net.sf.anathema.character.reporting.pdf.rendering.general.box.ContentEnco
 import net.sf.anathema.character.reporting.pdf.rendering.general.traits.PdfTraitEncoder;
 import net.sf.anathema.character.reporting.pdf.rendering.graphics.SheetGraphics;
 import net.sf.anathema.character.reporting.pdf.util.MagicLearnUtilities;
-import net.sf.anathema.lib.resources.IResources;
+import net.sf.anathema.lib.resources.Resources;
 
 import java.util.ArrayList;
 import java.util.Collections;
@@ -27,11 +27,11 @@ import java.util.List;
 
 public class AttributesEncoder implements ContentEncoder {
 
-  private final IResources resources;
+  private final Resources resources;
   private PdfTraitEncoder smallTraitEncoder;
   private final boolean encodeFavored;
 
-  public AttributesEncoder(IResources resources, boolean encodeFavored) {
+  public AttributesEncoder(Resources resources, boolean encodeFavored) {
     this.resources = resources;
     this.encodeFavored = encodeFavored;
     this.smallTraitEncoder = PdfTraitEncoder.createSmallTraitEncoder();

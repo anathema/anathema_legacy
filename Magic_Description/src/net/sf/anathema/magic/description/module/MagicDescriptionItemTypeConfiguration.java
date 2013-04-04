@@ -13,7 +13,7 @@ import net.sf.anathema.framework.view.NullItemView;
 import net.sf.anathema.initialization.ItemTypeConfiguration;
 import net.sf.anathema.lib.exception.AnathemaException;
 import net.sf.anathema.lib.registry.IRegistry;
-import net.sf.anathema.lib.resources.IResources;
+import net.sf.anathema.lib.resources.Resources;
 
 @ItemTypeConfiguration
 public final class MagicDescriptionItemTypeConfiguration extends AbstractItemTypeConfiguration {
@@ -31,13 +31,13 @@ public final class MagicDescriptionItemTypeConfiguration extends AbstractItemTyp
   }
 
   @Override
-  public void fillPresentationExtensionPoints(IRegistry<String, IAnathemaExtension> extensionPointRegistry, IResources resources,
+  public void fillPresentationExtensionPoints(IRegistry<String, IAnathemaExtension> extensionPointRegistry, Resources resources,
                                               IApplicationModel model, ApplicationView view) {
     // nothing to do
   }
 
   @Override
-  protected IItemViewFactory createItemViewFactory(IApplicationModel anathemaModel, IResources resources) {
+  protected IItemViewFactory createItemViewFactory(IApplicationModel anathemaModel, Resources resources) {
     return new IItemViewFactory() {
       @Override
       public IItemView createView(IItem item) throws AnathemaException {

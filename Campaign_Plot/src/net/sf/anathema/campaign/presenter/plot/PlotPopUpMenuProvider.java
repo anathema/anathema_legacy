@@ -5,7 +5,7 @@ import net.sf.anathema.campaign.model.plot.IPlotModel;
 import net.sf.anathema.campaign.presenter.view.plot.ITreeView;
 import net.sf.anathema.framework.presenter.resources.BasicUi;
 import net.sf.anathema.lib.gui.action.SmartAction;
-import net.sf.anathema.lib.resources.IResources;
+import net.sf.anathema.lib.resources.Resources;
 
 import javax.swing.JPopupMenu;
 import javax.swing.tree.DefaultMutableTreeNode;
@@ -25,10 +25,10 @@ public class PlotPopUpMenuProvider {
     }
   };
   private final IPlotModel plotModel;
-  private final IResources resources;
+  private final Resources resources;
   private final BasicUi basicUi = new BasicUi();
 
-  public PlotPopUpMenuProvider(ITreeView treeView, IPlotModel plotModel, IResources resources) {
+  public PlotPopUpMenuProvider(ITreeView treeView, IPlotModel plotModel, Resources resources) {
     this.treeView = treeView;
     this.plotModel = plotModel;
     this.resources = resources;

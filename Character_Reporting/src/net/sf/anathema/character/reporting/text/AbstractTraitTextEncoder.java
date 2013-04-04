@@ -7,11 +7,11 @@ import net.sf.anathema.character.generic.character.IGenericCharacter;
 import net.sf.anathema.character.generic.traits.IFavorableGenericTrait;
 import net.sf.anathema.character.generic.traits.ITraitType;
 import net.sf.anathema.framework.reporting.pdf.PdfReportUtils;
-import net.sf.anathema.lib.resources.IResources;
+import net.sf.anathema.lib.resources.Resources;
 
 public abstract class AbstractTraitTextEncoder extends AbstractTextEncoder {
 
-  public AbstractTraitTextEncoder(PdfReportUtils utils, IResources resources) {
+  public AbstractTraitTextEncoder(PdfReportUtils utils, Resources resources) {
     super(utils, resources);
   }
 

@@ -22,7 +22,7 @@ import net.sf.anathema.lib.gui.action.SmartAction;
 import net.sf.anathema.lib.gui.selection.IObjectSelectionView;
 import net.sf.anathema.lib.gui.ui.ObjectUi;
 import net.sf.anathema.lib.gui.ui.ObjectUiListCellRenderer;
-import net.sf.anathema.lib.resources.IResources;
+import net.sf.anathema.lib.resources.Resources;
 import net.sf.anathema.lib.workflow.textualdescription.ITextView;
 import net.sf.anathema.lib.workflow.textualdescription.ITextualDescription;
 import net.sf.anathema.lib.workflow.textualdescription.TextualPresentation;
@@ -34,10 +34,10 @@ public class CharacterConceptAndRulesPresenter implements IContentPresenter {
 
   private final ICharacterConceptAndRulesView view;
   private final ICharacter character;
-  private final IResources resources;
+  private final Resources resources;
 
   public CharacterConceptAndRulesPresenter(ICharacter character, IConceptAndRulesViewFactory viewFactory,
-                                           IResources resources) {
+                                           Resources resources) {
     this.character = character;
     this.view = viewFactory.createCharacterConceptView();
     this.resources = resources;

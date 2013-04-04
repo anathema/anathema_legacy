@@ -12,7 +12,7 @@ import net.sf.anathema.character.generic.traits.INamedGenericTrait;
 import net.sf.anathema.lib.control.IChangeListener;
 import net.sf.anathema.lib.gui.Presenter;
 import net.sf.anathema.lib.model.BooleanModel;
-import net.sf.anathema.lib.resources.IResources;
+import net.sf.anathema.lib.resources.Resources;
 
 import javax.swing.Action;
 import java.text.MessageFormat;
@@ -30,12 +30,12 @@ public class EquipmentObjectPresenter implements Presenter {
   private final IEquipmentStringBuilder stringBuilder;
   private final IEquipmentCharacterOptionProvider characterOptionProvider;
   private final IEquipmentCharacterDataProvider dataProvider;
-  private final IResources resources;
+  private final Resources resources;
   private final Action[] additionalActions;
 
   public EquipmentObjectPresenter(IEquipmentItem model, IEquipmentObjectView view,
                                   IEquipmentStringBuilder stringBuilder, IEquipmentCharacterDataProvider dataProvider,
-                                  IEquipmentCharacterOptionProvider characterOptionProvider, IResources resources,
+                                  IEquipmentCharacterOptionProvider characterOptionProvider, Resources resources,
                                   Action... additionalActions) {
     this.model = model;
     this.view = view;

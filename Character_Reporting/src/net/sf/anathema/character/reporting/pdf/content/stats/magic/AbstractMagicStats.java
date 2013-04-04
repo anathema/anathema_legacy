@@ -5,13 +5,13 @@ import net.sf.anathema.character.generic.framework.magic.stringbuilder.HealthCos
 import net.sf.anathema.character.generic.framework.magic.stringbuilder.MagicInfoStringBuilder;
 import net.sf.anathema.character.generic.magic.IMagic;
 import net.sf.anathema.character.generic.magic.IMagicStats;
-import net.sf.anathema.lib.resources.IResources;
+import net.sf.anathema.lib.resources.Resources;
 import net.sf.anathema.lib.util.Identified;
 import net.sf.anathema.lib.util.Identifier;
 
 public abstract class AbstractMagicStats<T extends IMagic> implements IMagicStats {
 
-  public static MagicInfoStringBuilder createMagicInfoStringBuilder(IResources resources) {
+  public static MagicInfoStringBuilder createMagicInfoStringBuilder(Resources resources) {
     CostStringBuilder essenceBuilder = new CostStringBuilder(resources, "CharacterSheet.Charm.Mote"); //$NON-NLS-1$
     CostStringBuilder willpowerBuilder = new CostStringBuilder(resources, "CharacterSheet.Charm.Willpower"); //$NON-NLS-1$
     HealthCostStringBuilder healthBuilder = new HealthCostStringBuilder(resources, "CharacterSheet.Charm.HealthLevel"); //$NON-NLS-1$
@@ -31,7 +31,7 @@ public abstract class AbstractMagicStats<T extends IMagic> implements IMagicStat
   }
 
   @Override
-  public String getCostString(IResources resources) {
+  public String getCostString(Resources resources) {
     MagicInfoStringBuilder infoBuilder = createMagicInfoStringBuilder(resources);
     return infoBuilder.createCostString(magic);
   }

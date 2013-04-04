@@ -11,14 +11,14 @@ import net.sf.anathema.character.generic.type.CharacterTypes;
 import net.sf.anathema.charmtree.presenter.AbstractCascadePresenter;
 import net.sf.anathema.charmtree.presenter.view.CharmDisplayPropertiesMap;
 import net.sf.anathema.charmtree.presenter.view.DefaultNodeProperties;
-import net.sf.anathema.lib.resources.IResources;
+import net.sf.anathema.lib.resources.Resources;
 import net.sf.anathema.lib.util.Identified;
 
 public class CascadePresenter extends AbstractCascadePresenter implements ICascadePresenter {
 
   private final CharmTreeIdentificateMap treeIdentificateMap = new CharmTreeIdentificateMap();
 
-  public CascadePresenter(IResources resources, ICharacterGenerics generics, ICascadeViewFactory factory,
+  public CascadePresenter(Resources resources, ICharacterGenerics generics, ICascadeViewFactory factory,
                           MagicDescriptionProvider magicDescriptionProvider) {
     super(resources);
     ICharmCache cache = generics.getDataSet(ICharmCache.class);

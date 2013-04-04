@@ -5,16 +5,16 @@ import net.sf.anathema.character.library.trait.visitor.IDefaultTrait;
 import net.sf.anathema.character.model.charm.special.IMultiLearnableCharmConfiguration;
 import net.sf.anathema.framework.value.IIntValueView;
 import net.sf.anathema.lib.gui.Presenter;
-import net.sf.anathema.lib.resources.IResources;
+import net.sf.anathema.lib.resources.Resources;
 import net.sf.anathema.platform.tree.presenter.view.CategorizedSpecialNodeView;
 
 public class MultiLearnableCharmPresenter implements Presenter {
 
   private final CategorizedSpecialNodeView view;
   private final IMultiLearnableCharmConfiguration model;
-  private final IResources resources;
+  private final Resources resources;
 
-  public MultiLearnableCharmPresenter(IResources resources, CategorizedSpecialNodeView view, IMultiLearnableCharmConfiguration model) {
+  public MultiLearnableCharmPresenter(Resources resources, CategorizedSpecialNodeView view, IMultiLearnableCharmConfiguration model) {
     this.resources = resources;
     this.view = view;
     this.model = model;

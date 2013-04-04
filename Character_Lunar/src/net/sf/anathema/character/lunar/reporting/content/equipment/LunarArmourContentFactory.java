@@ -4,14 +4,14 @@ import net.sf.anathema.character.generic.character.IGenericCharacter;
 import net.sf.anathema.character.reporting.pdf.content.RegisteredReportContent;
 import net.sf.anathema.character.reporting.pdf.content.ReportContentFactory;
 import net.sf.anathema.character.reporting.pdf.content.ReportSession;
-import net.sf.anathema.lib.resources.IResources;
+import net.sf.anathema.lib.resources.Resources;
 
 @RegisteredReportContent(produces = LunarArmourContent.class)
 public class LunarArmourContentFactory implements ReportContentFactory<LunarArmourContent> {
 
-  private IResources resources;
+  private Resources resources;
 
-  public LunarArmourContentFactory(IResources resources)  {
+  public LunarArmourContentFactory(Resources resources)  {
     this.resources = resources;
   }
 

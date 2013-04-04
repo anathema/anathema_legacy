@@ -10,15 +10,15 @@ import net.sf.anathema.character.reporting.pdf.rendering.general.box.ContentEnco
 import net.sf.anathema.character.reporting.pdf.rendering.general.traits.PdfTraitEncoder;
 import net.sf.anathema.character.reporting.pdf.rendering.graphics.SheetGraphics;
 import net.sf.anathema.character.sidereal.SiderealCharacterModule;
-import net.sf.anathema.lib.resources.IResources;
+import net.sf.anathema.lib.resources.Resources;
 
 public class StandingEncoder implements ContentEncoder {
 
-  private final IResources resources;
+  private final Resources resources;
   private final float lineHeight;
   private final PdfTraitEncoder smallTraitEncoder;
 
-  public StandingEncoder(int fontSize, IResources resources) {
+  public StandingEncoder(int fontSize, Resources resources) {
     this.lineHeight = fontSize * 1.5f;
     this.resources = resources;
     this.smallTraitEncoder = PdfTraitEncoder.createSmallTraitEncoder();

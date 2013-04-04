@@ -14,7 +14,7 @@ import net.sf.anathema.character.reporting.pdf.content.essence.recovery.NullReco
 import net.sf.anathema.character.reporting.pdf.content.essence.recovery.RecoveryRow;
 import net.sf.anathema.character.reporting.pdf.content.essence.recovery.SpecialRecoveryRow;
 import net.sf.anathema.character.reporting.pdf.content.essence.recovery.TotalRecoveryRow;
-import net.sf.anathema.lib.resources.IResources;
+import net.sf.anathema.lib.resources.Resources;
 import net.sf.anathema.lib.util.IdentifiedInteger;
 
 import java.util.ArrayList;
@@ -24,7 +24,7 @@ public class ExtendedEssenceContent extends AbstractSubBoxContent {
 
   private IGenericCharacter character;
 
-  public ExtendedEssenceContent(IResources resources, IGenericCharacter character) {
+  public ExtendedEssenceContent(Resources resources, IGenericCharacter character) {
     super(resources);
     this.character = character;
   }

@@ -1,17 +1,17 @@
 package net.sf.anathema.framework.view;
 
-import net.sf.anathema.lib.resources.IResources;
+import net.sf.anathema.lib.resources.Resources;
 import net.sf.anathema.lib.util.Identified;
 
 public class IdentificateSelectCellRenderer extends AbstractSelectCellRenderer<Identified> {
 
   private final String resourceKeyPrefix;
 
-  public IdentificateSelectCellRenderer(IResources resources) {
+  public IdentificateSelectCellRenderer(Resources resources) {
     this("", resources);
   }
 
-  public IdentificateSelectCellRenderer(String resourceKeyPrefix, IResources resources) {
+  public IdentificateSelectCellRenderer(String resourceKeyPrefix, Resources resources) {
     super(resources);
     this.resourceKeyPrefix = resourceKeyPrefix;
   }

@@ -7,7 +7,7 @@ import net.sf.anathema.character.equipment.impl.character.model.natural.Effectiv
 import net.sf.anathema.character.generic.equipment.weapon.IArmourStats;
 import net.sf.anathema.character.generic.equipment.weapon.IEquipmentStats;
 import net.sf.anathema.character.generic.equipment.weapon.IWeaponStats;
-import net.sf.anathema.lib.resources.IResources;
+import net.sf.anathema.lib.resources.Resources;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -36,7 +36,7 @@ public class EquipmentPrintModel implements IEquipmentPrintModel {
   }
 
   @Override
-  public IWeaponStats[] getPrintWeapons(IResources resources) {
+  public IWeaponStats[] getPrintWeapons(Resources resources) {
     List<IWeaponStats> printStats = getNaturalWeaponList();
     printStats.addAll(getPrintEquipmentList(IWeaponStats.class, new WeaponStatsDecorationFactory(resources)));
     return printStats.toArray(new IWeaponStats[printStats.size()]);
@@ -78,7 +78,7 @@ public class EquipmentPrintModel implements IEquipmentPrintModel {
   }
 
   @Override
-  public final IArmourStats getEffectivePrintArmour(IResources resources, int lineCount) {
+  public final IArmourStats getEffectivePrintArmour(Resources resources, int lineCount) {
     EffectiveArmour armour = new EffectiveArmour();
     IArmourStats[] printArmours = getPrintArmours();
     for (int index = 0; index < Math.min(lineCount, printArmours.length); index++) {

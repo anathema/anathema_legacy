@@ -7,7 +7,7 @@ import net.sf.anathema.character.lunar.beastform.presenter.IBeastformModel;
 import net.sf.anathema.character.mutations.model.IMutation;
 import net.sf.anathema.character.reporting.pdf.content.AbstractSubBoxContent;
 import net.sf.anathema.character.reporting.pdf.content.ListSubBoxContent;
-import net.sf.anathema.lib.resources.IResources;
+import net.sf.anathema.lib.resources.Resources;
 import net.sf.anathema.lib.util.Identified;
 
 import java.util.ArrayList;
@@ -17,7 +17,7 @@ public class GiftContent extends AbstractSubBoxContent implements ListSubBoxCont
 
   private IGenericCharacter character;
 
-  public GiftContent(IResources resources, IGenericCharacter character) {
+  public GiftContent(Resources resources, IGenericCharacter character) {
     super(resources);
     this.character = character;
   }

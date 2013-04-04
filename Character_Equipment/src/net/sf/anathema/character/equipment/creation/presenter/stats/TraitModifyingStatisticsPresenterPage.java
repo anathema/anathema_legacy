@@ -3,7 +3,7 @@ package net.sf.anathema.character.equipment.creation.presenter.stats;
 import net.sf.anathema.character.equipment.creation.model.stats.IEquipmentStatisticsCreationModel;
 import net.sf.anathema.character.equipment.creation.model.stats.ITraitModifyingStatisticsModel;
 import net.sf.anathema.character.equipment.creation.presenter.stats.properties.TraitBoostStatisticsProperties;
-import net.sf.anathema.lib.resources.IResources;
+import net.sf.anathema.lib.resources.Resources;
 
 import java.awt.Component;
 
@@ -11,7 +11,7 @@ public class TraitModifyingStatisticsPresenterPage extends
     AbstractEquipmentStatisticsPresenterPage<ITraitModifyingStatisticsModel, TraitBoostStatisticsProperties> {
 
   public TraitModifyingStatisticsPresenterPage(
-      IResources resources,
+      Resources resources,
       IEquipmentStatisticsCreationModel model,
       IEquipmentStatisticsCreationViewFactory viewFactory) {
     super(resources, new TraitBoostStatisticsProperties(resources), model, model.getTraitModifyingStatisticsModel(), viewFactory);

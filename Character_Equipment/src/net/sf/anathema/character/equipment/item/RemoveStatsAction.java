@@ -5,14 +5,14 @@ import net.sf.anathema.character.generic.equipment.weapon.IEquipmentStats;
 import net.sf.anathema.interaction.Command;
 import net.sf.anathema.interaction.Tool;
 import net.sf.anathema.character.equipment.item.view.ToolListView;
-import net.sf.anathema.lib.resources.IStringResourceHandler;
+import net.sf.anathema.lib.resources.Resources;
 
 public class RemoveStatsAction {
 
-  private final IStringResourceHandler resources;
+  private final Resources resources;
   private final IEquipmentTemplateEditModel editModel;
 
-  public RemoveStatsAction(IStringResourceHandler resources, IEquipmentTemplateEditModel editModel) {
+  public RemoveStatsAction(Resources resources, IEquipmentTemplateEditModel editModel) {
     this.resources = resources;
     this.editModel = editModel;
 

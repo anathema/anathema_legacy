@@ -4,7 +4,7 @@ import net.sf.anathema.framework.presenter.action.SupportedLocale;
 import net.sf.anathema.framework.presenter.action.preferences.IPreferencesElement;
 import net.sf.anathema.initialization.PreferenceElement;
 import net.sf.anathema.initialization.reflections.Weight;
-import net.sf.anathema.lib.resources.IResources;
+import net.sf.anathema.lib.resources.Resources;
 import net.sf.anathema.lib.util.Identified;
 
 import javax.swing.DefaultListCellRenderer;
@@ -27,7 +27,7 @@ public class LanguagePreferencesElement implements IPreferencesElement {
   private JComboBox languageBox;
 
   @Override
-  public void addComponent(JPanel panel, IResources resources) {
+  public void addComponent(JPanel panel, Resources resources) {
     JLabel languageLabel = new JLabel(
             resources.getString("AnathemaCore.Tools.Preferences.Language") + ":"); //$NON-NLS-1$ //$NON-NLS-2$
     languageBox = new JComboBox(SupportedLocale.values());

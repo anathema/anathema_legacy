@@ -6,7 +6,7 @@ import net.sf.anathema.interaction.CommandProxy;
 import net.sf.anathema.interaction.ToggleInteraction;
 import net.sf.anathema.lib.gui.action.SmartAction;
 import net.sf.anathema.lib.gui.icon.ImageProvider;
-import net.sf.anathema.lib.resources.IResources;
+import net.sf.anathema.lib.resources.Resources;
 
 import javax.swing.JToggleButton;
 import java.awt.Component;
@@ -21,10 +21,10 @@ public class ToggleActionInteraction implements ToggleInteraction {
     }
   };
   private final JToggleButton button = new JToggleButton(action);
-  private final IResources resources;
+  private final Resources resources;
   private final Class<?> inquirer;
 
-  public ToggleActionInteraction(IResources resources, Class<?> inquirer) {
+  public ToggleActionInteraction(Resources resources, Class<?> inquirer) {
     this.resources = resources;
     this.inquirer = inquirer;
   }

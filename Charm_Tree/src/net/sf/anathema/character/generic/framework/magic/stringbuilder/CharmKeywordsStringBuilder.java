@@ -4,12 +4,12 @@ import net.sf.anathema.character.generic.magic.ICharm;
 import net.sf.anathema.character.generic.magic.IMagic;
 import net.sf.anathema.character.generic.magic.charms.ICharmAttribute;
 import net.sf.anathema.lib.gui.TooltipBuilder;
-import net.sf.anathema.lib.resources.IResources;
+import net.sf.anathema.lib.resources.Resources;
 
 public class CharmKeywordsStringBuilder implements IMagicTooltipStringBuilder {
-  private final IResources resources;
+  private final Resources resources;
 
-  public CharmKeywordsStringBuilder(IResources resources) {
+  public CharmKeywordsStringBuilder(Resources resources) {
     this.resources = resources;
   }
 

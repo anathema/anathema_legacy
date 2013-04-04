@@ -6,14 +6,14 @@ import net.sf.anathema.character.reporting.pdf.rendering.extent.Bounds;
 import net.sf.anathema.character.reporting.pdf.rendering.general.box.ContentEncoder;
 import net.sf.anathema.character.reporting.pdf.rendering.general.table.ITableEncoder;
 import net.sf.anathema.character.reporting.pdf.rendering.graphics.SheetGraphics;
-import net.sf.anathema.lib.resources.IResources;
+import net.sf.anathema.lib.resources.Resources;
 
 public class ArmourEncoder implements ContentEncoder {
 
-  private IResources resources;
+  private Resources resources;
   private final ITableEncoder encoder;
 
-  public ArmourEncoder(IResources resources, ITableEncoder encoder) {
+  public ArmourEncoder(Resources resources, ITableEncoder encoder) {
     this.resources = resources;
     this.encoder = encoder;
   }

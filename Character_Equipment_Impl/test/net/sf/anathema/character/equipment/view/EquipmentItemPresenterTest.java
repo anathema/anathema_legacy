@@ -13,7 +13,7 @@ import net.sf.anathema.character.generic.equipment.weapon.IEquipmentStats;
 import net.sf.anathema.character.generic.health.HealthType;
 import net.sf.anathema.character.generic.traits.INamedGenericTrait;
 import net.sf.anathema.character.generic.traits.ITraitType;
-import net.sf.anathema.framework.resources.AnathemaResources;
+import net.sf.anathema.framework.resources.LocaleResources;
 import net.sf.anathema.lib.model.BooleanModel;
 import net.sf.anathema.lib.util.Identifier;
 
@@ -46,7 +46,7 @@ public class EquipmentItemPresenterTest extends TestCase {
     IEquipmentCharacterOptionProvider optionProvider = mock(IEquipmentCharacterOptionProvider.class);
     when(dataProvider.getSpecialties(isA(ITraitType.class))).thenReturn(new INamedGenericTrait[0]);
     new EquipmentObjectPresenter(model, view, equipmentStringBuilder, dataProvider, optionProvider, 
-            new AnathemaResources()).initPresentation();
+            new LocaleResources()).initPresentation();
   }
 
   public void testEquipmentWithoutStats() throws Exception {

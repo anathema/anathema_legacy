@@ -3,16 +3,16 @@ package net.sf.anathema.character.platform.module.repository;
 import net.sf.anathema.character.generic.framework.ICharacterGenerics;
 import net.sf.anathema.character.impl.model.CharacterStatisticsConfiguration;
 import net.sf.anathema.lib.gui.dialog.userdialog.page.IDialogPage;
-import net.sf.anathema.lib.resources.IResources;
+import net.sf.anathema.lib.resources.Resources;
 import net.sf.anathema.lib.workflow.wizard.selection.DialogBasedTemplateFactory;
 import net.sf.anathema.lib.workflow.wizard.selection.IDialogModelTemplate;
 
 public class CharacterCreationTemplateFactory implements DialogBasedTemplateFactory {
 
-  private final IResources resources;
+  private final Resources resources;
   private final ICharacterGenerics generics;
 
-  public CharacterCreationTemplateFactory(ICharacterGenerics generics, IResources resources) {
+  public CharacterCreationTemplateFactory(ICharacterGenerics generics, Resources resources) {
     this.generics = generics;
     this.resources = resources;
   }

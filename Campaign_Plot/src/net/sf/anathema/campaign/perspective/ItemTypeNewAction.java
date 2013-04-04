@@ -5,7 +5,7 @@ import net.sf.anathema.framework.item.IItemType;
 import net.sf.anathema.framework.presenter.IItemManagementModel;
 import net.sf.anathema.framework.presenter.action.NewItemCommand;
 import net.sf.anathema.framework.presenter.resources.PlatformUI;
-import net.sf.anathema.lib.resources.IResources;
+import net.sf.anathema.lib.resources.Resources;
 
 import javax.swing.Action;
 import javax.swing.Icon;
@@ -17,7 +17,7 @@ public class ItemTypeNewAction extends AbstractItemAction {
 
   private final IItemType type;
 
-  public static Action[] createToolActions(IApplicationModel model, IResources resources) {
+  public static Action[] createToolActions(IApplicationModel model, Resources resources) {
     List<Action> actions = new ArrayList<>();
     for (IItemType type : collectItemTypes(model)) {
       ItemTypeNewAction action = new ItemTypeNewAction(type, model, resources);
@@ -27,7 +27,7 @@ public class ItemTypeNewAction extends AbstractItemAction {
     return actions.toArray(new Action[actions.size()]);
   }
 
-  public static String createToolTip(IResources resources) {
+  public static String createToolTip(Resources resources) {
     return resources.getString("AnathemaCore.Tools.New.Name");
   }
 
@@ -35,7 +35,7 @@ public class ItemTypeNewAction extends AbstractItemAction {
     return new PlatformUI().getNewToolBarIcon();
   }
 
-  public ItemTypeNewAction(IItemType type, IApplicationModel model, IResources resources) {
+  public ItemTypeNewAction(IItemType type, IApplicationModel model, Resources resources) {
     super(model, resources);
     this.type = type;
   }

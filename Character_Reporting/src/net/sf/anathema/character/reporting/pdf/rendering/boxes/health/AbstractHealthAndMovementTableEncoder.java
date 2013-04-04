@@ -20,7 +20,7 @@ import net.sf.anathema.character.reporting.pdf.rendering.general.table.ITableEnc
 import net.sf.anathema.character.reporting.pdf.rendering.general.table.TableEncodingUtilities;
 import net.sf.anathema.character.reporting.pdf.rendering.graphics.SheetGraphics;
 import net.sf.anathema.character.reporting.pdf.rendering.graphics.TableCell;
-import net.sf.anathema.lib.resources.IResources;
+import net.sf.anathema.lib.resources.Resources;
 import org.apache.commons.lang3.ArrayUtils;
 
 public abstract class AbstractHealthAndMovementTableEncoder implements ITableEncoder<ReportSession> {
@@ -29,9 +29,9 @@ public abstract class AbstractHealthAndMovementTableEncoder implements ITableEnc
   protected static float PADDING = 0.3f;
   private static final Float[] HEALTH_LEVEL_COLUMNS = new Float[]{PADDING, 0.6f, 0.7f, PADDING};
 
-  private final IResources resources;
+  private final Resources resources;
 
-  public AbstractHealthAndMovementTableEncoder(IResources resources) {
+  public AbstractHealthAndMovementTableEncoder(Resources resources) {
     this.resources = resources;
   }
 
@@ -220,7 +220,7 @@ public abstract class AbstractHealthAndMovementTableEncoder implements ITableEnc
     return ArrayUtils.toPrimitive(objectArray);
   }
 
-  protected final IResources getResources() {
+  protected final Resources getResources() {
     return resources;
   }
 

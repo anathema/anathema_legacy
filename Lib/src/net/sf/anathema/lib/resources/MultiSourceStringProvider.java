@@ -5,8 +5,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 
-public class MultiSourceStringProvider implements IStringResourceHandler {
-  private final List<IStringResourceHandler> handlers = new ArrayList<>();
+public class MultiSourceStringProvider implements Resources {
+  private final List<Resources> handlers = new ArrayList<>();
 
   @Override
   public String getString(String key, Object... arguments) {
@@ -18,7 +18,7 @@ public class MultiSourceStringProvider implements IStringResourceHandler {
   }
 
   private String getString(String key) {
-    for (IStringResourceHandler handler : handlers) {
+    for (Resources handler : handlers) {
       if (handler.supportsKey(key)) {
         return handler.getString(key);
       }
@@ -28,7 +28,7 @@ public class MultiSourceStringProvider implements IStringResourceHandler {
 
   @Override
   public boolean supportsKey(String key) {
-    for (IStringResourceHandler handler : handlers) {
+    for (Resources handler : handlers) {
       if (handler.supportsKey(key)) {
         return true;
       }
@@ -36,7 +36,7 @@ public class MultiSourceStringProvider implements IStringResourceHandler {
     return false;
   }
 
-  public void add(IStringResourceHandler handler) {
+  public void add(Resources handler) {
     handlers.add(handler);
   }
 }

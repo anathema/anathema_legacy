@@ -4,12 +4,12 @@ import net.sf.anathema.character.reporting.pdf.content.BasicContent;
 import net.sf.anathema.character.reporting.pdf.rendering.boxes.EncoderRegistry;
 import net.sf.anathema.character.reporting.pdf.rendering.page.PageEncoder;
 import net.sf.anathema.framework.reporting.pdf.PageSize;
-import net.sf.anathema.lib.resources.IResources;
+import net.sf.anathema.lib.resources.Resources;
 
 public class NullPageFactory implements PageFactory {
 
   @Override
-  public PageEncoder[] create(EncoderRegistry encoderRegistry, IResources resources, PageSize pageSize) {
+  public PageEncoder[] create(EncoderRegistry encoderRegistry, Resources resources, PageSize pageSize) {
     return new PageEncoder[0];
   }
 

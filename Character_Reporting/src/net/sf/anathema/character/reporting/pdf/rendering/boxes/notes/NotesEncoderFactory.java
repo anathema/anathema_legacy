@@ -6,7 +6,7 @@ import net.sf.anathema.character.reporting.pdf.rendering.boxes.GlobalEncoderFact
 import net.sf.anathema.character.reporting.pdf.rendering.boxes.RegisteredEncoderFactory;
 import net.sf.anathema.character.reporting.pdf.rendering.general.HorizontalLineBoxContentEncoder;
 import net.sf.anathema.character.reporting.pdf.rendering.general.box.ContentEncoder;
-import net.sf.anathema.lib.resources.IResources;
+import net.sf.anathema.lib.resources.Resources;
 
 @RegisteredEncoderFactory
 public class NotesEncoderFactory extends GlobalEncoderFactory {
@@ -16,7 +16,7 @@ public class NotesEncoderFactory extends GlobalEncoderFactory {
   }
 
   @Override
-  public ContentEncoder create(IResources resources, BasicContent content) {
+  public ContentEncoder create(Resources resources, BasicContent content) {
     return new HorizontalLineBoxContentEncoder(1, resources, "Notes"); //$NON-NLS-1$
   }
 }

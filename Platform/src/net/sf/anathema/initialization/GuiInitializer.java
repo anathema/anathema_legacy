@@ -7,12 +7,12 @@ import net.sf.anathema.framework.Version;
 import net.sf.anathema.framework.configuration.IInitializationPreferences;
 import net.sf.anathema.framework.module.AnathemaCoreMenu;
 import net.sf.anathema.framework.presenter.AnathemaViewProperties;
-import net.sf.anathema.framework.resources.AnathemaResources;
+import net.sf.anathema.framework.resources.LocaleResources;
 import net.sf.anathema.framework.view.ApplicationView;
 import net.sf.anathema.framework.view.SwingApplicationFrame;
 import net.sf.anathema.framework.view.perspective.PerspectivePaneFactory;
 import net.sf.anathema.lib.logging.Logger;
-import net.sf.anathema.lib.resources.IResources;
+import net.sf.anathema.lib.resources.Resources;
 
 public class GuiInitializer extends Initializer {
 
@@ -21,7 +21,7 @@ public class GuiInitializer extends Initializer {
   }
 
   @Override
-  protected void initPresentation(AnathemaResources resources, IApplicationModel model, ApplicationView view) {
+  protected void initPresentation(LocaleResources resources, IApplicationModel model, ApplicationView view) {
     super.initPresentation(resources, model, view);
     new AnathemaCoreMenu().add(resources, model, view.getMenuBar());
   }
@@ -32,7 +32,7 @@ public class GuiInitializer extends Initializer {
   }
 
   @Override
-  protected ApplicationFrameView initView(IResources resources, IApplicationModel anathemaModel, Instantiater objectFactory) {
+  protected ApplicationFrameView initView(Resources resources, IApplicationModel anathemaModel, Instantiater objectFactory) {
     displayMessage("Building View...");
     AnathemaViewProperties viewProperties = new AnathemaViewProperties(resources, getPreferences().initMaximized());
     PerspectivePaneFactory factory = new PerspectivePaneFactory(anathemaModel, resources, objectFactory);
@@ -40,7 +40,7 @@ public class GuiInitializer extends Initializer {
   }
 
   @Override
-  protected void showVersion(IResources resources) {
+  protected void showVersion(Resources resources) {
     Version version = new Version(resources);
     getSplashscreen().displayVersion("v" + version.asString());
     Logger.getLogger(GuiInitializer.class).info("Program version is " + version.asString());

@@ -22,7 +22,7 @@ import net.sf.anathema.framework.view.util.ContentProperties;
 import net.sf.anathema.lib.collection.IdentityMapping;
 import net.sf.anathema.lib.control.ObjectValueListener;
 import net.sf.anathema.lib.registry.IIdentificateRegistry;
-import net.sf.anathema.lib.resources.IResources;
+import net.sf.anathema.lib.resources.Resources;
 
 import javax.swing.Icon;
 import java.awt.event.ActionEvent;
@@ -35,7 +35,7 @@ public class BackgroundPresenter implements IContentPresenter {
 
   private final IBackgroundConfiguration configuration;
   private final BackgroundView configurationView;
-  private final IResources resources;
+  private final Resources resources;
   private final IdentityMapping<IDefaultTrait, IRemovableTraitView<?>> viewsByBackground = new IdentityMapping<>();
   private final IIdentificateRegistry<IBackgroundTemplate> backgroundRegistry;
   private final Map<String, IBackgroundTemplate> templatesByDisplayName = new HashMap<>();
@@ -43,7 +43,7 @@ public class BackgroundPresenter implements IContentPresenter {
   private String backgroundDescription = "";
   private Displayer displayer;
 
-  public BackgroundPresenter(IResources resources, IBackgroundConfiguration configuration, ICharacterModelContext context, BackgroundView view,
+  public BackgroundPresenter(Resources resources, IBackgroundConfiguration configuration, ICharacterModelContext context, BackgroundView view,
                              IIdentificateRegistry<IBackgroundTemplate> backgroundRegistry) {
     this.resources = resources;
     this.configuration = configuration;

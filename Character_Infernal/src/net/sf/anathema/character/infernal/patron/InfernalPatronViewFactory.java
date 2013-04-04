@@ -7,12 +7,12 @@ import net.sf.anathema.character.infernal.patron.presenter.IInfernalPatronModel;
 import net.sf.anathema.character.infernal.patron.presenter.InfernalPatronPresenter;
 import net.sf.anathema.character.infernal.patron.view.InfernalPatronView;
 import net.sf.anathema.lib.gui.IView;
-import net.sf.anathema.lib.resources.IResources;
+import net.sf.anathema.lib.resources.Resources;
 
 public class InfernalPatronViewFactory implements IAdditionalViewFactory {
 
   @Override
-  public IView createView(IAdditionalModel model, IResources resources, ICharacterType type) {
+  public IView createView(IAdditionalModel model, Resources resources, ICharacterType type) {
     InfernalPatronView view = new InfernalPatronView();
     new InfernalPatronPresenter(resources, view, (IInfernalPatronModel) model).initPresentation();
     return view;

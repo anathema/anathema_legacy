@@ -10,12 +10,12 @@ import net.sf.anathema.character.library.virtueflaw.view.DescriptiveVirtueFlawVi
 import net.sf.anathema.character.solar.virtueflaw.presenter.SolarVirtueFlawPresenter;
 import net.sf.anathema.framework.value.IntegerViewFactory;
 import net.sf.anathema.lib.gui.IView;
-import net.sf.anathema.lib.resources.IResources;
+import net.sf.anathema.lib.resources.Resources;
 
 public class SolarVirtueFlawViewFactory implements IAdditionalViewFactory {
 
   @Override
-  public IView createView(IAdditionalModel model, IResources resources, ICharacterType type) {
+  public IView createView(IAdditionalModel model, Resources resources, ICharacterType type) {
     IntegerViewFactory viewFactory = IntValueDisplayFactoryPrototype.createWithMarkerForCharacterType(type);
     IDescriptiveVirtueFlawView virtueFlawView = new DescriptiveVirtueFlawView(viewFactory);
     SolarVirtueFlawPresenter presenter = new SolarVirtueFlawPresenter(resources, virtueFlawView, (IDescriptiveVirtueFlawModel) model);

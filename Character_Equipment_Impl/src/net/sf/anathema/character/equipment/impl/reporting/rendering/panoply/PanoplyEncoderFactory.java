@@ -7,7 +7,7 @@ import net.sf.anathema.character.reporting.pdf.rendering.EncoderIds;
 import net.sf.anathema.character.reporting.pdf.rendering.boxes.GlobalEncoderFactory;
 import net.sf.anathema.character.reporting.pdf.rendering.boxes.RegisteredEncoderFactory;
 import net.sf.anathema.character.reporting.pdf.rendering.general.box.ContentEncoder;
-import net.sf.anathema.lib.resources.IResources;
+import net.sf.anathema.lib.resources.Resources;
 
 @RegisteredEncoderFactory
 public class PanoplyEncoderFactory extends GlobalEncoderFactory {
@@ -18,7 +18,7 @@ public class PanoplyEncoderFactory extends GlobalEncoderFactory {
   }
 
   @Override
-  public ContentEncoder create(IResources resources, BasicContent content) {
+  public ContentEncoder create(Resources resources, BasicContent content) {
     return new ArmourEncoder(resources, new ArmourTableEncoder(ArmourContent.class));
   }
 }

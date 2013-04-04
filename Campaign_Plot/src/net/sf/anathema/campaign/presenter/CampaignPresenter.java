@@ -4,15 +4,15 @@ import net.sf.anathema.campaign.model.ISeries;
 import net.sf.anathema.campaign.presenter.plot.PlotPresenter;
 import net.sf.anathema.campaign.presenter.view.ISeriesView;
 import net.sf.anathema.lib.gui.Presenter;
-import net.sf.anathema.lib.resources.IResources;
+import net.sf.anathema.lib.resources.Resources;
 
 public class CampaignPresenter implements Presenter {
 
   private final ISeriesView campaignView;
   private final ISeries campaign;
-  private final IResources resources;
+  private final Resources resources;
 
-  public CampaignPresenter(ISeriesView campaignView, IResources resources, ISeries campaign) {
+  public CampaignPresenter(ISeriesView campaignView, Resources resources, ISeries campaign) {
     this.campaignView = campaignView;
     this.resources = resources;
     this.campaign = campaign;

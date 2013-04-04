@@ -2,12 +2,12 @@ package net.sf.anathema.character.equipment.item;
 
 import net.sf.anathema.character.equipment.MagicalMaterial;
 import net.sf.anathema.lib.gui.TechnologyAgnosticUIConfiguration;
-import net.sf.anathema.lib.resources.IResources;
+import net.sf.anathema.lib.resources.Resources;
 
 public class MaterialUi implements TechnologyAgnosticUIConfiguration<MagicalMaterial> {
-  private IResources resources;
+  private Resources resources;
 
-  public MaterialUi(IResources resources) {
+  public MaterialUi(Resources resources) {
     this.resources = resources;
   }
 

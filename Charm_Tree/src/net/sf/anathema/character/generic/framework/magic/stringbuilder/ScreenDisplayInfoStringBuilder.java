@@ -2,13 +2,13 @@ package net.sf.anathema.character.generic.framework.magic.stringbuilder;
 
 import net.sf.anathema.character.generic.magic.IMagic;
 import net.sf.anathema.lib.gui.TooltipBuilder;
-import net.sf.anathema.lib.resources.IResources;
+import net.sf.anathema.lib.resources.Resources;
 
 public class ScreenDisplayInfoStringBuilder extends MagicInfoStringBuilder implements IMagicTooltipStringBuilder {
 
-  private IResources resources;
+  private Resources resources;
 
-  public ScreenDisplayInfoStringBuilder(IResources resources) {
+  public ScreenDisplayInfoStringBuilder(Resources resources) {
     super(resources, new CostStringBuilder(resources, "CharmTreeView.ToolTip.Mote", "CharmTreeView.ToolTip.Motes"), //$NON-NLS-1$ //$NON-NLS-2$
             new CostStringBuilder(resources, "WillpowerType.Name"), //$NON-NLS-1$
             new HealthCostStringBuilder(resources, "CharmTreeView.ToolTip.HealthLevel", //$NON-NLS-1$

@@ -1,13 +1,13 @@
 package net.sf.anathema.character.generic.framework.magic.stringbuilder;
 
 import com.google.common.base.Strings;
-import net.sf.anathema.lib.resources.IResources;
+import net.sf.anathema.lib.resources.Resources;
 
 public class MagicInfoStringConcatenator {
 
-  private final IResources resources;
+  private final Resources resources;
 
-  public MagicInfoStringConcatenator(IResources resources) {
+  public MagicInfoStringConcatenator(Resources resources) {
     this.resources = resources;
   }
 

@@ -6,7 +6,7 @@ import net.miginfocom.swing.MigLayout;
 import net.sf.anathema.character.generic.rules.IExaltedSourceBook;
 import net.sf.anathema.lib.gui.action.SmartAction;
 import net.sf.anathema.lib.gui.ui.ObjectUiListCellRenderer;
-import net.sf.anathema.lib.resources.IResources;
+import net.sf.anathema.lib.resources.Resources;
 
 import javax.swing.BorderFactory;
 import javax.swing.ButtonGroup;
@@ -30,11 +30,11 @@ public class SourceBookCharmFilterPage implements ICharmFilterPage {
   private List<IExaltedSourceBook> allowedBooks;
   private List<IExaltedSourceBook> excludedBooks;
   private boolean[] includePrereqs;
-  private IResources resources;
+  private Resources resources;
   private JList<IExaltedSourceBook> allowedList;
   private JList<IExaltedSourceBook> excludedList;
 
-  public SourceBookCharmFilterPage(IResources resources, List<IExaltedSourceBook> allowed,
+  public SourceBookCharmFilterPage(Resources resources, List<IExaltedSourceBook> allowed,
                                    ArrayList<IExaltedSourceBook> excluded, boolean[] includePrereqs) {
     this.allowedBooks = allowed;
     this.excludedBooks = excluded;
@@ -146,9 +146,9 @@ public class SourceBookCharmFilterPage implements ICharmFilterPage {
   }
 
   private static class BookTitleComparator implements Comparator<IExaltedSourceBook> {
-    private final IResources resources;
+    private final Resources resources;
 
-    public BookTitleComparator(IResources resources) {
+    public BookTitleComparator(Resources resources) {
       this.resources = resources;
     }
 

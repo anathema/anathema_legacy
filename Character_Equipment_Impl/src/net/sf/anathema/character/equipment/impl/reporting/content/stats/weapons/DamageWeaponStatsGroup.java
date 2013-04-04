@@ -8,13 +8,13 @@ import net.sf.anathema.character.generic.character.IGenericTraitCollection;
 import net.sf.anathema.character.generic.equipment.weapon.IWeaponStats;
 import net.sf.anathema.character.generic.health.HealthType;
 import net.sf.anathema.character.generic.traits.ITraitType;
-import net.sf.anathema.lib.resources.IResources;
+import net.sf.anathema.lib.resources.Resources;
 
 public class DamageWeaponStatsGroup extends AbstractValueEquipmentStatsGroup<IWeaponStats> {
 
   private final IGenericTraitCollection collection;
 
-  public DamageWeaponStatsGroup(IResources resources, IGenericTraitCollection collection) {
+  public DamageWeaponStatsGroup(Resources resources, IGenericTraitCollection collection) {
     super(resources, "Damage"); //$NON-NLS-1$
     this.collection = collection;
   }

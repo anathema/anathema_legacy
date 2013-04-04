@@ -12,7 +12,7 @@ import net.sf.anathema.lib.gui.action.SmartAction;
 import net.sf.anathema.lib.logging.Logger;
 import net.sf.anathema.lib.message.Message;
 import net.sf.anathema.lib.message.MessageType;
-import net.sf.anathema.lib.resources.IResources;
+import net.sf.anathema.lib.resources.Resources;
 
 import java.awt.Component;
 import java.io.File;
@@ -23,12 +23,12 @@ import static net.sf.anathema.lib.gui.dialog.message.MessageDialogFactory.showMe
 
 public class RepositoryItemDuplicationPresenter implements Presenter {
 
-  private final IResources resources;
+  private final Resources resources;
   private final RepositoryTreeModel model;
   private final RepositoryTreeView view;
   private final IMessaging messaging;
 
-  public RepositoryItemDuplicationPresenter(IResources resources, RepositoryTreeModel repositoryTreeModel,
+  public RepositoryItemDuplicationPresenter(Resources resources, RepositoryTreeModel repositoryTreeModel,
                                             RepositoryTreeView treeView, IMessaging messaging) {
     this.resources = resources;
     this.model = repositoryTreeModel;

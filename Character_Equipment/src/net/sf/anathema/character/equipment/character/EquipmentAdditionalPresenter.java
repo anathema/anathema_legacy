@@ -22,7 +22,7 @@ import net.sf.anathema.lib.gui.action.SmartAction;
 import net.sf.anathema.lib.gui.dialog.core.IDialogResult;
 import net.sf.anathema.lib.gui.dialog.userdialog.UserDialog;
 import net.sf.anathema.lib.gui.selection.IListObjectSelectionView;
-import net.sf.anathema.lib.resources.IResources;
+import net.sf.anathema.lib.resources.Resources;
 
 import javax.swing.Action;
 import javax.swing.DefaultListCellRenderer;
@@ -36,12 +36,12 @@ import java.util.Map;
 
 public class EquipmentAdditionalPresenter implements Presenter {
 
-  private final IResources resources;
+  private final Resources resources;
   private final IEquipmentAdditionalModel model;
   private final IEquipmentAdditionalView view;
   private final Map<IEquipmentItem, IEquipmentObjectView> viewsByItem = new HashMap<>();
 
-  public EquipmentAdditionalPresenter(IResources resources, final IEquipmentAdditionalModel model,
+  public EquipmentAdditionalPresenter(Resources resources, final IEquipmentAdditionalModel model,
                                       IEquipmentAdditionalView view) {
     this.resources = resources;
     this.model = model;

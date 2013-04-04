@@ -1,10 +1,10 @@
 package net.sf.anathema.character.generic.backgrounds;
 
-import net.sf.anathema.lib.resources.IResources;
+import net.sf.anathema.lib.resources.Resources;
 
 public interface IBackgroundInfo
 {
-	String getName(IResources resources);
+	String getName(Resources resources);
 	
 	String getDescription();
 }

@@ -2,7 +2,7 @@ package net.sf.anathema.campaign.presenter;
 
 import net.sf.anathema.campaign.module.PlotUI;
 import net.sf.anathema.framework.styledtext.ITextEditorProperties;
-import net.sf.anathema.lib.resources.IResources;
+import net.sf.anathema.lib.resources.Resources;
 
 import javax.swing.Action;
 import javax.swing.Icon;
@@ -14,9 +14,9 @@ import java.awt.SystemColor;
 
 public class TextEditorProperties implements ITextEditorProperties {
 
-  private final IResources resources;
+  private final Resources resources;
 
-  public TextEditorProperties(IResources resources) {
+  public TextEditorProperties(Resources resources) {
     this.resources = resources;
   }
 

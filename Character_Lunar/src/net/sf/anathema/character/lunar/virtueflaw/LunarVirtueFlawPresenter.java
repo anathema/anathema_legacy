@@ -5,12 +5,12 @@ import net.sf.anathema.character.library.virtueflaw.presenter.IVirtueFlawModel;
 import net.sf.anathema.character.library.virtueflaw.presenter.IVirtueFlawView;
 import net.sf.anathema.character.library.virtueflaw.presenter.VirtueFlawPresenter;
 import net.sf.anathema.lib.control.IChangeListener;
-import net.sf.anathema.lib.resources.IResources;
+import net.sf.anathema.lib.resources.Resources;
 import net.sf.anathema.lib.workflow.textualdescription.ITextView;
 
 public class LunarVirtueFlawPresenter extends VirtueFlawPresenter {
 
-  public LunarVirtueFlawPresenter(IResources resources, IVirtueFlawView virtueFlawView, IVirtueFlawModel model) {
+  public LunarVirtueFlawPresenter(Resources resources, IVirtueFlawView virtueFlawView, IVirtueFlawModel model) {
     super(resources, virtueFlawView, model);
   }
 

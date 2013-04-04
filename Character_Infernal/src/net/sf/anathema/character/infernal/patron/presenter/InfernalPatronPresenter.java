@@ -18,21 +18,21 @@ import net.sf.anathema.framework.value.IntegerViewFactory;
 import net.sf.anathema.lib.collection.IdentityMapping;
 import net.sf.anathema.lib.control.IBooleanValueChangedListener;
 import net.sf.anathema.lib.gui.Presenter;
-import net.sf.anathema.lib.resources.IResources;
+import net.sf.anathema.lib.resources.Resources;
 import net.sf.anathema.lib.workflow.labelledvalue.ILabelledAlotmentView;
 
 import static net.sf.anathema.character.presenter.FavorableTraitConfigurationPresenter.updateView;
 
 public class InfernalPatronPresenter implements Presenter {
 
-  private final IResources resources;
+  private final Resources resources;
   private final IInfernalPatronView view;
   private final IInfernalPatronModel model;
   private final ICharacterModelContext context;
   private final ICharacterListening characterListening;
   private final IdentityMapping<IFavorableTrait, IToggleButtonTraitView<?>> viewsByYozi = new IdentityMapping<>();
 
-  public InfernalPatronPresenter(IResources resources, IInfernalPatronView view, IInfernalPatronModel model) {
+  public InfernalPatronPresenter(Resources resources, IInfernalPatronView view, IInfernalPatronModel model) {
     this.resources = resources;
     this.view = view;
     this.model = model;

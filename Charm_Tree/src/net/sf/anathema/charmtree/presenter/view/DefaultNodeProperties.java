@@ -5,7 +5,7 @@ import net.sf.anathema.character.generic.framework.magic.MagicDisplayLabeler;
 import net.sf.anathema.character.generic.magic.ICharm;
 import net.sf.anathema.character.generic.magic.charms.ICharmIdMap;
 import net.sf.anathema.lib.logging.Logger;
-import net.sf.anathema.lib.resources.IResources;
+import net.sf.anathema.lib.resources.Resources;
 import net.sf.anathema.platform.tree.presenter.view.NodeProperties;
 
 import static java.text.MessageFormat.format;
@@ -17,10 +17,10 @@ public class DefaultNodeProperties implements NodeProperties {
 
   private final ICharmTreeViewProperties properties;
   private final MagicDisplayLabeler charmLabeler;
-  private final IResources resources;
+  private final Resources resources;
   private final ICharmIdMap map;
 
-  public DefaultNodeProperties(IResources resources, ICharmTreeViewProperties properties, ICharmIdMap map) {
+  public DefaultNodeProperties(Resources resources, ICharmTreeViewProperties properties, ICharmIdMap map) {
     this.properties = properties;
     this.resources = resources;
     this.map = map;

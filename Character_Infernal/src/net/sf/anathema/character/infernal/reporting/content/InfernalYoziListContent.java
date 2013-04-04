@@ -6,7 +6,7 @@ import net.sf.anathema.character.generic.traits.ITraitType;
 import net.sf.anathema.character.generic.traits.types.YoziType;
 import net.sf.anathema.character.reporting.pdf.content.AbstractSubBoxContent;
 import net.sf.anathema.character.reporting.pdf.content.ListSubBoxContent;
-import net.sf.anathema.lib.resources.IResources;
+import net.sf.anathema.lib.resources.Resources;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -15,7 +15,7 @@ public class InfernalYoziListContent extends AbstractSubBoxContent implements Li
 
   private IGenericCharacter character;
 
-  public InfernalYoziListContent(IGenericCharacter character, IResources resources) {
+  public InfernalYoziListContent(IGenericCharacter character, Resources resources) {
     super(resources);
     this.character = character;
   }

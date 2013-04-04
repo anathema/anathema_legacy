@@ -3,11 +3,11 @@ package net.sf.anathema.character.equipment.creation.presenter.stats.properties;
 import net.sf.anathema.lib.message.BasicMessage;
 import net.sf.anathema.lib.message.IBasicMessage;
 import net.sf.anathema.lib.message.MessageType;
-import net.sf.anathema.lib.resources.IResources;
+import net.sf.anathema.lib.resources.Resources;
 
 public abstract class AbstractEquipmentStatisticsProperties extends AbstractProperties {
 
-  public AbstractEquipmentStatisticsProperties(IResources resources) {
+  public AbstractEquipmentStatisticsProperties(Resources resources) {
     super(resources);
   }
 

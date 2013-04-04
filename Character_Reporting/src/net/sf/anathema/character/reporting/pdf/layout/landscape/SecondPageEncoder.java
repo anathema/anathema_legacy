@@ -8,7 +8,7 @@ import net.sf.anathema.character.reporting.pdf.layout.field.LayoutField;
 import net.sf.anathema.character.reporting.pdf.rendering.boxes.EncoderRegistry;
 import net.sf.anathema.character.reporting.pdf.rendering.graphics.SheetGraphics;
 import net.sf.anathema.character.reporting.pdf.rendering.page.PageEncoder;
-import net.sf.anathema.lib.resources.IResources;
+import net.sf.anathema.lib.resources.Resources;
 
 import static net.sf.anathema.character.reporting.pdf.rendering.EncoderIds.ARSENAL;
 import static net.sf.anathema.character.reporting.pdf.rendering.EncoderIds.CHARMS_AND_SORCERY;
@@ -24,9 +24,9 @@ public class SecondPageEncoder implements PageEncoder {
   private static final int ARMOUR_HEIGHT = 68;
   private static final int HEALTH_HEIGHT = 110;
   private EncoderRegistry encoders;
-  private IResources resources;
+  private Resources resources;
 
-  public SecondPageEncoder(EncoderRegistry encoders, IResources resources) {
+  public SecondPageEncoder(EncoderRegistry encoders, Resources resources) {
     this.encoders = encoders;
     this.resources = resources;
   }

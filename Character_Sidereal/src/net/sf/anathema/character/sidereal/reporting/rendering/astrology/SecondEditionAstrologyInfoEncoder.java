@@ -11,14 +11,14 @@ import net.sf.anathema.character.sidereal.reporting.rendering.FrequencyTableEnco
 import net.sf.anathema.character.sidereal.reporting.rendering.ScopeTableEncoder;
 import net.sf.anathema.character.sidereal.reporting.rendering.TriggerTypeTableEncoder;
 import net.sf.anathema.character.sidereal.reporting.rendering.resplendentdestiny.ResplendentDestinyTableEncoder;
-import net.sf.anathema.lib.resources.IResources;
+import net.sf.anathema.lib.resources.Resources;
 
 public class SecondEditionAstrologyInfoEncoder implements ContentEncoder {
 
-  private final IResources resources;
+  private final Resources resources;
   private static final float SPACING = 5;
 
-  public SecondEditionAstrologyInfoEncoder(IResources resources) {
+  public SecondEditionAstrologyInfoEncoder(Resources resources) {
     this.resources = resources;
   }
 

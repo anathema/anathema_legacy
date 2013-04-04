@@ -9,7 +9,7 @@ import net.sf.anathema.character.generic.impl.magic.MartialArtsUtilities;
 import net.sf.anathema.character.generic.magic.ICharm;
 import net.sf.anathema.character.generic.magic.ISpell;
 import net.sf.anathema.character.model.ICharacter;
-import net.sf.anathema.lib.resources.IResources;
+import net.sf.anathema.lib.resources.Resources;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -18,7 +18,7 @@ import static java.text.MessageFormat.format;
 
 public class LegendCardDataProvider implements ICardDataProvider {
 
-	private final IResources resources;
+	private final Resources resources;
 	
 	public List<LegendEntry> traits = new ArrayList<>();
 	public List<LegendEntry> characterTypes = new ArrayList<>();
@@ -27,7 +27,7 @@ public class LegendCardDataProvider implements ICardDataProvider {
 	public List<LegendEntry> martialArtStyles = new ArrayList<>();
 	public List<LegendEntry> misc = new ArrayList<>();
 	
-	public LegendCardDataProvider(IResources resources) {
+	public LegendCardDataProvider(Resources resources) {
 		this.resources = resources;
 	}
 	

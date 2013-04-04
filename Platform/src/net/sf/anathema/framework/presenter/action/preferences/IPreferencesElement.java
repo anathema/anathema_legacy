@@ -1,6 +1,6 @@
 package net.sf.anathema.framework.presenter.action.preferences;
 
-import net.sf.anathema.lib.resources.IResources;
+import net.sf.anathema.lib.resources.Resources;
 import net.sf.anathema.lib.util.Identified;
 import net.sf.anathema.lib.util.Identifier;
 
@@ -24,5 +24,5 @@ public interface IPreferencesElement {
 
   void reset();
 
-  void addComponent(JPanel panel, IResources resources);
+  void addComponent(JPanel panel, Resources resources);
 }
