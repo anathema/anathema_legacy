@@ -2,22 +2,19 @@ package net.sf.anathema.lib.gui.icon;
 
 import net.sf.anathema.lib.gui.image.ImageLoader;
 import net.sf.anathema.lib.gui.image.ImageLoadingException;
-import net.sf.anathema.lib.resources.IImageProvider;
 
 import javax.swing.ImageIcon;
 import java.awt.Image;
 import java.io.IOException;
 import java.io.InputStream;
 
-public class ImageProvider implements IImageProvider {
+public class ImageProvider {
 
-  @Override
   public ImageIcon getImageIcon(String relativePath) {
     Image image = getImage(relativePath);
     return image == null ? null : new ImageIcon(image);
   }
 
-  @Override
   public Image getImage(String relativePath) {
     InputStream inputStream = getInputStream(relativePath);
     return loadImage(inputStream);
