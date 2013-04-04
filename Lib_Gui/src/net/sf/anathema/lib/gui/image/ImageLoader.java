@@ -14,68 +14,6 @@ import java.io.InputStream;
 
 public class ImageLoader {
 
-  private static final class DimensionGetter implements ImageObserver {
-    private final Image image;
-    private boolean succeeded = false;
-
-    DimensionGetter(Image image) {
-      this.image = image;
-    }
-
-    @Override
-    public boolean imageUpdate(Image img, int infoflags, int x, int y, int width, int height) {
-      if ((infoflags & ImageObserver.ERROR) == ERROR) {
-        synchronized (this) {
-          notifyAll();
-        }
-        return false;
-      }
-      if (width != -1 && height != -1) {
-        synchronized (this) {
-          succeeded = true;
-          notifyAll();
-        }
-        return false;
-      }
-      return true;
-    }
-
-    int getWidth() {
-      ensureLoaded();
-      return image.getWidth(this);
-    }
-
-    int getHeight() {
-      ensureLoaded();
-      return image.getHeight(this);
-    }
-
-    private void ensureLoaded() {
-      synchronized (this) {
-        if (image.getWidth(this) == -1 || image.getHeight(this) == -1) {
-          try {
-            wait();
-          } catch (InterruptedException e) {
-            // nothing to do
-          }
-        }
-        if (!succeeded) {
-          throw new RuntimeException("error while loading image.");
-        }
-      }
-    }
-  }
-
-  public static class LoadingException extends RuntimeException {
-    private LoadingException(String message) {
-      super(message);
-    }
-
-    private LoadingException(String message, Throwable cause) {
-      super(message + " :" + cause.getMessage());
-    }
-  }
-
   public static Image getMemoryImageWithoutCaching(InputStream inputStream) throws IOException {
     try {
       return createMemoryImage(readImage(inputStream));
@@ -84,14 +22,14 @@ public class ImageLoader {
     }
   }
 
-  public static Image readImage(InputStream inputStream) throws IOException {
+  private static Image readImage(InputStream inputStream) throws IOException {
     BufferedInputStream bufferedInputStream = new BufferedInputStream(inputStream);
     ByteArrayOutputStream byteArrayOutputStream = new ByteArrayOutputStream();
     IOUtils.copy(bufferedInputStream, byteArrayOutputStream);
     return Toolkit.getDefaultToolkit().createImage(byteArrayOutputStream.toByteArray());
   }
 
-  public static Image createMemoryImage(Image image) {
+  private static Image createMemoryImage(Image image) {
     int h;
     int w;
     DimensionGetter dimensionGetter = new DimensionGetter(image);
@@ -101,7 +39,6 @@ public class ImageLoader {
     } catch (Exception e) {
       throw new LoadingException("image missing or corrupted", e);
     }
-
     int[] pixels = new int[w * h];
     PixelGrabber pixelGrabber = new PixelGrabber(image, 0, 0, w, h, pixels, 0, w);
     try {
@@ -112,10 +49,7 @@ public class ImageLoader {
     if ((pixelGrabber.getStatus() & ImageObserver.ABORT) != 0) {
       throw new LoadingException("image fetch aborted or errored");
     }
-
     MemoryImageSource memoryImageSource = new MemoryImageSource(w, h, pixels, 0, w);
-
     return Toolkit.getDefaultToolkit().createImage(memoryImageSource);
   }
-
 }

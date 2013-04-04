@@ -1,6 +1,5 @@
 package net.sf.anathema.lib.testing.clone;
 
-import junit.framework.AssertionFailedError;
 import org.junit.Before;
 import org.junit.Test;
 
@@ -70,12 +69,12 @@ public class DeepCloneCheckerTest {
     cloneChecker.assertDeepClonedIgnoringTransientField(new StaticPrimitiveField(), new StaticPrimitiveField());
   }
 
-  @Test(expected = AssertionFailedError.class)
+  @Test(expected = AssertionError.class)
   public void testExceptionUnmatchedPrimitveFields() throws Exception {
     cloneChecker.assertDeepClonedIgnoringTransientField(new PrimitiveIntegerField(1), new PrimitiveIntegerField(2));
   }
 
-  @Test(expected = AssertionFailedError.class)
+  @Test(expected = AssertionError.class)
   public void testExceptionUnmatchedUnclonedReferenceFields() throws Exception {
     PrimitiveIntegerField referenceField = new PrimitiveIntegerField(1);
     cloneChecker.assertDeepClonedIgnoringTransientField(
@@ -83,7 +82,7 @@ public class DeepCloneCheckerTest {
         new ForeignReferenceField(referenceField));
   }
 
-  @Test(expected = AssertionFailedError.class)
+  @Test(expected = AssertionError.class)
   public void testExceptionOnUnmatchedSuperclassField() throws Exception {
     cloneChecker.assertDeepClonedIgnoringTransientField(new ExtendedClass(0), new ExtendedClass(1));
   }

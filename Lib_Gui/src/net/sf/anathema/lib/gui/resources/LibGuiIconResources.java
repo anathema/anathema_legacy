@@ -6,6 +6,6 @@ import javax.swing.Icon;
 
 public class LibGuiIconResources implements IIconResources {
 
-  public static final Icon COPY = new ImageProvider(".").getImageIcon(LibGuiIconResources.class, "icons/copy.gif");
+  public static final Icon COPY = new ImageProvider().getImageIcon("icons/copy.gif");
 
 }

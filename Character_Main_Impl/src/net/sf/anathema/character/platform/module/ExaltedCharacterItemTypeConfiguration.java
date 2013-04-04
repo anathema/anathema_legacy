@@ -61,13 +61,6 @@ public class ExaltedCharacterItemTypeConfiguration extends AbstractPersistableIt
         String printName = item.getDisplayName();
         ICharacter character = (ICharacter) item.getItemData();
         CharacterUI characterUI = new CharacterUI();
-        if (character == null) {
-          Icon icon = characterUI.getCharacterDescriptionTabIcon();
-          ICharacterView characterView = new TaskedCharacterView(null, printName, icon, null);
-          new CharacterPresenter((ICharacter) item.getItemData(), characterView, resources, anathemaModel, new NpcPointPresentation())
-                  .initPresentation();
-          return characterView;
-        }
         ICharacterType characterType = ((ICharacter) item.getItemData()).getCharacterTemplate().getTemplateType().getCharacterType();
         IntegerViewFactory intValueDisplayFactory = IntValueDisplayFactoryPrototype.createWithMarkerForCharacterType(characterType);
         IntegerViewFactory markerLessIntValueDisplayFactory =

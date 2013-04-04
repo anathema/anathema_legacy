@@ -1,6 +1,5 @@
 package net.sf.anathema.lib.gui.icon;
 
-import com.google.common.base.Preconditions;
 import net.sf.anathema.lib.gui.image.ImageLoader;
 import net.sf.anathema.lib.gui.image.ImageLoadingException;
 import net.sf.anathema.lib.resources.IImageProvider;
@@ -12,25 +11,22 @@ import java.io.InputStream;
 
 public class ImageProvider implements IImageProvider {
 
-  private final String rootPath;
-
-  public ImageProvider(String rootPath) {
-    Preconditions.checkNotNull(rootPath);
-    this.rootPath = rootPath;
+  @Override
+  public ImageIcon getImageIcon(String relativePath) {
+    Image image = getImage(relativePath);
+    return image == null ? null : new ImageIcon(image);
   }
 
   @Override
-  public Image getImage(Class<?> requestor, String relativePath) {
-    InputStream inputStream = getInputStream(requestor, relativePath);
+  public Image getImage(String relativePath) {
+    InputStream inputStream = getInputStream(relativePath);
     return loadImage(inputStream);
   }
 
-  private InputStream getInputStream(Class<?> requestor, String relativePath) {
-    Preconditions.checkNotNull(relativePath);
-    String resourceName = rootPath + "/" + relativePath;
-    InputStream inputStream = requestor.getClassLoader().getResourceAsStream(resourceName);
+  private InputStream getInputStream(String relativePath) {
+    InputStream inputStream = Thread.currentThread().getContextClassLoader().getResourceAsStream(relativePath);
     if (inputStream == null) {
-      throw new ImageLoadingException("Cannot find image resource: " + resourceName);
+      throw new ImageLoadingException("Cannot find image resource: " + relativePath);
     }
     return inputStream;
   }
@@ -41,11 +37,5 @@ public class ImageProvider implements IImageProvider {
     } catch (IOException e) {
       throw new ImageLoadingException("Cannot open image: " + e.getMessage());
     }
-  }
-
-  @Override
-  public ImageIcon getImageIcon(Class<?> requestor, String relativePath) {
-    Image image = getImage(requestor, relativePath);
-    return image == null ? null : new ImageIcon(image);
   }
 }

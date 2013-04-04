@@ -20,7 +20,7 @@ public class ConfigurableSwingUI<T> implements ObjectUi<T> {
     if (relativePath == TechnologyAgnosticUIConfiguration.NO_ICON) {
       return null;
     }
-    return new ImageProvider(".").getImageIcon(this.getClass(), relativePath);
+    return new ImageProvider().getImageIcon(relativePath);
   }
 
   @Override

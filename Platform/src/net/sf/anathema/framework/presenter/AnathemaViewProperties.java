@@ -21,7 +21,7 @@ public class AnathemaViewProperties {
   }
 
   public Image getFrameIcon() {
-    return new ImageProvider(".").getImage(this.getClass(), "icons/AnathemaIcon.png");
+    return new ImageProvider().getImage("icons/AnathemaIcon.png");
   }
 
   public String getMainMenuName() {

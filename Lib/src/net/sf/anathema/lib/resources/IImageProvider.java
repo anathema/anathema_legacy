@@ -5,7 +5,7 @@ import java.awt.Image;
 
 public interface IImageProvider {
 
-  Image getImage(Class<?> requestor, String relativePath);
+  Image getImage(String relativePath);
 
-  Icon getImageIcon(Class<?> requestor, String relativePath);
+  Icon getImageIcon(String relativePath);
 }

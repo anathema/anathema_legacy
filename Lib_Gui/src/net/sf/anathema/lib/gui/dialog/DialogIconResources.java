@@ -10,6 +10,6 @@ public class DialogIconResources implements IIconResources {
   public static final Icon DIALOG_HEADER_ICON_BACKGROUND = getImageIcon("icons/dialog_header_icon_background.gif");
 
   private static Icon getImageIcon(String relativePath) {
-    return new ImageProvider(".").getImageIcon(DialogIconResources.class, relativePath);
+    return new ImageProvider().getImageIcon(relativePath);
   }
 }

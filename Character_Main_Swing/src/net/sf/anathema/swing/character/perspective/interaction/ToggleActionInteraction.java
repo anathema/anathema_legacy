@@ -31,7 +31,7 @@ public class ToggleActionInteraction implements ToggleInteraction {
 
   @Override
   public void setIcon(String relativePath) {
-    action.setIcon(new ImageProvider(".").getImageIcon(inquirer, relativePath));
+    action.setIcon(new ImageProvider().getImageIcon(relativePath));
   }
 
   @Override

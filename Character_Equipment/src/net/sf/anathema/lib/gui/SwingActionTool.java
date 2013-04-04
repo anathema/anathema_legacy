@@ -1,10 +1,10 @@
 package net.sf.anathema.lib.gui;
 
-import net.sf.anathema.lib.gui.icon.ImageProvider;
 import net.sf.anathema.interaction.Command;
 import net.sf.anathema.interaction.NullCommand;
 import net.sf.anathema.interaction.Tool;
 import net.sf.anathema.lib.gui.action.SmartAction;
+import net.sf.anathema.lib.gui.icon.ImageProvider;
 
 import javax.swing.Action;
 import java.awt.Component;
@@ -21,7 +21,7 @@ public class SwingActionTool implements Tool {
 
   @Override
   public void setIcon(String relativePath) {
-    action.setIcon(new ImageProvider(".").getImageIcon(this.getClass(), relativePath));
+    action.setIcon(new ImageProvider().getImageIcon(relativePath));
   }
 
   @Override

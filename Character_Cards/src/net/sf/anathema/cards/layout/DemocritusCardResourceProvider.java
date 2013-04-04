@@ -110,7 +110,7 @@ public class DemocritusCardResourceProvider implements ICardReportResourceProvid
     try {
       Image image = imageMap.get(filePath);
       if (image == null) {
-        java.awt.Image javaImage = new ImageProvider(".").getImage(this.getClass(), "icons/" + filePath);
+        java.awt.Image javaImage = new ImageProvider().getImage("icons/" + filePath);
         image = Image.getInstance(javaImage, null);
         imageMap.put(filePath, image);
       }

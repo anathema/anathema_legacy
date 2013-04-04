@@ -6,9 +6,9 @@ import javax.swing.Icon;
 
 public abstract class AbstractUI {
 
-  private final ImageProvider imageProvider = new ImageProvider(".");
+  private final ImageProvider imageProvider = new ImageProvider();
 
   protected final Icon getIcon(String path) {
-    return imageProvider.getImageIcon(this.getClass(), path);
+    return imageProvider.getImageIcon(path);
   }
 }

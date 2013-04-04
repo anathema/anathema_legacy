@@ -6,9 +6,6 @@ import net.sf.anathema.lib.gui.ui.AbstractUI;
 import javax.swing.Icon;
 
 public class CharacterUI extends AbstractUI {
-  public Icon getCharacterDescriptionTabIcon() {
-    return getIcon("icons/TabDescription16.png");
-  }
 
   public Icon getLinkIcon() {
     return getIcon("icons/ButtonLink16b.png");

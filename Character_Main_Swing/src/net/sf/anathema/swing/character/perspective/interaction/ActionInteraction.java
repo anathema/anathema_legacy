@@ -28,7 +28,7 @@ public class ActionInteraction implements Interaction {
 
   @Override
   public void setIcon(String relativePath) {
-    action.setIcon(new ImageProvider(".").getImageIcon(inquirer, relativePath));
+    action.setIcon(new ImageProvider().getImageIcon(relativePath));
   }
 
   @Override

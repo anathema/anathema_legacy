@@ -20,7 +20,7 @@ public class ActionPerspectiveToggle implements PerspectiveToggle {
 
   @Override
   public void setIcon(String relativePath) {
-    Icon icon = new ImageProvider(".").getImageIcon(parent, relativePath);
+    Icon icon = new ImageProvider().getImageIcon(relativePath);
     action.setIcon(icon);
   }
 
