@@ -6,6 +6,7 @@ dependencies {
   compile 'de.idos.updates:updates-core:1.2.0'
   compile project(':Lib_Workflow')
   compile project(':Lib_Gui')
+  compile project(':Platform_Swing') //Temporary dependency, must be inverted
   testCompile parent.ext.testDependencies
 }
 

@@ -2,7 +2,7 @@ include('Anathema',
 
         'Lib', 'Lib_Gui', 'Lib_Workflow',
 
-        'Platform', 'Platform_FX', 'GraphLayout', 'Platform_TreeFramework', 'Platform_SwingTree',
+        'Platform', 'Platform_Swing', 'Platform_FX', 'GraphLayout', 'Platform_TreeFramework', 'Platform_SwingTree',
 
         'Namegenerator',
 
