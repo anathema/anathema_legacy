@@ -9,7 +9,7 @@ public abstract class AbstractUI {
 
   private final ImageProvider imageProvider = new ImageProvider();
 
-  protected final Icon getIcon(RelativePath path) {
+  protected Icon getIcon(RelativePath path) {
     return imageProvider.getImageIcon(path);
   }
 }
