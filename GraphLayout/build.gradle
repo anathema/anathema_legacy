@@ -1,4 +1,4 @@
 dependencies {
-    compile project(':Lib')
+    compile project(':Platform')
     testCompile parent.ext.testDependencies
 }

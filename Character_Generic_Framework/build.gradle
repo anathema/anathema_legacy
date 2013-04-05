@@ -2,7 +2,7 @@ dependencies {
     compile project(':Charm_Tree')
     compile project(':Character_Generic')
     testCompile parent.ext.testDependencies
-    testCompile project(path: ':Lib', configuration: 'tests')
+    testCompile project(path: ':Platform', configuration: 'tests')
     testCompile project(path: ':Character_Generic', configuration: 'tests')
     testCompile project(path: ':Character_Generic_Impl', configuration: 'tests')
 }

@@ -1,5 +1,5 @@
 dependencies {
-  compile project(':Lib')
+  compile project(':Platform')
   compile project(':Platform_SwingTree')
   testCompile parent.ext.testDependencies
 }

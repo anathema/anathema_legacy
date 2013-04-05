@@ -1,5 +1,4 @@
 dependencies {
-  compile project(':Lib')
   compile project(':Platform')
   compile project(':GraphLayout')
   testCompile parent.ext.testDependencies
