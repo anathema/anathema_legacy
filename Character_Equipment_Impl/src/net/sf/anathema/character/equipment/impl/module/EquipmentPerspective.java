@@ -1,17 +1,18 @@
 package net.sf.anathema.character.equipment.impl.module;
 
 import net.sf.anathema.character.equipment.impl.item.model.EquipmentDatabaseManagement;
-import net.sf.anathema.character.equipment.item.view.EquipmentDatabaseView;
-import net.sf.anathema.character.equipment.item.view.swing.SwingEquipmentDatabaseView;
 import net.sf.anathema.character.equipment.item.EquipmentDatabasePresenter;
 import net.sf.anathema.character.equipment.item.model.IEquipmentDatabase;
 import net.sf.anathema.character.equipment.item.model.IEquipmentDatabaseManagement;
+import net.sf.anathema.character.equipment.item.view.EquipmentDatabaseView;
+import net.sf.anathema.character.equipment.item.view.swing.SwingEquipmentDatabaseView;
 import net.sf.anathema.framework.IApplicationModel;
 import net.sf.anathema.framework.view.perspective.Container;
 import net.sf.anathema.framework.view.perspective.Perspective;
 import net.sf.anathema.framework.view.perspective.PerspectiveAutoCollector;
 import net.sf.anathema.framework.view.perspective.PerspectiveToggle;
 import net.sf.anathema.initialization.reflections.Weight;
+import net.sf.anathema.lib.file.RelativePath;
 import net.sf.anathema.lib.resources.Resources;
 
 @PerspectiveAutoCollector
@@ -20,7 +21,7 @@ public class EquipmentPerspective implements Perspective {
 
   @Override
   public void configureToggle(PerspectiveToggle toggle) {
-    toggle.setIcon("icons/EquipmentPerspective.png");
+    toggle.setIcon(new RelativePath("icons/EquipmentPerspective.png"));
     toggle.setTooltip("EquipmentDatabase.Perspective.Name");
   }
 

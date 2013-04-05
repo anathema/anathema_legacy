@@ -3,6 +3,7 @@ package net.sf.anathema.character.platform.module.perspective;
 import net.sf.anathema.character.perspective.model.model.ItemSelectionModel;
 import net.sf.anathema.interaction.Command;
 import net.sf.anathema.interaction.Interaction;
+import net.sf.anathema.lib.file.RelativePath;
 import net.sf.anathema.lib.resources.Resources;
 
 public class ControlledPrintInteractionPresenter {
@@ -23,7 +24,7 @@ public class ControlledPrintInteractionPresenter {
   }
 
   private void initializeAppearance() {
-    interaction.setIcon("icons/TaskBarPDFArrow24.png");
+    interaction.setIcon(new RelativePath("icons/TaskBarPDFArrow24.png"));
     interaction.setTooltip("Anathema.Reporting.Menu.PrintItem.Name");
   }
 

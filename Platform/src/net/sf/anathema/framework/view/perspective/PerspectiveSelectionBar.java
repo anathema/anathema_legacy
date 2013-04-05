@@ -33,7 +33,7 @@ public class PerspectiveSelectionBar {
         perspectiveStack.show(perspective);
       }
     };
-    PerspectiveToggle toggle = new ActionPerspectiveToggle(action, resources, perspective.getClass());
+    PerspectiveToggle toggle = new ActionPerspectiveToggle(action, resources);
     perspective.configureToggle(toggle);
     return action;
   }

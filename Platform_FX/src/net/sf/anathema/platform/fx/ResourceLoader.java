@@ -1,12 +1,14 @@
 package net.sf.anathema.platform.fx;
 
+import net.sf.anathema.lib.file.RelativePath;
+
 import java.io.InputStream;
 import java.net.URL;
 
 public class ResourceLoader {
 
-  public InputStream loadResource(String pathRelativeToSourceFolder) {
-    return getClassLoader().getResourceAsStream(pathRelativeToSourceFolder);
+  public InputStream loadResource(RelativePath pathRelativeToSourceFolder) {
+    return getClassLoader().getResourceAsStream(pathRelativeToSourceFolder.relativePath);
   }
 
   public URL loadResourceAsUrl(String pathRelativeToSourceFolder) {

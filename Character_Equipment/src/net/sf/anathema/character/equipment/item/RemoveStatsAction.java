@@ -1,10 +1,11 @@
 package net.sf.anathema.character.equipment.item;
 
 import net.sf.anathema.character.equipment.item.model.IEquipmentTemplateEditModel;
+import net.sf.anathema.character.equipment.item.view.ToolListView;
 import net.sf.anathema.character.generic.equipment.weapon.IEquipmentStats;
 import net.sf.anathema.interaction.Command;
 import net.sf.anathema.interaction.Tool;
-import net.sf.anathema.character.equipment.item.view.ToolListView;
+import net.sf.anathema.lib.file.RelativePath;
 import net.sf.anathema.lib.resources.Resources;
 
 public class RemoveStatsAction {
@@ -20,7 +21,7 @@ public class RemoveStatsAction {
 
   public void addToolTo(final ToolListView<IEquipmentStats> statsListView) {
     final Tool tool = statsListView.addTool();
-    tool.setIcon("icons/ButtonMinus16.png");
+    tool.setIcon(new RelativePath("icons/ButtonMinus16.png"));
     tool.setTooltip(resources.getString("Equipment.Stats.Action.Remove.Tooltip"));
     tool.setCommand(new Command() {
       @Override

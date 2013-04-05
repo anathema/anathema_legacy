@@ -4,6 +4,7 @@ import net.sf.anathema.character.perspective.model.model.ItemSelectionModel;
 import net.sf.anathema.framework.reporting.AbstractPrintAction;
 import net.sf.anathema.interaction.Command;
 import net.sf.anathema.interaction.Interaction;
+import net.sf.anathema.lib.file.RelativePath;
 import net.sf.anathema.lib.resources.Resources;
 
 public class QuickPrintInteractionPresenter {
@@ -28,7 +29,7 @@ public class QuickPrintInteractionPresenter {
   }
 
   private void initializeAppearance() {
-    interaction.setIcon("icons/TaskBarPDF24.png");
+    interaction.setIcon(new RelativePath("icons/TaskBarPDF24.png"));
     interaction.setTooltip("Anathema.Reporting.Menu.QuickPrint.Name");
   }
 

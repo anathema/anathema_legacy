@@ -6,6 +6,7 @@ import net.sf.anathema.framework.view.perspective.Perspective;
 import net.sf.anathema.framework.view.perspective.PerspectiveAutoCollector;
 import net.sf.anathema.framework.view.perspective.PerspectiveToggle;
 import net.sf.anathema.initialization.reflections.Weight;
+import net.sf.anathema.lib.file.RelativePath;
 import net.sf.anathema.lib.resources.Resources;
 
 @PerspectiveAutoCollector
@@ -14,7 +15,7 @@ public class CampaignPerspective implements Perspective {
 
   @Override
   public void configureToggle(PerspectiveToggle toggle) {
-    toggle.setIcon("icons/CampaignPerspective.png");
+    toggle.setIcon(new RelativePath("icons/CampaignPerspective.png"));
     toggle.setTooltip("Campaign.Perspective.Tooltip");
   }
 

@@ -5,6 +5,7 @@ import net.sf.anathema.character.generic.framework.resources.CharacterUI;
 import net.sf.anathema.character.generic.framework.xml.presentation.GenericPresentationTemplate;
 import net.sf.anathema.character.generic.template.ITemplateType;
 import net.sf.anathema.character.perspective.model.model.CharacterIdentifier;
+import net.sf.anathema.lib.file.RelativePath;
 import net.sf.anathema.lib.resources.Resources;
 import net.sf.anathema.lib.util.Identified;
 
@@ -25,7 +26,7 @@ public class ToCharacterButtonDto implements Function<DescriptiveFeatures, Chara
     ITemplateType templateType = input.getTemplateType();
     Identified casteType = input.getCasteType();
     String details = getDetails(templateType);
-    String pathToImage = getPathToImage(templateType, casteType);
+    RelativePath pathToImage = getPathToImage(templateType, casteType);
     boolean dirty = input.isDirty();
     return new CharacterButtonDto(identifier, text, details, pathToImage, dirty);
   }
@@ -36,16 +37,14 @@ public class ToCharacterButtonDto implements Function<DescriptiveFeatures, Chara
     return resources.getString(presentationTemplate.getNewActionResource());
   }
 
-  private String getPathToImage(ITemplateType templateType, Identified casteType) {
-    StringBuilder imagePath = new StringBuilder();
+  private RelativePath getPathToImage(ITemplateType templateType, Identified casteType) {
     if (casteType == NULL_CASTE_TYPE) {
-      imagePath.append(new CharacterUI().getLargeTypeIconPath(templateType.getCharacterType()));
+      return new CharacterUI().getLargeTypeIconPath(templateType.getCharacterType());
     } else {
       GenericPresentationTemplate presentationTemplate = new GenericPresentationTemplate();
       presentationTemplate.setParentTemplate(templateType);
-      String casteIcon = presentationTemplate.getLargeCasteIconResource(casteType.getId(), SECOND_EDITION);
-      imagePath.append(casteIcon);
+      RelativePath casteIcon = presentationTemplate.getLargeCasteIconResource(casteType.getId(), SECOND_EDITION);
+      return casteIcon;
     }
-    return imagePath.toString();
   }
 }

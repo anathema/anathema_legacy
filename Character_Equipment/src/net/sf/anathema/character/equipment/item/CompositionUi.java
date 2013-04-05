@@ -1,6 +1,7 @@
 package net.sf.anathema.character.equipment.item;
 
 import net.sf.anathema.character.equipment.MaterialComposition;
+import net.sf.anathema.lib.file.RelativePath;
 import net.sf.anathema.lib.gui.TechnologyAgnosticUIConfiguration;
 import net.sf.anathema.lib.resources.Resources;
 
@@ -12,7 +13,7 @@ public class CompositionUi implements TechnologyAgnosticUIConfiguration<Material
   }
 
   @Override
-  public String getIconsRelativePath(MaterialComposition value) {
+  public RelativePath getIconsRelativePath(MaterialComposition value) {
     return NO_ICON;
   }
 

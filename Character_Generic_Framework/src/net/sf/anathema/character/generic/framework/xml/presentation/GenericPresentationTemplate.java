@@ -3,6 +3,7 @@ package net.sf.anathema.character.generic.framework.xml.presentation;
 import net.sf.anathema.character.generic.template.ICharacterTemplate;
 import net.sf.anathema.character.generic.template.ITemplateType;
 import net.sf.anathema.character.generic.template.presentation.IPresentationProperties;
+import net.sf.anathema.lib.file.RelativePath;
 import net.sf.anathema.lib.lang.clone.ReflectionCloneableObject;
 
 public class GenericPresentationTemplate extends ReflectionCloneableObject<GenericPresentationTemplate> implements
@@ -12,13 +13,13 @@ public class GenericPresentationTemplate extends ReflectionCloneableObject<Gener
   private ITemplateType templateType;
 
   @Override
-  public String getSmallCasteIconResource(String casteId, String editionId) {
-    return "icons/" + getCharacterTypeId() + "Button" + casteId + editionId + "16.png";
+  public RelativePath getSmallCasteIconResource(String casteId, String editionId) {
+    return new RelativePath("icons/" + getCharacterTypeId() + "Button" + casteId + editionId + "16.png");
   }
 
   @Override
-  public String getLargeCasteIconResource(String casteId, String editionId) {
-    return "icons/" + getCharacterTypeId() + "Button" + casteId + editionId + "100.png";
+  public RelativePath getLargeCasteIconResource(String casteId, String editionId) {
+    return new RelativePath("icons/" + getCharacterTypeId() + "Button" + casteId + editionId + "100.png");
   }
 
   @Override

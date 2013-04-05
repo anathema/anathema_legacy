@@ -1,5 +1,6 @@
 package net.sf.anathema.framework.view.perspective;
 
+import net.sf.anathema.lib.file.RelativePath;
 import net.sf.anathema.lib.gui.action.SmartAction;
 import net.sf.anathema.lib.gui.icon.ImageProvider;
 import net.sf.anathema.lib.resources.Resources;
@@ -10,16 +11,14 @@ public class ActionPerspectiveToggle implements PerspectiveToggle {
 
   private SmartAction action;
   private Resources resources;
-  private Class<?> parent;
 
-  public ActionPerspectiveToggle(SmartAction action, Resources resources, Class<?> parent) {
+  public ActionPerspectiveToggle(SmartAction action, Resources resources) {
     this.action = action;
     this.resources = resources;
-    this.parent = parent;
   }
 
   @Override
-  public void setIcon(String relativePath) {
+  public void setIcon(RelativePath relativePath) {
     Icon icon = new ImageProvider().getImageIcon(relativePath);
     action.setIcon(icon);
   }

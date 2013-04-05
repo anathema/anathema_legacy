@@ -3,6 +3,7 @@ package net.sf.anathema.swing.character.perspective.interaction;
 import net.sf.anathema.framework.perspective.ToolBar;
 import net.sf.anathema.interaction.CommandProxy;
 import net.sf.anathema.interaction.Interaction;
+import net.sf.anathema.lib.file.RelativePath;
 import net.sf.anathema.lib.gui.action.SmartAction;
 import net.sf.anathema.lib.gui.icon.ImageProvider;
 import net.sf.anathema.lib.resources.Resources;
@@ -19,15 +20,13 @@ public class ActionInteraction implements Interaction {
     }
   };
   private final Resources resources;
-  private final Class<?> inquirer;
 
-  public ActionInteraction(Resources resources, Class<?> inquirer) {
+  public ActionInteraction(Resources resources) {
     this.resources = resources;
-    this.inquirer = inquirer;
   }
 
   @Override
-  public void setIcon(String relativePath) {
+  public void setIcon(RelativePath relativePath) {
     action.setIcon(new ImageProvider().getImageIcon(relativePath));
   }
 

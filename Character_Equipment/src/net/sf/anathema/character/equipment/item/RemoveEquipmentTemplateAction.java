@@ -6,6 +6,7 @@ import net.sf.anathema.framework.view.SwingApplicationFrame;
 import net.sf.anathema.interaction.Command;
 import net.sf.anathema.interaction.Tool;
 import net.sf.anathema.lib.control.ObjectValueListener;
+import net.sf.anathema.lib.file.RelativePath;
 import net.sf.anathema.lib.gui.dialog.userdialog.buttons.ConfigurableVetor;
 import net.sf.anathema.lib.resources.Resources;
 
@@ -20,7 +21,7 @@ public class RemoveEquipmentTemplateAction {
 
   public void addToolTo(EquipmentDatabaseView view) {
     final Tool removeTool = view.addEditTemplateTool();
-    removeTool.setIcon("icons/ButtonCross24.png");
+    removeTool.setIcon(new RelativePath("icons/ButtonCross24.png"));
     removeTool.setTooltip(resources.getString("Equipment.Creation.Item.RemoveActionTooltip"));
     view.getTemplateListView().addObjectSelectionChangedListener(new EnableWhenItemSelected(removeTool));
     updateEnabled(removeTool, view.getTemplateListView().getSelectedObject());

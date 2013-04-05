@@ -2,6 +2,7 @@ package net.sf.anathema.scribe.perspective.presenter;
 
 import net.sf.anathema.interaction.Command;
 import net.sf.anathema.interaction.Tool;
+import net.sf.anathema.lib.file.RelativePath;
 import net.sf.anathema.lib.resources.Resources;
 import net.sf.anathema.scribe.editor.presenter.ScrollPresenter;
 import net.sf.anathema.scribe.perspective.model.ScribeModel;
@@ -23,7 +24,7 @@ public class ScribePresenter {
     new NavigationPresenter(model, view.scribeNavigation).initializeNavigationPresentation();
     initializeScrollPresentation();
     Tool tool = view.scribeNavigation.addTool();
-    tool.setIcon("icons/Scroll20.png");
+    tool.setIcon(new RelativePath("icons/Scroll20.png"));
     tool.setCommand(new Command() {
       @Override
       public void execute() {

@@ -20,11 +20,11 @@ public class InteractionView implements IView {
   private final ToggleActionInteraction experiencedInteraction;
 
   public InteractionView(Resources resources) {
-    this.newInteraction = new ActionInteraction(resources, this.getClass());
-    this.saveInteraction = new ActionInteraction(resources, this.getClass());
-    this.quickPrintInteraction = new ActionInteraction(resources, this.getClass());
-    this.controlledPrintInteraction = new ActionInteraction(resources, this.getClass());
-    this.experiencedInteraction = new ToggleActionInteraction(resources, this.getClass());
+    this.newInteraction = new ActionInteraction(resources);
+    this.saveInteraction = new ActionInteraction(resources);
+    this.quickPrintInteraction = new ActionInteraction(resources);
+    this.controlledPrintInteraction = new ActionInteraction(resources);
+    this.experiencedInteraction = new ToggleActionInteraction(resources);
     newInteraction.addTo(toolbar);
     saveInteraction.addTo(toolbar);
     quickPrintInteraction.addTo(toolbar);

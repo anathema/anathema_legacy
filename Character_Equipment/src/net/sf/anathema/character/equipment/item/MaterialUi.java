@@ -1,6 +1,7 @@
 package net.sf.anathema.character.equipment.item;
 
 import net.sf.anathema.character.equipment.MagicalMaterial;
+import net.sf.anathema.lib.file.RelativePath;
 import net.sf.anathema.lib.gui.TechnologyAgnosticUIConfiguration;
 import net.sf.anathema.lib.resources.Resources;
 
@@ -12,7 +13,7 @@ public class MaterialUi implements TechnologyAgnosticUIConfiguration<MagicalMate
   }
 
   @Override
-  public String getIconsRelativePath(MagicalMaterial value) {
+  public RelativePath getIconsRelativePath(MagicalMaterial value) {
     return NO_ICON;
   }
 

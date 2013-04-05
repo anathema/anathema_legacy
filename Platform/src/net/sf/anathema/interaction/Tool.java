@@ -1,8 +1,10 @@
 package net.sf.anathema.interaction;
 
+import net.sf.anathema.lib.file.RelativePath;
+
 public interface Tool {
 
-  void setIcon(String relativePath);
+  void setIcon(RelativePath relativePath);
 
   void setTooltip(String text);
 

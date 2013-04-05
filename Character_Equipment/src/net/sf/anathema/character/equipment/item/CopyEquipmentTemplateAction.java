@@ -7,6 +7,7 @@ import net.sf.anathema.interaction.Command;
 import net.sf.anathema.interaction.Tool;
 import net.sf.anathema.lib.control.ObjectValueListener;
 import net.sf.anathema.lib.data.ICondition;
+import net.sf.anathema.lib.file.RelativePath;
 import net.sf.anathema.lib.resources.Resources;
 
 public class CopyEquipmentTemplateAction {
@@ -20,7 +21,7 @@ public class CopyEquipmentTemplateAction {
 
   public void addToolTo(EquipmentDatabaseView view) {
     final Tool copyTool = view.addEditTemplateTool();
-    copyTool.setIcon("icons/ButtonDuplicate24.png");
+    copyTool.setIcon(new RelativePath("icons/ButtonDuplicate24.png"));
     copyTool.setTooltip(resources.getString("Equipment.Creation.Item.CopyActionTooltip"));
     copyTool.enable();
     copyTool.setCommand(new CopyEquipmentItem(copyTool));

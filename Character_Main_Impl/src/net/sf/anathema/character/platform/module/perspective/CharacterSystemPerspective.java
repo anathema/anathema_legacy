@@ -10,6 +10,7 @@ import net.sf.anathema.framework.view.perspective.Perspective;
 import net.sf.anathema.framework.view.perspective.PerspectiveAutoCollector;
 import net.sf.anathema.framework.view.perspective.PerspectiveToggle;
 import net.sf.anathema.initialization.reflections.Weight;
+import net.sf.anathema.lib.file.RelativePath;
 import net.sf.anathema.lib.resources.Resources;
 import net.sf.anathema.swing.character.perspective.CharacterStackSwingBridge;
 import net.sf.anathema.swing.character.perspective.CharacterSystemView;
@@ -20,7 +21,7 @@ public class CharacterSystemPerspective implements Perspective {
 
   @Override
   public void configureToggle(PerspectiveToggle toggle) {
-    toggle.setIcon("icons/King-icon.png");
+    toggle.setIcon(new RelativePath("icons/King-icon.png"));
     toggle.setTooltip("CharacterSystem.Perspective.Name");
   }
 

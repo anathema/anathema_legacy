@@ -3,6 +3,7 @@ package net.sf.anathema.character.platform.module.perspective;
 import net.sf.anathema.character.perspective.model.model.ItemSelectionModel;
 import net.sf.anathema.interaction.Command;
 import net.sf.anathema.interaction.Interaction;
+import net.sf.anathema.lib.file.RelativePath;
 
 import java.io.IOException;
 
@@ -24,7 +25,7 @@ public class SaveInteractionPresenter {
 
   private void initializeAppearance() {
     interaction.setTooltip("AnathemaPersistence.SaveAction.Tooltip");
-    interaction.setIcon("icons/TaskBarSave24.png");
+    interaction.setIcon(new RelativePath("icons/TaskBarSave24.png"));
   }
 
   private void initializeEnabling() {

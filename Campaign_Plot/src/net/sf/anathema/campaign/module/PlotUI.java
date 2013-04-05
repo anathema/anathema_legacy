@@ -1,5 +1,6 @@
 package net.sf.anathema.campaign.module;
 
+import net.sf.anathema.lib.file.RelativePath;
 import net.sf.anathema.lib.gui.ui.AbstractUI;
 
 import javax.swing.Icon;
@@ -7,30 +8,30 @@ import javax.swing.Icon;
 public class PlotUI extends AbstractUI {
 
   public Icon getNoteTabIcon() {
-    return getIcon("icons/TabNotes16.png");
+    return getIcon(new RelativePath("icons/TabNotes16.png"));
   }
 
   public Icon getSeriesTabIcon() {
-    return getIcon("icons/TabSeries16.png");
+    return getIcon(new RelativePath("icons/TabSeries16.png"));
   }
 
   public Icon getSeriesIcon() {
-    return getIcon("icons/FolderSeries16.png");
+    return getIcon(new RelativePath("icons/FolderSeries16.png"));
   }
 
   public Icon getStoryIcon() {
-    return getIcon("icons/FolderStory16.png");
+    return getIcon(new RelativePath("icons/FolderStory16.png"));
   }
 
   public Icon getEpisodeIcon() {
-    return getIcon("icons/FolderEpisode16.png");
+    return getIcon(new RelativePath("icons/FolderEpisode16.png"));
   }
 
   public Icon getSceneIcon() {
-    return getIcon("icons/FolderScene16.png");
+    return getIcon(new RelativePath("icons/FolderScene16.png"));
   }
 
   public Object getUnderlineButtonIcon() {
-    return getIcon("icons/underline.gif");
+    return getIcon(new RelativePath("icons/underline.gif"));
   }
 }

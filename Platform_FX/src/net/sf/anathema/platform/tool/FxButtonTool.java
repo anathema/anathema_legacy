@@ -6,8 +6,9 @@ import javafx.scene.control.Button;
 import javafx.scene.control.Tooltip;
 import javafx.scene.image.ImageView;
 import net.sf.anathema.interaction.Command;
-import net.sf.anathema.platform.fx.NodeHolder;
 import net.sf.anathema.interaction.Tool;
+import net.sf.anathema.lib.file.RelativePath;
+import net.sf.anathema.platform.fx.NodeHolder;
 
 public class FxButtonTool implements Tool {
 
@@ -25,7 +26,7 @@ public class FxButtonTool implements Tool {
   }
 
   @Override
-  public void setIcon(final String relativePath) {
+  public void setIcon(final RelativePath relativePath) {
     Platform.runLater(new SetImage(new NodeHolder<ImageView>() {
       @Override
       public ImageView getNode() {

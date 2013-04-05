@@ -3,11 +3,12 @@ package net.sf.anathema.character.equipment.item;
 import net.sf.anathema.character.equipment.MaterialComposition;
 import net.sf.anathema.character.equipment.item.model.IEquipmentStatsCreationFactory;
 import net.sf.anathema.character.equipment.item.model.IEquipmentTemplateEditModel;
+import net.sf.anathema.character.equipment.item.view.ToolListView;
 import net.sf.anathema.character.generic.equipment.weapon.IEquipmentStats;
 import net.sf.anathema.framework.view.SwingApplicationFrame;
 import net.sf.anathema.interaction.Command;
 import net.sf.anathema.interaction.Tool;
-import net.sf.anathema.character.equipment.item.view.ToolListView;
+import net.sf.anathema.lib.file.RelativePath;
 import net.sf.anathema.lib.resources.Resources;
 
 import java.util.ArrayList;
@@ -28,7 +29,7 @@ public class AddNewStatsAction {
   public void addToolTo(ToolListView<IEquipmentStats> statsListView) {
     Tool newTool = statsListView.addTool();
     newTool.setTooltip(resources.getString("Equipment.Creation.Stats.AddActionTooltip"));
-    newTool.setIcon("icons/ButtonPlus16.png");
+    newTool.setIcon(new RelativePath("icons/ButtonPlus16.png"));
     newTool.setCommand(new Command() {
       @Override
       public void execute() {

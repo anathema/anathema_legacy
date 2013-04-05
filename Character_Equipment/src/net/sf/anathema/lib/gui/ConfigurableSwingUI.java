@@ -1,5 +1,6 @@
 package net.sf.anathema.lib.gui;
 
+import net.sf.anathema.lib.file.RelativePath;
 import net.sf.anathema.lib.gui.icon.ImageProvider;
 import net.sf.anathema.lib.gui.ui.ObjectUi;
 
@@ -16,7 +17,7 @@ public class ConfigurableSwingUI<T> implements ObjectUi<T> {
   @SuppressWarnings("StringEquality")
   @Override
   public Icon getIcon(T value) {
-    String relativePath = configuration.getIconsRelativePath(value);
+    RelativePath relativePath = configuration.getIconsRelativePath(value);
     if (relativePath == TechnologyAgnosticUIConfiguration.NO_ICON) {
       return null;
     }

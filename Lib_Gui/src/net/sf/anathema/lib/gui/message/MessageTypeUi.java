@@ -1,5 +1,6 @@
 package net.sf.anathema.lib.gui.message;
 
+import net.sf.anathema.lib.file.RelativePath;
 import net.sf.anathema.lib.gui.icon.EmptyIcon;
 import net.sf.anathema.lib.gui.icon.ImageProvider;
 import net.sf.anathema.lib.message.IMessageTypeVisitor;
@@ -11,10 +12,10 @@ public class MessageTypeUi extends AbstractMessageTypeUi {
 
   public static final Icon normalIcon = EmptyIcon.DEFAULT_ICON;
   private static final ImageProvider imageProvider = new ImageProvider();
-  public static final Icon errorIcon = imageProvider.getImageIcon("icons/error.gif");
-  public static final Icon warningIcon = imageProvider.getImageIcon("icons/warning.gif");
-  public static final Icon infoIcon = imageProvider.getImageIcon("icons/info.gif");
-  public static final Icon questionIcon = imageProvider.getImageIcon("icons/question.gif");
+  public static final Icon errorIcon = imageProvider.getImageIcon(new RelativePath("icons/error.gif"));
+  public static final Icon warningIcon = imageProvider.getImageIcon(new RelativePath("icons/warning.gif"));
+  public static final Icon infoIcon = imageProvider.getImageIcon(new RelativePath("icons/info.gif"));
+  public static final Icon questionIcon = imageProvider.getImageIcon(new RelativePath("icons/question.gif"));
 
   private static MessageTypeUi instance = new MessageTypeUi();
 

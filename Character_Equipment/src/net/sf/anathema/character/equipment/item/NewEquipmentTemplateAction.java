@@ -6,6 +6,7 @@ import net.sf.anathema.framework.view.SwingApplicationFrame;
 import net.sf.anathema.interaction.Command;
 import net.sf.anathema.interaction.Tool;
 import net.sf.anathema.lib.data.ICondition;
+import net.sf.anathema.lib.file.RelativePath;
 import net.sf.anathema.lib.resources.Resources;
 
 public class NewEquipmentTemplateAction {
@@ -20,7 +21,7 @@ public class NewEquipmentTemplateAction {
 
   public void addToolTo(EquipmentDatabaseView view) {
     Tool newTool = view.addEditTemplateTool();
-    newTool.setIcon("icons/TaskBarNew24.png");
+    newTool.setIcon(new RelativePath("icons/TaskBarNew24.png"));
     newTool.setTooltip(resources.getString("Equipment.Creation.Item.NewActionTooltip"));
     newTool.setCommand(new NewEquipmentItem());
   }

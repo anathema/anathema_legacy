@@ -9,6 +9,7 @@ import net.sf.anathema.interaction.Command;
 import net.sf.anathema.interaction.Tool;
 import net.sf.anathema.lib.control.IChangeListener;
 import net.sf.anathema.lib.control.ObjectValueListener;
+import net.sf.anathema.lib.file.RelativePath;
 import net.sf.anathema.lib.resources.Resources;
 
 public class SaveEquipmentTemplateAction {
@@ -22,7 +23,7 @@ public class SaveEquipmentTemplateAction {
 
   public void addToolTo(EquipmentDatabaseView view) {
     Tool saveTool = view.addEditTemplateTool();
-    saveTool.setIcon("icons/TaskBarSave24.png");
+    saveTool.setIcon(new RelativePath("icons/TaskBarSave24.png"));
     saveTool.setTooltip(resources.getString("Equipment.Creation.Item.SaveActionTooltip"));
     initListening(saveTool);
     saveTool.setCommand(new SaveChangedEquipment());

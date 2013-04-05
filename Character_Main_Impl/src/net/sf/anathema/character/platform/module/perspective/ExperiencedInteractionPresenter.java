@@ -3,6 +3,7 @@ package net.sf.anathema.character.platform.module.perspective;
 import net.sf.anathema.character.perspective.model.model.ItemSelectionModel;
 import net.sf.anathema.interaction.Command;
 import net.sf.anathema.interaction.ToggleInteraction;
+import net.sf.anathema.lib.file.RelativePath;
 
 public class ExperiencedInteractionPresenter {
   private ItemSelectionModel model;
@@ -22,7 +23,7 @@ public class ExperiencedInteractionPresenter {
   }
 
   private void initializeAppearance() {
-    interaction.setIcon("icons/ToolXp.png");
+    interaction.setIcon(new RelativePath("icons/ToolXp.png"));
     interaction.setTooltip("CharacterTool.ToExperienced.Tooltip");
   }
 

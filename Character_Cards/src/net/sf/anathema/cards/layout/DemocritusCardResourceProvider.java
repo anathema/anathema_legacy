@@ -8,6 +8,7 @@ import net.sf.anathema.character.generic.magic.charms.MartialArtsLevel;
 import net.sf.anathema.character.generic.magic.spells.CircleType;
 import net.sf.anathema.character.generic.traits.ITraitType;
 import net.sf.anathema.character.generic.type.ICharacterType;
+import net.sf.anathema.lib.file.RelativePath;
 import net.sf.anathema.lib.gui.icon.ImageProvider;
 import net.sf.anathema.lib.gui.image.ImageLoadingException;
 
@@ -99,7 +100,7 @@ public class DemocritusCardResourceProvider implements ICardReportResourceProvid
     try {
       Image image = imageMap.get(filePath);
       if (image == null) {
-        java.awt.Image javaImage = new ImageProvider().getImage(filePath);
+        java.awt.Image javaImage = new ImageProvider().getImage(new RelativePath(filePath));
         image = Image.getInstance(javaImage, null);
         imageMap.put(filePath, image);
       }
