@@ -1,6 +1,0 @@
-dependencies {
-    compile 'com.miglayout:miglayout-swing:4.2'
-    compile 'org.swinglabs.swingx:swingx-all:1.6.4'
-    compile project(':Lib')
-    testCompile parent.ext.testDependencies
-}

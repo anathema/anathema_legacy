@@ -4,9 +4,7 @@ dependencies {
   compile 'com.itextpdf:itextpdf:5.3.2' //5.3.3 and later remove MultiColumnText, need adjustment
   compile 'com.google.code.gson:gson:2.2.2'
   compile 'de.idos.updates:updates-core:1.2.0'
-  compile project(':Lib_Workflow')
-  compile project(':Lib_Gui')
-  compile project(':Platform_Swing') //Temporary dependency, must be inverted
+  compile project(':Lib')
   testCompile parent.ext.testDependencies
 }
 

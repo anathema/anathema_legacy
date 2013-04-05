@@ -10,4 +10,5 @@ dependencies {
   provided files("${System.properties['java.home']}/lib/jfxrt.jar")
   compile project(':Platform')
   compile project(':Platform_FX')
+  compile project(':Platform_Swing')
 }

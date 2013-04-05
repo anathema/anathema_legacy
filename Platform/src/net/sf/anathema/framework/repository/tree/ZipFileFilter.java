@@ -3,7 +3,7 @@ package net.sf.anathema.framework.repository.tree;
 import net.sf.anathema.lib.io.AbstractFileTypeFilter;
 import net.sf.anathema.lib.resources.Resources;
 
-public final class ZipFileFilter extends AbstractFileTypeFilter {
+public class ZipFileFilter extends AbstractFileTypeFilter {
 
   private static final String ZIP = "zip";
   private final Resources resources;

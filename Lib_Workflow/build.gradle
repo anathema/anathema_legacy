@@ -1,4 +1,0 @@
-dependencies {
-  compile project(':Lib_Gui')
-  testCompile parent.ext.testDependencies
-}

@@ -1,6 +1,6 @@
 include('Anathema',
 
-        'Lib', 'Lib_Gui', 'Lib_Workflow',
+        'Lib',
 
         'Platform', 'Platform_Swing', 'Platform_FX', 'GraphLayout', 'Platform_TreeFramework', 'Platform_SwingTree',
 
