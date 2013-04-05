@@ -1,10 +1,8 @@
 package net.sf.anathema.platform.tree.presenter.view;
 
-import net.sf.anathema.lib.gui.IView;
-
 import java.awt.Color;
 
-public interface ITreeView<G> extends IView {
+public interface ITreeView<G> {
   void addNodeInteractionListener(NodeInteractionListener listener);
 
   void setNodeBackgroundColor(String nodeId, Color color);

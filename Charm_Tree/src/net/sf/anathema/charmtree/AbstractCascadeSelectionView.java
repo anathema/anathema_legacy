@@ -135,6 +135,6 @@ public abstract class AbstractCascadeSelectionView implements ICascadeSelectionV
 
   @Override
   public JComponent getCharmComponent() {
-    return getCharmTreeView().getComponent();
+    return swingTreeView.getComponent();
   }
 }

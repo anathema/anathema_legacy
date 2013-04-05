@@ -102,7 +102,6 @@ public class SwingTreeView implements ITreeView<Cascade> {
     specialContent.put(contentClass, factory);
   }
 
-  @Override
   public JComponent getComponent() {
     return polygonPanel;
   }

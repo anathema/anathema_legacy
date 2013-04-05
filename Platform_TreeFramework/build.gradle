@@ -1,6 +1,6 @@
 dependencies {
   compile project(':Lib')
-  compile project(':Platform_Swing') //This should be Platform only!
+  compile project(':Platform')
   compile project(':GraphLayout')
   testCompile parent.ext.testDependencies
 }
