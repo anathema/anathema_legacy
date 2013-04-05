@@ -4,15 +4,17 @@ import com.google.common.base.Preconditions;
 import net.miginfocom.layout.CC;
 import net.miginfocom.swing.MigLayout;
 import net.sf.anathema.lib.control.IChangeListener;
-import net.sf.anathema.lib.gui.dialog.DialogIconResources;
+import net.sf.anathema.lib.file.RelativePath;
 import net.sf.anathema.lib.gui.dialog.core.message.DialogMessageModel;
 import net.sf.anathema.lib.gui.dialog.core.message.DialogMessagePanel;
 import net.sf.anathema.lib.gui.icon.CompositeIcon;
+import net.sf.anathema.lib.gui.icon.ImageProvider;
 import net.sf.anathema.lib.gui.layout.LayoutUtils;
 import net.sf.anathema.lib.gui.widgets.HorizontalLine;
 import net.sf.anathema.lib.model.ObjectModel;
 
 import javax.swing.Box;
+import javax.swing.Icon;
 import javax.swing.JComponent;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
@@ -22,6 +24,8 @@ import java.awt.BorderLayout;
 import java.awt.Dimension;
 
 public class DialogHeaderPanel {
+  private static final Icon DIALOG_HEADER_ICON_BACKGROUND = new ImageProvider().getImageIcon(new RelativePath("icons/dialog_header_icon_background.gif"));
+
   private final DialogMessagePanel messagePanel;
   private final JLabel descriptionLabel;
   private final ObjectModel<String> descriptionModel;
@@ -55,7 +59,7 @@ public class DialogHeaderPanel {
       JPanel panel = new JPanel(new MigLayout(LayoutUtils.withoutInsets()));
       panel.setBackground(IDialogConstants.HEADER_BACKGROUND_COLOR);
       panel.add(innerPanel, new CC().grow().pushX());
-      panel.add(new JLabel(new CompositeIcon(DialogIconResources.DIALOG_HEADER_ICON_BACKGROUND)), new CC().alignY("bottom"));
+      panel.add(new JLabel(new CompositeIcon(DIALOG_HEADER_ICON_BACKGROUND)), new CC().alignY("bottom"));
       JPanel contentPanel = new JPanel(new BorderLayout(0, 0));
       contentPanel.add(panel, BorderLayout.CENTER);
       contentPanel.add(new HorizontalLine(), BorderLayout.SOUTH);
