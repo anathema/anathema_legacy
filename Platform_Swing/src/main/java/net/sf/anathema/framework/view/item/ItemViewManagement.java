@@ -2,9 +2,11 @@ package net.sf.anathema.framework.view.item;
 
 import net.sf.anathema.framework.view.IItemView;
 import net.sf.anathema.framework.view.IViewSelectionListener;
+import net.sf.anathema.lib.gui.icon.ImageProvider;
 import org.jmock.example.announcer.Announcer;
 
 import javax.swing.Action;
+import javax.swing.Icon;
 import javax.swing.JComponent;
 import javax.swing.JTabbedPane;
 import javax.swing.event.ChangeEvent;
@@ -24,7 +26,8 @@ public class ItemViewManagement implements IComponentItemViewManagement {
   public void addItemView(IItemView view, Action closeAction) {
     JComponent component = view.getComponent();
     itemViewsByComponent.put(component, view);
-    tabbedPane.addTab(view.getName(), view.getIcon(), component);
+    Icon icon = new ImageProvider().getImageIcon(view.getIconPath());
+    tabbedPane.addTab(view.getName(), icon, component);
     int currentIndex = tabbedPane.getTabCount() - 1;
     itemTabComponent.setNewComponentAt(view, closeAction, currentIndex);
     tabbedPane.addChangeListener(new ChangeListener() {

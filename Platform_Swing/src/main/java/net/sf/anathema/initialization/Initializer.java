@@ -2,7 +2,7 @@ package net.sf.anathema.initialization;
 
 import net.sf.anathema.framework.IApplicationModel;
 import net.sf.anathema.framework.configuration.IInitializationPreferences;
-import net.sf.anathema.framework.exception.CentralExceptionHandler;
+import net.sf.anathema.framework.exception.SwingDialogExceptionHandler;
 import net.sf.anathema.framework.module.IItemTypeConfiguration;
 import net.sf.anathema.framework.resources.LocaleResources;
 import net.sf.anathema.framework.view.ApplicationView;
@@ -53,7 +53,7 @@ public abstract class Initializer {
   }
 
   private void configureExceptionHandling(LocaleResources resources) {
-    CentralExceptionHandling.setHandler(new CentralExceptionHandler(resources));
+    CentralExceptionHandling.setHandler(new SwingDialogExceptionHandler(resources));
   }
 
   private IApplicationModel initModel(Resources resources, ResourceLoader loader) throws InitializationException {

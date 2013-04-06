@@ -34,10 +34,9 @@ import net.sf.anathema.framework.view.IItemView;
 import net.sf.anathema.initialization.ItemTypeConfiguration;
 import net.sf.anathema.initialization.reflections.Weight;
 import net.sf.anathema.lib.exception.AnathemaException;
+import net.sf.anathema.lib.file.RelativePath;
 import net.sf.anathema.lib.registry.IRegistry;
 import net.sf.anathema.lib.resources.Resources;
-
-import javax.swing.Icon;
 
 @ItemTypeConfiguration
 @Weight(weight = 0)
@@ -65,7 +64,7 @@ public class ExaltedCharacterItemTypeConfiguration extends AbstractPersistableIt
         IntegerViewFactory intValueDisplayFactory = IntValueDisplayFactoryPrototype.createWithMarkerForCharacterType(characterType);
         IntegerViewFactory markerLessIntValueDisplayFactory =
                 IntValueDisplayFactoryPrototype.createWithoutMarkerForCharacterType(characterType);
-        Icon typeIcon = characterUI.getSmallTypeIcon(characterType);
+        RelativePath typeIcon = characterUI.getSmallTypeIconPath(characterType);
         ICharacterView characterView = new TaskedCharacterView(intValueDisplayFactory, printName, typeIcon, markerLessIntValueDisplayFactory);
         IBonusPointManagement bonusPointManagement = new BonusPointManagement(((ICharacter) item.getItemData()));
         IExperiencePointManagement experiencePointManagement = new ExperiencePointManagement(((ICharacter) item.getItemData()));

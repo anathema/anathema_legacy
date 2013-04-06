@@ -17,8 +17,8 @@ import net.sf.anathema.framework.presenter.view.MultipleContentView;
 import net.sf.anathema.framework.value.IntegerViewFactory;
 import net.sf.anathema.framework.view.item.AbstractItemView;
 import net.sf.anathema.framework.view.util.OptionalViewBar;
+import net.sf.anathema.lib.file.RelativePath;
 
-import javax.swing.Icon;
 import javax.swing.JComponent;
 import javax.swing.JPanel;
 import java.awt.BorderLayout;
@@ -34,7 +34,7 @@ public class TaskedCharacterView extends AbstractItemView implements ICharacterV
   private final OptionalViewBar optionalViewPane = new OptionalViewBar();
   private JPanel content;
 
-  public TaskedCharacterView(IntegerViewFactory factory, String name, Icon icon, IntegerViewFactory factoryWithoutMarker) {
+  public TaskedCharacterView(IntegerViewFactory factory, String name, RelativePath icon, IntegerViewFactory factoryWithoutMarker) {
     super(name, icon);
     this.characterPane = new TaskedCharacterPane();
     this.integerDisplayFactory = factory;

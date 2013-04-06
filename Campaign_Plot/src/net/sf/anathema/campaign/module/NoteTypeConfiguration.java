@@ -21,9 +21,8 @@ import net.sf.anathema.framework.view.IItemView;
 import net.sf.anathema.initialization.ItemTypeConfiguration;
 import net.sf.anathema.initialization.reflections.Weight;
 import net.sf.anathema.lib.exception.AnathemaException;
+import net.sf.anathema.lib.file.RelativePath;
 import net.sf.anathema.lib.resources.Resources;
-
-import javax.swing.Icon;
 
 @ItemTypeConfiguration
 @Weight(weight = 20)
@@ -47,7 +46,7 @@ public class NoteTypeConfiguration extends AbstractPersistableItemTypeConfigurat
       @Override
       public IItemView createView(IItem item) throws AnathemaException {
         String printName = item.getDisplayName();
-        Icon icon = new PlotUI().getNoteTabIcon();
+        RelativePath icon = new PlotUI().getNoteIconPath();
         NoteView basicItemView = new SwingNoteView(printName, icon, new TextEditorProperties(resources));
         IBasicItemData basicItem = (IBasicItemData) item.getItemData();
         new NotePresenter(basicItemView, resources, basicItem).initPresentation();

@@ -8,11 +8,19 @@ import javax.swing.Icon;
 public class PlotUI extends AbstractUI {
 
   public Icon getNoteTabIcon() {
-    return getIcon(new RelativePath("icons/TabNotes16.png"));
+    return getIcon(getNoteIconPath());
+  }
+
+  public RelativePath getNoteIconPath() {
+    return new RelativePath("icons/TabNotes16.png");
   }
 
   public Icon getSeriesTabIcon() {
-    return getIcon(new RelativePath("icons/TabSeries16.png"));
+    return getIcon(getSeriesIconPath());
+  }
+
+  public RelativePath getSeriesIconPath() {
+    return new RelativePath("icons/TabSeries16.png");
   }
 
   public Icon getSeriesIcon() {

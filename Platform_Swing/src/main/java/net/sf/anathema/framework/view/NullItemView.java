@@ -1,8 +1,8 @@
 package net.sf.anathema.framework.view;
 
 import net.sf.anathema.lib.control.ObjectValueListener;
+import net.sf.anathema.lib.file.RelativePath;
 
-import javax.swing.Icon;
 import javax.swing.JComponent;
 import javax.swing.JPanel;
 
@@ -18,7 +18,7 @@ public class NullItemView implements IItemView {
   }
 
   @Override
-  public Icon getIcon() {
+  public RelativePath getIconPath() {
     return null;
   }
 

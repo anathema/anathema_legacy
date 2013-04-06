@@ -20,9 +20,8 @@ import net.sf.anathema.framework.view.IItemView;
 import net.sf.anathema.initialization.ItemTypeConfiguration;
 import net.sf.anathema.initialization.reflections.Weight;
 import net.sf.anathema.lib.exception.AnathemaException;
+import net.sf.anathema.lib.file.RelativePath;
 import net.sf.anathema.lib.resources.Resources;
-
-import javax.swing.Icon;
 
 @ItemTypeConfiguration
 @Weight(weight = 10)
@@ -40,7 +39,7 @@ public class SeriesTypeConfiguration extends AbstractPersistableItemTypeConfigur
       @Override
       public IItemView createView(IItem item) throws AnathemaException {
         String printName = item.getDisplayName();
-        Icon icon = new PlotUI().getSeriesTabIcon();
+        RelativePath icon = new PlotUI().getSeriesIconPath();
         ITextEditorProperties editorProperties = new TextEditorProperties(resources);
         ISeriesView campaignView = new CampaignView(printName, icon, editorProperties);
         ISeries seriesData = (ISeries) item.getItemData();

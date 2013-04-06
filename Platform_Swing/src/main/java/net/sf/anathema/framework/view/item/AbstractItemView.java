@@ -3,17 +3,16 @@ package net.sf.anathema.framework.view.item;
 import com.google.common.base.Objects;
 import net.sf.anathema.framework.view.IItemView;
 import net.sf.anathema.lib.control.ObjectValueListener;
+import net.sf.anathema.lib.file.RelativePath;
 import org.jmock.example.announcer.Announcer;
-
-import javax.swing.Icon;
 
 public abstract class AbstractItemView implements IItemView {
 
   private String name;
   private final Announcer<ObjectValueListener> control = Announcer.to(ObjectValueListener.class);
-  private final Icon icon;
+  private final RelativePath icon;
 
-  protected AbstractItemView(String name, Icon icon) {
+  protected AbstractItemView(String name, RelativePath icon) {
     this.name = name;
     this.icon = icon;
   }
@@ -33,7 +32,7 @@ public abstract class AbstractItemView implements IItemView {
   }
 
   @Override
-  public final Icon getIcon() {
+  public final RelativePath getIconPath() {
     return icon;
   }
 

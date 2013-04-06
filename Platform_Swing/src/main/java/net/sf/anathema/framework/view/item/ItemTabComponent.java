@@ -2,10 +2,12 @@ package net.sf.anathema.framework.view.item;
 
 import net.sf.anathema.framework.view.IItemView;
 import net.sf.anathema.lib.control.ObjectValueListener;
+import net.sf.anathema.lib.gui.icon.ImageProvider;
 import org.jdesktop.swingx.JXLabel;
 
 import javax.swing.AbstractButton;
 import javax.swing.Action;
+import javax.swing.Icon;
 import javax.swing.JButton;
 import javax.swing.JComponent;
 import javax.swing.JPanel;
@@ -37,7 +39,8 @@ public class ItemTabComponent {
     JPanel panel = new JPanel(new FlowLayout(CENTER, 0, 0));
     panel.setFocusable(false);
     panel.setOpaque(false);
-    JXLabel label = new JXLabel(view.getName(), view.getIcon(), LEFT);
+    Icon icon = new ImageProvider().getImageIcon(view.getIconPath());
+    JXLabel label = new JXLabel(view.getName(), icon, LEFT);
     panel.add(label);
     panel.add(createButton(closeAction));
     return panel;
