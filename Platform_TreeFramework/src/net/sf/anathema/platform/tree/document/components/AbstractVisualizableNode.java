@@ -1,8 +1,8 @@
 package net.sf.anathema.platform.tree.document.components;
 
 import net.sf.anathema.graph.nodes.ISimpleNode;
+import net.sf.anathema.platform.tree.util.Area;
 
-import java.awt.Dimension;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collections;
@@ -13,10 +13,10 @@ public abstract class AbstractVisualizableNode implements IVisualizableNode {
 
   private ILayer layer;
   private final Map<ISimpleNode, IVisualizableNode> map;
-  private final Dimension nodeDimension;
+  private final Area nodeDimension;
   private Integer xPosition;
 
-  public AbstractVisualizableNode(Map<ISimpleNode, IVisualizableNode> map, Dimension nodeDimension) {
+  public AbstractVisualizableNode(Map<ISimpleNode, IVisualizableNode> map, Area nodeDimension) {
     this.map = map;
     this.nodeDimension = nodeDimension;
   }
@@ -63,7 +63,7 @@ public abstract class AbstractVisualizableNode implements IVisualizableNode {
     return map;
   }
 
-  protected final Dimension getNodeDimension() {
+  protected final Area getNodeDimension() {
     return nodeDimension;
   }
 

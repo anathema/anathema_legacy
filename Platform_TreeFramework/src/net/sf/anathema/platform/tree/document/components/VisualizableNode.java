@@ -3,8 +3,8 @@ package net.sf.anathema.platform.tree.document.components;
 import net.sf.anathema.graph.nodes.IIdentifiedRegularNode;
 import net.sf.anathema.graph.nodes.ISimpleNode;
 import net.sf.anathema.lib.collection.MultiEntryMap;
+import net.sf.anathema.platform.tree.util.Area;
 
-import java.awt.Dimension;
 import java.util.Map;
 
 public class VisualizableNode extends AbstractSingleVisualizableNode {
@@ -15,7 +15,7 @@ public class VisualizableNode extends AbstractSingleVisualizableNode {
   }
 
   public VisualizableNode(IIdentifiedRegularNode contentNode, Map<ISimpleNode, IVisualizableNode> map,
-                          Dimension nodeDimension, MultiEntryMap<ISimpleNode, ISimpleNode> leafNodesByAncestors) {
+                          Area nodeDimension, MultiEntryMap<ISimpleNode, ISimpleNode> leafNodesByAncestors) {
     super(contentNode, map, nodeDimension, leafNodesByAncestors);
   }
 

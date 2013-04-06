@@ -1,10 +1,10 @@
 package net.sf.anathema.platform.tree.document.visualizer;
 
-import java.awt.Dimension;
+import net.sf.anathema.platform.tree.util.Area;
 
 public interface IVisualizedGraph<G> {
 
-  Dimension getDimension();
+  Area getDimension();
 
   boolean isSingleNode();
 

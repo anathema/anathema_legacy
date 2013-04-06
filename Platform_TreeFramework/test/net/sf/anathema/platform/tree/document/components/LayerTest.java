@@ -1,8 +1,7 @@
 package net.sf.anathema.platform.tree.document.components;
 
+import net.sf.anathema.platform.tree.util.Area;
 import org.junit.Test;
-
-import java.awt.Dimension;
 
 import static org.hamcrest.CoreMatchers.is;
 import static org.junit.Assert.assertThat;
@@ -11,7 +10,7 @@ import static org.mockito.Mockito.when;
 
 public class LayerTest {
 
-  private Layer layer = new Layer(new Dimension(0, 0), 0);
+  private Layer layer = new Layer(new Area(0, 0), 0);
   private IVisualizableNode leftNode = mock(IVisualizableNode.class);
   private IVisualizableNode rightNode = mock(IVisualizableNode.class);
 

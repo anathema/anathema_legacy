@@ -1,15 +1,16 @@
 package net.sf.anathema.platform.tree.document.visualizer;
 
+import net.sf.anathema.platform.tree.util.Area;
+
 import java.awt.Color;
-import java.awt.Dimension;
 
 public interface ITreePresentationProperties {
 
-  Dimension getNodeDimension();
+  Area getNodeDimension();
 
-  Dimension getGapDimension();
+  Area getGapDimension();
 
-  Dimension getVerticalLineDimension();
+  Area getVerticalLineDimension();
 
   Color getColor();
 }

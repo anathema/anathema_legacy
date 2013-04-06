@@ -2,9 +2,9 @@ package net.sf.anathema.character.generic.framework.xml.presentation;
 
 import net.sf.anathema.lib.lang.clone.ReflectionCloneableObject;
 import net.sf.anathema.platform.tree.document.visualizer.ITreePresentationProperties;
+import net.sf.anathema.platform.tree.util.Area;
 
 import java.awt.Color;
-import java.awt.Dimension;
 
 public class GenericCharmPresentationProperties extends ReflectionCloneableObject<GenericCharmPresentationProperties> implements
         ITreePresentationProperties {
@@ -12,13 +12,13 @@ public class GenericCharmPresentationProperties extends ReflectionCloneableObjec
   private Color color = Color.WHITE;
 
   @Override
-  public Dimension getNodeDimension() {
-    return new Dimension(180, 90);
+  public Area getNodeDimension() {
+    return new Area(180, 90);
   }
 
   @Override
-  public Dimension getGapDimension() {
-    return new Dimension(25, 50);
+  public Area getGapDimension() {
+    return new Area(25, 50);
   }
 
   @Override
@@ -27,8 +27,8 @@ public class GenericCharmPresentationProperties extends ReflectionCloneableObjec
   }
 
   @Override
-  public final Dimension getVerticalLineDimension() {
-    return new Dimension(getGapDimension().width, getNodeDimension().height);
+  public final Area getVerticalLineDimension() {
+    return new Area(getGapDimension().width, getNodeDimension().height);
   }
 
   public void setColor(Color color) {

@@ -5,9 +5,8 @@ import net.sf.anathema.platform.tree.document.visualizer.ITreePresentationProper
 import net.sf.anathema.platform.tree.document.visualizer.IVisualizedGraph;
 import net.sf.anathema.platform.tree.document.visualizer.TreeDimensionCalculator;
 import net.sf.anathema.platform.tree.document.visualizer.VisualizedGraphFactory;
+import net.sf.anathema.platform.tree.util.Area;
 import net.sf.anathema.platform.tree.view.container.DefaultContainerCascade;
-
-import java.awt.Dimension;
 
 public class SwingGraphFactory implements VisualizedGraphFactory {
   private TreeDimensionCalculator calculator;
@@ -24,7 +23,7 @@ public class SwingGraphFactory implements VisualizedGraphFactory {
     return new SwingGraph(createCascade(layers), calculateSize(layers), singleNode);
   }
 
-  private Dimension calculateSize(ILayer... layers) {
+  private Area calculateSize(ILayer... layers) {
     return calculator.getTreeDimension(layers);
   }
 

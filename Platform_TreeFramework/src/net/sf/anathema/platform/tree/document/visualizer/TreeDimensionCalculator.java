@@ -1,8 +1,7 @@
 package net.sf.anathema.platform.tree.document.visualizer;
 
 import net.sf.anathema.platform.tree.document.components.ILayer;
-
-import java.awt.Dimension;
+import net.sf.anathema.platform.tree.util.Area;
 
 public class TreeDimensionCalculator {
 
@@ -12,8 +11,8 @@ public class TreeDimensionCalculator {
     this.properties = properties;
   }
 
-  public Dimension getTreeDimension(ILayer... layers) {
-    return new Dimension(getTreeWidth(layers), getTreeHeight(layers));
+  public Area getTreeDimension(ILayer... layers) {
+    return new Area(getTreeWidth(layers), getTreeHeight(layers));
   }
 
   public int getTreeWidth(ILayer... layers) {

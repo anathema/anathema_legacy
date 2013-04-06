@@ -1,8 +1,8 @@
 package net.sf.anathema.platform.tree.document.components;
 
 import net.sf.anathema.graph.nodes.ISimpleNode;
+import net.sf.anathema.platform.tree.util.Area;
 
-import java.awt.Dimension;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.LinkedHashSet;
@@ -13,11 +13,11 @@ import java.util.Set;
 public class HorizontalMetaNode extends AbstractVisualizableNode {
 
   private final List<ISimpleNode> contentNodes = new ArrayList<>();
-  private final Dimension gapDimension;
+  private final Area gapDimension;
   private final Map<ISimpleNode, IVisualizableNode> innerVisualizableNodesByContent = new HashMap<>();
 
-  public HorizontalMetaNode(Map<ISimpleNode, IVisualizableNode> map, Dimension nodeDimension,
-                            Dimension gapDimension) {
+  public HorizontalMetaNode(Map<ISimpleNode, IVisualizableNode> map, Area nodeDimension,
+                            Area gapDimension) {
     super(map, nodeDimension);
     this.gapDimension = gapDimension;
   }

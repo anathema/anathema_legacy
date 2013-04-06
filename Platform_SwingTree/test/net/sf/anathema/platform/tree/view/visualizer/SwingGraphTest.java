@@ -1,11 +1,10 @@
 package net.sf.anathema.platform.tree.view.visualizer;
 
+import net.sf.anathema.platform.tree.util.Area;
 import net.sf.anathema.platform.tree.view.SwingCascadeBuilder;
 import net.sf.anathema.platform.tree.view.container.ContainerCascade;
 import net.sf.anathema.platform.tree.view.container.DefaultContainerCascade;
 import org.junit.Test;
-
-import java.awt.Dimension;
 
 import static org.hamcrest.CoreMatchers.is;
 import static org.junit.Assert.assertThat;
@@ -15,7 +14,7 @@ import static org.mockito.Mockito.verify;
 
 public class SwingGraphTest {
 
-  private final Dimension dimension = new Dimension(0, 0);
+  private final Area dimension = new Area();
   private final DefaultContainerCascade nodeContainer = mock(DefaultContainerCascade.class);
   private final SwingGraph swingGraph = new SwingGraph(nodeContainer, dimension, false);
 

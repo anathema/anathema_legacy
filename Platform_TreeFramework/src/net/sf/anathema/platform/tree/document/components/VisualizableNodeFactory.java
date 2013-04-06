@@ -3,20 +3,20 @@ package net.sf.anathema.platform.tree.document.components;
 import net.sf.anathema.graph.nodes.IIdentifiedRegularNode;
 import net.sf.anathema.graph.nodes.ISimpleNode;
 import net.sf.anathema.lib.collection.MultiEntryMap;
+import net.sf.anathema.platform.tree.util.Area;
 
-import java.awt.Dimension;
 import java.util.Map;
 import java.util.Set;
 
 public class VisualizableNodeFactory {
 
   private final Map<ISimpleNode, IVisualizableNode> map;
-  private final Dimension nodeDimension;
-  private final Dimension gapDimension;
-  private final Dimension lineDimension;
+  private final Area nodeDimension;
+  private final Area gapDimension;
+  private final Area lineDimension;
   private final MultiEntryMap<ISimpleNode, ISimpleNode> leafNodesByAncestors;
 
-  public VisualizableNodeFactory(Dimension nodeDimension, Dimension gapDimension, Dimension lineDimension,
+  public VisualizableNodeFactory(Area nodeDimension, Area gapDimension, Area lineDimension,
                                  Map<ISimpleNode, IVisualizableNode> visualizableNodesByContent,
                                  MultiEntryMap<ISimpleNode, ISimpleNode> leafNodesByAncestors) {
     this.nodeDimension = nodeDimension;

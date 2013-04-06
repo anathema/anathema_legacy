@@ -2,8 +2,8 @@ package net.sf.anathema.platform.tree.document.components;
 
 import net.sf.anathema.graph.nodes.ISimpleNode;
 import net.sf.anathema.lib.collection.MultiEntryMap;
+import net.sf.anathema.platform.tree.util.Area;
 
-import java.awt.Dimension;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
@@ -15,7 +15,7 @@ public abstract class AbstractSingleVisualizableNode extends AbstractVisualizabl
   private final MultiEntryMap<ISimpleNode, ISimpleNode> leafNodesByAncestors;
 
   public AbstractSingleVisualizableNode(ISimpleNode content, Map<ISimpleNode, IVisualizableNode> map,
-                                        Dimension nodeDimension,
+                                        Area nodeDimension,
                                         MultiEntryMap<ISimpleNode, ISimpleNode> leafNodesByAncestors) {
     super(map, nodeDimension);
     this.content = content;

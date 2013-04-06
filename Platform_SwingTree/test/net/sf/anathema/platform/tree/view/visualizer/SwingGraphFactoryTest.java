@@ -3,10 +3,10 @@ package net.sf.anathema.platform.tree.view.visualizer;
 import net.sf.anathema.platform.tree.document.components.ILayer;
 import net.sf.anathema.platform.tree.document.components.IVisualizableNode;
 import net.sf.anathema.platform.tree.document.visualizer.ITreePresentationProperties;
+import net.sf.anathema.platform.tree.util.Area;
 import org.junit.Before;
 import org.junit.Test;
 
-import java.awt.Dimension;
 import java.util.ArrayList;
 
 import static org.hamcrest.CoreMatchers.is;
@@ -22,8 +22,8 @@ public class SwingGraphFactoryTest {
 
   @Before
   public void setUp() throws Exception {
-    when(properties.getNodeDimension()).thenReturn(new Dimension());
-    when(properties.getGapDimension()).thenReturn(new Dimension());
+    when(properties.getNodeDimension()).thenReturn(new Area());
+    when(properties.getGapDimension()).thenReturn(new Area());
   }
 
   @Test
