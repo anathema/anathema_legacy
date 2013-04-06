@@ -9,6 +9,7 @@ import net.sf.anathema.character.generic.template.TemplateType;
 import net.sf.anathema.character.generic.template.abilities.AbilityGroupType;
 import net.sf.anathema.character.generic.template.presentation.IPresentationProperties;
 import net.sf.anathema.lib.exception.AnathemaException;
+import net.sf.anathema.lib.file.RelativePath;
 import net.sf.anathema.lib.xml.DocumentUtilities;
 import org.dom4j.Element;
 import org.junit.Before;
@@ -40,7 +41,7 @@ public class PresentationPropertiesParserTest {
     GenericCharacterTemplate parentTemplate = new GenericCharacterTemplate();
     parentTemplate.setTemplateType(new TemplateType(new DummyExaltCharacterType()));
     presentationProperties.setParentTemplate(parentTemplate);
-    assertEquals("icons/DummyButtonLifeSecondEdition16.png",
+    assertEquals(new RelativePath("icons/DummyButtonLifeSecondEdition16.png"),
             presentationProperties.getSmallCasteIconResource(AbilityGroupType.Life.getId(), new SecondEdition().getId()));
   }
 
