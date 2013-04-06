@@ -7,5 +7,4 @@ public interface IBooleanValueView {
   void setSelected(boolean selected);
 
   void addChangeListener(IBooleanValueChangedListener listener);
-
 }
