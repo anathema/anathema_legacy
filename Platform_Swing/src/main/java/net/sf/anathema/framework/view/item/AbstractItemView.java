@@ -1,12 +1,12 @@
 package net.sf.anathema.framework.view.item;
 
 import com.google.common.base.Objects;
-import net.sf.anathema.framework.view.IItemView;
+import net.sf.anathema.framework.view.SwingItemView;
 import net.sf.anathema.lib.control.ObjectValueListener;
 import net.sf.anathema.lib.file.RelativePath;
 import org.jmock.example.announcer.Announcer;
 
-public abstract class AbstractItemView implements IItemView {
+public abstract class AbstractItemView implements SwingItemView {
 
   private String name;
   private final Announcer<ObjectValueListener> control = Announcer.to(ObjectValueListener.class);

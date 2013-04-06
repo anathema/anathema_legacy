@@ -1,9 +1,11 @@
 package net.sf.anathema.framework.view.menu;
 
-import javax.swing.Action;
+import net.sf.anathema.interaction.Command;
+import net.sf.anathema.lib.gui.SwingActionTool;
+
 import javax.swing.JMenu;
 
-public class Menu implements IMenuBarView {
+public class Menu implements IMenu {
 
   private final JMenu menu;
 
@@ -16,19 +18,20 @@ public class Menu implements IMenuBarView {
     menu.setMnemonic(mnemonic);
   }
 
-  @Override
   public JMenu getComponent() {
     return menu;
   }
 
   @Override
-  public void addMenuItem(Action action) {
-    menu.add(action);
+  public void addMenuItem(Command action, String label) {
+    SwingActionTool tool = new SwingActionTool();
+    tool.setText(label);
+    tool.setCommand(action);
+    menu.add(tool.getAction());
   }
 
   @Override
   public void addSeparator() {
     menu.addSeparator();
   }
-
 }

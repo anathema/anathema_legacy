@@ -2,9 +2,9 @@ package net.sf.anathema.initialization;
 
 import net.sf.anathema.framework.IApplicationModel;
 import net.sf.anathema.framework.configuration.IInitializationPreferences;
-import net.sf.anathema.framework.exception.SwingDialogExceptionHandler;
 import net.sf.anathema.framework.module.IItemTypeConfiguration;
 import net.sf.anathema.framework.resources.LocaleResources;
+import net.sf.anathema.framework.swing.SwingDialogExceptionHandler;
 import net.sf.anathema.framework.view.ApplicationView;
 import net.sf.anathema.initialization.reflections.AggregatedResourceLoader;
 import net.sf.anathema.initialization.reflections.CustomDataResourceLoader;

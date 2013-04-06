@@ -2,7 +2,7 @@ package net.sf.anathema.framework.module;
 
 import net.sf.anathema.framework.IApplicationModel;
 import net.sf.anathema.framework.item.IItemType;
-import net.sf.anathema.framework.presenter.IItemViewFactory;
+import net.sf.anathema.framework.presenter.ItemViewFactory;
 import net.sf.anathema.lib.registry.IRegistry;
 import net.sf.anathema.lib.resources.Resources;
 
@@ -16,7 +16,7 @@ public abstract class AbstractItemTypeConfiguration implements IItemTypeConfigur
 
   @Override
   public final void registerViewFactory(IApplicationModel model, Resources resources) {
-    IRegistry<IItemType, IItemViewFactory> viewFactoryRegistry = model.getViewFactoryRegistry();
+    IRegistry<IItemType, ItemViewFactory> viewFactoryRegistry = model.getViewFactoryRegistry();
     viewFactoryRegistry.register(type, createItemViewFactory(model, resources));
   }
 
@@ -25,5 +25,5 @@ public abstract class AbstractItemTypeConfiguration implements IItemTypeConfigur
     return type;
   }
 
-  protected abstract IItemViewFactory createItemViewFactory(IApplicationModel model, Resources resources);
+  protected abstract ItemViewFactory createItemViewFactory(IApplicationModel model, Resources resources);
 }

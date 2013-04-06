@@ -6,7 +6,7 @@ import net.sf.anathema.lib.file.RelativePath;
 import javax.swing.JComponent;
 import javax.swing.JPanel;
 
-public class NullItemView implements IItemView {
+public class NullItemView implements SwingItemView {
   @Override
   public void setName(String newName) {
     //nothing to do

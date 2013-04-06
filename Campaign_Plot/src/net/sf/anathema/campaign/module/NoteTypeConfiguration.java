@@ -11,13 +11,13 @@ import net.sf.anathema.framework.IApplicationModel;
 import net.sf.anathema.framework.item.IItemType;
 import net.sf.anathema.framework.module.AbstractPersistableItemTypeConfiguration;
 import net.sf.anathema.framework.persistence.IRepositoryItemPersister;
-import net.sf.anathema.framework.presenter.IItemViewFactory;
+import net.sf.anathema.framework.presenter.ItemViewFactory;
 import net.sf.anathema.framework.presenter.view.IItemTypeViewProperties;
 import net.sf.anathema.framework.presenter.view.SimpleItemTypeViewProperties;
 import net.sf.anathema.framework.repository.IItem;
 import net.sf.anathema.framework.repository.ItemType;
 import net.sf.anathema.framework.repository.RepositoryConfiguration;
-import net.sf.anathema.framework.view.IItemView;
+import net.sf.anathema.framework.view.ItemView;
 import net.sf.anathema.initialization.ItemTypeConfiguration;
 import net.sf.anathema.initialization.reflections.Weight;
 import net.sf.anathema.lib.exception.AnathemaException;
@@ -41,10 +41,10 @@ public class NoteTypeConfiguration extends AbstractPersistableItemTypeConfigurat
   }
 
   @Override
-  protected IItemViewFactory createItemViewFactory(IApplicationModel model, final Resources resources) {
-    return new IItemViewFactory() {
+  protected ItemViewFactory createItemViewFactory(IApplicationModel model, final Resources resources) {
+    return new ItemViewFactory() {
       @Override
-      public IItemView createView(IItem item) throws AnathemaException {
+      public ItemView createView(IItem item) throws AnathemaException {
         String printName = item.getDisplayName();
         RelativePath icon = new PlotUI().getNoteIconPath();
         NoteView basicItemView = new SwingNoteView(printName, icon, new TextEditorProperties(resources));

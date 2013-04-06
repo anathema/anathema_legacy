@@ -9,7 +9,7 @@ import net.sf.anathema.framework.messaging.IMessaging;
 import net.sf.anathema.framework.messaging.Messaging;
 import net.sf.anathema.framework.persistence.IRepositoryItemPersister;
 import net.sf.anathema.framework.presenter.IItemManagementModel;
-import net.sf.anathema.framework.presenter.IItemViewFactory;
+import net.sf.anathema.framework.presenter.ItemViewFactory;
 import net.sf.anathema.framework.reporting.IReportRegistry;
 import net.sf.anathema.framework.repository.IRepository;
 import net.sf.anathema.framework.repository.Repository;
@@ -26,17 +26,16 @@ public class ApplicationModel implements IApplicationModel {
   private final IRegistry<IItemType, IRepositoryItemPersister> persisterRegistry = new Registry<>();
   private final IItemManagementModel itemManagment = new ItemManagmentModel();
   private final IReportRegistry reportRegistry = new ReportRegistry();
-  private final IRegistry<IItemType, IItemViewFactory> viewFactoryRegistry = new Registry<>();
+  private final IRegistry<IItemType, ItemViewFactory> viewFactoryRegistry = new Registry<>();
   private final IItemTypeRegistry itemTypes = new ItemTypeRegistry();
   private final Repository repository;
   private final Messaging messaging;
   private final ResourceLoader resourceLoader;
-  private final InformativeMessages informativeMessages;
 
   public ApplicationModel(File repositoryFolder, Resources resources, ResourceLoader resourceLoader) {
     this.repository = new Repository(repositoryFolder, itemManagment);
     this.messaging = new Messaging(resources);
-    this.informativeMessages = new WordsOfTheWise(resourceLoader);
+    InformativeMessages informativeMessages = new WordsOfTheWise(resourceLoader);
     this.resourceLoader = resourceLoader;
     new WelcomeMessage(messaging, informativeMessages).show();
   }
@@ -67,7 +66,7 @@ public class ApplicationModel implements IApplicationModel {
   }
 
   @Override
-  public IRegistry<IItemType, IItemViewFactory> getViewFactoryRegistry() {
+  public IRegistry<IItemType, ItemViewFactory> getViewFactoryRegistry() {
     return viewFactoryRegistry;
   }
 

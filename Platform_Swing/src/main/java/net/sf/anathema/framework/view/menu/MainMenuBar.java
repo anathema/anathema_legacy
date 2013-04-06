@@ -7,8 +7,8 @@ import javax.swing.JMenuBar;
 public class MainMenuBar implements MenuBar {
 
   private final JMenuBar menuBar = new JMenuBar();
-  private final IMenuBarView mainMenu;
-  private final IMenuBarView helpMenu;
+  private final Menu mainMenu;
+  private final Menu helpMenu;
 
   public MainMenuBar(String mainMenuName, String helpMenuName) {
     char mainMenuMnemonic = mainMenuName.charAt(0);

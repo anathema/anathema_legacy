@@ -1,7 +1,7 @@
 package net.sf.anathema.campaign.presenter;
 
 import net.sf.anathema.campaign.module.PlotUI;
-import net.sf.anathema.framework.styledtext.ITextEditorProperties;
+import net.sf.anathema.framework.swing.styledtext.ITextEditorProperties;
 import net.sf.anathema.lib.resources.Resources;
 
 import javax.swing.Action;

@@ -2,12 +2,12 @@ package net.sf.anathema.campaign.perspective;
 
 import net.sf.anathema.framework.IApplicationModel;
 import net.sf.anathema.framework.item.IItemType;
-import net.sf.anathema.framework.message.MessageUtilities;
 import net.sf.anathema.framework.presenter.IItemManagementModel;
 import net.sf.anathema.framework.presenter.action.ItemCreationOperator;
 import net.sf.anathema.framework.presenter.item.ItemTypeCreationViewPropertiesExtensionPoint;
 import net.sf.anathema.framework.presenter.resources.PlatformUI;
 import net.sf.anathema.framework.presenter.view.IItemTypeViewProperties;
+import net.sf.anathema.framework.swing.MessageUtilities;
 import net.sf.anathema.lib.exception.PersistenceException;
 import net.sf.anathema.lib.gui.action.SmartAction;
 import net.sf.anathema.lib.gui.dialog.userdialog.page.IDialogPage;

@@ -1,10 +1,10 @@
 package net.sf.anathema.framework.view.menu;
 
-import javax.swing.Action;
+import net.sf.anathema.interaction.Command;
 
 public interface IMenu {
 
-  void addMenuItem(Action action);
+  void addMenuItem(Command action, String label);
 
   void addSeparator();
 }

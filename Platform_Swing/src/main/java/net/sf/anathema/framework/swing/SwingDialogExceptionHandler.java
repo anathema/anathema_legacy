@@ -1,4 +1,4 @@
-package net.sf.anathema.framework.exception;
+package net.sf.anathema.framework.swing;
 
 import net.sf.anathema.lib.exception.IExceptionHandler;
 import net.sf.anathema.lib.gui.dialog.message.MessageDialogFactory;

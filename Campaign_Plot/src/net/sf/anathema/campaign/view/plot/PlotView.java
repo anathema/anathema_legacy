@@ -11,7 +11,7 @@ import net.sf.anathema.campaign.presenter.view.plot.IPlotViewProperties;
 import net.sf.anathema.campaign.presenter.view.plot.ITreeView;
 import net.sf.anathema.campaign.view.BasicItemDescriptionView;
 import net.sf.anathema.campaign.view.util.DefaultTreeView;
-import net.sf.anathema.framework.styledtext.ITextEditorProperties;
+import net.sf.anathema.framework.swing.styledtext.ITextEditorProperties;
 import net.sf.anathema.lib.gui.action.SmartAction;
 import net.sf.anathema.lib.util.TreeUtilities;
 

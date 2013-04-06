@@ -4,9 +4,9 @@ import net.sf.anathema.character.impl.view.concept.ConceptAndRulesViewFactory;
 import net.sf.anathema.character.impl.view.magic.MagicViewFactory;
 import net.sf.anathema.character.impl.view.overview.OverviewContainer;
 import net.sf.anathema.character.view.BackgroundView;
+import net.sf.anathema.character.view.CharacterView;
 import net.sf.anathema.character.view.IAdvantageViewFactory;
 import net.sf.anathema.character.view.ICharacterDescriptionView;
-import net.sf.anathema.character.view.ICharacterView;
 import net.sf.anathema.character.view.IConceptAndRulesViewFactory;
 import net.sf.anathema.character.view.IGroupedFavorableTraitViewFactory;
 import net.sf.anathema.character.view.advance.IExperienceConfigurationView;
@@ -23,7 +23,7 @@ import javax.swing.JComponent;
 import javax.swing.JPanel;
 import java.awt.BorderLayout;
 
-public class TaskedCharacterView extends AbstractItemView implements ICharacterView {
+public class TaskedCharacterView extends AbstractItemView implements CharacterView {
 
   private final IntegerViewFactory integerDisplayFactory;
   private CategorizedOverview creationOverviewView;

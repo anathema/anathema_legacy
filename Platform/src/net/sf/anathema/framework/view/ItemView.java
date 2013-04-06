@@ -2,9 +2,8 @@ package net.sf.anathema.framework.view;
 
 import net.sf.anathema.lib.control.ObjectValueListener;
 import net.sf.anathema.lib.file.RelativePath;
-import net.sf.anathema.lib.gui.IView;
 
-public interface IItemView extends IView {
+public interface ItemView {
 
   void setName(String newName);
 

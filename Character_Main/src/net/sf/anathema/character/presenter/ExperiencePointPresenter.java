@@ -4,7 +4,7 @@ import net.sf.anathema.character.generic.framework.additionaltemplate.listening.
 import net.sf.anathema.character.model.ICharacter;
 import net.sf.anathema.character.presenter.advance.ExperienceConfigurationPresenter;
 import net.sf.anathema.character.presenter.magic.IContentPresenter;
-import net.sf.anathema.character.view.ICharacterView;
+import net.sf.anathema.character.view.CharacterView;
 import net.sf.anathema.character.view.advance.IExperienceConfigurationView;
 import net.sf.anathema.lib.resources.Resources;
 
@@ -12,9 +12,9 @@ public class ExperiencePointPresenter {
 
   private Resources resources;
   private ICharacter character;
-  private ICharacterView view;
+  private CharacterView view;
 
-  public ExperiencePointPresenter(Resources resources, ICharacter character, ICharacterView view) {
+  public ExperiencePointPresenter(Resources resources, ICharacter character, CharacterView view) {
     this.resources = resources;
     this.character = character;
     this.view = view;

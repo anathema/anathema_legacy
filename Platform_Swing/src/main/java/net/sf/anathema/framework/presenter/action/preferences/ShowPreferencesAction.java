@@ -1,21 +1,14 @@
 package net.sf.anathema.framework.presenter.action.preferences;
 
-import net.sf.anathema.lib.gui.action.SmartAction;
+import net.sf.anathema.framework.view.SwingApplicationFrame;
+import net.sf.anathema.interaction.Command;
 import net.sf.anathema.lib.gui.dialog.core.IDialogResult;
 import net.sf.anathema.lib.gui.dialog.userdialog.UserDialog;
 import net.sf.anathema.lib.resources.Resources;
 
-import javax.swing.Action;
 import javax.swing.JOptionPane;
-import java.awt.Component;
 
-public class ShowPreferencesAction extends SmartAction {
-
-  public static Action createMenuAction(Resources resources, IPreferencesElement[] elements) {
-    SmartAction action = new ShowPreferencesAction(resources, elements);
-    action.setName(resources.getString("AnathemaCore.Tools.Preferences.Name") + "\u2026");
-    return action;
-  }
+public class ShowPreferencesAction implements Command {
 
   private final Resources resources;
   private final IPreferencesElement[] elements;
@@ -25,10 +18,11 @@ public class ShowPreferencesAction extends SmartAction {
     this.elements = elements;
   }
 
+
   @Override
-  protected void execute(Component parentComponent) {
+  public void execute() {
     PreferencesPage page = new PreferencesPage(resources, elements);
-    UserDialog userDialog = new UserDialog(parentComponent, page);
+    UserDialog userDialog = new UserDialog(SwingApplicationFrame.getParentComponent(), page);
     
     boolean confirmed = false;
     boolean dirty = false;
@@ -64,7 +58,7 @@ public class ShowPreferencesAction extends SmartAction {
       }
     }
     if (dirty) {
-      JOptionPane.showMessageDialog(parentComponent, resources.getString("AnathemaCore.Tools.Preferences.Restart"));
+      JOptionPane.showMessageDialog(SwingApplicationFrame.getParentComponent(), resources.getString("AnathemaCore.Tools.Preferences.Restart"));
     }
   }
 }

@@ -1,7 +1,7 @@
 package net.sf.anathema.campaign.note.view;
 
-import net.sf.anathema.framework.view.IItemView;
+import net.sf.anathema.framework.view.SwingItemView;
 
-public interface NoteView extends IItemView {
+public interface NoteView extends SwingItemView {
   IBasicItemDescriptionView getDescriptionView();
 }

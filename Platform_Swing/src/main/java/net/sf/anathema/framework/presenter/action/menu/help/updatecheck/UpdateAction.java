@@ -6,25 +6,20 @@ import de.idos.updates.Updater;
 import de.idos.updates.Version;
 import de.idos.updates.configuration.ConfiguredUpdateSystem;
 import de.idos.updates.store.ProgressReportAdapter;
+import net.sf.anathema.framework.view.SwingApplicationFrame;
+import net.sf.anathema.interaction.Command;
 import net.sf.anathema.lib.gui.action.SmartAction;
 import net.sf.anathema.lib.gui.dialog.userdialog.DefaultDialogConfiguration;
 import net.sf.anathema.lib.gui.dialog.userdialog.UserDialog;
 import net.sf.anathema.lib.resources.Resources;
 import org.apache.commons.io.FilenameUtils;
 
-import javax.swing.Action;
 import java.awt.Component;
 import java.io.File;
 import java.io.IOException;
 import java.util.Properties;
 
-public class UpdateAction extends SmartAction {
-
-  public static Action createMenuAction(Resources resources) {
-    UpdateAction action = new UpdateAction(resources);
-    action.setName(resources.getString("Help.UpdateCheck.Title"));
-    return action;
-  }
+public class UpdateAction implements Command {
 
   private Resources resources;
 
@@ -32,9 +27,8 @@ public class UpdateAction extends SmartAction {
     this.resources = resources;
   }
 
-  @SuppressWarnings("unchecked")
   @Override
-  protected void execute(Component parentComponent) {
+  public void execute() {
     Version currentVersion = getCurrentVersion();
     UpdateSystem updateSystem = createUpdateSystem(currentVersion);
     Updater updater = updateSystem.checkForUpdates();
@@ -42,7 +36,7 @@ public class UpdateAction extends SmartAction {
     UpdateDialogPage page = new UpdateDialogPage(resources, currentVersion);
     prepareForInstallation(page, updater);
     DefaultDialogConfiguration dialogConfiguration = DefaultDialogConfiguration.createWithOkOnly(page);
-    UserDialog dialog = new UserDialog(parentComponent, dialogConfiguration);
+    UserDialog dialog = new UserDialog(SwingApplicationFrame.getParentComponent(), dialogConfiguration);
     updateSystem.reportAllProgressTo(new VersionDiscoveryReport(page, installedVersion));
     updateSystem.reportAllProgressTo(new InstallationProgressReport(page));
     updateSystem.reportAllProgressTo(new DialogUpdater(dialog));

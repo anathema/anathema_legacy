@@ -1,9 +1,9 @@
 package net.sf.anathema.framework.presenter.action;
 
 import net.sf.anathema.framework.item.IItemType;
-import net.sf.anathema.framework.message.MessageUtilities;
 import net.sf.anathema.framework.presenter.ItemReceiver;
 import net.sf.anathema.framework.repository.IItem;
+import net.sf.anathema.framework.swing.MessageUtilities;
 import net.sf.anathema.lib.exception.PersistenceException;
 import net.sf.anathema.lib.message.Message;
 import net.sf.anathema.lib.workflow.wizard.selection.IDialogModelTemplate;

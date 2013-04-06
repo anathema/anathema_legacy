@@ -1,4 +1,4 @@
-package net.sf.anathema.framework.message;
+package net.sf.anathema.framework.swing;
 
 import net.sf.anathema.lib.gui.dialog.message.MessageDialogFactory;
 import net.sf.anathema.lib.logging.Logger;

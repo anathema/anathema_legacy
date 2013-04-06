@@ -7,7 +7,7 @@ import net.sf.anathema.framework.messaging.IMessageContainer;
 import net.sf.anathema.framework.messaging.IMessaging;
 import net.sf.anathema.framework.persistence.IRepositoryItemPersister;
 import net.sf.anathema.framework.presenter.IItemManagementModel;
-import net.sf.anathema.framework.presenter.IItemViewFactory;
+import net.sf.anathema.framework.presenter.ItemViewFactory;
 import net.sf.anathema.framework.reporting.IReportRegistry;
 import net.sf.anathema.framework.repository.IRepository;
 import net.sf.anathema.initialization.reflections.ResourceLoader;
@@ -25,7 +25,7 @@ public interface IApplicationModel {
 
   IRegistry<IItemType, IRepositoryItemPersister> getPersisterRegistry();
 
-  IRegistry<IItemType, IItemViewFactory> getViewFactoryRegistry();
+  IRegistry<IItemType, ItemViewFactory> getViewFactoryRegistry();
 
   IItemManagementModel getItemManagement();
 

@@ -3,12 +3,12 @@ package net.sf.anathema.magic.description.module;
 import net.sf.anathema.framework.IApplicationModel;
 import net.sf.anathema.framework.extension.IAnathemaExtension;
 import net.sf.anathema.framework.module.AbstractItemTypeConfiguration;
-import net.sf.anathema.framework.presenter.IItemViewFactory;
+import net.sf.anathema.framework.presenter.ItemViewFactory;
 import net.sf.anathema.framework.repository.IItem;
 import net.sf.anathema.framework.repository.ItemType;
 import net.sf.anathema.framework.repository.RepositoryConfiguration;
 import net.sf.anathema.framework.view.ApplicationView;
-import net.sf.anathema.framework.view.IItemView;
+import net.sf.anathema.framework.view.ItemView;
 import net.sf.anathema.framework.view.NullItemView;
 import net.sf.anathema.initialization.ItemTypeConfiguration;
 import net.sf.anathema.lib.exception.AnathemaException;
@@ -37,10 +37,10 @@ public final class MagicDescriptionItemTypeConfiguration extends AbstractItemTyp
   }
 
   @Override
-  protected IItemViewFactory createItemViewFactory(IApplicationModel model, Resources resources) {
-    return new IItemViewFactory() {
+  protected ItemViewFactory createItemViewFactory(IApplicationModel model, Resources resources) {
+    return new ItemViewFactory() {
       @Override
-      public IItemView createView(IItem item) throws AnathemaException {
+      public ItemView createView(IItem item) throws AnathemaException {
         return new NullItemView();
       }
     };

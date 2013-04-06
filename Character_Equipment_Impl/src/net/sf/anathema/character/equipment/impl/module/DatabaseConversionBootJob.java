@@ -2,7 +2,7 @@ package net.sf.anathema.character.equipment.impl.module;
 
 import net.sf.anathema.ProxySplashscreen;
 import net.sf.anathema.framework.IApplicationModel;
-import net.sf.anathema.framework.message.MessageUtilities;
+import net.sf.anathema.framework.swing.MessageUtilities;
 import net.sf.anathema.initialization.BootJob;
 import net.sf.anathema.initialization.IBootJob;
 import net.sf.anathema.initialization.reflections.Weight;

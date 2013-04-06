@@ -10,9 +10,9 @@ import net.sf.anathema.character.model.ICharacter;
 import net.sf.anathema.character.presenter.magic.IContentPresenter;
 import net.sf.anathema.character.presenter.magic.MagicPresenter;
 import net.sf.anathema.character.view.BackgroundView;
+import net.sf.anathema.character.view.CharacterView;
 import net.sf.anathema.character.view.IAdvantageViewFactory;
 import net.sf.anathema.character.view.ICharacterDescriptionView;
-import net.sf.anathema.character.view.ICharacterView;
 import net.sf.anathema.character.view.IConceptAndRulesViewFactory;
 import net.sf.anathema.character.view.IGroupedFavorableTraitViewFactory;
 import net.sf.anathema.framework.IApplicationModel;
@@ -39,13 +39,13 @@ import static net.sf.anathema.lib.lang.ArrayUtilities.transform;
 public class CharacterPresenter implements Presenter, MultipleContentViewPresenter {
 
   private final ICharacter character;
-  private final ICharacterView characterView;
+  private final CharacterView characterView;
   private final IApplicationModel anathemaModel;
   private final Resources resources;
   private final PointPresentationStrategy pointPresentation;
   private MultipleContentView miscView;
 
-  public CharacterPresenter(ICharacter character, ICharacterView view, Resources resources, IApplicationModel anathemaModel,
+  public CharacterPresenter(ICharacter character, CharacterView view, Resources resources, IApplicationModel anathemaModel,
                             PointPresentationStrategy pointPresentation) {
     this.character = character;
     this.characterView = view;

@@ -1,21 +1,11 @@
 package net.sf.anathema.framework.presenter.action;
 
-import net.sf.anathema.lib.gui.action.SmartAction;
-import net.sf.anathema.lib.resources.Resources;
+import net.sf.anathema.interaction.Command;
 
-import javax.swing.Action;
-import java.awt.Component;
-
-public class AnathemaExitAction extends SmartAction {
+public class AnathemaExitAction implements Command {
 
   @Override
-  protected void execute(Component parentComponent) {
+  public void execute() {
     System.exit(0);
-  }
-
-  public static Action createMenuAction(Resources resources) {
-    SmartAction action = new AnathemaExitAction();
-    action.setName(resources.getString("AnathemaCore.Tools.Exit.Name"));
-    return action;
   }
 }

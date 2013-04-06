@@ -22,7 +22,6 @@ public class OneLineStatusBar implements StatusBar {
     button.setPreferredSize(new Dimension(25, 20));
   }
 
-  @Override
   public JComponent getComponent() {
     return panel;
   }

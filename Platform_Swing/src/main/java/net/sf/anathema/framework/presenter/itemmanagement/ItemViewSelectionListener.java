@@ -2,8 +2,8 @@ package net.sf.anathema.framework.presenter.itemmanagement;
 
 import net.sf.anathema.framework.presenter.IItemManagementModel;
 import net.sf.anathema.framework.presenter.IModelViewMapping;
-import net.sf.anathema.framework.view.IItemView;
 import net.sf.anathema.framework.view.IViewSelectionListener;
+import net.sf.anathema.framework.view.ItemView;
 
 public class ItemViewSelectionListener implements IViewSelectionListener {
 
@@ -16,7 +16,7 @@ public class ItemViewSelectionListener implements IViewSelectionListener {
   }
 
   @Override
-  public void viewSelectionChangedTo(IItemView view) {
+  public void viewSelectionChangedTo(ItemView view) {
     model.setSelectedItem(mapping.getModelByView(view));
   }
 }

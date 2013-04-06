@@ -1,13 +1,13 @@
 package net.sf.anathema.framework.presenter.itemmanagement;
 
 import net.sf.anathema.framework.IApplicationModel;
-import net.sf.anathema.framework.message.MessageUtilities;
 import net.sf.anathema.framework.persistence.IRepositoryItemPersister;
 import net.sf.anathema.framework.presenter.IItemManagementModelListener;
 import net.sf.anathema.framework.presenter.resources.PlatformUI;
 import net.sf.anathema.framework.repository.IItem;
 import net.sf.anathema.framework.repository.RepositoryException;
 import net.sf.anathema.framework.repository.access.IRepositoryWriteAccess;
+import net.sf.anathema.framework.swing.MessageUtilities;
 import net.sf.anathema.lib.control.IChangeListener;
 import net.sf.anathema.lib.gui.action.SmartAction;
 import net.sf.anathema.lib.message.Message;

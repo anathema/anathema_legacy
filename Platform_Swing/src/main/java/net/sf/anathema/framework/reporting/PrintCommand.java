@@ -1,7 +1,7 @@
 package net.sf.anathema.framework.reporting;
 
-import net.sf.anathema.framework.message.MessageUtilities;
 import net.sf.anathema.framework.repository.IItem;
+import net.sf.anathema.framework.swing.MessageUtilities;
 import net.sf.anathema.interaction.Command;
 import net.sf.anathema.lib.io.PathUtils;
 import net.sf.anathema.lib.message.Message;

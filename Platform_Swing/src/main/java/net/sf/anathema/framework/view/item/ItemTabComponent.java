@@ -1,6 +1,7 @@
 package net.sf.anathema.framework.view.item;
 
-import net.sf.anathema.framework.view.IItemView;
+import net.sf.anathema.framework.view.ItemView;
+import net.sf.anathema.framework.view.SwingItemView;
 import net.sf.anathema.lib.control.ObjectValueListener;
 import net.sf.anathema.lib.gui.icon.ImageProvider;
 import org.jdesktop.swingx.JXLabel;
@@ -24,18 +25,18 @@ import static javax.swing.SwingConstants.LEFT;
 public class ItemTabComponent {
 
   private JTabbedPane tabbedPane;
-  private Map<IItemView, ObjectValueListener<String>> nameListenersByView = new HashMap<>();
+  private Map<ItemView, ObjectValueListener<String>> nameListenersByView = new HashMap<>();
 
   public ItemTabComponent(JTabbedPane tabbedPane) {
     this.tabbedPane = tabbedPane;
   }
 
-  public void setNewComponentAt(IItemView view, Action closeAction, int currentIndex) {
+  public void setNewComponentAt(SwingItemView view, Action closeAction, int currentIndex) {
     tabbedPane.setTabComponentAt(currentIndex, createTabComponent(view, closeAction));
     initNameListening(view);
   }
 
-  private JComponent createTabComponent(IItemView view, Action closeAction) {
+  private JComponent createTabComponent(ItemView view, Action closeAction) {
     JPanel panel = new JPanel(new FlowLayout(CENTER, 0, 0));
     panel.setFocusable(false);
     panel.setOpaque(false);
@@ -54,7 +55,7 @@ public class ItemTabComponent {
     return button;
   }
 
-  private void initNameListening(final IItemView view) {
+  private void initNameListening(final SwingItemView view) {
     ObjectValueListener<String> listener = new ObjectValueListener<String>() {
       @Override
       public void valueChanged(String newValue) {
@@ -65,7 +66,7 @@ public class ItemTabComponent {
     view.addNameChangedListener(listener);
   }
 
-  private void setItemViewName(IItemView view, String name) {
+  private void setItemViewName(SwingItemView view, String name) {
     int index = tabbedPane.indexOfComponent(view.getComponent());
     JPanel tabComponent = (JPanel) tabbedPane.getTabComponentAt(index);
     JXLabel label = (JXLabel) tabComponent.getComponent(0);
@@ -73,11 +74,11 @@ public class ItemTabComponent {
     tabComponent.revalidate();
   }
 
-  public void dispose(IItemView view) {
+  public void dispose(ItemView view) {
     disposeNameListening(view);
   }
 
-  private void disposeNameListening(IItemView view) {
+  private void disposeNameListening(ItemView view) {
     ObjectValueListener<String> listener = nameListenersByView.get(view);
     nameListenersByView.remove(view);
     view.removeNameChangedListener(listener);

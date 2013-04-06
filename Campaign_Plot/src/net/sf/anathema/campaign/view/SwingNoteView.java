@@ -2,7 +2,7 @@ package net.sf.anathema.campaign.view;
 
 import net.sf.anathema.campaign.note.view.IBasicItemDescriptionView;
 import net.sf.anathema.campaign.note.view.NoteView;
-import net.sf.anathema.framework.styledtext.ITextEditorProperties;
+import net.sf.anathema.framework.swing.styledtext.ITextEditorProperties;
 import net.sf.anathema.framework.view.item.AbstractItemView;
 import net.sf.anathema.lib.file.RelativePath;
 

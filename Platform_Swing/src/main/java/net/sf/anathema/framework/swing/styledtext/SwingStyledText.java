@@ -1,7 +1,10 @@
-package net.sf.anathema.framework.styledtext.presentation;
+package net.sf.anathema.framework.swing.styledtext;
 
 import net.sf.anathema.framework.styledtext.model.IStyledTextChangeListener;
 import net.sf.anathema.framework.styledtext.model.ITextPart;
+import net.sf.anathema.framework.styledtext.presentation.StyledText;
+import net.sf.anathema.framework.styledtext.presentation.TextFormat;
+import net.sf.anathema.framework.styledtext.presentation.TextPart;
 import net.sf.anathema.lib.text.FontStyle;
 import org.jmock.example.announcer.Announcer;
 

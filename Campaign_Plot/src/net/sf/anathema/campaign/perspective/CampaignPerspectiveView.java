@@ -2,9 +2,9 @@ package net.sf.anathema.campaign.perspective;
 
 import net.sf.anathema.framework.perspective.PerspectiveToolBar;
 import net.sf.anathema.framework.perspective.ToolBar;
-import net.sf.anathema.framework.view.IItemView;
 import net.sf.anathema.framework.view.IItemViewManagement;
 import net.sf.anathema.framework.view.IViewSelectionListener;
+import net.sf.anathema.framework.view.SwingItemView;
 import net.sf.anathema.framework.view.ViewFactory;
 import net.sf.anathema.framework.view.item.IComponentItemViewManagement;
 import net.sf.anathema.framework.view.item.ItemViewManagement;
@@ -31,12 +31,12 @@ public class CampaignPerspectiveView implements ViewFactory, IItemViewManagement
   }
 
   @Override
-  public void addItemView(IItemView view, Action action) {
+  public void addItemView(SwingItemView view, Action action) {
     itemViewManagement.addItemView(view, action);
   }
 
   @Override
-  public void removeItemView(IItemView view) {
+  public void removeItemView(SwingItemView view) {
     itemViewManagement.removeItemView(view);
   }
 
@@ -46,7 +46,7 @@ public class CampaignPerspectiveView implements ViewFactory, IItemViewManagement
   }
 
   @Override
-  public void setSelectedItemView(IItemView view) {
+  public void setSelectedItemView(SwingItemView view) {
     itemViewManagement.setSelectedItemView(view);
   }
 

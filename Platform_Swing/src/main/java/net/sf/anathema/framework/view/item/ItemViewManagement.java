@@ -1,7 +1,8 @@
 package net.sf.anathema.framework.view.item;
 
-import net.sf.anathema.framework.view.IItemView;
 import net.sf.anathema.framework.view.IViewSelectionListener;
+import net.sf.anathema.framework.view.ItemView;
+import net.sf.anathema.framework.view.SwingItemView;
 import net.sf.anathema.lib.gui.icon.ImageProvider;
 import org.jmock.example.announcer.Announcer;
 
@@ -19,11 +20,11 @@ public class ItemViewManagement implements IComponentItemViewManagement {
 
   private JTabbedPane tabbedPane = new JTabbedPane(JTabbedPane.TOP);
   private ItemTabComponent itemTabComponent = new ItemTabComponent(tabbedPane);
-  private Map<Component, IItemView> itemViewsByComponent = new HashMap<>();
+  private Map<Component, ItemView> itemViewsByComponent = new HashMap<>();
   private Announcer<IViewSelectionListener> control = Announcer.to(IViewSelectionListener.class);
 
   @Override
-  public void addItemView(IItemView view, Action closeAction) {
+  public void addItemView(SwingItemView view, Action closeAction) {
     JComponent component = view.getComponent();
     itemViewsByComponent.put(component, view);
     Icon icon = new ImageProvider().getImageIcon(view.getIconPath());
@@ -44,7 +45,7 @@ public class ItemViewManagement implements IComponentItemViewManagement {
     return tabbedPane;
   }
 
-  private IItemView getSelectedItemView() {
+  private ItemView getSelectedItemView() {
     return itemViewsByComponent.get(tabbedPane.getSelectedComponent());
   }
 
@@ -53,17 +54,17 @@ public class ItemViewManagement implements IComponentItemViewManagement {
     control.addListener(listener);
   }
 
-  private void fireItemViewChanged(IItemView view) {
+  private void fireItemViewChanged(ItemView view) {
     control.announce().viewSelectionChangedTo(view);
   }
 
   @Override
-  public void setSelectedItemView(IItemView view) {
+  public void setSelectedItemView(SwingItemView view) {
     tabbedPane.setSelectedComponent(view.getComponent());
   }
 
   @Override
-  public void removeItemView(IItemView view) {
+  public void removeItemView(SwingItemView view) {
     Component component = view.getComponent();
     itemViewsByComponent.remove(component);
     tabbedPane.remove(component);
