@@ -17,10 +17,8 @@ import net.sf.anathema.initialization.reflections.ResourceLoader;
 import net.sf.anathema.lib.registry.IRegistry;
 import net.sf.anathema.lib.registry.Registry;
 import net.sf.anathema.lib.resources.Resources;
-import net.sf.anathema.lib.util.RandomUtilities;
 
 import java.io.File;
-import java.util.List;
 
 public class ApplicationModel implements IApplicationModel {
 
@@ -91,14 +89,5 @@ public class ApplicationModel implements IApplicationModel {
   @Override
   public ResourceLoader getResourceLoader() {
     return resourceLoader;
-  }
-
-  @Override
-  public String generateInformativeMessage() {
-    List<String> messages = informativeMessages.getAll();
-    if (messages.isEmpty()) {
-      return "";
-    }
-    return RandomUtilities.choose(messages);
   }
 }

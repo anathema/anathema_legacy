@@ -37,7 +37,7 @@ public final class MagicDescriptionItemTypeConfiguration extends AbstractItemTyp
   }
 
   @Override
-  protected IItemViewFactory createItemViewFactory(IApplicationModel anathemaModel, Resources resources) {
+  protected IItemViewFactory createItemViewFactory(IApplicationModel model, Resources resources) {
     return new IItemViewFactory() {
       @Override
       public IItemView createView(IItem item) throws AnathemaException {

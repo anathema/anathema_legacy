@@ -53,7 +53,7 @@ public class ExaltedCharacterItemTypeConfiguration extends AbstractPersistableIt
   }
 
   @Override
-  protected IItemViewFactory createItemViewFactory(final IApplicationModel anathemaModel, final Resources resources) {
+  protected IItemViewFactory createItemViewFactory(final IApplicationModel model, final Resources resources) {
     return new IItemViewFactory() {
       @Override
       public IItemView createView(IItem item) throws AnathemaException {
@@ -70,7 +70,7 @@ public class ExaltedCharacterItemTypeConfiguration extends AbstractPersistableIt
         IExperiencePointManagement experiencePointManagement = new ExperiencePointManagement(((ICharacter) item.getItemData()));
         PointPresentationStrategy pointPresentation =
                 choosePointPresentation(character, characterView, bonusPointManagement, experiencePointManagement, resources);
-        new CharacterPresenter((ICharacter) item.getItemData(), characterView, resources, anathemaModel, pointPresentation).initPresentation();
+        new CharacterPresenter((ICharacter) item.getItemData(), characterView, resources, model, pointPresentation).initPresentation();
         item.getItemData().setClean();
         return characterView;
       }

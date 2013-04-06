@@ -15,9 +15,9 @@ public abstract class AbstractItemTypeConfiguration implements IItemTypeConfigur
   }
 
   @Override
-  public final void registerViewFactory(IApplicationModel anathemaModel, Resources resources) {
-    IRegistry<IItemType, IItemViewFactory> viewFactoryRegistry = anathemaModel.getViewFactoryRegistry();
-    viewFactoryRegistry.register(type, createItemViewFactory(anathemaModel, resources));
+  public final void registerViewFactory(IApplicationModel model, Resources resources) {
+    IRegistry<IItemType, IItemViewFactory> viewFactoryRegistry = model.getViewFactoryRegistry();
+    viewFactoryRegistry.register(type, createItemViewFactory(model, resources));
   }
 
   @Override
@@ -25,5 +25,5 @@ public abstract class AbstractItemTypeConfiguration implements IItemTypeConfigur
     return type;
   }
 
-  protected abstract IItemViewFactory createItemViewFactory(IApplicationModel anathemaModel, Resources resources);
+  protected abstract IItemViewFactory createItemViewFactory(IApplicationModel model, Resources resources);
 }

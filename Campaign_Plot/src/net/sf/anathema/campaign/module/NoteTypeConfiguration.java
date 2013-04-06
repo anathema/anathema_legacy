@@ -41,7 +41,7 @@ public class NoteTypeConfiguration extends AbstractPersistableItemTypeConfigurat
   }
 
   @Override
-  protected IItemViewFactory createItemViewFactory(IApplicationModel anathemaModel, final Resources resources) {
+  protected IItemViewFactory createItemViewFactory(IApplicationModel model, final Resources resources) {
     return new IItemViewFactory() {
       @Override
       public IItemView createView(IItem item) throws AnathemaException {
