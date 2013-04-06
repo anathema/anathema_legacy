@@ -1,10 +1,9 @@
 package net.sf.anathema.platform.tree.view.container;
 
 import net.sf.anathema.platform.tree.presenter.view.NodeProperties;
+import net.sf.anathema.platform.tree.util.RGBColor;
 import net.sf.anathema.platform.tree.view.PolygonPanel;
 import net.sf.anathema.platform.tree.view.interaction.SpecialControl;
-
-import java.awt.Color;
 
 public class ProxyCascade implements Cascade {
   private Cascade delegate = new NullCascade();
@@ -14,7 +13,7 @@ public class ProxyCascade implements Cascade {
   }
 
   @Override
-  public void colorNode(String nodeId, Color fillColor) {
+  public void colorNode(String nodeId, RGBColor fillColor) {
     delegate.colorNode(nodeId, fillColor);
   }
 

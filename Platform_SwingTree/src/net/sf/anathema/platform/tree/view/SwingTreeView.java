@@ -8,6 +8,7 @@ import net.sf.anathema.platform.tree.presenter.view.NodeInteractionListener;
 import net.sf.anathema.platform.tree.presenter.view.NodeProperties;
 import net.sf.anathema.platform.tree.presenter.view.SpecialControl;
 import net.sf.anathema.platform.tree.presenter.view.ToolTipProperties;
+import net.sf.anathema.platform.tree.util.RGBColor;
 import net.sf.anathema.platform.tree.view.container.Cascade;
 import net.sf.anathema.platform.tree.view.container.ProxyCascade;
 import net.sf.anathema.platform.tree.view.interaction.ButtonSpecialControl;
@@ -17,7 +18,8 @@ import net.sf.anathema.platform.tree.view.interaction.ToolTipListener;
 import org.jmock.example.announcer.Announcer;
 
 import javax.swing.JComponent;
-import java.awt.Color;
+
+import static net.sf.anathema.lib.gui.swing.ColorUtilities.toAwtColor;
 
 public class SwingTreeView implements ITreeView<Cascade> {
 
@@ -42,7 +44,7 @@ public class SwingTreeView implements ITreeView<Cascade> {
   }
 
   @Override
-  public void setNodeBackgroundColor(String nodeId, Color color) {
+  public void setNodeBackgroundColor(String nodeId, RGBColor color) {
     cascade.colorNode(nodeId, color);
     polygonPanel.repaint();
   }
@@ -59,8 +61,8 @@ public class SwingTreeView implements ITreeView<Cascade> {
   }
 
   @Override
-  public void setCanvasBackground(Color color) {
-    polygonPanel.setBackground(color);
+  public void setCanvasBackground(RGBColor color) {
+    polygonPanel.setBackground(toAwtColor(color));
   }
 
   @Override

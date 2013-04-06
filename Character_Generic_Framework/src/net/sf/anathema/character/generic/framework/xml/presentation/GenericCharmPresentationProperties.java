@@ -3,13 +3,12 @@ package net.sf.anathema.character.generic.framework.xml.presentation;
 import net.sf.anathema.lib.lang.clone.ReflectionCloneableObject;
 import net.sf.anathema.platform.tree.document.visualizer.ITreePresentationProperties;
 import net.sf.anathema.platform.tree.util.Area;
-
-import java.awt.Color;
+import net.sf.anathema.platform.tree.util.RGBColor;
 
 public class GenericCharmPresentationProperties extends ReflectionCloneableObject<GenericCharmPresentationProperties> implements
         ITreePresentationProperties {
 
-  private Color color = Color.WHITE;
+  private RGBColor color = RGBColor.White;
 
   @Override
   public Area getNodeDimension() {
@@ -22,7 +21,7 @@ public class GenericCharmPresentationProperties extends ReflectionCloneableObjec
   }
 
   @Override
-  public Color getColor() {
+  public RGBColor getColor() {
     return color;
   }
 
@@ -31,7 +30,7 @@ public class GenericCharmPresentationProperties extends ReflectionCloneableObjec
     return new Area(getGapDimension().width, getNodeDimension().height);
   }
 
-  public void setColor(Color color) {
+  public void setColor(RGBColor color) {
     this.color = color;
   }
 }

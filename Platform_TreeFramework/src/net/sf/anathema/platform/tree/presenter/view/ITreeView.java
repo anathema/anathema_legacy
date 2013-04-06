@@ -1,17 +1,17 @@
 package net.sf.anathema.platform.tree.presenter.view;
 
-import java.awt.Color;
+import net.sf.anathema.platform.tree.util.RGBColor;
 
 public interface ITreeView<G> {
   void addNodeInteractionListener(NodeInteractionListener listener);
 
-  void setNodeBackgroundColor(String nodeId, Color color);
+  void setNodeBackgroundColor(String nodeId, RGBColor color);
 
   void setNodeAlpha(String nodeId, int alpha);
 
   void addCascadeLoadedListener(CascadeLoadedListener listener);
 
-  void setCanvasBackground(Color color);
+  void setCanvasBackground(RGBColor color);
 
   void loadCascade(G cascade, boolean resetView) throws CascadeLoadException;
 

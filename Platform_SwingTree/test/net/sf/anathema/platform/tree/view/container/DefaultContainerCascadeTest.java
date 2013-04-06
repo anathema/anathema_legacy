@@ -1,6 +1,7 @@
 package net.sf.anathema.platform.tree.view.container;
 
 import net.sf.anathema.platform.tree.presenter.view.NodeProperties;
+import net.sf.anathema.platform.tree.util.RGBColor;
 import net.sf.anathema.platform.tree.view.PolygonPanel;
 import net.sf.anathema.platform.tree.view.draw.FilledPolygon;
 import net.sf.anathema.platform.tree.view.draw.FlexibleArrow;
@@ -66,13 +67,13 @@ public class DefaultContainerCascadeTest {
 
   @Test
   public void fillsNodeWithId() throws Exception {
-    container.colorNode("X", Color.BLUE);
+    container.colorNode("X", RGBColor.Blue);
     verify(polygon1).fill(Color.BLUE);
   }
 
   @Test
   public void doesNotFillNodeWithDifferentId() throws Exception {
-    container.colorNode("Y", Color.BLUE);
+    container.colorNode("Y", RGBColor.Blue);
     verify(polygon1, never()).fill(Matchers.any(Color.class));
   }
 

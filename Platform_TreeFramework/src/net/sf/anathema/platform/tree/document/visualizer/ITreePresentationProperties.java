@@ -1,8 +1,7 @@
 package net.sf.anathema.platform.tree.document.visualizer;
 
 import net.sf.anathema.platform.tree.util.Area;
-
-import java.awt.Color;
+import net.sf.anathema.platform.tree.util.RGBColor;
 
 public interface ITreePresentationProperties {
 
@@ -12,5 +11,5 @@ public interface ITreePresentationProperties {
 
   Area getVerticalLineDimension();
 
-  Color getColor();
+  RGBColor getColor();
 }

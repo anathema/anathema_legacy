@@ -4,9 +4,8 @@ import net.sf.anathema.character.generic.framework.xml.core.AbstractXmlTemplateP
 import net.sf.anathema.character.generic.framework.xml.registry.IXmlTemplateRegistry;
 import net.sf.anathema.lib.exception.PersistenceException;
 import net.sf.anathema.lib.xml.ElementUtilities;
+import net.sf.anathema.platform.tree.util.RGBColor;
 import org.dom4j.Element;
-
-import java.awt.Color;
 
 public class PresentationPropertiesParser extends AbstractXmlTemplateParser<GenericPresentationTemplate> {
 
@@ -36,7 +35,7 @@ public class PresentationPropertiesParser extends AbstractXmlTemplateParser<Gene
     int red = ElementUtilities.getRequiredIntAttrib(colorElement, "red");
     int green = ElementUtilities.getRequiredIntAttrib(colorElement, "green");
     int blue = ElementUtilities.getRequiredIntAttrib(colorElement, "blue");
-    Color color = new Color(red, green, blue);
+    RGBColor color = new RGBColor(red, green, blue);
     basicTemplate.getCharmPresentationProperties().setColor(color);
   }
 }

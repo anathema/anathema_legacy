@@ -2,17 +2,17 @@ package net.sf.anathema.platform.tree.view.container;
 
 import com.google.common.collect.Lists;
 import net.sf.anathema.platform.tree.presenter.view.NodeProperties;
+import net.sf.anathema.platform.tree.util.RGBColor;
 import net.sf.anathema.platform.tree.view.PolygonPanel;
 import net.sf.anathema.platform.tree.view.interaction.SpecialControl;
 
-import java.awt.Color;
 import java.util.List;
 
 public class AggregatedCascade implements Cascade {
   private final List<ContainerCascade> cascades = Lists.newArrayList();
 
   @Override
-  public void colorNode(String nodeId, Color fillColor) {
+  public void colorNode(String nodeId, RGBColor fillColor) {
     for (ContainerCascade cascade : cascades) {
       if (cascade.hasNode(nodeId)) {
         cascade.colorNode(nodeId, fillColor);

@@ -1,11 +1,10 @@
 package net.sf.anathema.platform.tree.view.container;
 
 import net.sf.anathema.platform.tree.presenter.view.NodeProperties;
+import net.sf.anathema.platform.tree.util.RGBColor;
 import net.sf.anathema.platform.tree.view.PolygonPanel;
 import org.junit.Before;
 import org.junit.Test;
-
-import java.awt.Color;
 
 import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.never;
@@ -46,14 +45,14 @@ public class AggregatedCascadeTest {
   @Test
   public void forwardsColoringToContainer() throws Exception {
     when(child.hasNode("X")).thenReturn(true);
-    cascade.colorNode("X", Color.PINK);
-    verify(child).colorNode("X", Color.PINK);
+    cascade.colorNode("X", RGBColor.Pink);
+    verify(child).colorNode("X", RGBColor.Pink);
   }
 
   @Test
   public void doesNotForwardColoringToDifferentChild() throws Exception {
-    cascade.colorNode("X", Color.PINK);
-    verify(child, never()).colorNode("X", Color.PINK);
+    cascade.colorNode("X", RGBColor.Pink);
+    verify(child, never()).colorNode("X", RGBColor.Pink);
   }
 
   @Test

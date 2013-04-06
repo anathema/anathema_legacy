@@ -1,13 +1,12 @@
 package net.sf.anathema.platform.tree.view.container;
 
 import net.sf.anathema.platform.tree.presenter.view.NodeProperties;
+import net.sf.anathema.platform.tree.util.RGBColor;
 import net.sf.anathema.platform.tree.view.PolygonPanel;
 import net.sf.anathema.platform.tree.view.interaction.SpecialControl;
 
-import java.awt.Color;
-
 public interface Cascade {
-  void colorNode(String nodeId, Color fillColor);
+  void colorNode(String nodeId, RGBColor fillColor);
 
   void setNodeAlpha(String nodeId, int alpha);
 

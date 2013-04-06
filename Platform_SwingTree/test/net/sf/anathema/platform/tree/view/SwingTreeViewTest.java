@@ -3,6 +3,7 @@ package net.sf.anathema.platform.tree.view;
 import net.sf.anathema.platform.tree.presenter.view.CascadeLoadedListener;
 import net.sf.anathema.platform.tree.presenter.view.NodeProperties;
 import net.sf.anathema.platform.tree.presenter.view.ToolTipProperties;
+import net.sf.anathema.platform.tree.util.RGBColor;
 import net.sf.anathema.platform.tree.view.container.Cascade;
 import net.sf.anathema.platform.tree.view.interaction.LeftClickPanner;
 import net.sf.anathema.platform.tree.view.interaction.ToolTipListener;
@@ -40,22 +41,22 @@ public class SwingTreeViewTest {
   @Test
   public void setsBackgroundColorOnCorrespondingNode() throws Exception {
     swingTreeView.loadCascade(cascade, true);
-    swingTreeView.setNodeBackgroundColor("ID", Color.WHITE);
-    verify(cascade).colorNode("ID", Color.WHITE);
+    swingTreeView.setNodeBackgroundColor("ID", RGBColor.White);
+    verify(cascade).colorNode("ID", RGBColor.White);
   }
 
   @Test
   public void triggersRepaintAfterColoring() throws Exception {
     swingTreeView.loadCascade(cascade, true);
-    swingTreeView.setNodeBackgroundColor("ID", Color.WHITE);
+    swingTreeView.setNodeBackgroundColor("ID", RGBColor.White);
     InOrder inOrder = inOrder(cascade, panel);
-    inOrder.verify(cascade).colorNode(anyString(), Matchers.any(Color.class));
+    inOrder.verify(cascade).colorNode(anyString(), Matchers.any(RGBColor.class));
     inOrder.verify(panel).repaint();
   }
 
   @Test
   public void setsBackgroundFillOnPolygonPanel() throws Exception {
-    swingTreeView.setCanvasBackground(Color.RED);
+    swingTreeView.setCanvasBackground(RGBColor.Red);
     verify(panel).setBackground(Color.RED);
   }
 

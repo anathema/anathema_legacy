@@ -7,6 +7,7 @@ import net.sf.anathema.charmtree.AbstractCascadeSelectionView;
 import net.sf.anathema.lib.gui.IView;
 import net.sf.anathema.platform.tree.presenter.view.NodeProperties;
 import net.sf.anathema.platform.tree.presenter.view.ToolTipProperties;
+import net.sf.anathema.platform.tree.util.RGBColor;
 
 import javax.swing.JComponent;
 import javax.swing.JPanel;
@@ -35,12 +36,12 @@ public class CascadeView extends AbstractCascadeSelectionView implements ICascad
   }
 
   @Override
-  public void setCharmVisuals(String id, Color color) {
+  public void setCharmVisuals(String id, RGBColor color) {
     getCharmTreeView().setNodeBackgroundColor(id, color);
   }
 
   @Override
-  public void setBackgroundColor(Color color) {
+  public void setBackgroundColor(RGBColor color) {
     getCharmTreeView().setCanvasBackground(color);
   }
 

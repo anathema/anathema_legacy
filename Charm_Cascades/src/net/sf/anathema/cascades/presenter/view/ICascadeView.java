@@ -1,14 +1,13 @@
 package net.sf.anathema.cascades.presenter.view;
 
 import net.sf.anathema.charmtree.presenter.view.ICascadeSelectionView;
-
-import java.awt.Color;
+import net.sf.anathema.platform.tree.util.RGBColor;
 
 public interface ICascadeView extends ICascadeSelectionView {
 
-  void setCharmVisuals(String id, Color color);
+  void setCharmVisuals(String id, RGBColor color);
 
-  void setBackgroundColor(Color color);
+  void setBackgroundColor(RGBColor color);
 
   void unselect();
 }

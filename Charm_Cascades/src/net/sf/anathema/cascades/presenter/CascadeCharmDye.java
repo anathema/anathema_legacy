@@ -5,8 +5,7 @@ import net.sf.anathema.character.generic.magic.ICharm;
 import net.sf.anathema.character.generic.magic.charms.IndirectCharmRequirement;
 import net.sf.anathema.charmtree.presenter.AbstractCharmDye;
 import net.sf.anathema.charmtree.presenter.view.CharmGroupInformer;
-
-import static java.awt.Color.WHITE;
+import net.sf.anathema.platform.tree.util.RGBColor;
 
 public class CascadeCharmDye extends AbstractCharmDye {
 
@@ -19,11 +18,11 @@ public class CascadeCharmDye extends AbstractCharmDye {
 
   @Override
   public void colorCharm(ICharm charm) {
-    view.setCharmVisuals(charm.getId(), WHITE);
+    view.setCharmVisuals(charm.getId(), RGBColor.White);
   }
 
   @Override
   protected void setPrerequisiteVisuals(IndirectCharmRequirement requirement) {
-    view.setCharmVisuals(requirement.getStringRepresentation(), WHITE);
+    view.setCharmVisuals(requirement.getStringRepresentation(), RGBColor.White);
   }
 }

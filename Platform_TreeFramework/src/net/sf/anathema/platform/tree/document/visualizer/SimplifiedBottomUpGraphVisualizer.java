@@ -5,8 +5,8 @@ import net.sf.anathema.graph.nodes.ISimpleNode;
 import net.sf.anathema.platform.tree.document.components.ILayer;
 import net.sf.anathema.platform.tree.document.util.BackwardsIterable;
 import net.sf.anathema.platform.tree.util.Area;
+import net.sf.anathema.platform.tree.util.RGBColor;
 
-import java.awt.Color;
 import java.util.Arrays;
 import java.util.LinkedHashSet;
 import java.util.Set;
@@ -95,7 +95,7 @@ public class SimplifiedBottomUpGraphVisualizer extends AbstractCascadeVisualizer
     }
 
     @Override
-    public Color getColor() {
+    public RGBColor getColor() {
       return properties.getColor();
     }
   }

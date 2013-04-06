@@ -12,10 +12,10 @@ import net.sf.anathema.platform.tree.presenter.view.ISpecialNodeView;
 import net.sf.anathema.platform.tree.presenter.view.NodeInteractionListener;
 import net.sf.anathema.platform.tree.presenter.view.NodeProperties;
 import net.sf.anathema.platform.tree.presenter.view.ToolTipProperties;
+import net.sf.anathema.platform.tree.util.RGBColor;
 
 import javax.swing.JComponent;
 import javax.swing.JPanel;
-import java.awt.Color;
 
 public class CharmView extends AbstractCascadeSelectionView implements ICharmView {
   private final JPanel content = new JPanel(new MigLayout(new LC().wrapAfter(1).fill()));
@@ -38,7 +38,7 @@ public class CharmView extends AbstractCascadeSelectionView implements ICharmVie
   }
 
   @Override
-  public void setCharmVisuals(String charmId, Color fillColor, int opacity) {
+  public void setCharmVisuals(String charmId, RGBColor fillColor, int opacity) {
     getCharmTreeView().setNodeBackgroundColor(charmId, fillColor);
     getCharmTreeView().setNodeAlpha(charmId, opacity);
   }
