@@ -8,12 +8,12 @@ import net.sf.anathema.lib.resources.Resources;
 
 import javax.swing.JOptionPane;
 
-public class CentralExceptionHandler implements IExceptionHandler {
+public class SwingDialogExceptionHandler implements IExceptionHandler {
 
-  private static final Logger logger = Logger.getLogger(CentralExceptionHandler.class);
+  private static final Logger logger = Logger.getLogger(SwingDialogExceptionHandler.class);
   private final Resources resources;
 
-  public CentralExceptionHandler(Resources resources) {
+  public SwingDialogExceptionHandler(Resources resources) {
     this.resources = resources;
 
   }
