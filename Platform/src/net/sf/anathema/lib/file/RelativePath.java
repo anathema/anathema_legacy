@@ -20,4 +20,9 @@ public class RelativePath {
   public int hashCode() {
     return relativePath.hashCode();
   }
+
+  @Override
+  public String toString() {
+    return relativePath;
+  }
 }

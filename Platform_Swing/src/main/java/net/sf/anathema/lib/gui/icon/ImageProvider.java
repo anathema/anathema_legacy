@@ -24,7 +24,7 @@ public class ImageProvider {
   private InputStream getInputStream(RelativePath relativePath) {
     InputStream inputStream = Thread.currentThread().getContextClassLoader().getResourceAsStream(relativePath.relativePath);
     if (inputStream == null) {
-      throw new ImageLoadingException("Cannot find image resource: " + relativePath);
+      throw new ImageLoadingException("Cannot find image resource at " + relativePath);
     }
     return inputStream;
   }
