@@ -16,16 +16,16 @@ public class MigLayoutAndWebViewDoNotGetAlongDemo extends Application {
 
   @Override
   public void start(Stage stage) throws Exception {
-    WebView content = new WebView();
     MigPane pane = new MigPane();
-    TextField node = new TextField("London!");
+    TextField node = new TextField("The bug is fixed if you can read this text.");
     pane.add(node, new CC().wrap());
+    WebView content = new WebView();
     pane.add(content);
     Scene scene = new Scene(pane);
-    content.getEngine().loadContent("Hullo!");
+    content.getEngine().loadContent("There should be a line of text on top of this one.");
     stage.setScene(scene);
-    stage.setWidth(800);
-    stage.setHeight(600);
+    stage.setWidth(400);
+    stage.setHeight(100);
     stage.show();
   }
 }
