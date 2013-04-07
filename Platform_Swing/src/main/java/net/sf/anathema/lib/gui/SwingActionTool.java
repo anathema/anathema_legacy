@@ -8,6 +8,7 @@ import net.sf.anathema.lib.gui.action.SmartAction;
 import net.sf.anathema.lib.gui.icon.ImageProvider;
 
 import javax.swing.Action;
+import javax.swing.ImageIcon;
 import java.awt.Component;
 
 public class SwingActionTool implements Tool {
@@ -22,7 +23,8 @@ public class SwingActionTool implements Tool {
 
   @Override
   public void setIcon(RelativePath relativePath) {
-    action.setIcon(new ImageProvider().getImageIcon(relativePath));
+    ImageIcon icon = new ImageProvider().getImageIcon(relativePath);
+    action.setIcon(icon);
   }
 
   @Override
