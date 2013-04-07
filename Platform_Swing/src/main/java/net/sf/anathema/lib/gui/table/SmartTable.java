@@ -3,7 +3,7 @@ package net.sf.anathema.lib.gui.table;
 import com.google.common.base.Preconditions;
 import net.miginfocom.layout.CC;
 import net.miginfocom.swing.MigLayout;
-import net.sf.anathema.lib.gui.IView;
+import net.sf.anathema.framework.swing.IView;
 import net.sf.anathema.lib.gui.table.columsettings.ITableColumnViewSettings;
 import org.jmock.example.announcer.Announcer;
 

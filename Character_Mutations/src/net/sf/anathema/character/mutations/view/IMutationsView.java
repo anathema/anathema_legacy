@@ -2,7 +2,7 @@ package net.sf.anathema.character.mutations.view;
 
 import net.sf.anathema.character.generic.framework.magic.view.IMagicLearnView;
 import net.sf.anathema.character.library.overview.IOverviewCategory;
-import net.sf.anathema.lib.gui.IView;
+import net.sf.anathema.framework.swing.IView;
 
 public interface IMutationsView extends IView {
 

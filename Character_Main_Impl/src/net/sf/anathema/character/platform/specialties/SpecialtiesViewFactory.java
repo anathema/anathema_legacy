@@ -7,7 +7,7 @@ import net.sf.anathema.character.library.intvalue.IntValueDisplayFactoryPrototyp
 import net.sf.anathema.character.library.trait.specialties.ISpecialtiesConfiguration;
 import net.sf.anathema.character.presenter.specialty.ISpecialtiesAdditionalModel;
 import net.sf.anathema.character.presenter.specialty.SpecialtiesConfigurationPresenter;
-import net.sf.anathema.lib.gui.IView;
+import net.sf.anathema.framework.swing.IView;
 import net.sf.anathema.lib.resources.Resources;
 
 public class SpecialtiesViewFactory implements IAdditionalViewFactory {

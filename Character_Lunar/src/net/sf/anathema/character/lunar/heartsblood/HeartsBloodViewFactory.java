@@ -6,7 +6,7 @@ import net.sf.anathema.character.generic.type.ICharacterType;
 import net.sf.anathema.character.lunar.heartsblood.presenter.HeartsBloodPresenter;
 import net.sf.anathema.character.lunar.heartsblood.presenter.IHeartsBloodModel;
 import net.sf.anathema.character.lunar.heartsblood.view.HeartsBloodView;
-import net.sf.anathema.lib.gui.IView;
+import net.sf.anathema.framework.swing.IView;
 import net.sf.anathema.lib.resources.Resources;
 
 public class HeartsBloodViewFactory implements IAdditionalViewFactory {

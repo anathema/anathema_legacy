@@ -7,7 +7,7 @@ import net.sf.anathema.character.ghost.passions.model.IGhostPassionsModel;
 import net.sf.anathema.character.ghost.passions.presenter.GhostPassionsPresenter;
 import net.sf.anathema.character.ghost.passions.view.GhostPassionsConfigurationView;
 import net.sf.anathema.character.library.intvalue.IntValueDisplayFactoryPrototype;
-import net.sf.anathema.lib.gui.IView;
+import net.sf.anathema.framework.swing.IView;
 import net.sf.anathema.lib.resources.Resources;
 
 public class GhostPassionsViewFactory implements IAdditionalViewFactory {

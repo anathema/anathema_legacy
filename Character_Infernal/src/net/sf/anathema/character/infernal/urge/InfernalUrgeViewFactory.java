@@ -7,7 +7,7 @@ import net.sf.anathema.character.infernal.urge.model.IInfernalUrgeModel;
 import net.sf.anathema.character.infernal.urge.presenter.InfernalUrgePresenter;
 import net.sf.anathema.character.infernal.urge.view.InfernalUrgeView;
 import net.sf.anathema.character.library.intvalue.IntValueDisplayFactoryPrototype;
-import net.sf.anathema.lib.gui.IView;
+import net.sf.anathema.framework.swing.IView;
 import net.sf.anathema.lib.resources.Resources;
 
 public class InfernalUrgeViewFactory implements IAdditionalViewFactory {

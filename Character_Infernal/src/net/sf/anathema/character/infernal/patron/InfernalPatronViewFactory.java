@@ -6,7 +6,7 @@ import net.sf.anathema.character.generic.type.ICharacterType;
 import net.sf.anathema.character.infernal.patron.presenter.IInfernalPatronModel;
 import net.sf.anathema.character.infernal.patron.presenter.InfernalPatronPresenter;
 import net.sf.anathema.character.infernal.patron.view.InfernalPatronView;
-import net.sf.anathema.lib.gui.IView;
+import net.sf.anathema.framework.swing.IView;
 import net.sf.anathema.lib.resources.Resources;
 
 public class InfernalPatronViewFactory implements IAdditionalViewFactory {

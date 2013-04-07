@@ -11,7 +11,7 @@ import net.sf.anathema.character.library.trait.IModifiableCapTrait;
 import net.sf.anathema.character.linguistics.presenter.ILinguisticsView;
 import net.sf.anathema.framework.presenter.view.IButtonControlledObjectSelectionView;
 import net.sf.anathema.framework.presenter.view.ITextFieldComboBoxEditor;
-import net.sf.anathema.lib.gui.IView;
+import net.sf.anathema.framework.swing.IView;
 
 import javax.swing.Icon;
 import javax.swing.JComponent;

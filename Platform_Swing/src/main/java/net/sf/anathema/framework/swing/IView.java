@@ -1,4 +1,4 @@
-package net.sf.anathema.lib.gui;
+package net.sf.anathema.framework.swing;
 
 import javax.swing.JComponent;
 

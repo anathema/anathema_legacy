@@ -6,7 +6,7 @@ import net.miginfocom.swing.MigLayout;
 import net.sf.anathema.character.library.overview.IOverviewCategory;
 import net.sf.anathema.character.library.overview.OverviewCategory;
 import net.sf.anathema.framework.value.IntegerViewFactory;
-import net.sf.anathema.lib.gui.IView;
+import net.sf.anathema.framework.swing.IView;
 
 import javax.swing.Icon;
 import javax.swing.JComponent;

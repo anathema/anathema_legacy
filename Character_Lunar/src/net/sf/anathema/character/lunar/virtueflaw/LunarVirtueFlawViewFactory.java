@@ -13,7 +13,7 @@ import net.sf.anathema.character.library.virtueflaw.view.DescriptiveVirtueFlawVi
 import net.sf.anathema.character.library.virtueflaw.view.VirtueFlawView;
 import net.sf.anathema.character.lunar.virtueflaw.presenter.ComplexLunarVirtueFlawPresenter;
 import net.sf.anathema.framework.value.IntegerViewFactory;
-import net.sf.anathema.lib.gui.IView;
+import net.sf.anathema.framework.swing.IView;
 import net.sf.anathema.lib.resources.Resources;
 
 public class LunarVirtueFlawViewFactory implements IAdditionalViewFactory {

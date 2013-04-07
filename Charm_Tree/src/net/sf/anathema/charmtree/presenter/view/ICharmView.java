@@ -1,6 +1,6 @@
 package net.sf.anathema.charmtree.presenter.view;
 
-import net.sf.anathema.lib.gui.IView;
+import net.sf.anathema.framework.swing.IView;
 import net.sf.anathema.platform.tree.presenter.view.NodeInteractionListener;
 import net.sf.anathema.platform.tree.util.RGBColor;
 

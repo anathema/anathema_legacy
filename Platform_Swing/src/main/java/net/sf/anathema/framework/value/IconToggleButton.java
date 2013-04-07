@@ -1,6 +1,6 @@
 package net.sf.anathema.framework.value;
 
-import net.sf.anathema.lib.gui.IView;
+import net.sf.anathema.framework.swing.IView;
 
 import javax.swing.Icon;
 import javax.swing.JButton;

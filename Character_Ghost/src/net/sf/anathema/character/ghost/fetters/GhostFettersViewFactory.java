@@ -7,7 +7,7 @@ import net.sf.anathema.character.ghost.fetters.model.IGhostFettersModel;
 import net.sf.anathema.character.ghost.fetters.presenter.GhostFettersPresenter;
 import net.sf.anathema.character.ghost.fetters.view.GhostFettersConfigurationView;
 import net.sf.anathema.character.library.intvalue.IntValueDisplayFactoryPrototype;
-import net.sf.anathema.lib.gui.IView;
+import net.sf.anathema.framework.swing.IView;
 import net.sf.anathema.lib.resources.Resources;
 
 public class GhostFettersViewFactory implements IAdditionalViewFactory {

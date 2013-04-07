@@ -1,7 +1,7 @@
 package net.sf.anathema.character.platform.module;
 
 import net.miginfocom.swing.MigLayout;
-import net.sf.anathema.lib.gui.IView;
+import net.sf.anathema.framework.swing.IView;
 import net.sf.anathema.lib.gui.toolbar.ToolBarUtilities;
 
 import javax.swing.Action;

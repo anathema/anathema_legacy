@@ -7,7 +7,7 @@ import net.sf.anathema.character.library.intvalue.IntValueDisplayFactoryPrototyp
 import net.sf.anathema.character.library.virtueflaw.presenter.IVirtueFlawModel;
 import net.sf.anathema.character.library.virtueflaw.presenter.IVirtueFlawView;
 import net.sf.anathema.character.library.virtueflaw.view.VirtueFlawView;
-import net.sf.anathema.lib.gui.IView;
+import net.sf.anathema.framework.swing.IView;
 import net.sf.anathema.lib.resources.Resources;
 
 public class DbVirtueFlawViewFactory implements IAdditionalViewFactory {

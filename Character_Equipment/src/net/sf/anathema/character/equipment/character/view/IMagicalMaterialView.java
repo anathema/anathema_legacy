@@ -1,7 +1,7 @@
 package net.sf.anathema.character.equipment.character.view;
 
 import net.sf.anathema.character.equipment.MagicalMaterial;
-import net.sf.anathema.lib.gui.IView;
+import net.sf.anathema.framework.swing.IView;
 
 import javax.swing.ListCellRenderer;
 

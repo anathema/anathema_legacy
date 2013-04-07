@@ -1,6 +1,6 @@
 package net.sf.anathema.character.equipment.character.view;
 
-import net.sf.anathema.lib.gui.IView;
+import net.sf.anathema.framework.swing.IView;
 import net.sf.anathema.lib.gui.selection.IListObjectSelectionView;
 
 import javax.swing.Action;

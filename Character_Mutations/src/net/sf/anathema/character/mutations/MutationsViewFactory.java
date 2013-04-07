@@ -7,7 +7,7 @@ import net.sf.anathema.character.mutations.model.MutationsAdditionalModel;
 import net.sf.anathema.character.mutations.presenter.MutationsPresenter;
 import net.sf.anathema.character.mutations.view.IMutationsView;
 import net.sf.anathema.character.mutations.view.MutationsView;
-import net.sf.anathema.lib.gui.IView;
+import net.sf.anathema.framework.swing.IView;
 import net.sf.anathema.lib.resources.Resources;
 
 public class MutationsViewFactory implements IAdditionalViewFactory {

@@ -3,7 +3,7 @@ package net.sf.anathema.lib.gui.widgets;
 import net.sf.anathema.lib.control.IIntValueChangedListener;
 import net.sf.anathema.lib.data.IOverline;
 import net.sf.anathema.lib.data.Range;
-import net.sf.anathema.lib.gui.IView;
+import net.sf.anathema.framework.swing.IView;
 
 import javax.swing.JComponent;
 import javax.swing.JSpinner;

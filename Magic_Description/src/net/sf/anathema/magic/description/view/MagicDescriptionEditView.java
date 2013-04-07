@@ -1,7 +1,7 @@
 package net.sf.anathema.magic.description.view;
 
 import net.sf.anathema.lib.control.ObjectValueListener;
-import net.sf.anathema.lib.gui.IView;
+import net.sf.anathema.framework.swing.IView;
 import net.sf.anathema.lib.workflow.textualdescription.view.AreaTextView;
 import net.sf.anathema.lib.workflow.textualdescription.view.TextView;
 

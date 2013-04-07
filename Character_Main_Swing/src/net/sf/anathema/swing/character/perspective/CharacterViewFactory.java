@@ -5,7 +5,7 @@ import net.sf.anathema.framework.item.IItemType;
 import net.sf.anathema.framework.presenter.ItemViewFactory;
 import net.sf.anathema.framework.presenter.SwingItemViewFactory;
 import net.sf.anathema.framework.repository.IItem;
-import net.sf.anathema.lib.gui.IView;
+import net.sf.anathema.framework.swing.IView;
 import net.sf.anathema.lib.registry.IRegistry;
 
 import static net.sf.anathema.character.itemtype.CharacterItemTypeRetrieval.retrieveCharacterItemType;

@@ -1,6 +1,6 @@
 package net.sf.anathema.character.view;
 
-import net.sf.anathema.lib.gui.IView;
+import net.sf.anathema.framework.swing.IView;
 import net.sf.anathema.lib.gui.action.SmartAction;
 import net.sf.anathema.lib.workflow.textualdescription.ITextView;
 

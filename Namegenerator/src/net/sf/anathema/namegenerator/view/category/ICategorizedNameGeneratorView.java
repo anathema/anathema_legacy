@@ -1,6 +1,6 @@
 package net.sf.anathema.namegenerator.view.category;
 
-import net.sf.anathema.lib.gui.IView;
+import net.sf.anathema.framework.swing.IView;
 
 import javax.swing.ListCellRenderer;
 

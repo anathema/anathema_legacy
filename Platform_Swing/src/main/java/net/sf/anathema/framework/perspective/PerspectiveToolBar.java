@@ -1,7 +1,7 @@
 package net.sf.anathema.framework.perspective;
 
 import net.sf.anathema.framework.view.toolbar.ToolBarButton;
-import net.sf.anathema.lib.gui.IView;
+import net.sf.anathema.framework.swing.IView;
 import net.sf.anathema.lib.gui.action.SmartAction;
 
 import javax.swing.Action;

@@ -9,7 +9,7 @@ import net.sf.anathema.character.library.virtueflaw.presenter.IDescriptiveVirtue
 import net.sf.anathema.character.library.virtueflaw.view.DescriptiveVirtueFlawView;
 import net.sf.anathema.character.solar.virtueflaw.presenter.SolarVirtueFlawPresenter;
 import net.sf.anathema.framework.value.IntegerViewFactory;
-import net.sf.anathema.lib.gui.IView;
+import net.sf.anathema.framework.swing.IView;
 import net.sf.anathema.lib.resources.Resources;
 
 public class SolarVirtueFlawViewFactory implements IAdditionalViewFactory {

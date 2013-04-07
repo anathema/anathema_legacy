@@ -4,7 +4,7 @@ import net.sf.anathema.character.perspective.CharacterStackBridge;
 import net.sf.anathema.character.perspective.model.model.CharacterIdentifier;
 import net.sf.anathema.framework.IApplicationModel;
 import net.sf.anathema.framework.repository.IItem;
-import net.sf.anathema.lib.gui.IView;
+import net.sf.anathema.framework.swing.IView;
 
 import javax.swing.JComponent;
 

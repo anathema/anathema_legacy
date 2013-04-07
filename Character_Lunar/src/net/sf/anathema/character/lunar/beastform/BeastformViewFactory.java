@@ -13,7 +13,7 @@ import net.sf.anathema.character.lunar.beastform.view.SecondEditionBeastformView
 import net.sf.anathema.character.mutations.view.IMutationsView;
 import net.sf.anathema.character.mutations.view.MutationsView;
 import net.sf.anathema.framework.value.IntegerViewFactory;
-import net.sf.anathema.lib.gui.IView;
+import net.sf.anathema.framework.swing.IView;
 import net.sf.anathema.lib.resources.Resources;
 
 public class BeastformViewFactory implements IAdditionalViewFactory {

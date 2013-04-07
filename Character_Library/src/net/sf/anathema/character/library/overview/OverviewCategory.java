@@ -1,7 +1,7 @@
 package net.sf.anathema.character.library.overview;
 
 import net.miginfocom.swing.MigLayout;
-import net.sf.anathema.lib.gui.IView;
+import net.sf.anathema.framework.swing.IView;
 import net.sf.anathema.lib.workflow.labelledvalue.ILabelledAlotmentView;
 import net.sf.anathema.lib.workflow.labelledvalue.IValueView;
 import net.sf.anathema.lib.workflow.labelledvalue.view.AbstractLabelledValueView;

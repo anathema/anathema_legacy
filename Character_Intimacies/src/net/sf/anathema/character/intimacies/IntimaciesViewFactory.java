@@ -8,7 +8,7 @@ import net.sf.anathema.character.intimacies.presenter.IntimaciesPresenter;
 import net.sf.anathema.character.intimacies.view.IntimaciesView;
 import net.sf.anathema.character.library.intvalue.IIconToggleButtonProperties;
 import net.sf.anathema.character.library.intvalue.IntValueDisplayFactoryPrototype;
-import net.sf.anathema.lib.gui.IView;
+import net.sf.anathema.framework.swing.IView;
 import net.sf.anathema.lib.resources.Resources;
 
 import javax.swing.Icon;

@@ -2,7 +2,7 @@ package net.sf.anathema.character.lunar.beastform.presenter;
 
 import net.sf.anathema.character.mutations.view.IMutationsView;
 import net.sf.anathema.framework.value.IIntValueView;
-import net.sf.anathema.lib.gui.IView;
+import net.sf.anathema.framework.swing.IView;
 
 public interface IBeastformView extends IView {
 

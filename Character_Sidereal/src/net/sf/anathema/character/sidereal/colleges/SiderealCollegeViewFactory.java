@@ -6,7 +6,7 @@ import net.sf.anathema.character.generic.type.ICharacterType;
 import net.sf.anathema.character.sidereal.colleges.presenter.ISiderealCollegeModel;
 import net.sf.anathema.character.sidereal.colleges.presenter.SiderealCollegePresenter;
 import net.sf.anathema.character.sidereal.colleges.view.SiderealCollegeView;
-import net.sf.anathema.lib.gui.IView;
+import net.sf.anathema.framework.swing.IView;
 import net.sf.anathema.lib.resources.Resources;
 
 public class SiderealCollegeViewFactory implements IAdditionalViewFactory {

@@ -6,7 +6,7 @@ import net.sf.anathema.character.generic.type.ICharacterType;
 import net.sf.anathema.character.linguistics.presenter.ILinguisticsModel;
 import net.sf.anathema.character.linguistics.presenter.LinguisticsPresenter;
 import net.sf.anathema.character.linguistics.view.LinguisticsView;
-import net.sf.anathema.lib.gui.IView;
+import net.sf.anathema.framework.swing.IView;
 import net.sf.anathema.lib.resources.Resources;
 
 public class LinguisticsViewFactory implements IAdditionalViewFactory {
