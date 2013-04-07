@@ -6,21 +6,18 @@ import javafx.scene.Node;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
 import javafx.scene.input.KeyEvent;
-import net.miginfocom.layout.AC;
-import net.miginfocom.layout.CC;
-import net.miginfocom.layout.LC;
+import javafx.scene.layout.BorderPane;
 import net.sf.anathema.platform.fx.FxThreading;
 import net.sf.anathema.scribe.editor.model.WikiText;
 import net.sf.anathema.scribe.editor.presenter.ScrollEditor;
 import net.sf.anathema.scribe.editor.presenter.TextTypedListener;
 import org.jmock.example.announcer.Announcer;
-import org.tbee.javafx.scene.layout.MigPane;
 
 public class FxScrollEditor implements ScrollEditor {
 
   private TextField titleDisplay;
   private TextArea content;
-  private MigPane pane;
+  private BorderPane pane;
   private final Announcer<TextTypedListener> contentChanged = Announcer.to(TextTypedListener.class);
   private final Announcer<TextTypedListener> titleChanged = Announcer.to(TextTypedListener.class);
 
@@ -31,9 +28,9 @@ public class FxScrollEditor implements ScrollEditor {
       public void run() {
         titleDisplay = createNameField();
         content = createContentDisplay();
-        pane = new MigPane(new LC().insets("0").gridGap("0", "2").wrapAfter(1), new AC().grow().fill(), new AC().fill());
-        pane.add(titleDisplay, new CC().width("100%").grow());
-        pane.add(content, new CC().push());
+        pane = new BorderPane();
+        pane.setTop(titleDisplay);
+        pane.setCenter(content);
       }
     });
   }
