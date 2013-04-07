@@ -4,10 +4,9 @@ import net.sf.anathema.character.library.intvalue.IRemovableTraitView;
 import net.sf.anathema.character.library.removableentry.presenter.IRemovableEntryListener;
 import net.sf.anathema.character.library.removableentry.presenter.IRemovableEntryView;
 import net.sf.anathema.framework.presenter.resources.BasicUi;
+import net.sf.anathema.interaction.Command;
 import net.sf.anathema.lib.control.ObjectValueListener;
 
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -65,9 +64,9 @@ public abstract class AbstractStringEntryTraitPresenter<V> {
         model.setCurrentName(newValue);
       }
     });
-    selectionView.addAddButtonListener(new ActionListener() {
+    selectionView.addAddButtonListener(new Command(){
       @Override
-      public void actionPerformed(ActionEvent e) {
+      public void execute() {
         model.commitSelection();
       }
     });

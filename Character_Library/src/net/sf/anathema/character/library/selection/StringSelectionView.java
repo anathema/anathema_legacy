@@ -1,6 +1,7 @@
 package net.sf.anathema.character.library.selection;
 
 import net.miginfocom.swing.MigLayout;
+import net.sf.anathema.interaction.Command;
 import net.sf.anathema.lib.control.ObjectValueListener;
 import net.sf.anathema.lib.workflow.textualdescription.view.LabelTextView;
 import net.sf.anathema.lib.workflow.textualdescription.view.LineTextView;
@@ -9,6 +10,7 @@ import javax.swing.Icon;
 import javax.swing.JButton;
 import javax.swing.JPanel;
 import java.awt.Dimension;
+import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 import static net.sf.anathema.lib.gui.layout.LayoutUtils.constraintsForImageButton;
@@ -36,8 +38,13 @@ public class StringSelectionView implements IStringSelectionView {
   }
 
   @Override
-  public void addAddButtonListener(ActionListener listener) {
-    button.addActionListener(listener);
+  public void addAddButtonListener(final Command listener) {
+    button.addActionListener(new ActionListener() {
+      @Override
+      public void actionPerformed(ActionEvent e) {
+        listener.execute();
+      }
+    });
   }
 
   @Override
