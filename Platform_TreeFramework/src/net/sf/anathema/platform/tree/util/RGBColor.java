@@ -1,5 +1,8 @@
 package net.sf.anathema.platform.tree.util;
 
+import org.apache.commons.lang3.builder.EqualsBuilder;
+import org.apache.commons.lang3.builder.HashCodeBuilder;
+
 public class RGBColor {
 
   public final int red;
@@ -18,9 +21,17 @@ public class RGBColor {
     this.alpha = alpha;
   }
 
+  public RGBColor(RGBColor color) {
+    this.red = color.red;
+    this.green = color.green;
+    this.blue = color.blue;
+    this.alpha = color.alpha;
+  }
+
   public static final RGBColor White = new RGBColor(255, 255, 255);
   public static final RGBColor Pink = new RGBColor(255, 175, 175);
   public static final RGBColor Red = new RGBColor(255, 0, 0);
+
   public static final RGBColor Blue = new RGBColor(0, 0, 255);
 
   private static final double FACTOR = 0.7;
@@ -52,5 +63,16 @@ public class RGBColor {
       return i;
     }
     return color;
+  }
+
+  @SuppressWarnings("EqualsWhichDoesntCheckParameterClass")
+  @Override
+  public boolean equals(Object obj) {
+    return EqualsBuilder.reflectionEquals(this, obj);
+  }
+
+  @Override
+  public int hashCode() {
+    return HashCodeBuilder.reflectionHashCode(this);
   }
 }

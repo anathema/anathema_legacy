@@ -11,11 +11,10 @@ import net.sf.anathema.character.generic.template.presentation.IPresentationProp
 import net.sf.anathema.lib.exception.AnathemaException;
 import net.sf.anathema.lib.file.RelativePath;
 import net.sf.anathema.lib.xml.DocumentUtilities;
+import net.sf.anathema.platform.tree.util.RGBColor;
 import org.dom4j.Element;
 import org.junit.Before;
 import org.junit.Test;
-
-import java.awt.Color;
 
 import static org.junit.Assert.assertEquals;
 
@@ -51,13 +50,13 @@ public class PresentationPropertiesParserTest {
                  + "\t<color red=\"139\" green=\"123\" blue=\"255\" />"
                  + "</presentation>";
     IPresentationProperties presentationProperties = parseXml(xml);
-    assertEquals(new Color(139, 123, 255), presentationProperties.getCharmPresentationProperties().getColor());
+    assertEquals(new RGBColor(139, 123, 255), presentationProperties.getCharmPresentationProperties().getColor());
   }
 
   @Test
   public void testDefaultsToWhiteIfNoColorIsSet() throws Exception {
     String xml = "<presentation/>";
     IPresentationProperties presentationProperties = parseXml(xml);
-    assertEquals(Color.WHITE, presentationProperties.getCharmPresentationProperties().getColor());
+    assertEquals(RGBColor.White, presentationProperties.getCharmPresentationProperties().getColor());
   }
 }

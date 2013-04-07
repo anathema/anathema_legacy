@@ -33,4 +33,11 @@ public class GenericCharmPresentationProperties extends ReflectionCloneableObjec
   public void setColor(RGBColor color) {
     this.color = color;
   }
+
+  @Override
+  public GenericCharmPresentationProperties clone() {
+    GenericCharmPresentationProperties properties = new GenericCharmPresentationProperties();
+    properties.setColor(new RGBColor(color));
+    return properties;
+  }
 }
