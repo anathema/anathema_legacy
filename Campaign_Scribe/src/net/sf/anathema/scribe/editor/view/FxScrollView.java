@@ -11,7 +11,7 @@ public class FxScrollView {
 
   private MigPane content;
   public final FxScrollEditor scrollEditor = new FxScrollEditor();
-  public final FxScrollPreview scrollPreview = new FxScrollPreview();
+  public final ThreadedFxScrollPreview scrollPreview = new ThreadedFxScrollPreview();
 
   public FxScrollView() {
     Platform.runLater(new Runnable() {
