@@ -69,7 +69,7 @@ public class EquipmentObjectPresenter implements Presenter {
     prepareContents();
   }
 
-  public void prepareContents() {
+  private void prepareContents() {
     view.clearContents();
     attuneStatFlags.clear();
     otherStatFlags.clear();

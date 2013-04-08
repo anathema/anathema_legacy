@@ -14,6 +14,7 @@ import net.sf.anathema.character.equipment.item.personalization.EquipmentPersona
 import net.sf.anathema.character.equipment.item.personalization.EquipmentPersonalizationPresenterPage;
 import net.sf.anathema.character.equipment.item.personalization.EquipmentPersonalizationProperties;
 import net.sf.anathema.framework.presenter.resources.BasicUi;
+import net.sf.anathema.framework.view.SwingApplicationFrame;
 import net.sf.anathema.lib.control.IChangeListener;
 import net.sf.anathema.lib.control.ICollectionListener;
 import net.sf.anathema.lib.control.ObjectValueListener;
@@ -118,8 +119,7 @@ public class EquipmentAdditionalPresenter implements Presenter {
         model.refreshItems();
       }
     };
-    refreshAction.setToolTipText(
-            resources.getString("AdditionalTemplateView.RefreshDatabase.Action.Tooltip"));
+    refreshAction.setToolTipText(resources.getString("AdditionalTemplateView.RefreshDatabase.Action.Tooltip"));
     return refreshAction;
   }
 
@@ -163,37 +163,34 @@ public class EquipmentAdditionalPresenter implements Presenter {
     List<Action> actions = new ArrayList<>();
     if (model.canBeRemoved(selectedObject)) {
       if (AnathemaEquipmentPreferences.getDefaultPreferences().getEnablePersonalization()) {
-        actions.add(new SmartAction(resources.getString("AdditionalTemplateView.Personalize.Action.Name"),
-                editIcon) {
+        actions.add(new SmartAction(resources.getString("AdditionalTemplateView.Personalize.Action.Name"), editIcon) {
           @Override
           protected void execute(Component parentComponent) {
-            doPersonalization(selectedObject, parentComponent);
+            EquipmentPersonalizationModel personalizationModel = new EquipmentPersonalizationModel(selectedObject);
+            EquipmentPersonalizationProperties properties = new EquipmentPersonalizationProperties(resources);
+            EquipmentPersonalizationPresenterPage page = new EquipmentPersonalizationPresenterPage(personalizationModel,
+                    properties);
+            UserDialog dialog = new UserDialog(SwingApplicationFrame.getParentComponent(), page);
+            IDialogResult result = dialog.show();
+            if (!result.isCanceled()) {
+              selectedObject.setPersonalization(personalizationModel.getTitle(), personalizationModel.getDescription());
+              initEquipmentObjectPresentation(selectedObject);
+              EquipmentAdditionalPresenter.this.model.updateItem(selectedObject);
+            }
           }
         });
       }
-      actions.add(new SmartAction(resources.getString("AdditionalTemplateView.RemoveTemplate.Action.Name"),
-              removeIcon) {
-        @Override
-        protected void execute(Component parentComponent) {
-          model.removeItem(selectedObject);
-        }
-      });
+      actions.add(
+              new SmartAction(resources.getString("AdditionalTemplateView.RemoveTemplate.Action.Name"), removeIcon) {
+                @Override
+                protected void execute(Component parentComponent) {
+                  model.removeItem(selectedObject);
+                }
+              });
     }
     new EquipmentObjectPresenter(selectedObject, objectView, resourceBuilder, model.getCharacterDataProvider(),
-            model.getCharacterOptionProvider(), resources, actions.toArray(new Action[actions.size()])).initPresentation();
+            model.getCharacterOptionProvider(), resources,
+            actions.toArray(new Action[actions.size()])).initPresentation();
     view.revalidateEquipmentViews();
-  }
-
-  private void doPersonalization(IEquipmentItem item, Component component) {
-    EquipmentPersonalizationModel model = new EquipmentPersonalizationModel(item);
-    EquipmentPersonalizationPresenterPage page =
-            new EquipmentPersonalizationPresenterPage(model, new EquipmentPersonalizationProperties(resources));
-    UserDialog dialog = new UserDialog(component, page);
-    IDialogResult result = dialog.show();
-    if (!result.isCanceled()) {
-      item.setPersonalization(model.getTitle(), model.getDescription());
-      initEquipmentObjectPresentation(item);
-      this.model.updateItem(item);
-    }
   }
 }
