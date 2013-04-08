@@ -1,9 +1,9 @@
 package net.sf.anathema.framework.presenter.view;
 
 import net.sf.anathema.lib.file.RelativePath;
-import net.sf.anathema.lib.gui.TechnologyAgnosticUIConfiguration;
+import net.sf.anathema.lib.gui.AbstractUIConfiguration;
 
-public class SimpleItemTypeUi implements TechnologyAgnosticUIConfiguration {
+public class SimpleItemTypeUi extends AbstractUIConfiguration {
 
   private final RelativePath icon;
 
@@ -19,10 +19,5 @@ public class SimpleItemTypeUi implements TechnologyAgnosticUIConfiguration {
   @Override
   public String getLabel(Object file) {
     return file.toString();
-  }
-
-  @Override
-  public String getToolTipText(Object value) {
-    return NO_TOOLTIP;
   }
 }

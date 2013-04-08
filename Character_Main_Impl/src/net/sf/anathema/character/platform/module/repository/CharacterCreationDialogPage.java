@@ -91,7 +91,7 @@ public class CharacterCreationDialogPage extends AbstractDialogPage {
         model.setSelectedTemplate(newValue);
       }
     });
-    list.setCellRenderer(properties.getTemplateRenderer());
+    list.setCellRenderer(properties.getTemplateUI());
     model.addListener(new IChangeListener() {
       @Override
       public void changeOccurred() {

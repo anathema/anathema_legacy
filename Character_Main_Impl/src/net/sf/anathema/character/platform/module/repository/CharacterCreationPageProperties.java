@@ -3,7 +3,7 @@ package net.sf.anathema.character.platform.module.repository;
 import net.sf.anathema.character.generic.framework.resources.CharacterUI;
 import net.sf.anathema.character.generic.type.ICharacterType;
 import net.sf.anathema.character.view.repository.ITemplateTypeAggregation;
-import net.sf.anathema.lib.file.RelativePath;
+import net.sf.anathema.lib.gui.AbstractUIConfiguration;
 import net.sf.anathema.lib.gui.TechnologyAgnosticUIConfiguration;
 import net.sf.anathema.lib.message.BasicMessage;
 import net.sf.anathema.lib.message.IBasicMessage;
@@ -38,22 +38,11 @@ public class CharacterCreationPageProperties {
     return iconProvider.getSmallTypeIcon(type);
   }
 
-  public TechnologyAgnosticUIConfiguration<ITemplateTypeAggregation> getTemplateRenderer() {
-    return new TechnologyAgnosticUIConfiguration<ITemplateTypeAggregation>() {
-
-      @Override
-      public RelativePath getIconsRelativePath(ITemplateTypeAggregation value) {
-        return NO_ICON;
-      }
-
+  public TechnologyAgnosticUIConfiguration<ITemplateTypeAggregation> getTemplateUI() {
+    return new AbstractUIConfiguration<ITemplateTypeAggregation>() {
       @Override
       public String getLabel(ITemplateTypeAggregation value) {
         return resources.getString(value.getPresentationProperties().getNewActionResource());
-      }
-
-      @Override
-      public String getToolTipText(ITemplateTypeAggregation value) {
-        return NO_TOOLTIP;
       }
     };
   }

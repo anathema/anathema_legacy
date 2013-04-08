@@ -6,11 +6,11 @@ import net.sf.anathema.character.generic.framework.resources.CharacterUI;
 import net.sf.anathema.character.generic.type.ICharacterType;
 import net.sf.anathema.framework.view.PrintNameFile;
 import net.sf.anathema.lib.file.RelativePath;
-import net.sf.anathema.lib.gui.TechnologyAgnosticUIConfiguration;
+import net.sf.anathema.lib.gui.AbstractUIConfiguration;
 import net.sf.anathema.lib.resources.Resources;
 import net.sf.anathema.lib.util.Identified;
 
-public class CharacterTypeUi implements TechnologyAgnosticUIConfiguration<PrintNameFile> {
+public class CharacterTypeUi extends AbstractUIConfiguration<PrintNameFile> {
 
   private final Resources resources;
   private final CharacterPrintNameFileScanner scanner;
@@ -38,10 +38,5 @@ public class CharacterTypeUi implements TechnologyAgnosticUIConfiguration<PrintN
     String casteTypeString = resources.getString("Caste." + casteType.getId());
     String casteString = resources.getString(characterType.getId() + ".Caste.Label");
     return resources.getString("LoadCharacter.PrintNameFile.Message", printName, characterString, casteTypeString, casteString);
-  }
-
-  @Override
-  public String getToolTipText(PrintNameFile value) {
-    return NO_TOOLTIP;
   }
 }

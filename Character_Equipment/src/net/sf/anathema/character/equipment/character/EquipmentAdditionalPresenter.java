@@ -80,7 +80,7 @@ public class EquipmentAdditionalPresenter implements Presenter {
     });
     IMagicalMaterialView magicMaterialView = view.getMagicMaterialView();
     initMaterialView(magicMaterialView);
-    equipmentTemplatePickList.setCellRenderer(new EquipmentObjectCellRenderer(model));
+    equipmentTemplatePickList.setCellRenderer(new EquipmentItemUIConfiguration(model));
     setObjects(equipmentTemplatePickList);
     Tool addTool = view.addToolButton();
     createTemplateAddAction(equipmentTemplatePickList, magicMaterialView, addTool);
@@ -104,7 +104,7 @@ public class EquipmentAdditionalPresenter implements Presenter {
 
   private void initMaterialView(IMagicalMaterialView magicMaterialView) {
     String label = resources.getString("MagicMaterial.Label") + ":";
-    TechnologyAgnosticUIConfiguration<MagicalMaterial> renderer = new MagicMaterialCellRenderer(resources);
+    TechnologyAgnosticUIConfiguration<MagicalMaterial> renderer = new MagicMaterialUIConfiguration(resources);
     magicMaterialView.initView(label, renderer, MagicalMaterial.values());
   }
 
