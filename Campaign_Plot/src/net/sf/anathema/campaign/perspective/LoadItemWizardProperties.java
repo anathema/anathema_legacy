@@ -1,26 +1,23 @@
 package net.sf.anathema.campaign.perspective;
 
 import net.sf.anathema.campaign.load.selection.IObjectSelectionProperties;
-import net.sf.anathema.lib.gui.ui.ObjectUi;
-import net.sf.anathema.lib.gui.ui.ObjectUiListCellRenderer;
+import net.sf.anathema.lib.gui.TechnologyAgnosticUIConfiguration;
 import net.sf.anathema.lib.message.BasicMessage;
 import net.sf.anathema.lib.message.IBasicMessage;
 import net.sf.anathema.lib.resources.Resources;
 
-import javax.swing.ListCellRenderer;
-
 public class LoadItemWizardProperties implements IObjectSelectionProperties {
 
   private final Resources resources;
-  private final ListCellRenderer renderer;
+  private final TechnologyAgnosticUIConfiguration renderer;
 
-  public LoadItemWizardProperties(Resources resources, ObjectUi<Object> ui) {
+  public LoadItemWizardProperties(Resources resources, TechnologyAgnosticUIConfiguration ui) {
     this.resources = resources;
-    this.renderer = new ObjectUiListCellRenderer(ui);
+    this.renderer = ui;
   }
 
   @Override
-  public ListCellRenderer getCellRenderer() {
+  public TechnologyAgnosticUIConfiguration getCellRenderer() {
     return renderer;
   }
 

@@ -1,19 +1,18 @@
 package net.sf.anathema.framework.presenter.view;
 
-import net.sf.anathema.lib.gui.ui.ObjectUi;
+import net.sf.anathema.lib.file.RelativePath;
+import net.sf.anathema.lib.gui.TechnologyAgnosticUIConfiguration;
 
-import javax.swing.Icon;
+public class SimpleItemTypeUi implements TechnologyAgnosticUIConfiguration {
 
-public class SimpleItemTypeUi implements ObjectUi<Object> {
+  private final RelativePath icon;
 
-  private final Icon icon;
-
-  public SimpleItemTypeUi(Icon icon) {
+  public SimpleItemTypeUi(RelativePath icon) {
     this.icon = icon;
   }
 
   @Override
-  public Icon getIcon(Object file) {
+  public RelativePath getIconsRelativePath(Object value) {
     return icon;
   }
 
@@ -24,6 +23,6 @@ public class SimpleItemTypeUi implements ObjectUi<Object> {
 
   @Override
   public String getToolTipText(Object value) {
-    return null;
+    return NO_TOOLTIP;
   }
 }

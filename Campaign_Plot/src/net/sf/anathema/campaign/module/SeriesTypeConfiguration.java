@@ -56,6 +56,6 @@ public class SeriesTypeConfiguration extends AbstractPersistableItemTypeConfigur
 
   @Override
   protected IItemTypeViewProperties createItemTypeCreationProperties(IApplicationModel anathemaModel, Resources resources) {
-    return new SimpleItemTypeViewProperties(getItemType(), new PlotUI().getSeriesTabIcon());
+    return new SimpleItemTypeViewProperties(getItemType(), new PlotUI().getSeriesIconPath());
   }
 }

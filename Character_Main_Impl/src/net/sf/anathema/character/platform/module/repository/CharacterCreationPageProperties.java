@@ -3,16 +3,14 @@ package net.sf.anathema.character.platform.module.repository;
 import net.sf.anathema.character.generic.framework.resources.CharacterUI;
 import net.sf.anathema.character.generic.type.ICharacterType;
 import net.sf.anathema.character.view.repository.ITemplateTypeAggregation;
+import net.sf.anathema.lib.file.RelativePath;
+import net.sf.anathema.lib.gui.TechnologyAgnosticUIConfiguration;
 import net.sf.anathema.lib.message.BasicMessage;
 import net.sf.anathema.lib.message.IBasicMessage;
 import net.sf.anathema.lib.message.MessageType;
 import net.sf.anathema.lib.resources.Resources;
 
-import javax.swing.DefaultListCellRenderer;
 import javax.swing.Icon;
-import javax.swing.JList;
-import javax.swing.ListCellRenderer;
-import java.awt.Component;
 
 public class CharacterCreationPageProperties {
 
@@ -40,13 +38,22 @@ public class CharacterCreationPageProperties {
     return iconProvider.getSmallTypeIcon(type);
   }
 
-  public ListCellRenderer getTemplateRenderer() {
-    return new DefaultListCellRenderer() {
+  public TechnologyAgnosticUIConfiguration<ITemplateTypeAggregation> getTemplateRenderer() {
+    return new TechnologyAgnosticUIConfiguration<ITemplateTypeAggregation>() {
 
       @Override
-      public Component getListCellRendererComponent(JList list, Object value, int index, boolean isSelected, boolean cellHasFocus) {
-        String printname = resources.getString(((ITemplateTypeAggregation) value).getPresentationProperties().getNewActionResource());
-        return super.getListCellRendererComponent(list, printname, index, isSelected, cellHasFocus);
+      public RelativePath getIconsRelativePath(ITemplateTypeAggregation value) {
+        return NO_ICON;
+      }
+
+      @Override
+      public String getLabel(ITemplateTypeAggregation value) {
+        return resources.getString(value.getPresentationProperties().getNewActionResource());
+      }
+
+      @Override
+      public String getToolTipText(ITemplateTypeAggregation value) {
+        return NO_TOOLTIP;
       }
     };
   }

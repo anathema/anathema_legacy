@@ -2,6 +2,7 @@ package net.sf.anathema.framework.presenter.action;
 
 import net.sf.anathema.framework.item.IItemType;
 import net.sf.anathema.framework.presenter.item.ItemTypeCreationViewPropertiesExtensionPoint;
+import net.sf.anathema.lib.gui.icon.ImageProvider;
 import net.sf.anathema.lib.gui.ui.ObjectUi;
 import net.sf.anathema.lib.resources.Resources;
 
@@ -18,7 +19,7 @@ public class ItemTypeUi implements ObjectUi<Object> {
 
   @Override
   public Icon getIcon(Object value) {
-    return extension.get((IItemType) value).getIcon();
+    return new ImageProvider().getImageIcon(extension.get((IItemType) value).getIcon());
   }
 
   @Override

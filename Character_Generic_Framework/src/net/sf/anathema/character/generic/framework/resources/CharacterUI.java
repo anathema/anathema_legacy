@@ -8,6 +8,10 @@ import javax.swing.Icon;
 
 public class CharacterUI extends AbstractUI {
 
+  public RelativePath getCharacterDescriptionTabIcon() {
+    return new RelativePath("icons/TabDescription16.png");
+  }
+
   public Icon getLinkIcon() {
     return getIcon(new RelativePath("icons/ButtonLink16b.png"));
   }

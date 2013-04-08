@@ -57,6 +57,6 @@ public class NoteTypeConfiguration extends AbstractPersistableItemTypeConfigurat
 
   @Override
   protected IItemTypeViewProperties createItemTypeCreationProperties(IApplicationModel anathemaModel, Resources resources) {
-    return new SimpleItemTypeViewProperties(getItemType(), new PlotUI().getNoteTabIcon());
+    return new SimpleItemTypeViewProperties(getItemType(), new PlotUI().getNoteIconPath());
   }
 }

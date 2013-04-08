@@ -1,29 +1,28 @@
 package net.sf.anathema.framework.presenter.view;
 
 import net.sf.anathema.framework.item.IItemType;
-import net.sf.anathema.lib.gui.ui.ObjectUi;
-
-import javax.swing.Icon;
+import net.sf.anathema.lib.file.RelativePath;
+import net.sf.anathema.lib.gui.TechnologyAgnosticUIConfiguration;
 
 public abstract class AbstractItemTypeViewProperties implements IItemTypeViewProperties {
 
-  private final Icon icon;
+  private final RelativePath icon;
   private final IItemType type;
-  private final ObjectUi<Object> ui;
+  private final TechnologyAgnosticUIConfiguration ui;
 
-  public AbstractItemTypeViewProperties(IItemType type, Icon icon, ObjectUi<Object> ui) {
+  public AbstractItemTypeViewProperties(IItemType type, RelativePath icon, TechnologyAgnosticUIConfiguration ui) {
     this.type = type;
     this.icon = icon;
     this.ui = ui;
   }
 
   @Override
-  public Icon getIcon() {
+  public RelativePath getIcon() {
     return icon;
   }
 
   @Override
-  public ObjectUi<Object> getItemTypeUI() {
+  public TechnologyAgnosticUIConfiguration getItemTypeUI() {
     return ui;
   }
 

@@ -5,13 +5,12 @@ import net.sf.anathema.character.generic.caste.ICasteType;
 import net.sf.anathema.character.generic.framework.resources.CharacterUI;
 import net.sf.anathema.character.generic.type.ICharacterType;
 import net.sf.anathema.framework.view.PrintNameFile;
-import net.sf.anathema.lib.gui.ui.ObjectUi;
+import net.sf.anathema.lib.file.RelativePath;
+import net.sf.anathema.lib.gui.TechnologyAgnosticUIConfiguration;
 import net.sf.anathema.lib.resources.Resources;
 import net.sf.anathema.lib.util.Identified;
 
-import javax.swing.Icon;
-
-public class CharacterTypeUi implements ObjectUi<Object> {
+public class CharacterTypeUi implements TechnologyAgnosticUIConfiguration<PrintNameFile> {
 
   private final Resources resources;
   private final CharacterPrintNameFileScanner scanner;
@@ -22,12 +21,17 @@ public class CharacterTypeUi implements ObjectUi<Object> {
   }
 
   @Override
-  public String getLabel(Object value) {
-    PrintNameFile file = (PrintNameFile) value;
-    String printName = file.getPrintName();
-    ICharacterType characterType = scanner.getCharacterType(file);
+  public RelativePath getIconsRelativePath(PrintNameFile value) {
+    ICharacterType characterType = scanner.getCharacterType(value);
+    return new CharacterUI().getSmallTypeIconPath(characterType);
+  }
+
+  @Override
+  public String getLabel(PrintNameFile value) {
+    String printName = value.getPrintName();
+    ICharacterType characterType = scanner.getCharacterType(value);
     String characterString = resources.getString("CharacterGenerator.NewCharacter." + characterType.getId() + ".Name");
-    Identified casteType = scanner.getCasteType(file);
+    Identified casteType = scanner.getCasteType(value);
     if (casteType == ICasteType.NULL_CASTE_TYPE) {
       return resources.getString("LoadCharacter.PrintNameFile.ShortMessage", printName, characterString);
     }
@@ -37,14 +41,7 @@ public class CharacterTypeUi implements ObjectUi<Object> {
   }
 
   @Override
-  public Icon getIcon(Object value) {
-    PrintNameFile file = (PrintNameFile) value;
-    ICharacterType characterType = scanner.getCharacterType(file);
-    return new CharacterUI().getSmallTypeIcon(characterType);
-  }
-
-  @Override
-  public String getToolTipText(Object value) {
-    return null;
+  public String getToolTipText(PrintNameFile value) {
+    return NO_TOOLTIP;
   }
 }

@@ -4,6 +4,9 @@ import net.sf.anathema.framework.item.IItemType;
 import net.sf.anathema.framework.presenter.action.ItemTypeUi;
 import net.sf.anathema.framework.presenter.item.ItemTypeCreationViewPropertiesExtensionPoint;
 import net.sf.anathema.framework.view.PrintNameFile;
+import net.sf.anathema.lib.file.RelativePath;
+import net.sf.anathema.lib.gui.TechnologyAgnosticUIConfiguration;
+import net.sf.anathema.lib.gui.icon.ImageProvider;
 import net.sf.anathema.lib.gui.ui.ObjectUi;
 import net.sf.anathema.lib.resources.Resources;
 
@@ -25,9 +28,14 @@ public class ItemTypeTreeUi implements ObjectUi<Object> {
       return itemtypeUi.getIcon(value);
     }
     if (value instanceof PrintNameFile) {
-      return extension.get(((PrintNameFile) value).getItemType()).getItemTypeUI().getIcon(value);
+      RelativePath iconPath = getItemTypeUi((PrintNameFile) value).getIconsRelativePath(value);
+      return new ImageProvider().getImageIcon(iconPath);
     }
     return null;
+  }
+
+  private TechnologyAgnosticUIConfiguration getItemTypeUi(PrintNameFile value) {
+    return extension.get(value.getItemType()).getItemTypeUI();
   }
 
   @Override
@@ -36,7 +44,7 @@ public class ItemTypeTreeUi implements ObjectUi<Object> {
       return itemtypeUi.getLabel(value);
     }
     if (value instanceof PrintNameFile) {
-      return extension.get(((PrintNameFile) value).getItemType()).getItemTypeUI().getLabel(value);
+      return getItemTypeUi((PrintNameFile) value).getLabel(value);
     }
     return value.toString();
   }

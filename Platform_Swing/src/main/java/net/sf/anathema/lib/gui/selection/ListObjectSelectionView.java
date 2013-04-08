@@ -1,12 +1,14 @@
 package net.sf.anathema.lib.gui.selection;
 
 import net.sf.anathema.lib.control.ObjectValueListener;
+import net.sf.anathema.lib.gui.ConfigurableSwingUI;
+import net.sf.anathema.lib.gui.TechnologyAgnosticUIConfiguration;
 import net.sf.anathema.lib.gui.list.SmartJList;
 import net.sf.anathema.lib.gui.list.veto.IVetor;
 import net.sf.anathema.lib.gui.list.veto.VetoableListSelectionModel;
+import net.sf.anathema.lib.gui.ui.ObjectUiListCellRenderer;
 
 import javax.swing.JComponent;
-import javax.swing.ListCellRenderer;
 import javax.swing.event.ListSelectionEvent;
 import javax.swing.event.ListSelectionListener;
 
@@ -29,8 +31,8 @@ public class ListObjectSelectionView<V> implements IListObjectSelectionView<V> {
 	}
 
 	@Override
-    public void setCellRenderer(ListCellRenderer renderer) {
-		smartList.setCellRenderer(renderer);
+    public void setCellRenderer(TechnologyAgnosticUIConfiguration<V> renderer) {
+		smartList.setCellRenderer(new ObjectUiListCellRenderer(new ConfigurableSwingUI<>(renderer)));
 
 	}
 
@@ -55,8 +57,6 @@ public class ListObjectSelectionView<V> implements IListObjectSelectionView<V> {
 	@Override
     @SuppressWarnings("unchecked")
 	public void setSelectedObject(V object) {
-		// URS: Ich habe die Array-Konversion an dieser Stelle entfernt, weil
-		// ich einen Fehler vermutete.
 		smartList.setSelectedObjects(object);
 	}
 
