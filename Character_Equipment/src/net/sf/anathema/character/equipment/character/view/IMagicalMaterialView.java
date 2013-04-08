@@ -2,12 +2,11 @@ package net.sf.anathema.character.equipment.character.view;
 
 import net.sf.anathema.character.equipment.MagicalMaterial;
 import net.sf.anathema.framework.swing.IView;
-
-import javax.swing.ListCellRenderer;
+import net.sf.anathema.lib.gui.TechnologyAgnosticUIConfiguration;
 
 public interface IMagicalMaterialView extends IView {
 
-  void initView(String label, ListCellRenderer renderer, MagicalMaterial[] materials);
+  void initView(String label, TechnologyAgnosticUIConfiguration<MagicalMaterial> renderer, MagicalMaterial[] materials);
 
   void setSelectedMaterial(MagicalMaterial selection, boolean viewEnabled);
 

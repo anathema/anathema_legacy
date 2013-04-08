@@ -4,12 +4,14 @@ import net.miginfocom.layout.CC;
 import net.miginfocom.swing.MigLayout;
 import net.sf.anathema.character.equipment.MagicalMaterial;
 import net.sf.anathema.character.equipment.character.view.IMagicalMaterialView;
+import net.sf.anathema.lib.gui.ConfigurableSwingUI;
+import net.sf.anathema.lib.gui.TechnologyAgnosticUIConfiguration;
+import net.sf.anathema.lib.gui.ui.ObjectUiListCellRenderer;
 import net.sf.anathema.lib.gui.widgets.ChangeableJComboBox;
 
 import javax.swing.JComponent;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
-import javax.swing.ListCellRenderer;
 
 import static net.sf.anathema.lib.gui.layout.LayoutUtils.fillWithoutInsets;
 
@@ -32,10 +34,10 @@ public class MagicMaterialView implements IMagicalMaterialView {
   }
 
   @Override
-  public void initView(String labelString, ListCellRenderer renderer, MagicalMaterial[] materials) {
+  public void initView(String labelString, TechnologyAgnosticUIConfiguration<MagicalMaterial> renderer, MagicalMaterial[] materials) {
     this.label.setText(labelString);
     materialCombo.setObjects(materials);
-    materialCombo.setRenderer(renderer);
+    materialCombo.setRenderer(new ObjectUiListCellRenderer(new ConfigurableSwingUI<>(renderer)));
     setSelectedMaterial(null, false);
     if (content != null) {
       net.sf.anathema.lib.gui.swing.GuiUtilities.revalidateTree(content);

@@ -21,13 +21,13 @@ import net.sf.anathema.lib.control.IChangeListener;
 import net.sf.anathema.lib.control.ICollectionListener;
 import net.sf.anathema.lib.control.ObjectValueListener;
 import net.sf.anathema.lib.gui.Presenter;
+import net.sf.anathema.lib.gui.TechnologyAgnosticUIConfiguration;
 import net.sf.anathema.lib.gui.action.SmartAction;
 import net.sf.anathema.lib.gui.dialog.core.IDialogResult;
 import net.sf.anathema.lib.gui.dialog.userdialog.UserDialog;
 import net.sf.anathema.lib.gui.selection.IListObjectSelectionView;
 import net.sf.anathema.lib.resources.Resources;
 
-import javax.swing.DefaultListCellRenderer;
 import java.awt.Component;
 import java.util.Arrays;
 import java.util.HashMap;
@@ -104,7 +104,7 @@ public class EquipmentAdditionalPresenter implements Presenter {
 
   private void initMaterialView(IMagicalMaterialView magicMaterialView) {
     String label = resources.getString("MagicMaterial.Label") + ":";
-    DefaultListCellRenderer renderer = new MagicMaterialCellRenderer(resources);
+    TechnologyAgnosticUIConfiguration<MagicalMaterial> renderer = new MagicMaterialCellRenderer(resources);
     magicMaterialView.initView(label, renderer, MagicalMaterial.values());
   }
 

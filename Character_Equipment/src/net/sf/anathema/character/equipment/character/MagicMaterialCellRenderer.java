@@ -1,34 +1,33 @@
 package net.sf.anathema.character.equipment.character;
 
 import net.sf.anathema.character.equipment.MagicalMaterial;
+import net.sf.anathema.lib.file.RelativePath;
+import net.sf.anathema.lib.gui.TechnologyAgnosticUIConfiguration;
 import net.sf.anathema.lib.resources.Resources;
 
-import javax.swing.DefaultListCellRenderer;
-import javax.swing.JList;
-import java.awt.Component;
-
-public final class MagicMaterialCellRenderer extends DefaultListCellRenderer {
-private final Resources resources;
+public final class MagicMaterialCellRenderer implements TechnologyAgnosticUIConfiguration<MagicalMaterial> {
+  private final Resources resources;
 
   public MagicMaterialCellRenderer(Resources resources) {
     this.resources = resources;
   }
 
   @Override
-  public Component getListCellRendererComponent(
-      JList list,
-      Object value,
-      int index,
-      boolean isSelected,
-      boolean cellHasFocus) {
-    String text;
+  public RelativePath getIconsRelativePath(MagicalMaterial value) {
+    return NO_ICON;
+  }
+
+  @Override
+  public String getLabel(MagicalMaterial value) {
     if (value == null) {
-      text = resources.getString("MagicMaterial.Unavailable");
+      return resources.getString("MagicMaterial.Unavailable");
+    } else {
+      return resources.getString("MagicMaterial." + value.name());
     }
-    else {
-      MagicalMaterial material = (MagicalMaterial) value;
-      text = resources.getString("MagicMaterial." + material.name());
-    }
-    return super.getListCellRendererComponent(list, text, index, isSelected, cellHasFocus);
+  }
+
+  @Override
+  public String getToolTipText(MagicalMaterial value) {
+    return NO_TOOLTIP;
   }
 }
