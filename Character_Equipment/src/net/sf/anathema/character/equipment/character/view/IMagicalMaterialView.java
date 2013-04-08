@@ -1,10 +1,9 @@
 package net.sf.anathema.character.equipment.character.view;
 
 import net.sf.anathema.character.equipment.MagicalMaterial;
-import net.sf.anathema.framework.swing.IView;
 import net.sf.anathema.lib.gui.TechnologyAgnosticUIConfiguration;
 
-public interface IMagicalMaterialView extends IView {
+public interface IMagicalMaterialView {
 
   void initView(String label, TechnologyAgnosticUIConfiguration<MagicalMaterial> renderer, MagicalMaterial[] materials);
 

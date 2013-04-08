@@ -7,6 +7,7 @@ import net.sf.anathema.character.equipment.character.view.IEquipmentObjectView;
 import net.sf.anathema.character.equipment.character.view.IMagicalMaterialView;
 import net.sf.anathema.character.library.taskpane.ITaskPaneGroupViewFactory;
 import net.sf.anathema.character.library.taskpane.TaskPaneView;
+import net.sf.anathema.framework.swing.IView;
 import net.sf.anathema.interaction.Tool;
 import net.sf.anathema.lib.gui.SwingActionTool;
 import net.sf.anathema.lib.gui.selection.IListObjectSelectionView;
@@ -20,7 +21,7 @@ import java.awt.Dimension;
 
 import static net.sf.anathema.lib.gui.layout.LayoutUtils.withoutInsets;
 
-public class EquipmentAdditionalView implements IEquipmentAdditionalView {
+public class EquipmentAdditionalView implements IEquipmentAdditionalView, IView {
   private final ListObjectSelectionView<String> equipmentPickList = new ListObjectSelectionView<>(String.class);
   private final JPanel panel = new JPanel(new MigLayout(withoutInsets()));
   private final JPanel buttonPanel = new JPanel(new MigLayout(withoutInsets().wrapAfter(1)));

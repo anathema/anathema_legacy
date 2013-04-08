@@ -1,9 +1,8 @@
 package net.sf.anathema.character.equipment.creation.presenter.stats.properties;
 
 import net.sf.anathema.character.equipment.item.model.EquipmentStatisticsType;
+import net.sf.anathema.lib.file.RelativePath;
 import net.sf.anathema.lib.resources.Resources;
-
-import javax.swing.Icon;
 
 public class EquipmentTypeChoiceProperties {
 
@@ -13,7 +12,7 @@ public class EquipmentTypeChoiceProperties {
     this.resources = resources;
   }
 
-  public Icon getIcon(EquipmentStatisticsType type) {
+  public RelativePath getIcon(EquipmentStatisticsType type) {
     return new EquipmentUI().getIcon(type);
   }
 

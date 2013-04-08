@@ -10,6 +10,7 @@ import net.sf.anathema.character.equipment.wizard.IAnathemaWizardPage;
 import net.sf.anathema.lib.data.ICondition;
 import net.sf.anathema.lib.gui.action.SmartAction;
 import net.sf.anathema.lib.gui.dialog.core.IPageContent;
+import net.sf.anathema.lib.gui.icon.ImageProvider;
 import net.sf.anathema.lib.message.BasicMessage;
 import net.sf.anathema.lib.message.IBasicMessage;
 import net.sf.anathema.lib.resources.Resources;
@@ -86,7 +87,7 @@ public class EquipmentTypeChoicePresenterPage extends AbstractAnathemaWizardPage
   }
 
   private void addStatisticsTypeRow(String label, final EquipmentStatisticsType type) {
-    Action action = new SmartAction(properties.getIcon(type)) {
+    Action action = new SmartAction(new ImageProvider().getImageIcon(properties.getIcon(type))) {
 
       @Override
       protected void execute(Component parentComponent) {

@@ -23,7 +23,6 @@ public class MagicMaterialView implements IMagicalMaterialView {
   private final JLabel label = new JLabel();
   private JPanel content;
 
-  @Override
   public JComponent getComponent() {
     if (content == null) {
       content = new JPanel(new MigLayout(fillWithoutInsets()));
