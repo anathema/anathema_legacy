@@ -6,9 +6,7 @@ import net.sf.anathema.character.equipment.creation.view.IWeaponDamageView;
 import net.sf.anathema.character.generic.health.HealthType;
 import net.sf.anathema.lib.control.IChangeListener;
 import net.sf.anathema.lib.control.ObjectValueListener;
-import net.sf.anathema.lib.gui.ConfigurableSwingUI;
 import net.sf.anathema.lib.gui.Presenter;
-import net.sf.anathema.lib.gui.ui.ObjectUiListCellRenderer;
 import net.sf.anathema.lib.gui.widgets.IntegerSpinner;
 import net.sf.anathema.lib.resources.Resources;
 import net.sf.anathema.lib.workflow.intvalue.IntValuePresentation;
@@ -44,7 +42,7 @@ public class WeaponDamagePresenter implements Presenter {
         model.setHealthType(newValue);
       }
     });
-    view.setHealthTypeRenderer(new ObjectUiListCellRenderer(new ConfigurableSwingUI(properties.getHealthTypeUi())));
+    view.setHealthTypeRenderer(properties.getHealthTypeUi());
     updateHealthTypeInView();
     view.setMinDamageLabelText(properties.getMinDamageLabel());
     IntegerSpinner minDamageSpinner = view.getMinDamageIntegerSpinner();
