@@ -8,7 +8,7 @@ import javax.swing.Icon;
 public class BasicUi extends AbstractUI {
 
   public Icon getRemoveIcon() {
-    return getIcon(new RelativePath("icons/ButtonMinus16.png"));
+    return getIcon(getRemoveIconPath());
   }
 
   public Icon getAddIcon() {
@@ -37,6 +37,14 @@ public class BasicUi extends AbstractUI {
   }
 
   public Icon getEditIcon() {
-    return getIcon(new RelativePath("icons/ButtonEdit16.png"));
+    return getIcon(getEditIconPath());
+  }
+
+  public RelativePath getEditIconPath() {
+    return new RelativePath("icons/ButtonEdit16.png");
+  }
+
+  public RelativePath getRemoveIconPath() {
+    return new RelativePath("icons/ButtonMinus16.png");
   }
 }

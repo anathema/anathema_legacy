@@ -3,13 +3,14 @@ package net.sf.anathema.character.equipment.impl.character.view;
 import net.miginfocom.swing.MigLayout;
 import net.sf.anathema.character.equipment.character.view.IEquipmentObjectView;
 import net.sf.anathema.character.library.taskpane.ITaskPaneGroupView;
+import net.sf.anathema.interaction.Tool;
+import net.sf.anathema.lib.gui.SwingActionTool;
 import net.sf.anathema.lib.gui.action.ActionWidgetFactory;
 import net.sf.anathema.lib.gui.action.SmartToggleAction;
 import net.sf.anathema.lib.gui.layout.LayoutUtils;
 import net.sf.anathema.lib.model.BooleanModel;
 import org.jdesktop.swingx.JXTaskPane;
 
-import javax.swing.Action;
 import javax.swing.JCheckBox;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
@@ -73,11 +74,6 @@ public class EquipmentObjectView implements IEquipmentObjectView, ITaskPaneGroup
   }
 
   @Override
-  public void updateStatText(BooleanModel model, String newText) {
-    boxes.get(model).setText(newText);
-  }
-
-  @Override
   public void setEnabled(BooleanModel model, boolean enabled) {
     boxes.get(model).setEnabled(enabled);
   }
@@ -88,8 +84,10 @@ public class EquipmentObjectView implements IEquipmentObjectView, ITaskPaneGroup
   }
 
   @Override
-  public void addAction(Action action) {
-    taskGroup.add(action);
+  public Tool addAction() {
+    SwingActionTool tool = new SwingActionTool();
+    taskGroup.add(tool.getAction());
+    return tool;
   }
 
   private JCheckBox createCheckBox(BooleanModel selectedModel, String description) {

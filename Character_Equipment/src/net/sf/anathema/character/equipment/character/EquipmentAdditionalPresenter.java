@@ -15,6 +15,8 @@ import net.sf.anathema.character.equipment.item.personalization.EquipmentPersona
 import net.sf.anathema.character.equipment.item.personalization.EquipmentPersonalizationProperties;
 import net.sf.anathema.framework.presenter.resources.BasicUi;
 import net.sf.anathema.framework.view.SwingApplicationFrame;
+import net.sf.anathema.interaction.Command;
+import net.sf.anathema.interaction.Tool;
 import net.sf.anathema.lib.control.IChangeListener;
 import net.sf.anathema.lib.control.ICollectionListener;
 import net.sf.anathema.lib.control.ObjectValueListener;
@@ -25,14 +27,10 @@ import net.sf.anathema.lib.gui.dialog.userdialog.UserDialog;
 import net.sf.anathema.lib.gui.selection.IListObjectSelectionView;
 import net.sf.anathema.lib.resources.Resources;
 
-import javax.swing.Action;
 import javax.swing.DefaultListCellRenderer;
-import javax.swing.Icon;
 import java.awt.Component;
-import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.HashMap;
-import java.util.List;
 import java.util.Map;
 
 public class EquipmentAdditionalPresenter implements Presenter {
@@ -157,40 +155,54 @@ public class EquipmentAdditionalPresenter implements Presenter {
     IEquipmentObjectView objectView = viewsByItem.get(selectedObject);
     objectView = objectView == null ? view.addEquipmentObjectView() : objectView;
     IEquipmentStringBuilder resourceBuilder = new EquipmentStringBuilder(resources);
-    Icon removeIcon = new BasicUi().getRemoveIcon();
-    Icon editIcon = new BasicUi().getEditIcon();
     viewsByItem.put(selectedObject, objectView);
-    List<Action> actions = new ArrayList<>();
+    EquipmentObjectPresenter objectPresenter = new EquipmentObjectPresenter(selectedObject, objectView, resourceBuilder,
+            model.getCharacterDataProvider(), model.getCharacterOptionProvider(), resources);
+    enablePersonalization(selectedObject, objectPresenter);
+    objectPresenter.initPresentation();
+    view.revalidateEquipmentViews();
+  }
+
+  private void enablePersonalization(IEquipmentItem selectedObject, EquipmentObjectPresenter objectPresenter) {
     if (model.canBeRemoved(selectedObject)) {
       if (AnathemaEquipmentPreferences.getDefaultPreferences().getEnablePersonalization()) {
-        actions.add(new SmartAction(resources.getString("AdditionalTemplateView.Personalize.Action.Name"), editIcon) {
-          @Override
-          protected void execute(Component parentComponent) {
-            EquipmentPersonalizationModel personalizationModel = new EquipmentPersonalizationModel(selectedObject);
-            EquipmentPersonalizationProperties properties = new EquipmentPersonalizationProperties(resources);
-            EquipmentPersonalizationPresenterPage page = new EquipmentPersonalizationPresenterPage(personalizationModel,
-                    properties);
-            UserDialog dialog = new UserDialog(SwingApplicationFrame.getParentComponent(), page);
-            IDialogResult result = dialog.show();
-            if (!result.isCanceled()) {
-              selectedObject.setPersonalization(personalizationModel.getTitle(), personalizationModel.getDescription());
-              initEquipmentObjectPresentation(selectedObject);
-              EquipmentAdditionalPresenter.this.model.updateItem(selectedObject);
-            }
-          }
-        });
+        createPersonalizeTool(selectedObject, objectPresenter);
       }
-      actions.add(
-              new SmartAction(resources.getString("AdditionalTemplateView.RemoveTemplate.Action.Name"), removeIcon) {
-                @Override
-                protected void execute(Component parentComponent) {
-                  model.removeItem(selectedObject);
-                }
-              });
+      createUnpersonalizeTool(selectedObject, objectPresenter);
     }
-    new EquipmentObjectPresenter(selectedObject, objectView, resourceBuilder, model.getCharacterDataProvider(),
-            model.getCharacterOptionProvider(), resources,
-            actions.toArray(new Action[actions.size()])).initPresentation();
-    view.revalidateEquipmentViews();
+  }
+
+  private void createPersonalizeTool(final IEquipmentItem selectedObject, EquipmentObjectPresenter objectPresenter) {
+    Tool personalize = objectPresenter.addContextTool();
+    personalize.setIcon(new BasicUi().getEditIconPath());
+    personalize.setText(resources.getString("AdditionalTemplateView.Personalize.Action.Name"));
+    personalize.setCommand(new Command() {
+      @Override
+      public void execute() {
+        EquipmentPersonalizationModel personalizationModel = new EquipmentPersonalizationModel(selectedObject);
+        EquipmentPersonalizationProperties properties = new EquipmentPersonalizationProperties(resources);
+        EquipmentPersonalizationPresenterPage page = new EquipmentPersonalizationPresenterPage(personalizationModel,
+                properties);
+        UserDialog dialog = new UserDialog(SwingApplicationFrame.getParentComponent(), page);
+        IDialogResult result = dialog.show();
+        if (!result.isCanceled()) {
+          selectedObject.setPersonalization(personalizationModel.getTitle(), personalizationModel.getDescription());
+          initEquipmentObjectPresentation(selectedObject);
+          EquipmentAdditionalPresenter.this.model.updateItem(selectedObject);
+        }
+      }
+    });
+  }
+
+  private void createUnpersonalizeTool(final IEquipmentItem selectedObject, EquipmentObjectPresenter objectPresenter) {
+    Tool unpersonalize = objectPresenter.addContextTool();
+    unpersonalize.setIcon(new BasicUi().getRemoveIconPath());
+    unpersonalize.setText(resources.getString("AdditionalTemplateView.RemoveTemplate.Action.Name"));
+    unpersonalize.setCommand(new Command() {
+      @Override
+      public void execute() {
+        model.removeItem(selectedObject);
+      }
+    });
   }
 }
