@@ -25,7 +25,11 @@ public class BasicUi extends AbstractUI {
   }
 
   public Icon getRightArrowIcon() {
-    return getIcon(new RelativePath("icons/ButtonArrowRight16.png"));
+    return getIcon(getRightArrowIconPath());
+  }
+
+  public RelativePath getRightArrowIconPath() {
+    return new RelativePath("icons/ButtonArrowRight16.png");
   }
 
   public Icon getUpArrowIcon() {

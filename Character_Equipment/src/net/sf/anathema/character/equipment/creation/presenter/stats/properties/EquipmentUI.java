@@ -13,11 +13,11 @@ public class EquipmentUI extends AbstractUI {
     return new RelativePath("icons/" + type.name() + ICON_SIZE + ".png");
   }
 
-  public Icon getRefreshIcon() {
-    return getIcon(new RelativePath("icons/ButtonRefresh16.png"));
-  }
-
   public Icon getIcon(EquipmentStatisticsType type) {
     return getIcon(getIconName(type));
+  }
+
+  public RelativePath getRefreshIconPath() {
+    return new RelativePath("icons/ButtonRefresh16.png");
   }
 }

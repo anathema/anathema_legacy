@@ -22,13 +22,11 @@ import net.sf.anathema.lib.control.ICollectionListener;
 import net.sf.anathema.lib.control.ObjectValueListener;
 import net.sf.anathema.lib.gui.Presenter;
 import net.sf.anathema.lib.gui.TechnologyAgnosticUIConfiguration;
-import net.sf.anathema.lib.gui.action.SmartAction;
 import net.sf.anathema.lib.gui.dialog.core.IDialogResult;
 import net.sf.anathema.lib.gui.dialog.userdialog.UserDialog;
 import net.sf.anathema.lib.gui.selection.IListObjectSelectionView;
 import net.sf.anathema.lib.resources.Resources;
 
-import java.awt.Component;
 import java.util.Arrays;
 import java.util.HashMap;
 import java.util.Map;
@@ -84,8 +82,10 @@ public class EquipmentAdditionalPresenter implements Presenter {
     initMaterialView(magicMaterialView);
     equipmentTemplatePickList.setCellRenderer(new EquipmentObjectCellRenderer(model));
     setObjects(equipmentTemplatePickList);
-    view.setSelectButtonAction(createTemplateAddAction(equipmentTemplatePickList, magicMaterialView));
-    view.setRefreshButtonAction(createRefreshAction(equipmentTemplatePickList));
+    Tool addTool = view.addToolButton();
+    createTemplateAddAction(equipmentTemplatePickList, magicMaterialView, addTool);
+    Tool refreshTool = view.addToolButton();
+    createRefreshAction(equipmentTemplatePickList, refreshTool);
     equipmentTemplatePickList.addObjectSelectionChangedListener(new ObjectValueListener<String>() {
       @Override
       public void valueChanged(String templateId) {
@@ -108,17 +108,17 @@ public class EquipmentAdditionalPresenter implements Presenter {
     magicMaterialView.initView(label, renderer, MagicalMaterial.values());
   }
 
-  private SmartAction createRefreshAction(final IListObjectSelectionView<String> equipmentTemplatePickList) {
-    SmartAction refreshAction = new SmartAction(new EquipmentUI().getRefreshIcon()) {
-
+  private void createRefreshAction(final IListObjectSelectionView<String> equipmentTemplatePickList,
+                                          Tool refreshTool) {
+    refreshTool.setTooltip(resources.getString("AdditionalTemplateView.RefreshDatabase.Action.Tooltip"));
+    refreshTool.setIcon(new EquipmentUI().getRefreshIconPath());
+    refreshTool.setCommand(new Command() {
       @Override
-      protected void execute(Component parentComponent) {
+      public void execute() {
         setObjects(equipmentTemplatePickList);
         model.refreshItems();
       }
-    };
-    refreshAction.setToolTipText(resources.getString("AdditionalTemplateView.RefreshDatabase.Action.Tooltip"));
-    return refreshAction;
+    });
   }
 
   private void setObjects(IListObjectSelectionView<String> equipmentTemplatePickList) {
@@ -127,23 +127,32 @@ public class EquipmentAdditionalPresenter implements Presenter {
     equipmentTemplatePickList.setObjects(templates);
   }
 
-  private SmartAction createTemplateAddAction(final IListObjectSelectionView<String> equipmentTemplatePickList,
-                                              final IMagicalMaterialView materialView) {
-    final SmartAction addAction = new SmartAction(new BasicUi().getRightArrowIcon()) {
+  private void createTemplateAddAction(final IListObjectSelectionView<String> equipmentTemplatePickList,
+                                              final IMagicalMaterialView materialView, final Tool selectTool) {
+    selectTool.setIcon(new BasicUi().getRightArrowIconPath());
+    selectTool.setTooltip(resources.getString("AdditionalTemplateView.AddTemplate.Action.Tooltip"));
+    selectTool.setCommand(new Command() {
       @Override
-      protected void execute(Component parentComponent) {
+      public void execute() {
         model.addEquipmentObjectFor(equipmentTemplatePickList.getSelectedObject(), materialView.getSelectedMaterial());
       }
-    };
-    addAction.setToolTipText(resources.getString("AdditionalTemplateView.AddTemplate.Action.Tooltip"));
+    });
     equipmentTemplatePickList.addObjectSelectionChangedListener(new ObjectValueListener<String>() {
       @Override
       public void valueChanged(String newValue) {
-        addAction.setEnabled(equipmentTemplatePickList.isObjectSelected());
+        setEnabled(equipmentTemplatePickList, selectTool);
       }
     });
-    addAction.setEnabled(equipmentTemplatePickList.isObjectSelected());
-    return addAction;
+    setEnabled(equipmentTemplatePickList, selectTool);
+  }
+
+  private void setEnabled(IListObjectSelectionView<String> equipmentTemplatePickList, Tool selectTool) {
+    if (equipmentTemplatePickList.isObjectSelected()) {
+      selectTool.enable();
+    }
+    else {
+      selectTool.disable();
+    }
   }
 
   private void removeItemView(IEquipmentItem item) {

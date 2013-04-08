@@ -7,10 +7,11 @@ import net.sf.anathema.character.equipment.character.view.IEquipmentObjectView;
 import net.sf.anathema.character.equipment.character.view.IMagicalMaterialView;
 import net.sf.anathema.character.library.taskpane.ITaskPaneGroupViewFactory;
 import net.sf.anathema.character.library.taskpane.TaskPaneView;
+import net.sf.anathema.interaction.Tool;
+import net.sf.anathema.lib.gui.SwingActionTool;
 import net.sf.anathema.lib.gui.selection.IListObjectSelectionView;
 import net.sf.anathema.lib.gui.selection.ListObjectSelectionView;
 
-import javax.swing.Action;
 import javax.swing.JButton;
 import javax.swing.JComponent;
 import javax.swing.JPanel;
@@ -22,8 +23,7 @@ import static net.sf.anathema.lib.gui.layout.LayoutUtils.withoutInsets;
 public class EquipmentAdditionalView implements IEquipmentAdditionalView {
   private final ListObjectSelectionView<String> equipmentPickList = new ListObjectSelectionView<>(String.class);
   private final JPanel panel = new JPanel(new MigLayout(withoutInsets()));
-  private final JButton selectButton = new JButton();
-  private final JButton refreshButton = new JButton();
+  private final JPanel buttonPanel = new JPanel(new MigLayout(withoutInsets().wrapAfter(1)));
   private final TaskPaneView<EquipmentObjectView> taskPaneView = new TaskPaneView<>(
           new ITaskPaneGroupViewFactory<EquipmentObjectView>() {
             @Override
@@ -36,9 +36,6 @@ public class EquipmentAdditionalView implements IEquipmentAdditionalView {
   public EquipmentAdditionalView() {
     JScrollPane itemScrollpane = new JScrollPane(equipmentPickList.getComponent());
     itemScrollpane.setPreferredSize(new Dimension(150, 250));
-    JPanel buttonPanel = new JPanel(new MigLayout(withoutInsets().wrapAfter(1)));
-    buttonPanel.add(selectButton);
-    buttonPanel.add(refreshButton);
     taskPaneView.getComponent().setPreferredSize(new Dimension(150, 250));
     JPanel selectionPanel = new JPanel(new MigLayout(withoutInsets().wrapAfter(1)));
     selectionPanel.add(itemScrollpane, new CC().grow().push());
@@ -64,13 +61,10 @@ public class EquipmentAdditionalView implements IEquipmentAdditionalView {
   }
 
   @Override
-  public void setSelectButtonAction(Action action) {
-    selectButton.setAction(action);
-  }
-
-  @Override
-  public void setRefreshButtonAction(Action action) {
-    refreshButton.setAction(action);
+  public Tool addToolButton() {
+    SwingActionTool tool = new SwingActionTool();
+    buttonPanel.add(new JButton(tool.getAction()));
+    return tool;
   }
 
   @Override

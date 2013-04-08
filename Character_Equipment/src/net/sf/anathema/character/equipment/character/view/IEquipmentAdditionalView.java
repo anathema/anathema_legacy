@@ -1,9 +1,8 @@
 package net.sf.anathema.character.equipment.character.view;
 
 import net.sf.anathema.framework.swing.IView;
+import net.sf.anathema.interaction.Tool;
 import net.sf.anathema.lib.gui.selection.IListObjectSelectionView;
-
-import javax.swing.Action;
 
 public interface IEquipmentAdditionalView extends IView {
 
@@ -13,9 +12,7 @@ public interface IEquipmentAdditionalView extends IView {
 
   void removeEquipmentObjectView(IEquipmentObjectView objectView);
 
-  void setSelectButtonAction(Action action);
-
-  void setRefreshButtonAction(Action action);
+  Tool addToolButton();
 
   IMagicalMaterialView getMagicMaterialView();
 
