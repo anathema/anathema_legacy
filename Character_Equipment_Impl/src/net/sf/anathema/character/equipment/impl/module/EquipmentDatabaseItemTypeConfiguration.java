@@ -8,7 +8,7 @@ import net.sf.anathema.initialization.reflections.Weight;
 
 @ItemTypeConfiguration
 @Weight(weight = 10)
-public final class EquipmentDatabaseItemTypeConfiguration extends AbstractNonPersistableItemTypeConfiguration {
+public class EquipmentDatabaseItemTypeConfiguration extends AbstractNonPersistableItemTypeConfiguration {
 
   public static final String EQUIPMENT_DATABASE_ITEM_TYPE_ID = "EquipmentDatabase";
   private static final RepositoryConfiguration REPOSITORY_CONFIGURATION = new RepositoryConfiguration(".item", "equipment/");
