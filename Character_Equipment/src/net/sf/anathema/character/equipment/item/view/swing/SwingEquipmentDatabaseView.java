@@ -6,19 +6,15 @@ import net.sf.anathema.character.equipment.item.view.EquipmentDatabaseView;
 import net.sf.anathema.character.equipment.item.view.EquipmentDescriptionPanel;
 import net.sf.anathema.character.equipment.item.view.ToolListView;
 import net.sf.anathema.character.generic.equipment.weapon.IEquipmentStats;
-import net.sf.anathema.framework.perspective.PerspectiveToolBar;
 import net.sf.anathema.framework.perspective.SwingPerspectivePane;
 import net.sf.anathema.interaction.Tool;
 import net.sf.anathema.lib.gui.ConfigurableSwingUI;
-import net.sf.anathema.lib.gui.SwingActionTool;
 import net.sf.anathema.lib.gui.TechnologyAgnosticUIConfiguration;
 import net.sf.anathema.lib.gui.container.TitledPanel;
 import net.sf.anathema.lib.gui.layout.LayoutUtils;
 import net.sf.anathema.lib.gui.selection.IListObjectSelectionView;
-import net.sf.anathema.lib.gui.selection.ListObjectSelectionView;
 import net.sf.anathema.lib.gui.ui.ObjectUiListCellRenderer;
 
-import javax.swing.JComponent;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.ListCellRenderer;
@@ -30,11 +26,10 @@ import static net.sf.anathema.lib.gui.layout.LayoutUtils.withoutInsets;
 public class SwingEquipmentDatabaseView implements EquipmentDatabaseView {
   public final SwingPerspectivePane perspectivePane = new SwingPerspectivePane();
   private final JPanel descriptionPanel = new JPanel(new MigLayout(withoutInsets().wrapAfter(1)));
-  private final ListObjectSelectionView<String> templateListView = new ListObjectSelectionView<>(String.class);
   private final SingleSelectionToolListView<IEquipmentStats> statsListView = new SingleSelectionToolListView<>(IEquipmentStats.class);
-  private final PerspectiveToolBar editTemplateButtonPanel = new PerspectiveToolBar();
   private final JPanel statsPanel = new JPanel(new MigLayout(fillWithoutInsets().wrapAfter(1)));
   private final TitledPanel statsTitlePanel = new TitledPanel("", statsPanel);
+  private final SwingEquipmentNavigation navigation = new SwingEquipmentNavigation();
 
   public SwingEquipmentDatabaseView() {
     createNavigationPanel();
@@ -42,11 +37,7 @@ public class SwingEquipmentDatabaseView implements EquipmentDatabaseView {
   }
 
   private void createNavigationPanel() {
-    JComponent templateListPanel = new JScrollPane(templateListView.getComponent());
-    JPanel navigationPanel = new JPanel(new MigLayout(LayoutUtils.fillWithoutInsets().wrapAfter(1)));
-    navigationPanel.add(editTemplateButtonPanel.getComponent());
-    navigationPanel.add(templateListPanel, new CC().grow().push());
-    perspectivePane.setNavigationComponent(navigationPanel);
+    perspectivePane.setNavigationComponent(navigation.getComponent());
   }
 
   private void createDetailPanel() {
@@ -83,13 +74,11 @@ public class SwingEquipmentDatabaseView implements EquipmentDatabaseView {
 
   @Override
   public IListObjectSelectionView<String> getTemplateListView() {
-    return templateListView;
+    return navigation.getTemplateListView();
   }
 
   @Override
   public Tool addEditTemplateTool() {
-    SwingActionTool tool = new SwingActionTool();
-    editTemplateButtonPanel.addTools(tool.getAction());
-    return tool;
+    return navigation.addTool();
   }
 }
