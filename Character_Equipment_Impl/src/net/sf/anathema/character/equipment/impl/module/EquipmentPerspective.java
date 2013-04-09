@@ -5,7 +5,7 @@ import net.sf.anathema.character.equipment.item.EquipmentDatabasePresenter;
 import net.sf.anathema.character.equipment.item.model.IEquipmentDatabase;
 import net.sf.anathema.character.equipment.item.model.IEquipmentDatabaseManagement;
 import net.sf.anathema.character.equipment.item.view.EquipmentDatabaseView;
-import net.sf.anathema.character.equipment.item.view.swing.SwingEquipmentDatabaseView;
+import net.sf.anathema.character.equipment.item.view.fx.FxEquipmentDatabaseView;
 import net.sf.anathema.framework.IApplicationModel;
 import net.sf.anathema.framework.view.perspective.Container;
 import net.sf.anathema.framework.view.perspective.Perspective;
@@ -32,7 +32,7 @@ public class EquipmentPerspective implements Perspective {
   }
 
   private void initInSwing(Container container, Resources resources, IEquipmentDatabaseManagement databaseManagement) {
-    SwingEquipmentDatabaseView view = new SwingEquipmentDatabaseView();
+    FxEquipmentDatabaseView view = new FxEquipmentDatabaseView();
     initPresentation(resources, databaseManagement, view.view);
     container.setSwingContent(view.perspectivePane.getComponent());
   }

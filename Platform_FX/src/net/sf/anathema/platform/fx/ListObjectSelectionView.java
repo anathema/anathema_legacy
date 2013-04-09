@@ -1,10 +1,34 @@
 package net.sf.anathema.platform.fx;
 
+import com.sun.javafx.collections.ObservableListWrapper;
+import javafx.beans.value.ChangeListener;
+import javafx.beans.value.ObservableValue;
+import javafx.scene.Node;
+import javafx.scene.control.ListView;
+import javafx.scene.control.SelectionMode;
 import net.sf.anathema.lib.control.ObjectValueListener;
 import net.sf.anathema.lib.gui.list.veto.IVetor;
 import net.sf.anathema.lib.gui.selection.IVetoableObjectSelectionView;
+import org.jmock.example.announcer.Announcer;
+
+import java.util.Arrays;
 
 public class ListObjectSelectionView<T> implements IVetoableObjectSelectionView<T> {
+
+  private final ListView<T> view = new ListView<>();
+  private final Announcer<ObjectValueListener> announcer = new Announcer<>(ObjectValueListener.class);
+
+  @SuppressWarnings("unchecked")
+  public ListObjectSelectionView() {
+    view.getSelectionModel().setSelectionMode(SelectionMode.SINGLE);
+    view.getSelectionModel().selectedItemProperty().addListener(new ChangeListener<T>() {
+      @Override
+      public void changed(ObservableValue<? extends T> observableValue, T t, T newValue) {
+        announcer.announce().valueChanged(newValue);
+      }
+    });
+  }
+
   @Override
   public void addSelectionVetor(IVetor vetor) {
     //To change body of implemented methods use File | Settings | File Templates.
@@ -17,31 +41,35 @@ public class ListObjectSelectionView<T> implements IVetoableObjectSelectionView<
 
   @Override
   public void setSelectedObject(T object) {
-    //To change body of implemented methods use File | Settings | File Templates.
+    view.getSelectionModel().select(object);
   }
 
   @Override
   public void addObjectSelectionChangedListener(ObjectValueListener<T> listener) {
-    //To change body of implemented methods use File | Settings | File Templates.
+    announcer.addListener(listener);
   }
 
   @Override
   public void setObjects(T[] objects) {
-    //To change body of implemented methods use File | Settings | File Templates.
+    view.setItems(new ObservableListWrapper<>(Arrays.asList(objects)));
   }
 
   @Override
   public T getSelectedObject() {
-    return null;  //To change body of implemented methods use File | Settings | File Templates.
+    return view.getSelectionModel().getSelectedItem();
   }
 
   @Override
   public boolean isObjectSelected() {
-    return false;  //To change body of implemented methods use File | Settings | File Templates.
+    return view.getSelectionModel().isEmpty();
   }
 
   @Override
   public void setEnabled(boolean enabled) {
-    //To change body of implemented methods use File | Settings | File Templates.
+    view.setDisable(!enabled);
+  }
+
+  public Node getNode() {
+    return view;
   }
 }

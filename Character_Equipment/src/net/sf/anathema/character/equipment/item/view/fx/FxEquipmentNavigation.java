@@ -1,22 +1,40 @@
 package net.sf.anathema.character.equipment.item.view.fx;
 
-import javafx.scene.control.ListView;
+import javafx.application.Platform;
 import net.sf.anathema.character.equipment.item.view.EquipmentNavigation;
 import net.sf.anathema.interaction.Tool;
-import net.sf.anathema.lib.gui.selection.IListObjectSelectionView;
+import net.sf.anathema.lib.gui.selection.IVetoableObjectSelectionView;
+import net.sf.anathema.platform.fx.ListObjectSelectionView;
 import net.sf.anathema.platform.fx.Navigation;
 
 public class FxEquipmentNavigation extends Navigation implements EquipmentNavigation {
 
-  private final ListView<String> listView = new ListView<>();
+  private ListObjectSelectionView<String> listView;
 
   public FxEquipmentNavigation() {
-    addElementToNavigation(listView);
+    Platform.runLater(new Runnable() {
+      @Override
+      public void run() {
+        listView = new ListObjectSelectionView<>();
+        addContainerToNavigation(listView.getNode());
+      }
+    });
   }
 
   @Override
-  public IListObjectSelectionView<String> getTemplateListView() {
-    return null;  //To change body of implemented methods use File | Settings | File Templates.
+  public IVetoableObjectSelectionView<String> getTemplateListView() {
+    waitForListView();
+    return listView;
+  }
+
+  private void waitForListView() {
+    while (listView == null) {
+      try {
+        Thread.sleep(50);
+      } catch (InterruptedException e) {
+        throw new RuntimeException(e);
+      }
+    }
   }
 
   @Override

@@ -57,12 +57,22 @@ public class FxButtonTool implements Tool {
 
   @Override
   public void enable() {
-    Platform.runLater(new Enable(button));
+    Platform.runLater(new Runnable() {
+      @Override
+      public void run() {
+        button.setDisable(false);
+      }
+    });
   }
 
   @Override
   public void disable() {
-    Platform.runLater(new Disable(button));
+    Platform.runLater(new Runnable() {
+      @Override
+      public void run() {
+        button.setDisable(true);
+      }
+    });
   }
 
   @Override
