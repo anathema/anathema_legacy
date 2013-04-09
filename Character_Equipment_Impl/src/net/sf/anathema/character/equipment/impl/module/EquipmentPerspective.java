@@ -33,7 +33,7 @@ public class EquipmentPerspective implements Perspective {
 
   private void initInSwing(Container container, Resources resources, IEquipmentDatabaseManagement databaseManagement) {
     SwingEquipmentDatabaseView view = new SwingEquipmentDatabaseView();
-    initPresentation(resources, databaseManagement, view);
+    initPresentation(resources, databaseManagement, view.view);
     container.setSwingContent(view.perspectivePane.getComponent());
   }
 

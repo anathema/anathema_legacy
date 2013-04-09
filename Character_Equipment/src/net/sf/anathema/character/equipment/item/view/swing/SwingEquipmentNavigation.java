@@ -2,6 +2,7 @@ package net.sf.anathema.character.equipment.item.view.swing;
 
 import net.miginfocom.layout.CC;
 import net.miginfocom.swing.MigLayout;
+import net.sf.anathema.character.equipment.item.view.EquipmentNavigation;
 import net.sf.anathema.framework.perspective.PerspectiveToolBar;
 import net.sf.anathema.interaction.Tool;
 import net.sf.anathema.lib.gui.SwingActionTool;
@@ -13,7 +14,7 @@ import javax.swing.JComponent;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 
-public class SwingEquipmentNavigation {
+public class SwingEquipmentNavigation implements EquipmentNavigation {
   private final ListObjectSelectionView<String> templateListView = new ListObjectSelectionView<>(String.class);
   private final PerspectiveToolBar editTemplateButtonPanel = new PerspectiveToolBar();
   private final JPanel navigationPanel = new JPanel(new MigLayout(LayoutUtils.fillWithoutInsets().wrapAfter(1)));
@@ -32,7 +33,8 @@ public class SwingEquipmentNavigation {
     return templateListView;
   }
 
-  public Tool addTool() {
+  @Override
+  public Tool addEditTemplateTool() {
     SwingActionTool tool = new SwingActionTool();
     editTemplateButtonPanel.addTools(tool.getAction());
     return tool;

@@ -3,6 +3,7 @@ package net.sf.anathema.character.equipment.item.view.swing;
 import net.miginfocom.layout.CC;
 import net.miginfocom.swing.MigLayout;
 import net.sf.anathema.character.equipment.item.view.EquipmentDescriptionPanel;
+import net.sf.anathema.character.equipment.item.view.EquipmentDetails;
 import net.sf.anathema.character.equipment.item.view.ToolListView;
 import net.sf.anathema.character.generic.equipment.weapon.IEquipmentStats;
 import net.sf.anathema.lib.gui.ConfigurableSwingUI;
@@ -20,7 +21,7 @@ import javax.swing.border.TitledBorder;
 import static net.sf.anathema.lib.gui.layout.LayoutUtils.fillWithoutInsets;
 import static net.sf.anathema.lib.gui.layout.LayoutUtils.withoutInsets;
 
-public class SwingEquipmentDetails {
+public class SwingEquipmentDetails implements EquipmentDetails {
   private JComponent detailsPanel = new JPanel(new MigLayout(LayoutUtils.fillWithoutInsets().wrapAfter(1)));
   private final SingleSelectionToolListView<IEquipmentStats> statsListView = new SingleSelectionToolListView<>(IEquipmentStats.class);
   private final JPanel statsPanel = new JPanel(new MigLayout(fillWithoutInsets().wrapAfter(1)));

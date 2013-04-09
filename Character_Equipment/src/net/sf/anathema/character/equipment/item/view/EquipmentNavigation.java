@@ -1,10 +1,10 @@
 package net.sf.anathema.character.equipment.item.view;
 
 import net.sf.anathema.interaction.Tool;
-import net.sf.anathema.lib.gui.selection.IVetoableObjectSelectionView;
+import net.sf.anathema.lib.gui.selection.IListObjectSelectionView;
 
 public interface EquipmentNavigation {
-  IVetoableObjectSelectionView<String> getTemplateListView();
+  IListObjectSelectionView<String> getTemplateListView();
 
   Tool addEditTemplateTool();
 }
