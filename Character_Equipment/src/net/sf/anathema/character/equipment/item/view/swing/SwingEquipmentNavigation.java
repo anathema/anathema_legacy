@@ -7,7 +7,7 @@ import net.sf.anathema.framework.perspective.PerspectiveToolBar;
 import net.sf.anathema.interaction.Tool;
 import net.sf.anathema.lib.gui.SwingActionTool;
 import net.sf.anathema.lib.gui.layout.LayoutUtils;
-import net.sf.anathema.lib.gui.selection.IListObjectSelectionView;
+import net.sf.anathema.lib.gui.selection.IVetoableObjectSelectionView;
 import net.sf.anathema.lib.gui.selection.ListObjectSelectionView;
 
 import javax.swing.JComponent;
@@ -29,7 +29,7 @@ public class SwingEquipmentNavigation implements EquipmentNavigation {
     return navigationPanel;
   }
 
-  public IListObjectSelectionView<String> getTemplateListView() {
+  public IVetoableObjectSelectionView<String> getTemplateListView() {
     return templateListView;
   }
 

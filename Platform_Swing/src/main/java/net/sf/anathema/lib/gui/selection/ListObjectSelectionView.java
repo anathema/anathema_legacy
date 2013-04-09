@@ -4,8 +4,8 @@ import net.sf.anathema.lib.control.ObjectValueListener;
 import net.sf.anathema.lib.gui.ConfigurableSwingUI;
 import net.sf.anathema.lib.gui.TechnologyAgnosticUIConfiguration;
 import net.sf.anathema.lib.gui.list.SmartJList;
+import net.sf.anathema.lib.gui.list.VetoableListSelectionModel;
 import net.sf.anathema.lib.gui.list.veto.IVetor;
-import net.sf.anathema.lib.gui.list.veto.VetoableListSelectionModel;
 import net.sf.anathema.lib.gui.ui.ObjectUiListCellRenderer;
 
 import javax.swing.JComponent;

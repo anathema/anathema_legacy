@@ -1,6 +1,6 @@
-package net.sf.anathema.lib.gui.list.veto;
+package net.sf.anathema.lib.gui.list;
 
-import net.sf.anathema.lib.gui.list.ListSelectionMode;
+import net.sf.anathema.lib.gui.list.veto.IVetor;
 
 import javax.swing.DefaultListSelectionModel;
 import java.util.ArrayList;

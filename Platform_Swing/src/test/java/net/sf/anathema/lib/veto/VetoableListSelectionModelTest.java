@@ -1,7 +1,7 @@
 package net.sf.anathema.lib.veto;
 
+import net.sf.anathema.lib.gui.list.VetoableListSelectionModel;
 import net.sf.anathema.lib.gui.list.veto.IVetor;
-import net.sf.anathema.lib.gui.list.veto.VetoableListSelectionModel;
 import org.junit.Test;
 
 import static javax.swing.ListSelectionModel.SINGLE_SELECTION;
