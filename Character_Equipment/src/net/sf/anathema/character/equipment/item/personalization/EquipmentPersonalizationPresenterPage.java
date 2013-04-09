@@ -2,12 +2,12 @@ package net.sf.anathema.character.equipment.item.personalization;
 
 import net.sf.anathema.character.equipment.character.model.IEquipmentPersonalizationModel;
 import net.sf.anathema.lib.gui.dialog.userdialog.page.AbstractDialogPage;
+import net.sf.anathema.lib.gui.event.AbstractDocumentListener;
 import net.sf.anathema.lib.message.IBasicMessage;
 
 import javax.swing.JComponent;
 import javax.swing.JTextField;
 import javax.swing.event.DocumentEvent;
-import javax.swing.event.DocumentListener;
 import javax.swing.text.BadLocationException;
 import javax.swing.text.Document;
 
@@ -56,40 +56,20 @@ public class EquipmentPersonalizationPresenterPage extends AbstractDialogPage {
     return view.getContent();
   }
 
-  private void addField(String label, String field, final ITextFieldChangedListener listener) {
+  private void addField(String label, String content, final ITextFieldChangedListener listener) {
     JTextField box = new JTextField();
-    if (field != null) {
-      box.setText(field);
+    if (content != null) {
+      box.setText(content);
     }
-    box.getDocument().addDocumentListener(new DocumentListener() {
-
+    box.getDocument().addDocumentListener(new AbstractDocumentListener() {
       @Override
-      public void changedUpdate(DocumentEvent event) {
+      protected void updateText(DocumentEvent e) {
         try {
-          Document document = event.getDocument();
+          Document document = e.getDocument();
           listener.textChanged(document.getText(0, document.getLength()));
         } catch (BadLocationException ignored) {
         }
       }
-
-      @Override
-      public void insertUpdate(DocumentEvent event) {
-        try {
-          Document document = event.getDocument();
-          listener.textChanged(document.getText(0, document.getLength()));
-        } catch (BadLocationException ignored) {
-        }
-      }
-
-      @Override
-      public void removeUpdate(DocumentEvent event) {
-        try {
-          Document document = event.getDocument();
-          listener.textChanged(document.getText(0, document.getLength()));
-        } catch (BadLocationException ignored) {
-        }
-      }
-
     });
     view.addEntry(label, box);
   }
