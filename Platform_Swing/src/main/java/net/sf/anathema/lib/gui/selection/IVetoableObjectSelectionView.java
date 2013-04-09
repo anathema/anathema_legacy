@@ -6,5 +6,6 @@ public interface IVetoableObjectSelectionView<V> extends IObjectSelectionView<V>
 
   void addSelectionVetor(IVetor vetor);
 
+  @SuppressWarnings("UnusedDeclaration")
   void removeSelectionVetor(IVetor vetor);
 }

@@ -37,16 +37,24 @@ public class SwingEquipmentDatabaseView implements EquipmentDatabaseView {
   private final TitledPanel statsTitlePanel = new TitledPanel("", statsPanel);
 
   public SwingEquipmentDatabaseView() {
-    JPanel detailPanel = new JPanel(new MigLayout(LayoutUtils.fillWithoutInsets().wrapAfter(1)));
+    createNavigationPanel();
+    createDetailPanel();
+  }
+
+  private void createNavigationPanel() {
+    JComponent templateListPanel = new JScrollPane(templateListView.getComponent());
     JPanel navigationPanel = new JPanel(new MigLayout(LayoutUtils.fillWithoutInsets().wrapAfter(1)));
+    navigationPanel.add(editTemplateButtonPanel.getComponent());
+    navigationPanel.add(templateListPanel, new CC().grow().push());
+    perspectivePane.setNavigationComponent(navigationPanel);
+  }
+
+  private void createDetailPanel() {
+    JPanel detailPanel = new JPanel(new MigLayout(LayoutUtils.fillWithoutInsets().wrapAfter(1)));
     statsPanel.add(new JScrollPane(statsListView.getComponent()), new CC().grow().push());
     detailPanel.add(descriptionPanel, new CC().grow().pushX());
     detailPanel.add(statsTitlePanel, new CC().grow().push());
-    navigationPanel.add(editTemplateButtonPanel.getComponent());
-    JComponent templateListPanel = new JScrollPane(templateListView.getComponent());
-    navigationPanel.add(templateListPanel, new CC().grow().push());
     perspectivePane.setContentComponent(detailPanel);
-    perspectivePane.setNavigationComponent(navigationPanel);
   }
 
   @Override
