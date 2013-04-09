@@ -5,7 +5,7 @@ import net.sf.anathema.character.equipment.item.view.AgnosticEquipmentDatabaseVi
 import net.sf.anathema.platform.fx.FxThreading;
 import net.sf.anathema.platform.fx.PerspectivePane;
 
-public class FxEquipmentDatabaseView{
+public class FxEquipmentDatabaseView {
 
   public final PerspectivePane perspectivePane = new PerspectivePane();
   private final FxEquipmentDetails details = new FxEquipmentDetails();
