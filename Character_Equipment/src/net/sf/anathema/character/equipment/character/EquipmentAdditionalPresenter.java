@@ -167,8 +167,8 @@ public class EquipmentAdditionalPresenter implements Presenter {
     viewsByItem.put(selectedObject, objectView);
     EquipmentObjectPresenter objectPresenter = new EquipmentObjectPresenter(selectedObject, objectView, resourceBuilder,
             model.getCharacterDataProvider(), model.getCharacterOptionProvider(), resources);
-    enablePersonalization(selectedObject, objectPresenter);
     objectPresenter.initPresentation();
+    enablePersonalization(selectedObject, objectPresenter);
     view.revalidateEquipmentViews();
   }
 

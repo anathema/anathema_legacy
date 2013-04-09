@@ -1,7 +1,7 @@
 package net.sf.anathema.character.equipment.item.personalization;
 
-import javax.swing.JTextField;
+import net.sf.anathema.lib.workflow.textualdescription.ITextView;
 
 public interface IEquipmentPersonalizationView {
-	void addEntry(String label, JTextField text);
+	ITextView addEntry(String label);
 }
