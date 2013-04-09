@@ -1,7 +1,7 @@
 package net.sf.anathema.character.equipment.item;
 
 import net.sf.anathema.character.equipment.item.model.IEquipmentDatabaseManagement;
-import net.sf.anathema.character.equipment.item.view.EquipmentDatabaseView;
+import net.sf.anathema.character.equipment.item.view.EquipmentNavigation;
 import net.sf.anathema.framework.view.SwingApplicationFrame;
 import net.sf.anathema.interaction.Command;
 import net.sf.anathema.interaction.Tool;
@@ -19,7 +19,7 @@ public class RemoveEquipmentTemplateAction {
     this.model = model;
   }
 
-  public void addToolTo(EquipmentDatabaseView view) {
+  public void addToolTo(EquipmentNavigation view) {
     final Tool removeTool = view.addEditTemplateTool();
     removeTool.setIcon(new RelativePath("icons/ButtonCross24.png"));
     removeTool.setTooltip(resources.getString("Equipment.Creation.Item.RemoveActionTooltip"));
@@ -37,9 +37,9 @@ public class RemoveEquipmentTemplateAction {
   }
 
   private class RemoveEquipmentItem implements Command {
-    private final EquipmentDatabaseView view;
+    private final EquipmentNavigation view;
 
-    public RemoveEquipmentItem(EquipmentDatabaseView view) {
+    public RemoveEquipmentItem(EquipmentNavigation view) {
       this.view = view;
     }
 

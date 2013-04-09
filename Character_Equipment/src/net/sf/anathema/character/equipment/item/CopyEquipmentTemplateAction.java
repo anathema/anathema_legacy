@@ -1,7 +1,7 @@
 package net.sf.anathema.character.equipment.item;
 
 import net.sf.anathema.character.equipment.item.model.IEquipmentDatabaseManagement;
-import net.sf.anathema.character.equipment.item.view.EquipmentDatabaseView;
+import net.sf.anathema.character.equipment.item.view.EquipmentNavigation;
 import net.sf.anathema.framework.view.SwingApplicationFrame;
 import net.sf.anathema.interaction.Command;
 import net.sf.anathema.interaction.Tool;
@@ -19,7 +19,7 @@ public class CopyEquipmentTemplateAction {
     this.model = model;
   }
 
-  public void addToolTo(EquipmentDatabaseView view) {
+  public void addToolTo(EquipmentNavigation view) {
     final Tool copyTool = view.addEditTemplateTool();
     copyTool.setIcon(new RelativePath("icons/ButtonDuplicate24.png"));
     copyTool.setTooltip(resources.getString("Equipment.Creation.Item.CopyActionTooltip"));

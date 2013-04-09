@@ -2,12 +2,12 @@ package net.sf.anathema.character.equipment.item;
 
 import net.sf.anathema.character.equipment.item.model.IEquipmentDatabaseManagement;
 import net.sf.anathema.character.equipment.item.model.IEquipmentTemplateEditModel;
-import net.sf.anathema.character.equipment.item.view.EquipmentDatabaseView;
+import net.sf.anathema.character.equipment.item.view.EquipmentNavigation;
 import net.sf.anathema.framework.view.SwingApplicationFrame;
 import net.sf.anathema.lib.control.IChangeListener;
 import net.sf.anathema.lib.control.ObjectValueListener;
-import net.sf.anathema.lib.gui.Presenter;
 import net.sf.anathema.lib.data.ICondition;
+import net.sf.anathema.lib.gui.Presenter;
 import net.sf.anathema.lib.resources.Resources;
 
 import java.util.Arrays;
@@ -26,13 +26,13 @@ public class EquipmentTemplateListPresenter implements Presenter {
   }
 
   private final Resources resources;
-  private final EquipmentDatabaseView view;
+  private final EquipmentNavigation view;
   private final IEquipmentDatabaseManagement model;
 
   public EquipmentTemplateListPresenter(
       Resources resources,
       IEquipmentDatabaseManagement model,
-      EquipmentDatabaseView view) {
+      EquipmentNavigation view) {
     this.resources = resources;
     this.model = model;
     this.view = view;
