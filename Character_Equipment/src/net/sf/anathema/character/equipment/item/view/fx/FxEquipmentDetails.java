@@ -29,7 +29,15 @@ public class FxEquipmentDetails implements EquipmentDetails {
   @Override
   public ToolListView<IEquipmentStats> initStatsListView(
           TechnologyAgnosticUIConfiguration<IEquipmentStats> configuration) {
-    return new NullToolListView();
+    final FxToolListView<IEquipmentStats> listView = new FxToolListView<>();
+    listView.setUiConfiguration(configuration);
+    Platform.runLater(new Runnable() {
+      @Override
+      public void run() {
+        outerPane.add(listView.getNode());
+      }
+    });
+    return listView;
   }
 
   @Override
@@ -40,6 +48,7 @@ public class FxEquipmentDetails implements EquipmentDetails {
   @Override
   public EquipmentDescriptionPanel addDescriptionPanel(String title) {
     final FxEquipmentDescriptionPanel panel = new FxEquipmentDescriptionPanel();
+    panel.setTitle(title);
     Platform.runLater(new Runnable() {
       @Override
       public void run() {

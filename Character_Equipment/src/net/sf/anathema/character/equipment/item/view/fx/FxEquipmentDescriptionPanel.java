@@ -2,6 +2,8 @@ package net.sf.anathema.character.equipment.item.view.fx;
 
 import javafx.application.Platform;
 import javafx.scene.Node;
+import javafx.scene.control.Separator;
+import javafx.scene.text.Text;
 import net.sf.anathema.character.equipment.MagicalMaterial;
 import net.sf.anathema.character.equipment.MaterialComposition;
 import net.sf.anathema.character.equipment.item.view.CostSelectionView;
@@ -69,5 +71,15 @@ public class FxEquipmentDescriptionPanel implements EquipmentDescriptionPanel {
 
   public Node getNode() {
     return pane;
+  }
+
+  public void setTitle(final String title) {
+    Platform.runLater(new Runnable() {
+      @Override
+      public void run() {
+        pane.add(new Text(title));
+        pane.add(new Separator());
+      }
+    });
   }
 }

@@ -33,7 +33,7 @@ public class EditStatsAction {
     tool.setCommand(new Command() {
       @Override
       public void execute() {
-        IEquipmentStats selectedStats = statsListView.getSelectedItems()[0];
+        IEquipmentStats selectedStats = statsListView.getSelectedItems().get(0);
         List<String> definedNames = new ArrayList<>();
         for (IEquipmentStats stats : editModel.getStats()) {
           if (stats == selectedStats) {
@@ -60,7 +60,7 @@ public class EditStatsAction {
   }
 
   private void updateEnabled(ToolListView<IEquipmentStats> statsListView, Tool tool) {
-    if (statsListView.getSelectedItems().length == 1) {
+    if (statsListView.getSelectedItems().size() == 1) {
       tool.enable();
     } else {
       tool.disable();

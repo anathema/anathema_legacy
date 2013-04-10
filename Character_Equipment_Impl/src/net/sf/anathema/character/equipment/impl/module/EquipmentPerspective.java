@@ -20,7 +20,7 @@ import net.sf.anathema.lib.resources.Resources;
 @Weight(weight = 5000)
 public class EquipmentPerspective implements Perspective {
 
-  private static final boolean USE_FX = false;
+  private static final boolean USE_FX = true;
 
   @Override
   public void configureToggle(PerspectiveToggle toggle) {

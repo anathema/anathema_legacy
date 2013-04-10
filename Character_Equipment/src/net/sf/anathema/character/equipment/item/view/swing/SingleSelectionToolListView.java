@@ -16,6 +16,7 @@ import javax.swing.ListSelectionModel;
 import javax.swing.event.ListSelectionEvent;
 import javax.swing.event.ListSelectionListener;
 import java.awt.GridLayout;
+import java.util.List;
 
 import static net.sf.anathema.lib.gui.layout.LayoutUtils.fillWithoutInsets;
 import static net.sf.anathema.lib.gui.layout.LayoutUtils.getComponentSpacing;
@@ -47,8 +48,8 @@ public class SingleSelectionToolListView<T> implements ToolListView<T> {
   }
 
   @Override
-  public T[] getSelectedItems() {
-    return list.getSelectedValues();
+  public List<T> getSelectedItems() {
+    return list.getSelectedValuesList();
   }
 
   protected JComponent getDisplayComponent() {
