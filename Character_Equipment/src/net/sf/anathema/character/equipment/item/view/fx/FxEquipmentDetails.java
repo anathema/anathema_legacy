@@ -11,6 +11,7 @@ import org.tbee.javafx.scene.layout.MigPane;
 
 public class FxEquipmentDetails implements EquipmentDetails {
 
+  private final FxToolListView<IEquipmentStats> listView = new FxToolListView<>();
   private MigPane outerPane;
 
   public FxEquipmentDetails() {
@@ -29,7 +30,6 @@ public class FxEquipmentDetails implements EquipmentDetails {
   @Override
   public ToolListView<IEquipmentStats> initStatsListView(
           TechnologyAgnosticUIConfiguration<IEquipmentStats> configuration) {
-    final FxToolListView<IEquipmentStats> listView = new FxToolListView<>();
     listView.setUiConfiguration(configuration);
     Platform.runLater(new Runnable() {
       @Override
@@ -42,7 +42,7 @@ public class FxEquipmentDetails implements EquipmentDetails {
 
   @Override
   public void setStatsListHeader(String headerText) {
-    //nothing to do
+    listView.setHeader(headerText);
   }
 
   @Override

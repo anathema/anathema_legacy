@@ -5,9 +5,11 @@ import javafx.application.Platform;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
 import javafx.scene.Node;
+import javafx.scene.control.Label;
 import javafx.scene.control.ListCell;
 import javafx.scene.control.ListView;
 import javafx.scene.control.SelectionMode;
+import javafx.scene.control.Separator;
 import javafx.scene.layout.GridPane;
 import javafx.util.Callback;
 import net.sf.anathema.character.equipment.item.view.ToolListView;
@@ -46,23 +48,13 @@ public class FxToolListView<T> implements ToolListView<T> {
 
   @Override
   public void addListSelectionListener(final Runnable listener) {
-    waitForList();
+    waitForContent();
     list.getSelectionModel().selectedItemProperty().addListener(new ChangeListener<T>() {
       @Override
       public void changed(ObservableValue<? extends T> observableValue, T t, T t2) {
         listener.run();
       }
     });
-  }
-
-  private void waitForList() {
-    while (list == null) {
-      try {
-        Thread.sleep(50);
-      } catch (InterruptedException e) {
-        throw new RuntimeException(e);
-      }
-    }
   }
 
   @Override
@@ -87,12 +79,33 @@ public class FxToolListView<T> implements ToolListView<T> {
   }
 
   public void setUiConfiguration(final TechnologyAgnosticUIConfiguration<T> configuration) {
-    waitForList();
+    waitForContent();
     list.setCellFactory(new Callback<ListView<T>, ListCell<T>>() {
       @Override
       public ListCell<T> call(ListView<T> tListView) {
         return new UITableCell<>(configuration);
       }
     });
+  }
+
+  public void setHeader(final String headerText) {
+    waitForContent();
+    Platform.runLater(new Runnable() {
+      @Override
+      public void run() {
+        content.getChildren().add(0, new Label(headerText));
+        content.getChildren().add(0, new Separator());
+      }
+    });
+  }
+
+  private void waitForContent() {
+    while (content == null) {
+      try {
+        Thread.sleep(50);
+      } catch (InterruptedException e) {
+        throw new RuntimeException(e);
+      }
+    }
   }
 }
