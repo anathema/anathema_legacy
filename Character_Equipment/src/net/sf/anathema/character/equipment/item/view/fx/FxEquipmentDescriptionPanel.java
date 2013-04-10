@@ -44,7 +44,8 @@ public class FxEquipmentDescriptionPanel implements EquipmentDescriptionPanel {
     Platform.runLater(new Runnable() {
       @Override
       public void run() {
-        pane.add(view.getNode());
+        Node node = view.getNode();
+        pane.add(node);
       }
     });
     return view;
