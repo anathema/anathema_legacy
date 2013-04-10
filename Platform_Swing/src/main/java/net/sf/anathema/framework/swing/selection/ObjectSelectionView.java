@@ -1,8 +1,9 @@
-package net.sf.anathema.lib.gui.selection;
+package net.sf.anathema.framework.swing.selection;
 
 import net.miginfocom.layout.CC;
 import net.sf.anathema.lib.control.ObjectValueListener;
 import net.sf.anathema.lib.gui.layout.AdditiveView;
+import net.sf.anathema.lib.gui.selection.IObjectSelectionView;
 import net.sf.anathema.lib.gui.widgets.ChangeableJComboBox;
 import net.sf.anathema.lib.gui.widgets.IChangeableJComboBox;
 

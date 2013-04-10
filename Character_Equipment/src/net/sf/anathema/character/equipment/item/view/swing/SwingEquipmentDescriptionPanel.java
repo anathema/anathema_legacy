@@ -9,7 +9,7 @@ import net.sf.anathema.lib.gui.TechnologyAgnosticUIConfiguration;
 import net.sf.anathema.character.equipment.item.view.CostSelectionView;
 import net.sf.anathema.framework.value.MarkerIntValueDisplayFactory;
 import net.sf.anathema.lib.gui.selection.IObjectSelectionView;
-import net.sf.anathema.lib.gui.selection.ObjectSelectionView;
+import net.sf.anathema.framework.swing.selection.ObjectSelectionView;
 import net.sf.anathema.lib.gui.ui.ObjectUiListCellRenderer;
 import net.sf.anathema.lib.workflow.container.factory.MigPanelBuilder;
 import net.sf.anathema.lib.workflow.textualdescription.ITextView;

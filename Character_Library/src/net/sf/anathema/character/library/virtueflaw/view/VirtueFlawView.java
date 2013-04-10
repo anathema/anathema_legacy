@@ -8,7 +8,7 @@ import net.sf.anathema.character.library.trait.view.SimpleTraitView;
 import net.sf.anathema.character.library.virtueflaw.presenter.IVirtueFlawView;
 import net.sf.anathema.framework.value.IntegerViewFactory;
 import net.sf.anathema.lib.gui.selection.IObjectSelectionView;
-import net.sf.anathema.lib.gui.selection.ObjectSelectionView;
+import net.sf.anathema.framework.swing.selection.ObjectSelectionView;
 import net.sf.anathema.lib.workflow.textualdescription.ITextView;
 import net.sf.anathema.lib.workflow.textualdescription.SwingTextView;
 import net.sf.anathema.lib.workflow.textualdescription.view.LabelTextView;

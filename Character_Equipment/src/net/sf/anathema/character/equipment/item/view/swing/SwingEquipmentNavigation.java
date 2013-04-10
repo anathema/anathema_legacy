@@ -8,7 +8,7 @@ import net.sf.anathema.interaction.Tool;
 import net.sf.anathema.lib.gui.SwingActionTool;
 import net.sf.anathema.lib.gui.layout.LayoutUtils;
 import net.sf.anathema.lib.gui.selection.IVetoableObjectSelectionView;
-import net.sf.anathema.lib.gui.selection.ListObjectSelectionView;
+import net.sf.anathema.framework.swing.selection.ListObjectSelectionView;
 
 import javax.swing.JComponent;
 import javax.swing.JPanel;
