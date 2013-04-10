@@ -6,15 +6,14 @@ import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
 import javafx.scene.Node;
 import javafx.scene.control.Label;
-import javafx.scene.control.ListCell;
 import javafx.scene.control.ListView;
 import javafx.scene.control.SelectionMode;
 import javafx.scene.control.Separator;
 import javafx.scene.layout.GridPane;
-import javafx.util.Callback;
 import net.sf.anathema.character.equipment.item.view.ToolListView;
 import net.sf.anathema.interaction.Tool;
 import net.sf.anathema.lib.gui.AgnosticUIConfiguration;
+import net.sf.anathema.platform.fx.ConfigurableListCellFactory;
 import net.sf.anathema.platform.tool.FxButtonTool;
 import org.tbee.javafx.scene.layout.MigPane;
 
@@ -80,12 +79,7 @@ public class FxToolListView<T> implements ToolListView<T> {
 
   public void setUiConfiguration(final AgnosticUIConfiguration<T> configuration) {
     waitForContent();
-    list.setCellFactory(new Callback<ListView<T>, ListCell<T>>() {
-      @Override
-      public ListCell<T> call(ListView<T> tListView) {
-        return new UITableCell<>(configuration);
-      }
-    });
+    list.setCellFactory(new ConfigurableListCellFactory<>(configuration));
   }
 
   public void setHeader(final String headerText) {
@@ -108,4 +102,5 @@ public class FxToolListView<T> implements ToolListView<T> {
       }
     }
   }
+
 }

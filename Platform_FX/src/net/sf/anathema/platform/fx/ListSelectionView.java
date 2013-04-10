@@ -13,13 +13,13 @@ import org.jmock.example.announcer.Announcer;
 
 import java.util.Arrays;
 
-public class ListObjectSelectionView<T> implements IVetoableObjectSelectionView<T> {
+public class ListSelectionView<T> implements IVetoableObjectSelectionView<T> {
 
   private final ListView<T> view = new ListView<>();
   private final Announcer<ObjectValueListener> announcer = new Announcer<>(ObjectValueListener.class);
 
   @SuppressWarnings("unchecked")
-  public ListObjectSelectionView() {
+  public ListSelectionView() {
     view.getSelectionModel().setSelectionMode(SelectionMode.SINGLE);
     view.getSelectionModel().selectedItemProperty().addListener(new ChangeListener<T>() {
       @Override

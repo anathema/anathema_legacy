@@ -9,9 +9,9 @@ import net.sf.anathema.character.equipment.MaterialComposition;
 import net.sf.anathema.character.equipment.item.view.CostSelectionView;
 import net.sf.anathema.character.equipment.item.view.EquipmentDescriptionPanel;
 import net.sf.anathema.lib.gui.AgnosticUIConfiguration;
-import net.sf.anathema.lib.gui.selection.NullObjectSelectionView;
 import net.sf.anathema.lib.gui.selection.IObjectSelectionView;
 import net.sf.anathema.lib.workflow.textualdescription.ITextView;
+import net.sf.anathema.platform.fx.ComboBoxSelectionView;
 import net.sf.anathema.platform.fx.FxTextView;
 import org.tbee.javafx.scene.layout.MigPane;
 
@@ -55,13 +55,27 @@ public class FxEquipmentDescriptionPanel implements EquipmentDescriptionPanel {
   @Override
   public IObjectSelectionView<MaterialComposition> addCompositionView(String label,
                                                                       AgnosticUIConfiguration<MaterialComposition> ui) {
-    return new NullObjectSelectionView<>();
+    final ComboBoxSelectionView<MaterialComposition> selectionView = new ComboBoxSelectionView<>(label, ui);
+    Platform.runLater(new Runnable() {
+      @Override
+      public void run() {
+        pane.add(selectionView.getNode());
+      }
+    });
+    return selectionView;
   }
 
   @Override
   public IObjectSelectionView<MagicalMaterial> addMaterialView(String label,
                                                                AgnosticUIConfiguration<MagicalMaterial> ui) {
-    return new NullObjectSelectionView<>();
+    final ComboBoxSelectionView<MagicalMaterial> selectionView = new ComboBoxSelectionView<>(label, ui);
+    Platform.runLater(new Runnable() {
+      @Override
+      public void run() {
+        pane.add(selectionView.getNode());
+      }
+    });
+    return selectionView;
   }
 
   @Override
