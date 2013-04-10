@@ -1,6 +1,5 @@
 package net.sf.anathema.character.equipment.wizard;
 
-import net.sf.anathema.lib.gui.dialog.wizard.IWizardPage;
 import net.sf.anathema.lib.data.ICondition;
 import net.sf.anathema.lib.message.BasicMessage;
 import net.sf.anathema.lib.message.IBasicMessage;
