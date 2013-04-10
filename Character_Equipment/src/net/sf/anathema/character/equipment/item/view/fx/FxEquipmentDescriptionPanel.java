@@ -8,7 +8,7 @@ import net.sf.anathema.character.equipment.MagicalMaterial;
 import net.sf.anathema.character.equipment.MaterialComposition;
 import net.sf.anathema.character.equipment.item.view.CostSelectionView;
 import net.sf.anathema.character.equipment.item.view.EquipmentDescriptionPanel;
-import net.sf.anathema.lib.gui.TechnologyAgnosticUIConfiguration;
+import net.sf.anathema.lib.gui.AgnosticUIConfiguration;
 import net.sf.anathema.lib.gui.selection.NullObjectSelectionView;
 import net.sf.anathema.lib.gui.selection.IObjectSelectionView;
 import net.sf.anathema.lib.workflow.textualdescription.ITextView;
@@ -54,13 +54,13 @@ public class FxEquipmentDescriptionPanel implements EquipmentDescriptionPanel {
 
   @Override
   public IObjectSelectionView<MaterialComposition> addCompositionView(String label,
-                                                                      TechnologyAgnosticUIConfiguration<MaterialComposition> ui) {
+                                                                      AgnosticUIConfiguration<MaterialComposition> ui) {
     return new NullObjectSelectionView<>();
   }
 
   @Override
   public IObjectSelectionView<MagicalMaterial> addMaterialView(String label,
-                                                               TechnologyAgnosticUIConfiguration<MagicalMaterial> ui) {
+                                                               AgnosticUIConfiguration<MagicalMaterial> ui) {
     return new NullObjectSelectionView<>();
   }
 

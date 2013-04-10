@@ -5,15 +5,15 @@ import javafx.scene.control.Tooltip;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import net.sf.anathema.lib.file.RelativePath;
-import net.sf.anathema.lib.gui.TechnologyAgnosticUIConfiguration;
+import net.sf.anathema.lib.gui.AgnosticUIConfiguration;
 import net.sf.anathema.platform.fx.ResourceLoader;
 
 import java.io.InputStream;
 
 public class UITableCell<T> extends ListCell<T> {
-  private TechnologyAgnosticUIConfiguration<T> configuration;
+  private AgnosticUIConfiguration<T> configuration;
 
-  public UITableCell(TechnologyAgnosticUIConfiguration<T> configuration) {
+  public UITableCell(AgnosticUIConfiguration<T> configuration) {
     this.configuration = configuration;
   }
 

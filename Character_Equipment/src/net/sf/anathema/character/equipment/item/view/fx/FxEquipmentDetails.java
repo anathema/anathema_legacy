@@ -6,7 +6,7 @@ import net.sf.anathema.character.equipment.item.view.EquipmentDescriptionPanel;
 import net.sf.anathema.character.equipment.item.view.EquipmentDetails;
 import net.sf.anathema.character.equipment.item.view.ToolListView;
 import net.sf.anathema.character.generic.equipment.weapon.IEquipmentStats;
-import net.sf.anathema.lib.gui.TechnologyAgnosticUIConfiguration;
+import net.sf.anathema.lib.gui.AgnosticUIConfiguration;
 import org.tbee.javafx.scene.layout.MigPane;
 
 public class FxEquipmentDetails implements EquipmentDetails {
@@ -29,7 +29,7 @@ public class FxEquipmentDetails implements EquipmentDetails {
 
   @Override
   public ToolListView<IEquipmentStats> initStatsListView(
-          TechnologyAgnosticUIConfiguration<IEquipmentStats> configuration) {
+          AgnosticUIConfiguration<IEquipmentStats> configuration) {
     listView.setUiConfiguration(configuration);
     Platform.runLater(new Runnable() {
       @Override

@@ -1,7 +1,7 @@
 package net.sf.anathema.character.equipment.creation.presenter.stats.properties;
 
 import net.sf.anathema.character.generic.health.HealthType;
-import net.sf.anathema.lib.gui.TechnologyAgnosticUIConfiguration;
+import net.sf.anathema.lib.gui.AgnosticUIConfiguration;
 import net.sf.anathema.lib.resources.Resources;
 
 public class WeaponDamageProperties extends AbstractProperties {
@@ -21,7 +21,7 @@ public class WeaponDamageProperties extends AbstractProperties {
     return getLabelString("Equipment.Stats.Long.Damage");
   }
 
-  public TechnologyAgnosticUIConfiguration<HealthType> getHealthTypeUi() {
+  public AgnosticUIConfiguration<HealthType> getHealthTypeUi() {
     return new HealthTypeUi(resources);
   }
 }

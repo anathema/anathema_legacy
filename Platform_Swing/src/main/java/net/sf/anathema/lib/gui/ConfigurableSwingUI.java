@@ -8,9 +8,9 @@ import javax.swing.Icon;
 
 public class ConfigurableSwingUI<T> implements ObjectUi<T> {
 
-  private TechnologyAgnosticUIConfiguration<T> configuration;
+  private AgnosticUIConfiguration<T> configuration;
 
-  public ConfigurableSwingUI(TechnologyAgnosticUIConfiguration<T> configuration) {
+  public ConfigurableSwingUI(AgnosticUIConfiguration<T> configuration) {
     this.configuration = configuration;
   }
 
@@ -18,7 +18,7 @@ public class ConfigurableSwingUI<T> implements ObjectUi<T> {
   @Override
   public Icon getIcon(T value) {
     RelativePath relativePath = configuration.getIconsRelativePath(value);
-    if (relativePath == TechnologyAgnosticUIConfiguration.NO_ICON) {
+    if (relativePath == AgnosticUIConfiguration.NO_ICON) {
       return null;
     }
     return new ImageProvider().getImageIcon(relativePath);

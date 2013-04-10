@@ -1,7 +1,7 @@
 package net.sf.anathema.framework.presenter.view;
 
 import net.sf.anathema.lib.file.RelativePath;
-import net.sf.anathema.lib.gui.TechnologyAgnosticUIConfiguration;
+import net.sf.anathema.lib.gui.AgnosticUIConfiguration;
 import net.sf.anathema.lib.workflow.wizard.selection.DialogBasedTemplateFactory;
 
 public interface IItemTypeViewProperties {
@@ -12,5 +12,5 @@ public interface IItemTypeViewProperties {
 
   String getLabelKey();
 
-  TechnologyAgnosticUIConfiguration getItemTypeUI();
+  AgnosticUIConfiguration getItemTypeUI();
 }

@@ -2,15 +2,15 @@ package net.sf.anathema.framework.presenter.view;
 
 import net.sf.anathema.framework.item.IItemType;
 import net.sf.anathema.lib.file.RelativePath;
-import net.sf.anathema.lib.gui.TechnologyAgnosticUIConfiguration;
+import net.sf.anathema.lib.gui.AgnosticUIConfiguration;
 
 public abstract class AbstractItemTypeViewProperties implements IItemTypeViewProperties {
 
   private final RelativePath icon;
   private final IItemType type;
-  private final TechnologyAgnosticUIConfiguration ui;
+  private final AgnosticUIConfiguration ui;
 
-  public AbstractItemTypeViewProperties(IItemType type, RelativePath icon, TechnologyAgnosticUIConfiguration ui) {
+  public AbstractItemTypeViewProperties(IItemType type, RelativePath icon, AgnosticUIConfiguration ui) {
     this.type = type;
     this.icon = icon;
     this.ui = ui;
@@ -22,7 +22,7 @@ public abstract class AbstractItemTypeViewProperties implements IItemTypeViewPro
   }
 
   @Override
-  public TechnologyAgnosticUIConfiguration getItemTypeUI() {
+  public AgnosticUIConfiguration getItemTypeUI() {
     return ui;
   }
 

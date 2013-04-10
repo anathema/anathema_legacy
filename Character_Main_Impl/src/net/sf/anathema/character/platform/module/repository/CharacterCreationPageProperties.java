@@ -4,7 +4,7 @@ import net.sf.anathema.character.generic.framework.resources.CharacterUI;
 import net.sf.anathema.character.generic.type.ICharacterType;
 import net.sf.anathema.character.view.repository.ITemplateTypeAggregation;
 import net.sf.anathema.lib.gui.AbstractUIConfiguration;
-import net.sf.anathema.lib.gui.TechnologyAgnosticUIConfiguration;
+import net.sf.anathema.lib.gui.AgnosticUIConfiguration;
 import net.sf.anathema.lib.message.BasicMessage;
 import net.sf.anathema.lib.message.IBasicMessage;
 import net.sf.anathema.lib.message.MessageType;
@@ -38,7 +38,7 @@ public class CharacterCreationPageProperties {
     return iconProvider.getSmallTypeIcon(type);
   }
 
-  public TechnologyAgnosticUIConfiguration<ITemplateTypeAggregation> getTemplateUI() {
+  public AgnosticUIConfiguration<ITemplateTypeAggregation> getTemplateUI() {
     return new AbstractUIConfiguration<ITemplateTypeAggregation>() {
       @Override
       public String getLabel(ITemplateTypeAggregation value) {

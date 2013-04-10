@@ -2,7 +2,7 @@ package net.sf.anathema.framework.swing.selection;
 
 import net.sf.anathema.lib.control.ObjectValueListener;
 import net.sf.anathema.lib.gui.ConfigurableSwingUI;
-import net.sf.anathema.lib.gui.TechnologyAgnosticUIConfiguration;
+import net.sf.anathema.lib.gui.AgnosticUIConfiguration;
 import net.sf.anathema.lib.gui.list.SmartJList;
 import net.sf.anathema.lib.gui.list.VetoableListSelectionModel;
 import net.sf.anathema.lib.gui.list.veto.IVetor;
@@ -32,7 +32,7 @@ public class ListObjectSelectionView<V> implements IListObjectSelectionView<V> {
   }
 
   @Override
-  public void setCellRenderer(TechnologyAgnosticUIConfiguration<V> renderer) {
+  public void setCellRenderer(AgnosticUIConfiguration<V> renderer) {
     smartList.setCellRenderer(new ObjectUiListCellRenderer(new ConfigurableSwingUI<>(renderer)));
 
   }

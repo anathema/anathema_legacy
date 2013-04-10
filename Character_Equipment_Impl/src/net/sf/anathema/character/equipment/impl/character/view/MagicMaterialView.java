@@ -5,7 +5,7 @@ import net.miginfocom.swing.MigLayout;
 import net.sf.anathema.character.equipment.MagicalMaterial;
 import net.sf.anathema.character.equipment.character.view.IMagicalMaterialView;
 import net.sf.anathema.lib.gui.ConfigurableSwingUI;
-import net.sf.anathema.lib.gui.TechnologyAgnosticUIConfiguration;
+import net.sf.anathema.lib.gui.AgnosticUIConfiguration;
 import net.sf.anathema.lib.gui.ui.ObjectUiListCellRenderer;
 import net.sf.anathema.lib.gui.widgets.ChangeableJComboBox;
 
@@ -33,7 +33,7 @@ public class MagicMaterialView implements IMagicalMaterialView {
   }
 
   @Override
-  public void initView(String labelString, TechnologyAgnosticUIConfiguration<MagicalMaterial> renderer, MagicalMaterial[] materials) {
+  public void initView(String labelString, AgnosticUIConfiguration<MagicalMaterial> renderer, MagicalMaterial[] materials) {
     this.label.setText(labelString);
     materialCombo.setObjects(materials);
     materialCombo.setRenderer(new ObjectUiListCellRenderer(new ConfigurableSwingUI<>(renderer)));

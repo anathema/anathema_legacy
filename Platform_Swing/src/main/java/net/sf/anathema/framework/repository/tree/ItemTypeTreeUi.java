@@ -5,7 +5,7 @@ import net.sf.anathema.framework.presenter.action.ItemTypeUi;
 import net.sf.anathema.framework.presenter.item.ItemTypeCreationViewPropertiesExtensionPoint;
 import net.sf.anathema.framework.view.PrintNameFile;
 import net.sf.anathema.lib.file.RelativePath;
-import net.sf.anathema.lib.gui.TechnologyAgnosticUIConfiguration;
+import net.sf.anathema.lib.gui.AgnosticUIConfiguration;
 import net.sf.anathema.lib.gui.icon.ImageProvider;
 import net.sf.anathema.lib.gui.ui.ObjectUi;
 import net.sf.anathema.lib.resources.Resources;
@@ -34,7 +34,7 @@ public class ItemTypeTreeUi implements ObjectUi<Object> {
     return null;
   }
 
-  private TechnologyAgnosticUIConfiguration getItemTypeUi(PrintNameFile value) {
+  private AgnosticUIConfiguration getItemTypeUi(PrintNameFile value) {
     return extension.get(value.getItemType()).getItemTypeUI();
   }
 

@@ -14,7 +14,7 @@ import javafx.scene.layout.GridPane;
 import javafx.util.Callback;
 import net.sf.anathema.character.equipment.item.view.ToolListView;
 import net.sf.anathema.interaction.Tool;
-import net.sf.anathema.lib.gui.TechnologyAgnosticUIConfiguration;
+import net.sf.anathema.lib.gui.AgnosticUIConfiguration;
 import net.sf.anathema.platform.tool.FxButtonTool;
 import org.tbee.javafx.scene.layout.MigPane;
 
@@ -78,7 +78,7 @@ public class FxToolListView<T> implements ToolListView<T> {
     return content;
   }
 
-  public void setUiConfiguration(final TechnologyAgnosticUIConfiguration<T> configuration) {
+  public void setUiConfiguration(final AgnosticUIConfiguration<T> configuration) {
     waitForContent();
     list.setCellFactory(new Callback<ListView<T>, ListCell<T>>() {
       @Override
