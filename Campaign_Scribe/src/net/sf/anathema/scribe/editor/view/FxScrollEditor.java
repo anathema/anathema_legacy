@@ -60,6 +60,16 @@ public class FxScrollEditor implements ScrollEditor {
   }
 
   @Override
+  public void setTitlePrompt(final String prompt) {
+    Platform.runLater(new Runnable() {
+      @Override
+      public void run() {
+        titleDisplay.setPromptText(prompt);
+      }
+    });
+  }
+
+  @Override
   public void setTitle(final String title) {
     Platform.runLater(new Runnable() {
       @Override

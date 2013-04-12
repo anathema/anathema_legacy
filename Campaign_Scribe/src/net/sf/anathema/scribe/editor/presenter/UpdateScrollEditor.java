@@ -24,8 +24,8 @@ public class UpdateScrollEditor implements ScrollChangedListener {
 
   @Override
   public void nameChanged(String name) {
+    editor.setTitle(name);
     String title = name.isEmpty() ? resources.getString("Scribe.UnnamedScroll.Title") : name;
-    editor.setTitle(title);
     preview.setTitle(title);
   }
 }

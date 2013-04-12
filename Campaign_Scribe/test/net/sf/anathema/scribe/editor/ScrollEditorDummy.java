@@ -18,6 +18,11 @@ public class ScrollEditorDummy implements ScrollEditor {
   }
 
   @Override
+  public void setTitlePrompt(String prompt) {
+    //nothing to do
+  }
+
+  @Override
   public void setTitle(String title) {
     this.title = title;
   }

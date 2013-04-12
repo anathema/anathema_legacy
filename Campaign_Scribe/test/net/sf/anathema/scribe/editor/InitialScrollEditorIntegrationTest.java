@@ -29,7 +29,7 @@ public class InitialScrollEditorIntegrationTest {
 
   @Test
   public void showsUnnamedScrollNameInEditorTitle() {
-    assertThat(editor.title, is(NEW_SCROLL_TITLE));
+    assertThat(editor.title, is(""));
   }
 
   @Test
