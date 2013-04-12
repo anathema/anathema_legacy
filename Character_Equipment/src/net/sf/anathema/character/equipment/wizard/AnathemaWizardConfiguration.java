@@ -1,9 +1,6 @@
 package net.sf.anathema.character.equipment.wizard;
 
 import com.google.common.base.Preconditions;
-import net.sf.anathema.lib.gui.dialog.wizard.AbstractWizardConfiguration;
-import net.sf.anathema.lib.gui.dialog.wizard.IWizardContainer;
-import net.sf.anathema.lib.gui.dialog.wizard.IWizardPage;
 
 public class AnathemaWizardConfiguration extends AbstractWizardConfiguration {
 

@@ -8,6 +8,8 @@ import net.sf.anathema.interaction.Tool;
 import net.sf.anathema.lib.file.RelativePath;
 import net.sf.anathema.lib.resources.Resources;
 
+import java.util.List;
+
 public class RemoveStatsAction {
 
   private final Resources resources;
@@ -26,8 +28,9 @@ public class RemoveStatsAction {
     tool.setCommand(new Command() {
       @Override
       public void execute() {
-        IEquipmentStats[] equipmentStats = statsListView.getSelectedItems();
-        editModel.removeStatistics(equipmentStats);
+        List<IEquipmentStats> equipmentStats = statsListView.getSelectedItems();
+        IEquipmentStats[] stats = equipmentStats.toArray(new IEquipmentStats[equipmentStats.size()]);
+        editModel.removeStatistics(stats);
       }
     });
     statsListView.addListSelectionListener(new Runnable() {
@@ -40,7 +43,7 @@ public class RemoveStatsAction {
   }
 
   private void updateEnabled(ToolListView<IEquipmentStats> statsListView, Tool tool) {
-    if (statsListView.getSelectedItems().length > 0) {
+    if (statsListView.getSelectedItems().size() > 0) {
       tool.enable();
     } else {
       tool.disable();

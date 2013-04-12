@@ -10,7 +10,7 @@ import net.sf.anathema.character.generic.traits.ITraitType;
 import net.sf.anathema.character.generic.type.ICharacterType;
 import net.sf.anathema.lib.file.RelativePath;
 import net.sf.anathema.lib.gui.icon.ImageProvider;
-import net.sf.anathema.lib.gui.image.ImageLoadingException;
+import net.sf.anathema.lib.gui.icon.ImageLoadingException;
 
 import java.io.IOException;
 import java.util.HashMap;

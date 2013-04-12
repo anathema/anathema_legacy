@@ -4,7 +4,7 @@ import net.miginfocom.layout.CC;
 import net.miginfocom.layout.LC;
 import net.miginfocom.swing.MigLayout;
 import net.sf.anathema.lib.gui.selection.IListObjectSelectionView;
-import net.sf.anathema.lib.gui.selection.ListObjectSelectionView;
+import net.sf.anathema.framework.swing.selection.ListObjectSelectionView;
 
 import javax.swing.JComponent;
 import javax.swing.JPanel;

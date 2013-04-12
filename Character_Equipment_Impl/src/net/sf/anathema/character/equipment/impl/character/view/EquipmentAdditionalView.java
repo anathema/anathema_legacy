@@ -11,7 +11,7 @@ import net.sf.anathema.framework.swing.IView;
 import net.sf.anathema.interaction.Tool;
 import net.sf.anathema.lib.gui.SwingActionTool;
 import net.sf.anathema.lib.gui.selection.IListObjectSelectionView;
-import net.sf.anathema.lib.gui.selection.ListObjectSelectionView;
+import net.sf.anathema.framework.swing.selection.ListObjectSelectionView;
 
 import javax.swing.JButton;
 import javax.swing.JComponent;

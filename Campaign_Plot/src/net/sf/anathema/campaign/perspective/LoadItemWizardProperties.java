@@ -1,7 +1,7 @@
 package net.sf.anathema.campaign.perspective;
 
 import net.sf.anathema.campaign.load.selection.IObjectSelectionProperties;
-import net.sf.anathema.lib.gui.TechnologyAgnosticUIConfiguration;
+import net.sf.anathema.lib.gui.AgnosticUIConfiguration;
 import net.sf.anathema.lib.message.BasicMessage;
 import net.sf.anathema.lib.message.IBasicMessage;
 import net.sf.anathema.lib.resources.Resources;
@@ -9,15 +9,15 @@ import net.sf.anathema.lib.resources.Resources;
 public class LoadItemWizardProperties implements IObjectSelectionProperties {
 
   private final Resources resources;
-  private final TechnologyAgnosticUIConfiguration renderer;
+  private final AgnosticUIConfiguration renderer;
 
-  public LoadItemWizardProperties(Resources resources, TechnologyAgnosticUIConfiguration ui) {
+  public LoadItemWizardProperties(Resources resources, AgnosticUIConfiguration ui) {
     this.resources = resources;
     this.renderer = ui;
   }
 
   @Override
-  public TechnologyAgnosticUIConfiguration getCellRenderer() {
+  public AgnosticUIConfiguration getCellRenderer() {
     return renderer;
   }
 

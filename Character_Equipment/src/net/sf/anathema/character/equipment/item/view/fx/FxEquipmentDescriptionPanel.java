@@ -2,14 +2,16 @@ package net.sf.anathema.character.equipment.item.view.fx;
 
 import javafx.application.Platform;
 import javafx.scene.Node;
+import javafx.scene.control.Separator;
+import javafx.scene.text.Text;
 import net.sf.anathema.character.equipment.MagicalMaterial;
 import net.sf.anathema.character.equipment.MaterialComposition;
 import net.sf.anathema.character.equipment.item.view.CostSelectionView;
 import net.sf.anathema.character.equipment.item.view.EquipmentDescriptionPanel;
-import net.sf.anathema.lib.gui.TechnologyAgnosticUIConfiguration;
+import net.sf.anathema.lib.gui.AgnosticUIConfiguration;
 import net.sf.anathema.lib.gui.selection.IObjectSelectionView;
-import net.sf.anathema.lib.gui.selection.NullObjectSelectionView;
 import net.sf.anathema.lib.workflow.textualdescription.ITextView;
+import net.sf.anathema.platform.fx.ComboBoxSelectionView;
 import net.sf.anathema.platform.fx.FxTextView;
 import org.tbee.javafx.scene.layout.MigPane;
 
@@ -53,14 +55,28 @@ public class FxEquipmentDescriptionPanel implements EquipmentDescriptionPanel {
 
   @Override
   public IObjectSelectionView<MaterialComposition> addCompositionView(String label,
-                                                                      TechnologyAgnosticUIConfiguration<MaterialComposition> ui) {
-    return new NullObjectSelectionView<>();
+                                                                      AgnosticUIConfiguration<MaterialComposition> ui) {
+    final ComboBoxSelectionView<MaterialComposition> selectionView = new ComboBoxSelectionView<>(label, ui);
+    Platform.runLater(new Runnable() {
+      @Override
+      public void run() {
+        pane.add(selectionView.getNode());
+      }
+    });
+    return selectionView;
   }
 
   @Override
   public IObjectSelectionView<MagicalMaterial> addMaterialView(String label,
-                                                               TechnologyAgnosticUIConfiguration<MagicalMaterial> ui) {
-    return new NullObjectSelectionView<>();
+                                                               AgnosticUIConfiguration<MagicalMaterial> ui) {
+    final ComboBoxSelectionView<MagicalMaterial> selectionView = new ComboBoxSelectionView<>(label, ui);
+    Platform.runLater(new Runnable() {
+      @Override
+      public void run() {
+        pane.add(selectionView.getNode());
+      }
+    });
+    return selectionView;
   }
 
   @Override
@@ -70,5 +86,15 @@ public class FxEquipmentDescriptionPanel implements EquipmentDescriptionPanel {
 
   public Node getNode() {
     return pane;
+  }
+
+  public void setTitle(final String title) {
+    Platform.runLater(new Runnable() {
+      @Override
+      public void run() {
+        pane.add(new Text(title));
+        pane.add(new Separator());
+      }
+    });
   }
 }

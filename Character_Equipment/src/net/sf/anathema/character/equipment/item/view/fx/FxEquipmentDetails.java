@@ -6,11 +6,12 @@ import net.sf.anathema.character.equipment.item.view.EquipmentDescriptionPanel;
 import net.sf.anathema.character.equipment.item.view.EquipmentDetails;
 import net.sf.anathema.character.equipment.item.view.ToolListView;
 import net.sf.anathema.character.generic.equipment.weapon.IEquipmentStats;
-import net.sf.anathema.lib.gui.TechnologyAgnosticUIConfiguration;
+import net.sf.anathema.lib.gui.AgnosticUIConfiguration;
 import org.tbee.javafx.scene.layout.MigPane;
 
 public class FxEquipmentDetails implements EquipmentDetails {
 
+  private final FxToolListView<IEquipmentStats> listView = new FxToolListView<>();
   private MigPane outerPane;
 
   public FxEquipmentDetails() {
@@ -28,18 +29,26 @@ public class FxEquipmentDetails implements EquipmentDetails {
 
   @Override
   public ToolListView<IEquipmentStats> initStatsListView(
-          TechnologyAgnosticUIConfiguration<IEquipmentStats> configuration) {
-    return new NullToolListView();
+          AgnosticUIConfiguration<IEquipmentStats> configuration) {
+    listView.setUiConfiguration(configuration);
+    Platform.runLater(new Runnable() {
+      @Override
+      public void run() {
+        outerPane.add(listView.getNode());
+      }
+    });
+    return listView;
   }
 
   @Override
   public void setStatsListHeader(String headerText) {
-    //nothing to do
+    listView.setHeader(headerText);
   }
 
   @Override
   public EquipmentDescriptionPanel addDescriptionPanel(String title) {
     final FxEquipmentDescriptionPanel panel = new FxEquipmentDescriptionPanel();
+    panel.setTitle(title);
     Platform.runLater(new Runnable() {
       @Override
       public void run() {

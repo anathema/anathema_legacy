@@ -47,13 +47,14 @@ public class AnathemaBootLoader {
     return Paths.get(fxPath).toUri().toURL();
   }
 
+  @SuppressWarnings("unchecked")
   public static void addURLToSystemClassLoader(URL url) throws IOException {
     URLClassLoader loader = (URLClassLoader) ClassLoader.getSystemClassLoader();
     Class sysclass = URLClassLoader.class;
     try {
       Method method = sysclass.getDeclaredMethod("addURL", new Class[]{URL.class});
       method.setAccessible(true);
-      method.invoke(loader, new Object[]{url});
+      method.invoke(loader, url);
     } catch (Throwable t) {
       throw new RuntimeException("Could not add URL to system classloader: " + url.toExternalForm());
     }

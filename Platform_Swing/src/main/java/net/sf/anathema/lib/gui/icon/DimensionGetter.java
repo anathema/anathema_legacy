@@ -1,4 +1,4 @@
-package net.sf.anathema.lib.gui.image;
+package net.sf.anathema.lib.gui.icon;
 
 import java.awt.Image;
 import java.awt.image.ImageObserver;

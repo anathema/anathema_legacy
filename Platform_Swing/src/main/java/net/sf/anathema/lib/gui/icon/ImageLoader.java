@@ -1,4 +1,4 @@
-package net.sf.anathema.lib.gui.image;
+package net.sf.anathema.lib.gui.icon;
 
 import org.apache.commons.io.IOUtils;
 

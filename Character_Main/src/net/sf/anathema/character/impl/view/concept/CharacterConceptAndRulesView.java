@@ -7,7 +7,7 @@ import net.sf.anathema.character.view.concept.ICharacterConceptAndRulesViewPrope
 import net.sf.anathema.framework.presenter.view.IInitializableContentView;
 import net.sf.anathema.lib.gui.action.SmartAction;
 import net.sf.anathema.lib.gui.selection.IObjectSelectionView;
-import net.sf.anathema.lib.gui.selection.ObjectSelectionView;
+import net.sf.anathema.framework.swing.selection.ObjectSelectionView;
 import net.sf.anathema.lib.gui.toolbar.ToolBarUtilities;
 import net.sf.anathema.lib.workflow.textualdescription.ITextView;
 import net.sf.anathema.lib.workflow.textualdescription.view.LabelTextView;

@@ -4,18 +4,18 @@ import javafx.application.Platform;
 import net.sf.anathema.character.equipment.item.view.EquipmentNavigation;
 import net.sf.anathema.interaction.Tool;
 import net.sf.anathema.lib.gui.selection.IVetoableObjectSelectionView;
-import net.sf.anathema.platform.fx.ListObjectSelectionView;
+import net.sf.anathema.platform.fx.ListSelectionView;
 import net.sf.anathema.platform.fx.Navigation;
 
 public class FxEquipmentNavigation extends Navigation implements EquipmentNavigation {
 
-  private ListObjectSelectionView<String> listView;
+  private ListSelectionView<String> listView;
 
   public FxEquipmentNavigation() {
     Platform.runLater(new Runnable() {
       @Override
       public void run() {
-        listView = new ListObjectSelectionView<>();
+        listView = new ListSelectionView<>();
         addContainerToNavigation(listView.getNode());
       }
     });

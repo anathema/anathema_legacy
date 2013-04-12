@@ -1,8 +1,6 @@
 package net.sf.anathema.lib.gui.icon;
 
 import net.sf.anathema.lib.file.RelativePath;
-import net.sf.anathema.lib.gui.image.ImageLoader;
-import net.sf.anathema.lib.gui.image.ImageLoadingException;
 
 import javax.swing.ImageIcon;
 import java.awt.Image;

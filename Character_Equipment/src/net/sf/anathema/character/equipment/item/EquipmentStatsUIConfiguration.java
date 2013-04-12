@@ -8,10 +8,10 @@ import net.sf.anathema.character.generic.equipment.weapon.IEquipmentStats;
 import net.sf.anathema.character.generic.equipment.weapon.IWeaponStats;
 import net.sf.anathema.lib.exception.UnreachableCodeReachedException;
 import net.sf.anathema.lib.file.RelativePath;
-import net.sf.anathema.lib.gui.TechnologyAgnosticUIConfiguration;
+import net.sf.anathema.lib.gui.AgnosticUIConfiguration;
 import net.sf.anathema.lib.resources.Resources;
 
-public class EquipmentStatsUIConfiguration implements TechnologyAgnosticUIConfiguration<IEquipmentStats> {
+public class EquipmentStatsUIConfiguration implements AgnosticUIConfiguration<IEquipmentStats> {
   private final EquipmentStringBuilder tooltipFactory;
 
   public EquipmentStatsUIConfiguration(Resources resources) {

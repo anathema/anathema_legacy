@@ -21,7 +21,7 @@ import net.sf.anathema.lib.control.IChangeListener;
 import net.sf.anathema.lib.control.ICollectionListener;
 import net.sf.anathema.lib.control.ObjectValueListener;
 import net.sf.anathema.lib.gui.Presenter;
-import net.sf.anathema.lib.gui.TechnologyAgnosticUIConfiguration;
+import net.sf.anathema.lib.gui.AgnosticUIConfiguration;
 import net.sf.anathema.lib.gui.dialog.core.IDialogResult;
 import net.sf.anathema.lib.gui.dialog.userdialog.UserDialog;
 import net.sf.anathema.lib.gui.selection.IListObjectSelectionView;
@@ -104,7 +104,7 @@ public class EquipmentAdditionalPresenter implements Presenter {
 
   private void initMaterialView(IMagicalMaterialView magicMaterialView) {
     String label = resources.getString("MagicMaterial.Label") + ":";
-    TechnologyAgnosticUIConfiguration<MagicalMaterial> renderer = new MagicMaterialUIConfiguration(resources);
+    AgnosticUIConfiguration<MagicalMaterial> renderer = new MagicMaterialUIConfiguration(resources);
     magicMaterialView.initView(label, renderer, MagicalMaterial.values());
   }
 

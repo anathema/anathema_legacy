@@ -1,4 +1,4 @@
-package net.sf.anathema.lib.gui.dialog.wizard;
+package net.sf.anathema.character.equipment.wizard;
 
 import net.sf.anathema.lib.gui.dialog.core.IGenericDialogConfiguration;
 

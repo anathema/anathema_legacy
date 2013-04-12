@@ -1,4 +1,4 @@
-package net.sf.anathema.lib.gui.dialog.wizard;
+package net.sf.anathema.character.equipment.wizard;
 
 import com.google.common.base.Preconditions;
 import net.sf.anathema.lib.gui.action.ActionConfiguration;

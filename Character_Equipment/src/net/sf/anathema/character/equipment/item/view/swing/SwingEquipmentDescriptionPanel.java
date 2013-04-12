@@ -5,11 +5,11 @@ import net.sf.anathema.character.equipment.MagicalMaterial;
 import net.sf.anathema.character.equipment.MaterialComposition;
 import net.sf.anathema.lib.gui.ConfigurableSwingUI;
 import net.sf.anathema.character.equipment.item.view.EquipmentDescriptionPanel;
-import net.sf.anathema.lib.gui.TechnologyAgnosticUIConfiguration;
+import net.sf.anathema.lib.gui.AgnosticUIConfiguration;
 import net.sf.anathema.character.equipment.item.view.CostSelectionView;
 import net.sf.anathema.framework.value.MarkerIntValueDisplayFactory;
 import net.sf.anathema.lib.gui.selection.IObjectSelectionView;
-import net.sf.anathema.lib.gui.selection.ObjectSelectionView;
+import net.sf.anathema.framework.swing.selection.ObjectSelectionView;
 import net.sf.anathema.lib.gui.ui.ObjectUiListCellRenderer;
 import net.sf.anathema.lib.workflow.container.factory.MigPanelBuilder;
 import net.sf.anathema.lib.workflow.textualdescription.ITextView;
@@ -40,7 +40,7 @@ public class SwingEquipmentDescriptionPanel implements EquipmentDescriptionPanel
   }
 
   @Override
-  public IObjectSelectionView<MaterialComposition> addCompositionView(String label, TechnologyAgnosticUIConfiguration<MaterialComposition> ui) {
+  public IObjectSelectionView<MaterialComposition> addCompositionView(String label, AgnosticUIConfiguration<MaterialComposition> ui) {
     ObjectUiListCellRenderer renderer = new ObjectUiListCellRenderer(new ConfigurableSwingUI<>(ui));
     ObjectSelectionView<MaterialComposition> compositionView = new ObjectSelectionView<>(label, renderer);
     panelBuilder.addView(compositionView, new CC().split(3).gapAfter("15"));
@@ -48,7 +48,7 @@ public class SwingEquipmentDescriptionPanel implements EquipmentDescriptionPanel
   }
 
   @Override
-  public IObjectSelectionView<MagicalMaterial> addMaterialView(String label, TechnologyAgnosticUIConfiguration<MagicalMaterial> ui) {
+  public IObjectSelectionView<MagicalMaterial> addMaterialView(String label, AgnosticUIConfiguration<MagicalMaterial> ui) {
     ObjectUiListCellRenderer renderer = new ObjectUiListCellRenderer(new ConfigurableSwingUI<>(ui));
     ObjectSelectionView<MagicalMaterial> materialView = new ObjectSelectionView<>(label, renderer);
     panelBuilder.addView(materialView, new CC());

@@ -6,8 +6,8 @@ import net.sf.anathema.character.equipment.item.view.EquipmentDescriptionPanel;
 import net.sf.anathema.character.equipment.item.view.EquipmentDetails;
 import net.sf.anathema.character.equipment.item.view.ToolListView;
 import net.sf.anathema.character.generic.equipment.weapon.IEquipmentStats;
+import net.sf.anathema.lib.gui.AgnosticUIConfiguration;
 import net.sf.anathema.lib.gui.ConfigurableSwingUI;
-import net.sf.anathema.lib.gui.TechnologyAgnosticUIConfiguration;
 import net.sf.anathema.lib.gui.container.TitledPanel;
 import net.sf.anathema.lib.gui.layout.LayoutUtils;
 import net.sf.anathema.lib.gui.ui.ObjectUiListCellRenderer;
@@ -40,7 +40,7 @@ public class SwingEquipmentDetails implements EquipmentDetails {
   }
 
   public ToolListView<IEquipmentStats> initStatsListView(
-          TechnologyAgnosticUIConfiguration<IEquipmentStats> configuration) {
+          AgnosticUIConfiguration<IEquipmentStats> configuration) {
     ListCellRenderer renderer = new ObjectUiListCellRenderer(new ConfigurableSwingUI<>(configuration));
     statsListView.setListCellRenderer(renderer);
     return statsListView;
