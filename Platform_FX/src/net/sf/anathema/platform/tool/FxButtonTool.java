@@ -4,11 +4,11 @@ import javafx.application.Platform;
 import javafx.scene.Node;
 import javafx.scene.control.Button;
 import javafx.scene.control.Tooltip;
+import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import net.sf.anathema.interaction.Command;
 import net.sf.anathema.interaction.Tool;
 import net.sf.anathema.lib.file.RelativePath;
-import net.sf.anathema.platform.fx.NodeHolder;
 
 public class FxButtonTool implements Tool {
 
@@ -27,12 +27,14 @@ public class FxButtonTool implements Tool {
 
   @Override
   public void setIcon(final RelativePath relativePath) {
-    Platform.runLater(new SetImage(new NodeHolder<ImageView>() {
+    Platform.runLater(new Runnable() {
       @Override
-      public ImageView getNode() {
-        return imageView;
+      public void run() {
+        Image image = new LoadImage(relativePath).run();
+        new AdjustSize(button).adjustTo(image);
+        imageView.setImage(image);
       }
-    }, relativePath));
+    });
   }
 
   @Override
