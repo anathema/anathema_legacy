@@ -4,6 +4,7 @@ import com.sun.javafx.collections.ObservableListWrapper;
 import javafx.application.Platform;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
+import javafx.scene.Node;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.Label;
 import jfxtras.labs.scene.control.ListSpinner;
@@ -52,10 +53,21 @@ public class FxCostSelectionView implements CostSelectionView {
 
   @Override
   public void addSelectionChangedListener(final ISelectionIntValueChangedListener<String> listener) {
-    selection.getSelectionModel().selectedItemProperty().addListener(new ChangeListener<String>() {
+    Platform.runLater(new Runnable() {
       @Override
-      public void changed(ObservableValue<? extends String> observableValue, String s, String newValue) {
-        listener.valueChanged(newValue, spinner.getValue());
+      public void run() {
+        selection.getSelectionModel().selectedItemProperty().addListener(new ChangeListener<String>() {
+          @Override
+          public void changed(ObservableValue<? extends String> observableValue, String s, String newValue) {
+            listener.valueChanged(newValue, spinner.getValue());
+          }
+        });
+        spinner.indexProperty().addListener(new ChangeListener<Integer>() {
+          @Override
+          public void changed(ObservableValue<? extends Integer> observableValue, Integer integer, Integer newValue) {
+            listener.valueChanged(selection.getValue(), newValue);
+          }
+        });
       }
     });
   }
@@ -65,8 +77,12 @@ public class FxCostSelectionView implements CostSelectionView {
     Platform.runLater(new Runnable() {
       @Override
       public void run() {
-        selection.setItems(new ObservableListWrapper(Arrays.asList(backgrounds)));
+        selection.setItems(new ObservableListWrapper<>(Arrays.asList(backgrounds)));
       }
     });
+  }
+
+  public Node getNode() {
+    return pane;
   }
 }

@@ -81,7 +81,14 @@ public class FxEquipmentDescriptionPanel implements EquipmentDescriptionPanel {
 
   @Override
   public CostSelectionView addCostView(String label) {
-    return new FxCostSelectionView(label);
+    final FxCostSelectionView costSelectionView = new FxCostSelectionView(label);
+    Platform.runLater(new Runnable() {
+      @Override
+      public void run() {
+        pane.add(costSelectionView.getNode());
+      }
+    });
+    return costSelectionView;
   }
 
   public Node getNode() {
