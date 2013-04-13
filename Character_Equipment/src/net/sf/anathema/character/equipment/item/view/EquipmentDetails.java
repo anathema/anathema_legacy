@@ -5,9 +5,7 @@ import net.sf.anathema.lib.gui.AgnosticUIConfiguration;
 
 public interface EquipmentDetails {
 
-  ToolListView<IEquipmentStats> initStatsListView(AgnosticUIConfiguration<IEquipmentStats> configuration);
-
-  void setStatsListHeader(String headerText);
+  ToolListView<IEquipmentStats> initStatsListView(String title, AgnosticUIConfiguration<IEquipmentStats> configuration);
 
   EquipmentDescriptionPanel addDescriptionPanel(String title);
 }

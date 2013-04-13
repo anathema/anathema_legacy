@@ -17,13 +17,8 @@ public class AgnosticEquipmentDatabaseView implements EquipmentDatabaseView {
 
   @Override
   public ToolListView<IEquipmentStats> initStatsListView(
-          AgnosticUIConfiguration<IEquipmentStats> configuration) {
-    return details.initStatsListView(configuration);
-  }
-
-  @Override
-  public void setStatsListHeader(String headerText) {
-    details.setStatsListHeader(headerText);
+          String title, AgnosticUIConfiguration<IEquipmentStats> configuration) {
+    return details.initStatsListView(title, configuration);
   }
 
   @Override

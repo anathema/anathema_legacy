@@ -1,5 +1,6 @@
 package net.sf.anathema.platform.fx;
 
+import javafx.scene.Parent;
 import javafx.scene.Scene;
 
 import java.net.URL;
@@ -13,7 +14,17 @@ public class Stylesheet {
   }
 
   public void applyToScene(Scene scene) {
+    String urlAsString = getUrlToResource();
+    scene.getStylesheets().add(urlAsString);
+  }
+
+  public void applyToParent(Parent parent) {
+    String urlAsString = getUrlToResource();
+    parent.getStylesheets().add(urlAsString);
+  }
+
+  private String getUrlToResource() {
     URL resource = new ResourceLoader().loadResourceAsUrl(path);
-    scene.getStylesheets().add(resource.toExternalForm());
+    return resource.toExternalForm();
   }
 }

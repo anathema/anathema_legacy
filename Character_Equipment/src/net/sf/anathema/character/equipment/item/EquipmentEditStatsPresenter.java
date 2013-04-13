@@ -24,8 +24,8 @@ public class EquipmentEditStatsPresenter implements Presenter {
 
   @Override
   public void initPresentation() {
-    final ToolListView<IEquipmentStats> statsListView = view.initStatsListView(new EquipmentStatsUIConfiguration(resources));
-    view.setStatsListHeader(resources.getString("Equipment.Creation.Stats"));
+    String title = resources.getString("Equipment.Creation.Stats");
+    final ToolListView<IEquipmentStats> statsListView = view.initStatsListView(title, new EquipmentStatsUIConfiguration(resources));
     model.getTemplateEditModel().addStatsChangeListener(new IChangeListener() {
       @Override
       public void changeOccurred() {

@@ -5,10 +5,9 @@ import javafx.application.Platform;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
 import javafx.scene.Node;
-import javafx.scene.control.Label;
 import javafx.scene.control.ListView;
 import javafx.scene.control.SelectionMode;
-import javafx.scene.control.Separator;
+import net.miginfocom.layout.CC;
 import net.sf.anathema.character.equipment.item.view.ToolListView;
 import net.sf.anathema.interaction.Tool;
 import net.sf.anathema.lib.gui.AgnosticUIConfiguration;
@@ -34,7 +33,7 @@ public class FxToolListView<T> implements ToolListView<T> {
         list = new ListView<>();
         buttonPanel = new MigPane();
         content = new MigPane(fillWithoutInsets().wrapAfter(1));
-        content.add(list);
+        content.add(list, new CC().push().grow().span());
         content.add(buttonPanel);
         list.getSelectionModel().setSelectionMode(SelectionMode.SINGLE);
       }
@@ -81,16 +80,6 @@ public class FxToolListView<T> implements ToolListView<T> {
   public void setUiConfiguration(final AgnosticUIConfiguration<T> configuration) {
     waitForContent();
     list.setCellFactory(new ConfigurableListCellFactory<>(configuration));
-  }
-
-  public void setHeader(final String headerText) {
-    Platform.runLater(new Runnable() {
-      @Override
-      public void run() {
-        content.getChildren().add(0, new Label(headerText));
-        content.getChildren().add(0, new Separator());
-      }
-    });
   }
 
   private void waitForContent() {

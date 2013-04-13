@@ -206,6 +206,7 @@ Anathema includes software developed by
 -Google, Inc.
 -eTeks (http://www.eteks.com)
 -Nat Pryce (http://nat.truemesh.com/archives/000710.html)
+-John Smith (http://jewelsea.wordpress.com/)
 -MiG InfoCom AB (http://www.miglayout.com)
 
 The "Save as PDF" icon was created by Wolfgang Bartelme (http://www.bartelme.at/) and is used with permission.
@@ -239,3 +240,4 @@ dom4j is published under the BSD License
 Swing Labs componenents are published under the GNU LGPL
 JeksParser is published under the GNU GPL v2
 Nat Pryce's "Announcer" class is published under an unrestricted license.
+John Smith's "BorderedTitlePane" class is published under CC BY-SA 3.0 with Attribution Required

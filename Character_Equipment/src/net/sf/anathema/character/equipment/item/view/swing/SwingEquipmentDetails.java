@@ -40,16 +40,13 @@ public class SwingEquipmentDetails implements EquipmentDetails {
   }
 
   public ToolListView<IEquipmentStats> initStatsListView(
-          AgnosticUIConfiguration<IEquipmentStats> configuration) {
+          String title, AgnosticUIConfiguration<IEquipmentStats> configuration) {
     ListCellRenderer renderer = new ObjectUiListCellRenderer(new ConfigurableSwingUI<>(configuration));
     statsListView.setListCellRenderer(renderer);
+    setTitleText(title, statsTitlePanel);
     return statsListView;
   }
 
-
-  public void setStatsListHeader(String headerText) {
-    setTitleText(headerText, statsTitlePanel);
-  }
 
   private void setTitleText(String headerText, TitledPanel panel) {
     TitledBorder titledBorder = (TitledBorder) (panel.getBorder());
