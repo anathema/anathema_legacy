@@ -2,8 +2,7 @@ package net.sf.anathema.character.equipment.item.view.fx;
 
 import javafx.application.Platform;
 import javafx.scene.Node;
-import javafx.scene.control.Separator;
-import javafx.scene.text.Text;
+import net.miginfocom.layout.AC;
 import net.miginfocom.layout.CC;
 import net.miginfocom.layout.LC;
 import net.sf.anathema.character.equipment.MagicalMaterial;
@@ -25,7 +24,7 @@ public class FxEquipmentDescriptionPanel implements EquipmentDescriptionPanel {
     Platform.runLater(new Runnable() {
       @Override
       public void run() {
-        pane = new MigPane(new LC().wrapAfter(2).fill().insets("2"));
+        pane = new MigPane(new LC().wrapAfter(1).fill().insets("2"), new AC(), new AC().index(1).shrinkPrio(200));
       }
     });
   }
@@ -36,7 +35,7 @@ public class FxEquipmentDescriptionPanel implements EquipmentDescriptionPanel {
     Platform.runLater(new Runnable() {
       @Override
       public void run() {
-        pane.add(view.getNode(), new CC().growX().span());
+        pane.add(view.getNode(), new CC().growX().pushY().span());
       }
     });
     return view;
@@ -61,7 +60,7 @@ public class FxEquipmentDescriptionPanel implements EquipmentDescriptionPanel {
     Platform.runLater(new Runnable() {
       @Override
       public void run() {
-        pane.add(selectionView.getNode(), new CC().split(3).gapAfter("15"));
+        pane.add(selectionView.getNode(), new CC().split());
       }
     });
     return selectionView;
@@ -74,7 +73,7 @@ public class FxEquipmentDescriptionPanel implements EquipmentDescriptionPanel {
     Platform.runLater(new Runnable() {
       @Override
       public void run() {
-        pane.add(selectionView.getNode(),new CC().grow().wrap());
+        pane.add(selectionView.getNode(), new CC().grow().wrap());
       }
     });
     return selectionView;
@@ -94,15 +93,5 @@ public class FxEquipmentDescriptionPanel implements EquipmentDescriptionPanel {
 
   public Node getNode() {
     return pane;
-  }
-
-  public void setTitle(final String title) {
-    Platform.runLater(new Runnable() {
-      @Override
-      public void run() {
-        pane.add(new Text(title));
-        pane.add(new Separator());
-      }
-    });
   }
 }

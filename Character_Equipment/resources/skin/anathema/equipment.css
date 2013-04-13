@@ -1,0 +1,7 @@
+.equipment-perspective * .tool-list {
+    -fx-background-insets: 1 1 0 1, 1;
+}
+
+.equipment-perspective * .tool-list:focused {
+    -fx-background-insets: -1.4, 0, 1;
+}

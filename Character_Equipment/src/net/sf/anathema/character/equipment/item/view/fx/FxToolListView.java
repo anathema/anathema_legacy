@@ -31,7 +31,9 @@ public class FxToolListView<T> implements ToolListView<T> {
       @Override
       public void run() {
         list = new ListView<>();
+        list.getStyleClass().add("tool-list");
         buttonPanel = new MigPane();
+        buttonPanel.getStyleClass().add("tool-buttons");
         content = new MigPane(fillWithoutInsets().wrapAfter(1));
         content.add(list, new CC().push().grow().span());
         content.add(buttonPanel);

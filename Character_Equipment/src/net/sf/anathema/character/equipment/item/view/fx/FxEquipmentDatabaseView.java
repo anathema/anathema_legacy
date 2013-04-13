@@ -7,7 +7,7 @@ import net.sf.anathema.platform.fx.PerspectivePane;
 
 public class FxEquipmentDatabaseView {
 
-  public final PerspectivePane perspectivePane = new PerspectivePane();
+  public final PerspectivePane perspectivePane = new PerspectivePane("skin/anathema/equipment.css");
   private final FxEquipmentDetails details = new FxEquipmentDetails();
   private final FxEquipmentNavigation navigation = new FxEquipmentNavigation();
   public final AgnosticEquipmentDatabaseView view = new AgnosticEquipmentDatabaseView(navigation, details);
@@ -17,6 +17,7 @@ public class FxEquipmentDatabaseView {
     Platform.runLater(new Runnable() {
       @Override
       public void run() {
+        perspectivePane.addStyleSheetClass("equipment-perspective");
         perspectivePane.setNavigationComponent(navigation.getNode());
         perspectivePane.setContentComponent(details.getNode());
       }
