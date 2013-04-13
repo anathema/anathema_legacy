@@ -9,7 +9,6 @@ import javafx.scene.control.Label;
 import javafx.scene.control.ListView;
 import javafx.scene.control.SelectionMode;
 import javafx.scene.control.Separator;
-import javafx.scene.layout.GridPane;
 import net.sf.anathema.character.equipment.item.view.ToolListView;
 import net.sf.anathema.interaction.Tool;
 import net.sf.anathema.lib.gui.AgnosticUIConfiguration;
@@ -20,10 +19,12 @@ import org.tbee.javafx.scene.layout.MigPane;
 import java.util.Arrays;
 import java.util.List;
 
+import static net.sf.anathema.lib.gui.layout.LayoutUtils.fillWithoutInsets;
+
 public class FxToolListView<T> implements ToolListView<T> {
 
   private ListView<T> list;
-  private GridPane buttonPanel;
+  private MigPane buttonPanel;
   private MigPane content;
 
   public FxToolListView() {
@@ -31,8 +32,8 @@ public class FxToolListView<T> implements ToolListView<T> {
       @Override
       public void run() {
         list = new ListView<>();
-        buttonPanel = new GridPane();
-        content = new MigPane();
+        buttonPanel = new MigPane();
+        content = new MigPane(fillWithoutInsets().wrapAfter(1));
         content.add(list);
         content.add(buttonPanel);
         list.getSelectionModel().setSelectionMode(SelectionMode.SINGLE);
@@ -83,7 +84,6 @@ public class FxToolListView<T> implements ToolListView<T> {
   }
 
   public void setHeader(final String headerText) {
-    waitForContent();
     Platform.runLater(new Runnable() {
       @Override
       public void run() {

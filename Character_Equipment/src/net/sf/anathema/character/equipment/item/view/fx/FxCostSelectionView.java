@@ -30,6 +30,7 @@ public class FxCostSelectionView implements CostSelectionView {
         selection = new ComboBox<>();
         spinner = new ListSpinner<>(0, 5);
         pane.add(label);
+        pane.add(selection);
         pane.add(spinner);
       }
     });

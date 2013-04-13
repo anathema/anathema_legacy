@@ -3,7 +3,6 @@ package net.sf.anathema.character.equipment.item.view.fx;
 import javafx.application.Platform;
 import javafx.scene.Node;
 import net.miginfocom.layout.CC;
-import net.miginfocom.swing.MigLayout;
 import net.sf.anathema.character.equipment.item.view.EquipmentDescriptionPanel;
 import net.sf.anathema.character.equipment.item.view.EquipmentDetails;
 import net.sf.anathema.character.equipment.item.view.ToolListView;
