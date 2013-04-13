@@ -10,19 +10,30 @@ import net.sf.anathema.interaction.Command;
 import net.sf.anathema.interaction.Tool;
 import net.sf.anathema.lib.file.RelativePath;
 
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.List;
+
 public class FxButtonTool implements Tool {
 
-  private Button button;
-  private ImageView imageView;
+  public static FxButtonTool ForToolbar() {
+    ImageView imageView = new ImageView();
+    Button button = new Button("", imageView);
+    return new FxButtonTool(button, new AdjustSize(button), new SetImage(imageView));
+  }
 
-  public FxButtonTool() {
-    Platform.runLater(new Runnable() {
-      @Override
-      public void run() {
-        imageView = new ImageView();
-        button = new Button("", imageView);
-      }
-    });
+  public static FxButtonTool ForAnyPurpose() {
+    ImageView imageView = new ImageView();
+    Button button = new Button("", imageView);
+    return new FxButtonTool(button, new SetImage(imageView));
+  }
+
+  private final Button button;
+  private final List<ImageClosure> onLoad = new ArrayList<>();
+
+  public FxButtonTool(Button button, ImageClosure... actionsOnLoad) {
+    this.button = button;
+    Collections.addAll(onLoad, actionsOnLoad);
   }
 
   @Override
@@ -31,8 +42,9 @@ public class FxButtonTool implements Tool {
       @Override
       public void run() {
         Image image = new LoadImage(relativePath).run();
-        new AdjustSize(button).adjustTo(image);
-        imageView.setImage(image);
+        for (ImageClosure action : onLoad) {
+          action.run(image);
+        }
       }
     });
   }

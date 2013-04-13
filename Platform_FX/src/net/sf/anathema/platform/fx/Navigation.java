@@ -44,7 +44,7 @@ public class Navigation {
   }
 
   public Tool addTool() {
-    final FxButtonTool fxButtonTool = new FxButtonTool();
+    final FxButtonTool fxButtonTool = FxButtonTool.ForToolbar();
     FxThreading.runOnCorrectThread(new Runnable() {
       @Override
       public void run() {

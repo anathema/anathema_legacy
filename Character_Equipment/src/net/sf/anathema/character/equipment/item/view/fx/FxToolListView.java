@@ -65,7 +65,7 @@ public class FxToolListView<T> implements ToolListView<T> {
 
   @Override
   public Tool addTool() {
-    final FxButtonTool tool = new FxButtonTool();
+    final FxButtonTool tool = FxButtonTool.ForAnyPurpose();
     Platform.runLater(new Runnable() {
       @Override
       public void run() {
