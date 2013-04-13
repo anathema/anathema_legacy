@@ -4,6 +4,8 @@ import javafx.application.Platform;
 import javafx.scene.Node;
 import javafx.scene.control.Separator;
 import javafx.scene.text.Text;
+import net.miginfocom.layout.CC;
+import net.miginfocom.layout.LC;
 import net.sf.anathema.character.equipment.MagicalMaterial;
 import net.sf.anathema.character.equipment.MaterialComposition;
 import net.sf.anathema.character.equipment.item.view.CostSelectionView;
@@ -23,7 +25,7 @@ public class FxEquipmentDescriptionPanel implements EquipmentDescriptionPanel {
     Platform.runLater(new Runnable() {
       @Override
       public void run() {
-        pane = new MigPane();
+        pane = new MigPane(new LC().wrapAfter(2).fill().insets("2"));
       }
     });
   }
@@ -34,7 +36,7 @@ public class FxEquipmentDescriptionPanel implements EquipmentDescriptionPanel {
     Platform.runLater(new Runnable() {
       @Override
       public void run() {
-        pane.add(view.getNode());
+        pane.add(view.getNode(), new CC().growX().span());
       }
     });
     return view;
@@ -46,8 +48,7 @@ public class FxEquipmentDescriptionPanel implements EquipmentDescriptionPanel {
     Platform.runLater(new Runnable() {
       @Override
       public void run() {
-        Node node = view.getNode();
-        pane.add(node);
+        pane.add(view.getNode(), new CC().growX().span());
       }
     });
     return view;
@@ -60,7 +61,7 @@ public class FxEquipmentDescriptionPanel implements EquipmentDescriptionPanel {
     Platform.runLater(new Runnable() {
       @Override
       public void run() {
-        pane.add(selectionView.getNode());
+        pane.add(selectionView.getNode(), new CC().split(3).gapAfter("15"));
       }
     });
     return selectionView;
@@ -73,7 +74,7 @@ public class FxEquipmentDescriptionPanel implements EquipmentDescriptionPanel {
     Platform.runLater(new Runnable() {
       @Override
       public void run() {
-        pane.add(selectionView.getNode());
+        pane.add(selectionView.getNode(),new CC().grow().wrap());
       }
     });
     return selectionView;
@@ -85,7 +86,7 @@ public class FxEquipmentDescriptionPanel implements EquipmentDescriptionPanel {
     Platform.runLater(new Runnable() {
       @Override
       public void run() {
-        pane.add(costSelectionView.getNode());
+        pane.add(costSelectionView.getNode(), new CC().split(2).pushX());
       }
     });
     return costSelectionView;
