@@ -5,10 +5,11 @@ import javafx.scene.Node;
 import javafx.scene.control.ToolBar;
 import net.miginfocom.layout.AC;
 import net.miginfocom.layout.CC;
-import net.miginfocom.layout.LC;
 import net.sf.anathema.interaction.Tool;
 import net.sf.anathema.platform.tool.FxButtonTool;
 import org.tbee.javafx.scene.layout.MigPane;
+
+import static net.sf.anathema.lib.gui.layout.LayoutUtils.withoutInsets;
 
 public class Navigation {
 
@@ -21,7 +22,7 @@ public class Navigation {
     Platform.runLater(new Runnable() {
       @Override
       public void run() {
-        navigation = new MigPane(new LC().insets("0").gridGap("0", "2").wrapAfter(1), new AC().grow().fill(),
+        navigation = new MigPane(withoutInsets().gridGap("0", "2").wrapAfter(1), new AC().grow().fill(),
                 new AC().fill());
       }
     });
@@ -34,7 +35,7 @@ public class Navigation {
     Platform.runLater(new Runnable() {
       @Override
       public void run() {
-        pane = new MigPane(new LC().insets("0").gridGap("0", "2").wrapAfter(1), new AC().grow().fill(),
+        pane = new MigPane(withoutInsets().gridGap("0", "2").wrapAfter(1), new AC().grow().fill(),
                 new AC().fill());
         pane.add(toolBar, new CC().width("100%").grow());
         pane.add(navigation, new CC().push());
@@ -52,7 +53,6 @@ public class Navigation {
     });
     return fxButtonTool;
   }
-
 
   protected void addElementToNavigation(Node element) {
     navigation.add(element, new CC().pushX());

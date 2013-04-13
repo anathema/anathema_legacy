@@ -9,7 +9,7 @@ import net.sf.anathema.character.generic.health.HealthType;
 import net.sf.anathema.framework.value.IconToggleButton;
 import net.sf.anathema.lib.control.IIntValueChangedListener;
 import net.sf.anathema.lib.gui.layout.AdditiveView;
-import net.sf.anathema.lib.gui.layout.LayoutUtils;
+import net.sf.anathema.lib.gui.layout.SwingLayoutUtils;
 import net.sf.anathema.lib.resources.Resources;
 import net.sf.anathema.lib.workflow.intvalue.IIntValueModel;
 
@@ -46,7 +46,7 @@ public class ArmourStatisticsPresenterPage extends AbstractEquipmentStatisticsPr
         panel.add(new JLabel(getProperties().getAggravatedSoakLabel()));
         panel.add(aggravatedSoakSpinner, new CC().growX());
         JComponent button = linkToggleButton.getComponent();
-        panel.add(button, LayoutUtils.constraintsForImageButton(button).split(2).spanX());
+        panel.add(button, SwingLayoutUtils.constraintsForImageButton(button).split(2).spanX());
         panel.add(new JLabel(getProperties().getLinkSoakLabel()));
       }
     }, new CC());

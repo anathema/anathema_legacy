@@ -4,7 +4,7 @@ import net.miginfocom.layout.CC;
 import net.miginfocom.swing.MigLayout;
 import net.sf.anathema.lib.control.IIntValueChangedListener;
 import net.sf.anathema.lib.control.ObjectValueListener;
-import net.sf.anathema.lib.gui.layout.LayoutUtils;
+import net.sf.anathema.lib.gui.layout.SwingLayoutUtils;
 import net.sf.anathema.lib.gui.widgets.IntegerSpinner;
 import net.sf.anathema.lib.workflow.textualdescription.SwingTextView;
 import net.sf.anathema.lib.workflow.textualdescription.view.LineTextView;
@@ -69,7 +69,7 @@ public class AnimalFormSelectionView implements IAnimalFormSelectionView {
     panel.add(staminaSpinner.getComponent());
     panel.add(new JLabel(animalAppearanceString));
     panel.add(appearanceSpinner.getComponent());
-    panel.add(button, LayoutUtils.constraintsForImageButton(button));
+    panel.add(button, SwingLayoutUtils.constraintsForImageButton(button));
     return panel;
   }
 

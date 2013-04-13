@@ -4,7 +4,7 @@ import net.miginfocom.layout.CC;
 import net.miginfocom.swing.MigLayout;
 import net.sf.anathema.lib.control.ObjectValueListener;
 import net.sf.anathema.framework.swing.IView;
-import net.sf.anathema.lib.gui.layout.LayoutUtils;
+import net.sf.anathema.lib.gui.layout.SwingLayoutUtils;
 
 import javax.swing.Icon;
 import javax.swing.JButton;
@@ -31,7 +31,7 @@ public class ButtonControlledEditView implements IView {
   public JPanel getComponent() {
     JPanel panel = new JPanel(new MigLayout(withoutInsets()));
     panel.add(text, new CC().growX().pushX());
-    panel.add(addButton, LayoutUtils.constraintsForImageButton(addButton));
+    panel.add(addButton, SwingLayoutUtils.constraintsForImageButton(addButton));
     return panel;
   }
 

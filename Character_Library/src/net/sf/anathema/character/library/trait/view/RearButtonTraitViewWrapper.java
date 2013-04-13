@@ -3,7 +3,7 @@ package net.sf.anathema.character.library.trait.view;
 import net.miginfocom.layout.CC;
 import net.miginfocom.swing.MigLayout;
 import net.sf.anathema.character.library.intvalue.IRemovableTraitView;
-import net.sf.anathema.lib.gui.layout.LayoutUtils;
+import net.sf.anathema.lib.gui.layout.SwingLayoutUtils;
 
 import javax.swing.Icon;
 import javax.swing.JButton;
@@ -32,7 +32,7 @@ public class RearButtonTraitViewWrapper<K extends ITraitView< ? >> extends Abstr
     this.innerViewPanel = new JPanel(new MigLayout(fillWithoutInsets().wrapAfter(2)));
     getInnerView().addComponents(innerViewPanel);
     panel.add(innerViewPanel, new CC().growX().pushX());
-    panel.add(button, LayoutUtils.constraintsForImageButton(button));
+    panel.add(button, SwingLayoutUtils.constraintsForImageButton(button));
   }
 
   @Override

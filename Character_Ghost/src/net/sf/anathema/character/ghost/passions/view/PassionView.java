@@ -15,7 +15,7 @@ import java.awt.Component;
 import java.awt.Dimension;
 import java.awt.event.ActionEvent;
 
-import static net.sf.anathema.lib.gui.layout.LayoutUtils.constraintsForImageButton;
+import static net.sf.anathema.lib.gui.layout.SwingLayoutUtils.constraintsForImageButton;
 
 public class PassionView extends AbstractTraitView implements IPassionView {
   private final Announcer<IChangeListener> control = Announcer.to(IChangeListener.class);

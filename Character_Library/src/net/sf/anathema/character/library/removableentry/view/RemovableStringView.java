@@ -2,7 +2,7 @@ package net.sf.anathema.character.library.removableentry.view;
 
 import net.miginfocom.layout.CC;
 import net.sf.anathema.character.library.removableentry.presenter.IRemovableEntryView;
-import net.sf.anathema.lib.gui.layout.LayoutUtils;
+import net.sf.anathema.lib.gui.layout.SwingLayoutUtils;
 
 import javax.swing.Icon;
 import javax.swing.JButton;
@@ -26,7 +26,7 @@ public class RemovableStringView implements IRemovableEntryView {
   public void addContent(JPanel panel) {
     this.contentPanel = panel;
     panel.add(label, new CC().growX().pushX().alignY("top"));
-    panel.add(button, LayoutUtils.constraintsForImageButton(button).alignY("top"));
+    panel.add(button, SwingLayoutUtils.constraintsForImageButton(button).alignY("top"));
     panel.revalidate();
   }
 

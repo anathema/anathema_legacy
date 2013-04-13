@@ -6,7 +6,7 @@ import net.sf.anathema.framework.presenter.view.IButtonControlledObjectSelection
 import net.sf.anathema.framework.presenter.view.ITextFieldComboBoxEditor;
 import net.sf.anathema.lib.control.ObjectValueListener;
 import net.sf.anathema.lib.gui.dialog.events.AbstractDocumentChangeListener;
-import net.sf.anathema.lib.gui.layout.LayoutUtils;
+import net.sf.anathema.lib.gui.layout.SwingLayoutUtils;
 import net.sf.anathema.lib.gui.widgets.ColoredJComboBox;
 
 import javax.swing.DefaultComboBoxModel;
@@ -67,7 +67,7 @@ public class ButtonControlledObjectSelectionView<V> implements IButtonControlled
   public void addComponents(JPanel panel) {
     panel.add(label);
     panel.add(comboBox, new CC().growX().pushX());
-    panel.add(addButton, LayoutUtils.constraintsForImageButton(addButton).alignX("right"));
+    panel.add(addButton, SwingLayoutUtils.constraintsForImageButton(addButton).alignX("right"));
   }
 
   @Override

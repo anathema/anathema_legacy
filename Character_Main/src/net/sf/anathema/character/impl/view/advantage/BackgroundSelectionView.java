@@ -5,7 +5,7 @@ import net.miginfocom.swing.MigLayout;
 import net.sf.anathema.framework.presenter.view.ButtonControlledComboEditView;
 import net.sf.anathema.framework.presenter.view.ITextFieldComboBoxEditor;
 import net.sf.anathema.lib.control.ObjectValueListener;
-import net.sf.anathema.lib.gui.layout.LayoutUtils;
+import net.sf.anathema.lib.gui.layout.SwingLayoutUtils;
 
 import javax.swing.Icon;
 import javax.swing.JLabel;
@@ -84,7 +84,7 @@ public class BackgroundSelectionView<V> extends ButtonControlledComboEditView<V>
     panel.add(label);
     panel.add(comboBox.getComponent(), new CC().minWidth("70"));
     panel.add(detailBox, new CC().growX().pushX());
-    panel.add(addButton, LayoutUtils.constraintsForImageButton(addButton));
+    panel.add(addButton, SwingLayoutUtils.constraintsForImageButton(addButton));
     return panel;
   }
 }

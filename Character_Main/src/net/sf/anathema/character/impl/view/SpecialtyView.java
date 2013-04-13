@@ -5,7 +5,7 @@ import net.sf.anathema.character.library.trait.view.AbstractTraitView;
 import net.sf.anathema.character.view.ISpecialtyView;
 import net.sf.anathema.framework.value.IntegerViewFactory;
 import net.sf.anathema.lib.control.IChangeListener;
-import net.sf.anathema.lib.gui.layout.LayoutUtils;
+import net.sf.anathema.lib.gui.layout.SwingLayoutUtils;
 import org.jmock.example.announcer.Announcer;
 
 import javax.swing.AbstractAction;
@@ -47,7 +47,7 @@ public class SpecialtyView extends AbstractTraitView implements ISpecialtyView {
       }
     });
     deleteButton.setPreferredSize(new Dimension(deleteIcon.getIconWidth() + 4, deleteIcon.getIconHeight() + 4));
-    panel.add(deleteButton, LayoutUtils.constraintsForImageButton(deleteButton));
+    panel.add(deleteButton, SwingLayoutUtils.constraintsForImageButton(deleteButton));
   }
 
   @Override
