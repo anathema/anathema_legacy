@@ -6,4 +6,6 @@ public interface ScrollPreview {
   void setHtmlText(HtmlText text);
 
   void setTitle(String text);
+
+  void setUnnamedScrollTitlePreview(String text);
 }

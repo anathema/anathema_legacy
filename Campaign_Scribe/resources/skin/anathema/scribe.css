@@ -17,6 +17,11 @@
 .scroll-title {
     -fx-background-color: linear-gradient(to bottom, last-color, next-color);
     -fx-font-size: 20;
+    -fx-prompt-text-fill: grey;
+}
+
+.scroll-title:focused {
+    -fx-prompt-text-fill: transparent;
 }
 
 .scribe-navigation-button {

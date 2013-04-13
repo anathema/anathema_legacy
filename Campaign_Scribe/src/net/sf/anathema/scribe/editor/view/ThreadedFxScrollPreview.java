@@ -40,6 +40,16 @@ public class ThreadedFxScrollPreview implements ScrollPreview {
     });
   }
 
+  @Override
+  public void setUnnamedScrollTitlePreview(final String text) {
+    Platform.runLater(new Runnable() {
+      @Override
+      public void run() {
+        preview.setUnnamedScrollTitlePreview(text);
+      }
+    });
+  }
+
   public Node getNode() {
     return preview.getNode();
   }

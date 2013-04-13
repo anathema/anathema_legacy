@@ -9,5 +9,6 @@ sourceSets {
 dependencies {
     provided files("${System.properties['java.home']}/lib/jfxrt.jar")
     compile 'com.miglayout:miglayout-javafx:4.2'
+    compile 'org.jfxtras:jfxtras-labs:2.2-r4'
     compile project(':Platform')
 }

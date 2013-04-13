@@ -17,4 +17,9 @@ public class ScrollPreviewDummy implements ScrollPreview {
   public void setTitle(String text) {
     this.title = text;
   }
+
+  @Override
+  public void setUnnamedScrollTitlePreview(String text) {
+    //nothing to do
+  }
 }

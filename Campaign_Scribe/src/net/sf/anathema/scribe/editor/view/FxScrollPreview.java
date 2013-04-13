@@ -35,6 +35,11 @@ public class FxScrollPreview implements ScrollPreview {
     titleDisplay.setText(text);
   }
 
+  @Override
+  public void setUnnamedScrollTitlePreview(String text) {
+    titleDisplay.setPromptText(text);
+  }
+
   public Node getNode() {
     return pane;
   }

@@ -81,7 +81,7 @@ public class FxEquipmentDescriptionPanel implements EquipmentDescriptionPanel {
 
   @Override
   public CostSelectionView addCostView(String label) {
-    return new NullCostSelectionView();
+    return new FxCostSelectionView(label);
   }
 
   public Node getNode() {

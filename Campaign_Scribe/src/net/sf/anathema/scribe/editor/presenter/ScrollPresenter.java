@@ -18,7 +18,9 @@ public class ScrollPresenter {
   }
 
   public void initPresentation() {
-    editor.setTitlePrompt(resources.getString("Scribe.UnnamedScroll.Title"));
+    String unnamed = resources.getString("Scribe.UnnamedScroll.Title");
+    editor.setTitlePrompt(unnamed);
+    preview.setUnnamedScrollTitlePreview(unnamed);
     initializeEditorListening();
     initializeModelListening();
   }
