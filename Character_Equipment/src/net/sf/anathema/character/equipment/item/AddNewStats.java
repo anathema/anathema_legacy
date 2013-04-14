@@ -6,6 +6,7 @@ import net.sf.anathema.character.equipment.item.view.ToolListView;
 import net.sf.anathema.character.generic.equipment.weapon.IEquipmentStats;
 import net.sf.anathema.interaction.Command;
 import net.sf.anathema.interaction.Tool;
+import net.sf.anathema.lib.control.IChangeListener;
 import net.sf.anathema.lib.resources.Resources;
 
 import java.util.ArrayList;
@@ -24,7 +25,7 @@ public class AddNewStats {
   }
 
   public void addTool(final NewStatsConfiguration newStatsConfiguration, ToolListView<IEquipmentStats> statsListView) {
-    Tool newTool = statsListView.addTool();
+    final Tool newTool = statsListView.addTool();
     newTool.setTooltip(resources.getString(newStatsConfiguration.getTooltipKey()));
     newTool.setIcon(newStatsConfiguration.getIconPath());
     newTool.setCommand(new Command() {
@@ -41,5 +42,20 @@ public class AddNewStats {
         editModel.addStatistics(equipmentStats);
       }
     });
+    controlAvailability(newStatsConfiguration, newTool);
+    editModel.addCompositionChangeListener(new IChangeListener() {
+      @Override
+      public void changeOccurred() {
+        controlAvailability(newStatsConfiguration, newTool);
+      }
+    });
+  }
+
+  private void controlAvailability(NewStatsConfiguration newStatsConfiguration, Tool newTool) {
+    if (statsFactory.canHaveThisKindOfStats(newStatsConfiguration.getType(), editModel.getMaterialComposition())) {
+      newTool.enable();
+    } else {
+      newTool.disable();
+    }
   }
 }

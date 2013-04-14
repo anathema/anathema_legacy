@@ -42,6 +42,8 @@ import net.sf.anathema.lib.util.Identifier;
 
 import java.awt.Component;
 
+import static net.sf.anathema.character.equipment.item.model.EquipmentStatisticsType.Artifact;
+
 public class EquipmentStatsCreationFactory implements IEquipmentStatsCreationFactory {
 
   private final ICollectionFactory collectionFactory;
@@ -51,7 +53,8 @@ public class EquipmentStatsCreationFactory implements IEquipmentStatsCreationFac
   }
 
   @Override
-  public IEquipmentStats createNewStatsQuickly(String[] definedNames, String nameProposal, EquipmentStatisticsType type) {
+  public IEquipmentStats createNewStatsQuickly(String[] definedNames, String nameProposal,
+                                               EquipmentStatisticsType type) {
     IEquipmentStatisticsCreationModel model = new EquipmentStatisticsCreationModel(definedNames);
     model.setEquipmentType(type);
     String finalName = createUniqueName(nameProposal, model);
@@ -99,6 +102,12 @@ public class EquipmentStatsCreationFactory implements IEquipmentStatsCreationFac
     return runDialog(parentComponent, resources, model, materialComposition);
   }
 
+  @Override
+  public boolean canHaveThisKindOfStats(EquipmentStatisticsType type, MaterialComposition materialComposition) {
+    boolean canHaveArtifactStats = materialComposition != MaterialComposition.None;
+    return type != Artifact || canHaveArtifactStats;
+  }
+
   private IEquipmentStats runDialog(Component parentComponent, Resources resources,
                                     IEquipmentStatisticsCreationModel model, MaterialComposition materialComposition) {
     IEquipmentStatisticsCreationViewFactory viewFactory = new EquipmentStatisticsCreationViewFactory();
@@ -140,7 +149,7 @@ public class EquipmentStatsCreationFactory implements IEquipmentStatsCreationFac
       armourModel.getMobilityPenaltyModel().setValue(armourStats.getMobilityPenalty());
     } else if (stats instanceof IArtifactStats) {
       IArtifactStats artifactStats = (IArtifactStats) stats;
-      model.setEquipmentType(EquipmentStatisticsType.Artifact);
+      model.setEquipmentType(Artifact);
       IArtifactStatisticsModel artifactModel = model.getArtifactStatisticsModel();
       artifactModel.getName().setText(artifactStats.getName().getId());
       artifactModel.getAttuneCostModel().setValue(artifactStats.getAttuneCost());

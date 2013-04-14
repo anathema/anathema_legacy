@@ -12,4 +12,6 @@ public interface IEquipmentStatsCreationFactory {
                             IEquipmentStats selectedStats, MaterialComposition materialComposition);
 
   IEquipmentStats createNewStatsQuickly(String[] definedNames, String nameProposal, EquipmentStatisticsType type);
+
+  boolean canHaveThisKindOfStats(EquipmentStatisticsType type, MaterialComposition materialComposition);
 }
