@@ -9,7 +9,7 @@ import java.awt.Component;
 public interface IEquipmentStatsCreationFactory {
 
   IEquipmentStats editStats(Component parentComponent, Resources resources, String[] nameArray,
-                            IEquipmentStats selectedStats, MaterialComposition materialComposition);
+                            IEquipmentStats selectedStats);
 
   IEquipmentStats createNewStatsQuickly(String[] definedNames, String nameProposal, EquipmentStatisticsType type);
 

@@ -43,8 +43,8 @@ public class EquipmentEditStatsPresenter implements Presenter {
     addNewStats.addTool(new ArmourStatsConfiguration(), statsListView);
     addNewStats.addTool(new ArtifactStatsConfiguration(), statsListView);
     addNewStats.addTool(new TraitModifierStatsConfiguration(), statsListView);
-    new RemoveStatsAction(resources, editModel).addToolTo(statsListView);
     new EditStatsAction(resources, editModel, model.getStatsCreationFactory()).addToolTo(statsListView);
+    new RemoveStatsAction(resources, editModel).addToolTo(statsListView);
   }
 
   private void updateStatListContent(ToolListView<IEquipmentStats> statsListView) {

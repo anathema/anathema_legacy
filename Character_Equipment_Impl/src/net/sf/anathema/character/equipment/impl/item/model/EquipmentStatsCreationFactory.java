@@ -11,8 +11,12 @@ import net.sf.anathema.character.equipment.creation.model.stats.IRangedCombatSta
 import net.sf.anathema.character.equipment.creation.model.stats.ITraitModifyingStatisticsModel;
 import net.sf.anathema.character.equipment.creation.model.stats.IWeaponTag;
 import net.sf.anathema.character.equipment.creation.model.stats.IWeaponTagsModel;
-import net.sf.anathema.character.equipment.creation.presenter.stats.EquipmentTypeChoicePresenterPage;
+import net.sf.anathema.character.equipment.creation.presenter.stats.ArmourStatisticsPresenterPage;
+import net.sf.anathema.character.equipment.creation.presenter.stats.ArtifactStatisticsPresenterPage;
+import net.sf.anathema.character.equipment.creation.presenter.stats.CloseCombatStatisticsPresenterPage;
 import net.sf.anathema.character.equipment.creation.presenter.stats.IEquipmentStatisticsCreationViewFactory;
+import net.sf.anathema.character.equipment.creation.presenter.stats.RangedCombatStatisticsPresenterPage;
+import net.sf.anathema.character.equipment.creation.presenter.stats.TraitModifyingStatisticsPresenterPage;
 import net.sf.anathema.character.equipment.impl.character.model.stats.AbstractStats;
 import net.sf.anathema.character.equipment.impl.character.model.stats.AbstractWeaponStats;
 import net.sf.anathema.character.equipment.impl.character.model.stats.ArmourStats;
@@ -27,6 +31,7 @@ import net.sf.anathema.character.equipment.item.model.EquipmentStatisticsType;
 import net.sf.anathema.character.equipment.item.model.ICollectionFactory;
 import net.sf.anathema.character.equipment.item.model.IEquipmentStatsCreationFactory;
 import net.sf.anathema.character.equipment.wizard.AnathemaWizardDialog;
+import net.sf.anathema.character.equipment.wizard.IAnathemaWizardPage;
 import net.sf.anathema.character.equipment.wizard.WizardDialog;
 import net.sf.anathema.character.generic.equipment.IArtifactStats;
 import net.sf.anathema.character.generic.equipment.ITraitModifyingStats;
@@ -96,10 +101,10 @@ public class EquipmentStatsCreationFactory implements IEquipmentStatsCreationFac
 
   @Override
   public IEquipmentStats editStats(Component parentComponent, Resources resources, String[] definedNames,
-                                   IEquipmentStats stats, MaterialComposition materialComposition) {
+                                   IEquipmentStats stats) {
     IEquipmentStatisticsCreationModel model = new EquipmentStatisticsCreationModel(definedNames);
     createModel(model, stats);
-    return runDialog(parentComponent, resources, model, materialComposition);
+    return runDialog(parentComponent, resources, model);
   }
 
   @Override
@@ -109,17 +114,33 @@ public class EquipmentStatsCreationFactory implements IEquipmentStatsCreationFac
   }
 
   private IEquipmentStats runDialog(Component parentComponent, Resources resources,
-                                    IEquipmentStatisticsCreationModel model, MaterialComposition materialComposition) {
+                                    IEquipmentStatisticsCreationModel model) {
     IEquipmentStatisticsCreationViewFactory viewFactory = new EquipmentStatisticsCreationViewFactory();
-    boolean canHaveArtifactStats = materialComposition != MaterialComposition.None;
-    EquipmentTypeChoicePresenterPage startPage = new EquipmentTypeChoicePresenterPage(resources, model, viewFactory,
-            canHaveArtifactStats);
+    IAnathemaWizardPage startPage = chooseStartPage(resources, model, viewFactory);
     WizardDialog dialog = new AnathemaWizardDialog(parentComponent, startPage);
     IDialogResult result = dialog.show();
     if (result.isCanceled()) {
       return null;
     }
     return createStats(model);
+  }
+
+  private IAnathemaWizardPage chooseStartPage(Resources resources, IEquipmentStatisticsCreationModel model,
+                                              IEquipmentStatisticsCreationViewFactory viewFactory) {
+    switch (model.getEquipmentType()) {
+      case CloseCombat:
+        return new CloseCombatStatisticsPresenterPage(resources, model, viewFactory);
+      case RangedCombat:
+        return new RangedCombatStatisticsPresenterPage(resources, model, viewFactory);
+      case Armor:
+        return new ArmourStatisticsPresenterPage(resources, model, viewFactory);
+      case Artifact:
+        return new ArtifactStatisticsPresenterPage(resources, model, viewFactory);
+      case TraitModifying:
+        return new TraitModifyingStatisticsPresenterPage(resources, model, viewFactory);
+      default:
+        throw new IllegalArgumentException("Type must be defined to edit.");
+    }
   }
 
   private void createModel(IEquipmentStatisticsCreationModel model, IEquipmentStats stats) {
