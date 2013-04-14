@@ -6,30 +6,27 @@ import net.sf.anathema.character.equipment.item.view.ToolListView;
 import net.sf.anathema.character.generic.equipment.weapon.IEquipmentStats;
 import net.sf.anathema.interaction.Command;
 import net.sf.anathema.interaction.Tool;
-import net.sf.anathema.lib.file.RelativePath;
 import net.sf.anathema.lib.resources.Resources;
 
 import java.util.ArrayList;
 import java.util.List;
 
-import static net.sf.anathema.character.equipment.item.model.EquipmentStatisticsType.CloseCombat;
+public class AddNewStats {
+  protected final Resources resources;
+  protected final IEquipmentTemplateEditModel editModel;
+  protected final IEquipmentStatsCreationFactory statsFactory;
 
-public class AddMeleeStatsAction {
-  private final Resources resources;
-  private final IEquipmentTemplateEditModel editModel;
-  private final IEquipmentStatsCreationFactory statsFactory;
-
-  public AddMeleeStatsAction(Resources resources, IEquipmentTemplateEditModel editModel,
-                             IEquipmentStatsCreationFactory statsFactory) {
-    this.resources = resources;
+  public AddNewStats(Resources resources, IEquipmentTemplateEditModel editModel,
+                     IEquipmentStatsCreationFactory statsFactory) {
     this.editModel = editModel;
     this.statsFactory = statsFactory;
+    this.resources = resources;
   }
 
-  public void addToolTo(ToolListView<IEquipmentStats> statsListView) {
+  public void addTool(final NewStatsConfiguration newStatsConfiguration, ToolListView<IEquipmentStats> statsListView) {
     Tool newTool = statsListView.addTool();
-    newTool.setTooltip(resources.getString("Equipment.Creation.Stats.AddMeleeTooltip"));
-    newTool.setIcon(new RelativePath("icons/CloseCombat16.png"));
+    newTool.setTooltip(resources.getString(newStatsConfiguration.getTooltipKey()));
+    newTool.setIcon(newStatsConfiguration.getIconPath());
     newTool.setCommand(new Command() {
       @Override
       public void execute() {
@@ -37,9 +34,10 @@ public class AddMeleeStatsAction {
         for (IEquipmentStats stats : editModel.getStats()) {
           definedNames.add(stats.getName().getId());
         }
-        String nameProposal = resources.getString("EquipmentStats.CloseCombat");
+        String nameProposal = resources.getString(newStatsConfiguration.getNameKey());
         String[] nameArray = definedNames.toArray(new String[definedNames.size()]);
-        IEquipmentStats equipmentStats = statsFactory.createNewStatsQuickly(nameArray, nameProposal, CloseCombat);
+        IEquipmentStats equipmentStats = statsFactory.createNewStatsQuickly(nameArray, nameProposal,
+                newStatsConfiguration.getType());
         editModel.addStatistics(equipmentStats);
       }
     });

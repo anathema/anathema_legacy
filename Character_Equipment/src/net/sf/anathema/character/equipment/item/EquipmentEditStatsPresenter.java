@@ -37,8 +37,12 @@ public class EquipmentEditStatsPresenter implements Presenter {
 
   private void initButtons(ToolListView<IEquipmentStats> statsListView) {
     IEquipmentTemplateEditModel editModel = model.getTemplateEditModel();
-    new AddNewStatsAction(resources, editModel, model.getStatsCreationFactory()).addToolTo(statsListView);
-    new AddMeleeStatsAction(resources, editModel, model.getStatsCreationFactory()).addToolTo(statsListView);
+    AddNewStats addNewStats = new AddNewStats(resources, editModel, model.getStatsCreationFactory());
+    addNewStats.addTool(new MeleeStatsConfiguration(), statsListView);
+    addNewStats.addTool(new RangedStatsConfiguration(), statsListView);
+    addNewStats.addTool(new ArmourStatsConfiguration(), statsListView);
+    addNewStats.addTool(new ArtifactStatsConfiguration(), statsListView);
+    addNewStats.addTool(new TraitModifierStatsConfiguration(), statsListView);
     new RemoveStatsAction(resources, editModel).addToolTo(statsListView);
     new EditStatsAction(resources, editModel, model.getStatsCreationFactory()).addToolTo(statsListView);
   }
