@@ -8,7 +8,6 @@ import net.sf.anathema.character.equipment.creation.presenter.stats.properties.A
 import net.sf.anathema.character.equipment.creation.view.IWeaponStatisticsView;
 import net.sf.anathema.character.equipment.wizard.AbstractAnathemaWizardPage;
 import net.sf.anathema.character.equipment.wizard.CheckInputListener;
-import net.sf.anathema.lib.data.ICondition;
 import net.sf.anathema.lib.gui.layout.AdditiveView;
 import net.sf.anathema.lib.gui.widgets.IntegerSpinner;
 import net.sf.anathema.lib.message.IBasicMessage;
@@ -66,6 +65,10 @@ public abstract class AbstractEquipmentStatisticsPresenterPage<M extends IEquipm
     return resources;
   }
 
+  public IEquipmentStatisticsCreationModel getOverallModel() {
+    return overallModel;
+  }
+
   private boolean isNameDefined() {
     return !pageModel.getName().isEmpty();
   }
@@ -107,24 +110,9 @@ public abstract class AbstractEquipmentStatisticsPresenterPage<M extends IEquipm
     new TextualPresentation().initView(textView, textModel);
   }
 
-  @Override
-  protected final void addFollowUpPages(CheckInputListener inputListener) {
-    if (!isTagsSupported()) {
-      return;
-    }
-    addFollowupPage(new WeaponTagsPresenterPage(resources, overallModel, viewFactory), inputListener, new ICondition() {
-      @Override
-      public boolean isFulfilled() {
-        return isInLegalState();
-      }
-    });
-  }
-
   protected boolean isInLegalState() {
     return canFinish();
   }
-
-  protected abstract boolean isTagsSupported();
 
   protected abstract void addAdditionalContent();
 
@@ -136,6 +124,11 @@ public abstract class AbstractEquipmentStatisticsPresenterPage<M extends IEquipm
   @Override
   public final IWeaponStatisticsView getPageContent() {
     return view;
+  }
+
+  @Override
+  protected void addFollowUpPages(CheckInputListener inputListener) {
+    //nothing to do
   }
 
   protected final void addLabelledComponentRow(final String[] labels, final Component[] contents) {

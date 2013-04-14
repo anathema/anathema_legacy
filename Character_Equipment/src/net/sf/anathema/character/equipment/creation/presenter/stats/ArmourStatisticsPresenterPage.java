@@ -78,8 +78,4 @@ public class ArmourStatisticsPresenterPage extends AbstractEquipmentStatisticsPr
     });
   }
 
-  @Override
-  protected boolean isTagsSupported() {
-    return false;
-  }
 }

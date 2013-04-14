@@ -56,8 +56,4 @@ public class TraitModifyingStatisticsPresenterPage extends
             initIntegerSpinner(getPageModel().getJoinWarModel()).getComponent() });
   }
 
-  @Override
-  protected boolean isTagsSupported() {
-    return false;
-  }
 }

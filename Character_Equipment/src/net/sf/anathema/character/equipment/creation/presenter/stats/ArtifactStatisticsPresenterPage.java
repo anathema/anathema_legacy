@@ -42,8 +42,4 @@ public class ArtifactStatisticsPresenterPage extends
             requireAttuneBox });
   }
 
-  @Override
-  protected boolean isTagsSupported() {
-    return false;
-  }
 }
