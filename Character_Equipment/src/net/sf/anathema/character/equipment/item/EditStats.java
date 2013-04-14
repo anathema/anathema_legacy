@@ -1,10 +1,9 @@
 package net.sf.anathema.character.equipment.item;
 
-import net.sf.anathema.character.equipment.item.model.IEquipmentStatsCreationFactory;
 import net.sf.anathema.character.equipment.item.model.IEquipmentTemplateEditModel;
+import net.sf.anathema.character.equipment.item.model.StatsEditor;
 import net.sf.anathema.character.equipment.item.view.ToolListView;
 import net.sf.anathema.character.generic.equipment.weapon.IEquipmentStats;
-import net.sf.anathema.framework.view.SwingApplicationFrame;
 import net.sf.anathema.interaction.Command;
 import net.sf.anathema.interaction.Tool;
 import net.sf.anathema.lib.file.RelativePath;
@@ -14,11 +13,11 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class EditStats {
-  private final IEquipmentStatsCreationFactory factory;
+  private final StatsEditor factory;
   private final Resources resources;
   private final IEquipmentTemplateEditModel editModel;
 
-  public EditStats(Resources resources, IEquipmentTemplateEditModel editModel, IEquipmentStatsCreationFactory factory) {
+  public EditStats(Resources resources, IEquipmentTemplateEditModel editModel, StatsEditor factory) {
     this.resources = resources;
     this.editModel = editModel;
     this.factory = factory;
@@ -40,7 +39,7 @@ public class EditStats {
           definedNames.add(stats.getName().getId());
         }
         String[] nameArray = definedNames.toArray(new String[definedNames.size()]);
-        IEquipmentStats equipmentStats = factory.editStats(SwingApplicationFrame.getParentComponent(), resources, nameArray, selectedStats);
+        IEquipmentStats equipmentStats = factory.editStats(resources, nameArray, selectedStats);
         if (equipmentStats == null) {
           return;
         }

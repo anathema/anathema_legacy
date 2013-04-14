@@ -1,6 +1,6 @@
 package net.sf.anathema.character.equipment.item;
 
-import net.sf.anathema.character.equipment.item.model.IEquipmentStatsCreationFactory;
+import net.sf.anathema.character.equipment.item.model.EquipmentStatsFactory;
 import net.sf.anathema.character.equipment.item.model.IEquipmentTemplateEditModel;
 import net.sf.anathema.character.equipment.item.view.ToolListView;
 import net.sf.anathema.character.generic.equipment.weapon.IEquipmentStats;
@@ -15,10 +15,10 @@ import java.util.List;
 public class AddNewStats {
   protected final Resources resources;
   protected final IEquipmentTemplateEditModel editModel;
-  protected final IEquipmentStatsCreationFactory statsFactory;
+  protected final EquipmentStatsFactory statsFactory;
 
   public AddNewStats(Resources resources, IEquipmentTemplateEditModel editModel,
-                     IEquipmentStatsCreationFactory statsFactory) {
+                     EquipmentStatsFactory statsFactory) {
     this.editModel = editModel;
     this.statsFactory = statsFactory;
     this.resources = resources;
@@ -37,7 +37,7 @@ public class AddNewStats {
         }
         String nameProposal = resources.getString(newStatsConfiguration.getNameKey());
         String[] nameArray = definedNames.toArray(new String[definedNames.size()]);
-        IEquipmentStats equipmentStats = statsFactory.createNewStatsQuickly(nameArray, nameProposal,
+        IEquipmentStats equipmentStats = statsFactory.createNewStats(nameArray, nameProposal,
                 newStatsConfiguration.getType());
         editModel.addStatistics(equipmentStats);
       }
