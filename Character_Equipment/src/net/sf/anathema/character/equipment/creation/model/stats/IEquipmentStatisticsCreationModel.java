@@ -1,7 +1,6 @@
 package net.sf.anathema.character.equipment.creation.model.stats;
 
 import net.sf.anathema.character.equipment.item.model.EquipmentStatisticsType;
-import net.sf.anathema.lib.control.IChangeListener;
 
 public interface IEquipmentStatisticsCreationModel {
 
@@ -17,10 +16,6 @@ public interface IEquipmentStatisticsCreationModel {
   
   ITraitModifyingStatisticsModel getTraitModifyingStatisticsModel();
 
-  void addEquipmentTypeChangeListener(IChangeListener changeListener);
-
-  boolean isEquipmentTypeSelected(EquipmentStatisticsType type);
-  
   IWeaponTagsModel getWeaponTagsModel();
 
   EquipmentStatisticsType getEquipmentType();

@@ -17,8 +17,8 @@ import org.jmock.example.announcer.Announcer;
 
 public class EquipmentStatisticsCreationModel implements IEquipmentStatisticsCreationModel {
 
-  private final ICloseCombatStatsticsModel closeCombatStatisticsModel;
-  private final IRangedCombatStatisticsModel rangedWeaponStatisticsModel;
+  private final ICloseCombatStatsticsModel closeCombatStatisticsModel = new CloseCombatStatsticsModel(createOffensiveSpeedModel());
+  private final IRangedCombatStatisticsModel rangedWeaponStatisticsModel = new RangedWeaponStatisticsModel(createOffensiveSpeedModel());
   private final IArmourStatisticsModel armourStatisticsModel = new ArmourStatsticsModel();
   private final IArtifactStatisticsModel artifactStatisticsModel = new ArtifactStatisticsModel();
   private final ITraitModifyingStatisticsModel traitModifyingStatisticsModel = new TraitModifyingStatisticsModel();
@@ -29,11 +29,9 @@ public class EquipmentStatisticsCreationModel implements IEquipmentStatisticsCre
 
   public EquipmentStatisticsCreationModel(String[] existingNames) {
     this.existingNames = existingNames;
-    this.closeCombatStatisticsModel = new CloseCombatStatsticsModel(createOffensiveSpeedModel());
-    this.rangedWeaponStatisticsModel = new RangedWeaponStatisticsModel(createOffensiveSpeedModel());
   }
 
-  private IIntValueModel createOffensiveSpeedModel() {
+  private static IIntValueModel createOffensiveSpeedModel() {
     return new RangedIntValueModel(new Range(1, Integer.MAX_VALUE), 1);
   }
 
@@ -54,16 +52,6 @@ public class EquipmentStatisticsCreationModel implements IEquipmentStatisticsCre
   @Override
   public ICloseCombatStatsticsModel getCloseCombatStatsticsModel() {
     return closeCombatStatisticsModel;
-  }
-
-  @Override
-  public void addEquipmentTypeChangeListener(IChangeListener changeListener) {
-    equipmentTypeChangeControl.addListener(changeListener);
-  }
-
-  @Override
-  public boolean isEquipmentTypeSelected(EquipmentStatisticsType type) {
-    return this.statisticsType == type;
   }
 
   @Override
