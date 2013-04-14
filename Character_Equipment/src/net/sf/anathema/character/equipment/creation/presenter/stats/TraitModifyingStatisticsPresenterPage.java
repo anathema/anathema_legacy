@@ -19,7 +19,6 @@ public class TraitModifyingStatisticsPresenterPage extends
 
   @Override
   protected void addAdditionalContent() {
-
     addLabelledComponentRow(new String[] {
         getProperties().getDDVLabel(),
         getProperties().getPDVLabel(),
@@ -55,5 +54,4 @@ public class TraitModifyingStatisticsPresenterPage extends
             initIntegerSpinner(getPageModel().getJoinDebateModel()).getComponent(),
             initIntegerSpinner(getPageModel().getJoinWarModel()).getComponent() });
   }
-
 }
