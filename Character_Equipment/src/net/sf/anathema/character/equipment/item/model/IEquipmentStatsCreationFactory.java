@@ -8,9 +8,6 @@ import java.awt.Component;
 
 public interface IEquipmentStatsCreationFactory {
 
-  IEquipmentStats createNewStats(Component parentComponent, Resources resources, String[] definedNames,
-                                 MaterialComposition materialComposition);
-
   IEquipmentStats editStats(Component parentComponent, Resources resources, String[] nameArray,
                             IEquipmentStats selectedStats, MaterialComposition materialComposition);
 

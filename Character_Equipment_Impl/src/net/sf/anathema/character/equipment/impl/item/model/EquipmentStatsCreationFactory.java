@@ -51,13 +51,6 @@ public class EquipmentStatsCreationFactory implements IEquipmentStatsCreationFac
   }
 
   @Override
-  public IEquipmentStats createNewStats(Component parentComponent, Resources resources, String[] definedNames,
-                                        MaterialComposition materialComposition) {
-    IEquipmentStatisticsCreationModel model = new EquipmentStatisticsCreationModel(definedNames);
-    return runDialog(parentComponent, resources, model, materialComposition);
-  }
-
-  @Override
   public IEquipmentStats createNewStatsQuickly(String[] definedNames, String nameProposal, EquipmentStatisticsType type) {
     IEquipmentStatisticsCreationModel model = new EquipmentStatisticsCreationModel(definedNames);
     model.setEquipmentType(type);
