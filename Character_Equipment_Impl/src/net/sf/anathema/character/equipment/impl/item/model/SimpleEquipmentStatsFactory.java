@@ -35,25 +35,24 @@ public class SimpleEquipmentStatsFactory implements EquipmentStatsFactory {
   }
 
   private void setNameOnCorrectModel(IEquipmentStatisticsCreationModel model, String finalName) {
-    IEquipmentStatisticsModel typeModel = null;
+    findMatchingModel(model).getName().setText(finalName);
+  }
+
+  private IEquipmentStatisticsModel findMatchingModel(IEquipmentStatisticsCreationModel model) {
     switch (model.getEquipmentType()) {
       case CloseCombat:
-        typeModel = model.getCloseCombatStatsticsModel();
-        break;
+        return model.getCloseCombatStatsticsModel();
       case RangedCombat:
-        typeModel = model.getRangedWeaponStatisticsModel();
-        break;
+        return model.getRangedWeaponStatisticsModel();
       case Armor:
-        typeModel = model.getArmourStatisticsModel();
-        break;
+        return model.getArmourStatisticsModel();
       case TraitModifying:
-        typeModel = model.getTraitModifyingStatisticsModel();
-        break;
+        return model.getTraitModifyingStatisticsModel();
       case Artifact:
-        typeModel = model.getArtifactStatisticsModel();
-        break;
+        return model.getArtifactStatisticsModel();
+      default:
+        throw new IllegalStateException("Type not seleted.");
     }
-    typeModel.getName().setText(finalName);
   }
 
   private String createUniqueName(String nameProposal, IEquipmentStatisticsCreationModel model) {
