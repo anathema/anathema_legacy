@@ -38,6 +38,7 @@ public class EquipmentEditStatsPresenter implements Presenter {
   private void initButtons(ToolListView<IEquipmentStats> statsListView) {
     IEquipmentTemplateEditModel editModel = model.getTemplateEditModel();
     new AddNewStatsAction(resources, editModel, model.getStatsCreationFactory()).addToolTo(statsListView);
+    new AddMeleeStatsAction(resources, editModel, model.getStatsCreationFactory()).addToolTo(statsListView);
     new RemoveStatsAction(resources, editModel).addToolTo(statsListView);
     new EditStatsAction(resources, editModel, model.getStatsCreationFactory()).addToolTo(statsListView);
   }

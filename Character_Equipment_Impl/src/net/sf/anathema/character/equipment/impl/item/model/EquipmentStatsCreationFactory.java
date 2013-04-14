@@ -26,6 +26,8 @@ import net.sf.anathema.character.equipment.impl.creation.model.WeaponTag;
 import net.sf.anathema.character.equipment.item.model.EquipmentStatisticsType;
 import net.sf.anathema.character.equipment.item.model.ICollectionFactory;
 import net.sf.anathema.character.equipment.item.model.IEquipmentStatsCreationFactory;
+import net.sf.anathema.character.equipment.wizard.AnathemaWizardDialog;
+import net.sf.anathema.character.equipment.wizard.WizardDialog;
 import net.sf.anathema.character.generic.equipment.IArtifactStats;
 import net.sf.anathema.character.generic.equipment.ITraitModifyingStats;
 import net.sf.anathema.character.generic.equipment.weapon.IArmourStats;
@@ -34,8 +36,6 @@ import net.sf.anathema.character.generic.equipment.weapon.IWeaponStats;
 import net.sf.anathema.character.generic.health.HealthType;
 import net.sf.anathema.lib.exception.NotYetImplementedException;
 import net.sf.anathema.lib.gui.dialog.core.IDialogResult;
-import net.sf.anathema.character.equipment.wizard.WizardDialog;
-import net.sf.anathema.character.equipment.wizard.AnathemaWizardDialog;
 import net.sf.anathema.lib.resources.Resources;
 import net.sf.anathema.lib.util.Identified;
 import net.sf.anathema.lib.util.Identifier;
@@ -55,6 +55,47 @@ public class EquipmentStatsCreationFactory implements IEquipmentStatsCreationFac
                                         MaterialComposition materialComposition) {
     IEquipmentStatisticsCreationModel model = new EquipmentStatisticsCreationModel(definedNames);
     return runDialog(parentComponent, resources, model, materialComposition);
+  }
+
+  @Override
+  public IEquipmentStats createNewStatsQuickly(String[] definedNames, String nameProposal, EquipmentStatisticsType type) {
+    IEquipmentStatisticsCreationModel model = new EquipmentStatisticsCreationModel(definedNames);
+    model.setEquipmentType(type);
+    String finalName = createUniqueName(nameProposal, model);
+    setNameOnCorrectModel(model, finalName);
+    return createStats(model);
+  }
+
+  private void setNameOnCorrectModel(IEquipmentStatisticsCreationModel model, String finalName) {
+    IEquipmentStatisticsModel typeModel = null;
+    switch (model.getEquipmentType()) {
+      case CloseCombat:
+        typeModel = model.getCloseCombatStatsticsModel();
+        break;
+      case RangedCombat:
+        typeModel = model.getRangedWeaponStatisticsModel();
+        break;
+      case Armor:
+        typeModel = model.getArmourStatisticsModel();
+        break;
+      case TraitModifying:
+        typeModel = model.getTraitModifyingStatisticsModel();
+        break;
+      case Artifact:
+        typeModel = model.getArtifactStatisticsModel();
+        break;
+    }
+    typeModel.getName().setText(finalName);
+  }
+
+  private String createUniqueName(String nameProposal, IEquipmentStatisticsCreationModel model) {
+    int count = 1;
+    String finalName = nameProposal;
+    while (!model.isNameUnique(finalName)) {
+      count++;
+      finalName = nameProposal + " " + count;
+    }
+    return finalName;
   }
 
   @Override

@@ -13,4 +13,6 @@ public interface IEquipmentStatsCreationFactory {
 
   IEquipmentStats editStats(Component parentComponent, Resources resources, String[] nameArray,
                             IEquipmentStats selectedStats, MaterialComposition materialComposition);
+
+  IEquipmentStats createNewStatsQuickly(String[] definedNames, String nameProposal, EquipmentStatisticsType type);
 }
