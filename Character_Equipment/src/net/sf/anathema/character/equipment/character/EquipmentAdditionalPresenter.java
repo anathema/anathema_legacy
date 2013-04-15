@@ -20,8 +20,8 @@ import net.sf.anathema.interaction.Tool;
 import net.sf.anathema.lib.control.IChangeListener;
 import net.sf.anathema.lib.control.ICollectionListener;
 import net.sf.anathema.lib.control.ObjectValueListener;
-import net.sf.anathema.lib.gui.Presenter;
 import net.sf.anathema.lib.gui.AgnosticUIConfiguration;
+import net.sf.anathema.lib.gui.Presenter;
 import net.sf.anathema.lib.gui.dialog.core.IDialogResult;
 import net.sf.anathema.lib.gui.dialog.userdialog.UserDialog;
 import net.sf.anathema.lib.gui.selection.IListObjectSelectionView;
@@ -184,7 +184,7 @@ public class EquipmentAdditionalPresenter implements Presenter {
   private void createPersonalizeTool(final IEquipmentItem selectedObject, EquipmentObjectPresenter objectPresenter) {
     Tool personalize = objectPresenter.addContextTool();
     personalize.setIcon(new BasicUi().getEditIconPath());
-    personalize.setText(resources.getString("AdditionalTemplateView.Personalize.Action.Name"));
+    personalize.setText(resources.getString("AdditionalTemplateView.Personalize.Action.ViewShouldShow"));
     personalize.setCommand(new Command() {
       @Override
       public void execute() {
@@ -206,7 +206,7 @@ public class EquipmentAdditionalPresenter implements Presenter {
   private void createUnpersonalizeTool(final IEquipmentItem selectedObject, EquipmentObjectPresenter objectPresenter) {
     Tool unpersonalize = objectPresenter.addContextTool();
     unpersonalize.setIcon(new BasicUi().getRemoveIconPath());
-    unpersonalize.setText(resources.getString("AdditionalTemplateView.RemoveTemplate.Action.Name"));
+    unpersonalize.setText(resources.getString("AdditionalTemplateView.RemoveTemplate.Action.ViewShouldShow"));
     unpersonalize.setCommand(new Command() {
       @Override
       public void execute() {

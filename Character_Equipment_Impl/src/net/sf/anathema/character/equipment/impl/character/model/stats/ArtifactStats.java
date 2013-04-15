@@ -1,13 +1,13 @@
 package net.sf.anathema.character.equipment.impl.character.model.stats;
 
 import com.google.common.collect.Lists;
+import net.sf.anathema.character.equipment.item.MutableArtifactStats;
 import net.sf.anathema.character.generic.equipment.ArtifactAttuneType;
-import net.sf.anathema.character.generic.equipment.IArtifactStats;
 import net.sf.anathema.character.generic.equipment.weapon.IEquipmentStats;
 
 import java.util.List;
 
-public class ArtifactStats extends AbstractNonCombatStats implements IArtifactStats {
+public class ArtifactStats extends AbstractNonCombatStats implements MutableArtifactStats {
   int attuneCost;
   boolean allowForeignAttunement;
   boolean requireAttunement;
