@@ -17,8 +17,8 @@ import static org.junit.Assert.assertThat;
 
 public class EquipmentGsonTest {
 
-  private GsonCollectionFactory collectionFactory = new GsonCollectionFactory();
-  private EquipmentTemplate originalTemplate = new EquipmentTemplate("First Test", "The test used to shape Creation", Fixed, Orichalcum, collectionFactory, null);
+  private EquipmentTemplate originalTemplate = new EquipmentTemplate("First Test", "The test used to shape Creation", Fixed, Orichalcum,
+          null);
   private EquipmentGson gson = new EquipmentGson();
 
   @Test

@@ -21,7 +21,6 @@
   },
   "description": "2E Core p368",
   "name": "Whip",
-  "collectionFactory": {},
   "composition": "None",
   "cost": {
     "costType": "Resources",

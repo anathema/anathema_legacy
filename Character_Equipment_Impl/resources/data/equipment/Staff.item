@@ -22,7 +22,6 @@
   },
   "description": "2E Core p368, 2.5 Errata p15",
   "name": "Staff",
-  "collectionFactory": {},
   "composition": "None",
   "cost": {
     "costType": "Resources",

@@ -3,12 +3,12 @@ package net.sf.anathema.character.equipment.impl.character.model;
 import net.sf.anathema.character.equipment.ItemCost;
 import net.sf.anathema.character.equipment.MagicalMaterial;
 import net.sf.anathema.character.equipment.MaterialComposition;
-import net.sf.anathema.character.equipment.item.model.ICollectionFactory;
 import net.sf.anathema.character.equipment.template.IEquipmentTemplate;
 import net.sf.anathema.character.generic.equipment.weapon.IEquipmentStats;
 import net.sf.anathema.character.generic.impl.persistence.SecondEdition;
-import net.sf.anathema.character.generic.rules.IExaltedEdition;
 
+import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -17,13 +17,12 @@ public class EquipmentTemplate implements IEquipmentTemplate {
   private final Map<String, List<IEquipmentStats>> statsByRuleSet;
   private final String description;
   private final String name;
-  private final ICollectionFactory collectionFactory;
   private final String material;
   private final String composition;
   private final ItemCost cost;
 
   public EquipmentTemplate(String name, String description, MaterialComposition composition, MagicalMaterial material,
-                           ICollectionFactory collectionFactory, ItemCost cost) {
+                           ItemCost cost) {
     this.name = name;
     this.description = description;
     this.composition = composition.getId();
@@ -32,8 +31,7 @@ public class EquipmentTemplate implements IEquipmentTemplate {
     } else {
       this.material = material.getId();
     }
-    this.collectionFactory = collectionFactory;
-    this.statsByRuleSet = collectionFactory.createHashMap();
+    this.statsByRuleSet = new HashMap<>();
     this.cost = cost;
   }
 
@@ -54,7 +52,7 @@ public class EquipmentTemplate implements IEquipmentTemplate {
   public synchronized void addStats(IEquipmentStats stats) {
     List<IEquipmentStats> statList = statsByRuleSet.get(new SecondEdition().getId());
     if (statList == null) {
-      statList = collectionFactory.createList();
+      statList = new ArrayList<>();
       statsByRuleSet.put(new SecondEdition().getId(), statList);
     }
     statList.add(stats);
@@ -81,21 +79,5 @@ public class EquipmentTemplate implements IEquipmentTemplate {
   @Override
   public ItemCost getCost() {
     return cost;
-  }
-
-  public boolean hasStats() {
-    boolean hasStats = false;
-    for (String key : statsByRuleSet.keySet()) {
-      hasStats = !statsByRuleSet.get(key).isEmpty();
-    }
-    return hasStats;
-  }
-
-  public void removeStats(String ruleset) {
-    statsByRuleSet.remove(ruleset);
-  }
-
-  public void removeStats(IExaltedEdition edition, IEquipmentStats stat) {
-    statsByRuleSet.get(edition.getId()).remove(stat);
   }
 }

@@ -29,7 +29,6 @@
   },
   "description": "2E Core p385, 2.5 Errata p16",
   "name": "Grand Daiklave",
-  "collectionFactory": {},
   "composition": "Variable",
   "cost": {
     "costType": "Artifact",

@@ -21,7 +21,6 @@
   },
   "description": "2E Core p373",
   "name": "Flame Piece",
-  "collectionFactory": {},
   "composition": "None",
   "cost": {
     "costType": "Resources",

@@ -21,7 +21,6 @@
   },
   "description": "2E Core p376",
   "name": "Articulated Plate",
-  "collectionFactory": {},
   "composition": "None",
   "cost": {
     "costType": "Resources",

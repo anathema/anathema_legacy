@@ -39,7 +39,6 @@
   },
   "description": "2E Core p369",
   "name": "Fighting Chain",
-  "collectionFactory": {},
   "composition": "None",
   "cost": {
     "costType": "Resources",

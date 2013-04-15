@@ -21,7 +21,6 @@
   },
   "description": "Close: 2E Core p371",
   "name": "Needle",
-  "collectionFactory": {},
   "composition": "None",
   "cost": {
     "costType": "Resources",

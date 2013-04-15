@@ -10,14 +10,12 @@ public class EquipmentDatabaseManagement implements IEquipmentDatabaseManagement
 
   private final EquipmentTemplateEditModel templateEditModel;
   private final IEquipmentDatabase database;
-  private final EquipmentStatsFactory statsFactory;
-  private final SwingStatsEditor statsEditor;
+  private final EquipmentStatsFactory statsFactory = new SimpleEquipmentStatsFactory();
+  private final SwingStatsEditor statsEditor = new SwingStatsEditor();
 
   public EquipmentDatabaseManagement(IEquipmentDatabase database) {
     this.database = database;
     this.templateEditModel = new EquipmentTemplateEditModel(database);
-    this.statsFactory = new SimpleEquipmentStatsFactory(database.getCollectionFactory());
-    this.statsEditor = new SwingStatsEditor(database.getCollectionFactory());
   }
 
   @Override

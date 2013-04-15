@@ -17,23 +17,16 @@ import net.sf.anathema.character.equipment.impl.character.model.stats.ArtifactSt
 import net.sf.anathema.character.equipment.impl.character.model.stats.MeleeWeaponStats;
 import net.sf.anathema.character.equipment.impl.character.model.stats.RangedWeaponStats;
 import net.sf.anathema.character.equipment.impl.character.model.stats.TraitModifyingStats;
-import net.sf.anathema.character.equipment.item.model.ICollectionFactory;
 import net.sf.anathema.character.generic.equipment.weapon.IEquipmentStats;
 import net.sf.anathema.character.generic.health.HealthType;
 import net.sf.anathema.lib.util.Identifier;
 
 public class ModelToStats {
 
-  private final ICollectionFactory collectionFactory;
-
-  public ModelToStats(ICollectionFactory collectionFactory) {
-    this.collectionFactory = collectionFactory;
-  }
-
   public IEquipmentStats createStats(IEquipmentStatisticsCreationModel model) {
     switch (model.getEquipmentType()) {
       case Armor:
-        ArmourStats armourStats = new ArmourStats(collectionFactory);
+        ArmourStats armourStats = new ArmourStats();
         IArmourStatisticsModel armourModel = model.getArmourStatisticsModel();
         setName(armourStats, armourModel);
         armourStats.setFatigue(armourModel.getFatigueModel().getValue());
@@ -44,13 +37,13 @@ public class ModelToStats {
         }
         return armourStats;
       case CloseCombat:
-        AbstractWeaponStats closeCombatStats = new MeleeWeaponStats(collectionFactory);
+        AbstractWeaponStats closeCombatStats = new MeleeWeaponStats();
         ICloseCombatStatsticsModel closeCombatModel = model.getCloseCombatStatsticsModel();
         setBasicWeaponStats(closeCombatStats, closeCombatModel, model.getWeaponTagsModel());
         closeCombatStats.setDefence(closeCombatModel.getDefenseModel().getValue());
         return closeCombatStats;
       case RangedCombat:
-        AbstractWeaponStats rangedCombatStats = new RangedWeaponStats(collectionFactory);
+        AbstractWeaponStats rangedCombatStats = new RangedWeaponStats();
         IRangedCombatStatisticsModel rangedCombatModel = model.getRangedWeaponStatisticsModel();
         setBasicWeaponStats(rangedCombatStats, rangedCombatModel, model.getWeaponTagsModel());
         rangedCombatStats.setRange(rangedCombatModel.getRangeModel().getValue());

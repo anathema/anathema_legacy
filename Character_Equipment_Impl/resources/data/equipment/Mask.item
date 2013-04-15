@@ -12,7 +12,6 @@
   },
   "description": "2E Core p381",
   "name": "Mask",
-  "collectionFactory": {},
   "composition": "None",
   "cost": {
     "costType": "Artifact",

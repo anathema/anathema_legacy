@@ -36,7 +36,6 @@
   },
   "description": "Close: 2E Core p368, 2.5 Errata p15\nRanged: 2E Core p371\nDifference between Close and Ranged stats in the Core is used to extrapolate the Errata Ranged stats, by adding the difference to the Errata Close stats to produce \"Errata\" Ranged stats.\nDifference: Thrust becomes Piercing",
   "name": "Javelin",
-  "collectionFactory": {},
   "composition": "None",
   "cost": {
     "costType": "Resources",

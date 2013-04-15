@@ -8,7 +8,6 @@ import net.sf.anathema.character.equipment.creation.presenter.stats.IEquipmentSt
 import net.sf.anathema.character.equipment.creation.presenter.stats.RangedCombatStatisticsPresenterPage;
 import net.sf.anathema.character.equipment.creation.presenter.stats.TraitModifyingStatisticsPresenterPage;
 import net.sf.anathema.character.equipment.impl.creation.EquipmentStatisticsCreationViewFactory;
-import net.sf.anathema.character.equipment.item.model.ICollectionFactory;
 import net.sf.anathema.character.equipment.item.model.StatsEditor;
 import net.sf.anathema.character.equipment.wizard.AnathemaWizardDialog;
 import net.sf.anathema.character.equipment.wizard.IAnathemaWizardPage;
@@ -20,11 +19,7 @@ import net.sf.anathema.lib.resources.Resources;
 
 public class SwingStatsEditor implements StatsEditor {
 
-  private final ModelToStats modelToStats;
-
-  public SwingStatsEditor(ICollectionFactory collectionFactory) {
-    this.modelToStats = new ModelToStats(collectionFactory);
-  }
+  private final ModelToStats modelToStats = new ModelToStats();
 
   @Override
   public IEquipmentStats editStats(Resources resources, String[] definedNames, IEquipmentStats stats) {

@@ -21,7 +21,6 @@
   },
   "description": "2E Core p375\nMay be concealed under normal clothes.",
   "name": "Chain Shirt",
-  "collectionFactory": {},
   "composition": "None",
   "cost": {
     "costType": "Resources",

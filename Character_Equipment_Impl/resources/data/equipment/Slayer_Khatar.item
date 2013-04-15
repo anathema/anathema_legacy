@@ -20,7 +20,6 @@
   },
   "description": "2E Core p388",
   "name": "Slayer Khatar",
-  "collectionFactory": {},
   "composition": "Compound",
   "cost": {
     "costType": "Artifact",

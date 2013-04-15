@@ -18,7 +18,6 @@
   },
   "description": "2E Core p367, 2.5 Errata p15",
   "name": "Short Sword",
-  "collectionFactory": {},
   "composition": "None",
   "cost": {
     "costType": "Resources",

@@ -2,13 +2,13 @@ package net.sf.anathema.character.equipment.impl.character.model.stats;
 
 import com.google.common.base.Function;
 import net.sf.anathema.character.equipment.impl.creation.model.WeaponTag;
-import net.sf.anathema.character.equipment.item.model.ICollectionFactory;
 import net.sf.anathema.character.generic.equipment.weapon.IWeaponStats;
 import net.sf.anathema.character.generic.health.HealthType;
 import net.sf.anathema.character.generic.traits.ITraitType;
 import net.sf.anathema.character.generic.traits.types.AttributeType;
 import net.sf.anathema.lib.util.Identified;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import static net.sf.anathema.lib.lang.ArrayUtilities.transform;
@@ -23,12 +23,8 @@ public abstract class AbstractWeaponStats extends AbstractCombatStats implements
   private Integer rate;
   private int speed;
   private boolean inflictsNoDamage;
-  private final List<String> tags;
+  private final List<String> tags = new ArrayList<>();
   private int minimumDamage;
-
-  public AbstractWeaponStats(ICollectionFactory collectionFactory) {
-    this.tags = collectionFactory.createList();
-  }
 
   @Override
   public int getAccuracy() {

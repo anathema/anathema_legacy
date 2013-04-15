@@ -20,7 +20,6 @@
   },
   "description": "2E Core p370",
   "name": "Seven-Section Staff",
-  "collectionFactory": {},
   "composition": "None",
   "cost": {
     "costType": "Resources",

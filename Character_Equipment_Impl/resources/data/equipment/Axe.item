@@ -33,7 +33,6 @@
   },
   "description": "Close: 2E Core p367, 2.5 Errata p15\nRanged: 2E Core p370\nDifference between Close and Ranged stats in the Core is used to extrapolate the Errata Ranged stats, by adding the difference to the Errata Close stats to produce \"Errata\" Ranged stats.\nDifference: +1 Speed, -1 Accuracy, -2 Damage",
   "name": "Axe",
-  "collectionFactory": {},
   "composition": "None",
   "cost": {
     "costType": "Resources",

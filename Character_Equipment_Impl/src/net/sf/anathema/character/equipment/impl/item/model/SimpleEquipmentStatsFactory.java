@@ -6,18 +6,13 @@ import net.sf.anathema.character.equipment.creation.model.stats.IEquipmentStatis
 import net.sf.anathema.character.equipment.impl.creation.model.EquipmentStatisticsCreationModel;
 import net.sf.anathema.character.equipment.item.model.EquipmentStatisticsType;
 import net.sf.anathema.character.equipment.item.model.EquipmentStatsFactory;
-import net.sf.anathema.character.equipment.item.model.ICollectionFactory;
 import net.sf.anathema.character.generic.equipment.weapon.IEquipmentStats;
 
 import static net.sf.anathema.character.equipment.item.model.EquipmentStatisticsType.Artifact;
 
 public class SimpleEquipmentStatsFactory implements EquipmentStatsFactory {
 
-  private final ModelToStats modelToStats;
-
-  public SimpleEquipmentStatsFactory(ICollectionFactory collectionFactory) {
-    this.modelToStats = new ModelToStats(collectionFactory);
-  }
+  private final ModelToStats modelToStats = new ModelToStats();
 
   @Override
   public boolean canHaveThisKindOfStats(EquipmentStatisticsType type, MaterialComposition materialComposition) {

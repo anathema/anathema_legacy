@@ -29,7 +29,6 @@
   },
   "description": "2E Core p389, 2.5 Errata p16",
   "name": "Sling of Deadly Prowess",
-  "collectionFactory": {},
   "composition": "Variable",
   "cost": {
     "costType": "Artifact",

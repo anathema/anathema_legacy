@@ -20,7 +20,6 @@
   },
   "description": "Close: 2E Core p371",
   "name": "War Boomerang",
-  "collectionFactory": {},
   "composition": "None",
   "cost": {
     "costType": "Resources",

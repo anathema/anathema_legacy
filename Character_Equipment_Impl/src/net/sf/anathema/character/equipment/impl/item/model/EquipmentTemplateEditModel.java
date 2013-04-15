@@ -146,8 +146,7 @@ public class EquipmentTemplateEditModel implements IEquipmentTemplateEditModel {
   public IEquipmentTemplate createTemplate() {
     String name = getDescription().getName().getText();
     String descriptionText = getDescription().getContent().getText();
-    EquipmentTemplate template = new EquipmentTemplate(name, descriptionText, composition, material,
-            database.getCollectionFactory(), cost);
+    EquipmentTemplate template = new EquipmentTemplate(name, descriptionText, composition, material, cost);
     for (IEquipmentStats stats : statses) {
       template.addStats(stats);
     }

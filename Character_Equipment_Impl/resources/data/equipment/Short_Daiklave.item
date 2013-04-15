@@ -28,7 +28,6 @@
   },
   "description": "2E Core p386, 2.5 Errata p16\nAttunement amount and Artifact cost is for a single sword.",
   "name": "Short Daiklave",
-  "collectionFactory": {},
   "composition": "Variable",
   "cost": {
     "costType": "Artifact",

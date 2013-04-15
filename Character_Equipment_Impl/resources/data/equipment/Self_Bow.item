@@ -86,7 +86,6 @@
   },
   "description": "2E Core p372",
   "name": "Self Bow",
-  "collectionFactory": {},
   "composition": "None",
   "cost": {
     "costType": "Resources",

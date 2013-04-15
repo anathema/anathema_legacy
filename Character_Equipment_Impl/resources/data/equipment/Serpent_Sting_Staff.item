@@ -28,7 +28,6 @@
   },
   "description": "2E Core p388, 2.5 Errata p16",
   "name": "Serpent-Sting Staff",
-  "collectionFactory": {},
   "composition": "Variable",
   "cost": {
     "costType": "Artifact",

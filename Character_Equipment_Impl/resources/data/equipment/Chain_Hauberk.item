@@ -21,7 +21,6 @@
   },
   "description": "2E Core p375",
   "name": "Chain Hauberk",
-  "collectionFactory": {},
   "composition": "None",
   "cost": {
     "costType": "Resources",

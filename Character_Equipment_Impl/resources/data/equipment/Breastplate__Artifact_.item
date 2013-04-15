@@ -28,7 +28,6 @@
   },
   "description": "2E Core p390\nMay be concealed under heavy jacket or cloak.",
   "name": "Breastplate (Artifact)",
-  "collectionFactory": {},
   "composition": "Variable",
   "cost": {
     "costType": "Artifact",

@@ -12,7 +12,7 @@ import static java.lang.Integer.MAX_VALUE;
 
 public class GsonStatMother {
   public static RangedWeaponStats createRangedWeapon() {
-    RangedWeaponStats stats = new RangedWeaponStats(new GsonCollectionFactory());
+    RangedWeaponStats stats = new RangedWeaponStats();
     stats.setName(new Identifier("Fire!"));
     stats.setAccuracy(0);
     stats.setDamage(0);
@@ -26,7 +26,7 @@ public class GsonStatMother {
   }
 
   public static MeleeWeaponStats createMeleeWeapon() {
-    MeleeWeaponStats stats = new MeleeWeaponStats(new GsonCollectionFactory());
+    MeleeWeaponStats stats = new MeleeWeaponStats();
     stats.setName(new Identifier("Chaaarge!"));
     stats.setAccuracy(0);
     stats.setDamage(0);
@@ -49,7 +49,7 @@ public class GsonStatMother {
   }
 
   public static ArmourStats createArmour() {
-    ArmourStats stats = new ArmourStats(new GsonCollectionFactory());
+    ArmourStats stats = new ArmourStats();
     stats.setName(new Identifier("Bounce!"));
     stats.setFatigue(5);
     stats.setMobilityPenalty(-2);

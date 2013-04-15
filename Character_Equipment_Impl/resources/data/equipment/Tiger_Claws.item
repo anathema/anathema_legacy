@@ -20,7 +20,6 @@
   },
   "description": "2E Core p370",
   "name": "Tiger Claws",
-  "collectionFactory": {},
   "composition": "None",
   "cost": {
     "costType": "Resources",

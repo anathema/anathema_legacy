@@ -41,7 +41,6 @@
   },
   "description": "2E Core p368, 2.5 Errata p16\nExtrapolated the Thrust tag based on the Artifact version in Errata having it.\nCan use 1 handed only when charging while mounted.",
   "name": "Lance",
-  "collectionFactory": {},
   "composition": "None",
   "cost": {
     "costType": "Resources",

@@ -38,7 +38,6 @@
   },
   "description": "2E Core p370",
   "name": "Sai",
-  "collectionFactory": {},
   "composition": "None",
   "cost": {
     "costType": "Resources",

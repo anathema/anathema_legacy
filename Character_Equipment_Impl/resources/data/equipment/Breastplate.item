@@ -21,7 +21,6 @@
   },
   "description": "2E Core p374\nMay be concealed under heavy jacket or cloak.",
   "name": "Breastplate",
-  "collectionFactory": {},
   "composition": "None",
   "cost": {
     "costType": "Resources",

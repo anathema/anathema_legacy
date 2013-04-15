@@ -1,7 +1,6 @@
 package net.sf.anathema.character.equipment.impl.item.model.gson;
 
 import com.google.common.collect.Lists;
-import net.sf.anathema.character.equipment.item.model.ICollectionFactory;
 import net.sf.anathema.character.equipment.item.model.IEquipmentDatabase;
 import net.sf.anathema.character.equipment.template.IEquipmentTemplate;
 import net.sf.anathema.framework.IApplicationModel;
@@ -33,7 +32,6 @@ public class GsonEquipmentDatabase extends NonPersistableItemData implements IEq
   }
 
   private final Announcer<IChangeListener> availableTemplatesChangeControl = Announcer.to(IChangeListener.class);
-  private final ICollectionFactory collectionFactory = new GsonCollectionFactory();
   private final EquipmentGson gson = new EquipmentGson();
   private final EquipmentAccess access;
 
@@ -58,11 +56,6 @@ public class GsonEquipmentDatabase extends NonPersistableItemData implements IEq
       return null;
     }
     return loadExistingTemplate(id);
-  }
-
-  @Override
-  public ICollectionFactory getCollectionFactory() {
-    return collectionFactory;
   }
 
   @Override

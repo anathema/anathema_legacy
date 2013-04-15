@@ -50,7 +50,6 @@
   },
   "description": "2E Core p386, 2.5 Errata p16\nCan use 1 handed only when charging while mounted.",
   "name": "Dire Lance",
-  "collectionFactory": {},
   "composition": "Variable",
   "cost": {
     "costType": "Artifact",

@@ -29,7 +29,6 @@
   },
   "description": "2E Core p387, 2.5 Errata p16",
   "name": "Grand Grimscythe",
-  "collectionFactory": {},
   "composition": "Variable",
   "cost": {
     "costType": "Artifact",

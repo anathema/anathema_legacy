@@ -28,7 +28,6 @@
   },
   "description": "2E Core p389, 2.5 Errata p16\nReturns Instantly.",
   "name": "Infinite Jade Chakram",
-  "collectionFactory": {},
   "material": "Jade",
   "composition": "Fixed",
   "cost": {

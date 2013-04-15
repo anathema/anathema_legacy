@@ -1,22 +1,17 @@
 package net.sf.anathema.character.equipment.impl.character.model.stats;
 
-import net.sf.anathema.character.equipment.item.model.ICollectionFactory;
 import net.sf.anathema.character.generic.equipment.weapon.IArmourStats;
 import net.sf.anathema.character.generic.health.HealthType;
 
+import java.util.HashMap;
 import java.util.Map;
 
 public class ArmourStats extends AbstractCombatStats implements IArmourStats {
 
-  private final Map<String, Integer> hardnessByHealthType;
-  private final Map<String, Integer> soakByHealthType;
+  private final Map<String, Integer> hardnessByHealthType = new HashMap<>();
+  private final Map<String, Integer> soakByHealthType = new HashMap<>();
   private Integer fatigue;
   private Integer mobilityPenalty;
-
-  public ArmourStats(ICollectionFactory collectionFactory) {
-    hardnessByHealthType = collectionFactory.createHashMap();
-    soakByHealthType = collectionFactory.createHashMap();
-  }
 
   @Override
   public Integer getFatigue() {

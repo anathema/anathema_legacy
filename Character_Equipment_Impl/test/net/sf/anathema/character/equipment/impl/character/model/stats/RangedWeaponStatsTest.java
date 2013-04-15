@@ -1,16 +1,13 @@
 package net.sf.anathema.character.equipment.impl.character.model.stats;
 
 import net.sf.anathema.character.equipment.impl.creation.model.WeaponTag;
-import net.sf.anathema.character.equipment.item.model.ICollectionFactory;
 import org.junit.Test;
 
 import static org.hamcrest.CoreMatchers.is;
 import static org.junit.Assert.assertThat;
-import static org.mockito.Mockito.mock;
 
 public class RangedWeaponStatsTest {
-  private final ICollectionFactory factory = mock(ICollectionFactory.class);
-  private final RangedWeaponStats stats = new RangedWeaponStats(factory);
+  private final RangedWeaponStats stats = new RangedWeaponStats();
 
   @Test
   public void knowsArtilleryAsRangedType() throws Exception {

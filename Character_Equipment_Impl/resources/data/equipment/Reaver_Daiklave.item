@@ -27,7 +27,6 @@
   },
   "description": "2E Core p385, 2.5 Errata p16",
   "name": "Reaver Daiklave",
-  "collectionFactory": {},
   "composition": "Variable",
   "cost": {
     "costType": "Artifact",

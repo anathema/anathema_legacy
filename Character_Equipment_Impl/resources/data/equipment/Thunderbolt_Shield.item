@@ -111,7 +111,6 @@
   },
   "description": "Oadenol\u0027s Codex p35, 2.5 Errata p15\nWhen adding to your character, select the Material from the droplist at the bottom of the equipment list, and only check the proper Attunement box, and the box for the matching Magical Material your item is made from.\nIn addition to the custom MM bonuses, this item is given MM bonuses as if it was a weapon (all shields are modeled as weapons).",
   "name": "Thunderbolt Shield",
-  "collectionFactory": {},
   "composition": "Variable",
   "cost": {
     "costType": "Artifact",

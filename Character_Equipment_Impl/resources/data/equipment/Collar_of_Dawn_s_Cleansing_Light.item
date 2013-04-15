@@ -12,7 +12,6 @@
   },
   "description": "2E Core p380",
   "name": "Collar of Dawn\u0027s Cleansing Light",
-  "collectionFactory": {},
   "composition": "Variable",
   "cost": {
     "costType": "Artifact",

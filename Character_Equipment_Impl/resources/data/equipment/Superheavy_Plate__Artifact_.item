@@ -28,7 +28,6 @@
   },
   "description": "2E Core p391",
   "name": "Superheavy Plate (Artifact)",
-  "collectionFactory": {},
   "composition": "Variable",
   "cost": {
     "costType": "Artifact",

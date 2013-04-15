@@ -21,7 +21,6 @@
   },
   "description": "2E Core p375",
   "name": "Buff Jacket",
-  "collectionFactory": {},
   "composition": "None",
   "cost": {
     "costType": "Resources",

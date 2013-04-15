@@ -38,7 +38,6 @@
   },
   "description": "2E Core p373",
   "name": "Firewand",
-  "collectionFactory": {},
   "composition": "None",
   "cost": {
     "costType": "Resources",

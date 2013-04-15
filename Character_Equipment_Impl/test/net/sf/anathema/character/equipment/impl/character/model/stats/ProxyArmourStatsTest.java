@@ -2,14 +2,12 @@ package net.sf.anathema.character.equipment.impl.character.model.stats;
 
 import net.sf.anathema.character.equipment.impl.character.model.stats.modification.InertBaseMaterial;
 import net.sf.anathema.character.equipment.impl.character.model.stats.modification.ReactiveBaseMaterial;
-import net.sf.anathema.character.equipment.item.model.ICollectionFactory;
 import org.junit.Test;
 
 import static net.sf.anathema.character.equipment.MagicalMaterial.Adamant;
 import static net.sf.anathema.character.equipment.MagicalMaterial.Moonsilver;
 import static org.hamcrest.CoreMatchers.is;
 import static org.junit.Assert.assertThat;
-import static org.mockito.Mockito.mock;
 
 public class ProxyArmourStatsTest {
 
@@ -35,8 +33,7 @@ public class ProxyArmourStatsTest {
   }
 
   private ArmourStats createArmorWithMobilityPenalty() {
-    ICollectionFactory collectionFactory = mock(ICollectionFactory.class);
-    ArmourStats original = new ArmourStats(collectionFactory);
+    ArmourStats original = new ArmourStats();
     original.setMobilityPenalty(-2);
     return original;
   }

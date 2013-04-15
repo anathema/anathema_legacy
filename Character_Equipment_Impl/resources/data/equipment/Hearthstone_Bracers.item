@@ -104,7 +104,6 @@
   },
   "description": "2E Core p381\nWhen adding to your character, select the Material from the droplist at the bottom of the equipment list, and only check the Always box, the proper Attunement box, and the box for the matching Magical Material your item is made from.\n\nSoulsteel\u0027s effect isn\u0027t modelable by Anathema.",
   "name": "Hearthstone Bracers",
-  "collectionFactory": {},
   "composition": "Variable",
   "cost": {
     "costType": "Artifact",

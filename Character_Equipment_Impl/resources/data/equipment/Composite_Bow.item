@@ -86,7 +86,6 @@
   },
   "description": "2E Core p371, p372",
   "name": "Composite Bow",
-  "collectionFactory": {},
   "composition": "None",
   "cost": {
     "costType": "Resources",
