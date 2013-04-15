@@ -21,4 +21,6 @@ public interface IEquipmentStatisticsCreationModel {
   EquipmentStatisticsType getEquipmentType();
 
   boolean isNameUnique(String name);
+
+  void setForbiddenNames(String[] definedNames);
 }

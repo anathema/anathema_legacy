@@ -22,11 +22,11 @@ import net.sf.anathema.character.generic.equipment.weapon.IEquipmentStats;
 import net.sf.anathema.character.generic.health.HealthType;
 import net.sf.anathema.lib.util.Identifier;
 
-public class StatsFactory {
+public class ModelToStats {
 
   private final ICollectionFactory collectionFactory;
 
-  public StatsFactory(ICollectionFactory collectionFactory) {
+  public ModelToStats(ICollectionFactory collectionFactory) {
     this.collectionFactory = collectionFactory;
   }
 

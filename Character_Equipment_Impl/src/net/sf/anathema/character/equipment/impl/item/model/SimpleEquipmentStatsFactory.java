@@ -13,10 +13,10 @@ import static net.sf.anathema.character.equipment.item.model.EquipmentStatistics
 
 public class SimpleEquipmentStatsFactory implements EquipmentStatsFactory {
 
-  private final StatsFactory statsFactory;
+  private final ModelToStats modelToStats;
 
   public SimpleEquipmentStatsFactory(ICollectionFactory collectionFactory) {
-    this.statsFactory = new StatsFactory(collectionFactory);
+    this.modelToStats = new ModelToStats(collectionFactory);
   }
 
   @Override
@@ -27,11 +27,12 @@ public class SimpleEquipmentStatsFactory implements EquipmentStatsFactory {
 
   @Override
   public IEquipmentStats createNewStats(String[] definedNames, String nameProposal, EquipmentStatisticsType type) {
-    IEquipmentStatisticsCreationModel model = new EquipmentStatisticsCreationModel(definedNames);
+    IEquipmentStatisticsCreationModel model = new EquipmentStatisticsCreationModel();
+    model.setForbiddenNames(definedNames);
     model.setEquipmentType(type);
     String finalName = createUniqueName(nameProposal, model);
     setNameOnCorrectModel(model, finalName);
-    return statsFactory.createStats(model);
+    return modelToStats.createStats(model);
   }
 
   private void setNameOnCorrectModel(IEquipmentStatisticsCreationModel model, String finalName) {

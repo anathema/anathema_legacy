@@ -17,19 +17,17 @@ import org.jmock.example.announcer.Announcer;
 
 public class EquipmentStatisticsCreationModel implements IEquipmentStatisticsCreationModel {
 
-  private final ICloseCombatStatsticsModel closeCombatStatisticsModel = new CloseCombatStatsticsModel(createOffensiveSpeedModel());
-  private final IRangedCombatStatisticsModel rangedWeaponStatisticsModel = new RangedWeaponStatisticsModel(createOffensiveSpeedModel());
+  private final ICloseCombatStatsticsModel closeCombatStatisticsModel = new CloseCombatStatsticsModel(
+          createOffensiveSpeedModel());
+  private final IRangedCombatStatisticsModel rangedWeaponStatisticsModel = new RangedWeaponStatisticsModel(
+          createOffensiveSpeedModel());
   private final IArmourStatisticsModel armourStatisticsModel = new ArmourStatsticsModel();
   private final IArtifactStatisticsModel artifactStatisticsModel = new ArtifactStatisticsModel();
   private final ITraitModifyingStatisticsModel traitModifyingStatisticsModel = new TraitModifyingStatisticsModel();
   private final Announcer<IChangeListener> equipmentTypeChangeControl = Announcer.to(IChangeListener.class);
   private final IWeaponTagsModel weaponTagsModel = new WeaponTagsModel();
   private EquipmentStatisticsType statisticsType;
-  private final String[] existingNames;
-
-  public EquipmentStatisticsCreationModel(String[] existingNames) {
-    this.existingNames = existingNames;
-  }
+  private String[] existingNames;
 
   private static IIntValueModel createOffensiveSpeedModel() {
     return new RangedIntValueModel(new Range(1, Integer.MAX_VALUE), 1);
@@ -87,5 +85,10 @@ public class EquipmentStatisticsCreationModel implements IEquipmentStatisticsCre
   @Override
   public boolean isNameUnique(String name) {
     return !ArrayUtils.contains(existingNames, name);
+  }
+
+  @Override
+  public void setForbiddenNames(String[] definedNames) {
+    this.existingNames = definedNames;
   }
 }
