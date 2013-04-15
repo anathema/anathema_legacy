@@ -47,12 +47,12 @@ public class EquipmentEditStatsPresenter implements Presenter {
   }
 
   private void updateEditor(List<IEquipmentStats> selectedItems) {
+    view.hideEditor();
     if (selectedItems.size() != 1) {
-      view.hideEditor();
+      return;
     }
     IEquipmentStats currentStats = selectedItems.get(0);
     if (!(currentStats instanceof MutableArtifactStats)) {
-      view.hideEditor();
       return;
     }
     EventBus eventBus = new EventBus();
