@@ -27,6 +27,12 @@
     </creationPoints>
   </creation>
   <experience>
-    <experiencePointCost uses="template/GodBloodedExperienceCost2nd.template" prefix="godblooded/"/>
+    <experiencePointCost uses="experience/DefaultExperienceCost.template">
+        <advantages>
+            <essence>
+                <currentRating multiplier="14" />
+            </essence>
+        </advantages>
+    </experiencePointCost>
   </experience>
 </exaltedCharacterTemplate>

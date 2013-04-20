@@ -19,7 +19,7 @@ public class BonusPointSteps {
   @Then("^she has spent (\\d+) bonus points$")
   public void she_has_spent_bonus_points(int amount) throws Throwable {
     BonusPointManagement bonusPointManagement = calculateBonusPoints();
-    int spentBonusPoints = bonusPointManagement.getBackgroundModel().getSpentBonusPoints();
+    int spentBonusPoints = bonusPointManagement.getTotalModel().getValue();
     assertThat(spentBonusPoints, is(amount));
   }
 

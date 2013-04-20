@@ -21,12 +21,9 @@ Feature: Half-Caste and God-Blooded pay extra for Essence
   Examples:
     | type     | template          | currentEssence | increasedEssence | xpCost |
     | Lunar    | HalfCasteLunar    | 1              | 2                | 14     |
-    | Lunar    | HalfCasteLunar    | 2              | 3                | 27     |
+    | Lunar    | HalfCasteLunar    | 2              | 3                | 28     |
     | Solar    | HalfCasteSolar    | 1              | 2                | 12     |
-    | Solar    | HalfCasteSolar    | 2              | 3                | 24     |
     | Abyssal  | HalfCasteAbyssal  | 1              | 2                | 12     |
-    | Abyssal  | HalfCasteAbyssal  | 2              | 3                | 24     |
     | Sidereal | HalfCasteSidereal | 1              | 2                | 14     |
-    | Sidereal | HalfCasteSidereal | 2              | 3                | 27     |
     | Ghost    | GhostBlooded      | 1              | 2                | 18     |
-    | Ghost    | GhostBlooded      | 2              | 3                | 36     |
+    | Spirit   | GodBlooded        | 1              | 2                | 0      |
