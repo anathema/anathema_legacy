@@ -1,11 +1,14 @@
 package net.sf.anathema;
 
 import com.google.inject.Inject;
+import cucumber.api.java.en.Given;
 import cucumber.api.java.en.Then;
 import cucumber.api.java.en.When;
 import net.sf.anathema.character.generic.caste.ICasteCollection;
 import net.sf.anathema.character.generic.caste.ICasteType;
 import net.sf.anathema.character.generic.framework.additionaltemplate.model.IModifiableBasicTrait;
+import net.sf.anathema.character.generic.impl.traits.TraitTypeUtils;
+import net.sf.anathema.character.generic.traits.ITraitType;
 import net.sf.anathema.character.generic.traits.types.AbilityType;
 import net.sf.anathema.character.library.trait.favorable.IFavorableTrait;
 import net.sf.anathema.character.model.background.IBackground;
@@ -22,6 +25,16 @@ public class CharacterChangeSteps {
     this.character = character;
   }
 
+  @Given("^her current Essence is (\\d+)$")
+  public void herCurrentEssenceIs(int value) throws Throwable {
+    I_set_her_trait_to("Essence", value);
+  }
+
+  @Given("^she is experienced")
+  public void setToExperienced() {
+    character.getCharacter().setExperienced(true);
+  }
+
   @When("^I set her Caste to (.*)$")
   public void I_set_her_Caste(String casteName) throws Throwable {
     ICasteCollection casteCollection = character.getCharacterTemplate().getCasteCollection();
@@ -36,10 +49,14 @@ public class CharacterChangeSteps {
   }
 
   @When("^I set her (.*) to (\\d+)$")
-  public void I_set_her_Ability_to(String ability, int value) throws Throwable {
-    AbilityType type = AbilityType.valueOf(ability);
+  public void I_set_her_trait_to(String traitId, int value) throws Throwable {
+    ITraitType type = new TraitTypeUtils().getTraitTypeById(traitId);
     IModifiableBasicTrait trait = (IModifiableBasicTrait) character.getTraitConfiguration().getTrait(type);
-    trait.setCreationValue(value);
+    if (character.getCharacter().isExperienced()) {
+      trait.setExperiencedValue(value);
+    } else {
+      trait.setCreationValue(value);
+    }
   }
 
   @Then("^she has (\\d+) dots in (.*)$")
