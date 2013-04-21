@@ -10,7 +10,7 @@ import net.sf.anathema.character.generic.dummy.magic.DummySpell;
 import net.sf.anathema.character.generic.dummy.template.DummyCharacterTemplate;
 import net.sf.anathema.character.generic.impl.template.points.DefaultBonusPointCosts;
 import net.sf.anathema.character.generic.magic.ISpell;
-import net.sf.anathema.character.generic.template.creation.IBonusPointCosts;
+import net.sf.anathema.character.generic.template.creation.BonusPointCosts;
 import net.sf.anathema.character.generic.traits.types.AbilityType;
 import net.sf.anathema.character.impl.model.context.BasicCharacterContext;
 import net.sf.anathema.character.impl.model.creation.bonus.magic.MagicCostCalculator;
@@ -33,7 +33,7 @@ public class CharmCostCalculatorTest extends AbstractBonusPointTestCase {
     spells = new DummySpellConfiguration();
     traitConfiguration = new DummyCoreTraitConfiguration();
     addAbilityAndEssence(traitConfiguration);
-    IBonusPointCosts cost = new DefaultBonusPointCosts();
+    BonusPointCosts cost = new DefaultBonusPointCosts();
     DummyGenericCharacter genericCharacter = new DummyGenericCharacter(new DummyCharacterTemplate());
     calculator = new MagicCostCalculator(genericCharacter.getTemplate().getMagicTemplate(), charms, spells, 2, 3, cost,
             new DummyAdditionalBonusPointManagment(), new DummyAdditionalSpellPointManagement(), new BasicCharacterContext(genericCharacter),

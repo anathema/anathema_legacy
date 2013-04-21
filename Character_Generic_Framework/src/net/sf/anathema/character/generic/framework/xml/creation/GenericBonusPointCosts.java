@@ -8,7 +8,7 @@ import net.sf.anathema.character.generic.magic.IMagicVisitor;
 import net.sf.anathema.character.generic.magic.ISpell;
 import net.sf.anathema.character.generic.magic.charms.ICharmAttribute;
 import net.sf.anathema.character.generic.magic.charms.MartialArtsLevel;
-import net.sf.anathema.character.generic.template.creation.IBonusPointCosts;
+import net.sf.anathema.character.generic.template.creation.BonusPointCosts;
 import net.sf.anathema.character.generic.template.experience.CurrentRatingCosts;
 import net.sf.anathema.character.generic.template.experience.ICostAnalyzer;
 import net.sf.anathema.character.generic.traits.IFavorableGenericTrait;
@@ -17,7 +17,7 @@ import net.sf.anathema.lib.lang.clone.ReflectionCloneableObject;
 import java.util.Map;
 
 public class GenericBonusPointCosts extends ReflectionCloneableObject<GenericBonusPointCosts> implements
-    IBonusPointCosts {
+        BonusPointCosts {
 
   private int generalAbilityCost = 0;
   private int favoredAbilityCost = 0;

@@ -2,7 +2,7 @@ package net.sf.anathema.character.impl.model.creation.bonus.ability;
 
 import net.sf.anathema.character.generic.character.IGenericTraitCollection;
 import net.sf.anathema.character.generic.template.creation.IGenericSpecialty;
-import net.sf.anathema.character.generic.template.experience.IAbilityPointCosts;
+import net.sf.anathema.character.generic.template.experience.AbilityPointCosts;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -47,7 +47,7 @@ public class SpecialtyCalculator {
     return favoredSpecialties;
   }
 
-  public void filterAffordableSpecialties(List<IGenericSpecialty> specialties, int availablePoints, IAbilityPointCosts costs) {
+  public void filterAffordableSpecialties(List<IGenericSpecialty> specialties, int availablePoints, AbilityPointCosts costs) {
     int overhead = getSpecialtyCosts(specialties) - availablePoints;
     if (overhead <= 0 || availablePoints == 0) {
       return;

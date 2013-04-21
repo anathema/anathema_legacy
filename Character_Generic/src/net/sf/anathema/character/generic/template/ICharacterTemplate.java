@@ -4,7 +4,7 @@ import net.sf.anathema.character.generic.additionalrules.IAdditionalRules;
 import net.sf.anathema.character.generic.caste.ICasteCollection;
 import net.sf.anathema.character.generic.template.abilities.GroupedTraitType;
 import net.sf.anathema.character.generic.template.additional.IAdditionalTemplate;
-import net.sf.anathema.character.generic.template.creation.IBonusPointCosts;
+import net.sf.anathema.character.generic.template.creation.BonusPointCosts;
 import net.sf.anathema.character.generic.template.creation.ICreationPoints;
 import net.sf.anathema.character.generic.template.essence.IEssenceTemplate;
 import net.sf.anathema.character.generic.template.experience.IExperiencePointCosts;
@@ -19,7 +19,7 @@ public interface ICharacterTemplate extends ICharacterExternalsTemplate {
   
   IAdditionalRules getAdditionalRules();
 
-  IBonusPointCosts getBonusPointCosts();
+  BonusPointCosts getBonusPointCosts();
 
   ICasteCollection getCasteCollection();
 

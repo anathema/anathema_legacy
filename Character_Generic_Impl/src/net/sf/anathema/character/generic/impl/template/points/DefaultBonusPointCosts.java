@@ -5,12 +5,12 @@ import net.sf.anathema.character.generic.magic.IMagic;
 import net.sf.anathema.character.generic.magic.IMagicVisitor;
 import net.sf.anathema.character.generic.magic.ISpell;
 import net.sf.anathema.character.generic.magic.charms.MartialArtsLevel;
-import net.sf.anathema.character.generic.template.creation.IBonusPointCosts;
+import net.sf.anathema.character.generic.template.creation.BonusPointCosts;
 import net.sf.anathema.character.generic.template.experience.CurrentRatingCosts;
 import net.sf.anathema.character.generic.template.experience.ICostAnalyzer;
 import net.sf.anathema.character.generic.traits.IFavorableGenericTrait;
 
-public class DefaultBonusPointCosts implements IBonusPointCosts {
+public class DefaultBonusPointCosts implements BonusPointCosts {
 
   @Override
   public int getSpellCosts(ICostAnalyzer costMapping) {

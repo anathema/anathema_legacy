@@ -1,7 +1,7 @@
 package net.sf.anathema.character.impl.model.creation.bonus.ability;
 
 import net.sf.anathema.character.generic.template.creation.IGenericSpecialty;
-import net.sf.anathema.character.generic.template.experience.IAbilityPointCosts;
+import net.sf.anathema.character.generic.template.experience.AbilityPointCosts;
 import net.sf.anathema.character.generic.template.points.IFavorableTraitCreationPoints;
 import net.sf.anathema.character.generic.traits.ITraitType;
 import net.sf.anathema.character.generic.traits.groups.IIdentifiedTraitTypeGroup;
@@ -31,13 +31,13 @@ public class AbilityCostCalculator extends AbstractFavorableTraitCostCalculator 
 
   private final IAdditionalSpecialtyBonusPointManagement additionalPools;
   private final ICoreTraitConfiguration traitConfiguration;
-  private final IAbilityPointCosts costs;
+  private final AbilityPointCosts costs;
   private int specialtyBonusPointCosts;
   private int specialtyDotSum;
   private SpecialtyCalculator specialtyCalculator;
 
   public AbilityCostCalculator(ICoreTraitConfiguration traitConfiguration, IFavorableTraitCreationPoints points, int specialtyPoints,
-                               IAbilityPointCosts costs, IAdditionalBonusPointManagment additionalPools) {
+                               AbilityPointCosts costs, IAdditionalBonusPointManagment additionalPools) {
     super(additionalPools, points, costs.getMaximumFreeAbilityRank(), getAllAbilities(traitConfiguration));
     this.traitConfiguration = traitConfiguration;
     this.costs = costs;

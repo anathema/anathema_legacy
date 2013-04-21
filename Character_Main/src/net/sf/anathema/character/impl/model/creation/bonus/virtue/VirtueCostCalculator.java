@@ -1,6 +1,6 @@
 package net.sf.anathema.character.impl.model.creation.bonus.virtue;
 
-import net.sf.anathema.character.generic.template.creation.IBonusPointCosts;
+import net.sf.anathema.character.generic.template.creation.BonusPointCosts;
 import net.sf.anathema.character.generic.traits.ITraitType;
 import net.sf.anathema.character.library.trait.visitor.IDefaultTrait;
 
@@ -11,11 +11,11 @@ public class VirtueCostCalculator {
 
   private int dotsSpent;
   private final int maxVirtuePoints;
-  private final IBonusPointCosts costs;
+  private final BonusPointCosts costs;
   private final Map<ITraitType, IVirtueCost> costsByVirtue = new HashMap<>();
   private final IDefaultTrait[] virtues;
 
-  public VirtueCostCalculator(IDefaultTrait[] virtues, int maxVirtuePoints, IBonusPointCosts costs) {
+  public VirtueCostCalculator(IDefaultTrait[] virtues, int maxVirtuePoints, BonusPointCosts costs) {
     this.virtues = virtues;
     this.maxVirtuePoints = maxVirtuePoints;
     this.costs = costs;

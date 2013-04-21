@@ -19,7 +19,7 @@ import net.sf.anathema.character.generic.template.ITraitTemplateCollection;
 import net.sf.anathema.character.generic.template.TemplateType;
 import net.sf.anathema.character.generic.template.abilities.GroupedTraitType;
 import net.sf.anathema.character.generic.template.additional.IAdditionalTemplate;
-import net.sf.anathema.character.generic.template.creation.IBonusPointCosts;
+import net.sf.anathema.character.generic.template.creation.BonusPointCosts;
 import net.sf.anathema.character.generic.template.creation.ICreationPoints;
 import net.sf.anathema.character.generic.template.essence.IEssenceTemplate;
 import net.sf.anathema.character.generic.template.experience.IExperiencePointCosts;
@@ -48,7 +48,7 @@ public class DummyCharacterTemplate implements ICharacterTemplate {
   }
 
   @Override
-  public IBonusPointCosts getBonusPointCosts() {
+  public BonusPointCosts getBonusPointCosts() {
     throw new NotYetImplementedException();
   }
 

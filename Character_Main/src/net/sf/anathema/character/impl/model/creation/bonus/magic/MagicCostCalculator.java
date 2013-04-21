@@ -8,7 +8,7 @@ import net.sf.anathema.character.generic.magic.IMagicVisitor;
 import net.sf.anathema.character.generic.magic.ISpell;
 import net.sf.anathema.character.generic.magic.charms.ICharmAttribute;
 import net.sf.anathema.character.generic.magic.charms.special.ISpecialCharmConfiguration;
-import net.sf.anathema.character.generic.template.creation.IBonusPointCosts;
+import net.sf.anathema.character.generic.template.creation.BonusPointCosts;
 import net.sf.anathema.character.generic.template.magic.ICharmTemplate;
 import net.sf.anathema.character.generic.template.magic.IMagicTemplate;
 import net.sf.anathema.character.generic.template.magic.IUniqueCharmType;
@@ -35,7 +35,7 @@ public class MagicCostCalculator {
   private int generalPicksSpent = 0;
   private int favoredPicksSpent = 0;
   private int bonusPointsSpentForCharms = 0;
-  private final IBonusPointCosts costs;
+  private final BonusPointCosts costs;
   private CostAnalyzer analyzer;
   private final IAdditionalBonusPointManagment bonusPools;
   protected int bonusPointsSpentForSpells;
@@ -43,7 +43,7 @@ public class MagicCostCalculator {
   private final IMagicTemplate magicTemplate;
 
   public MagicCostCalculator(IMagicTemplate magicTemplate, ICharmConfiguration charms, ISpellConfiguration spells, int favoredCreationCharmCount,
-                             int defaultCreationCharmCount, IBonusPointCosts costs, IAdditionalBonusPointManagment bonusPools,
+                             int defaultCreationCharmCount, BonusPointCosts costs, IAdditionalBonusPointManagment bonusPools,
                              IAdditionalMagicLearnPointManagement magicPools, IBasicCharacterData basicCharacter,
                              IGenericTraitCollection traitCollection) {
     this.magicTemplate = magicTemplate;
@@ -139,6 +139,7 @@ public class MagicCostCalculator {
     return completeList;
   }
 
+  @SuppressWarnings("UnnecessaryLocalVariable")
   private List<IMagic> handleAdditionalMagicPools() {
     List<IMagic> magicToHandle = compileCompleteMagicList();
     List<IMagic> leftOverMagic = magicPools.spendOn(magicToHandle);
@@ -221,7 +222,7 @@ public class MagicCostCalculator {
     IUniqueCharmType uniqueType = charmTemplate.getUniqueCharmType();
     if (magic instanceof ICharm) {
       for (ICharmAttribute attribute : ((ICharm) magic).getAttributes()) {
-        if (attribute.getId().equals(uniqueType.getId())) {
+        if (attribute.getId().equals(uniqueType.getId().getId())) {
           return false;
         }
       }
