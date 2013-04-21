@@ -18,6 +18,13 @@ leading us to the assumption that not many of you used it.
 * New UI for Characters
 * Windowed mode defaults to a 16:9 resolution
 * Abyssal "Withering Phantasmagoria" and its Solar Mirror offer subeffects.
+* Customizers can now define the threshold that triggers the high BP cost for Backgrounds.
+  As long as the background is below the threshold, Anathema will apply the low cost,
+  when it's greater than or equal to the threshold, it will apply the high cost.
+  The new syntax for Background costs is
+    <backgrounds>
+      <thresholdCost lowCost="1" highCost="2" threshold="3"/>
+    </backgrounds>
 
 ### Bugfixes
 * Equipment can handle specialty names containing ampersands '&'.
