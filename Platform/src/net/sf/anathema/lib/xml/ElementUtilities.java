@@ -19,8 +19,7 @@ public class ElementUtilities {
     String value = getRequiredAttrib(element, name);
     try {
       return Integer.parseInt(value);
-    }
-    catch (NumberFormatException e) {
+    } catch (NumberFormatException e) {
       String message = "Attribute " + name + " must be of value integer, but was: " + value;
       throw new PersistenceException(message);
     }
@@ -30,8 +29,7 @@ public class ElementUtilities {
     String value = getRequiredAttrib(element, name);
     try {
       return new Integer(value);
-    }
-    catch (NumberFormatException e) {
+    } catch (NumberFormatException e) {
       if (value.equals("Varies")) {
         return null;
       } else {
@@ -48,8 +46,7 @@ public class ElementUtilities {
     }
     try {
       return Integer.parseInt(value);
-    }
-    catch (NumberFormatException e) {
+    } catch (NumberFormatException e) {
       String message = "Attribute " + name + " must be of value integer, but was: " + value;
       throw new PersistenceException(message);
     }
@@ -91,5 +88,10 @@ public class ElementUtilities {
   @SuppressWarnings("unchecked")
   public static List<Element> elements(Element parent, String tagName) {
     return parent.elements(tagName);
+  }
+
+  public static boolean hasChild(Element parentElement, String tagName) {
+    Element child = parentElement.element(tagName);
+    return child != null;
   }
 }

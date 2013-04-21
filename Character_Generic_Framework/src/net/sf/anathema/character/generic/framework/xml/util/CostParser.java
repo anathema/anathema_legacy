@@ -5,7 +5,10 @@ import net.sf.anathema.character.generic.impl.template.points.MultiplyRatingCost
 import net.sf.anathema.character.generic.impl.template.points.ThresholdRatingCosts;
 import net.sf.anathema.character.generic.template.experience.CurrentRatingCosts;
 import net.sf.anathema.lib.exception.PersistenceException;
+import net.sf.anathema.lib.xml.ElementUtilities;
 import org.dom4j.Element;
+
+import java.text.MessageFormat;
 
 import static net.sf.anathema.lib.xml.ElementUtilities.getIntAttrib;
 import static net.sf.anathema.lib.xml.ElementUtilities.getRequiredElement;
@@ -44,6 +47,21 @@ public class CostParser {
           throws PersistenceException {
     Element element = getRequiredElement(parentElement, tagName);
     return getMultiplyRatingCosts(element);
+  }
+
+  public CurrentRatingCosts getCosts(Element parentElement) {
+    if (ElementUtilities.hasChild(parentElement, TAG_CURRENT_RATING_COSTS)) {
+      return getMultiplyRatingCosts(parentElement);
+    }
+    if (ElementUtilities.hasChild(parentElement, TAG_THRESHOLD_COST)) {
+      return getThresholdRatingCosts(parentElement);
+    }
+    if (ElementUtilities.hasChild(parentElement, TAG_FIXED_COST)) {
+      return getFixedCost(parentElement);
+    }
+    String pattern = "Expected a cost-defining child below element {0}, but found none. Legal types are {1}, {2} and {3}.";
+    String message = MessageFormat.format(pattern, parentElement.getName(), TAG_CURRENT_RATING_COSTS, TAG_THRESHOLD_COST, TAG_FIXED_COST);
+    throw new IllegalArgumentException(message);
   }
 
   public CurrentRatingCosts getMultiplyRatingCosts(Element parentElement) throws PersistenceException {
