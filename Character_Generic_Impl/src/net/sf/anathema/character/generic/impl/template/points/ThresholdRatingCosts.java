@@ -1,8 +1,11 @@
 package net.sf.anathema.character.generic.impl.template.points;
 
 import net.sf.anathema.character.generic.template.experience.CurrentRatingCosts;
+import net.sf.anathema.lib.lang.ReflectionEqualsObject;
 
-public class ThresholdRatingCosts implements CurrentRatingCosts {
+import java.io.Serializable;
+
+public class ThresholdRatingCosts extends ReflectionEqualsObject implements CurrentRatingCosts, Serializable {
 
   private final int lowCost;
   private final int highCost;

@@ -11,12 +11,14 @@ import net.sf.anathema.character.generic.template.creation.BonusPointCosts;
 import net.sf.anathema.character.generic.template.experience.CurrentRatingCosts;
 import net.sf.anathema.character.generic.template.experience.ICostAnalyzer;
 import net.sf.anathema.character.generic.traits.IFavorableGenericTrait;
-import net.sf.anathema.lib.lang.clone.ReflectionCloneableObject;
+import net.sf.anathema.lib.lang.ReflectionEqualsObject;
+import net.sf.anathema.lib.lang.clone.ICloneable;
+import org.apache.commons.lang3.SerializationUtils;
 
+import java.io.Serializable;
 import java.util.Map;
 
-public class GenericBonusPointCosts extends ReflectionCloneableObject<GenericBonusPointCosts> implements
-        BonusPointCosts {
+public class GenericBonusPointCosts extends ReflectionEqualsObject implements BonusPointCosts, ICloneable<GenericBonusPointCosts>, Serializable {
 
   private int generalAbilityCost = 0;
   private int favoredAbilityCost = 0;
@@ -201,5 +203,10 @@ public class GenericBonusPointCosts extends ReflectionCloneableObject<GenericBon
 
   public void setStandardMartialArtsLevel(MartialArtsLevel standardMartialArtsLevel) {
     this.standardLevel = standardMartialArtsLevel;
+  }
+
+  @Override
+  public GenericBonusPointCosts clone() {
+    return SerializationUtils.clone(this);
   }
 }
