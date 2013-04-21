@@ -168,21 +168,14 @@ public class ExperienceTemplateParser extends AbstractXmlTemplateParser<GenericE
 
 
   protected final CurrentRatingCosts getFavoredCost(Element attributes) throws PersistenceException {
-    return getCurrentRatingCosts(attributes, TAG_FAVORED_COSTS);
+    return new CostParser().getMultiplyRatingCostsFromRequiredElement(attributes, TAG_FAVORED_COSTS);
   }
 
   protected final CurrentRatingCosts getGeneralCost(Element attributes) throws PersistenceException {
-    return getCurrentRatingCosts(attributes, TAG_GENERAL_COSTS);
+    return new CostParser().getMultiplyRatingCostsFromRequiredElement(attributes, TAG_GENERAL_COSTS);
   }
 
   protected final CurrentRatingCosts getCurrentRatingCosts(Element element) throws PersistenceException {
     return new CostParser().getMultiplyRatingCosts(element);
   }
-
-  protected final CurrentRatingCosts getCurrentRatingCosts(Element parentElement, String tagName)
-          throws PersistenceException {
-    Element element = ElementUtilities.getRequiredElement(parentElement, tagName);
-    return new CostParser().getMultiplyRatingCosts(element);
-  }
-
 }

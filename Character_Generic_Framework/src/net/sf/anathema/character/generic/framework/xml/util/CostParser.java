@@ -23,13 +23,19 @@ public class CostParser {
   }
 
   public int getFixedCostFromOptionalElement(Element element, String elementName, int defaultValue)
-      throws PersistenceException {
+          throws PersistenceException {
     Element parentElement = element.element(elementName);
     if (parentElement == null) {
       return defaultValue;
     }
     Element fixedCostElement = ElementUtilities.getRequiredElement(parentElement, TAG_FIXED_COST);
     return ElementUtilities.getRequiredIntAttrib(fixedCostElement, ATTRIB_COST);
+  }
+
+  public CurrentRatingCosts getMultiplyRatingCostsFromRequiredElement(Element parentElement, String tagName)
+          throws PersistenceException {
+    Element element = ElementUtilities.getRequiredElement(parentElement, tagName);
+    return getMultiplyRatingCosts(element);
   }
 
   public CurrentRatingCosts getMultiplyRatingCosts(Element parentElement) throws PersistenceException {

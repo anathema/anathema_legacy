@@ -4,6 +4,7 @@ import net.sf.anathema.character.generic.framework.xml.core.AbstractXmlTemplateP
 import net.sf.anathema.character.generic.framework.xml.registry.IXmlTemplateRegistry;
 import net.sf.anathema.character.generic.framework.xml.util.CostParser;
 import net.sf.anathema.character.generic.impl.template.points.FixedValueRatingCosts;
+import net.sf.anathema.character.generic.impl.template.points.ThresholdRatingCosts;
 import net.sf.anathema.character.generic.magic.charms.MartialArtsLevel;
 import net.sf.anathema.lib.exception.PersistenceException;
 import net.sf.anathema.lib.xml.ElementUtilities;
@@ -49,8 +50,8 @@ public class BonusPointCostTemplateParser extends AbstractXmlTemplateParser<Gene
   private final MartialArtsLevel standardMartialArtsLevel;
 
   public BonusPointCostTemplateParser(
-      IXmlTemplateRegistry<GenericBonusPointCosts> registry,
-      MartialArtsLevel martialArtsLevel) {
+          IXmlTemplateRegistry<GenericBonusPointCosts> registry,
+          MartialArtsLevel martialArtsLevel) {
     super(registry);
     this.standardMartialArtsLevel = martialArtsLevel;
   }
@@ -74,32 +75,31 @@ public class BonusPointCostTemplateParser extends AbstractXmlTemplateParser<Gene
     int generalCharmCost = costParser.getFixedCostFromRequiredElement(charmElement, TAG_GENERAL_CHARMS);
     int favoredCharmCost = costParser.getFixedCostFromRequiredElement(charmElement, TAG_FAVORED_CHARMS);
     int generalHighLevelMartialArtsCharmCost = costParser.getFixedCostFromOptionalElement(
-        charmElement,
-        TAG_GENERAL_MARTIAL_ARTS_CHARMS,
-        generalCharmCost);
+            charmElement,
+            TAG_GENERAL_MARTIAL_ARTS_CHARMS,
+            generalCharmCost);
     int favoredHighLevelMartialArtsCharmCost = costParser.getFixedCostFromOptionalElement(
-        charmElement,
-        TAG_FAVORED_MARTIAL_ARTS_CHARMS,
-        favoredCharmCost);
+            charmElement,
+            TAG_FAVORED_MARTIAL_ARTS_CHARMS,
+            favoredCharmCost);
     Map<String, Integer> keywordGeneralCost = new HashMap<>();
     Map<String, Integer> keywordFavoredCost = new HashMap<>();
-    for (Object keywordNode : charmElement.elements(TAG_KEYWORD_CHARMS))
-    {
-    	Element keywordClass = (Element) keywordNode;
-    	String keyword = ElementUtilities.getRequiredAttrib(keywordClass, ATTRIB_KEYWORD);
-    	int generalCost = ElementUtilities.getRequiredIntAttrib(keywordClass, ATTRIB_GENERAL_COST);
-    	int favoredCost = ElementUtilities.getRequiredIntAttrib(keywordClass, ATTRIB_FAVORED_COST);
-    	keywordGeneralCost.put(keyword, generalCost);
-    	keywordFavoredCost.put(keyword, favoredCost);
+    for (Object keywordNode : charmElement.elements(TAG_KEYWORD_CHARMS)) {
+      Element keywordClass = (Element) keywordNode;
+      String keyword = ElementUtilities.getRequiredAttrib(keywordClass, ATTRIB_KEYWORD);
+      int generalCost = ElementUtilities.getRequiredIntAttrib(keywordClass, ATTRIB_GENERAL_COST);
+      int favoredCost = ElementUtilities.getRequiredIntAttrib(keywordClass, ATTRIB_FAVORED_COST);
+      keywordGeneralCost.put(keyword, generalCost);
+      keywordFavoredCost.put(keyword, favoredCost);
     }
-    
+
     costs.setCharmCosts(
-        generalCharmCost,
-        favoredCharmCost,
-        generalHighLevelMartialArtsCharmCost,
-        favoredHighLevelMartialArtsCharmCost,
-        keywordGeneralCost,
-        keywordFavoredCost);
+            generalCharmCost,
+            favoredCharmCost,
+            generalHighLevelMartialArtsCharmCost,
+            favoredHighLevelMartialArtsCharmCost,
+            keywordGeneralCost,
+            keywordFavoredCost);
     costs.setStandardMartialArtsLevel(standardMartialArtsLevel);
   }
 
@@ -152,7 +152,7 @@ public class BonusPointCostTemplateParser extends AbstractXmlTemplateParser<Gene
     }
     int lowCost = costParser.getFixedCostFromRequiredElement(backgroundElement, TAG_LOW_RATINGS);
     int highCost = costParser.getFixedCostFromRequiredElement(backgroundElement, TAG_HIGH_RATINGS);
-    costs.setBackgroundCosts(lowCost, highCost);
+    costs.setBackgroundCosts(new ThresholdRatingCosts(lowCost, highCost));
   }
 
   private void setSpecialtyDots(Element element, GenericBonusPointCosts costs) throws PersistenceException {
@@ -177,7 +177,7 @@ public class BonusPointCostTemplateParser extends AbstractXmlTemplateParser<Gene
     }
     int generalCost = costParser.getFixedCostFromRequiredElement(abilityElement, TAG_GENERAL_ABILITY);
     int favoredCost = costParser.getFixedCostFromRequiredElement(abilityElement, TAG_FAVORED_ABILITY);
-    
+
     Element maximumFreeRank = abilityElement.element(TAG_MAXIMUM_FREE_ABILITY_RANK);
     if (maximumFreeRank != null) {
       costs.setMaximumFreeAbilityRank(ElementUtilities.getRequiredIntAttrib(maximumFreeRank, ATTRIB_RANK));
