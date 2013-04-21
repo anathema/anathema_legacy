@@ -4,6 +4,7 @@ import net.sf.anathema.character.generic.template.points.IFavorableTraitCreation
 import net.sf.anathema.character.library.trait.AbstractFavorableTraitCostCalculator;
 import net.sf.anathema.character.library.trait.IAdditionalTraitBonusPointManagement;
 import net.sf.anathema.character.library.trait.IFavorableDefaultTrait;
+import net.sf.anathema.character.library.trait.favorable.IFavorableTrait;
 
 import static net.sf.anathema.character.generic.impl.traits.EssenceTemplate.SYSTEM_ESSENCE_MAX;
 
@@ -21,7 +22,7 @@ public class CollegeBonusPointCalculator extends AbstractFavorableTraitCostCalcu
   }
 
   @Override
-  protected int getCostFactor(IFavorableDefaultTrait college) {
+  protected int getCostFactor(IFavorableTrait college) {
     return costs.getCollegeCosts(college.getFavorization().isCasteOrFavored());
   }
 }

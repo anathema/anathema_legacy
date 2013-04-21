@@ -33,6 +33,7 @@ import net.sf.anathema.character.impl.model.creation.bonus.virtue.VirtueBonusMod
 import net.sf.anathema.character.impl.model.creation.bonus.virtue.VirtueCostCalculator;
 import net.sf.anathema.character.impl.util.GenericCharacterUtilities;
 import net.sf.anathema.character.library.trait.TraitCollectionUtilities;
+import net.sf.anathema.character.library.trait.experience.TraitRatingCostCalculator;
 import net.sf.anathema.character.library.trait.visitor.IDefaultTrait;
 import net.sf.anathema.character.model.ICharacter;
 import net.sf.anathema.character.model.creation.IBonusPointManagement;
@@ -107,8 +108,7 @@ public class BonusPointManagement implements IBonusPointManagement {
 
   private int calculateEssencePoints() {
     FixedValueRatingCosts costs = new FixedValueRatingCosts(cost.getEssenceCost());
-    int increaseOverStartingValue = essence.getCreationValue() - essence.getZeroCalculationValue();
-    return costs.getRatingCosts(increaseOverStartingValue);
+    return TraitRatingCostCalculator.getTraitRatingCosts(essence.getZeroCalculationValue(), essence.getCreationValue(), costs);
   }
 
   private int calculateWillpowerPoints() {

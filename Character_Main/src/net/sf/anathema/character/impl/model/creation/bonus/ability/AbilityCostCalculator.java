@@ -79,9 +79,9 @@ public class AbilityCostCalculator extends AbstractFavorableTraitCostCalculator 
   }
 
   @Override
-  protected int getCostFactor(IFavorableDefaultTrait trait) {
+  protected int getCostFactor(IFavorableTrait trait) {
     ITraitFavorization favorization = trait.getFavorization();
-    return costs.getAbilityCosts(favorization.isCasteOrFavored()).getRatingCosts(trait.getCalculationValue());
+    return costs.getAbilityCosts(favorization.isCasteOrFavored()).getRatingCosts(((IFavorableDefaultTrait) trait).getCalculationValue());
   }
 
   @Override

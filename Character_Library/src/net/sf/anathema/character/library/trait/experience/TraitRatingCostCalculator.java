@@ -6,13 +6,13 @@ import net.sf.anathema.character.generic.template.experience.CurrentRatingCosts;
 public class TraitRatingCostCalculator {
 
   public static int getTraitRatingCosts(IBasicTrait trait, CurrentRatingCosts ratingCosts) {
-    return getTraitRaitingCosts(trait.getCreationValue(), trait.getExperiencedValue(), ratingCosts);
+    return getTraitRatingCosts(trait.getCreationValue(), trait.getExperiencedValue(), ratingCosts);
   }
 
-  public static int getTraitRaitingCosts(int creationValue, int experiencedValue, CurrentRatingCosts ratingCosts) {
+  public static int getTraitRatingCosts(int valueToAchieveWithoutCost, int valueToPayFor, CurrentRatingCosts ratingCosts) {
     int traitCosts = 0;
-    int currentRating = creationValue;
-    while (currentRating < experiencedValue) {
+    int currentRating = valueToAchieveWithoutCost;
+    while (currentRating < valueToPayFor) {
       traitCosts += ratingCosts.getRatingCosts(currentRating);
       currentRating++;
     }
