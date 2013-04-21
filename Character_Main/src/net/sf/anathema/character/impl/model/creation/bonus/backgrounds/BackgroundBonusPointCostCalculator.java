@@ -9,6 +9,7 @@ import net.sf.anathema.character.model.background.IBackgroundConfiguration;
 
 public class BackgroundBonusPointCostCalculator {
 
+  public static final int MAXIMUM_VALUE_FOR_FREEBIE_POINTS = 3;
   private final IBackgroundConfiguration backgroundConfiguration;
   private final BackgroundCreationPointCosts costs;
   private int dotsSpent;
@@ -41,7 +42,7 @@ public class BackgroundBonusPointCostCalculator {
     int additionalDotsToSpend = costModifier.getAdditionalDotsToSpend(backgroundValue);
     int additionalBonusPointsToSpend = costModifier.getAdditionalBonusPointsToSpend(backgroundValue);
     int modifiedTotalBackgroundValue = backgroundValue + additionalDotsToSpend;
-    int dotsToSpent = Math.max(0, Math.min(backgroundValue, 3) - background.getInitialValue()) + additionalDotsToSpend;
+    int dotsToSpent = Math.max(0, Math.min(backgroundValue, MAXIMUM_VALUE_FOR_FREEBIE_POINTS) - background.getInitialValue()) + additionalDotsToSpend;
     int remainingDots = freeBackgroundDots - dotsSpent;
     int dotsSpentOnBackground = Math.min(remainingDots, dotsToSpent);
     dotsSpent += dotsSpentOnBackground;
