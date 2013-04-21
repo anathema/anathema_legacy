@@ -6,8 +6,8 @@ import net.sf.anathema.character.generic.magic.IMagicVisitor;
 import net.sf.anathema.character.generic.magic.ISpell;
 import net.sf.anathema.character.generic.magic.charms.MartialArtsLevel;
 import net.sf.anathema.character.generic.template.creation.IBonusPointCosts;
+import net.sf.anathema.character.generic.template.experience.CurrentRatingCosts;
 import net.sf.anathema.character.generic.template.experience.ICostAnalyzer;
-import net.sf.anathema.character.generic.template.experience.ICurrentRatingCosts;
 import net.sf.anathema.character.generic.traits.IFavorableGenericTrait;
 
 public class DefaultBonusPointCosts implements IBonusPointCosts {
@@ -34,7 +34,7 @@ public class DefaultBonusPointCosts implements IBonusPointCosts {
   }
 
   @Override
-  public ICurrentRatingCosts getAbilityCosts(boolean favored) {
+  public CurrentRatingCosts getAbilityCosts(boolean favored) {
     if (favored) {
       return new FixedValueRatingCosts(1);
     }
@@ -47,7 +47,7 @@ public class DefaultBonusPointCosts implements IBonusPointCosts {
   }
 
   @Override
-  public ICurrentRatingCosts getVirtueCosts() {
+  public CurrentRatingCosts getVirtueCosts() {
     return new FixedValueRatingCosts(3);
   }
 
@@ -77,7 +77,7 @@ public class DefaultBonusPointCosts implements IBonusPointCosts {
   }
 
   @Override
-  public ICurrentRatingCosts getBackgroundBonusPointCost() {
+  public CurrentRatingCosts getBackgroundBonusPointCost() {
     return new ThresholdRatingCosts(1, 2);
   }
 

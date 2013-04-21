@@ -9,8 +9,8 @@ import net.sf.anathema.character.generic.magic.ISpell;
 import net.sf.anathema.character.generic.magic.charms.ICharmAttribute;
 import net.sf.anathema.character.generic.magic.charms.MartialArtsLevel;
 import net.sf.anathema.character.generic.template.creation.IBonusPointCosts;
+import net.sf.anathema.character.generic.template.experience.CurrentRatingCosts;
 import net.sf.anathema.character.generic.template.experience.ICostAnalyzer;
-import net.sf.anathema.character.generic.template.experience.ICurrentRatingCosts;
 import net.sf.anathema.character.generic.traits.IFavorableGenericTrait;
 import net.sf.anathema.lib.lang.clone.ReflectionCloneableObject;
 
@@ -55,15 +55,15 @@ public class GenericBonusPointCosts extends ReflectionCloneableObject<GenericBon
 
   @Override
   public int getAttributeCosts(IFavorableGenericTrait trait) {
-    ICurrentRatingCosts attributeCosts = getAttributeCosts(trait.isCasteOrFavored());
+    CurrentRatingCosts attributeCosts = getAttributeCosts(trait.isCasteOrFavored());
     return attributeCosts.getRatingCosts(trait.getCurrentValue());
   }
 
-  private ICurrentRatingCosts getAttributeCosts(boolean favored) {
+  private CurrentRatingCosts getAttributeCosts(boolean favored) {
     return getFavorableFixedRatingCost(favored, favoredAttributeCost, generalAttributeCost);
   }
 
-  private ICurrentRatingCosts getFavorableFixedRatingCost(boolean favored, int favoredCost, int generalCost) {
+  private CurrentRatingCosts getFavorableFixedRatingCost(boolean favored, int favoredCost, int generalCost) {
     if (favored) {
       return new FixedValueRatingCosts(favoredCost);
     }
@@ -71,7 +71,7 @@ public class GenericBonusPointCosts extends ReflectionCloneableObject<GenericBon
   }
 
   @Override
-  public ICurrentRatingCosts getVirtueCosts() {
+  public CurrentRatingCosts getVirtueCosts() {
     return new FixedValueRatingCosts(virtueCost);
   }
 
@@ -127,7 +127,7 @@ public class GenericBonusPointCosts extends ReflectionCloneableObject<GenericBon
   }
 
   @Override
-  public ICurrentRatingCosts getAbilityCosts(boolean favored) {
+  public CurrentRatingCosts getAbilityCosts(boolean favored) {
     return getFavorableFixedRatingCost(favored, favoredAbilityCost, generalAbilityCost);
   }
 
@@ -142,7 +142,7 @@ public class GenericBonusPointCosts extends ReflectionCloneableObject<GenericBon
   }
 
   @Override
-  public ICurrentRatingCosts getBackgroundBonusPointCost() {
+  public CurrentRatingCosts getBackgroundBonusPointCost() {
     return new ThresholdRatingCosts(lowBackgroundCost, highBackgroundCost);
   }
 

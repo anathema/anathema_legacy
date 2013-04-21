@@ -2,9 +2,9 @@ package net.sf.anathema.character.generic.template.creation;
 
 import net.sf.anathema.character.generic.magic.ICharm;
 import net.sf.anathema.character.generic.magic.IMagic;
+import net.sf.anathema.character.generic.template.experience.CurrentRatingCosts;
 import net.sf.anathema.character.generic.template.experience.IAbilityPointCosts;
 import net.sf.anathema.character.generic.template.experience.ICostAnalyzer;
-import net.sf.anathema.character.generic.template.experience.ICurrentRatingCosts;
 import net.sf.anathema.character.generic.traits.IFavorableGenericTrait;
 
 public interface IBonusPointCosts extends IAbilityPointCosts, IBackgroundCreationPointCosts {
@@ -13,7 +13,7 @@ public interface IBonusPointCosts extends IAbilityPointCosts, IBackgroundCreatio
 
   int getAttributeCosts(IFavorableGenericTrait trait);
 
-  ICurrentRatingCosts getVirtueCosts();
+  CurrentRatingCosts getVirtueCosts();
 
   int getWillpowerCosts();
 

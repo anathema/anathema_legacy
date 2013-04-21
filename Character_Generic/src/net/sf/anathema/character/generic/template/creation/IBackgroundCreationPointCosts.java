@@ -1,8 +1,8 @@
 package net.sf.anathema.character.generic.template.creation;
 
-import net.sf.anathema.character.generic.template.experience.ICurrentRatingCosts;
+import net.sf.anathema.character.generic.template.experience.CurrentRatingCosts;
 
 public interface IBackgroundCreationPointCosts {
 
-  ICurrentRatingCosts getBackgroundBonusPointCost();
+  CurrentRatingCosts getBackgroundBonusPointCost();
 }

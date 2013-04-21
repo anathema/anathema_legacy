@@ -6,14 +6,14 @@ import net.sf.anathema.character.generic.impl.template.points.MultiplyRatingCost
 import net.sf.anathema.character.generic.magic.ICharm;
 import net.sf.anathema.character.generic.magic.ISpell;
 import net.sf.anathema.character.generic.magic.charms.MartialArtsLevel;
+import net.sf.anathema.character.generic.template.experience.CurrentRatingCosts;
 import net.sf.anathema.character.generic.template.experience.ICostAnalyzer;
-import net.sf.anathema.character.generic.template.experience.ICurrentRatingCosts;
 import net.sf.anathema.character.generic.template.experience.IExperiencePointCosts;
 
 public class DefaultExperienceCosts implements IExperiencePointCosts {
 
   @Override
-  public ICurrentRatingCosts getAbilityCosts(boolean favored) {
+  public CurrentRatingCosts getAbilityCosts(boolean favored) {
     if (favored) {
       return new MultiplyRatingCosts(2, 3, -1);
     }
@@ -21,7 +21,7 @@ public class DefaultExperienceCosts implements IExperiencePointCosts {
   }
 
   @Override
-  public ICurrentRatingCosts getAttributeCosts(boolean favored)
+  public CurrentRatingCosts getAttributeCosts(boolean favored)
   {
 	  return favored ? new MultiplyRatingCosts(3) : new MultiplyRatingCosts(4);
   }
@@ -49,7 +49,7 @@ public class DefaultExperienceCosts implements IExperiencePointCosts {
   }
 
   @Override
-  public ICurrentRatingCosts getEssenceCosts() {
+  public CurrentRatingCosts getEssenceCosts() {
     return new MultiplyRatingCosts(8);
   }
 
@@ -59,12 +59,12 @@ public class DefaultExperienceCosts implements IExperiencePointCosts {
   }
 
   @Override
-  public ICurrentRatingCosts getVirtueCosts() {
+  public CurrentRatingCosts getVirtueCosts() {
     return new MultiplyRatingCosts(3);
   }
 
   @Override
-  public ICurrentRatingCosts getWillpowerCosts() {
+  public CurrentRatingCosts getWillpowerCosts() {
     return new MultiplyRatingCosts(2);
   }
 }

@@ -3,9 +3,8 @@ package net.sf.anathema.character.generic.framework.xml.experience;
 import net.sf.anathema.character.generic.framework.xml.core.AbstractXmlTemplateParser;
 import net.sf.anathema.character.generic.framework.xml.registry.IXmlTemplateRegistry;
 import net.sf.anathema.character.generic.framework.xml.util.CostParser;
-import net.sf.anathema.character.generic.impl.template.points.MultiplyRatingCosts;
 import net.sf.anathema.character.generic.magic.charms.MartialArtsLevel;
-import net.sf.anathema.character.generic.template.experience.ICurrentRatingCosts;
+import net.sf.anathema.character.generic.template.experience.CurrentRatingCosts;
 import net.sf.anathema.lib.exception.PersistenceException;
 import net.sf.anathema.lib.xml.ElementUtilities;
 import org.dom4j.Element;
@@ -18,16 +17,12 @@ public class ExperienceTemplateParser extends AbstractXmlTemplateParser<GenericE
   private static final String ATTRIB_KEYWORD = "keyword";
   private static final String ATTRIB_FAVORED = "favored";
   private static final String ATTRIB_GENERAL = "general";
-  private static final String ATTRIB_INITIALCOST = "initialCosts";
-  private static final String ATTRIB_MULTIPLIER = "multiplier";
-  private static final String ATTRIB_SUMMAND = "summand";
   private static final String ATTRIB_COST = "cost";
 
-  private static final String TAG_ATTRIBUTES = "attributes";
   private static final String TAG_GENERAL_COSTS = "generalCosts";
-  private static final String TAG_CURRENT_RATING_COSTS = "currentRating";
-  private static final String TAG_ABILITIES = "abilities";
   private static final String TAG_FAVORED_COSTS = "favoredCosts";
+  private static final String TAG_ATTRIBUTES = "attributes";
+  private static final String TAG_ABILITIES = "abilities";
   private static final String TAG_SPECIALTIES = "specialties";
   private static final String TAG_ADVANTAGES = "advantages";
   private static final String TAG_WILLPOWER = "willpower";
@@ -125,7 +120,7 @@ public class ExperienceTemplateParser extends AbstractXmlTemplateParser<GenericE
     if (element == null) {
       return;
     }
-    ICurrentRatingCosts ratingCosts = getCurrentRatingCosts(element);
+    CurrentRatingCosts ratingCosts = getCurrentRatingCosts(element);
     costs.setEssenceCosts(ratingCosts);
   }
 
@@ -134,7 +129,7 @@ public class ExperienceTemplateParser extends AbstractXmlTemplateParser<GenericE
     if (element == null) {
       return;
     }
-    ICurrentRatingCosts ratingCosts = getCurrentRatingCosts(element);
+    CurrentRatingCosts ratingCosts = getCurrentRatingCosts(element);
     costs.setVirtueCosts(ratingCosts);
   }
 
@@ -143,7 +138,7 @@ public class ExperienceTemplateParser extends AbstractXmlTemplateParser<GenericE
     if (element == null) {
       return;
     }
-    ICurrentRatingCosts ratingCosts = getCurrentRatingCosts(element);
+    CurrentRatingCosts ratingCosts = getCurrentRatingCosts(element);
     costs.setWillpowerCosts(ratingCosts);
   }
 
@@ -171,29 +166,23 @@ public class ExperienceTemplateParser extends AbstractXmlTemplateParser<GenericE
     costs.setFavoredAttributeCosts(getFavoredCost(attributes));
   }
 
-  protected final ICurrentRatingCosts getFavoredCost(Element attributes) throws PersistenceException {
+
+  protected final CurrentRatingCosts getFavoredCost(Element attributes) throws PersistenceException {
     return getCurrentRatingCosts(attributes, TAG_FAVORED_COSTS);
   }
 
-  protected final ICurrentRatingCosts getGeneralCost(Element attributes) throws PersistenceException {
+  protected final CurrentRatingCosts getGeneralCost(Element attributes) throws PersistenceException {
     return getCurrentRatingCosts(attributes, TAG_GENERAL_COSTS);
   }
 
-  protected final ICurrentRatingCosts getCurrentRatingCosts(Element element) throws PersistenceException {
-    return getMultiplyRatingCosts(element);
+  protected final CurrentRatingCosts getCurrentRatingCosts(Element element) throws PersistenceException {
+    return new CostParser().getMultiplyRatingCosts(element);
   }
 
-  protected final ICurrentRatingCosts getCurrentRatingCosts(Element parentElement, String tagName)
-      throws PersistenceException {
+  protected final CurrentRatingCosts getCurrentRatingCosts(Element parentElement, String tagName)
+          throws PersistenceException {
     Element element = ElementUtilities.getRequiredElement(parentElement, tagName);
-    return getMultiplyRatingCosts(element);
+    return new CostParser().getMultiplyRatingCosts(element);
   }
 
-  private MultiplyRatingCosts getMultiplyRatingCosts(Element parentElement) throws PersistenceException {
-    Element element = ElementUtilities.getRequiredElement(parentElement, TAG_CURRENT_RATING_COSTS);
-    int multiplier = ElementUtilities.getRequiredIntAttrib(element, ATTRIB_MULTIPLIER);
-    int summand = ElementUtilities.getIntAttrib(element, ATTRIB_SUMMAND, 0);
-    int initialCost = ElementUtilities.getIntAttrib(element, ATTRIB_INITIALCOST, Integer.MIN_VALUE);
-    return new MultiplyRatingCosts(multiplier, initialCost, summand);
-  }
 }

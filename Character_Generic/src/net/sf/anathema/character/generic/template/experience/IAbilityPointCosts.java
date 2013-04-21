@@ -2,7 +2,7 @@ package net.sf.anathema.character.generic.template.experience;
 
 public interface IAbilityPointCosts {
 
-  ICurrentRatingCosts getAbilityCosts(boolean favored);
+  CurrentRatingCosts getAbilityCosts(boolean favored);
 
   int getDefaultSpecialtyDotsPerPoint();
 

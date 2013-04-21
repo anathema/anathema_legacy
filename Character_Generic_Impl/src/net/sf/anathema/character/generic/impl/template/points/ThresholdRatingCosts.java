@@ -1,8 +1,8 @@
 package net.sf.anathema.character.generic.impl.template.points;
 
-import net.sf.anathema.character.generic.template.experience.ICurrentRatingCosts;
+import net.sf.anathema.character.generic.template.experience.CurrentRatingCosts;
 
-public class ThresholdRatingCosts implements ICurrentRatingCosts {
+public class ThresholdRatingCosts implements CurrentRatingCosts {
 
   private final int lowCost;
   private final int highCost;

@@ -1,9 +1,9 @@
 package net.sf.anathema.character.generic.impl.template.points;
 
-import net.sf.anathema.character.generic.template.experience.ICurrentRatingCosts;
+import net.sf.anathema.character.generic.template.experience.CurrentRatingCosts;
 import org.apache.commons.lang3.builder.EqualsBuilder;
 
-public class MultiplyRatingCosts implements ICurrentRatingCosts {
+public class MultiplyRatingCosts implements CurrentRatingCosts {
 
   private final int factor;
   private final int initalCost;

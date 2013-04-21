@@ -4,8 +4,8 @@ import net.sf.anathema.character.dummy.generic.DummyAdditionalBonusPointManagmen
 import net.sf.anathema.character.dummy.trait.DummyCoreTraitConfiguration;
 import net.sf.anathema.character.generic.impl.template.points.AbilityCreationPoints;
 import net.sf.anathema.character.generic.impl.template.points.FixedValueRatingCosts;
+import net.sf.anathema.character.generic.template.experience.CurrentRatingCosts;
 import net.sf.anathema.character.generic.template.experience.IAbilityPointCosts;
-import net.sf.anathema.character.generic.template.experience.ICurrentRatingCosts;
 import net.sf.anathema.character.generic.template.points.IFavorableTraitCreationPoints;
 import net.sf.anathema.character.generic.traits.types.AbilityType;
 import net.sf.anathema.character.impl.model.creation.bonus.ability.AbilityCostCalculator;
@@ -24,11 +24,11 @@ public class AbilityCostCalculatorTest extends AbstractBonusPointTestCase {
 
   private static class DummyAbilityPointCosts implements IAbilityPointCosts {
 
-    private final ICurrentRatingCosts defaultCosts = new FixedValueRatingCosts(2);
-    private final ICurrentRatingCosts favoredCosts = new FixedValueRatingCosts(1);
+    private final CurrentRatingCosts defaultCosts = new FixedValueRatingCosts(2);
+    private final CurrentRatingCosts favoredCosts = new FixedValueRatingCosts(1);
 
     @Override
-    public ICurrentRatingCosts getAbilityCosts(boolean favored) {
+    public CurrentRatingCosts getAbilityCosts(boolean favored) {
       return favored ? favoredCosts : defaultCosts;
     }
 

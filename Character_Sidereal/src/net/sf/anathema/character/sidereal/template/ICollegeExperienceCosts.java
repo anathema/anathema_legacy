@@ -1,8 +1,8 @@
 package net.sf.anathema.character.sidereal.template;
 
-import net.sf.anathema.character.generic.template.experience.ICurrentRatingCosts;
+import net.sf.anathema.character.generic.template.experience.CurrentRatingCosts;
 
 public interface ICollegeExperienceCosts {
 
-  ICurrentRatingCosts getCollegeExperienceCost(boolean favored);
+  CurrentRatingCosts getCollegeExperienceCost(boolean favored);
 }

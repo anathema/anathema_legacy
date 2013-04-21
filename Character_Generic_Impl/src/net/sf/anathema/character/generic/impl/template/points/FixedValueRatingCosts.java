@@ -1,9 +1,9 @@
 package net.sf.anathema.character.generic.impl.template.points;
 
-import net.sf.anathema.character.generic.template.experience.ICurrentRatingCosts;
+import net.sf.anathema.character.generic.template.experience.CurrentRatingCosts;
 import org.apache.commons.lang3.builder.EqualsBuilder;
 
-public class FixedValueRatingCosts implements ICurrentRatingCosts {
+public class FixedValueRatingCosts implements CurrentRatingCosts {
 
   private final int value;
 
@@ -16,6 +16,7 @@ public class FixedValueRatingCosts implements ICurrentRatingCosts {
     return value;
   }
 
+  @SuppressWarnings("EqualsWhichDoesntCheckParameterClass")
   @Override
   public boolean equals(Object obj) {
     return EqualsBuilder.reflectionEquals(this, obj);

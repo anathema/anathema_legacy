@@ -7,8 +7,8 @@ import net.sf.anathema.character.generic.magic.ICharm;
 import net.sf.anathema.character.generic.magic.ISpell;
 import net.sf.anathema.character.generic.magic.charms.ICharmAttribute;
 import net.sf.anathema.character.generic.magic.charms.MartialArtsLevel;
+import net.sf.anathema.character.generic.template.experience.CurrentRatingCosts;
 import net.sf.anathema.character.generic.template.experience.ICostAnalyzer;
-import net.sf.anathema.character.generic.template.experience.ICurrentRatingCosts;
 import net.sf.anathema.character.generic.template.experience.IExperiencePointCosts;
 import net.sf.anathema.lib.lang.clone.ReflectionCloneableObject;
 
@@ -17,14 +17,14 @@ import java.util.Map;
 
 public class GenericExperiencePointCosts extends ReflectionCloneableObject<GenericExperiencePointCosts> implements IExperiencePointCosts {
 
-  private ICurrentRatingCosts generalAttributeCost = new FixedValueRatingCosts(0);
-  private ICurrentRatingCosts favoredAttributeCost = new FixedValueRatingCosts(0);
-  private ICurrentRatingCosts generalAbilityCost = new FixedValueRatingCosts(0);
-  private ICurrentRatingCosts favoredAbilityCost = new FixedValueRatingCosts(0);
+  private CurrentRatingCosts generalAttributeCost = new FixedValueRatingCosts(0);
+  private CurrentRatingCosts favoredAttributeCost = new FixedValueRatingCosts(0);
+  private CurrentRatingCosts generalAbilityCost = new FixedValueRatingCosts(0);
+  private CurrentRatingCosts favoredAbilityCost = new FixedValueRatingCosts(0);
   private int specialtyCost = 0;
-  private ICurrentRatingCosts virtueCosts = new FixedValueRatingCosts(0);
-  private ICurrentRatingCosts willpowerCosts = new FixedValueRatingCosts(0);
-  private ICurrentRatingCosts essenceCosts = new FixedValueRatingCosts(0);
+  private CurrentRatingCosts virtueCosts = new FixedValueRatingCosts(0);
+  private CurrentRatingCosts willpowerCosts = new FixedValueRatingCosts(0);
+  private CurrentRatingCosts essenceCosts = new FixedValueRatingCosts(0);
   private int generalCharmCost = 0;
   private int favoredCharmCost = 0;
   private int generalHighLevelCharmCost = 0;
@@ -36,12 +36,12 @@ public class GenericExperiencePointCosts extends ReflectionCloneableObject<Gener
   private Map<String, Integer> keywordFavoredCosts = new HashMap<>();
 
   @Override
-  public ICurrentRatingCosts getAbilityCosts(boolean favored) {
+  public CurrentRatingCosts getAbilityCosts(boolean favored) {
     return favored ? favoredAbilityCost : generalAbilityCost;
   }
 
   @Override
-  public ICurrentRatingCosts getAttributeCosts(boolean favored) {
+  public CurrentRatingCosts getAttributeCosts(boolean favored) {
     return favored ? favoredAttributeCost : generalAttributeCost;
   }
 
@@ -70,7 +70,7 @@ public class GenericExperiencePointCosts extends ReflectionCloneableObject<Gener
   }
 
   @Override
-  public ICurrentRatingCosts getEssenceCosts() {
+  public CurrentRatingCosts getEssenceCosts() {
     return essenceCosts;
   }
 
@@ -80,28 +80,28 @@ public class GenericExperiencePointCosts extends ReflectionCloneableObject<Gener
   }
 
   @Override
-  public ICurrentRatingCosts getVirtueCosts() {
+  public CurrentRatingCosts getVirtueCosts() {
     return virtueCosts;
   }
 
   @Override
-  public ICurrentRatingCosts getWillpowerCosts() {
+  public CurrentRatingCosts getWillpowerCosts() {
     return willpowerCosts;
   }
 
-  public void setGeneralAttributeCosts(ICurrentRatingCosts generalAttributeCost) {
+  public void setGeneralAttributeCosts(CurrentRatingCosts generalAttributeCost) {
     this.generalAttributeCost = generalAttributeCost;
   }
 
-  public void setFavoredAttributeCosts(ICurrentRatingCosts favoredAttributeCost) {
+  public void setFavoredAttributeCosts(CurrentRatingCosts favoredAttributeCost) {
     this.favoredAttributeCost = favoredAttributeCost;
   }
 
-  public void setGeneralAbilityCosts(ICurrentRatingCosts generalAbilityCost) {
+  public void setGeneralAbilityCosts(CurrentRatingCosts generalAbilityCost) {
     this.generalAbilityCost = generalAbilityCost;
   }
 
-  public void setFavoredAbilityCosts(ICurrentRatingCosts favoredAbilityCost) {
+  public void setFavoredAbilityCosts(CurrentRatingCosts favoredAbilityCost) {
     this.favoredAbilityCost = favoredAbilityCost;
   }
 
@@ -109,15 +109,15 @@ public class GenericExperiencePointCosts extends ReflectionCloneableObject<Gener
     this.specialtyCost = specialtyCost;
   }
 
-  public void setWillpowerCosts(ICurrentRatingCosts willpowerCosts) {
+  public void setWillpowerCosts(CurrentRatingCosts willpowerCosts) {
     this.willpowerCosts = willpowerCosts;
   }
 
-  public void setVirtueCosts(ICurrentRatingCosts virtueCosts) {
+  public void setVirtueCosts(CurrentRatingCosts virtueCosts) {
     this.virtueCosts = virtueCosts;
   }
 
-  public void setEssenceCosts(ICurrentRatingCosts essenceCosts) {
+  public void setEssenceCosts(CurrentRatingCosts essenceCosts) {
     this.essenceCosts = essenceCosts;
   }
 
