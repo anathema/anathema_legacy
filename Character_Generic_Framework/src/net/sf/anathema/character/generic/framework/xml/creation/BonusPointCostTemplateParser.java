@@ -3,6 +3,7 @@ package net.sf.anathema.character.generic.framework.xml.creation;
 import net.sf.anathema.character.generic.framework.xml.core.AbstractXmlTemplateParser;
 import net.sf.anathema.character.generic.framework.xml.registry.IXmlTemplateRegistry;
 import net.sf.anathema.character.generic.framework.xml.util.CostParser;
+import net.sf.anathema.character.generic.impl.template.points.FixedValueRatingCosts;
 import net.sf.anathema.character.generic.magic.charms.MartialArtsLevel;
 import net.sf.anathema.lib.exception.PersistenceException;
 import net.sf.anathema.lib.xml.ElementUtilities;
@@ -119,7 +120,7 @@ public class BonusPointCostTemplateParser extends AbstractXmlTemplateParser<Gene
       return;
     }
     int fixedCost = costParser.getFixedCostFromRequiredElement(element, TAG_ESSENCE);
-    costs.setEssenceCosts(fixedCost);
+    costs.setEssenceCosts(new FixedValueRatingCosts(fixedCost));
   }
 
   private void setWillpowerCosts(Element element, GenericBonusPointCosts costs) throws PersistenceException {

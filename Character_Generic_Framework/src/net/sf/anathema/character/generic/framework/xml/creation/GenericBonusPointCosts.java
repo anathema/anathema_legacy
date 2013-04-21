@@ -26,7 +26,7 @@ public class GenericBonusPointCosts extends ReflectionCloneableObject<GenericBon
   private int favoredCharmCost = 0;
   private int favoredHighLevelMartialArtsCharmCost = 0;
   private MartialArtsLevel standardLevel;
-  private int essenceCost = 0;
+  private CurrentRatingCosts essenceCost = new FixedValueRatingCosts(0);
   private int willpowerCost = 0;
   private int virtueCost = 0;
   private int highBackgroundCost = 0;
@@ -104,7 +104,7 @@ public class GenericBonusPointCosts extends ReflectionCloneableObject<GenericBon
 
   @Override
   public CurrentRatingCosts getEssenceCost() {
-    return new FixedValueRatingCosts(essenceCost);
+    return essenceCost;
   }
 
   @Override
@@ -170,8 +170,8 @@ public class GenericBonusPointCosts extends ReflectionCloneableObject<GenericBon
     this.willpowerCost = willpowerCost;
   }
 
-  public void setEssenceCosts(int essenceCost) {
-    this.essenceCost = essenceCost;
+  public void setEssenceCosts(CurrentRatingCosts costs) {
+    this.essenceCost = costs;
   }
 
   public void setCharmCosts(
