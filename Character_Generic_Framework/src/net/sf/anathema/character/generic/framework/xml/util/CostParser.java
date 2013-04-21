@@ -1,10 +1,14 @@
 package net.sf.anathema.character.generic.framework.xml.util;
 
 import net.sf.anathema.character.generic.impl.template.points.MultiplyRatingCosts;
+import net.sf.anathema.character.generic.impl.template.points.ThresholdRatingCosts;
 import net.sf.anathema.character.generic.template.experience.CurrentRatingCosts;
 import net.sf.anathema.lib.exception.PersistenceException;
-import net.sf.anathema.lib.xml.ElementUtilities;
 import org.dom4j.Element;
+
+import static net.sf.anathema.lib.xml.ElementUtilities.getIntAttrib;
+import static net.sf.anathema.lib.xml.ElementUtilities.getRequiredElement;
+import static net.sf.anathema.lib.xml.ElementUtilities.getRequiredIntAttrib;
 
 public class CostParser {
 
@@ -16,10 +20,15 @@ public class CostParser {
   private static final String ATTRIB_SUMMAND = "summand";
   private static final String TAG_CURRENT_RATING_COSTS = "currentRating";
 
+  private static final String TAG_THRESHOLD_COST = "thresholdCost";
+  private static final String ATTRIB_LOW_COST= "lowCost";
+  private static final String ATTRIB_HIGH_COST= "highCost";
+  private static final String ATTRIB_THRESHOLD= "threshold";
+
   public int getFixedCostFromRequiredElement(Element element, String elementName) throws PersistenceException {
-    Element parentElement = ElementUtilities.getRequiredElement(element, elementName);
-    Element fixedCostElement = ElementUtilities.getRequiredElement(parentElement, TAG_FIXED_COST);
-    return ElementUtilities.getRequiredIntAttrib(fixedCostElement, ATTRIB_COST);
+    Element parentElement = getRequiredElement(element, elementName);
+    Element fixedCostElement = getRequiredElement(parentElement, TAG_FIXED_COST);
+    return getRequiredIntAttrib(fixedCostElement, ATTRIB_COST);
   }
 
   public int getFixedCostFromOptionalElement(Element element, String elementName, int defaultValue)
@@ -28,21 +37,29 @@ public class CostParser {
     if (parentElement == null) {
       return defaultValue;
     }
-    Element fixedCostElement = ElementUtilities.getRequiredElement(parentElement, TAG_FIXED_COST);
-    return ElementUtilities.getRequiredIntAttrib(fixedCostElement, ATTRIB_COST);
+    Element fixedCostElement = getRequiredElement(parentElement, TAG_FIXED_COST);
+    return getRequiredIntAttrib(fixedCostElement, ATTRIB_COST);
   }
 
   public CurrentRatingCosts getMultiplyRatingCostsFromRequiredElement(Element parentElement, String tagName)
           throws PersistenceException {
-    Element element = ElementUtilities.getRequiredElement(parentElement, tagName);
+    Element element = getRequiredElement(parentElement, tagName);
     return getMultiplyRatingCosts(element);
   }
 
   public CurrentRatingCosts getMultiplyRatingCosts(Element parentElement) throws PersistenceException {
-    Element element = ElementUtilities.getRequiredElement(parentElement, TAG_CURRENT_RATING_COSTS);
-    int multiplier = ElementUtilities.getRequiredIntAttrib(element, ATTRIB_MULTIPLIER);
-    int summand = ElementUtilities.getIntAttrib(element, ATTRIB_SUMMAND, 0);
-    int initialCost = ElementUtilities.getIntAttrib(element, ATTRIB_INITIALCOST, Integer.MIN_VALUE);
+    Element element = getRequiredElement(parentElement, TAG_CURRENT_RATING_COSTS);
+    int multiplier = getRequiredIntAttrib(element, ATTRIB_MULTIPLIER);
+    int summand = getIntAttrib(element, ATTRIB_SUMMAND, 0);
+    int initialCost = getIntAttrib(element, ATTRIB_INITIALCOST, Integer.MIN_VALUE);
     return new MultiplyRatingCosts(multiplier, initialCost, summand);
+  }
+
+  public CurrentRatingCosts getThresholdRatingCosts(Element parentElement) {
+    Element costElement = getRequiredElement(parentElement, TAG_THRESHOLD_COST);
+    int lowCost = getRequiredIntAttrib(costElement, ATTRIB_LOW_COST);
+    int highCost = getRequiredIntAttrib(costElement, ATTRIB_HIGH_COST);
+    int threshold = getRequiredIntAttrib(costElement, ATTRIB_THRESHOLD);
+    return new ThresholdRatingCosts(lowCost, highCost, threshold);
   }
 }

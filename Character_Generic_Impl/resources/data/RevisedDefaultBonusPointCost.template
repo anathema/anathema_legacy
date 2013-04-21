@@ -22,12 +22,7 @@
   </abilities>
   <advantages>
     <backgrounds>
-      <lowRatings>
-        <fixedCost cost="1" />
-      </lowRatings>
-      <highRatings>
-        <fixedCost cost="2" />
-      </highRatings>
+     <thresholdCost lowCost="1" highCost="2" threshold="3"/>
     </backgrounds>
     <virtues>
       <fixedCost cost="1" />

@@ -4,8 +4,8 @@ import net.sf.anathema.character.generic.framework.xml.core.AbstractXmlTemplateP
 import net.sf.anathema.character.generic.framework.xml.registry.IXmlTemplateRegistry;
 import net.sf.anathema.character.generic.framework.xml.util.CostParser;
 import net.sf.anathema.character.generic.impl.template.points.FixedValueRatingCosts;
-import net.sf.anathema.character.generic.impl.template.points.ThresholdRatingCosts;
 import net.sf.anathema.character.generic.magic.charms.MartialArtsLevel;
+import net.sf.anathema.character.generic.template.experience.CurrentRatingCosts;
 import net.sf.anathema.lib.exception.PersistenceException;
 import net.sf.anathema.lib.xml.ElementUtilities;
 import org.dom4j.Element;
@@ -32,8 +32,6 @@ public class BonusPointCostTemplateParser extends AbstractXmlTemplateParser<Gene
   private static final String TAG_FAVORED_DOTS_PER_POINT = "favoredDotsPerPoint";
   private static final String TAG_ADVANTAGES = "advantages";
   private static final String TAG_BACKGROUNDS = "backgrounds";
-  private static final String TAG_LOW_RATINGS = "lowRatings";
-  private static final String TAG_HIGH_RATINGS = "highRatings";
   private static final String TAG_VIRTUES = "virtues";
   private static final String TAG_WILLPOWER = "willpower";
   private static final String TAG_ESSENCE = "essence";
@@ -150,9 +148,8 @@ public class BonusPointCostTemplateParser extends AbstractXmlTemplateParser<Gene
     if (backgroundElement == null) {
       return;
     }
-    int lowCost = costParser.getFixedCostFromRequiredElement(backgroundElement, TAG_LOW_RATINGS);
-    int highCost = costParser.getFixedCostFromRequiredElement(backgroundElement, TAG_HIGH_RATINGS);
-    costs.setBackgroundCosts(new ThresholdRatingCosts(lowCost, highCost));
+    CurrentRatingCosts cost = new CostParser().getThresholdRatingCosts(backgroundElement);
+    costs.setBackgroundCosts(cost);
   }
 
   private void setSpecialtyDots(Element element, GenericBonusPointCosts costs) throws PersistenceException {
