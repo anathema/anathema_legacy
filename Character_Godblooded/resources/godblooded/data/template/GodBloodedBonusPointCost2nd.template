@@ -1,7 +1,7 @@
 <bonusPointCost uses="DefaultBonusPointCost2nd.template">
   <advantages>
     <essence>
-      <fixedCost cost="12" />
+        <thresholdCost lowCost="12" highCost="15" threshold="2" />
     </essence>
   </advantages>
   <charms>

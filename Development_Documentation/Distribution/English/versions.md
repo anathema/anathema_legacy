@@ -19,8 +19,8 @@ leading us to the assumption that not many of you used it.
 * Windowed mode defaults to a 16:9 resolution
 * Abyssal "Withering Phantasmagoria" and its Solar Mirror offer subeffects.
 * Customizers can now define the threshold that triggers the high BP cost for Backgrounds.
-  As long as the background is below the threshold, Anathema will apply the low cost,
-  when it's greater than or equal to the threshold, it will apply the high cost.
+  As long as the background is lower than or equal to the threshold, Anathema will apply the low cost,
+  when it's greater than the threshold, it will apply the high cost.
   The new syntax for Background costs is
     <backgrounds>
       <thresholdCost lowCost="1" highCost="2" threshold="3"/>
@@ -32,6 +32,7 @@ leading us to the assumption that not many of you used it.
 * Serenity Sidereals no longer get two free dots under some circumstances.
 * Durations of the Until...-type are properly shown once more.
 * Corrects cost of [Solar/Resistance] "Spirit Strengthens the Skin"
+* Corrects the cost of Essence dots for God-Blooded and their ilk both during creation and play.
 
 ## Release 5.0.1
 
