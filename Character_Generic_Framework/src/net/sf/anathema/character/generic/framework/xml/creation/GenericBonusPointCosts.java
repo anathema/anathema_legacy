@@ -105,8 +105,8 @@ public class GenericBonusPointCosts extends ReflectionCloneableObject<GenericBon
   }
 
   @Override
-  public int getEssenceCost() {
-    return essenceCost;
+  public CurrentRatingCosts getEssenceCost() {
+    return new FixedValueRatingCosts(essenceCost);
   }
 
   @Override

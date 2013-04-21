@@ -82,8 +82,8 @@ public class DefaultBonusPointCosts implements BonusPointCosts {
   }
 
   @Override
-  public int getEssenceCost() {
-    return 7;
+  public CurrentRatingCosts getEssenceCost() {
+    return new FixedValueRatingCosts(7);
   }
 
   @Override

@@ -19,7 +19,7 @@ public interface BonusPointCosts extends AbilityPointCosts, BackgroundCreationPo
 
   int getSpellCosts(ICostAnalyzer costMapping);
 
-  int getEssenceCost();
+  CurrentRatingCosts getEssenceCost();
 
   int getMagicCosts(IMagic magic, ICostAnalyzer analyzer);
 

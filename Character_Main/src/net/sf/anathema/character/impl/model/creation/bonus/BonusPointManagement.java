@@ -2,10 +2,10 @@ package net.sf.anathema.character.impl.model.creation.bonus;
 
 import net.sf.anathema.character.generic.additionalrules.IAdditionalRules;
 import net.sf.anathema.character.generic.additionaltemplate.IAdditionalModel;
-import net.sf.anathema.character.generic.impl.template.points.FixedValueRatingCosts;
 import net.sf.anathema.character.generic.template.ICharacterTemplate;
 import net.sf.anathema.character.generic.template.creation.BonusPointCosts;
 import net.sf.anathema.character.generic.template.creation.ICreationPoints;
+import net.sf.anathema.character.generic.template.experience.CurrentRatingCosts;
 import net.sf.anathema.character.generic.template.magic.ICharmTemplate;
 import net.sf.anathema.character.generic.template.magic.IUniqueCharmType;
 import net.sf.anathema.character.generic.template.points.AttributeGroupPriority;
@@ -107,7 +107,7 @@ public class BonusPointManagement implements IBonusPointManagement {
   }
 
   private int calculateEssencePoints() {
-    FixedValueRatingCosts costs = new FixedValueRatingCosts(cost.getEssenceCost());
+    CurrentRatingCosts costs = cost.getEssenceCost();
     return TraitRatingCostCalculator.getTraitRatingCosts(essence.getZeroCalculationValue(), essence.getCreationValue(), costs);
   }
 
