@@ -41,16 +41,14 @@ public class GenericBonusPointCosts extends ReflectionCloneableObject<GenericBon
   private Map<String, Integer> favoredKeywordCosts;
 
   @Override
-  public int getCharmCosts(ICharm charm, ICostAnalyzer analyzer)
-  {
-	  boolean favored = analyzer.isMagicFavored(charm);
-	  for (ICharmAttribute attribute : charm.getAttributes())
-	  {
-		  Map<String, Integer> set = favored ? favoredKeywordCosts : generalKeywordCosts;
-		  if (set != null && set.get(attribute.getId()) != null)
-				  return set.get(attribute.getId());
-	   }
-	   return getCharmCosts(favored, analyzer.getMartialArtsLevel(charm));
+  public int getCharmCosts(ICharm charm, ICostAnalyzer analyzer) {
+    boolean favored = analyzer.isMagicFavored(charm);
+    for (ICharmAttribute attribute : charm.getAttributes()) {
+      Map<String, Integer> set = favored ? favoredKeywordCosts : generalKeywordCosts;
+      if (set != null && set.get(attribute.getId()) != null)
+        return set.get(attribute.getId());
+    }
+    return getCharmCosts(favored, analyzer.getMartialArtsLevel(charm));
   }
 
   @Override
@@ -98,7 +96,7 @@ public class GenericBonusPointCosts extends ReflectionCloneableObject<GenericBon
 
   private int getCharmCosts(boolean favored, MartialArtsLevel martialArtsLevel) {
     if (martialArtsLevel != null && (standardLevel.compareTo(martialArtsLevel) < 0 ||
-    		martialArtsLevel == MartialArtsLevel.Sidereal)) {
+            martialArtsLevel == MartialArtsLevel.Sidereal)) {
       return favored ? favoredHighLevelMartialArtsCharmCost : generalHighLevelMartialArtsCharmCost;
     }
     return favored ? favoredCharmCost : generalCharmCost;
@@ -177,12 +175,12 @@ public class GenericBonusPointCosts extends ReflectionCloneableObject<GenericBon
   }
 
   public void setCharmCosts(
-      int generalCharmCost,
-      int favoredCharmCost,
-      int generalHighLevelMartialArtsCost,
-      int favoredHighLevelMartialArtsCost,
-      Map<String, Integer> generalKeywordCosts,
-      Map<String, Integer> favoredKeywordCosts) {
+          int generalCharmCost,
+          int favoredCharmCost,
+          int generalHighLevelMartialArtsCost,
+          int favoredHighLevelMartialArtsCost,
+          Map<String, Integer> generalKeywordCosts,
+          Map<String, Integer> favoredKeywordCosts) {
     this.generalCharmCost = generalCharmCost;
     this.generalHighLevelMartialArtsCharmCost = generalHighLevelMartialArtsCost;
     this.favoredCharmCost = favoredCharmCost;
