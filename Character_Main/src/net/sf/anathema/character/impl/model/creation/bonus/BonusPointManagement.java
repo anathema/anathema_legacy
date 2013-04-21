@@ -2,6 +2,7 @@ package net.sf.anathema.character.impl.model.creation.bonus;
 
 import net.sf.anathema.character.generic.additionalrules.IAdditionalRules;
 import net.sf.anathema.character.generic.additionaltemplate.IAdditionalModel;
+import net.sf.anathema.character.generic.impl.template.points.FixedValueRatingCosts;
 import net.sf.anathema.character.generic.template.ICharacterTemplate;
 import net.sf.anathema.character.generic.template.creation.BonusPointCosts;
 import net.sf.anathema.character.generic.template.creation.ICreationPoints;
@@ -105,7 +106,9 @@ public class BonusPointManagement implements IBonusPointManagement {
   }
 
   private int calculateEssencePoints() {
-    return (essence.getCreationValue() - essence.getZeroCalculationValue()) * cost.getEssenceCost();
+    FixedValueRatingCosts costs = new FixedValueRatingCosts(cost.getEssenceCost());
+    int increaseOverStartingValue = essence.getCreationValue() - essence.getZeroCalculationValue();
+    return costs.getRatingCosts(increaseOverStartingValue);
   }
 
   private int calculateWillpowerPoints() {
@@ -126,8 +129,8 @@ public class BonusPointManagement implements IBonusPointManagement {
 
   private int getTotalBonusPointsSpent() {
     return attributeCalculator.getBonusPoints() + getDefaultAbilityModel().getSpentBonusPoints() + abilityCalculator.getSpecialtyBonusPointCosts() +
-           getDefaultCharmModel().getSpentBonusPoints() + getBackgroundModel().getSpentBonusPoints() + getVirtueModel().getSpentBonusPoints() +
-           willpowerBonusPoints + essenceBonusPoints + bonusPointCalculator.getAdditionalModelModel().getValue();
+            getDefaultCharmModel().getSpentBonusPoints() + getBackgroundModel().getSpentBonusPoints() + getVirtueModel().getSpentBonusPoints() +
+            willpowerBonusPoints + essenceBonusPoints + bonusPointCalculator.getAdditionalModelModel().getValue();
   }
 
   private ISpendingModel getVirtueModel() {
