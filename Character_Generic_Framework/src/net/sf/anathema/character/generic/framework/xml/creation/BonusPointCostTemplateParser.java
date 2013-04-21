@@ -116,7 +116,7 @@ public class BonusPointCostTemplateParser extends AbstractXmlTemplateParser<Gene
     if (essenceElement == null) {
       return;
     }
-    CurrentRatingCosts essenceCost = new CostParser().getCosts(essenceElement);
+    CurrentRatingCosts essenceCost = costParser.getCosts(essenceElement);
     costs.setEssenceCosts(essenceCost);
   }
 
@@ -147,7 +147,7 @@ public class BonusPointCostTemplateParser extends AbstractXmlTemplateParser<Gene
     if (backgroundElement == null) {
       return;
     }
-    CurrentRatingCosts cost = new CostParser().getThresholdRatingCosts(backgroundElement);
+    CurrentRatingCosts cost = costParser.getThresholdRatingCosts(backgroundElement);
     costs.setBackgroundCosts(cost);
   }
 
