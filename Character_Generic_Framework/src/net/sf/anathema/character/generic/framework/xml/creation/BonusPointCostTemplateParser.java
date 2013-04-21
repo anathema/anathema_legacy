@@ -3,7 +3,6 @@ package net.sf.anathema.character.generic.framework.xml.creation;
 import net.sf.anathema.character.generic.framework.xml.core.AbstractXmlTemplateParser;
 import net.sf.anathema.character.generic.framework.xml.registry.IXmlTemplateRegistry;
 import net.sf.anathema.character.generic.framework.xml.util.CostParser;
-import net.sf.anathema.character.generic.impl.template.points.FixedValueRatingCosts;
 import net.sf.anathema.character.generic.magic.charms.MartialArtsLevel;
 import net.sf.anathema.character.generic.template.experience.CurrentRatingCosts;
 import net.sf.anathema.lib.exception.PersistenceException;
@@ -117,8 +116,8 @@ public class BonusPointCostTemplateParser extends AbstractXmlTemplateParser<Gene
     if (essenceElement == null) {
       return;
     }
-    int fixedCost = costParser.getFixedCostFromRequiredElement(element, TAG_ESSENCE);
-    costs.setEssenceCosts(new FixedValueRatingCosts(fixedCost));
+    CurrentRatingCosts essenceCost = new CostParser().getFixedCost(essenceElement);
+    costs.setEssenceCosts(essenceCost);
   }
 
   private void setWillpowerCosts(Element element, GenericBonusPointCosts costs) throws PersistenceException {
@@ -135,12 +134,12 @@ public class BonusPointCostTemplateParser extends AbstractXmlTemplateParser<Gene
     if (virtueElement == null) {
       return;
     }
-    int fixedCost = costParser.getFixedCostFromRequiredElement(element, TAG_VIRTUES);
+    CurrentRatingCosts virtueCost = costParser.getFixedCost(virtueElement);
+    costs.setVirtueCosts(virtueCost);
     Element maximumFreeRank = virtueElement.element(TAG_MAXIMUM_FREE_VIRTUE_RANK);
     if (maximumFreeRank != null) {
       costs.setMaximumFreeVirtueRank(ElementUtilities.getRequiredIntAttrib(maximumFreeRank, ATTRIB_RANK));
     }
-    costs.setVirtueCosts(fixedCost);
   }
 
   private void setBackgroundCosts(Element element, GenericBonusPointCosts costs) throws PersistenceException {

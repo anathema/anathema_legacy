@@ -1,5 +1,6 @@
 package net.sf.anathema.character.generic.framework.xml.util;
 
+import net.sf.anathema.character.generic.impl.template.points.FixedValueRatingCosts;
 import net.sf.anathema.character.generic.impl.template.points.MultiplyRatingCosts;
 import net.sf.anathema.character.generic.impl.template.points.ThresholdRatingCosts;
 import net.sf.anathema.character.generic.template.experience.CurrentRatingCosts;
@@ -15,20 +16,19 @@ public class CostParser {
   private static final String TAG_FIXED_COST = "fixedCost";
   private static final String ATTRIB_COST = "cost";
 
+  private static final String TAG_CURRENT_RATING_COSTS = "currentRating";
   private static final String ATTRIB_INITIALCOST = "initialCosts";
   private static final String ATTRIB_MULTIPLIER = "multiplier";
   private static final String ATTRIB_SUMMAND = "summand";
-  private static final String TAG_CURRENT_RATING_COSTS = "currentRating";
 
   private static final String TAG_THRESHOLD_COST = "thresholdCost";
-  private static final String ATTRIB_LOW_COST= "lowCost";
-  private static final String ATTRIB_HIGH_COST= "highCost";
-  private static final String ATTRIB_THRESHOLD= "threshold";
+  private static final String ATTRIB_LOW_COST = "lowCost";
+  private static final String ATTRIB_HIGH_COST = "highCost";
+  private static final String ATTRIB_THRESHOLD = "threshold";
 
   public int getFixedCostFromRequiredElement(Element element, String elementName) throws PersistenceException {
     Element parentElement = getRequiredElement(element, elementName);
-    Element fixedCostElement = getRequiredElement(parentElement, TAG_FIXED_COST);
-    return getRequiredIntAttrib(fixedCostElement, ATTRIB_COST);
+    return getFixedCostValue(parentElement);
   }
 
   public int getFixedCostFromOptionalElement(Element element, String elementName, int defaultValue)
@@ -37,8 +37,7 @@ public class CostParser {
     if (parentElement == null) {
       return defaultValue;
     }
-    Element fixedCostElement = getRequiredElement(parentElement, TAG_FIXED_COST);
-    return getRequiredIntAttrib(fixedCostElement, ATTRIB_COST);
+    return getFixedCostValue(parentElement);
   }
 
   public CurrentRatingCosts getMultiplyRatingCostsFromRequiredElement(Element parentElement, String tagName)
@@ -61,5 +60,15 @@ public class CostParser {
     int highCost = getRequiredIntAttrib(costElement, ATTRIB_HIGH_COST);
     int threshold = getRequiredIntAttrib(costElement, ATTRIB_THRESHOLD);
     return new ThresholdRatingCosts(lowCost, highCost, threshold);
+  }
+
+  public CurrentRatingCosts getFixedCost(Element parentElement) {
+    int fixedCost = getFixedCostValue(parentElement);
+    return new FixedValueRatingCosts(fixedCost);
+  }
+
+  private int getFixedCostValue(Element parentElement) {
+    Element fixedCostElement = getRequiredElement(parentElement, TAG_FIXED_COST);
+    return getRequiredIntAttrib(fixedCostElement, ATTRIB_COST);
   }
 }
