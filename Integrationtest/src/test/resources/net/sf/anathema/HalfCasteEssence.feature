@@ -2,12 +2,12 @@
 Feature: Half-Caste and God-Blooded pay extra for Essence
 
   Scenario: Essence 2 costs extra at character creation
-    Given a new Lunar using rules for HalfCasteLunar
+    Given a new God-Blooded of any kind
     When I set her Essence to 2
     Then she has spent 12 bonus points
 
   Scenario: Essence 3 costs extra at character creation
-    Given a new Lunar using rules for HalfCasteLunar
+    Given a new God-Blooded of any kind
     When I set her Essence to 3
     Then she has spent 27 bonus points
 

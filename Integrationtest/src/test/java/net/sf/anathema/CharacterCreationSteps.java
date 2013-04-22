@@ -41,6 +41,12 @@ public class CharacterCreationSteps {
     holder.setCharacter(createCharacter(characterTemplate));
   }
 
+  @Given("^a new God-Blooded of any kind$")
+  public void I_create_a_new_god_blooded() throws Throwable {
+    ICharacterTemplate characterTemplate = loadTemplateForType("Lunar", "HalfCasteLunar");
+    holder.setCharacter(createCharacter(characterTemplate));
+  }
+
   @Given("^a new (.*) using rules for (.*)$")
   public void I_create_a_new_character_with_subtype(String type, String subtype) throws Throwable {
     ICharacterTemplate characterTemplate = loadTemplateForType(type, subtype);
