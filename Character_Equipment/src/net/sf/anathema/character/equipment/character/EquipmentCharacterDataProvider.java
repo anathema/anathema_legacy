@@ -50,6 +50,7 @@ public class EquipmentCharacterDataProvider implements IEquipmentCharacterDataPr
       case Variable:
         return materialRules.getAttunementTypes(getCharacterType(), material);
       case Compound:
+      case OtherWondrous:
         return new ArtifactAttuneType[]{Unattuned, ArtifactAttuneType.FullyAttuned};
       case MalfeanMaterials:
         return createMalfeanMaterialsAttunementOptions();

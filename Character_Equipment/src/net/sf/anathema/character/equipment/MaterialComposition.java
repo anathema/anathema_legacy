@@ -32,6 +32,12 @@ public enum MaterialComposition implements Identified {
     public boolean requiresMaterial() {
       return false;
     }
+  },
+  OtherWondrous(){
+    @Override
+    public boolean requiresMaterial() {
+      return false;
+    }
   };
 
   @Override
