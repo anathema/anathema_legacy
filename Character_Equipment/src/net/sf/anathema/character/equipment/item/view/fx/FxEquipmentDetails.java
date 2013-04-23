@@ -44,7 +44,7 @@ public class FxEquipmentDetails implements EquipmentDetails {
       public void run() {
         Node node = listView.getNode();
         BorderedTitledPane titledPane = BorderedTitledPane.Create(title, node);
-        outerPane.add(titledPane, new CC().pushX().grow());
+        outerPane.add(titledPane, new CC().pushX().grow().split(2));
         outerPane.add(editorPane);
       }
     });

@@ -1,6 +1,8 @@
 package net.sf.anathema.character.equipment.item;
 
 import com.google.common.eventbus.EventBus;
+import com.google.common.eventbus.Subscribe;
+import net.sf.anathema.character.equipment.item.events.ViewShouldShow;
 import net.sf.anathema.character.equipment.item.model.IEquipmentDatabaseManagement;
 import net.sf.anathema.character.equipment.item.model.IEquipmentTemplateEditModel;
 import net.sf.anathema.character.equipment.item.view.EquipmentDetails;
@@ -40,13 +42,13 @@ public class EquipmentEditStatsPresenter implements Presenter {
     statsListView.addListSelectionListener(new Runnable() {
       @Override
       public void run() {
-        updateEditor(statsListView.getSelectedItems());
+        updateEditor(statsListView, statsListView.getSelectedItems());
       }
     });
     initButtons(statsListView);
   }
 
-  private void updateEditor(List<IEquipmentStats> selectedItems) {
+  private void updateEditor(final ToolListView<IEquipmentStats> statsListView, List<IEquipmentStats> selectedItems) {
     view.hideEditor();
     if (selectedItems.size() != 1) {
       return;
@@ -55,10 +57,16 @@ public class EquipmentEditStatsPresenter implements Presenter {
     if (!(currentStats instanceof MutableArtifactStats)) {
       return;
     }
-    EventBus eventBus = new EventBus();
+    final EventBus eventBus = new EventBus();
     ArtifactEditor editor = (ArtifactEditor) view.showEditorFor(Artifact, resources);
     editor.registerOn(eventBus);
     new ArtifactEditPresenter((MutableArtifactStats) currentStats, eventBus).initPresentation();
+    eventBus.register(new Object() {
+      @Subscribe
+      public void updateList(ViewShouldShow data) {
+        statsListView.refresh();
+      }
+    });
   }
 
   private void initButtons(ToolListView<IEquipmentStats> statsListView) {
