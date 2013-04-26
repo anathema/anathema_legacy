@@ -93,5 +93,4 @@ public class FxToolListView<T> implements ToolListView<T> {
       }
     }
   }
-
 }
