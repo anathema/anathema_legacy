@@ -19,7 +19,7 @@ import net.sf.anathema.character.equipment.template.IEquipmentTemplate;
 import net.sf.anathema.character.generic.additionaltemplate.AbstractAdditionalModelAdapter;
 import net.sf.anathema.character.generic.additionaltemplate.AdditionalModelType;
 import net.sf.anathema.character.generic.character.IGenericCharacter;
-import net.sf.anathema.character.generic.equipment.IArtifactStats;
+import net.sf.anathema.character.generic.equipment.ArtifactStats;
 import net.sf.anathema.character.generic.equipment.ICharacterStatsModifiers;
 import net.sf.anathema.character.generic.equipment.weapon.IArmourStats;
 import net.sf.anathema.character.generic.equipment.weapon.IEquipmentStats;
@@ -249,9 +249,14 @@ public class EquipmentAdditionalModel extends AbstractAdditionalModelAdapter imp
   @Override
   public void removeItem(IEquipmentItem item) {
     equipmentItems.remove(item);
-    equipmentItemControl.announce().itemRemoved(item);
+    announce().itemRemoved(item);
     item.removeChangeListener(itemChangePropagator);
     fireModelChanged();
+  }
+
+  @SuppressWarnings("unchecked")
+  private ICollectionListener<IEquipmentItem> announce() {
+    return equipmentItemControl.announce();
   }
 
   @Override
@@ -278,7 +283,7 @@ public class EquipmentAdditionalModel extends AbstractAdditionalModelAdapter imp
   }
 
   private void announceItemAndListenForChanges(IEquipmentItem refreshedItem) {
-    equipmentItemControl.announce().itemAdded(refreshedItem);
+    announce().itemAdded(refreshedItem);
     refreshedItem.addChangeListener(itemChangePropagator);
     fireModelChanged();
   }
@@ -317,8 +322,8 @@ public class EquipmentAdditionalModel extends AbstractAdditionalModelAdapter imp
     int total = 0;
     for (IEquipmentItem item : equipmentItems) {
       for (IEquipmentStats stats : item.getStats())
-        if (stats instanceof IArtifactStats && item.getAttunementState() == ((IArtifactStats) stats).getAttuneType())
-          total += ((IArtifactStats) stats).getAttuneCost();
+        if (stats instanceof ArtifactStats && item.getAttunementState() == ((ArtifactStats) stats).getAttuneType())
+          total += ((ArtifactStats) stats).getAttuneCost();
     }
     return total;
   }

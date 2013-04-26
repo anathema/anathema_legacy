@@ -13,7 +13,7 @@ import net.sf.anathema.character.equipment.impl.character.model.stats.modificati
 import net.sf.anathema.character.equipment.impl.character.model.stats.modification.ReactiveBaseMaterial;
 import net.sf.anathema.character.equipment.template.IEquipmentTemplate;
 import net.sf.anathema.character.generic.equipment.ArtifactAttuneType;
-import net.sf.anathema.character.generic.equipment.IArtifactStats;
+import net.sf.anathema.character.generic.equipment.ArtifactStats;
 import net.sf.anathema.character.generic.equipment.weapon.IArmourStats;
 import net.sf.anathema.character.generic.equipment.weapon.IEquipmentStats;
 import net.sf.anathema.character.generic.equipment.weapon.IWeaponStats;
@@ -92,8 +92,8 @@ public class EquipmentItem implements IEquipmentItem {
     for (IEquipmentStats stats : statsArray) {
       if (stats instanceof IWeaponStats) {
         Collections.addAll(views, ((IWeaponStats) stats).getViews());
-      } else if (stats instanceof IArtifactStats) {
-        Collections.addAll(views, ((IArtifactStats) stats).getViews());
+      } else if (stats instanceof ArtifactStats) {
+        Collections.addAll(views, ((ArtifactStats) stats).getViews());
       }
       else {
         views.add(stats);
@@ -125,9 +125,9 @@ public class EquipmentItem implements IEquipmentItem {
   @Override
   public ArtifactAttuneType getAttunementState() {
     for (IEquipmentStats stats : getViews()) {
-      if (stats instanceof IArtifactStats) {
+      if (stats instanceof ArtifactStats) {
         if (isPrintEnabled(stats)) {
-          return ((IArtifactStats) stats).getAttuneType();
+          return ((ArtifactStats) stats).getAttuneType();
         }
       }
     }
@@ -205,12 +205,12 @@ public class EquipmentItem implements IEquipmentItem {
   }
 
   private void initPrintStats(ItemAttunementEvaluator provider) {
-    IArtifactStats bestAttune = null;
+    ArtifactStats bestAttune = null;
     for (IEquipmentStats stat : getViews()) {
-      if (stat instanceof IArtifactStats) {
-        if (hasAttunementType((IArtifactStats) stat, provider.getAttuneTypes(
-                this)) && (bestAttune == null || ((IArtifactStats) stat).getAttuneType().compareTo(
-                bestAttune.getAttuneType()) > 0)) bestAttune = (IArtifactStats) stat;
+      if (stat instanceof ArtifactStats) {
+        if (hasAttunementType((ArtifactStats) stat, provider.getAttuneTypes(
+                this)) && (bestAttune == null || ((ArtifactStats) stat).getAttuneType().compareTo(
+                bestAttune.getAttuneType()) > 0)) bestAttune = (ArtifactStats) stat;
         continue;
       }
       printedStats.add(stat);
@@ -218,7 +218,7 @@ public class EquipmentItem implements IEquipmentItem {
     if (bestAttune != null) printedStats.add(bestAttune);
   }
 
-  private boolean hasAttunementType(IArtifactStats stats, ArtifactAttuneType[] types) {
+  private boolean hasAttunementType(ArtifactStats stats, ArtifactAttuneType[] types) {
     for (ArtifactAttuneType type : types) {
       if (type.equals(stats.getAttuneType())) {
         return true;

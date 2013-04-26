@@ -1,7 +1,7 @@
 package net.sf.anathema.character.equipment.character;
 
 import net.sf.anathema.character.equipment.character.model.IEquipmentItem;
-import net.sf.anathema.character.generic.equipment.IArtifactStats;
+import net.sf.anathema.character.generic.equipment.ArtifactStats;
 import net.sf.anathema.character.generic.equipment.ITraitModifyingStats;
 import net.sf.anathema.character.generic.equipment.weapon.IArmourStats;
 import net.sf.anathema.character.generic.equipment.weapon.IEquipmentStats;
@@ -78,14 +78,14 @@ public class EquipmentStringBuilder implements IEquipmentStringBuilder {
     if (equipment instanceof IShieldStats) {
       return createShieldString((IShieldStats) equipment);
     }
-    if (equipment instanceof IArtifactStats)
-      return createArtifactString((IArtifactStats) equipment);
+    if (equipment instanceof ArtifactStats)
+      return createArtifactString((ArtifactStats) equipment);
     if (equipment instanceof ITraitModifyingStats)
       return createTraitModifyingString((ITraitModifyingStats) equipment);
     throw new UnreachableCodeReachedException("All subclasses covered. Something appears to be wrong.");
   }
 
-  private String createArtifactString(IArtifactStats stats) {
+  private String createArtifactString(ArtifactStats stats) {
     StringBuilder stringBuilder = new StringBuilder();
     stringBuilder.append(getStatsString(stats.getAttuneType().name(), stats.getAttuneCost(), false));
     stringBuilder.append("m");

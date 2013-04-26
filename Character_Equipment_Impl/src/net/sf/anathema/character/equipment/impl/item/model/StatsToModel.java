@@ -9,7 +9,7 @@ import net.sf.anathema.character.equipment.creation.model.stats.IWeaponTagsModel
 import net.sf.anathema.character.equipment.impl.creation.model.EquipmentStatisticsCreationModel;
 import net.sf.anathema.character.equipment.impl.creation.model.WeaponTag;
 import net.sf.anathema.character.equipment.item.model.EquipmentStatisticsType;
-import net.sf.anathema.character.generic.equipment.IArtifactStats;
+import net.sf.anathema.character.generic.equipment.ArtifactStats;
 import net.sf.anathema.character.generic.equipment.ITraitModifyingStats;
 import net.sf.anathema.character.generic.equipment.weapon.IArmourStats;
 import net.sf.anathema.character.generic.equipment.weapon.IEquipmentStats;
@@ -47,8 +47,8 @@ public class StatsToModel {
       armourModel.getAggravatedSoakModel().setValue(armourStats.getSoak(HealthType.Aggravated));
       armourModel.getFatigueModel().setValue(armourStats.getFatigue());
       armourModel.getMobilityPenaltyModel().setValue(armourStats.getMobilityPenalty());
-    } else if (stats instanceof IArtifactStats) {
-      IArtifactStats artifactStats = (IArtifactStats) stats;
+    } else if (stats instanceof ArtifactStats) {
+      ArtifactStats artifactStats = (ArtifactStats) stats;
       model.setEquipmentType(Artifact);
       IArtifactStatisticsModel artifactModel = model.getArtifactStatisticsModel();
       artifactModel.getName().setText(artifactStats.getName().getId());

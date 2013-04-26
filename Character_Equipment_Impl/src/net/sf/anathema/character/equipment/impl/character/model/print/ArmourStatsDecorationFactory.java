@@ -1,7 +1,7 @@
 package net.sf.anathema.character.equipment.impl.character.model.print;
 
 import net.sf.anathema.character.equipment.character.model.IEquipmentItem;
-import net.sf.anathema.character.generic.equipment.IArtifactStats;
+import net.sf.anathema.character.generic.equipment.ArtifactStats;
 import net.sf.anathema.character.generic.equipment.weapon.IArmourStats;
 import net.sf.anathema.character.generic.equipment.weapon.IEquipmentStats;
 import net.sf.anathema.character.generic.health.HealthType;
@@ -21,7 +21,7 @@ public class ArmourStatsDecorationFactory implements IEquipmentStatsDecorationFa
   private int getListedStats(IEquipmentItem item) {
     int listedStats = 0;
     for (IEquipmentStats stats : item.getStats()) {
-      if (stats instanceof IArtifactStats) continue;
+      if (stats instanceof ArtifactStats) continue;
       listedStats++;
     }
     return listedStats;

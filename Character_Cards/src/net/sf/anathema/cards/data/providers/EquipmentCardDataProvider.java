@@ -12,7 +12,7 @@ import net.sf.anathema.character.equipment.character.IEquipmentStringBuilder;
 import net.sf.anathema.character.equipment.character.model.IEquipmentAdditionalModel;
 import net.sf.anathema.character.equipment.character.model.IEquipmentItem;
 import net.sf.anathema.character.generic.equipment.ArtifactAttuneType;
-import net.sf.anathema.character.generic.equipment.IArtifactStats;
+import net.sf.anathema.character.generic.equipment.ArtifactStats;
 import net.sf.anathema.character.generic.equipment.weapon.IEquipmentStats;
 import net.sf.anathema.character.model.ICharacter;
 import net.sf.anathema.lib.resources.Resources;
@@ -74,8 +74,8 @@ public class EquipmentCardDataProvider implements ICardDataProvider {
       }
       for (IEquipmentStats stats : item.getStats()) {
         Paragraph statsParagraph = new Paragraph();
-        if (stats instanceof IArtifactStats) {
-          IArtifactStats artifactStats = (IArtifactStats) stats;
+        if (stats instanceof ArtifactStats) {
+          ArtifactStats artifactStats = (ArtifactStats) stats;
           if (artifactStats.getAttuneType() != ArtifactAttuneType.FullyAttuned) {
             continue;
           }

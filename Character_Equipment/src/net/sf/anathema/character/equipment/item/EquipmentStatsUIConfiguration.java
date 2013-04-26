@@ -1,7 +1,7 @@
 package net.sf.anathema.character.equipment.item;
 
 import net.sf.anathema.character.equipment.character.EquipmentStringBuilder;
-import net.sf.anathema.character.generic.equipment.IArtifactStats;
+import net.sf.anathema.character.generic.equipment.ArtifactStats;
 import net.sf.anathema.character.generic.equipment.ITraitModifyingStats;
 import net.sf.anathema.character.generic.equipment.weapon.IArmourStats;
 import net.sf.anathema.character.generic.equipment.weapon.IEquipmentStats;
@@ -29,7 +29,7 @@ public class EquipmentStatsUIConfiguration implements AgnosticUIConfiguration<IE
     if (value instanceof IArmourStats) {
       return new RelativePath("icons/Armor16.png");
     }
-    if (value instanceof IArtifactStats) {
+    if (value instanceof ArtifactStats) {
       return new RelativePath("icons/Artifact16.png");
     }
     if (value instanceof ITraitModifyingStats) {

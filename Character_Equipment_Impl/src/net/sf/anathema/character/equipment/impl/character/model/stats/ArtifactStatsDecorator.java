@@ -1,15 +1,15 @@
 package net.sf.anathema.character.equipment.impl.character.model.stats;
 
 import net.sf.anathema.character.generic.equipment.ArtifactAttuneType;
-import net.sf.anathema.character.generic.equipment.IArtifactStats;
+import net.sf.anathema.character.generic.equipment.ArtifactStats;
 import net.sf.anathema.character.generic.equipment.weapon.IEquipmentStats;
 
-public class ArtifactStatsDecorator extends AbstractStats implements IArtifactStats {
-  private IArtifactStats stats;
+public class ArtifactStatsDecorator extends AbstractStats implements ArtifactStats {
+  private ArtifactStats stats;
   private ArtifactAttuneType type;
   private boolean requireAttune;
 
-  public ArtifactStatsDecorator(IArtifactStats stats, ArtifactAttuneType type, boolean requireAttune) {
+  public ArtifactStatsDecorator(net.sf.anathema.character.generic.equipment.ArtifactStats stats, ArtifactAttuneType type, boolean requireAttune) {
     this.stats = stats;
     this.type = type;
     this.requireAttune = requireAttune;

@@ -5,7 +5,7 @@ import net.sf.anathema.character.equipment.character.model.IEquipmentItem;
 import net.sf.anathema.character.equipment.character.model.IEquipmentStatsOption;
 import net.sf.anathema.character.equipment.character.view.IEquipmentObjectView;
 import net.sf.anathema.character.generic.equipment.ArtifactAttuneType;
-import net.sf.anathema.character.generic.equipment.IArtifactStats;
+import net.sf.anathema.character.generic.equipment.ArtifactStats;
 import net.sf.anathema.character.generic.equipment.weapon.IEquipmentStats;
 import net.sf.anathema.character.generic.equipment.weapon.IWeaponStats;
 import net.sf.anathema.character.generic.traits.INamedGenericTrait;
@@ -74,11 +74,11 @@ public class EquipmentObjectPresenter implements Presenter {
     boolean isRequireAttuneArtifact = false;
     boolean isAttuned = false;
     for (final IEquipmentStats equipment : model.getStats()) {
-      if (equipment instanceof IArtifactStats)
-        isRequireAttuneArtifact = isRequireAttuneArtifact || ((IArtifactStats) equipment).requireAttunementToUse();
+      if (equipment instanceof ArtifactStats)
+        isRequireAttuneArtifact = isRequireAttuneArtifact || ((ArtifactStats) equipment).requireAttunementToUse();
       if (!viewFilter(equipment)) continue;
       final BooleanModel booleanModel = view.addStats(createEquipmentDescription(model, equipment));
-      if (equipment instanceof IArtifactStats) {
+      if (equipment instanceof ArtifactStats) {
         attuneStatFlags.put(equipment, booleanModel);
         if (model.isPrintEnabled(equipment)) {
           isAttuned = true;
@@ -91,7 +91,7 @@ public class EquipmentObjectPresenter implements Presenter {
         @Override
         public void changeOccurred() {
           model.setPrintEnabled(equipment, booleanModel.getValue());
-          if (equipment instanceof IArtifactStats) {
+          if (equipment instanceof ArtifactStats) {
             // if we are enabling an attunement stats ...
             if (booleanModel.getValue()) {
               // disable all other attunement stats
@@ -144,8 +144,8 @@ public class EquipmentObjectPresenter implements Presenter {
 
   private boolean viewFilter(IEquipmentStats equipment) {
     boolean match;
-    if (equipment instanceof IArtifactStats) {
-      IArtifactStats stats = (IArtifactStats) equipment;
+    if (equipment instanceof ArtifactStats) {
+      ArtifactStats stats = (ArtifactStats) equipment;
       match = false;
       if (dataProvider.getAttuneTypes(model) != null) for (ArtifactAttuneType type : dataProvider.getAttuneTypes(model))
         if (stats.getAttuneType() == type) match = true;
