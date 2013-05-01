@@ -33,6 +33,7 @@ leading us to the assumption that not many of you used it.
 * Durations of the Until...-type are properly shown once more.
 * Corrects cost of [Solar/Resistance] "Spirit Strengthens the Skin"
 * Corrects the cost of Essence dots for God-Blooded and their ilk both during creation and play.
+* Corrects the description of [Solar/Archery] "Essence Arrow Attack".
 
 ## Release 5.0.1
 
