@@ -16,6 +16,7 @@ leading us to the assumption that not many of you used it.
 * New navigation
 * New UI for Name Generator
 * New UI for Characters
+* New UI for Equipment Database
 * Windowed mode defaults to a 16:9 resolution
 * Abyssal "Withering Phantasmagoria" and its Solar Mirror offer subeffects.
 * Customizers can now define the threshold that triggers the high BP cost for Backgrounds.

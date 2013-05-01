@@ -56,7 +56,7 @@ public class AnimaTableEncoder extends AbstractTableEncoder<ReportSession> {
       table.addCell(createHeaderCell(graphics, getString(column.getHeaderKey())));
     }
     ICharacterType type = session.getCharacter().getTemplate().getTemplateType().getCharacterType();
-    String descriptionPrefix = "Sheet.AnimaTable.Description." + type;
+    String descriptionPrefix = "Sheet.AnimaTable.Description." + type.getId();
     for (int index = 0; index < 5; index++) {
       addAnimaRow(graphics, table, index, session, descriptionPrefix);
     }
