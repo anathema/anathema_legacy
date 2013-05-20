@@ -7,6 +7,8 @@ import net.sf.anathema.character.model.charm.ILearningCharmGroup;
 import net.sf.anathema.lib.util.Identified;
 import org.dom4j.Element;
 
+import java.util.*;
+
 import static net.sf.anathema.character.impl.persistence.ICharacterXmlConstants.ATTRIB_EXPERIENCE_LEARNED;
 import static net.sf.anathema.character.impl.persistence.ICharacterXmlConstants.ATTRIB_NAME;
 import static net.sf.anathema.character.impl.persistence.ICharacterXmlConstants.ATTRIB_TYPE;
@@ -28,7 +30,9 @@ public class CharmSaver {
   }
 
   public void saveCharms(Identified type, Element charmsElement) {
-    for (ILearningCharmGroup group : charmConfiguration.getCharmGroups(type)) {
+    ILearningCharmGroup[] charmGroups = charmConfiguration.getCharmGroups(type);
+    Arrays.sort(charmGroups, new IdentifiedComparator());
+    for (ILearningCharmGroup group : charmGroups) {
       if (group.hasLearnedCharms()) {
         saveCharmGroup(charmsElement, group, specialPersister, charmConfiguration);
       }
@@ -40,11 +44,19 @@ public class CharmSaver {
     Element groupElement = charmsElement.addElement(TAG_CHARMGROUP);
     groupElement.addAttribute(ATTRIB_NAME, group.getId());
     groupElement.addAttribute(ATTRIB_TYPE, group.getCharacterType().getId());
+    HashMap<String, Boolean> isExperiencedLearned = new HashMap<>();
+    List<ICharm> charms = new ArrayList<>();
     for (ICharm charm : group.getCreationLearnedCharms()) {
-      saveCharm(charmConfiguration, specialPersister, groupElement, charm, false);
+      isExperiencedLearned.put(charm.getId(), false);
+      charms.add(charm);
     }
     for (ICharm charm : group.getExperienceLearnedCharms()) {
-      saveCharm(charmConfiguration, specialPersister, groupElement, charm, true);
+      isExperiencedLearned.put(charm.getId(), true);
+      charms.add(charm);
+    }
+    Collections.sort(charms, new IdentifiedComparator());
+    for(ICharm charm : charms) {
+      saveCharm(charmConfiguration, specialPersister, groupElement, charm, isExperiencedLearned.get(charm.getId()));
     }
   }
 
