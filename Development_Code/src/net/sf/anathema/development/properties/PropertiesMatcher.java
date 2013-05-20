@@ -1,6 +1,5 @@
 package net.sf.anathema.development.properties;
 
-import com.l2fprod.common.swing.JDirectoryChooser;
 import net.sf.anathema.framework.presenter.action.SupportedLocale;
 import net.sf.anathema.lib.io.PathUtils;
 
@@ -26,7 +25,8 @@ public class PropertiesMatcher {
   public static void main(String[] args) throws IOException {
     SupportedLocale locale = (SupportedLocale) JOptionPane.showInputDialog(null, "Choose Locale:", "Locale",
             JOptionPane.QUESTION_MESSAGE, null, SupportedLocale.values(), null);
-    JDirectoryChooser chooser = new JDirectoryChooser();
+    JFileChooser chooser = new JFileChooser();
+    chooser.setFileSelectionMode(JFileChooser.DIRECTORIES_ONLY);
     if (chooser.showOpenDialog(null) != JFileChooser.APPROVE_OPTION) {
       return;
     }
