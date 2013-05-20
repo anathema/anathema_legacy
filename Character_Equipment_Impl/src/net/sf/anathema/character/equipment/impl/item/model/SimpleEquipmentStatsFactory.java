@@ -3,7 +3,9 @@ package net.sf.anathema.character.equipment.impl.item.model;
 import net.sf.anathema.character.equipment.MaterialComposition;
 import net.sf.anathema.character.equipment.creation.model.stats.IEquipmentStatisticsCreationModel;
 import net.sf.anathema.character.equipment.creation.model.stats.IEquipmentStatisticsModel;
+import net.sf.anathema.character.equipment.creation.model.stats.IWeaponTag;
 import net.sf.anathema.character.equipment.impl.creation.model.EquipmentStatisticsCreationModel;
+import net.sf.anathema.character.equipment.impl.creation.model.WeaponTag;
 import net.sf.anathema.character.equipment.item.model.EquipmentStatisticsType;
 import net.sf.anathema.character.equipment.item.model.EquipmentStatsFactory;
 import net.sf.anathema.character.generic.equipment.weapon.IEquipmentStats;
@@ -27,7 +29,14 @@ public class SimpleEquipmentStatsFactory implements EquipmentStatsFactory {
     model.setEquipmentType(type);
     String finalName = createUniqueName(nameProposal, model);
     setNameOnCorrectModel(model, finalName);
+    ensureModelIsValid(model);
     return modelToStats.createStats(model);
+  }
+
+  private void ensureModelIsValid(IEquipmentStatisticsCreationModel model) {
+    if (model.getEquipmentType() == EquipmentStatisticsType.RangedCombat) {
+      model.getWeaponTagsModel().getSelectedModel(WeaponTag.BowType).setValue(true);
+    }
   }
 
   private void setNameOnCorrectModel(IEquipmentStatisticsCreationModel model, String finalName) {
