@@ -3,15 +3,12 @@ package net.sf.anathema.character.equipment.item.view.fx;
 import javafx.application.Platform;
 import javafx.scene.Node;
 import net.miginfocom.layout.CC;
-import net.sf.anathema.character.equipment.item.model.EquipmentStatisticsType;
 import net.sf.anathema.character.equipment.item.view.EquipmentDescriptionPanel;
 import net.sf.anathema.character.equipment.item.view.EquipmentDetails;
-import net.sf.anathema.character.equipment.item.view.NewStatsEditor;
 import net.sf.anathema.character.equipment.item.view.ToolListView;
 import net.sf.anathema.character.generic.equipment.weapon.IEquipmentStats;
 import net.sf.anathema.lib.gui.AgnosticUIConfiguration;
 import net.sf.anathema.lib.gui.layout.LayoutUtils;
-import net.sf.anathema.lib.resources.Resources;
 import net.sf.anathema.platform.fx.BorderedTitledPane;
 import org.tbee.javafx.scene.layout.MigPane;
 
@@ -61,22 +58,5 @@ public class FxEquipmentDetails implements EquipmentDetails {
       }
     });
     return descriptionPanel;
-  }
-
-  @Override
-  public void hideEditor() {
-    editorPane.getChildren().clear();
-  }
-
-  @Override
-  public NewStatsEditor showEditorFor(EquipmentStatisticsType type, Resources resources) {
-    final FxArtifactEditor editor = new FxArtifactEditor(resources);
-    Platform.runLater(new Runnable() {
-      @Override
-      public void run() {
-        editorPane.add(editor.getNode(), new CC().grow().pushX());
-      }
-    });
-    return editor;
   }
 }
