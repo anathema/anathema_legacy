@@ -20,6 +20,7 @@ leading us to the assumption that not many of you used it.
 * Windowed mode defaults to a 16:9 resolution
 * Abyssal "Withering Phantasmagoria" and its Solar Mirror offer subeffects.
 * Adds a new material composition: "Other Wondrous Material", symbolizing everything not covered by the previous entries.
+* [Alessio Caiazza] helps us by keeping the order of data in save files stable.
 * Customizers can now define the threshold that triggers the high BP cost for Backgrounds.
   As long as the background is lower than or equal to the threshold, Anathema will apply the low cost,
   when it's greater than the threshold, it will apply the high cost.
