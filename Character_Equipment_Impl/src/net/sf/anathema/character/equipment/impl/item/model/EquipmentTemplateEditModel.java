@@ -76,13 +76,13 @@ public class EquipmentTemplateEditModel implements IEquipmentTemplateEditModel {
     getDescription().getName().setText(null);
     getDescription().getContent().setText(new ITextPart[0]);
     setMaterialComposition(MaterialComposition.None);
-    setCost( new ItemCost("Resources",0) );
+    setCost(new ItemCost("Resources", 0));
     statses.clear();
     fireStatsChangedEvent();
   }
-  
+
   @Override
-  public void copyNewTemplate( String salt ) {
+  public void copyNewTemplate(String salt) {
     editTemplateId += salt;
     getDescription().getName().setText(editTemplateId);
     editedTemplate = createTemplate();
@@ -133,8 +133,8 @@ public class EquipmentTemplateEditModel implements IEquipmentTemplateEditModel {
   }
 
   @Override
-  public IEquipmentStats[] getStats() {
-    return statses.toArray(new IEquipmentStats[statses.size()]);
+  public List<IEquipmentStats> getStats() {
+    return statses;
   }
 
   @Override
@@ -162,24 +162,24 @@ public class EquipmentTemplateEditModel implements IEquipmentTemplateEditModel {
   public void addCompositionChangeListener(IChangeListener listener) {
     compositionControl.addListener(listener);
   }
-  
+
   @Override
   public void addCostChangeListener(IChangeListener listener) {
     costControl.addListener(listener);
   }
-  
+
   @Override
   public void setCost(ItemCost newCost) {
-	if (newCost != null && newCost.equals(cost)) {
-		return;
-	}
-	this.cost = newCost;
-	costControl.announce().changeOccurred();
+    if (newCost != null && newCost.equals(cost)) {
+      return;
+    }
+    this.cost = newCost;
+    costControl.announce().changeOccurred();
   }
-  
+
   @Override
   public ItemCost getCost() {
-	return cost;
+    return cost;
   }
 
   @Override

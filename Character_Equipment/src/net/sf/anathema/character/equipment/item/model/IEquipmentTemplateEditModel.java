@@ -8,6 +8,8 @@ import net.sf.anathema.character.generic.equipment.weapon.IEquipmentStats;
 import net.sf.anathema.framework.itemdata.model.IItemDescription;
 import net.sf.anathema.lib.control.IChangeListener;
 
+import java.util.List;
+
 public interface IEquipmentTemplateEditModel {
 
   void addStatistics(IEquipmentStats stats);
@@ -16,7 +18,7 @@ public interface IEquipmentTemplateEditModel {
 
   IItemDescription getDescription();
 
-  IEquipmentStats[] getStats();
+  List<IEquipmentStats> getStats();
 
   boolean isDirty();
 

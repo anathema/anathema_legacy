@@ -12,7 +12,7 @@ public abstract class AbstractEquipmentStatisticsProperties extends AbstractProp
   }
 
   public String getNameLabel() {
-    return getLabelString("Equipment.Creation.Stats.ViewShouldShow");
+    return getLabelString("Equipment.Creation.Stats.Name");
   }
 
   public IBasicMessage getUndefinedNameMessage() {

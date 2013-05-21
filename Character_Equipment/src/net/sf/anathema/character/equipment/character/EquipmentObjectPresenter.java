@@ -21,7 +21,7 @@ import java.util.Map;
 
 public class EquipmentObjectPresenter implements Presenter {
 
-  public static final String EQUIPMENT_NAME_PREFIX = "Equipment.ViewShouldShow.";
+  public static final String EQUIPMENT_NAME_PREFIX = "Equipment.Name.";
   private static final String DESCRIPTION_PREFIX = "Equipment.Description.";
   private final Map<IEquipmentStats, BooleanModel> attuneStatFlags = new HashMap<>();
   private final Map<IEquipmentStats, BooleanModel> otherStatFlags = new HashMap<>();

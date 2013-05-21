@@ -184,7 +184,7 @@ public class EquipmentAdditionalPresenter implements Presenter {
   private void createPersonalizeTool(final IEquipmentItem selectedObject, EquipmentObjectPresenter objectPresenter) {
     Tool personalize = objectPresenter.addContextTool();
     personalize.setIcon(new BasicUi().getEditIconPath());
-    personalize.setText(resources.getString("AdditionalTemplateView.Personalize.Action.ViewShouldShow"));
+    personalize.setText(resources.getString("AdditionalTemplateView.Personalize.Action.Name"));
     personalize.setCommand(new Command() {
       @Override
       public void execute() {
@@ -206,7 +206,7 @@ public class EquipmentAdditionalPresenter implements Presenter {
   private void createUnpersonalizeTool(final IEquipmentItem selectedObject, EquipmentObjectPresenter objectPresenter) {
     Tool unpersonalize = objectPresenter.addContextTool();
     unpersonalize.setIcon(new BasicUi().getRemoveIconPath());
-    unpersonalize.setText(resources.getString("AdditionalTemplateView.RemoveTemplate.Action.ViewShouldShow"));
+    unpersonalize.setText(resources.getString("AdditionalTemplateView.RemoveTemplate.Action.Name"));
     unpersonalize.setCommand(new Command() {
       @Override
       public void execute() {

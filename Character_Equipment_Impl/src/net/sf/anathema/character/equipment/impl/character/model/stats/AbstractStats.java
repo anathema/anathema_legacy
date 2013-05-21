@@ -13,7 +13,6 @@ public abstract class AbstractStats implements IEquipmentStats {
   }
 
   public final void setName(Identified name) {
-    if (name == null) name = null;
     this.name = name;
   }
 }

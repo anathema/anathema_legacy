@@ -54,7 +54,7 @@ public class EquipmentDatabasePresenter implements Presenter {
 
   private void initBasicDetailsView() {
     EquipmentDescriptionPanel descriptionPanel = view.addDescriptionPanel(resources.getString("Equipment.Creation.Basics"));
-    ITextView nameView = descriptionPanel.addNameView(getColonString("Equipment.Creation.Basics.ViewShouldShow"));
+    ITextView nameView = descriptionPanel.addNameView(getColonString("Equipment.Creation.Basics.Name"));
     new TextualPresentation().initView(nameView, model.getTemplateEditModel().getDescription().getName());
     ITextView descriptionView = descriptionPanel.addDescriptionView(getColonString("Equipment.Creation.Basics.Description"));
     new TextualPresentation().initView(descriptionView, model.getTemplateEditModel().getDescription().getContent());
@@ -65,7 +65,7 @@ public class EquipmentDatabasePresenter implements Presenter {
     String[] backgrounds = transform(defaultCostBackgrounds, String.class, new Function<String, String>() {
       @Override
       public String apply(String arg0) {
-        return resources.getString("BackgroundType.ViewShouldShow." + arg0);
+        return resources.getString("BackgroundType.Name." + arg0);
       }
     });
     final CostSelectionView costView = descriptionPanel.addCostView(getColonString("Equipment.Creation.Basics.Cost"));

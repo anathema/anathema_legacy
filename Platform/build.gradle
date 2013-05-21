@@ -1,5 +1,4 @@
 dependencies {
-  compile 'com.l2fprod.common:l2fprod-common-directorychooser:0.2.0' //Current version 6.9.1 does not play nice with SwingX's Look-And-Feel addons
   compile 'org.reflections:reflections:0.9.8'
   compile 'com.itextpdf:itextpdf:5.3.2' //5.3.3 and later remove MultiColumnText, need adjustment
   compile 'com.google.code.gson:gson:2.2.2'

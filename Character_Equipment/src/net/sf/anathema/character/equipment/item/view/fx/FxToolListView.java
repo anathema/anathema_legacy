@@ -1,9 +1,9 @@
 package net.sf.anathema.character.equipment.item.view.fx;
 
-import com.sun.javafx.collections.ObservableListWrapper;
 import javafx.application.Platform;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
+import javafx.collections.FXCollections;
 import javafx.scene.Node;
 import javafx.scene.control.ListView;
 import javafx.scene.control.SelectionMode;
@@ -15,7 +15,6 @@ import net.sf.anathema.platform.fx.ConfigurableListCellFactory;
 import net.sf.anathema.platform.tool.FxButtonTool;
 import org.tbee.javafx.scene.layout.MigPane;
 
-import java.util.Arrays;
 import java.util.List;
 
 import static net.sf.anathema.lib.gui.layout.LayoutUtils.fillWithoutInsets;
@@ -43,8 +42,8 @@ public class FxToolListView<T> implements ToolListView<T> {
   }
 
   @Override
-  public void setObjects(T[] items) {
-    list.setItems(new ObservableListWrapper<>(Arrays.asList(items)));
+  public void setObjects(List<T> items) {
+    list.setItems(FXCollections.observableArrayList(items));
   }
 
   @Override
@@ -73,6 +72,16 @@ public class FxToolListView<T> implements ToolListView<T> {
       }
     });
     return tool;
+  }
+
+  @Override
+  public void refresh() {
+    /*ObservableList<T> items = list.getItems();
+    int index = list.getSelectionModel().getSelectedIndex();
+    list.setItems(null);*/
+    list.layout();
+    /*list.setItems(FXCollections.observableList(items));
+    list.getSelectionModel().select(index);*/
   }
 
   public Node getNode() {
