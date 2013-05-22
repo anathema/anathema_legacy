@@ -5,6 +5,7 @@ import org.apache.commons.lang3.builder.HashCodeBuilder;
 
 public class SimpleRepositoryId implements RepositoryId {
 
+  @SuppressWarnings({"UnusedDeclaration", "FieldCanBeLocal"})
   private String id;
 
   public SimpleRepositoryId(String id) {

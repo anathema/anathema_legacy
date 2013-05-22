@@ -7,7 +7,11 @@ import net.sf.anathema.character.model.charm.ILearningCharmGroup;
 import net.sf.anathema.lib.util.Identified;
 import org.dom4j.Element;
 
-import java.util.*;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Collections;
+import java.util.HashMap;
+import java.util.List;
 
 import static net.sf.anathema.character.impl.persistence.ICharacterXmlConstants.ATTRIB_EXPERIENCE_LEARNED;
 import static net.sf.anathema.character.impl.persistence.ICharacterXmlConstants.ATTRIB_NAME;
