@@ -14,10 +14,10 @@ public class CharacterSystemView {
   private final SwingPerspectivePane pane = new SwingPerspectivePane();
   private final CharacterGridFxView gridView = new CharacterGridFxView();
   private final StackView stackView = new StackView();
-  private final InteractionView interactionView;
+  private final SwingInteractionView interactionView;
 
   public CharacterSystemView(Resources resources) {
-    this.interactionView = new InteractionView(resources);
+    this.interactionView = new SwingInteractionView(resources);
     JPanel panel = createNavigationPanel();
     pane.setNavigationComponent(panel);
     pane.setContentComponent(stackView.getComponent());

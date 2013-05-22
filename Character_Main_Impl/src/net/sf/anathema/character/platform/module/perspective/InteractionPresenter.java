@@ -4,6 +4,7 @@ import net.sf.anathema.character.perspective.CharacterGridView;
 import net.sf.anathema.character.perspective.Selector;
 import net.sf.anathema.character.perspective.model.model.CharacterIdentifier;
 import net.sf.anathema.character.perspective.model.model.ItemSelectionModel;
+import net.sf.anathema.interaction.Tool;
 import net.sf.anathema.lib.resources.Resources;
 import net.sf.anathema.swing.character.perspective.InteractionView;
 
@@ -25,30 +26,31 @@ public class InteractionPresenter {
   }
 
   public void initPresentation() {
-    initSaveInteraction();
     initNewInteraction();
-    initExperiencedInteraction();
+    initSaveInteraction();
     initQuickPrintInteraction();
     initControlledPrintInteraction();
+    initExperiencedInteraction();
   }
 
   private void initSaveInteraction() {
-    new SaveInteractionPresenter(model, view.getSaveInteraction()).initPresentation();
+    Tool tool = view.addTool();
+    new SaveInteractionPresenter(model, tool).initPresentation();
   }
 
   private void initNewInteraction() {
-    new NewInteractionPresenter(model, view.getNewInteraction(), resources, gridView, selector).initPresentation();
+    new NewInteractionPresenter(model, view.addTool(), resources, gridView, selector).initPresentation();
   }
 
   private void initQuickPrintInteraction() {
-    new QuickPrintInteractionPresenter(model, view.getQuickPrintInteraction(), resources).initPresentation();
+    new QuickPrintInteractionPresenter(model, view.addTool(), resources).initPresentation();
   }
 
   private void initControlledPrintInteraction() {
-    new ControlledPrintInteractionPresenter(model, view.getControlledPrintInteraction(), resources).initPresentation();
+    new ControlledPrintInteractionPresenter(model, view.addTool(), resources).initPresentation();
   }
 
   private void initExperiencedInteraction() {
-    new ExperiencedInteractionPresenter(model, view.getExperiencedInteraction()).initPresentation();
+    new ExperiencedInteractionPresenter(model, view.addToggleTool()).initPresentation();
   }
 }
