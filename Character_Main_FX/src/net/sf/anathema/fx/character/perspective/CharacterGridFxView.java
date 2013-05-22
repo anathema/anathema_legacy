@@ -32,7 +32,7 @@ public class CharacterGridFxView implements IView, CharacterGridView {
   public CharacterGridFxView() {
     scrollPane.setContent(gridPane);
     scrollPane.setHbarPolicy(NEVER);
-    Platform.runLater(new InitScene(panel, new SceneParentHolder(), "skin/sandra/sandra.css"));
+    Platform.runLater(new InitScene(panel, new SceneParentHolder(), "skin/character/characternavigation.css"));
   }
 
   @Override
