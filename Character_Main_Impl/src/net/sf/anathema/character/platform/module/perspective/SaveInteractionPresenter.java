@@ -2,7 +2,7 @@ package net.sf.anathema.character.platform.module.perspective;
 
 import net.sf.anathema.character.perspective.model.model.ItemSelectionModel;
 import net.sf.anathema.interaction.Command;
-import net.sf.anathema.interaction.Interaction;
+import net.sf.anathema.interaction.Tool;
 import net.sf.anathema.lib.file.RelativePath;
 
 import java.io.IOException;
@@ -10,9 +10,9 @@ import java.io.IOException;
 public class SaveInteractionPresenter {
 
   private final ItemSelectionModel model;
-  private final Interaction interaction;
+  private final Tool interaction;
 
-  public SaveInteractionPresenter(ItemSelectionModel model, Interaction interaction) {
+  public SaveInteractionPresenter(ItemSelectionModel model, Tool interaction) {
     this.model = model;
     this.interaction = interaction;
   }
