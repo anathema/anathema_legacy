@@ -16,7 +16,6 @@ public class FxEquipmentDetails implements EquipmentDetails {
 
   private final FxToolListView<IEquipmentStats> listView = new FxToolListView<>();
   private final FxEquipmentDescriptionPanel descriptionPanel = new FxEquipmentDescriptionPanel();
-  private final MigPane editorPane = new MigPane();
   private MigPane outerPane;
 
   public FxEquipmentDetails() {
@@ -42,7 +41,6 @@ public class FxEquipmentDetails implements EquipmentDetails {
         Node node = listView.getNode();
         BorderedTitledPane titledPane = BorderedTitledPane.Create(title, node);
         outerPane.add(titledPane, new CC().pushX().grow().split(2));
-        outerPane.add(editorPane);
       }
     });
     return listView;
