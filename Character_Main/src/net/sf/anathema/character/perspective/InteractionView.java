@@ -1,4 +1,4 @@
-package net.sf.anathema.swing.character.perspective;
+package net.sf.anathema.character.perspective;
 
 import net.sf.anathema.interaction.ToggleTool;
 import net.sf.anathema.interaction.Tool;

@@ -1,12 +1,12 @@
 package net.sf.anathema.character.platform.module.perspective;
 
 import net.sf.anathema.character.perspective.CharacterGridView;
+import net.sf.anathema.character.perspective.InteractionView;
 import net.sf.anathema.character.perspective.Selector;
 import net.sf.anathema.character.perspective.model.model.CharacterIdentifier;
 import net.sf.anathema.character.perspective.model.model.ItemSelectionModel;
 import net.sf.anathema.interaction.Tool;
 import net.sf.anathema.lib.resources.Resources;
-import net.sf.anathema.swing.character.perspective.InteractionView;
 
 public class InteractionPresenter {
 

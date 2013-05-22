@@ -1,5 +1,6 @@
 package net.sf.anathema.swing.character.perspective;
 
+import net.sf.anathema.character.perspective.InteractionView;
 import net.sf.anathema.framework.perspective.PerspectiveToolBar;
 import net.sf.anathema.interaction.ToggleTool;
 import net.sf.anathema.interaction.Tool;
