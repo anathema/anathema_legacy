@@ -1,7 +1,6 @@
 package net.sf.anathema.swing.character.perspective;
 
 import net.sf.anathema.framework.perspective.PerspectiveToolBar;
-import net.sf.anathema.framework.swing.IView;
 import net.sf.anathema.interaction.ToggleTool;
 import net.sf.anathema.interaction.Tool;
 import net.sf.anathema.lib.resources.Resources;
@@ -10,7 +9,7 @@ import net.sf.anathema.swing.character.perspective.interaction.ToggleActionInter
 
 import javax.swing.JComponent;
 
-public class InteractionView implements IView {
+public class InteractionView {
 
   private final PerspectiveToolBar toolbar = new PerspectiveToolBar();
   private final ActionInteraction newInteraction;
@@ -48,7 +47,6 @@ public class InteractionView implements IView {
     return experiencedInteraction;
   }
 
-  @Override
   public JComponent getComponent() {
     return toolbar.getComponent();
   }
