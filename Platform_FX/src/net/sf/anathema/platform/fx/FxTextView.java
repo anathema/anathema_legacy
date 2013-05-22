@@ -17,7 +17,9 @@ public class FxTextView implements ITextView {
   }
 
   public static FxTextView MultiLine(String label) {
-    return new FxTextView(label, new TextArea());
+    TextArea textArea = new TextArea();
+    textArea.setWrapText(true);
+    return new FxTextView(label, textArea);
   }
 
   private final TextInputControl view;

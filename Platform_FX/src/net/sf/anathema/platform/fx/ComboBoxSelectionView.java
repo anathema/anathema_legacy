@@ -14,6 +14,8 @@ import org.tbee.javafx.scene.layout.MigPane;
 
 import java.util.Arrays;
 
+import static net.sf.anathema.lib.gui.layout.LayoutUtils.withoutInsets;
+
 public class ComboBoxSelectionView<V> implements IObjectSelectionView<V> {
   private ComboBox<V> comboBox;
   private Label label;
@@ -25,7 +27,7 @@ public class ComboBoxSelectionView<V> implements IObjectSelectionView<V> {
       public void run() {
         comboBox = new ComboBox<>();
         label = new Label(description);
-        pane = new MigPane();
+        pane = new MigPane(withoutInsets());
         pane.add(label);
         pane.add(comboBox);
       }

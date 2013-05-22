@@ -24,7 +24,7 @@ public class FxEquipmentDescriptionPanel implements EquipmentDescriptionPanel {
     Platform.runLater(new Runnable() {
       @Override
       public void run() {
-        pane = new MigPane(new LC().wrapAfter(1).fill().insets("2"), new AC(), new AC().index(1).shrinkPrio(200));
+        pane = new MigPane(new LC().wrapAfter(1).fill().insets("4"), new AC(), new AC().index(1).shrinkPrio(200));
       }
     });
   }
@@ -47,7 +47,7 @@ public class FxEquipmentDescriptionPanel implements EquipmentDescriptionPanel {
     Platform.runLater(new Runnable() {
       @Override
       public void run() {
-        pane.add(view.getNode(), new CC().growX().span());
+        pane.add(view.getNode(), new CC().growX().pushY().span());
       }
     });
     return view;
@@ -73,7 +73,7 @@ public class FxEquipmentDescriptionPanel implements EquipmentDescriptionPanel {
     Platform.runLater(new Runnable() {
       @Override
       public void run() {
-        pane.add(selectionView.getNode(), new CC().grow().wrap());
+        pane.add(selectionView.getNode(), new CC().growX().wrap());
       }
     });
     return selectionView;

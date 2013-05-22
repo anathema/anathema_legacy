@@ -16,12 +16,14 @@ import org.tbee.javafx.scene.layout.MigPane;
 
 import java.util.Arrays;
 
+import static net.sf.anathema.lib.gui.layout.LayoutUtils.withoutInsets;
+
 public class FxCostSelectionView implements CostSelectionView {
 
   private Label label;
   private ComboBox<String> selection;
   private ListSpinner<Integer> spinner;
-  private final MigPane pane = new MigPane();
+  private final MigPane pane = new MigPane(withoutInsets());
   private final Announcer<ISelectionIntValueChangedListener> announcer = new Announcer<>(ISelectionIntValueChangedListener.class);
   private final CostTypeChangeListener typeChangeListener = new CostTypeChangeListener();
   private final CostValueChangeListener valueChangeListener = new CostValueChangeListener();
