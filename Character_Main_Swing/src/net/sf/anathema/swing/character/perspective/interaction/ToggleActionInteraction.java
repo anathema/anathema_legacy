@@ -3,7 +3,6 @@ package net.sf.anathema.swing.character.perspective.interaction;
 import net.sf.anathema.framework.perspective.ToolBar;
 import net.sf.anathema.interaction.Command;
 import net.sf.anathema.interaction.CommandProxy;
-import net.sf.anathema.interaction.Interaction;
 import net.sf.anathema.interaction.ToggleTool;
 import net.sf.anathema.lib.file.RelativePath;
 import net.sf.anathema.lib.gui.action.SmartAction;
@@ -13,7 +12,7 @@ import net.sf.anathema.lib.resources.Resources;
 import javax.swing.JToggleButton;
 import java.awt.Component;
 
-public class ToggleActionInteraction implements ToggleTool, Interaction {
+public class ToggleActionInteraction implements ToggleTool {
 
   private final CommandProxy commandProxy = new CommandProxy();
   private final SmartAction action = new SmartAction() {
@@ -69,7 +68,6 @@ public class ToggleActionInteraction implements ToggleTool, Interaction {
     button.setSelected(false);
   }
 
-  @Override
   public void addTo(ToolBar toolbar) {
     toolbar.add(button);
   }
