@@ -1,7 +1,6 @@
 package net.sf.anathema.interaction;
 
-public interface ToggleInteraction extends Interaction {
-
+public interface Toggle {
   void select();
 
   void deselect();

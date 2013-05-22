@@ -2,7 +2,7 @@ package net.sf.anathema.swing.character.perspective;
 
 import net.sf.anathema.framework.perspective.PerspectiveToolBar;
 import net.sf.anathema.framework.swing.IView;
-import net.sf.anathema.interaction.ToggleInteraction;
+import net.sf.anathema.interaction.ToggleTool;
 import net.sf.anathema.interaction.Tool;
 import net.sf.anathema.lib.resources.Resources;
 import net.sf.anathema.swing.character.perspective.interaction.ActionInteraction;
@@ -44,7 +44,7 @@ public class InteractionView implements IView {
     return controlledPrintInteraction;
   }
 
-  public ToggleInteraction getExperiencedInteraction() {
+  public ToggleTool getExperiencedInteraction() {
     return experiencedInteraction;
   }
 

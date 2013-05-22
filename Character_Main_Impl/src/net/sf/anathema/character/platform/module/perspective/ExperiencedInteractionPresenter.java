@@ -2,15 +2,14 @@ package net.sf.anathema.character.platform.module.perspective;
 
 import net.sf.anathema.character.perspective.model.model.ItemSelectionModel;
 import net.sf.anathema.interaction.Command;
-import net.sf.anathema.interaction.ToggleInteraction;
+import net.sf.anathema.interaction.ToggleTool;
 import net.sf.anathema.lib.file.RelativePath;
 
 public class ExperiencedInteractionPresenter {
   private ItemSelectionModel model;
-  private ToggleInteraction interaction;
+  private ToggleTool interaction;
 
-  public ExperiencedInteractionPresenter(ItemSelectionModel model, ToggleInteraction interaction) {
-
+  public ExperiencedInteractionPresenter(ItemSelectionModel model, ToggleTool interaction) {
     this.model = model;
     this.interaction = interaction;
   }
