@@ -194,7 +194,6 @@ THIRDPARTY LICENSES
 
 Anathema includes software developed by
 -The Apache Software Foundation (http://www.apache.org/).
--L2FProd.com (http://www.l2fprod.com).
 -the Reflections project (http://code.google.com/p/reflections/)
 -the slf4j project (http://www.slf4j.org)
 -1T3XT BVBA (http://www.itextpdf.com)
@@ -218,7 +217,6 @@ https://github.com/anathema/anathema/tree/master/Development_Documentation/Licen
 Apache License 2.0
 =========================
 Xalan
-L2Fprod.com Commons Components
 Apache Commons
 Common-IO
 GSON
