@@ -228,6 +228,11 @@ GNU GPL v3
 disy-commons (special license for Anathema, parts of the library are repackaged, integrated and modified in Anathema code)
 MiG Layout
 
+GNU LGPL v2.1
+=========================
+Swing Labs components
+Logback
+
 Individual Licenses:
 =========================
 iText is published under the GNU Affero General Public License 3.0.
@@ -235,7 +240,6 @@ Reflections is published under the WTFPL.
 SLF4J is published under the MIT License.
 jaxen is published under the Jaxen License.
 dom4j is published under the BSD License
-Swing Labs componenents are published under the GNU LGPL
 JeksParser is published under the GNU GPL v2
 Nat Pryce's "Announcer" class is published under an unrestricted license.
 John Smith's "BorderedTitlePane" class is published under CC BY-SA 3.0 with Attribution Required
