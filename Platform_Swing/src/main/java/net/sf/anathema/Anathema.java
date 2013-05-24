@@ -11,7 +11,6 @@ import net.sf.anathema.initialization.InitializationException;
 import net.sf.anathema.lib.logging.Logger;
 
 import javax.swing.SwingUtilities;
-import javax.swing.UnsupportedLookAndFeelException;
 
 public class Anathema {
 
@@ -29,7 +28,7 @@ public class Anathema {
     return InitializationPreferences.getDefaultPreferences();
   }
 
-  private void prepareEnvironment(IInitializationPreferences initializationPreferences) throws ClassNotFoundException, InstantiationException, IllegalAccessException, UnsupportedLookAndFeelException {
+  private void prepareEnvironment(IInitializationPreferences initializationPreferences) throws ClassNotFoundException, InstantiationException, IllegalAccessException {
     displayStatus("Preparing Environment...");
     AnathemaEnvironment.initLocale(initializationPreferences);
     AnathemaEnvironment.initLookAndFeel(initializationPreferences);

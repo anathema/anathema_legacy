@@ -4,7 +4,6 @@ import net.sf.anathema.framework.configuration.IInitializationPreferences;
 import net.sf.anathema.lib.logging.Logger;
 
 import javax.swing.UIManager;
-import javax.swing.UnsupportedLookAndFeelException;
 
 public class LookAndFeelInitializer {
   private static final String AQUA_LOOK_AND_FEEL_CLASSNAME = "apple.laf.AquaLookAndFeel";
@@ -16,11 +15,7 @@ public class LookAndFeelInitializer {
     this.initializationPreferences = initializationPreferences;
   }
 
-  public void initialize()
-          throws InstantiationException,
-          IllegalAccessException,
-          ClassNotFoundException,
-          UnsupportedLookAndFeelException {
+  public void initialize() throws InstantiationException, IllegalAccessException, ClassNotFoundException {
     makeCombosLookBetterOnAnyLookAndFeel();
     String lookAndFeelClassName = getLookAndFeelToUse();
     setLookAndFeel(lookAndFeelClassName);
