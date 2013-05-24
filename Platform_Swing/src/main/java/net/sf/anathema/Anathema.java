@@ -3,7 +3,8 @@ package net.sf.anathema;
 import com.itextpdf.text.log.LoggerFactory;
 import net.sf.anathema.framework.configuration.IInitializationPreferences;
 import net.sf.anathema.framework.configuration.InitializationPreferences;
-import net.sf.anathema.framework.environment.AnathemaEnvironment;
+import net.sf.anathema.framework.environment.LocaleEnvironment;
+import net.sf.anathema.framework.environment.SwingEnvironment;
 import net.sf.anathema.framework.view.ApplicationFrame;
 import net.sf.anathema.framework.view.ErrorWindow;
 import net.sf.anathema.initialization.GuiInitializer;
@@ -30,9 +31,9 @@ public class Anathema {
 
   private void prepareEnvironment(IInitializationPreferences initializationPreferences) throws ClassNotFoundException, InstantiationException, IllegalAccessException {
     displayStatus("Preparing Environment...");
-    AnathemaEnvironment.initLocale(initializationPreferences);
-    AnathemaEnvironment.initLookAndFeel(initializationPreferences);
-    AnathemaEnvironment.initTooltipManager(initializationPreferences);
+    LocaleEnvironment.initLocale(initializationPreferences);
+    SwingEnvironment.initLookAndFeel(initializationPreferences);
+    SwingEnvironment.initTooltipManager(initializationPreferences);
   }
 
   private void showMainFrame(final IInitializationPreferences initializationPreferences) {
