@@ -4,9 +4,10 @@ import net.sf.anathema.characterengine.quality.Name;
 import net.sf.anathema.characterengine.quality.Quality;
 import net.sf.anathema.characterengine.quality.QualityListener;
 import net.sf.anathema.characterengine.support.Announcer;
-import net.sf.anathema.exaltedengine.NumericValue;
+import net.sf.anathema.exaltedengine.numericquality.NumericValue;
+import net.sf.anathema.exaltedengine.numericquality.QualityWithValue;
 
-public class Attribute implements Quality {
+public class Attribute implements Quality, QualityWithValue {
   private final NumericValue value;
   private final Name name;
   private final Announcer<QualityListener> announcer = Announcer.to(QualityListener.class);
@@ -16,6 +17,7 @@ public class Attribute implements Quality {
     this.name = name;
   }
 
+  @Override
   public void changeValueTo(NumericValue newValue) {
     if (value.equals(newValue)) {
       return;
@@ -24,6 +26,7 @@ public class Attribute implements Quality {
     announcer.announce().eventOccurred();
   }
 
+  @Override
   public boolean hasValue(NumericValue value) {
     return value.equals(this.value);
   }

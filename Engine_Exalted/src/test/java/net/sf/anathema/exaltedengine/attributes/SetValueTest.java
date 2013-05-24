@@ -3,7 +3,8 @@ package net.sf.anathema.exaltedengine.attributes;
 import net.sf.anathema.characterengine.quality.Name;
 import net.sf.anathema.characterengine.quality.QualityKey;
 import net.sf.anathema.characterengine.quality.Type;
-import net.sf.anathema.exaltedengine.NumericValue;
+import net.sf.anathema.exaltedengine.numericquality.NumericValue;
+import net.sf.anathema.exaltedengine.numericquality.SetValue;
 import org.junit.Before;
 import org.junit.Test;
 

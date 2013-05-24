@@ -1,11 +1,10 @@
-package net.sf.anathema.exaltedengine.attributes;
+package net.sf.anathema.exaltedengine.numericquality;
 
 import net.sf.anathema.characterengine.command.Command;
 import net.sf.anathema.characterengine.persona.Qualities;
 import net.sf.anathema.characterengine.persona.QualityClosure;
 import net.sf.anathema.characterengine.quality.Quality;
 import net.sf.anathema.characterengine.quality.QualityKey;
-import net.sf.anathema.exaltedengine.NumericValue;
 
 public class SetValue implements Command {
   private final NumericValue newValue;
@@ -21,7 +20,7 @@ public class SetValue implements Command {
     qualities.doFor(qualityKey, new QualityClosure() {
       @Override
       public void execute(Quality quality) {
-        ((Attribute) quality).changeValueTo(newValue);
+        ((QualityWithValue) quality).changeValueTo(newValue);
       }
     });
   }
