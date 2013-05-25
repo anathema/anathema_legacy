@@ -35,6 +35,7 @@ public class FxCostSelectionView implements CostSelectionView {
         label = new Label(text);
         selection = new ComboBox<>();
         spinner = new ListSpinner<>(0, 5);
+        spinner.getStyleClass().add("dots");
         pane.add(label);
         pane.add(selection);
         pane.add(spinner);

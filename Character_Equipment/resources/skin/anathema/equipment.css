@@ -5,3 +5,22 @@
 .equipment-perspective * .tool-list:focused {
     -fx-background-insets: -1.4, 0, 1;
 }
+
+.dots {
+    -fx-skin: "net.sf.anathema.character.equipment.item.view.fx.DotSelectionSpinnerSkin";
+}
+
+.empty {
+    -fx-fill: white;
+    -fx-stroke: black;
+}
+
+.filled {
+    -fx-fill: red;
+    -fx-stroke: black;
+}
+
+.invisiblecontainer {
+    -fx-background-color: rgba(0, 0, 0, 0);
+    -fx-fill: rgba(0, 0, 0, 0);
+}
