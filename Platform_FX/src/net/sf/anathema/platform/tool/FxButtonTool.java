@@ -20,20 +20,23 @@ public class FxButtonTool implements Tool {
   public static FxButtonTool ForToolbar() {
     ImageView mainIcon = new ImageView();
     ImageView miniIcon = new ImageView();
-    MiniIconButton button = new MiniIconButton();
-    button.setGraphic(mainIcon);
-    button.setMiniIcon(miniIcon);
+    MiniIconButton button = createButton(mainIcon, miniIcon);
     return new FxButtonTool(button, miniIcon, new AdjustSize(button), new SetImage(mainIcon));
   }
 
   public static FxButtonTool ForAnyPurpose() {
     ImageView mainIcon = new ImageView();
     ImageView miniIcon = new ImageView();
+    MiniIconButton button = createButton(mainIcon, miniIcon);
+    return new FxButtonTool(button, miniIcon, new SetImage(mainIcon));
+  }
+
+  private static MiniIconButton createButton(ImageView mainIcon, ImageView miniIcon) {
     MiniIconButton button = new MiniIconButton();
     button.setGraphic(mainIcon);
     button.setMiniIcon(miniIcon);
     button.setMiniIconRatio(0.33);
-    return new FxButtonTool(button, miniIcon, new SetImage(mainIcon));
+    return button;
   }
 
   private final Button button;
