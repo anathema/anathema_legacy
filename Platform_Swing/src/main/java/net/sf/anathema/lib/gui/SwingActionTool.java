@@ -28,6 +28,11 @@ public class SwingActionTool implements Tool {
   }
 
   @Override
+  public void setOverlay(RelativePath relativePath) {
+    throw new UnsupportedOperationException("We'll probably never need this.");
+  }
+
+  @Override
   public void setTooltip(String text) {
     action.setToolTipText(text);
   }
