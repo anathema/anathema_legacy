@@ -41,10 +41,10 @@ public class DotSelectionSpinnerSkin<T> extends SkinBase<ListSpinner<T>, ListSpi
 
   public DotSelectionSpinnerSkin(ListSpinner<T> control) {
     super(control, new ListSpinnerBehavior<>(control));
-    recreateButtons();
+    getStyleClass().add("invisiblecontainer");
+    createButtons();
     updateRating((Integer) getSkinnable().getValue());
     registerChangeListener(control.valueProperty(), RATING_PROPERTY);
-    registerChangeListener(control.itemsProperty(), MAXIMUM_PROPERTY);
   }
 
 
@@ -54,22 +54,17 @@ public class DotSelectionSpinnerSkin<T> extends SkinBase<ListSpinner<T>, ListSpi
     if (p.equals(RATING_PROPERTY)) {
       updateRating();
     }
-    if (p.equals(MAXIMUM_PROPERTY)) {
-      recreateButtons();
-    }
   }
 
-  private void recreateButtons() {
+  private void createButtons() {
     container = new HBox();
     container.setOnMouseClicked(mouseClickHandler);
     container.setOnMouseDragExited(mouseClickHandler);
-    container.getStyleClass().add("invisiblecontainer");
-    getChildren().setAll(container);
     for (int index = 0; index < getMaximumValue(); index++) {
       Node backgroundNode = createButton();
       container.getChildren().add(backgroundNode);
     }
-    updateRating();
+    getChildren().setAll(container);
   }
 
   private double calculateRating(Point2D location) {
@@ -104,18 +99,18 @@ public class DotSelectionSpinnerSkin<T> extends SkinBase<ListSpinner<T>, ListSpi
     if (!getSkinnable().valueProperty().isBound()) {
       getSkinnable().setValue((T) (Integer) Double.valueOf(rating).intValue());
     }
-    final int max = getMaximumValue();
+    int max = getMaximumValue();
     List<Node> buttons = new ArrayList<>(container.getChildren());
-    for (int i = 0; i < max; i++) {
-      Node button = buttons.get(i);
+    for (int index = 0; index < max; index++) {
+      Node button = buttons.get(index);
       List<String> styleClass = button.getStyleClass();
-      boolean containsStrong = styleClass.contains(FILLED);
-      if (i < rating) {
-        if (!containsStrong) {
+      boolean isFilled = styleClass.contains(FILLED);
+      if (index < rating) {
+        if (!isFilled) {
           styleClass.remove(EMPTY);
           styleClass.add(FILLED);
         }
-      } else if (containsStrong) {
+      } else if (isFilled) {
         styleClass.remove(FILLED);
         styleClass.add(EMPTY);
       }
