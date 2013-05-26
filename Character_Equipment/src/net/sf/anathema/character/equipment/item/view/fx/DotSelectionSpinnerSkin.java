@@ -67,6 +67,7 @@ public class DotSelectionSpinnerSkin<T> extends SkinBase<ListSpinner<T>, ListSpi
     container = new HBox();
     container.setOnMouseClicked(mouseClickHandler);
     container.setOnMouseDragExited(mouseClickHandler);
+    container.setOnMouseDragged(mouseClickHandler);
     for (int index = 0; index < getMaximumValue(); index++) {
       Node backgroundNode = createButton();
       container.getChildren().add(backgroundNode);
@@ -91,18 +92,44 @@ public class DotSelectionSpinnerSkin<T> extends SkinBase<ListSpinner<T>, ListSpi
   /**Drawing code adapted from JFXtras SimpleIndicatorSkin.*/
   private Node createButton() {
     double size = 20;
+    Group indicator = prepareContainer();
+    Shape outerBounds = createBounds(size);
+    indicator.getChildren().add(outerBounds);
+    Circle frame = createFrame(size);
+    Circle corpus = createCorpus(size);
+    addInnerShadow(corpus);
+    Ellipse highlight = createHighlight(size);
+    indicator.getChildren().addAll(frame, corpus, highlight);
+    indicator.setCache(true);
+    return indicator;
+  }
+
+  private Group prepareContainer() {
     Group indicator = new Group();
     indicator.getStyleClass().add(FILLED);
     indicator.getChildren().clear();
+    return indicator;
+  }
+
+  private Shape createBounds(double size) {
     Shape outerBounds = new Rectangle(0, 0, size, size);
     outerBounds.setOpacity(0.0);
-    indicator.getChildren().add(outerBounds);
+    return outerBounds;
+  }
+
+  private Circle createFrame(double size) {
     Circle frame = new Circle(0.5 * size, 0.5 * size, 0.4 * size);
     frame.getStyleClass().add("indicator-inner-frame-fill");
+    return frame;
+  }
 
+  private Circle createCorpus(double size) {
     Circle corpus = new Circle(0.5 * size, 0.5 * size, 0.38 * size);
     corpus.getStyleClass().add("indicator-main-fill");
+    return corpus;
+  }
 
+  private void addInnerShadow(Circle corpus) {
     InnerShadow innerShadow = new InnerShadow();
     innerShadow.setWidth(0.2880 * corpus.getLayoutBounds().getWidth());
     innerShadow.setHeight(0.2880 * corpus.getLayoutBounds().getHeight());
@@ -112,13 +139,12 @@ public class DotSelectionSpinnerSkin<T> extends SkinBase<ListSpinner<T>, ListSpi
     innerShadow.setColor(Color.BLACK);
     innerShadow.setBlurType(BlurType.GAUSSIAN);
     corpus.setEffect(innerShadow);
+  }
 
+  private Ellipse createHighlight(double size) {
     Ellipse highlight = new Ellipse(0.504 * size, 0.294 * size, 0.26 * size, 0.15 * size);
     highlight.getStyleClass().add("indicator-highlight-fill");
-
-    indicator.getChildren().addAll(frame, corpus, highlight);
-    indicator.setCache(true);
-    return indicator;
+    return highlight;
   }
 
   private void updateRating() {
