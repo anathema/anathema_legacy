@@ -88,41 +88,35 @@ public class DotSelectionSpinnerSkin<T> extends SkinBase<ListSpinner<T>, ListSpi
     return newRating;
   }
 
+  /**Drawing code adapted from JFXtras SimpleIndicatorSkin.*/
   private Node createButton() {
-    final double SIZE = 20;
-
+    double size = 20;
     Group indicator = new Group();
     indicator.getStyleClass().add(FILLED);
-
     indicator.getChildren().clear();
+    Shape outerBounds = new Rectangle(0, 0, size, size);
+    outerBounds.setOpacity(0.0);
+    indicator.getChildren().add(outerBounds);
+    Circle frame = new Circle(0.5 * size, 0.5 * size, 0.4 * size);
+    frame.getStyleClass().add("indicator-inner-frame-fill");
 
-    final Shape IBOUNDS = new Rectangle(0, 0, SIZE, SIZE);
-    IBOUNDS.setOpacity(0.0);
-    indicator.getChildren().add(IBOUNDS);
+    Circle corpus = new Circle(0.5 * size, 0.5 * size, 0.38 * size);
+    corpus.getStyleClass().add("indicator-main-fill");
 
-    final Circle INNER_FRAME = new Circle(0.5 * SIZE, 0.5 * SIZE, 0.4 * SIZE);
-    INNER_FRAME.getStyleClass().add("indicator-inner-frame-fill");
+    InnerShadow innerShadow = new InnerShadow();
+    innerShadow.setWidth(0.2880 * corpus.getLayoutBounds().getWidth());
+    innerShadow.setHeight(0.2880 * corpus.getLayoutBounds().getHeight());
+    innerShadow.setOffsetX(0.0);
+    innerShadow.setOffsetY(0.0);
+    innerShadow.setRadius(0.2880 * corpus.getLayoutBounds().getWidth());
+    innerShadow.setColor(Color.BLACK);
+    innerShadow.setBlurType(BlurType.GAUSSIAN);
+    corpus.setEffect(innerShadow);
 
-    Circle main = new Circle(0.5 * SIZE, 0.5 * SIZE, 0.38 * SIZE);
-    main.getStyleClass().add("indicator-main-fill");
+    Ellipse highlight = new Ellipse(0.504 * size, 0.294 * size, 0.26 * size, 0.15 * size);
+    highlight.getStyleClass().add("indicator-highlight-fill");
 
-    final InnerShadow MAIN_INNER_SHADOW = new InnerShadow();
-    MAIN_INNER_SHADOW.setWidth(0.2880 * main.getLayoutBounds().getWidth());
-    MAIN_INNER_SHADOW.setHeight(0.2880 * main.getLayoutBounds().getHeight());
-    MAIN_INNER_SHADOW.setOffsetX(0.0);
-    MAIN_INNER_SHADOW.setOffsetY(0.0);
-    MAIN_INNER_SHADOW.setRadius(0.2880 * main.getLayoutBounds().getWidth());
-    MAIN_INNER_SHADOW.setColor(Color.BLACK);
-    MAIN_INNER_SHADOW.setBlurType(BlurType.GAUSSIAN);
-    main.setEffect(MAIN_INNER_SHADOW);
-
-    final Ellipse HIGHLIGHT = new Ellipse(0.504 * SIZE, 0.294 * SIZE,
-            0.26 * SIZE, 0.15 * SIZE);
-    HIGHLIGHT.getStyleClass().add("indicator-highlight-fill");
-
-    indicator.getChildren().addAll(INNER_FRAME,
-            main,
-            HIGHLIGHT);
+    indicator.getChildren().addAll(frame, corpus, highlight);
     indicator.setCache(true);
     return indicator;
   }
