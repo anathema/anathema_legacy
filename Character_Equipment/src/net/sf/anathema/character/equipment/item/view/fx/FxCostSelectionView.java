@@ -94,7 +94,6 @@ public class FxCostSelectionView implements CostSelectionView {
 
   @SuppressWarnings("unchecked")
   private class CostTypeChangeListener implements ChangeListener<String> {
-
     @Override
     public void changed(ObservableValue<? extends String> observableValue, String s, String newValue) {
       announcer.announce().valueChanged(newValue, spinner.getValue());
