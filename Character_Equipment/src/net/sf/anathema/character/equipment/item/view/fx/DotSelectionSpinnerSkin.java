@@ -4,6 +4,7 @@ import com.sun.javafx.Utils;
 import com.sun.javafx.scene.control.skin.SkinBase;
 import javafx.collections.ObservableList;
 import javafx.event.EventHandler;
+import javafx.geometry.Insets;
 import javafx.geometry.Point2D;
 import javafx.geometry.Pos;
 import javafx.scene.Node;
@@ -52,7 +53,7 @@ public class DotSelectionSpinnerSkin<T> extends SkinBase<ListSpinner<T>, ListSpi
     @Override
     public void handle(MouseEvent event) {
       Point2D location = new Point2D(event.getSceneX(), event.getSceneY());
-      double overlayWidth = Utils.clamp(0, dotContainer.sceneToLocal(location).getX(), dotContainer.getWidth());
+      double overlayWidth = Utils.clamp(0, dotContainer.sceneToLocal(location).getX(), dotContainer.getWidth()-2);
       overlay.setVisible(true);
       overlay.setWidth(overlayWidth);
       overlay.setHeight(Dot.SIZE);
@@ -97,6 +98,7 @@ public class DotSelectionSpinnerSkin<T> extends SkinBase<ListSpinner<T>, ListSpi
   }
 
   private void createButtons() {
+    dotContainer.setPadding(new Insets(1,0,0,0));
     dotContainer.addEventHandler(MOUSE_CLICKED, updateRating);
     dotContainer.addEventHandler(MOUSE_DRAGGED, updateRating);
     dotContainer.addEventHandler(MOUSE_DRAGGED, updateOverlay);
