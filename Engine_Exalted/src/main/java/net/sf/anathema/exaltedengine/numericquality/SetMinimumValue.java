@@ -1,4 +1,4 @@
-package net.sf.anathema.exaltedengine.attributes;
+package net.sf.anathema.exaltedengine.numericquality;
 
 import net.sf.anathema.characterengine.command.Command;
 import net.sf.anathema.characterengine.persona.Qualities;
@@ -15,6 +15,6 @@ public class SetMinimumValue implements Command {
 
   @Override
   public void execute(Qualities qualities) {
-    qualities.defineRule(type, new MinimumAttributeValue(value));
+    qualities.defineRule(type, new MinimumQualityValue(value));
   }
 }

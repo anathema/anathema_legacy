@@ -23,6 +23,7 @@ import static java.util.Collections.addAll;
 
 public class EquipmentTemplateEditModel implements IEquipmentTemplateEditModel {
 
+  public static final MagicalMaterial NO_MAGICAL_MATERIAL = null;
   private final IItemDescription description = new ItemDescription();
   private final IEquipmentDatabase database;
   private IEquipmentTemplate editedTemplate;
@@ -52,8 +53,7 @@ public class EquipmentTemplateEditModel implements IEquipmentTemplateEditModel {
     editedTemplate = database.loadTemplate(templateId);
     getDescription().getName().setText(editedTemplate.getName());
     getDescription().getContent().setText(editedTemplate.getDescription());
-    setMaterialComposition(editedTemplate.getComposition());
-    setMagicalMaterial(editedTemplate.getMaterial());
+    setMaterial(editedTemplate.getComposition(), editedTemplate.getMaterial());
     setCost(editedTemplate.getCost());
     statses.clear();
     addAll(statses, editedTemplate.getStats());
@@ -99,7 +99,8 @@ public class EquipmentTemplateEditModel implements IEquipmentTemplateEditModel {
     if (editedTemplate == null) {
       return !getDescription().getName().isEmpty() || !getDescription().getContent().isEmpty();
     }
-    return !Objects.equal(editedTemplate.getName(), getDescription().getName().getText()) || !Objects.equal(editedTemplate.getDescription(), getDescription().getContent().getText()) ||
+    return !Objects.equal(editedTemplate.getName(), getDescription().getName().getText()) || !Objects.equal(
+            editedTemplate.getDescription(), getDescription().getContent().getText()) ||
             !(editedTemplate.getComposition() == getMaterialComposition()) || !(editedTemplate.getMaterial() == getMagicalMaterial()) ||
             (getCost() != null && !getCost().equals(editedTemplate.getCost()));
   }
@@ -192,7 +193,7 @@ public class EquipmentTemplateEditModel implements IEquipmentTemplateEditModel {
     if (material == this.material) {
       return;
     }
-    if (!composition.requiresMaterial() && material != null) {
+    if (!composition.requiresMaterial() && material != NO_MAGICAL_MATERIAL) {
       return;
     }
     this.material = material;
@@ -208,10 +209,27 @@ public class EquipmentTemplateEditModel implements IEquipmentTemplateEditModel {
     if (composition.requiresMaterial()) {
       setMagicalMaterial(MagicalMaterial.Orichalcum);
     } else {
-      setMagicalMaterial(null);
+      setMagicalMaterial(NO_MAGICAL_MATERIAL);
     }
     compositionControl.announce().changeOccurred();
   }
+
+
+  private void setMaterial(MaterialComposition composition, MagicalMaterial material) {
+    if (composition != this.composition) {
+      this.composition = composition;
+    }
+    if (composition.requiresMaterial()) {
+      if (material != this.material) {
+        this.material = material;
+      }
+    } else {
+      setMagicalMaterial(NO_MAGICAL_MATERIAL);
+    }
+    compositionControl.announce().changeOccurred();
+    magicalMaterialControl.announce().changeOccurred();
+  }
+
 
   @Override
   public MaterialComposition getMaterialComposition() {

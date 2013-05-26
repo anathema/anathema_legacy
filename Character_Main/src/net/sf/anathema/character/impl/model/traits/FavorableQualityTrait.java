@@ -12,9 +12,9 @@ import net.sf.anathema.characterengine.quality.Name;
 import net.sf.anathema.characterengine.quality.QualityKey;
 import net.sf.anathema.characterengine.quality.QualityListener;
 import net.sf.anathema.exaltedengine.ExaltedEngine;
-import net.sf.anathema.exaltedengine.NumericValue;
 import net.sf.anathema.exaltedengine.attributes.Attribute;
-import net.sf.anathema.exaltedengine.attributes.SetValue;
+import net.sf.anathema.exaltedengine.numericquality.NumericValue;
+import net.sf.anathema.exaltedengine.numericquality.SetValue;
 import net.sf.anathema.lib.control.IChangeListener;
 import net.sf.anathema.lib.control.IIntValueChangedListener;
 

@@ -7,22 +7,31 @@ import net.sf.anathema.characterengine.quality.Name;
 import net.sf.anathema.characterengine.quality.QualityKey;
 import net.sf.anathema.characterengine.quality.Type;
 import net.sf.anathema.exaltedengine.attributes.AttributeFactory;
-import net.sf.anathema.exaltedengine.attributes.SetMaximumValue;
-import net.sf.anathema.exaltedengine.attributes.SetMinimumValue;
+import net.sf.anathema.exaltedengine.essence.EssenceFactory;
+import net.sf.anathema.exaltedengine.numericquality.SetMaximumValue;
+import net.sf.anathema.exaltedengine.numericquality.SetMinimumValue;
 
 public class ExaltedEngine {
 
   public static final Type ATTRIBUTE = new Type("Attribute");
+  public static final Type ESSENCE = new Type("Essence");
   private final DefaultEngine engine = new DefaultEngine();
 
   public ExaltedEngine() {
+    engine.setFactory(ESSENCE, new EssenceFactory());
     engine.setFactory(ATTRIBUTE, new AttributeFactory());
   }
 
   public Persona createCharacter() {
     Persona character = engine.createCharacter();
+    addEssence(character);
     addAttributes(character);
     return character;
+  }
+
+  private void addEssence(Persona character) {
+    character.execute(new AddQuality(new QualityKey(ESSENCE, new Name("Essence"))));
+    //character.execute(new SetMinimumValue(ESSENCE, 1));
   }
 
   private void addAttributes(Persona character) {

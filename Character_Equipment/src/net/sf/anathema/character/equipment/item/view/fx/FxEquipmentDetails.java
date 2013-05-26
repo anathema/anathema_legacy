@@ -2,6 +2,7 @@ package net.sf.anathema.character.equipment.item.view.fx;
 
 import javafx.application.Platform;
 import javafx.scene.Node;
+import net.miginfocom.layout.AC;
 import net.miginfocom.layout.CC;
 import net.sf.anathema.character.equipment.item.view.EquipmentDescriptionPanel;
 import net.sf.anathema.character.equipment.item.view.EquipmentDetails;
@@ -22,7 +23,7 @@ public class FxEquipmentDetails implements EquipmentDetails {
     Platform.runLater(new Runnable() {
       @Override
       public void run() {
-        outerPane = new MigPane(LayoutUtils.fillWithoutInsets().wrapAfter(1));
+        outerPane = new MigPane(LayoutUtils.fillWithoutInsets().wrapAfter(1), new AC().grow().fill());
       }
     });
   }
@@ -40,7 +41,7 @@ public class FxEquipmentDetails implements EquipmentDetails {
       public void run() {
         Node node = listView.getNode();
         BorderedTitledPane titledPane = BorderedTitledPane.Create(title, node);
-        outerPane.add(titledPane, new CC().pushX().grow().split(2));
+        outerPane.add(titledPane, new CC().push().grow());
       }
     });
     return listView;
@@ -52,7 +53,7 @@ public class FxEquipmentDetails implements EquipmentDetails {
       @Override
       public void run() {
         BorderedTitledPane titledPane = BorderedTitledPane.Create(title, descriptionPanel.getNode());
-        outerPane.add(titledPane, new CC().grow().pushX());
+        outerPane.add(titledPane, new CC().grow().push());
       }
     });
     return descriptionPanel;

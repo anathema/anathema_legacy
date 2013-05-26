@@ -1,4 +1,4 @@
-package net.sf.anathema.exaltedengine;
+package net.sf.anathema.exaltedengine.numericquality;
 
 import org.apache.commons.lang3.builder.EqualsBuilder;
 import org.apache.commons.lang3.builder.HashCodeBuilder;
