@@ -7,6 +7,7 @@ import net.sf.anathema.character.generic.equipment.weapon.IEquipmentStats;
 import net.sf.anathema.interaction.Command;
 import net.sf.anathema.interaction.Tool;
 import net.sf.anathema.lib.control.IChangeListener;
+import net.sf.anathema.lib.file.RelativePath;
 import net.sf.anathema.lib.resources.Resources;
 
 import java.util.ArrayList;
@@ -28,6 +29,7 @@ public class AddNewStats {
     final Tool newTool = statsListView.addTool();
     newTool.setTooltip(resources.getString(newStatsConfiguration.getTooltipKey()));
     newTool.setIcon(newStatsConfiguration.getIconPath());
+    newTool.setOverlay(new RelativePath("icons/ButtonPlus16.png"));
     newTool.setCommand(new Command() {
       @Override
       public void execute() {

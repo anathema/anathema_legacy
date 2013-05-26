@@ -6,6 +6,7 @@ import javafx.scene.control.Button;
 import javafx.scene.control.Tooltip;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+import jfxtras.labs.scene.control.MiniIconButton;
 import net.sf.anathema.interaction.Command;
 import net.sf.anathema.interaction.Tool;
 import net.sf.anathema.lib.file.RelativePath;
@@ -17,22 +18,34 @@ import java.util.List;
 public class FxButtonTool implements Tool {
 
   public static FxButtonTool ForToolbar() {
-    ImageView imageView = new ImageView();
-    Button button = new Button("", imageView);
-    return new FxButtonTool(button, new AdjustSize(button), new SetImage(imageView));
+    ImageView mainIcon = new ImageView();
+    ImageView miniIcon = new ImageView();
+    MiniIconButton button = createButton(mainIcon, miniIcon);
+    return new FxButtonTool(button, miniIcon, new AdjustSize(button), new SetImage(mainIcon));
   }
 
   public static FxButtonTool ForAnyPurpose() {
-    ImageView imageView = new ImageView();
-    Button button = new Button("", imageView);
-    return new FxButtonTool(button, new SetImage(imageView));
+    ImageView mainIcon = new ImageView();
+    ImageView miniIcon = new ImageView();
+    MiniIconButton button = createButton(mainIcon, miniIcon);
+    return new FxButtonTool(button, miniIcon, new SetImage(mainIcon));
+  }
+
+  private static MiniIconButton createButton(ImageView mainIcon, ImageView miniIcon) {
+    MiniIconButton button = new MiniIconButton();
+    button.setGraphic(mainIcon);
+    button.setMiniIcon(miniIcon);
+    button.setMiniIconRatio(0.33);
+    return button;
   }
 
   private final Button button;
+  private final ImageView overlay;
   private final List<ImageClosure> onLoad = new ArrayList<>();
 
-  public FxButtonTool(Button button, ImageClosure... actionsOnLoad) {
+  public FxButtonTool(Button button, ImageView overlay, ImageClosure... actionsOnLoad) {
     this.button = button;
+    this.overlay = overlay;
     Collections.addAll(onLoad, actionsOnLoad);
   }
 
@@ -45,6 +58,18 @@ public class FxButtonTool implements Tool {
         for (ImageClosure action : onLoad) {
           action.run(image);
         }
+      }
+    });
+  }
+
+
+  @Override
+  public void setOverlay(final RelativePath relativePath) {
+    Platform.runLater(new Runnable() {
+      @Override
+      public void run() {
+        Image image = new LoadImage(relativePath).run();
+        new SetImage(overlay).run(image);
       }
     });
   }

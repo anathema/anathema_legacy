@@ -6,6 +6,8 @@ public interface Tool {
 
   void setIcon(RelativePath relativePath);
 
+  void setOverlay(RelativePath relativePath);
+
   void setTooltip(String text);
 
   void setText(String text);

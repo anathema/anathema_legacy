@@ -31,6 +31,11 @@ public class ActionInteraction implements Tool {
   }
 
   @Override
+  public void setOverlay(RelativePath relativePath) {
+    throw new UnsupportedOperationException("We'll probably never need this.");
+  }
+
+  @Override
   public void setTooltip(String key) {
     action.setToolTipText(resources.getString(key));
   }
