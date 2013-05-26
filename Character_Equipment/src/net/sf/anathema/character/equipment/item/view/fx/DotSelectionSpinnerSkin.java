@@ -24,6 +24,7 @@ public class DotSelectionSpinnerSkin<T> extends SkinBase<ListSpinner<T>, ListSpi
 
   public static final String FILLED = "filled";
   public static final String EMPTY = "empty";
+  private static final String INVISIBLECONTAINER = "invisiblecontainer";
   private static final String RATING_PROPERTY = "RATING";
   private static final String MAXIMUM_PROPERTY = "MAX";
 
@@ -40,7 +41,7 @@ public class DotSelectionSpinnerSkin<T> extends SkinBase<ListSpinner<T>, ListSpi
 
   public DotSelectionSpinnerSkin(ListSpinner<T> control) {
     super(control, new ListSpinnerBehavior<>(control));
-    getStyleClass().add("invisiblecontainer");
+    getStyleClass().add(INVISIBLECONTAINER);
     createButtons();
     updateRating((Integer) getSkinnable().getValue());
     registerChangeListener(control.valueProperty(), RATING_PROPERTY);
@@ -73,7 +74,7 @@ public class DotSelectionSpinnerSkin<T> extends SkinBase<ListSpinner<T>, ListSpi
     int max = getMaximumValue();
     double width = getSkinnable().getWidth();
     double newRating = (x / width) * max;
-    if (newRating < 0.5) {
+    if (newRating < 0.4) {
       newRating = 0;
     } else {
       newRating = Utils.clamp(1, Math.ceil(newRating), getMaximumValue());
