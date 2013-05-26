@@ -52,9 +52,9 @@ public class DotSelectionSpinnerSkin<T> extends SkinBase<ListSpinner<T>, ListSpi
     @Override
     public void handle(MouseEvent event) {
       Point2D location = new Point2D(event.getSceneX(), event.getSceneY());
-      double overlaywidth = Math.min(dotContainer.getWidth(), dotContainer.sceneToLocal(location).getX());
+      double overlayWidth = Utils.clamp(0, dotContainer.sceneToLocal(location).getX(), dotContainer.getWidth());
       overlay.setVisible(true);
-      overlay.setWidth(overlaywidth);
+      overlay.setWidth(overlayWidth);
       overlay.setHeight(Dot.SIZE);
     }
   };
@@ -68,12 +68,23 @@ public class DotSelectionSpinnerSkin<T> extends SkinBase<ListSpinner<T>, ListSpi
   public DotSelectionSpinnerSkin(ListSpinner<T> control) {
     super(control, new ListSpinnerBehavior<>(control));
     getStyleClass().add(INVISIBLECONTAINER);
+    createOuterContainer();
+    createOverlay();
     createButtons();
+    updateRating((Integer) getSkinnable().getValue());
+    registerChangeListener(control.valueProperty(), RATING_PROPERTY);
+  }
+
+  private void createOuterContainer() {
+    outerContainer.setAlignment(Pos.CENTER_LEFT);
+    getChildren().setAll(outerContainer);
+  }
+
+  private void createOverlay() {
     overlay.setFill(new Color(0, 0, 0, 0.3));
     overlay.setStroke(Color.BLACK);
     overlay.setStrokeWidth(1);
-    updateRating((Integer) getSkinnable().getValue());
-    registerChangeListener(control.valueProperty(), RATING_PROPERTY);
+    outerContainer.getChildren().add(overlay);
   }
 
 
@@ -86,7 +97,6 @@ public class DotSelectionSpinnerSkin<T> extends SkinBase<ListSpinner<T>, ListSpi
   }
 
   private void createButtons() {
-    outerContainer.setAlignment(Pos.CENTER_LEFT);
     dotContainer.addEventHandler(MOUSE_CLICKED, updateRating);
     dotContainer.addEventHandler(MOUSE_DRAGGED, updateRating);
     dotContainer.addEventHandler(MOUSE_DRAGGED, updateOverlay);
@@ -95,8 +105,7 @@ public class DotSelectionSpinnerSkin<T> extends SkinBase<ListSpinner<T>, ListSpi
       Node backgroundNode = new Dot().create();
       dotContainer.getChildren().add(backgroundNode);
     }
-    outerContainer.getChildren().addAll(overlay, dotContainer);
-    getChildren().setAll(outerContainer);
+    outerContainer.getChildren().add(dotContainer);
   }
 
   private double calculateRating(Point2D location) {
