@@ -2,6 +2,7 @@ dependencies {
     compile 'com.miglayout:miglayout-swing:4.2'
     compile 'org.swinglabs.swingx:swingx-all:1.6.4'
     compile project(':Platform')
+    testCompile project(path: ':Platform', configuration: 'tests')
     testCompile parent.ext.testDependencies
 }
 
