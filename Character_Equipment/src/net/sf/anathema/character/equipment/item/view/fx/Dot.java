@@ -1,0 +1,74 @@
+package net.sf.anathema.character.equipment.item.view.fx;
+
+import javafx.scene.Group;
+import javafx.scene.Node;
+import javafx.scene.effect.BlurType;
+import javafx.scene.effect.InnerShadow;
+import javafx.scene.paint.Color;
+import javafx.scene.shape.Circle;
+import javafx.scene.shape.Ellipse;
+import javafx.scene.shape.Rectangle;
+import javafx.scene.shape.Shape;
+
+import static net.sf.anathema.character.equipment.item.view.fx.DotSelectionSpinnerSkin.FILLED;
+
+public class Dot {
+
+  /**Drawing code adapted from JFXtras SimpleIndicatorSkin.*/
+  public Node create() {
+    double size = 18;
+    Group indicator = prepareContainer();
+    Shape outerBounds = createBounds(size);
+    indicator.getChildren().add(outerBounds);
+    Circle frame = createFrame(size);
+    Circle corpus = createCorpus(size);
+    addInnerShadow(corpus);
+    Ellipse highlight = createHighlight(size);
+    indicator.getChildren().addAll(frame, corpus, highlight);
+    indicator.setCache(true);
+    return indicator;
+  }
+
+  private Group prepareContainer() {
+    Group indicator = new Group();
+    indicator.getStyleClass().add(FILLED);
+    indicator.getChildren().clear();
+    return indicator;
+  }
+
+  private Shape createBounds(double size) {
+    Shape outerBounds = new Rectangle(0, 0, size, size);
+    outerBounds.setOpacity(0.0);
+    return outerBounds;
+  }
+
+  private Circle createFrame(double size) {
+    Circle frame = new Circle(0.5 * size, 0.5 * size, 0.45 * size);
+    frame.getStyleClass().add("indicator-inner-frame-fill");
+    return frame;
+  }
+
+  private Circle createCorpus(double size) {
+    Circle corpus = new Circle(0.5 * size, 0.5 * size, 0.43 * size);
+    corpus.getStyleClass().add("indicator-main-fill");
+    return corpus;
+  }
+
+  private void addInnerShadow(Circle corpus) {
+    InnerShadow innerShadow = new InnerShadow();
+    innerShadow.setWidth(0.2880 * corpus.getLayoutBounds().getWidth());
+    innerShadow.setHeight(0.2880 * corpus.getLayoutBounds().getHeight());
+    innerShadow.setOffsetX(0.0);
+    innerShadow.setOffsetY(0.0);
+    innerShadow.setRadius(0.2880 * corpus.getLayoutBounds().getWidth());
+    innerShadow.setColor(Color.BLACK);
+    innerShadow.setBlurType(BlurType.GAUSSIAN);
+    corpus.setEffect(innerShadow);
+  }
+
+  private Ellipse createHighlight(double size) {
+    Ellipse highlight = new Ellipse(0.504 * size, 0.294 * size, 0.26 * size, 0.15 * size);
+    highlight.getStyleClass().add("indicator-highlight-fill");
+    return highlight;
+  }
+}
