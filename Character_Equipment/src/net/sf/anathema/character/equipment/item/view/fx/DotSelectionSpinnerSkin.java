@@ -38,7 +38,7 @@ public class DotSelectionSpinnerSkin<T> extends SkinBase<ListSpinner<T>, ListSpi
   private Pane container;
   private double rating = -1;
 
-  private final EventHandler<MouseEvent> mouseClickHandler = new EventHandler<MouseEvent>() {
+  private final EventHandler<MouseEvent> updateRating = new EventHandler<MouseEvent>() {
     @Override
     public void handle(MouseEvent event) {
       Point2D location = new Point2D(event.getSceneX(), event.getSceneY());
@@ -65,9 +65,9 @@ public class DotSelectionSpinnerSkin<T> extends SkinBase<ListSpinner<T>, ListSpi
 
   private void createButtons() {
     container = new HBox();
-    container.setOnMouseClicked(mouseClickHandler);
-    container.setOnMouseDragExited(mouseClickHandler);
-    container.setOnMouseDragged(mouseClickHandler);
+    container.setOnMouseClicked(updateRating);
+    container.setOnMouseDragExited(updateRating);
+    container.setOnMouseDragged(updateRating);
     for (int index = 0; index < getMaximumValue(); index++) {
       Node backgroundNode = createButton();
       container.getChildren().add(backgroundNode);
@@ -91,7 +91,7 @@ public class DotSelectionSpinnerSkin<T> extends SkinBase<ListSpinner<T>, ListSpi
 
   /**Drawing code adapted from JFXtras SimpleIndicatorSkin.*/
   private Node createButton() {
-    double size = 20;
+    double size = 18;
     Group indicator = prepareContainer();
     Shape outerBounds = createBounds(size);
     indicator.getChildren().add(outerBounds);
@@ -118,13 +118,13 @@ public class DotSelectionSpinnerSkin<T> extends SkinBase<ListSpinner<T>, ListSpi
   }
 
   private Circle createFrame(double size) {
-    Circle frame = new Circle(0.5 * size, 0.5 * size, 0.4 * size);
+    Circle frame = new Circle(0.5 * size, 0.5 * size, 0.45 * size);
     frame.getStyleClass().add("indicator-inner-frame-fill");
     return frame;
   }
 
   private Circle createCorpus(double size) {
-    Circle corpus = new Circle(0.5 * size, 0.5 * size, 0.38 * size);
+    Circle corpus = new Circle(0.5 * size, 0.5 * size, 0.43 * size);
     corpus.getStyleClass().add("indicator-main-fill");
     return corpus;
   }
