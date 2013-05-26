@@ -11,13 +11,13 @@
 }
 
 .empty {
-    -fx-fill: white;
-    -fx-stroke: black;
+    -fx-indicator-inner-color: derive(lightgrey, 120%);
+    -fx-indicator-outer-color: derive(lightgrey, 80%);
 }
 
 .filled {
-    -fx-fill: red;
-    -fx-stroke: black;
+    -fx-indicator-inner-color: derive(red, 120%);
+    -fx-indicator-outer-color: derive(red, 80%);
 }
 
 .invisiblecontainer {

@@ -8,7 +8,6 @@ import javafx.geometry.Point2D;
 import javafx.scene.Group;
 import javafx.scene.Node;
 import javafx.scene.effect.BlurType;
-import javafx.scene.effect.DropShadow;
 import javafx.scene.effect.InnerShadow;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.HBox;
@@ -20,7 +19,6 @@ import javafx.scene.shape.Rectangle;
 import javafx.scene.shape.Shape;
 import jfxtras.labs.internal.scene.control.behavior.ListSpinnerBehavior;
 import jfxtras.labs.scene.control.ListSpinner;
-import jfxtras.labs.util.Util;
 
 import java.util.ArrayList;
 import java.util.Collections;
@@ -32,8 +30,8 @@ import java.util.List;
 @SuppressWarnings("UnusedDeclaration")
 public class DotSelectionSpinnerSkin<T> extends SkinBase<ListSpinner<T>, ListSpinnerBehavior<T>> {
 
-  private static final String FILLED = "y";
-  private static final String EMPTY = "x";
+  private static final String FILLED = "filled";
+  private static final String EMPTY = "empty";
   private static final String RATING_PROPERTY = "RATING";
   private static final String MAXIMUM_PROPERTY = "MAX";
 
@@ -91,41 +89,21 @@ public class DotSelectionSpinnerSkin<T> extends SkinBase<ListSpinner<T>, ListSpi
   }
 
   private Node createButton() {
-    final double SIZE = 16;
-    final double WIDTH = SIZE;
-    final double HEIGHT = SIZE;
+    final double SIZE = 20;
 
     Group indicator = new Group();
-    indicator.setStyle("-fx-indicator-inner-color: " + Util.colorToCssColor(Color.RED.brighter()) +
-            "-fx-indicator-outer-color: " + Util.colorToCssColor(Color.RED.darker()));
+    indicator.getStyleClass().add(FILLED);
 
     indicator.getChildren().clear();
 
-    final Shape IBOUNDS = new Rectangle(0, 0, WIDTH, HEIGHT);
+    final Shape IBOUNDS = new Rectangle(0, 0, SIZE, SIZE);
     IBOUNDS.setOpacity(0.0);
     indicator.getChildren().add(IBOUNDS);
 
-    final Circle OUTER_FRAME = new Circle(0.5 * WIDTH, 0.5 * HEIGHT, 0.496 * WIDTH);
-    OUTER_FRAME.getStyleClass().add("indicator-outer-frame-fill");
-    OUTER_FRAME.setStroke(null);
-
-    final InnerShadow OUTER_FRAME_INNER_SHADOW = new InnerShadow();
-    OUTER_FRAME_INNER_SHADOW.setWidth(0.05 * OUTER_FRAME.getLayoutBounds().getWidth());
-    OUTER_FRAME_INNER_SHADOW.setHeight(0.05 * OUTER_FRAME.getLayoutBounds().getHeight());
-    OUTER_FRAME_INNER_SHADOW.setOffsetX(0.0);
-    OUTER_FRAME_INNER_SHADOW.setOffsetY(0.0);
-    OUTER_FRAME_INNER_SHADOW.setRadius(0.05 * OUTER_FRAME.getLayoutBounds().getWidth());
-    OUTER_FRAME_INNER_SHADOW.setColor(Color.color(0, 0, 0, 0.9));
-    OUTER_FRAME_INNER_SHADOW.setBlurType(BlurType.GAUSSIAN);
-    OUTER_FRAME_INNER_SHADOW.inputProperty().set(null);
-    OUTER_FRAME.setEffect(OUTER_FRAME_INNER_SHADOW);
-
-    final Circle INNER_FRAME = new Circle(0.5 * WIDTH, 0.5 * HEIGHT, 0.4 * WIDTH);
+    final Circle INNER_FRAME = new Circle(0.5 * SIZE, 0.5 * SIZE, 0.4 * SIZE);
     INNER_FRAME.getStyleClass().add("indicator-inner-frame-fill");
 
-    Circle main = new Circle(0.5 * WIDTH, 0.5 * HEIGHT, 0.38 * WIDTH);
-    main.setStyle("-fx-indicator-inner-color: " + Util.colorToCssColor(Color.RED.brighter()) +
-            "-fx-indicator-outer-color: " + Util.colorToCssColor(Color.RED.darker()));
+    Circle main = new Circle(0.5 * SIZE, 0.5 * SIZE, 0.38 * SIZE);
     main.getStyleClass().add("indicator-main-fill");
 
     final InnerShadow MAIN_INNER_SHADOW = new InnerShadow();
@@ -136,28 +114,13 @@ public class DotSelectionSpinnerSkin<T> extends SkinBase<ListSpinner<T>, ListSpi
     MAIN_INNER_SHADOW.setRadius(0.2880 * main.getLayoutBounds().getWidth());
     MAIN_INNER_SHADOW.setColor(Color.BLACK);
     MAIN_INNER_SHADOW.setBlurType(BlurType.GAUSSIAN);
+    main.setEffect(MAIN_INNER_SHADOW);
 
-    DropShadow mainGlow = new DropShadow();
-    mainGlow.setWidth(0.2880 * main.getLayoutBounds().getWidth());
-    mainGlow.setHeight(0.2880 * main.getLayoutBounds().getHeight());
-    mainGlow.setOffsetX(0.0);
-    mainGlow.setOffsetY(0.0);
-    mainGlow.setRadius(0.2880 * main.getLayoutBounds().getWidth());
-    mainGlow.setColor(Color.RED.brighter());
-    mainGlow.setBlurType(BlurType.GAUSSIAN);
-    mainGlow.inputProperty().set(MAIN_INNER_SHADOW);
-    //if (control.isGlowVisible()) {
-    //      main.setEffect(mainGlow);
-    //} else {
-      main.setEffect(MAIN_INNER_SHADOW);
-    //}
-
-    final Ellipse HIGHLIGHT = new Ellipse(0.504 * WIDTH, 0.294 * HEIGHT,
-            0.26 * WIDTH, 0.15 * HEIGHT);
+    final Ellipse HIGHLIGHT = new Ellipse(0.504 * SIZE, 0.294 * SIZE,
+            0.26 * SIZE, 0.15 * SIZE);
     HIGHLIGHT.getStyleClass().add("indicator-highlight-fill");
 
-    indicator.getChildren().addAll(OUTER_FRAME,
-            INNER_FRAME,
+    indicator.getChildren().addAll(INNER_FRAME,
             main,
             HIGHLIGHT);
     indicator.setCache(true);
@@ -184,12 +147,12 @@ public class DotSelectionSpinnerSkin<T> extends SkinBase<ListSpinner<T>, ListSpi
       boolean isFilled = styleClass.contains(FILLED);
       if (index < rating) {
         if (!isFilled) {
-         // styleClass.remove(EMPTY);
-          //styleClass.add(FILLED);
+          styleClass.remove(EMPTY);
+          styleClass.add(FILLED);
         }
       } else if (isFilled) {
-        //styleClass.remove(FILLED);
-        //styleClass.add(EMPTY);
+        styleClass.remove(FILLED);
+        styleClass.add(EMPTY);
       }
     }
   }
