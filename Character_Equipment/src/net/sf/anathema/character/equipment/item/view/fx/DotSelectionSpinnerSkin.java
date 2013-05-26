@@ -5,16 +5,24 @@ import com.sun.javafx.scene.control.skin.SkinBase;
 import javafx.collections.ObservableList;
 import javafx.event.EventHandler;
 import javafx.geometry.Point2D;
+import javafx.geometry.Pos;
 import javafx.scene.Node;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.Pane;
+import javafx.scene.layout.StackPane;
+import javafx.scene.paint.Color;
+import javafx.scene.shape.Rectangle;
 import jfxtras.labs.internal.scene.control.behavior.ListSpinnerBehavior;
 import jfxtras.labs.scene.control.ListSpinner;
 
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
+
+import static javafx.scene.input.MouseEvent.MOUSE_CLICKED;
+import static javafx.scene.input.MouseEvent.MOUSE_DRAGGED;
+import static javafx.scene.input.MouseEvent.MOUSE_RELEASED;
 
 /**
  * A heavily modified version of Jonathan Giles's RatingSkin from the ControlsFX project
@@ -28,9 +36,11 @@ public class DotSelectionSpinnerSkin<T> extends SkinBase<ListSpinner<T>, ListSpi
   private static final String RATING_PROPERTY = "RATING";
   private static final String MAXIMUM_PROPERTY = "MAX";
 
-  private Pane container;
-  private double rating = -1;
+  private StackPane outerContainer = new StackPane();
+  private Pane dotContainer = new HBox();
+  private Rectangle overlay = new Rectangle();
 
+  private double rating = -1;
   private final EventHandler<MouseEvent> updateRating = new EventHandler<MouseEvent>() {
     @Override
     public void handle(MouseEvent event) {
@@ -38,11 +48,30 @@ public class DotSelectionSpinnerSkin<T> extends SkinBase<ListSpinner<T>, ListSpi
       updateRating(Double.valueOf(calculateRating(location)).intValue());
     }
   };
+  private final EventHandler<MouseEvent> updateOverlay = new EventHandler<MouseEvent>() {
+    @Override
+    public void handle(MouseEvent event) {
+      Point2D location = new Point2D(event.getSceneX(), event.getSceneY());
+      double overlaywidth = Math.min(dotContainer.getWidth(), dotContainer.sceneToLocal(location).getX());
+      overlay.setVisible(true);
+      overlay.setWidth(overlaywidth);
+      overlay.setHeight(Dot.SIZE);
+    }
+  };
+  private final EventHandler<MouseEvent> hideOverlay = new EventHandler<MouseEvent>() {
+    @Override
+    public void handle(MouseEvent event) {
+      overlay.setVisible(false);
+    }
+  };
 
   public DotSelectionSpinnerSkin(ListSpinner<T> control) {
     super(control, new ListSpinnerBehavior<>(control));
     getStyleClass().add(INVISIBLECONTAINER);
     createButtons();
+    overlay.setFill(new Color(0, 0, 0, 0.3));
+    overlay.setStroke(Color.BLACK);
+    overlay.setStrokeWidth(1);
     updateRating((Integer) getSkinnable().getValue());
     registerChangeListener(control.valueProperty(), RATING_PROPERTY);
   }
@@ -57,19 +86,21 @@ public class DotSelectionSpinnerSkin<T> extends SkinBase<ListSpinner<T>, ListSpi
   }
 
   private void createButtons() {
-    container = new HBox();
-    container.setOnMouseClicked(updateRating);
-    container.setOnMouseDragExited(updateRating);
-    container.setOnMouseDragged(updateRating);
+    outerContainer.setAlignment(Pos.CENTER_LEFT);
+    dotContainer.addEventHandler(MOUSE_CLICKED, updateRating);
+    dotContainer.addEventHandler(MOUSE_DRAGGED, updateRating);
+    dotContainer.addEventHandler(MOUSE_DRAGGED, updateOverlay);
+    dotContainer.addEventHandler(MOUSE_RELEASED, hideOverlay);
     for (int index = 0; index < getMaximumValue(); index++) {
       Node backgroundNode = new Dot().create();
-      container.getChildren().add(backgroundNode);
+      dotContainer.getChildren().add(backgroundNode);
     }
-    getChildren().setAll(container);
+    outerContainer.getChildren().addAll(overlay, dotContainer);
+    getChildren().setAll(outerContainer);
   }
 
   private double calculateRating(Point2D location) {
-    Point2D pointInElement = container.sceneToLocal(location);
+    Point2D pointInElement = dotContainer.sceneToLocal(location);
     double x = pointInElement.getX();
     int max = getMaximumValue();
     double width = getSkinnable().getWidth();
@@ -95,7 +126,7 @@ public class DotSelectionSpinnerSkin<T> extends SkinBase<ListSpinner<T>, ListSpi
       getSkinnable().setValue((T) (Integer) Double.valueOf(rating).intValue());
     }
     int max = getMaximumValue();
-    List<Node> buttons = new ArrayList<>(container.getChildren());
+    List<Node> buttons = new ArrayList<>(dotContainer.getChildren());
     for (int index = 0; index < max; index++) {
       Node button = buttons.get(index);
       List<String> styleClass = button.getStyleClass();

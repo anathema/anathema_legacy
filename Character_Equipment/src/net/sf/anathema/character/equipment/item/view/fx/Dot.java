@@ -14,16 +14,17 @@ import static net.sf.anathema.character.equipment.item.view.fx.DotSelectionSpinn
 
 public class Dot {
 
+  public static final double SIZE = 18;
+
   /**Drawing code adapted from JFXtras SimpleIndicatorSkin.*/
   public Node create() {
-    double size = 18;
     Group indicator = prepareContainer();
-    Shape outerBounds = createBounds(size);
+    Shape outerBounds = createBounds(SIZE);
     indicator.getChildren().add(outerBounds);
-    Circle frame = createFrame(size);
-    Circle corpus = createCorpus(size);
+    Circle frame = createFrame(SIZE);
+    Circle corpus = createCorpus(SIZE);
     addInnerShadow(corpus);
-    Ellipse highlight = createHighlight(size);
+    Ellipse highlight = createHighlight(SIZE);
     indicator.getChildren().addAll(frame, corpus, highlight);
     indicator.setCache(true);
     return indicator;
