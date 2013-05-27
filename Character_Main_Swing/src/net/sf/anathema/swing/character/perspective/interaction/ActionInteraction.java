@@ -9,7 +9,6 @@ import net.sf.anathema.lib.file.RelativePath;
 import net.sf.anathema.lib.gui.CommandAction;
 import net.sf.anathema.lib.gui.action.SmartAction;
 import net.sf.anathema.lib.gui.icon.ImageProvider;
-import net.sf.anathema.lib.resources.Resources;
 import net.sf.anathema.platform.tool.ProxyAcceleratorMap;
 
 public class ActionInteraction implements Tool {
@@ -17,11 +16,6 @@ public class ActionInteraction implements Tool {
   private final CommandProxy commandProxy = new CommandProxy();
   private final SmartAction action = new CommandAction(commandProxy);
   private final ProxyAcceleratorMap acceleratorMap = new ProxyAcceleratorMap();
-  private final Resources resources;
-
-  public ActionInteraction(Resources resources) {
-    this.resources = resources;
-  }
 
   @Override
   public void setIcon(RelativePath relativePath) {
@@ -35,12 +29,12 @@ public class ActionInteraction implements Tool {
 
   @Override
   public void setTooltip(String key) {
-    action.setToolTipText(resources.getString(key));
+    action.setToolTipText(key);
   }
 
   @Override
   public void setText(String key) {
-    action.setName(resources.getString(key));
+    action.setName(key);
   }
 
   @Override

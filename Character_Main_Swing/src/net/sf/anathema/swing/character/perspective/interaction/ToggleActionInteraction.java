@@ -10,7 +10,6 @@ import net.sf.anathema.lib.file.RelativePath;
 import net.sf.anathema.lib.gui.CommandAction;
 import net.sf.anathema.lib.gui.action.SmartAction;
 import net.sf.anathema.lib.gui.icon.ImageProvider;
-import net.sf.anathema.lib.resources.Resources;
 
 import javax.swing.JToggleButton;
 
@@ -19,11 +18,6 @@ public class ToggleActionInteraction implements ToggleTool {
   private final CommandProxy commandProxy = new CommandProxy();
   private final SmartAction action = new CommandAction(commandProxy);
   private final JToggleButton button = new JToggleButton(action);
-  private final Resources resources;
-
-  public ToggleActionInteraction(Resources resources) {
-    this.resources = resources;
-  }
 
   @Override
   public void setIcon(RelativePath relativePath) {
@@ -37,12 +31,12 @@ public class ToggleActionInteraction implements ToggleTool {
 
   @Override
   public void setTooltip(String key) {
-    action.setToolTipText(resources.getString(key));
+    action.setToolTipText(key);
   }
 
   @Override
   public void setText(String key) {
-    action.setName(resources.getString(key));
+    action.setName(key);
   }
 
   @Override

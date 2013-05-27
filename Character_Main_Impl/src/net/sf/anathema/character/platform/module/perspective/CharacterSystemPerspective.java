@@ -28,7 +28,7 @@ public class CharacterSystemPerspective implements Perspective {
   @Override
   public void initContent(Container container, IApplicationModel applicationModel, Resources resources) {
     CharacterSystemModel systemModel = new CharacterSystemModel(applicationModel);
-    CharacterSystemView view = new CharacterSystemView(resources);
+    CharacterSystemView view = new CharacterSystemView();
     CharacterStackBridge bridge = new CharacterStackSwingBridge(applicationModel, view.getStackView());
     CharacterStackPresenter stackPresenter = new CharacterStackPresenter(bridge, systemModel);
     ShowOnSelect showOnSelect = new ShowOnSelect(stackPresenter);

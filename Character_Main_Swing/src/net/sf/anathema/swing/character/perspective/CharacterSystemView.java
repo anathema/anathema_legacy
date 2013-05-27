@@ -3,7 +3,6 @@ package net.sf.anathema.swing.character.perspective;
 import net.sf.anathema.character.perspective.CharacterGridView;
 import net.sf.anathema.framework.perspective.SwingPerspectivePane;
 import net.sf.anathema.fx.character.perspective.CharacterGridFxView;
-import net.sf.anathema.lib.resources.Resources;
 import net.sf.anathema.platform.fx.InteractionView;
 
 import javax.swing.JComponent;
@@ -17,8 +16,8 @@ public class CharacterSystemView {
   private final StackView stackView = new StackView();
   private final SwingInteractionView interactionView;
 
-  public CharacterSystemView(Resources resources) {
-    this.interactionView = new SwingInteractionView(resources);
+  public CharacterSystemView() {
+    this.interactionView = new SwingInteractionView();
     JPanel panel = createNavigationPanel();
     pane.setNavigationComponent(panel);
     pane.setContentComponent(stackView.getComponent());
