@@ -1,5 +1,6 @@
 package net.sf.anathema.lib.gui;
 
+import net.sf.anathema.framework.view.menu.AddToSwingComponent;
 import net.sf.anathema.interaction.Command;
 import net.sf.anathema.interaction.CommandProxy;
 import net.sf.anathema.interaction.Hotkey;
@@ -9,7 +10,6 @@ import net.sf.anathema.lib.file.RelativePath;
 import net.sf.anathema.lib.gui.action.SmartAction;
 import net.sf.anathema.lib.gui.icon.ImageProvider;
 
-import javax.swing.Action;
 import javax.swing.ImageIcon;
 
 public class SwingActionTool implements Tool {
@@ -58,8 +58,7 @@ public class SwingActionTool implements Tool {
     throw new NotYetImplementedException();
   }
 
-  public Action getAction() {
-    return action;
+  public void addTo(AddToSwingComponent addTo) {
+    addTo.add(action);
   }
-
 }

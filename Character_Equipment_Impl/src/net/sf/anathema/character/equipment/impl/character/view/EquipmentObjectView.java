@@ -86,7 +86,7 @@ public class EquipmentObjectView implements IEquipmentObjectView, ITaskPaneGroup
   @Override
   public Tool addAction() {
     SwingActionTool tool = new SwingActionTool();
-    taskGroup.add(tool.getAction());
+    tool.addTo(new AddToTaskGroup(taskGroup));
     return tool;
   }
 

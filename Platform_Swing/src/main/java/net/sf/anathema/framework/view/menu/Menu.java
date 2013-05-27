@@ -27,7 +27,7 @@ public class Menu implements IMenu {
     SwingActionTool tool = new SwingActionTool();
     tool.setText(label);
     tool.setCommand(action);
-    menu.add(tool.getAction());
+    tool.addTo(new AddToSwingMenu(menu));
   }
 
   @Override
