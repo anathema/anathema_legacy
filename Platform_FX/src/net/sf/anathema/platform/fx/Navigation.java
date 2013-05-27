@@ -49,7 +49,8 @@ public class Navigation {
       @Override
       public void run() {
         toolBar.getItems().add(fxButtonTool.getNode());
-        fxButtonTool.registerAcceleratorsWith(new FxAcceleratorMap(toolBar.getScene().getAccelerators()));
+        FxAcceleratorMap acceleratorMap = new FxAcceleratorMap(toolBar.getScene().getAccelerators());
+        fxButtonTool.registerHotkeyIn(acceleratorMap);
       }
     });
     return fxButtonTool;

@@ -139,7 +139,7 @@ public class FxButtonTool implements Tool {
     return button;
   }
 
-  public void registerAcceleratorsWith(AcceleratorMap acceleratorMap) {
+  public void registerHotkeyIn(AcceleratorMap acceleratorMap) {
     this.acceleratorMap.setActualMap(acceleratorMap);
   }
 }

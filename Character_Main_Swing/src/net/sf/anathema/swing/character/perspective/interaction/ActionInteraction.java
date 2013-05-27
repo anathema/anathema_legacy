@@ -5,7 +5,6 @@ import net.sf.anathema.interaction.AcceleratorMap;
 import net.sf.anathema.interaction.CommandProxy;
 import net.sf.anathema.interaction.Hotkey;
 import net.sf.anathema.interaction.Tool;
-import net.sf.anathema.lib.exception.NotYetImplementedException;
 import net.sf.anathema.lib.file.RelativePath;
 import net.sf.anathema.lib.gui.CommandAction;
 import net.sf.anathema.lib.gui.action.SmartAction;
