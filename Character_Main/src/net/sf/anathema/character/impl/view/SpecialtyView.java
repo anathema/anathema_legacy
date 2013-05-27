@@ -66,7 +66,7 @@ public class SpecialtyView extends AbstractTraitView implements ISpecialtyView {
     traitPanel.remove(specialtyLabel);
     traitPanel.remove(getValueDisplay().getComponent());
     traitPanel.remove(deleteButton);
-    traitPanel.revalidate(); // Remove this line to keep the positions of specialties constant.
+    traitPanel.revalidate();
     traitPanel.repaint();
   }
 
