@@ -1,6 +1,6 @@
 package net.sf.anathema.swing.character.perspective.interaction;
 
-import net.sf.anathema.framework.perspective.ToolBar;
+import net.sf.anathema.framework.view.menu.AddToSwingComponent;
 import net.sf.anathema.interaction.AcceleratorMap;
 import net.sf.anathema.interaction.CommandProxy;
 import net.sf.anathema.interaction.Hotkey;
@@ -63,11 +63,11 @@ public class ActionInteraction implements Tool {
     acceleratorMap.register(hotkey, commandProxy);
   }
 
-  public void addTo(ToolBar toolbar) {
-    toolbar.addTools(action);
-  }
-
   public void registerHotkeyIn(AcceleratorMap acceleratorMap) {
     this.acceleratorMap.setActualMap(acceleratorMap);
+  }
+
+  public void addTo(AddToSwingComponent addTo) {
+    addTo.add(action);
   }
 }

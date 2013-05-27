@@ -28,7 +28,7 @@ public class SwingInteractionView implements InteractionView {
   @Override
   public Tool addTool() {
     ActionInteraction tool = new ActionInteraction(resources);
-    tool.addTo(toolbar);
+    tool.addTo(new AddToToolbar(toolbar));
     JComponent component = getComponent();
     SwingAcceleratorMap acceleratorMap = new SwingAcceleratorMap(component.getActionMap(),
             component.getInputMap(WHEN_IN_FOCUSED_WINDOW));
@@ -39,7 +39,7 @@ public class SwingInteractionView implements InteractionView {
   @Override
   public ToggleTool addToggleTool() {
     ToggleActionInteraction tool = new ToggleActionInteraction(resources);
-    tool.addTo(toolbar);
+    tool.addTo(new AddToToolbar(toolbar));
     return tool;
   }
 }

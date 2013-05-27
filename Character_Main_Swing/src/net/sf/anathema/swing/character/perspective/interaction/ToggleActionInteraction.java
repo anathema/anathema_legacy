@@ -1,6 +1,6 @@
 package net.sf.anathema.swing.character.perspective.interaction;
 
-import net.sf.anathema.framework.perspective.ToolBar;
+import net.sf.anathema.framework.view.menu.AddToSwingComponent;
 import net.sf.anathema.interaction.Command;
 import net.sf.anathema.interaction.CommandProxy;
 import net.sf.anathema.interaction.Hotkey;
@@ -75,7 +75,7 @@ public class ToggleActionInteraction implements ToggleTool {
     button.setSelected(false);
   }
 
-  public void addTo(ToolBar toolbar) {
-    toolbar.add(button);
+  public void addTo(AddToSwingComponent addTo) {
+    addTo.add(action);
   }
 }
