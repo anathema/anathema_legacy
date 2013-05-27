@@ -27,6 +27,9 @@ public class SwingInteractionView implements InteractionView {
   public Tool addTool() {
     ActionInteraction tool = new ActionInteraction(resources);
     tool.addTo(toolbar);
+    SwingAcceleratorMap acceleratorMap = new SwingAcceleratorMap(getComponent().getActionMap(),
+            getComponent().getInputMap(JComponent.WHEN_IN_FOCUSED_WINDOW));
+    tool.registerHotkeyIn(acceleratorMap);
     return tool;
   }
 

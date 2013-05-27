@@ -1,8 +1,8 @@
 package net.sf.anathema.lib.gui;
 
 import net.sf.anathema.interaction.Command;
+import net.sf.anathema.interaction.CommandProxy;
 import net.sf.anathema.interaction.Hotkey;
-import net.sf.anathema.interaction.NullCommand;
 import net.sf.anathema.interaction.Tool;
 import net.sf.anathema.lib.exception.NotYetImplementedException;
 import net.sf.anathema.lib.file.RelativePath;
@@ -11,17 +11,11 @@ import net.sf.anathema.lib.gui.icon.ImageProvider;
 
 import javax.swing.Action;
 import javax.swing.ImageIcon;
-import java.awt.Component;
 
 public class SwingActionTool implements Tool {
 
-  private Command command = new NullCommand();
-  private final SmartAction action = new SmartAction() {
-    @Override
-    protected void execute(Component parentComponent) {
-      command.execute();
-    }
-  };
+  private CommandProxy command = new CommandProxy();
+  private final SmartAction action = new CommandAction(command);
 
   @Override
   public void setIcon(RelativePath relativePath) {
@@ -56,7 +50,7 @@ public class SwingActionTool implements Tool {
 
   @Override
   public void setCommand(Command command) {
-    this.command = command;
+    this.command.setDelegate(command);
   }
 
   @Override
@@ -67,4 +61,5 @@ public class SwingActionTool implements Tool {
   public Action getAction() {
     return action;
   }
+
 }

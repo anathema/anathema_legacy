@@ -2,6 +2,7 @@ package net.sf.anathema.character.platform.module.perspective;
 
 import net.sf.anathema.character.perspective.model.model.ItemSelectionModel;
 import net.sf.anathema.interaction.Command;
+import net.sf.anathema.interaction.Hotkey;
 import net.sf.anathema.interaction.Tool;
 import net.sf.anathema.lib.file.RelativePath;
 
@@ -21,6 +22,7 @@ public class SaveInteractionPresenter {
     initializeAppearance();
     initializeEnabling();
     initializeCommand();
+    interaction.setHotkey(new Hotkey('S'));
   }
 
   private void initializeAppearance() {

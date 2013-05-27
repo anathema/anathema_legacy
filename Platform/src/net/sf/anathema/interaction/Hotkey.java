@@ -10,4 +10,8 @@ public class Hotkey {
   public String asString() {
     return character.toString();
   }
+
+  public char asCharacter() {
+    return character;
+  }
 }

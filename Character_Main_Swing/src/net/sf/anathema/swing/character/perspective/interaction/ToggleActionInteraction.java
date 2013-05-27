@@ -7,22 +7,17 @@ import net.sf.anathema.interaction.Hotkey;
 import net.sf.anathema.interaction.ToggleTool;
 import net.sf.anathema.lib.exception.NotYetImplementedException;
 import net.sf.anathema.lib.file.RelativePath;
+import net.sf.anathema.lib.gui.CommandAction;
 import net.sf.anathema.lib.gui.action.SmartAction;
 import net.sf.anathema.lib.gui.icon.ImageProvider;
 import net.sf.anathema.lib.resources.Resources;
 
 import javax.swing.JToggleButton;
-import java.awt.Component;
 
 public class ToggleActionInteraction implements ToggleTool {
 
   private final CommandProxy commandProxy = new CommandProxy();
-  private final SmartAction action = new SmartAction() {
-    @Override
-    protected void execute(Component parentComponent) {
-      commandProxy.execute();
-    }
-  };
+  private final SmartAction action = new CommandAction(commandProxy);
   private final JToggleButton button = new JToggleButton(action);
   private final Resources resources;
 
