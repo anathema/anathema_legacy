@@ -11,6 +11,7 @@ import net.sf.anathema.lib.control.IChangeListener;
 import net.sf.anathema.lib.control.ObjectValueListener;
 import net.sf.anathema.lib.file.RelativePath;
 import net.sf.anathema.lib.resources.Resources;
+import net.sf.anathema.platform.Hotkey;
 
 public class SaveEquipmentTemplateAction {
   private final Resources resources;
@@ -27,6 +28,7 @@ public class SaveEquipmentTemplateAction {
     saveTool.setTooltip(resources.getString("Equipment.Creation.Item.SaveActionTooltip"));
     initListening(saveTool);
     saveTool.setCommand(new SaveChangedEquipment());
+    saveTool.setHotkey(new Hotkey('s'));
   }
 
   private void initListening(Tool saveTool) {

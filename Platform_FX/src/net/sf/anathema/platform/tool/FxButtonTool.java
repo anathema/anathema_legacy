@@ -10,12 +10,15 @@ import jfxtras.labs.scene.control.MiniIconButton;
 import net.sf.anathema.interaction.Command;
 import net.sf.anathema.interaction.Tool;
 import net.sf.anathema.lib.file.RelativePath;
+import net.sf.anathema.platform.Hotkey;
+import net.sf.anathema.platform.fx.AcceleratorMap;
 
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
 public class FxButtonTool implements Tool {
+
 
   public static FxButtonTool ForToolbar() {
     ImageView mainIcon = new ImageView();
@@ -42,6 +45,8 @@ public class FxButtonTool implements Tool {
   private final Button button;
   private final ImageView overlay;
   private final List<ImageClosure> onLoad = new ArrayList<>();
+  private final ProxyAcceleratorMap acceleratorMap = new ProxyAcceleratorMap();
+  private Command command;
 
   public FxButtonTool(Button button, ImageView overlay, ImageClosure... actionsOnLoad) {
     this.button = button;
@@ -116,6 +121,7 @@ public class FxButtonTool implements Tool {
 
   @Override
   public void setCommand(final Command command) {
+    this.command = command;
     Platform.runLater(new Runnable() {
       @Override
       public void run() {
@@ -124,7 +130,16 @@ public class FxButtonTool implements Tool {
     });
   }
 
+  @Override
+  public void setHotkey(Hotkey key) {
+    acceleratorMap.register(key, command);
+  }
+
   public Node getNode() {
     return button;
+  }
+
+  public void registerAcceleratorsWith(AcceleratorMap acceleratorMap) {
+    this.acceleratorMap.setActualMap(acceleratorMap);
   }
 }

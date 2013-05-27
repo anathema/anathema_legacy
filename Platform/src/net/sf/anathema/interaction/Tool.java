@@ -1,6 +1,7 @@
 package net.sf.anathema.interaction;
 
 import net.sf.anathema.lib.file.RelativePath;
+import net.sf.anathema.platform.Hotkey;
 
 public interface Tool {
 
@@ -17,4 +18,6 @@ public interface Tool {
   void disable();
 
   void setCommand(Command command);
+
+  void setHotkey(Hotkey s);
 }
