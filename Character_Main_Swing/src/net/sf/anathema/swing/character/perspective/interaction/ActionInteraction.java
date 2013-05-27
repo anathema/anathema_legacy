@@ -34,7 +34,7 @@ public class ActionInteraction implements Tool {
 
   @Override
   public void setOverlay(RelativePath relativePath) {
-    throw new UnsupportedOperationException("We'll probably never need this.");
+    throw new UnsupportedOperationException("Urs: We should never need this.");
   }
 
   @Override
