@@ -8,7 +8,7 @@ public class Hotkey {
   }
 
   public String asString() {
-    return character.toString();
+    return String.valueOf(character);
   }
 
   public char asCharacter() {
