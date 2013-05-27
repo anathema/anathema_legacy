@@ -10,6 +10,8 @@ import net.sf.anathema.swing.character.perspective.interaction.ToggleActionInter
 
 import javax.swing.JComponent;
 
+import static javax.swing.JComponent.WHEN_IN_FOCUSED_WINDOW;
+
 public class SwingInteractionView implements InteractionView {
 
   private final PerspectiveToolBar toolbar = new PerspectiveToolBar();
@@ -27,8 +29,9 @@ public class SwingInteractionView implements InteractionView {
   public Tool addTool() {
     ActionInteraction tool = new ActionInteraction(resources);
     tool.addTo(toolbar);
-    SwingAcceleratorMap acceleratorMap = new SwingAcceleratorMap(getComponent().getActionMap(),
-            getComponent().getInputMap(JComponent.WHEN_IN_FOCUSED_WINDOW));
+    JComponent component = getComponent();
+    SwingAcceleratorMap acceleratorMap = new SwingAcceleratorMap(component.getActionMap(),
+            component.getInputMap(WHEN_IN_FOCUSED_WINDOW));
     tool.registerHotkeyIn(acceleratorMap);
     return tool;
   }
