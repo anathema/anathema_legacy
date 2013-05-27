@@ -1,13 +1,13 @@
 package net.sf.anathema.lib.gui;
 
 import net.sf.anathema.interaction.Command;
+import net.sf.anathema.interaction.Hotkey;
 import net.sf.anathema.interaction.NullCommand;
 import net.sf.anathema.interaction.Tool;
 import net.sf.anathema.lib.exception.NotYetImplementedException;
 import net.sf.anathema.lib.file.RelativePath;
 import net.sf.anathema.lib.gui.action.SmartAction;
 import net.sf.anathema.lib.gui.icon.ImageProvider;
-import net.sf.anathema.platform.Hotkey;
 
 import javax.swing.Action;
 import javax.swing.ImageIcon;

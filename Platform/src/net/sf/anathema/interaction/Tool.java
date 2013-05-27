@@ -1,7 +1,6 @@
 package net.sf.anathema.interaction;
 
 import net.sf.anathema.lib.file.RelativePath;
-import net.sf.anathema.platform.Hotkey;
 
 public interface Tool {
 

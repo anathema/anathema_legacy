@@ -6,12 +6,12 @@ import net.sf.anathema.character.equipment.item.view.EquipmentNavigation;
 import net.sf.anathema.character.equipment.template.IEquipmentTemplate;
 import net.sf.anathema.framework.view.SwingApplicationFrame;
 import net.sf.anathema.interaction.Command;
+import net.sf.anathema.interaction.Hotkey;
 import net.sf.anathema.interaction.Tool;
 import net.sf.anathema.lib.control.IChangeListener;
 import net.sf.anathema.lib.control.ObjectValueListener;
 import net.sf.anathema.lib.file.RelativePath;
 import net.sf.anathema.lib.resources.Resources;
-import net.sf.anathema.platform.Hotkey;
 
 public class SaveEquipmentTemplateAction {
   private final Resources resources;

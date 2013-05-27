@@ -1,4 +1,4 @@
-package net.sf.anathema.platform;
+package net.sf.anathema.interaction;
 
 public class Hotkey {
   private Character character;

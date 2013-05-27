@@ -7,11 +7,11 @@ import javafx.scene.control.Tooltip;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import jfxtras.labs.scene.control.MiniIconButton;
+import net.sf.anathema.interaction.AcceleratorMap;
 import net.sf.anathema.interaction.Command;
+import net.sf.anathema.interaction.Hotkey;
 import net.sf.anathema.interaction.Tool;
 import net.sf.anathema.lib.file.RelativePath;
-import net.sf.anathema.platform.Hotkey;
-import net.sf.anathema.platform.fx.AcceleratorMap;
 
 import java.util.ArrayList;
 import java.util.Collections;

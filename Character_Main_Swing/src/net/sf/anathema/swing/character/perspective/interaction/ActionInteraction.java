@@ -2,13 +2,13 @@ package net.sf.anathema.swing.character.perspective.interaction;
 
 import net.sf.anathema.framework.perspective.ToolBar;
 import net.sf.anathema.interaction.CommandProxy;
+import net.sf.anathema.interaction.Hotkey;
 import net.sf.anathema.interaction.Tool;
 import net.sf.anathema.lib.exception.NotYetImplementedException;
 import net.sf.anathema.lib.file.RelativePath;
 import net.sf.anathema.lib.gui.action.SmartAction;
 import net.sf.anathema.lib.gui.icon.ImageProvider;
 import net.sf.anathema.lib.resources.Resources;
-import net.sf.anathema.platform.Hotkey;
 
 import java.awt.Component;
 
