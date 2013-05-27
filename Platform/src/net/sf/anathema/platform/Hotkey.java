@@ -6,4 +6,8 @@ public class Hotkey {
   public Hotkey(Character character) {
     this.character = character;
   }
+
+  public String asString() {
+    return character.toString();
+  }
 }
