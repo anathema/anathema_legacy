@@ -4,8 +4,8 @@ import net.sf.anathema.framework.perspective.PerspectiveToolBar;
 import net.sf.anathema.interaction.ToggleTool;
 import net.sf.anathema.interaction.Tool;
 import net.sf.anathema.platform.fx.InteractionView;
-import net.sf.anathema.swing.character.perspective.interaction.ActionInteraction;
-import net.sf.anathema.swing.character.perspective.interaction.ToggleActionInteraction;
+import net.sf.anathema.swing.interaction.ActionInteraction;
+import net.sf.anathema.swing.interaction.ToggleActionInteraction;
 
 import javax.swing.JComponent;
 

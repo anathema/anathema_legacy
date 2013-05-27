@@ -1,8 +1,4 @@
-package net.sf.anathema.platform.tool;
-
-import net.sf.anathema.interaction.AcceleratorMap;
-import net.sf.anathema.interaction.Command;
-import net.sf.anathema.interaction.Hotkey;
+package net.sf.anathema.interaction;
 
 import java.util.HashMap;
 import java.util.Map;

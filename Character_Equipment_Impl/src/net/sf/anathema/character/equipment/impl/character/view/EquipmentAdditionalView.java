@@ -10,8 +10,8 @@ import net.sf.anathema.character.library.taskpane.TaskPaneView;
 import net.sf.anathema.framework.swing.IView;
 import net.sf.anathema.framework.swing.selection.ListObjectSelectionView;
 import net.sf.anathema.interaction.Tool;
-import net.sf.anathema.lib.gui.SwingActionTool;
 import net.sf.anathema.lib.gui.selection.IListObjectSelectionView;
+import net.sf.anathema.swing.interaction.ActionInteraction;
 
 import javax.swing.JComponent;
 import javax.swing.JPanel;
@@ -62,7 +62,7 @@ public class EquipmentAdditionalView implements IEquipmentAdditionalView, IView 
 
   @Override
   public Tool addToolButton() {
-    SwingActionTool tool = new SwingActionTool();
+    ActionInteraction tool = new ActionInteraction();
     tool.addTo(new AddToSwingPanel(buttonPanel));
     return tool;
   }

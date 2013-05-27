@@ -10,6 +10,7 @@ import jfxtras.labs.scene.control.MiniIconButton;
 import net.sf.anathema.interaction.AcceleratorMap;
 import net.sf.anathema.interaction.Command;
 import net.sf.anathema.interaction.Hotkey;
+import net.sf.anathema.interaction.ProxyAcceleratorMap;
 import net.sf.anathema.interaction.Tool;
 import net.sf.anathema.lib.file.RelativePath;
 

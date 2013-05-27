@@ -1,21 +1,23 @@
-package net.sf.anathema.swing.character.perspective.interaction;
+package net.sf.anathema.swing.interaction;
 
 import net.sf.anathema.framework.view.menu.AddToSwingComponent;
-import net.sf.anathema.interaction.AcceleratorMap;
+import net.sf.anathema.interaction.Command;
 import net.sf.anathema.interaction.CommandProxy;
 import net.sf.anathema.interaction.Hotkey;
-import net.sf.anathema.interaction.Tool;
+import net.sf.anathema.interaction.ToggleTool;
+import net.sf.anathema.lib.exception.NotYetImplementedException;
 import net.sf.anathema.lib.file.RelativePath;
 import net.sf.anathema.lib.gui.CommandAction;
 import net.sf.anathema.lib.gui.action.SmartAction;
 import net.sf.anathema.lib.gui.icon.ImageProvider;
-import net.sf.anathema.platform.tool.ProxyAcceleratorMap;
 
-public class ActionInteraction implements Tool {
+import javax.swing.JToggleButton;
+
+public class ToggleActionInteraction implements ToggleTool {
 
   private final CommandProxy commandProxy = new CommandProxy();
   private final SmartAction action = new CommandAction(commandProxy);
-  private final ProxyAcceleratorMap acceleratorMap = new ProxyAcceleratorMap();
+  private final JToggleButton button = new JToggleButton(action);
 
   @Override
   public void setIcon(RelativePath relativePath) {
@@ -24,7 +26,7 @@ public class ActionInteraction implements Tool {
 
   @Override
   public void setOverlay(RelativePath relativePath) {
-    throw new UnsupportedOperationException("Urs: We should never need this.");
+    throw new UnsupportedOperationException("We'll probably never need this.");
   }
 
   @Override
@@ -48,17 +50,23 @@ public class ActionInteraction implements Tool {
   }
 
   @Override
-  public void setCommand(net.sf.anathema.interaction.Command command) {
+  public void setCommand(Command command) {
     commandProxy.setDelegate(command);
   }
 
   @Override
-  public void setHotkey(Hotkey hotkey) {
-    acceleratorMap.register(hotkey, commandProxy);
+  public void setHotkey(Hotkey s) {
+    throw new NotYetImplementedException();
   }
 
-  public void registerHotkeyIn(AcceleratorMap acceleratorMap) {
-    this.acceleratorMap.setActualMap(acceleratorMap);
+  @Override
+  public void select() {
+    button.setSelected(true);
+  }
+
+  @Override
+  public void deselect() {
+    button.setSelected(false);
   }
 
   public void addTo(AddToSwingComponent addTo) {

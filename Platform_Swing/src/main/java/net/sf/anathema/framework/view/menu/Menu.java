@@ -1,7 +1,7 @@
 package net.sf.anathema.framework.view.menu;
 
 import net.sf.anathema.interaction.Command;
-import net.sf.anathema.lib.gui.SwingActionTool;
+import net.sf.anathema.swing.interaction.ActionInteraction;
 
 import javax.swing.JMenu;
 
@@ -24,7 +24,7 @@ public class Menu implements IMenu {
 
   @Override
   public void addMenuItem(Command action, String label) {
-    SwingActionTool tool = new SwingActionTool();
+    ActionInteraction tool = new ActionInteraction();
     tool.setText(label);
     tool.setCommand(action);
     tool.addTo(new AddToSwingMenu(menu));

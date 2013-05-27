@@ -4,11 +4,11 @@ import net.miginfocom.swing.MigLayout;
 import net.sf.anathema.character.equipment.character.view.IEquipmentObjectView;
 import net.sf.anathema.character.library.taskpane.ITaskPaneGroupView;
 import net.sf.anathema.interaction.Tool;
-import net.sf.anathema.lib.gui.SwingActionTool;
 import net.sf.anathema.lib.gui.action.ActionWidgetFactory;
 import net.sf.anathema.lib.gui.action.SmartToggleAction;
 import net.sf.anathema.lib.gui.layout.LayoutUtils;
 import net.sf.anathema.lib.model.BooleanModel;
+import net.sf.anathema.swing.interaction.ActionInteraction;
 import org.jdesktop.swingx.JXTaskPane;
 
 import javax.swing.JCheckBox;
@@ -85,7 +85,7 @@ public class EquipmentObjectView implements IEquipmentObjectView, ITaskPaneGroup
 
   @Override
   public Tool addAction() {
-    SwingActionTool tool = new SwingActionTool();
+    ActionInteraction tool = new ActionInteraction();
     tool.addTo(new AddToTaskGroup(taskGroup));
     return tool;
   }
