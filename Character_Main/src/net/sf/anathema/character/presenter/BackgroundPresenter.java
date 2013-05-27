@@ -19,14 +19,13 @@ import net.sf.anathema.framework.presenter.view.ContentView;
 import net.sf.anathema.framework.presenter.view.IButtonControlledComboEditView;
 import net.sf.anathema.framework.presenter.view.SimpleViewContentView;
 import net.sf.anathema.framework.view.util.ContentProperties;
+import net.sf.anathema.interaction.Command;
 import net.sf.anathema.lib.collection.IdentityMapping;
 import net.sf.anathema.lib.control.ObjectValueListener;
 import net.sf.anathema.lib.registry.IIdentificateRegistry;
 import net.sf.anathema.lib.resources.Resources;
 
 import javax.swing.Icon;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 import java.util.Arrays;
 import java.util.HashMap;
 import java.util.Map;
@@ -120,9 +119,9 @@ public class BackgroundPresenter implements IContentPresenter {
     IRemovableTraitView<?> backgroundView =
             configurationView.addBackgroundView(deleteIcon, backgroundString, background.getCurrentValue(), background.getMaximalValue());
     new TraitPresenter(background, backgroundView).initPresentation();
-    backgroundView.addButtonListener(new ActionListener() {
+    backgroundView.addButtonListener(new Command() {
       @Override
-      public void actionPerformed(ActionEvent e) {
+      public void execute() {
         configuration.removeBackground(background);
       }
     });

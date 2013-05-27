@@ -6,6 +6,7 @@ import net.sf.anathema.character.library.removableentry.presenter.IRemovableEntr
 import net.sf.anathema.character.library.util.ProxyComboBoxEditor;
 import net.sf.anathema.framework.presenter.resources.BasicUi;
 import net.sf.anathema.framework.presenter.view.IButtonControlledObjectSelectionView;
+import net.sf.anathema.interaction.Command;
 import net.sf.anathema.lib.control.IChangeListener;
 import net.sf.anathema.lib.control.ObjectValueListener;
 import net.sf.anathema.lib.control.legality.LegalityColorProvider;
@@ -20,8 +21,6 @@ import javax.swing.Icon;
 import javax.swing.JList;
 import javax.swing.ListCellRenderer;
 import java.awt.Component;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -177,9 +176,9 @@ private void initEntryPresentation() {
   private void addEntry(BasicUi basicUi, final Identified language) {
     IRemovableEntryView entryView = view.addEntryView(basicUi.getRemoveIcon(), null, getDisplayString(language));
     viewsByEntry.put(language, entryView);
-    entryView.addButtonListener(new ActionListener() {
+    entryView.addButtonListener(new Command() {
       @Override
-      public void actionPerformed(ActionEvent e) {
+      public void execute() {
         model.removeEntry(language);
       }
     });

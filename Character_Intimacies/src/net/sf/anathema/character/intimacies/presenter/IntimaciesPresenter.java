@@ -12,6 +12,7 @@ import net.sf.anathema.character.library.selection.AbstractStringEntryTraitPrese
 import net.sf.anathema.character.library.selection.IStringSelectionView;
 import net.sf.anathema.character.library.trait.presenter.TraitPresenter;
 import net.sf.anathema.framework.presenter.resources.BasicUi;
+import net.sf.anathema.interaction.Command;
 import net.sf.anathema.lib.control.IBooleanValueChangedListener;
 import net.sf.anathema.lib.control.IChangeListener;
 import net.sf.anathema.lib.control.legality.LegalityColorProvider;
@@ -22,9 +23,6 @@ import net.sf.anathema.lib.resources.Resources;
 import net.sf.anathema.lib.workflow.labelledvalue.ILabelledAlotmentView;
 import net.sf.anathema.lib.workflow.labelledvalue.IValueView;
 
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
-
 public class IntimaciesPresenter extends AbstractStringEntryTraitPresenter<IIntimacy> implements Presenter {
 
   private final IIntimaciesView view;
@@ -32,11 +30,8 @@ public class IntimaciesPresenter extends AbstractStringEntryTraitPresenter<IInti
   private final IAdditionalModel additionalModel;
   private final IIntimaciesModel model;
 
-  public IntimaciesPresenter(
-      IIntimaciesModel model,
-      IAdditionalModel additionalModel,
-      IIntimaciesView view,
-      Resources resources) {
+  public IntimaciesPresenter(IIntimaciesModel model, IAdditionalModel additionalModel, IIntimaciesView view,
+                             Resources resources) {
     super(model, view);
     this.model = model;
     this.additionalModel = additionalModel;
@@ -59,16 +54,18 @@ public class IntimaciesPresenter extends AbstractStringEntryTraitPresenter<IInti
   }
 
   private void initOverviewView() {
-    final IOverviewCategory creationOverview = view.createOverview(resources.getString("Intimacies.Overview.BorderLabel"));
+    final IOverviewCategory creationOverview = view.createOverview(
+            resources.getString("Intimacies.Overview.BorderLabel"));
     final ILabelledAlotmentView freeIntimaciesView = creationOverview.addAlotmentView(
-        resources.getString("Intimacies.Overview.Free"), 2);
+            resources.getString("Intimacies.Overview.Free"), 2);
     final ILabelledAlotmentView totalIntimaciesView = creationOverview.addAlotmentView(
-        resources.getString("Intimacies.Overview.Maximum"), 2);
+            resources.getString("Intimacies.Overview.Maximum"), 2);
     final IValueView<Integer> bonusPointsView = creationOverview.addIntegerValueView(
-        resources.getString("Intimacies.Overview.BonusPoints"), 2);
-    final IOverviewCategory experienceOverview = view.createOverview(resources.getString("Intimacies.Overview.BorderLabel"));
+            resources.getString("Intimacies.Overview.BonusPoints"), 2);
+    final IOverviewCategory experienceOverview = view.createOverview(
+            resources.getString("Intimacies.Overview.BorderLabel"));
     final ILabelledAlotmentView experienceMaximumView = experienceOverview.addAlotmentView(
-        resources.getString("Intimacies.Overview.Maximum"), 2);
+            resources.getString("Intimacies.Overview.Maximum"), 2);
     model.addModelChangeListener(new IChangeListener() {
       @Override
       public void changeOccurred() {
@@ -105,17 +102,13 @@ public class IntimaciesPresenter extends AbstractStringEntryTraitPresenter<IInti
                            IOverviewCategory creationOverview) {
     if (experienced) {
       view.setOverview(experienceOverview);
-    }
-    else {
+    } else {
       view.setOverview(creationOverview);
     }
   }
 
-  private void recalculateOverview(
-      ILabelledAlotmentView freeIntimaciesView,
-      ILabelledAlotmentView totalIntimaciesView,
-      IValueView<Integer> bonusPointsView,
-      ILabelledAlotmentView experienceMaximumView) {
+  private void recalculateOverview(ILabelledAlotmentView freeIntimaciesView, ILabelledAlotmentView totalIntimaciesView,
+                                   IValueView<Integer> bonusPointsView, ILabelledAlotmentView experienceMaximumView) {
     adjustBonusPointsOverview(freeIntimaciesView, model.getEntries().size(), model.getFreeIntimacies());
     adjustTotalOverview(totalIntimaciesView, model.getEntries().size(), model.getIntimaciesLimit());
     adjustTotalOverview(experienceMaximumView, model.getEntries().size(), model.getIntimaciesLimit());
@@ -143,17 +136,15 @@ public class IntimaciesPresenter extends AbstractStringEntryTraitPresenter<IInti
   }
 
   @Override
-  protected IRemovableTraitView< ? > createSubView(BasicUi basicUi, final IIntimacy intimacy) {
-    final IRemovableTraitView<IToggleButtonTraitView< ? >> intimacyView = view.addEntryView(
-        basicUi.getRemoveIcon(),
-        null,
-        intimacy.getName());
+  protected IRemovableTraitView<?> createSubView(BasicUi basicUi, final IIntimacy intimacy) {
+    final IRemovableTraitView<IToggleButtonTraitView<?>> intimacyView = view.addEntryView(basicUi.getRemoveIcon(), null,
+            intimacy.getName());
     intimacyView.setMaximum(model.getCompletionValue());
     intimacyView.setValue(intimacy.getTrait().getCurrentValue());
     new TraitPresenter(intimacy.getTrait(), intimacyView).initPresentation();
-    intimacyView.addButtonListener(new ActionListener() {
+    intimacyView.addButtonListener(new Command() {
       @Override
-      public void actionPerformed(ActionEvent e) {
+      public void execute() {
         model.removeEntry(intimacy);
       }
     });

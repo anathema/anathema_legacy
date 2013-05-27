@@ -1,10 +1,10 @@
 package net.sf.anathema.character.library.removableentry.presenter;
 
-import java.awt.event.ActionListener;
+import net.sf.anathema.interaction.Command;
 
 public interface IRemovableEntryView {
 
-  void addButtonListener(ActionListener listener);
+  void addButtonListener(Command command);
 
   void setButtonEnabled(boolean enabled);
 

@@ -3,13 +3,14 @@ package net.sf.anathema.character.library.trait.view;
 import net.miginfocom.layout.CC;
 import net.miginfocom.swing.MigLayout;
 import net.sf.anathema.character.library.intvalue.IRemovableTraitView;
+import net.sf.anathema.interaction.Command;
+import net.sf.anathema.lib.gui.CommandAction;
 import net.sf.anathema.lib.gui.layout.SwingLayoutUtils;
 
 import javax.swing.Icon;
 import javax.swing.JButton;
 import javax.swing.JPanel;
 import java.awt.Dimension;
-import java.awt.event.ActionListener;
 
 import static net.sf.anathema.lib.gui.layout.LayoutUtils.fillWithoutInsets;
 
@@ -41,8 +42,8 @@ public class RearButtonTraitViewWrapper<K extends ITraitView< ? >> extends Abstr
   }
 
   @Override
-  public void addButtonListener(ActionListener listener) {
-    button.addActionListener(listener);
+  public void addButtonListener(final Command command) {
+    button.setAction(new CommandAction(command));
   }
 
   @Override

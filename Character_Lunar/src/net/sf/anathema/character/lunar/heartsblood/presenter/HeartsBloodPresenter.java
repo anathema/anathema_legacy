@@ -6,6 +6,7 @@ import net.sf.anathema.character.library.removableentry.presenter.IRemovableEntr
 import net.sf.anathema.character.lunar.heartsblood.view.HeartsBloodView;
 import net.sf.anathema.character.lunar.heartsblood.view.IAnimalFormSelectionView;
 import net.sf.anathema.framework.presenter.resources.BasicUi;
+import net.sf.anathema.interaction.Command;
 import net.sf.anathema.lib.control.IIntValueChangedListener;
 import net.sf.anathema.lib.control.ObjectValueListener;
 import net.sf.anathema.lib.gui.Presenter;
@@ -37,8 +38,8 @@ public class HeartsBloodPresenter implements Presenter {
     String animalStrengthString = resources.getString("Lunar.HeartsBlood.AnimalStrength");
     String animalAppearanceString = resources.getString("Lunar.HeartsBlood.AnimalAppearance");
     BasicUi basicUi = new BasicUi();
-    IAnimalFormSelectionView selectionView = view.createAnimalFormSelectionView(basicUi.getAddIcon(), animalFormString, animalStrengthString,
-            animalDexterityString, animalStaminaString, animalAppearanceString);
+    IAnimalFormSelectionView selectionView = view.createAnimalFormSelectionView(basicUi.getAddIcon(), animalFormString,
+            animalStrengthString, animalDexterityString, animalStaminaString, animalAppearanceString);
     initSelectionViewListening(selectionView);
     initModelListening(basicUi, selectionView);
     for (IAnimalForm form : model.getEntries()) {
@@ -91,9 +92,9 @@ public class HeartsBloodPresenter implements Presenter {
             (" (" + form.getStrength() + "/" + form.getDexterity() + "/" + form.getStamina() +
                     "/" + form.getAppearance()) + ")");
     viewsByForm.put(form, formView);
-    formView.addButtonListener(new ActionListener() {
+    formView.addButtonListener(new Command() {
       @Override
-      public void actionPerformed(ActionEvent e) {
+      public void execute() {
         model.removeEntry(form);
       }
     });

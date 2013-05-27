@@ -2,6 +2,8 @@ package net.sf.anathema.character.library.removableentry.view;
 
 import net.miginfocom.layout.CC;
 import net.sf.anathema.character.library.removableentry.presenter.IRemovableEntryView;
+import net.sf.anathema.interaction.Command;
+import net.sf.anathema.lib.gui.CommandAction;
 import net.sf.anathema.lib.gui.layout.SwingLayoutUtils;
 
 import javax.swing.Icon;
@@ -9,7 +11,6 @@ import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import java.awt.Dimension;
-import java.awt.event.ActionListener;
 
 public class RemovableStringView implements IRemovableEntryView {
 
@@ -31,8 +32,8 @@ public class RemovableStringView implements IRemovableEntryView {
   }
 
   @Override
-  public void addButtonListener(ActionListener listener) {
-    button.addActionListener(listener);
+  public void addButtonListener(final Command command) {
+    button.setAction(new CommandAction(command));
   }
 
   @Override

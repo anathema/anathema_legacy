@@ -9,11 +9,9 @@ import net.sf.anathema.character.library.trait.presenter.TraitPresenter;
 import net.sf.anathema.character.library.trait.subtrait.ISubTrait;
 import net.sf.anathema.character.library.trait.view.SimpleTraitView;
 import net.sf.anathema.framework.presenter.resources.BasicUi;
+import net.sf.anathema.interaction.Command;
 import net.sf.anathema.lib.gui.Presenter;
 import net.sf.anathema.lib.resources.Resources;
-
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 
 public class CraftPresenter extends AbstractStringEntryTraitPresenter<ISubTrait> implements Presenter {
 
@@ -85,9 +83,9 @@ public class CraftPresenter extends AbstractStringEntryTraitPresenter<ISubTrait>
     IRemovableTraitView< ? > craftView = view.addEntryView(basicUi.getRemoveIcon(), craft, name);
     craftView.setValue(craft.getCurrentValue());
     new TraitPresenter(craft, craftView).initPresentation();
-    craftView.addButtonListener(new ActionListener() {
+    craftView.addButtonListener(new Command() {
       @Override
-      public void actionPerformed(ActionEvent e) {
+      public void execute() {
         model.removeEntry(craft);
       }
     });
