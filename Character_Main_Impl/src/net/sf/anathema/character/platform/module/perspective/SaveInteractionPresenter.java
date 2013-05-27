@@ -5,6 +5,7 @@ import net.sf.anathema.interaction.Command;
 import net.sf.anathema.interaction.Hotkey;
 import net.sf.anathema.interaction.Tool;
 import net.sf.anathema.lib.file.RelativePath;
+import net.sf.anathema.lib.resources.Resources;
 
 import java.io.IOException;
 
@@ -12,10 +13,12 @@ public class SaveInteractionPresenter {
 
   private final ItemSelectionModel model;
   private final Tool interaction;
+  private Resources resources;
 
-  public SaveInteractionPresenter(ItemSelectionModel model, Tool interaction) {
+  public SaveInteractionPresenter(ItemSelectionModel model, Tool interaction, Resources resources) {
     this.model = model;
     this.interaction = interaction;
+    this.resources = resources;
   }
 
   public void initPresentation() {
@@ -26,7 +29,7 @@ public class SaveInteractionPresenter {
   }
 
   private void initializeAppearance() {
-    interaction.setTooltip("AnathemaPersistence.SaveAction.Tooltip");
+    interaction.setTooltip(resources.getString("AnathemaPersistence.SaveAction.Tooltip"));
     interaction.setIcon(new RelativePath("icons/TaskBarSave24.png"));
   }
 

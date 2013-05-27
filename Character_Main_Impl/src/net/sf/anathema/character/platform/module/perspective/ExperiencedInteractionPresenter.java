@@ -4,14 +4,17 @@ import net.sf.anathema.character.perspective.model.model.ItemSelectionModel;
 import net.sf.anathema.interaction.Command;
 import net.sf.anathema.interaction.ToggleTool;
 import net.sf.anathema.lib.file.RelativePath;
+import net.sf.anathema.lib.resources.Resources;
 
 public class ExperiencedInteractionPresenter {
   private ItemSelectionModel model;
   private ToggleTool interaction;
+  private Resources resources;
 
-  public ExperiencedInteractionPresenter(ItemSelectionModel model, ToggleTool interaction) {
+  public ExperiencedInteractionPresenter(ItemSelectionModel model, ToggleTool interaction, Resources resources) {
     this.model = model;
     this.interaction = interaction;
+    this.resources = resources;
   }
 
   public void initPresentation() {
@@ -23,7 +26,7 @@ public class ExperiencedInteractionPresenter {
 
   private void initializeAppearance() {
     interaction.setIcon(new RelativePath("icons/ToolXp.png"));
-    interaction.setTooltip("CharacterTool.ToExperienced.Tooltip");
+    interaction.setTooltip(resources.getString("CharacterTool.ToExperienced.Tooltip"));
   }
 
   private void initializeEnabling() {

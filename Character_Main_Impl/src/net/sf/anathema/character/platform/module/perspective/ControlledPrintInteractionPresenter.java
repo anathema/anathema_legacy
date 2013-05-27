@@ -25,7 +25,7 @@ public class ControlledPrintInteractionPresenter {
 
   private void initializeAppearance() {
     interaction.setIcon(new RelativePath("icons/TaskBarPDFArrow24.png"));
-    interaction.setTooltip("Anathema.Reporting.Menu.PrintItem.Name");
+    interaction.setTooltip(resources.getString("Anathema.Reporting.Menu.PrintItem.Name"));
   }
 
   private void initializeEnabling() {

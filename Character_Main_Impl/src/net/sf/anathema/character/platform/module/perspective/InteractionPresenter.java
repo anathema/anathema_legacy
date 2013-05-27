@@ -16,8 +16,8 @@ public class InteractionPresenter {
   private CharacterGridView gridView;
   private Selector<CharacterIdentifier> selector;
 
-  public InteractionPresenter(ItemSelectionModel model, InteractionView view, Resources resources, CharacterGridView gridView,
-                              Selector<CharacterIdentifier> selector) {
+  public InteractionPresenter(ItemSelectionModel model, InteractionView view, Resources resources,
+                              CharacterGridView gridView, Selector<CharacterIdentifier> selector) {
     this.model = model;
     this.view = view;
     this.resources = resources;
@@ -35,7 +35,7 @@ public class InteractionPresenter {
 
   private void initSaveInteraction() {
     Tool tool = view.addTool();
-    new SaveInteractionPresenter(model, tool).initPresentation();
+    new SaveInteractionPresenter(model, tool, resources).initPresentation();
   }
 
   private void initNewInteraction() {
@@ -51,6 +51,6 @@ public class InteractionPresenter {
   }
 
   private void initExperiencedInteraction() {
-    new ExperiencedInteractionPresenter(model, view.addToggleTool()).initPresentation();
+    new ExperiencedInteractionPresenter(model, view.addToggleTool(), resources).initPresentation();
   }
 }

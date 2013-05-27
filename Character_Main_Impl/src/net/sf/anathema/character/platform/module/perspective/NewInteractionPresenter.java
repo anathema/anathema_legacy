@@ -20,8 +20,8 @@ public class NewInteractionPresenter {
   private CharacterGridView view;
   private Selector<CharacterIdentifier> selector;
 
-  public NewInteractionPresenter(ItemSelectionModel model, Tool interaction, Resources resources, CharacterGridView view,
-                                 Selector<CharacterIdentifier> selector) {
+  public NewInteractionPresenter(ItemSelectionModel model, Tool interaction, Resources resources,
+                                 CharacterGridView view, Selector<CharacterIdentifier> selector) {
     this.model = model;
     this.interaction = interaction;
     this.resources = resources;
@@ -44,7 +44,7 @@ public class NewInteractionPresenter {
   }
 
   private void initializeAppearance() {
-    interaction.setTooltip("AnathemaCore.Tools.New.Name");
+    interaction.setTooltip(resources.getString("AnathemaCore.Tools.New.Name"));
     interaction.setIcon(new RelativePath("icons/TaskBarNew24.png"));
   }
 
