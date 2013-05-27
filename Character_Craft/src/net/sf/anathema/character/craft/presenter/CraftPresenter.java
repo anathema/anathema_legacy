@@ -30,7 +30,7 @@ public class CraftPresenter extends AbstractStringEntryTraitPresenter<ISubTrait>
   public void initPresentation() {
     String labelText = resources.getString("Crafts.SelectionLabel");
     BasicUi basicUi = new BasicUi();
-    IStringSelectionView selectionView = view.addSelectionView(labelText, basicUi.getAddIcon());
+    IStringSelectionView selectionView = view.addSelectionView(labelText, basicUi.getAddIconPath());
     initSelectionViewListening(selectionView);
     initModelListening(basicUi, selectionView);
     for (ISubTrait craft : model.getEntries()) {

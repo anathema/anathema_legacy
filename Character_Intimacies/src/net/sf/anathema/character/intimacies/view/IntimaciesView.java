@@ -15,8 +15,10 @@ import net.sf.anathema.character.library.trait.IModifiableCapTrait;
 import net.sf.anathema.character.library.trait.view.RearButtonTraitViewWrapper;
 import net.sf.anathema.character.library.trait.view.RearToggleButtonTraitViewWrapper;
 import net.sf.anathema.character.library.trait.view.SimpleTraitView;
-import net.sf.anathema.framework.value.IntegerViewFactory;
 import net.sf.anathema.framework.swing.IView;
+import net.sf.anathema.framework.value.IntegerViewFactory;
+import net.sf.anathema.lib.file.RelativePath;
+import net.sf.anathema.lib.gui.icon.ImageProvider;
 
 import javax.swing.Icon;
 import javax.swing.JComponent;
@@ -47,8 +49,8 @@ public class IntimaciesView extends AbstractRemovableEntryView<IRemovableTraitVi
   }
 
   @Override
-  public IStringSelectionView addSelectionView(String labelText, Icon addIcon) {
-    return new StringSelectionView(mainPanel, labelText, addIcon);
+  public IStringSelectionView addSelectionView(String labelText, RelativePath addIcon) {
+    return new StringSelectionView(mainPanel, labelText, new ImageProvider().getImageIcon(addIcon));
   }
 
   @Override

@@ -12,7 +12,7 @@ public class BasicUi extends AbstractUI {
   }
 
   public Icon getAddIcon() {
-    return getIcon(new RelativePath("icons/ButtonPlus16.png"));
+    return getIcon(getAddIconPath());
   }
 
   public Icon getClearIcon() {
@@ -50,5 +50,9 @@ public class BasicUi extends AbstractUI {
 
   public RelativePath getRemoveIconPath() {
     return new RelativePath("icons/ButtonMinus16.png");
+  }
+
+  public RelativePath getAddIconPath() {
+    return new RelativePath("icons/ButtonPlus16.png");
   }
 }
