@@ -9,6 +9,7 @@ import javafx.scene.image.ImageView;
 import jfxtras.labs.scene.control.MiniIconButton;
 import net.sf.anathema.interaction.AcceleratorMap;
 import net.sf.anathema.interaction.Command;
+import net.sf.anathema.interaction.CommandProxy;
 import net.sf.anathema.interaction.Hotkey;
 import net.sf.anathema.interaction.ProxyAcceleratorMap;
 import net.sf.anathema.interaction.Tool;
@@ -47,12 +48,18 @@ public class FxButtonTool implements Tool {
   private final ImageView overlay;
   private final List<ImageClosure> onLoad = new ArrayList<>();
   private final ProxyAcceleratorMap acceleratorMap = new ProxyAcceleratorMap();
-  private Command command;
+  private final CommandProxy command = new CommandProxy();
 
-  public FxButtonTool(Button button, ImageView overlay, ImageClosure... actionsOnLoad) {
+  public FxButtonTool(final Button button, ImageView overlay, ImageClosure... actionsOnLoad) {
     this.button = button;
     this.overlay = overlay;
     Collections.addAll(onLoad, actionsOnLoad);
+    Platform.runLater(new Runnable() {
+      @Override
+      public void run() {
+        button.setOnAction(new Execute(command));
+      }
+    });
   }
 
   @Override
@@ -122,13 +129,7 @@ public class FxButtonTool implements Tool {
 
   @Override
   public void setCommand(final Command command) {
-    this.command = command;
-    Platform.runLater(new Runnable() {
-      @Override
-      public void run() {
-        button.setOnAction(new Execute(command));
-      }
-    });
+    this.command.setDelegate(command);
   }
 
   @Override
@@ -136,11 +137,11 @@ public class FxButtonTool implements Tool {
     acceleratorMap.register(key, command);
   }
 
-  public Node getNode() {
-    return button;
+  public void registerHotkeyIn(AcceleratorMap actualMap) {
+    acceleratorMap.setActualMap(actualMap);
   }
 
-  public void registerHotkeyIn(AcceleratorMap acceleratorMap) {
-    this.acceleratorMap.setActualMap(acceleratorMap);
+  public Node getNode() {
+    return button;
   }
 }
