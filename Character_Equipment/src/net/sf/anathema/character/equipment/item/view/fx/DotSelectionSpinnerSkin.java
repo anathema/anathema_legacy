@@ -2,18 +2,23 @@ package net.sf.anathema.character.equipment.item.view.fx;
 
 import com.sun.javafx.Utils;
 import com.sun.javafx.scene.control.skin.SkinBase;
+import javafx.animation.KeyFrame;
+import javafx.animation.KeyValue;
+import javafx.animation.Timeline;
 import javafx.collections.ObservableList;
 import javafx.event.EventHandler;
 import javafx.geometry.Insets;
 import javafx.geometry.Point2D;
 import javafx.geometry.Pos;
 import javafx.scene.Node;
+import javafx.scene.effect.Bloom;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.Pane;
 import javafx.scene.layout.StackPane;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Rectangle;
+import javafx.util.Duration;
 import jfxtras.labs.internal.scene.control.behavior.ListSpinnerBehavior;
 import jfxtras.labs.scene.control.ListSpinner;
 
@@ -146,12 +151,38 @@ public class DotSelectionSpinnerSkin<T> extends SkinBase<ListSpinner<T>, ListSpi
         if (!isFilled) {
           styleClass.remove(EMPTY);
           styleClass.add(FILLED);
+          animateFill(button);
         }
       } else if (isFilled) {
         styleClass.remove(FILLED);
         styleClass.add(EMPTY);
+        animateDrain(button);
       }
     }
+  }
+
+  private void animateDrain(Node button) {
+    Bloom bloom = new Bloom(0.0);
+    button.setEffect(bloom);
+    Timeline timeline = new Timeline();
+    KeyValue keyValue = new KeyValue(bloom.thresholdProperty(), 1.0);
+    KeyFrame keyFrame = new KeyFrame(Duration.millis(50), keyValue);
+    KeyValue keyValue2 = new KeyValue(bloom.thresholdProperty(), 0.0);
+    KeyFrame keyFrame1 = new KeyFrame(Duration.millis(500), keyValue2);
+    timeline.getKeyFrames().addAll(keyFrame, keyFrame1);
+    timeline.play();
+  }
+
+  private void animateFill(Node button) {
+    Bloom bloom = new Bloom(0.0);
+    button.setEffect(bloom);
+    Timeline timeline = new Timeline();
+    KeyValue keyValue = new KeyValue(bloom.thresholdProperty(), 1.0);
+    KeyFrame keyFrame = new KeyFrame(Duration.millis(500), keyValue);
+    KeyValue keyValue2 = new KeyValue(bloom.thresholdProperty(), 0.0);
+    KeyFrame keyFrame1 = new KeyFrame(Duration.millis(50), keyValue2);
+    timeline.getKeyFrames().addAll(keyFrame, keyFrame1);
+    timeline.play();
   }
 
   private int getMaximumValue() {

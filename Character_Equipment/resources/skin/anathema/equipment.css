@@ -16,8 +16,8 @@
 }
 
 .filled {
-    -fx-indicator-inner-color: derive(red, 120%);
-    -fx-indicator-outer-color: derive(red, 80%);
+    -fx-indicator-inner-color: derive(purple, 120%);
+    -fx-indicator-outer-color: derive(purple, 80%);
 }
 
 .invisiblecontainer {
