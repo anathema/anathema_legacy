@@ -28,14 +28,14 @@ public class MagicLearnView implements IMagicLearnView {
   private final Announcer<IMagicViewListener> control = Announcer.to(IMagicViewListener.class);
   private JList learnOptionsList = new JList(new DefaultListModel());
   private final JList learnedList = new JList(new DefaultListModel());
+  private final List<JButton> centerButtons = new ArrayList<>();
   private final List<JButton> endButtons = new ArrayList<>();
-  private JButton addButton;
 
   public void init(final IMagicLearnProperties properties) {
     learnOptionsList.setCellRenderer(properties.getAvailableMagicRenderer());
     learnOptionsList.setSelectionMode(properties.getAvailableListSelectionMode());
     learnedList.setCellRenderer(properties.getLearnedMagicRenderer());
-    addButton = createAddMagicButton(properties.getAddButtonIcon(), properties.getAddButtonToolTip());
+    final JButton addButton = createAddMagicButton(properties.getAddButtonIcon(), properties.getAddButtonToolTip());
     addOptionListListener(new ListSelectionListener() {
       @Override
       public void valueChanged(ListSelectionEvent e) {
@@ -45,7 +45,8 @@ public class MagicLearnView implements IMagicLearnView {
     JButton removeButton = createRemoveMagicButton(
             properties.getRemoveButtonIcon(),
             properties.getRemoveButtonToolTip());
-    endButtons.add(removeButton);
+    centerButtons.add(addButton);
+    centerButtons.add(removeButton);
     addSelectionListListener(createLearnedListListener(removeButton, learnedList));
   }
 
@@ -119,15 +120,17 @@ public class MagicLearnView implements IMagicLearnView {
     return button;
   }
 
-  /**
-   * Takes up 4 columns in GridDialogLayouted-Panel
-   */
   public void addTo(JPanel panel) {
     panel.add(createScrollPane(learnOptionsList), new CC().grow().push());
-    panel.add(addButton);
+    addButtonPanel(panel, centerButtons);
     panel.add(createScrollPane(learnedList), new CC().grow().push());
+    List<JButton> buttons = endButtons;
+    addButtonPanel(panel, buttons);
+  }
+
+  private void addButtonPanel(JPanel panel, List<JButton> buttons) {
     JPanel buttonPanel = new JPanel(new GridLayout(0, 1));
-    for (JButton button : endButtons) {
+    for (JButton button : buttons) {
       buttonPanel.add(button);
     }
     panel.add(buttonPanel);

@@ -22,7 +22,7 @@ public abstract class AbstractMagicLearnProperties implements IMagicLearnPropert
 
   @Override
   public Icon getRemoveButtonIcon() {
-    return new BasicUi().getRemoveIcon();
+    return new BasicUi().getLeftArrowIcon();
   }
 
   protected final Resources getResources() {
