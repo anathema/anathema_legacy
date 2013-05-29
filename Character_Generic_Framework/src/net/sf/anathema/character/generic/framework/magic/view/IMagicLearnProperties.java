@@ -18,6 +18,4 @@ public interface IMagicLearnProperties {
   ListCellRenderer getLearnedMagicRenderer();
   
   boolean isMagicSelectionAvailable(Object selectedValue);
-
-  int getAvailableListSelectionMode();
 }

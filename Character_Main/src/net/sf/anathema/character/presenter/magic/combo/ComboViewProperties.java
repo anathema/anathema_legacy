@@ -13,7 +13,6 @@ import net.sf.anathema.lib.resources.Resources;
 
 import javax.swing.Icon;
 import javax.swing.ListCellRenderer;
-import javax.swing.ListSelectionModel;
 
 public final class ComboViewProperties extends AbstractMagicLearnProperties implements IComboViewProperties {
   private final IComboConfiguration comboConfiguration;
@@ -58,11 +57,6 @@ public final class ComboViewProperties extends AbstractMagicLearnProperties impl
   @Override
   public ListCellRenderer getAvailableMagicRenderer() {
     return new ComboLegalityCharmRenderer(getResources(), charmInfoStringProvider, comboConfiguration);
-  }
-
-  @Override
-  public int getAvailableListSelectionMode() {
-    return ListSelectionModel.SINGLE_SELECTION;
   }
 
   @Override

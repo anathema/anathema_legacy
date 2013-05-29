@@ -23,6 +23,8 @@ import java.util.ArrayList;
 import java.util.Comparator;
 import java.util.List;
 
+import static javax.swing.ListSelectionModel.SINGLE_SELECTION;
+
 public class MagicLearnView implements IMagicLearnView {
 
   private final Announcer<IMagicViewListener> control = Announcer.to(IMagicViewListener.class);
@@ -33,7 +35,7 @@ public class MagicLearnView implements IMagicLearnView {
 
   public void init(final IMagicLearnProperties properties) {
     learnOptionsList.setCellRenderer(properties.getAvailableMagicRenderer());
-    learnOptionsList.setSelectionMode(properties.getAvailableListSelectionMode());
+    learnOptionsList.setSelectionMode(SINGLE_SELECTION);
     learnedList.setCellRenderer(properties.getLearnedMagicRenderer());
     final JButton addButton = createAddMagicButton(properties.getAddButtonIcon(), properties.getAddButtonToolTip());
     addOptionListListener(new ListSelectionListener() {

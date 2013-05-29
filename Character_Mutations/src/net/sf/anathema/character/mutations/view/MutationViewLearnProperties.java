@@ -14,7 +14,6 @@ import javax.swing.JButton;
 import javax.swing.JComponent;
 import javax.swing.JList;
 import javax.swing.ListCellRenderer;
-import javax.swing.ListSelectionModel;
 import javax.swing.event.ListSelectionEvent;
 import javax.swing.event.ListSelectionListener;
 import java.awt.Component;
@@ -104,11 +103,6 @@ public class MutationViewLearnProperties extends AbstractMagicLearnProperties im
   @Override
   public boolean isMagicSelectionAvailable(Object selectedValue) {
     return model.isSelectable((IMutation) selectedValue);
-  }
-
-  @Override
-  public int getAvailableListSelectionMode() {
-    return ListSelectionModel.SINGLE_SELECTION;
   }
 
   private String getMutationString(IMutation mutation, boolean showType) {
