@@ -26,7 +26,7 @@ import java.util.List;
 public class MagicLearnView implements IMagicLearnView {
 
   private final Announcer<IMagicViewListener> control = Announcer.to(IMagicViewListener.class);
-  private JList learnOptionsList = new JList(new DefaultListModel());
+  private final JList learnOptionsList = new JList(new DefaultListModel());
   private final JList learnedList = new JList(new DefaultListModel());
   private final List<JButton> centerButtons = new ArrayList<>();
   private final List<JButton> endButtons = new ArrayList<>();
