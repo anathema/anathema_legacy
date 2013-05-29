@@ -1,11 +1,10 @@
 package net.sf.anathema.character.view.concept;
 
 import net.sf.anathema.framework.presenter.view.IInitializableContentView;
-import net.sf.anathema.lib.gui.action.SmartAction;
+import net.sf.anathema.interaction.Tool;
 import net.sf.anathema.lib.gui.selection.IObjectSelectionView;
 import net.sf.anathema.lib.workflow.textualdescription.ITextView;
 
-import javax.swing.AbstractButton;
 import javax.swing.ListCellRenderer;
 
 public interface ICharacterConceptAndRulesView extends IInitializableContentView<ICharacterConceptAndRulesViewProperties> {
@@ -16,5 +15,5 @@ public interface ICharacterConceptAndRulesView extends IInitializableContentView
 
   void addRulesLabel(String labelText);
 
-  AbstractButton addAction(SmartAction action);
+  Tool addTool();
 }

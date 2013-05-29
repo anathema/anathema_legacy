@@ -16,9 +16,10 @@ import net.sf.anathema.framework.presenter.resources.BasicUi;
 import net.sf.anathema.framework.presenter.view.ContentView;
 import net.sf.anathema.framework.presenter.view.SimpleViewContentView;
 import net.sf.anathema.framework.view.util.ContentProperties;
+import net.sf.anathema.interaction.Command;
+import net.sf.anathema.interaction.Tool;
 import net.sf.anathema.lib.control.IChangeListener;
 import net.sf.anathema.lib.control.ObjectValueListener;
-import net.sf.anathema.lib.gui.action.SmartAction;
 import net.sf.anathema.lib.gui.selection.IObjectSelectionView;
 import net.sf.anathema.lib.gui.ui.ObjectUi;
 import net.sf.anathema.lib.gui.ui.ObjectUiListCellRenderer;
@@ -26,9 +27,6 @@ import net.sf.anathema.lib.resources.Resources;
 import net.sf.anathema.lib.workflow.textualdescription.ITextView;
 import net.sf.anathema.lib.workflow.textualdescription.ITextualDescription;
 import net.sf.anathema.lib.workflow.textualdescription.TextualPresentation;
-
-import javax.swing.AbstractButton;
-import java.awt.Component;
 
 public class CharacterConceptAndRulesPresenter implements IContentPresenter {
 
@@ -54,78 +52,111 @@ public class CharacterConceptAndRulesPresenter implements IContentPresenter {
 
   @Override
   public ContentView getTabContent() {
-    String conceptHeader = resources.getString("CardView.CharacterConcept.Title"); 
+    String conceptHeader = resources.getString("CardView.CharacterConcept.Title");
     return new SimpleViewContentView(new ContentProperties(conceptHeader), view);
   }
 
   private void initMotivationPresentation(final IMotivation motivation) {
     final ITextView textView = initTextualDescriptionPresentation(motivation.getEditableDescription(),
-            "Label.Motivation"); 
-    final SmartAction beginEditAction = new SmartAction(new BasicUi().getEditIcon()) {
-      @Override
-      protected void execute(Component parentComponent) {
-        motivation.beginEdit();
-      }
-    };
-    CharacterUI characterUI = new CharacterUI();
-    beginEditAction.setToolTipText(resources.getString("CharacterConcept.Motivation.BeginEdit.Tooltip")); 
-    final SmartAction cancelEditAction = new SmartAction(characterUI.getCancelComboEditIcon()) {
-      @Override
-      protected void execute(Component parentComponent) {
-        motivation.cancelEdit();
-      }
-    };
-    cancelEditAction.setToolTipText(
-            resources.getString("CharacterConcept.Motivation.CancelEdit.Tooltip")); 
-    final SmartAction endEditAction = new SmartAction(characterUI.getFinalizeIcon()) {
-      @Override
-      protected void execute(Component parentComponent) {
-        motivation.endEdit();
-      }
-    };
-    endEditAction.setToolTipText(resources.getString("CharacterConcept.Motivation.EndEdit.Tooltip")); 
-    final SmartAction endEditXPAction = new SmartAction(characterUI.getFinalizeXPIcon()) {
-
-      @Override
-      protected void execute(Component parentComponent) {
-        motivation.endEditXPSpending(resources.getString("CharacterConcept.Motivation.XPSpent")); 
-      }
-    };
-    endEditXPAction.setToolTipText(resources.getString("CharacterConcept.Motivation.EndEditXP.Tooltip")); 
-    final AbstractButton beginButton = view.addAction(beginEditAction);
-    view.addAction(endEditAction);
-    view.addAction(endEditXPAction);
+            "Label.Motivation");
+    final Tool edit = addEditTool(motivation);
+    final Tool cancel = addCancelTool(motivation);
+    final Tool confirm = addConfirmTool(motivation);
+    final Tool confirmAndSpendXp = addConfirmAndSpendXp(motivation);
     motivation.addEditingListener(new IEditMotivationListener() {
       @Override
       public void editBegun() {
         textView.setEnabled(true);
         textView.setText(motivation.getEditableDescription().getText());
-        beginButton.setAction(cancelEditAction);
-        endEditAction.setEnabled(true);
-        endEditXPAction.setEnabled(true);
+        edit.disable();
+        cancel.enable();
+        confirm.enable();
+        confirmAndSpendXp.enable();
       }
 
       @Override
       public void editEnded() {
         textView.setEnabled(false);
         textView.setText(motivation.getDescription().getText());
-        beginButton.setAction(beginEditAction);
-        endEditAction.setEnabled(false);
-        endEditXPAction.setEnabled(false);
+        controlEditEnabled(edit);
+        cancel.disable();
+        confirm.disable();
+        confirmAndSpendXp.disable();
       }
     });
-
-    beginEditAction.setEnabled(character.isExperienced());
-    endEditAction.setEnabled(false);
-    endEditXPAction.setEnabled(false);
+    controlEditEnabled(edit);
+    cancel.disable();
+    confirm.disable();
+    confirmAndSpendXp.disable();
     character.getCharacterContext().getCharacterListening().addChangeListener(new DedicatedCharacterChangeAdapter() {
       @Override
       public void experiencedChanged(boolean experienced) {
-        beginEditAction.setEnabled(experienced);
-        endEditAction.setEnabled(false);
-        endEditXPAction.setEnabled(false);
+        controlEditEnabled(edit);
+        cancel.disable();
+        confirm.disable();
+        confirmAndSpendXp.disable();
       }
     });
+  }
+
+  private Tool addConfirmAndSpendXp(final IMotivation motivation) {
+    final Tool endXpButton = view.addTool();
+    endXpButton.setIcon(new CharacterUI().getFinalizeXpIconPath());
+    endXpButton.setTooltip(resources.getString("CharacterConcept.Motivation.EndEditXP.Tooltip"));
+    endXpButton.setCommand(new Command() {
+      @Override
+      public void execute() {
+        motivation.endEditXPSpending(resources.getString("CharacterConcept.Motivation.XPSpent"));
+      }
+    });
+    return endXpButton;
+  }
+
+  private Tool addConfirmTool(final IMotivation motivation) {
+    final Tool endButton = view.addTool();
+    endButton.setIcon(new CharacterUI().getFinalizeIconPath());
+    endButton.setTooltip(resources.getString("CharacterConcept.Motivation.EndEdit.Tooltip"));
+    endButton.setCommand(new Command() {
+      @Override
+      public void execute() {
+        motivation.endEdit();
+      }
+    });
+    return endButton;
+  }
+
+  private Tool addCancelTool(final IMotivation motivation) {
+    final Tool cancelButton = view.addTool();
+    cancelButton.setIcon(new CharacterUI().getCancelComboEditIconPath());
+    cancelButton.setTooltip(resources.getString("CharacterConcept.Motivation.CancelEdit.Tooltip"));
+    cancelButton.setCommand(new Command() {
+      @Override
+      public void execute() {
+        motivation.cancelEdit();
+      }
+    });
+    return cancelButton;
+  }
+
+  private Tool addEditTool(final IMotivation motivation) {
+    final Tool beginButton = view.addTool();
+    beginButton.setIcon(new BasicUi().getEditIconPath());
+    beginButton.setTooltip(resources.getString("CharacterConcept.Motivation.BeginEdit.Tooltip"));
+    beginButton.setCommand(new Command() {
+      @Override
+      public void execute() {
+        motivation.beginEdit();
+      }
+    });
+    return beginButton;
+  }
+
+  private void controlEditEnabled(Tool beginButton) {
+    if (character.isExperienced()) {
+      beginButton.enable();
+    } else {
+      beginButton.disable();
+    }
   }
 
   private ITextView initTextualDescriptionPresentation(ITextualDescription description, String resourceKey) {
@@ -145,19 +176,19 @@ public class CharacterConceptAndRulesPresenter implements IContentPresenter {
     view.initGui(new ICharacterConceptAndRulesViewProperties() {
       @Override
       public String getConceptTitle() {
-        return resources.getString("CardView.CharacterConcept.Concept"); 
+        return resources.getString("CardView.CharacterConcept.Concept");
       }
 
       @Override
       public String getRulesTitle() {
         return resources.getString("CardView.CharacterConcept.Rules");
-      } 
+      }
     });
   }
 
   private void initRulesPresentation() {
-    view.addRulesLabel(resources.getString("Rules.CharacterType.Message", resources.getString(
-            character.getCharacterTemplate().getPresentationProperties().getNewActionResource()))); 
+    view.addRulesLabel(resources.getString("Rules.CharacterType.Message",
+            resources.getString(character.getCharacterTemplate().getPresentationProperties().getNewActionResource())));
   }
 
   private boolean initCastePresentation() {
@@ -167,7 +198,8 @@ public class CharacterConceptAndRulesPresenter implements IContentPresenter {
     }
     String casteLabelResourceKey = template.getPresentationProperties().getCasteLabelResource();
     ObjectUi<Object> casteUi = new CasteSelectObjectUi(resources, template.getPresentationProperties());
-    ICasteType[] casteTypes = template.getCasteCollection().getAllCasteTypes(character.getCharacterTemplate().getTemplateType());
+    ICasteType[] casteTypes = template.getCasteCollection().getAllCasteTypes(
+            character.getCharacterTemplate().getTemplateType());
     final IObjectSelectionView<ICasteType> casteView = view.addObjectSelectionView(
             resources.getString(casteLabelResourceKey), casteTypes, new ObjectUiListCellRenderer(casteUi), false);
     final ITypedDescription<ICasteType> caste = character.getCharacterConcept().getCaste();

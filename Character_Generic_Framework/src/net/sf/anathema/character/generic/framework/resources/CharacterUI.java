@@ -21,15 +21,15 @@ public class CharacterUI extends AbstractUI {
   }
 
   public Icon getCancelComboEditIcon() {
-    return getIcon(new RelativePath("icons/ButtonUndo16.png"));
+    return getIcon(getCancelComboEditIconPath());
   }
 
   public Icon getFinalizeIcon() {
-    return getIcon(new RelativePath("icons/ButtonCheck16.png"));
+    return getIcon(getFinalizeIconPath());
   }
 
-  public Icon getFinalizeXPIcon() {
-    return getIcon(new RelativePath("icons/ButtonCheckXP16.png"));
+  public RelativePath getFinalizeXpIconPath() {
+    return new RelativePath("icons/ButtonCheckXP16.png");
   }
 
   public Icon getSmallTypeIcon(ICharacterType characterType) {
@@ -58,5 +58,13 @@ public class CharacterUI extends AbstractUI {
 
   public RelativePath getRandomRealmNameIconPath() {
     return new RelativePath("icons/ButtonRandomNameC16.png");
+  }
+
+  public RelativePath getCancelComboEditIconPath() {
+    return new RelativePath("icons/ButtonUndo16.png");
+  }
+
+  public RelativePath getFinalizeIconPath() {
+    return new RelativePath("icons/ButtonCheck16.png");
   }
 }

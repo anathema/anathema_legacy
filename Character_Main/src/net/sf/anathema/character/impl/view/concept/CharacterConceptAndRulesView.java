@@ -2,18 +2,18 @@ package net.sf.anathema.character.impl.view.concept;
 
 import net.miginfocom.layout.CC;
 import net.miginfocom.swing.MigLayout;
+import net.sf.anathema.character.impl.view.AddToButtonPanel;
 import net.sf.anathema.character.view.concept.ICharacterConceptAndRulesView;
 import net.sf.anathema.character.view.concept.ICharacterConceptAndRulesViewProperties;
 import net.sf.anathema.framework.presenter.view.IInitializableContentView;
-import net.sf.anathema.lib.gui.action.SmartAction;
-import net.sf.anathema.lib.gui.selection.IObjectSelectionView;
 import net.sf.anathema.framework.swing.selection.ObjectSelectionView;
-import net.sf.anathema.lib.gui.toolbar.ToolBarUtilities;
+import net.sf.anathema.interaction.Tool;
+import net.sf.anathema.lib.gui.selection.IObjectSelectionView;
 import net.sf.anathema.lib.workflow.textualdescription.ITextView;
 import net.sf.anathema.lib.workflow.textualdescription.view.LabelTextView;
 import net.sf.anathema.lib.workflow.textualdescription.view.LineTextView;
+import net.sf.anathema.swing.interaction.ActionInteraction;
 
-import javax.swing.AbstractButton;
 import javax.swing.JComponent;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
@@ -70,9 +70,9 @@ public class CharacterConceptAndRulesView implements ICharacterConceptAndRulesVi
   }
 
   @Override
-  public AbstractButton addAction(SmartAction action) {
-    AbstractButton button = ToolBarUtilities.createToolBarButton(action);
-    buttonPanel.add(button);
-    return button;
+  public Tool addTool() {
+    ActionInteraction interaction = new ActionInteraction();
+    interaction.addTo(new AddToButtonPanel(buttonPanel));
+    return interaction;
   }
 }
