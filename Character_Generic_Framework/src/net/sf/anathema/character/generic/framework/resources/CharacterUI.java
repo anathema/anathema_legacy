@@ -16,12 +16,8 @@ public class CharacterUI extends AbstractUI {
     return getIcon(new RelativePath("icons/ButtonLink16b.png"));
   }
 
-  public Icon getRandomRealmNameIcon() {
-    return getIcon(new RelativePath("icons/ButtonRandomNameC16.png"));
-  }
-
-  public Icon getRandomThresholdNameIcon() {
-    return getIcon(new RelativePath("icons/ButtonRandomNameB16.png"));
+  public RelativePath getRandomThresholdNameIconPath() {
+    return new RelativePath("icons/ButtonRandomNameB16.png");
   }
 
   public Icon getCancelComboEditIcon() {
@@ -58,5 +54,9 @@ public class CharacterUI extends AbstractUI {
 
   public Icon getUnselectableBallResource() {
     return getIcon(new RelativePath("icons/BorderUnselectableButton16.png"));
+  }
+
+  public RelativePath getRandomRealmNameIconPath() {
+    return new RelativePath("icons/ButtonRandomNameC16.png");
   }
 }

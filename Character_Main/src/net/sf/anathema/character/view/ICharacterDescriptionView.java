@@ -1,7 +1,7 @@
 package net.sf.anathema.character.view;
 
 import net.sf.anathema.framework.swing.IView;
-import net.sf.anathema.lib.gui.action.SmartAction;
+import net.sf.anathema.interaction.Tool;
 import net.sf.anathema.lib.workflow.textualdescription.ITextView;
 
 public interface ICharacterDescriptionView extends IView {
@@ -10,7 +10,7 @@ public interface ICharacterDescriptionView extends IView {
 
   ITextView addAreaView(String labelText, int rowCount);
 
-  void addEditAction(SmartAction action, int row);
+  Tool addEditAction();
 
   IMultiComponentLine addMultiComponentLine();
 }

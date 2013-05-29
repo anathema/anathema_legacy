@@ -4,13 +4,13 @@ import net.miginfocom.layout.CC;
 import net.miginfocom.swing.MigLayout;
 import net.sf.anathema.character.view.ICharacterDescriptionView;
 import net.sf.anathema.character.view.IMultiComponentLine;
-import net.sf.anathema.lib.gui.action.SmartAction;
-import net.sf.anathema.lib.gui.toolbar.ToolBarUtilities;
+import net.sf.anathema.interaction.Tool;
 import net.sf.anathema.lib.workflow.textualdescription.ITextView;
 import net.sf.anathema.lib.workflow.textualdescription.SwingTextView;
 import net.sf.anathema.lib.workflow.textualdescription.view.AreaTextView;
 import net.sf.anathema.lib.workflow.textualdescription.view.LabelTextView;
 import net.sf.anathema.lib.workflow.textualdescription.view.LineTextView;
+import net.sf.anathema.swing.interaction.ActionInteraction;
 
 import javax.swing.JComponent;
 import javax.swing.JPanel;
@@ -52,8 +52,11 @@ public class CharacterDescriptionView implements ICharacterDescriptionView {
   }
 
   @Override
-  public void addEditAction(SmartAction action, int row) {
-    buttonPanels.get(row).add(ToolBarUtilities.createToolBarButton(action));
+  public Tool addEditAction() {
+    ActionInteraction interaction = new ActionInteraction();
+    JPanel mostRecentPanel = buttonPanels.get(buttonPanels.size()-1);
+    interaction.addTo(new AddToButtonPanel(mostRecentPanel));
+    return interaction;
   }
 
   @Override
