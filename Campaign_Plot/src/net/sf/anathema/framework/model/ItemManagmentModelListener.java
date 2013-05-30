@@ -30,8 +30,8 @@ public class ItemManagmentModelListener implements IItemManagementModelListener 
 
   @Override
   public void itemAdded(IItem item) throws AnathemaException {
-    SwingItemViewFactory viewFactory = (SwingItemViewFactory) viewFactoryRegistry.get(item.getItemType());
-    SwingItemView itemView = viewFactory.createView(item);
+    ItemViewFactory viewFactory = viewFactoryRegistry.get(item.getItemType());
+    SwingItemView itemView = (SwingItemView) viewFactory.createView(item);
     mapping.addModelAndView(item, itemView);
     itemViewManagement.addItemView(itemView, actionFactory.createAction(item));
   }
