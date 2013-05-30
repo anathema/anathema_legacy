@@ -13,6 +13,11 @@ public class SimpleRepositoryId implements RepositoryId {
   }
 
   @Override
+  public String getStringRepresentation() {
+    return id;
+  }
+
+  @Override
   public int hashCode() {
     return HashCodeBuilder.reflectionHashCode(this);
   }

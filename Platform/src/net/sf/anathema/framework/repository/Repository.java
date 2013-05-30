@@ -11,8 +11,11 @@ import net.sf.anathema.framework.repository.access.MultiFileReadAccess;
 import net.sf.anathema.framework.repository.access.MultiFileWriteAccess;
 import net.sf.anathema.framework.repository.access.SingleFileReadAccess;
 import net.sf.anathema.framework.repository.access.SingleFileWriteAccess;
+import net.sf.anathema.framework.repository.access.printname.FileReferenceAccess;
 import net.sf.anathema.framework.repository.access.printname.IPrintNameFileAccess;
 import net.sf.anathema.framework.repository.access.printname.PrintNameFileAccess;
+import net.sf.anathema.framework.repository.access.printname.ReferenceAccess;
+import net.sf.anathema.framework.repository.access.printname.ReferenceBuilder;
 import net.sf.anathema.framework.view.PrintNameFile;
 import net.sf.anathema.lib.control.IChangeListener;
 import org.apache.commons.io.FileUtils;
@@ -45,6 +48,11 @@ public class Repository implements IRepository {
   @Override
   public IPrintNameFileAccess getPrintNameFileAccess() {
     return printNameFileAccess;
+  }
+
+  @Override
+  public <R> ReferenceAccess<R> createReferenceAccess(IItemType type, ReferenceBuilder<R> builder) {
+    return new FileReferenceAccess<R>(resolver, type, builder);
   }
 
   @Override

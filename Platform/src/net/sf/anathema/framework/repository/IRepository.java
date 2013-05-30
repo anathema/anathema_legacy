@@ -5,6 +5,8 @@ import net.sf.anathema.framework.presenter.action.IFileProvider;
 import net.sf.anathema.framework.repository.access.IRepositoryReadAccess;
 import net.sf.anathema.framework.repository.access.IRepositoryWriteAccess;
 import net.sf.anathema.framework.repository.access.printname.IPrintNameFileAccess;
+import net.sf.anathema.framework.repository.access.printname.ReferenceAccess;
+import net.sf.anathema.framework.repository.access.printname.ReferenceBuilder;
 import net.sf.anathema.framework.view.PrintNameFile;
 import net.sf.anathema.initialization.repository.IDataFileProvider;
 import net.sf.anathema.lib.control.IChangeListener;
@@ -22,6 +24,8 @@ public interface IRepository extends IDataFileProvider {
   boolean knowsItem(IItemType type, String id);
 
   IPrintNameFileAccess getPrintNameFileAccess();
+
+  <R> ReferenceAccess<R> createReferenceAccess(IItemType type, ReferenceBuilder<R> builder);
 
   String getRepositoryPath();
 
