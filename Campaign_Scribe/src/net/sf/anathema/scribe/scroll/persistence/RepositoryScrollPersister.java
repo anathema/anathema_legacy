@@ -18,7 +18,6 @@ import java.util.Collection;
 
 public class RepositoryScrollPersister implements ScrollPersister {
 
-  private final Announcer<IChangeListener> listChangeAnnouncer = new Announcer(IChangeListener.class);
   private final IRepository model;
   private final Clock clock;
   private final ScrollGson scrollGson = new ScrollGson();
@@ -34,7 +33,6 @@ public class RepositoryScrollPersister implements ScrollPersister {
     try {
       outputStream = createOutputStreamFor(scroll);
       scrollGson.save(scroll, outputStream);
-      listChangeAnnouncer.announce().changeOccurred();
     } finally {
       IOUtils.closeQuietly(outputStream);
     }
@@ -71,10 +69,5 @@ public class RepositoryScrollPersister implements ScrollPersister {
     ReferenceBuilder<ScrollReference> builder = new ScrollReferenceBuilder();
     ReferenceAccess<ScrollReference> access = model.createReferenceAccess(ScrollItemType.ITEM_TYPE, builder);
     return access.collectAllItemReferences();
-  }
-
-  @Override
-  public void addScrollListChangeListener(IChangeListener listener) {
-    listChangeAnnouncer.addListener(listener);
   }
 }

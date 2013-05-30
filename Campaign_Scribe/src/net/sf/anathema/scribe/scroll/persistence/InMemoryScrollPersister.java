@@ -13,16 +13,12 @@ public class InMemoryScrollPersister implements ScrollPersister {
 
   private int counter = 0;
   private final Map<RepositoryId, Scroll> scrollsByRepositoryId = new HashMap<>();
-  private final Announcer<IChangeListener> listChangeAnnouncer = new Announcer(IChangeListener.class);
 
   @Override
   public void saveScroll(Scroll scroll) {
     RepositoryId repositoryId = scroll.repositoryId;
     boolean isNew = !scrollsByRepositoryId.containsKey(repositoryId);
     scrollsByRepositoryId.put(repositoryId, scroll);
-    if (isNew) {
-      listChangeAnnouncer.announce().changeOccurred();
-    }
   }
 
   @Override
@@ -46,10 +42,5 @@ public class InMemoryScrollPersister implements ScrollPersister {
         return new ScrollReference(input.repositoryId, input.dto.title);
       }
     });
-  }
-
-  @Override
-  public void addScrollListChangeListener(IChangeListener listener) {
-    listChangeAnnouncer.addListener(listener);
   }
 }

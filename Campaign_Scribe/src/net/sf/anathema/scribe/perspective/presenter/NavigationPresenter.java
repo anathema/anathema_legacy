@@ -20,7 +20,7 @@ public class NavigationPresenter {
 
   public void initializeNavigationPresentation() {
     addAllReferences();
-    model.scrollPersister.addScrollListChangeListener(new IChangeListener() {
+    model.scrollModel.addScrollListChangeListener(new IChangeListener() {
       @Override
       public void changeOccurred() {
         view.clear();

@@ -1,7 +1,5 @@
 package net.sf.anathema.scribe.scroll.persistence;
 
-import net.sf.anathema.lib.control.IChangeListener;
-
 import java.util.Collection;
 
 public interface ScrollPersister {
@@ -13,6 +11,4 @@ public interface ScrollPersister {
   Scroll newScroll();
 
   Collection<ScrollReference> listAll();
-
-  void addScrollListChangeListener(IChangeListener listener);
 }
