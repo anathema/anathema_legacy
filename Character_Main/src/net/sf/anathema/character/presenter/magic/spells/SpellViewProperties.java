@@ -14,7 +14,6 @@ import javax.swing.JButton;
 import javax.swing.JComponent;
 import javax.swing.JList;
 import javax.swing.ListCellRenderer;
-import javax.swing.ListSelectionModel;
 import javax.swing.event.ListSelectionEvent;
 import javax.swing.event.ListSelectionListener;
 import java.awt.Component;
@@ -64,11 +63,6 @@ public class SpellViewProperties extends AbstractMagicLearnProperties implements
   @Override
   public boolean isMagicSelectionAvailable(Object selection) {
     return selection != null && spellConfiguration.isSpellAllowed((ISpell) selection);
-  }
-
-  @Override
-  public int getAvailableListSelectionMode() {
-    return ListSelectionModel.MULTIPLE_INTERVAL_SELECTION;
   }
 
   @Override
