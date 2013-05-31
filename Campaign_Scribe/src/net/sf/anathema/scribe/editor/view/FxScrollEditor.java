@@ -47,19 +47,6 @@ public class FxScrollEditor implements ScrollEditor {
   }
 
   @Override
-  public void setWikiText(final WikiText text) {
-    Platform.runLater(new Runnable() {
-      @Override
-      public void run() {
-        if (text.getCanonicalText().equals(content.getText())) {
-          return;
-        }
-        content.setText(text.getCanonicalText());
-      }
-    });
-  }
-
-  @Override
   public void setTitlePrompt(final String prompt) {
     Platform.runLater(new Runnable() {
       @Override
@@ -70,14 +57,21 @@ public class FxScrollEditor implements ScrollEditor {
   }
 
   @Override
-  public void setTitle(final String title) {
-    Platform.runLater(new Runnable() {
+  public void setWikiText(final WikiText text) {
+    doInFxAsSoonAsPossible(new Runnable() {
       @Override
       public void run() {
-        if (titleDisplay.getText().equals(title)) {
-          return;
-        }
-        titleDisplay.setText(title);
+        updateText(text);
+      }
+    });
+  }
+
+  @Override
+  public void setTitle(final String title) {
+    doInFxAsSoonAsPossible(new Runnable() {
+      @Override
+      public void run() {
+        updateTitle(title);
       }
     });
   }
@@ -105,5 +99,29 @@ public class FxScrollEditor implements ScrollEditor {
 
   public Node getNode() {
     return pane;
+  }
+
+  private void updateText(WikiText text) {
+    if (text.getCanonicalText().equals(content.getText())) {
+      return;
+    }
+    int caretPosition = content.getCaretPosition();
+    content.setText(text.getCanonicalText());
+    content.positionCaret(caretPosition);
+  }
+
+  private void updateTitle(String title) {
+    if (titleDisplay.getText().equals(title)) {
+      return;
+    }
+    titleDisplay.setText(title);
+  }
+
+  private void doInFxAsSoonAsPossible(Runnable runnable) {
+    if (Platform.isFxApplicationThread()) {
+      runnable.run();
+    } else {
+      Platform.runLater(runnable);
+    }
   }
 }
