@@ -9,7 +9,7 @@ import javax.swing.ActionMap;
 import javax.swing.InputMap;
 import javax.swing.KeyStroke;
 
-import static java.awt.event.InputEvent.META_MASK;
+import static java.awt.Toolkit.getDefaultToolkit;
 import static javax.swing.KeyStroke.getKeyStroke;
 
 public class SwingAcceleratorMap implements AcceleratorMap {
@@ -24,7 +24,7 @@ public class SwingAcceleratorMap implements AcceleratorMap {
   @Override
   public void register(Hotkey hotkey, Command command) {
     Object actionMapKey = new Object();
-    KeyStroke keyStroke = getKeyStroke(hotkey.asCharacter(), META_MASK);
+    KeyStroke keyStroke = getKeyStroke(hotkey.asCharacter(), getDefaultToolkit().getMenuShortcutKeyMask());
     inputMap.put(keyStroke, actionMapKey);
     actionMap.put(actionMapKey, new CommandAction(command));
   }
