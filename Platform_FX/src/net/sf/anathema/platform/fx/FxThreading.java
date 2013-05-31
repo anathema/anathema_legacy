@@ -23,4 +23,8 @@ public class FxThreading {
       Platform.runLater(runnable);
     }
   }
+
+  public static void runInFxAsSoonAsPossible(Runnable runnable) {
+    runOnCorrectThread(runnable);
+  }
 }

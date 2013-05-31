@@ -13,6 +13,8 @@ import net.sf.anathema.scribe.editor.presenter.ScrollEditor;
 import net.sf.anathema.scribe.editor.presenter.TextTypedListener;
 import org.jmock.example.announcer.Announcer;
 
+import static net.sf.anathema.platform.fx.FxThreading.runInFxAsSoonAsPossible;
+
 public class FxScrollEditor implements ScrollEditor {
 
   private TextField titleDisplay;
@@ -58,7 +60,7 @@ public class FxScrollEditor implements ScrollEditor {
 
   @Override
   public void setWikiText(final WikiText text) {
-    doInFxAsSoonAsPossible(new Runnable() {
+    runInFxAsSoonAsPossible(new Runnable() {
       @Override
       public void run() {
         updateText(text);
@@ -68,7 +70,7 @@ public class FxScrollEditor implements ScrollEditor {
 
   @Override
   public void setTitle(final String title) {
-    doInFxAsSoonAsPossible(new Runnable() {
+    runInFxAsSoonAsPossible(new Runnable() {
       @Override
       public void run() {
         updateTitle(title);
@@ -115,13 +117,5 @@ public class FxScrollEditor implements ScrollEditor {
       return;
     }
     titleDisplay.setText(title);
-  }
-
-  private void doInFxAsSoonAsPossible(Runnable runnable) {
-    if (Platform.isFxApplicationThread()) {
-      runnable.run();
-    } else {
-      Platform.runLater(runnable);
-    }
   }
 }
