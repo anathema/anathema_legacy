@@ -4,6 +4,7 @@ import net.sf.anathema.character.equipment.impl.item.model.gson.EquipmentGson;
 import net.sf.anathema.character.equipment.impl.item.model.gson.GsonEquipmentDatabase;
 import net.sf.anathema.character.equipment.template.IEquipmentTemplate;
 import net.sf.anathema.framework.IApplicationModel;
+import net.sf.anathema.initialization.initialitems.RepositoryItemInitializationStrategy;
 
 public class EquipmentInitializationStrategy implements RepositoryItemInitializationStrategy {
   private final static String EQUIPMENT_REGEX = "^.*\\.item$";

@@ -1,4 +1,4 @@
-package net.sf.anathema.character.equipment.impl.module;
+package net.sf.anathema.initialization.initialitems;
 
 public interface RepositoryItemInitializationStrategy {
   String getItemPattern();

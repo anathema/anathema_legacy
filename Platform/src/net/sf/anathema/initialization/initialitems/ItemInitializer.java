@@ -1,4 +1,4 @@
-package net.sf.anathema.character.equipment.impl.module;
+package net.sf.anathema.initialization.initialitems;
 
 import net.sf.anathema.ProxySplashscreen;
 import net.sf.anathema.framework.IApplicationModel;
