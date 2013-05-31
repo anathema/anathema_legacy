@@ -2,8 +2,6 @@ package net.sf.anathema.scribe.scroll.persistence;
 
 import com.google.common.base.Function;
 import com.google.common.collect.Collections2;
-import net.sf.anathema.lib.control.IChangeListener;
-import org.jmock.example.announcer.Announcer;
 
 import java.util.Collection;
 import java.util.HashMap;
@@ -42,5 +40,10 @@ public class InMemoryScrollPersister implements ScrollPersister {
         return new ScrollReference(input.repositoryId, input.dto.title);
       }
     });
+  }
+
+  @Override
+  public boolean hasAny() {
+    return counter != 0;
   }
 }

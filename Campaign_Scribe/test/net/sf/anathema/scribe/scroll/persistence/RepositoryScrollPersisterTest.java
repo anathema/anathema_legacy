@@ -2,14 +2,18 @@ package net.sf.anathema.scribe.scroll.persistence;
 
 import net.sf.anathema.framework.repository.IBasicRepositoryIdData;
 import net.sf.anathema.framework.repository.IRepository;
-import net.sf.anathema.scribe.scroll.ScrollItemType;
+import net.sf.anathema.framework.repository.access.printname.ReferenceAccess;
+import net.sf.anathema.framework.repository.access.printname.ReferenceBuilder;
 import org.junit.Test;
 import org.mockito.ArgumentCaptor;
 
 import java.util.Date;
 
+import static net.sf.anathema.scribe.scroll.ScrollItemType.ITEM_TYPE;
 import static org.hamcrest.CoreMatchers.is;
 import static org.junit.Assert.assertThat;
+import static org.mockito.Matchers.any;
+import static org.mockito.Matchers.eq;
 import static org.mockito.Matchers.isA;
 import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.when;
@@ -31,9 +35,23 @@ public class RepositoryScrollPersisterTest {
   }
 
   @Test
+  public void freshPersisterHasNoScrolls() throws Exception {
+    ReferenceAccess access = DummyAccess.empty();
+    when(repository.createReferenceAccess(eq(ITEM_TYPE), any(ReferenceBuilder.class))).thenReturn(access);
+    assertThat(persister.hasAny(), is(false));
+  }
+
+  @Test
+  public void hasScrollsIfRepositoryDiscoversSome() throws Exception {
+    ReferenceAccess access = DummyAccess.filled();
+    when(repository.createReferenceAccess(eq(ITEM_TYPE), any(ReferenceBuilder.class))).thenReturn(access);
+    assertThat(persister.hasAny(), is(true));
+  }
+
+  @Test
   public void requestsIdWithScrollItemType() throws Exception {
     IBasicRepositoryIdData data = createScrollAndCaptureData();
-    assertThat(data.getItemType(), is(ScrollItemType.ITEM_TYPE));
+    assertThat(data.getItemType(), is(ITEM_TYPE));
   }
 
   @Test
@@ -52,4 +70,5 @@ public class RepositoryScrollPersisterTest {
   private Scroll createScroll() {
     return persister.newScroll();
   }
+
 }

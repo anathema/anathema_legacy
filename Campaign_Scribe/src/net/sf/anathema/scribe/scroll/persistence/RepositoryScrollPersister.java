@@ -5,12 +5,10 @@ import net.sf.anathema.framework.repository.access.IRepositoryReadAccess;
 import net.sf.anathema.framework.repository.access.IRepositoryWriteAccess;
 import net.sf.anathema.framework.repository.access.printname.ReferenceAccess;
 import net.sf.anathema.framework.repository.access.printname.ReferenceBuilder;
-import net.sf.anathema.lib.control.IChangeListener;
 import net.sf.anathema.scribe.scroll.ScrollItemType;
 import net.sf.anathema.scribe.scroll.gson.ScrollGson;
 import net.sf.anathema.scribe.scroll.gson.ScrollReferenceBuilder;
 import org.apache.commons.io.IOUtils;
-import org.jmock.example.announcer.Announcer;
 
 import java.io.InputStream;
 import java.io.OutputStream;
@@ -69,5 +67,10 @@ public class RepositoryScrollPersister implements ScrollPersister {
     ReferenceBuilder<ScrollReference> builder = new ScrollReferenceBuilder();
     ReferenceAccess<ScrollReference> access = model.createReferenceAccess(ScrollItemType.ITEM_TYPE, builder);
     return access.collectAllItemReferences();
+  }
+
+  @Override
+  public boolean hasAny() {
+    return !listAll().isEmpty();
   }
 }

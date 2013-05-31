@@ -11,4 +11,6 @@ public interface ScrollPersister {
   Scroll newScroll();
 
   Collection<ScrollReference> listAll();
+
+  boolean hasAny();
 }
