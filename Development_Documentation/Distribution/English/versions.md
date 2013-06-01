@@ -4,9 +4,9 @@ Exalted © 2001-2012 by White Wolf Publishing, Inc.
 
 Website: [anathema.github.com](http://anathema.github.com)
 
-## Release 6.0.0
+## Release 5.1.0
 
-Anathema now requires Java 7 Update 6 or later. Windows and OS X releases include a suitable version.
+Anathema now requires Java 7 Update 21 or later. Windows and OS X releases include a suitable version.
 Due to changed dependencies, Anathema only runs on Windows, OS X and Linux.
 
 This version drops the music database. Many features were broken and nobody ever mentioned it,
@@ -17,6 +17,7 @@ leading us to the assumption that not many of you used it.
 * New UI for Name Generator
 * New UI for Characters
 * New UI for Equipment Database
+* New "Scribe" perspective, featuring an easy to use editor with a fluent syntax for your notes.
 * Windowed mode defaults to a 16:9 resolution
 * Abyssal "Withering Phantasmagoria" and its Solar Mirror offer subeffects.
 * Adds a new material composition: "Other Wondrous Material", symbolizing everything not covered by the previous entries.
