@@ -1,5 +1,0 @@
-{
-  "repositoryId": "1369902751193",
-  "title": "Welcome to our new Editor",
-  "wikiText": "Some pointer on syntax\n\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\n  \nIt features a markdown-like Syntax, \nallowing you to put text in *italics*,\nemphasize things by **bold**ing them,\nhelps you to  ++underline++ what\u0027s important and\n\n * list them \n * to keep some ``order``\n\nWhatever you type, you\u0027ll see the results on the right.  \nWe\u0027d be happy if you shared your thoughts with us.\n\nFor more details, visit the [Markdown Manual](http://daringfireball.net/projects/markdown/).\n\n"
-}
