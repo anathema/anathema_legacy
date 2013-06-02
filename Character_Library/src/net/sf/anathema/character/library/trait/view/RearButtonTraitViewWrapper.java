@@ -14,15 +14,16 @@ import java.awt.Dimension;
 
 import static net.sf.anathema.lib.gui.layout.LayoutUtils.fillWithoutInsets;
 
-public class RearButtonTraitViewWrapper<K extends ITraitView< ? >> extends AbstractTraitViewWrapper<K> implements
-    IRemovableTraitView<K> {
+public class RearButtonTraitViewWrapper<K extends ITraitView<?>> extends AbstractTraitViewWrapper<K> implements IRemovableTraitView<K> {
 
   private final JButton button;
   private JPanel traitViewPanel;
   private JPanel innerViewPanel;
+  private Icon buttonIcon;
 
   public RearButtonTraitViewWrapper(K view, Icon buttonIcon) {
     super(view);
+    this.buttonIcon = buttonIcon;
     this.button = new JButton(buttonIcon);
     button.setPreferredSize(new Dimension(buttonIcon.getIconWidth() + 4, buttonIcon.getIconHeight() + 4));
   }
@@ -43,7 +44,9 @@ public class RearButtonTraitViewWrapper<K extends ITraitView< ? >> extends Abstr
 
   @Override
   public void addButtonListener(final Command command) {
-    button.setAction(new CommandAction(command));
+    CommandAction action = new CommandAction(command);
+    action.setIcon(buttonIcon);
+    button.setAction(action);
   }
 
   @Override
