@@ -18,7 +18,7 @@ public class ScribePerspective implements Perspective {
 
   @Override
   public void configureToggle(PerspectiveToggle toggle) {
-    toggle.setIcon(new RelativePath("icons/Kompass24.png"));
+    toggle.setIcon(new RelativePath("icons/Scroll20.png"));
     toggle.setTooltip("Scribe.Perspective.Name");
   }
 
