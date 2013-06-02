@@ -7,9 +7,9 @@ import net.sf.anathema.character.perspective.model.model.CharacterIdentifier;
 import net.sf.anathema.character.perspective.model.model.CharacterModel;
 import net.sf.anathema.character.perspective.model.model.ItemSelectionModel;
 import net.sf.anathema.character.perspective.model.model.NewCharacterListener;
+import net.sf.anathema.framework.presenter.resources.BasicUi;
 import net.sf.anathema.interaction.Command;
 import net.sf.anathema.interaction.Tool;
-import net.sf.anathema.lib.file.RelativePath;
 import net.sf.anathema.lib.resources.Resources;
 
 public class NewInteractionPresenter {
@@ -45,7 +45,7 @@ public class NewInteractionPresenter {
 
   private void initializeAppearance() {
     interaction.setTooltip(resources.getString("AnathemaCore.Tools.New.Name"));
-    interaction.setIcon(new RelativePath("icons/TaskBarNew24.png"));
+    interaction.setIcon(new BasicUi().getNewIconPathForTaskbar());
   }
 
   private void initializeCommand() {

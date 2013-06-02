@@ -7,6 +7,10 @@ import javax.swing.Icon;
 
 public class BasicUi extends AbstractUI {
 
+  public RelativePath getNewIconPathForTaskbar () {
+    return new RelativePath("icons/TaskBarNew24.png");
+  }
+
   public Icon getRemoveIcon() {
     return getIcon(getRemoveIconPath());
   }
