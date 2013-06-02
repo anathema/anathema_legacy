@@ -26,6 +26,9 @@ public class StyledTextToWikiTextConverter {
     if (part.getFormat().isUnderline()) {
       nextConvertedPart = wrap(nextConvertedPart, "++");
     }
+    if (nextConvertedPart.contains("\n")) {
+      nextConvertedPart = nextConvertedPart.replace("\n", "  \n");
+    }
     builder.append(nextConvertedPart);
   }
 

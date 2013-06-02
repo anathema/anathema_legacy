@@ -4,6 +4,7 @@ import net.sf.anathema.framework.styledtext.model.ITextPart;
 import net.sf.anathema.framework.styledtext.model.StyledTextualDescription;
 import net.sf.anathema.framework.styledtext.presentation.TextFormat;
 import net.sf.anathema.framework.styledtext.presentation.TextPart;
+import org.junit.Ignore;
 import org.junit.Test;
 
 import static net.sf.anathema.lib.text.FontStyle.BOLD;
@@ -35,6 +36,17 @@ public class StyledTextToWikiTextConverter_Test {
   @Test
   public void convertsUnderlinedText() throws Exception {
     convertSinglePart(new TextPart("Underline", new TextFormat(PLAIN, true)), "++Underline++");
+  }
+
+  @Test
+  public void convertsLineBreaksByAddingBlanks() throws Exception {
+    convertSinglePart(new TextPart("Line\nBreak", new TextFormat(BOLD, false)), "**Line  \nBreak**");
+  }
+
+  @Ignore("We don't need to handle fringe cases for a rarely used case.")
+  @Test
+  public void convertsParagraphBreaksWithFormatting() throws Exception {
+    convertSinglePart(new TextPart("Paragraph\n\nBreak", new TextFormat(BOLD, false)), "**Paragraph**\n\n**Break**");
   }
 
   @Test
