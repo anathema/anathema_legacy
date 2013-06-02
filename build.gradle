@@ -248,7 +248,7 @@ task prepareJRE dependsOn( prepareWinJRE, prepareMacJRE )
 
 // Extracts the JRE from a mac with a JDK installed.  This only runs on a Mac.
 // This only need be run by a release manager upgrading the bundled JRE used by Anathema
-task extractMacJRE(type: Zip) << {
+task extractMacJRE(type: Zip) {
   if( !os.equals("mac") ) throw new StopActionException( "The task extractMacJRE must be run on Mac OSX." )
   archiveName = "jre-mac64-${jreVersion}.zip"
   destinationDir = buildDir
