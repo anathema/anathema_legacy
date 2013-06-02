@@ -22,6 +22,7 @@ import net.sf.anathema.framework.view.util.ContentProperties;
 import net.sf.anathema.interaction.Command;
 import net.sf.anathema.lib.collection.IdentityMapping;
 import net.sf.anathema.lib.control.ObjectValueListener;
+import net.sf.anathema.lib.file.RelativePath;
 import net.sf.anathema.lib.registry.IIdentificateRegistry;
 import net.sf.anathema.lib.resources.Resources;
 
@@ -42,7 +43,8 @@ public class BackgroundPresenter implements IContentPresenter {
   private String backgroundDescription = "";
   private Displayer displayer;
 
-  public BackgroundPresenter(Resources resources, IBackgroundConfiguration configuration, ICharacterModelContext context, BackgroundView view,
+  public BackgroundPresenter(Resources resources, IBackgroundConfiguration configuration,
+                             ICharacterModelContext context, BackgroundView view,
                              IIdentificateRegistry<IBackgroundTemplate> backgroundRegistry) {
     this.resources = resources;
     this.configuration = configuration;
@@ -72,9 +74,9 @@ public class BackgroundPresenter implements IContentPresenter {
   @Override
   public void initPresentation() {
     Icon addIcon = new BasicUi().getAddIcon();
-    final IButtonControlledComboEditView<Object> view =
-            configurationView.addBackgroundSelectionView(resources.getString("BackgroundConfigurationView.SelectionCombo.Label"),
-                    new BackgroundListRenderer(displayer), new BackgroundBoxEditor(displayer), addIcon);
+    final IButtonControlledComboEditView<Object> view = configurationView.addBackgroundSelectionView(
+            resources.getString("BackgroundConfigurationView.SelectionCombo.Label"),
+            new BackgroundListRenderer(displayer), new BackgroundBoxEditor(displayer), addIcon);
     view.addEditChangedListener(new ObjectValueListener<String>() {
       @Override
       public void valueChanged(String newBackgroundDescription) {
@@ -114,10 +116,10 @@ public class BackgroundPresenter implements IContentPresenter {
   }
 
   private synchronized void addBackgroundView(final IBackground background) {
-    Icon deleteIcon = new BasicUi().getRemoveIcon();
+    RelativePath deleteIcon = new BasicUi().getRemoveIconPath();
     String backgroundString = new BackgroundTextCompiler(displayer).compileDisplayedText(background);
-    IRemovableTraitView<?> backgroundView =
-            configurationView.addBackgroundView(deleteIcon, backgroundString, background.getCurrentValue(), background.getMaximalValue());
+    IRemovableTraitView<?> backgroundView = configurationView.addBackgroundView(deleteIcon, backgroundString,
+            background.getCurrentValue(), background.getMaximalValue());
     new TraitPresenter(background, backgroundView).initPresentation();
     backgroundView.addButtonListener(new Command() {
       @Override

@@ -4,6 +4,7 @@ import net.sf.anathema.character.library.intvalue.IRemovableTraitView;
 import net.sf.anathema.framework.presenter.view.IButtonControlledComboEditView;
 import net.sf.anathema.framework.presenter.view.IInitializableContentView;
 import net.sf.anathema.framework.presenter.view.ITextFieldComboBoxEditor;
+import net.sf.anathema.lib.file.RelativePath;
 
 import javax.swing.Icon;
 import javax.swing.ListCellRenderer;
@@ -12,5 +13,5 @@ public interface BackgroundView extends IInitializableContentView<BackgroundView
   IButtonControlledComboEditView<Object> addBackgroundSelectionView(String labelText, ListCellRenderer renderer,
                                                                     ITextFieldComboBoxEditor backgroundEditor, Icon addIcon);
 
-  IRemovableTraitView<?> addBackgroundView(Icon deleteIcon, String labelText, int creationValue, int maxValue);
+  IRemovableTraitView<?> addBackgroundView(RelativePath deleteIcon, String labelText, int creationValue, int maxValue);
 }

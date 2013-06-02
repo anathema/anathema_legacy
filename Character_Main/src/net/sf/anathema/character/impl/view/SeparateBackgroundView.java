@@ -12,6 +12,8 @@ import net.sf.anathema.framework.presenter.view.IButtonControlledComboEditView;
 import net.sf.anathema.framework.presenter.view.IInitializableContentView;
 import net.sf.anathema.framework.presenter.view.ITextFieldComboBoxEditor;
 import net.sf.anathema.framework.value.IntegerViewFactory;
+import net.sf.anathema.lib.file.RelativePath;
+import net.sf.anathema.lib.gui.icon.ImageProvider;
 
 import javax.swing.Icon;
 import javax.swing.JComponent;
@@ -43,18 +45,22 @@ public class SeparateBackgroundView implements BackgroundView, IInitializableCon
   }
 
   @Override
-  public IButtonControlledComboEditView<Object> addBackgroundSelectionView(String labelText, ListCellRenderer backgroundRenderer,
-                                                                           ITextFieldComboBoxEditor backgroundEditor, Icon addIcon) {
-    ButtonControlledComboEditView<Object> objectSelectionView =
-            new BackgroundSelectionView<>(addIcon, labelText, backgroundRenderer, backgroundEditor);
+  public IButtonControlledComboEditView<Object> addBackgroundSelectionView(String labelText,
+                                                                           ListCellRenderer backgroundRenderer,
+                                                                           ITextFieldComboBoxEditor backgroundEditor,
+                                                                           Icon addIcon) {
+    ButtonControlledComboEditView<Object> objectSelectionView = new BackgroundSelectionView<>(addIcon, labelText,
+            backgroundRenderer, backgroundEditor);
     backgroundSelectionPanel.add(objectSelectionView.getComponent());
     return objectSelectionView;
   }
 
   @Override
-  public IRemovableTraitView<SimpleTraitView> addBackgroundView(Icon deleteIcon, String labelText, int value, int maxValue) {
+  public IRemovableTraitView<SimpleTraitView> addBackgroundView(RelativePath deleteIcon, String labelText, int value,
+                                                                int maxValue) {
     SimpleTraitView view = new SimpleTraitView(guiConfiguration, labelText, value, maxValue);
-    RearButtonTraitViewWrapper<SimpleTraitView> backgroundView = new RearButtonTraitViewWrapper<>(view, deleteIcon);
+    RearButtonTraitViewWrapper<SimpleTraitView> backgroundView = new RearButtonTraitViewWrapper<>(view,
+            new ImageProvider().getImageIcon(deleteIcon));
     backgroundView.addComponents(backgroundDisplayPanel);
     return backgroundView;
   }
