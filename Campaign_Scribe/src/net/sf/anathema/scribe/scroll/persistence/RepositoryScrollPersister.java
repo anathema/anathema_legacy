@@ -57,9 +57,8 @@ public class RepositoryScrollPersister implements ScrollPersister {
   @Override
   public Scroll newScroll() {
     ScrollDto scrollDto = new ScrollDto("", "");
-    TimedRepositoryData repositoryData = new TimedRepositoryData(clock);
-    String repositoryId = model.createUniqueRepositoryId(repositoryData);
-    return new Scroll(scrollDto, new SimpleRepositoryId(repositoryId));
+    RepositoryId id = createRepositoryId();
+    return new Scroll(scrollDto, id);
   }
 
   @Override
@@ -72,5 +71,11 @@ public class RepositoryScrollPersister implements ScrollPersister {
   @Override
   public boolean hasAny() {
     return !listAll().isEmpty();
+  }
+
+  public RepositoryId createRepositoryId() {
+    TimedRepositoryData repositoryData = new TimedRepositoryData(clock);
+    String repositoryId = model.createUniqueRepositoryId(repositoryData);
+    return new SimpleRepositoryId(repositoryId);
   }
 }
