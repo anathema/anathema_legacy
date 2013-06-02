@@ -44,8 +44,7 @@ public class RearButtonTraitViewWrapper<K extends ITraitView<?>> extends Abstrac
 
   @Override
   public void addButtonListener(final Command command) {
-    CommandAction action = new CommandAction(command);
-    action.setIcon(buttonIcon);
+    CommandAction action = new CommandAction(command, buttonIcon);
     button.setAction(action);
   }
 

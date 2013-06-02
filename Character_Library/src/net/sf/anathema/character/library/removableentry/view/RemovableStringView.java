@@ -17,8 +17,10 @@ public class RemovableStringView implements IRemovableEntryView {
   private final JButton button;
   private final JLabel label;
   private JPanel contentPanel;
+  private final Icon removeIcon;
 
   public RemovableStringView(Icon removeIcon, String string) {
+    this.removeIcon = removeIcon;
     this.label = new JLabel(string);
     this.button = new JButton(removeIcon);
     button.setPreferredSize(new Dimension(removeIcon.getIconWidth() + 4, removeIcon.getIconHeight() + 4));
@@ -33,7 +35,7 @@ public class RemovableStringView implements IRemovableEntryView {
 
   @Override
   public void addButtonListener(final Command command) {
-    button.setAction(new CommandAction(command));
+    button.setAction(new CommandAction(command, removeIcon));
   }
 
   @Override
