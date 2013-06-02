@@ -20,7 +20,6 @@ import net.sf.anathema.framework.value.IntegerViewFactory;
 import net.sf.anathema.lib.file.RelativePath;
 import net.sf.anathema.lib.gui.icon.ImageProvider;
 
-import javax.swing.Icon;
 import javax.swing.JComponent;
 import javax.swing.JPanel;
 
@@ -54,13 +53,13 @@ public class IntimaciesView extends AbstractRemovableEntryView<IRemovableTraitVi
   }
 
   @Override
-  public IRemovableTraitView<IToggleButtonTraitView<?>> addEntryView(Icon removeIcon, IModifiableCapTrait trait,
+  public IRemovableTraitView<IToggleButtonTraitView<?>> addEntryView(RelativePath removeIcon, IModifiableCapTrait trait,
                                                                      String string) {
     SimpleTraitView view = new SimpleTraitView(factory, string, 0, 5);
-    RearToggleButtonTraitViewWrapper<SimpleTraitView> oneButtonView = new RearToggleButtonTraitViewWrapper<>(
-            view, properties, false);
+    RearToggleButtonTraitViewWrapper<SimpleTraitView> oneButtonView = new RearToggleButtonTraitViewWrapper<>(view,
+            properties, false);
     RearButtonTraitViewWrapper<IToggleButtonTraitView<?>> twoButtonView = new RearButtonTraitViewWrapper<IToggleButtonTraitView<?>>(
-            oneButtonView, removeIcon);
+            oneButtonView, new ImageProvider().getImageIcon(removeIcon));
     twoButtonView.addComponents(entryPanel);
     return twoButtonView;
   }

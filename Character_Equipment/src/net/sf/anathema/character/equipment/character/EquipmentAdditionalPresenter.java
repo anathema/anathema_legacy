@@ -177,7 +177,7 @@ public class EquipmentAdditionalPresenter implements Presenter {
       if (AnathemaEquipmentPreferences.getDefaultPreferences().getEnablePersonalization()) {
         createPersonalizeTool(selectedObject, objectPresenter);
       }
-      createUnpersonalizeTool(selectedObject, objectPresenter);
+      createRemoveItemTool(selectedObject, objectPresenter);
     }
   }
 
@@ -203,7 +203,7 @@ public class EquipmentAdditionalPresenter implements Presenter {
     });
   }
 
-  private void createUnpersonalizeTool(final IEquipmentItem selectedObject, EquipmentObjectPresenter objectPresenter) {
+  private void createRemoveItemTool(final IEquipmentItem selectedObject, EquipmentObjectPresenter objectPresenter) {
     Tool unpersonalize = objectPresenter.addContextTool();
     unpersonalize.setIcon(new BasicUi().getRemoveIconPath());
     unpersonalize.setText(resources.getString("AdditionalTemplateView.RemoveTemplate.Action.Name"));

@@ -6,6 +6,8 @@ import net.sf.anathema.character.library.removableentry.presenter.IRemovableEntr
 import net.sf.anathema.character.library.removableentry.view.AbstractRemovableEntryView;
 import net.sf.anathema.character.library.removableentry.view.RemovableStringView;
 import net.sf.anathema.character.library.trait.IModifiableCapTrait;
+import net.sf.anathema.lib.file.RelativePath;
+import net.sf.anathema.lib.gui.icon.ImageProvider;
 
 import javax.swing.Icon;
 import javax.swing.JComponent;
@@ -25,27 +27,20 @@ public class HeartsBloodView extends AbstractRemovableEntryView<IRemovableEntryV
     return content;
   }
 
-  public IAnimalFormSelectionView createAnimalFormSelectionView(
-      Icon icon,
-      String animalFormString,
-      String animalStrengthString,
-      String animalDexterityString,
-      String animalStaminaString,
-      String animalAppearanceString) {
-    AnimalFormSelectionView view = new AnimalFormSelectionView(
-        icon,
-        animalFormString,
-        animalStrengthString,
-        animalDexterityString,
-        animalStaminaString,
-        animalAppearanceString);
+  public IAnimalFormSelectionView createAnimalFormSelectionView(Icon icon, String animalFormString,
+                                                                String animalStrengthString,
+                                                                String animalDexterityString,
+                                                                String animalStaminaString,
+                                                                String animalAppearanceString) {
+    AnimalFormSelectionView view = new AnimalFormSelectionView(icon, animalFormString, animalStrengthString,
+            animalDexterityString, animalStaminaString, animalAppearanceString);
     content.add(view.getComponent(), new CC().alignY("top").growX());
     return view;
   }
 
   @Override
-  public IRemovableEntryView addEntryView(Icon removeIcon, IModifiableCapTrait trait, String string) {
-    RemovableStringView view = new RemovableStringView(removeIcon, string);
+  public IRemovableEntryView addEntryView(RelativePath removeIcon, IModifiableCapTrait trait, String string) {
+    RemovableStringView view = new RemovableStringView(new ImageProvider().getImageIcon(removeIcon), string);
     view.addContent(selectionPanel);
     return view;
   }

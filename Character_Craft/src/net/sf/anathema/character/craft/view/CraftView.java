@@ -15,15 +15,12 @@ import net.sf.anathema.framework.value.IntegerViewFactory;
 import net.sf.anathema.lib.file.RelativePath;
 import net.sf.anathema.lib.gui.icon.ImageProvider;
 
-import javax.swing.Icon;
 import javax.swing.JComponent;
 import javax.swing.JPanel;
 
 import static net.sf.anathema.lib.gui.layout.LayoutUtils.withoutInsets;
 
-public class CraftView extends AbstractRemovableEntryView<IRemovableTraitView<SimpleTraitView>> implements
-    IView,
-    IRemovableStringEntriesView<SimpleTraitView> {
+public class CraftView extends AbstractRemovableEntryView<IRemovableTraitView<SimpleTraitView>> implements IView, IRemovableStringEntriesView<SimpleTraitView> {
   private final IntegerViewFactory factory;
   private final JPanel mainPanel = new JPanel(new MigLayout(withoutInsets().wrapAfter(1)));
   private final JPanel entryPanel = new JPanel(new MigLayout(withoutInsets().wrapAfter(2).fillX()));
@@ -46,11 +43,11 @@ public class CraftView extends AbstractRemovableEntryView<IRemovableTraitView<Si
   }
 
   @Override
-  public IRemovableTraitView<SimpleTraitView> addEntryView(Icon removeIcon, IModifiableCapTrait trait, String string) {
+  public IRemovableTraitView<SimpleTraitView> addEntryView(RelativePath removeIcon, IModifiableCapTrait trait,
+                                                           String string) {
     SimpleTraitView view = new SimpleTraitView(factory, string, 0, traitMaximum, trait, new CC().growX());
-    RearButtonTraitViewWrapper<SimpleTraitView> traitView = new RearButtonTraitViewWrapper<>(
-        view,
-        removeIcon);
+    RearButtonTraitViewWrapper<SimpleTraitView> traitView = new RearButtonTraitViewWrapper<>(view,
+            new ImageProvider().getImageIcon(removeIcon));
     traitView.addComponents(entryPanel);
     return traitView;
   }

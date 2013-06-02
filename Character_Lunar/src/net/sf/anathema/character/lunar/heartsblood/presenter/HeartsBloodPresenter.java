@@ -88,7 +88,7 @@ public class HeartsBloodPresenter implements Presenter {
   }
 
   private void addAnimalFormView(BasicUi basicUi, final IAnimalForm form) {
-    IRemovableEntryView formView = view.addEntryView(basicUi.getRemoveIcon(), null, form.getName() +
+    IRemovableEntryView formView = view.addEntryView(basicUi.getRemoveIconPath(), null, form.getName() +
             (" (" + form.getStrength() + "/" + form.getDexterity() + "/" + form.getStamina() +
                     "/" + form.getAppearance()) + ")");
     viewsByForm.put(form, formView);

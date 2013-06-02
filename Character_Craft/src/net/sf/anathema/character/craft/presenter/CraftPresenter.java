@@ -80,7 +80,7 @@ public class CraftPresenter extends AbstractStringEntryTraitPresenter<ISubTrait>
   }
 
   private IRemovableTraitView< ? > createSubView(BasicUi basicUi, final ISubTrait craft, String name) {
-    IRemovableTraitView< ? > craftView = view.addEntryView(basicUi.getRemoveIcon(), craft, name);
+    IRemovableTraitView< ? > craftView = view.addEntryView(basicUi.getRemoveIconPath(), craft, name);
     craftView.setValue(craft.getCurrentValue());
     new TraitPresenter(craft, craftView).initPresentation();
     craftView.addButtonListener(new Command() {

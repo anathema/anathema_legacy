@@ -10,6 +10,7 @@ import net.sf.anathema.interaction.Command;
 import net.sf.anathema.lib.control.IChangeListener;
 import net.sf.anathema.lib.control.ObjectValueListener;
 import net.sf.anathema.lib.control.legality.LegalityColorProvider;
+import net.sf.anathema.lib.file.RelativePath;
 import net.sf.anathema.lib.gui.Presenter;
 import net.sf.anathema.lib.resources.Resources;
 import net.sf.anathema.lib.util.Identified;
@@ -174,7 +175,8 @@ private void initEntryPresentation() {
   }
 
   private void addEntry(BasicUi basicUi, final Identified language) {
-    IRemovableEntryView entryView = view.addEntryView(basicUi.getRemoveIcon(), null, getDisplayString(language));
+    RelativePath removeIcon = basicUi.getRemoveIconPath();
+    IRemovableEntryView entryView = view.addEntryView(removeIcon, null, getDisplayString(language));
     viewsByEntry.put(language, entryView);
     entryView.addButtonListener(new Command() {
       @Override
