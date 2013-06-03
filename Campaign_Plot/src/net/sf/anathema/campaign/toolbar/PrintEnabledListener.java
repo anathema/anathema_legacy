@@ -1,13 +1,13 @@
 package net.sf.anathema.campaign.toolbar;
 
-import net.sf.anathema.campaign.item.ItemManagementModelAdapter;
+import net.sf.anathema.campaign.item.PlotItemManagementAdapter;
 import net.sf.anathema.framework.reporting.IReportRegistry;
 import net.sf.anathema.framework.reporting.Report;
 import net.sf.anathema.framework.repository.IItem;
 
 import javax.swing.Action;
 
-public class PrintEnabledListener extends ItemManagementModelAdapter {
+public class PrintEnabledListener extends PlotItemManagementAdapter {
 
   private final IReportRegistry reportRegistry;
   private final Action action;

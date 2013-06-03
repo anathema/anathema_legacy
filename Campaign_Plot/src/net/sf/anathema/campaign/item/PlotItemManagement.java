@@ -4,13 +4,13 @@ import net.sf.anathema.framework.item.IItemType;
 import net.sf.anathema.framework.presenter.ItemReceiver;
 import net.sf.anathema.framework.repository.IItem;
 
-public interface IItemManagementModel extends ItemReceiver {
+public interface PlotItemManagement extends ItemReceiver {
 
   void setSelectedItem(IItem item);
 
-  void addListener(IItemManagementModelListener listener);
+  void addListener(PlotItemManagementListener listener);
 
-  void removeListener(IItemManagementModelListener listener);
+  void removeListener(PlotItemManagementListener listener);
 
   IItem getSelectedItem();
 

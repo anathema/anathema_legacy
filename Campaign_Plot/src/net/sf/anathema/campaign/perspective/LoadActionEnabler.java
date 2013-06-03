@@ -1,9 +1,9 @@
 package net.sf.anathema.campaign.perspective;
 
 import net.sf.anathema.campaign.item.ClosedFileCollector;
+import net.sf.anathema.campaign.item.PlotItemManagement;
+import net.sf.anathema.campaign.item.PlotItemManagementAdapter;
 import net.sf.anathema.framework.item.IItemType;
-import net.sf.anathema.campaign.item.IItemManagementModel;
-import net.sf.anathema.campaign.item.ItemManagementModelAdapter;
 import net.sf.anathema.framework.repository.IItem;
 import net.sf.anathema.framework.repository.IRepository;
 import net.sf.anathema.lib.control.IChangeListener;
@@ -15,9 +15,9 @@ public class LoadActionEnabler {
   private final Action action;
   private final IRepository repository;
   private final IItemType[] types;
-  private final IItemManagementModel model;
+  private final PlotItemManagement model;
 
-  public LoadActionEnabler(IRepository repository, IItemManagementModel model, Action action, IItemType... types) {
+  public LoadActionEnabler(IRepository repository, PlotItemManagement model, Action action, IItemType... types) {
     this.repository = repository;
     this.model = model;
     this.action = action;
@@ -37,7 +37,7 @@ public class LoadActionEnabler {
         adjustEnabled();
       }
     });
-    model.addListener(new ItemManagementModelAdapter() {
+    model.addListener(new PlotItemManagementAdapter() {
       @Override
       public void itemRemoved(IItem item) {
         adjustEnabled();

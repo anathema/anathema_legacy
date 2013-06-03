@@ -1,9 +1,9 @@
 package net.sf.anathema.campaign.toolbar;
 
-import net.sf.anathema.campaign.module.CampaignManagementExtension;
+import net.sf.anathema.campaign.item.PlotItemManagement;
+import net.sf.anathema.campaign.item.PlotItemManagementListener;
+import net.sf.anathema.campaign.module.PlotItemManagementExtension;
 import net.sf.anathema.framework.IApplicationModel;
-import net.sf.anathema.campaign.item.IItemManagementModel;
-import net.sf.anathema.campaign.item.IItemManagementModelListener;
 import net.sf.anathema.framework.presenter.resources.PlatformUI;
 import net.sf.anathema.framework.reporting.ControlledPrintCommand;
 import net.sf.anathema.framework.repository.IItem;
@@ -38,13 +38,13 @@ public class ControlledPrintAction extends AbstractPrintAction {
   }
 
   @Override
-  protected IItemManagementModelListener createEnablingListener() {
+  protected PlotItemManagementListener createEnablingListener() {
     return new PrintEnabledListener(this, anathemaModel.getReportRegistry());
   }
 
   @Override
   protected void execute(Component parentComponent) {
-    IItemManagementModel itemManagement = CampaignManagementExtension.getItemManagement(anathemaModel);
+    PlotItemManagement itemManagement = PlotItemManagementExtension.getItemManagement(anathemaModel);
     IItem item = itemManagement.getSelectedItem();
     if (item == null) {
       return;

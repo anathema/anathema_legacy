@@ -10,10 +10,10 @@ import java.util.List;
 
 public class ClosedFileCollector {
 
-  private IItemManagementModel itemManagement;
+  private PlotItemManagement itemManagement;
   private IPrintNameFileAccess printNameFileAccess;
 
-  public ClosedFileCollector(IItemManagementModel managementModel, IPrintNameFileAccess printNameFileAccess) {
+  public ClosedFileCollector(PlotItemManagement managementModel, IPrintNameFileAccess printNameFileAccess) {
     this.itemManagement = managementModel;
     this.printNameFileAccess = printNameFileAccess;
   }

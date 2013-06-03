@@ -1,9 +1,9 @@
 package net.sf.anathema.campaign.toolbar;
 
-import net.sf.anathema.campaign.module.CampaignManagementExtension;
+import net.sf.anathema.campaign.item.PlotItemManagement;
+import net.sf.anathema.campaign.item.PlotItemManagementListener;
+import net.sf.anathema.campaign.module.PlotItemManagementExtension;
 import net.sf.anathema.framework.IApplicationModel;
-import net.sf.anathema.campaign.item.IItemManagementModel;
-import net.sf.anathema.campaign.item.IItemManagementModelListener;
 import net.sf.anathema.framework.reporting.Report;
 import net.sf.anathema.framework.reporting.ReportException;
 import net.sf.anathema.framework.repository.IItem;
@@ -29,9 +29,9 @@ public abstract class AbstractPrintAction extends SmartAction {
   }
 
   private void startEnablingListener() {
-    IItemManagementModelListener listener = createEnablingListener();
-    CampaignManagementExtension.getItemManagement(anathemaModel);
-    IItemManagementModel itemManagement = CampaignManagementExtension.getItemManagement(anathemaModel);
+    PlotItemManagementListener listener = createEnablingListener();
+    PlotItemManagementExtension.getItemManagement(anathemaModel);
+    PlotItemManagement itemManagement = PlotItemManagementExtension.getItemManagement(anathemaModel);
     itemManagement.addListener(listener);
     listener.itemSelected(itemManagement.getSelectedItem());
   }
@@ -53,5 +53,5 @@ public abstract class AbstractPrintAction extends SmartAction {
 
   protected abstract KeyStroke createKeyStroke();
 
-  protected abstract IItemManagementModelListener createEnablingListener();
+  protected abstract PlotItemManagementListener createEnablingListener();
 }

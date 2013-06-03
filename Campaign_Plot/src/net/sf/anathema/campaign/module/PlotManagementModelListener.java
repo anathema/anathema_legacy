@@ -1,8 +1,8 @@
 package net.sf.anathema.campaign.module;
 
+import net.sf.anathema.campaign.item.PlotItemManagementListener;
 import net.sf.anathema.framework.item.IItemType;
 import net.sf.anathema.framework.model.IItemActionFactory;
-import net.sf.anathema.campaign.item.IItemManagementModelListener;
 import net.sf.anathema.framework.presenter.IModelViewMapping;
 import net.sf.anathema.framework.presenter.PlotItemViewFactory;
 import net.sf.anathema.framework.repository.IItem;
@@ -12,15 +12,15 @@ import net.sf.anathema.framework.view.SwingItemView;
 import net.sf.anathema.lib.exception.AnathemaException;
 import net.sf.anathema.lib.registry.IRegistry;
 
-public class CampaignManagementModelListener implements IItemManagementModelListener {
+public class PlotManagementModelListener implements PlotItemManagementListener {
 
   private final IModelViewMapping mapping;
   private final IRegistry<IItemType, PlotItemViewFactory> viewFactoryRegistry;
   private final IItemViewManagement itemViewManagement;
   private final IItemActionFactory actionFactory;
 
-  public CampaignManagementModelListener(IRegistry<IItemType, PlotItemViewFactory> viewFactoryRegistry, IItemViewManagement itemViewManagement,
-                                         IModelViewMapping mappping, IItemActionFactory actionFactory) {
+  public PlotManagementModelListener(IRegistry<IItemType, PlotItemViewFactory> viewFactoryRegistry, IItemViewManagement itemViewManagement,
+                                     IModelViewMapping mappping, IItemActionFactory actionFactory) {
     this.itemViewManagement = itemViewManagement;
     this.mapping = mappping;
     this.viewFactoryRegistry = viewFactoryRegistry;

@@ -1,10 +1,10 @@
 package net.sf.anathema.campaign.toolbar;
 
-import net.sf.anathema.campaign.module.CampaignManagementExtension;
+import net.sf.anathema.campaign.item.PlotItemManagement;
+import net.sf.anathema.campaign.item.PlotItemManagementAdapter;
+import net.sf.anathema.campaign.module.PlotItemManagementExtension;
 import net.sf.anathema.framework.IApplicationModel;
 import net.sf.anathema.framework.persistence.IRepositoryItemPersister;
-import net.sf.anathema.campaign.item.IItemManagementModel;
-import net.sf.anathema.campaign.item.ItemManagementModelAdapter;
 import net.sf.anathema.framework.presenter.resources.PlatformUI;
 import net.sf.anathema.framework.repository.IItem;
 import net.sf.anathema.framework.repository.RepositoryException;
@@ -36,7 +36,7 @@ public class AnathemaSaveAction extends SmartAction {
     }
   };
 
-  private class SaveEnabledListener extends ItemManagementModelAdapter {
+  private class SaveEnabledListener extends PlotItemManagementAdapter {
 
     private final Action action;
 
@@ -76,7 +76,7 @@ public class AnathemaSaveAction extends SmartAction {
   private AnathemaSaveAction(IApplicationModel model, Resources resources) {
     SaveEnabledListener listener = new SaveEnabledListener(this);
     setAcceleratorKey(KeyStroke.getKeyStroke(KeyEvent.VK_S, Toolkit.getDefaultToolkit().getMenuShortcutKeyMask()));
-    IItemManagementModel itemManagement = CampaignManagementExtension.getItemManagement(model);
+    PlotItemManagement itemManagement = PlotItemManagementExtension.getItemManagement(model);
     itemManagement.addListener(listener);
     listener.itemSelected(itemManagement.getSelectedItem());
     this.model = model;
@@ -88,7 +88,7 @@ public class AnathemaSaveAction extends SmartAction {
     parentComponent.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
     OutputStream stream = null;
     try {
-      IItemManagementModel itemManagement = CampaignManagementExtension.getItemManagement(model);
+      PlotItemManagement itemManagement = PlotItemManagementExtension.getItemManagement(model);
       IItem selectedItem = itemManagement.getSelectedItem();
       IRepositoryWriteAccess writeAccess = model.getRepository().createWriteAccess(selectedItem);
       IRepositoryItemPersister persister = model.getPersisterRegistry().get(selectedItem.getItemType());

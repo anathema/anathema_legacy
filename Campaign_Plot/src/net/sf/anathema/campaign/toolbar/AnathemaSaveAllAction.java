@@ -1,10 +1,10 @@
 package net.sf.anathema.campaign.toolbar;
 
-import net.sf.anathema.campaign.module.CampaignManagementExtension;
+import net.sf.anathema.campaign.item.PlotItemManagement;
+import net.sf.anathema.campaign.item.PlotItemManagementListener;
+import net.sf.anathema.campaign.module.PlotItemManagementExtension;
 import net.sf.anathema.framework.IApplicationModel;
 import net.sf.anathema.framework.persistence.IRepositoryItemPersister;
-import net.sf.anathema.campaign.item.IItemManagementModel;
-import net.sf.anathema.campaign.item.IItemManagementModelListener;
 import net.sf.anathema.framework.presenter.resources.PlatformUI;
 import net.sf.anathema.framework.repository.IItem;
 import net.sf.anathema.framework.repository.RepositoryException;
@@ -33,7 +33,7 @@ public class AnathemaSaveAllAction extends SmartAction {
     }
   };
 
-  private class SaveAllEnabledListener implements IItemManagementModelListener {
+  private class SaveAllEnabledListener implements PlotItemManagementListener {
     @Override
     public void itemAdded(IItem item) {
       setSaveAllEnabled();
@@ -59,7 +59,7 @@ public class AnathemaSaveAllAction extends SmartAction {
 
   private void setSaveAllEnabled() {
     boolean enable = false;
-    IItemManagementModel itemManagement = CampaignManagementExtension.getItemManagement(model);
+    PlotItemManagement itemManagement = PlotItemManagementExtension.getItemManagement(model);
     for (IItem item : itemManagement.getAllItems()) {
       if (item.getItemType().supportsRepository()) {
         enable |= item.isDirty();
@@ -82,7 +82,7 @@ public class AnathemaSaveAllAction extends SmartAction {
     this.model = model;
     SaveAllEnabledListener listener = new SaveAllEnabledListener();
     setAcceleratorKey(KeyStroke.getKeyStroke(KeyEvent.VK_S, InputEvent.SHIFT_MASK | Toolkit.getDefaultToolkit().getMenuShortcutKeyMask()));
-    IItemManagementModel itemManagement = CampaignManagementExtension.getItemManagement(model);
+    PlotItemManagement itemManagement = PlotItemManagementExtension.getItemManagement(model);
     itemManagement.addListener(listener);
     listener.itemAdded(null);
     this.resources = resources;
@@ -90,7 +90,7 @@ public class AnathemaSaveAllAction extends SmartAction {
 
   @Override
   protected void execute(Component parentComponent) {
-    IItemManagementModel itemManagement = CampaignManagementExtension.getItemManagement(model);
+    PlotItemManagement itemManagement = PlotItemManagementExtension.getItemManagement(model);
     for (IItem item : itemManagement.getAllItems()) {
       if (item.getItemType().supportsRepository() && item.isDirty()) {
         parentComponent.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));

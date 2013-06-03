@@ -1,6 +1,6 @@
 package net.sf.anathema.campaign.perspective;
 
-import net.sf.anathema.campaign.module.CampaignViewListening;
+import net.sf.anathema.campaign.module.PlotViewListening;
 import net.sf.anathema.framework.IApplicationModel;
 import net.sf.anathema.initialization.InitializationException;
 import net.sf.anathema.lib.resources.Resources;
@@ -17,7 +17,7 @@ public class CampaignPerspectivePresenter {
   }
 
   public void initPresentation() throws InitializationException {
-    new CampaignViewListening().init(resources, model, view);
+    new PlotViewListening().init(resources, model, view);
     new CampaignPerspectiveTool().add(resources, model, view.getToolBar());
   }
 }

@@ -1,6 +1,6 @@
 package net.sf.anathema.campaign.toolbar;
 
-import net.sf.anathema.campaign.item.IItemManagementModel;
+import net.sf.anathema.campaign.item.PlotItemManagement;
 import net.sf.anathema.framework.repository.IItem;
 import net.sf.anathema.lib.gui.action.SmartAction;
 import net.sf.anathema.lib.gui.dialog.core.IDialogResult;
@@ -18,11 +18,11 @@ import java.awt.Cursor;
 
 public abstract class AbstractCloseAction extends SmartAction {
 
-  private final IItemManagementModel management;
+  private final PlotItemManagement management;
   private final Resources resources;
   private final SelectedItemActionEnabler itemActionEnabler;
 
-  public AbstractCloseAction(IItemManagementModel management, Resources resources) {
+  public AbstractCloseAction(PlotItemManagement management, Resources resources) {
     this.management = management;
     this.resources = resources;
     this.itemActionEnabler = new SelectedItemActionEnabler(this, management.getSelectedItem());

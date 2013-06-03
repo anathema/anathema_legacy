@@ -9,9 +9,9 @@ import org.jmock.example.announcer.Announcer;
 import java.util.ArrayList;
 import java.util.List;
 
-public class ItemManagmentModel implements IItemManagementModel {
+public class PlotItemManagmentImpl implements PlotItemManagement {
 
-  private final Announcer<IItemManagementModelListener> listeners = Announcer.to(IItemManagementModelListener.class);
+  private final Announcer<PlotItemManagementListener> listeners = Announcer.to(PlotItemManagementListener.class);
   private final List<IItem> allItems = new ArrayList<>();
   private IItem selectedItem;
 
@@ -32,7 +32,7 @@ public class ItemManagmentModel implements IItemManagementModel {
   }
 
   @Override
-  public void addListener(IItemManagementModelListener listener) {
+  public void addListener(PlotItemManagementListener listener) {
     listeners.addListener(listener);
   }
 
@@ -49,7 +49,7 @@ public class ItemManagmentModel implements IItemManagementModel {
   }
 
   @Override
-  public void removeListener(IItemManagementModelListener listener) {
+  public void removeListener(PlotItemManagementListener listener) {
     listeners.removeListener(listener);
   }
 

@@ -2,7 +2,7 @@ package net.sf.anathema.campaign.item;
 
 import net.sf.anathema.framework.repository.IItem;
 
-public abstract class ItemManagementModelAdapter implements IItemManagementModelListener {
+public abstract class PlotItemManagementAdapter implements PlotItemManagementListener {
 
   @Override
   public void itemAdded(IItem item) {

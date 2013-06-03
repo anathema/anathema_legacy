@@ -1,10 +1,10 @@
 package net.sf.anathema.campaign.perspective;
 
-import net.sf.anathema.campaign.module.CampaignManagementExtension;
+import net.sf.anathema.campaign.item.PlotItemManagement;
+import net.sf.anathema.campaign.module.PlotItemManagementExtension;
 import net.sf.anathema.framework.IApplicationModel;
 import net.sf.anathema.framework.extension.IAnathemaExtension;
 import net.sf.anathema.framework.item.IItemType;
-import net.sf.anathema.campaign.item.IItemManagementModel;
 import net.sf.anathema.framework.presenter.action.ItemCreationOperator;
 import net.sf.anathema.framework.presenter.item.ItemTypeCreationViewPropertiesExtensionPoint;
 import net.sf.anathema.framework.presenter.resources.PlatformUI;
@@ -50,7 +50,7 @@ public class ItemTypeLoadAction extends AbstractItemAction {
 
   private ItemTypeLoadAction(IApplicationModel anathemaModel, IItemType itemType, Resources resources) {
     super(anathemaModel, resources);
-    IItemManagementModel itemManagement = CampaignManagementExtension.getItemManagement(anathemaModel);
+    PlotItemManagement itemManagement = PlotItemManagementExtension.getItemManagement(anathemaModel);
     this.itemCreationOperator = new ItemCreationOperator(new LoadItemCreator(anathemaModel), itemManagement);
     this.itemType = itemType;
     new LoadActionEnabler(anathemaModel.getRepository(), itemManagement, this, itemType).init();
@@ -63,7 +63,7 @@ public class ItemTypeLoadAction extends AbstractItemAction {
             (ItemTypeCreationViewPropertiesExtensionPoint) extensionPointRegistry.get(ItemTypeCreationViewPropertiesExtensionPoint.ID);
     IItemTypeViewProperties properties = extension.get(itemType);
     IPrintNameFileAccess printNameFileAccess = getAnathemaModel().getRepository().getPrintNameFileAccess();
-    IItemManagementModel itemManagement = CampaignManagementExtension.getItemManagement(getAnathemaModel());
+    PlotItemManagement itemManagement = PlotItemManagementExtension.getItemManagement(getAnathemaModel());
     LoadItemWizardProperties selectionProperties = new LoadItemWizardProperties(getResources(), properties.getItemTypeUI());
     ItemSelectionTemplateFactory factory = new ItemSelectionTemplateFactory(itemManagement, itemType, printNameFileAccess, selectionProperties);
     IDialogModelTemplate template = factory.createTemplate();
