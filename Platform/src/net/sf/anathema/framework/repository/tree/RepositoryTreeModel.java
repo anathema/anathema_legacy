@@ -21,15 +21,13 @@ public class RepositoryTreeModel implements IRepositoryTreeModel {
   private final IItemType[] integratedItemTypes;
   private final Announcer<IRepositoryTreeModelListener> control = Announcer.to(IRepositoryTreeModelListener.class);
   private final Announcer<IChangeListener> changeControl = Announcer.to(IChangeListener.class);
-  private final IItemManagementModel itemManagementModel;
   private final IRepository repository;
   private final IItemTypeRegistry itemTypes;
   private Object[] currentlySelectedUserObjects;
   private final RepositoryFileAccessFactory repositoryFileAccessFactory;
 
-  public RepositoryTreeModel(IRepository repository, IItemManagementModel itemManagementModel, IItemTypeRegistry itemTypes) {
+  public RepositoryTreeModel(IRepository repository, IItemTypeRegistry itemTypes) {
     this.repository = repository;
-    this.itemManagementModel = itemManagementModel;
     this.itemTypes = itemTypes;
     this.integratedItemTypes = createIntegratedItemTypes(itemTypes);
     this.repositoryFileAccessFactory = new RepositoryFileAccessFactory(repository);
@@ -62,19 +60,6 @@ public class RepositoryTreeModel implements IRepositoryTreeModel {
 
   @Override
   public boolean canSelectionBeDeleted() {
-    if (currentlySelectedUserObjects.length == 0) {
-      return false;
-    }
-    for (Object object : currentlySelectedUserObjects) {
-      if (!isPrintNameFile(object)) {
-        return false;
-      }
-      PrintNameFile file = (PrintNameFile) object;
-      boolean open = itemManagementModel.isOpen(file.getRepositoryId(), file.getItemType());
-      if (open) {
-        return false;
-      }
-    }
     return true;
   }
 
