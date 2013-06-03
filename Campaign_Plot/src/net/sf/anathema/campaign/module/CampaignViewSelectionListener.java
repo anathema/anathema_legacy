@@ -1,16 +1,16 @@
-package net.sf.anathema.framework.presenter.itemmanagement;
+package net.sf.anathema.campaign.module;
 
 import net.sf.anathema.framework.presenter.IItemManagementModel;
 import net.sf.anathema.framework.presenter.IModelViewMapping;
 import net.sf.anathema.framework.view.IViewSelectionListener;
 import net.sf.anathema.framework.view.ItemView;
 
-public class ItemViewSelectionListener implements IViewSelectionListener {
+public class CampaignViewSelectionListener implements IViewSelectionListener {
 
   private final IItemManagementModel model;
   private final IModelViewMapping mapping;
 
-  public ItemViewSelectionListener(IItemManagementModel model, IModelViewMapping mapping) {
+  public CampaignViewSelectionListener(IItemManagementModel model, IModelViewMapping mapping) {
     this.model = model;
     this.mapping = mapping;
   }

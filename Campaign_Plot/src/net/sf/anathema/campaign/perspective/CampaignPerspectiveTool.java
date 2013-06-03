@@ -2,8 +2,8 @@ package net.sf.anathema.campaign.perspective;
 
 import net.sf.anathema.framework.perspective.ToolBar;
 import net.sf.anathema.framework.IApplicationModel;
-import net.sf.anathema.framework.presenter.itemmanagement.AnathemaSaveAction;
-import net.sf.anathema.framework.presenter.itemmanagement.AnathemaSaveAllAction;
+import net.sf.anathema.campaign.toolbar.AnathemaSaveAction;
+import net.sf.anathema.campaign.toolbar.AnathemaSaveAllAction;
 import net.sf.anathema.campaign.toolbar.ControlledPrintAction;
 import net.sf.anathema.campaign.toolbar.QuickPrintAction;
 import net.sf.anathema.framework.reporting.PrintCommand;

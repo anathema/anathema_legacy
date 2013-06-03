@@ -1,4 +1,4 @@
-package net.sf.anathema.framework.presenter.itemmanagement;
+package net.sf.anathema.campaign.toolbar;
 
 import net.sf.anathema.framework.presenter.IItemManagementModel;
 import net.sf.anathema.framework.presenter.resources.BasicUi;
@@ -8,17 +8,17 @@ import net.sf.anathema.lib.resources.Resources;
 
 import javax.swing.Action;
 
-public class GivenItemCloseAction extends AbstractCloseAction {
+public class GivenCampaignCloseAction extends AbstractCloseAction {
 
   private final IItem item;
 
   public static Action createForItem(IItemManagementModel model, Resources resources, IItem item) {
-    SmartAction action = new GivenItemCloseAction(model, item, resources);
+    SmartAction action = new GivenCampaignCloseAction(model, item, resources);
     action.setIcon(new BasicUi().getClearIcon());
     return action;
   }
 
-  private GivenItemCloseAction(IItemManagementModel management, IItem item, Resources resources) {
+  private GivenCampaignCloseAction(IItemManagementModel management, IItem item, Resources resources) {
     super(management, resources);
     this.item = item;
   }

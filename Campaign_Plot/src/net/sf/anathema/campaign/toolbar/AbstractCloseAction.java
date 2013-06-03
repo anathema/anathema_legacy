@@ -1,4 +1,4 @@
-package net.sf.anathema.framework.presenter.itemmanagement;
+package net.sf.anathema.campaign.toolbar;
 
 import net.sf.anathema.framework.presenter.IItemManagementModel;
 import net.sf.anathema.framework.presenter.SelectedItemActionEnabler;
