@@ -11,7 +11,7 @@ public class CampaignViewListening {
 
   public void init(Resources resources, IApplicationModel model, IItemViewManagement itemViewManagement) {
     IModelViewMapping mapping = new ModelViewMapping();
-    IItemManagementModel itemManagement = model.getItemManagement();
+    IItemManagementModel itemManagement = CampaignManagementExtension.getItemManagement(model);
     CampaginActionFactory actionFactory = new CampaginActionFactory(itemManagement, resources);
     itemManagement.addListener(new CampaignManagementModelListener(model.getViewFactoryRegistry(), itemViewManagement, mapping, actionFactory));
     itemViewManagement.addViewSelectionListener(new CampaignViewSelectionListener(itemManagement, mapping));

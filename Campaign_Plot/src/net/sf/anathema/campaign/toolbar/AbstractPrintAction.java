@@ -1,6 +1,8 @@
 package net.sf.anathema.campaign.toolbar;
 
+import net.sf.anathema.campaign.module.CampaignManagementExtension;
 import net.sf.anathema.framework.IApplicationModel;
+import net.sf.anathema.framework.presenter.IItemManagementModel;
 import net.sf.anathema.framework.presenter.IItemManagementModelListener;
 import net.sf.anathema.framework.reporting.Report;
 import net.sf.anathema.framework.reporting.ReportException;
@@ -15,8 +17,6 @@ import java.io.OutputStream;
 import java.nio.file.Files;
 import java.nio.file.Path;
 
-import static java.awt.Desktop.isDesktopSupported;
-
 public abstract class AbstractPrintAction extends SmartAction {
   protected final IApplicationModel anathemaModel;
   protected final Resources resources;
@@ -30,8 +30,10 @@ public abstract class AbstractPrintAction extends SmartAction {
 
   private void startEnablingListener() {
     IItemManagementModelListener listener = createEnablingListener();
-    anathemaModel.getItemManagement().addListener(listener);
-    listener.itemSelected(anathemaModel.getItemManagement().getSelectedItem());
+    CampaignManagementExtension.getItemManagement(anathemaModel);
+    IItemManagementModel itemManagement = CampaignManagementExtension.getItemManagement(anathemaModel);
+    itemManagement.addListener(listener);
+    listener.itemSelected(itemManagement.getSelectedItem());
   }
 
   private void setHotKey() {

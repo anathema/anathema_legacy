@@ -61,11 +61,6 @@ public class ApplicationModel implements IApplicationModel {
   }
 
   @Override
-  public IItemManagementModel getItemManagement() {
-    return itemManagment;
-  }
-
-  @Override
   public IRegistry<IItemType, ItemViewFactory> getViewFactoryRegistry() {
     return viewFactoryRegistry;
   }

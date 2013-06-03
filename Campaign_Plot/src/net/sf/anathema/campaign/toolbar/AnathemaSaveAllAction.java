@@ -1,7 +1,9 @@
 package net.sf.anathema.campaign.toolbar;
 
+import net.sf.anathema.campaign.module.CampaignManagementExtension;
 import net.sf.anathema.framework.IApplicationModel;
 import net.sf.anathema.framework.persistence.IRepositoryItemPersister;
+import net.sf.anathema.framework.presenter.IItemManagementModel;
 import net.sf.anathema.framework.presenter.IItemManagementModelListener;
 import net.sf.anathema.framework.presenter.resources.PlatformUI;
 import net.sf.anathema.framework.repository.IItem;
@@ -57,7 +59,8 @@ public class AnathemaSaveAllAction extends SmartAction {
 
   private void setSaveAllEnabled() {
     boolean enable = false;
-    for (IItem item : model.getItemManagement().getAllItems()) {
+    IItemManagementModel itemManagement = CampaignManagementExtension.getItemManagement(model);
+    for (IItem item : itemManagement.getAllItems()) {
       if (item.getItemType().supportsRepository()) {
         enable |= item.isDirty();
       }
@@ -79,14 +82,16 @@ public class AnathemaSaveAllAction extends SmartAction {
     this.model = model;
     SaveAllEnabledListener listener = new SaveAllEnabledListener();
     setAcceleratorKey(KeyStroke.getKeyStroke(KeyEvent.VK_S, InputEvent.SHIFT_MASK | Toolkit.getDefaultToolkit().getMenuShortcutKeyMask()));
-    model.getItemManagement().addListener(listener);
+    IItemManagementModel itemManagement = CampaignManagementExtension.getItemManagement(model);
+    itemManagement.addListener(listener);
     listener.itemAdded(null);
     this.resources = resources;
   }
 
   @Override
   protected void execute(Component parentComponent) {
-    for (IItem item : model.getItemManagement().getAllItems()) {
+    IItemManagementModel itemManagement = CampaignManagementExtension.getItemManagement(model);
+    for (IItem item : itemManagement.getAllItems()) {
       if (item.getItemType().supportsRepository() && item.isDirty()) {
         parentComponent.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
         try {

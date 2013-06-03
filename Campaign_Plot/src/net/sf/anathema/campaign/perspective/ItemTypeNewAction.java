@@ -1,5 +1,6 @@
 package net.sf.anathema.campaign.perspective;
 
+import net.sf.anathema.campaign.module.CampaignManagementExtension;
 import net.sf.anathema.framework.IApplicationModel;
 import net.sf.anathema.framework.item.IItemType;
 import net.sf.anathema.framework.presenter.IItemManagementModel;
@@ -43,7 +44,7 @@ public class ItemTypeNewAction extends AbstractItemAction {
   @Override
   protected void execute(Component parentComponent) {
     IApplicationModel anathemaModel = getAnathemaModel();
-    IItemManagementModel receiver = getAnathemaModel().getItemManagement();
+    IItemManagementModel receiver = CampaignManagementExtension.getItemManagement(anathemaModel);
     NewItemCommand command = new NewItemCommand(type, anathemaModel, getResources(), receiver);
     command.execute();
   }

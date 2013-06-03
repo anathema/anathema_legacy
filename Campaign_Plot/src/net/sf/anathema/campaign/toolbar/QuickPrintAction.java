@@ -1,6 +1,8 @@
 package net.sf.anathema.campaign.toolbar;
 
+import net.sf.anathema.campaign.module.CampaignManagementExtension;
 import net.sf.anathema.framework.IApplicationModel;
+import net.sf.anathema.framework.presenter.IItemManagementModel;
 import net.sf.anathema.framework.presenter.IItemManagementModelListener;
 import net.sf.anathema.framework.presenter.resources.PlatformUI;
 import net.sf.anathema.framework.reporting.PrintEnabledListener;
@@ -42,7 +44,8 @@ public class QuickPrintAction extends AbstractPrintAction {
 
   @Override
   protected void execute(Component parentComponent) {
-    IItem item = anathemaModel.getItemManagement().getSelectedItem();
+    IItemManagementModel itemManagement = CampaignManagementExtension.getItemManagement(anathemaModel);
+    IItem item = itemManagement.getSelectedItem();
     if (item == null) {
       return;
     }

@@ -27,8 +27,6 @@ public interface IApplicationModel {
 
   IRegistry<IItemType, ItemViewFactory> getViewFactoryRegistry();
 
-  IItemManagementModel getItemManagement();
-
   IMessaging getMessaging();
 
   IMessageContainer getMessageContainer();

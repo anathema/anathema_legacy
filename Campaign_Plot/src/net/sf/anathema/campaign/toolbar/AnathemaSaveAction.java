@@ -1,7 +1,9 @@
 package net.sf.anathema.campaign.toolbar;
 
+import net.sf.anathema.campaign.module.CampaignManagementExtension;
 import net.sf.anathema.framework.IApplicationModel;
 import net.sf.anathema.framework.persistence.IRepositoryItemPersister;
+import net.sf.anathema.framework.presenter.IItemManagementModel;
 import net.sf.anathema.framework.presenter.ItemManagementModelAdapter;
 import net.sf.anathema.framework.presenter.resources.PlatformUI;
 import net.sf.anathema.framework.repository.IItem;
@@ -74,8 +76,9 @@ public class AnathemaSaveAction extends SmartAction {
   private AnathemaSaveAction(IApplicationModel model, Resources resources) {
     SaveEnabledListener listener = new SaveEnabledListener(this);
     setAcceleratorKey(KeyStroke.getKeyStroke(KeyEvent.VK_S, Toolkit.getDefaultToolkit().getMenuShortcutKeyMask()));
-    model.getItemManagement().addListener(listener);
-    listener.itemSelected(model.getItemManagement().getSelectedItem());
+    IItemManagementModel itemManagement = CampaignManagementExtension.getItemManagement(model);
+    itemManagement.addListener(listener);
+    listener.itemSelected(itemManagement.getSelectedItem());
     this.model = model;
     this.resources = resources;
   }
@@ -85,7 +88,8 @@ public class AnathemaSaveAction extends SmartAction {
     parentComponent.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
     OutputStream stream = null;
     try {
-      IItem selectedItem = model.getItemManagement().getSelectedItem();
+      IItemManagementModel itemManagement = CampaignManagementExtension.getItemManagement(model);
+      IItem selectedItem = itemManagement.getSelectedItem();
       IRepositoryWriteAccess writeAccess = model.getRepository().createWriteAccess(selectedItem);
       IRepositoryItemPersister persister = model.getPersisterRegistry().get(selectedItem.getItemType());
       persister.save(writeAccess, selectedItem);

@@ -1,5 +1,6 @@
 package net.sf.anathema.campaign.perspective;
 
+import net.sf.anathema.campaign.module.CampaignManagementExtension;
 import net.sf.anathema.framework.IApplicationModel;
 import net.sf.anathema.framework.extension.IAnathemaExtension;
 import net.sf.anathema.framework.item.IItemType;
@@ -49,10 +50,10 @@ public class ItemTypeLoadAction extends AbstractItemAction {
 
   private ItemTypeLoadAction(IApplicationModel anathemaModel, IItemType itemType, Resources resources) {
     super(anathemaModel, resources);
-    IItemManagementModel itemManagementModel = anathemaModel.getItemManagement();
-    this.itemCreationOperator = new ItemCreationOperator(new LoadItemCreator(anathemaModel), itemManagementModel);
+    IItemManagementModel itemManagement = CampaignManagementExtension.getItemManagement(anathemaModel);
+    this.itemCreationOperator = new ItemCreationOperator(new LoadItemCreator(anathemaModel), itemManagement);
     this.itemType = itemType;
-    new LoadActionEnabler(anathemaModel.getRepository(), itemManagementModel, this, itemType).init();
+    new LoadActionEnabler(anathemaModel.getRepository(), itemManagement, this, itemType).init();
   }
 
   @Override
@@ -62,7 +63,7 @@ public class ItemTypeLoadAction extends AbstractItemAction {
             (ItemTypeCreationViewPropertiesExtensionPoint) extensionPointRegistry.get(ItemTypeCreationViewPropertiesExtensionPoint.ID);
     IItemTypeViewProperties properties = extension.get(itemType);
     IPrintNameFileAccess printNameFileAccess = getAnathemaModel().getRepository().getPrintNameFileAccess();
-    IItemManagementModel itemManagement = getAnathemaModel().getItemManagement();
+    IItemManagementModel itemManagement = CampaignManagementExtension.getItemManagement(getAnathemaModel());
     LoadItemWizardProperties selectionProperties = new LoadItemWizardProperties(getResources(), properties.getItemTypeUI());
     ItemSelectionTemplateFactory factory = new ItemSelectionTemplateFactory(itemManagement, itemType, printNameFileAccess, selectionProperties);
     IDialogModelTemplate template = factory.createTemplate();
