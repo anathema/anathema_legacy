@@ -15,15 +15,13 @@ import net.sf.anathema.character.view.overview.CategorizedOverview;
 import net.sf.anathema.character.view.overview.NullOverviewContainer;
 import net.sf.anathema.framework.presenter.view.MultipleContentView;
 import net.sf.anathema.framework.value.IntegerViewFactory;
-import net.sf.anathema.framework.view.item.AbstractItemView;
 import net.sf.anathema.framework.view.util.OptionalViewBar;
-import net.sf.anathema.lib.file.RelativePath;
 
 import javax.swing.JComponent;
 import javax.swing.JPanel;
 import java.awt.BorderLayout;
 
-public class TaskedCharacterView extends AbstractItemView implements CharacterView {
+public class TaskedCharacterView implements CharacterView {
 
   private final IntegerViewFactory integerDisplayFactory;
   private CategorizedOverview creationOverviewView;
@@ -34,8 +32,7 @@ public class TaskedCharacterView extends AbstractItemView implements CharacterVi
   private final OptionalViewBar optionalViewPane = new OptionalViewBar();
   private JPanel content;
 
-  public TaskedCharacterView(IntegerViewFactory factory, String name, RelativePath icon, IntegerViewFactory factoryWithoutMarker) {
-    super(name, icon);
+  public TaskedCharacterView(IntegerViewFactory factory, IntegerViewFactory factoryWithoutMarker) {
     this.characterPane = new TaskedCharacterPane();
     this.integerDisplayFactory = factory;
     this.integerViewFactoryWithoutMarker = factoryWithoutMarker;

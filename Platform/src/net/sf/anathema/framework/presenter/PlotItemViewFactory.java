@@ -4,7 +4,7 @@ import net.sf.anathema.framework.repository.IItem;
 import net.sf.anathema.framework.view.ItemView;
 import net.sf.anathema.lib.exception.AnathemaException;
 
-public interface ItemViewFactory {
+public interface PlotItemViewFactory {
 
   ItemView createView(IItem item) throws AnathemaException;
 }

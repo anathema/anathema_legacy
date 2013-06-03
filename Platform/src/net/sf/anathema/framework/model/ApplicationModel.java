@@ -8,7 +8,7 @@ import net.sf.anathema.framework.messaging.IMessageContainer;
 import net.sf.anathema.framework.messaging.IMessaging;
 import net.sf.anathema.framework.messaging.Messaging;
 import net.sf.anathema.framework.persistence.IRepositoryItemPersister;
-import net.sf.anathema.framework.presenter.ItemViewFactory;
+import net.sf.anathema.framework.presenter.PlotItemViewFactory;
 import net.sf.anathema.framework.reporting.IReportRegistry;
 import net.sf.anathema.framework.repository.IRepository;
 import net.sf.anathema.framework.repository.Repository;
@@ -24,7 +24,7 @@ public class ApplicationModel implements IApplicationModel {
   private final IRegistry<String, IAnathemaExtension> extensionRegistry = new Registry<>();
   private final IRegistry<IItemType, IRepositoryItemPersister> persisterRegistry = new Registry<>();
   private final IReportRegistry reportRegistry = new ReportRegistry();
-  private final IRegistry<IItemType, ItemViewFactory> viewFactoryRegistry = new Registry<>();
+  private final IRegistry<IItemType, PlotItemViewFactory> viewFactoryRegistry = new Registry<>();
   private final IItemTypeRegistry itemTypes = new ItemTypeRegistry();
   private final Repository repository;
   private final Messaging messaging;
@@ -59,7 +59,7 @@ public class ApplicationModel implements IApplicationModel {
   }
 
   @Override
-  public IRegistry<IItemType, ItemViewFactory> getViewFactoryRegistry() {
+  public IRegistry<IItemType, PlotItemViewFactory> getViewFactoryRegistry() {
     return viewFactoryRegistry;
   }
 

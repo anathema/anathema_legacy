@@ -7,9 +7,10 @@ import net.sf.anathema.campaign.presenter.TextEditorProperties;
 import net.sf.anathema.campaign.presenter.view.SeriesView;
 import net.sf.anathema.campaign.view.CampaignView;
 import net.sf.anathema.framework.IApplicationModel;
+import net.sf.anathema.framework.item.IItemType;
 import net.sf.anathema.framework.module.AbstractPersistableItemTypeConfiguration;
 import net.sf.anathema.framework.persistence.IRepositoryItemPersister;
-import net.sf.anathema.framework.presenter.ItemViewFactory;
+import net.sf.anathema.framework.presenter.PlotItemViewFactory;
 import net.sf.anathema.framework.presenter.view.IItemTypeViewProperties;
 import net.sf.anathema.framework.presenter.view.SimpleItemTypeViewProperties;
 import net.sf.anathema.framework.repository.IItem;
@@ -21,6 +22,7 @@ import net.sf.anathema.initialization.ItemTypeConfiguration;
 import net.sf.anathema.initialization.reflections.Weight;
 import net.sf.anathema.lib.exception.AnathemaException;
 import net.sf.anathema.lib.file.RelativePath;
+import net.sf.anathema.lib.registry.IRegistry;
 import net.sf.anathema.lib.resources.Resources;
 
 @ItemTypeConfiguration
@@ -33,9 +35,13 @@ public class SeriesTypeConfiguration extends AbstractPersistableItemTypeConfigur
     super(new ItemType(SERIES_ITEM_TYPE_ID, new RepositoryConfiguration(".srs", "Series/", "main")));
   }
 
-  @Override
-  protected ItemViewFactory createItemViewFactory(IApplicationModel model, final Resources resources) {
-    return new ItemViewFactory() {
+  public final void registerViewFactory(IApplicationModel model, Resources resources) {
+    IRegistry<IItemType, PlotItemViewFactory> viewFactoryRegistry = model.getViewFactoryRegistry();
+    viewFactoryRegistry.register(getItemType(), createItemViewFactory(model, resources));
+  }
+
+  private PlotItemViewFactory createItemViewFactory(IApplicationModel model, final Resources resources) {
+    return new PlotItemViewFactory() {
       @Override
       public ItemView createView(IItem item) throws AnathemaException {
         String printName = item.getDisplayName();

@@ -4,7 +4,7 @@ import net.sf.anathema.framework.item.IItemType;
 import net.sf.anathema.framework.model.IItemActionFactory;
 import net.sf.anathema.campaign.item.IItemManagementModelListener;
 import net.sf.anathema.framework.presenter.IModelViewMapping;
-import net.sf.anathema.framework.presenter.ItemViewFactory;
+import net.sf.anathema.framework.presenter.PlotItemViewFactory;
 import net.sf.anathema.framework.repository.IItem;
 import net.sf.anathema.framework.view.IItemViewManagement;
 import net.sf.anathema.framework.view.ItemView;
@@ -15,11 +15,11 @@ import net.sf.anathema.lib.registry.IRegistry;
 public class CampaignManagementModelListener implements IItemManagementModelListener {
 
   private final IModelViewMapping mapping;
-  private final IRegistry<IItemType, ItemViewFactory> viewFactoryRegistry;
+  private final IRegistry<IItemType, PlotItemViewFactory> viewFactoryRegistry;
   private final IItemViewManagement itemViewManagement;
   private final IItemActionFactory actionFactory;
 
-  public CampaignManagementModelListener(IRegistry<IItemType, ItemViewFactory> viewFactoryRegistry, IItemViewManagement itemViewManagement,
+  public CampaignManagementModelListener(IRegistry<IItemType, PlotItemViewFactory> viewFactoryRegistry, IItemViewManagement itemViewManagement,
                                          IModelViewMapping mappping, IItemActionFactory actionFactory) {
     this.itemViewManagement = itemViewManagement;
     this.mapping = mappping;
@@ -30,7 +30,7 @@ public class CampaignManagementModelListener implements IItemManagementModelList
 
   @Override
   public void itemAdded(IItem item) throws AnathemaException {
-    ItemViewFactory viewFactory = viewFactoryRegistry.get(item.getItemType());
+    PlotItemViewFactory viewFactory = viewFactoryRegistry.get(item.getItemType());
     SwingItemView itemView = (SwingItemView) viewFactory.createView(item);
     mapping.addModelAndView(item, itemView);
     itemViewManagement.addItemView(itemView, actionFactory.createAction(item));
