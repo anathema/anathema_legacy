@@ -8,7 +8,9 @@ import org.junit.Before;
 import org.junit.Test;
 
 import java.io.File;
+import java.net.URI;
 import java.net.URL;
+import java.nio.file.Path;
 import java.nio.file.Paths;
 
 import static net.sf.anathema.campaign.module.NoteTypeConfiguration.ITEM_TYPE;
@@ -28,7 +30,9 @@ public class NoteToScrollConverter_Test {
       public File getFile() {
         try {
           URL url = ClassLoader.getSystemResource("repository/Notes/Input.not");
-          return Paths.get(url.toURI()).toFile();
+          URI uri = url.toURI();
+          Path path = Paths.get(uri);
+          return path.toFile();
         } catch (Exception e) {
           throw new RuntimeException(e);
         }
