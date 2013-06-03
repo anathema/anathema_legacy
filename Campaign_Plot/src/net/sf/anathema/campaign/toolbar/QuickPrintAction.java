@@ -2,7 +2,7 @@ package net.sf.anathema.campaign.toolbar;
 
 import net.sf.anathema.campaign.item.PlotItemManagement;
 import net.sf.anathema.campaign.item.PlotItemManagementListener;
-import net.sf.anathema.campaign.module.PlotItemManagementExtension;
+import net.sf.anathema.campaign.module.PlotExtension;
 import net.sf.anathema.framework.IApplicationModel;
 import net.sf.anathema.framework.presenter.resources.PlatformUI;
 import net.sf.anathema.framework.reporting.QuickPrintCommand;
@@ -43,7 +43,7 @@ public class QuickPrintAction extends AbstractPrintAction {
 
   @Override
   protected void execute(Component parentComponent) {
-    PlotItemManagement itemManagement = PlotItemManagementExtension.getItemManagement(anathemaModel);
+    PlotItemManagement itemManagement = PlotExtension.getItemManagement(anathemaModel);
     IItem item = itemManagement.getSelectedItem();
     if (item == null) {
       return;

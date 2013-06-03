@@ -24,7 +24,6 @@ public class ApplicationModel implements IApplicationModel {
   private final IRegistry<String, IAnathemaExtension> extensionRegistry = new Registry<>();
   private final IRegistry<IItemType, IRepositoryItemPersister> persisterRegistry = new Registry<>();
   private final IReportRegistry reportRegistry = new ReportRegistry();
-  private final IRegistry<IItemType, PlotItemViewFactory> viewFactoryRegistry = new Registry<>();
   private final IItemTypeRegistry itemTypes = new ItemTypeRegistry();
   private final Repository repository;
   private final Messaging messaging;
@@ -56,11 +55,6 @@ public class ApplicationModel implements IApplicationModel {
   @Override
   public final IRegistry<IItemType, IRepositoryItemPersister> getPersisterRegistry() {
     return persisterRegistry;
-  }
-
-  @Override
-  public IRegistry<IItemType, PlotItemViewFactory> getViewFactoryRegistry() {
-    return viewFactoryRegistry;
   }
 
   @Override

@@ -2,7 +2,7 @@ package net.sf.anathema.campaign.toolbar;
 
 import net.sf.anathema.campaign.item.PlotItemManagement;
 import net.sf.anathema.campaign.item.PlotItemManagementListener;
-import net.sf.anathema.campaign.module.PlotItemManagementExtension;
+import net.sf.anathema.campaign.module.PlotExtension;
 import net.sf.anathema.framework.IApplicationModel;
 import net.sf.anathema.framework.reporting.Report;
 import net.sf.anathema.framework.reporting.ReportException;
@@ -30,8 +30,8 @@ public abstract class AbstractPrintAction extends SmartAction {
 
   private void startEnablingListener() {
     PlotItemManagementListener listener = createEnablingListener();
-    PlotItemManagementExtension.getItemManagement(anathemaModel);
-    PlotItemManagement itemManagement = PlotItemManagementExtension.getItemManagement(anathemaModel);
+    PlotExtension.getItemManagement(anathemaModel);
+    PlotItemManagement itemManagement = PlotExtension.getItemManagement(anathemaModel);
     itemManagement.addListener(listener);
     listener.itemSelected(itemManagement.getSelectedItem());
   }
@@ -40,8 +40,7 @@ public abstract class AbstractPrintAction extends SmartAction {
     setAcceleratorKey(createKeyStroke());
   }
 
-  protected void performPrint(IItem item, Report selectedReport,
-                            Path selectedFile) throws IOException, ReportException {
+  protected void performPrint(IItem item, Report selectedReport, Path selectedFile) throws IOException, ReportException {
     OutputStream stream = null;
     try {
       stream = Files.newOutputStream(selectedFile);

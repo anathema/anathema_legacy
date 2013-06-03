@@ -2,7 +2,7 @@ package net.sf.anathema.campaign.toolbar;
 
 import net.sf.anathema.campaign.item.PlotItemManagement;
 import net.sf.anathema.campaign.item.PlotItemManagementAdapter;
-import net.sf.anathema.campaign.module.PlotItemManagementExtension;
+import net.sf.anathema.campaign.module.PlotExtension;
 import net.sf.anathema.framework.IApplicationModel;
 import net.sf.anathema.framework.persistence.IRepositoryItemPersister;
 import net.sf.anathema.framework.presenter.resources.PlatformUI;
@@ -76,7 +76,7 @@ public class AnathemaSaveAction extends SmartAction {
   private AnathemaSaveAction(IApplicationModel model, Resources resources) {
     SaveEnabledListener listener = new SaveEnabledListener(this);
     setAcceleratorKey(KeyStroke.getKeyStroke(KeyEvent.VK_S, Toolkit.getDefaultToolkit().getMenuShortcutKeyMask()));
-    PlotItemManagement itemManagement = PlotItemManagementExtension.getItemManagement(model);
+    PlotItemManagement itemManagement = PlotExtension.getItemManagement(model);
     itemManagement.addListener(listener);
     listener.itemSelected(itemManagement.getSelectedItem());
     this.model = model;
@@ -88,15 +88,14 @@ public class AnathemaSaveAction extends SmartAction {
     parentComponent.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
     OutputStream stream = null;
     try {
-      PlotItemManagement itemManagement = PlotItemManagementExtension.getItemManagement(model);
+      PlotItemManagement itemManagement = PlotExtension.getItemManagement(model);
       IItem selectedItem = itemManagement.getSelectedItem();
       IRepositoryWriteAccess writeAccess = model.getRepository().createWriteAccess(selectedItem);
       IRepositoryItemPersister persister = model.getPersisterRegistry().get(selectedItem.getItemType());
       persister.save(writeAccess, selectedItem);
       selectedItem.setClean();
     } catch (IOException | RepositoryException e) {
-      MessageDialogFactory
-              .showMessageDialog(parentComponent, new Message(resources.getString("AnathemaPersistence.SaveAction.Message.Error"), e));
+      MessageDialogFactory.showMessageDialog(parentComponent, new Message(resources.getString("AnathemaPersistence.SaveAction.Message.Error"), e));
       Logger.getLogger(getClass()).error(e);
     } finally {
       IOUtils.closeQuietly(stream);

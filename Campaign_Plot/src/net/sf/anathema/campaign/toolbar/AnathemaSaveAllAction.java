@@ -2,7 +2,7 @@ package net.sf.anathema.campaign.toolbar;
 
 import net.sf.anathema.campaign.item.PlotItemManagement;
 import net.sf.anathema.campaign.item.PlotItemManagementListener;
-import net.sf.anathema.campaign.module.PlotItemManagementExtension;
+import net.sf.anathema.campaign.module.PlotExtension;
 import net.sf.anathema.framework.IApplicationModel;
 import net.sf.anathema.framework.persistence.IRepositoryItemPersister;
 import net.sf.anathema.framework.presenter.resources.PlatformUI;
@@ -59,7 +59,7 @@ public class AnathemaSaveAllAction extends SmartAction {
 
   private void setSaveAllEnabled() {
     boolean enable = false;
-    PlotItemManagement itemManagement = PlotItemManagementExtension.getItemManagement(model);
+    PlotItemManagement itemManagement = PlotExtension.getItemManagement(model);
     for (IItem item : itemManagement.getAllItems()) {
       if (item.getItemType().supportsRepository()) {
         enable |= item.isDirty();
@@ -82,7 +82,7 @@ public class AnathemaSaveAllAction extends SmartAction {
     this.model = model;
     SaveAllEnabledListener listener = new SaveAllEnabledListener();
     setAcceleratorKey(KeyStroke.getKeyStroke(KeyEvent.VK_S, InputEvent.SHIFT_MASK | Toolkit.getDefaultToolkit().getMenuShortcutKeyMask()));
-    PlotItemManagement itemManagement = PlotItemManagementExtension.getItemManagement(model);
+    PlotItemManagement itemManagement = PlotExtension.getItemManagement(model);
     itemManagement.addListener(listener);
     listener.itemAdded(null);
     this.resources = resources;
@@ -90,7 +90,7 @@ public class AnathemaSaveAllAction extends SmartAction {
 
   @Override
   protected void execute(Component parentComponent) {
-    PlotItemManagement itemManagement = PlotItemManagementExtension.getItemManagement(model);
+    PlotItemManagement itemManagement = PlotExtension.getItemManagement(model);
     for (IItem item : itemManagement.getAllItems()) {
       if (item.getItemType().supportsRepository() && item.isDirty()) {
         parentComponent.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
@@ -100,8 +100,8 @@ public class AnathemaSaveAllAction extends SmartAction {
           persister.save(writeAccess, item);
           item.setClean();
         } catch (IOException | RepositoryException e) {
-          MessageUtilities.indicateMessage(getClass(), parentComponent,
-                  new Message(resources.getString("AnathemaPersistence.SaveAction.Message.Error"), e));
+          MessageUtilities
+                  .indicateMessage(getClass(), parentComponent, new Message(resources.getString("AnathemaPersistence.SaveAction.Message.Error"), e));
         } finally {
           parentComponent.setCursor(Cursor.getPredefinedCursor(Cursor.DEFAULT_CURSOR));
         }

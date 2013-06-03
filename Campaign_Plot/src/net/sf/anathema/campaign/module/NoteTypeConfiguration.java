@@ -42,7 +42,7 @@ public class NoteTypeConfiguration extends AbstractPersistableItemTypeConfigurat
   }
 
   public final void registerViewFactory(IApplicationModel model, Resources resources) {
-    IRegistry<IItemType, PlotItemViewFactory> viewFactoryRegistry = model.getViewFactoryRegistry();
+    IRegistry<IItemType, PlotItemViewFactory> viewFactoryRegistry = PlotExtension.getExtension(model).getViewFactoryRegistry();
     viewFactoryRegistry.register(getItemType(), createItemViewFactory(resources));
   }
 
