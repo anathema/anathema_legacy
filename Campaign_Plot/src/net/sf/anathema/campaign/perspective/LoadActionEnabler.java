@@ -2,8 +2,8 @@ package net.sf.anathema.campaign.perspective;
 
 import net.sf.anathema.campaign.item.ClosedFileCollector;
 import net.sf.anathema.framework.item.IItemType;
-import net.sf.anathema.framework.presenter.IItemManagementModel;
-import net.sf.anathema.framework.presenter.ItemManagementModelAdapter;
+import net.sf.anathema.campaign.item.IItemManagementModel;
+import net.sf.anathema.campaign.item.ItemManagementModelAdapter;
 import net.sf.anathema.framework.repository.IItem;
 import net.sf.anathema.framework.repository.IRepository;
 import net.sf.anathema.lib.control.IChangeListener;

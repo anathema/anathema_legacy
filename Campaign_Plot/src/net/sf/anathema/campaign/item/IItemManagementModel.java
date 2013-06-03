@@ -1,6 +1,7 @@
-package net.sf.anathema.framework.presenter;
+package net.sf.anathema.campaign.item;
 
 import net.sf.anathema.framework.item.IItemType;
+import net.sf.anathema.framework.presenter.ItemReceiver;
 import net.sf.anathema.framework.repository.IItem;
 
 public interface IItemManagementModel extends ItemReceiver {

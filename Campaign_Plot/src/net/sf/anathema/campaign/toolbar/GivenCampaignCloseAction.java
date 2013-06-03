@@ -1,6 +1,6 @@
 package net.sf.anathema.campaign.toolbar;
 
-import net.sf.anathema.framework.presenter.IItemManagementModel;
+import net.sf.anathema.campaign.item.IItemManagementModel;
 import net.sf.anathema.framework.presenter.resources.BasicUi;
 import net.sf.anathema.framework.repository.IItem;
 import net.sf.anathema.lib.gui.action.SmartAction;

@@ -24,7 +24,6 @@ public class ApplicationModel implements IApplicationModel {
 
   private final IRegistry<String, IAnathemaExtension> extensionRegistry = new Registry<>();
   private final IRegistry<IItemType, IRepositoryItemPersister> persisterRegistry = new Registry<>();
-  private final IItemManagementModel itemManagment = new ItemManagmentModel();
   private final IReportRegistry reportRegistry = new ReportRegistry();
   private final IRegistry<IItemType, ItemViewFactory> viewFactoryRegistry = new Registry<>();
   private final IItemTypeRegistry itemTypes = new ItemTypeRegistry();

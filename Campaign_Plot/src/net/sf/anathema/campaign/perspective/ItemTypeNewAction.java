@@ -3,7 +3,7 @@ package net.sf.anathema.campaign.perspective;
 import net.sf.anathema.campaign.module.CampaignManagementExtension;
 import net.sf.anathema.framework.IApplicationModel;
 import net.sf.anathema.framework.item.IItemType;
-import net.sf.anathema.framework.presenter.IItemManagementModel;
+import net.sf.anathema.campaign.item.IItemManagementModel;
 import net.sf.anathema.framework.presenter.action.NewItemCommand;
 import net.sf.anathema.framework.presenter.resources.PlatformUI;
 import net.sf.anathema.lib.resources.Resources;

@@ -9,7 +9,7 @@ import net.sf.anathema.campaign.load.selection.ListObjectSelectionPageView;
 import net.sf.anathema.campaign.load.selection.ObjectSelectionDialogPage;
 import net.sf.anathema.campaign.load.selection.ObjectSelectionWizardModel;
 import net.sf.anathema.framework.item.IItemType;
-import net.sf.anathema.framework.presenter.IItemManagementModel;
+import net.sf.anathema.campaign.item.IItemManagementModel;
 import net.sf.anathema.framework.presenter.action.ConfigurableFileProvider;
 import net.sf.anathema.framework.repository.access.printname.IPrintNameFileAccess;
 import net.sf.anathema.framework.view.PrintNameFile;

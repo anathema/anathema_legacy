@@ -2,7 +2,7 @@ package net.sf.anathema.campaign.module;
 
 import net.sf.anathema.campaign.toolbar.GivenCampaignCloseAction;
 import net.sf.anathema.framework.model.IItemActionFactory;
-import net.sf.anathema.framework.presenter.IItemManagementModel;
+import net.sf.anathema.campaign.item.IItemManagementModel;
 import net.sf.anathema.framework.repository.IItem;
 import net.sf.anathema.lib.resources.Resources;
 

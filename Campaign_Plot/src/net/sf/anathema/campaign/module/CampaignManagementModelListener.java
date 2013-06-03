@@ -2,10 +2,9 @@ package net.sf.anathema.campaign.module;
 
 import net.sf.anathema.framework.item.IItemType;
 import net.sf.anathema.framework.model.IItemActionFactory;
-import net.sf.anathema.framework.presenter.IItemManagementModelListener;
+import net.sf.anathema.campaign.item.IItemManagementModelListener;
 import net.sf.anathema.framework.presenter.IModelViewMapping;
 import net.sf.anathema.framework.presenter.ItemViewFactory;
-import net.sf.anathema.framework.presenter.SwingItemViewFactory;
 import net.sf.anathema.framework.repository.IItem;
 import net.sf.anathema.framework.view.IItemViewManagement;
 import net.sf.anathema.framework.view.ItemView;

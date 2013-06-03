@@ -1,6 +1,8 @@
-package net.sf.anathema.framework.reporting;
+package net.sf.anathema.campaign.toolbar;
 
-import net.sf.anathema.framework.presenter.ItemManagementModelAdapter;
+import net.sf.anathema.campaign.item.ItemManagementModelAdapter;
+import net.sf.anathema.framework.reporting.IReportRegistry;
+import net.sf.anathema.framework.reporting.Report;
 import net.sf.anathema.framework.repository.IItem;
 
 import javax.swing.Action;

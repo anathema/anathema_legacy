@@ -2,8 +2,8 @@ package net.sf.anathema.campaign.toolbar;
 
 import net.sf.anathema.campaign.module.CampaignManagementExtension;
 import net.sf.anathema.framework.IApplicationModel;
-import net.sf.anathema.framework.presenter.IItemManagementModel;
-import net.sf.anathema.framework.presenter.IItemManagementModelListener;
+import net.sf.anathema.campaign.item.IItemManagementModel;
+import net.sf.anathema.campaign.item.IItemManagementModelListener;
 import net.sf.anathema.framework.reporting.Report;
 import net.sf.anathema.framework.reporting.ReportException;
 import net.sf.anathema.framework.repository.IItem;

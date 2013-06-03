@@ -1,7 +1,6 @@
 package net.sf.anathema.campaign.item;
 
 import net.sf.anathema.framework.item.IItemType;
-import net.sf.anathema.framework.presenter.IItemManagementModel;
 import net.sf.anathema.framework.repository.access.printname.IPrintNameFileAccess;
 import net.sf.anathema.framework.view.PrintNameFile;
 

@@ -4,7 +4,7 @@ import net.sf.anathema.campaign.module.CampaignManagementExtension;
 import net.sf.anathema.framework.IApplicationModel;
 import net.sf.anathema.framework.extension.IAnathemaExtension;
 import net.sf.anathema.framework.item.IItemType;
-import net.sf.anathema.framework.presenter.IItemManagementModel;
+import net.sf.anathema.campaign.item.IItemManagementModel;
 import net.sf.anathema.framework.presenter.action.ItemCreationOperator;
 import net.sf.anathema.framework.presenter.item.ItemTypeCreationViewPropertiesExtensionPoint;
 import net.sf.anathema.framework.presenter.resources.PlatformUI;

@@ -1,7 +1,7 @@
 package net.sf.anathema.campaign.module;
 
 import net.sf.anathema.framework.IApplicationModel;
-import net.sf.anathema.framework.presenter.IItemManagementModel;
+import net.sf.anathema.campaign.item.IItemManagementModel;
 import net.sf.anathema.framework.presenter.IModelViewMapping;
 import net.sf.anathema.framework.presenter.ModelViewMapping;
 import net.sf.anathema.framework.view.IItemViewManagement;
