@@ -1,6 +1,5 @@
 package net.sf.anathema.scribe.scroll.conversion;
 
-import net.sf.anathema.framework.model.ItemManagmentModel;
 import net.sf.anathema.framework.presenter.action.IFileProvider;
 import net.sf.anathema.framework.repository.Repository;
 import net.sf.anathema.framework.repository.access.IRepositoryReadAccess;
@@ -22,7 +21,8 @@ public class NoteToScrollConverter_Test {
 
   @Before
   public void convertScroll() throws Exception {
-    Repository repository = new Repository(Paths.get("repository").toFile(), new ItemManagmentModel());
+    File repositoryFolder = Paths.get(".").toFile();
+    Repository repository = new Repository(repositoryFolder);
     IRepositoryReadAccess readAccess = repository.openReadAccess(ITEM_TYPE, new IFileProvider() {
       @Override
       public File getFile() {
