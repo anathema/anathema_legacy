@@ -1,17 +1,20 @@
 package net.sf.anathema.campaign.perspective;
 
 import net.sf.anathema.framework.IApplicationModel;
+import net.sf.anathema.framework.extension.IAnathemaExtension;
 import net.sf.anathema.framework.item.IItemType;
 import net.sf.anathema.framework.presenter.IItemManagementModel;
 import net.sf.anathema.framework.presenter.action.ItemCreationOperator;
 import net.sf.anathema.framework.presenter.item.ItemTypeCreationViewPropertiesExtensionPoint;
 import net.sf.anathema.framework.presenter.resources.PlatformUI;
 import net.sf.anathema.framework.presenter.view.IItemTypeViewProperties;
+import net.sf.anathema.framework.repository.access.printname.IPrintNameFileAccess;
 import net.sf.anathema.framework.swing.MessageUtilities;
 import net.sf.anathema.lib.exception.PersistenceException;
 import net.sf.anathema.lib.gui.action.SmartAction;
 import net.sf.anathema.lib.gui.dialog.userdialog.page.IDialogPage;
 import net.sf.anathema.lib.message.Message;
+import net.sf.anathema.lib.registry.IRegistry;
 import net.sf.anathema.lib.resources.Resources;
 import net.sf.anathema.lib.workflow.wizard.selection.IDialogModelTemplate;
 
@@ -54,12 +57,14 @@ public class ItemTypeLoadAction extends AbstractItemAction {
 
   @Override
   protected void execute(Component parentComponent) {
+    IRegistry<String, IAnathemaExtension> extensionPointRegistry = getAnathemaModel().getExtensionPointRegistry();
     ItemTypeCreationViewPropertiesExtensionPoint extension =
-            (ItemTypeCreationViewPropertiesExtensionPoint) getAnathemaModel().getExtensionPointRegistry()
-                    .get(ItemTypeCreationViewPropertiesExtensionPoint.ID);
+            (ItemTypeCreationViewPropertiesExtensionPoint) extensionPointRegistry.get(ItemTypeCreationViewPropertiesExtensionPoint.ID);
     IItemTypeViewProperties properties = extension.get(itemType);
-    ItemSelectionTemplateFactory factory = new ItemSelectionTemplateFactory(itemType, getAnathemaModel().getRepository().getPrintNameFileAccess(),
-            new LoadItemWizardProperties(getResources(), properties.getItemTypeUI()));
+    IPrintNameFileAccess printNameFileAccess = getAnathemaModel().getRepository().getPrintNameFileAccess();
+    IItemManagementModel itemManagement = getAnathemaModel().getItemManagement();
+    LoadItemWizardProperties selectionProperties = new LoadItemWizardProperties(getResources(), properties.getItemTypeUI());
+    ItemSelectionTemplateFactory factory = new ItemSelectionTemplateFactory(itemManagement, itemType, printNameFileAccess, selectionProperties);
     IDialogModelTemplate template = factory.createTemplate();
     IDialogPage startPage = factory.createPage(template);
     boolean canceled = showDialog(parentComponent, startPage);

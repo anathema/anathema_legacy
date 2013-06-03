@@ -1,7 +1,6 @@
 package net.sf.anathema.framework.repository.access.printname;
 
 import net.sf.anathema.framework.item.IItemType;
-import net.sf.anathema.framework.presenter.IItemManagementModel;
 import net.sf.anathema.framework.repository.IRepositoryFileResolver;
 import net.sf.anathema.framework.view.PrintNameFile;
 import net.sf.anathema.lib.exception.AnathemaException;
@@ -31,11 +30,9 @@ public class PrintNameFileAccess implements IPrintNameFileAccess {
   private static final Pattern PRINT_NAME_PATTERN = Pattern.compile(PRINT_NAME_ATTR + "=\"(.*?)\"");
   private static final Pattern ID_PATTERN = Pattern.compile(ID_ATTR + "=\"(.*?)\"");
   private final IRepositoryFileResolver resolver;
-  private final IItemManagementModel itemManagement;
 
-  public PrintNameFileAccess(IRepositoryFileResolver resolver, IItemManagementModel itemManagement) {
+  public PrintNameFileAccess(IRepositoryFileResolver resolver) {
     this.resolver = resolver;
-    this.itemManagement = itemManagement;
   }
 
   @Override
@@ -123,17 +120,6 @@ public class PrintNameFileAccess implements IPrintNameFileAccess {
       return null;
     }
     return new PrintNameFile(file, printName, idName, itemType);
-  }
-
-  @Override
-  public Collection<PrintNameFile> collectClosedPrintNameFiles(IItemType type) {
-    List<PrintNameFile> closedFiles = new ArrayList<>();
-    for (PrintNameFile file : collectAllPrintNameFiles(type)) {
-      if (!itemManagement.isOpen(file.getRepositoryId(), type)) {
-        closedFiles.add(file);
-      }
-    }
-    return closedFiles;
   }
 
   @Override

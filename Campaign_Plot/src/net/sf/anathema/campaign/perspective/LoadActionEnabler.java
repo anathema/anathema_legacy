@@ -1,5 +1,6 @@
 package net.sf.anathema.campaign.perspective;
 
+import net.sf.anathema.campaign.item.ClosedFileCollector;
 import net.sf.anathema.framework.item.IItemType;
 import net.sf.anathema.framework.presenter.IItemManagementModel;
 import net.sf.anathema.framework.presenter.ItemManagementModelAdapter;
@@ -24,7 +25,8 @@ public class LoadActionEnabler {
   }
 
   private void adjustEnabled() {
-    action.setEnabled(repository.containsClosed(types));
+    ClosedFileCollector collector = new ClosedFileCollector(model, repository.getPrintNameFileAccess());
+    action.setEnabled(collector.containsClosed(types));
   }
 
   public void init() {

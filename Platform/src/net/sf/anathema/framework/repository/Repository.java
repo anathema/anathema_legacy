@@ -3,7 +3,6 @@ package net.sf.anathema.framework.repository;
 import com.google.common.base.Preconditions;
 import net.sf.anathema.framework.item.IItemType;
 import net.sf.anathema.framework.item.IRepositoryConfiguration;
-import net.sf.anathema.framework.presenter.IItemManagementModel;
 import net.sf.anathema.framework.presenter.action.IFileProvider;
 import net.sf.anathema.framework.repository.access.IRepositoryReadAccess;
 import net.sf.anathema.framework.repository.access.IRepositoryWriteAccess;
@@ -33,11 +32,11 @@ public class Repository implements IRepository {
   private final RepositoryFileResolver resolver;
   private final Announcer<IChangeListener> control = Announcer.to(IChangeListener.class);
 
-  public Repository(File repositoryFolder, IItemManagementModel itemManagement) {
+  public Repository(File repositoryFolder) {
     Preconditions.checkArgument(repositoryFolder.exists());
     this.resolver = new RepositoryFileResolver(repositoryFolder);
     this.repositoryFolder = repositoryFolder;
-    this.printNameFileAccess = new PrintNameFileAccess(resolver, itemManagement);
+    this.printNameFileAccess = new PrintNameFileAccess(resolver);
   }
 
   @Override
@@ -170,15 +169,6 @@ public class Repository implements IRepository {
       return getRepositoryFileResolver().getMainFile(type.getRepositoryConfiguration(), id).exists();
     }
     return getRepositoryFileResolver().getFolder(type.getRepositoryConfiguration()).exists();
-  }
-
-  @Override
-  public boolean containsClosed(IItemType... types) {
-    boolean hasClosed = false;
-    for (IItemType type : types) {
-      hasClosed |= !printNameFileAccess.collectClosedPrintNameFiles(type).isEmpty();
-    }
-    return hasClosed;
   }
 
   @Override

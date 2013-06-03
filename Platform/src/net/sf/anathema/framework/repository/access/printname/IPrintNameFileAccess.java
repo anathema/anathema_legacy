@@ -9,7 +9,5 @@ public interface IPrintNameFileAccess {
 
   Collection<PrintNameFile> collectAllPrintNameFiles(IItemType type);
 
-  Collection<PrintNameFile> collectClosedPrintNameFiles(IItemType type);
-
   PrintNameFile getPrintNameFile(IItemType itemType, String repositoryId);
 }

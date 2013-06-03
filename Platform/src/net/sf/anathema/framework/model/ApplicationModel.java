@@ -33,7 +33,7 @@ public class ApplicationModel implements IApplicationModel {
   private final ResourceLoader resourceLoader;
 
   public ApplicationModel(File repositoryFolder, Resources resources, ResourceLoader resourceLoader) {
-    this.repository = new Repository(repositoryFolder, itemManagment);
+    this.repository = new Repository(repositoryFolder);
     this.messaging = new Messaging(resources);
     InformativeMessages informativeMessages = new WordsOfTheWise(resourceLoader);
     this.resourceLoader = resourceLoader;
