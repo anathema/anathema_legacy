@@ -2,8 +2,8 @@ package net.sf.anathema.character.platform.module.perspective;
 
 import net.sf.anathema.character.perspective.CharacterGridView;
 import net.sf.anathema.character.perspective.Selector;
-import net.sf.anathema.character.perspective.model.model.CharacterIdentifier;
-import net.sf.anathema.character.perspective.model.model.ItemSelectionModel;
+import net.sf.anathema.character.perspective.model.CharacterIdentifier;
+import net.sf.anathema.character.perspective.model.ItemSelectionModel;
 import net.sf.anathema.interaction.Tool;
 import net.sf.anathema.lib.resources.Resources;
 import net.sf.anathema.platform.fx.InteractionView;
@@ -16,8 +16,8 @@ public class InteractionPresenter {
   private CharacterGridView gridView;
   private Selector<CharacterIdentifier> selector;
 
-  public InteractionPresenter(ItemSelectionModel model, InteractionView view, Resources resources,
-                              CharacterGridView gridView, Selector<CharacterIdentifier> selector) {
+  public InteractionPresenter(ItemSelectionModel model, InteractionView view, Resources resources, CharacterGridView gridView,
+                              Selector<CharacterIdentifier> selector) {
     this.model = model;
     this.view = view;
     this.resources = resources;

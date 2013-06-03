@@ -1,7 +1,7 @@
 package net.sf.anathema.character.perspective;
 
 import net.sf.anathema.character.generic.template.ITemplateType;
-import net.sf.anathema.character.perspective.model.model.CharacterIdentifier;
+import net.sf.anathema.character.perspective.model.CharacterIdentifier;
 import net.sf.anathema.lib.util.Identified;
 
 public interface DescriptiveFeatures {

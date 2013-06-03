@@ -1,7 +1,7 @@
 package net.sf.anathema.character.perspective;
 
-import net.sf.anathema.character.perspective.model.model.CharacterIdentifier;
-import net.sf.anathema.character.perspective.model.model.ItemSystemModel;
+import net.sf.anathema.character.perspective.model.CharacterIdentifier;
+import net.sf.anathema.character.perspective.model.ItemSystemModel;
 import net.sf.anathema.framework.repository.IItem;
 
 import java.util.ArrayList;

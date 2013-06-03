@@ -1,8 +1,8 @@
 package net.sf.anathema.character.perspective;
 
-import net.sf.anathema.character.perspective.model.model.CharacterIdentifier;
-import net.sf.anathema.character.perspective.model.model.CharacterModel;
-import net.sf.anathema.character.perspective.model.model.ItemSystemModel;
+import net.sf.anathema.character.perspective.model.CharacterIdentifier;
+import net.sf.anathema.character.perspective.model.CharacterModel;
+import net.sf.anathema.character.perspective.model.ItemSystemModel;
 import net.sf.anathema.lib.resources.Resources;
 
 public class CharacterGridPresenter {
@@ -12,8 +12,7 @@ public class CharacterGridPresenter {
   private final Selector<CharacterIdentifier> selector;
   private final Resources resources;
 
-  public CharacterGridPresenter(ItemSystemModel model, CharacterGridView view, Selector<CharacterIdentifier> selector,
-                                Resources resources) {
+  public CharacterGridPresenter(ItemSystemModel model, CharacterGridView view, Selector<CharacterIdentifier> selector, Resources resources) {
     this.model = model;
     this.view = view;
     this.selector = selector;

@@ -1,4 +1,4 @@
-package net.sf.anathema.character.perspective.model.model;
+package net.sf.anathema.character.perspective.model;
 
 public interface NewCharacterListener {
 

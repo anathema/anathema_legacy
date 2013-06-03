@@ -3,10 +3,10 @@ package net.sf.anathema.character.platform.module.perspective;
 import net.sf.anathema.character.perspective.CharacterButtonPresenter;
 import net.sf.anathema.character.perspective.CharacterGridView;
 import net.sf.anathema.character.perspective.Selector;
-import net.sf.anathema.character.perspective.model.model.CharacterIdentifier;
-import net.sf.anathema.character.perspective.model.model.CharacterModel;
-import net.sf.anathema.character.perspective.model.model.ItemSelectionModel;
-import net.sf.anathema.character.perspective.model.model.NewCharacterListener;
+import net.sf.anathema.character.perspective.model.CharacterIdentifier;
+import net.sf.anathema.character.perspective.model.CharacterModel;
+import net.sf.anathema.character.perspective.model.ItemSelectionModel;
+import net.sf.anathema.character.perspective.model.NewCharacterListener;
 import net.sf.anathema.framework.presenter.resources.BasicUi;
 import net.sf.anathema.interaction.Command;
 import net.sf.anathema.interaction.Tool;
@@ -20,8 +20,8 @@ public class NewInteractionPresenter {
   private CharacterGridView view;
   private Selector<CharacterIdentifier> selector;
 
-  public NewInteractionPresenter(ItemSelectionModel model, Tool interaction, Resources resources,
-                                 CharacterGridView view, Selector<CharacterIdentifier> selector) {
+  public NewInteractionPresenter(ItemSelectionModel model, Tool interaction, Resources resources, CharacterGridView view,
+                                 Selector<CharacterIdentifier> selector) {
     this.model = model;
     this.interaction = interaction;
     this.resources = resources;
