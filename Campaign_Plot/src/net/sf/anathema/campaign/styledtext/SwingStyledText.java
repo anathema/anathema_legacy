@@ -1,4 +1,4 @@
-package net.sf.anathema.framework.swing.styledtext;
+package net.sf.anathema.campaign.styledtext;
 
 import net.sf.anathema.framework.styledtext.model.IStyledTextChangeListener;
 import net.sf.anathema.framework.styledtext.model.ITextPart;
@@ -106,8 +106,7 @@ public class SwingStyledText implements StyledText {
     return textParts.toArray(new ITextPart[textParts.size()]);
   }
 
-  private ITextPart createTextPart(int startIndex, int nextStartIndex, AttributeSet attributeSet)
-          throws BadLocationException {
+  private ITextPart createTextPart(int startIndex, int nextStartIndex, AttributeSet attributeSet) throws BadLocationException {
     String nextTextPartText = document.getText(startIndex, nextStartIndex - startIndex);
     TextFormat textFormat = createTextFormat(attributeSet);
     return new TextPart(nextTextPartText, textFormat);

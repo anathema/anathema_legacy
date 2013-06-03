@@ -4,7 +4,7 @@ import com.google.common.base.Preconditions;
 import net.sf.anathema.campaign.presenter.view.SeriesView;
 import net.sf.anathema.campaign.presenter.view.plot.IPlotView;
 import net.sf.anathema.campaign.view.plot.PlotView;
-import net.sf.anathema.framework.swing.styledtext.ITextEditorProperties;
+import net.sf.anathema.campaign.styledtext.ITextEditorProperties;
 import net.sf.anathema.framework.view.item.AbstractItemView;
 import net.sf.anathema.lib.file.RelativePath;
 

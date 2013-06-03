@@ -1,4 +1,4 @@
-package net.sf.anathema.framework.swing.styledtext;
+package net.sf.anathema.campaign.styledtext;
 
 import net.sf.anathema.framework.styledtext.IStyledTextView;
 import net.sf.anathema.framework.styledtext.model.IStyledTextChangeListener;
@@ -51,9 +51,7 @@ public class TextEditor implements IStyledTextView, IView {
 
   private void addBindings() {
     InputMap inputMap = textPane.getInputMap();
-    inputMap.put(
-        KeyStroke.getKeyStroke(KeyEvent.VK_BACK_SPACE, InputEvent.SHIFT_MASK),
-        DefaultEditorKit.deletePrevCharAction);
+    inputMap.put(KeyStroke.getKeyStroke(KeyEvent.VK_BACK_SPACE, InputEvent.SHIFT_MASK), DefaultEditorKit.deletePrevCharAction);
 
     int keyMask = Toolkit.getDefaultToolkit().getMenuShortcutKeyMask();
     // styles
@@ -113,7 +111,7 @@ public class TextEditor implements IStyledTextView, IView {
     properties.initUnderlineAction(underlineAction);
     JToggleButton underlineButton = initStyleToggleButton(underlineAction, StyleConstants.Underline);
 
-    return new JToggleButton[] { boldButton, italicButton, underlineButton };
+    return new JToggleButton[]{boldButton, italicButton, underlineButton};
   }
 
   private JToggleButton initStyleToggleButton(Action action, final Object styleConstant) {
@@ -151,8 +149,7 @@ public class TextEditor implements IStyledTextView, IView {
     if (textPane.getSelectedText() == null) {
       int index = textPane.getCaretPosition();
       selected = document.getCharacterElement(index - 1).getAttributes().containsAttribute(styleConstant, true);
-    }
-    else {
+    } else {
       for (int index = textPane.getSelectionStart(); index < textPane.getSelectionEnd(); index++) {
         AttributeSet attributes = document.getCharacterElement(index).getAttributes();
         selected = selected || attributes.containsAttribute(styleConstant, true);

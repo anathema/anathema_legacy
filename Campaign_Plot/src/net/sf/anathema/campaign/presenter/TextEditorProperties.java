@@ -1,7 +1,7 @@
 package net.sf.anathema.campaign.presenter;
 
 import net.sf.anathema.campaign.module.PlotUI;
-import net.sf.anathema.framework.swing.styledtext.ITextEditorProperties;
+import net.sf.anathema.campaign.styledtext.ITextEditorProperties;
 import net.sf.anathema.lib.resources.Resources;
 
 import javax.swing.Action;
@@ -54,8 +54,7 @@ public class TextEditorProperties implements ITextEditorProperties {
         g.setFont(font);
         if (action.isEnabled()) {
           g.setColor(SystemColor.textText);
-        }
-        else {
+        } else {
           g.setColor(SystemColor.textInactiveText);
         }
         FontMetrics fontMetrics = g.getFontMetrics(font);

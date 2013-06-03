@@ -1,4 +1,4 @@
-package net.sf.anathema.framework.swing.styledtext;
+package net.sf.anathema.campaign.styledtext;
 
 import javax.swing.Action;
 

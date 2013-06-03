@@ -11,7 +11,7 @@ import net.sf.anathema.campaign.presenter.view.plot.IPlotViewProperties;
 import net.sf.anathema.campaign.presenter.view.plot.ITreeView;
 import net.sf.anathema.campaign.view.BasicItemDescriptionView;
 import net.sf.anathema.campaign.view.util.DefaultTreeView;
-import net.sf.anathema.framework.swing.styledtext.ITextEditorProperties;
+import net.sf.anathema.campaign.styledtext.ITextEditorProperties;
 import net.sf.anathema.lib.gui.action.SmartAction;
 import net.sf.anathema.lib.util.TreeUtilities;
 
@@ -141,8 +141,7 @@ public class PlotView implements IPlotView {
   }
 
   private void initTreePanelGui(IPlotViewProperties properties) {
-    treePanel.setLayout(
-            new MigLayout(withoutInsets().wrapAfter(1), new AC().grow(100,0).fill(0), new AC().grow(100, 0).fill(0)));
+    treePanel.setLayout(new MigLayout(withoutInsets().wrapAfter(1), new AC().grow(100, 0).fill(0), new AC().grow(100, 0).fill(0)));
     treePanel.add(new JScrollPane(tree), new CC().grow().pushY());
     treePanel.add(createButtonPanel(properties), new CC().dockSouth());
   }

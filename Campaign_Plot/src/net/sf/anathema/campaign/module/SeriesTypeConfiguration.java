@@ -16,7 +16,7 @@ import net.sf.anathema.framework.presenter.view.SimpleItemTypeViewProperties;
 import net.sf.anathema.framework.repository.IItem;
 import net.sf.anathema.framework.repository.ItemType;
 import net.sf.anathema.framework.repository.RepositoryConfiguration;
-import net.sf.anathema.framework.swing.styledtext.ITextEditorProperties;
+import net.sf.anathema.campaign.styledtext.ITextEditorProperties;
 import net.sf.anathema.framework.view.ItemView;
 import net.sf.anathema.initialization.ItemTypeConfiguration;
 import net.sf.anathema.initialization.reflections.Weight;
