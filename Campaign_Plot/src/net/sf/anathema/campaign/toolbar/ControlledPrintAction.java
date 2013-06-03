@@ -1,8 +1,10 @@
-package net.sf.anathema.framework.reporting;
+package net.sf.anathema.campaign.toolbar;
 
 import net.sf.anathema.framework.IApplicationModel;
 import net.sf.anathema.framework.presenter.IItemManagementModelListener;
 import net.sf.anathema.framework.presenter.resources.PlatformUI;
+import net.sf.anathema.framework.reporting.ControlledPrintCommand;
+import net.sf.anathema.framework.reporting.PrintEnabledListener;
 import net.sf.anathema.framework.repository.IItem;
 import net.sf.anathema.lib.gui.action.SmartAction;
 import net.sf.anathema.lib.resources.Resources;
@@ -10,27 +12,28 @@ import net.sf.anathema.lib.resources.Resources;
 import javax.swing.Action;
 import javax.swing.KeyStroke;
 import java.awt.Component;
+import java.awt.Event;
 import java.awt.Toolkit;
 import java.awt.event.KeyEvent;
 
 import static javax.swing.KeyStroke.getKeyStroke;
 
-public class QuickPrintAction extends AbstractPrintAction {
+public class ControlledPrintAction extends AbstractPrintAction {
 
   public static Action createToolAction(IApplicationModel model, Resources resources) {
-    SmartAction action = new QuickPrintAction(model, resources);
-    action.setToolTipText(resources.getString("Anathema.Reporting.Menu.QuickPrint.Tooltip"));
+    SmartAction action = new ControlledPrintAction(model, resources);
+    action.setToolTipText(resources.getString("Anathema.Reporting.Menu.PrintItem.Name"));
     action.setIcon(new PlatformUI().getPDFTaskBarIcon());
     return action;
   }
 
-  private QuickPrintAction(IApplicationModel anathemaModel, Resources resources) {
+  private ControlledPrintAction(IApplicationModel anathemaModel, Resources resources) {
     super(anathemaModel, resources);
   }
 
   @Override
   protected KeyStroke createKeyStroke() {
-    return getKeyStroke(KeyEvent.VK_P, Toolkit.getDefaultToolkit().getMenuShortcutKeyMask());
+    return getKeyStroke(KeyEvent.VK_P, Toolkit.getDefaultToolkit().getMenuShortcutKeyMask() | Event.SHIFT_MASK);
   }
 
   @Override
@@ -44,7 +47,6 @@ public class QuickPrintAction extends AbstractPrintAction {
     if (item == null) {
       return;
     }
-    FirstReportFinder reportFinder = new FirstReportFinder(anathemaModel);
-    new QuickPrintCommand(resources, item, reportFinder).execute();
+    new ControlledPrintCommand(resources, anathemaModel, item).execute();
   }
 }

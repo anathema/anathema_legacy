@@ -1,7 +1,9 @@
-package net.sf.anathema.framework.reporting;
+package net.sf.anathema.campaign.toolbar;
 
 import net.sf.anathema.framework.IApplicationModel;
 import net.sf.anathema.framework.presenter.IItemManagementModelListener;
+import net.sf.anathema.framework.reporting.Report;
+import net.sf.anathema.framework.reporting.ReportException;
 import net.sf.anathema.framework.repository.IItem;
 import net.sf.anathema.lib.gui.action.SmartAction;
 import net.sf.anathema.lib.resources.Resources;
@@ -50,8 +52,4 @@ public abstract class AbstractPrintAction extends SmartAction {
   protected abstract KeyStroke createKeyStroke();
 
   protected abstract IItemManagementModelListener createEnablingListener();
-
-  public static boolean isAutoOpenSupported() {
-    return isDesktopSupported();
-  }
 }

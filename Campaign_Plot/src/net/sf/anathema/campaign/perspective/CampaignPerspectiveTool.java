@@ -4,9 +4,9 @@ import net.sf.anathema.framework.perspective.ToolBar;
 import net.sf.anathema.framework.IApplicationModel;
 import net.sf.anathema.framework.presenter.itemmanagement.AnathemaSaveAction;
 import net.sf.anathema.framework.presenter.itemmanagement.AnathemaSaveAllAction;
-import net.sf.anathema.framework.reporting.AbstractPrintAction;
-import net.sf.anathema.framework.reporting.ControlledPrintAction;
-import net.sf.anathema.framework.reporting.QuickPrintAction;
+import net.sf.anathema.campaign.toolbar.ControlledPrintAction;
+import net.sf.anathema.campaign.toolbar.QuickPrintAction;
+import net.sf.anathema.framework.reporting.PrintCommand;
 import net.sf.anathema.lib.resources.Resources;
 
 import javax.swing.Action;
@@ -33,7 +33,7 @@ public class CampaignPerspectiveTool {
   }
 
   private Action getPrintAction(Resources resources, IApplicationModel model) {
-    if (AbstractPrintAction.isAutoOpenSupported()) {
+    if (PrintCommand.isAutoOpenSupported()) {
       return QuickPrintAction.createToolAction(model, resources);
     } else {
       return ControlledPrintAction.createToolAction(model, resources);

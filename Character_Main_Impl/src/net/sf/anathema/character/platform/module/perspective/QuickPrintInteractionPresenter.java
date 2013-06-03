@@ -1,7 +1,7 @@
 package net.sf.anathema.character.platform.module.perspective;
 
 import net.sf.anathema.character.perspective.model.model.ItemSelectionModel;
-import net.sf.anathema.framework.reporting.AbstractPrintAction;
+import net.sf.anathema.framework.reporting.PrintCommand;
 import net.sf.anathema.interaction.Command;
 import net.sf.anathema.interaction.Tool;
 import net.sf.anathema.lib.file.RelativePath;
@@ -20,7 +20,7 @@ public class QuickPrintInteractionPresenter {
   }
 
   public void initPresentation() {
-    if (!AbstractPrintAction.isAutoOpenSupported()) {
+    if (!PrintCommand.isAutoOpenSupported()) {
       return;
     }
     initializeAppearance();
