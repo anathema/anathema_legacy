@@ -2,7 +2,6 @@ package net.sf.anathema.framework.repository.tree;
 
 import net.sf.anathema.framework.item.IItemType;
 import net.sf.anathema.framework.item.IItemTypeRegistry;
-import net.sf.anathema.framework.presenter.IItemManagementModel;
 import net.sf.anathema.framework.repository.IBasicRepositoryIdData;
 import net.sf.anathema.framework.repository.IRepository;
 import net.sf.anathema.framework.repository.RepositoryException;
