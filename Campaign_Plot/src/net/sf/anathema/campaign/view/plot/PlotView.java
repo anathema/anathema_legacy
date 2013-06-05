@@ -106,15 +106,19 @@ public class PlotView implements IPlotView {
     properties.initHierarchyRemoveAction(removeAction);
     removeButton = new JButton(removeAction);
 
-    ActionInteraction interaction = new ActionInteraction();
-    interaction.setCommand(new UpAction());
-    properties.initHierarchyUpAction(interaction);
+    ActionInteraction upInteraction = new ActionInteraction();
+    upInteraction.setCommand(new UpAction());
+    properties.initHierarchyUpAction(upInteraction);
     upButton = new JButton();
-    interaction.addTo(new AddToButton(upButton));
+    upInteraction.addTo(new AddToButton(upButton));
 
-    SmartAction downAction = new DownAction();
-    properties.initHierarchyDownAction(downAction);
-    downButton = new JButton(downAction);
+
+    ActionInteraction downInteraction = new ActionInteraction();
+    downInteraction.setCommand(new DownAction());
+    properties.initHierarchyDownAction(downInteraction);
+    downButton = new JButton();
+    downInteraction.addTo(new AddToButton(downButton));
+
   }
 
   @Override
@@ -195,10 +199,10 @@ public class PlotView implements IPlotView {
     return content;
   }
 
-  private class DownAction extends SmartAction {
+  private class DownAction implements Command{
 
     @Override
-    protected void execute(Component parentComponent) {
+    public void execute() {
       DefaultMutableTreeNode node = TreeUtilities.getSelectedHierachyNode(tree);
       DefaultMutableTreeNode parentNode = (DefaultMutableTreeNode) node.getParent();
       int originalIndex = parentNode.getIndex(node);

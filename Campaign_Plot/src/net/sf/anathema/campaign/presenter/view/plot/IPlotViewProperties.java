@@ -11,7 +11,7 @@ public interface IPlotViewProperties {
 
   void initHierarchyUpAction(Tool action);
 
-  void initHierarchyDownAction(SmartAction action);
+  void initHierarchyDownAction(Tool action);
 
   String getBorderTitle();
 }

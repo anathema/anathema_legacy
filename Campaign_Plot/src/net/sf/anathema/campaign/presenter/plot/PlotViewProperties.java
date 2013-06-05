@@ -38,10 +38,9 @@ public class PlotViewProperties implements IPlotViewProperties {
   }
 
   @Override
-  public void initHierarchyDownAction(SmartAction action) {
-    Icon icon = basicUi.getDownArrowIcon();
-    action.setIcon(icon);
-    action.setToolTipText(resources.getString("SeriesPlot.DownToolTip"));
+  public void initHierarchyDownAction(Tool action) {
+    action.setIcon(basicUi.getDownArrowIconPath());
+    action.setTooltip(resources.getString("SeriesPlot.DownToolTip"));
   }
 
   @Override
