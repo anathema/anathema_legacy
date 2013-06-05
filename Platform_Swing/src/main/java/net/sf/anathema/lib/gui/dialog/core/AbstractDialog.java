@@ -108,7 +108,6 @@ public abstract class AbstractDialog {
 
   protected void closeDialog() {
     dialog.dispose();
-    //Bugfix (gebhard) 26.09.2006: Memory leak by reference from JDialog to this class
     dialog.removeWindowListener(cancelingWindowListener);
   }
 
