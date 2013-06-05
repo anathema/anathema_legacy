@@ -38,7 +38,7 @@ public abstract class AbstractDialog {
   private final IGenericDialogConfiguration dialogConfiguration;
   private boolean canceled = false;
   private final DialogPagePanel dialogPagePanel;
-  private DialogCloseHandler closeHandler = DialogCloseHandler.NULL_HANDLER;
+  private final DialogCloseHandler closeHandler = DialogCloseHandler.NULL_HANDLER;
 
   public AbstractDialog(Component parent, IGenericDialogConfiguration dialogConfiguration) {
     Preconditions.checkNotNull(dialogConfiguration);
@@ -156,12 +156,7 @@ public abstract class AbstractDialog {
     return dialog;
   }
 
-  protected final void setCloseHandler(DialogCloseHandler dialogCloseHandler) {
-    Preconditions.checkNotNull(dialogCloseHandler);
-    closeHandler = dialogCloseHandler;
-  }
-
-  public DialogCloseHandler getCloseHandler() {
+  protected DialogCloseHandler getCloseHandler() {
     return closeHandler;
   }
 
