@@ -21,8 +21,4 @@ public class StaticDialogResult implements DialogResult {
     return canceled;
   }
 
-  @Override
-  public boolean isReady() {
-    return true;
-  }
 }

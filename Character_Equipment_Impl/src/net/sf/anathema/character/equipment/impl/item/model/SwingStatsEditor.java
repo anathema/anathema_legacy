@@ -14,7 +14,7 @@ import net.sf.anathema.character.equipment.wizard.IAnathemaWizardPage;
 import net.sf.anathema.character.equipment.wizard.WizardDialog;
 import net.sf.anathema.character.generic.equipment.weapon.IEquipmentStats;
 import net.sf.anathema.framework.view.SwingApplicationFrame;
-import net.sf.anathema.lib.gui.dialog.core.IDialogResult;
+import net.sf.anathema.lib.gui.dialog.core.DialogResult;
 import net.sf.anathema.lib.resources.Resources;
 
 public class SwingStatsEditor implements StatsEditor {
@@ -32,7 +32,7 @@ public class SwingStatsEditor implements StatsEditor {
     IEquipmentStatisticsCreationViewFactory viewFactory = new EquipmentStatisticsCreationViewFactory();
     IAnathemaWizardPage startPage = chooseStartPage(resources, model, viewFactory);
     WizardDialog dialog = new AnathemaWizardDialog(SwingApplicationFrame.getParentComponent(), startPage);
-    IDialogResult result = dialog.show();
+    DialogResult result = dialog.show();
     if (result.isCanceled()) {
       return null;
     }
