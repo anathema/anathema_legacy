@@ -184,8 +184,8 @@ public class ComboConfigurationView implements IComboConfigurationView {
   }
 
   @Override
-  public IComboView addComboView(String name, String description, Action deleteAction, Action editAction) {
-    ComboView comboView = new ComboView(deleteAction, editAction);
+  public IComboView addComboView(String name, String description) {
+    ComboView comboView = new ComboView();
     comboView.initGui(name, description);
     comboPane.add(comboView.getTaskGroup());
     revalidateView();
