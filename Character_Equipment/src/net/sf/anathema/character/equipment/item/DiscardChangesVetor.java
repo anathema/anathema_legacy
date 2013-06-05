@@ -3,7 +3,7 @@ package net.sf.anathema.character.equipment.item;
 import net.sf.anathema.lib.data.ICondition;
 import net.sf.anathema.lib.gui.action.ActionConfiguration;
 import net.sf.anathema.lib.gui.action.IActionConfiguration;
-import net.sf.anathema.lib.gui.dialog.core.IDialogResult;
+import net.sf.anathema.lib.gui.dialog.core.DialogResult;
 import net.sf.anathema.lib.gui.dialog.message.MessageUserDialogConfiguration;
 import net.sf.anathema.lib.gui.dialog.userdialog.UserDialog;
 import net.sf.anathema.lib.gui.dialog.userdialog.buttons.DialogButtonConfiguration;
@@ -43,7 +43,7 @@ public class DiscardChangesVetor implements IVetor {
           }
         });
     UserDialog userDialog = new UserDialog(parentComponent, configuration);
-    IDialogResult result = userDialog.show();
+    DialogResult result = userDialog.show();
     return result.isCanceled();
   }
 }

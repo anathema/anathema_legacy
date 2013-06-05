@@ -22,7 +22,7 @@ import net.sf.anathema.lib.control.ICollectionListener;
 import net.sf.anathema.lib.control.ObjectValueListener;
 import net.sf.anathema.lib.gui.AgnosticUIConfiguration;
 import net.sf.anathema.lib.gui.Presenter;
-import net.sf.anathema.lib.gui.dialog.core.IDialogResult;
+import net.sf.anathema.lib.gui.dialog.core.DialogResult;
 import net.sf.anathema.lib.gui.dialog.userdialog.UserDialog;
 import net.sf.anathema.lib.gui.selection.IListObjectSelectionView;
 import net.sf.anathema.lib.resources.Resources;
@@ -193,7 +193,7 @@ public class EquipmentAdditionalPresenter implements Presenter {
         EquipmentPersonalizationPresenterPage page = new EquipmentPersonalizationPresenterPage(personalizationModel,
                 properties);
         UserDialog dialog = new UserDialog(SwingApplicationFrame.getParentComponent(), page);
-        IDialogResult result = dialog.show();
+        DialogResult result = dialog.show();
         if (!result.isCanceled()) {
           selectedObject.setPersonalization(personalizationModel.getTitle(), personalizationModel.getDescription());
           initEquipmentObjectPresentation(selectedObject);

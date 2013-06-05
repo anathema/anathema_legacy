@@ -21,6 +21,8 @@ import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
 import java.util.List;
 
+import static net.sf.anathema.lib.gui.dialog.core.StaticDialogResult.Canceled;
+
 public abstract class AbstractDialog {
 
   private static final String INITIAL_DIALOG_TITLE = "!Dialog.title!";
@@ -80,7 +82,7 @@ public abstract class AbstractDialog {
   public final void performCancel() {
     canceled = true;
     closeDialog();
-    closeHandler.handleDialogClose(new DialogResult(true));
+    closeHandler.handleDialogClose(Canceled());
   }
 
   protected final IGenericDialogConfiguration getGenericDialog() {
@@ -165,6 +167,9 @@ public abstract class AbstractDialog {
   }
 
   protected DialogResult createDialogResult() {
-    return new DialogResult(canceled);
+    if (canceled) {
+      return StaticDialogResult.Canceled();
+    }
+    return StaticDialogResult.Confirmed();
   }
 }

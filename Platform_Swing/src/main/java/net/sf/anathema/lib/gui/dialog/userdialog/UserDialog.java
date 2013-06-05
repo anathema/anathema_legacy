@@ -6,7 +6,6 @@ import net.sf.anathema.lib.gui.action.SmartAction;
 import net.sf.anathema.lib.gui.dialog.core.AbstractDialog;
 import net.sf.anathema.lib.gui.dialog.core.DialogButtonBarBuilder;
 import net.sf.anathema.lib.gui.dialog.core.DialogResult;
-import net.sf.anathema.lib.gui.dialog.core.IDialogResult;
 import net.sf.anathema.lib.gui.dialog.userdialog.buttons.IDialogButtonConfiguration;
 import net.sf.anathema.lib.gui.dialog.userdialog.page.IDialogPage;
 import net.sf.anathema.lib.gui.swing.GuiUtilities;
@@ -18,6 +17,8 @@ import java.awt.Component;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
+
+import static net.sf.anathema.lib.gui.dialog.core.StaticDialogResult.Confirmed;
 
 public class UserDialog extends AbstractDialog implements IUserDialogContainer {
 
@@ -151,7 +152,7 @@ public class UserDialog extends AbstractDialog implements IUserDialogContainer {
   }
 
   @Override
-  public IDialogResult show() {
+  public DialogResult show() {
     setVisible(true);
     return createDialogResult();
   }
@@ -163,7 +164,7 @@ public class UserDialog extends AbstractDialog implements IUserDialogContainer {
       return;
     }
     closeDialog();
-    getCloseHandler().handleDialogClose(new DialogResult(false));
+    getCloseHandler().handleDialogClose(Confirmed());
   }
 
   @Override

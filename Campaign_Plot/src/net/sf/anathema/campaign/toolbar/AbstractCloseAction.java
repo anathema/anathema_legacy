@@ -3,7 +3,7 @@ package net.sf.anathema.campaign.toolbar;
 import net.sf.anathema.campaign.item.PlotItemManagement;
 import net.sf.anathema.framework.repository.IItem;
 import net.sf.anathema.lib.gui.action.SmartAction;
-import net.sf.anathema.lib.gui.dialog.core.IDialogResult;
+import net.sf.anathema.lib.gui.dialog.core.DialogResult;
 import net.sf.anathema.lib.gui.dialog.message.MessageUserDialogConfiguration;
 import net.sf.anathema.lib.gui.dialog.userdialog.UserDialog;
 import net.sf.anathema.lib.gui.dialog.userdialog.buttons.DialogButtonConfiguration;
@@ -43,7 +43,7 @@ public abstract class AbstractCloseAction extends SmartAction {
       DialogButtonConfiguration buttonConfiguration = new YesNoDialogButtonConfiguration(resources);
       MessageUserDialogConfiguration configuration = new MessageUserDialogConfiguration(message, buttonConfiguration);
       UserDialog userDialog = new UserDialog(parentComponent, configuration);
-      IDialogResult result = userDialog.show();
+      DialogResult result = userDialog.show();
       if (result.isCanceled()) {
         return;
       }
