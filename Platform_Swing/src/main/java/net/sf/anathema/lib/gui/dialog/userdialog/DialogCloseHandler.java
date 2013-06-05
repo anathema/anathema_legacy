@@ -2,9 +2,9 @@ package net.sf.anathema.lib.gui.dialog.userdialog;
 
 import net.sf.anathema.lib.gui.dialog.core.DialogResult;
 
-public interface IDialogCloseHandler {
+public interface DialogCloseHandler {
 
-  IDialogCloseHandler NULL_HANDLER = new IDialogCloseHandler() {
+  DialogCloseHandler NULL_HANDLER = new DialogCloseHandler() {
     @Override
     public void handleDialogClose(DialogResult result) {
       //nothing to do

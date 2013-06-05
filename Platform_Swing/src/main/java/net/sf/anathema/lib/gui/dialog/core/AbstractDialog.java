@@ -3,7 +3,7 @@ package net.sf.anathema.lib.gui.dialog.core;
 import com.google.common.base.Preconditions;
 import net.miginfocom.layout.CC;
 import net.miginfocom.swing.MigLayout;
-import net.sf.anathema.lib.gui.dialog.userdialog.IDialogCloseHandler;
+import net.sf.anathema.lib.gui.dialog.userdialog.DialogCloseHandler;
 import net.sf.anathema.lib.gui.layout.LayoutUtils;
 import net.sf.anathema.lib.gui.swing.GuiUtilities;
 import net.sf.anathema.lib.gui.widgets.HorizontalLine;
@@ -38,7 +38,7 @@ public abstract class AbstractDialog {
   private final IGenericDialogConfiguration dialogConfiguration;
   private boolean canceled = false;
   private final DialogPagePanel dialogPagePanel;
-  private IDialogCloseHandler closeHandler = IDialogCloseHandler.NULL_HANDLER;
+  private DialogCloseHandler closeHandler = DialogCloseHandler.NULL_HANDLER;
 
   public AbstractDialog(Component parent, IGenericDialogConfiguration dialogConfiguration) {
     Preconditions.checkNotNull(dialogConfiguration);
@@ -156,12 +156,12 @@ public abstract class AbstractDialog {
     return dialog;
   }
 
-  protected final void setCloseHandler(IDialogCloseHandler dialogCloseHandler) {
+  protected final void setCloseHandler(DialogCloseHandler dialogCloseHandler) {
     Preconditions.checkNotNull(dialogCloseHandler);
     closeHandler = dialogCloseHandler;
   }
 
-  public IDialogCloseHandler getCloseHandler() {
+  public DialogCloseHandler getCloseHandler() {
     return closeHandler;
   }
 
