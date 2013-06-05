@@ -2,6 +2,7 @@ package net.sf.anathema.campaign.presenter.plot;
 
 import net.sf.anathema.campaign.presenter.view.plot.IPlotViewProperties;
 import net.sf.anathema.framework.presenter.resources.BasicUi;
+import net.sf.anathema.interaction.Tool;
 import net.sf.anathema.lib.gui.action.SmartAction;
 import net.sf.anathema.lib.resources.Resources;
 
@@ -31,10 +32,9 @@ public class PlotViewProperties implements IPlotViewProperties {
   }
 
   @Override
-  public void initHierarchyUpAction(SmartAction action) {
-    Icon icon = basicUi.getUpArrowIcon();
-    action.setIcon(icon);
-    action.setToolTipText(resources.getString("SeriesPlot.UpToolTip"));
+  public void initHierarchyUpAction(Tool action) {
+    action.setIcon(basicUi.getUpArrowIconPath());
+    action.setTooltip(resources.getString("SeriesPlot.UpToolTip"));
   }
 
   @Override

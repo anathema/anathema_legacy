@@ -9,11 +9,13 @@ import net.sf.anathema.campaign.presenter.view.IPlotViewListener;
 import net.sf.anathema.campaign.presenter.view.plot.IPlotView;
 import net.sf.anathema.campaign.presenter.view.plot.IPlotViewProperties;
 import net.sf.anathema.campaign.presenter.view.plot.ITreeView;
+import net.sf.anathema.campaign.styledtext.ITextEditorProperties;
 import net.sf.anathema.campaign.view.BasicItemDescriptionView;
 import net.sf.anathema.campaign.view.util.DefaultTreeView;
-import net.sf.anathema.campaign.styledtext.ITextEditorProperties;
+import net.sf.anathema.interaction.Command;
 import net.sf.anathema.lib.gui.action.SmartAction;
 import net.sf.anathema.lib.util.TreeUtilities;
+import net.sf.anathema.swing.interaction.ActionInteraction;
 
 import javax.swing.BorderFactory;
 import javax.swing.JButton;
@@ -104,9 +106,11 @@ public class PlotView implements IPlotView {
     properties.initHierarchyRemoveAction(removeAction);
     removeButton = new JButton(removeAction);
 
-    SmartAction upAction = new UpAction();
-    properties.initHierarchyUpAction(upAction);
-    upButton = new JButton(upAction);
+    ActionInteraction interaction = new ActionInteraction();
+    interaction.setCommand(new UpAction());
+    properties.initHierarchyUpAction(interaction);
+    upButton = new JButton();
+    interaction.addTo(new AddToButton(upButton));
 
     SmartAction downAction = new DownAction();
     properties.initHierarchyDownAction(downAction);
@@ -202,10 +206,10 @@ public class PlotView implements IPlotView {
     }
   }
 
-  private class UpAction extends SmartAction {
+  private class UpAction implements Command {
 
     @Override
-    protected void execute(Component parentComponent) {
+    public void execute() {
       DefaultMutableTreeNode node = TreeUtilities.getSelectedHierachyNode(tree);
       DefaultMutableTreeNode parentNode = (DefaultMutableTreeNode) node.getParent();
       int originalIndex = parentNode.getIndex(node);

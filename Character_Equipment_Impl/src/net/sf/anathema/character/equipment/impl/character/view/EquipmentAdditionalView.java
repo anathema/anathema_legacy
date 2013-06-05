@@ -63,7 +63,7 @@ public class EquipmentAdditionalView implements IEquipmentAdditionalView, IView 
   @Override
   public Tool addToolButton() {
     ActionInteraction tool = new ActionInteraction();
-    tool.addTo(new AddToSwingPanel(buttonPanel));
+    tool.addTo(new AddToComponent(buttonPanel));
     return tool;
   }
 

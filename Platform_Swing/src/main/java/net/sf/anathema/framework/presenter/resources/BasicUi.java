@@ -36,10 +36,6 @@ public class BasicUi extends AbstractUI {
     return new RelativePath("icons/ButtonArrowRight16.png");
   }
 
-  public Icon getUpArrowIcon() {
-    return getIcon(new RelativePath("icons/ButtonArrowUp16.png"));
-  }
-
   public Icon getDownArrowIcon() {
     return getIcon(new RelativePath("icons/ButtonArrowDown16.png"));
   }
@@ -58,5 +54,9 @@ public class BasicUi extends AbstractUI {
 
   public RelativePath getClearIconPath() {
     return new RelativePath("icons/ButtonCross16.png");
+  }
+
+  public RelativePath getUpArrowIconPath() {
+    return new RelativePath("icons/ButtonArrowUp16.png");
   }
 }
