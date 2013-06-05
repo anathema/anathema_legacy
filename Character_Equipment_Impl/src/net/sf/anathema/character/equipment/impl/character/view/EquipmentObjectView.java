@@ -2,6 +2,7 @@ package net.sf.anathema.character.equipment.impl.character.view;
 
 import net.miginfocom.swing.MigLayout;
 import net.sf.anathema.character.equipment.character.view.IEquipmentObjectView;
+import net.sf.anathema.character.impl.view.magic.AddToTaskPane;
 import net.sf.anathema.character.library.taskpane.ITaskPaneGroupView;
 import net.sf.anathema.interaction.Tool;
 import net.sf.anathema.lib.gui.action.ActionWidgetFactory;
@@ -86,7 +87,7 @@ public class EquipmentObjectView implements IEquipmentObjectView, ITaskPaneGroup
   @Override
   public Tool addAction() {
     ActionInteraction tool = new ActionInteraction();
-    tool.addTo(new AddToTaskGroup(taskGroup));
+    tool.addTo(new AddToTaskPane(taskGroup));
     return tool;
   }
 

@@ -6,14 +6,14 @@ import org.jdesktop.swingx.JXTaskPane;
 import javax.swing.Action;
 
 public class AddToTaskPane implements AddToSwingComponent {
-  private JXTaskPane taskPaneGroup;
+  private JXTaskPane taskPane;
 
-  public AddToTaskPane(JXTaskPane taskPaneGroup) {
-    this.taskPaneGroup = taskPaneGroup;
+  public AddToTaskPane(JXTaskPane taskPane) {
+    this.taskPane = taskPane;
   }
 
   @Override
   public void add(Action action) {
-    taskPaneGroup.add(action);
+    taskPane.add(action);
   }
 }
