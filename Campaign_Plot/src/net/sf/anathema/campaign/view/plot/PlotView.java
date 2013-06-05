@@ -16,6 +16,7 @@ import net.sf.anathema.interaction.Command;
 import net.sf.anathema.lib.gui.action.SmartAction;
 import net.sf.anathema.lib.util.TreeUtilities;
 import net.sf.anathema.swing.interaction.ActionInteraction;
+import net.sf.anathema.view.interaction.AddToButton;
 
 import javax.swing.BorderFactory;
 import javax.swing.JButton;
