@@ -2,6 +2,7 @@ package net.sf.anathema.character.generic.framework.magic.view;
 
 import net.miginfocom.layout.CC;
 import net.sf.anathema.interaction.Command;
+import net.sf.anathema.interaction.Tool;
 import net.sf.anathema.lib.file.RelativePath;
 import net.sf.anathema.lib.gui.list.ComponentEnablingListSelectionListener;
 import net.sf.anathema.lib.util.Identified;
@@ -127,6 +128,14 @@ public class MagicLearnView implements IMagicLearnView {
     JButton button = new JButton(action);
     endButtons.add(button);
     return button;
+  }
+
+  public Tool addAdditionalTool() {
+    ActionInteraction interaction = new ActionInteraction();
+    JButton button = new JButton();
+    endButtons.add(button);
+    interaction.addTo(new AddToButton(button));
+    return interaction;
   }
 
   public void addTo(JPanel panel) {

@@ -20,14 +20,6 @@ public class CharacterUI extends AbstractUI {
     return new RelativePath("icons/ButtonRandomNameB16.png");
   }
 
-  public Icon getCancelComboEditIcon() {
-    return getIcon(getCancelComboEditIconPath());
-  }
-
-  public Icon getFinalizeIcon() {
-    return getIcon(getFinalizeIconPath());
-  }
-
   public RelativePath getFinalizeXpIconPath() {
     return new RelativePath("icons/ButtonCheckXP16.png");
   }

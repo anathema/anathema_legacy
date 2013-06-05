@@ -19,10 +19,6 @@ public class BasicUi extends AbstractUI {
     return getIcon(getAddIconPath());
   }
 
-  public Icon getClearIcon() {
-    return getIcon(getClearIconPath());
-  }
-
   public RelativePath getEditIconPath() {
     return new RelativePath("icons/ButtonEdit16.png");
   }
