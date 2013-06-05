@@ -4,9 +4,9 @@ import net.sf.anathema.character.equipment.item.model.IEquipmentTemplateEditMode
 import net.sf.anathema.character.equipment.item.model.StatsEditor;
 import net.sf.anathema.character.equipment.item.view.ToolListView;
 import net.sf.anathema.character.generic.equipment.weapon.IEquipmentStats;
+import net.sf.anathema.framework.presenter.resources.BasicUi;
 import net.sf.anathema.interaction.Command;
 import net.sf.anathema.interaction.Tool;
-import net.sf.anathema.lib.file.RelativePath;
 import net.sf.anathema.lib.resources.Resources;
 
 import java.util.ArrayList;
@@ -25,7 +25,7 @@ public class EditStats {
 
   public void addToolTo(final ToolListView<IEquipmentStats> statsListView) {
     final Tool tool = statsListView.addTool();
-    tool.setIcon(new RelativePath("icons/ButtonEdit16.png"));
+    tool.setIcon(new BasicUi().getEditIconPath());
     tool.setTooltip(resources.getString("Equipment.Creation.Stats.EditActionTooltip"));
     tool.setCommand(new Command() {
       @Override
