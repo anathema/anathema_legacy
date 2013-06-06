@@ -1,6 +1,5 @@
 package net.sf.anathema.scribe.scroll.conversion;
 
-import net.sf.anathema.framework.model.ItemManagmentModel;
 import net.sf.anathema.framework.presenter.action.IFileProvider;
 import net.sf.anathema.framework.repository.Repository;
 import net.sf.anathema.framework.repository.access.IRepositoryReadAccess;
@@ -22,7 +21,7 @@ public class NoteToScrollConverter_Test {
 
   @Before
   public void convertScroll() throws Exception {
-    Repository repository = new Repository(Paths.get("repository").toFile(), new ItemManagmentModel());
+    Repository repository = new Repository(Paths.get("repository").toFile());
     IRepositoryReadAccess readAccess = repository.openReadAccess(ITEM_TYPE, new IFileProvider() {
       @Override
       public File getFile() {
@@ -39,15 +38,14 @@ public class NoteToScrollConverter_Test {
 
   @Before
   public void createExpectedScroll() {
-    expectedScroll = new ScrollDto("Hallo Welt",
-            "Ich bin eine Notiz mit **FETTEM** Text und *kursivem* Test und einigen ++unterstrichenen++ Zeichen.");
+    expectedScroll =
+            new ScrollDto("Hallo Welt", "Ich bin eine Notiz mit **FETTEM** Text und *kursivem* Test und einigen ++unterstrichenen++ Zeichen.");
   }
 
   @Test
   public void copiesTitleVerbatim() throws Exception {
     assertThat(actualScroll.title, is(expectedScroll.title));
   }
-
 
   @Test
   public void recreatesTextInWikiSyntax() throws Exception {
