@@ -26,7 +26,7 @@ public class EditStatsCommand implements Command {
 
   @Override
   public void execute() {
-    final IEquipmentStats selectedStats = getSelectedStats();
+    IEquipmentStats selectedStats = getSelectedStats();
     String[] names = getNamesOfAllOtherStats();
     factory.whenChangesAreConfirmed(new ReplaceStats(selectedStats));
     factory.editStats(resources, names, selectedStats);
