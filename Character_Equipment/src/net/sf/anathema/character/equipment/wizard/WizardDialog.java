@@ -15,7 +15,6 @@ import net.sf.anathema.lib.gui.swing.GuiUtilities;
 
 import javax.swing.JButton;
 import javax.swing.JComponent;
-import javax.swing.SwingUtilities;
 import java.awt.Component;
 
 import static net.sf.anathema.lib.gui.dialog.core.StaticDialogResult.Confirmed;
@@ -181,12 +180,7 @@ public class WizardDialog extends AbstractDialog implements IWizardContainer, ID
   }
 
   private void showDialog(final ISwingFrameOrDialog configuredDialog) {
-    SwingUtilities.invokeLater(new Runnable() {
-      @Override
-      public void run() {
-        configuredDialog.show();
-      }
-    });
+    configuredDialog.show();
   }
 
   /**
