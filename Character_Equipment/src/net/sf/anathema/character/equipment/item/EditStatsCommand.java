@@ -6,6 +6,7 @@ import net.sf.anathema.character.equipment.item.view.ToolListView;
 import net.sf.anathema.character.generic.equipment.weapon.IEquipmentStats;
 import net.sf.anathema.interaction.Command;
 import net.sf.anathema.lib.resources.Resources;
+import net.sf.anathema.lib.util.Closure;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -25,13 +26,10 @@ public class EditStatsCommand implements Command {
 
   @Override
   public void execute() {
-    IEquipmentStats selectedStats = getSelectedStats();
+    final IEquipmentStats selectedStats = getSelectedStats();
     String[] names = getNamesOfAllOtherStats();
-    IEquipmentStats equipmentStats = factory.editStats(resources, names, selectedStats);
-    if (equipmentStats == null) {
-      return;
-    }
-    editModel.replaceStatistics(selectedStats, equipmentStats);
+    factory.whenChangesAreConfirmed(new ReplaceStats(selectedStats));
+    factory.editStats(resources, names, selectedStats);
   }
 
   private String[] getNamesOfAllOtherStats() {
@@ -48,5 +46,18 @@ public class EditStatsCommand implements Command {
 
   private IEquipmentStats getSelectedStats() {
     return statsListView.getSelectedItems().get(0);
+  }
+
+  private class ReplaceStats implements Closure<IEquipmentStats> {
+    private final IEquipmentStats selectedStats;
+
+    public ReplaceStats(IEquipmentStats selectedStats) {
+      this.selectedStats = selectedStats;
+    }
+
+    @Override
+    public void execute(IEquipmentStats newStats) {
+      editModel.replaceStatistics(selectedStats, newStats);
+    }
   }
 }

@@ -10,6 +10,7 @@ import net.sf.anathema.lib.gui.dialog.core.DialogButtonBarBuilder;
 import net.sf.anathema.lib.gui.dialog.core.DialogResult;
 import net.sf.anathema.lib.gui.dialog.core.IDialogConstants;
 import net.sf.anathema.lib.gui.dialog.core.ISwingFrameOrDialog;
+import net.sf.anathema.lib.gui.dialog.userdialog.DialogCloseHandler;
 import net.sf.anathema.lib.gui.dialog.userdialog.buttons.IDialogButtonConfiguration;
 import net.sf.anathema.lib.gui.swing.GuiUtilities;
 
@@ -177,6 +178,11 @@ public class WizardDialog extends AbstractDialog implements IWizardContainer, ID
     GuiUtilities.centerToParent(configuredDialog.getWindow());
     showDialog(configuredDialog);
     return createDialogResult();
+  }
+
+  public void show(DialogCloseHandler dialogCloseHandler) {
+    setCloseHandler(dialogCloseHandler);
+    show();
   }
 
   private void showDialog(final ISwingFrameOrDialog configuredDialog) {

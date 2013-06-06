@@ -38,7 +38,7 @@ public abstract class AbstractDialog {
   private final IGenericDialogConfiguration dialogConfiguration;
   private boolean canceled = false;
   private final DialogPagePanel dialogPagePanel;
-  private final DialogCloseHandler closeHandler = DialogCloseHandler.NULL_HANDLER;
+  private DialogCloseHandler closeHandler = DialogCloseHandler.NULL_HANDLER;
 
   public AbstractDialog(Component parent, IGenericDialogConfiguration dialogConfiguration) {
     Preconditions.checkNotNull(dialogConfiguration);
@@ -50,6 +50,10 @@ public abstract class AbstractDialog {
     dialog.setDefaultCloseOperation(WindowConstants.DO_NOTHING_ON_CLOSE);
     dialog.addWindowListener(cancelingWindowListener);
     CloseOnEscapeKeyActionBehavior.attachTo(this);
+  }
+
+  protected void setCloseHandler(DialogCloseHandler handler) {
+    this.closeHandler = handler;
   }
 
   protected boolean isMainContentGrabVerticalSpace() {

@@ -15,28 +15,43 @@ import net.sf.anathema.character.equipment.wizard.WizardDialog;
 import net.sf.anathema.character.generic.equipment.weapon.IEquipmentStats;
 import net.sf.anathema.framework.view.SwingApplicationFrame;
 import net.sf.anathema.lib.gui.dialog.core.DialogResult;
+import net.sf.anathema.lib.gui.dialog.userdialog.DialogCloseHandler;
 import net.sf.anathema.lib.resources.Resources;
+import net.sf.anathema.lib.util.Closure;
+
+import javax.swing.SwingUtilities;
 
 public class SwingStatsEditor implements StatsEditor {
 
+  private Closure<IEquipmentStats> whenChangesAreFinished = new NullClosure();
   private final ModelToStats modelToStats = new ModelToStats();
 
   @Override
-  public IEquipmentStats editStats(Resources resources, String[] definedNames, IEquipmentStats stats) {
-    IEquipmentStatisticsCreationModel model = new StatsToModel().createModel(stats);
-    model.setForbiddenNames(definedNames);
-    return runDialog(resources, model);
+  public void editStats(final Resources resources, final String[] definedNames, final IEquipmentStats stats) {
+    SwingUtilities.invokeLater(new Runnable() {
+      @Override
+      public void run() {
+        doIt(resources, definedNames, stats);
+      }
+    });
   }
 
-  private IEquipmentStats runDialog(Resources resources, IEquipmentStatisticsCreationModel model) {
+  private void doIt(Resources resources, String[] definedNames, IEquipmentStats stats) {
+    IEquipmentStatisticsCreationModel model = new StatsToModel().createModel(stats);
+    model.setForbiddenNames(definedNames);
+    runDialog(resources, model);
+  }
+
+  @Override
+  public void whenChangesAreConfirmed(Closure<IEquipmentStats> action) {
+    this.whenChangesAreFinished = action;
+  }
+
+  private void runDialog(Resources resources, final IEquipmentStatisticsCreationModel model) {
     IEquipmentStatisticsCreationViewFactory viewFactory = new EquipmentStatisticsCreationViewFactory();
     IAnathemaWizardPage startPage = chooseStartPage(resources, model, viewFactory);
     WizardDialog dialog = new AnathemaWizardDialog(SwingApplicationFrame.getParentComponent(), startPage);
-    DialogResult result = dialog.show();
-    if (result.isCanceled()) {
-      return null;
-    }
-    return modelToStats.createStats(model);
+    dialog.show(new CreateStatsHandler(model));
   }
 
   private IAnathemaWizardPage chooseStartPage(Resources resources, IEquipmentStatisticsCreationModel model,
@@ -54,6 +69,29 @@ public class SwingStatsEditor implements StatsEditor {
         return new TraitModifyingStatisticsPresenterPage(resources, model, viewFactory);
       default:
         throw new IllegalArgumentException("Type must be defined to edit.");
+    }
+  }
+
+  private static class NullClosure implements Closure<IEquipmentStats> {
+    @Override
+    public void execute(IEquipmentStats value) {
+      //nothing to do;
+    }
+  }
+
+  private class CreateStatsHandler implements DialogCloseHandler {
+    private final IEquipmentStatisticsCreationModel model;
+
+    public CreateStatsHandler(IEquipmentStatisticsCreationModel model) {
+      this.model = model;
+    }
+
+    @Override
+    public void handleDialogClose(DialogResult result) {
+      if (result.isCanceled()) {
+        return;
+      }
+      whenChangesAreFinished.execute(modelToStats.createStats(model));
     }
   }
 }

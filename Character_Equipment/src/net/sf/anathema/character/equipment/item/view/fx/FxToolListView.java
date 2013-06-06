@@ -42,8 +42,13 @@ public class FxToolListView<T> implements ToolListView<T> {
   }
 
   @Override
-  public void setObjects(List<T> items) {
-    list.setItems(FXCollections.observableArrayList(items));
+  public void setObjects(final List<T> items) {
+    Platform.runLater(new Runnable() {
+      @Override
+      public void run() {
+        list.setItems(FXCollections.observableArrayList(items));
+      }
+    });
   }
 
   @Override
