@@ -150,13 +150,11 @@ public class CharmConfiguration implements ICharmConfiguration {
     ICharmLearnListener mergedListener = new CharmLearnAdapter() {
       @Override
       public void charmLearned(ICharm charm) {
-        for (ICharm mergedCharm : charm.getMergedCharms()) {
-          if (!isLearned(mergedCharm) && isLearnableWithoutPrerequisites(mergedCharm) &&
-              CharmConfiguration.this.getSpecialCharmConfiguration(mergedCharm) == null) {
-            getGroup(mergedCharm).learnCharm(mergedCharm, isExperienced());
-          }
-        }
+        learnOtherCharmsFromMerge(charm);
+        learnDirectChildrenActivatedViaThereMerge(charm);
+      }
 
+      private void learnDirectChildrenActivatedViaThereMerge(ICharm charm) {
         for (ICharm child : charm.getLearnChildCharms()) {
           boolean learnedMerged = false;
           for (ICharm mergedCharm : child.getMergedCharms()) {
@@ -168,20 +166,25 @@ public class CharmConfiguration implements ICharmConfiguration {
         }
       }
 
-      @Override
-      public void charmForgotten(ICharm charm) {
-        boolean forgetMerges = true;
-        for (ICharm parentCharm : charm.getParentCharms()) {
-          forgetMerges = forgetMerges && isLearned(parentCharm);
-        }
-        if (forgetMerges) {
-          for (ICharm mergedCharm : charm.getMergedCharms()) {
-            if (isLearned(mergedCharm) && isUnlearnableWithoutConsequences(mergedCharm)) {
-              getGroup(mergedCharm).forgetCharm(mergedCharm, isExperienced());
-            }
+      private void learnOtherCharmsFromMerge(ICharm charm) {
+        for (ICharm mergedCharm : charm.getMergedCharms()) {
+          if (!isLearned(mergedCharm) && isLearnableWithoutPrerequisites(mergedCharm) &&
+              CharmConfiguration.this.getSpecialCharmConfiguration(mergedCharm) == null) {
+            getGroup(mergedCharm).learnCharm(mergedCharm, isExperienced());
           }
         }
       }
+
+      @Override
+      public void charmForgotten(ICharm charm) {
+        for (ICharm mergedCharm : charm.getMergedCharms()) {
+          if (isLearned(mergedCharm)) {
+            getGroup(mergedCharm).forgetCharm(mergedCharm, isExperienced());
+          }
+        }
+      }
+    };
+    ICharmLearnListener specialCharmListener = new CharmLearnAdapter() {
 
       @Override
       public void recalculateRequested() {
@@ -215,6 +218,7 @@ public class CharmConfiguration implements ICharmConfiguration {
       newGroups.add(group);
 
       group.addCharmLearnListener(mergedListener);
+      group.addCharmLearnListener(specialCharmListener);
     }
     return newGroups.toArray(new ILearningCharmGroup[newGroups.size()]);
   }
