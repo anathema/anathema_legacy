@@ -1,4 +1,4 @@
-package net.sf.anathema.lib.gui.swing;
+package net.sf.anathema.platform.fx.swingintegration;
 
 import javafx.application.Platform;
 import javafx.embed.swing.JFXPanel;
