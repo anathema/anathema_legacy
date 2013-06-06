@@ -29,7 +29,7 @@ public class NoteToScrollConverter_Test {
       @Override
       public File getFile() {
         try {
-          URL url = ClassLoader.getSystemResource("repository/Notes/Input.not");
+          URL url = ClassLoader.getSystemResource("Input.not");
           URI uri = url.toURI();
           Path path = Paths.get(uri);
           return path.toFile();
