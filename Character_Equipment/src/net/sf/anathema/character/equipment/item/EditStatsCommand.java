@@ -25,7 +25,17 @@ public class EditStatsCommand implements Command {
 
   @Override
   public void execute() {
-    IEquipmentStats selectedStats = statsListView.getSelectedItems().get(0);
+    IEquipmentStats selectedStats = getSelectedStats();
+    String[] names = getNamesOfAllOtherStats();
+    IEquipmentStats equipmentStats = factory.editStats(resources, names, selectedStats);
+    if (equipmentStats == null) {
+      return;
+    }
+    editModel.replaceStatistics(selectedStats, equipmentStats);
+  }
+
+  private String[] getNamesOfAllOtherStats() {
+    IEquipmentStats selectedStats = getSelectedStats();
     List<String> definedNames = new ArrayList<>();
     for (IEquipmentStats stats : editModel.getStats()) {
       if (stats == selectedStats) {
@@ -33,11 +43,10 @@ public class EditStatsCommand implements Command {
       }
       definedNames.add(stats.getName().getId());
     }
-    String[] nameArray = definedNames.toArray(new String[definedNames.size()]);
-    IEquipmentStats equipmentStats = factory.editStats(resources, nameArray, selectedStats);
-    if (equipmentStats == null) {
-      return;
-    }
-    editModel.replaceStatistics(selectedStats, equipmentStats);
+    return definedNames.toArray(new String[definedNames.size()]);
+  }
+
+  private IEquipmentStats getSelectedStats() {
+    return statsListView.getSelectedItems().get(0);
   }
 }
