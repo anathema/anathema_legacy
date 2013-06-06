@@ -5,12 +5,8 @@ import net.sf.anathema.character.equipment.item.model.StatsEditor;
 import net.sf.anathema.character.equipment.item.view.ToolListView;
 import net.sf.anathema.character.generic.equipment.weapon.IEquipmentStats;
 import net.sf.anathema.framework.presenter.resources.BasicUi;
-import net.sf.anathema.interaction.Command;
 import net.sf.anathema.interaction.Tool;
 import net.sf.anathema.lib.resources.Resources;
-
-import java.util.ArrayList;
-import java.util.List;
 
 public class EditStats {
   private final StatsEditor factory;
@@ -27,25 +23,7 @@ public class EditStats {
     final Tool tool = statsListView.addTool();
     tool.setIcon(new BasicUi().getEditIconPath());
     tool.setTooltip(resources.getString("Equipment.Creation.Stats.EditActionTooltip"));
-    tool.setCommand(new Command() {
-      @Override
-      public void execute() {
-        IEquipmentStats selectedStats = statsListView.getSelectedItems().get(0);
-        List<String> definedNames = new ArrayList<>();
-        for (IEquipmentStats stats : editModel.getStats()) {
-          if (stats == selectedStats) {
-            continue;
-          }
-          definedNames.add(stats.getName().getId());
-        }
-        String[] nameArray = definedNames.toArray(new String[definedNames.size()]);
-        IEquipmentStats equipmentStats = factory.editStats(resources, nameArray, selectedStats);
-        if (equipmentStats == null) {
-          return;
-        }
-        editModel.replaceStatistics(selectedStats, equipmentStats);
-      }
-    });
+    tool.setCommand(new EditStatsCommand(statsListView, factory, editModel, resources));
     statsListView.addListSelectionListener(new Runnable() {
       @Override
       public void run() {
