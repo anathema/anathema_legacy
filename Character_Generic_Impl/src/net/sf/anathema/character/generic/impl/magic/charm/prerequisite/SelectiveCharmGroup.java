@@ -5,6 +5,7 @@ import net.sf.anathema.character.generic.impl.magic.Charm;
 import net.sf.anathema.character.generic.impl.magic.persistence.prerequisite.SelectiveCharmGroupTemplate;
 import net.sf.anathema.character.generic.magic.ICharm;
 import net.sf.anathema.character.generic.magic.charms.ICharmLearnArbitrator;
+import net.sf.anathema.lib.logging.Logger;
 
 import java.util.ArrayList;
 import java.util.LinkedHashSet;
@@ -16,6 +17,7 @@ public class SelectiveCharmGroup {
 
   private final SelectiveCharmGroupTemplate template;
   private final List<Charm> charms = new ArrayList<>();
+  private final Logger logger = Logger.getLogger(SelectiveCharmGroup.class);
 
   public SelectiveCharmGroup(SelectiveCharmGroupTemplate template) {
     Preconditions.checkNotNull(template);
@@ -25,7 +27,10 @@ public class SelectiveCharmGroup {
   public void extractCharms(Map<String, ? extends Charm> charmsById, Charm child) {
     for (String charmId : template.getGroupCharmIds()) {
       Charm groupCharm = charmsById.get(charmId);
-      Preconditions.checkNotNull(groupCharm, "Charm not found for id " + charmId);
+      if (groupCharm == null) {
+        logger.warn("Selective parent " + charmId + " not found for id " + charmId);
+        continue;
+      }
       charms.add(groupCharm);
       groupCharm.addChild(child);
     }

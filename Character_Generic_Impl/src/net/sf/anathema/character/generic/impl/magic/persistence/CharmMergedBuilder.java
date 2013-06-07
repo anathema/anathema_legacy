@@ -4,6 +4,7 @@ import com.google.common.base.Preconditions;
 import com.google.common.base.Predicate;
 import net.sf.anathema.character.generic.impl.magic.Charm;
 import net.sf.anathema.character.generic.magic.ICharm;
+import net.sf.anathema.lib.logging.Logger;
 import net.sf.anathema.lib.xml.ElementUtilities;
 import org.dom4j.Document;
 import org.dom4j.Element;
@@ -19,6 +20,8 @@ import static net.sf.anathema.character.generic.impl.magic.ICharmXMLConstants.TA
 import static net.sf.anathema.lib.lang.ArrayUtilities.getFirst;
 
 public class CharmMergedBuilder {
+
+  private final Logger logger = Logger.getLogger(CharmMergedBuilder.class);
 
   public void buildMerges(Document charmDoc, ICharm[] charms) {
     Element charmListElement = charmDoc.getRootElement();
@@ -46,7 +49,10 @@ public class CharmMergedBuilder {
           return candidate.getId().equals(charmId);
         }
       });
-      Preconditions.checkNotNull(charm, "Charm not found " + charmId);
+      if (charm == null) {
+        logger.warn("Merge charm not found " + charmId);
+        continue;
+      }
       charms.add(charm);
     }
     for (ICharm charm : charms) {
