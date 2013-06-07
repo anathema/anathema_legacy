@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <?xml-stylesheet type="text/xsl" href="../charmreview-xmlns.xsl"?>
 <!DOCTYPE charmlist PUBLIC "-//TA//DTD Charms 1.5.1//EN"
-"../../charms.dtd">
+        "../../charms.dtd">
 <!--
 
     Charms_Solar_SecondEdition_InkBureaucracy.xml - XML charm data for Anathema Plug-ins.
@@ -23,35 +23,44 @@
 
 -->
 <charmlist xmlns="http://anathema.sourceforge.net/charms">
-	<!-- Bureaucracy -->
-	<charm id="Solar.ImmanentSolarGloryBureaucracy" exalt="Solar" group="Bureaucracy">
-		<prerequisite>
-			<trait id="Bureaucracy" value="5" />
-			<essence value="3" />
-		</prerequisite>
-		<cost />
-		<duration duration="Permanent" />
-		<charmtype type="Permanent" />
-		<charmAttribute attribute="Mirror" visualize="true" />
-		<!-- NOTE:  Abyssal Mirror - Essence Engorgement Technique -->
-		<charmAttribute attribute="Native" visualize="true" />
-		<repurchases limitingTrait="Essence"/>
-		<source source="InkMonkeys" />
-	</charm>
-	<charm id="Solar.ServantRewardingBenevolence" exalt="Solar" group="Bureaucracy">
-		<prerequisite>
-			<trait id="Bureaucracy" value="4" />
-			<essence value="2" />
-			<charmReference id="Solar.SpeedWheels" />
-		</prerequisite>
-		<cost>
-			<essence cost="2" />
-			<willpower cost="1" />
-		</cost>
-		<duration amount="1" unit="month" />
-		<charmtype type="Simple">
-			<special speed="6" turntype="DramaticAction" defense="-1" />
-		</charmtype>
-		<source source="InkMonkeys" />
-	</charm>
+    <!-- Bureaucracy -->
+    <charm id="Solar.ImmanentSolarGloryBureaucracy" exalt="Solar" group="Bureaucracy">
+        <prerequisite>
+            <trait id="Bureaucracy" value="5"/>
+            <essence value="3"/>
+        </prerequisite>
+        <cost/>
+        <duration duration="Permanent"/>
+        <charmtype type="Permanent"/>
+        <charmAttribute attribute="Mirror" visualize="true"/>
+        <!-- NOTE:  Abyssal Mirror - Essence Engorgement Technique -->
+        <charmAttribute attribute="Native" visualize="true"/>
+        <repurchases limitingTrait="Essence"/>
+        <source source="InkMonkeys"/>
+    </charm>
+    <charm id="Solar.ServantRewardingBenevolence" exalt="Solar" group="Bureaucracy">
+        <prerequisite>
+            <trait id="Bureaucracy" value="4"/>
+            <essence value="2"/>
+            <charmReference id="Solar.SpeedWheels"/>
+        </prerequisite>
+        <cost>
+            <essence cost="2"/>
+            <willpower cost="1"/>
+        </cost>
+        <duration amount="1" unit="month"/>
+        <charmtype type="Simple">
+            <special speed="6" turntype="DramaticAction" defense="-1"/>
+        </charmtype>
+        <source source="InkMonkeys"/>
+    </charm>
+    <merges>
+        <merged>
+            <charmReference id="Solar.ImmanentSolarGlory"/>
+            <charmReference id="Solar.ImmanentSolarGloryWar"/>
+            <charmReference id="Solar.ImmanentSolarGloryBureaucracy"/>
+            <charmReference id="Solar.ImmanentSolarGloryLarceny"/>
+            <charmReference id="Solar.ImmanentSolarGloryPerformance"/>
+        </merged>
+    </merges>
 </charmlist>

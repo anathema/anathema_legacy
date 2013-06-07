@@ -1,8 +1,0 @@
-<magicTemplate>
-	<freePicksPredicate defaultResponse="true"/>
-	<charmTemplate charmType="Lunar">
-	    <hasUniqueCharmType type="Knacks" label="Lunar.Knacks" keyword="Knack"/>
-		<martialArts level="Celestial" highLevel="false" /> 
-	</charmTemplate>
-	<spellTemplate maximumSorceryCircle="Celestial" maximumNecromancyCircle="Shadowlands"/>
-</magicTemplate>		
