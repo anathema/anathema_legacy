@@ -8,7 +8,6 @@ import net.sf.anathema.character.generic.framework.additionaltemplate.model.ICha
 import net.sf.anathema.character.generic.framework.additionaltemplate.model.ICharmLearnStrategy;
 import net.sf.anathema.character.generic.impl.magic.MartialArtsUtilities;
 import net.sf.anathema.character.generic.impl.magic.charm.CharmTree;
-import net.sf.anathema.character.generic.impl.magic.charm.MartialArtsCharmTree;
 import net.sf.anathema.character.generic.impl.template.magic.ICharmProvider;
 import net.sf.anathema.character.generic.magic.ICharm;
 import net.sf.anathema.character.generic.magic.ICharmData;
@@ -28,6 +27,7 @@ import net.sf.anathema.character.generic.template.magic.MartialArtsCharmConfigur
 import net.sf.anathema.character.generic.template.magic.MartialArtsRules;
 import net.sf.anathema.character.generic.type.CharacterTypes;
 import net.sf.anathema.character.generic.type.ICharacterType;
+import net.sf.anathema.character.impl.model.charm.options.MartialArtsOptions;
 import net.sf.anathema.character.impl.model.charm.special.DefaultMartialArtsCharmConfiguration;
 import net.sf.anathema.character.impl.model.charm.special.SpecialCharmManager;
 import net.sf.anathema.character.model.charm.CharmLearnAdapter;
@@ -62,7 +62,6 @@ import static net.sf.anathema.character.generic.magic.charms.MartialArtsLevel.Si
 public class CharmConfiguration implements ICharmConfiguration {
 
   private final ISpecialCharmManager manager;
-  private final MartialArtsCharmTree martialArtsCharmTree;
   private final Map<Identified, ICharmTree> alienTreesByType = new HashMap<>();
   private final Map<Identified, ILearningCharmGroup[]> nonMartialArtsGroupsByType = new HashMap<>();
   private final Map<ICharacterType, ICharmTemplate> templatesByType = new HashMap<>();
@@ -81,9 +80,11 @@ public class CharmConfiguration implements ICharmConfiguration {
   private final ICharmGroupArbitrator arbitrator;
   private List<ICharmFilter> filterSet = new ArrayList<>();
   private PrerequisiteModifyingCharms prerequisiteModifyingCharms;
+  private MartialArtsOptions martialArtsOptions;
 
   public CharmConfiguration(IHealthConfiguration health, ICharacterModelContext context, CharacterTypes characterTypes, ITemplateRegistry registry,
                             ICharmProvider provider) {
+    this.martialArtsOptions = new MartialArtsOptions(context, registry);
     this.manager = new SpecialCharmManager(this, health, context);
     this.context = context;
     this.provider = provider;
@@ -91,8 +92,7 @@ public class CharmConfiguration implements ICharmConfiguration {
     List<ICharacterType> allCharacterTypes = new ArrayList<>();
     ICharmTemplate nativeCharmTemplate = getNativeCharmTemplate(registry);
     this.arbitrator = new LearningCharmGroupArbitrator(nativeCharmTemplate, context);
-    this.martialArtsCharmTree = new MartialArtsCharmTree(nativeCharmTemplate);
-    this.martialArtsGroups = createGroups(martialArtsCharmTree.getAllCharmGroups());
+    this.martialArtsGroups = createGroups(martialArtsOptions.getAllCharmGroups());
     initCharacterType(nativeCharmTemplate, getNativeCharacterType());
     allCharacterTypes.add(getNativeCharacterType());
     initAlienTypes(registry, allCharacterTypes);
@@ -122,14 +122,14 @@ public class CharmConfiguration implements ICharmConfiguration {
   @Override
   public ICharmIdMap getCharmIdMap() {
     List<ICharmIdMap> trees = new ArrayList<ICharmIdMap>(alienTreesByType.values());
-    trees.add(martialArtsCharmTree);
+    trees.add(martialArtsOptions);
     ICharmIdMap[] treeArray = trees.toArray(new ICharmIdMap[trees.size()]);
     return new GroupedCharmIdMap(treeArray);
   }
 
   @Override
   public ISpecialCharm[] getSpecialCharms() {
-    return provider.getSpecialCharms(new MartialArtsLearnableArbitrator(martialArtsCharmTree), getCharmIdMap(), getNativeCharacterType());
+    return provider.getSpecialCharms(martialArtsOptions, getCharmIdMap(), getNativeCharacterType());
   }
 
   private void initSpecialCharmConfigurations() {
@@ -263,7 +263,7 @@ public class CharmConfiguration implements ICharmConfiguration {
   @Override
   public ICharm getCharmById(String charmId) {
     charmId = getCharmTrueName(charmId);
-    ICharm charm = martialArtsCharmTree.getCharmById(charmId);
+    ICharm charm = martialArtsOptions.getCharmById(charmId);
     if (charm != null) {
       return charm;
     }
@@ -539,11 +539,6 @@ public class CharmConfiguration implements ICharmConfiguration {
   public final boolean isUnlearnable(ICharm charm) {
     ILearningCharmGroup group = getGroup(charm);
     return group.isUnlearnable(charm);
-  }
-
-  protected boolean isUnlearnableWithoutConsequences(ICharm charm) {
-    ILearningCharmGroup group = getGroup(charm);
-    return group.isUnlearnableWithoutConsequences(charm);
   }
 
   @Override
