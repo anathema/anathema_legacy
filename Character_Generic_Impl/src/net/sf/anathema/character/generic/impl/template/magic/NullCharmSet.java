@@ -9,11 +9,6 @@ public class NullCharmSet implements ICharmSet {
   public ICharm[] getCharms() {
     return new ICharm[0];
   }
-  
-  @Override
-  public ICharm[] getUniqueCharms() {
-	return new ICharm[0];
-  }
 
   @Override
   public ICharm[] getMartialArtsCharms() {

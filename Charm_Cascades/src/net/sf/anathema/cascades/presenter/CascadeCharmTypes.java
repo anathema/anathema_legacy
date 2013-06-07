@@ -2,7 +2,6 @@ package net.sf.anathema.cascades.presenter;
 
 import net.sf.anathema.character.generic.template.ICharacterTemplate;
 import net.sf.anathema.character.generic.template.ITemplateRegistry;
-import net.sf.anathema.character.generic.template.magic.ICharmTemplate;
 import net.sf.anathema.character.generic.type.CharacterTypes;
 import net.sf.anathema.character.generic.type.ICharacterType;
 import net.sf.anathema.character.presenter.magic.AbstractCharmTypes;
@@ -33,23 +32,6 @@ public class CascadeCharmTypes extends AbstractCharmTypes {
       if (defaultTemplate.getMagicTemplate().getCharmTemplate().canLearnCharms()) {
         set.add(type);
       }
-    }
-    return new ArrayList<>(set);
-  }
-
-  @Override
-  protected List<Identified> getAdditionalCharmTypes() {
-    Set<Identified> set = new LinkedHashSet<>();
-    for (ICharacterType type : characterTypes.findAll()) {
-      ICharacterTemplate defaultTemplate = templateRegistry.getDefaultTemplate(type);
-      if (defaultTemplate == null) {
-        continue;
-      }
-      ICharmTemplate charmTemplate = defaultTemplate.getMagicTemplate().getCharmTemplate();
-      if (!charmTemplate.hasUniqueCharms()) {
-        continue;
-      }
-      set.add(charmTemplate.getUniqueCharmType().getId());
     }
     return new ArrayList<>(set);
   }

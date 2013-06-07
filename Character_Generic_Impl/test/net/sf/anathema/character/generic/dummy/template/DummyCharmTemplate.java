@@ -5,7 +5,6 @@ import net.sf.anathema.character.generic.impl.template.magic.DefaultMartialArtsR
 import net.sf.anathema.character.generic.magic.ICharm;
 import net.sf.anathema.character.generic.magic.charms.MartialArtsLevel;
 import net.sf.anathema.character.generic.template.magic.ICharmTemplate;
-import net.sf.anathema.character.generic.template.magic.IUniqueCharmType;
 import net.sf.anathema.character.generic.template.magic.MartialArtsRules;
 
 public class DummyCharmTemplate implements ICharmTemplate {
@@ -13,11 +12,6 @@ public class DummyCharmTemplate implements ICharmTemplate {
   @Override
   public ICharm[] getCharms() {
     return new ICharm[0];
-  }
-  
-  @Override
-  public ICharm[] getUniqueCharms() {
-	return new ICharm[0];
   }
 
   @Override
@@ -38,17 +32,7 @@ public class DummyCharmTemplate implements ICharmTemplate {
   }
 
   @Override
-  public boolean hasUniqueCharms() {
-    return false;
-  }
-
-  @Override
   public boolean isAllowedAlienCharms(ICasteType caste) {
     return false;
-  }
-
-  @Override
-  public IUniqueCharmType getUniqueCharmType() {
-	  return null;
   }
 }

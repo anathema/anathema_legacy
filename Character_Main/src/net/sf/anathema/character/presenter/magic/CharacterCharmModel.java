@@ -4,7 +4,6 @@ import net.sf.anathema.character.generic.caste.ICasteType;
 import net.sf.anathema.character.generic.magic.ICharm;
 import net.sf.anathema.character.generic.magic.description.MagicDescriptionProvider;
 import net.sf.anathema.character.generic.template.magic.ICharmTemplate;
-import net.sf.anathema.character.generic.template.magic.IUniqueCharmType;
 import net.sf.anathema.character.model.ICharacter;
 import net.sf.anathema.character.model.ITypedDescription;
 import net.sf.anathema.character.model.charm.ICharmConfiguration;
@@ -23,11 +22,6 @@ public class CharacterCharmModel {
   public boolean isAllowedAlienCharms() {
     ICharmTemplate charmTemplate = character.getCharacterTemplate().getMagicTemplate().getCharmTemplate();
     return charmTemplate.isAllowedAlienCharms(getCaste().getType());
-  }
-
-  public IUniqueCharmType getUniqueCharmType() {
-    ICharmTemplate charmTemplate = character.getCharacterTemplate().getMagicTemplate().getCharmTemplate();
-    return charmTemplate.getUniqueCharmType();
   }
 
   public void addCasteChangeListener(IChangeListener listener) {
@@ -53,11 +47,6 @@ public class CharacterCharmModel {
     ICharmConfiguration charms = getCharmConfiguration();
     ICharm charm = charms.getCharmById(charmId);
     return charms.getGroup(charm);
-  }
-
-  public boolean hasUniqueCharmType() {
-    ICharmTemplate charmTemplate = character.getCharacterTemplate().getMagicTemplate().getCharmTemplate();
-    return charmTemplate.hasUniqueCharms();
   }
 
   public MagicDescriptionProvider getMagicDescriptionProvider() {

@@ -22,7 +22,6 @@ import net.sf.anathema.character.generic.template.ITemplateRegistry;
 import net.sf.anathema.character.generic.template.ITemplateType;
 import net.sf.anathema.character.generic.template.magic.ICharmTemplate;
 import net.sf.anathema.character.generic.template.magic.IMagicTemplate;
-import net.sf.anathema.character.generic.template.magic.IUniqueCharmType;
 import net.sf.anathema.character.generic.template.magic.MartialArtsCharmConfiguration;
 import net.sf.anathema.character.generic.template.magic.MartialArtsRules;
 import net.sf.anathema.character.generic.type.CharacterTypes;
@@ -96,7 +95,6 @@ public class CharmConfiguration implements ICharmConfiguration {
     initCharacterType(nativeCharmTemplate, getNativeCharacterType());
     allCharacterTypes.add(getNativeCharacterType());
     initAlienTypes(registry, allCharacterTypes);
-    initUniqueTypes(nativeCharmTemplate);
     initSpecialCharmConfigurations();
     this.types = allCharacterTypes.toArray(new ICharacterType[allCharacterTypes.size()]);
     filterSet.add(new ObtainableCharmFilter(this));
@@ -272,14 +270,6 @@ public class CharmConfiguration implements ICharmConfiguration {
     if (charm != null) {
       return charm;
     }
-    ICharmTemplate charmTemplate = templatesByType.get(getNativeCharacterType());
-    if (charmTemplate.hasUniqueCharms()) {
-      IUniqueCharmType uniqueType = charmTemplate.getUniqueCharmType();
-      charm = getCharmTree(uniqueType.getId()).getCharmById(charmId);
-      if (charm != null) {
-        return charm;
-      }
-    }
     throw new IllegalArgumentException("No charm found for id \"" + charmId + "\"");
   }
 
@@ -331,17 +321,6 @@ public class CharmConfiguration implements ICharmConfiguration {
     ILearningCharmGroup[] groups = createGroups(charmTree.getAllCharmGroups());
     nonMartialArtsGroupsByType.put(type, groups);
     templatesByType.put(type, charmTemplate);
-  }
-
-  private void initUniqueTypes(ICharmTemplate charmTemplate) {
-    if (!charmTemplate.hasUniqueCharms()) {
-      return;
-    }
-    IUniqueCharmType type = charmTemplate.getUniqueCharmType();
-    CharmTree charmTree = new CharmTree(charmTemplate.getUniqueCharms());
-    ILearningCharmGroup[] groups = createGroups(charmTree.getAllCharmGroups());
-    nonMartialArtsGroupsByType.put(type.getId(), groups);
-    alienTreesByType.put(type.getId(), charmTree);
   }
 
   private ICharmTemplate getCharmTemplate(ITemplateRegistry registry, ICharacterType type) {
@@ -576,10 +555,6 @@ public class CharmConfiguration implements ICharmConfiguration {
     Collections.addAll(candidateGroups, getCharmGroups(characterType));
     Collections.addAll(candidateGroups, getMartialArtsGroups());
     ICharmTemplate charmTemplate = templatesByType.get(characterType);
-    if (charmTemplate.hasUniqueCharms()) {
-      IUniqueCharmType uniqueType = charmTemplate.getUniqueCharmType();
-      Collections.addAll(candidateGroups, getCharmGroups(uniqueType.getId()));
-    }
     for (ILearningCharmGroup group : candidateGroups) {
       if (group.getId().equals(groupId)) {
         return group;

@@ -9,7 +9,6 @@ import net.sf.anathema.character.generic.magic.charms.MartialArtsLevel;
 import net.sf.anathema.character.generic.template.ICharacterTemplate;
 import net.sf.anathema.character.generic.template.ITemplateRegistry;
 import net.sf.anathema.character.generic.template.magic.ICharmTemplate;
-import net.sf.anathema.character.generic.template.magic.IUniqueCharmType;
 import net.sf.anathema.character.generic.type.CharacterTypes;
 import net.sf.anathema.character.generic.type.ICharacterType;
 import net.sf.anathema.charmtree.presenter.CharmGroupCollection;
@@ -47,7 +46,6 @@ public class CascadeGroupCollection implements CharmGroupCollection {
       ICharmTemplate charmTemplate = template.getMagicTemplate().getCharmTemplate();
       if (charmTemplate.canLearnCharms()) {
         registerTypeCharms(allCharmGroups, type, template);
-        registerUniqueCharms(allCharmGroups, charmTemplate);
       }
     }
   }
@@ -72,17 +70,7 @@ public class CascadeGroupCollection implements CharmGroupCollection {
     return currentFavoriteTemplate;
   }
 
-  private void registerUniqueCharms(List<ICharmGroup> allCharmGroups, ICharmTemplate charmTemplate) {
-    if (!charmTemplate.hasUniqueCharms()) {
-      return;
-    }
-    IUniqueCharmType uniqueType = charmTemplate.getUniqueCharmType();
-    ICharmTree uniqueTree = new CharmTree(charmTemplate.getUniqueCharms());
-    registerGroups(allCharmGroups, uniqueType.getId(), uniqueTree);
-  }
-
-  private void registerTypeCharms(List<ICharmGroup> allCharmGroups, ICharacterType type,
-                                  ICharacterTemplate defaultTemplate) {
+  private void registerTypeCharms(List<ICharmGroup> allCharmGroups, ICharacterType type, ICharacterTemplate defaultTemplate) {
     ICharmTree typeTree = new CharmTree(defaultTemplate.getMagicTemplate().getCharmTemplate());
     registerGroups(allCharmGroups, type, typeTree);
   }

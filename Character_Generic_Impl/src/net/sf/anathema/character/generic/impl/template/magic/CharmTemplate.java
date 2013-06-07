@@ -4,7 +4,6 @@ import net.sf.anathema.character.generic.caste.ICasteType;
 import net.sf.anathema.character.generic.magic.ICharm;
 import net.sf.anathema.character.generic.template.magic.ICharmSet;
 import net.sf.anathema.character.generic.template.magic.ICharmTemplate;
-import net.sf.anathema.character.generic.template.magic.IUniqueCharmType;
 import net.sf.anathema.character.generic.template.magic.MartialArtsRules;
 
 import java.util.ArrayList;
@@ -14,32 +13,16 @@ public class CharmTemplate implements ICharmTemplate {
 
   private final ICharmSet charmSet;
   private final List<String> alienAllowedCastes = new ArrayList<>();
-  private final IUniqueCharmType uniqueCharmType;
   private final MartialArtsRules martialArtsRules;
 
   public CharmTemplate(MartialArtsRules rules, ICharmSet charmSet) {
-    this(rules, charmSet, null);
-  }
-
-  public CharmTemplate(MartialArtsRules rules, ICharmSet charmSet, IUniqueCharmType uniqueCharms) {
     this.martialArtsRules = rules;
     this.charmSet = charmSet;
-    this.uniqueCharmType = uniqueCharms;
   }
 
   @Override
   public final ICharm[] getCharms() {
     return charmSet.getCharms();
-  }
-  
-  @Override
-  public final ICharm[] getUniqueCharms() {
-	return charmSet.getUniqueCharms();
-  }
-
-  @Override
-  public final IUniqueCharmType getUniqueCharmType() {
-    return uniqueCharmType;
   }
 
   @Override
@@ -50,11 +33,6 @@ public class CharmTemplate implements ICharmTemplate {
   @Override
   public MartialArtsRules getMartialArtsRules() {
     return martialArtsRules;
-  }
-
-  @Override
-  public boolean hasUniqueCharms() {
-    return uniqueCharmType != null;
   }
 
   @Override

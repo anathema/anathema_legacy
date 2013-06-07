@@ -6,12 +6,9 @@ import net.sf.anathema.character.generic.magic.ICharm;
 import net.sf.anathema.character.generic.magic.IMagic;
 import net.sf.anathema.character.generic.magic.IMagicVisitor;
 import net.sf.anathema.character.generic.magic.ISpell;
-import net.sf.anathema.character.generic.magic.charms.ICharmAttribute;
 import net.sf.anathema.character.generic.magic.charms.special.ISpecialCharmConfiguration;
 import net.sf.anathema.character.generic.template.creation.BonusPointCosts;
-import net.sf.anathema.character.generic.template.magic.ICharmTemplate;
 import net.sf.anathema.character.generic.template.magic.IMagicTemplate;
-import net.sf.anathema.character.generic.template.magic.IUniqueCharmType;
 import net.sf.anathema.character.impl.model.advance.CostAnalyzer;
 import net.sf.anathema.character.impl.model.creation.bonus.IAdditionalMagicLearnPointManagement;
 import net.sf.anathema.character.impl.model.creation.bonus.additional.IAdditionalBonusPointManagment;
@@ -183,8 +180,7 @@ public class MagicCostCalculator {
   }
 
   private void handleFavoredMagic(int bonusPointFactor, IMagic magic) {
-    if (canBuyFromFreePicks(magic) && favoredPicksSpent < favoredCreationCharmCount &&
-        checkUniqueAsFavored(magic)) {
+    if (canBuyFromFreePicks(magic) && favoredPicksSpent < favoredCreationCharmCount) {
       favoredPicksSpent++;
     } else {
       handleGeneralMagic(bonusPointFactor, magic);
@@ -214,43 +210,12 @@ public class MagicCostCalculator {
     }
   }
 
-  private boolean checkUniqueAsFavored(IMagic magic) {
-    ICharmTemplate charmTemplate = magicTemplate.getCharmTemplate();
-    if (!charmTemplate.hasUniqueCharms()) {
-      return true;
-    }
-    IUniqueCharmType uniqueType = charmTemplate.getUniqueCharmType();
-    if (magic instanceof ICharm) {
-      for (ICharmAttribute attribute : ((ICharm) magic).getAttributes()) {
-        if (attribute.getId().equals(uniqueType.getId().getId())) {
-          return false;
-        }
-      }
-    }
-    return true;
-  }
-
   public int getFavoredCharmPicksSpent() {
     return favoredPicksSpent;
   }
 
   public int getGeneralCharmPicksSpent() {
     return generalPicksSpent;
-  }
-
-  public int getUniqueRequiredCharmTypePicksSpent(IUniqueCharmType uniqueType) {
-    if (uniqueType == null) {
-      return 0;
-    }
-    int specialCharms = 0;
-    for (ICharm charm : charms.getLearnedCharms(false)) {
-      for (ICharmAttribute attribute : charm.getAttributes()) {
-        if (uniqueType.keywordMatches(attribute.getId())) {
-          specialCharms++;
-        }
-      }
-    }
-    return specialCharms;
   }
 
   public int getBonusPointsSpentForCharms() {

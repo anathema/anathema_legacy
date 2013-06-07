@@ -2,7 +2,6 @@ package net.sf.anathema.character.generic.framework.xml.magic;
 
 import net.sf.anathema.character.generic.framework.xml.core.AbstractXmlTemplateParser;
 import net.sf.anathema.character.generic.framework.xml.registry.IXmlTemplateRegistry;
-import net.sf.anathema.character.generic.impl.magic.UniqueCharmType;
 import net.sf.anathema.character.generic.impl.magic.persistence.ICharmCache;
 import net.sf.anathema.character.generic.impl.template.magic.CharmSet;
 import net.sf.anathema.character.generic.impl.template.magic.CharmTemplate;
@@ -15,7 +14,6 @@ import net.sf.anathema.character.generic.magic.spells.CircleType;
 import net.sf.anathema.character.generic.template.ICharacterTemplate;
 import net.sf.anathema.character.generic.template.magic.ICharmSet;
 import net.sf.anathema.character.generic.template.magic.ISpellMagicTemplate;
-import net.sf.anathema.character.generic.template.magic.IUniqueCharmType;
 import net.sf.anathema.character.generic.template.magic.MartialArtsRules;
 import net.sf.anathema.character.generic.type.CharacterTypes;
 import net.sf.anathema.lib.exception.PersistenceException;
@@ -28,7 +26,6 @@ import java.util.List;
 
 public class GenericMagicTemplateParser extends AbstractXmlTemplateParser<GenericMagicTemplate> {
 
-  private static final String TAG_UNIQUE_CHARM_TYPE = "hasUniqueCharmType";
   private static final String TAG_FREE_PICKS_PREDICATE = "freePicksPredicate";
   private static final String ATTRIB_TYPE = "type";
   private static final String ATTRIB_LABEL = "label";
@@ -54,9 +51,8 @@ public class GenericMagicTemplateParser extends AbstractXmlTemplateParser<Generi
   private final ICharmCache cache;
   private final CharacterTypes characterTypes;
 
-  public GenericMagicTemplateParser(IXmlTemplateRegistry<GenericMagicTemplate> templateRegistry,
-                                    ICharacterTemplate template,
-                                    ICharmCache cache, CharacterTypes characterTypes) {
+  public GenericMagicTemplateParser(IXmlTemplateRegistry<GenericMagicTemplate> templateRegistry, ICharacterTemplate template, ICharmCache cache,
+                                    CharacterTypes characterTypes) {
     super(templateRegistry);
     this.hostTemplate = template;
     this.cache = cache;
@@ -83,14 +79,12 @@ public class GenericMagicTemplateParser extends AbstractXmlTemplateParser<Generi
     if (spellTemplateElement == null) {
       return;
     }
-    String maximumSorceryCircleId = ElementUtilities.getRequiredAttrib(spellTemplateElement,
-            ATTRIB_MAXIMUM_SORCERY_CIRCLE);
+    String maximumSorceryCircleId = ElementUtilities.getRequiredAttrib(spellTemplateElement, ATTRIB_MAXIMUM_SORCERY_CIRCLE);
     CircleType maximumSorceryCircle = null;
     if (!maximumSorceryCircleId.equals(VALUE_NONE)) {
       maximumSorceryCircle = CircleType.valueOf(maximumSorceryCircleId);
     }
-    String maximumNecromancyCircleId = ElementUtilities.getRequiredAttrib(spellTemplateElement,
-            ATTRIB_MAXIMUM_NECROMANCY_CIRCLE);
+    String maximumNecromancyCircleId = ElementUtilities.getRequiredAttrib(spellTemplateElement, ATTRIB_MAXIMUM_NECROMANCY_CIRCLE);
     CircleType maximumNecromancyCircle = null;
     if (!maximumNecromancyCircleId.equals(VALUE_NONE)) {
       maximumNecromancyCircle = CircleType.valueOf(maximumNecromancyCircleId);
@@ -108,8 +102,9 @@ public class GenericMagicTemplateParser extends AbstractXmlTemplateParser<Generi
 
     try {
       Constructor<SpellMagicTemplate>[] helper = (Constructor<SpellMagicTemplate>[]) magicTemplateClass.getConstructors();
-      template = helper[0].newInstance(CircleType.getSorceryCirclesUpTo(maximumSorceryCircle),
-              CircleType.getNecromancyCirclesUpTo(maximumNecromancyCircle), hostTemplate);
+      template = helper[0]
+              .newInstance(CircleType.getSorceryCirclesUpTo(maximumSorceryCircle), CircleType.getNecromancyCirclesUpTo(maximumNecromancyCircle),
+                      hostTemplate);
     } catch (InstantiationException | IllegalAccessException | IllegalArgumentException | InvocationTargetException e) {
       e.printStackTrace();
     }
@@ -123,21 +118,12 @@ public class GenericMagicTemplateParser extends AbstractXmlTemplateParser<Generi
     }
     String charmType = ElementUtilities.getRequiredAttrib(charmTemplateElement, ATTRIB_CHARM_TYPE);
     ICharmSet charmSet;
-    IUniqueCharmType uniqueCharms = null;
-    for (Object node : charmTemplateElement.elements(TAG_UNIQUE_CHARM_TYPE)) {
-      Element specialNode = (Element) node;
-      String specialType = ElementUtilities.getRequiredAttrib(specialNode, ATTRIB_TYPE);
-      String specialLabel = specialNode.attributeValue(ATTRIB_LABEL);
-      String specialKeyword = specialNode.attributeValue(ATTRIB_KEYWORD);
-      uniqueCharms = new UniqueCharmType(specialType, specialLabel, specialKeyword);
-    }
     if (charmType.equals(VALUE_NONE)) {
       charmSet = new NullCharmSet();
     } else {
-      charmSet = CharmSet.createRegularCharmSet(cache, characterTypes.findById(charmType), uniqueCharms);
+      charmSet = CharmSet.createRegularCharmSet(cache, characterTypes.findById(charmType));
     }
-    CharmTemplate charmTemplate = new CharmTemplate(createMartialArtsRules(charmTemplateElement), charmSet,
-            uniqueCharms);
+    CharmTemplate charmTemplate = new CharmTemplate(createMartialArtsRules(charmTemplateElement), charmSet);
     setAlienAllowedCastes(charmTemplate, charmTemplateElement);
     basicTemplate.setCharmTemplate(charmTemplate);
   }
@@ -156,8 +142,7 @@ public class GenericMagicTemplateParser extends AbstractXmlTemplateParser<Generi
         throw new PersistenceException(e);
       }
     }
-    boolean highLevelAtCreation = ElementUtilities.getBooleanAttribute(martialArtsElement,
-            ATTRIB_HIGH_LEVEL_MARTIAL_ARTS, false);
+    boolean highLevelAtCreation = ElementUtilities.getBooleanAttribute(martialArtsElement, ATTRIB_HIGH_LEVEL_MARTIAL_ARTS, false);
     rules.setHighLevelAtCreation(highLevelAtCreation);
     return rules;
   }
@@ -167,8 +152,7 @@ public class GenericMagicTemplateParser extends AbstractXmlTemplateParser<Generi
     return MartialArtsLevel.valueOf(martialArtsLevelId);
   }
 
-  private void setAlienAllowedCastes(CharmTemplate charmTemplate,
-                                     Element charmTemplateElement) throws PersistenceException {
+  private void setAlienAllowedCastes(CharmTemplate charmTemplate, Element charmTemplateElement) throws PersistenceException {
     Element alienCharmsElement = charmTemplateElement.element(TAG_ALIEN_CHARMS);
     if (alienCharmsElement == null) {
       return;

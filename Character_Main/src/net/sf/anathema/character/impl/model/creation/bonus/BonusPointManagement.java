@@ -6,8 +6,6 @@ import net.sf.anathema.character.generic.template.ICharacterTemplate;
 import net.sf.anathema.character.generic.template.creation.BonusPointCosts;
 import net.sf.anathema.character.generic.template.creation.ICreationPoints;
 import net.sf.anathema.character.generic.template.experience.CurrentRatingCosts;
-import net.sf.anathema.character.generic.template.magic.ICharmTemplate;
-import net.sf.anathema.character.generic.template.magic.IUniqueCharmType;
 import net.sf.anathema.character.generic.template.points.AttributeGroupPriority;
 import net.sf.anathema.character.impl.generic.GenericCharacter;
 import net.sf.anathema.character.impl.model.advance.models.AbstractAdditionalSpendingModel;
@@ -28,7 +26,6 @@ import net.sf.anathema.character.impl.model.creation.bonus.backgrounds.Backgroun
 import net.sf.anathema.character.impl.model.creation.bonus.magic.DefaultCharmModel;
 import net.sf.anathema.character.impl.model.creation.bonus.magic.FavoredCharmModel;
 import net.sf.anathema.character.impl.model.creation.bonus.magic.MagicCostCalculator;
-import net.sf.anathema.character.impl.model.creation.bonus.magic.UniqueRequiredCharmTypeModel;
 import net.sf.anathema.character.impl.model.creation.bonus.virtue.VirtueBonusModel;
 import net.sf.anathema.character.impl.model.creation.bonus.virtue.VirtueCostCalculator;
 import net.sf.anathema.character.impl.util.GenericCharacterUtilities;
@@ -129,8 +126,8 @@ public class BonusPointManagement implements IBonusPointManagement {
 
   private int getTotalBonusPointsSpent() {
     return attributeCalculator.getBonusPoints() + getDefaultAbilityModel().getSpentBonusPoints() + abilityCalculator.getSpecialtyBonusPointCosts() +
-            getDefaultCharmModel().getSpentBonusPoints() + getBackgroundModel().getSpentBonusPoints() + getVirtueModel().getSpentBonusPoints() +
-            willpowerBonusPoints + essenceBonusPoints + bonusPointCalculator.getAdditionalModelModel().getValue();
+           getDefaultCharmModel().getSpentBonusPoints() + getBackgroundModel().getSpentBonusPoints() + getVirtueModel().getSpentBonusPoints() +
+           willpowerBonusPoints + essenceBonusPoints + bonusPointCalculator.getAdditionalModelModel().getValue();
   }
 
   private ISpendingModel getVirtueModel() {
@@ -181,10 +178,6 @@ public class BonusPointManagement implements IBonusPointManagement {
   @Override
   public ISpendingModel getFavoredCharmModel() {
     return new FavoredCharmModel(magicCalculator, creationPoints);
-  }
-
-  public ISpendingModel getSpecialCharmModel(IUniqueCharmType type) {
-    return new UniqueRequiredCharmTypeModel(type, magicCalculator, creationPoints);
   }
 
   @Override
@@ -277,12 +270,6 @@ public class BonusPointManagement implements IBonusPointManagement {
     }
     if (getFavoredCharmModel().getAlotment() > 0) {
       models.add(getFavoredCharmModel());
-    }
-    ICharmTemplate charmTemplate = character.getCharacterTemplate().getMagicTemplate().getCharmTemplate();
-    if (charmTemplate.hasUniqueCharms()) {
-      if (getSpecialCharmModel(charmTemplate.getUniqueCharmType()).getAlotment() > 0) {
-        models.add(getSpecialCharmModel(charmTemplate.getUniqueCharmType()));
-      }
     }
     models.add(getDefaultCharmModel());
   }

@@ -14,12 +14,9 @@ public abstract class AbstractCharmTypes implements CharmTypes {
   public Identified[] getCurrentCharmTypes() {
     List<Identified> types = new ArrayList<>();
     types.addAll(getCurrentCharacterTypes());
-    types.addAll(getAdditionalCharmTypes());
     types.add(MARTIAL_ARTS);
     return types.toArray(new Identified[types.size()]);
   }
 
   protected abstract List<Identified> getCurrentCharacterTypes();
-
-  protected abstract List<Identified> getAdditionalCharmTypes();
 }

@@ -77,9 +77,6 @@ public class CharmConfigurationPersister {
     for (Identified type : charmConfiguration.getCharacterTypes(true)) {
       saver.saveCharms(type, charmsElement);
     }
-    if (charmTemplate.hasUniqueCharms()) {
-      saver.saveCharms(charmTemplate.getUniqueCharmType().getId(), charmsElement);
-    }
     saver.saveCharms(MartialArtsUtilities.MARTIAL_ARTS, charmsElement);
     return charmConfiguration;
   }
@@ -154,8 +151,7 @@ public class CharmConfigurationPersister {
     try {
       return charmConfiguration.getGroup(groupType, groupName);
     } catch (IllegalArgumentException e) {
-      messageIndicator.addMessage("CharmPersistence.NoGroupFound",
-              MessageType.WARNING, groupName);
+      messageIndicator.addMessage("CharmPersistence.NoGroupFound", MessageType.WARNING, groupName);
       return new NullLearningCharmGroup();
     }
   }
@@ -175,8 +171,7 @@ public class CharmConfigurationPersister {
         specialConfiguration.learn(isExperienceLearned(charmElement));
       }
     } catch (IllegalArgumentException e) {
-      messageIndicator.addMessage("CharmPersistence.NoCharmFound",
-              MessageType.WARNING, charmId);
+      messageIndicator.addMessage("CharmPersistence.NoCharmFound", MessageType.WARNING, charmId);
     }
   }
 
@@ -244,8 +239,7 @@ public class CharmConfigurationPersister {
           ICharm comboCharm = charms.getCharmById(charmId);
           comboConfiguration.addCharmToCombo(comboCharm, charmExperiencedLearned);
         } catch (IllegalArgumentException e) {
-          messageIndicator.addMessage("CharmPersistence.NoCharmFound",
-                  MessageType.WARNING, charmId);
+          messageIndicator.addMessage("CharmPersistence.NoCharmFound", MessageType.WARNING, charmId);
         }
       }
       comboConfiguration.finalizeCombo();

@@ -6,7 +6,5 @@ public interface ICharmSet {
 
   ICharm[] getCharms();
 
-  ICharm[] getUniqueCharms();
-
   ICharm[] getMartialArtsCharms();
 }
