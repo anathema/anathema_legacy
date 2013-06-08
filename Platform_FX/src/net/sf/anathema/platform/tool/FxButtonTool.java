@@ -19,6 +19,8 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
+import static net.sf.anathema.platform.fx.FxUtilities.systemSupportsEmbeddedTooltips;
+
 public class FxButtonTool implements Tool {
 
 
@@ -89,6 +91,9 @@ public class FxButtonTool implements Tool {
 
   @Override
   public void setTooltip(final String text) {
+    if (!systemSupportsEmbeddedTooltips()) {
+      return;
+    }
     Platform.runLater(new Runnable() {
       @Override
       public void run() {
