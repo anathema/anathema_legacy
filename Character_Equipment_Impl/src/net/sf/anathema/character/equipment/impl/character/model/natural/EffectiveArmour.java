@@ -61,7 +61,9 @@ public class EffectiveArmour extends AbstractCombatStats implements IArmourStats
   }
 
   public void addArmour(IArmourStats armour) {
-    if (armour instanceof NaturalSoak) handleNaturalArmour(armour);
+    if (armour instanceof NaturalSoak) {
+      handleNaturalArmour(armour);
+    }
     else handleEquipmentArmour(armour);
   }
 

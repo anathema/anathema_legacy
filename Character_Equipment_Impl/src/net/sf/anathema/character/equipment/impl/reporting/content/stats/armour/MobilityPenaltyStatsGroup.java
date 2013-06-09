@@ -4,10 +4,9 @@ import com.itextpdf.text.Font;
 import com.itextpdf.text.pdf.PdfPTable;
 import net.sf.anathema.character.equipment.impl.reporting.content.stats.AbstractValueEquipmentStatsGroup;
 import net.sf.anathema.character.generic.equipment.weapon.IArmourStats;
-import net.sf.anathema.character.generic.equipment.weapon.IDefensiveStats;
 import net.sf.anathema.lib.resources.Resources;
 
-public class MobilityPenaltyStatsGroup extends AbstractValueEquipmentStatsGroup<IDefensiveStats> implements
+public class MobilityPenaltyStatsGroup extends AbstractValueEquipmentStatsGroup<IArmourStats> implements
         IArmourStatsGroup {
 
   public MobilityPenaltyStatsGroup(Resources resources) {
@@ -20,7 +19,7 @@ public class MobilityPenaltyStatsGroup extends AbstractValueEquipmentStatsGroup<
   }
 
   @Override
-  public void addContent(PdfPTable table, Font font, IDefensiveStats stats) {
+  public void addContent(PdfPTable table, Font font, IArmourStats stats) {
     if (stats == null) {
       table.addCell(createEmptyValueCell(font));
     } else {

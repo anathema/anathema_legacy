@@ -7,7 +7,7 @@ import net.sf.anathema.character.lunar.beastform.BeastformTemplate;
 import net.sf.anathema.character.lunar.beastform.presenter.IBeastformModel;
 import net.sf.anathema.lib.resources.Resources;
 
-public class LunarArmourContent extends ArmourContent{
+public class LunarArmourContent extends ArmourContent {
 
   public LunarArmourContent(Resources resources, IGenericCharacter character) {
     super(resources, character);

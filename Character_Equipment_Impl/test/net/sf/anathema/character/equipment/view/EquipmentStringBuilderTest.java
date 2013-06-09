@@ -11,7 +11,7 @@ import net.sf.anathema.lib.util.Identifier;
 import org.junit.Before;
 import org.junit.Test;
 
-import static junit.framework.Assert.assertEquals;
+import static org.junit.Assert.assertEquals;
 
 public class EquipmentStringBuilderTest {
 
@@ -40,14 +40,14 @@ public class EquipmentStringBuilderTest {
   public void testMeleeWeapon() {
     DemoMeleeWeapon weapon = new DemoMeleeWeapon(new Identifier("Sword"), 5, 2, 7, 1, HealthType.Lethal, -1, 0, 2);
     assertEquals(
-      "Sword (Melee): Speed:5 Acc:+2 Dam:+7L Def:-1 Rate:2", equipmentStringBuilder.createString(null, weapon));
+            "Sword (Melee): Speed:5 Acc:+2 Dam:+7L Def:-1 Rate:2", equipmentStringBuilder.createString(null, weapon));
   }
 
   @Test
   public void testFixedDamageRangedWeapon() {
     DemoRangeWeapon weapon = new DemoRangeWeapon(new Identifier("Bow"), 5, 2, 17, 1, HealthType.Bashing, 200, 4, false);
     assertEquals(
-      "Bow (Martial Arts): Speed:5 Acc:+2 Dam:17B Range:200 Rate:4", equipmentStringBuilder.createString(null, weapon));
+            "Bow (Martial Arts): Speed:5 Acc:+2 Dam:17B Range:200 Rate:4", equipmentStringBuilder.createString(null, weapon));
   }
 
   @Test
@@ -61,6 +61,6 @@ public class EquipmentStringBuilderTest {
     DemoNaturalArmour armour = new DemoNaturalArmour(new Identifier("Natural"), 5, 2);
     String result = equipmentStringBuilder.createString(null, armour);
     assertEquals(
-      "Natural: Soak(B/L/A):+5/+2/- Hardness(B/L/A):-/-", result);
+            "Natural: Soak(B/L/A):+5/+2/- Hardness(B/L/A):-/-", result);
   }
 }

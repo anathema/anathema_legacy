@@ -5,7 +5,6 @@ import net.sf.anathema.character.generic.equipment.ArtifactStats;
 import net.sf.anathema.character.generic.equipment.ITraitModifyingStats;
 import net.sf.anathema.character.generic.equipment.weapon.IArmourStats;
 import net.sf.anathema.character.generic.equipment.weapon.IEquipmentStats;
-import net.sf.anathema.character.generic.equipment.weapon.IShieldStats;
 import net.sf.anathema.character.generic.equipment.weapon.IWeaponStats;
 import net.sf.anathema.character.generic.health.HealthType;
 import net.sf.anathema.lib.exception.UnreachableCodeReachedException;
@@ -75,13 +74,12 @@ public class EquipmentStringBuilder implements IEquipmentStringBuilder {
     if (equipment instanceof IArmourStats) {
       return createArmourString((IArmourStats) equipment);
     }
-    if (equipment instanceof IShieldStats) {
-      return createShieldString((IShieldStats) equipment);
-    }
-    if (equipment instanceof ArtifactStats)
+    if (equipment instanceof ArtifactStats) {
       return createArtifactString((ArtifactStats) equipment);
-    if (equipment instanceof ITraitModifyingStats)
+    }
+    if (equipment instanceof ITraitModifyingStats) {
       return createTraitModifyingString((ITraitModifyingStats) equipment);
+    }
     throw new UnreachableCodeReachedException("All subclasses covered. Something appears to be wrong.");
   }
 
@@ -89,17 +87,6 @@ public class EquipmentStringBuilder implements IEquipmentStringBuilder {
     StringBuilder stringBuilder = new StringBuilder();
     stringBuilder.append(getStatsString(stats.getAttuneType().name(), stats.getAttuneCost(), false));
     stringBuilder.append("m");
-    return stringBuilder.toString();
-  }
-
-  private String createShieldString(IShieldStats stats) {
-    StringBuilder stringBuilder = new StringBuilder();
-    stringBuilder.append(stats.getName().getId());
-    stringBuilder.append(":");
-    stringBuilder.append(getStatsString("CloseDV", stats.getCloseCombatBonus(), true));
-    stringBuilder.append(getStatsString("RangedDV", stats.getRangedCombatBonus(), true));
-    stringBuilder.append(getStatsString("MobilityPenalty", stats.getMobilityPenalty(), false));
-    stringBuilder.append(getStatsString("Fatigue", stats.getFatigue(), false));
     return stringBuilder.toString();
   }
 
