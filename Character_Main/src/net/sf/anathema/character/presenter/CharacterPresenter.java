@@ -19,8 +19,8 @@ import net.sf.anathema.framework.IApplicationModel;
 import net.sf.anathema.framework.presenter.view.ContentView;
 import net.sf.anathema.framework.presenter.view.MultipleContentView;
 import net.sf.anathema.framework.presenter.view.SimpleViewContentView;
-import net.sf.anathema.framework.view.util.ContentProperties;
 import net.sf.anathema.framework.swing.IView;
+import net.sf.anathema.framework.view.util.ContentProperties;
 import net.sf.anathema.lib.gui.Presenter;
 import net.sf.anathema.lib.registry.IRegistry;
 import net.sf.anathema.lib.resources.Resources;
@@ -32,6 +32,7 @@ import java.util.List;
 import static net.sf.anathema.character.generic.additionaltemplate.AdditionalModelType.Abilities;
 import static net.sf.anathema.character.generic.additionaltemplate.AdditionalModelType.Advantages;
 import static net.sf.anathema.character.generic.additionaltemplate.AdditionalModelType.Concept;
+import static net.sf.anathema.character.generic.additionaltemplate.AdditionalModelType.Magic;
 import static net.sf.anathema.character.generic.additionaltemplate.AdditionalModelType.Miscellaneous;
 import static net.sf.anathema.character.generic.framework.CharacterGenericsExtractor.getGenerics;
 import static net.sf.anathema.lib.lang.ArrayUtilities.transform;
@@ -95,7 +96,7 @@ public class CharacterPresenter implements Presenter, MultipleContentViewPresent
     MagicPresenter presenter = new MagicPresenter(character, characterView.createMagicViewFactory(), resources, anathemaModel);
     presenter.initPresentation();
     ContentView contentView = presenter.getTabContent();
-    addMultipleContentViewGroup(magicViewHeader, AdditionalModelType.Magic, contentView);
+    addMultipleContentViewGroup(magicViewHeader, Magic, contentView);
   }
 
   private void initMiscellaneous() {
@@ -150,9 +151,6 @@ public class CharacterPresenter implements Presenter, MultipleContentViewPresent
       ICharacterType characterType = character.getCharacterTemplate().getTemplateType().getCharacterType();
       IView additionalView = viewFactory.createView(model, resources, characterType);
       contentViews.add(new SimpleViewContentView(new ContentProperties(viewName), additionalView));
-    }
-    if (contentViews.size() == 0) {
-      return multipleContentView;
     }
     for (ContentView contentView : contentViews) {
       contentView.addTo(multipleContentView);
