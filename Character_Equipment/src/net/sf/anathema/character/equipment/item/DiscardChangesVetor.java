@@ -8,13 +8,13 @@ import net.sf.anathema.lib.gui.dialog.core.DialogResult;
 import net.sf.anathema.lib.gui.dialog.message.MessageUserDialogConfiguration;
 import net.sf.anathema.lib.gui.dialog.userdialog.UserDialog;
 import net.sf.anathema.lib.gui.dialog.userdialog.buttons.DialogButtonConfiguration;
-import net.sf.anathema.lib.gui.list.veto.IVetor;
+import net.sf.anathema.lib.gui.list.veto.Vetor;
 import net.sf.anathema.lib.message.IMessage;
 import net.sf.anathema.lib.message.Message;
 import net.sf.anathema.lib.message.MessageType;
 import net.sf.anathema.lib.resources.Resources;
 
-public class DiscardChangesVetor implements IVetor {
+public class DiscardChangesVetor implements Vetor {
 
   private final Condition preCondition;
   private final Resources resources;

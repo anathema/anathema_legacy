@@ -7,7 +7,7 @@ import javafx.scene.Node;
 import javafx.scene.control.ListView;
 import javafx.scene.control.SelectionMode;
 import net.sf.anathema.lib.control.ObjectValueListener;
-import net.sf.anathema.lib.gui.list.veto.IVetor;
+import net.sf.anathema.lib.gui.list.veto.Vetor;
 import net.sf.anathema.lib.gui.selection.IVetoableObjectSelectionView;
 import org.jmock.example.announcer.Announcer;
 
@@ -30,12 +30,12 @@ public class ListSelectionView<T> implements IVetoableObjectSelectionView<T> {
   }
 
   @Override
-  public void addSelectionVetor(IVetor vetor) {
+  public void addSelectionVetor(Vetor vetor) {
     //To change body of implemented methods use File | Settings | File Templates.
   }
 
   @Override
-  public void removeSelectionVetor(IVetor vetor) {
+  public void removeSelectionVetor(Vetor vetor) {
     //To change body of implemented methods use File | Settings | File Templates.
   }
 

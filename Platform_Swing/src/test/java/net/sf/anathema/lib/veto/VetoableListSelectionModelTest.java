@@ -1,7 +1,7 @@
 package net.sf.anathema.lib.veto;
 
 import net.sf.anathema.lib.gui.list.VetoableListSelectionModel;
-import net.sf.anathema.lib.gui.list.veto.IVetor;
+import net.sf.anathema.lib.gui.list.veto.Vetor;
 import org.junit.Test;
 
 import static javax.swing.ListSelectionModel.SINGLE_SELECTION;
@@ -14,7 +14,7 @@ import static org.mockito.Mockito.when;
 public class VetoableListSelectionModelTest {
 
   private VetoableListSelectionModel selectionModel = new VetoableListSelectionModel(SingleSelection);
-  private IVetor vetor = mock(IVetor.class);
+  private Vetor vetor = mock(Vetor.class);
 
   @Test
   public void usesGivenSelectionMode() throws Exception {

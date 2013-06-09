@@ -1,6 +1,6 @@
 package net.sf.anathema.lib.gui.list;
 
-import net.sf.anathema.lib.gui.list.veto.IVetor;
+import net.sf.anathema.lib.gui.list.veto.Vetor;
 
 import javax.swing.DefaultListSelectionModel;
 
@@ -38,7 +38,7 @@ public class VetoableListSelectionModel extends DefaultListSelectionModel {
     alreadyAsked = false;
   }
 
-  public void addVetor(IVetor vetor) {
+  public void addVetor(Vetor vetor) {
     this.vetor.addVetor(vetor);
   }
 
@@ -55,7 +55,7 @@ public class VetoableListSelectionModel extends DefaultListSelectionModel {
     });
   }
 
-  public void removeVetor(IVetor vetor) {
+  public void removeVetor(Vetor vetor) {
     this.vetor.removeVetor(vetor);
   }
 

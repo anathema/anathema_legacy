@@ -1,6 +1,6 @@
 package net.sf.anathema.lib.gui.list.veto;
 
-public interface IVetor {
+public interface Vetor {
 
   boolean vetos();
 }

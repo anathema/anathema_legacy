@@ -1,11 +1,11 @@
 package net.sf.anathema.framework.swing.selection;
 
 import net.sf.anathema.lib.control.ObjectValueListener;
-import net.sf.anathema.lib.gui.ConfigurableSwingUI;
 import net.sf.anathema.lib.gui.AgnosticUIConfiguration;
+import net.sf.anathema.lib.gui.ConfigurableSwingUI;
 import net.sf.anathema.lib.gui.list.SmartJList;
 import net.sf.anathema.lib.gui.list.VetoableListSelectionModel;
-import net.sf.anathema.lib.gui.list.veto.IVetor;
+import net.sf.anathema.lib.gui.list.veto.Vetor;
 import net.sf.anathema.lib.gui.selection.IListObjectSelectionView;
 import net.sf.anathema.lib.gui.ui.ObjectUiListCellRenderer;
 
@@ -75,12 +75,12 @@ public class ListObjectSelectionView<V> implements IListObjectSelectionView<V> {
   }
 
   @Override
-  public void addSelectionVetor(IVetor vetor) {
+  public void addSelectionVetor(Vetor vetor) {
     selectionModel.addVetor(vetor);
   }
 
   @Override
-  public void removeSelectionVetor(IVetor vetor) {
+  public void removeSelectionVetor(Vetor vetor) {
     selectionModel.removeVetor(vetor);
   }
 }
