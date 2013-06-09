@@ -13,18 +13,16 @@ import net.sf.anathema.lib.message.Message;
 import net.sf.anathema.lib.message.MessageType;
 import net.sf.anathema.lib.resources.Resources;
 
-import java.awt.Component;
+import static net.sf.anathema.framework.view.SwingApplicationFrame.getParentComponent;
 
 public class DiscardChangesVetor implements IVetor {
 
   private final ICondition preCondition;
-  private final Component parentComponent;
   private final Resources resources;
 
-  public DiscardChangesVetor(Resources resources, ICondition preCondition, Component parentComponent) {
+  public DiscardChangesVetor(Resources resources, ICondition preCondition) {
     this.resources = resources;
     this.preCondition = preCondition;
-    this.parentComponent = parentComponent;
   }
 
   @Override
@@ -34,15 +32,15 @@ public class DiscardChangesVetor implements IVetor {
     }
     String messageText = resources.getString("Equipment.Creation.UnsavedChangesMessage.Text");
     IMessage message = new Message(messageText, MessageType.WARNING);
-    MessageUserDialogConfiguration configuration = new MessageUserDialogConfiguration(
-        message,
-        new DialogButtonConfiguration() {
-          @Override
-          public IActionConfiguration getOkActionConfiguration() {
-            return new ActionConfiguration(resources.getString("Equipment.Creation.UnsavedChangesMessage.OKButton"));
-          }
-        });
-    UserDialog userDialog = new UserDialog(parentComponent, configuration);
+    MessageUserDialogConfiguration configuration = new MessageUserDialogConfiguration(message,
+            new DialogButtonConfiguration() {
+              @Override
+              public IActionConfiguration getOkActionConfiguration() {
+                return new ActionConfiguration(
+                        resources.getString("Equipment.Creation.UnsavedChangesMessage.OKButton"));
+              }
+            });
+    UserDialog userDialog = new UserDialog(getParentComponent(), configuration);
     DialogResult result = userDialog.show();
     return result.isCanceled();
   }
