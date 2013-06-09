@@ -7,7 +7,7 @@ import javax.swing.JComponent;
 import javax.swing.JPanel;
 import java.awt.CardLayout;
 
-public class StackView implements IView {
+public class StackView {
 
   private final CardLayout stack = new CardLayout();
   private final JPanel viewPanel = new JPanel(stack);
@@ -22,7 +22,6 @@ public class StackView implements IView {
     viewPanel.repaint();
   }
 
-  @Override
   public JComponent getComponent() {
     return viewPanel;
   }

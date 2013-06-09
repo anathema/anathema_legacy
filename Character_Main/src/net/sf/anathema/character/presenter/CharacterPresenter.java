@@ -106,6 +106,11 @@ public class CharacterPresenter implements Presenter, MultipleContentViewPresent
     this.miscView = initMultipleContentPresentation(title, Miscellaneous, backgrounds);
   }
 
+  @Override
+  public void addMiscellaneousView(String title, ContentView tabContent) {
+    tabContent.addTo(miscView);
+  }
+
   private IContentPresenter createConceptPresenter() {
     IConceptAndRulesViewFactory viewFactory = characterView.createConceptViewFactory();
     return new CharacterConceptAndRulesPresenter(character, viewFactory, resources);
@@ -115,11 +120,6 @@ public class CharacterPresenter implements Presenter, MultipleContentViewPresent
     ICharacterDescriptionView view = characterView.createCharacterDescriptionView();
     return new CharacterDescriptionPresenter(resources, character.getDescription(), character.getCharacterConcept(), view,
             character.getCharacterTemplate().getTemplateType().getCharacterType().isExaltType());
-  }
-
-  @Override
-  public void addMiscellaneousView(String title, ContentView tabContent) {
-    tabContent.addTo(miscView);
   }
 
   private MultipleContentView initMultipleContentPresentation(String viewTitle, AdditionalModelType type, IContentPresenter... corePresenters) {
