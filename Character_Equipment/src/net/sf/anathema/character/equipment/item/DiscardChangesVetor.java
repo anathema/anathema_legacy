@@ -8,6 +8,7 @@ import net.sf.anathema.lib.gui.action.IActionConfiguration;
 import net.sf.anathema.lib.gui.dialog.core.DialogResult;
 import net.sf.anathema.lib.gui.dialog.message.MessageUserDialogConfiguration;
 import net.sf.anathema.lib.gui.dialog.userdialog.UserDialog;
+import net.sf.anathema.lib.gui.dialog.userdialog.buttons.ConfigurableVetor;
 import net.sf.anathema.lib.gui.dialog.userdialog.buttons.DialogButtonConfiguration;
 import net.sf.anathema.lib.gui.list.veto.Vetor;
 import net.sf.anathema.lib.message.IMessage;
@@ -47,6 +48,14 @@ public class DiscardChangesVetor implements Vetor {
 
   @Override
   public void requestPermissionFor(Command command) {
-    //To change body of implemented methods use File | Settings | File Templates.
+    if (!preCondition.isFulfilled()) {
+      return;
+    }
+    String messageText = resources.getString("Equipment.Creation.UnsavedChangesMessage.Text");
+    final String okButtonText = resources.getString("Equipment.Creation.UnsavedChangesMessage.OKButton");
+    ConfigurableVetor vetor = new ConfigurableVetor(SwingApplicationFrame.getParentComponent(), messageText,
+            okButtonText);
+    vetor.whenPermissionIsGiven(command);
+    vetor.requestPermission();
   }
 }
