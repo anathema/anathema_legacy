@@ -8,7 +8,7 @@ import net.sf.anathema.character.presenter.magic.IContentPresenter;
 import net.sf.anathema.character.view.ICharacterDescriptionView;
 import net.sf.anathema.character.view.IMultiComponentLine;
 import net.sf.anathema.framework.presenter.view.ContentView;
-import net.sf.anathema.framework.presenter.view.ViewTabContentView;
+import net.sf.anathema.framework.presenter.view.SimpleViewContentView;
 import net.sf.anathema.framework.view.util.ContentProperties;
 import net.sf.anathema.interaction.Tool;
 import net.sf.anathema.lib.control.IIntValueChangedListener;
@@ -56,7 +56,7 @@ public class CharacterDescriptionPresenter implements IContentPresenter {
   @Override
   public ContentView getTabContent() {
     String title = resources.getString("CardView.CharacterDescription.Title");
-    return new ViewTabContentView(descriptionView, new ContentProperties(title));
+    return new SimpleViewContentView(new ContentProperties(title), descriptionView);
   }
 
   private void initNameLineView(TextualPresentation presentation) {
