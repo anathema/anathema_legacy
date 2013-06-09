@@ -20,6 +20,7 @@ public class DiscardChangesVetor implements Vetor {
   @Override
   public void requestPermissionFor(Command command) {
     if (!preCondition.isFulfilled()) {
+      command.execute();
       return;
     }
     String messageText = resources.getString("Equipment.Creation.UnsavedChangesMessage.Text");
