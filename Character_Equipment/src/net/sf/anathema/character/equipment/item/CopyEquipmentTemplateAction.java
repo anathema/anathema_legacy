@@ -50,15 +50,17 @@ public class CopyEquipmentTemplateAction {
     @Override
     public void execute() {
       DiscardChangesVetor vetor = new DiscardChangesVetor(resources, new DirtyEquipmentCondition(model));
-      if (vetor.vetos()) {
-        return;
-      }
-      String salt;
-      for (salt = new String(); model.getDatabase().loadTemplate(model.getTemplateEditModel().createTemplate().getName() + salt) != null; salt += " copy")
-        ;
-      model.getTemplateEditModel().copyNewTemplate(salt);
-      model.getDatabase().saveTemplate(model.getTemplateEditModel().createTemplate());
-      copyTool.disable();
+      vetor.requestPermissionFor(new Command() {
+        @Override
+        public void execute() {
+          String salt;
+          for (salt = new String(); model.getDatabase().loadTemplate(model.getTemplateEditModel().createTemplate().getName() + salt) != null; salt += " copy")
+            ;
+          model.getTemplateEditModel().copyNewTemplate(salt);
+          model.getDatabase().saveTemplate(model.getTemplateEditModel().createTemplate());
+          copyTool.disable();
+        }
+      });
     }
   }
 }

@@ -58,28 +58,4 @@ public class AggregatedVetorTest {
     vetor.requestPermissionFor(command);
     Mockito.verify(command).execute();
   }
-
-  private static class Denier implements Vetor {
-    @Override
-    public boolean vetos() {
-      return false;
-    }
-
-    @Override
-    public void requestPermissionFor(Command command) {
-      //nothing to do, permission denied
-    }
-  }
-
-  private static class Allower implements Vetor {
-    @Override
-    public boolean vetos() {
-      return false;
-    }
-
-    @Override
-    public void requestPermissionFor(Command command) {
-      command.execute();
-    }
-  }
 }

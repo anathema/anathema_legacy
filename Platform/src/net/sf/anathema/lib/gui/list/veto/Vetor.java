@@ -4,7 +4,5 @@ import net.sf.anathema.interaction.Command;
 
 public interface Vetor {
 
-  boolean vetos();
-
   void requestPermissionFor(Command command);
 }

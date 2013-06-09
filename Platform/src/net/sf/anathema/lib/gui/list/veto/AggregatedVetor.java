@@ -19,17 +19,6 @@ public class AggregatedVetor implements Vetor {
   }
 
   @Override
-  public synchronized boolean vetos() {
-    List<Vetor> cloneList = new ArrayList<>(vetors);
-    for (Vetor vetor : cloneList) {
-      if (vetor.vetos()) {
-        return true;
-      }
-    }
-    return false;
-  }
-
-  @Override
   public synchronized void requestPermissionFor(Command command) {
     List<Vetor> cloneList = new ArrayList<>(vetors);
     Iterator<Vetor> iterator = cloneList.iterator();

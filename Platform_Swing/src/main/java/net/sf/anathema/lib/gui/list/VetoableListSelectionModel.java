@@ -1,5 +1,6 @@
 package net.sf.anathema.lib.gui.list;
 
+import net.sf.anathema.interaction.Command;
 import net.sf.anathema.lib.gui.list.veto.AggregatedVetor;
 import net.sf.anathema.lib.gui.list.veto.Vetor;
 
@@ -9,7 +10,6 @@ import javax.swing.DefaultListSelectionModel;
 public class VetoableListSelectionModel extends DefaultListSelectionModel {
 
   private final AggregatedVetor vetor = new AggregatedVetor();
-  private boolean alreadyAsked;
   private final ListSelectionMode mode;
 
   public VetoableListSelectionModel(ListSelectionMode mode) {
@@ -27,17 +27,13 @@ public class VetoableListSelectionModel extends DefaultListSelectionModel {
     });
   }
 
-  private synchronized void executeVetoable(Runnable block) {
-    if (alreadyAsked) {
-      block.run();
-      return;
-    }
-    if (vetor.vetos()) {
-      return;
-    }
-    alreadyAsked = true;
-    block.run();
-    alreadyAsked = false;
+  private synchronized void executeVetoable(final Runnable block) {
+    vetor.requestPermissionFor(new Command() {
+      @Override
+      public void execute() {
+        block.run();
+      }
+    });
   }
 
   public void addVetor(Vetor vetor) {

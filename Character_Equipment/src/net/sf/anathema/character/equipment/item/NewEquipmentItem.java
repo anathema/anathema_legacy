@@ -16,10 +16,11 @@ public class NewEquipmentItem implements Command {
   @Override
   public void execute() {
     DiscardChangesVetor vetor = new DiscardChangesVetor(resources, new DirtyEquipmentCondition(model));
-    if (vetor.vetos()) {
-      return;
-    }
-    model.getTemplateEditModel().setNewTemplate();
+    vetor.requestPermissionFor(new Command() {
+      @Override
+      public void execute() {
+        model.getTemplateEditModel().setNewTemplate();
+      }
+    });
   }
-
 }
