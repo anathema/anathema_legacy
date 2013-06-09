@@ -4,7 +4,7 @@ import net.sf.anathema.character.equipment.IEquipmentAdditionalModelTemplate;
 import net.sf.anathema.character.equipment.MaterialRules;
 import net.sf.anathema.character.equipment.character.EquipmentCharacterDataProvider;
 import net.sf.anathema.character.equipment.impl.character.model.EquipmentAdditionalModel;
-import net.sf.anathema.character.equipment.impl.character.model.natural.NaturalSoak;
+import net.sf.anathema.character.equipment.impl.character.model.natural.DefaultNaturalSoak;
 import net.sf.anathema.character.equipment.impl.character.model.natural.NaturalWeaponTemplate;
 import net.sf.anathema.character.equipment.item.model.IEquipmentTemplateProvider;
 import net.sf.anathema.character.generic.IBasicCharacterData;
@@ -30,7 +30,7 @@ public class EquipmentAdditionalModelFactory implements IAdditionalModelFactory 
     IEquipmentAdditionalModelTemplate template = (IEquipmentAdditionalModelTemplate) additionalTemplate;
     IBasicCharacterData basicCharacterContext = context.getBasicCharacterContext();
     ICharacterType characterType = basicCharacterContext.getCharacterType();
-    IArmourStats naturalArmour = new NaturalSoak(context);
+    IArmourStats naturalArmour = new DefaultNaturalSoak(context);
     EquipmentCharacterDataProvider dataProvider = new EquipmentCharacterDataProvider(context, materialRules);
     return new EquipmentAdditionalModel(
             characterType,

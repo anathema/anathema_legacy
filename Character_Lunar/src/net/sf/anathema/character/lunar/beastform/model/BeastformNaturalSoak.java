@@ -1,6 +1,7 @@
 package net.sf.anathema.character.lunar.beastform.model;
 
 import com.google.common.base.Preconditions;
+import net.sf.anathema.character.equipment.impl.character.model.natural.NaturalSoak;
 import net.sf.anathema.character.equipment.impl.character.model.stats.AbstractCombatStats;
 import net.sf.anathema.character.generic.character.IGenericTraitCollection;
 import net.sf.anathema.character.generic.equipment.weapon.IArmourStats;
@@ -18,7 +19,7 @@ import net.sf.anathema.lib.util.Identifier;
 import java.util.ArrayList;
 import java.util.List;
 
-public class BeastformNaturalSoak extends AbstractCombatStats implements IArmourStats {
+public class BeastformNaturalSoak extends AbstractCombatStats implements IArmourStats, NaturalSoak {
   private final IQualityModel<?> model;
   private final IGenericTraitCollection collection;
 

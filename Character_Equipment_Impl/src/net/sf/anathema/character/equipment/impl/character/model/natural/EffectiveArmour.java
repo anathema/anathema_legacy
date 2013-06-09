@@ -63,14 +63,15 @@ public class EffectiveArmour extends AbstractCombatStats implements IArmourStats
   public void addArmour(IArmourStats armour) {
     if (armour instanceof NaturalSoak) {
       handleNaturalArmour(armour);
+    } else {
+      handleEquipmentArmour(armour);
     }
-    else handleEquipmentArmour(armour);
   }
 
   private void handleNaturalArmour(IArmourStats armour) {
     for (HealthType healthType : HealthType.values()) {
-      naturalSoakByHealthType.put(healthType,
-              getIncrementValue(naturalSoakByHealthType.get(healthType), armour.getSoak(healthType)));
+      int soakIncrement = getIncrementValue(naturalSoakByHealthType.get(healthType), armour.getSoak(healthType));
+      naturalSoakByHealthType.put(healthType, soakIncrement);
     }
   }
 
@@ -78,15 +79,17 @@ public class EffectiveArmour extends AbstractCombatStats implements IArmourStats
     fatigue = getHighestValue(fatigue, armour.getFatigue());
     modifyMobilityPenalty(armour.getMobilityPenalty());
     for (HealthType healthType : HealthType.values()) {
-      equipmentSoakByHealthType.put(healthType,
-              getHighestValue(equipmentSoakByHealthType.get(healthType), armour.getSoak(healthType)));
-      hardnessByHealthType.put(healthType,
-              getHighestValue(hardnessByHealthType.get(healthType), armour.getHardness(healthType)));
+      int highestSoak = getHighestValue(equipmentSoakByHealthType.get(healthType), armour.getSoak(healthType));
+      equipmentSoakByHealthType.put(healthType, highestSoak);
+      int highestHardness = getHighestValue(hardnessByHealthType.get(healthType), armour.getHardness(healthType));
+      hardnessByHealthType.put(healthType, highestHardness);
     }
   }
 
   public void modifyMobilityPenalty(Integer amount) {
-    if (amount != null) mobilityPenalty += amount;
+    if (amount != null) {
+      mobilityPenalty += amount;
+    }
   }
 
   private int getIncrementValue(int value, Integer increment) {
@@ -94,7 +97,9 @@ public class EffectiveArmour extends AbstractCombatStats implements IArmourStats
   }
 
   private int getHighestValue(int currentValue, Integer newValue) {
-    if (newValue == null) return currentValue;
+    if (newValue == null) {
+      return currentValue;
+    }
     return newValue > currentValue ? newValue : currentValue;
   }
 
