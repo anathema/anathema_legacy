@@ -50,8 +50,13 @@ public class ListSelectionView<T> implements IVetoableObjectSelectionView<T> {
   }
 
   @Override
-  public void setObjects(T[] objects) {
-    view.setItems(new ObservableListWrapper<>(Arrays.asList(objects)));
+  public void setObjects(final T[] objects) {
+    FxThreading.runOnCorrectThread(new Runnable() {
+      @Override
+      public void run() {
+        view.setItems(new ObservableListWrapper<>(Arrays.asList(objects)));
+      }
+    });
   }
 
   @Override

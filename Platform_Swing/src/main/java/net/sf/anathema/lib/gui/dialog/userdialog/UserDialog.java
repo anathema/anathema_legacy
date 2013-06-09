@@ -156,6 +156,11 @@ public class UserDialog extends AbstractDialog implements IDialogContainer {
     return createDialogResult();
   }
 
+  public void show(DialogCloseHandler dialogCloseHandler) {
+    setCloseHandler(dialogCloseHandler);
+    show();
+  }
+
   @Override
   public final void requestFinish() {
     GuiUtilities.stopCellEditing(getDialog().getContentPane());
