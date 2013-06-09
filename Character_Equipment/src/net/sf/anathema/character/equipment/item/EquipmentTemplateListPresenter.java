@@ -5,7 +5,6 @@ import net.sf.anathema.character.equipment.item.model.IEquipmentTemplateEditMode
 import net.sf.anathema.character.equipment.item.view.EquipmentNavigation;
 import net.sf.anathema.lib.control.IChangeListener;
 import net.sf.anathema.lib.control.ObjectValueListener;
-import net.sf.anathema.lib.data.Condition;
 import net.sf.anathema.lib.gui.Presenter;
 import net.sf.anathema.lib.resources.Resources;
 
@@ -46,13 +45,7 @@ public class EquipmentTemplateListPresenter implements Presenter {
       }
     });
     updateAvailableTemplates();
-    view.getTemplateListView().addSelectionVetor(new DiscardChangesVetor(resources, new Condition() {
-      @Override
-      public boolean isFulfilled() {
-        IEquipmentTemplateEditModel editModel = model.getTemplateEditModel();
-        return editModel.isDirty();
-      }
-    }));
+    view.getTemplateListView().addSelectionVetor(new DiscardChangesVetor(resources, new DirtyEquipmentCondition(model)));
     view.getTemplateListView().addObjectSelectionChangedListener(new EquipmentTemplateLoadListener());
   }
 

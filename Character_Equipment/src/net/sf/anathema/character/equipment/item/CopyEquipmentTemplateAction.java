@@ -5,7 +5,6 @@ import net.sf.anathema.character.equipment.item.view.EquipmentNavigation;
 import net.sf.anathema.interaction.Command;
 import net.sf.anathema.interaction.Tool;
 import net.sf.anathema.lib.control.ObjectValueListener;
-import net.sf.anathema.lib.data.Condition;
 import net.sf.anathema.lib.file.RelativePath;
 import net.sf.anathema.lib.resources.Resources;
 
@@ -50,12 +49,7 @@ public class CopyEquipmentTemplateAction {
     @SuppressWarnings({"RedundantStringConstructorCall", "StatementWithEmptyBody"})
     @Override
     public void execute() {
-      DiscardChangesVetor vetor = new DiscardChangesVetor(resources, new Condition() {
-        @Override
-        public boolean isFulfilled() {
-          return model.getTemplateEditModel().isDirty();
-        }
-      });
+      DiscardChangesVetor vetor = new DiscardChangesVetor(resources, new DirtyEquipmentCondition(model));
       if (vetor.vetos()) {
         return;
       }
