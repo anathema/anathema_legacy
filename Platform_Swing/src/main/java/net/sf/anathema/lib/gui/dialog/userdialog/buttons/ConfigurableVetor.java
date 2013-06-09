@@ -1,7 +1,6 @@
 package net.sf.anathema.lib.gui.dialog.userdialog.buttons;
 
 import net.sf.anathema.interaction.Command;
-import net.sf.anathema.interaction.NullCommand;
 import net.sf.anathema.lib.gui.action.ActionConfiguration;
 import net.sf.anathema.lib.gui.action.IActionConfiguration;
 import net.sf.anathema.lib.gui.dialog.core.DialogResult;
@@ -20,7 +19,6 @@ public class ConfigurableVetor {
   private final Component parentComponent;
   private final String messageText;
   private final String okButtonText;
-  private Command command = new NullCommand();
 
   public ConfigurableVetor(Component parentComponent, String messageText, String okButtonText) {
     this.parentComponent = parentComponent;
@@ -28,11 +26,7 @@ public class ConfigurableVetor {
     this.okButtonText = okButtonText;
   }
 
-  public void whenPermissionIsGiven(Command command) {
-    this.command = command;
-  }
-
-  public void requestPermission() {
+  public void requestPermissionFor(final Command command) {
     IMessage message = new Message(messageText, MessageType.WARNING);
     final MessageUserDialogConfiguration configuration = new MessageUserDialogConfiguration(message,
             new DialogButtonConfiguration() {
@@ -44,13 +38,13 @@ public class ConfigurableVetor {
     SwingUtilities.invokeLater(new Runnable() {
       @Override
       public void run() {
-        showDialog(configuration);
+        showDialog(configuration, command);
       }
     });
 
   }
 
-  private void showDialog(MessageUserDialogConfiguration configuration) {
+  private void showDialog(MessageUserDialogConfiguration configuration, final Command command) {
     UserDialog userDialog = new UserDialog(parentComponent, configuration);
     userDialog.show(new DialogCloseHandler() {
       @Override

@@ -26,7 +26,6 @@ public class DiscardChangesVetor implements Vetor {
     final String okButtonText = resources.getString("Equipment.Creation.UnsavedChangesMessage.OKButton");
     ConfigurableVetor vetor = new ConfigurableVetor(SwingApplicationFrame.getParentComponent(), messageText,
             okButtonText);
-    vetor.whenPermissionIsGiven(command);
-    vetor.requestPermission();
+    vetor.requestPermissionFor(command);
   }
 }

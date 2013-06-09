@@ -39,7 +39,7 @@ public class RepositoryItemDeletionPresenter implements Presenter {
         String message = resources.getString("AnathemaCore.Tools.RepositoryView.DeleteMessage");
         String okButton = resources.getString("AnathemaCore.Tools.RepositoryView.DeleteOk");
         ConfigurableVetor vetor = new ConfigurableVetor(parentComponent, message, okButton);
-        vetor.whenPermissionIsGiven(new Command() {
+        vetor.requestPermissionFor(new Command() {
           @Override
           public void execute() {
             try {
@@ -53,7 +53,6 @@ public class RepositoryItemDeletionPresenter implements Presenter {
             }
           }
         });
-        vetor.requestPermission();
       }
     };
     action.setToolTipText(resources.getString("AnathemaCore.Tools.RepositoryView.DeleteToolTip"));

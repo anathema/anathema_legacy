@@ -27,13 +27,12 @@ public class RemoveEquipmentItem implements Command {
     String messageText = format("{0} - {1}", itemId, deleteNotification);
     String okText = resources.getString("Equipment.Creation.DeleteMessage.OKButton");
     ConfigurableVetor vetor = new ConfigurableVetor(SwingApplicationFrame.getParentComponent(), messageText, okText);
-    vetor.whenPermissionIsGiven(new Command() {
+    vetor.requestPermissionFor(new Command() {
       @Override
       public void execute() {
         model.getDatabase().deleteTemplate(view.getTemplateListView().getSelectedObject());
         model.getTemplateEditModel().setNewTemplate();
       }
     });
-    vetor.requestPermission();
   }
 }
