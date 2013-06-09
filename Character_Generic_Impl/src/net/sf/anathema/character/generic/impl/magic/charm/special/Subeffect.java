@@ -3,7 +3,7 @@ package net.sf.anathema.character.generic.impl.magic.charm.special;
 import net.sf.anathema.character.generic.IBasicCharacterData;
 import net.sf.anathema.character.generic.magic.charms.special.ISubeffect;
 import net.sf.anathema.lib.control.IChangeListener;
-import net.sf.anathema.lib.data.ICondition;
+import net.sf.anathema.lib.data.Condition;
 import net.sf.anathema.lib.util.Identifier;
 import org.jmock.example.announcer.Announcer;
 
@@ -13,9 +13,9 @@ public class Subeffect extends Identifier implements ISubeffect {
   private final IBasicCharacterData data;
   private boolean learned = false;
   private boolean creationLearned = false;
-  private final ICondition learnable;
+  private final Condition learnable;
 
-  public Subeffect(String subeffectId, IBasicCharacterData data, ICondition learnable) {
+  public Subeffect(String subeffectId, IBasicCharacterData data, Condition learnable) {
     super(subeffectId);
     this.data = data;
     this.learnable = learnable;

@@ -2,7 +2,7 @@ package net.sf.anathema.character.equipment.item;
 
 import net.sf.anathema.character.equipment.item.model.IEquipmentDatabaseManagement;
 import net.sf.anathema.interaction.Command;
-import net.sf.anathema.lib.data.ICondition;
+import net.sf.anathema.lib.data.Condition;
 import net.sf.anathema.lib.resources.Resources;
 
 public class NewEquipmentItem implements Command {
@@ -16,7 +16,7 @@ public class NewEquipmentItem implements Command {
 
   @Override
   public void execute() {
-    DiscardChangesVetor vetor = new DiscardChangesVetor(resources, new ICondition() {
+    DiscardChangesVetor vetor = new DiscardChangesVetor(resources, new Condition() {
       @Override
       public boolean isFulfilled() {
         return model.getTemplateEditModel().isDirty();

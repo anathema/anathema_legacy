@@ -1,6 +1,6 @@
 package net.sf.anathema.character.equipment.item;
 
-import net.sf.anathema.lib.data.ICondition;
+import net.sf.anathema.lib.data.Condition;
 import net.sf.anathema.lib.gui.action.ActionConfiguration;
 import net.sf.anathema.lib.gui.action.IActionConfiguration;
 import net.sf.anathema.lib.gui.dialog.core.DialogResult;
@@ -17,10 +17,10 @@ import static net.sf.anathema.framework.view.SwingApplicationFrame.getParentComp
 
 public class DiscardChangesVetor implements IVetor {
 
-  private final ICondition preCondition;
+  private final Condition preCondition;
   private final Resources resources;
 
-  public DiscardChangesVetor(Resources resources, ICondition preCondition) {
+  public DiscardChangesVetor(Resources resources, Condition preCondition) {
     this.resources = resources;
     this.preCondition = preCondition;
   }

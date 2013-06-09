@@ -6,9 +6,9 @@ import net.sf.anathema.character.generic.magic.ICharm;
 import net.sf.anathema.character.generic.magic.charms.ICharmLearnableArbitrator;
 import net.sf.anathema.character.generic.magic.charms.special.ISubeffect;
 import net.sf.anathema.character.generic.magic.charms.special.SubEffects;
-import net.sf.anathema.lib.data.ICondition;
+import net.sf.anathema.lib.data.Condition;
 
-public class ElementalCharmLearnCondition implements ICondition {
+public class ElementalCharmLearnCondition implements Condition {
   private final SubEffects allEffects;
   private final ICharmLearnableArbitrator arbitrator;
   private final ICharm charm;

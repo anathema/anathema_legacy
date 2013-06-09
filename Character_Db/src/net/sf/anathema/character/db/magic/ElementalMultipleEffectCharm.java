@@ -8,7 +8,7 @@ import net.sf.anathema.character.generic.magic.charms.ICharmLearnableArbitrator;
 import net.sf.anathema.character.generic.magic.charms.special.IMultipleEffectCharm;
 import net.sf.anathema.character.generic.magic.charms.special.ISpecialCharmVisitor;
 import net.sf.anathema.character.generic.magic.charms.special.SubEffects;
-import net.sf.anathema.lib.data.ICondition;
+import net.sf.anathema.lib.data.Condition;
 
 public class ElementalMultipleEffectCharm implements IMultipleEffectCharm {
 
@@ -33,13 +33,13 @@ public class ElementalMultipleEffectCharm implements IMultipleEffectCharm {
                                     ICharmLearnableArbitrator arbitrator, ICharm charm) {
     CollectionSubEffects subEffects = new CollectionSubEffects();
     for (Element element : Element.values()) {
-      ICondition condition = buildLearnCondition(element, data, arbitrator, charm, subEffects);
+      Condition condition = buildLearnCondition(element, data, arbitrator, charm, subEffects);
       subEffects.add(new ElementalSubeffect(element, data, condition));
     }
     return subEffects;
   }
 
-  private ICondition buildLearnCondition(Element element, IBasicCharacterData data,
+  private Condition buildLearnCondition(Element element, IBasicCharacterData data,
                                          ICharmLearnableArbitrator arbitrator, ICharm charm,
                                          CollectionSubEffects subEffects) {
     return new ElementalCharmLearnCondition(subEffects, arbitrator, charm, data, element);

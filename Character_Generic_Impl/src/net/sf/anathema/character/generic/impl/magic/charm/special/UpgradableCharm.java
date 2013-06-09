@@ -8,7 +8,7 @@ import net.sf.anathema.character.generic.magic.charms.special.ISpecialCharmVisit
 import net.sf.anathema.character.generic.magic.charms.special.IUpgradableCharm;
 import net.sf.anathema.character.generic.magic.charms.special.SubEffects;
 import net.sf.anathema.character.generic.traits.ITraitType;
-import net.sf.anathema.lib.data.ICondition;
+import net.sf.anathema.lib.data.Condition;
 
 import java.util.Map;
 
@@ -57,7 +57,7 @@ public class UpgradableCharm extends MultipleEffectCharm implements IUpgradableC
     return subEffects;
   }
 
-  private ICondition buildLearnCondition(final ICharmLearnableArbitrator arbitrator, final IBasicCharacterData data,
+  private Condition buildLearnCondition(final ICharmLearnableArbitrator arbitrator, final IBasicCharacterData data,
                                          final IGenericTraitCollection traitCollection, final ICharm charm,
                                          final boolean bpUpgradeAllowed, final Integer essenceMin,
                                          final Integer traitMin, final ITraitType trait) {

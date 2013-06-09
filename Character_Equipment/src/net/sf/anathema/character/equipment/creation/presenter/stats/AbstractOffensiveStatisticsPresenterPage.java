@@ -7,7 +7,7 @@ import net.sf.anathema.character.equipment.creation.model.stats.IWeaponDamageMod
 import net.sf.anathema.character.equipment.creation.presenter.stats.properties.OffensiveStatisticsProperties;
 import net.sf.anathema.character.equipment.creation.view.IWeaponDamageView;
 import net.sf.anathema.character.equipment.wizard.CheckInputListener;
-import net.sf.anathema.lib.data.ICondition;
+import net.sf.anathema.lib.data.Condition;
 import net.sf.anathema.lib.resources.Resources;
 
 import javax.swing.JPanel;
@@ -59,7 +59,7 @@ public abstract class AbstractOffensiveStatisticsPresenterPage<O extends IOffens
   @Override
   protected final void addFollowUpPages(CheckInputListener inputListener) {
     WeaponTagsPresenterPage page = new WeaponTagsPresenterPage(getResources(), getOverallModel(), getViewFactory());
-    addFollowupPage(page, inputListener, new ICondition() {
+    addFollowupPage(page, inputListener, new Condition() {
       @Override
       public boolean isFulfilled() {
         return isInLegalState();
