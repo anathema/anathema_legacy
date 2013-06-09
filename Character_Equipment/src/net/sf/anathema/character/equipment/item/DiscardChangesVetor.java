@@ -1,6 +1,7 @@
 package net.sf.anathema.character.equipment.item;
 
 import net.sf.anathema.framework.view.SwingApplicationFrame;
+import net.sf.anathema.interaction.Command;
 import net.sf.anathema.lib.data.Condition;
 import net.sf.anathema.lib.gui.action.ActionConfiguration;
 import net.sf.anathema.lib.gui.action.IActionConfiguration;
@@ -42,5 +43,10 @@ public class DiscardChangesVetor implements Vetor {
     UserDialog userDialog = new UserDialog(SwingApplicationFrame.getParentComponent(), configuration);
     DialogResult result = userDialog.show();
     return result.isCanceled();
+  }
+
+  @Override
+  public void requestPermissionFor(Command command) {
+    //To change body of implemented methods use File | Settings | File Templates.
   }
 }

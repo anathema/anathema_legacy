@@ -1,9 +1,11 @@
 package net.sf.anathema.lib.gui.list;
 
+import net.sf.anathema.lib.gui.list.veto.AggregatedVetor;
 import net.sf.anathema.lib.gui.list.veto.Vetor;
 
 import javax.swing.DefaultListSelectionModel;
 
+@SuppressWarnings("MagicConstant")
 public class VetoableListSelectionModel extends DefaultListSelectionModel {
 
   private final AggregatedVetor vetor = new AggregatedVetor();
