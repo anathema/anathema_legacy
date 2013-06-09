@@ -94,9 +94,7 @@ public class CharacterPresenter implements Presenter, MultipleContentViewPresent
     }
     String magicViewHeader = getString("CardView.CharmConfiguration.Title");
     MagicPresenter presenter = new MagicPresenter(character, characterView.createMagicViewFactory(), resources, anathemaModel);
-    presenter.initPresentation();
-    ContentView contentView = presenter.getTabContent();
-    addMultipleContentViewGroup(magicViewHeader, Magic, contentView);
+    initMultipleContentPresentation(magicViewHeader, Magic, presenter);
   }
 
   private void initMiscellaneous() {
@@ -119,6 +117,11 @@ public class CharacterPresenter implements Presenter, MultipleContentViewPresent
             character.getCharacterTemplate().getTemplateType().getCharacterType().isExaltType());
   }
 
+  @Override
+  public void addMiscellaneousView(String title, ContentView tabContent) {
+    tabContent.addTo(miscView);
+  }
+
   private MultipleContentView initMultipleContentPresentation(String viewTitle, AdditionalModelType type, IContentPresenter... corePresenters) {
     for (IContentPresenter presenter : corePresenters) {
       presenter.initPresentation();
@@ -130,11 +133,6 @@ public class CharacterPresenter implements Presenter, MultipleContentViewPresent
       }
     });
     return addMultipleContentViewGroup(viewTitle, type, coreViews);
-  }
-
-  @Override
-  public void addMiscellaneousView(String title, ContentView tabContent) {
-    tabContent.addTo(miscView);
   }
 
   private MultipleContentView addMultipleContentViewGroup(String viewTitle, AdditionalModelType type, ContentView... coreViewViews) {
