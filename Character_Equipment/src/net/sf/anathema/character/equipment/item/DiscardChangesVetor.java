@@ -1,5 +1,6 @@
 package net.sf.anathema.character.equipment.item;
 
+import net.sf.anathema.framework.view.SwingApplicationFrame;
 import net.sf.anathema.lib.data.Condition;
 import net.sf.anathema.lib.gui.action.ActionConfiguration;
 import net.sf.anathema.lib.gui.action.IActionConfiguration;
@@ -12,8 +13,6 @@ import net.sf.anathema.lib.message.IMessage;
 import net.sf.anathema.lib.message.Message;
 import net.sf.anathema.lib.message.MessageType;
 import net.sf.anathema.lib.resources.Resources;
-
-import static net.sf.anathema.framework.view.SwingApplicationFrame.getParentComponent;
 
 public class DiscardChangesVetor implements IVetor {
 
@@ -31,16 +30,16 @@ public class DiscardChangesVetor implements IVetor {
       return false;
     }
     String messageText = resources.getString("Equipment.Creation.UnsavedChangesMessage.Text");
+    final String okButtonText = resources.getString("Equipment.Creation.UnsavedChangesMessage.OKButton");
     IMessage message = new Message(messageText, MessageType.WARNING);
     MessageUserDialogConfiguration configuration = new MessageUserDialogConfiguration(message,
             new DialogButtonConfiguration() {
               @Override
               public IActionConfiguration getOkActionConfiguration() {
-                return new ActionConfiguration(
-                        resources.getString("Equipment.Creation.UnsavedChangesMessage.OKButton"));
+                return new ActionConfiguration(okButtonText);
               }
             });
-    UserDialog userDialog = new UserDialog(getParentComponent(), configuration);
+    UserDialog userDialog = new UserDialog(SwingApplicationFrame.getParentComponent(), configuration);
     DialogResult result = userDialog.show();
     return result.isCanceled();
   }
