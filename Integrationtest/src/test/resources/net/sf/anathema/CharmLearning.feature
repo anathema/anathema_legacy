@@ -10,3 +10,9 @@ Feature: Characters can learn their native Charm
     Given a new default Sidereal
     When I set her Archery to 2
     Then she can learn the Charm Sidereal.GeneralizedAmmunitionTechnique
+
+  Scenario: Charm picks are counted
+    Given a new default Sidereal
+    When I set her Archery to 2
+    And she learns the Charm Sidereal.GeneralizedAmmunitionTechnique
+    Then she has spent 1 Charm pick
