@@ -5,6 +5,7 @@ import net.sf.anathema.lib.gui.list.veto.IVetor;
 import org.junit.Test;
 
 import static javax.swing.ListSelectionModel.SINGLE_SELECTION;
+import static net.sf.anathema.lib.gui.list.ListSelectionMode.SingleSelection;
 import static org.junit.Assert.assertEquals;
 import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.verifyZeroInteractions;
@@ -12,12 +13,12 @@ import static org.mockito.Mockito.when;
 
 public class VetoableListSelectionModelTest {
 
-  private VetoableListSelectionModel selectionModel = new VetoableListSelectionModel();
+  private VetoableListSelectionModel selectionModel = new VetoableListSelectionModel(SingleSelection);
   private IVetor vetor = mock(IVetor.class);
 
   @Test
-  public void testIsSingleSelectionMode() throws Exception {
-    assertEquals(SINGLE_SELECTION, new VetoableListSelectionModel().getSelectionMode());
+  public void usesGivenSelectionMode() throws Exception {
+    assertEquals(SINGLE_SELECTION, selectionModel.getSelectionMode());
   }
 
   @Test
