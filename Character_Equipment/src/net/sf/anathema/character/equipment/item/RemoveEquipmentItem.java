@@ -7,6 +7,8 @@ import net.sf.anathema.interaction.Command;
 import net.sf.anathema.lib.gui.dialog.userdialog.buttons.ConfigurableVetor;
 import net.sf.anathema.lib.resources.Resources;
 
+import static java.text.MessageFormat.format;
+
 public class RemoveEquipmentItem implements Command {
   private final EquipmentNavigation view;
   private final IEquipmentDatabaseManagement model;
@@ -20,8 +22,9 @@ public class RemoveEquipmentItem implements Command {
 
   @Override
   public void execute() {
-    String messageText = model.getTemplateEditModel().getEditTemplateId() + " - " + resources.getString(
-            "Equipment.Creation.DeleteMessage.Text");
+    String itemId = model.getTemplateEditModel().getEditTemplateId();
+    String deleteNotification = resources.getString("Equipment.Creation.DeleteMessage.Text");
+    String messageText = format("{0} - {1}", itemId, deleteNotification);
     String okText = resources.getString("Equipment.Creation.DeleteMessage.OKButton");
     ConfigurableVetor vetor = new ConfigurableVetor(SwingApplicationFrame.getParentComponent(), messageText, okText);
     if (vetor.vetos()) {
