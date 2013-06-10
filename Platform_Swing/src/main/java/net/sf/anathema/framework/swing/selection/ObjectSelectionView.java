@@ -61,6 +61,11 @@ public class ObjectSelectionView<V> implements IObjectSelectionView<V>, Additive
   }
 
   @Override
+  public void removeObjectSelectionChangedListener(ObjectValueListener<V> listener) {
+    comboBox.removeObjectSelectionChangeListener(listener);
+  }
+
+  @Override
   public void setEnabled(boolean enabled) {
     if (enabled) {
       label.setForeground(SystemColor.textText);

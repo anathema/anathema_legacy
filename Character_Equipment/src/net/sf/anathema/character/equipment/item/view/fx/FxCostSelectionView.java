@@ -1,30 +1,27 @@
 package net.sf.anathema.character.equipment.item.view.fx;
 
-import com.sun.javafx.collections.ObservableListWrapper;
 import javafx.application.Platform;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
 import javafx.scene.Node;
-import javafx.scene.control.ComboBox;
-import javafx.scene.control.Label;
 import jfxtras.labs.scene.control.ListSpinner;
 import net.sf.anathema.character.equipment.ItemCost;
 import net.sf.anathema.character.equipment.item.view.CostSelectionView;
+import net.sf.anathema.lib.control.ObjectValueListener;
 import net.sf.anathema.lib.gui.selection.ISelectionIntValueChangedListener;
+import net.sf.anathema.platform.fx.ComboBoxSelectionView;
 import org.jmock.example.announcer.Announcer;
 import org.tbee.javafx.scene.layout.MigPane;
-
-import java.util.Arrays;
 
 import static net.sf.anathema.lib.gui.layout.LayoutUtils.withoutInsets;
 
 public class FxCostSelectionView implements CostSelectionView {
 
-  private Label label;
-  private ComboBox<String> selection;
+  private ComboBoxSelectionView<String> selection;
   private ListSpinner<Integer> spinner;
   private final MigPane pane = new MigPane(withoutInsets());
-  private final Announcer<ISelectionIntValueChangedListener> announcer = new Announcer<>(ISelectionIntValueChangedListener.class);
+  private final Announcer<ISelectionIntValueChangedListener> announcer = new Announcer<>(
+          ISelectionIntValueChangedListener.class);
   private final CostTypeChangeListener typeChangeListener = new CostTypeChangeListener();
   private final CostValueChangeListener valueChangeListener = new CostValueChangeListener();
 
@@ -32,12 +29,10 @@ public class FxCostSelectionView implements CostSelectionView {
     Platform.runLater(new Runnable() {
       @Override
       public void run() {
-        label = new Label(text);
-        selection = new ComboBox<>();
+        selection = new ComboBoxSelectionView<>(text, new SimpleUiConfiguration());
         spinner = new ListSpinner<>(0, 5);
         spinner.getStyleClass().add("dots");
-        pane.add(label);
-        pane.add(selection);
+        pane.add(selection.getNode());
         pane.add(spinner);
         startListening();
       }
@@ -51,10 +46,10 @@ public class FxCostSelectionView implements CostSelectionView {
       public void run() {
         stopListening();
         if (cost == null) {
-          selection.getSelectionModel().select(null);
+          selection.setSelectedObject(null);
           spinner.setValue(0);
         } else {
-          selection.getSelectionModel().select(cost.getType());
+          selection.setSelectedObject(cost.getType());
           spinner.setValue(cost.getValue());
         }
         startListening();
@@ -72,7 +67,7 @@ public class FxCostSelectionView implements CostSelectionView {
     Platform.runLater(new Runnable() {
       @Override
       public void run() {
-        selection.setItems(new ObservableListWrapper<>(Arrays.asList(backgrounds)));
+        selection.setObjects(backgrounds);
       }
     });
   }
@@ -82,20 +77,20 @@ public class FxCostSelectionView implements CostSelectionView {
   }
 
   private void startListening() {
-    selection.getSelectionModel().selectedItemProperty().addListener(typeChangeListener);
+    selection.addObjectSelectionChangedListener(typeChangeListener);
     spinner.indexProperty().addListener(valueChangeListener);
   }
 
 
   private void stopListening() {
-    selection.getSelectionModel().selectedItemProperty().removeListener(typeChangeListener);
+    selection.removeObjectSelectionChangedListener(typeChangeListener);
     spinner.indexProperty().removeListener(valueChangeListener);
   }
 
   @SuppressWarnings("unchecked")
-  private class CostTypeChangeListener implements ChangeListener<String> {
+  private class CostTypeChangeListener implements ObjectValueListener<String> {
     @Override
-    public void changed(ObservableValue<? extends String> observableValue, String s, String newValue) {
+    public void valueChanged(String newValue) {
       announcer.announce().valueChanged(newValue, spinner.getValue());
     }
   }
@@ -104,7 +99,7 @@ public class FxCostSelectionView implements CostSelectionView {
   private class CostValueChangeListener implements ChangeListener<Integer> {
     @Override
     public void changed(ObservableValue<? extends Integer> observableValue, Integer integer, Integer newValue) {
-      announcer.announce().valueChanged(selection.getSelectionModel().getSelectedItem(), newValue);
+      announcer.announce().valueChanged(selection.getSelectedObject(), newValue);
     }
   }
 }
