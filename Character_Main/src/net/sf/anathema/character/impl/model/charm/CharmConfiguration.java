@@ -239,10 +239,6 @@ public class CharmConfiguration implements ICharmConfiguration {
     return allGroups.toArray(new ILearningCharmGroup[allGroups.size()]);
   }
 
-  private ICharmTemplate getCharmTemplate(ICharacterType type) {
-    return templatesByType.get(type);
-  }
-
   private ICharacterType getCharacterType(String charmId) {
     String characterType = charmId.substring(0, charmId.indexOf("."));
     for (ICharacterType type : types) {
@@ -266,15 +262,12 @@ public class CharmConfiguration implements ICharmConfiguration {
       return charm;
     }
     ICharacterType characterType = getCharacterType(charmId);
-    charm = getCharmTree(characterType).getCharmById(charmId);
+    ICharmTree charmTree = alienTreesByType.get(characterType);
+    charm = charmTree.getCharmById(charmId);
     if (charm != null) {
       return charm;
     }
     throw new IllegalArgumentException("No charm found for id \"" + charmId + "\"");
-  }
-
-  private ICharmIdMap getCharmTree(Identified type) {
-    return alienTreesByType.get(type);
   }
 
   @Override
@@ -487,7 +480,7 @@ public class CharmConfiguration implements ICharmConfiguration {
   }
 
   private ICharmTemplate getCharmTemplateForCharacterType() {
-    return getCharmTemplate(getNativeCharacterType());
+    return templatesByType.get(getNativeCharacterType());
   }
 
   private PrerequisiteModifyingCharms getPrerequisiteModifyingCharms() {
@@ -497,7 +490,7 @@ public class CharmConfiguration implements ICharmConfiguration {
     return prerequisiteModifyingCharms;
   }
 
-  protected boolean isLearnableWithoutPrerequisites(ICharm charm) {
+  private boolean isLearnableWithoutPrerequisites(ICharm charm) {
     if (!isLearnable(charm)) {
       return false;
     }
@@ -554,7 +547,6 @@ public class CharmConfiguration implements ICharmConfiguration {
     List<ILearningCharmGroup> candidateGroups = new ArrayList<>();
     Collections.addAll(candidateGroups, getCharmGroups(characterType));
     Collections.addAll(candidateGroups, getMartialArtsGroups());
-    ICharmTemplate charmTemplate = templatesByType.get(characterType);
     for (ILearningCharmGroup group : candidateGroups) {
       if (group.getId().equals(groupId)) {
         return group;
