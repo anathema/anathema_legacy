@@ -12,6 +12,4 @@ public interface ToolListView<T> {
   List<T> getSelectedItems();
 
   Tool addTool();
-
-  void refresh();
 }

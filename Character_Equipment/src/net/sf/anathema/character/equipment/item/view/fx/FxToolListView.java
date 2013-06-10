@@ -79,16 +79,6 @@ public class FxToolListView<T> implements ToolListView<T> {
     return tool;
   }
 
-  @Override
-  public void refresh() {
-    /*ObservableList<T> items = list.getItems();
-    int index = list.getSelectionModel().getSelectedIndex();
-    list.setItems(null);*/
-    list.layout();
-    /*list.setItems(FXCollections.observableList(items));
-    list.getSelectionModel().select(index);*/
-  }
-
   public Node getNode() {
     return content;
   }
