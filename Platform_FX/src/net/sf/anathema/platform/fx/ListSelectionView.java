@@ -50,6 +50,11 @@ public class ListSelectionView<T> implements IVetoableObjectSelectionView<T> {
   }
 
   @Override
+  public void removeObjectSelectionChangedListener(ObjectValueListener<T> listener) {
+    announcer.removeListener(listener);
+  }
+
+  @Override
   public void setObjects(final T[] objects) {
     FxThreading.runOnCorrectThread(new Runnable() {
       @Override

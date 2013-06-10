@@ -1,6 +1,7 @@
 package net.sf.anathema.framework.swing.selection;
 
 import net.sf.anathema.lib.control.ObjectValueListener;
+import net.sf.anathema.lib.exception.NotYetImplementedException;
 import net.sf.anathema.lib.gui.AgnosticUIConfiguration;
 import net.sf.anathema.lib.gui.ConfigurableSwingUI;
 import net.sf.anathema.lib.gui.list.SmartJList;
@@ -47,6 +48,11 @@ public class ListObjectSelectionView<V> implements IListObjectSelectionView<V> {
                 listener.valueChanged(smartList.getSelectedValue());
               }
             });
+  }
+
+  @Override
+  public void removeObjectSelectionChangedListener(ObjectValueListener<V> listener) {
+    throw new NotYetImplementedException();
   }
 
   @Override

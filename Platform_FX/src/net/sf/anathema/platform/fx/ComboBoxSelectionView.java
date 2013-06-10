@@ -10,6 +10,7 @@ import javafx.scene.control.Label;
 import net.sf.anathema.lib.control.ObjectValueListener;
 import net.sf.anathema.lib.gui.AgnosticUIConfiguration;
 import net.sf.anathema.lib.gui.selection.IObjectSelectionView;
+import org.jmock.example.announcer.Announcer;
 import org.tbee.javafx.scene.layout.MigPane;
 
 import java.util.Arrays;
@@ -20,9 +21,11 @@ public class ComboBoxSelectionView<V> implements IObjectSelectionView<V> {
   private ComboBox<V> comboBox;
   private Label label;
   private MigPane pane;
+  private final Announcer<ObjectValueListener> announcer = Announcer.to(ObjectValueListener.class);
 
+  @SuppressWarnings("unchecked")
   public ComboBoxSelectionView(final String description, final AgnosticUIConfiguration<V> ui) {
-    Platform.runLater(new Runnable() {
+    FxThreading.runOnCorrectThread(new Runnable() {
       @Override
       public void run() {
         comboBox = new ComboBox<>();
@@ -32,11 +35,17 @@ public class ComboBoxSelectionView<V> implements IObjectSelectionView<V> {
         pane.add(comboBox);
       }
     });
-    Platform.runLater(new Runnable() {
+    FxThreading.runOnCorrectThread(new Runnable() {
       @Override
       public void run() {
         comboBox.setButtonCell(new UITableCell<>(ui));
         comboBox.setCellFactory(new ConfigurableListCellFactory<>(ui));
+        comboBox.getSelectionModel().selectedItemProperty().addListener(new ChangeListener<V>() {
+          @Override
+          public void changed(ObservableValue<? extends V> observableValue, V v, V newValue) {
+            announcer.announce().valueChanged(newValue);
+          }
+        });
       }
     });
   }
@@ -53,12 +62,12 @@ public class ComboBoxSelectionView<V> implements IObjectSelectionView<V> {
 
   @Override
   public void addObjectSelectionChangedListener(final ObjectValueListener<V> listener) {
-    comboBox.getSelectionModel().selectedItemProperty().addListener(new ChangeListener<V>() {
-      @Override
-      public void changed(ObservableValue<? extends V> observableValue, V v, V newValue) {
-        listener.valueChanged(newValue);
-      }
-    });
+    announcer.addListener(listener);
+  }
+
+  @Override
+  public void removeObjectSelectionChangedListener(ObjectValueListener<V> listener) {
+    announcer.removeListener(listener);
   }
 
   @Override
@@ -94,6 +103,7 @@ public class ComboBoxSelectionView<V> implements IObjectSelectionView<V> {
   }
 
   public Node getNode() {
+    waitForContent();
     return pane;
   }
 }
