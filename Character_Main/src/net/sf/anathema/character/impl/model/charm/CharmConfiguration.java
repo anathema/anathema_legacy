@@ -11,6 +11,7 @@ import net.sf.anathema.character.generic.impl.magic.charm.CharmTree;
 import net.sf.anathema.character.generic.impl.template.magic.ICharmProvider;
 import net.sf.anathema.character.generic.magic.ICharm;
 import net.sf.anathema.character.generic.magic.ICharmData;
+import net.sf.anathema.character.generic.magic.charms.GroupCharmTree;
 import net.sf.anathema.character.generic.magic.charms.ICharmGroup;
 import net.sf.anathema.character.generic.magic.charms.ICharmIdMap;
 import net.sf.anathema.character.generic.magic.charms.ICharmTree;
@@ -60,19 +61,20 @@ import static net.sf.anathema.character.generic.magic.charms.MartialArtsLevel.Si
 
 public class CharmConfiguration implements ICharmConfiguration {
 
-  private final ISpecialCharmManager manager;
-  private final Map<Identified, ICharmTree> alienTreesByType = new HashMap<>();
-  private final Map<Identified, ILearningCharmGroup[]> nonMartialArtsGroupsByType = new HashMap<>();
+  private final Map<Identified, ICharmTree> treesByType = new HashMap<>();
   private final Map<ICharacterType, ICharmTemplate> templatesByType = new HashMap<>();
+  private final CharacterTypes characterTypes;
+
   private final ICharacterType[] types;
+  private final ISpecialCharmManager manager;
   private final ILearningCharmGroupContainer learningCharmGroupContainer = new ILearningCharmGroupContainer() {
     @Override
     public ILearningCharmGroup getLearningCharmGroup(ICharm charm) {
       return getGroup(charm);
     }
   };
-  private final CharacterTypes characterTypes;
-  private ILearningCharmGroup[] martialArtsGroups;
+  private final ILearningCharmGroup[] martialArtsGroups;
+  private final Map<Identified, ILearningCharmGroup[]> nonMartialArtsGroupsByType = new HashMap<>();
   private final ICharacterModelContext context;
   private final Announcer<IChangeListener> control = Announcer.to(IChangeListener.class);
   private final ICharmProvider provider;
@@ -119,7 +121,7 @@ public class CharmConfiguration implements ICharmConfiguration {
 
   @Override
   public ICharmIdMap getCharmIdMap() {
-    List<ICharmIdMap> trees = new ArrayList<ICharmIdMap>(alienTreesByType.values());
+    List<ICharmIdMap> trees = new ArrayList<ICharmIdMap>(treesByType.values());
     trees.add(martialArtsOptions);
     ICharmIdMap[] treeArray = trees.toArray(new ICharmIdMap[trees.size()]);
     return new GroupedCharmIdMap(treeArray);
@@ -262,7 +264,7 @@ public class CharmConfiguration implements ICharmConfiguration {
       return charm;
     }
     ICharacterType characterType = getCharacterType(charmId);
-    ICharmTree charmTree = alienTreesByType.get(characterType);
+    ICharmTree charmTree = treesByType.get(characterType);
     charm = charmTree.getCharmById(charmId);
     if (charm != null) {
       return charm;
@@ -309,10 +311,19 @@ public class CharmConfiguration implements ICharmConfiguration {
   }
 
   private void initCharacterType(ICharmTemplate charmTemplate, ICharacterType type) {
-    CharmTree charmTree = new CharmTree(charmTemplate);
-    alienTreesByType.put(type, charmTree);
+    initTreeForCharacterType(charmTemplate, type);
+    GroupCharmTree charmTree = treesByType.get(type);
+    initLearnGroupForCharacterType(type, charmTree);
+  }
+
+  private void initLearnGroupForCharacterType(ICharacterType type, GroupCharmTree charmTree) {
     ILearningCharmGroup[] groups = createGroups(charmTree.getAllCharmGroups());
     nonMartialArtsGroupsByType.put(type, groups);
+  }
+
+  private void initTreeForCharacterType(ICharmTemplate charmTemplate, ICharacterType type) {
+    CharmTree charmTree = new CharmTree(charmTemplate);
+    treesByType.put(type, charmTree);
     templatesByType.put(type, charmTemplate);
   }
 
