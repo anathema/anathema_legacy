@@ -17,7 +17,7 @@ include('Anathema',
         'Character_Equipment', 'Character_Equipment_Impl', 'Character_MartialArts', 'Character_Mutations',
         'Character_Craft', 'Character_Intimacies', 'Character_Linguistics',
 
-        'Character_Solar', 'Character_Mortal', 'Character_Spirit', 'Character_Sidereal', 'Character_Db', 'Character_Ghost',
+        'Character_Solar', 'Character_Mortal', 'Character_Sidereal', 'Character_Db', 'Character_Ghost',
         'Character_Abyssal', 'Character_Infernal',
 
         'Blog_InkMonkeys', 'Book_BrokenWingedCrane',

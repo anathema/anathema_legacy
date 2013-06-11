@@ -1,7 +1,0 @@
-<magicTemplate>
-	<freePicksPredicate defaultResponse="true"/>
-	<charmTemplate charmType="Spirit">
-		<martialArts level="Mortal"/>
-	</charmTemplate>
-	<spellTemplate maximumSorceryCircle="Celestial" maximumNecromancyCircle="Labyrinth"/>
-</magicTemplate>		
