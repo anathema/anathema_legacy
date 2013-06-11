@@ -1,4 +1,0 @@
-dependencies {
-  compile project(':Platform_Swing')
-  testCompile parent.ext.testDependencies
-}

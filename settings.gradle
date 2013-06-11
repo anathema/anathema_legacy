@@ -4,7 +4,7 @@ include('Anathema',
 
         'Namegenerator',
 
-        'Campaign_Scribe', 'Campaign_Plot', 'Campaign_Scribe_Conversion',
+        'Campaign_Scribe',
 
         'Charm_Tree', 'Magic_Description', 'Charm_Cascades', 'Character_Cards',
 
