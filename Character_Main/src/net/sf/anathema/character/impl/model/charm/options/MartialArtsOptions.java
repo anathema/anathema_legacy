@@ -12,6 +12,7 @@ import net.sf.anathema.character.generic.template.ITemplateRegistry;
 import net.sf.anathema.character.generic.template.ITemplateType;
 import net.sf.anathema.character.generic.template.magic.ICharmTemplate;
 import net.sf.anathema.character.generic.template.magic.IMagicTemplate;
+import net.sf.anathema.character.generic.template.magic.MartialArtsRules;
 
 import static net.sf.anathema.character.generic.impl.magic.MartialArtsUtilities.isMartialArtsCharm;
 
@@ -19,14 +20,15 @@ public class MartialArtsOptions implements ICharmIdMap, ICharmLearnableArbitrato
 
   private final MartialArtsCharmTree martialArtsCharmTree;
   private final ICharacterModelContext context;
+  private ITemplateRegistry registry;
 
   public MartialArtsOptions(ICharacterModelContext context, ITemplateRegistry registry) {
     this.context = context;
-    ICharmTemplate nativeCharmTemplate = getNativeCharmTemplate(registry);
-    this.martialArtsCharmTree = new MartialArtsCharmTree(nativeCharmTemplate);
+    this.registry = registry;
+    this.martialArtsCharmTree = new MartialArtsCharmTree(getNativeCharmTemplate());
   }
 
-  private ICharmTemplate getNativeCharmTemplate(ITemplateRegistry registry) {
+  private ICharmTemplate getNativeCharmTemplate() {
     IBasicCharacterData basicCharacterContext = context.getBasicCharacterContext();
     ITemplateType templateType = basicCharacterContext.getTemplateType();
     ICharacterTemplate template = registry.getTemplate(templateType);
@@ -46,5 +48,9 @@ public class MartialArtsOptions implements ICharmIdMap, ICharmLearnableArbitrato
   @Override
   public boolean isLearnable(ICharm charm) {
     return !isMartialArtsCharm(charm) || martialArtsCharmTree.isLearnable(charm);
+  }
+
+  public MartialArtsRules getMartialArtsRulesForCharacterType() {
+    return getNativeCharmTemplate().getMartialArtsRules();
   }
 }

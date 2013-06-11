@@ -73,7 +73,7 @@ public class CharmConfiguration implements ICharmConfiguration {
   public CharmConfiguration(IHealthConfiguration health, ICharacterModelContext context, CharacterTypes characterTypes, ITemplateRegistry registry,
                             ICharmProvider provider) {
     this.martialArtsOptions = new MartialArtsOptions(context, registry);
-    this.nonMartialArtsOptions = new NonMartialArtsOptions(context, characterTypes, registry, provider);
+    this.nonMartialArtsOptions = new NonMartialArtsOptions(context, characterTypes, registry);
     this.manager = new SpecialCharmManager(this, health, context);
     this.context = context;
     this.provider = provider;
@@ -362,7 +362,7 @@ public class CharmConfiguration implements ICharmConfiguration {
   public final boolean isLearnable(ICharm charm) {
     if (isAlienCharm(charm)) {
       ICasteType casteType = context.getBasicCharacterContext().getCasteType();
-      if (!nonMartialArtsOptions.getCharmTemplateForCharacterType().isAllowedAlienCharms(casteType)) {
+      if (!nonMartialArtsOptions.getNativeCharmTemplate().isAllowedAlienCharms(casteType)) {
         return false;
       }
       if (charm.hasAttribute(ICharmData.NATIVE)) {
@@ -379,7 +379,7 @@ public class CharmConfiguration implements ICharmConfiguration {
       if (isSiderealFormCharm && !martialArtsConfiguration.isAnyCelestialStyleCompleted()) {
         return false;
       }
-      if (!nonMartialArtsOptions.getMartialArtsRulesForCharacterType().isCharmAllowed(charm, martialArtsConfiguration, isExperienced())) {
+      if (!martialArtsOptions.getMartialArtsRulesForCharacterType().isCharmAllowed(charm, martialArtsConfiguration, isExperienced())) {
         return false;
       }
     }
