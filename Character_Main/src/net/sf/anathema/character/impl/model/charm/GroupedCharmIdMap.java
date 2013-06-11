@@ -3,12 +3,19 @@ package net.sf.anathema.character.impl.model.charm;
 import net.sf.anathema.character.generic.magic.ICharm;
 import net.sf.anathema.character.generic.magic.charms.ICharmIdMap;
 
+import java.util.Arrays;
+import java.util.Collection;
+
 public class GroupedCharmIdMap implements ICharmIdMap {
 
-  private final ICharmIdMap[] trees;
+  private final Collection<? extends ICharmIdMap> trees;
 
   public GroupedCharmIdMap(ICharmIdMap[] charmTrees) {
-    this.trees = charmTrees;
+    this(Arrays.asList(charmTrees));
+  }
+
+  public GroupedCharmIdMap(Collection<? extends ICharmIdMap> trees) {
+    this.trees = trees;
   }
 
   @Override
