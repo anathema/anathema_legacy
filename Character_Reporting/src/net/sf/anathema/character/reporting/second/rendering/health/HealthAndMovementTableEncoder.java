@@ -15,16 +15,16 @@ import net.sf.anathema.character.reporting.pdf.rendering.graphics.SheetGraphics;
 import net.sf.anathema.lib.resources.Resources;
 
 public class HealthAndMovementTableEncoder extends AbstractHealthAndMovementTableEncoder {
-  
+
   private int mobilityPenalty;
-  
+
   public HealthAndMovementTableEncoder(Resources resources) {
     super(resources);
   }
-  
+
   @Override
   public final float encodeTable(SheetGraphics graphics, ReportSession session, Bounds bounds) throws DocumentException {
-    mobilityPenalty = Math.min( 0, StatsModifierFactory.create(session.getCharacter()).getMobilityPenalty() );
+    mobilityPenalty = Math.min(0, StatsModifierFactory.create(session.getCharacter()).getMobilityPenalty());
     return super.encodeTable(graphics, session, bounds);
   }
 
@@ -46,18 +46,19 @@ public class HealthAndMovementTableEncoder extends AbstractHealthAndMovementTabl
   }
 
   @Override
-  protected final void addMovementCells(SheetGraphics graphics, PdfPTable table, HealthLevelType level, int painTolerance, IGenericTraitCollection collection) {
+  protected final void addMovementCells(SheetGraphics graphics, PdfPTable table, HealthLevelType level, int painTolerance,
+                                        IGenericTraitCollection collection) {
 
-    int woundPenalty    = getPenalty(level, painTolerance);
-    int dex             = collection.getTrait(AttributeType.Dexterity).getCurrentValue();
-    int str             = collection.getTrait(AttributeType.Strength).getCurrentValue();
-    int athletics       = collection.getTrait(AbilityType.Athletics).getCurrentValue();
-    
+    int woundPenalty = getPenalty(level, painTolerance);
+    int dex = collection.getTrait(AttributeType.Dexterity).getCurrentValue();
+    int str = collection.getTrait(AttributeType.Strength).getCurrentValue();
+    int athletics = collection.getTrait(AbilityType.Athletics).getCurrentValue();
+
     // minimum move is 1, minimum dash is 2, minimum jump h/v, swim, & climb is unknown
-    int move            = Math.max( dex + woundPenalty + mobilityPenalty    , 1 );
-    int dash            = Math.max( dex + woundPenalty + mobilityPenalty + 6, 2 );
-    int verticalJump    = str + athletics + woundPenalty + mobilityPenalty;
-    int horizontalJump  = verticalJump * 2;
+    int move = Math.max(dex + woundPenalty + mobilityPenalty, 1);
+    int dash = Math.max(dex + woundPenalty + mobilityPenalty + 6, 2);
+    int verticalJump = str + athletics + woundPenalty + mobilityPenalty;
+    int horizontalJump = verticalJump * 2;
 
     table.addCell(createMovementCell(graphics, move, 1));
     addSpaceCells(graphics, table, 1);

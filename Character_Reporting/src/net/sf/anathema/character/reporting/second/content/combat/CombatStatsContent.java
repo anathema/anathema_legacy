@@ -48,8 +48,7 @@ public class CombatStatsContent extends AbstractCombatStatsContent {
   }
 
   public int getJoinBattleWithSpecialty() {
-    return CharacterUtilities.getJoinBattleWithSpecialty(getTraitCollection(), equipment,
-            awarenessSpecialty.getValue());
+    return CharacterUtilities.getJoinBattleWithSpecialty(getTraitCollection(), equipment, awarenessSpecialty.getValue());
   }
 
   public int getDodgeDv() {
@@ -57,30 +56,22 @@ public class CombatStatsContent extends AbstractCombatStatsContent {
   }
 
   public int getDodgeDvWithSpecialty() {
-    return CharacterUtilities.getDodgeDvWithSpecialty(getCharacterType(), getTraitCollection(), equipment,
-            dodgeSpecialty.getValue());
+    return CharacterUtilities.getDodgeDvWithSpecialty(getCharacterType(), getTraitCollection(), equipment, dodgeSpecialty.getValue());
   }
 
   public String[] getAttacks() {
-    return new String[]{getString("Sheet.Combat.AttackList.DeclareAttack"),
-            getString("Sheet.Combat.AttackList.DeclareDefence"),
-            getString("Sheet.Combat.AttackList.AttackRoll"),
-            getString("Sheet.Combat.AttackList.AttackReroll"),
-            getString("Sheet.Combat.AttackList.SubstractPenalties"),
-            getString("Sheet.Combat.AttackList.DefenseReroll"),
-            getString("Sheet.Combat.AttackList.CalculateRawDamage"),
-            getString("Sheet.Combat.AttackList.RollDamage"),
-            getString("Sheet.Combat.AttackList.Counterattack"),
-            getString("Sheet.Combat.AttackList.ApplyDamage")
+    return new String[]{getString("Sheet.Combat.AttackList.DeclareAttack"), getString("Sheet.Combat.AttackList.DeclareDefence"),
+            getString("Sheet.Combat.AttackList.AttackRoll"), getString("Sheet.Combat.AttackList.AttackReroll"),
+            getString("Sheet.Combat.AttackList.SubstractPenalties"), getString("Sheet.Combat.AttackList.DefenseReroll"),
+            getString("Sheet.Combat.AttackList.CalculateRawDamage"), getString("Sheet.Combat.AttackList.RollDamage"),
+            getString("Sheet.Combat.AttackList.Counterattack"), getString("Sheet.Combat.AttackList.ApplyDamage")
 
     };
   }
 
   public QualifiedText[] getKnockdownAndStunningTexts() {
-    return new QualifiedText[]{new QualifiedText(getString("Sheet.Combat.Knockdown.Header") + "\n",
-            Normal),
-            new QualifiedText(getString("Sheet.Combat.Knockdown.Second.Comment") + "\n\n",
-                    Comment),
+    return new QualifiedText[]{new QualifiedText(getString("Sheet.Combat.Knockdown.Header") + "\n", Normal),
+            new QualifiedText(getString("Sheet.Combat.Knockdown.Second.Comment") + "\n\n", Comment),
             new QualifiedText(getString("Sheet.Combat.Stunning.Header") + "\n", Normal),
             new QualifiedText(getString("Sheet.Combat.Stunning.Second.Comment"), Comment)
 
@@ -101,18 +92,9 @@ public class CombatStatsContent extends AbstractCombatStatsContent {
     String dvHeader = getResources().getString("Sheet.Combat.CommonActions.DV");
     CombatAction headerData = new CombatAction(nameHeader, speedHeader, dvHeader);
     CombatAction emptyData = new CombatAction(" ", " ", " ");
-    return new CombatAction[]{headerData, emptyData, getCombatAction("JoinBattle"),
-            getCombatAction("ReadyWeapon"),
-            getCombatAction("PhysicalAttack"),
-            getCombatAction("CoordinateAttack"),
-            getCombatAction("Aim"),
-            getCombatAction("Guard"),
-            getCombatAction("Move"),
-            getCombatAction("Dash"),
-            getCombatAction("Misc"),
-            getCombatAction("Jump"),
-            getCombatAction("Rise"),
-            getCombatAction("Inactive")
+    return new CombatAction[]{headerData, emptyData, getCombatAction("JoinBattle"), getCombatAction("ReadyWeapon"), getCombatAction("PhysicalAttack"),
+            getCombatAction("CoordinateAttack"), getCombatAction("Aim"), getCombatAction("Guard"), getCombatAction("Move"), getCombatAction("Dash"),
+            getCombatAction("Misc"), getCombatAction("Jump"), getCombatAction("Rise"), getCombatAction("Inactive")
 
     };
   }

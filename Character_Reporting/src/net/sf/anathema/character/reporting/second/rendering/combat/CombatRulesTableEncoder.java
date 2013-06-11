@@ -42,8 +42,7 @@ public class CombatRulesTableEncoder extends AbstractCombatRulesTableEncoder {
     list.addCell(createSpaceCell(graphics));
     list.addCell(createSpaceCell(graphics));
     list.addCell(createSpaceCell(graphics));
-    TableCell rulesCommentCell =
-            new TableCell(new Phrase(content.getAttackComment(), graphics.createCommentFont()), Rectangle.NO_BORDER);
+    TableCell rulesCommentCell = new TableCell(new Phrase(content.getAttackComment(), graphics.createCommentFont()), Rectangle.NO_BORDER);
     list.addCell(rulesCommentCell);
     return list.getTable();
   }
