@@ -68,9 +68,7 @@ public class AdditionalRulesTemplateParser extends AbstractXmlTemplateParser<Gen
   private final ISpecialCharm[] charms;
   private final CharacterTypes characterTypes;
 
-  public AdditionalRulesTemplateParser(
-          IXmlTemplateRegistry<GenericAdditionalRules> registry,
-          ISpecialCharm[] charms, CharacterTypes characterTypes) {
+  public AdditionalRulesTemplateParser(IXmlTemplateRegistry<GenericAdditionalRules> registry, ISpecialCharm[] charms, CharacterTypes characterTypes) {
     super(registry);
     this.charms = charms;
     this.characterTypes = characterTypes;
@@ -94,8 +92,7 @@ public class AdditionalRulesTemplateParser extends AbstractXmlTemplateParser<Gen
     return basicTemplate;
   }
 
-  private void setAdditionalTraitCosts(Element element, GenericAdditionalRules basicTemplate)
-          throws PersistenceException {
+  private void setAdditionalTraitCosts(Element element, GenericAdditionalRules basicTemplate) throws PersistenceException {
     Element additionalCostElement = element.element(TAG_ADDITIONAL_COST);
     if (additionalCostElement == null) {
       return;
@@ -109,8 +106,8 @@ public class AdditionalRulesTemplateParser extends AbstractXmlTemplateParser<Gen
       for (Element modificationElement : ElementUtilities.elements(costModifierElement, TAG_DOT_COST_MODIFICATION)) {
         dotCostModifications.add(createPointCostModification(modificationElement));
       }
-      basicTemplate.addBackgroundCostModifier(getBackgroundId(costModifierElement),
-              new BackgroundCostModifier(bonusModifications, dotCostModifications));
+      basicTemplate
+              .addBackgroundCostModifier(getBackgroundId(costModifierElement), new BackgroundCostModifier(bonusModifications, dotCostModifications));
     }
   }
 
@@ -136,8 +133,7 @@ public class AdditionalRulesTemplateParser extends AbstractXmlTemplateParser<Gen
     basicTemplate.setRejectedBackgrounds(ids.toArray(new String[ids.size()]));
   }
 
-  private void setAdditionalMagicPools(Element element, GenericAdditionalRules basicTemplate)
-          throws PersistenceException {
+  private void setAdditionalMagicPools(Element element, GenericAdditionalRules basicTemplate) throws PersistenceException {
     Element additionalMagicElement = element.element(TAG_ADDITIONAL_MAGIC);
     if (additionalMagicElement == null) {
       return;
@@ -155,8 +151,7 @@ public class AdditionalRulesTemplateParser extends AbstractXmlTemplateParser<Gen
     basicTemplate.setMagicPools(pools.toArray(new IAdditionalMagicLearnPool[pools.size()]));
   }
 
-  private void setAdditionalEssencePools(Element element, GenericAdditionalRules basicTemplate)
-          throws PersistenceException {
+  private void setAdditionalEssencePools(Element element, GenericAdditionalRules basicTemplate) throws PersistenceException {
     Element additionalPoolsElement = element.element(TAG_ADDITIONAL_POOLS);
     if (additionalPoolsElement == null) {
       return;
@@ -190,7 +185,7 @@ public class AdditionalRulesTemplateParser extends AbstractXmlTemplateParser<Gen
           }
         });
         if (!(charm instanceof IMultiLearnableCharm)) {
-          throw new ContractFailedException("No such multi-learnable Charm found.");
+          throw new ContractFailedException("No such multi-learnable Charm " + charmId + " found.");
         }
         pools.add(new MultiLearnableCharmPool((IMultiLearnableCharm) charm, personalPool, peripheralPool, complexPools));
       } else if (multiPool.element(TAG_BACKGROUND_REFERENCE) != null) {
@@ -237,8 +232,7 @@ public class AdditionalRulesTemplateParser extends AbstractXmlTemplateParser<Gen
       try {
         ComplexAdditionalEssencePool pool;
         if (multiplier == Integer.MIN_VALUE) {
-          pool = new ComplexAdditionalEssencePool(poolID,
-                  ElementUtilities.getRequiredAttrib(poolElement, ATTRIB_FORMULA));
+          pool = new ComplexAdditionalEssencePool(poolID, ElementUtilities.getRequiredAttrib(poolElement, ATTRIB_FORMULA));
         } else {
           pool = new ComplexAdditionalEssencePool(poolID, multiplier);
         }
