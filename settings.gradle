@@ -10,7 +10,7 @@ include('Anathema',
 
         'Engine_Character', 'Engine_Exalted',
 
-        'Character_Generic', 'Character_Generic_Impl', 'Character_Generic_Framework',
+        'Character_Generic', 'Character_Generic_Framework',
         'Character_Library', 'Character_Main', 'Character_Main_Impl', 'Character_Main_FX', 'Character_Main_Swing',
         'Character_Reporting', 'Character_Reporting_SecondEdition',
 

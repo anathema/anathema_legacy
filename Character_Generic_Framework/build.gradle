@@ -4,7 +4,6 @@ dependencies {
     testCompile parent.ext.testDependencies
     testCompile project(path: ':Platform', configuration: 'tests')
     testCompile project(path: ':Character_Generic', configuration: 'tests')
-    testCompile project(path: ':Character_Generic_Impl', configuration: 'tests')
 }
 
 configurations {

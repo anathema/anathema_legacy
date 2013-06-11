@@ -1,9 +1,8 @@
 dependencies {
-  compile project(':Character_Generic')
-  compile project(':Character_Generic_Framework')
-  testCompile parent.ext.testDependencies
-  testCompile project(path: ':Character_Generic', configuration: 'tests')
-  testCompile project(path: ':Character_Generic_Impl', configuration: 'tests')
+    compile project(':Character_Generic')
+    compile project(':Character_Generic_Framework')
+    testCompile parent.ext.testDependencies
+    testCompile project(path: ':Character_Generic', configuration: 'tests')
 }
 
 configurations {

@@ -6,7 +6,6 @@ dependencies {
     compile project(':Engine_Exalted')
     testCompile parent.ext.testDependencies
     testCompile project(path: ':Character_Generic', configuration: 'tests')
-    testCompile project(path: ':Character_Generic_Impl', configuration: 'tests')
     testCompile project(path: ':Character_Generic_Framework', configuration: 'tests')
 }
 

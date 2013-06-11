@@ -1,10 +1,8 @@
 dependencies {
-  compile project(':GraphLayout')
-  compile project(':Platform_SwingTree')
-  compile project(':Character_Generic')
-  compile project(':Character_Generic_Impl')
-  testCompile parent.ext.testDependencies
-  testCompile project(path: ':Platform', configuration: 'tests')
-  testCompile project(path: ':Character_Generic', configuration: 'tests')
-  testCompile project(path: ':Character_Generic_Impl', configuration: 'tests')
+    compile project(':GraphLayout')
+    compile project(':Platform_SwingTree')
+    compile project(':Character_Generic')
+    testCompile parent.ext.testDependencies
+    testCompile project(path: ':Platform', configuration: 'tests')
+    testCompile project(path: ':Character_Generic', configuration: 'tests')
 }

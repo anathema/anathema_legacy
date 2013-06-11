@@ -1,0 +1,17 @@
+<attributeGroups>
+  <group id="Physical">
+    <trait type="Strength"/>
+    <trait type="Dexterity"/>
+    <trait type="Stamina"/>
+  </group>
+  <group id="Social">
+     <trait type="Charisma"/>
+     <trait type="Manipulation"/>
+     <trait type="Appearance"/>    
+  </group>
+  <group id="Mental">
+    <trait type="Perception"/>
+    <trait type="Intelligence"/>
+    <trait type="Wits"/>
+  </group>  
+</attributeGroups>
