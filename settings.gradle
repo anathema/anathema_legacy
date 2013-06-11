@@ -19,4 +19,4 @@ include('Anathema',
 
         'Character_Solar', 'Character_Mortal', 'Character_Sidereal', 'Character_Db',
 
-        'Development_Code', 'Integrationtest')
+        'Integrationtest')
