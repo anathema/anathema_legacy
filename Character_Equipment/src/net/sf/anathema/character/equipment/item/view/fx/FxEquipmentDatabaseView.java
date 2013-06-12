@@ -3,6 +3,8 @@ package net.sf.anathema.character.equipment.item.view.fx;
 import net.sf.anathema.character.equipment.item.view.AgnosticEquipmentDatabaseView;
 import net.sf.anathema.platform.fx.PerspectivePane;
 import net.sf.anathema.platform.fx.selection.ComboBoxSelectionFactory;
+import net.sf.anathema.platform.fx.selection.PopUpLessSelectionFactory;
+import net.sf.anathema.platform.fx.selection.SelectionViewFactory;
 
 import static net.sf.anathema.platform.fx.FxThreading.runOnCorrectThread;
 import static net.sf.anathema.platform.fx.FxUtilities.systemSupportsPopUpsWhileEmbeddingFxIntoSwing;
@@ -31,11 +33,11 @@ public class FxEquipmentDatabaseView {
     });
   }
 
-  private ComboBoxSelectionFactory selectionFactory() {
+  private SelectionViewFactory selectionFactory() {
     if (systemSupportsPopUpsWhileEmbeddingFxIntoSwing()) {
       return new ComboBoxSelectionFactory();
     } else {
-      return new ComboBoxSelectionFactory();
+      return new PopUpLessSelectionFactory();
     }
   }
 }
