@@ -9,7 +9,6 @@ import net.sf.anathema.character.model.ITypedDescription;
 import net.sf.anathema.character.model.concept.IEditMotivationListener;
 import net.sf.anathema.character.model.concept.IMotivation;
 import net.sf.anathema.character.presenter.magic.IContentPresenter;
-import net.sf.anathema.character.view.IConceptAndRulesViewFactory;
 import net.sf.anathema.character.view.concept.ICharacterConceptAndRulesView;
 import net.sf.anathema.character.view.concept.ICharacterConceptAndRulesViewProperties;
 import net.sf.anathema.framework.presenter.resources.BasicUi;
@@ -34,10 +33,10 @@ public class CharacterConceptAndRulesPresenter implements IContentPresenter {
   private final ICharacter character;
   private final Resources resources;
 
-  public CharacterConceptAndRulesPresenter(ICharacter character, IConceptAndRulesViewFactory viewFactory,
+  public CharacterConceptAndRulesPresenter(ICharacter character, ICharacterConceptAndRulesView view,
                                            Resources resources) {
     this.character = character;
-    this.view = viewFactory.createCharacterConceptView();
+    this.view = view;
     this.resources = resources;
   }
 

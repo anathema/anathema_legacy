@@ -1,15 +1,15 @@
 package net.sf.anathema.character.impl.view;
 
-import net.sf.anathema.character.impl.view.concept.ConceptAndRulesViewFactory;
+import net.sf.anathema.character.impl.view.concept.CharacterConceptAndRulesView;
 import net.sf.anathema.character.impl.view.magic.MagicViewFactory;
 import net.sf.anathema.character.impl.view.overview.OverviewContainer;
 import net.sf.anathema.character.view.BackgroundView;
 import net.sf.anathema.character.view.CharacterView;
 import net.sf.anathema.character.view.IAdvantageViewFactory;
 import net.sf.anathema.character.view.ICharacterDescriptionView;
-import net.sf.anathema.character.view.IConceptAndRulesViewFactory;
 import net.sf.anathema.character.view.IGroupedFavorableTraitViewFactory;
 import net.sf.anathema.character.view.advance.IExperienceConfigurationView;
+import net.sf.anathema.character.view.concept.ICharacterConceptAndRulesView;
 import net.sf.anathema.character.view.magic.IMagicViewFactory;
 import net.sf.anathema.character.view.overview.CategorizedOverview;
 import net.sf.anathema.character.view.overview.NullOverviewContainer;
@@ -68,8 +68,8 @@ public class TaskedCharacterView implements CharacterView {
   }
 
   @Override
-  public IConceptAndRulesViewFactory createConceptViewFactory() {
-    return new ConceptAndRulesViewFactory();
+  public ICharacterConceptAndRulesView createConceptView() {
+    return new CharacterConceptAndRulesView();
   }
 
   @Override

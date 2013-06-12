@@ -8,8 +8,8 @@ import net.sf.anathema.character.view.BackgroundView;
 import net.sf.anathema.character.view.CharacterView;
 import net.sf.anathema.character.view.IAdvantageViewFactory;
 import net.sf.anathema.character.view.ICharacterDescriptionView;
-import net.sf.anathema.character.view.IConceptAndRulesViewFactory;
 import net.sf.anathema.character.view.IGroupedFavorableTraitViewFactory;
+import net.sf.anathema.character.view.concept.ICharacterConceptAndRulesView;
 import net.sf.anathema.framework.IApplicationModel;
 import net.sf.anathema.framework.presenter.view.ContentView;
 import net.sf.anathema.framework.presenter.view.MultipleContentView;
@@ -60,7 +60,7 @@ public class CharacterPresenter implements Presenter, MultipleContentViewPresent
             character.getCharacterTemplate().getTemplateType().getCharacterType().isExaltType());
     IContentPresenter descriptionPresenter = new CharacterDescriptionPresenter(descriptionDetails, resources, view);
 
-    IConceptAndRulesViewFactory viewFactory = characterView.createConceptViewFactory();
+    ICharacterConceptAndRulesView viewFactory = characterView.createConceptView();
     IContentPresenter conceptPresenter = new CharacterConceptAndRulesPresenter(character, viewFactory, resources);
 
     String title = getString("CardView.Outline.Title");
