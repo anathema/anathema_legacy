@@ -9,6 +9,7 @@ import net.sf.anathema.character.view.CharacterView;
 import net.sf.anathema.character.view.IAdvantageViewFactory;
 import net.sf.anathema.character.view.ICharacterDescriptionView;
 import net.sf.anathema.character.view.IGroupedFavorableTraitViewFactory;
+import net.sf.anathema.character.view.SectionView;
 import net.sf.anathema.character.view.concept.ICharacterConceptAndRulesView;
 import net.sf.anathema.framework.IApplicationModel;
 import net.sf.anathema.framework.presenter.view.ContentView;
@@ -54,17 +55,24 @@ public class CharacterPresenter implements Presenter, MultipleContentViewPresent
   }
 
   private void initOutline() {
-    ICharacterDescriptionView view = characterView.createCharacterDescriptionView();
+    String sectionTitle = getString("CardView.Outline.Title");
+    SectionView sectionView = characterView.addSection(sectionTitle);
+
+    String descriptionHeader = resources.getString("CardView.CharacterDescription.Title");
+    ICharacterDescriptionView descriptionView = sectionView.addView(descriptionHeader, ICharacterDescriptionView.class);
     DescriptionDetails descriptionDetails = new DescriptionDetails(character.getDescription(),
             character.getCharacterConcept(),
             character.getCharacterTemplate().getTemplateType().getCharacterType().isExaltType());
-    IContentPresenter descriptionPresenter = new CharacterDescriptionPresenter(descriptionDetails, resources, view);
+    IContentPresenter descriptionPresenter = new CharacterDescriptionPresenter(descriptionDetails, resources,
+            descriptionView);
+    descriptionPresenter.initPresentation();
 
-    ICharacterConceptAndRulesView viewFactory = characterView.createConceptView();
-    IContentPresenter conceptPresenter = new CharacterConceptAndRulesPresenter(character, viewFactory, resources);
+    String conceptHeader = resources.getString("CardView.CharacterConcept.Title");
+    ICharacterConceptAndRulesView conceptView = sectionView.addView(conceptHeader, ICharacterConceptAndRulesView.class);
+    IContentPresenter conceptPresenter = new CharacterConceptAndRulesPresenter(character, conceptView, resources);
+    conceptPresenter.initPresentation();
 
-    String title = getString("CardView.Outline.Title");
-    initializer.initContentPresentation(title, Concept, descriptionPresenter, conceptPresenter);
+    initializer.initContentPresentation(sectionTitle, Concept);
   }
 
   private void initPhysicalTraits() {

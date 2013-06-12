@@ -8,6 +8,7 @@ import net.sf.anathema.character.view.CharacterView;
 import net.sf.anathema.character.view.IAdvantageViewFactory;
 import net.sf.anathema.character.view.ICharacterDescriptionView;
 import net.sf.anathema.character.view.IGroupedFavorableTraitViewFactory;
+import net.sf.anathema.character.view.SectionView;
 import net.sf.anathema.character.view.advance.IExperienceConfigurationView;
 import net.sf.anathema.character.view.concept.ICharacterConceptAndRulesView;
 import net.sf.anathema.character.view.magic.IMagicViewFactory;
@@ -85,6 +86,11 @@ public class TaskedCharacterView implements CharacterView {
   @Override
   public BackgroundView createBackgroundView() {
     return new SeparateBackgroundView(integerDisplayFactory);
+  }
+
+  @Override
+  public SectionView addSection(String title) {
+    return new CharacterViewSection(characterPane, title);
   }
 
   @Override
