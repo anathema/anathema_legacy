@@ -9,7 +9,7 @@ import net.sf.anathema.character.equipment.ItemCost;
 import net.sf.anathema.character.equipment.item.view.CostSelectionView;
 import net.sf.anathema.lib.control.ObjectValueListener;
 import net.sf.anathema.lib.gui.selection.ISelectionIntValueChangedListener;
-import net.sf.anathema.platform.fx.ComboBoxSelectionView;
+import net.sf.anathema.platform.fx.FxObjectSelectionView;
 import org.jmock.example.announcer.Announcer;
 import org.tbee.javafx.scene.layout.MigPane;
 
@@ -17,7 +17,8 @@ import static net.sf.anathema.lib.gui.layout.LayoutUtils.withoutInsets;
 
 public class FxCostSelectionView implements CostSelectionView {
 
-  private ComboBoxSelectionView<String> selection;
+  private final SelectionViewFactory selectionViewFactory = new SelectionViewFactory();
+  private FxObjectSelectionView<String> selection;
   private ListSpinner<Integer> spinner;
   private final MigPane pane = new MigPane(withoutInsets());
   private final Announcer<ISelectionIntValueChangedListener> announcer = new Announcer<>(
@@ -29,7 +30,7 @@ public class FxCostSelectionView implements CostSelectionView {
     Platform.runLater(new Runnable() {
       @Override
       public void run() {
-        selection = new ComboBoxSelectionView<>(text, new SimpleUiConfiguration());
+        selection = selectionViewFactory.create(text, new SimpleUiConfiguration());
         spinner = new ListSpinner<>(0, 5);
         spinner.getStyleClass().add("dots");
         pane.add(selection.getNode());
