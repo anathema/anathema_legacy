@@ -10,6 +10,8 @@ import net.sf.anathema.character.equipment.item.view.CostSelectionView;
 import net.sf.anathema.lib.control.ObjectValueListener;
 import net.sf.anathema.lib.gui.selection.ISelectionIntValueChangedListener;
 import net.sf.anathema.platform.fx.FxObjectSelectionView;
+import net.sf.anathema.platform.fx.selection.ComboBoxSelectionFactory;
+import net.sf.anathema.platform.fx.selection.SelectionViewFactory;
 import org.jmock.example.announcer.Announcer;
 import org.tbee.javafx.scene.layout.MigPane;
 
@@ -17,7 +19,7 @@ import static net.sf.anathema.lib.gui.layout.LayoutUtils.withoutInsets;
 
 public class FxCostSelectionView implements CostSelectionView {
 
-  private final SelectionViewFactory selectionViewFactory = new SelectionViewFactory();
+  private final SelectionViewFactory selectionViewFactory = new ComboBoxSelectionFactory();
   private FxObjectSelectionView<String> selection;
   private ListSpinner<Integer> spinner;
   private final MigPane pane = new MigPane(withoutInsets());

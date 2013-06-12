@@ -1,4 +1,4 @@
-package net.sf.anathema.platform.fx;
+package net.sf.anathema.platform.fx.selection;
 
 import com.sun.javafx.collections.ObservableListWrapper;
 import javafx.application.Platform;
@@ -9,6 +9,10 @@ import javafx.scene.control.ComboBox;
 import javafx.scene.control.Label;
 import net.sf.anathema.lib.control.ObjectValueListener;
 import net.sf.anathema.lib.gui.AgnosticUIConfiguration;
+import net.sf.anathema.platform.fx.ConfigurableListCellFactory;
+import net.sf.anathema.platform.fx.FxObjectSelectionView;
+import net.sf.anathema.platform.fx.FxThreading;
+import net.sf.anathema.platform.fx.UITableCell;
 import org.jmock.example.announcer.Announcer;
 import org.tbee.javafx.scene.layout.MigPane;
 

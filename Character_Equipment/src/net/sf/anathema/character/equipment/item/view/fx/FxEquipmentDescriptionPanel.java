@@ -14,11 +14,13 @@ import net.sf.anathema.lib.gui.selection.IObjectSelectionView;
 import net.sf.anathema.lib.workflow.textualdescription.ITextView;
 import net.sf.anathema.platform.fx.FxObjectSelectionView;
 import net.sf.anathema.platform.fx.FxTextView;
+import net.sf.anathema.platform.fx.selection.ComboBoxSelectionFactory;
+import net.sf.anathema.platform.fx.selection.SelectionViewFactory;
 import org.tbee.javafx.scene.layout.MigPane;
 
 public class FxEquipmentDescriptionPanel implements EquipmentDescriptionPanel {
 
-  private final SelectionViewFactory selectionViewFactory = new SelectionViewFactory();
+  private final SelectionViewFactory selectionViewFactory = new ComboBoxSelectionFactory();
   private MigPane pane;
 
   public FxEquipmentDescriptionPanel() {
