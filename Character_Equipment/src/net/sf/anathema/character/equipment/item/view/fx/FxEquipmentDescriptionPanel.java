@@ -14,16 +14,16 @@ import net.sf.anathema.lib.gui.selection.IObjectSelectionView;
 import net.sf.anathema.lib.workflow.textualdescription.ITextView;
 import net.sf.anathema.platform.fx.FxObjectSelectionView;
 import net.sf.anathema.platform.fx.FxTextView;
-import net.sf.anathema.platform.fx.selection.ComboBoxSelectionFactory;
 import net.sf.anathema.platform.fx.selection.SelectionViewFactory;
 import org.tbee.javafx.scene.layout.MigPane;
 
 public class FxEquipmentDescriptionPanel implements EquipmentDescriptionPanel {
 
-  private final SelectionViewFactory selectionViewFactory = new ComboBoxSelectionFactory();
+  private final SelectionViewFactory selectionViewFactory;
   private MigPane pane;
 
-  public FxEquipmentDescriptionPanel() {
+  public FxEquipmentDescriptionPanel(SelectionViewFactory selectionFactory) {
+    this.selectionViewFactory = selectionFactory;
     Platform.runLater(new Runnable() {
       @Override
       public void run() {
@@ -84,7 +84,7 @@ public class FxEquipmentDescriptionPanel implements EquipmentDescriptionPanel {
 
   @Override
   public CostSelectionView addCostView(String label) {
-    final FxCostSelectionView costSelectionView = new FxCostSelectionView(label);
+    final FxCostSelectionView costSelectionView = new FxCostSelectionView(label, selectionViewFactory);
     Platform.runLater(new Runnable() {
       @Override
       public void run() {
