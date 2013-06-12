@@ -6,6 +6,7 @@ import javafx.beans.value.ObservableValue;
 import javafx.scene.Node;
 import javafx.scene.control.Label;
 import javafx.scene.control.ListView;
+import javafx.scene.control.SelectionMode;
 import net.sf.anathema.lib.control.ObjectValueListener;
 import net.sf.anathema.lib.gui.AgnosticUIConfiguration;
 import net.sf.anathema.platform.fx.ConfigurableListCellFactory;
@@ -40,6 +41,7 @@ public class ListSelectionView<T> implements FxObjectSelectionView<T> {
       @Override
       public void run() {
         list.setCellFactory(new ConfigurableListCellFactory<>(ui));
+        list.getSelectionModel().setSelectionMode(SelectionMode.SINGLE);
         list.getSelectionModel().selectedItemProperty().addListener(new ChangeListener<T>() {
           @Override
           public void changed(ObservableValue<? extends T> observableValue, T v, T newValue) {
