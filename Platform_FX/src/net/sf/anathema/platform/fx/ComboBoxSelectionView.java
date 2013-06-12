@@ -9,7 +9,6 @@ import javafx.scene.control.ComboBox;
 import javafx.scene.control.Label;
 import net.sf.anathema.lib.control.ObjectValueListener;
 import net.sf.anathema.lib.gui.AgnosticUIConfiguration;
-import net.sf.anathema.lib.gui.selection.IObjectSelectionView;
 import org.jmock.example.announcer.Announcer;
 import org.tbee.javafx.scene.layout.MigPane;
 
@@ -17,7 +16,7 @@ import java.util.Arrays;
 
 import static net.sf.anathema.lib.gui.layout.LayoutUtils.withoutInsets;
 
-public class ComboBoxSelectionView<V> implements IObjectSelectionView<V> {
+public class ComboBoxSelectionView<V> implements FxObjectSelectionView<V> {
   private ComboBox<V> comboBox;
   private Label label;
   private MigPane pane;
@@ -102,6 +101,7 @@ public class ComboBoxSelectionView<V> implements IObjectSelectionView<V> {
     comboBox.setDisable(!enabled);
   }
 
+  @Override
   public Node getNode() {
     waitForContent();
     return pane;

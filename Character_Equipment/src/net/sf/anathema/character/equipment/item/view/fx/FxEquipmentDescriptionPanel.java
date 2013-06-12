@@ -13,6 +13,7 @@ import net.sf.anathema.lib.gui.AgnosticUIConfiguration;
 import net.sf.anathema.lib.gui.selection.IObjectSelectionView;
 import net.sf.anathema.lib.workflow.textualdescription.ITextView;
 import net.sf.anathema.platform.fx.ComboBoxSelectionView;
+import net.sf.anathema.platform.fx.FxObjectSelectionView;
 import net.sf.anathema.platform.fx.FxTextView;
 import org.tbee.javafx.scene.layout.MigPane;
 
@@ -56,7 +57,7 @@ public class FxEquipmentDescriptionPanel implements EquipmentDescriptionPanel {
   @Override
   public IObjectSelectionView<MaterialComposition> addCompositionView(String label,
                                                                       AgnosticUIConfiguration<MaterialComposition> ui) {
-    final ComboBoxSelectionView<MaterialComposition> selectionView = new ComboBoxSelectionView<>(label, ui);
+    final FxObjectSelectionView<MaterialComposition> selectionView = createSelectionView(label, ui);
     Platform.runLater(new Runnable() {
       @Override
       public void run() {
@@ -69,7 +70,7 @@ public class FxEquipmentDescriptionPanel implements EquipmentDescriptionPanel {
   @Override
   public IObjectSelectionView<MagicalMaterial> addMaterialView(String label,
                                                                AgnosticUIConfiguration<MagicalMaterial> ui) {
-    final ComboBoxSelectionView<MagicalMaterial> selectionView = new ComboBoxSelectionView<>(label, ui);
+    final FxObjectSelectionView<MagicalMaterial> selectionView = createSelectionView(label, ui);
     Platform.runLater(new Runnable() {
       @Override
       public void run() {
@@ -93,5 +94,9 @@ public class FxEquipmentDescriptionPanel implements EquipmentDescriptionPanel {
 
   public Node getNode() {
     return pane;
+  }
+
+  private <T> FxObjectSelectionView<T> createSelectionView(String label, AgnosticUIConfiguration<T> ui) {
+    return new ComboBoxSelectionView<>(label, ui);
   }
 }
