@@ -69,7 +69,7 @@ public class CharacterPresenter implements Presenter, MultipleContentViewPresent
     ICharacterConceptAndRulesView conceptView = sectionView.addView(conceptHeader, ICharacterConceptAndRulesView.class);
     new CharacterConceptAndRulesPresenter(character, conceptView, resources).initPresentation();
 
-    initializer.initContentPresentation(sectionTitle, Concept);
+    initializer.addMultipleContentViewGroup(sectionTitle, Concept);
   }
 
   private void initPhysicalTraits() {
