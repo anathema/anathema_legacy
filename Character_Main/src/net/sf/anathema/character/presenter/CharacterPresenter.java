@@ -63,14 +63,11 @@ public class CharacterPresenter implements Presenter, MultipleContentViewPresent
     DescriptionDetails descriptionDetails = new DescriptionDetails(character.getDescription(),
             character.getCharacterConcept(),
             character.getCharacterTemplate().getTemplateType().getCharacterType().isExaltType());
-    IContentPresenter descriptionPresenter = new CharacterDescriptionPresenter(descriptionDetails, resources,
-            descriptionView);
-    descriptionPresenter.initPresentation();
+    new CharacterDescriptionPresenter(descriptionDetails, resources, descriptionView).initPresentation();
 
     String conceptHeader = resources.getString("CardView.CharacterConcept.Title");
     ICharacterConceptAndRulesView conceptView = sectionView.addView(conceptHeader, ICharacterConceptAndRulesView.class);
-    IContentPresenter conceptPresenter = new CharacterConceptAndRulesPresenter(character, conceptView, resources);
-    conceptPresenter.initPresentation();
+    new CharacterConceptAndRulesPresenter(character, conceptView, resources).initPresentation();
 
     initializer.initContentPresentation(sectionTitle, Concept);
   }

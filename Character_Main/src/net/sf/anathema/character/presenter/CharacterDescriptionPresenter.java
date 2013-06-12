@@ -4,12 +4,8 @@ import net.sf.anathema.character.generic.framework.resources.CharacterUI;
 import net.sf.anathema.character.model.ICharacterDescription;
 import net.sf.anathema.character.model.IIntegerDescription;
 import net.sf.anathema.character.model.concept.ICharacterConcept;
-import net.sf.anathema.character.presenter.magic.IContentPresenter;
 import net.sf.anathema.character.view.ICharacterDescriptionView;
 import net.sf.anathema.character.view.IMultiComponentLine;
-import net.sf.anathema.framework.presenter.view.ContentView;
-import net.sf.anathema.framework.presenter.view.SimpleViewContentView;
-import net.sf.anathema.framework.view.util.ContentProperties;
 import net.sf.anathema.interaction.Tool;
 import net.sf.anathema.lib.control.IIntValueChangedListener;
 import net.sf.anathema.lib.gui.widgets.IIntegerView;
@@ -20,7 +16,7 @@ import net.sf.anathema.lib.workflow.textualdescription.TextualPresentation;
 import net.sf.anathema.namegenerator.domain.realm.RealmNameGenerator;
 import net.sf.anathema.namegenerator.exalted.domain.ThresholdNameGenerator;
 
-public class CharacterDescriptionPresenter implements IContentPresenter {
+public class CharacterDescriptionPresenter {
 
   private final ICharacterDescription description;
   private final ICharacterConcept characterConcept;
@@ -37,7 +33,6 @@ public class CharacterDescriptionPresenter implements IContentPresenter {
     this.descriptionView = descriptionView;
   }
 
-  @Override
   public void initPresentation() {
     TextualPresentation presentation = new TextualPresentation();
     initNameLineView(presentation);
@@ -50,12 +45,6 @@ public class CharacterDescriptionPresenter implements IContentPresenter {
       initLineView("CharacterDescription.Label.Anima", description.getAnima(), presentation);
     }
     initAreaView("CharacterDescription.Label.Notes", description.getNotes(), presentation);
-  }
-
-  @Override
-  public ContentView getTabContent() {
-    String title = resources.getString("CardView.CharacterDescription.Title");
-    return new SimpleViewContentView(new ContentProperties(title), descriptionView);
   }
 
   private void initNameLineView(TextualPresentation presentation) {
