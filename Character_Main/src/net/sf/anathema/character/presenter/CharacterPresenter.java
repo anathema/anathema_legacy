@@ -1,11 +1,6 @@
 package net.sf.anathema.character.presenter;
 
-import com.google.common.base.Function;
-import net.sf.anathema.character.generic.additionaltemplate.AdditionalModelType;
-import net.sf.anathema.character.generic.additionaltemplate.IAdditionalModel;
-import net.sf.anathema.character.generic.framework.additionaltemplate.IAdditionalViewFactory;
 import net.sf.anathema.character.generic.template.ICharacterTemplate;
-import net.sf.anathema.character.generic.type.ICharacterType;
 import net.sf.anathema.character.model.ICharacter;
 import net.sf.anathema.character.presenter.magic.IContentPresenter;
 import net.sf.anathema.character.presenter.magic.MagicPresenter;
@@ -18,16 +13,8 @@ import net.sf.anathema.character.view.IGroupedFavorableTraitViewFactory;
 import net.sf.anathema.framework.IApplicationModel;
 import net.sf.anathema.framework.presenter.view.ContentView;
 import net.sf.anathema.framework.presenter.view.MultipleContentView;
-import net.sf.anathema.framework.presenter.view.SimpleViewContentView;
-import net.sf.anathema.framework.swing.IView;
-import net.sf.anathema.framework.view.util.ContentProperties;
 import net.sf.anathema.lib.gui.Presenter;
-import net.sf.anathema.lib.registry.IRegistry;
 import net.sf.anathema.lib.resources.Resources;
-
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.List;
 
 import static net.sf.anathema.character.generic.additionaltemplate.AdditionalModelType.Abilities;
 import static net.sf.anathema.character.generic.additionaltemplate.AdditionalModelType.Advantages;
@@ -35,7 +22,6 @@ import static net.sf.anathema.character.generic.additionaltemplate.AdditionalMod
 import static net.sf.anathema.character.generic.additionaltemplate.AdditionalModelType.Magic;
 import static net.sf.anathema.character.generic.additionaltemplate.AdditionalModelType.Miscellaneous;
 import static net.sf.anathema.character.generic.framework.CharacterGenericsExtractor.getGenerics;
-import static net.sf.anathema.lib.lang.ArrayUtilities.transform;
 
 public class CharacterPresenter implements Presenter, MultipleContentViewPresenter {
 
@@ -44,15 +30,17 @@ public class CharacterPresenter implements Presenter, MultipleContentViewPresent
   private final IApplicationModel anathemaModel;
   private final Resources resources;
   private final PointPresentationStrategy pointPresentation;
+  private final CharacterContentInitializer initializer;
   private MultipleContentView miscView;
 
-  public CharacterPresenter(ICharacter character, CharacterView view, Resources resources, IApplicationModel anathemaModel,
-                            PointPresentationStrategy pointPresentation) {
+  public CharacterPresenter(ICharacter character, CharacterView view, Resources resources,
+                            IApplicationModel anathemaModel, PointPresentationStrategy pointPresentation) {
     this.character = character;
     this.characterView = view;
     this.resources = resources;
     this.anathemaModel = anathemaModel;
     this.pointPresentation = pointPresentation;
+    this.initializer = new CharacterContentInitializer(anathemaModel, resources, character, view);
   }
 
   @Override
@@ -69,7 +57,7 @@ public class CharacterPresenter implements Presenter, MultipleContentViewPresent
     IContentPresenter descriptionPresenter = createDescriptionPresenter();
     IContentPresenter conceptPresenter = createConceptPresenter();
     String title = getString("CardView.Outline.Title");
-    initMultipleContentPresentation(title, Concept, descriptionPresenter, conceptPresenter);
+    initializer.initContentPresentation(title, Concept, descriptionPresenter, conceptPresenter);
   }
 
   private void initPhysicalTraits() {
@@ -77,14 +65,14 @@ public class CharacterPresenter implements Presenter, MultipleContentViewPresent
     IContentPresenter attributes = new AttributesPresenter(character, resources, viewFactory);
     IContentPresenter abilities = new AbilitiesPresenter(character, resources, viewFactory);
     String title = getString("CardView.NaturalTraits.Title");
-    initMultipleContentPresentation(title, Abilities, attributes, abilities);
+    initializer.initContentPresentation(title, Abilities, attributes, abilities);
   }
 
   private void initSpiritualTraits() {
     IAdvantageViewFactory viewFactory = characterView.createAdvantageViewFactory();
     IContentPresenter presenter = new BasicAdvantagePresenter(resources, character, viewFactory);
     String title = getString("CardView.SpiritualTraits.Title");
-    initMultipleContentPresentation(title, Advantages, presenter);
+    initializer.initContentPresentation(title, Advantages, presenter);
   }
 
   private void initMagic() {
@@ -93,17 +81,18 @@ public class CharacterPresenter implements Presenter, MultipleContentViewPresent
       return;
     }
     String magicViewHeader = getString("CardView.CharmConfiguration.Title");
-    MagicPresenter presenter = new MagicPresenter(character, characterView.createMagicViewFactory(), resources, anathemaModel);
-    initMultipleContentPresentation(magicViewHeader, Magic, presenter);
+    MagicPresenter presenter = new MagicPresenter(character, characterView.createMagicViewFactory(), resources,
+            anathemaModel);
+    initializer.initContentPresentation(magicViewHeader, Magic, presenter);
   }
 
   private void initMiscellaneous() {
     String title = getString("CardView.MiscellaneousConfiguration.Title");
     BackgroundView factory = characterView.createBackgroundView();
-    IContentPresenter backgrounds =
-            new BackgroundPresenter(resources, character.getTraitConfiguration().getBackgrounds(), character.getCharacterContext(), factory,
-                    getGenerics(anathemaModel).getBackgroundRegistry());
-    this.miscView = initMultipleContentPresentation(title, Miscellaneous, backgrounds);
+    IContentPresenter backgrounds = new BackgroundPresenter(resources,
+            character.getTraitConfiguration().getBackgrounds(), character.getCharacterContext(), factory,
+            getGenerics(anathemaModel).getBackgroundRegistry());
+    this.miscView = initializer.initContentPresentation(title, Miscellaneous, backgrounds);
   }
 
   @Override
@@ -118,42 +107,8 @@ public class CharacterPresenter implements Presenter, MultipleContentViewPresent
 
   private IContentPresenter createDescriptionPresenter() {
     ICharacterDescriptionView view = characterView.createCharacterDescriptionView();
-    return new CharacterDescriptionPresenter(resources, character.getDescription(), character.getCharacterConcept(), view,
-            character.getCharacterTemplate().getTemplateType().getCharacterType().isExaltType());
-  }
-
-  private MultipleContentView initMultipleContentPresentation(String viewTitle, AdditionalModelType type, IContentPresenter... corePresenters) {
-    for (IContentPresenter presenter : corePresenters) {
-      presenter.initPresentation();
-    }
-    ContentView[] coreViews = transform(corePresenters, ContentView.class, new Function<IContentPresenter, ContentView>() {
-      @Override
-      public ContentView apply(IContentPresenter input) {
-        return input.getTabContent();
-      }
-    });
-    return addMultipleContentViewGroup(viewTitle, type, coreViews);
-  }
-
-  private MultipleContentView addMultipleContentViewGroup(String viewTitle, AdditionalModelType type, ContentView... coreViewViews) {
-    MultipleContentView multipleContentView = characterView.addMultipleContentView(viewTitle);
-    List<ContentView> contentViews = new ArrayList<>();
-    Collections.addAll(contentViews, coreViewViews);
-    IRegistry<String, IAdditionalViewFactory> factoryRegistry = getGenerics(anathemaModel).getAdditionalViewFactoryRegistry();
-    for (IAdditionalModel model : character.getExtendedConfiguration().getAdditionalModels(type)) {
-      IAdditionalViewFactory viewFactory = factoryRegistry.get(model.getTemplateId());
-      if (viewFactory == null) {
-        continue;
-      }
-      String viewName = getString("AdditionalTemplateView.TabName." + model.getTemplateId());
-      ICharacterType characterType = character.getCharacterTemplate().getTemplateType().getCharacterType();
-      IView additionalView = viewFactory.createView(model, resources, characterType);
-      contentViews.add(new SimpleViewContentView(new ContentProperties(viewName), additionalView));
-    }
-    for (ContentView contentView : contentViews) {
-      contentView.addTo(multipleContentView);
-    }
-    return multipleContentView;
+    return new CharacterDescriptionPresenter(resources, character.getDescription(), character.getCharacterConcept(),
+            view, character.getCharacterTemplate().getTemplateType().getCharacterType().isExaltType());
   }
 
   private String getString(String resourceKey) {
