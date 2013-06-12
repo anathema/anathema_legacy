@@ -54,8 +54,15 @@ public class CharacterPresenter implements Presenter, MultipleContentViewPresent
   }
 
   private void initOutline() {
-    IContentPresenter descriptionPresenter = createDescriptionPresenter();
-    IContentPresenter conceptPresenter = createConceptPresenter();
+    ICharacterDescriptionView view = characterView.createCharacterDescriptionView();
+    DescriptionDetails descriptionDetails = new DescriptionDetails(character.getDescription(),
+            character.getCharacterConcept(),
+            character.getCharacterTemplate().getTemplateType().getCharacterType().isExaltType());
+    IContentPresenter descriptionPresenter = new CharacterDescriptionPresenter(descriptionDetails, resources, view);
+
+    IConceptAndRulesViewFactory viewFactory = characterView.createConceptViewFactory();
+    IContentPresenter conceptPresenter = new CharacterConceptAndRulesPresenter(character, viewFactory, resources);
+
     String title = getString("CardView.Outline.Title");
     initializer.initContentPresentation(title, Concept, descriptionPresenter, conceptPresenter);
   }
@@ -98,17 +105,6 @@ public class CharacterPresenter implements Presenter, MultipleContentViewPresent
   @Override
   public void addMiscellaneousView(String title, ContentView tabContent) {
     tabContent.addTo(miscView);
-  }
-
-  private IContentPresenter createConceptPresenter() {
-    IConceptAndRulesViewFactory viewFactory = characterView.createConceptViewFactory();
-    return new CharacterConceptAndRulesPresenter(character, viewFactory, resources);
-  }
-
-  private IContentPresenter createDescriptionPresenter() {
-    ICharacterDescriptionView view = characterView.createCharacterDescriptionView();
-    return new CharacterDescriptionPresenter(resources, character.getDescription(), character.getCharacterConcept(),
-            view, character.getCharacterTemplate().getTemplateType().getCharacterType().isExaltType());
   }
 
   private String getString(String resourceKey) {

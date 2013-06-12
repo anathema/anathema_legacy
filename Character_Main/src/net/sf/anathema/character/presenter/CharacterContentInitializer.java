@@ -45,20 +45,41 @@ public class CharacterContentInitializer {
     for (IContentPresenter presenter : corePresenters) {
       presenter.initPresentation();
     }
-    ContentView[] coreViews = transform(corePresenters, ContentView.class, new Function<IContentPresenter, ContentView>() {
-      @Override
-      public ContentView apply(IContentPresenter input) {
-        return input.getTabContent();
-      }
-    });
+    ContentView[] coreViews = transform(corePresenters, ContentView.class,
+            new Function<IContentPresenter, ContentView>() {
+              @Override
+              public ContentView apply(IContentPresenter input) {
+                return input.getTabContent();
+              }
+            });
     return addMultipleContentViewGroup(viewTitle, type, coreViews);
   }
 
-  private MultipleContentView addMultipleContentViewGroup(String viewTitle, AdditionalModelType type, ContentView... coreViewViews) {
+  public MultipleContentView addMultipleContentViewGroup(String viewTitle, AdditionalModelType type,
+                                                         ContentView... coreViewViews) {
+    List<ContentView> contentViews = collectAllContentViews(type, coreViewViews);
+    return createMultipleContentViewWithViews(viewTitle, contentViews);
+  }
+
+  private MultipleContentView createMultipleContentViewWithViews(String viewTitle, List<ContentView> contentViews) {
     MultipleContentView multipleContentView = characterView.addMultipleContentView(viewTitle);
+    for (ContentView contentView : contentViews) {
+      contentView.addTo(multipleContentView);
+    }
+    return multipleContentView;
+  }
+
+  private List<ContentView> collectAllContentViews(AdditionalModelType type, ContentView[] coreViewViews) {
     List<ContentView> contentViews = new ArrayList<>();
     Collections.addAll(contentViews, coreViewViews);
-    IRegistry<String, IAdditionalViewFactory> factoryRegistry = getGenerics(anathemaModel).getAdditionalViewFactoryRegistry();
+    contentViews.addAll(additionalViews(type));
+    return contentViews;
+  }
+
+  private List<ContentView> additionalViews(AdditionalModelType type) {
+    IRegistry<String, IAdditionalViewFactory> factoryRegistry = getGenerics(
+            anathemaModel).getAdditionalViewFactoryRegistry();
+    List<ContentView> additionalViews = new ArrayList<>();
     for (IAdditionalModel model : character.getExtendedConfiguration().getAdditionalModels(type)) {
       IAdditionalViewFactory viewFactory = factoryRegistry.get(model.getTemplateId());
       if (viewFactory == null) {
@@ -67,12 +88,10 @@ public class CharacterContentInitializer {
       String viewName = getString("AdditionalTemplateView.TabName." + model.getTemplateId());
       ICharacterType characterType = character.getCharacterTemplate().getTemplateType().getCharacterType();
       IView additionalView = viewFactory.createView(model, resources, characterType);
-      contentViews.add(new SimpleViewContentView(new ContentProperties(viewName), additionalView));
+      SimpleViewContentView simpleView = new SimpleViewContentView(new ContentProperties(viewName), additionalView);
+      additionalViews.add(simpleView);
     }
-    for (ContentView contentView : contentViews) {
-      contentView.addTo(multipleContentView);
-    }
-    return multipleContentView;
+    return additionalViews;
   }
 
   private String getString(String resourceKey) {

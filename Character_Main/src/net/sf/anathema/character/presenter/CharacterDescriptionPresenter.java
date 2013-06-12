@@ -28,14 +28,13 @@ public class CharacterDescriptionPresenter implements IContentPresenter {
   private final boolean hasAnima;
   private final Resources resources;
 
-  public CharacterDescriptionPresenter(Resources resources, ICharacterDescription description,
-                                       ICharacterConcept characterConcept, ICharacterDescriptionView descriptionView,
-                                       boolean hasAnima) {
+  public CharacterDescriptionPresenter(DescriptionDetails descriptionDetails, Resources resources,
+                                       ICharacterDescriptionView descriptionView) {
     this.resources = resources;
-    this.description = description;
-    this.characterConcept = characterConcept;
+    this.description = descriptionDetails.getDescription();
+    this.characterConcept = descriptionDetails.getCharacterConcept();
+    this.hasAnima = descriptionDetails.isHasAnima();
     this.descriptionView = descriptionView;
-    this.hasAnima = hasAnima;
   }
 
   @Override
