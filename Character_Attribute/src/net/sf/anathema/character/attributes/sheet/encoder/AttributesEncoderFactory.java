@@ -1,6 +1,5 @@
-package net.sf.anathema.character.attribute.sheet.content;
+package net.sf.anathema.character.attributes.sheet.encoder;
 
-import net.sf.anathema.character.generic.template.magic.AttributeFavoringType;
 import net.sf.anathema.character.reporting.pdf.content.BasicContent;
 import net.sf.anathema.character.reporting.pdf.rendering.EncoderIds;
 import net.sf.anathema.character.reporting.pdf.rendering.boxes.AbstractEncoderFactory;
@@ -17,7 +16,7 @@ public class AttributesEncoderFactory extends AbstractEncoderFactory {
 
   @Override
   public ContentEncoder create(Resources resources, BasicContent content) {
-    return new AttributesEncoder(resources, content.favorsTraitType(new AttributeFavoringType()));
+    return new AttributesEncoder();
   }
 
   @Override
