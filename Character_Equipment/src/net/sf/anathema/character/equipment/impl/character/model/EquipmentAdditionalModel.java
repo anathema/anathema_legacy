@@ -17,7 +17,7 @@ import net.sf.anathema.character.equipment.impl.character.model.stats.CharacterS
 import net.sf.anathema.character.equipment.item.model.IEquipmentTemplateProvider;
 import net.sf.anathema.character.equipment.template.IEquipmentTemplate;
 import net.sf.anathema.character.generic.additionaltemplate.AbstractAdditionalModelAdapter;
-import net.sf.anathema.character.generic.additionaltemplate.AdditionalModelType;
+import net.sf.anathema.character.model.CharacterModelGroup;
 import net.sf.anathema.character.generic.character.IGenericCharacter;
 import net.sf.anathema.character.generic.equipment.ArtifactStats;
 import net.sf.anathema.character.generic.equipment.ICharacterStatsModifiers;
@@ -217,8 +217,8 @@ public class EquipmentAdditionalModel extends AbstractAdditionalModelAdapter imp
   }
 
   @Override
-  public AdditionalModelType getAdditionalModelType() {
-    return AdditionalModelType.Miscellaneous;
+  public CharacterModelGroup getAdditionalModelType() {
+    return CharacterModelGroup.Miscellaneous;
   }
 
   @Override

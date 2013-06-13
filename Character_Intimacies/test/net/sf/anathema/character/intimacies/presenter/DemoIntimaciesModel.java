@@ -1,6 +1,6 @@
 package net.sf.anathema.character.intimacies.presenter;
 
-import net.sf.anathema.character.generic.additionaltemplate.AdditionalModelType;
+import net.sf.anathema.character.model.CharacterModelGroup;
 import net.sf.anathema.character.generic.additionaltemplate.IAdditionalModelBonusPointCalculator;
 import net.sf.anathema.character.generic.additionaltemplate.IAdditionalModelExperienceCalculator;
 import net.sf.anathema.character.generic.additionaltemplate.NullAdditionalModelBonusPointCalculator;
@@ -66,7 +66,7 @@ public class DemoIntimaciesModel implements IIntimaciesModel, IIntimaciesAdditio
 
   @Override
   public List<IIntimacy> getEntries() {
-    return entries ;
+    return entries;
   }
 
   @Override
@@ -80,8 +80,8 @@ public class DemoIntimaciesModel implements IIntimaciesModel, IIntimaciesAdditio
   }
 
   @Override
-  public AdditionalModelType getAdditionalModelType() {
-    return AdditionalModelType.Concept;
+  public CharacterModelGroup getAdditionalModelType() {
+    return CharacterModelGroup.Outline;
   }
 
   @Override

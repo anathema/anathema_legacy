@@ -2,7 +2,7 @@ package net.sf.anathema.character.craft.model;
 
 import net.sf.anathema.character.craft.ICraftAdditionalModel;
 import net.sf.anathema.character.craft.presenter.ICraftModel;
-import net.sf.anathema.character.generic.additionaltemplate.AdditionalModelType;
+import net.sf.anathema.character.model.CharacterModelGroup;
 import net.sf.anathema.character.generic.additionaltemplate.IAdditionalModelBonusPointCalculator;
 import net.sf.anathema.character.generic.additionaltemplate.IAdditionalModelExperienceCalculator;
 import net.sf.anathema.character.generic.additionaltemplate.NullAdditionalModelBonusPointCalculator;
@@ -34,8 +34,8 @@ public class CraftAdditionalModel implements ICraftAdditionalModel {
   }
 
   @Override
-  public AdditionalModelType getAdditionalModelType() {
-    return AdditionalModelType.Abilities;
+  public CharacterModelGroup getAdditionalModelType() {
+    return CharacterModelGroup.NaturalTraits;
   }
 
   @Override

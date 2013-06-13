@@ -1,7 +1,7 @@
 package net.sf.anathema.character.presenter.specialty;
 
 import net.sf.anathema.character.generic.additionaltemplate.AbstractAdditionalModelAdapter;
-import net.sf.anathema.character.generic.additionaltemplate.AdditionalModelType;
+import net.sf.anathema.character.model.CharacterModelGroup;
 import net.sf.anathema.character.generic.character.IGenericTraitCollection;
 import net.sf.anathema.character.generic.framework.additionaltemplate.model.ICharacterModelContext;
 import net.sf.anathema.character.generic.template.additional.IAdditionalTemplate;
@@ -21,8 +21,8 @@ public class SpecialtiesAdditionalModel extends AbstractAdditionalModelAdapter i
   }
 
   @Override
-  public AdditionalModelType getAdditionalModelType() {
-    return AdditionalModelType.Abilities;
+  public CharacterModelGroup getAdditionalModelType() {
+    return CharacterModelGroup.NaturalTraits;
   }
 
   @Override

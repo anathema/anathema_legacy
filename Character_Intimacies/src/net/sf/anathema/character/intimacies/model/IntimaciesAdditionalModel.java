@@ -1,6 +1,6 @@
 package net.sf.anathema.character.intimacies.model;
 
-import net.sf.anathema.character.generic.additionaltemplate.AdditionalModelType;
+import net.sf.anathema.character.model.CharacterModelGroup;
 import net.sf.anathema.character.generic.additionaltemplate.IAdditionalModelBonusPointCalculator;
 import net.sf.anathema.character.generic.additionaltemplate.IAdditionalModelExperienceCalculator;
 import net.sf.anathema.character.generic.additionaltemplate.NullAdditionalModelExperienceCalculator;
@@ -14,14 +14,14 @@ import net.sf.anathema.lib.control.IChangeListener;
 public class IntimaciesAdditionalModel implements IIntimaciesAdditionalModel {
   private final IIntimaciesModel model;
   private final IAdditionalTemplate additionalTemplate;
-  
+
   protected IntimaciesAdditionalModel(IAdditionalTemplate additionalTemplate, IIntimaciesModel model) {
     this.additionalTemplate = additionalTemplate;
     this.model = model;
   }
 
   public IntimaciesAdditionalModel(IAdditionalTemplate additionalTemplate, ICharacterModelContext context) {
-	this(additionalTemplate, new IntimaciesModel(context));
+    this(additionalTemplate, new IntimaciesModel(context));
   }
 
   @Override
@@ -31,8 +31,8 @@ public class IntimaciesAdditionalModel implements IIntimaciesAdditionalModel {
   }
 
   @Override
-  public AdditionalModelType getAdditionalModelType() {
-    return AdditionalModelType.Advantages;
+  public CharacterModelGroup getAdditionalModelType() {
+    return CharacterModelGroup.SpiritualTraits;
   }
 
   @Override

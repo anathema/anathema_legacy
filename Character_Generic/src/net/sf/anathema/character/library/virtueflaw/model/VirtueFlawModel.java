@@ -1,7 +1,7 @@
 package net.sf.anathema.character.library.virtueflaw.model;
 
 import net.sf.anathema.character.generic.additionaltemplate.AbstractAdditionalModelAdapter;
-import net.sf.anathema.character.generic.additionaltemplate.AdditionalModelType;
+import net.sf.anathema.character.model.CharacterModelGroup;
 import net.sf.anathema.character.generic.framework.additionaltemplate.listening.DedicatedCharacterChangeAdapter;
 import net.sf.anathema.character.generic.framework.additionaltemplate.listening.VirtueChangeListener;
 import net.sf.anathema.character.generic.framework.additionaltemplate.model.ICharacterModelContext;
@@ -39,8 +39,8 @@ public abstract class VirtueFlawModel extends AbstractAdditionalModelAdapter imp
   }
 
   @Override
-  public AdditionalModelType getAdditionalModelType() {
-    return AdditionalModelType.Advantages;
+  public CharacterModelGroup getAdditionalModelType() {
+    return CharacterModelGroup.SpiritualTraits;
   }
 
   @Override

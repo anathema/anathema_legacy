@@ -1,6 +1,6 @@
 package net.sf.anathema.character.impl.model.statistics;
 
-import net.sf.anathema.character.generic.additionaltemplate.AdditionalModelType;
+import net.sf.anathema.character.model.CharacterModelGroup;
 import net.sf.anathema.character.generic.additionaltemplate.IAdditionalModel;
 import net.sf.anathema.character.generic.framework.additionaltemplate.model.IAdditionalModelFactory;
 import net.sf.anathema.character.generic.framework.additionaltemplate.model.ICharacterModelContext;
@@ -35,7 +35,7 @@ public class ExtendedConfiguration implements IExtendedConfiguration {
   }
 
   @Override
-  public IAdditionalModel[] getAdditionalModels(AdditionalModelType type) {
+  public IAdditionalModel[] getAdditionalModels(CharacterModelGroup type) {
     List<IAdditionalModel> models = new ArrayList<>();
     for (IAdditionalModel model : additionalModels) {
       if (model.getAdditionalModelType() == type) {
