@@ -9,17 +9,15 @@ import java.util.List;
 
 public class AttributesContent extends AbstractSubBoxContent {
 
-  private AttributesModel attributeModel;
-  private IGenericCharacter character;
+  private TemporaryAttributesModel attributeModel;
 
   public AttributesContent(IGenericCharacter character, Resources resources) {
     super(resources);
-    this.character = character;
-    this.attributeModel = new AttributesModel(character);
+    this.attributeModel = new TemporaryAttributesModel(character);
   }
 
-  public int getTraitMax() {
-    return attributeModel.getTraitMax();
+  public int getTraitMaximum() {
+    return attributeModel.getTraitMaximum();
   }
 
   @Override
@@ -28,7 +26,7 @@ public class AttributesContent extends AbstractSubBoxContent {
   }
 
   public List<PrintAttributeGroup> getAttributeGroups() {
-    PrintAttributeIterator iterator = new PrintAttributeIterator(getResources(), character);
+    PrintAttributeIterator iterator = new PrintAttributeIterator(getResources(), attributeModel);
     attributeModel.iterate(iterator);
     return iterator.groups;
   }

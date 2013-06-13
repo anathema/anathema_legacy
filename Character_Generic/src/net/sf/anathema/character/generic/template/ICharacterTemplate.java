@@ -10,13 +10,16 @@ import net.sf.anathema.character.generic.template.essence.IEssenceTemplate;
 import net.sf.anathema.character.generic.template.experience.IExperiencePointCosts;
 import net.sf.anathema.character.generic.template.magic.IMagicTemplate;
 import net.sf.anathema.character.generic.traits.ITraitType;
+import net.sf.anathema.character.model.CharacterModelFactory;
+
+import java.util.List;
 
 public interface ICharacterTemplate extends ICharacterExternalsTemplate {
 
   GroupedTraitType[] getAbilityGroups();
 
   GroupedTraitType[] getAttributeGroups();
-  
+
   IAdditionalRules getAdditionalRules();
 
   BonusPointCosts getBonusPointCosts();
@@ -32,14 +35,16 @@ public interface ICharacterTemplate extends ICharacterExternalsTemplate {
   ITraitTemplateCollection getTraitTemplateCollection();
 
   ITraitType[] getToughnessControllingTraitTypes();
-  
+
   String[] getBaseHealthProviders();
 
   IAdditionalTemplate[] getAdditionalTemplates();
 
+  List<String> getModels();
+
   IMagicTemplate getMagicTemplate();
 
   boolean isNpcOnly();
-  
+
   boolean isCustomTemplate();
 }

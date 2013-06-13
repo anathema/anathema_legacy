@@ -1,9 +1,6 @@
 <exaltedCharacterTemplate characterType="Solar" subtemplate="DreamsLegendary">
     <general>
         <edition edition="SecondEdition"/>
-        <models>
-            <model id="attributes"/>
-        </models>
         <abilityGroups uses="template/SolarAbilityGroup2nd.template"/>
         <attributeGroups uses="trait/DefaultAttributeGroup.template"/>
         <essence uses="DefaultEssence.template"/>
@@ -27,6 +24,9 @@
             <toughnessControllingTrait type="Resistance"/>
         </healthTemplate>
     </general>
+    <models>
+        <model id="attributes"/>
+    </models>
     <creation>
         <bonusPointCosts uses="SolaroidDefaultBonusPointCost2nd.template"/>
         <creationPoints>

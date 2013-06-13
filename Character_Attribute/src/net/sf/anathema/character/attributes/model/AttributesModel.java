@@ -1,77 +1,64 @@
 package net.sf.anathema.character.attributes.model;
 
+import net.sf.anathema.character.attributes.template.AttributeGroup;
+import net.sf.anathema.character.attributes.template.AttributeTemplate;
 import net.sf.anathema.character.generic.character.IGenericCharacter;
-import net.sf.anathema.character.generic.template.ITraitTemplateCollection;
-import net.sf.anathema.character.generic.template.abilities.GroupedTraitType;
-import net.sf.anathema.character.generic.traits.IGenericTrait;
+import net.sf.anathema.character.generic.template.ICharacterTemplate;
 import net.sf.anathema.character.generic.traits.ITraitTemplate;
 import net.sf.anathema.character.generic.traits.ITraitType;
+import net.sf.anathema.character.generic.traits.types.AttributeType;
+import net.sf.anathema.character.model.CharacterModelAutoCollector;
+import net.sf.anathema.character.model.CharacterModelGroup;
+import net.sf.anathema.character.model.ModelGroup;
+import net.sf.anathema.character.trait.CurrentValue;
+import net.sf.anathema.initialization.reflections.Weight;
 import net.sf.anathema.lib.util.Identified;
 import net.sf.anathema.lib.util.Identifier;
 
-import java.util.ArrayList;
 import java.util.List;
 
-public class AttributesModel implements GroupedTraitList {
+@CharacterModelAutoCollector
+@Weight(weight = 0)
+@ModelGroup(group = CharacterModelGroup.NaturalTraits)
+public class AttributesModel implements AttributesList {
 
-  private IGenericCharacter character;
+  private AttributeTemplate template;
 
-  public AttributesModel(IGenericCharacter character) {
-    this.character = character;
+  public AttributesModel(AttributeTemplate template) {
+    this.template = template;
   }
 
-  public int getTraitMax() {
-    ITraitType traitType = getGroupedAttributeTypes()[0].getTraitType();
-    ITraitTemplate template = getTraitTemplateCollection().getTraitTemplate(traitType);
+  public CurrentValue getCurrentValue(Identified traitId) {
+    AttributeType type = getAttributeType(traitId);
+    return null;
+  }
+
+  public int getTraitMaximum(IGenericCharacter character) {
+    ICharacterTemplate characterTemplate = character.getTemplate();
+    ITraitType traitType = characterTemplate.getAttributeGroups()[0].getTraitType();
+    ITraitTemplate template = characterTemplate.getTraitTemplateCollection().getTraitTemplate(traitType);
     return template.getLimitation().getAbsoluteLimit(character);
   }
 
-  @Override
-  public void iterate(GroupedTraitsIterator iterator) {
-    for (Identified groupId : getGroupedIds()) {
-      iterator.nextGroup(groupId);
-      iterateGroup(iterator, groupId);
+  public void iterate(AttributesIterator iterator) {
+    for (AttributeGroup group : template.groups) {
+      iterator.nextGroup(new Identifier(group.id));
+      iterateGroup(iterator, group.attributes);
     }
   }
 
-  private void iterateGroup(GroupedTraitsIterator iterator, Identified groupId) {
-    for (ITraitType traitType : getTraitTypes(groupId)) {
-      iterateTrait(iterator, traitType);
+  private void iterateGroup(AttributesIterator iterator, List<String> attributeIds) {
+    for (String traitId : attributeIds) {
+      iterateTrait(iterator, new Identifier(traitId));
     }
   }
 
-  private void iterateTrait(GroupedTraitsIterator iterator, ITraitType traitType) {
-    IGenericTrait trait = character.getTraitCollection().getTrait(traitType);
-    int currentValue = trait.getCurrentValue();
-    iterator.nextTrait(traitType, currentValue);
+  private void iterateTrait(AttributesIterator iterator, Identified traitId) {
+    int currentValue = getCurrentValue(traitId).getValue();
+    iterator.nextTrait(traitId, currentValue);
   }
 
-  private ITraitTemplateCollection getTraitTemplateCollection() {
-    return character.getTemplate().getTraitTemplateCollection();
-  }
-
-  private List<ITraitType> getTraitTypes(Identified groupId) {
-    List<ITraitType> attributes = new ArrayList<>();
-    for (GroupedTraitType groupedType : getGroupedAttributeTypes()) {
-      if (groupedType.getGroupId().equals(groupId.getId())) {
-        attributes.add(groupedType.getTraitType());
-      }
-    }
-    return attributes;
-  }
-
-  private List<Identified> getGroupedIds() {
-    List<Identified> groupIdList = new ArrayList<>();
-    for (GroupedTraitType type : getGroupedAttributeTypes()) {
-      Identifier groupId = new Identifier(type.getGroupId());
-      if (!groupIdList.contains(groupId)) {
-        groupIdList.add(groupId);
-      }
-    }
-    return groupIdList;
-  }
-
-  private GroupedTraitType[] getGroupedAttributeTypes() {
-    return character.getTemplate().getAttributeGroups();
+  private AttributeType getAttributeType(Identified traitId) {
+    return AttributeType.valueOf(traitId.getId());
   }
 }

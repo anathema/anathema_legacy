@@ -52,6 +52,7 @@ public class GenericCharacterTemplate implements ICharacterTemplate, ICloneable<
   private IHealthTemplate healthTemplate = new GenericHealthTemplate();
   private boolean npcOnly;
   private boolean isCustomTemplate;
+  private final List<String> models = new ArrayList<>();
 
   @Override
   public boolean isNpcOnly() {
@@ -125,6 +126,11 @@ public class GenericCharacterTemplate implements ICharacterTemplate, ICloneable<
   @Override
   public IAdditionalTemplate[] getAdditionalTemplates() {
     return additionalTemplates.toArray(new IAdditionalTemplate[additionalTemplates.size()]);
+  }
+
+  @Override
+  public List<String> getModels() {
+    return new ArrayList<>(models);
   }
 
   @Override
@@ -237,5 +243,9 @@ public class GenericCharacterTemplate implements ICharacterTemplate, ICloneable<
 
   public void setCustomTemplate(boolean custom) {
     isCustomTemplate = custom;
+  }
+
+  public void addModel(String modelId) {
+    models.add(modelId);
   }
 }

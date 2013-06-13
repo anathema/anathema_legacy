@@ -111,6 +111,7 @@ public class CharacterTemplateParser extends AbstractXmlTemplateParser<GenericCh
     GenericCharacterTemplate characterTemplate = new GenericCharacterTemplate();
     updateTemplateType(element, characterTemplate);
     setGeneralProperties(element, characterTemplate);
+    parseModels(element, characterTemplate);
     parseCreation(element, characterTemplate);
     parseExperience(element, characterTemplate);
     return characterTemplate;
@@ -209,6 +210,17 @@ public class CharacterTemplateParser extends AbstractXmlTemplateParser<GenericCh
     setAdditionalModelTemplates(generalElement, characterTemplate);
     setAdditionalRules(generalElement, characterTemplate);
     setToughnessControllingTrait(generalElement, characterTemplate);
+  }
+
+  private void parseModels(Element element, GenericCharacterTemplate characterTemplate) throws PersistenceException {
+    Element modelsElement = element.element("models");
+    if (modelsElement == null) {
+      return;
+    }
+    for (Object modelElement : modelsElement.elements()) {
+      String modelId = ((Element) modelElement).attributeValue("id");
+      characterTemplate.addModel(modelId);
+    }
   }
 
   private void setNpcOnly(Element generalElement, GenericCharacterTemplate characterTemplate) {

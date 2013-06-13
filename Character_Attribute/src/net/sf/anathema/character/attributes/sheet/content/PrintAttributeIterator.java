@@ -1,24 +1,23 @@
 package net.sf.anathema.character.attributes.sheet.content;
 
-import net.sf.anathema.character.attributes.model.GroupedTraitsIterator;
-import net.sf.anathema.character.generic.character.IGenericCharacter;
-import net.sf.anathema.character.generic.traits.ITraitType;
+import net.sf.anathema.character.attributes.model.AttributesIterator;
+import net.sf.anathema.character.attributes.model.AttributesModel;
 import net.sf.anathema.lib.resources.Resources;
 import net.sf.anathema.lib.util.Identified;
 
 import java.util.ArrayList;
 import java.util.List;
 
-public class PrintAttributeIterator implements GroupedTraitsIterator {
+public class PrintAttributeIterator implements AttributesIterator {
 
   public List<PrintAttributeGroup> groups = new ArrayList<>();
   private PrintAttributeGroup currentGroup;
   private Resources resources;
-  private IGenericCharacter character;
+  private TemporaryAttributesModel model;
 
-  public PrintAttributeIterator(Resources resources, IGenericCharacter character) {
+  public PrintAttributeIterator(Resources resources, TemporaryAttributesModel model) {
     this.resources = resources;
-    this.character = character;
+    this.model = model;
   }
 
   @Override
@@ -28,10 +27,10 @@ public class PrintAttributeIterator implements GroupedTraitsIterator {
   }
 
   @Override
-  public void nextTrait(ITraitType traitId, int currentValue) {
+  public void nextTrait(Identified traitId, int currentValue) {
     PrintAttribute attribute = new PrintAttribute();
     attribute.name = resources.getString("AttributeType.Name." + traitId.getId());
-    attribute.value = character.getTraitCollection().getTrait(traitId).getCurrentValue();
+    attribute.value = model.getCurrentValue(traitId);
     currentGroup.attributes.add(attribute);
   }
 }

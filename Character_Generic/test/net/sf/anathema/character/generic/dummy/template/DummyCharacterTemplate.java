@@ -35,6 +35,9 @@ import net.sf.anathema.character.generic.traits.types.AttributeGroupType;
 import net.sf.anathema.character.generic.traits.types.AttributeType;
 import net.sf.anathema.lib.exception.NotYetImplementedException;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class DummyCharacterTemplate implements ICharacterTemplate {
 
   private static final String DUMMYGROUP = "DummyGroup";
@@ -175,6 +178,11 @@ public class DummyCharacterTemplate implements ICharacterTemplate {
   @Override
   public IAdditionalTemplate[] getAdditionalTemplates() {
     return new IAdditionalTemplate[0];
+  }
+
+  @Override
+  public List<String> getModels() {
+    return new ArrayList<>();
   }
 
   @Override

@@ -22,6 +22,9 @@ import net.sf.anathema.character.generic.traits.ITraitType;
 import net.sf.anathema.character.generic.type.ICharacterType;
 import net.sf.anathema.lib.util.Identifier;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class SimpleDummyCharacterTemplate implements ICharacterTemplate {
 
   private final String subtype;
@@ -103,6 +106,11 @@ public class SimpleDummyCharacterTemplate implements ICharacterTemplate {
   @Override
   public IAdditionalTemplate[] getAdditionalTemplates() {
     return new IAdditionalTemplate[0];
+  }
+
+  @Override
+  public List<String> getModels() {
+    return new ArrayList<>();
   }
 
   @Override

@@ -32,7 +32,7 @@ public class AttributesEncoder extends AbstractContentEncoder<AttributesContent>
       y -= groupSpacing;
       for (PrintAttribute attribute : group.attributes) {
         Position position = new Position(contentBounds.x, y);
-        y -= smallTraitEncoder.encodeWithText(graphics, attribute.name, position, contentBounds.width, attribute.value, content.getTraitMax());
+        y -= smallTraitEncoder.encodeWithText(graphics, attribute.name, position, contentBounds.width, attribute.value, content.getTraitMaximum());
       }
     }
   }
