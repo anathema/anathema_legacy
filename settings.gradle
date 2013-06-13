@@ -14,6 +14,6 @@ include('Anathema',
 
         'Character_Equipment', 'Character_MartialArts', 'Character_Craft', 'Character_Intimacies', 'Character_Linguistics',
 
-        'Character_Solar', 'Character_Mortal', 'Character_Sidereal', 'Character_Db',
+        'Character_Solar', 'Character_Mortal', 'Character_Db',
 
         'Integrationtest')

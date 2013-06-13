@@ -1,7 +1,0 @@
-<magicTemplate>
-	<freePicksPredicate defaultResponse="true"/>
-	<charmTemplate charmType="Sidereal">
-		<martialArts rulesClass="net.sf.anathema.character.sidereal.template.SiderealMartialArtsRules" level="Sidereal" highLevel="true" /> 
-	</charmTemplate>
-	<spellTemplate maximumSorceryCircle="Celestial" maximumNecromancyCircle="Shadowlands"/>
-</magicTemplate>		
