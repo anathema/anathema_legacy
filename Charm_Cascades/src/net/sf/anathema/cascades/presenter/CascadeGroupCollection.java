@@ -60,7 +60,11 @@ public class CascadeGroupCollection implements CharmGroupCollection {
   private ICharmTemplate findCharmTemplateOfCharacterTypeMostProficientWithMartialArts() {
     ICharmTemplate currentFavoriteTemplate = new NullCharmTemplate();
     for (ICharacterType type : characterTypes.findAll()) {
-      ICharmTemplate charmTemplate = templateRegistry.getDefaultTemplate(type).getMagicTemplate().getCharmTemplate();
+      ICharacterTemplate defaultTemplate = templateRegistry.getDefaultTemplate(type);
+      if (defaultTemplate == null) {
+        continue;
+      }
+      ICharmTemplate charmTemplate = defaultTemplate.getMagicTemplate().getCharmTemplate();
       MartialArtsLevel martialArtsLevel = charmTemplate.getMartialArtsRules().getStandardLevel();
       MartialArtsLevel highestLevelSoFar = currentFavoriteTemplate.getMartialArtsRules().getStandardLevel();
       if (martialArtsLevel.compareTo(highestLevelSoFar) > 0) {
