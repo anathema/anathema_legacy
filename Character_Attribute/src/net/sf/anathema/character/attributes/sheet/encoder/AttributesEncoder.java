@@ -25,7 +25,7 @@ public class AttributesEncoder extends AbstractContentEncoder<AttributesContent>
   @Override
   public void encode(SheetGraphics graphics, ReportSession reportSession, Bounds contentBounds) throws DocumentException {
     AttributesContent content = createContent(reportSession);
-    float groupSpacing = smallTraitEncoder.getTraitHeight() / 2;
+    float groupSpacing = smallTraitEncoder.getTraitHeight() * 2 / 3.0f;
     float y = contentBounds.getMaxY() - groupSpacing;
     List<PrintAttributeGroup> attributeGroups = content.getAttributeGroups();
     for (PrintAttributeGroup group : attributeGroups) {
