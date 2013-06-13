@@ -1,9 +1,9 @@
 package net.sf.anathema;
 
 import com.google.inject.Inject;
+import cucumber.api.java.en.And;
 import cucumber.api.java.en.Then;
 import cucumber.api.java.en.When;
-import cucumber.runtime.PendingException;
 import net.sf.anathema.character.generic.traits.types.AttributeType;
 import net.sf.anathema.character.library.trait.ITrait;
 import net.sf.anathema.character.library.trait.visitor.IDefaultTrait;
@@ -23,8 +23,13 @@ public class AttributeSteps {
   }
 
   @When("^I set any of her attributes to (\\d+)$")
-  public void I_set_any_of_her_attributes_to(int value) throws Throwable {
+  public void setAnyOfHerAttributesTo(int value) throws Throwable {
     ((IDefaultTrait) getAttribute(ANY_ATTRIBUTE_TYPE)).setCurrentValue(value);
+  }
+
+  @And("^I set the attribute to (\\d+)$")
+  public void setTheAttributeTo(int value) throws Throwable {
+    setAnyOfHerAttributesTo(value);
   }
 
   @Then("^she has (\\d+) dots in attribute (.*)$")

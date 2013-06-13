@@ -15,3 +15,9 @@ Feature: Attribute Handling of young Solars
     | 6            | 5          |
     | 0            | 1          |
 
+  Scenario: A experienced Solar must not lower his attributes below creation value
+    Given a new default Solar
+    When I set any of her attributes to 3
+    And she goes experienced
+    And I set the attribute to 2
+    Then she has 3 dots in the attribute

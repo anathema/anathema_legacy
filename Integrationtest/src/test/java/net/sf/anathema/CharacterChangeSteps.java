@@ -31,6 +31,7 @@ public class CharacterChangeSteps {
   }
 
   @Given("^she is experienced")
+  @When("^she goes experienced")
   public void setToExperienced() {
     character.getCharacter().setExperienced(true);
   }
