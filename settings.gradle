@@ -12,7 +12,7 @@ include('Anathema',
 
         'Character_Generic', 'Character_Main', 'Character_Main_Impl', 'Character_Main_FX', 'Character_Main_Swing', 'Character_Reporting',
 
-        'Character_Equipment', 'Character_Equipment_Impl', 'Character_MartialArts', 'Character_Craft', 'Character_Intimacies', 'Character_Linguistics',
+        'Character_Equipment', 'Character_MartialArts', 'Character_Craft', 'Character_Intimacies', 'Character_Linguistics',
 
         'Character_Solar', 'Character_Mortal', 'Character_Sidereal', 'Character_Db',
 
