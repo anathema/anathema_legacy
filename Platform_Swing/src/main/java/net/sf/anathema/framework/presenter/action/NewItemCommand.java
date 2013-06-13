@@ -9,7 +9,7 @@ import net.sf.anathema.framework.swing.MessageUtilities;
 import net.sf.anathema.framework.view.SwingApplicationFrame;
 import net.sf.anathema.interaction.Command;
 import net.sf.anathema.lib.exception.PersistenceException;
-import net.sf.anathema.lib.gui.dialog.core.IDialogResult;
+import net.sf.anathema.lib.gui.dialog.core.DialogResult;
 import net.sf.anathema.lib.gui.dialog.core.ISwingFrameOrDialog;
 import net.sf.anathema.lib.gui.dialog.userdialog.UserDialog;
 import net.sf.anathema.lib.gui.dialog.userdialog.page.IDialogPage;
@@ -66,7 +66,7 @@ public class NewItemCommand implements Command {
     ISwingFrameOrDialog configuredDialog = dialog.getDialog();
     configuredDialog.setResizable(false);
     GuiUtilities.centerToParent(configuredDialog.getWindow());
-    IDialogResult result = dialog.show();
+    DialogResult result = dialog.show();
     return result.isCanceled();
   }
 }

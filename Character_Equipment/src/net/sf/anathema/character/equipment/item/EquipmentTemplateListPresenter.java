@@ -3,10 +3,8 @@ package net.sf.anathema.character.equipment.item;
 import net.sf.anathema.character.equipment.item.model.IEquipmentDatabaseManagement;
 import net.sf.anathema.character.equipment.item.model.IEquipmentTemplateEditModel;
 import net.sf.anathema.character.equipment.item.view.EquipmentNavigation;
-import net.sf.anathema.framework.view.SwingApplicationFrame;
 import net.sf.anathema.lib.control.IChangeListener;
 import net.sf.anathema.lib.control.ObjectValueListener;
-import net.sf.anathema.lib.data.ICondition;
 import net.sf.anathema.lib.gui.Presenter;
 import net.sf.anathema.lib.resources.Resources;
 
@@ -47,13 +45,7 @@ public class EquipmentTemplateListPresenter implements Presenter {
       }
     });
     updateAvailableTemplates();
-    view.getTemplateListView().addSelectionVetor(new DiscardChangesVetor(resources, new ICondition() {
-      @Override
-      public boolean isFulfilled() {
-        IEquipmentTemplateEditModel editModel = model.getTemplateEditModel();
-        return editModel.isDirty();
-      }
-    }, SwingApplicationFrame.getParentComponent()));
+    view.getTemplateListView().addSelectionVetor(new DiscardChangesVetor(resources, new DirtyEquipmentCondition(model)));
     view.getTemplateListView().addObjectSelectionChangedListener(new EquipmentTemplateLoadListener());
   }
 

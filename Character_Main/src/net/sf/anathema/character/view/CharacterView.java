@@ -7,13 +7,9 @@ import net.sf.anathema.framework.swing.IView;
 
 public interface CharacterView extends IView, OverviewContainer {
 
-  ICharacterDescriptionView createCharacterDescriptionView();
-
   IExperienceConfigurationView createExperienceConfigurationView();
 
   MultipleContentView addMultipleContentView(String header);
-
-  IConceptAndRulesViewFactory createConceptViewFactory();
 
   IAdvantageViewFactory createAdvantageViewFactory();
 
@@ -22,4 +18,6 @@ public interface CharacterView extends IView, OverviewContainer {
   IGroupedFavorableTraitViewFactory createGroupedFavorableTraitViewFactory();
 
   BackgroundView createBackgroundView();
+
+  SectionView addSection(String title);
 }

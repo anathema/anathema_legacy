@@ -8,6 +8,8 @@ public interface IObjectSelectionView<V> {
 
   void addObjectSelectionChangedListener(ObjectValueListener<V> listener);
 
+  void removeObjectSelectionChangedListener(ObjectValueListener<V> listener);
+
   void setObjects(V[] objects);
 
   V getSelectedObject();

@@ -1,14 +1,17 @@
 package net.sf.anathema.lib.gui.dialog.userdialog.buttons;
 
+import net.sf.anathema.interaction.Command;
 import net.sf.anathema.lib.gui.action.ActionConfiguration;
 import net.sf.anathema.lib.gui.action.IActionConfiguration;
-import net.sf.anathema.lib.gui.dialog.core.IDialogResult;
+import net.sf.anathema.lib.gui.dialog.core.DialogResult;
 import net.sf.anathema.lib.gui.dialog.message.MessageUserDialogConfiguration;
+import net.sf.anathema.lib.gui.dialog.userdialog.DialogCloseHandler;
 import net.sf.anathema.lib.gui.dialog.userdialog.UserDialog;
 import net.sf.anathema.lib.message.IMessage;
 import net.sf.anathema.lib.message.Message;
 import net.sf.anathema.lib.message.MessageType;
 
+import javax.swing.SwingUtilities;
 import java.awt.Component;
 
 public class ConfigurableVetor {
@@ -23,18 +26,34 @@ public class ConfigurableVetor {
     this.okButtonText = okButtonText;
   }
 
-  public boolean vetos() {
+  public void requestPermissionFor(final Command command) {
     IMessage message = new Message(messageText, MessageType.WARNING);
-    MessageUserDialogConfiguration configuration = new MessageUserDialogConfiguration(
-        message,
-        new DialogButtonConfiguration() {
-          @Override
-          public IActionConfiguration getOkActionConfiguration() {
-            return new ActionConfiguration(okButtonText);
-          }
-        });
+    final MessageUserDialogConfiguration configuration = new MessageUserDialogConfiguration(message,
+            new DialogButtonConfiguration() {
+              @Override
+              public IActionConfiguration getOkActionConfiguration() {
+                return new ActionConfiguration(okButtonText);
+              }
+            });
+    SwingUtilities.invokeLater(new Runnable() {
+      @Override
+      public void run() {
+        showDialog(configuration, command);
+      }
+    });
+
+  }
+
+  private void showDialog(MessageUserDialogConfiguration configuration, final Command command) {
     UserDialog userDialog = new UserDialog(parentComponent, configuration);
-    IDialogResult result = userDialog.show();
-    return result.isCanceled();
+    userDialog.show(new DialogCloseHandler() {
+      @Override
+      public void handleDialogClose(DialogResult result) {
+        boolean permissionGranted = !result.isCanceled();
+        if (permissionGranted) {
+          command.execute();
+        }
+      }
+    });
   }
 }

@@ -1,24 +1,17 @@
 package net.sf.anathema.character.impl.view.magic;
 
 import net.sf.anathema.character.view.magic.IComboView;
+import net.sf.anathema.interaction.Tool;
+import net.sf.anathema.lib.gui.swing.GuiUtilities;
+import net.sf.anathema.swing.interaction.ActionInteraction;
 import org.jdesktop.swingx.JXTaskPane;
 
-import javax.swing.Action;
 import javax.swing.JLabel;
-import java.awt.Component;
 
 public class ComboView implements IComboView {
 
   private final JXTaskPane taskPaneGroup = new JXTaskPane();
   private JLabel label;
-  private final Action deleteAction;
-  private final Action editAction;
-  private Component deleteComponent;
-
-  public ComboView(Action deleteAction, Action editAction) {
-    this.deleteAction = deleteAction;
-    this.editAction = editAction;
-  }
 
   public JXTaskPane getTaskGroup() {
     return taskPaneGroup;
@@ -28,8 +21,6 @@ public class ComboView implements IComboView {
   public void initGui(String name, String description) {
     label = new JLabel(description);
     taskPaneGroup.add(label);
-    taskPaneGroup.add(editAction);
-    deleteComponent = taskPaneGroup.add(deleteAction);
     taskPaneGroup.setTitle(name);
   }
 
@@ -37,20 +28,13 @@ public class ComboView implements IComboView {
   public void updateCombo(String name, String description) {
     taskPaneGroup.setTitle(name);
     label.setText(description);
-    net.sf.anathema.lib.gui.swing.GuiUtilities.revalidate(taskPaneGroup);
+    GuiUtilities.revalidate(taskPaneGroup);
   }
 
   @Override
-  public void setEditText(String text) {
-    editAction.putValue(Action.NAME, text);
-  }
-
-  @Override
-  public void setEditButtonsVisible(boolean enabled) {
-    if (enabled) {
-      return;
-    }
-    taskPaneGroup.remove(deleteComponent);
-    net.sf.anathema.lib.gui.swing.GuiUtilities.revalidateTree(taskPaneGroup);
+  public Tool addTool() {
+    ActionInteraction interaction = new ActionInteraction();
+    interaction.addTo(new AddToTaskPane(taskPaneGroup));
+    return interaction;
   }
 }

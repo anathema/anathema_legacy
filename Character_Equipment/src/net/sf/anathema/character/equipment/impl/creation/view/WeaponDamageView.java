@@ -5,8 +5,8 @@ import net.sf.anathema.character.equipment.creation.view.IWeaponDamageView;
 import net.sf.anathema.character.generic.health.HealthType;
 import net.sf.anathema.lib.control.ObjectValueListener;
 import net.sf.anathema.lib.exception.NotYetImplementedException;
-import net.sf.anathema.lib.gui.ConfigurableSwingUI;
 import net.sf.anathema.lib.gui.AgnosticUIConfiguration;
+import net.sf.anathema.lib.gui.ConfigurableSwingUI;
 import net.sf.anathema.lib.gui.ui.ObjectUiListCellRenderer;
 import net.sf.anathema.lib.gui.widgets.ChangeableJComboBox;
 import net.sf.anathema.lib.gui.widgets.IChangeableJComboBox;
@@ -65,6 +65,11 @@ public class WeaponDamageView implements IWeaponDamageView {
   @Override
   public void addObjectSelectionChangedListener(ObjectValueListener<HealthType> listener) {
     typeBox.addObjectSelectionChangedListener(listener);
+  }
+
+  @Override
+  public void removeObjectSelectionChangedListener(ObjectValueListener<HealthType> listener) {
+    typeBox.removeObjectSelectionChangeListener(listener);
   }
 
   @Override

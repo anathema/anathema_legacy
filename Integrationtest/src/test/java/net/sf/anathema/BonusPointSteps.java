@@ -37,6 +37,12 @@ public class BonusPointSteps {
     assertThat(dotsSpent, is(amount));
   }
 
+  @Then("^she has spent (\\d+) Charm pick$")
+  public void she_has_spent_Charm_pick(int picks) throws Throwable {
+    Integer value = calculateBonusPoints().getDefaultCharmModel().getValue();
+    assertThat(value, is(picks));
+  }
+
   private BonusPointManagement calculateBonusPoints() {
     BonusPointManagement bonusPointManagement = new BonusPointManagement(character.getCharacter());
     bonusPointManagement.recalculate();

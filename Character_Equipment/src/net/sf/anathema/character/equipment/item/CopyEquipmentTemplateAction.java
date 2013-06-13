@@ -2,11 +2,9 @@ package net.sf.anathema.character.equipment.item;
 
 import net.sf.anathema.character.equipment.item.model.IEquipmentDatabaseManagement;
 import net.sf.anathema.character.equipment.item.view.EquipmentNavigation;
-import net.sf.anathema.framework.view.SwingApplicationFrame;
 import net.sf.anathema.interaction.Command;
 import net.sf.anathema.interaction.Tool;
 import net.sf.anathema.lib.control.ObjectValueListener;
-import net.sf.anathema.lib.data.ICondition;
 import net.sf.anathema.lib.file.RelativePath;
 import net.sf.anathema.lib.resources.Resources;
 
@@ -48,23 +46,21 @@ public class CopyEquipmentTemplateAction {
       this.copyTool = copyTool;
     }
 
+    @SuppressWarnings({"RedundantStringConstructorCall", "StatementWithEmptyBody"})
     @Override
     public void execute() {
-      DiscardChangesVetor vetor = new DiscardChangesVetor(resources, new ICondition() {
+      DiscardChangesVetor vetor = new DiscardChangesVetor(resources, new DirtyEquipmentCondition(model));
+      vetor.requestPermissionFor(new Command() {
         @Override
-        public boolean isFulfilled() {
-          return model.getTemplateEditModel().isDirty();
+        public void execute() {
+          String salt;
+          for (salt = new String(); model.getDatabase().loadTemplate(model.getTemplateEditModel().createTemplate().getName() + salt) != null; salt += " copy")
+            ;
+          model.getTemplateEditModel().copyNewTemplate(salt);
+          model.getDatabase().saveTemplate(model.getTemplateEditModel().createTemplate());
+          copyTool.disable();
         }
-      }, SwingApplicationFrame.getParentComponent());
-      if (vetor.vetos()) {
-        return;
-      }
-      String salt;
-      for (salt = new String(); model.getDatabase().loadTemplate(model.getTemplateEditModel().createTemplate().getName() + salt) != null; salt += " copy")
-        ;
-      model.getTemplateEditModel().copyNewTemplate(salt);
-      model.getDatabase().saveTemplate(model.getTemplateEditModel().createTemplate());
-      copyTool.disable();
+      });
     }
   }
 }

@@ -5,6 +5,7 @@ import net.miginfocom.layout.CC;
 import net.sf.anathema.framework.presenter.view.IButtonControlledObjectSelectionView;
 import net.sf.anathema.framework.presenter.view.ITextFieldComboBoxEditor;
 import net.sf.anathema.lib.control.ObjectValueListener;
+import net.sf.anathema.lib.exception.NotYetImplementedException;
 import net.sf.anathema.lib.gui.dialog.events.AbstractDocumentChangeListener;
 import net.sf.anathema.lib.gui.layout.SwingLayoutUtils;
 import net.sf.anathema.lib.gui.widgets.ColoredJComboBox;
@@ -79,6 +80,11 @@ public class ButtonControlledObjectSelectionView<V> implements IButtonControlled
         listener.valueChanged((V) comboBox.getSelectedItem());
       }
     });
+  }
+
+  @Override
+  public void removeObjectSelectionChangedListener(ObjectValueListener<V> listener) {
+    throw new NotYetImplementedException();
   }
 
   @Override

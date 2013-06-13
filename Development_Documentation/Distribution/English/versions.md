@@ -34,6 +34,7 @@ leading us to the assumption that not many of you used it.
 * Equipment can handle specialty names containing ampersands '&'.
 * Sidereals pay extra for their Celestial Manses.
 * Serenity Sidereals no longer get two free dots under some circumstances.
+* A Lunar's Stamina is factored into her Armour ratings while in War Form
 * Durations of the Until...-type are properly shown once more.
 * Corrects cost of [Solar/Resistance] "Spirit Strengthens the Skin"
 * Corrects the cost of Essence dots for God-Blooded and their ilk both during creation and play.

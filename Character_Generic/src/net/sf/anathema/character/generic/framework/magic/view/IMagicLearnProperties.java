@@ -1,15 +1,16 @@
 package net.sf.anathema.character.generic.framework.magic.view;
 
-import javax.swing.Icon;
+import net.sf.anathema.lib.file.RelativePath;
+
 import javax.swing.ListCellRenderer;
 
 public interface IMagicLearnProperties {
 
-  Icon getAddButtonIcon();
+  RelativePath getAddButtonIcon();
 
   String getAddButtonToolTip();
 
-  Icon getRemoveButtonIcon();
+  RelativePath getRemoveButtonIcon();
 
   String getRemoveButtonToolTip();
 

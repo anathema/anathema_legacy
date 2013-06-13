@@ -20,14 +20,14 @@ import net.sf.anathema.framework.presenter.resources.BasicUi;
 import net.sf.anathema.framework.presenter.view.ContentView;
 import net.sf.anathema.framework.presenter.view.SimpleViewContentView;
 import net.sf.anathema.framework.view.util.ContentProperties;
+import net.sf.anathema.interaction.Command;
+import net.sf.anathema.interaction.Tool;
 import net.sf.anathema.lib.compare.I18nedIdentificateComparator;
 import net.sf.anathema.lib.control.IChangeListener;
-import net.sf.anathema.lib.gui.action.SmartAction;
 import net.sf.anathema.lib.resources.Resources;
 import net.sf.anathema.lib.workflow.textualdescription.ITextView;
 import net.sf.anathema.lib.workflow.textualdescription.TextualPresentation;
 
-import java.awt.Component;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.HashMap;
@@ -40,12 +40,14 @@ public class ComboConfigurationPresenter implements IContentPresenter {
   private final ICharmConfiguration charmConfiguration;
   private final IComboConfiguration comboConfiguration;
   private final Map<ICombo, IComboView> viewsByCombo = new HashMap<>();
+  private final Map<ICombo, Tool> toolsByCombo = new HashMap<>();
   private final ComboConfigurationModel comboModel;
   private final Resources resources;
   private final IComboConfigurationView view;
   private final MagicDisplayLabeler labeler;
 
-  public ComboConfigurationPresenter(Resources resources, ComboConfigurationModel comboModel, IMagicViewFactory factory) {
+  public ComboConfigurationPresenter(Resources resources, ComboConfigurationModel comboModel,
+                                     IMagicViewFactory factory) {
     this.resources = resources;
     this.comboModel = comboModel;
     this.charmConfiguration = comboModel.getCharmConfiguration();
@@ -58,12 +60,13 @@ public class ComboConfigurationPresenter implements IContentPresenter {
   public void initPresentation() {
     view.initGui(new ComboViewProperties(resources, comboConfiguration, comboModel.getMagicDescriptionProvider()));
     initCharmLearnListening(view);
-    ITextView nameView = view.addComboNameView(resources.getString("CardView.CharmConfiguration.ComboCreation.NameLabel"));
+    ITextView nameView = view.addComboNameView(
+            resources.getString("CardView.CharmConfiguration.ComboCreation.NameLabel"));
     ICombo editCombo = comboConfiguration.getEditCombo();
     TextualPresentation textualPresentation = new TextualPresentation();
     textualPresentation.initView(nameView, editCombo.getName());
-    ITextView descriptionView =
-            view.addComboDescriptionView(resources.getString("CardView.CharmConfiguration.ComboCreation.DescriptionLabel"));
+    ITextView descriptionView = view.addComboDescriptionView(
+            resources.getString("CardView.CharmConfiguration.ComboCreation.DescriptionLabel"));
     textualPresentation.initView(descriptionView, editCombo.getDescription());
     updateCharmListsInView(view);
     initViewListening(view);
@@ -151,24 +154,27 @@ public class ComboConfigurationPresenter implements IContentPresenter {
   }
 
   private void addComboToView(IComboConfigurationView comboConfigurationView, final ICombo combo) {
-    SmartAction deleteAction = new SmartAction(resources.getString("CardView.CharmConfiguration.ComboCreation.DeleteLabel"),
-            new BasicUi().getClearIcon()) {
-
+    IComboView comboView = comboConfigurationView.addComboView(createComboNameString(combo), convertToHtml(combo));
+    Tool editTool = comboView.addTool();
+    editTool.setIcon(new BasicUi().getEditIconPath());
+    editTool.setText(resources.getString("CardView.CharmConfiguration.ComboCreation.EditLabel"));
+    editTool.setCommand(new Command() {
       @Override
-      protected void execute(Component parentComponent) {
-        comboConfiguration.deleteCombo(combo);
-      }
-    };
-    SmartAction editAction = new SmartAction(resources.getString("CardView.CharmConfiguration.ComboCreation.EditLabel"),
-            new BasicUi().getEditIcon()) {
-
-      @Override
-      protected void execute(Component parentComponent) {
+      public void execute() {
         comboConfiguration.beginComboEdit(combo);
       }
-    };
-    IComboView comboView = comboConfigurationView.addComboView(createComboNameString(combo), convertToHtml(combo), deleteAction, editAction);
+    });
+    Tool deleteTool = comboView.addTool();
+    deleteTool.setIcon(new BasicUi().getClearIconPath());
+    deleteTool.setText(resources.getString("CardView.CharmConfiguration.ComboCreation.DeleteLabel"));
+    deleteTool.setCommand(new Command() {
+      @Override
+      public void execute() {
+        comboConfiguration.deleteCombo(combo);
+      }
+    });
     viewsByCombo.put(combo, comboView);
+    toolsByCombo.put(combo, editTool);
   }
 
   private String convertToHtml(ICombo combo) {
@@ -240,18 +246,18 @@ public class ComboConfigurationPresenter implements IContentPresenter {
 
   private void setViewToEditing(ICombo combo) {
     IComboView comboView = viewsByCombo.get(combo);
-    comboView.setEditText(resources.getString("CardView.CharmConfiguration.ComboCreation.RestartEditLabel"));
     createComboNameString(combo);
-    comboView.updateCombo(createComboNameString(combo) + " ("
-            + resources.getString("CardView.CharmConfiguration.ComboCreation.EditingLabel")
-            + ")", convertToHtml(combo));
+    comboView.updateCombo(createComboNameString(combo) + " (" + resources.getString(
+            "CardView.CharmConfiguration.ComboCreation.EditingLabel") + ")", convertToHtml(combo));
+    toolsByCombo.get(combo).setText(resources.getString("CardView.CharmConfiguration.ComboCreation.RestartEditLabel"));
   }
 
   private void setViewsToNotEditing() {
     for (ICombo currentCombo : viewsByCombo.keySet()) {
       IComboView comboView = viewsByCombo.get(currentCombo);
-      comboView.setEditText(resources.getString("CardView.CharmConfiguration.ComboCreation.EditLabel"));
       comboView.updateCombo(createComboNameString(currentCombo), convertToHtml(currentCombo));
+      toolsByCombo.get(currentCombo).setText(
+              resources.getString("CardView.CharmConfiguration.ComboCreation.EditLabel"));
     }
   }
 }

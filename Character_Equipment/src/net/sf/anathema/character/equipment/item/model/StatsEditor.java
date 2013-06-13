@@ -2,7 +2,10 @@ package net.sf.anathema.character.equipment.item.model;
 
 import net.sf.anathema.character.generic.equipment.weapon.IEquipmentStats;
 import net.sf.anathema.lib.resources.Resources;
+import net.sf.anathema.lib.util.Closure;
 
 public interface StatsEditor {
-  IEquipmentStats editStats(Resources resources, String[] nameArray, IEquipmentStats selectedStats);
+  void editStats(Resources resources, String[] nameArray, IEquipmentStats selectedStats);
+
+  void whenChangesAreConfirmed(Closure<IEquipmentStats> action);
 }

@@ -6,7 +6,7 @@ import net.sf.anathema.framework.module.DefaultObjectSelectionProperties;
 import net.sf.anathema.framework.repository.IItem;
 import net.sf.anathema.framework.repository.IObjectSelectionProperties;
 import net.sf.anathema.interaction.Command;
-import net.sf.anathema.lib.gui.dialog.core.IDialogResult;
+import net.sf.anathema.lib.gui.dialog.core.DialogResult;
 import net.sf.anathema.lib.gui.dialog.userdialog.UserDialog;
 import net.sf.anathema.lib.resources.Resources;
 
@@ -52,7 +52,7 @@ public class ControlledPrintCommand implements Command {
             new DefaultObjectSelectionProperties(resources, "Anathema.Reporting.PrintSelection.Message", "Anathema.Reporting.PrintSelection.Title");
     ObjectSelectionDialogPage dialogPage = new ObjectSelectionDialogPage(reports, properties);
     UserDialog userDialog = new UserDialog(parent, dialogPage);
-    IDialogResult result = userDialog.show();
+    DialogResult result = userDialog.show();
     if (result.isCanceled()) {
       return null;
     }

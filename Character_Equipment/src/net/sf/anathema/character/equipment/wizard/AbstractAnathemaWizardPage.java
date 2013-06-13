@@ -1,6 +1,6 @@
 package net.sf.anathema.character.equipment.wizard;
 
-import net.sf.anathema.lib.data.ICondition;
+import net.sf.anathema.lib.data.Condition;
 import net.sf.anathema.lib.message.BasicMessage;
 import net.sf.anathema.lib.message.IBasicMessage;
 
@@ -11,7 +11,7 @@ public abstract class AbstractAnathemaWizardPage implements IAnathemaWizardPage 
 
   private IBasicMessage message = new BasicMessage("!!! UNSET-MESSAGE !!!");
   private IAnathemaWizardPage previousPage = null;
-  protected final Map<ICondition, IAnathemaWizardPage> followUpPagesByCondition = new HashMap<>();
+  protected final Map<Condition, IAnathemaWizardPage> followUpPagesByCondition = new HashMap<>();
 
   @Override
   public boolean canFlipToNextPage() {
@@ -23,14 +23,14 @@ public abstract class AbstractAnathemaWizardPage implements IAnathemaWizardPage 
     return previousPage;
   }
 
-  protected final void addFollowupPage(IAnathemaWizardPage page, CheckInputListener inputListener, ICondition condition) {
+  protected final void addFollowupPage(IAnathemaWizardPage page, CheckInputListener inputListener, Condition condition) {
     followUpPagesByCondition.put(condition, page);
     page.initPresentation(inputListener);
   }
 
   @Override
   public final IWizardPage getNextPage() {
-    for (ICondition condition : followUpPagesByCondition.keySet()) {
+    for (Condition condition : followUpPagesByCondition.keySet()) {
       if (condition.isFulfilled()) {
         IWizardPage page = followUpPagesByCondition.get(condition);
         if (page instanceof IAnathemaWizardPage) {

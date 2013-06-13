@@ -2,9 +2,9 @@ package net.sf.anathema.character.generic.impl.magic.charm.special;
 
 import net.sf.anathema.character.generic.magic.ICharm;
 import net.sf.anathema.character.generic.magic.charms.ICharmLearnableArbitrator;
-import net.sf.anathema.lib.data.ICondition;
+import net.sf.anathema.lib.data.Condition;
 
-class ArbitratorLearnCondition implements ICondition {
+class ArbitratorLearnCondition implements Condition {
   private final ICharmLearnableArbitrator arbitrator;
   private final ICharm charm;
 

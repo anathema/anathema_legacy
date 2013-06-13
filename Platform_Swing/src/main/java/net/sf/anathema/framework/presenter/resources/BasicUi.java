@@ -19,35 +19,6 @@ public class BasicUi extends AbstractUI {
     return getIcon(getAddIconPath());
   }
 
-  public Icon getClearIcon() {
-    return getIcon(new RelativePath("icons/ButtonCross16.png"));
-  }
-
-  @SuppressWarnings("UnusedDeclaration")
-  public Icon getLeftArrowIcon() {
-    return getIcon(new RelativePath("icons/ButtonArrowLeft16.png"));
-  }
-
-  public Icon getRightArrowIcon() {
-    return getIcon(getRightArrowIconPath());
-  }
-
-  public RelativePath getRightArrowIconPath() {
-    return new RelativePath("icons/ButtonArrowRight16.png");
-  }
-
-  public Icon getUpArrowIcon() {
-    return getIcon(new RelativePath("icons/ButtonArrowUp16.png"));
-  }
-
-  public Icon getDownArrowIcon() {
-    return getIcon(new RelativePath("icons/ButtonArrowDown16.png"));
-  }
-
-  public Icon getEditIcon() {
-    return getIcon(getEditIconPath());
-  }
-
   public RelativePath getEditIconPath() {
     return new RelativePath("icons/ButtonEdit16.png");
   }
@@ -58,5 +29,17 @@ public class BasicUi extends AbstractUI {
 
   public RelativePath getAddIconPath() {
     return new RelativePath("icons/ButtonPlus16.png");
+  }
+
+  public RelativePath getClearIconPath() {
+    return new RelativePath("icons/ButtonCross16.png");
+  }
+
+  public RelativePath getRightArrowIconPath() {
+    return new RelativePath("icons/ButtonArrowRight16.png");
+  }
+
+  public RelativePath getLeftArrowIconPath() {
+    return new RelativePath("icons/ButtonArrowLeft16.png");
   }
 }

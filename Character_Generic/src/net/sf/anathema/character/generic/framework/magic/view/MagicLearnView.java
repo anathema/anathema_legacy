@@ -1,14 +1,17 @@
 package net.sf.anathema.character.generic.framework.magic.view;
 
 import net.miginfocom.layout.CC;
-import net.sf.anathema.lib.gui.action.SmartAction;
+import net.sf.anathema.interaction.Command;
+import net.sf.anathema.interaction.Tool;
+import net.sf.anathema.lib.file.RelativePath;
 import net.sf.anathema.lib.gui.list.ComponentEnablingListSelectionListener;
 import net.sf.anathema.lib.util.Identified;
+import net.sf.anathema.swing.interaction.ActionInteraction;
+import net.sf.anathema.view.interaction.AddToButton;
 import org.jmock.example.announcer.Announcer;
 
 import javax.swing.Action;
 import javax.swing.DefaultListModel;
-import javax.swing.Icon;
 import javax.swing.JButton;
 import javax.swing.JList;
 import javax.swing.JPanel;
@@ -16,7 +19,6 @@ import javax.swing.JScrollPane;
 import javax.swing.ListModel;
 import javax.swing.event.ListSelectionEvent;
 import javax.swing.event.ListSelectionListener;
-import java.awt.Component;
 import java.awt.Dimension;
 import java.awt.GridLayout;
 import java.util.ArrayList;
@@ -44,7 +46,8 @@ public class MagicLearnView implements IMagicLearnView {
         addButton.setEnabled(properties.isMagicSelectionAvailable(learnOptionsList.getSelectedValue()));
       }
     });
-    JButton removeButton = createRemoveMagicButton(properties.getRemoveButtonIcon(), properties.getRemoveButtonToolTip());
+    JButton removeButton = createRemoveMagicButton(properties.getRemoveButtonIcon(),
+            properties.getRemoveButtonToolTip());
     centerButtons.add(addButton);
     centerButtons.add(removeButton);
     addSelectionListListener(createLearnedListListener(removeButton, learnedList));
@@ -54,32 +57,39 @@ public class MagicLearnView implements IMagicLearnView {
     return new ComponentEnablingListSelectionListener(button, list);
   }
 
-  private JButton createAddMagicButton(Icon icon, String tooltip) {
-    SmartAction smartAction = new SmartAction(icon) {
-
+  private JButton createAddMagicButton(RelativePath icon, String tooltip) {
+    Command command = new Command() {
       @Override
-      protected void execute(Component parentComponent) {
+      public void execute() {
         fireMagicAdded(learnOptionsList.getSelectedValuesList());
       }
     };
-    return createButton(tooltip, smartAction);
+    return createButtonFromInteraction(icon, tooltip, command);
   }
 
-  private JButton createRemoveMagicButton(Icon icon, String tooltip) {
-    SmartAction smartAction = new SmartAction(icon) {
-
+  private JButton createRemoveMagicButton(RelativePath icon, String tooltip) {
+    Command command = new Command() {
       @Override
-      protected void execute(Component parentComponent) {
+      public void execute() {
         fireMagicRemoved(learnedList.getSelectedValuesList());
       }
     };
-    return createButton(tooltip, smartAction);
+    return createButtonFromInteraction(icon, tooltip, command);
   }
 
-  private JButton createButton(String tooltip, SmartAction smartAction) {
-    smartAction.setEnabled(false);
-    smartAction.setToolTipText(tooltip);
-    return new JButton(smartAction);
+  private JButton createButtonFromInteraction(RelativePath icon, String tooltip, Command command) {
+    ActionInteraction interaction = new ActionInteraction();
+    interaction.setIcon(icon);
+    interaction.setTooltip(tooltip);
+    interaction.setCommand(command);
+    return createButton(interaction);
+  }
+
+  private JButton createButton(ActionInteraction tool) {
+    tool.disable();
+    JButton jButton = new JButton();
+    tool.addTo(new AddToButton(jButton));
+    return jButton;
   }
 
   private void fireMagicRemoved(List<Object> removedMagics) {
@@ -118,6 +128,14 @@ public class MagicLearnView implements IMagicLearnView {
     JButton button = new JButton(action);
     endButtons.add(button);
     return button;
+  }
+
+  public Tool addAdditionalTool() {
+    ActionInteraction interaction = new ActionInteraction();
+    JButton button = new JButton();
+    endButtons.add(button);
+    interaction.addTo(new AddToButton(button));
+    return interaction;
   }
 
   public void addTo(JPanel panel) {

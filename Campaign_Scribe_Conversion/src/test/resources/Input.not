@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<Note repositoryId="Input" repositoryPrintName="Hallo Welt">
+  <Name><![CDATA[Hallo Welt]]></Name>
+  <Summary>
+    <Part>
+      <Format isUnderline="false" fontStyle="Plain"/>
+      <Text><![CDATA[Ich bin eine Notiz mit ]]></Text>
+    </Part>
+    <Part>
+      <Format isUnderline="false" fontStyle="Bold"/>
+      <Text><![CDATA[FETTEM]]></Text>
+    </Part>
+    <Part>
+      <Format isUnderline="false" fontStyle="Plain"/>
+      <Text><![CDATA[ Text und ]]></Text>
+    </Part>
+    <Part>
+      <Format isUnderline="false" fontStyle="Italic"/>
+      <Text><![CDATA[kursivem]]></Text>
+    </Part>
+    <Part>
+      <Format isUnderline="false" fontStyle="Plain"/>
+      <Text><![CDATA[ Test und einigen ]]></Text>
+    </Part>
+    <Part>
+      <Format isUnderline="true" fontStyle="Plain"/>
+      <Text><![CDATA[unterstrichenen]]></Text>
+    </Part>
+    <Part>
+      <Format isUnderline="false" fontStyle="Plain"/>
+      <Text><![CDATA[ Zeichen.]]></Text>
+    </Part>
+  </Summary>
+</Note>

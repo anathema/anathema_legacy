@@ -2,12 +2,9 @@ package net.sf.anathema.character.equipment.item;
 
 import net.sf.anathema.character.equipment.item.model.IEquipmentDatabaseManagement;
 import net.sf.anathema.character.equipment.item.view.EquipmentNavigation;
-import net.sf.anathema.framework.view.SwingApplicationFrame;
-import net.sf.anathema.interaction.Command;
 import net.sf.anathema.interaction.Tool;
 import net.sf.anathema.lib.control.ObjectValueListener;
 import net.sf.anathema.lib.file.RelativePath;
-import net.sf.anathema.lib.gui.dialog.userdialog.buttons.ConfigurableVetor;
 import net.sf.anathema.lib.resources.Resources;
 
 public class RemoveEquipmentTemplateAction {
@@ -25,7 +22,7 @@ public class RemoveEquipmentTemplateAction {
     removeTool.setTooltip(resources.getString("Equipment.Creation.Item.RemoveActionTooltip"));
     view.getTemplateListView().addObjectSelectionChangedListener(new EnableWhenItemSelected(removeTool));
     updateEnabled(removeTool, view.getTemplateListView().getSelectedObject());
-    removeTool.setCommand(new RemoveEquipmentItem(view));
+    removeTool.setCommand(new RemoveEquipmentItem(view, model, resources));
   }
 
   private void updateEnabled(Tool removeTool, String selectedObject) {
@@ -33,26 +30,6 @@ public class RemoveEquipmentTemplateAction {
       removeTool.enable();
     } else {
       removeTool.disable();
-    }
-  }
-
-  private class RemoveEquipmentItem implements Command {
-    private final EquipmentNavigation view;
-
-    public RemoveEquipmentItem(EquipmentNavigation view) {
-      this.view = view;
-    }
-
-    @Override
-    public void execute() {
-      String messageText = model.getTemplateEditModel().getEditTemplateId() + " - " + resources.getString("Equipment.Creation.DeleteMessage.Text");
-      String okText = resources.getString("Equipment.Creation.DeleteMessage.OKButton");
-      ConfigurableVetor vetor = new ConfigurableVetor(SwingApplicationFrame.getParentComponent(), messageText, okText);
-      if (vetor.vetos()) {
-        return;
-      }
-      model.getDatabase().deleteTemplate(view.getTemplateListView().getSelectedObject());
-      model.getTemplateEditModel().setNewTemplate();
     }
   }
 

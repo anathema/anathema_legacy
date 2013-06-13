@@ -11,7 +11,7 @@ import net.sf.anathema.framework.view.IdentificateSelectCellRenderer;
 import net.sf.anathema.lib.compare.I18nedIdentificateSorter;
 import net.sf.anathema.lib.control.ObjectValueListener;
 import net.sf.anathema.lib.gui.action.SmartAction;
-import net.sf.anathema.lib.gui.dialog.core.IDialogResult;
+import net.sf.anathema.lib.gui.dialog.core.DialogResult;
 import net.sf.anathema.lib.gui.dialog.userdialog.UserDialog;
 import net.sf.anathema.lib.resources.Resources;
 import net.sf.anathema.lib.util.Identified;
@@ -119,12 +119,12 @@ public abstract class AbstractCascadePresenter implements ICascadeSelectionPrese
       protected void execute(Component parentComponent) {
         CharmFilterSettingsPage page = new CharmFilterSettingsPage(getResources(), filterSet);
         UserDialog userDialog = new UserDialog(parentComponent, page);
-        IDialogResult result = userDialog.show();
+        DialogResult result = userDialog.show();
         resetOrApplyFilters(result);
         reselectTypeAndGroup(result);
       }
 
-      private void reselectTypeAndGroup(IDialogResult result) {
+      private void reselectTypeAndGroup(DialogResult result) {
         if (result.isCanceled()) {
           return;
         }
@@ -132,7 +132,7 @@ public abstract class AbstractCascadePresenter implements ICascadeSelectionPrese
         changeListener.reselect();
       }
 
-      private void resetOrApplyFilters(IDialogResult result) {
+      private void resetOrApplyFilters(DialogResult result) {
         if (result.isCanceled()) {
           filterSet.resetAllFilters();
         } else {
