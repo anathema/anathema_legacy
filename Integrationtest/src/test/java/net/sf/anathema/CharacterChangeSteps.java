@@ -59,7 +59,7 @@ public class CharacterChangeSteps {
     }
   }
 
-  @Then("^she has (\\d+) dots in (.*)$")
+  @Then("^she has (\\d+) dots in ability (.*)$")
   public void she_has_dots_in_Ability(int amount, String abilityName) throws Throwable {
     IFavorableTrait ability = character.getTraitConfiguration().getFavorableTrait(AbilityType.valueOf(abilityName));
     assertThat(ability.getCurrentValue(), is(amount));
