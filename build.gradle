@@ -135,7 +135,7 @@ task createModule << {
             mkdir "$moduleName/resources"
             mkdir "$moduleName/test"
             new File("$moduleName/build.gradle").withWriter { out ->
-                out.println "dependencies {\n//  Insert your dependencies here like so:\n//  compile project(':Character_Equipment')\n}"
+                out.println "dependencies {\n//  Insert your dependencies here like so:\n//  compile project(':Project_X')\n}"
             }
         }
     }
