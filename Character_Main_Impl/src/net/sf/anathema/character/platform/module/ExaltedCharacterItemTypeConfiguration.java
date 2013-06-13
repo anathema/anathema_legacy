@@ -26,8 +26,7 @@ import net.sf.anathema.lib.resources.Resources;
 public class ExaltedCharacterItemTypeConfiguration extends AbstractPersistableItemTypeConfiguration {
 
   public ExaltedCharacterItemTypeConfiguration() throws AnathemaException {
-    super(new ItemType(CharacterItemTypeRetrieval.CHARACTER_ITEM_TYPE_ID,
-            new RepositoryConfiguration(".ecg", "ExaltedCharacter/")));
+    super(new ItemType(CharacterItemTypeRetrieval.CHARACTER_ITEM_TYPE_ID, new RepositoryConfiguration(".ecg", "ExaltedCharacter/", "main")));
   }
 
   @Override

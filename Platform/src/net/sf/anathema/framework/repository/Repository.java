@@ -159,8 +159,9 @@ public class Repository implements IRepository {
       return new SingleFileReadAccess(getRepositoryFileResolver().getMainFile(type.getRepositoryConfiguration(), id));
     }
     IRepositoryConfiguration repositoryConfiguration = type.getRepositoryConfiguration();
-    return new MultiFileReadAccess(getRepositoryFileResolver().getFolder(type.getRepositoryConfiguration()),
-            repositoryConfiguration.getMainFileName(), repositoryConfiguration.getFileExtension());
+    File itemTypeFolder = getRepositoryFileResolver().getFolder(type.getRepositoryConfiguration());
+    File itemFolder = new File(itemTypeFolder, id);
+    return new MultiFileReadAccess(itemFolder, repositoryConfiguration.getMainFileName(), repositoryConfiguration.getFileExtension());
   }
 
   @Override
