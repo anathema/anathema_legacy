@@ -16,7 +16,6 @@ import net.sf.anathema.framework.IApplicationModel;
 import net.sf.anathema.framework.repository.IItem;
 import net.sf.anathema.framework.swing.IView;
 import net.sf.anathema.framework.value.IntegerViewFactory;
-import net.sf.anathema.lib.exception.AnathemaException;
 import net.sf.anathema.lib.resources.Resources;
 import net.sf.anathema.swing.character.perspective.ItemViewFactory;
 
@@ -30,27 +29,31 @@ public class CharacterViewFactory implements ItemViewFactory {
   }
 
   @Override
-  public IView createView(IItem item) throws AnathemaException {
+  public IView createView(IItem item) {
     ICharacter character = (ICharacter) item.getItemData();
-    ICharacterType characterType = ((ICharacter) item.getItemData()).getCharacterTemplate().getTemplateType().getCharacterType();
-    IntegerViewFactory intValueDisplayFactory = IntValueDisplayFactoryPrototype.createWithMarkerForCharacterType(characterType);
-    IntegerViewFactory markerLessIntValueDisplayFactory = IntValueDisplayFactoryPrototype.createWithoutMarkerForCharacterType(characterType);
+    ICharacterType characterType = character.getCharacterTemplate().getTemplateType().getCharacterType();
+    IntegerViewFactory intValueDisplayFactory = IntValueDisplayFactoryPrototype.createWithMarkerForCharacterType(
+            characterType);
+    IntegerViewFactory markerLessIntValueDisplayFactory = IntValueDisplayFactoryPrototype.createWithoutMarkerForCharacterType(
+            characterType);
     CharacterView characterView = new TaskedCharacterView(intValueDisplayFactory, markerLessIntValueDisplayFactory);
-    IBonusPointManagement bonusPointManagement = new BonusPointManagement(((ICharacter) item.getItemData()));
-    IExperiencePointManagement experiencePointManagement = new ExperiencePointManagement(((ICharacter) item.getItemData()));
-    PointPresentationStrategy pointPresentation =
-            choosePointPresentation(character, characterView, bonusPointManagement, experiencePointManagement, resources);
-    new CharacterPresenter((ICharacter) item.getItemData(), characterView, resources, model, pointPresentation).initPresentation();
+    IBonusPointManagement bonusPointManagement = new BonusPointManagement(character);
+    IExperiencePointManagement experiencePointManagement = new ExperiencePointManagement(character);
+    PointPresentationStrategy pointPresentation = choosePointPresentation(character, characterView,
+            bonusPointManagement, experiencePointManagement, resources);
+    new CharacterPresenter(character, characterView, resources, model, pointPresentation).initPresentation();
     item.getItemData().setClean();
     return characterView;
   }
 
   private PointPresentationStrategy choosePointPresentation(ICharacter character, CharacterView characterView,
                                                             IBonusPointManagement bonusPointManagement,
-                                                            IExperiencePointManagement experiencePointManagement, Resources resources) {
+                                                            IExperiencePointManagement experiencePointManagement,
+                                                            Resources resources) {
     if (character.getCharacterTemplate().isNpcOnly()) {
       return new NpcPointPresentation();
     }
-    return new PlayerCharacterPointPresentation(resources, character, characterView, bonusPointManagement, experiencePointManagement);
+    return new PlayerCharacterPointPresentation(resources, character, characterView, bonusPointManagement,
+            experiencePointManagement);
   }
 }

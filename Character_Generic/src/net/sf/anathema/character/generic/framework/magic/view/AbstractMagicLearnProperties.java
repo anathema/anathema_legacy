@@ -2,9 +2,9 @@ package net.sf.anathema.character.generic.framework.magic.view;
 
 import net.sf.anathema.framework.presenter.resources.BasicUi;
 import net.sf.anathema.framework.presenter.view.IdentificateListCellRenderer;
+import net.sf.anathema.lib.file.RelativePath;
 import net.sf.anathema.lib.resources.Resources;
 
-import javax.swing.Icon;
 import javax.swing.ListCellRenderer;
 
 public abstract class AbstractMagicLearnProperties implements IMagicLearnProperties {
@@ -16,13 +16,13 @@ public abstract class AbstractMagicLearnProperties implements IMagicLearnPropert
   }
 
   @Override
-  public Icon getAddButtonIcon() {
-    return new BasicUi().getRightArrowIcon();
+  public RelativePath getAddButtonIcon() {
+    return new BasicUi().getRightArrowIconPath();
   }
 
   @Override
-  public Icon getRemoveButtonIcon() {
-    return new BasicUi().getLeftArrowIcon();
+  public RelativePath getRemoveButtonIcon() {
+    return new BasicUi().getLeftArrowIconPath();
   }
 
   protected final Resources getResources() {

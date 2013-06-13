@@ -2,12 +2,11 @@ package net.sf.anathema.character.view.magic;
 
 import net.sf.anathema.character.generic.framework.magic.view.IMagicLearnProperties;
 import net.sf.anathema.character.generic.magic.ICharm;
-
-import javax.swing.Icon;
+import net.sf.anathema.lib.file.RelativePath;
 
 public interface IComboViewProperties extends IMagicLearnProperties {
 
-  Icon getFinalizeButtonIcon();
+  RelativePath getFinalizeButtonIcon();
 
   String getFinalizeButtonToolTip();
 
@@ -15,11 +14,11 @@ public interface IComboViewProperties extends IMagicLearnProperties {
 
   String getComboedCharmsLabel();
 
-  Icon getClearButtonIcon();
+  RelativePath getClearButtonIcon();
 
   String getClearButtonToolTip();
 
-  Icon getCancelEditButtonIcon();
+  RelativePath getCancelEditButtonIcon();
 
   String getFinalizeButtonEditToolTip();
 

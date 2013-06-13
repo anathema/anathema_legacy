@@ -23,7 +23,9 @@ public class UITableCell<T> extends ListCell<T> {
       return;
     }
     setText(configuration.getLabel(item));
-    setTooltip(new Tooltip(configuration.getToolTipText(item)));
+    if (FxUtilities.systemSupportsEmbeddedTooltips()) {
+      setTooltip(new Tooltip(configuration.getToolTipText(item)));
+    }
     Image image = loadImageForItem(item);
     setGraphic(new ImageView(image));
   }

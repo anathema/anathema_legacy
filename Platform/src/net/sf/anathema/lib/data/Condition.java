@@ -1,6 +1,6 @@
 package net.sf.anathema.lib.data;
 
-public interface ICondition {
+public interface Condition {
 
   boolean isFulfilled();
 }

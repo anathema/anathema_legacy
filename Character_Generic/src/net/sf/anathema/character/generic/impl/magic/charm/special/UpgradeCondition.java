@@ -6,9 +6,9 @@ import net.sf.anathema.character.generic.magic.ICharm;
 import net.sf.anathema.character.generic.magic.charms.ICharmLearnableArbitrator;
 import net.sf.anathema.character.generic.traits.ITraitType;
 import net.sf.anathema.character.generic.traits.types.OtherTraitType;
-import net.sf.anathema.lib.data.ICondition;
+import net.sf.anathema.lib.data.Condition;
 
-public class UpgradeCondition implements ICondition {
+public class UpgradeCondition implements Condition {
   private final ICharmLearnableArbitrator arbitrator;
   private final ICharm charm;
   private final boolean bpUpgradeAllowed;

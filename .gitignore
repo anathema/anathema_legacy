@@ -27,3 +27,6 @@ repository.version
 # Runtime
 /Anathema/repository/*
 /Anathema/anathema.properties
+
+#Special Cases
+!/Campaign_Scribe_Conversion/src/test/resources/Input.not

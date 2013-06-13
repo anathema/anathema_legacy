@@ -1,8 +1,8 @@
 package net.sf.anathema.character.generic.dummy;
 
-import net.sf.anathema.lib.data.ICondition;
+import net.sf.anathema.lib.data.Condition;
 
-public class DummyCondition implements ICondition {
+public class DummyCondition implements Condition {
 
   private boolean value;
 

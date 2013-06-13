@@ -26,8 +26,4 @@ public class DefaultDialogConfiguration<P extends IDialogPage> extends AbstractG
   public P getDialogPage() {
     return dialogPage;
   }
-
-  @Override
-  public void setUserDialogContainer(final IUserDialogContainer dialogContainer) {
-  }
 }

@@ -8,14 +8,9 @@ import net.sf.anathema.character.model.ICharacter;
 import net.sf.anathema.character.model.ITypedDescription;
 import net.sf.anathema.character.model.concept.IEditMotivationListener;
 import net.sf.anathema.character.model.concept.IMotivation;
-import net.sf.anathema.character.presenter.magic.IContentPresenter;
-import net.sf.anathema.character.view.IConceptAndRulesViewFactory;
 import net.sf.anathema.character.view.concept.ICharacterConceptAndRulesView;
 import net.sf.anathema.character.view.concept.ICharacterConceptAndRulesViewProperties;
 import net.sf.anathema.framework.presenter.resources.BasicUi;
-import net.sf.anathema.framework.presenter.view.ContentView;
-import net.sf.anathema.framework.presenter.view.SimpleViewContentView;
-import net.sf.anathema.framework.view.util.ContentProperties;
 import net.sf.anathema.interaction.Command;
 import net.sf.anathema.interaction.Tool;
 import net.sf.anathema.lib.control.IChangeListener;
@@ -28,32 +23,25 @@ import net.sf.anathema.lib.workflow.textualdescription.ITextView;
 import net.sf.anathema.lib.workflow.textualdescription.ITextualDescription;
 import net.sf.anathema.lib.workflow.textualdescription.TextualPresentation;
 
-public class CharacterConceptAndRulesPresenter implements IContentPresenter {
+public class CharacterConceptAndRulesPresenter {
 
   private final ICharacterConceptAndRulesView view;
   private final ICharacter character;
   private final Resources resources;
 
-  public CharacterConceptAndRulesPresenter(ICharacter character, IConceptAndRulesViewFactory viewFactory,
+  public CharacterConceptAndRulesPresenter(ICharacter character, ICharacterConceptAndRulesView view,
                                            Resources resources) {
     this.character = character;
-    this.view = viewFactory.createCharacterConceptView();
+    this.view = view;
     this.resources = resources;
   }
 
-  @Override
   public void initPresentation() {
     initRulesPresentation();
     initCastePresentation();
     IMotivation motivation = character.getCharacterConcept().getWillpowerRegainingConcept();
     initMotivationPresentation(motivation);
     initGui();
-  }
-
-  @Override
-  public ContentView getTabContent() {
-    String conceptHeader = resources.getString("CardView.CharacterConcept.Title");
-    return new SimpleViewContentView(new ContentProperties(conceptHeader), view);
   }
 
   private void initMotivationPresentation(final IMotivation motivation) {

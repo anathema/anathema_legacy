@@ -2,7 +2,11 @@ package net.sf.anathema.character.generic.equipment.weapon;
 
 import net.sf.anathema.character.generic.health.HealthType;
 
-public interface IArmourStats extends IDefensiveStats {
+public interface IArmourStats extends IEquipmentStats {
+
+  Integer getFatigue();
+
+  Integer getMobilityPenalty();
 
   Integer getHardness(HealthType type);
 

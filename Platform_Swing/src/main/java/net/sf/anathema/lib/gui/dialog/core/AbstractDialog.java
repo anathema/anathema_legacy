@@ -3,7 +3,7 @@ package net.sf.anathema.lib.gui.dialog.core;
 import com.google.common.base.Preconditions;
 import net.miginfocom.layout.CC;
 import net.miginfocom.swing.MigLayout;
-import net.sf.anathema.lib.gui.dialog.userdialog.IDialogCloseHandler;
+import net.sf.anathema.lib.gui.dialog.userdialog.DialogCloseHandler;
 import net.sf.anathema.lib.gui.layout.LayoutUtils;
 import net.sf.anathema.lib.gui.swing.GuiUtilities;
 import net.sf.anathema.lib.gui.widgets.HorizontalLine;
@@ -21,6 +21,8 @@ import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
 import java.util.List;
 
+import static net.sf.anathema.lib.gui.dialog.core.StaticDialogResult.Canceled;
+
 public abstract class AbstractDialog {
 
   private static final String INITIAL_DIALOG_TITLE = "!Dialog.title!";
@@ -36,7 +38,7 @@ public abstract class AbstractDialog {
   private final IGenericDialogConfiguration dialogConfiguration;
   private boolean canceled = false;
   private final DialogPagePanel dialogPagePanel;
-  private IDialogCloseHandler closeHandler = IDialogCloseHandler.NULL_HANDLER;
+  private DialogCloseHandler closeHandler = DialogCloseHandler.NULL_HANDLER;
 
   public AbstractDialog(Component parent, IGenericDialogConfiguration dialogConfiguration) {
     Preconditions.checkNotNull(dialogConfiguration);
@@ -48,6 +50,10 @@ public abstract class AbstractDialog {
     dialog.setDefaultCloseOperation(WindowConstants.DO_NOTHING_ON_CLOSE);
     dialog.addWindowListener(cancelingWindowListener);
     CloseOnEscapeKeyActionBehavior.attachTo(this);
+  }
+
+  protected void setCloseHandler(DialogCloseHandler handler) {
+    this.closeHandler = handler;
   }
 
   protected boolean isMainContentGrabVerticalSpace() {
@@ -80,7 +86,7 @@ public abstract class AbstractDialog {
   public final void performCancel() {
     canceled = true;
     closeDialog();
-    closeHandler.handleDialogClose(new DialogResult(true));
+    closeHandler.handleDialogClose(Canceled());
   }
 
   protected final IGenericDialogConfiguration getGenericDialog() {
@@ -106,7 +112,6 @@ public abstract class AbstractDialog {
 
   protected void closeDialog() {
     dialog.dispose();
-    //Bugfix (gebhard) 26.09.2006: Memory leak by reference from JDialog to this class
     dialog.removeWindowListener(cancelingWindowListener);
   }
 
@@ -155,16 +160,14 @@ public abstract class AbstractDialog {
     return dialog;
   }
 
-  protected final void setCloseHandler(IDialogCloseHandler dialogCloseHandler) {
-    Preconditions.checkNotNull(dialogCloseHandler);
-    closeHandler = dialogCloseHandler;
-  }
-
-  public IDialogCloseHandler getCloseHandler() {
+  protected DialogCloseHandler getCloseHandler() {
     return closeHandler;
   }
 
   protected DialogResult createDialogResult() {
-    return new DialogResult(canceled);
+    if (canceled) {
+      return StaticDialogResult.Canceled();
+    }
+    return StaticDialogResult.Confirmed();
   }
 }

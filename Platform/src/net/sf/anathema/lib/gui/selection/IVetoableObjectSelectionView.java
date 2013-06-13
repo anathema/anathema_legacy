@@ -1,11 +1,11 @@
 package net.sf.anathema.lib.gui.selection;
 
-import net.sf.anathema.lib.gui.list.veto.IVetor;
+import net.sf.anathema.lib.gui.list.veto.Vetor;
 
 public interface IVetoableObjectSelectionView<V> extends IObjectSelectionView<V> {
 
-  void addSelectionVetor(IVetor vetor);
+  void addSelectionVetor(Vetor vetor);
 
   @SuppressWarnings("UnusedDeclaration")
-  void removeSelectionVetor(IVetor vetor);
+  void removeSelectionVetor(Vetor vetor);
 }

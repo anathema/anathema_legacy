@@ -9,7 +9,7 @@ import net.sf.anathema.character.generic.magic.charms.special.IMultipleEffectCha
 import net.sf.anathema.character.generic.magic.charms.special.ISpecialCharmVisitor;
 import net.sf.anathema.character.generic.magic.charms.special.ISubeffect;
 import net.sf.anathema.character.generic.magic.charms.special.SubEffects;
-import net.sf.anathema.lib.data.ICondition;
+import net.sf.anathema.lib.data.Condition;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -44,7 +44,7 @@ public class MultipleEffectCharm implements IMultipleEffectCharm {
     return new ArraySubEffects(effectList.toArray(new ISubeffect[effectList.size()]));
   }
 
-  private ICondition buildLearnCondition(ICharmLearnableArbitrator arbitrator, ICharm charm) {
+  private Condition buildLearnCondition(ICharmLearnableArbitrator arbitrator, ICharm charm) {
     return new ArbitratorLearnCondition(arbitrator, charm);
   }
 

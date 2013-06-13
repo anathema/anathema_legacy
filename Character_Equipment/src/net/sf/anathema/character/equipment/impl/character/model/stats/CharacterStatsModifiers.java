@@ -5,7 +5,7 @@ import net.sf.anathema.character.equipment.character.model.IEquipmentItem;
 import net.sf.anathema.character.generic.character.IGenericCharacter;
 import net.sf.anathema.character.generic.equipment.ICharacterStatsModifiers;
 import net.sf.anathema.character.generic.equipment.ITraitModifyingStats;
-import net.sf.anathema.character.generic.equipment.weapon.IDefensiveStats;
+import net.sf.anathema.character.generic.equipment.weapon.IArmourStats;
 import net.sf.anathema.character.generic.equipment.weapon.IEquipmentStats;
 import net.sf.anathema.character.generic.equipment.weapon.IWeaponStats;
 
@@ -29,7 +29,7 @@ public class CharacterStatsModifiers implements ICharacterStatsModifiers {
   public CharacterStatsModifiers(List<IEquipmentItem> equipmentItems) {
     for (IEquipmentItem item : equipmentItems) {
       for (IEquipmentStats equipmentStats : item.getStats()) {
-        boolean isDefensive = equipmentStats instanceof IDefensiveStats;
+        boolean isDefensive = equipmentStats instanceof IArmourStats;
         boolean isShield = equipmentStats instanceof IWeaponStats;
         boolean isModifier = equipmentStats instanceof ITraitModifyingStats;
         boolean isPrinted = item.isPrintEnabled(equipmentStats);
@@ -37,7 +37,7 @@ public class CharacterStatsModifiers implements ICharacterStatsModifiers {
           stats.add((ITraitModifyingStats) equipmentStats);
         }
         if (isDefensive && isPrinted) {
-          mobilityPenalty += ((IDefensiveStats) equipmentStats).getMobilityPenalty();
+          mobilityPenalty += ((IArmourStats) equipmentStats).getMobilityPenalty();
         }
         if (isShield && isPrinted) {
           mobilityPenalty += ((IWeaponStats) equipmentStats).getMobilityPenalty();

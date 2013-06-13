@@ -6,7 +6,7 @@ import net.sf.anathema.lib.gui.action.SmartAction;
 import net.sf.anathema.lib.gui.dialog.core.AbstractDialog;
 import net.sf.anathema.lib.gui.dialog.core.DialogButtonBarBuilder;
 import net.sf.anathema.lib.gui.dialog.core.DialogResult;
-import net.sf.anathema.lib.gui.dialog.core.IDialogResult;
+import net.sf.anathema.lib.gui.dialog.core.IDialogContainer;
 import net.sf.anathema.lib.gui.dialog.userdialog.buttons.IDialogButtonConfiguration;
 import net.sf.anathema.lib.gui.dialog.userdialog.page.IDialogPage;
 import net.sf.anathema.lib.gui.swing.GuiUtilities;
@@ -19,7 +19,9 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
-public class UserDialog extends AbstractDialog implements IUserDialogContainer {
+import static net.sf.anathema.lib.gui.dialog.core.StaticDialogResult.Confirmed;
+
+public class UserDialog extends AbstractDialog implements IDialogContainer {
 
   private final DialogPageControl dialogControl;
   private JButton okButton;
@@ -34,7 +36,6 @@ public class UserDialog extends AbstractDialog implements IUserDialogContainer {
                     RelativePosition relativePosition) {
     super(parentComponent, dialogConfiguration);
     dialogControl = new DialogPageControl(dialogConfiguration.getDialogPage());
-    dialogConfiguration.setUserDialogContainer(this);
     dialogControl.setDialogControl(this);
     initializeContent();
     setContent(dialogControl.getContent());
@@ -133,8 +134,7 @@ public class UserDialog extends AbstractDialog implements IUserDialogContainer {
     return dialogControl;
   }
 
-  @Override
-  public void setVisible(boolean visible) {
+  private void setVisible(boolean visible) {
     if (visible) {
       if (neverVisualized) {
         placeRelativeToOwner();
@@ -151,9 +151,14 @@ public class UserDialog extends AbstractDialog implements IUserDialogContainer {
   }
 
   @Override
-  public IDialogResult show() {
+  public DialogResult show() {
     setVisible(true);
     return createDialogResult();
+  }
+
+  public void show(DialogCloseHandler dialogCloseHandler) {
+    setCloseHandler(dialogCloseHandler);
+    show();
   }
 
   @Override
@@ -163,22 +168,6 @@ public class UserDialog extends AbstractDialog implements IUserDialogContainer {
       return;
     }
     closeDialog();
-    getCloseHandler().handleDialogClose(new DialogResult(false));
-  }
-
-  @Override
-  public void showNonModal() {
-    showNonModal(IDialogCloseHandler.NULL_HANDLER);
-  }
-
-  @Override
-  public void showNonModal(IDialogCloseHandler dialogCloseHandler) {
-    showDialog(dialogCloseHandler, false);
-  }
-
-  private void showDialog(IDialogCloseHandler dialogCloseHandler, boolean modal) {
-    setCloseHandler(dialogCloseHandler);
-    getDialog().setModal(modal);
-    setVisible(true);
+    getCloseHandler().handleDialogClose(Confirmed());
   }
 }

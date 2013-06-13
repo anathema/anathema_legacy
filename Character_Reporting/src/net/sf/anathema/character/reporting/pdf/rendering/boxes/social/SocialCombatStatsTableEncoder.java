@@ -14,8 +14,8 @@ import net.sf.anathema.character.reporting.pdf.content.stats.social.HonestyStats
 import net.sf.anathema.character.reporting.pdf.content.stats.social.SocialCombatNameStatsGroup;
 import net.sf.anathema.character.reporting.pdf.content.stats.social.SocialRateStatsGroup;
 import net.sf.anathema.character.reporting.pdf.content.stats.social.SocialSpeedStatsGroup;
-import net.sf.anathema.character.reporting.pdf.rendering.boxes.StatsModifierFactory;
 import net.sf.anathema.character.reporting.pdf.rendering.general.stats.AbstractFixedLineStatsTableEncoder;
+import net.sf.anathema.character.reporting.second.content.combat.StatsModifiers;
 import net.sf.anathema.lib.resources.Resources;
 
 public class SocialCombatStatsTableEncoder extends AbstractFixedLineStatsTableEncoder<ISocialCombatStats> {
@@ -43,8 +43,8 @@ public class SocialCombatStatsTableEncoder extends AbstractFixedLineStatsTableEn
   protected ISocialCombatStats[] getPrintStats(ReportSession session) {
     IGenericCharacter character = session.getCharacter();
     IGenericTraitCollection traitCollection = character.getTraitCollection();
-    ICharacterStatsModifiers equipmentModifiers = StatsModifierFactory.create(character);
-    return new ISocialCombatStats[]{new PresenceSocialAttack(traitCollection, equipmentModifiers), new PerformanceSocialAttack(
-            traitCollection, equipmentModifiers), new InvestigationSocialAttack(traitCollection, equipmentModifiers)};
+    ICharacterStatsModifiers modifiers = StatsModifiers.allStatsModifiers(character);
+    return new ISocialCombatStats[]{new PresenceSocialAttack(traitCollection, modifiers), new PerformanceSocialAttack(
+            traitCollection, modifiers), new InvestigationSocialAttack(traitCollection, modifiers)};
   }
 }

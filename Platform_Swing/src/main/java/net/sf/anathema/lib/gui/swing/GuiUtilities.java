@@ -177,10 +177,6 @@ public class GuiUtilities {
             overallScreenBounds.width - screenInsets.left - screenInsets.right, overallScreenBounds.height - screenInsets.top - screenInsets.bottom);
   }
 
-  public static Set<Container> setContainerEnabled(Container control, boolean enabled) {
-    return setContainerEnabled(control, enabled, new HashSet<Container>());
-  }
-
   /**
    * Enabled / Disabled einen Container mit allen Unterkomponenten
    *

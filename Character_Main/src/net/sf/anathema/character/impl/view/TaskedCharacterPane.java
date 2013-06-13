@@ -2,8 +2,8 @@ package net.sf.anathema.character.impl.view;
 
 import net.sf.anathema.character.view.overview.OverviewDisplay;
 import net.sf.anathema.framework.presenter.view.MultipleContentView;
-import net.sf.anathema.framework.view.util.ContentProperties;
 import net.sf.anathema.framework.swing.IView;
+import net.sf.anathema.framework.view.util.ContentProperties;
 import net.sf.anathema.lib.gui.action.SmartAction;
 import org.jdesktop.swingx.JXCollapsiblePane;
 import org.jdesktop.swingx.JXTaskPane;
@@ -44,28 +44,7 @@ public class TaskedCharacterPane implements CharacterPane, OverviewDisplay {
     final JXTaskPane pane = new JXTaskPane();
     pane.setTitle(header);
     paneContainer.add(pane);
-    return new MultipleContentView() {
-      @Override
-      public void addView(IView view, final ContentProperties tabProperties) {
-        final String name = tabProperties.getName();
-        viewPanel.add(createContainer(view, name), name);
-        pane.add(new SmartAction() {
-          {
-            setNameWithoutMnemonic(name);
-          }
-
-          @Override
-          public void execute(Component parent) {
-            viewStack.show(viewPanel, name);
-          }
-        });
-      }
-
-      @Override
-      public JComponent getComponent() {
-        return null;
-      }
-    };
+    return new TaskedMultipleContentView(pane);
   }
 
   @Override
@@ -88,5 +67,35 @@ public class TaskedCharacterPane implements CharacterPane, OverviewDisplay {
   @Override
   public JComponent getComponent() {
     return content;
+  }
+
+  private class TaskedMultipleContentView implements MultipleContentView {
+    private final JXTaskPane pane;
+
+    public TaskedMultipleContentView(JXTaskPane pane) {
+      this.pane = pane;
+    }
+
+    @Override
+    public void addView(IView view, final ContentProperties tabProperties) {
+      String name = tabProperties.getName();
+      viewPanel.add(createContainer(view, name), name);
+      pane.add(new SwitchToView(name));
+    }
+  }
+
+  private class SwitchToView extends SmartAction {
+
+    private final String name;
+
+    public SwitchToView(String name) {
+      this.name = name;
+      setNameWithoutMnemonic(name);
+    }
+
+    @Override
+    public void execute(Component parent) {
+      viewStack.show(viewPanel, name);
+    }
   }
 }

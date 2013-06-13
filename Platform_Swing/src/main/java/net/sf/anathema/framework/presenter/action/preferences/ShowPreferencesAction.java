@@ -2,7 +2,7 @@ package net.sf.anathema.framework.presenter.action.preferences;
 
 import net.sf.anathema.framework.view.SwingApplicationFrame;
 import net.sf.anathema.interaction.Command;
-import net.sf.anathema.lib.gui.dialog.core.IDialogResult;
+import net.sf.anathema.lib.gui.dialog.core.DialogResult;
 import net.sf.anathema.lib.gui.dialog.userdialog.UserDialog;
 import net.sf.anathema.lib.resources.Resources;
 
@@ -27,7 +27,7 @@ public class ShowPreferencesAction implements Command {
     boolean confirmed = false;
     boolean dirty = false;
     while (!confirmed) {
-      IDialogResult result = userDialog.show();
+      DialogResult result = userDialog.show();
       confirmed = true;
       
       if (result.isCanceled()) {

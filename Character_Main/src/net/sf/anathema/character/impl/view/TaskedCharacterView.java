@@ -1,14 +1,12 @@
 package net.sf.anathema.character.impl.view;
 
-import net.sf.anathema.character.impl.view.concept.ConceptAndRulesViewFactory;
 import net.sf.anathema.character.impl.view.magic.MagicViewFactory;
 import net.sf.anathema.character.impl.view.overview.OverviewContainer;
 import net.sf.anathema.character.view.BackgroundView;
 import net.sf.anathema.character.view.CharacterView;
 import net.sf.anathema.character.view.IAdvantageViewFactory;
-import net.sf.anathema.character.view.ICharacterDescriptionView;
-import net.sf.anathema.character.view.IConceptAndRulesViewFactory;
 import net.sf.anathema.character.view.IGroupedFavorableTraitViewFactory;
+import net.sf.anathema.character.view.SectionView;
 import net.sf.anathema.character.view.advance.IExperienceConfigurationView;
 import net.sf.anathema.character.view.magic.IMagicViewFactory;
 import net.sf.anathema.character.view.overview.CategorizedOverview;
@@ -63,16 +61,6 @@ public class TaskedCharacterView implements CharacterView {
   }
 
   @Override
-  public ICharacterDescriptionView createCharacterDescriptionView() {
-    return new CharacterDescriptionView();
-  }
-
-  @Override
-  public IConceptAndRulesViewFactory createConceptViewFactory() {
-    return new ConceptAndRulesViewFactory();
-  }
-
-  @Override
   public IExperienceConfigurationView createExperienceConfigurationView() {
     return new ExperienceConfigurationView();
   }
@@ -85,6 +73,11 @@ public class TaskedCharacterView implements CharacterView {
   @Override
   public BackgroundView createBackgroundView() {
     return new SeparateBackgroundView(integerDisplayFactory);
+  }
+
+  @Override
+  public SectionView addSection(String title) {
+    return new CharacterViewSection(characterPane, title);
   }
 
   @Override

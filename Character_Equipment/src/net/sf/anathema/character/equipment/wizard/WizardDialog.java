@@ -7,15 +7,18 @@ import net.sf.anathema.lib.gui.action.SmartAction;
 import net.sf.anathema.lib.gui.dialog.DialogMessages;
 import net.sf.anathema.lib.gui.dialog.core.AbstractDialog;
 import net.sf.anathema.lib.gui.dialog.core.DialogButtonBarBuilder;
+import net.sf.anathema.lib.gui.dialog.core.DialogResult;
 import net.sf.anathema.lib.gui.dialog.core.IDialogConstants;
-import net.sf.anathema.lib.gui.dialog.core.IDialogResult;
 import net.sf.anathema.lib.gui.dialog.core.ISwingFrameOrDialog;
+import net.sf.anathema.lib.gui.dialog.userdialog.DialogCloseHandler;
 import net.sf.anathema.lib.gui.dialog.userdialog.buttons.IDialogButtonConfiguration;
 import net.sf.anathema.lib.gui.swing.GuiUtilities;
 
 import javax.swing.JButton;
 import javax.swing.JComponent;
 import java.awt.Component;
+
+import static net.sf.anathema.lib.gui.dialog.core.StaticDialogResult.Confirmed;
 
 /**
  * A dialog to show a wizard to the end user. In typical usage, the client instantiates this class
@@ -38,8 +41,8 @@ public class WizardDialog extends AbstractDialog implements IWizardContainer, ID
 
   /**
    * Creates a new wizard dialog for the given wizard.
-   * 
-   * @param parent a parent swing
+   *
+   * @param parent        a parent swing
    * @param configuration the wizard configuration this dialog is working on
    */
   public WizardDialog(Component parent, IWizardConfiguration configuration) {
@@ -71,11 +74,9 @@ public class WizardDialog extends AbstractDialog implements IWizardContainer, ID
 
     IDialogButtonConfiguration buttonConfiguration = configuration.getButtonConfiguration();
 
-    final IActionConfiguration okActionConfiguration = buttonConfiguration
-        .getOkActionConfiguration();
-    SmartAction finishAction = new SmartAction(okActionConfiguration != null
-        ? okActionConfiguration
-        : new ActionConfiguration()) {
+    final IActionConfiguration okActionConfiguration = buttonConfiguration.getOkActionConfiguration();
+    SmartAction finishAction = new SmartAction(
+            okActionConfiguration != null ? okActionConfiguration : new ActionConfiguration()) {
       @Override
       protected void execute(Component parentComponent) {
         performFinish();
@@ -85,11 +86,9 @@ public class WizardDialog extends AbstractDialog implements IWizardContainer, ID
     finishButton = new JButton(finishAction);
     finishButton.setName(FINISH_BUTTON_NAME);
 
-    final IActionConfiguration cancelActionConfiguration = buttonConfiguration
-        .getCancelActionConfiguration();
-    SmartAction cancelAction = new SmartAction(cancelActionConfiguration != null
-        ? cancelActionConfiguration
-        : new ActionConfiguration()) {
+    final IActionConfiguration cancelActionConfiguration = buttonConfiguration.getCancelActionConfiguration();
+    SmartAction cancelAction = new SmartAction(
+            cancelActionConfiguration != null ? cancelActionConfiguration : new ActionConfiguration()) {
       @Override
       protected void execute(Component parentComponent) {
         performCancel();
@@ -109,12 +108,16 @@ public class WizardDialog extends AbstractDialog implements IWizardContainer, ID
     return buttonBarBuilder.createButtonBar();
   }
 
-  /** Notifies that the back button of this dialog has been pressed. */
+  /**
+   * Notifies that the back button of this dialog has been pressed.
+   */
   protected final void backPressed() {
     showPage(getCurrentPage().getPreviousPage());
   }
 
-  /** The Next button has been pressed */
+  /**
+   * The Next button has been pressed
+   */
   protected void nextPressed() {
     showPage(getCurrentPage().getNextPage());
   }
@@ -149,8 +152,7 @@ public class WizardDialog extends AbstractDialog implements IWizardContainer, ID
     cancelButton.setEnabled(true);
     if (finishButton.isEnabled()) {
       setDefaultButton(finishButton);
-    }
-    else {
+    } else {
       setDefaultButton(nextButton);
     }
   }
@@ -171,14 +173,25 @@ public class WizardDialog extends AbstractDialog implements IWizardContainer, ID
   }
 
   @Override
-  public final IDialogResult show() {
+  public final DialogResult show() {
     ISwingFrameOrDialog configuredDialog = getConfiguredDialog();
     GuiUtilities.centerToParent(configuredDialog.getWindow());
-    configuredDialog.show();
+    showDialog(configuredDialog);
     return createDialogResult();
   }
 
-  /** For internal use only (demos) */
+  public void show(DialogCloseHandler dialogCloseHandler) {
+    setCloseHandler(dialogCloseHandler);
+    show();
+  }
+
+  private void showDialog(final ISwingFrameOrDialog configuredDialog) {
+    configuredDialog.show();
+  }
+
+  /**
+   * For internal use only (demos)
+   */
   public ISwingFrameOrDialog getConfiguredDialog() {
     IWizardPage startingPage = configuration.getStartingPage();
     if (startingPage == null) {
@@ -187,8 +200,7 @@ public class WizardDialog extends AbstractDialog implements IWizardContainer, ID
     showPage(startingPage);
     ISwingFrameOrDialog configuredDialog = getDialog();
     if (configuredDialog == null) {
-      throw new IllegalStateException(
-          "WizardDialog is already disposed and may not be shown more often than once");
+      throw new IllegalStateException("WizardDialog is already disposed and may not be shown more often than once");
     }
     if (configuredDialog.isVisible()) {
       throw new IllegalStateException("WizardDialog is already visible");
@@ -204,5 +216,6 @@ public class WizardDialog extends AbstractDialog implements IWizardContainer, ID
   private void performFinish() {
     currentPage.getNextPage();
     closeDialog();
+    getCloseHandler().handleDialogClose(Confirmed());
   }
 }

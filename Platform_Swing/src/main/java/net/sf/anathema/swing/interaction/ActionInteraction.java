@@ -28,13 +28,13 @@ public class ActionInteraction implements Tool {
   }
 
   @Override
-  public void setTooltip(String key) {
-    action.setToolTipText(key);
+  public void setTooltip(String text) {
+    action.setToolTipText(text);
   }
 
   @Override
-  public void setText(String key) {
-    action.setName(key);
+  public void setText(String text) {
+    action.setName(text);
   }
 
   @Override

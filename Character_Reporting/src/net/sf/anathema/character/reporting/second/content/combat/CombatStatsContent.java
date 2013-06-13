@@ -8,7 +8,6 @@ import net.sf.anathema.character.library.trait.specialties.HighestSpecialty;
 import net.sf.anathema.character.reporting.pdf.content.combat.AbstractCombatStatsContent;
 import net.sf.anathema.character.reporting.pdf.content.combat.CombatAction;
 import net.sf.anathema.character.reporting.pdf.content.general.QualifiedText;
-import net.sf.anathema.character.reporting.pdf.rendering.boxes.StatsModifierFactory;
 import net.sf.anathema.lib.resources.Resources;
 
 import static net.sf.anathema.character.reporting.pdf.content.general.TextType.Comment;
@@ -16,15 +15,15 @@ import static net.sf.anathema.character.reporting.pdf.content.general.TextType.N
 
 public class CombatStatsContent extends AbstractCombatStatsContent {
 
-  private HighestSpecialty dodgeSpecialty;
-  private HighestSpecialty awarenessSpecialty;
-  private ICharacterStatsModifiers equipment;
+  private final HighestSpecialty dodgeSpecialty;
+  private final HighestSpecialty awarenessSpecialty;
+  private final ICharacterStatsModifiers modifiers;
 
   protected CombatStatsContent(IGenericCharacter character, Resources resources) {
     super(resources, character);
     dodgeSpecialty = new HighestSpecialty(character, AbilityType.Dodge);
     awarenessSpecialty = new HighestSpecialty(character, AbilityType.Awareness);
-    this.equipment = StatsModifierFactory.create(character);
+    modifiers = StatsModifiers.allStatsModifiers(character);
   }
 
   public String getJoinLabel() {
@@ -44,19 +43,19 @@ public class CombatStatsContent extends AbstractCombatStatsContent {
   }
 
   public int getJoinBattle() {
-    return CharacterUtilities.getJoinBattle(getTraitCollection(), equipment);
+    return CharacterUtilities.getJoinBattle(getTraitCollection(), modifiers);
   }
 
   public int getJoinBattleWithSpecialty() {
-    return CharacterUtilities.getJoinBattleWithSpecialty(getTraitCollection(), equipment, awarenessSpecialty.getValue());
+    return CharacterUtilities.getJoinBattleWithSpecialty(getTraitCollection(), modifiers, awarenessSpecialty.getValue());
   }
 
   public int getDodgeDv() {
-    return CharacterUtilities.getDodgeDv(getCharacterType(), getTraitCollection(), equipment);
+    return CharacterUtilities.getDodgeDv(getCharacterType(), getTraitCollection(), modifiers);
   }
 
   public int getDodgeDvWithSpecialty() {
-    return CharacterUtilities.getDodgeDvWithSpecialty(getCharacterType(), getTraitCollection(), equipment, dodgeSpecialty.getValue());
+    return CharacterUtilities.getDodgeDvWithSpecialty(getCharacterType(), getTraitCollection(), modifiers, dodgeSpecialty.getValue());
   }
 
   public String[] getAttacks() {

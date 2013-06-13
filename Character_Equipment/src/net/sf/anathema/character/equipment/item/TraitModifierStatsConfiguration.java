@@ -6,7 +6,7 @@ import static net.sf.anathema.character.equipment.item.model.EquipmentStatistics
 
 public class TraitModifierStatsConfiguration extends NewStatsConfiguration {
   public TraitModifierStatsConfiguration() {
-    super("Equipment.Creation.Stats.AddTraitModifyingTooltip", new RelativePath("icons/TraitModifying16.png"),
+    super("Equipment.Creation.Stats.AddTraitModifierTooltip", new RelativePath("icons/TraitModifying16.png"),
             "EquipmentStats.TraitModifying", TraitModifying);
   }
 }

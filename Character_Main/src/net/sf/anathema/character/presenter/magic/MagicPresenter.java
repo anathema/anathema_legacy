@@ -23,7 +23,6 @@ import net.sf.anathema.character.view.magic.IMagicViewFactory;
 import net.sf.anathema.charmtree.presenter.view.CharmDisplayPropertiesMap;
 import net.sf.anathema.framework.IApplicationModel;
 import net.sf.anathema.framework.presenter.view.ContentView;
-import net.sf.anathema.framework.presenter.view.MultipleContentView;
 import net.sf.anathema.initialization.Instantiater;
 import net.sf.anathema.lib.logging.Logger;
 import net.sf.anathema.lib.resources.Resources;
@@ -110,13 +109,6 @@ public class MagicPresenter implements IContentPresenter {
 
   @Override
   public ContentView getTabContent() {
-    return new ContentView() {
-      @Override
-      public void addTo(MultipleContentView view) {
-        for (IContentPresenter presenter : subPresenters) {
-          presenter.getTabContent().addTo(view);
-        }
-      }
-    };
+    return new SubTabContentView(subPresenters);
   }
 }
