@@ -1,4 +1,4 @@
-package net.sf.anathema.character.reporting.pdf.rendering.boxes.attributes;
+package net.sf.anathema.character.attribute.sheet.content;
 
 import com.itextpdf.text.DocumentException;
 import net.sf.anathema.character.generic.character.IGenericCharacter;
@@ -45,7 +45,7 @@ public class AttributesEncoder implements ContentEncoder {
     encodeAttributes(graphics, reportSession.getCharacter(), bounds, attributeGroups, traitCollection, excellencies);
   }
 
-  protected IMagicStats[] getExcellencies(IGenericCharacter character) {
+  private IMagicStats[] getExcellencies(IGenericCharacter character) {
     List<IMagicStats> excellencies = new ArrayList<>();
     FavoringTraitType type = character.getTemplate().getTemplateType().getCharacterType().getFavoringTraitType();
     if (type.equals(new AttributeFavoringType())) {
@@ -67,7 +67,8 @@ public class AttributesEncoder implements ContentEncoder {
     return excellencies.toArray(new IMagicStats[excellencies.size()]);
   }
 
-  public final void encodeAttributes(SheetGraphics graphics, IGenericCharacter character, Bounds contentBounds, GroupedTraitType[] attributeGroups, IGenericTraitCollection traitCollection, IMagicStats[] excellencies) {
+  private final void encodeAttributes(SheetGraphics graphics, IGenericCharacter character, Bounds contentBounds, GroupedTraitType[] attributeGroups,
+                                      IGenericTraitCollection traitCollection, IMagicStats[] excellencies) {
     int traitMax = getTraitMax(character, attributeGroups);
     float groupSpacing = smallTraitEncoder.getTraitHeight() / 2;
     float y = contentBounds.getMaxY() - groupSpacing;
@@ -91,7 +92,8 @@ public class AttributesEncoder implements ContentEncoder {
           String charmId = excellencies[i].getName().getId() + "." + traitType.getId();
           excellencyLearned[i] = MagicLearnUtilities.isCharmLearned(allLearnedMagic, charmId);
         }
-        y -= smallTraitEncoder.encodeWithExcellencies(graphics, traitLabel, position, contentBounds.width, value, favored, excellencyLearned, traitMax);
+        y -= smallTraitEncoder
+                .encodeWithExcellencies(graphics, traitLabel, position, contentBounds.width, value, favored, excellencyLearned, traitMax);
       }
     }
   }

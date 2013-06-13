@@ -1,4 +1,4 @@
-package net.sf.anathema.character.reporting.pdf.rendering.boxes.attributes;
+package net.sf.anathema.character.attribute.sheet.content;
 
 import net.sf.anathema.character.generic.template.magic.AttributeFavoringType;
 import net.sf.anathema.character.reporting.pdf.content.BasicContent;

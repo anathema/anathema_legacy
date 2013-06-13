@@ -8,12 +8,25 @@ include('Anathema',
 
         'Charm_Tree', 'Magic_Description', 'Charm_Cascades', 'Character_Cards',
 
-        'Engine_Character', 'Engine_Exalted',
+        'Engine_Character',
+        'Engine_Exalted',
 
-        'Character_Generic', 'Character_Main', 'Character_Main_Impl', 'Character_Main_FX', 'Character_Main_Swing', 'Character_Reporting',
+        'Character_Generic',
+        'Character_Main',
+        'Character_Main_Impl',
+        'Character_Main_FX',
+        'Character_Main_Swing',
 
-        'Character_Equipment', 'Character_MartialArts', 'Character_Craft', 'Character_Intimacies', 'Character_Linguistics',
+        'Character_Reporting',
 
-        'Character_Solar', 'Character_Mortal',
+        'Character_Attribute',
+        'Character_Craft',
+        'Character_Equipment',
+        'Character_Intimacies',
+        'Character_Linguistics',
+        'Character_MartialArts',
+
+        'Character_Mortal',
+        'Character_Solar',
 
         'Integrationtest')
