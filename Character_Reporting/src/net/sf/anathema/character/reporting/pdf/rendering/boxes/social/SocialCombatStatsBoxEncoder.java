@@ -12,7 +12,6 @@ import net.sf.anathema.character.generic.impl.CharacterUtilities;
 import net.sf.anathema.character.generic.traits.types.AbilityType;
 import net.sf.anathema.character.library.trait.specialties.HighestSpecialty;
 import net.sf.anathema.character.reporting.pdf.content.ReportSession;
-import net.sf.anathema.character.reporting.pdf.rendering.boxes.StatsModifierFactory;
 import net.sf.anathema.character.reporting.pdf.rendering.extent.Bounds;
 import net.sf.anathema.character.reporting.pdf.rendering.extent.Position;
 import net.sf.anathema.character.reporting.pdf.rendering.general.LabelledValueEncoder;
@@ -20,6 +19,7 @@ import net.sf.anathema.character.reporting.pdf.rendering.general.box.ContentEnco
 import net.sf.anathema.character.reporting.pdf.rendering.general.table.ITableEncoder;
 import net.sf.anathema.character.reporting.pdf.rendering.graphics.SheetGraphics;
 import net.sf.anathema.character.reporting.pdf.rendering.graphics.TableCell;
+import net.sf.anathema.character.reporting.second.content.combat.StatsModifiers;
 import net.sf.anathema.lib.resources.Resources;
 
 import static net.sf.anathema.character.reporting.pdf.rendering.page.IVoidStateFormatConstants.COMMENT_FONT_SIZE;
@@ -36,10 +36,10 @@ public class SocialCombatStatsBoxEncoder implements ContentEncoder {
   @Override
   public void encode(SheetGraphics graphics, ReportSession reportSession, Bounds bounds) throws DocumentException {
     IGenericCharacter character = reportSession.getCharacter();
-    ICharacterStatsModifiers equipment = StatsModifierFactory.create(character);
+    ICharacterStatsModifiers modifiers = StatsModifiers.allStatsModifiers(character);
     float valueWidth = bounds.width;
     Bounds valueBounds = new Bounds(bounds.x, bounds.y +3, valueWidth, bounds.height);
-    float valueHeight = encodeValues(graphics, valueBounds, character, equipment) -5;
+    float valueHeight = encodeValues(graphics, valueBounds, character, modifiers) -5;
     Bounds attackTableBounds = new Bounds(bounds.x, bounds.y, valueWidth, bounds.height - valueHeight);
 
     ITableEncoder tableEncoder = new SocialCombatStatsTableEncoder(resources);
