@@ -9,19 +9,12 @@ import net.sf.anathema.character.generic.traits.IGenericTrait;
 import net.sf.anathema.character.generic.traits.ITraitTemplate;
 import net.sf.anathema.character.generic.traits.ITraitType;
 import net.sf.anathema.character.generic.traits.types.AttributeType;
-import net.sf.anathema.character.model.CharacterModelAutoCollector;
-import net.sf.anathema.character.model.CharacterModelGroup;
-import net.sf.anathema.character.model.ModelGroup;
-import net.sf.anathema.initialization.reflections.Weight;
 import net.sf.anathema.lib.util.Identified;
 import net.sf.anathema.lib.util.Identifier;
 
 import java.util.ArrayList;
 import java.util.List;
 
-@CharacterModelAutoCollector
-@Weight(weight = 0)
-@ModelGroup(group = CharacterModelGroup.NaturalTraits)
 public class TemporaryAttributesModel implements AttributesList {
 
   private IGenericCharacter character;

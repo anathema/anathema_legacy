@@ -73,7 +73,7 @@ public class RegExCharacterPrintNameFileScanner implements CharacterPrintNameFil
     String casteTypeStr = casteTypeAttr != null ? casteTypeAttr.getValue() : null;
 
     if (typeString == null) {
-      throw new IllegalStateException("Missing Character Type in " + file);
+      throw new IllegalStateException("Missing Hero Type in " + file);
     }
 
     ICharacterType characterType = characterTypes.findById(typeString);

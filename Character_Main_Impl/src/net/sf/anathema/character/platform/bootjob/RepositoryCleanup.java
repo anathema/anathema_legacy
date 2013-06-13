@@ -26,7 +26,7 @@ public class RepositoryCleanup implements IBootJob {
       createRepositoryAtVersion(resources, model);
       return;
     }
-    ProxySplashscreen.getInstance().displayStatusMessage(resources.getString("Character.Bootjob.Cleanup.Splashmessage"));
+    ProxySplashscreen.getInstance().displayStatusMessage(resources.getString("Hero.Bootjob.Cleanup.Splashmessage"));
     Version anathemaVersion = new Version(resources);
     RepositoryVersion repositoryVersion = new RepositoryVersion(model.getRepository());
     logger.info(format("Found repository at version {0}.", repositoryVersion.asString()));

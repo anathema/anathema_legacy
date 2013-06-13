@@ -25,7 +25,7 @@ public class PrintZeroCraftsPreferencesElement extends AbstractCheckBoxPreferenc
 
   @Override
   protected String getLabelKey() {
-    return "Character.Tools.Preferences.PrintZeroCrafts";
+    return "Hero.Tools.Preferences.PrintZeroCrafts";
   }
 
   @Override

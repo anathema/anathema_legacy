@@ -23,9 +23,13 @@ import net.sf.anathema.character.impl.model.traits.RegisteredTrait;
 import net.sf.anathema.character.impl.model.traits.TraitRegistrar;
 import net.sf.anathema.character.impl.model.traits.essence.EssencePoolConfiguration;
 import net.sf.anathema.character.impl.model.traits.listening.CharacterTraitListening;
+import net.sf.anathema.character.model.CharacterModel;
+import net.sf.anathema.character.model.CharacterModelAutoCollector;
+import net.sf.anathema.character.model.CharacterModelFactory;
 import net.sf.anathema.character.model.ICharacter;
 import net.sf.anathema.character.model.ICharacterDescription;
 import net.sf.anathema.character.model.ISpellConfiguration;
+import net.sf.anathema.character.model.ModelCreationContext;
 import net.sf.anathema.character.model.advance.IExperiencePointConfiguration;
 import net.sf.anathema.character.model.advance.IExperiencePointConfigurationListener;
 import net.sf.anathema.character.model.advance.IExperiencePointEntry;
@@ -37,6 +41,7 @@ import net.sf.anathema.character.model.health.IHealthConfiguration;
 import net.sf.anathema.character.model.traits.ICoreTraitConfiguration;
 import net.sf.anathema.character.model.traits.essence.IEssencePoolConfiguration;
 import net.sf.anathema.framework.presenter.itemmanagement.PrintNameAdjuster;
+import net.sf.anathema.initialization.Instantiater;
 import net.sf.anathema.lib.control.IChangeListener;
 import net.sf.anathema.lib.control.ObjectValueListener;
 import net.sf.anathema.lib.registry.IRegistry;
@@ -108,12 +113,24 @@ public class ExaltedCharacter implements ICharacter {
     if (characterTemplate.isNpcOnly()) {
       setExperienced(true);
     }
+    addModels(generics);
     for (IGlobalAdditionalTemplate globalTemplate : generics.getGlobalAdditionalTemplateRegistry().getAll()) {
       addAdditionalModels(generics, globalTemplate);
     }
     addAdditionalModels(generics, template.getAdditionalTemplates());
     addCompulsiveCharms(template);
     getCharacterContext().getCharacterListening().addChangeListener(management.getStatisticsChangeListener());
+  }
+
+  private void addModels(ICharacterGenerics generics) {
+    DefaultHero hero = new DefaultHero();
+    ModelCreationContext creationContext = new DefaultModelCreationContext(generics);
+    Instantiater instantiater = generics.getInstantiater();
+    Collection<CharacterModelFactory> factories = instantiater.instantiateAll(CharacterModelAutoCollector.class);
+    for (CharacterModelFactory factory : factories) {
+      CharacterModel model = factory.create(creationContext, hero);
+      hero.addModel(model);
+    }
   }
 
   private CoreTraitConfiguration createTraitConfiguration(ICharacterTemplate template, ICharacterGenerics generics) {

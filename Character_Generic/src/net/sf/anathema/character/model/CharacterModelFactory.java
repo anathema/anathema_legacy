@@ -2,5 +2,5 @@ package net.sf.anathema.character.model;
 
 public interface CharacterModelFactory {
 
-  <M> M create(ModelCreationContext context, Character character);
+  <M extends CharacterModel> M create(ModelCreationContext context, Hero hero);
 }

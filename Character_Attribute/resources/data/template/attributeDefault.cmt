@@ -12,7 +12,7 @@
         "id": "Mental",
         "attributes": ["Attribute.Perception", "Attribute.Intelligence", "Attribute.Wits"]
     },
-  ]
+  ],
   "startValue": 1,
   "minimumValue": 1,
   "limitation": Essence

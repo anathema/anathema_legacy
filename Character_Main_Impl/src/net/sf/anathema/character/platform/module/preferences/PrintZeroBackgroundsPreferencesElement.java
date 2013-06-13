@@ -25,7 +25,7 @@ public class PrintZeroBackgroundsPreferencesElement extends AbstractCheckBoxPref
 
   @Override
   protected String getLabelKey() {
-    return "Character.Tools.Preferences.PrintZeroBackgrounds";
+    return "Hero.Tools.Preferences.PrintZeroBackgrounds";
   }
 
   @Override

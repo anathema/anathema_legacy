@@ -7,25 +7,25 @@ import net.sf.anathema.character.generic.template.ICharacterTemplate;
 import net.sf.anathema.character.generic.traits.ITraitTemplate;
 import net.sf.anathema.character.generic.traits.ITraitType;
 import net.sf.anathema.character.generic.traits.types.AttributeType;
-import net.sf.anathema.character.model.CharacterModelAutoCollector;
-import net.sf.anathema.character.model.CharacterModelGroup;
-import net.sf.anathema.character.model.ModelGroup;
+import net.sf.anathema.character.model.CharacterModel;
 import net.sf.anathema.character.trait.CurrentValue;
-import net.sf.anathema.initialization.reflections.Weight;
 import net.sf.anathema.lib.util.Identified;
 import net.sf.anathema.lib.util.Identifier;
 
 import java.util.List;
 
-@CharacterModelAutoCollector
-@Weight(weight = 0)
-@ModelGroup(group = CharacterModelGroup.NaturalTraits)
-public class AttributesModel implements AttributesList {
+public class AttributesModel implements AttributesList, CharacterModel {
 
+  public static final Identifier MODEL_ID = new Identifier("attributes");
   private AttributeTemplate template;
 
   public AttributesModel(AttributeTemplate template) {
     this.template = template;
+  }
+
+  @Override
+  public Identified getId() {
+    return MODEL_ID;
   }
 
   public CurrentValue getCurrentValue(Identified traitId) {
