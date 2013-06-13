@@ -1,12 +1,11 @@
 dependencies {
     compile project(':Charm_Tree')
-    compile project(':Character_Generic_Framework')
+    compile project(':Character_Generic')
     compile project(':Namegenerator')
     compile project(':Platform')
     compile project(':Engine_Exalted')
     testCompile parent.ext.testDependencies
     testCompile project(path: ':Character_Generic', configuration: 'tests')
-    testCompile project(path: ':Character_Generic_Framework', configuration: 'tests')
 }
 
 configurations {

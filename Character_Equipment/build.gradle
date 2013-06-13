@@ -7,8 +7,8 @@ sourceSets {
 }
 
 dependencies {
-  provided files("${System.properties['java.home']}/lib/jfxrt.jar")
-  compile project(':Platform')
-  compile project(':Character_Generic_Framework')
-  compile project(':Platform_FX')
+    provided files("${System.properties['java.home']}/lib/jfxrt.jar")
+    compile project(':Platform')
+    compile project(':Character_Generic')
+    compile project(':Platform_FX')
 }

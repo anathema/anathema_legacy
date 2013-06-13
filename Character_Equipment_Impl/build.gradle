@@ -1,6 +1,6 @@
 dependencies {
     compile project(':Character_Equipment')
-    compile project(':Character_Generic_Framework')
+    compile project(':Character_Generic')
     compile project(':Character_Reporting')
     testCompile parent.ext.testDependencies
     testCompile project(path: ':Platform', configuration: 'tests')
