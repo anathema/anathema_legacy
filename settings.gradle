@@ -20,7 +20,6 @@ include('Anathema',
         'Character_Reporting',
 
         'Character_Attribute',
-        'Character_Craft',
         'Character_Equipment',
         'Character_Intimacies',
         'Character_Linguistics',

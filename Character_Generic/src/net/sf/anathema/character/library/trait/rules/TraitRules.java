@@ -5,7 +5,6 @@ import net.sf.anathema.character.generic.character.ILimitationContext;
 import net.sf.anathema.character.generic.traits.ITraitTemplate;
 import net.sf.anathema.character.generic.traits.ITraitType;
 import net.sf.anathema.character.generic.traits.LowerableState;
-import net.sf.anathema.character.library.trait.aggregated.AggregatedTraitTemplate;
 import net.sf.anathema.lib.data.Range;
 
 public class TraitRules implements ITraitRules {
@@ -61,11 +60,6 @@ public class TraitRules implements ITraitRules {
   @Override
   public void setCapModifier(int modifier) {
     capModifier = modifier;
-  }
-
-  @Override
-  public ITraitRules deriveAggregatedRules(String subname, int startValue) {
-    return derive(traitType, new AggregatedTraitTemplate(template, traitType, subname, startValue));
   }
 
   @Override
