@@ -1,10 +1,13 @@
 package net.sf.anathema.character.library.trait;
 
+import com.google.common.base.Preconditions;
 import net.sf.anathema.character.generic.IBasicCharacterData;
 import net.sf.anathema.character.generic.caste.ICasteType;
 import net.sf.anathema.character.generic.framework.additionaltemplate.listening.DedicatedCharacterChangeAdapter;
 import net.sf.anathema.character.generic.framework.additionaltemplate.model.ICharacterListening;
 import net.sf.anathema.character.generic.framework.additionaltemplate.model.ITraitContext;
+import net.sf.anathema.character.generic.framework.additionaltemplate.model.ITraitValueStrategy;
+import net.sf.anathema.character.generic.traits.ITraitType;
 import net.sf.anathema.character.library.ITraitFavorization;
 import net.sf.anathema.character.library.trait.favorable.IIncrementChecker;
 import net.sf.anathema.character.library.trait.favorable.NullTraitFavorization;
@@ -13,10 +16,11 @@ import net.sf.anathema.character.library.trait.rules.IFavorableTraitRules;
 import net.sf.anathema.character.library.trait.rules.ITraitRules;
 import net.sf.anathema.character.library.trait.visitor.ITraitVisitor;
 import net.sf.anathema.lib.control.IChangeListener;
+import net.sf.anathema.lib.control.IIntValueChangedListener;
 import net.sf.anathema.lib.data.Range;
 import org.jmock.example.announcer.Announcer;
 
-public class DefaultTrait extends AbstractFavorableTrait implements IFavorableDefaultTrait {
+public class DefaultTrait implements IFavorableDefaultTrait {
 
   private final Announcer<IChangeListener> rangeControl = Announcer.to(IChangeListener.class);
   private int capModifier = 0;
@@ -24,6 +28,11 @@ public class DefaultTrait extends AbstractFavorableTrait implements IFavorableDe
   private int experiencedValue = ITraitRules.UNEXPERIENCED;
   private final IValueChangeChecker checker;
   private ITraitFavorization traitFavorization;
+
+  private final ITraitRules traitRules;
+  private final Announcer<IIntValueChangedListener> creationPointControl = Announcer.to(IIntValueChangedListener.class);
+  private final Announcer<IIntValueChangedListener> currentValueControl = Announcer.to(IIntValueChangedListener.class);
+  private final ITraitContext traitContext;
 
   public DefaultTrait(IFavorableTraitRules traitRules, ICasteType[] castes, ITraitContext traitContext, IBasicCharacterData basicData,
                       ICharacterListening listening, IValueChangeChecker valueChangeChecker, IIncrementChecker favoredIncrementChecker) {
@@ -40,7 +49,9 @@ public class DefaultTrait extends AbstractFavorableTrait implements IFavorableDe
   }
 
   public DefaultTrait(ITraitRules traitRules, ITraitContext traitContext, IValueChangeChecker checker) {
-    super(traitRules, traitContext);
+    Preconditions.checkNotNull(traitRules);
+    this.traitRules = traitRules;
+    this.traitContext = traitContext;
     setTraitFavorization(new NullTraitFavorization());
     this.checker = checker;
     this.creationValue = traitRules.getStartValue();
@@ -213,4 +224,70 @@ public class DefaultTrait extends AbstractFavorableTrait implements IFavorableDe
   public int getAbsoluteMinValue() {
     return getTraitRules().getAbsoluteMinimumValue();
   }
+
+  @Override
+  public boolean isCasteOrFavored() {
+    return getFavorization().isCasteOrFavored();
+  }
+
+  @Override
+  public final ITraitType getType() {
+    return getTraitRules().getType();
+  }
+
+  @Override
+  public final int getMaximalValue() {
+    return getTraitRules().getAbsoluteMaximumValue();
+  }
+
+  @Override
+  public int hashCode() {
+    return getType().getId().hashCode();
+  }
+
+  public final int getZeroCalculationValue() {
+    return getTraitRules().getZeroCalculationCost();
+  }
+
+  @Override
+  public int getInitialValue() {
+    return getTraitRules().getStartValue();
+  }
+
+  @Override
+  public final void addCreationPointListener(IIntValueChangedListener listener) {
+    getCreationPointControl().addListener(listener);
+  }
+
+  @Override
+  public final void removeCreationPointListener(IIntValueChangedListener listener) {
+    getCreationPointControl().removeListener(listener);
+  }
+
+  @Override
+  public final void addCurrentValueListener(IIntValueChangedListener listener) {
+    getCurrentValueControl().addListener(listener);
+  }
+
+  @Override
+  public final void removeCurrentValueListener(IIntValueChangedListener listener) {
+    getCurrentValueControl().removeListener(listener);
+  }
+
+  private ITraitRules getTraitRules() {
+    return traitRules;
+  }
+
+  private ITraitValueStrategy getTraitValueStrategy() {
+    return traitContext.getTraitValueStrategy();
+  }
+
+  private Announcer<IIntValueChangedListener> getCreationPointControl() {
+    return creationPointControl;
+  }
+
+  private Announcer<IIntValueChangedListener> getCurrentValueControl() {
+    return currentValueControl;
+  }
+
 }
