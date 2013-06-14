@@ -6,7 +6,6 @@ import net.sf.anathema.character.generic.caste.ICasteType;
 import net.sf.anathema.character.generic.framework.additionaltemplate.listening.DedicatedCharacterChangeAdapter;
 import net.sf.anathema.character.generic.framework.additionaltemplate.model.ICharacterListening;
 import net.sf.anathema.character.generic.framework.additionaltemplate.model.ITraitContext;
-import net.sf.anathema.character.generic.framework.additionaltemplate.model.ITraitValueStrategy;
 import net.sf.anathema.character.generic.traits.ITraitType;
 import net.sf.anathema.character.library.ITraitFavorization;
 import net.sf.anathema.character.library.trait.favorable.IIncrementChecker;
@@ -52,22 +51,6 @@ public class DefaultTrait implements IFavorableDefaultTrait {
   }
 
   @Override
-  public void applyCapModifier(int modifier) {
-    capModifier += modifier;
-    traitRules.setCapModifier(capModifier);
-  }
-
-  @Override
-  public int getUnmodifiedMaximalValue() {
-    return traitRules.getCurrentMaximumValue(false);
-  }
-
-  @Override
-  public int getModifiedMaximalValue() {
-    return traitRules.getCurrentMaximumValue(true);
-  }
-
-  @Override
   public final int getCreationValue() {
     return creationValue;
   }
@@ -88,7 +71,7 @@ public class DefaultTrait implements IFavorableDefaultTrait {
     }
     this.creationValue = correctedValue;
     creationPointControl.announce().valueChanged(this.creationValue);
-    getTraitValueStrategy().notifyOnCreationValueChange(getCurrentValue(), currentValueControl);
+    traitContext.getTraitValueStrategy().notifyOnCreationValueChange(getCurrentValue(), currentValueControl);
   }
 
   @Override
@@ -98,7 +81,7 @@ public class DefaultTrait implements IFavorableDefaultTrait {
     }
     this.creationValue = value;
     creationPointControl.announce().valueChanged(this.creationValue);
-    getTraitValueStrategy().notifyOnCreationValueChange(getCurrentValue(), currentValueControl);
+    traitContext.getTraitValueStrategy().notifyOnCreationValueChange(getCurrentValue(), currentValueControl);
   }
 
   @Override
@@ -125,22 +108,17 @@ public class DefaultTrait implements IFavorableDefaultTrait {
 
   @Override
   public int getCurrentValue() {
-    return getTraitValueStrategy().getCurrentValue(this);
+    return traitContext.getTraitValueStrategy().getCurrentValue(this);
   }
 
   @Override
   public final int getCalculationValue() {
-    return getTraitValueStrategy().getCalculationValue(this);
+    return traitContext.getTraitValueStrategy().getCalculationValue(this);
   }
 
   @Override
   public int getCreationCalculationValue() {
     return Math.max(getCurrentValue(), getZeroCalculationValue());
-  }
-
-  @Override
-  public int getExperiencedCalculationValue() {
-    return traitRules.getExperienceCalculationValue(creationValue, experiencedValue, getCurrentValue());
   }
 
   @Override
@@ -151,7 +129,7 @@ public class DefaultTrait implements IFavorableDefaultTrait {
       if (value == getCurrentValue()) {
         return;
       }
-      getTraitValueStrategy().setValue(this, value);
+      traitContext.getTraitValueStrategy().setValue(this, value);
     }
   }
 
@@ -167,7 +145,7 @@ public class DefaultTrait implements IFavorableDefaultTrait {
       return;
     }
     this.experiencedValue = correctedValue;
-    getTraitValueStrategy().notifyOnLearnedValueChange(getCurrentValue(), currentValueControl);
+    traitContext.getTraitValueStrategy().notifyOnLearnedValueChange(getCurrentValue(), currentValueControl);
   }
 
   @Override
@@ -176,12 +154,28 @@ public class DefaultTrait implements IFavorableDefaultTrait {
       return;
     }
     this.experiencedValue = value;
-    getTraitValueStrategy().notifyOnLearnedValueChange(getCurrentValue(), currentValueControl);
+    traitContext.getTraitValueStrategy().notifyOnLearnedValueChange(getCurrentValue(), currentValueControl);
   }
 
   @Override
   public final void resetCurrentValue() {
-    getTraitValueStrategy().resetCurrentValue(this);
+    traitContext.getTraitValueStrategy().resetCurrentValue(this);
+  }
+
+  @Override
+  public void applyCapModifier(int modifier) {
+    capModifier += modifier;
+    traitRules.setCapModifier(capModifier);
+  }
+
+  @Override
+  public int getUnmodifiedMaximalValue() {
+    return traitRules.getCurrentMaximumValue(false);
+  }
+
+  @Override
+  public int getModifiedMaximalValue() {
+    return traitRules.getCurrentMaximumValue(true);
   }
 
   @Override
@@ -197,7 +191,17 @@ public class DefaultTrait implements IFavorableDefaultTrait {
 
   @Override
   public final int getMinimalValue() {
-    return getTraitValueStrategy().getMinimalValue(this);
+    return traitContext.getTraitValueStrategy().getMinimalValue(this);
+  }
+
+  @Override
+  public boolean isCasteOrFavored() {
+    return getFavorization().isCasteOrFavored();
+  }
+
+  @Override
+  public int getExperiencedCalculationValue() {
+    return traitRules.getExperienceCalculationValue(creationValue, experiencedValue, getCurrentValue());
   }
 
   @Override
@@ -216,11 +220,6 @@ public class DefaultTrait implements IFavorableDefaultTrait {
   }
 
   @Override
-  public boolean isCasteOrFavored() {
-    return getFavorization().isCasteOrFavored();
-  }
-
-  @Override
   public final ITraitType getType() {
     return traitRules.getType();
   }
@@ -228,11 +227,6 @@ public class DefaultTrait implements IFavorableDefaultTrait {
   @Override
   public final int getMaximalValue() {
     return traitRules.getAbsoluteMaximumValue();
-  }
-
-  @Override
-  public int hashCode() {
-    return getType().getId().hashCode();
   }
 
   public final int getZeroCalculationValue() {
@@ -264,8 +258,9 @@ public class DefaultTrait implements IFavorableDefaultTrait {
     currentValueControl.removeListener(listener);
   }
 
-  private ITraitValueStrategy getTraitValueStrategy() {
-    return traitContext.getTraitValueStrategy();
+  @Override
+  public int hashCode() {
+    return getType().getId().hashCode();
   }
 
   public class ResetCurrentValueOnCasteChange extends DedicatedCharacterChangeAdapter {
