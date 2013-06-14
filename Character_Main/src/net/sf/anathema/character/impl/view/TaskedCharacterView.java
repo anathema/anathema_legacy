@@ -29,11 +29,14 @@ public class TaskedCharacterView implements CharacterView {
   private final TaskedCharacterPane characterPane;
   private final OptionalViewBar optionalViewPane = new OptionalViewBar();
   private JPanel content;
+  private final SubViewRegistry subViewFactory;
 
-  public TaskedCharacterView(IntegerViewFactory factory, IntegerViewFactory factoryWithoutMarker) {
+  public TaskedCharacterView(IntegerViewFactory factory, IntegerViewFactory factoryWithoutMarker,
+                             SubViewRegistry viewFactory) {
     this.characterPane = new TaskedCharacterPane();
     this.integerDisplayFactory = factory;
     this.integerViewFactoryWithoutMarker = factoryWithoutMarker;
+    this.subViewFactory = viewFactory;
   }
 
   @Override
@@ -77,7 +80,7 @@ public class TaskedCharacterView implements CharacterView {
 
   @Override
   public SectionView addSection(String title) {
-    return new CharacterViewSection(characterPane, title);
+    return new CharacterViewSection(characterPane, title, subViewFactory);
   }
 
   @Override

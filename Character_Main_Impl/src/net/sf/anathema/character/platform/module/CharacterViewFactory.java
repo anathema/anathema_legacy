@@ -1,8 +1,11 @@
 package net.sf.anathema.character.platform.module;
 
+import net.sf.anathema.character.generic.framework.CharacterGenericsExtractor;
 import net.sf.anathema.character.generic.type.ICharacterType;
 import net.sf.anathema.character.impl.model.advance.ExperiencePointManagement;
 import net.sf.anathema.character.impl.model.creation.bonus.BonusPointManagement;
+import net.sf.anathema.character.impl.view.SubViewMap;
+import net.sf.anathema.character.impl.view.SubViewRegistry;
 import net.sf.anathema.character.impl.view.TaskedCharacterView;
 import net.sf.anathema.character.library.intvalue.IntValueDisplayFactoryPrototype;
 import net.sf.anathema.character.model.ICharacter;
@@ -36,7 +39,9 @@ public class CharacterViewFactory implements ItemViewFactory {
             characterType);
     IntegerViewFactory markerLessIntValueDisplayFactory = IntValueDisplayFactoryPrototype.createWithoutMarkerForCharacterType(
             characterType);
-    CharacterView characterView = new TaskedCharacterView(intValueDisplayFactory, markerLessIntValueDisplayFactory);
+    SubViewRegistry viewFactory = new SubViewMap(CharacterGenericsExtractor.getGenerics(model).getInstantiater());
+    CharacterView characterView = new TaskedCharacterView(intValueDisplayFactory, markerLessIntValueDisplayFactory,
+            viewFactory);
     IBonusPointManagement bonusPointManagement = new BonusPointManagement(character);
     IExperiencePointManagement experiencePointManagement = new ExperiencePointManagement(character);
     PointPresentationStrategy pointPresentation = choosePointPresentation(character, characterView,

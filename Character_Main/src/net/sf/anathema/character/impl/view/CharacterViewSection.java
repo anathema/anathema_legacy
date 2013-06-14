@@ -8,14 +8,16 @@ import net.sf.anathema.framework.view.util.ContentProperties;
 public class CharacterViewSection implements SectionView {
 
   private final MultipleContentView view;
+  private final SubViewRegistry subViewFactory;
 
-  public CharacterViewSection(CharacterPane characterPane, String title) {
-    view = characterPane.addMultipleContentView(title);
+  public CharacterViewSection(CharacterPane characterPane, String title, SubViewRegistry subViewFactory) {
+    this.view = characterPane.addMultipleContentView(title);
+    this.subViewFactory = subViewFactory;
   }
 
   @Override
   public <T> T addView(String title, Class<T> viewClass) {
-    T newView = new SubViewMap().get(viewClass);
+    T newView = subViewFactory.get(viewClass);
     IView viewToAdd = (IView) newView;
     view.addView(viewToAdd, new ContentProperties(title));
     return newView;
