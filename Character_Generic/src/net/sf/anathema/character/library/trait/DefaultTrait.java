@@ -42,10 +42,10 @@ public class DefaultTrait implements IFavorableDefaultTrait {
       @Override
       public void casteChanged() {
         resetCurrentValue();
-        getFavorization().updateFavorableStateToCaste();
+        traitFavorization.updateFavorableStateToCaste();
       }
     });
-    getFavorization().updateFavorableStateToCaste();
+    traitFavorization.updateFavorableStateToCaste();
   }
 
   public DefaultTrait(ITraitRules traitRules, ITraitContext traitContext, IValueChangeChecker checker) {
@@ -60,17 +60,17 @@ public class DefaultTrait implements IFavorableDefaultTrait {
   @Override
   public void applyCapModifier(int modifier) {
     capModifier += modifier;
-    getTraitRules().setCapModifier(capModifier);
+    traitRules.setCapModifier(capModifier);
   }
 
   @Override
   public int getUnmodifiedMaximalValue() {
-    return getTraitRules().getCurrentMaximumValue(false);
+    return traitRules.getCurrentMaximumValue(false);
   }
 
   @Override
   public int getModifiedMaximalValue() {
-    return getTraitRules().getCurrentMaximumValue(true);
+    return traitRules.getCurrentMaximumValue(true);
   }
 
   protected void setTraitFavorization(ITraitFavorization favorization) {
@@ -89,16 +89,16 @@ public class DefaultTrait implements IFavorableDefaultTrait {
 
   @Override
   public void setCreationValue(int value) {
-    if (getFavorization().isFavored()) {
-      value = Math.max(value, getFavorization().getMinimalValue());
+    if (traitFavorization.isFavored()) {
+      value = Math.max(value, traitFavorization.getMinimalValue());
     }
-    int correctedValue = getTraitRules().getCreationValue(value);
+    int correctedValue = traitRules.getCreationValue(value);
     if (this.creationValue == correctedValue) {
       return;
     }
     this.creationValue = correctedValue;
-    getCreationPointControl().announce().valueChanged(this.creationValue);
-    getTraitValueStrategy().notifyOnCreationValueChange(getCurrentValue(), getCurrentValueControl());
+    creationPointControl.announce().valueChanged(this.creationValue);
+    getTraitValueStrategy().notifyOnCreationValueChange(getCurrentValue(), currentValueControl);
   }
 
   @Override
@@ -107,8 +107,8 @@ public class DefaultTrait implements IFavorableDefaultTrait {
       return;
     }
     this.creationValue = value;
-    getCreationPointControl().announce().valueChanged(this.creationValue);
-    getTraitValueStrategy().notifyOnCreationValueChange(getCurrentValue(), getCurrentValueControl());
+    creationPointControl.announce().valueChanged(this.creationValue);
+    getTraitValueStrategy().notifyOnCreationValueChange(getCurrentValue(), currentValueControl);
   }
 
   @Override
@@ -150,7 +150,7 @@ public class DefaultTrait implements IFavorableDefaultTrait {
 
   @Override
   public int getExperiencedCalculationValue() {
-    return getTraitRules().getExperienceCalculationValue(creationValue, experiencedValue, getCurrentValue());
+    return traitRules.getExperienceCalculationValue(creationValue, experiencedValue, getCurrentValue());
   }
 
   @Override
@@ -172,12 +172,12 @@ public class DefaultTrait implements IFavorableDefaultTrait {
 
   @Override
   public final void setExperiencedValue(int value) {
-    int correctedValue = getTraitRules().getExperiencedValue(getCreationValue(), value);
+    int correctedValue = traitRules.getExperiencedValue(getCreationValue(), value);
     if (correctedValue == experiencedValue) {
       return;
     }
     this.experiencedValue = correctedValue;
-    getTraitValueStrategy().notifyOnLearnedValueChange(getCurrentValue(), getCurrentValueControl());
+    getTraitValueStrategy().notifyOnLearnedValueChange(getCurrentValue(), currentValueControl);
   }
 
   @Override
@@ -186,7 +186,7 @@ public class DefaultTrait implements IFavorableDefaultTrait {
       return;
     }
     this.experiencedValue = value;
-    getTraitValueStrategy().notifyOnLearnedValueChange(getCurrentValue(), getCurrentValueControl());
+    getTraitValueStrategy().notifyOnLearnedValueChange(getCurrentValue(), currentValueControl);
   }
 
   @Override
@@ -196,7 +196,7 @@ public class DefaultTrait implements IFavorableDefaultTrait {
 
   @Override
   public void setModifiedCreationRange(int lowerBound, int upperBound) {
-    getTraitRules().setModifiedCreationRange(new Range(lowerBound, upperBound));
+    traitRules.setModifiedCreationRange(new Range(lowerBound, upperBound));
     resetCreationValue();
   }
 
@@ -212,17 +212,17 @@ public class DefaultTrait implements IFavorableDefaultTrait {
 
   @Override
   public final int getCalculationMinValue() {
-    return getTraitRules().getCalculationMinValue();
+    return traitRules.getCalculationMinValue();
   }
 
   @Override
   public final boolean isLowerable() {
-    return getTraitRules().isLowerable();
+    return traitRules.isLowerable();
   }
 
   @Override
   public int getAbsoluteMinValue() {
-    return getTraitRules().getAbsoluteMinimumValue();
+    return traitRules.getAbsoluteMinimumValue();
   }
 
   @Override
@@ -232,12 +232,12 @@ public class DefaultTrait implements IFavorableDefaultTrait {
 
   @Override
   public final ITraitType getType() {
-    return getTraitRules().getType();
+    return traitRules.getType();
   }
 
   @Override
   public final int getMaximalValue() {
-    return getTraitRules().getAbsoluteMaximumValue();
+    return traitRules.getAbsoluteMaximumValue();
   }
 
   @Override
@@ -246,48 +246,35 @@ public class DefaultTrait implements IFavorableDefaultTrait {
   }
 
   public final int getZeroCalculationValue() {
-    return getTraitRules().getZeroCalculationCost();
+    return traitRules.getZeroCalculationCost();
   }
 
   @Override
   public int getInitialValue() {
-    return getTraitRules().getStartValue();
+    return traitRules.getStartValue();
   }
 
   @Override
   public final void addCreationPointListener(IIntValueChangedListener listener) {
-    getCreationPointControl().addListener(listener);
+    creationPointControl.addListener(listener);
   }
 
   @Override
   public final void removeCreationPointListener(IIntValueChangedListener listener) {
-    getCreationPointControl().removeListener(listener);
+    creationPointControl.removeListener(listener);
   }
 
   @Override
   public final void addCurrentValueListener(IIntValueChangedListener listener) {
-    getCurrentValueControl().addListener(listener);
+    currentValueControl.addListener(listener);
   }
 
   @Override
   public final void removeCurrentValueListener(IIntValueChangedListener listener) {
-    getCurrentValueControl().removeListener(listener);
-  }
-
-  private ITraitRules getTraitRules() {
-    return traitRules;
+    currentValueControl.removeListener(listener);
   }
 
   private ITraitValueStrategy getTraitValueStrategy() {
     return traitContext.getTraitValueStrategy();
   }
-
-  private Announcer<IIntValueChangedListener> getCreationPointControl() {
-    return creationPointControl;
-  }
-
-  private Announcer<IIntValueChangedListener> getCurrentValueControl() {
-    return currentValueControl;
-  }
-
 }
