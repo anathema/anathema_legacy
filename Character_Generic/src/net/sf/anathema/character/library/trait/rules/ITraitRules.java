@@ -8,8 +8,6 @@ public interface ITraitRules {
 
   int UNEXPERIENCED = -1;
 
-  ITraitRules derive(ITraitType traitType, ITraitTemplate template);
-
   int getAbsoluteMaximumValue();
 
   int getAbsoluteMinimumValue();
@@ -17,8 +15,6 @@ public interface ITraitRules {
   int getCurrentMaximumValue(boolean modified);
 
   int getCalculationMinValue();
-
-  void setCapModifier(int modifier);
 
   int getStartValue();
 
@@ -28,11 +24,13 @@ public interface ITraitRules {
 
   ITraitType getType();
 
-  void setModifiedCreationRange(Range range);
-
   int getExperiencedValue(int creationValue, int demandedValue);
 
   int getCreationValue(int demandedValue);
 
   int getExperienceCalculationValue(int creationValue, int experiencedValue, int currentValue);
+
+  void setCapModifier(int modifier);
+
+  void setModifiedCreationRange(Range range);
 }

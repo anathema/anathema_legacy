@@ -28,7 +28,6 @@ public class DefaultTrait implements IFavorableDefaultTrait {
   private int experiencedValue = ITraitRules.UNEXPERIENCED;
   private final IValueChangeChecker checker;
   private ITraitFavorization traitFavorization;
-
   private final ITraitRules traitRules;
   private final Announcer<IIntValueChangedListener> creationPointControl = Announcer.to(IIntValueChangedListener.class);
   private final Announcer<IIntValueChangedListener> currentValueControl = Announcer.to(IIntValueChangedListener.class);
@@ -37,14 +36,9 @@ public class DefaultTrait implements IFavorableDefaultTrait {
   public DefaultTrait(IFavorableTraitRules traitRules, ICasteType[] castes, ITraitContext traitContext, IBasicCharacterData basicData,
                       ICharacterListening listening, IValueChangeChecker valueChangeChecker, IIncrementChecker favoredIncrementChecker) {
     this(traitRules, traitContext, valueChangeChecker);
-    setTraitFavorization(new TraitFavorization(basicData, castes, favoredIncrementChecker, this, traitRules.isRequiredFavored()));
-    listening.addChangeListener(new DedicatedCharacterChangeAdapter() {
-      @Override
-      public void casteChanged() {
-        resetCurrentValue();
-        traitFavorization.updateFavorableStateToCaste();
-      }
-    });
+    this.traitFavorization = new TraitFavorization(basicData, castes, favoredIncrementChecker, this, traitRules.isRequiredFavored());
+    listening.addChangeListener(new ResetCurrentValueOnCasteChange());
+    listening.addChangeListener(new UpdateFavoredStateOnCasteChange());
     traitFavorization.updateFavorableStateToCaste();
   }
 
@@ -52,7 +46,7 @@ public class DefaultTrait implements IFavorableDefaultTrait {
     Preconditions.checkNotNull(traitRules);
     this.traitRules = traitRules;
     this.traitContext = traitContext;
-    setTraitFavorization(new NullTraitFavorization());
+    this.traitFavorization = new NullTraitFavorization();
     this.checker = checker;
     this.creationValue = traitRules.getStartValue();
   }
@@ -71,10 +65,6 @@ public class DefaultTrait implements IFavorableDefaultTrait {
   @Override
   public int getModifiedMaximalValue() {
     return traitRules.getCurrentMaximumValue(true);
-  }
-
-  protected void setTraitFavorization(ITraitFavorization favorization) {
-    this.traitFavorization = favorization;
   }
 
   @Override
@@ -276,5 +266,19 @@ public class DefaultTrait implements IFavorableDefaultTrait {
 
   private ITraitValueStrategy getTraitValueStrategy() {
     return traitContext.getTraitValueStrategy();
+  }
+
+  public class ResetCurrentValueOnCasteChange extends DedicatedCharacterChangeAdapter {
+    @Override
+    public void casteChanged() {
+      resetCurrentValue();
+    }
+  }
+
+  public class UpdateFavoredStateOnCasteChange extends DedicatedCharacterChangeAdapter {
+    @Override
+    public void casteChanged() {
+      traitFavorization.updateFavorableStateToCaste();
+    }
   }
 }

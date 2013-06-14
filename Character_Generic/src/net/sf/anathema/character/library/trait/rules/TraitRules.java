@@ -63,11 +63,6 @@ public class TraitRules implements ITraitRules {
   }
 
   @Override
-  public ITraitRules derive(ITraitType type, ITraitTemplate deriveTemplate) {
-    return new TraitRules(type, deriveTemplate, limitationContext);
-  }
-
-  @Override
   public boolean isLowerable() {
     LowerableState lowerableState = template.getLowerableState();
     return lowerableState != LowerableState.Default && lowerableState != LowerableState.Immutable;
