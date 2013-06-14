@@ -1,6 +1,7 @@
 package net.sf.anathema.character.presenter;
 
 import net.sf.anathema.character.generic.template.ICharacterTemplate;
+import net.sf.anathema.character.generic.type.ICharacterType;
 import net.sf.anathema.character.model.ICharacter;
 import net.sf.anathema.character.presenter.magic.IContentPresenter;
 import net.sf.anathema.character.presenter.magic.MagicPresenter;
@@ -59,17 +60,17 @@ public class CharacterPresenter implements Presenter, MultipleContentViewPresent
     SectionView sectionView = characterView.addSection(sectionTitle);
 
     String descriptionHeader = resources.getString("CardView.CharacterDescription.Title");
-    ICharacterDescriptionView descriptionView = sectionView.addView(descriptionHeader, ICharacterDescriptionView.class);
+    ICharacterDescriptionView descriptionView = sectionView.addView(descriptionHeader, ICharacterDescriptionView.class, characterType());
     DescriptionDetails descriptionDetails = new DescriptionDetails(character.getDescription(),
             character.getCharacterConcept(),
-            character.getCharacterTemplate().getTemplateType().getCharacterType().isExaltType());
+            characterType().isExaltType());
     new CharacterDescriptionPresenter(descriptionDetails, resources, descriptionView).initPresentation();
 
     String conceptHeader = resources.getString("CardView.CharacterConcept.Title");
-    ICharacterConceptAndRulesView conceptView = sectionView.addView(conceptHeader, ICharacterConceptAndRulesView.class);
+    ICharacterConceptAndRulesView conceptView = sectionView.addView(conceptHeader, ICharacterConceptAndRulesView.class, characterType());
     new CharacterConceptAndRulesPresenter(character, conceptView, resources).initPresentation();
 
-    initializer.addMultipleContentViewGroup(sectionTitle, Outline);
+    initializer.addMultipleContentViewGroup(sectionView, Outline);
   }
 
   private void initPhysicalTraits() {
@@ -114,5 +115,9 @@ public class CharacterPresenter implements Presenter, MultipleContentViewPresent
 
   private String getString(String resourceKey) {
     return resources.getString(resourceKey);
+  }
+
+  private ICharacterType characterType() {
+    return character.getCharacterTemplate().getTemplateType().getCharacterType();
   }
 }

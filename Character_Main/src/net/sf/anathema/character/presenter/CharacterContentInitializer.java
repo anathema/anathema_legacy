@@ -8,6 +8,7 @@ import net.sf.anathema.character.model.CharacterModelGroup;
 import net.sf.anathema.character.model.ICharacter;
 import net.sf.anathema.character.presenter.magic.IContentPresenter;
 import net.sf.anathema.character.view.CharacterView;
+import net.sf.anathema.character.view.SectionView;
 import net.sf.anathema.framework.IApplicationModel;
 import net.sf.anathema.framework.presenter.view.ContentView;
 import net.sf.anathema.framework.presenter.view.MultipleContentView;
@@ -92,6 +93,21 @@ public class CharacterContentInitializer {
       additionalViews.add(simpleView);
     }
     return additionalViews;
+  }
+
+  public void addMultipleContentViewGroup(SectionView sectionView, CharacterModelGroup group) {
+    IRegistry<String, IAdditionalViewFactory> factoryRegistry = getGenerics(
+            anathemaModel).getAdditionalViewFactoryRegistry();
+    for (IAdditionalModel model : character.getExtendedConfiguration().getAdditionalModels(group)) {
+      IAdditionalViewFactory viewFactory = factoryRegistry.get(model.getTemplateId());
+      if (viewFactory == null) {
+        continue;
+      }
+      String viewName = getString("AdditionalTemplateView.TabName." + model.getTemplateId());
+      ICharacterType characterType = character.getCharacterTemplate().getTemplateType().getCharacterType();
+      Object view = sectionView.addView(viewName, viewFactory.getViewClass(), characterType);
+      viewFactory.createView(model, resources, characterType, view);
+    }
   }
 
   private String getString(String resourceKey) {

@@ -1,5 +1,6 @@
 package net.sf.anathema.character.impl.view;
 
+import net.sf.anathema.character.generic.type.ICharacterType;
 import net.sf.anathema.character.platform.RegisteredCharacterView;
 import net.sf.anathema.initialization.Instantiater;
 
@@ -20,7 +21,7 @@ public class SubViewMap implements SubViewRegistry {
     }
   }
 
-  public <T> T get(Class<T> viewClass){
-    return factories.get(viewClass).create();
+  public <T> T get(Class<T> viewClass, ICharacterType type){
+    return factories.get(viewClass).create(type);
   }
 }
