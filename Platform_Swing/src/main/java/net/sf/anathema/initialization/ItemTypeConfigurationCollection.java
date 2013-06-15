@@ -10,9 +10,9 @@ public class ItemTypeConfigurationCollection  {
 
   private final Collection<AbstractItemTypeConfiguration> itemTypeConfigurations = new ArrayList<>();
 
-  public ItemTypeConfigurationCollection(Instantiater instantiater)
+  public ItemTypeConfigurationCollection(ObjectFactory objectFactory)
       throws InitializationException {
-    Collection<AbstractItemTypeConfiguration> configurations = instantiater.instantiateOrdered(
+    Collection<AbstractItemTypeConfiguration> configurations = objectFactory.instantiateOrdered(
             ItemTypeConfiguration.class);
     itemTypeConfigurations.addAll(configurations);
   }

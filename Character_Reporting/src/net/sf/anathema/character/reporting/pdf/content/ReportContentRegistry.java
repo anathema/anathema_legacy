@@ -1,7 +1,7 @@
 package net.sf.anathema.character.reporting.pdf.content;
 
 import net.sf.anathema.initialization.InitializationException;
-import net.sf.anathema.initialization.Instantiater;
+import net.sf.anathema.initialization.ObjectFactory;
 import net.sf.anathema.lib.resources.Resources;
 
 import java.util.Collection;
@@ -9,10 +9,10 @@ import java.util.Collection;
 public class ReportContentRegistry {
 
   private final Resources resources;
-  private final Instantiater instantiater;
+  private final ObjectFactory objectFactory;
 
-  public ReportContentRegistry(Instantiater instantiater, Resources resources) {
-    this.instantiater = instantiater;
+  public ReportContentRegistry(ObjectFactory objectFactory, Resources resources) {
+    this.objectFactory = objectFactory;
     this.resources = resources;
   }
 
@@ -29,7 +29,7 @@ public class ReportContentRegistry {
 
   private <C extends SubContent> Collection<ReportContentFactory> instantiateFactories(Class<C> contentClass) {
     try {
-      return instantiater.instantiateAll(RegisteredReportContent.class, resources);
+      return objectFactory.instantiateAll(RegisteredReportContent.class, resources);
     } catch (InitializationException e) {
       throw new RuntimeException("Could not create content for " + contentClass.getName(), e);
     }

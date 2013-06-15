@@ -5,7 +5,7 @@ import net.sf.anathema.character.generic.framework.module.CharacterModule;
 import net.sf.anathema.character.generic.framework.module.CharacterModuleContainer;
 import net.sf.anathema.character.generic.framework.module.ICharacterModule;
 import net.sf.anathema.initialization.InitializationException;
-import net.sf.anathema.initialization.Instantiater;
+import net.sf.anathema.initialization.ObjectFactory;
 import net.sf.anathema.initialization.reflections.ResourceLoader;
 import net.sf.anathema.initialization.repository.IDataFileProvider;
 
@@ -14,11 +14,11 @@ import java.util.Collection;
 public class CharacterModuleContainerInitializer {
 
   private final ResourceLoader resourceLoader;
-  private final Instantiater instantiater;
+  private final ObjectFactory objectFactory;
 
-  public CharacterModuleContainerInitializer(ResourceLoader resourceLoader, Instantiater instantiater) {
+  public CharacterModuleContainerInitializer(ResourceLoader resourceLoader, ObjectFactory objectFactory) {
     this.resourceLoader = resourceLoader;
-    this.instantiater = instantiater;
+    this.objectFactory = objectFactory;
   }
 
   public CharacterModuleContainer initContainer(IDataFileProvider dataFileProvider) throws InitializationException {
@@ -29,18 +29,18 @@ public class CharacterModuleContainerInitializer {
 
   private CharacterModuleContainer createModuleContainer(IDataFileProvider dataFileProvider) {
     IExtensibleDataSetProvider dataSetManager = loadExtensibleResources();
-    return new CharacterModuleContainer(dataSetManager, dataFileProvider, instantiater);
+    return new CharacterModuleContainer(dataSetManager, dataFileProvider, objectFactory);
   }
 
   private void addModules(CharacterModuleContainer container) {
-    Collection<ICharacterModule> modules = instantiater.instantiateOrdered(CharacterModule.class);
+    Collection<ICharacterModule> modules = objectFactory.instantiateOrdered(CharacterModule.class);
     for (ICharacterModule module : modules) {
       container.addCharacterGenericsModule(module);
     }
   }
 
   private IExtensibleDataSetProvider loadExtensibleResources() {
-    DataSetInitializer dataSetInitializer = new DataSetInitializer(resourceLoader, instantiater);
+    DataSetInitializer dataSetInitializer = new DataSetInitializer(resourceLoader, objectFactory);
     return dataSetInitializer.initializeExtensibleResources();
   }
 }

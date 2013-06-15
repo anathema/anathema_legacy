@@ -18,11 +18,11 @@ public class AnathemaPresenter {
   private final ApplicationView view;
   private final Resources resources;
   private final Collection<IItemTypeConfiguration> itemTypeConfigurations;
-  private final Instantiater instantiater;
+  private final ObjectFactory objectFactory;
 
   public AnathemaPresenter(IApplicationModel model, ApplicationView view, Resources resources,
-                           Collection<IItemTypeConfiguration> itemTypeConfigurations, Instantiater instantiater) {
-    this.instantiater = instantiater;
+                           Collection<IItemTypeConfiguration> itemTypeConfigurations, ObjectFactory objectFactory) {
+    this.objectFactory = objectFactory;
     this.model = model;
     this.view = view;
     this.resources = resources;
@@ -58,7 +58,7 @@ public class AnathemaPresenter {
   }
 
   private void runBootJobs() throws InitializationException {
-    Collection<IBootJob> jobs = instantiater.instantiateOrdered(BootJob.class);
+    Collection<IBootJob> jobs = objectFactory.instantiateOrdered(BootJob.class);
     for (IBootJob bootJob : jobs) {
       bootJob.run(resources, model);
     }
@@ -67,14 +67,14 @@ public class AnathemaPresenter {
   private void initializePreferences() throws InitializationException {
     PreferencesElementsExtensionPoint extensionPoint =
             (PreferencesElementsExtensionPoint) model.getExtensionPointRegistry().get(PreferencesElementsExtensionPoint.ID);
-    Collection<IPreferencesElement> elements = instantiater.instantiateOrdered(PreferenceElement.class);
+    Collection<IPreferencesElement> elements = objectFactory.instantiateOrdered(PreferenceElement.class);
     for (IPreferencesElement element : elements) {
       extensionPoint.addPreferencesElement(element);
     }
   }
 
   private void initializeReports() throws InitializationException {
-    Collection<IReportFactory> factories = instantiater.instantiateOrdered(ReportFactoryAutoCollector.class);
+    Collection<IReportFactory> factories = objectFactory.instantiateOrdered(ReportFactoryAutoCollector.class);
     for (IReportFactory factory : factories) {
       model.getReportRegistry().addReports(factory.createReport(resources, model));
     }

@@ -13,7 +13,7 @@ import net.sf.anathema.character.generic.type.CharacterTypes;
 import net.sf.anathema.character.generic.type.ICharacterType;
 import net.sf.anathema.character.generic.type.ReflectionCharacterTypes;
 import net.sf.anathema.initialization.ExtensibleDataSetCompiler;
-import net.sf.anathema.initialization.Instantiater;
+import net.sf.anathema.initialization.ObjectFactory;
 import net.sf.anathema.lib.exception.PersistenceException;
 import net.sf.anathema.lib.registry.IIdentificateRegistry;
 import net.sf.anathema.lib.registry.IdentificateRegistry;
@@ -48,9 +48,9 @@ public class CharmCompiler implements IExtensibleDataSetCompiler {
   private final CharmSetBuilder setBuilder;
   private final GenericCharmSetBuilder genericBuilder;
 
-  public CharmCompiler(Instantiater instantiater) {
-    this.characterTypes = new ReflectionCharacterTypes(instantiater);
-    SpecialCharmBuilder specialCharmBuilder = new ReflectionSpecialCharmBuilder(instantiater);
+  public CharmCompiler(ObjectFactory objectFactory) {
+    this.characterTypes = new ReflectionCharacterTypes(objectFactory);
+    SpecialCharmBuilder specialCharmBuilder = new ReflectionSpecialCharmBuilder(objectFactory);
     this.setBuilder = new CharmSetBuilder(characterTypes, specialCharmBuilder);
     this.genericBuilder = new GenericCharmSetBuilder(characterTypes, specialCharmBuilder);
   }

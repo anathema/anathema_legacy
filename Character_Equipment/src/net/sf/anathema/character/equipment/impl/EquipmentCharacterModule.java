@@ -12,7 +12,7 @@ import net.sf.anathema.character.generic.framework.ICharacterGenerics;
 import net.sf.anathema.character.generic.framework.module.CharacterModule;
 import net.sf.anathema.character.generic.framework.module.CharacterModuleAdapter;
 import net.sf.anathema.initialization.InitializationException;
-import net.sf.anathema.initialization.Instantiater;
+import net.sf.anathema.initialization.ObjectFactory;
 
 import java.nio.file.Path;
 
@@ -25,14 +25,14 @@ public class EquipmentCharacterModule extends CharacterModuleAdapter {
   public void addAdditionalTemplateData(ICharacterGenerics characterGenerics) throws InitializationException {
     Path dataBaseDirectory = characterGenerics.getDataFileProvider().getDataBaseDirectory(DATABASE_FOLDER);
     EquipmentDirectAccess access = new EquipmentDirectAccess(dataBaseDirectory);
-    Instantiater instantiater = characterGenerics.getInstantiater();
+    ObjectFactory objectFactory = characterGenerics.getInstantiater();
     IEquipmentTemplateProvider equipmentDatabase = new GsonEquipmentDatabase(access);
-    MaterialRules materialRules = new ReflectionMaterialRules(instantiater);
+    MaterialRules materialRules = new ReflectionMaterialRules(objectFactory);
     characterGenerics.getAdditionalModelFactoryRegistry()
                      .register(IEquipmentAdditionalModelTemplate.ID, new EquipmentAdditionalModelFactory(equipmentDatabase, materialRules));
     characterGenerics.getAdditonalPersisterFactoryRegistry()
                      .register(IEquipmentAdditionalModelTemplate.ID, new EquipmentAdditionalPersisterFactory());
     characterGenerics.getGlobalAdditionalTemplateRegistry()
-                     .add(new EquipmentAdditionalModelTemplate(characterGenerics.getCharacterTypes(), instantiater));
+                     .add(new EquipmentAdditionalModelTemplate(characterGenerics.getCharacterTypes(), objectFactory));
   }
 }

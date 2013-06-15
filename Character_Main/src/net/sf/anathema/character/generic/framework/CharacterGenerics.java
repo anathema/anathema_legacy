@@ -17,7 +17,7 @@ import net.sf.anathema.character.generic.template.additional.IGlobalAdditionalTe
 import net.sf.anathema.character.generic.type.CharacterTypes;
 import net.sf.anathema.character.generic.type.ICharacterType;
 import net.sf.anathema.character.generic.type.ReflectionCharacterTypes;
-import net.sf.anathema.initialization.Instantiater;
+import net.sf.anathema.initialization.ObjectFactory;
 import net.sf.anathema.initialization.repository.IDataFileProvider;
 import net.sf.anathema.lib.registry.IIdentificateRegistry;
 import net.sf.anathema.lib.registry.IRegistry;
@@ -36,17 +36,17 @@ public class CharacterGenerics implements ICharacterGenerics {
   private final ICharmProvider charmProvider;
   private final IDataFileProvider dataFileProvider;
   private final IExtensibleDataSetProvider dataSetProvider;
-  private final Instantiater instantiater;
+  private final ObjectFactory objectFactory;
   private final CharacterTypes characterTypes;
 
-  public CharacterGenerics(IDataFileProvider dataFileProvider, Instantiater instantiater, IExtensibleDataSetProvider dataSetProvider) {
-    this.instantiater = instantiater;
+  public CharacterGenerics(IDataFileProvider dataFileProvider, ObjectFactory objectFactory, IExtensibleDataSetProvider dataSetProvider) {
+    this.objectFactory = objectFactory;
     this.additionalPersisterRegistry = new Registry<String, IAdditionalPersisterFactory>(new NullAdditionalPersisterFactory());
     this.dataFileProvider = dataFileProvider;
     this.dataSetProvider = dataSetProvider;
     this.charmProvider = new CharmProvider(dataSetProvider.getDataSet(ICharmCache.class));
     this.templateRegistries = new CharacterTemplateRegistryCollection(dataSetProvider.getDataSet(ICharacterTemplateExtensionResourceCache.class));
-    this.characterTypes = new ReflectionCharacterTypes(instantiater);
+    this.characterTypes = new ReflectionCharacterTypes(objectFactory);
   }
 
   @Override
@@ -85,8 +85,8 @@ public class CharacterGenerics implements ICharacterGenerics {
   }
 
   @Override
-  public Instantiater getInstantiater() {
-    return instantiater;
+  public ObjectFactory getInstantiater() {
+    return objectFactory;
   }
 
   @Override

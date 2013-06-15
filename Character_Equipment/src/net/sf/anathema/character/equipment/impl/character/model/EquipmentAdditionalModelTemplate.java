@@ -6,7 +6,7 @@ import net.sf.anathema.character.generic.template.additional.IGlobalAdditionalTe
 import net.sf.anathema.character.generic.type.CharacterTypes;
 import net.sf.anathema.character.generic.type.ICharacterType;
 import net.sf.anathema.initialization.InitializationException;
-import net.sf.anathema.initialization.Instantiater;
+import net.sf.anathema.initialization.ObjectFactory;
 import net.sf.anathema.lib.logging.Logger;
 import net.sf.anathema.lib.util.Identifier;
 
@@ -16,12 +16,12 @@ import java.util.Collections;
 public class EquipmentAdditionalModelTemplate extends Identifier implements IGlobalAdditionalTemplate, IEquipmentAdditionalModelTemplate {
 
   private CharacterTypes characterTypes;
-  private Instantiater instantiater;
+  private ObjectFactory objectFactory;
 
-  public EquipmentAdditionalModelTemplate(CharacterTypes characterTypes, Instantiater instantiater) {
+  public EquipmentAdditionalModelTemplate(CharacterTypes characterTypes, ObjectFactory objectFactory) {
     super(ID);
     this.characterTypes = characterTypes;
-    this.instantiater = instantiater;
+    this.objectFactory = objectFactory;
   }
 
   @Override
@@ -38,7 +38,7 @@ public class EquipmentAdditionalModelTemplate extends Identifier implements IGlo
 
   private Collection<IEquipmentTemplate> gatherTemplates() {
     try {
-      return instantiater.instantiateAll(RegisteredNaturalWeapon.class);
+      return objectFactory.instantiateAll(RegisteredNaturalWeapon.class);
     } catch (InitializationException e) {
       Logger.getLogger(EquipmentAdditionalModel.class).error("Could not collect additional natural weapons.", e);
       return Collections.emptyList();

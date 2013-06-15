@@ -3,7 +3,7 @@ package net.sf.anathema.character.generic.modeltemplate;
 import net.sf.anathema.character.generic.data.IExtensibleDataSet;
 import net.sf.anathema.character.generic.data.IExtensibleDataSetCompiler;
 import net.sf.anathema.initialization.ExtensibleDataSetCompiler;
-import net.sf.anathema.initialization.Instantiater;
+import net.sf.anathema.initialization.ObjectFactory;
 import net.sf.anathema.lib.resources.ResourceFile;
 
 import java.util.ArrayList;
@@ -17,7 +17,7 @@ public class CharacterModelTemplateCompiler implements IExtensibleDataSetCompile
   private final List<ResourceFile> templateResources = new ArrayList<>();
 
   @SuppressWarnings("UnusedParameters")
-  public CharacterModelTemplateCompiler(Instantiater instantiater) {
+  public CharacterModelTemplateCompiler(ObjectFactory objectFactory) {
     //nothing to do
   }
 

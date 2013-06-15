@@ -39,7 +39,7 @@ import net.sf.anathema.character.model.charm.IComboConfiguration;
 import net.sf.anathema.character.model.health.IHealthConfiguration;
 import net.sf.anathema.character.model.traits.ICoreTraitConfiguration;
 import net.sf.anathema.framework.presenter.itemmanagement.PrintNameAdjuster;
-import net.sf.anathema.initialization.Instantiater;
+import net.sf.anathema.initialization.ObjectFactory;
 import net.sf.anathema.lib.control.IChangeListener;
 import net.sf.anathema.lib.registry.IRegistry;
 import net.sf.anathema.lib.util.Identified;
@@ -115,8 +115,8 @@ public class ExaltedCharacter implements ICharacter {
   }
 
   private Collection<CharacterModelFactory> collectModelFactories(ICharacterGenerics generics) {
-    Instantiater instantiater = generics.getInstantiater();
-    return instantiater.instantiateAll(CharacterModelAutoCollector.class);
+    ObjectFactory objectFactory = generics.getInstantiater();
+    return objectFactory.instantiateAll(CharacterModelAutoCollector.class);
   }
 
   private ChangeAnnouncerAdapter createChangeAnnouncer() {

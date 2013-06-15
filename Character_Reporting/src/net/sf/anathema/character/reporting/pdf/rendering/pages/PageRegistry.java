@@ -6,7 +6,7 @@ import net.sf.anathema.character.reporting.pdf.rendering.boxes.EncoderRegistry;
 import net.sf.anathema.character.reporting.pdf.rendering.page.PageEncoder;
 import net.sf.anathema.framework.reporting.pdf.PageSize;
 import net.sf.anathema.initialization.InitializationException;
-import net.sf.anathema.initialization.Instantiater;
+import net.sf.anathema.initialization.ObjectFactory;
 import net.sf.anathema.lib.logging.Logger;
 import net.sf.anathema.lib.resources.Resources;
 
@@ -15,10 +15,10 @@ import java.util.Collections;
 
 public class PageRegistry {
   private static final Logger logger = Logger.getLogger(PageRegistry.class);
-  private Instantiater instantiater;
+  private ObjectFactory objectFactory;
 
-  public PageRegistry(Instantiater instantiater) {
-    this.instantiater = instantiater;
+  public PageRegistry(ObjectFactory objectFactory) {
+    this.objectFactory = objectFactory;
   }
 
   public PageEncoder[] createEncoders(PageSize pageSize, EncoderRegistry encoderRegistry, Resources resources,
@@ -38,7 +38,7 @@ public class PageRegistry {
 
   private Collection<PageFactory> createPageFactories() {
     try {
-      return instantiater.instantiateAll(RegisteredAdditionalPage.class);
+      return objectFactory.instantiateAll(RegisteredAdditionalPage.class);
     } catch (InitializationException e) {
       logger.error("Error instantiating additional pages.", e);
       return Collections.emptyList();

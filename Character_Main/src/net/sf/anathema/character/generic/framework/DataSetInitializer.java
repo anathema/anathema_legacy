@@ -5,7 +5,7 @@ import net.sf.anathema.character.generic.data.IExtensibleDataSetCompiler;
 import net.sf.anathema.character.generic.data.IExtensibleDataSetProvider;
 import net.sf.anathema.initialization.ExtensibleDataSetCompiler;
 import net.sf.anathema.initialization.InitializationException;
-import net.sf.anathema.initialization.Instantiater;
+import net.sf.anathema.initialization.ObjectFactory;
 import net.sf.anathema.initialization.reflections.ResourceLoader;
 import net.sf.anathema.lib.logging.Logger;
 import net.sf.anathema.lib.resources.ResourceFile;
@@ -17,17 +17,17 @@ public class DataSetInitializer {
 
   private static final Logger logger = Logger.getLogger(DataSetInitializer.class);
   private final ResourceLoader resourceLoader;
-  private final Instantiater instantiater;
+  private final ObjectFactory objectFactory;
 
-  public DataSetInitializer(ResourceLoader resourceLoader, Instantiater instantiater) {
+  public DataSetInitializer(ResourceLoader resourceLoader, ObjectFactory objectFactory) {
     this.resourceLoader = resourceLoader;
-    this.instantiater = instantiater;
+    this.objectFactory = objectFactory;
   }
 
   public IExtensibleDataSetProvider initializeExtensibleResources() throws InitializationException {
     ExtensibleDataManager manager = new ExtensibleDataManager();
-    Instantiater instantiater = this.instantiater;
-    Collection<IExtensibleDataSetCompiler> compilers = instantiater.instantiateAll(ExtensibleDataSetCompiler.class, instantiater);
+    ObjectFactory objectFactory = this.objectFactory;
+    Collection<IExtensibleDataSetCompiler> compilers = objectFactory.instantiateAll(ExtensibleDataSetCompiler.class, objectFactory);
     for (IExtensibleDataSetCompiler compiler : compilers) {
       try {
         ProxySplashscreen.getInstance().displayStatusMessage("Compiling " + compiler.getName() + "...");

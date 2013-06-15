@@ -3,7 +3,7 @@ package net.sf.anathema.initialization;
 import java.lang.annotation.Annotation;
 import java.util.Collection;
 
-public interface Instantiater {
+public interface ObjectFactory {
 
   <T> Collection<T> instantiateOrdered(Class<? extends Annotation> annotation, Object... parameter) throws InitializationException;
 

@@ -11,8 +11,8 @@ public class AnathemaExtensionCollection implements Iterable<ExtensionWithId> {
 
   private final List<ExtensionWithId> extensions = new ArrayList<>();
 
-  public AnathemaExtensionCollection(Instantiater instantiater) throws InitializationException {
-    Collection<IAnathemaExtension> registeredExtensions = instantiater.instantiateAll(Extension.class);
+  public AnathemaExtensionCollection(ObjectFactory objectFactory) throws InitializationException {
+    Collection<IAnathemaExtension> registeredExtensions = objectFactory.instantiateAll(Extension.class);
     for (IAnathemaExtension extension : registeredExtensions) {
       Extension annotation = extension.getClass().getAnnotation(Extension.class);
       String id = annotation.id();

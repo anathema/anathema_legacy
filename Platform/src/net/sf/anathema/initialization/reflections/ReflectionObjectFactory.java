@@ -3,8 +3,7 @@ package net.sf.anathema.initialization.reflections;
 import com.google.common.base.Function;
 import com.google.common.collect.Collections2;
 import net.sf.anathema.initialization.InitializationException;
-import net.sf.anathema.initialization.Instantiater;
-import org.apache.commons.lang3.ArrayUtils;
+import net.sf.anathema.initialization.ObjectFactory;
 
 import java.lang.annotation.Annotation;
 import java.lang.reflect.InvocationTargetException;
@@ -18,7 +17,7 @@ import java.util.Set;
 import static java.text.MessageFormat.format;
 import static org.apache.commons.lang3.reflect.ConstructorUtils.invokeConstructor;
 
-public class ReflectionObjectFactory implements Instantiater {
+public class ReflectionObjectFactory implements ObjectFactory {
 
   private AnnotationFinder finder;
 
@@ -47,10 +46,6 @@ public class ReflectionObjectFactory implements Instantiater {
 
   private class Instantiate<T> implements Function<Class<?>, T> {
     private final Object[] parameters;
-
-    private Instantiate() {
-      this.parameters = ArrayUtils.EMPTY_OBJECT_ARRAY;
-    }
 
     public Instantiate(Object[] parameters) {
       this.parameters = parameters;

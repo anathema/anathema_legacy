@@ -25,7 +25,7 @@ public abstract class Initializer {
   private final ItemTypeConfigurationCollection itemTypeCollection;
   private final AnathemaExtensionCollection extensionCollection;
   private final DefaultAnathemaReflections reflections;
-  private final Instantiater objectFactory;
+  private final ObjectFactory objectFactory;
 
   public Initializer(IInitializationPreferences initializationPreferences) throws InitializationException {
     this.reflections = new DefaultAnathemaReflections();
@@ -87,5 +87,5 @@ public abstract class Initializer {
 
   protected abstract void displayMessage(String message);
 
-  protected abstract ApplicationFrameView initView(Resources resources, IApplicationModel anathemaModel, Instantiater objectFactory);
+  protected abstract ApplicationFrameView initView(Resources resources, IApplicationModel anathemaModel, ObjectFactory objectFactory);
 }

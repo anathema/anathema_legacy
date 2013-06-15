@@ -10,7 +10,7 @@ import net.sf.anathema.character.generic.template.ITemplateRegistry;
 import net.sf.anathema.character.generic.template.additional.IGlobalAdditionalTemplate;
 import net.sf.anathema.character.generic.type.CharacterTypes;
 import net.sf.anathema.character.generic.type.ICharacterType;
-import net.sf.anathema.initialization.Instantiater;
+import net.sf.anathema.initialization.ObjectFactory;
 import net.sf.anathema.initialization.repository.IDataFileProvider;
 import net.sf.anathema.lib.registry.IIdentificateRegistry;
 import net.sf.anathema.lib.registry.IRegistry;
@@ -37,7 +37,7 @@ public interface ICharacterGenerics {
 
   <T extends IExtensibleDataSet> T getDataSet(Class<T> set);
 
-  Instantiater getInstantiater();
+  ObjectFactory getInstantiater();
 
   CharacterTypes getCharacterTypes();
 }

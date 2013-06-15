@@ -3,7 +3,7 @@ package net.sf.anathema.character.reporting;
 import net.sf.anathema.character.reporting.pdf.content.ReportContentRegistry;
 import net.sf.anathema.character.reporting.pdf.rendering.boxes.EncoderRegistry;
 import net.sf.anathema.character.reporting.pdf.rendering.pages.PageRegistry;
-import net.sf.anathema.initialization.Instantiater;
+import net.sf.anathema.initialization.ObjectFactory;
 import net.sf.anathema.lib.resources.Resources;
 
 public class CharacterReportingModuleObject {
@@ -12,10 +12,10 @@ public class CharacterReportingModuleObject {
   private final EncoderRegistry encoderRegistry;
   private final PageRegistry additionalPageRegistry;
 
-  public CharacterReportingModuleObject(Instantiater instantiater, Resources resources) {
-    this.encoderRegistry = new EncoderRegistry(instantiater);
-    this.contentRegistry = new ReportContentRegistry(instantiater, resources);
-    this.additionalPageRegistry = new PageRegistry(instantiater);
+  public CharacterReportingModuleObject(ObjectFactory objectFactory, Resources resources) {
+    this.encoderRegistry = new EncoderRegistry(objectFactory);
+    this.contentRegistry = new ReportContentRegistry(objectFactory, resources);
+    this.additionalPageRegistry = new PageRegistry(objectFactory);
   }
 
   public ReportContentRegistry getContentRegistry() {

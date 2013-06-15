@@ -5,7 +5,7 @@ import net.sf.anathema.character.generic.data.IExtensibleDataSetCompiler;
 import net.sf.anathema.character.generic.impl.magic.SpellException;
 import net.sf.anathema.character.generic.magic.ISpell;
 import net.sf.anathema.initialization.ExtensibleDataSetCompiler;
-import net.sf.anathema.initialization.Instantiater;
+import net.sf.anathema.initialization.ObjectFactory;
 import net.sf.anathema.lib.resources.ResourceFile;
 import org.dom4j.Document;
 import org.dom4j.DocumentException;
@@ -23,7 +23,7 @@ public class SpellCompiler implements IExtensibleDataSetCompiler {
   private final SpellCache cache = new SpellCache();
 
   @SuppressWarnings("UnusedParameters")
-  public SpellCompiler(Instantiater instantiater) {
+  public SpellCompiler(ObjectFactory objectFactory) {
     //nothing to do
   }
 

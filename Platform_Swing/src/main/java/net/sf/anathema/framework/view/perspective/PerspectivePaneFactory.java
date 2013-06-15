@@ -4,7 +4,7 @@ import net.miginfocom.layout.CC;
 import net.miginfocom.swing.MigLayout;
 import net.sf.anathema.framework.IApplicationModel;
 import net.sf.anathema.framework.view.ViewFactory;
-import net.sf.anathema.initialization.Instantiater;
+import net.sf.anathema.initialization.ObjectFactory;
 import net.sf.anathema.lib.resources.Resources;
 
 import javax.swing.JComponent;
@@ -16,18 +16,18 @@ public class PerspectivePaneFactory implements ViewFactory {
   private final PerspectiveStack perspectiveStack;
   private final PerspectiveSelectionBar selectionBar;
   private final Resources resources;
-  private final Instantiater instantiater;
+  private final ObjectFactory objectFactory;
 
-  public PerspectivePaneFactory(IApplicationModel model, Resources resources, Instantiater instantiater) {
+  public PerspectivePaneFactory(IApplicationModel model, Resources resources, ObjectFactory objectFactory) {
     this.resources = resources;
-    this.instantiater = instantiater;
+    this.objectFactory = objectFactory;
     this.perspectiveStack = new PerspectiveStack(model, resources);
     this.selectionBar = new PerspectiveSelectionBar(perspectiveStack);
   }
 
   @Override
   public JComponent createContent() {
-    Collection<Perspective> sortedPerspectives = instantiater.instantiateOrdered(PerspectiveAutoCollector.class);
+    Collection<Perspective> sortedPerspectives = objectFactory.instantiateOrdered(PerspectiveAutoCollector.class);
     for (final Perspective perspective : sortedPerspectives) {
       perspectiveStack.add(perspective);
       selectionBar.addPerspective(perspective, resources);

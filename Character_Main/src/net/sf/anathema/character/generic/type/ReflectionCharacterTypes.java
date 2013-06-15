@@ -1,6 +1,6 @@
 package net.sf.anathema.character.generic.type;
 
-import net.sf.anathema.initialization.Instantiater;
+import net.sf.anathema.initialization.ObjectFactory;
 
 import java.util.ArrayList;
 import java.util.Collection;
@@ -10,8 +10,8 @@ public class ReflectionCharacterTypes implements CharacterTypes {
 
   private final List<ICharacterType> types = new ArrayList<>();
 
-  public ReflectionCharacterTypes(Instantiater instantiater) {
-    Collection<ICharacterType> types = instantiater.instantiateOrdered(CharacterType.class);
+  public ReflectionCharacterTypes(ObjectFactory objectFactory) {
+    Collection<ICharacterType> types = objectFactory.instantiateOrdered(CharacterType.class);
     this.types.addAll(types);
   }
 

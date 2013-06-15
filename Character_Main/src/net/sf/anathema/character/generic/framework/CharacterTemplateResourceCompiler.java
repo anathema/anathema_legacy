@@ -3,7 +3,7 @@ package net.sf.anathema.character.generic.framework;
 import net.sf.anathema.character.generic.data.IExtensibleDataSet;
 import net.sf.anathema.character.generic.data.IExtensibleDataSetCompiler;
 import net.sf.anathema.initialization.ExtensibleDataSetCompiler;
-import net.sf.anathema.initialization.Instantiater;
+import net.sf.anathema.initialization.ObjectFactory;
 import net.sf.anathema.lib.resources.ResourceFile;
 
 import java.util.ArrayList;
@@ -22,7 +22,7 @@ public class CharacterTemplateResourceCompiler implements IExtensibleDataSetComp
   private final Map<String, List<ResourceFile>> templateResources = new HashMap<>();
 
   @SuppressWarnings("UnusedParameters")
-  public CharacterTemplateResourceCompiler(Instantiater instantiater) {
+  public CharacterTemplateResourceCompiler(ObjectFactory objectFactory) {
     //nothing to do
   }
 

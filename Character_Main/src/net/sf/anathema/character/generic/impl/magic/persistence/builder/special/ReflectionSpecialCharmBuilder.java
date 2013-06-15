@@ -1,7 +1,7 @@
 package net.sf.anathema.character.generic.impl.magic.persistence.builder.special;
 
 import net.sf.anathema.character.generic.magic.charms.special.ISpecialCharm;
-import net.sf.anathema.initialization.Instantiater;
+import net.sf.anathema.initialization.ObjectFactory;
 import org.dom4j.Element;
 
 import java.util.ArrayList;
@@ -12,8 +12,8 @@ public class ReflectionSpecialCharmBuilder implements SpecialCharmBuilder {
 
   private final List<SpecialCharmBuilder> builders = new ArrayList<>();
 
-  public ReflectionSpecialCharmBuilder(Instantiater instantiater) {
-    Collection<SpecialCharmBuilder> builders = instantiater.instantiateAll(SpecialCharmParser.class);
+  public ReflectionSpecialCharmBuilder(ObjectFactory objectFactory) {
+    Collection<SpecialCharmBuilder> builders = objectFactory.instantiateAll(SpecialCharmParser.class);
     this.builders.addAll(builders);
   }
 

@@ -5,7 +5,7 @@ import net.sf.anathema.character.generic.framework.CharacterGenerics;
 import net.sf.anathema.character.generic.framework.ICharacterGenerics;
 import net.sf.anathema.character.generic.framework.xml.additional.IAdditionalTemplateParser;
 import net.sf.anathema.initialization.InitializationException;
-import net.sf.anathema.initialization.Instantiater;
+import net.sf.anathema.initialization.ObjectFactory;
 import net.sf.anathema.initialization.repository.IDataFileProvider;
 
 import java.util.Collection;
@@ -14,9 +14,9 @@ public class CharacterModuleContainer {
 
   private final CharacterGenerics characterGenerics;
 
-  public CharacterModuleContainer(IExtensibleDataSetProvider dataSetProvider, IDataFileProvider dataFileProvider, Instantiater instantiater) throws
+  public CharacterModuleContainer(IExtensibleDataSetProvider dataSetProvider, IDataFileProvider dataFileProvider, ObjectFactory objectFactory) throws
           InitializationException {
-    this.characterGenerics = new CharacterGenerics(dataFileProvider, instantiater, dataSetProvider);
+    this.characterGenerics = new CharacterGenerics(dataFileProvider, objectFactory, dataSetProvider);
   }
 
   public void addCharacterGenericsModule(ICharacterModule module) throws InitializationException {

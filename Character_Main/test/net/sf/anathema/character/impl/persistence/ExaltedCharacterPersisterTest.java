@@ -54,7 +54,7 @@ public class ExaltedCharacterPersisterTest {
     IExtensibleDataSetProvider dataSetProvider = mock(IExtensibleDataSetProvider.class);
     when(dataSetProvider.getDataSet(ICharmCache.class)).thenReturn(new CharmCache());
     when(dataSetProvider.getDataSet(ISpellCache.class)).thenReturn(new SpellCache());
-    ICharacterGenerics generics = new CharacterGenerics(null, new DummyInstantiater(), dataSetProvider);
+    ICharacterGenerics generics = new CharacterGenerics(null, new DummyObjectFactory(), dataSetProvider);
     generics.getTemplateRegistry().register(template);
     return generics;
   }

@@ -4,7 +4,7 @@ import net.sf.anathema.character.reporting.pdf.content.BasicContent;
 import net.sf.anathema.character.reporting.pdf.content.ReportSession;
 import net.sf.anathema.character.reporting.pdf.rendering.general.box.ContentEncoder;
 import net.sf.anathema.initialization.InitializationException;
-import net.sf.anathema.initialization.Instantiater;
+import net.sf.anathema.initialization.ObjectFactory;
 import net.sf.anathema.lib.collection.MultiEntryMap;
 import net.sf.anathema.lib.logging.Logger;
 import net.sf.anathema.lib.resources.Resources;
@@ -14,10 +14,10 @@ import java.util.Collection;
 public class EncoderRegistry {
 
   private static final Logger logger = Logger.getLogger(EncoderRegistry.class);
-  private Instantiater instantiater;
+  private ObjectFactory objectFactory;
 
-  public EncoderRegistry(Instantiater instantiater) {
-    this.instantiater = instantiater;
+  public EncoderRegistry(ObjectFactory objectFactory) {
+    this.objectFactory = objectFactory;
   }
 
   public boolean hasEncoder(String id, ReportSession session) {
@@ -47,7 +47,7 @@ public class EncoderRegistry {
   private MultiEntryMap<String, EncoderFactory> getFactoriesByIdViaReflection() {
     MultiEntryMap<String, EncoderFactory> factoryById = new MultiEntryMap<>();
     try {
-      Collection<EncoderFactory> encoderFactories = instantiater.instantiateAll(RegisteredEncoderFactory.class);
+      Collection<EncoderFactory> encoderFactories = objectFactory.instantiateAll(RegisteredEncoderFactory.class);
       for (EncoderFactory factory : encoderFactories) {
         factoryById.add(factory.getId(), factory);
       }

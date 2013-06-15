@@ -3,7 +3,7 @@ package net.sf.anathema.character.equipment;
 import com.google.common.base.Functions;
 import net.sf.anathema.character.generic.equipment.ArtifactAttuneType;
 import net.sf.anathema.character.generic.type.ICharacterType;
-import net.sf.anathema.initialization.Instantiater;
+import net.sf.anathema.initialization.ObjectFactory;
 
 import java.util.Collection;
 import java.util.HashMap;
@@ -13,8 +13,8 @@ public class ReflectionMaterialRules implements MaterialRules {
 
   private final Map<String, CharacterTypeMaterialRules> rulesByCharacterType = new HashMap<>();
 
-  public ReflectionMaterialRules(Instantiater instantiater) {
-    Collection<CharacterTypeMaterialRules> allRules = instantiater.instantiateAll(MaterialRulesDefinition.class);
+  public ReflectionMaterialRules(ObjectFactory objectFactory) {
+    Collection<CharacterTypeMaterialRules> allRules = objectFactory.instantiateAll(MaterialRulesDefinition.class);
     for (CharacterTypeMaterialRules rules : allRules) {
       String applicableType = rules.getClass().getAnnotation(MaterialRulesDefinition.class).characterType();
       rulesByCharacterType.put(applicableType, rules);
