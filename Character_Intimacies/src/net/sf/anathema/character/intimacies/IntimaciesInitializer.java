@@ -7,6 +7,7 @@ import net.sf.anathema.character.generic.type.ICharacterType;
 import net.sf.anathema.character.intimacies.presenter.IIntimaciesView;
 import net.sf.anathema.character.intimacies.presenter.IntimaciesPresenter;
 import net.sf.anathema.character.library.intvalue.IIconToggleButtonProperties;
+import net.sf.anathema.character.view.SectionView;
 import net.sf.anathema.lib.resources.Resources;
 
 import javax.swing.Icon;
@@ -14,16 +15,12 @@ import javax.swing.Icon;
 public class IntimaciesInitializer implements IAdditionalInitializer {
 
   @Override
-  public void initialize(IAdditionalModel model, final Resources resources, ICharacterType type, Object view) {
+  public void initialize(IAdditionalModel model, final Resources resources, ICharacterType type, SectionView sectionView) {
+    String viewName = resources.getString("AdditionalTemplateView.TabName." + model.getTemplateId());
+    IIntimaciesView view = sectionView.addView(viewName, IIntimaciesView.class, type);
     IIconToggleButtonProperties properties = new IntimaciesProperties(resources);
-    IIntimaciesView intimaciesView = (IIntimaciesView) view;
-    intimaciesView.initGui(properties);
-    new IntimaciesPresenter(((IIntimaciesAdditionalModel) model).getIntimaciesModel(), model, intimaciesView, resources).initPresentation();
-  }
-
-  @Override
-  public Class getViewClass() {
-    return IIntimaciesView.class;
+    view.initGui(properties);
+    new IntimaciesPresenter(((IIntimaciesAdditionalModel) model).getIntimaciesModel(), model, view, resources).initPresentation();
   }
 
   private static class IntimaciesProperties implements IIconToggleButtonProperties {

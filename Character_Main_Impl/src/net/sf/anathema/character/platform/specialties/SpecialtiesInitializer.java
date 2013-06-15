@@ -7,19 +7,16 @@ import net.sf.anathema.character.library.trait.specialties.ISpecialtiesConfigura
 import net.sf.anathema.character.presenter.specialty.ISpecialtiesAdditionalModel;
 import net.sf.anathema.character.presenter.specialty.ISpecialtiesConfigurationView;
 import net.sf.anathema.character.presenter.specialty.SpecialtiesConfigurationPresenter;
+import net.sf.anathema.character.view.SectionView;
 import net.sf.anathema.lib.resources.Resources;
 
 public class SpecialtiesInitializer implements IAdditionalInitializer {
 
   @Override
-  public void initialize(IAdditionalModel model, Resources resources, ICharacterType type, Object view) {
+  public void initialize(IAdditionalModel model, Resources resources, ICharacterType type, SectionView sectionView) {
+    String viewName = resources.getString("AdditionalTemplateView.TabName." + model.getTemplateId());
+    ISpecialtiesConfigurationView view = sectionView.addView(viewName, ISpecialtiesConfigurationView.class, type);
     ISpecialtiesConfiguration specialtiesModel = ((ISpecialtiesAdditionalModel) model).getSpecialtiesModel();
-    ISpecialtiesConfigurationView specialtiesView = (ISpecialtiesConfigurationView) view;
-    new SpecialtiesConfigurationPresenter(specialtiesModel, specialtiesView, resources).initPresentation();
-  }
-
-  @Override
-  public Class getViewClass() {
-    return ISpecialtiesConfigurationView.class;
+    new SpecialtiesConfigurationPresenter(specialtiesModel, view, resources).initPresentation();
   }
 }
