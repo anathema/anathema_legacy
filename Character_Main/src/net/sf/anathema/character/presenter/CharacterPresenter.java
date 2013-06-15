@@ -75,9 +75,7 @@ public class CharacterPresenter implements Presenter {
       if (initializer == null) {
         continue;
       }
-      String viewName = getString("AdditionalTemplateView.TabName." + model.getTemplateId());
-      Object view = sectionView.addView(viewName, initializer.getViewClass(), characterType());
-      initializer.initialize(model, resources, characterType(), view);
+      initializer.initialize(model, resources, characterType(), sectionView);
     }
   }
 
