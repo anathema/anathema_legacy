@@ -58,19 +58,53 @@ public class CharacterPresenter implements Presenter {
   }
 
   private void initOutline() {
-    String sectionTitle = getString("CardView.Outline.Title");
-    SectionView sectionView = characterView.addSection(sectionTitle);
+    SectionView sectionView = addSection("CardView.Outline.Title");
+    initDescription(sectionView);
+    initConcept(sectionView);
+    initializeAdditionalModels(sectionView, Outline);
+  }
 
+  private void initPhysicalTraits() {
+    SectionView sectionView = addSection("CardView.NaturalTraits.Title");
+    initAttributes(sectionView);
+    initAbilities(sectionView);
+    initializeAdditionalModels(sectionView, NaturalTraits);
+  }
+
+  private void initSpiritualTraits() {
+    SectionView sectionView = addSection("CardView.SpiritualTraits.Title");
+    initBasicAdvantages(sectionView);
+    initializeAdditionalModels(sectionView, SpiritualTraits);
+  }
+
+  private void initMagic() {
+    ICharacterTemplate characterTemplate = character.getCharacterTemplate();
+    ICharmTemplate charmTemplate = characterTemplate.getMagicTemplate().getCharmTemplate();
+    if (!charmTemplate.canLearnCharms()) {
+      return;
+    }
+    SectionView sectionView = initCoreMagic();
+    initializeAdditionalModels(sectionView, Magic);
+  }
+
+  private void initMiscellaneous() {
+    SectionView sectionView = addSection("CardView.MiscellaneousConfiguration.Title");
+    initBackgrounds(sectionView);
+    initializeAdditionalModels(sectionView, Miscellaneous);
+    pointPresentation.initPresentation(sectionView);
+  }
+
+  private void initConcept(SectionView sectionView) {
+    String conceptHeader = resources.getString("CardView.CharacterConcept.Title");
+    ICharacterConceptAndRulesView conceptView = sectionView.addView(conceptHeader, ICharacterConceptAndRulesView.class, characterType());
+    new CharacterConceptAndRulesPresenter(character, conceptView, resources).initPresentation();
+  }
+
+  private void initDescription(SectionView sectionView) {
     String descriptionHeader = resources.getString("CardView.CharacterDescription.Title");
     ICharacterDescriptionView descriptionView = sectionView.addView(descriptionHeader, ICharacterDescriptionView.class, characterType());
     DescriptionDetails descriptionDetails = createDescriptionDetails();
     new CharacterDescriptionPresenter(descriptionDetails, resources, descriptionView).initPresentation();
-
-    String conceptHeader = resources.getString("CardView.CharacterConcept.Title");
-    ICharacterConceptAndRulesView conceptView = sectionView.addView(conceptHeader, ICharacterConceptAndRulesView.class, characterType());
-    new CharacterConceptAndRulesPresenter(character, conceptView, resources).initPresentation();
-
-    initialize(sectionView, Outline);
   }
 
   private DescriptionDetails createDescriptionDetails() {
@@ -80,64 +114,45 @@ public class CharacterPresenter implements Presenter {
     return new DescriptionDetails(characterDescription, characterConcept, isExalt);
   }
 
-  private void initPhysicalTraits() {
-
-    String sectionTitle = getString("CardView.NaturalTraits.Title");
-    SectionView sectionView = characterView.addSection(sectionTitle);
-
-    String attributeHeader = resources.getString("CardView.AttributeConfiguration.Title");
-    IGroupedFavorableTraitConfigurationView attributeView =
-            sectionView.addView(attributeHeader, IGroupedFavorableTraitConfigurationView.class, characterType());
-    new AttributesPresenter(character, resources, attributeView).initPresentation();
-
+  private void initAbilities(SectionView sectionView) {
     String abilityHeader = resources.getString("CardView.AbilityConfiguration.Title");
     IGroupedFavorableTraitConfigurationView abilityView =
             sectionView.addView(abilityHeader, IGroupedFavorableTraitConfigurationView.class, characterType());
     new AbilitiesPresenter(character, resources, abilityView).initPresentation();
-
-    initialize(sectionView, NaturalTraits);
   }
 
-  private void initSpiritualTraits() {
-    String sectionTitle = getString("CardView.SpiritualTraits.Title");
-    SectionView sectionView = characterView.addSection(sectionTitle);
+  private void initAttributes(SectionView sectionView) {
+    String attributeHeader = resources.getString("CardView.AttributeConfiguration.Title");
+    IGroupedFavorableTraitConfigurationView attributeView =
+            sectionView.addView(attributeHeader, IGroupedFavorableTraitConfigurationView.class, characterType());
+    new AttributesPresenter(character, resources, attributeView).initPresentation();
+  }
 
+  private void initBasicAdvantages(SectionView sectionView) {
     String header = new BasicAdvantageViewProperties(resources).getOverallHeader();
     IBasicAdvantageView view = sectionView.addView(header, IBasicAdvantageView.class, characterType());
     new BasicAdvantagePresenter(resources, character, view).initPresentation();
-
-    initialize(sectionView, SpiritualTraits);
   }
 
-  private void initMagic() {
-    ICharacterTemplate characterTemplate = character.getCharacterTemplate();
-    ICharmTemplate charmTemplate = characterTemplate.getMagicTemplate().getCharmTemplate();
-    if (!charmTemplate.canLearnCharms()) {
-      return;
-    }
-
-    String sectionTitle = getString("CardView.CharmConfiguration.Title");
-    SectionView sectionView = characterView.addSection(sectionTitle);
-    new MagicPresenter(character, sectionView, resources, anathemaModel).initPresentation();
-
-    initialize(sectionView, Magic);
-  }
-
-  private void initMiscellaneous() {
-    String sectionTitle = getString("CardView.MiscellaneousConfiguration.Title");
-    SectionView sectionView = characterView.addSection(sectionTitle);
-
+  private void initBackgrounds(SectionView sectionView) {
     String backgroundHeader = resources.getString("CardView.BackgroundConfiguration.Title");
     BackgroundView view = sectionView.addView(backgroundHeader, BackgroundView.class, characterType());
     new BackgroundPresenter(resources, character.getTraitConfiguration().getBackgrounds(), character.getCharacterContext(), view,
             getGenerics(anathemaModel).getBackgroundRegistry()).initPresentation();
-
-    initialize(sectionView, Miscellaneous);
-
-    pointPresentation.initPresentation(sectionView);
   }
 
-  public void initialize(SectionView sectionView, CharacterModelGroup group) {
+  private SectionView initCoreMagic() {
+    SectionView sectionView = addSection("CardView.CharmConfiguration.Title");
+    new MagicPresenter(character, sectionView, resources, anathemaModel).initPresentation();
+    return sectionView;
+  }
+
+  private SectionView addSection(String titleKey) {
+    String sectionTitle = getString(titleKey);
+    return characterView.addSection(sectionTitle);
+  }
+
+  public void initializeAdditionalModels(SectionView sectionView, CharacterModelGroup group) {
     IRegistry<String, IAdditionalInitializer> factoryRegistry = getGenerics(anathemaModel).getAdditionalInitializerRegistry();
     for (IAdditionalModel model : character.getExtendedConfiguration().getAdditionalModels(group)) {
       IAdditionalInitializer initializer = factoryRegistry.get(model.getTemplateId());
