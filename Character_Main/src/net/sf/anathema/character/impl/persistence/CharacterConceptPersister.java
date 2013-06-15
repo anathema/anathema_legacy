@@ -2,7 +2,7 @@ package net.sf.anathema.character.impl.persistence;
 
 import net.sf.anathema.character.generic.caste.ICasteCollection;
 import net.sf.anathema.character.generic.caste.ICasteType;
-import net.sf.anathema.character.model.ICharacterDescription;
+import net.sf.anathema.character.main.description.model.ICharacterDescription;
 import net.sf.anathema.character.model.IIntegerDescription;
 import net.sf.anathema.character.model.ITypedDescription;
 import net.sf.anathema.character.model.concept.ICharacterConcept;

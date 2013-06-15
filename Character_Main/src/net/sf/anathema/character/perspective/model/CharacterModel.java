@@ -3,7 +3,6 @@ package net.sf.anathema.character.perspective.model;
 import net.sf.anathema.character.model.ICharacter;
 import net.sf.anathema.character.perspective.DescriptiveFeatures;
 import net.sf.anathema.character.perspective.LoadedDescriptiveFeatures;
-import net.sf.anathema.character.perspective.model.CharacterIdentifier;
 import net.sf.anathema.framework.repository.IItem;
 import net.sf.anathema.framework.repository.IItemListener;
 import net.sf.anathema.lib.control.IChangeListener;

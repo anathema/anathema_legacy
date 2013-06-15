@@ -23,11 +23,12 @@ import net.sf.anathema.character.impl.model.traits.RegisteredTrait;
 import net.sf.anathema.character.impl.model.traits.TraitRegistrar;
 import net.sf.anathema.character.impl.model.traits.essence.EssencePoolConfiguration;
 import net.sf.anathema.character.impl.model.traits.listening.CharacterTraitListening;
+import net.sf.anathema.character.main.description.model.CharacterDescriptionExtractor;
+import net.sf.anathema.character.main.description.model.ICharacterDescription;
 import net.sf.anathema.character.model.CharacterModel;
 import net.sf.anathema.character.model.CharacterModelAutoCollector;
 import net.sf.anathema.character.model.CharacterModelFactory;
 import net.sf.anathema.character.model.ICharacter;
-import net.sf.anathema.character.model.ICharacterDescription;
 import net.sf.anathema.character.model.ISpellConfiguration;
 import net.sf.anathema.character.model.ModelCreationContext;
 import net.sf.anathema.character.model.advance.IExperiencePointConfiguration;
@@ -45,12 +46,13 @@ import net.sf.anathema.initialization.Instantiater;
 import net.sf.anathema.lib.control.IChangeListener;
 import net.sf.anathema.lib.control.ObjectValueListener;
 import net.sf.anathema.lib.registry.IRegistry;
+import net.sf.anathema.lib.util.Identified;
+import net.sf.anathema.lib.workflow.textualdescription.ITextualDescription;
 
 import java.util.Collection;
 
 public class ExaltedCharacter implements ICharacter {
 
-  private final ICharacterDescription description = new CharacterDescription();
   private final CharacterChangeManagement management = new CharacterChangeManagement();
   private final CharacterModelContext context = new CharacterModelContext(new GenericCharacter(this));
   private final ICharacterTemplate characterTemplate;
@@ -82,9 +84,9 @@ public class ExaltedCharacter implements ICharacter {
   };
   private final ExtendedConfiguration extendedConfiguration = new ExtendedConfiguration(context);
   private final ICoreTraitConfiguration traitConfiguration;
+  private final DefaultHero hero = new DefaultHero();
 
   public ExaltedCharacter(ICharacterTemplate template, ICharacterGenerics generics) {
-    description.addOverallChangeListener(management.getDescriptionChangeListener());
     this.characterTemplate = template;
     this.concept = initConcept();
     this.traitConfiguration = createTraitConfiguration(template, generics);
@@ -123,13 +125,13 @@ public class ExaltedCharacter implements ICharacter {
   }
 
   private void addModels(ICharacterGenerics generics) {
-    DefaultHero hero = new DefaultHero();
     ModelCreationContext creationContext = new DefaultModelCreationContext(generics);
     Instantiater instantiater = generics.getInstantiater();
     Collection<CharacterModelFactory> factories = instantiater.instantiateAll(CharacterModelAutoCollector.class);
     for (CharacterModelFactory factory : factories) {
       CharacterModel model = factory.create(creationContext, hero);
       hero.addModel(model);
+      model.addChangeListener(management.getStatisticsChangeListener());
     }
   }
 
@@ -138,11 +140,6 @@ public class ExaltedCharacter implements ICharacter {
     CoreTraitConfiguration configuration = new CoreTraitConfiguration(template, context, generics.getBackgroundRegistry(), registrars);
     new CharacterTraitListening(configuration, context.getCharacterListening(), registrars).initListening();
     return configuration;
-  }
-
-  @Override
-  public ICharacterDescription getDescription() {
-    return description;
   }
 
   private void addCompulsiveCharms(ICharacterTemplate template) {
@@ -162,9 +159,10 @@ public class ExaltedCharacter implements ICharacter {
     }
   }
 
-  @Override
   public void setPrintNameAdjuster(PrintNameAdjuster adjuster) {
-    description.getName().addTextChangedListener(adjuster);
+    ICharacterDescription characterDescription = CharacterDescriptionExtractor.getCharacterDescription(this);
+    ITextualDescription characterName = characterDescription.getName();
+    characterName.addTextChangedListener(adjuster);
   }
 
   @Override
@@ -283,5 +281,10 @@ public class ExaltedCharacter implements ICharacter {
 
   public ICharacterModelContext getCharacterContext() {
     return context;
+  }
+
+  @Override
+  public <M extends CharacterModel> M getModel(Identified id) {
+    return hero.getModel(id);
   }
 }

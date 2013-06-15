@@ -11,7 +11,7 @@ import net.sf.anathema.character.model.traits.ICoreTraitConfiguration;
 import net.sf.anathema.character.model.traits.essence.IEssencePoolConfiguration;
 import net.sf.anathema.framework.itemdata.model.IItemData;
 
-public interface ICharacter extends IItemData {
+public interface ICharacter extends IItemData, Hero {
 
   ICoreTraitConfiguration getTraitConfiguration();
 
@@ -38,6 +38,4 @@ public interface ICharacter extends IItemData {
   ISpellConfiguration getSpells();
 
   ICharacterModelContext getCharacterContext();
-
-  ICharacterDescription getDescription();
 }

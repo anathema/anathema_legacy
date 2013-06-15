@@ -5,8 +5,11 @@ import net.sf.anathema.character.generic.framework.additionaltemplate.IAdditiona
 import net.sf.anathema.character.generic.template.ICharacterTemplate;
 import net.sf.anathema.character.generic.template.magic.ICharmTemplate;
 import net.sf.anathema.character.generic.type.ICharacterType;
+import net.sf.anathema.character.main.description.model.CharacterDescriptionExtractor;
+import net.sf.anathema.character.main.description.model.ICharacterDescription;
 import net.sf.anathema.character.model.CharacterModelGroup;
 import net.sf.anathema.character.model.ICharacter;
+import net.sf.anathema.character.model.concept.ICharacterConcept;
 import net.sf.anathema.character.presenter.magic.MagicPresenter;
 import net.sf.anathema.character.view.BackgroundView;
 import net.sf.anathema.character.view.CharacterView;
@@ -35,8 +38,8 @@ public class CharacterPresenter implements Presenter {
   private final Resources resources;
   private final PointPresentationStrategy pointPresentation;
 
-  public CharacterPresenter(ICharacter character, CharacterView view, Resources resources,
-                            IApplicationModel anathemaModel, PointPresentationStrategy pointPresentation) {
+  public CharacterPresenter(ICharacter character, CharacterView view, Resources resources, IApplicationModel anathemaModel,
+                            PointPresentationStrategy pointPresentation) {
     this.character = character;
     this.characterView = view;
     this.resources = resources;
@@ -59,9 +62,7 @@ public class CharacterPresenter implements Presenter {
 
     String descriptionHeader = resources.getString("CardView.CharacterDescription.Title");
     ICharacterDescriptionView descriptionView = sectionView.addView(descriptionHeader, ICharacterDescriptionView.class, characterType());
-    DescriptionDetails descriptionDetails = new DescriptionDetails(character.getDescription(),
-            character.getCharacterConcept(),
-            characterType().isExaltType());
+    DescriptionDetails descriptionDetails = createDescriptionDetails();
     new CharacterDescriptionPresenter(descriptionDetails, resources, descriptionView).initPresentation();
 
     String conceptHeader = resources.getString("CardView.CharacterConcept.Title");
@@ -71,17 +72,26 @@ public class CharacterPresenter implements Presenter {
     initialize(sectionView, Outline);
   }
 
+  private DescriptionDetails createDescriptionDetails() {
+    ICharacterDescription characterDescription = CharacterDescriptionExtractor.getCharacterDescription(character);
+    ICharacterConcept characterConcept = character.getCharacterConcept();
+    boolean isExalt = characterType().isExaltType();
+    return new DescriptionDetails(characterDescription, characterConcept, isExalt);
+  }
+
   private void initPhysicalTraits() {
 
     String sectionTitle = getString("CardView.NaturalTraits.Title");
     SectionView sectionView = characterView.addSection(sectionTitle);
 
     String attributeHeader = resources.getString("CardView.AttributeConfiguration.Title");
-    IGroupedFavorableTraitConfigurationView attributeView = sectionView.addView(attributeHeader, IGroupedFavorableTraitConfigurationView.class, characterType());
+    IGroupedFavorableTraitConfigurationView attributeView =
+            sectionView.addView(attributeHeader, IGroupedFavorableTraitConfigurationView.class, characterType());
     new AttributesPresenter(character, resources, attributeView).initPresentation();
 
     String abilityHeader = resources.getString("CardView.AbilityConfiguration.Title");
-    IGroupedFavorableTraitConfigurationView abilityView = sectionView.addView(abilityHeader, IGroupedFavorableTraitConfigurationView.class, characterType());
+    IGroupedFavorableTraitConfigurationView abilityView =
+            sectionView.addView(abilityHeader, IGroupedFavorableTraitConfigurationView.class, characterType());
     new AbilitiesPresenter(character, resources, abilityView).initPresentation();
 
     initialize(sectionView, NaturalTraits);
@@ -118,8 +128,7 @@ public class CharacterPresenter implements Presenter {
 
     String backgroundHeader = resources.getString("CardView.BackgroundConfiguration.Title");
     BackgroundView view = sectionView.addView(backgroundHeader, BackgroundView.class, characterType());
-    new BackgroundPresenter(resources,
-            character.getTraitConfiguration().getBackgrounds(), character.getCharacterContext(), view,
+    new BackgroundPresenter(resources, character.getTraitConfiguration().getBackgrounds(), character.getCharacterContext(), view,
             getGenerics(anathemaModel).getBackgroundRegistry()).initPresentation();
 
     initialize(sectionView, Miscellaneous);
@@ -128,8 +137,7 @@ public class CharacterPresenter implements Presenter {
   }
 
   public void initialize(SectionView sectionView, CharacterModelGroup group) {
-    IRegistry<String, IAdditionalInitializer> factoryRegistry = getGenerics(
-            anathemaModel).getAdditionalInitializerRegistry();
+    IRegistry<String, IAdditionalInitializer> factoryRegistry = getGenerics(anathemaModel).getAdditionalInitializerRegistry();
     for (IAdditionalModel model : character.getExtendedConfiguration().getAdditionalModels(group)) {
       IAdditionalInitializer initializer = factoryRegistry.get(model.getTemplateId());
       if (initializer == null) {

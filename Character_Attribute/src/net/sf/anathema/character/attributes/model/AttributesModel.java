@@ -3,6 +3,7 @@ package net.sf.anathema.character.attributes.model;
 import net.sf.anathema.character.attributes.template.AttributeGroup;
 import net.sf.anathema.character.attributes.template.AttributeTemplate;
 import net.sf.anathema.character.generic.character.IGenericCharacter;
+import net.sf.anathema.character.generic.framework.additionaltemplate.listening.ICharacterChangeListener;
 import net.sf.anathema.character.generic.template.ICharacterTemplate;
 import net.sf.anathema.character.generic.traits.ITraitTemplate;
 import net.sf.anathema.character.generic.traits.ITraitType;
@@ -26,6 +27,11 @@ public class AttributesModel implements AttributesList, CharacterModel {
   @Override
   public Identified getId() {
     return MODEL_ID;
+  }
+
+  @Override
+  public void addChangeListener(ICharacterChangeListener changeListener) {
+    // nothing to do until now
   }
 
   public CurrentValue getCurrentValue(Identified traitId) {

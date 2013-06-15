@@ -6,6 +6,7 @@ import net.sf.anathema.character.generic.framework.ICharacterTemplateRegistryCol
 import net.sf.anathema.character.generic.framework.xml.abilitygroup.GenericGroupedTraitTypeProvider;
 import net.sf.anathema.character.generic.framework.xml.abilitygroup.TraitTypeGroupTemplateParser;
 import net.sf.anathema.character.generic.framework.xml.additional.IAdditionalTemplateParser;
+import net.sf.anathema.character.generic.framework.xml.additional.NullTemplateParser;
 import net.sf.anathema.character.generic.framework.xml.core.AbstractXmlTemplateParser;
 import net.sf.anathema.character.generic.framework.xml.creation.BonusPointCostTemplateParser;
 import net.sf.anathema.character.generic.framework.xml.creation.CreationPointTemplateParser;
@@ -57,7 +58,7 @@ public class CharacterTemplateParser extends AbstractXmlTemplateParser<GenericCh
   private static final String TAG_PRESENTATION_TEMPLATE = "presentation";
   private static final String TAG_ADDITIONAL_TEMPLATES = "additionalTemplates";
   private static final String TAG_TEMPLATE = "template";
-  private static final String ATTRIB_ID = "id";
+  public static final String ATTRIB_ID = "id";
   private static final String TAG_HEALTH_TEMPLATE = "healthTemplate";
   private static final String TAG_ADDITIONAL_RULES = "additionalRules";
   private static final String TAG_NPC_ONLY = "npcOnly";
@@ -260,9 +261,18 @@ public class CharacterTemplateParser extends AbstractXmlTemplateParser<GenericCh
     List<Element> templateElements = ElementUtilities.elements(additionalElement, TAG_TEMPLATE);
     for (Element templateElement : templateElements) {
       String id = ElementUtilities.getRequiredAttrib(templateElement, ATTRIB_ID);
-      IAdditionalTemplate template = additionModelTemplateParserRegistry.get(id).parse(templateElement);
+      IAdditionalTemplateParser additionalTemplateParser = getTemplateParser(id);
+      IAdditionalTemplate template = additionalTemplateParser.parse(templateElement);
       characterTemplate.addAdditionalTemplate(template);
     }
+  }
+
+  private IAdditionalTemplateParser getTemplateParser(String id) {
+    IAdditionalTemplateParser parser = additionModelTemplateParserRegistry.get(id);
+    if (parser == null) {
+      return new NullTemplateParser(id);
+    }
+    return parser;
   }
 
   private void setPresentationTemplate(Element generalElement, GenericCharacterTemplate characterTemplate) throws PersistenceException {

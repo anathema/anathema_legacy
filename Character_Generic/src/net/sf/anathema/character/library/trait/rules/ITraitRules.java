@@ -1,6 +1,5 @@
 package net.sf.anathema.character.library.trait.rules;
 
-import net.sf.anathema.character.generic.traits.ITraitTemplate;
 import net.sf.anathema.character.generic.traits.ITraitType;
 import net.sf.anathema.lib.data.Range;
 

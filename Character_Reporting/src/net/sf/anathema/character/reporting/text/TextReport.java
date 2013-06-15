@@ -9,6 +9,7 @@ import com.itextpdf.text.pdf.PdfWriter;
 import net.sf.anathema.character.generic.character.IGenericCharacter;
 import net.sf.anathema.character.impl.generic.GenericDescription;
 import net.sf.anathema.character.impl.util.GenericCharacterUtilities;
+import net.sf.anathema.character.main.description.model.CharacterDescriptionExtractor;
 import net.sf.anathema.character.model.ICharacter;
 import net.sf.anathema.framework.reporting.ReportException;
 import net.sf.anathema.framework.reporting.pdf.AbstractPdfReport;
@@ -37,7 +38,7 @@ public class TextReport extends AbstractPdfReport {
     columnText.addRegularColumns(document.left(), document.right(), 20, 2);
     ICharacter character = (ICharacter) item.getItemData();
     try {
-      GenericDescription description = new GenericDescription(character.getDescription());
+      GenericDescription description = new GenericDescription(CharacterDescriptionExtractor.getCharacterDescription(character));
       new CharacterDescriptionTextEncoder(utils, resources).createParagraphs(columnText, description);
       IGenericCharacter genericCharacter = GenericCharacterUtilities.createGenericCharacter(character);
       new ConceptTextEncoder(utils, resources).createParagraphs(columnText, genericCharacter);
@@ -56,8 +57,7 @@ public class TextReport extends AbstractPdfReport {
     TextPartFactory factory = new TextPartFactory(utils);
     String conceptText = description.getConceptText();
     if (!Strings.isNullOrEmpty(conceptText)) {
-      Phrase conceptPhrase =
-              factory.createTextParagraph(factory.createBoldTitle(resources.getString("Sheet.Label.Concept") + " "));
+      Phrase conceptPhrase = factory.createTextParagraph(factory.createBoldTitle(resources.getString("Sheet.Label.Concept") + " "));
       conceptPhrase.add(factory.createTextChunk(conceptText));
       columnText.addElement(conceptPhrase);
     }

@@ -1,11 +1,13 @@
-package net.sf.anathema.character.impl.model;
+package net.sf.anathema.character.main.description.model;
 
-import net.sf.anathema.character.model.ICharacterDescription;
+import net.sf.anathema.character.generic.framework.additionaltemplate.listening.ICharacterChangeListener;
+import net.sf.anathema.character.model.CharacterModel;
 import net.sf.anathema.lib.control.ObjectValueListener;
+import net.sf.anathema.lib.util.Identified;
 import net.sf.anathema.lib.workflow.textualdescription.ITextualDescription;
 import net.sf.anathema.lib.workflow.textualdescription.model.SimpleTextualDescription;
 
-public class CharacterDescription implements ICharacterDescription {
+public class CharacterDescription implements ICharacterDescription, CharacterModel {
 
   private final ITextualDescription nameDescription = new SimpleTextualDescription();
   private final ITextualDescription periphraseDescription = new SimpleTextualDescription();
@@ -91,5 +93,20 @@ public class CharacterDescription implements ICharacterDescription {
     for (ITextualDescription description : getAllDescriptions()) {
       description.addTextChangedListener(listener);
     }
+  }
+
+  @Override
+  public Identified getId() {
+    return ID;
+  }
+
+  @Override
+  public void addChangeListener(final ICharacterChangeListener changeListener) {
+    addOverallChangeListener(new ObjectValueListener<String>() {
+      @Override
+      public void valueChanged(String newValue) {
+        changeListener.characterChanged();
+      }
+    });
   }
 }

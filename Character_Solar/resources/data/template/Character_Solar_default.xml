@@ -19,6 +19,7 @@
         </healthTemplate>
     </general>
     <models>
+        <model id="Description"/>
         <model id="attributes"/>
     </models>
     <creation>

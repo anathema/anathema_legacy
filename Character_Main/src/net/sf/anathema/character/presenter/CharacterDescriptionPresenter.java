@@ -1,7 +1,7 @@
 package net.sf.anathema.character.presenter;
 
 import net.sf.anathema.character.generic.framework.resources.CharacterUI;
-import net.sf.anathema.character.model.ICharacterDescription;
+import net.sf.anathema.character.main.description.model.ICharacterDescription;
 import net.sf.anathema.character.model.IIntegerDescription;
 import net.sf.anathema.character.model.concept.ICharacterConcept;
 import net.sf.anathema.character.view.ICharacterDescriptionView;
@@ -24,8 +24,7 @@ public class CharacterDescriptionPresenter {
   private final boolean hasAnima;
   private final Resources resources;
 
-  public CharacterDescriptionPresenter(DescriptionDetails descriptionDetails, Resources resources,
-                                       ICharacterDescriptionView descriptionView) {
+  public CharacterDescriptionPresenter(DescriptionDetails descriptionDetails, Resources resources, ICharacterDescriptionView descriptionView) {
     this.resources = resources;
     this.description = descriptionDetails.getDescription();
     this.characterConcept = descriptionDetails.getCharacterConcept();
@@ -76,8 +75,7 @@ public class CharacterDescriptionPresenter {
     addInteger(componentLine, "Label.Age", characterConcept.getAge());
   }
 
-  private void addInteger(IMultiComponentLine componentLine, String label,
-                          final IIntegerDescription integerDescription) {
+  private void addInteger(IMultiComponentLine componentLine, String label, final IIntegerDescription integerDescription) {
     String title = resources.getString(label);
     IIntegerView view = componentLine.addIntegerView(title, integerDescription);
     view.addChangeListener(new IIntValueChangedListener() {
@@ -88,21 +86,18 @@ public class CharacterDescriptionPresenter {
     });
   }
 
-  private void addField(IMultiComponentLine componentLine, String label, ITextualDescription description,
-                        TextualPresentation presentation) {
+  private void addField(IMultiComponentLine componentLine, String label, ITextualDescription description, TextualPresentation presentation) {
     String labelText = resources.getString(label);
     ITextView textView = componentLine.addFieldsView(labelText);
     presentation.initView(textView, description);
   }
 
-  private void initLineView(String labelResourceKey, ITextualDescription textualDescription,
-                            TextualPresentation presentation) {
+  private void initLineView(String labelResourceKey, ITextualDescription textualDescription, TextualPresentation presentation) {
     ITextView textView = descriptionView.addLineView(resources.getString(labelResourceKey));
     presentation.initView(textView, textualDescription);
   }
 
-  private void initAreaView(String labelResourceKey, ITextualDescription textualDescription,
-                            TextualPresentation presentation) {
+  private void initAreaView(String labelResourceKey, ITextualDescription textualDescription, TextualPresentation presentation) {
     ITextView textView = descriptionView.addAreaView(resources.getString(labelResourceKey), 6);
     presentation.initView(textView, textualDescription);
   }

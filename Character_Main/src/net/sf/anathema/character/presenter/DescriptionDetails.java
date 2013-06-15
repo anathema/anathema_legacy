@@ -1,6 +1,6 @@
 package net.sf.anathema.character.presenter;
 
-import net.sf.anathema.character.model.ICharacterDescription;
+import net.sf.anathema.character.main.description.model.ICharacterDescription;
 import net.sf.anathema.character.model.concept.ICharacterConcept;
 
 public class DescriptionDetails {
