@@ -5,12 +5,18 @@ import net.sf.anathema.character.model.ICharacter;
 import net.sf.anathema.character.presenter.CharacterConceptAndRulesPresenter;
 import net.sf.anathema.character.view.SectionView;
 import net.sf.anathema.character.view.concept.ICharacterConceptAndRulesView;
+import net.sf.anathema.framework.IApplicationModel;
 import net.sf.anathema.lib.resources.Resources;
 
 import static net.sf.anathema.character.model.CharacterModelGroup.Outline;
 
 @RegisteredInitializer(Outline)
 public class ConceptInitializer implements CoreModelInitializer {
+
+  @SuppressWarnings("UnusedParameters")
+  public ConceptInitializer(IApplicationModel applicationModel) {
+    //nothing to do
+  }
 
   @Override
   public void initialize(SectionView sectionView, ICharacter character, Resources resources) {

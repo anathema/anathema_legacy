@@ -9,12 +9,18 @@ import net.sf.anathema.character.presenter.CharacterDescriptionPresenter;
 import net.sf.anathema.character.presenter.DescriptionDetails;
 import net.sf.anathema.character.view.ICharacterDescriptionView;
 import net.sf.anathema.character.view.SectionView;
+import net.sf.anathema.framework.IApplicationModel;
 import net.sf.anathema.lib.resources.Resources;
 
 import static net.sf.anathema.character.model.CharacterModelGroup.Outline;
 
 @RegisteredInitializer(Outline)
 public class DescriptionInitializer implements CoreModelInitializer {
+
+  @SuppressWarnings("UnusedParameters")
+  public DescriptionInitializer(IApplicationModel applicationModel) {
+    //nothing to do
+  }
 
   @Override
   public void initialize(SectionView sectionView, ICharacter character, Resources resources) {

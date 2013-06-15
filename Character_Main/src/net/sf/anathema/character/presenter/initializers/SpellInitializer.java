@@ -26,6 +26,6 @@ public class SpellInitializer implements CoreModelInitializer {
     String header = resources.getString(titleKey);
     ISpellView view = sectionView.addView(header, ISpellView.class, character.getCharacterType());
     MagicDescriptionProvider magicDescriptionProvider = CharmDescriptionProviderExtractor.CreateFor(applicationModel, resources);
-    new SpellPresenter(spellModel, character, resources, view, magicDescriptionProvider);
+    new SpellPresenter(spellModel, character, resources, view, magicDescriptionProvider).initPresentation();
   }
 }

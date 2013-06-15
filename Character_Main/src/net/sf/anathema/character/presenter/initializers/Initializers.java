@@ -1,45 +1,31 @@
 package net.sf.anathema.character.presenter.initializers;
 
+import net.sf.anathema.character.generic.framework.CharacterGenericsExtractor;
 import net.sf.anathema.character.model.CharacterModelGroup;
 import net.sf.anathema.framework.IApplicationModel;
+import net.sf.anathema.initialization.Instantiater;
 
 import java.util.ArrayList;
+import java.util.Collection;
 import java.util.List;
 
 public class Initializers {
 
-  private IApplicationModel applicationModel;
+  private final IApplicationModel applicationModel;
+  private final Instantiater instantiater;
 
   public Initializers(IApplicationModel applicationModel) {
+    this.instantiater = CharacterGenericsExtractor.getGenerics(applicationModel).getInstantiater();
     this.applicationModel = applicationModel;
   }
 
   public List<CoreModelInitializer> getInOrderFor(CharacterModelGroup group) {
     ArrayList<CoreModelInitializer> initializers = new ArrayList<>();
-    switch (group) {
-      case Outline: {
-        initializers.add(new DescriptionInitializer());
-        initializers.add(new ConceptInitializer());
-        break;
-      }
-      case NaturalTraits: {
-        initializers.add(new AttributesInitializer());
-        initializers.add(new AbilitiesInitializer());
-        break;
-      }
-      case SpiritualTraits: {
-        initializers.add(new AdvantagesInitializer());
-        break;
-      }
-      case Magic: {
-        initializers.add(new CharmInitializer(applicationModel));
-        initializers.add(new ComboInitializer(applicationModel));
-        initializers.add(new SorceryInitializer(applicationModel));
-        initializers.add(new NecromancyInitializer(applicationModel));
-        break;
-      }
-      case Miscellaneous: {
-        break;
+    Collection<CoreModelInitializer> collection = instantiater.instantiateAll(RegisteredInitializer.class, applicationModel);
+    for (CoreModelInitializer initializer : collection) {
+      CharacterModelGroup targetGroup = initializer.getClass().getAnnotation(RegisteredInitializer.class).value();
+      if (targetGroup.equals(group)) {
+        initializers.add(initializer);
       }
     }
     return initializers;
