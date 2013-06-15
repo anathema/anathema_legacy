@@ -13,7 +13,7 @@ import static net.sf.anathema.character.model.CharacterModelGroup.Outline;
 
 @RegisteredInitializer(Outline)
 @Weight(weight = 100)
-public class ConceptInitializer implements CoreModelInitializer {
+public class ConceptInitializer implements CharacterModelInitializer {
 
   @SuppressWarnings("UnusedParameters")
   public ConceptInitializer(IApplicationModel applicationModel) {

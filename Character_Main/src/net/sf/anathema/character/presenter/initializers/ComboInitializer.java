@@ -15,7 +15,7 @@ import static net.sf.anathema.character.model.CharacterModelGroup.Magic;
 
 @RegisteredInitializer(Magic)
 @Weight(weight = 100)
-public class ComboInitializer implements CoreModelInitializer {
+public class ComboInitializer implements CharacterModelInitializer {
 
   private IApplicationModel model;
 

@@ -3,7 +3,7 @@ package net.sf.anathema.character.platform.specialties;
 import net.sf.anathema.character.library.trait.specialties.ISpecialtiesConfiguration;
 import net.sf.anathema.character.model.CharacterModelGroup;
 import net.sf.anathema.character.model.ICharacter;
-import net.sf.anathema.character.presenter.initializers.CoreModelInitializer;
+import net.sf.anathema.character.presenter.initializers.CharacterModelInitializer;
 import net.sf.anathema.character.presenter.initializers.RegisteredInitializer;
 import net.sf.anathema.character.presenter.specialty.ISpecialtiesAdditionalModel;
 import net.sf.anathema.character.presenter.specialty.ISpecialtiesConfigurationView;
@@ -16,7 +16,7 @@ import net.sf.anathema.lib.resources.Resources;
 
 @RegisteredInitializer(CharacterModelGroup.NaturalTraits)
 @Weight(weight = 300)
-public class SpecialtiesInitializer implements CoreModelInitializer {
+public class SpecialtiesInitializer implements CharacterModelInitializer {
 
   @SuppressWarnings("UnusedParameters")
   public SpecialtiesInitializer(ApplicationModel model) {

@@ -4,7 +4,7 @@ import net.sf.anathema.character.library.virtueflaw.presenter.IDescriptiveVirtue
 import net.sf.anathema.character.library.virtueflaw.presenter.IDescriptiveVirtueFlawView;
 import net.sf.anathema.character.model.CharacterModelGroup;
 import net.sf.anathema.character.model.ICharacter;
-import net.sf.anathema.character.presenter.initializers.CoreModelInitializer;
+import net.sf.anathema.character.presenter.initializers.CharacterModelInitializer;
 import net.sf.anathema.character.presenter.initializers.RegisteredInitializer;
 import net.sf.anathema.character.solar.SolarCharacterType;
 import net.sf.anathema.character.solar.virtueflaw.presenter.SolarVirtueFlawPresenter;
@@ -15,7 +15,7 @@ import net.sf.anathema.lib.resources.Resources;
 
 @RegisteredInitializer(CharacterModelGroup.SpiritualTraits)
 @Weight(weight = 200)
-public class SolarVirtueFlawInitializer implements CoreModelInitializer {
+public class SolarVirtueFlawInitializer implements CharacterModelInitializer {
 
   @SuppressWarnings("UnusedParameters")
   public SolarVirtueFlawInitializer(ApplicationModel model) {

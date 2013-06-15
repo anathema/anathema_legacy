@@ -13,7 +13,7 @@ import static net.sf.anathema.character.model.CharacterModelGroup.SpiritualTrait
 
 @RegisteredInitializer(SpiritualTraits)
 @Weight(weight = 0)
-public class AdvantagesInitializer implements CoreModelInitializer {
+public class AdvantagesInitializer implements CharacterModelInitializer {
   @SuppressWarnings("UnusedParameters")
   public AdvantagesInitializer(IApplicationModel applicationModel) {
     //nothing to do

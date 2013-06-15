@@ -20,7 +20,7 @@ import static net.sf.anathema.character.model.CharacterModelGroup.Magic;
 
 @RegisteredInitializer(Magic)
 @Weight(weight = 0)
-public class CharmInitializer implements CoreModelInitializer {
+public class CharmInitializer implements CharacterModelInitializer {
   private IApplicationModel applicationModel;
 
   public CharmInitializer(IApplicationModel applicationModel) {

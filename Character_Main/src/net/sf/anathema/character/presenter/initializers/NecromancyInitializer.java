@@ -12,7 +12,7 @@ import static net.sf.anathema.character.model.CharacterModelGroup.Magic;
 
 @RegisteredInitializer(Magic)
 @Weight(weight = 300)
-public class NecromancyInitializer implements CoreModelInitializer {
+public class NecromancyInitializer implements CharacterModelInitializer {
 
   private IApplicationModel applicationModel;
 
