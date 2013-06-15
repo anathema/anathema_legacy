@@ -19,7 +19,8 @@ import net.sf.anathema.character.impl.model.statistics.ExtendedConfiguration;
 import net.sf.anathema.character.impl.model.traits.CoreTraitConfiguration;
 import net.sf.anathema.character.impl.model.traits.RegisteredTrait;
 import net.sf.anathema.character.impl.model.traits.TraitRegistrar;
-import net.sf.anathema.character.impl.model.traits.essence.EssencePoolConfiguration;
+import net.sf.anathema.character.main.essencepool.model.EssencePoolModel;
+import net.sf.anathema.character.main.essencepool.model.EssencePoolModelImpl;
 import net.sf.anathema.character.impl.model.traits.listening.CharacterTraitListening;
 import net.sf.anathema.character.main.description.model.CharacterDescription;
 import net.sf.anathema.character.main.description.model.CharacterDescriptionFetcher;
@@ -36,7 +37,6 @@ import net.sf.anathema.character.model.charm.ICharmConfiguration;
 import net.sf.anathema.character.model.charm.IComboConfiguration;
 import net.sf.anathema.character.model.health.IHealthConfiguration;
 import net.sf.anathema.character.model.traits.ICoreTraitConfiguration;
-import net.sf.anathema.character.model.traits.essence.IEssencePoolConfiguration;
 import net.sf.anathema.framework.presenter.itemmanagement.PrintNameAdjuster;
 import net.sf.anathema.initialization.Instantiater;
 import net.sf.anathema.lib.control.IChangeListener;
@@ -51,7 +51,7 @@ public class ExaltedCharacter implements ICharacter {
   private final CharacterChangeManagement management = new CharacterChangeManagement();
   private final CharacterModelContext context = new CharacterModelContext(new GenericCharacter(this));
   private final ICharacterTemplate characterTemplate;
-  private final IEssencePoolConfiguration essencePool;
+  private final EssencePoolModel essencePool;
   private final CharmConfiguration charms;
   private final IComboConfiguration combos;
   private final ISpellConfiguration spells;
@@ -68,7 +68,7 @@ public class ExaltedCharacter implements ICharacter {
             template.getBaseHealthProviders());
     this.charms = new CharmConfiguration(health, context, generics.getCharacterTypes(), generics.getTemplateRegistry(), generics.getCharmProvider());
     initCharmListening(charms);
-    this.essencePool = new EssencePoolConfiguration(template.getEssenceTemplate(), template.getAdditionalRules(), context);
+    this.essencePool = new EssencePoolModelImpl(template.getEssenceTemplate(), template.getAdditionalRules(), context);
     charms.initListening();
     this.combos = new ComboConfiguration(charms);
     combos.addComboConfigurationListener(new CharacterChangeComboListener(context.getCharacterListening()));
@@ -168,7 +168,7 @@ public class ExaltedCharacter implements ICharacter {
     charmConfiguration.addCharmLearnListener(new CharacterChangeCharmListener(context.getCharacterListening()));
   }
 
-  public IEssencePoolConfiguration getEssencePool() {
+  public EssencePoolModel getEssencePool() {
     return essencePool;
   }
 

@@ -4,8 +4,8 @@ import net.sf.anathema.character.generic.traits.types.OtherTraitType;
 import net.sf.anathema.character.library.trait.IModifiableCapTrait;
 import net.sf.anathema.character.library.trait.ITrait;
 import net.sf.anathema.character.library.trait.presenter.TraitPresenter;
+import net.sf.anathema.character.main.essencepool.model.EssencePoolModel;
 import net.sf.anathema.character.model.traits.ICoreTraitConfiguration;
-import net.sf.anathema.character.model.traits.essence.IEssencePoolConfiguration;
 import net.sf.anathema.character.view.IBasicAdvantageView;
 import net.sf.anathema.framework.value.IIntValueView;
 import net.sf.anathema.lib.control.IChangeListener;
@@ -17,11 +17,11 @@ import net.sf.anathema.lib.workflow.labelledvalue.NullValueView;
 public class EssenceConfigurationPresenter implements Presenter {
 
   private final IBasicAdvantageView view;
-  private final IEssencePoolConfiguration essence;
+  private final EssencePoolModel essence;
   private final Resources resources;
   private final ICoreTraitConfiguration traitConfiguration;
 
-  public EssenceConfigurationPresenter(Resources resources, IEssencePoolConfiguration essence, ICoreTraitConfiguration traitConfiguration,
+  public EssenceConfigurationPresenter(Resources resources, EssencePoolModel essence, ICoreTraitConfiguration traitConfiguration,
                                        IBasicAdvantageView view) {
     this.resources = resources;
     this.essence = essence;
@@ -32,8 +32,9 @@ public class EssenceConfigurationPresenter implements Presenter {
   @Override
   public void initPresentation() {
     ITrait essenceTrait = traitConfiguration.getTrait(OtherTraitType.Essence);
-    IIntValueView essenceView = view.addEssenceView(resources.getString("Essence.Name"),
-            essenceTrait.getCurrentValue(), essenceTrait.getMaximalValue(), (IModifiableCapTrait) essenceTrait);
+    IIntValueView essenceView =
+            view.addEssenceView(resources.getString("Essence.Name"), essenceTrait.getCurrentValue(), essenceTrait.getMaximalValue(),
+                    (IModifiableCapTrait) essenceTrait);
     if (essence.isEssenceUser()) {
       String key = "EssencePool.Name.Personal";
       String personalPool = essence.getPersonalPool();

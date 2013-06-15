@@ -4,7 +4,7 @@ import net.sf.anathema.character.dummy.generic.DummyCharacterModelContext;
 import net.sf.anathema.character.generic.dummy.template.DummyCharacterTemplate;
 import net.sf.anathema.character.generic.framework.xml.essence.GenericEssenceTemplate;
 import net.sf.anathema.character.generic.impl.additional.NullAdditionalRules;
-import net.sf.anathema.character.impl.model.traits.essence.EssencePoolConfiguration;
+import net.sf.anathema.character.main.essencepool.model.EssencePoolModelImpl;
 import net.sf.anathema.character.model.ICharacter;
 import org.junit.Before;
 import org.junit.Test;
@@ -26,7 +26,7 @@ public class GenericCharacterTest {
     characterTemplate.setEssenceTemplate(essenceTemplate);
     when(statistics.getCharacterTemplate()).thenReturn(characterTemplate);
     when(statistics.getEssencePool())
-            .thenReturn(new EssencePoolConfiguration(essenceTemplate, new NullAdditionalRules(), new DummyCharacterModelContext()));
+            .thenReturn(new EssencePoolModelImpl(essenceTemplate, new NullAdditionalRules(), new DummyCharacterModelContext()));
   }
 
   @Test
