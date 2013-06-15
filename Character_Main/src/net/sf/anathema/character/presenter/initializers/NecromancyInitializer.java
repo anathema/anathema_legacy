@@ -1,34 +1,27 @@
 package net.sf.anathema.character.presenter.initializers;
 
-import net.sf.anathema.character.generic.framework.magic.view.CharmDescriptionProviderExtractor;
-import net.sf.anathema.character.generic.magic.description.MagicDescriptionProvider;
-import net.sf.anathema.character.generic.template.magic.ISpellMagicTemplate;
 import net.sf.anathema.character.model.ICharacter;
 import net.sf.anathema.character.presenter.magic.spells.NecromancyModel;
 import net.sf.anathema.character.presenter.magic.spells.SpellModel;
-import net.sf.anathema.character.presenter.magic.spells.SpellPresenter;
 import net.sf.anathema.character.view.SectionView;
-import net.sf.anathema.character.view.magic.ISpellView;
 import net.sf.anathema.framework.IApplicationModel;
 import net.sf.anathema.lib.resources.Resources;
 
 public class NecromancyInitializer implements CoreModelInitializer {
 
-  private IApplicationModel model;
+  private IApplicationModel applicationModel;
 
-  public NecromancyInitializer(IApplicationModel model) {
-    this.model = model;
+  public NecromancyInitializer(IApplicationModel applicationModel) {
+    this.applicationModel = applicationModel;
   }
 
   @Override
   public void initialize(SectionView sectionView, ICharacter character, Resources resources) {
-    ISpellMagicTemplate spellMagic = character.getCharacterTemplate().getMagicTemplate().getSpellMagic();
-    if (spellMagic.canLearnNecromancy()) {
-      String header = resources.getString("CardView.CharmConfiguration.Necromancy.Title");
-      ISpellView view = sectionView.addView(header, ISpellView.class, character.getCharacterType());
-      MagicDescriptionProvider magicDescriptionProvider = CharmDescriptionProviderExtractor.CreateFor(model, resources);
+    boolean canLeanNecromancy = character.getCharacterTemplate().getMagicTemplate().getSpellMagic().canLearnNecromancy();
+    if (canLeanNecromancy) {
+      String titleKey = "CardView.CharmConfiguration.Necromancy.Title";
       SpellModel spellModel = new NecromancyModel(character);
-      new SpellPresenter(spellModel, character, resources, view, magicDescriptionProvider);
+      new SpellInitializer(applicationModel, titleKey, spellModel).initialize(sectionView, character, resources);
     }
   }
 }
