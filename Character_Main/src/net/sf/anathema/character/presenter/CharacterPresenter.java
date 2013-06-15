@@ -39,7 +39,7 @@ public class CharacterPresenter implements Presenter {
     this.resources = resources;
     this.anathemaModel = anathemaModel;
     this.pointPresentation = pointPresentation;
-    this.initializer = new CharacterContentInitializer(anathemaModel, resources, character, view);
+    this.initializer = new CharacterContentInitializer(anathemaModel, resources, character);
   }
 
   @Override
@@ -66,7 +66,7 @@ public class CharacterPresenter implements Presenter {
     ICharacterConceptAndRulesView conceptView = sectionView.addView(conceptHeader, ICharacterConceptAndRulesView.class, characterType());
     new CharacterConceptAndRulesPresenter(character, conceptView, resources).initPresentation();
 
-    initializer.initializeAdditionalContent(sectionView, Outline);
+    initializer.initialize(sectionView, Outline);
   }
 
   private void initPhysicalTraits() {
@@ -82,7 +82,7 @@ public class CharacterPresenter implements Presenter {
     IGroupedFavorableTraitConfigurationView abilityView = sectionView.addView(abilityHeader, IGroupedFavorableTraitConfigurationView.class, characterType());
     new AbilitiesPresenter(character, resources, abilityView).initPresentation();
 
-    initializer.initializeAdditionalContent(sectionView, NaturalTraits);
+    initializer.initialize(sectionView, NaturalTraits);
   }
 
   private void initSpiritualTraits() {
@@ -93,7 +93,7 @@ public class CharacterPresenter implements Presenter {
     IBasicAdvantageView view = sectionView.addView(header, IBasicAdvantageView.class, characterType());
     new BasicAdvantagePresenter(resources, character, view).initPresentation();
 
-    initializer.initializeAdditionalContent(sectionView, SpiritualTraits);
+    initializer.initialize(sectionView, SpiritualTraits);
   }
 
   private void initMagic() {
@@ -105,11 +105,9 @@ public class CharacterPresenter implements Presenter {
 
     String sectionTitle = getString("CardView.CharmConfiguration.Title");
     SectionView sectionView = characterView.addSection(sectionTitle);
-    String magicViewHeader = getString("CardView.CharmConfiguration.Title");
-    MagicPresenter presenter = new MagicPresenter(character, characterView.createMagicViewFactory(), sectionView, resources,
-            anathemaModel);
+    new MagicPresenter(character, sectionView, resources, anathemaModel);
 
-    initializer.initContentPresentation(magicViewHeader, Magic, presenter);
+    initializer.initialize(sectionView, Magic);
   }
 
   private void initMiscellaneous() {
@@ -122,7 +120,7 @@ public class CharacterPresenter implements Presenter {
             character.getTraitConfiguration().getBackgrounds(), character.getCharacterContext(), view,
             getGenerics(anathemaModel).getBackgroundRegistry()).initPresentation();
 
-    initializer.initializeAdditionalContent(sectionView, Miscellaneous);
+    initializer.initialize(sectionView, Miscellaneous);
 
     pointPresentation.initPresentation(sectionView);
   }

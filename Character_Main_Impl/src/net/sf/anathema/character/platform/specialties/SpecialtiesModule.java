@@ -1,7 +1,7 @@
 package net.sf.anathema.character.platform.specialties;
 
 import net.sf.anathema.character.generic.framework.ICharacterGenerics;
-import net.sf.anathema.character.generic.framework.additionaltemplate.IAdditionalViewFactory;
+import net.sf.anathema.character.generic.framework.additionaltemplate.IAdditionalInitializer;
 import net.sf.anathema.character.generic.framework.additionaltemplate.model.IAdditionalModelFactory;
 import net.sf.anathema.character.generic.framework.module.CharacterModule;
 import net.sf.anathema.character.generic.framework.module.CharacterModuleAdapter;
@@ -17,8 +17,8 @@ public class SpecialtiesModule extends CharacterModuleAdapter {
     IRegistry<String, IAdditionalModelFactory> additionalModelFactoryRegistry = characterGenerics.getAdditionalModelFactoryRegistry();
     String templateId = SpecialtiesTemplate.ID;
     additionalModelFactoryRegistry.register(templateId, new SpecialtiesModelFactory());
-    IRegistry<String, IAdditionalViewFactory> additionalViewFactoryRegistry = characterGenerics.getAdditionalViewFactoryRegistry();
-    additionalViewFactoryRegistry.register(templateId, new SpecialtiesViewFactory());
+    IRegistry<String, IAdditionalInitializer> additionalViewFactoryRegistry = characterGenerics.getAdditionalInitializerRegistry();
+    additionalViewFactoryRegistry.register(templateId, new SpecialtiesInitializer());
     characterGenerics.getGlobalAdditionalTemplateRegistry().add(new SpecialtiesTemplate());
   }
 }

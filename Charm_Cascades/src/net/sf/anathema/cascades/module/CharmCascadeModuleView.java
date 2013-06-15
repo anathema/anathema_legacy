@@ -16,7 +16,8 @@ public class CharmCascadeModuleView implements ICascadeViewFactory, IView {
 
   @Override
   public CascadeView createCascadeView(ToolTipProperties properties, NodeProperties nodeProperties) {
-    CascadeView view = new CascadeView(properties, nodeProperties);
+    CascadeView view = new CascadeView();
+    view.initGui(properties, nodeProperties);
     panel.add(view.getComponent(), new CC().grow().push());
     return view;
   }

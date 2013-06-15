@@ -18,17 +18,14 @@ import static net.sf.anathema.lib.gui.layout.LayoutUtils.fillWithoutInsets;
 public class CascadeView extends AbstractCascadeSelectionView implements ICascadeView, IView {
   private JPanel content = new JPanel(new MigLayout(fillWithoutInsets().wrapAfter(1)));
 
-  public CascadeView(ToolTipProperties treeProperties, NodeProperties nodeProperties) {
-    super(treeProperties, nodeProperties);
-  }
-
   @Override
   public JComponent getComponent() {
     return content;
   }
 
   @Override
-  public void initGui() {
+  public void initGui(ToolTipProperties treeProperties, NodeProperties properties) {
+    super.initGui(treeProperties, properties);
     content.add(getSelectionComponent());
     JComponent treeViewComponent = getCharmComponent();
     treeViewComponent.setBackground(Color.WHITE);

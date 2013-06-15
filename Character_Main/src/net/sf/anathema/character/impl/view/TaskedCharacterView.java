@@ -1,14 +1,10 @@
 package net.sf.anathema.character.impl.view;
 
-import net.sf.anathema.character.impl.view.magic.MagicViewFactory;
 import net.sf.anathema.character.impl.view.overview.OverviewContainer;
 import net.sf.anathema.character.view.CharacterView;
 import net.sf.anathema.character.view.SectionView;
-import net.sf.anathema.character.view.magic.IMagicViewFactory;
 import net.sf.anathema.character.view.overview.CategorizedOverview;
 import net.sf.anathema.character.view.overview.NullOverviewContainer;
-import net.sf.anathema.framework.presenter.view.MultipleContentView;
-import net.sf.anathema.framework.value.IntegerViewFactory;
 import net.sf.anathema.framework.view.util.OptionalViewBar;
 
 import javax.swing.JComponent;
@@ -17,7 +13,6 @@ import java.awt.BorderLayout;
 
 public class TaskedCharacterView implements CharacterView {
 
-  private final IntegerViewFactory integerDisplayFactory;
   private CategorizedOverview creationOverviewView;
   private CategorizedOverview experienceOverviewView;
   private CategorizedOverview overviewView = new NullOverviewContainer();
@@ -26,10 +21,8 @@ public class TaskedCharacterView implements CharacterView {
   private JPanel content;
   private final SubViewRegistry subViewFactory;
 
-  public TaskedCharacterView(IntegerViewFactory factory,
-                             SubViewRegistry viewFactory) {
+  public TaskedCharacterView(SubViewRegistry viewFactory) {
     this.characterPane = new TaskedCharacterPane();
-    this.integerDisplayFactory = factory;
     this.subViewFactory = viewFactory;
   }
 
@@ -48,18 +41,8 @@ public class TaskedCharacterView implements CharacterView {
   }
 
   @Override
-  public MultipleContentView addMultipleContentView(String header) {
-    return characterPane.addMultipleContentView(header);
-  }
-
-  @Override
   public SectionView addSection(String title) {
     return new CharacterViewSection(characterPane, title, subViewFactory);
-  }
-
-  @Override
-  public IMagicViewFactory createMagicViewFactory() {
-    return new MagicViewFactory(integerDisplayFactory);
   }
 
   @Override

@@ -17,7 +17,6 @@ import net.sf.anathema.character.presenter.magic.SpecialCharmList;
 import net.sf.anathema.character.presenter.magic.SpecialCharmViewBuilder;
 import net.sf.anathema.character.presenter.magic.detail.DetailDemandingMagicPresenter;
 import net.sf.anathema.character.presenter.magic.detail.ShowMagicDetailListener;
-import net.sf.anathema.character.view.magic.IMagicViewFactory;
 import net.sf.anathema.charmtree.presenter.AbstractCascadePresenter;
 import net.sf.anathema.charmtree.presenter.CharmFilterContainer;
 import net.sf.anathema.charmtree.presenter.view.CharmDisplayPropertiesMap;
@@ -32,7 +31,7 @@ public class CharacterCharmTreePresenter extends AbstractCascadePresenter implem
   private final ICharmView view;
   private final CharacterCharmModel model;
 
-  public CharacterCharmTreePresenter(Resources resources, IMagicViewFactory factory, CharacterCharmModel charmModel,
+  public CharacterCharmTreePresenter(Resources resources, ICharmView view, CharacterCharmModel charmModel,
                                      ITreePresentationProperties presentationProperties, CharmDisplayPropertiesMap displayPropertiesMap) {
     super(resources);
     this.model = charmModel;
@@ -40,7 +39,8 @@ public class CharacterCharmTreePresenter extends AbstractCascadePresenter implem
     CharacterCharmTreeViewProperties viewProperties =
             new CharacterCharmTreeViewProperties(resources, charmConfiguration, model.getMagicDescriptionProvider());
     DefaultNodeProperties nodeProperties = new DefaultNodeProperties(resources, viewProperties, viewProperties);
-    this.view = factory.createCharmSelectionView(viewProperties, nodeProperties);
+    this.view = view;
+    view.initGui(viewProperties, nodeProperties);
     CharacterCharmGroupChangeListener charmGroupChangeListener =
             new CharacterCharmGroupChangeListener(charmConfiguration, filterSet, view.getCharmTreeRenderer(), displayPropertiesMap);
     CharacterCharmDye dye = new CharacterCharmDye(model, charmGroupChangeListener, presentationProperties.getColor(), view);

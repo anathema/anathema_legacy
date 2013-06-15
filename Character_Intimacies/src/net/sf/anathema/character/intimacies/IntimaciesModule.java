@@ -1,7 +1,7 @@
 package net.sf.anathema.character.intimacies;
 
 import net.sf.anathema.character.generic.framework.ICharacterGenerics;
-import net.sf.anathema.character.generic.framework.additionaltemplate.IAdditionalViewFactory;
+import net.sf.anathema.character.generic.framework.additionaltemplate.IAdditionalInitializer;
 import net.sf.anathema.character.generic.framework.additionaltemplate.model.IAdditionalModelFactory;
 import net.sf.anathema.character.generic.framework.additionaltemplate.persistence.IAdditionalPersisterFactory;
 import net.sf.anathema.character.generic.framework.module.CharacterModule;
@@ -17,8 +17,8 @@ public class IntimaciesModule extends CharacterModuleAdapter {
     IRegistry<String, IAdditionalModelFactory> additionalModelFactoryRegistry = characterGenerics.getAdditionalModelFactoryRegistry();
     String templateId = IntimaciesTemplate.ID;
     additionalModelFactoryRegistry.register(templateId, new IntimaciesModelFactory());
-    IRegistry<String, IAdditionalViewFactory> additionalViewFactoryRegistry = characterGenerics.getAdditionalViewFactoryRegistry();
-    additionalViewFactoryRegistry.register(templateId, new IntimaciesViewFactory());
+    IRegistry<String, IAdditionalInitializer> additionalViewFactoryRegistry = characterGenerics.getAdditionalInitializerRegistry();
+    additionalViewFactoryRegistry.register(templateId, new IntimaciesInitializer());
     IRegistry<String, IAdditionalPersisterFactory> persisterFactory = characterGenerics.getAdditonalPersisterFactoryRegistry();
     persisterFactory.register(templateId, new IntimaciesPersisterFactory());
     characterGenerics.getGlobalAdditionalTemplateRegistry().add(new IntimaciesTemplate());

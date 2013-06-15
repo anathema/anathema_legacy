@@ -20,14 +20,14 @@ import javax.swing.JPanel;
 public class CharmView extends AbstractCascadeSelectionView implements ICharmView {
   private final JPanel content = new JPanel(new MigLayout(new LC().wrapAfter(1).fill()));
 
-  public CharmView(ToolTipProperties treeProperties, NodeProperties nodeProperties, IntegerViewFactory integerDisplayFactory) {
-    super(treeProperties, nodeProperties);
+  public CharmView(IntegerViewFactory integerDisplayFactory) {
     getCharmTreeView().registerSpecialType(IIntValueView.class, new SpecialIntDisplayFactory(integerDisplayFactory));
     getCharmTreeView().registerSpecialType(IBooleanValueView.class, new SpecialBooleanDisplayFactory());
   }
 
   @Override
-  public void initGui() {
+  public void initGui(ToolTipProperties treeProperties, NodeProperties properties) {
+    super.initGui(treeProperties, properties);
     content.add(getSelectionComponent(), new CC().growX());
     content.add(getCharmComponent(), new CC().grow().push());
   }

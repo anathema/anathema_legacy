@@ -21,35 +21,31 @@ import net.sf.anathema.character.presenter.magic.detail.RegisteredMagicDetailPre
 import net.sf.anathema.character.presenter.magic.spells.SpellContentPresenter;
 import net.sf.anathema.character.view.SectionView;
 import net.sf.anathema.character.view.magic.IComboConfigurationView;
-import net.sf.anathema.character.view.magic.IMagicViewFactory;
 import net.sf.anathema.character.view.magic.ISpellView;
 import net.sf.anathema.charmtree.presenter.view.CharmDisplayPropertiesMap;
+import net.sf.anathema.charmtree.presenter.view.ICharmView;
 import net.sf.anathema.framework.IApplicationModel;
-import net.sf.anathema.framework.presenter.view.ContentView;
 import net.sf.anathema.initialization.Instantiater;
 import net.sf.anathema.lib.logging.Logger;
 import net.sf.anathema.lib.resources.Resources;
 import net.sf.anathema.platform.tree.document.visualizer.ITreePresentationProperties;
 
-import java.util.ArrayList;
 import java.util.Collection;
-import java.util.List;
 
-public class MagicPresenter implements IContentPresenter {
+public class MagicPresenter {
 
   private final Logger logger = Logger.getLogger(MagicPresenter.class);
-  private final List<IContentPresenter> subPresenters = new ArrayList<>();
   private IApplicationModel anathemaModel;
   private Resources resources;
 
-  public MagicPresenter(ICharacter character, IMagicViewFactory factory, SectionView sectionView, Resources resources, IApplicationModel anathemaModel) {
+  public MagicPresenter(ICharacter character, SectionView sectionView, Resources resources, IApplicationModel anathemaModel) {
     this.resources = resources;
     ITemplateRegistry templateRegistry = CharacterGenericsExtractor.getGenerics(anathemaModel).getTemplateRegistry();
     this.anathemaModel = anathemaModel;
     ICharacterTemplate characterTemplate = character.getCharacterTemplate();
-    subPresenters.add(createCharmPresenter(character, factory, resources, templateRegistry));
+    initCharms(character, sectionView, resources, templateRegistry);
     initCombos(character, sectionView, resources, characterTemplate);
-    addSpellPresenter(character, sectionView, resources);
+    initSpells(character, sectionView, resources);
   }
 
   private void initCombos(ICharacter character, SectionView sectionView, Resources resources, ICharacterTemplate characterTemplate) {
@@ -62,7 +58,7 @@ public class MagicPresenter implements IContentPresenter {
     return characterTemplate.getTemplateType().getCharacterType();
   }
 
-  private void addSpellPresenter(ICharacter character, SectionView sectionView, Resources resources) {
+  private void initSpells(ICharacter character, SectionView sectionView, Resources resources) {
     ISpellMagicTemplate spellMagic = character.getCharacterTemplate().getMagicTemplate().getSpellMagic();
     if (spellMagic.canLearnSorcery()) {
       String header = resources.getString("CardView.CharmConfiguration.Spells.Title");
@@ -84,16 +80,18 @@ public class MagicPresenter implements IContentPresenter {
     return CharmDescriptionProviderExtractor.CreateFor(anathemaModel, resources);
   }
 
-  private MagicAndDetailPresenter createCharmPresenter(ICharacter character, IMagicViewFactory factory, Resources resources,
-                                                       ITemplateRegistry templateRegistry) {
+  private void initCharms(ICharacter character, SectionView section, Resources resources,
+                          ITemplateRegistry templateRegistry) {
     CharacterCharmModel model = new CharacterCharmModel(character, getMagicDescriptionProvider());
+    ICharacterTemplate characterTemplate = character.getCharacterTemplate();
     ITreePresentationProperties presentationProperties =
-            character.getCharacterTemplate().getPresentationProperties().getCharmPresentationProperties();
+            characterTemplate.getPresentationProperties().getCharmPresentationProperties();
     CharmDisplayPropertiesMap propertiesMap = new CharmDisplayPropertiesMap(templateRegistry);
-    CharacterCharmTreePresenter treePresenter = new CharacterCharmTreePresenter(resources, factory, model, presentationProperties, propertiesMap);
+    String header = resources.getString("CardView.CharmConfiguration.CharmSelection.Title");
+    ICharmView charmView = section.addView(header, ICharmView.class, characterType(characterTemplate));
+    CharacterCharmTreePresenter treePresenter = new CharacterCharmTreePresenter(resources, charmView, model, presentationProperties, propertiesMap);
     MagicDetailPresenter detailPresenter = createMagicDetailPresenter();
-    String tabTitle = resources.getString("CardView.CharmConfiguration.CharmSelection.Title");
-    return new MagicAndDetailPresenter(tabTitle, detailPresenter, treePresenter);
+    new MagicAndDetailPresenter(header, detailPresenter, treePresenter).initPresentation();
   }
 
   private MagicDetailPresenter createMagicDetailPresenter() {
@@ -111,17 +109,5 @@ public class MagicPresenter implements IContentPresenter {
 
   private ICharacterGenerics getGenerics() {
     return CharacterGenericsExtractor.getGenerics(anathemaModel);
-  }
-
-  @Override
-  public void initPresentation() {
-    for (IContentPresenter presenter : subPresenters) {
-      presenter.initPresentation();
-    }
-  }
-
-  @Override
-  public ContentView getTabContent() {
-    return new SubTabContentView(subPresenters);
   }
 }

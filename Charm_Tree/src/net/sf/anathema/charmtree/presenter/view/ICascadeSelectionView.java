@@ -4,6 +4,8 @@ import net.sf.anathema.lib.control.ObjectValueListener;
 import net.sf.anathema.lib.gui.action.SmartAction;
 import net.sf.anathema.lib.util.Identified;
 import net.sf.anathema.platform.tree.presenter.view.CascadeLoadedListener;
+import net.sf.anathema.platform.tree.presenter.view.NodeProperties;
+import net.sf.anathema.platform.tree.presenter.view.ToolTipProperties;
 
 import javax.swing.JComponent;
 import javax.swing.ListCellRenderer;
@@ -31,5 +33,5 @@ public interface ICascadeSelectionView {
 
   JComponent getCharmComponent();
 
-  void initGui();
+  void initGui(ToolTipProperties treeProperties, NodeProperties properties);
 }
