@@ -1,25 +1,24 @@
 package net.sf.anathema.character.attributes.sheet.content;
 
-import net.sf.anathema.character.attributes.model.AttributesIterator;
-import net.sf.anathema.character.attributes.model.AttributesList;
 import net.sf.anathema.character.generic.character.IGenericCharacter;
 import net.sf.anathema.character.generic.template.ITraitTemplateCollection;
 import net.sf.anathema.character.generic.template.abilities.GroupedTraitType;
-import net.sf.anathema.character.generic.traits.IGenericTrait;
 import net.sf.anathema.character.generic.traits.ITraitTemplate;
 import net.sf.anathema.character.generic.traits.ITraitType;
 import net.sf.anathema.character.generic.traits.types.AttributeType;
+import net.sf.anathema.character.main.attributes.model.AttributesIterator;
+import net.sf.anathema.character.main.attributes.model.AttributesList;
 import net.sf.anathema.lib.util.Identified;
 import net.sf.anathema.lib.util.Identifier;
 
 import java.util.ArrayList;
 import java.util.List;
 
-public class TemporaryAttributesModel implements AttributesList {
+public class AttributesPrintModel implements AttributesList {
 
   private IGenericCharacter character;
 
-  public TemporaryAttributesModel(IGenericCharacter character) {
+  public AttributesPrintModel(IGenericCharacter character) {
     this.character = character;
   }
 
@@ -49,9 +48,7 @@ public class TemporaryAttributesModel implements AttributesList {
   }
 
   private void iterateTrait(AttributesIterator iterator, ITraitType traitType) {
-    IGenericTrait trait = character.getTraitCollection().getTrait(traitType);
-    int currentValue = trait.getCurrentValue();
-    iterator.nextTrait(traitType, currentValue);
+     iterator.nextTrait(traitType);
   }
 
   private ITraitTemplateCollection getTraitTemplateCollection() {

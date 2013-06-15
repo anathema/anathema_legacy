@@ -1,4 +1,4 @@
-package net.sf.anathema.character.trait;
+package net.sf.anathema.character.main.traits.model;
 
 public interface CurrentValue {
 

@@ -1,6 +1,5 @@
 package net.sf.anathema.character.attributes.sheet.content;
 
-import net.sf.anathema.character.attributes.model.AttributesModel;
 import net.sf.anathema.character.generic.character.IGenericCharacter;
 import net.sf.anathema.character.reporting.pdf.content.AbstractSubBoxContent;
 import net.sf.anathema.lib.resources.Resources;
@@ -9,11 +8,11 @@ import java.util.List;
 
 public class AttributesContent extends AbstractSubBoxContent {
 
-  private TemporaryAttributesModel attributeModel;
+  private AttributesPrintModel attributeModel;
 
   public AttributesContent(IGenericCharacter character, Resources resources) {
     super(resources);
-    this.attributeModel = new TemporaryAttributesModel(character);
+    this.attributeModel = new AttributesPrintModel(character);
   }
 
   public int getTraitMaximum() {
