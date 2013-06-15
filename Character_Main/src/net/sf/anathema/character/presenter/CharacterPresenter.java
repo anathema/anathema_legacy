@@ -22,15 +22,12 @@ public class CharacterPresenter implements Presenter {
   private final ICharacter character;
   private final CharacterView characterView;
   private final Resources resources;
-  private final PointPresentationStrategy pointPresentation;
 
-  public CharacterPresenter(ICharacter character, CharacterView view, Resources resources, IApplicationModel applicationModel,
-                            PointPresentationStrategy pointPresentation) {
+  public CharacterPresenter(ICharacter character, CharacterView view, Resources resources, IApplicationModel applicationModel) {
     this.initializers = new Initializers(applicationModel);
     this.character = character;
     this.characterView = view;
     this.resources = resources;
-    this.pointPresentation = pointPresentation;
   }
 
   @Override
@@ -39,9 +36,7 @@ public class CharacterPresenter implements Presenter {
     initializeSection("CardView.NaturalTraits.Title", NaturalTraits);
     initializeSection("CardView.SpiritualTraits.Title", SpiritualTraits);
     initializeSection("CardView.CharmConfiguration.Title", Magic);
-    SectionView sectionView = addSection("CardView.MiscellaneousConfiguration.Title");
-    initializeGroup(Miscellaneous, sectionView);
-    pointPresentation.initPresentation(sectionView);
+    initializeSection("CardView.MiscellaneousConfiguration.Title", Miscellaneous);
   }
 
   private void initializeSection(String titleKey, CharacterModelGroup group) {
@@ -49,18 +44,14 @@ public class CharacterPresenter implements Presenter {
     initializeGroup(group, sectionView);
   }
 
+  private SectionView addSection(String titleKey) {
+    String sectionTitle = resources.getString(titleKey);
+    return characterView.addSection(sectionTitle);
+  }
+
   private void initializeGroup(CharacterModelGroup group, SectionView sectionView) {
     for (CharacterModelInitializer initializer : initializers.getInOrderFor(group)) {
       initializer.initialize(sectionView, character, resources);
     }
-  }
-
-  private SectionView addSection(String titleKey) {
-    String sectionTitle = getString(titleKey);
-    return characterView.addSection(sectionTitle);
-  }
-
-  private String getString(String resourceKey) {
-    return resources.getString(resourceKey);
   }
 }
