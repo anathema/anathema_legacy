@@ -29,18 +29,6 @@ import java.util.List;
 
 public class SpellPresenter implements DetailDemandingMagicPresenter {
 
-  public static SpellPresenter ForSorcery(ICharacter character, Resources resources, ISpellView view,
-                                          MagicDescriptionProvider magicDescriptionProvider) {
-    SpellModel spellModel = new SorceryModel(character);
-    return new SpellPresenter(spellModel, character, resources, view, magicDescriptionProvider);
-  }
-
-  public static SpellPresenter ForNecromancy(ICharacter character, Resources resources, ISpellView view,
-                                             MagicDescriptionProvider magicDescriptionProvider) {
-    SpellModel spellModel = new NecromancyModel(character);
-    return new SpellPresenter(spellModel, character, resources, view, magicDescriptionProvider);
-  }
-
   private final ISpellConfiguration spellConfiguration;
   private SpellModel spellModel;
   private final ICharacter character;

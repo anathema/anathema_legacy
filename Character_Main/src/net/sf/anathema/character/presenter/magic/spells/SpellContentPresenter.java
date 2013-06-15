@@ -8,16 +8,6 @@ import net.sf.anathema.lib.resources.Resources;
 
 public class SpellContentPresenter implements Presenter {
 
-  public static Presenter ForSorcery(ICharacter character, Resources resources,
-                                     ISpellView view, MagicDescriptionProvider magicDescriptionProvider) {
-    return SpellPresenter.ForSorcery(character, resources, view, magicDescriptionProvider);
-  }
-
-  public static Presenter ForNecromancy(ICharacter character, Resources resources,
-                                        ISpellView view, MagicDescriptionProvider magicDescriptionProvider) {
-    return SpellPresenter.ForNecromancy(character, resources, view, magicDescriptionProvider);
-  }
-
   private SpellPresenter spellPresenter;
 
   public SpellContentPresenter(SpellPresenter spellPresenter) {
