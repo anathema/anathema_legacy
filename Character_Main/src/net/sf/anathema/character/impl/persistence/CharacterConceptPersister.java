@@ -2,7 +2,7 @@ package net.sf.anathema.character.impl.persistence;
 
 import net.sf.anathema.character.generic.caste.ICasteCollection;
 import net.sf.anathema.character.generic.caste.ICasteType;
-import net.sf.anathema.character.main.concept.model.ICharacterConcept;
+import net.sf.anathema.character.main.concept.model.CharacterConcept;
 import net.sf.anathema.character.main.description.model.CharacterDescription;
 import net.sf.anathema.character.model.IIntegerDescription;
 import net.sf.anathema.character.model.ITypedDescription;
@@ -21,7 +21,7 @@ public class CharacterConceptPersister {
 
   private final TextPersister textPersister = new TextPersister();
 
-  public void save(Element parent, ICharacterConcept characterConcept) {
+  public void save(Element parent, CharacterConcept characterConcept) {
     Element characterConceptElement = parent.addElement(TAG_CHARACTER_CONCEPT);
     saveCaste(characterConceptElement, characterConcept.getCaste());
     saveAge(characterConceptElement, characterConcept.getAge());
@@ -39,7 +39,7 @@ public class CharacterConceptPersister {
     parent.addAttribute(ATTRIB_AGE, Integer.toString(age.getValue()));
   }
 
-  public void load(Element parent, ICharacterConcept characterConcept, CharacterDescription description, ICasteCollection casteCollection) throws
+  public void load(Element parent, CharacterConcept characterConcept, CharacterDescription description, ICasteCollection casteCollection) throws
           PersistenceException {
     Element conceptElement = parent.element(TAG_CHARACTER_CONCEPT);
     loadCaste(conceptElement, characterConcept, casteCollection);
@@ -47,7 +47,7 @@ public class CharacterConceptPersister {
     textPersister.restoreTextualDescription(conceptElement, TAG_CONCEPT, description.getConcept());
   }
 
-  private void loadCaste(Element parent, ICharacterConcept characterConcept, ICasteCollection casteCollection) throws PersistenceException {
+  private void loadCaste(Element parent, CharacterConcept characterConcept, ICasteCollection casteCollection) throws PersistenceException {
     Element casteElement = parent.element(TAG_CASTE);
     if (casteElement == null) {
       return;
@@ -56,7 +56,7 @@ public class CharacterConceptPersister {
     characterConcept.getCaste().setType(casteCollection.getById(casteTypeId));
   }
 
-  private void loadAge(Element parent, ICharacterConcept characterConcept) throws PersistenceException {
+  private void loadAge(Element parent, CharacterConcept characterConcept) throws PersistenceException {
     int age = ElementUtilities.getIntAttrib(parent, ATTRIB_AGE, 0);
     characterConcept.getAge().setValue(age);
   }

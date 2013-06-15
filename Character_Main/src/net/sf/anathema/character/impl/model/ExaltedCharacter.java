@@ -22,7 +22,7 @@ import net.sf.anathema.character.impl.model.traits.TraitRegistrar;
 import net.sf.anathema.character.impl.model.traits.essence.EssencePoolConfiguration;
 import net.sf.anathema.character.impl.model.traits.listening.CharacterTraitListening;
 import net.sf.anathema.character.main.concept.model.CharacterConcept;
-import net.sf.anathema.character.main.concept.model.ICharacterConcept;
+import net.sf.anathema.character.main.concept.model.CharacterConceptImpl;
 import net.sf.anathema.character.main.description.model.CharacterDescription;
 import net.sf.anathema.character.main.description.model.CharacterDescriptionExtractor;
 import net.sf.anathema.character.model.CharacterModel;
@@ -53,7 +53,7 @@ public class ExaltedCharacter implements ICharacter {
   private final CharacterChangeManagement management = new CharacterChangeManagement();
   private final CharacterModelContext context = new CharacterModelContext(new GenericCharacter(this));
   private final ICharacterTemplate characterTemplate;
-  private final ICharacterConcept concept;
+  private final CharacterConcept concept;
   private final IEssencePoolConfiguration essencePool;
   private final CharmConfiguration charms;
   private final IComboConfiguration combos;
@@ -204,8 +204,8 @@ public class ExaltedCharacter implements ICharacter {
     });
   }
 
-  private CharacterConcept initConcept() {
-    CharacterConcept characterConcept = new CharacterConcept();
+  private CharacterConceptImpl initConcept() {
+    CharacterConceptImpl characterConcept = new CharacterConceptImpl();
     characterConcept.getCaste().addChangeListener(casteChangeListener);
     characterConcept.getAge().addChangeListener(ageChangeListener);
     return characterConcept;
@@ -215,7 +215,7 @@ public class ExaltedCharacter implements ICharacter {
     charmConfiguration.addCharmLearnListener(new CharacterChangeCharmListener(context.getCharacterListening()));
   }
 
-  public ICharacterConcept getCharacterConcept() {
+  public CharacterConcept getCharacterConcept() {
     return concept;
   }
 

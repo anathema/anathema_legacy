@@ -1,9 +1,9 @@
 package net.sf.anathema.character.presenter;
 
 import net.sf.anathema.character.generic.framework.resources.CharacterUI;
+import net.sf.anathema.character.main.concept.model.CharacterConcept;
 import net.sf.anathema.character.main.description.model.CharacterDescription;
 import net.sf.anathema.character.model.IIntegerDescription;
-import net.sf.anathema.character.main.concept.model.ICharacterConcept;
 import net.sf.anathema.character.view.ICharacterDescriptionView;
 import net.sf.anathema.character.view.IMultiComponentLine;
 import net.sf.anathema.interaction.Tool;
@@ -19,7 +19,7 @@ import net.sf.anathema.namegenerator.exalted.domain.ThresholdNameGenerator;
 public class CharacterDescriptionPresenter {
 
   private final CharacterDescription description;
-  private final ICharacterConcept characterConcept;
+  private final CharacterConcept characterConcept;
   private final ICharacterDescriptionView descriptionView;
   private final boolean hasAnima;
   private final Resources resources;

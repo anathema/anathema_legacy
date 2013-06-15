@@ -2,13 +2,13 @@ package net.sf.anathema.character.impl.generic;
 
 import net.sf.anathema.character.generic.caste.ICasteType;
 import net.sf.anathema.character.generic.character.IConcept;
-import net.sf.anathema.character.main.concept.model.ICharacterConcept;
+import net.sf.anathema.character.main.concept.model.CharacterConcept;
 
 public class GenericConcept implements IConcept {
 
-  private final ICharacterConcept characterConcept;
+  private final CharacterConcept characterConcept;
 
-  public GenericConcept(ICharacterConcept characterConcept) {
+  public GenericConcept(CharacterConcept characterConcept) {
     this.characterConcept = characterConcept;
   }
 
