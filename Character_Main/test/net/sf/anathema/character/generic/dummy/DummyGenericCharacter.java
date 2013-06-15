@@ -16,9 +16,9 @@ import net.sf.anathema.character.generic.magic.charms.special.IMultiLearnableCha
 import net.sf.anathema.character.generic.template.ICharacterTemplate;
 import net.sf.anathema.character.generic.template.ITraitLimitation;
 import net.sf.anathema.character.generic.traits.IGenericTrait;
-import net.sf.anathema.character.generic.traits.INamedGenericTrait;
 import net.sf.anathema.character.generic.traits.ITraitType;
 import net.sf.anathema.character.generic.traits.groups.IIdentifiedTraitTypeGroup;
+import net.sf.anathema.character.library.trait.specialties.ISpecialty;
 import net.sf.anathema.lib.control.IChangeListener;
 import net.sf.anathema.lib.exception.NotYetImplementedException;
 import net.sf.anathema.lib.util.IdentifiedInteger;
@@ -93,13 +93,13 @@ public class DummyGenericCharacter implements IGenericCharacter {
   }
 
   @Override
-  public INamedGenericTrait[] getSpecialties(ITraitType type) {
-    return new INamedGenericTrait[0];
+  public ISpecialty[] getSpecialties(ITraitType type) {
+    return new ISpecialty[0];
   }
 
   @Override
-  public INamedGenericTrait[] getSubTraits(ITraitType traitType) {
-    return new INamedGenericTrait[0];
+  public ISpecialty[] getSubTraits(ITraitType traitType) {
+    return new ISpecialty[0];
   }
 
   @Override

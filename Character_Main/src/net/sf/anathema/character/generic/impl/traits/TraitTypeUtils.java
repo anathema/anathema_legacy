@@ -5,7 +5,6 @@ import net.sf.anathema.character.generic.traits.types.AbilityType;
 import net.sf.anathema.character.generic.traits.types.AttributeType;
 import net.sf.anathema.character.generic.traits.types.OtherTraitType;
 import net.sf.anathema.character.generic.traits.types.VirtueType;
-import net.sf.anathema.character.generic.traits.types.YoziType;
 
 import java.util.ArrayList;
 
@@ -19,7 +18,6 @@ public class TraitTypeUtils {
     addAll(allPrerequisiteTypeList, AbilityType.values());
     addAll(allPrerequisiteTypeList, AttributeType.values());
     addAll(allPrerequisiteTypeList, VirtueType.values());
-    addAll(allPrerequisiteTypeList, YoziType.values());
     addAll(allPrerequisiteTypeList, OtherTraitType.values());
   }
 

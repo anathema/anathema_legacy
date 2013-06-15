@@ -1,25 +1,48 @@
 package net.sf.anathema.character.dummy.trait;
 
 import net.sf.anathema.character.generic.traits.ITraitType;
-import net.sf.anathema.character.library.trait.subtrait.ISubTraitContainer;
 import net.sf.anathema.character.library.trait.visitor.IDefaultTrait;
 import net.sf.anathema.character.library.trait.visitor.ITraitVisitor;
 import net.sf.anathema.lib.control.IChangeListener;
 import net.sf.anathema.lib.control.IIntValueChangedListener;
 
-public class DummyDefaultTrait extends DummyModifiableGenericTrait implements IDefaultTrait {
+public class DummyDefaultTrait implements IDefaultTrait {
 
-  public DummyDefaultTrait(ITraitType traitType) {
-    super(traitType);
+  private int currentValue;
+  private final ITraitType type;
+
+  public DummyDefaultTrait(ITraitType type) {
+    this(type, 0);
+  }
+
+  public DummyDefaultTrait(ITraitType type, int value) {
+    this.type = type;
+    this.currentValue = value;
+  }
+
+  @Override
+  public void setCurrentValue(int value) {
+    this.currentValue = value;
+  }
+
+  @Override
+  public ITraitType getType() {
+    return type;
+  }
+
+  @Override
+  public int getCurrentValue() {
+    return currentValue;
+  }
+
+  @Override
+  public boolean isCasteOrFavored() {
+    return false;
   }
 
   @Override
   public void addRangeListener(IChangeListener listener) {
     //not yet implemented
-  }
-
-  public ISubTraitContainer createSpecialtiesContainer() {
-    return null;
   }
 
   @Override

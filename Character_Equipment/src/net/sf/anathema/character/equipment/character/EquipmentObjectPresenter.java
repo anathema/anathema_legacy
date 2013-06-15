@@ -8,7 +8,7 @@ import net.sf.anathema.character.generic.equipment.ArtifactAttuneType;
 import net.sf.anathema.character.generic.equipment.ArtifactStats;
 import net.sf.anathema.character.generic.equipment.weapon.IEquipmentStats;
 import net.sf.anathema.character.generic.equipment.weapon.IWeaponStats;
-import net.sf.anathema.character.generic.traits.INamedGenericTrait;
+import net.sf.anathema.character.library.trait.specialties.ISpecialty;
 import net.sf.anathema.interaction.Tool;
 import net.sf.anathema.lib.control.IChangeListener;
 import net.sf.anathema.lib.gui.Presenter;
@@ -123,8 +123,8 @@ public class EquipmentObjectPresenter implements Presenter {
   private void addOptionalModels(BooleanModel baseModel, IEquipmentStats stats) {
     if (stats instanceof IWeaponStats) {
       IWeaponStats weaponStats = (IWeaponStats) stats;
-      INamedGenericTrait[] specialties = dataProvider.getSpecialties(((IWeaponStats) stats).getTraitType());
-      for (INamedGenericTrait specialty : specialties) {
+      ISpecialty[] specialties = dataProvider.getSpecialties(((IWeaponStats) stats).getTraitType());
+      for (ISpecialty specialty : specialties) {
         String label = MessageFormat.format(resources.getString("Equipment.Specialty"), specialty.getName());
         final BooleanModel booleanModel = view.addOptionFlag(baseModel, label);
         final IEquipmentStatsOption specialtyOption = new EquipmentSpecialtyOption(specialty,

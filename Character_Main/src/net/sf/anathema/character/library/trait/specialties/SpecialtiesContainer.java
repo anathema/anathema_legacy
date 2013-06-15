@@ -29,7 +29,7 @@ public class SpecialtiesContainer extends AbstractSubTraitContainer {
   }
 
   @Override
-  public ISubTrait createSubTrait(String name) {
+  public ISpecialty createSubTrait(String name) {
     return new Specialty(this, reference, name, traitContext);
   }
 }

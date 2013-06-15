@@ -63,12 +63,12 @@ public class AggregatedSpecialtiesContainer implements ISubTraitContainer {
   }
 
   @Override
-  public ISubTrait[] getSubTraits() {
-    List<ISubTrait> traits = new ArrayList<>();
+  public ISpecialty[] getSubTraits() {
+    List<ISpecialty> traits = new ArrayList<>();
     for (ISubTraitContainer container : containers) {
       Collections.addAll(traits, container.getSubTraits());
     }
-    return traits.toArray(new ISubTrait[traits.size()]);
+    return traits.toArray(new ISpecialty[traits.size()]);
   }
 
   @Override
@@ -88,7 +88,7 @@ public class AggregatedSpecialtiesContainer implements ISubTraitContainer {
   }
 
   @Override
-  public ISubTrait addSubTrait(String subName) {
+  public ISpecialty addSubTrait(String subName) {
     throw new UnsupportedOperationException("Add to subcontainers instead.");
   }
 

@@ -1,6 +1,7 @@
 package net.sf.anathema.character.library.trait.subtrait;
 
 import com.google.common.base.Preconditions;
+import net.sf.anathema.character.library.trait.specialties.ISpecialty;
 import net.sf.anathema.lib.control.IIntValueChangedListener;
 import org.jmock.example.announcer.Announcer;
 
@@ -54,8 +55,8 @@ public abstract class AbstractSubTraitContainer implements ISubTraitContainer {
   }
 
   @Override
-  public ISubTrait getSubTrait(String name) {
-    for (ISubTrait subtrait : getSubTraits()) {
+  public ISpecialty getSubTrait(String name) {
+    for (ISpecialty subtrait : getSubTraits()) {
       if (subtrait.getName().equals(name)) {
         return subtrait;
       }
@@ -98,19 +99,19 @@ public abstract class AbstractSubTraitContainer implements ISubTraitContainer {
   }
 
   @Override
-  public final ISubTrait[] getSubTraits() {
-    return subtraits.toArray(new ISubTrait[subtraits.size()]);
+  public final ISpecialty[] getSubTraits() {
+    return subtraits.toArray(new ISpecialty[subtraits.size()]);
   }
 
-  protected abstract ISubTrait createSubTrait(String name);
+  protected abstract ISpecialty createSubTrait(String name);
 
   protected abstract void handleAdditionOfContainedEquivalent(ISubTrait subTrait);
 
   @Override
-  public final ISubTrait addSubTrait(String traitName) {
+  public final ISpecialty addSubTrait(String traitName) {
     Preconditions.checkNotNull(traitName);
     if (isNewSubTraitAllowed()) {
-      ISubTrait subTrait = getSubTrait(traitName);
+      ISpecialty subTrait = getSubTrait(traitName);
       if (subTrait == null) {
         subTrait = createSubTrait(traitName);
         subtraits.add(subTrait);

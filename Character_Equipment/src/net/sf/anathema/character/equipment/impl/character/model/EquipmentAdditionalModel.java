@@ -24,9 +24,9 @@ import net.sf.anathema.character.generic.equipment.ICharacterStatsModifiers;
 import net.sf.anathema.character.generic.equipment.weapon.IArmourStats;
 import net.sf.anathema.character.generic.equipment.weapon.IEquipmentStats;
 import net.sf.anathema.character.generic.framework.additionaltemplate.model.IGenericSpecialtyContext;
-import net.sf.anathema.character.generic.traits.INamedGenericTrait;
 import net.sf.anathema.character.generic.traits.types.AbilityType;
 import net.sf.anathema.character.generic.type.ICharacterType;
+import net.sf.anathema.character.library.trait.specialties.ISpecialty;
 import net.sf.anathema.character.model.CharacterModelGroup;
 import net.sf.anathema.character.reporting.pdf.rendering.boxes.StatsModifierFactory;
 import net.sf.anathema.lib.control.IChangeListener;
@@ -369,7 +369,7 @@ public class EquipmentAdditionalModel extends AbstractAdditionalModelAdapter imp
 
     private boolean characterStillHasCorrespondingSpecialty(IEquipmentStatsOption option) {
       AbilityType trait = AbilityType.valueOf(option.getType());
-      INamedGenericTrait[] specialties = dataProvider.getSpecialties(trait);
+      ISpecialty[] specialties = dataProvider.getSpecialties(trait);
       return ArrayUtils.contains(specialties, option.getUnderlyingTrait());
     }
   }

@@ -9,7 +9,7 @@ import net.sf.anathema.character.reporting.pdf.rendering.graphics.SheetGraphics;
 import net.sf.anathema.character.reporting.pdf.rendering.page.PageConfiguration;
 import net.sf.anathema.character.reporting.pdf.rendering.page.PageEncoder;
 
-import static net.sf.anathema.character.reporting.pdf.rendering.EncoderIds.ABILITIES_WITH_CRAFTS_AND_SPECIALTIES;
+import static net.sf.anathema.character.reporting.pdf.rendering.EncoderIds.ABILITIES_WITH_SPECIALTIES;
 import static net.sf.anathema.character.reporting.pdf.rendering.EncoderIds.ANIMA;
 import static net.sf.anathema.character.reporting.pdf.rendering.EncoderIds.ARSENAL;
 import static net.sf.anathema.character.reporting.pdf.rendering.EncoderIds.ATTRIBUTES;
@@ -48,7 +48,7 @@ public class FirstPageEncoder implements PageEncoder {
     LayoutField personalInfo = page.place(PERSONAL_INFO).atStartOf(page).withHeight(FIRST_ROW_HEIGHT).andColumnSpan(2).now();
     LayoutField essence = page.place(ESSENCE_SIMPLE).rightOf(personalInfo).withSameHeight().now();
     LayoutField attributes = page.place(ATTRIBUTES).below(personalInfo).withHeight(ATTRIBUTE_HEIGHT).now();
-    page.place(ABILITIES_WITH_CRAFTS_AND_SPECIALTIES).below(attributes).fillToBottomOfPage().now();
+    page.place(ABILITIES_WITH_SPECIALTIES).below(attributes).fillToBottomOfPage().now();
     LayoutField anima = page.place(ANIMA, NOTES).below(essence).withHeight(ANIMA_HEIGHT).now();
     LayoutField social = page.place(SOCIAL_COMBAT).below(anima).withHeight(SOCIAL_COMBAT_HEIGHT).now();
     LayoutField virtues = page.place(VIRTUES).rightOf(attributes).withHeight(VIRTUE_HEIGHT).now();

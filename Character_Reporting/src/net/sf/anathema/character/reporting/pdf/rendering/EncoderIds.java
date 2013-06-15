@@ -3,8 +3,7 @@ package net.sf.anathema.character.reporting.pdf.rendering;
 @SuppressWarnings({"HardCodedStringLiteral", "DuplicateStringLiteralInspection"})
 public interface EncoderIds {
 
-  String ABILITIES_WITH_CRAFTS = "AbilitiesWithCrafts";
-  String ABILITIES_WITH_CRAFTS_AND_SPECIALTIES = "AbilitiesWithCraftsAndSpecialties";
+  String ABILITIES_WITH_SPECIALTIES = "AbilitiesWithCraftsAndSpecialties";
   String ABILITIES_WITH_SPECIALS_TWO_COLUMN = "AbilitiesWithSpecialtiesTwoColumn";
   String ANIMA = "Anima";
   String ARSENAL = "Arsenal";

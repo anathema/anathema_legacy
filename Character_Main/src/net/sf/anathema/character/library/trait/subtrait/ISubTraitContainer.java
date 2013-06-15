@@ -1,10 +1,12 @@
 package net.sf.anathema.character.library.trait.subtrait;
 
+import net.sf.anathema.character.library.trait.specialties.ISpecialty;
+
 public interface ISubTraitContainer {
 
-  ISubTrait[] getSubTraits();
+  ISpecialty[] getSubTraits();
 
-  ISubTrait addSubTrait(String subName);
+  ISpecialty addSubTrait(String subName);
 
   boolean isNewSubTraitAllowed();
 

@@ -1,6 +1,7 @@
 package net.sf.anathema.character.impl.generic;
 
 import com.google.common.collect.Lists;
+import com.sun.corba.se.impl.naming.namingutil.INSURL;
 import net.sf.anathema.character.generic.additionaltemplate.IAdditionalModel;
 import net.sf.anathema.character.generic.caste.ICasteType;
 import net.sf.anathema.character.generic.character.IConcept;
@@ -19,12 +20,12 @@ import net.sf.anathema.character.generic.magic.charms.special.ISpecialCharmConfi
 import net.sf.anathema.character.generic.magic.charms.special.ISubeffect;
 import net.sf.anathema.character.generic.template.ICharacterTemplate;
 import net.sf.anathema.character.generic.template.ITraitLimitation;
-import net.sf.anathema.character.generic.traits.INamedGenericTrait;
 import net.sf.anathema.character.generic.traits.ITraitType;
 import net.sf.anathema.character.generic.traits.groups.IIdentifiedTraitTypeGroup;
 import net.sf.anathema.character.generic.traits.types.OtherTraitType;
 import net.sf.anathema.character.impl.model.advance.ExperiencePointManagement;
 import net.sf.anathema.character.library.trait.specialties.ISpecialtiesConfiguration;
+import net.sf.anathema.character.library.trait.specialties.ISpecialty;
 import net.sf.anathema.character.library.trait.subtrait.ISubTrait;
 import net.sf.anathema.character.library.trait.subtrait.ISubTraitListener;
 import net.sf.anathema.character.library.trait.visitor.IAggregatedTrait;
@@ -124,15 +125,15 @@ public class GenericCharacter implements IGenericCharacter {
   }
 
   @Override
-  public INamedGenericTrait[] getSpecialties(ITraitType traitType) {
+  public ISpecialty[] getSpecialties(ITraitType traitType) {
     ISpecialtiesConfiguration specialtyConfiguration = getTraitConfiguration().getSpecialtyConfiguration();
     return specialtyConfiguration.getSpecialtiesContainer(traitType).getSubTraits();
   }
 
   @Override
-  public INamedGenericTrait[] getSubTraits(ITraitType traitType) {
+  public ISubTrait[] getSubTraits(ITraitType traitType) {
     class CollectSubTraitVisitor implements ITraitVisitor {
-      INamedGenericTrait[] subtraits;
+      ISubTrait[] subtraits;
 
       @Override
       public void visitAggregatedTrait(IAggregatedTrait visitedTrait) {
@@ -141,7 +142,7 @@ public class GenericCharacter implements IGenericCharacter {
 
       @Override
       public void visitDefaultTrait(IDefaultTrait visitedTrait) {
-        subtraits = new INamedGenericTrait[0];
+        subtraits = new ISubTrait[0];
       }
     }
     CollectSubTraitVisitor collectVisitor = new CollectSubTraitVisitor();

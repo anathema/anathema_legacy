@@ -14,8 +14,6 @@ import net.sf.anathema.lib.resources.Resources;
 
 import java.util.List;
 
-import static net.sf.anathema.framework.module.preferences.EnableBetaContentPreferencesElement.enableBetaContent;
-
 @ReportFactoryAutoCollector
 @Weight(weight = 10)
 public class SheetReportFactory implements IReportFactory {
@@ -27,9 +25,6 @@ public class SheetReportFactory implements IReportFactory {
     List<AbstractPdfReport> reports = Lists.newArrayList(new PortraitSimpleExaltSheetReport(resources, characterGenerics, pageSizePreference),
             new PortraitSimpleMortalSheetReport(resources, characterGenerics, pageSizePreference),
             new LandscapeExaltSheetReport(resources, characterGenerics, pageSizePreference));
-    if (enableBetaContent()) {
-      reports.add(new ExtendedSheetReport(resources, characterGenerics, pageSizePreference));
-    }
     return reports.toArray(new Report[reports.size()]);
   }
 }

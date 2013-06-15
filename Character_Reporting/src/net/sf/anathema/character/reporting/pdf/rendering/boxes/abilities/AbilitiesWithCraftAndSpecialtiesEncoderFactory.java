@@ -14,14 +14,13 @@ import net.sf.anathema.lib.resources.Resources;
 public class AbilitiesWithCraftAndSpecialtiesEncoderFactory extends GlobalEncoderFactory {
 
   public AbilitiesWithCraftAndSpecialtiesEncoderFactory() {
-    super(EncoderIds.ABILITIES_WITH_CRAFTS_AND_SPECIALTIES);
+    super(EncoderIds.ABILITIES_WITH_SPECIALTIES);
   }
 
   @Override
   public ContentEncoder create(Resources resources, BasicContent content) {
     FavorableTraitContentEncoder<AbilitiesContent> encoder = new FavorableTraitContentEncoder<>(AbilitiesContent.class);
     PdfTraitEncoder traitEncoder = encoder.getTraitEncoder();
-    encoder.addNamedTraitEncoder(new CraftEncoder(resources, traitEncoder, 9));
     encoder.addNamedTraitEncoder(new SpecialtiesEncoder(resources, traitEncoder, 9));
     return encoder;
   }
