@@ -12,7 +12,7 @@ import static net.sf.anathema.character.model.CharacterModelGroup.Magic;
 
 @RegisteredInitializer(Magic)
 @Weight(weight = 200)
-public class SorceryInitializer implements CoreModelInitializer {
+public class SorceryInitializer implements CharacterModelInitializer {
   private IApplicationModel model;
 
   public SorceryInitializer(IApplicationModel model) {

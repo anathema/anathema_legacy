@@ -10,7 +10,7 @@ import net.sf.anathema.character.view.magic.ISpellView;
 import net.sf.anathema.framework.IApplicationModel;
 import net.sf.anathema.lib.resources.Resources;
 
-public class SpellInitializer implements CoreModelInitializer {
+public class SpellInitializer implements CharacterModelInitializer {
   private IApplicationModel applicationModel;
   private final String titleKey;
   private final SpellModel spellModel;

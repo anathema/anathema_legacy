@@ -12,7 +12,7 @@ import static net.sf.anathema.character.model.CharacterModelGroup.NaturalTraits;
 
 @RegisteredInitializer(NaturalTraits)
 @Weight(weight = 0)
-public class AttributesInitializer implements CoreModelInitializer {
+public class AttributesInitializer implements CharacterModelInitializer {
 
   @SuppressWarnings("UnusedParameters")
   public AttributesInitializer(IApplicationModel applicationModel) {

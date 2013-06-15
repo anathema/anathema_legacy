@@ -1,26 +1,38 @@
 package net.sf.anathema.character.intimacies;
 
-import net.sf.anathema.character.generic.additionaltemplate.IAdditionalModel;
-import net.sf.anathema.character.generic.framework.additionaltemplate.IAdditionalInitializer;
 import net.sf.anathema.character.generic.framework.resources.CharacterUI;
-import net.sf.anathema.character.generic.type.ICharacterType;
 import net.sf.anathema.character.intimacies.presenter.IIntimaciesView;
 import net.sf.anathema.character.intimacies.presenter.IntimaciesPresenter;
+import net.sf.anathema.character.intimacies.template.IntimaciesTemplate;
 import net.sf.anathema.character.library.intvalue.IIconToggleButtonProperties;
+import net.sf.anathema.character.model.CharacterModelGroup;
+import net.sf.anathema.character.model.ICharacter;
+import net.sf.anathema.character.presenter.initializers.CharacterModelInitializer;
+import net.sf.anathema.character.presenter.initializers.RegisteredInitializer;
 import net.sf.anathema.character.view.SectionView;
+import net.sf.anathema.framework.model.ApplicationModel;
+import net.sf.anathema.initialization.reflections.Weight;
 import net.sf.anathema.lib.resources.Resources;
 
 import javax.swing.Icon;
 
-public class IntimaciesInitializer implements IAdditionalInitializer {
+@RegisteredInitializer(CharacterModelGroup.SpiritualTraits)
+@Weight(weight = 300)
+public class IntimaciesInitializer implements CharacterModelInitializer {
+
+  @SuppressWarnings("UnusedParameters")
+  public IntimaciesInitializer(ApplicationModel model) {
+    //nothing to do
+  }
 
   @Override
-  public void initialize(IAdditionalModel model, final Resources resources, ICharacterType type, SectionView sectionView) {
-    String viewName = resources.getString("AdditionalTemplateView.TabName." + model.getTemplateId());
-    IIntimaciesView view = sectionView.addView(viewName, IIntimaciesView.class, type);
+  public void initialize(SectionView sectionView, ICharacter character, final Resources resources) {
+    String viewName = resources.getString("AdditionalTemplateView.TabName.Intimacies");
+    IIntimaciesView view = sectionView.addView(viewName, IIntimaciesView.class, character.getCharacterType());
     IIconToggleButtonProperties properties = new IntimaciesProperties(resources);
     view.initGui(properties);
-    new IntimaciesPresenter(((IIntimaciesAdditionalModel) model).getIntimaciesModel(), model, view, resources).initPresentation();
+    IIntimaciesAdditionalModel additionalModel = (IIntimaciesAdditionalModel) character.getExtendedConfiguration().getAdditionalModel(IntimaciesTemplate.ID);
+    new IntimaciesPresenter(additionalModel.getIntimaciesModel(), additionalModel, view, resources).initPresentation();
   }
 
   private static class IntimaciesProperties implements IIconToggleButtonProperties {

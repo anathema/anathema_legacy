@@ -3,7 +3,6 @@ package net.sf.anathema.character.generic.framework;
 import net.sf.anathema.character.generic.caste.ICasteCollection;
 import net.sf.anathema.character.generic.data.IExtensibleDataSet;
 import net.sf.anathema.character.generic.data.IExtensibleDataSetProvider;
-import net.sf.anathema.character.generic.framework.additionaltemplate.IAdditionalInitializer;
 import net.sf.anathema.character.generic.framework.additionaltemplate.model.IAdditionalModelFactory;
 import net.sf.anathema.character.generic.framework.additionaltemplate.persistence.IAdditionalPersisterFactory;
 import net.sf.anathema.character.generic.framework.additionaltemplate.persistence.NullAdditionalPersisterFactory;
@@ -29,7 +28,6 @@ public class CharacterGenerics implements ICharacterGenerics {
 
   private final ITemplateRegistry templateRegistry = new TemplateRegistry();
   private final IRegistry<String, IAdditionalModelFactory> additionalModelRegistry = new Registry<>();
-  private final IRegistry<String, IAdditionalInitializer> additionalViewRegistry = new Registry<>();
   private final IRegistry<String, IAdditionalPersisterFactory> additionalPersisterRegistry;
   private final IIdentificateRegistry<IGlobalAdditionalTemplate> additionalTemplateRegistry = new IdentificateRegistry<>();
   private final ICharacterTemplateRegistryCollection templateRegistries;
@@ -59,11 +57,6 @@ public class CharacterGenerics implements ICharacterGenerics {
   @Override
   public IRegistry<String, IAdditionalModelFactory> getAdditionalModelFactoryRegistry() {
     return additionalModelRegistry;
-  }
-
-  @Override
-  public IRegistry<String, IAdditionalInitializer> getAdditionalInitializerRegistry() {
-    return additionalViewRegistry;
   }
 
   @Override

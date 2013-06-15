@@ -2,7 +2,6 @@ package net.sf.anathema.character.generic.framework;
 
 import net.sf.anathema.character.generic.caste.ICasteCollection;
 import net.sf.anathema.character.generic.data.IExtensibleDataSet;
-import net.sf.anathema.character.generic.framework.additionaltemplate.IAdditionalInitializer;
 import net.sf.anathema.character.generic.framework.additionaltemplate.model.IAdditionalModelFactory;
 import net.sf.anathema.character.generic.framework.additionaltemplate.persistence.IAdditionalPersisterFactory;
 import net.sf.anathema.character.generic.framework.xml.additional.IAdditionalTemplateParser;
@@ -21,8 +20,6 @@ public interface ICharacterGenerics {
   ITemplateRegistry getTemplateRegistry();
 
   IRegistry<String, IAdditionalModelFactory> getAdditionalModelFactoryRegistry();
-
-  IRegistry<String, IAdditionalInitializer> getAdditionalInitializerRegistry();
 
   IRegistry<String, IAdditionalPersisterFactory> getAdditonalPersisterFactoryRegistry();
 
