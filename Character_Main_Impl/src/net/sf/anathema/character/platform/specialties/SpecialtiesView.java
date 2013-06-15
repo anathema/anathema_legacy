@@ -39,7 +39,7 @@ public class SpecialtiesView implements ISpecialtiesConfigurationView, IView {
   @Override
   public IButtonControlledComboEditView<ITraitReference> addSpecialtySelectionView(String labelText, ListCellRenderer renderer, Icon addIcon) {
     ButtonControlledComboEditView<ITraitReference> objectSelectionView = new ButtonControlledComboEditView<>(addIcon, renderer);
-    mainPanel.add(objectSelectionView.getComponent());
+    mainPanel.add(objectSelectionView.getComponent(), 0);
     return objectSelectionView;
   }
 
