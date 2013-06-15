@@ -46,7 +46,6 @@ public class TextReport extends AbstractPdfReport {
       new AttributeTextEncoder(utils, resources).createParagraphs(columnText, genericCharacter);
       new VirtueTextEncoder(utils, resources).createParagraphs(columnText, genericCharacter);
       new AbilityTextEncoder(utils, resources).createParagraphs(columnText, genericCharacter);
-      new BackgroundsTextEncoder(utils, resources).createParagraphs(columnText, genericCharacter);
       writeColumnText(document, columnText);
     } catch (DocumentException e) {
       e.printStackTrace();

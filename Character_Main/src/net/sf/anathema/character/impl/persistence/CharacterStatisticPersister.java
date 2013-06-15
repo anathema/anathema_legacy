@@ -36,7 +36,6 @@ public class CharacterStatisticPersister {
   private final CharacterConceptPersister characterConceptPersister = new CharacterConceptPersister();
   private final EssenceConfigurationPersister essencePersister = new EssenceConfigurationPersister();
   private final VirtueConfigurationPersister virtuePersister = new VirtueConfigurationPersister();
-  private final BackgroundConfigurationPersister backgroundPersister;
   private final WillpowerConfigurationPersister willpowerPersister = new WillpowerConfigurationPersister();
   private final CharmConfigurationPersister charmPersister;
   private final SpellConfigurationPersister spellPersister = new SpellConfigurationPersister();
@@ -48,7 +47,6 @@ public class CharacterStatisticPersister {
 
   public CharacterStatisticPersister(ICharacterGenerics generics, IMessaging messaging) {
     this.generics = generics;
-    this.backgroundPersister = new BackgroundConfigurationPersister(generics.getBackgroundRegistry());
     this.charmPersister = new CharmConfigurationPersister(messaging);
     this.additonalModelPersister = new AdditionalModelPersister(generics.getAdditonalPersisterFactoryRegistry(), messaging);
   }
@@ -69,7 +67,6 @@ public class CharacterStatisticPersister {
     virtuePersister.save(statisticsElement, character.getTraitConfiguration());
     attributePersister.save(statisticsElement, character.getTraitConfiguration());
     abilityPersister.save(statisticsElement, character.getTraitConfiguration());
-    backgroundPersister.save(statisticsElement, character.getTraitConfiguration().getBackgrounds());
     charmPersister.save(statisticsElement, character);
     spellPersister.save(statisticsElement, character.getSpells());
     experiencePersister.save(statisticsElement, ExperienceModelFetcher.fetch(character).getExperiencePoints());
@@ -92,7 +89,6 @@ public class CharacterStatisticPersister {
       virtuePersister.load(statisticsElement, character.getTraitConfiguration());
       attributePersister.load(statisticsElement, character.getTraitConfiguration());
       abilityPersister.load(statisticsElement, character.getTraitConfiguration());
-      backgroundPersister.load(statisticsElement, character.getTraitConfiguration().getBackgrounds());
       charmPersister.load(statisticsElement, character);
       spellPersister.load(statisticsElement, character.getSpells());
       experiencePersister.load(statisticsElement, ExperienceModelFetcher.fetch(character).getExperiencePoints());

@@ -1,6 +1,5 @@
 package net.sf.anathema.character.generic.framework;
 
-import net.sf.anathema.character.generic.backgrounds.IBackgroundTemplate;
 import net.sf.anathema.character.generic.caste.ICasteCollection;
 import net.sf.anathema.character.generic.data.IExtensibleDataSet;
 import net.sf.anathema.character.generic.framework.additionaltemplate.IAdditionalInitializer;
@@ -18,8 +17,6 @@ import net.sf.anathema.lib.registry.IIdentificateRegistry;
 import net.sf.anathema.lib.registry.IRegistry;
 
 public interface ICharacterGenerics {
-
-  IIdentificateRegistry<IBackgroundTemplate> getBackgroundRegistry();
 
   ITemplateRegistry getTemplateRegistry();
 

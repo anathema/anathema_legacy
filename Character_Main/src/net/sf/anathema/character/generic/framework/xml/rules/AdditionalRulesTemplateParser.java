@@ -4,16 +4,13 @@ import com.eteks.parser.CompilationException;
 import com.google.common.base.Predicate;
 import net.sf.anathema.character.generic.additionalrules.IAdditionalEssencePool;
 import net.sf.anathema.character.generic.additionalrules.IAdditionalMagicLearnPool;
-import net.sf.anathema.character.generic.backgrounds.IBackgroundTemplate;
 import net.sf.anathema.character.generic.framework.xml.core.AbstractXmlTemplateParser;
 import net.sf.anathema.character.generic.framework.xml.registry.IXmlTemplateRegistry;
 import net.sf.anathema.character.generic.impl.additional.AdditionalEssencePool;
-import net.sf.anathema.character.generic.impl.additional.BackgroundPool;
 import net.sf.anathema.character.generic.impl.additional.ComplexAdditionalEssencePool;
 import net.sf.anathema.character.generic.impl.additional.GenericMagicLearnPool;
 import net.sf.anathema.character.generic.impl.additional.LearnableCharmPool;
 import net.sf.anathema.character.generic.impl.additional.MultiLearnableCharmPool;
-import net.sf.anathema.character.generic.impl.backgrounds.SimpleBackgroundTemplate;
 import net.sf.anathema.character.generic.impl.util.NullPointModification;
 import net.sf.anathema.character.generic.magic.charms.special.IMultiLearnableCharm;
 import net.sf.anathema.character.generic.magic.charms.special.ISpecialCharm;
@@ -46,9 +43,6 @@ public class AdditionalRulesTemplateParser extends AbstractXmlTemplateParser<Gen
   private static final String TAG_PERIPHERAL_POOL = "peripheralPool";
   private static final String TAG_OTHER_POOL = "otherPool";
   private static final String ATTRIB_MULTIPLIER = "multiplier";
-  private static final String TAG_BACKGROUND_REFERENCE = "backgroundReference";
-  private static final String TAG_FORBIDDEN_BACKGROUNDS = "forbiddenBackgrounds";
-  private static final String ATTRIB_MODIFIES_BASE = "modifiesBase";
   private static final String TAG_FIXED_VALUE = "fixedValue";
   private static final String ATTRIB_VALUE = "value";
   private static final String ATTRIB_FORMULA = "formula";
@@ -86,7 +80,6 @@ public class AdditionalRulesTemplateParser extends AbstractXmlTemplateParser<Gen
     setAdditionalEssencePools(element, basicTemplate);
     setAdditionalMagicPools(element, basicTemplate);
     setAdditionalTraitCosts(element, basicTemplate);
-    setForbiddenBackgrounds(element, basicTemplate);
     setRevisedIntimacies(element, basicTemplate);
     setWillpowerVirtueBased(element, basicTemplate);
     return basicTemplate;
@@ -106,8 +99,6 @@ public class AdditionalRulesTemplateParser extends AbstractXmlTemplateParser<Gen
       for (Element modificationElement : ElementUtilities.elements(costModifierElement, TAG_DOT_COST_MODIFICATION)) {
         dotCostModifications.add(createPointCostModification(modificationElement));
       }
-      basicTemplate
-              .addBackgroundCostModifier(getBackgroundId(costModifierElement), new BackgroundCostModifier(bonusModifications, dotCostModifications));
     }
   }
 
@@ -121,18 +112,6 @@ public class AdditionalRulesTemplateParser extends AbstractXmlTemplateParser<Gen
     return new DefaultPointModification(minimumValue, multiplier, fixedCost);
   }
 
-  private void setForbiddenBackgrounds(Element element, GenericAdditionalRules basicTemplate) {
-    Element backgroundsElement = element.element(TAG_FORBIDDEN_BACKGROUNDS);
-    if (backgroundsElement == null) {
-      return;
-    }
-    List<String> ids = new ArrayList<>();
-    for (Element background : ElementUtilities.elements(backgroundsElement, TAG_BACKGROUND_REFERENCE)) {
-      ids.add(background.attributeValue(ATTRIB_ID));
-    }
-    basicTemplate.setRejectedBackgrounds(ids.toArray(new String[ids.size()]));
-  }
-
   private void setAdditionalMagicPools(Element element, GenericAdditionalRules basicTemplate) throws PersistenceException {
     Element additionalMagicElement = element.element(TAG_ADDITIONAL_MAGIC);
     if (additionalMagicElement == null) {
@@ -140,9 +119,8 @@ public class AdditionalRulesTemplateParser extends AbstractXmlTemplateParser<Gen
     }
     List<IAdditionalMagicLearnPool> pools = new ArrayList<>();
     for (Element magicPoolElement : ElementUtilities.elements(additionalMagicElement, TAG_MAGIC_POOL)) {
-      IBackgroundTemplate backgroundTemplate = getBackgroundTemplate(magicPoolElement);
       boolean defaultAnswer = ElementUtilities.getBooleanAttribute(magicPoolElement, ATTRIB_DEFAULT_RESPONSE, true);
-      GenericMagicLearnPool pool = new GenericMagicLearnPool(backgroundTemplate, defaultAnswer);
+      GenericMagicLearnPool pool = new GenericMagicLearnPool(defaultAnswer);
       for (Element spellReference : ElementUtilities.elements(magicPoolElement, TAG_SPELL_REFERENCE)) {
         pool.addIdException(spellReference.attributeValue(ATTRIB_ID));
       }
@@ -188,22 +166,11 @@ public class AdditionalRulesTemplateParser extends AbstractXmlTemplateParser<Gen
           throw new ContractFailedException("No such multi-learnable Charm " + charmId + " found.");
         }
         pools.add(new MultiLearnableCharmPool((IMultiLearnableCharm) charm, personalPool, peripheralPool, complexPools));
-      } else if (multiPool.element(TAG_BACKGROUND_REFERENCE) != null) {
-        boolean modifiesBase = ElementUtilities.getBooleanAttribute(multiPool, ATTRIB_MODIFIES_BASE, false);
-        pools.add(new BackgroundPool(getBackgroundTemplate(multiPool), personalPool, peripheralPool, complexPools, modifiesBase));
       } else {
         throw new ContractFailedException("Either CharmReference or BackgroundReference required.");
       }
     }
     basicTemplate.addAdditionalEssencePools(pools.toArray(new IAdditionalEssencePool[pools.size()]));
-  }
-
-  private String getBackgroundId(Element parent) throws PersistenceException {
-    return ElementUtilities.getRequiredAttrib(parent.element(TAG_BACKGROUND_REFERENCE), ATTRIB_ID);
-  }
-
-  private IBackgroundTemplate getBackgroundTemplate(Element parent) throws PersistenceException {
-    return new SimpleBackgroundTemplate(getBackgroundId(parent));
   }
 
   private AdditionalEssencePool parsePool(Element parent, String elementName) throws PersistenceException {

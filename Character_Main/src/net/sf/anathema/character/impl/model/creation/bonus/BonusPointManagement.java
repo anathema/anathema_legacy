@@ -21,8 +21,6 @@ import net.sf.anathema.character.impl.model.creation.bonus.attribute.AttributeCo
 import net.sf.anathema.character.impl.model.creation.bonus.attribute.FavoredAttributeDotBonusModel;
 import net.sf.anathema.character.impl.model.creation.bonus.attribute.FavoredAttributePickModel;
 import net.sf.anathema.character.impl.model.creation.bonus.attribute.GenericAttributeDotBonusModel;
-import net.sf.anathema.character.impl.model.creation.bonus.backgrounds.BackgroundBonusModel;
-import net.sf.anathema.character.impl.model.creation.bonus.backgrounds.BackgroundBonusPointCostCalculator;
 import net.sf.anathema.character.impl.model.creation.bonus.magic.DefaultCharmModel;
 import net.sf.anathema.character.impl.model.creation.bonus.magic.FavoredCharmModel;
 import net.sf.anathema.character.impl.model.creation.bonus.magic.MagicCostCalculator;
@@ -49,7 +47,6 @@ public class BonusPointManagement implements IBonusPointManagement {
   private final IAbilityCostCalculator abilityCalculator;
   private final AttributeCostCalculator attributeCalculator;
   private final VirtueCostCalculator virtueCalculator;
-  private final BackgroundBonusPointCostCalculator backgroundCalculator;
   private final MagicCostCalculator magicCalculator;
   private final IDefaultTrait willpower;
   private final BonusPointCosts cost;
@@ -77,8 +74,6 @@ public class BonusPointManagement implements IBonusPointManagement {
                     cost, bonusAdditionalPools);
     this.attributeCalculator =
             new AttributeCostCalculator(traitConfiguration, creationPoints.getAttributeCreationPoints(), cost, bonusAdditionalPools);
-    this.backgroundCalculator = new BackgroundBonusPointCostCalculator(bonusAdditionalPools, traitConfiguration.getBackgrounds(), cost,
-            creationPoints.getBackgroundPointCount(), characterTemplate.getAdditionalRules());
     IDefaultTrait[] virtues = TraitCollectionUtilities.getVirtues(traitConfiguration);
     this.virtueCalculator = new VirtueCostCalculator(virtues, creationPoints.getVirtueCreationPoints(), cost);
     magicAdditionalPools =
@@ -93,7 +88,6 @@ public class BonusPointManagement implements IBonusPointManagement {
   @Override
   public void recalculate() {
     bonusAdditionalPools.reset();
-    backgroundCalculator.calculateBonusPoints();
     abilityCalculator.calculateCosts();
     attributeCalculator.calculateAttributeCosts();
     virtueCalculator.calculateVirtuePoints();
@@ -126,17 +120,12 @@ public class BonusPointManagement implements IBonusPointManagement {
 
   private int getTotalBonusPointsSpent() {
     return attributeCalculator.getBonusPoints() + getDefaultAbilityModel().getSpentBonusPoints() + abilityCalculator.getSpecialtyBonusPointCosts() +
-           getDefaultCharmModel().getSpentBonusPoints() + getBackgroundModel().getSpentBonusPoints() + getVirtueModel().getSpentBonusPoints() +
+           getDefaultCharmModel().getSpentBonusPoints() + getVirtueModel().getSpentBonusPoints() +
            willpowerBonusPoints + essenceBonusPoints + bonusPointCalculator.getAdditionalModelModel().getValue();
   }
 
   private ISpendingModel getVirtueModel() {
     return new VirtueBonusModel(virtueCalculator, creationPoints);
-  }
-
-  @Override
-  public ISpendingModel getBackgroundModel() {
-    return new BackgroundBonusModel(backgroundCalculator, creationPoints);
   }
 
   @Override
@@ -258,7 +247,6 @@ public class BonusPointManagement implements IBonusPointManagement {
     }
     addCharmModels(models);
     models.add(getVirtueModel());
-    models.add(getBackgroundModel());
     bonusPointCalculator.addMiscModel(models);
     models.add(getTotalModel());
     return models.toArray(new IOverviewModel[models.size()]);

@@ -19,7 +19,6 @@ import net.sf.anathema.character.generic.magic.charms.special.ISpecialCharmConfi
 import net.sf.anathema.character.generic.magic.charms.special.ISubeffect;
 import net.sf.anathema.character.generic.template.ICharacterTemplate;
 import net.sf.anathema.character.generic.template.ITraitLimitation;
-import net.sf.anathema.character.generic.traits.IGenericTrait;
 import net.sf.anathema.character.generic.traits.INamedGenericTrait;
 import net.sf.anathema.character.generic.traits.ITraitType;
 import net.sf.anathema.character.generic.traits.groups.IIdentifiedTraitTypeGroup;
@@ -218,11 +217,6 @@ public class GenericCharacter implements IGenericCharacter {
       }
     }
     return registeredModels;
-  }
-
-  @Override
-  public IGenericTrait[] getBackgrounds() {
-    return getTraitConfiguration().getBackgrounds().getBackgrounds();
   }
 
   @Override

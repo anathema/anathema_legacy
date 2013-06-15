@@ -14,8 +14,6 @@ import net.sf.anathema.character.library.trait.favorable.IFavorableTrait;
 import net.sf.anathema.character.library.trait.specialties.ISpecialtiesConfiguration;
 import net.sf.anathema.character.library.trait.subtrait.ISubTrait;
 import net.sf.anathema.character.library.trait.subtrait.ISubTraitListener;
-import net.sf.anathema.character.model.background.IBackground;
-import net.sf.anathema.character.model.background.IBackgroundListener;
 import net.sf.anathema.character.model.traits.ICoreTraitConfiguration;
 
 import java.util.Collection;
@@ -35,7 +33,6 @@ public class CharacterTraitListening {
   public void initListening() {
     initAttributeListening();
     initAbilityListening();
-    initBackgroundListening();
     for (ITrait virtue : traitConfiguration.getTraits(VirtueType.values())) {
       listening.addTraitListening(virtue);
     }
@@ -44,22 +41,6 @@ public class CharacterTraitListening {
     for (TraitRegistrar registrar : registrars) {
       registrar.initListening(traitConfiguration, listening);
     }
-  }
-
-  private void initBackgroundListening() {
-    traitConfiguration.getBackgrounds().addBackgroundListener(new IBackgroundListener() {
-      @Override
-      public void backgroundRemoved(IBackground background) {
-        listening.removeTraitListening(background);
-        listening.fireCharacterChanged();
-      }
-
-      @Override
-      public void backgroundAdded(IBackground background) {
-        listening.addTraitListening(background);
-        listening.fireCharacterChanged();
-      }
-    });
   }
 
   private void initAbilityListening() {

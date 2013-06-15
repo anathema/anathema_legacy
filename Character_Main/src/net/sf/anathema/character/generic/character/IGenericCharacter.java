@@ -7,7 +7,6 @@ import net.sf.anathema.character.generic.magic.IGenericCombo;
 import net.sf.anathema.character.generic.magic.IMagic;
 import net.sf.anathema.character.generic.template.ICharacterTemplate;
 import net.sf.anathema.character.generic.template.magic.IGenericCharmConfiguration;
-import net.sf.anathema.character.generic.traits.IGenericTrait;
 import net.sf.anathema.character.generic.traits.INamedGenericTrait;
 import net.sf.anathema.character.generic.traits.ITraitType;
 import net.sf.anathema.lib.control.IChangeListener;
@@ -22,8 +21,6 @@ public interface IGenericCharacter extends ILimitationContext, IMagicCollection,
   boolean isAlienCharm(ICharm charm);
 
   ICharacterTemplate getTemplate();
-
-  IGenericTrait[] getBackgrounds();
 
   INamedGenericTrait[] getSpecialties(ITraitType traitType);
 

@@ -1,6 +1,5 @@
 package net.sf.anathema.character.generic.framework;
 
-import net.sf.anathema.character.generic.backgrounds.IBackgroundTemplate;
 import net.sf.anathema.character.generic.caste.ICasteCollection;
 import net.sf.anathema.character.generic.data.IExtensibleDataSet;
 import net.sf.anathema.character.generic.data.IExtensibleDataSetProvider;
@@ -8,7 +7,6 @@ import net.sf.anathema.character.generic.framework.additionaltemplate.IAdditiona
 import net.sf.anathema.character.generic.framework.additionaltemplate.model.IAdditionalModelFactory;
 import net.sf.anathema.character.generic.framework.additionaltemplate.persistence.IAdditionalPersisterFactory;
 import net.sf.anathema.character.generic.framework.additionaltemplate.persistence.NullAdditionalPersisterFactory;
-import net.sf.anathema.character.generic.framework.backgrounds.BackgroundRegistry;
 import net.sf.anathema.character.generic.framework.xml.additional.IAdditionalTemplateParser;
 import net.sf.anathema.character.generic.framework.xml.registry.CharacterTemplateRegistryCollection;
 import net.sf.anathema.character.generic.impl.magic.persistence.ICharmCache;
@@ -29,7 +27,6 @@ import net.sf.anathema.lib.registry.Registry;
 
 public class CharacterGenerics implements ICharacterGenerics {
 
-  private final IIdentificateRegistry<IBackgroundTemplate> backgroundRegistry = new BackgroundRegistry();
   private final ITemplateRegistry templateRegistry = new TemplateRegistry();
   private final IRegistry<String, IAdditionalModelFactory> additionalModelRegistry = new Registry<>();
   private final IRegistry<String, IAdditionalInitializer> additionalViewRegistry = new Registry<>();
@@ -52,11 +49,6 @@ public class CharacterGenerics implements ICharacterGenerics {
     this.charmProvider = new CharmProvider(dataSetProvider.getDataSet(ICharmCache.class));
     this.templateRegistries = new CharacterTemplateRegistryCollection(dataSetProvider.getDataSet(ICharacterTemplateExtensionResourceCache.class));
     this.characterTypes = new ReflectionCharacterTypes(instantiater);
-  }
-
-  @Override
-  public IIdentificateRegistry<IBackgroundTemplate> getBackgroundRegistry() {
-    return backgroundRegistry;
   }
 
   @Override

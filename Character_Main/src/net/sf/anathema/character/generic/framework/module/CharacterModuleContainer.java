@@ -23,7 +23,6 @@ public class CharacterModuleContainer {
     module.registerCommonData(characterGenerics);
     registerTemplateParsers();
     module.addCharacterTemplates(characterGenerics);
-    module.addBackgroundTemplates(characterGenerics);
     module.addAdditionalTemplateData(characterGenerics);
   }
 

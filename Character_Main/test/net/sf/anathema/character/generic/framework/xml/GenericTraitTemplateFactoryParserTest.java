@@ -1,13 +1,10 @@
 package net.sf.anathema.character.generic.framework.xml;
 
 import junit.framework.TestCase;
-import net.sf.anathema.character.generic.backgrounds.IBackgroundTemplate;
 import net.sf.anathema.character.generic.dummy.template.DummyXmlTemplateRegistry;
-import net.sf.anathema.character.generic.framework.backgrounds.BackgroundRegistry;
 import net.sf.anathema.character.generic.framework.xml.trait.GenericTraitTemplateFactory;
 import net.sf.anathema.character.generic.framework.xml.trait.GenericTraitTemplateFactoryParser;
 import net.sf.anathema.character.generic.framework.xml.trait.pool.GenericTraitTemplatePool;
-import net.sf.anathema.character.generic.impl.backgrounds.SimpleBackgroundTemplate;
 import net.sf.anathema.character.generic.traits.ITraitTemplate;
 import net.sf.anathema.character.generic.traits.types.AbilityType;
 import net.sf.anathema.character.generic.traits.types.AttributeType;
@@ -16,8 +13,7 @@ import net.sf.anathema.lib.xml.DocumentUtilities;
 import org.dom4j.Element;
 
 public class GenericTraitTemplateFactoryParserTest extends TestCase {
-  String xml = "<traitTemplates >" + "<backgrounds>" + "<defaultTrait startValue=\"0\" lowerableState=\"LowerableRegain\">" +
-               "<limitation type=\"Static\" value=\"5\"/>" + "<minimum value=\"0\"/>" + "</defaultTrait>" + "</backgrounds>" + "<abilities>" +
+  String xml = "<traitTemplates >"  + "<abilities>" +
                "<defaultTrait startValue=\"0\" lowerableState=\"Default\">" + "<limitation type=\"Essence\"/>" + "<minimum value=\"0\"/>" +
                "</defaultTrait>" + "</abilities>" + "<attributes>" + "<defaultTrait startValue=\"1\" lowerableState=\"Default\">" +
                "<limitation type=\"Essence\"/>" + "<minimum value=\"1\"/>" + "</defaultTrait>" + "</attributes>" + "<virtues>" +
@@ -34,7 +30,7 @@ public class GenericTraitTemplateFactoryParserTest extends TestCase {
   protected void setUp() throws Exception {
     templateFactoryRegistry = new DummyXmlTemplateRegistry<>();
     templatePoolRegistry = new DummyXmlTemplateRegistry<>();
-    parser = new GenericTraitTemplateFactoryParser(templateFactoryRegistry, templatePoolRegistry, new BackgroundRegistry());
+    parser = new GenericTraitTemplateFactoryParser(templateFactoryRegistry, templatePoolRegistry);
   }
 
   public void testParseAbility() throws Exception {
@@ -49,14 +45,6 @@ public class GenericTraitTemplateFactoryParserTest extends TestCase {
     GenericTraitTemplateFactory templateFactory = parser.parseTemplate(traitCollectionElement);
     ITraitTemplate attributeTemplate = templateFactory.createAttributeTemplate(AttributeType.Appearance);
     AnathemaCharacterAssert.assertEssenceLimitedTraitTemplate(1, 1, 1, attributeTemplate);
-  }
-
-  public void testParseBackground() throws Exception {
-    Element traitCollectionElement = DocumentUtilities.read(xml).getRootElement();
-    GenericTraitTemplateFactory templateFactory = parser.parseTemplate(traitCollectionElement);
-    IBackgroundTemplate backgroundType = new SimpleBackgroundTemplate("testBackground");
-    ITraitTemplate backgroundTraitTemplate = templateFactory.createBackgroundTemplate(backgroundType);
-    AnathemaCharacterAssert.assertStaticSimpleTraitTemplate(0, 0, 0, 5, backgroundTraitTemplate);
   }
 
   public void testParseEssence() throws Exception {

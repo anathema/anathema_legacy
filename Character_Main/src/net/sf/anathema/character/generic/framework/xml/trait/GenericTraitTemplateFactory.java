@@ -1,6 +1,5 @@
 package net.sf.anathema.character.generic.framework.xml.trait;
 
-import net.sf.anathema.character.generic.backgrounds.IBackgroundTemplate;
 import net.sf.anathema.character.generic.framework.xml.trait.pool.GenericTraitTemplatePool;
 import net.sf.anathema.character.generic.template.ITraitTemplateFactory;
 import net.sf.anathema.character.generic.traits.ITraitTemplate;
@@ -12,22 +11,11 @@ import net.sf.anathema.lib.lang.clone.ICloneable;
 
 public class GenericTraitTemplateFactory implements ITraitTemplateFactory, ICloneable<GenericTraitTemplateFactory> {
 
-  private GenericTraitTemplatePool backgroundPool;
   private GenericTraitTemplatePool abilitiesPool;
   private GenericTraitTemplatePool attributesPool;
   private GenericTraitTemplatePool virtuesPool;
   private GenericTraitTemplate essenceTemplate;
   private GenericTraitTemplate willpowerTemplate;
-
-  @Override
-  public ITraitTemplate createBackgroundTemplate(IBackgroundTemplate template) {
-    return backgroundPool.getTemplate(template);
-  }
-
-  @Override
-  public ITraitTemplate createDefaultBackgroundTemplate() {
-    return backgroundPool.getDefaultTemplate();
-  }
 
   @Override
   public ITraitTemplate createWillpowerTemplate() {
@@ -52,10 +40,6 @@ public class GenericTraitTemplateFactory implements ITraitTemplateFactory, IClon
   @Override
   public ITraitTemplate createAbilityTemplate(AbilityType type) {
     return abilitiesPool.getTemplate(type);
-  }
-
-  public void setBackgroundPool(GenericTraitTemplatePool backgroundPool) {
-    this.backgroundPool = backgroundPool;
   }
 
   public void setAbilitiesPool(GenericTraitTemplatePool abilitiesPool) {
@@ -88,7 +72,6 @@ public class GenericTraitTemplateFactory implements ITraitTemplateFactory, IClon
     }
     clone.abilitiesPool = abilitiesPool == null ? null : abilitiesPool.clone();
     clone.attributesPool = attributesPool == null ? null : attributesPool.clone();
-    clone.backgroundPool = backgroundPool == null ? null : backgroundPool.clone();
     clone.virtuesPool = virtuesPool == null ? null : virtuesPool.clone();
     clone.essenceTemplate = essenceTemplate == null ? null : essenceTemplate.clone();
     clone.willpowerTemplate = willpowerTemplate == null ? null : willpowerTemplate.clone();

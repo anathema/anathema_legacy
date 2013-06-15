@@ -9,8 +9,6 @@ public interface IBonusPointManagement {
 
   void recalculate();
 
-  ISpendingModel getBackgroundModel();
-
   ISpendingModel getDefaultAbilityModel();
 
   ISpendingModel getFavoredAbilityModel();

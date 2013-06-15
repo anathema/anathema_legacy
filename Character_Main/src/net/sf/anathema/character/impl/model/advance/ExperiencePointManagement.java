@@ -4,7 +4,6 @@ import net.sf.anathema.character.generic.IBasicCharacterData;
 import net.sf.anathema.character.generic.additionaltemplate.IAdditionalModel;
 import net.sf.anathema.character.impl.model.advance.models.AbilityExperienceModel;
 import net.sf.anathema.character.impl.model.advance.models.AttributeExperienceModel;
-import net.sf.anathema.character.impl.model.advance.models.BackgroundExperienceModel;
 import net.sf.anathema.character.impl.model.advance.models.CharmExperienceModel;
 import net.sf.anathema.character.impl.model.advance.models.EssenceExperienceModel;
 import net.sf.anathema.character.impl.model.advance.models.MiscellaneousExperienceModel;
@@ -39,15 +38,11 @@ public class ExperiencePointManagement implements IExperiencePointManagement {
   @SuppressWarnings("unchecked")
   public IValueModel<Integer>[] getAllModels() {
     return new IValueModel[]{getAttributeModel(), getAbilityModel(), getSpecialtyModel(), getCharmModel(), getSpellModel(), getVirtueModel(),
-            getWillpowerModel(), getEssenceModel(), getBackgroundModel(), getMiscModel()};
+            getWillpowerModel(), getEssenceModel(), getMiscModel()};
   }
 
   private IValueModel<Integer> getAttributeModel() {
     return new AttributeExperienceModel(traitConfiguration, calculator, character);
-  }
-
-  private IValueModel<Integer> getBackgroundModel() {
-    return new BackgroundExperienceModel(traitConfiguration, character.getCharacterTemplate().getExperienceCost());
   }
 
   private IValueModel<Integer> getCharmModel() {
@@ -84,7 +79,6 @@ public class ExperiencePointManagement implements IExperiencePointManagement {
     int experienceCosts = 0;
     experienceCosts += getAbilityModel().getValue();
     experienceCosts += getAttributeModel().getValue();
-    experienceCosts += getBackgroundModel().getValue();
     experienceCosts += getCharmModel().getValue();
     experienceCosts += getEssenceModel().getValue();
     experienceCosts += getSpecialtyModel().getValue();

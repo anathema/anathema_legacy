@@ -1,16 +1,11 @@
 package net.sf.anathema.character.generic.framework.xml.rules;
 
-import com.google.common.base.Functions;
 import net.sf.anathema.character.generic.additionalrules.IAdditionalEssencePool;
 import net.sf.anathema.character.generic.additionalrules.IAdditionalMagicLearnPool;
 import net.sf.anathema.character.generic.additionalrules.ITraitCostModifier;
-import net.sf.anathema.character.generic.backgrounds.IBackgroundTemplate;
-import net.sf.anathema.character.generic.impl.additional.DefaultTraitCostModifier;
 import net.sf.anathema.character.generic.impl.additional.NullAdditionalRules;
-import net.sf.anathema.character.generic.traits.ITraitType;
 import net.sf.anathema.lib.exception.UnreachableCodeReachedException;
 import net.sf.anathema.lib.lang.clone.ICloneable;
-import org.apache.commons.lang3.ArrayUtils;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -20,14 +15,8 @@ public class GenericAdditionalRules extends NullAdditionalRules implements IClon
   private boolean revisedIntimacies = false;
   private boolean willpowerVirtueBased = true;
   private String[] compulsiveCharmIds = new String[0];
-  private String[] rejectedBackgroundIds = new String[0];
   private IAdditionalEssencePool[] essencePools = new IAdditionalEssencePool[0];
   private IAdditionalMagicLearnPool[] magicPools = new IAdditionalMagicLearnPool[0];
-  private Map<String, ITraitCostModifier> backgroundCostModifiers;
-
-  public GenericAdditionalRules() {
-    backgroundCostModifiers = createBackgroundCostModifierMap();
-  }
 
   public void setCompulsiveCharmIds(String[] compulsiveCharmIds) {
     this.compulsiveCharmIds = compulsiveCharmIds;
@@ -57,15 +46,6 @@ public class GenericAdditionalRules extends NullAdditionalRules implements IClon
   }
 
   @Override
-  public boolean isRejected(IBackgroundTemplate backgroundTemplate) {
-    return ArrayUtils.contains(rejectedBackgroundIds, backgroundTemplate.getId());
-  }
-
-  public void setRejectedBackgrounds(String[] backgroundIds) {
-    this.rejectedBackgroundIds = backgroundIds;
-  }
-
-  @Override
   public boolean isRevisedIntimacies() {
     return revisedIntimacies;
   }
@@ -84,21 +64,10 @@ public class GenericAdditionalRules extends NullAdditionalRules implements IClon
   }
 
   @Override
-  public ITraitCostModifier getBackgroundCostModifier(ITraitType backgroundType) {
-    return Functions.forMap(backgroundCostModifiers, new DefaultTraitCostModifier()).apply(backgroundType.getId());
-  }
-
-  public void addBackgroundCostModifier(String backgroundId, ITraitCostModifier modifier) {
-    backgroundCostModifiers.put(backgroundId, modifier);
-  }
-
-  @Override
   public GenericAdditionalRules clone() {
     try {
       GenericAdditionalRules clonedRules;
       clonedRules = (GenericAdditionalRules) super.clone();
-      clonedRules.backgroundCostModifiers = createBackgroundCostModifierMap();
-      clonedRules.backgroundCostModifiers.putAll(backgroundCostModifiers);
       return clonedRules;
     } catch (CloneNotSupportedException e) {
       throw new UnreachableCodeReachedException();

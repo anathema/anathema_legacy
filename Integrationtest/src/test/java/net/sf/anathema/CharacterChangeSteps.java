@@ -12,7 +12,6 @@ import net.sf.anathema.character.generic.traits.ITraitType;
 import net.sf.anathema.character.generic.traits.types.AbilityType;
 import net.sf.anathema.character.library.trait.favorable.IFavorableTrait;
 import net.sf.anathema.character.main.experience.model.ExperienceModelFetcher;
-import net.sf.anathema.character.model.background.IBackground;
 
 import static org.hamcrest.CoreMatchers.is;
 import static org.hamcrest.MatcherAssert.assertThat;
@@ -42,12 +41,6 @@ public class CharacterChangeSteps {
     ICasteCollection casteCollection = character.getCharacterTemplate().getCasteCollection();
     ICasteType caste = casteCollection.getById(casteName);
     character.getCharacterConcept().getCaste().setType(caste);
-  }
-
-  @When("^I set the background (.*) to (\\d+)$")
-  public void she_has_the_background_at(String name, int value) throws Throwable {
-    IBackground background = character.getTraitConfiguration().getBackgrounds().addBackground(name, "");
-    background.setCreationValue(value);
   }
 
   @When("^I set her (.*) to (\\d+)$")

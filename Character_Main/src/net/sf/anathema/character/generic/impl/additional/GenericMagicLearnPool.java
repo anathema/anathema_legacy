@@ -1,17 +1,12 @@
 package net.sf.anathema.character.generic.impl.additional;
 
-import com.google.common.base.Functions;
 import net.sf.anathema.character.generic.additionalrules.IAdditionalMagicLearnPool;
-import net.sf.anathema.character.generic.backgrounds.IBackgroundTemplate;
 import net.sf.anathema.character.generic.character.IGenericTraitCollection;
-import net.sf.anathema.character.generic.impl.util.NullPointModification;
 import net.sf.anathema.character.generic.magic.ICharm;
 import net.sf.anathema.character.generic.magic.IMagic;
 import net.sf.anathema.character.generic.magic.IMagicVisitor;
 import net.sf.anathema.character.generic.magic.ISpell;
 import net.sf.anathema.character.generic.magic.spells.CircleType;
-import net.sf.anathema.character.generic.traits.IGenericTrait;
-import net.sf.anathema.character.generic.util.IPointModification;
 import org.apache.commons.lang3.ArrayUtils;
 
 import java.util.ArrayList;
@@ -21,30 +16,18 @@ import java.util.Map;
 
 public class GenericMagicLearnPool implements IAdditionalMagicLearnPool {
 
-  private final IBackgroundTemplate template;
   private final boolean defaultResponse;
   private final List<String> exceptionIds = new ArrayList<>();
   private final Map<CircleType, Integer> typesByMinimumValue = new HashMap<>();
   private CircleType maximumCircle = CircleType.Terrestrial;
-  private IPointModification pointModification = new NullPointModification();
 
-  public GenericMagicLearnPool(IBackgroundTemplate template, boolean defaultResponse) {
-    this.template = template;
+  public GenericMagicLearnPool(boolean defaultResponse) {
     this.defaultResponse = defaultResponse;
   }
 
   @Override
   public int getAdditionalMagicCount(IGenericTraitCollection traitCollection) {
-    int value = getBackgroundValue(traitCollection);
-    return value + pointModification.getAdditionalPoints(value);
-  }
-
-  private int getBackgroundValue(IGenericTraitCollection traitCollection) {
-    IGenericTrait background = traitCollection.getTrait(template);
-    if (background == null) {
-      return 0;
-    }
-    return background.getCurrentValue();
+    return 0;
   }
 
   @Override
@@ -54,7 +37,7 @@ public class GenericMagicLearnPool implements IAdditionalMagicLearnPool {
       @Override
       public void visitSpell(ISpell spell) {
         CircleType type = spell.getCircleType();
-        if (isSpellCircleGreaterThanMaximumCircle(type) || isBackgroundValueLessThanMinimumValueForCircle(traitCollection, type)) {
+        if (isSpellCircleGreaterThanMaximumCircle(type)) {
           isAllowed[0] = false;
           return;
         }
@@ -87,14 +70,6 @@ public class GenericMagicLearnPool implements IAdditionalMagicLearnPool {
         typesByMinimumValue.put(type, minimumBackgroundValue);
       }
     }
-  }
-
-  public void setCostModification(IPointModification pointModification) {
-    this.pointModification = pointModification;
-  }
-
-  private boolean isBackgroundValueLessThanMinimumValueForCircle(IGenericTraitCollection traitCollection, CircleType type) {
-    return Functions.forMap(typesByMinimumValue, 0).apply(type) > getBackgroundValue(traitCollection);
   }
 
   private boolean isSpellCircleGreaterThanMaximumCircle(CircleType type) {

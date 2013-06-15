@@ -154,11 +154,6 @@ public class DummyGenericCharacter implements IGenericCharacter {
   }
 
   @Override
-  public IGenericTrait[] getBackgrounds() {
-    return new IGenericTrait[0];
-  }
-
-  @Override
   public IAdditionalModel getAdditionalModel(String templateId) {
     return null;
   }

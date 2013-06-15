@@ -53,7 +53,6 @@ public interface ICharmXMLConstants {
   String TAG_LEARNING = "learning";
   String TAG_PREREQUISITE_LIST = "prerequisite";
   String TAG_TRAIT = "trait";
-  String TAG_BACKGROUND = "background";
   String TAG_TRAIT_REFERENCE = "traitReference";
   String TAG_SELECTIVE_CHARM_GROUP = "selectiveCharmGroup";
   String TAG_RESTRICTIONS = "restrictions";

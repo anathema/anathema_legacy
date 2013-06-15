@@ -126,7 +126,7 @@ public class ExaltedCharacter implements ICharacter {
 
   private CoreTraitConfiguration createTraitConfiguration(ICharacterTemplate template, ICharacterGenerics generics) {
     Collection<TraitRegistrar> registrars = generics.getInstantiater().instantiateAll(RegisteredTrait.class);
-    CoreTraitConfiguration configuration = new CoreTraitConfiguration(template, context, generics.getBackgroundRegistry(), registrars);
+    CoreTraitConfiguration configuration = new CoreTraitConfiguration(template, context, registrars);
     new CharacterTraitListening(configuration, context.getCharacterListening(), registrars).initListening();
     return configuration;
   }
