@@ -9,25 +9,25 @@ import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
 
-public class Initializers {
+public class InitializerList {
 
   private final IApplicationModel applicationModel;
   private final Instantiater instantiater;
 
-  public Initializers(IApplicationModel applicationModel) {
+  public InitializerList(IApplicationModel applicationModel) {
     this.instantiater = CharacterGenericsExtractor.getGenerics(applicationModel).getInstantiater();
     this.applicationModel = applicationModel;
   }
 
   public List<CharacterModelInitializer> getInOrderFor(CharacterModelGroup group) {
-    ArrayList<CharacterModelInitializer> initializers = new ArrayList<>();
+    ArrayList<CharacterModelInitializer> initializerList = new ArrayList<>();
     Collection<CharacterModelInitializer> collection = instantiater.instantiateOrdered(RegisteredInitializer.class, applicationModel);
     for (CharacterModelInitializer initializer : collection) {
       CharacterModelGroup targetGroup = initializer.getClass().getAnnotation(RegisteredInitializer.class).value();
       if (targetGroup.equals(group)) {
-        initializers.add(initializer);
+        initializerList.add(initializer);
       }
     }
-    return initializers;
+    return initializerList;
   }
 }

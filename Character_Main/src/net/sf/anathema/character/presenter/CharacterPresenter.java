@@ -3,7 +3,7 @@ package net.sf.anathema.character.presenter;
 import net.sf.anathema.character.model.CharacterModelGroup;
 import net.sf.anathema.character.model.ICharacter;
 import net.sf.anathema.character.presenter.initializers.CharacterModelInitializer;
-import net.sf.anathema.character.presenter.initializers.Initializers;
+import net.sf.anathema.character.presenter.initializers.InitializerList;
 import net.sf.anathema.character.view.CharacterView;
 import net.sf.anathema.character.view.SectionView;
 import net.sf.anathema.framework.IApplicationModel;
@@ -18,13 +18,13 @@ import static net.sf.anathema.character.model.CharacterModelGroup.SpiritualTrait
 
 public class CharacterPresenter implements Presenter {
 
-  private final Initializers initializers;
+  private final InitializerList initializerList;
   private final ICharacter character;
   private final CharacterView characterView;
   private final Resources resources;
 
   public CharacterPresenter(ICharacter character, CharacterView view, Resources resources, IApplicationModel applicationModel) {
-    this.initializers = new Initializers(applicationModel);
+    this.initializerList = new InitializerList(applicationModel);
     this.character = character;
     this.characterView = view;
     this.resources = resources;
@@ -50,7 +50,7 @@ public class CharacterPresenter implements Presenter {
   }
 
   private void initializeGroup(CharacterModelGroup group, SectionView sectionView) {
-    for (CharacterModelInitializer initializer : initializers.getInOrderFor(group)) {
+    for (CharacterModelInitializer initializer : initializerList.getInOrderFor(group)) {
       initializer.initialize(sectionView, character, resources);
     }
   }
