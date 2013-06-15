@@ -9,20 +9,24 @@ import net.sf.anathema.character.view.IGroupedFavorableTraitConfigurationView;
 import net.sf.anathema.framework.value.IntegerViewFactory;
 
 import javax.swing.JComponent;
+import javax.swing.JPanel;
 
 public class GroupedFavorableTraitConfigurationView implements IGroupedFavorableTraitConfigurationView {
 
-  private final GroupedTraitView groupedTraitView;
+  private GroupedTraitView groupedTraitView;
   private final IntegerViewFactory markerIntValueDisplayFactory;
   private final IntegerViewFactory markerLessIntValueDisplayFactory;
-  private final JComponent parent;
+  private final JComponent parent = new JPanel();
 
-  public GroupedFavorableTraitConfigurationView(JComponent parent, int columnCount, IntegerViewFactory factoryWithMarker,
+  public GroupedFavorableTraitConfigurationView(IntegerViewFactory factoryWithMarker,
                                                 IntegerViewFactory factoryWithoutMarker) {
-    this.parent = parent;
-    this.groupedTraitView = new GroupedTraitView(parent, columnCount);
     this.markerIntValueDisplayFactory = factoryWithMarker;
     this.markerLessIntValueDisplayFactory = factoryWithoutMarker;
+  }
+
+  @Override
+  public void initGui(int columnCount) {
+    this.groupedTraitView = new GroupedTraitView(parent, columnCount);
   }
 
   @Override

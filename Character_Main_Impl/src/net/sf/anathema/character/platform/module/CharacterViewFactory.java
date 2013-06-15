@@ -40,7 +40,7 @@ public class CharacterViewFactory implements ItemViewFactory {
     IntegerViewFactory markerLessIntValueDisplayFactory = IntValueDisplayFactoryPrototype.createWithoutMarkerForCharacterType(
             characterType);
     SubViewRegistry viewFactory = new SubViewMap(CharacterGenericsExtractor.getGenerics(model).getInstantiater());
-    CharacterView characterView = new TaskedCharacterView(intValueDisplayFactory, markerLessIntValueDisplayFactory,
+    CharacterView characterView = new TaskedCharacterView(intValueDisplayFactory,
             viewFactory);
     IBonusPointManagement bonusPointManagement = new BonusPointManagement(character);
     IExperiencePointManagement experiencePointManagement = new ExperiencePointManagement(character);

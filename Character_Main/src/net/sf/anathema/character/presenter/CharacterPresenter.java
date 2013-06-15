@@ -1,22 +1,18 @@
 package net.sf.anathema.character.presenter;
 
-import net.sf.anathema.character.generic.framework.CharacterGenericsExtractor;
 import net.sf.anathema.character.generic.template.ICharacterTemplate;
-import net.sf.anathema.character.generic.template.ITemplateRegistry;
 import net.sf.anathema.character.generic.template.magic.ICharmTemplate;
 import net.sf.anathema.character.generic.type.ICharacterType;
 import net.sf.anathema.character.model.ICharacter;
 import net.sf.anathema.character.presenter.magic.IContentPresenter;
 import net.sf.anathema.character.presenter.magic.MagicPresenter;
-import net.sf.anathema.character.presenter.magic.combo.ComboConfigurationPresenter;
 import net.sf.anathema.character.view.BackgroundView;
 import net.sf.anathema.character.view.CharacterView;
 import net.sf.anathema.character.view.IBasicAdvantageView;
 import net.sf.anathema.character.view.ICharacterDescriptionView;
-import net.sf.anathema.character.view.IGroupedFavorableTraitViewFactory;
+import net.sf.anathema.character.view.IGroupedFavorableTraitConfigurationView;
 import net.sf.anathema.character.view.SectionView;
 import net.sf.anathema.character.view.concept.ICharacterConceptAndRulesView;
-import net.sf.anathema.character.view.magic.IMagicViewFactory;
 import net.sf.anathema.framework.IApplicationModel;
 import net.sf.anathema.framework.presenter.view.ContentView;
 import net.sf.anathema.framework.presenter.view.MultipleContentView;
@@ -79,11 +75,19 @@ public class CharacterPresenter implements Presenter, MultipleContentViewPresent
   }
 
   private void initPhysicalTraits() {
-    IGroupedFavorableTraitViewFactory viewFactory = characterView.createGroupedFavorableTraitViewFactory();
-    IContentPresenter attributes = new AttributesPresenter(character, resources, viewFactory);
-    IContentPresenter abilities = new AbilitiesPresenter(character, resources, viewFactory);
-    String title = getString("CardView.NaturalTraits.Title");
-    initializer.initContentPresentation(title, NaturalTraits, attributes, abilities);
+
+    String sectionTitle = getString("CardView.NaturalTraits.Title");
+    SectionView sectionView = characterView.addSection(sectionTitle);
+
+    String attributeHeader = resources.getString("CardView.AttributeConfiguration.Title");
+    IGroupedFavorableTraitConfigurationView attributeView = sectionView.addView(attributeHeader, IGroupedFavorableTraitConfigurationView.class, characterType());
+    new AttributesPresenter(character, resources, attributeView).initPresentation();
+
+    String abilityHeader = resources.getString("CardView.AbilityConfiguration.Title");
+    IGroupedFavorableTraitConfigurationView abilityView = sectionView.addView(abilityHeader, IGroupedFavorableTraitConfigurationView.class, characterType());
+    new AbilitiesPresenter(character, resources, abilityView).initPresentation();
+
+    initializer.initializeAdditionalContent(sectionView, NaturalTraits);
   }
 
   private void initSpiritualTraits() {
@@ -93,6 +97,7 @@ public class CharacterPresenter implements Presenter, MultipleContentViewPresent
     String header = new BasicAdvantageViewProperties(resources).getOverallHeader();
     IBasicAdvantageView view = sectionView.addView(header, IBasicAdvantageView.class, characterType());
     new BasicAdvantagePresenter(resources, character, view).initPresentation();
+
     initializer.initializeAdditionalContent(sectionView, SpiritualTraits);
   }
 

@@ -13,8 +13,6 @@ public interface CharacterView extends IView, OverviewContainer {
 
   IMagicViewFactory createMagicViewFactory();
 
-  IGroupedFavorableTraitViewFactory createGroupedFavorableTraitViewFactory();
-
   BackgroundView createBackgroundView();
 
   SectionView addSection(String title);

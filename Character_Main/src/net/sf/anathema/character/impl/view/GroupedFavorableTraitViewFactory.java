@@ -1,23 +1,18 @@
 package net.sf.anathema.character.impl.view;
 
+import net.sf.anathema.character.generic.type.ICharacterType;
+import net.sf.anathema.character.library.intvalue.IntValueDisplayFactoryPrototype;
+import net.sf.anathema.character.platform.RegisteredCharacterView;
 import net.sf.anathema.character.view.IGroupedFavorableTraitConfigurationView;
-import net.sf.anathema.character.view.IGroupedFavorableTraitViewFactory;
 import net.sf.anathema.framework.value.IntegerViewFactory;
 
-import javax.swing.JPanel;
-
-public class GroupedFavorableTraitViewFactory implements IGroupedFavorableTraitViewFactory {
-
-  private final IntegerViewFactory intValueDisplayFactory;
-  private final IntegerViewFactory intValueDisplayFactoryWithoutMarker;
-
-  public GroupedFavorableTraitViewFactory(IntegerViewFactory intValueDisplayFactory, IntegerViewFactory intValueDisplayFactoryWithoutMarker) {
-    this.intValueDisplayFactory = intValueDisplayFactory;
-    this.intValueDisplayFactoryWithoutMarker = intValueDisplayFactoryWithoutMarker;
-  }
+@RegisteredCharacterView(IGroupedFavorableTraitConfigurationView.class)
+public class GroupedFavorableTraitViewFactory implements SubViewFactory {
 
   @Override
-  public IGroupedFavorableTraitConfigurationView createView(int columnCount) {
-    return new GroupedFavorableTraitConfigurationView(new JPanel(), columnCount, intValueDisplayFactory, intValueDisplayFactoryWithoutMarker);
+  public <T> T create(ICharacterType type) {
+    IntegerViewFactory withMarker = IntValueDisplayFactoryPrototype.createWithMarkerForCharacterType(type);
+    IntegerViewFactory withoutMarker = IntValueDisplayFactoryPrototype.createWithoutMarkerForCharacterType(type);
+    return (T) new GroupedFavorableTraitConfigurationView(withMarker, withoutMarker);
   }
 }

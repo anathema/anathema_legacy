@@ -4,7 +4,6 @@ import net.sf.anathema.character.impl.view.magic.MagicViewFactory;
 import net.sf.anathema.character.impl.view.overview.OverviewContainer;
 import net.sf.anathema.character.view.BackgroundView;
 import net.sf.anathema.character.view.CharacterView;
-import net.sf.anathema.character.view.IGroupedFavorableTraitViewFactory;
 import net.sf.anathema.character.view.SectionView;
 import net.sf.anathema.character.view.advance.IExperienceConfigurationView;
 import net.sf.anathema.character.view.magic.IMagicViewFactory;
@@ -24,17 +23,15 @@ public class TaskedCharacterView implements CharacterView {
   private CategorizedOverview creationOverviewView;
   private CategorizedOverview experienceOverviewView;
   private CategorizedOverview overviewView = new NullOverviewContainer();
-  private final IntegerViewFactory integerViewFactoryWithoutMarker;
   private final TaskedCharacterPane characterPane;
   private final OptionalViewBar optionalViewPane = new OptionalViewBar();
   private JPanel content;
   private final SubViewRegistry subViewFactory;
 
-  public TaskedCharacterView(IntegerViewFactory factory, IntegerViewFactory factoryWithoutMarker,
+  public TaskedCharacterView(IntegerViewFactory factory,
                              SubViewRegistry viewFactory) {
     this.characterPane = new TaskedCharacterPane();
     this.integerDisplayFactory = factory;
-    this.integerViewFactoryWithoutMarker = factoryWithoutMarker;
     this.subViewFactory = viewFactory;
   }
 
@@ -60,11 +57,6 @@ public class TaskedCharacterView implements CharacterView {
   @Override
   public IExperienceConfigurationView createExperienceConfigurationView() {
     return new ExperienceConfigurationView();
-  }
-
-  @Override
-  public IGroupedFavorableTraitViewFactory createGroupedFavorableTraitViewFactory() {
-    return new GroupedFavorableTraitViewFactory(integerDisplayFactory, integerViewFactoryWithoutMarker);
   }
 
   @Override
