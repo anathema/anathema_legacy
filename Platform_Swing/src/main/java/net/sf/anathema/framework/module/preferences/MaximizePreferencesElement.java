@@ -2,7 +2,7 @@ package net.sf.anathema.framework.module.preferences;
 
 import net.sf.anathema.initialization.PreferenceElement;
 import net.sf.anathema.initialization.reflections.Weight;
-import net.sf.anathema.lib.util.Identified;
+import net.sf.anathema.lib.util.Identifier;
 
 import static net.sf.anathema.framework.presenter.action.preferences.IAnathemaPreferencesConstants.MAXIMIZE_PREFERENCE;
 
@@ -38,7 +38,7 @@ public class MaximizePreferencesElement extends AbstractCheckBoxPreferencesEleme
   }
 
   @Override
-  public Identified getCategory() {
+  public Identifier getCategory() {
     return SYSTEM_CATEGORY;
   }
 }

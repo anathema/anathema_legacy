@@ -12,7 +12,7 @@ import net.sf.anathema.character.model.charm.ILearningCharmGroup;
 import net.sf.anathema.charmtree.filters.ICharmFilter;
 import net.sf.anathema.lib.control.IChangeListener;
 import net.sf.anathema.lib.exception.NotYetImplementedException;
-import net.sf.anathema.lib.util.Identified;
+import net.sf.anathema.lib.util.Identifier;
 
 import java.util.List;
 
@@ -53,7 +53,7 @@ public class DummyCharmConfiguration implements ICharmConfiguration {
   }
 
   @Override
-  public ILearningCharmGroup[] getCharmGroups(Identified type) {
+  public ILearningCharmGroup[] getCharmGroups(Identifier type) {
     return groups;
   }
 

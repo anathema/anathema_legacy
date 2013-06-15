@@ -8,7 +8,7 @@ import net.sf.anathema.character.impl.model.TypedDescription;
 import net.sf.anathema.character.model.Hero;
 import net.sf.anathema.character.model.IIntegerDescription;
 import net.sf.anathema.character.model.ITypedDescription;
-import net.sf.anathema.lib.util.Identified;
+import net.sf.anathema.lib.util.Identifier;
 
 public class CharacterConceptImpl implements CharacterConcept {
 
@@ -26,7 +26,7 @@ public class CharacterConceptImpl implements CharacterConcept {
   }
 
   @Override
-  public Identified getId() {
+  public Identifier getId() {
     return ID;
   }
 

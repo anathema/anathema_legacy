@@ -16,7 +16,7 @@ import net.sf.anathema.character.equipment.impl.character.model.stats.modificati
 import net.sf.anathema.character.generic.equipment.weapon.IArmourStats;
 import net.sf.anathema.character.generic.health.HealthType;
 import net.sf.anathema.character.generic.util.IProxy;
-import net.sf.anathema.lib.util.Identified;
+import net.sf.anathema.lib.util.Identifier;
 
 public class ProxyArmourStats extends AbstractStats implements IArmourStats, IProxy<IArmourStats> {
 
@@ -66,7 +66,7 @@ public class ProxyArmourStats extends AbstractStats implements IArmourStats, IPr
   }
 
   @Override
-  public Identified getName() {
+  public Identifier getName() {
     return delegate.getName();
   }
 

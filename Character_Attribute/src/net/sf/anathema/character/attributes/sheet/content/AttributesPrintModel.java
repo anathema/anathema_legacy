@@ -8,8 +8,8 @@ import net.sf.anathema.character.generic.traits.ITraitType;
 import net.sf.anathema.character.generic.traits.types.AttributeType;
 import net.sf.anathema.character.main.attributes.model.AttributesIterator;
 import net.sf.anathema.character.main.attributes.model.AttributesList;
-import net.sf.anathema.lib.util.Identified;
 import net.sf.anathema.lib.util.Identifier;
+import net.sf.anathema.lib.util.SimpleIdentifier;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -22,7 +22,7 @@ public class AttributesPrintModel implements AttributesList {
     this.character = character;
   }
 
-  public int getCurrentValue(Identified traitId) {
+  public int getCurrentValue(Identifier traitId) {
     AttributeType type = AttributeType.valueOf(traitId.getId());
     return character.getTraitCollection().getTrait(type).getCurrentValue();
   }
@@ -35,13 +35,13 @@ public class AttributesPrintModel implements AttributesList {
 
   @Override
   public void iterate(AttributesIterator iterator) {
-    for (Identified groupId : getGroupedIds()) {
+    for (Identifier groupId : getGroupedIds()) {
       iterator.nextGroup(groupId);
       iterateGroup(iterator, groupId);
     }
   }
 
-  private void iterateGroup(AttributesIterator iterator, Identified groupId) {
+  private void iterateGroup(AttributesIterator iterator, Identifier groupId) {
     for (ITraitType traitType : getTraitTypes(groupId)) {
       iterateTrait(iterator, traitType);
     }
@@ -55,7 +55,7 @@ public class AttributesPrintModel implements AttributesList {
     return character.getTemplate().getTraitTemplateCollection();
   }
 
-  private List<ITraitType> getTraitTypes(Identified groupId) {
+  private List<ITraitType> getTraitTypes(Identifier groupId) {
     List<ITraitType> attributes = new ArrayList<>();
     for (GroupedTraitType groupedType : getGroupedAttributeTypes()) {
       if (groupedType.getGroupId().equals(groupId.getId())) {
@@ -65,10 +65,10 @@ public class AttributesPrintModel implements AttributesList {
     return attributes;
   }
 
-  private List<Identified> getGroupedIds() {
-    List<Identified> groupIdList = new ArrayList<>();
+  private List<Identifier> getGroupedIds() {
+    List<Identifier> groupIdList = new ArrayList<>();
     for (GroupedTraitType type : getGroupedAttributeTypes()) {
-      Identifier groupId = new Identifier(type.getGroupId());
+      SimpleIdentifier groupId = new SimpleIdentifier(type.getGroupId());
       if (!groupIdList.contains(groupId)) {
         groupIdList.add(groupId);
       }

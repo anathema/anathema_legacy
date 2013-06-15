@@ -4,7 +4,7 @@ import net.sf.anathema.character.equipment.IWeaponModifiers;
 import net.sf.anathema.character.equipment.impl.character.model.ModifierFactory;
 import net.sf.anathema.character.equipment.impl.character.model.stats.modification.BaseMaterial;
 import net.sf.anathema.character.generic.equipment.weapon.IWeaponStats;
-import net.sf.anathema.lib.util.Identified;
+import net.sf.anathema.lib.util.Identifier;
 import org.junit.Before;
 import org.junit.Test;
 
@@ -27,7 +27,7 @@ public class ProxyWeaponStats_EquipmentModifierTest {
 
   @Before
   public void setUpWeapon() throws Exception {
-    when(original.getTags()).thenReturn(new Identified[]{});
+    when(original.getTags()).thenReturn(new Identifier[]{});
     when(original.getSpeed()).thenReturn(5);
   }
 

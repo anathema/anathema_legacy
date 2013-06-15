@@ -6,7 +6,7 @@ import net.sf.anathema.character.generic.equipment.weapon.IWeaponStats;
 import net.sf.anathema.character.generic.health.HealthType;
 import net.sf.anathema.character.generic.traits.ITraitType;
 import net.sf.anathema.character.generic.traits.types.AttributeType;
-import net.sf.anathema.lib.util.Identified;
+import net.sf.anathema.lib.util.Identifier;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -72,7 +72,7 @@ public abstract class AbstractWeaponStats extends AbstractCombatStats implements
   }
 
   @Override
-  public Identified[] getTags() {
+  public Identifier[] getTags() {
     String[] tagIds = tags.toArray(new String[tags.size()]);
     return transform(tagIds, WeaponTag.class, new Function<String, WeaponTag>() {
       @Override
@@ -127,7 +127,7 @@ public abstract class AbstractWeaponStats extends AbstractCombatStats implements
     this.speed = speed;
   }
 
-  public void addTag(Identified tag) {
+  public void addTag(Identifier tag) {
     tags.add(tag.getId());
   }
 

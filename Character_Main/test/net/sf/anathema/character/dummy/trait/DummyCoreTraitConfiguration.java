@@ -19,7 +19,7 @@ import net.sf.anathema.character.library.trait.specialties.SpecialtiesConfigurat
 import net.sf.anathema.character.model.traits.ICoreTraitConfiguration;
 import net.sf.anathema.lib.collection.MultiEntryMap;
 import net.sf.anathema.lib.exception.NotYetImplementedException;
-import net.sf.anathema.lib.util.Identifier;
+import net.sf.anathema.lib.util.SimpleIdentifier;
 import org.apache.commons.lang3.ArrayUtils;
 
 import java.util.ArrayList;
@@ -69,7 +69,7 @@ public class DummyCoreTraitConfiguration extends AbstractTraitCollection impleme
     List<IIdentifiedTraitTypeGroup> groups = new ArrayList<>();
     for (String groupId : abilityGroupsByType.keySet()) {
       List<ITraitType> traitTypes = abilityGroupsByType.get(groupId);
-      groups.add(new IdentifiedTraitTypeGroup(traitTypes.toArray(new ITraitType[traitTypes.size()]), new Identifier(groupId)));
+      groups.add(new IdentifiedTraitTypeGroup(traitTypes.toArray(new ITraitType[traitTypes.size()]), new SimpleIdentifier(groupId)));
     }
     return groups.toArray(new IIdentifiedTraitTypeGroup[groups.size()]);
   }

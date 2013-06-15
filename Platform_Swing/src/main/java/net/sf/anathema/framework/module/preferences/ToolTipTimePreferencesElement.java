@@ -6,7 +6,7 @@ import net.sf.anathema.initialization.reflections.Weight;
 import net.sf.anathema.lib.control.IIntValueChangedListener;
 import net.sf.anathema.lib.gui.widgets.IntegerSpinner;
 import net.sf.anathema.lib.resources.Resources;
-import net.sf.anathema.lib.util.Identified;
+import net.sf.anathema.lib.util.Identifier;
 
 import javax.swing.JLabel;
 import javax.swing.JPanel;
@@ -58,7 +58,7 @@ public class ToolTipTimePreferencesElement implements IPreferencesElement {
   }
 
   @Override
-  public Identified getCategory() {
+  public Identifier getCategory() {
     return SYSTEM_CATEGORY;
   }
 

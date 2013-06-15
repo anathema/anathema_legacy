@@ -1,9 +1,9 @@
 package net.sf.anathema.character.generic.magic.charms.special;
 
 import net.sf.anathema.lib.control.IChangeListener;
-import net.sf.anathema.lib.util.Identified;
+import net.sf.anathema.lib.util.Identifier;
 
-public interface ISubeffect extends Identified {
+public interface ISubeffect extends Identifier {
 
   boolean isLearned();
 

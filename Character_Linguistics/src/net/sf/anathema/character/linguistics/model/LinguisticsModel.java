@@ -11,20 +11,20 @@ import net.sf.anathema.character.library.removableentry.model.AbstractRemovableE
 import net.sf.anathema.character.linguistics.presenter.ILinguisticsModel;
 import net.sf.anathema.lib.control.IChangeListener;
 import net.sf.anathema.lib.lang.StringUtilities;
-import net.sf.anathema.lib.util.Identified;
 import net.sf.anathema.lib.util.Identifier;
+import net.sf.anathema.lib.util.SimpleIdentifier;
 import org.apache.commons.lang3.ArrayUtils;
 import org.jmock.example.announcer.Announcer;
 
 import java.util.Arrays;
 
-public class LinguisticsModel extends AbstractRemovableEntryModel<Identified> implements ILinguisticsModel {
+public class LinguisticsModel extends AbstractRemovableEntryModel<Identifier> implements ILinguisticsModel {
 
   private static final int barbarianLanguagesPerPoint= 4;
-  private final Identified[] languages = new Identified[] { new Identifier("HighRealm"),
-      new Identifier("LowRealm"), new Identifier("OldRealm"), new Identifier("Riverspeak"), new Identifier("Skytongue"), new Identifier("Flametongue"), new Identifier("Seatongue"), new Identifier("Foresttongue"), new Identifier("GuildCant"), new Identifier("ClawSpeak"), new Identifier("HighHolySpeech"), new Identifier("Pelagial") };          //$NON-NLS-10$ //$NON-NLS-11$
+  private final Identifier[] languages = new Identifier[] { new SimpleIdentifier("HighRealm"),
+      new SimpleIdentifier("LowRealm"), new SimpleIdentifier("OldRealm"), new SimpleIdentifier("Riverspeak"), new SimpleIdentifier("Skytongue"), new SimpleIdentifier("Flametongue"), new SimpleIdentifier("Seatongue"), new SimpleIdentifier("Foresttongue"), new SimpleIdentifier("GuildCant"), new SimpleIdentifier("ClawSpeak"), new SimpleIdentifier("HighHolySpeech"), new SimpleIdentifier("Pelagial") };          //$NON-NLS-10$ //$NON-NLS-11$
 
-  private Identified selection;
+  private Identifier selection;
   private int languagePointsAllowed;
   private final ICharacterModelContext context;
   private final Announcer<IChangeListener> pointControl = Announcer.to(IChangeListener.class);
@@ -50,13 +50,13 @@ public class LinguisticsModel extends AbstractRemovableEntryModel<Identified> im
   }
 
   @Override
-  public Identified[] getPredefinedLanguages() {
+  public Identifier[] getPredefinedLanguages() {
     return languages;
   }
 
   @Override
-  protected Identified createEntry() {
-    Identified selectionCopy = selection;
+  protected Identifier createEntry() {
+    Identifier selectionCopy = selection;
     this.selection = null;
     fireEntryChanged();
     return selectionCopy;
@@ -78,15 +78,15 @@ public class LinguisticsModel extends AbstractRemovableEntryModel<Identified> im
       this.selection = null;
       fireEntryChanged();
     }
-    selectLanguage(new Identifier(customName));
+    selectLanguage(new SimpleIdentifier(customName));
   }
 
   @Override
-  public void selectLanguage(final Identified language) {
+  public void selectLanguage(final Identifier language) {
     Preconditions.checkNotNull(language);
-    Identified foundLanguage = Iterables.find(getEntries(), new Predicate<Identified>() {
+    Identifier foundLanguage = Iterables.find(getEntries(), new Predicate<Identifier>() {
       @Override
-      public boolean apply(Identified selectedLanguage) {
+      public boolean apply(Identifier selectedLanguage) {
         return Objects.equal(language, selectedLanguage);
       }
     }, null);
@@ -98,10 +98,10 @@ public class LinguisticsModel extends AbstractRemovableEntryModel<Identified> im
   }
 
   @Override
-  public Identified getPredefinedLanguageById(final String id) {
-    return Iterables.find(Arrays.asList(languages), new Predicate<Identified>(){
+  public Identifier getPredefinedLanguageById(final String id) {
+    return Iterables.find(Arrays.asList(languages), new Predicate<Identifier>(){
       @Override
-      public boolean apply(Identified definedLanuage) {
+      public boolean apply(Identifier definedLanuage) {
         return Objects.equal(id, definedLanuage.getId());
       }
     },null);
@@ -115,7 +115,7 @@ public class LinguisticsModel extends AbstractRemovableEntryModel<Identified> im
   @Override
   public int getBarbarianLanguageCount() {
     int count = 0;
-    for (Identified language : getEntries()) {
+    for (Identifier language : getEntries()) {
       if (!isPredefinedLanguage(language)) {
         count++;
       }
@@ -139,7 +139,7 @@ public class LinguisticsModel extends AbstractRemovableEntryModel<Identified> im
   @Override
   public int getPredefinedLanguageCount() {
     int count = 0;
-    for (Identified language : getEntries()) {
+    for (Identifier language : getEntries()) {
       if (isPredefinedLanguage(language)) {
         count++;
       }

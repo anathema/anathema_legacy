@@ -5,8 +5,8 @@ import net.sf.anathema.character.generic.magic.ICharm;
 import net.sf.anathema.character.generic.magic.charms.ICharmIdMap;
 import net.sf.anathema.character.generic.magic.charms.ICharmLearnableArbitrator;
 import net.sf.anathema.character.generic.magic.charms.special.ISpecialCharm;
-import net.sf.anathema.lib.util.Identified;
 import net.sf.anathema.lib.util.Identifier;
+import net.sf.anathema.lib.util.SimpleIdentifier;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -15,18 +15,18 @@ import java.util.Map;
 
 public class CharmProvider implements ICharmProvider {
 
-  private final Map<Identified, ISpecialCharm[]> charmsByType = new HashMap<>();
+  private final Map<Identifier, ISpecialCharm[]> charmsByType = new HashMap<>();
   private final ICharmCache cache;
 
   public CharmProvider(ICharmCache cache) {
     this.cache = cache;
-    for (Identified type : cache.getCharmTypes()) {
+    for (Identifier type : cache.getCharmTypes()) {
       charmsByType.put(type, cache.getSpecialCharmData(type));
     }
   }
 
   @Override
-  public ISpecialCharm[] getSpecialCharms(ICharmLearnableArbitrator arbitrator, ICharmIdMap map, Identified preferredType) {
+  public ISpecialCharm[] getSpecialCharms(ICharmLearnableArbitrator arbitrator, ICharmIdMap map, Identifier preferredType) {
     List<ISpecialCharm> relevantCharms = new ArrayList<>();
     ISpecialCharm[] allSpecialCharms = getAllSpecialCharms(preferredType);
     for (ISpecialCharm specialCharm : allSpecialCharms) {
@@ -39,17 +39,17 @@ public class CharmProvider implements ICharmProvider {
   }
 
   @Override
-  public ISpecialCharm[] getSpecialCharms(Identified type) {
-    ISpecialCharm[] specialCharms = charmsByType.get(new Identifier(type.getId()));
+  public ISpecialCharm[] getSpecialCharms(Identifier type) {
+    ISpecialCharm[] specialCharms = charmsByType.get(new SimpleIdentifier(type.getId()));
     if (specialCharms == null) {
       specialCharms = new ISpecialCharm[0];
     }
     return specialCharms;
   }
 
-  private ISpecialCharm[] getAllSpecialCharms(Identified preferredCharacterType) {
+  private ISpecialCharm[] getAllSpecialCharms(Identifier preferredCharacterType) {
     SpecialCharmSet set = new SpecialCharmSet();
-    for (Identified type : charmsByType.keySet()) {
+    for (Identifier type : charmsByType.keySet()) {
       set.add(getSpecialCharms(type));
     }
     for (ISpecialCharm preferredCharm : getSpecialCharms(preferredCharacterType)) {

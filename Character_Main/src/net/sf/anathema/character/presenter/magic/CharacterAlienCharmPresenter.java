@@ -4,7 +4,7 @@ import net.sf.anathema.character.model.charm.ICharmConfiguration;
 import net.sf.anathema.charmtree.presenter.AlienCharmPresenter;
 import net.sf.anathema.charmtree.view.ICharmView;
 import net.sf.anathema.lib.control.IChangeListener;
-import net.sf.anathema.lib.util.Identified;
+import net.sf.anathema.lib.util.Identifier;
 
 public class CharacterAlienCharmPresenter implements AlienCharmPresenter {
 
@@ -26,7 +26,7 @@ public class CharacterAlienCharmPresenter implements AlienCharmPresenter {
         if (!alienCharms) {
           charmConfiguration.unlearnAllAlienCharms();
         }
-        Identified[] currentCharmTypes = new CharacterCharmTypes(model).getCurrentCharmTypes();
+        Identifier[] currentCharmTypes = new CharacterCharmTypes(model).getCurrentCharmTypes();
         view.fillCharmTypeBox(currentCharmTypes);
       }
     });

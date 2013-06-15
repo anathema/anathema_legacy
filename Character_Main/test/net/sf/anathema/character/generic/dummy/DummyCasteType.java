@@ -1,9 +1,9 @@
 package net.sf.anathema.character.generic.dummy;
 
 import net.sf.anathema.character.generic.caste.ICasteType;
-import net.sf.anathema.lib.util.Identifier;
+import net.sf.anathema.lib.util.SimpleIdentifier;
 
-public class DummyCasteType extends Identifier implements ICasteType {
+public class DummyCasteType extends SimpleIdentifier implements ICasteType {
 
   public DummyCasteType() {
     this("DummyCaste");

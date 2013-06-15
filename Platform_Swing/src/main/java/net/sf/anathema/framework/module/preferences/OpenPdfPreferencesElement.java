@@ -4,7 +4,7 @@ import net.sf.anathema.framework.reporting.PrintCommand;
 import net.sf.anathema.initialization.PreferenceElement;
 import net.sf.anathema.initialization.reflections.Weight;
 import net.sf.anathema.lib.resources.Resources;
-import net.sf.anathema.lib.util.Identified;
+import net.sf.anathema.lib.util.Identifier;
 
 import javax.swing.JPanel;
 
@@ -49,7 +49,7 @@ public class OpenPdfPreferencesElement extends AbstractCheckBoxPreferencesElemen
   }
 
   @Override
-  public Identified getCategory() {
+  public Identifier getCategory() {
     return SYSTEM_CATEGORY;
   }
 }

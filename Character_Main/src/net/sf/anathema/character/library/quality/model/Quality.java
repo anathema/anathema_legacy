@@ -4,12 +4,12 @@ import net.sf.anathema.character.library.quality.presenter.IQuality;
 import net.sf.anathema.character.library.quality.presenter.IQualityPredicate;
 import net.sf.anathema.character.library.quality.presenter.IQualitySelection;
 import net.sf.anathema.character.library.quality.presenter.IQualityType;
-import net.sf.anathema.lib.util.Identified;
+import net.sf.anathema.lib.util.Identifier;
 
 import java.util.ArrayList;
 import java.util.List;
 
-public abstract class Quality implements IQuality, Identified {
+public abstract class Quality implements IQuality, Identifier {
 
   private final String id;
   private final List<IQualityPredicate> prerequisites = new ArrayList<>();

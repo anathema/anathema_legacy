@@ -5,13 +5,13 @@ import net.sf.anathema.character.generic.equipment.weapon.IWeaponStats;
 import net.sf.anathema.character.generic.health.HealthType;
 import net.sf.anathema.character.generic.traits.ITraitType;
 import net.sf.anathema.character.generic.traits.types.AbilityType;
-import net.sf.anathema.lib.util.Identified;
 import net.sf.anathema.lib.util.Identifier;
+import net.sf.anathema.lib.util.SimpleIdentifier;
 
 public class WeaponStatsDecorator extends AbstractStats implements IWeaponStats {
   private IWeaponStats stats;
   private ITraitType ability;
-  private Identified name;
+  private Identifier name;
 
   public WeaponStatsDecorator(IWeaponStats stats, AbilityType statsAbility) {
     this.stats = stats;
@@ -22,7 +22,7 @@ public class WeaponStatsDecorator extends AbstractStats implements IWeaponStats 
   public WeaponStatsDecorator(IWeaponStats stats, String name) {
     this.stats = stats;
     this.ability = stats.getTraitType();
-    this.name = new Identifier(name);
+    this.name = new SimpleIdentifier(name);
   }
 
   @Override
@@ -76,7 +76,7 @@ public class WeaponStatsDecorator extends AbstractStats implements IWeaponStats 
   }
 
   @Override
-  public Identified[] getTags() {
+  public Identifier[] getTags() {
     return stats.getTags();
   }
 
@@ -101,7 +101,7 @@ public class WeaponStatsDecorator extends AbstractStats implements IWeaponStats 
   }
 
   @Override
-  public Identified getName() {
+  public Identifier getName() {
     return name;
   }
 

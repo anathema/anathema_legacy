@@ -2,7 +2,7 @@ package net.sf.anathema.character.attributes.sheet.content;
 
 import net.sf.anathema.character.main.attributes.model.AttributesIterator;
 import net.sf.anathema.lib.resources.Resources;
-import net.sf.anathema.lib.util.Identified;
+import net.sf.anathema.lib.util.Identifier;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -20,13 +20,13 @@ public class PrintAttributeIterator implements AttributesIterator {
   }
 
   @Override
-  public void nextGroup(Identified groupId) {
+  public void nextGroup(Identifier groupId) {
     currentGroup = new PrintAttributeGroup();
     groups.add(currentGroup);
   }
 
   @Override
-  public void nextTrait(Identified traitId) {
+  public void nextTrait(Identifier traitId) {
     PrintAttribute attribute = new PrintAttribute();
     attribute.name = resources.getString("AttributeType.Name." + traitId.getId());
     attribute.value = model.getCurrentValue(traitId);

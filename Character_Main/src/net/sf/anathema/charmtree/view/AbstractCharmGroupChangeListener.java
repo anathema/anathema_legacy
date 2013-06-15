@@ -7,7 +7,7 @@ import net.sf.anathema.character.generic.type.ICharacterType;
 import net.sf.anathema.charmtree.presenter.CharmFilterSet;
 import net.sf.anathema.graph.nodes.IIdentifiedRegularNode;
 import net.sf.anathema.graph.nodes.IRegularNode;
-import net.sf.anathema.lib.util.Identified;
+import net.sf.anathema.lib.util.Identifier;
 import net.sf.anathema.platform.tree.document.visualizer.ITreePresentationProperties;
 
 import java.util.ArrayList;
@@ -24,7 +24,7 @@ public abstract class AbstractCharmGroupChangeListener implements ICharmGroupCha
   private final CharmTreeRenderer charmTreeRenderer;
   private final CharmFilterSet charmFilterSet;
   private ICharmGroup currentGroup;
-  private Identified currentType;
+  private Identifier currentType;
   private final CharmDisplayPropertiesMap displayPropertiesMap;
 
   public AbstractCharmGroupChangeListener(ICharmGroupArbitrator arbitrator, CharmFilterSet charmFilterSet, CharmTreeRenderer treeRenderer,
@@ -37,7 +37,7 @@ public abstract class AbstractCharmGroupChangeListener implements ICharmGroupCha
 
   @Override
   public final void valueChanged(Object cascade, Object type) {
-    loadCharmTree((ICharmGroup) cascade, (Identified) type);
+    loadCharmTree((ICharmGroup) cascade, (Identifier) type);
   }
 
   protected boolean filterAncestors(ICharm charm) {
@@ -49,7 +49,7 @@ public abstract class AbstractCharmGroupChangeListener implements ICharmGroupCha
     return true;
   }
 
-  private void loadCharmTree(ICharmGroup charmGroup, Identified type) {
+  private void loadCharmTree(ICharmGroup charmGroup, Identifier type) {
     boolean resetView = !(currentGroup != null && currentGroup.equals(charmGroup) && currentType != null && currentType.equals(type));
     this.currentGroup = charmGroup;
     this.currentType = type;
@@ -106,7 +106,7 @@ public abstract class AbstractCharmGroupChangeListener implements ICharmGroupCha
     return currentGroup;
   }
 
-  protected abstract void modifyCharmVisuals(Identified type);
+  protected abstract void modifyCharmVisuals(Identifier type);
 
   @Override
   public void reselect() {

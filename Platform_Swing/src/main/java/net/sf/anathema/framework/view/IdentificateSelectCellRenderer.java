@@ -1,9 +1,9 @@
 package net.sf.anathema.framework.view;
 
 import net.sf.anathema.lib.resources.Resources;
-import net.sf.anathema.lib.util.Identified;
+import net.sf.anathema.lib.util.Identifier;
 
-public class IdentificateSelectCellRenderer extends AbstractSelectCellRenderer<Identified> {
+public class IdentificateSelectCellRenderer extends AbstractSelectCellRenderer<Identifier> {
 
   private final String resourceKeyPrefix;
 
@@ -17,7 +17,7 @@ public class IdentificateSelectCellRenderer extends AbstractSelectCellRenderer<I
   }
 
   @Override
-  protected String getCustomizedDisplayValue(Identified value) {
+  protected String getCustomizedDisplayValue(Identifier value) {
     StringBuilder builder = new StringBuilder();
     builder.append(resourceKeyPrefix);
     builder.append(value.getId());

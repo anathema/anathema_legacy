@@ -10,9 +10,9 @@ import net.sf.anathema.character.generic.magic.spells.CircleType;
 import net.sf.anathema.character.generic.rules.IExaltedSourceBook;
 import net.sf.anathema.character.generic.template.magic.FavoringTraitType;
 import net.sf.anathema.character.generic.traits.ITraitType;
-import net.sf.anathema.lib.util.Identifier;
+import net.sf.anathema.lib.util.SimpleIdentifier;
 
-public class Spell extends Identifier implements ISpell {
+public class Spell extends SimpleIdentifier implements ISpell {
   private final CircleType circleType;
   private final ICostList temporaryCost;
   private ISourceList source;

@@ -2,7 +2,7 @@ package net.sf.anathema.character.generic.impl.magic.persistence.builder;
 
 import com.google.common.base.Strings;
 import net.sf.anathema.character.generic.magic.charms.CharmException;
-import net.sf.anathema.lib.util.Identified;
+import net.sf.anathema.lib.util.Identifier;
 import net.sf.anathema.lib.xml.ElementUtilities;
 import org.dom4j.Element;
 
@@ -15,7 +15,7 @@ import static net.sf.anathema.character.generic.impl.magic.ICharmXMLConstants.TA
 
 public class GenericCharmUtilities {
 
-  public static Collection<String> getAllReferencedGenericCharms(Element parent, Identified type) throws CharmException {
+  public static Collection<String> getAllReferencedGenericCharms(Element parent, Identifier type) throws CharmException {
     List<String> charmIds = new ArrayList<>();
     List<Element> charmReferences = ElementUtilities.elements(parent, TAG_GENERIC_CHARM_REFERENCE);
     for (Element element : charmReferences) {

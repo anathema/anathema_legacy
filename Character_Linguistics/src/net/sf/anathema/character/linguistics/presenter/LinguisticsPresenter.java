@@ -13,7 +13,7 @@ import net.sf.anathema.lib.control.legality.LegalityColorProvider;
 import net.sf.anathema.lib.file.RelativePath;
 import net.sf.anathema.lib.gui.Presenter;
 import net.sf.anathema.lib.resources.Resources;
-import net.sf.anathema.lib.util.Identified;
+import net.sf.anathema.lib.util.Identifier;
 import net.sf.anathema.lib.workflow.labelledvalue.ILabelledAlotmentView;
 import net.sf.anathema.lib.workflow.labelledvalue.IValueView;
 
@@ -30,8 +30,8 @@ public class LinguisticsPresenter implements Presenter {
   private final ILinguisticsModel model;
   private final ILinguisticsView view;
   private final Resources resources;
-  private final Map<Identified, IRemovableEntryView> viewsByEntry = new HashMap<>();
-  private final Map<String, Identified> languagesByDisplayName = new HashMap<>();
+  private final Map<Identifier, IRemovableEntryView> viewsByEntry = new HashMap<>();
+  private final Map<String, Identifier> languagesByDisplayName = new HashMap<>();
 
   public LinguisticsPresenter(ILinguisticsModel model, ILinguisticsView view, Resources resources) {
     this.model = model;
@@ -53,9 +53,9 @@ public class LinguisticsPresenter implements Presenter {
         resources.getString("Linguistics.Overview.Barbarian"), 2);
     final ILabelledAlotmentView totalView = overview.addAlotmentView(
         resources.getString("Linguistics.Overview.Total"), 2);
-    model.addModelChangeListener(new IRemovableEntryListener<Identified>() {
+    model.addModelChangeListener(new IRemovableEntryListener<Identifier>() {
       @Override
-      public void entryAdded(Identified entry) {
+      public void entryAdded(Identifier entry) {
         updateOverview(familyView, totalView, barbarianView);
       }
 
@@ -65,7 +65,7 @@ public class LinguisticsPresenter implements Presenter {
       }
 
       @Override
-      public void entryRemoved(Identified entry) {
+      public void entryRemoved(Identifier entry) {
         updateOverview(familyView, totalView, barbarianView);
       }
     });
@@ -130,7 +130,7 @@ private void initEntryPresentation() {
         if (newValue == null) {
           return;
         }
-        Identified definedLanguage = getLanguage(newValue);
+        Identifier definedLanguage = getLanguage(newValue);
         if (definedLanguage == null) {
           model.selectBarbarianLanguage(newValue.toString());
         }
@@ -148,9 +148,9 @@ private void initEntryPresentation() {
         model.commitSelection();
       }
     });
-    model.addModelChangeListener(new IRemovableEntryListener<Identified>() {
+    model.addModelChangeListener(new IRemovableEntryListener<Identifier>() {
       @Override
-      public void entryAdded(Identified entry) {
+      public void entryAdded(Identifier entry) {
         addEntry(basicUi, entry);
         selectionView.setSelectedObject(null);
       }
@@ -161,20 +161,20 @@ private void initEntryPresentation() {
       }
 
       @Override
-      public void entryRemoved(Identified entry) {
+      public void entryRemoved(Identifier entry) {
         IRemovableEntryView entryView = viewsByEntry.remove(entry);
         view.removeEntryView(entryView);
       }
     });
-    for (Identified language : model.getPredefinedLanguages()) {
+    for (Identifier language : model.getPredefinedLanguages()) {
       languagesByDisplayName.put(getDisplayString(language), language);
     }
-    for (Identified language : model.getEntries()) {
+    for (Identifier language : model.getEntries()) {
       addEntry(basicUi, language);
     }
   }
 
-  private void addEntry(BasicUi basicUi, final Identified language) {
+  private void addEntry(BasicUi basicUi, final Identifier language) {
     RelativePath removeIcon = basicUi.getRemoveIconPath();
     IRemovableEntryView entryView = view.addEntryView(removeIcon, null, getDisplayString(language));
     viewsByEntry.put(language, entryView);
@@ -186,12 +186,12 @@ private void initEntryPresentation() {
     });
   }
 
-  private Identified getLanguage(Object anObject) {
-    if (anObject instanceof Identified) {
-      return (Identified) anObject;
+  private Identifier getLanguage(Object anObject) {
+    if (anObject instanceof Identifier) {
+      return (Identifier) anObject;
     }
     String displayName = anObject.toString();
-    Identified language = languagesByDisplayName.get(displayName);
+    Identifier language = languagesByDisplayName.get(displayName);
     if (language != null) {
       return language;
     }
@@ -203,7 +203,7 @@ private void initEntryPresentation() {
       return null;
     }
     if (model.isPredefinedLanguage(object)) {
-      return resources.getString("Language." + ((Identified) object).getId());
+      return resources.getString("Language." + ((Identifier) object).getId());
     }
     return object.toString();
   }

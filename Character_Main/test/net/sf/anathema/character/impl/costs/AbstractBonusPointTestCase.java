@@ -27,7 +27,7 @@ import net.sf.anathema.character.library.trait.favorable.FriendlyIncrementChecke
 import net.sf.anathema.character.library.trait.favorable.IFavorableTrait;
 import net.sf.anathema.character.library.trait.favorable.IIncrementChecker;
 import net.sf.anathema.lib.collection.MultiEntryMap;
-import net.sf.anathema.lib.util.Identifier;
+import net.sf.anathema.lib.util.SimpleIdentifier;
 
 public abstract class AbstractBonusPointTestCase {
 
@@ -69,7 +69,7 @@ public abstract class AbstractBonusPointTestCase {
     for (final AbilityType traitType : AbilityType.values()) {
       DummyCasteType[] casteType = {new DummyCasteType()};
       IIdentifiedCasteTraitTypeGroup typeGroup = new IdentifiedCasteTraitTypeGroup(new ITraitType[]{traitType},
-              new Identifier("Test"), new MultiEntryMap<ITraitType, ICasteType>());
+              new SimpleIdentifier("Test"), new MultiEntryMap<ITraitType, ICasteType>());
       IFavorableTrait trait = favorableTraitFactory.createTraits(typeGroup, friendlyIncrementChecker,
               new DummyTypedTraitTemplateFactory(traitType))[0];
       coreTraits.addTestTrait(trait);

@@ -1,9 +1,9 @@
 package net.sf.anathema.character.intimacies.template;
 
 import net.sf.anathema.character.generic.template.additional.IGlobalAdditionalTemplate;
-import net.sf.anathema.lib.util.Identifier;
+import net.sf.anathema.lib.util.SimpleIdentifier;
 
-public class IntimaciesTemplate extends Identifier implements IGlobalAdditionalTemplate {
+public class IntimaciesTemplate extends SimpleIdentifier implements IGlobalAdditionalTemplate {
 
   public static final String ID = "Intimacies";
 

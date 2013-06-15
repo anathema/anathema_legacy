@@ -2,19 +2,19 @@ package net.sf.anathema.character.linguistics.presenter;
 
 import net.sf.anathema.character.library.removableentry.presenter.IRemovableEntryModel;
 import net.sf.anathema.lib.control.IChangeListener;
-import net.sf.anathema.lib.util.Identified;
+import net.sf.anathema.lib.util.Identifier;
 
-public interface ILinguisticsModel extends IRemovableEntryModel<Identified> {
+public interface ILinguisticsModel extends IRemovableEntryModel<Identifier> {
 
-  Identified[] getPredefinedLanguages();
+  Identifier[] getPredefinedLanguages();
 
   boolean isPredefinedLanguage(Object object);
 
-  Identified getPredefinedLanguageById(String displayName);
+  Identifier getPredefinedLanguageById(String displayName);
 
   void selectBarbarianLanguage(String customName);
 
-  void selectLanguage(Identified language);
+  void selectLanguage(Identifier language);
 
   boolean isEntryAllowed();
 

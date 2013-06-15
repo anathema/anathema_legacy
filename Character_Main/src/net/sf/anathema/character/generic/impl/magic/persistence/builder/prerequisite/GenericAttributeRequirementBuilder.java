@@ -4,7 +4,7 @@ import net.sf.anathema.character.generic.impl.magic.ICharmXMLConstants;
 import net.sf.anathema.character.generic.magic.charms.CharmException;
 import net.sf.anathema.character.generic.magic.charms.IndirectCharmRequirement;
 import net.sf.anathema.character.generic.traits.ITraitType;
-import net.sf.anathema.lib.util.Identified;
+import net.sf.anathema.lib.util.Identifier;
 import net.sf.anathema.lib.xml.ElementUtilities;
 import org.dom4j.Element;
 
@@ -14,7 +14,7 @@ import java.util.List;
 
 public class GenericAttributeRequirementBuilder extends AttributeRequirementBuilder {
 
-  private Identified type;
+  private Identifier type;
 
   @Override
   public IndirectCharmRequirement[] getCharmAttributeRequirements(Element prerequisitesElement) throws CharmException {

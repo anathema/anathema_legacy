@@ -5,7 +5,7 @@ import net.sf.anathema.character.generic.framework.additionaltemplate.persistenc
 import net.sf.anathema.character.linguistics.ILinguisticsAdditionalModel;
 import net.sf.anathema.character.linguistics.presenter.ILinguisticsModel;
 import net.sf.anathema.lib.exception.PersistenceException;
-import net.sf.anathema.lib.util.Identified;
+import net.sf.anathema.lib.util.Identifier;
 import net.sf.anathema.lib.xml.ElementUtilities;
 import org.dom4j.Element;
 
@@ -20,7 +20,7 @@ public class LinguisticsPersister implements IAdditionalPersister {
     ILinguisticsModel model = ((ILinguisticsAdditionalModel) additionalModel).getLinguisticsModel();
     for (Element languageElement : ElementUtilities.elements(element, TAG_LANGUAGE)) {
       String name = languageElement.getText();
-      Identified language = model.getPredefinedLanguageById(name);
+      Identifier language = model.getPredefinedLanguageById(name);
       if (language != null) {
         model.selectLanguage(language);
       }
@@ -35,7 +35,7 @@ public class LinguisticsPersister implements IAdditionalPersister {
   public void save(Element parent, IAdditionalModel additionalModel) {
     Element element = parent.addElement(TAG_LANGUAGES);
     ILinguisticsModel model = ((ILinguisticsAdditionalModel) additionalModel).getLinguisticsModel();
-    for (Identified language : model.getEntries()) {
+    for (Identifier language : model.getEntries()) {
       Element languageElement = element.addElement(TAG_LANGUAGE);
       languageElement.addCDATA(language.getId());
     }

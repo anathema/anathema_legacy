@@ -5,7 +5,7 @@ import net.sf.anathema.character.change.ChangeAnnouncer;
 import net.sf.anathema.character.model.CharacterModel;
 import net.sf.anathema.character.model.Hero;
 import net.sf.anathema.lib.control.ObjectValueListener;
-import net.sf.anathema.lib.util.Identified;
+import net.sf.anathema.lib.util.Identifier;
 import net.sf.anathema.lib.workflow.textualdescription.ITextualDescription;
 import net.sf.anathema.lib.workflow.textualdescription.model.SimpleTextualDescription;
 
@@ -97,7 +97,7 @@ public class TextualCharacterDescription implements CharacterDescription, Charac
   }
 
   @Override
-  public Identified getId() {
+  public Identifier getId() {
     return ID;
   }
 

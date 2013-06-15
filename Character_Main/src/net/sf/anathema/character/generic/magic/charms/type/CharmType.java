@@ -1,9 +1,9 @@
 package net.sf.anathema.character.generic.magic.charms.type;
 
 import net.sf.anathema.character.generic.magic.charms.ICharmTypeVisitor;
-import net.sf.anathema.lib.util.Identified;
+import net.sf.anathema.lib.util.Identifier;
 
-public enum CharmType implements Identified {
+public enum CharmType implements Identifier {
   Simple() {
     @Override
     public void accept(ICharmTypeVisitor visitor) {

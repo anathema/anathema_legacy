@@ -3,7 +3,7 @@ package net.sf.anathema.character.generic.magic;
 import net.sf.anathema.character.generic.impl.magic.CharmAttribute;
 import net.sf.anathema.character.generic.impl.magic.CharmAttributeRequirement;
 import net.sf.anathema.character.magic.dummy.DummyCharm;
-import net.sf.anathema.lib.util.Identified;
+import net.sf.anathema.lib.util.Identifier;
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
@@ -61,7 +61,7 @@ public class CharmAttributeRequirementTest {
   private DummyCharm createAttributedDummyCharm() {
     return new DummyCharm() {
       @Override
-      public boolean hasAttribute(Identified charmAttribute) {
+      public boolean hasAttribute(Identifier charmAttribute) {
         return true;
       }
     };

@@ -5,7 +5,7 @@ import net.sf.anathema.character.generic.type.ICharacterType;
 import net.sf.anathema.charmtree.presenter.CharmFilterSet;
 import net.sf.anathema.charmtree.view.AbstractCharmGroupChangeListener;
 import net.sf.anathema.charmtree.view.CharmDisplayPropertiesMap;
-import net.sf.anathema.lib.util.Identified;
+import net.sf.anathema.lib.util.Identifier;
 import net.sf.anathema.platform.tree.document.visualizer.ITreePresentationProperties;
 import net.sf.anathema.platform.tree.util.RGBColor;
 
@@ -22,13 +22,13 @@ public class CascadeCharmGroupChangeListener extends AbstractCharmGroupChangeLis
   }
 
   @Override
-  protected final void modifyCharmVisuals(Identified type) {
+  protected final void modifyCharmVisuals(Identifier type) {
     viewProperties.setCharmType(type);
     RGBColor color = findColor(type);
     cascadeView.setBackgroundColor(color);
   }
 
-  private RGBColor findColor(Identified type) {
+  private RGBColor findColor(Identifier type) {
     if (type instanceof ICharacterType) {
       ITreePresentationProperties displayProperties = getDisplayProperties((ICharacterType) type);
       return displayProperties.getColor();

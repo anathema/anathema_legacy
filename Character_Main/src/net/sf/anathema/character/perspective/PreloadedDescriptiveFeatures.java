@@ -4,7 +4,7 @@ import net.sf.anathema.character.CharacterPrintNameFileScanner;
 import net.sf.anathema.character.generic.template.ITemplateType;
 import net.sf.anathema.character.perspective.model.CharacterIdentifier;
 import net.sf.anathema.framework.view.PrintNameFile;
-import net.sf.anathema.lib.util.Identified;
+import net.sf.anathema.lib.util.Identifier;
 
 public class PreloadedDescriptiveFeatures implements DescriptiveFeatures {
 
@@ -33,7 +33,7 @@ public class PreloadedDescriptiveFeatures implements DescriptiveFeatures {
   }
 
   @Override
-  public Identified getCasteType() {
+  public Identifier getCasteType() {
     return fileScanner.getCasteType(printNameFile);
   }
 

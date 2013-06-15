@@ -15,7 +15,7 @@ import net.sf.anathema.character.generic.equipment.weapon.IArmourStats;
 import net.sf.anathema.character.generic.equipment.weapon.IEquipmentStats;
 import net.sf.anathema.character.generic.equipment.weapon.IWeaponStats;
 import net.sf.anathema.character.generic.health.HealthType;
-import net.sf.anathema.lib.util.Identified;
+import net.sf.anathema.lib.util.Identifier;
 
 import static net.sf.anathema.character.equipment.item.model.EquipmentStatisticsType.Artifact;
 
@@ -80,7 +80,7 @@ public class StatsToModel {
   }
 
   private void fillWeaponTagsModel(IWeaponTagsModel weaponTagsModel, IWeaponStats weaponStats) {
-    for (Identified tag : weaponStats.getTags()) {
+    for (Identifier tag : weaponStats.getTags()) {
       weaponTagsModel.getSelectedModel((WeaponTag) tag).setValue(true);
     }
   }

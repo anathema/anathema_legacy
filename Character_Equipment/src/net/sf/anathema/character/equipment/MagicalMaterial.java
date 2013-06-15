@@ -1,12 +1,12 @@
 package net.sf.anathema.character.equipment;
 
-import net.sf.anathema.lib.util.Identified;
+import net.sf.anathema.lib.util.Identifier;
 
 import java.util.List;
 
 import static com.google.common.collect.Lists.newArrayList;
 
-public enum MagicalMaterial implements Identified {
+public enum MagicalMaterial implements Identifier {
   Orichalcum, Jade, Moonsilver, Starmetal, Soulsteel, Adamant,
   VitriolOrichalcum, VitriolJade, VitriolMoonsilver, VitriolStarmetal, VitriolSoulsteel, VitriolAdamant;
 

@@ -1,15 +1,15 @@
 package net.sf.anathema.character.main.traits.model;
 
 import net.sf.anathema.character.library.trait.rules.ITraitRules;
-import net.sf.anathema.lib.util.Identified;
+import net.sf.anathema.lib.util.Identifier;
 
 public class TraitLearnValues {
 
-  public final Identified id;
+  public final Identifier id;
   private int creationValue;
   private int experiencedValue = ITraitRules.UNEXPERIENCED;
 
-  public TraitLearnValues(Identified id, int startingValue) {
+  public TraitLearnValues(Identifier id, int startingValue) {
     this.id = id;
     this.creationValue = startingValue;
   }

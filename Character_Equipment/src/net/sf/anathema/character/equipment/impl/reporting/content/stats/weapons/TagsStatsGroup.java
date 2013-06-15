@@ -12,7 +12,7 @@ import net.sf.anathema.character.equipment.impl.reporting.content.stats.IEquipme
 import net.sf.anathema.character.generic.equipment.weapon.IWeaponStats;
 import net.sf.anathema.character.reporting.pdf.rendering.general.table.TableEncodingUtilities;
 import net.sf.anathema.lib.resources.Resources;
-import net.sf.anathema.lib.util.Identified;
+import net.sf.anathema.lib.util.Identifier;
 
 import static net.sf.anathema.lib.lang.ArrayUtilities.transform;
 
@@ -45,10 +45,10 @@ public final class TagsStatsGroup implements IEquipmentStatsGroup<IWeaponStats> 
     if (weapon == null) {
       table.addCell(createEmptyNameCell(font));
     } else {
-      Identified[] tags = weapon.getTags();
-      String[] values = transform(tags, String.class, new Function<Identified, String>() {
+      Identifier[] tags = weapon.getTags();
+      String[] values = transform(tags, String.class, new Function<Identifier, String>() {
         @Override
-        public String apply(Identified input) {
+        public String apply(Identifier input) {
           return resources.getString("Weapons.Tags." + input.getId() + ".Short");
         }
       });

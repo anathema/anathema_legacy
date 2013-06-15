@@ -12,7 +12,7 @@ import net.sf.anathema.charmtree.presenter.AbstractCascadePresenter;
 import net.sf.anathema.charmtree.view.CharmDisplayPropertiesMap;
 import net.sf.anathema.charmtree.view.DefaultNodeProperties;
 import net.sf.anathema.lib.resources.Resources;
-import net.sf.anathema.lib.util.Identified;
+import net.sf.anathema.lib.util.Identifier;
 
 public class CascadePresenter extends AbstractCascadePresenter implements ICascadePresenter {
 
@@ -44,7 +44,7 @@ public class CascadePresenter extends AbstractCascadePresenter implements ICasca
   }
 
   @Override
-  protected GroupCharmTree getCharmTree(Identified type) {
+  protected GroupCharmTree getCharmTree(Identifier type) {
     return treeIdentificateMap.get(type);
   }
 }

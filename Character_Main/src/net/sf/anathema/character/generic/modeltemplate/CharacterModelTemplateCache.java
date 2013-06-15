@@ -3,7 +3,7 @@ package net.sf.anathema.character.generic.modeltemplate;
 import net.sf.anathema.character.generic.data.IExtensibleDataSet;
 import net.sf.anathema.lib.exception.AnathemaException;
 import net.sf.anathema.lib.resources.ResourceFile;
-import net.sf.anathema.lib.util.Identified;
+import net.sf.anathema.lib.util.Identifier;
 import org.apache.commons.io.IOUtils;
 
 import java.io.IOException;
@@ -15,13 +15,13 @@ import java.util.Map;
 public class CharacterModelTemplateCache implements IExtensibleDataSet {
 
   private final List<ResourceFile> templateResources;
-  private Map<Identified, Object> templateById = new HashMap<>();
+  private Map<Identifier, Object> templateById = new HashMap<>();
 
   public CharacterModelTemplateCache(List<ResourceFile> templateResources) {
     this.templateResources = templateResources;
   }
 
-  public <T> T loadTemplate(Identified templateId, TemplateLoader<T> loader) {
+  public <T> T loadTemplate(Identifier templateId, TemplateLoader<T> loader) {
     if (templateById.containsKey(templateId)) {
       return (T) templateById.get(templateId);
     }
@@ -31,7 +31,7 @@ public class CharacterModelTemplateCache implements IExtensibleDataSet {
     return template;
   }
 
-  private ResourceFile getResourceFileFor(Identified templateId) {
+  private ResourceFile getResourceFileFor(Identifier templateId) {
     for (ResourceFile file : templateResources) {
       if (file.getFileName().endsWith("/" + templateId.getId() + ".cmt")) {
         return file;

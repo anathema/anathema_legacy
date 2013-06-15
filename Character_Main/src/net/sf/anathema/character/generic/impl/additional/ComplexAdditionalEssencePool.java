@@ -7,12 +7,12 @@ import com.eteks.parser.IntegerInterpreter;
 import net.sf.anathema.character.generic.character.IGenericTraitCollection;
 import net.sf.anathema.character.generic.impl.util.ComplexPoolExpressionParameter;
 import net.sf.anathema.character.generic.impl.util.AnathemaExpressionSyntax;
-import net.sf.anathema.lib.util.Identified;
+import net.sf.anathema.lib.util.Identifier;
 
 import java.util.HashMap;
 import java.util.Map;
 
-public class ComplexAdditionalEssencePool implements Identified {
+public class ComplexAdditionalEssencePool implements Identifier {
 
   private final String id;
   private final CompiledExpression expression;

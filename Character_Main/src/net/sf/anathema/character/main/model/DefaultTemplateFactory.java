@@ -4,7 +4,7 @@ import net.sf.anathema.character.generic.framework.ICharacterGenerics;
 import net.sf.anathema.character.generic.modeltemplate.CharacterModelTemplateCache;
 import net.sf.anathema.character.generic.modeltemplate.TemplateLoader;
 import net.sf.anathema.character.model.TemplateFactory;
-import net.sf.anathema.lib.util.Identified;
+import net.sf.anathema.lib.util.Identifier;
 
 public class DefaultTemplateFactory implements TemplateFactory {
 
@@ -14,7 +14,7 @@ public class DefaultTemplateFactory implements TemplateFactory {
     this.templateCache = generics.getDataSet(CharacterModelTemplateCache.class);
   }
 
-  public <T> T loadModelTemplate(Identified templateId, TemplateLoader<T> loader) {
+  public <T> T loadModelTemplate(Identifier templateId, TemplateLoader<T> loader) {
     return templateCache.loadTemplate(templateId, loader);
   }
 }

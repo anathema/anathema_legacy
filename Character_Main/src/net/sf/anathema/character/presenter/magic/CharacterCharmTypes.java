@@ -2,7 +2,7 @@ package net.sf.anathema.character.presenter.magic;
 
 import com.google.common.collect.Lists;
 import net.sf.anathema.character.generic.type.ICharacterType;
-import net.sf.anathema.lib.util.Identified;
+import net.sf.anathema.lib.util.Identifier;
 
 import java.util.List;
 
@@ -15,9 +15,9 @@ public class CharacterCharmTypes extends AbstractCharmTypes {
   }
 
   @Override
-  protected List<Identified> getCurrentCharacterTypes() {
+  protected List<Identifier> getCurrentCharacterTypes() {
     boolean alienCharms = model.isAllowedAlienCharms();
     ICharacterType[] characterTypes = model.getCharmConfiguration().getCharacterTypes(alienCharms);
-    return Lists.<Identified>newArrayList(characterTypes);
+    return Lists.<Identifier>newArrayList(characterTypes);
   }
 }

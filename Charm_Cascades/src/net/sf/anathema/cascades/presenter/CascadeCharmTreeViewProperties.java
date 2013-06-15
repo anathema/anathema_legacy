@@ -9,11 +9,11 @@ import net.sf.anathema.character.generic.magic.description.MagicDescriptionProvi
 import net.sf.anathema.charmtree.view.AbstractCharmTreeViewProperties;
 import net.sf.anathema.charmtree.view.NullSpecialCharm;
 import net.sf.anathema.lib.resources.Resources;
-import net.sf.anathema.lib.util.Identified;
+import net.sf.anathema.lib.util.Identifier;
 
 public class CascadeCharmTreeViewProperties extends AbstractCharmTreeViewProperties implements ICharmIdMap {
 
-  private Identified type;
+  private Identifier type;
   private CharmTreeIdentificateMap treeIdentificateMap;
   private final ICharmCache cache;
   private final ICharacterGenerics generics;
@@ -46,7 +46,7 @@ public class CascadeCharmTreeViewProperties extends AbstractCharmTreeViewPropert
     return new NullSpecialCharm();
   }
 
-  public void setCharmType(Identified type) {
+  public void setCharmType(Identifier type) {
     this.type = type;
   }
 

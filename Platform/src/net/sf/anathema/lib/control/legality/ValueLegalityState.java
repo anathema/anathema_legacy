@@ -1,8 +1,8 @@
 package net.sf.anathema.lib.control.legality;
 
-import net.sf.anathema.lib.util.Identified;
+import net.sf.anathema.lib.util.Identifier;
 
-public enum ValueLegalityState implements Identified {
+public enum ValueLegalityState implements Identifier {
 
   Low {
     @Override

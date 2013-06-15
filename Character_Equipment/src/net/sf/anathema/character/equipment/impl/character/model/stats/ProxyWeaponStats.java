@@ -32,7 +32,7 @@ import net.sf.anathema.character.generic.equipment.weapon.IWeaponStats;
 import net.sf.anathema.character.generic.health.HealthType;
 import net.sf.anathema.character.generic.traits.ITraitType;
 import net.sf.anathema.character.generic.util.IProxy;
-import net.sf.anathema.lib.util.Identified;
+import net.sf.anathema.lib.util.Identifier;
 import org.apache.commons.lang3.ArrayUtils;
 
 public class ProxyWeaponStats extends AbstractStats implements IWeaponStats, IProxy<IWeaponStats> {
@@ -158,7 +158,7 @@ public class ProxyWeaponStats extends AbstractStats implements IWeaponStats, IPr
   }
 
   @Override
-  public Identified[] getTags() {
+  public Identifier[] getTags() {
     return new TagsModification(material).getModifiedValue(delegate.getTags());
   }
 
@@ -177,7 +177,7 @@ public class ProxyWeaponStats extends AbstractStats implements IWeaponStats, IPr
   }
 
   @Override
-  public Identified getName() {
+  public Identifier getName() {
     return delegate.getName();
   }
 

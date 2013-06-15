@@ -6,7 +6,7 @@ import net.sf.anathema.framework.view.EnumSelectCellRenderer;
 import net.sf.anathema.initialization.PreferenceElement;
 import net.sf.anathema.initialization.reflections.Weight;
 import net.sf.anathema.lib.resources.Resources;
-import net.sf.anathema.lib.util.Identified;
+import net.sf.anathema.lib.util.Identifier;
 
 import javax.swing.JPanel;
 import java.awt.event.ActionEvent;
@@ -70,7 +70,7 @@ public class PageFormatPreferenceElement implements IPreferencesElement {
   }
 
   @Override
-  public Identified getCategory() {
+  public Identifier getCategory() {
       return SYSTEM_CATEGORY;
   }
 }

@@ -4,7 +4,7 @@ import net.sf.anathema.character.equipment.character.model.IEquipmentItem;
 import net.sf.anathema.character.generic.equipment.weapon.IEquipmentStats;
 import net.sf.anathema.character.generic.equipment.weapon.IWeaponStats;
 import net.sf.anathema.lib.resources.Resources;
-import net.sf.anathema.lib.util.Identified;
+import net.sf.anathema.lib.util.Identifier;
 
 import java.util.ArrayList;
 import java.util.Collection;
@@ -33,10 +33,10 @@ public class WeaponStatsNameStringFactory {
     if (item == null) {
       return true;
     }
-    return Collections.frequency(getStatNames(item, new ArrayList<Identified>()), stats.getName()) > 1;
+    return Collections.frequency(getStatNames(item, new ArrayList<Identifier>()), stats.getName()) > 1;
   }
 
-  private Collection<Identified> getStatNames(IEquipmentItem item, Collection<Identified> names) {
+  private Collection<Identifier> getStatNames(IEquipmentItem item, Collection<Identifier> names) {
     for (IEquipmentStats stats : item.getStats()) {
       names.add(stats.getName());
     }

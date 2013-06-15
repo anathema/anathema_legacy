@@ -24,7 +24,7 @@ import net.sf.anathema.framework.messaging.IMessaging;
 import net.sf.anathema.framework.persistence.TextPersister;
 import net.sf.anathema.lib.exception.PersistenceException;
 import net.sf.anathema.lib.message.MessageType;
-import net.sf.anathema.lib.util.Identified;
+import net.sf.anathema.lib.util.Identifier;
 import net.sf.anathema.lib.xml.ElementUtilities;
 import org.dom4j.Element;
 
@@ -74,7 +74,7 @@ public class CharmConfigurationPersister {
 
   private ICharmConfiguration saveCharms(Element charmsElement, ICharmTemplate charmTemplate, ICharmConfiguration charmConfiguration) {
     CharmSaver saver = new CharmSaver(charmConfiguration);
-    for (Identified type : charmConfiguration.getCharacterTypes(true)) {
+    for (Identifier type : charmConfiguration.getCharacterTypes(true)) {
       saver.saveCharms(type, charmsElement);
     }
     saver.saveCharms(MartialArtsUtilities.MARTIAL_ARTS, charmsElement);

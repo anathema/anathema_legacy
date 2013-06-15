@@ -3,7 +3,7 @@ package net.sf.anathema.character.generic.traits.groups;
 import net.sf.anathema.character.generic.caste.ICasteType;
 import net.sf.anathema.character.generic.traits.ITraitType;
 import net.sf.anathema.lib.collection.MultiEntryMap;
-import net.sf.anathema.lib.util.Identified;
+import net.sf.anathema.lib.util.Identifier;
 
 import java.util.List;
 
@@ -11,7 +11,7 @@ public class IdentifiedCasteTraitTypeGroup extends IdentifiedTraitTypeGroup impl
 
   private final MultiEntryMap<ITraitType, ICasteType> castesByTrait;
 
-  public IdentifiedCasteTraitTypeGroup(ITraitType[] traitTypes, Identified groupId,
+  public IdentifiedCasteTraitTypeGroup(ITraitType[] traitTypes, Identifier groupId,
                                        MultiEntryMap<ITraitType, ICasteType> castesByTrait) {
     super(traitTypes, groupId);
     this.castesByTrait = castesByTrait;

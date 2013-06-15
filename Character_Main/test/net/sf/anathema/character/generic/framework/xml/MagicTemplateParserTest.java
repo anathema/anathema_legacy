@@ -12,7 +12,7 @@ import net.sf.anathema.character.generic.magic.spells.CircleType;
 import net.sf.anathema.character.generic.template.magic.ICharmTemplate;
 import net.sf.anathema.character.magic.dummy.DummyCharm;
 import net.sf.anathema.character.magic.dummy.DummyCharmUtilities;
-import net.sf.anathema.lib.util.Identified;
+import net.sf.anathema.lib.util.Identifier;
 import net.sf.anathema.lib.xml.DocumentUtilities;
 import org.apache.commons.lang3.ArrayUtils;
 import org.dom4j.Element;
@@ -112,7 +112,7 @@ public class MagicTemplateParserTest {
     GenericMagicTemplate template = parser.parseTemplate(templateElement);
     DummyCharm dummyMartialArtsCharm = new DummyCharm("Dummy") {
       @Override
-      public boolean hasAttribute(Identified attribute) {
+      public boolean hasAttribute(Identifier attribute) {
         return attribute.getId().equals("MartialArts") || attribute.getId().equals("Celestial");
       }
     };
@@ -128,7 +128,7 @@ public class MagicTemplateParserTest {
     GenericMagicTemplate template = parser.parseTemplate(templateElement);
     DummyCharm dummyMartialArtsCharm = new DummyCharm("Dummy") {
       @Override
-      public boolean hasAttribute(Identified attribute) {
+      public boolean hasAttribute(Identifier attribute) {
         return attribute.getId().equals("MartialArts") || attribute.getId().equals("Celestial");
       }
     };

@@ -3,9 +3,9 @@ package net.sf.anathema.character.generic.impl.magic.charm;
 import net.sf.anathema.character.generic.magic.ICharm;
 import net.sf.anathema.character.generic.magic.charms.ICharmGroup;
 import net.sf.anathema.character.generic.type.ICharacterType;
-import net.sf.anathema.lib.util.Identified;
+import net.sf.anathema.lib.util.Identifier;
 
-public class CharmGroup implements ICharmGroup, Identified {
+public class CharmGroup implements ICharmGroup, Identifier {
 
   private final String id;
   private final ICharm[] charms;

@@ -1,11 +1,11 @@
 package net.sf.anathema.lib.compare;
 
 import net.sf.anathema.lib.resources.Resources;
-import net.sf.anathema.lib.util.Identified;
+import net.sf.anathema.lib.util.Identifier;
 
 import java.util.Comparator;
 
-public class I18nedIdentificateComparator implements Comparator<Identified> {
+public class I18nedIdentificateComparator implements Comparator<Identifier> {
 
   private final Resources resources;
 
@@ -14,13 +14,13 @@ public class I18nedIdentificateComparator implements Comparator<Identified> {
   }
 
   @Override
-  public int compare(Identified group1, Identified group2) {
+  public int compare(Identifier group1, Identifier group2) {
     String firstGroupName = getString(group1);
     String secondGroupName = getString(group2);
     return firstGroupName.compareToIgnoreCase(secondGroupName);
   }
 
-  protected String getString(Identified group1) {
+  protected String getString(Identifier group1) {
     return resources.getString(group1.getId());
   }
 }

@@ -7,7 +7,7 @@ import net.sf.anathema.character.generic.template.ITemplateType;
 import net.sf.anathema.character.perspective.model.CharacterIdentifier;
 import net.sf.anathema.lib.file.RelativePath;
 import net.sf.anathema.lib.resources.Resources;
-import net.sf.anathema.lib.util.Identified;
+import net.sf.anathema.lib.util.Identifier;
 
 import static net.sf.anathema.character.generic.caste.ICasteType.NULL_CASTE_TYPE;
 import static net.sf.anathema.character.generic.impl.persistence.SecondEdition.SECOND_EDITION;
@@ -24,7 +24,7 @@ public class ToCharacterButtonDto implements Function<DescriptiveFeatures, Chara
     String text = input.getPrintName();
     CharacterIdentifier identifier = input.getIdentifier();
     ITemplateType templateType = input.getTemplateType();
-    Identified casteType = input.getCasteType();
+    Identifier casteType = input.getCasteType();
     String details = getDetails(templateType);
     RelativePath pathToImage = getPathToImage(templateType, casteType);
     boolean dirty = input.isDirty();
@@ -37,7 +37,7 @@ public class ToCharacterButtonDto implements Function<DescriptiveFeatures, Chara
     return resources.getString(presentationTemplate.getNewActionResource());
   }
 
-  private RelativePath getPathToImage(ITemplateType templateType, Identified casteType) {
+  private RelativePath getPathToImage(ITemplateType templateType, Identifier casteType) {
     if (casteType == NULL_CASTE_TYPE) {
       return new CharacterUI().getLargeTypeIconPath(templateType.getCharacterType());
     } else {

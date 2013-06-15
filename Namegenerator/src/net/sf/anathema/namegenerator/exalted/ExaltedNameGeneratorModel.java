@@ -2,8 +2,8 @@ package net.sf.anathema.namegenerator.exalted;
 
 import com.google.common.base.Objects;
 import net.sf.anathema.lib.control.IChangeListener;
-import net.sf.anathema.lib.util.Identified;
 import net.sf.anathema.lib.util.Identifier;
+import net.sf.anathema.lib.util.SimpleIdentifier;
 import net.sf.anathema.namegenerator.domain.INameGenerator;
 import net.sf.anathema.namegenerator.domain.realm.RealmNameGenerator;
 import net.sf.anathema.namegenerator.exalted.domain.ThresholdNameGenerator;
@@ -16,18 +16,18 @@ import java.util.Set;
 
 public class ExaltedNameGeneratorModel implements INameGeneratorModel {
 
-  private Identified selectedGeneratorType;
+  private Identifier selectedGeneratorType;
   private final Announcer<IChangeListener> selectedGeneratorTypeListeners = Announcer.to(IChangeListener.class);
-  private final Map<Identified, INameGenerator> generatorsByIdentificate = new LinkedHashMap<>();
+  private final Map<Identifier, INameGenerator> generatorsByIdentificate = new LinkedHashMap<>();
 
   public ExaltedNameGeneratorModel() {
-    generatorsByIdentificate.put(new Identifier("Namegenerator.Realm"), new RealmNameGenerator());
-    generatorsByIdentificate.put(new Identifier("Namegenerator.Threshold"), new ThresholdNameGenerator());
+    generatorsByIdentificate.put(new SimpleIdentifier("Namegenerator.Realm"), new RealmNameGenerator());
+    generatorsByIdentificate.put(new SimpleIdentifier("Namegenerator.Threshold"), new ThresholdNameGenerator());
     selectedGeneratorType = generatorsByIdentificate.keySet().iterator().next();
   }
 
   @Override
-  public Set<Identified> getGeneratorTypes() {
+  public Set<Identifier> getGeneratorTypes() {
     return generatorsByIdentificate.keySet();
   }
 
@@ -37,12 +37,12 @@ public class ExaltedNameGeneratorModel implements INameGeneratorModel {
   }
 
   @Override
-  public Identified getSelectedGeneratorType() {
+  public Identifier getSelectedGeneratorType() {
     return selectedGeneratorType;
   }
 
   @Override
-  public void setGeneratorType(Identified selectedGeneratorType) {
+  public void setGeneratorType(Identifier selectedGeneratorType) {
     if (Objects.equal(selectedGeneratorType, this.selectedGeneratorType)) {
       return;
     }

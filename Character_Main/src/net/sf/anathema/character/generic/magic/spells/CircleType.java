@@ -1,11 +1,11 @@
 package net.sf.anathema.character.generic.magic.spells;
 
-import net.sf.anathema.lib.util.Identified;
+import net.sf.anathema.lib.util.Identifier;
 
 import java.util.ArrayList;
 import java.util.List;
 
-public enum CircleType implements Identified {
+public enum CircleType implements Identifier {
 
   Terrestrial {
     @Override

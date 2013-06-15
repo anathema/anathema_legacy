@@ -1,7 +1,7 @@
 package net.sf.anathema.framework.presenter.view;
 
 import net.sf.anathema.lib.resources.Resources;
-import net.sf.anathema.lib.util.Identified;
+import net.sf.anathema.lib.util.Identifier;
 
 import javax.swing.DefaultListCellRenderer;
 import javax.swing.JList;
@@ -22,8 +22,8 @@ public class IdentificateListCellRenderer extends DefaultListCellRenderer {
       int index,
       boolean isSelected,
       boolean cellHasFocus) {
-    if (value instanceof Identified) {
-      String printName = resources.getString(((Identified) value).getId());
+    if (value instanceof Identifier) {
+      String printName = resources.getString(((Identifier) value).getId());
       return super.getListCellRendererComponent(list, printName, index, isSelected, cellHasFocus);
     }
     return super.getListCellRendererComponent(list, value, index, isSelected, cellHasFocus);

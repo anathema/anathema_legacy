@@ -1,7 +1,7 @@
 package net.sf.anathema.lib.gui.list;
 
 import net.sf.anathema.lib.resources.Resources;
-import net.sf.anathema.lib.util.Identified;
+import net.sf.anathema.lib.util.Identifier;
 
 import javax.swing.DefaultListCellRenderer;
 import javax.swing.JList;
@@ -28,6 +28,6 @@ public abstract class LegalityCheckListCellRenderer extends DefaultListCellRende
   protected abstract boolean isLegal(Object object);
 
   protected String getPrintName(Resources res, Object value) {
-    return res.getString(((Identified) value).getId());
+    return res.getString(((Identifier) value).getId());
   }
 }

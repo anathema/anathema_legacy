@@ -19,8 +19,8 @@ import net.sf.anathema.character.main.experience.model.ExperienceModelFetcher;
 import net.sf.anathema.character.model.ICharacter;
 import net.sf.anathema.framework.messaging.IMessaging;
 import net.sf.anathema.lib.exception.PersistenceException;
-import net.sf.anathema.lib.util.Identified;
 import net.sf.anathema.lib.util.Identifier;
+import net.sf.anathema.lib.util.SimpleIdentifier;
 import net.sf.anathema.lib.xml.ElementUtilities;
 import org.dom4j.Element;
 
@@ -104,7 +104,7 @@ public class CharacterStatisticPersister {
     String typeId = ElementUtilities.getRequiredText(parent, TAG_CHARACTER_TYPE);
     ICharacterType characterType = generics.getCharacterTypes().findById(typeId);
     String subTypeValue = parent.element(TAG_CHARACTER_TYPE).attributeValue(ATTRIB_SUB_TYPE);
-    Identified subtype = subTypeValue == null ? TemplateType.DEFAULT_SUB_TYPE : new Identifier(subTypeValue);
+    Identifier subtype = subTypeValue == null ? TemplateType.DEFAULT_SUB_TYPE : new SimpleIdentifier(subTypeValue);
     return new TemplateType(characterType, subtype);
   }
 }

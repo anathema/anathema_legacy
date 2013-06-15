@@ -1,13 +1,13 @@
 package net.sf.anathema.lib.registry;
 
-import net.sf.anathema.lib.util.Identified;
+import net.sf.anathema.lib.util.Identifier;
 
 import java.util.Collection;
 import java.util.Collections;
 import java.util.LinkedHashSet;
 import java.util.Set;
 
-public class IdentificateRegistry<E extends Identified> implements
+public class IdentificateRegistry<E extends Identifier> implements
         IIdentificateRegistry<E> {
 
   private final Set<E> elements = new LinkedHashSet<>();

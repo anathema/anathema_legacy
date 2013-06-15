@@ -1,32 +1,32 @@
 package net.sf.anathema.character.generic.magic;
 
-import net.sf.anathema.lib.util.Identified;
 import net.sf.anathema.lib.util.Identifier;
+import net.sf.anathema.lib.util.SimpleIdentifier;
 
 @SuppressWarnings("UnusedDeclaration")
 public interface IExtendedCharmData extends ICharmData {
-  Identified COMBO_BASIC_ATTRIBUTE = new Identifier("Combo-Basic");
-  Identified COMBO_OK_ATTRIBUTE = new Identifier("Combo-OK");
-  Identified COMPULSION_ATTRIBUTE = new Identifier("Compulsion");
-  Identified COUNTERATTACK_ATTRIBUTE = new Identifier("Counterattack");
-  Identified CRIPPLING_ATTRIBUTE = new Identifier("Crippling");
-  Identified EMOTION_ATTRIBUTE = new Identifier("Emotion");
+  Identifier COMBO_BASIC_ATTRIBUTE = new SimpleIdentifier("Combo-Basic");
+  Identifier COMBO_OK_ATTRIBUTE = new SimpleIdentifier("Combo-OK");
+  Identifier COMPULSION_ATTRIBUTE = new SimpleIdentifier("Compulsion");
+  Identifier COUNTERATTACK_ATTRIBUTE = new SimpleIdentifier("Counterattack");
+  Identifier CRIPPLING_ATTRIBUTE = new SimpleIdentifier("Crippling");
+  Identifier EMOTION_ATTRIBUTE = new SimpleIdentifier("Emotion");
 
-  Identified HOLY_ATTRIBUTE = new Identifier("Holy");
-  Identified ILLUSION_ATTRIBUTE = new Identifier("Illusion");
-  Identified KNOCKBACK_ATTRIBUTE = new Identifier("Knockback");
-  Identified MANDATE_ATTRIBUTE = new Identifier("Mandate");
-  Identified OBVIOUS_ATTRIBUTE = new Identifier("Obvious");
-  Identified OVERDRIVE_ATTRIBUTE = new Identifier("Overdrive");
-  Identified POISON_ATTRIBUTE = new Identifier("Poison");
-  Identified SERVITUDE_ATTRIBUTE = new Identifier("Servitude");
-  Identified SHAPING_ATTRIBUTE = new Identifier("Shaping");
-  Identified SICKNESS_ATTRIBUTE = new Identifier("Sickness");
-  Identified SOCIAL_ATTRIBUTE = new Identifier("Social");
-  Identified STACKABLE_ATTRIBUTE = new Identifier("Stackable");
-  Identified TOUCH_ATTRIBUTE = new Identifier("Touch");
-  Identified TRAINING_ATTRIBUTE = new Identifier("Training");
-  Identified WAR_ATTRIBUTE = new Identifier("War");
+  Identifier HOLY_ATTRIBUTE = new SimpleIdentifier("Holy");
+  Identifier ILLUSION_ATTRIBUTE = new SimpleIdentifier("Illusion");
+  Identifier KNOCKBACK_ATTRIBUTE = new SimpleIdentifier("Knockback");
+  Identifier MANDATE_ATTRIBUTE = new SimpleIdentifier("Mandate");
+  Identifier OBVIOUS_ATTRIBUTE = new SimpleIdentifier("Obvious");
+  Identifier OVERDRIVE_ATTRIBUTE = new SimpleIdentifier("Overdrive");
+  Identifier POISON_ATTRIBUTE = new SimpleIdentifier("Poison");
+  Identifier SERVITUDE_ATTRIBUTE = new SimpleIdentifier("Servitude");
+  Identifier SHAPING_ATTRIBUTE = new SimpleIdentifier("Shaping");
+  Identifier SICKNESS_ATTRIBUTE = new SimpleIdentifier("Sickness");
+  Identifier SOCIAL_ATTRIBUTE = new SimpleIdentifier("Social");
+  Identifier STACKABLE_ATTRIBUTE = new SimpleIdentifier("Stackable");
+  Identifier TOUCH_ATTRIBUTE = new SimpleIdentifier("Touch");
+  Identifier TRAINING_ATTRIBUTE = new SimpleIdentifier("Training");
+  Identifier WAR_ATTRIBUTE = new SimpleIdentifier("War");
 
-  Identified EXCLUSIVE_ATTRIBUTE = new Identifier("Exclusive");
+  Identifier EXCLUSIVE_ATTRIBUTE = new SimpleIdentifier("Exclusive");
 }

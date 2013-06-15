@@ -6,7 +6,7 @@ import net.sf.anathema.character.impl.model.advance.ExperiencePointConfiguration
 import net.sf.anathema.character.model.Hero;
 import net.sf.anathema.character.model.advance.IExperiencePointConfiguration;
 import net.sf.anathema.lib.control.IChangeListener;
-import net.sf.anathema.lib.util.Identified;
+import net.sf.anathema.lib.util.Identifier;
 import org.jmock.example.announcer.Announcer;
 
 public class ExperienceModelImpl implements ExperienceModel {
@@ -38,7 +38,7 @@ public class ExperienceModelImpl implements ExperienceModel {
   }
 
   @Override
-  public Identified getId() {
+  public Identifier getId() {
     return ID;
   }
 

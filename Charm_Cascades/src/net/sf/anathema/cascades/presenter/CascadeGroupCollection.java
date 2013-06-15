@@ -12,7 +12,7 @@ import net.sf.anathema.character.generic.template.magic.ICharmTemplate;
 import net.sf.anathema.character.generic.type.CharacterTypes;
 import net.sf.anathema.character.generic.type.ICharacterType;
 import net.sf.anathema.charmtree.presenter.CharmGroupCollection;
-import net.sf.anathema.lib.util.Identified;
+import net.sf.anathema.lib.util.Identifier;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -79,7 +79,7 @@ public class CascadeGroupCollection implements CharmGroupCollection {
     registerGroups(allCharmGroups, type, typeTree);
   }
 
-  private void registerGroups(List<ICharmGroup> allCharmGroups, Identified typeId, ICharmTree charmTree) {
+  private void registerGroups(List<ICharmGroup> allCharmGroups, Identifier typeId, ICharmTree charmTree) {
     ICharmGroup[] groups = charmTree.getAllCharmGroups();
     if (groups.length != 0) {
       treeIdentificateMap.put(typeId, charmTree);

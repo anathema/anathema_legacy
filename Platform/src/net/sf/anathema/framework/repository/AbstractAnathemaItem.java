@@ -4,7 +4,7 @@ import com.google.common.base.Objects;
 import com.google.common.base.Preconditions;
 import com.google.common.base.Strings;
 import net.sf.anathema.framework.item.IItemType;
-import net.sf.anathema.lib.util.Identified;
+import net.sf.anathema.lib.util.Identifier;
 import org.jmock.example.announcer.Announcer;
 
 public abstract class AbstractAnathemaItem implements IItem {
@@ -12,14 +12,14 @@ public abstract class AbstractAnathemaItem implements IItem {
   private String printName;
   private final IItemType itemType;
   private final RepositoryLocation repositoryLocation;
-  private final Identified identificate;
+  private final Identifier identificate;
   private final Announcer<IItemListener> repositoryItemListeners = Announcer.to(IItemListener.class);
 
   public AbstractAnathemaItem(IItemType type) {
     Preconditions.checkArgument(type.supportsRepository(), "Use second constructor for non-persisted items.");
     this.itemType = type;
     this.repositoryLocation = new RepositoryLocation(this);
-    this.identificate = new Identified() {
+    this.identificate = new Identifier() {
       @Override
       public String getId() {
         return repositoryLocation.getId();

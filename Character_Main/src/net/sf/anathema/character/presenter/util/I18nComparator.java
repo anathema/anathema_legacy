@@ -1,11 +1,11 @@
 package net.sf.anathema.character.presenter.util;
 
 import net.sf.anathema.lib.resources.Resources;
-import net.sf.anathema.lib.util.Identified;
+import net.sf.anathema.lib.util.Identifier;
 
 import java.util.Comparator;
 
-public class I18nComparator implements Comparator<Identified> {
+public class I18nComparator implements Comparator<Identifier> {
 
   private final String resourceKeyPrefix;
   private final Resources resources;
@@ -16,7 +16,7 @@ public class I18nComparator implements Comparator<Identified> {
   }
 
   @Override
-  public int compare(Identified identificate1, Identified identificate2) {
+  public int compare(Identifier identificate1, Identifier identificate2) {
     String firstDescription = resources.getString(resourceKeyPrefix + identificate1.getId());
     String secondDescription = resources.getString(resourceKeyPrefix + identificate2.getId());
     return firstDescription.compareToIgnoreCase(secondDescription);

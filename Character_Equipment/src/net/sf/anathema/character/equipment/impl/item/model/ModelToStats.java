@@ -19,7 +19,7 @@ import net.sf.anathema.character.equipment.impl.character.model.stats.RangedWeap
 import net.sf.anathema.character.equipment.impl.character.model.stats.TraitModifyingStats;
 import net.sf.anathema.character.generic.equipment.weapon.IEquipmentStats;
 import net.sf.anathema.character.generic.health.HealthType;
-import net.sf.anathema.lib.util.Identifier;
+import net.sf.anathema.lib.util.SimpleIdentifier;
 
 public class ModelToStats {
 
@@ -96,7 +96,7 @@ public class ModelToStats {
   private void setName(AbstractStats stats, IEquipmentStatisticsModel model) {
     String name = model.getName().getText();
     if (name != null) {
-      stats.setName(new Identifier(name));
+      stats.setName(new SimpleIdentifier(name));
     }
   }
 }

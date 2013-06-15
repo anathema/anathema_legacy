@@ -17,7 +17,7 @@ import net.sf.anathema.character.generic.type.CharacterTypes;
 import net.sf.anathema.character.generic.type.ICharacterType;
 import net.sf.anathema.character.impl.model.charm.GroupedCharmIdMap;
 import net.sf.anathema.charmtree.view.ICharmGroupArbitrator;
-import net.sf.anathema.lib.util.Identified;
+import net.sf.anathema.lib.util.Identifier;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -30,7 +30,7 @@ public class NonMartialArtsOptions implements ICharmIdMap, ICharmGroupArbitrator
   private final CharacterTypes characterTypes;
   private final ITemplateRegistry registry;
   private final List<ICharacterType> availableTypes = new ArrayList<>();
-  private final Map<Identified, ICharmTree> treesByType = new HashMap<>();
+  private final Map<Identifier, ICharmTree> treesByType = new HashMap<>();
 
   public NonMartialArtsOptions(ICharacterModelContext context, CharacterTypes characterTypes, ITemplateRegistry registry) {
     this.context = context;

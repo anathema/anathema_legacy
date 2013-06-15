@@ -4,8 +4,8 @@ import net.sf.anathema.character.equipment.MagicalMaterial;
 import net.sf.anathema.character.equipment.impl.character.model.ModifierFactory;
 import net.sf.anathema.character.equipment.impl.character.model.stats.modification.ReactiveBaseMaterial;
 import net.sf.anathema.character.generic.equipment.weapon.IWeaponStats;
-import net.sf.anathema.lib.util.Identified;
 import net.sf.anathema.lib.util.Identifier;
+import net.sf.anathema.lib.util.SimpleIdentifier;
 import org.junit.Test;
 import org.junit.matchers.JUnitMatchers;
 
@@ -26,31 +26,31 @@ public class ProxyWeaponStats_AdamantTagsTest {
   @Test
   public void addsPiercingToAAdamantWeapon() throws Exception {
     setOriginalTags();
-    List<Identified> tags = getModifiedTags(Adamant);
-    assertThat(tags, JUnitMatchers.<Identified>hasItem(Piercing));
+    List<Identifier> tags = getModifiedTags(Adamant);
+    assertThat(tags, JUnitMatchers.<Identifier>hasItem(Piercing));
   }
 
   @Test
   public void doesNotAddPiercingToAnotherMaterial() throws Exception {
     setOriginalTags();
-    List<Identified> tags = getModifiedTags(Orichalcum);
+    List<Identifier> tags = getModifiedTags(Orichalcum);
     assertThat(tags.size(), is(0));
   }
 
   @Test
   public void addsSpecialPiercingTagIfItIsAlreadyPiercing() throws Exception {
     setOriginalTags(Piercing);
-    List<Identified> tags = getModifiedTags(Adamant);
-    assertThat(tags, JUnitMatchers.<Identified>hasItem(new Identifier("AdamantPiercing")));
+    List<Identifier> tags = getModifiedTags(Adamant);
+    assertThat(tags, JUnitMatchers.<Identifier>hasItem(new SimpleIdentifier("AdamantPiercing")));
   }
 
-  private List<Identified> getModifiedTags(MagicalMaterial material) {
+  private List<Identifier> getModifiedTags(MagicalMaterial material) {
     ModifierFactory modifiers = new NullModifierFactory();
     ProxyWeaponStats stats = new ProxyWeaponStats(original, new ReactiveBaseMaterial(material), modifiers);
     return Arrays.asList(stats.getTags());
   }
 
-  private void setOriginalTags(Identified... tags) {
+  private void setOriginalTags(Identifier... tags) {
     when(original.getTags()).thenReturn(tags);
   }
 }

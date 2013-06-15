@@ -6,8 +6,8 @@ import net.sf.anathema.character.generic.equipment.weapon.IWeaponStats;
 import net.sf.anathema.character.generic.health.HealthType;
 import net.sf.anathema.character.generic.traits.ITraitType;
 import net.sf.anathema.character.generic.traits.types.AbilityType;
-import net.sf.anathema.lib.util.Identified;
 import net.sf.anathema.lib.util.Identifier;
+import net.sf.anathema.lib.util.SimpleIdentifier;
 
 public class DemoRangeWeapon extends AbstractCombatStats implements IWeaponStats {
 
@@ -17,11 +17,11 @@ public class DemoRangeWeapon extends AbstractCombatStats implements IWeaponStats
   private final int minimumDamage;
   private final HealthType damageType;
   private final int range;
-  private final Identified name;
+  private final Identifier name;
   private final int rate;
   private final boolean isNoDamage;
 
-  public DemoRangeWeapon(Identifier name, int speed, int accuracy, int damage, int minimumDamage, HealthType damageType, int range, int rate,
+  public DemoRangeWeapon(SimpleIdentifier name, int speed, int accuracy, int damage, int minimumDamage, HealthType damageType, int range, int rate,
                          boolean isNoDamage) {
     this.name = name;
     this.speed = speed;
@@ -80,8 +80,8 @@ public class DemoRangeWeapon extends AbstractCombatStats implements IWeaponStats
   }
 
   @Override
-  public Identified[] getTags() {
-    return new Identified[0];
+  public Identifier[] getTags() {
+    return new Identifier[0];
   }
 
   @Override
@@ -100,7 +100,7 @@ public class DemoRangeWeapon extends AbstractCombatStats implements IWeaponStats
   }
 
   @Override
-  public Identified getName() {
+  public Identifier getName() {
     return name;
   }
 

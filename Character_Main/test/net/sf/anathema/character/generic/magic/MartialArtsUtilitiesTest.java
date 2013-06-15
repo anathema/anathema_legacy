@@ -3,7 +3,7 @@ package net.sf.anathema.character.generic.magic;
 import net.sf.anathema.character.generic.impl.magic.MartialArtsUtilities;
 import net.sf.anathema.character.generic.magic.charms.MartialArtsLevel;
 import net.sf.anathema.character.magic.dummy.DummyCharm;
-import net.sf.anathema.lib.util.Identified;
+import net.sf.anathema.lib.util.Identifier;
 import org.junit.Test;
 
 import static org.junit.Assert.assertEquals;
@@ -15,7 +15,7 @@ public class MartialArtsUtilitiesTest {
   public void testIsMartialArtsCharm() {
     ICharm charm = new DummyCharm("Dummy") {
       @Override
-      public boolean hasAttribute(Identified attribute) {
+      public boolean hasAttribute(Identifier attribute) {
         return attribute.getId().equals("MartialArts");
       }
     };
@@ -26,7 +26,7 @@ public class MartialArtsUtilitiesTest {
   public void testIsFormCharm() throws Exception {
     ICharm charm = new DummyCharm("Dummy") {
       @Override
-      public boolean hasAttribute(Identified attribute) {
+      public boolean hasAttribute(Identifier attribute) {
         return attribute.getId().equals("Form");
       }
     };
@@ -37,7 +37,7 @@ public class MartialArtsUtilitiesTest {
   public void testGetMartialArtsLevel() throws Exception {
     DummyCharm charm = new DummyCharm("Dummy") {
       @Override
-      public boolean hasAttribute(Identified attribute) {
+      public boolean hasAttribute(Identifier attribute) {
         return attribute.getId().equals("MartialArts") || attribute.getId().equals("Terrestrial");
       }
     };
@@ -48,7 +48,7 @@ public class MartialArtsUtilitiesTest {
   public void testHasMartialArtsLevel() throws Exception {
     DummyCharm charm = new DummyCharm("Dummy") {
       @Override
-      public boolean hasAttribute(Identified attribute) {
+      public boolean hasAttribute(Identifier attribute) {
         return attribute.getId().equals("MartialArts") || attribute.getId().equals("Terrestrial");
       }
     };

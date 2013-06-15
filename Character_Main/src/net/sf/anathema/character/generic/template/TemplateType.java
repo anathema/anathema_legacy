@@ -1,21 +1,21 @@
 package net.sf.anathema.character.generic.template;
 
 import net.sf.anathema.character.generic.type.ICharacterType;
-import net.sf.anathema.lib.util.Identified;
 import net.sf.anathema.lib.util.Identifier;
+import net.sf.anathema.lib.util.SimpleIdentifier;
 
 public final class TemplateType implements ITemplateType {
 
-  public static final Identified DEFAULT_SUB_TYPE = new Identifier("TemplateType.Default");
+  public static final Identifier DEFAULT_SUB_TYPE = new SimpleIdentifier("TemplateType.Default");
 
   private final ICharacterType characterType;
-  private final Identified subType;
+  private final Identifier subType;
 
   public TemplateType(ICharacterType characterType) {
     this(characterType, DEFAULT_SUB_TYPE);
   }
 
-  public TemplateType(ICharacterType characterType, Identified subType) {
+  public TemplateType(ICharacterType characterType, Identifier subType) {
     this.characterType = characterType;
     this.subType = subType;
   }
@@ -26,7 +26,7 @@ public final class TemplateType implements ITemplateType {
   }
 
   @Override
-  public Identified getSubType() {
+  public Identifier getSubType() {
     return subType;
   }
 

@@ -10,7 +10,7 @@ import net.sf.anathema.lib.control.ObjectValueListener;
 import net.sf.anathema.lib.gui.action.SmartAction;
 import net.sf.anathema.lib.gui.widgets.ChangeableJComboBox;
 import net.sf.anathema.lib.gui.widgets.IChangeableJComboBox;
-import net.sf.anathema.lib.util.Identified;
+import net.sf.anathema.lib.util.Identifier;
 import net.sf.anathema.platform.tree.document.GenericCascadeFactory;
 import net.sf.anathema.platform.tree.presenter.view.CascadeLoadedListener;
 import net.sf.anathema.platform.tree.presenter.view.ITreeView;
@@ -33,8 +33,8 @@ import static net.sf.anathema.lib.gui.layout.LayoutUtils.withoutInsets;
 public abstract class AbstractCascadeSelectionView implements ICascadeSelectionView {
 
   private final JPanel selectionPanel = new JPanel(new MigLayout(withoutInsets().wrapAfter(4).fillX()));
-  private IChangeableJComboBox<Identified> groupComboBox;
-  private IChangeableJComboBox<Identified> typeComboBox;
+  private IChangeableJComboBox<Identifier> groupComboBox;
+  private IChangeableJComboBox<Identifier> typeComboBox;
   private final SwingTreeView swingTreeView;
 
   public AbstractCascadeSelectionView() {
@@ -53,7 +53,7 @@ public abstract class AbstractCascadeSelectionView implements ICascadeSelectionV
   }
 
   @Override
-  public void addCharmTypeSelector(String title, Identified[] types, ListCellRenderer renderer) {
+  public void addCharmTypeSelector(String title, Identifier[] types, ListCellRenderer renderer) {
     JPanel panel = new JPanel(new BorderLayout());
     panel.setBorder(new TitledBorder(title));
     typeComboBox = new ChangeableJComboBox<>(types, false);
@@ -64,17 +64,17 @@ public abstract class AbstractCascadeSelectionView implements ICascadeSelectionV
   }
 
   @Override
-  public void fillCharmGroupBox(Identified[] charmGroups) {
+  public void fillCharmGroupBox(Identifier[] charmGroups) {
     groupComboBox.setObjects(charmGroups);
   }
 
   @Override
-  public void fillCharmTypeBox(Identified[] charmGroups) {
+  public void fillCharmTypeBox(Identifier[] charmGroups) {
     typeComboBox.setObjects(charmGroups);
   }
 
   @Override
-  public void addCharmTypeSelectionListener(ObjectValueListener<Identified> selectionListener) {
+  public void addCharmTypeSelectionListener(ObjectValueListener<Identifier> selectionListener) {
     typeComboBox.addObjectSelectionChangedListener(selectionListener);
   }
 
@@ -87,9 +87,9 @@ public abstract class AbstractCascadeSelectionView implements ICascadeSelectionV
     groupComboBox.setSelectedObject(null);
     groupComboBox.setRenderer(renderer);
     groupComboBox.setPreferredSize(preferredSize);
-    groupComboBox.addObjectSelectionChangedListener(new ObjectValueListener<Identified>() {
+    groupComboBox.addObjectSelectionChangedListener(new ObjectValueListener<Identifier>() {
       @Override
-      public void valueChanged(Identified newValue) {
+      public void valueChanged(Identifier newValue) {
         selectionListener.valueChanged(groupComboBox.getSelectedObject(), typeComboBox.getSelectedObject());
       }
     });

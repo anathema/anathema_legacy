@@ -4,12 +4,12 @@ import net.sf.anathema.character.generic.impl.magic.persistence.IGenericsBuilder
 import net.sf.anathema.character.generic.magic.charms.CharmException;
 import net.sf.anathema.character.generic.magic.charms.ComboRestrictions;
 import net.sf.anathema.character.generic.traits.ITraitType;
-import net.sf.anathema.lib.util.Identified;
+import net.sf.anathema.lib.util.Identifier;
 import org.dom4j.Element;
 
 public class GenericComboRulesBuilder extends ComboRulesBuilder implements IComboRulesBuilder, IGenericsBuilder {
 
-  private Identified type;
+  private Identifier type;
 
   @Override
   protected void buildRestrictionList(ComboRestrictions comboRules, Element restrictionElement) throws CharmException {

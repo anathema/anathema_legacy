@@ -1,7 +1,7 @@
 package net.sf.anathema.graph.nodes;
 
 import net.sf.anathema.lib.lang.ArrayUtilities;
-import net.sf.anathema.lib.util.Identifier;
+import net.sf.anathema.lib.util.SimpleIdentifier;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -9,7 +9,7 @@ import java.util.Collections;
 import java.util.Comparator;
 import java.util.List;
 
-public class IdentifiedRegularNode extends Identifier implements IIdentifiedRegularNode {
+public class IdentifiedRegularNode extends SimpleIdentifier implements IIdentifiedRegularNode {
 
   private static final class NodeIndexComparator implements Comparator<ISimpleNode> {
     private final ISimpleNode[] orderedNodes;

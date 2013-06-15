@@ -8,12 +8,12 @@ import net.sf.anathema.character.generic.type.ICharacterType;
 import net.sf.anathema.initialization.InitializationException;
 import net.sf.anathema.initialization.ObjectFactory;
 import net.sf.anathema.lib.logging.Logger;
-import net.sf.anathema.lib.util.Identifier;
+import net.sf.anathema.lib.util.SimpleIdentifier;
 
 import java.util.Collection;
 import java.util.Collections;
 
-public class EquipmentAdditionalModelTemplate extends Identifier implements IGlobalAdditionalTemplate, IEquipmentAdditionalModelTemplate {
+public class EquipmentAdditionalModelTemplate extends SimpleIdentifier implements IGlobalAdditionalTemplate, IEquipmentAdditionalModelTemplate {
 
   private CharacterTypes characterTypes;
   private ObjectFactory objectFactory;

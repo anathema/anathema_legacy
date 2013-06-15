@@ -5,7 +5,7 @@ import net.sf.anathema.interaction.Command;
 import net.sf.anathema.interaction.Tool;
 import net.sf.anathema.lib.file.RelativePath;
 import net.sf.anathema.lib.gui.list.ComponentEnablingListSelectionListener;
-import net.sf.anathema.lib.util.Identified;
+import net.sf.anathema.lib.util.Identifier;
 import net.sf.anathema.swing.interaction.ActionInteraction;
 import net.sf.anathema.view.interaction.AddToButton;
 import org.jmock.example.announcer.Announcer;
@@ -188,15 +188,15 @@ public class MagicLearnView implements IMagicLearnView {
   }
 
   @Override
-  public void addMagicOptions(Identified[] magics, Comparator<Identified> comparator) {
+  public void addMagicOptions(Identifier[] magics, Comparator<Identifier> comparator) {
     DefaultListModel listModel = (DefaultListModel) learnOptionsList.getModel();
-    for (Identified spell : magics) {
+    for (Identifier spell : magics) {
       boolean isInserted = false;
       for (int index = 0; index < listModel.getSize(); index++) {
         if (isInserted) {
           break;
         }
-        Identified magicOption = (Identified) listModel.get(index);
+        Identifier magicOption = (Identifier) listModel.get(index);
         if (comparator.compare(spell, magicOption) < 0) {
           listModel.add(index, spell);
           isInserted = true;

@@ -5,8 +5,8 @@ import net.sf.anathema.charmtree.builder.MagicDisplayLabeler;
 import net.sf.anathema.character.generic.magic.ICharm;
 import net.sf.anathema.character.generic.magic.IMagicStats;
 import net.sf.anathema.lib.resources.Resources;
-import net.sf.anathema.lib.util.Identified;
 import net.sf.anathema.lib.util.Identifier;
+import net.sf.anathema.lib.util.SimpleIdentifier;
 
 public class GenericCharmStats extends CharmStats {
 
@@ -26,8 +26,8 @@ public class GenericCharmStats extends CharmStats {
   }
 
   @Override
-  public Identified getName() {
-    return new Identifier(genericId);
+  public Identifier getName() {
+    return new SimpleIdentifier(genericId);
   }
 
   @Override

@@ -8,7 +8,7 @@ import net.sf.anathema.framework.view.PrintNameFile;
 import net.sf.anathema.lib.file.RelativePath;
 import net.sf.anathema.lib.gui.AbstractUIConfiguration;
 import net.sf.anathema.lib.resources.Resources;
-import net.sf.anathema.lib.util.Identified;
+import net.sf.anathema.lib.util.Identifier;
 
 public class CharacterTypeUi extends AbstractUIConfiguration<PrintNameFile> {
 
@@ -31,7 +31,7 @@ public class CharacterTypeUi extends AbstractUIConfiguration<PrintNameFile> {
     String printName = value.getPrintName();
     ICharacterType characterType = scanner.getCharacterType(value);
     String characterString = resources.getString("CharacterGenerator.NewCharacter." + characterType.getId() + ".Name");
-    Identified casteType = scanner.getCasteType(value);
+    Identifier casteType = scanner.getCasteType(value);
     if (casteType == ICasteType.NULL_CASTE_TYPE) {
       return resources.getString("LoadCharacter.PrintNameFile.ShortMessage", printName, characterString);
     }

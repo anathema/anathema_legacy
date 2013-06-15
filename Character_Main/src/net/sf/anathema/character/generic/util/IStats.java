@@ -1,8 +1,8 @@
 package net.sf.anathema.character.generic.util;
 
-import net.sf.anathema.lib.util.Identified;
+import net.sf.anathema.lib.util.Identifier;
 
 public interface IStats {
 
-  Identified getName();
+  Identifier getName();
 }

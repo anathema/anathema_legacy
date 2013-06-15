@@ -2,8 +2,8 @@ package net.sf.anathema.character.main.attributes.template;
 
 import net.sf.anathema.character.main.traits.model.IdGroups;
 import net.sf.anathema.character.main.traits.model.TraitLearnValues;
-import net.sf.anathema.lib.util.Identified;
 import net.sf.anathema.lib.util.Identifier;
+import net.sf.anathema.lib.util.SimpleIdentifier;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -18,7 +18,7 @@ public class AttributeTemplateWorker {
 
   public List<TraitLearnValues> createLearnTraits() {
     List<TraitLearnValues> traitLearnValues = new ArrayList<>();
-    for (Identified traitId : createAllTraitIds()) {
+    for (Identifier traitId : createAllTraitIds()) {
       traitLearnValues.add(new TraitLearnValues(traitId, template.startValue));
     }
     return traitLearnValues;
@@ -27,25 +27,25 @@ public class AttributeTemplateWorker {
   public List<IdGroups> createGroups() {
     List<IdGroups> idGroups = new ArrayList<>();
     for (AttributeGroup attributeGroup : template.groups) {
-      Identifier groupId = new Identifier(attributeGroup.id);
-      List<Identified> traitIds = createTraitIds(attributeGroup);
+      SimpleIdentifier groupId = new SimpleIdentifier(attributeGroup.id);
+      List<Identifier> traitIds = createTraitIds(attributeGroup);
       idGroups.add(new IdGroups(groupId, traitIds));
     }
     return idGroups;
   }
 
-  private List<Identified> createAllTraitIds() {
-    List<Identified> attributeIds = new ArrayList<>();
+  private List<Identifier> createAllTraitIds() {
+    List<Identifier> attributeIds = new ArrayList<>();
     for (AttributeGroup attributeGroup : template.groups) {
       attributeIds.addAll(createTraitIds(attributeGroup));
     }
     return attributeIds;
   }
 
-  private List<Identified> createTraitIds(AttributeGroup attributeGroup) {
-    List<Identified> attributeIds = new ArrayList<>();
+  private List<Identifier> createTraitIds(AttributeGroup attributeGroup) {
+    List<Identifier> attributeIds = new ArrayList<>();
     for (String idString : attributeGroup.attributes) {
-      attributeIds.add(new Identifier(idString));
+      attributeIds.add(new SimpleIdentifier(idString));
     }
     return attributeIds;
   }

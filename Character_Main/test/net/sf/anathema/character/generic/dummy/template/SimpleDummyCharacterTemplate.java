@@ -20,7 +20,7 @@ import net.sf.anathema.character.generic.template.magic.IMagicTemplate;
 import net.sf.anathema.character.generic.template.presentation.IPresentationProperties;
 import net.sf.anathema.character.generic.traits.ITraitType;
 import net.sf.anathema.character.generic.type.ICharacterType;
-import net.sf.anathema.lib.util.Identifier;
+import net.sf.anathema.lib.util.SimpleIdentifier;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -85,7 +85,7 @@ public class SimpleDummyCharacterTemplate implements ICharacterTemplate {
     if (subtype == null) {
       return new TemplateType(type);
     }
-    return new TemplateType(type, new Identifier(subtype));
+    return new TemplateType(type, new SimpleIdentifier(subtype));
   }
 
   @Override

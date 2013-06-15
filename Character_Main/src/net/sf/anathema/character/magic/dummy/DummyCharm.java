@@ -22,8 +22,8 @@ import net.sf.anathema.character.generic.traits.IGenericTrait;
 import net.sf.anathema.character.generic.traits.ITraitType;
 import net.sf.anathema.character.generic.traits.types.ValuedTraitType;
 import net.sf.anathema.character.generic.type.ICharacterType;
-import net.sf.anathema.lib.util.Identified;
 import net.sf.anathema.lib.util.Identifier;
+import net.sf.anathema.lib.util.SimpleIdentifier;
 
 import java.util.ArrayList;
 import java.util.Collections;
@@ -32,7 +32,7 @@ import java.util.LinkedHashSet;
 import java.util.List;
 import java.util.Set;
 
-public class DummyCharm extends Identifier implements ICharm {
+public class DummyCharm extends SimpleIdentifier implements ICharm {
 
   private IDuration duration;
   private IComboRestrictions comboRestrictions = new ComboRestrictions();
@@ -183,7 +183,7 @@ public class DummyCharm extends Identifier implements ICharm {
   }
 
   @Override
-  public boolean hasAttribute(Identified attribute) {
+  public boolean hasAttribute(Identifier attribute) {
     for (ICharmAttribute iCharmAttribute : attributes) {
       if (iCharmAttribute.getId().equals(attribute.getId())) {
         return true;
@@ -193,7 +193,7 @@ public class DummyCharm extends Identifier implements ICharm {
   }
 
   @Override
-  public String getAttributeValue(Identified attribute) {
+  public String getAttributeValue(Identifier attribute) {
     return null;
   }
 

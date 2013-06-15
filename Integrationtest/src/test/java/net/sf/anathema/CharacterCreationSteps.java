@@ -16,7 +16,7 @@ import net.sf.anathema.framework.item.IItemType;
 import net.sf.anathema.framework.persistence.IRepositoryItemPersister;
 import net.sf.anathema.framework.repository.IItem;
 import net.sf.anathema.lib.registry.IRegistry;
-import net.sf.anathema.lib.util.Identifier;
+import net.sf.anathema.lib.util.SimpleIdentifier;
 
 public class CharacterCreationSteps {
   private CharacterTypes characterTypes;
@@ -60,7 +60,7 @@ public class CharacterCreationSteps {
 
   private ICharacterTemplate loadTemplateForType(String type, String subtype) {
     ICharacterGenerics generics = CharacterGenericsExtractor.getGenerics(model);
-    return generics.getTemplateRegistry().getTemplate(new TemplateType(characterTypes.findById(type), new Identifier(subtype)));
+    return generics.getTemplateRegistry().getTemplate(new TemplateType(characterTypes.findById(type), new SimpleIdentifier(subtype)));
   }
 
   private ICharacter createCharacter(ICharacterTemplate template) {

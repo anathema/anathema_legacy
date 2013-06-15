@@ -12,7 +12,7 @@ import net.sf.anathema.character.reporting.pdf.content.AbstractSubBoxContent;
 import net.sf.anathema.character.reporting.pdf.content.magic.GenericCharmUtilities;
 import net.sf.anathema.character.reporting.pdf.util.MagicLearnUtilities;
 import net.sf.anathema.lib.resources.Resources;
-import net.sf.anathema.lib.util.Identified;
+import net.sf.anathema.lib.util.Identifier;
 
 import java.util.ArrayList;
 import java.util.Collections;
@@ -92,7 +92,7 @@ public abstract class FavorableTraitContent extends AbstractSubBoxContent {
   @Override
   public abstract String getHeaderKey();
 
-  public String getGroupLabel(Identified groupId) {
+  public String getGroupLabel(Identifier groupId) {
     String groupIdAsString = groupId.getId();
     String resourceKey = groupId instanceof ICasteType ? "Caste." + groupIdAsString : getGroupNamePrefix() + groupIdAsString;
     return getString(resourceKey);

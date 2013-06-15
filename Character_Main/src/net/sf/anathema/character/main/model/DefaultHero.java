@@ -2,7 +2,7 @@ package net.sf.anathema.character.main.model;
 
 import net.sf.anathema.character.model.CharacterModel;
 import net.sf.anathema.character.model.Hero;
-import net.sf.anathema.lib.util.Identified;
+import net.sf.anathema.lib.util.Identifier;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -16,7 +16,7 @@ public class DefaultHero implements Hero {
   }
 
   @Override
-  public <M extends CharacterModel> M getModel(Identified id) {
+  public <M extends CharacterModel> M getModel(Identifier id) {
     return (M) modelsById.get(id.getId());
   }
 }

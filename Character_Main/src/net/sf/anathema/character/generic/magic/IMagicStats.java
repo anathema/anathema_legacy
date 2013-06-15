@@ -2,12 +2,12 @@ package net.sf.anathema.character.generic.magic;
 
 import net.sf.anathema.character.generic.util.IStats;
 import net.sf.anathema.lib.resources.Resources;
-import net.sf.anathema.lib.util.Identified;
+import net.sf.anathema.lib.util.Identifier;
 
 public interface IMagicStats extends IStats, Comparable<IMagicStats> {
 
   @Override
-  Identified getName();
+  Identifier getName();
 
   String getCostString(Resources resources);
 

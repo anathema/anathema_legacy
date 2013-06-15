@@ -7,7 +7,7 @@ import net.sf.anathema.character.generic.magic.ICharm;
 import net.sf.anathema.character.impl.model.charm.special.DefaultMartialArtsCharmConfiguration;
 import net.sf.anathema.character.model.charm.ILearningCharmGroup;
 import net.sf.anathema.character.magic.dummy.DummyCharm;
-import net.sf.anathema.lib.util.Identified;
+import net.sf.anathema.lib.util.Identifier;
 import org.junit.Assert;
 import org.junit.Test;
 import org.mockito.Mockito;
@@ -36,7 +36,7 @@ public class DefaultMartialArtsCharmConfiguration_Test {
       }
 
       @Override
-      public boolean hasAttribute(Identified attribute) {
+      public boolean hasAttribute(Identifier attribute) {
         return !attribute.equals(NO_STYLE_ATTRIBUTE);
       }
     }});

@@ -6,8 +6,8 @@ import net.sf.anathema.charmtree.builder.stringbuilder.MagicInfoStringBuilder;
 import net.sf.anathema.character.generic.magic.IMagic;
 import net.sf.anathema.character.generic.magic.IMagicStats;
 import net.sf.anathema.lib.resources.Resources;
-import net.sf.anathema.lib.util.Identified;
 import net.sf.anathema.lib.util.Identifier;
+import net.sf.anathema.lib.util.SimpleIdentifier;
 
 public abstract class AbstractMagicStats<T extends IMagic> implements IMagicStats {
 
@@ -26,8 +26,8 @@ public abstract class AbstractMagicStats<T extends IMagic> implements IMagicStat
   }
 
   @Override
-  public Identified getName() {
-    return new Identifier(magic.getId());
+  public Identifier getName() {
+    return new SimpleIdentifier(magic.getId());
   }
 
   @Override

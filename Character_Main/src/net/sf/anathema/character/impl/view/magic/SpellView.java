@@ -8,7 +8,7 @@ import net.sf.anathema.character.generic.magic.spells.CircleType;
 import net.sf.anathema.character.view.magic.ISpellView;
 import net.sf.anathema.character.view.magic.ISpellViewProperties;
 import net.sf.anathema.lib.control.ObjectValueListener;
-import net.sf.anathema.lib.util.Identified;
+import net.sf.anathema.lib.util.Identifier;
 import org.jmock.example.announcer.Announcer;
 
 import javax.swing.JButton;
@@ -47,7 +47,7 @@ public class SpellView implements ISpellView {
   }
 
   @Override
-  public void initGui(Identified[] circles) {
+  public void initGui(Identifier[] circles) {
     content.add(new JLabel(properties.getCircleLabel()), new CC().split(2));
     final JComboBox box = new JComboBox(circles);
     box.setRenderer(properties.getCircleSelectionRenderer());
@@ -98,7 +98,7 @@ public class SpellView implements ISpellView {
   }
 
   @Override
-  public void addMagicOptions(Identified[] magics, Comparator<Identified> comparator) {
+  public void addMagicOptions(Identifier[] magics, Comparator<Identifier> comparator) {
     magicLearnView.addMagicOptions(magics, comparator);
   }
 

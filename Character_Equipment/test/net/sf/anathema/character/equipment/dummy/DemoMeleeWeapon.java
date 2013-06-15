@@ -8,7 +8,7 @@ import net.sf.anathema.character.generic.health.HealthType;
 import net.sf.anathema.character.generic.traits.ITraitType;
 import net.sf.anathema.character.generic.traits.types.AbilityType;
 import net.sf.anathema.character.generic.traits.types.AttributeType;
-import net.sf.anathema.lib.util.Identified;
+import net.sf.anathema.lib.util.Identifier;
 
 public class DemoMeleeWeapon extends AbstractCombatStats implements IWeaponStats {
 
@@ -21,9 +21,9 @@ public class DemoMeleeWeapon extends AbstractCombatStats implements IWeaponStats
   private final int speed;
   private final int mobility;
   private final WeaponTag[] tags;
-  private Identified name;
+  private Identifier name;
 
-  public DemoMeleeWeapon(Identified name, int speed, int accuracy, int damage, int minimumDamage, HealthType healthType, int defense, int mobility,
+  public DemoMeleeWeapon(Identifier name, int speed, int accuracy, int damage, int minimumDamage, HealthType healthType, int defense, int mobility,
                          int rate, WeaponTag... tags) {
     this.name = name;
     this.accuracy = accuracy;
@@ -83,7 +83,7 @@ public class DemoMeleeWeapon extends AbstractCombatStats implements IWeaponStats
   }
 
   @Override
-  public Identified[] getTags() {
+  public Identifier[] getTags() {
     return tags;
   }
 
@@ -103,7 +103,7 @@ public class DemoMeleeWeapon extends AbstractCombatStats implements IWeaponStats
   }
 
   @Override
-  public Identified getName() {
+  public Identifier getName() {
     return name;
   }
 

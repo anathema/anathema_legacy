@@ -9,7 +9,7 @@ import net.sf.anathema.character.generic.equipment.weapon.IWeaponStats;
 import net.sf.anathema.character.generic.health.HealthType;
 import net.sf.anathema.lib.exception.UnreachableCodeReachedException;
 import net.sf.anathema.lib.resources.Resources;
-import net.sf.anathema.lib.util.Identified;
+import net.sf.anathema.lib.util.Identifier;
 
 public class EquipmentStringBuilder implements IEquipmentStringBuilder {
 
@@ -54,9 +54,9 @@ public class EquipmentStringBuilder implements IEquipmentStringBuilder {
     return createtNewStatsStart(keyPart) + signum + value;
   }
   
-  private String getTagsString( Identified[] tags ) {
+  private String getTagsString( Identifier[] tags ) {
       StringBuilder result = new StringBuilder();
-      for( Identified tag : tags ) {
+      for( Identifier tag : tags ) {
           result.append(" ").append(tag.getId());
       }
       return result.toString();

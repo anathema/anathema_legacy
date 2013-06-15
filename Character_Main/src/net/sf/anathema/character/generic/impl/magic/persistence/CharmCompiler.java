@@ -18,8 +18,8 @@ import net.sf.anathema.lib.exception.PersistenceException;
 import net.sf.anathema.lib.registry.IIdentificateRegistry;
 import net.sf.anathema.lib.registry.IdentificateRegistry;
 import net.sf.anathema.lib.resources.ResourceFile;
-import net.sf.anathema.lib.util.Identified;
 import net.sf.anathema.lib.util.Identifier;
+import net.sf.anathema.lib.util.SimpleIdentifier;
 import org.dom4j.Document;
 import org.dom4j.DocumentException;
 import org.dom4j.io.SAXReader;
@@ -37,8 +37,8 @@ public class CharmCompiler implements IExtensibleDataSetCompiler {
   //matches stuff like data/charms/solar/Charms_Solar_SecondEdition_Occult.xml
   //the pattern is data/charms/REST_OF_PATH/Charms_TYPE_EDITION_ANYTHING.xml
   private static final String Charm_Data_Extraction_Pattern = ".*/Charms_(.*?)_(.*?)(?:_.*)?\\.xml";
-  private final Map<Identified, List<Document>> charmFileTable = new HashMap<>();
-  private final IIdentificateRegistry<Identified> registry = new IdentificateRegistry<>();
+  private final Map<Identifier, List<Document>> charmFileTable = new HashMap<>();
+  private final IIdentificateRegistry<Identifier> registry = new IdentificateRegistry<>();
   private final CharmAlternativeBuilder alternativeBuilder = new CharmAlternativeBuilder();
   private final CharmMergedBuilder mergedBuilder = new CharmMergedBuilder();
   private final CharmRenameBuilder renameBuilder = new CharmRenameBuilder();
@@ -70,7 +70,7 @@ public class CharmCompiler implements IExtensibleDataSetCompiler {
     Matcher matcher = Pattern.compile(Charm_Data_Extraction_Pattern).matcher(resource.getFileName());
     matcher.matches();
     String typeString = matcher.group(1);
-    Identified type = new Identifier(typeString);
+    Identifier type = new SimpleIdentifier(typeString);
     if (!registry.idRegistered(typeString)) {
       registry.add(type);
     }
@@ -88,7 +88,7 @@ public class CharmCompiler implements IExtensibleDataSetCompiler {
 
   @Override
   public IExtensibleDataSet build() throws PersistenceException {
-    for (Identified type : registry.getAll()) {
+    for (Identifier type : registry.getAll()) {
       buildStandardCharms(type);
       buildGenericCharms(type);
       buildCharmAlternatives(type);
@@ -100,11 +100,11 @@ public class CharmCompiler implements IExtensibleDataSetCompiler {
     return charmCache;
   }
 
-  private void buildStandardCharms(Identified type) throws PersistenceException {
+  private void buildStandardCharms(Identifier type) throws PersistenceException {
     buildCharms(type, setBuilder);
   }
 
-  private void buildGenericCharms(Identified type) throws PersistenceException {
+  private void buildGenericCharms(Identifier type) throws PersistenceException {
     try {
       ICharacterType characterType = characterTypes.findById(type.getId());
       ITraitType[] primaryTypes = characterType.getFavoringTraitType().getTraitTypesForGenericCharms();
@@ -115,7 +115,7 @@ public class CharmCompiler implements IExtensibleDataSetCompiler {
     }
   }
 
-  private void buildCharmAlternatives(Identified type) {
+  private void buildCharmAlternatives(Identifier type) {
     if (charmFileTable.containsKey(type)) {
       for (Document charmDocument : charmFileTable.get(type)) {
         alternativeBuilder.buildAlternatives(charmDocument, charmCache.getCharms(type));
@@ -123,7 +123,7 @@ public class CharmCompiler implements IExtensibleDataSetCompiler {
     }
   }
 
-  private void buildCharmMerges(Identified type) {
+  private void buildCharmMerges(Identifier type) {
     if (charmFileTable.containsKey(type)) {
       for (Document charmDocument : charmFileTable.get(type)) {
         mergedBuilder.buildMerges(charmDocument, charmCache.getCharms(type));
@@ -131,7 +131,7 @@ public class CharmCompiler implements IExtensibleDataSetCompiler {
     }
   }
 
-  private void buildCharmRenames(Identified type) {
+  private void buildCharmRenames(Identifier type) {
     if (charmFileTable.containsKey(type)) {
       for (Document charmDocument : charmFileTable.get(type)) {
         charmCache.addCharmRenames(renameBuilder.buildRenames(charmDocument));
@@ -139,7 +139,7 @@ public class CharmCompiler implements IExtensibleDataSetCompiler {
     }
   }
 
-  private void buildCharms(Identified type, ICharmSetBuilder builder) throws PersistenceException {
+  private void buildCharms(Identifier type, ICharmSetBuilder builder) throws PersistenceException {
     if (charmFileTable.containsKey(type)) {
       List<Document> documents = charmFileTable.get(type);
       for (Document charmDocument : documents) {
@@ -148,7 +148,7 @@ public class CharmCompiler implements IExtensibleDataSetCompiler {
     }
   }
 
-  private void buildTypeCharms(Identified type, Document charmDocument, ICharmSetBuilder builder) throws PersistenceException {
+  private void buildTypeCharms(Identifier type, Document charmDocument, ICharmSetBuilder builder) throws PersistenceException {
     List<ISpecialCharm> specialCharms = new ArrayList<>();
     ICharm[] charmArray = builder.buildCharms(charmDocument, specialCharms);
     for (ICharm charm : charmArray) {

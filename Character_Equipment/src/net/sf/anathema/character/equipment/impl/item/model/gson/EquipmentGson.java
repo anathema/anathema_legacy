@@ -5,7 +5,7 @@ import com.google.gson.GsonBuilder;
 import net.sf.anathema.character.equipment.impl.character.model.EquipmentTemplate;
 import net.sf.anathema.character.equipment.template.IEquipmentTemplate;
 import net.sf.anathema.character.generic.equipment.weapon.IEquipmentStats;
-import net.sf.anathema.lib.util.Identified;
+import net.sf.anathema.lib.util.Identifier;
 
 public class EquipmentGson {
 
@@ -14,7 +14,7 @@ public class EquipmentGson {
   public EquipmentGson() {
     GsonBuilder gsonBuilder = new GsonBuilder();
     gsonBuilder.registerTypeAdapter(IEquipmentStats.class, new StatsAdapter());
-    gsonBuilder.registerTypeAdapter(Identified.class, new IdentificateAdapter());
+    gsonBuilder.registerTypeAdapter(Identifier.class, new IdentificateAdapter());
     gsonBuilder.setPrettyPrinting();
     gson = gsonBuilder.create();
   }

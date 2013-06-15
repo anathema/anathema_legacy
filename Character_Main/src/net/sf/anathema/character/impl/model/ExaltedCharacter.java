@@ -42,7 +42,7 @@ import net.sf.anathema.framework.presenter.itemmanagement.PrintNameAdjuster;
 import net.sf.anathema.initialization.ObjectFactory;
 import net.sf.anathema.lib.control.IChangeListener;
 import net.sf.anathema.lib.registry.IRegistry;
-import net.sf.anathema.lib.util.Identified;
+import net.sf.anathema.lib.util.Identifier;
 import net.sf.anathema.lib.workflow.textualdescription.ITextualDescription;
 
 import java.util.ArrayList;
@@ -228,7 +228,7 @@ public class ExaltedCharacter implements ICharacter {
   }
 
   @Override
-  public <M extends CharacterModel> M getModel(Identified id) {
+  public <M extends CharacterModel> M getModel(Identifier id) {
     return hero.getModel(id);
   }
 }

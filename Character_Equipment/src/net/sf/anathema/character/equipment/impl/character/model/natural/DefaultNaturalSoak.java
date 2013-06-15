@@ -8,8 +8,8 @@ import net.sf.anathema.character.generic.traits.IGenericTrait;
 import net.sf.anathema.character.generic.traits.types.AttributeType;
 import net.sf.anathema.character.generic.traits.types.OtherTraitType;
 import net.sf.anathema.character.generic.type.ICharacterType;
-import net.sf.anathema.lib.util.Identified;
 import net.sf.anathema.lib.util.Identifier;
+import net.sf.anathema.lib.util.SimpleIdentifier;
 
 public class DefaultNaturalSoak extends AbstractCombatStats implements IArmourStats, NaturalSoak {
 
@@ -121,8 +121,8 @@ public class DefaultNaturalSoak extends AbstractCombatStats implements IArmourSt
   }
 
   @Override
-  public Identified getName() {
-    return new Identifier("NaturalSoak");
+  public Identifier getName() {
+    return new SimpleIdentifier("NaturalSoak");
   }
 
   @Override

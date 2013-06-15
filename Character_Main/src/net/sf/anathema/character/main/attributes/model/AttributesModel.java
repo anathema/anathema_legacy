@@ -9,14 +9,14 @@ import net.sf.anathema.character.main.attributes.template.AttributeGroup;
 import net.sf.anathema.character.main.attributes.template.AttributeTemplate;
 import net.sf.anathema.character.model.CharacterModel;
 import net.sf.anathema.character.model.Hero;
-import net.sf.anathema.lib.util.Identified;
 import net.sf.anathema.lib.util.Identifier;
+import net.sf.anathema.lib.util.SimpleIdentifier;
 
 import java.util.List;
 
 public class AttributesModel implements AttributesList, CharacterModel {
 
-  public static final Identifier MODEL_ID = new Identifier("attributes");
+  public static final SimpleIdentifier MODEL_ID = new SimpleIdentifier("attributes");
   private AttributeTemplate template;
 
   public AttributesModel(AttributeTemplate template) {
@@ -29,7 +29,7 @@ public class AttributesModel implements AttributesList, CharacterModel {
   }
 
   @Override
-  public Identified getId() {
+  public Identifier getId() {
     return MODEL_ID;
   }
 
@@ -42,18 +42,18 @@ public class AttributesModel implements AttributesList, CharacterModel {
 
   public void iterate(AttributesIterator iterator) {
     for (AttributeGroup group : template.groups) {
-      iterator.nextGroup(new Identifier(group.id));
+      iterator.nextGroup(new SimpleIdentifier(group.id));
       iterateGroup(iterator, group.attributes);
     }
   }
 
   private void iterateGroup(AttributesIterator iterator, List<String> attributeIds) {
     for (String traitId : attributeIds) {
-      iterateTrait(iterator, new Identifier(traitId));
+      iterateTrait(iterator, new SimpleIdentifier(traitId));
     }
   }
 
-  private void iterateTrait(AttributesIterator iterator, Identified traitId) {
+  private void iterateTrait(AttributesIterator iterator, Identifier traitId) {
     iterator.nextTrait(traitId);
   }
 }

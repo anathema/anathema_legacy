@@ -4,7 +4,7 @@ import net.sf.anathema.character.generic.magic.ICharm;
 import net.sf.anathema.character.generic.magic.IMagic;
 import net.sf.anathema.character.generic.traits.ITraitType;
 import net.sf.anathema.lib.resources.Resources;
-import net.sf.anathema.lib.util.Identified;
+import net.sf.anathema.lib.util.Identifier;
 
 public class MagicDisplayLabeler {
   private Resources resources;
@@ -24,7 +24,7 @@ public class MagicDisplayLabeler {
 
   public String getGenericLabelForMagic(IMagic magic) {
     if (magic instanceof ICharm && ((ICharm) magic).isInstanceOfGenericCharm()) {
-      Identified favoringTraitType = ((ICharm) magic).getCharacterType().getFavoringTraitType();
+      Identifier favoringTraitType = ((ICharm) magic).getCharacterType().getFavoringTraitType();
       String traitString = "(" + resources.getString(favoringTraitType.getId()) + ")";
       String baseCharmId = getGenericCharmBaseId((ICharm) magic);
       return resources.getString(baseCharmId, traitString);

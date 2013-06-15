@@ -8,7 +8,7 @@ import net.sf.anathema.character.library.removableentry.presenter.RemovableEntry
 import net.sf.anathema.character.linguistics.ILinguisticsAdditionalModel;
 import net.sf.anathema.character.linguistics.presenter.ILinguisticsModel;
 import net.sf.anathema.lib.control.IChangeListener;
-import net.sf.anathema.lib.util.Identified;
+import net.sf.anathema.lib.util.Identifier;
 
 public class LinguisticsAdditionalModel extends AbstractAdditionalModelAdapter implements ILinguisticsAdditionalModel {
 
@@ -37,6 +37,6 @@ public class LinguisticsAdditionalModel extends AbstractAdditionalModelAdapter i
 
   @Override
   public void addChangeListener(IChangeListener listener) {
-    model.addModelChangeListener(new RemovableEntryChangeAdapter<Identified>(listener));
+    model.addModelChangeListener(new RemovableEntryChangeAdapter<Identifier>(listener));
   }
 }

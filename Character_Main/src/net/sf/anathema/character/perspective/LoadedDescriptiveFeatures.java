@@ -5,7 +5,7 @@ import net.sf.anathema.character.main.concept.model.CharacterConceptFetcher;
 import net.sf.anathema.character.model.ICharacter;
 import net.sf.anathema.character.perspective.model.CharacterIdentifier;
 import net.sf.anathema.framework.repository.IItem;
-import net.sf.anathema.lib.util.Identified;
+import net.sf.anathema.lib.util.Identifier;
 
 public class LoadedDescriptiveFeatures implements DescriptiveFeatures {
 
@@ -34,7 +34,7 @@ public class LoadedDescriptiveFeatures implements DescriptiveFeatures {
   }
 
   @Override
-  public Identified getCasteType() {
+  public Identifier getCasteType() {
     ICharacter character = (ICharacter) characterItem.getItemData();
     return CharacterConceptFetcher.fetch(character).getCaste().getType();
   }

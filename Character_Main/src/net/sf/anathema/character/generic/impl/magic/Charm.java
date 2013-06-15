@@ -26,8 +26,8 @@ import net.sf.anathema.character.generic.traits.IGenericTrait;
 import net.sf.anathema.character.generic.traits.ITraitType;
 import net.sf.anathema.character.generic.traits.types.OtherTraitType;
 import net.sf.anathema.character.generic.type.ICharacterType;
-import net.sf.anathema.lib.util.Identified;
 import net.sf.anathema.lib.util.Identifier;
+import net.sf.anathema.lib.util.SimpleIdentifier;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -39,7 +39,7 @@ import java.util.Set;
 
 import static net.sf.anathema.character.generic.traits.types.AbilityType.MartialArts;
 
-public class Charm extends Identifier implements ICharm {
+public class Charm extends SimpleIdentifier implements ICharm {
 
   private final CharmPrerequisiteList prerequisisteList;
 
@@ -337,12 +337,12 @@ public class Charm extends Identifier implements ICharm {
   }
 
   @Override
-  public boolean hasAttribute(Identified attribute) {
+  public boolean hasAttribute(Identifier attribute) {
     return charmAttributes.contains(attribute);
   }
 
   @Override
-  public String getAttributeValue(Identified attribute) {
+  public String getAttributeValue(Identifier attribute) {
     int index = charmAttributes.indexOf(attribute);
     if (index < 0) {
       return null;
@@ -370,7 +370,7 @@ public class Charm extends Identifier implements ICharm {
       return false;
     }
     ITraitType primaryTraitType = getPrimaryTraitType();
-    if (hasAttribute(new Identifier("MartialArts")) && ((IFavorableGenericTrait) traitCollection.getTrait(MartialArts)).isCasteOrFavored()) {
+    if (hasAttribute(new SimpleIdentifier("MartialArts")) && ((IFavorableGenericTrait) traitCollection.getTrait(MartialArts)).isCasteOrFavored()) {
       return true;
     }
     IGenericTrait trait = traitCollection.getTrait(primaryTraitType);

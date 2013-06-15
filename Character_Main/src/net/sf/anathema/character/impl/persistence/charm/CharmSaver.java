@@ -4,7 +4,7 @@ import net.sf.anathema.character.generic.magic.ICharm;
 import net.sf.anathema.character.generic.magic.charms.special.ISpecialCharmConfiguration;
 import net.sf.anathema.character.model.charm.ICharmConfiguration;
 import net.sf.anathema.character.model.charm.ILearningCharmGroup;
-import net.sf.anathema.lib.util.Identified;
+import net.sf.anathema.lib.util.Identifier;
 import org.dom4j.Element;
 
 import java.util.ArrayList;
@@ -33,7 +33,7 @@ public class CharmSaver {
     return new SpecialCharmPersister(charmConfiguration.getSpecialCharms(), charmConfiguration.getCharmIdMap());
   }
 
-  public void saveCharms(Identified type, Element charmsElement) {
+  public void saveCharms(Identifier type, Element charmsElement) {
     ILearningCharmGroup[] charmGroups = charmConfiguration.getCharmGroups(type);
     Arrays.sort(charmGroups, new IdentifiedComparator());
     for (ILearningCharmGroup group : charmGroups) {

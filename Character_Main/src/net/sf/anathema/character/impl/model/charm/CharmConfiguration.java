@@ -35,7 +35,7 @@ import net.sf.anathema.character.presenter.magic.EssenceLevelCharmFilter;
 import net.sf.anathema.character.presenter.magic.ObtainableCharmFilter;
 import net.sf.anathema.charmtree.filters.ICharmFilter;
 import net.sf.anathema.lib.control.IChangeListener;
-import net.sf.anathema.lib.util.Identified;
+import net.sf.anathema.lib.util.Identifier;
 import org.apache.commons.lang3.ArrayUtils;
 import org.jmock.example.announcer.Announcer;
 
@@ -61,7 +61,7 @@ public class CharmConfiguration implements ICharmConfiguration {
     }
   };
   private final ILearningCharmGroup[] martialArtsGroups;
-  private final Map<Identified, ILearningCharmGroup[]> nonMartialArtsGroupsByType = new HashMap<>();
+  private final Map<Identifier, ILearningCharmGroup[]> nonMartialArtsGroupsByType = new HashMap<>();
   private final ICharacterModelContext context;
   private final Announcer<IChangeListener> control = Announcer.to(IChangeListener.class);
   private final ICharmProvider provider;
@@ -245,7 +245,7 @@ public class CharmConfiguration implements ICharmConfiguration {
   }
 
   @Override
-  public ILearningCharmGroup[] getCharmGroups(Identified type) {
+  public ILearningCharmGroup[] getCharmGroups(Identifier type) {
     if (MartialArtsUtilities.MARTIAL_ARTS.equals(type)) {
       return martialArtsGroups;
     }

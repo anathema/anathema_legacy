@@ -3,14 +3,14 @@ package net.sf.anathema.character.generic.impl.magic.persistence;
 import net.sf.anathema.character.generic.data.IExtensibleDataSet;
 import net.sf.anathema.character.generic.magic.ICharm;
 import net.sf.anathema.character.generic.magic.charms.special.ISpecialCharm;
-import net.sf.anathema.lib.util.Identified;
+import net.sf.anathema.lib.util.Identifier;
 
 public interface ICharmCache extends IExtensibleDataSet {
-  ICharm[] getCharms(Identified type);
+  ICharm[] getCharms(Identifier type);
 
-  Identified[] getCharmTypes();
+  Identifier[] getCharmTypes();
 
-  ISpecialCharm[] getSpecialCharmData(Identified type);
+  ISpecialCharm[] getSpecialCharmData(Identifier type);
 
   String getCharmRename(String name);
 }

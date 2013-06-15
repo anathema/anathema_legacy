@@ -11,8 +11,8 @@ import net.sf.anathema.framework.repository.access.printname.PrintNameFileAccess
 import net.sf.anathema.framework.view.PrintNameFile;
 import net.sf.anathema.lib.exception.AnathemaException;
 import net.sf.anathema.lib.registry.IRegistry;
-import net.sf.anathema.lib.util.Identified;
 import net.sf.anathema.lib.util.Identifier;
+import net.sf.anathema.lib.util.SimpleIdentifier;
 import net.sf.anathema.lib.xml.DocumentUtilities;
 import org.apache.commons.io.FileUtils;
 import org.dom4j.Attribute;
@@ -41,7 +41,7 @@ public class RegExCharacterPrintNameFileScanner implements CharacterPrintNameFil
           Pattern.compile("<" + TYPE_ELEMENT_NAME + ATTRIB_SUB_TYPE + "=\"(.*?)\"" + ".*>(.*?)</" + TYPE_ELEMENT_NAME + ">");
   private static final Pattern castePattern = Pattern.compile("<" + CASTE_ELEMENT_NAME + " " + CASTE_ELEMENT_TYPE_ATTR + "=\"(.*?)\"/>");
   private final Map<PrintNameFile, ITemplateType> typesByFile = new HashMap<>();
-  private final Map<PrintNameFile, Identified> castesByFile = new HashMap<>();
+  private final Map<PrintNameFile, Identifier> castesByFile = new HashMap<>();
   private final IRegistry<ICharacterType, ICasteCollection> registry;
   private final IRepositoryFileResolver resolver;
   private final CharacterTypes characterTypes;
@@ -77,7 +77,7 @@ public class RegExCharacterPrintNameFileScanner implements CharacterPrintNameFil
     }
 
     ICharacterType characterType = characterTypes.findById(typeString);
-    Identifier subType = new Identifier(typeElement.attributeValue(ATTRIB_SUB_TYPE));
+    SimpleIdentifier subType = new SimpleIdentifier(typeElement.attributeValue(ATTRIB_SUB_TYPE));
     typesByFile.put(file, new TemplateType(characterType, subType));
 
     if (casteTypeStr == null) {
@@ -85,7 +85,7 @@ public class RegExCharacterPrintNameFileScanner implements CharacterPrintNameFil
       return;
     }
 
-    Identified casteType = registry.get(characterType).getById(casteTypeStr);
+    Identifier casteType = registry.get(characterType).getById(casteTypeStr);
     castesByFile.put(file, casteType);
   }
 
@@ -97,14 +97,14 @@ public class RegExCharacterPrintNameFileScanner implements CharacterPrintNameFil
     typeMatcher.find();
     ICharacterType characterType;
     characterType = characterTypes.findById(typeMatcher.group(1));
-    Identifier subType = new Identifier(typeMatcher.group(1));
+    SimpleIdentifier subType = new SimpleIdentifier(typeMatcher.group(1));
     typesByFile.put(file, new TemplateType(characterType, subType));
     Matcher casteMatcher = castePattern.matcher(content);
     if (!casteMatcher.find()) {
       castesByFile.put(file, null);
       return;
     }
-    Identified casteType = registry.get(characterType).getById(casteMatcher.group(1));
+    Identifier casteType = registry.get(characterType).getById(casteMatcher.group(1));
     castesByFile.put(file, casteType);
   }
 
@@ -132,8 +132,8 @@ public class RegExCharacterPrintNameFileScanner implements CharacterPrintNameFil
   }
 
   @Override
-  public Identified getCasteType(PrintNameFile file) {
-    Identified caste = castesByFile.get(file);
+  public Identifier getCasteType(PrintNameFile file) {
+    Identifier caste = castesByFile.get(file);
     if (caste != null) {
       return caste;
     }

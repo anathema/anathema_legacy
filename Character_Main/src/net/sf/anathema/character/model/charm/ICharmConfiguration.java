@@ -8,7 +8,7 @@ import net.sf.anathema.character.generic.type.ICharacterType;
 import net.sf.anathema.charmtree.presenter.CharmFilterContainer;
 import net.sf.anathema.charmtree.view.ICharmGroupArbitrator;
 import net.sf.anathema.lib.control.IChangeListener;
-import net.sf.anathema.lib.util.Identified;
+import net.sf.anathema.lib.util.Identifier;
 
 public interface ICharmConfiguration extends CharmFilterContainer, IExtendedCharmLearnableArbitrator, ICharmGroupArbitrator, ICharmIdMap,
         SpecialCharmLearnArbitrator {
@@ -25,7 +25,7 @@ public interface ICharmConfiguration extends CharmFilterContainer, IExtendedChar
 
   ICharm[] getCreationLearnedCharms();
 
-  ILearningCharmGroup[] getCharmGroups(Identified type);
+  ILearningCharmGroup[] getCharmGroups(Identifier type);
 
   ICharm[] getLearnedCharms(boolean experienced);
 

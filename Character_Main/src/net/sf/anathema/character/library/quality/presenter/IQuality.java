@@ -1,8 +1,8 @@
 package net.sf.anathema.character.library.quality.presenter;
 
-import net.sf.anathema.lib.util.Identified;
+import net.sf.anathema.lib.util.Identifier;
 
-public interface IQuality extends Identified {
+public interface IQuality extends Identifier {
 
   IQualityType getType();
 

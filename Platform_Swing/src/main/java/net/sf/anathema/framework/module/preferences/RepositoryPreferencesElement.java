@@ -12,8 +12,8 @@ import net.sf.anathema.lib.gui.dialog.message.MessageDialogFactory;
 import net.sf.anathema.lib.io.PathUtils;
 import net.sf.anathema.lib.message.Message;
 import net.sf.anathema.lib.resources.Resources;
-import net.sf.anathema.lib.util.Identified;
 import net.sf.anathema.lib.util.Identifier;
+import net.sf.anathema.lib.util.SimpleIdentifier;
 
 import javax.swing.JButton;
 import javax.swing.JLabel;
@@ -180,8 +180,8 @@ public class RepositoryPreferencesElement implements IPreferencesElement {
   }
 
   @Override
-  public Identified getCategory() {
-    return new Identifier("Repository");
+  public Identifier getCategory() {
+    return new SimpleIdentifier("Repository");
   }
 
   @Override

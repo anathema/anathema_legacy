@@ -6,14 +6,14 @@ import net.sf.anathema.character.equipment.impl.character.model.stats.MeleeWeapo
 import net.sf.anathema.character.equipment.impl.character.model.stats.RangedWeaponStats;
 import net.sf.anathema.character.equipment.impl.character.model.stats.TraitModifyingStats;
 import net.sf.anathema.character.generic.health.HealthType;
-import net.sf.anathema.lib.util.Identifier;
+import net.sf.anathema.lib.util.SimpleIdentifier;
 
 import static java.lang.Integer.MAX_VALUE;
 
 public class GsonStatMother {
   public static RangedWeaponStats createRangedWeapon() {
     RangedWeaponStats stats = new RangedWeaponStats();
-    stats.setName(new Identifier("Fire!"));
+    stats.setName(new SimpleIdentifier("Fire!"));
     stats.setAccuracy(0);
     stats.setDamage(0);
     stats.setDamage(0);
@@ -27,7 +27,7 @@ public class GsonStatMother {
 
   public static MeleeWeaponStats createMeleeWeapon() {
     MeleeWeaponStats stats = new MeleeWeaponStats();
-    stats.setName(new Identifier("Chaaarge!"));
+    stats.setName(new SimpleIdentifier("Chaaarge!"));
     stats.setAccuracy(0);
     stats.setDamage(0);
     stats.setDamage(0);
@@ -41,7 +41,7 @@ public class GsonStatMother {
 
   public static ArtifactStats createArtifact() {
     ArtifactStats stats = new ArtifactStats();
-    stats.setName(new Identifier("Zing!"));
+    stats.setName(new SimpleIdentifier("Zing!"));
     stats.setAllowForeignAttunement(true);
     stats.setAttuneCost(5);
     stats.setRequireAttunement(false);
@@ -50,7 +50,7 @@ public class GsonStatMother {
 
   public static ArmourStats createArmour() {
     ArmourStats stats = new ArmourStats();
-    stats.setName(new Identifier("Bounce!"));
+    stats.setName(new SimpleIdentifier("Bounce!"));
     stats.setFatigue(5);
     stats.setMobilityPenalty(-2);
     stats.setSoak(HealthType.Bashing, 5);
@@ -62,7 +62,7 @@ public class GsonStatMother {
 
   public static TraitModifyingStats createTraitModifier() {
     TraitModifyingStats stats = new TraitModifyingStats();
-    stats.setName(new Identifier("Liftoff!"));
+    stats.setName(new SimpleIdentifier("Liftoff!"));
     stats.setDDVPoolMod(1);
     stats.setJoinBattleMod(2);
     stats.setJoinDebateMod(3);

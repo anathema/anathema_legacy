@@ -7,7 +7,7 @@ import net.sf.anathema.character.generic.traits.ITraitType;
 import net.sf.anathema.character.generic.traits.groups.IIdentifiedCasteTraitTypeGroup;
 import net.sf.anathema.character.generic.traits.groups.IdentifiedCasteTraitTypeGroup;
 import net.sf.anathema.lib.collection.MultiEntryMap;
-import net.sf.anathema.lib.util.Identified;
+import net.sf.anathema.lib.util.Identifier;
 
 import java.util.ArrayList;
 import java.util.LinkedHashSet;
@@ -16,7 +16,7 @@ import java.util.Set;
 
 public abstract class AbstractTraitTypeGroupFactory {
 
-  protected abstract Identified getGroupIdentifier(ICasteCollection casteCollection, String groupId);
+  protected abstract Identifier getGroupIdentifier(ICasteCollection casteCollection, String groupId);
 
   public IIdentifiedCasteTraitTypeGroup[] createTraitGroups(ICasteCollection casteCollection,
                                                             GroupedTraitType[] traitTypes) {
@@ -40,7 +40,7 @@ public abstract class AbstractTraitTypeGroupFactory {
           castesByTrait.add(type.getTraitType(), casteType);
         }
       }
-      Identified groupIdentifier = getGroupIdentifier(casteCollection, groupId);
+      Identifier groupIdentifier = getGroupIdentifier(casteCollection, groupId);
       ITraitType[] types = groupTraitTypes.toArray(new ITraitType[groupTraitTypes.size()]);
       groups.add(new IdentifiedCasteTraitTypeGroup(types, groupIdentifier, castesByTrait));
     }
