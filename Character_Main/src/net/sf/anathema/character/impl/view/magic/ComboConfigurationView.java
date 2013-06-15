@@ -39,7 +39,8 @@ import static net.sf.anathema.lib.gui.swing.GuiUtilities.revalidate;
 public class ComboConfigurationView implements IComboConfigurationView {
   private static final int TEXT_COLUMNS = 20;
   private MagicLearnView magicLearnView = new MagicLearnView();
-  private JComponent content;
+  private final JPanel viewPort = new JPanel(new MigLayout(new LC().insets("6").fill().wrapAfter(5)));
+  private final JComponent content = new JScrollPane(viewPort);
   private final Announcer<IComboViewListener> comboViewListeners = Announcer.to(IComboViewListener.class);
   private final JPanel namePanel = new JPanel(new MigLayout(LayoutUtils.withoutInsets().wrapAfter(1)));
   private Tool clearButton;
@@ -91,7 +92,6 @@ public class ComboConfigurationView implements IComboConfigurationView {
         enableOrDisableClearButton();
       }
     });
-    JPanel viewPort = new JPanel(new MigLayout(new LC().insets("6").fill().wrapAfter(5)));
     viewPort.add(new JLabel(viewProperties.getAvailableComboCharmsLabel()));
     viewPort.add(new JLabel());
     viewPort.add(new JLabel(viewProperties.getComboedCharmsLabel()));
@@ -101,14 +101,12 @@ public class ComboConfigurationView implements IComboConfigurationView {
     comboPane.setBackground(viewPort.getBackground());
     comboScrollPane = new JScrollPane(comboPane);
     viewPort.add(comboScrollPane, new CC().spanX().grow().push());
-    content = new JScrollPane(viewPort);
   }
 
   private void enableOrDisableFinalizeButton() {
-    if (learnedListModelSize > 1){
+    if (learnedListModelSize > 1) {
       finalizeButton.enable();
-    }
-    else {
+    } else {
       finalizeButton.disable();
     }
   }
@@ -133,7 +131,7 @@ public class ComboConfigurationView implements IComboConfigurationView {
   }
 
   private Tool createFinalizeComboButton(IComboViewProperties viewProperties) {
-    Command command= new Command() {
+    Command command = new Command() {
       @Override
       public void execute() {
         fireComboFinalized();
@@ -249,10 +247,9 @@ public class ComboConfigurationView implements IComboConfigurationView {
   }
 
   private void enableOrDisableClearButton() {
-    if (canEnableClearButton()){
+    if (canEnableClearButton()) {
       clearButton.enable();
-    }
-    else {
+    } else {
       clearButton.disable();
     }
   }

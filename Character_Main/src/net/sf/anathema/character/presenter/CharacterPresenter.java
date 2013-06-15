@@ -102,9 +102,13 @@ public class CharacterPresenter implements Presenter {
     if (!charmTemplate.canLearnCharms()) {
       return;
     }
+
+    String sectionTitle = getString("CardView.CharmConfiguration.Title");
+    SectionView sectionView = characterView.addSection(sectionTitle);
     String magicViewHeader = getString("CardView.CharmConfiguration.Title");
-    MagicPresenter presenter = new MagicPresenter(character, characterView.createMagicViewFactory(), resources,
+    MagicPresenter presenter = new MagicPresenter(character, characterView.createMagicViewFactory(), sectionView, resources,
             anathemaModel);
+
     initializer.initContentPresentation(magicViewHeader, Magic, presenter);
   }
 

@@ -8,6 +8,8 @@ import net.sf.anathema.lib.util.Identified;
 
 public interface ISpellView extends IView, IMagicLearnView {
 
+  void prepare(ISpellViewProperties properties);
+
   void initGui(Identified[] circles);
 
   void addCircleSelectionListener(ObjectValueListener<CircleType> listener);

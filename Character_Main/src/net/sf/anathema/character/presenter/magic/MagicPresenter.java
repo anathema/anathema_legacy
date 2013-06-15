@@ -9,6 +9,7 @@ import net.sf.anathema.character.generic.template.ICharacterTemplate;
 import net.sf.anathema.character.generic.template.ITemplateRegistry;
 import net.sf.anathema.character.generic.template.magic.ICharmTemplate;
 import net.sf.anathema.character.generic.template.magic.ISpellMagicTemplate;
+import net.sf.anathema.character.generic.type.ICharacterType;
 import net.sf.anathema.character.model.ICharacter;
 import net.sf.anathema.character.presenter.magic.charm.CharacterCharmTreePresenter;
 import net.sf.anathema.character.presenter.magic.combo.ComboConfigurationModel;
@@ -19,7 +20,10 @@ import net.sf.anathema.character.presenter.magic.detail.MagicDetailPresenterFact
 import net.sf.anathema.character.presenter.magic.detail.NullMagicDetailPresenter;
 import net.sf.anathema.character.presenter.magic.detail.RegisteredMagicDetailPresenterFactory;
 import net.sf.anathema.character.presenter.magic.spells.SpellContentPresenter;
+import net.sf.anathema.character.view.SectionView;
+import net.sf.anathema.character.view.magic.IComboConfigurationView;
 import net.sf.anathema.character.view.magic.IMagicViewFactory;
+import net.sf.anathema.character.view.magic.ISpellView;
 import net.sf.anathema.charmtree.presenter.view.CharmDisplayPropertiesMap;
 import net.sf.anathema.framework.IApplicationModel;
 import net.sf.anathema.framework.presenter.view.ContentView;
@@ -39,7 +43,7 @@ public class MagicPresenter implements IContentPresenter {
   private IApplicationModel anathemaModel;
   private Resources resources;
 
-  public MagicPresenter(ICharacter character, IMagicViewFactory factory, Resources resources, IApplicationModel anathemaModel) {
+  public MagicPresenter(ICharacter character, IMagicViewFactory factory, SectionView sectionView, Resources resources, IApplicationModel anathemaModel) {
     this.resources = resources;
     ITemplateRegistry templateRegistry = CharacterGenericsExtractor.getGenerics(anathemaModel).getTemplateRegistry();
     this.anathemaModel = anathemaModel;
@@ -47,19 +51,32 @@ public class MagicPresenter implements IContentPresenter {
     ICharmTemplate charmTemplate = characterTemplate.getMagicTemplate().getCharmTemplate();
     if (charmTemplate.canLearnCharms()) {
       subPresenters.add(createCharmPresenter(character, factory, resources, templateRegistry));
-      subPresenters.add(new ComboConfigurationPresenter(resources, createComboModel(character), factory));
+      initCombos(character, sectionView, resources, characterTemplate);
     }
-    addSpellPresenter(character, factory, resources);
+    addSpellPresenter(character, sectionView, resources);
   }
 
-  private void addSpellPresenter(ICharacter character, IMagicViewFactory factory, Resources resources) {
+  private void initCombos(ICharacter character, SectionView sectionView, Resources resources, ICharacterTemplate characterTemplate) {
+    String header = resources.getString("CardView.CharmConfiguration.ComboCreation.Title");
+    IComboConfigurationView comboView = sectionView.addView(header, IComboConfigurationView.class, characterType(characterTemplate));
+    new ComboConfigurationPresenter(resources, createComboModel(character), comboView).initPresentation();
+  }
+
+  private ICharacterType characterType(ICharacterTemplate characterTemplate) {
+    return characterTemplate.getTemplateType().getCharacterType();
+  }
+
+  private void addSpellPresenter(ICharacter character, SectionView sectionView, Resources resources) {
     ISpellMagicTemplate spellMagic = character.getCharacterTemplate().getMagicTemplate().getSpellMagic();
     if (spellMagic.canLearnSorcery()) {
-      subPresenters.add(SpellContentPresenter.ForSorcery(createMagicDetailPresenter(), character, resources, factory, getMagicDescriptionProvider()));
+      String header = resources.getString("CardView.CharmConfiguration.Spells.Title");
+      ISpellView view = sectionView.addView(header, ISpellView.class, characterType(character.getCharacterTemplate()));
+      SpellContentPresenter.ForSorcery(createMagicDetailPresenter(), character, resources, view, getMagicDescriptionProvider()).initPresentation();
     }
     if (spellMagic.canLearnNecromancy()) {
-      subPresenters
-              .add(SpellContentPresenter.ForNecromancy(createMagicDetailPresenter(), character, resources, factory, getMagicDescriptionProvider()));
+      String header = resources.getString("CardView.CharmConfiguration.Necromancy.Title");
+      ISpellView view = sectionView.addView(header, ISpellView.class, characterType(character.getCharacterTemplate()));
+      SpellContentPresenter.ForNecromancy(createMagicDetailPresenter(), character, resources, view, getMagicDescriptionProvider()).initPresentation();
     }
   }
 

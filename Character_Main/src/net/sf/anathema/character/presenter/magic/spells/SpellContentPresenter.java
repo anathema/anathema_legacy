@@ -5,7 +5,7 @@ import net.sf.anathema.character.model.ICharacter;
 import net.sf.anathema.character.presenter.magic.IContentPresenter;
 import net.sf.anathema.character.presenter.magic.detail.MagicAndDetailPresenter;
 import net.sf.anathema.character.presenter.magic.detail.MagicDetailPresenter;
-import net.sf.anathema.character.view.magic.IMagicViewFactory;
+import net.sf.anathema.character.view.magic.ISpellView;
 import net.sf.anathema.framework.presenter.view.ContentView;
 import net.sf.anathema.framework.presenter.view.SimpleViewContentView;
 import net.sf.anathema.framework.view.util.ContentProperties;
@@ -14,16 +14,16 @@ import net.sf.anathema.lib.resources.Resources;
 public class SpellContentPresenter implements IContentPresenter {
 
   public static IContentPresenter ForSorcery(MagicDetailPresenter detailPresenter, ICharacter character, Resources resources,
-                                             IMagicViewFactory factory, MagicDescriptionProvider magicDescriptionProvider) {
+                                             ISpellView view, MagicDescriptionProvider magicDescriptionProvider) {
     String title = resources.getString("CardView.CharmConfiguration.Spells.Title");
-    SpellPresenter spellPresenter = SpellPresenter.ForSorcery(character, resources, factory, magicDescriptionProvider);
+    SpellPresenter spellPresenter = SpellPresenter.ForSorcery(character, resources, view, magicDescriptionProvider);
     return new MagicAndDetailPresenter(title, detailPresenter, spellPresenter);
   }
 
   public static IContentPresenter ForNecromancy(MagicDetailPresenter detailPresenter, ICharacter character, Resources resources,
-                                                IMagicViewFactory factory, MagicDescriptionProvider magicDescriptionProvider) {
+                                                ISpellView view, MagicDescriptionProvider magicDescriptionProvider) {
     String title = resources.getString("CardView.CharmConfiguration.Necromancy.Title");
-    SpellPresenter spellPresenter = SpellPresenter.ForNecromancy(character, resources, factory, magicDescriptionProvider);
+    SpellPresenter spellPresenter = SpellPresenter.ForNecromancy(character, resources, view, magicDescriptionProvider);
     return new MagicAndDetailPresenter(title, detailPresenter, spellPresenter);
   }
 

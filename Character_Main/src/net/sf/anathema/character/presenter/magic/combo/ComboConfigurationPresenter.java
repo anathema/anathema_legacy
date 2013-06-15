@@ -11,15 +11,10 @@ import net.sf.anathema.character.model.charm.ICombo;
 import net.sf.anathema.character.model.charm.IComboConfiguration;
 import net.sf.anathema.character.model.charm.IComboConfigurationListener;
 import net.sf.anathema.character.model.charm.ILearningCharmGroup;
-import net.sf.anathema.character.presenter.magic.IContentPresenter;
 import net.sf.anathema.character.view.magic.IComboConfigurationView;
 import net.sf.anathema.character.view.magic.IComboView;
 import net.sf.anathema.character.view.magic.IComboViewListener;
-import net.sf.anathema.character.view.magic.IMagicViewFactory;
 import net.sf.anathema.framework.presenter.resources.BasicUi;
-import net.sf.anathema.framework.presenter.view.ContentView;
-import net.sf.anathema.framework.presenter.view.SimpleViewContentView;
-import net.sf.anathema.framework.view.util.ContentProperties;
 import net.sf.anathema.interaction.Command;
 import net.sf.anathema.interaction.Tool;
 import net.sf.anathema.lib.compare.I18nedIdentificateComparator;
@@ -35,7 +30,7 @@ import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
 
-public class ComboConfigurationPresenter implements IContentPresenter {
+public class ComboConfigurationPresenter {
 
   private final ICharmConfiguration charmConfiguration;
   private final IComboConfiguration comboConfiguration;
@@ -47,16 +42,15 @@ public class ComboConfigurationPresenter implements IContentPresenter {
   private final MagicDisplayLabeler labeler;
 
   public ComboConfigurationPresenter(Resources resources, ComboConfigurationModel comboModel,
-                                     IMagicViewFactory factory) {
+                                     IComboConfigurationView view) {
     this.resources = resources;
     this.comboModel = comboModel;
     this.charmConfiguration = comboModel.getCharmConfiguration();
     this.comboConfiguration = comboModel.getCombos();
     this.labeler = new MagicDisplayLabeler(resources);
-    this.view = factory.createCharmComboView();
+    this.view = view;
   }
 
-  @Override
   public void initPresentation() {
     view.initGui(new ComboViewProperties(resources, comboConfiguration, comboModel.getMagicDescriptionProvider()));
     initCharmLearnListening(view);
@@ -79,12 +73,6 @@ public class ComboConfigurationPresenter implements IContentPresenter {
       }
     });
     enableCrossPrerequisiteTypeCombos();
-  }
-
-  @Override
-  public ContentView getTabContent() {
-    String header = resources.getString("CardView.CharmConfiguration.ComboCreation.Title");
-    return new SimpleViewContentView(new ContentProperties(header), view);
   }
 
   private void enableCrossPrerequisiteTypeCombos() {
