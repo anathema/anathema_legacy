@@ -7,6 +7,7 @@ import net.sf.anathema.cards.data.ICardData;
 import net.sf.anathema.cards.data.providers.ICardDataProvider;
 import net.sf.anathema.cards.layout.ICardLayout;
 import net.sf.anathema.character.generic.magic.ICharm;
+import net.sf.anathema.character.main.experience.model.ExperienceModelFetcher;
 import net.sf.anathema.character.model.ICharacter;
 import net.sf.anathema.framework.reporting.ReportException;
 import net.sf.anathema.framework.reporting.pdf.AbstractPdfReport;
@@ -84,6 +85,6 @@ public class CardReport extends AbstractPdfReport {
   }
 
   private ICharm[] getCurrentCharms(ICharacter character) {
-    return character.getCharms().getLearnedCharms(character.getExperienceModel().isExperienced());
+    return character.getCharms().getLearnedCharms(ExperienceModelFetcher.fetch(character).isExperienced());
   }
 }

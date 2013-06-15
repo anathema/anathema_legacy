@@ -3,6 +3,7 @@ package net.sf.anathema.character.platform.module.perspective;
 import net.sf.anathema.character.CharacterPrintNameFileScanner;
 import net.sf.anathema.character.generic.framework.CharacterGenericsExtractor;
 import net.sf.anathema.character.generic.framework.ICharacterGenerics;
+import net.sf.anathema.character.main.experience.model.ExperienceModelFetcher;
 import net.sf.anathema.character.model.ICharacter;
 import net.sf.anathema.character.perspective.PreloadedDescriptiveFeatures;
 import net.sf.anathema.character.perspective.model.CharacterIdentifier;
@@ -123,7 +124,7 @@ public class CharacterSystemModel implements ItemSystemModel {
 
   @Override
   public void convertCurrentToExperienced() {
-    getCurrentCharacter().getExperienceModel().setExperienced(true);
+    ExperienceModelFetcher.fetch(getCurrentCharacter()).setExperienced(true);
   }
 
   @Override
@@ -167,10 +168,10 @@ public class CharacterSystemModel implements ItemSystemModel {
 
   private void notifyExperiencedListeners() {
     ICharacter character = getCurrentCharacter();
-    if (character.getExperienceModel().isExperienced()) {
+    if (ExperienceModelFetcher.fetch(character).isExperienced()) {
       becomesExperiencedListener.announce().changeOccurred();
     }
-    if (!character.getExperienceModel().isExperienced()) {
+    if (!ExperienceModelFetcher.fetch(character).isExperienced()) {
       becomesInexperiencedListener.announce().changeOccurred();
     }
   }

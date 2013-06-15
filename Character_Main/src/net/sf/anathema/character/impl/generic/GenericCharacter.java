@@ -33,6 +33,7 @@ import net.sf.anathema.character.library.trait.visitor.IDefaultTrait;
 import net.sf.anathema.character.library.trait.visitor.ITraitVisitor;
 import net.sf.anathema.character.main.concept.model.CharacterConceptFetcher;
 import net.sf.anathema.character.main.description.model.CharacterDescriptionFetcher;
+import net.sf.anathema.character.main.experience.model.ExperienceModelFetcher;
 import net.sf.anathema.character.model.ICharacter;
 import net.sf.anathema.character.model.charm.ICharmConfiguration;
 import net.sf.anathema.character.model.charm.ICombo;
@@ -236,7 +237,7 @@ public class GenericCharacter implements IGenericCharacter {
   public List<IMagic> getAllLearnedMagic() {
     List<IMagic> magicList = new ArrayList<>();
     magicList.addAll(Arrays.asList(getLearnedCharms()));
-    magicList.addAll(Arrays.asList(character.getSpells().getLearnedSpells(character.getExperienceModel().isExperienced())));
+    magicList.addAll(Arrays.asList(character.getSpells().getLearnedSpells(ExperienceModelFetcher.fetch(character).isExperienced())));
     return magicList;
   }
 
@@ -264,7 +265,7 @@ public class GenericCharacter implements IGenericCharacter {
 
   @Override
   public boolean isExperienced() {
-    return character.getExperienceModel().isExperienced();
+    return ExperienceModelFetcher.fetch(character).isExperienced();
   }
 
   @Override
@@ -305,7 +306,7 @@ public class GenericCharacter implements IGenericCharacter {
 
   @Override
   public int getTotalExperiencePoints() {
-    return character.getExperienceModel().getExperiencePoints().getTotalExperiencePoints();
+    return ExperienceModelFetcher.fetch(character).getExperiencePoints().getTotalExperiencePoints();
   }
 
   @Override
@@ -352,7 +353,7 @@ public class GenericCharacter implements IGenericCharacter {
 
   @Override
   public ICharm[] getLearnedCharms() {
-    return character.getCharms().getLearnedCharms(character.getExperienceModel().isExperienced());
+    return character.getCharms().getLearnedCharms(ExperienceModelFetcher.fetch(character).isExperienced());
   }
 
   @Override

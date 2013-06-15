@@ -4,6 +4,7 @@ import net.sf.anathema.character.generic.caste.ICasteType;
 import net.sf.anathema.character.generic.framework.additionaltemplate.listening.DedicatedCharacterChangeAdapter;
 import net.sf.anathema.character.generic.template.ICharacterTemplate;
 import net.sf.anathema.character.main.concept.model.CharacterConceptFetcher;
+import net.sf.anathema.character.main.experience.model.ExperienceModelFetcher;
 import net.sf.anathema.character.model.ICharacter;
 import net.sf.anathema.character.model.ITypedDescription;
 import net.sf.anathema.character.view.concept.ICharacterConceptAndRulesView;
@@ -82,7 +83,7 @@ public class CharacterConceptAndRulesPresenter {
         casteView.setEnabled(!experienced);
       }
     });
-    casteView.setEnabled(!character.getExperienceModel().isExperienced());
+    casteView.setEnabled(!ExperienceModelFetcher.fetch(character).isExperienced());
     return true;
   }
 }

@@ -11,6 +11,7 @@ import net.sf.anathema.character.generic.impl.traits.TraitTypeUtils;
 import net.sf.anathema.character.generic.traits.ITraitType;
 import net.sf.anathema.character.generic.traits.types.AbilityType;
 import net.sf.anathema.character.library.trait.favorable.IFavorableTrait;
+import net.sf.anathema.character.main.experience.model.ExperienceModelFetcher;
 import net.sf.anathema.character.model.background.IBackground;
 
 import static org.hamcrest.CoreMatchers.is;
@@ -33,7 +34,7 @@ public class CharacterChangeSteps {
   @Given("^she is experienced")
   @When("^she goes experienced")
   public void setToExperienced() {
-    character.getCharacter().getExperienceModel().setExperienced(true);
+    ExperienceModelFetcher.fetch(character.getCharacter()).setExperienced(true);
   }
 
   @When("^I set her Caste to (.*)$")
@@ -53,7 +54,7 @@ public class CharacterChangeSteps {
   public void I_set_her_trait_to(String traitId, int value) throws Throwable {
     ITraitType type = new TraitTypeUtils().getTraitTypeById(traitId);
     IModifiableBasicTrait trait = (IModifiableBasicTrait) character.getTraitConfiguration().getTrait(type);
-    if (character.getCharacter().getExperienceModel().isExperienced()) {
+    if (ExperienceModelFetcher.fetch(character.getCharacter()).isExperienced()) {
       trait.setExperiencedValue(value);
     } else {
       trait.setCreationValue(value);

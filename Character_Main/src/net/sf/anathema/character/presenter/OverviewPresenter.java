@@ -1,6 +1,7 @@
 package net.sf.anathema.character.presenter;
 
 import net.sf.anathema.character.generic.framework.additionaltemplate.listening.DedicatedCharacterChangeAdapter;
+import net.sf.anathema.character.main.experience.model.ExperienceModelFetcher;
 import net.sf.anathema.character.model.ICharacter;
 import net.sf.anathema.character.model.advance.IExperiencePointManagement;
 import net.sf.anathema.character.model.creation.IBonusPointManagement;
@@ -34,7 +35,7 @@ public class OverviewPresenter implements Presenter {
     new CreationOverviewPresenter(resources, character, creationPointView, bonusPoints).initPresentation();
     CategorizedOverview experiencePointView = container.addExperienceOverviewView();
     new ExperiencedOverviewPresenter(resources, character, experiencePointView, experiencePoints).initPresentation();
-    setOverviewView(character.getExperienceModel().isExperienced());
+    setOverviewView(ExperienceModelFetcher.fetch(character).isExperienced());
     character.getCharacterContext().getCharacterListening().addChangeListener(new DedicatedCharacterChangeAdapter() {
       @Override
       public void experiencedChanged(boolean experienced) {

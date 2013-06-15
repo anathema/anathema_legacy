@@ -2,6 +2,7 @@ package net.sf.anathema.character.presenter.overview;
 
 import net.sf.anathema.character.generic.framework.additionaltemplate.listening.GlobalCharacterChangeAdapter;
 import net.sf.anathema.character.library.overview.IOverviewCategory;
+import net.sf.anathema.character.main.experience.model.ExperienceModelFetcher;
 import net.sf.anathema.character.model.ICharacter;
 import net.sf.anathema.character.model.advance.IExperiencePointConfigurationListener;
 import net.sf.anathema.character.model.advance.IExperiencePointEntry;
@@ -33,7 +34,7 @@ public class ExperiencedOverviewPresenter implements Presenter {
     character.getCharacterContext().getCharacterListening().addChangeListener(new GlobalCharacterChangeAdapter() {
       @Override
       public void changeOccurred() {
-        if (character.getExperienceModel().isExperienced()) {
+        if (ExperienceModelFetcher.fetch(character).isExperienced()) {
           calculateXPCost();
         }
       }
@@ -55,22 +56,23 @@ public class ExperiencedOverviewPresenter implements Presenter {
 
   private void initTotal(IOverviewCategory category) {
     totalView = category.addAlotmentView(getString("Overview.Experience.Total"), 4);
-    character.getExperienceModel().getExperiencePoints().addExperiencePointConfigurationListener(new IExperiencePointConfigurationListener() {
-      @Override
-      public void entryAdded(IExperiencePointEntry entry) {
-        calculateXPCost();
-      }
+    ExperienceModelFetcher.fetch(character).getExperiencePoints()
+                          .addExperiencePointConfigurationListener(new IExperiencePointConfigurationListener() {
+                            @Override
+                            public void entryAdded(IExperiencePointEntry entry) {
+                              calculateXPCost();
+                            }
 
-      @Override
-      public void entryRemoved(IExperiencePointEntry entry) {
-        calculateXPCost();
-      }
+                            @Override
+                            public void entryRemoved(IExperiencePointEntry entry) {
+                              calculateXPCost();
+                            }
 
-      @Override
-      public void entryChanged(IExperiencePointEntry entry) {
-        calculateXPCost();
-      }
-    });
+                            @Override
+                            public void entryChanged(IExperiencePointEntry entry) {
+                              calculateXPCost();
+                            }
+                          });
   }
 
   private void calculateXPCost() {
@@ -89,7 +91,7 @@ public class ExperiencedOverviewPresenter implements Presenter {
   }
 
   private int getTotalXP() {
-    return character.getExperienceModel().getExperiencePoints().getTotalExperiencePoints() + management.getMiscGain();
+    return ExperienceModelFetcher.fetch(character).getExperiencePoints().getTotalExperiencePoints() + management.getMiscGain();
   }
 
   private String getString(String string) {

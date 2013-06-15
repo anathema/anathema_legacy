@@ -5,6 +5,7 @@ import net.sf.anathema.character.generic.framework.additionaltemplate.listening.
 import net.sf.anathema.character.generic.magic.ICharm;
 import net.sf.anathema.character.generic.magic.description.MagicDescriptionProvider;
 import net.sf.anathema.character.main.concept.model.CharacterConceptFetcher;
+import net.sf.anathema.character.main.experience.model.ExperienceModelFetcher;
 import net.sf.anathema.character.model.ICharacter;
 import net.sf.anathema.character.model.charm.ICharmConfiguration;
 import net.sf.anathema.character.model.charm.IComboConfiguration;
@@ -41,10 +42,10 @@ public class ComboConfigurationModel {
   }
 
   public ICharm[] getLearnedCharms() {
-    return character.getCharms().getLearnedCharms(character.getExperienceModel().isExperienced());
+    return character.getCharms().getLearnedCharms(ExperienceModelFetcher.fetch(character).isExperienced());
   }
 
   public boolean isExperienced() {
-    return character.getExperienceModel().isExperienced();
+    return ExperienceModelFetcher.fetch(character).isExperienced();
   }
 }

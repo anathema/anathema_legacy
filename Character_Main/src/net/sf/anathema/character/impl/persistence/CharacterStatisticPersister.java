@@ -15,6 +15,7 @@ import net.sf.anathema.character.impl.persistence.charm.CharmConfigurationPersis
 import net.sf.anathema.character.main.concept.model.CharacterConceptFetcher;
 import net.sf.anathema.character.main.description.model.CharacterDescription;
 import net.sf.anathema.character.main.description.model.CharacterDescriptionFetcher;
+import net.sf.anathema.character.main.experience.model.ExperienceModelFetcher;
 import net.sf.anathema.character.model.ICharacter;
 import net.sf.anathema.framework.messaging.IMessaging;
 import net.sf.anathema.lib.exception.PersistenceException;
@@ -57,7 +58,7 @@ public class CharacterStatisticPersister {
     descriptionPersister.save(parent, CharacterDescriptionFetcher.fetch(character));
     Element statisticsElement = parent.addElement(TAG_STATISTICS);
     rulesPersister.save(statisticsElement);
-    statisticsElement.addAttribute(ATTRIB_EXPERIENCED, String.valueOf(character.getExperienceModel().isExperienced()));
+    statisticsElement.addAttribute(ATTRIB_EXPERIENCED, String.valueOf(ExperienceModelFetcher.fetch(character).isExperienced()));
     ICharacterTemplate template = character.getCharacterTemplate();
     Element characterTypeElement = statisticsElement.addElement(TAG_CHARACTER_TYPE);
     characterTypeElement.addAttribute(ATTRIB_SUB_TYPE, template.getTemplateType().getSubType().getId());
@@ -71,7 +72,7 @@ public class CharacterStatisticPersister {
     backgroundPersister.save(statisticsElement, character.getTraitConfiguration().getBackgrounds());
     charmPersister.save(statisticsElement, character);
     spellPersister.save(statisticsElement, character.getSpells());
-    experiencePersister.save(statisticsElement, character.getExperienceModel().getExperiencePoints());
+    experiencePersister.save(statisticsElement, ExperienceModelFetcher.fetch(character).getExperiencePoints());
     additonalModelPersister.save(statisticsElement, character.getExtendedConfiguration().getAdditionalModels());
   }
 
@@ -86,7 +87,7 @@ public class CharacterStatisticPersister {
       descriptionPersister.load(parent, characterDescription);
       ICasteCollection casteCollection = template.getCasteCollection();
       characterConceptPersister.load(statisticsElement, CharacterConceptFetcher.fetch(character), characterDescription, casteCollection);
-      character.getExperienceModel().setExperienced(experienced);
+      ExperienceModelFetcher.fetch(character).setExperienced(experienced);
       essencePersister.load(statisticsElement, character.getTraitConfiguration());
       virtuePersister.load(statisticsElement, character.getTraitConfiguration());
       attributePersister.load(statisticsElement, character.getTraitConfiguration());
@@ -94,7 +95,7 @@ public class CharacterStatisticPersister {
       backgroundPersister.load(statisticsElement, character.getTraitConfiguration().getBackgrounds());
       charmPersister.load(statisticsElement, character);
       spellPersister.load(statisticsElement, character.getSpells());
-      experiencePersister.load(statisticsElement, character.getExperienceModel().getExperiencePoints());
+      experiencePersister.load(statisticsElement, ExperienceModelFetcher.fetch(character).getExperiencePoints());
       willpowerPersister.load(statisticsElement, character.getTraitConfiguration().getTrait(OtherTraitType.Willpower));
       additonalModelPersister.load(statisticsElement, character.getExtendedConfiguration().getAdditionalModels());
       return character;

@@ -3,6 +3,7 @@ package net.sf.anathema.character.presenter.magic.spells;
 import net.sf.anathema.character.generic.framework.magic.view.AbstractMagicLearnProperties;
 import net.sf.anathema.character.generic.magic.ISpell;
 import net.sf.anathema.character.generic.magic.description.MagicDescriptionProvider;
+import net.sf.anathema.character.main.experience.model.ExperienceModelFetcher;
 import net.sf.anathema.character.model.ICharacter;
 import net.sf.anathema.character.model.ISpellConfiguration;
 import net.sf.anathema.character.view.magic.ISpellViewProperties;
@@ -81,7 +82,7 @@ public class SpellViewProperties extends AbstractMagicLearnProperties implements
       @Override
       public void valueChanged(ListSelectionEvent e) {
         boolean enabled = !list.isSelectionEmpty();
-        if (enabled && character.getExperienceModel().isExperienced()) {
+        if (enabled && ExperienceModelFetcher.fetch(character).isExperienced()) {
           for (Object spellObject : list.getSelectedValuesList()) {
             ISpell spell = (ISpell) spellObject;
             if (spellConfiguration.isLearnedOnCreation(spell)) {

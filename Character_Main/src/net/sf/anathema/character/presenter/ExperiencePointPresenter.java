@@ -2,6 +2,7 @@ package net.sf.anathema.character.presenter;
 
 import net.sf.anathema.character.generic.framework.additionaltemplate.listening.DedicatedCharacterChangeAdapter;
 import net.sf.anathema.character.generic.type.ICharacterType;
+import net.sf.anathema.character.main.experience.model.ExperienceModelFetcher;
 import net.sf.anathema.character.model.ICharacter;
 import net.sf.anathema.character.presenter.advance.ExperienceConfigurationPresenter;
 import net.sf.anathema.character.view.SectionView;
@@ -19,7 +20,7 @@ public class ExperiencePointPresenter {
   }
 
   public void initPresentation(final SectionView section) {
-    initExperiencePointPresentation(character.getExperienceModel().isExperienced(), section);
+    initExperiencePointPresentation(ExperienceModelFetcher.fetch(character).isExperienced(), section);
     character.getCharacterContext().getCharacterListening().addChangeListener(new DedicatedCharacterChangeAdapter() {
       @Override
       public void experiencedChanged(boolean experienced) {
@@ -33,7 +34,8 @@ public class ExperiencePointPresenter {
       ICharacterType characterType = character.getCharacterTemplate().getTemplateType().getCharacterType();
       String header = resources.getString("CardView.ExperienceConfiguration.Title");
       IExperienceConfigurationView experienceView = section.addView(header, IExperienceConfigurationView.class, characterType);
-      new ExperienceConfigurationPresenter(resources, character.getExperienceModel().getExperiencePoints(), experienceView).initPresentation();
+      new ExperienceConfigurationPresenter(resources, ExperienceModelFetcher.fetch(character).getExperiencePoints(), experienceView)
+              .initPresentation();
     }
   }
 }

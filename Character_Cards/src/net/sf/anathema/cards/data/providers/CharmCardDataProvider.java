@@ -5,6 +5,7 @@ import net.sf.anathema.cards.data.ICardData;
 import net.sf.anathema.cards.layout.ICardReportResourceProvider;
 import net.sf.anathema.character.generic.magic.ICharm;
 import net.sf.anathema.character.impl.generic.GenericCharacter;
+import net.sf.anathema.character.main.experience.model.ExperienceModelFetcher;
 import net.sf.anathema.character.model.ICharacter;
 import net.sf.anathema.character.reporting.pdf.content.stats.magic.CharmStats;
 import net.sf.anathema.framework.IApplicationModel;
@@ -29,7 +30,7 @@ public class CharmCardDataProvider extends AbstractMagicCardDataProvider {
   }
 
   private ICharm[] getCurrentCharms(ICharacter character) {
-    return character.getCharms().getLearnedCharms(character.getExperienceModel().isExperienced());
+    return character.getCharms().getLearnedCharms(ExperienceModelFetcher.fetch(character).isExperienced());
   }
 
   private CharmStats createCharmStats(ICharacter character, ICharm charm) {

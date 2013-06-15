@@ -23,8 +23,6 @@ import net.sf.anathema.character.impl.model.traits.essence.EssencePoolConfigurat
 import net.sf.anathema.character.impl.model.traits.listening.CharacterTraitListening;
 import net.sf.anathema.character.main.description.model.CharacterDescription;
 import net.sf.anathema.character.main.description.model.CharacterDescriptionFetcher;
-import net.sf.anathema.character.main.experience.model.ExperienceModel;
-import net.sf.anathema.character.main.experience.model.ExperienceModelFetcher;
 import net.sf.anathema.character.main.model.DefaultHero;
 import net.sf.anathema.character.main.model.DefaultModelCreationContext;
 import net.sf.anathema.character.main.model.change.ChangeAnnouncerAdapter;
@@ -188,10 +186,6 @@ public class ExaltedCharacter implements ICharacter {
 
   public ISpellConfiguration getSpells() {
     return spells;
-  }
-
-  public ExperienceModel getExperienceModel() {
-    return ExperienceModelFetcher.fetch(this);
   }
 
   public ICharacterTemplate getCharacterTemplate() {
