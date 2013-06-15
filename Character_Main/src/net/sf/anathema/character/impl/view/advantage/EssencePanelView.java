@@ -2,11 +2,11 @@ package net.sf.anathema.character.impl.view.advantage;
 
 import net.miginfocom.swing.MigLayout;
 import net.sf.anathema.character.library.overview.LabelledOverviewStringValueView;
-import net.sf.anathema.character.library.trait.IModifiableCapTrait;
 import net.sf.anathema.character.library.trait.view.SimpleTraitView;
+import net.sf.anathema.character.library.trait.visitor.IDefaultTrait;
+import net.sf.anathema.framework.swing.IView;
 import net.sf.anathema.framework.value.IIntValueView;
 import net.sf.anathema.framework.value.IntegerViewFactory;
-import net.sf.anathema.framework.swing.IView;
 import net.sf.anathema.lib.workflow.labelledvalue.IValueView;
 
 import javax.swing.JComponent;
@@ -23,7 +23,7 @@ public class EssencePanelView implements IView {
     this.guiConfiguration = guiConfiguration;
   }
 
-  public IIntValueView addEssenceView(String labelText, int value, int maxValue, IModifiableCapTrait trait) {
+  public IIntValueView addEssenceView(String labelText, int value, int maxValue, IDefaultTrait trait) {
     SimpleTraitView essenceView = new SimpleTraitView(guiConfiguration, labelText, value, maxValue, trait);
     essenceView.addComponents(panel);
     return essenceView;

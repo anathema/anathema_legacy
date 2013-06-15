@@ -11,10 +11,10 @@ import net.sf.anathema.character.library.overview.OverviewCategory;
 import net.sf.anathema.character.library.removableentry.view.AbstractRemovableEntryView;
 import net.sf.anathema.character.library.selection.IStringSelectionView;
 import net.sf.anathema.character.library.selection.StringSelectionView;
-import net.sf.anathema.character.library.trait.IModifiableCapTrait;
 import net.sf.anathema.character.library.trait.view.RearButtonTraitViewWrapper;
 import net.sf.anathema.character.library.trait.view.RearToggleButtonTraitViewWrapper;
 import net.sf.anathema.character.library.trait.view.SimpleTraitView;
+import net.sf.anathema.character.library.trait.visitor.IDefaultTrait;
 import net.sf.anathema.framework.swing.IView;
 import net.sf.anathema.framework.value.IntegerViewFactory;
 import net.sf.anathema.lib.file.RelativePath;
@@ -52,7 +52,7 @@ public class IntimaciesView extends AbstractRemovableEntryView<IRemovableTraitVi
   }
 
   @Override
-  public IRemovableTraitView<IToggleButtonTraitView<?>> addEntryView(RelativePath removeIcon, IModifiableCapTrait trait,
+  public IRemovableTraitView<IToggleButtonTraitView<?>> addEntryView(RelativePath removeIcon, IDefaultTrait trait,
                                                                      String string) {
     SimpleTraitView view = new SimpleTraitView(factory, string, 0, 5);
     RearToggleButtonTraitViewWrapper<SimpleTraitView> oneButtonView = new RearToggleButtonTraitViewWrapper<>(view,

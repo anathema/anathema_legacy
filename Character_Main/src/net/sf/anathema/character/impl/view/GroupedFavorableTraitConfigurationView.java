@@ -2,9 +2,9 @@ package net.sf.anathema.character.impl.view;
 
 import net.sf.anathema.character.library.intvalue.IIconToggleButtonProperties;
 import net.sf.anathema.character.library.intvalue.IToggleButtonTraitView;
-import net.sf.anathema.character.library.trait.IModifiableCapTrait;
 import net.sf.anathema.character.library.trait.view.GroupedTraitView;
 import net.sf.anathema.character.library.trait.view.SimpleTraitView;
+import net.sf.anathema.character.library.trait.visitor.IDefaultTrait;
 import net.sf.anathema.character.view.IGroupedFavorableTraitConfigurationView;
 import net.sf.anathema.framework.value.IntegerViewFactory;
 
@@ -35,13 +35,13 @@ public class GroupedFavorableTraitConfigurationView implements IGroupedFavorable
   }
 
   @Override
-  public IToggleButtonTraitView<SimpleTraitView> addTraitView(String labelText, int value, int maxValue, IModifiableCapTrait trait, boolean selected,
+  public IToggleButtonTraitView<SimpleTraitView> addTraitView(String labelText, int value, int maxValue, IDefaultTrait trait, boolean selected,
                                                               IIconToggleButtonProperties properties) {
     return groupedTraitView.addTraitView(labelText, value, maxValue, trait, selected, properties, markerIntValueDisplayFactory);
   }
 
   @Override
-  public IToggleButtonTraitView<?> addMarkerLessTraitView(String labelText, int value, int maxValue, IModifiableCapTrait trait, boolean selected,
+  public IToggleButtonTraitView<?> addMarkerLessTraitView(String labelText, int value, int maxValue, IDefaultTrait trait, boolean selected,
                                                           IIconToggleButtonProperties properties) {
     return groupedTraitView.addTraitView(labelText, value, maxValue, trait, selected, properties, markerLessIntValueDisplayFactory);
   }

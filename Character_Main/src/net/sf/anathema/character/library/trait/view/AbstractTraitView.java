@@ -1,7 +1,7 @@
 package net.sf.anathema.character.library.trait.view;
 
 import net.sf.anathema.character.library.intvalue.TraitUpperBounds;
-import net.sf.anathema.character.library.trait.IModifiableCapTrait;
+import net.sf.anathema.character.library.trait.visitor.IDefaultTrait;
 import net.sf.anathema.framework.value.IIntValueDisplay;
 import net.sf.anathema.framework.value.IIntValueView;
 import net.sf.anathema.framework.value.IntegerViewFactory;
@@ -14,13 +14,13 @@ public abstract class AbstractTraitView implements IIntValueView {
   private final IIntValueDisplay valueDisplay;
   private final String labelText;
 
-  public AbstractTraitView(IntegerViewFactory factory, String labelText, int value, int maxValue, IModifiableCapTrait trait) {
+  public AbstractTraitView(IntegerViewFactory factory, String labelText, int value, int maxValue, IDefaultTrait trait) {
     this.labelText = labelText;
     TwoUpperBounds bounds = createBounds(trait);
     this.valueDisplay = maxValue > 0 ? factory.createIntValueDisplay(maxValue, value, bounds) : null;
   }
 
-  private TwoUpperBounds createBounds(IModifiableCapTrait trait) {
+  private TwoUpperBounds createBounds(IDefaultTrait trait) {
     if (trait == null) {
       return new NullUpperBounds();
     }

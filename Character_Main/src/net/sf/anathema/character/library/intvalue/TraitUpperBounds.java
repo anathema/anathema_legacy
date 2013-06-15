@@ -1,13 +1,13 @@
 package net.sf.anathema.character.library.intvalue;
 
-import net.sf.anathema.character.library.trait.IModifiableCapTrait;
+import net.sf.anathema.character.library.trait.visitor.IDefaultTrait;
 import net.sf.anathema.framework.value.TwoUpperBounds;
 
 public class TraitUpperBounds implements TwoUpperBounds {
 
-  private final IModifiableCapTrait trait;
+  private final IDefaultTrait trait;
 
-  public TraitUpperBounds(IModifiableCapTrait trait) {
+  public TraitUpperBounds(IDefaultTrait trait) {
     this.trait = trait;
   }
 
