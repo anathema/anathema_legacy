@@ -1,14 +1,9 @@
 package net.sf.anathema.character.presenter.magic.detail;
 
-import net.sf.anathema.character.presenter.magic.IContentPresenter;
-import net.sf.anathema.framework.presenter.view.ContentView;
-import net.sf.anathema.framework.presenter.view.SimpleViewContentView;
 import net.sf.anathema.framework.view.CollapsibleView;
-import net.sf.anathema.framework.view.util.ContentProperties;
+import net.sf.anathema.lib.gui.Presenter;
 
-public class MagicAndDetailPresenter implements IContentPresenter {
-
-  private String tabTitle;
+public class MagicAndDetailPresenter implements Presenter {
 
   private class OpenCharmDetailListener implements ShowMagicDetailListener {
 
@@ -28,15 +23,9 @@ public class MagicAndDetailPresenter implements IContentPresenter {
   private final MagicDetailPresenter detailPresenter;
   private final CollapsibleView collapsibleView = new CollapsibleView();
 
-  public MagicAndDetailPresenter(String tabTitle, MagicDetailPresenter detailPresenter, DetailDemandingMagicPresenter mainPresenter) {
-    this.tabTitle = tabTitle;
+  public MagicAndDetailPresenter(MagicDetailPresenter detailPresenter, DetailDemandingMagicPresenter mainPresenter) {
     this.detailPresenter = detailPresenter;
     this.mainPresenter = mainPresenter;
-  }
-
-  @Override
-  public ContentView getTabContent() {
-    return new SimpleViewContentView(new ContentProperties(tabTitle), collapsibleView);
   }
 
   @Override
