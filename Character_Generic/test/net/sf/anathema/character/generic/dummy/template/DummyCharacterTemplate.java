@@ -204,11 +204,6 @@ public class DummyCharacterTemplate implements ICharacterTemplate {
   }
 
   @Override
-  public boolean isNpcOnly() {
-    return false;
-  }
-
-  @Override
   public boolean isCustomTemplate() {
     return false;
   }

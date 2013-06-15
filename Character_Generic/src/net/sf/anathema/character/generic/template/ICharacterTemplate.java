@@ -44,7 +44,5 @@ public interface ICharacterTemplate extends ICharacterExternalsTemplate {
 
   IMagicTemplate getMagicTemplate();
 
-  boolean isNpcOnly();
-
   boolean isCustomTemplate();
 }

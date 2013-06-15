@@ -34,7 +34,7 @@ public class OverviewPresenter implements Presenter {
     new CreationOverviewPresenter(resources, character, creationPointView, bonusPoints).initPresentation();
     CategorizedOverview experiencePointView = container.addExperienceOverviewView();
     new ExperiencedOverviewPresenter(resources, character, experiencePointView, experiencePoints).initPresentation();
-    setOverviewView(character.isExperienced());
+    setOverviewView(character.getExperienceModel().isExperienced());
     character.getCharacterContext().getCharacterListening().addChangeListener(new DedicatedCharacterChangeAdapter() {
       @Override
       public void experiencedChanged(boolean experienced) {

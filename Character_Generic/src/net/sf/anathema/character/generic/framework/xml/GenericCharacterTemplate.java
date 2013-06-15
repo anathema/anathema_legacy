@@ -50,14 +50,8 @@ public class GenericCharacterTemplate implements ICharacterTemplate, ICloneable<
   // This is volatile instead of final to allow clone to be implemented
   private volatile List<IAdditionalTemplate> additionalTemplates = new ArrayList<>();
   private IHealthTemplate healthTemplate = new GenericHealthTemplate();
-  private boolean npcOnly;
   private boolean isCustomTemplate;
   private final List<String> models = new ArrayList<>();
-
-  @Override
-  public boolean isNpcOnly() {
-    return npcOnly;
-  }
 
   @Override
   public GroupedTraitType[] getAbilityGroups() {
@@ -230,10 +224,6 @@ public class GenericCharacterTemplate implements ICharacterTemplate, ICloneable<
 
   public void setAdditionalRules(GenericAdditionalRules rules) {
     this.additionalRules = rules;
-  }
-
-  public void setNpcOnly() {
-    this.npcOnly = true;
   }
 
   @Override

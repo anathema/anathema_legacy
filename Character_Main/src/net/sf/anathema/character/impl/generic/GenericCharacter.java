@@ -236,7 +236,7 @@ public class GenericCharacter implements IGenericCharacter {
   public List<IMagic> getAllLearnedMagic() {
     List<IMagic> magicList = new ArrayList<>();
     magicList.addAll(Arrays.asList(getLearnedCharms()));
-    magicList.addAll(Arrays.asList(character.getSpells().getLearnedSpells(character.isExperienced())));
+    magicList.addAll(Arrays.asList(character.getSpells().getLearnedSpells(character.getExperienceModel().isExperienced())));
     return magicList;
   }
 
@@ -264,7 +264,7 @@ public class GenericCharacter implements IGenericCharacter {
 
   @Override
   public boolean isExperienced() {
-    return character.isExperienced();
+    return character.getExperienceModel().isExperienced();
   }
 
   @Override
@@ -305,7 +305,7 @@ public class GenericCharacter implements IGenericCharacter {
 
   @Override
   public int getTotalExperiencePoints() {
-    return character.getExperiencePoints().getTotalExperiencePoints();
+    return character.getExperienceModel().getExperiencePoints().getTotalExperiencePoints();
   }
 
   @Override
@@ -352,7 +352,7 @@ public class GenericCharacter implements IGenericCharacter {
 
   @Override
   public ICharm[] getLearnedCharms() {
-    return character.getCharms().getLearnedCharms(character.isExperienced());
+    return character.getCharms().getLearnedCharms(character.getExperienceModel().isExperienced());
   }
 
   @Override

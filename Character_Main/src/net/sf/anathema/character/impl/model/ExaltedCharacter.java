@@ -34,7 +34,6 @@ import net.sf.anathema.character.model.CharacterModelFactory;
 import net.sf.anathema.character.model.ICharacter;
 import net.sf.anathema.character.model.ISpellConfiguration;
 import net.sf.anathema.character.model.ModelCreationContext;
-import net.sf.anathema.character.model.advance.IExperiencePointConfiguration;
 import net.sf.anathema.character.model.charm.ICharmConfiguration;
 import net.sf.anathema.character.model.charm.IComboConfiguration;
 import net.sf.anathema.character.model.health.IHealthConfiguration;
@@ -89,9 +88,6 @@ public class ExaltedCharacter implements ICharacter {
         context.getCharacterListening().fireCharacterChanged();
       }
     });
-    if (characterTemplate.isNpcOnly()) {
-      setExperienced(true);
-    }
     for (IGlobalAdditionalTemplate globalTemplate : generics.getGlobalAdditionalTemplateRegistry().getAll()) {
       addAdditionalModels(generics, globalTemplate);
     }
@@ -197,18 +193,6 @@ public class ExaltedCharacter implements ICharacter {
 
   public ExperienceModel getExperienceModel() {
     return experience;
-  }
-
-  public boolean isExperienced() {
-    return experience.isExperienced();
-  }
-
-  public void setExperienced(boolean experienced) {
-    experience.setExperienced(experienced);
-  }
-
-  public IExperiencePointConfiguration getExperiencePoints() {
-    return experience.getExperiencePoints();
   }
 
   public ICharacterTemplate getCharacterTemplate() {

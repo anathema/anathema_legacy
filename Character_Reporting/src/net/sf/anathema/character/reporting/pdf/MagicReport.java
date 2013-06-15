@@ -184,10 +184,10 @@ public class MagicReport extends AbstractPdfReport {
   }
 
   private ISpell[] getCurrentSpells(ICharacter character) {
-    return character.getSpells().getLearnedSpells(character.isExperienced());
+    return character.getSpells().getLearnedSpells(character.getExperienceModel().isExperienced());
   }
 
   private ICharm[] getCurrentCharms(ICharacter character) {
-    return character.getCharms().getLearnedCharms(character.isExperienced());
+    return character.getCharms().getLearnedCharms(character.getExperienceModel().isExperienced());
   }
 }

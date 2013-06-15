@@ -82,7 +82,7 @@ public class CharacterConceptAndRulesPresenter {
         casteView.setEnabled(!experienced);
       }
     });
-    casteView.setEnabled(!character.isExperienced());
+    casteView.setEnabled(!character.getExperienceModel().isExperienced());
     return true;
   }
 }

@@ -36,11 +36,6 @@ public class SimpleDummyCharacterTemplate implements ICharacterTemplate {
   }
 
   @Override
-  public boolean isNpcOnly() {
-    return false;
-  }
-
-  @Override
   public GroupedTraitType[] getAbilityGroups() {
     return new GroupedTraitType[0];
   }

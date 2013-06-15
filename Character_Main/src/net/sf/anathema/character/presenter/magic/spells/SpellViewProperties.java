@@ -81,7 +81,7 @@ public class SpellViewProperties extends AbstractMagicLearnProperties implements
       @Override
       public void valueChanged(ListSelectionEvent e) {
         boolean enabled = !list.isSelectionEmpty();
-        if (enabled && character.isExperienced()) {
+        if (enabled && character.getExperienceModel().isExperienced()) {
           for (Object spellObject : list.getSelectedValuesList()) {
             ISpell spell = (ISpell) spellObject;
             if (spellConfiguration.isLearnedOnCreation(spell)) {

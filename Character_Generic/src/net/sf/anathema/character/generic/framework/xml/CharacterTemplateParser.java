@@ -61,7 +61,6 @@ public class CharacterTemplateParser extends AbstractXmlTemplateParser<GenericCh
   public static final String ATTRIB_ID = "id";
   private static final String TAG_HEALTH_TEMPLATE = "healthTemplate";
   private static final String TAG_ADDITIONAL_RULES = "additionalRules";
-  private static final String TAG_NPC_ONLY = "npcOnly";
 
   private CharacterTypes characterTypes;
   private final ICharacterTemplateRegistryCollection registryCollection;
@@ -201,7 +200,6 @@ public class CharacterTemplateParser extends AbstractXmlTemplateParser<GenericCh
     if (generalElement == null) {
       return;
     }
-    setNpcOnly(generalElement, characterTemplate);
     setAbilityGroups(generalElement, characterTemplate);
     setAttributeGroups(generalElement, characterTemplate);
     setEssenceTemplate(generalElement, characterTemplate);
@@ -222,14 +220,6 @@ public class CharacterTemplateParser extends AbstractXmlTemplateParser<GenericCh
       String modelId = ((Element) modelElement).attributeValue("id");
       characterTemplate.addModel(modelId);
     }
-  }
-
-  private void setNpcOnly(Element generalElement, GenericCharacterTemplate characterTemplate) {
-    Element element = generalElement.element(TAG_NPC_ONLY);
-    if (element == null) {
-      return;
-    }
-    characterTemplate.setNpcOnly();
   }
 
   private void setAdditionalRules(Element generalElement, GenericCharacterTemplate characterTemplate) throws PersistenceException {

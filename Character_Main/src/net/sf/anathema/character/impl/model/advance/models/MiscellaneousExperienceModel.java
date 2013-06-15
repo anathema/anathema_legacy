@@ -21,7 +21,7 @@ public class MiscellaneousExperienceModel extends AbstractIntegerValueModel {
     for (IAdditionalModel model : character.getExtendedConfiguration().getAdditionalModels()) {
       total += model.getExperienceCalculator().calculateCost();
     }
-    total += character.getExperiencePoints().getExtraSpendings();
+    total += character.getExperienceModel().getExperiencePoints().getExtraSpendings();
     return total;
   }
 }

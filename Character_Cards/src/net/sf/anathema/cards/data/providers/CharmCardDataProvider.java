@@ -29,7 +29,7 @@ public class CharmCardDataProvider extends AbstractMagicCardDataProvider {
   }
 
   private ICharm[] getCurrentCharms(ICharacter character) {
-    return character.getCharms().getLearnedCharms(character.isExperienced());
+    return character.getCharms().getLearnedCharms(character.getExperienceModel().isExperienced());
   }
 
   private CharmStats createCharmStats(ICharacter character, ICharm charm) {

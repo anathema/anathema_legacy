@@ -33,7 +33,7 @@ public class CharacterChangeSteps {
   @Given("^she is experienced")
   @When("^she goes experienced")
   public void setToExperienced() {
-    character.getCharacter().setExperienced(true);
+    character.getCharacter().getExperienceModel().setExperienced(true);
   }
 
   @When("^I set her Caste to (.*)$")
@@ -53,7 +53,7 @@ public class CharacterChangeSteps {
   public void I_set_her_trait_to(String traitId, int value) throws Throwable {
     ITraitType type = new TraitTypeUtils().getTraitTypeById(traitId);
     IModifiableBasicTrait trait = (IModifiableBasicTrait) character.getTraitConfiguration().getTrait(type);
-    if (character.getCharacter().isExperienced()) {
+    if (character.getCharacter().getExperienceModel().isExperienced()) {
       trait.setExperiencedValue(value);
     } else {
       trait.setCreationValue(value);

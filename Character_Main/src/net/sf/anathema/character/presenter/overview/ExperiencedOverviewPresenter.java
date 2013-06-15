@@ -33,7 +33,7 @@ public class ExperiencedOverviewPresenter implements Presenter {
     character.getCharacterContext().getCharacterListening().addChangeListener(new GlobalCharacterChangeAdapter() {
       @Override
       public void changeOccurred() {
-        if (character.isExperienced()) {
+        if (character.getExperienceModel().isExperienced()) {
           calculateXPCost();
         }
       }
@@ -55,7 +55,7 @@ public class ExperiencedOverviewPresenter implements Presenter {
 
   private void initTotal(IOverviewCategory category) {
     totalView = category.addAlotmentView(getString("Overview.Experience.Total"), 4);
-    character.getExperiencePoints().addExperiencePointConfigurationListener(new IExperiencePointConfigurationListener() {
+    character.getExperienceModel().getExperiencePoints().addExperiencePointConfigurationListener(new IExperiencePointConfigurationListener() {
       @Override
       public void entryAdded(IExperiencePointEntry entry) {
         calculateXPCost();
@@ -89,7 +89,7 @@ public class ExperiencedOverviewPresenter implements Presenter {
   }
 
   private int getTotalXP() {
-    return character.getExperiencePoints().getTotalExperiencePoints() + management.getMiscGain();
+    return character.getExperienceModel().getExperiencePoints().getTotalExperiencePoints() + management.getMiscGain();
   }
 
   private String getString(String string) {

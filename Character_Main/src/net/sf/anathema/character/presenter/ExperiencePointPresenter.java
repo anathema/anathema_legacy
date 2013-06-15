@@ -19,7 +19,7 @@ public class ExperiencePointPresenter {
   }
 
   public void initPresentation(final SectionView section) {
-    initExperiencePointPresentation(character.isExperienced(), section);
+    initExperiencePointPresentation(character.getExperienceModel().isExperienced(), section);
     character.getCharacterContext().getCharacterListening().addChangeListener(new DedicatedCharacterChangeAdapter() {
       @Override
       public void experiencedChanged(boolean experienced) {
@@ -33,7 +33,7 @@ public class ExperiencePointPresenter {
       ICharacterType characterType = character.getCharacterTemplate().getTemplateType().getCharacterType();
       String header = resources.getString("CardView.ExperienceConfiguration.Title");
       IExperienceConfigurationView experienceView = section.addView(header, IExperienceConfigurationView.class, characterType);
-      new ExperienceConfigurationPresenter(resources, character.getExperiencePoints(), experienceView).initPresentation();
+      new ExperienceConfigurationPresenter(resources, character.getExperienceModel().getExperiencePoints(), experienceView).initPresentation();
     }
   }
 }

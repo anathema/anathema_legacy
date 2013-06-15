@@ -41,10 +41,10 @@ public class ComboConfigurationModel {
   }
 
   public ICharm[] getLearnedCharms() {
-    return character.getCharms().getLearnedCharms(character.isExperienced());
+    return character.getCharms().getLearnedCharms(character.getExperienceModel().isExperienced());
   }
 
   public boolean isExperienced() {
-    return character.isExperienced();
+    return character.getExperienceModel().isExperienced();
   }
 }

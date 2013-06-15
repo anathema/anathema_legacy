@@ -28,7 +28,7 @@ public class SpellCardDataProvider extends AbstractMagicCardDataProvider {
   }
 
   private ISpell[] getCurrentSpells(ICharacter character) {
-    return character.getSpells().getLearnedSpells(character.isExperienced());
+    return character.getSpells().getLearnedSpells(character.getExperienceModel().isExperienced());
   }
 
   private SpellStats createSpellStats(ISpell spell) {

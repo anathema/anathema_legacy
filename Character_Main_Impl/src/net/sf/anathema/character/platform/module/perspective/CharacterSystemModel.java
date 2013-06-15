@@ -123,7 +123,7 @@ public class CharacterSystemModel implements ItemSystemModel {
 
   @Override
   public void convertCurrentToExperienced() {
-    getCurrentCharacter().setExperienced(true);
+    getCurrentCharacter().getExperienceModel().setExperienced(true);
   }
 
   @Override
@@ -167,10 +167,10 @@ public class CharacterSystemModel implements ItemSystemModel {
 
   private void notifyExperiencedListeners() {
     ICharacter character = getCurrentCharacter();
-    if (character.isExperienced()) {
+    if (character.getExperienceModel().isExperienced()) {
       becomesExperiencedListener.announce().changeOccurred();
     }
-    if (!character.isExperienced()) {
+    if (!character.getExperienceModel().isExperienced()) {
       becomesInexperiencedListener.announce().changeOccurred();
     }
   }
