@@ -22,7 +22,6 @@ import net.sf.anathema.character.impl.model.traits.listening.WillpowerListening;
 import net.sf.anathema.character.library.trait.AbstractTraitCollection;
 import net.sf.anathema.character.library.trait.ITrait;
 import net.sf.anathema.character.library.trait.TraitCollectionUtilities;
-import net.sf.anathema.character.library.trait.favorable.IFavorableTrait;
 import net.sf.anathema.character.library.trait.favorable.IIncrementChecker;
 import net.sf.anathema.character.library.trait.specialties.ISpecialtiesConfiguration;
 import net.sf.anathema.character.library.trait.specialties.SpecialtiesConfiguration;
@@ -97,7 +96,7 @@ public class CoreTraitConfiguration extends AbstractTraitCollection implements I
   public void addFavorableTraits(IIdentifiedCasteTraitTypeGroup[] traitGroups, IIncrementChecker incrementChecker,
                                  TypedTraitTemplateFactory factory) {
     for (IIdentifiedCasteTraitTypeGroup traitGroup : traitGroups) {
-      IFavorableTrait[] traits = favorableTraitFactory.createTraits(traitGroup, incrementChecker, factory);
+      ITrait[] traits = favorableTraitFactory.createTraits(traitGroup, incrementChecker, factory);
       addTraits(traits);
     }
   }

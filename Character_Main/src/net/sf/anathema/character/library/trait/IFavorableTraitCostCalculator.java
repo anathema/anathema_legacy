@@ -1,7 +1,5 @@
 package net.sf.anathema.character.library.trait;
 
-import net.sf.anathema.character.library.trait.favorable.IFavorableTrait;
-
 public interface IFavorableTraitCostCalculator {
 
   void calculateCosts();
@@ -16,5 +14,5 @@ public interface IFavorableTraitCostCalculator {
 
   int getFavoredPicksSpent();
 
-  FavorableTraitCost[] getCosts(IFavorableTrait trait);
+  FavorableTraitCost[] getCosts(ITrait trait);
 }

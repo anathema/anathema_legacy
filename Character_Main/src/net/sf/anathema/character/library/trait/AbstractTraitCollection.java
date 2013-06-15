@@ -2,7 +2,6 @@ package net.sf.anathema.character.library.trait;
 
 import com.google.common.base.Preconditions;
 import net.sf.anathema.character.generic.traits.ITraitType;
-import net.sf.anathema.character.library.trait.favorable.IFavorableTrait;
 
 import java.util.Collection;
 import java.util.HashMap;
@@ -33,23 +32,6 @@ public abstract class AbstractTraitCollection implements ITraitCollection {
       traits[index] = getTrait(traitTypes[index]);
     }
     return traits;
-  }
-
-  @SuppressWarnings("ConstantConditions")
-  @Override
-  public IFavorableTrait getFavorableTrait(ITraitType traitType) {
-    ITrait favorableTrait = getTrait(traitType);
-    Preconditions.checkArgument(favorableTrait instanceof IFavorableTrait, "No favorable trait type " + traitType);
-    return (IFavorableTrait) favorableTrait;
-  }
-
-  @Override
-  public IFavorableTrait[] getFavorableTraits(ITraitType[] traitTypes) {
-    IFavorableTrait[] favorableTraits = new IFavorableTrait[traitTypes.length];
-    for (int index = 0; index < favorableTraits.length; index++) {
-      favorableTraits[index] = getFavorableTrait(traitTypes[index]);
-    }
-    return favorableTraits;
   }
 
   private final void addSingleTrait(ITrait trait) {

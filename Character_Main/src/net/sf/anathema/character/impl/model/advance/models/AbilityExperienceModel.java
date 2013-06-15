@@ -3,7 +3,7 @@ package net.sf.anathema.character.impl.model.advance.models;
 import net.sf.anathema.character.generic.template.abilities.GroupedTraitType;
 import net.sf.anathema.character.generic.traits.ITraitType;
 import net.sf.anathema.character.impl.model.advance.IPointCostCalculator;
-import net.sf.anathema.character.library.trait.favorable.IFavorableTrait;
+import net.sf.anathema.character.library.trait.ITrait;
 import net.sf.anathema.character.model.ICharacter;
 import net.sf.anathema.character.model.traits.ICoreTraitConfiguration;
 
@@ -30,17 +30,17 @@ public class AbilityExperienceModel extends AbstractIntegerValueModel {
 
   private int getAbilityCosts() {
     int experienceCosts = 0;
-    for (IFavorableTrait ability : getAllAbilities()) {
+    for (ITrait ability : getAllAbilities()) {
       experienceCosts += calculator.getAbilityCosts(ability, ability.getFavorization().isCaste() || ability.getFavorization().isFavored());
     }
     return experienceCosts;
   }
 
-  private IFavorableTrait[] getAllAbilities() {
+  private ITrait[] getAllAbilities() {
     List<ITraitType> abilityTypes = new ArrayList<>();
     for (GroupedTraitType type : character.getCharacterTemplate().getAbilityGroups()) {
       abilityTypes.add(type.getTraitType());
     }
-    return traitConfiguration.getFavorableTraits(abilityTypes.toArray(new ITraitType[abilityTypes.size()]));
+    return traitConfiguration.getTraits(abilityTypes.toArray(new ITraitType[abilityTypes.size()]));
   }
 }

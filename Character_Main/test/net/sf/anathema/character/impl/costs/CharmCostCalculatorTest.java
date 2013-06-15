@@ -70,7 +70,7 @@ public class CharmCostCalculatorTest extends AbstractBonusPointTestCase {
   }
 
   private void setOccultFavored() {
-    traitConfiguration.getFavorableTrait(AbilityType.Occult).getFavorization().setFavorableState(FavorableState.Favored);
+    traitConfiguration.getTrait(AbilityType.Occult).getFavorization().setFavorableState(FavorableState.Favored);
   }
 
   @Test

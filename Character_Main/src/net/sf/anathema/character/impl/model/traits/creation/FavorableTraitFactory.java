@@ -10,8 +10,8 @@ import net.sf.anathema.character.generic.traits.ITraitTemplate;
 import net.sf.anathema.character.generic.traits.ITraitType;
 import net.sf.anathema.character.generic.traits.groups.IIdentifiedCasteTraitTypeGroup;
 import net.sf.anathema.character.library.trait.DefaultTrait;
+import net.sf.anathema.character.library.trait.ITrait;
 import net.sf.anathema.character.library.trait.IValueChangeChecker;
-import net.sf.anathema.character.library.trait.favorable.IFavorableTrait;
 import net.sf.anathema.character.library.trait.favorable.IIncrementChecker;
 import net.sf.anathema.character.library.trait.rules.FavorableTraitRules;
 
@@ -33,18 +33,18 @@ public class FavorableTraitFactory {
     this.characterListening = characterListening;
   }
 
-  public IFavorableTrait[] createTraits(IIdentifiedCasteTraitTypeGroup group, IIncrementChecker favoredIncrementChecker,
+  public ITrait[] createTraits(IIdentifiedCasteTraitTypeGroup group, IIncrementChecker favoredIncrementChecker,
                                         TypedTraitTemplateFactory factory) {
-    List<IFavorableTrait> newTraits = new ArrayList<>();
+    List<ITrait> newTraits = new ArrayList<>();
     for (ITraitType type : group.getAllGroupTypes()) {
       ICasteType[] casteTypes = group.getTraitCasteTypes(type);
-      IFavorableTrait trait = createTrait(type, casteTypes, favoredIncrementChecker, factory);
+      ITrait trait = createTrait(type, casteTypes, favoredIncrementChecker, factory);
       newTraits.add(trait);
     }
-    return newTraits.toArray(new IFavorableTrait[newTraits.size()]);
+    return newTraits.toArray(new ITrait[newTraits.size()]);
   }
 
-  private IFavorableTrait createTrait(ITraitType traitType, ICasteType[] casteTypes, IIncrementChecker favoredIncrementChecker,
+  private ITrait createTrait(ITraitType traitType, ICasteType[] casteTypes, IIncrementChecker favoredIncrementChecker,
                                       TypedTraitTemplateFactory factory) {
     ITraitTemplate traitTemplate = factory.create(traitType);
     ILimitationContext limitationContext = traitContext.getLimitationContext();

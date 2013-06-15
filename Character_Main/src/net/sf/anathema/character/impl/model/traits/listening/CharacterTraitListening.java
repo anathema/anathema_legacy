@@ -9,7 +9,6 @@ import net.sf.anathema.character.impl.model.context.CharacterListening;
 import net.sf.anathema.character.library.trait.ITrait;
 import net.sf.anathema.character.library.trait.favorable.FavorableState;
 import net.sf.anathema.character.library.trait.favorable.IFavorableStateChangedListener;
-import net.sf.anathema.character.library.trait.favorable.IFavorableTrait;
 import net.sf.anathema.character.library.trait.specialties.ISpecialtiesConfiguration;
 import net.sf.anathema.character.library.trait.subtrait.ISubTrait;
 import net.sf.anathema.character.library.trait.subtrait.ISubTraitListener;
@@ -40,7 +39,7 @@ public class CharacterTraitListening {
     ITraitType[] allAbilityTypes = TraitTypeGroup.getAllTraitTypes(groups);
     ISpecialtiesConfiguration specialtyConfiguration = traitConfiguration.getSpecialtyConfiguration();
     for (ITraitType traitType : allAbilityTypes) {
-      IFavorableTrait ability = traitConfiguration.getFavorableTrait(traitType);
+      ITrait ability = traitConfiguration.getTrait(traitType);
       listening.addTraitListening(ability);
       ability.getFavorization().addFavorableStateChangedListener(new IFavorableStateChangedListener() {
         @Override
@@ -71,7 +70,7 @@ public class CharacterTraitListening {
     ITraitTypeGroup[] groups = traitConfiguration.getAttributeTypeGroups();
     ITraitType[] allAttributeTypes = TraitTypeGroup.getAllTraitTypes(groups);
     for (ITraitType traitType : allAttributeTypes) {
-      IFavorableTrait attribute = traitConfiguration.getFavorableTrait(traitType);
+      ITrait attribute = traitConfiguration.getTrait(traitType);
       listening.addTraitListening(attribute);
     }
   }

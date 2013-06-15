@@ -12,7 +12,6 @@ import net.sf.anathema.character.impl.model.traits.creation.FavorableTraitFactor
 import net.sf.anathema.character.impl.model.traits.creation.TypedTraitTemplateFactory;
 import net.sf.anathema.character.library.trait.ITrait;
 import net.sf.anathema.character.library.trait.favorable.GrumpyIncrementChecker;
-import net.sf.anathema.character.library.trait.favorable.IFavorableTrait;
 import net.sf.anathema.character.library.trait.favorable.IIncrementChecker;
 
 import java.util.Collection;
@@ -49,7 +48,7 @@ public class InternalAttributeConfiguration implements AttributeConfiguration {
                                  TypedTraitTemplateFactory factory) {
     FavorableTraitFactory favorableTraitFactory = createFactory();
     for (IIdentifiedCasteTraitTypeGroup traitGroup : traitGroups) {
-      IFavorableTrait[] traits = favorableTraitFactory.createTraits(traitGroup, incrementChecker, factory);
+      ITrait[] traits = favorableTraitFactory.createTraits(traitGroup, incrementChecker, factory);
       addTraits(traits);
     }
   }

@@ -4,7 +4,6 @@ import net.sf.anathema.character.generic.traits.groups.IIdentifiedTraitTypeGroup
 import net.sf.anathema.character.generic.traits.types.AttributeType;
 import net.sf.anathema.character.library.trait.DefaultTrait;
 import net.sf.anathema.character.library.trait.ITrait;
-import net.sf.anathema.character.library.trait.favorable.IFavorableTrait;
 import net.sf.anathema.character.library.trait.persistence.TraitPersister;
 import net.sf.anathema.character.model.traits.ICoreTraitConfiguration;
 import net.sf.anathema.lib.exception.PersistenceException;
@@ -54,7 +53,7 @@ public class AttributeConfigurationPersister {
     for (Element attributeElement : attributeElements) {
       AttributeType attributeType = AttributeType.valueOf(attributeElement.getName());
       persister.restoreTrait(attributeElement, configuration.getTrait(attributeType));
-      IFavorableTrait attribute = configuration.getFavorableTrait(attributeType);
+      ITrait attribute = configuration.getTrait(attributeType);
       if (ElementUtilities.getBooleanAttribute(attributeElement, ATTRIB_FAVORED, false)) {
         attribute.getFavorization().setFavored(true);
       }

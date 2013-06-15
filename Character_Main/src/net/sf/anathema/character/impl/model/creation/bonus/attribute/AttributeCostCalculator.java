@@ -17,7 +17,6 @@ import net.sf.anathema.character.impl.model.creation.bonus.util.TraitSorter;
 import net.sf.anathema.character.library.trait.AbstractFavorableTraitCostCalculator;
 import net.sf.anathema.character.library.trait.ITrait;
 import net.sf.anathema.character.library.trait.TraitGroup;
-import net.sf.anathema.character.library.trait.favorable.IFavorableTrait;
 import net.sf.anathema.character.library.trait.visitor.IDefaultTrait;
 import net.sf.anathema.character.model.traits.ICoreTraitConfiguration;
 
@@ -28,12 +27,12 @@ import java.util.List;
 import java.util.Map;
 
 public class AttributeCostCalculator extends AbstractFavorableTraitCostCalculator implements IAttributeCostCalculator {
-  private static IFavorableTrait[] getAllAttributes(ICoreTraitConfiguration traitConfiguration) {
+  private static ITrait[] getAllAttributes(ICoreTraitConfiguration traitConfiguration) {
     List<ITraitType> attributeTypes = new ArrayList<>();
     for (IIdentifiedTraitTypeGroup group : traitConfiguration.getAttributeTypeGroups()) {
       Collections.addAll(attributeTypes, group.getAllGroupTypes());
     }
-    return traitConfiguration.getFavorableTraits(attributeTypes.toArray(new ITraitType[attributeTypes.size()]));
+    return traitConfiguration.getTraits(attributeTypes.toArray(new ITraitType[attributeTypes.size()]));
   }
 
   private final Map<ITrait, ElementCreationCost> costsByAttribute = new HashMap<>();
@@ -106,13 +105,13 @@ public class AttributeCostCalculator extends AbstractFavorableTraitCostCalculato
       TraitGroup group = permutation.get(i);
       int freePointsLeft = points.getCounts()[i];
       boolean favoredInGroup = false;
-      IFavorableTrait[] unsortedTraits = group.getGroupTraits();
+      ITrait[] unsortedTraits = group.getGroupTraits();
       int[] sums = new int[unsortedTraits.length];
       for (int j = 0; j != unsortedTraits.length; j++) {
         sums[j] = costs.getAttributeCosts(unsortedTraits[j]);
       }
-      List<IFavorableTrait> orderedTraits = getSortedTraits(unsortedTraits, sums);
-      for (IFavorableTrait attribute : orderedTraits) {
+      List<ITrait> orderedTraits = getSortedTraits(unsortedTraits, sums);
+      for (ITrait attribute : orderedTraits) {
         favoredInGroup = favoredInGroup || (attribute.isCasteOrFavored() && attribute.getCurrentValue() > attribute.getInitialValue());
         int costFactor = costs.getAttributeCosts(attribute);
         ElementCreationCost cost =
@@ -149,7 +148,7 @@ public class AttributeCostCalculator extends AbstractFavorableTraitCostCalculato
     return priorizedGroups;
   }
 
-  private List<IFavorableTrait> getSortedTraits(IFavorableTrait[] traits, int[] groupSums) {
+  private List<ITrait> getSortedTraits(ITrait[] traits, int[] groupSums) {
     return new TraitSorter().sortDescending(traits, groupSums);
   }
 
@@ -198,7 +197,7 @@ public class AttributeCostCalculator extends AbstractFavorableTraitCostCalculato
   }
 
   @Override
-  protected int getCostFactor(IFavorableTrait trait) {
+  protected int getCostFactor(ITrait trait) {
     return costs.getAttributeCosts(trait);
   }
 }

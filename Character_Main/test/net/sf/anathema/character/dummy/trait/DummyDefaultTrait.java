@@ -1,6 +1,8 @@
 package net.sf.anathema.character.dummy.trait;
 
 import net.sf.anathema.character.generic.traits.ITraitType;
+import net.sf.anathema.character.library.ITraitFavorization;
+import net.sf.anathema.character.library.trait.favorable.NullTraitFavorization;
 import net.sf.anathema.character.library.trait.visitor.IDefaultTrait;
 import net.sf.anathema.character.library.trait.visitor.ITraitVisitor;
 import net.sf.anathema.lib.control.IChangeListener;
@@ -99,6 +101,11 @@ public class DummyDefaultTrait implements IDefaultTrait {
   @Override
   public int getCalculationMinValue() {
     return 0;
+  }
+
+  @Override
+  public ITraitFavorization getFavorization() {
+    return new NullTraitFavorization();
   }
 
   @Override

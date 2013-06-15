@@ -1,7 +1,6 @@
 package net.sf.anathema.character.library.trait;
 
 import net.sf.anathema.character.generic.traits.groups.IIdentifiedTraitTypeGroup;
-import net.sf.anathema.character.library.trait.favorable.IFavorableTrait;
 import net.sf.anathema.character.library.trait.visitor.IAggregatedTrait;
 import net.sf.anathema.character.library.trait.visitor.IDefaultTrait;
 import net.sf.anathema.character.library.trait.visitor.ITraitVisitor;
@@ -17,8 +16,8 @@ public class TraitGroup {
     this.groupType = groupType;
   }
 
-  public IFavorableTrait[] getGroupTraits() {
-    return traitCollection.getFavorableTraits(groupType.getAllGroupTypes());
+  public ITrait[] getGroupTraits() {
+    return traitCollection.getTraits(groupType.getAllGroupTypes());
   }
 
   public int getInitialSum() {

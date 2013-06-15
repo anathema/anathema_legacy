@@ -8,9 +8,9 @@ import net.sf.anathema.character.generic.traits.groups.IIdentifiedTraitTypeGroup
 import net.sf.anathema.character.generic.traits.groups.TraitTypeGroup;
 import net.sf.anathema.character.library.intvalue.IToggleButtonTraitView;
 import net.sf.anathema.character.library.trait.IModifiableCapTrait;
+import net.sf.anathema.character.library.trait.ITrait;
 import net.sf.anathema.character.library.trait.favorable.FavorableState;
 import net.sf.anathema.character.library.trait.favorable.IFavorableStateChangedListener;
-import net.sf.anathema.character.library.trait.favorable.IFavorableTrait;
 import net.sf.anathema.character.library.trait.presenter.TraitPresenter;
 import net.sf.anathema.character.library.trait.visitor.IAggregatedTrait;
 import net.sf.anathema.character.library.trait.visitor.IDefaultTrait;
@@ -29,7 +29,7 @@ import static net.sf.anathema.character.library.trait.favorable.FavorableState.F
 public class FavorableTraitConfigurationPresenter {
 
   private final IGroupedFavorableTraitConfigurationView configurationView;
-  private final IdentityMapping<IFavorableTrait, IToggleButtonTraitView<?>> traitViewsByTrait = new IdentityMapping<>();
+  private final IdentityMapping<ITrait, IToggleButtonTraitView<?>> traitViewsByTrait = new IdentityMapping<>();
   private final Resources resources;
   private final IIdentifiedTraitTypeGroup[] traitTypeGroups;
   private final ICoreTraitConfiguration traitConfiguration;
@@ -51,7 +51,7 @@ public class FavorableTraitConfigurationPresenter {
   public void init(String typePrefix) {
     for (IIdentifiedTraitTypeGroup traitTypeGroup : traitTypeGroups) {
       configurationView.startNewTraitGroup(resources.getString(typePrefix + "." + traitTypeGroup.getGroupId().getId()));
-      addTraitViews(traitConfiguration.getFavorableTraits(traitTypeGroup.getAllGroupTypes()));
+      addTraitViews(traitConfiguration.getTraits(traitTypeGroup.getAllGroupTypes()));
     }
     characterListening.addChangeListener(new DedicatedCharacterChangeAdapter() {
       @Override
@@ -63,7 +63,7 @@ public class FavorableTraitConfigurationPresenter {
   }
 
   private void updateButtons() {
-    for (IFavorableTrait trait : getAllTraits()) {
+    for (ITrait trait : getAllTraits()) {
       IToggleButtonTraitView<?> view = traitViewsByTrait.get(trait);
       boolean disabled = basicCharacterData.isExperienced() || trait.getFavorization().isCaste();
       boolean favored = trait.getFavorization().isCasteOrFavored();
@@ -71,17 +71,17 @@ public class FavorableTraitConfigurationPresenter {
     }
   }
 
-  private IFavorableTrait[] getAllTraits() {
-    return traitConfiguration.getFavorableTraits(TraitTypeGroup.getAllTraitTypes(traitTypeGroups));
+  private ITrait[] getAllTraits() {
+    return traitConfiguration.getTraits(TraitTypeGroup.getAllTraitTypes(traitTypeGroups));
   }
 
-  private void addTraitViews(IFavorableTrait[] abilityGroup) {
-    for (IFavorableTrait ability : abilityGroup) {
+  private void addTraitViews(ITrait[] abilityGroup) {
+    for (ITrait ability : abilityGroup) {
       traitViewsByTrait.put(ability, addTraitView(ability));
     }
   }
 
-  private IToggleButtonTraitView<?> addTraitView(final IFavorableTrait favorableTrait) {
+  private IToggleButtonTraitView<?> addTraitView(final ITrait favorableTrait) {
     final String id = favorableTrait.getType().getId();
     final IToggleButtonTraitView<?>[] view = new IToggleButtonTraitView<?>[1];
     favorableTrait.accept(new ITraitVisitor() {
