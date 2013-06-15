@@ -37,8 +37,11 @@ public abstract class AbstractCascadeSelectionView implements ICascadeSelectionV
   private IChangeableJComboBox<Identified> typeComboBox;
   private final SwingTreeView swingTreeView;
 
-  public AbstractCascadeSelectionView(final ToolTipProperties treeProperties, final NodeProperties properties) {
+  public AbstractCascadeSelectionView() {
     this.swingTreeView = new SwingTreeView();
+  }
+
+  public void initGui(final ToolTipProperties treeProperties, final NodeProperties properties){
     CascadeLoadedListener listener = new CascadeLoadedListener() {
       @Override
       public void cascadeLoaded() {

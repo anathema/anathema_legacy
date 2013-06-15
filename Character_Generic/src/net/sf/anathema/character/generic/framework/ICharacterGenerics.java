@@ -3,7 +3,7 @@ package net.sf.anathema.character.generic.framework;
 import net.sf.anathema.character.generic.backgrounds.IBackgroundTemplate;
 import net.sf.anathema.character.generic.caste.ICasteCollection;
 import net.sf.anathema.character.generic.data.IExtensibleDataSet;
-import net.sf.anathema.character.generic.framework.additionaltemplate.IAdditionalViewFactory;
+import net.sf.anathema.character.generic.framework.additionaltemplate.IAdditionalInitializer;
 import net.sf.anathema.character.generic.framework.additionaltemplate.model.IAdditionalModelFactory;
 import net.sf.anathema.character.generic.framework.additionaltemplate.persistence.IAdditionalPersisterFactory;
 import net.sf.anathema.character.generic.framework.xml.additional.IAdditionalTemplateParser;
@@ -25,7 +25,7 @@ public interface ICharacterGenerics {
 
   IRegistry<String, IAdditionalModelFactory> getAdditionalModelFactoryRegistry();
 
-  IRegistry<String, IAdditionalViewFactory> getAdditionalViewFactoryRegistry();
+  IRegistry<String, IAdditionalInitializer> getAdditionalInitializerRegistry();
 
   IRegistry<String, IAdditionalPersisterFactory> getAdditonalPersisterFactoryRegistry();
 

@@ -54,7 +54,6 @@ public abstract class AbstractCascadePresenter implements ICascadeSelectionPrese
     createHelpText();
     alienPresenter.initPresentation();
     interactionPresenter.initPresentation();
-    view.initGui();
   }
 
   private void initCharmTypeSelectionListening() {

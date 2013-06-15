@@ -1,10 +1,10 @@
 package net.sf.anathema.character.presenter;
 
 import net.sf.anathema.character.generic.framework.additionaltemplate.listening.DedicatedCharacterChangeAdapter;
+import net.sf.anathema.character.generic.type.ICharacterType;
 import net.sf.anathema.character.model.ICharacter;
 import net.sf.anathema.character.presenter.advance.ExperienceConfigurationPresenter;
-import net.sf.anathema.character.presenter.magic.IContentPresenter;
-import net.sf.anathema.character.view.CharacterView;
+import net.sf.anathema.character.view.SectionView;
 import net.sf.anathema.character.view.advance.IExperienceConfigurationView;
 import net.sf.anathema.lib.resources.Resources;
 
@@ -12,31 +12,28 @@ public class ExperiencePointPresenter {
 
   private Resources resources;
   private ICharacter character;
-  private CharacterView view;
 
-  public ExperiencePointPresenter(Resources resources, ICharacter character, CharacterView view) {
+  public ExperiencePointPresenter(Resources resources, ICharacter character) {
     this.resources = resources;
     this.character = character;
-    this.view = view;
   }
 
-  public void initPresentation(final MultipleContentViewPresenter tabPresenter) {
-    initExperiencePointPresentation(character.isExperienced(), tabPresenter);
+  public void initPresentation(final SectionView section) {
+    initExperiencePointPresentation(character.isExperienced(), section);
     character.getCharacterContext().getCharacterListening().addChangeListener(new DedicatedCharacterChangeAdapter() {
       @Override
       public void experiencedChanged(boolean experienced) {
-        initExperiencePointPresentation(experienced, tabPresenter);
+        initExperiencePointPresentation(experienced, section);
       }
     });
   }
 
-  private void initExperiencePointPresentation(boolean experienced, MultipleContentViewPresenter tabPresenter) {
+  private void initExperiencePointPresentation(boolean experienced, SectionView section) {
     if (experienced) {
-      IExperienceConfigurationView experienceView = view.createExperienceConfigurationView();
-      IContentPresenter presenter = new ExperienceConfigurationPresenter(resources, character.getExperiencePoints(), experienceView);
-      String title = resources.getString("CardView.ExperienceConfiguration.Title");
-      presenter.initPresentation();
-      tabPresenter.addMiscellaneousView(title, presenter.getTabContent());
+      ICharacterType characterType = character.getCharacterTemplate().getTemplateType().getCharacterType();
+      String header = resources.getString("CardView.ExperienceConfiguration.Title");
+      IExperienceConfigurationView experienceView = section.addView(header, IExperienceConfigurationView.class, characterType);
+      new ExperienceConfigurationPresenter(resources, character.getExperiencePoints(), experienceView).initPresentation();
     }
   }
 }

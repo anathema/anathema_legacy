@@ -5,7 +5,9 @@ import net.sf.anathema.character.generic.type.ICharacterType;
 import net.sf.anathema.framework.swing.IView;
 import net.sf.anathema.lib.resources.Resources;
 
-public interface IAdditionalViewFactory {
+public interface IAdditionalInitializer<T> {
 
-  IView createView(IAdditionalModel model, Resources resources, ICharacterType type);
+  void initialize(IAdditionalModel model, Resources resources, ICharacterType type, Object view);
+
+  Class<T> getViewClass();
 }

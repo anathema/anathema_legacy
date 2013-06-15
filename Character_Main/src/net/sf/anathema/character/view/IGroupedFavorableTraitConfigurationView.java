@@ -14,4 +14,6 @@ public interface IGroupedFavorableTraitConfigurationView extends IView {
                                                    IIconToggleButtonProperties properties);
 
   void startNewTraitGroup(String groupLabel);
+
+  void initGui(int columnCount);
 }

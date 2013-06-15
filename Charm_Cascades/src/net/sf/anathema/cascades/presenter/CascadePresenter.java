@@ -26,6 +26,7 @@ public class CascadePresenter extends AbstractCascadePresenter implements ICasca
             magicDescriptionProvider, generics, cache, treeIdentificateMap);
     DefaultNodeProperties nodeProperties = new DefaultNodeProperties(resources, viewProperties, viewProperties);
     ICascadeView view = factory.createCascadeView(viewProperties, nodeProperties);
+    view.initGui(viewProperties, nodeProperties);
     ITemplateRegistry templateRegistry = generics.getTemplateRegistry();
     CascadeCharmGroupChangeListener selectionListener = new CascadeCharmGroupChangeListener(view, viewProperties,
             filterSet, new CharmDisplayPropertiesMap(templateRegistry));

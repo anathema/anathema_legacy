@@ -32,11 +32,10 @@ public class IntimaciesView extends AbstractRemovableEntryView<IRemovableTraitVi
   private final JPanel entryPanel = new JPanel(new MigLayout(withoutInsets().wrapAfter(2).fillX()));
   private final JPanel overviewPanel = new JPanel(new MigLayout());
   private final IntegerViewFactory factory;
-  private final IIconToggleButtonProperties properties;
+  private IIconToggleButtonProperties properties;
 
-  public IntimaciesView(IntegerViewFactory factory, IIconToggleButtonProperties properties) {
+  public IntimaciesView(IntegerViewFactory factory) {
     this.factory = factory;
-    this.properties = properties;
   }
 
   @Override
@@ -73,5 +72,9 @@ public class IntimaciesView extends AbstractRemovableEntryView<IRemovableTraitVi
   public void setOverview(IOverviewCategory overviewView) {
     overviewPanel.removeAll();
     overviewPanel.add(overviewView.getComponent());
+  }
+
+  public void initGui(IIconToggleButtonProperties properties) {
+    this.properties = properties;
   }
 }

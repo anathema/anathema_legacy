@@ -5,8 +5,8 @@ import net.miginfocom.swing.MigLayout;
 import net.sf.anathema.character.generic.framework.magic.view.IMagicViewListener;
 import net.sf.anathema.character.generic.framework.magic.view.MagicLearnView;
 import net.sf.anathema.character.generic.magic.spells.CircleType;
-import net.sf.anathema.character.presenter.magic.spells.SpellViewProperties;
 import net.sf.anathema.character.view.magic.ISpellView;
+import net.sf.anathema.character.view.magic.ISpellViewProperties;
 import net.sf.anathema.lib.control.ObjectValueListener;
 import net.sf.anathema.lib.util.Identified;
 import org.jmock.example.announcer.Announcer;
@@ -28,9 +28,10 @@ public class SpellView implements ISpellView {
   private MagicLearnView magicLearnView;
   private final JPanel content = new JPanel(new MigLayout(fillWithoutInsets()));
   private final Announcer<ObjectValueListener> circleControl = Announcer.to(ObjectValueListener.class);
-  private final SpellViewProperties properties;
+  private ISpellViewProperties properties;
 
-  public SpellView(final SpellViewProperties properties) {
+  @Override
+  public void prepare(final ISpellViewProperties properties){
     this.properties = properties;
     this.magicLearnView = new MagicLearnView() {
       @Override
