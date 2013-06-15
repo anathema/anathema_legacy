@@ -7,7 +7,6 @@ import net.sf.anathema.character.generic.framework.magic.view.CharmDescriptionPr
 import net.sf.anathema.character.generic.magic.description.MagicDescriptionProvider;
 import net.sf.anathema.character.generic.template.ICharacterTemplate;
 import net.sf.anathema.character.generic.template.ITemplateRegistry;
-import net.sf.anathema.character.generic.template.magic.ICharmTemplate;
 import net.sf.anathema.character.generic.template.magic.ISpellMagicTemplate;
 import net.sf.anathema.character.generic.type.ICharacterType;
 import net.sf.anathema.character.model.ICharacter;
@@ -48,11 +47,8 @@ public class MagicPresenter implements IContentPresenter {
     ITemplateRegistry templateRegistry = CharacterGenericsExtractor.getGenerics(anathemaModel).getTemplateRegistry();
     this.anathemaModel = anathemaModel;
     ICharacterTemplate characterTemplate = character.getCharacterTemplate();
-    ICharmTemplate charmTemplate = characterTemplate.getMagicTemplate().getCharmTemplate();
-    if (charmTemplate.canLearnCharms()) {
-      subPresenters.add(createCharmPresenter(character, factory, resources, templateRegistry));
-      initCombos(character, sectionView, resources, characterTemplate);
-    }
+    subPresenters.add(createCharmPresenter(character, factory, resources, templateRegistry));
+    initCombos(character, sectionView, resources, characterTemplate);
     addSpellPresenter(character, sectionView, resources);
   }
 
