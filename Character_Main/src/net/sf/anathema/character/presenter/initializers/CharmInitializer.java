@@ -9,15 +9,14 @@ import net.sf.anathema.character.model.ICharacter;
 import net.sf.anathema.character.presenter.magic.CharacterCharmModel;
 import net.sf.anathema.character.presenter.magic.charm.CharacterCharmTreePresenter;
 import net.sf.anathema.character.view.SectionView;
-import net.sf.anathema.charmtree.presenter.view.CharmDisplayPropertiesMap;
-import net.sf.anathema.charmtree.presenter.view.ICharmView;
+import net.sf.anathema.charmtree.view.CharmDisplayPropertiesMap;
+import net.sf.anathema.charmtree.view.ICharmView;
 import net.sf.anathema.framework.IApplicationModel;
 import net.sf.anathema.initialization.reflections.Weight;
 import net.sf.anathema.lib.resources.Resources;
 import net.sf.anathema.platform.tree.document.visualizer.ITreePresentationProperties;
 
 import static net.sf.anathema.character.model.CharacterModelGroup.Magic;
-import static net.sf.anathema.character.model.CharacterModelGroup.NaturalTraits;
 
 @RegisteredInitializer(Magic)
 @Weight(weight = 0)
