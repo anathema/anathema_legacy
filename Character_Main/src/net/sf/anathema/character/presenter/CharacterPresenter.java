@@ -4,7 +4,6 @@ import net.sf.anathema.character.generic.template.ICharacterTemplate;
 import net.sf.anathema.character.generic.template.magic.ICharmTemplate;
 import net.sf.anathema.character.generic.type.ICharacterType;
 import net.sf.anathema.character.model.ICharacter;
-import net.sf.anathema.character.presenter.magic.IContentPresenter;
 import net.sf.anathema.character.presenter.magic.MagicPresenter;
 import net.sf.anathema.character.view.BackgroundView;
 import net.sf.anathema.character.view.CharacterView;
@@ -15,7 +14,6 @@ import net.sf.anathema.character.view.SectionView;
 import net.sf.anathema.character.view.concept.ICharacterConceptAndRulesView;
 import net.sf.anathema.framework.IApplicationModel;
 import net.sf.anathema.framework.presenter.view.ContentView;
-import net.sf.anathema.framework.presenter.view.MultipleContentView;
 import net.sf.anathema.lib.gui.Presenter;
 import net.sf.anathema.lib.resources.Resources;
 
@@ -34,7 +32,7 @@ public class CharacterPresenter implements Presenter, MultipleContentViewPresent
   private final Resources resources;
   private final PointPresentationStrategy pointPresentation;
   private final CharacterContentInitializer initializer;
-  private MultipleContentView miscView;
+  private SectionView miscView;
 
   public CharacterPresenter(ICharacter character, CharacterView view, Resources resources,
                             IApplicationModel anathemaModel, PointPresentationStrategy pointPresentation) {
@@ -114,17 +112,23 @@ public class CharacterPresenter implements Presenter, MultipleContentViewPresent
   }
 
   private void initMiscellaneous() {
-    String title = getString("CardView.MiscellaneousConfiguration.Title");
-    BackgroundView factory = characterView.createBackgroundView();
-    IContentPresenter backgrounds = new BackgroundPresenter(resources,
-            character.getTraitConfiguration().getBackgrounds(), character.getCharacterContext(), factory,
-            getGenerics(anathemaModel).getBackgroundRegistry());
-    this.miscView = initializer.initContentPresentation(title, Miscellaneous, backgrounds);
+    String sectionTitle = getString("CardView.MiscellaneousConfiguration.Title");
+    SectionView sectionView = characterView.addSection(sectionTitle);
+
+    String backgroundHeader = resources.getString("CardView.BackgroundConfiguration.Title");
+    BackgroundView view = sectionView.addView(backgroundHeader, BackgroundView.class, characterType());
+    new BackgroundPresenter(resources,
+            character.getTraitConfiguration().getBackgrounds(), character.getCharacterContext(), view,
+            getGenerics(anathemaModel).getBackgroundRegistry()).initPresentation();
+
+    initializer.initializeAdditionalContent(sectionView, Miscellaneous);
+
+    this.miscView = sectionView;
   }
 
   @Override
   public void addMiscellaneousView(String title, ContentView tabContent) {
-    tabContent.addTo(miscView);
+    miscView.addView(tabContent);
   }
 
   private String getString(String resourceKey) {

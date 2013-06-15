@@ -2,7 +2,6 @@ package net.sf.anathema.character.impl.view;
 
 import net.sf.anathema.character.impl.view.magic.MagicViewFactory;
 import net.sf.anathema.character.impl.view.overview.OverviewContainer;
-import net.sf.anathema.character.view.BackgroundView;
 import net.sf.anathema.character.view.CharacterView;
 import net.sf.anathema.character.view.SectionView;
 import net.sf.anathema.character.view.advance.IExperienceConfigurationView;
@@ -57,11 +56,6 @@ public class TaskedCharacterView implements CharacterView {
   @Override
   public IExperienceConfigurationView createExperienceConfigurationView() {
     return new ExperienceConfigurationView();
-  }
-
-  @Override
-  public BackgroundView createBackgroundView() {
-    return new SeparateBackgroundView(integerDisplayFactory);
   }
 
   @Override

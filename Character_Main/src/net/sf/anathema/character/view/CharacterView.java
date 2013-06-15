@@ -13,7 +13,5 @@ public interface CharacterView extends IView, OverviewContainer {
 
   IMagicViewFactory createMagicViewFactory();
 
-  BackgroundView createBackgroundView();
-
   SectionView addSection(String title);
 }

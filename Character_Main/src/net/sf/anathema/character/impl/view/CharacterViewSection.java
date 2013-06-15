@@ -2,6 +2,7 @@ package net.sf.anathema.character.impl.view;
 
 import net.sf.anathema.character.generic.type.ICharacterType;
 import net.sf.anathema.character.view.SectionView;
+import net.sf.anathema.framework.presenter.view.ContentView;
 import net.sf.anathema.framework.presenter.view.MultipleContentView;
 import net.sf.anathema.framework.swing.IView;
 import net.sf.anathema.framework.view.util.ContentProperties;
@@ -22,5 +23,11 @@ public class CharacterViewSection implements SectionView {
     IView viewToAdd = (IView) newView;
     view.addView(viewToAdd, new ContentProperties(title));
     return newView;
+  }
+
+  @Override
+  @Deprecated
+  public void addView(ContentView tabContent) {
+    tabContent.addTo(view);
   }
 }

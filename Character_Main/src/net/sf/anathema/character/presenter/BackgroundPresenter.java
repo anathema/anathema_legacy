@@ -10,15 +10,11 @@ import net.sf.anathema.character.library.trait.visitor.IDefaultTrait;
 import net.sf.anathema.character.model.background.IBackground;
 import net.sf.anathema.character.model.background.IBackgroundConfiguration;
 import net.sf.anathema.character.model.background.IBackgroundListener;
-import net.sf.anathema.character.presenter.magic.IContentPresenter;
 import net.sf.anathema.character.presenter.util.I18nComparator;
 import net.sf.anathema.character.view.BackgroundView;
 import net.sf.anathema.character.view.BackgroundViewProperties;
 import net.sf.anathema.framework.presenter.resources.BasicUi;
-import net.sf.anathema.framework.presenter.view.ContentView;
 import net.sf.anathema.framework.presenter.view.IButtonControlledComboEditView;
-import net.sf.anathema.framework.presenter.view.SimpleViewContentView;
-import net.sf.anathema.framework.view.util.ContentProperties;
 import net.sf.anathema.interaction.Command;
 import net.sf.anathema.lib.collection.IdentityMapping;
 import net.sf.anathema.lib.control.ObjectValueListener;
@@ -31,7 +27,7 @@ import java.util.Arrays;
 import java.util.HashMap;
 import java.util.Map;
 
-public class BackgroundPresenter implements IContentPresenter {
+public class BackgroundPresenter {
 
   private final IBackgroundConfiguration configuration;
   private final BackgroundView configurationView;
@@ -71,7 +67,6 @@ public class BackgroundPresenter implements IContentPresenter {
     this.displayer = new Displayer(internationalizer);
   }
 
-  @Override
   public void initPresentation() {
     Icon addIcon = new BasicUi().getAddIcon();
     final IButtonControlledComboEditView<Object> view = configurationView.addBackgroundSelectionView(
@@ -158,11 +153,5 @@ public class BackgroundPresenter implements IContentPresenter {
         view.setButtonEnabled(allowed && background.getMinimalValue() == 0);
       }
     }
-  }
-
-  @Override
-  public ContentView getTabContent() {
-    String header = resources.getString("CardView.BackgroundConfiguration.Title");
-    return new SimpleViewContentView(new ContentProperties(header), configurationView);
   }
 }
