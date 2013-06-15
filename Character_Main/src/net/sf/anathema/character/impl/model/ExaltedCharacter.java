@@ -10,6 +10,7 @@ import net.sf.anathema.character.generic.template.additional.IAdditionalTemplate
 import net.sf.anathema.character.generic.template.additional.IGlobalAdditionalTemplate;
 import net.sf.anathema.character.generic.traits.IGenericTrait;
 import net.sf.anathema.character.generic.traits.ITraitType;
+import net.sf.anathema.character.generic.type.ICharacterType;
 import net.sf.anathema.character.impl.generic.GenericCharacter;
 import net.sf.anathema.character.impl.model.charm.CharmConfiguration;
 import net.sf.anathema.character.impl.model.charm.ComboConfiguration;
@@ -207,6 +208,11 @@ public class ExaltedCharacter implements ICharacter {
 
   public ICharacterTemplate getCharacterTemplate() {
     return characterTemplate;
+  }
+
+  @Override
+  public ICharacterType getCharacterType() {
+    return getCharacterTemplate().getTemplateType().getCharacterType();
   }
 
   public ExtendedConfiguration getExtendedConfiguration() {
