@@ -107,7 +107,7 @@ public class CharacterPresenter implements Presenter {
 
     String sectionTitle = getString("CardView.CharmConfiguration.Title");
     SectionView sectionView = characterView.addSection(sectionTitle);
-    new MagicPresenter(character, sectionView, resources, anathemaModel);
+    new MagicPresenter(character, sectionView, resources, anathemaModel).initPresentation();
 
     initialize(sectionView, Magic);
   }
