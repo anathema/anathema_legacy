@@ -52,14 +52,14 @@ public abstract class AbstractTraitCollection implements ITraitCollection {
     return favorableTraits;
   }
 
-  protected final void addTrait(ITrait trait) {
+  private final void addSingleTrait(ITrait trait) {
     Preconditions.checkArgument(!contains(trait.getType()), "Trait of type already contained " + trait.getType());
     traitsByType.put(trait.getType(), trait);
   }
 
-  protected final void addTraits(ITrait[] traits) {
+  protected final void addTraits(ITrait... traits) {
     for (ITrait trait : traits) {
-      addTrait(trait);
+      addSingleTrait(trait);
     }
   }
 

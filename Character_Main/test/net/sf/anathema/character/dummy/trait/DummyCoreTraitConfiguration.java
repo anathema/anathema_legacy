@@ -67,7 +67,7 @@ public class DummyCoreTraitConfiguration extends AbstractTraitCollection impleme
   }
 
   public void addTestTrait(ITrait trait) {
-    addTrait(trait);
+    addTraits(trait);
   }
 
   @Override

@@ -45,6 +45,7 @@ import java.util.Iterator;
 import static java.util.Arrays.asList;
 
 public class CoreTraitConfiguration extends AbstractTraitCollection implements ICoreTraitConfiguration {
+
   private static final boolean useGenericEngine = false;
   private final FavorableTraitFactory favorableTraitFactory;
   private final BackgroundConfiguration backgrounds;
@@ -94,7 +95,7 @@ public class CoreTraitConfiguration extends AbstractTraitCollection implements I
     TypedTraitTemplateFactory templateFactory = new EssenceTemplateFactory(
             traitTemplateCollection.getTraitTemplateFactory());
     DefaultTraitFactory traitFactory = new DefaultTraitFactory(traitContext, additionalTraitRules, templateFactory);
-    addTrait(traitFactory.createTrait(OtherTraitType.Essence));
+    addTraits(traitFactory.createTrait(OtherTraitType.Essence));
   }
 
   private void addVirtues(ITraitContext traitContext, ITraitTemplateCollection traitTemplateCollection,
@@ -110,7 +111,7 @@ public class CoreTraitConfiguration extends AbstractTraitCollection implements I
     TypedTraitTemplateFactory templateFactory = new WillpowerTemplateFactory(
             traitTemplateCollection.getTraitTemplateFactory());
     DefaultTraitFactory traitFactory = new DefaultTraitFactory(traitContext, additionalTraitRules, templateFactory);
-    addTrait(traitFactory.createTrait(OtherTraitType.Willpower));
+    addTraits(traitFactory.createTrait(OtherTraitType.Willpower));
   }
 
   private void addAttributes(ICharacterTemplate template) {
@@ -178,7 +179,7 @@ public class CoreTraitConfiguration extends AbstractTraitCollection implements I
   private class AddTraitBasedOnQuality implements QualityClosure {
     @Override
     public void execute(Quality quality) {
-      addTrait(new FavorableQualityTrait(persona, (Attribute) quality));
+      addTraits(new FavorableQualityTrait(persona, (Attribute) quality));
     }
   }
 
