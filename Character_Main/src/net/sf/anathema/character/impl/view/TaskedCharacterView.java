@@ -4,7 +4,6 @@ import net.sf.anathema.character.impl.view.magic.MagicViewFactory;
 import net.sf.anathema.character.impl.view.overview.OverviewContainer;
 import net.sf.anathema.character.view.BackgroundView;
 import net.sf.anathema.character.view.CharacterView;
-import net.sf.anathema.character.view.IAdvantageViewFactory;
 import net.sf.anathema.character.view.IGroupedFavorableTraitViewFactory;
 import net.sf.anathema.character.view.SectionView;
 import net.sf.anathema.character.view.advance.IExperienceConfigurationView;
@@ -56,11 +55,6 @@ public class TaskedCharacterView implements CharacterView {
   @Override
   public MultipleContentView addMultipleContentView(String header) {
     return characterPane.addMultipleContentView(header);
-  }
-
-  @Override
-  public IAdvantageViewFactory createAdvantageViewFactory() {
-    return new AdvantageViewFactory(integerDisplayFactory);
   }
 
   @Override

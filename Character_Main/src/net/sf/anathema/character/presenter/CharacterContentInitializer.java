@@ -95,7 +95,7 @@ public class CharacterContentInitializer {
     return additionalViews;
   }
 
-  public void addMultipleContentViewGroup(SectionView sectionView, CharacterModelGroup group) {
+  public void initializeAdditionalContent(SectionView sectionView, CharacterModelGroup group) {
     IRegistry<String, IAdditionalViewFactory> factoryRegistry = getGenerics(
             anathemaModel).getAdditionalViewFactoryRegistry();
     for (IAdditionalModel model : character.getExtendedConfiguration().getAdditionalModels(group)) {

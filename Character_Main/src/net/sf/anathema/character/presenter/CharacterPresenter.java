@@ -1,17 +1,22 @@
 package net.sf.anathema.character.presenter;
 
+import net.sf.anathema.character.generic.framework.CharacterGenericsExtractor;
 import net.sf.anathema.character.generic.template.ICharacterTemplate;
+import net.sf.anathema.character.generic.template.ITemplateRegistry;
+import net.sf.anathema.character.generic.template.magic.ICharmTemplate;
 import net.sf.anathema.character.generic.type.ICharacterType;
 import net.sf.anathema.character.model.ICharacter;
 import net.sf.anathema.character.presenter.magic.IContentPresenter;
 import net.sf.anathema.character.presenter.magic.MagicPresenter;
+import net.sf.anathema.character.presenter.magic.combo.ComboConfigurationPresenter;
 import net.sf.anathema.character.view.BackgroundView;
 import net.sf.anathema.character.view.CharacterView;
-import net.sf.anathema.character.view.IAdvantageViewFactory;
+import net.sf.anathema.character.view.IBasicAdvantageView;
 import net.sf.anathema.character.view.ICharacterDescriptionView;
 import net.sf.anathema.character.view.IGroupedFavorableTraitViewFactory;
 import net.sf.anathema.character.view.SectionView;
 import net.sf.anathema.character.view.concept.ICharacterConceptAndRulesView;
+import net.sf.anathema.character.view.magic.IMagicViewFactory;
 import net.sf.anathema.framework.IApplicationModel;
 import net.sf.anathema.framework.presenter.view.ContentView;
 import net.sf.anathema.framework.presenter.view.MultipleContentView;
@@ -70,7 +75,7 @@ public class CharacterPresenter implements Presenter, MultipleContentViewPresent
     ICharacterConceptAndRulesView conceptView = sectionView.addView(conceptHeader, ICharacterConceptAndRulesView.class, characterType());
     new CharacterConceptAndRulesPresenter(character, conceptView, resources).initPresentation();
 
-    initializer.addMultipleContentViewGroup(sectionView, Outline);
+    initializer.initializeAdditionalContent(sectionView, Outline);
   }
 
   private void initPhysicalTraits() {
@@ -82,15 +87,19 @@ public class CharacterPresenter implements Presenter, MultipleContentViewPresent
   }
 
   private void initSpiritualTraits() {
-    IAdvantageViewFactory viewFactory = characterView.createAdvantageViewFactory();
-    IContentPresenter presenter = new BasicAdvantagePresenter(resources, character, viewFactory);
-    String title = getString("CardView.SpiritualTraits.Title");
-    initializer.initContentPresentation(title, SpiritualTraits, presenter);
+    String sectionTitle = getString("CardView.SpiritualTraits.Title");
+    SectionView sectionView = characterView.addSection(sectionTitle);
+
+    String header = new BasicAdvantageViewProperties(resources).getOverallHeader();
+    IBasicAdvantageView view = sectionView.addView(header, IBasicAdvantageView.class, characterType());
+    new BasicAdvantagePresenter(resources, character, view).initPresentation();
+    initializer.initializeAdditionalContent(sectionView, SpiritualTraits);
   }
 
   private void initMagic() {
     ICharacterTemplate characterTemplate = character.getCharacterTemplate();
-    if (!characterTemplate.getMagicTemplate().getCharmTemplate().canLearnCharms()) {
+    ICharmTemplate charmTemplate = characterTemplate.getMagicTemplate().getCharmTemplate();
+    if (!charmTemplate.canLearnCharms()) {
       return;
     }
     String magicViewHeader = getString("CardView.CharmConfiguration.Title");

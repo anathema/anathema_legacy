@@ -11,8 +11,6 @@ public interface CharacterView extends IView, OverviewContainer {
 
   MultipleContentView addMultipleContentView(String header);
 
-  IAdvantageViewFactory createAdvantageViewFactory();
-
   IMagicViewFactory createMagicViewFactory();
 
   IGroupedFavorableTraitViewFactory createGroupedFavorableTraitViewFactory();
