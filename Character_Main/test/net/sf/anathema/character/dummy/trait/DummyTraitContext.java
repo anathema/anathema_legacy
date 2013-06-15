@@ -7,7 +7,6 @@ import net.sf.anathema.character.generic.framework.additionaltemplate.model.ITra
 import net.sf.anathema.character.generic.framework.additionaltemplate.model.ITraitValueStrategy;
 import net.sf.anathema.character.generic.impl.traits.limitation.StaticTraitLimitation;
 import net.sf.anathema.character.generic.template.ITraitLimitation;
-import net.sf.anathema.character.generic.traits.IFavorableGenericTrait;
 import net.sf.anathema.character.generic.traits.IGenericTrait;
 import net.sf.anathema.character.generic.traits.ITraitType;
 import net.sf.anathema.character.impl.model.context.trait.CreationTraitValueStrategy;
@@ -39,11 +38,6 @@ public class DummyTraitContext implements ITraitContext {
         @Override
         public IGenericTrait[] getTraits(ITraitType[] traitTypes) {
           throw new NotYetImplementedException();
-        }
-
-        @Override
-        public IFavorableGenericTrait getFavorableTrait(ITraitType type) {
-          return traitCollection.getFavorableTrait(type);
         }
 
         @Override

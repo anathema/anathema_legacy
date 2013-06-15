@@ -31,4 +31,9 @@ public class DummyModifiableGenericTrait implements IModifiableGenericTrait {
   public int getCurrentValue() {
     return currentValue;
   }
+
+  @Override
+  public boolean isCasteOrFavored() {
+    return false;
+  }
 }

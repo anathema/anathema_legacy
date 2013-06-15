@@ -21,7 +21,7 @@ public class CostAnalyzer implements ICostAnalyzer {
 
   @Override
   public final boolean isOccultFavored() {
-    return traitCollection.getFavorableTrait(AbilityType.Occult).isCasteOrFavored();
+    return traitCollection.getTrait(AbilityType.Occult).isCasteOrFavored();
   }
 
   @Override

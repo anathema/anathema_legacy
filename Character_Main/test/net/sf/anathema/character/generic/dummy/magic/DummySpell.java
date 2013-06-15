@@ -64,7 +64,7 @@ public class DummySpell implements ISpell {
 
   @Override
   public boolean isFavored(IBasicCharacterData basicCharacter, IGenericTraitCollection traitCollection) {
-    return ((IFavorableGenericTrait) traitCollection.getTrait(AbilityType.Occult)).isCasteOrFavored();
+    return traitCollection.getTrait(AbilityType.Occult).isCasteOrFavored();
   }
 
   @Override

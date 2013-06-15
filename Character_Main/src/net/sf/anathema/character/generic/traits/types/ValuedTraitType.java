@@ -19,6 +19,11 @@ public class ValuedTraitType implements IGenericTrait {
     return value;
   }
 
+  @Override
+  public boolean isCasteOrFavored() {
+    return false;
+  }
+
   public ValuedTraitType(ITraitType traitType, int value) {
     this.traitType = traitType;
     this.value = value;

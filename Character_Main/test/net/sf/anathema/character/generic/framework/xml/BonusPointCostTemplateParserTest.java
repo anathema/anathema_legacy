@@ -1,6 +1,6 @@
 package net.sf.anathema.character.generic.framework.xml;
 
-import net.sf.anathema.character.generic.dummy.DummyFavorableGenericTrait;
+import net.sf.anathema.character.generic.dummy.DummyGenericTrait;
 import net.sf.anathema.character.generic.dummy.template.DummyXmlTemplateRegistry;
 import net.sf.anathema.character.generic.framework.xml.creation.BonusPointCostTemplateParser;
 import net.sf.anathema.character.generic.framework.xml.creation.GenericBonusPointCosts;
@@ -37,16 +37,16 @@ public class BonusPointCostTemplateParserTest extends BasicTemplateParsingTestCa
     originalTemplate.setAttributeCost(3, 3);
     String changeContent = "<attributes><generalAttribute><fixedCost cost=\"4\" /></generalAttribute></attributes>";
     GenericBonusPointCosts parsedTemplate = parser.parseTemplate(getDocumentRoot(createUsesOriginalTemplate(changeContent)));
-    assertEquals(3, originalTemplate.getAttributeCosts(new DummyFavorableGenericTrait(AttributeType.Wits, 1, false)));
-    assertEquals(4, parsedTemplate.getAttributeCosts(new DummyFavorableGenericTrait(AttributeType.Wits, 1, false)));
+    assertEquals(3, originalTemplate.getAttributeCosts(new DummyGenericTrait(AttributeType.Wits, 1, false)));
+    assertEquals(4, parsedTemplate.getAttributeCosts(new DummyGenericTrait(AttributeType.Wits, 1, false)));
   }
 
   @Test
   public void testNoFavoredAttributeCost() throws Exception {
     String xml = "<root><attributes><generalAttribute><fixedCost cost=\"4\" /></generalAttribute></attributes></root>";
     GenericBonusPointCosts costs = parseXmlToCost(xml);
-    assertEquals(4, costs.getAttributeCosts(new DummyFavorableGenericTrait(AttributeType.Wits, 1, false)));
-    assertEquals(4, costs.getAttributeCosts(new DummyFavorableGenericTrait(AttributeType.Wits, 1, true)));
+    assertEquals(4, costs.getAttributeCosts(new DummyGenericTrait(AttributeType.Wits, 1, false)));
+    assertEquals(4, costs.getAttributeCosts(new DummyGenericTrait(AttributeType.Wits, 1, true)));
   }
 
   @Test
@@ -54,8 +54,8 @@ public class BonusPointCostTemplateParserTest extends BasicTemplateParsingTestCa
     originalTemplate.setAttributeCost(3, 3);
     String changeContent = "<attributes><generalAttribute><fixedCost cost=\"4\" /></generalAttribute></attributes>";
     GenericBonusPointCosts parsedTemplate = parser.parseTemplate(getDocumentRoot(createUsesOriginalTemplate(changeContent)));
-    assertEquals(4, parsedTemplate.getAttributeCosts(new DummyFavorableGenericTrait(AttributeType.Wits, 1, false)));
-    assertEquals(4, parsedTemplate.getAttributeCosts(new DummyFavorableGenericTrait(AttributeType.Wits, 1, true)));
+    assertEquals(4, parsedTemplate.getAttributeCosts(new DummyGenericTrait(AttributeType.Wits, 1, false)));
+    assertEquals(4, parsedTemplate.getAttributeCosts(new DummyGenericTrait(AttributeType.Wits, 1, true)));
   }
 
   @Test
@@ -63,8 +63,8 @@ public class BonusPointCostTemplateParserTest extends BasicTemplateParsingTestCa
     String xml =
             "<root><attributes><generalAttribute><fixedCost cost=\"4\" /></generalAttribute><favoredAttribute><fixedCost cost=\"3\" /></favoredAttribute></attributes></root>";
     GenericBonusPointCosts costs = parseXmlToCost(xml);
-    assertEquals(4, costs.getAttributeCosts(new DummyFavorableGenericTrait(AttributeType.Wits, 1, false)));
-    assertEquals(3, costs.getAttributeCosts(new DummyFavorableGenericTrait(AttributeType.Wits, 1, true)));
+    assertEquals(4, costs.getAttributeCosts(new DummyGenericTrait(AttributeType.Wits, 1, false)));
+    assertEquals(3, costs.getAttributeCosts(new DummyGenericTrait(AttributeType.Wits, 1, true)));
   }
 
   private String createUsesOriginalTemplate(String content) {

@@ -40,7 +40,7 @@ public class SpecialtyCalculator {
   private List<IGenericSpecialty> getFavoredSpecialties(List<IGenericSpecialty> specialties) {
     List<IGenericSpecialty> favoredSpecialties = new ArrayList<>();
     for (IGenericSpecialty specialty : specialties) {
-      if (traitConfiguration.getFavorableTrait(specialty.getBasicTrait().getType()).isCasteOrFavored()) {
+      if (traitConfiguration.getTrait(specialty.getBasicTrait().getType()).isCasteOrFavored()) {
         favoredSpecialties.add(specialty);
       }
     }

@@ -60,6 +60,6 @@ public class Spell extends SimpleIdentifier implements ISpell {
   public boolean isFavored(IBasicCharacterData basicCharacter, IGenericTraitCollection traitCollection) {
     FavoringTraitType type = basicCharacter.getCharacterType().getFavoringTraitType();
     ITraitType spellFavoringType = type.getSpellFavoringType();
-    return traitCollection.getFavorableTrait(spellFavoringType).isCasteOrFavored();
+    return traitCollection.getTrait(spellFavoringType).isCasteOrFavored();
   }
 }

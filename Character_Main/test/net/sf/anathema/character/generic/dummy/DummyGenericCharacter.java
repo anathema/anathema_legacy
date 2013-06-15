@@ -15,7 +15,6 @@ import net.sf.anathema.character.generic.magic.IMagic;
 import net.sf.anathema.character.generic.magic.charms.special.IMultiLearnableCharm;
 import net.sf.anathema.character.generic.template.ICharacterTemplate;
 import net.sf.anathema.character.generic.template.ITraitLimitation;
-import net.sf.anathema.character.generic.traits.IFavorableGenericTrait;
 import net.sf.anathema.character.generic.traits.IGenericTrait;
 import net.sf.anathema.character.generic.traits.INamedGenericTrait;
 import net.sf.anathema.character.generic.traits.ITraitType;
@@ -54,12 +53,7 @@ public class DummyGenericCharacter implements IGenericCharacter {
 
       @Override
       public boolean isFavoredOrCasteTrait(ITraitType type) {
-        return getFavorableTrait(type).isCasteOrFavored();
-      }
-
-      @Override
-      public IFavorableGenericTrait getFavorableTrait(ITraitType type) {
-        return (IFavorableGenericTrait) getTrait(type);
+        return getTrait(type).isCasteOrFavored();
       }
     };
   }

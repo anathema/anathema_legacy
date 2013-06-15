@@ -66,6 +66,6 @@ public abstract class AbstractTraitCollection implements ITraitCollection {
   @Override
   public final boolean isFavoredOrCasteTrait(ITraitType type) {
     ITrait trait = getTrait(type);
-    return trait instanceof IFavorableTrait && ((IFavorableTrait) trait).isCasteOrFavored();
+    return trait.isCasteOrFavored();
   }
 }

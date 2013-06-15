@@ -17,7 +17,6 @@ import net.sf.anathema.character.generic.magic.charms.duration.IDuration;
 import net.sf.anathema.character.generic.magic.charms.duration.SimpleDuration;
 import net.sf.anathema.character.generic.magic.charms.type.CharmType;
 import net.sf.anathema.character.generic.rules.IExaltedSourceBook;
-import net.sf.anathema.character.generic.traits.IFavorableGenericTrait;
 import net.sf.anathema.character.generic.traits.IGenericTrait;
 import net.sf.anathema.character.generic.traits.ITraitType;
 import net.sf.anathema.character.generic.traits.types.ValuedTraitType;
@@ -213,7 +212,7 @@ public class DummyCharm extends SimpleIdentifier implements ICharm {
       return false;
     }
     IGenericTrait trait = traitCollection.getTrait(getPrimaryTraitType());
-    return trait instanceof IFavorableGenericTrait && ((IFavorableGenericTrait) trait).isCasteOrFavored();
+    return trait.isCasteOrFavored();
   }
 
   @Override

@@ -9,7 +9,6 @@ public interface ITraitCollection extends IGenericTraitCollection {
   @Override
   ITrait getTrait(ITraitType type);
 
-  @Override
   IFavorableTrait getFavorableTrait(ITraitType type);
 
   @Override

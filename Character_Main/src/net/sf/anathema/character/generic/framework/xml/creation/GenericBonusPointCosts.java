@@ -10,7 +10,7 @@ import net.sf.anathema.character.generic.magic.charms.MartialArtsLevel;
 import net.sf.anathema.character.generic.template.creation.BonusPointCosts;
 import net.sf.anathema.character.generic.template.experience.CurrentRatingCosts;
 import net.sf.anathema.character.generic.template.experience.ICostAnalyzer;
-import net.sf.anathema.character.generic.traits.IFavorableGenericTrait;
+import net.sf.anathema.character.generic.traits.IGenericTrait;
 import net.sf.anathema.lib.lang.ReflectionEqualsObject;
 import net.sf.anathema.lib.lang.clone.ICloneable;
 import org.apache.commons.lang3.SerializationUtils;
@@ -53,7 +53,7 @@ public class GenericBonusPointCosts extends ReflectionEqualsObject implements Bo
   }
 
   @Override
-  public int getAttributeCosts(IFavorableGenericTrait trait) {
+  public int getAttributeCosts(IGenericTrait trait) {
     CurrentRatingCosts attributeCosts = getAttributeCosts(trait.isCasteOrFavored());
     return attributeCosts.getRatingCosts(trait.getCurrentValue());
   }

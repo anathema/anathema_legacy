@@ -5,4 +5,6 @@ public interface IGenericTrait {
   ITraitType getType();
 
   int getCurrentValue();
+
+  boolean isCasteOrFavored();
 }
