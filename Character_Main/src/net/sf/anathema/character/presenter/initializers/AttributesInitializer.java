@@ -6,6 +6,9 @@ import net.sf.anathema.character.view.IGroupedFavorableTraitConfigurationView;
 import net.sf.anathema.character.view.SectionView;
 import net.sf.anathema.lib.resources.Resources;
 
+import static net.sf.anathema.character.model.CharacterModelGroup.NaturalTraits;
+
+@RegisteredInitializer(NaturalTraits)
 public class AttributesInitializer implements CoreModelInitializer {
 
   @Override

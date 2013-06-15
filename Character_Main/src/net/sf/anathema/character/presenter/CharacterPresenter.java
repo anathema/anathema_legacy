@@ -5,15 +5,8 @@ import net.sf.anathema.character.generic.framework.additionaltemplate.IAdditiona
 import net.sf.anathema.character.generic.type.ICharacterType;
 import net.sf.anathema.character.model.CharacterModelGroup;
 import net.sf.anathema.character.model.ICharacter;
-import net.sf.anathema.character.presenter.initializers.AbilitiesInitializer;
-import net.sf.anathema.character.presenter.initializers.AdvantagesInitializer;
-import net.sf.anathema.character.presenter.initializers.AttributesInitializer;
-import net.sf.anathema.character.presenter.initializers.CharmInitializer;
-import net.sf.anathema.character.presenter.initializers.ComboInitializer;
-import net.sf.anathema.character.presenter.initializers.ConceptInitializer;
-import net.sf.anathema.character.presenter.initializers.DescriptionInitializer;
-import net.sf.anathema.character.presenter.initializers.NecromancyInitializer;
-import net.sf.anathema.character.presenter.initializers.SorceryInitializer;
+import net.sf.anathema.character.presenter.initializers.CoreModelInitializer;
+import net.sf.anathema.character.presenter.initializers.Initializers;
 import net.sf.anathema.character.view.CharacterView;
 import net.sf.anathema.character.view.SectionView;
 import net.sf.anathema.framework.IApplicationModel;
@@ -35,6 +28,7 @@ public class CharacterPresenter implements Presenter {
   private final IApplicationModel applicationModel;
   private final Resources resources;
   private final PointPresentationStrategy pointPresentation;
+  private final Initializers initializers;
 
   public CharacterPresenter(ICharacter character, CharacterView view, Resources resources, IApplicationModel applicationModel,
                             PointPresentationStrategy pointPresentation) {
@@ -43,50 +37,30 @@ public class CharacterPresenter implements Presenter {
     this.resources = resources;
     this.applicationModel = applicationModel;
     this.pointPresentation = pointPresentation;
+    this.initializers = new Initializers(applicationModel);
   }
 
   @Override
   public void initPresentation() {
-    initOutline();
-    initPhysicalTraits();
-    initSpiritualTraits();
-    initMagic();
-    initMiscellaneous();
-  }
-
-  private void initOutline() {
-    SectionView sectionView = addSection("CardView.Outline.Title");
-    new DescriptionInitializer().initialize(sectionView, character, resources);
-    new ConceptInitializer().initialize(sectionView, character, resources);
-    initializeAdditionalModels(sectionView, Outline);
-  }
-
-  private void initPhysicalTraits() {
-    SectionView sectionView = addSection("CardView.NaturalTraits.Title");
-    new AttributesInitializer().initialize(sectionView, character, resources);
-    new AbilitiesInitializer().initialize(sectionView, character, resources);
-    initializeAdditionalModels(sectionView, NaturalTraits);
-  }
-
-  private void initSpiritualTraits() {
-    SectionView sectionView = addSection("CardView.SpiritualTraits.Title");
-    new AdvantagesInitializer().initialize(sectionView, character, resources);
-    initializeAdditionalModels(sectionView, SpiritualTraits);
-  }
-
-  private void initMagic() {
-    SectionView sectionView = addSection("CardView.CharmConfiguration.Title");
-    new CharmInitializer(applicationModel).initialize(sectionView, character, resources);
-    new ComboInitializer(applicationModel).initialize(sectionView, character, resources);
-    new SorceryInitializer(applicationModel).initialize(sectionView, character, resources);
-    new NecromancyInitializer(applicationModel).initialize(sectionView, character, resources);
-    initializeAdditionalModels(sectionView, Magic);
-  }
-
-  private void initMiscellaneous() {
+    initializeSection("CardView.Outline.Title", Outline);
+    initializeSection("CardView.NaturalTraits.Title", NaturalTraits);
+    initializeSection("CardView.SpiritualTraits.Title", SpiritualTraits);
+    initializeSection("CardView.CharmConfiguration.Title", Magic);
     SectionView sectionView = addSection("CardView.MiscellaneousConfiguration.Title");
-    initializeAdditionalModels(sectionView, Miscellaneous);
+    initializeGroup(Miscellaneous, sectionView);
     pointPresentation.initPresentation(sectionView);
+  }
+
+  private void initializeSection(String titleKey, CharacterModelGroup group) {
+    SectionView sectionView = addSection(titleKey);
+    initializeGroup(group, sectionView);
+  }
+
+  private void initializeGroup(CharacterModelGroup group, SectionView sectionView) {
+    for (CoreModelInitializer initializer : initializers.getInOrderFor(group)) {
+      initializer.initialize(sectionView, character, resources);
+    }
+    initializeAdditionalModels(sectionView, group);
   }
 
   private SectionView addSection(String titleKey) {

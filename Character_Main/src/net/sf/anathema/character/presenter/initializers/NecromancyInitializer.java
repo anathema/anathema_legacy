@@ -7,6 +7,9 @@ import net.sf.anathema.character.view.SectionView;
 import net.sf.anathema.framework.IApplicationModel;
 import net.sf.anathema.lib.resources.Resources;
 
+import static net.sf.anathema.character.model.CharacterModelGroup.Magic;
+
+@RegisteredInitializer(Magic)
 public class NecromancyInitializer implements CoreModelInitializer {
 
   private IApplicationModel applicationModel;

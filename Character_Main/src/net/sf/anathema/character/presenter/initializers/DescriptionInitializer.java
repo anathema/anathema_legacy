@@ -11,6 +11,9 @@ import net.sf.anathema.character.view.ICharacterDescriptionView;
 import net.sf.anathema.character.view.SectionView;
 import net.sf.anathema.lib.resources.Resources;
 
+import static net.sf.anathema.character.model.CharacterModelGroup.Outline;
+
+@RegisteredInitializer(Outline)
 public class DescriptionInitializer implements CoreModelInitializer {
 
   @Override
