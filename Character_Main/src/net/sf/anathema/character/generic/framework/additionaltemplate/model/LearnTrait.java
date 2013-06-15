@@ -1,6 +1,6 @@
 package net.sf.anathema.character.generic.framework.additionaltemplate.model;
 
-public interface IBasicTrait {
+public interface LearnTrait {
 
   int getCreationValue();
 
@@ -17,4 +17,12 @@ public interface IBasicTrait {
   int getCalculationValue();
 
   int getZeroCalculationValue();
+
+  void resetCreationValue();
+
+  void resetExperiencedValue();
+
+  void setCreationValue(int value);
+
+  void setExperiencedValue(int value);
 }

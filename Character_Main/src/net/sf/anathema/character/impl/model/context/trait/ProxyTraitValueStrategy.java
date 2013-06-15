@@ -1,8 +1,7 @@
 package net.sf.anathema.character.impl.model.context.trait;
 
-import net.sf.anathema.character.generic.framework.additionaltemplate.model.IBasicTrait;
-import net.sf.anathema.character.generic.framework.additionaltemplate.model.IModifiableBasicTrait;
 import net.sf.anathema.character.generic.framework.additionaltemplate.model.ITraitValueStrategy;
+import net.sf.anathema.character.generic.framework.additionaltemplate.model.LearnTrait;
 import net.sf.anathema.lib.control.IIntValueChangedListener;
 import org.jmock.example.announcer.Announcer;
 
@@ -15,17 +14,17 @@ public class ProxyTraitValueStrategy implements ITraitValueStrategy {
   }
 
   @Override
-  public int getCurrentValue(IBasicTrait trait) {
+  public int getCurrentValue(LearnTrait trait) {
     return strategy.getCurrentValue(trait);
   }
 
   @Override
-  public int getMinimalValue(IBasicTrait trait) {
+  public int getMinimalValue(LearnTrait trait) {
     return strategy.getMinimalValue(trait);
   }
 
   @Override
-  public void setValue(IModifiableBasicTrait trait, int value) {
+  public void setValue(LearnTrait trait, int value) {
     strategy.setValue(trait, value);
   }
 
@@ -44,12 +43,12 @@ public class ProxyTraitValueStrategy implements ITraitValueStrategy {
   }
 
   @Override
-  public void resetCurrentValue(IModifiableBasicTrait trait) {
+  public void resetCurrentValue(LearnTrait trait) {
     strategy.resetCurrentValue(trait);
   }
 
   @Override
-  public int getCalculationValue(IModifiableBasicTrait trait) {
+  public int getCalculationValue(LearnTrait trait) {
     return strategy.getCalculationValue(trait);
   }
 }

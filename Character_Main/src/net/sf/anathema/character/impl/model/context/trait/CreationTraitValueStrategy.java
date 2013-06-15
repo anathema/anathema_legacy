@@ -1,25 +1,24 @@
 package net.sf.anathema.character.impl.model.context.trait;
 
-import net.sf.anathema.character.generic.framework.additionaltemplate.model.IBasicTrait;
-import net.sf.anathema.character.generic.framework.additionaltemplate.model.IModifiableBasicTrait;
 import net.sf.anathema.character.generic.framework.additionaltemplate.model.ITraitValueStrategy;
+import net.sf.anathema.character.generic.framework.additionaltemplate.model.LearnTrait;
 import net.sf.anathema.lib.control.IIntValueChangedListener;
 import org.jmock.example.announcer.Announcer;
 
 public class CreationTraitValueStrategy implements ITraitValueStrategy {
 
   @Override
-  public int getCurrentValue(IBasicTrait trait) {
+  public int getCurrentValue(LearnTrait trait) {
     return trait.getCreationValue();
   }
 
   @Override
-  public int getMinimalValue(IBasicTrait trait) {
+  public int getMinimalValue(LearnTrait trait) {
     return trait.getAbsoluteMinValue();
   }
 
   @Override
-  public void setValue(IModifiableBasicTrait trait, int value) {
+  public void setValue(LearnTrait trait, int value) {
     trait.setCreationValue(value);
   }
 
@@ -34,12 +33,12 @@ public class CreationTraitValueStrategy implements ITraitValueStrategy {
   }
 
   @Override
-  public void resetCurrentValue(IModifiableBasicTrait trait) {
+  public void resetCurrentValue(LearnTrait trait) {
     trait.resetCreationValue();
   }
 
   @Override
-  public int getCalculationValue(IModifiableBasicTrait trait) {
+  public int getCalculationValue(LearnTrait trait) {
     return trait.getCreationCalculationValue();
   }
 }

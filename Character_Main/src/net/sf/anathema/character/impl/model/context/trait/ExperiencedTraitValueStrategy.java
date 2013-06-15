@@ -1,8 +1,7 @@
 package net.sf.anathema.character.impl.model.context.trait;
 
-import net.sf.anathema.character.generic.framework.additionaltemplate.model.IBasicTrait;
-import net.sf.anathema.character.generic.framework.additionaltemplate.model.IModifiableBasicTrait;
 import net.sf.anathema.character.generic.framework.additionaltemplate.model.ITraitValueStrategy;
+import net.sf.anathema.character.generic.framework.additionaltemplate.model.LearnTrait;
 import net.sf.anathema.character.library.trait.rules.ITraitRules;
 import net.sf.anathema.lib.control.IIntValueChangedListener;
 import org.jmock.example.announcer.Announcer;
@@ -10,12 +9,12 @@ import org.jmock.example.announcer.Announcer;
 public class ExperiencedTraitValueStrategy implements ITraitValueStrategy {
 
   @Override
-  public int getMinimalValue(IBasicTrait trait) {
+  public int getMinimalValue(LearnTrait trait) {
     return trait.isLowerable() ? trait.getAbsoluteMinValue() : trait.getCreationValue();
   }
 
   @Override
-  public int getCurrentValue(IBasicTrait trait) {
+  public int getCurrentValue(LearnTrait trait) {
     if (trait.getExperiencedValue() == ITraitRules.UNEXPERIENCED) {
       return trait.getCreationValue();
     }
@@ -23,7 +22,7 @@ public class ExperiencedTraitValueStrategy implements ITraitValueStrategy {
   }
 
   @Override
-  public void setValue(IModifiableBasicTrait trait, int value) {
+  public void setValue(LearnTrait trait, int value) {
     trait.setExperiencedValue(value);
   }
 
@@ -38,12 +37,12 @@ public class ExperiencedTraitValueStrategy implements ITraitValueStrategy {
   }
 
   @Override
-  public void resetCurrentValue(IModifiableBasicTrait trait) {
+  public void resetCurrentValue(LearnTrait trait) {
     trait.resetExperiencedValue();
   }
 
   @Override
-  public int getCalculationValue(IModifiableBasicTrait trait) {
+  public int getCalculationValue(LearnTrait trait) {
     return trait.getExperiencedCalculationValue();
   }
 }

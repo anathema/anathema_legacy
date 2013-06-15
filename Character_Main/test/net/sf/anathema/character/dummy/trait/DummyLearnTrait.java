@@ -1,14 +1,14 @@
 package net.sf.anathema.character.dummy.trait;
 
-import net.sf.anathema.character.generic.framework.additionaltemplate.model.IModifiableBasicTrait;
+import net.sf.anathema.character.generic.framework.additionaltemplate.model.LearnTrait;
 import net.sf.anathema.lib.data.Range;
 
-public class DummyBasicTrait implements IModifiableBasicTrait {
+public class DummyLearnTrait implements LearnTrait {
 
   private int experiencedValue;
   private int creationValue;
 
-  public DummyBasicTrait(int creationValue, int experiencedValue) {
+  public DummyLearnTrait(int creationValue, int experiencedValue) {
     this.creationValue = creationValue;
     this.experiencedValue = experiencedValue;
   }

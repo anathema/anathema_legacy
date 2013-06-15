@@ -1,6 +1,6 @@
 package net.sf.anathema.character.impl.costs;
 
-import net.sf.anathema.character.dummy.trait.DummyBasicTrait;
+import net.sf.anathema.character.dummy.trait.DummyLearnTrait;
 import net.sf.anathema.character.generic.impl.template.points.MultiplyRatingCosts;
 import net.sf.anathema.character.generic.template.experience.IExperiencePointCosts;
 import net.sf.anathema.character.impl.model.advance.ExperiencePointCostCalculator;
@@ -18,18 +18,18 @@ public class ExperiencePointCalculatorTest {
   @Test
   public void testEssenceCosts() throws Exception {
     when(experienceCosts.getEssenceCosts()).thenReturn(new MultiplyRatingCosts(8));
-    assertEquals(16, calculator.getEssenceCosts(new DummyBasicTrait(2, 3)));
+    assertEquals(16, calculator.getEssenceCosts(new DummyLearnTrait(2, 3)));
   }
 
   @Test
   public void testVirtueCosts() throws Exception {
     when(experienceCosts.getVirtueCosts()).thenReturn(new MultiplyRatingCosts(5));
-    assertEquals(15, calculator.getVirtueCosts(new DummyBasicTrait(3, 4)));
+    assertEquals(15, calculator.getVirtueCosts(new DummyLearnTrait(3, 4)));
   }
 
   @Test
   public void testWillpowerCosts() throws Exception {
     when(experienceCosts.getWillpowerCosts()).thenReturn(new MultiplyRatingCosts(1));
-    assertEquals(3, calculator.getWillpowerCosts(new DummyBasicTrait(3, 4)));
+    assertEquals(3, calculator.getWillpowerCosts(new DummyLearnTrait(3, 4)));
   }
 }

@@ -5,17 +5,17 @@ import org.jmock.example.announcer.Announcer;
 
 public interface ITraitValueStrategy {
 
-  int getMinimalValue(IBasicTrait trait);
+  int getMinimalValue(LearnTrait trait);
 
-  int getCurrentValue(IBasicTrait trait);
+  int getCurrentValue(LearnTrait trait);
 
-  void setValue(IModifiableBasicTrait trait, int value);
+  void setValue(LearnTrait trait, int value);
 
   void notifyOnCreationValueChange(int value, Announcer<IIntValueChangedListener> currentValueControl);
 
   void notifyOnLearnedValueChange(int value, Announcer<IIntValueChangedListener> currentValueControl);
 
-  void resetCurrentValue(IModifiableBasicTrait trait);
+  void resetCurrentValue(LearnTrait trait);
 
-  int getCalculationValue(IModifiableBasicTrait trait);
+  int getCalculationValue(LearnTrait trait);
 }
