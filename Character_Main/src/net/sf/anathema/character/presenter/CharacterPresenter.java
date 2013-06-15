@@ -13,7 +13,6 @@ import net.sf.anathema.character.view.IGroupedFavorableTraitConfigurationView;
 import net.sf.anathema.character.view.SectionView;
 import net.sf.anathema.character.view.concept.ICharacterConceptAndRulesView;
 import net.sf.anathema.framework.IApplicationModel;
-import net.sf.anathema.framework.presenter.view.ContentView;
 import net.sf.anathema.lib.gui.Presenter;
 import net.sf.anathema.lib.resources.Resources;
 
@@ -24,7 +23,7 @@ import static net.sf.anathema.character.model.CharacterModelGroup.NaturalTraits;
 import static net.sf.anathema.character.model.CharacterModelGroup.Outline;
 import static net.sf.anathema.character.model.CharacterModelGroup.SpiritualTraits;
 
-public class CharacterPresenter implements Presenter, MultipleContentViewPresenter {
+public class CharacterPresenter implements Presenter {
 
   private final ICharacter character;
   private final CharacterView characterView;
@@ -32,7 +31,6 @@ public class CharacterPresenter implements Presenter, MultipleContentViewPresent
   private final Resources resources;
   private final PointPresentationStrategy pointPresentation;
   private final CharacterContentInitializer initializer;
-  private SectionView miscView;
 
   public CharacterPresenter(ICharacter character, CharacterView view, Resources resources,
                             IApplicationModel anathemaModel, PointPresentationStrategy pointPresentation) {
@@ -51,7 +49,6 @@ public class CharacterPresenter implements Presenter, MultipleContentViewPresent
     initSpiritualTraits();
     initMagic();
     initMiscellaneous();
-    pointPresentation.initPresentation(this);
   }
 
   private void initOutline() {
@@ -123,12 +120,7 @@ public class CharacterPresenter implements Presenter, MultipleContentViewPresent
 
     initializer.initializeAdditionalContent(sectionView, Miscellaneous);
 
-    this.miscView = sectionView;
-  }
-
-  @Override
-  public void addMiscellaneousView(String title, ContentView tabContent) {
-    miscView.addView(tabContent);
+    pointPresentation.initPresentation(sectionView);
   }
 
   private String getString(String resourceKey) {

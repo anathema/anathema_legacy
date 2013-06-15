@@ -4,6 +4,7 @@ import net.sf.anathema.character.model.ICharacter;
 import net.sf.anathema.character.model.advance.IExperiencePointManagement;
 import net.sf.anathema.character.model.creation.IBonusPointManagement;
 import net.sf.anathema.character.view.CharacterView;
+import net.sf.anathema.character.view.SectionView;
 import net.sf.anathema.lib.resources.Resources;
 
 public class PlayerCharacterPointPresentation implements PointPresentationStrategy {
@@ -17,7 +18,7 @@ public class PlayerCharacterPointPresentation implements PointPresentationStrate
   }
 
   @Override
-  public void initPresentation(MultipleContentViewPresenter viewPresenter) {
+  public void initPresentation(SectionView viewPresenter) {
     overviewPresenter.initPresentation();
     experiencePointPresenter.initPresentation(viewPresenter);
   }
