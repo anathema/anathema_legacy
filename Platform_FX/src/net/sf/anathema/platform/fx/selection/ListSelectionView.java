@@ -7,6 +7,7 @@ import javafx.scene.Node;
 import javafx.scene.control.Label;
 import javafx.scene.control.ListView;
 import javafx.scene.control.SelectionMode;
+import net.miginfocom.layout.CC;
 import net.sf.anathema.lib.control.ObjectValueListener;
 import net.sf.anathema.lib.gui.AgnosticUIConfiguration;
 import net.sf.anathema.platform.fx.ConfigurableListCellFactory;
@@ -34,7 +35,7 @@ public class ListSelectionView<T> implements FxObjectSelectionView<T> {
         label = new Label(description);
         pane = new MigPane(withoutInsets());
         pane.add(label);
-        pane.add(list);
+        pane.add(list, new CC().maxHeight("78pt"));
       }
     });
     FxThreading.runOnCorrectThread(new Runnable() {
