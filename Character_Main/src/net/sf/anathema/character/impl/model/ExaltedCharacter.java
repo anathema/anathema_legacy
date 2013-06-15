@@ -18,8 +18,6 @@ import net.sf.anathema.character.impl.model.context.CharacterListening;
 import net.sf.anathema.character.impl.model.context.CharacterModelContext;
 import net.sf.anathema.character.impl.model.statistics.ExtendedConfiguration;
 import net.sf.anathema.character.impl.model.traits.CoreTraitConfiguration;
-import net.sf.anathema.character.impl.model.traits.RegisteredTrait;
-import net.sf.anathema.character.impl.model.traits.TraitRegistrar;
 import net.sf.anathema.character.impl.model.traits.listening.CharacterTraitListening;
 import net.sf.anathema.character.main.description.model.CharacterDescription;
 import net.sf.anathema.character.main.description.model.CharacterDescriptionFetcher;
@@ -65,8 +63,9 @@ public class ExaltedCharacter implements ICharacter {
 
   public ExaltedCharacter(ICharacterTemplate template, ICharacterGenerics generics) {
     this.characterTemplate = template;
+    this.traitConfiguration = new CoreTraitConfiguration(template, context);
     addModels(generics);
-    this.traitConfiguration = createTraitConfiguration(template, generics);
+    new CharacterTraitListening(traitConfiguration, context.getCharacterListening()).initListening();
     this.health = new HealthConfiguration(getTraitArray(template.getToughnessControllingTraitTypes()), traitConfiguration,
             template.getBaseHealthProviders());
     this.charms = new CharmConfiguration(health, context, generics.getCharacterTypes(), generics.getTemplateRegistry(), generics.getCharmProvider());
@@ -122,13 +121,6 @@ public class ExaltedCharacter implements ICharacter {
   private ChangeAnnouncerAdapter createChangeAnnouncer() {
     CharacterListening listening = (CharacterListening) getCharacterContext().getCharacterListening();
     return new ChangeAnnouncerAdapter(listening, this);
-  }
-
-  private CoreTraitConfiguration createTraitConfiguration(ICharacterTemplate template, ICharacterGenerics generics) {
-    Collection<TraitRegistrar> registrars = generics.getInstantiater().instantiateAll(RegisteredTrait.class);
-    CoreTraitConfiguration configuration = new CoreTraitConfiguration(template, context, registrars);
-    new CharacterTraitListening(configuration, context.getCharacterListening(), registrars).initListening();
-    return configuration;
   }
 
   private void addCompulsiveCharms(ICharacterTemplate template) {

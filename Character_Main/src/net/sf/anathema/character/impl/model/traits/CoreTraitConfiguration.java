@@ -34,7 +34,6 @@ import net.sf.anathema.characterengine.quality.Quality;
 import net.sf.anathema.exaltedengine.ExaltedEngine;
 import net.sf.anathema.exaltedengine.attributes.Attribute;
 
-import java.util.Collection;
 import java.util.Iterator;
 
 import static java.util.Arrays.asList;
@@ -49,7 +48,7 @@ public class CoreTraitConfiguration extends AbstractTraitCollection implements I
   private final Persona persona = new ExaltedEngine().createCharacter();
   private final ITraitTemplateCollection traitTemplateCollection;
 
-  public CoreTraitConfiguration(ICharacterTemplate template, ICharacterModelContext modelContext, Collection<TraitRegistrar> registrars) {
+  public CoreTraitConfiguration(ICharacterTemplate template, ICharacterModelContext modelContext) {
     ICasteCollection casteCollection = template.getCasteCollection();
     this.abilityTraitGroups = new AbilityTypeGroupFactory().createTraitGroups(casteCollection, template.getAbilityGroups());
     this.attributeTraitGroups = new AttributeTypeGroupFactory().createTraitGroups(casteCollection, template.getAttributeGroups());
@@ -63,9 +62,6 @@ public class CoreTraitConfiguration extends AbstractTraitCollection implements I
     addWillpower(traitContext, traitTemplateCollection, additionalTraitRules);
     addAttributes(template);
     addAbilities(template);
-    for (TraitRegistrar registrar : registrars) {
-      registrar.addTraits(this, template);
-    }
     IDefaultTrait willpower = TraitCollectionUtilities.getWillpower(this);
     IDefaultTrait[] virtues = TraitCollectionUtilities.getVirtues(this);
     if (additionalTraitRules.isWillpowerVirtueBased()) {
