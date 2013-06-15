@@ -2,7 +2,6 @@ package net.sf.anathema.character.presenter;
 
 import net.sf.anathema.character.generic.additionaltemplate.IAdditionalModel;
 import net.sf.anathema.character.generic.framework.additionaltemplate.IAdditionalInitializer;
-import net.sf.anathema.character.generic.type.ICharacterType;
 import net.sf.anathema.character.model.CharacterModelGroup;
 import net.sf.anathema.character.model.ICharacter;
 import net.sf.anathema.character.presenter.initializers.CoreModelInitializer;
@@ -75,15 +74,11 @@ public class CharacterPresenter implements Presenter {
       if (initializer == null) {
         continue;
       }
-      initializer.initialize(model, resources, characterType(), sectionView);
+      initializer.initialize(sectionView, character, resources, model);
     }
   }
 
   private String getString(String resourceKey) {
     return resources.getString(resourceKey);
-  }
-
-  private ICharacterType characterType() {
-    return character.getCharacterTemplate().getTemplateType().getCharacterType();
   }
 }
