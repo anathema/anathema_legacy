@@ -8,11 +8,9 @@ import net.sf.anathema.character.impl.model.TypedDescription;
 import net.sf.anathema.character.model.IIntegerDescription;
 import net.sf.anathema.character.model.ITypedDescription;
 import net.sf.anathema.lib.util.Identified;
-import net.sf.anathema.lib.util.Identifier;
 
 public class CharacterConceptImpl implements CharacterConcept {
 
-  public static final Identified ID = new Identifier("Concept");
   private final ITypedDescription<ICasteType> caste = new TypedDescription<>(ICasteType.NULL_CASTE_TYPE);
   private final IIntegerDescription age = new IntegerDescription(0);
 
@@ -33,7 +31,7 @@ public class CharacterConceptImpl implements CharacterConcept {
 
   @Override
   public void initListening(ChangeAnnouncer announcer) {
-    caste.addChangeListener(new AnnounceChangeListener(announcer));
-    age.addChangeListener(new AnnounceChangeListener(announcer));
+    caste.addChangeListener(new AnnounceChangeListener(announcer, ConceptChange.FLAVOR_CASTE));
+    age.addChangeListener(new AnnounceChangeListener(announcer, ConceptChange.FLAVOR_AGE));
   }
 }

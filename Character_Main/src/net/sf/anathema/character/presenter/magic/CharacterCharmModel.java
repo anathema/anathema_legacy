@@ -4,6 +4,7 @@ import net.sf.anathema.character.generic.caste.ICasteType;
 import net.sf.anathema.character.generic.magic.ICharm;
 import net.sf.anathema.character.generic.magic.description.MagicDescriptionProvider;
 import net.sf.anathema.character.generic.template.magic.ICharmTemplate;
+import net.sf.anathema.character.main.concept.model.CharacterConceptFetcher;
 import net.sf.anathema.character.model.ICharacter;
 import net.sf.anathema.character.model.ITypedDescription;
 import net.sf.anathema.character.model.charm.ICharmConfiguration;
@@ -34,7 +35,7 @@ public class CharacterCharmModel {
   }
 
   private ITypedDescription<ICasteType> getCaste() {
-    return character.getCharacterConcept().getCaste();
+    return CharacterConceptFetcher.fetch(character).getCaste();
   }
 
   public void toggleLearned(String charmId) {

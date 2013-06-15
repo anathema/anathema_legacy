@@ -23,6 +23,7 @@ import net.sf.anathema.character.impl.model.traits.TraitRegistrar;
 import net.sf.anathema.character.impl.model.traits.essence.EssencePoolConfiguration;
 import net.sf.anathema.character.impl.model.traits.listening.CharacterTraitListening;
 import net.sf.anathema.character.main.concept.model.CharacterConcept;
+import net.sf.anathema.character.main.concept.model.CharacterConceptFetcher;
 import net.sf.anathema.character.main.concept.model.CharacterConceptImpl;
 import net.sf.anathema.character.main.description.model.CharacterDescription;
 import net.sf.anathema.character.main.description.model.CharacterDescriptionFetcher;
@@ -57,7 +58,6 @@ public class ExaltedCharacter implements ICharacter {
   private final CharacterChangeManagement management = new CharacterChangeManagement();
   private final CharacterModelContext context = new CharacterModelContext(new GenericCharacter(this));
   private final ICharacterTemplate characterTemplate;
-  private final CharacterConcept concept;
   private final IEssencePoolConfiguration essencePool;
   private final CharmConfiguration charms;
   private final IComboConfiguration combos;
@@ -83,7 +83,7 @@ public class ExaltedCharacter implements ICharacter {
 
   public ExaltedCharacter(ICharacterTemplate template, ICharacterGenerics generics) {
     this.characterTemplate = template;
-    this.concept = initConcept();
+    addModels(generics);
     this.traitConfiguration = createTraitConfiguration(template, generics);
     this.health = new HealthConfiguration(getTraitArray(template.getToughnessControllingTraitTypes()), traitConfiguration,
             template.getBaseHealthProviders());
@@ -110,7 +110,6 @@ public class ExaltedCharacter implements ICharacter {
     if (characterTemplate.isNpcOnly()) {
       setExperienced(true);
     }
-    addModels(generics);
     for (IGlobalAdditionalTemplate globalTemplate : generics.getGlobalAdditionalTemplateRegistry().getAll()) {
       addAdditionalModels(generics, globalTemplate);
     }
@@ -210,19 +209,8 @@ public class ExaltedCharacter implements ICharacter {
     });
   }
 
-  private CharacterConceptImpl initConcept() {
-    CharacterConceptImpl characterConcept = new CharacterConceptImpl();
-    characterConcept.getCaste().addChangeListener(casteChangeListener);
-    characterConcept.getAge().addChangeListener(ageChangeListener);
-    return characterConcept;
-  }
-
   private void initCharmListening(ICharmConfiguration charmConfiguration) {
     charmConfiguration.addCharmLearnListener(new CharacterChangeCharmListener(context.getCharacterListening()));
-  }
-
-  public CharacterConcept getCharacterConcept() {
-    return concept;
   }
 
   public IEssencePoolConfiguration getEssencePool() {

@@ -3,6 +3,7 @@ package net.sf.anathema.character.presenter;
 import net.sf.anathema.character.generic.caste.ICasteType;
 import net.sf.anathema.character.generic.framework.additionaltemplate.listening.DedicatedCharacterChangeAdapter;
 import net.sf.anathema.character.generic.template.ICharacterTemplate;
+import net.sf.anathema.character.main.concept.model.CharacterConceptFetcher;
 import net.sf.anathema.character.model.ICharacter;
 import net.sf.anathema.character.model.ITypedDescription;
 import net.sf.anathema.character.view.concept.ICharacterConceptAndRulesView;
@@ -61,7 +62,7 @@ public class CharacterConceptAndRulesPresenter {
     ICasteType[] casteTypes = template.getCasteCollection().getAllCasteTypes(character.getCharacterTemplate().getTemplateType());
     final IObjectSelectionView<ICasteType> casteView =
             view.addObjectSelectionView(resources.getString(casteLabelResourceKey), casteTypes, new ObjectUiListCellRenderer(casteUi), false);
-    final ITypedDescription<ICasteType> caste = character.getCharacterConcept().getCaste();
+    final ITypedDescription<ICasteType> caste = CharacterConceptFetcher.fetch(character).getCaste();
     casteView.setSelectedObject(caste.getType());
     casteView.addObjectSelectionChangedListener(new ObjectValueListener<ICasteType>() {
       @Override

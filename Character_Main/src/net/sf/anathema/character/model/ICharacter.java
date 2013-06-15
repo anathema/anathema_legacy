@@ -2,7 +2,6 @@ package net.sf.anathema.character.model;
 
 import net.sf.anathema.character.generic.framework.additionaltemplate.model.ICharacterModelContext;
 import net.sf.anathema.character.generic.template.ICharacterTemplate;
-import net.sf.anathema.character.main.concept.model.CharacterConcept;
 import net.sf.anathema.character.model.advance.IExperiencePointConfiguration;
 import net.sf.anathema.character.model.charm.ICharmConfiguration;
 import net.sf.anathema.character.model.charm.IComboConfiguration;
@@ -14,8 +13,6 @@ import net.sf.anathema.framework.itemdata.model.IItemData;
 public interface ICharacter extends IItemData, Hero {
 
   ICoreTraitConfiguration getTraitConfiguration();
-
-  CharacterConcept getCharacterConcept();
 
   ICharacterTemplate getCharacterTemplate();
 

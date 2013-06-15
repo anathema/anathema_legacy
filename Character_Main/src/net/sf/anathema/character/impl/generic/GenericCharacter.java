@@ -31,6 +31,7 @@ import net.sf.anathema.character.library.trait.subtrait.ISubTraitListener;
 import net.sf.anathema.character.library.trait.visitor.IAggregatedTrait;
 import net.sf.anathema.character.library.trait.visitor.IDefaultTrait;
 import net.sf.anathema.character.library.trait.visitor.ITraitVisitor;
+import net.sf.anathema.character.main.concept.model.CharacterConceptFetcher;
 import net.sf.anathema.character.main.description.model.CharacterDescriptionFetcher;
 import net.sf.anathema.character.model.ICharacter;
 import net.sf.anathema.character.model.charm.ICharmConfiguration;
@@ -149,7 +150,7 @@ public class GenericCharacter implements IGenericCharacter {
 
   @Override
   public ICasteType getCasteType() {
-    return character.getCharacterConcept().getCaste().getType();
+    return CharacterConceptFetcher.fetch(character).getCaste().getType();
   }
 
   @Override
@@ -228,7 +229,7 @@ public class GenericCharacter implements IGenericCharacter {
 
   @Override
   public IConcept getConcept() {
-    return new GenericConcept(character.getCharacterConcept());
+    return new GenericConcept(CharacterConceptFetcher.fetch(character));
   }
 
   @Override
@@ -284,7 +285,7 @@ public class GenericCharacter implements IGenericCharacter {
 
   @Override
   public int getAge() {
-    return character.getCharacterConcept().getAge().getValue();
+    return CharacterConceptFetcher.fetch(character).getAge().getValue();
   }
 
   @Override

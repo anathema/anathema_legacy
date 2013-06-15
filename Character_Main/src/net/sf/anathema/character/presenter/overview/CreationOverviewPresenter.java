@@ -5,6 +5,7 @@ import net.sf.anathema.character.generic.framework.additionaltemplate.listening.
 import net.sf.anathema.character.generic.template.ICharacterTemplate;
 import net.sf.anathema.character.library.overview.IAdditionalAlotmentView;
 import net.sf.anathema.character.library.overview.IOverviewCategory;
+import net.sf.anathema.character.main.concept.model.CharacterConceptFetcher;
 import net.sf.anathema.character.model.ICharacter;
 import net.sf.anathema.character.model.creation.IBonusPointManagement;
 import net.sf.anathema.character.view.overview.CategorizedOverview;
@@ -139,7 +140,7 @@ public class CreationOverviewPresenter implements Presenter {
   }
 
   private String getCasteValueResourceKey() {
-    ICasteType casteType = character.getCharacterConcept().getCaste().getType();
+    ICasteType casteType = CharacterConceptFetcher.fetch(character).getCaste().getType();
     if (casteType.equals(ICasteType.NULL_CASTE_TYPE)) {
       return "";
     }

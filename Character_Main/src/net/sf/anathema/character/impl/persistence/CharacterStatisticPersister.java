@@ -12,6 +12,7 @@ import net.sf.anathema.character.generic.traits.types.OtherTraitType;
 import net.sf.anathema.character.generic.type.ICharacterType;
 import net.sf.anathema.character.impl.model.ExaltedCharacter;
 import net.sf.anathema.character.impl.persistence.charm.CharmConfigurationPersister;
+import net.sf.anathema.character.main.concept.model.CharacterConceptFetcher;
 import net.sf.anathema.character.main.description.model.CharacterDescription;
 import net.sf.anathema.character.main.description.model.CharacterDescriptionFetcher;
 import net.sf.anathema.character.model.ICharacter;
@@ -61,7 +62,7 @@ public class CharacterStatisticPersister {
     Element characterTypeElement = statisticsElement.addElement(TAG_CHARACTER_TYPE);
     characterTypeElement.addAttribute(ATTRIB_SUB_TYPE, template.getTemplateType().getSubType().getId());
     characterTypeElement.addText(template.getTemplateType().getCharacterType().getId());
-    characterConceptPersister.save(statisticsElement, character.getCharacterConcept());
+    characterConceptPersister.save(statisticsElement, CharacterConceptFetcher.fetch(character));
     essencePersister.save(statisticsElement, character.getTraitConfiguration());
     willpowerPersister.save(statisticsElement, character.getTraitConfiguration().getTrait(OtherTraitType.Willpower));
     virtuePersister.save(statisticsElement, character.getTraitConfiguration());
@@ -84,7 +85,7 @@ public class CharacterStatisticPersister {
       CharacterDescription characterDescription = CharacterDescriptionFetcher.fetch(character);
       descriptionPersister.load(parent, characterDescription);
       ICasteCollection casteCollection = template.getCasteCollection();
-      characterConceptPersister.load(statisticsElement, character.getCharacterConcept(), characterDescription, casteCollection);
+      characterConceptPersister.load(statisticsElement, CharacterConceptFetcher.fetch(character), characterDescription, casteCollection);
       character.setExperienced(experienced);
       essencePersister.load(statisticsElement, character.getTraitConfiguration());
       virtuePersister.load(statisticsElement, character.getTraitConfiguration());
