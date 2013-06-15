@@ -14,7 +14,7 @@ import net.sf.anathema.initialization.reflections.Weight;
 public class CharacterDescriptionFactory implements CharacterModelFactory {
 
   @Override
-  public CharacterDescription create(ModelCreationContext context, Hero hero) {
-    return new CharacterDescription();
+  public TextualCharacterDescription create(ModelCreationContext context, Hero hero) {
+    return new TextualCharacterDescription();
   }
 }

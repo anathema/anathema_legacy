@@ -4,7 +4,7 @@ import net.sf.anathema.character.model.ICharacter;
 
 public class CharacterDescriptionExtractor {
 
-  public static ICharacterDescription getCharacterDescription(ICharacter character) {
-    return character.getModel(ICharacterDescription.ID);
+  public static CharacterDescription getCharacterDescription(ICharacter character) {
+    return character.getModel(CharacterDescription.ID);
   }
 }

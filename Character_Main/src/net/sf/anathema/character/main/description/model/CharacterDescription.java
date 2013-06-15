@@ -1,112 +1,37 @@
 package net.sf.anathema.character.main.description.model;
 
-import net.sf.anathema.character.generic.framework.additionaltemplate.listening.ICharacterChangeListener;
 import net.sf.anathema.character.model.CharacterModel;
 import net.sf.anathema.lib.control.ObjectValueListener;
-import net.sf.anathema.lib.util.Identified;
+import net.sf.anathema.lib.util.Identifier;
 import net.sf.anathema.lib.workflow.textualdescription.ITextualDescription;
-import net.sf.anathema.lib.workflow.textualdescription.model.SimpleTextualDescription;
 
-public class CharacterDescription implements ICharacterDescription, CharacterModel {
+public interface CharacterDescription extends CharacterModel {
 
-  private final ITextualDescription nameDescription = new SimpleTextualDescription();
-  private final ITextualDescription periphraseDescription = new SimpleTextualDescription();
-  private final ITextualDescription characterization = new SimpleTextualDescription();
-  private final ITextualDescription physicalDescription = new SimpleTextualDescription();
-  private final ITextualDescription notes = new SimpleTextualDescription();
-  private final ITextualDescription player = new SimpleTextualDescription();
-  private final ITextualDescription concept = new SimpleTextualDescription();
+  Identifier ID = new Identifier("Description");
 
-  private final ITextualDescription eyes = new SimpleTextualDescription();
-  private final ITextualDescription hair = new SimpleTextualDescription();
-  private final ITextualDescription sex = new SimpleTextualDescription();
-  private final ITextualDescription skin = new SimpleTextualDescription();
-  private final ITextualDescription anima = new SimpleTextualDescription();
+  ITextualDescription getName();
 
-  @Override
-  public ITextualDescription getName() {
-    return nameDescription;
-  }
+  ITextualDescription getPeriphrase();
 
-  @Override
-  public ITextualDescription getPlayer() {
-    return player;
-  }
+  ITextualDescription getCharacterization();
 
-  @Override
-  public ITextualDescription getPeriphrase() {
-    return periphraseDescription;
-  }
+  ITextualDescription getPhysicalDescription();
 
-  @Override
-  public ITextualDescription getCharacterization() {
-    return characterization;
-  }
+  ITextualDescription getEyes();
 
-  @Override
-  public ITextualDescription getPhysicalDescription() {
-    return physicalDescription;
-  }
+  ITextualDescription getHair();
 
-  @Override
-  public ITextualDescription getEyes() {
-    return eyes;
-  }
+  ITextualDescription getSex();
 
-  @Override
-  public ITextualDescription getHair() {
-    return hair;
-  }
+  ITextualDescription getSkin();
 
-  @Override
-  public ITextualDescription getSex() {
-    return sex;
-  }
+  ITextualDescription getAnima();
 
-  @Override
-  public ITextualDescription getSkin() {
-    return skin;
-  }
+  ITextualDescription getNotes();
 
-  @Override
-  public ITextualDescription getAnima() {
-    return anima;
-  }
+  ITextualDescription getPlayer();
 
-  @Override
-  public ITextualDescription getNotes() {
-    return notes;
-  }
+  ITextualDescription getConcept();
 
-  private ITextualDescription[] getAllDescriptions() {
-    return new ITextualDescription[]{nameDescription, periphraseDescription, characterization, physicalDescription, eyes, hair, sex, skin, anima,
-            notes, player, concept};
-  }
-
-  @Override
-  public ITextualDescription getConcept() {
-    return concept;
-  }
-
-  @Override
-  public void addOverallChangeListener(ObjectValueListener<String> listener) {
-    for (ITextualDescription description : getAllDescriptions()) {
-      description.addTextChangedListener(listener);
-    }
-  }
-
-  @Override
-  public Identified getId() {
-    return ID;
-  }
-
-  @Override
-  public void addChangeListener(final ICharacterChangeListener changeListener) {
-    addOverallChangeListener(new ObjectValueListener<String>() {
-      @Override
-      public void valueChanged(String newValue) {
-        changeListener.characterChanged();
-      }
-    });
-  }
+  void addOverallChangeListener(ObjectValueListener<String> listener);
 }

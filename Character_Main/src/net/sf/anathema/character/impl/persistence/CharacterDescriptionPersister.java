@@ -1,6 +1,6 @@
 package net.sf.anathema.character.impl.persistence;
 
-import net.sf.anathema.character.main.description.model.ICharacterDescription;
+import net.sf.anathema.character.main.description.model.CharacterDescription;
 import net.sf.anathema.framework.persistence.TextPersister;
 import org.dom4j.Element;
 
@@ -21,7 +21,7 @@ import static net.sf.anathema.character.impl.persistence.ICharacterXmlConstants.
 public class CharacterDescriptionPersister {
   private final TextPersister textPersister = new TextPersister();
 
-  public void load(Element parent, ICharacterDescription description) {
+  public void load(Element parent, CharacterDescription description) {
     Element descriptionElement = parent.element(TAG_DESCRIPTION);
     if (descriptionElement == null) {
       return;
@@ -41,7 +41,7 @@ public class CharacterDescriptionPersister {
     textPersister.restoreTextualDescription(descriptionElement, TAG_ANIMA, description.getAnima());
   }
 
-  public void save(Element parent, ICharacterDescription description) {
+  public void save(Element parent, CharacterDescription description) {
     Element descriptionElement = parent.addElement(TAG_DESCRIPTION);
     textPersister.saveTextualDescription(descriptionElement, TAG_CHARACTER_NAME, description.getName());
     textPersister.saveTextualDescription(descriptionElement, TAG_PLAYER, description.getPlayer());

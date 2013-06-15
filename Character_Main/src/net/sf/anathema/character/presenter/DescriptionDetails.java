@@ -1,20 +1,20 @@
 package net.sf.anathema.character.presenter;
 
-import net.sf.anathema.character.main.description.model.ICharacterDescription;
+import net.sf.anathema.character.main.description.model.CharacterDescription;
 import net.sf.anathema.character.model.concept.ICharacterConcept;
 
 public class DescriptionDetails {
-  private final ICharacterDescription description;
+  private final CharacterDescription description;
   private final ICharacterConcept characterConcept;
   private final boolean hasAnima;
 
-  public DescriptionDetails(ICharacterDescription description, ICharacterConcept characterConcept, boolean hasAnima) {
+  public DescriptionDetails(CharacterDescription description, ICharacterConcept characterConcept, boolean hasAnima) {
     this.description = description;
     this.characterConcept = characterConcept;
     this.hasAnima = hasAnima;
   }
 
-  public ICharacterDescription getDescription() {
+  public CharacterDescription getDescription() {
     return description;
   }
 

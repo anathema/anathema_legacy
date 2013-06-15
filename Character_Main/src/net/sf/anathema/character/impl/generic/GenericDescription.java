@@ -1,13 +1,13 @@
 package net.sf.anathema.character.impl.generic;
 
 import net.sf.anathema.character.generic.character.IGenericDescription;
-import net.sf.anathema.character.main.description.model.ICharacterDescription;
+import net.sf.anathema.character.main.description.model.CharacterDescription;
 
 public class GenericDescription implements IGenericDescription {
 
-  private final ICharacterDescription description;
+  private final CharacterDescription description;
 
-  public GenericDescription(ICharacterDescription description) {
+  public GenericDescription(CharacterDescription description) {
     this.description = description;
   }
 

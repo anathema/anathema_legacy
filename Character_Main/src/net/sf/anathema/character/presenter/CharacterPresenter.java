@@ -5,8 +5,8 @@ import net.sf.anathema.character.generic.framework.additionaltemplate.IAdditiona
 import net.sf.anathema.character.generic.template.ICharacterTemplate;
 import net.sf.anathema.character.generic.template.magic.ICharmTemplate;
 import net.sf.anathema.character.generic.type.ICharacterType;
+import net.sf.anathema.character.main.description.model.CharacterDescription;
 import net.sf.anathema.character.main.description.model.CharacterDescriptionExtractor;
-import net.sf.anathema.character.main.description.model.ICharacterDescription;
 import net.sf.anathema.character.model.CharacterModelGroup;
 import net.sf.anathema.character.model.ICharacter;
 import net.sf.anathema.character.model.concept.ICharacterConcept;
@@ -60,7 +60,7 @@ public class CharacterPresenter implements Presenter {
     String sectionTitle = getString("CardView.Outline.Title");
     SectionView sectionView = characterView.addSection(sectionTitle);
 
-    String descriptionHeader = resources.getString("CardView.CharacterDescription.Title");
+    String descriptionHeader = resources.getString("CardView.TextualCharacterDescription.Title");
     ICharacterDescriptionView descriptionView = sectionView.addView(descriptionHeader, ICharacterDescriptionView.class, characterType());
     DescriptionDetails descriptionDetails = createDescriptionDetails();
     new CharacterDescriptionPresenter(descriptionDetails, resources, descriptionView).initPresentation();
@@ -73,7 +73,7 @@ public class CharacterPresenter implements Presenter {
   }
 
   private DescriptionDetails createDescriptionDetails() {
-    ICharacterDescription characterDescription = CharacterDescriptionExtractor.getCharacterDescription(character);
+    CharacterDescription characterDescription = CharacterDescriptionExtractor.getCharacterDescription(character);
     ICharacterConcept characterConcept = character.getCharacterConcept();
     boolean isExalt = characterType().isExaltType();
     return new DescriptionDetails(characterDescription, characterConcept, isExalt);

@@ -23,8 +23,8 @@ import net.sf.anathema.character.impl.model.traits.RegisteredTrait;
 import net.sf.anathema.character.impl.model.traits.TraitRegistrar;
 import net.sf.anathema.character.impl.model.traits.essence.EssencePoolConfiguration;
 import net.sf.anathema.character.impl.model.traits.listening.CharacterTraitListening;
+import net.sf.anathema.character.main.description.model.CharacterDescription;
 import net.sf.anathema.character.main.description.model.CharacterDescriptionExtractor;
-import net.sf.anathema.character.main.description.model.ICharacterDescription;
 import net.sf.anathema.character.model.CharacterModel;
 import net.sf.anathema.character.model.CharacterModelAutoCollector;
 import net.sf.anathema.character.model.CharacterModelFactory;
@@ -160,7 +160,7 @@ public class ExaltedCharacter implements ICharacter {
   }
 
   public void setPrintNameAdjuster(PrintNameAdjuster adjuster) {
-    ICharacterDescription characterDescription = CharacterDescriptionExtractor.getCharacterDescription(this);
+    CharacterDescription characterDescription = CharacterDescriptionExtractor.getCharacterDescription(this);
     ITextualDescription characterName = characterDescription.getName();
     characterName.addTextChangedListener(adjuster);
   }
