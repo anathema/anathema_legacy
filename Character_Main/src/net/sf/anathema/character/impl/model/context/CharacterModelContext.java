@@ -7,6 +7,7 @@ import net.sf.anathema.character.generic.character.IGenericCharacter;
 import net.sf.anathema.character.generic.character.IGenericTraitCollection;
 import net.sf.anathema.character.generic.character.ILimitationContext;
 import net.sf.anathema.character.generic.character.IMagicCollection;
+import net.sf.anathema.character.generic.framework.additionaltemplate.listening.DedicatedCharacterChangeAdapter;
 import net.sf.anathema.character.generic.framework.additionaltemplate.model.ICharacterModelContext;
 import net.sf.anathema.character.generic.framework.additionaltemplate.model.ICharmContext;
 import net.sf.anathema.character.generic.framework.additionaltemplate.model.ICharmLearnStrategy;
@@ -41,6 +42,12 @@ public class CharacterModelContext implements ICharacterModelContext, ICharmCont
   public CharacterModelContext(IGenericCharacter character) {
     this.character = character;
     this.characterData = new BasicCharacterContext(character);
+    characterListening.addChangeListener(new DedicatedCharacterChangeAdapter() {
+      @Override
+      public void experiencedChanged(boolean experienced) {
+        updateLearnStrategies(experienced);
+      }
+    });
   }
 
   @Override
@@ -57,7 +64,7 @@ public class CharacterModelContext implements ICharacterModelContext, ICharmCont
     return spellLearnStrategy;
   }
 
-  public void setExperienced(boolean experienced) {
+  private void updateLearnStrategies(boolean experienced) {
     if (experienced) {
       traitValueStrategy.setStrategy(new ExperiencedTraitValueStrategy());
       spellLearnStrategy.setStrategy(new ExperiencedSpellLearnStrategy());

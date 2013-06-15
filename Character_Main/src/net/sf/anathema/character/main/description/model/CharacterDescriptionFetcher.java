@@ -1,10 +1,10 @@
 package net.sf.anathema.character.main.description.model;
 
-import net.sf.anathema.character.model.ICharacter;
+import net.sf.anathema.character.model.Hero;
 
 public class CharacterDescriptionFetcher {
 
-  public static CharacterDescription fetch(ICharacter character) {
-    return character.getModel(CharacterDescription.ID);
+  public static CharacterDescription fetch(Hero hero) {
+    return hero.getModel(CharacterDescription.ID);
   }
 }

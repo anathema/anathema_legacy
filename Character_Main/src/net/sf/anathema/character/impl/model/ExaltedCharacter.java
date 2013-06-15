@@ -24,7 +24,7 @@ import net.sf.anathema.character.impl.model.traits.listening.CharacterTraitListe
 import net.sf.anathema.character.main.description.model.CharacterDescription;
 import net.sf.anathema.character.main.description.model.CharacterDescriptionFetcher;
 import net.sf.anathema.character.main.experience.model.ExperienceModel;
-import net.sf.anathema.character.main.experience.model.ExperienceModelImpl;
+import net.sf.anathema.character.main.experience.model.ExperienceModelFetcher;
 import net.sf.anathema.character.main.model.DefaultHero;
 import net.sf.anathema.character.main.model.DefaultModelCreationContext;
 import net.sf.anathema.character.main.model.change.ChangeAnnouncerAdapter;
@@ -52,7 +52,6 @@ public class ExaltedCharacter implements ICharacter {
 
   private final CharacterChangeManagement management = new CharacterChangeManagement();
   private final CharacterModelContext context = new CharacterModelContext(new GenericCharacter(this));
-  private final ExperienceModel experience = new ExperienceModelImpl(context);
   private final ICharacterTemplate characterTemplate;
   private final IEssencePoolConfiguration essencePool;
   private final CharmConfiguration charms;
@@ -98,7 +97,7 @@ public class ExaltedCharacter implements ICharacter {
 
   private void addModels(ICharacterGenerics generics) {
     CharacterListening listening = (CharacterListening) getCharacterContext().getCharacterListening();
-    ChangeAnnouncerAdapter changeAnnouncer = new ChangeAnnouncerAdapter(listening);
+    ChangeAnnouncerAdapter changeAnnouncer = new ChangeAnnouncerAdapter(listening, hero);
     ModelCreationContext creationContext = new DefaultModelCreationContext(generics, changeAnnouncer);
     Instantiater instantiater = generics.getInstantiater();
     Collection<CharacterModelFactory> factories = instantiater.instantiateAll(CharacterModelAutoCollector.class);
@@ -192,7 +191,7 @@ public class ExaltedCharacter implements ICharacter {
   }
 
   public ExperienceModel getExperienceModel() {
-    return experience;
+    return ExperienceModelFetcher.fetch(this);
   }
 
   public ICharacterTemplate getCharacterTemplate() {
