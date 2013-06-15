@@ -30,7 +30,6 @@ public class PersonalInfoEncoder implements IVariableContentEncoder {
 
     float lineHeight = (bounds.height - TEXT_PADDING) / lines;
     float entryWidth = (bounds.width - TEXT_PADDING) / 2;
-    float shortEntryWidth = (bounds.width - 4 * TEXT_PADDING) / 5;
     float firstColumnX = bounds.x;
     float secondColumnX = firstColumnX + entryWidth + TEXT_PADDING;
 
@@ -46,25 +45,25 @@ public class PersonalInfoEncoder implements IVariableContentEncoder {
     }
 
     float secondRowY = firstRowY - lineHeight;
-    String motivationContent = reportSession.getCharacter().getConcept().getWillpowerRegainingComment(resources);
-    String motivationLabel = getLabel("Motivation");
-    graphics.drawLabelledContent(motivationLabel, motivationContent, new Position(firstColumnX, secondRowY), bounds.width);
 
-    float thirdRowY = secondRowY - lineHeight;
-    float[] shortColumnX = new float[5];
-    for (int i = 0; i < 5; i++) {
+    int shortColumnCount = 3;
+    float shortEntryWidth = (bounds.width - (shortColumnCount - 1) * TEXT_PADDING) / shortColumnCount;
+    float[] shortColumnX = new float[shortColumnCount];
+    for (int i = 0; i < shortColumnCount; i++) {
       shortColumnX[i] = bounds.x + i * (shortEntryWidth + TEXT_PADDING);
     }
     String ageContent = Integer.toString(reportSession.getCharacter().getAge());
-    graphics.drawLabelledContent(getLabel("Age"), ageContent, new Position(shortColumnX[0], thirdRowY), shortEntryWidth);
+    graphics.drawLabelledContent(getLabel("Age"), ageContent, new Position(shortColumnX[0], secondRowY), shortEntryWidth);
     String sexContent = reportSession.getDescription().getSex();
-    graphics.drawLabelledContent(getLabel("Sex"), sexContent, new Position(shortColumnX[1], thirdRowY), shortEntryWidth);
+    graphics.drawLabelledContent(getLabel("Sex"), sexContent, new Position(shortColumnX[1], secondRowY), shortEntryWidth);
+
+    float thirdRowY = secondRowY - lineHeight;
     String hairContent = reportSession.getDescription().getHair();
-    graphics.drawLabelledContent(getLabel("Hair"), hairContent, new Position(shortColumnX[2], thirdRowY), shortEntryWidth);
+    graphics.drawLabelledContent(getLabel("Hair"), hairContent, new Position(shortColumnX[0], thirdRowY), shortEntryWidth);
     String skinContent = reportSession.getDescription().getSkin();
-    graphics.drawLabelledContent(getLabel("Skin"), skinContent, new Position(shortColumnX[3], thirdRowY), shortEntryWidth);
+    graphics.drawLabelledContent(getLabel("Skin"), skinContent, new Position(shortColumnX[1], thirdRowY), shortEntryWidth);
     String eyesContent = reportSession.getDescription().getEyes();
-    graphics.drawLabelledContent(getLabel("Eyes"), eyesContent, new Position(shortColumnX[4], thirdRowY), shortEntryWidth);
+    graphics.drawLabelledContent(getLabel("Eyes"), eyesContent, new Position(shortColumnX[2], thirdRowY), shortEntryWidth);
 
     if (characterType.isExaltType()) {
       float fourthRowY = thirdRowY - lineHeight;

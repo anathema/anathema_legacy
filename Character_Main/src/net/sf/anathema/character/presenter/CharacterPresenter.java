@@ -9,7 +9,7 @@ import net.sf.anathema.character.main.description.model.CharacterDescription;
 import net.sf.anathema.character.main.description.model.CharacterDescriptionExtractor;
 import net.sf.anathema.character.model.CharacterModelGroup;
 import net.sf.anathema.character.model.ICharacter;
-import net.sf.anathema.character.model.concept.ICharacterConcept;
+import net.sf.anathema.character.main.concept.model.ICharacterConcept;
 import net.sf.anathema.character.presenter.magic.MagicPresenter;
 import net.sf.anathema.character.view.BackgroundView;
 import net.sf.anathema.character.view.CharacterView;

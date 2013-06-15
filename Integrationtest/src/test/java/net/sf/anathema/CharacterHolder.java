@@ -3,7 +3,7 @@ package net.sf.anathema;
 import net.sf.anathema.character.generic.template.ICharacterTemplate;
 import net.sf.anathema.character.model.ICharacter;
 import net.sf.anathema.character.model.charm.ICharmConfiguration;
-import net.sf.anathema.character.model.concept.ICharacterConcept;
+import net.sf.anathema.character.main.concept.model.ICharacterConcept;
 import net.sf.anathema.character.model.traits.ICoreTraitConfiguration;
 
 public class CharacterHolder {

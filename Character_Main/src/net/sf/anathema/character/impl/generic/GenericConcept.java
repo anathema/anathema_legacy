@@ -2,9 +2,7 @@ package net.sf.anathema.character.impl.generic;
 
 import net.sf.anathema.character.generic.caste.ICasteType;
 import net.sf.anathema.character.generic.character.IConcept;
-import net.sf.anathema.character.model.concept.ICharacterConcept;
-import net.sf.anathema.character.model.concept.IMotivation;
-import net.sf.anathema.lib.resources.Resources;
+import net.sf.anathema.character.main.concept.model.ICharacterConcept;
 
 public class GenericConcept implements IConcept {
 
@@ -12,18 +10,6 @@ public class GenericConcept implements IConcept {
 
   public GenericConcept(ICharacterConcept characterConcept) {
     this.characterConcept = characterConcept;
-  }
-
-  @Override
-  public String getWillpowerRegainingConceptName() {
-    IMotivation motivation = characterConcept.getWillpowerRegainingConcept();
-    return motivation.getDescription().getText();
-  }
-
-  @Override
-  public String getWillpowerRegainingComment(Resources resources) {
-    IMotivation motivation = characterConcept.getWillpowerRegainingConcept();
-    return motivation.getDescription().getText();
   }
 
   @Override

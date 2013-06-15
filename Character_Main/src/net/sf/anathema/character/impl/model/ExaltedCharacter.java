@@ -14,8 +14,6 @@ import net.sf.anathema.character.impl.generic.GenericCharacter;
 import net.sf.anathema.character.impl.model.advance.ExperiencePointConfiguration;
 import net.sf.anathema.character.impl.model.charm.CharmConfiguration;
 import net.sf.anathema.character.impl.model.charm.ComboConfiguration;
-import net.sf.anathema.character.impl.model.concept.CharacterConcept;
-import net.sf.anathema.character.impl.model.concept.Motivation;
 import net.sf.anathema.character.impl.model.context.CharacterModelContext;
 import net.sf.anathema.character.impl.model.statistics.ExtendedConfiguration;
 import net.sf.anathema.character.impl.model.traits.CoreTraitConfiguration;
@@ -23,6 +21,8 @@ import net.sf.anathema.character.impl.model.traits.RegisteredTrait;
 import net.sf.anathema.character.impl.model.traits.TraitRegistrar;
 import net.sf.anathema.character.impl.model.traits.essence.EssencePoolConfiguration;
 import net.sf.anathema.character.impl.model.traits.listening.CharacterTraitListening;
+import net.sf.anathema.character.main.concept.model.CharacterConcept;
+import net.sf.anathema.character.main.concept.model.ICharacterConcept;
 import net.sf.anathema.character.main.description.model.CharacterDescription;
 import net.sf.anathema.character.main.description.model.CharacterDescriptionExtractor;
 import net.sf.anathema.character.model.CharacterModel;
@@ -36,15 +36,12 @@ import net.sf.anathema.character.model.advance.IExperiencePointConfigurationList
 import net.sf.anathema.character.model.advance.IExperiencePointEntry;
 import net.sf.anathema.character.model.charm.ICharmConfiguration;
 import net.sf.anathema.character.model.charm.IComboConfiguration;
-import net.sf.anathema.character.model.concept.ICharacterConcept;
-import net.sf.anathema.character.model.concept.IMotivation;
 import net.sf.anathema.character.model.health.IHealthConfiguration;
 import net.sf.anathema.character.model.traits.ICoreTraitConfiguration;
 import net.sf.anathema.character.model.traits.essence.IEssencePoolConfiguration;
 import net.sf.anathema.framework.presenter.itemmanagement.PrintNameAdjuster;
 import net.sf.anathema.initialization.Instantiater;
 import net.sf.anathema.lib.control.IChangeListener;
-import net.sf.anathema.lib.control.ObjectValueListener;
 import net.sf.anathema.lib.registry.IRegistry;
 import net.sf.anathema.lib.util.Identified;
 import net.sf.anathema.lib.workflow.textualdescription.ITextualDescription;
@@ -64,12 +61,6 @@ public class ExaltedCharacter implements ICharacter {
   private final IHealthConfiguration health;
   private final IExperiencePointConfiguration experiencePoints = new ExperiencePointConfiguration();
   private boolean experienced = false;
-  private final ObjectValueListener<String> motivationChangeListener = new ObjectValueListener<String>() {
-    @Override
-    public void valueChanged(String newValue) {
-      context.getCharacterListening().fireCharacterChanged();
-    }
-  };
   private final IChangeListener casteChangeListener = new IChangeListener() {
     @Override
     public void changeOccurred() {
@@ -214,11 +205,9 @@ public class ExaltedCharacter implements ICharacter {
   }
 
   private CharacterConcept initConcept() {
-    IMotivation willpowerConcept = new Motivation(experiencePoints);
-    CharacterConcept characterConcept = new CharacterConcept(willpowerConcept);
+    CharacterConcept characterConcept = new CharacterConcept();
     characterConcept.getCaste().addChangeListener(casteChangeListener);
     characterConcept.getAge().addChangeListener(ageChangeListener);
-    willpowerConcept.getDescription().addTextChangedListener(motivationChangeListener);
     return characterConcept;
   }
 
