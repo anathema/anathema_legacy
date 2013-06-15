@@ -2,6 +2,7 @@ package net.sf.anathema.character.model;
 
 import net.sf.anathema.character.generic.framework.additionaltemplate.model.ICharacterModelContext;
 import net.sf.anathema.character.generic.template.ICharacterTemplate;
+import net.sf.anathema.character.main.experience.model.ExperienceModel;
 import net.sf.anathema.character.model.advance.IExperiencePointConfiguration;
 import net.sf.anathema.character.model.charm.ICharmConfiguration;
 import net.sf.anathema.character.model.charm.IComboConfiguration;
@@ -12,17 +13,13 @@ import net.sf.anathema.framework.itemdata.model.IItemData;
 
 public interface ICharacter extends IItemData, Hero {
 
-  ICoreTraitConfiguration getTraitConfiguration();
-
-  ICharacterTemplate getCharacterTemplate();
-
   IEssencePoolConfiguration getEssencePool();
 
-  IExperiencePointConfiguration getExperiencePoints();
-
-  IExtendedConfiguration getExtendedConfiguration();
-
   IHealthConfiguration getHealth();
+
+  ExperienceModel getExperienceModel();
+
+  IExperiencePointConfiguration getExperiencePoints();
 
   boolean isExperienced();
 
@@ -35,4 +32,10 @@ public interface ICharacter extends IItemData, Hero {
   ISpellConfiguration getSpells();
 
   ICharacterModelContext getCharacterContext();
+
+  ICoreTraitConfiguration getTraitConfiguration();
+
+  IExtendedConfiguration getExtendedConfiguration();
+
+  ICharacterTemplate getCharacterTemplate();
 }

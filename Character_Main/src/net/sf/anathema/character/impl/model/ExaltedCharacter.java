@@ -11,7 +11,6 @@ import net.sf.anathema.character.generic.template.additional.IGlobalAdditionalTe
 import net.sf.anathema.character.generic.traits.IGenericTrait;
 import net.sf.anathema.character.generic.traits.ITraitType;
 import net.sf.anathema.character.impl.generic.GenericCharacter;
-import net.sf.anathema.character.impl.model.advance.ExperiencePointConfiguration;
 import net.sf.anathema.character.impl.model.charm.CharmConfiguration;
 import net.sf.anathema.character.impl.model.charm.ComboConfiguration;
 import net.sf.anathema.character.impl.model.context.CharacterListening;
@@ -22,11 +21,10 @@ import net.sf.anathema.character.impl.model.traits.RegisteredTrait;
 import net.sf.anathema.character.impl.model.traits.TraitRegistrar;
 import net.sf.anathema.character.impl.model.traits.essence.EssencePoolConfiguration;
 import net.sf.anathema.character.impl.model.traits.listening.CharacterTraitListening;
-import net.sf.anathema.character.main.concept.model.CharacterConcept;
-import net.sf.anathema.character.main.concept.model.CharacterConceptFetcher;
-import net.sf.anathema.character.main.concept.model.CharacterConceptImpl;
 import net.sf.anathema.character.main.description.model.CharacterDescription;
 import net.sf.anathema.character.main.description.model.CharacterDescriptionFetcher;
+import net.sf.anathema.character.main.experience.model.ExperienceModel;
+import net.sf.anathema.character.main.experience.model.ExperienceModelImpl;
 import net.sf.anathema.character.main.model.DefaultHero;
 import net.sf.anathema.character.main.model.DefaultModelCreationContext;
 import net.sf.anathema.character.main.model.change.ChangeAnnouncerAdapter;
@@ -37,8 +35,6 @@ import net.sf.anathema.character.model.ICharacter;
 import net.sf.anathema.character.model.ISpellConfiguration;
 import net.sf.anathema.character.model.ModelCreationContext;
 import net.sf.anathema.character.model.advance.IExperiencePointConfiguration;
-import net.sf.anathema.character.model.advance.IExperiencePointConfigurationListener;
-import net.sf.anathema.character.model.advance.IExperiencePointEntry;
 import net.sf.anathema.character.model.charm.ICharmConfiguration;
 import net.sf.anathema.character.model.charm.IComboConfiguration;
 import net.sf.anathema.character.model.health.IHealthConfiguration;
@@ -57,26 +53,13 @@ public class ExaltedCharacter implements ICharacter {
 
   private final CharacterChangeManagement management = new CharacterChangeManagement();
   private final CharacterModelContext context = new CharacterModelContext(new GenericCharacter(this));
+  private final ExperienceModel experience = new ExperienceModelImpl(context);
   private final ICharacterTemplate characterTemplate;
   private final IEssencePoolConfiguration essencePool;
   private final CharmConfiguration charms;
   private final IComboConfiguration combos;
   private final ISpellConfiguration spells;
   private final IHealthConfiguration health;
-  private final IExperiencePointConfiguration experiencePoints = new ExperiencePointConfiguration();
-  private boolean experienced = false;
-  private final IChangeListener casteChangeListener = new IChangeListener() {
-    @Override
-    public void changeOccurred() {
-      context.getCharacterListening().fireCasteChanged();
-    }
-  };
-  private final IChangeListener ageChangeListener = new IChangeListener() {
-    @Override
-    public void changeOccurred() {
-      context.getCharacterListening().fireCharacterChanged();
-    }
-  };
   private final ExtendedConfiguration extendedConfiguration = new ExtendedConfiguration(context);
   private final ICoreTraitConfiguration traitConfiguration;
   private final DefaultHero hero = new DefaultHero();
@@ -100,7 +83,6 @@ public class ExaltedCharacter implements ICharacter {
         context.getCharacterListening().fireCharacterChanged();
       }
     });
-    initExperienceListening();
     extendedConfiguration.addAdditionalModelChangeListener(new IChangeListener() {
       @Override
       public void changeOccurred() {
@@ -189,26 +171,6 @@ public class ExaltedCharacter implements ICharacter {
     return traits;
   }
 
-  private void initExperienceListening() {
-    experiencePoints.addExperiencePointConfigurationListener(new IExperiencePointConfigurationListener() {
-
-      @Override
-      public void entryAdded(IExperiencePointEntry entry) {
-        context.getCharacterListening().fireCharacterChanged();
-      }
-
-      @Override
-      public void entryChanged(IExperiencePointEntry entry) {
-        context.getCharacterListening().fireCharacterChanged();
-      }
-
-      @Override
-      public void entryRemoved(IExperiencePointEntry entry) {
-        context.getCharacterListening().fireCharacterChanged();
-      }
-    });
-  }
-
   private void initCharmListening(ICharmConfiguration charmConfiguration) {
     charmConfiguration.addCharmLearnListener(new CharacterChangeCharmListener(context.getCharacterListening()));
   }
@@ -233,21 +195,20 @@ public class ExaltedCharacter implements ICharacter {
     return spells;
   }
 
+  public ExperienceModel getExperienceModel() {
+    return experience;
+  }
+
   public boolean isExperienced() {
-    return experienced;
+    return experience.isExperienced();
   }
 
   public void setExperienced(boolean experienced) {
-    if (this.experienced) {
-      return;
-    }
-    this.experienced = experienced;
-    context.setExperienced(experienced);
-    context.getCharacterListening().fireExperiencedChanged(experienced);
+    experience.setExperienced(experienced);
   }
 
   public IExperiencePointConfiguration getExperiencePoints() {
-    return experiencePoints;
+    return experience.getExperiencePoints();
   }
 
   public ICharacterTemplate getCharacterTemplate() {
