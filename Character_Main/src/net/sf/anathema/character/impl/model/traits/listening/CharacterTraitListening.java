@@ -73,12 +73,6 @@ public class CharacterTraitListening {
     for (ITraitType traitType : allAttributeTypes) {
       IFavorableTrait attribute = traitConfiguration.getFavorableTrait(traitType);
       listening.addTraitListening(attribute);
-      attribute.getFavorization().addFavorableStateChangedListener(new IFavorableStateChangedListener() {
-        @Override
-        public void favorableStateChanged(FavorableState state) {
-          listening.fireCharacterChanged();
-        }
-      });
     }
   }
 }

@@ -28,11 +28,6 @@ import net.sf.anathema.character.library.trait.specialties.ISpecialtiesConfigura
 import net.sf.anathema.character.library.trait.specialties.SpecialtiesConfiguration;
 import net.sf.anathema.character.library.trait.visitor.IDefaultTrait;
 import net.sf.anathema.character.model.traits.ICoreTraitConfiguration;
-import net.sf.anathema.characterengine.persona.Persona;
-import net.sf.anathema.characterengine.persona.QualityClosure;
-import net.sf.anathema.characterengine.quality.Quality;
-import net.sf.anathema.exaltedengine.ExaltedEngine;
-import net.sf.anathema.exaltedengine.attributes.Attribute;
 
 import java.util.Iterator;
 
@@ -40,12 +35,10 @@ import static java.util.Arrays.asList;
 
 public class CoreTraitConfiguration extends AbstractTraitCollection implements ICoreTraitConfiguration {
 
-  private static final boolean useGenericEngine = false;
   private final FavorableTraitFactory favorableTraitFactory;
   private final IIdentifiedCasteTraitTypeGroup[] abilityTraitGroups;
   private final IIdentifiedCasteTraitTypeGroup[] attributeTraitGroups;
   private final SpecialtiesConfiguration specialtyConfiguration;
-  private final Persona persona = new ExaltedEngine().createCharacter();
   private final ITraitTemplateCollection traitTemplateCollection;
 
   public CoreTraitConfiguration(ICharacterTemplate template, ICharacterModelContext modelContext) {
@@ -94,11 +87,7 @@ public class CoreTraitConfiguration extends AbstractTraitCollection implements I
 
   private void addAttributes(ICharacterTemplate template) {
     IIncrementChecker incrementChecker = FavoredIncrementChecker.createFavoredAttributeIncrementChecker(template, this);
-    if (useGenericEngine) {
-      persona.doForEachDisregardingRules(ExaltedEngine.ATTRIBUTE, new AddTraitBasedOnQuality());
-    } else {
-      addFavorableTraits(attributeTraitGroups, incrementChecker, new AttributeTemplateFactory(traitTemplateCollection.getTraitTemplateFactory()));
-    }
+    addFavorableTraits(attributeTraitGroups, incrementChecker, new AttributeTemplateFactory(traitTemplateCollection.getTraitTemplateFactory()));
   }
 
   private void addAbilities(ICharacterTemplate template) {
@@ -142,13 +131,6 @@ public class CoreTraitConfiguration extends AbstractTraitCollection implements I
     @Override
     public Iterator<ITrait> iterator() {
       return asList(getAllTraits()).iterator();
-    }
-  }
-
-  private class AddTraitBasedOnQuality implements QualityClosure {
-    @Override
-    public void execute(Quality quality) {
-      addTraits(new FavorableQualityTrait(persona, (Attribute) quality));
     }
   }
 

@@ -63,8 +63,8 @@ public class ExaltedCharacter implements ICharacter {
 
   public ExaltedCharacter(ICharacterTemplate template, ICharacterGenerics generics) {
     this.characterTemplate = template;
-    this.traitConfiguration = new CoreTraitConfiguration(template, context);
     addModels(generics);
+    this.traitConfiguration = new CoreTraitConfiguration(template, context);
     new CharacterTraitListening(traitConfiguration, context.getCharacterListening()).initListening();
     this.health = new HealthConfiguration(getTraitArray(template.getToughnessControllingTraitTypes()), traitConfiguration,
             template.getBaseHealthProviders());
