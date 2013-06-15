@@ -1,7 +1,7 @@
 package net.sf.anathema.character.perspective;
 
 import net.sf.anathema.character.perspective.model.CharacterIdentifier;
-import net.sf.anathema.character.perspective.model.CharacterModel;
+import net.sf.anathema.character.perspective.model.CharacterItemModel;
 import net.sf.anathema.character.perspective.model.ItemSystemModel;
 import net.sf.anathema.lib.resources.Resources;
 
@@ -20,12 +20,12 @@ public class CharacterGridPresenter {
   }
 
   public void initPresentation() {
-    for (final CharacterModel character : model.collectAllExistingCharacters()) {
+    for (final CharacterItemModel character : model.collectAllExistingCharacters()) {
       initPresentation(character);
     }
   }
 
-  private void initPresentation(final CharacterModel character) {
+  private void initPresentation(final CharacterItemModel character) {
     new CharacterButtonPresenter(resources, selector, character, view).initPresentation();
   }
 }

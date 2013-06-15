@@ -6,7 +6,7 @@ import net.sf.anathema.character.generic.framework.ICharacterGenerics;
 import net.sf.anathema.character.model.ICharacter;
 import net.sf.anathema.character.perspective.PreloadedDescriptiveFeatures;
 import net.sf.anathema.character.perspective.model.CharacterIdentifier;
-import net.sf.anathema.character.perspective.model.CharacterModel;
+import net.sf.anathema.character.perspective.model.CharacterItemModel;
 import net.sf.anathema.character.perspective.model.CharacterPersistenceModel;
 import net.sf.anathema.character.perspective.model.ItemSystemModel;
 import net.sf.anathema.character.perspective.model.NewCharacterListener;
@@ -34,7 +34,7 @@ import static net.sf.anathema.character.itemtype.CharacterItemTypeRetrieval.retr
 
 public class CharacterSystemModel implements ItemSystemModel {
 
-  private final Map<CharacterIdentifier, CharacterModel> modelsByIdentifier = new HashMap<>();
+  private final Map<CharacterIdentifier, CharacterItemModel> modelsByIdentifier = new HashMap<>();
   private Announcer<IChangeListener> getsSelectionListener = Announcer.to(IChangeListener.class);
   private Announcer<IChangeListener> becomesExperiencedListener = Announcer.to(IChangeListener.class);
   private Announcer<IChangeListener> becomesInexperiencedListener = Announcer.to(IChangeListener.class);
@@ -62,12 +62,12 @@ public class CharacterSystemModel implements ItemSystemModel {
   }
 
   @Override
-  public Collection<CharacterModel> collectAllExistingCharacters() {
+  public Collection<CharacterItemModel> collectAllExistingCharacters() {
     Collection<PrintNameFile> printNameFiles = persistenceModel.collectCharacterPrintNameFiles();
-    List<CharacterModel> characters = new ArrayList<>();
+    List<CharacterItemModel> characters = new ArrayList<>();
     for (PrintNameFile file : printNameFiles) {
       PreloadedDescriptiveFeatures features = new PreloadedDescriptiveFeatures(createFileScanner(), file);
-      CharacterModel character = new CharacterModel(features);
+      CharacterItemModel character = new CharacterItemModel(features);
       modelsByIdentifier.put(features.getIdentifier(), character);
       characters.add(character);
     }
@@ -82,7 +82,7 @@ public class CharacterSystemModel implements ItemSystemModel {
 
   @Override
   public IItem loadItem(CharacterIdentifier identifier) {
-    CharacterModel character = modelsByIdentifier.get(identifier);
+    CharacterItemModel character = modelsByIdentifier.get(identifier);
     if (character.isLoaded()) {
       return character.getItem();
     }
@@ -144,7 +144,7 @@ public class CharacterSystemModel implements ItemSystemModel {
       public void addItem(IItem item) {
         CharacterIdentifier identifier = new CharacterIdentifier("InternalNewCharacter" + newCharacterCount++);
         initCharacterListening(item);
-        CharacterModel character = new CharacterModel(identifier, item);
+        CharacterItemModel character = new CharacterItemModel(identifier, item);
         modelsByIdentifier.put(identifier, character);
         characterAddedListener.announce().added(character);
       }

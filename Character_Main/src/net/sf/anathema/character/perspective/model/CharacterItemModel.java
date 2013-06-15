@@ -8,17 +8,17 @@ import net.sf.anathema.framework.repository.IItemListener;
 import net.sf.anathema.lib.control.IChangeListener;
 import org.jmock.example.announcer.Announcer;
 
-public class CharacterModel {
+public class CharacterItemModel {
 
   private DescriptiveFeatures descriptiveFeatures;
   private IItem item;
   private final Announcer<IChangeListener> featuresChangeAnnouncer = Announcer.to(IChangeListener.class);
 
-  public CharacterModel(DescriptiveFeatures descriptiveFeatures) {
+  public CharacterItemModel(DescriptiveFeatures descriptiveFeatures) {
     this.descriptiveFeatures = descriptiveFeatures;
   }
 
-  public CharacterModel(CharacterIdentifier identifier, IItem item) {
+  public CharacterItemModel(CharacterIdentifier identifier, IItem item) {
     setItem(identifier, item);
   }
 

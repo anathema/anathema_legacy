@@ -4,7 +4,7 @@ import net.sf.anathema.character.perspective.CharacterButtonPresenter;
 import net.sf.anathema.character.perspective.CharacterGridView;
 import net.sf.anathema.character.perspective.Selector;
 import net.sf.anathema.character.perspective.model.CharacterIdentifier;
-import net.sf.anathema.character.perspective.model.CharacterModel;
+import net.sf.anathema.character.perspective.model.CharacterItemModel;
 import net.sf.anathema.character.perspective.model.ItemSelectionModel;
 import net.sf.anathema.character.perspective.model.NewCharacterListener;
 import net.sf.anathema.framework.presenter.resources.BasicUi;
@@ -35,7 +35,7 @@ public class NewInteractionPresenter {
     model.whenNewCharacterIsAdded(new NewCharacterListener() {
 
       @Override
-      public void added(CharacterModel character) {
+      public void added(CharacterItemModel character) {
         new CharacterButtonPresenter(resources, selector, character, view).initPresentation();
         view.selectButton(character.getDescriptiveFeatures().getIdentifier());
         selector.selected(character.getDescriptiveFeatures().getIdentifier());
