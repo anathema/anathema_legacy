@@ -13,7 +13,6 @@ import net.sf.anathema.character.model.ICharacter;
 import net.sf.anathema.character.presenter.magic.charm.CharacterCharmTreePresenter;
 import net.sf.anathema.character.presenter.magic.combo.ComboConfigurationModel;
 import net.sf.anathema.character.presenter.magic.combo.ComboConfigurationPresenter;
-import net.sf.anathema.character.presenter.magic.detail.MagicAndDetailPresenter;
 import net.sf.anathema.character.presenter.magic.detail.MagicDetailPresenter;
 import net.sf.anathema.character.presenter.magic.detail.MagicDetailPresenterFactory;
 import net.sf.anathema.character.presenter.magic.detail.NullMagicDetailPresenter;
@@ -35,63 +34,70 @@ import java.util.Collection;
 public class MagicPresenter {
 
   private final Logger logger = Logger.getLogger(MagicPresenter.class);
-  private IApplicationModel anathemaModel;
+  private final IApplicationModel anathemaModel;
+  private final ICharacter character;
+  private final SectionView sectionView;
   private Resources resources;
 
   public MagicPresenter(ICharacter character, SectionView sectionView, Resources resources, IApplicationModel anathemaModel) {
+    this.character = character;
+    this.sectionView = sectionView;
     this.resources = resources;
-    ITemplateRegistry templateRegistry = CharacterGenericsExtractor.getGenerics(anathemaModel).getTemplateRegistry();
     this.anathemaModel = anathemaModel;
-    ICharacterTemplate characterTemplate = character.getCharacterTemplate();
-    initCharms(character, sectionView, resources, templateRegistry);
-    initCombos(character, sectionView, resources, characterTemplate);
-    initSpells(character, sectionView, resources);
   }
 
-  private void initCombos(ICharacter character, SectionView sectionView, Resources resources, ICharacterTemplate characterTemplate) {
+  public void initPresentation() {
+    ICharacterTemplate characterTemplate = character.getCharacterTemplate();
+    ITemplateRegistry templateRegistry = CharacterGenericsExtractor.getGenerics(anathemaModel).getTemplateRegistry();
+    initCharms(templateRegistry);
+    initCombos(characterTemplate);
+    initSpells();
+  }
+
+  private void initCombos(ICharacterTemplate characterTemplate) {
     String header = resources.getString("CardView.CharmConfiguration.ComboCreation.Title");
     IComboConfigurationView comboView = sectionView.addView(header, IComboConfigurationView.class, characterType(characterTemplate));
-    new ComboConfigurationPresenter(resources, createComboModel(character), comboView).initPresentation();
+    MagicDescriptionProvider magicDescriptionProvider = getMagicDescriptionProvider();
+    ComboConfigurationModel comboModel = new ComboConfigurationModel(character, magicDescriptionProvider);
+    new ComboConfigurationPresenter(resources, comboModel, comboView).initPresentation();
   }
 
   private ICharacterType characterType(ICharacterTemplate characterTemplate) {
     return characterTemplate.getTemplateType().getCharacterType();
   }
 
-  private void initSpells(ICharacter character, SectionView sectionView, Resources resources) {
+  private void initSpells() {
     ISpellMagicTemplate spellMagic = character.getCharacterTemplate().getMagicTemplate().getSpellMagic();
     if (spellMagic.canLearnSorcery()) {
       String header = resources.getString("CardView.CharmConfiguration.Spells.Title");
       ISpellView view = sectionView.addView(header, ISpellView.class, characterType(character.getCharacterTemplate()));
-      SpellContentPresenter.ForSorcery(createMagicDetailPresenter(), character, resources, view, getMagicDescriptionProvider()).initPresentation();
+      MagicDescriptionProvider magicDescriptionProvider = getMagicDescriptionProvider();
+      SpellContentPresenter.ForSorcery(createMagicDetailPresenter(), character, resources, view, magicDescriptionProvider).initPresentation();
     }
     if (spellMagic.canLearnNecromancy()) {
       String header = resources.getString("CardView.CharmConfiguration.Necromancy.Title");
       ISpellView view = sectionView.addView(header, ISpellView.class, characterType(character.getCharacterTemplate()));
-      SpellContentPresenter.ForNecromancy(createMagicDetailPresenter(), character, resources, view, getMagicDescriptionProvider()).initPresentation();
+      MagicDescriptionProvider magicDescriptionProvider = getMagicDescriptionProvider();
+      SpellContentPresenter.ForNecromancy(createMagicDetailPresenter(), character, resources, view, magicDescriptionProvider).initPresentation();
     }
   }
 
-  private ComboConfigurationModel createComboModel(ICharacter character) {
-    return new ComboConfigurationModel(character, getMagicDescriptionProvider());
-  }
-
-  private MagicDescriptionProvider getMagicDescriptionProvider() {
-    return CharmDescriptionProviderExtractor.CreateFor(anathemaModel, resources);
-  }
-
-  private void initCharms(ICharacter character, SectionView section, Resources resources,
-                          ITemplateRegistry templateRegistry) {
+  private void initCharms(ITemplateRegistry templateRegistry) {
     CharacterCharmModel model = new CharacterCharmModel(character, getMagicDescriptionProvider());
     ICharacterTemplate characterTemplate = character.getCharacterTemplate();
     ITreePresentationProperties presentationProperties =
             characterTemplate.getPresentationProperties().getCharmPresentationProperties();
     CharmDisplayPropertiesMap propertiesMap = new CharmDisplayPropertiesMap(templateRegistry);
     String header = resources.getString("CardView.CharmConfiguration.CharmSelection.Title");
-    ICharmView charmView = section.addView(header, ICharmView.class, characterType(characterTemplate));
+    ICharmView charmView = sectionView.addView(header, ICharmView.class, characterType(characterTemplate));
     CharacterCharmTreePresenter treePresenter = new CharacterCharmTreePresenter(resources, charmView, model, presentationProperties, propertiesMap);
-    MagicDetailPresenter detailPresenter = createMagicDetailPresenter();
-    new MagicAndDetailPresenter(detailPresenter, treePresenter).initPresentation();
+    treePresenter.initPresentation();
+    //MagicDetailPresenter detailPresenter = createMagicDetailPresenter();
+    //new MagicAndDetailPresenter(detailPresenter, treePresenter).initPresentation();
+  }
+
+  private MagicDescriptionProvider getMagicDescriptionProvider() {
+    return CharmDescriptionProviderExtractor.CreateFor(anathemaModel, resources);
   }
 
   private MagicDetailPresenter createMagicDetailPresenter() {
