@@ -1,8 +1,11 @@
 package net.sf.anathema.character.presenter;
 
+import net.sf.anathema.character.generic.additionaltemplate.IAdditionalModel;
+import net.sf.anathema.character.generic.framework.additionaltemplate.IAdditionalInitializer;
 import net.sf.anathema.character.generic.template.ICharacterTemplate;
 import net.sf.anathema.character.generic.template.magic.ICharmTemplate;
 import net.sf.anathema.character.generic.type.ICharacterType;
+import net.sf.anathema.character.model.CharacterModelGroup;
 import net.sf.anathema.character.model.ICharacter;
 import net.sf.anathema.character.presenter.magic.MagicPresenter;
 import net.sf.anathema.character.view.BackgroundView;
@@ -14,6 +17,7 @@ import net.sf.anathema.character.view.SectionView;
 import net.sf.anathema.character.view.concept.ICharacterConceptAndRulesView;
 import net.sf.anathema.framework.IApplicationModel;
 import net.sf.anathema.lib.gui.Presenter;
+import net.sf.anathema.lib.registry.IRegistry;
 import net.sf.anathema.lib.resources.Resources;
 
 import static net.sf.anathema.character.generic.framework.CharacterGenericsExtractor.getGenerics;
@@ -30,7 +34,6 @@ public class CharacterPresenter implements Presenter {
   private final IApplicationModel anathemaModel;
   private final Resources resources;
   private final PointPresentationStrategy pointPresentation;
-  private final CharacterContentInitializer initializer;
 
   public CharacterPresenter(ICharacter character, CharacterView view, Resources resources,
                             IApplicationModel anathemaModel, PointPresentationStrategy pointPresentation) {
@@ -39,7 +42,6 @@ public class CharacterPresenter implements Presenter {
     this.resources = resources;
     this.anathemaModel = anathemaModel;
     this.pointPresentation = pointPresentation;
-    this.initializer = new CharacterContentInitializer(anathemaModel, resources, character);
   }
 
   @Override
@@ -66,7 +68,7 @@ public class CharacterPresenter implements Presenter {
     ICharacterConceptAndRulesView conceptView = sectionView.addView(conceptHeader, ICharacterConceptAndRulesView.class, characterType());
     new CharacterConceptAndRulesPresenter(character, conceptView, resources).initPresentation();
 
-    initializer.initialize(sectionView, Outline);
+    initialize(sectionView, Outline);
   }
 
   private void initPhysicalTraits() {
@@ -82,7 +84,7 @@ public class CharacterPresenter implements Presenter {
     IGroupedFavorableTraitConfigurationView abilityView = sectionView.addView(abilityHeader, IGroupedFavorableTraitConfigurationView.class, characterType());
     new AbilitiesPresenter(character, resources, abilityView).initPresentation();
 
-    initializer.initialize(sectionView, NaturalTraits);
+    initialize(sectionView, NaturalTraits);
   }
 
   private void initSpiritualTraits() {
@@ -93,7 +95,7 @@ public class CharacterPresenter implements Presenter {
     IBasicAdvantageView view = sectionView.addView(header, IBasicAdvantageView.class, characterType());
     new BasicAdvantagePresenter(resources, character, view).initPresentation();
 
-    initializer.initialize(sectionView, SpiritualTraits);
+    initialize(sectionView, SpiritualTraits);
   }
 
   private void initMagic() {
@@ -107,7 +109,7 @@ public class CharacterPresenter implements Presenter {
     SectionView sectionView = characterView.addSection(sectionTitle);
     new MagicPresenter(character, sectionView, resources, anathemaModel);
 
-    initializer.initialize(sectionView, Magic);
+    initialize(sectionView, Magic);
   }
 
   private void initMiscellaneous() {
@@ -120,9 +122,24 @@ public class CharacterPresenter implements Presenter {
             character.getTraitConfiguration().getBackgrounds(), character.getCharacterContext(), view,
             getGenerics(anathemaModel).getBackgroundRegistry()).initPresentation();
 
-    initializer.initialize(sectionView, Miscellaneous);
+    initialize(sectionView, Miscellaneous);
 
     pointPresentation.initPresentation(sectionView);
+  }
+
+  public void initialize(SectionView sectionView, CharacterModelGroup group) {
+    IRegistry<String, IAdditionalInitializer> factoryRegistry = getGenerics(
+            anathemaModel).getAdditionalInitializerRegistry();
+    for (IAdditionalModel model : character.getExtendedConfiguration().getAdditionalModels(group)) {
+      IAdditionalInitializer initializer = factoryRegistry.get(model.getTemplateId());
+      if (initializer == null) {
+        continue;
+      }
+      String viewName = getString("AdditionalTemplateView.TabName." + model.getTemplateId());
+      ICharacterType characterType = character.getCharacterTemplate().getTemplateType().getCharacterType();
+      Object view = sectionView.addView(viewName, initializer.getViewClass(), characterType);
+      initializer.initialize(model, resources, characterType, view);
+    }
   }
 
   private String getString(String resourceKey) {
