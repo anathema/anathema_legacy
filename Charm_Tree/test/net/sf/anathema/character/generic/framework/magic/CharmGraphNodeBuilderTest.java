@@ -1,6 +1,7 @@
 package net.sf.anathema.character.generic.framework.magic;
 
 import net.sf.anathema.character.generic.magic.ICharm;
+import net.sf.anathema.charmtree.builder.CharmGraphNodeBuilder;
 import net.sf.anathema.dummy.character.magic.DummyCharm;
 import net.sf.anathema.graph.nodes.IIdentifiedRegularNode;
 import org.junit.Test;
@@ -13,13 +14,12 @@ import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertTrue;
 
-public class CharmGraphNodeBuilderTest
-{
+public class CharmGraphNodeBuilderTest {
   @Test
   public void testExternalCharmSingleOccurence() throws Exception {
     String parentName = "ExternalParent";
     DummyCharm externalParent = new DummyCharm(parentName);
-    DummyCharm child = new DummyCharm("Child", new ICharm[] { externalParent });
+    DummyCharm child = new DummyCharm("Child", new ICharm[]{externalParent});
     List<ICharm> list = new ArrayList<>();
     list.add(child);
     Collection<IIdentifiedRegularNode> nodes = CharmGraphNodeBuilder.createNodesFromCharms(list);
@@ -41,8 +41,8 @@ public class CharmGraphNodeBuilderTest
     String firstChildName = "Child1";
     String secondChildName = "Child2";
     DummyCharm externalParent = new DummyCharm(parentName);
-    DummyCharm firstChild = new DummyCharm(firstChildName, new ICharm[] { externalParent });
-    DummyCharm secondChild = new DummyCharm(secondChildName, new ICharm[] { externalParent });
+    DummyCharm firstChild = new DummyCharm(firstChildName, new ICharm[]{externalParent});
+    DummyCharm secondChild = new DummyCharm(secondChildName, new ICharm[]{externalParent});
     List<ICharm> list = new ArrayList<>();
     list.add(firstChild);
     list.add(secondChild);

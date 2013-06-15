@@ -3,7 +3,7 @@ package net.sf.anathema.character.presenter.magic;
 import net.sf.anathema.character.generic.magic.charms.special.ISpecialCharm;
 import net.sf.anathema.character.model.charm.ICharmConfiguration;
 import net.sf.anathema.charmtree.presenter.SpecialCharmViewPresenter;
-import net.sf.anathema.charmtree.presenter.view.CharmGroupInformer;
+import net.sf.anathema.charmtree.view.CharmGroupInformer;
 
 import javax.swing.ToolTipManager;
 

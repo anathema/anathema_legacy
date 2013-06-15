@@ -4,8 +4,8 @@ import net.sf.anathema.character.generic.magic.ICharm;
 import net.sf.anathema.character.generic.magic.charms.IndirectCharmRequirement;
 import net.sf.anathema.character.model.charm.ICharmConfiguration;
 import net.sf.anathema.charmtree.presenter.AbstractCharmDye;
-import net.sf.anathema.charmtree.presenter.view.CharmGroupInformer;
-import net.sf.anathema.charmtree.presenter.view.ICharmView;
+import net.sf.anathema.charmtree.view.CharmGroupInformer;
+import net.sf.anathema.charmtree.view.ICharmView;
 import net.sf.anathema.platform.tree.util.RGBColor;
 
 public class CharacterCharmDye extends AbstractCharmDye {

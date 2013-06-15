@@ -4,7 +4,7 @@ import com.google.common.base.Predicate;
 import net.sf.anathema.character.generic.magic.ICharm;
 import net.sf.anathema.character.generic.magic.charms.ICharmGroup;
 import net.sf.anathema.character.model.charm.ICharmConfiguration;
-import net.sf.anathema.charmtree.presenter.view.CharmGroupInformer;
+import net.sf.anathema.charmtree.view.CharmGroupInformer;
 
 public class VisibilityPredicate implements Predicate<String> {
 

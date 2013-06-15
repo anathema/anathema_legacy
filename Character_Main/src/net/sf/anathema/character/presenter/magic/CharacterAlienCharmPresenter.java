@@ -2,7 +2,7 @@ package net.sf.anathema.character.presenter.magic;
 
 import net.sf.anathema.character.model.charm.ICharmConfiguration;
 import net.sf.anathema.charmtree.presenter.AlienCharmPresenter;
-import net.sf.anathema.charmtree.presenter.view.ICharmView;
+import net.sf.anathema.charmtree.view.ICharmView;
 import net.sf.anathema.lib.control.IChangeListener;
 import net.sf.anathema.lib.util.Identified;
 

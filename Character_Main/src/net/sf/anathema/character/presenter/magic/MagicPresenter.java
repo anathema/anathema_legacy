@@ -21,8 +21,8 @@ import net.sf.anathema.character.presenter.magic.spells.SpellContentPresenter;
 import net.sf.anathema.character.view.SectionView;
 import net.sf.anathema.character.view.magic.IComboConfigurationView;
 import net.sf.anathema.character.view.magic.ISpellView;
-import net.sf.anathema.charmtree.presenter.view.CharmDisplayPropertiesMap;
-import net.sf.anathema.charmtree.presenter.view.ICharmView;
+import net.sf.anathema.charmtree.view.CharmDisplayPropertiesMap;
+import net.sf.anathema.charmtree.view.ICharmView;
 import net.sf.anathema.framework.IApplicationModel;
 import net.sf.anathema.initialization.Instantiater;
 import net.sf.anathema.lib.logging.Logger;
@@ -85,8 +85,7 @@ public class MagicPresenter {
   private void initCharms(ITemplateRegistry templateRegistry) {
     CharacterCharmModel model = new CharacterCharmModel(character, getMagicDescriptionProvider());
     ICharacterTemplate characterTemplate = character.getCharacterTemplate();
-    ITreePresentationProperties presentationProperties =
-            characterTemplate.getPresentationProperties().getCharmPresentationProperties();
+    ITreePresentationProperties presentationProperties = characterTemplate.getPresentationProperties().getCharmPresentationProperties();
     CharmDisplayPropertiesMap propertiesMap = new CharmDisplayPropertiesMap(templateRegistry);
     String header = resources.getString("CardView.CharmConfiguration.CharmSelection.Title");
     ICharmView charmView = sectionView.addView(header, ICharmView.class, characterType(characterTemplate));

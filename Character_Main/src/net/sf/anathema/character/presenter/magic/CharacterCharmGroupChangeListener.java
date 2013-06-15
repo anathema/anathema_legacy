@@ -2,10 +2,10 @@ package net.sf.anathema.character.presenter.magic;
 
 import net.sf.anathema.character.model.charm.ILearningCharmGroup;
 import net.sf.anathema.charmtree.presenter.CharmFilterSet;
-import net.sf.anathema.charmtree.presenter.view.AbstractCharmGroupChangeListener;
-import net.sf.anathema.charmtree.presenter.view.CharmDisplayPropertiesMap;
-import net.sf.anathema.charmtree.presenter.view.CharmTreeRenderer;
-import net.sf.anathema.charmtree.presenter.view.ICharmGroupArbitrator;
+import net.sf.anathema.charmtree.view.AbstractCharmGroupChangeListener;
+import net.sf.anathema.charmtree.view.CharmDisplayPropertiesMap;
+import net.sf.anathema.charmtree.view.CharmTreeRenderer;
+import net.sf.anathema.charmtree.view.ICharmGroupArbitrator;
 import net.sf.anathema.lib.util.Identified;
 
 public class CharacterCharmGroupChangeListener extends AbstractCharmGroupChangeListener {

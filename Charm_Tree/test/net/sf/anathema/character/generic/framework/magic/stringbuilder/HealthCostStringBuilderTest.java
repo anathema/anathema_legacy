@@ -4,6 +4,7 @@ import junit.framework.TestCase;
 import net.sf.anathema.character.generic.health.HealthType;
 import net.sf.anathema.character.generic.impl.magic.HealthCost;
 import net.sf.anathema.character.generic.magic.general.IHealthCost;
+import net.sf.anathema.charmtree.builder.stringbuilder.HealthCostStringBuilder;
 import net.sf.anathema.lib.dummy.DummyResources;
 
 public class HealthCostStringBuilderTest extends TestCase {
@@ -17,9 +18,7 @@ public class HealthCostStringBuilderTest extends TestCase {
     resources.putString("Lethal", "Lethal");
     resources.putString("CharmTreeView.ToolTip.HealthLevel", "health level");
     resources.putString("CharmTreeView.ToolTip.HealthLevels", "health levels");
-    builder = new HealthCostStringBuilder(
-        resources,
-        "CharmTreeView.ToolTip.HealthLevel", "CharmTreeView.ToolTip.HealthLevels");
+    builder = new HealthCostStringBuilder(resources, "CharmTreeView.ToolTip.HealthLevel", "CharmTreeView.ToolTip.HealthLevels");
   }
 
   public void testNoCost() throws Exception {

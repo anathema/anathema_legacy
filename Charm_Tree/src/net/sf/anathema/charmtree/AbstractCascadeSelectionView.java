@@ -2,10 +2,10 @@ package net.sf.anathema.charmtree;
 
 import net.miginfocom.layout.CC;
 import net.miginfocom.swing.MigLayout;
-import net.sf.anathema.charmtree.presenter.view.CharmTreeRenderer;
-import net.sf.anathema.charmtree.presenter.view.ICascadeSelectionView;
-import net.sf.anathema.charmtree.presenter.view.ICharmGroupChangeListener;
-import net.sf.anathema.charmtree.presenter.view.svg.GenericCascadeRenderer;
+import net.sf.anathema.charmtree.view.CharmTreeRenderer;
+import net.sf.anathema.charmtree.view.ICascadeSelectionView;
+import net.sf.anathema.charmtree.view.ICharmGroupChangeListener;
+import net.sf.anathema.charmtree.view.svg.GenericCascadeRenderer;
 import net.sf.anathema.lib.control.ObjectValueListener;
 import net.sf.anathema.lib.gui.action.SmartAction;
 import net.sf.anathema.lib.gui.widgets.ChangeableJComboBox;
@@ -41,7 +41,7 @@ public abstract class AbstractCascadeSelectionView implements ICascadeSelectionV
     this.swingTreeView = new SwingTreeView();
   }
 
-  public void initGui(final ToolTipProperties treeProperties, final NodeProperties properties){
+  public void initGui(final ToolTipProperties treeProperties, final NodeProperties properties) {
     CascadeLoadedListener listener = new CascadeLoadedListener() {
       @Override
       public void cascadeLoaded() {
@@ -79,8 +79,8 @@ public abstract class AbstractCascadeSelectionView implements ICascadeSelectionV
   }
 
   @Override
-  public void addCharmGroupSelector(String title, ListCellRenderer renderer,
-                                    final ICharmGroupChangeListener selectionListener, Dimension preferredSize) {
+  public void addCharmGroupSelector(String title, ListCellRenderer renderer, final ICharmGroupChangeListener selectionListener,
+                                    Dimension preferredSize) {
     JPanel panel = new JPanel(new BorderLayout());
     panel.setBorder(new TitledBorder(title));
     groupComboBox = new ChangeableJComboBox<>(null, false);

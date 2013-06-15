@@ -2,7 +2,7 @@ package net.sf.anathema.charmtree.presenter;
 
 import net.sf.anathema.character.generic.magic.ICharm;
 import net.sf.anathema.character.generic.magic.charms.IndirectCharmRequirement;
-import net.sf.anathema.charmtree.presenter.view.CharmGroupInformer;
+import net.sf.anathema.charmtree.view.CharmGroupInformer;
 
 public abstract class AbstractCharmDye implements CharmDye {
 

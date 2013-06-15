@@ -1,7 +1,7 @@
 package net.sf.anathema.character.presenter.magic.combo;
 
-import net.sf.anathema.character.generic.framework.magic.stringbuilder.CharmInfoStringBuilder;
-import net.sf.anathema.character.generic.framework.magic.stringbuilder.ICharmInfoStringBuilder;
+import net.sf.anathema.charmtree.builder.stringbuilder.CharmInfoStringBuilder;
+import net.sf.anathema.charmtree.builder.stringbuilder.ICharmInfoStringBuilder;
 import net.sf.anathema.character.generic.framework.magic.view.AbstractMagicLearnProperties;
 import net.sf.anathema.character.generic.framework.resources.CharacterUI;
 import net.sf.anathema.character.generic.magic.ICharm;

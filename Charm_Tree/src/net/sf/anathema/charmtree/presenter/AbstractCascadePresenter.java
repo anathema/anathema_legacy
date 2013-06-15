@@ -5,8 +5,8 @@ import net.sf.anathema.character.generic.magic.charms.GroupCharmTree;
 import net.sf.anathema.character.generic.magic.charms.ICharmGroup;
 import net.sf.anathema.charmtree.filters.CharmFilterSettingsPage;
 import net.sf.anathema.charmtree.filters.ICharmFilter;
-import net.sf.anathema.charmtree.presenter.view.ICascadeSelectionView;
-import net.sf.anathema.charmtree.presenter.view.ICharmGroupChangeListener;
+import net.sf.anathema.charmtree.view.ICascadeSelectionView;
+import net.sf.anathema.charmtree.view.ICharmGroupChangeListener;
 import net.sf.anathema.framework.view.IdentificateSelectCellRenderer;
 import net.sf.anathema.lib.compare.I18nedIdentificateSorter;
 import net.sf.anathema.lib.control.ObjectValueListener;
@@ -102,13 +102,13 @@ public abstract class AbstractCascadePresenter implements ICascadeSelectionPrese
     ICharmGroup[] allGroups = charmGroups.getCharmGroups();
     IdentificateSelectCellRenderer renderer = new IdentificateSelectCellRenderer(getResources());
     Dimension preferredSize = net.sf.anathema.lib.gui.swing.GuiUtilities.calculateComboBoxSize(allGroups, renderer);
-    view.addCharmGroupSelector(getResources().getString("CardView.CharmConfiguration.AlienCharms.CharmGroup"), renderer, changeListener, preferredSize);
+    view.addCharmGroupSelector(getResources().getString("CardView.CharmConfiguration.AlienCharms.CharmGroup"), renderer, changeListener,
+            preferredSize);
   }
 
   protected void createCharmTypeSelector() {
     Identified[] types = charmTypes.getCurrentCharmTypes();
-    view.addCharmTypeSelector(getResources().getString("CharmTreeView.GUI.CharmType"), types,
-            new IdentificateSelectCellRenderer(getResources()));
+    view.addCharmTypeSelector(getResources().getString("CharmTreeView.GUI.CharmType"), types, new IdentificateSelectCellRenderer(getResources()));
   }
 
   protected void createFilterButton(ICascadeSelectionView selectionView) {

@@ -2,7 +2,7 @@ package net.sf.anathema.character.presenter.magic.combo;
 
 import com.google.common.base.Strings;
 import net.sf.anathema.character.generic.framework.additionaltemplate.listening.DedicatedCharacterChangeAdapter;
-import net.sf.anathema.character.generic.framework.magic.MagicDisplayLabeler;
+import net.sf.anathema.charmtree.builder.MagicDisplayLabeler;
 import net.sf.anathema.character.generic.magic.ICharm;
 import net.sf.anathema.character.model.charm.CharmLearnAdapter;
 import net.sf.anathema.character.model.charm.ICharmConfiguration;
@@ -41,8 +41,7 @@ public class ComboConfigurationPresenter {
   private final IComboConfigurationView view;
   private final MagicDisplayLabeler labeler;
 
-  public ComboConfigurationPresenter(Resources resources, ComboConfigurationModel comboModel,
-                                     IComboConfigurationView view) {
+  public ComboConfigurationPresenter(Resources resources, ComboConfigurationModel comboModel, IComboConfigurationView view) {
     this.resources = resources;
     this.comboModel = comboModel;
     this.charmConfiguration = comboModel.getCharmConfiguration();
@@ -54,13 +53,11 @@ public class ComboConfigurationPresenter {
   public void initPresentation() {
     view.initGui(new ComboViewProperties(resources, comboConfiguration, comboModel.getMagicDescriptionProvider()));
     initCharmLearnListening(view);
-    ITextView nameView = view.addComboNameView(
-            resources.getString("CardView.CharmConfiguration.ComboCreation.NameLabel"));
+    ITextView nameView = view.addComboNameView(resources.getString("CardView.CharmConfiguration.ComboCreation.NameLabel"));
     ICombo editCombo = comboConfiguration.getEditCombo();
     TextualPresentation textualPresentation = new TextualPresentation();
     textualPresentation.initView(nameView, editCombo.getName());
-    ITextView descriptionView = view.addComboDescriptionView(
-            resources.getString("CardView.CharmConfiguration.ComboCreation.DescriptionLabel"));
+    ITextView descriptionView = view.addComboDescriptionView(resources.getString("CardView.CharmConfiguration.ComboCreation.DescriptionLabel"));
     textualPresentation.initView(descriptionView, editCombo.getDescription());
     updateCharmListsInView(view);
     initViewListening(view);
@@ -235,8 +232,8 @@ public class ComboConfigurationPresenter {
   private void setViewToEditing(ICombo combo) {
     IComboView comboView = viewsByCombo.get(combo);
     createComboNameString(combo);
-    comboView.updateCombo(createComboNameString(combo) + " (" + resources.getString(
-            "CardView.CharmConfiguration.ComboCreation.EditingLabel") + ")", convertToHtml(combo));
+    comboView.updateCombo(createComboNameString(combo) + " (" + resources.getString("CardView.CharmConfiguration.ComboCreation.EditingLabel") + ")",
+            convertToHtml(combo));
     toolsByCombo.get(combo).setText(resources.getString("CardView.CharmConfiguration.ComboCreation.RestartEditLabel"));
   }
 
@@ -244,8 +241,7 @@ public class ComboConfigurationPresenter {
     for (ICombo currentCombo : viewsByCombo.keySet()) {
       IComboView comboView = viewsByCombo.get(currentCombo);
       comboView.updateCombo(createComboNameString(currentCombo), convertToHtml(currentCombo));
-      toolsByCombo.get(currentCombo).setText(
-              resources.getString("CardView.CharmConfiguration.ComboCreation.EditLabel"));
+      toolsByCombo.get(currentCombo).setText(resources.getString("CardView.CharmConfiguration.ComboCreation.EditLabel"));
     }
   }
 }

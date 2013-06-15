@@ -1,6 +1,7 @@
 package net.sf.anathema.character.generic.framework.magic.stringbuilder;
 
 import junit.framework.TestCase;
+import net.sf.anathema.charmtree.builder.stringbuilder.MagicInfoStringConcatenator;
 import net.sf.anathema.lib.dummy.DummyResources;
 
 public class MagicInfoStringConcatenatorTest extends TestCase {

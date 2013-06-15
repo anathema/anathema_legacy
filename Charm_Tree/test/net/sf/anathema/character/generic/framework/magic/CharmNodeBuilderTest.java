@@ -3,6 +3,7 @@ package net.sf.anathema.character.generic.framework.magic;
 import net.sf.anathema.character.generic.impl.magic.CharmAttribute;
 import net.sf.anathema.character.generic.impl.magic.CharmAttributeRequirement;
 import net.sf.anathema.character.generic.magic.ICharm;
+import net.sf.anathema.charmtree.builder.CharmNodeBuilder;
 import net.sf.anathema.dummy.character.magic.DummyCharm;
 import net.sf.anathema.graph.nodes.IIdentifiedRegularNode;
 import org.junit.Before;

@@ -6,7 +6,7 @@ import net.sf.anathema.character.generic.magic.ICharm;
 import net.sf.anathema.character.generic.magic.IExtendedCharmData;
 import net.sf.anathema.character.generic.magic.charms.ICharmGroup;
 import net.sf.anathema.character.generic.template.magic.ICharmTemplate;
-import net.sf.anathema.charmtree.presenter.view.ICharmGroupArbitrator;
+import net.sf.anathema.charmtree.view.ICharmGroupArbitrator;
 
 import java.util.ArrayList;
 import java.util.List;

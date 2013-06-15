@@ -19,9 +19,9 @@ import net.sf.anathema.character.presenter.magic.detail.DetailDemandingMagicPres
 import net.sf.anathema.character.presenter.magic.detail.ShowMagicDetailListener;
 import net.sf.anathema.charmtree.presenter.AbstractCascadePresenter;
 import net.sf.anathema.charmtree.presenter.CharmFilterContainer;
-import net.sf.anathema.charmtree.presenter.view.CharmDisplayPropertiesMap;
-import net.sf.anathema.charmtree.presenter.view.DefaultNodeProperties;
-import net.sf.anathema.charmtree.presenter.view.ICharmView;
+import net.sf.anathema.charmtree.view.CharmDisplayPropertiesMap;
+import net.sf.anathema.charmtree.view.DefaultNodeProperties;
+import net.sf.anathema.charmtree.view.ICharmView;
 import net.sf.anathema.lib.resources.Resources;
 import net.sf.anathema.lib.util.Identified;
 import net.sf.anathema.platform.tree.document.visualizer.ITreePresentationProperties;

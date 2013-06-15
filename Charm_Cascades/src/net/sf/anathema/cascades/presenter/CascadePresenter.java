@@ -9,8 +9,8 @@ import net.sf.anathema.character.generic.magic.description.MagicDescriptionProvi
 import net.sf.anathema.character.generic.template.ITemplateRegistry;
 import net.sf.anathema.character.generic.type.CharacterTypes;
 import net.sf.anathema.charmtree.presenter.AbstractCascadePresenter;
-import net.sf.anathema.charmtree.presenter.view.CharmDisplayPropertiesMap;
-import net.sf.anathema.charmtree.presenter.view.DefaultNodeProperties;
+import net.sf.anathema.charmtree.view.CharmDisplayPropertiesMap;
+import net.sf.anathema.charmtree.view.DefaultNodeProperties;
 import net.sf.anathema.lib.resources.Resources;
 import net.sf.anathema.lib.util.Identified;
 
@@ -22,14 +22,14 @@ public class CascadePresenter extends AbstractCascadePresenter implements ICasca
                           MagicDescriptionProvider magicDescriptionProvider) {
     super(resources);
     ICharmCache cache = generics.getDataSet(ICharmCache.class);
-    CascadeCharmTreeViewProperties viewProperties = new CascadeCharmTreeViewProperties(resources,
-            magicDescriptionProvider, generics, cache, treeIdentificateMap);
+    CascadeCharmTreeViewProperties viewProperties =
+            new CascadeCharmTreeViewProperties(resources, magicDescriptionProvider, generics, cache, treeIdentificateMap);
     DefaultNodeProperties nodeProperties = new DefaultNodeProperties(resources, viewProperties, viewProperties);
     ICascadeView view = factory.createCascadeView(viewProperties, nodeProperties);
     view.initGui(viewProperties, nodeProperties);
     ITemplateRegistry templateRegistry = generics.getTemplateRegistry();
-    CascadeCharmGroupChangeListener selectionListener = new CascadeCharmGroupChangeListener(view, viewProperties,
-            filterSet, new CharmDisplayPropertiesMap(templateRegistry));
+    CascadeCharmGroupChangeListener selectionListener =
+            new CascadeCharmGroupChangeListener(view, viewProperties, filterSet, new CharmDisplayPropertiesMap(templateRegistry));
     CharacterTypes characterTypes = generics.getCharacterTypes();
     setCharmTypes(new CascadeCharmTypes(characterTypes, templateRegistry));
     setChangeListener(selectionListener);

@@ -1,7 +1,7 @@
 package net.sf.anathema.character.presenter.magic.combo;
 
-import net.sf.anathema.character.generic.framework.magic.MagicDisplayLabeler;
-import net.sf.anathema.character.generic.framework.magic.stringbuilder.ICharmInfoStringBuilder;
+import net.sf.anathema.charmtree.builder.MagicDisplayLabeler;
+import net.sf.anathema.charmtree.builder.stringbuilder.ICharmInfoStringBuilder;
 import net.sf.anathema.character.generic.magic.ICharm;
 import net.sf.anathema.character.generic.magic.IMagic;
 import net.sf.anathema.lib.gui.list.LegalityCheckListCellRenderer;

@@ -4,8 +4,8 @@ import net.sf.anathema.character.model.charm.ICharmConfiguration;
 import net.sf.anathema.character.model.charm.ICharmLearnListener;
 import net.sf.anathema.character.model.charm.ILearningCharmGroup;
 import net.sf.anathema.charmtree.presenter.CharmInteractionPresenter;
-import net.sf.anathema.charmtree.presenter.view.ICharmTreeViewProperties;
-import net.sf.anathema.charmtree.presenter.view.ICharmView;
+import net.sf.anathema.charmtree.view.ICharmTreeViewProperties;
+import net.sf.anathema.charmtree.view.ICharmView;
 import net.sf.anathema.lib.control.IChangeListener;
 import net.sf.anathema.platform.tree.presenter.view.NodeInteractionListener;
 

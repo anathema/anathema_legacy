@@ -1,6 +1,8 @@
 package net.sf.anathema.character.generic.framework.magic.stringbuilder;
 
 import net.sf.anathema.character.generic.magic.ICharm;
+import net.sf.anathema.charmtree.builder.stringbuilder.CharmInfoStringCache;
+import net.sf.anathema.charmtree.builder.stringbuilder.ICharmInfoStringBuilder;
 import net.sf.anathema.dummy.character.magic.DummyCharm;
 import org.junit.Test;
 

@@ -3,6 +3,7 @@ package net.sf.anathema.character.generic.framework.magic.stringbuilder;
 import junit.framework.TestCase;
 import net.sf.anathema.character.generic.impl.magic.Cost;
 import net.sf.anathema.character.generic.magic.general.ICost;
+import net.sf.anathema.charmtree.builder.stringbuilder.CostStringBuilder;
 import net.sf.anathema.lib.dummy.DummyResources;
 
 public class EssenceCostStringBuilderTest extends TestCase {
