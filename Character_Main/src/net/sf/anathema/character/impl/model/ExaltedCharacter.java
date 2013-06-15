@@ -24,7 +24,7 @@ import net.sf.anathema.character.impl.model.traits.listening.CharacterTraitListe
 import net.sf.anathema.character.main.concept.model.CharacterConcept;
 import net.sf.anathema.character.main.concept.model.CharacterConceptImpl;
 import net.sf.anathema.character.main.description.model.CharacterDescription;
-import net.sf.anathema.character.main.description.model.CharacterDescriptionExtractor;
+import net.sf.anathema.character.main.description.model.CharacterDescriptionFetcher;
 import net.sf.anathema.character.model.CharacterModel;
 import net.sf.anathema.character.model.CharacterModelAutoCollector;
 import net.sf.anathema.character.model.CharacterModelFactory;
@@ -151,7 +151,7 @@ public class ExaltedCharacter implements ICharacter {
   }
 
   public void setPrintNameAdjuster(PrintNameAdjuster adjuster) {
-    CharacterDescription characterDescription = CharacterDescriptionExtractor.getCharacterDescription(this);
+    CharacterDescription characterDescription = CharacterDescriptionFetcher.fetch(this);
     ITextualDescription characterName = characterDescription.getName();
     characterName.addTextChangedListener(adjuster);
   }

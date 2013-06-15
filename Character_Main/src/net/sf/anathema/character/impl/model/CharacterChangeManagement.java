@@ -18,7 +18,7 @@ public class CharacterChangeManagement implements IChangeManagement {
     }
 
     @Override
-    public void characterChanged() {
+    public void changeOccurred() {
       setDirty();
     }
 

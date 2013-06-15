@@ -32,7 +32,7 @@ public class ExperiencedOverviewPresenter implements Presenter {
     this.character = character;
     character.getCharacterContext().getCharacterListening().addChangeListener(new GlobalCharacterChangeAdapter() {
       @Override
-      public void characterChanged() {
+      public void changeOccurred() {
         if (character.isExperienced()) {
           calculateXPCost();
         }

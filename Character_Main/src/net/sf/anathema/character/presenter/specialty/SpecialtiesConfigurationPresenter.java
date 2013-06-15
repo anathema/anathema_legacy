@@ -68,8 +68,8 @@ public class SpecialtiesConfigurationPresenter implements Presenter {
   public void initPresentation() {
     initTraitListening();
     Icon addIcon = new BasicUi().getAddIcon();
-    final IButtonControlledComboEditView<ITraitReference> specialtySelectionView =
-            configurationView.addSpecialtySelectionView(resources.getString("SpecialtyConfigurationView.SelectionCombo.Label"),
+    final IButtonControlledComboEditView<ITraitReference> specialtySelectionView = configurationView
+            .addSpecialtySelectionView(resources.getString("SpecialtyConfigurationView.SelectionCombo.Label"),
                     new AbstractSelectCellRenderer<ITraitReference>(resources) {
 
                       @Override
@@ -124,7 +124,7 @@ public class SpecialtiesConfigurationPresenter implements Presenter {
     specialtyManagement.addCharacterChangeListener(new GlobalCharacterChangeAdapter() {
 
       @Override
-      public void characterChanged() {
+      public void changeOccurred() {
         setObjects(specialtySelectionView);
       }
 

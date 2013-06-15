@@ -26,7 +26,7 @@ public class CharacterListening implements ICharacterListening {
   }
 
   public void fireCharacterChanged() {
-    changeControl.announce().characterChanged();
+    changeControl.announce().changeOccurred();
   }
 
   public void fireCasteChanged() {

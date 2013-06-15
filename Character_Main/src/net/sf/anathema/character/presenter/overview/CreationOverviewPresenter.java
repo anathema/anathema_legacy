@@ -35,7 +35,7 @@ public class CreationOverviewPresenter implements Presenter {
     this.template = character.getCharacterTemplate();
     character.getCharacterContext().getCharacterListening().addChangeListener(new GlobalCharacterChangeAdapter() {
       @Override
-      public void characterChanged() {
+      public void changeOccurred() {
         updateOverview();
       }
     });

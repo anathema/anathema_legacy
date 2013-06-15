@@ -13,7 +13,7 @@ import net.sf.anathema.character.generic.type.ICharacterType;
 import net.sf.anathema.character.impl.model.ExaltedCharacter;
 import net.sf.anathema.character.impl.persistence.charm.CharmConfigurationPersister;
 import net.sf.anathema.character.main.description.model.CharacterDescription;
-import net.sf.anathema.character.main.description.model.CharacterDescriptionExtractor;
+import net.sf.anathema.character.main.description.model.CharacterDescriptionFetcher;
 import net.sf.anathema.character.model.ICharacter;
 import net.sf.anathema.framework.messaging.IMessaging;
 import net.sf.anathema.lib.exception.PersistenceException;
@@ -53,7 +53,7 @@ public class CharacterStatisticPersister {
 
   public void save(Element parent, ICharacter character) {
     Preconditions.checkNotNull(character);
-    descriptionPersister.save(parent, CharacterDescriptionExtractor.getCharacterDescription(character));
+    descriptionPersister.save(parent, CharacterDescriptionFetcher.fetch(character));
     Element statisticsElement = parent.addElement(TAG_STATISTICS);
     rulesPersister.save(statisticsElement);
     statisticsElement.addAttribute(ATTRIB_EXPERIENCED, String.valueOf(character.isExperienced()));
@@ -81,7 +81,7 @@ public class CharacterStatisticPersister {
       boolean experienced = ElementUtilities.getBooleanAttribute(statisticsElement, ATTRIB_EXPERIENCED, false);
       ICharacterTemplate template = generics.getTemplateRegistry().getTemplate(templateType);
       ExaltedCharacter character = new ExaltedCharacter(template, generics);
-      CharacterDescription characterDescription = CharacterDescriptionExtractor.getCharacterDescription(character);
+      CharacterDescription characterDescription = CharacterDescriptionFetcher.fetch(character);
       descriptionPersister.load(parent, characterDescription);
       ICasteCollection casteCollection = template.getCasteCollection();
       characterConceptPersister.load(statisticsElement, character.getCharacterConcept(), characterDescription, casteCollection);

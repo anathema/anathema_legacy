@@ -44,7 +44,7 @@ public class EssencePoolStrategy implements IEssencePoolStrategy {
     this.additionalRules = additionalRules;
     context.getCharacterListening().addChangeListener(new GlobalCharacterChangeAdapter() {
       @Override
-      public void characterChanged() {
+      public void changeOccurred() {
         control.announce().changeOccurred();
       }
     });

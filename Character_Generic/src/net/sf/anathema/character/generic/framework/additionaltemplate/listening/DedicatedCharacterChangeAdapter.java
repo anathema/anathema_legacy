@@ -5,7 +5,7 @@ import net.sf.anathema.character.generic.traits.ITraitType;
 public class DedicatedCharacterChangeAdapter implements ICharacterChangeListener {
 
   @Override
-  public final void characterChanged() {
+  public final void changeOccurred() {
     // Nothing to do
   }
 

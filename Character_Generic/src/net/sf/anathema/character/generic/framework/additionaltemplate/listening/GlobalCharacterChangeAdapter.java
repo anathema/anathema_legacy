@@ -5,22 +5,22 @@ import net.sf.anathema.character.generic.traits.ITraitType;
 public class GlobalCharacterChangeAdapter implements ICharacterChangeListener {
 
   @Override
-  public void characterChanged() {
+  public void changeOccurred() {
     // Nothing to do
   }
 
   @Override
   public void traitChanged(ITraitType type) {
-    characterChanged();
+    changeOccurred();
   }
 
   @Override
   public void experiencedChanged(boolean experienced) {
-    characterChanged();
+    changeOccurred();
   }
 
   @Override
   public void casteChanged() {
-    characterChanged();
+    changeOccurred();
   }
 }

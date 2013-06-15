@@ -31,7 +31,7 @@ import net.sf.anathema.character.library.trait.subtrait.ISubTraitListener;
 import net.sf.anathema.character.library.trait.visitor.IAggregatedTrait;
 import net.sf.anathema.character.library.trait.visitor.IDefaultTrait;
 import net.sf.anathema.character.library.trait.visitor.ITraitVisitor;
-import net.sf.anathema.character.main.description.model.CharacterDescriptionExtractor;
+import net.sf.anathema.character.main.description.model.CharacterDescriptionFetcher;
 import net.sf.anathema.character.model.ICharacter;
 import net.sf.anathema.character.model.charm.ICharmConfiguration;
 import net.sf.anathema.character.model.charm.ICombo;
@@ -108,7 +108,7 @@ public class GenericCharacter implements IGenericCharacter {
 
   @Override
   public IGenericDescription getDescription() {
-    return new GenericDescription(CharacterDescriptionExtractor.getCharacterDescription(character));
+    return new GenericDescription(CharacterDescriptionFetcher.fetch(character));
   }
 
   @Override

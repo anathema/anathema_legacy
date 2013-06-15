@@ -307,7 +307,7 @@ public class CharmConfiguration implements ICharmConfiguration {
   public void initListening() {
     context.getCharacterListening().addChangeListener(new GlobalCharacterChangeAdapter() {
       @Override
-      public void characterChanged() {
+      public void changeOccurred() {
         verifyCharms();
         fireLearnConditionsChanged();
       }

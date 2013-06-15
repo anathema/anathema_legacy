@@ -104,7 +104,7 @@ public class TextualCharacterDescription implements CharacterDescription, Charac
     addOverallChangeListener(new ObjectValueListener<String>() {
       @Override
       public void valueChanged(String newValue) {
-        changeListener.characterChanged();
+        changeListener.changeOccurred();
       }
     });
   }

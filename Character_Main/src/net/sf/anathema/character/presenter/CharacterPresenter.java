@@ -7,7 +7,7 @@ import net.sf.anathema.character.generic.template.magic.ICharmTemplate;
 import net.sf.anathema.character.generic.type.ICharacterType;
 import net.sf.anathema.character.main.concept.model.CharacterConcept;
 import net.sf.anathema.character.main.description.model.CharacterDescription;
-import net.sf.anathema.character.main.description.model.CharacterDescriptionExtractor;
+import net.sf.anathema.character.main.description.model.CharacterDescriptionFetcher;
 import net.sf.anathema.character.model.CharacterModelGroup;
 import net.sf.anathema.character.model.ICharacter;
 import net.sf.anathema.character.presenter.magic.MagicPresenter;
@@ -73,7 +73,7 @@ public class CharacterPresenter implements Presenter {
   }
 
   private DescriptionDetails createDescriptionDetails() {
-    CharacterDescription characterDescription = CharacterDescriptionExtractor.getCharacterDescription(character);
+    CharacterDescription characterDescription = CharacterDescriptionFetcher.fetch(character);
     CharacterConcept characterConcept = character.getCharacterConcept();
     boolean isExalt = characterType().isExaltType();
     return new DescriptionDetails(characterDescription, characterConcept, isExalt);

@@ -2,9 +2,9 @@ package net.sf.anathema.character.main.description.model;
 
 import net.sf.anathema.character.model.ICharacter;
 
-public class CharacterDescriptionExtractor {
+public class CharacterDescriptionFetcher {
 
-  public static CharacterDescription getCharacterDescription(ICharacter character) {
+  public static CharacterDescription fetch(ICharacter character) {
     return character.getModel(CharacterDescription.ID);
   }
 }
