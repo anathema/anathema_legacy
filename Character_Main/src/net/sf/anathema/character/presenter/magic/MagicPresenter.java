@@ -96,8 +96,9 @@ public class MagicPresenter {
     String header = resources.getString("CardView.CharmConfiguration.CharmSelection.Title");
     ICharmView charmView = sectionView.addView(header, ICharmView.class, characterType(characterTemplate));
     CharacterCharmTreePresenter treePresenter = new CharacterCharmTreePresenter(resources, charmView, model, presentationProperties, propertiesMap);
-    MagicDetailPresenter detailPresenter = createMagicDetailPresenter();
-    new MagicAndDetailPresenter(detailPresenter, treePresenter).initPresentation();
+    treePresenter.initPresentation();
+    //MagicDetailPresenter detailPresenter = createMagicDetailPresenter();
+    //new MagicAndDetailPresenter(detailPresenter, treePresenter).initPresentation();
   }
 
   private MagicDetailPresenter createMagicDetailPresenter() {

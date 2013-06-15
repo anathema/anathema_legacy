@@ -13,13 +13,15 @@ public class SpellContentPresenter implements Presenter {
   public static Presenter ForSorcery(MagicDetailPresenter detailPresenter, ICharacter character, Resources resources,
                                              ISpellView view, MagicDescriptionProvider magicDescriptionProvider) {
     SpellPresenter spellPresenter = SpellPresenter.ForSorcery(character, resources, view, magicDescriptionProvider);
-    return new MagicAndDetailPresenter(detailPresenter, spellPresenter);
+    //return new MagicAndDetailPresenter(detailPresenter, spellPresenter);
+    return spellPresenter;
   }
 
   public static Presenter ForNecromancy(MagicDetailPresenter detailPresenter, ICharacter character, Resources resources,
                                                 ISpellView view, MagicDescriptionProvider magicDescriptionProvider) {
     SpellPresenter spellPresenter = SpellPresenter.ForNecromancy(character, resources, view, magicDescriptionProvider);
-    return new MagicAndDetailPresenter(detailPresenter, spellPresenter);
+    //return new MagicAndDetailPresenter(detailPresenter, spellPresenter);
+    return spellPresenter;
   }
 
   private SpellPresenter spellPresenter;
