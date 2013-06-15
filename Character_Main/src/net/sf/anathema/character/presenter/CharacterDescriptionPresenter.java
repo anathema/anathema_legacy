@@ -35,19 +35,19 @@ public class CharacterDescriptionPresenter {
   public void initPresentation() {
     TextualPresentation presentation = new TextualPresentation();
     initNameLineView(presentation);
-    initLineView("TextualCharacterDescription.Label.Player", description.getPlayer(), presentation);
+    initLineView("CharacterDescription.Label.Player", description.getPlayer(), presentation);
     initLineView("Label.Concept", description.getConcept(), presentation);
-    initAreaView("TextualCharacterDescription.Label.Characterization", description.getCharacterization(), presentation);
-    initAreaView("TextualCharacterDescription.Label.PhysicalDescription", description.getPhysicalDescription(), presentation);
+    initAreaView("CharacterDescription.Label.Characterization", description.getCharacterization(), presentation);
+    initAreaView("CharacterDescription.Label.PhysicalDescription", description.getPhysicalDescription(), presentation);
     initMinorTraits(presentation);
     if (hasAnima) {
-      initLineView("TextualCharacterDescription.Label.Anima", description.getAnima(), presentation);
+      initLineView("CharacterDescription.Label.Anima", description.getAnima(), presentation);
     }
-    initAreaView("TextualCharacterDescription.Label.Notes", description.getNotes(), presentation);
+    initAreaView("CharacterDescription.Label.Notes", description.getNotes(), presentation);
   }
 
   private void initNameLineView(TextualPresentation presentation) {
-    initLineView("TextualCharacterDescription.Label.Name", description.getName(), presentation);
+    initLineView("CharacterDescription.Label.Name", description.getName(), presentation);
     addRealmNameTool();
     addThresholdNameTool();
   }
@@ -55,23 +55,23 @@ public class CharacterDescriptionPresenter {
   private void addThresholdNameTool() {
     Tool thresholdNameTool = descriptionView.addEditAction();
     thresholdNameTool.setIcon(new CharacterUI().getRandomThresholdNameIconPath());
-    thresholdNameTool.setTooltip(resources.getString("TextualCharacterDescription.Tooltip.ThresholdName"));
+    thresholdNameTool.setTooltip(resources.getString("CharacterDescription.Tooltip.ThresholdName"));
     thresholdNameTool.setCommand(new NameGeneratorCommand(description.getName(), new ThresholdNameGenerator()));
   }
 
   private void addRealmNameTool() {
     Tool realmNameTool = descriptionView.addEditAction();
     realmNameTool.setIcon(new CharacterUI().getRandomRealmNameIconPath());
-    realmNameTool.setTooltip(resources.getString("TextualCharacterDescription.Tooltip.RealmName"));
+    realmNameTool.setTooltip(resources.getString("CharacterDescription.Tooltip.RealmName"));
     realmNameTool.setCommand(new NameGeneratorCommand(description.getName(), new RealmNameGenerator()));
   }
 
   private void initMinorTraits(TextualPresentation presentation) {
     IMultiComponentLine componentLine = descriptionView.addMultiComponentLine();
-    addField(componentLine, "TextualCharacterDescription.Label.Sex", description.getSex(), presentation);
-    addField(componentLine, "TextualCharacterDescription.Label.Hair", description.getHair(), presentation);
-    addField(componentLine, "TextualCharacterDescription.Label.Skin", description.getSkin(), presentation);
-    addField(componentLine, "TextualCharacterDescription.Label.Eyes", description.getEyes(), presentation);
+    addField(componentLine, "CharacterDescription.Label.Sex", description.getSex(), presentation);
+    addField(componentLine, "CharacterDescription.Label.Hair", description.getHair(), presentation);
+    addField(componentLine, "CharacterDescription.Label.Skin", description.getSkin(), presentation);
+    addField(componentLine, "CharacterDescription.Label.Eyes", description.getEyes(), presentation);
     addInteger(componentLine, "Label.Age", characterConcept.getAge());
   }
 

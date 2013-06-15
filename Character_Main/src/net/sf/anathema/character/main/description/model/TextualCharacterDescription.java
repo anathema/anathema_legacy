@@ -9,10 +9,10 @@ import net.sf.anathema.lib.workflow.textualdescription.model.SimpleTextualDescri
 
 public class TextualCharacterDescription implements CharacterDescription, CharacterModel {
 
-  private final ITextualDescription nameDescription = new SimpleTextualDescription();
-  private final ITextualDescription periphraseDescription = new SimpleTextualDescription();
+  private final ITextualDescription name = new SimpleTextualDescription();
+  private final ITextualDescription paraphrasis = new SimpleTextualDescription();
   private final ITextualDescription characterization = new SimpleTextualDescription();
-  private final ITextualDescription physicalDescription = new SimpleTextualDescription();
+  private final ITextualDescription physicals = new SimpleTextualDescription();
   private final ITextualDescription notes = new SimpleTextualDescription();
   private final ITextualDescription player = new SimpleTextualDescription();
   private final ITextualDescription concept = new SimpleTextualDescription();
@@ -25,7 +25,7 @@ public class TextualCharacterDescription implements CharacterDescription, Charac
 
   @Override
   public ITextualDescription getName() {
-    return nameDescription;
+    return name;
   }
 
   @Override
@@ -34,8 +34,8 @@ public class TextualCharacterDescription implements CharacterDescription, Charac
   }
 
   @Override
-  public ITextualDescription getPeriphrase() {
-    return periphraseDescription;
+  public ITextualDescription getPeriphrasis() {
+    return paraphrasis;
   }
 
   @Override
@@ -45,7 +45,7 @@ public class TextualCharacterDescription implements CharacterDescription, Charac
 
   @Override
   public ITextualDescription getPhysicalDescription() {
-    return physicalDescription;
+    return physicals;
   }
 
   @Override
@@ -79,8 +79,7 @@ public class TextualCharacterDescription implements CharacterDescription, Charac
   }
 
   private ITextualDescription[] getAllDescriptions() {
-    return new ITextualDescription[]{nameDescription, periphraseDescription, characterization, physicalDescription, eyes, hair, sex, skin, anima,
-            notes, player, concept};
+    return new ITextualDescription[]{name, paraphrasis, characterization, physicals, eyes, hair, sex, skin, anima, notes, player, concept};
   }
 
   @Override

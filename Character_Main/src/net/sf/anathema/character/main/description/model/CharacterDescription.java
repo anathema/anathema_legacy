@@ -11,7 +11,7 @@ public interface CharacterDescription extends CharacterModel {
 
   ITextualDescription getName();
 
-  ITextualDescription getPeriphrase();
+  ITextualDescription getPeriphrasis();
 
   ITextualDescription getCharacterization();
 

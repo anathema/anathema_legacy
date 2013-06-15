@@ -18,7 +18,7 @@ public class GenericDescription implements IGenericDescription {
 
   @Override
   public String getPeriphrase() {
-    return description.getPeriphrase().getText();
+    return description.getPeriphrasis().getText();
   }
 
   @Override

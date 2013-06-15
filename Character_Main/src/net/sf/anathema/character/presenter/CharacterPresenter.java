@@ -60,7 +60,7 @@ public class CharacterPresenter implements Presenter {
     String sectionTitle = getString("CardView.Outline.Title");
     SectionView sectionView = characterView.addSection(sectionTitle);
 
-    String descriptionHeader = resources.getString("CardView.TextualCharacterDescription.Title");
+    String descriptionHeader = resources.getString("CardView.CharacterDescription.Title");
     ICharacterDescriptionView descriptionView = sectionView.addView(descriptionHeader, ICharacterDescriptionView.class, characterType());
     DescriptionDetails descriptionDetails = createDescriptionDetails();
     new CharacterDescriptionPresenter(descriptionDetails, resources, descriptionView).initPresentation();
