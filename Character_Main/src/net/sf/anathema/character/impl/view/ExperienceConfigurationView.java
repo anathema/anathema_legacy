@@ -22,12 +22,14 @@ import javax.swing.table.TableColumn;
 import java.awt.Component;
 import java.awt.Dimension;
 
+import static net.sf.anathema.lib.gui.layout.LayoutUtils.fillWithoutInsets;
+
 public class ExperienceConfigurationView implements IExperienceConfigurationView, IInitializableContentView<IExperienceConfigurationViewProperties> {
   private final Announcer<IExperienceConfigurationViewListener> listeners = Announcer.to(IExperienceConfigurationViewListener.class);
   private SmartTable smartTable;
   private Action deleteAction;
   private LabelledIntegerValueView labelledIntValueView;
-  private JPanel smartTablePanel;
+  private JPanel content = new JPanel(new MigLayout(fillWithoutInsets()));
 
   @Override
   public final void initGui(final IExperienceConfigurationViewProperties properties) {
@@ -52,8 +54,8 @@ public class ExperienceConfigurationView implements IExperienceConfigurationView
         fireSelectionChanged();
       }
     });
-    this.smartTablePanel = smartTable.getComponent();
-    smartTablePanel.setPreferredSize(new Dimension(700, 400));
+    smartTable.createContent(content);
+    content.setPreferredSize(new Dimension(700, 400));
     TableColumn descriptionColumn = smartTable.getTable().getTableHeader().getColumnModel().getColumn(0);
     descriptionColumn.setPreferredWidth(450);
     descriptionColumn.setWidth(descriptionColumn.getPreferredWidth());
@@ -62,12 +64,12 @@ public class ExperienceConfigurationView implements IExperienceConfigurationView
     labelledIntValueView = new LabelledIntegerValueView(properties.getTotalString(), 0, false, 7);
     labelledIntValueView.addComponents(totalPanel);
     labelledIntValueView.getValueLabel().setHorizontalAlignment(SwingConstants.RIGHT);
-    smartTablePanel.add(totalPanel, new CC().growX().newline().alignY("top"));
+    content.add(totalPanel, new CC().growX().newline().alignY("top"));
   }
 
   @Override
   public final JComponent getComponent() {
-    return smartTablePanel;
+    return content;
   }
 
   protected void fireSelectionChanged() {

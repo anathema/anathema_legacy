@@ -25,13 +25,13 @@ import java.util.List;
 import static javax.swing.ListSelectionModel.SINGLE_SELECTION;
 import static net.sf.anathema.lib.gui.layout.LayoutUtils.fillWithoutInsets;
 
-public class SmartTable implements IView {
+public class SmartTable {
 
   private boolean enabled = true;
   private final JTable table;
   private JPanel content;
   private final Announcer<ActionListener> selectionActionListeners = new Announcer<>(ActionListener.class);
-  private final List<Action> actions= new ArrayList<>();
+  private final List<Action> actions = new ArrayList<>();
 
   public SmartTable(TableModel tableModel, ITableColumnViewSettings[] settings) {
     table = new JTable(tableModel);
@@ -76,16 +76,7 @@ public class SmartTable implements IView {
     }
   }
 
-  @Override
-  public final JPanel getComponent() {
-    if (content == null) {
-      content = createContent();
-      updateEnabled();
-    }
-    return content;
-  }
-
-  private JPanel createContent() {
+  public final void createContent(JPanel content) {
     JPanel tablePanel = new JPanel(new BorderLayout());
     tablePanel.add(table);
     JScrollPane scrollPane = new JScrollPane(tablePanel) {
@@ -96,23 +87,11 @@ public class SmartTable implements IView {
       }
     };
     scrollPane.setColumnHeaderView(table.getTableHeader());
-    JPanel panel = new JPanel(new MigLayout(fillWithoutInsets())) {
-      @Override
-      public void setEnabled(boolean enabled) {
-        SmartTable.this.setEnabled(enabled);
-        if (!enabled) {
-          TableCellEditor cellEditor = getTable().getCellEditor();
-          if (cellEditor != null) {
-            cellEditor.stopCellEditing();
-          }
-        }
-      }
-    };
-    panel.add(scrollPane, new CC().grow().push());
+    content.add(scrollPane, new CC().grow().push());
     for (Action action : actions) {
-      panel.add(new JButton(action), new CC().flowY().alignY("top").split());
+      content.add(new JButton(action), new CC().flowY().alignY("top").split());
     }
-    return panel;
+    updateEnabled();
   }
 
   private void fireSelectionActionEvent() {

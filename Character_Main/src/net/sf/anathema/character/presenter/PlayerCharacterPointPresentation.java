@@ -14,12 +14,12 @@ public class PlayerCharacterPointPresentation implements PointPresentationStrate
   public PlayerCharacterPointPresentation(Resources resources, ICharacter character, CharacterView view, IBonusPointManagement bonusPoints,
                                           IExperiencePointManagement experiencePoints) {
     this.overviewPresenter = new OverviewPresenter(resources, character, view, bonusPoints, experiencePoints);
-    this.experiencePointPresenter = new ExperiencePointPresenter(resources, character, view);
+    this.experiencePointPresenter = new ExperiencePointPresenter(resources, character);
   }
 
   @Override
-  public void initPresentation(SectionView viewPresenter) {
+  public void initPresentation(SectionView section) {
     overviewPresenter.initPresentation();
-    experiencePointPresenter.initPresentation(viewPresenter);
+    experiencePointPresenter.initPresentation(section);
   }
 }
