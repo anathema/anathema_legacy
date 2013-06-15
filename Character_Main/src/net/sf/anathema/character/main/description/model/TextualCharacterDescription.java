@@ -1,6 +1,7 @@
 package net.sf.anathema.character.main.description.model;
 
-import net.sf.anathema.character.generic.framework.additionaltemplate.listening.ICharacterChangeListener;
+import net.sf.anathema.character.change.AnnounceChangeValueListener;
+import net.sf.anathema.character.change.ChangeAnnouncer;
 import net.sf.anathema.character.model.CharacterModel;
 import net.sf.anathema.lib.control.ObjectValueListener;
 import net.sf.anathema.lib.util.Identified;
@@ -100,12 +101,7 @@ public class TextualCharacterDescription implements CharacterDescription, Charac
   }
 
   @Override
-  public void addChangeListener(final ICharacterChangeListener changeListener) {
-    addOverallChangeListener(new ObjectValueListener<String>() {
-      @Override
-      public void valueChanged(String newValue) {
-        changeListener.changeOccurred();
-      }
-    });
+  public void initListening(final ChangeAnnouncer announcer) {
+    addOverallChangeListener(new AnnounceChangeValueListener(announcer));
   }
 }

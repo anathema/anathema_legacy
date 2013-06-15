@@ -14,6 +14,7 @@ import net.sf.anathema.character.impl.generic.GenericCharacter;
 import net.sf.anathema.character.impl.model.advance.ExperiencePointConfiguration;
 import net.sf.anathema.character.impl.model.charm.CharmConfiguration;
 import net.sf.anathema.character.impl.model.charm.ComboConfiguration;
+import net.sf.anathema.character.impl.model.context.CharacterListening;
 import net.sf.anathema.character.impl.model.context.CharacterModelContext;
 import net.sf.anathema.character.impl.model.statistics.ExtendedConfiguration;
 import net.sf.anathema.character.impl.model.traits.CoreTraitConfiguration;
@@ -25,6 +26,9 @@ import net.sf.anathema.character.main.concept.model.CharacterConcept;
 import net.sf.anathema.character.main.concept.model.CharacterConceptImpl;
 import net.sf.anathema.character.main.description.model.CharacterDescription;
 import net.sf.anathema.character.main.description.model.CharacterDescriptionFetcher;
+import net.sf.anathema.character.main.model.DefaultHero;
+import net.sf.anathema.character.main.model.DefaultModelCreationContext;
+import net.sf.anathema.character.main.model.change.ChangeAnnouncerAdapter;
 import net.sf.anathema.character.model.CharacterModel;
 import net.sf.anathema.character.model.CharacterModelAutoCollector;
 import net.sf.anathema.character.model.CharacterModelFactory;
@@ -116,13 +120,15 @@ public class ExaltedCharacter implements ICharacter {
   }
 
   private void addModels(ICharacterGenerics generics) {
-    ModelCreationContext creationContext = new DefaultModelCreationContext(generics);
+    CharacterListening listening = (CharacterListening) getCharacterContext().getCharacterListening();
+    ChangeAnnouncerAdapter changeAnnouncer = new ChangeAnnouncerAdapter(listening);
+    ModelCreationContext creationContext = new DefaultModelCreationContext(generics, changeAnnouncer);
     Instantiater instantiater = generics.getInstantiater();
     Collection<CharacterModelFactory> factories = instantiater.instantiateAll(CharacterModelAutoCollector.class);
     for (CharacterModelFactory factory : factories) {
       CharacterModel model = factory.create(creationContext, hero);
       hero.addModel(model);
-      model.addChangeListener(management.getStatisticsChangeListener());
+      model.initListening(changeAnnouncer);
     }
   }
 

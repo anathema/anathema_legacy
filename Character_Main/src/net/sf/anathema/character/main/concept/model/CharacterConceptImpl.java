@@ -1,7 +1,8 @@
 package net.sf.anathema.character.main.concept.model;
 
+import net.sf.anathema.character.change.AnnounceChangeListener;
+import net.sf.anathema.character.change.ChangeAnnouncer;
 import net.sf.anathema.character.generic.caste.ICasteType;
-import net.sf.anathema.character.generic.framework.additionaltemplate.listening.ICharacterChangeListener;
 import net.sf.anathema.character.impl.model.IntegerDescription;
 import net.sf.anathema.character.impl.model.TypedDescription;
 import net.sf.anathema.character.model.IIntegerDescription;
@@ -31,8 +32,8 @@ public class CharacterConceptImpl implements CharacterConcept {
   }
 
   @Override
-  public void addChangeListener(ICharacterChangeListener changeListener) {
-    caste.addChangeListener(changeListener);
-    age.addChangeListener(changeListener);
+  public void initListening(ChangeAnnouncer announcer) {
+    caste.addChangeListener(new AnnounceChangeListener(announcer));
+    age.addChangeListener(new AnnounceChangeListener(announcer));
   }
 }

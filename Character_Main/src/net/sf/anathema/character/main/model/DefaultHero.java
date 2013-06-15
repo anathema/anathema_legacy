@@ -1,4 +1,4 @@
-package net.sf.anathema.character.impl.model;
+package net.sf.anathema.character.main.model;
 
 import net.sf.anathema.character.model.CharacterModel;
 import net.sf.anathema.character.model.Hero;

@@ -2,6 +2,7 @@ package net.sf.anathema.character.attributes.model;
 
 import net.sf.anathema.character.attributes.template.AttributeGroup;
 import net.sf.anathema.character.attributes.template.AttributeTemplate;
+import net.sf.anathema.character.change.ChangeAnnouncer;
 import net.sf.anathema.character.generic.character.IGenericCharacter;
 import net.sf.anathema.character.generic.framework.additionaltemplate.listening.ICharacterChangeListener;
 import net.sf.anathema.character.generic.template.ICharacterTemplate;
@@ -30,7 +31,7 @@ public class AttributesModel implements AttributesList, CharacterModel {
   }
 
   @Override
-  public void addChangeListener(ICharacterChangeListener changeListener) {
+  public void initListening(ChangeAnnouncer announcer) {
     // nothing to do until now
   }
 
