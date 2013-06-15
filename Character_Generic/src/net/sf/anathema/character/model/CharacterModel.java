@@ -7,5 +7,5 @@ public interface CharacterModel {
 
   Identified getId();
 
-  void initListening(ChangeAnnouncer announcer);
+  void initialize(ChangeAnnouncer announcer, Hero hero);
 }

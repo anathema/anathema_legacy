@@ -19,8 +19,9 @@
         </healthTemplate>
     </general>
     <models>
+        <model id="Experience"/>
         <model id="Description"/>
-        <model id="attributes"/>
+        <model id="Concept"/>
     </models>
     <creation>
         <bonusPointCosts uses="SolaroidDefaultBonusPointCost2nd.template"/>

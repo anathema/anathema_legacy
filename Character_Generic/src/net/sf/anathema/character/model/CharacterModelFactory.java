@@ -1,6 +1,10 @@
 package net.sf.anathema.character.model;
 
+import net.sf.anathema.lib.util.Identified;
+
 public interface CharacterModelFactory {
 
-  <M extends CharacterModel> M create(ModelCreationContext context, Hero hero);
+  Identified getModelId();
+
+  <M extends CharacterModel> M create(TemplateFactory templateFactory);
 }

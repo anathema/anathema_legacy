@@ -4,12 +4,12 @@ import net.sf.anathema.character.attributes.template.AttributeGroup;
 import net.sf.anathema.character.attributes.template.AttributeTemplate;
 import net.sf.anathema.character.change.ChangeAnnouncer;
 import net.sf.anathema.character.generic.character.IGenericCharacter;
-import net.sf.anathema.character.generic.framework.additionaltemplate.listening.ICharacterChangeListener;
 import net.sf.anathema.character.generic.template.ICharacterTemplate;
 import net.sf.anathema.character.generic.traits.ITraitTemplate;
 import net.sf.anathema.character.generic.traits.ITraitType;
 import net.sf.anathema.character.generic.traits.types.AttributeType;
 import net.sf.anathema.character.model.CharacterModel;
+import net.sf.anathema.character.model.Hero;
 import net.sf.anathema.character.trait.CurrentValue;
 import net.sf.anathema.lib.util.Identified;
 import net.sf.anathema.lib.util.Identifier;
@@ -31,7 +31,7 @@ public class AttributesModel implements AttributesList, CharacterModel {
   }
 
   @Override
-  public void initListening(ChangeAnnouncer announcer) {
+  public void initialize(ChangeAnnouncer announcer, Hero hero) {
     // nothing to do until now
   }
 

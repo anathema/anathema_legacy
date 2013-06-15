@@ -19,20 +19,20 @@ import net.sf.anathema.character.impl.model.statistics.ExtendedConfiguration;
 import net.sf.anathema.character.impl.model.traits.CoreTraitConfiguration;
 import net.sf.anathema.character.impl.model.traits.RegisteredTrait;
 import net.sf.anathema.character.impl.model.traits.TraitRegistrar;
-import net.sf.anathema.character.main.essencepool.model.EssencePoolModel;
-import net.sf.anathema.character.main.essencepool.model.EssencePoolModelImpl;
 import net.sf.anathema.character.impl.model.traits.listening.CharacterTraitListening;
 import net.sf.anathema.character.main.description.model.CharacterDescription;
 import net.sf.anathema.character.main.description.model.CharacterDescriptionFetcher;
+import net.sf.anathema.character.main.essencepool.model.EssencePoolModel;
+import net.sf.anathema.character.main.essencepool.model.EssencePoolModelImpl;
 import net.sf.anathema.character.main.model.DefaultHero;
-import net.sf.anathema.character.main.model.DefaultModelCreationContext;
+import net.sf.anathema.character.main.model.DefaultTemplateFactory;
 import net.sf.anathema.character.main.model.change.ChangeAnnouncerAdapter;
 import net.sf.anathema.character.model.CharacterModel;
 import net.sf.anathema.character.model.CharacterModelAutoCollector;
 import net.sf.anathema.character.model.CharacterModelFactory;
 import net.sf.anathema.character.model.ICharacter;
 import net.sf.anathema.character.model.ISpellConfiguration;
-import net.sf.anathema.character.model.ModelCreationContext;
+import net.sf.anathema.character.model.TemplateFactory;
 import net.sf.anathema.character.model.charm.ICharmConfiguration;
 import net.sf.anathema.character.model.charm.IComboConfiguration;
 import net.sf.anathema.character.model.health.IHealthConfiguration;
@@ -44,7 +44,9 @@ import net.sf.anathema.lib.registry.IRegistry;
 import net.sf.anathema.lib.util.Identified;
 import net.sf.anathema.lib.workflow.textualdescription.ITextualDescription;
 
+import java.util.ArrayList;
 import java.util.Collection;
+import java.util.List;
 
 public class ExaltedCharacter implements ICharacter {
 
@@ -94,16 +96,31 @@ public class ExaltedCharacter implements ICharacter {
   }
 
   private void addModels(ICharacterGenerics generics) {
-    CharacterListening listening = (CharacterListening) getCharacterContext().getCharacterListening();
-    ChangeAnnouncerAdapter changeAnnouncer = new ChangeAnnouncerAdapter(listening, hero);
-    ModelCreationContext creationContext = new DefaultModelCreationContext(generics, changeAnnouncer);
-    Instantiater instantiater = generics.getInstantiater();
-    Collection<CharacterModelFactory> factories = instantiater.instantiateAll(CharacterModelAutoCollector.class);
+    ChangeAnnouncerAdapter changeAnnouncer = createChangeAnnouncer();
+    TemplateFactory templateFactory = new DefaultTemplateFactory(generics);
+    Collection<CharacterModelFactory> factories = collectModelFactories(generics);
+    List<CharacterModel> modelList = new ArrayList<>();
+    List<String> allCharacterModelIds = getCharacterTemplate().getModels();
     for (CharacterModelFactory factory : factories) {
-      CharacterModel model = factory.create(creationContext, hero);
-      hero.addModel(model);
-      model.initListening(changeAnnouncer);
+      String modelIdString = factory.getModelId().getId();
+      if (allCharacterModelIds.contains(modelIdString)) {
+        modelList.add(factory.create(templateFactory));
+      }
     }
+    for (CharacterModel model : modelList) {
+      model.initialize(changeAnnouncer, hero);
+      hero.addModel(model);
+    }
+  }
+
+  private Collection<CharacterModelFactory> collectModelFactories(ICharacterGenerics generics) {
+    Instantiater instantiater = generics.getInstantiater();
+    return instantiater.instantiateAll(CharacterModelAutoCollector.class);
+  }
+
+  private ChangeAnnouncerAdapter createChangeAnnouncer() {
+    CharacterListening listening = (CharacterListening) getCharacterContext().getCharacterListening();
+    return new ChangeAnnouncerAdapter(listening, this);
   }
 
   private CoreTraitConfiguration createTraitConfiguration(ICharacterTemplate template, ICharacterGenerics generics) {

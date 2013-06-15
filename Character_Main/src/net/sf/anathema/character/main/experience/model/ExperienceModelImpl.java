@@ -3,6 +3,7 @@ package net.sf.anathema.character.main.experience.model;
 import net.sf.anathema.character.change.AnnounceChangeListener;
 import net.sf.anathema.character.change.ChangeAnnouncer;
 import net.sf.anathema.character.impl.model.advance.ExperiencePointConfiguration;
+import net.sf.anathema.character.model.Hero;
 import net.sf.anathema.character.model.advance.IExperiencePointConfiguration;
 import net.sf.anathema.lib.control.IChangeListener;
 import net.sf.anathema.lib.util.Identified;
@@ -42,7 +43,7 @@ public class ExperienceModelImpl implements ExperienceModel {
   }
 
   @Override
-  public void initListening(ChangeAnnouncer announcer) {
+  public void initialize(ChangeAnnouncer announcer, Hero hero) {
     stateAnnouncer.addListener(new AnnounceChangeListener(announcer, ExperienceChange.FLAVOR_EXPERIENCE_STATE));
     experiencePoints.addExperiencePointConfigurationListener(new AnnounceExperiencePointChange(announcer));
   }
