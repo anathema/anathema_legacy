@@ -8,11 +8,13 @@ import net.sf.anathema.character.presenter.magic.combo.ComboConfigurationPresent
 import net.sf.anathema.character.view.SectionView;
 import net.sf.anathema.character.view.magic.IComboConfigurationView;
 import net.sf.anathema.framework.IApplicationModel;
+import net.sf.anathema.initialization.reflections.Weight;
 import net.sf.anathema.lib.resources.Resources;
 
 import static net.sf.anathema.character.model.CharacterModelGroup.Magic;
 
 @RegisteredInitializer(Magic)
+@Weight(weight = 100)
 public class ComboInitializer implements CoreModelInitializer {
 
   private IApplicationModel model;

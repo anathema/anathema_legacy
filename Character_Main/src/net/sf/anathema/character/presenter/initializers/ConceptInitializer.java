@@ -6,11 +6,13 @@ import net.sf.anathema.character.presenter.CharacterConceptAndRulesPresenter;
 import net.sf.anathema.character.view.SectionView;
 import net.sf.anathema.character.view.concept.ICharacterConceptAndRulesView;
 import net.sf.anathema.framework.IApplicationModel;
+import net.sf.anathema.initialization.reflections.Weight;
 import net.sf.anathema.lib.resources.Resources;
 
 import static net.sf.anathema.character.model.CharacterModelGroup.Outline;
 
 @RegisteredInitializer(Outline)
+@Weight(weight = 100)
 public class ConceptInitializer implements CoreModelInitializer {
 
   @SuppressWarnings("UnusedParameters")

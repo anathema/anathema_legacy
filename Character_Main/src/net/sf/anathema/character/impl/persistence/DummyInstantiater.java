@@ -9,7 +9,7 @@ import java.util.Collection;
 
 public class DummyInstantiater implements Instantiater {
   @Override
-  public <T> Collection<T> instantiateOrdered(Class<? extends Annotation> annotation) throws InitializationException {
+  public <T> Collection<T> instantiateOrdered(Class<? extends Annotation> annotation, Object... parameter) throws InitializationException {
     return new ArrayList<T>();
   }
 

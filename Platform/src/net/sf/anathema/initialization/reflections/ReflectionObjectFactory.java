@@ -27,10 +27,10 @@ public class ReflectionObjectFactory implements Instantiater {
   }
 
   @Override
-  public <T> Collection<T> instantiateOrdered(Class<? extends Annotation> annotation) throws InitializationException {
+  public <T> Collection<T> instantiateOrdered(Class<? extends Annotation> annotation, Object... parameter) throws InitializationException {
     Set<Class<?>> pluginClasses = finder.getTypesAnnotatedWith(annotation);
     List<Class<?>> sortedClasses = sort(pluginClasses);
-    return Collections2.transform(sortedClasses, new Instantiate<T>());
+    return Collections2.transform(sortedClasses, new Instantiate<T>(parameter));
   }
 
   @Override

@@ -21,7 +21,7 @@ public class Initializers {
 
   public List<CoreModelInitializer> getInOrderFor(CharacterModelGroup group) {
     ArrayList<CoreModelInitializer> initializers = new ArrayList<>();
-    Collection<CoreModelInitializer> collection = instantiater.instantiateAll(RegisteredInitializer.class, applicationModel);
+    Collection<CoreModelInitializer> collection = instantiater.instantiateOrdered(RegisteredInitializer.class, applicationModel);
     for (CoreModelInitializer initializer : collection) {
       CharacterModelGroup targetGroup = initializer.getClass().getAnnotation(RegisteredInitializer.class).value();
       if (targetGroup.equals(group)) {

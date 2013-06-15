@@ -5,11 +5,13 @@ import net.sf.anathema.character.presenter.AttributesPresenter;
 import net.sf.anathema.character.view.IGroupedFavorableTraitConfigurationView;
 import net.sf.anathema.character.view.SectionView;
 import net.sf.anathema.framework.IApplicationModel;
+import net.sf.anathema.initialization.reflections.Weight;
 import net.sf.anathema.lib.resources.Resources;
 
 import static net.sf.anathema.character.model.CharacterModelGroup.NaturalTraits;
 
 @RegisteredInitializer(NaturalTraits)
+@Weight(weight = 0)
 public class AttributesInitializer implements CoreModelInitializer {
 
   @SuppressWarnings("UnusedParameters")

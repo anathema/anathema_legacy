@@ -12,6 +12,7 @@ import net.sf.anathema.character.view.SectionView;
 import net.sf.anathema.charmtree.presenter.view.CharmDisplayPropertiesMap;
 import net.sf.anathema.charmtree.presenter.view.ICharmView;
 import net.sf.anathema.framework.IApplicationModel;
+import net.sf.anathema.initialization.reflections.Weight;
 import net.sf.anathema.lib.resources.Resources;
 import net.sf.anathema.platform.tree.document.visualizer.ITreePresentationProperties;
 
@@ -19,6 +20,7 @@ import static net.sf.anathema.character.model.CharacterModelGroup.Magic;
 import static net.sf.anathema.character.model.CharacterModelGroup.NaturalTraits;
 
 @RegisteredInitializer(Magic)
+@Weight(weight = 0)
 public class CharmInitializer implements CoreModelInitializer {
   private IApplicationModel applicationModel;
 
