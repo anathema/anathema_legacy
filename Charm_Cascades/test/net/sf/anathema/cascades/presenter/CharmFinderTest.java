@@ -4,7 +4,7 @@ import net.sf.anathema.character.generic.dummy.DummyCharacterTypes;
 import net.sf.anathema.character.generic.dummy.DummyExaltCharacterType;
 import net.sf.anathema.character.generic.impl.magic.persistence.ICharmCache;
 import net.sf.anathema.character.generic.magic.ICharm;
-import net.sf.anathema.dummy.character.magic.DummyCharm;
+import net.sf.anathema.character.magic.dummy.DummyCharm;
 import org.junit.Before;
 import org.junit.Test;
 

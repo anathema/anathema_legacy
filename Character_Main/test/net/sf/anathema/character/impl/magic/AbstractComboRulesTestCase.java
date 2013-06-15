@@ -9,7 +9,7 @@ import net.sf.anathema.character.generic.traits.types.AttributeType;
 import net.sf.anathema.character.generic.traits.types.ValuedTraitType;
 import net.sf.anathema.character.impl.model.charm.combo.ComboArbitrator;
 import net.sf.anathema.character.impl.model.charm.combo.IComboRules;
-import net.sf.anathema.dummy.character.magic.DummyCharmUtilities;
+import net.sf.anathema.character.magic.dummy.DummyCharmUtilities;
 
 public abstract class AbstractComboRulesTestCase {
 

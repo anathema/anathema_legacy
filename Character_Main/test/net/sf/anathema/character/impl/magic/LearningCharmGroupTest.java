@@ -16,7 +16,7 @@ import net.sf.anathema.character.impl.model.charm.LearningCharmGroup;
 import net.sf.anathema.character.impl.model.context.magic.CreationCharmLearnStrategy;
 import net.sf.anathema.character.model.charm.IExtendedCharmLearnableArbitrator;
 import net.sf.anathema.character.model.charm.ILearningCharmGroup;
-import net.sf.anathema.dummy.character.magic.DummyCharm;
+import net.sf.anathema.character.magic.dummy.DummyCharm;
 import org.junit.Test;
 
 import static org.junit.Assert.assertFalse;

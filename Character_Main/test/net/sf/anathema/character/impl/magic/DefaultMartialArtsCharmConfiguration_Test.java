@@ -6,7 +6,7 @@ import net.sf.anathema.character.generic.character.IMagicCollection;
 import net.sf.anathema.character.generic.magic.ICharm;
 import net.sf.anathema.character.impl.model.charm.special.DefaultMartialArtsCharmConfiguration;
 import net.sf.anathema.character.model.charm.ILearningCharmGroup;
-import net.sf.anathema.dummy.character.magic.DummyCharm;
+import net.sf.anathema.character.magic.dummy.DummyCharm;
 import net.sf.anathema.lib.util.Identified;
 import org.junit.Assert;
 import org.junit.Test;

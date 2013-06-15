@@ -6,12 +6,11 @@ include('Anathema',
 
         'Campaign_Scribe',
 
-        'Charm_Tree', 'Magic_Description', 'Charm_Cascades', 'Character_Cards',
+        'Magic_Description', 'Charm_Cascades', 'Character_Cards',
 
         'Engine_Character',
         'Engine_Exalted',
 
-        'Character_Generic',
         'Character_Main',
         'Character_Main_Impl',
         'Character_Main_FX',

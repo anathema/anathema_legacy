@@ -6,7 +6,7 @@ import net.sf.anathema.character.generic.dummy.DummyBasicCharacterData;
 import net.sf.anathema.character.generic.magic.IMagic;
 import net.sf.anathema.character.generic.magic.charms.MartialArtsLevel;
 import net.sf.anathema.character.impl.model.advance.CostAnalyzer;
-import net.sf.anathema.dummy.character.magic.DummyCharm;
+import net.sf.anathema.character.magic.dummy.DummyCharm;
 import net.sf.anathema.lib.util.Identified;
 import org.junit.Test;
 import org.mockito.Mockito;
