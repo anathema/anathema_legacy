@@ -96,7 +96,9 @@ public class NonMartialArtsOptions implements ICharmIdMap, ICharmGroupArbitrator
   private void initCharmTreesForAvailableTypes() {
     for (ICharacterType type : availableTypes) {
       ICharmTemplate charmTemplate = getCharmTemplate(registry, type);
-      if (charmTemplate != null && charmTemplate.canLearnCharms()) {
+      if (charmTemplate != null  && type == getNativeCharacterType()) {
+        treesByType.put(type, new CharmTree(charmTemplate));
+      } else if (charmTemplate != null && charmTemplate.canLearnCharms()) {
         treesByType.put(type, new CharmTree(charmTemplate));
       }
     }

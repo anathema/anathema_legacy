@@ -86,7 +86,8 @@ public class CharmConfiguration implements ICharmConfiguration {
   }
 
   private void initNonMartialArtsGroups() {
-    for (ICharacterType characterType : nonMartialArtsOptions.getAvailableCharacterTypes()) {
+    Iterable<ICharacterType> availableCharacterTypes = nonMartialArtsOptions.getAvailableCharacterTypes();
+    for (ICharacterType characterType : availableCharacterTypes) {
       initLearnGroupForCharacterType(characterType, nonMartialArtsOptions.getCharmTrees(characterType));
     }
   }
@@ -274,7 +275,8 @@ public class CharmConfiguration implements ICharmConfiguration {
   }
 
   private void initLearnGroupForCharacterType(ICharacterType type, GroupCharmTree charmTree) {
-    ILearningCharmGroup[] groups = createGroups(charmTree.getAllCharmGroups());
+    ICharmGroup[] treeGroups = charmTree.getAllCharmGroups();
+    ILearningCharmGroup[] groups = createGroups(treeGroups);
     nonMartialArtsGroupsByType.put(type, groups);
   }
 
