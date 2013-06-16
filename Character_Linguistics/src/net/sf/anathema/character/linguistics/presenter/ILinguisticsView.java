@@ -3,17 +3,13 @@ package net.sf.anathema.character.linguistics.presenter;
 import net.sf.anathema.character.library.overview.IOverviewCategory;
 import net.sf.anathema.character.library.removableentry.presenter.IRemovableEntryView;
 import net.sf.anathema.character.library.trait.Trait;
-import net.sf.anathema.character.presenter.ExtensibleTraitView;
 import net.sf.anathema.framework.presenter.view.IButtonControlledObjectSelectionView;
-import net.sf.anathema.framework.presenter.view.ITextFieldComboBoxEditor;
 import net.sf.anathema.lib.file.RelativePath;
-
-import javax.swing.ListCellRenderer;
+import net.sf.anathema.lib.gui.AgnosticUIConfiguration;
 
 public interface ILinguisticsView {
 
-  IButtonControlledObjectSelectionView<Object> addSelectionView(String labelText, ITextFieldComboBoxEditor editor, ListCellRenderer renderer,
-                                                                RelativePath addIcon);
+  IButtonControlledObjectSelectionView<Object> addSelectionView(String labelText, AgnosticUIConfiguration renderer, RelativePath addIcon);
 
   IOverviewCategory addOverview(String border);
 

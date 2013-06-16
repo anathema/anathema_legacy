@@ -33,28 +33,28 @@ public class ButtonControlledObjectSelectionView<V> implements IButtonControlled
   protected final JLabel label;
 
   public ButtonControlledObjectSelectionView(
-      ListCellRenderer renderer,
-      RelativePath addIcon,
-      String labelText,
-      ITextFieldComboBoxEditor editor) {
+          ListCellRenderer renderer,
+          RelativePath addIcon,
+          String labelText) {
     this.comboBox = new ColoredJComboBox(new DefaultComboBoxModel(new Object[0]));
     this.label = new JLabel(labelText);
     this.comboBox.setRenderer(renderer);
     Icon icon = new ImageProvider().getImageIcon(addIcon);
     addButton = new JButton(icon);
     addButton.setPreferredSize(new Dimension(icon.getIconWidth() + 4, icon.getIconHeight() + 4));
-    if (editor != null) {
-      this.comboBox.setEditable(true);
-      this.comboBox.setEditor(editor);
-      final JTextField editField = editor.getEditorComponent();
-      editField.getDocument().addDocumentListener(new AbstractDocumentChangeListener() {
-        @Override
-        protected void documentChanged() {
-          addButton.setEnabled(!Strings.isNullOrEmpty(editField.getText()));
-        }
-      });
-      addButton.setEnabled(!Strings.isNullOrEmpty(editField.getText()));
-    }
+  }
+
+  public void setEditor(ITextFieldComboBoxEditor editor) {
+    this.comboBox.setEditable(true);
+    this.comboBox.setEditor(editor);
+    final JTextField editField = editor.getEditorComponent();
+    editField.getDocument().addDocumentListener(new AbstractDocumentChangeListener() {
+      @Override
+      protected void documentChanged() {
+        addButton.setEnabled(!Strings.isNullOrEmpty(editField.getText()));
+      }
+    });
+    addButton.setEnabled(!Strings.isNullOrEmpty(editField.getText()));
   }
 
   @Override
