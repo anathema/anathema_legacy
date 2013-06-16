@@ -3,6 +3,7 @@ package net.sf.anathema;
 import com.google.inject.Inject;
 import cucumber.api.java.Before;
 import cucumber.api.java.en.Given;
+import cucumber.api.java.en.Then;
 import net.sf.anathema.character.generic.framework.CharacterGenericsExtractor;
 import net.sf.anathema.character.generic.framework.ICharacterGenerics;
 import net.sf.anathema.character.generic.template.ICharacterTemplate;
@@ -35,22 +36,47 @@ public class CharacterCreationSteps {
     this.characterTypes = CharacterGenericsExtractor.getGenerics(model).getCharacterTypes();
   }
 
+  @Given("Anathema is running")
+  public void Anathema_is_running() {
+    //for readable tests only
+  }
+
   @Given("^a new default (.*)$")
   public void I_create_a_new_character(String type) throws Throwable {
-    ICharacterTemplate characterTemplate = loadDefaultTemplateForType(type);
-    holder.setCharacter(createCharacter(characterTemplate));
+    ICharacter character = createCharacter(type);
+    holder.setCharacter(character);
   }
 
   @Given("^a new God-Blooded of any kind$")
   public void I_create_a_new_god_blooded() throws Throwable {
-    ICharacterTemplate characterTemplate = loadTemplateForType("Lunar", "HalfCasteLunar");
-    holder.setCharacter(createCharacter(characterTemplate));
+    I_create_a_new_character_with_subtype("Lunar", "HalfCasteLunar");
   }
 
   @Given("^a new (.*) using rules for (.*)$")
   public void I_create_a_new_character_with_subtype(String type, String subtype) throws Throwable {
+    ICharacter character = createCharacter(type, subtype);
+    holder.setCharacter(character);
+  }
+
+  @Then("^I can create a new default (.*)$")
+  public void I_can_create_a_new_character(String type) throws Throwable {
+    createCharacter(type);
+  }
+
+  @Then("^I can create a new (.*) using rules for (.*)$")
+  public void I_can_create_a_new_character(String type, String subtype) throws Throwable {
+    createCharacter(type, subtype);
+  }
+
+
+  private ICharacter createCharacter(String type) {
+    ICharacterTemplate characterTemplate = loadDefaultTemplateForType(type);
+    return createCharacter(characterTemplate);
+  }
+
+  private ICharacter createCharacter(String type, String subtype) {
     ICharacterTemplate characterTemplate = loadTemplateForType(type, subtype);
-    holder.setCharacter(createCharacter(characterTemplate));
+    return createCharacter(characterTemplate);
   }
 
   private ICharacterTemplate loadDefaultTemplateForType(String type) {
