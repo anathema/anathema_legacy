@@ -4,11 +4,11 @@ import net.sf.anathema.character.generic.health.HealthLevelType;
 import net.sf.anathema.character.generic.health.IHealthLevelTypeVisitor;
 import net.sf.anathema.character.generic.traits.GenericTrait;
 import net.sf.anathema.character.generic.traits.types.AttributeType;
+import net.sf.anathema.character.library.trait.TraitCollection;
 import net.sf.anathema.character.model.health.IHealthConfiguration;
 import net.sf.anathema.character.model.health.IHealthLevelProvider;
 import net.sf.anathema.character.model.health.IOxBodyTechniqueArbitrator;
 import net.sf.anathema.character.model.health.IPainToleranceProvider;
-import net.sf.anathema.character.model.traits.ICoreTraitConfiguration;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -23,7 +23,7 @@ public class HealthConfiguration implements IHealthConfiguration {
     this.arbitrator = new OxBodyTechniqueArbitrator(toughnessControllingTraits);
   }
 
-  public HealthConfiguration(GenericTrait[] toughnessControllingTraits, ICoreTraitConfiguration config, String[] providers) {
+  public HealthConfiguration(GenericTrait[] toughnessControllingTraits, TraitCollection config, String[] providers) {
     this.arbitrator = new OxBodyTechniqueArbitrator(toughnessControllingTraits);
     addHealthLevelProvider(new DyingStaminaHealthLevelProvider(config));
     if (providers == null) {
@@ -111,9 +111,9 @@ public class HealthConfiguration implements IHealthConfiguration {
   }
 
   private static class DyingStaminaHealthLevelProvider implements IHealthLevelProvider {
-    private final ICoreTraitConfiguration traits;
+    private final TraitCollection traits;
 
-    public DyingStaminaHealthLevelProvider(ICoreTraitConfiguration config) {
+    public DyingStaminaHealthLevelProvider(TraitCollection config) {
       this.traits = config;
     }
 

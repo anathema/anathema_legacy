@@ -1,10 +1,10 @@
 package net.sf.anathema.cascades.presenter;
 
-import net.sf.anathema.character.main.testing.dummy.DummyCharacterTypes;
-import net.sf.anathema.character.main.testing.dummy.DummyExaltCharacterType;
 import net.sf.anathema.character.generic.impl.magic.persistence.ICharmCache;
 import net.sf.anathema.character.generic.magic.ICharm;
 import net.sf.anathema.character.magic.dummy.DummyCharm;
+import net.sf.anathema.character.main.testing.dummy.DummyCharacterTypes;
+import net.sf.anathema.character.main.testing.dummy.DummyExaltCharacterType;
 import org.junit.Before;
 import org.junit.Test;
 

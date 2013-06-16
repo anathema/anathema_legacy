@@ -3,8 +3,8 @@ package net.sf.anathema.character.library.trait.rules;
 import com.google.common.base.Preconditions;
 import net.sf.anathema.character.generic.character.ILimitationContext;
 import net.sf.anathema.character.generic.traits.ITraitTemplate;
-import net.sf.anathema.character.generic.traits.TraitType;
 import net.sf.anathema.character.generic.traits.LowerableState;
+import net.sf.anathema.character.generic.traits.TraitType;
 import net.sf.anathema.lib.data.Range;
 
 public class TraitRules implements ITraitRules {

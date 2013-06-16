@@ -1,13 +1,13 @@
 package net.sf.anathema.character.main.trait;
 
-import net.sf.anathema.character.main.testing.dummy.trait.DummyTrait;
 import net.sf.anathema.character.generic.IBasicCharacterData;
-import net.sf.anathema.character.main.testing.dummy.DummyBasicCharacterData;
 import net.sf.anathema.character.generic.traits.types.AbilityType;
 import net.sf.anathema.character.library.trait.favorable.FavorableState;
 import net.sf.anathema.character.library.trait.favorable.FriendlyIncrementChecker;
 import net.sf.anathema.character.library.trait.favorable.GrumpyIncrementChecker;
 import net.sf.anathema.character.library.trait.favorable.TraitFavorization;
+import net.sf.anathema.character.main.testing.dummy.DummyBasicCharacterData;
+import net.sf.anathema.character.main.testing.dummy.trait.DummyTrait;
 import org.junit.Before;
 import org.junit.Test;
 

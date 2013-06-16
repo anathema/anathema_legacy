@@ -1,13 +1,5 @@
 package net.sf.anathema.character.main.costs;
 
-import net.sf.anathema.character.main.testing.dummy.DummyAdditionalBonusPointManagment;
-import net.sf.anathema.character.main.testing.dummy.DummyAdditionalSpellPointManagement;
-import net.sf.anathema.character.main.testing.dummy.magic.DummyCharmConfiguration;
-import net.sf.anathema.character.main.testing.dummy.magic.DummySpellConfiguration;
-import net.sf.anathema.character.main.testing.dummy.trait.DummyCoreTraitConfiguration;
-import net.sf.anathema.character.main.testing.dummy.DummyGenericCharacter;
-import net.sf.anathema.character.main.testing.dummy.magic.DummySpell;
-import net.sf.anathema.character.main.testing.dummy.template.DummyCharacterTemplate;
 import net.sf.anathema.character.generic.impl.template.points.DefaultBonusPointCosts;
 import net.sf.anathema.character.generic.magic.ISpell;
 import net.sf.anathema.character.generic.template.creation.BonusPointCosts;
@@ -15,6 +7,14 @@ import net.sf.anathema.character.generic.traits.types.AbilityType;
 import net.sf.anathema.character.impl.model.context.BasicCharacterContext;
 import net.sf.anathema.character.impl.model.creation.bonus.magic.MagicCostCalculator;
 import net.sf.anathema.character.library.trait.favorable.FavorableState;
+import net.sf.anathema.character.main.testing.dummy.DummyAdditionalBonusPointManagment;
+import net.sf.anathema.character.main.testing.dummy.DummyAdditionalSpellPointManagement;
+import net.sf.anathema.character.main.testing.dummy.DummyGenericCharacter;
+import net.sf.anathema.character.main.testing.dummy.magic.DummyCharmConfiguration;
+import net.sf.anathema.character.main.testing.dummy.magic.DummySpell;
+import net.sf.anathema.character.main.testing.dummy.magic.DummySpellConfiguration;
+import net.sf.anathema.character.main.testing.dummy.template.DummyCharacterTemplate;
+import net.sf.anathema.character.main.testing.dummy.trait.DummyCoreTraitConfiguration;
 import net.sf.anathema.character.model.ISpellConfiguration;
 import org.junit.Before;
 import org.junit.Test;

@@ -1,8 +1,6 @@
 package net.sf.anathema.character.main.persistence;
 
 import net.sf.anathema.character.generic.data.IExtensibleDataSetProvider;
-import net.sf.anathema.character.main.testing.dummy.DummyExaltCharacterType;
-import net.sf.anathema.character.main.testing.dummy.template.SimpleDummyCharacterTemplate;
 import net.sf.anathema.character.generic.framework.CharacterGenerics;
 import net.sf.anathema.character.generic.framework.ICharacterGenerics;
 import net.sf.anathema.character.generic.impl.magic.persistence.CharmCache;
@@ -12,6 +10,8 @@ import net.sf.anathema.character.generic.impl.magic.persistence.SpellCache;
 import net.sf.anathema.character.impl.model.CharacterStatisticsConfiguration;
 import net.sf.anathema.character.impl.persistence.DummyObjectFactory;
 import net.sf.anathema.character.impl.persistence.ExaltedCharacterPersister;
+import net.sf.anathema.character.main.testing.dummy.DummyExaltCharacterType;
+import net.sf.anathema.character.main.testing.dummy.template.SimpleDummyCharacterTemplate;
 import net.sf.anathema.character.model.ICharacter;
 import net.sf.anathema.framework.item.IItemType;
 import net.sf.anathema.framework.messaging.IMessaging;

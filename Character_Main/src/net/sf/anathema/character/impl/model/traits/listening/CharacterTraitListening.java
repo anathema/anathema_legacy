@@ -9,29 +9,29 @@ import net.sf.anathema.character.library.trait.favorable.IFavorableStateChangedL
 import net.sf.anathema.character.library.trait.specialties.ISpecialtiesConfiguration;
 import net.sf.anathema.character.library.trait.specialties.Specialty;
 import net.sf.anathema.character.library.trait.subtrait.ISpecialtyListener;
+import net.sf.anathema.character.main.traits.model.TraitMap;
 import net.sf.anathema.character.model.ICharacter;
-import net.sf.anathema.character.model.traits.ICoreTraitConfiguration;
 
 public class CharacterTraitListening {
 
   private final CharacterListening listening;
-  private final ICoreTraitConfiguration traitConfiguration;
+  private final TraitMap traitMap;
   private ICharacter character;
 
   public CharacterTraitListening(ICharacter character, CharacterListening listening) {
     this.character = character;
-    this.traitConfiguration = character.getTraitConfiguration();
+    this.traitMap = character.getTraitConfiguration();
     this.listening = listening;
   }
 
   public void initListening() {
     initAttributeListening();
     initAbilityListening();
-    for (Trait virtue : traitConfiguration.getTraits(VirtueType.values())) {
+    for (Trait virtue : traitMap.getTraits(VirtueType.values())) {
       listening.addTraitListening(virtue);
     }
-    listening.addTraitListening(traitConfiguration.getTrait(OtherTraitType.Willpower));
-    listening.addTraitListening(traitConfiguration.getTrait(OtherTraitType.Essence));
+    listening.addTraitListening(traitMap.getTrait(OtherTraitType.Willpower));
+    listening.addTraitListening(traitMap.getTrait(OtherTraitType.Essence));
   }
 
   private void initAbilityListening() {

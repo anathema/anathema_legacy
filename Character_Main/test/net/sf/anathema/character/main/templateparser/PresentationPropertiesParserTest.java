@@ -1,7 +1,5 @@
 package net.sf.anathema.character.main.templateparser;
 
-import net.sf.anathema.character.main.testing.dummy.DummyExaltCharacterType;
-import net.sf.anathema.character.main.testing.dummy.template.DummyXmlTemplateRegistry;
 import net.sf.anathema.character.generic.framework.xml.GenericCharacterTemplate;
 import net.sf.anathema.character.generic.framework.xml.presentation.GenericPresentationTemplate;
 import net.sf.anathema.character.generic.framework.xml.presentation.PresentationPropertiesParser;
@@ -9,6 +7,8 @@ import net.sf.anathema.character.generic.impl.persistence.SecondEdition;
 import net.sf.anathema.character.generic.template.TemplateType;
 import net.sf.anathema.character.generic.template.abilities.AbilityGroupType;
 import net.sf.anathema.character.generic.template.presentation.IPresentationProperties;
+import net.sf.anathema.character.main.testing.dummy.DummyExaltCharacterType;
+import net.sf.anathema.character.main.testing.dummy.template.DummyXmlTemplateRegistry;
 import net.sf.anathema.lib.exception.AnathemaException;
 import net.sf.anathema.lib.file.RelativePath;
 import net.sf.anathema.lib.xml.DocumentUtilities;

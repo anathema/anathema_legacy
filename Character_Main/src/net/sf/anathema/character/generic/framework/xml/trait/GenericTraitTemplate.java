@@ -2,8 +2,8 @@ package net.sf.anathema.character.generic.framework.xml.trait;
 
 import net.sf.anathema.character.generic.character.ILimitationContext;
 import net.sf.anathema.character.generic.template.ITraitLimitation;
-import net.sf.anathema.character.generic.traits.TraitType;
 import net.sf.anathema.character.generic.traits.LowerableState;
+import net.sf.anathema.character.generic.traits.TraitType;
 import net.sf.anathema.lib.lang.clone.ReflectionCloneableObject;
 
 public class GenericTraitTemplate extends ReflectionCloneableObject<IClonableTraitTemplate> implements IClonableTraitTemplate {

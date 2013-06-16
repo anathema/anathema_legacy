@@ -4,11 +4,11 @@ import net.sf.anathema.character.equipment.character.IEquipmentCharacterDataProv
 import net.sf.anathema.character.equipment.dummy.DummyEquipmentObject;
 import net.sf.anathema.character.equipment.impl.character.model.natural.DefaultNaturalSoak;
 import net.sf.anathema.character.equipment.item.model.IEquipmentTemplateProvider;
-import net.sf.anathema.character.main.testing.dummy.DummyEssenceCharacterType;
-import net.sf.anathema.character.main.testing.dummy.DummyGenericTrait;
 import net.sf.anathema.character.generic.equipment.weapon.IArmourStats;
 import net.sf.anathema.character.generic.equipment.weapon.IEquipmentStats;
 import net.sf.anathema.character.generic.framework.additionaltemplate.model.IGenericSpecialtyContext;
+import net.sf.anathema.character.main.testing.dummy.DummyEssenceCharacterType;
+import net.sf.anathema.character.main.testing.dummy.DummyGenericTrait;
 import org.junit.Test;
 
 import static net.sf.anathema.character.generic.traits.types.AttributeType.Stamina;

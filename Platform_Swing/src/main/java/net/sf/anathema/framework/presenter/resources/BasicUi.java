@@ -3,8 +3,6 @@ package net.sf.anathema.framework.presenter.resources;
 import net.sf.anathema.lib.file.RelativePath;
 import net.sf.anathema.lib.gui.ui.AbstractUI;
 
-import javax.swing.Icon;
-
 public class BasicUi extends AbstractUI {
 
   public RelativePath getNewIconPathForTaskbar () {

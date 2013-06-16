@@ -1,14 +1,14 @@
 package net.sf.anathema.character.main.templateparser;
 
 import net.sf.anathema.character.generic.additionalrules.IAdditionalEssencePool;
-import net.sf.anathema.character.main.testing.dummy.DummyCharacterTypes;
-import net.sf.anathema.character.main.testing.dummy.DummyMagicCollection;
-import net.sf.anathema.character.main.testing.dummy.template.DummyXmlTemplateRegistry;
 import net.sf.anathema.character.generic.framework.xml.rules.AdditionalRulesTemplateParser;
 import net.sf.anathema.character.generic.framework.xml.rules.GenericAdditionalRules;
 import net.sf.anathema.character.generic.impl.magic.charm.special.StaticMultiLearnableCharm;
 import net.sf.anathema.character.generic.magic.charms.special.ISpecialCharm;
 import net.sf.anathema.character.generic.type.CharacterTypes;
+import net.sf.anathema.character.main.testing.dummy.DummyCharacterTypes;
+import net.sf.anathema.character.main.testing.dummy.DummyMagicCollection;
+import net.sf.anathema.character.main.testing.dummy.template.DummyXmlTemplateRegistry;
 import net.sf.anathema.lib.exception.AnathemaException;
 import net.sf.anathema.lib.xml.DocumentUtilities;
 import org.dom4j.Element;

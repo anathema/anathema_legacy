@@ -2,12 +2,12 @@ package net.sf.anathema.character.main.trait;
 
 import net.sf.anathema.character.generic.caste.ICasteCollection;
 import net.sf.anathema.character.generic.caste.ICasteType;
-import net.sf.anathema.character.generic.traits.TraitType;
-import net.sf.anathema.character.main.testing.dummy.DummyCasteType;
 import net.sf.anathema.character.generic.impl.caste.CasteCollection;
 import net.sf.anathema.character.generic.template.abilities.GroupedTraitType;
+import net.sf.anathema.character.generic.traits.TraitType;
 import net.sf.anathema.character.generic.traits.groups.IIdentifiedTraitTypeGroup;
 import net.sf.anathema.character.impl.model.traits.creation.AbilityTypeGroupFactory;
+import net.sf.anathema.character.main.testing.dummy.DummyCasteType;
 import org.junit.Test;
 
 import java.util.Collections;

@@ -1,9 +1,9 @@
 package net.sf.anathema.character.impl.persistence;
 
 import net.sf.anathema.character.generic.traits.types.AttributeType;
-import net.sf.anathema.character.main.attributes.model.temporary.AttributeModel;
 import net.sf.anathema.character.library.trait.Trait;
 import net.sf.anathema.character.library.trait.persistence.TraitPersister;
+import net.sf.anathema.character.main.attributes.model.temporary.AttributeModel;
 import net.sf.anathema.lib.exception.PersistenceException;
 import net.sf.anathema.lib.xml.ElementUtilities;
 import org.dom4j.Element;

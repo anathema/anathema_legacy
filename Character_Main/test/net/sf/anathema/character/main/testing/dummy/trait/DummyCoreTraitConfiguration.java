@@ -10,6 +10,7 @@ import net.sf.anathema.character.generic.traits.types.AttributeGroupType;
 import net.sf.anathema.character.generic.traits.types.AttributeType;
 import net.sf.anathema.character.library.trait.AbstractTraitCollection;
 import net.sf.anathema.character.library.trait.Trait;
+import net.sf.anathema.character.library.trait.TraitCollection;
 import net.sf.anathema.character.library.trait.TraitGroup;
 import net.sf.anathema.character.library.trait.specialties.ISpecialtiesConfiguration;
 import net.sf.anathema.character.library.trait.specialties.SpecialtiesConfiguration;
@@ -17,8 +18,6 @@ import net.sf.anathema.character.main.abilities.AbilityModel;
 import net.sf.anathema.character.main.attributes.model.temporary.AttributeModel;
 import net.sf.anathema.character.main.testing.dummy.DummyCharacterModelContext;
 import net.sf.anathema.character.main.traits.model.MappedTraitGroup;
-import net.sf.anathema.character.main.traits.model.TraitMap;
-import net.sf.anathema.character.model.traits.ICoreTraitConfiguration;
 import net.sf.anathema.lib.collection.MultiEntryMap;
 import net.sf.anathema.lib.util.Identifier;
 import net.sf.anathema.lib.util.SimpleIdentifier;
@@ -32,7 +31,7 @@ import static net.sf.anathema.character.generic.traits.types.AttributeGroupType.
 import static net.sf.anathema.character.generic.traits.types.AttributeGroupType.Social;
 import static net.sf.anathema.lib.lang.ArrayUtilities.getFirst;
 
-public class DummyCoreTraitConfiguration extends AbstractTraitCollection implements ICoreTraitConfiguration, TraitMap {
+public class DummyCoreTraitConfiguration extends AbstractTraitCollection implements TraitCollection {
 
   private final MultiEntryMap<String, TraitType> abilityGroupsByType = new MultiEntryMap<>();
   private ISpecialtiesConfiguration specialtyConfiguration;
@@ -99,7 +98,7 @@ public class DummyCoreTraitConfiguration extends AbstractTraitCollection impleme
     return new DummyAbilityModel(this);
   }
 
-   public TraitGroup createGroup(final AttributeGroupType groupType, final AttributeType... types) {
+  public TraitGroup createGroup(final AttributeGroupType groupType, final AttributeType... types) {
     return new TraitGroup() {
       @Override
       public Trait[] getGroupTraits() {

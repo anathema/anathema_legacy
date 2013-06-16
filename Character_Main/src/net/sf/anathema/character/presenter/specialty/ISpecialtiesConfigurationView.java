@@ -5,7 +5,6 @@ import net.sf.anathema.character.view.ISpecialtyView;
 import net.sf.anathema.framework.presenter.view.IButtonControlledComboEditView;
 import net.sf.anathema.lib.file.RelativePath;
 
-import javax.swing.Icon;
 import javax.swing.ListCellRenderer;
 
 public interface ISpecialtiesConfigurationView {

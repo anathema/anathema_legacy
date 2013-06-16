@@ -1,17 +1,11 @@
 package net.sf.anathema.character.main.costs;
 
-import net.sf.anathema.character.main.testing.dummy.DummyAdditionalBonusPointManagment;
-import net.sf.anathema.character.main.testing.dummy.trait.DummyCoreTraitConfiguration;
-import net.sf.anathema.character.main.testing.dummy.trait.DummyTraitContext;
 import net.sf.anathema.character.generic.additionalrules.IAdditionalRules;
 import net.sf.anathema.character.generic.caste.ICasteType;
 import net.sf.anathema.character.generic.character.ILimitationContext;
-import net.sf.anathema.character.main.testing.dummy.DummyGenericCharacter;
-import net.sf.anathema.character.main.testing.dummy.template.DummyCharacterTemplate;
 import net.sf.anathema.character.generic.impl.additional.NullAdditionalRules;
 import net.sf.anathema.character.generic.impl.template.points.AttributeCreationPoints;
 import net.sf.anathema.character.generic.impl.template.points.DefaultBonusPointCosts;
-import net.sf.anathema.character.main.testing.dummy.template.DummyTraitTemplateFactory;
 import net.sf.anathema.character.generic.impl.traits.TraitTemplateCollection;
 import net.sf.anathema.character.generic.template.points.IAttributeCreationPoints;
 import net.sf.anathema.character.generic.traits.ITraitTemplate;
@@ -24,11 +18,17 @@ import net.sf.anathema.character.impl.model.creation.bonus.util.TraitGroupCost;
 import net.sf.anathema.character.impl.model.traits.creation.AdditionRulesTraitValueChangeChecker;
 import net.sf.anathema.character.library.trait.DefaultTrait;
 import net.sf.anathema.character.library.trait.FriendlyValueChangeChecker;
-import net.sf.anathema.character.library.trait.Trait;
 import net.sf.anathema.character.library.trait.IValueChangeChecker;
+import net.sf.anathema.character.library.trait.Trait;
 import net.sf.anathema.character.library.trait.favorable.GrumpyIncrementChecker;
 import net.sf.anathema.character.library.trait.rules.FavorableTraitRules;
 import net.sf.anathema.character.library.trait.rules.TraitRules;
+import net.sf.anathema.character.main.testing.dummy.DummyAdditionalBonusPointManagment;
+import net.sf.anathema.character.main.testing.dummy.DummyGenericCharacter;
+import net.sf.anathema.character.main.testing.dummy.template.DummyCharacterTemplate;
+import net.sf.anathema.character.main.testing.dummy.template.DummyTraitTemplateFactory;
+import net.sf.anathema.character.main.testing.dummy.trait.DummyCoreTraitConfiguration;
+import net.sf.anathema.character.main.testing.dummy.trait.DummyTraitContext;
 import org.junit.Before;
 import org.junit.Test;
 

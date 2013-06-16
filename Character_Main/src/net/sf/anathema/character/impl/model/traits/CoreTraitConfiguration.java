@@ -14,17 +14,17 @@ import net.sf.anathema.character.impl.model.traits.creation.TypedTraitTemplateFa
 import net.sf.anathema.character.impl.model.traits.listening.WillpowerListening;
 import net.sf.anathema.character.library.trait.AbstractTraitCollection;
 import net.sf.anathema.character.library.trait.Trait;
+import net.sf.anathema.character.library.trait.TraitCollection;
 import net.sf.anathema.character.library.trait.TraitCollectionUtilities;
 import net.sf.anathema.character.main.abilities.AbilityModel;
 import net.sf.anathema.character.main.abilities.DefaultAbilityModel;
 import net.sf.anathema.character.main.traits.model.TraitModel;
-import net.sf.anathema.character.model.traits.ICoreTraitConfiguration;
 
 import java.util.Iterator;
 
 import static java.util.Arrays.asList;
 
-public class CoreTraitConfiguration extends AbstractTraitCollection implements ICoreTraitConfiguration, TraitModel {
+public class CoreTraitConfiguration extends AbstractTraitCollection implements TraitCollection, TraitModel {
 
   private final ITraitTemplateCollection traitTemplateCollection;
   private final AbilityModel abilities;

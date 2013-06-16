@@ -1,9 +1,5 @@
 package net.sf.anathema.character.main.magic;
 
-import net.sf.anathema.character.main.testing.dummy.magic.DummyLearnableArbitrator;
-import net.sf.anathema.character.main.testing.dummy.magic.DummyLearningCharmGroupContainer;
-import net.sf.anathema.character.main.testing.dummy.DummyExaltCharacterType;
-import net.sf.anathema.character.main.testing.dummy.template.DummyCharmTemplate;
 import net.sf.anathema.character.generic.framework.additionaltemplate.model.ICharmLearnStrategy;
 import net.sf.anathema.character.generic.impl.magic.charm.CharmGroup;
 import net.sf.anathema.character.generic.impl.magic.charm.CharmTree;
@@ -15,6 +11,10 @@ import net.sf.anathema.character.generic.traits.types.ValuedTraitType;
 import net.sf.anathema.character.impl.model.charm.LearningCharmGroup;
 import net.sf.anathema.character.impl.model.context.magic.CreationCharmLearnStrategy;
 import net.sf.anathema.character.magic.dummy.DummyCharm;
+import net.sf.anathema.character.main.testing.dummy.DummyExaltCharacterType;
+import net.sf.anathema.character.main.testing.dummy.magic.DummyLearnableArbitrator;
+import net.sf.anathema.character.main.testing.dummy.magic.DummyLearningCharmGroupContainer;
+import net.sf.anathema.character.main.testing.dummy.template.DummyCharmTemplate;
 import net.sf.anathema.character.model.charm.IExtendedCharmLearnableArbitrator;
 import net.sf.anathema.character.model.charm.ILearningCharmGroup;
 import org.junit.Test;

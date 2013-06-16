@@ -1,12 +1,12 @@
 package net.sf.anathema.character.main.templateparser;
 
 import junit.framework.TestCase;
-import net.sf.anathema.character.main.testing.dummy.DummyGenericTrait;
-import net.sf.anathema.character.main.testing.dummy.DummyLimitationContext;
 import net.sf.anathema.character.generic.framework.xml.trait.GenericRestrictedTraitTemplate;
 import net.sf.anathema.character.generic.framework.xml.trait.GenericTraitTemplate;
 import net.sf.anathema.character.generic.framework.xml.trait.alternate.AlternateMinimumRestriction;
 import net.sf.anathema.character.generic.traits.types.AbilityType;
+import net.sf.anathema.character.main.testing.dummy.DummyGenericTrait;
+import net.sf.anathema.character.main.testing.dummy.DummyLimitationContext;
 
 public class GenericRestrictedTraitTemplateTest extends TestCase {
 

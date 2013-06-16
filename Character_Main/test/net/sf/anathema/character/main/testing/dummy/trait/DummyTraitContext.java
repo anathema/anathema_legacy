@@ -10,7 +10,7 @@ import net.sf.anathema.character.generic.template.ITraitLimitation;
 import net.sf.anathema.character.generic.traits.GenericTrait;
 import net.sf.anathema.character.generic.traits.TraitType;
 import net.sf.anathema.character.impl.model.context.trait.CreationTraitValueStrategy;
-import net.sf.anathema.character.model.traits.ICoreTraitConfiguration;
+import net.sf.anathema.character.library.trait.TraitCollection;
 import net.sf.anathema.lib.exception.NotYetImplementedException;
 
 public class DummyTraitContext implements ITraitContext {
@@ -59,10 +59,10 @@ public class DummyTraitContext implements ITraitContext {
   }
 
   private ITraitValueStrategy traitValueStrategy = new CreationTraitValueStrategy();
-  private final ICoreTraitConfiguration traitCollection;
+  private final TraitCollection traitCollection;
   private final ILimitationContext limitationContext = new DummyLimitationContext();
 
-  public DummyTraitContext(ICoreTraitConfiguration traitCollection) {
+  public DummyTraitContext(TraitCollection traitCollection) {
     this.traitCollection = traitCollection;
   }
 
@@ -76,7 +76,7 @@ public class DummyTraitContext implements ITraitContext {
     return limitationContext;
   }
 
-  public ICoreTraitConfiguration getTraitCollection() {
+  public TraitCollection getTraitCollection() {
     return traitCollection;
   }
 }

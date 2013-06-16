@@ -2,9 +2,9 @@ package net.sf.anathema.character.presenter;
 
 import net.sf.anathema.character.generic.traits.types.OtherTraitType;
 import net.sf.anathema.character.library.trait.Trait;
+import net.sf.anathema.character.library.trait.TraitCollection;
 import net.sf.anathema.character.library.trait.presenter.TraitPresenter;
 import net.sf.anathema.character.main.essencepool.model.EssencePoolModel;
-import net.sf.anathema.character.model.traits.ICoreTraitConfiguration;
 import net.sf.anathema.character.view.IBasicAdvantageView;
 import net.sf.anathema.framework.value.IIntValueView;
 import net.sf.anathema.lib.control.IChangeListener;
@@ -18,10 +18,9 @@ public class EssenceConfigurationPresenter implements Presenter {
   private final IBasicAdvantageView view;
   private final EssencePoolModel essence;
   private final Resources resources;
-  private final ICoreTraitConfiguration traitConfiguration;
+  private final TraitCollection traitConfiguration;
 
-  public EssenceConfigurationPresenter(Resources resources, EssencePoolModel essence, ICoreTraitConfiguration traitConfiguration,
-                                       IBasicAdvantageView view) {
+  public EssenceConfigurationPresenter(Resources resources, EssencePoolModel essence, TraitCollection traitConfiguration, IBasicAdvantageView view) {
     this.resources = resources;
     this.essence = essence;
     this.traitConfiguration = traitConfiguration;

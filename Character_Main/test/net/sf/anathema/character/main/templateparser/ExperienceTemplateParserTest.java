@@ -1,6 +1,5 @@
 package net.sf.anathema.character.main.templateparser;
 
-import net.sf.anathema.character.main.testing.dummy.template.DummyXmlTemplateRegistry;
 import net.sf.anathema.character.generic.framework.xml.experience.ExperienceTemplateParser;
 import net.sf.anathema.character.generic.framework.xml.experience.GenericExperiencePointCosts;
 import net.sf.anathema.character.generic.impl.template.points.MultiplyRatingCosts;
@@ -9,6 +8,7 @@ import net.sf.anathema.character.generic.magic.IMagic;
 import net.sf.anathema.character.generic.magic.charms.MartialArtsLevel;
 import net.sf.anathema.character.generic.template.experience.ICostAnalyzer;
 import net.sf.anathema.character.magic.dummy.DummyCharm;
+import net.sf.anathema.character.main.testing.dummy.template.DummyXmlTemplateRegistry;
 import net.sf.anathema.lib.exception.AnathemaException;
 import net.sf.anathema.lib.xml.DocumentUtilities;
 import org.dom4j.Element;

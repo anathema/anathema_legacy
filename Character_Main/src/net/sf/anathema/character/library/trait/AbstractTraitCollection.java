@@ -7,7 +7,7 @@ import java.util.Collection;
 import java.util.HashMap;
 import java.util.Map;
 
-public abstract class AbstractTraitCollection implements ITraitCollection {
+public abstract class AbstractTraitCollection implements TraitCollection {
 
   private final Map<TraitType, Trait> traitsByType = new HashMap<>();
 

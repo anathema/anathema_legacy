@@ -1,9 +1,9 @@
 package net.sf.anathema.character.main.social;
 
 import net.sf.anathema.character.generic.character.IGenericTraitCollection;
-import net.sf.anathema.character.main.testing.dummy.DummyGenericTrait;
 import net.sf.anathema.character.generic.equipment.ICharacterStatsModifiers;
 import net.sf.anathema.character.generic.impl.social.InvestigationSocialAttack;
+import net.sf.anathema.character.main.testing.dummy.DummyGenericTrait;
 import org.junit.Before;
 import org.junit.Test;
 

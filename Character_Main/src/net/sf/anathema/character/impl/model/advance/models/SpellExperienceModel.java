@@ -3,17 +3,17 @@ package net.sf.anathema.character.impl.model.advance.models;
 import net.sf.anathema.character.generic.IBasicCharacterData;
 import net.sf.anathema.character.generic.magic.ISpell;
 import net.sf.anathema.character.impl.model.advance.IPointCostCalculator;
+import net.sf.anathema.character.library.trait.TraitCollection;
 import net.sf.anathema.character.model.ICharacter;
-import net.sf.anathema.character.model.traits.ICoreTraitConfiguration;
 
 public class SpellExperienceModel extends AbstractIntegerValueModel {
   private final ICharacter character;
   private final IPointCostCalculator calculator;
   private final IBasicCharacterData basicCharacter;
-  private final ICoreTraitConfiguration traitConfiguration;
+  private final TraitCollection traitConfiguration;
 
   public SpellExperienceModel(ICharacter character, IPointCostCalculator calculator, IBasicCharacterData basicCharacter,
-                              ICoreTraitConfiguration traitConfiguration) {
+                              TraitCollection traitConfiguration) {
     super("Experience", "Spells");
     this.character = character;
     this.calculator = calculator;

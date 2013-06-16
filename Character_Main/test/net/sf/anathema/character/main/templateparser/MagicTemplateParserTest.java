@@ -1,9 +1,5 @@
 package net.sf.anathema.character.main.templateparser;
 
-import net.sf.anathema.character.main.testing.dummy.DummyCasteType;
-import net.sf.anathema.character.main.testing.dummy.DummyCharacterTypes;
-import net.sf.anathema.character.main.testing.dummy.magic.DummyMartialArtsRules;
-import net.sf.anathema.character.main.testing.dummy.template.DummyXmlTemplateRegistry;
 import net.sf.anathema.character.generic.framework.xml.magic.GenericMagicTemplate;
 import net.sf.anathema.character.generic.framework.xml.magic.GenericMagicTemplateParser;
 import net.sf.anathema.character.generic.impl.template.magic.DefaultMartialArtsRules;
@@ -12,6 +8,10 @@ import net.sf.anathema.character.generic.magic.spells.CircleType;
 import net.sf.anathema.character.generic.template.magic.ICharmTemplate;
 import net.sf.anathema.character.magic.dummy.DummyCharm;
 import net.sf.anathema.character.magic.dummy.DummyCharmUtilities;
+import net.sf.anathema.character.main.testing.dummy.DummyCasteType;
+import net.sf.anathema.character.main.testing.dummy.DummyCharacterTypes;
+import net.sf.anathema.character.main.testing.dummy.magic.DummyMartialArtsRules;
+import net.sf.anathema.character.main.testing.dummy.template.DummyXmlTemplateRegistry;
 import net.sf.anathema.lib.util.Identifier;
 import net.sf.anathema.lib.xml.DocumentUtilities;
 import org.apache.commons.lang3.ArrayUtils;

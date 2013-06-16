@@ -1,9 +1,9 @@
 package net.sf.anathema.character.main.testing;
 
-import net.sf.anathema.character.main.testing.dummy.DummyCharacterModelContext;
-import net.sf.anathema.character.main.testing.dummy.DummyGenericTrait;
 import net.sf.anathema.character.generic.framework.additionaltemplate.model.ITraitValueStrategy;
 import net.sf.anathema.character.generic.traits.types.OtherTraitType;
+import net.sf.anathema.character.main.testing.dummy.DummyCharacterModelContext;
+import net.sf.anathema.character.main.testing.dummy.DummyGenericTrait;
 
 public class BasicCharacterTestCase {
 

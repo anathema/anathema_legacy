@@ -1,13 +1,13 @@
 package net.sf.anathema.character.main.library;
 
-import net.sf.anathema.character.main.testing.dummy.DummyExaltCharacterType;
-import net.sf.anathema.character.main.testing.dummy.DummyGenericTraitCollection;
-import net.sf.anathema.character.main.testing.dummy.DummyMundaneCharacterType;
 import net.sf.anathema.character.generic.equipment.ICharacterStatsModifiers;
 import net.sf.anathema.character.generic.impl.CharacterUtilities;
 import net.sf.anathema.character.generic.traits.types.AbilityType;
 import net.sf.anathema.character.generic.traits.types.AttributeType;
 import net.sf.anathema.character.generic.traits.types.OtherTraitType;
+import net.sf.anathema.character.main.testing.dummy.DummyExaltCharacterType;
+import net.sf.anathema.character.main.testing.dummy.DummyGenericTraitCollection;
+import net.sf.anathema.character.main.testing.dummy.DummyMundaneCharacterType;
 import org.junit.Assert;
 import org.junit.Test;
 

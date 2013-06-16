@@ -1,7 +1,7 @@
 package net.sf.anathema.character.main.charm;
 
-import net.sf.anathema.character.main.library.NullResources;
 import net.sf.anathema.character.generic.magic.charms.duration.QualifiedAmountDuration;
+import net.sf.anathema.character.main.library.NullResources;
 import net.sf.anathema.lib.resources.Resources;
 import org.junit.Test;
 

@@ -1,12 +1,12 @@
 package net.sf.anathema.character.equipment.impl.creation.model.impl.character.model.natural;
 
 import net.sf.anathema.character.equipment.impl.character.model.natural.DefaultNaturalSoak;
-import net.sf.anathema.character.main.testing.dummy.DummyEssenceCharacterType;
-import net.sf.anathema.character.main.testing.dummy.DummyExaltCharacterType;
-import net.sf.anathema.character.main.testing.dummy.DummyMundaneCharacterType;
 import net.sf.anathema.character.generic.health.HealthType;
 import net.sf.anathema.character.generic.traits.types.AttributeType;
 import net.sf.anathema.character.generic.traits.types.ValuedTraitType;
+import net.sf.anathema.character.main.testing.dummy.DummyEssenceCharacterType;
+import net.sf.anathema.character.main.testing.dummy.DummyExaltCharacterType;
+import net.sf.anathema.character.main.testing.dummy.DummyMundaneCharacterType;
 import org.junit.Assert;
 import org.junit.Test;
 

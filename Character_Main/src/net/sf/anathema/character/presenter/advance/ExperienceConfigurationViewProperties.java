@@ -8,7 +8,6 @@ import net.sf.anathema.lib.gui.table.columsettings.IntegerTableColumnSettings;
 import net.sf.anathema.lib.gui.table.columsettings.StringTableColumnSettings;
 import net.sf.anathema.lib.resources.Resources;
 
-import javax.swing.Icon;
 import javax.swing.table.TableModel;
 import java.awt.Color;
 

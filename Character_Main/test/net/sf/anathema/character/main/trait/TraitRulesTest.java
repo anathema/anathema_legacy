@@ -1,10 +1,10 @@
 package net.sf.anathema.character.main.trait;
 
-import net.sf.anathema.character.main.testing.dummy.DummyLimitationContext;
 import net.sf.anathema.character.generic.template.ITraitLimitation;
 import net.sf.anathema.character.generic.traits.ITraitTemplate;
 import net.sf.anathema.character.generic.traits.types.AbilityType;
 import net.sf.anathema.character.library.trait.rules.TraitRules;
+import net.sf.anathema.character.main.testing.dummy.DummyLimitationContext;
 import org.junit.Test;
 
 import static org.junit.Assert.assertEquals;

@@ -8,7 +8,7 @@ import static net.sf.anathema.lib.lang.ArrayUtilities.transform;
 
 public class TraitCollectionUtilities {
 
-  public static Trait[] getVirtues(ITraitCollection collection) {
+  public static Trait[] getVirtues(TraitCollection collection) {
     return transform(collection.getTraits(VirtueType.values()), Trait.class, new Function<Trait, Trait>() {
       @Override
       public Trait apply(Trait input) {
@@ -17,11 +17,11 @@ public class TraitCollectionUtilities {
     });
   }
 
-  public static Trait getEssence(ITraitCollection traitConfiguration) {
+  public static Trait getEssence(TraitCollection traitConfiguration) {
     return traitConfiguration.getTrait(OtherTraitType.Essence);
   }
 
-  public static Trait getWillpower(ITraitCollection traitConfiguration) {
+  public static Trait getWillpower(TraitCollection traitConfiguration) {
     return traitConfiguration.getTrait(OtherTraitType.Willpower);
   }
 }

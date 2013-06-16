@@ -7,7 +7,6 @@ import net.sf.anathema.framework.presenter.view.IButtonControlledObjectSelection
 import net.sf.anathema.framework.presenter.view.ITextFieldComboBoxEditor;
 import net.sf.anathema.lib.file.RelativePath;
 
-import javax.swing.Icon;
 import javax.swing.ListCellRenderer;
 
 public interface ILinguisticsView extends IRemovableEntriesView<IRemovableEntryView> {

@@ -1,14 +1,14 @@
 package net.sf.anathema.character.impl.model.advance.models;
 
 import net.sf.anathema.character.impl.model.advance.IPointCostCalculator;
-import net.sf.anathema.character.library.trait.ITraitCollection;
+import net.sf.anathema.character.library.trait.TraitCollection;
 import net.sf.anathema.character.library.trait.TraitCollectionUtilities;
 
 public class EssenceExperienceModel extends AbstractIntegerValueModel {
-  private final ITraitCollection traitCollection;
+  private final TraitCollection traitCollection;
   private final IPointCostCalculator calculator;
 
-  public EssenceExperienceModel(ITraitCollection traitCollection, IPointCostCalculator calculator) {
+  public EssenceExperienceModel(TraitCollection traitCollection, IPointCostCalculator calculator) {
     super("Experience", "Essence");
     this.traitCollection = traitCollection;
     this.calculator = calculator;

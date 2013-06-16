@@ -4,21 +4,21 @@ import net.sf.anathema.character.generic.template.abilities.GroupedTraitType;
 import net.sf.anathema.character.generic.traits.TraitType;
 import net.sf.anathema.character.impl.model.advance.IPointCostCalculator;
 import net.sf.anathema.character.library.trait.Trait;
+import net.sf.anathema.character.main.traits.model.TraitMap;
 import net.sf.anathema.character.model.ICharacter;
-import net.sf.anathema.character.model.traits.ICoreTraitConfiguration;
 
 import java.util.ArrayList;
 import java.util.List;
 
 public class AttributeExperienceModel extends AbstractIntegerValueModel {
 
-  private final ICoreTraitConfiguration traitConfiguration;
+  private final TraitMap traitMap;
   private final IPointCostCalculator calculator;
   private final ICharacter character;
 
-  public AttributeExperienceModel(ICoreTraitConfiguration traitConfiguration, IPointCostCalculator calculator, ICharacter character) {
+  public AttributeExperienceModel(TraitMap traitMap, IPointCostCalculator calculator, ICharacter character) {
     super("Experience", "Attributes");
-    this.traitConfiguration = traitConfiguration;
+    this.traitMap = traitMap;
     this.calculator = calculator;
     this.character = character;
   }
@@ -41,6 +41,6 @@ public class AttributeExperienceModel extends AbstractIntegerValueModel {
     for (GroupedTraitType type : character.getCharacterTemplate().getAttributeGroups()) {
       attributeTypes.add(type.getTraitType());
     }
-    return traitConfiguration.getTraits(attributeTypes.toArray(new TraitType[attributeTypes.size()]));
+    return traitMap.getTraits(attributeTypes.toArray(new TraitType[attributeTypes.size()]));
   }
 }

@@ -1,12 +1,12 @@
 package net.sf.anathema.character.main.costs;
 
-import net.sf.anathema.character.main.testing.dummy.trait.DummyCoreTraitConfiguration;
 import net.sf.anathema.character.generic.IBasicCharacterData;
-import net.sf.anathema.character.main.testing.dummy.DummyBasicCharacterData;
 import net.sf.anathema.character.generic.magic.IMagic;
 import net.sf.anathema.character.generic.magic.charms.MartialArtsLevel;
 import net.sf.anathema.character.impl.model.advance.CostAnalyzer;
 import net.sf.anathema.character.magic.dummy.DummyCharm;
+import net.sf.anathema.character.main.testing.dummy.DummyBasicCharacterData;
+import net.sf.anathema.character.main.testing.dummy.trait.DummyCoreTraitConfiguration;
 import net.sf.anathema.lib.util.Identifier;
 import org.junit.Test;
 import org.mockito.Mockito;

@@ -19,6 +19,7 @@ import net.sf.anathema.character.impl.model.context.CharacterModelContext;
 import net.sf.anathema.character.impl.model.statistics.ExtendedConfiguration;
 import net.sf.anathema.character.impl.model.traits.CoreTraitConfiguration;
 import net.sf.anathema.character.impl.model.traits.listening.CharacterTraitListening;
+import net.sf.anathema.character.library.trait.TraitCollection;
 import net.sf.anathema.character.main.abilities.AbilityModel;
 import net.sf.anathema.character.main.attributes.model.temporary.AttributeModel;
 import net.sf.anathema.character.main.attributes.model.temporary.DefaultAttributeModel;
@@ -38,7 +39,6 @@ import net.sf.anathema.character.model.TemplateFactory;
 import net.sf.anathema.character.model.charm.ICharmConfiguration;
 import net.sf.anathema.character.model.charm.IComboConfiguration;
 import net.sf.anathema.character.model.health.IHealthConfiguration;
-import net.sf.anathema.character.model.traits.ICoreTraitConfiguration;
 import net.sf.anathema.framework.presenter.itemmanagement.PrintNameAdjuster;
 import net.sf.anathema.initialization.ObjectFactory;
 import net.sf.anathema.lib.control.IChangeListener;
@@ -230,7 +230,7 @@ public class ExaltedCharacter implements ICharacter {
     return extendedConfiguration;
   }
 
-  public ICoreTraitConfiguration getTraitConfiguration() {
+  public TraitCollection getTraitConfiguration() {
     return traitConfiguration;
   }
 

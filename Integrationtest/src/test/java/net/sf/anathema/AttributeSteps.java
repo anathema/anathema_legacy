@@ -6,7 +6,7 @@ import cucumber.api.java.en.Then;
 import cucumber.api.java.en.When;
 import net.sf.anathema.character.generic.traits.types.AttributeType;
 import net.sf.anathema.character.library.trait.Trait;
-import net.sf.anathema.character.model.traits.ICoreTraitConfiguration;
+import net.sf.anathema.character.library.trait.TraitCollection;
 
 import static org.hamcrest.CoreMatchers.is;
 import static org.junit.Assert.assertThat;
@@ -54,7 +54,7 @@ public class AttributeSteps {
   }
 
   private Trait getAttribute(AttributeType type) {
-    ICoreTraitConfiguration traitConfiguration = character.getCharacter().getTraitConfiguration();
+    TraitCollection traitConfiguration = character.getCharacter().getTraitConfiguration();
     return traitConfiguration.getTrait(type);
   }
 }

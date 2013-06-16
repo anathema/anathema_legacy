@@ -1,11 +1,11 @@
 package net.sf.anathema;
 
 import net.sf.anathema.character.generic.template.ICharacterTemplate;
+import net.sf.anathema.character.library.trait.TraitCollection;
 import net.sf.anathema.character.main.concept.model.CharacterConcept;
 import net.sf.anathema.character.main.concept.model.CharacterConceptFetcher;
 import net.sf.anathema.character.model.ICharacter;
 import net.sf.anathema.character.model.charm.ICharmConfiguration;
-import net.sf.anathema.character.model.traits.ICoreTraitConfiguration;
 
 public class CharacterHolder {
   private ICharacter character;
@@ -26,7 +26,7 @@ public class CharacterHolder {
     return CharacterConceptFetcher.fetch(character);
   }
 
-  public ICoreTraitConfiguration getTraitConfiguration() {
+  public TraitCollection getTraitConfiguration() {
     return character.getTraitConfiguration();
   }
 
