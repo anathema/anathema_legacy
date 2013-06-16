@@ -7,7 +7,6 @@ import net.sf.anathema.character.generic.template.ICharacterTemplate;
 import net.sf.anathema.character.generic.template.ITraitTemplateCollection;
 import net.sf.anathema.character.generic.traits.ITraitTemplate;
 import net.sf.anathema.character.generic.traits.ITraitType;
-import net.sf.anathema.character.generic.traits.groups.IIdentifiedCasteTraitTypeGroup;
 import net.sf.anathema.character.generic.traits.groups.IIdentifiedTraitTypeGroup;
 import net.sf.anathema.character.generic.traits.types.OtherTraitType;
 import net.sf.anathema.character.generic.traits.types.VirtueType;
@@ -18,7 +17,6 @@ import net.sf.anathema.character.impl.model.traits.listening.WillpowerListening;
 import net.sf.anathema.character.library.trait.AbstractTraitCollection;
 import net.sf.anathema.character.library.trait.Trait;
 import net.sf.anathema.character.library.trait.TraitCollectionUtilities;
-import net.sf.anathema.character.library.trait.favorable.IncrementChecker;
 import net.sf.anathema.character.library.trait.specialties.ISpecialtiesConfiguration;
 import net.sf.anathema.character.main.abilities.AbilityModel;
 import net.sf.anathema.character.main.abilities.DefaultAbilityModel;
@@ -78,15 +76,6 @@ public class CoreTraitConfiguration extends AbstractTraitCollection implements I
     TypedTraitTemplateFactory templateFactory = new WillpowerTemplateFactory(traitTemplateCollection.getTraitTemplateFactory());
     DefaultTraitFactory traitFactory = new DefaultTraitFactory(traitContext, additionalTraitRules, templateFactory);
     addTraits(traitFactory.createTrait(OtherTraitType.Willpower));
-  }
-
-  @Override
-  public void addFavorableTraits(IIdentifiedCasteTraitTypeGroup[] traitGroups, IncrementChecker incrementChecker,
-                                 TypedTraitTemplateFactory factory) {
-    for (IIdentifiedCasteTraitTypeGroup traitGroup : traitGroups) {
-      Trait[] traits = favorableTraitFactory.createTraits(traitGroup, incrementChecker, factory);
-      addTraits(traits);
-    }
   }
 
   @Override
