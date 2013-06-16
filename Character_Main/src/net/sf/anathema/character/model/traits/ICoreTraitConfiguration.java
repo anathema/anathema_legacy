@@ -14,6 +14,4 @@ public interface ICoreTraitConfiguration extends ITraitCollection {
   void addFavorableTraits(IIdentifiedCasteTraitTypeGroup[] traitGroups, IIncrementChecker incrementChecker, TypedTraitTemplateFactory factory);
 
   IIdentifiedTraitTypeGroup[] getAbilityTypeGroups();
-
-  IIdentifiedTraitTypeGroup[] getAttributeTypeGroups();
 }

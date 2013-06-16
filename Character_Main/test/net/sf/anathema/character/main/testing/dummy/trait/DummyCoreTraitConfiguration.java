@@ -86,8 +86,7 @@ public class DummyCoreTraitConfiguration extends AbstractTraitCollection impleme
     return specialtyConfiguration;
   }
 
-  @Override
-  public final IIdentifiedCasteTraitTypeGroup[] getAttributeTypeGroups() {
+  private final IIdentifiedCasteTraitTypeGroup[] getAttributeTypeGroups() {
     return new IIdentifiedCasteTraitTypeGroup[]{new IdentifiedAttributeTypeGroup(Physical), new IdentifiedAttributeTypeGroup(Social),
             new IdentifiedAttributeTypeGroup(Mental)};
   }

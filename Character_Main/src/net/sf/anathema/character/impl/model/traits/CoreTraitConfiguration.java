@@ -114,11 +114,6 @@ public class CoreTraitConfiguration extends AbstractTraitCollection implements I
   }
 
   @Override
-  public final IIdentifiedCasteTraitTypeGroup[] getAttributeTypeGroups() {
-    return attributeConfiguration.getGroups();
-  }
-
-  @Override
   public ISpecialtiesConfiguration getSpecialtyConfiguration() {
     return specialtyConfiguration;
   }
