@@ -7,7 +7,7 @@ import net.sf.anathema.charmtree.view.AbstractCharmGroupChangeListener;
 import net.sf.anathema.charmtree.view.CharmDisplayPropertiesMap;
 import net.sf.anathema.lib.util.Identifier;
 import net.sf.anathema.platform.tree.document.visualizer.ITreePresentationProperties;
-import net.sf.anathema.platform.tree.util.RGBColor;
+import net.sf.anathema.framework.ui.RGBColor;
 
 public class CascadeCharmGroupChangeListener extends AbstractCharmGroupChangeListener {
 

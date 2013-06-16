@@ -2,7 +2,7 @@ package net.sf.anathema.charmtree.view;
 
 import net.sf.anathema.framework.swing.IView;
 import net.sf.anathema.platform.tree.presenter.view.NodeInteractionListener;
-import net.sf.anathema.platform.tree.util.RGBColor;
+import net.sf.anathema.framework.ui.RGBColor;
 
 public interface ICharmView extends ICascadeSelectionView, IView, ISpecialCharmViewContainer {
 

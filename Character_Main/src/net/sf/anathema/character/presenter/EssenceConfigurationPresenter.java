@@ -5,7 +5,7 @@ import net.sf.anathema.character.library.trait.Trait;
 import net.sf.anathema.character.library.trait.TraitCollection;
 import net.sf.anathema.character.library.trait.presenter.TraitPresenter;
 import net.sf.anathema.character.main.essencepool.model.EssencePoolModel;
-import net.sf.anathema.character.view.IBasicAdvantageView;
+import net.sf.anathema.character.view.AdvantageView;
 import net.sf.anathema.framework.value.IIntValueView;
 import net.sf.anathema.lib.control.IChangeListener;
 import net.sf.anathema.lib.gui.Presenter;
@@ -15,12 +15,12 @@ import net.sf.anathema.lib.workflow.labelledvalue.NullValueView;
 
 public class EssenceConfigurationPresenter implements Presenter {
 
-  private final IBasicAdvantageView view;
+  private final AdvantageView view;
   private final EssencePoolModel essence;
   private final Resources resources;
   private final TraitCollection traitConfiguration;
 
-  public EssenceConfigurationPresenter(Resources resources, EssencePoolModel essence, TraitCollection traitConfiguration, IBasicAdvantageView view) {
+  public EssenceConfigurationPresenter(Resources resources, EssencePoolModel essence, TraitCollection traitConfiguration, AdvantageView view) {
     this.resources = resources;
     this.essence = essence;
     this.traitConfiguration = traitConfiguration;

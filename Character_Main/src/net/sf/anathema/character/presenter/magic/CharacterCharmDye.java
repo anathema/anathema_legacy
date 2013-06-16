@@ -6,7 +6,7 @@ import net.sf.anathema.character.model.charm.ICharmConfiguration;
 import net.sf.anathema.charmtree.presenter.AbstractCharmDye;
 import net.sf.anathema.charmtree.view.CharmGroupInformer;
 import net.sf.anathema.charmtree.view.ICharmView;
-import net.sf.anathema.platform.tree.util.RGBColor;
+import net.sf.anathema.framework.ui.RGBColor;
 
 public class CharacterCharmDye extends AbstractCharmDye {
 

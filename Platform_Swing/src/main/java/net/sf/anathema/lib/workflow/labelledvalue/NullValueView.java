@@ -1,6 +1,6 @@
 package net.sf.anathema.lib.workflow.labelledvalue;
 
-import java.awt.Color;
+import net.sf.anathema.framework.ui.RGBColor;
 
 public class NullValueView<E> implements IValueView<E>{
   @Override
@@ -9,7 +9,7 @@ public class NullValueView<E> implements IValueView<E>{
   }
 
   @Override
-  public void setTextColor(Color color) {
+  public void setTextColor(RGBColor color) {
     //nothing to do
   }
 

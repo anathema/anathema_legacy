@@ -1,6 +1,6 @@
 package net.sf.anathema.lib.gui.swing;
 
-import net.sf.anathema.platform.tree.util.RGBColor;
+import net.sf.anathema.framework.ui.RGBColor;
 
 import java.awt.Color;
 

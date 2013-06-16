@@ -71,7 +71,8 @@ public class IntimaciesView extends AbstractRemovableEntryView<IRemovableTraitVi
   @Override
   public void setOverview(IOverviewCategory overviewView) {
     overviewPanel.removeAll();
-    overviewPanel.add(overviewView.getComponent());
+    IView view = (IView) overviewView;
+    overviewPanel.add(view.getComponent());
   }
 
   public void initGui(IIconToggleButtonProperties properties) {

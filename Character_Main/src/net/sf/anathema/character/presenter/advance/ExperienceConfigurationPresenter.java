@@ -3,7 +3,7 @@ package net.sf.anathema.character.presenter.advance;
 import net.sf.anathema.character.model.advance.IExperiencePointConfiguration;
 import net.sf.anathema.character.model.advance.IExperiencePointConfigurationListener;
 import net.sf.anathema.character.model.advance.IExperiencePointEntry;
-import net.sf.anathema.character.view.advance.IExperienceConfigurationView;
+import net.sf.anathema.character.view.advance.ExperienceView;
 import net.sf.anathema.character.view.advance.IExperienceConfigurationViewListener;
 import net.sf.anathema.lib.resources.Resources;
 
@@ -18,14 +18,14 @@ public class ExperienceConfigurationPresenter {
   private static final int VALUE_INDEX = 1;
   private static final int DESCRIPTION_INDEX = 0;
   private final IExperiencePointConfiguration experiencePoints;
-  private final IExperienceConfigurationView experienceView;
+  private final ExperienceView experienceView;
   private DefaultTableModel tableModel;
   private final Map<Integer, IExperiencePointEntry> entriesByIndex = new HashMap<>();
   private final Map<IExperiencePointEntry, Integer> indexByEntry = new HashMap<>();
   private final Resources resources;
 
   public ExperienceConfigurationPresenter(Resources resources, IExperiencePointConfiguration experiencePoints,
-                                          IExperienceConfigurationView experienceView) {
+                                          ExperienceView experienceView) {
     this.resources = resources;
     this.experiencePoints = experiencePoints;
     this.experienceView = experienceView;
@@ -66,7 +66,7 @@ public class ExperienceConfigurationPresenter {
         updateView(entry);
       }
     });
-    experienceView.initGui(new ExperienceConfigurationViewProperties(resources, tableModel));
+    experienceView.initGui(new ExperienceViewProperties(resources, tableModel));
     tableModel.addTableModelListener(new TableModelListener() {
       @Override
       public void tableChanged(TableModelEvent e) {

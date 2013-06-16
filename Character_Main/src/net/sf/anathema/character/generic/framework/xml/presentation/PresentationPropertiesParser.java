@@ -4,7 +4,7 @@ import net.sf.anathema.character.generic.framework.xml.core.AbstractXmlTemplateP
 import net.sf.anathema.character.generic.framework.xml.registry.IXmlTemplateRegistry;
 import net.sf.anathema.lib.exception.PersistenceException;
 import net.sf.anathema.lib.xml.ElementUtilities;
-import net.sf.anathema.platform.tree.util.RGBColor;
+import net.sf.anathema.framework.ui.RGBColor;
 import org.dom4j.Element;
 
 public class PresentationPropertiesParser extends AbstractXmlTemplateParser<GenericPresentationTemplate> {

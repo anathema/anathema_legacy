@@ -7,7 +7,7 @@ import net.sf.anathema.charmtree.AbstractCascadeSelectionView;
 import net.sf.anathema.framework.swing.IView;
 import net.sf.anathema.platform.tree.presenter.view.NodeProperties;
 import net.sf.anathema.platform.tree.presenter.view.ToolTipProperties;
-import net.sf.anathema.platform.tree.util.RGBColor;
+import net.sf.anathema.framework.ui.RGBColor;
 
 import javax.swing.JComponent;
 import javax.swing.JPanel;

@@ -1,6 +1,6 @@
 package net.sf.anathema.platform.tree.presenter.view;
 
-import net.sf.anathema.platform.tree.util.RGBColor;
+import net.sf.anathema.framework.ui.RGBColor;
 
 public interface ITreeView<G> {
   void addNodeInteractionListener(NodeInteractionListener listener);

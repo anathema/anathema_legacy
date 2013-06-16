@@ -1,6 +1,6 @@
 package net.sf.anathema.character.view;
 
-public interface IAdvantageViewProperties {
+public interface AdvantageViewProperties {
 
   String getVirtueTitle();
 

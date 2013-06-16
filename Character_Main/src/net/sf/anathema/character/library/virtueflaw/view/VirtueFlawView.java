@@ -6,7 +6,9 @@ import net.sf.anathema.character.generic.framework.util.ExperienceUtilities;
 import net.sf.anathema.character.generic.traits.TraitType;
 import net.sf.anathema.character.library.trait.view.SimpleTraitView;
 import net.sf.anathema.character.library.virtueflaw.presenter.IVirtueFlawView;
+import net.sf.anathema.framework.swing.IView;
 import net.sf.anathema.framework.swing.selection.ObjectSelectionView;
+import net.sf.anathema.framework.value.IIntValueView;
 import net.sf.anathema.framework.value.IntegerViewFactory;
 import net.sf.anathema.lib.gui.selection.IObjectSelectionView;
 import net.sf.anathema.lib.workflow.textualdescription.ITextView;
@@ -22,7 +24,7 @@ import java.awt.Container;
 
 import static net.sf.anathema.lib.gui.layout.LayoutUtils.withoutInsets;
 
-public class VirtueFlawView implements IVirtueFlawView {
+public class VirtueFlawView implements IVirtueFlawView, IView {
   private final JPanel virtueFlawPanel = new JPanel(new MigLayout(withoutInsets().wrapAfter(2)));
   private final IntegerViewFactory intValueDisplayFactory;
 
@@ -38,7 +40,7 @@ public class VirtueFlawView implements IVirtueFlawView {
   }
 
   @Override
-  public SimpleTraitView addLimitValueView(String label, int value, int maxValue) {
+  public IIntValueView addLimitValueView(String label, int value, int maxValue) {
     SimpleTraitView traitView = new SimpleTraitView(intValueDisplayFactory, label, value, maxValue, null, new CC().alignX("left"), new CC());
     traitView.addComponents(virtueFlawPanel);
     return traitView;
