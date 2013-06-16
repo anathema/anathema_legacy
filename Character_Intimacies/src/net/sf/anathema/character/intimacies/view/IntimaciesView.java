@@ -8,7 +8,7 @@ import net.sf.anathema.character.library.intvalue.IRemovableTraitView;
 import net.sf.anathema.character.library.intvalue.IToggleButtonTraitView;
 import net.sf.anathema.character.library.overview.IOverviewCategory;
 import net.sf.anathema.character.library.overview.OverviewCategory;
-import net.sf.anathema.character.library.removableentry.view.AbstractRemovableEntryView;
+import net.sf.anathema.character.library.removableentry.presenter.IRemovableEntryView;
 import net.sf.anathema.character.library.selection.IStringSelectionView;
 import net.sf.anathema.character.library.selection.StringSelectionView;
 import net.sf.anathema.character.library.trait.Trait;
@@ -26,7 +26,7 @@ import javax.swing.JPanel;
 import static net.sf.anathema.lib.gui.layout.LayoutUtils.fillWithoutInsets;
 import static net.sf.anathema.lib.gui.layout.LayoutUtils.withoutInsets;
 
-public class IntimaciesView extends AbstractRemovableEntryView<IRemovableTraitView<IToggleButtonTraitView<?>>> implements IIntimaciesView, IView {
+public class IntimaciesView implements IIntimaciesView, IView {
   private final JPanel content = new JPanel(new MigLayout(fillWithoutInsets()));
   private final JPanel mainPanel = new JPanel(new MigLayout(fillWithoutInsets().wrapAfter(1)));
   private final JPanel entryPanel = new JPanel(new MigLayout(withoutInsets().wrapAfter(2).fillX()));
@@ -77,5 +77,10 @@ public class IntimaciesView extends AbstractRemovableEntryView<IRemovableTraitVi
 
   public void initGui(IIconToggleButtonProperties properties) {
     this.properties = properties;
+  }
+
+  @Override
+  public void removeEntryView(IRemovableEntryView removableView) {
+    removableView.delete();
   }
 }
