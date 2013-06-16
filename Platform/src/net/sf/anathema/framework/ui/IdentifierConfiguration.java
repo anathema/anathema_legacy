@@ -1,4 +1,4 @@
-package net.sf.anathema.character.presenter.magic.spells;
+package net.sf.anathema.framework.ui;
 
 import net.sf.anathema.lib.file.RelativePath;
 import net.sf.anathema.lib.gui.AgnosticUIConfiguration;
