@@ -50,8 +50,8 @@ public class IntimaciesView implements IIntimaciesView, IView {
   }
 
   @Override
-  public IOverviewCategory createOverview(String borderLabel) {
-    return new OverviewCategory(overviewPanel, borderLabel, false);
+  public IOverviewCategory addOverview(String border) {
+    return new OverviewCategory(overviewPanel, border, false);
   }
 
   @Override

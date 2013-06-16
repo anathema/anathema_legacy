@@ -9,7 +9,7 @@ public interface IIntimaciesView {
 
   IStringSelectionView addSelectionView(String labelText, RelativePath addIcon);
 
-  IOverviewCategory createOverview(String borderLabel);
+  IOverviewCategory addOverview(String border);
 
   void setOverview(IOverviewCategory overviewView);
 

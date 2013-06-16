@@ -58,7 +58,7 @@ public class IntimaciesPresenter {
   }
 
   private void initOverviewView() {
-    final IOverviewCategory creationOverview = view.createOverview(
+    final IOverviewCategory creationOverview = view.addOverview(
             resources.getString("Intimacies.Overview.BorderLabel"));
     final ILabelledAlotmentView freeIntimaciesView = creationOverview.addAlotmentView(
             resources.getString("Intimacies.Overview.Free"), 2);
@@ -66,7 +66,7 @@ public class IntimaciesPresenter {
             resources.getString("Intimacies.Overview.Maximum"), 2);
     final IValueView<Integer> bonusPointsView = creationOverview.addIntegerValueView(
             resources.getString("Intimacies.Overview.BonusPoints"), 2);
-    final IOverviewCategory experienceOverview = view.createOverview(
+    final IOverviewCategory experienceOverview = view.addOverview(
             resources.getString("Intimacies.Overview.BorderLabel"));
     final ILabelledAlotmentView experienceMaximumView = experienceOverview.addAlotmentView(
             resources.getString("Intimacies.Overview.Maximum"), 2);
