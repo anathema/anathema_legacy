@@ -1,7 +1,7 @@
 package net.sf.anathema.character.reporting.text;
 
 import net.sf.anathema.character.generic.character.IGenericCharacter;
-import net.sf.anathema.character.generic.traits.ITraitType;
+import net.sf.anathema.character.generic.traits.TraitType;
 import net.sf.anathema.character.generic.traits.types.AttributeType;
 import net.sf.anathema.framework.reporting.pdf.PdfReportUtils;
 import net.sf.anathema.lib.resources.Resources;
@@ -13,7 +13,7 @@ public class AttributeTextEncoder extends AbstractTraitTextEncoder {
   }
 
   @Override
-  protected ITraitType[] getTypes(IGenericCharacter genericCharacter) {
+  protected TraitType[] getTypes(IGenericCharacter genericCharacter) {
     return AttributeType.values();
   }
 

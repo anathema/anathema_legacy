@@ -3,7 +3,7 @@ package net.sf.anathema.character.generic.impl.magic.persistence.builder.special
 import net.sf.anathema.character.generic.impl.magic.charm.special.TraitCapModifyingCharm;
 import net.sf.anathema.character.generic.impl.magic.persistence.builder.TraitTypeFinder;
 import net.sf.anathema.character.generic.magic.charms.special.ISpecialCharm;
-import net.sf.anathema.character.generic.traits.ITraitType;
+import net.sf.anathema.character.generic.traits.TraitType;
 import org.dom4j.Element;
 
 @SpecialCharmParser
@@ -18,7 +18,7 @@ public class TraitCapModifierCharmBuilder implements SpecialCharmBuilder {
     if (traitString == null) {
       traitString = id.split("\\.")[2];
     }
-    ITraitType trait = traitTypeFinder.getTrait(traitString);
+    TraitType trait = traitTypeFinder.getTrait(traitString);
     int modifier = Integer.parseInt(traitCapModifierElement.attributeValue(ATTRIB_MODIFIER));
     return new TraitCapModifyingCharm(id, trait, modifier);
   }

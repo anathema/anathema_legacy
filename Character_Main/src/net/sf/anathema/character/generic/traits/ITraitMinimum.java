@@ -6,5 +6,5 @@ public interface ITraitMinimum {
 
   int getMinimumValue(ILimitationContext context);
   
-  int getCalculationMinValue(ILimitationContext context, ITraitType traitType);
+  int getCalculationMinValue(ILimitationContext context, TraitType traitType);
 }

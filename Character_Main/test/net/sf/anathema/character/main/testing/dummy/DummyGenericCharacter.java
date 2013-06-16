@@ -16,7 +16,7 @@ import net.sf.anathema.character.generic.magic.charms.special.IMultiLearnableCha
 import net.sf.anathema.character.generic.template.ICharacterTemplate;
 import net.sf.anathema.character.generic.template.ITraitLimitation;
 import net.sf.anathema.character.generic.traits.GenericTrait;
-import net.sf.anathema.character.generic.traits.ITraitType;
+import net.sf.anathema.character.generic.traits.TraitType;
 import net.sf.anathema.character.generic.traits.groups.IIdentifiedTraitTypeGroup;
 import net.sf.anathema.character.library.trait.specialties.Specialty;
 import net.sf.anathema.lib.control.IChangeListener;
@@ -31,7 +31,7 @@ import java.util.Map;
 public class DummyGenericCharacter implements IGenericCharacter {
 
   private final ICharacterTemplate template;
-  private final Map<ITraitType, GenericTrait> traitsByType = new HashMap<>();
+  private final Map<TraitType, GenericTrait> traitsByType = new HashMap<>();
 
   public DummyGenericCharacter(ICharacterTemplate template) {
     this.template = template;
@@ -42,17 +42,17 @@ public class DummyGenericCharacter implements IGenericCharacter {
     return new IGenericTraitCollection() {
 
       @Override
-      public GenericTrait getTrait(ITraitType type) {
+      public GenericTrait getTrait(TraitType type) {
         return traitsByType.get(type);
       }
 
       @Override
-      public GenericTrait[] getTraits(ITraitType[] traitTypes) {
+      public GenericTrait[] getTraits(TraitType[] traitTypes) {
         throw new NotYetImplementedException();
       }
 
       @Override
-      public boolean isFavoredOrCasteTrait(ITraitType type) {
+      public boolean isFavoredOrCasteTrait(TraitType type) {
         return getTrait(type).isCasteOrFavored();
       }
     };
@@ -93,7 +93,7 @@ public class DummyGenericCharacter implements IGenericCharacter {
   }
 
   @Override
-  public Specialty[] getSpecialties(ITraitType type) {
+  public Specialty[] getSpecialties(TraitType type) {
     return new Specialty[0];
   }
 

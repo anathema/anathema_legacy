@@ -4,7 +4,7 @@ import net.sf.anathema.character.generic.health.HealthLevelType;
 import net.sf.anathema.character.generic.impl.magic.charm.special.OxBodyTechniqueCharm;
 import net.sf.anathema.character.generic.impl.magic.persistence.builder.TraitTypeFinder;
 import net.sf.anathema.character.generic.magic.charms.special.ISpecialCharm;
-import net.sf.anathema.character.generic.traits.ITraitType;
+import net.sf.anathema.character.generic.traits.TraitType;
 import org.dom4j.Element;
 
 import java.util.ArrayList;
@@ -28,7 +28,7 @@ public class OxBodyCharmBuilder implements SpecialCharmBuilder {
   public ISpecialCharm readCharm(Element charmElement, String id) {
     Element oxbodyElement = charmElement.element(TAG_OXBODY_CHARM);
     String[] traitNameList = oxbodyElement.attributeValue(ATTRIB_TRAIT).split(",");
-    ITraitType[] traitList = new ITraitType[traitNameList.length];
+    TraitType[] traitList = new TraitType[traitNameList.length];
     for (int i = 0; i != traitList.length; i++) {
       traitList[i] = traitTypeFinder.getTrait(traitNameList[i]);
     }

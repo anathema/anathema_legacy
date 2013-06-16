@@ -1,10 +1,10 @@
 package net.sf.anathema.character.generic.framework.xml.health;
 
-import net.sf.anathema.character.generic.traits.ITraitType;
+import net.sf.anathema.character.generic.traits.TraitType;
 
 public interface IHealthTemplate {
 
-  ITraitType[] getToughnessControllingTraits();
+  TraitType[] getToughnessControllingTraits();
 
   String[] getBaseHealthProviders();
 

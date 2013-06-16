@@ -1,6 +1,6 @@
 package net.sf.anathema.character.main.testing.dummy.trait;
 
-import net.sf.anathema.character.generic.traits.ITraitType;
+import net.sf.anathema.character.generic.traits.TraitType;
 import net.sf.anathema.character.library.ITraitFavorization;
 import net.sf.anathema.character.library.trait.Trait;
 import net.sf.anathema.character.library.trait.favorable.NullTraitFavorization;
@@ -9,7 +9,7 @@ import net.sf.anathema.lib.control.IIntValueChangedListener;
 
 public class DummyTrait implements Trait {
 
-  public static DummyTrait createLearnTrait(ITraitType type, int creationValue, int experiencedValue) {
+  public static DummyTrait createLearnTrait(TraitType type, int creationValue, int experiencedValue) {
     DummyTrait trait = new DummyTrait(type);
     trait.setCreationValue(creationValue);
     trait.setExperiencedValue(experiencedValue);
@@ -18,15 +18,15 @@ public class DummyTrait implements Trait {
   }
 
   private int currentValue;
-  private final ITraitType type;
+  private final TraitType type;
   private int creationValue;
   private int experiencedValue;
 
-  public DummyTrait(ITraitType type) {
+  public DummyTrait(TraitType type) {
     this(type, 0);
   }
 
-  public DummyTrait(ITraitType type, int value) {
+  public DummyTrait(TraitType type, int value) {
     this.type = type;
     this.currentValue = value;
   }
@@ -37,7 +37,7 @@ public class DummyTrait implements Trait {
   }
 
   @Override
-  public ITraitType getType() {
+  public TraitType getType() {
     return type;
   }
 

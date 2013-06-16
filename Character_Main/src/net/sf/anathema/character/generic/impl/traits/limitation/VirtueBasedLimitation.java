@@ -2,13 +2,13 @@ package net.sf.anathema.character.generic.impl.traits.limitation;
 
 import net.sf.anathema.character.generic.character.ILimitationContext;
 import net.sf.anathema.character.generic.template.ITraitLimitation;
-import net.sf.anathema.character.generic.traits.ITraitType;
+import net.sf.anathema.character.generic.traits.TraitType;
 import net.sf.anathema.character.generic.traits.types.VirtueType;
 import net.sf.anathema.lib.exception.UnreachableCodeReachedException;
 
 public class VirtueBasedLimitation implements ITraitLimitation {
 
-  private final ITraitType limitingType;
+  private final TraitType limitingType;
 
   public VirtueBasedLimitation(VirtueType limitingType) {
     this.limitingType = limitingType;

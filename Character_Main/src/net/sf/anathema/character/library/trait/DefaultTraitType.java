@@ -1,12 +1,12 @@
 package net.sf.anathema.character.library.trait;
 
-import net.sf.anathema.character.generic.traits.ITraitType;
+import net.sf.anathema.character.generic.traits.TraitType;
 import net.sf.anathema.character.generic.traits.types.ITraitTypeVisitor;
 import net.sf.anathema.lib.util.SimpleIdentifier;
 
-public class TraitType extends SimpleIdentifier implements ITraitType {
+public class DefaultTraitType extends SimpleIdentifier implements TraitType {
 
-  public TraitType(String id) {
+  public DefaultTraitType(String id) {
     super(id);
   }
 

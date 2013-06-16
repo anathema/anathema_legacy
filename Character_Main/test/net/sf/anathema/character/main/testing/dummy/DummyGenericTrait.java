@@ -1,26 +1,26 @@
 package net.sf.anathema.character.main.testing.dummy;
 
 import net.sf.anathema.character.generic.traits.GenericTrait;
-import net.sf.anathema.character.generic.traits.ITraitType;
+import net.sf.anathema.character.generic.traits.TraitType;
 
 public class DummyGenericTrait implements GenericTrait {
 
-  private final ITraitType type;
+  private final TraitType type;
   private final boolean isFavored;
   private final int currentValue;
 
-  public DummyGenericTrait(ITraitType type, int currentValue) {
+  public DummyGenericTrait(TraitType type, int currentValue) {
       this(type, currentValue, false);
   }
 
-  public DummyGenericTrait(ITraitType type, int currentValue, boolean isFavored) {
+  public DummyGenericTrait(TraitType type, int currentValue, boolean isFavored) {
     this.type = type;
     this.currentValue = currentValue;
     this.isFavored = isFavored;
   }
 
   @Override
-  public ITraitType getType() {
+  public TraitType getType() {
     return type;
   }
 

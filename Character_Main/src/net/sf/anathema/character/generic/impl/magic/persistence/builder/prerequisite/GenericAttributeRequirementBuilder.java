@@ -3,7 +3,7 @@ package net.sf.anathema.character.generic.impl.magic.persistence.builder.prerequ
 import net.sf.anathema.character.generic.impl.magic.ICharmXMLConstants;
 import net.sf.anathema.character.generic.magic.charms.CharmException;
 import net.sf.anathema.character.generic.magic.charms.IndirectCharmRequirement;
-import net.sf.anathema.character.generic.traits.ITraitType;
+import net.sf.anathema.character.generic.traits.TraitType;
 import net.sf.anathema.lib.util.Identifier;
 import net.sf.anathema.lib.xml.ElementUtilities;
 import org.dom4j.Element;
@@ -32,7 +32,7 @@ public class GenericAttributeRequirementBuilder extends AttributeRequirementBuil
     return super.buildId(attributeRequirementElement) + type.getId();
   }
 
-  public void setType(ITraitType type) {
+  public void setType(TraitType type) {
     this.type = type;
   }
 }

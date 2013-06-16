@@ -3,7 +3,7 @@ package net.sf.anathema.character.generic.framework.xml.trait.pool;
 import net.sf.anathema.character.generic.framework.xml.trait.GenericTraitTemplate;
 import net.sf.anathema.character.generic.framework.xml.trait.IClonableTraitTemplate;
 import net.sf.anathema.character.generic.traits.ITraitTemplate;
-import net.sf.anathema.character.generic.traits.ITraitType;
+import net.sf.anathema.character.generic.traits.TraitType;
 import net.sf.anathema.lib.exception.UnreachableCodeReachedException;
 import net.sf.anathema.lib.lang.clone.ICloneable;
 
@@ -14,9 +14,9 @@ public class GenericTraitTemplatePool implements ICloneable<GenericTraitTemplate
 
   private GenericTraitTemplate defaultTraitTemplate;
   // This is volatile instead of final to allow clone to be implemented
-  private volatile Map<ITraitType, IClonableTraitTemplate> specialTraitTemplates = new HashMap<>();
+  private volatile Map<TraitType, IClonableTraitTemplate> specialTraitTemplates = new HashMap<>();
 
-  public ITraitTemplate getTemplate(ITraitType traitType) {
+  public ITraitTemplate getTemplate(TraitType traitType) {
     ITraitTemplate template = specialTraitTemplates.get(traitType);
     if (template != null) {
       return template;
@@ -32,7 +32,7 @@ public class GenericTraitTemplatePool implements ICloneable<GenericTraitTemplate
     this.defaultTraitTemplate = template;
   }
 
-  public void setSpecialTemplate(ITraitType traitType, IClonableTraitTemplate template) {
+  public void setSpecialTemplate(TraitType traitType, IClonableTraitTemplate template) {
     specialTraitTemplates.put(traitType, template);
   }
 
@@ -49,7 +49,7 @@ public class GenericTraitTemplatePool implements ICloneable<GenericTraitTemplate
     if (defaultTraitTemplate != null) {
       clone.defaultTraitTemplate = defaultTraitTemplate.clone();
     }
-    for (ITraitType type : specialTraitTemplates.keySet()) {
+    for (TraitType type : specialTraitTemplates.keySet()) {
       clone.specialTraitTemplates.put(type, specialTraitTemplates.get(type).clone());
     }
     return clone;

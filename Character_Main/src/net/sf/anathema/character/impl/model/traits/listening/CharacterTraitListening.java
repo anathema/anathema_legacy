@@ -1,6 +1,6 @@
 package net.sf.anathema.character.impl.model.traits.listening;
 
-import net.sf.anathema.character.generic.traits.ITraitType;
+import net.sf.anathema.character.generic.traits.TraitType;
 import net.sf.anathema.character.generic.traits.groups.ITraitTypeGroup;
 import net.sf.anathema.character.generic.traits.groups.TraitTypeGroup;
 import net.sf.anathema.character.generic.traits.types.OtherTraitType;
@@ -39,9 +39,9 @@ public class CharacterTraitListening {
 
   private void initAbilityListening() {
     ITraitTypeGroup[] groups = traitConfiguration.getAbilityTypeGroups();
-    ITraitType[] allAbilityTypes = TraitTypeGroup.getAllTraitTypes(groups);
+    TraitType[] allAbilityTypes = TraitTypeGroup.getAllTraitTypes(groups);
     ISpecialtiesConfiguration specialtyConfiguration = traitConfiguration.getSpecialtyConfiguration();
-    for (ITraitType traitType : allAbilityTypes) {
+    for (TraitType traitType : allAbilityTypes) {
       Trait ability = traitConfiguration.getTrait(traitType);
       listening.addTraitListening(ability);
       ability.getFavorization().addFavorableStateChangedListener(new IFavorableStateChangedListener() {

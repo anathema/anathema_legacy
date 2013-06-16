@@ -1,7 +1,7 @@
 package net.sf.anathema.character.generic.equipment.weapon;
 
 import net.sf.anathema.character.generic.health.HealthType;
-import net.sf.anathema.character.generic.traits.ITraitType;
+import net.sf.anathema.character.generic.traits.TraitType;
 import net.sf.anathema.lib.util.Identifier;
 
 public interface IWeaponStats extends IEquipmentStats {
@@ -16,7 +16,7 @@ public interface IWeaponStats extends IEquipmentStats {
 
   Identifier[] getTags();
 
-  ITraitType getTraitType();
+  TraitType getTraitType();
 
   Integer getDefence();
 
@@ -26,7 +26,7 @@ public interface IWeaponStats extends IEquipmentStats {
   
   int getMinimumDamage();
 
-  ITraitType getDamageTraitType();
+  TraitType getDamageTraitType();
 
   boolean inflictsNoDamage();
 

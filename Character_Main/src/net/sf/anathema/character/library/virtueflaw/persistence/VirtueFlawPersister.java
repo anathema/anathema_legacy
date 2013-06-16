@@ -2,7 +2,7 @@ package net.sf.anathema.character.library.virtueflaw.persistence;
 
 import net.sf.anathema.character.generic.additionaltemplate.IAdditionalModel;
 import net.sf.anathema.character.generic.framework.additionaltemplate.persistence.IAdditionalPersister;
-import net.sf.anathema.character.generic.traits.ITraitType;
+import net.sf.anathema.character.generic.traits.TraitType;
 import net.sf.anathema.character.generic.traits.types.VirtueType;
 import net.sf.anathema.character.library.trait.persistence.TraitPersister;
 import net.sf.anathema.character.library.virtueflaw.model.IVirtueFlaw;
@@ -38,7 +38,7 @@ public class VirtueFlawPersister implements IAdditionalPersister {
   }
 
   private void saveRootVirtue(Element flawElement, IVirtueFlaw virtueFlaw) {
-    ITraitType rootVirtue = virtueFlaw.getRoot();
+    TraitType rootVirtue = virtueFlaw.getRoot();
     if (rootVirtue != null) {
       Element rootElement = flawElement.addElement(TAG_ROOT_VIRTUE);
       rootElement.addAttribute(ATTRIB_NAME, rootVirtue.getId());

@@ -4,7 +4,7 @@ import net.sf.anathema.character.generic.framework.xml.trait.GenericRestrictedTr
 import net.sf.anathema.character.generic.framework.xml.trait.GenericTraitTemplate;
 import net.sf.anathema.character.generic.framework.xml.trait.GenericTraitTemplateParser;
 import net.sf.anathema.character.generic.framework.xml.trait.IClonableTraitTemplate;
-import net.sf.anathema.character.generic.traits.ITraitType;
+import net.sf.anathema.character.generic.traits.TraitType;
 import net.sf.anathema.character.generic.traits.groups.ITraitTypeGroup;
 import net.sf.anathema.lib.exception.PersistenceException;
 import net.sf.anathema.lib.xml.ElementUtilities;
@@ -34,7 +34,7 @@ public class AlternateMinimumTraitTemplateParser {
     List<GenericRestrictedTraitTemplate> traitTemplates = new ArrayList<>();
     for (Element traitElement : ElementUtilities.elements(element, TAG_TRAIT)) {
       IClonableTraitTemplate template = GenericTraitTemplateParser.parseTraitTemplate(traitElement);
-      ITraitType type = traitTypeGroup.getById(ElementUtilities.getRequiredAttrib(traitElement, ATTRIB_ID));
+      TraitType type = traitTypeGroup.getById(ElementUtilities.getRequiredAttrib(traitElement, ATTRIB_ID));
       traitTemplates.add(new GenericRestrictedTraitTemplate(template, restriction, type));
     }
     return traitTemplates.toArray(new GenericRestrictedTraitTemplate[traitTemplates.size()]);
@@ -47,7 +47,7 @@ public class AlternateMinimumTraitTemplateParser {
     List<GenericRestrictedTraitTemplate> traitTemplates = new ArrayList<>();
     for (Element traitElement : ElementUtilities.elements(element, TAG_TRAIT)) {
       GenericTraitTemplate template = GenericTraitTemplateParser.parseTraitTemplateSoft(traitElement);
-      ITraitType type = traitTypeGroup.getById(ElementUtilities.getRequiredAttrib(traitElement, ATTRIB_ID));
+      TraitType type = traitTypeGroup.getById(ElementUtilities.getRequiredAttrib(traitElement, ATTRIB_ID));
       traitTemplates.add(new GenericRestrictedTraitTemplate(template, restriction, type));
     }
     return traitTemplates.toArray(new GenericRestrictedTraitTemplate[traitTemplates.size()]);

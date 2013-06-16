@@ -8,7 +8,7 @@ import net.sf.anathema.character.generic.impl.magic.charm.special.OxBodyTechniqu
 import net.sf.anathema.character.generic.impl.traits.SimpleTraitTemplate;
 import net.sf.anathema.character.generic.traits.GenericTrait;
 import net.sf.anathema.character.generic.traits.ITraitTemplate;
-import net.sf.anathema.character.generic.traits.ITraitType;
+import net.sf.anathema.character.generic.traits.TraitType;
 import net.sf.anathema.character.generic.traits.types.AbilityType;
 import net.sf.anathema.character.impl.model.HealthConfiguration;
 import net.sf.anathema.character.impl.model.charm.special.OxBodyTechniqueConfiguration;
@@ -51,7 +51,7 @@ public class OxBodyTechniqueConfigurationTest {
     health = new HealthConfiguration(new GenericTrait[]{endurance});
     collection.addTestTrait(endurance);
     configuration =
-            new OxBodyTechniqueConfiguration(traitContext, collection, null, new ITraitType[]{endurance.getType()}, health.getOxBodyLearnArbitrator(),
+            new OxBodyTechniqueConfiguration(traitContext, collection, null, new TraitType[]{endurance.getType()}, health.getOxBodyLearnArbitrator(),
                     createObtCharm());
     health.getOxBodyLearnArbitrator().addOxBodyTechniqueConfiguration(configuration);
     health.addHealthLevelProvider(configuration.getHealthLevelProvider());
@@ -78,7 +78,7 @@ public class OxBodyTechniqueConfigurationTest {
   public void testTwoOxBodyTechniques() {
     @SuppressWarnings("serial") OxBodyTechniqueConfiguration secondConfiguration = new OxBodyTechniqueConfiguration(
             new BasicCharacterTestCase().createModelContextWithEssence2(new CreationTraitValueStrategy()).getTraitContext(), collection, null,
-            new ITraitType[]{endurance.getType()}, health.getOxBodyLearnArbitrator(), createObtCharm());
+            new TraitType[]{endurance.getType()}, health.getOxBodyLearnArbitrator(), createObtCharm());
     health.getOxBodyLearnArbitrator().addOxBodyTechniqueConfiguration(secondConfiguration);
     health.addHealthLevelProvider(secondConfiguration.getHealthLevelProvider());
     endurance.setCurrentValue(2);

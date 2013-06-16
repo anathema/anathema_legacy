@@ -1,10 +1,10 @@
 package net.sf.anathema.character.generic.framework;
 
-import net.sf.anathema.character.generic.traits.ITraitType;
+import net.sf.anathema.character.generic.traits.TraitType;
 
 public interface ITraitReference {
 
-  ITraitType getTraitType();
+  TraitType getTraitType();
 
   String getName();
 }

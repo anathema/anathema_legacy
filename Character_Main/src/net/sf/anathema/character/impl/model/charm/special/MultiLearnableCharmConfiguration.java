@@ -8,12 +8,12 @@ import net.sf.anathema.character.generic.magic.charms.ICharmLearnableArbitrator;
 import net.sf.anathema.character.generic.magic.charms.special.IMultiLearnableCharm;
 import net.sf.anathema.character.generic.magic.charms.special.ISpecialCharmLearnListener;
 import net.sf.anathema.character.generic.magic.charms.special.LearnRangeContext;
-import net.sf.anathema.character.generic.traits.ITraitType;
+import net.sf.anathema.character.generic.traits.TraitType;
 import net.sf.anathema.character.impl.model.charm.CharmTraitRequirementChecker;
 import net.sf.anathema.character.impl.model.charm.PrerequisiteModifyingCharms;
+import net.sf.anathema.character.library.trait.DefaultTraitType;
 import net.sf.anathema.character.library.trait.Trait;
 import net.sf.anathema.character.library.trait.LimitedTrait;
-import net.sf.anathema.character.library.trait.TraitType;
 import net.sf.anathema.character.library.trait.favorable.IncrementChecker;
 import net.sf.anathema.character.model.charm.ICharmConfiguration;
 import net.sf.anathema.character.model.charm.special.IMultiLearnableCharmConfiguration;
@@ -38,7 +38,7 @@ public class MultiLearnableCharmConfiguration implements IMultiLearnableCharmCon
     this.charm = charm;
     this.specialCharm = specialCharm;
     this.arbitrator = arbitrator;
-    this.trait = new LimitedTrait(new TraitType(charm.getId()), SimpleTraitTemplate.createStaticLimitedTemplate(
+    this.trait = new LimitedTrait(new DefaultTraitType(charm.getId()), SimpleTraitTemplate.createStaticLimitedTemplate(
             0, specialCharm.getAbsoluteLearnLimit()), new MultiLearnableIncrementChecker(), context.getTraitContext());
     this.trait.addCurrentValueListener(new IIntValueChangedListener() {
       @Override
@@ -48,7 +48,7 @@ public class MultiLearnableCharmConfiguration implements IMultiLearnableCharmCon
     });
     context.getCharacterListening().addChangeListener(new DedicatedCharacterChangeAdapter() {
       @Override
-      public void traitChanged(ITraitType type) {
+      public void traitChanged(TraitType type) {
         validateLearnCount();
       }
     });

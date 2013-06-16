@@ -1,9 +1,9 @@
 package net.sf.anathema.character.generic.character;
 
 import net.sf.anathema.character.generic.traits.GenericTrait;
-import net.sf.anathema.character.generic.traits.ITraitType;
+import net.sf.anathema.character.generic.traits.TraitType;
 
 public interface GenericTraitProvider {
 
-  GenericTrait getTrait(ITraitType type);
+  GenericTrait getTrait(TraitType type);
 }

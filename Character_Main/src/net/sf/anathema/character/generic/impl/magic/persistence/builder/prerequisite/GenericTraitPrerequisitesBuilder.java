@@ -1,7 +1,7 @@
 package net.sf.anathema.character.generic.impl.magic.persistence.builder.prerequisite;
 
 import net.sf.anathema.character.generic.traits.GenericTrait;
-import net.sf.anathema.character.generic.traits.ITraitType;
+import net.sf.anathema.character.generic.traits.TraitType;
 import net.sf.anathema.lib.exception.PersistenceException;
 import net.sf.anathema.lib.xml.ElementUtilities;
 import org.dom4j.Element;
@@ -31,7 +31,7 @@ public class GenericTraitPrerequisitesBuilder implements ITraitPrerequisitesBuil
     return allPrerequisites.toArray(new GenericTrait[allPrerequisites.size()]);
   }
 
-  public void setType(ITraitType type) {
+  public void setType(TraitType type) {
     genericBuilder.setType(type);
   }
 }

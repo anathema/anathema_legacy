@@ -1,7 +1,7 @@
 package net.sf.anathema.character.reporting.pdf.content.general;
 
 import net.sf.anathema.character.generic.traits.GenericTrait;
-import net.sf.anathema.character.generic.traits.ITraitType;
+import net.sf.anathema.character.generic.traits.TraitType;
 import net.sf.anathema.lib.resources.Resources;
 
 public class PrintTrait implements NamedValue {
@@ -21,7 +21,7 @@ public class PrintTrait implements NamedValue {
   }
 
   private String getTypeId() {
-    ITraitType type = trait.getType();
+    TraitType type = trait.getType();
     return type.getId();
   }
 

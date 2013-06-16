@@ -3,7 +3,7 @@ package net.sf.anathema.character.reporting.pdf.content.abilities;
 import net.sf.anathema.character.generic.character.IGenericCharacter;
 import net.sf.anathema.character.generic.character.IGenericTraitCollection;
 import net.sf.anathema.character.generic.template.magic.AbilityFavoringType;
-import net.sf.anathema.character.generic.traits.ITraitType;
+import net.sf.anathema.character.generic.traits.TraitType;
 import net.sf.anathema.character.generic.traits.groups.IIdentifiedTraitTypeGroup;
 import net.sf.anathema.character.generic.traits.types.AbilityType;
 import net.sf.anathema.character.reporting.pdf.content.traits.FavorableTraitContent;
@@ -19,7 +19,7 @@ public class AbilitiesContent extends FavorableTraitContent {
   }
 
   @Override
-  public List<? extends ITraitType> getMarkedTraitTypes() {
+  public List<? extends TraitType> getMarkedTraitTypes() {
     return Arrays.asList(AbilityType.Athletics, AbilityType.Dodge, AbilityType.Larceny, AbilityType.Ride, AbilityType.Stealth);
   }
 

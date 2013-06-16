@@ -1,22 +1,19 @@
 package net.sf.anathema.character.impl.model.advance.models;
 
-import net.sf.anathema.character.generic.traits.ITraitType;
-import net.sf.anathema.character.generic.traits.groups.ITraitTypeGroup;
-import net.sf.anathema.character.generic.traits.groups.TraitTypeGroup;
 import net.sf.anathema.character.impl.model.advance.IPointCostCalculator;
 import net.sf.anathema.character.library.trait.Trait;
 import net.sf.anathema.character.library.trait.specialties.ISpecialtiesConfiguration;
 import net.sf.anathema.character.library.trait.subtrait.ISubTraitContainer;
-import net.sf.anathema.character.model.traits.ICoreTraitConfiguration;
+import net.sf.anathema.character.main.abilities.AbilityModel;
 
 public class SpecialtyExperienceModel extends AbstractIntegerValueModel {
 
   private final IPointCostCalculator calculator;
-  private final ICoreTraitConfiguration configuration;
+  private final AbilityModel abilityModel;
 
-  public SpecialtyExperienceModel(ICoreTraitConfiguration configuration, IPointCostCalculator calculator) {
+  public SpecialtyExperienceModel(AbilityModel abilityModel, IPointCostCalculator calculator) {
     super("Experience", "Specialties");
-    this.configuration = configuration;
+    this.abilityModel = abilityModel;
     this.calculator = calculator;
   }
 
@@ -27,17 +24,23 @@ public class SpecialtyExperienceModel extends AbstractIntegerValueModel {
 
   private int getSpecialtyCosts() {
     int experienceCosts = 0;
-    ISpecialtiesConfiguration specialtyConfiguration = configuration.getSpecialtyConfiguration();
-    for (ITraitType abilityType : getAllAbilityTypes()) {
-      ISubTraitContainer specialtiesContainer = specialtyConfiguration.getSpecialtiesContainer(abilityType);
-      Trait ability = configuration.getTrait(abilityType);
-      experienceCosts += specialtiesContainer.getExperienceDotTotal() * calculator.getSpecialtyCosts(ability.getFavorization().isCasteOrFavored());
+    for (Trait ability : abilityModel.getAllAbilities()) {
+      experienceCosts += getExperienceDots(ability) * getCostPerSpecialtyDot(ability);
     }
     return experienceCosts;
   }
 
-  private ITraitType[] getAllAbilityTypes() {
-    ITraitTypeGroup[] groups = configuration.getAbilityTypeGroups();
-    return TraitTypeGroup.getAllTraitTypes(groups);
+  private int getExperienceDots(Trait ability) {
+    ISubTraitContainer specialtiesContainer = getSpecialtyContainer(ability);
+    return specialtiesContainer.getExperienceDotTotal();
+  }
+
+  private ISubTraitContainer getSpecialtyContainer(Trait ability) {
+    ISpecialtiesConfiguration specialtyConfiguration = abilityModel.getSpecialtyConfiguration();
+    return specialtyConfiguration.getSpecialtiesContainer(ability.getType());
+  }
+
+  private double getCostPerSpecialtyDot(Trait ability) {
+    return calculator.getSpecialtyCosts(ability.getFavorization().isCasteOrFavored());
   }
 }

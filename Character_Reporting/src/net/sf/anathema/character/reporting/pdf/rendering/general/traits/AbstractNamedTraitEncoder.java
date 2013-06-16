@@ -2,7 +2,7 @@ package net.sf.anathema.character.reporting.pdf.rendering.general.traits;
 
 import com.itextpdf.text.pdf.PdfContentByte;
 import net.sf.anathema.character.generic.framework.resources.TraitInternationalizer;
-import net.sf.anathema.character.generic.traits.ITraitType;
+import net.sf.anathema.character.generic.traits.TraitType;
 import net.sf.anathema.character.library.trait.specialties.Specialty;
 import net.sf.anathema.character.reporting.pdf.content.stats.IValuedTraitReference;
 import net.sf.anathema.character.reporting.pdf.content.stats.NamedGenericTraitReference;
@@ -71,7 +71,7 @@ public abstract class AbstractNamedTraitEncoder {
     graphics.setSubsectionFont();
   }
 
-  protected final IValuedTraitReference[] getTraitReferences(Specialty[] traits, ITraitType type) {
+  protected final IValuedTraitReference[] getTraitReferences(Specialty[] traits, TraitType type) {
     List<IValuedTraitReference> references = new ArrayList<>();
     for (Specialty trait : traits) {
       references.add(new NamedGenericTraitReference(trait, type));

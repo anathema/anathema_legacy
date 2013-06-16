@@ -4,7 +4,7 @@ import net.sf.anathema.character.generic.character.IGenericTraitCollection;
 import net.sf.anathema.character.generic.equipment.ICharacterStatsModifiers;
 import net.sf.anathema.character.generic.impl.CharacterUtilities;
 import net.sf.anathema.character.generic.social.ISocialCombatStats;
-import net.sf.anathema.character.generic.traits.ITraitType;
+import net.sf.anathema.character.generic.traits.TraitType;
 import net.sf.anathema.character.generic.traits.types.AttributeType;
 
 public abstract class AbstractSocialAttack implements ISocialCombatStats {
@@ -38,6 +38,6 @@ public abstract class AbstractSocialAttack implements ISocialCombatStats {
   }
 
   @Override
-  public abstract ITraitType getName();
+  public abstract TraitType getName();
 
 }

@@ -2,19 +2,19 @@ package net.sf.anathema.character.generic.impl.magic.charm.special;
 
 import net.sf.anathema.character.generic.magic.charms.special.LearnRangeContext;
 import net.sf.anathema.character.generic.traits.GenericTrait;
-import net.sf.anathema.character.generic.traits.ITraitType;
+import net.sf.anathema.character.generic.traits.TraitType;
 
 public class TraitDependentMultiLearnableCharm extends AbstractMultiLearnableCharm {
 
   private final int absoluteLearnLimit;
-  private final ITraitType traitType;
+  private final TraitType traitType;
   private final int countModifier;
 
-  public TraitDependentMultiLearnableCharm(String charmId, int absoluteLearnLimit, ITraitType traitType) {
+  public TraitDependentMultiLearnableCharm(String charmId, int absoluteLearnLimit, TraitType traitType) {
     this(charmId, absoluteLearnLimit, traitType, 0);
   }
 
-  public TraitDependentMultiLearnableCharm(String charmId, int absoluteLearnLimit, ITraitType traitType, int modifier) {
+  public TraitDependentMultiLearnableCharm(String charmId, int absoluteLearnLimit, TraitType traitType, int modifier) {
     super(charmId);
     this.absoluteLearnLimit = absoluteLearnLimit;
     this.traitType = traitType;
@@ -25,7 +25,7 @@ public class TraitDependentMultiLearnableCharm extends AbstractMultiLearnableCha
     return countModifier;
   }
 
-  public ITraitType getTraitType() {
+  public TraitType getTraitType() {
     return traitType;
   }
 

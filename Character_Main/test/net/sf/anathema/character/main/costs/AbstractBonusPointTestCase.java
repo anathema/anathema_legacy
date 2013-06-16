@@ -1,5 +1,6 @@
 package net.sf.anathema.character.main.costs;
 
+import net.sf.anathema.character.generic.traits.TraitType;
 import net.sf.anathema.character.library.trait.favorable.IncrementChecker;
 import net.sf.anathema.character.main.testing.dummy.trait.DummyCoreTraitConfiguration;
 import net.sf.anathema.character.main.testing.dummy.trait.DummyTraitContext;
@@ -14,7 +15,6 @@ import net.sf.anathema.character.main.testing.dummy.template.DummyTraitTemplateF
 import net.sf.anathema.character.generic.template.ITemplateType;
 import net.sf.anathema.character.generic.template.TemplateType;
 import net.sf.anathema.character.generic.traits.ITraitTemplate;
-import net.sf.anathema.character.generic.traits.ITraitType;
 import net.sf.anathema.character.generic.traits.groups.IIdentifiedCasteTraitTypeGroup;
 import net.sf.anathema.character.generic.traits.groups.IdentifiedCasteTraitTypeGroup;
 import net.sf.anathema.character.generic.traits.types.AbilityType;
@@ -67,8 +67,8 @@ public abstract class AbstractBonusPointTestCase {
     IncrementChecker friendlyIncrementChecker = new FriendlyIncrementChecker();
     for (final AbilityType traitType : AbilityType.values()) {
       DummyCasteType[] casteType = {new DummyCasteType()};
-      IIdentifiedCasteTraitTypeGroup typeGroup = new IdentifiedCasteTraitTypeGroup(new ITraitType[]{traitType}, new SimpleIdentifier("Test"),
-              new MultiEntryMap<ITraitType, ICasteType>());
+      IIdentifiedCasteTraitTypeGroup typeGroup = new IdentifiedCasteTraitTypeGroup(new TraitType[]{traitType}, new SimpleIdentifier("Test"),
+              new MultiEntryMap<TraitType, ICasteType>());
       Trait trait = favorableTraitFactory.createTraits(typeGroup, friendlyIncrementChecker, new DummyTypedTraitTemplateFactory(traitType))[0];
       coreTraits.addTestTrait(trait);
       coreTraits.addAbilityTypeToGroup(traitType, casteType[0].getId());
@@ -83,7 +83,7 @@ public abstract class AbstractBonusPointTestCase {
     }
 
     @Override
-    public ITraitTemplate create(ITraitType type) {
+    public ITraitTemplate create(TraitType type) {
       return new DummyTraitTemplateFactory().createAbilityTemplate(traitType);
     }
   }

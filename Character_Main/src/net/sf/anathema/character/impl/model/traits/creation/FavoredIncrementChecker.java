@@ -1,6 +1,6 @@
 package net.sf.anathema.character.impl.model.traits.creation;
 
-import net.sf.anathema.character.generic.traits.ITraitType;
+import net.sf.anathema.character.generic.traits.TraitType;
 import net.sf.anathema.character.library.trait.Trait;
 import net.sf.anathema.character.library.trait.favorable.IncrementChecker;
 import net.sf.anathema.character.main.traits.model.TraitMap;
@@ -8,10 +8,10 @@ import net.sf.anathema.character.main.traits.model.TraitMap;
 public class FavoredIncrementChecker implements IncrementChecker {
 
   private final int maxFavoredCount;
-  private final ITraitType[] traitTypes;
+  private final TraitType[] traitTypes;
   private final TraitMap traitMap;
 
-  public FavoredIncrementChecker(int maxFavoredCount, ITraitType[] traitTypes, TraitMap traitMap) {
+  public FavoredIncrementChecker(int maxFavoredCount, TraitType[] traitTypes, TraitMap traitMap) {
     this.maxFavoredCount = maxFavoredCount;
     this.traitTypes = traitTypes;
     this.traitMap = traitMap;

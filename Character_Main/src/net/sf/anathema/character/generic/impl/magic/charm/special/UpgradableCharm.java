@@ -7,7 +7,7 @@ import net.sf.anathema.character.generic.magic.charms.ICharmLearnableArbitrator;
 import net.sf.anathema.character.generic.magic.charms.special.ISpecialCharmVisitor;
 import net.sf.anathema.character.generic.magic.charms.special.IUpgradableCharm;
 import net.sf.anathema.character.generic.magic.charms.special.SubEffects;
-import net.sf.anathema.character.generic.traits.ITraitType;
+import net.sf.anathema.character.generic.traits.TraitType;
 import net.sf.anathema.lib.data.Condition;
 
 import java.util.Map;
@@ -19,11 +19,11 @@ public class UpgradableCharm extends MultipleEffectCharm implements IUpgradableC
   private final Map<String, Integer> xpCosts;
   private final Map<String, Integer> essenceMins;
   private final Map<String, Integer> traitMins;
-  private final Map<String, ITraitType> traits;
+  private final Map<String, TraitType> traits;
   private final boolean requiresBase;
 
   public UpgradableCharm(String charmId, String[] effectIds, boolean requiresBase, Map<String, Integer> bpCosts, Map<String, Integer> xpCosts,
-                         Map<String, Integer> essenceMins, Map<String, Integer> traitMins, Map<String, ITraitType> traits) {
+                         Map<String, Integer> essenceMins, Map<String, Integer> traitMins, Map<String, TraitType> traits) {
     super(charmId, effectIds);
     this.bpCosts = bpCosts;
     this.xpCosts = xpCosts;
@@ -47,7 +47,7 @@ public class UpgradableCharm extends MultipleEffectCharm implements IUpgradableC
       Integer xpCost = xpCosts.get(id);
       Integer essenceMin = essenceMins.get(id);
       Integer traitMin = traitMins.get(id);
-      ITraitType trait = traits.get(id);
+      TraitType trait = traits.get(id);
       Upgrade upgrade =
               new Upgrade(id, data, buildLearnCondition(arbitrator, data, traitCollection, charm, bpCost != null, essenceMin, traitMin, trait),
                       bpCost == null ? NO_BP_UPGRADE : bpCost, xpCost);
@@ -58,7 +58,7 @@ public class UpgradableCharm extends MultipleEffectCharm implements IUpgradableC
 
   private Condition buildLearnCondition(final ICharmLearnableArbitrator arbitrator, final IBasicCharacterData data,
                                          final IGenericTraitCollection traitCollection, final ICharm charm, final boolean bpUpgradeAllowed,
-                                         final Integer essenceMin, final Integer traitMin, final ITraitType trait) {
+                                         final Integer essenceMin, final Integer traitMin, final TraitType trait) {
     return new UpgradeCondition(arbitrator, charm, bpUpgradeAllowed, data, essenceMin, traitCollection, traitMin, trait);
   }
 

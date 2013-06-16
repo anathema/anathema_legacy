@@ -6,7 +6,7 @@ import com.itextpdf.text.Font;
 import com.itextpdf.text.Image;
 import net.sf.anathema.character.generic.magic.charms.MartialArtsLevel;
 import net.sf.anathema.character.generic.magic.spells.CircleType;
-import net.sf.anathema.character.generic.traits.ITraitType;
+import net.sf.anathema.character.generic.traits.TraitType;
 import net.sf.anathema.character.generic.type.ICharacterType;
 import net.sf.anathema.lib.file.RelativePath;
 import net.sf.anathema.lib.gui.icon.ImageLoadingException;
@@ -71,7 +71,7 @@ public class DemocritusCardResourceProvider implements ICardReportResourceProvid
   }
 
   @Override
-  public Image getTraitIcon(ITraitType trait) {
+  public Image getTraitIcon(TraitType trait) {
     return getImage("icons/traits/" + trait.getId() + ".png");
   }
 

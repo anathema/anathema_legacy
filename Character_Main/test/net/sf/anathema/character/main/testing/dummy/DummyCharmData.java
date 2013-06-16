@@ -11,7 +11,7 @@ import net.sf.anathema.character.generic.magic.charms.type.ICharmTypeModel;
 import net.sf.anathema.character.generic.magic.general.ICostList;
 import net.sf.anathema.character.generic.rules.IExaltedSourceBook;
 import net.sf.anathema.character.generic.traits.GenericTrait;
-import net.sf.anathema.character.generic.traits.ITraitType;
+import net.sf.anathema.character.generic.traits.TraitType;
 import net.sf.anathema.character.generic.traits.types.AbilityType;
 import net.sf.anathema.character.generic.traits.types.ValuedTraitType;
 import net.sf.anathema.character.generic.type.ICharacterType;
@@ -114,7 +114,7 @@ public class DummyCharmData implements ICharmData {
   }
 
   @Override
-  public ITraitType getPrimaryTraitType() {
+  public TraitType getPrimaryTraitType() {
     return AbilityType.Archery;
   }
 }

@@ -6,7 +6,7 @@ import net.sf.anathema.character.generic.health.HealthLevelType;
 import net.sf.anathema.character.generic.magic.ICharm;
 import net.sf.anathema.character.generic.magic.charms.special.IOxBodyTechniqueCharm;
 import net.sf.anathema.character.generic.magic.charms.special.ISpecialCharmLearnListener;
-import net.sf.anathema.character.generic.traits.ITraitType;
+import net.sf.anathema.character.generic.traits.TraitType;
 import net.sf.anathema.character.library.trait.favorable.IncrementChecker;
 import net.sf.anathema.character.model.charm.OxBodyCategory;
 import net.sf.anathema.character.model.charm.special.IOxBodyTechniqueConfiguration;
@@ -28,14 +28,14 @@ public class OxBodyTechniqueConfiguration implements IOxBodyTechniqueConfigurati
   private final IHealthLevelProvider healthLevelProvider;
 
   public OxBodyTechniqueConfiguration(ITraitContext context, final IGenericTraitCollection collection, ICharm oxBodyTechnique,
-                                      final ITraitType[] relevantTraits, final IOxBodyTechniqueArbitrator arbitrator,
+                                      final TraitType[] relevantTraits, final IOxBodyTechniqueArbitrator arbitrator,
                                       IOxBodyTechniqueCharm properties) {
     this.oxBodyTechnique = oxBodyTechnique;
     incrementChecker = new IncrementChecker() {
       @Override
       public boolean isValidIncrement(int increment) {
         int minTrait = Integer.MAX_VALUE;
-        for (ITraitType type : relevantTraits) {
+        for (TraitType type : relevantTraits) {
           minTrait = Math.min(minTrait, collection.getTrait(type).getCurrentValue());
         }
         return increment < 0 || (arbitrator.isIncrementAllowed(increment) && getCurrentLearnCount() + increment <= minTrait);

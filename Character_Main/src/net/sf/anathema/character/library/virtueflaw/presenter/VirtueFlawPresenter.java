@@ -1,7 +1,7 @@
 package net.sf.anathema.character.library.virtueflaw.presenter;
 
 import net.sf.anathema.character.generic.framework.additionaltemplate.listening.VirtueChangeListener;
-import net.sf.anathema.character.generic.traits.ITraitType;
+import net.sf.anathema.character.generic.traits.TraitType;
 import net.sf.anathema.character.library.trait.Trait;
 import net.sf.anathema.character.library.trait.presenter.TraitPresenter;
 import net.sf.anathema.character.library.virtueflaw.model.IVirtueFlaw;
@@ -60,10 +60,10 @@ public class VirtueFlawPresenter implements Presenter {
   }
 
   protected void initRootPresentation(final IVirtueFlaw virtueFlaw, String nameReference) {
-    final IObjectSelectionView<ITraitType> rootView =
-            view.addVirtueFlawRootSelectionView(resources.getString(nameReference), new AbstractSelectCellRenderer<ITraitType>(resources) {
+    final IObjectSelectionView<TraitType> rootView =
+            view.addVirtueFlawRootSelectionView(resources.getString(nameReference), new AbstractSelectCellRenderer<TraitType>(resources) {
               @Override
-              protected String getCustomizedDisplayValue(ITraitType value) {
+              protected String getCustomizedDisplayValue(TraitType value) {
                 return resources.getString("VirtueType.Name." + value.getId());
               }
 
@@ -79,9 +79,9 @@ public class VirtueFlawPresenter implements Presenter {
         rootView.setSelectedObject(virtueFlaw.getRoot());
       }
     });
-    rootView.addObjectSelectionChangedListener(new ObjectValueListener<ITraitType>() {
+    rootView.addObjectSelectionChangedListener(new ObjectValueListener<TraitType>() {
       @Override
-      public void valueChanged(ITraitType newValue) {
+      public void valueChanged(TraitType newValue) {
         virtueFlaw.setRoot(newValue);
       }
     });
@@ -94,8 +94,8 @@ public class VirtueFlawPresenter implements Presenter {
     updateRootView(rootView);
   }
 
-  private void updateRootView(IObjectSelectionView<ITraitType> rootView) {
-    ITraitType rootCopy = model.getVirtueFlaw().getRoot();
+  private void updateRootView(IObjectSelectionView<TraitType> rootView) {
+    TraitType rootCopy = model.getVirtueFlaw().getRoot();
     rootView.setObjects(model.getFlawVirtueTypes());
     rootView.setSelectedObject(rootCopy);
   }

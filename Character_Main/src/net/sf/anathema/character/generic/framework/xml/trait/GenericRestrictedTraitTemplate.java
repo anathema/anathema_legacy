@@ -3,7 +3,7 @@ package net.sf.anathema.character.generic.framework.xml.trait;
 import com.google.common.base.Preconditions;
 import net.sf.anathema.character.generic.character.ILimitationContext;
 import net.sf.anathema.character.generic.template.ITraitLimitation;
-import net.sf.anathema.character.generic.traits.ITraitType;
+import net.sf.anathema.character.generic.traits.TraitType;
 import net.sf.anathema.character.generic.traits.LowerableState;
 import net.sf.anathema.lib.lang.clone.ReflectionCloneableObject;
 
@@ -13,10 +13,10 @@ import java.util.List;
 public class GenericRestrictedTraitTemplate extends ReflectionCloneableObject<IClonableTraitTemplate> implements IClonableTraitTemplate {
 
   private final List<IMinimumRestriction> restrictions = new ArrayList<>();
-  private final ITraitType traitType;
+  private final TraitType traitType;
   private IClonableTraitTemplate traitTemplate;
 
-  public GenericRestrictedTraitTemplate(IClonableTraitTemplate traitTemplate, IMinimumRestriction restriction, ITraitType traitType) {
+  public GenericRestrictedTraitTemplate(IClonableTraitTemplate traitTemplate, IMinimumRestriction restriction, TraitType traitType) {
     Preconditions.checkNotNull(traitTemplate);
     Preconditions.checkNotNull(restriction);
     Preconditions.checkNotNull(traitType);
@@ -76,7 +76,7 @@ public class GenericRestrictedTraitTemplate extends ReflectionCloneableObject<IC
   }
 
   @Override
-  public int getCalculationMinValue(ILimitationContext limitationContext, ITraitType type) {
+  public int getCalculationMinValue(ILimitationContext limitationContext, TraitType type) {
     int minimum = 0;
     for (IMinimumRestriction restriction : restrictions) {
       restriction.clear();
@@ -88,7 +88,7 @@ public class GenericRestrictedTraitTemplate extends ReflectionCloneableObject<IC
     return Math.max(minimum, traitTemplate.getCalculationMinValue(limitationContext, type));
   }
 
-  public ITraitType getTraitType() {
+  public TraitType getTraitType() {
     return traitType;
   }
 

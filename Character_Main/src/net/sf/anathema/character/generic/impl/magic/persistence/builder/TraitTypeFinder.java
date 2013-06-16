@@ -1,6 +1,6 @@
 package net.sf.anathema.character.generic.impl.magic.persistence.builder;
 
-import net.sf.anathema.character.generic.traits.ITraitType;
+import net.sf.anathema.character.generic.traits.TraitType;
 import net.sf.anathema.character.generic.traits.types.AbilityType;
 import net.sf.anathema.character.generic.traits.types.AttributeType;
 import net.sf.anathema.character.generic.traits.types.OtherTraitType;
@@ -8,8 +8,8 @@ import net.sf.anathema.character.generic.traits.types.VirtueType;
 
 public class TraitTypeFinder {
 
-  public ITraitType getTrait(String value) {
-    ITraitType trait = getAbilityType(value);
+  public TraitType getTrait(String value) {
+    TraitType trait = getAbilityType(value);
     trait = trait == null ? getAttributeType(value) : trait;
     trait = trait == null ? getVirtueType(value) : trait;
     trait = trait == null ? getOtherType(value) : trait;

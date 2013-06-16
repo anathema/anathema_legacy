@@ -1,7 +1,7 @@
 package net.sf.anathema.character.main.trait;
 
 import net.sf.anathema.character.generic.character.IGenericCharacter;
-import net.sf.anathema.character.generic.traits.ITraitType;
+import net.sf.anathema.character.generic.traits.TraitType;
 import net.sf.anathema.character.generic.traits.types.AbilityType;
 import net.sf.anathema.character.impl.model.context.GenericSpecialtyContext;
 import net.sf.anathema.lib.control.IChangeListener;
@@ -23,7 +23,7 @@ public class GenericSpecialtyContextTest {
 
   @Test
   public void retrievesSpecialtiesFromCharacter() throws Exception {
-    ITraitType trait = AbilityType.Archery;
+    TraitType trait = AbilityType.Archery;
     context.getSpecialties(trait);
     verify(character).getSpecialties(trait);
   }

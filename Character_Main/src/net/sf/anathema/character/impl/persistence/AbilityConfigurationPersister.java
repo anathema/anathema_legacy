@@ -1,7 +1,7 @@
 package net.sf.anathema.character.impl.persistence;
 
 import net.sf.anathema.character.generic.framework.ITraitReference;
-import net.sf.anathema.character.generic.traits.ITraitType;
+import net.sf.anathema.character.generic.traits.TraitType;
 import net.sf.anathema.character.generic.traits.types.AbilityType;
 import net.sf.anathema.character.library.trait.Trait;
 import net.sf.anathema.character.library.trait.persistence.TraitPersister;
@@ -34,7 +34,7 @@ public class AbilityConfigurationPersister {
   }
 
   private void saveAbility(Element parent, Trait ability, final ISpecialtiesConfiguration specialtyConfiguration) {
-    ITraitType traitType = ability.getType();
+    TraitType traitType = ability.getType();
     final Element abilityElement = persister.saveTrait(parent, traitType.getId(), ability);
     if (ability.getFavorization().isFavored()) {
       ElementUtilities.addAttribute(abilityElement, ATTRIB_FAVORED, ability.getFavorization().isFavored());

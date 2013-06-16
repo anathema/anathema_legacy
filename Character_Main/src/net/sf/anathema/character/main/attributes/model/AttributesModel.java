@@ -4,7 +4,7 @@ import net.sf.anathema.character.change.ChangeAnnouncer;
 import net.sf.anathema.character.generic.character.IGenericCharacter;
 import net.sf.anathema.character.generic.template.ICharacterTemplate;
 import net.sf.anathema.character.generic.traits.ITraitTemplate;
-import net.sf.anathema.character.generic.traits.ITraitType;
+import net.sf.anathema.character.generic.traits.TraitType;
 import net.sf.anathema.character.main.attributes.template.AttributeGroup;
 import net.sf.anathema.character.main.attributes.template.AttributeTemplate;
 import net.sf.anathema.character.model.CharacterModel;
@@ -35,7 +35,7 @@ public class AttributesModel implements AttributesList, CharacterModel {
 
   public int getTraitMaximum(IGenericCharacter character) {
     ICharacterTemplate characterTemplate = character.getTemplate();
-    ITraitType traitType = characterTemplate.getAttributeGroups()[0].getTraitType();
+    TraitType traitType = characterTemplate.getAttributeGroups()[0].getTraitType();
     ITraitTemplate template = characterTemplate.getTraitTemplateCollection().getTraitTemplate(traitType);
     return template.getLimitation().getAbsoluteLimit(character);
   }

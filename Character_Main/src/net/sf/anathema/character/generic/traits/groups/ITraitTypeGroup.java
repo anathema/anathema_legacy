@@ -1,12 +1,12 @@
 package net.sf.anathema.character.generic.traits.groups;
 
-import net.sf.anathema.character.generic.traits.ITraitType;
+import net.sf.anathema.character.generic.traits.TraitType;
 
 public interface ITraitTypeGroup {
 
-  ITraitType getById(String typeId);
+  TraitType getById(String typeId);
 
-  ITraitType[] getAllGroupTypes();
+  TraitType[] getAllGroupTypes();
 
-  boolean contains(ITraitType traitType);
+  boolean contains(TraitType traitType);
 }

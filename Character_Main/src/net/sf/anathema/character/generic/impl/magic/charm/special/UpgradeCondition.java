@@ -4,7 +4,7 @@ import net.sf.anathema.character.generic.IBasicCharacterData;
 import net.sf.anathema.character.generic.character.IGenericTraitCollection;
 import net.sf.anathema.character.generic.magic.ICharm;
 import net.sf.anathema.character.generic.magic.charms.ICharmLearnableArbitrator;
-import net.sf.anathema.character.generic.traits.ITraitType;
+import net.sf.anathema.character.generic.traits.TraitType;
 import net.sf.anathema.character.generic.traits.types.OtherTraitType;
 import net.sf.anathema.lib.data.Condition;
 
@@ -16,10 +16,10 @@ public class UpgradeCondition implements Condition {
   private final Integer essenceMin;
   private final IGenericTraitCollection traitCollection;
   private final Integer traitMin;
-  private final ITraitType trait;
+  private final TraitType trait;
 
   public UpgradeCondition(ICharmLearnableArbitrator arbitrator, ICharm charm, boolean bpUpgradeAllowed, IBasicCharacterData data, Integer essenceMin,
-                          IGenericTraitCollection traitCollection, Integer traitMin, ITraitType trait) {
+                          IGenericTraitCollection traitCollection, Integer traitMin, TraitType trait) {
     this.arbitrator = arbitrator;
     this.charm = charm;
     this.bpUpgradeAllowed = bpUpgradeAllowed;

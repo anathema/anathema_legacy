@@ -1,7 +1,7 @@
 package net.sf.anathema.character.reporting.pdf.content.magic;
 
 import net.sf.anathema.character.generic.character.IGenericCharacter;
-import net.sf.anathema.character.generic.traits.ITraitType;
+import net.sf.anathema.character.generic.traits.TraitType;
 import net.sf.anathema.character.reporting.pdf.content.SubBoxContent;
 import net.sf.anathema.lib.resources.Resources;
 
@@ -32,14 +32,14 @@ public class GenericCharmContent implements SubBoxContent {
 
   public List<String> getTraitLabels() {
     List<String> traits = new ArrayList<>();
-    for (ITraitType trait : getTraits()) {
+    for (TraitType trait : getTraits()) {
       String text = getTraitLabel(trait);
       traits.add(text);
     }
     return traits;
   }
 
-  private String getTraitLabel(ITraitType trait) {
+  private String getTraitLabel(TraitType trait) {
     String text = resources.getString(trait.getId());
     if (text.length() >= TYPE_LONG_FORM_CUTOFF) {
       return resources.getString(trait.getId() + ".Short");
@@ -47,7 +47,7 @@ public class GenericCharmContent implements SubBoxContent {
     return text;
   }
 
-  private List<ITraitType> getTraits() {
+  private List<TraitType> getTraits() {
     return GenericCharmUtilities.getGenericCharmTraits(character);
   }
 

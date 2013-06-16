@@ -2,14 +2,14 @@ package net.sf.anathema.character.generic.impl.magic.charm.special;
 
 import net.sf.anathema.character.generic.magic.charms.special.ISpecialCharmVisitor;
 import net.sf.anathema.character.generic.magic.charms.special.ITraitCapModifyingCharm;
-import net.sf.anathema.character.generic.traits.ITraitType;
+import net.sf.anathema.character.generic.traits.TraitType;
 
 public class TraitCapModifyingCharm implements ITraitCapModifyingCharm {
   private final String charmId;
-  private final ITraitType traitType;
+  private final TraitType traitType;
   private final int modifier;
 
-  public TraitCapModifyingCharm(String charmId, ITraitType trait, int modifier) {
+  public TraitCapModifyingCharm(String charmId, TraitType trait, int modifier) {
     this.charmId = charmId;
     this.traitType = trait;
     this.modifier = modifier;
@@ -26,7 +26,7 @@ public class TraitCapModifyingCharm implements ITraitCapModifyingCharm {
   }
 
   @Override
-  public ITraitType getTraitType() {
+  public TraitType getTraitType() {
     return traitType;
   }
 

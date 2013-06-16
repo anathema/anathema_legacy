@@ -2,7 +2,7 @@ package net.sf.anathema.character.generic.framework.xml.trait.allocation;
 
 import net.sf.anathema.character.generic.character.ILimitationContext;
 import net.sf.anathema.character.generic.framework.xml.trait.IMinimumRestriction;
-import net.sf.anathema.character.generic.traits.ITraitType;
+import net.sf.anathema.character.generic.traits.TraitType;
 import net.sf.anathema.lib.lang.ReflectionEqualsObject;
 
 import java.util.ArrayList;
@@ -11,13 +11,13 @@ import java.util.List;
 import java.util.Map;
 
 public class AllocationMinimumRestriction extends ReflectionEqualsObject implements IMinimumRestriction {
-  private final Map<ILimitationContext, Map<ITraitType, Integer>> claimMap = new HashMap<>();
+  private final Map<ILimitationContext, Map<TraitType, Integer>> claimMap = new HashMap<>();
   private final List<AllocationMinimumRestriction> siblings;
   private final int dotCount;
   private int strictMinimumValue = 0;
-  private final List<ITraitType> alternateTraitTypes = new ArrayList<>();
+  private final List<TraitType> alternateTraitTypes = new ArrayList<>();
   private ILimitationContext latestContext = null;
-  private ITraitType latestTrait = null;
+  private TraitType latestTrait = null;
   private boolean isFreebie;
 
   public AllocationMinimumRestriction(int dotCount, List<AllocationMinimumRestriction> siblings) {
@@ -26,11 +26,11 @@ public class AllocationMinimumRestriction extends ReflectionEqualsObject impleme
   }
 
   @Override
-  public boolean isFullfilledWithout(ILimitationContext context, ITraitType traitType) {
+  public boolean isFullfilledWithout(ILimitationContext context, TraitType traitType) {
     int remainingDots = dotCount;
     latestContext = context;
     latestTrait = traitType;
-    for (ITraitType type : alternateTraitTypes) {
+    for (TraitType type : alternateTraitTypes) {
       if (type != traitType) {
         int currentDots = context.getTraitCollection().getTrait(type).getCurrentValue();
         int externalDots = getExternalClaims(context, type);
@@ -45,13 +45,13 @@ public class AllocationMinimumRestriction extends ReflectionEqualsObject impleme
   }
 
   @Override
-  public int getCalculationMinValue(ILimitationContext context, ITraitType traitType) {
+  public int getCalculationMinValue(ILimitationContext context, TraitType traitType) {
     if (!isFreebie) {
       return 0;
     }
     int traitDots = 0;
     int remainingDots = dotCount;
-    for (ITraitType type : alternateTraitTypes) {
+    for (TraitType type : alternateTraitTypes) {
       int currentDots = context.getTraitCollection().getTrait(type).getCurrentValue();
       int externalDots = getExternalClaims(context, type);
       int claimedDots = Math.max(currentDots - externalDots, 0);
@@ -70,8 +70,8 @@ public class AllocationMinimumRestriction extends ReflectionEqualsObject impleme
     isFreebie = value;
   }
 
-  private void claimDots(ILimitationContext context, ITraitType type, int dots) {
-    Map<ITraitType, Integer> map = claimMap.get(context);
+  private void claimDots(ILimitationContext context, TraitType type, int dots) {
+    Map<TraitType, Integer> map = claimMap.get(context);
     if (map == null) {
       map = new HashMap<>();
       claimMap.put(context, map);
@@ -79,14 +79,14 @@ public class AllocationMinimumRestriction extends ReflectionEqualsObject impleme
     map.put(type, dots);
   }
 
-  private int getExternalClaims(ILimitationContext context, ITraitType traitType) {
+  private int getExternalClaims(ILimitationContext context, TraitType traitType) {
     int claimed = 0;
     for (AllocationMinimumRestriction sibling : siblings) {
       if (sibling == this) {
         continue;
       }
       try {
-        Map<ITraitType, Integer> map = sibling.claimMap.get(context);
+        Map<TraitType, Integer> map = sibling.claimMap.get(context);
         claimed += map.get(traitType);
       } catch (NullPointerException ignored) {
       }
@@ -103,7 +103,7 @@ public class AllocationMinimumRestriction extends ReflectionEqualsObject impleme
   }
 
   @Override
-  public void addTraitType(ITraitType traitType) {
+  public void addTraitType(TraitType traitType) {
     alternateTraitTypes.add(traitType);
   }
 

@@ -1,7 +1,7 @@
 package net.sf.anathema.character.main.testing.dummy.trait;
 
 import com.google.common.base.Predicate;
-import net.sf.anathema.character.generic.traits.ITraitType;
+import net.sf.anathema.character.generic.traits.TraitType;
 import net.sf.anathema.character.generic.traits.groups.IIdentifiedCasteTraitTypeGroup;
 import net.sf.anathema.character.generic.traits.groups.IIdentifiedTraitTypeGroup;
 import net.sf.anathema.character.generic.traits.groups.IdentifiedAttributeTypeGroup;
@@ -33,7 +33,7 @@ import static net.sf.anathema.lib.lang.ArrayUtilities.getFirst;
 
 public class DummyCoreTraitConfiguration extends AbstractTraitCollection implements ICoreTraitConfiguration {
 
-  private final MultiEntryMap<String, ITraitType> abilityGroupsByType = new MultiEntryMap<>();
+  private final MultiEntryMap<String, TraitType> abilityGroupsByType = new MultiEntryMap<>();
   private ISpecialtiesConfiguration specialtyConfiguration;
 
   private IIdentifiedTraitTypeGroup getAttributeTypeGroup(final AttributeGroupType type) {
@@ -69,8 +69,8 @@ public class DummyCoreTraitConfiguration extends AbstractTraitCollection impleme
   public IIdentifiedTraitTypeGroup[] getAbilityTypeGroups() {
     List<IIdentifiedTraitTypeGroup> groups = new ArrayList<>();
     for (String groupId : abilityGroupsByType.keySet()) {
-      List<ITraitType> traitTypes = abilityGroupsByType.get(groupId);
-      groups.add(new IdentifiedTraitTypeGroup(traitTypes.toArray(new ITraitType[traitTypes.size()]), new SimpleIdentifier(groupId)));
+      List<TraitType> traitTypes = abilityGroupsByType.get(groupId);
+      groups.add(new IdentifiedTraitTypeGroup(traitTypes.toArray(new TraitType[traitTypes.size()]), new SimpleIdentifier(groupId)));
     }
     return groups.toArray(new IIdentifiedTraitTypeGroup[groups.size()]);
   }

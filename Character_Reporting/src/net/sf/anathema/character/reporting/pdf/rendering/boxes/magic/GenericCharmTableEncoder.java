@@ -15,7 +15,7 @@ import com.itextpdf.text.pdf.PdfTemplate;
 import net.sf.anathema.character.generic.character.IGenericCharacter;
 import net.sf.anathema.character.generic.magic.IMagic;
 import net.sf.anathema.character.generic.magic.IMagicStats;
-import net.sf.anathema.character.generic.traits.ITraitType;
+import net.sf.anathema.character.generic.traits.TraitType;
 import net.sf.anathema.character.reporting.pdf.content.ReportSession;
 import net.sf.anathema.character.reporting.pdf.content.magic.GenericCharmContent;
 import net.sf.anathema.character.reporting.pdf.content.magic.GenericCharmUtilities;
@@ -57,14 +57,14 @@ public class GenericCharmTableEncoder extends AbstractTableEncoder<ReportSession
   protected PdfPTable createTable(SheetGraphics graphics, ReportSession session, Bounds bounds) throws DocumentException {
     IGenericCharacter character = session.getCharacter();
     PdfContentByte directContent = graphics.getDirectContent();
-    List<ITraitType> traits = GenericCharmUtilities.getGenericCharmTraits(character);
+    List<TraitType> traits = GenericCharmUtilities.getGenericCharmTraits(character);
     Font font = graphics.createTableFont();
     PdfTemplate learnedTemplate = createCharmDotTemplate(directContent, BaseColor.BLACK);
     PdfTemplate notLearnedTemplate = createCharmDotTemplate(directContent, BaseColor.WHITE);
     PdfPTable table = new PdfPTable(createColumnWidths(traits.size() + 1));
     table.setWidthPercentage(100);
     table.addCell(new TableCell(new Phrase(), Rectangle.NO_BORDER));
-    for (ITraitType trait : traits) {
+    for (TraitType trait : traits) {
       table.addCell(createHeaderCell(graphics, directContent, trait));
     }
     for (IMagicStats stats : GenericCharmUtilities.getGenericCharmStats(character)) {
@@ -73,7 +73,7 @@ public class GenericCharmTableEncoder extends AbstractTableEncoder<ReportSession
       Phrase charmPhrase = new Phrase(stats.getNameString(resources), font);
       table.addCell(new TableCell(charmPhrase, Rectangle.NO_BORDER));
       String genericId = stats.getName().getId();
-      for (ITraitType trait : traits) {
+      for (TraitType trait : traits) {
         table.addCell(createGenericCell(character, trait, genericId, learnedTemplate, notLearnedTemplate));
       }
     }
@@ -93,7 +93,7 @@ public class GenericCharmTableEncoder extends AbstractTableEncoder<ReportSession
     return template;
   }
 
-  private PdfPCell createGenericCell(IGenericCharacter character, ITraitType type, String genericId, PdfTemplate learnedTemplate, PdfTemplate notLearnedTemplate) throws DocumentException {
+  private PdfPCell createGenericCell(IGenericCharacter character, TraitType type, String genericId, PdfTemplate learnedTemplate, PdfTemplate notLearnedTemplate) throws DocumentException {
     final String charmId = genericId + "." + type.getId();
     List<IMagic> allLearnedMagic = character.getAllLearnedMagic();
     boolean isLearned = MagicLearnUtilities.isCharmLearned(allLearnedMagic, charmId);
@@ -103,7 +103,7 @@ public class GenericCharmTableEncoder extends AbstractTableEncoder<ReportSession
     return tableCell;
   }
 
-  private PdfPCell createHeaderCell(SheetGraphics graphics, PdfContentByte directContent, ITraitType abilityType) throws DocumentException {
+  private PdfPCell createHeaderCell(SheetGraphics graphics, PdfContentByte directContent, TraitType abilityType) throws DocumentException {
     directContent.setColorStroke(BaseColor.BLACK);
     directContent.setColorFill(BaseColor.BLACK);
     String text = resources.getString(abilityType.getId());

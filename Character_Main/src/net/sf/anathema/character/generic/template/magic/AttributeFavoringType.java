@@ -1,6 +1,6 @@
 package net.sf.anathema.character.generic.template.magic;
 
-import net.sf.anathema.character.generic.traits.ITraitType;
+import net.sf.anathema.character.generic.traits.TraitType;
 import net.sf.anathema.character.generic.traits.types.AttributeType;
 
 public class AttributeFavoringType implements FavoringTraitType {
@@ -10,7 +10,7 @@ public class AttributeFavoringType implements FavoringTraitType {
   }
 
   @Override
-  public ITraitType getSpellFavoringType() {
+  public TraitType getSpellFavoringType() {
     return AttributeType.Intelligence;
   }
 

@@ -3,7 +3,7 @@ package net.sf.anathema.character.library.trait.rules;
 import com.google.common.base.Preconditions;
 import net.sf.anathema.character.generic.character.ILimitationContext;
 import net.sf.anathema.character.generic.traits.ITraitTemplate;
-import net.sf.anathema.character.generic.traits.ITraitType;
+import net.sf.anathema.character.generic.traits.TraitType;
 import net.sf.anathema.character.generic.traits.LowerableState;
 import net.sf.anathema.lib.data.Range;
 
@@ -11,10 +11,10 @@ public class TraitRules implements ITraitRules {
   private int capModifier = 0;
   private final ITraitTemplate template;
   private final ILimitationContext limitationContext;
-  private final ITraitType traitType;
+  private final TraitType traitType;
   private Range modifiedCreationRange;
 
-  public TraitRules(ITraitType traitType, ITraitTemplate template, ILimitationContext limitationContext) {
+  public TraitRules(TraitType traitType, ITraitTemplate template, ILimitationContext limitationContext) {
     Preconditions.checkNotNull(traitType, "TemplateType must not be null.");
     Preconditions.checkNotNull(template, "Template must not be null.");
     this.traitType = traitType;
@@ -78,7 +78,7 @@ public class TraitRules implements ITraitRules {
   }
 
   @Override
-  public ITraitType getType() {
+  public TraitType getType() {
     return traitType;
   }
 

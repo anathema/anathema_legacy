@@ -3,7 +3,7 @@ package net.sf.anathema.character.generic.impl.magic.persistence.builder.special
 import net.sf.anathema.character.generic.impl.magic.charm.special.UpgradableCharm;
 import net.sf.anathema.character.generic.impl.magic.persistence.builder.TraitTypeFinder;
 import net.sf.anathema.character.generic.magic.charms.special.ISpecialCharm;
-import net.sf.anathema.character.generic.traits.ITraitType;
+import net.sf.anathema.character.generic.traits.TraitType;
 import net.sf.anathema.lib.xml.ElementUtilities;
 import org.dom4j.Element;
 
@@ -32,7 +32,7 @@ public class UpgradableCharmBuilder implements SpecialCharmBuilder {
     Map<String, Integer> xpCosts = new HashMap<>();
     Map<String, Integer> essenceMins = new HashMap<>();
     Map<String, Integer> traitMins = new HashMap<>();
-    Map<String, ITraitType> traits = new HashMap<>();
+    Map<String, TraitType> traits = new HashMap<>();
 
     for (Object upgradeObj : upgradableElement.elements(TAG_UPGRADE)) {
       Element upgrade = (Element) upgradeObj;

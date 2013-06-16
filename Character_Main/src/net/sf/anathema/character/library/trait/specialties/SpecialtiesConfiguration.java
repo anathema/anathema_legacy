@@ -4,7 +4,7 @@ import com.google.common.base.Strings;
 import net.sf.anathema.character.generic.framework.ITraitReference;
 import net.sf.anathema.character.generic.framework.additionaltemplate.listening.ICharacterChangeListener;
 import net.sf.anathema.character.generic.framework.additionaltemplate.model.ICharacterModelContext;
-import net.sf.anathema.character.generic.traits.ITraitType;
+import net.sf.anathema.character.generic.traits.TraitType;
 import net.sf.anathema.character.generic.traits.groups.ITraitTypeGroup;
 import net.sf.anathema.character.generic.traits.groups.TraitTypeGroup;
 import net.sf.anathema.character.library.trait.Trait;
@@ -22,7 +22,7 @@ import java.util.Set;
 
 public class SpecialtiesConfiguration implements ISpecialtiesConfiguration {
 
-  private final Map<ITraitType, ISubTraitContainer> specialtiesByType = new HashMap<>();
+  private final Map<TraitType, ISubTraitContainer> specialtiesByType = new HashMap<>();
   private final Map<ITraitReference, ISubTraitContainer> specialtiesByTrait = new HashMap<>();
   private final Announcer<IChangeListener> control = Announcer.to(IChangeListener.class);
   private final Announcer<ITraitReferencesChangeListener> traitControl = Announcer.to(ITraitReferencesChangeListener.class);
@@ -32,7 +32,7 @@ public class SpecialtiesConfiguration implements ISpecialtiesConfiguration {
 
   public SpecialtiesConfiguration(TraitMap traitMap, ITraitTypeGroup[] groups, ICharacterModelContext context) {
     this.context = context;
-    ITraitType[] traitTypes = TraitTypeGroup.getAllTraitTypes(groups);
+    TraitType[] traitTypes = TraitTypeGroup.getAllTraitTypes(groups);
     for (Trait trait : traitMap.getTraits(traitTypes)) {
       ITraitReference reference = new DefaultTraitReference(trait);
       SpecialtiesContainer container = addSpecialtiesContainer(reference);
@@ -52,7 +52,7 @@ public class SpecialtiesConfiguration implements ISpecialtiesConfiguration {
   }
 
   @Override
-  public ISubTraitContainer getSpecialtiesContainer(ITraitType traitType) {
+  public ISubTraitContainer getSpecialtiesContainer(TraitType traitType) {
     return specialtiesByType.get(traitType);
   }
 

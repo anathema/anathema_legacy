@@ -1,7 +1,7 @@
 package net.sf.anathema.character.main.traits.model;
 
 import com.google.common.base.Preconditions;
-import net.sf.anathema.character.generic.traits.ITraitType;
+import net.sf.anathema.character.generic.traits.TraitType;
 import net.sf.anathema.character.library.trait.Trait;
 
 import java.util.ArrayList;
@@ -12,7 +12,7 @@ import java.util.Map;
 
 public class HashTraitMap implements TraitMap{
 
-  private final Map<ITraitType, Trait> traitsByType = new HashMap<>();
+  private final Map<TraitType, Trait> traitsByType = new HashMap<>();
 
   public void addTrait(Trait trait){
     Preconditions.checkArgument(!contains(trait.getType()), "Trait of type already contained " + trait.getType());
@@ -20,14 +20,14 @@ public class HashTraitMap implements TraitMap{
   }
 
   @Override
-  public Trait getTrait(ITraitType traitType) {
+  public Trait getTrait(TraitType traitType) {
     return traitsByType.get(traitType);
   }
 
   @Override
-  public Trait[] getTraits(ITraitType... traitTypes) {
+  public Trait[] getTraits(TraitType... traitTypes) {
     List<Trait> foundTraits = new ArrayList<>();
-    for (ITraitType type : traitTypes) {
+    for (TraitType type : traitTypes) {
       foundTraits.add(getTrait(type));
     }
     return foundTraits.toArray(new Trait[foundTraits.size()]);
@@ -38,7 +38,7 @@ public class HashTraitMap implements TraitMap{
     return attributes.toArray(new Trait[attributes.size()]);
   }
 
-  private boolean contains(ITraitType traitType) {
+  private boolean contains(TraitType traitType) {
     return traitsByType.containsKey(traitType);
   }
 }

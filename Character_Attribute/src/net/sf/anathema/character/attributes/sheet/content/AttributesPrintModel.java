@@ -4,7 +4,7 @@ import net.sf.anathema.character.generic.character.IGenericCharacter;
 import net.sf.anathema.character.generic.template.ITraitTemplateCollection;
 import net.sf.anathema.character.generic.template.abilities.GroupedTraitType;
 import net.sf.anathema.character.generic.traits.ITraitTemplate;
-import net.sf.anathema.character.generic.traits.ITraitType;
+import net.sf.anathema.character.generic.traits.TraitType;
 import net.sf.anathema.character.generic.traits.types.AttributeType;
 import net.sf.anathema.character.main.attributes.model.AttributesIterator;
 import net.sf.anathema.character.main.attributes.model.AttributesList;
@@ -28,7 +28,7 @@ public class AttributesPrintModel implements AttributesList {
   }
 
   public int getTraitMaximum() {
-    ITraitType traitType = getGroupedAttributeTypes()[0].getTraitType();
+    TraitType traitType = getGroupedAttributeTypes()[0].getTraitType();
     ITraitTemplate template = getTraitTemplateCollection().getTraitTemplate(traitType);
     return template.getLimitation().getAbsoluteLimit(character);
   }
@@ -42,12 +42,12 @@ public class AttributesPrintModel implements AttributesList {
   }
 
   private void iterateGroup(AttributesIterator iterator, Identifier groupId) {
-    for (ITraitType traitType : getTraitTypes(groupId)) {
+    for (TraitType traitType : getTraitTypes(groupId)) {
       iterateTrait(iterator, traitType);
     }
   }
 
-  private void iterateTrait(AttributesIterator iterator, ITraitType traitType) {
+  private void iterateTrait(AttributesIterator iterator, TraitType traitType) {
      iterator.nextTrait(traitType);
   }
 
@@ -55,8 +55,8 @@ public class AttributesPrintModel implements AttributesList {
     return character.getTemplate().getTraitTemplateCollection();
   }
 
-  private List<ITraitType> getTraitTypes(Identifier groupId) {
-    List<ITraitType> attributes = new ArrayList<>();
+  private List<TraitType> getTraitTypes(Identifier groupId) {
+    List<TraitType> attributes = new ArrayList<>();
     for (GroupedTraitType groupedType : getGroupedAttributeTypes()) {
       if (groupedType.getGroupId().equals(groupId.getId())) {
         attributes.add(groupedType.getTraitType());

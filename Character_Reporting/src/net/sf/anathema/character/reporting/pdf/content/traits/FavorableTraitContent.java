@@ -6,7 +6,7 @@ import net.sf.anathema.character.generic.character.IGenericTraitCollection;
 import net.sf.anathema.character.generic.magic.IMagic;
 import net.sf.anathema.character.generic.magic.IMagicStats;
 import net.sf.anathema.character.generic.traits.ITraitTemplate;
-import net.sf.anathema.character.generic.traits.ITraitType;
+import net.sf.anathema.character.generic.traits.TraitType;
 import net.sf.anathema.character.generic.traits.groups.IIdentifiedTraitTypeGroup;
 import net.sf.anathema.character.reporting.pdf.content.AbstractSubBoxContent;
 import net.sf.anathema.character.reporting.pdf.content.magic.GenericCharmUtilities;
@@ -28,7 +28,7 @@ public abstract class FavorableTraitContent extends AbstractSubBoxContent {
     this.character = character;
   }
 
-  public abstract List<? extends ITraitType> getMarkedTraitTypes();
+  public abstract List<? extends TraitType> getMarkedTraitTypes();
 
   protected IGenericCharacter getCharacter() {
     return character;
@@ -64,7 +64,7 @@ public abstract class FavorableTraitContent extends AbstractSubBoxContent {
 
   public abstract IGenericTraitCollection getTraitCollection();
 
-  public boolean[] hasExcellenciesLearned(ITraitType traitType) {
+  public boolean[] hasExcellenciesLearned(TraitType traitType) {
     IMagicStats[] excellencies = getExcellencies();
     List<IMagic> allLearnedMagic = character.getAllLearnedMagic();
     boolean[] excellencyLearned = new boolean[excellencies.length];
@@ -79,7 +79,7 @@ public abstract class FavorableTraitContent extends AbstractSubBoxContent {
 
   public int getTraitMax() {
     IIdentifiedTraitTypeGroup group = getIdentifiedTraitTypeGroups()[0];
-    ITraitType traitType = group.getAllGroupTypes()[0];
+    TraitType traitType = group.getAllGroupTypes()[0];
     ITraitTemplate template = character.getTemplate().getTraitTemplateCollection().getTraitTemplate(traitType);
     return template.getLimitation().getAbsoluteLimit(character);
   }
@@ -104,7 +104,7 @@ public abstract class FavorableTraitContent extends AbstractSubBoxContent {
 
   protected abstract String getGroupNamePrefix();
 
-  public String getTraitLabel(ITraitType traitType) {
+  public String getTraitLabel(TraitType traitType) {
     return getString(getTraitTypePrefix() + traitType.getId());
   }
 

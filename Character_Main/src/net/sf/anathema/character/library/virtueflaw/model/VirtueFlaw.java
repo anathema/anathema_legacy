@@ -2,11 +2,11 @@ package net.sf.anathema.character.library.virtueflaw.model;
 
 import net.sf.anathema.character.generic.framework.additionaltemplate.model.ICharacterModelContext;
 import net.sf.anathema.character.generic.impl.traits.SimpleTraitTemplate;
-import net.sf.anathema.character.generic.traits.ITraitType;
+import net.sf.anathema.character.generic.traits.TraitType;
 import net.sf.anathema.character.generic.traits.LowerableState;
+import net.sf.anathema.character.library.trait.DefaultTraitType;
 import net.sf.anathema.character.library.trait.Trait;
 import net.sf.anathema.character.library.trait.LimitedTrait;
-import net.sf.anathema.character.library.trait.TraitType;
 import net.sf.anathema.character.library.trait.favorable.FriendlyIncrementChecker;
 import net.sf.anathema.lib.control.IChangeListener;
 import net.sf.anathema.lib.workflow.textualdescription.ITextualDescription;
@@ -15,7 +15,7 @@ import org.jmock.example.announcer.Announcer;
 
 public class VirtueFlaw implements IVirtueFlaw {
 
-  private ITraitType root;
+  private TraitType root;
   private Trait limitTrait;
   private final ITextualDescription name = new SimpleTextualDescription("");
   private final Announcer<IChangeListener> control = Announcer.to(IChangeListener.class);
@@ -26,12 +26,12 @@ public class VirtueFlaw implements IVirtueFlaw {
   }
 
   @Override
-  public ITraitType getRoot() {
+  public TraitType getRoot() {
     return root;
   }
 
   @Override
-  public void setRoot(ITraitType root) {
+  public void setRoot(TraitType root) {
     this.root = root;
     control.announce().changeOccurred();
   }
@@ -40,7 +40,7 @@ public class VirtueFlaw implements IVirtueFlaw {
   public Trait getLimitTrait() {
     if (limitTrait == null) {
       limitTrait =
-              new LimitedTrait(new TraitType(getLimitString()), SimpleTraitTemplate.createStaticLimitedTemplate(0, 10, LowerableState.LowerableLoss),
+              new LimitedTrait(new DefaultTraitType(getLimitString()), SimpleTraitTemplate.createStaticLimitedTemplate(0, 10, LowerableState.LowerableLoss),
                       new FriendlyIncrementChecker(), context.getTraitContext());
     }
     return limitTrait;

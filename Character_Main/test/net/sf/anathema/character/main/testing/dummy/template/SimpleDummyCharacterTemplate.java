@@ -17,7 +17,7 @@ import net.sf.anathema.character.generic.template.experience.IExperiencePointCos
 import net.sf.anathema.character.generic.template.magic.ICharmTemplate;
 import net.sf.anathema.character.generic.template.magic.IMagicTemplate;
 import net.sf.anathema.character.generic.template.presentation.IPresentationProperties;
-import net.sf.anathema.character.generic.traits.ITraitType;
+import net.sf.anathema.character.generic.traits.TraitType;
 import net.sf.anathema.character.generic.type.ICharacterType;
 import net.sf.anathema.lib.util.SimpleIdentifier;
 
@@ -93,8 +93,8 @@ public class SimpleDummyCharacterTemplate implements ICharacterTemplate {
   }
 
   @Override
-  public ITraitType[] getToughnessControllingTraitTypes() {
-    return new ITraitType[0];
+  public TraitType[] getToughnessControllingTraitTypes() {
+    return new TraitType[0];
   }
 
   @Override

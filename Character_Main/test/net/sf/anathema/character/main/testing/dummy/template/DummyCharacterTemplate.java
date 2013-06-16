@@ -3,6 +3,7 @@ package net.sf.anathema.character.main.testing.dummy.template;
 import net.sf.anathema.character.generic.additionalrules.IAdditionalRules;
 import net.sf.anathema.character.generic.caste.ICasteCollection;
 import net.sf.anathema.character.generic.caste.ICasteType;
+import net.sf.anathema.character.generic.traits.TraitType;
 import net.sf.anathema.character.main.testing.dummy.DummyMundaneCharacterType;
 import net.sf.anathema.character.generic.impl.caste.CasteCollection;
 import net.sf.anathema.character.generic.impl.template.essence.NullEssenceTemplate;
@@ -28,7 +29,6 @@ import net.sf.anathema.character.generic.template.magic.ISpellMagicTemplate;
 import net.sf.anathema.character.generic.template.points.IAbilityCreationPoints;
 import net.sf.anathema.character.generic.template.points.IAttributeCreationPoints;
 import net.sf.anathema.character.generic.template.presentation.IPresentationProperties;
-import net.sf.anathema.character.generic.traits.ITraitType;
 import net.sf.anathema.character.generic.traits.types.AbilityType;
 import net.sf.anathema.character.generic.traits.types.AttributeGroupType;
 import net.sf.anathema.character.generic.traits.types.AttributeType;
@@ -170,8 +170,8 @@ public class DummyCharacterTemplate implements ICharacterTemplate {
   }
 
   @Override
-  public ITraitType[] getToughnessControllingTraitTypes() {
-    return new ITraitType[]{AbilityType.Resistance};
+  public TraitType[] getToughnessControllingTraitTypes() {
+    return new TraitType[]{AbilityType.Resistance};
   }
 
   @Override

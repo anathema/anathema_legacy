@@ -3,7 +3,7 @@ package net.sf.anathema.character.generic.impl.magic.charm.special;
 import com.google.common.collect.Lists;
 import net.sf.anathema.character.generic.magic.charms.special.LearnRangeContext;
 import net.sf.anathema.character.generic.traits.GenericTrait;
-import net.sf.anathema.character.generic.traits.ITraitType;
+import net.sf.anathema.character.generic.traits.TraitType;
 
 import java.util.List;
 
@@ -27,7 +27,7 @@ public class TraitCharmTier implements CharmTier {
   }
 
   @Override
-  public int getRequirement(ITraitType type) {
+  public int getRequirement(TraitType type) {
     for (GenericTrait requirement : requirements) {
       if (type == requirement.getType()) {
         return requirement.getCurrentValue();

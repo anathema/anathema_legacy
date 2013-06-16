@@ -3,7 +3,7 @@ package net.sf.anathema.character.reporting.pdf.rendering.general.traits;
 import com.itextpdf.text.pdf.PdfContentByte;
 import net.sf.anathema.character.generic.character.IGenericTraitCollection;
 import net.sf.anathema.character.generic.traits.GenericTrait;
-import net.sf.anathema.character.generic.traits.ITraitType;
+import net.sf.anathema.character.generic.traits.TraitType;
 import net.sf.anathema.character.generic.traits.groups.IIdentifiedTraitTypeGroup;
 import net.sf.anathema.character.reporting.pdf.content.ReportSession;
 import net.sf.anathema.character.reporting.pdf.content.traits.FavorableTraitContent;
@@ -70,11 +70,11 @@ public class FavorableTraitContentEncoder<C extends FavorableTraitContent> exten
     float height = 0;
     float groupLabelWidth = IVoidStateFormatConstants.LINE_HEIGHT + IVoidStateFormatConstants.TEXT_PADDING;
     float traitX = position.x + groupLabelWidth;
-    ITraitType[] traitTypes = group.getAllGroupTypes();
+    TraitType[] traitTypes = group.getAllGroupTypes();
     float groupLabelX = position.x + 4;
     float markerX = groupLabelX + IVoidStateFormatConstants.TEXT_PADDING;
     for (int index = 0; index < traitTypes.length; index++) {
-      ITraitType traitType = traitTypes[index];
+      TraitType traitType = traitTypes[index];
       float yPosition = position.y - (index + 1) * traitEncoder.getTraitHeight();
       if (content.getMarkedTraitTypes().contains(traitType)) {
         encodeMarker(graphics, new Position(markerX, yPosition + 1));

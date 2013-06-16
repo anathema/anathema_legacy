@@ -3,7 +3,7 @@ package net.sf.anathema.character.generic.magic.charms.special;
 import net.sf.anathema.character.generic.character.GenericTraitProvider;
 import net.sf.anathema.character.generic.magic.ICharm;
 import net.sf.anathema.character.generic.traits.GenericTrait;
-import net.sf.anathema.character.generic.traits.ITraitType;
+import net.sf.anathema.character.generic.traits.TraitType;
 
 public class LearnRangeContext implements GenericTraitProvider {
   private final GenericTraitProvider traitCollection;
@@ -18,7 +18,7 @@ public class LearnRangeContext implements GenericTraitProvider {
   }
 
   @Override
-  public GenericTrait getTrait(ITraitType type) {
+  public GenericTrait getTrait(TraitType type) {
     return traitCollection.getTrait(type);
   }
 

@@ -3,7 +3,7 @@ package net.sf.anathema.character.impl.model.traits.creation;
 import net.sf.anathema.character.generic.caste.ICasteCollection;
 import net.sf.anathema.character.generic.caste.ICasteType;
 import net.sf.anathema.character.generic.template.abilities.GroupedTraitType;
-import net.sf.anathema.character.generic.traits.ITraitType;
+import net.sf.anathema.character.generic.traits.TraitType;
 import net.sf.anathema.character.generic.traits.groups.IIdentifiedCasteTraitTypeGroup;
 import net.sf.anathema.character.generic.traits.groups.IdentifiedCasteTraitTypeGroup;
 import net.sf.anathema.lib.collection.MultiEntryMap;
@@ -21,7 +21,7 @@ public abstract class AbstractTraitTypeGroupFactory {
   public IIdentifiedCasteTraitTypeGroup[] createTraitGroups(ICasteCollection casteCollection,
                                                             GroupedTraitType[] traitTypes) {
     Set<String> groupIds = new LinkedHashSet<>();
-    MultiEntryMap<String, ITraitType> traitTypesByGroupId = new MultiEntryMap<>();
+    MultiEntryMap<String, TraitType> traitTypesByGroupId = new MultiEntryMap<>();
     for (GroupedTraitType type : traitTypes) {
       String groupId = type.getGroupId();
       groupIds.add(groupId);
@@ -29,8 +29,8 @@ public abstract class AbstractTraitTypeGroupFactory {
     }
     List<IIdentifiedCasteTraitTypeGroup> groups = new ArrayList<>();
     for (String groupId : groupIds) {
-      List<ITraitType> groupTraitTypes = traitTypesByGroupId.get(groupId);
-      MultiEntryMap<ITraitType, ICasteType> castesByTrait = new MultiEntryMap<>();
+      List<TraitType> groupTraitTypes = traitTypesByGroupId.get(groupId);
+      MultiEntryMap<TraitType, ICasteType> castesByTrait = new MultiEntryMap<>();
       for (GroupedTraitType type : traitTypes) {
         if (!type.getGroupId().equals(groupId)) {
           continue;
@@ -41,7 +41,7 @@ public abstract class AbstractTraitTypeGroupFactory {
         }
       }
       Identifier groupIdentifier = getGroupIdentifier(casteCollection, groupId);
-      ITraitType[] types = groupTraitTypes.toArray(new ITraitType[groupTraitTypes.size()]);
+      TraitType[] types = groupTraitTypes.toArray(new TraitType[groupTraitTypes.size()]);
       groups.add(new IdentifiedCasteTraitTypeGroup(types, groupIdentifier, castesByTrait));
     }
     return groups.toArray(new IIdentifiedCasteTraitTypeGroup[groups.size()]);

@@ -3,14 +3,14 @@ package net.sf.anathema.character.equipment.impl.character.model.stats;
 import net.sf.anathema.character.generic.equipment.weapon.IEquipmentStats;
 import net.sf.anathema.character.generic.equipment.weapon.IWeaponStats;
 import net.sf.anathema.character.generic.health.HealthType;
-import net.sf.anathema.character.generic.traits.ITraitType;
+import net.sf.anathema.character.generic.traits.TraitType;
 import net.sf.anathema.character.generic.traits.types.AbilityType;
 import net.sf.anathema.lib.util.Identifier;
 import net.sf.anathema.lib.util.SimpleIdentifier;
 
 public class WeaponStatsDecorator extends AbstractStats implements IWeaponStats {
   private IWeaponStats stats;
-  private ITraitType ability;
+  private TraitType ability;
   private Identifier name;
 
   public WeaponStatsDecorator(IWeaponStats stats, AbilityType statsAbility) {
@@ -41,7 +41,7 @@ public class WeaponStatsDecorator extends AbstractStats implements IWeaponStats 
   }
 
   @Override
-  public ITraitType getDamageTraitType() {
+  public TraitType getDamageTraitType() {
     return stats.getDamageTraitType();
   }
 
@@ -81,7 +81,7 @@ public class WeaponStatsDecorator extends AbstractStats implements IWeaponStats 
   }
 
   @Override
-  public ITraitType getTraitType() {
+  public TraitType getTraitType() {
     return ability;
   }
 

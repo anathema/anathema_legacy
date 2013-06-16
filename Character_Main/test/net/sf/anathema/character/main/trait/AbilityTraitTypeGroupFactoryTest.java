@@ -2,10 +2,10 @@ package net.sf.anathema.character.main.trait;
 
 import net.sf.anathema.character.generic.caste.ICasteCollection;
 import net.sf.anathema.character.generic.caste.ICasteType;
+import net.sf.anathema.character.generic.traits.TraitType;
 import net.sf.anathema.character.main.testing.dummy.DummyCasteType;
 import net.sf.anathema.character.generic.impl.caste.CasteCollection;
 import net.sf.anathema.character.generic.template.abilities.GroupedTraitType;
-import net.sf.anathema.character.generic.traits.ITraitType;
 import net.sf.anathema.character.generic.traits.groups.IIdentifiedTraitTypeGroup;
 import net.sf.anathema.character.impl.model.traits.creation.AbilityTypeGroupFactory;
 import org.junit.Test;
@@ -34,7 +34,7 @@ public class AbilityTraitTypeGroupFactoryTest {
     };
     IIdentifiedTraitTypeGroup[] typeGroups = factory.createTraitGroups(casteCollection, abilityTypes);
     assertEquals(1, typeGroups.length);
-    assertArrayEquals(new ITraitType[]{Archery, Melee}, typeGroups[0].getAllGroupTypes());
+    assertArrayEquals(new TraitType[]{Archery, Melee}, typeGroups[0].getAllGroupTypes());
     assertEquals(War, typeGroups[0].getGroupId());
   }
 
@@ -47,8 +47,8 @@ public class AbilityTraitTypeGroupFactoryTest {
     };
     IIdentifiedTraitTypeGroup[] typeGroups = factory.createTraitGroups(casteCollection, abilityTypes);
     assertEquals(2, typeGroups.length);
-    assertArrayEquals(new ITraitType[]{Archery}, typeGroups[0].getAllGroupTypes());
-    assertArrayEquals(new ITraitType[]{Medicine}, typeGroups[1].getAllGroupTypes());
+    assertArrayEquals(new TraitType[]{Archery}, typeGroups[0].getAllGroupTypes());
+    assertArrayEquals(new TraitType[]{Medicine}, typeGroups[1].getAllGroupTypes());
     assertEquals(War, typeGroups[0].getGroupId());
     assertEquals(Life, typeGroups[1].getGroupId());
   }
@@ -62,7 +62,7 @@ public class AbilityTraitTypeGroupFactoryTest {
             new GroupedTraitType(Melee, caste.getId(), Collections.singletonList(caste.getId()))};
     IIdentifiedTraitTypeGroup[] typeGroups = factory.createTraitGroups(casteCollection, abilityTypes);
     assertEquals(1, typeGroups.length);
-    assertArrayEquals(new ITraitType[]{Archery, Melee}, typeGroups[0].getAllGroupTypes());
+    assertArrayEquals(new TraitType[]{Archery, Melee}, typeGroups[0].getAllGroupTypes());
     assertSame(caste, typeGroups[0].getGroupId());
   }
 }

@@ -1,11 +1,11 @@
 package net.sf.anathema.character.generic.impl.magic.charm.special;
 
 import net.sf.anathema.character.generic.magic.charms.special.LearnRangeContext;
-import net.sf.anathema.character.generic.traits.ITraitType;
+import net.sf.anathema.character.generic.traits.TraitType;
 
 public class EssenceFixedMultiLearnableCharm extends TraitDependentMultiLearnableCharm {
 
-  public EssenceFixedMultiLearnableCharm(String charmId, int absoluteLearnLimit, ITraitType traitType) {
+  public EssenceFixedMultiLearnableCharm(String charmId, int absoluteLearnLimit, TraitType traitType) {
     super(charmId, absoluteLearnLimit, traitType);
   }
 

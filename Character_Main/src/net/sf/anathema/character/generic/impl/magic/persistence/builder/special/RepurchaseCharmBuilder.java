@@ -8,7 +8,7 @@ import net.sf.anathema.character.generic.impl.magic.charm.special.TraitDependent
 import net.sf.anathema.character.generic.impl.magic.persistence.builder.TraitTypeFinder;
 import net.sf.anathema.character.generic.impl.traits.EssenceTemplate;
 import net.sf.anathema.character.generic.magic.charms.special.ISpecialCharm;
-import net.sf.anathema.character.generic.traits.ITraitType;
+import net.sf.anathema.character.generic.traits.TraitType;
 import net.sf.anathema.character.generic.traits.types.ValuedTraitType;
 import net.sf.anathema.lib.xml.ElementUtilities;
 import org.dom4j.Element;
@@ -35,7 +35,7 @@ public class RepurchaseCharmBuilder implements SpecialCharmBuilder {
 
     String limitingTraitString = repurchaseElement.attributeValue(ATTRIB_LIMITING_TRAIT);
     if (limitingTraitString != null) {
-      ITraitType trait = traitTypeFinder.getTrait(limitingTraitString);
+      TraitType trait = traitTypeFinder.getTrait(limitingTraitString);
 
       int modifier = 0;
       String modifierString = repurchaseElement.attributeValue(ATTRIB_MODIFIER);
@@ -62,7 +62,7 @@ public class RepurchaseCharmBuilder implements SpecialCharmBuilder {
     }
 
     String traitString = repurchaseElement.attributeValue(ATTRIB_TRAIT);
-    ITraitType trait = traitTypeFinder.getTrait(traitString);
+    TraitType trait = traitTypeFinder.getTrait(traitString);
     List<CharmTier> tiers = new ArrayList<>();
 
     for (Object repurchaseObj : repurchaseElement.elements(TAG_REPURCHASE)) {
@@ -82,7 +82,7 @@ public class RepurchaseCharmBuilder implements SpecialCharmBuilder {
     return repurchaseElement != null;
   }
 
-  private CharmTier createTier(ITraitType trait, Element repurchase, int essence) {
+  private CharmTier createTier(TraitType trait, Element repurchase, int essence) {
     TraitCharmTier traitCharmTier = new TraitCharmTier();
     traitCharmTier.addRequirement(new ValuedTraitType(Essence, essence));
     if (trait != null) {

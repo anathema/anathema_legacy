@@ -3,7 +3,7 @@ package net.sf.anathema.character.impl.model.creation.bonus.ability;
 import net.sf.anathema.character.generic.template.creation.IGenericSpecialty;
 import net.sf.anathema.character.generic.template.experience.AbilityPointCosts;
 import net.sf.anathema.character.generic.template.points.IFavorableTraitCreationPoints;
-import net.sf.anathema.character.generic.traits.ITraitType;
+import net.sf.anathema.character.generic.traits.TraitType;
 import net.sf.anathema.character.generic.traits.groups.IIdentifiedTraitTypeGroup;
 import net.sf.anathema.character.impl.model.creation.bonus.additional.IAdditionalBonusPointManagment;
 import net.sf.anathema.character.impl.model.creation.bonus.additional.IAdditionalSpecialtyBonusPointManagement;
@@ -21,11 +21,11 @@ import java.util.List;
 public class AbilityCostCalculator extends AbstractFavorableTraitCostCalculator implements IAbilityCostCalculator {
 
   private static Trait[] getAllAbilities(ICoreTraitConfiguration traitConfiguration) {
-    List<ITraitType> abilityTypes = new ArrayList<>();
+    List<TraitType> abilityTypes = new ArrayList<>();
     for (IIdentifiedTraitTypeGroup group : traitConfiguration.getAbilityTypeGroups()) {
       Collections.addAll(abilityTypes, group.getAllGroupTypes());
     }
-    return traitConfiguration.getTraits(abilityTypes.toArray(new ITraitType[abilityTypes.size()]));
+    return traitConfiguration.getTraits(abilityTypes.toArray(new TraitType[abilityTypes.size()]));
   }
 
   private final IAdditionalSpecialtyBonusPointManagement additionalPools;

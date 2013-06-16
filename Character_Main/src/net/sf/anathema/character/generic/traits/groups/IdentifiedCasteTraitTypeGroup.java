@@ -1,7 +1,7 @@
 package net.sf.anathema.character.generic.traits.groups;
 
 import net.sf.anathema.character.generic.caste.ICasteType;
-import net.sf.anathema.character.generic.traits.ITraitType;
+import net.sf.anathema.character.generic.traits.TraitType;
 import net.sf.anathema.lib.collection.MultiEntryMap;
 import net.sf.anathema.lib.util.Identifier;
 
@@ -9,18 +9,18 @@ import java.util.List;
 
 public class IdentifiedCasteTraitTypeGroup extends IdentifiedTraitTypeGroup implements IIdentifiedCasteTraitTypeGroup {
 
-  private final MultiEntryMap<ITraitType, ICasteType> castesByTrait;
+  private final MultiEntryMap<TraitType, ICasteType> castesByTrait;
 
-  public IdentifiedCasteTraitTypeGroup(ITraitType[] traitTypes, Identifier groupId,
-                                       MultiEntryMap<ITraitType, ICasteType> castesByTrait) {
+  public IdentifiedCasteTraitTypeGroup(TraitType[] traitTypes, Identifier groupId,
+                                       MultiEntryMap<TraitType, ICasteType> castesByTrait) {
     super(traitTypes, groupId);
     this.castesByTrait = castesByTrait;
   }
 
   @Override
-  public ICasteType[] getTraitCasteTypes(ITraitType traitType) {
-    ITraitType[] types = getAllGroupTypes();
-    for (ITraitType type : types) {
+  public ICasteType[] getTraitCasteTypes(TraitType traitType) {
+    TraitType[] types = getAllGroupTypes();
+    for (TraitType type : types) {
       if (type == traitType) {
         List<ICasteType> casteTypes = castesByTrait.get(traitType);
         return casteTypes.toArray(new ICasteType[casteTypes.size()]);

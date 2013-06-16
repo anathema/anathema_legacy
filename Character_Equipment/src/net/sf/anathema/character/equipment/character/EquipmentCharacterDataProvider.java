@@ -6,7 +6,7 @@ import net.sf.anathema.character.equipment.character.model.IEquipmentItem;
 import net.sf.anathema.character.equipment.character.model.IEquipmentStatsOption;
 import net.sf.anathema.character.generic.equipment.ArtifactAttuneType;
 import net.sf.anathema.character.generic.framework.additionaltemplate.model.ICharacterModelContext;
-import net.sf.anathema.character.generic.traits.ITraitType;
+import net.sf.anathema.character.generic.traits.TraitType;
 import net.sf.anathema.character.generic.traits.types.AbilityType;
 import net.sf.anathema.character.generic.type.ICharacterType;
 import net.sf.anathema.character.library.trait.specialties.Specialty;
@@ -27,13 +27,13 @@ public class EquipmentCharacterDataProvider implements IEquipmentCharacterDataPr
   }
 
   @Override
-  public Specialty[] getSpecialties(ITraitType trait) {
+  public Specialty[] getSpecialties(TraitType trait) {
     return context.getSpecialtyContext().getSpecialties(trait);
   }
 
   @Override
   public IEquipmentStatsOption getCharacterSpecialtyOption(String name, String type) {
-    ITraitType trait = AbilityType.valueOf(type);
+    TraitType trait = AbilityType.valueOf(type);
     for (Specialty specialty : context.getSpecialtyContext().getSpecialties(trait))
       if (specialty.getName().equals(name)) return new EquipmentSpecialtyOption(specialty, trait);
     return null;

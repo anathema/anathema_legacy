@@ -10,8 +10,8 @@ import net.sf.anathema.character.generic.template.ICharacterTemplate;
 import net.sf.anathema.character.generic.template.magic.ICharmTemplate;
 import net.sf.anathema.character.generic.traits.LowerableState;
 import net.sf.anathema.character.library.trait.DefaultTrait;
+import net.sf.anathema.character.library.trait.DefaultTraitType;
 import net.sf.anathema.character.library.trait.LimitedTrait;
-import net.sf.anathema.character.library.trait.TraitType;
 import net.sf.anathema.character.library.trait.persistence.TraitPersister;
 import net.sf.anathema.character.model.ICharacter;
 import net.sf.anathema.character.model.charm.ICharmConfiguration;
@@ -187,7 +187,7 @@ public class CharmConfigurationPersister {
         int count = Integer.parseInt(components[components.length - 1].replace("Repurchase", ""));
         Element specialCharmElement = element.addElement(TAG_SPECIAL);
         DefaultTrait trait =
-                new LimitedTrait(new TraitType(TAG_LEARN_COUNT), SimpleTraitTemplate.createEssenceLimitedTemplate(0, 0, LowerableState.Default), null,
+                new LimitedTrait(new DefaultTraitType(TAG_LEARN_COUNT), SimpleTraitTemplate.createEssenceLimitedTemplate(0, 0, LowerableState.Default), null,
                         context);
         ISpecialCharmConfiguration specialConfiguration = config.getSpecialCharmConfiguration(baseCharmName.toString());
         if (specialConfiguration instanceof IMultiLearnableCharmConfiguration) {

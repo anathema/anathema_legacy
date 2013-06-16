@@ -5,7 +5,7 @@ import net.sf.anathema.character.equipment.impl.creation.model.WeaponTag;
 import net.sf.anathema.character.generic.equipment.weapon.IEquipmentStats;
 import net.sf.anathema.character.generic.equipment.weapon.IWeaponStats;
 import net.sf.anathema.character.generic.health.HealthType;
-import net.sf.anathema.character.generic.traits.ITraitType;
+import net.sf.anathema.character.generic.traits.TraitType;
 import net.sf.anathema.character.generic.traits.types.AbilityType;
 import net.sf.anathema.character.generic.traits.types.AttributeType;
 import net.sf.anathema.lib.util.Identifier;
@@ -88,12 +88,12 @@ public class DemoMeleeWeapon extends AbstractCombatStats implements IWeaponStats
   }
 
   @Override
-  public ITraitType getTraitType() {
+  public TraitType getTraitType() {
     return AbilityType.Melee;
   }
 
   @Override
-  public ITraitType getDamageTraitType() {
+  public TraitType getDamageTraitType() {
     return AttributeType.Strength;
   }
 

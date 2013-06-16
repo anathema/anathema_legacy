@@ -1,19 +1,19 @@
 package net.sf.anathema.character.library.trait.specialties;
 
 import net.sf.anathema.character.generic.framework.ITraitReference;
-import net.sf.anathema.character.generic.traits.ITraitType;
+import net.sf.anathema.character.generic.traits.TraitType;
 import net.sf.anathema.character.library.trait.Trait;
 
 public class DefaultTraitReference implements ITraitReference {
 
-  private final ITraitType type;
+  private final TraitType type;
 
   public DefaultTraitReference(Trait visitedTrait) {
     this.type = visitedTrait.getType();
   }
 
   @Override
-  public ITraitType getTraitType() {
+  public TraitType getTraitType() {
     return type;
   }
 

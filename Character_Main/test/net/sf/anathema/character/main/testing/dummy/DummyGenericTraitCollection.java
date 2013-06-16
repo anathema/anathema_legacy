@@ -2,7 +2,7 @@ package net.sf.anathema.character.main.testing.dummy;
 
 import net.sf.anathema.character.generic.character.IGenericTraitCollection;
 import net.sf.anathema.character.generic.traits.GenericTrait;
-import net.sf.anathema.character.generic.traits.ITraitType;
+import net.sf.anathema.character.generic.traits.TraitType;
 import net.sf.anathema.lib.exception.NotYetImplementedException;
 
 import java.util.HashMap;
@@ -10,24 +10,24 @@ import java.util.Map;
 
 public class DummyGenericTraitCollection implements IGenericTraitCollection {
 
-  private final Map<ITraitType, GenericTrait> traits = new HashMap<>();
+  private final Map<TraitType, GenericTrait> traits = new HashMap<>();
 
   @Override
-  public GenericTrait getTrait(ITraitType type) {
+  public GenericTrait getTrait(TraitType type) {
     return traits.get(type);
   }
 
   @Override
-  public GenericTrait[] getTraits(ITraitType[] traitTypes) {
+  public GenericTrait[] getTraits(TraitType[] traitTypes) {
     throw new NotYetImplementedException();
   }
 
-  public void setValue(ITraitType type, int value) {
+  public void setValue(TraitType type, int value) {
     traits.put(type, new DummyGenericTrait(type, value));
   }
 
   @Override
-  public boolean isFavoredOrCasteTrait(ITraitType type) {
+  public boolean isFavoredOrCasteTrait(TraitType type) {
     return getTrait(type).isCasteOrFavored();
   }
 }

@@ -1,8 +1,8 @@
 package net.sf.anathema.character.generic.traits.types;
 
-import net.sf.anathema.character.generic.traits.ITraitType;
+import net.sf.anathema.character.generic.traits.TraitType;
 
-public enum OtherTraitType implements ITraitType {
+public enum OtherTraitType implements TraitType {
   Essence() {
     @Override
     public void accept(ITraitTypeVisitor visitor) {

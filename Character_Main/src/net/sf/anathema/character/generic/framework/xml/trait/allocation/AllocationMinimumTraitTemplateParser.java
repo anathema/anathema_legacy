@@ -3,7 +3,7 @@ package net.sf.anathema.character.generic.framework.xml.trait.allocation;
 import net.sf.anathema.character.generic.framework.xml.trait.GenericRestrictedTraitTemplate;
 import net.sf.anathema.character.generic.framework.xml.trait.GenericTraitTemplate;
 import net.sf.anathema.character.generic.impl.traits.limitation.EssenceBasedLimitation;
-import net.sf.anathema.character.generic.traits.ITraitType;
+import net.sf.anathema.character.generic.traits.TraitType;
 import net.sf.anathema.character.generic.traits.LowerableState;
 import net.sf.anathema.character.generic.traits.groups.ITraitTypeGroup;
 import net.sf.anathema.lib.exception.PersistenceException;
@@ -34,7 +34,7 @@ public class AllocationMinimumTraitTemplateParser {
     List<GenericRestrictedTraitTemplate> traitTemplates = new ArrayList<>();
     for (Element traitElement : ElementUtilities.elements(element, TAG_TRAIT)) {
       GenericTraitTemplate template = parseTraitTemplate(traitElement);
-      ITraitType type = traitTypeGroup.getById(ElementUtilities.getRequiredAttrib(traitElement, ATTRIB_ID));
+      TraitType type = traitTypeGroup.getById(ElementUtilities.getRequiredAttrib(traitElement, ATTRIB_ID));
       traitTemplates.add(new GenericRestrictedTraitTemplate(template, restriction, type));
     }
     return traitTemplates.toArray(new GenericRestrictedTraitTemplate[traitTemplates.size()]);

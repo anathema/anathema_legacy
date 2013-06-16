@@ -1,6 +1,6 @@
 package net.sf.anathema.character.main.traits.model;
 
-import net.sf.anathema.character.generic.traits.ITraitType;
+import net.sf.anathema.character.generic.traits.TraitType;
 import net.sf.anathema.character.generic.traits.groups.IIdentifiedTraitTypeGroup;
 import net.sf.anathema.character.library.trait.Trait;
 import net.sf.anathema.character.library.trait.TraitGroup;
@@ -21,7 +21,7 @@ public class MappedTraitGroup implements TraitGroup {
   @Override
   public Trait[] getGroupTraits() {
     List<Trait> traits = new ArrayList<>();
-    for (ITraitType type : typeGroup.getAllGroupTypes()) {
+    for (TraitType type : typeGroup.getAllGroupTypes()) {
       traits.add(traitMap.getTrait(type));
     }
     return traits.toArray(new Trait[traits.size()]);

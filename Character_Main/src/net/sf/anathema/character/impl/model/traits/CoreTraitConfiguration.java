@@ -6,7 +6,7 @@ import net.sf.anathema.character.generic.framework.additionaltemplate.model.ITra
 import net.sf.anathema.character.generic.template.ICharacterTemplate;
 import net.sf.anathema.character.generic.template.ITraitTemplateCollection;
 import net.sf.anathema.character.generic.traits.ITraitTemplate;
-import net.sf.anathema.character.generic.traits.ITraitType;
+import net.sf.anathema.character.generic.traits.TraitType;
 import net.sf.anathema.character.generic.traits.groups.IIdentifiedTraitTypeGroup;
 import net.sf.anathema.character.generic.traits.types.OtherTraitType;
 import net.sf.anathema.character.generic.traits.types.VirtueType;
@@ -71,7 +71,7 @@ public class CoreTraitConfiguration extends AbstractTraitCollection implements I
   }
 
   @Override
-  public Trait getTrait(ITraitType traitType) {
+  public Trait getTrait(TraitType traitType) {
     if (contains(traitType)) {
       return super.getTrait(traitType);
     }
@@ -97,7 +97,7 @@ public class CoreTraitConfiguration extends AbstractTraitCollection implements I
 
   public class GenericTraitTemplateFactory implements TypedTraitTemplateFactory {
     @Override
-    public ITraitTemplate create(ITraitType type) {
+    public ITraitTemplate create(TraitType type) {
       return traitTemplateCollection.getTraitTemplate(type);
     }
   }

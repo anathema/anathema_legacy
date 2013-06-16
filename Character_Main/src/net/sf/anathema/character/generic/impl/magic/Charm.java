@@ -22,7 +22,7 @@ import net.sf.anathema.character.generic.magic.charms.type.ICharmTypeModel;
 import net.sf.anathema.character.generic.magic.general.ICostList;
 import net.sf.anathema.character.generic.rules.IExaltedSourceBook;
 import net.sf.anathema.character.generic.traits.GenericTrait;
-import net.sf.anathema.character.generic.traits.ITraitType;
+import net.sf.anathema.character.generic.traits.TraitType;
 import net.sf.anathema.character.generic.traits.types.OtherTraitType;
 import net.sf.anathema.character.generic.type.ICharacterType;
 import net.sf.anathema.lib.util.Identifier;
@@ -368,7 +368,7 @@ public class Charm extends SimpleIdentifier implements ICharm {
     if (getPrerequisites().length <= 0) {
       return false;
     }
-    ITraitType primaryTraitType = getPrimaryTraitType();
+    TraitType primaryTraitType = getPrimaryTraitType();
     if (hasAttribute(new SimpleIdentifier("MartialArts")) && traitCollection.getTrait(MartialArts).isCasteOrFavored()) {
       return true;
     }
@@ -377,7 +377,7 @@ public class Charm extends SimpleIdentifier implements ICharm {
   }
 
   @Override
-  public ITraitType getPrimaryTraitType() {
+  public TraitType getPrimaryTraitType() {
     return getPrerequisites().length == 0 ? OtherTraitType.Essence : getPrerequisites()[0].getType();
   }
 }

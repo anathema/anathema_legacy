@@ -1,11 +1,11 @@
 package net.sf.anathema.character.generic.template;
 
 import net.sf.anathema.character.generic.traits.ITraitTemplate;
-import net.sf.anathema.character.generic.traits.ITraitType;
+import net.sf.anathema.character.generic.traits.TraitType;
 
 public interface ITraitTemplateCollection {
 
-  ITraitTemplate getTraitTemplate(ITraitType traitType);
+  ITraitTemplate getTraitTemplate(TraitType traitType);
   
   ITraitTemplateFactory getTraitTemplateFactory();
 }

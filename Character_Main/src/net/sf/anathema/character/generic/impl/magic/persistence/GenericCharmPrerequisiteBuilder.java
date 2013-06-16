@@ -3,7 +3,7 @@ package net.sf.anathema.character.generic.impl.magic.persistence;
 import net.sf.anathema.character.generic.impl.magic.persistence.builder.GenericCharmUtilities;
 import net.sf.anathema.character.generic.impl.magic.persistence.builder.prerequisite.CharmPrerequisiteBuilder;
 import net.sf.anathema.character.generic.magic.charms.CharmException;
-import net.sf.anathema.character.generic.traits.ITraitType;
+import net.sf.anathema.character.generic.traits.TraitType;
 import net.sf.anathema.lib.util.Identifier;
 import org.dom4j.Element;
 
@@ -19,7 +19,7 @@ public class GenericCharmPrerequisiteBuilder extends CharmPrerequisiteBuilder im
   }
 
   @Override
-  public void setType(ITraitType type) {
+  public void setType(TraitType type) {
     this.type = type;
   }
 }

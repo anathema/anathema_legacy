@@ -7,7 +7,7 @@ import cucumber.api.java.en.When;
 import net.sf.anathema.character.generic.caste.ICasteCollection;
 import net.sf.anathema.character.generic.caste.ICasteType;
 import net.sf.anathema.character.generic.impl.traits.TraitTypeUtils;
-import net.sf.anathema.character.generic.traits.ITraitType;
+import net.sf.anathema.character.generic.traits.TraitType;
 import net.sf.anathema.character.generic.traits.types.AbilityType;
 import net.sf.anathema.character.library.trait.Trait;
 import net.sf.anathema.character.main.experience.model.ExperienceModelFetcher;
@@ -44,7 +44,7 @@ public class CharacterChangeSteps {
 
   @When("^I set her (.*) to (\\d+)$")
   public void I_set_her_trait_to(String traitId, int value) throws Throwable {
-    ITraitType type = new TraitTypeUtils().getTraitTypeById(traitId);
+    TraitType type = new TraitTypeUtils().getTraitTypeById(traitId);
     Trait trait = character.getTraitConfiguration().getTrait(type);
     if (ExperienceModelFetcher.fetch(character.getCharacter()).isExperienced()) {
       trait.setExperiencedValue(value);

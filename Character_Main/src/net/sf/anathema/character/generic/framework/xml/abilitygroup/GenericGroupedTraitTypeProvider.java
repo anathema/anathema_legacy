@@ -1,7 +1,7 @@
 package net.sf.anathema.character.generic.framework.xml.abilitygroup;
 
 import net.sf.anathema.character.generic.template.abilities.GroupedTraitType;
-import net.sf.anathema.character.generic.traits.ITraitType;
+import net.sf.anathema.character.generic.traits.TraitType;
 import net.sf.anathema.character.generic.traits.groups.ITraitTypeGroup;
 import net.sf.anathema.lib.exception.UnreachableCodeReachedException;
 import net.sf.anathema.lib.lang.clone.ICloneable;
@@ -24,7 +24,7 @@ public class GenericGroupedTraitTypeProvider implements ICloneable<GenericGroupe
   }
 
   public void addGroupedAbilityType(String traitId, String traitGroupId, List<String> traitCasteIds) {
-    ITraitType traitType = traitTypeGroup.getById(traitId);
+    TraitType traitType = traitTypeGroup.getById(traitId);
     GroupedTraitType type = new GroupedTraitType(traitType, traitGroupId, traitCasteIds);
     groupedTraitTypes.add(type);
   }

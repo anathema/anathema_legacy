@@ -2,7 +2,7 @@ package net.sf.anathema.charmtree.builder;
 
 import net.sf.anathema.character.generic.magic.ICharm;
 import net.sf.anathema.character.generic.magic.IMagic;
-import net.sf.anathema.character.generic.traits.ITraitType;
+import net.sf.anathema.character.generic.traits.TraitType;
 import net.sf.anathema.lib.resources.Resources;
 import net.sf.anathema.lib.util.Identifier;
 
@@ -15,7 +15,7 @@ public class MagicDisplayLabeler {
 
   public String getLabelForMagic(IMagic magic) {
     if (magic instanceof ICharm && ((ICharm) magic).isInstanceOfGenericCharm()) {
-      ITraitType charmType = ((ICharm) magic).getPrimaryTraitType();
+      TraitType charmType = ((ICharm) magic).getPrimaryTraitType();
       String baseCharmId = getGenericCharmBaseId((ICharm) magic);
       return resources.getString(baseCharmId, resources.getString(charmType.getId()));
     }

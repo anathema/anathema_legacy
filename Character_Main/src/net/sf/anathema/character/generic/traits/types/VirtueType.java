@@ -1,8 +1,8 @@
 package net.sf.anathema.character.generic.traits.types;
 
-import net.sf.anathema.character.generic.traits.ITraitType;
+import net.sf.anathema.character.generic.traits.TraitType;
 
-public enum VirtueType implements ITraitType {
+public enum VirtueType implements TraitType {
   Compassion, Conviction, Temperance, Valor;
 
   @Override

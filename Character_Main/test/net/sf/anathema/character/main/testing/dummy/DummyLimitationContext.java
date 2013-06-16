@@ -6,14 +6,14 @@ import net.sf.anathema.character.generic.character.ILimitationContext;
 import net.sf.anathema.character.generic.impl.traits.limitation.StaticTraitLimitation;
 import net.sf.anathema.character.generic.template.ITraitLimitation;
 import net.sf.anathema.character.generic.traits.GenericTrait;
-import net.sf.anathema.character.generic.traits.ITraitType;
+import net.sf.anathema.character.generic.traits.TraitType;
 import net.sf.anathema.lib.exception.NotYetImplementedException;
 
 import java.util.HashMap;
 import java.util.Map;
 
 public class DummyLimitationContext implements ILimitationContext {
-  private final Map<ITraitType, GenericTrait> traits = new HashMap<>();
+  private final Map<TraitType, GenericTrait> traits = new HashMap<>();
 
   @Override
   public ITraitLimitation getEssenceLimitation() {
@@ -30,17 +30,17 @@ public class DummyLimitationContext implements ILimitationContext {
     return new IGenericTraitCollection() {
 
       @Override
-      public GenericTrait getTrait(ITraitType type) {
+      public GenericTrait getTrait(TraitType type) {
         return traits.get(type);
       }
 
       @Override
-      public GenericTrait[] getTraits(ITraitType[] traitTypes) {
+      public GenericTrait[] getTraits(TraitType[] traitTypes) {
         throw new NotYetImplementedException();
       }
 
       @Override
-      public boolean isFavoredOrCasteTrait(ITraitType type) {
+      public boolean isFavoredOrCasteTrait(TraitType type) {
         return getTrait(type).isCasteOrFavored();
       }
     };

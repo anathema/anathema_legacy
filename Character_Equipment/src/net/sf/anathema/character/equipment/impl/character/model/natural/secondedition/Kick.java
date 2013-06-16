@@ -2,7 +2,7 @@ package net.sf.anathema.character.equipment.impl.character.model.natural.seconde
 
 import net.sf.anathema.character.equipment.impl.character.model.natural.AbstractNaturalWeaponStats;
 import net.sf.anathema.character.equipment.impl.creation.model.WeaponTag;
-import net.sf.anathema.character.generic.traits.ITraitType;
+import net.sf.anathema.character.generic.traits.TraitType;
 import net.sf.anathema.character.generic.traits.types.AbilityType;
 import net.sf.anathema.character.generic.traits.types.AttributeType;
 import net.sf.anathema.lib.util.Identifier;
@@ -46,12 +46,12 @@ public class Kick extends AbstractNaturalWeaponStats {
   }
 
   @Override
-  public ITraitType getTraitType() {
+  public TraitType getTraitType() {
     return AbilityType.MartialArts;
   }
 
   @Override
-  public ITraitType getDamageTraitType() {
+  public TraitType getDamageTraitType() {
     return AttributeType.Strength;
   }
 

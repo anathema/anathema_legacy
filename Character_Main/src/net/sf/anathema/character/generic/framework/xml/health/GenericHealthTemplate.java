@@ -1,13 +1,13 @@
 package net.sf.anathema.character.generic.framework.xml.health;
 
-import net.sf.anathema.character.generic.traits.ITraitType;
+import net.sf.anathema.character.generic.traits.TraitType;
 import net.sf.anathema.character.generic.traits.types.AbilityType;
 import net.sf.anathema.lib.exception.UnreachableCodeReachedException;
 import net.sf.anathema.lib.lang.clone.ICloneable;
 
 public class GenericHealthTemplate implements IHealthTemplate, ICloneable<GenericHealthTemplate> {
 
-  private ITraitType[] toughnessTraitTypes = new ITraitType[]{AbilityType.Resistance};
+  private TraitType[] toughnessTraitTypes = new TraitType[]{AbilityType.Resistance};
   private String[] baseProviders;
 
   @Override
@@ -22,7 +22,7 @@ public class GenericHealthTemplate implements IHealthTemplate, ICloneable<Generi
   }
 
   @Override
-  public ITraitType[] getToughnessControllingTraits() {
+  public TraitType[] getToughnessControllingTraits() {
     return toughnessTraitTypes;
   }
 
@@ -31,7 +31,7 @@ public class GenericHealthTemplate implements IHealthTemplate, ICloneable<Generi
     return baseProviders;
   }
 
-  public void setToughnessControllingTraitTypes(ITraitType[] traitTypes) {
+  public void setToughnessControllingTraitTypes(TraitType[] traitTypes) {
     this.toughnessTraitTypes = traitTypes;
   }
 

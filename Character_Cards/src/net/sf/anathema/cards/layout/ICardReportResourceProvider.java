@@ -4,7 +4,7 @@ import com.itextpdf.text.Font;
 import com.itextpdf.text.Image;
 import net.sf.anathema.character.generic.magic.charms.MartialArtsLevel;
 import net.sf.anathema.character.generic.magic.spells.CircleType;
-import net.sf.anathema.character.generic.traits.ITraitType;
+import net.sf.anathema.character.generic.traits.TraitType;
 import net.sf.anathema.character.generic.type.ICharacterType;
 
 public interface ICardReportResourceProvider {
@@ -21,7 +21,7 @@ public interface ICardReportResourceProvider {
 	
 	Image getCharacterIcon(ICharacterType type);
 	
-	Image getTraitIcon(ITraitType trait);
+	Image getTraitIcon(TraitType trait);
 	
 	Image getSpellIcon(CircleType circle);
 	

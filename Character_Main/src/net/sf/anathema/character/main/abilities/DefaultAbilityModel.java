@@ -4,9 +4,8 @@ import net.sf.anathema.character.generic.caste.ICasteCollection;
 import net.sf.anathema.character.generic.framework.additionaltemplate.model.ICharacterModelContext;
 import net.sf.anathema.character.generic.template.ICharacterTemplate;
 import net.sf.anathema.character.generic.template.abilities.GroupedTraitType;
-import net.sf.anathema.character.generic.traits.ITraitType;
+import net.sf.anathema.character.generic.traits.TraitType;
 import net.sf.anathema.character.generic.traits.groups.IIdentifiedCasteTraitTypeGroup;
-import net.sf.anathema.character.generic.traits.types.AttributeType;
 import net.sf.anathema.character.impl.model.traits.AbilityTemplateFactory;
 import net.sf.anathema.character.impl.model.traits.creation.AbilityTypeGroupFactory;
 import net.sf.anathema.character.impl.model.traits.creation.FavorableTraitFactory;
@@ -44,11 +43,11 @@ public class DefaultAbilityModel implements AbilityModel {
 
   private IncrementChecker createFavoredAbilityIncrementChecker(ICharacterTemplate template, TraitMap traitMap) {
     int maxFavoredAbilityCount = template.getCreationPoints().getAbilityCreationPoints().getFavorableTraitCount();
-    List<ITraitType> abilityTypes = new ArrayList<>();
+    List<TraitType> abilityTypes = new ArrayList<>();
     for (GroupedTraitType traitType : template.getAbilityGroups()) {
       abilityTypes.add(traitType.getTraitType());
     }
-    return new FavoredIncrementChecker(maxFavoredAbilityCount, abilityTypes.toArray(new ITraitType[abilityTypes.size()]), traitMap);
+    return new FavoredIncrementChecker(maxFavoredAbilityCount, abilityTypes.toArray(new TraitType[abilityTypes.size()]), traitMap);
   }
 
   public void addFavorableTraits(IncrementChecker incrementChecker, TypedTraitTemplateFactory factory) {
@@ -86,7 +85,7 @@ public class DefaultAbilityModel implements AbilityModel {
   }
 
   @Override
-  public Trait getTrait(AttributeType type) {
+  public Trait getTrait(TraitType type) {
     return traitMap.getTrait(type);
   }
 

@@ -26,7 +26,7 @@ import net.sf.anathema.character.generic.template.essence.IEssenceTemplate;
 import net.sf.anathema.character.generic.template.experience.IExperiencePointCosts;
 import net.sf.anathema.character.generic.template.magic.IMagicTemplate;
 import net.sf.anathema.character.generic.template.presentation.IPresentationProperties;
-import net.sf.anathema.character.generic.traits.ITraitType;
+import net.sf.anathema.character.generic.traits.TraitType;
 import net.sf.anathema.lib.exception.UnreachableCodeReachedException;
 import net.sf.anathema.lib.lang.clone.ICloneable;
 
@@ -108,7 +108,7 @@ public class GenericCharacterTemplate implements ICharacterTemplate, ICloneable<
   }
 
   @Override
-  public ITraitType[] getToughnessControllingTraitTypes() {
+  public TraitType[] getToughnessControllingTraitTypes() {
     return healthTemplate.getToughnessControllingTraits();
   }
 

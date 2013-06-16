@@ -2,7 +2,7 @@ package net.sf.anathema.character.generic.framework.xml.trait.alternate;
 
 import net.sf.anathema.character.generic.character.ILimitationContext;
 import net.sf.anathema.character.generic.framework.xml.trait.IMinimumRestriction;
-import net.sf.anathema.character.generic.traits.ITraitType;
+import net.sf.anathema.character.generic.traits.TraitType;
 import net.sf.anathema.lib.lang.ReflectionEqualsObject;
 
 import java.util.ArrayList;
@@ -12,7 +12,7 @@ public class AlternateMinimumRestriction extends ReflectionEqualsObject implemen
 
   private final int minimumTraitCount;
   private final int strictMinimumValue;
-  private final List<ITraitType> alternateTraitTypes = new ArrayList<>();
+  private final List<TraitType> alternateTraitTypes = new ArrayList<>();
   private boolean isFreebie;
 
   public AlternateMinimumRestriction(int minimumTraitCount, int strictMinimumValue) {
@@ -21,9 +21,9 @@ public class AlternateMinimumRestriction extends ReflectionEqualsObject implemen
   }
 
   @Override
-  public boolean isFullfilledWithout(ILimitationContext context, ITraitType traitType) {
+  public boolean isFullfilledWithout(ILimitationContext context, TraitType traitType) {
     int fullfillingTraitCount = 0;
-    for (ITraitType type : alternateTraitTypes) {
+    for (TraitType type : alternateTraitTypes) {
       if (type != traitType && context.getTraitCollection().getTrait(type).
               getCurrentValue() >= strictMinimumValue) {
         fullfillingTraitCount++;
@@ -33,12 +33,12 @@ public class AlternateMinimumRestriction extends ReflectionEqualsObject implemen
   }
 
   @Override
-  public int getCalculationMinValue(ILimitationContext context, ITraitType traitType) {
+  public int getCalculationMinValue(ILimitationContext context, TraitType traitType) {
     if (!isFreebie) {
       return 0;
     }
     int fullfillingTraitCount = 0;
-    for (ITraitType type : alternateTraitTypes) {
+    for (TraitType type : alternateTraitTypes) {
       if (context.getTraitCollection().getTrait(type).getCurrentValue() >= strictMinimumValue) {
         fullfillingTraitCount++;
         if (type == traitType) {
@@ -58,7 +58,7 @@ public class AlternateMinimumRestriction extends ReflectionEqualsObject implemen
   }
 
   @Override
-  public void addTraitType(ITraitType traitType) {
+  public void addTraitType(TraitType traitType) {
     alternateTraitTypes.add(traitType);
   }
 

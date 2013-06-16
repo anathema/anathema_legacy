@@ -3,7 +3,7 @@ package net.sf.anathema.character.generic.impl.traits;
 import net.sf.anathema.character.generic.template.ITraitTemplateCollection;
 import net.sf.anathema.character.generic.template.ITraitTemplateFactory;
 import net.sf.anathema.character.generic.traits.ITraitTemplate;
-import net.sf.anathema.character.generic.traits.ITraitType;
+import net.sf.anathema.character.generic.traits.TraitType;
 import net.sf.anathema.character.generic.traits.types.AbilityType;
 import net.sf.anathema.character.generic.traits.types.AttributeType;
 import net.sf.anathema.character.generic.traits.types.ITraitTypeVisitor;
@@ -19,7 +19,7 @@ public class TraitTemplateCollection implements ITraitTemplateCollection {
   }
 
   @Override
-  public final ITraitTemplate getTraitTemplate(ITraitType traitType) {
+  public final ITraitTemplate getTraitTemplate(TraitType traitType) {
     final ITraitTemplate[] traitTemplate = new ITraitTemplate[1];
     traitType.accept(new ITraitTypeVisitor() {
 
@@ -49,7 +49,7 @@ public class TraitTemplateCollection implements ITraitTemplateCollection {
       }
 
       @Override
-      public void visitCustomTraitType(ITraitType visitedType) {
+      public void visitCustomTraitType(TraitType visitedType) {
         throw new UnsupportedOperationException("Trait Template Collection can't handle custom trait types");
       }
     });

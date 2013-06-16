@@ -2,7 +2,7 @@ package net.sf.anathema.character.generic.traits;
 
 public interface GenericTrait {
 
-  ITraitType getType();
+  TraitType getType();
 
   int getCurrentValue();
 

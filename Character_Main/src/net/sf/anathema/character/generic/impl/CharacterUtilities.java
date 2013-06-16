@@ -3,7 +3,7 @@ package net.sf.anathema.character.generic.impl;
 import net.sf.anathema.character.generic.character.IGenericCharacter;
 import net.sf.anathema.character.generic.character.IGenericTraitCollection;
 import net.sf.anathema.character.generic.equipment.ICharacterStatsModifiers;
-import net.sf.anathema.character.generic.traits.ITraitType;
+import net.sf.anathema.character.generic.traits.TraitType;
 import net.sf.anathema.character.generic.traits.types.AbilityType;
 import net.sf.anathema.character.generic.traits.types.AttributeType;
 import net.sf.anathema.character.generic.traits.types.OtherTraitType;
@@ -23,7 +23,7 @@ public class CharacterUtilities {
     return Math.max(dv, 0);
   }
 
-  public static int getParryMdv(IGenericTraitCollection traitCollection, ICharacterStatsModifiers equipment, ITraitType... types) {
+  public static int getParryMdv(IGenericTraitCollection traitCollection, ICharacterStatsModifiers equipment, TraitType... types) {
     int dvPool = getTotalValue(traitCollection, types) + equipment.getMPDVPoolMod();
     int dv = getRoundUpDv(dvPool);
 
@@ -38,7 +38,7 @@ public class CharacterUtilities {
     return (int) Math.ceil(dvPool * 0.5);
   }
 
-  public static int getSocialAttackValue(IGenericTraitCollection traitCollection, ITraitType... types) {
+  public static int getSocialAttackValue(IGenericTraitCollection traitCollection, TraitType... types) {
     return getTotalValue(traitCollection, types);
   }
 
@@ -92,13 +92,13 @@ public class CharacterUtilities {
     return Math.max(baseValue, 0);
   }
 
-  private static int getMaxValue(IGenericTraitCollection traitCollection, ITraitType second, ITraitType first) {
+  private static int getMaxValue(IGenericTraitCollection traitCollection, TraitType second, TraitType first) {
     return Math.max(traitCollection.getTrait(first).getCurrentValue(), traitCollection.getTrait(second).getCurrentValue());
   }
 
-  private static int getTotalValue(IGenericTraitCollection traitCollection, ITraitType... types) {
+  private static int getTotalValue(IGenericTraitCollection traitCollection, TraitType... types) {
     int sum = 0;
-    for (ITraitType type : types) {
+    for (TraitType type : types) {
       sum += traitCollection.getTrait(type).getCurrentValue();
     }
     return sum;

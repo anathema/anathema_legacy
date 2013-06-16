@@ -8,7 +8,7 @@ import net.sf.anathema.character.generic.magic.IMagicStats;
 import net.sf.anathema.character.generic.template.magic.AbilityFavoringType;
 import net.sf.anathema.character.generic.template.magic.AttributeFavoringType;
 import net.sf.anathema.character.generic.template.magic.FavoringTraitType;
-import net.sf.anathema.character.generic.traits.ITraitType;
+import net.sf.anathema.character.generic.traits.TraitType;
 import net.sf.anathema.character.generic.traits.groups.IIdentifiedTraitTypeGroup;
 import net.sf.anathema.character.generic.traits.groups.ITraitTypeGroup;
 import net.sf.anathema.character.reporting.pdf.content.ReportSession;
@@ -65,8 +65,8 @@ public class GenericCharmUtilities {
     return getDisplayedGenericCharmCount(session.getCharacter()) > 0;
   }
 
-  public static List<ITraitType> getGenericCharmTraits(IGenericCharacter character) {
-    List<ITraitType> traits = new ArrayList<>();
+  public static List<TraitType> getGenericCharmTraits(IGenericCharacter character) {
+    List<TraitType> traits = new ArrayList<>();
     FavoringTraitType type = character.getTemplate().getTemplateType().getCharacterType().getFavoringTraitType();
     for (ITraitTypeGroup group : getCharmTraitGroups(character)) {
       Collections.addAll(traits, group.getAllGroupTypes());

@@ -4,7 +4,7 @@ import net.sf.anathema.character.generic.impl.traits.limitation.AgeBasedLimitati
 import net.sf.anathema.character.generic.impl.traits.limitation.EssenceBasedLimitation;
 import net.sf.anathema.character.generic.impl.traits.limitation.StaticTraitLimitation;
 import net.sf.anathema.character.generic.template.ITraitLimitation;
-import net.sf.anathema.character.generic.traits.ITraitType;
+import net.sf.anathema.character.generic.traits.TraitType;
 import net.sf.anathema.character.generic.traits.LowerableState;
 import net.sf.anathema.lib.exception.PersistenceException;
 import net.sf.anathema.lib.xml.ElementUtilities;
@@ -32,7 +32,7 @@ public class GenericTraitTemplateParser {
     return parseTraitTemplate(traitElement, null);
   }
 
-  public static IClonableTraitTemplate parseTraitTemplate(Element traitElement, ITraitType type) throws PersistenceException {
+  public static IClonableTraitTemplate parseTraitTemplate(Element traitElement, TraitType type) throws PersistenceException {
     GenericTraitTemplate defaultTraitTemplate = new GenericTraitTemplate();
     int startValue = ElementUtilities.getRequiredIntAttrib(traitElement, ATTRIB_START_VALUE);
     defaultTraitTemplate.setStartValue(startValue);

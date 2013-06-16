@@ -1,6 +1,6 @@
 package net.sf.anathema.character.generic.framework.additionaltemplate.listening;
 
-import net.sf.anathema.character.generic.traits.ITraitType;
+import net.sf.anathema.character.generic.traits.TraitType;
 
 public class DedicatedCharacterChangeAdapter implements ICharacterChangeListener {
 
@@ -10,7 +10,7 @@ public class DedicatedCharacterChangeAdapter implements ICharacterChangeListener
   }
 
   @Override
-  public void traitChanged(ITraitType type) {
+  public void traitChanged(TraitType type) {
     // Nothing to do
   }
 

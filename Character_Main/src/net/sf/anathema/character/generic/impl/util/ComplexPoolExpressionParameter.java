@@ -2,7 +2,7 @@ package net.sf.anathema.character.generic.impl.util;
 
 import com.eteks.parser.ExpressionParameter;
 import net.sf.anathema.character.generic.character.IGenericTraitCollection;
-import net.sf.anathema.character.generic.traits.ITraitType;
+import net.sf.anathema.character.generic.traits.TraitType;
 import net.sf.anathema.character.generic.traits.types.AbilityType;
 import net.sf.anathema.character.generic.traits.types.AttributeType;
 import net.sf.anathema.character.generic.traits.types.OtherTraitType;
@@ -54,8 +54,8 @@ public class ComplexPoolExpressionParameter implements ExpressionParameter {
   @Override
   public Object getParameterValue(Object key) {
     try {
-      if (key instanceof ITraitType) {
-        return traitCollection.getTrait((ITraitType) key).getCurrentValue();
+      if (key instanceof TraitType) {
+        return traitCollection.getTrait((TraitType) key).getCurrentValue();
       } else if (key.equals("x")) {
         return variableValue;
       }

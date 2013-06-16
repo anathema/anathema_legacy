@@ -7,7 +7,7 @@ import net.sf.anathema.character.generic.character.ILimitationContext;
 import net.sf.anathema.character.generic.framework.additionaltemplate.model.ICharacterListening;
 import net.sf.anathema.character.generic.framework.additionaltemplate.model.ITraitContext;
 import net.sf.anathema.character.generic.traits.ITraitTemplate;
-import net.sf.anathema.character.generic.traits.ITraitType;
+import net.sf.anathema.character.generic.traits.TraitType;
 import net.sf.anathema.character.generic.traits.groups.IIdentifiedCasteTraitTypeGroup;
 import net.sf.anathema.character.library.trait.DefaultTrait;
 import net.sf.anathema.character.library.trait.Trait;
@@ -36,7 +36,7 @@ public class FavorableTraitFactory {
   public Trait[] createTraits(IIdentifiedCasteTraitTypeGroup group, IncrementChecker favoredIncrementChecker,
                                         TypedTraitTemplateFactory factory) {
     List<Trait> newTraits = new ArrayList<>();
-    for (ITraitType type : group.getAllGroupTypes()) {
+    for (TraitType type : group.getAllGroupTypes()) {
       ICasteType[] casteTypes = group.getTraitCasteTypes(type);
       Trait trait = createTrait(type, casteTypes, favoredIncrementChecker, factory);
       newTraits.add(trait);
@@ -44,7 +44,7 @@ public class FavorableTraitFactory {
     return newTraits.toArray(new Trait[newTraits.size()]);
   }
 
-  private Trait createTrait(ITraitType traitType, ICasteType[] casteTypes, IncrementChecker favoredIncrementChecker,
+  private Trait createTrait(TraitType traitType, ICasteType[] casteTypes, IncrementChecker favoredIncrementChecker,
                                       TypedTraitTemplateFactory factory) {
     ITraitTemplate traitTemplate = factory.create(traitType);
     ILimitationContext limitationContext = traitContext.getLimitationContext();

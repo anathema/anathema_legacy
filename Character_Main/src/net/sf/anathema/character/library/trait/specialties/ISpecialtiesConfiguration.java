@@ -2,7 +2,7 @@ package net.sf.anathema.character.library.trait.specialties;
 
 import net.sf.anathema.character.generic.framework.ITraitReference;
 import net.sf.anathema.character.generic.framework.additionaltemplate.listening.ICharacterChangeListener;
-import net.sf.anathema.character.generic.traits.ITraitType;
+import net.sf.anathema.character.generic.traits.TraitType;
 import net.sf.anathema.character.library.trait.subtrait.ISubTraitContainer;
 import net.sf.anathema.lib.control.IChangeListener;
 
@@ -10,7 +10,7 @@ public interface ISpecialtiesConfiguration {
 
   ISubTraitContainer getSpecialtiesContainer(ITraitReference reference);
 
-  ISubTraitContainer getSpecialtiesContainer(ITraitType traitType);
+  ISubTraitContainer getSpecialtiesContainer(TraitType traitType);
 
   ITraitReference[] getAllTraits();
 

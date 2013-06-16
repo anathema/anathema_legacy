@@ -6,7 +6,7 @@ import net.sf.anathema.character.generic.magic.charms.IndirectCharmRequirement;
 import net.sf.anathema.character.generic.magic.charms.duration.IDuration;
 import net.sf.anathema.character.generic.magic.charms.type.ICharmTypeModel;
 import net.sf.anathema.character.generic.traits.GenericTrait;
-import net.sf.anathema.character.generic.traits.ITraitType;
+import net.sf.anathema.character.generic.traits.TraitType;
 import net.sf.anathema.character.generic.type.ICharacterType;
 import net.sf.anathema.lib.util.Identifier;
 import net.sf.anathema.lib.util.SimpleIdentifier;
@@ -31,7 +31,7 @@ public interface ICharmData extends IMagicData {
 
   GenericTrait[] getPrerequisites();
 
-  ITraitType getPrimaryTraitType();
+  TraitType getPrimaryTraitType();
 
   String getGroupId();
 

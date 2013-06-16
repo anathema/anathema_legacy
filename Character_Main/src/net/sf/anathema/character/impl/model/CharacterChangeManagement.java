@@ -1,7 +1,7 @@
 package net.sf.anathema.character.impl.model;
 
 import net.sf.anathema.character.generic.framework.additionaltemplate.listening.ICharacterChangeListener;
-import net.sf.anathema.character.generic.traits.ITraitType;
+import net.sf.anathema.character.generic.traits.TraitType;
 import net.sf.anathema.framework.repository.IChangeManagement;
 import net.sf.anathema.lib.control.IChangeListener;
 import net.sf.anathema.lib.control.ObjectValueListener;
@@ -28,7 +28,7 @@ public class CharacterChangeManagement implements IChangeManagement {
     }
 
     @Override
-    public void traitChanged(ITraitType type) {
+    public void traitChanged(TraitType type) {
       setDirty();
     }
   };

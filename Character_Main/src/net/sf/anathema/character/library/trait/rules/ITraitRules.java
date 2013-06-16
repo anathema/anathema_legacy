@@ -1,6 +1,6 @@
 package net.sf.anathema.character.library.trait.rules;
 
-import net.sf.anathema.character.generic.traits.ITraitType;
+import net.sf.anathema.character.generic.traits.TraitType;
 import net.sf.anathema.lib.data.Range;
 
 public interface ITraitRules {
@@ -21,7 +21,7 @@ public interface ITraitRules {
 
   boolean isLowerable();
 
-  ITraitType getType();
+  TraitType getType();
 
   int getExperiencedValue(int creationValue, int demandedValue);
 

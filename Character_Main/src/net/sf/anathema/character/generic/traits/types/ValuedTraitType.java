@@ -1,16 +1,16 @@
 package net.sf.anathema.character.generic.traits.types;
 
 import net.sf.anathema.character.generic.traits.GenericTrait;
-import net.sf.anathema.character.generic.traits.ITraitType;
+import net.sf.anathema.character.generic.traits.TraitType;
 
 public class ValuedTraitType implements GenericTrait {
 
   public static final ValuedTraitType NULL_TYPE = new ValuedTraitType(null, 1);
-  private final ITraitType traitType;
+  private final TraitType traitType;
   private final int value;
 
   @Override
-  public ITraitType getType() {
+  public TraitType getType() {
     return traitType;
   }
 
@@ -24,7 +24,7 @@ public class ValuedTraitType implements GenericTrait {
     return false;
   }
 
-  public ValuedTraitType(ITraitType traitType, int value) {
+  public ValuedTraitType(TraitType traitType, int value) {
     this.traitType = traitType;
     this.value = value;
   }

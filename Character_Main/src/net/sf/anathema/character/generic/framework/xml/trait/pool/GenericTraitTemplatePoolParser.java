@@ -12,7 +12,7 @@ import net.sf.anathema.character.generic.framework.xml.trait.allocation.Allocati
 import net.sf.anathema.character.generic.framework.xml.trait.alternate.AlternateMinimumTraitTemplateParser;
 import net.sf.anathema.character.generic.framework.xml.trait.caste.CasteMinimumTraitTemplateParser;
 import net.sf.anathema.character.generic.traits.ITraitTemplate;
-import net.sf.anathema.character.generic.traits.ITraitType;
+import net.sf.anathema.character.generic.traits.TraitType;
 import net.sf.anathema.character.generic.traits.groups.ITraitTypeGroup;
 import net.sf.anathema.lib.exception.PersistenceException;
 import net.sf.anathema.lib.xml.ElementUtilities;
@@ -63,7 +63,7 @@ public class GenericTraitTemplatePoolParser extends AbstractXmlTemplateParser<Ge
 
   private void parseSpecialTraitTemplates(GenericTraitTemplatePool pool, Element element) throws PersistenceException {
     for (Element specialTraitElement : ElementUtilities.elements(element, TAG_SPECIAL_TRAIT)) {
-      ITraitType traitType;
+      TraitType traitType;
       String traitTypeId = ElementUtilities.getRequiredAttrib(specialTraitElement, "id");
       traitType = traitTypeGroup.getById(traitTypeId);
       IClonableTraitTemplate specialTraitTemplate = GenericTraitTemplateParser.parseTraitTemplate(specialTraitElement, traitType);

@@ -1,11 +1,11 @@
 package net.sf.anathema.character.generic.traits.types;
 
-import net.sf.anathema.character.generic.traits.ITraitType;
+import net.sf.anathema.character.generic.traits.TraitType;
 
 import java.util.ArrayList;
 import java.util.List;
 
-public enum AttributeType implements ITraitType {
+public enum AttributeType implements TraitType {
 
   Strength(AttributeGroupType.Physical), Dexterity(AttributeGroupType.Physical), Stamina(AttributeGroupType.Physical),
 

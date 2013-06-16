@@ -2,14 +2,14 @@ package net.sf.anathema.character.generic.framework.xml.trait.caste;
 
 import net.sf.anathema.character.generic.character.ILimitationContext;
 import net.sf.anathema.character.generic.framework.xml.trait.IMinimumRestriction;
-import net.sf.anathema.character.generic.traits.ITraitType;
+import net.sf.anathema.character.generic.traits.TraitType;
 import net.sf.anathema.lib.lang.ReflectionEqualsObject;
 
 import java.util.ArrayList;
 import java.util.List;
 
 public class CasteMinimumRestriction extends ReflectionEqualsObject implements IMinimumRestriction {
-  private final List<ITraitType> affectedTraitTypes = new ArrayList<>();
+  private final List<TraitType> affectedTraitTypes = new ArrayList<>();
   private final String caste;
   private boolean isFreebie;
   IMinimumRestriction restriction;
@@ -28,7 +28,7 @@ public class CasteMinimumRestriction extends ReflectionEqualsObject implements I
   }
 
   @Override
-  public void addTraitType(ITraitType traitType) {
+  public void addTraitType(TraitType traitType) {
     affectedTraitTypes.add(traitType);
   }
 
@@ -38,14 +38,14 @@ public class CasteMinimumRestriction extends ReflectionEqualsObject implements I
   }
 
   @Override
-  public boolean isFullfilledWithout(ILimitationContext context, ITraitType traitType) {
+  public boolean isFullfilledWithout(ILimitationContext context, TraitType traitType) {
     boolean caste = !context.getCasteType().toString().equals(this.caste);
     boolean fulfilled = !caste && (restriction != null && restriction.isFullfilledWithout(context, traitType));
     return caste || fulfilled;
   }
 
   @Override
-  public int getCalculationMinValue(ILimitationContext context, ITraitType traitType) {
+  public int getCalculationMinValue(ILimitationContext context, TraitType traitType) {
     if (!isFreebie) {
       return 0;
     }

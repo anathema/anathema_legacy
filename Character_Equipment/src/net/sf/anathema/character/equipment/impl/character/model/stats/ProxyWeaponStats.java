@@ -30,7 +30,7 @@ import net.sf.anathema.character.equipment.impl.creation.model.WeaponTag;
 import net.sf.anathema.character.generic.equipment.weapon.IEquipmentStats;
 import net.sf.anathema.character.generic.equipment.weapon.IWeaponStats;
 import net.sf.anathema.character.generic.health.HealthType;
-import net.sf.anathema.character.generic.traits.ITraitType;
+import net.sf.anathema.character.generic.traits.TraitType;
 import net.sf.anathema.character.generic.util.IProxy;
 import net.sf.anathema.lib.util.Identifier;
 import org.apache.commons.lang3.ArrayUtils;
@@ -108,7 +108,7 @@ public class ProxyWeaponStats extends AbstractStats implements IWeaponStats, IPr
   }
 
   @Override
-  public ITraitType getDamageTraitType() {
+  public TraitType getDamageTraitType() {
     return delegate.getDamageTraitType();
   }
 
@@ -167,7 +167,7 @@ public class ProxyWeaponStats extends AbstractStats implements IWeaponStats, IPr
   }
 
   @Override
-  public ITraitType getTraitType() {
+  public TraitType getTraitType() {
     return delegate.getTraitType();
   }
 

@@ -2,7 +2,7 @@ package net.sf.anathema.character.generic.magic.charms;
 
 import net.sf.anathema.character.generic.magic.ICharm;
 import net.sf.anathema.character.generic.magic.charms.type.CharmType;
-import net.sf.anathema.character.generic.traits.ITraitType;
+import net.sf.anathema.character.generic.traits.TraitType;
 import net.sf.anathema.character.generic.traits.types.AbilityType;
 
 import java.util.ArrayList;
@@ -15,7 +15,7 @@ public class ComboRestrictions implements IComboRestrictions {
   private final Boolean combosAllowed;
   private final List<String> restrictedCharmIds = new ArrayList<>();
   private final List<CharmType> restrictedCharmTypes = new ArrayList<>();
-  private final List<ITraitType> restrictedTraitTypes = new ArrayList<>();
+  private final List<TraitType> restrictedTraitTypes = new ArrayList<>();
 
   public ComboRestrictions() {
     this(false, null);
@@ -39,7 +39,7 @@ public class ComboRestrictions implements IComboRestrictions {
     restrictedCharmTypes.add(charmType);
   }
 
-  public void addRestrictedTraitType(ITraitType traitType) {
+  public void addRestrictedTraitType(TraitType traitType) {
     restrictedTraitTypes.add(traitType);
   }
 
@@ -56,8 +56,8 @@ public class ComboRestrictions implements IComboRestrictions {
   }
 
   @Override
-  public ITraitType[] getRestrictedTraitTypes() {
-    return restrictedTraitTypes.toArray(new ITraitType[restrictedTraitTypes.size()]);
+  public TraitType[] getRestrictedTraitTypes() {
+    return restrictedTraitTypes.toArray(new TraitType[restrictedTraitTypes.size()]);
   }
 
   @Override

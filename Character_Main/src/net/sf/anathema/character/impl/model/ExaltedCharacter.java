@@ -9,7 +9,7 @@ import net.sf.anathema.character.generic.template.ICharacterTemplate;
 import net.sf.anathema.character.generic.template.additional.IAdditionalTemplate;
 import net.sf.anathema.character.generic.template.additional.IGlobalAdditionalTemplate;
 import net.sf.anathema.character.generic.traits.GenericTrait;
-import net.sf.anathema.character.generic.traits.ITraitType;
+import net.sf.anathema.character.generic.traits.TraitType;
 import net.sf.anathema.character.generic.type.ICharacterType;
 import net.sf.anathema.character.impl.generic.GenericCharacter;
 import net.sf.anathema.character.impl.model.charm.CharmConfiguration;
@@ -175,7 +175,7 @@ public class ExaltedCharacter implements ICharacter {
     management.setClean();
   }
 
-  private GenericTrait[] getTraitArray(ITraitType[] types) {
+  private GenericTrait[] getTraitArray(TraitType[] types) {
     GenericTrait[] traits = new GenericTrait[types.length];
     for (int i = 0; i != types.length; i++) {
       traits[i] = traitConfiguration.getTrait(types[i]);

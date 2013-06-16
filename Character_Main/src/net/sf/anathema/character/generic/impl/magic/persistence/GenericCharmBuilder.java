@@ -5,7 +5,7 @@ import net.sf.anathema.character.generic.impl.magic.persistence.builder.GenericI
 import net.sf.anathema.character.generic.impl.magic.persistence.builder.prerequisite.GenericAttributeRequirementBuilder;
 import net.sf.anathema.character.generic.impl.magic.persistence.builder.prerequisite.GenericTraitPrerequisitesBuilder;
 import net.sf.anathema.character.generic.impl.magic.persistence.builder.special.SpecialCharmBuilder;
-import net.sf.anathema.character.generic.traits.ITraitType;
+import net.sf.anathema.character.generic.traits.TraitType;
 import net.sf.anathema.character.generic.type.CharacterTypes;
 
 public class GenericCharmBuilder extends CharmBuilder implements ICharmBuilder, IGenericsBuilder {
@@ -29,7 +29,7 @@ public class GenericCharmBuilder extends CharmBuilder implements ICharmBuilder, 
   }
 
   @Override
-  public void setType(ITraitType type) {
+  public void setType(TraitType type) {
     idBuilder.setType(type);
     traitBuilder.setType(type);
     attributeRequirementBuilder.setType(type);

@@ -1,7 +1,7 @@
 package net.sf.anathema.character.impl.model.advance.models;
 
 import net.sf.anathema.character.generic.template.abilities.GroupedTraitType;
-import net.sf.anathema.character.generic.traits.ITraitType;
+import net.sf.anathema.character.generic.traits.TraitType;
 import net.sf.anathema.character.impl.model.advance.IPointCostCalculator;
 import net.sf.anathema.character.library.trait.Trait;
 import net.sf.anathema.character.model.ICharacter;
@@ -37,10 +37,10 @@ public class AbilityExperienceModel extends AbstractIntegerValueModel {
   }
 
   private Trait[] getAllAbilities() {
-    List<ITraitType> abilityTypes = new ArrayList<>();
+    List<TraitType> abilityTypes = new ArrayList<>();
     for (GroupedTraitType type : character.getCharacterTemplate().getAbilityGroups()) {
       abilityTypes.add(type.getTraitType());
     }
-    return traitConfiguration.getTraits(abilityTypes.toArray(new ITraitType[abilityTypes.size()]));
+    return traitConfiguration.getTraits(abilityTypes.toArray(new TraitType[abilityTypes.size()]));
   }
 }

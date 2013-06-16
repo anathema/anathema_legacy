@@ -1,7 +1,7 @@
 package net.sf.anathema.character.generic.impl.magic.persistence.builder.prerequisite;
 
 import net.sf.anathema.character.generic.traits.GenericTrait;
-import net.sf.anathema.character.generic.traits.ITraitType;
+import net.sf.anathema.character.generic.traits.TraitType;
 import net.sf.anathema.character.generic.traits.types.ValuedTraitType;
 import net.sf.anathema.lib.exception.PersistenceException;
 import net.sf.anathema.lib.xml.ElementUtilities;
@@ -11,7 +11,7 @@ import static net.sf.anathema.character.generic.impl.magic.ICharmXMLConstants.AT
 
 public class GenericTraitPrerequisiteBuilder implements ITraitPrerequisiteBuilder {
 
-  private ITraitType type;
+  private TraitType type;
 
   @Override
   public GenericTrait build(Element element) throws PersistenceException {
@@ -19,7 +19,7 @@ public class GenericTraitPrerequisiteBuilder implements ITraitPrerequisiteBuilde
     return new ValuedTraitType(type, minValue);
   }
 
-  public void setType(ITraitType type) {
+  public void setType(TraitType type) {
     this.type = type;
   }
 }

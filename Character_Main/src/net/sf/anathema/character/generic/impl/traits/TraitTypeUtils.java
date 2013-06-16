@@ -1,6 +1,6 @@
 package net.sf.anathema.character.generic.impl.traits;
 
-import net.sf.anathema.character.generic.traits.ITraitType;
+import net.sf.anathema.character.generic.traits.TraitType;
 import net.sf.anathema.character.generic.traits.types.AbilityType;
 import net.sf.anathema.character.generic.traits.types.AttributeType;
 import net.sf.anathema.character.generic.traits.types.OtherTraitType;
@@ -12,7 +12,7 @@ import static java.util.Collections.addAll;
 
 public class TraitTypeUtils {
 
-  private final ArrayList<ITraitType> allPrerequisiteTypeList = new ArrayList<>();
+  private final ArrayList<TraitType> allPrerequisiteTypeList = new ArrayList<>();
 
   public TraitTypeUtils() {
     addAll(allPrerequisiteTypeList, AbilityType.values());
@@ -21,8 +21,8 @@ public class TraitTypeUtils {
     addAll(allPrerequisiteTypeList, OtherTraitType.values());
   }
 
-  public ITraitType getTraitTypeById(String id) {
-    for (ITraitType type : allPrerequisiteTypeList) {
+  public TraitType getTraitTypeById(String id) {
+    for (TraitType type : allPrerequisiteTypeList) {
       if (id.equals(type.getId())) {
         return type;
       }

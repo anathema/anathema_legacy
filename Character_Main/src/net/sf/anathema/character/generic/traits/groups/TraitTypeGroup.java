@@ -1,6 +1,6 @@
 package net.sf.anathema.character.generic.traits.groups;
 
-import net.sf.anathema.character.generic.traits.ITraitType;
+import net.sf.anathema.character.generic.traits.TraitType;
 import org.apache.commons.lang3.ArrayUtils;
 
 import java.util.ArrayList;
@@ -9,23 +9,23 @@ import java.util.List;
 
 public class TraitTypeGroup implements ITraitTypeGroup {
 
-  public static ITraitType[] getAllTraitTypes(ITraitTypeGroup... traitTypeGroups) {
-    List<ITraitType> traitTypes = new ArrayList<>();
+  public static TraitType[] getAllTraitTypes(ITraitTypeGroup... traitTypeGroups) {
+    List<TraitType> traitTypes = new ArrayList<>();
     for (ITraitTypeGroup group : traitTypeGroups) {
       Collections.addAll(traitTypes, group.getAllGroupTypes());
     }
-    return traitTypes.toArray(new ITraitType[traitTypes.size()]);
+    return traitTypes.toArray(new TraitType[traitTypes.size()]);
   }
 
-  private final ITraitType[] traitTypes;
+  private final TraitType[] traitTypes;
 
-  public TraitTypeGroup(ITraitType[] traitTypes) {
+  public TraitTypeGroup(TraitType[] traitTypes) {
     this.traitTypes = traitTypes;
   }
 
   @Override
-  public final ITraitType getById(String typeId) {
-    for (ITraitType element : traitTypes) {
+  public final TraitType getById(String typeId) {
+    for (TraitType element : traitTypes) {
       if (element.getId().equals(typeId)) {
         return element;
       }
@@ -34,12 +34,12 @@ public class TraitTypeGroup implements ITraitTypeGroup {
   }
 
   @Override
-  public final ITraitType[] getAllGroupTypes() {
+  public final TraitType[] getAllGroupTypes() {
     return traitTypes;
   }
 
   @Override
-  public final boolean contains(ITraitType traitType) {
+  public final boolean contains(TraitType traitType) {
     return ArrayUtils.contains(traitTypes, traitType);
   }
 }

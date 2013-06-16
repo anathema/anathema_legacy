@@ -9,7 +9,7 @@ import net.sf.anathema.character.generic.magic.general.ISourceList;
 import net.sf.anathema.character.generic.magic.spells.CircleType;
 import net.sf.anathema.character.generic.rules.IExaltedSourceBook;
 import net.sf.anathema.character.generic.template.magic.FavoringTraitType;
-import net.sf.anathema.character.generic.traits.ITraitType;
+import net.sf.anathema.character.generic.traits.TraitType;
 import net.sf.anathema.lib.util.SimpleIdentifier;
 
 public class Spell extends SimpleIdentifier implements ISpell {
@@ -59,7 +59,7 @@ public class Spell extends SimpleIdentifier implements ISpell {
   @Override
   public boolean isFavored(IBasicCharacterData basicCharacter, IGenericTraitCollection traitCollection) {
     FavoringTraitType type = basicCharacter.getCharacterType().getFavoringTraitType();
-    ITraitType spellFavoringType = type.getSpellFavoringType();
+    TraitType spellFavoringType = type.getSpellFavoringType();
     return traitCollection.getTrait(spellFavoringType).isCasteOrFavored();
   }
 }

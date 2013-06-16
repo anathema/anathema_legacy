@@ -1,15 +1,15 @@
 package net.sf.anathema.character.equipment.character;
 
 import net.sf.anathema.character.equipment.character.model.IEquipmentStatsOption;
-import net.sf.anathema.character.generic.traits.ITraitType;
+import net.sf.anathema.character.generic.traits.TraitType;
 import net.sf.anathema.character.library.trait.specialties.Specialty;
 
 public class EquipmentSpecialtyOption implements IEquipmentStatsOption {
 
   private final Specialty specialty;
-  private final ITraitType type;
+  private final TraitType type;
 
-  public EquipmentSpecialtyOption(Specialty specialty, ITraitType type) {
+  public EquipmentSpecialtyOption(Specialty specialty, TraitType type) {
     this.specialty = specialty;
     this.type = type;
   }

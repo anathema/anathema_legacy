@@ -67,7 +67,7 @@ public class ExperiencePointManagement implements IExperiencePointManagement {
   }
 
   private IValueModel<Integer> getSpecialtyModel() {
-    return new SpecialtyExperienceModel(traitConfiguration, calculator);
+    return new SpecialtyExperienceModel(character.getAbilities(), calculator);
   }
 
   private IValueModel<Integer> getSpellModel() {
