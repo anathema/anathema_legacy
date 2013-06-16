@@ -75,7 +75,6 @@ public class DummyCoreTraitConfiguration extends AbstractTraitCollection impleme
     return groups.toArray(new IIdentifiedTraitTypeGroup[groups.size()]);
   }
 
-  @Override
   public ISpecialtiesConfiguration getSpecialtyConfiguration() {
     if (specialtyConfiguration == null) {
       specialtyConfiguration = new SpecialtiesConfiguration(this, getAbilityTypeGroups(), new DummyCharacterModelContext());

@@ -15,7 +15,6 @@ import net.sf.anathema.character.impl.model.traits.listening.WillpowerListening;
 import net.sf.anathema.character.library.trait.AbstractTraitCollection;
 import net.sf.anathema.character.library.trait.Trait;
 import net.sf.anathema.character.library.trait.TraitCollectionUtilities;
-import net.sf.anathema.character.library.trait.specialties.ISpecialtiesConfiguration;
 import net.sf.anathema.character.main.abilities.AbilityModel;
 import net.sf.anathema.character.main.abilities.DefaultAbilityModel;
 import net.sf.anathema.character.main.traits.model.TraitModel;
@@ -75,11 +74,6 @@ public class CoreTraitConfiguration extends AbstractTraitCollection implements I
       return super.getTrait(traitType);
     }
     throw new UnsupportedOperationException("Unsupported trait type " + traitType);
-  }
-
-  @Override
-  public ISpecialtiesConfiguration getSpecialtyConfiguration() {
-    return abilities.getSpecialtyConfiguration();
   }
 
   private class AllTraits implements TraitProvider {
