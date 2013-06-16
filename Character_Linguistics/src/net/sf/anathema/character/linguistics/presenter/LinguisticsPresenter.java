@@ -11,7 +11,6 @@ import net.sf.anathema.lib.control.IChangeListener;
 import net.sf.anathema.lib.control.ObjectValueListener;
 import net.sf.anathema.lib.control.legality.LegalityColorProvider;
 import net.sf.anathema.lib.file.RelativePath;
-import net.sf.anathema.lib.gui.Presenter;
 import net.sf.anathema.lib.resources.Resources;
 import net.sf.anathema.lib.util.Identifier;
 import net.sf.anathema.lib.workflow.labelledvalue.ILabelledAlotmentView;
@@ -24,7 +23,7 @@ import java.awt.Component;
 import java.util.HashMap;
 import java.util.Map;
 
-public class LinguisticsPresenter implements Presenter {
+public class LinguisticsPresenter {
 
   private final ILinguisticsModel model;
   private final ILinguisticsView view;
@@ -38,7 +37,6 @@ public class LinguisticsPresenter implements Presenter {
     this.resources = resources;
   }
 
-  @Override
   public void initPresentation() {
     initEntryPresentation();
     initPointPresentation();

@@ -6,7 +6,5 @@ public interface IRemovableEntryView {
 
   void addButtonListener(Command command);
 
-  void setButtonEnabled(boolean enabled);
-
   void delete();
 }

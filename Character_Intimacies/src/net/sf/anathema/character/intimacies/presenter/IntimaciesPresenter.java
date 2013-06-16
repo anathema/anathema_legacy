@@ -27,7 +27,7 @@ import net.sf.anathema.lib.workflow.labelledvalue.IValueView;
 import java.util.HashMap;
 import java.util.Map;
 
-public class IntimaciesPresenter implements Presenter {
+public class IntimaciesPresenter {
 
   private final IIntimaciesView view;
   private final Resources resources;
@@ -44,7 +44,6 @@ public class IntimaciesPresenter implements Presenter {
     this.resources = resources;
   }
 
-  @Override
   public void initPresentation() {
     String labelText = resources.getString("Intimacies.SelectionLabel");
     BasicUi basicUi = new BasicUi();

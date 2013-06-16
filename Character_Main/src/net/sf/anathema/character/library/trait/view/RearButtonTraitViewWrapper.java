@@ -38,11 +38,6 @@ public class RearButtonTraitViewWrapper<K extends ITraitView<?>> extends Abstrac
   }
 
   @Override
-  public void setButtonEnabled(boolean enabled) {
-    button.setEnabled(enabled);
-  }
-
-  @Override
   public void addButtonListener(final Command command) {
     CommandAction action = new CommandAction(command, buttonIcon);
     button.setAction(action);

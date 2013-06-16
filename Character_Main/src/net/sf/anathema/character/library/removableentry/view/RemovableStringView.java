@@ -39,11 +39,6 @@ public class RemovableStringView implements IRemovableEntryView {
   }
 
   @Override
-  public void setButtonEnabled(boolean enabled) {
-    button.setEnabled(enabled);
-  }
-
-  @Override
   public void delete() {
     contentPanel.remove(label);
     contentPanel.remove(button);
