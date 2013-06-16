@@ -66,7 +66,7 @@ public class CharacterStatisticPersister {
     willpowerPersister.save(statisticsElement, character.getTraitConfiguration().getTrait(OtherTraitType.Willpower));
     virtuePersister.save(statisticsElement, character.getTraitConfiguration());
     attributePersister.save(statisticsElement, character.getAttributes());
-    abilityPersister.save(statisticsElement, character.getTraitConfiguration());
+    abilityPersister.save(statisticsElement, character.getAbilities());
     charmPersister.save(statisticsElement, character);
     spellPersister.save(statisticsElement, character.getSpells());
     experiencePersister.save(statisticsElement, ExperienceModelFetcher.fetch(character).getExperiencePoints());
@@ -88,7 +88,7 @@ public class CharacterStatisticPersister {
       essencePersister.load(statisticsElement, character.getTraitConfiguration());
       virtuePersister.load(statisticsElement, character.getTraitConfiguration());
       attributePersister.load(statisticsElement, character.getAttributes());
-      abilityPersister.load(statisticsElement, character.getTraitConfiguration());
+      abilityPersister.load(statisticsElement, character.getAbilities());
       charmPersister.load(statisticsElement, character);
       spellPersister.load(statisticsElement, character.getSpells());
       experiencePersister.load(statisticsElement, ExperienceModelFetcher.fetch(character).getExperiencePoints());

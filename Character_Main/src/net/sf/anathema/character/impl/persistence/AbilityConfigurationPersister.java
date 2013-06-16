@@ -9,7 +9,7 @@ import net.sf.anathema.character.library.trait.specialties.DefaultTraitReference
 import net.sf.anathema.character.library.trait.specialties.ISpecialtiesConfiguration;
 import net.sf.anathema.character.library.trait.specialties.Specialty;
 import net.sf.anathema.character.library.trait.subtrait.ISubTraitContainer;
-import net.sf.anathema.character.model.traits.ICoreTraitConfiguration;
+import net.sf.anathema.character.main.abilities.AbilityModel;
 import net.sf.anathema.lib.exception.PersistenceException;
 import net.sf.anathema.lib.xml.ElementUtilities;
 import org.dom4j.Element;
@@ -25,11 +25,10 @@ public class AbilityConfigurationPersister {
 
   private final TraitPersister persister = new TraitPersister();
 
-  public void save(Element parent, ICoreTraitConfiguration configuration) {
+  public void save(Element parent, AbilityModel abilities) {
     Element abilitiesElement = parent.addElement(TAG_ABILITIES);
-    for (AbilityType abilityType : AbilityType.values()) {
-      Trait ability = configuration.getTrait(abilityType);
-      saveAbility(abilitiesElement, ability, configuration.getSpecialtyConfiguration());
+    for (Trait ability : abilities.getAllAbilities()) {
+      saveAbility(abilitiesElement, ability, abilities.getSpecialtyConfiguration());
     }
   }
 
@@ -50,21 +49,21 @@ public class AbilityConfigurationPersister {
     }
   }
 
-  public void load(Element parent, ICoreTraitConfiguration configuration) throws PersistenceException {
+  public void load(Element parent, AbilityModel abilityModel) throws PersistenceException {
     Element abilitiesElement = ElementUtilities.getRequiredElement(parent, TAG_ABILITIES);
     List<Element> abilityElements = ElementUtilities.elements(abilitiesElement);
     for (Element element : abilityElements) {
-      loadAbility(element, configuration);
+      loadAbility(element, abilityModel);
     }
   }
 
-  private void loadAbility(final Element abilityElement, ICoreTraitConfiguration configuration) throws PersistenceException {
+  private void loadAbility(final Element abilityElement, AbilityModel abilityModel) throws PersistenceException {
     AbilityType abilityType = AbilityType.valueOf(abilityElement.getName());
-    Trait ability = configuration.getTrait(abilityType);
+    Trait ability = abilityModel.getTrait(abilityType);
     persister.restoreTrait(abilityElement, ability);
     boolean favored = ElementUtilities.getBooleanAttribute(abilityElement, ATTRIB_FAVORED, false);
     ability.getFavorization().setFavored(favored);
-    final ISpecialtiesConfiguration specialtyConfiguration = configuration.getSpecialtyConfiguration();
+    final ISpecialtiesConfiguration specialtyConfiguration = abilityModel.getSpecialtyConfiguration();
     loadSpecialties(abilityElement, specialtyConfiguration, new DefaultTraitReference(ability));
   }
 

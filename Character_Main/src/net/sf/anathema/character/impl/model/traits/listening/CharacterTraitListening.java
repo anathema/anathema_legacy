@@ -35,7 +35,7 @@ public class CharacterTraitListening {
   }
 
   private void initAbilityListening() {
-    ISpecialtiesConfiguration specialtyConfiguration = traitConfiguration.getSpecialtyConfiguration();
+    ISpecialtiesConfiguration specialtyConfiguration = character.getAbilities().getSpecialtyConfiguration();
     for (Trait ability : character.getAbilities().getAllAbilities()) {
       listening.addTraitListening(ability);
       ability.getFavorization().addFavorableStateChangedListener(new IFavorableStateChangedListener() {
