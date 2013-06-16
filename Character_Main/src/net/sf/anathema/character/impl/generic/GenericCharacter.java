@@ -123,7 +123,7 @@ public class GenericCharacter implements IGenericCharacter {
 
   @Override
   public Specialty[] getSpecialties(TraitType traitType) {
-    ISpecialtiesConfiguration specialtyConfiguration = getTraitConfiguration().getSpecialtyConfiguration();
+    ISpecialtiesConfiguration specialtyConfiguration = character.getAbilities().getSpecialtyConfiguration();
     return specialtyConfiguration.getSpecialtiesContainer(traitType).getSubTraits();
   }
 
@@ -333,7 +333,7 @@ public class GenericCharacter implements IGenericCharacter {
 
   @Override
   public void addSpecialtyListChangeListener(final IChangeListener listener) {
-    ISpecialtiesConfiguration config = getTraitConfiguration().getSpecialtyConfiguration();
+    ISpecialtiesConfiguration config = character.getAbilities().getSpecialtyConfiguration();
     for (ITraitReference trait : config.getAllTraits()) {
       config.getSpecialtiesContainer(trait).addSubTraitListener(new ISpecialtyListener() {
         @Override
