@@ -27,7 +27,7 @@ public class AbilityConfigurationPersister {
 
   public void save(Element parent, AbilityModel abilities) {
     Element abilitiesElement = parent.addElement(TAG_ABILITIES);
-    for (Trait ability : abilities.getAllAbilities()) {
+    for (Trait ability : abilities.getAll()) {
       saveAbility(abilitiesElement, ability, abilities.getSpecialtyConfiguration());
     }
   }

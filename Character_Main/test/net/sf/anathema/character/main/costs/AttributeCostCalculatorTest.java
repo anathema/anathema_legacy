@@ -115,14 +115,15 @@ public class AttributeCostCalculatorTest {
     ITraitTemplate essenceTraitTemplate = templateCollection.getTraitTemplate(Essence);
     ILimitationContext limitationContext = traitContext.getLimitationContext();
     TraitRules essenceRules = new TraitRules(Essence, essenceTraitTemplate, limitationContext);
-    coreTraits.addTestTrait(new DefaultTrait(essenceRules, traitContext, new FriendlyValueChangeChecker()));
+    coreTraits.addTraits(new DefaultTrait(essenceRules, traitContext, new FriendlyValueChangeChecker()));
     CharacterListening listening = new CharacterListening();
     GrumpyIncrementChecker incrementChecker = new GrumpyIncrementChecker();
     for (AttributeType traitType : AttributeType.values()) {
       ITraitTemplate traitTemplate = templateCollection.getTraitTemplate(traitType);
       IValueChangeChecker checker = new AdditionRulesTraitValueChangeChecker(traitType, limitationContext, additionalRules.getAdditionalTraitRules());
-      coreTraits.addTestTrait(new DefaultTrait(new FavorableTraitRules(traitType, traitTemplate, limitationContext), new ICasteType[0], traitContext,
-              new BasicCharacterContext(new DummyGenericCharacter(new DummyCharacterTemplate())), listening, checker, incrementChecker));
+      Trait trait = new DefaultTrait(new FavorableTraitRules(traitType, traitTemplate, limitationContext), new ICasteType[0], traitContext,
+              new BasicCharacterContext(new DummyGenericCharacter(new DummyCharacterTemplate())), listening, checker, incrementChecker);
+      coreTraits.addTraits(trait);
     }
   }
 

@@ -10,22 +10,31 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-public class HashTraitMap implements TraitMap{
+public class DefaultTraitMap implements TraitMap{
 
   private final Map<TraitType, Trait> traitsByType = new HashMap<>();
 
-  public void addTrait(Trait trait){
+  public final void addTraits(Trait... traits){
+    for (Trait trait: traits) {
+      addSingleTrait(trait);
+    }
+  }
+
+  private final void addSingleTrait(Trait trait){
     Preconditions.checkArgument(!contains(trait.getType()), "Trait of type already contained " + trait.getType());
     traitsByType.put(trait.getType(), trait);
   }
 
   @Override
-  public Trait getTrait(TraitType traitType) {
-    return traitsByType.get(traitType);
+  public final Trait getTrait(TraitType traitType) {
+    if (contains(traitType)) {
+      return traitsByType.get(traitType);
+    }
+    throw new UnsupportedOperationException("Unsupported trait type " + traitType);
   }
 
   @Override
-  public Trait[] getTraits(TraitType... traitTypes) {
+  public final Trait[] getTraits(TraitType... traitTypes) {
     List<Trait> foundTraits = new ArrayList<>();
     for (TraitType type : traitTypes) {
       foundTraits.add(getTrait(type));
@@ -33,12 +42,12 @@ public class HashTraitMap implements TraitMap{
     return foundTraits.toArray(new Trait[foundTraits.size()]);
   }
 
-  public Trait[] getAll() {
+  public final Trait[] getAll() {
     Collection<Trait> attributes = traitsByType.values();
     return attributes.toArray(new Trait[attributes.size()]);
   }
 
-  private boolean contains(TraitType traitType) {
+  public final boolean contains(TraitType traitType) {
     return traitsByType.containsKey(traitType);
   }
 }

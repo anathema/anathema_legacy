@@ -23,7 +23,7 @@ public class AttributeConfigurationPersister {
   }
 
   private void saveAttributes(AttributeModel attributeConfiguration, Element attributesElement) {
-    for (Trait attribute : attributeConfiguration.getAllAttributes()) {
+    for (Trait attribute : attributeConfiguration.getAll()) {
       Element attributeElement = persister.saveTrait(attributesElement, attribute.getType().getId(), attribute);
         if (attribute.getFavorization().isFavored()) {
           ElementUtilities.addAttribute(attributeElement, ATTRIB_FAVORED, attribute.getFavorization().isFavored());

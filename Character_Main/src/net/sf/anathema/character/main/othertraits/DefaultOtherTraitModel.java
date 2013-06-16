@@ -5,7 +5,6 @@ import net.sf.anathema.character.generic.framework.additionaltemplate.model.ICha
 import net.sf.anathema.character.generic.framework.additionaltemplate.model.ITraitContext;
 import net.sf.anathema.character.generic.template.ICharacterTemplate;
 import net.sf.anathema.character.generic.template.ITraitTemplateCollection;
-import net.sf.anathema.character.generic.traits.TraitType;
 import net.sf.anathema.character.generic.traits.types.OtherTraitType;
 import net.sf.anathema.character.generic.traits.types.VirtueType;
 import net.sf.anathema.character.impl.model.traits.EssenceLimitationListener;
@@ -16,12 +15,11 @@ import net.sf.anathema.character.impl.model.traits.creation.DefaultTraitFactory;
 import net.sf.anathema.character.impl.model.traits.creation.TypedTraitTemplateFactory;
 import net.sf.anathema.character.impl.model.traits.listening.WillpowerListening;
 import net.sf.anathema.character.library.trait.Trait;
-import net.sf.anathema.character.main.traits.model.HashTraitMap;
+import net.sf.anathema.character.main.traits.model.DefaultTraitMap;
 import net.sf.anathema.character.main.traits.model.TraitModel;
 
-public class DefaultOtherTraitModel implements OtherTraitModel {
+public class DefaultOtherTraitModel extends DefaultTraitMap implements OtherTraitModel {
 
-  private final HashTraitMap traitMap = new HashTraitMap();
   private ICharacterTemplate template;
 
   public DefaultOtherTraitModel(ICharacterTemplate template, ICharacterModelContext modelContext, TraitModel traitModel) {
@@ -31,27 +29,17 @@ public class DefaultOtherTraitModel implements OtherTraitModel {
     addWillpower(modelContext.getTraitContext());
     connectWillpowerAndVirtues();
     getTrait(OtherTraitType.Essence).addCurrentValueListener(new EssenceLimitationListener(traitModel, modelContext));
-    traitModel.addTraits(traitMap.getAll());
+    traitModel.addTraits(getAll());
   }
 
   private void connectWillpowerAndVirtues() {
-    Trait willpower = traitMap.getTrait(OtherTraitType.Willpower);
-    Trait[] virtues = traitMap.getTraits(VirtueType.values());
+    Trait willpower = getTrait(OtherTraitType.Willpower);
+    Trait[] virtues = getTraits(VirtueType.values());
     if (getAdditionalTraitRules().isWillpowerVirtueBased()) {
       new WillpowerListening().initListening(willpower, virtues);
     } else {
       willpower.setModifiedCreationRange(5, 10);
     }
-  }
-
-  @Override
-  public Trait[] getTraits(TraitType... traitType) {
-    return traitMap.getTraits(traitType);
-  }
-
-  @Override
-  public Trait getTrait(TraitType type) {
-    return traitMap.getTrait(type);
   }
 
   private void addEssence(ITraitContext traitContext) {
@@ -70,12 +58,6 @@ public class DefaultOtherTraitModel implements OtherTraitModel {
     TypedTraitTemplateFactory templateFactory = new WillpowerTemplateFactory(getTemplateCollection().getTraitTemplateFactory());
     DefaultTraitFactory traitFactory = new DefaultTraitFactory(traitContext, getAdditionalTraitRules(), templateFactory);
     addTraits(traitFactory.createTrait(OtherTraitType.Willpower));
-  }
-
-  protected final void addTraits(Trait... traits) {
-    for (Trait trait : traits) {
-      traitMap.addTrait(trait);
-    }
   }
 
   private IAdditionalTraitRules getAdditionalTraitRules() {

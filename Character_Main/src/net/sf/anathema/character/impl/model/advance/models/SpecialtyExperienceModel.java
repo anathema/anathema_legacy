@@ -24,7 +24,7 @@ public class SpecialtyExperienceModel extends AbstractIntegerValueModel {
 
   private int getSpecialtyCosts() {
     int experienceCosts = 0;
-    for (Trait ability : abilityModel.getAllAbilities()) {
+    for (Trait ability : abilityModel.getAll()) {
       experienceCosts += getExperienceDots(ability) * getCostPerSpecialtyDot(ability);
     }
     return experienceCosts;

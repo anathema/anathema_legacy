@@ -26,7 +26,7 @@ public class AbilityCostCalculator extends AbstractFavorableTraitCostCalculator 
 
   public AbilityCostCalculator(AbilityModel abilityModel, IFavorableTraitCreationPoints points, int specialtyPoints,
                                AbilityPointCosts costs, IAdditionalBonusPointManagment additionalPools) {
-    super(additionalPools, points, costs.getMaximumFreeAbilityRank(), abilityModel.getAllAbilities());
+    super(additionalPools, points, costs.getMaximumFreeAbilityRank(), abilityModel.getAll());
     this.abilityModel = abilityModel;
     this.costs = costs;
     this.additionalPools = additionalPools;

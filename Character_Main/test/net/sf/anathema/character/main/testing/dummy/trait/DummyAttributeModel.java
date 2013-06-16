@@ -1,5 +1,6 @@
 package net.sf.anathema.character.main.testing.dummy.trait;
 
+import net.sf.anathema.character.generic.traits.TraitType;
 import net.sf.anathema.character.generic.traits.groups.IIdentifiedTraitTypeGroup;
 import net.sf.anathema.character.generic.traits.types.AttributeGroupType;
 import net.sf.anathema.character.generic.traits.types.AttributeType;
@@ -16,7 +17,7 @@ public class DummyAttributeModel implements AttributeModel {
   }
 
   @Override
-  public Trait[] getAllAttributes() {
+  public Trait[] getAll() {
     return configuration.getTraits(AttributeType.values());
   }
 
@@ -32,12 +33,17 @@ public class DummyAttributeModel implements AttributeModel {
   }
 
   @Override
-  public Trait getTrait(AttributeType type) {
-    return getTrait(type);
+  public IIdentifiedTraitTypeGroup[] getAttributeTypeGroups() {
+    return configuration.getAttributeTypeGroups();
   }
 
   @Override
-  public IIdentifiedTraitTypeGroup[] getAttributeTypeGroups() {
-    return configuration.getAttributeTypeGroups();
+  public Trait getTrait(TraitType traitType) {
+    return configuration.getTrait(traitType);
+  }
+
+  @Override
+  public Trait[] getTraits(TraitType... traitTypes) {
+    return configuration.getTraits(traitTypes);
   }
 }

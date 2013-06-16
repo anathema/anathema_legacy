@@ -33,7 +33,7 @@ public class AttributeCostCalculator extends AbstractFavorableTraitCostCalculato
 
   public AttributeCostCalculator(AttributeModel attributes, IAttributeCreationPoints points, BonusPointCosts costs,
                                  IAdditionalBonusPointManagment additionalPools) {
-    super(additionalPools, points, costs.getMaximumFreeAbilityRank(), attributes.getAllAttributes());
+    super(additionalPools, points, costs.getMaximumFreeAbilityRank(), attributes.getAll());
     this.traitGroups = attributes.getTraitGroups();
     this.costs = costs;
     createPermutations(new ArrayList<TraitGroup>());

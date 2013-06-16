@@ -36,7 +36,7 @@ public abstract class AbstractBonusPointTestCase {
     DummyTraitContext traitContext = new DummyTraitContext(coreTraits);
     DefaultTraitFactory traitFactory =
             new DefaultTraitFactory(traitContext, additionalRules, new EssenceTemplateFactory(new DummyTraitTemplateFactory()));
-    coreTraits.addTestTrait(traitFactory.createTrait(OtherTraitType.Essence));
+    coreTraits.addTraits(traitFactory.createTrait(OtherTraitType.Essence));
     FavorableTraitFactory favorableTraitFactory = new FavorableTraitFactory(traitContext, new NullAdditionalRules(), new IBasicCharacterData() {
       @Override
       public DummyCasteType getCasteType() {
@@ -70,7 +70,7 @@ public abstract class AbstractBonusPointTestCase {
       IIdentifiedCasteTraitTypeGroup typeGroup = new IdentifiedCasteTraitTypeGroup(new TraitType[]{traitType}, new SimpleIdentifier("Test"),
               new MultiEntryMap<TraitType, ICasteType>());
       Trait trait = favorableTraitFactory.createTraits(typeGroup, friendlyIncrementChecker, new DummyTypedTraitTemplateFactory(traitType))[0];
-      coreTraits.addTestTrait(trait);
+      coreTraits.addTraits(trait);
       coreTraits.addAbilityTypeToGroup(traitType, casteType[0].getId());
     }
   }

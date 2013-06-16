@@ -50,7 +50,7 @@ public class OxBodyTechniqueConfigurationTest {
     endurance = new DefaultTrait(enduranceRules, new ICasteType[]{new DummyCasteType()}, traitContext, modelContext.getBasicCharacterContext(),
             modelContext.getCharacterListening(), new FriendlyValueChangeChecker(), new FriendlyIncrementChecker());
     health = new HealthConfiguration(new GenericTrait[]{endurance});
-    collection.addTestTrait(endurance);
+    collection.addTraits(endurance);
     configuration =
             new OxBodyTechniqueConfiguration(traitContext, new GenericTraitCollectionFacade(collection), null, new TraitType[]{endurance.getType()},
                     health.getOxBodyLearnArbitrator(), createObtCharm());

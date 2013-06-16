@@ -19,7 +19,7 @@ public class DummyAbilityModel implements AbilityModel {
   }
 
   @Override
-  public Trait[] getAllAbilities() {
+  public Trait[] getAll() {
     return configuration.getTraits(AbilityType.values());
   }
 

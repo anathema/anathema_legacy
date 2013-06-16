@@ -1,17 +1,15 @@
 package net.sf.anathema.character.main.attributes.model.temporary;
 
 import net.sf.anathema.character.generic.traits.groups.IIdentifiedTraitTypeGroup;
-import net.sf.anathema.character.generic.traits.types.AttributeType;
 import net.sf.anathema.character.library.trait.Trait;
 import net.sf.anathema.character.library.trait.TraitGroup;
+import net.sf.anathema.character.main.traits.model.TraitMap;
 
-public interface AttributeModel {
+public interface AttributeModel extends TraitMap {
 
-  Trait[] getAllAttributes();
+  Trait[] getAll();
 
   TraitGroup[] getTraitGroups();
-
-  Trait getTrait(AttributeType type);
 
   IIdentifiedTraitTypeGroup[] getAttributeTypeGroups();
 }

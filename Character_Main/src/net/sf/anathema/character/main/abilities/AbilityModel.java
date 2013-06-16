@@ -9,7 +9,7 @@ import net.sf.anathema.character.main.traits.model.TraitMap;
 
 public interface AbilityModel extends TraitMap{
 
-  Trait[] getAllAbilities();
+  Trait[] getAll();
 
   TraitGroup[] getTraitGroups();
 
