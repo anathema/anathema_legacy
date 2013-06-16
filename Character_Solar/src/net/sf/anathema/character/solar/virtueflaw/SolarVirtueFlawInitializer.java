@@ -2,7 +2,7 @@ package net.sf.anathema.character.solar.virtueflaw;
 
 import net.sf.anathema.character.library.virtueflaw.presenter.IDescriptiveVirtueFlawModel;
 import net.sf.anathema.character.library.virtueflaw.presenter.IDescriptiveVirtueFlawView;
-import net.sf.anathema.character.model.CharacterModelGroup;
+import net.sf.anathema.character.main.model.CharacterModelGroup;
 import net.sf.anathema.character.model.ICharacter;
 import net.sf.anathema.character.presenter.initializers.CharacterModelInitializer;
 import net.sf.anathema.character.presenter.initializers.RegisteredInitializer;

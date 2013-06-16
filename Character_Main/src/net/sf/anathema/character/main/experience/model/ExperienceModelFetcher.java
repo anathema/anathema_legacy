@@ -1,6 +1,6 @@
 package net.sf.anathema.character.main.experience.model;
 
-import net.sf.anathema.character.model.Hero;
+import net.sf.anathema.character.main.model.Hero;
 
 public class ExperienceModelFetcher {
 

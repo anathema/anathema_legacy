@@ -1,6 +1,6 @@
 package net.sf.anathema.character.presenter;
 
-import net.sf.anathema.character.model.CharacterModelGroup;
+import net.sf.anathema.character.main.model.CharacterModelGroup;
 import net.sf.anathema.character.model.ICharacter;
 import net.sf.anathema.character.presenter.initializers.CharacterModelInitializer;
 import net.sf.anathema.character.presenter.initializers.InitializerList;
@@ -10,11 +10,11 @@ import net.sf.anathema.framework.IApplicationModel;
 import net.sf.anathema.lib.gui.Presenter;
 import net.sf.anathema.lib.resources.Resources;
 
-import static net.sf.anathema.character.model.CharacterModelGroup.Magic;
-import static net.sf.anathema.character.model.CharacterModelGroup.Miscellaneous;
-import static net.sf.anathema.character.model.CharacterModelGroup.NaturalTraits;
-import static net.sf.anathema.character.model.CharacterModelGroup.Outline;
-import static net.sf.anathema.character.model.CharacterModelGroup.SpiritualTraits;
+import static net.sf.anathema.character.main.model.CharacterModelGroup.Magic;
+import static net.sf.anathema.character.main.model.CharacterModelGroup.Miscellaneous;
+import static net.sf.anathema.character.main.model.CharacterModelGroup.NaturalTraits;
+import static net.sf.anathema.character.main.model.CharacterModelGroup.Outline;
+import static net.sf.anathema.character.main.model.CharacterModelGroup.SpiritualTraits;
 
 public class CharacterPresenter implements Presenter {
 

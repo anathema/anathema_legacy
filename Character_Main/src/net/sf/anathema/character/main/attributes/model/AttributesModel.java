@@ -7,8 +7,8 @@ import net.sf.anathema.character.generic.traits.ITraitTemplate;
 import net.sf.anathema.character.generic.traits.TraitType;
 import net.sf.anathema.character.main.attributes.template.AttributeGroup;
 import net.sf.anathema.character.main.attributes.template.AttributeTemplate;
-import net.sf.anathema.character.model.CharacterModel;
-import net.sf.anathema.character.model.Hero;
+import net.sf.anathema.character.main.model.CharacterModel;
+import net.sf.anathema.character.main.model.Hero;
 import net.sf.anathema.lib.util.Identifier;
 import net.sf.anathema.lib.util.SimpleIdentifier;
 

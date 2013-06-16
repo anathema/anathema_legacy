@@ -18,8 +18,8 @@ import net.sf.anathema.character.impl.model.traits.listening.WillpowerListening;
 import net.sf.anathema.character.library.trait.Trait;
 import net.sf.anathema.character.main.traits.model.DefaultTraitMap;
 import net.sf.anathema.character.main.traits.model.TraitModel;
-import net.sf.anathema.character.model.CharacterModel;
-import net.sf.anathema.character.model.Hero;
+import net.sf.anathema.character.main.model.CharacterModel;
+import net.sf.anathema.character.main.model.Hero;
 import net.sf.anathema.lib.util.Identifier;
 
 public class DefaultOtherTraitModel extends DefaultTraitMap implements OtherTraitModel, CharacterModel {

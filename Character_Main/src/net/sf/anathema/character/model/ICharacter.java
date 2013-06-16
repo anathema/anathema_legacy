@@ -6,6 +6,7 @@ import net.sf.anathema.character.generic.type.ICharacterType;
 import net.sf.anathema.character.main.abilities.AbilityModel;
 import net.sf.anathema.character.main.attributes.model.temporary.AttributeModel;
 import net.sf.anathema.character.main.essencepool.model.EssencePoolModel;
+import net.sf.anathema.character.main.model.Hero;
 import net.sf.anathema.character.main.traits.model.TraitModel;
 import net.sf.anathema.character.model.charm.ICharmConfiguration;
 import net.sf.anathema.character.model.charm.IComboConfiguration;

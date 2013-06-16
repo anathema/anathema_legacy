@@ -19,6 +19,7 @@ import net.sf.anathema.character.generic.template.magic.IMagicTemplate;
 import net.sf.anathema.character.generic.template.presentation.IPresentationProperties;
 import net.sf.anathema.character.generic.traits.TraitType;
 import net.sf.anathema.character.generic.type.ICharacterType;
+import net.sf.anathema.character.main.traits.model.TraitModel;
 import net.sf.anathema.lib.util.SimpleIdentifier;
 
 import java.util.ArrayList;

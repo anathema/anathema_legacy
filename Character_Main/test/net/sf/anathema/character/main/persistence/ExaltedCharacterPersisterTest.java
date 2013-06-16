@@ -18,6 +18,7 @@ import net.sf.anathema.framework.messaging.IMessaging;
 import net.sf.anathema.framework.repository.IItem;
 import net.sf.anathema.lib.exception.PersistenceException;
 import org.junit.Before;
+import org.junit.Ignore;
 import org.junit.Test;
 
 import static org.hamcrest.CoreMatchers.is;
@@ -25,6 +26,7 @@ import static org.junit.Assert.assertThat;
 import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.when;
 
+@Ignore
 public class ExaltedCharacterPersisterTest {
   private IMessaging messaging = mock(IMessaging.class);
   private IItemType type;

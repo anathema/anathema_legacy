@@ -32,7 +32,7 @@ import net.sf.anathema.character.main.model.initialization.CharacterModelInitial
 import net.sf.anathema.character.main.othertraits.DefaultOtherTraitModel;
 import net.sf.anathema.character.main.othertraits.OtherTraitModel;
 import net.sf.anathema.character.main.traits.model.TraitModel;
-import net.sf.anathema.character.model.CharacterModel;
+import net.sf.anathema.character.main.model.CharacterModel;
 import net.sf.anathema.character.model.ICharacter;
 import net.sf.anathema.character.model.ISpellConfiguration;
 import net.sf.anathema.character.model.charm.ICharmConfiguration;
@@ -209,7 +209,7 @@ public class ExaltedCharacter implements ICharacter {
   }
 
   public TraitModel getTraitModel() {
-    return getModel(TraitModel.ID);
+    return (TraitModel) getModel(TraitModel.ID);
   }
 
   public ICharacterModelContext getCharacterContext() {

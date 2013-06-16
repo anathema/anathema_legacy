@@ -1,4 +1,4 @@
-package net.sf.anathema.character.model;
+package net.sf.anathema.character.main.model;
 
 import java.lang.annotation.ElementType;
 import java.lang.annotation.Retention;

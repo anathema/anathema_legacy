@@ -5,10 +5,10 @@ import net.sf.anathema.character.generic.framework.ICharacterGenerics;
 import net.sf.anathema.character.generic.template.ICharacterTemplate;
 import net.sf.anathema.character.main.model.DefaultHero;
 import net.sf.anathema.character.main.model.DefaultTemplateFactory;
-import net.sf.anathema.character.model.CharacterModel;
-import net.sf.anathema.character.model.CharacterModelAutoCollector;
-import net.sf.anathema.character.model.CharacterModelFactory;
-import net.sf.anathema.character.model.TemplateFactory;
+import net.sf.anathema.character.main.model.CharacterModel;
+import net.sf.anathema.character.main.model.CharacterModelAutoCollector;
+import net.sf.anathema.character.main.model.CharacterModelFactory;
+import net.sf.anathema.character.main.modeltemplate.TemplateFactory;
 import net.sf.anathema.initialization.ObjectFactory;
 import net.sf.anathema.lib.util.Identifier;
 

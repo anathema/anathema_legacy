@@ -1,7 +1,5 @@
 package net.sf.anathema.character.main.model;
 
-import net.sf.anathema.character.model.CharacterModel;
-import net.sf.anathema.character.model.Hero;
 import net.sf.anathema.lib.util.Identifier;
 
 import java.util.HashMap;

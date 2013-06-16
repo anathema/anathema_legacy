@@ -1,4 +1,4 @@
-package net.sf.anathema.character.model;
+package net.sf.anathema.character.main.model;
 
 public enum CharacterModelGroup {
 

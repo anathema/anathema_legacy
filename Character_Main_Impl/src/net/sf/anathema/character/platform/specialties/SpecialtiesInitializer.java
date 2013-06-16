@@ -1,7 +1,7 @@
 package net.sf.anathema.character.platform.specialties;
 
 import net.sf.anathema.character.library.trait.specialties.ISpecialtiesConfiguration;
-import net.sf.anathema.character.model.CharacterModelGroup;
+import net.sf.anathema.character.main.model.CharacterModelGroup;
 import net.sf.anathema.character.model.ICharacter;
 import net.sf.anathema.character.presenter.initializers.CharacterModelInitializer;
 import net.sf.anathema.character.presenter.initializers.RegisteredInitializer;

@@ -1,4 +1,4 @@
-package net.sf.anathema.character.model;
+package net.sf.anathema.character.main.model;
 
 import net.sf.anathema.character.change.ChangeAnnouncer;
 import net.sf.anathema.lib.util.Identifier;

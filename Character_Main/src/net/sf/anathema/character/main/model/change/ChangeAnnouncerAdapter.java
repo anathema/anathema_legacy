@@ -6,7 +6,7 @@ import net.sf.anathema.character.impl.model.context.CharacterListening;
 import net.sf.anathema.character.main.concept.model.ConceptChange;
 import net.sf.anathema.character.main.experience.model.ExperienceChange;
 import net.sf.anathema.character.main.experience.model.ExperienceModel;
-import net.sf.anathema.character.model.Hero;
+import net.sf.anathema.character.main.model.Hero;
 
 public class ChangeAnnouncerAdapter implements ChangeAnnouncer {
 

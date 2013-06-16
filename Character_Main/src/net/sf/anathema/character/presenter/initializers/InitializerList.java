@@ -1,7 +1,7 @@
 package net.sf.anathema.character.presenter.initializers;
 
 import net.sf.anathema.character.generic.framework.CharacterGenericsExtractor;
-import net.sf.anathema.character.model.CharacterModelGroup;
+import net.sf.anathema.character.main.model.CharacterModelGroup;
 import net.sf.anathema.framework.IApplicationModel;
 import net.sf.anathema.initialization.ObjectFactory;
 

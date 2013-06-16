@@ -1,6 +1,5 @@
 package net.sf.anathema.character.main.model.initialization;
 
-import net.sf.anathema.character.model.CharacterModelFactory;
 import net.sf.anathema.lib.util.Identifier;
 
 import java.util.ArrayList;
