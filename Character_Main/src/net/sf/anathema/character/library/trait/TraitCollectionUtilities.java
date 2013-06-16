@@ -8,20 +8,20 @@ import static net.sf.anathema.lib.lang.ArrayUtilities.transform;
 
 public class TraitCollectionUtilities {
 
-  public static IDefaultTrait[] getVirtues(ITraitCollection collection) {
-    return transform(collection.getTraits(VirtueType.values()), IDefaultTrait.class, new Function<ITrait, IDefaultTrait>() {
+  public static Trait[] getVirtues(ITraitCollection collection) {
+    return transform(collection.getTraits(VirtueType.values()), Trait.class, new Function<Trait, Trait>() {
       @Override
-      public IDefaultTrait apply(ITrait input) {
-        return (IDefaultTrait) input;
+      public Trait apply(Trait input) {
+        return input;
       }
     });
   }
 
-  public static IDefaultTrait getEssence(ITraitCollection traitConfiguration) {
-    return (IDefaultTrait) traitConfiguration.getTrait(OtherTraitType.Essence);
+  public static Trait getEssence(ITraitCollection traitConfiguration) {
+    return traitConfiguration.getTrait(OtherTraitType.Essence);
   }
 
-  public static IDefaultTrait getWillpower(ITraitCollection traitConfiguration) {
-    return (IDefaultTrait) traitConfiguration.getTrait(OtherTraitType.Willpower);
+  public static Trait getWillpower(ITraitCollection traitConfiguration) {
+    return traitConfiguration.getTrait(OtherTraitType.Willpower);
   }
 }

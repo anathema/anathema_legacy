@@ -6,7 +6,7 @@ import net.sf.anathema.character.generic.traits.groups.TraitTypeGroup;
 import net.sf.anathema.character.generic.traits.types.OtherTraitType;
 import net.sf.anathema.character.generic.traits.types.VirtueType;
 import net.sf.anathema.character.impl.model.context.CharacterListening;
-import net.sf.anathema.character.library.trait.ITrait;
+import net.sf.anathema.character.library.trait.Trait;
 import net.sf.anathema.character.library.trait.favorable.FavorableState;
 import net.sf.anathema.character.library.trait.favorable.IFavorableStateChangedListener;
 import net.sf.anathema.character.library.trait.specialties.ISpecialtiesConfiguration;
@@ -27,7 +27,7 @@ public class CharacterTraitListening {
   public void initListening() {
     initAttributeListening();
     initAbilityListening();
-    for (ITrait virtue : traitConfiguration.getTraits(VirtueType.values())) {
+    for (Trait virtue : traitConfiguration.getTraits(VirtueType.values())) {
       listening.addTraitListening(virtue);
     }
     listening.addTraitListening(traitConfiguration.getTrait(OtherTraitType.Willpower));
@@ -39,7 +39,7 @@ public class CharacterTraitListening {
     ITraitType[] allAbilityTypes = TraitTypeGroup.getAllTraitTypes(groups);
     ISpecialtiesConfiguration specialtyConfiguration = traitConfiguration.getSpecialtyConfiguration();
     for (ITraitType traitType : allAbilityTypes) {
-      ITrait ability = traitConfiguration.getTrait(traitType);
+      Trait ability = traitConfiguration.getTrait(traitType);
       listening.addTraitListening(ability);
       ability.getFavorization().addFavorableStateChangedListener(new IFavorableStateChangedListener() {
         @Override
@@ -70,7 +70,7 @@ public class CharacterTraitListening {
     ITraitTypeGroup[] groups = traitConfiguration.getAttributeTypeGroups();
     ITraitType[] allAttributeTypes = TraitTypeGroup.getAllTraitTypes(groups);
     for (ITraitType traitType : allAttributeTypes) {
-      ITrait attribute = traitConfiguration.getTrait(traitType);
+      Trait attribute = traitConfiguration.getTrait(traitType);
       listening.addTraitListening(attribute);
     }
   }

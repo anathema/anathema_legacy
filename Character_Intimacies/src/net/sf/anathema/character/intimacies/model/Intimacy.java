@@ -7,9 +7,9 @@ import net.sf.anathema.character.generic.traits.ITraitTemplate;
 import net.sf.anathema.character.generic.traits.LowerableState;
 import net.sf.anathema.character.generic.traits.types.VirtueType;
 import net.sf.anathema.character.library.trait.DefaultTrait;
+import net.sf.anathema.character.library.trait.Trait;
 import net.sf.anathema.character.library.trait.IValueChangeChecker;
 import net.sf.anathema.character.library.trait.rules.TraitRules;
-import net.sf.anathema.character.library.trait.IDefaultTrait;
 import net.sf.anathema.lib.control.GlobalChangeAdapter;
 import net.sf.anathema.lib.control.IBooleanValueChangedListener;
 import net.sf.anathema.lib.control.IChangeListener;
@@ -18,7 +18,7 @@ import org.jmock.example.announcer.Announcer;
 public class Intimacy implements IIntimacy {
 
   private final String name;
-  private final IDefaultTrait trait;
+  private final Trait trait;
   private final IGenericTrait maxValueTrait;
   private boolean complete;
   private final Announcer<IBooleanValueChangedListener> control = Announcer.to(IBooleanValueChangedListener.class);
@@ -51,7 +51,7 @@ public class Intimacy implements IIntimacy {
   }
 
   @Override
-  public IDefaultTrait getTrait() {
+  public Trait getTrait() {
     return trait;
   }
 

@@ -2,7 +2,6 @@ package net.sf.anathema.character.presenter.magic.combo;
 
 import com.google.common.base.Strings;
 import net.sf.anathema.character.generic.framework.additionaltemplate.listening.DedicatedCharacterChangeAdapter;
-import net.sf.anathema.charmtree.builder.MagicDisplayLabeler;
 import net.sf.anathema.character.generic.magic.ICharm;
 import net.sf.anathema.character.model.charm.CharmLearnAdapter;
 import net.sf.anathema.character.model.charm.ICharmConfiguration;
@@ -14,6 +13,7 @@ import net.sf.anathema.character.model.charm.ILearningCharmGroup;
 import net.sf.anathema.character.view.magic.IComboConfigurationView;
 import net.sf.anathema.character.view.magic.IComboView;
 import net.sf.anathema.character.view.magic.IComboViewListener;
+import net.sf.anathema.charmtree.builder.MagicDisplayLabeler;
 import net.sf.anathema.framework.presenter.resources.BasicUi;
 import net.sf.anathema.interaction.Command;
 import net.sf.anathema.interaction.Tool;

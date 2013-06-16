@@ -18,7 +18,7 @@ import net.sf.anathema.lib.control.IIntValueChangedListener;
 import net.sf.anathema.lib.data.Range;
 import org.jmock.example.announcer.Announcer;
 
-public class DefaultTrait implements IDefaultTrait {
+public class DefaultTrait implements Trait {
 
   private final Announcer<IChangeListener> rangeControl = Announcer.to(IChangeListener.class);
   private int capModifier = 0;
@@ -245,11 +245,6 @@ public class DefaultTrait implements IDefaultTrait {
   @Override
   public final void addCurrentValueListener(IIntValueChangedListener listener) {
     currentValueControl.addListener(listener);
-  }
-
-  @Override
-  public final void removeCurrentValueListener(IIntValueChangedListener listener) {
-    currentValueControl.removeListener(listener);
   }
 
   @Override

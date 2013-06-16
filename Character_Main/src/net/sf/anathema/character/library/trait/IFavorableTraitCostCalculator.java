@@ -14,5 +14,5 @@ public interface IFavorableTraitCostCalculator {
 
   int getFavoredPicksSpent();
 
-  FavorableTraitCost[] getCosts(ITrait trait);
+  FavorableTraitCost[] getCosts(Trait trait);
 }

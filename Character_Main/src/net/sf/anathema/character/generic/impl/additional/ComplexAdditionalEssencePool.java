@@ -5,8 +5,8 @@ import com.eteks.parser.CompiledExpression;
 import com.eteks.parser.ExpressionParser;
 import com.eteks.parser.IntegerInterpreter;
 import net.sf.anathema.character.generic.character.IGenericTraitCollection;
-import net.sf.anathema.character.generic.impl.util.ComplexPoolExpressionParameter;
 import net.sf.anathema.character.generic.impl.util.AnathemaExpressionSyntax;
+import net.sf.anathema.character.generic.impl.util.ComplexPoolExpressionParameter;
 import net.sf.anathema.lib.util.Identifier;
 
 import java.util.HashMap;

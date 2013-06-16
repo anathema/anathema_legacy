@@ -8,7 +8,6 @@ import net.sf.anathema.framework.messaging.IMessageContainer;
 import net.sf.anathema.framework.messaging.IMessaging;
 import net.sf.anathema.framework.messaging.Messaging;
 import net.sf.anathema.framework.persistence.IRepositoryItemPersister;
-import net.sf.anathema.framework.presenter.PlotItemViewFactory;
 import net.sf.anathema.framework.reporting.IReportRegistry;
 import net.sf.anathema.framework.repository.IRepository;
 import net.sf.anathema.framework.repository.Repository;

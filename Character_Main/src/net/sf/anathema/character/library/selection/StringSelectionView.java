@@ -13,8 +13,8 @@ import java.awt.Dimension;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-import static net.sf.anathema.lib.gui.layout.SwingLayoutUtils.constraintsForImageButton;
 import static net.sf.anathema.lib.gui.layout.LayoutUtils.withoutInsets;
+import static net.sf.anathema.lib.gui.layout.SwingLayoutUtils.constraintsForImageButton;
 
 public class StringSelectionView implements IStringSelectionView {
 

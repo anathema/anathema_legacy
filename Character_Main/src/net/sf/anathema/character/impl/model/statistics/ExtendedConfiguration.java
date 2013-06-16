@@ -1,10 +1,10 @@
 package net.sf.anathema.character.impl.model.statistics;
 
-import net.sf.anathema.character.model.CharacterModelGroup;
 import net.sf.anathema.character.generic.additionaltemplate.IAdditionalModel;
 import net.sf.anathema.character.generic.framework.additionaltemplate.model.IAdditionalModelFactory;
 import net.sf.anathema.character.generic.framework.additionaltemplate.model.ICharacterModelContext;
 import net.sf.anathema.character.generic.template.additional.IAdditionalTemplate;
+import net.sf.anathema.character.model.CharacterModelGroup;
 import net.sf.anathema.character.model.IExtendedConfiguration;
 import net.sf.anathema.lib.control.IChangeListener;
 

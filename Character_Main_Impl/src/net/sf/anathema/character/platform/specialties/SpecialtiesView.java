@@ -8,8 +8,8 @@ import net.sf.anathema.character.presenter.specialty.ISpecialtiesConfigurationVi
 import net.sf.anathema.character.view.ISpecialtyView;
 import net.sf.anathema.framework.presenter.view.ButtonControlledComboEditView;
 import net.sf.anathema.framework.presenter.view.IButtonControlledComboEditView;
-import net.sf.anathema.framework.value.IntegerViewFactory;
 import net.sf.anathema.framework.swing.IView;
+import net.sf.anathema.framework.value.IntegerViewFactory;
 
 import javax.swing.Icon;
 import javax.swing.JComponent;

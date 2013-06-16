@@ -4,7 +4,7 @@ import net.sf.anathema.character.generic.traits.ITraitType;
 import net.sf.anathema.character.generic.traits.groups.ITraitTypeGroup;
 import net.sf.anathema.character.generic.traits.groups.TraitTypeGroup;
 import net.sf.anathema.character.impl.model.advance.IPointCostCalculator;
-import net.sf.anathema.character.library.trait.ITrait;
+import net.sf.anathema.character.library.trait.Trait;
 import net.sf.anathema.character.library.trait.specialties.ISpecialtiesConfiguration;
 import net.sf.anathema.character.library.trait.subtrait.ISubTraitContainer;
 import net.sf.anathema.character.model.traits.ICoreTraitConfiguration;
@@ -30,7 +30,7 @@ public class SpecialtyExperienceModel extends AbstractIntegerValueModel {
     ISpecialtiesConfiguration specialtyConfiguration = configuration.getSpecialtyConfiguration();
     for (ITraitType abilityType : getAllAbilityTypes()) {
       ISubTraitContainer specialtiesContainer = specialtyConfiguration.getSpecialtiesContainer(abilityType);
-      ITrait ability = configuration.getTrait(abilityType);
+      Trait ability = configuration.getTrait(abilityType);
       experienceCosts += specialtiesContainer.getExperienceDotTotal() * calculator.getSpecialtyCosts(ability.getFavorization().isCasteOrFavored());
     }
     return experienceCosts;

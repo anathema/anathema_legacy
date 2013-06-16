@@ -1,6 +1,5 @@
 package net.sf.anathema.character.solar.virtueflaw;
 
-import net.sf.anathema.character.generic.type.CharacterType;
 import net.sf.anathema.character.generic.type.ICharacterType;
 import net.sf.anathema.character.impl.view.SubViewFactory;
 import net.sf.anathema.character.library.intvalue.IntValueDisplayFactoryPrototype;

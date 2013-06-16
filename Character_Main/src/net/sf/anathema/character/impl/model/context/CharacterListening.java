@@ -3,8 +3,7 @@ package net.sf.anathema.character.impl.model.context;
 import net.sf.anathema.character.generic.framework.additionaltemplate.listening.ICharacterChangeListener;
 import net.sf.anathema.character.generic.framework.additionaltemplate.model.ICharacterListening;
 import net.sf.anathema.character.impl.model.listening.CharacterListenerMapping;
-import net.sf.anathema.character.library.trait.ITrait;
-import net.sf.anathema.character.library.trait.IDefaultTrait;
+import net.sf.anathema.character.library.trait.Trait;
 import org.jmock.example.announcer.Announcer;
 
 public class CharacterListening implements ICharacterListening {
@@ -17,11 +16,7 @@ public class CharacterListening implements ICharacterListening {
     changeControl.addListener(changeListener);
   }
 
-  public void removeTraitListening(IDefaultTrait trait) {
-    listenerMapping.removeTraitListening(trait);
-  }
-
-  public void addTraitListening(ITrait trait) {
+  public void addTraitListening(Trait trait) {
     listenerMapping.addTraitListening(trait);
   }
 

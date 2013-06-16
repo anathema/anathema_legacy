@@ -1,8 +1,7 @@
 package net.sf.anathema.character.impl.model.traits;
 
 import net.sf.anathema.character.generic.framework.additionaltemplate.model.ICharacterModelContext;
-import net.sf.anathema.character.library.trait.ITrait;
-import net.sf.anathema.character.library.trait.IDefaultTrait;
+import net.sf.anathema.character.library.trait.Trait;
 import net.sf.anathema.lib.control.IIntValueChangedListener;
 
 public class EssenceLimitationListener implements IIntValueChangedListener {
@@ -20,9 +19,9 @@ public class EssenceLimitationListener implements IIntValueChangedListener {
     if (!context.isFullyLoaded()) {
       return;
     }
-    for (ITrait trait : allTraits) {
-      if (trait instanceof IDefaultTrait) {
-        ((IDefaultTrait) trait).resetCurrentValue();
+    for (Trait trait : allTraits) {
+      if (trait instanceof Trait) {
+        trait.resetCurrentValue();
       }
     }
   }

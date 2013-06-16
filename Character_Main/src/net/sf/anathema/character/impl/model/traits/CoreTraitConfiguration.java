@@ -20,11 +20,11 @@ import net.sf.anathema.character.impl.model.traits.creation.FavoredIncrementChec
 import net.sf.anathema.character.impl.model.traits.creation.TypedTraitTemplateFactory;
 import net.sf.anathema.character.impl.model.traits.listening.WillpowerListening;
 import net.sf.anathema.character.library.trait.AbstractTraitCollection;
+import net.sf.anathema.character.library.trait.Trait;
 import net.sf.anathema.character.library.trait.TraitCollectionUtilities;
 import net.sf.anathema.character.library.trait.favorable.IIncrementChecker;
 import net.sf.anathema.character.library.trait.specialties.ISpecialtiesConfiguration;
 import net.sf.anathema.character.library.trait.specialties.SpecialtiesConfiguration;
-import net.sf.anathema.character.library.trait.IDefaultTrait;
 import net.sf.anathema.character.model.traits.ICoreTraitConfiguration;
 
 import java.util.Iterator;
@@ -51,8 +51,8 @@ public class CoreTraitConfiguration extends AbstractTraitCollection implements I
     addWillpower(modelContext.getTraitContext(), traitTemplateCollection, template.getAdditionalRules().getAdditionalTraitRules());
     addTraits(attributeConfiguration.getAllAttributes());
     addAbilities(template);
-    IDefaultTrait willpower = TraitCollectionUtilities.getWillpower(this);
-    IDefaultTrait[] virtues = TraitCollectionUtilities.getVirtues(this);
+    Trait willpower = TraitCollectionUtilities.getWillpower(this);
+    Trait[] virtues = TraitCollectionUtilities.getVirtues(this);
     if (template.getAdditionalRules().getAdditionalTraitRules().isWillpowerVirtueBased()) {
       new WillpowerListening().initListening(willpower, virtues);
     } else {
@@ -95,13 +95,13 @@ public class CoreTraitConfiguration extends AbstractTraitCollection implements I
   public void addFavorableTraits(IIdentifiedCasteTraitTypeGroup[] traitGroups, IIncrementChecker incrementChecker,
                                  TypedTraitTemplateFactory factory) {
     for (IIdentifiedCasteTraitTypeGroup traitGroup : traitGroups) {
-      IDefaultTrait[] traits = favorableTraitFactory.createTraits(traitGroup, incrementChecker, factory);
+      Trait[] traits = favorableTraitFactory.createTraits(traitGroup, incrementChecker, factory);
       addTraits(traits);
     }
   }
 
   @Override
-  public IDefaultTrait getTrait(ITraitType traitType) {
+  public Trait getTrait(ITraitType traitType) {
     if (contains(traitType)) {
       return super.getTrait(traitType);
     }
@@ -125,7 +125,7 @@ public class CoreTraitConfiguration extends AbstractTraitCollection implements I
 
   private class AllTraits implements TraitProvider {
     @Override
-    public Iterator<IDefaultTrait> iterator() {
+    public Iterator<Trait> iterator() {
       return asList(getAllTraits()).iterator();
     }
   }

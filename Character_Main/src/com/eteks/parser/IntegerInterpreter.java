@@ -1,9 +1,5 @@
 package com.eteks.parser;
 
-import com.eteks.parser.Function;
-import com.eteks.parser.Interpreter;
-import com.eteks.parser.Syntax;
-
 public class IntegerInterpreter implements Interpreter {
 
   /**

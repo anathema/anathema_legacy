@@ -9,10 +9,9 @@ import net.sf.anathema.character.impl.model.creation.bonus.additional.IAdditiona
 import net.sf.anathema.character.impl.model.creation.bonus.additional.IAdditionalSpecialtyBonusPointManagement;
 import net.sf.anathema.character.library.ITraitFavorization;
 import net.sf.anathema.character.library.trait.AbstractFavorableTraitCostCalculator;
-import net.sf.anathema.character.library.trait.ITrait;
+import net.sf.anathema.character.library.trait.Trait;
 import net.sf.anathema.character.library.trait.specialties.ISpecialtiesConfiguration;
 import net.sf.anathema.character.library.trait.subtrait.ISubTrait;
-import net.sf.anathema.character.library.trait.IDefaultTrait;
 import net.sf.anathema.character.model.traits.ICoreTraitConfiguration;
 
 import java.util.ArrayList;
@@ -21,7 +20,7 @@ import java.util.List;
 
 public class AbilityCostCalculator extends AbstractFavorableTraitCostCalculator implements IAbilityCostCalculator {
 
-  private static IDefaultTrait[] getAllAbilities(ICoreTraitConfiguration traitConfiguration) {
+  private static Trait[] getAllAbilities(ICoreTraitConfiguration traitConfiguration) {
     List<ITraitType> abilityTypes = new ArrayList<>();
     for (IIdentifiedTraitTypeGroup group : traitConfiguration.getAbilityTypeGroups()) {
       Collections.addAll(abilityTypes, group.getAllGroupTypes());
@@ -67,7 +66,7 @@ public class AbilityCostCalculator extends AbstractFavorableTraitCostCalculator 
 
   private IGenericSpecialty[] createGenericSpecialties() {
     List<IGenericSpecialty> specialties = new ArrayList<>();
-    for (ITrait ability : getTraits()) {
+    for (Trait ability : getTraits()) {
       ISpecialtiesConfiguration specialtyConfiguration = traitConfiguration.getSpecialtyConfiguration();
       for (ISubTrait specialty : specialtyConfiguration.getSpecialtiesContainer(ability.getType()).getSubTraits()) {
         for (int index = 0; index < specialty.getCalculationValue(); index++) {
@@ -79,9 +78,9 @@ public class AbilityCostCalculator extends AbstractFavorableTraitCostCalculator 
   }
 
   @Override
-  protected int getCostFactor(ITrait trait) {
+  protected int getCostFactor(Trait trait) {
     ITraitFavorization favorization = trait.getFavorization();
-    return costs.getAbilityCosts(favorization.isCasteOrFavored()).getRatingCosts(((IDefaultTrait) trait).getCalculationValue());
+    return costs.getAbilityCosts(favorization.isCasteOrFavored()).getRatingCosts(trait.getCalculationValue());
   }
 
   @Override

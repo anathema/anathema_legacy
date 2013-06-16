@@ -1,9 +1,8 @@
 package net.sf.anathema.character.impl.model.creation.bonus.util;
 
 import net.sf.anathema.character.impl.model.creation.bonus.basic.ElementCreationCost;
-import net.sf.anathema.character.library.trait.ITrait;
+import net.sf.anathema.character.library.trait.Trait;
 import net.sf.anathema.character.library.trait.TraitGroup;
-import net.sf.anathema.character.library.trait.IDefaultTrait;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -12,7 +11,7 @@ import java.util.List;
 public class TraitGroupCost {
 
   private final int dotsToSpend;
-  private final List<ITrait> unhandledTraits;
+  private final List<Trait> unhandledTraits;
   private final TraitGroup group;
   private int bonusPointsSpent = 0;
   private int dotsSpent = 0;
@@ -20,14 +19,14 @@ public class TraitGroupCost {
   public TraitGroupCost(TraitGroup group, int dotsToSpend) {
     this.group = group;
     this.dotsToSpend = dotsToSpend;
-    this.unhandledTraits = new ArrayList<ITrait>(Arrays.asList(group.getGroupTraits()));
+    this.unhandledTraits = new ArrayList<>(Arrays.asList(group.getGroupTraits()));
   }
 
   public TraitGroup getGroup() {
     return group;
   }
 
-  public IDefaultTrait[] getTraits() {
+  public Trait[] getTraits() {
     return group.getGroupTraits();
   }
 
@@ -35,7 +34,7 @@ public class TraitGroupCost {
     return dotsToSpend;
   }
 
-  public void addTraitToCost(ITrait trait, ElementCreationCost cost) {
+  public void addTraitToCost(Trait trait, ElementCreationCost cost) {
     if (!unhandledTraits.contains(trait)) {
       throw new IllegalArgumentException("Trait " + trait.getType().getId() + " not expected.");
     }

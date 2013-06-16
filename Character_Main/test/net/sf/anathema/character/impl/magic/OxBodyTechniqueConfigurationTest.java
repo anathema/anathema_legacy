@@ -18,9 +18,9 @@ import net.sf.anathema.character.impl.model.charm.special.OxBodyTechniqueConfigu
 import net.sf.anathema.character.impl.model.context.trait.CreationTraitValueStrategy;
 import net.sf.anathema.character.library.trait.DefaultTrait;
 import net.sf.anathema.character.library.trait.FriendlyValueChangeChecker;
+import net.sf.anathema.character.library.trait.Trait;
 import net.sf.anathema.character.library.trait.favorable.FriendlyIncrementChecker;
 import net.sf.anathema.character.library.trait.rules.FavorableTraitRules;
-import net.sf.anathema.character.library.trait.IDefaultTrait;
 import net.sf.anathema.character.model.charm.OxBodyCategory;
 import net.sf.anathema.character.model.charm.special.IOxBodyTechniqueConfiguration;
 import net.sf.anathema.character.testing.BasicCharacterTestCase;
@@ -33,7 +33,7 @@ import static org.junit.Assert.assertEquals;
 
 public class OxBodyTechniqueConfigurationTest {
 
-  private IDefaultTrait endurance;
+  private Trait endurance;
   private IOxBodyTechniqueConfiguration configuration;
   private HealthConfiguration health;
   private final DummyCoreTraitConfiguration collection = new DummyCoreTraitConfiguration();

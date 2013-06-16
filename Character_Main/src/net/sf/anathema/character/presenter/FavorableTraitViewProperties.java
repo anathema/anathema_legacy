@@ -4,17 +4,17 @@ import net.sf.anathema.character.generic.IBasicCharacterData;
 import net.sf.anathema.character.generic.framework.resources.CharacterUI;
 import net.sf.anathema.character.generic.template.presentation.IPresentationProperties;
 import net.sf.anathema.character.library.intvalue.IIconToggleButtonProperties;
-import net.sf.anathema.character.library.trait.ITrait;
+import net.sf.anathema.character.library.trait.Trait;
 
 import javax.swing.Icon;
 
 public class FavorableTraitViewProperties implements IIconToggleButtonProperties {
 
-  private final ITrait ability;
+  private final Trait ability;
   private final IPresentationProperties properties;
   private final IBasicCharacterData context;
 
-  public FavorableTraitViewProperties(IPresentationProperties properties, IBasicCharacterData context, ITrait ability) {
+  public FavorableTraitViewProperties(IPresentationProperties properties, IBasicCharacterData context, Trait ability) {
     this.properties = properties;
     this.context = context;
     this.ability = ability;

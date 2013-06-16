@@ -1,9 +1,9 @@
 package net.sf.anathema.character.reporting.pdf.content.stats.magic;
 
 import net.sf.anathema.character.generic.character.IGenericCharacter;
-import net.sf.anathema.charmtree.builder.MagicDisplayLabeler;
 import net.sf.anathema.character.generic.magic.ICharm;
 import net.sf.anathema.character.generic.magic.IMagicStats;
+import net.sf.anathema.charmtree.builder.MagicDisplayLabeler;
 import net.sf.anathema.lib.resources.Resources;
 import net.sf.anathema.lib.util.Identifier;
 import net.sf.anathema.lib.util.SimpleIdentifier;

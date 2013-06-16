@@ -6,9 +6,9 @@ import net.sf.anathema.character.generic.framework.additionaltemplate.model.ITra
 import net.sf.anathema.character.generic.traits.ITraitTemplate;
 import net.sf.anathema.character.generic.traits.ITraitType;
 import net.sf.anathema.character.library.trait.DefaultTrait;
+import net.sf.anathema.character.library.trait.Trait;
 import net.sf.anathema.character.library.trait.IValueChangeChecker;
 import net.sf.anathema.character.library.trait.rules.TraitRules;
-import net.sf.anathema.character.library.trait.IDefaultTrait;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -26,15 +26,15 @@ public class DefaultTraitFactory {
     this.factory = factory;
   }
 
-  public IDefaultTrait[] createTraits(ITraitType[] traitTypes) {
-    List<IDefaultTrait> newTraits = new ArrayList<>();
+  public Trait[] createTraits(ITraitType[] traitTypes) {
+    List<Trait> newTraits = new ArrayList<>();
     for (ITraitType traitType : traitTypes) {
       newTraits.add(createTrait(traitType));
     }
-    return newTraits.toArray(new IDefaultTrait[newTraits.size()]);
+    return newTraits.toArray(new Trait[newTraits.size()]);
   }
 
-  public IDefaultTrait createTrait(ITraitType traitType) {
+  public Trait createTrait(ITraitType traitType) {
     ITraitTemplate traitTemplate = factory.create(traitType);
     ILimitationContext limitationContext = traitContext.getLimitationContext();
     IValueChangeChecker checker = new AdditionRulesTraitValueChangeChecker(traitType, limitationContext, additionalRules);

@@ -1,8 +1,8 @@
 package net.sf.anathema.character.impl.persistence.charm;
 
 import net.sf.anathema.character.generic.magic.charms.special.ISpecialCharmConfiguration;
+import net.sf.anathema.character.library.trait.Trait;
 import net.sf.anathema.character.library.trait.persistence.TraitPersister;
-import net.sf.anathema.character.library.trait.IDefaultTrait;
 import net.sf.anathema.character.model.charm.special.IMultiLearnableCharmConfiguration;
 import net.sf.anathema.lib.exception.PersistenceException;
 import org.dom4j.Element;
@@ -15,7 +15,7 @@ public class MultiLearnCharmPersister implements ISpecialCharmPersister {
   @Override
   public void saveConfiguration(Element specialElement, ISpecialCharmConfiguration specialCharmConfiguration) {
     IMultiLearnableCharmConfiguration configuration = (IMultiLearnableCharmConfiguration) specialCharmConfiguration;
-    IDefaultTrait category = configuration.getCategory();
+    Trait category = configuration.getCategory();
     traitPersister.saveTrait(specialElement, TAG_LEARN_COUNT, category);
   }
 

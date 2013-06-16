@@ -14,9 +14,9 @@ import net.sf.anathema.character.generic.traits.types.AbilityType;
 import net.sf.anathema.character.generic.traits.types.ValuedTraitType;
 import net.sf.anathema.character.impl.model.charm.LearningCharmGroup;
 import net.sf.anathema.character.impl.model.context.magic.CreationCharmLearnStrategy;
+import net.sf.anathema.character.magic.dummy.DummyCharm;
 import net.sf.anathema.character.model.charm.IExtendedCharmLearnableArbitrator;
 import net.sf.anathema.character.model.charm.ILearningCharmGroup;
-import net.sf.anathema.character.magic.dummy.DummyCharm;
 import org.junit.Test;
 
 import static org.junit.Assert.assertFalse;

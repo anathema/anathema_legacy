@@ -27,9 +27,9 @@ import net.sf.anathema.character.impl.model.creation.bonus.magic.MagicCostCalcul
 import net.sf.anathema.character.impl.model.creation.bonus.virtue.VirtueBonusModel;
 import net.sf.anathema.character.impl.model.creation.bonus.virtue.VirtueCostCalculator;
 import net.sf.anathema.character.impl.util.GenericCharacterUtilities;
+import net.sf.anathema.character.library.trait.Trait;
 import net.sf.anathema.character.library.trait.TraitCollectionUtilities;
 import net.sf.anathema.character.library.trait.experience.TraitRatingCostCalculator;
-import net.sf.anathema.character.library.trait.IDefaultTrait;
 import net.sf.anathema.character.model.ICharacter;
 import net.sf.anathema.character.model.creation.IBonusPointManagement;
 import net.sf.anathema.character.model.traits.ICoreTraitConfiguration;
@@ -48,9 +48,9 @@ public class BonusPointManagement implements IBonusPointManagement {
   private final AttributeCostCalculator attributeCalculator;
   private final VirtueCostCalculator virtueCalculator;
   private final MagicCostCalculator magicCalculator;
-  private final IDefaultTrait willpower;
+  private final Trait willpower;
   private final BonusPointCosts cost;
-  private final IDefaultTrait essence;
+  private final Trait essence;
   private final ICreationPoints creationPoints;
   private final ICharacter character;
   private int essenceBonusPoints;
@@ -74,7 +74,7 @@ public class BonusPointManagement implements IBonusPointManagement {
                     cost, bonusAdditionalPools);
     this.attributeCalculator =
             new AttributeCostCalculator(traitConfiguration, creationPoints.getAttributeCreationPoints(), cost, bonusAdditionalPools);
-    IDefaultTrait[] virtues = TraitCollectionUtilities.getVirtues(traitConfiguration);
+    Trait[] virtues = TraitCollectionUtilities.getVirtues(traitConfiguration);
     this.virtueCalculator = new VirtueCostCalculator(virtues, creationPoints.getVirtueCreationPoints(), cost);
     magicAdditionalPools =
             new AdditionalMagicLearnPointManagement(characterTemplate.getAdditionalRules().getAdditionalMagicLearnPools(), characterAbstraction);

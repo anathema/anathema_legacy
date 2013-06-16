@@ -13,7 +13,7 @@ public class TraitGroup {
     this.groupType = groupType;
   }
 
-  public IDefaultTrait[] getGroupTraits() {
+  public Trait[] getGroupTraits() {
     return traitCollection.getTraits(groupType.getAllGroupTypes());
   }
 

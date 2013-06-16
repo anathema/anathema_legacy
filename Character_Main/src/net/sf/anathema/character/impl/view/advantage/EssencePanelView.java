@@ -2,8 +2,8 @@ package net.sf.anathema.character.impl.view.advantage;
 
 import net.miginfocom.swing.MigLayout;
 import net.sf.anathema.character.library.overview.LabelledOverviewStringValueView;
+import net.sf.anathema.character.library.trait.Trait;
 import net.sf.anathema.character.library.trait.view.SimpleTraitView;
-import net.sf.anathema.character.library.trait.IDefaultTrait;
 import net.sf.anathema.framework.swing.IView;
 import net.sf.anathema.framework.value.IIntValueView;
 import net.sf.anathema.framework.value.IntegerViewFactory;
@@ -23,7 +23,7 @@ public class EssencePanelView implements IView {
     this.guiConfiguration = guiConfiguration;
   }
 
-  public IIntValueView addEssenceView(String labelText, int value, int maxValue, IDefaultTrait trait) {
+  public IIntValueView addEssenceView(String labelText, int value, int maxValue, Trait trait) {
     SimpleTraitView essenceView = new SimpleTraitView(guiConfiguration, labelText, value, maxValue, trait);
     essenceView.addComponents(panel);
     return essenceView;

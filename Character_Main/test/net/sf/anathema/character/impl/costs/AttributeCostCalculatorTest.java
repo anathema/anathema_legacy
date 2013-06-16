@@ -24,12 +24,11 @@ import net.sf.anathema.character.impl.model.creation.bonus.util.TraitGroupCost;
 import net.sf.anathema.character.impl.model.traits.creation.AdditionRulesTraitValueChangeChecker;
 import net.sf.anathema.character.library.trait.DefaultTrait;
 import net.sf.anathema.character.library.trait.FriendlyValueChangeChecker;
-import net.sf.anathema.character.library.trait.ITrait;
+import net.sf.anathema.character.library.trait.Trait;
 import net.sf.anathema.character.library.trait.IValueChangeChecker;
 import net.sf.anathema.character.library.trait.favorable.GrumpyIncrementChecker;
 import net.sf.anathema.character.library.trait.rules.FavorableTraitRules;
 import net.sf.anathema.character.library.trait.rules.TraitRules;
-import net.sf.anathema.character.library.trait.IDefaultTrait;
 import org.junit.Before;
 import org.junit.Test;
 
@@ -71,12 +70,12 @@ public class AttributeCostCalculatorTest {
   }
 
   public void spendPoints(AttributeGroupType groupType, int pointsToSpent) {
-    ITrait[] groupAttributes = traitConfiguration.getAllTraits(groupType);
+    Trait[] groupAttributes = traitConfiguration.getAllTraits(groupType);
     int perAttribute = (int) Math.ceil((double) pointsToSpent / groupAttributes.length);
     int remainingPointsToSpent = pointsToSpent;
-    for (ITrait attribute : groupAttributes) {
+    for (Trait attribute : groupAttributes) {
       int toSpent = Math.min(perAttribute, remainingPointsToSpent);
-      ((IDefaultTrait) attribute).setCreationValue(1 + toSpent);
+      attribute.setCreationValue(1 + toSpent);
       remainingPointsToSpent -= toSpent;
     }
   }

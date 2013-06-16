@@ -3,12 +3,12 @@ package net.sf.anathema.character.impl.persistence;
 import net.sf.anathema.character.generic.framework.ITraitReference;
 import net.sf.anathema.character.generic.traits.ITraitType;
 import net.sf.anathema.character.generic.traits.types.AbilityType;
+import net.sf.anathema.character.library.trait.Trait;
 import net.sf.anathema.character.library.trait.persistence.TraitPersister;
 import net.sf.anathema.character.library.trait.specialties.DefaultTraitReference;
 import net.sf.anathema.character.library.trait.specialties.ISpecialtiesConfiguration;
 import net.sf.anathema.character.library.trait.subtrait.ISubTrait;
 import net.sf.anathema.character.library.trait.subtrait.ISubTraitContainer;
-import net.sf.anathema.character.library.trait.IDefaultTrait;
 import net.sf.anathema.character.model.traits.ICoreTraitConfiguration;
 import net.sf.anathema.lib.exception.PersistenceException;
 import net.sf.anathema.lib.xml.ElementUtilities;
@@ -28,12 +28,12 @@ public class AbilityConfigurationPersister {
   public void save(Element parent, ICoreTraitConfiguration configuration) {
     Element abilitiesElement = parent.addElement(TAG_ABILITIES);
     for (AbilityType abilityType : AbilityType.values()) {
-      IDefaultTrait ability = configuration.getTrait(abilityType);
+      Trait ability = configuration.getTrait(abilityType);
       saveAbility(abilitiesElement, ability, configuration.getSpecialtyConfiguration());
     }
   }
 
-  private void saveAbility(Element parent, IDefaultTrait ability, final ISpecialtiesConfiguration specialtyConfiguration) {
+  private void saveAbility(Element parent, Trait ability, final ISpecialtiesConfiguration specialtyConfiguration) {
     ITraitType traitType = ability.getType();
     final Element abilityElement = persister.saveTrait(parent, traitType.getId(), ability);
     if (ability.getFavorization().isFavored()) {
@@ -60,7 +60,7 @@ public class AbilityConfigurationPersister {
 
   private void loadAbility(final Element abilityElement, ICoreTraitConfiguration configuration) throws PersistenceException {
     AbilityType abilityType = AbilityType.valueOf(abilityElement.getName());
-    IDefaultTrait ability = configuration.getTrait(abilityType);
+    Trait ability = configuration.getTrait(abilityType);
     persister.restoreTrait(abilityElement, ability);
     boolean favored = ElementUtilities.getBooleanAttribute(abilityElement, ATTRIB_FAVORED, false);
     ability.getFavorization().setFavored(favored);

@@ -9,8 +9,8 @@ import net.sf.anathema.character.generic.magic.ICharm;
 import net.sf.anathema.character.generic.magic.charms.ICharmLearnableArbitrator;
 import net.sf.anathema.character.generic.magic.charms.special.IMultiLearnableCharm;
 import net.sf.anathema.character.impl.model.context.trait.ExperiencedTraitValueStrategy;
-import net.sf.anathema.character.model.charm.ICharmConfiguration;
 import net.sf.anathema.character.magic.dummy.DummyCharm;
+import net.sf.anathema.character.model.charm.ICharmConfiguration;
 import org.junit.Test;
 
 import static org.hamcrest.CoreMatchers.is;

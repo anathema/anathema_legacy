@@ -11,10 +11,10 @@ import net.sf.anathema.character.generic.magic.charms.special.LearnRangeContext;
 import net.sf.anathema.character.generic.traits.ITraitType;
 import net.sf.anathema.character.impl.model.charm.CharmTraitRequirementChecker;
 import net.sf.anathema.character.impl.model.charm.PrerequisiteModifyingCharms;
+import net.sf.anathema.character.library.trait.Trait;
 import net.sf.anathema.character.library.trait.LimitedTrait;
 import net.sf.anathema.character.library.trait.TraitType;
 import net.sf.anathema.character.library.trait.favorable.IIncrementChecker;
-import net.sf.anathema.character.library.trait.IDefaultTrait;
 import net.sf.anathema.character.model.charm.ICharmConfiguration;
 import net.sf.anathema.character.model.charm.special.IMultiLearnableCharmConfiguration;
 import net.sf.anathema.lib.control.IIntValueChangedListener;
@@ -24,7 +24,7 @@ import org.jmock.example.announcer.Announcer;
 public class MultiLearnableCharmConfiguration implements IMultiLearnableCharmConfiguration {
 
   private final Announcer<ISpecialCharmLearnListener> control = Announcer.to(ISpecialCharmLearnListener.class);
-  private final IDefaultTrait trait;
+  private final Trait trait;
   private ICharmConfiguration config;
   private ICharm charm;
   private IMultiLearnableCharm specialCharm;
@@ -91,7 +91,7 @@ public class MultiLearnableCharmConfiguration implements IMultiLearnableCharmCon
   }
 
   @Override
-  public IDefaultTrait getCategory() {
+  public Trait getCategory() {
     return trait;
   }
 

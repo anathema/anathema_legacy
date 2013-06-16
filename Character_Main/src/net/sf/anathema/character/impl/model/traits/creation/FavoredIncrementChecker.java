@@ -3,7 +3,7 @@ package net.sf.anathema.character.impl.model.traits.creation;
 import net.sf.anathema.character.generic.template.ICharacterTemplate;
 import net.sf.anathema.character.generic.template.abilities.GroupedTraitType;
 import net.sf.anathema.character.generic.traits.ITraitType;
-import net.sf.anathema.character.library.trait.ITrait;
+import net.sf.anathema.character.library.trait.Trait;
 import net.sf.anathema.character.library.trait.favorable.IIncrementChecker;
 import net.sf.anathema.character.model.traits.ICoreTraitConfiguration;
 
@@ -43,7 +43,7 @@ public class FavoredIncrementChecker implements IIncrementChecker {
   @Override
   public boolean isValidIncrement(int increment) {
     int count = 0;
-    for (ITrait trait : getAllTraits()) {
+    for (Trait trait : getAllTraits()) {
       if (trait.getFavorization().isFavored()) {
         count++;
       }
@@ -51,7 +51,7 @@ public class FavoredIncrementChecker implements IIncrementChecker {
     return count + increment <= maxFavoredCount;
   }
 
-  private ITrait[] getAllTraits() {
+  private Trait[] getAllTraits() {
     return traitConfiguration.getTraits(traitTypes);
   }
 }

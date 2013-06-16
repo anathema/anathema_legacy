@@ -1,6 +1,5 @@
 package net.sf.anathema.character.generic.impl.magic.persistence;
 
-import com.google.common.base.Preconditions;
 import com.google.common.base.Predicate;
 import net.sf.anathema.character.generic.impl.magic.Charm;
 import net.sf.anathema.character.generic.magic.ICharm;

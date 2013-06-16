@@ -10,7 +10,7 @@ import net.sf.anathema.character.impl.model.context.trait.CreationTraitValueStra
 import net.sf.anathema.character.impl.model.creation.bonus.virtue.VirtueCostCalculator;
 import net.sf.anathema.character.impl.model.traits.VirtueTemplateFactory;
 import net.sf.anathema.character.impl.model.traits.creation.DefaultTraitFactory;
-import net.sf.anathema.character.library.trait.IDefaultTrait;
+import net.sf.anathema.character.library.trait.Trait;
 import net.sf.anathema.character.testing.BasicCharacterTestCase;
 import org.junit.Before;
 import org.junit.Test;
@@ -20,7 +20,7 @@ import static org.junit.Assert.assertEquals;
 public class VirtueCostCalculatorTest {
 
   private VirtueCostCalculator calculator;
-  private IDefaultTrait[] virtues;
+  private Trait[] virtues;
 
   @Before
   public void setUp() throws Exception {
@@ -85,7 +85,7 @@ public class VirtueCostCalculatorTest {
 
   @Test
   public void testAllVirtuesMaximal() throws Exception {
-    for (IDefaultTrait virtue : virtues) {
+    for (Trait virtue : virtues) {
       virtue.setCreationValue(5);
     }
     calculator.calculateVirtuePoints();

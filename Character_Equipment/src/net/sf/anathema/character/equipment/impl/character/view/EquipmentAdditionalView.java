@@ -5,7 +5,6 @@ import net.miginfocom.swing.MigLayout;
 import net.sf.anathema.character.equipment.character.view.IEquipmentAdditionalView;
 import net.sf.anathema.character.equipment.character.view.IEquipmentObjectView;
 import net.sf.anathema.character.equipment.character.view.IMagicalMaterialView;
-import net.sf.anathema.character.impl.view.AddToButtonPanel;
 import net.sf.anathema.character.library.taskpane.ITaskPaneGroupViewFactory;
 import net.sf.anathema.character.library.taskpane.TaskPaneView;
 import net.sf.anathema.framework.swing.IView;

@@ -7,10 +7,10 @@ import net.sf.anathema.character.generic.framework.additionaltemplate.model.ICha
 import net.sf.anathema.character.generic.traits.ITraitType;
 import net.sf.anathema.character.generic.traits.groups.ITraitTypeGroup;
 import net.sf.anathema.character.generic.traits.groups.TraitTypeGroup;
+import net.sf.anathema.character.library.trait.Trait;
 import net.sf.anathema.character.library.trait.ITraitCollection;
 import net.sf.anathema.character.library.trait.subtrait.ISubTrait;
 import net.sf.anathema.character.library.trait.subtrait.ISubTraitContainer;
-import net.sf.anathema.character.library.trait.IDefaultTrait;
 import net.sf.anathema.lib.control.IChangeListener;
 import org.jmock.example.announcer.Announcer;
 
@@ -34,7 +34,7 @@ public class SpecialtiesConfiguration implements ISpecialtiesConfiguration {
   public SpecialtiesConfiguration(ITraitCollection traitCollection, ITraitTypeGroup[] groups, ICharacterModelContext context) {
     this.context = context;
     ITraitType[] traitTypes = TraitTypeGroup.getAllTraitTypes(groups);
-    for (IDefaultTrait trait : traitCollection.getTraits(traitTypes)) {
+    for (Trait trait : traitCollection.getTraits(traitTypes)) {
       ITraitReference reference = new DefaultTraitReference(trait);
       SpecialtiesContainer container = addSpecialtiesContainer(reference);
       specialtiesByType.put(trait.getType(), container);

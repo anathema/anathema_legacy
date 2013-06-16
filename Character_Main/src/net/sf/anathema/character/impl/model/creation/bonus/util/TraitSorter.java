@@ -1,26 +1,26 @@
 package net.sf.anathema.character.impl.model.creation.bonus.util;
 
-import net.sf.anathema.character.library.trait.ITrait;
+import net.sf.anathema.character.library.trait.Trait;
 import net.sf.anathema.lib.compare.WeightedObject;
 import net.sf.anathema.lib.compare.WeightedObjectSorter;
 
 import java.util.Collection;
 
-public class TraitSorter extends WeightedObjectSorter<ITrait> {
+public class TraitSorter extends WeightedObjectSorter<Trait> {
 
-  private static class WeightedAttributeGroup extends WeightedObject<ITrait> {
-    public WeightedAttributeGroup(ITrait value, int weight) {
+  private static class WeightedAttributeGroup extends WeightedObject<Trait> {
+    public WeightedAttributeGroup(Trait value, int weight) {
       super(value, weight);
     }
   }
 
   @Override
-  public WeightedObject<ITrait>[] convertToArray(Collection<WeightedObject<ITrait>> collection) {
+  public WeightedObject<Trait>[] convertToArray(Collection<WeightedObject<Trait>> collection) {
     return collection.toArray(new WeightedAttributeGroup[collection.size()]);
   }
 
   @Override
-  public WeightedObject<ITrait> createWeightedObject(ITrait value, int weight) {
+  public WeightedObject<Trait> createWeightedObject(Trait value, int weight) {
     return new WeightedAttributeGroup(value, weight);
   }
 }

@@ -1,7 +1,7 @@
 package net.sf.anathema.lib.gui.widgets;
 
-import net.sf.anathema.lib.control.ObjectValueListener;
 import net.sf.anathema.framework.swing.IView;
+import net.sf.anathema.lib.control.ObjectValueListener;
 
 import javax.swing.JComboBox;
 import javax.swing.ListCellRenderer;

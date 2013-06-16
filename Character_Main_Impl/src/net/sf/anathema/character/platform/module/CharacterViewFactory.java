@@ -11,7 +11,6 @@ import net.sf.anathema.character.model.advance.IExperiencePointManagement;
 import net.sf.anathema.character.model.creation.IBonusPointManagement;
 import net.sf.anathema.character.presenter.CharacterPresenter;
 import net.sf.anathema.character.presenter.OverviewPresenter;
-import net.sf.anathema.character.presenter.PlayerCharacterPointPresentation;
 import net.sf.anathema.character.view.CharacterView;
 import net.sf.anathema.character.view.OverviewContainer;
 import net.sf.anathema.framework.IApplicationModel;

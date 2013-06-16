@@ -3,7 +3,7 @@ package net.sf.anathema.character.library.trait.favorable;
 import net.sf.anathema.character.generic.IBasicCharacterData;
 import net.sf.anathema.character.generic.caste.ICasteType;
 import net.sf.anathema.character.library.ITraitFavorization;
-import net.sf.anathema.character.library.trait.IDefaultTrait;
+import net.sf.anathema.character.library.trait.Trait;
 import org.jmock.example.announcer.Announcer;
 
 public class TraitFavorization implements ITraitFavorization {
@@ -11,12 +11,12 @@ public class TraitFavorization implements ITraitFavorization {
   private FavorableState state;
   private final Announcer<IFavorableStateChangedListener> favorableStateControl = Announcer.to(IFavorableStateChangedListener.class);
   private final IIncrementChecker favoredIncrementChecker;
-  private final IDefaultTrait trait;
+  private final Trait trait;
   private final ICasteType[] castes;
   private final boolean isRequiredFavored;
   private final IBasicCharacterData basicData;
 
-  public TraitFavorization(IBasicCharacterData basicData, ICasteType[] castes, IIncrementChecker favoredIncrementChecker, IDefaultTrait trait,
+  public TraitFavorization(IBasicCharacterData basicData, ICasteType[] castes, IIncrementChecker favoredIncrementChecker, Trait trait,
                            boolean isRequiredFavored) {
     this.basicData = basicData;
     this.castes = castes;

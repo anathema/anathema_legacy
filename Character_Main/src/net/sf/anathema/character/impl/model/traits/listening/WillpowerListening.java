@@ -1,15 +1,14 @@
 package net.sf.anathema.character.impl.model.traits.listening;
 
-import net.sf.anathema.character.library.trait.ITrait;
-import net.sf.anathema.character.library.trait.IDefaultTrait;
+import net.sf.anathema.character.library.trait.Trait;
 import net.sf.anathema.lib.control.IIntValueChangedListener;
 
 import java.util.Arrays;
 
 public class WillpowerListening {
 
-  public void initListening(final IDefaultTrait willpower, final IDefaultTrait[] virtues) {
-    for (ITrait virtue : virtues) {
+  public void initListening(final Trait willpower, final Trait[] virtues) {
+    for (Trait virtue : virtues) {
       virtue.addCreationPointListener(new IIntValueChangedListener() {
         @Override
         public void valueChanged(int newValue) {
@@ -20,18 +19,18 @@ public class WillpowerListening {
     updateWillpowerCreationRange(willpower, virtues);
   }
 
-  private void updateWillpowerCreationRange(IDefaultTrait willpower, IDefaultTrait[] virtues) {
+  private void updateWillpowerCreationRange(Trait willpower, Trait[] virtues) {
     int newInitialValue = Math.min(calculateAbsoluteMinimalValue(virtues), willpower.getMaximalValue());
     int newUpperValue = Math.min(calculateUpperValue(virtues), willpower.getMaximalValue());
     willpower.setModifiedCreationRange(newInitialValue, newUpperValue);
   }
 
-  private int calculateAbsoluteMinimalValue(IDefaultTrait[] virtues) {
+  private int calculateAbsoluteMinimalValue(Trait[] virtues) {
     int[] virtueCreationValues = orderVirtueCreationValuesAscending(virtues);
     return virtueCreationValues[virtueCreationValues.length - 1] + virtueCreationValues[virtueCreationValues.length - 2];
   }
 
-  private int[] orderVirtueCreationValuesAscending(IDefaultTrait[] virtues) {
+  private int[] orderVirtueCreationValuesAscending(Trait[] virtues) {
     int[] virtueValues = new int[virtues.length];
     for (int index = 0; index < virtueValues.length; index++) {
       virtueValues[index] = virtues[index].getCreationValue();
@@ -40,7 +39,7 @@ public class WillpowerListening {
     return virtueValues;
   }
 
-  private int calculateUpperValue(IDefaultTrait[] virtues) {
+  private int calculateUpperValue(Trait[] virtues) {
     int[] virtueValues = orderVirtueCreationValuesAscending(virtues);
     return Math.max(virtueValues[virtueValues.length - 1] + virtueValues[virtueValues.length - 2], 8);
   }

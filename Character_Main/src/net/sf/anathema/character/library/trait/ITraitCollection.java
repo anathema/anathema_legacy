@@ -6,8 +6,8 @@ import net.sf.anathema.character.generic.traits.ITraitType;
 public interface ITraitCollection extends IGenericTraitCollection {
 
   @Override
-  IDefaultTrait getTrait(ITraitType type);
+  Trait getTrait(ITraitType type);
 
   @Override
-  IDefaultTrait[] getTraits(ITraitType[] traitTypes);
+  Trait[] getTraits(ITraitType[] traitTypes);
 }

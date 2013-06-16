@@ -23,11 +23,11 @@ import net.sf.anathema.character.generic.traits.ITraitType;
 import net.sf.anathema.character.generic.traits.groups.IIdentifiedTraitTypeGroup;
 import net.sf.anathema.character.generic.traits.types.OtherTraitType;
 import net.sf.anathema.character.impl.model.advance.ExperiencePointManagement;
+import net.sf.anathema.character.library.trait.Trait;
 import net.sf.anathema.character.library.trait.specialties.ISpecialtiesConfiguration;
 import net.sf.anathema.character.library.trait.specialties.ISpecialty;
 import net.sf.anathema.character.library.trait.subtrait.ISubTrait;
 import net.sf.anathema.character.library.trait.subtrait.ISubTraitListener;
-import net.sf.anathema.character.library.trait.IDefaultTrait;
 import net.sf.anathema.character.main.concept.model.CharacterConcept;
 import net.sf.anathema.character.main.concept.model.CharacterConceptFetcher;
 import net.sf.anathema.character.main.description.model.CharacterDescriptionFetcher;
@@ -254,7 +254,7 @@ public class GenericCharacter implements IGenericCharacter {
 
   @Override
   public int getEssenceCap(boolean modified) {
-    IDefaultTrait essence = (IDefaultTrait) getTraitConfiguration().getTrait(OtherTraitType.Essence);
+    Trait essence = (Trait) getTraitConfiguration().getTrait(OtherTraitType.Essence);
     return modified ? essence.getModifiedMaximalValue() : essence.getUnmodifiedMaximalValue();
   }
 

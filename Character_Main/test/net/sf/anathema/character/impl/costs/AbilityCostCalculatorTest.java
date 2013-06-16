@@ -10,8 +10,7 @@ import net.sf.anathema.character.generic.template.points.IFavorableTraitCreation
 import net.sf.anathema.character.generic.traits.types.AbilityType;
 import net.sf.anathema.character.impl.model.creation.bonus.ability.AbilityCostCalculator;
 import net.sf.anathema.character.library.trait.FavorableTraitCost;
-import net.sf.anathema.character.library.trait.ITrait;
-import net.sf.anathema.character.library.trait.IDefaultTrait;
+import net.sf.anathema.character.library.trait.Trait;
 import org.junit.Before;
 import org.junit.Test;
 
@@ -48,7 +47,7 @@ public class AbilityCostCalculatorTest extends AbstractBonusPointTestCase {
     }
   }
 
-  private static void assertEmptyCosts(AbilityCostCalculator calculator, ITrait ability) {
+  private static void assertEmptyCosts(AbilityCostCalculator calculator, Trait ability) {
     FavorableTraitCost[] abilityCost = calculator.getCosts(ability);
     if (ability.getType() == AbilityType.Craft) {
       return;
@@ -62,16 +61,16 @@ public class AbilityCostCalculatorTest extends AbstractBonusPointTestCase {
   private AbilityPointCosts costs;
   private DummyAdditionalBonusPointManagment additionalBonusPointManagment;
 
-  private IDefaultTrait setFavoredAbilityTo(AbilityType abilityType, int value) {
-    IDefaultTrait trait = (IDefaultTrait) traitConfiguration.getTrait(abilityType);
+  private Trait setFavoredAbilityTo(AbilityType abilityType, int value) {
+    Trait trait = (Trait) traitConfiguration.getTrait(abilityType);
     trait.getFavorization().updateFavorableStateToCaste();
     trait.getFavorization().setFavored(true);
     trait.setCreationValue(value);
     return trait;
   }
 
-  private IDefaultTrait setUnfavoredAbilityTo(AbilityType abilityType, int value) {
-    IDefaultTrait ability = (IDefaultTrait) traitConfiguration.getTrait(abilityType);
+  private Trait setUnfavoredAbilityTo(AbilityType abilityType, int value) {
+    Trait ability = (Trait) traitConfiguration.getTrait(abilityType);
     ability.getFavorization().updateFavorableStateToCaste();
     ability.getFavorization().setFavored(false);
     ability.setCreationValue(value);
@@ -97,15 +96,15 @@ public class AbilityCostCalculatorTest extends AbstractBonusPointTestCase {
     AbilityCostCalculator calculator = startCalculation(new AbilityCreationPoints(2, 3, 4));
     assertEquals(0, calculator.getFreePointsSpent(true));
     assertEquals(0, calculator.getFreePointsSpent(false));
-    for (ITrait ability : getAllAbilities()) {
+    for (Trait ability : getAllAbilities()) {
       assertEmptyCosts(calculator, ability);
     }
   }
 
-  private List<ITrait> getAllAbilities() {
-    List<ITrait> abilities = new ArrayList<>();
+  private List<Trait> getAllAbilities() {
+    List<Trait> abilities = new ArrayList<>();
     for (AbilityType type : AbilityType.values()) {
-      ITrait trait = traitConfiguration.getTrait(type);
+      Trait trait = traitConfiguration.getTrait(type);
       abilities.add(trait);
     }
     return abilities;
@@ -114,13 +113,13 @@ public class AbilityCostCalculatorTest extends AbstractBonusPointTestCase {
   @Test
   public void testPreferFavoredForBonusPoint() throws Exception {
     IFavorableTraitCreationPoints abilityCreationPoints = new AbilityCreationPoints(2, 3, 2);
-    IDefaultTrait firstFavored = setFavoredAbilityTo(AbilityType.Melee, 3);
-    IDefaultTrait secondFavored = setFavoredAbilityTo(AbilityType.Ride, 3);
-    IDefaultTrait unfavoredAbility = setUnfavoredAbilityTo(AbilityType.Archery, 3);
+    Trait firstFavored = setFavoredAbilityTo(AbilityType.Melee, 3);
+    Trait secondFavored = setFavoredAbilityTo(AbilityType.Ride, 3);
+    Trait unfavoredAbility = setUnfavoredAbilityTo(AbilityType.Archery, 3);
     AbilityCostCalculator calculator = startCalculation(abilityCreationPoints);
     assertEquals(3, calculator.getFreePointsSpent(true));
     assertEquals(2, calculator.getFreePointsSpent(false));
-    for (ITrait ability : getAllAbilities()) {
+    for (Trait ability : getAllAbilities()) {
       if (ability == firstFavored) {
         FavorableTraitCost[] allAbilityCost = calculator.getCosts(ability);
         FavorableTraitCost abilityCost = allAbilityCost[0];
@@ -148,12 +147,12 @@ public class AbilityCostCalculatorTest extends AbstractBonusPointTestCase {
   @Test
   public void testGeneralDotsUsedForFavoredAbilitiesOverFavoredDots() throws Exception {
     IFavorableTraitCreationPoints abilityCreationPoints = new AbilityCreationPoints(2, 4, 5);
-    IDefaultTrait firstFavored = setFavoredAbilityTo(AbilityType.Melee, 3);
-    IDefaultTrait secondFavored = setFavoredAbilityTo(AbilityType.Occult, 3);
+    Trait firstFavored = setFavoredAbilityTo(AbilityType.Melee, 3);
+    Trait secondFavored = setFavoredAbilityTo(AbilityType.Occult, 3);
     AbilityCostCalculator calculator = startCalculation(abilityCreationPoints);
     assertEquals(4, calculator.getFreePointsSpent(true));
     assertEquals(2, calculator.getFreePointsSpent(false));
-    for (ITrait ability : getAllAbilities()) {
+    for (Trait ability : getAllAbilities()) {
       if (ability == firstFavored) {
         FavorableTraitCost[] allAbilityCost = calculator.getCosts(ability);
         FavorableTraitCost abilityCost = allAbilityCost[0];
@@ -175,11 +174,11 @@ public class AbilityCostCalculatorTest extends AbstractBonusPointTestCase {
   @Test
   public void testFavoredDotsForFavoredAbilitiesLessThan3() throws Exception {
     IFavorableTraitCreationPoints abilityCreationPoints = new AbilityCreationPoints(2, 3, 4);
-    IDefaultTrait favoredAbility = setFavoredAbilityTo(AbilityType.Melee, 3);
+    Trait favoredAbility = setFavoredAbilityTo(AbilityType.Melee, 3);
     AbilityCostCalculator calculator = startCalculation(abilityCreationPoints);
     assertEquals(3, calculator.getFreePointsSpent(true));
     assertEquals(0, calculator.getFreePointsSpent(false));
-    for (ITrait ability : getAllAbilities()) {
+    for (Trait ability : getAllAbilities()) {
       if (ability == favoredAbility) {
         FavorableTraitCost[] allAbilityCost = calculator.getCosts(ability);
         FavorableTraitCost abilityCost = allAbilityCost[0];
@@ -195,11 +194,11 @@ public class AbilityCostCalculatorTest extends AbstractBonusPointTestCase {
   @Test
   public void testGeneralDotsForUnfavoredAbilityLessThan3() throws Exception {
     IFavorableTraitCreationPoints abilityCreationPoints = new AbilityCreationPoints(2, 3, 4);
-    ITrait unfavoredAbility = setUnfavoredAbilityTo(AbilityType.Archery, 3);
+    Trait unfavoredAbility = setUnfavoredAbilityTo(AbilityType.Archery, 3);
     AbilityCostCalculator calculator = startCalculation(abilityCreationPoints);
     assertEquals(0, calculator.getFreePointsSpent(true));
     assertEquals(3, calculator.getFreePointsSpent(false));
-    for (ITrait ability : getAllAbilities()) {
+    for (Trait ability : getAllAbilities()) {
       if (ability == unfavoredAbility) {
         FavorableTraitCost[] allAbilityCost = calculator.getCosts(ability);
         FavorableTraitCost abilityCost = allAbilityCost[0];
@@ -215,11 +214,11 @@ public class AbilityCostCalculatorTest extends AbstractBonusPointTestCase {
   @Test
   public void testBonusPointsForFavoredAbilityAbove3() throws Exception {
     IFavorableTraitCreationPoints abilityCreationPoints = new AbilityCreationPoints(2, 3, 4);
-    ITrait favoredAbility = setFavoredAbilityTo(AbilityType.Melee, 4);
+    Trait favoredAbility = setFavoredAbilityTo(AbilityType.Melee, 4);
     AbilityCostCalculator calculator = startCalculation(abilityCreationPoints);
     assertEquals(3, calculator.getFreePointsSpent(true));
     assertEquals(0, calculator.getFreePointsSpent(false));
-    for (ITrait ability : getAllAbilities()) {
+    for (Trait ability : getAllAbilities()) {
       if (ability == favoredAbility) {
         FavorableTraitCost[] allAbilityCost = calculator.getCosts(ability);
         FavorableTraitCost abilityCost = allAbilityCost[0];
@@ -235,11 +234,11 @@ public class AbilityCostCalculatorTest extends AbstractBonusPointTestCase {
   @Test
   public void testRaiseUnfavoredAbilityAbove3() throws Exception {
     IFavorableTraitCreationPoints abilityCreationPoints = new AbilityCreationPoints(2, 3, 4);
-    ITrait unfavoredAbility = setUnfavoredAbilityTo(AbilityType.Archery, 4);
+    Trait unfavoredAbility = setUnfavoredAbilityTo(AbilityType.Archery, 4);
     AbilityCostCalculator calculator = startCalculation(abilityCreationPoints);
     assertEquals(0, calculator.getFreePointsSpent(true));
     assertEquals(3, calculator.getFreePointsSpent(false));
-    for (ITrait ability : getAllAbilities()) {
+    for (Trait ability : getAllAbilities()) {
       if (ability == unfavoredAbility) {
         FavorableTraitCost[] allAbilityCost = calculator.getCosts(ability);
         FavorableTraitCost abilityCost = allAbilityCost[0];

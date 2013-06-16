@@ -1,7 +1,7 @@
 package net.sf.anathema.charmtree.builder.stringbuilder;
 
-import net.sf.anathema.charmtree.builder.MagicDisplayLabeler;
 import net.sf.anathema.character.generic.magic.IMagic;
+import net.sf.anathema.charmtree.builder.MagicDisplayLabeler;
 import net.sf.anathema.lib.gui.TooltipBuilder;
 import net.sf.anathema.lib.resources.Resources;
 

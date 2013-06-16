@@ -11,11 +11,11 @@ import net.sf.anathema.character.generic.traits.types.AbilityType;
 import net.sf.anathema.character.generic.traits.types.AttributeGroupType;
 import net.sf.anathema.character.impl.model.traits.creation.TypedTraitTemplateFactory;
 import net.sf.anathema.character.library.trait.AbstractTraitCollection;
+import net.sf.anathema.character.library.trait.Trait;
 import net.sf.anathema.character.library.trait.TraitGroup;
 import net.sf.anathema.character.library.trait.favorable.IIncrementChecker;
 import net.sf.anathema.character.library.trait.specialties.ISpecialtiesConfiguration;
 import net.sf.anathema.character.library.trait.specialties.SpecialtiesConfiguration;
-import net.sf.anathema.character.library.trait.IDefaultTrait;
 import net.sf.anathema.character.model.traits.ICoreTraitConfiguration;
 import net.sf.anathema.lib.collection.MultiEntryMap;
 import net.sf.anathema.lib.exception.NotYetImplementedException;
@@ -45,14 +45,14 @@ public class DummyCoreTraitConfiguration extends AbstractTraitCollection impleme
     });
   }
 
-  public IDefaultTrait[] getAllTraits(AttributeGroupType groupType) {
+  public Trait[] getAllTraits(AttributeGroupType groupType) {
     IIdentifiedTraitTypeGroup attributeTypeGroup = getAttributeTypeGroup(groupType);
     TraitGroup traitGroup = new TraitGroup(this, attributeTypeGroup);
     return traitGroup.getGroupTraits();
   }
 
-  public boolean containsAllTraits(AttributeGroupType attributeGroupType, IDefaultTrait[] traits) {
-    for (IDefaultTrait trait : traits) {
+  public boolean containsAllTraits(AttributeGroupType attributeGroupType, Trait[] traits) {
+    for (Trait trait : traits) {
       if (!ArrayUtils.contains(getAllTraits(attributeGroupType), trait)) {
         return false;
       }
@@ -60,7 +60,7 @@ public class DummyCoreTraitConfiguration extends AbstractTraitCollection impleme
     return true;
   }
 
-  public void addTestTrait(IDefaultTrait trait) {
+  public void addTestTrait(Trait trait) {
     addTraits(trait);
   }
 

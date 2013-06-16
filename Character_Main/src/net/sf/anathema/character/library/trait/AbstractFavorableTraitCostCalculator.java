@@ -12,10 +12,10 @@ import java.util.Set;
 public abstract class AbstractFavorableTraitCostCalculator implements IFavorableTraitCostCalculator {
 
   protected final IFavorableTraitCreationPoints points;
-  private final Map<ITrait, FavorableTraitCost[]> costsByTrait = new HashMap<>();
+  private final Map<Trait, FavorableTraitCost[]> costsByTrait = new HashMap<>();
   private final IAdditionalTraitBonusPointManagement additionalPools;
   private final int freeTraitMax;
-  private final IDefaultTrait[] traits;
+  private final Trait[] traits;
   private int favoredPicksSpent = 0;
   private int favoredDotSum = 0;
   private int generalDotSum = 0;
@@ -23,7 +23,7 @@ public abstract class AbstractFavorableTraitCostCalculator implements IFavorable
   private int extraGenericDotSum = 0;
 
   public AbstractFavorableTraitCostCalculator(IAdditionalTraitBonusPointManagement additionalPools, IFavorableTraitCreationPoints points,
-                                              int freeTraitMax, IDefaultTrait[] traits) {
+                                              int freeTraitMax, Trait[] traits) {
     this.additionalPools = additionalPools;
     this.points = points;
     this.freeTraitMax = freeTraitMax;
@@ -34,8 +34,8 @@ public abstract class AbstractFavorableTraitCostCalculator implements IFavorable
   public void calculateCosts() {
     clear();
     countFavoredTraits();
-    Set<IDefaultTrait> sortedTraits = sortTraitsByStatus();
-    for (IDefaultTrait trait : sortedTraits) {
+    Set<Trait> sortedTraits = sortTraitsByStatus();
+    for (Trait trait : sortedTraits) {
       int costFactor = getCostFactor(trait);
       FavorableTraitCost[] allCosts;
       if (trait.getFavorization().isCasteOrFavored()) {
@@ -51,7 +51,7 @@ public abstract class AbstractFavorableTraitCostCalculator implements IFavorable
   }
 
   protected void countFavoredTraits() {
-    for (ITrait trait : traits) {
+    for (Trait trait : traits) {
       if (trait.getFavorization().isFavored()) {
         increaseFavoredPicksSpent();
       }
@@ -78,10 +78,10 @@ public abstract class AbstractFavorableTraitCostCalculator implements IFavorable
     return bonusPointSum;
   }
 
-  protected abstract int getCostFactor(ITrait trait);
+  protected abstract int getCostFactor(Trait trait);
 
   @Override
-  public FavorableTraitCost[] getCosts(ITrait trait) {
+  public FavorableTraitCost[] getCosts(Trait trait) {
     return costsByTrait.get(trait);
   }
 
@@ -121,11 +121,11 @@ public abstract class AbstractFavorableTraitCostCalculator implements IFavorable
     return favored ? favoredDotSum : generalDotSum;
   }
 
-  protected ITrait[] getTraits() {
+  protected Trait[] getTraits() {
     return traits;
   }
 
-  private FavorableTraitCost handleFavoredSingleTrait(IDefaultTrait trait, int bonusPointCostFactor) {
+  private FavorableTraitCost handleFavoredSingleTrait(Trait trait, int bonusPointCostFactor) {
     int freeTraitMax = Math.max(this.freeTraitMax, trait.getAbsoluteMinValue());
     int freePointsToAdd = Math.min(trait.getCalculationValue(), freeTraitMax) - trait.getCalculationMinValue();
     int favoredDotsSpent = 0;
@@ -160,13 +160,13 @@ public abstract class AbstractFavorableTraitCostCalculator implements IFavorable
     return new FavorableTraitCost(bonusPointsSpent, generalDotsSpent, favoredDotsSpent);
   }
 
-  private FavorableTraitCost[] handleFavoredTrait(IDefaultTrait trait, final int bonusPointCostFactor) {
+  private FavorableTraitCost[] handleFavoredTrait(Trait trait, final int bonusPointCostFactor) {
     final List<FavorableTraitCost> allCosts = new ArrayList<>();
     allCosts.add(handleFavoredSingleTrait(trait, bonusPointCostFactor));
     return allCosts.toArray(new FavorableTraitCost[allCosts.size()]);
   }
 
-  private FavorableTraitCost handleGeneralSingleTrait(IDefaultTrait trait, int bonusPointCostFactor) {
+  private FavorableTraitCost handleGeneralSingleTrait(Trait trait, int bonusPointCostFactor) {
     int freeTraitMax = Math.max(this.freeTraitMax, trait.getAbsoluteMinValue());
     int freePointsToAdd = Math.min(trait.getCalculationValue(), freeTraitMax) - trait.getCalculationMinValue();
     int generalDotsSpent = 0;
@@ -185,7 +185,7 @@ public abstract class AbstractFavorableTraitCostCalculator implements IFavorable
     return new FavorableTraitCost(bonusPointsSpent, generalDotsSpent, 0);
   }
 
-  private FavorableTraitCost[] handleGeneralTrait(IDefaultTrait trait, final int bonusPointCostFactor) {
+  private FavorableTraitCost[] handleGeneralTrait(Trait trait, final int bonusPointCostFactor) {
     final List<FavorableTraitCost> allCosts = new ArrayList<>();
     allCosts.add(handleGeneralSingleTrait(trait, bonusPointCostFactor));
     return allCosts.toArray(new FavorableTraitCost[allCosts.size()]);
@@ -214,14 +214,14 @@ public abstract class AbstractFavorableTraitCostCalculator implements IFavorable
     generalDotSum += generalDotsSpent;
   }
 
-  private Set<IDefaultTrait> sortTraitsByStatus() {
-    Set<IDefaultTrait> orderedTraits = new LinkedHashSet<>();
-    for (IDefaultTrait trait : traits) {
+  private Set<Trait> sortTraitsByStatus() {
+    Set<Trait> orderedTraits = new LinkedHashSet<>();
+    for (Trait trait : traits) {
       if (!trait.getFavorization().isCasteOrFavored()) {
         addAllTraits(orderedTraits, trait);
       }
     }
-    for (IDefaultTrait trait : traits) {
+    for (Trait trait : traits) {
       if (!orderedTraits.contains(trait)) {
         addAllTraits(orderedTraits, trait);
       }
@@ -229,7 +229,7 @@ public abstract class AbstractFavorableTraitCostCalculator implements IFavorable
     return orderedTraits;
   }
 
-  private void addAllTraits(final Set<IDefaultTrait> orderedTraits, IDefaultTrait trait) {
+  private void addAllTraits(final Set<Trait> orderedTraits, Trait trait) {
     orderedTraits.add(trait);
   }
 }

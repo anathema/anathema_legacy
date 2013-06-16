@@ -2,12 +2,12 @@ package net.sf.anathema.character.dummy.trait;
 
 import net.sf.anathema.character.generic.traits.ITraitType;
 import net.sf.anathema.character.library.ITraitFavorization;
+import net.sf.anathema.character.library.trait.Trait;
 import net.sf.anathema.character.library.trait.favorable.NullTraitFavorization;
-import net.sf.anathema.character.library.trait.IDefaultTrait;
 import net.sf.anathema.lib.control.IChangeListener;
 import net.sf.anathema.lib.control.IIntValueChangedListener;
 
-public class DummyDefaultTrait implements IDefaultTrait {
+public class DummyDefaultTrait implements Trait {
 
   public static DummyDefaultTrait createLearnTrait(ITraitType type, int creationValue, int experiencedValue) {
     DummyDefaultTrait trait = new DummyDefaultTrait(type);
@@ -117,11 +117,6 @@ public class DummyDefaultTrait implements IDefaultTrait {
 
   @Override
   public void removeCreationPointListener(IIntValueChangedListener listener) {
-    //not yet implemented
-  }
-
-  @Override
-  public void removeCurrentValueListener(IIntValueChangedListener listener) {
     //not yet implemented
   }
 

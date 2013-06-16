@@ -10,7 +10,7 @@ import net.sf.anathema.character.generic.framework.additionaltemplate.model.Lear
 import net.sf.anathema.character.generic.impl.traits.TraitTypeUtils;
 import net.sf.anathema.character.generic.traits.ITraitType;
 import net.sf.anathema.character.generic.traits.types.AbilityType;
-import net.sf.anathema.character.library.trait.ITrait;
+import net.sf.anathema.character.library.trait.Trait;
 import net.sf.anathema.character.main.experience.model.ExperienceModelFetcher;
 
 import static org.hamcrest.CoreMatchers.is;
@@ -56,7 +56,7 @@ public class CharacterChangeSteps {
 
   @Then("^she has (\\d+) dots in ability (.*)$")
   public void she_has_dots_in_Ability(int amount, String abilityName) throws Throwable {
-    ITrait ability = character.getTraitConfiguration().getTrait(AbilityType.valueOf(abilityName));
+    Trait ability = character.getTraitConfiguration().getTrait(AbilityType.valueOf(abilityName));
     assertThat(ability.getCurrentValue(), is(amount));
   }
 }

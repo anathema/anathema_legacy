@@ -1,7 +1,7 @@
 package net.sf.anathema.framework.view;
 
-import net.sf.anathema.framework.view.toolbar.ToolBarButton;
 import net.sf.anathema.framework.swing.IView;
+import net.sf.anathema.framework.view.toolbar.ToolBarButton;
 import org.jdesktop.swingx.JXCollapsiblePane;
 import org.jdesktop.swingx.JXTitledPanel;
 

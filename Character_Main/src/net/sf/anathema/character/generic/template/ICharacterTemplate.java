@@ -10,7 +10,6 @@ import net.sf.anathema.character.generic.template.essence.IEssenceTemplate;
 import net.sf.anathema.character.generic.template.experience.IExperiencePointCosts;
 import net.sf.anathema.character.generic.template.magic.IMagicTemplate;
 import net.sf.anathema.character.generic.traits.ITraitType;
-import net.sf.anathema.character.model.CharacterModelFactory;
 
 import java.util.List;
 

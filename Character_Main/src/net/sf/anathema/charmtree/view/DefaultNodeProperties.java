@@ -1,9 +1,9 @@
 package net.sf.anathema.charmtree.view;
 
 import com.google.common.base.Preconditions;
-import net.sf.anathema.charmtree.builder.MagicDisplayLabeler;
 import net.sf.anathema.character.generic.magic.ICharm;
 import net.sf.anathema.character.generic.magic.charms.ICharmIdMap;
+import net.sf.anathema.charmtree.builder.MagicDisplayLabeler;
 import net.sf.anathema.lib.logging.Logger;
 import net.sf.anathema.lib.resources.Resources;
 import net.sf.anathema.platform.tree.presenter.view.NodeProperties;

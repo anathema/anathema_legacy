@@ -2,8 +2,8 @@ package net.sf.anathema.framework.presenter.view;
 
 import net.miginfocom.layout.CC;
 import net.miginfocom.swing.MigLayout;
-import net.sf.anathema.lib.control.ObjectValueListener;
 import net.sf.anathema.framework.swing.IView;
+import net.sf.anathema.lib.control.ObjectValueListener;
 import net.sf.anathema.lib.gui.layout.SwingLayoutUtils;
 import net.sf.anathema.lib.gui.widgets.ChangeableJComboBox;
 

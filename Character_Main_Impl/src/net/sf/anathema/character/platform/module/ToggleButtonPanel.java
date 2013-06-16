@@ -11,8 +11,8 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JToggleButton;
 
-import static net.sf.anathema.lib.gui.layout.SwingLayoutUtils.constraintsForImageButton;
 import static net.sf.anathema.lib.gui.layout.LayoutUtils.withoutInsets;
+import static net.sf.anathema.lib.gui.layout.SwingLayoutUtils.constraintsForImageButton;
 
 public class ToggleButtonPanel implements IToggleButtonPanel, IView {
   private final ButtonGroup buttonGroup = new ButtonGroup();

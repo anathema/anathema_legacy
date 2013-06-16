@@ -4,19 +4,19 @@ import net.sf.anathema.character.generic.IBasicCharacterData;
 import net.sf.anathema.character.generic.character.IGenericTraitCollection;
 import net.sf.anathema.character.generic.magic.ICharm;
 import net.sf.anathema.character.generic.magic.ISpell;
-import net.sf.anathema.character.library.trait.IDefaultTrait;
+import net.sf.anathema.character.library.trait.Trait;
 
 public interface IPointCostCalculator {
 
-  int getAbilityCosts(IDefaultTrait ability, boolean favored);
+  int getAbilityCosts(Trait ability, boolean favored);
 
-  int getAttributeCosts(IDefaultTrait attribute, boolean favored);
+  int getAttributeCosts(Trait attribute, boolean favored);
 
-  int getEssenceCosts(IDefaultTrait essence);
+  int getEssenceCosts(Trait essence);
 
-  int getVirtueCosts(IDefaultTrait virtue);
+  int getVirtueCosts(Trait virtue);
 
-  int getWillpowerCosts(IDefaultTrait willpower);
+  int getWillpowerCosts(Trait willpower);
 
   double getSpecialtyCosts(boolean favored);
 

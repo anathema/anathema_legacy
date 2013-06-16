@@ -1,12 +1,12 @@
 package net.sf.anathema.character.linguistics.model;
 
 import net.sf.anathema.character.generic.additionaltemplate.AbstractAdditionalModelAdapter;
-import net.sf.anathema.character.model.CharacterModelGroup;
 import net.sf.anathema.character.generic.framework.additionaltemplate.model.ICharacterModelContext;
 import net.sf.anathema.character.generic.template.additional.IAdditionalTemplate;
 import net.sf.anathema.character.library.removableentry.presenter.RemovableEntryChangeAdapter;
 import net.sf.anathema.character.linguistics.ILinguisticsAdditionalModel;
 import net.sf.anathema.character.linguistics.presenter.ILinguisticsModel;
+import net.sf.anathema.character.model.CharacterModelGroup;
 import net.sf.anathema.lib.control.IChangeListener;
 import net.sf.anathema.lib.util.Identifier;
 

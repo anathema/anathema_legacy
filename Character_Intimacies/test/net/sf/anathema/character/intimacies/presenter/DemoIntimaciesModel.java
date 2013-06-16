@@ -1,6 +1,5 @@
 package net.sf.anathema.character.intimacies.presenter;
 
-import net.sf.anathema.character.model.CharacterModelGroup;
 import net.sf.anathema.character.generic.additionaltemplate.IAdditionalModelBonusPointCalculator;
 import net.sf.anathema.character.generic.additionaltemplate.IAdditionalModelExperienceCalculator;
 import net.sf.anathema.character.generic.additionaltemplate.NullAdditionalModelBonusPointCalculator;
@@ -10,6 +9,7 @@ import net.sf.anathema.character.intimacies.IIntimaciesAdditionalModel;
 import net.sf.anathema.character.intimacies.model.IIntimacy;
 import net.sf.anathema.character.intimacies.template.IntimaciesTemplate;
 import net.sf.anathema.character.library.removableentry.presenter.IRemovableEntryListener;
+import net.sf.anathema.character.model.CharacterModelGroup;
 import net.sf.anathema.lib.control.IChangeListener;
 
 import java.util.ArrayList;

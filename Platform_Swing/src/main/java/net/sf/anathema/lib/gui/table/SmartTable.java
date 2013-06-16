@@ -2,8 +2,6 @@ package net.sf.anathema.lib.gui.table;
 
 import com.google.common.base.Preconditions;
 import net.miginfocom.layout.CC;
-import net.miginfocom.swing.MigLayout;
-import net.sf.anathema.framework.swing.IView;
 import net.sf.anathema.lib.gui.table.columsettings.ITableColumnViewSettings;
 import org.jmock.example.announcer.Announcer;
 
@@ -23,7 +21,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 import static javax.swing.ListSelectionModel.SINGLE_SELECTION;
-import static net.sf.anathema.lib.gui.layout.LayoutUtils.fillWithoutInsets;
 
 public class SmartTable {
 

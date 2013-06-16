@@ -2,7 +2,7 @@ package net.sf.anathema.character.impl.model.traits;
 
 import com.google.common.collect.Lists;
 import net.sf.anathema.character.generic.framework.additionaltemplate.model.ICharacterModelContext;
-import net.sf.anathema.character.library.trait.IDefaultTrait;
+import net.sf.anathema.character.library.trait.Trait;
 import org.junit.Test;
 
 import static org.mockito.Mockito.mock;
@@ -15,7 +15,7 @@ public class EssenceLimitationListenerTest {
   public void doesNotTriggerResetUntilCharacterIsFullyLoaded() throws Exception {
     ICharacterModelContext context = mock(ICharacterModelContext.class);
     TraitProvider traits = mock(TraitProvider.class);
-    IDefaultTrait trait = mock(IDefaultTrait.class);
+    Trait trait = mock(Trait.class);
     when(traits.iterator()).thenReturn(Lists.newArrayList(trait).iterator());
     new EssenceLimitationListener(traits, context).valueChanged(7);
     verifyZeroInteractions(trait);

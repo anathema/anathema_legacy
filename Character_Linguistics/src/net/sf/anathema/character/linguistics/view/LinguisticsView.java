@@ -7,7 +7,7 @@ import net.sf.anathema.character.library.overview.OverviewCategory;
 import net.sf.anathema.character.library.removableentry.presenter.IRemovableEntryView;
 import net.sf.anathema.character.library.removableentry.view.AbstractRemovableEntryView;
 import net.sf.anathema.character.library.removableentry.view.RemovableStringView;
-import net.sf.anathema.character.library.trait.IDefaultTrait;
+import net.sf.anathema.character.library.trait.Trait;
 import net.sf.anathema.character.linguistics.presenter.ILinguisticsView;
 import net.sf.anathema.framework.presenter.view.IButtonControlledObjectSelectionView;
 import net.sf.anathema.framework.presenter.view.ITextFieldComboBoxEditor;
@@ -41,7 +41,7 @@ public class LinguisticsView extends AbstractRemovableEntryView<IRemovableEntryV
   }
 
   @Override
-  public IRemovableEntryView addEntryView(RelativePath removeIcon, IDefaultTrait trait, String string) {
+  public IRemovableEntryView addEntryView(RelativePath removeIcon, Trait trait, String string) {
     RemovableStringView view = new RemovableStringView(new ImageProvider().getImageIcon(removeIcon), string);
     view.addContent(entryPanel);
     panel.revalidate();

@@ -2,8 +2,8 @@ package net.sf.anathema.character.library.virtueflaw.presenter;
 
 import net.sf.anathema.character.generic.framework.additionaltemplate.listening.VirtueChangeListener;
 import net.sf.anathema.character.generic.traits.ITraitType;
+import net.sf.anathema.character.library.trait.Trait;
 import net.sf.anathema.character.library.trait.presenter.TraitPresenter;
-import net.sf.anathema.character.library.trait.IDefaultTrait;
 import net.sf.anathema.character.library.virtueflaw.model.IVirtueFlaw;
 import net.sf.anathema.framework.value.IIntValueView;
 import net.sf.anathema.framework.view.AbstractSelectCellRenderer;
@@ -49,7 +49,7 @@ public class VirtueFlawPresenter implements Presenter {
   }
 
   protected void initLimitPresentation(IVirtueFlaw virtueFlaw) {
-    IDefaultTrait trait = virtueFlaw.getLimitTrait();
+    Trait trait = virtueFlaw.getLimitTrait();
     IIntValueView traitView =
             view.addLimitValueView(getResources().getString(trait.getType().getId()), trait.getCurrentValue(), trait.getMaximalValue());
     new TraitPresenter(trait, traitView).initPresentation();

@@ -7,8 +7,8 @@ import net.sf.anathema.character.generic.magic.ICharm;
 import net.sf.anathema.character.generic.magic.ISpell;
 import net.sf.anathema.character.generic.template.experience.CurrentRatingCosts;
 import net.sf.anathema.character.generic.template.experience.IExperiencePointCosts;
+import net.sf.anathema.character.library.trait.Trait;
 import net.sf.anathema.character.library.trait.experience.TraitRatingCostCalculator;
-import net.sf.anathema.character.library.trait.IDefaultTrait;
 
 public class ExperiencePointCostCalculator implements IPointCostCalculator {
 
@@ -23,27 +23,27 @@ public class ExperiencePointCostCalculator implements IPointCostCalculator {
   }
 
   @Override
-  public int getAbilityCosts(IDefaultTrait ability, final boolean favored) {
+  public int getAbilityCosts(Trait ability, final boolean favored) {
      return getTraitRatingCosts(ability, costs.getAbilityCosts(favored));
   }
 
   @Override
-  public int getAttributeCosts(IDefaultTrait attribute, boolean favored) {
+  public int getAttributeCosts(Trait attribute, boolean favored) {
     return getTraitRatingCosts(attribute, costs.getAttributeCosts(favored));
   }
 
   @Override
-  public int getEssenceCosts(IDefaultTrait essence) {
+  public int getEssenceCosts(Trait essence) {
     return getTraitRatingCosts(essence, costs.getEssenceCosts());
   }
 
   @Override
-  public int getVirtueCosts(IDefaultTrait virtue) {
+  public int getVirtueCosts(Trait virtue) {
     return getTraitRatingCosts(virtue, costs.getVirtueCosts());
   }
 
   @Override
-  public int getWillpowerCosts(IDefaultTrait willpower) {
+  public int getWillpowerCosts(Trait willpower) {
     return getTraitRatingCosts(willpower, costs.getWillpowerCosts());
   }
 

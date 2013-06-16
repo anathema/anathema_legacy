@@ -3,9 +3,8 @@ package net.sf.anathema.character.impl.persistence;
 import net.sf.anathema.character.generic.traits.groups.IIdentifiedTraitTypeGroup;
 import net.sf.anathema.character.generic.traits.types.AttributeType;
 import net.sf.anathema.character.library.trait.DefaultTrait;
-import net.sf.anathema.character.library.trait.ITrait;
+import net.sf.anathema.character.library.trait.Trait;
 import net.sf.anathema.character.library.trait.persistence.TraitPersister;
-import net.sf.anathema.character.library.trait.IDefaultTrait;
 import net.sf.anathema.character.model.traits.ICoreTraitConfiguration;
 import net.sf.anathema.lib.exception.PersistenceException;
 import net.sf.anathema.lib.xml.ElementUtilities;
@@ -29,7 +28,7 @@ public class AttributeConfigurationPersister {
 
   private void saveAttributeGroup(Element parent, ICoreTraitConfiguration traitConfiguration, IIdentifiedTraitTypeGroup typeGroup) {
     Element groupElement = parent.addElement(typeGroup.getGroupId().getId());
-    for (IDefaultTrait attribute : traitConfiguration.getTraits(typeGroup.getAllGroupTypes())) {
+    for (Trait attribute : traitConfiguration.getTraits(typeGroup.getAllGroupTypes())) {
       Element attributeElement = persister.saveTrait(groupElement, attribute.getType().getId(), attribute);
       if (attribute instanceof DefaultTrait) {
         DefaultTrait attributeTrait = (DefaultTrait) attribute;
@@ -52,7 +51,7 @@ public class AttributeConfigurationPersister {
     for (Element attributeElement : attributeElements) {
       AttributeType attributeType = AttributeType.valueOf(attributeElement.getName());
       persister.restoreTrait(attributeElement, configuration.getTrait(attributeType));
-      ITrait attribute = configuration.getTrait(attributeType);
+      Trait attribute = configuration.getTrait(attributeType);
       if (ElementUtilities.getBooleanAttribute(attributeElement, ATTRIB_FAVORED, false)) {
         attribute.getFavorization().setFavored(true);
       }

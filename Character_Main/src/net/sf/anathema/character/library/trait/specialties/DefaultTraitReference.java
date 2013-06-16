@@ -2,13 +2,13 @@ package net.sf.anathema.character.library.trait.specialties;
 
 import net.sf.anathema.character.generic.framework.ITraitReference;
 import net.sf.anathema.character.generic.traits.ITraitType;
-import net.sf.anathema.character.library.trait.ITrait;
+import net.sf.anathema.character.library.trait.Trait;
 
 public class DefaultTraitReference implements ITraitReference {
 
   private final ITraitType type;
 
-  public DefaultTraitReference(ITrait visitedTrait) {
+  public DefaultTraitReference(Trait visitedTrait) {
     this.type = visitedTrait.getType();
   }
 

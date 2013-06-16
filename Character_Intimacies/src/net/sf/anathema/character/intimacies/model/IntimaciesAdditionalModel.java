@@ -1,6 +1,5 @@
 package net.sf.anathema.character.intimacies.model;
 
-import net.sf.anathema.character.model.CharacterModelGroup;
 import net.sf.anathema.character.generic.additionaltemplate.IAdditionalModelBonusPointCalculator;
 import net.sf.anathema.character.generic.additionaltemplate.IAdditionalModelExperienceCalculator;
 import net.sf.anathema.character.generic.additionaltemplate.NullAdditionalModelExperienceCalculator;
@@ -9,6 +8,7 @@ import net.sf.anathema.character.generic.template.additional.IAdditionalTemplate
 import net.sf.anathema.character.intimacies.IIntimaciesAdditionalModel;
 import net.sf.anathema.character.intimacies.presenter.IIntimaciesModel;
 import net.sf.anathema.character.library.removableentry.presenter.RemovableEntryChangeAdapter;
+import net.sf.anathema.character.model.CharacterModelGroup;
 import net.sf.anathema.lib.control.IChangeListener;
 
 public class IntimaciesAdditionalModel implements IIntimaciesAdditionalModel {

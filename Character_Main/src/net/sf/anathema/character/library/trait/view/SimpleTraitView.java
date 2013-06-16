@@ -2,7 +2,7 @@ package net.sf.anathema.character.library.trait.view;
 
 import com.google.common.base.Preconditions;
 import net.miginfocom.layout.CC;
-import net.sf.anathema.character.library.trait.IDefaultTrait;
+import net.sf.anathema.character.library.trait.Trait;
 import net.sf.anathema.framework.value.IntegerViewFactory;
 
 import javax.swing.JLabel;
@@ -20,7 +20,7 @@ public class SimpleTraitView extends AbstractTraitView implements ITraitView<Sim
     this(factory, labelText, value, maxValue, null, new CC().alignX("right"));
   }
 
-  public SimpleTraitView(IntegerViewFactory factory, String labelText, int value, int maxValue, IDefaultTrait trait) {
+  public SimpleTraitView(IntegerViewFactory factory, String labelText, int value, int maxValue, Trait trait) {
     this(factory, labelText, value, maxValue, trait, new CC().alignX("right"));
   }
 
@@ -28,11 +28,11 @@ public class SimpleTraitView extends AbstractTraitView implements ITraitView<Sim
     this(factory, labelText, value, maxValue, null, dotAlignment, new CC().growX().pushX());
   }
 
-  public SimpleTraitView(IntegerViewFactory factory, String labelText, int value, int maxValue, IDefaultTrait trait, CC dotAlignment) {
+  public SimpleTraitView(IntegerViewFactory factory, String labelText, int value, int maxValue, Trait trait, CC dotAlignment) {
     this(factory, labelText, value, maxValue, trait, dotAlignment, new CC().growX().pushX());
   }
 
-  public SimpleTraitView(IntegerViewFactory factory, String labelText, int value, int maxValue, IDefaultTrait trait, CC dotAlignment,
+  public SimpleTraitView(IntegerViewFactory factory, String labelText, int value, int maxValue, Trait trait, CC dotAlignment,
                          CC labelAlignment) {
     super(factory, labelText, value, maxValue, trait);
     Preconditions.checkArgument(getLabelText() != null, "Label-Text must be set.");

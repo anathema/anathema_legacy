@@ -7,7 +7,7 @@ import net.sf.anathema.character.generic.template.creation.IGenericSpecialty;
 import net.sf.anathema.character.generic.template.experience.AbilityPointCosts;
 import net.sf.anathema.character.generic.traits.IGenericTrait;
 import net.sf.anathema.character.impl.model.creation.bonus.ability.SpecialtyCalculator;
-import net.sf.anathema.character.library.trait.IDefaultTrait;
+import net.sf.anathema.character.library.trait.Trait;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -73,7 +73,7 @@ public class AdditionalBonusPointPoolCalculator {
     return specialtyCalculator.getSpecialtyCosts(specialties.toArray(new IGenericSpecialty[specialties.size()]));
   }
 
-  public boolean isFavoredBackground(IDefaultTrait background) {
+  public boolean isFavoredBackground(Trait background) {
     return poolTemplate.isAllowedForTrait(collection, background);
   }
 }

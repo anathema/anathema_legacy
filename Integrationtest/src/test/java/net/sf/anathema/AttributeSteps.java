@@ -5,8 +5,7 @@ import cucumber.api.java.en.And;
 import cucumber.api.java.en.Then;
 import cucumber.api.java.en.When;
 import net.sf.anathema.character.generic.traits.types.AttributeType;
-import net.sf.anathema.character.library.trait.ITrait;
-import net.sf.anathema.character.library.trait.IDefaultTrait;
+import net.sf.anathema.character.library.trait.Trait;
 import net.sf.anathema.character.model.traits.ICoreTraitConfiguration;
 
 import static org.hamcrest.CoreMatchers.is;
@@ -24,7 +23,7 @@ public class AttributeSteps {
 
   @When("^I set any of her attributes to (\\d+)$")
   public void setAnyOfHerAttributesTo(int value) throws Throwable {
-    ((IDefaultTrait) getAttribute(ANY_ATTRIBUTE_TYPE)).setCurrentValue(value);
+    ((Trait) getAttribute(ANY_ATTRIBUTE_TYPE)).setCurrentValue(value);
   }
 
   @And("^I set the attribute to (\\d+)$")
@@ -54,7 +53,7 @@ public class AttributeSteps {
     assertThat("Attribute type " + type, getAttribute(type).getCurrentValue(), is(value));
   }
 
-  private ITrait getAttribute(AttributeType type) {
+  private Trait getAttribute(AttributeType type) {
     ICoreTraitConfiguration traitConfiguration = character.getCharacter().getTraitConfiguration();
     return traitConfiguration.getTrait(type);
   }

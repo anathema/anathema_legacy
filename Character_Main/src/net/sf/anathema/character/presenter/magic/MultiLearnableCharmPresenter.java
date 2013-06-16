@@ -1,7 +1,7 @@
 package net.sf.anathema.character.presenter.magic;
 
+import net.sf.anathema.character.library.trait.Trait;
 import net.sf.anathema.character.library.trait.presenter.TraitPresenter;
-import net.sf.anathema.character.library.trait.IDefaultTrait;
 import net.sf.anathema.character.model.charm.special.IMultiLearnableCharmConfiguration;
 import net.sf.anathema.framework.value.IIntValueView;
 import net.sf.anathema.lib.gui.Presenter;
@@ -23,7 +23,7 @@ public class MultiLearnableCharmPresenter implements Presenter {
   @Override
   public void initPresentation() {
     String label = resources.getString("MultiLearnableCharm.Label");
-    IDefaultTrait category = model.getCategory();
+    Trait category = model.getCategory();
     IIntValueView display = view.addCategory(label, category.getMaximalValue(), category.getCurrentValue());
     new TraitPresenter(category, display).initPresentation();
   }
