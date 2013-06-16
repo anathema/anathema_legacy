@@ -13,7 +13,7 @@ public class CharacterConceptFactory extends SimpleModelTreeEntry implements Cha
   }
 
   @Override
-  public CharacterConcept create(TemplateFactory templateFactory) {
+  public CharacterConceptImpl create(TemplateFactory templateFactory) {
     return new CharacterConceptImpl();
   }
 }

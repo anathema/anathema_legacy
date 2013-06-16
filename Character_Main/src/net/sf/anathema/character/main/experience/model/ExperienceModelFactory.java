@@ -13,7 +13,7 @@ public class ExperienceModelFactory extends SimpleModelTreeEntry implements Char
   }
 
   @Override
-  public ExperienceModel create(TemplateFactory templateFactory) {
+  public ExperienceModelImpl create(TemplateFactory templateFactory) {
     return new ExperienceModelImpl();
   }
 }
