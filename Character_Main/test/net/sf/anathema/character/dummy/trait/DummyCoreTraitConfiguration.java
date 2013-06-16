@@ -11,6 +11,7 @@ import net.sf.anathema.character.generic.traits.types.AbilityType;
 import net.sf.anathema.character.generic.traits.types.AttributeGroupType;
 import net.sf.anathema.character.impl.model.traits.creation.TypedTraitTemplateFactory;
 import net.sf.anathema.character.library.trait.AbstractTraitCollection;
+import net.sf.anathema.character.library.trait.DefaultTraitGroup;
 import net.sf.anathema.character.library.trait.Trait;
 import net.sf.anathema.character.library.trait.TraitGroup;
 import net.sf.anathema.character.library.trait.favorable.IIncrementChecker;
@@ -47,7 +48,7 @@ public class DummyCoreTraitConfiguration extends AbstractTraitCollection impleme
 
   public Trait[] getAllTraits(AttributeGroupType groupType) {
     IIdentifiedTraitTypeGroup attributeTypeGroup = getAttributeTypeGroup(groupType);
-    TraitGroup traitGroup = new TraitGroup(this, attributeTypeGroup);
+    TraitGroup traitGroup = new DefaultTraitGroup(this, attributeTypeGroup);
     return traitGroup.getGroupTraits();
   }
 

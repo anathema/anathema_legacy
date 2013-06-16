@@ -15,6 +15,7 @@ import net.sf.anathema.character.impl.model.creation.bonus.trait.TraitCostElemen
 import net.sf.anathema.character.impl.model.creation.bonus.util.TraitGroupCost;
 import net.sf.anathema.character.impl.model.creation.bonus.util.TraitSorter;
 import net.sf.anathema.character.library.trait.AbstractFavorableTraitCostCalculator;
+import net.sf.anathema.character.library.trait.DefaultTraitGroup;
 import net.sf.anathema.character.library.trait.Trait;
 import net.sf.anathema.character.library.trait.TraitGroup;
 import net.sf.anathema.character.model.traits.ICoreTraitConfiguration;
@@ -36,7 +37,7 @@ public class AttributeCostCalculator extends AbstractFavorableTraitCostCalculato
 
   private final Map<Trait, ElementCreationCost> costsByAttribute = new HashMap<>();
   private List<TraitGroupCost> orderedGroups;
-  private final TraitGroup[] traitGroups;
+  private final DefaultTraitGroup[] traitGroups;
   private final BonusPointCosts costs;
   private final List<List<TraitGroup>> priorityPermutations = new ArrayList<>();
   private static final int SORTING_BONUS_COST_SCALE_FACTOR = 1000;
@@ -46,21 +47,21 @@ public class AttributeCostCalculator extends AbstractFavorableTraitCostCalculato
     super(additionalPools, points, costs.getMaximumFreeAbilityRank(), getAllAttributes(traitConfiguration));
     this.traitGroups = createTraitGroups(traitConfiguration);
     this.costs = costs;
-    createPermutations(new ArrayList<TraitGroup>());
+    createPermutations(new ArrayList<DefaultTraitGroup>());
   }
 
-  private TraitGroup[] createTraitGroups(ICoreTraitConfiguration traitConfiguration) {
+  private DefaultTraitGroup[] createTraitGroups(ICoreTraitConfiguration traitConfiguration) {
     IIdentifiedTraitTypeGroup[] attributeTypeGroups = traitConfiguration.getAttributeTypeGroups();
-    TraitGroup[] newGroups = new TraitGroup[attributeTypeGroups.length];
+    DefaultTraitGroup[] newGroups = new DefaultTraitGroup[attributeTypeGroups.length];
     for (int index = 0; index < newGroups.length; index++) {
-      newGroups[index] = new TraitGroup(traitConfiguration, attributeTypeGroups[index]);
+      newGroups[index] = new DefaultTraitGroup(traitConfiguration, attributeTypeGroups[index]);
     }
     return newGroups;
   }
 
   private void createPermutations(List<TraitGroup> parent) {
     boolean isLeaf = true;
-    for (TraitGroup entry : traitGroups) {
+    for (DefaultTraitGroup entry : traitGroups) {
       if (parent.contains(entry)) {
         continue;
       }
