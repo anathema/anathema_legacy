@@ -11,7 +11,7 @@ import net.sf.anathema.character.impl.model.advance.models.SpecialtyExperienceMo
 import net.sf.anathema.character.impl.model.advance.models.SpellExperienceModel;
 import net.sf.anathema.character.impl.model.advance.models.VirtueExperienceModel;
 import net.sf.anathema.character.impl.model.advance.models.WillpowerExperienceModel;
-import net.sf.anathema.character.library.trait.TraitCollection;
+import net.sf.anathema.character.main.traits.model.TraitMap;
 import net.sf.anathema.character.model.ICharacter;
 import net.sf.anathema.character.model.advance.IExperiencePointManagement;
 import net.sf.anathema.character.presenter.overview.IValueModel;
@@ -21,7 +21,7 @@ public class ExperiencePointManagement implements IExperiencePointManagement {
   private final IBasicCharacterData basicCharacter;
   private final IPointCostCalculator calculator;
   private final ICharacter character;
-  private final TraitCollection traitConfiguration;
+  private final TraitMap traitConfiguration;
 
   public ExperiencePointManagement(ICharacter character) {
     this.character = character;

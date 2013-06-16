@@ -1,12 +1,10 @@
 package net.sf.anathema.lib.workflow.labelledvalue.view;
 
 import net.sf.anathema.framework.ui.RGBColor;
-import net.sf.anathema.lib.gui.swing.ColorUtilities;
 
 import javax.swing.JComponent;
 import javax.swing.JLabel;
 import javax.swing.SwingConstants;
-import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Font;
 import java.awt.Toolkit;

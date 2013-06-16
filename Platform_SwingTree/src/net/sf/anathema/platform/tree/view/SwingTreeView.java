@@ -1,5 +1,6 @@
 package net.sf.anathema.platform.tree.view;
 
+import net.sf.anathema.framework.ui.RGBColor;
 import net.sf.anathema.platform.tree.presenter.view.CascadeLoadException;
 import net.sf.anathema.platform.tree.presenter.view.CascadeLoadedListener;
 import net.sf.anathema.platform.tree.presenter.view.ContentFactory;
@@ -8,7 +9,6 @@ import net.sf.anathema.platform.tree.presenter.view.NodeInteractionListener;
 import net.sf.anathema.platform.tree.presenter.view.NodeProperties;
 import net.sf.anathema.platform.tree.presenter.view.SpecialControl;
 import net.sf.anathema.platform.tree.presenter.view.ToolTipProperties;
-import net.sf.anathema.framework.ui.RGBColor;
 import net.sf.anathema.platform.tree.view.container.Cascade;
 import net.sf.anathema.platform.tree.view.container.ProxyCascade;
 import net.sf.anathema.platform.tree.view.interaction.ButtonSpecialControl;

@@ -2,9 +2,9 @@ package net.sf.anathema.character.generic.framework.xml.presentation;
 
 import net.sf.anathema.character.generic.framework.xml.core.AbstractXmlTemplateParser;
 import net.sf.anathema.character.generic.framework.xml.registry.IXmlTemplateRegistry;
+import net.sf.anathema.framework.ui.RGBColor;
 import net.sf.anathema.lib.exception.PersistenceException;
 import net.sf.anathema.lib.xml.ElementUtilities;
-import net.sf.anathema.framework.ui.RGBColor;
 import org.dom4j.Element;
 
 public class PresentationPropertiesParser extends AbstractXmlTemplateParser<GenericPresentationTemplate> {

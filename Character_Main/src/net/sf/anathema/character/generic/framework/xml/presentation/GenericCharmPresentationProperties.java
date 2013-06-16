@@ -1,9 +1,9 @@
 package net.sf.anathema.character.generic.framework.xml.presentation;
 
+import net.sf.anathema.framework.ui.RGBColor;
 import net.sf.anathema.lib.lang.clone.ReflectionCloneableObject;
 import net.sf.anathema.platform.tree.document.visualizer.ITreePresentationProperties;
 import net.sf.anathema.platform.tree.util.Area;
-import net.sf.anathema.framework.ui.RGBColor;
 
 public class GenericCharmPresentationProperties extends ReflectionCloneableObject<GenericCharmPresentationProperties> implements
         ITreePresentationProperties {

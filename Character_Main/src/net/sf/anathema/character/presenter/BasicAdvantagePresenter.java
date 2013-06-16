@@ -1,7 +1,7 @@
 package net.sf.anathema.character.presenter;
 
 import net.sf.anathema.character.generic.traits.types.OtherTraitType;
-import net.sf.anathema.character.library.trait.TraitCollection;
+import net.sf.anathema.character.main.traits.model.TraitMap;
 import net.sf.anathema.character.model.ICharacter;
 import net.sf.anathema.character.view.AdvantageView;
 import net.sf.anathema.lib.gui.Presenter;
@@ -18,7 +18,7 @@ public class BasicAdvantagePresenter {
   public BasicAdvantagePresenter(Resources resources, ICharacter character, AdvantageView view) {
     this.resources = resources;
     this.view = view;
-    TraitCollection traitConfiguration = character.getTraitConfiguration();
+    TraitMap traitConfiguration = character.getTraitConfiguration();
     subPresenters.add(new VirtueConfigurationPresenter(resources, traitConfiguration, view));
     subPresenters.add(new WillpowerConfigurationPresenter(resources, traitConfiguration.getTrait(OtherTraitType.Willpower), view));
     subPresenters.add(new EssenceConfigurationPresenter(resources, character.getEssencePool(), traitConfiguration, view));

@@ -8,9 +8,8 @@ import net.sf.anathema.character.generic.traits.groups.IdentifiedTraitTypeGroup;
 import net.sf.anathema.character.generic.traits.types.AbilityType;
 import net.sf.anathema.character.generic.traits.types.AttributeGroupType;
 import net.sf.anathema.character.generic.traits.types.AttributeType;
-import net.sf.anathema.character.library.trait.AbstractTraitCollection;
+import net.sf.anathema.character.library.trait.AbstractTraitMap;
 import net.sf.anathema.character.library.trait.Trait;
-import net.sf.anathema.character.library.trait.TraitCollection;
 import net.sf.anathema.character.library.trait.TraitGroup;
 import net.sf.anathema.character.library.trait.specialties.ISpecialtiesConfiguration;
 import net.sf.anathema.character.library.trait.specialties.SpecialtiesConfiguration;
@@ -18,6 +17,7 @@ import net.sf.anathema.character.main.abilities.AbilityModel;
 import net.sf.anathema.character.main.attributes.model.temporary.AttributeModel;
 import net.sf.anathema.character.main.testing.dummy.DummyCharacterModelContext;
 import net.sf.anathema.character.main.traits.model.MappedTraitGroup;
+import net.sf.anathema.character.main.traits.model.TraitMap;
 import net.sf.anathema.lib.collection.MultiEntryMap;
 import net.sf.anathema.lib.util.Identifier;
 import net.sf.anathema.lib.util.SimpleIdentifier;
@@ -31,7 +31,7 @@ import static net.sf.anathema.character.generic.traits.types.AttributeGroupType.
 import static net.sf.anathema.character.generic.traits.types.AttributeGroupType.Social;
 import static net.sf.anathema.lib.lang.ArrayUtilities.getFirst;
 
-public class DummyCoreTraitConfiguration extends AbstractTraitCollection implements TraitCollection {
+public class DummyCoreTraitConfiguration extends AbstractTraitMap implements TraitMap {
 
   private final MultiEntryMap<String, TraitType> abilityGroupsByType = new MultiEntryMap<>();
   private ISpecialtiesConfiguration specialtyConfiguration;

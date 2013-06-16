@@ -28,9 +28,9 @@ import net.sf.anathema.character.impl.model.creation.bonus.virtue.VirtueBonusMod
 import net.sf.anathema.character.impl.model.creation.bonus.virtue.VirtueCostCalculator;
 import net.sf.anathema.character.impl.util.GenericCharacterUtilities;
 import net.sf.anathema.character.library.trait.Trait;
-import net.sf.anathema.character.library.trait.TraitCollection;
 import net.sf.anathema.character.library.trait.TraitCollectionUtilities;
 import net.sf.anathema.character.library.trait.experience.TraitRatingCostCalculator;
+import net.sf.anathema.character.main.traits.model.TraitMap;
 import net.sf.anathema.character.model.ICharacter;
 import net.sf.anathema.character.model.creation.IBonusPointManagement;
 import net.sf.anathema.character.presenter.overview.IAdditionalSpendingModel;
@@ -68,7 +68,7 @@ public class BonusPointManagement implements IBonusPointManagement {
     this.cost = character.getCharacterTemplate().getBonusPointCosts();
     ICharacterTemplate characterTemplate = character.getCharacterTemplate();
     GenericCharacter characterAbstraction = GenericCharacterUtilities.createGenericCharacter(character);
-    TraitCollection traitConfiguration = character.getTraitConfiguration();
+    TraitMap traitConfiguration = character.getTraitConfiguration();
     this.abilityCalculator =
             new AbilityCostCalculator(character.getAbilities(), creationPoints.getAbilityCreationPoints(), creationPoints.getSpecialtyCreationPoints(),
                     cost, bonusAdditionalPools);

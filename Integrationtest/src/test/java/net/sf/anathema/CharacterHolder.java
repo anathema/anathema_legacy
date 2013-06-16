@@ -1,9 +1,9 @@
 package net.sf.anathema;
 
 import net.sf.anathema.character.generic.template.ICharacterTemplate;
-import net.sf.anathema.character.library.trait.TraitCollection;
 import net.sf.anathema.character.main.concept.model.CharacterConcept;
 import net.sf.anathema.character.main.concept.model.CharacterConceptFetcher;
+import net.sf.anathema.character.main.traits.model.TraitMap;
 import net.sf.anathema.character.model.ICharacter;
 import net.sf.anathema.character.model.charm.ICharmConfiguration;
 
@@ -26,7 +26,7 @@ public class CharacterHolder {
     return CharacterConceptFetcher.fetch(character);
   }
 
-  public TraitCollection getTraitConfiguration() {
+  public TraitMap getTraitConfiguration() {
     return character.getTraitConfiguration();
   }
 

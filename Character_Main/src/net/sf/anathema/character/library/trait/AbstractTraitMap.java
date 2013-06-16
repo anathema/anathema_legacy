@@ -2,12 +2,13 @@ package net.sf.anathema.character.library.trait;
 
 import com.google.common.base.Preconditions;
 import net.sf.anathema.character.generic.traits.TraitType;
+import net.sf.anathema.character.main.traits.model.TraitMap;
 
 import java.util.Collection;
 import java.util.HashMap;
 import java.util.Map;
 
-public abstract class AbstractTraitCollection implements TraitCollection {
+public abstract class AbstractTraitMap implements TraitMap {
 
   private final Map<TraitType, Trait> traitsByType = new HashMap<>();
 

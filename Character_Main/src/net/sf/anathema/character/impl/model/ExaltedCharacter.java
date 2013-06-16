@@ -19,7 +19,6 @@ import net.sf.anathema.character.impl.model.context.CharacterModelContext;
 import net.sf.anathema.character.impl.model.statistics.ExtendedConfiguration;
 import net.sf.anathema.character.impl.model.traits.DefaultTraitModel;
 import net.sf.anathema.character.impl.model.traits.listening.CharacterTraitListening;
-import net.sf.anathema.character.library.trait.TraitCollection;
 import net.sf.anathema.character.main.abilities.AbilityModel;
 import net.sf.anathema.character.main.abilities.DefaultAbilityModel;
 import net.sf.anathema.character.main.attributes.model.temporary.AttributeModel;
@@ -33,6 +32,7 @@ import net.sf.anathema.character.main.model.DefaultTemplateFactory;
 import net.sf.anathema.character.main.model.change.ChangeAnnouncerAdapter;
 import net.sf.anathema.character.main.othertraits.DefaultOtherTraitModel;
 import net.sf.anathema.character.main.othertraits.OtherTraitModel;
+import net.sf.anathema.character.main.traits.model.TraitMap;
 import net.sf.anathema.character.model.CharacterModel;
 import net.sf.anathema.character.model.CharacterModelAutoCollector;
 import net.sf.anathema.character.model.CharacterModelFactory;
@@ -237,7 +237,7 @@ public class ExaltedCharacter implements ICharacter {
     return extendedConfiguration;
   }
 
-  public TraitCollection getTraitConfiguration() {
+  public TraitMap getTraitConfiguration() {
     return traitConfiguration;
   }
 

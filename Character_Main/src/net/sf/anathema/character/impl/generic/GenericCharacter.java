@@ -24,7 +24,6 @@ import net.sf.anathema.character.generic.traits.groups.IIdentifiedTraitTypeGroup
 import net.sf.anathema.character.generic.traits.types.OtherTraitType;
 import net.sf.anathema.character.impl.model.advance.ExperiencePointManagement;
 import net.sf.anathema.character.library.trait.Trait;
-import net.sf.anathema.character.library.trait.TraitCollection;
 import net.sf.anathema.character.library.trait.specialties.ISpecialtiesConfiguration;
 import net.sf.anathema.character.library.trait.specialties.Specialty;
 import net.sf.anathema.character.library.trait.subtrait.ISpecialtyListener;
@@ -33,6 +32,7 @@ import net.sf.anathema.character.main.concept.model.CharacterConceptFetcher;
 import net.sf.anathema.character.main.description.model.CharacterDescriptionFetcher;
 import net.sf.anathema.character.main.experience.model.ExperienceModelFetcher;
 import net.sf.anathema.character.main.traits.model.GenericTraitCollectionFacade;
+import net.sf.anathema.character.main.traits.model.TraitMap;
 import net.sf.anathema.character.model.ICharacter;
 import net.sf.anathema.character.model.ITypedDescription;
 import net.sf.anathema.character.model.charm.ICharmConfiguration;
@@ -354,7 +354,7 @@ public class GenericCharacter implements IGenericCharacter {
     }
   }
 
-  private TraitCollection getTraitConfiguration() {
+  private TraitMap getTraitConfiguration() {
     return character.getTraitConfiguration();
   }
 }

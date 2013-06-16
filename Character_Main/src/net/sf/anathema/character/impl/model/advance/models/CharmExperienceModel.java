@@ -4,7 +4,7 @@ import net.sf.anathema.character.generic.IBasicCharacterData;
 import net.sf.anathema.character.generic.magic.ICharm;
 import net.sf.anathema.character.generic.magic.charms.special.ISpecialCharmConfiguration;
 import net.sf.anathema.character.impl.model.advance.IPointCostCalculator;
-import net.sf.anathema.character.library.trait.TraitCollection;
+import net.sf.anathema.character.main.traits.model.TraitMap;
 import net.sf.anathema.character.model.ICharacter;
 import net.sf.anathema.character.model.charm.ICharmConfiguration;
 import net.sf.anathema.character.model.charm.special.ISubeffectCharmConfiguration;
@@ -14,12 +14,12 @@ import java.util.HashSet;
 import java.util.Set;
 
 public class CharmExperienceModel extends AbstractIntegerValueModel {
-  private final TraitCollection traitConfiguration;
+  private final TraitMap traitConfiguration;
   private final IPointCostCalculator calculator;
   private final ICharacter character;
   private final IBasicCharacterData basicCharacter;
 
-  public CharmExperienceModel(TraitCollection traitConfiguration, IPointCostCalculator calculator, ICharacter character,
+  public CharmExperienceModel(TraitMap traitConfiguration, IPointCostCalculator calculator, ICharacter character,
                               IBasicCharacterData basicCharacter) {
     super("Experience", "Charms");
     this.traitConfiguration = traitConfiguration;

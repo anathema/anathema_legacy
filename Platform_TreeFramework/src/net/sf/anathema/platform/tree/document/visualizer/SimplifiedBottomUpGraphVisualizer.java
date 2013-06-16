@@ -1,11 +1,11 @@
 package net.sf.anathema.platform.tree.document.visualizer;
 
+import net.sf.anathema.framework.ui.RGBColor;
 import net.sf.anathema.graph.graph.LayeredGraph;
 import net.sf.anathema.graph.nodes.ISimpleNode;
 import net.sf.anathema.platform.tree.document.components.ILayer;
 import net.sf.anathema.platform.tree.document.util.BackwardsIterable;
 import net.sf.anathema.platform.tree.util.Area;
-import net.sf.anathema.framework.ui.RGBColor;
 
 import java.util.Arrays;
 import java.util.LinkedHashSet;

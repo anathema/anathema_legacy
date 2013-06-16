@@ -8,10 +8,10 @@ import net.sf.anathema.character.generic.traits.groups.IIdentifiedTraitTypeGroup
 import net.sf.anathema.character.generic.traits.groups.TraitTypeGroup;
 import net.sf.anathema.character.library.ITraitFavorization;
 import net.sf.anathema.character.library.trait.Trait;
-import net.sf.anathema.character.library.trait.TraitCollection;
 import net.sf.anathema.character.library.trait.favorable.FavorableState;
 import net.sf.anathema.character.library.trait.favorable.IFavorableStateChangedListener;
 import net.sf.anathema.character.library.trait.presenter.TraitPresenter;
+import net.sf.anathema.character.main.traits.model.TraitMap;
 import net.sf.anathema.character.model.ICharacter;
 import net.sf.anathema.character.view.IGroupedFavorableTraitConfigurationView;
 import net.sf.anathema.interaction.Command;
@@ -29,7 +29,7 @@ public class FavorableTraitConfigurationPresenter {
   private final IdentityMapping<Trait, ToggleTool> traitViewsByTrait = new IdentityMapping<>();
   private final Resources resources;
   private final IIdentifiedTraitTypeGroup[] traitTypeGroups;
-  private final TraitCollection traitConfiguration;
+  private final TraitMap traitConfiguration;
   private final IBasicCharacterData basicCharacterData;
   private final ICharacterListening characterListening;
   private final IPresentationProperties presentationProperties;

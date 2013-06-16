@@ -2,15 +2,15 @@ package net.sf.anathema.character.impl.model.advance.models;
 
 import net.sf.anathema.character.impl.model.advance.IPointCostCalculator;
 import net.sf.anathema.character.library.trait.Trait;
-import net.sf.anathema.character.library.trait.TraitCollection;
 import net.sf.anathema.character.library.trait.TraitCollectionUtilities;
+import net.sf.anathema.character.main.traits.model.TraitMap;
 
 public class VirtueExperienceModel extends AbstractIntegerValueModel {
 
-  private final TraitCollection traitConfiguration;
+  private final TraitMap traitConfiguration;
   private final IPointCostCalculator calculator;
 
-  public VirtueExperienceModel(TraitCollection traitConfiguration, IPointCostCalculator calculator) {
+  public VirtueExperienceModel(TraitMap traitConfiguration, IPointCostCalculator calculator) {
     super("Experience", "Virtues");
     this.traitConfiguration = traitConfiguration;
     this.calculator = calculator;
