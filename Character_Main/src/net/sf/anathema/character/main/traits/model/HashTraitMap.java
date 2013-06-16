@@ -4,8 +4,10 @@ import com.google.common.base.Preconditions;
 import net.sf.anathema.character.generic.traits.ITraitType;
 import net.sf.anathema.character.library.trait.Trait;
 
+import java.util.ArrayList;
 import java.util.Collection;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 public class HashTraitMap implements TraitMap{
@@ -17,17 +19,26 @@ public class HashTraitMap implements TraitMap{
     traitsByType.put(trait.getType(), trait);
   }
 
-  private final boolean contains(ITraitType traitType) {
-    return traitsByType.containsKey(traitType);
-  }
-
   @Override
   public Trait getTrait(ITraitType traitType) {
     return traitsByType.get(traitType);
   }
 
+  @Override
+  public Trait[] getTraits(ITraitType... traitTypes) {
+    List<Trait> foundTraits = new ArrayList<>();
+    for (ITraitType type : traitTypes) {
+      foundTraits.add(getTrait(type));
+    }
+    return foundTraits.toArray(new Trait[foundTraits.size()]);
+  }
+
   public Trait[] getAll() {
     Collection<Trait> attributes = traitsByType.values();
     return attributes.toArray(new Trait[attributes.size()]);
+  }
+
+  private boolean contains(ITraitType traitType) {
+    return traitsByType.containsKey(traitType);
   }
 }

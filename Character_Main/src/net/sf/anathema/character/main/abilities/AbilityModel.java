@@ -6,7 +6,7 @@ import net.sf.anathema.character.library.trait.Trait;
 import net.sf.anathema.character.library.trait.TraitGroup;
 import net.sf.anathema.character.library.trait.specialties.SpecialtiesConfiguration;
 
-public interface AbilityConfiguration {
+public interface AbilityModel {
 
   Trait[] getAllAbilities();
 

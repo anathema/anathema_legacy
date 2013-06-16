@@ -5,14 +5,14 @@ import net.sf.anathema.character.generic.health.HealthLevelType;
 import net.sf.anathema.character.generic.impl.traits.SimpleTraitTemplate;
 import net.sf.anathema.character.library.trait.LimitedTrait;
 import net.sf.anathema.character.library.trait.TraitType;
-import net.sf.anathema.character.library.trait.favorable.IIncrementChecker;
+import net.sf.anathema.character.library.trait.favorable.IncrementChecker;
 
 public class OxBodyCategory extends LimitedTrait {
 
   private final String id;
   private final HealthLevelType[] healthLevelTypes;
 
-  public OxBodyCategory(ITraitContext context, HealthLevelType[] healthLevelTypes, String id, IIncrementChecker incrementChecker) {
+  public OxBodyCategory(ITraitContext context, HealthLevelType[] healthLevelTypes, String id, IncrementChecker incrementChecker) {
     super(new TraitType("OxBodyTechnique"),
             SimpleTraitTemplate.createEssenceLimitedTemplate(0), incrementChecker, context);
     this.healthLevelTypes = healthLevelTypes;

@@ -17,8 +17,8 @@ import net.sf.anathema.character.impl.model.charm.ComboConfiguration;
 import net.sf.anathema.character.impl.model.context.CharacterListening;
 import net.sf.anathema.character.impl.model.context.CharacterModelContext;
 import net.sf.anathema.character.impl.model.statistics.ExtendedConfiguration;
-import net.sf.anathema.character.impl.model.temporary.AttributeConfiguration;
-import net.sf.anathema.character.impl.model.temporary.InternalAttributeConfiguration;
+import net.sf.anathema.character.main.attributes.model.temporary.AttributeModel;
+import net.sf.anathema.character.main.attributes.model.temporary.DefaultAttributeModel;
 import net.sf.anathema.character.impl.model.traits.CoreTraitConfiguration;
 import net.sf.anathema.character.impl.model.traits.listening.CharacterTraitListening;
 import net.sf.anathema.character.main.description.model.CharacterDescription;
@@ -62,13 +62,13 @@ public class ExaltedCharacter implements ICharacter {
   private final ExtendedConfiguration extendedConfiguration = new ExtendedConfiguration(context);
   private final CoreTraitConfiguration traitConfiguration;
   private final DefaultHero hero = new DefaultHero();
-  private final InternalAttributeConfiguration attributeConfiguration;
+  private final DefaultAttributeModel attributeConfiguration;
 
   public ExaltedCharacter(ICharacterTemplate template, ICharacterGenerics generics) {
     this.characterTemplate = template;
     addModels(generics);
     this.traitConfiguration = new CoreTraitConfiguration(template, context);
-    this.attributeConfiguration = new InternalAttributeConfiguration(template, context, traitConfiguration);
+    this.attributeConfiguration = new DefaultAttributeModel(template, context, traitConfiguration);
     new CharacterTraitListening(this, context.getCharacterListening()).initListening();
     this.health = new HealthConfiguration(getTraitArray(template.getToughnessControllingTraitTypes()), traitConfiguration,
             template.getBaseHealthProviders());
@@ -187,7 +187,7 @@ public class ExaltedCharacter implements ICharacter {
   }
 
   @Override
-  public AttributeConfiguration getAttributes() {
+  public AttributeModel getAttributes() {
     return attributeConfiguration;
   }
 

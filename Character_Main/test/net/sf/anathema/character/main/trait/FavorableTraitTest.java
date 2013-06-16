@@ -1,5 +1,6 @@
 package net.sf.anathema.character.main.trait;
 
+import net.sf.anathema.character.library.trait.favorable.IncrementChecker;
 import net.sf.anathema.character.main.testing.BasicCharacterTestCase;
 import net.sf.anathema.character.main.testing.dummy.DummyCharacterModelContext;
 import net.sf.anathema.character.generic.caste.ICasteType;
@@ -16,7 +17,6 @@ import net.sf.anathema.character.library.trait.DefaultTrait;
 import net.sf.anathema.character.library.trait.FriendlyValueChangeChecker;
 import net.sf.anathema.character.library.trait.favorable.FavorableState;
 import net.sf.anathema.character.library.trait.favorable.IFavorableStateChangedListener;
-import net.sf.anathema.character.library.trait.favorable.IIncrementChecker;
 import net.sf.anathema.character.library.trait.rules.FavorableTraitRules;
 import net.sf.anathema.character.library.trait.specialties.DefaultTraitReference;
 import net.sf.anathema.character.library.trait.specialties.Specialty;
@@ -36,7 +36,7 @@ import static org.mockito.Mockito.when;
 
 public class FavorableTraitTest {
 
-  private IIncrementChecker incrementChecker = Mockito.mock(IIncrementChecker.class);
+  private IncrementChecker incrementChecker = Mockito.mock(IncrementChecker.class);
   private IFavorableStateChangedListener abilityStateListener = Mockito.mock(IFavorableStateChangedListener.class);
   private ProxyTraitValueStrategy valueStrategy;
   private DefaultTrait trait;

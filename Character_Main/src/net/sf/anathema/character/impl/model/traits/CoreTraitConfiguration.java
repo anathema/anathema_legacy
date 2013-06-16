@@ -18,9 +18,9 @@ import net.sf.anathema.character.impl.model.traits.listening.WillpowerListening;
 import net.sf.anathema.character.library.trait.AbstractTraitCollection;
 import net.sf.anathema.character.library.trait.Trait;
 import net.sf.anathema.character.library.trait.TraitCollectionUtilities;
-import net.sf.anathema.character.library.trait.favorable.IIncrementChecker;
+import net.sf.anathema.character.library.trait.favorable.IncrementChecker;
 import net.sf.anathema.character.library.trait.specialties.ISpecialtiesConfiguration;
-import net.sf.anathema.character.main.abilities.DefaultAbilityConfiguration;
+import net.sf.anathema.character.main.abilities.DefaultAbilityModel;
 import net.sf.anathema.character.main.traits.model.TraitModel;
 import net.sf.anathema.character.model.traits.ICoreTraitConfiguration;
 
@@ -32,10 +32,10 @@ public class CoreTraitConfiguration extends AbstractTraitCollection implements I
 
   private final FavorableTraitFactory favorableTraitFactory;
   private final ITraitTemplateCollection traitTemplateCollection;
-  private final DefaultAbilityConfiguration abilityConfiguration;
+  private final DefaultAbilityModel abilityConfiguration;
 
   public CoreTraitConfiguration(ICharacterTemplate template, ICharacterModelContext modelContext) {
-    this.abilityConfiguration = new DefaultAbilityConfiguration(template, modelContext, this, this);
+    this.abilityConfiguration = new DefaultAbilityModel(template, modelContext, this);
     traitTemplateCollection = template.getTraitTemplateCollection();
     this.favorableTraitFactory = createFactory(template, modelContext);
     addEssence(modelContext.getTraitContext(), traitTemplateCollection, template.getAdditionalRules().getAdditionalTraitRules());
@@ -76,7 +76,7 @@ public class CoreTraitConfiguration extends AbstractTraitCollection implements I
   }
 
   @Override
-  public void addFavorableTraits(IIdentifiedCasteTraitTypeGroup[] traitGroups, IIncrementChecker incrementChecker,
+  public void addFavorableTraits(IIdentifiedCasteTraitTypeGroup[] traitGroups, IncrementChecker incrementChecker,
                                  TypedTraitTemplateFactory factory) {
     for (IIdentifiedCasteTraitTypeGroup traitGroup : traitGroups) {
       Trait[] traits = favorableTraitFactory.createTraits(traitGroup, incrementChecker, factory);

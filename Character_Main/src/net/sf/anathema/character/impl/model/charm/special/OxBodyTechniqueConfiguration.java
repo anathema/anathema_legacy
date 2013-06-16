@@ -7,7 +7,7 @@ import net.sf.anathema.character.generic.magic.ICharm;
 import net.sf.anathema.character.generic.magic.charms.special.IOxBodyTechniqueCharm;
 import net.sf.anathema.character.generic.magic.charms.special.ISpecialCharmLearnListener;
 import net.sf.anathema.character.generic.traits.ITraitType;
-import net.sf.anathema.character.library.trait.favorable.IIncrementChecker;
+import net.sf.anathema.character.library.trait.favorable.IncrementChecker;
 import net.sf.anathema.character.model.charm.OxBodyCategory;
 import net.sf.anathema.character.model.charm.special.IOxBodyTechniqueConfiguration;
 import net.sf.anathema.character.model.health.IHealthLevelProvider;
@@ -22,7 +22,7 @@ import java.util.Set;
 public class OxBodyTechniqueConfiguration implements IOxBodyTechniqueConfiguration {
 
   private final Announcer<ISpecialCharmLearnListener> control = Announcer.to(ISpecialCharmLearnListener.class);
-  private final IIncrementChecker incrementChecker;
+  private final IncrementChecker incrementChecker;
   private final OxBodyCategory[] categories;
   private final ICharm oxBodyTechnique;
   private final IHealthLevelProvider healthLevelProvider;
@@ -31,7 +31,7 @@ public class OxBodyTechniqueConfiguration implements IOxBodyTechniqueConfigurati
                                       final ITraitType[] relevantTraits, final IOxBodyTechniqueArbitrator arbitrator,
                                       IOxBodyTechniqueCharm properties) {
     this.oxBodyTechnique = oxBodyTechnique;
-    incrementChecker = new IIncrementChecker() {
+    incrementChecker = new IncrementChecker() {
       @Override
       public boolean isValidIncrement(int increment) {
         int minTrait = Integer.MAX_VALUE;

@@ -11,7 +11,7 @@ import net.sf.anathema.character.impl.model.context.trait.ExperiencedTraitValueS
 import net.sf.anathema.character.impl.model.context.trait.ProxyTraitValueStrategy;
 import net.sf.anathema.character.library.trait.DefaultTrait;
 import net.sf.anathema.character.library.trait.FriendlyValueChangeChecker;
-import net.sf.anathema.character.library.trait.favorable.IIncrementChecker;
+import net.sf.anathema.character.library.trait.favorable.IncrementChecker;
 import net.sf.anathema.character.library.trait.rules.FavorableTraitRules;
 import net.sf.anathema.character.main.testing.BasicCharacterTestCase;
 import net.sf.anathema.character.main.testing.dummy.DummyCasteType;
@@ -24,7 +24,7 @@ import static org.junit.Assert.assertEquals;
 
 public class FavorableTrait_HighEssenceTest {
 
-  private IIncrementChecker incrementChecker = Mockito.mock(IIncrementChecker.class);
+  private IncrementChecker incrementChecker = Mockito.mock(IncrementChecker.class);
   private ProxyTraitValueStrategy valueStrategy;
   private DefaultTrait trait;
 

@@ -10,13 +10,13 @@ public class TraitFavorization implements ITraitFavorization {
 
   private FavorableState state;
   private final Announcer<IFavorableStateChangedListener> favorableStateControl = Announcer.to(IFavorableStateChangedListener.class);
-  private final IIncrementChecker favoredIncrementChecker;
+  private final IncrementChecker favoredIncrementChecker;
   private final Trait trait;
   private final ICasteType[] castes;
   private final boolean isRequiredFavored;
   private final IBasicCharacterData basicData;
 
-  public TraitFavorization(IBasicCharacterData basicData, ICasteType[] castes, IIncrementChecker favoredIncrementChecker, Trait trait,
+  public TraitFavorization(IBasicCharacterData basicData, ICasteType[] castes, IncrementChecker favoredIncrementChecker, Trait trait,
                            boolean isRequiredFavored) {
     this.basicData = basicData;
     this.castes = castes;

@@ -8,7 +8,7 @@ import net.sf.anathema.character.generic.framework.additionaltemplate.model.ICha
 import net.sf.anathema.character.generic.framework.additionaltemplate.model.ITraitContext;
 import net.sf.anathema.character.generic.traits.ITraitType;
 import net.sf.anathema.character.library.ITraitFavorization;
-import net.sf.anathema.character.library.trait.favorable.IIncrementChecker;
+import net.sf.anathema.character.library.trait.favorable.IncrementChecker;
 import net.sf.anathema.character.library.trait.favorable.NullTraitFavorization;
 import net.sf.anathema.character.library.trait.favorable.TraitFavorization;
 import net.sf.anathema.character.library.trait.rules.IFavorableTraitRules;
@@ -32,7 +32,7 @@ public class DefaultTrait implements Trait {
   private final ITraitContext traitContext;
 
   public DefaultTrait(IFavorableTraitRules traitRules, ICasteType[] castes, ITraitContext traitContext, IBasicCharacterData basicData,
-                      ICharacterListening listening, IValueChangeChecker valueChangeChecker, IIncrementChecker favoredIncrementChecker) {
+                      ICharacterListening listening, IValueChangeChecker valueChangeChecker, IncrementChecker favoredIncrementChecker) {
     this(traitRules, traitContext, valueChangeChecker);
     this.traitFavorization = new TraitFavorization(basicData, castes, favoredIncrementChecker, this, traitRules.isRequiredFavored());
     listening.addChangeListener(new ResetCurrentValueOnCasteChange());

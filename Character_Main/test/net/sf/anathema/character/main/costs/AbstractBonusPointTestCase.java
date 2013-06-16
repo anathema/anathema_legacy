@@ -1,5 +1,6 @@
 package net.sf.anathema.character.main.costs;
 
+import net.sf.anathema.character.library.trait.favorable.IncrementChecker;
 import net.sf.anathema.character.main.testing.dummy.trait.DummyCoreTraitConfiguration;
 import net.sf.anathema.character.main.testing.dummy.trait.DummyTraitContext;
 import net.sf.anathema.character.generic.IBasicCharacterData;
@@ -25,7 +26,6 @@ import net.sf.anathema.character.impl.model.traits.creation.FavorableTraitFactor
 import net.sf.anathema.character.impl.model.traits.creation.TypedTraitTemplateFactory;
 import net.sf.anathema.character.library.trait.Trait;
 import net.sf.anathema.character.library.trait.favorable.FriendlyIncrementChecker;
-import net.sf.anathema.character.library.trait.favorable.IIncrementChecker;
 import net.sf.anathema.lib.collection.MultiEntryMap;
 import net.sf.anathema.lib.util.SimpleIdentifier;
 
@@ -64,7 +64,7 @@ public abstract class AbstractBonusPointTestCase {
       }
     }
     );
-    IIncrementChecker friendlyIncrementChecker = new FriendlyIncrementChecker();
+    IncrementChecker friendlyIncrementChecker = new FriendlyIncrementChecker();
     for (final AbilityType traitType : AbilityType.values()) {
       DummyCasteType[] casteType = {new DummyCasteType()};
       IIdentifiedCasteTraitTypeGroup typeGroup = new IdentifiedCasteTraitTypeGroup(new ITraitType[]{traitType}, new SimpleIdentifier("Test"),

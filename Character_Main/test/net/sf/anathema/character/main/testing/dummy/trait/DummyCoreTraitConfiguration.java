@@ -1,6 +1,8 @@
 package net.sf.anathema.character.main.testing.dummy.trait;
 
 import com.google.common.base.Predicate;
+import net.sf.anathema.character.library.trait.favorable.IncrementChecker;
+import net.sf.anathema.character.main.attributes.model.temporary.AttributeModel;
 import net.sf.anathema.character.main.testing.dummy.DummyCharacterModelContext;
 import net.sf.anathema.character.generic.traits.ITraitType;
 import net.sf.anathema.character.generic.traits.groups.IIdentifiedCasteTraitTypeGroup;
@@ -10,12 +12,10 @@ import net.sf.anathema.character.generic.traits.groups.IdentifiedTraitTypeGroup;
 import net.sf.anathema.character.generic.traits.types.AbilityType;
 import net.sf.anathema.character.generic.traits.types.AttributeGroupType;
 import net.sf.anathema.character.generic.traits.types.AttributeType;
-import net.sf.anathema.character.impl.model.temporary.AttributeConfiguration;
 import net.sf.anathema.character.impl.model.traits.creation.TypedTraitTemplateFactory;
 import net.sf.anathema.character.library.trait.AbstractTraitCollection;
 import net.sf.anathema.character.library.trait.Trait;
 import net.sf.anathema.character.library.trait.TraitGroup;
-import net.sf.anathema.character.library.trait.favorable.IIncrementChecker;
 import net.sf.anathema.character.library.trait.specialties.ISpecialtiesConfiguration;
 import net.sf.anathema.character.library.trait.specialties.SpecialtiesConfiguration;
 import net.sf.anathema.character.main.traits.model.MappedTraitGroup;
@@ -96,13 +96,13 @@ public class DummyCoreTraitConfiguration extends AbstractTraitCollection impleme
   }
 
   @Override
-  public void addFavorableTraits(IIdentifiedCasteTraitTypeGroup[] traitGroups, IIncrementChecker incrementChecker,
+  public void addFavorableTraits(IIdentifiedCasteTraitTypeGroup[] traitGroups, IncrementChecker incrementChecker,
                                  TypedTraitTemplateFactory factory) {
     throw new NotYetImplementedException();
   }
 
-  public AttributeConfiguration getAttributeConfiguration() {
-    return new AttributeConfiguration() {
+  public AttributeModel getAttributeConfiguration() {
+    return new AttributeModel() {
       @Override
       public Trait[] getAllAttributes() {
         return getTraits(AttributeType.values());

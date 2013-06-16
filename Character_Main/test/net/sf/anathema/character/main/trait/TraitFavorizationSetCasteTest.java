@@ -1,5 +1,6 @@
 package net.sf.anathema.character.main.trait;
 
+import net.sf.anathema.character.library.trait.favorable.IncrementChecker;
 import net.sf.anathema.character.main.testing.dummy.trait.DummyTrait;
 import net.sf.anathema.character.generic.IBasicCharacterData;
 import net.sf.anathema.character.generic.caste.ICasteType;
@@ -9,7 +10,6 @@ import net.sf.anathema.character.generic.traits.types.AbilityType;
 import net.sf.anathema.character.library.trait.Trait;
 import net.sf.anathema.character.library.trait.favorable.FavorableState;
 import net.sf.anathema.character.library.trait.favorable.FriendlyIncrementChecker;
-import net.sf.anathema.character.library.trait.favorable.IIncrementChecker;
 import net.sf.anathema.character.library.trait.favorable.TraitFavorization;
 import org.junit.Test;
 
@@ -23,7 +23,7 @@ public class TraitFavorizationSetCasteTest {
     return createTraitFavorization(new FriendlyIncrementChecker());
   }
 
-  private TraitFavorization createTraitFavorization(IIncrementChecker incrementChecker) {
+  private TraitFavorization createTraitFavorization(IncrementChecker incrementChecker) {
     IBasicCharacterData characterData = new DummyBasicCharacterData();
     return new TraitFavorization(characterData, new ICasteType[]{new DummyCasteType()}, incrementChecker, archeryTrait, false);
   }

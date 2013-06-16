@@ -14,7 +14,7 @@ import net.sf.anathema.character.impl.model.charm.PrerequisiteModifyingCharms;
 import net.sf.anathema.character.library.trait.Trait;
 import net.sf.anathema.character.library.trait.LimitedTrait;
 import net.sf.anathema.character.library.trait.TraitType;
-import net.sf.anathema.character.library.trait.favorable.IIncrementChecker;
+import net.sf.anathema.character.library.trait.favorable.IncrementChecker;
 import net.sf.anathema.character.model.charm.ICharmConfiguration;
 import net.sf.anathema.character.model.charm.special.IMultiLearnableCharmConfiguration;
 import net.sf.anathema.lib.control.IIntValueChangedListener;
@@ -139,7 +139,7 @@ public class MultiLearnableCharmConfiguration implements IMultiLearnableCharmCon
     return dots;
   }
 
-  private class MultiLearnableIncrementChecker implements IIncrementChecker {
+  private class MultiLearnableIncrementChecker implements IncrementChecker {
     @Override
     public boolean isValidIncrement(int increment) {
       int incrementedValue = MultiLearnableCharmConfiguration.this.trait.getCurrentValue() + increment;
