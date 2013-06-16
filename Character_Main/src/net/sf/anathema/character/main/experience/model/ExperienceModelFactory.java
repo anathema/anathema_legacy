@@ -1,16 +1,15 @@
 package net.sf.anathema.character.main.experience.model;
 
+import net.sf.anathema.character.main.lib.SimpleModelTreeEntry;
 import net.sf.anathema.character.model.CharacterModelAutoCollector;
 import net.sf.anathema.character.model.CharacterModelFactory;
 import net.sf.anathema.character.model.TemplateFactory;
-import net.sf.anathema.lib.util.Identifier;
 
 @CharacterModelAutoCollector
-public class ExperienceModelFactory implements CharacterModelFactory {
+public class ExperienceModelFactory extends SimpleModelTreeEntry implements CharacterModelFactory {
 
-  @Override
-  public Identifier getModelId() {
-    return ExperienceModel.ID;
+  public ExperienceModelFactory() {
+    super(ExperienceModel.ID);
   }
 
   @Override
