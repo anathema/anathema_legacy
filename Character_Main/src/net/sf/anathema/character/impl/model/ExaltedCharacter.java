@@ -28,30 +28,22 @@ import net.sf.anathema.character.main.description.model.CharacterDescriptionFetc
 import net.sf.anathema.character.main.essencepool.model.EssencePoolModel;
 import net.sf.anathema.character.main.essencepool.model.EssencePoolModelImpl;
 import net.sf.anathema.character.main.model.DefaultHero;
-import net.sf.anathema.character.main.model.DefaultTemplateFactory;
 import net.sf.anathema.character.main.model.change.ChangeAnnouncerAdapter;
+import net.sf.anathema.character.main.model.initialization.CharacterModelInitializer;
 import net.sf.anathema.character.main.othertraits.DefaultOtherTraitModel;
 import net.sf.anathema.character.main.othertraits.OtherTraitModel;
 import net.sf.anathema.character.main.traits.model.TraitMap;
 import net.sf.anathema.character.model.CharacterModel;
-import net.sf.anathema.character.model.CharacterModelAutoCollector;
-import net.sf.anathema.character.model.CharacterModelFactory;
 import net.sf.anathema.character.model.ICharacter;
 import net.sf.anathema.character.model.ISpellConfiguration;
-import net.sf.anathema.character.model.TemplateFactory;
 import net.sf.anathema.character.model.charm.ICharmConfiguration;
 import net.sf.anathema.character.model.charm.IComboConfiguration;
 import net.sf.anathema.character.model.health.IHealthConfiguration;
 import net.sf.anathema.framework.presenter.itemmanagement.PrintNameAdjuster;
-import net.sf.anathema.initialization.ObjectFactory;
 import net.sf.anathema.lib.control.IChangeListener;
 import net.sf.anathema.lib.registry.IRegistry;
 import net.sf.anathema.lib.util.Identifier;
 import net.sf.anathema.lib.workflow.textualdescription.ITextualDescription;
-
-import java.util.ArrayList;
-import java.util.Collection;
-import java.util.List;
 
 public class ExaltedCharacter implements ICharacter {
 
@@ -73,7 +65,7 @@ public class ExaltedCharacter implements ICharacter {
     this.characterTemplate = template;
     addModels(generics);
     this.traitModel = new DefaultTraitModel();
-    // todo: Achtung seiteneffekte
+    // todo: Beware the side effects
     OtherTraitModel otherTraitModel = new DefaultOtherTraitModel(template, context, traitModel);
     this.abilities = new DefaultAbilityModel(template, context, traitModel);
     this.attributes = new DefaultAttributeModel(template, context, traitModel);
@@ -108,26 +100,8 @@ public class ExaltedCharacter implements ICharacter {
   }
 
   private void addModels(ICharacterGenerics generics) {
-    ChangeAnnouncerAdapter changeAnnouncer = createChangeAnnouncer();
-    TemplateFactory templateFactory = new DefaultTemplateFactory(generics);
-    Collection<CharacterModelFactory> factories = collectModelFactories(generics);
-    List<CharacterModel> modelList = new ArrayList<>();
-    List<String> allCharacterModelIds = getCharacterTemplate().getModels();
-    for (CharacterModelFactory factory : factories) {
-      String modelIdString = factory.getModelId().getId();
-      if (allCharacterModelIds.contains(modelIdString)) {
-        modelList.add(factory.create(templateFactory));
-      }
-    }
-    for (CharacterModel model : modelList) {
-      model.initialize(changeAnnouncer, hero);
-      hero.addModel(model);
-    }
-  }
-
-  private Collection<CharacterModelFactory> collectModelFactories(ICharacterGenerics generics) {
-    ObjectFactory objectFactory = generics.getInstantiater();
-    return objectFactory.instantiateAll(CharacterModelAutoCollector.class);
+    CharacterModelInitializer initializer = new CharacterModelInitializer(createChangeAnnouncer(), characterTemplate);
+    initializer.addModels(generics, hero);
   }
 
   private ChangeAnnouncerAdapter createChangeAnnouncer() {

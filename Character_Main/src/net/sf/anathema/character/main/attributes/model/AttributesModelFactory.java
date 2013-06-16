@@ -2,7 +2,7 @@ package net.sf.anathema.character.main.attributes.model;
 
 import net.sf.anathema.character.main.attributes.template.AttributeTemplate;
 import net.sf.anathema.character.main.experience.model.ExperienceModel;
-import net.sf.anathema.character.main.lib.SimpleModelTreeEntry;
+import net.sf.anathema.character.main.model.initialization.SimpleModelTreeEntry;
 import net.sf.anathema.character.model.CharacterModelAutoCollector;
 import net.sf.anathema.character.model.CharacterModelFactory;
 import net.sf.anathema.character.model.TemplateFactory;
