@@ -9,31 +9,36 @@ import net.sf.anathema.interaction.ToggleTool;
 import net.sf.anathema.lib.exception.NotYetImplementedException;
 import net.sf.anathema.lib.file.RelativePath;
 import net.sf.anathema.lib.gui.AgnosticUIConfiguration;
-import net.sf.anathema.lib.gui.CommandAction;
-import net.sf.anathema.lib.gui.action.SmartAction;
 import net.sf.anathema.lib.gui.icon.EmptyIcon;
 import net.sf.anathema.lib.gui.icon.ImageProvider;
 
 import javax.swing.Icon;
 import javax.swing.JComponent;
 import java.awt.Dimension;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
 public class TraitViewInteraction implements ToggleTool {
 
   private final CommandProxy commandProxy = new CommandProxy();
-  private final SmartAction action = new CommandAction(commandProxy);
   private final IconToggleButton button;
   private final IIconToggleButtonProperties properties;
 
   public TraitViewInteraction(IIconToggleButtonProperties properties) {
     this.properties = properties;
     this.button = new IconToggleButton(new EmptyIcon(new Dimension(16, 16)));
+    button.addActionListener(new ActionListener() {
+      @Override
+      public void actionPerformed(ActionEvent e) {
+        commandProxy.execute();
+      }
+    });
     resetIcons();
   }
 
   @Override
   public void setIcon(RelativePath relativePath) {
-    action.setIcon(new ImageProvider().getImageIcon(relativePath));
+    throw new UnsupportedOperationException("currently manages icon via properties");
   }
 
   @Override
@@ -43,24 +48,24 @@ public class TraitViewInteraction implements ToggleTool {
 
   @Override
   public void setTooltip(String key) {
-    action.setToolTipText(key);
+    button.setToolTipText(key);
   }
 
   @Override
   public void setText(String key) {
-    action.setName(key);
+    throw new UnsupportedOperationException("No text in traitviews");
   }
 
   @Override
   public void enable() {
     resetIcons();
-    action.setEnabled(true);
+    button.setEnabled(true);
   }
 
   @Override
   public void disable() {
     resetIcons();
-    action.setEnabled(false);
+    button.setEnabled(false);
   }
 
   @Override
