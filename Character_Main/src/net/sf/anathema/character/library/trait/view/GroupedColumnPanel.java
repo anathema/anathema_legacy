@@ -16,7 +16,7 @@ public class GroupedColumnPanel {
   public GroupedColumnPanel(JComponent parent, ColumnCount columnCount) {
     columns = new JPanel[columnCount.getColumnCount()];
     for (int i = 0; i < columns.length; i++) {
-      columns[i] = new JPanel(new MigLayout(LayoutUtils.withoutInsets().wrapAfter(2)));
+      columns[i] = new JPanel(new MigLayout(LayoutUtils.withoutInsets().wrapAfter(3)));
     }
     addOverallView(parent);
   }
@@ -24,7 +24,7 @@ public class GroupedColumnPanel {
   public void startNewGroup(String groupLabel) {
     increaseColumnIndex();
     if (groupLabel != null) {
-      getCurrentColumn().add(new JLabel(groupLabel), new CC().spanX().growX().pushX());
+      getCurrentColumn().add(new JLabel(groupLabel), new CC().gapTop("5").spanX().growX().pushX());
     }
   }
 

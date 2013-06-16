@@ -11,7 +11,6 @@ import net.sf.anathema.lib.gui.icon.EmptyIcon;
 import net.sf.anathema.lib.gui.icon.ImageProvider;
 
 import javax.swing.Icon;
-import javax.swing.ImageIcon;
 import javax.swing.JPanel;
 import java.awt.Dimension;
 import java.awt.event.ActionEvent;

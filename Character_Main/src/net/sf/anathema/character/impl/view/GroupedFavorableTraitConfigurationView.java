@@ -1,10 +1,8 @@
 package net.sf.anathema.character.impl.view;
 
-import net.sf.anathema.character.library.intvalue.IIconToggleButtonProperties;
-import net.sf.anathema.character.library.intvalue.IToggleButtonTraitView;
 import net.sf.anathema.character.library.trait.Trait;
 import net.sf.anathema.character.library.trait.view.GroupedTraitView;
-import net.sf.anathema.character.library.trait.view.SimpleTraitView;
+import net.sf.anathema.character.presenter.ExtensibleTraitView;
 import net.sf.anathema.character.view.ColumnCount;
 import net.sf.anathema.character.view.IGroupedFavorableTraitConfigurationView;
 import net.sf.anathema.framework.swing.IView;
@@ -29,14 +27,13 @@ public class GroupedFavorableTraitConfigurationView implements IGroupedFavorable
   }
 
   @Override
-  public JComponent getComponent() {
-    return parent;
+  public ExtensibleTraitView addExtensibleTraitView(String labelText, int value, int maxValue, Trait trait) {
+    return groupedTraitView.addExtensibleTraitView(labelText, value, maxValue, trait, markerIntValueDisplayFactory);
   }
 
   @Override
-  public IToggleButtonTraitView<SimpleTraitView> addTraitView(String labelText, int value, int maxValue, Trait trait, boolean selected,
-                                                              IIconToggleButtonProperties properties) {
-    return groupedTraitView.addTraitView(labelText, value, maxValue, trait, selected, properties, markerIntValueDisplayFactory);
+  public JComponent getComponent() {
+    return parent;
   }
 
   @Override

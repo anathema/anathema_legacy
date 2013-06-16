@@ -6,7 +6,7 @@ import net.sf.anathema.character.generic.framework.additionaltemplate.model.ICha
 import net.sf.anathema.character.generic.template.presentation.IPresentationProperties;
 import net.sf.anathema.character.generic.traits.groups.IIdentifiedTraitTypeGroup;
 import net.sf.anathema.character.generic.traits.groups.TraitTypeGroup;
-import net.sf.anathema.character.library.intvalue.IToggleButtonTraitView;
+import net.sf.anathema.character.library.ITraitFavorization;
 import net.sf.anathema.character.library.trait.Trait;
 import net.sf.anathema.character.library.trait.favorable.FavorableState;
 import net.sf.anathema.character.library.trait.favorable.IFavorableStateChangedListener;
@@ -14,8 +14,9 @@ import net.sf.anathema.character.library.trait.presenter.TraitPresenter;
 import net.sf.anathema.character.model.ICharacter;
 import net.sf.anathema.character.model.traits.ICoreTraitConfiguration;
 import net.sf.anathema.character.view.IGroupedFavorableTraitConfigurationView;
+import net.sf.anathema.interaction.Command;
+import net.sf.anathema.interaction.ToggleTool;
 import net.sf.anathema.lib.collection.IdentityMapping;
-import net.sf.anathema.lib.control.IBooleanValueChangedListener;
 import net.sf.anathema.lib.resources.Resources;
 
 import static net.sf.anathema.character.library.trait.favorable.FavorableState.Caste;
@@ -25,7 +26,7 @@ import static net.sf.anathema.character.library.trait.favorable.FavorableState.F
 public class FavorableTraitConfigurationPresenter {
 
   private final IGroupedFavorableTraitConfigurationView view;
-  private final IdentityMapping<Trait, IToggleButtonTraitView<?>> traitViewsByTrait = new IdentityMapping<>();
+  private final IdentityMapping<Trait, ToggleTool> traitViewsByTrait = new IdentityMapping<>();
   private final Resources resources;
   private final IIdentifiedTraitTypeGroup[] traitTypeGroups;
   private final ICoreTraitConfiguration traitConfiguration;
@@ -60,10 +61,10 @@ public class FavorableTraitConfigurationPresenter {
 
   private void updateButtons() {
     for (Trait trait : getAllTraits()) {
-      IToggleButtonTraitView<?> view = traitViewsByTrait.get(trait);
+      ToggleTool view = traitViewsByTrait.get(trait);
       boolean disabled = basicCharacterData.isExperienced() || trait.getFavorization().isCaste();
       boolean favored = trait.getFavorization().isCasteOrFavored();
-      view.setButtonState(favored, !disabled);
+      setButtonState(view, favored, !disabled);
     }
   }
 
@@ -73,36 +74,59 @@ public class FavorableTraitConfigurationPresenter {
 
   private void addTraitViews(Trait[] traits) {
     for (Trait trait : traits) {
-      traitViewsByTrait.put(trait, addTraitView(trait));
+      ToggleTool traitView = addTraitView(trait);
+      traitViewsByTrait.put(trait, traitView);
     }
   }
 
-  private IToggleButtonTraitView<?> addTraitView(final Trait favorableTrait) {
-    final String id = favorableTrait.getType().getId();
-    final IToggleButtonTraitView<?> traitView = view.addTraitView(resources.getString(id), favorableTrait.getCurrentValue(), favorableTrait.getMaximalValue(),
-            (Trait) favorableTrait, favorableTrait.getFavorization().isFavored(),
-            new FavorableTraitViewProperties(presentationProperties, basicCharacterData, favorableTrait));
-
-    new TraitPresenter(favorableTrait, traitView).initPresentation();
-    traitView.addButtonSelectedListener(new IBooleanValueChangedListener() {
+  private ToggleTool addTraitView(final Trait favorableTrait) {
+    String id = favorableTrait.getType().getId();
+    FavorableTraitViewProperties properties = new FavorableTraitViewProperties(presentationProperties, basicCharacterData, favorableTrait);
+    final ExtensibleTraitView traitView = view.addExtensibleTraitView(resources.getString(id), favorableTrait.getCurrentValue(), favorableTrait.getMaximalValue(),
+            favorableTrait);
+    new TraitPresenter(favorableTrait, traitView.getIntValueView()).initPresentation();
+    final ToggleTool casteTool = traitView.addToggleButtonInFront(properties);
+    casteTool.setCommand(new Command() {
       @Override
-      public void valueChanged(boolean newValue) {
-        favorableTrait.getFavorization().setFavored(newValue);
+      public void execute() {
+        ITraitFavorization favorization = favorableTrait.getFavorization();
+        favorization.setFavored(!favorization.isFavored());
       }
     });
     favorableTrait.getFavorization().addFavorableStateChangedListener(new IFavorableStateChangedListener() {
       @Override
       public void favorableStateChanged(FavorableState state) {
-        updateView(traitView, state);
+        updateView(casteTool, state);
       }
     });
-    updateView(traitView, favorableTrait.getFavorization().getFavorableState());
-    return traitView;
+    updateView(casteTool, favorableTrait.getFavorization().getFavorableState());
+    return casteTool;
   }
 
-  public static void updateView(final IToggleButtonTraitView<?> view, FavorableState state) {
+  private void updateView(final ToggleTool view, FavorableState state) {
     boolean select = state == Favored || state == Caste;
     boolean enable = state == Favored || state == Default;
-    view.setButtonState(select, enable);
+    setButtonState(view, select, enable);
+  }
+
+  private void setButtonState(ToggleTool view, boolean select, boolean enable) {
+    select(view, select);
+    enable(view, enable);
+  }
+
+  private void select(ToggleTool view, boolean select) {
+    if (select) {
+      view.select();
+    } else {
+      view.deselect();
+    }
+  }
+
+  private void enable(ToggleTool view, boolean enable) {
+    if (enable) {
+      view.enable();
+    } else {
+      view.disable();
+    }
   }
 }
