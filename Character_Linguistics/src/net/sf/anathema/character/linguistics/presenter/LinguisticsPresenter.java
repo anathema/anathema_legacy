@@ -45,11 +45,11 @@ public class LinguisticsPresenter {
   private void initPointPresentation() {
     IOverviewCategory overview = view.addOverview(resources.getString("Linguistics.Overview.Border"));
     final IValueView<Integer> familyView = overview.addIntegerValueView(
-        resources.getString("Linguistics.Overview.Families"), 1);
+            resources.getString("Linguistics.Overview.Families"), 1);
     final IValueView<Integer> barbarianView = overview.addIntegerValueView(
-        resources.getString("Linguistics.Overview.Barbarian"), 2);
+            resources.getString("Linguistics.Overview.Barbarian"), 2);
     final ILabelledAlotmentView totalView = overview.addAlotmentView(
-        resources.getString("Linguistics.Overview.Total"), 2);
+            resources.getString("Linguistics.Overview.Total"), 2);
     model.addModelChangeListener(new IRemovableEntryListener<Identifier>() {
       @Override
       public void entryAdded(Identifier entry) {
@@ -76,9 +76,9 @@ public class LinguisticsPresenter {
   }
 
   private void updateOverview(
-      IValueView<Integer> familyView,
-      ILabelledAlotmentView totalView,
-      IValueView<Integer> barbarianView) {
+          IValueView<Integer> familyView,
+          ILabelledAlotmentView totalView,
+          IValueView<Integer> barbarianView) {
     familyView.setValue(model.getPredefinedLanguageCount());
     barbarianView.setValue(model.getBarbarianLanguageCount());
     int pointsSpent = model.getLanguagePointsSpent();
@@ -87,14 +87,13 @@ public class LinguisticsPresenter {
     totalView.setAlotment(pointsAllowed);
     if (pointsSpent > pointsAllowed) {
       totalView.setTextColor(LegalityColorProvider.COLOR_HIGH);
-    }
-    else {
+    } else {
       totalView.setTextColor(LegalityColorProvider.COLOR_OKAY);
     }
   }
 
   @SuppressWarnings("serial")
-private void initEntryPresentation() {
+  private void initEntryPresentation() {
     String labelText = resources.getString("Linguistics.SelectionView.Label");
     final BasicUi basicUi = new BasicUi();
     RelativePath addIcon = basicUi.getAddIconPath();
@@ -107,19 +106,19 @@ private void initEntryPresentation() {
     ListCellRenderer renderer = new DefaultListCellRenderer() {
       @Override
       public Component getListCellRendererComponent(
-          JList list,
-          Object value,
-          int index,
-          boolean isSelected,
-          boolean cellHasFocus) {
+              JList list,
+              Object value,
+              int index,
+              boolean isSelected,
+              boolean cellHasFocus) {
         return super.getListCellRendererComponent(list, getDisplayString(value), index, isSelected, cellHasFocus);
       }
     };
     final IButtonControlledObjectSelectionView<Object> selectionView = view.addSelectionView(
-        labelText,
-        editor,
-        renderer,
-        addIcon);
+            labelText,
+            editor,
+            renderer,
+            addIcon);
     selectionView.setObjects(model.getPredefinedLanguages());
     selectionView.addObjectSelectionChangedListener(new ObjectValueListener<Object>() {
       @Override
@@ -130,8 +129,7 @@ private void initEntryPresentation() {
         Identifier definedLanguage = getLanguage(newValue);
         if (definedLanguage == null) {
           model.selectBarbarianLanguage(newValue.toString());
-        }
-        else {
+        } else {
           model.selectLanguage(definedLanguage);
         }
       }
