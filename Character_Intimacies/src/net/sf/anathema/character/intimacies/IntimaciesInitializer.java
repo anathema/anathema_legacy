@@ -30,32 +30,8 @@ public class IntimaciesInitializer implements CharacterModelInitializer {
   public void initialize(SectionView sectionView, ICharacter character, final Resources resources) {
     String viewName = resources.getString("AdditionalTemplateView.TabName.Intimacies");
     IIntimaciesView view = sectionView.addView(viewName, IIntimaciesView.class, character.getCharacterType());
-    IIconToggleButtonProperties properties = new IntimaciesProperties(resources);
-    view.initGui(properties);
     IIntimaciesAdditionalModel additionalModel = (IIntimaciesAdditionalModel) character.getExtendedConfiguration().getAdditionalModel(IntimaciesTemplate.ID);
     new IntimaciesPresenter(additionalModel.getIntimaciesModel(), additionalModel, view, resources).initPresentation();
   }
 
-  private static class IntimaciesProperties implements IIconToggleButtonProperties {
-    private final Resources resources;
-
-    public IntimaciesProperties(Resources resources) {
-      this.resources = resources;
-    }
-
-    @Override
-    public RelativePath createStandardIcon() {
-      return new CharacterUI().getLinkIconPath();
-    }
-
-    @Override
-    public RelativePath createUnselectedIcon() {
-      return NO_ICON;
-    }
-
-    @Override
-    public String getToolTipText() {
-      return resources.getString("Intimacies.LockButton.Tooltip");
-    }
-  }
 }

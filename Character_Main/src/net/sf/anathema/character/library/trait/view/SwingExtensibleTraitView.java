@@ -6,7 +6,9 @@ import net.sf.anathema.character.library.intvalue.IIconToggleButtonProperties;
 import net.sf.anathema.character.presenter.ExtensibleTraitView;
 import net.sf.anathema.framework.value.IIntValueView;
 import net.sf.anathema.interaction.ToggleTool;
+import net.sf.anathema.interaction.Tool;
 import net.sf.anathema.lib.gui.layout.SwingLayoutUtils;
+import net.sf.anathema.swing.interaction.ActionInteraction;
 
 import javax.swing.JComponent;
 import javax.swing.JPanel;
@@ -30,16 +32,43 @@ public class SwingExtensibleTraitView implements ExtensibleTraitView {
   }
 
   @Override
-  public ToggleTool addToggleButtonInFront(IIconToggleButtonProperties properties) {
+  public ToggleTool addToggleInFront(IIconToggleButtonProperties properties) {
+    return addToggle(properties, front);
+  }
+
+  @Override
+  public ToggleTool addToggleBehind(IIconToggleButtonProperties properties) {
+    return addToggle(properties, rear);
+  }
+
+  @Override
+  public Tool addToolBehind() {
+    ActionInteraction interaction = new ActionInteraction();
+    interaction.addTo(new AddToTraitView(rear));
+    return interaction;
+  }
+
+  @Override
+  public void remove() {
+    removePart(front);
+    removePart(center);
+    removePart(rear);
+  }
+
+  public void addComponents(JPanel parent) {
+    parent.add(front);
+    parent.add(center, new CC().growX().pushX());
+    parent.add(rear);
+  }
+
+  private ToggleTool addToggle(IIconToggleButtonProperties properties, JPanel parent) {
     TraitViewInteraction toggleActionInteraction = new TraitViewInteraction(properties);
     JComponent button = toggleActionInteraction.getButton();
-    front.add(button, SwingLayoutUtils.constraintsForImageButton(button));
+    parent.add(button, SwingLayoutUtils.constraintsForImageButton(button));
     return toggleActionInteraction;
   }
 
-  public void addComponents(JPanel currentColumn) {
-    currentColumn.add(front);
-    currentColumn.add(center, new CC().growX().pushX());
-    currentColumn.add(rear);
+  private void removePart(JPanel panel) {
+    panel.getParent().remove(panel);
   }
 }

@@ -3,6 +3,7 @@ package net.sf.anathema.character.linguistics.presenter;
 import net.sf.anathema.character.library.overview.IOverviewCategory;
 import net.sf.anathema.character.library.removableentry.presenter.IRemovableEntryView;
 import net.sf.anathema.character.library.trait.Trait;
+import net.sf.anathema.character.presenter.ExtensibleTraitView;
 import net.sf.anathema.framework.presenter.view.IButtonControlledObjectSelectionView;
 import net.sf.anathema.framework.presenter.view.ITextFieldComboBoxEditor;
 import net.sf.anathema.lib.file.RelativePath;

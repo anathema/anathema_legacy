@@ -3,23 +3,24 @@ package net.sf.anathema.character.intimacies.presenter;
 import net.sf.anathema.character.generic.additionaltemplate.IAdditionalModel;
 import net.sf.anathema.character.generic.additionaltemplate.IAdditionalModelBonusPointCalculator;
 import net.sf.anathema.character.generic.framework.additionaltemplate.listening.DedicatedCharacterChangeAdapter;
+import net.sf.anathema.character.intimacies.IntimaciesProperties;
 import net.sf.anathema.character.intimacies.model.IIntimacy;
-import net.sf.anathema.character.library.intvalue.IRemovableTraitView;
-import net.sf.anathema.character.library.intvalue.IToggleButtonTraitView;
+import net.sf.anathema.character.library.intvalue.IIconToggleButtonProperties;
 import net.sf.anathema.character.library.overview.IOverviewCategory;
 import net.sf.anathema.character.library.removableentry.presenter.IRemovableEntryListener;
-import net.sf.anathema.character.library.removableentry.presenter.IRemovableEntryView;
 import net.sf.anathema.character.library.selection.IStringSelectionView;
 import net.sf.anathema.character.library.trait.presenter.TraitPresenter;
+import net.sf.anathema.character.presenter.ExtensibleTraitView;
 import net.sf.anathema.framework.presenter.resources.BasicUi;
 import net.sf.anathema.interaction.Command;
+import net.sf.anathema.interaction.ToggleTool;
+import net.sf.anathema.interaction.Tool;
 import net.sf.anathema.lib.control.IBooleanValueChangedListener;
 import net.sf.anathema.lib.control.IChangeListener;
 import net.sf.anathema.lib.control.ObjectValueListener;
 import net.sf.anathema.lib.control.legality.LegalityColorProvider;
 import net.sf.anathema.lib.control.legality.LegalityFontProvider;
 import net.sf.anathema.lib.control.legality.ValueLegalityState;
-import net.sf.anathema.lib.gui.Presenter;
 import net.sf.anathema.lib.resources.Resources;
 import net.sf.anathema.lib.workflow.labelledvalue.ILabelledAlotmentView;
 import net.sf.anathema.lib.workflow.labelledvalue.IValueView;
@@ -34,7 +35,7 @@ public class IntimaciesPresenter {
   private final IAdditionalModel additionalModel;
   private final IIntimaciesModel model;
 
-  private final Map<IIntimacy, IRemovableTraitView<?>> viewsByEntry = new HashMap<>();
+  private final Map<IIntimacy, ExtensibleTraitView> viewsByEntry = new HashMap<>();
 
   public IntimaciesPresenter(IIntimaciesModel model, IAdditionalModel additionalModel, IIntimaciesView view,
                              Resources resources) {
@@ -46,19 +47,18 @@ public class IntimaciesPresenter {
 
   public void initPresentation() {
     String labelText = resources.getString("Intimacies.SelectionLabel");
-    BasicUi basicUi = new BasicUi();
-    IStringSelectionView selectionView = view.addSelectionView(labelText, basicUi.getAddIconPath());
+    IStringSelectionView selectionView = view.addSelectionView(labelText, new BasicUi().getAddIconPath());
     initSelectionViewListening(selectionView);
     initOverviewView();
-    initModelListening(basicUi, selectionView);
+    initModelListening(selectionView);
     for (IIntimacy intimacy : model.getEntries()) {
-      addSubView(basicUi, intimacy);
+      addSubView(intimacy);
     }
     reset(selectionView);
   }
 
   private void initOverviewView() {
-    final IOverviewCategory creationOverview = view.createOverview(
+    final IOverviewCategory creationOverview = view.addOverview(
             resources.getString("Intimacies.Overview.BorderLabel"));
     final ILabelledAlotmentView freeIntimaciesView = creationOverview.addAlotmentView(
             resources.getString("Intimacies.Overview.Free"), 2);
@@ -66,7 +66,7 @@ public class IntimaciesPresenter {
             resources.getString("Intimacies.Overview.Maximum"), 2);
     final IValueView<Integer> bonusPointsView = creationOverview.addIntegerValueView(
             resources.getString("Intimacies.Overview.BonusPoints"), 2);
-    final IOverviewCategory experienceOverview = view.createOverview(
+    final IOverviewCategory experienceOverview = view.addOverview(
             resources.getString("Intimacies.Overview.BorderLabel"));
     final ILabelledAlotmentView experienceMaximumView = experienceOverview.addAlotmentView(
             resources.getString("Intimacies.Overview.Maximum"), 2);
@@ -139,47 +139,72 @@ public class IntimaciesPresenter {
     alotmentView.setFontStyle(new LegalityFontProvider().getFontStyle(state));
   }
 
-  protected IRemovableTraitView<?> createSubView(BasicUi basicUi, final IIntimacy intimacy) {
-    final IRemovableTraitView<IToggleButtonTraitView<?>> intimacyView = view.addEntryView(basicUi.getRemoveIconPath(), null,
-            intimacy.getName());
-    intimacyView.setMaximum(model.getCompletionValue());
-    intimacyView.setValue(intimacy.getTrait().getCurrentValue());
-    new TraitPresenter(intimacy.getTrait(), intimacyView).initPresentation();
-    intimacyView.addButtonListener(new Command() {
+  protected final void addSubView(IIntimacy v) {
+    ExtensibleTraitView subView = createSubView(v);
+    viewsByEntry.put(v, subView);
+  }
+
+  protected ExtensibleTraitView createSubView(final IIntimacy intimacy) {
+    int maximalValue = model.getCompletionValue();
+    int currentValue = intimacy.getTrait().getCurrentValue();
+    String name = intimacy.getName();
+    ExtensibleTraitView extensibleTraitView = view.addIntimacy(name, currentValue, maximalValue);
+    new TraitPresenter(intimacy.getTrait(), extensibleTraitView.getIntValueView()).initPresentation();
+    addLinkToggle(extensibleTraitView, intimacy);
+    addDeleteTool(extensibleTraitView, intimacy);
+    return extensibleTraitView;
+  }
+
+  private void addDeleteTool(ExtensibleTraitView extensibleTraitView, final IIntimacy intimacy) {
+    Tool tool = extensibleTraitView.addToolBehind();
+    tool.setIcon(new BasicUi().getRemoveIconPath());
+    tool.setCommand(new Command() {
       @Override
       public void execute() {
         model.removeEntry(intimacy);
       }
     });
-    intimacyView.getInnerView().addButtonSelectedListener(new IBooleanValueChangedListener() {
+  }
+
+  private void addLinkToggle(ExtensibleTraitView extensibleTraitView, final IIntimacy intimacy) {
+    IIconToggleButtonProperties properties = new IntimaciesProperties(resources);
+    final ToggleTool toggleTool = extensibleTraitView.addToggleBehind(properties);
+    toggleTool.setCommand(new Command() {
       @Override
-      public void valueChanged(boolean newValue) {
-        intimacy.setComplete(newValue);
+      public void execute() {
+        intimacy.setComplete(!intimacy.isComplete());
       }
     });
     intimacy.addCompletionListener(new IBooleanValueChangedListener() {
       @Override
-      public void valueChanged(boolean newValue) {
-        intimacyView.getInnerView().setButtonState(newValue, true);
+      public void valueChanged(boolean isComplete) {
+        setCompletionState(isComplete, toggleTool);
       }
     });
-    intimacyView.getInnerView().setButtonState(intimacy.isComplete(), true);
-    return intimacyView;
+    setCompletionState(intimacy.isComplete(), toggleTool);
   }
 
 
-  protected void initModelListening(final BasicUi basicUi, final IStringSelectionView selectionView) {
+  private void setCompletionState(boolean isComplete, ToggleTool toggleTool) {
+    if (isComplete) {
+      toggleTool.select();
+    } else {
+      toggleTool.deselect();
+    }
+  }
+
+  protected void initModelListening(final IStringSelectionView selectionView) {
     model.addModelChangeListener(new IRemovableEntryListener<IIntimacy>() {
       @Override
       public void entryAdded(IIntimacy v) {
-        addSubView(basicUi, v);
+        addSubView(v);
         reset(selectionView);
       }
 
       @Override
       public void entryRemoved(IIntimacy v) {
-        IRemovableEntryView removableView = viewsByEntry.get(v);
-        view.removeEntryView(removableView);
+        ExtensibleTraitView traitView = viewsByEntry.get(v);
+        traitView.remove();
       }
 
       @Override
@@ -187,11 +212,6 @@ public class IntimaciesPresenter {
         selectionView.setAddButtonEnabled(complete);
       }
     });
-  }
-
-  protected final void addSubView(BasicUi basicUi, IIntimacy v) {
-    IRemovableTraitView<?> subView = createSubView(basicUi, v);
-    viewsByEntry.put(v, subView);
   }
 
   protected final void initSelectionViewListening(IStringSelectionView selectionView) {

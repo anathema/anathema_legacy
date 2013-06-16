@@ -20,7 +20,7 @@ public class DefaultTraitMap implements TraitMap{
     }
   }
 
-  private final void addSingleTrait(Trait trait){
+  private void addSingleTrait(Trait trait){
     Preconditions.checkArgument(!contains(trait.getType()), "Trait of type already contained " + trait.getType());
     traitsByType.put(trait.getType(), trait);
   }

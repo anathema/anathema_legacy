@@ -8,6 +8,7 @@ import net.sf.anathema.character.library.removableentry.presenter.IRemovableEntr
 import net.sf.anathema.character.library.removableentry.view.RemovableStringView;
 import net.sf.anathema.character.library.trait.Trait;
 import net.sf.anathema.character.linguistics.presenter.ILinguisticsView;
+import net.sf.anathema.character.presenter.ExtensibleTraitView;
 import net.sf.anathema.framework.presenter.view.IButtonControlledObjectSelectionView;
 import net.sf.anathema.framework.presenter.view.ITextFieldComboBoxEditor;
 import net.sf.anathema.framework.swing.IView;
