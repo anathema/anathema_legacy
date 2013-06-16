@@ -27,10 +27,6 @@ public class IntValueDisplay implements IIntValueDisplay {
     return new IntValueDisplay(maxValue, new RectangleMarkerPanel(), bounds, graphics);
   }
 
-  public static IIntValueDisplay createMarkerLessDisplay(int maxValue, TwoUpperBounds bounds, IntValueDisplayGraphics graphics) {
-    return new IntValueDisplay(maxValue, new NoMarkerPanel(), bounds, graphics);
-  }
-
   private int currentValue;
   private int naturalMaximum;
   private int modifiedMaximum;

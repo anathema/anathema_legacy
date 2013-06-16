@@ -12,7 +12,6 @@ public class GroupedFavorableTraitViewFactory implements SubViewFactory {
   @Override
   public <T> T create(ICharacterType type) {
     IntegerViewFactory withMarker = IntValueDisplayFactoryPrototype.createWithMarkerForCharacterType(type);
-    IntegerViewFactory withoutMarker = IntValueDisplayFactoryPrototype.createWithoutMarkerForCharacterType(type);
-    return (T) new GroupedFavorableTraitConfigurationView(withMarker, withoutMarker);
+    return (T) new GroupedFavorableTraitConfigurationView(withMarker);
   }
 }
