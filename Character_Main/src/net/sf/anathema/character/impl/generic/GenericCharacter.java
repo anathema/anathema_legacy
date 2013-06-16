@@ -271,7 +271,7 @@ public class GenericCharacter implements IGenericCharacter {
 
   @Override
   public IIdentifiedTraitTypeGroup[] getAttributeTypeGroups() {
-    return getTraitConfiguration().getAttributeTypeGroups();
+    return character.getAttributes().getAttributeTypeGroups();
   }
 
   @Override

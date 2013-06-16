@@ -8,13 +8,18 @@ import net.sf.anathema.character.generic.magic.IMagic;
 import net.sf.anathema.character.generic.template.ICharacterTemplate;
 import net.sf.anathema.character.generic.template.magic.IGenericCharmConfiguration;
 import net.sf.anathema.character.generic.traits.ITraitType;
+import net.sf.anathema.character.generic.traits.groups.IIdentifiedTraitTypeGroup;
 import net.sf.anathema.character.library.trait.specialties.Specialty;
 import net.sf.anathema.lib.control.IChangeListener;
 import net.sf.anathema.lib.util.IdentifiedInteger;
 
 import java.util.List;
 
-public interface IGenericCharacter extends ILimitationContext, IMagicCollection, IGenericCharmConfiguration, TraitTypeGroups{
+public interface IGenericCharacter extends ILimitationContext, IMagicCollection, IGenericCharmConfiguration {
+
+  IIdentifiedTraitTypeGroup[] getAbilityTypeGroups();
+
+  IIdentifiedTraitTypeGroup[] getAttributeTypeGroups();
 
   IGenericDescription getDescription();
 
@@ -65,7 +70,7 @@ public interface IGenericCharacter extends ILimitationContext, IMagicCollection,
   boolean isSubeffectCharm(ICharm magic);
 
   void addSpecialtyListChangeListener(IChangeListener listener);
-  
+
   ICharm[] getGenericCharms();
 
   <T> List<T> getAllRegistered(Class<T> interfaceClass);

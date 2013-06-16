@@ -4,6 +4,7 @@ import net.sf.anathema.character.generic.framework.additionaltemplate.model.ICha
 import net.sf.anathema.character.generic.template.ICharacterTemplate;
 import net.sf.anathema.character.generic.template.ITraitTemplateFactory;
 import net.sf.anathema.character.generic.traits.groups.IIdentifiedCasteTraitTypeGroup;
+import net.sf.anathema.character.generic.traits.groups.IIdentifiedTraitTypeGroup;
 import net.sf.anathema.character.generic.traits.types.AttributeType;
 import net.sf.anathema.character.impl.model.traits.AttributeTemplateFactory;
 import net.sf.anathema.character.impl.model.traits.creation.AttributeTypeGroupFactory;
@@ -77,5 +78,10 @@ public class InternalAttributeConfiguration implements AttributeConfiguration {
   @Override
   public Trait getTrait(AttributeType type) {
     return traitMap.getTrait(type);
+  }
+
+  @Override
+  public IIdentifiedTraitTypeGroup[] getAttributeTypeGroups() {
+    return attributeTraitGroups;
   }
 }

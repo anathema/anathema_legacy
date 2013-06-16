@@ -121,6 +121,11 @@ public class DummyCoreTraitConfiguration extends AbstractTraitCollection impleme
       public Trait getTrait(AttributeType type) {
         return getTrait(type);
       }
+
+      @Override
+      public IIdentifiedTraitTypeGroup[] getAttributeTypeGroups() {
+        return DummyCoreTraitConfiguration.this.getAttributeTypeGroups();
+      }
     };
   }
 
