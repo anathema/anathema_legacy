@@ -6,11 +6,11 @@ import net.sf.anathema.lib.control.IIntValueChangedListener;
 
 public class EssenceLimitationListener implements IIntValueChangedListener {
 
-  private final TraitProvider allTraits;
+  private final TraitIterable traitIterable;
   private final ICharacterModelContext context;
 
-  public EssenceLimitationListener(TraitProvider allTraits, ICharacterModelContext context) {
-    this.allTraits = allTraits;
+  public EssenceLimitationListener(TraitIterable traitIterable, ICharacterModelContext context) {
+    this.traitIterable = traitIterable;
     this.context = context;
   }
 
@@ -19,10 +19,8 @@ public class EssenceLimitationListener implements IIntValueChangedListener {
     if (!context.isFullyLoaded()) {
       return;
     }
-    for (Trait trait : allTraits) {
-      if (trait instanceof Trait) {
-        trait.resetCurrentValue();
-      }
+    for (Trait trait : traitIterable) {
+      trait.resetCurrentValue();
     }
   }
 }

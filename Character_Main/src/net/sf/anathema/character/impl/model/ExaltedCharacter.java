@@ -17,10 +17,11 @@ import net.sf.anathema.character.impl.model.charm.ComboConfiguration;
 import net.sf.anathema.character.impl.model.context.CharacterListening;
 import net.sf.anathema.character.impl.model.context.CharacterModelContext;
 import net.sf.anathema.character.impl.model.statistics.ExtendedConfiguration;
-import net.sf.anathema.character.impl.model.traits.CoreTraitConfiguration;
+import net.sf.anathema.character.impl.model.traits.DefaultTraitModel;
 import net.sf.anathema.character.impl.model.traits.listening.CharacterTraitListening;
 import net.sf.anathema.character.library.trait.TraitCollection;
 import net.sf.anathema.character.main.abilities.AbilityModel;
+import net.sf.anathema.character.main.abilities.DefaultAbilityModel;
 import net.sf.anathema.character.main.attributes.model.temporary.AttributeModel;
 import net.sf.anathema.character.main.attributes.model.temporary.DefaultAttributeModel;
 import net.sf.anathema.character.main.description.model.CharacterDescription;
@@ -30,6 +31,8 @@ import net.sf.anathema.character.main.essencepool.model.EssencePoolModelImpl;
 import net.sf.anathema.character.main.model.DefaultHero;
 import net.sf.anathema.character.main.model.DefaultTemplateFactory;
 import net.sf.anathema.character.main.model.change.ChangeAnnouncerAdapter;
+import net.sf.anathema.character.main.othertraits.DefaultOtherTraitModel;
+import net.sf.anathema.character.main.othertraits.OtherTraitModel;
 import net.sf.anathema.character.model.CharacterModel;
 import net.sf.anathema.character.model.CharacterModelAutoCollector;
 import net.sf.anathema.character.model.CharacterModelFactory;
@@ -61,15 +64,19 @@ public class ExaltedCharacter implements ICharacter {
   private final ISpellConfiguration spells;
   private final IHealthConfiguration health;
   private final ExtendedConfiguration extendedConfiguration = new ExtendedConfiguration(context);
-  private final CoreTraitConfiguration traitConfiguration;
+  private final DefaultTraitModel traitConfiguration;
   private final DefaultHero hero = new DefaultHero();
-  private final DefaultAttributeModel attributeConfiguration;
+  private final DefaultAttributeModel attributes;
+  private final DefaultAbilityModel abilities;
 
   public ExaltedCharacter(ICharacterTemplate template, ICharacterGenerics generics) {
     this.characterTemplate = template;
     addModels(generics);
-    this.traitConfiguration = new CoreTraitConfiguration(template, context);
-    this.attributeConfiguration = new DefaultAttributeModel(template, context, traitConfiguration);
+    this.traitConfiguration = new DefaultTraitModel();
+    // todo: Achtung seiteneffekte
+    OtherTraitModel otherTraitModel = new DefaultOtherTraitModel(template, context, traitConfiguration);
+    this.abilities = new DefaultAbilityModel(template, context, traitConfiguration);
+    this.attributes = new DefaultAttributeModel(template, context, traitConfiguration);
     new CharacterTraitListening(this, context.getCharacterListening()).initListening();
     this.health = new HealthConfiguration(getTraitArray(template.getToughnessControllingTraitTypes()), traitConfiguration,
             template.getBaseHealthProviders());
@@ -189,12 +196,12 @@ public class ExaltedCharacter implements ICharacter {
 
   @Override
   public AttributeModel getAttributes() {
-    return attributeConfiguration;
+    return attributes;
   }
 
   @Override
   public AbilityModel getAbilities()  {
-    return traitConfiguration.getAbilities();
+    return abilities;
   }
 
   public EssencePoolModel getEssencePool() {
