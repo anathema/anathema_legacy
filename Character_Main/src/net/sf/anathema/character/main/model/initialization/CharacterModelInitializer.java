@@ -1,23 +1,17 @@
 package net.sf.anathema.character.main.model.initialization;
 
-import net.sf.anathema.character.change.ChangeAnnouncer;
 import net.sf.anathema.character.generic.framework.ICharacterGenerics;
 import net.sf.anathema.character.generic.template.ICharacterTemplate;
 import net.sf.anathema.character.main.model.CharacterModel;
-import net.sf.anathema.character.main.model.CharacterModelAutoCollector;
 import net.sf.anathema.character.main.model.CharacterModelFactory;
 import net.sf.anathema.character.main.model.DefaultHero;
 import net.sf.anathema.character.main.model.DefaultTemplateFactory;
 import net.sf.anathema.character.main.model.InitializationContext;
 import net.sf.anathema.character.main.model.template.TemplateFactory;
-import net.sf.anathema.initialization.ObjectFactory;
 import net.sf.anathema.lib.util.Identifier;
 
 import java.util.ArrayList;
-import java.util.Collection;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 
 public class CharacterModelInitializer {
 

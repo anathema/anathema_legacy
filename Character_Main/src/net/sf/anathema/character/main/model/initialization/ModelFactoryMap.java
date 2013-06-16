@@ -1,6 +1,6 @@
 package net.sf.anathema.character.main.model.initialization;
 
-import net.sf.anathema.character.model.CharacterModelFactory;
+import net.sf.anathema.character.main.model.CharacterModelFactory;
 
 import java.text.MessageFormat;
 import java.util.Collection;
