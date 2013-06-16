@@ -7,11 +7,9 @@ import net.sf.anathema.character.generic.framework.additionaltemplate.model.ITra
 import net.sf.anathema.character.generic.framework.additionaltemplate.model.ITraitValueStrategy;
 import net.sf.anathema.character.generic.impl.traits.limitation.StaticTraitLimitation;
 import net.sf.anathema.character.generic.template.ITraitLimitation;
-import net.sf.anathema.character.generic.traits.GenericTrait;
-import net.sf.anathema.character.generic.traits.TraitType;
 import net.sf.anathema.character.impl.model.context.trait.CreationTraitValueStrategy;
 import net.sf.anathema.character.library.trait.TraitCollection;
-import net.sf.anathema.lib.exception.NotYetImplementedException;
+import net.sf.anathema.character.main.traits.model.GenericTraitCollectionFacade;
 
 public class DummyTraitContext implements ITraitContext {
 
@@ -29,23 +27,8 @@ public class DummyTraitContext implements ITraitContext {
 
     @Override
     public IGenericTraitCollection getTraitCollection() {
-      return new IGenericTraitCollection() {
-        @Override
-        public GenericTrait getTrait(TraitType type) {
-          return traitCollection.getTrait(type);
-        }
-
-        @Override
-        public GenericTrait[] getTraits(TraitType[] traitTypes) {
-          throw new NotYetImplementedException();
-        }
-
-        @Override
-        public boolean isFavoredOrCasteTrait(TraitType type) {
-          return traitCollection.isFavoredOrCasteTrait(type);
-        }
-      };
-    }
+      return new GenericTraitCollectionFacade(traitCollection);
+     }
 
     @Override
     public int getEssenceCap(boolean modified) {

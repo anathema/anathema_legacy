@@ -6,7 +6,7 @@ import net.sf.anathema.character.generic.magic.charms.MartialArtsLevel;
 import net.sf.anathema.character.impl.model.advance.CostAnalyzer;
 import net.sf.anathema.character.magic.dummy.DummyCharm;
 import net.sf.anathema.character.main.testing.dummy.DummyBasicCharacterData;
-import net.sf.anathema.character.main.testing.dummy.trait.DummyCoreTraitConfiguration;
+import net.sf.anathema.character.main.testing.dummy.DummyGenericTraitCollection;
 import net.sf.anathema.lib.util.Identifier;
 import org.junit.Test;
 import org.mockito.Mockito;
@@ -20,7 +20,7 @@ import static org.mockito.Mockito.when;
 public class CostAnalyzerTest {
 
   private static final String CHARM_ID = "charmId";
-  private DummyCoreTraitConfiguration dummyCoreTraitConfiguration = new DummyCoreTraitConfiguration();
+  private DummyGenericTraitCollection dummyCoreTraitConfiguration = new DummyGenericTraitCollection();
   private DummyBasicCharacterData basicCharacterData = new DummyBasicCharacterData();
   private CostAnalyzer costAnalyzer = new CostAnalyzer(basicCharacterData, dummyCoreTraitConfiguration);
 

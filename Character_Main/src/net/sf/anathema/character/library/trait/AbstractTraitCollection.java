@@ -44,10 +44,4 @@ public abstract class AbstractTraitCollection implements TraitCollection {
       addSingleTrait(trait);
     }
   }
-
-  @Override
-  public final boolean isFavoredOrCasteTrait(TraitType type) {
-    Trait trait = getTrait(type);
-    return trait.isCasteOrFavored();
-  }
 }

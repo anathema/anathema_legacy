@@ -32,6 +32,7 @@ import net.sf.anathema.character.main.concept.model.CharacterConcept;
 import net.sf.anathema.character.main.concept.model.CharacterConceptFetcher;
 import net.sf.anathema.character.main.description.model.CharacterDescriptionFetcher;
 import net.sf.anathema.character.main.experience.model.ExperienceModelFetcher;
+import net.sf.anathema.character.main.traits.model.GenericTraitCollectionFacade;
 import net.sf.anathema.character.model.ICharacter;
 import net.sf.anathema.character.model.ITypedDescription;
 import net.sf.anathema.character.model.charm.ICharmConfiguration;
@@ -58,7 +59,7 @@ public class GenericCharacter implements IGenericCharacter {
 
   @Override
   public IGenericTraitCollection getTraitCollection() {
-    return getTraitConfiguration();
+    return new GenericTraitCollectionFacade(getTraitConfiguration());
   }
 
   @Override

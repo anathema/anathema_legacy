@@ -22,6 +22,7 @@ import net.sf.anathema.character.main.testing.BasicCharacterTestCase;
 import net.sf.anathema.character.main.testing.dummy.DummyCasteType;
 import net.sf.anathema.character.main.testing.dummy.DummyCharacterModelContext;
 import net.sf.anathema.character.main.testing.dummy.trait.DummyCoreTraitConfiguration;
+import net.sf.anathema.character.main.traits.model.GenericTraitCollectionFacade;
 import net.sf.anathema.character.model.charm.OxBodyCategory;
 import net.sf.anathema.character.model.charm.special.IOxBodyTechniqueConfiguration;
 import org.junit.Before;
@@ -51,8 +52,8 @@ public class OxBodyTechniqueConfigurationTest {
     health = new HealthConfiguration(new GenericTrait[]{endurance});
     collection.addTestTrait(endurance);
     configuration =
-            new OxBodyTechniqueConfiguration(traitContext, collection, null, new TraitType[]{endurance.getType()}, health.getOxBodyLearnArbitrator(),
-                    createObtCharm());
+            new OxBodyTechniqueConfiguration(traitContext, new GenericTraitCollectionFacade(collection), null, new TraitType[]{endurance.getType()},
+                    health.getOxBodyLearnArbitrator(), createObtCharm());
     health.getOxBodyLearnArbitrator().addOxBodyTechniqueConfiguration(configuration);
     health.addHealthLevelProvider(configuration.getHealthLevelProvider());
   }
@@ -77,8 +78,9 @@ public class OxBodyTechniqueConfigurationTest {
   @Test
   public void testTwoOxBodyTechniques() {
     @SuppressWarnings("serial") OxBodyTechniqueConfiguration secondConfiguration = new OxBodyTechniqueConfiguration(
-            new BasicCharacterTestCase().createModelContextWithEssence2(new CreationTraitValueStrategy()).getTraitContext(), collection, null,
-            new TraitType[]{endurance.getType()}, health.getOxBodyLearnArbitrator(), createObtCharm());
+            new BasicCharacterTestCase().createModelContextWithEssence2(new CreationTraitValueStrategy()).getTraitContext(),
+            new GenericTraitCollectionFacade(collection), null, new TraitType[]{endurance.getType()}, health.getOxBodyLearnArbitrator(),
+            createObtCharm());
     health.getOxBodyLearnArbitrator().addOxBodyTechniqueConfiguration(secondConfiguration);
     health.addHealthLevelProvider(secondConfiguration.getHealthLevelProvider());
     endurance.setCurrentValue(2);
