@@ -1,5 +1,6 @@
 package net.sf.anathema.character.main.othertraits;
 
+import net.sf.anathema.character.change.ChangeAnnouncer;
 import net.sf.anathema.character.generic.additionalrules.IAdditionalTraitRules;
 import net.sf.anathema.character.generic.framework.additionaltemplate.model.ICharacterModelContext;
 import net.sf.anathema.character.generic.framework.additionaltemplate.model.ITraitContext;
@@ -17,8 +18,11 @@ import net.sf.anathema.character.impl.model.traits.listening.WillpowerListening;
 import net.sf.anathema.character.library.trait.Trait;
 import net.sf.anathema.character.main.traits.model.DefaultTraitMap;
 import net.sf.anathema.character.main.traits.model.TraitModel;
+import net.sf.anathema.character.model.CharacterModel;
+import net.sf.anathema.character.model.Hero;
+import net.sf.anathema.lib.util.Identifier;
 
-public class DefaultOtherTraitModel extends DefaultTraitMap implements OtherTraitModel {
+public class DefaultOtherTraitModel extends DefaultTraitMap implements OtherTraitModel, CharacterModel {
 
   private ICharacterTemplate template;
 
@@ -66,5 +70,15 @@ public class DefaultOtherTraitModel extends DefaultTraitMap implements OtherTrai
 
   private ITraitTemplateCollection getTemplateCollection() {
     return this.template.getTraitTemplateCollection();
+  }
+
+  @Override
+  public Identifier getId() {
+    return ID;
+  }
+
+  @Override
+  public void initialize(ChangeAnnouncer announcer, Hero hero) {
+    //To change body of implemented methods use File | Settings | File Templates.
   }
 }

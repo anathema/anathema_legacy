@@ -22,6 +22,7 @@
         <model id="Experience"/>
         <model id="Description"/>
         <model id="Concept"/>
+        <model id="OverallTraitModel"/>
     </models>
     <creation>
         <bonusPointCosts uses="SolaroidDefaultBonusPointCost2nd.template"/>

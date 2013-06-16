@@ -17,7 +17,6 @@ import net.sf.anathema.character.impl.model.charm.ComboConfiguration;
 import net.sf.anathema.character.impl.model.context.CharacterListening;
 import net.sf.anathema.character.impl.model.context.CharacterModelContext;
 import net.sf.anathema.character.impl.model.statistics.ExtendedConfiguration;
-import net.sf.anathema.character.impl.model.traits.DefaultTraitModel;
 import net.sf.anathema.character.impl.model.traits.listening.CharacterTraitListening;
 import net.sf.anathema.character.main.abilities.AbilityModel;
 import net.sf.anathema.character.main.abilities.DefaultAbilityModel;
@@ -32,7 +31,7 @@ import net.sf.anathema.character.main.model.change.ChangeAnnouncerAdapter;
 import net.sf.anathema.character.main.model.initialization.CharacterModelInitializer;
 import net.sf.anathema.character.main.othertraits.DefaultOtherTraitModel;
 import net.sf.anathema.character.main.othertraits.OtherTraitModel;
-import net.sf.anathema.character.main.traits.model.TraitMap;
+import net.sf.anathema.character.main.traits.model.TraitModel;
 import net.sf.anathema.character.model.CharacterModel;
 import net.sf.anathema.character.model.ICharacter;
 import net.sf.anathema.character.model.ISpellConfiguration;
@@ -56,7 +55,6 @@ public class ExaltedCharacter implements ICharacter {
   private final ISpellConfiguration spells;
   private final IHealthConfiguration health;
   private final ExtendedConfiguration extendedConfiguration = new ExtendedConfiguration(context);
-  private final DefaultTraitModel traitModel;
   private final DefaultHero hero = new DefaultHero();
   private final DefaultAttributeModel attributes;
   private final DefaultAbilityModel abilities;
@@ -64,13 +62,12 @@ public class ExaltedCharacter implements ICharacter {
   public ExaltedCharacter(ICharacterTemplate template, ICharacterGenerics generics) {
     this.characterTemplate = template;
     addModels(generics);
-    this.traitModel = new DefaultTraitModel();
     // todo: Beware the side effects
-    OtherTraitModel otherTraitModel = new DefaultOtherTraitModel(template, context, traitModel);
-    this.abilities = new DefaultAbilityModel(template, context, traitModel);
-    this.attributes = new DefaultAttributeModel(template, context, traitModel);
+    OtherTraitModel otherTraitModel = new DefaultOtherTraitModel(template, context, getTraitModel());
+    this.abilities = new DefaultAbilityModel(template, context, getTraitModel());
+    this.attributes = new DefaultAttributeModel(template, context, getTraitModel());
     new CharacterTraitListening(this, context.getCharacterListening()).initListening();
-    this.health = new HealthConfiguration(getTraitArray(template.getToughnessControllingTraitTypes()), traitModel,
+    this.health = new HealthConfiguration(getTraitArray(template.getToughnessControllingTraitTypes()), getTraitModel(),
             template.getBaseHealthProviders());
     this.charms = new CharmConfiguration(health, context, generics.getCharacterTypes(), generics.getTemplateRegistry(), generics.getCharmProvider());
     initCharmListening(charms);
@@ -159,7 +156,7 @@ public class ExaltedCharacter implements ICharacter {
   private GenericTrait[] getTraitArray(TraitType[] types) {
     GenericTrait[] traits = new GenericTrait[types.length];
     for (int i = 0; i != types.length; i++) {
-      traits[i] = traitModel.getTrait(types[i]);
+      traits[i] = getTraitModel().getTrait(types[i]);
     }
     return traits;
   }
@@ -211,8 +208,8 @@ public class ExaltedCharacter implements ICharacter {
     return extendedConfiguration;
   }
 
-  public TraitMap getTraitModel() {
-    return traitModel;
+  public TraitModel getTraitModel() {
+    return getModel(TraitModel.ID);
   }
 
   public ICharacterModelContext getCharacterContext() {
