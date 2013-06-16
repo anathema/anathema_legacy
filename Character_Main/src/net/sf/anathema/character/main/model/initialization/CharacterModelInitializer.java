@@ -1,5 +1,6 @@
 package net.sf.anathema.character.main.model.initialization;
 
+import net.sf.anathema.character.change.ChangeAnnouncer;
 import net.sf.anathema.character.generic.framework.ICharacterGenerics;
 import net.sf.anathema.character.generic.template.ICharacterTemplate;
 import net.sf.anathema.character.main.model.CharacterModel;
@@ -29,49 +30,43 @@ public class CharacterModelInitializer {
   }
 
   public void addModels(ICharacterGenerics generics, DefaultHero hero) {
-    Map<String, CharacterModelFactory> factoriesById = createFactoriesMap(generics);
+    ModelFactoryAutoCollector collector = new ModelFactoryAutoCollector(generics);
+    ModelFactoryMap factoryMap = new ModelFactoryMap(collector);
+    Iterable<Identifier> sortedRelevantModelIds = getSortedModelIdsForCharacter(factoryMap);
+    Iterable<CharacterModel> sortedModels = createSortedModels(generics, factoryMap, sortedRelevantModelIds);
+    initializeModelsInOrder(hero, sortedModels);
+  }
+
+  private Iterable<Identifier> getSortedModelIdsForCharacter(ModelFactoryMap factoryMap) {
+    List<CharacterModelFactory> configuredFactories = collectConfiguredModelFactories(factoryMap);
+    return new ModelInitializationList<>(configuredFactories);
+  }
+
+  private Iterable<CharacterModel> createSortedModels(ICharacterGenerics generics, ModelFactoryMap factoryMap, Iterable<Identifier> sortedRelevantModelIds) {
     TemplateFactory templateFactory = new DefaultTemplateFactory(generics);
-    Iterable<Identifier> sortedListOfRelevantModelIds = getSortedModelIdsForCharacter(factoriesById);
     List<CharacterModel> modelList = new ArrayList<>();
-    for (Identifier modelId : sortedListOfRelevantModelIds) {
-      if (!factoriesById.containsKey(modelId.getId())) {
-        throw new IllegalStateException("No model factory found for dependent model id " + modelId);
-      }
-      CharacterModelFactory factory = factoriesById.get(modelId.getId());
+    for (Identifier modelId : sortedRelevantModelIds) {
+      factoryMap.assertContainsRequiredModel(modelId.getId());
+      CharacterModelFactory factory = factoryMap.get(modelId.getId());
       modelList.add(factory.create(templateFactory));
     }
+    return modelList;
+  }
+
+  private void initializeModelsInOrder(DefaultHero hero, Iterable<CharacterModel> modelList) {
     for (CharacterModel model : modelList) {
       model.initialize(context, hero);
       hero.addModel(model);
     }
   }
 
-  private Map<String, CharacterModelFactory> createFactoriesMap(ICharacterGenerics generics) {
-    Map<String, CharacterModelFactory> factoriesById = new HashMap<>();
-    for (CharacterModelFactory factory : collectModelFactories(generics)) {
-      factoriesById.put(factory.getModelId().getId(), factory);
-    }
-    return factoriesById;
-  }
-
-  private Iterable<Identifier> getSortedModelIdsForCharacter(Map<String, CharacterModelFactory> factoriesById) {
-    List<CharacterModelFactory> configuredFactories = collectConfiguredModelFactories(factoriesById);
-    return new ModelInitializationList<>(configuredFactories);
-  }
-
-  private List<CharacterModelFactory> collectConfiguredModelFactories(Map<String, CharacterModelFactory> factoriesById) {
+  private List<CharacterModelFactory> collectConfiguredModelFactories(ModelFactoryMap factoryMap) {
     List<CharacterModelFactory> configuredFactories = new ArrayList<>();
     for (String configuredId : template.getModels()) {
-      if (!factoriesById.containsKey(configuredId)) {
-        throw new IllegalStateException("No model factory found for configured model id " + configuredId);
-      }
-      configuredFactories.add(factoriesById.get(configuredId));
+      factoryMap.assertContainsConfiguredModel(configuredId);
+      CharacterModelFactory factory = factoryMap.get(configuredId);
+      configuredFactories.add(factory);
     }
     return configuredFactories;
-  }
-
-  private Collection<CharacterModelFactory> collectModelFactories(ICharacterGenerics generics) {
-    ObjectFactory objectFactory = generics.getInstantiater();
-    return objectFactory.instantiateAll(CharacterModelAutoCollector.class);
   }
 }
