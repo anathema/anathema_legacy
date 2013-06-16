@@ -24,7 +24,7 @@ public class GroupedColumnPanel {
   public void startNewGroup(String groupLabel) {
     increaseColumnIndex();
     if (groupLabel != null) {
-      getCurrentColumn().add(new JLabel(groupLabel), new CC().spanX().growX().pushX());
+      getCurrentColumn().add(new JLabel(groupLabel), new CC().gapTop("5").spanX().growX().pushX());
     }
   }
 

@@ -20,7 +20,7 @@ public class SimpleTraitView extends AbstractTraitView implements ITraitView<Sim
     this(factory, labelText, value, maxValue, null, new CC().alignX("right"));
   }
 
-  public SimpleTraitView(IntegerViewFactory factory, String labelText, int value, int maxValue, Trait trait) {
+  public SimpleTraitView(String labelText, int value, int maxValue, Trait trait, IntegerViewFactory factory) {
     this(factory, labelText, value, maxValue, trait, new CC().alignX("right"));
   }
 
