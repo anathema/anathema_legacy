@@ -12,15 +12,18 @@ import net.sf.anathema.character.library.trait.favorable.IFavorableStateChangedL
 import net.sf.anathema.character.library.trait.specialties.ISpecialtiesConfiguration;
 import net.sf.anathema.character.library.trait.specialties.Specialty;
 import net.sf.anathema.character.library.trait.subtrait.ISpecialtyListener;
+import net.sf.anathema.character.model.ICharacter;
 import net.sf.anathema.character.model.traits.ICoreTraitConfiguration;
 
 public class CharacterTraitListening {
 
   private final CharacterListening listening;
   private final ICoreTraitConfiguration traitConfiguration;
+  private ICharacter character;
 
-  public CharacterTraitListening(ICoreTraitConfiguration traitConfiguration, CharacterListening listening) {
-    this.traitConfiguration = traitConfiguration;
+  public CharacterTraitListening(ICharacter character, CharacterListening listening) {
+    this.character = character;
+    this.traitConfiguration = character.getTraitConfiguration();
     this.listening = listening;
   }
 
@@ -67,10 +70,7 @@ public class CharacterTraitListening {
   }
 
   private void initAttributeListening() {
-    ITraitTypeGroup[] groups = traitConfiguration.getAttributeTypeGroups();
-    ITraitType[] allAttributeTypes = TraitTypeGroup.getAllTraitTypes(groups);
-    for (ITraitType traitType : allAttributeTypes) {
-      Trait attribute = traitConfiguration.getTrait(traitType);
+    for (Trait attribute : character.getAttributes().getAllAttributes()) {
       listening.addTraitListening(attribute);
     }
   }

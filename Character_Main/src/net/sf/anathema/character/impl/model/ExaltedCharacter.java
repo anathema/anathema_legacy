@@ -69,7 +69,7 @@ public class ExaltedCharacter implements ICharacter {
     addModels(generics);
     this.attributeConfiguration = new InternalAttributeConfiguration(template, context);
     this.traitConfiguration = new CoreTraitConfiguration(template, context, attributeConfiguration);
-    new CharacterTraitListening(traitConfiguration, context.getCharacterListening()).initListening();
+    new CharacterTraitListening(this, context.getCharacterListening()).initListening();
     this.health = new HealthConfiguration(getTraitArray(template.getToughnessControllingTraitTypes()), traitConfiguration,
             template.getBaseHealthProviders());
     this.charms = new CharmConfiguration(health, context, generics.getCharacterTypes(), generics.getTemplateRegistry(), generics.getCharmProvider());
