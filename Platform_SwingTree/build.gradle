@@ -1,5 +1,6 @@
 dependencies {
   compile project(':Platform_TreeFramework')
+  compile project(':Platform_Swing')
   testCompile testDependencies
 }
 

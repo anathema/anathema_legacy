@@ -1,10 +1,10 @@
 package net.sf.anathema.lib.workflow.labelledvalue;
 
-import java.awt.Color;
+import net.sf.anathema.framework.ui.RGBColor;
 
 public interface IStyleableView {
 
-  void setTextColor(Color color);
+  void setTextColor(RGBColor color);
 
   void setFontStyle(int style);
 }

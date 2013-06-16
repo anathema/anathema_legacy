@@ -1,15 +1,15 @@
 package net.sf.anathema.lib.control.legality;
 
-import java.awt.Color;
+import net.sf.anathema.framework.ui.RGBColor;
 
 public class LegalityColorProvider {
 
-  public static final Color COLOR_HIGH = Color.RED;
-  public static final Color COLOR_LOW = new Color(165, 0, 165);
-  public static final Color COLOR_OKAY = Color.BLACK;
+  public static final RGBColor COLOR_HIGH = RGBColor.Red;
+  public static final RGBColor COLOR_LOW = new RGBColor(165, 0, 165);
+  public static final RGBColor COLOR_OKAY = RGBColor.Black;
 
-  public Color getTextColor(ValueLegalityState state) {
-    final Color[] color = new Color[1];
+  public RGBColor getTextColor(ValueLegalityState state) {
+    final RGBColor[] color = new RGBColor[1];
     state.accept(new IValueLegalityStateVisitor() {
       @Override
       public void visitLow(ValueLegalityState visitedState) {

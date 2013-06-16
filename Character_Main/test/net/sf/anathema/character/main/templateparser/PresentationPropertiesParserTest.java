@@ -12,7 +12,7 @@ import net.sf.anathema.character.main.testing.dummy.template.DummyXmlTemplateReg
 import net.sf.anathema.lib.exception.AnathemaException;
 import net.sf.anathema.lib.file.RelativePath;
 import net.sf.anathema.lib.xml.DocumentUtilities;
-import net.sf.anathema.platform.tree.util.RGBColor;
+import net.sf.anathema.framework.ui.RGBColor;
 import org.dom4j.Element;
 import org.junit.Before;
 import org.junit.Test;

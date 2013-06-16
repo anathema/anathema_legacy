@@ -1,5 +1,8 @@
 package net.sf.anathema.lib.workflow.labelledvalue.view;
 
+import net.sf.anathema.framework.ui.RGBColor;
+import net.sf.anathema.lib.gui.swing.ColorUtilities;
+
 import javax.swing.JComponent;
 import javax.swing.JLabel;
 import javax.swing.SwingConstants;
@@ -10,6 +13,8 @@ import java.awt.Toolkit;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
+
+import static net.sf.anathema.lib.gui.swing.ColorUtilities.toAwtColor;
 
 public abstract class AbstractLabelledValueView {
 
@@ -57,9 +62,9 @@ public abstract class AbstractLabelledValueView {
     valueLabel.setText(value);
   }
 
-  public void setTextColor(Color color) {
+  public void setTextColor(RGBColor color) {
     for (JComponent component : getComponents()) {
-      component.setForeground(color);
+      component.setForeground(toAwtColor(color));
     }
   }
 
