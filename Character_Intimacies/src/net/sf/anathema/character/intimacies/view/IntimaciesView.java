@@ -3,18 +3,13 @@ package net.sf.anathema.character.intimacies.view;
 import net.miginfocom.layout.CC;
 import net.miginfocom.swing.MigLayout;
 import net.sf.anathema.character.intimacies.presenter.IIntimaciesView;
-import net.sf.anathema.character.library.intvalue.IIconToggleButtonProperties;
-import net.sf.anathema.character.library.intvalue.IRemovableTraitView;
-import net.sf.anathema.character.library.intvalue.IToggleButtonTraitView;
 import net.sf.anathema.character.library.overview.IOverviewCategory;
 import net.sf.anathema.character.library.overview.OverviewCategory;
-import net.sf.anathema.character.library.removableentry.presenter.IRemovableEntryView;
 import net.sf.anathema.character.library.selection.IStringSelectionView;
 import net.sf.anathema.character.library.selection.StringSelectionView;
-import net.sf.anathema.character.library.trait.Trait;
-import net.sf.anathema.character.library.trait.view.RearButtonTraitViewWrapper;
-import net.sf.anathema.character.library.trait.view.RearToggleButtonTraitViewWrapper;
 import net.sf.anathema.character.library.trait.view.SimpleTraitView;
+import net.sf.anathema.character.library.trait.view.SwingExtensibleTraitView;
+import net.sf.anathema.character.presenter.ExtensibleTraitView;
 import net.sf.anathema.framework.swing.IView;
 import net.sf.anathema.framework.value.IntegerViewFactory;
 import net.sf.anathema.lib.file.RelativePath;
@@ -30,10 +25,9 @@ import static net.sf.anathema.lib.gui.layout.LayoutUtils.withoutInsets;
 public class IntimaciesView implements IIntimaciesView, IView {
   private final JPanel content = new JPanel(new MigLayout(fillWithoutInsets()));
   private final JPanel mainPanel = new JPanel(new MigLayout(fillWithoutInsets().wrapAfter(1)));
-  private final JPanel entryPanel = new JPanel(new MigLayout(withoutInsets().wrapAfter(2).fillX()));
+  private final JPanel entryPanel = new JPanel(new MigLayout(withoutInsets().wrapAfter(3).fillX()));
   private final JPanel overviewPanel = new JPanel(new MigLayout());
   private final IntegerViewFactory factory;
-  private IIconToggleButtonProperties properties;
 
   public IntimaciesView(IntegerViewFactory factory) {
     this.factory = factory;
@@ -56,18 +50,6 @@ public class IntimaciesView implements IIntimaciesView, IView {
   }
 
   @Override
-  public IRemovableTraitView<IToggleButtonTraitView<?>> addEntryView(RelativePath removeIcon, Trait trait,
-                                                                     String string) {
-    SimpleTraitView view = new SimpleTraitView(factory, string, 0, 5);
-    RearToggleButtonTraitViewWrapper<SimpleTraitView> oneButtonView = new RearToggleButtonTraitViewWrapper<>(view,
-            properties, false);
-    RearButtonTraitViewWrapper<IToggleButtonTraitView<?>> twoButtonView = new RearButtonTraitViewWrapper<IToggleButtonTraitView<?>>(
-            oneButtonView, new ImageProvider().getImageIcon(removeIcon));
-    twoButtonView.addComponents(entryPanel);
-    return twoButtonView;
-  }
-
-  @Override
   public IOverviewCategory createOverview(String borderLabel) {
     return new OverviewCategory(overviewPanel, borderLabel, false);
   }
@@ -79,12 +61,11 @@ public class IntimaciesView implements IIntimaciesView, IView {
     overviewPanel.add(view.getComponent());
   }
 
-  public void initGui(IIconToggleButtonProperties properties) {
-    this.properties = properties;
-  }
-
   @Override
-  public void removeEntryView(IRemovableEntryView removableView) {
-    removableView.delete();
+  public ExtensibleTraitView addIntimacy(String name, int currentValue, int maximalValue) {
+    SimpleTraitView view = new SimpleTraitView(factory, name, currentValue, maximalValue);
+    SwingExtensibleTraitView traitView = new SwingExtensibleTraitView(view);
+    traitView.addComponents(entryPanel);
+    return traitView;
   }
 }
