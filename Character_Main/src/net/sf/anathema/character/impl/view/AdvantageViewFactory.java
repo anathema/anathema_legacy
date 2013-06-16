@@ -3,10 +3,10 @@ package net.sf.anathema.character.impl.view;
 import net.sf.anathema.character.generic.type.ICharacterType;
 import net.sf.anathema.character.library.intvalue.IntValueDisplayFactoryPrototype;
 import net.sf.anathema.character.platform.RegisteredCharacterView;
-import net.sf.anathema.character.view.IBasicAdvantageView;
+import net.sf.anathema.character.view.AdvantageView;
 import net.sf.anathema.framework.value.IntegerViewFactory;
 
-@RegisteredCharacterView(IBasicAdvantageView.class)
+@RegisteredCharacterView(AdvantageView.class)
 public class AdvantageViewFactory implements SubViewFactory {
 
   @Override

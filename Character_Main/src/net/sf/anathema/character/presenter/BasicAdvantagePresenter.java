@@ -3,7 +3,7 @@ package net.sf.anathema.character.presenter;
 import net.sf.anathema.character.generic.traits.types.OtherTraitType;
 import net.sf.anathema.character.library.trait.TraitCollection;
 import net.sf.anathema.character.model.ICharacter;
-import net.sf.anathema.character.view.IBasicAdvantageView;
+import net.sf.anathema.character.view.AdvantageView;
 import net.sf.anathema.lib.gui.Presenter;
 import net.sf.anathema.lib.resources.Resources;
 
@@ -12,10 +12,10 @@ import java.util.List;
 
 public class BasicAdvantagePresenter {
   private final List<Presenter> subPresenters = new ArrayList<>();
-  private final IBasicAdvantageView view;
+  private final AdvantageView view;
   private final Resources resources;
 
-  public BasicAdvantagePresenter(Resources resources, ICharacter character, IBasicAdvantageView view) {
+  public BasicAdvantagePresenter(Resources resources, ICharacter character, AdvantageView view) {
     this.resources = resources;
     this.view = view;
     TraitCollection traitConfiguration = character.getTraitConfiguration();

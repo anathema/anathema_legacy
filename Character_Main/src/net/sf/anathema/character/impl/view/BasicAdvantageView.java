@@ -5,8 +5,8 @@ import net.miginfocom.swing.MigLayout;
 import net.sf.anathema.character.impl.view.advantage.EssencePanelView;
 import net.sf.anathema.character.library.trait.Trait;
 import net.sf.anathema.character.library.trait.view.SimpleTraitView;
+import net.sf.anathema.character.view.AdvantageView;
 import net.sf.anathema.character.view.IAdvantageViewProperties;
-import net.sf.anathema.character.view.IBasicAdvantageView;
 import net.sf.anathema.framework.presenter.view.IInitializableContentView;
 import net.sf.anathema.framework.value.IIntValueView;
 import net.sf.anathema.framework.value.IntegerViewFactory;
@@ -20,7 +20,7 @@ import java.awt.FlowLayout;
 import static net.sf.anathema.lib.gui.layout.LayoutUtils.fillWithoutInsets;
 import static net.sf.anathema.lib.gui.layout.LayoutUtils.withoutInsets;
 
-public class BasicAdvantageView implements IBasicAdvantageView, IInitializableContentView<IAdvantageViewProperties> {
+public class BasicAdvantageView implements AdvantageView, IInitializableContentView<IAdvantageViewProperties> {
   private final JPanel virtuePanel = new JPanel(new MigLayout(fillWithoutInsets().wrapAfter(2)));
   private final JPanel willpowerPanel = new JPanel(new MigLayout(fillWithoutInsets().wrapAfter(2)));
   private final EssencePanelView essencePanelView;

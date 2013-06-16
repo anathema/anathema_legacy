@@ -5,7 +5,7 @@ import net.sf.anathema.framework.presenter.view.IInitializableContentView;
 import net.sf.anathema.framework.value.IIntValueView;
 import net.sf.anathema.lib.workflow.labelledvalue.IValueView;
 
-public interface IBasicAdvantageView extends IInitializableContentView<IAdvantageViewProperties> {
+public interface AdvantageView extends IInitializableContentView<IAdvantageViewProperties> {
 
   IIntValueView addVirtue(String labelText, int value, int maxValue);
 
