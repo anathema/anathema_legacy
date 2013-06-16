@@ -25,6 +25,7 @@ import net.sf.anathema.character.impl.model.context.magic.ProxySpellLearnStrateg
 import net.sf.anathema.character.impl.model.context.trait.CreationTraitValueStrategy;
 import net.sf.anathema.character.impl.model.context.trait.ExperiencedTraitValueStrategy;
 import net.sf.anathema.character.impl.model.context.trait.ProxyTraitValueStrategy;
+import net.sf.anathema.character.model.ICharacter;
 import net.sf.anathema.character.model.ISpellLearnStrategy;
 
 import java.util.List;
@@ -36,11 +37,13 @@ public class CharacterModelContext implements ICharacterModelContext, ICharmCont
   private final ProxyCharmLearnStrategy charmLearnStrategy = new ProxyCharmLearnStrategy(new CreationCharmLearnStrategy());
   private final CharacterListening characterListening = new CharacterListening();
   private final IGenericCharacter character;
+  private ICharacter hero;
   private final IBasicCharacterData characterData;
   private boolean isFullyLoaded = false;
 
-  public CharacterModelContext(IGenericCharacter character) {
+  public CharacterModelContext(IGenericCharacter character, ICharacter hero) {
     this.character = character;
+    this.hero = hero;
     this.characterData = new BasicCharacterContext(character);
     characterListening.addChangeListener(new DedicatedCharacterChangeAdapter() {
       @Override
@@ -84,6 +87,11 @@ public class CharacterModelContext implements ICharacterModelContext, ICharmCont
   @Override
   public ILimitationContext getLimitationContext() {
     return character;
+  }
+
+  @Override
+  public ICharacter getHero() {
+    return hero;
   }
 
   @Override

@@ -53,7 +53,7 @@ import java.util.List;
 public class ExaltedCharacter implements ICharacter {
 
   private final CharacterChangeManagement management = new CharacterChangeManagement();
-  private final CharacterModelContext context = new CharacterModelContext(new GenericCharacter(this));
+  private final CharacterModelContext context = new CharacterModelContext(new GenericCharacter(this), this);
   private final ICharacterTemplate characterTemplate;
   private final EssencePoolModel essencePool;
   private final CharmConfiguration charms;

@@ -19,6 +19,7 @@ import net.sf.anathema.character.impl.model.context.CharacterListening;
 import net.sf.anathema.character.impl.model.context.trait.CreationTraitValueStrategy;
 import net.sf.anathema.character.main.testing.dummy.magic.DummyCharmContext;
 import net.sf.anathema.character.main.testing.dummy.template.DummyCharacterTemplate;
+import net.sf.anathema.character.model.ICharacter;
 
 import java.util.List;
 
@@ -59,6 +60,11 @@ public class DummyCharacterModelContext implements ICharacterModelContext {
 
   public DummyGenericCharacter getCharacter() {
     return character;
+  }
+
+  @Override
+  public ICharacter getHero() {
+    throw new UnsupportedOperationException("Not yet implemented");
   }
 
   @Override

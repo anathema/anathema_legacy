@@ -6,10 +6,13 @@ import net.sf.anathema.character.generic.additionaltemplate.IAdditionalModel;
 import net.sf.anathema.character.generic.character.IGenericTraitCollection;
 import net.sf.anathema.character.generic.character.IMagicCollection;
 import net.sf.anathema.character.generic.template.presentation.IPresentationProperties;
+import net.sf.anathema.character.model.ICharacter;
 
 import java.util.List;
 
 public interface ICharacterModelContext {
+
+  ICharacter getHero();
 
   IAdditionalRules getAdditionalRules();
 

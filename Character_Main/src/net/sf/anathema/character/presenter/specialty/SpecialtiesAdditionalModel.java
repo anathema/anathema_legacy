@@ -1,12 +1,10 @@
 package net.sf.anathema.character.presenter.specialty;
 
 import net.sf.anathema.character.generic.additionaltemplate.AbstractAdditionalModelAdapter;
-import net.sf.anathema.character.generic.character.IGenericTraitCollection;
 import net.sf.anathema.character.generic.framework.additionaltemplate.model.ICharacterModelContext;
 import net.sf.anathema.character.generic.template.additional.IAdditionalTemplate;
 import net.sf.anathema.character.library.trait.specialties.ISpecialtiesConfiguration;
 import net.sf.anathema.character.model.CharacterModelGroup;
-import net.sf.anathema.character.model.traits.ICoreTraitConfiguration;
 import net.sf.anathema.lib.control.IChangeListener;
 
 public class SpecialtiesAdditionalModel extends AbstractAdditionalModelAdapter implements ISpecialtiesAdditionalModel {
@@ -16,8 +14,8 @@ public class SpecialtiesAdditionalModel extends AbstractAdditionalModelAdapter i
 
   public SpecialtiesAdditionalModel(IAdditionalTemplate additionalTemplate, ICharacterModelContext context) {
     this.additionalTemplate = additionalTemplate;
-    IGenericTraitCollection traitCollection = context.getTraitCollection();
-    this.model = ((ICoreTraitConfiguration) traitCollection).getSpecialtyConfiguration();
+    // todo: move specialty configuration into specialty module
+    this.model = context.getHero().getAbilities().getSpecialtyConfiguration();
   }
 
   @Override
