@@ -7,7 +7,7 @@ import net.sf.anathema.character.main.concept.model.CharacterConceptFetcher;
 import net.sf.anathema.character.main.experience.model.ExperienceModelFetcher;
 import net.sf.anathema.character.model.ICharacter;
 import net.sf.anathema.character.model.ITypedDescription;
-import net.sf.anathema.character.view.concept.ICharacterConceptAndRulesView;
+import net.sf.anathema.character.view.concept.CasteView;
 import net.sf.anathema.character.view.concept.ICharacterConceptAndRulesViewProperties;
 import net.sf.anathema.lib.control.IChangeListener;
 import net.sf.anathema.lib.control.ObjectValueListener;
@@ -16,48 +16,20 @@ import net.sf.anathema.lib.gui.ui.ObjectUi;
 import net.sf.anathema.lib.gui.ui.ObjectUiListCellRenderer;
 import net.sf.anathema.lib.resources.Resources;
 
-public class CharacterConceptAndRulesPresenter {
+public class CastePresenter {
 
-  private final ICharacterConceptAndRulesView view;
+  private final CasteView view;
   private final ICharacter character;
   private final Resources resources;
 
-  public CharacterConceptAndRulesPresenter(ICharacter character, ICharacterConceptAndRulesView view, Resources resources) {
+  public CastePresenter(ICharacter character, CasteView view, Resources resources) {
     this.character = character;
     this.view = view;
     this.resources = resources;
   }
 
   public void initPresentation() {
-    initRulesPresentation();
-    initCastePresentation();
-    initGui();
-  }
-
-  private void initGui() {
-    view.initGui(new ICharacterConceptAndRulesViewProperties() {
-      @Override
-      public String getConceptTitle() {
-        return resources.getString("CardView.CharacterConcept.Concept");
-      }
-
-      @Override
-      public String getRulesTitle() {
-        return resources.getString("CardView.CharacterConcept.Rules");
-      }
-    });
-  }
-
-  private void initRulesPresentation() {
-    String newActionResource = character.getCharacterTemplate().getPresentationProperties().getNewActionResource();
-    view.addRulesLabel(resources.getString("Rules.CharacterType.Message", resources.getString(newActionResource)));
-  }
-
-  private boolean initCastePresentation() {
     ICharacterTemplate template = character.getCharacterTemplate();
-    if (template.getCasteCollection().isEmpty()) {
-      return false;
-    }
     String casteLabelResourceKey = template.getPresentationProperties().getCasteLabelResource();
     ObjectUi<Object> casteUi = new CasteSelectObjectUi(resources, template.getPresentationProperties());
     ICasteType[] casteTypes = template.getCasteCollection().getAllCasteTypes(character.getCharacterTemplate().getTemplateType());
@@ -84,6 +56,5 @@ public class CharacterConceptAndRulesPresenter {
       }
     });
     casteView.setEnabled(!ExperienceModelFetcher.fetch(character).isExperienced());
-    return true;
   }
 }
