@@ -1,4 +1,4 @@
-package net.sf.anathema.character.main.lib;
+package net.sf.anathema.character.main.model.initialization;
 
 import net.sf.anathema.lib.util.Identifier;
 

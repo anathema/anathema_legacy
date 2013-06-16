@@ -1,11 +1,13 @@
-package net.sf.anathema.character.main.lib;
+package net.sf.anathema.character.main.model.initialization;
 
+import net.sf.anathema.character.model.CharacterModelFactory;
 import net.sf.anathema.lib.util.Identifier;
 
 import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.List;
 
-public class ModelInitializationList<E extends ModelTreeEntry> {
+public class ModelInitializationList<E extends ModelTreeEntry> implements Iterable<Identifier> {
 
   private List<Identifier> sortedModelIds = new ArrayList<>();
   private List<E> configuredEntries;
@@ -64,5 +66,10 @@ public class ModelInitializationList<E extends ModelTreeEntry> {
 
   public int size() {
     return sortedModelIds.size();
+  }
+
+  @Override
+  public Iterator<Identifier> iterator() {
+    return sortedModelIds.iterator();
   }
 }

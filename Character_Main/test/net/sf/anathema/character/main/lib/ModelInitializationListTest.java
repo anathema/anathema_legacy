@@ -1,8 +1,9 @@
 package net.sf.anathema.character.main.lib;
 
+import net.sf.anathema.character.main.model.initialization.ModelInitializationList;
+import net.sf.anathema.character.main.model.initialization.SimpleModelTreeEntry;
 import net.sf.anathema.lib.util.Identifier;
 import net.sf.anathema.lib.util.SimpleIdentifier;
-import org.junit.Ignore;
 import org.junit.Test;
 
 import java.util.ArrayList;
