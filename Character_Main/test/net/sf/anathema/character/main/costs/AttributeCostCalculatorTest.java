@@ -105,7 +105,7 @@ public class AttributeCostCalculatorTest {
     DummyAdditionalBonusPointManagment additionalBonusPointManagement = new DummyAdditionalBonusPointManagment();
     addAttributesAndEssence(traitConfiguration);
     DefaultBonusPointCosts cost = new DefaultBonusPointCosts();
-    this.calculator = new AttributeCostCalculator(traitConfiguration.getAttributeConfiguration(), creationPoint, cost, additionalBonusPointManagement);
+    this.calculator = new AttributeCostCalculator(traitConfiguration.getAttributeModel(), creationPoint, cost, additionalBonusPointManagement);
   }
 
   private void addAttributesAndEssence(DummyCoreTraitConfiguration coreTraits) {

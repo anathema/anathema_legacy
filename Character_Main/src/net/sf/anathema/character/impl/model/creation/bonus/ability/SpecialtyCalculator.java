@@ -1,8 +1,9 @@
 package net.sf.anathema.character.impl.model.creation.bonus.ability;
 
-import net.sf.anathema.character.generic.character.IGenericTraitCollection;
 import net.sf.anathema.character.generic.template.creation.IGenericSpecialty;
 import net.sf.anathema.character.generic.template.experience.AbilityPointCosts;
+import net.sf.anathema.character.generic.traits.TraitType;
+import net.sf.anathema.character.main.traits.model.TraitMap;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -10,11 +11,11 @@ import java.util.List;
 
 public class SpecialtyCalculator {
 
-  private final IGenericTraitCollection traitConfiguration;
+  private final TraitMap abilityModel;
   private final int specialtyPoints;
 
-  public SpecialtyCalculator(IGenericTraitCollection traitConfiguration, int specialtyPoints) {
-    this.traitConfiguration = traitConfiguration;
+  public SpecialtyCalculator(TraitMap abilityModel, int specialtyPoints) {
+    this.abilityModel = abilityModel;
     this.specialtyPoints = specialtyPoints;
   }
 
@@ -40,7 +41,8 @@ public class SpecialtyCalculator {
   private List<IGenericSpecialty> getFavoredSpecialties(List<IGenericSpecialty> specialties) {
     List<IGenericSpecialty> favoredSpecialties = new ArrayList<>();
     for (IGenericSpecialty specialty : specialties) {
-      if (traitConfiguration.getTrait(specialty.getBasicTrait().getType()).isCasteOrFavored()) {
+      TraitType type = specialty.getBasicTrait().getType();
+      if (abilityModel.getTrait(type).isCasteOrFavored()) {
         favoredSpecialties.add(specialty);
       }
     }

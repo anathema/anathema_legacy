@@ -1,12 +1,13 @@
 package net.sf.anathema.character.main.abilities;
 
 import net.sf.anathema.character.generic.traits.TraitType;
-import net.sf.anathema.character.generic.traits.groups.IIdentifiedCasteTraitTypeGroup;
+import net.sf.anathema.character.generic.traits.groups.IIdentifiedTraitTypeGroup;
 import net.sf.anathema.character.library.trait.Trait;
 import net.sf.anathema.character.library.trait.TraitGroup;
-import net.sf.anathema.character.library.trait.specialties.SpecialtiesConfiguration;
+import net.sf.anathema.character.library.trait.specialties.ISpecialtiesConfiguration;
+import net.sf.anathema.character.main.traits.model.TraitMap;
 
-public interface AbilityModel {
+public interface AbilityModel extends TraitMap{
 
   Trait[] getAllAbilities();
 
@@ -14,7 +15,7 @@ public interface AbilityModel {
 
   Trait getTrait(TraitType type);
 
-  IIdentifiedCasteTraitTypeGroup[] getAbilityTypeGroups();
+  IIdentifiedTraitTypeGroup[] getAbilityTypeGroups();
 
-  SpecialtiesConfiguration getSpecialtyConfiguration();
+  ISpecialtiesConfiguration getSpecialtyConfiguration();
 }

@@ -70,7 +70,7 @@ public class BonusPointManagement implements IBonusPointManagement {
     GenericCharacter characterAbstraction = GenericCharacterUtilities.createGenericCharacter(character);
     ICoreTraitConfiguration traitConfiguration = character.getTraitConfiguration();
     this.abilityCalculator =
-            new AbilityCostCalculator(traitConfiguration, creationPoints.getAbilityCreationPoints(), creationPoints.getSpecialtyCreationPoints(),
+            new AbilityCostCalculator(character.getAbilities(), creationPoints.getAbilityCreationPoints(), creationPoints.getSpecialtyCreationPoints(),
                     cost, bonusAdditionalPools);
     this.attributeCalculator =
             new AttributeCostCalculator(character.getAttributes(), creationPoints.getAttributeCreationPoints(), cost, bonusAdditionalPools);

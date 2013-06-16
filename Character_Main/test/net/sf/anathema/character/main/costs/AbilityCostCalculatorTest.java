@@ -1,7 +1,5 @@
 package net.sf.anathema.character.main.costs;
 
-import net.sf.anathema.character.main.testing.dummy.DummyAdditionalBonusPointManagment;
-import net.sf.anathema.character.main.testing.dummy.trait.DummyCoreTraitConfiguration;
 import net.sf.anathema.character.generic.impl.template.points.AbilityCreationPoints;
 import net.sf.anathema.character.generic.impl.template.points.FixedValueRatingCosts;
 import net.sf.anathema.character.generic.template.experience.AbilityPointCosts;
@@ -11,6 +9,8 @@ import net.sf.anathema.character.generic.traits.types.AbilityType;
 import net.sf.anathema.character.impl.model.creation.bonus.ability.AbilityCostCalculator;
 import net.sf.anathema.character.library.trait.FavorableTraitCost;
 import net.sf.anathema.character.library.trait.Trait;
+import net.sf.anathema.character.main.testing.dummy.DummyAdditionalBonusPointManagment;
+import net.sf.anathema.character.main.testing.dummy.trait.DummyCoreTraitConfiguration;
 import org.junit.Before;
 import org.junit.Test;
 
@@ -62,7 +62,7 @@ public class AbilityCostCalculatorTest extends AbstractBonusPointTestCase {
   private DummyAdditionalBonusPointManagment additionalBonusPointManagment;
 
   private Trait setFavoredAbilityTo(AbilityType abilityType, int value) {
-    Trait trait = (Trait) traitConfiguration.getTrait(abilityType);
+    Trait trait = traitConfiguration.getTrait(abilityType);
     trait.getFavorization().updateFavorableStateToCaste();
     trait.getFavorization().setFavored(true);
     trait.setCreationValue(value);
@@ -70,7 +70,7 @@ public class AbilityCostCalculatorTest extends AbstractBonusPointTestCase {
   }
 
   private Trait setUnfavoredAbilityTo(AbilityType abilityType, int value) {
-    Trait ability = (Trait) traitConfiguration.getTrait(abilityType);
+    Trait ability = traitConfiguration.getTrait(abilityType);
     ability.getFavorization().updateFavorableStateToCaste();
     ability.getFavorization().setFavored(false);
     ability.setCreationValue(value);
@@ -86,7 +86,8 @@ public class AbilityCostCalculatorTest extends AbstractBonusPointTestCase {
   }
 
   private AbilityCostCalculator startCalculation(IFavorableTraitCreationPoints creationPoints) {
-    AbilityCostCalculator calculator = new AbilityCostCalculator(traitConfiguration, creationPoints, 0, costs, additionalBonusPointManagment);
+    AbilityCostCalculator calculator =
+            new AbilityCostCalculator(traitConfiguration.getAbilityModel(), creationPoints, 0, costs, additionalBonusPointManagment);
     calculator.calculateCosts();
     return calculator;
   }

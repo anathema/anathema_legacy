@@ -2,7 +2,6 @@ package net.sf.anathema.character.main.testing.dummy.trait;
 
 import com.google.common.base.Predicate;
 import net.sf.anathema.character.generic.traits.TraitType;
-import net.sf.anathema.character.generic.traits.groups.IIdentifiedCasteTraitTypeGroup;
 import net.sf.anathema.character.generic.traits.groups.IIdentifiedTraitTypeGroup;
 import net.sf.anathema.character.generic.traits.groups.IdentifiedAttributeTypeGroup;
 import net.sf.anathema.character.generic.traits.groups.IdentifiedTraitTypeGroup;
@@ -14,9 +13,11 @@ import net.sf.anathema.character.library.trait.Trait;
 import net.sf.anathema.character.library.trait.TraitGroup;
 import net.sf.anathema.character.library.trait.specialties.ISpecialtiesConfiguration;
 import net.sf.anathema.character.library.trait.specialties.SpecialtiesConfiguration;
+import net.sf.anathema.character.main.abilities.AbilityModel;
 import net.sf.anathema.character.main.attributes.model.temporary.AttributeModel;
 import net.sf.anathema.character.main.testing.dummy.DummyCharacterModelContext;
 import net.sf.anathema.character.main.traits.model.MappedTraitGroup;
+import net.sf.anathema.character.main.traits.model.TraitMap;
 import net.sf.anathema.character.model.traits.ICoreTraitConfiguration;
 import net.sf.anathema.lib.collection.MultiEntryMap;
 import net.sf.anathema.lib.util.Identifier;
@@ -31,16 +32,16 @@ import static net.sf.anathema.character.generic.traits.types.AttributeGroupType.
 import static net.sf.anathema.character.generic.traits.types.AttributeGroupType.Social;
 import static net.sf.anathema.lib.lang.ArrayUtilities.getFirst;
 
-public class DummyCoreTraitConfiguration extends AbstractTraitCollection implements ICoreTraitConfiguration {
+public class DummyCoreTraitConfiguration extends AbstractTraitCollection implements ICoreTraitConfiguration, TraitMap {
 
   private final MultiEntryMap<String, TraitType> abilityGroupsByType = new MultiEntryMap<>();
   private ISpecialtiesConfiguration specialtyConfiguration;
 
   private IIdentifiedTraitTypeGroup getAttributeTypeGroup(final AttributeGroupType type) {
-    IIdentifiedCasteTraitTypeGroup[] allAttributeTypeGroups = getAttributeTypeGroups();
-    return getFirst(allAttributeTypeGroups, new Predicate<IIdentifiedCasteTraitTypeGroup>() {
+    IIdentifiedTraitTypeGroup[] allAttributeTypeGroups = getAttributeTypeGroups();
+    return getFirst(allAttributeTypeGroups, new Predicate<IIdentifiedTraitTypeGroup>() {
       @Override
-      public boolean apply(IIdentifiedCasteTraitTypeGroup group) {
+      public boolean apply(IIdentifiedTraitTypeGroup group) {
         return group.getGroupId() == type;
       }
     });
@@ -83,8 +84,8 @@ public class DummyCoreTraitConfiguration extends AbstractTraitCollection impleme
     return specialtyConfiguration;
   }
 
-  private final IIdentifiedCasteTraitTypeGroup[] getAttributeTypeGroups() {
-    return new IIdentifiedCasteTraitTypeGroup[]{new IdentifiedAttributeTypeGroup(Physical), new IdentifiedAttributeTypeGroup(Social),
+  public final IIdentifiedTraitTypeGroup[] getAttributeTypeGroups() {
+    return new IIdentifiedTraitTypeGroup[]{new IdentifiedAttributeTypeGroup(Physical), new IdentifiedAttributeTypeGroup(Social),
             new IdentifiedAttributeTypeGroup(Mental)};
   }
 
@@ -92,34 +93,15 @@ public class DummyCoreTraitConfiguration extends AbstractTraitCollection impleme
     abilityGroupsByType.add(id, traitType);
   }
 
-  public AttributeModel getAttributeConfiguration() {
-    return new AttributeModel() {
-      @Override
-      public Trait[] getAllAttributes() {
-        return getTraits(AttributeType.values());
-      }
-
-      @Override
-      public TraitGroup[] getTraitGroups() {
-        TraitGroup physical = createGroup(AttributeGroupType.Physical, AttributeType.Strength, AttributeType.Dexterity, AttributeType.Stamina);
-        TraitGroup social = createGroup(AttributeGroupType.Social, AttributeType.Charisma, AttributeType.Manipulation, AttributeType.Appearance);
-        TraitGroup mental = createGroup(AttributeGroupType.Mental, AttributeType.Perception, AttributeType.Intelligence, AttributeType.Wits);
-        return new TraitGroup[]{physical, social, mental};
-      }
-
-      @Override
-      public Trait getTrait(AttributeType type) {
-        return getTrait(type);
-      }
-
-      @Override
-      public IIdentifiedTraitTypeGroup[] getAttributeTypeGroups() {
-        return DummyCoreTraitConfiguration.this.getAttributeTypeGroups();
-      }
-    };
+  public AttributeModel getAttributeModel() {
+    return new DummyAttributeModel(this);
   }
 
-  private TraitGroup createGroup(final AttributeGroupType groupType, final AttributeType... types) {
+  public AbilityModel getAbilityModel() {
+    return new DummyAbilityModel(this);
+  }
+
+   public TraitGroup createGroup(final AttributeGroupType groupType, final AttributeType... types) {
     return new TraitGroup() {
       @Override
       public Trait[] getGroupTraits() {

@@ -85,6 +85,11 @@ public class DefaultAbilityModel implements AbilityModel {
   }
 
   @Override
+  public Trait[] getTraits(TraitType... traitType) {
+    return traitMap.getTraits(traitType);
+  }
+
+  @Override
   public Trait getTrait(TraitType type) {
     return traitMap.getTrait(type);
   }

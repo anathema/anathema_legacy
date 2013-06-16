@@ -1,12 +1,12 @@
 package net.sf.anathema.character.impl.model.creation.bonus.additional;
 
 import net.sf.anathema.character.generic.additionalrules.IAdditionalBonusPointPool;
-import net.sf.anathema.character.generic.character.IGenericTraitCollection;
 import net.sf.anathema.character.generic.magic.IMagic;
 import net.sf.anathema.character.generic.template.creation.IGenericSpecialty;
 import net.sf.anathema.character.generic.template.experience.AbilityPointCosts;
 import net.sf.anathema.character.generic.traits.GenericTrait;
 import net.sf.anathema.character.library.trait.Trait;
+import net.sf.anathema.character.main.traits.model.TraitMap;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -16,7 +16,7 @@ public class AdditionalBonusPointPoolManagement implements IAdditionalBonusPoint
 
   private final AdditionalBonusPointPoolCalculator[] additionalPoolCalculators;
 
-  public AdditionalBonusPointPoolManagement(IGenericTraitCollection traitCollection, IAdditionalBonusPointPool[] pools) {
+  public AdditionalBonusPointPoolManagement(TraitMap traitCollection, IAdditionalBonusPointPool[] pools) {
     additionalPoolCalculators = new AdditionalBonusPointPoolCalculator[pools.length];
     for (int index = 0; index < pools.length; index++) {
       additionalPoolCalculators[index] = new AdditionalBonusPointPoolCalculator(pools[index], traitCollection);
