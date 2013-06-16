@@ -144,8 +144,12 @@ public class ExaltedCharacter implements ICharacter {
     }
   }
 
+  // todo: remove itemDate-Relicts in Character (see ExaltedCharacterPersister)
   public void setPrintNameAdjuster(PrintNameAdjuster adjuster) {
     CharacterDescription characterDescription = CharacterDescriptionFetcher.fetch(this);
+    if (characterDescription == null) {
+      return;
+    }
     ITextualDescription characterName = characterDescription.getName();
     characterName.addTextChangedListener(adjuster);
   }

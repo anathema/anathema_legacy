@@ -13,6 +13,7 @@ public class DummyTrait implements Trait {
     DummyTrait trait = new DummyTrait(type);
     trait.setCreationValue(creationValue);
     trait.setExperiencedValue(experiencedValue);
+    trait.setCurrentValue(experiencedValue);
     return trait;
   }
 
@@ -122,12 +123,12 @@ public class DummyTrait implements Trait {
 
   @Override
   public void resetCreationValue() {
-    //not yet implemented
+    creationValue = 0;
   }
 
   @Override
   public void resetExperiencedValue() {
-    //not yet implemented
+    experiencedValue = creationValue;
   }
 
   @Override
@@ -167,7 +168,7 @@ public class DummyTrait implements Trait {
 
   @Override
   public int getCreationValue() {
-    return 0;
+    return creationValue;
   }
 
   @Override
