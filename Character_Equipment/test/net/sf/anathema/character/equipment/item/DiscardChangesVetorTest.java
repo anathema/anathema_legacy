@@ -1,6 +1,6 @@
 package net.sf.anathema.character.equipment.item;
 
-import net.sf.anathema.character.generic.dummy.DummyCondition;
+import net.sf.anathema.character.main.testing.dummy.DummyCondition;
 import net.sf.anathema.interaction.Command;
 import net.sf.anathema.lib.dummy.DummyResources;
 import org.junit.Test;
