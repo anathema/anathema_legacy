@@ -32,6 +32,7 @@ import net.sf.anathema.character.main.concept.model.CharacterConceptFetcher;
 import net.sf.anathema.character.main.description.model.CharacterDescriptionFetcher;
 import net.sf.anathema.character.main.experience.model.ExperienceModelFetcher;
 import net.sf.anathema.character.model.ICharacter;
+import net.sf.anathema.character.model.ITypedDescription;
 import net.sf.anathema.character.model.charm.ICharmConfiguration;
 import net.sf.anathema.character.model.charm.ICombo;
 import net.sf.anathema.character.model.charm.ILearningCharmGroup;
@@ -129,7 +130,8 @@ public class GenericCharacter implements IGenericCharacter {
   @Override
   public ICasteType getCasteType() {
     CharacterConcept characterConcept = CharacterConceptFetcher.fetch(character);
-    return characterConcept.getCaste().getType();
+    ITypedDescription<ICasteType> caste = characterConcept.getCaste();
+    return caste.getType();
   }
 
   @Override
