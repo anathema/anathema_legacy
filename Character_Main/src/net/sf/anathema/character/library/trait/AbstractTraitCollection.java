@@ -39,7 +39,7 @@ public abstract class AbstractTraitCollection implements ITraitCollection {
     traitsByType.put(trait.getType(), trait);
   }
 
-  protected final void addTraits(Trait... traits) {
+  public final void addTraits(Trait... traits) {
     for (Trait trait : traits) {
       addSingleTrait(trait);
     }

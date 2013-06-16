@@ -12,7 +12,6 @@ import net.sf.anathema.character.generic.traits.groups.IIdentifiedCasteTraitType
 import net.sf.anathema.character.generic.traits.groups.IIdentifiedTraitTypeGroup;
 import net.sf.anathema.character.generic.traits.types.OtherTraitType;
 import net.sf.anathema.character.generic.traits.types.VirtueType;
-import net.sf.anathema.character.impl.model.temporary.InternalAttributeConfiguration;
 import net.sf.anathema.character.impl.model.traits.creation.AbilityTypeGroupFactory;
 import net.sf.anathema.character.impl.model.traits.creation.DefaultTraitFactory;
 import net.sf.anathema.character.impl.model.traits.creation.FavorableTraitFactory;
@@ -25,23 +24,21 @@ import net.sf.anathema.character.library.trait.TraitCollectionUtilities;
 import net.sf.anathema.character.library.trait.favorable.IIncrementChecker;
 import net.sf.anathema.character.library.trait.specialties.ISpecialtiesConfiguration;
 import net.sf.anathema.character.library.trait.specialties.SpecialtiesConfiguration;
+import net.sf.anathema.character.main.traits.model.TraitModel;
 import net.sf.anathema.character.model.traits.ICoreTraitConfiguration;
 
 import java.util.Iterator;
 
 import static java.util.Arrays.asList;
 
-public class CoreTraitConfiguration extends AbstractTraitCollection implements ICoreTraitConfiguration {
+public class CoreTraitConfiguration extends AbstractTraitCollection implements ICoreTraitConfiguration, TraitModel {
 
   private final FavorableTraitFactory favorableTraitFactory;
   private final IIdentifiedCasteTraitTypeGroup[] abilityTraitGroups;
   private final SpecialtiesConfiguration specialtyConfiguration;
   private final ITraitTemplateCollection traitTemplateCollection;
-  private InternalAttributeConfiguration attributeConfiguration;
 
-  public CoreTraitConfiguration(ICharacterTemplate template, ICharacterModelContext modelContext,
-                                InternalAttributeConfiguration attributeConfiguration) {
-    this.attributeConfiguration = attributeConfiguration;
+  public CoreTraitConfiguration(ICharacterTemplate template, ICharacterModelContext modelContext) {
     ICasteCollection casteCollection = template.getCasteCollection();
     this.abilityTraitGroups = new AbilityTypeGroupFactory().createTraitGroups(casteCollection, template.getAbilityGroups());
     traitTemplateCollection = template.getTraitTemplateCollection();
@@ -49,7 +46,6 @@ public class CoreTraitConfiguration extends AbstractTraitCollection implements I
     addEssence(modelContext.getTraitContext(), traitTemplateCollection, template.getAdditionalRules().getAdditionalTraitRules());
     addVirtues(modelContext.getTraitContext(), traitTemplateCollection, template.getAdditionalRules().getAdditionalTraitRules());
     addWillpower(modelContext.getTraitContext(), traitTemplateCollection, template.getAdditionalRules().getAdditionalTraitRules());
-    addTraits(attributeConfiguration.getAllAttributes());
     addAbilities(template);
     Trait willpower = TraitCollectionUtilities.getWillpower(this);
     Trait[] virtues = TraitCollectionUtilities.getVirtues(this);

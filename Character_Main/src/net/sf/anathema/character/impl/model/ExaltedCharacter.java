@@ -60,15 +60,15 @@ public class ExaltedCharacter implements ICharacter {
   private final ISpellConfiguration spells;
   private final IHealthConfiguration health;
   private final ExtendedConfiguration extendedConfiguration = new ExtendedConfiguration(context);
-  private final ICoreTraitConfiguration traitConfiguration;
+  private final CoreTraitConfiguration traitConfiguration;
   private final DefaultHero hero = new DefaultHero();
   private final InternalAttributeConfiguration attributeConfiguration;
 
   public ExaltedCharacter(ICharacterTemplate template, ICharacterGenerics generics) {
     this.characterTemplate = template;
     addModels(generics);
-    this.attributeConfiguration = new InternalAttributeConfiguration(template, context);
-    this.traitConfiguration = new CoreTraitConfiguration(template, context, attributeConfiguration);
+    this.traitConfiguration = new CoreTraitConfiguration(template, context);
+    this.attributeConfiguration = new InternalAttributeConfiguration(template, context, traitConfiguration);
     new CharacterTraitListening(this, context.getCharacterListening()).initListening();
     this.health = new HealthConfiguration(getTraitArray(template.getToughnessControllingTraitTypes()), traitConfiguration,
             template.getBaseHealthProviders());
