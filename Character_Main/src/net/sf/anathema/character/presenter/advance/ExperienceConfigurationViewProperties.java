@@ -2,6 +2,7 @@ package net.sf.anathema.character.presenter.advance;
 
 import net.sf.anathema.character.view.advance.IExperienceConfigurationViewProperties;
 import net.sf.anathema.framework.presenter.resources.BasicUi;
+import net.sf.anathema.lib.file.RelativePath;
 import net.sf.anathema.lib.gui.table.columsettings.ITableColumnViewSettings;
 import net.sf.anathema.lib.gui.table.columsettings.IntegerTableColumnSettings;
 import net.sf.anathema.lib.gui.table.columsettings.StringTableColumnSettings;
@@ -34,13 +35,13 @@ public class ExperienceConfigurationViewProperties implements IExperienceConfigu
   }
 
   @Override
-  public Icon getDeleteIcon() {
-    return basicUi.getRemoveIcon();
+  public RelativePath getDeleteIcon() {
+    return basicUi.getRemoveIconPath();
   }
 
   @Override
-  public Icon getAddIcon() {
-    return basicUi.getAddIcon();
+  public RelativePath getAddIcon() {
+    return basicUi.getAddIconPath();
   }
 
   @Override

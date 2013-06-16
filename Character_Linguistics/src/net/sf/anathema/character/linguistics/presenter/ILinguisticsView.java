@@ -5,6 +5,7 @@ import net.sf.anathema.character.library.removableentry.presenter.IRemovableEntr
 import net.sf.anathema.character.library.removableentry.presenter.IRemovableEntryView;
 import net.sf.anathema.framework.presenter.view.IButtonControlledObjectSelectionView;
 import net.sf.anathema.framework.presenter.view.ITextFieldComboBoxEditor;
+import net.sf.anathema.lib.file.RelativePath;
 
 import javax.swing.Icon;
 import javax.swing.ListCellRenderer;
@@ -12,8 +13,7 @@ import javax.swing.ListCellRenderer;
 public interface ILinguisticsView extends IRemovableEntriesView<IRemovableEntryView> {
 
   IButtonControlledObjectSelectionView<Object> addSelectionView(String labelText, ITextFieldComboBoxEditor editor, ListCellRenderer renderer,
-                                                                Icon addIcon);
+                                                                RelativePath addIcon);
 
   IOverviewCategory addOverview(String border);
-
 }

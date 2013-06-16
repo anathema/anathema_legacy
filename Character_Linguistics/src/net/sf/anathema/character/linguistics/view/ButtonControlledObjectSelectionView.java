@@ -6,7 +6,9 @@ import net.sf.anathema.framework.presenter.view.IButtonControlledObjectSelection
 import net.sf.anathema.framework.presenter.view.ITextFieldComboBoxEditor;
 import net.sf.anathema.lib.control.ObjectValueListener;
 import net.sf.anathema.lib.exception.NotYetImplementedException;
+import net.sf.anathema.lib.file.RelativePath;
 import net.sf.anathema.lib.gui.dialog.events.AbstractDocumentChangeListener;
+import net.sf.anathema.lib.gui.icon.ImageProvider;
 import net.sf.anathema.lib.gui.layout.SwingLayoutUtils;
 import net.sf.anathema.lib.gui.widgets.ColoredJComboBox;
 
@@ -32,14 +34,15 @@ public class ButtonControlledObjectSelectionView<V> implements IButtonControlled
 
   public ButtonControlledObjectSelectionView(
       ListCellRenderer renderer,
-      Icon addIcon,
+      RelativePath addIcon,
       String labelText,
       ITextFieldComboBoxEditor editor) {
     this.comboBox = new ColoredJComboBox(new DefaultComboBoxModel(new Object[0]));
     this.label = new JLabel(labelText);
     this.comboBox.setRenderer(renderer);
-    addButton = new JButton(addIcon);
-    addButton.setPreferredSize(new Dimension(addIcon.getIconWidth() + 4, addIcon.getIconHeight() + 4));
+    Icon icon = new ImageProvider().getImageIcon(addIcon);
+    addButton = new JButton(icon);
+    addButton.setPreferredSize(new Dimension(icon.getIconWidth() + 4, icon.getIconHeight() + 4));
     if (editor != null) {
       this.comboBox.setEditable(true);
       this.comboBox.setEditor(editor);

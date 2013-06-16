@@ -1,5 +1,6 @@
 package net.sf.anathema.character.view.advance;
 
+import net.sf.anathema.lib.file.RelativePath;
 import net.sf.anathema.lib.gui.table.columsettings.ITableColumnViewSettings;
 
 import javax.swing.Icon;
@@ -11,9 +12,9 @@ public interface IExperienceConfigurationViewProperties {
 
   ITableColumnViewSettings[] getColumnSettings();
 
-  Icon getDeleteIcon();
+  RelativePath getDeleteIcon();
 
-  Icon getAddIcon();
+  RelativePath getAddIcon();
 
   String getTotalString();
 }

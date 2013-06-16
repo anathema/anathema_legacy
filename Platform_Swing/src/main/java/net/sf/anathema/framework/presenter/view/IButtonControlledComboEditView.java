@@ -11,8 +11,6 @@ public interface IButtonControlledComboEditView<K> {
   void addEditChangedListener(ObjectValueListener<String> name);
 
   void addButtonListener(ActionListener listener);
-  
-  void addButtonListener(ObjectValueListener<K> listener);
 
   void clear();
 

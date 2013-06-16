@@ -5,6 +5,8 @@ import net.sf.anathema.character.library.trait.view.AbstractTraitView;
 import net.sf.anathema.character.view.ISpecialtyView;
 import net.sf.anathema.framework.value.IntegerViewFactory;
 import net.sf.anathema.lib.control.IChangeListener;
+import net.sf.anathema.lib.file.RelativePath;
+import net.sf.anathema.lib.gui.icon.ImageProvider;
 import net.sf.anathema.lib.gui.layout.SwingLayoutUtils;
 import org.jmock.example.announcer.Announcer;
 
@@ -26,9 +28,9 @@ public class SpecialtyView extends AbstractTraitView implements ISpecialtyView {
   private JPanel traitPanel;
   private final Icon deleteIcon;
 
-  public SpecialtyView(IntegerViewFactory configuration, String labelText, Icon deleteIcon, String id, int value, int maxValue) {
+  public SpecialtyView(IntegerViewFactory configuration, String labelText, RelativePath deleteIcon, String id, int value, int maxValue) {
     super(configuration, labelText, value, maxValue, null);
-    this.deleteIcon = deleteIcon;
+    this.deleteIcon = new ImageProvider().getImageIcon(deleteIcon);
     specialtyLabel = new JLabel(id);
     abilityLabel = new JLabel(labelText);
   }

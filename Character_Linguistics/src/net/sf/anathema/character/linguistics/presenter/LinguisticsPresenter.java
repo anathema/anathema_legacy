@@ -18,7 +18,6 @@ import net.sf.anathema.lib.workflow.labelledvalue.ILabelledAlotmentView;
 import net.sf.anathema.lib.workflow.labelledvalue.IValueView;
 
 import javax.swing.DefaultListCellRenderer;
-import javax.swing.Icon;
 import javax.swing.JList;
 import javax.swing.ListCellRenderer;
 import java.awt.Component;
@@ -100,7 +99,7 @@ public class LinguisticsPresenter implements Presenter {
 private void initEntryPresentation() {
     String labelText = resources.getString("Linguistics.SelectionView.Label");
     final BasicUi basicUi = new BasicUi();
-    Icon addIcon = basicUi.getAddIcon();
+    RelativePath addIcon = basicUi.getAddIconPath();
     ProxyComboBoxEditor editor = new ProxyComboBoxEditor() {
       @Override
       public void setItem(Object anObject) {

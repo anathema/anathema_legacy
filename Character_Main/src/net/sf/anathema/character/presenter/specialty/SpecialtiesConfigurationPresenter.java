@@ -5,8 +5,8 @@ import net.sf.anathema.character.generic.framework.additionaltemplate.listening.
 import net.sf.anathema.character.generic.framework.resources.TraitInternationalizer;
 import net.sf.anathema.character.library.trait.presenter.TraitPresenter;
 import net.sf.anathema.character.library.trait.specialties.ISpecialtiesConfiguration;
-import net.sf.anathema.character.library.trait.specialties.Specialty;
 import net.sf.anathema.character.library.trait.specialties.ITraitReferencesChangeListener;
+import net.sf.anathema.character.library.trait.specialties.Specialty;
 import net.sf.anathema.character.library.trait.subtrait.ISpecialtyListener;
 import net.sf.anathema.character.library.trait.subtrait.ISubTraitContainer;
 import net.sf.anathema.character.view.ISpecialtyView;
@@ -16,10 +16,10 @@ import net.sf.anathema.framework.view.AbstractSelectCellRenderer;
 import net.sf.anathema.lib.collection.IdentityMapping;
 import net.sf.anathema.lib.control.IChangeListener;
 import net.sf.anathema.lib.control.ObjectValueListener;
+import net.sf.anathema.lib.file.RelativePath;
 import net.sf.anathema.lib.gui.Presenter;
 import net.sf.anathema.lib.resources.Resources;
 
-import javax.swing.Icon;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.Arrays;
@@ -66,7 +66,7 @@ public class SpecialtiesConfigurationPresenter implements Presenter {
   @Override
   public void initPresentation() {
     initTraitListening();
-    Icon addIcon = new BasicUi().getAddIcon();
+    RelativePath addIcon = new BasicUi().getAddIconPath();
     final IButtonControlledComboEditView<ITraitReference> specialtySelectionView = configurationView
             .addSpecialtySelectionView(resources.getString("SpecialtyConfigurationView.SelectionCombo.Label"),
                     new AbstractSelectCellRenderer<ITraitReference>(resources) {
@@ -177,7 +177,7 @@ public class SpecialtiesConfigurationPresenter implements Presenter {
     final ITraitReference traitReference = specialty.getTraitReference();
     String traitName = i18ner.getScreenName(traitReference);
     String specialtyName = specialty.getName();
-    Icon deleteIcon = new BasicUi().getRemoveIcon();
+    RelativePath deleteIcon = new BasicUi().getRemoveIconPath();
     ISpecialtyView specialtyView =
             configurationView.addSpecialtyView(traitName, specialtyName, deleteIcon, specialty.getCurrentValue(), specialty.getMaximalValue());
     new TraitPresenter(specialty, specialtyView).initPresentation();

@@ -11,14 +11,6 @@ public class BasicUi extends AbstractUI {
     return new RelativePath("icons/TaskBarNew24.png");
   }
 
-  public Icon getRemoveIcon() {
-    return getIcon(getRemoveIconPath());
-  }
-
-  public Icon getAddIcon() {
-    return getIcon(getAddIconPath());
-  }
-
   public RelativePath getEditIconPath() {
     return new RelativePath("icons/ButtonEdit16.png");
   }
