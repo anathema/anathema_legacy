@@ -15,13 +15,10 @@ public class GroupedFavorableTraitConfigurationView implements IGroupedFavorable
 
   private GroupedTraitView groupedTraitView;
   private final IntegerViewFactory markerIntValueDisplayFactory;
-  private final IntegerViewFactory markerLessIntValueDisplayFactory;
   private final JComponent parent = new JPanel();
 
-  public GroupedFavorableTraitConfigurationView(IntegerViewFactory factoryWithMarker,
-                                                IntegerViewFactory factoryWithoutMarker) {
+  public GroupedFavorableTraitConfigurationView(IntegerViewFactory factoryWithMarker) {
     this.markerIntValueDisplayFactory = factoryWithMarker;
-    this.markerLessIntValueDisplayFactory = factoryWithoutMarker;
   }
 
   @Override
@@ -38,12 +35,6 @@ public class GroupedFavorableTraitConfigurationView implements IGroupedFavorable
   public IToggleButtonTraitView<SimpleTraitView> addTraitView(String labelText, int value, int maxValue, IDefaultTrait trait, boolean selected,
                                                               IIconToggleButtonProperties properties) {
     return groupedTraitView.addTraitView(labelText, value, maxValue, trait, selected, properties, markerIntValueDisplayFactory);
-  }
-
-  @Override
-  public IToggleButtonTraitView<?> addMarkerLessTraitView(String labelText, int value, int maxValue, IDefaultTrait trait, boolean selected,
-                                                          IIconToggleButtonProperties properties) {
-    return groupedTraitView.addTraitView(labelText, value, maxValue, trait, selected, properties, markerLessIntValueDisplayFactory);
   }
 
   @Override

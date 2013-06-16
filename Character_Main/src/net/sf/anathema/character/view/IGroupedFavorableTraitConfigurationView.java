@@ -10,9 +10,6 @@ public interface IGroupedFavorableTraitConfigurationView extends IView {
   IToggleButtonTraitView<?> addTraitView(String labelText, int value, int maxValue, IDefaultTrait trait, boolean selected,
                                          IIconToggleButtonProperties properties);
 
-  IToggleButtonTraitView<?> addMarkerLessTraitView(String labelText, int value, int maxValue, IDefaultTrait trait, boolean selected,
-                                                   IIconToggleButtonProperties properties);
-
   void startNewTraitGroup(String groupLabel);
 
   void initGui(int columnCount);
