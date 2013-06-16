@@ -7,7 +7,6 @@ import net.sf.anathema.character.generic.template.ICharacterTemplate;
 import net.sf.anathema.character.generic.template.ITraitTemplateCollection;
 import net.sf.anathema.character.generic.traits.ITraitTemplate;
 import net.sf.anathema.character.generic.traits.TraitType;
-import net.sf.anathema.character.generic.traits.groups.IIdentifiedTraitTypeGroup;
 import net.sf.anathema.character.generic.traits.types.OtherTraitType;
 import net.sf.anathema.character.generic.traits.types.VirtueType;
 import net.sf.anathema.character.impl.model.traits.creation.DefaultTraitFactory;
@@ -76,11 +75,6 @@ public class CoreTraitConfiguration extends AbstractTraitCollection implements I
       return super.getTrait(traitType);
     }
     throw new UnsupportedOperationException("Unsupported trait type " + traitType);
-  }
-
-  @Override
-  public IIdentifiedTraitTypeGroup[] getAbilityTypeGroups() {
-    return abilities.getAbilityTypeGroups();
   }
 
   @Override

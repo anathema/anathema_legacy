@@ -66,7 +66,6 @@ public class DummyCoreTraitConfiguration extends AbstractTraitCollection impleme
     addTraits(trait);
   }
 
-  @Override
   public IIdentifiedTraitTypeGroup[] getAbilityTypeGroups() {
     List<IIdentifiedTraitTypeGroup> groups = new ArrayList<>();
     for (String groupId : abilityGroupsByType.keySet()) {

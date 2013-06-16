@@ -1,8 +1,5 @@
 package net.sf.anathema.character.impl.model.traits.listening;
 
-import net.sf.anathema.character.generic.traits.TraitType;
-import net.sf.anathema.character.generic.traits.groups.ITraitTypeGroup;
-import net.sf.anathema.character.generic.traits.groups.TraitTypeGroup;
 import net.sf.anathema.character.generic.traits.types.OtherTraitType;
 import net.sf.anathema.character.generic.traits.types.VirtueType;
 import net.sf.anathema.character.impl.model.context.CharacterListening;
@@ -38,11 +35,8 @@ public class CharacterTraitListening {
   }
 
   private void initAbilityListening() {
-    ITraitTypeGroup[] groups = traitConfiguration.getAbilityTypeGroups();
-    TraitType[] allAbilityTypes = TraitTypeGroup.getAllTraitTypes(groups);
     ISpecialtiesConfiguration specialtyConfiguration = traitConfiguration.getSpecialtyConfiguration();
-    for (TraitType traitType : allAbilityTypes) {
-      Trait ability = traitConfiguration.getTrait(traitType);
+    for (Trait ability : character.getAbilities().getAllAbilities()) {
       listening.addTraitListening(ability);
       ability.getFavorization().addFavorableStateChangedListener(new IFavorableStateChangedListener() {
         @Override
@@ -50,7 +44,7 @@ public class CharacterTraitListening {
           listening.fireCharacterChanged();
         }
       });
-      specialtyConfiguration.getSpecialtiesContainer(traitType).addSubTraitListener(new ISpecialtyListener() {
+      specialtyConfiguration.getSpecialtiesContainer(ability.getType()).addSubTraitListener(new ISpecialtyListener() {
         @Override
         public void subTraitRemoved(Specialty specialty) {
           listening.fireCharacterChanged();
