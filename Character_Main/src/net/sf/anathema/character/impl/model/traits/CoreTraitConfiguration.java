@@ -11,7 +11,6 @@ import net.sf.anathema.character.generic.traits.groups.IIdentifiedTraitTypeGroup
 import net.sf.anathema.character.generic.traits.types.OtherTraitType;
 import net.sf.anathema.character.generic.traits.types.VirtueType;
 import net.sf.anathema.character.impl.model.traits.creation.DefaultTraitFactory;
-import net.sf.anathema.character.impl.model.traits.creation.FavorableTraitFactory;
 import net.sf.anathema.character.impl.model.traits.creation.TypedTraitTemplateFactory;
 import net.sf.anathema.character.impl.model.traits.listening.WillpowerListening;
 import net.sf.anathema.character.library.trait.AbstractTraitCollection;
@@ -29,14 +28,12 @@ import static java.util.Arrays.asList;
 
 public class CoreTraitConfiguration extends AbstractTraitCollection implements ICoreTraitConfiguration, TraitModel {
 
-  private final FavorableTraitFactory favorableTraitFactory;
   private final ITraitTemplateCollection traitTemplateCollection;
   private final AbilityModel abilities;
 
   public CoreTraitConfiguration(ICharacterTemplate template, ICharacterModelContext modelContext) {
     this.abilities = new DefaultAbilityModel(template, modelContext, this);
     traitTemplateCollection = template.getTraitTemplateCollection();
-    this.favorableTraitFactory = createFactory(template, modelContext);
     addEssence(modelContext.getTraitContext(), traitTemplateCollection, template.getAdditionalRules().getAdditionalTraitRules());
     addVirtues(modelContext.getTraitContext(), traitTemplateCollection, template.getAdditionalRules().getAdditionalTraitRules());
     addWillpower(modelContext.getTraitContext(), traitTemplateCollection, template.getAdditionalRules().getAdditionalTraitRules());
@@ -52,11 +49,6 @@ public class CoreTraitConfiguration extends AbstractTraitCollection implements I
 
   public AbilityModel getAbilities() {
     return abilities;
-  }
-
-  private FavorableTraitFactory createFactory(ICharacterTemplate template, ICharacterModelContext modelContext) {
-    return new FavorableTraitFactory(modelContext.getTraitContext(), template.getAdditionalRules().getAdditionalTraitRules(),
-            modelContext.getBasicCharacterContext(), modelContext.getCharacterListening());
   }
 
   private void addEssence(ITraitContext traitContext, ITraitTemplateCollection traitTemplateCollection, IAdditionalTraitRules additionalTraitRules) {
