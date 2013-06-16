@@ -2,7 +2,7 @@ package net.sf.anathema.character.presenter.initializers;
 
 import net.sf.anathema.character.model.ICharacter;
 import net.sf.anathema.character.presenter.BasicAdvantagePresenter;
-import net.sf.anathema.character.presenter.BasicAdvantageViewProperties;
+import net.sf.anathema.character.presenter.DefaultAdvantageViewProperties;
 import net.sf.anathema.character.view.AdvantageView;
 import net.sf.anathema.character.view.SectionView;
 import net.sf.anathema.framework.IApplicationModel;
@@ -21,7 +21,7 @@ public class AdvantagesInitializer implements CharacterModelInitializer {
 
   @Override
   public void initialize(SectionView sectionView, ICharacter character, Resources resources) {
-    String header = new BasicAdvantageViewProperties(resources).getOverallHeader();
+    String header = new DefaultAdvantageViewProperties(resources).getOverallHeader();
     AdvantageView view = sectionView.addView(header, AdvantageView.class, character.getCharacterType());
     new BasicAdvantagePresenter(resources, character, view).initPresentation();
   }

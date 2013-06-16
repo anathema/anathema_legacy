@@ -6,8 +6,8 @@ import net.sf.anathema.character.impl.view.advantage.EssencePanelView;
 import net.sf.anathema.character.library.trait.Trait;
 import net.sf.anathema.character.library.trait.view.SimpleTraitView;
 import net.sf.anathema.character.view.AdvantageView;
-import net.sf.anathema.character.view.IAdvantageViewProperties;
-import net.sf.anathema.framework.presenter.view.IInitializableContentView;
+import net.sf.anathema.character.view.AdvantageViewProperties;
+import net.sf.anathema.framework.swing.IView;
 import net.sf.anathema.framework.value.IIntValueView;
 import net.sf.anathema.framework.value.IntegerViewFactory;
 import net.sf.anathema.lib.workflow.labelledvalue.IValueView;
@@ -20,7 +20,7 @@ import java.awt.FlowLayout;
 import static net.sf.anathema.lib.gui.layout.LayoutUtils.fillWithoutInsets;
 import static net.sf.anathema.lib.gui.layout.LayoutUtils.withoutInsets;
 
-public class BasicAdvantageView implements AdvantageView, IInitializableContentView<IAdvantageViewProperties> {
+public class BasicAdvantageView implements AdvantageView, IView {
   private final JPanel virtuePanel = new JPanel(new MigLayout(fillWithoutInsets().wrapAfter(2)));
   private final JPanel willpowerPanel = new JPanel(new MigLayout(fillWithoutInsets().wrapAfter(2)));
   private final EssencePanelView essencePanelView;
@@ -33,7 +33,7 @@ public class BasicAdvantageView implements AdvantageView, IInitializableContentV
   }
 
   @Override
-  public final void initGui(IAdvantageViewProperties properties) {
+  public final void initGui(AdvantageViewProperties properties) {
     JPanel innerPanel = new JPanel(new MigLayout(withoutInsets().wrapAfter(2)));
     content.add(innerPanel);
     addTitledPanel(properties.getVirtueTitle(), innerPanel, virtuePanel, new CC().spanY(2).growY().pushY());

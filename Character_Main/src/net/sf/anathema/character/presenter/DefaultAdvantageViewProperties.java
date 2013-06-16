@@ -1,12 +1,12 @@
 package net.sf.anathema.character.presenter;
 
-import net.sf.anathema.character.view.IAdvantageViewProperties;
+import net.sf.anathema.character.view.AdvantageViewProperties;
 import net.sf.anathema.lib.resources.Resources;
 
-public class BasicAdvantageViewProperties implements IAdvantageViewProperties {
+public class DefaultAdvantageViewProperties implements AdvantageViewProperties {
   private Resources resources;
 
-  public BasicAdvantageViewProperties(Resources resources) {
+  public DefaultAdvantageViewProperties(Resources resources) {
     this.resources = resources;
   }
 

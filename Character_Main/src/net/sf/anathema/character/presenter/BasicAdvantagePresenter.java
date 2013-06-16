@@ -28,6 +28,6 @@ public class BasicAdvantagePresenter {
     for (Presenter presenter : subPresenters) {
       presenter.initPresentation();
     }
-    view.initGui(new BasicAdvantageViewProperties(resources));
+    view.initGui(new DefaultAdvantageViewProperties(resources));
   }
 }

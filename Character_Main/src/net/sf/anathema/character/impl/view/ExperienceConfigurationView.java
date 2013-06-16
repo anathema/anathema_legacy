@@ -6,7 +6,7 @@ import net.miginfocom.swing.MigLayout;
 import net.sf.anathema.character.view.advance.IExperienceConfigurationView;
 import net.sf.anathema.character.view.advance.IExperienceConfigurationViewListener;
 import net.sf.anathema.character.view.advance.IExperienceConfigurationViewProperties;
-import net.sf.anathema.framework.presenter.view.IInitializableContentView;
+import net.sf.anathema.framework.swing.IView;
 import net.sf.anathema.lib.gui.action.SmartAction;
 import net.sf.anathema.lib.gui.icon.ImageProvider;
 import net.sf.anathema.lib.gui.table.SmartTable;
@@ -26,7 +26,7 @@ import java.awt.Dimension;
 
 import static net.sf.anathema.lib.gui.layout.LayoutUtils.fillWithoutInsets;
 
-public class ExperienceConfigurationView implements IExperienceConfigurationView, IInitializableContentView<IExperienceConfigurationViewProperties> {
+public class ExperienceConfigurationView implements IExperienceConfigurationView, IView {
   private final Announcer<IExperienceConfigurationViewListener> listeners = Announcer.to(IExperienceConfigurationViewListener.class);
   private SmartTable smartTable;
   private Action deleteAction;
