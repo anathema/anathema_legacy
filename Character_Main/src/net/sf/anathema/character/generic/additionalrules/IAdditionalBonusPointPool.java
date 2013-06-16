@@ -2,13 +2,13 @@ package net.sf.anathema.character.generic.additionalrules;
 
 import net.sf.anathema.character.generic.character.IGenericTraitCollection;
 import net.sf.anathema.character.generic.magic.IMagic;
-import net.sf.anathema.character.generic.traits.IGenericTrait;
+import net.sf.anathema.character.generic.traits.GenericTrait;
 
 public interface IAdditionalBonusPointPool {
 
   int getAmount(IGenericTraitCollection traitCollection);
 
-  boolean isAllowedForTrait(IGenericTraitCollection traitCollection, IGenericTrait trait);
+  boolean isAllowedForTrait(IGenericTraitCollection traitCollection, GenericTrait trait);
 
   boolean isAllowedForMagic(IGenericTraitCollection traitCollection, IMagic magic);
 }

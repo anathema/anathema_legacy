@@ -4,7 +4,7 @@ import net.sf.anathema.character.equipment.impl.character.model.stats.AbstractCo
 import net.sf.anathema.character.generic.equipment.weapon.IArmourStats;
 import net.sf.anathema.character.generic.framework.additionaltemplate.model.ICharacterModelContext;
 import net.sf.anathema.character.generic.health.HealthType;
-import net.sf.anathema.character.generic.traits.IGenericTrait;
+import net.sf.anathema.character.generic.traits.GenericTrait;
 import net.sf.anathema.character.generic.traits.types.AttributeType;
 import net.sf.anathema.character.generic.traits.types.OtherTraitType;
 import net.sf.anathema.character.generic.type.ICharacterType;
@@ -13,7 +13,7 @@ import net.sf.anathema.lib.util.SimpleIdentifier;
 
 public class DefaultNaturalSoak extends AbstractCombatStats implements IArmourStats, NaturalSoak {
 
-  private final IGenericTrait stamina;
+  private final GenericTrait stamina;
   private final ICharacterType characterType;
   private final ICharacterModelContext context;
   
@@ -24,10 +24,10 @@ public class DefaultNaturalSoak extends AbstractCombatStats implements IArmourSt
   public DefaultNaturalSoak(ICharacterModelContext context) {
     this(context.getTraitCollection().getTrait(AttributeType.Stamina), context.getBasicCharacterContext().getCharacterType(), context);
   }
-  public DefaultNaturalSoak(IGenericTrait stamina, ICharacterType characterType) {
+  public DefaultNaturalSoak(GenericTrait stamina, ICharacterType characterType) {
     this(stamina, characterType, null);
   }
-  protected DefaultNaturalSoak(IGenericTrait stamina, ICharacterType characterType, ICharacterModelContext context) {
+  protected DefaultNaturalSoak(GenericTrait stamina, ICharacterType characterType, ICharacterModelContext context) {
     this.stamina = stamina;
     this.characterType = characterType;
     this.context = context;

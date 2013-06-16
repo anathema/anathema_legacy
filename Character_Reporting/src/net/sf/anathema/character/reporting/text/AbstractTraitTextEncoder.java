@@ -4,7 +4,7 @@ import com.itextpdf.text.DocumentException;
 import com.itextpdf.text.Phrase;
 import com.itextpdf.text.pdf.MultiColumnText;
 import net.sf.anathema.character.generic.character.IGenericCharacter;
-import net.sf.anathema.character.generic.traits.IGenericTrait;
+import net.sf.anathema.character.generic.traits.GenericTrait;
 import net.sf.anathema.character.generic.traits.ITraitType;
 import net.sf.anathema.framework.reporting.pdf.PdfReportUtils;
 import net.sf.anathema.lib.resources.Resources;
@@ -19,7 +19,7 @@ public abstract class AbstractTraitTextEncoder extends AbstractTextEncoder {
     Phrase traitPhrase = createTextParagraph(createBoldTitle(getString(getLabelKey()) + ": "));
     boolean firstPrinted = true;
     for (ITraitType type : getTypes(genericCharacter)) {
-      IGenericTrait trait = genericCharacter.getTraitCollection().getTrait(type);
+      GenericTrait trait = genericCharacter.getTraitCollection().getTrait(type);
       if (trait.getCurrentValue() == 0) {
         continue;
       }

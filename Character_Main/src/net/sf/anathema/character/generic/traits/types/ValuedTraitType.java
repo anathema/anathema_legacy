@@ -1,9 +1,9 @@
 package net.sf.anathema.character.generic.traits.types;
 
-import net.sf.anathema.character.generic.traits.IGenericTrait;
+import net.sf.anathema.character.generic.traits.GenericTrait;
 import net.sf.anathema.character.generic.traits.ITraitType;
 
-public class ValuedTraitType implements IGenericTrait {
+public class ValuedTraitType implements GenericTrait {
 
   public static final ValuedTraitType NULL_TYPE = new ValuedTraitType(null, 1);
   private final ITraitType traitType;

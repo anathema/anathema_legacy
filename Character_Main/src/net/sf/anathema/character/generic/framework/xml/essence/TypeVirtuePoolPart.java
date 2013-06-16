@@ -1,7 +1,7 @@
 package net.sf.anathema.character.generic.framework.xml.essence;
 
 import net.sf.anathema.character.generic.template.essence.FactorizedTrait;
-import net.sf.anathema.character.generic.traits.IGenericTrait;
+import net.sf.anathema.character.generic.traits.GenericTrait;
 import net.sf.anathema.character.generic.traits.types.VirtueType;
 
 public class TypeVirtuePoolPart implements IVirtuePoolPart {
@@ -15,12 +15,12 @@ public class TypeVirtuePoolPart implements IVirtuePoolPart {
   }
 
   @Override
-  public FactorizedTrait createFactorizedTrait(IGenericTrait[] virtues) {
+  public FactorizedTrait createFactorizedTrait(GenericTrait[] virtues) {
     return new FactorizedTrait(getVirtue(virtues), multiplier);
   }
 
-  private IGenericTrait getVirtue(IGenericTrait[] traits) {
-    for (IGenericTrait trait : traits) {
+  private GenericTrait getVirtue(GenericTrait[] traits) {
+    for (GenericTrait trait : traits) {
       if (trait.getType() == virtueType) {
         return trait;
       }

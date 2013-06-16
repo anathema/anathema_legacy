@@ -2,7 +2,7 @@ package net.sf.anathema.character.impl.model;
 
 import net.sf.anathema.character.generic.health.HealthLevelType;
 import net.sf.anathema.character.generic.health.IHealthLevelTypeVisitor;
-import net.sf.anathema.character.generic.traits.IGenericTrait;
+import net.sf.anathema.character.generic.traits.GenericTrait;
 import net.sf.anathema.character.generic.traits.types.AttributeType;
 import net.sf.anathema.character.model.health.IHealthConfiguration;
 import net.sf.anathema.character.model.health.IHealthLevelProvider;
@@ -19,11 +19,11 @@ public class HealthConfiguration implements IHealthConfiguration {
   private final List<IPainToleranceProvider> painResistanceProviders = new ArrayList<>();
   private final OxBodyTechniqueArbitrator arbitrator;
 
-  public HealthConfiguration(IGenericTrait[] toughnessControllingTraits) {
+  public HealthConfiguration(GenericTrait[] toughnessControllingTraits) {
     this.arbitrator = new OxBodyTechniqueArbitrator(toughnessControllingTraits);
   }
 
-  public HealthConfiguration(IGenericTrait[] toughnessControllingTraits, ICoreTraitConfiguration config, String[] providers) {
+  public HealthConfiguration(GenericTrait[] toughnessControllingTraits, ICoreTraitConfiguration config, String[] providers) {
     this.arbitrator = new OxBodyTechniqueArbitrator(toughnessControllingTraits);
     addHealthLevelProvider(new DyingStaminaHealthLevelProvider(config));
     if (providers == null) {

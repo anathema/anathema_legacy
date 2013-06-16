@@ -1,7 +1,7 @@
 package net.sf.anathema.character.generic.framework.xml.essence;
 
 import net.sf.anathema.character.generic.template.essence.FactorizedTrait;
-import net.sf.anathema.character.generic.traits.IGenericTrait;
+import net.sf.anathema.character.generic.traits.GenericTrait;
 import org.apache.commons.lang3.builder.EqualsBuilder;
 
 import java.util.ArrayList;
@@ -30,7 +30,7 @@ public class EssencePoolConfiguration implements IEssencePoolConfiguration {
   }
 
   @Override
-  public FactorizedTrait[] createVirtueFactorizedTrait(IGenericTrait[] virtues) {
+  public FactorizedTrait[] createVirtueFactorizedTrait(GenericTrait[] virtues) {
     List<FactorizedTrait> traits = new ArrayList<>();
     for (IVirtuePoolPart part : virtuePoolParts) {
       Collections.addAll(traits, part.createFactorizedTrait(virtues));

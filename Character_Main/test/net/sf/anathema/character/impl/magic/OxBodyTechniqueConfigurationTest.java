@@ -9,7 +9,7 @@ import net.sf.anathema.character.generic.framework.additionaltemplate.model.ITra
 import net.sf.anathema.character.generic.health.HealthLevelType;
 import net.sf.anathema.character.generic.impl.magic.charm.special.OxBodyTechniqueCharm;
 import net.sf.anathema.character.generic.impl.traits.SimpleTraitTemplate;
-import net.sf.anathema.character.generic.traits.IGenericTrait;
+import net.sf.anathema.character.generic.traits.GenericTrait;
 import net.sf.anathema.character.generic.traits.ITraitTemplate;
 import net.sf.anathema.character.generic.traits.ITraitType;
 import net.sf.anathema.character.generic.traits.types.AbilityType;
@@ -48,7 +48,7 @@ public class OxBodyTechniqueConfigurationTest {
     FavorableTraitRules enduranceRules = new FavorableTraitRules(AbilityType.Resistance, enduranceTemplate, traitContext.getLimitationContext());
     endurance = new DefaultTrait(enduranceRules, new ICasteType[]{new DummyCasteType()}, traitContext, modelContext.getBasicCharacterContext(),
             modelContext.getCharacterListening(), new FriendlyValueChangeChecker(), new FriendlyIncrementChecker());
-    health = new HealthConfiguration(new IGenericTrait[]{endurance});
+    health = new HealthConfiguration(new GenericTrait[]{endurance});
     collection.addTestTrait(endurance);
     configuration =
             new OxBodyTechniqueConfiguration(traitContext, collection, null, new ITraitType[]{endurance.getType()}, health.getOxBodyLearnArbitrator(),

@@ -9,7 +9,7 @@ import net.sf.anathema.character.generic.impl.magic.charm.CharmGroup;
 import net.sf.anathema.character.generic.impl.magic.charm.CharmTree;
 import net.sf.anathema.character.generic.magic.ICharm;
 import net.sf.anathema.character.generic.magic.charms.ICharmTree;
-import net.sf.anathema.character.generic.traits.IGenericTrait;
+import net.sf.anathema.character.generic.traits.GenericTrait;
 import net.sf.anathema.character.generic.traits.types.AbilityType;
 import net.sf.anathema.character.generic.traits.types.ValuedTraitType;
 import net.sf.anathema.character.impl.model.charm.LearningCharmGroup;
@@ -73,11 +73,11 @@ public class LearningCharmGroupTest {
     String externalPrerequisiteId = "externalPrerquisite";
     String learCharmID = "learnCharm";
     DummyCharm internalPrerequisite =
-            new DummyCharm(internalPrerequisiteId, new ICharm[0], new IGenericTrait[]{new ValuedTraitType(AbilityType.Melee, 1)});
+            new DummyCharm(internalPrerequisiteId, new ICharm[0], new GenericTrait[]{new ValuedTraitType(AbilityType.Melee, 1)});
     DummyCharm externalPrerequisite =
-            new DummyCharm(externalPrerequisiteId, new ICharm[0], new IGenericTrait[]{new ValuedTraitType(AbilityType.Archery, 1)});
+            new DummyCharm(externalPrerequisiteId, new ICharm[0], new GenericTrait[]{new ValuedTraitType(AbilityType.Archery, 1)});
     DummyCharm learnCharm = new DummyCharm(learCharmID, new ICharm[]{internalPrerequisite, externalPrerequisite},
-            new IGenericTrait[]{new ValuedTraitType(AbilityType.Melee, 1)});
+            new GenericTrait[]{new ValuedTraitType(AbilityType.Melee, 1)});
     ICharmTree charmTree = new CharmTree(new ICharm[]{internalPrerequisite, externalPrerequisite, learnCharm});
     externalPrerequisite.addLearnFollowUpCharm(learnCharm);
     IExtendedCharmLearnableArbitrator learnableArbitrator =

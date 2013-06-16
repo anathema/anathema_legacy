@@ -5,7 +5,7 @@ import net.sf.anathema.character.generic.character.IGenericTraitCollection;
 import net.sf.anathema.character.generic.magic.IMagic;
 import net.sf.anathema.character.generic.template.creation.IGenericSpecialty;
 import net.sf.anathema.character.generic.template.experience.AbilityPointCosts;
-import net.sf.anathema.character.generic.traits.IGenericTrait;
+import net.sf.anathema.character.generic.traits.GenericTrait;
 import net.sf.anathema.character.impl.model.creation.bonus.ability.SpecialtyCalculator;
 import net.sf.anathema.character.library.trait.Trait;
 
@@ -37,7 +37,7 @@ public class AdditionalBonusPointPoolCalculator {
     this.pointsSpent = 0;
   }
 
-  public int spend(IGenericTrait trait, int pointsToSpent) {
+  public int spend(GenericTrait trait, int pointsToSpent) {
     if (trait.getType() == null || !poolTemplate.isAllowedForTrait(collection, trait)) {
       return 0;
     }

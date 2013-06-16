@@ -5,7 +5,7 @@ import net.sf.anathema.character.generic.character.IGenericTraitCollection;
 import net.sf.anathema.character.generic.magic.IMagic;
 import net.sf.anathema.character.generic.template.creation.IGenericSpecialty;
 import net.sf.anathema.character.generic.template.experience.AbilityPointCosts;
-import net.sf.anathema.character.generic.traits.IGenericTrait;
+import net.sf.anathema.character.generic.traits.GenericTrait;
 import net.sf.anathema.character.library.trait.Trait;
 
 import java.util.ArrayList;
@@ -38,7 +38,7 @@ public class AdditionalBonusPointPoolManagement implements IAdditionalBonusPoint
   }
 
   @Override
-  public void spendOn(IGenericTrait trait, int bonusCost) {
+  public void spendOn(GenericTrait trait, int bonusCost) {
     if (bonusCost == 0) {
       return;
     }

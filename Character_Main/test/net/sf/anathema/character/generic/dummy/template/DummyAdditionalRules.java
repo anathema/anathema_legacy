@@ -6,7 +6,7 @@ import net.sf.anathema.character.generic.additionalrules.IAdditionalMagicLearnPo
 import net.sf.anathema.character.generic.additionalrules.IAdditionalRules;
 import net.sf.anathema.character.generic.additionalrules.IAdditionalTraitRules;
 import net.sf.anathema.character.generic.character.IGenericTraitCollection;
-import net.sf.anathema.character.generic.traits.IGenericTrait;
+import net.sf.anathema.character.generic.traits.GenericTrait;
 
 public final class DummyAdditionalRules implements IAdditionalRules, IAdditionalTraitRules {
 
@@ -36,7 +36,7 @@ public final class DummyAdditionalRules implements IAdditionalRules, IAdditional
   }
 
   @Override
-  public boolean isAllowedTraitValue(IGenericTrait trait, IGenericTraitCollection collection) {
+  public boolean isAllowedTraitValue(GenericTrait trait, IGenericTraitCollection collection) {
     return true;
   }
 

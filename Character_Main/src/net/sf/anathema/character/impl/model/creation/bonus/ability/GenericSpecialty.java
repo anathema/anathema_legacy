@@ -1,18 +1,18 @@
 package net.sf.anathema.character.impl.model.creation.bonus.ability;
 
 import net.sf.anathema.character.generic.template.creation.IGenericSpecialty;
-import net.sf.anathema.character.generic.traits.IGenericTrait;
+import net.sf.anathema.character.generic.traits.GenericTrait;
 
 public class GenericSpecialty implements IGenericSpecialty {
 
-  private final IGenericTrait trait;
+  private final GenericTrait trait;
 
-  public GenericSpecialty(IGenericTrait trait) {
+  public GenericSpecialty(GenericTrait trait) {
     this.trait = trait;
   }
 
   @Override
-  public IGenericTrait getBasicTrait() {
+  public GenericTrait getBasicTrait() {
     return trait;
   }
 }

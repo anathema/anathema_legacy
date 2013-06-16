@@ -2,7 +2,7 @@ package net.sf.anathema.character.generic.persistence.load.load;
 
 import net.sf.anathema.character.generic.impl.magic.persistence.builder.prerequisite.ITraitPrerequisiteBuilder;
 import net.sf.anathema.character.generic.impl.magic.persistence.builder.prerequisite.TraitPrerequisiteBuilder;
-import net.sf.anathema.character.generic.traits.IGenericTrait;
+import net.sf.anathema.character.generic.traits.GenericTrait;
 import net.sf.anathema.character.generic.traits.types.AbilityType;
 import net.sf.anathema.lib.exception.PersistenceException;
 import net.sf.anathema.lib.xml.DocumentUtilities;
@@ -19,7 +19,7 @@ public class TraitPrerequisiteBuilderTest {
   public void testTraitPrerequisiteBuilder() throws Exception {
     String xml = "<trait id=\"Larceny\" value=\"3\"/>";
     Element rootElement = DocumentUtilities.read(xml).getRootElement();
-    IGenericTrait trait = builder.build(rootElement);
+    GenericTrait trait = builder.build(rootElement);
     assertEquals(AbilityType.Larceny, trait.getType());
     assertEquals(3, trait.getCurrentValue());
   }

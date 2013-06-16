@@ -5,7 +5,7 @@ import net.sf.anathema.character.generic.framework.additionaltemplate.listening.
 import net.sf.anathema.character.generic.framework.additionaltemplate.listening.ICharacterChangeListener;
 import net.sf.anathema.character.generic.framework.additionaltemplate.listening.VirtueChangeListener;
 import net.sf.anathema.character.generic.framework.additionaltemplate.model.ICharacterModelContext;
-import net.sf.anathema.character.generic.traits.IGenericTrait;
+import net.sf.anathema.character.generic.traits.GenericTrait;
 import net.sf.anathema.character.generic.traits.types.OtherTraitType;
 import net.sf.anathema.character.generic.traits.types.VirtueType;
 import net.sf.anathema.character.intimacies.presenter.IIntimaciesModel;
@@ -85,7 +85,7 @@ public class IntimaciesModel extends AbstractRemovableEntryModel<IIntimacy> impl
     return 5;
   }
 
-  private IGenericTrait getConviction() {
+  private GenericTrait getConviction() {
     return context.getTraitCollection().getTrait(VirtueType.Conviction);
   }
 

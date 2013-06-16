@@ -1,12 +1,12 @@
 package net.sf.anathema.character.library.trait;
 
 import net.sf.anathema.character.generic.framework.additionaltemplate.model.LearnTrait;
-import net.sf.anathema.character.generic.traits.IGenericTrait;
+import net.sf.anathema.character.generic.traits.GenericTrait;
 import net.sf.anathema.character.library.ITraitFavorization;
 import net.sf.anathema.lib.control.IChangeListener;
 import net.sf.anathema.lib.control.IIntValueChangedListener;
 
-public interface Trait extends LearnTrait, IGenericTrait {
+public interface Trait extends LearnTrait, GenericTrait {
 
   int getCreationValue();
 

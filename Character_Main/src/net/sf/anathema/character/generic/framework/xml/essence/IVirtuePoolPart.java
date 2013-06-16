@@ -1,9 +1,9 @@
 package net.sf.anathema.character.generic.framework.xml.essence;
 
 import net.sf.anathema.character.generic.template.essence.FactorizedTrait;
-import net.sf.anathema.character.generic.traits.IGenericTrait;
+import net.sf.anathema.character.generic.traits.GenericTrait;
 
 public interface IVirtuePoolPart {
 
-  FactorizedTrait createFactorizedTrait(IGenericTrait[] virtues);
+  FactorizedTrait createFactorizedTrait(GenericTrait[] virtues);
 }

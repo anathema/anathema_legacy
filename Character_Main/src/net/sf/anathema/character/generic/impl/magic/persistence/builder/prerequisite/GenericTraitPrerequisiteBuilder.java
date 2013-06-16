@@ -1,6 +1,6 @@
 package net.sf.anathema.character.generic.impl.magic.persistence.builder.prerequisite;
 
-import net.sf.anathema.character.generic.traits.IGenericTrait;
+import net.sf.anathema.character.generic.traits.GenericTrait;
 import net.sf.anathema.character.generic.traits.ITraitType;
 import net.sf.anathema.character.generic.traits.types.ValuedTraitType;
 import net.sf.anathema.lib.exception.PersistenceException;
@@ -14,7 +14,7 @@ public class GenericTraitPrerequisiteBuilder implements ITraitPrerequisiteBuilde
   private ITraitType type;
 
   @Override
-  public IGenericTrait build(Element element) throws PersistenceException {
+  public GenericTrait build(Element element) throws PersistenceException {
     int minValue = ElementUtilities.getRequiredIntAttrib(element, ATTRIB_VALUE);
     return new ValuedTraitType(type, minValue);
   }

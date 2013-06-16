@@ -1,6 +1,6 @@
 package net.sf.anathema.character.generic.traits;
 
-public interface IGenericTrait {
+public interface GenericTrait {
 
   ITraitType getType();
 

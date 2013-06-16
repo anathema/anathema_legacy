@@ -1,6 +1,6 @@
 package net.sf.anathema.character.impl.model;
 
-import net.sf.anathema.character.generic.traits.IGenericTrait;
+import net.sf.anathema.character.generic.traits.GenericTrait;
 import net.sf.anathema.character.model.charm.special.IOxBodyTechniqueConfiguration;
 import net.sf.anathema.character.model.health.IOxBodyTechniqueArbitrator;
 
@@ -9,9 +9,9 @@ import java.util.List;
 
 public class OxBodyTechniqueArbitrator implements IOxBodyTechniqueArbitrator {
   private final List<IOxBodyTechniqueConfiguration> oxBodyList = new ArrayList<>();
-  private final IGenericTrait[] controllingTraits;
+  private final GenericTrait[] controllingTraits;
 
-  public OxBodyTechniqueArbitrator(IGenericTrait[] toughnessControllingTraits) {
+  public OxBodyTechniqueArbitrator(GenericTrait[] toughnessControllingTraits) {
     this.controllingTraits = toughnessControllingTraits;
   }
 
@@ -24,7 +24,7 @@ public class OxBodyTechniqueArbitrator implements IOxBodyTechniqueArbitrator {
   public boolean isIncrementAllowed(int increment) {
     int oxBodyCount = 0;
     int maxCount = Integer.MAX_VALUE;
-    for (IGenericTrait trait : controllingTraits) {
+    for (GenericTrait trait : controllingTraits) {
       maxCount = Math.min(maxCount, trait.getCurrentValue());
     }
     for (IOxBodyTechniqueConfiguration configuration : oxBodyList) {

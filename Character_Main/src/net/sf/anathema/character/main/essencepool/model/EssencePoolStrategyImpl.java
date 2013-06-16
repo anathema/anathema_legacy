@@ -13,7 +13,7 @@ import net.sf.anathema.character.generic.template.essence.FactorizedTrait;
 import net.sf.anathema.character.generic.template.essence.FactorizedTraitSumCalculator;
 import net.sf.anathema.character.generic.template.essence.IEssenceTemplate;
 import net.sf.anathema.character.generic.template.magic.IGenericCharmConfiguration;
-import net.sf.anathema.character.generic.traits.IGenericTrait;
+import net.sf.anathema.character.generic.traits.GenericTrait;
 import net.sf.anathema.character.generic.traits.types.OtherTraitType;
 import net.sf.anathema.character.generic.traits.types.VirtueType;
 import net.sf.anathema.lib.control.IChangeListener;
@@ -184,16 +184,16 @@ public class EssencePoolStrategyImpl implements EssencePoolStrategy {
     return expenditure;
   }
 
-  private IGenericTrait[] getVirtues() {
-    return new IGenericTrait[]{traitCollection.getTrait(VirtueType.Compassion), traitCollection.getTrait(VirtueType.Conviction),
+  private GenericTrait[] getVirtues() {
+    return new GenericTrait[]{traitCollection.getTrait(VirtueType.Compassion), traitCollection.getTrait(VirtueType.Conviction),
             traitCollection.getTrait(VirtueType.Temperance), traitCollection.getTrait(VirtueType.Valor)};
   }
 
-  private IGenericTrait getWillpower() {
+  private GenericTrait getWillpower() {
     return traitCollection.getTrait(OtherTraitType.Willpower);
   }
 
-  private IGenericTrait getEssence() {
+  private GenericTrait getEssence() {
     return traitCollection.getTrait(OtherTraitType.Essence);
   }
 

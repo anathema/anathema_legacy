@@ -1,12 +1,12 @@
 package net.sf.anathema.character.generic.template.essence;
 
-import net.sf.anathema.character.generic.traits.IGenericTrait;
+import net.sf.anathema.character.generic.traits.GenericTrait;
 
 public interface IEssenceTemplate {
 
-  FactorizedTrait[] getPersonalTraits(IGenericTrait willpower, IGenericTrait[] virtues, IGenericTrait essence);
+  FactorizedTrait[] getPersonalTraits(GenericTrait willpower, GenericTrait[] virtues, GenericTrait essence);
 
-  FactorizedTrait[] getPeripheralTraits(IGenericTrait willpower, IGenericTrait[] virtues, IGenericTrait essence);
+  FactorizedTrait[] getPeripheralTraits(GenericTrait willpower, GenericTrait[] virtues, GenericTrait essence);
 
   boolean isEssenceUser();
 }

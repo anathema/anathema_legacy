@@ -2,7 +2,7 @@ package net.sf.anathema.character.intimacies.model;
 
 import net.sf.anathema.character.generic.framework.additionaltemplate.model.ITraitContext;
 import net.sf.anathema.character.generic.impl.traits.SimpleTraitTemplate;
-import net.sf.anathema.character.generic.traits.IGenericTrait;
+import net.sf.anathema.character.generic.traits.GenericTrait;
 import net.sf.anathema.character.generic.traits.ITraitTemplate;
 import net.sf.anathema.character.generic.traits.LowerableState;
 import net.sf.anathema.character.generic.traits.types.VirtueType;
@@ -19,11 +19,11 @@ public class Intimacy implements IIntimacy {
 
   private final String name;
   private final Trait trait;
-  private final IGenericTrait maxValueTrait;
+  private final GenericTrait maxValueTrait;
   private boolean complete;
   private final Announcer<IBooleanValueChangedListener> control = Announcer.to(IBooleanValueChangedListener.class);
 
-  public Intimacy(String name, Integer initialValue, final IGenericTrait maxValueTrait, ITraitContext context) {
+  public Intimacy(String name, Integer initialValue, final GenericTrait maxValueTrait, ITraitContext context) {
     this.name = name;
     this.maxValueTrait = maxValueTrait;
     ITraitTemplate template = SimpleTraitTemplate.createVirtueLimitedTemplate(

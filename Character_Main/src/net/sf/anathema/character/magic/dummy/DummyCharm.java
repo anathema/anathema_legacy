@@ -17,7 +17,7 @@ import net.sf.anathema.character.generic.magic.charms.duration.IDuration;
 import net.sf.anathema.character.generic.magic.charms.duration.SimpleDuration;
 import net.sf.anathema.character.generic.magic.charms.type.CharmType;
 import net.sf.anathema.character.generic.rules.IExaltedSourceBook;
-import net.sf.anathema.character.generic.traits.IGenericTrait;
+import net.sf.anathema.character.generic.traits.GenericTrait;
 import net.sf.anathema.character.generic.traits.ITraitType;
 import net.sf.anathema.character.generic.traits.types.ValuedTraitType;
 import net.sf.anathema.character.generic.type.ICharacterType;
@@ -35,7 +35,7 @@ public class DummyCharm extends SimpleIdentifier implements ICharm {
 
   private IDuration duration;
   private IComboRestrictions comboRestrictions = new ComboRestrictions();
-  private IGenericTrait[] prerequisites;
+  private GenericTrait[] prerequisites;
   private Set<ICharm> parentCharms;
   private Set<ICharm> learnFollowUpCharms = new HashSet<>();
   private List<IndirectCharmRequirement> requirements = new ArrayList<>();
@@ -50,7 +50,7 @@ public class DummyCharm extends SimpleIdentifier implements ICharm {
 
   private boolean isGeneric = false;
 
-  public DummyCharm(String duration, CharmType charmType, IComboRestrictions comboRestrictions, IGenericTrait[] prerequisites) {
+  public DummyCharm(String duration, CharmType charmType, IComboRestrictions comboRestrictions, GenericTrait[] prerequisites) {
     super("DummyCharmDefaultId");
     this.prerequisites = prerequisites;
     this.duration = SimpleDuration.getDuration(duration);
@@ -67,10 +67,10 @@ public class DummyCharm extends SimpleIdentifier implements ICharm {
   }
 
   public DummyCharm(String id, ICharm[] parents) {
-    this(id, parents, new IGenericTrait[0]);
+    this(id, parents, new GenericTrait[0]);
   }
 
-  public DummyCharm(String id, ICharm[] parents, IGenericTrait[] prerequisites) {
+  public DummyCharm(String id, ICharm[] parents, GenericTrait[] prerequisites) {
     super(id);
     this.parentCharms = new LinkedHashSet<>();
     Collections.addAll(parentCharms, parents);
@@ -125,7 +125,7 @@ public class DummyCharm extends SimpleIdentifier implements ICharm {
   }
 
   @Override
-  public IGenericTrait getEssence() {
+  public GenericTrait getEssence() {
     return null;
   }
 
@@ -155,7 +155,7 @@ public class DummyCharm extends SimpleIdentifier implements ICharm {
   }
 
   @Override
-  public IGenericTrait[] getPrerequisites() {
+  public GenericTrait[] getPrerequisites() {
     return prerequisites;
   }
 
@@ -211,7 +211,7 @@ public class DummyCharm extends SimpleIdentifier implements ICharm {
     if (prerequisites.length <= 0) {
       return false;
     }
-    IGenericTrait trait = traitCollection.getTrait(getPrimaryTraitType());
+    GenericTrait trait = traitCollection.getTrait(getPrimaryTraitType());
     return trait.isCasteOrFavored();
   }
 

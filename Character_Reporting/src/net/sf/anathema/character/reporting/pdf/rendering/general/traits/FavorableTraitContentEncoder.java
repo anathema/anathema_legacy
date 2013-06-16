@@ -2,7 +2,7 @@ package net.sf.anathema.character.reporting.pdf.rendering.general.traits;
 
 import com.itextpdf.text.pdf.PdfContentByte;
 import net.sf.anathema.character.generic.character.IGenericTraitCollection;
-import net.sf.anathema.character.generic.traits.IGenericTrait;
+import net.sf.anathema.character.generic.traits.GenericTrait;
 import net.sf.anathema.character.generic.traits.ITraitType;
 import net.sf.anathema.character.generic.traits.groups.IIdentifiedTraitTypeGroup;
 import net.sf.anathema.character.reporting.pdf.content.ReportSession;
@@ -80,7 +80,7 @@ public class FavorableTraitContentEncoder<C extends FavorableTraitContent> exten
         encodeMarker(graphics, new Position(markerX, yPosition + 1));
       }
       IGenericTraitCollection traitCollection = content.getTraitCollection();
-      IGenericTrait trait = traitCollection.getTrait(traitType);
+      GenericTrait trait = traitCollection.getTrait(traitType);
       String label = content.getTraitLabel(traitType);
       if (content.shouldShowExcellencies()) {
         boolean[] excellencyLearned = content.hasExcellenciesLearned(traitType);
@@ -102,13 +102,13 @@ public class FavorableTraitContentEncoder<C extends FavorableTraitContent> exten
     graphics.drawVerticalText(groupLabel, position, PdfContentByte.ALIGN_CENTER);
   }
 
-  private float encodeFavorableTrait(SheetGraphics graphics, FavorableTraitContent content, String label, IGenericTrait trait, Position position, float width) {
+  private float encodeFavorableTrait(SheetGraphics graphics, FavorableTraitContent content, String label, GenericTrait trait, Position position, float width) {
     int value = trait.getCurrentValue();
     boolean favored = trait.isCasteOrFavored();
     return traitEncoder.encodeWithTextAndRectangle(graphics, label, position, width, value, favored, content.getTraitMax());
   }
 
-  private float encodeFavorableTrait(SheetGraphics graphics, FavorableTraitContent content, String label, IGenericTrait trait, boolean[] excellencyLearned, Position position, float width) {
+  private float encodeFavorableTrait(SheetGraphics graphics, FavorableTraitContent content, String label, GenericTrait trait, boolean[] excellencyLearned, Position position, float width) {
     int value = trait.getCurrentValue();
     boolean favored = trait.isCasteOrFavored();
     return traitEncoder.encodeWithExcellencies(graphics, label, position, width, value, favored, excellencyLearned, content.getTraitMax());

@@ -21,7 +21,7 @@ import net.sf.anathema.character.generic.magic.charms.duration.IDuration;
 import net.sf.anathema.character.generic.magic.charms.type.ICharmTypeModel;
 import net.sf.anathema.character.generic.magic.general.ICostList;
 import net.sf.anathema.character.generic.rules.IExaltedSourceBook;
-import net.sf.anathema.character.generic.traits.IGenericTrait;
+import net.sf.anathema.character.generic.traits.GenericTrait;
 import net.sf.anathema.character.generic.traits.ITraitType;
 import net.sf.anathema.character.generic.traits.types.OtherTraitType;
 import net.sf.anathema.character.generic.type.ICharacterType;
@@ -125,12 +125,12 @@ public class Charm extends SimpleIdentifier implements ICharm {
   }
 
   @Override
-  public IGenericTrait getEssence() {
+  public GenericTrait getEssence() {
     return prerequisisteList.getEssence();
   }
 
   @Override
-  public IGenericTrait[] getPrerequisites() {
+  public GenericTrait[] getPrerequisites() {
     return prerequisisteList.getPrerequisites();
   }
 
@@ -372,7 +372,7 @@ public class Charm extends SimpleIdentifier implements ICharm {
     if (hasAttribute(new SimpleIdentifier("MartialArts")) && traitCollection.getTrait(MartialArts).isCasteOrFavored()) {
       return true;
     }
-    IGenericTrait trait = traitCollection.getTrait(primaryTraitType);
+    GenericTrait trait = traitCollection.getTrait(primaryTraitType);
     return trait.isCasteOrFavored();
   }
 

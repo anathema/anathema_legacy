@@ -1,7 +1,7 @@
 package net.sf.anathema.character.library.trait;
 
-import net.sf.anathema.character.generic.traits.IGenericTrait;
+import net.sf.anathema.character.generic.traits.GenericTrait;
 
 public interface IAdditionalTraitBonusPointManagement {
-  void spendOn(IGenericTrait trait, int bonusCost);
+  void spendOn(GenericTrait trait, int bonusCost);
 }

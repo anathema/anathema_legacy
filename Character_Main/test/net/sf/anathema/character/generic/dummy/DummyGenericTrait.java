@@ -1,9 +1,9 @@
 package net.sf.anathema.character.generic.dummy;
 
-import net.sf.anathema.character.generic.traits.IGenericTrait;
+import net.sf.anathema.character.generic.traits.GenericTrait;
 import net.sf.anathema.character.generic.traits.ITraitType;
 
-public class DummyGenericTrait implements IGenericTrait {
+public class DummyGenericTrait implements GenericTrait {
 
   private final ITraitType type;
   private final boolean isFavored;

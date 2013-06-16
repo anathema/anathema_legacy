@@ -3,13 +3,13 @@ package net.sf.anathema.character.dummy.generic;
 import net.sf.anathema.character.generic.magic.IMagic;
 import net.sf.anathema.character.generic.template.creation.IGenericSpecialty;
 import net.sf.anathema.character.generic.template.experience.AbilityPointCosts;
-import net.sf.anathema.character.generic.traits.IGenericTrait;
+import net.sf.anathema.character.generic.traits.GenericTrait;
 import net.sf.anathema.character.impl.model.creation.bonus.additional.IAdditionalBonusPointManagment;
 
 public class DummyAdditionalBonusPointManagment implements IAdditionalBonusPointManagment {
 
   @Override
-  public void spendOn(IGenericTrait trait, int bonusCost) {
+  public void spendOn(GenericTrait trait, int bonusCost) {
     // Nothing to do
   }
 

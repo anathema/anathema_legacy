@@ -4,7 +4,7 @@ import net.sf.anathema.character.generic.framework.additionaltemplate.model.ICha
 import net.sf.anathema.character.generic.magic.ICharm;
 import net.sf.anathema.character.generic.magic.charms.special.IPrerequisiteModifyingCharm;
 import net.sf.anathema.character.generic.magic.charms.special.TraitRequirementChecker;
-import net.sf.anathema.character.generic.traits.IGenericTrait;
+import net.sf.anathema.character.generic.traits.GenericTrait;
 import net.sf.anathema.character.model.charm.SpecialCharmLearnArbitrator;
 
 public class CharmTraitRequirementChecker implements TraitRequirementChecker {
@@ -21,7 +21,7 @@ public class CharmTraitRequirementChecker implements TraitRequirementChecker {
 
   @SuppressWarnings("RedundantIfStatement")
   public boolean areTraitMinimumsSatisfied(ICharm charm) {
-    for (IGenericTrait prerequisite : charm.getPrerequisites()) {
+    for (GenericTrait prerequisite : charm.getPrerequisites()) {
       if (!isMinimumSatisfied(charm, prerequisite)) {
         return false;
       }
@@ -33,8 +33,8 @@ public class CharmTraitRequirementChecker implements TraitRequirementChecker {
   }
 
   @Override
-  public boolean isMinimumSatisfied(ICharm charm, IGenericTrait prerequisite) {
-    IGenericTrait actualTrait = context.getTraitCollection().getTrait(prerequisite.getType());
+  public boolean isMinimumSatisfied(ICharm charm, GenericTrait prerequisite) {
+    GenericTrait actualTrait = context.getTraitCollection().getTrait(prerequisite.getType());
     if (actualTrait == null) {
       return false;
     }
