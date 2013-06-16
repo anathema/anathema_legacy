@@ -6,4 +6,6 @@ import net.sf.anathema.framework.view.util.ContentProperties;
 public interface MultipleContentView {
 
   void addView(IView view, ContentProperties tabProperties);
+
+  void finishInitialization();
 }

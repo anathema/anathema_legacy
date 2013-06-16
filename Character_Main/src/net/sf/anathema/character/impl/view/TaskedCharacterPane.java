@@ -43,7 +43,6 @@ public class TaskedCharacterPane implements CharacterPane, OverviewDisplay {
   public MultipleContentView addMultipleContentView(String header) {
     final JXTaskPane pane = new JXTaskPane();
     pane.setTitle(header);
-    paneContainer.add(pane);
     return new TaskedMultipleContentView(pane);
   }
 
@@ -71,6 +70,7 @@ public class TaskedCharacterPane implements CharacterPane, OverviewDisplay {
 
   private class TaskedMultipleContentView implements MultipleContentView {
     private final JXTaskPane pane;
+    private boolean isEmpty = true;
 
     public TaskedMultipleContentView(JXTaskPane pane) {
       this.pane = pane;
@@ -81,6 +81,15 @@ public class TaskedCharacterPane implements CharacterPane, OverviewDisplay {
       String name = tabProperties.getName();
       viewPanel.add(createContainer(view, name), name);
       pane.add(new SwitchToView(name));
+      isEmpty = false;
+    }
+
+    @Override
+    public void finishInitialization() {
+      if (isEmpty) {
+        return;
+      }
+      paneContainer.add(pane);
     }
   }
 
