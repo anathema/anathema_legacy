@@ -266,7 +266,7 @@ public class GenericCharacter implements IGenericCharacter {
 
   @Override
   public IIdentifiedTraitTypeGroup[] getAbilityTypeGroups() {
-    return getTraitConfiguration().getAbilityTypeGroups();
+    return character.getAbilities().getAbilityTypeGroups();
   }
 
   @Override

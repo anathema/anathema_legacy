@@ -11,7 +11,7 @@ public class AbilitiesPresenter {
   private final FavorableTraitConfigurationPresenter presenter;
 
   public AbilitiesPresenter(ICharacter character, Resources resources, IGroupedFavorableTraitConfigurationView view) {
-    IIdentifiedTraitTypeGroup[] traitTypeGroups = character.getTraitConfiguration().getAbilityTypeGroups();
+    IIdentifiedTraitTypeGroup[] traitTypeGroups = character.getAbilities().getAbilityTypeGroups();
     view.initGui(new ColumnCount(2));
     this.presenter = new FavorableTraitConfigurationPresenter(traitTypeGroups, character, view, resources);
   }

@@ -17,10 +17,11 @@ import net.sf.anathema.character.impl.model.charm.ComboConfiguration;
 import net.sf.anathema.character.impl.model.context.CharacterListening;
 import net.sf.anathema.character.impl.model.context.CharacterModelContext;
 import net.sf.anathema.character.impl.model.statistics.ExtendedConfiguration;
-import net.sf.anathema.character.main.attributes.model.temporary.AttributeModel;
-import net.sf.anathema.character.main.attributes.model.temporary.DefaultAttributeModel;
 import net.sf.anathema.character.impl.model.traits.CoreTraitConfiguration;
 import net.sf.anathema.character.impl.model.traits.listening.CharacterTraitListening;
+import net.sf.anathema.character.main.abilities.AbilityModel;
+import net.sf.anathema.character.main.attributes.model.temporary.AttributeModel;
+import net.sf.anathema.character.main.attributes.model.temporary.DefaultAttributeModel;
 import net.sf.anathema.character.main.description.model.CharacterDescription;
 import net.sf.anathema.character.main.description.model.CharacterDescriptionFetcher;
 import net.sf.anathema.character.main.essencepool.model.EssencePoolModel;
@@ -189,6 +190,11 @@ public class ExaltedCharacter implements ICharacter {
   @Override
   public AttributeModel getAttributes() {
     return attributeConfiguration;
+  }
+
+  @Override
+  public AbilityModel getAbilities()  {
+    return traitConfiguration.getAbilities();
   }
 
   public EssencePoolModel getEssencePool() {
