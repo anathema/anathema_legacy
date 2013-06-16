@@ -5,7 +5,6 @@ import net.miginfocom.swing.MigLayout;
 import net.sf.anathema.character.library.overview.IOverviewCategory;
 import net.sf.anathema.character.library.overview.OverviewCategory;
 import net.sf.anathema.character.library.removableentry.presenter.IRemovableEntryView;
-import net.sf.anathema.character.library.removableentry.view.AbstractRemovableEntryView;
 import net.sf.anathema.character.library.removableentry.view.RemovableStringView;
 import net.sf.anathema.character.library.trait.Trait;
 import net.sf.anathema.character.linguistics.presenter.ILinguisticsView;
@@ -22,7 +21,7 @@ import javax.swing.ListCellRenderer;
 
 import static net.sf.anathema.lib.gui.layout.LayoutUtils.withoutInsets;
 
-public class LinguisticsView extends AbstractRemovableEntryView<IRemovableEntryView> implements IView, ILinguisticsView {
+public class LinguisticsView implements IView, ILinguisticsView {
 
   private final JPanel selectionPanel = new JPanel(new MigLayout(withoutInsets().fillX()));
   private final JPanel entryPanel = new JPanel(new MigLayout(withoutInsets().wrapAfter(2).fillX()));
@@ -49,21 +48,21 @@ public class LinguisticsView extends AbstractRemovableEntryView<IRemovableEntryV
 
   @Override
   public void removeEntryView(IRemovableEntryView removableView) {
-    super.removeEntryView(removableView);
+    removableView.delete();
     entryPanel.repaint();
   }
 
   @Override
   public IButtonControlledObjectSelectionView<Object> addSelectionView(
-      String labelText,
-      ITextFieldComboBoxEditor editor,
-      ListCellRenderer renderer,
-      RelativePath addIcon) {
+          String labelText,
+          ITextFieldComboBoxEditor editor,
+          ListCellRenderer renderer,
+          RelativePath addIcon) {
     ButtonControlledObjectSelectionView<Object> objectSelectionView = new ButtonControlledObjectSelectionView<>(
-        renderer,
-        addIcon,
-        labelText,
-        editor);
+            renderer,
+            addIcon,
+            labelText,
+            editor);
     objectSelectionView.addComponents(selectionPanel);
     return objectSelectionView;
   }

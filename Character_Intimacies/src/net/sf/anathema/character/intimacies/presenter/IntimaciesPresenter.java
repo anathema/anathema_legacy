@@ -8,13 +8,14 @@ import net.sf.anathema.character.library.intvalue.IRemovableTraitView;
 import net.sf.anathema.character.library.intvalue.IToggleButtonTraitView;
 import net.sf.anathema.character.library.overview.IOverviewCategory;
 import net.sf.anathema.character.library.removableentry.presenter.IRemovableEntryListener;
-import net.sf.anathema.character.library.selection.AbstractStringEntryTraitPresenter;
+import net.sf.anathema.character.library.removableentry.presenter.IRemovableEntryView;
 import net.sf.anathema.character.library.selection.IStringSelectionView;
 import net.sf.anathema.character.library.trait.presenter.TraitPresenter;
 import net.sf.anathema.framework.presenter.resources.BasicUi;
 import net.sf.anathema.interaction.Command;
 import net.sf.anathema.lib.control.IBooleanValueChangedListener;
 import net.sf.anathema.lib.control.IChangeListener;
+import net.sf.anathema.lib.control.ObjectValueListener;
 import net.sf.anathema.lib.control.legality.LegalityColorProvider;
 import net.sf.anathema.lib.control.legality.LegalityFontProvider;
 import net.sf.anathema.lib.control.legality.ValueLegalityState;
@@ -23,16 +24,20 @@ import net.sf.anathema.lib.resources.Resources;
 import net.sf.anathema.lib.workflow.labelledvalue.ILabelledAlotmentView;
 import net.sf.anathema.lib.workflow.labelledvalue.IValueView;
 
-public class IntimaciesPresenter extends AbstractStringEntryTraitPresenter<IIntimacy> implements Presenter {
+import java.util.HashMap;
+import java.util.Map;
+
+public class IntimaciesPresenter implements Presenter {
 
   private final IIntimaciesView view;
   private final Resources resources;
   private final IAdditionalModel additionalModel;
   private final IIntimaciesModel model;
 
+  private final Map<IIntimacy, IRemovableTraitView<?>> viewsByEntry = new HashMap<>();
+
   public IntimaciesPresenter(IIntimaciesModel model, IAdditionalModel additionalModel, IIntimaciesView view,
                              Resources resources) {
-    super(model, view);
     this.model = model;
     this.additionalModel = additionalModel;
     this.view = view;
@@ -135,7 +140,6 @@ public class IntimaciesPresenter extends AbstractStringEntryTraitPresenter<IInti
     alotmentView.setFontStyle(new LegalityFontProvider().getFontStyle(state));
   }
 
-  @Override
   protected IRemovableTraitView<?> createSubView(BasicUi basicUi, final IIntimacy intimacy) {
     final IRemovableTraitView<IToggleButtonTraitView<?>> intimacyView = view.addEntryView(basicUi.getRemoveIconPath(), null,
             intimacy.getName());
@@ -162,5 +166,52 @@ public class IntimaciesPresenter extends AbstractStringEntryTraitPresenter<IInti
     });
     intimacyView.getInnerView().setButtonState(intimacy.isComplete(), true);
     return intimacyView;
+  }
+
+
+  protected void initModelListening(final BasicUi basicUi, final IStringSelectionView selectionView) {
+    model.addModelChangeListener(new IRemovableEntryListener<IIntimacy>() {
+      @Override
+      public void entryAdded(IIntimacy v) {
+        addSubView(basicUi, v);
+        reset(selectionView);
+      }
+
+      @Override
+      public void entryRemoved(IIntimacy v) {
+        IRemovableEntryView removableView = viewsByEntry.get(v);
+        view.removeEntryView(removableView);
+      }
+
+      @Override
+      public void entryAllowed(boolean complete) {
+        selectionView.setAddButtonEnabled(complete);
+      }
+    });
+  }
+
+  protected final void addSubView(BasicUi basicUi, IIntimacy v) {
+    IRemovableTraitView<?> subView = createSubView(basicUi, v);
+    viewsByEntry.put(v, subView);
+  }
+
+  protected final void initSelectionViewListening(IStringSelectionView selectionView) {
+    selectionView.addTextChangeListener(new ObjectValueListener<String>() {
+      @Override
+      public void valueChanged(String newValue) {
+        model.setCurrentName(newValue);
+      }
+    });
+    selectionView.addAddButtonListener(new Command() {
+      @Override
+      public void execute() {
+        model.commitSelection();
+      }
+    });
+  }
+
+  protected final void reset(IStringSelectionView selectionView) {
+    selectionView.clear();
+    model.setCurrentName(null);
   }
 }
