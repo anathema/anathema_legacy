@@ -24,7 +24,7 @@ import static net.sf.anathema.character.library.trait.favorable.FavorableState.F
 
 public class FavorableTraitConfigurationPresenter {
 
-  private final IGroupedFavorableTraitConfigurationView configurationView;
+  private final IGroupedFavorableTraitConfigurationView view;
   private final IdentityMapping<Trait, IToggleButtonTraitView<?>> traitViewsByTrait = new IdentityMapping<>();
   private final Resources resources;
   private final IIdentifiedTraitTypeGroup[] traitTypeGroups;
@@ -34,19 +34,19 @@ public class FavorableTraitConfigurationPresenter {
   private final IPresentationProperties presentationProperties;
 
   public FavorableTraitConfigurationPresenter(IIdentifiedTraitTypeGroup[] traitTypeGroups, ICharacter character,
-                                              IGroupedFavorableTraitConfigurationView configurationView, Resources resources) {
+                                              IGroupedFavorableTraitConfigurationView view, Resources resources) {
     this.traitTypeGroups = traitTypeGroups;
     this.traitConfiguration = character.getTraitConfiguration();
     this.basicCharacterData = character.getCharacterContext().getBasicCharacterContext();
     this.characterListening = character.getCharacterContext().getCharacterListening();
     this.presentationProperties = character.getCharacterTemplate().getPresentationProperties();
     this.resources = resources;
-    this.configurationView = configurationView;
+    this.view = view;
   }
 
   public void init(String typePrefix) {
     for (IIdentifiedTraitTypeGroup traitTypeGroup : traitTypeGroups) {
-      configurationView.startNewTraitGroup(resources.getString(typePrefix + "." + traitTypeGroup.getGroupId().getId()));
+      view.startNewTraitGroup(resources.getString(typePrefix + "." + traitTypeGroup.getGroupId().getId()));
       addTraitViews(traitConfiguration.getTraits(traitTypeGroup.getAllGroupTypes()));
     }
     characterListening.addChangeListener(new DedicatedCharacterChangeAdapter() {
@@ -71,15 +71,15 @@ public class FavorableTraitConfigurationPresenter {
     return traitConfiguration.getTraits(TraitTypeGroup.getAllTraitTypes(traitTypeGroups));
   }
 
-  private void addTraitViews(Trait[] abilityGroup) {
-    for (Trait ability : abilityGroup) {
-      traitViewsByTrait.put(ability, addTraitView(ability));
+  private void addTraitViews(Trait[] traits) {
+    for (Trait trait : traits) {
+      traitViewsByTrait.put(trait, addTraitView(trait));
     }
   }
 
   private IToggleButtonTraitView<?> addTraitView(final Trait favorableTrait) {
     final String id = favorableTrait.getType().getId();
-    final IToggleButtonTraitView<?> traitView = configurationView.addTraitView(resources.getString(id), favorableTrait.getCurrentValue(), favorableTrait.getMaximalValue(),
+    final IToggleButtonTraitView<?> traitView = view.addTraitView(resources.getString(id), favorableTrait.getCurrentValue(), favorableTrait.getMaximalValue(),
             (Trait) favorableTrait, favorableTrait.getFavorization().isFavored(),
             new FavorableTraitViewProperties(presentationProperties, basicCharacterData, favorableTrait));
 
