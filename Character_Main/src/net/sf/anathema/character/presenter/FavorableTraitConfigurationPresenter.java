@@ -84,7 +84,6 @@ public class FavorableTraitConfigurationPresenter {
     FavorableTraitViewProperties properties = new FavorableTraitViewProperties(presentationProperties, basicCharacterData, favorableTrait);
     final ExtensibleTraitView traitView = view.addExtensibleTraitView(resources.getString(id), favorableTrait.getCurrentValue(), favorableTrait.getMaximalValue(),
             favorableTrait);
-
     new TraitPresenter(favorableTrait, traitView.getIntValueView()).initPresentation();
     final ToggleTool casteTool = traitView.addToggleButtonInFront(properties);
     casteTool.setCommand(new Command() {

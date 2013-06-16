@@ -23,9 +23,12 @@ public class TraitViewInteraction implements ToggleTool {
   private final CommandProxy commandProxy = new CommandProxy();
   private final SmartAction action = new CommandAction(commandProxy);
   private final IconToggleButton button;
+  private final IIconToggleButtonProperties properties;
 
   public TraitViewInteraction(IIconToggleButtonProperties properties) {
-    button = new IconToggleButton(loadIcon(properties.createStandardIcon()), loadIcon(properties.createUnselectedIcon()));
+    this.properties = properties;
+    this.button = new IconToggleButton(new EmptyIcon(new Dimension(16, 16)));
+    resetIcons();
   }
 
   @Override
@@ -50,11 +53,13 @@ public class TraitViewInteraction implements ToggleTool {
 
   @Override
   public void enable() {
+    resetIcons();
     action.setEnabled(true);
   }
 
   @Override
   public void disable() {
+    resetIcons();
     action.setEnabled(false);
   }
 
@@ -70,16 +75,22 @@ public class TraitViewInteraction implements ToggleTool {
 
   @Override
   public void select() {
+    resetIcons();
     button.setSelected(true);
   }
 
   @Override
   public void deselect() {
+    resetIcons();
     button.setSelected(false);
   }
 
   public JComponent getButton() {
     return button.getComponent();
+  }
+
+  private void resetIcons() {
+    button.setIconSet(loadIcon(properties.createStandardIcon()), loadIcon(properties.createUnselectedIcon()));
   }
 
   private Icon loadIcon(RelativePath path) {
