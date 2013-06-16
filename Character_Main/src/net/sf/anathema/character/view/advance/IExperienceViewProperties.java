@@ -5,7 +5,7 @@ import net.sf.anathema.lib.gui.table.columsettings.ITableColumnViewSettings;
 
 import javax.swing.table.TableModel;
 
-public interface IExperienceConfigurationViewProperties {
+public interface IExperienceViewProperties {
 
   TableModel getTableModel();
 

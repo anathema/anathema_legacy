@@ -3,9 +3,9 @@ package net.sf.anathema.character.impl.view;
 import net.miginfocom.layout.CC;
 import net.miginfocom.layout.LC;
 import net.miginfocom.swing.MigLayout;
-import net.sf.anathema.character.view.advance.IExperienceConfigurationView;
+import net.sf.anathema.character.view.advance.ExperienceView;
 import net.sf.anathema.character.view.advance.IExperienceConfigurationViewListener;
-import net.sf.anathema.character.view.advance.IExperienceConfigurationViewProperties;
+import net.sf.anathema.character.view.advance.IExperienceViewProperties;
 import net.sf.anathema.framework.swing.IView;
 import net.sf.anathema.lib.gui.action.SmartAction;
 import net.sf.anathema.lib.gui.icon.ImageProvider;
@@ -26,7 +26,7 @@ import java.awt.Dimension;
 
 import static net.sf.anathema.lib.gui.layout.LayoutUtils.fillWithoutInsets;
 
-public class ExperienceConfigurationView implements IExperienceConfigurationView, IView {
+public class ExperienceTableView implements ExperienceView, IView {
   private final Announcer<IExperienceConfigurationViewListener> listeners = Announcer.to(IExperienceConfigurationViewListener.class);
   private SmartTable smartTable;
   private Action deleteAction;
@@ -34,7 +34,7 @@ public class ExperienceConfigurationView implements IExperienceConfigurationView
   private JPanel content = new JPanel(new MigLayout(fillWithoutInsets()));
 
   @Override
-  public final void initGui(final IExperienceConfigurationViewProperties properties) {
+  public final void initGui(final IExperienceViewProperties properties) {
     smartTable = new SmartTable(properties.getTableModel(), properties.getColumnSettings());
     Icon addIcon = new ImageProvider().getImageIcon(properties.getAddIcon());
     smartTable.addAction(new SmartAction(addIcon) {

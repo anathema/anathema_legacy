@@ -1,8 +1,8 @@
 package net.sf.anathema.character.view.advance;
 
-public interface IExperienceConfigurationView {
+public interface ExperienceView {
 
-  void initGui(IExperienceConfigurationViewProperties properties);
+  void initGui(IExperienceViewProperties properties);
 
   void addExperienceConfigurationViewListener(IExperienceConfigurationViewListener listener);
 
