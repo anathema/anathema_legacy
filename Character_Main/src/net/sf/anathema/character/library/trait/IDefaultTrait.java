@@ -1,10 +1,10 @@
 package net.sf.anathema.character.library.trait;
 
 import net.sf.anathema.character.generic.framework.additionaltemplate.model.LearnTrait;
-import net.sf.anathema.character.library.trait.ITrait;
+import net.sf.anathema.character.generic.traits.IGenericTrait;
 import net.sf.anathema.lib.control.IChangeListener;
 
-public interface IDefaultTrait extends ITrait, LearnTrait {
+public interface IDefaultTrait extends ITrait, LearnTrait, IGenericTrait {
 
   void applyCapModifier(int modifier);
 
