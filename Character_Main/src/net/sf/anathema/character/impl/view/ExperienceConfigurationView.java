@@ -8,11 +8,13 @@ import net.sf.anathema.character.view.advance.IExperienceConfigurationViewListen
 import net.sf.anathema.character.view.advance.IExperienceConfigurationViewProperties;
 import net.sf.anathema.framework.presenter.view.IInitializableContentView;
 import net.sf.anathema.lib.gui.action.SmartAction;
+import net.sf.anathema.lib.gui.icon.ImageProvider;
 import net.sf.anathema.lib.gui.table.SmartTable;
 import net.sf.anathema.lib.workflow.labelledvalue.view.LabelledIntegerValueView;
 import org.jmock.example.announcer.Announcer;
 
 import javax.swing.Action;
+import javax.swing.Icon;
 import javax.swing.JComponent;
 import javax.swing.JPanel;
 import javax.swing.SwingConstants;
@@ -34,13 +36,15 @@ public class ExperienceConfigurationView implements IExperienceConfigurationView
   @Override
   public final void initGui(final IExperienceConfigurationViewProperties properties) {
     smartTable = new SmartTable(properties.getTableModel(), properties.getColumnSettings());
-    smartTable.addAction(new SmartAction(properties.getAddIcon()) {
+    Icon addIcon = new ImageProvider().getImageIcon(properties.getAddIcon());
+    smartTable.addAction(new SmartAction(addIcon) {
       @Override
       protected void execute(Component parentComponent) {
         fireAddRequested();
       }
     });
-    deleteAction = new SmartAction(properties.getDeleteIcon()) {
+    Icon deleteIcon = new ImageProvider().getImageIcon(properties.getDeleteIcon());
+    deleteAction = new SmartAction(deleteIcon) {
       @Override
       protected void execute(Component parentComponent) {
         smartTable.stopCellEditing();

@@ -4,6 +4,8 @@ import net.miginfocom.layout.CC;
 import net.miginfocom.swing.MigLayout;
 import net.sf.anathema.framework.swing.IView;
 import net.sf.anathema.lib.control.ObjectValueListener;
+import net.sf.anathema.lib.file.RelativePath;
+import net.sf.anathema.lib.gui.icon.ImageProvider;
 import net.sf.anathema.lib.gui.layout.SwingLayoutUtils;
 import net.sf.anathema.lib.gui.widgets.ChangeableJComboBox;
 
@@ -15,7 +17,6 @@ import javax.swing.ListCellRenderer;
 import javax.swing.event.DocumentEvent;
 import javax.swing.event.DocumentListener;
 import java.awt.Dimension;
-import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 import static net.sf.anathema.lib.gui.layout.LayoutUtils.withoutInsets;
@@ -25,12 +26,13 @@ public class ButtonControlledComboEditView<V> implements IButtonControlledComboE
   protected final JButton addButton;
   protected final JTextField text;
 
-  public ButtonControlledComboEditView(Icon addIcon, ListCellRenderer renderer) {
+  public ButtonControlledComboEditView(RelativePath addIcon, ListCellRenderer renderer) {
     this.comboBox = new ChangeableJComboBox<>(false);
     comboBox.setRenderer(renderer);
     this.text = new JTextField(30);
-    this.addButton = new JButton(null, addIcon);
-    addButton.setPreferredSize(new Dimension(addIcon.getIconWidth() + 4, addIcon.getIconHeight() + 4));
+    Icon icon = new ImageProvider().getImageIcon(addIcon);
+    this.addButton = new JButton(null, icon);
+    addButton.setPreferredSize(new Dimension(icon.getIconWidth() + 4, icon.getIconHeight() + 4));
   }
 
   @Override
@@ -75,16 +77,6 @@ public class ButtonControlledComboEditView<V> implements IButtonControlledComboE
   @Override
   public void addButtonListener(ActionListener listener) {
     addButton.addActionListener(listener);
-  }
-
-  @Override
-  public void addButtonListener(final ObjectValueListener<V> listener) {
-    addButton.addActionListener(new ActionListener() {
-      @Override
-      public void actionPerformed(ActionEvent e) {
-        listener.valueChanged(comboBox.getSelectedObject());
-      }
-    });
   }
 
   @Override

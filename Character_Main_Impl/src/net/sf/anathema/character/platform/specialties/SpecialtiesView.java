@@ -10,6 +10,7 @@ import net.sf.anathema.framework.presenter.view.ButtonControlledComboEditView;
 import net.sf.anathema.framework.presenter.view.IButtonControlledComboEditView;
 import net.sf.anathema.framework.swing.IView;
 import net.sf.anathema.framework.value.IntegerViewFactory;
+import net.sf.anathema.lib.file.RelativePath;
 
 import javax.swing.Icon;
 import javax.swing.JComponent;
@@ -30,14 +31,14 @@ public class SpecialtiesView implements ISpecialtiesConfigurationView, IView {
   }
 
   @Override
-  public ISpecialtyView addSpecialtyView(String abilityName, String specialtyName, Icon deleteIcon, int value, int maxValue) {
+  public ISpecialtyView addSpecialtyView(String abilityName, String specialtyName, RelativePath deleteIcon, int value, int maxValue) {
     SpecialtyView specialtyView = new SpecialtyView(factory, abilityName, deleteIcon, specialtyName, value, maxValue);
     specialtyView.addComponents(specialtyPanel);
     return specialtyView;
   }
 
   @Override
-  public IButtonControlledComboEditView<ITraitReference> addSpecialtySelectionView(String labelText, ListCellRenderer renderer, Icon addIcon) {
+  public IButtonControlledComboEditView<ITraitReference> addSpecialtySelectionView(String labelText, ListCellRenderer renderer, RelativePath addIcon) {
     ButtonControlledComboEditView<ITraitReference> objectSelectionView = new ButtonControlledComboEditView<>(addIcon, renderer);
     mainPanel.add(objectSelectionView.getComponent(), 0);
     return objectSelectionView;

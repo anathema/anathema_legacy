@@ -59,7 +59,7 @@ public class LinguisticsView extends AbstractRemovableEntryView<IRemovableEntryV
       String labelText,
       ITextFieldComboBoxEditor editor,
       ListCellRenderer renderer,
-      Icon addIcon) {
+      RelativePath addIcon) {
     ButtonControlledObjectSelectionView<Object> objectSelectionView = new ButtonControlledObjectSelectionView<>(
         renderer,
         addIcon,
