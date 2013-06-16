@@ -43,10 +43,9 @@ public class ModelInitializationListTest {
   }
 
   @Test
-  @Ignore
   public void respectsTransitiveRelations() throws Exception {
-    addConfiguredEntry("Middle", new SimpleIdentifier("End"));
-    addConfiguredEntry("Start", new SimpleIdentifier("Middle"));
+    addConfiguredEntry("End", new SimpleIdentifier("Middle"));
+    addConfiguredEntry("Middle", new SimpleIdentifier("Start"));
     assertContainsOrder("Start", "Middle", "End");
   }
 

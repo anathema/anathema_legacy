@@ -7,7 +7,7 @@ import java.util.List;
 
 public class ModelInitializationList<E extends ModelTreeEntry> {
 
-  private List<Identifier> sortedEntries = new ArrayList<>();
+  private List<Identifier> sortedModelIds = new ArrayList<>();
   private List<E> configuredEntries;
 
   public ModelInitializationList(List<E> configuredEntries) {
@@ -22,31 +22,47 @@ public class ModelInitializationList<E extends ModelTreeEntry> {
   }
 
   private void handleEntry(E entry) {
-    for (Identifier identifier : entry.getRequiredModelIds()) {
-      handleRequirement(identifier);
-    }
-    handleSafeEntry(entry);
-  }
-
-  private void handleRequirement(Identifier identifier) {
-    if (sortedEntries.contains(identifier)) {
+    if (sortedModelIds.contains(entry.getModelId())) {
       return;
     }
-    sortedEntries.add(identifier);
+    handleRequirements(entry);
+    addModelId(entry.getModelId());
   }
 
-  private void handleSafeEntry(E entry) {
-    if (sortedEntries.contains(entry.getModelId())) {
+  private void handleRequirements(E entry) {
+    for (Identifier id : entry.getRequiredModelIds()) {
+      if (sortedModelIds.contains(id)) {
+        continue;
+      }
+      E configuration = findConfigurationWithId(id);
+      if (configuration != null) {
+        handleEntry(configuration);
+      }
+      addModelId(id);
+    }
+  }
+
+  private void addModelId(Identifier id) {
+    if (sortedModelIds.contains(id)) {
       return;
     }
-    sortedEntries.add(entry.getModelId());
+    sortedModelIds.add(id);
+  }
+
+  private E findConfigurationWithId(Identifier id) {
+    for (E entry : configuredEntries) {
+      if (entry.getModelId().equals(id)) {
+        return entry;
+      }
+    }
+    return null;
   }
 
   public Identifier get(int index) {
-    return sortedEntries.get(index);
+    return sortedModelIds.get(index);
   }
 
   public int size() {
-    return sortedEntries.size();
+    return sortedModelIds.size();
   }
 }
