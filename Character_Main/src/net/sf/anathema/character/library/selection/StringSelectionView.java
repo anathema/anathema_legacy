@@ -8,6 +8,7 @@ import net.sf.anathema.lib.workflow.textualdescription.view.LineTextView;
 
 import javax.swing.Icon;
 import javax.swing.JButton;
+import javax.swing.JComponent;
 import javax.swing.JPanel;
 import java.awt.Dimension;
 import java.awt.event.ActionEvent;
@@ -20,16 +21,15 @@ public class StringSelectionView implements IStringSelectionView {
 
   private final LabelTextView labelTextView;
   private final JButton button;
+  private final JPanel content = new JPanel(new MigLayout(withoutInsets()));
 
-  public StringSelectionView(JPanel parent, String labelText, Icon addButtonIcon) {
+  public StringSelectionView(String labelText, Icon addButtonIcon) {
     LineTextView lineTextView = new LineTextView(45);
     labelTextView = new LabelTextView(labelText, lineTextView);
     this.button = new JButton(addButtonIcon);
     button.setPreferredSize(new Dimension(addButtonIcon.getIconWidth() + 4, addButtonIcon.getIconHeight() + 4));
-    JPanel panel = new JPanel(new MigLayout(withoutInsets()));
-    labelTextView.addToMigPanel(panel);
-    panel.add(button, constraintsForImageButton(button));
-    parent.add(panel);
+    labelTextView.addToMigPanel(content);
+    content.add(button, constraintsForImageButton(button));
   }
 
   @Override
@@ -55,5 +55,9 @@ public class StringSelectionView implements IStringSelectionView {
   @Override
   public void clear() {
     labelTextView.setText(null);
+  }
+
+  public JComponent getComponent() {
+    return content;
   }
 }

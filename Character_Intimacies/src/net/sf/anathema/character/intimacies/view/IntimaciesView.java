@@ -20,6 +20,7 @@ import net.sf.anathema.framework.value.IntegerViewFactory;
 import net.sf.anathema.lib.file.RelativePath;
 import net.sf.anathema.lib.gui.icon.ImageProvider;
 
+import javax.swing.ImageIcon;
 import javax.swing.JComponent;
 import javax.swing.JPanel;
 
@@ -48,7 +49,10 @@ public class IntimaciesView implements IIntimaciesView, IView {
 
   @Override
   public IStringSelectionView addSelectionView(String labelText, RelativePath addIcon) {
-    return new StringSelectionView(mainPanel, labelText, new ImageProvider().getImageIcon(addIcon));
+    ImageIcon icon = new ImageProvider().getImageIcon(addIcon);
+    StringSelectionView view = new StringSelectionView(labelText, icon);
+    mainPanel.add(view.getComponent(), 0);
+    return view;
   }
 
   @Override
