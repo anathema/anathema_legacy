@@ -25,7 +25,7 @@ import static net.sf.anathema.character.library.trait.favorable.FavorableState.F
 public class FavorableTraitConfigurationPresenter {
 
   private final IGroupedFavorableTraitConfigurationView view;
-  private final IdentityMapping<Trait, IToggleButtonTraitView<?>> traitViewsByTrait = new IdentityMapping<>();
+  private final IdentityMapping<Trait, IToggleButtonTraitView> traitViewsByTrait = new IdentityMapping<>();
   private final Resources resources;
   private final IIdentifiedTraitTypeGroup[] traitTypeGroups;
   private final ICoreTraitConfiguration traitConfiguration;
@@ -60,7 +60,7 @@ public class FavorableTraitConfigurationPresenter {
 
   private void updateButtons() {
     for (Trait trait : getAllTraits()) {
-      IToggleButtonTraitView<?> view = traitViewsByTrait.get(trait);
+      IToggleButtonTraitView view = traitViewsByTrait.get(trait);
       boolean disabled = basicCharacterData.isExperienced() || trait.getFavorization().isCaste();
       boolean favored = trait.getFavorization().isCasteOrFavored();
       view.setButtonState(favored, !disabled);
@@ -73,13 +73,14 @@ public class FavorableTraitConfigurationPresenter {
 
   private void addTraitViews(Trait[] traits) {
     for (Trait trait : traits) {
-      traitViewsByTrait.put(trait, addTraitView(trait));
+      IToggleButtonTraitView<?> traitView = addTraitView(trait);
+      traitViewsByTrait.put(trait, traitView);
     }
   }
 
-  private IToggleButtonTraitView<?> addTraitView(final Trait favorableTrait) {
-    final String id = favorableTrait.getType().getId();
-    final IToggleButtonTraitView<?> traitView = view.addTraitView(resources.getString(id), favorableTrait.getCurrentValue(), favorableTrait.getMaximalValue(),
+  private IToggleButtonTraitView addTraitView(final Trait favorableTrait) {
+    String id = favorableTrait.getType().getId();
+    final IToggleButtonTraitView traitView = view.addTraitView(resources.getString(id), favorableTrait.getCurrentValue(), favorableTrait.getMaximalValue(),
             (Trait) favorableTrait, favorableTrait.getFavorization().isFavored(),
             new FavorableTraitViewProperties(presentationProperties, basicCharacterData, favorableTrait));
 
@@ -100,7 +101,7 @@ public class FavorableTraitConfigurationPresenter {
     return traitView;
   }
 
-  public static void updateView(final IToggleButtonTraitView<?> view, FavorableState state) {
+  private void updateView(final IToggleButtonTraitView<?> view, FavorableState state) {
     boolean select = state == Favored || state == Caste;
     boolean enable = state == Favored || state == Default;
     view.setButtonState(select, enable);
