@@ -26,7 +26,7 @@ public abstract class AbstractTraitCollection implements ITraitCollection {
   }
 
   @Override
-  public final Trait[] getTraits(ITraitType[] traitTypes) {
+  public final Trait[] getTraits(ITraitType... traitTypes) {
     Trait[] traits = new Trait[traitTypes.length];
     for (int index = 0; index < traitTypes.length; index++) {
       traits[index] = getTrait(traitTypes[index]);

@@ -9,17 +9,20 @@ import net.sf.anathema.character.generic.traits.groups.IdentifiedAttributeTypeGr
 import net.sf.anathema.character.generic.traits.groups.IdentifiedTraitTypeGroup;
 import net.sf.anathema.character.generic.traits.types.AbilityType;
 import net.sf.anathema.character.generic.traits.types.AttributeGroupType;
+import net.sf.anathema.character.generic.traits.types.AttributeType;
+import net.sf.anathema.character.impl.model.temporary.AttributeConfiguration;
 import net.sf.anathema.character.impl.model.traits.creation.TypedTraitTemplateFactory;
 import net.sf.anathema.character.library.trait.AbstractTraitCollection;
-import net.sf.anathema.character.library.trait.DefaultTraitGroup;
 import net.sf.anathema.character.library.trait.Trait;
 import net.sf.anathema.character.library.trait.TraitGroup;
 import net.sf.anathema.character.library.trait.favorable.IIncrementChecker;
 import net.sf.anathema.character.library.trait.specialties.ISpecialtiesConfiguration;
 import net.sf.anathema.character.library.trait.specialties.SpecialtiesConfiguration;
+import net.sf.anathema.character.main.traits.model.MappedTraitGroup;
 import net.sf.anathema.character.model.traits.ICoreTraitConfiguration;
 import net.sf.anathema.lib.collection.MultiEntryMap;
 import net.sf.anathema.lib.exception.NotYetImplementedException;
+import net.sf.anathema.lib.util.Identifier;
 import net.sf.anathema.lib.util.SimpleIdentifier;
 import org.apache.commons.lang3.ArrayUtils;
 
@@ -48,7 +51,7 @@ public class DummyCoreTraitConfiguration extends AbstractTraitCollection impleme
 
   public Trait[] getAllTraits(AttributeGroupType groupType) {
     IIdentifiedTraitTypeGroup attributeTypeGroup = getAttributeTypeGroup(groupType);
-    TraitGroup traitGroup = new DefaultTraitGroup(this, attributeTypeGroup);
+    TraitGroup traitGroup = new MappedTraitGroup(this, attributeTypeGroup);
     return traitGroup.getGroupTraits();
   }
 
@@ -85,11 +88,8 @@ public class DummyCoreTraitConfiguration extends AbstractTraitCollection impleme
 
   @Override
   public final IIdentifiedCasteTraitTypeGroup[] getAttributeTypeGroups() {
-    return new IIdentifiedCasteTraitTypeGroup[]{
-            new IdentifiedAttributeTypeGroup(Physical),
-            new IdentifiedAttributeTypeGroup(Social),
-            new IdentifiedAttributeTypeGroup(Mental)
-    };
+    return new IIdentifiedCasteTraitTypeGroup[]{new IdentifiedAttributeTypeGroup(Physical), new IdentifiedAttributeTypeGroup(Social),
+            new IdentifiedAttributeTypeGroup(Mental)};
   }
 
   public void addAbilityTypeToGroup(AbilityType traitType, String id) {
@@ -97,7 +97,39 @@ public class DummyCoreTraitConfiguration extends AbstractTraitCollection impleme
   }
 
   @Override
-  public void addFavorableTraits(IIdentifiedCasteTraitTypeGroup[] traitGroups, IIncrementChecker incrementChecker, TypedTraitTemplateFactory factory) {
+  public void addFavorableTraits(IIdentifiedCasteTraitTypeGroup[] traitGroups, IIncrementChecker incrementChecker,
+                                 TypedTraitTemplateFactory factory) {
     throw new NotYetImplementedException();
+  }
+
+  public AttributeConfiguration getAttributeConfiguration() {
+    return new AttributeConfiguration() {
+      @Override
+      public Trait[] getAllAttributes() {
+        return getTraits(AttributeType.values());
+      }
+
+      @Override
+      public TraitGroup[] getTraitGroups() {
+        TraitGroup physical = createGroup(AttributeGroupType.Physical, AttributeType.Strength, AttributeType.Dexterity, AttributeType.Stamina);
+        TraitGroup social = createGroup(AttributeGroupType.Social, AttributeType.Charisma, AttributeType.Manipulation, AttributeType.Appearance);
+        TraitGroup mental = createGroup(AttributeGroupType.Mental, AttributeType.Perception, AttributeType.Intelligence, AttributeType.Wits);
+        return new TraitGroup[]{physical, social, mental};
+      }
+    };
+  }
+
+  private TraitGroup createGroup(final AttributeGroupType groupType, final AttributeType... types) {
+    return new TraitGroup() {
+      @Override
+      public Trait[] getGroupTraits() {
+        return getTraits(types);
+      }
+
+      @Override
+      public Identifier getGroupId() {
+        return groupType;
+      }
+    };
   }
 }

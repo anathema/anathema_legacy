@@ -4,8 +4,6 @@ import net.sf.anathema.character.generic.template.creation.BonusPointCosts;
 import net.sf.anathema.character.generic.template.points.AttributeGroupPriority;
 import net.sf.anathema.character.generic.template.points.IAttributeCreationPoints;
 import net.sf.anathema.character.generic.template.points.IAttributeGroupPriorityVisitor;
-import net.sf.anathema.character.generic.traits.ITraitType;
-import net.sf.anathema.character.generic.traits.groups.IIdentifiedTraitTypeGroup;
 import net.sf.anathema.character.generic.traits.types.AttributeGroupType;
 import net.sf.anathema.character.impl.model.creation.bonus.additional.IAdditionalBonusPointManagment;
 import net.sf.anathema.character.impl.model.creation.bonus.basic.ElementCreationCost;
@@ -14,54 +12,36 @@ import net.sf.anathema.character.impl.model.creation.bonus.basic.ICostElement;
 import net.sf.anathema.character.impl.model.creation.bonus.trait.TraitCostElement;
 import net.sf.anathema.character.impl.model.creation.bonus.util.TraitGroupCost;
 import net.sf.anathema.character.impl.model.creation.bonus.util.TraitSorter;
+import net.sf.anathema.character.impl.model.temporary.AttributeConfiguration;
 import net.sf.anathema.character.library.trait.AbstractFavorableTraitCostCalculator;
-import net.sf.anathema.character.library.trait.DefaultTraitGroup;
 import net.sf.anathema.character.library.trait.Trait;
 import net.sf.anathema.character.library.trait.TraitGroup;
-import net.sf.anathema.character.model.traits.ICoreTraitConfiguration;
 
 import java.util.ArrayList;
-import java.util.Collections;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
 public class AttributeCostCalculator extends AbstractFavorableTraitCostCalculator implements IAttributeCostCalculator {
-  private static Trait[] getAllAttributes(ICoreTraitConfiguration traitConfiguration) {
-    List<ITraitType> attributeTypes = new ArrayList<>();
-    for (IIdentifiedTraitTypeGroup group : traitConfiguration.getAttributeTypeGroups()) {
-      Collections.addAll(attributeTypes, group.getAllGroupTypes());
-    }
-    return traitConfiguration.getTraits(attributeTypes.toArray(new ITraitType[attributeTypes.size()]));
-  }
 
   private final Map<Trait, ElementCreationCost> costsByAttribute = new HashMap<>();
   private List<TraitGroupCost> orderedGroups;
-  private final DefaultTraitGroup[] traitGroups;
+  private final TraitGroup[] traitGroups;
   private final BonusPointCosts costs;
   private final List<List<TraitGroup>> priorityPermutations = new ArrayList<>();
   private static final int SORTING_BONUS_COST_SCALE_FACTOR = 1000;
 
-  public AttributeCostCalculator(ICoreTraitConfiguration traitConfiguration, IAttributeCreationPoints points, BonusPointCosts costs,
+  public AttributeCostCalculator(AttributeConfiguration attributes, IAttributeCreationPoints points, BonusPointCosts costs,
                                  IAdditionalBonusPointManagment additionalPools) {
-    super(additionalPools, points, costs.getMaximumFreeAbilityRank(), getAllAttributes(traitConfiguration));
-    this.traitGroups = createTraitGroups(traitConfiguration);
+    super(additionalPools, points, costs.getMaximumFreeAbilityRank(), attributes.getAllAttributes());
+    this.traitGroups = attributes.getTraitGroups();
     this.costs = costs;
-    createPermutations(new ArrayList<DefaultTraitGroup>());
-  }
-
-  private DefaultTraitGroup[] createTraitGroups(ICoreTraitConfiguration traitConfiguration) {
-    IIdentifiedTraitTypeGroup[] attributeTypeGroups = traitConfiguration.getAttributeTypeGroups();
-    DefaultTraitGroup[] newGroups = new DefaultTraitGroup[attributeTypeGroups.length];
-    for (int index = 0; index < newGroups.length; index++) {
-      newGroups[index] = new DefaultTraitGroup(traitConfiguration, attributeTypeGroups[index]);
-    }
-    return newGroups;
+    createPermutations(new ArrayList<TraitGroup>());
   }
 
   private void createPermutations(List<TraitGroup> parent) {
     boolean isLeaf = true;
-    for (DefaultTraitGroup entry : traitGroups) {
+    for (TraitGroup entry : traitGroups) {
       if (parent.contains(entry)) {
         continue;
       }
