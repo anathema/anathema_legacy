@@ -8,6 +8,4 @@ import javax.swing.JComponent;
 public interface CharacterPane extends IView {
 
   MultipleContentView addMultipleContentView(String header);
-
-  void setOverview(JComponent component);
 }

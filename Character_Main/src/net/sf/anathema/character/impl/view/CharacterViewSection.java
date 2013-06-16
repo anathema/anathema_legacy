@@ -23,4 +23,9 @@ public class CharacterViewSection implements SectionView {
     view.addView(viewToAdd, new ContentProperties(title));
     return newView;
   }
+
+  @Override
+  public void finishInitialization() {
+    view.finishInitialization();
+  }
 }

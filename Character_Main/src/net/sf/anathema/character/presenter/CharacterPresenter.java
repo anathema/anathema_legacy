@@ -40,11 +40,12 @@ public class CharacterPresenter implements Presenter {
   }
 
   private void initializeSection(String titleKey, CharacterModelGroup group) {
-    SectionView sectionView = addSection(titleKey);
+    SectionView sectionView = prepareSection(titleKey);
     initializeGroup(group, sectionView);
+    sectionView.finishInitialization();
   }
 
-  private SectionView addSection(String titleKey) {
+  private SectionView prepareSection(String titleKey) {
     String sectionTitle = resources.getString(titleKey);
     return characterView.addSection(sectionTitle);
   }
