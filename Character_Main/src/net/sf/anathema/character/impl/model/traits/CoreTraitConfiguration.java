@@ -1,7 +1,6 @@
 package net.sf.anathema.character.impl.model.traits;
 
 import net.sf.anathema.character.generic.additionalrules.IAdditionalTraitRules;
-import net.sf.anathema.character.generic.caste.ICasteCollection;
 import net.sf.anathema.character.generic.framework.additionaltemplate.model.ICharacterModelContext;
 import net.sf.anathema.character.generic.framework.additionaltemplate.model.ITraitContext;
 import net.sf.anathema.character.generic.template.ICharacterTemplate;
@@ -12,10 +11,8 @@ import net.sf.anathema.character.generic.traits.groups.IIdentifiedCasteTraitType
 import net.sf.anathema.character.generic.traits.groups.IIdentifiedTraitTypeGroup;
 import net.sf.anathema.character.generic.traits.types.OtherTraitType;
 import net.sf.anathema.character.generic.traits.types.VirtueType;
-import net.sf.anathema.character.impl.model.traits.creation.AbilityTypeGroupFactory;
 import net.sf.anathema.character.impl.model.traits.creation.DefaultTraitFactory;
 import net.sf.anathema.character.impl.model.traits.creation.FavorableTraitFactory;
-import net.sf.anathema.character.impl.model.traits.creation.FavoredIncrementChecker;
 import net.sf.anathema.character.impl.model.traits.creation.TypedTraitTemplateFactory;
 import net.sf.anathema.character.impl.model.traits.listening.WillpowerListening;
 import net.sf.anathema.character.library.trait.AbstractTraitCollection;
@@ -23,7 +20,7 @@ import net.sf.anathema.character.library.trait.Trait;
 import net.sf.anathema.character.library.trait.TraitCollectionUtilities;
 import net.sf.anathema.character.library.trait.favorable.IIncrementChecker;
 import net.sf.anathema.character.library.trait.specialties.ISpecialtiesConfiguration;
-import net.sf.anathema.character.library.trait.specialties.SpecialtiesConfiguration;
+import net.sf.anathema.character.main.abilities.DefaultAbilityConfiguration;
 import net.sf.anathema.character.main.traits.model.TraitModel;
 import net.sf.anathema.character.model.traits.ICoreTraitConfiguration;
 
@@ -34,19 +31,16 @@ import static java.util.Arrays.asList;
 public class CoreTraitConfiguration extends AbstractTraitCollection implements ICoreTraitConfiguration, TraitModel {
 
   private final FavorableTraitFactory favorableTraitFactory;
-  private final IIdentifiedCasteTraitTypeGroup[] abilityTraitGroups;
-  private final SpecialtiesConfiguration specialtyConfiguration;
   private final ITraitTemplateCollection traitTemplateCollection;
+  private final DefaultAbilityConfiguration abilityConfiguration;
 
   public CoreTraitConfiguration(ICharacterTemplate template, ICharacterModelContext modelContext) {
-    ICasteCollection casteCollection = template.getCasteCollection();
-    this.abilityTraitGroups = new AbilityTypeGroupFactory().createTraitGroups(casteCollection, template.getAbilityGroups());
+    this.abilityConfiguration = new DefaultAbilityConfiguration(template, modelContext, this, this);
     traitTemplateCollection = template.getTraitTemplateCollection();
     this.favorableTraitFactory = createFactory(template, modelContext);
     addEssence(modelContext.getTraitContext(), traitTemplateCollection, template.getAdditionalRules().getAdditionalTraitRules());
     addVirtues(modelContext.getTraitContext(), traitTemplateCollection, template.getAdditionalRules().getAdditionalTraitRules());
     addWillpower(modelContext.getTraitContext(), traitTemplateCollection, template.getAdditionalRules().getAdditionalTraitRules());
-    addAbilities(template);
     Trait willpower = TraitCollectionUtilities.getWillpower(this);
     Trait[] virtues = TraitCollectionUtilities.getVirtues(this);
     if (template.getAdditionalRules().getAdditionalTraitRules().isWillpowerVirtueBased()) {
@@ -54,7 +48,6 @@ public class CoreTraitConfiguration extends AbstractTraitCollection implements I
     } else {
       willpower.setModifiedCreationRange(5, 10);
     }
-    this.specialtyConfiguration = new SpecialtiesConfiguration(this, abilityTraitGroups, modelContext);
     getTrait(OtherTraitType.Essence).addCurrentValueListener(new EssenceLimitationListener(new AllTraits(), modelContext));
   }
 
@@ -82,11 +75,6 @@ public class CoreTraitConfiguration extends AbstractTraitCollection implements I
     addTraits(traitFactory.createTrait(OtherTraitType.Willpower));
   }
 
-  private void addAbilities(ICharacterTemplate template) {
-    IIncrementChecker incrementChecker = FavoredIncrementChecker.createFavoredAbilityIncrementChecker(template, this);
-    addFavorableTraits(abilityTraitGroups, incrementChecker, new AbilityTemplateFactory(traitTemplateCollection.getTraitTemplateFactory()));
-  }
-
   @Override
   public void addFavorableTraits(IIdentifiedCasteTraitTypeGroup[] traitGroups, IIncrementChecker incrementChecker,
                                  TypedTraitTemplateFactory factory) {
@@ -106,12 +94,12 @@ public class CoreTraitConfiguration extends AbstractTraitCollection implements I
 
   @Override
   public IIdentifiedTraitTypeGroup[] getAbilityTypeGroups() {
-    return abilityTraitGroups;
+    return abilityConfiguration.getAbilityTypeGroups();
   }
 
   @Override
   public ISpecialtiesConfiguration getSpecialtyConfiguration() {
-    return specialtyConfiguration;
+    return abilityConfiguration.getSpecialtyConfiguration();
   }
 
   private class AllTraits implements TraitProvider {

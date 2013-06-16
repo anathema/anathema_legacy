@@ -22,14 +22,12 @@ public class InternalAttributeConfiguration implements AttributeConfiguration {
 
   private ICharacterTemplate template;
   private ICharacterModelContext modelContext;
-  private TraitModel traitModel;
   private final IIdentifiedCasteTraitTypeGroup[] attributeTraitGroups;
   private final HashTraitMap traitMap = new HashTraitMap();
 
   public InternalAttributeConfiguration(ICharacterTemplate template, ICharacterModelContext modelContext, TraitModel traitModel) {
     this.template = template;
     this.modelContext = modelContext;
-    this.traitModel = traitModel;
     this.attributeTraitGroups = new AttributeTypeGroupFactory().createTraitGroups(template.getCasteCollection(), template.getAttributeGroups());
     addAttributes();
     traitModel.addTraits(getAllAttributes());
