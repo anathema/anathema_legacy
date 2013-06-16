@@ -10,23 +10,23 @@ import javax.swing.Icon;
 
 public class FavorableTraitViewProperties implements IIconToggleButtonProperties {
 
-  private final Trait ability;
+  private final Trait trait;
   private final IPresentationProperties properties;
   private final IBasicCharacterData context;
 
-  public FavorableTraitViewProperties(IPresentationProperties properties, IBasicCharacterData context, Trait ability) {
+  public FavorableTraitViewProperties(IPresentationProperties properties, IBasicCharacterData context, Trait trait) {
     this.properties = properties;
     this.context = context;
-    this.ability = ability;
+    this.trait = trait;
   }
 
   @Override
   public Icon createStandardIcon() {
     CasteUI casteUI = new CasteUI(properties);
-    if (context.isExperienced() && !ability.getFavorization().isCasteOrFavored()) {
+    if (context.isExperienced() && !trait.getFavorization().isCasteOrFavored()) {
       return casteUI.getEmptyIcon();
     }
-    if (ability.getFavorization().isCaste()) {
+    if (trait.getFavorization().isCaste()) {
       return casteUI.getSmallCasteIcon(context.getCasteType());
     }
     return new CharacterUI().getMediumBallResource(context.getCharacterType());
