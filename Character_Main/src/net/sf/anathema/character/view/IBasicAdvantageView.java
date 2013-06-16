@@ -1,6 +1,6 @@
 package net.sf.anathema.character.view;
 
-import net.sf.anathema.character.library.trait.visitor.IDefaultTrait;
+import net.sf.anathema.character.library.trait.IDefaultTrait;
 import net.sf.anathema.framework.presenter.view.IInitializableContentView;
 import net.sf.anathema.framework.value.IIntValueView;
 import net.sf.anathema.lib.workflow.labelledvalue.IValueView;

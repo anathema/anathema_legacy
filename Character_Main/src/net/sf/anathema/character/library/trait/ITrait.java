@@ -2,7 +2,6 @@ package net.sf.anathema.character.library.trait;
 
 import net.sf.anathema.character.generic.traits.IGenericTrait;
 import net.sf.anathema.character.library.ITraitFavorization;
-import net.sf.anathema.character.library.trait.visitor.ITraitVisitor;
 import net.sf.anathema.lib.control.IIntValueChangedListener;
 
 public interface ITrait extends IGenericTrait {
@@ -20,6 +19,4 @@ public interface ITrait extends IGenericTrait {
   void addCurrentValueListener(IIntValueChangedListener listener);
 
   void removeCurrentValueListener(IIntValueChangedListener listener);
-
-  void accept(ITraitVisitor visitor);
 }

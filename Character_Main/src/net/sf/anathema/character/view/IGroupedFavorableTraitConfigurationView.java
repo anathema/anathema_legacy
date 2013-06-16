@@ -2,7 +2,7 @@ package net.sf.anathema.character.view;
 
 import net.sf.anathema.character.library.intvalue.IIconToggleButtonProperties;
 import net.sf.anathema.character.library.intvalue.IToggleButtonTraitView;
-import net.sf.anathema.character.library.trait.visitor.IDefaultTrait;
+import net.sf.anathema.character.library.trait.IDefaultTrait;
 import net.sf.anathema.framework.swing.IView;
 
 public interface IGroupedFavorableTraitConfigurationView extends IView {

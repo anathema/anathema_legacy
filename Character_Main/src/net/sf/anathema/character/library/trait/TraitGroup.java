@@ -1,7 +1,6 @@
 package net.sf.anathema.character.library.trait;
 
 import net.sf.anathema.character.generic.traits.groups.IIdentifiedTraitTypeGroup;
-import net.sf.anathema.character.library.trait.visitor.IDefaultTrait;
 import net.sf.anathema.lib.util.Identifier;
 
 public class TraitGroup {

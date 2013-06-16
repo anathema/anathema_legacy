@@ -2,7 +2,7 @@ package net.sf.anathema.character.library.trait.view;
 
 import com.google.common.base.Preconditions;
 import net.miginfocom.layout.CC;
-import net.sf.anathema.character.library.trait.visitor.IDefaultTrait;
+import net.sf.anathema.character.library.trait.IDefaultTrait;
 import net.sf.anathema.framework.value.IntegerViewFactory;
 
 import javax.swing.JLabel;

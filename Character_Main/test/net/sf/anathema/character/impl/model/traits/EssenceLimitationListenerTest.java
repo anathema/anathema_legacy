@@ -2,8 +2,7 @@ package net.sf.anathema.character.impl.model.traits;
 
 import com.google.common.collect.Lists;
 import net.sf.anathema.character.generic.framework.additionaltemplate.model.ICharacterModelContext;
-import net.sf.anathema.character.library.trait.ITrait;
-import net.sf.anathema.character.library.trait.visitor.IDefaultTrait;
+import net.sf.anathema.character.library.trait.IDefaultTrait;
 import org.junit.Test;
 
 import static org.mockito.Mockito.mock;

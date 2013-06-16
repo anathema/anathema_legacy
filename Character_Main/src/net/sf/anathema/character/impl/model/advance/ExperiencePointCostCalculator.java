@@ -7,12 +7,8 @@ import net.sf.anathema.character.generic.magic.ICharm;
 import net.sf.anathema.character.generic.magic.ISpell;
 import net.sf.anathema.character.generic.template.experience.CurrentRatingCosts;
 import net.sf.anathema.character.generic.template.experience.IExperiencePointCosts;
-import net.sf.anathema.character.library.trait.ITrait;
 import net.sf.anathema.character.library.trait.experience.TraitRatingCostCalculator;
-import net.sf.anathema.character.library.trait.subtrait.ISubTrait;
-import net.sf.anathema.character.library.trait.visitor.IAggregatedTrait;
-import net.sf.anathema.character.library.trait.visitor.IDefaultTrait;
-import net.sf.anathema.character.library.trait.visitor.ITraitVisitor;
+import net.sf.anathema.character.library.trait.IDefaultTrait;
 
 public class ExperiencePointCostCalculator implements IPointCostCalculator {
 
@@ -27,45 +23,27 @@ public class ExperiencePointCostCalculator implements IPointCostCalculator {
   }
 
   @Override
-  public int getAbilityCosts(ITrait ability, final boolean favored) {
-    final int[] abilityCosts = new int[1];
-    ability.accept(new ITraitVisitor() {
-
-      @Override
-      public void visitAggregatedTrait(IAggregatedTrait visitedTrait) {
-        int sumCost = 0;
-        for (ISubTrait subTrait : visitedTrait.getSubTraits().getSubTraits()) {
-          sumCost += getTraitRatingCosts(subTrait, costs.getAbilityCosts(favored));
-        }
-        abilityCosts[0] = sumCost;
-      }
-
-      @Override
-      public void visitDefaultTrait(IDefaultTrait visitedTrait) {
-        abilityCosts[0] = getTraitRatingCosts(visitedTrait, costs.getAbilityCosts(favored));
-      }
-
-    });
-    return abilityCosts[0];
+  public int getAbilityCosts(IDefaultTrait ability, final boolean favored) {
+     return getTraitRatingCosts(ability, costs.getAbilityCosts(favored));
   }
 
   @Override
-  public int getAttributeCosts(ITrait attribute, boolean favored) {
-    return getTraitRatingCosts((IDefaultTrait) attribute, costs.getAttributeCosts(favored));
+  public int getAttributeCosts(IDefaultTrait attribute, boolean favored) {
+    return getTraitRatingCosts(attribute, costs.getAttributeCosts(favored));
   }
 
   @Override
-  public int getEssenceCosts(LearnTrait essence) {
+  public int getEssenceCosts(IDefaultTrait essence) {
     return getTraitRatingCosts(essence, costs.getEssenceCosts());
   }
 
   @Override
-  public int getVirtueCosts(LearnTrait virtue) {
+  public int getVirtueCosts(IDefaultTrait virtue) {
     return getTraitRatingCosts(virtue, costs.getVirtueCosts());
   }
 
   @Override
-  public int getWillpowerCosts(LearnTrait willpower) {
+  public int getWillpowerCosts(IDefaultTrait willpower) {
     return getTraitRatingCosts(willpower, costs.getWillpowerCosts());
   }
 

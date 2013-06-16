@@ -10,10 +10,9 @@ import net.sf.anathema.character.impl.model.traits.AttributeTemplateFactory;
 import net.sf.anathema.character.impl.model.traits.creation.AttributeTypeGroupFactory;
 import net.sf.anathema.character.impl.model.traits.creation.FavorableTraitFactory;
 import net.sf.anathema.character.impl.model.traits.creation.TypedTraitTemplateFactory;
-import net.sf.anathema.character.library.trait.ITrait;
 import net.sf.anathema.character.library.trait.favorable.GrumpyIncrementChecker;
 import net.sf.anathema.character.library.trait.favorable.IIncrementChecker;
-import net.sf.anathema.character.library.trait.visitor.IDefaultTrait;
+import net.sf.anathema.character.library.trait.IDefaultTrait;
 
 import java.util.Collection;
 import java.util.HashMap;

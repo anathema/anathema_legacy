@@ -3,7 +3,7 @@ package net.sf.anathema.character.impl.view.advantage;
 import net.miginfocom.swing.MigLayout;
 import net.sf.anathema.character.library.overview.LabelledOverviewStringValueView;
 import net.sf.anathema.character.library.trait.view.SimpleTraitView;
-import net.sf.anathema.character.library.trait.visitor.IDefaultTrait;
+import net.sf.anathema.character.library.trait.IDefaultTrait;
 import net.sf.anathema.framework.swing.IView;
 import net.sf.anathema.framework.value.IIntValueView;
 import net.sf.anathema.framework.value.IntegerViewFactory;

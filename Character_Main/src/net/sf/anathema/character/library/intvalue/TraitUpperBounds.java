@@ -1,6 +1,6 @@
 package net.sf.anathema.character.library.intvalue;
 
-import net.sf.anathema.character.library.trait.visitor.IDefaultTrait;
+import net.sf.anathema.character.library.trait.IDefaultTrait;
 import net.sf.anathema.framework.value.TwoUpperBounds;
 
 public class TraitUpperBounds implements TwoUpperBounds {

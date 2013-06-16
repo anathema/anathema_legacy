@@ -10,7 +10,7 @@ import net.sf.anathema.character.impl.model.context.trait.CreationTraitValueStra
 import net.sf.anathema.character.impl.model.creation.bonus.virtue.VirtueCostCalculator;
 import net.sf.anathema.character.impl.model.traits.VirtueTemplateFactory;
 import net.sf.anathema.character.impl.model.traits.creation.DefaultTraitFactory;
-import net.sf.anathema.character.library.trait.visitor.IDefaultTrait;
+import net.sf.anathema.character.library.trait.IDefaultTrait;
 import net.sf.anathema.character.testing.BasicCharacterTestCase;
 import org.junit.Before;
 import org.junit.Test;

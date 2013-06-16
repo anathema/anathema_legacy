@@ -3,7 +3,7 @@ package net.sf.anathema.character.impl.model.creation.bonus.util;
 import net.sf.anathema.character.impl.model.creation.bonus.basic.ElementCreationCost;
 import net.sf.anathema.character.library.trait.ITrait;
 import net.sf.anathema.character.library.trait.TraitGroup;
-import net.sf.anathema.character.library.trait.visitor.IDefaultTrait;
+import net.sf.anathema.character.library.trait.IDefaultTrait;
 
 import java.util.ArrayList;
 import java.util.Arrays;

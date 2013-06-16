@@ -1,7 +1,7 @@
 package net.sf.anathema.character.impl.model.creation.bonus.trait;
 
 import net.sf.anathema.character.impl.model.creation.bonus.basic.ICostElement;
-import net.sf.anathema.character.library.trait.visitor.IDefaultTrait;
+import net.sf.anathema.character.library.trait.IDefaultTrait;
 
 public class TraitCostElement implements ICostElement {
 

@@ -3,7 +3,6 @@ package net.sf.anathema.character.library.trait;
 import com.google.common.base.Function;
 import net.sf.anathema.character.generic.traits.types.OtherTraitType;
 import net.sf.anathema.character.generic.traits.types.VirtueType;
-import net.sf.anathema.character.library.trait.visitor.IDefaultTrait;
 
 import static net.sf.anathema.lib.lang.ArrayUtilities.transform;
 

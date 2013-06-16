@@ -4,7 +4,7 @@ import net.sf.anathema.character.generic.framework.additionaltemplate.listening.
 import net.sf.anathema.character.generic.framework.additionaltemplate.model.ICharacterListening;
 import net.sf.anathema.character.impl.model.listening.CharacterListenerMapping;
 import net.sf.anathema.character.library.trait.ITrait;
-import net.sf.anathema.character.library.trait.visitor.IDefaultTrait;
+import net.sf.anathema.character.library.trait.IDefaultTrait;
 import org.jmock.example.announcer.Announcer;
 
 public class CharacterListening implements ICharacterListening {

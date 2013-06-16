@@ -3,7 +3,7 @@ package net.sf.anathema.character.library.trait.favorable;
 import net.sf.anathema.character.generic.IBasicCharacterData;
 import net.sf.anathema.character.generic.caste.ICasteType;
 import net.sf.anathema.character.library.ITraitFavorization;
-import net.sf.anathema.character.library.trait.visitor.IDefaultTrait;
+import net.sf.anathema.character.library.trait.IDefaultTrait;
 import org.jmock.example.announcer.Announcer;
 
 public class TraitFavorization implements ITraitFavorization {

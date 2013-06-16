@@ -7,14 +7,10 @@ import net.sf.anathema.character.generic.framework.additionaltemplate.model.ICha
 import net.sf.anathema.character.generic.traits.ITraitType;
 import net.sf.anathema.character.generic.traits.groups.ITraitTypeGroup;
 import net.sf.anathema.character.generic.traits.groups.TraitTypeGroup;
-import net.sf.anathema.character.library.trait.ITrait;
 import net.sf.anathema.character.library.trait.ITraitCollection;
 import net.sf.anathema.character.library.trait.subtrait.ISubTrait;
 import net.sf.anathema.character.library.trait.subtrait.ISubTraitContainer;
-import net.sf.anathema.character.library.trait.subtrait.ISubTraitListener;
-import net.sf.anathema.character.library.trait.visitor.IAggregatedTrait;
-import net.sf.anathema.character.library.trait.visitor.IDefaultTrait;
-import net.sf.anathema.character.library.trait.visitor.ITraitVisitor;
+import net.sf.anathema.character.library.trait.IDefaultTrait;
 import net.sf.anathema.lib.control.IChangeListener;
 import org.jmock.example.announcer.Announcer;
 
@@ -38,62 +34,11 @@ public class SpecialtiesConfiguration implements ISpecialtiesConfiguration {
   public SpecialtiesConfiguration(ITraitCollection traitCollection, ITraitTypeGroup[] groups, ICharacterModelContext context) {
     this.context = context;
     ITraitType[] traitTypes = TraitTypeGroup.getAllTraitTypes(groups);
-    for (ITrait trait : traitCollection.getTraits(traitTypes)) {
-      trait.accept(new ITraitVisitor() {
-        @Override
-        public void visitAggregatedTrait(IAggregatedTrait visitedTrait) {
-          initializeAggregatedTrait(visitedTrait);
-        }
-
-        @Override
-        public void visitDefaultTrait(IDefaultTrait visitedTrait) {
-          ITraitReference reference = new DefaultTraitReference(visitedTrait);
-          SpecialtiesContainer container = addSpecialtiesContainer(reference);
-          specialtiesByType.put(visitedTrait.getType(), container);
-        }
-      });
-    }
-  }
-
-  private void initializeAggregatedTrait(final IAggregatedTrait visitedTrait) {
-    visitedTrait.getSubTraits().addSubTraitListener(new ISubTraitListener() {
-      @Override
-      public void subTraitAdded(ISubTrait subTrait) {
-        ISubTraitContainer container = specialtiesByType.get(visitedTrait.getType());
-        addSubTraitSpecialtiesContainer(subTrait, (AggregatedSpecialtiesContainer) container);
-      }
-
-      @Override
-      public void subTraitRemoved(ISubTrait subTrait) {
-        ISubTraitContainer container = specialtiesByType.get(visitedTrait.getType());
-        removeSubTraitSpecialtiesContainer(subTrait, (AggregatedSpecialtiesContainer) container);
-      }
-
-      @Override
-      public void subTraitValueChanged() {
-        // nothing to do
-      }
-    });
-    AggregatedSpecialtiesContainer container = new AggregatedSpecialtiesContainer();
-    for (ISubTrait subTrait : visitedTrait.getSubTraits().getSubTraits()) {
-      addSubTraitSpecialtiesContainer(subTrait, container);
-    }
-    specialtiesByType.put(visitedTrait.getType(), container);
-  }
-
-  private void removeSubTraitSpecialtiesContainer(ISubTrait subTrait, AggregatedSpecialtiesContainer container) {
-    ITraitReference reference = new SubTraitReference(subTrait);
-    ISubTraitContainer subContainer = specialtiesByTrait.remove(reference);
-    subContainer.dispose();
-    container.removeContainer(subContainer);
-    traitControl.announce().referenceRemoved(new SubTraitReference(subTrait));
-  }
-
-  private void addSubTraitSpecialtiesContainer(ISubTrait subTrait, AggregatedSpecialtiesContainer container) {
-    SubTraitReference reference = new SubTraitReference(subTrait);
-    SpecialtiesContainer subContainer = addSpecialtiesContainer(reference);
-    container.addContainer(subContainer);
-    traitControl.announce().referenceAdded(reference);
+    for (IDefaultTrait trait : traitCollection.getTraits(traitTypes)) {
+      ITraitReference reference = new DefaultTraitReference(trait);
+      SpecialtiesContainer container = addSpecialtiesContainer(reference);
+      specialtiesByType.put(trait.getType(), container);
+     }
   }
 
   private SpecialtiesContainer addSpecialtiesContainer(ITraitReference reference) {

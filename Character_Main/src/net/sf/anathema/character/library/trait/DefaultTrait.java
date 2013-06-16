@@ -13,8 +13,6 @@ import net.sf.anathema.character.library.trait.favorable.NullTraitFavorization;
 import net.sf.anathema.character.library.trait.favorable.TraitFavorization;
 import net.sf.anathema.character.library.trait.rules.IFavorableTraitRules;
 import net.sf.anathema.character.library.trait.rules.ITraitRules;
-import net.sf.anathema.character.library.trait.visitor.IDefaultTrait;
-import net.sf.anathema.character.library.trait.visitor.ITraitVisitor;
 import net.sf.anathema.lib.control.IChangeListener;
 import net.sf.anathema.lib.control.IIntValueChangedListener;
 import net.sf.anathema.lib.data.Range;
@@ -183,11 +181,6 @@ public class DefaultTrait implements IDefaultTrait {
   public void setModifiedCreationRange(int lowerBound, int upperBound) {
     traitRules.setModifiedCreationRange(new Range(lowerBound, upperBound));
     resetCreationValue();
-  }
-
-  @Override
-  public void accept(ITraitVisitor visitor) {
-    visitor.visitDefaultTrait(this);
   }
 
   @Override

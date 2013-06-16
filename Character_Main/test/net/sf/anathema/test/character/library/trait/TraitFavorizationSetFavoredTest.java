@@ -11,7 +11,7 @@ import net.sf.anathema.character.library.trait.favorable.FriendlyIncrementChecke
 import net.sf.anathema.character.library.trait.favorable.IFavorableStateChangedListener;
 import net.sf.anathema.character.library.trait.favorable.IIncrementChecker;
 import net.sf.anathema.character.library.trait.favorable.TraitFavorization;
-import net.sf.anathema.character.library.trait.visitor.IDefaultTrait;
+import net.sf.anathema.character.library.trait.IDefaultTrait;
 import org.junit.Test;
 
 import static org.junit.Assert.assertSame;

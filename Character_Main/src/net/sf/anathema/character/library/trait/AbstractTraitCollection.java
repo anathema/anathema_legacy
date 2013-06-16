@@ -2,7 +2,6 @@ package net.sf.anathema.character.library.trait;
 
 import com.google.common.base.Preconditions;
 import net.sf.anathema.character.generic.traits.ITraitType;
-import net.sf.anathema.character.library.trait.visitor.IDefaultTrait;
 
 import java.util.Collection;
 import java.util.HashMap;

@@ -1,4 +1,4 @@
-package net.sf.anathema.character.library.trait.visitor;
+package net.sf.anathema.character.library.trait;
 
 import net.sf.anathema.character.generic.framework.additionaltemplate.model.LearnTrait;
 import net.sf.anathema.character.library.trait.ITrait;

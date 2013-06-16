@@ -12,7 +12,7 @@ import net.sf.anathema.character.library.trait.AbstractFavorableTraitCostCalcula
 import net.sf.anathema.character.library.trait.ITrait;
 import net.sf.anathema.character.library.trait.specialties.ISpecialtiesConfiguration;
 import net.sf.anathema.character.library.trait.subtrait.ISubTrait;
-import net.sf.anathema.character.library.trait.visitor.IDefaultTrait;
+import net.sf.anathema.character.library.trait.IDefaultTrait;
 import net.sf.anathema.character.model.traits.ICoreTraitConfiguration;
 
 import java.util.ArrayList;
@@ -21,7 +21,7 @@ import java.util.List;
 
 public class AbilityCostCalculator extends AbstractFavorableTraitCostCalculator implements IAbilityCostCalculator {
 
-  private static ITrait[] getAllAbilities(ICoreTraitConfiguration traitConfiguration) {
+  private static IDefaultTrait[] getAllAbilities(ICoreTraitConfiguration traitConfiguration) {
     List<ITraitType> abilityTypes = new ArrayList<>();
     for (IIdentifiedTraitTypeGroup group : traitConfiguration.getAbilityTypeGroups()) {
       Collections.addAll(abilityTypes, group.getAllGroupTypes());

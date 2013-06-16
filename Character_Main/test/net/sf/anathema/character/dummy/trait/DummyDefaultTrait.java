@@ -3,15 +3,23 @@ package net.sf.anathema.character.dummy.trait;
 import net.sf.anathema.character.generic.traits.ITraitType;
 import net.sf.anathema.character.library.ITraitFavorization;
 import net.sf.anathema.character.library.trait.favorable.NullTraitFavorization;
-import net.sf.anathema.character.library.trait.visitor.IDefaultTrait;
-import net.sf.anathema.character.library.trait.visitor.ITraitVisitor;
+import net.sf.anathema.character.library.trait.IDefaultTrait;
 import net.sf.anathema.lib.control.IChangeListener;
 import net.sf.anathema.lib.control.IIntValueChangedListener;
 
 public class DummyDefaultTrait implements IDefaultTrait {
 
+  public static DummyDefaultTrait createLearnTrait(ITraitType type, int creationValue, int experiencedValue) {
+    DummyDefaultTrait trait = new DummyDefaultTrait(type);
+    trait.setCreationValue(creationValue);
+    trait.setExperiencedValue(experiencedValue);
+    return trait;
+  }
+
   private int currentValue;
   private final ITraitType type;
+  private int creationValue;
+  private int experiencedValue;
 
   public DummyDefaultTrait(ITraitType type) {
     this(type, 0);
@@ -59,18 +67,12 @@ public class DummyDefaultTrait implements IDefaultTrait {
 
   @Override
   public int getUnmodifiedMaximalValue() {
-    // not yet implemented
     return 0;
   }
 
   @Override
   public int getModifiedMaximalValue() {
-    // not yet implemented
     return 0;
-  }
-
-  public void validate() {
-    // not yet implemented
   }
 
   @Override
@@ -81,11 +83,6 @@ public class DummyDefaultTrait implements IDefaultTrait {
   @Override
   public void setModifiedCreationRange(int newInitialValue, int newUpperValue) {
     //not yet implemented
-  }
-
-  @Override
-  public void accept(ITraitVisitor visitor) {
-    visitor.visitDefaultTrait(this);
   }
 
   @Override
@@ -140,12 +137,12 @@ public class DummyDefaultTrait implements IDefaultTrait {
 
   @Override
   public void setCreationValue(int value) {
-    //not yet implemented
+    this.creationValue = value;
   }
 
   @Override
   public void setExperiencedValue(int value) {
-    //not yet implemented
+    this.experiencedValue = value;
   }
 
   @Override
@@ -165,12 +162,12 @@ public class DummyDefaultTrait implements IDefaultTrait {
 
   @Override
   public int getCalculationValue() {
-    return 0;
+    return creationValue;
   }
 
   @Override
   public int getCreationCalculationValue() {
-    return 0;
+    return creationValue;
   }
 
   @Override
@@ -180,12 +177,12 @@ public class DummyDefaultTrait implements IDefaultTrait {
 
   @Override
   public int getExperiencedCalculationValue() {
-    return 0;
+    return experiencedValue;
   }
 
   @Override
   public int getExperiencedValue() {
-    return 0;
+    return experiencedValue;
   }
 
   @Override
