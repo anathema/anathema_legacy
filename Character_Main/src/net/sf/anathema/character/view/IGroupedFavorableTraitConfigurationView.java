@@ -11,5 +11,5 @@ public interface IGroupedFavorableTraitConfigurationView {
 
   void startNewTraitGroup(String groupLabel);
 
-  void initGui(int columnCount);
+  void initGui(ColumnCount columnCount);
 }

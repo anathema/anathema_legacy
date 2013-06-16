@@ -2,6 +2,7 @@ package net.sf.anathema.character.library.trait.view;
 
 import net.miginfocom.layout.CC;
 import net.miginfocom.swing.MigLayout;
+import net.sf.anathema.character.view.ColumnCount;
 import net.sf.anathema.lib.gui.layout.LayoutUtils;
 
 import javax.swing.JComponent;
@@ -12,8 +13,8 @@ public class GroupedColumnPanel {
   private final JPanel[] columns;
   private int columnIndex = -1;
 
-  public GroupedColumnPanel(JComponent parent, int columnCount) {
-    columns = new JPanel[columnCount];
+  public GroupedColumnPanel(JComponent parent, ColumnCount columnCount) {
+    columns = new JPanel[columnCount.getColumnCount()];
     for (int i = 0; i < columns.length; i++) {
       columns[i] = new JPanel(new MigLayout(LayoutUtils.withoutInsets().wrapAfter(2)));
     }
