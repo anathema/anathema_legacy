@@ -7,12 +7,15 @@ import net.sf.anathema.character.library.overview.OverviewCategory;
 import net.sf.anathema.character.library.removableentry.presenter.IRemovableEntryView;
 import net.sf.anathema.character.library.removableentry.view.RemovableStringView;
 import net.sf.anathema.character.library.trait.Trait;
+import net.sf.anathema.character.library.util.ProxyComboBoxEditor;
 import net.sf.anathema.character.linguistics.presenter.ILinguisticsView;
 import net.sf.anathema.framework.presenter.view.IButtonControlledObjectSelectionView;
-import net.sf.anathema.framework.presenter.view.ITextFieldComboBoxEditor;
 import net.sf.anathema.framework.swing.IView;
 import net.sf.anathema.lib.file.RelativePath;
+import net.sf.anathema.lib.gui.AgnosticUIConfiguration;
+import net.sf.anathema.lib.gui.ConfigurableSwingUI;
 import net.sf.anathema.lib.gui.icon.ImageProvider;
+import net.sf.anathema.lib.gui.ui.ObjectUiListCellRenderer;
 
 import javax.swing.JComponent;
 import javax.swing.JPanel;
@@ -52,17 +55,18 @@ public class LinguisticsView implements IView, ILinguisticsView {
     entryPanel.repaint();
   }
 
+  @SuppressWarnings("unchecked")
   @Override
   public IButtonControlledObjectSelectionView<Object> addSelectionView(
           String labelText,
-          ITextFieldComboBoxEditor editor,
-          ListCellRenderer renderer,
+          AgnosticUIConfiguration uiConfiguration,
           RelativePath addIcon) {
+    ListCellRenderer renderer = new ObjectUiListCellRenderer(new ConfigurableSwingUI(uiConfiguration));
     ButtonControlledObjectSelectionView<Object> objectSelectionView = new ButtonControlledObjectSelectionView<>(
             renderer,
             addIcon,
-            labelText,
-            editor);
+            labelText);
+    objectSelectionView.setEditor(new ProxyComboBoxEditor());
     objectSelectionView.addComponents(selectionPanel);
     return objectSelectionView;
   }
