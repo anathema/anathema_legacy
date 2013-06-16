@@ -1,7 +1,6 @@
 package net.sf.anathema.character.impl.generic;
 
 import com.google.common.collect.Lists;
-import com.sun.corba.se.impl.naming.namingutil.INSURL;
 import net.sf.anathema.character.generic.additionaltemplate.IAdditionalModel;
 import net.sf.anathema.character.generic.caste.ICasteType;
 import net.sf.anathema.character.generic.character.IConcept;
@@ -28,9 +27,7 @@ import net.sf.anathema.character.library.trait.specialties.ISpecialtiesConfigura
 import net.sf.anathema.character.library.trait.specialties.ISpecialty;
 import net.sf.anathema.character.library.trait.subtrait.ISubTrait;
 import net.sf.anathema.character.library.trait.subtrait.ISubTraitListener;
-import net.sf.anathema.character.library.trait.visitor.IAggregatedTrait;
 import net.sf.anathema.character.library.trait.visitor.IDefaultTrait;
-import net.sf.anathema.character.library.trait.visitor.ITraitVisitor;
 import net.sf.anathema.character.main.concept.model.CharacterConcept;
 import net.sf.anathema.character.main.concept.model.CharacterConceptFetcher;
 import net.sf.anathema.character.main.description.model.CharacterDescriptionFetcher;
@@ -128,26 +125,6 @@ public class GenericCharacter implements IGenericCharacter {
   public ISpecialty[] getSpecialties(ITraitType traitType) {
     ISpecialtiesConfiguration specialtyConfiguration = getTraitConfiguration().getSpecialtyConfiguration();
     return specialtyConfiguration.getSpecialtiesContainer(traitType).getSubTraits();
-  }
-
-  @Override
-  public ISubTrait[] getSubTraits(ITraitType traitType) {
-    class CollectSubTraitVisitor implements ITraitVisitor {
-      ISubTrait[] subtraits;
-
-      @Override
-      public void visitAggregatedTrait(IAggregatedTrait visitedTrait) {
-        subtraits = visitedTrait.getSubTraits().getSubTraits();
-      }
-
-      @Override
-      public void visitDefaultTrait(IDefaultTrait visitedTrait) {
-        subtraits = new ISubTrait[0];
-      }
-    }
-    CollectSubTraitVisitor collectVisitor = new CollectSubTraitVisitor();
-    getTraitConfiguration().getTrait(traitType).accept(collectVisitor);
-    return collectVisitor.subtraits;
   }
 
   @Override

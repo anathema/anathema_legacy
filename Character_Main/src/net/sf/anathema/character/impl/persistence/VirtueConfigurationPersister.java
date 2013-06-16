@@ -1,8 +1,8 @@
 package net.sf.anathema.character.impl.persistence;
 
 import net.sf.anathema.character.generic.traits.types.VirtueType;
-import net.sf.anathema.character.library.trait.ITrait;
 import net.sf.anathema.character.library.trait.persistence.TraitPersister;
+import net.sf.anathema.character.library.trait.visitor.IDefaultTrait;
 import net.sf.anathema.character.model.traits.ICoreTraitConfiguration;
 import net.sf.anathema.lib.exception.PersistenceException;
 import org.dom4j.Element;
@@ -15,7 +15,7 @@ public class VirtueConfigurationPersister {
 
   public void save(Element parent, ICoreTraitConfiguration traitConfiguration) {
     Element virtuesElement = parent.addElement(TAG_VIRTUES);
-    for (ITrait virtue : traitConfiguration.getTraits(VirtueType.values())) {
+    for (IDefaultTrait virtue : traitConfiguration.getTraits(VirtueType.values())) {
       traitPersister.saveTrait(virtuesElement, virtue.getType().getId(), virtue);
     }
   }

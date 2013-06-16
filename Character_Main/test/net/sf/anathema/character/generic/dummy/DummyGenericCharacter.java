@@ -98,11 +98,6 @@ public class DummyGenericCharacter implements IGenericCharacter {
   }
 
   @Override
-  public ISpecialty[] getSubTraits(ITraitType traitType) {
-    return new ISpecialty[0];
-  }
-
-  @Override
   public ICasteType getCasteType() {
     return null;
   }

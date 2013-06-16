@@ -25,8 +25,6 @@ public interface IGenericCharacter extends ILimitationContext, IMagicCollection,
 
   ISpecialty[] getSpecialties(ITraitType traitType);
 
-  ISubTrait[] getSubTraits(ITraitType traitType);
-
   int getHealthLevelTypeCount(HealthLevelType type);
 
   String getPeripheralPool();

@@ -5,6 +5,7 @@ import net.sf.anathema.character.generic.traits.types.AttributeType;
 import net.sf.anathema.character.library.trait.DefaultTrait;
 import net.sf.anathema.character.library.trait.ITrait;
 import net.sf.anathema.character.library.trait.persistence.TraitPersister;
+import net.sf.anathema.character.library.trait.visitor.IDefaultTrait;
 import net.sf.anathema.character.model.traits.ICoreTraitConfiguration;
 import net.sf.anathema.lib.exception.PersistenceException;
 import net.sf.anathema.lib.xml.ElementUtilities;
@@ -28,14 +29,12 @@ public class AttributeConfigurationPersister {
 
   private void saveAttributeGroup(Element parent, ICoreTraitConfiguration traitConfiguration, IIdentifiedTraitTypeGroup typeGroup) {
     Element groupElement = parent.addElement(typeGroup.getGroupId().getId());
-    for (ITrait attribute : traitConfiguration.getTraits(typeGroup.getAllGroupTypes())) {
-      {
-        Element attributeElement = persister.saveTrait(groupElement, attribute.getType().getId(), attribute);
-        if (attribute instanceof DefaultTrait) {
-          DefaultTrait attributeTrait = (DefaultTrait) attribute;
-          if (attributeTrait.getFavorization().isFavored()) {
-            ElementUtilities.addAttribute(attributeElement, ATTRIB_FAVORED, attributeTrait.getFavorization().isFavored());
-          }
+    for (IDefaultTrait attribute : traitConfiguration.getTraits(typeGroup.getAllGroupTypes())) {
+      Element attributeElement = persister.saveTrait(groupElement, attribute.getType().getId(), attribute);
+      if (attribute instanceof DefaultTrait) {
+        DefaultTrait attributeTrait = (DefaultTrait) attribute;
+        if (attributeTrait.getFavorization().isFavored()) {
+          ElementUtilities.addAttribute(attributeElement, ATTRIB_FAVORED, attributeTrait.getFavorization().isFavored());
         }
       }
     }
