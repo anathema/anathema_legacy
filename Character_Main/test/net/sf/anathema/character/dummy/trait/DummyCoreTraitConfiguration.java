@@ -116,6 +116,11 @@ public class DummyCoreTraitConfiguration extends AbstractTraitCollection impleme
         TraitGroup mental = createGroup(AttributeGroupType.Mental, AttributeType.Perception, AttributeType.Intelligence, AttributeType.Wits);
         return new TraitGroup[]{physical, social, mental};
       }
+
+      @Override
+      public Trait getTrait(AttributeType type) {
+        return getTrait(type);
+      }
     };
   }
 

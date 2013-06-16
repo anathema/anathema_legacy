@@ -1,11 +1,9 @@
 package net.sf.anathema.character.impl.persistence;
 
-import net.sf.anathema.character.generic.traits.groups.IIdentifiedTraitTypeGroup;
 import net.sf.anathema.character.generic.traits.types.AttributeType;
-import net.sf.anathema.character.library.trait.DefaultTrait;
+import net.sf.anathema.character.impl.model.temporary.AttributeConfiguration;
 import net.sf.anathema.character.library.trait.Trait;
 import net.sf.anathema.character.library.trait.persistence.TraitPersister;
-import net.sf.anathema.character.model.traits.ICoreTraitConfiguration;
 import net.sf.anathema.lib.exception.PersistenceException;
 import net.sf.anathema.lib.xml.ElementUtilities;
 import org.dom4j.Element;
@@ -19,34 +17,26 @@ public class AttributeConfigurationPersister {
 
   private final TraitPersister persister = new TraitPersister();
 
-  public void save(Element parent, ICoreTraitConfiguration traitConfiguration) {
-    Element attributeElement = parent.addElement(TAG_ATTRIBUTES);
-    for (IIdentifiedTraitTypeGroup typeGroup : traitConfiguration.getAttributeTypeGroups()) {
-      saveAttributeGroup(attributeElement, traitConfiguration, typeGroup);
-    }
+  public void save(Element parent, AttributeConfiguration attributeConfiguration) {
+    Element attributesElement = parent.addElement(TAG_ATTRIBUTES);
+    saveAttributes(attributeConfiguration, attributesElement);
   }
 
-  private void saveAttributeGroup(Element parent, ICoreTraitConfiguration traitConfiguration, IIdentifiedTraitTypeGroup typeGroup) {
-    Element groupElement = parent.addElement(typeGroup.getGroupId().getId());
-    for (Trait attribute : traitConfiguration.getTraits(typeGroup.getAllGroupTypes())) {
-      Element attributeElement = persister.saveTrait(groupElement, attribute.getType().getId(), attribute);
-      if (attribute instanceof DefaultTrait) {
-        DefaultTrait attributeTrait = (DefaultTrait) attribute;
-        if (attributeTrait.getFavorization().isFavored()) {
-          ElementUtilities.addAttribute(attributeElement, ATTRIB_FAVORED, attributeTrait.getFavorization().isFavored());
-        }
+  private void saveAttributes(AttributeConfiguration attributeConfiguration, Element attributesElement) {
+    for (Trait attribute : attributeConfiguration.getAllAttributes()) {
+      Element attributeElement = persister.saveTrait(attributesElement, attribute.getType().getId(), attribute);
+        if (attribute.getFavorization().isFavored()) {
+          ElementUtilities.addAttribute(attributeElement, ATTRIB_FAVORED, attribute.getFavorization().isFavored());
       }
     }
   }
 
-  public void load(Element parent, ICoreTraitConfiguration configuration) throws PersistenceException {
+  public void load(Element parent, AttributeConfiguration configuration) throws PersistenceException {
     Element attributesElement = parent.element(TAG_ATTRIBUTES);
-    for (Element groupElement : ElementUtilities.elements(attributesElement)) {
-      loadAttributeGroup(groupElement, configuration);
-    }
+      loadAttributes(attributesElement, configuration);
   }
 
-  private void loadAttributeGroup(Element element, ICoreTraitConfiguration configuration) throws PersistenceException {
+  private void loadAttributes(Element element, AttributeConfiguration configuration) throws PersistenceException {
     List<Element> attributeElements = ElementUtilities.elements(element);
     for (Element attributeElement : attributeElements) {
       AttributeType attributeType = AttributeType.valueOf(attributeElement.getName());
