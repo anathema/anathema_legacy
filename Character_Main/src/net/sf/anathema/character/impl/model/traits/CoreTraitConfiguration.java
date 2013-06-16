@@ -96,13 +96,13 @@ public class CoreTraitConfiguration extends AbstractTraitCollection implements I
   public void addFavorableTraits(IIdentifiedCasteTraitTypeGroup[] traitGroups, IIncrementChecker incrementChecker,
                                  TypedTraitTemplateFactory factory) {
     for (IIdentifiedCasteTraitTypeGroup traitGroup : traitGroups) {
-      ITrait[] traits = favorableTraitFactory.createTraits(traitGroup, incrementChecker, factory);
+      IDefaultTrait[] traits = favorableTraitFactory.createTraits(traitGroup, incrementChecker, factory);
       addTraits(traits);
     }
   }
 
   @Override
-  public ITrait getTrait(ITraitType traitType) {
+  public IDefaultTrait getTrait(ITraitType traitType) {
     if (contains(traitType)) {
       return super.getTrait(traitType);
     }
@@ -126,7 +126,7 @@ public class CoreTraitConfiguration extends AbstractTraitCollection implements I
 
   private class AllTraits implements TraitProvider {
     @Override
-    public Iterator<ITrait> iterator() {
+    public Iterator<IDefaultTrait> iterator() {
       return asList(getAllTraits()).iterator();
     }
   }

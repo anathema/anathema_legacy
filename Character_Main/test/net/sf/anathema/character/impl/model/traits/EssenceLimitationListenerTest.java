@@ -16,7 +16,7 @@ public class EssenceLimitationListenerTest {
   public void doesNotTriggerResetUntilCharacterIsFullyLoaded() throws Exception {
     ICharacterModelContext context = mock(ICharacterModelContext.class);
     TraitProvider traits = mock(TraitProvider.class);
-    ITrait trait = mock(IDefaultTrait.class);
+    IDefaultTrait trait = mock(IDefaultTrait.class);
     when(traits.iterator()).thenReturn(Lists.newArrayList(trait).iterator());
     new EssenceLimitationListener(traits, context).valueChanged(7);
     verifyZeroInteractions(trait);

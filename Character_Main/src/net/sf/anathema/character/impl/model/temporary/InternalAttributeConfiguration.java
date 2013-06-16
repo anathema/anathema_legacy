@@ -13,6 +13,7 @@ import net.sf.anathema.character.impl.model.traits.creation.TypedTraitTemplateFa
 import net.sf.anathema.character.library.trait.ITrait;
 import net.sf.anathema.character.library.trait.favorable.GrumpyIncrementChecker;
 import net.sf.anathema.character.library.trait.favorable.IIncrementChecker;
+import net.sf.anathema.character.library.trait.visitor.IDefaultTrait;
 
 import java.util.Collection;
 import java.util.HashMap;
@@ -24,7 +25,7 @@ public class InternalAttributeConfiguration implements AttributeConfiguration {
   private ICharacterModelContext modelContext;
   private final IIdentifiedCasteTraitTypeGroup[] attributeTraitGroups;
 
-  private final Map<ITraitType, ITrait> traitsByType = new HashMap<>();
+  private final Map<ITraitType, IDefaultTrait> traitsByType = new HashMap<>();
 
   public InternalAttributeConfiguration(ICharacterTemplate template, ICharacterModelContext modelContext) {
     this.template = template;
@@ -48,18 +49,18 @@ public class InternalAttributeConfiguration implements AttributeConfiguration {
                                  TypedTraitTemplateFactory factory) {
     FavorableTraitFactory favorableTraitFactory = createFactory();
     for (IIdentifiedCasteTraitTypeGroup traitGroup : traitGroups) {
-      ITrait[] traits = favorableTraitFactory.createTraits(traitGroup, incrementChecker, factory);
+      IDefaultTrait[] traits = favorableTraitFactory.createTraits(traitGroup, incrementChecker, factory);
       addTraits(traits);
     }
   }
 
-  protected final void addTraits(ITrait... traits) {
-    for (ITrait trait : traits) {
+  protected final void addTraits(IDefaultTrait... traits) {
+    for (IDefaultTrait trait : traits) {
       addSingleTrait(trait);
     }
   }
 
-  private final void addSingleTrait(ITrait trait) {
+  private final void addSingleTrait(IDefaultTrait trait) {
     Preconditions.checkArgument(!contains(trait.getType()), "Trait of type already contained " + trait.getType());
     traitsByType.put(trait.getType(), trait);
   }
@@ -72,8 +73,8 @@ public class InternalAttributeConfiguration implements AttributeConfiguration {
     return attributeTraitGroups;
   }
 
-  public ITrait[] getAllAttributes() {
-    Collection<ITrait> attributes = traitsByType.values();
-    return attributes.toArray(new ITrait[attributes.size()]);
+  public IDefaultTrait[] getAllAttributes() {
+    Collection<IDefaultTrait> attributes = traitsByType.values();
+    return attributes.toArray(new IDefaultTrait[attributes.size()]);
   }
 }

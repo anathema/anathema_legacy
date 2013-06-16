@@ -2,6 +2,7 @@ package net.sf.anathema.character.library.trait;
 
 import com.google.common.base.Preconditions;
 import net.sf.anathema.character.generic.traits.ITraitType;
+import net.sf.anathema.character.library.trait.visitor.IDefaultTrait;
 
 import java.util.Collection;
 import java.util.HashMap;
@@ -9,15 +10,15 @@ import java.util.Map;
 
 public abstract class AbstractTraitCollection implements ITraitCollection {
 
-  private final Map<ITraitType, ITrait> traitsByType = new HashMap<>();
+  private final Map<ITraitType, IDefaultTrait> traitsByType = new HashMap<>();
 
-  protected final ITrait[] getAllTraits() {
-    Collection<ITrait> traits = traitsByType.values();
-    return traits.toArray(new ITrait[traits.size()]);
+  protected final IDefaultTrait[] getAllTraits() {
+    Collection<IDefaultTrait> traits = traitsByType.values();
+    return traits.toArray(new IDefaultTrait[traits.size()]);
   }
 
   @Override
-  public ITrait getTrait(ITraitType traitType) {
+  public IDefaultTrait getTrait(ITraitType traitType) {
     return traitsByType.get(traitType);
   }
 
@@ -26,21 +27,21 @@ public abstract class AbstractTraitCollection implements ITraitCollection {
   }
 
   @Override
-  public final ITrait[] getTraits(ITraitType[] traitTypes) {
-    ITrait[] traits = new ITrait[traitTypes.length];
+  public final IDefaultTrait[] getTraits(ITraitType[] traitTypes) {
+    IDefaultTrait[] traits = new IDefaultTrait[traitTypes.length];
     for (int index = 0; index < traitTypes.length; index++) {
       traits[index] = getTrait(traitTypes[index]);
     }
     return traits;
   }
 
-  private final void addSingleTrait(ITrait trait) {
+  private final void addSingleTrait(IDefaultTrait trait) {
     Preconditions.checkArgument(!contains(trait.getType()), "Trait of type already contained " + trait.getType());
     traitsByType.put(trait.getType(), trait);
   }
 
-  protected final void addTraits(ITrait... traits) {
-    for (ITrait trait : traits) {
+  protected final void addTraits(IDefaultTrait... traits) {
+    for (IDefaultTrait trait : traits) {
       addSingleTrait(trait);
     }
   }

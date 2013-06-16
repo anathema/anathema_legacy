@@ -23,9 +23,9 @@ import net.sf.anathema.character.impl.model.traits.EssenceTemplateFactory;
 import net.sf.anathema.character.impl.model.traits.creation.DefaultTraitFactory;
 import net.sf.anathema.character.impl.model.traits.creation.FavorableTraitFactory;
 import net.sf.anathema.character.impl.model.traits.creation.TypedTraitTemplateFactory;
-import net.sf.anathema.character.library.trait.ITrait;
 import net.sf.anathema.character.library.trait.favorable.FriendlyIncrementChecker;
 import net.sf.anathema.character.library.trait.favorable.IIncrementChecker;
+import net.sf.anathema.character.library.trait.visitor.IDefaultTrait;
 import net.sf.anathema.lib.collection.MultiEntryMap;
 import net.sf.anathema.lib.util.SimpleIdentifier;
 
@@ -69,7 +69,7 @@ public abstract class AbstractBonusPointTestCase {
       DummyCasteType[] casteType = {new DummyCasteType()};
       IIdentifiedCasteTraitTypeGroup typeGroup = new IdentifiedCasteTraitTypeGroup(new ITraitType[]{traitType}, new SimpleIdentifier("Test"),
               new MultiEntryMap<ITraitType, ICasteType>());
-      ITrait trait = favorableTraitFactory.createTraits(typeGroup, friendlyIncrementChecker, new DummyTypedTraitTemplateFactory(traitType))[0];
+      IDefaultTrait trait = favorableTraitFactory.createTraits(typeGroup, friendlyIncrementChecker, new DummyTypedTraitTemplateFactory(traitType))[0];
       coreTraits.addTestTrait(trait);
       coreTraits.addAbilityTypeToGroup(traitType, casteType[0].getId());
     }

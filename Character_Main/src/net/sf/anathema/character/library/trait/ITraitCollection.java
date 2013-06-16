@@ -2,12 +2,13 @@ package net.sf.anathema.character.library.trait;
 
 import net.sf.anathema.character.generic.character.IGenericTraitCollection;
 import net.sf.anathema.character.generic.traits.ITraitType;
+import net.sf.anathema.character.library.trait.visitor.IDefaultTrait;
 
 public interface ITraitCollection extends IGenericTraitCollection {
 
   @Override
-  ITrait getTrait(ITraitType type);
+  IDefaultTrait getTrait(ITraitType type);
 
   @Override
-  ITrait[] getTraits(ITraitType[] traitTypes);
+  IDefaultTrait[] getTraits(ITraitType[] traitTypes);
 }
