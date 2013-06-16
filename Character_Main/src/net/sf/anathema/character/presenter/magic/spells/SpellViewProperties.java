@@ -7,9 +7,10 @@ import net.sf.anathema.character.main.experience.model.ExperienceModelFetcher;
 import net.sf.anathema.character.model.ICharacter;
 import net.sf.anathema.character.model.ISpellConfiguration;
 import net.sf.anathema.character.view.magic.ISpellViewProperties;
-import net.sf.anathema.framework.presenter.view.IdentificateListCellRenderer;
+import net.sf.anathema.lib.gui.AgnosticUIConfiguration;
 import net.sf.anathema.lib.gui.list.LegalityCheckListCellRenderer;
 import net.sf.anathema.lib.resources.Resources;
+import net.sf.anathema.lib.util.Identifier;
 
 import javax.swing.JButton;
 import javax.swing.JComponent;
@@ -57,8 +58,8 @@ public class SpellViewProperties extends AbstractMagicLearnProperties implements
   }
 
   @Override
-  public ListCellRenderer getCircleSelectionRenderer() {
-    return new IdentificateListCellRenderer(getResources());
+  public AgnosticUIConfiguration<Identifier> getCircleSelectionRenderer() {
+    return new IdentifierConfiguration(getResources());
   }
 
   @Override
