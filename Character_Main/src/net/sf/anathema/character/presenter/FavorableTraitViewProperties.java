@@ -5,8 +5,8 @@ import net.sf.anathema.character.generic.framework.resources.CharacterUI;
 import net.sf.anathema.character.generic.template.presentation.IPresentationProperties;
 import net.sf.anathema.character.library.intvalue.IIconToggleButtonProperties;
 import net.sf.anathema.character.library.trait.Trait;
-
-import javax.swing.Icon;
+import net.sf.anathema.lib.file.RelativePath;
+import net.sf.anathema.lib.gui.AgnosticUIConfiguration;
 
 public class FavorableTraitViewProperties implements IIconToggleButtonProperties {
 
@@ -21,24 +21,24 @@ public class FavorableTraitViewProperties implements IIconToggleButtonProperties
   }
 
   @Override
-  public Icon createStandardIcon() {
+  public RelativePath createStandardIcon() {
     CasteUI casteUI = new CasteUI(properties);
     if (context.isExperienced() && !trait.getFavorization().isCasteOrFavored()) {
-      return casteUI.getEmptyIcon();
+      return AgnosticUIConfiguration.NO_ICON;
     }
     if (trait.getFavorization().isCaste()) {
-      return casteUI.getSmallCasteIcon(context.getCasteType());
+      return casteUI.getSmallCasteIconPath(context.getCasteType());
     }
-    return new CharacterUI().getMediumBallResource(context.getCharacterType());
+    return new CharacterUI().getMediumBallPath(context.getCharacterType());
   }
 
   @Override
-  public Icon createUnselectedIcon() {
-    return null;
+  public RelativePath createUnselectedIcon() {
+    return AgnosticUIConfiguration.NO_ICON;
   }
 
   @Override
   public String getToolTipText() {
-    return null;
+    return AgnosticUIConfiguration.NO_TOOLTIP;
   }
 }

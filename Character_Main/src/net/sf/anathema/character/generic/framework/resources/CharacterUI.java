@@ -13,23 +13,15 @@ public class CharacterUI extends AbstractUI {
   }
 
   public Icon getLinkIcon() {
-    return getIcon(new RelativePath("icons/ButtonLink16b.png"));
+    return getIcon(getLinkIconPath());
+  }
+
+  public RelativePath getLinkIconPath() {
+    return new RelativePath("icons/ButtonLink16b.png");
   }
 
   public RelativePath getRandomThresholdNameIconPath() {
     return new RelativePath("icons/ButtonRandomNameB16.png");
-  }
-
-  public Icon getCancelComboEditIcon() {
-    return getIcon(getCancelComboEditIconPath());
-  }
-
-  public Icon getFinalizeIcon() {
-    return getIcon(getFinalizeIconPath());
-  }
-
-  public RelativePath getFinalizeXpIconPath() {
-    return new RelativePath("icons/ButtonCheckXP16.png");
   }
 
   public Icon getSmallTypeIcon(ICharacterType characterType) {
@@ -45,7 +37,11 @@ public class CharacterUI extends AbstractUI {
   }
 
   public Icon getMediumBallResource(ICharacterType characterType) {
-    return getIcon(new RelativePath("icons/Border" + characterType.getId() + "Button16.png"));
+    return getIcon(getMediumBallPath(characterType));
+  }
+
+  public RelativePath getMediumBallPath(ICharacterType characterType) {
+    return new RelativePath("icons/Border" + characterType.getId() + "Button16.png");
   }
 
   public Icon getUnselectedBallResource() {

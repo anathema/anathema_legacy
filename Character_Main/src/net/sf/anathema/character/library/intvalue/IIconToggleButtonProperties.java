@@ -1,12 +1,12 @@
 package net.sf.anathema.character.library.intvalue;
 
-import javax.swing.Icon;
+import net.sf.anathema.lib.file.RelativePath;
 
 public interface IIconToggleButtonProperties {
 
-  Icon createStandardIcon();
+  RelativePath createStandardIcon();
 
-  Icon createUnselectedIcon();
+  RelativePath createUnselectedIcon();
 
   String getToolTipText();
 }

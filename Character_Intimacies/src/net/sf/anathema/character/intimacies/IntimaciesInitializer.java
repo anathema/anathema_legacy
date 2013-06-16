@@ -12,9 +12,10 @@ import net.sf.anathema.character.presenter.initializers.RegisteredInitializer;
 import net.sf.anathema.character.view.SectionView;
 import net.sf.anathema.framework.model.ApplicationModel;
 import net.sf.anathema.initialization.reflections.Weight;
+import net.sf.anathema.lib.file.RelativePath;
 import net.sf.anathema.lib.resources.Resources;
 
-import javax.swing.Icon;
+import static net.sf.anathema.lib.gui.AgnosticUIConfiguration.NO_ICON;
 
 @RegisteredInitializer(CharacterModelGroup.SpiritualTraits)
 @Weight(weight = 300)
@@ -43,13 +44,13 @@ public class IntimaciesInitializer implements CharacterModelInitializer {
     }
 
     @Override
-    public Icon createStandardIcon() {
-      return new CharacterUI().getLinkIcon();
+    public RelativePath createStandardIcon() {
+      return new CharacterUI().getLinkIconPath();
     }
 
     @Override
-    public Icon createUnselectedIcon() {
-      return null;
+    public RelativePath createUnselectedIcon() {
+      return NO_ICON;
     }
 
     @Override
