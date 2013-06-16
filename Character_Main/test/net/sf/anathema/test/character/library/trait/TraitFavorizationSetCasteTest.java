@@ -6,18 +6,18 @@ import net.sf.anathema.character.generic.caste.ICasteType;
 import net.sf.anathema.character.generic.dummy.DummyBasicCharacterData;
 import net.sf.anathema.character.generic.dummy.DummyCasteType;
 import net.sf.anathema.character.generic.traits.types.AbilityType;
-import net.sf.anathema.character.library.trait.ITrait;
 import net.sf.anathema.character.library.trait.favorable.FavorableState;
 import net.sf.anathema.character.library.trait.favorable.FriendlyIncrementChecker;
 import net.sf.anathema.character.library.trait.favorable.IIncrementChecker;
 import net.sf.anathema.character.library.trait.favorable.TraitFavorization;
+import net.sf.anathema.character.library.trait.visitor.IDefaultTrait;
 import org.junit.Test;
 
 import static org.junit.Assert.assertSame;
 
 public class TraitFavorizationSetCasteTest {
 
-  private ITrait archeryTrait = new DummyDefaultTrait(AbilityType.Archery);
+  private IDefaultTrait archeryTrait = new DummyDefaultTrait(AbilityType.Archery);
 
   private TraitFavorization createFriendlyTraitFavorization() {
     return createTraitFavorization(new FriendlyIncrementChecker());

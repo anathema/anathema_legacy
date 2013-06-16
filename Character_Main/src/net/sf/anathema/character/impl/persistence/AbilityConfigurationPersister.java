@@ -6,12 +6,9 @@ import net.sf.anathema.character.generic.traits.types.AbilityType;
 import net.sf.anathema.character.library.trait.persistence.TraitPersister;
 import net.sf.anathema.character.library.trait.specialties.DefaultTraitReference;
 import net.sf.anathema.character.library.trait.specialties.ISpecialtiesConfiguration;
-import net.sf.anathema.character.library.trait.specialties.SubTraitReference;
 import net.sf.anathema.character.library.trait.subtrait.ISubTrait;
 import net.sf.anathema.character.library.trait.subtrait.ISubTraitContainer;
-import net.sf.anathema.character.library.trait.visitor.IAggregatedTrait;
 import net.sf.anathema.character.library.trait.visitor.IDefaultTrait;
-import net.sf.anathema.character.library.trait.visitor.ITraitVisitor;
 import net.sf.anathema.character.model.traits.ICoreTraitConfiguration;
 import net.sf.anathema.lib.exception.PersistenceException;
 import net.sf.anathema.lib.xml.ElementUtilities;
@@ -42,38 +39,8 @@ public class AbilityConfigurationPersister {
     if (ability.getFavorization().isFavored()) {
       ElementUtilities.addAttribute(abilityElement, ATTRIB_FAVORED, ability.getFavorization().isFavored());
     }
-    ability.accept(new ITraitVisitor() {
-      @Override
-      public void visitAggregatedTrait(IAggregatedTrait visitedTrait) {
-        try {
-          for (ISubTrait subTrait : visitedTrait.getSubTraits().getSubTraits()) {
-            Element subTraitElement = getSubTraitElement(abilityElement, subTrait);
-            if (subTraitElement == null) {
-              throw new PersistenceException("No element found for SubTrait " + subTrait.getName());
-            }
-            SubTraitReference reference = new SubTraitReference(subTrait);
-            saveSpecialties(specialtyConfiguration, subTraitElement, reference);
-          }
-        } catch (PersistenceException e) {
-          throw new RuntimeException(e);
-        }
-      }
-
-      @Override
-      public void visitDefaultTrait(IDefaultTrait visitedTrait) {
-        DefaultTraitReference reference = new DefaultTraitReference(visitedTrait);
-        saveSpecialties(specialtyConfiguration, abilityElement, reference);
-      }
-    });
-  }
-
-  private Element getSubTraitElement(Element abilityElement, ISubTrait subTrait) throws PersistenceException {
-    for (Element subTraitElement : ElementUtilities.elements(abilityElement, TraitPersister.TAG_SUB_TRAIT)) {
-      if (subTrait.getName().equals(ElementUtilities.getRequiredText(subTraitElement, TraitPersister.TAG_TRAIT_NAME))) {
-        return subTraitElement;
-      }
-    }
-    return null;
+    DefaultTraitReference reference = new DefaultTraitReference(ability);
+    saveSpecialties(specialtyConfiguration, abilityElement, reference);
   }
 
   private void saveSpecialties(ISpecialtiesConfiguration specialtyConfiguration, Element abilityElement, ITraitReference reference) {
@@ -98,32 +65,7 @@ public class AbilityConfigurationPersister {
     boolean favored = ElementUtilities.getBooleanAttribute(abilityElement, ATTRIB_FAVORED, false);
     ability.getFavorization().setFavored(favored);
     final ISpecialtiesConfiguration specialtyConfiguration = configuration.getSpecialtyConfiguration();
-    ability.accept(new ITraitVisitor() {
-      @Override
-      public void visitAggregatedTrait(IAggregatedTrait visitedTrait) {
-        try {
-          for (ISubTrait subTrait : visitedTrait.getSubTraits().getSubTraits()) {
-            Element subTraitElement = getSubTraitElement(abilityElement, subTrait);
-            if (subTraitElement == null) {
-              return;
-            }
-            loadSpecialties(subTraitElement, specialtyConfiguration, new SubTraitReference(subTrait));
-          }
-
-        } catch (PersistenceException e) {
-          throw new RuntimeException(e);
-        }
-      }
-
-      @Override
-      public void visitDefaultTrait(IDefaultTrait visitedTrait) {
-        try {
-          loadSpecialties(abilityElement, specialtyConfiguration, new DefaultTraitReference(visitedTrait));
-        } catch (PersistenceException e) {
-          throw new RuntimeException(e);
-        }
-      }
-    });
+    loadSpecialties(abilityElement, specialtyConfiguration, new DefaultTraitReference(ability));
   }
 
   private void loadSpecialties(Element abilityElement, ISpecialtiesConfiguration specialtyConfiguration, ITraitReference reference) throws

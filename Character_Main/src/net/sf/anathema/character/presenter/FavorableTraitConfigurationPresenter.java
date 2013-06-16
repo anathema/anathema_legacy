@@ -11,9 +11,7 @@ import net.sf.anathema.character.library.trait.ITrait;
 import net.sf.anathema.character.library.trait.favorable.FavorableState;
 import net.sf.anathema.character.library.trait.favorable.IFavorableStateChangedListener;
 import net.sf.anathema.character.library.trait.presenter.TraitPresenter;
-import net.sf.anathema.character.library.trait.visitor.IAggregatedTrait;
 import net.sf.anathema.character.library.trait.visitor.IDefaultTrait;
-import net.sf.anathema.character.library.trait.visitor.ITraitVisitor;
 import net.sf.anathema.character.model.ICharacter;
 import net.sf.anathema.character.model.traits.ICoreTraitConfiguration;
 import net.sf.anathema.character.view.IGroupedFavorableTraitConfigurationView;
@@ -70,36 +68,22 @@ public class FavorableTraitConfigurationPresenter {
     }
   }
 
-  private ITrait[] getAllTraits() {
+  private IDefaultTrait[] getAllTraits() {
     return traitConfiguration.getTraits(TraitTypeGroup.getAllTraitTypes(traitTypeGroups));
   }
 
-  private void addTraitViews(ITrait[] abilityGroup) {
-    for (ITrait ability : abilityGroup) {
+  private void addTraitViews(IDefaultTrait[] abilityGroup) {
+    for (IDefaultTrait ability : abilityGroup) {
       traitViewsByTrait.put(ability, addTraitView(ability));
     }
   }
 
-  private IToggleButtonTraitView<?> addTraitView(final ITrait favorableTrait) {
+  private IToggleButtonTraitView<?> addTraitView(final IDefaultTrait favorableTrait) {
     final String id = favorableTrait.getType().getId();
-    final IToggleButtonTraitView<?>[] view = new IToggleButtonTraitView<?>[1];
-    favorableTrait.accept(new ITraitVisitor() {
-      @Override
-      public void visitAggregatedTrait(IAggregatedTrait visitedTrait) {
-        view[0] = configurationView
-                .addMarkerLessTraitView(resources.getString(id), favorableTrait.getCurrentValue(), favorableTrait.getMaximalValue(),
-                        visitedTrait.getFallbackTrait(), favorableTrait.getFavorization().isFavored(),
-                        new FavorableTraitViewProperties(presentationProperties, basicCharacterData, favorableTrait));
-      }
+    final IToggleButtonTraitView<?> traitView = configurationView.addTraitView(resources.getString(id), favorableTrait.getCurrentValue(), favorableTrait.getMaximalValue(),
+            (IDefaultTrait) favorableTrait, favorableTrait.getFavorization().isFavored(),
+            new FavorableTraitViewProperties(presentationProperties, basicCharacterData, favorableTrait));
 
-      @Override
-      public void visitDefaultTrait(IDefaultTrait visitedTrait) {
-        view[0] = configurationView.addTraitView(resources.getString(id), favorableTrait.getCurrentValue(), favorableTrait.getMaximalValue(),
-                (IDefaultTrait) favorableTrait, favorableTrait.getFavorization().isFavored(),
-                new FavorableTraitViewProperties(presentationProperties, basicCharacterData, favorableTrait));
-      }
-    });
-    final IToggleButtonTraitView<?> traitView = view[0];
     new TraitPresenter(favorableTrait, traitView).initPresentation();
     traitView.addButtonSelectedListener(new IBooleanValueChangedListener() {
       @Override

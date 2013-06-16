@@ -3,10 +3,7 @@ package net.sf.anathema.character.library.trait.favorable;
 import net.sf.anathema.character.generic.IBasicCharacterData;
 import net.sf.anathema.character.generic.caste.ICasteType;
 import net.sf.anathema.character.library.ITraitFavorization;
-import net.sf.anathema.character.library.trait.ITrait;
-import net.sf.anathema.character.library.trait.visitor.IAggregatedTrait;
 import net.sf.anathema.character.library.trait.visitor.IDefaultTrait;
-import net.sf.anathema.character.library.trait.visitor.ITraitVisitor;
 import org.jmock.example.announcer.Announcer;
 
 public class TraitFavorization implements ITraitFavorization {
@@ -14,12 +11,12 @@ public class TraitFavorization implements ITraitFavorization {
   private FavorableState state;
   private final Announcer<IFavorableStateChangedListener> favorableStateControl = Announcer.to(IFavorableStateChangedListener.class);
   private final IIncrementChecker favoredIncrementChecker;
-  private final ITrait trait;
+  private final IDefaultTrait trait;
   private final ICasteType[] castes;
   private final boolean isRequiredFavored;
   private final IBasicCharacterData basicData;
 
-  public TraitFavorization(IBasicCharacterData basicData, ICasteType[] castes, IIncrementChecker favoredIncrementChecker, ITrait trait,
+  public TraitFavorization(IBasicCharacterData basicData, ICasteType[] castes, IIncrementChecker favoredIncrementChecker, IDefaultTrait trait,
                            boolean isRequiredFavored) {
     this.basicData = basicData;
     this.castes = castes;
@@ -55,19 +52,8 @@ public class TraitFavorization implements ITraitFavorization {
   public void ensureMinimalValue() {
     final int minimalValue = getMinimalValue();
     if (trait.getCurrentValue() < minimalValue) {
-      trait.accept(new ITraitVisitor() {
-
-        @Override
-        public void visitAggregatedTrait(IAggregatedTrait visitedTrait) {
-          visitedTrait.getFallbackTrait().setCurrentValue(minimalValue);
-        }
-
-        @Override
-        public void visitDefaultTrait(IDefaultTrait visitedTrait) {
-          visitedTrait.setCurrentValue(minimalValue);
-        }
-      });
-    }
+      trait.setCurrentValue(minimalValue);
+     }
   }
 
   @Override
