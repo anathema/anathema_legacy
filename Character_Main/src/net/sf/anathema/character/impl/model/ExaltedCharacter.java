@@ -14,7 +14,6 @@ import net.sf.anathema.character.generic.type.ICharacterType;
 import net.sf.anathema.character.impl.generic.GenericCharacter;
 import net.sf.anathema.character.impl.model.charm.CharmConfiguration;
 import net.sf.anathema.character.impl.model.charm.ComboConfiguration;
-import net.sf.anathema.character.impl.model.context.CharacterListening;
 import net.sf.anathema.character.impl.model.context.CharacterModelContext;
 import net.sf.anathema.character.impl.model.statistics.ExtendedConfiguration;
 import net.sf.anathema.character.impl.model.traits.listening.CharacterTraitListening;
@@ -26,13 +25,13 @@ import net.sf.anathema.character.main.description.model.CharacterDescription;
 import net.sf.anathema.character.main.description.model.CharacterDescriptionFetcher;
 import net.sf.anathema.character.main.essencepool.model.EssencePoolModel;
 import net.sf.anathema.character.main.essencepool.model.EssencePoolModelImpl;
+import net.sf.anathema.character.main.model.CharacterModel;
 import net.sf.anathema.character.main.model.DefaultHero;
-import net.sf.anathema.character.main.model.change.ChangeAnnouncerAdapter;
+import net.sf.anathema.character.main.model.ModelInitializationContext;
 import net.sf.anathema.character.main.model.initialization.CharacterModelInitializer;
 import net.sf.anathema.character.main.othertraits.DefaultOtherTraitModel;
 import net.sf.anathema.character.main.othertraits.OtherTraitModel;
 import net.sf.anathema.character.main.traits.model.TraitModel;
-import net.sf.anathema.character.main.model.CharacterModel;
 import net.sf.anathema.character.model.ICharacter;
 import net.sf.anathema.character.model.ISpellConfiguration;
 import net.sf.anathema.character.model.charm.ICharmConfiguration;
@@ -97,13 +96,9 @@ public class ExaltedCharacter implements ICharacter {
   }
 
   private void addModels(ICharacterGenerics generics) {
-    CharacterModelInitializer initializer = new CharacterModelInitializer(createChangeAnnouncer(), characterTemplate);
+    ModelInitializationContext initializationContext = new ModelInitializationContext(context, this);
+    CharacterModelInitializer initializer = new CharacterModelInitializer(initializationContext, characterTemplate);
     initializer.addModels(generics, hero);
-  }
-
-  private ChangeAnnouncerAdapter createChangeAnnouncer() {
-    CharacterListening listening = (CharacterListening) getCharacterContext().getCharacterListening();
-    return new ChangeAnnouncerAdapter(listening, this);
   }
 
   private void addCompulsiveCharms(ICharacterTemplate template) {

@@ -23,7 +23,7 @@ public class ChangeAnnouncerAdapter implements ChangeAnnouncer {
     if (flavor == ConceptChange.FLAVOR_CASTE) {
       listening.fireCasteChanged();
     } else if (flavor == ExperienceChange.FLAVOR_EXPERIENCE_STATE) {
-      ExperienceModel experienceModel = hero.getModel(ExperienceModel.ID);
+      ExperienceModel experienceModel = (ExperienceModel) hero.getModel(ExperienceModel.ID);
       listening.fireExperiencedChanged(experienceModel.isExperienced());
     } else {
       listening.fireCharacterChanged();

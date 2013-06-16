@@ -1,6 +1,5 @@
 package net.sf.anathema.character.main.attributes.model;
 
-import net.sf.anathema.character.change.ChangeAnnouncer;
 import net.sf.anathema.character.generic.character.IGenericCharacter;
 import net.sf.anathema.character.generic.template.ICharacterTemplate;
 import net.sf.anathema.character.generic.traits.ITraitTemplate;
@@ -9,6 +8,7 @@ import net.sf.anathema.character.main.attributes.template.AttributeGroup;
 import net.sf.anathema.character.main.attributes.template.AttributeTemplate;
 import net.sf.anathema.character.main.model.CharacterModel;
 import net.sf.anathema.character.main.model.Hero;
+import net.sf.anathema.character.main.model.InitializationContext;
 import net.sf.anathema.lib.util.Identifier;
 import net.sf.anathema.lib.util.SimpleIdentifier;
 
@@ -24,7 +24,7 @@ public class AttributesModel implements AttributesList, CharacterModel {
   }
 
   @Override
-  public void initialize(ChangeAnnouncer announcer, Hero hero) {
+  public void initialize(InitializationContext context, Hero hero) {
     // nothing to do until now
   }
 

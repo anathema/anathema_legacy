@@ -1,9 +1,9 @@
 package net.sf.anathema.character.main.traits.model;
 
-import net.sf.anathema.character.change.ChangeAnnouncer;
 import net.sf.anathema.character.library.trait.Trait;
 import net.sf.anathema.character.main.model.CharacterModel;
 import net.sf.anathema.character.main.model.Hero;
+import net.sf.anathema.character.main.model.InitializationContext;
 import net.sf.anathema.lib.util.Identifier;
 
 import java.util.Iterator;
@@ -23,7 +23,7 @@ public class DefaultTraitModel extends DefaultTraitMap implements TraitMap, Trai
   }
 
   @Override
-  public void initialize(ChangeAnnouncer announcer, Hero hero) {
+  public void initialize(InitializationContext context, Hero hero) {
     //nothing to do
   }
 }

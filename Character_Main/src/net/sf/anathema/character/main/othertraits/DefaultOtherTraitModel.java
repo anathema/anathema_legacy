@@ -1,6 +1,5 @@
 package net.sf.anathema.character.main.othertraits;
 
-import net.sf.anathema.character.change.ChangeAnnouncer;
 import net.sf.anathema.character.generic.additionalrules.IAdditionalTraitRules;
 import net.sf.anathema.character.generic.framework.additionaltemplate.model.ICharacterModelContext;
 import net.sf.anathema.character.generic.framework.additionaltemplate.model.ITraitContext;
@@ -16,10 +15,11 @@ import net.sf.anathema.character.impl.model.traits.creation.DefaultTraitFactory;
 import net.sf.anathema.character.impl.model.traits.creation.TypedTraitTemplateFactory;
 import net.sf.anathema.character.impl.model.traits.listening.WillpowerListening;
 import net.sf.anathema.character.library.trait.Trait;
-import net.sf.anathema.character.main.traits.model.DefaultTraitMap;
-import net.sf.anathema.character.main.traits.model.TraitModel;
 import net.sf.anathema.character.main.model.CharacterModel;
 import net.sf.anathema.character.main.model.Hero;
+import net.sf.anathema.character.main.model.InitializationContext;
+import net.sf.anathema.character.main.traits.model.DefaultTraitMap;
+import net.sf.anathema.character.main.traits.model.TraitModel;
 import net.sf.anathema.lib.util.Identifier;
 
 public class DefaultOtherTraitModel extends DefaultTraitMap implements OtherTraitModel, CharacterModel {
@@ -78,7 +78,7 @@ public class DefaultOtherTraitModel extends DefaultTraitMap implements OtherTrai
   }
 
   @Override
-  public void initialize(ChangeAnnouncer announcer, Hero hero) {
+  public void initialize(InitializationContext context, Hero hero) {
     //To change body of implemented methods use File | Settings | File Templates.
   }
 }

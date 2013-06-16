@@ -4,6 +4,7 @@ import net.sf.anathema.character.change.AnnounceChangeValueListener;
 import net.sf.anathema.character.change.ChangeAnnouncer;
 import net.sf.anathema.character.main.model.CharacterModel;
 import net.sf.anathema.character.main.model.Hero;
+import net.sf.anathema.character.main.model.InitializationContext;
 import net.sf.anathema.lib.control.ObjectValueListener;
 import net.sf.anathema.lib.util.Identifier;
 import net.sf.anathema.lib.workflow.textualdescription.ITextualDescription;
@@ -102,7 +103,8 @@ public class TextualCharacterDescription implements CharacterDescription, Charac
   }
 
   @Override
-  public void initialize(ChangeAnnouncer announcer, Hero hero) {
+  public void initialize(InitializationContext context, Hero hero) {
+    ChangeAnnouncer announcer = context.getChangeAnnouncer();
     addOverallChangeListener(new AnnounceChangeValueListener(announcer));
   }
 }

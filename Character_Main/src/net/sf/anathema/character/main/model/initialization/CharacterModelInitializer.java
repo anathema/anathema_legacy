@@ -1,14 +1,14 @@
 package net.sf.anathema.character.main.model.initialization;
 
-import net.sf.anathema.character.change.ChangeAnnouncer;
 import net.sf.anathema.character.generic.framework.ICharacterGenerics;
 import net.sf.anathema.character.generic.template.ICharacterTemplate;
-import net.sf.anathema.character.main.model.DefaultHero;
-import net.sf.anathema.character.main.model.DefaultTemplateFactory;
 import net.sf.anathema.character.main.model.CharacterModel;
 import net.sf.anathema.character.main.model.CharacterModelAutoCollector;
 import net.sf.anathema.character.main.model.CharacterModelFactory;
-import net.sf.anathema.character.main.modeltemplate.TemplateFactory;
+import net.sf.anathema.character.main.model.DefaultHero;
+import net.sf.anathema.character.main.model.DefaultTemplateFactory;
+import net.sf.anathema.character.main.model.InitializationContext;
+import net.sf.anathema.character.main.model.template.TemplateFactory;
 import net.sf.anathema.initialization.ObjectFactory;
 import net.sf.anathema.lib.util.Identifier;
 
@@ -20,11 +20,11 @@ import java.util.Map;
 
 public class CharacterModelInitializer {
 
-  private ChangeAnnouncer changeAnnouncer;
+  private InitializationContext context;
   private ICharacterTemplate template;
 
-  public CharacterModelInitializer(ChangeAnnouncer changeAnnouncer, ICharacterTemplate template) {
-    this.changeAnnouncer = changeAnnouncer;
+  public CharacterModelInitializer(InitializationContext context, ICharacterTemplate template) {
+    this.context = context;
     this.template = template;
   }
 
@@ -41,7 +41,7 @@ public class CharacterModelInitializer {
       modelList.add(factory.create(templateFactory));
     }
     for (CharacterModel model : modelList) {
-      model.initialize(changeAnnouncer, hero);
+      model.initialize(context, hero);
       hero.addModel(model);
     }
   }

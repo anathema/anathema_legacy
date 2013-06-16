@@ -1,4 +1,4 @@
-package net.sf.anathema.character.main.modeltemplate;
+package net.sf.anathema.character.main.model.template;
 
 import net.sf.anathema.character.generic.data.IExtensibleDataSet;
 import net.sf.anathema.lib.exception.AnathemaException;

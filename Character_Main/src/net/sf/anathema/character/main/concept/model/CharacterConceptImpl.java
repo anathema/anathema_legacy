@@ -7,6 +7,7 @@ import net.sf.anathema.character.impl.model.IntegerDescription;
 import net.sf.anathema.character.impl.model.TypedDescription;
 import net.sf.anathema.character.main.model.CharacterModel;
 import net.sf.anathema.character.main.model.Hero;
+import net.sf.anathema.character.main.model.InitializationContext;
 import net.sf.anathema.character.model.IIntegerDescription;
 import net.sf.anathema.character.model.ITypedDescription;
 import net.sf.anathema.lib.util.Identifier;
@@ -32,7 +33,8 @@ public class CharacterConceptImpl implements CharacterConcept, CharacterModel {
   }
 
   @Override
-  public void initialize(ChangeAnnouncer announcer, Hero hero) {
+  public void initialize(InitializationContext context, Hero hero) {
+    ChangeAnnouncer announcer = context.getChangeAnnouncer();
     caste.addChangeListener(new AnnounceChangeListener(announcer, ConceptChange.FLAVOR_CASTE));
     age.addChangeListener(new AnnounceChangeListener(announcer, ConceptChange.FLAVOR_AGE));
   }

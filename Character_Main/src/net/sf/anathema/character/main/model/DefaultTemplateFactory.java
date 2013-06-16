@@ -1,9 +1,9 @@
 package net.sf.anathema.character.main.model;
 
 import net.sf.anathema.character.generic.framework.ICharacterGenerics;
-import net.sf.anathema.character.main.modeltemplate.CharacterModelTemplateCache;
-import net.sf.anathema.character.main.modeltemplate.TemplateLoader;
-import net.sf.anathema.character.main.modeltemplate.TemplateFactory;
+import net.sf.anathema.character.main.model.template.CharacterModelTemplateCache;
+import net.sf.anathema.character.main.model.template.TemplateLoader;
+import net.sf.anathema.character.main.model.template.TemplateFactory;
 import net.sf.anathema.lib.util.Identifier;
 
 public class DefaultTemplateFactory implements TemplateFactory {

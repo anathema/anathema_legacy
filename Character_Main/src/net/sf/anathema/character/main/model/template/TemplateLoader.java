@@ -1,4 +1,4 @@
-package net.sf.anathema.character.main.modeltemplate;
+package net.sf.anathema.character.main.model.template;
 
 import java.io.InputStream;
 

@@ -1,6 +1,5 @@
-package net.sf.anathema.character.main.modeltemplate;
+package net.sf.anathema.character.main.model.template;
 
-import net.sf.anathema.character.main.modeltemplate.TemplateLoader;
 import net.sf.anathema.lib.util.Identifier;
 
 public interface TemplateFactory {
