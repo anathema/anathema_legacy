@@ -6,8 +6,8 @@ import net.sf.anathema.character.equipment.impl.character.model.stats.modificati
 import net.sf.anathema.character.generic.equipment.weapon.IWeaponStats;
 import net.sf.anathema.lib.util.Identifier;
 import net.sf.anathema.lib.util.SimpleIdentifier;
+import org.hamcrest.CoreMatchers;
 import org.junit.Test;
-import org.junit.matchers.JUnitMatchers;
 
 import java.util.Arrays;
 import java.util.List;
@@ -27,7 +27,7 @@ public class ProxyWeaponStats_AdamantTagsTest {
   public void addsPiercingToAAdamantWeapon() throws Exception {
     setOriginalTags();
     List<Identifier> tags = getModifiedTags(Adamant);
-    assertThat(tags, JUnitMatchers.<Identifier>hasItem(Piercing));
+    assertThat(tags, CoreMatchers.<Identifier>hasItem(Piercing));
   }
 
   @Test
@@ -41,7 +41,7 @@ public class ProxyWeaponStats_AdamantTagsTest {
   public void addsSpecialPiercingTagIfItIsAlreadyPiercing() throws Exception {
     setOriginalTags(Piercing);
     List<Identifier> tags = getModifiedTags(Adamant);
-    assertThat(tags, JUnitMatchers.<Identifier>hasItem(new SimpleIdentifier("AdamantPiercing")));
+    assertThat(tags, CoreMatchers.<Identifier>hasItem(new SimpleIdentifier("AdamantPiercing")));
   }
 
   private List<Identifier> getModifiedTags(MagicalMaterial material) {
