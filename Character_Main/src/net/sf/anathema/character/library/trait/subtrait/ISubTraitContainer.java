@@ -1,20 +1,20 @@
 package net.sf.anathema.character.library.trait.subtrait;
 
-import net.sf.anathema.character.library.trait.specialties.ISpecialty;
+import net.sf.anathema.character.library.trait.specialties.Specialty;
 
 public interface ISubTraitContainer {
 
-  ISpecialty[] getSubTraits();
+  Specialty[] getSubTraits();
 
-  ISpecialty addSubTrait(String subName);
+  Specialty addSubTrait(String subName);
 
   boolean isNewSubTraitAllowed();
 
-  void removeSubTrait(ISubTrait specialty);
+  void removeSubTrait(Specialty specialty);
 
-  void addSubTraitListener(ISubTraitListener listener);
+  void addSubTraitListener(ISpecialtyListener listener);
 
-  void removeSubTraitListener(ISubTraitListener listener);
+  void removeSubTraitListener(ISpecialtyListener listener);
 
   int getCreationDotTotal();
 
@@ -22,9 +22,9 @@ public interface ISubTraitContainer {
 
   int getExperienceDotTotal();
 
-  boolean isRemovable(ISubTrait subTrait);
+  boolean isRemovable(Specialty subTrait);
 
   void dispose();
 
-  ISubTrait getSubTrait(String traitName);
+  Specialty getSubTrait(String traitName);
 }

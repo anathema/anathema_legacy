@@ -8,7 +8,7 @@ import net.sf.anathema.character.generic.magic.IMagic;
 import net.sf.anathema.character.generic.template.ICharacterTemplate;
 import net.sf.anathema.character.generic.template.magic.IGenericCharmConfiguration;
 import net.sf.anathema.character.generic.traits.ITraitType;
-import net.sf.anathema.character.library.trait.specialties.ISpecialty;
+import net.sf.anathema.character.library.trait.specialties.Specialty;
 import net.sf.anathema.lib.control.IChangeListener;
 import net.sf.anathema.lib.util.IdentifiedInteger;
 
@@ -22,7 +22,7 @@ public interface IGenericCharacter extends ILimitationContext, IMagicCollection,
 
   ICharacterTemplate getTemplate();
 
-  ISpecialty[] getSpecialties(ITraitType traitType);
+  Specialty[] getSpecialties(ITraitType traitType);
 
   int getHealthLevelTypeCount(HealthLevelType type);
 

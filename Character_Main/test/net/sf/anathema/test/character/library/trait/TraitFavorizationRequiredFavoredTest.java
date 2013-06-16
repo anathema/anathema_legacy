@@ -1,6 +1,6 @@
 package net.sf.anathema.test.character.library.trait;
 
-import net.sf.anathema.character.dummy.trait.DummyDefaultTrait;
+import net.sf.anathema.character.dummy.trait.DummyTrait;
 import net.sf.anathema.character.generic.IBasicCharacterData;
 import net.sf.anathema.character.generic.dummy.DummyBasicCharacterData;
 import net.sf.anathema.character.generic.traits.types.AbilityType;
@@ -15,11 +15,11 @@ import static org.junit.Assert.assertEquals;
 
 public class TraitFavorizationRequiredFavoredTest {
 
-  private DummyDefaultTrait trait;
+  private DummyTrait trait;
 
   @Before
   public void setUp() throws Exception {
-    this.trait = new DummyDefaultTrait(AbilityType.Performance);
+    this.trait = new DummyTrait(AbilityType.Performance);
   }
 
   private TraitFavorization createObjectUnderTest(boolean isRequiredFavored) {

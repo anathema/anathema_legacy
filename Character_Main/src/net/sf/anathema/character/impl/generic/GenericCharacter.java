@@ -25,9 +25,8 @@ import net.sf.anathema.character.generic.traits.types.OtherTraitType;
 import net.sf.anathema.character.impl.model.advance.ExperiencePointManagement;
 import net.sf.anathema.character.library.trait.Trait;
 import net.sf.anathema.character.library.trait.specialties.ISpecialtiesConfiguration;
-import net.sf.anathema.character.library.trait.specialties.ISpecialty;
-import net.sf.anathema.character.library.trait.subtrait.ISubTrait;
-import net.sf.anathema.character.library.trait.subtrait.ISubTraitListener;
+import net.sf.anathema.character.library.trait.specialties.Specialty;
+import net.sf.anathema.character.library.trait.subtrait.ISpecialtyListener;
 import net.sf.anathema.character.main.concept.model.CharacterConcept;
 import net.sf.anathema.character.main.concept.model.CharacterConceptFetcher;
 import net.sf.anathema.character.main.description.model.CharacterDescriptionFetcher;
@@ -122,7 +121,7 @@ public class GenericCharacter implements IGenericCharacter {
   }
 
   @Override
-  public ISpecialty[] getSpecialties(ITraitType traitType) {
+  public Specialty[] getSpecialties(ITraitType traitType) {
     ISpecialtiesConfiguration specialtyConfiguration = getTraitConfiguration().getSpecialtyConfiguration();
     return specialtyConfiguration.getSpecialtiesContainer(traitType).getSubTraits();
   }
@@ -334,18 +333,18 @@ public class GenericCharacter implements IGenericCharacter {
   public void addSpecialtyListChangeListener(final IChangeListener listener) {
     ISpecialtiesConfiguration config = getTraitConfiguration().getSpecialtyConfiguration();
     for (ITraitReference trait : config.getAllTraits()) {
-      config.getSpecialtiesContainer(trait).addSubTraitListener(new ISubTraitListener() {
+      config.getSpecialtiesContainer(trait).addSubTraitListener(new ISpecialtyListener() {
         @Override
         public void subTraitValueChanged() {
         }
 
         @Override
-        public void subTraitAdded(ISubTrait subTrait) {
+        public void subTraitAdded(Specialty subTrait) {
           listener.changeOccurred();
         }
 
         @Override
-        public void subTraitRemoved(ISubTrait subTrait) {
+        public void subTraitRemoved(Specialty subTrait) {
           listener.changeOccurred();
         }
       });

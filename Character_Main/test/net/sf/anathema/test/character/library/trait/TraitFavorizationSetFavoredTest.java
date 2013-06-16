@@ -1,6 +1,6 @@
 package net.sf.anathema.test.character.library.trait;
 
-import net.sf.anathema.character.dummy.trait.DummyDefaultTrait;
+import net.sf.anathema.character.dummy.trait.DummyTrait;
 import net.sf.anathema.character.generic.IBasicCharacterData;
 import net.sf.anathema.character.generic.caste.ICasteType;
 import net.sf.anathema.character.generic.dummy.DummyBasicCharacterData;
@@ -22,7 +22,7 @@ import static org.mockito.Mockito.verifyZeroInteractions;
 
 public class TraitFavorizationSetFavoredTest {
 
-  private Trait archeryTrait = new DummyDefaultTrait(AbilityType.Archery);
+  private Trait archeryTrait = new DummyTrait(AbilityType.Archery);
   private IFavorableStateChangedListener listener = mock(IFavorableStateChangedListener.class);
 
   private TraitFavorization createFriendlyTraitFavorization() {

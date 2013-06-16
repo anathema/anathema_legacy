@@ -11,7 +11,7 @@ import net.sf.anathema.character.library.ITraitFavorization;
 import net.sf.anathema.character.library.trait.AbstractFavorableTraitCostCalculator;
 import net.sf.anathema.character.library.trait.Trait;
 import net.sf.anathema.character.library.trait.specialties.ISpecialtiesConfiguration;
-import net.sf.anathema.character.library.trait.subtrait.ISubTrait;
+import net.sf.anathema.character.library.trait.specialties.Specialty;
 import net.sf.anathema.character.model.traits.ICoreTraitConfiguration;
 
 import java.util.ArrayList;
@@ -68,7 +68,7 @@ public class AbilityCostCalculator extends AbstractFavorableTraitCostCalculator 
     List<IGenericSpecialty> specialties = new ArrayList<>();
     for (Trait ability : getTraits()) {
       ISpecialtiesConfiguration specialtyConfiguration = traitConfiguration.getSpecialtyConfiguration();
-      for (ISubTrait specialty : specialtyConfiguration.getSpecialtiesContainer(ability.getType()).getSubTraits()) {
+      for (Specialty specialty : specialtyConfiguration.getSpecialtiesContainer(ability.getType()).getSubTraits()) {
         for (int index = 0; index < specialty.getCalculationValue(); index++) {
           specialties.add(new GenericSpecialty(ability));
         }

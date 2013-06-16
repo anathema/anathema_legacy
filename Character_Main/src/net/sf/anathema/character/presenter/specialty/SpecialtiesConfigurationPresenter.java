@@ -5,11 +5,10 @@ import net.sf.anathema.character.generic.framework.additionaltemplate.listening.
 import net.sf.anathema.character.generic.framework.resources.TraitInternationalizer;
 import net.sf.anathema.character.library.trait.presenter.TraitPresenter;
 import net.sf.anathema.character.library.trait.specialties.ISpecialtiesConfiguration;
-import net.sf.anathema.character.library.trait.specialties.ISpecialty;
+import net.sf.anathema.character.library.trait.specialties.Specialty;
 import net.sf.anathema.character.library.trait.specialties.ITraitReferencesChangeListener;
-import net.sf.anathema.character.library.trait.subtrait.ISubTrait;
+import net.sf.anathema.character.library.trait.subtrait.ISpecialtyListener;
 import net.sf.anathema.character.library.trait.subtrait.ISubTraitContainer;
-import net.sf.anathema.character.library.trait.subtrait.ISubTraitListener;
 import net.sf.anathema.character.view.ISpecialtyView;
 import net.sf.anathema.framework.presenter.resources.BasicUi;
 import net.sf.anathema.framework.presenter.view.IButtonControlledComboEditView;
@@ -28,18 +27,18 @@ import java.util.Comparator;
 
 public class SpecialtiesConfigurationPresenter implements Presenter {
 
-  private final IdentityMapping<ISubTrait, ISpecialtyView> viewsBySpecialty = new IdentityMapping<>();
+  private final IdentityMapping<Specialty, ISpecialtyView> viewsBySpecialty = new IdentityMapping<>();
   private final TraitInternationalizer i18ner;
   private final Comparator<ITraitReference> comparator;
 
-  private final ISubTraitListener specialtyListener = new ISubTraitListener() {
+  private final ISpecialtyListener specialtyListener = new ISpecialtyListener() {
     @Override
-    public void subTraitAdded(ISubTrait specialty) {
-      addSpecialtyView((ISpecialty) specialty);
+    public void subTraitAdded(Specialty specialty) {
+      addSpecialtyView(specialty);
     }
 
     @Override
-    public void subTraitRemoved(ISubTrait specialty) {
+    public void subTraitRemoved(Specialty specialty) {
       ISpecialtyView view = viewsBySpecialty.get(specialty);
       viewsBySpecialty.remove(specialty);
       view.delete();
@@ -117,8 +116,8 @@ public class SpecialtiesConfigurationPresenter implements Presenter {
     });
     reset(specialtySelectionView);
     for (ITraitReference reference : getAllTraits()) {
-      for (ISubTrait specialty : getSpecialtyContainer(reference).getSubTraits()) {
-        addSpecialtyView((ISpecialty) specialty);
+      for (Specialty specialty : getSpecialtyContainer(reference).getSubTraits()) {
+        addSpecialtyView(specialty);
       }
     }
     specialtyManagement.addCharacterChangeListener(new GlobalCharacterChangeAdapter() {
@@ -167,14 +166,14 @@ public class SpecialtiesConfigurationPresenter implements Presenter {
 
   private void updateSpecialtyViewButtons() {
     for (ITraitReference trait : getAllTraits()) {
-      for (ISubTrait specialty : getSpecialtyContainer(trait).getSubTraits()) {
+      for (Specialty specialty : getSpecialtyContainer(trait).getSubTraits()) {
         ISpecialtyView view = viewsBySpecialty.get(specialty);
         view.setDeleteButtonEnabled(specialty.getCreationValue() == 0 || !specialtyManagement.isExperienced());
       }
     }
   }
 
-  private void addSpecialtyView(final ISpecialty specialty) {
+  private void addSpecialtyView(final Specialty specialty) {
     final ITraitReference traitReference = specialty.getTraitReference();
     String traitName = i18ner.getScreenName(traitReference);
     String specialtyName = specialty.getName();

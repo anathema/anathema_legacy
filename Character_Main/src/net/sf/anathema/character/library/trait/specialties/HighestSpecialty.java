@@ -9,7 +9,7 @@ public class HighestSpecialty {
   private String name;
 
   public HighestSpecialty(IGenericCharacter character, AbilityType type) {
-    for (ISpecialty t : character.getSpecialties(type)) {
+    for (Specialty t : character.getSpecialties(type)) {
       if (value < t.getCurrentValue()) {
         value = t.getCurrentValue();
         name = t.getName();

@@ -7,9 +7,8 @@ import net.sf.anathema.character.generic.framework.additionaltemplate.model.ICha
 import net.sf.anathema.character.generic.traits.ITraitType;
 import net.sf.anathema.character.generic.traits.groups.ITraitTypeGroup;
 import net.sf.anathema.character.generic.traits.groups.TraitTypeGroup;
-import net.sf.anathema.character.library.trait.Trait;
 import net.sf.anathema.character.library.trait.ITraitCollection;
-import net.sf.anathema.character.library.trait.subtrait.ISubTrait;
+import net.sf.anathema.character.library.trait.Trait;
 import net.sf.anathema.character.library.trait.subtrait.ISubTraitContainer;
 import net.sf.anathema.lib.control.IChangeListener;
 import org.jmock.example.announcer.Announcer;
@@ -90,7 +89,7 @@ public class SpecialtiesConfiguration implements ISpecialtiesConfiguration {
 
   @Override
   public void commitSelection() {
-    ISubTrait specialty = getSpecialtiesContainer(currentType).addSubTrait(currentName);
+    Specialty specialty = getSpecialtiesContainer(currentType).addSubTrait(currentName);
     if (specialty != null && specialty.getCurrentValue() == 0) {
       specialty.setCurrentValue(1);
     }

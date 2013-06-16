@@ -12,7 +12,7 @@ import net.sf.anathema.character.equipment.dummy.DummyEquipmentObject;
 import net.sf.anathema.character.generic.equipment.weapon.IEquipmentStats;
 import net.sf.anathema.character.generic.health.HealthType;
 import net.sf.anathema.character.generic.traits.ITraitType;
-import net.sf.anathema.character.library.trait.specialties.ISpecialty;
+import net.sf.anathema.character.library.trait.specialties.Specialty;
 import net.sf.anathema.framework.resources.LocaleResources;
 import net.sf.anathema.lib.model.BooleanModel;
 import net.sf.anathema.lib.util.SimpleIdentifier;
@@ -44,7 +44,7 @@ public class EquipmentItemPresenterTest extends TestCase {
   private void initPresentation(IEquipmentItem model, IEquipmentObjectView view) {
     IEquipmentCharacterDataProvider dataProvider = mock(IEquipmentCharacterDataProvider.class);
     IEquipmentCharacterOptionProvider optionProvider = mock(IEquipmentCharacterOptionProvider.class);
-    when(dataProvider.getSpecialties(isA(ITraitType.class))).thenReturn(new ISpecialty[0]);
+    when(dataProvider.getSpecialties(isA(ITraitType.class))).thenReturn(new Specialty[0]);
     new EquipmentObjectPresenter(model, view, equipmentStringBuilder, dataProvider, optionProvider, new LocaleResources()).initPresentation();
   }
 

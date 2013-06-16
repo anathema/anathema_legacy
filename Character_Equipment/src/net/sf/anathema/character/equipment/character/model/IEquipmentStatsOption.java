@@ -1,6 +1,6 @@
 package net.sf.anathema.character.equipment.character.model;
 
-import net.sf.anathema.character.library.trait.specialties.ISpecialty;
+import net.sf.anathema.character.library.trait.specialties.Specialty;
 
 public interface IEquipmentStatsOption {
 
@@ -12,5 +12,5 @@ public interface IEquipmentStatsOption {
 
   int getDefenseModifier();
 
-  ISpecialty getUnderlyingTrait();
+  Specialty getUnderlyingTrait();
 }

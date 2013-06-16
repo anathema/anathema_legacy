@@ -3,7 +3,7 @@ package net.sf.anathema.character.impl.model.context;
 import net.sf.anathema.character.generic.character.IGenericCharacter;
 import net.sf.anathema.character.generic.framework.additionaltemplate.model.IGenericSpecialtyContext;
 import net.sf.anathema.character.generic.traits.ITraitType;
-import net.sf.anathema.character.library.trait.specialties.ISpecialty;
+import net.sf.anathema.character.library.trait.specialties.Specialty;
 import net.sf.anathema.lib.control.IChangeListener;
 
 public class GenericSpecialtyContext implements IGenericSpecialtyContext {
@@ -15,7 +15,7 @@ public class GenericSpecialtyContext implements IGenericSpecialtyContext {
   }
 
   @Override
-  public ISpecialty[] getSpecialties(ITraitType traitType) {
+  public Specialty[] getSpecialties(ITraitType traitType) {
     return character.getSpecialties(traitType);
   }
 

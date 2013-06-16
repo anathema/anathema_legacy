@@ -2,14 +2,14 @@ package net.sf.anathema.character.equipment.character;
 
 import net.sf.anathema.character.equipment.character.model.IEquipmentStatsOption;
 import net.sf.anathema.character.generic.traits.ITraitType;
-import net.sf.anathema.character.library.trait.specialties.ISpecialty;
+import net.sf.anathema.character.library.trait.specialties.Specialty;
 
 public class EquipmentSpecialtyOption implements IEquipmentStatsOption {
 
-  private final ISpecialty specialty;
+  private final Specialty specialty;
   private final ITraitType type;
 
-  public EquipmentSpecialtyOption(ISpecialty specialty, ITraitType type) {
+  public EquipmentSpecialtyOption(Specialty specialty, ITraitType type) {
     this.specialty = specialty;
     this.type = type;
   }
@@ -35,7 +35,7 @@ public class EquipmentSpecialtyOption implements IEquipmentStatsOption {
   }
 
   @Override
-  public ISpecialty getUnderlyingTrait() {
+  public Specialty getUnderlyingTrait() {
     return specialty;
   }
 

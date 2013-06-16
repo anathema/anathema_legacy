@@ -7,7 +7,7 @@ import net.sf.anathema.character.library.trait.Trait;
 import net.sf.anathema.character.library.trait.persistence.TraitPersister;
 import net.sf.anathema.character.library.trait.specialties.DefaultTraitReference;
 import net.sf.anathema.character.library.trait.specialties.ISpecialtiesConfiguration;
-import net.sf.anathema.character.library.trait.subtrait.ISubTrait;
+import net.sf.anathema.character.library.trait.specialties.Specialty;
 import net.sf.anathema.character.library.trait.subtrait.ISubTraitContainer;
 import net.sf.anathema.character.model.traits.ICoreTraitConfiguration;
 import net.sf.anathema.lib.exception.PersistenceException;
@@ -44,7 +44,7 @@ public class AbilityConfigurationPersister {
   }
 
   private void saveSpecialties(ISpecialtiesConfiguration specialtyConfiguration, Element abilityElement, ITraitReference reference) {
-    for (ISubTrait specialty : specialtyConfiguration.getSpecialtiesContainer(reference).getSubTraits()) {
+    for (Specialty specialty : specialtyConfiguration.getSpecialtiesContainer(reference).getSubTraits()) {
       Element specialtyElement = persister.saveTrait(abilityElement, TAG_SPECIALTY, specialty);
       specialtyElement.addAttribute(ATTRIB_NAME, specialty.getName());
     }
@@ -74,7 +74,7 @@ public class AbilityConfigurationPersister {
     for (Element specialtyElement : specialtyElements) {
       String specialtyName = specialtyElement.attributeValue(ATTRIB_NAME);
       ISubTraitContainer specialtiesContainer = specialtyConfiguration.getSpecialtiesContainer(reference);
-      ISubTrait specialty = specialtiesContainer.addSubTrait(specialtyName);
+      Specialty specialty = specialtiesContainer.addSubTrait(specialtyName);
       persister.restoreTrait(specialtyElement, specialty);
     }
   }

@@ -18,8 +18,8 @@ import net.sf.anathema.character.library.trait.favorable.IFavorableStateChangedL
 import net.sf.anathema.character.library.trait.favorable.IIncrementChecker;
 import net.sf.anathema.character.library.trait.rules.FavorableTraitRules;
 import net.sf.anathema.character.library.trait.specialties.DefaultTraitReference;
+import net.sf.anathema.character.library.trait.specialties.Specialty;
 import net.sf.anathema.character.library.trait.specialties.SpecialtiesContainer;
-import net.sf.anathema.character.library.trait.subtrait.ISubTrait;
 import net.sf.anathema.character.library.trait.subtrait.ISubTraitContainer;
 import net.sf.anathema.character.testing.BasicCharacterTestCase;
 import net.sf.anathema.lib.control.IIntValueChangedListener;
@@ -135,7 +135,7 @@ public class FavorableTraitTest {
   @Test
   public void testExperienceSpecialtyCount() throws Exception {
     ISubTraitContainer container = new SpecialtiesContainer(new DefaultTraitReference(trait), modelContext.getTraitContext());
-    ISubTrait specialty = container.addSubTrait("TestSpecialty");
+    Specialty specialty = container.addSubTrait("TestSpecialty");
     specialty.setCreationValue(1);
     valueStrategy.setStrategy(new ExperiencedTraitValueStrategy());
     specialty.setExperiencedValue(2);
@@ -148,7 +148,7 @@ public class FavorableTraitTest {
   public void testCreationSpecialtyDuringExperienced() throws Exception {
     ICharacterModelContext context = new BasicCharacterTestCase().createModelContextWithEssence2(new ExperiencedTraitValueStrategy());
     ISubTraitContainer container = new SpecialtiesContainer(new DefaultTraitReference(trait), context.getTraitContext());
-    ISubTrait specialty = container.addSubTrait("TestSpecialty");
+    Specialty specialty = container.addSubTrait("TestSpecialty");
     specialty.setCreationValue(2);
     assertEquals(2, specialty.getCreationValue());
     assertEquals(-1, specialty.getExperiencedValue());

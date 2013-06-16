@@ -7,10 +7,10 @@ import net.sf.anathema.character.library.trait.favorable.NullTraitFavorization;
 import net.sf.anathema.lib.control.IChangeListener;
 import net.sf.anathema.lib.control.IIntValueChangedListener;
 
-public class DummyDefaultTrait implements Trait {
+public class DummyTrait implements Trait {
 
-  public static DummyDefaultTrait createLearnTrait(ITraitType type, int creationValue, int experiencedValue) {
-    DummyDefaultTrait trait = new DummyDefaultTrait(type);
+  public static DummyTrait createLearnTrait(ITraitType type, int creationValue, int experiencedValue) {
+    DummyTrait trait = new DummyTrait(type);
     trait.setCreationValue(creationValue);
     trait.setExperiencedValue(experiencedValue);
     return trait;
@@ -21,11 +21,11 @@ public class DummyDefaultTrait implements Trait {
   private int creationValue;
   private int experiencedValue;
 
-  public DummyDefaultTrait(ITraitType type) {
+  public DummyTrait(ITraitType type) {
     this(type, 0);
   }
 
-  public DummyDefaultTrait(ITraitType type, int value) {
+  public DummyTrait(ITraitType type, int value) {
     this.type = type;
     this.currentValue = value;
   }
