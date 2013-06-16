@@ -20,7 +20,7 @@ public class CharacterTraitListening {
 
   public CharacterTraitListening(ICharacter character, CharacterListening listening) {
     this.character = character;
-    this.traitMap = character.getTraitConfiguration();
+    this.traitMap = character.getTraitModel();
     this.listening = listening;
   }
 

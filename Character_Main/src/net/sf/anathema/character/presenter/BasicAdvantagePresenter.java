@@ -18,7 +18,7 @@ public class BasicAdvantagePresenter {
   public BasicAdvantagePresenter(Resources resources, ICharacter character, AdvantageView view) {
     this.resources = resources;
     this.view = view;
-    TraitMap traitConfiguration = character.getTraitConfiguration();
+    TraitMap traitConfiguration = character.getTraitModel();
     subPresenters.add(new VirtueConfigurationPresenter(resources, traitConfiguration, view));
     subPresenters.add(new WillpowerConfigurationPresenter(resources, traitConfiguration.getTrait(OtherTraitType.Willpower), view));
     subPresenters.add(new EssenceConfigurationPresenter(resources, character.getEssencePool(), traitConfiguration, view));

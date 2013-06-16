@@ -62,9 +62,9 @@ public class CharacterStatisticPersister {
     characterTypeElement.addAttribute(ATTRIB_SUB_TYPE, template.getTemplateType().getSubType().getId());
     characterTypeElement.addText(template.getTemplateType().getCharacterType().getId());
     characterConceptPersister.save(statisticsElement, CharacterConceptFetcher.fetch(character));
-    essencePersister.save(statisticsElement, character.getTraitConfiguration());
-    willpowerPersister.save(statisticsElement, character.getTraitConfiguration().getTrait(OtherTraitType.Willpower));
-    virtuePersister.save(statisticsElement, character.getTraitConfiguration());
+    essencePersister.save(statisticsElement, character.getTraitModel());
+    willpowerPersister.save(statisticsElement, character.getTraitModel().getTrait(OtherTraitType.Willpower));
+    virtuePersister.save(statisticsElement, character.getTraitModel());
     attributePersister.save(statisticsElement, character.getAttributes());
     abilityPersister.save(statisticsElement, character.getAbilities());
     charmPersister.save(statisticsElement, character);
@@ -85,14 +85,14 @@ public class CharacterStatisticPersister {
       ICasteCollection casteCollection = template.getCasteCollection();
       characterConceptPersister.load(statisticsElement, CharacterConceptFetcher.fetch(character), characterDescription, casteCollection);
       ExperienceModelFetcher.fetch(character).setExperienced(experienced);
-      essencePersister.load(statisticsElement, character.getTraitConfiguration());
-      virtuePersister.load(statisticsElement, character.getTraitConfiguration());
+      essencePersister.load(statisticsElement, character.getTraitModel());
+      virtuePersister.load(statisticsElement, character.getTraitModel());
       attributePersister.load(statisticsElement, character.getAttributes());
       abilityPersister.load(statisticsElement, character.getAbilities());
       charmPersister.load(statisticsElement, character);
       spellPersister.load(statisticsElement, character.getSpells());
       experiencePersister.load(statisticsElement, ExperienceModelFetcher.fetch(character).getExperiencePoints());
-      willpowerPersister.load(statisticsElement, character.getTraitConfiguration().getTrait(OtherTraitType.Willpower));
+      willpowerPersister.load(statisticsElement, character.getTraitModel().getTrait(OtherTraitType.Willpower));
       additonalModelPersister.load(statisticsElement, character.getExtendedConfiguration().getAdditionalModels());
       return character;
     } catch (CharmException | SpellException e) {

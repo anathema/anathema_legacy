@@ -27,7 +27,7 @@ public class CharacterHolder {
   }
 
   public TraitMap getTraitConfiguration() {
-    return character.getTraitConfiguration();
+    return character.getTraitModel();
   }
 
   public ICharacter getCharacter() {

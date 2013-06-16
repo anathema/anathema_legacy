@@ -54,7 +54,7 @@ public class AttributeSteps {
   }
 
   private Trait getAttribute(AttributeType type) {
-    TraitMap traitConfiguration = character.getCharacter().getTraitConfiguration();
+    TraitMap traitConfiguration = character.getCharacter().getTraitModel();
     return traitConfiguration.getTrait(type);
   }
 }

@@ -64,7 +64,7 @@ public class ExaltedCharacter implements ICharacter {
   private final ISpellConfiguration spells;
   private final IHealthConfiguration health;
   private final ExtendedConfiguration extendedConfiguration = new ExtendedConfiguration(context);
-  private final DefaultTraitModel traitConfiguration;
+  private final DefaultTraitModel traitModel;
   private final DefaultHero hero = new DefaultHero();
   private final DefaultAttributeModel attributes;
   private final DefaultAbilityModel abilities;
@@ -72,13 +72,13 @@ public class ExaltedCharacter implements ICharacter {
   public ExaltedCharacter(ICharacterTemplate template, ICharacterGenerics generics) {
     this.characterTemplate = template;
     addModels(generics);
-    this.traitConfiguration = new DefaultTraitModel();
+    this.traitModel = new DefaultTraitModel();
     // todo: Achtung seiteneffekte
-    OtherTraitModel otherTraitModel = new DefaultOtherTraitModel(template, context, traitConfiguration);
-    this.abilities = new DefaultAbilityModel(template, context, traitConfiguration);
-    this.attributes = new DefaultAttributeModel(template, context, traitConfiguration);
+    OtherTraitModel otherTraitModel = new DefaultOtherTraitModel(template, context, traitModel);
+    this.abilities = new DefaultAbilityModel(template, context, traitModel);
+    this.attributes = new DefaultAttributeModel(template, context, traitModel);
     new CharacterTraitListening(this, context.getCharacterListening()).initListening();
-    this.health = new HealthConfiguration(getTraitArray(template.getToughnessControllingTraitTypes()), traitConfiguration,
+    this.health = new HealthConfiguration(getTraitArray(template.getToughnessControllingTraitTypes()), traitModel,
             template.getBaseHealthProviders());
     this.charms = new CharmConfiguration(health, context, generics.getCharacterTypes(), generics.getTemplateRegistry(), generics.getCharmProvider());
     initCharmListening(charms);
@@ -185,7 +185,7 @@ public class ExaltedCharacter implements ICharacter {
   private GenericTrait[] getTraitArray(TraitType[] types) {
     GenericTrait[] traits = new GenericTrait[types.length];
     for (int i = 0; i != types.length; i++) {
-      traits[i] = traitConfiguration.getTrait(types[i]);
+      traits[i] = traitModel.getTrait(types[i]);
     }
     return traits;
   }
@@ -237,8 +237,8 @@ public class ExaltedCharacter implements ICharacter {
     return extendedConfiguration;
   }
 
-  public TraitMap getTraitConfiguration() {
-    return traitConfiguration;
+  public TraitMap getTraitModel() {
+    return traitModel;
   }
 
   public ICharacterModelContext getCharacterContext() {

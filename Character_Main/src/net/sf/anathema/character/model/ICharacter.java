@@ -30,7 +30,7 @@ public interface ICharacter extends IItemData, Hero {
 
   ICharacterModelContext getCharacterContext();
 
-  TraitMap getTraitConfiguration();
+  TraitMap getTraitModel();
 
   IExtendedConfiguration getExtendedConfiguration();
 

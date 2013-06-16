@@ -63,12 +63,12 @@ public class BonusPointManagement implements IBonusPointManagement {
     for (IAdditionalModel model : character.getExtendedConfiguration().getAdditionalModels()) {
       bonusPointCalculator.addAdditionalBonusPointCalculator(model.getBonusPointCalculator());
     }
-    bonusAdditionalPools = new AdditionalBonusPointPoolManagement(character.getTraitConfiguration(),
+    bonusAdditionalPools = new AdditionalBonusPointPoolManagement(character.getTraitModel(),
             character.getCharacterTemplate().getAdditionalRules().getAdditionalBonusPointPools());
     this.cost = character.getCharacterTemplate().getBonusPointCosts();
     ICharacterTemplate characterTemplate = character.getCharacterTemplate();
     GenericCharacter characterAbstraction = GenericCharacterUtilities.createGenericCharacter(character);
-    TraitMap traitConfiguration = character.getTraitConfiguration();
+    TraitMap traitConfiguration = character.getTraitModel();
     this.abilityCalculator =
             new AbilityCostCalculator(character.getAbilities(), creationPoints.getAbilityCreationPoints(), creationPoints.getSpecialtyCreationPoints(),
                     cost, bonusAdditionalPools);

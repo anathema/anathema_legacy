@@ -37,7 +37,7 @@ public class FavorableTraitConfigurationPresenter {
   public FavorableTraitConfigurationPresenter(IIdentifiedTraitTypeGroup[] traitTypeGroups, ICharacter character,
                                               IGroupedFavorableTraitConfigurationView view, Resources resources) {
     this.traitTypeGroups = traitTypeGroups;
-    this.traitConfiguration = character.getTraitConfiguration();
+    this.traitConfiguration = character.getTraitModel();
     this.basicCharacterData = character.getCharacterContext().getBasicCharacterContext();
     this.characterListening = character.getCharacterContext().getCharacterListening();
     this.presentationProperties = character.getCharacterTemplate().getPresentationProperties();

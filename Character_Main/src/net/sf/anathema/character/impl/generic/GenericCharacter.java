@@ -355,6 +355,6 @@ public class GenericCharacter implements IGenericCharacter {
   }
 
   private TraitMap getTraitConfiguration() {
-    return character.getTraitConfiguration();
+    return character.getTraitModel();
   }
 }
