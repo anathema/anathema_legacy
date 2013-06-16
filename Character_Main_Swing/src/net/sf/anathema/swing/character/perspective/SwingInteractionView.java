@@ -33,7 +33,7 @@ public class SwingInteractionView implements InteractionView {
   @Override
   public ToggleTool addToggleTool() {
     ToggleActionInteraction tool = new ToggleActionInteraction();
-    tool.addTo(new AddToToolbar(toolbar));
+    toolbar.add(tool.getButton());
     return tool;
   }
 }

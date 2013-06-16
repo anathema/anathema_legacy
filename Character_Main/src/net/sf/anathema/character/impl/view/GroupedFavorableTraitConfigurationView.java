@@ -5,6 +5,7 @@ import net.sf.anathema.character.library.intvalue.IToggleButtonTraitView;
 import net.sf.anathema.character.library.trait.Trait;
 import net.sf.anathema.character.library.trait.view.GroupedTraitView;
 import net.sf.anathema.character.library.trait.view.SimpleTraitView;
+import net.sf.anathema.character.presenter.ExtensibleTraitView;
 import net.sf.anathema.character.view.ColumnCount;
 import net.sf.anathema.character.view.IGroupedFavorableTraitConfigurationView;
 import net.sf.anathema.framework.swing.IView;
@@ -26,6 +27,12 @@ public class GroupedFavorableTraitConfigurationView implements IGroupedFavorable
   @Override
   public void initGui(ColumnCount columnCount) {
     this.groupedTraitView = new GroupedTraitView(parent, columnCount);
+  }
+
+  @Override
+  public ExtensibleTraitView addExtensibleTraitView(String labelText, int value, int maxValue, Trait trait, boolean selected,
+                                                    IIconToggleButtonProperties properties) {
+    return groupedTraitView.addExtensibleTraitView(labelText, value, maxValue, trait, selected, properties, markerIntValueDisplayFactory);
   }
 
   @Override

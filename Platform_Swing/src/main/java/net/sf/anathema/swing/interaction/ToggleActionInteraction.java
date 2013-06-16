@@ -1,6 +1,5 @@
 package net.sf.anathema.swing.interaction;
 
-import net.sf.anathema.framework.view.menu.AddToSwingComponent;
 import net.sf.anathema.interaction.Command;
 import net.sf.anathema.interaction.CommandProxy;
 import net.sf.anathema.interaction.Hotkey;
@@ -11,6 +10,7 @@ import net.sf.anathema.lib.gui.CommandAction;
 import net.sf.anathema.lib.gui.action.SmartAction;
 import net.sf.anathema.lib.gui.icon.ImageProvider;
 
+import javax.swing.JComponent;
 import javax.swing.JToggleButton;
 
 public class ToggleActionInteraction implements ToggleTool {
@@ -69,7 +69,7 @@ public class ToggleActionInteraction implements ToggleTool {
     button.setSelected(false);
   }
 
-  public void addTo(AddToSwingComponent addTo) {
-    addTo.add(action);
+  public JComponent getButton() {
+    return button;
   }
 }
