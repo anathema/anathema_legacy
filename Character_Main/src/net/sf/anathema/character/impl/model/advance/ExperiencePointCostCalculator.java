@@ -2,7 +2,6 @@ package net.sf.anathema.character.impl.model.advance;
 
 import net.sf.anathema.character.generic.IBasicCharacterData;
 import net.sf.anathema.character.generic.character.IGenericTraitCollection;
-import net.sf.anathema.character.generic.framework.additionaltemplate.model.LearnTrait;
 import net.sf.anathema.character.generic.magic.ICharm;
 import net.sf.anathema.character.generic.magic.ISpell;
 import net.sf.anathema.character.generic.template.experience.CurrentRatingCosts;
@@ -18,7 +17,7 @@ public class ExperiencePointCostCalculator implements IPointCostCalculator {
     this.costs = costs;
   }
 
-  protected int getTraitRatingCosts(LearnTrait trait, CurrentRatingCosts ratingCosts) {
+  protected int getTraitRatingCosts(Trait trait, CurrentRatingCosts ratingCosts) {
     return TraitRatingCostCalculator.getTraitRatingCosts(trait, ratingCosts);
   }
 
