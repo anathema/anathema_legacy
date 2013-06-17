@@ -30,6 +30,7 @@ import net.sf.anathema.character.impl.util.GenericCharacterUtilities;
 import net.sf.anathema.character.library.trait.Trait;
 import net.sf.anathema.character.library.trait.TraitCollectionUtilities;
 import net.sf.anathema.character.library.trait.experience.TraitRatingCostCalculator;
+import net.sf.anathema.character.main.abilities.AbilityModelFetcher;
 import net.sf.anathema.character.main.traits.model.TraitMap;
 import net.sf.anathema.character.model.ICharacter;
 import net.sf.anathema.character.model.creation.IBonusPointManagement;
@@ -70,7 +71,7 @@ public class BonusPointManagement implements IBonusPointManagement {
     GenericCharacter characterAbstraction = GenericCharacterUtilities.createGenericCharacter(character);
     TraitMap traitConfiguration = character.getTraitModel();
     this.abilityCalculator =
-            new AbilityCostCalculator(character.getAbilities(), creationPoints.getAbilityCreationPoints(), creationPoints.getSpecialtyCreationPoints(),
+            new AbilityCostCalculator(AbilityModelFetcher.fetch(character), creationPoints.getAbilityCreationPoints(), creationPoints.getSpecialtyCreationPoints(),
                     cost, bonusAdditionalPools);
     this.attributeCalculator =
             new AttributeCostCalculator(character.getAttributes(), creationPoints.getAttributeCreationPoints(), cost, bonusAdditionalPools);

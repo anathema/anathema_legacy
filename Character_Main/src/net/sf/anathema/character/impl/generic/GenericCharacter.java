@@ -27,6 +27,7 @@ import net.sf.anathema.character.library.trait.Trait;
 import net.sf.anathema.character.library.trait.specialties.ISpecialtiesConfiguration;
 import net.sf.anathema.character.library.trait.specialties.Specialty;
 import net.sf.anathema.character.library.trait.subtrait.ISpecialtyListener;
+import net.sf.anathema.character.main.abilities.AbilityModelFetcher;
 import net.sf.anathema.character.main.concept.model.CharacterConcept;
 import net.sf.anathema.character.main.concept.model.CharacterConceptFetcher;
 import net.sf.anathema.character.main.description.model.CharacterDescriptionFetcher;
@@ -124,7 +125,7 @@ public class GenericCharacter implements IGenericCharacter {
 
   @Override
   public Specialty[] getSpecialties(TraitType traitType) {
-    ISpecialtiesConfiguration specialtyConfiguration = character.getAbilities().getSpecialtyConfiguration();
+    ISpecialtiesConfiguration specialtyConfiguration = AbilityModelFetcher.fetch(character).getSpecialtyConfiguration();
     return specialtyConfiguration.getSpecialtiesContainer(traitType).getSubTraits();
   }
 
@@ -267,7 +268,7 @@ public class GenericCharacter implements IGenericCharacter {
 
   @Override
   public IIdentifiedTraitTypeGroup[] getAbilityTypeGroups() {
-    return character.getAbilities().getAbilityTypeGroups();
+    return AbilityModelFetcher.fetch(character).getAbilityTypeGroups();
   }
 
   @Override
@@ -334,7 +335,7 @@ public class GenericCharacter implements IGenericCharacter {
 
   @Override
   public void addSpecialtyListChangeListener(final IChangeListener listener) {
-    ISpecialtiesConfiguration config = character.getAbilities().getSpecialtyConfiguration();
+    ISpecialtiesConfiguration config = AbilityModelFetcher.fetch(character).getSpecialtyConfiguration();
     for (ITraitReference trait : config.getAllTraits()) {
       config.getSpecialtiesContainer(trait).addSubTraitListener(new ISpecialtyListener() {
         @Override

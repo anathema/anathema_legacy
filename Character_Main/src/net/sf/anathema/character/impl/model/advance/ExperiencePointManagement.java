@@ -11,6 +11,7 @@ import net.sf.anathema.character.impl.model.advance.models.SpecialtyExperienceMo
 import net.sf.anathema.character.impl.model.advance.models.SpellExperienceModel;
 import net.sf.anathema.character.impl.model.advance.models.VirtueExperienceModel;
 import net.sf.anathema.character.impl.model.advance.models.WillpowerExperienceModel;
+import net.sf.anathema.character.main.abilities.AbilityModelFetcher;
 import net.sf.anathema.character.main.traits.model.TraitMap;
 import net.sf.anathema.character.model.ICharacter;
 import net.sf.anathema.character.model.advance.IExperiencePointManagement;
@@ -67,7 +68,7 @@ public class ExperiencePointManagement implements IExperiencePointManagement {
   }
 
   private IValueModel<Integer> getSpecialtyModel() {
-    return new SpecialtyExperienceModel(character.getAbilities(), calculator);
+    return new SpecialtyExperienceModel(AbilityModelFetcher.fetch(character), calculator);
   }
 
   private IValueModel<Integer> getSpellModel() {

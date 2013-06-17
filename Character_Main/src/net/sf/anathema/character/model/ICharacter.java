@@ -17,8 +17,6 @@ public interface ICharacter extends IItemData, Hero {
 
   AttributeModel getAttributes();
 
-  AbilityModel getAbilities();
-
   EssencePoolModel getEssencePool();
 
   IHealthConfiguration getHealth();

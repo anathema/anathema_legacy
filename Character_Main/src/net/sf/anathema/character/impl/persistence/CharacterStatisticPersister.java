@@ -12,6 +12,7 @@ import net.sf.anathema.character.generic.traits.types.OtherTraitType;
 import net.sf.anathema.character.generic.type.ICharacterType;
 import net.sf.anathema.character.impl.model.ExaltedCharacter;
 import net.sf.anathema.character.impl.persistence.charm.CharmConfigurationPersister;
+import net.sf.anathema.character.main.abilities.AbilityModelFetcher;
 import net.sf.anathema.character.main.concept.model.CharacterConceptFetcher;
 import net.sf.anathema.character.main.description.model.CharacterDescription;
 import net.sf.anathema.character.main.description.model.CharacterDescriptionFetcher;
@@ -66,7 +67,7 @@ public class CharacterStatisticPersister {
     willpowerPersister.save(statisticsElement, character.getTraitModel().getTrait(OtherTraitType.Willpower));
     virtuePersister.save(statisticsElement, character.getTraitModel());
     attributePersister.save(statisticsElement, character.getAttributes());
-    abilityPersister.save(statisticsElement, character.getAbilities());
+    abilityPersister.save(statisticsElement, AbilityModelFetcher.fetch(character));
     charmPersister.save(statisticsElement, character);
     spellPersister.save(statisticsElement, character.getSpells());
     experiencePersister.save(statisticsElement, ExperienceModelFetcher.fetch(character).getExperiencePoints());
@@ -88,7 +89,7 @@ public class CharacterStatisticPersister {
       essencePersister.load(statisticsElement, character.getTraitModel());
       virtuePersister.load(statisticsElement, character.getTraitModel());
       attributePersister.load(statisticsElement, character.getAttributes());
-      abilityPersister.load(statisticsElement, character.getAbilities());
+      abilityPersister.load(statisticsElement, AbilityModelFetcher.fetch(character));
       charmPersister.load(statisticsElement, character);
       spellPersister.load(statisticsElement, character.getSpells());
       experiencePersister.load(statisticsElement, ExperienceModelFetcher.fetch(character).getExperiencePoints());

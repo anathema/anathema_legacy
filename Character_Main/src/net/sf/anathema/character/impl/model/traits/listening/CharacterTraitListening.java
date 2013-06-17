@@ -9,6 +9,8 @@ import net.sf.anathema.character.library.trait.favorable.IFavorableStateChangedL
 import net.sf.anathema.character.library.trait.specialties.ISpecialtiesConfiguration;
 import net.sf.anathema.character.library.trait.specialties.Specialty;
 import net.sf.anathema.character.library.trait.subtrait.ISpecialtyListener;
+import net.sf.anathema.character.main.abilities.AbilityModel;
+import net.sf.anathema.character.main.abilities.AbilityModelFetcher;
 import net.sf.anathema.character.main.traits.model.TraitMap;
 import net.sf.anathema.character.model.ICharacter;
 
@@ -35,8 +37,9 @@ public class CharacterTraitListening {
   }
 
   private void initAbilityListening() {
-    ISpecialtiesConfiguration specialtyConfiguration = character.getAbilities().getSpecialtyConfiguration();
-    for (Trait ability : character.getAbilities().getAll()) {
+    AbilityModel abilities = AbilityModelFetcher.fetch(character);
+    ISpecialtiesConfiguration specialtyConfiguration = abilities.getSpecialtyConfiguration();
+    for (Trait ability : abilities.getAll()) {
       listening.addTraitListening(ability);
       ability.getFavorization().addFavorableStateChangedListener(new IFavorableStateChangedListener() {
         @Override

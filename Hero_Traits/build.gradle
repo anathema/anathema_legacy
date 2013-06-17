@@ -1,0 +1,11 @@
+dependencies {
+    compile project(':Character_Main')
+}
+
+configurations {
+    tests
+}
+
+artifacts {
+    tests testJar
+}
