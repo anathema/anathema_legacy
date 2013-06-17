@@ -99,6 +99,6 @@ public class PortraitSimpleExaltSheetReport extends AbstractPdfReport {
       return false;
     }
     ICharacter character = (ICharacter) itemData;
-    return character.getCharacterTemplate().getTemplateType().getCharacterType().isEssenceUser();
+    return character.getHeroTemplate().getTemplateType().getCharacterType().isEssenceUser();
   }
 }

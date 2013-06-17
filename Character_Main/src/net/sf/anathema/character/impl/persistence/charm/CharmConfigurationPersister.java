@@ -1,12 +1,12 @@
 package net.sf.anathema.character.impl.persistence.charm;
 
-import net.sf.anathema.character.generic.framework.additionaltemplate.model.ITraitContext;
+import net.sf.anathema.character.generic.framework.additionaltemplate.model.TraitContext;
 import net.sf.anathema.character.generic.impl.magic.MartialArtsUtilities;
 import net.sf.anathema.character.generic.impl.traits.SimpleTraitTemplate;
 import net.sf.anathema.character.generic.magic.ICharm;
 import net.sf.anathema.character.generic.magic.charms.ICharmIdMap;
 import net.sf.anathema.character.generic.magic.charms.special.ISpecialCharmConfiguration;
-import net.sf.anathema.character.generic.template.ICharacterTemplate;
+import net.sf.anathema.character.generic.template.HeroTemplate;
 import net.sf.anathema.character.generic.template.magic.ICharmTemplate;
 import net.sf.anathema.character.generic.traits.LowerableState;
 import net.sf.anathema.character.library.trait.DefaultTrait;
@@ -53,14 +53,14 @@ public class CharmConfigurationPersister {
   private static final String TAG_SUBEFFECTS = "Subeffects";
   private static final String TAG_SUBEFFECT = "Subeffect";
   private IMessaging messageIndicator;
-  private ITraitContext context;
+  private TraitContext context;
 
   public CharmConfigurationPersister(IMessaging messageIndicator) {
     this.messageIndicator = messageIndicator;
   }
 
   public void save(Element parent, ICharacter character) {
-    ICharacterTemplate template = character.getCharacterTemplate();
+    HeroTemplate template = character.getHeroTemplate();
     ICharmTemplate charmTemplate = template.getMagicTemplate().getCharmTemplate();
     if (!charmTemplate.canLearnCharms()) {
       return;

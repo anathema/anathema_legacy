@@ -10,9 +10,9 @@ import net.sf.anathema.character.generic.framework.additionaltemplate.model.ICha
 import net.sf.anathema.character.generic.framework.additionaltemplate.model.ICharacterModelContext;
 import net.sf.anathema.character.generic.framework.additionaltemplate.model.ICharmContext;
 import net.sf.anathema.character.generic.framework.additionaltemplate.model.IGenericSpecialtyContext;
-import net.sf.anathema.character.generic.framework.additionaltemplate.model.ITraitContext;
+import net.sf.anathema.character.generic.framework.additionaltemplate.model.TraitContext;
 import net.sf.anathema.character.generic.framework.additionaltemplate.model.ITraitValueStrategy;
-import net.sf.anathema.character.generic.template.ICharacterTemplate;
+import net.sf.anathema.character.generic.template.HeroTemplate;
 import net.sf.anathema.character.generic.template.presentation.IPresentationProperties;
 import net.sf.anathema.character.impl.model.context.BasicCharacterContext;
 import net.sf.anathema.character.impl.model.context.CharacterListening;
@@ -28,7 +28,7 @@ public class DummyCharacterModelContext implements ICharacterModelContext {
   private ICharacterListening characterListening = new CharacterListening();
   private final ITraitValueStrategy valueStrategy;
   private DummyGenericCharacter character;
-  private ITraitContext traitContext = new ITraitContext() {
+  private TraitContext traitContext = new TraitContext() {
 
     @Override
     public ITraitValueStrategy getTraitValueStrategy() {
@@ -53,7 +53,7 @@ public class DummyCharacterModelContext implements ICharacterModelContext {
 
   public DummyCharacterModelContext(final ITraitValueStrategy valueStrategy) {
     this.valueStrategy = valueStrategy;
-    ICharacterTemplate template = new DummyCharacterTemplate();
+    HeroTemplate template = new DummyCharacterTemplate();
     this.character = new DummyGenericCharacter(template);
     this.charmContext = new DummyCharmContext(character, null);
   }
@@ -88,7 +88,7 @@ public class DummyCharacterModelContext implements ICharacterModelContext {
   }
 
   @Override
-  public ITraitContext getTraitContext() {
+  public TraitContext getTraitContext() {
     return traitContext;
   }
 

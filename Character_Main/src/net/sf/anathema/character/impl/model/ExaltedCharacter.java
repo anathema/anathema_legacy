@@ -5,7 +5,7 @@ import net.sf.anathema.character.generic.framework.additionaltemplate.model.IAdd
 import net.sf.anathema.character.generic.framework.additionaltemplate.model.ICharacterModelContext;
 import net.sf.anathema.character.generic.impl.magic.persistence.ISpellCache;
 import net.sf.anathema.character.generic.magic.ICharm;
-import net.sf.anathema.character.generic.template.ICharacterTemplate;
+import net.sf.anathema.character.generic.template.HeroTemplate;
 import net.sf.anathema.character.generic.template.additional.IAdditionalTemplate;
 import net.sf.anathema.character.generic.template.additional.IGlobalAdditionalTemplate;
 import net.sf.anathema.character.generic.traits.GenericTrait;
@@ -47,7 +47,7 @@ public class ExaltedCharacter implements ICharacter {
 
   private final CharacterChangeManagement management = new CharacterChangeManagement();
   private final CharacterModelContext context = new CharacterModelContext(new GenericCharacter(this), this);
-  private final ICharacterTemplate characterTemplate;
+  private final HeroTemplate heroTemplate;
   private final EssencePoolModel essencePool;
   private final CharmConfiguration charms;
   private final IComboConfiguration combos;
@@ -58,8 +58,8 @@ public class ExaltedCharacter implements ICharacter {
   private final DefaultAttributeModel attributes;
   private final DefaultAbilityModel abilities;
 
-  public ExaltedCharacter(ICharacterTemplate template, ICharacterGenerics generics) {
-    this.characterTemplate = template;
+  public ExaltedCharacter(HeroTemplate template, ICharacterGenerics generics) {
+    this.heroTemplate = template;
     addModels(generics);
     // todo: Beware the side effects
     OtherTraitModel otherTraitModel = new DefaultOtherTraitModel(hero, template, context, getTraitModel());
@@ -96,12 +96,12 @@ public class ExaltedCharacter implements ICharacter {
   }
 
   private void addModels(ICharacterGenerics generics) {
-    ModelInitializationContext initializationContext = new ModelInitializationContext(context, this);
-    CharacterModelInitializer initializer = new CharacterModelInitializer(initializationContext, characterTemplate);
+    ModelInitializationContext initializationContext = new ModelInitializationContext(context, this, heroTemplate);
+    CharacterModelInitializer initializer = new CharacterModelInitializer(initializationContext, heroTemplate);
     initializer.addModels(generics, hero);
   }
 
-  private void addCompulsiveCharms(ICharacterTemplate template) {
+  private void addCompulsiveCharms(HeroTemplate template) {
     String[] compulsiveCharms = template.getAdditionalRules().getCompulsiveCharmIDs();
     for (String charmId : compulsiveCharms) {
       ICharmConfiguration charmConfiguration = getCharms();
@@ -190,13 +190,13 @@ public class ExaltedCharacter implements ICharacter {
     return spells;
   }
 
-  public ICharacterTemplate getCharacterTemplate() {
-    return characterTemplate;
+  public HeroTemplate getHeroTemplate() {
+    return heroTemplate;
   }
 
   @Override
   public ICharacterType getCharacterType() {
-    return getCharacterTemplate().getTemplateType().getCharacterType();
+    return getHeroTemplate().getTemplateType().getCharacterType();
   }
 
   public ExtendedConfiguration getExtendedConfiguration() {

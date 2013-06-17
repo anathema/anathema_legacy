@@ -3,7 +3,7 @@ package net.sf.anathema.character.presenter.initializers;
 import net.sf.anathema.character.generic.framework.CharacterGenericsExtractor;
 import net.sf.anathema.character.generic.framework.magic.view.CharmDescriptionProviderExtractor;
 import net.sf.anathema.character.generic.magic.description.MagicDescriptionProvider;
-import net.sf.anathema.character.generic.template.ICharacterTemplate;
+import net.sf.anathema.character.generic.template.HeroTemplate;
 import net.sf.anathema.character.generic.template.ITemplateRegistry;
 import net.sf.anathema.character.model.ICharacter;
 import net.sf.anathema.character.presenter.magic.CharacterCharmModel;
@@ -29,14 +29,14 @@ public class CharmInitializer implements CharacterModelInitializer {
 
   @Override
   public void initialize(SectionView sectionView, ICharacter character, Resources resources) {
-    boolean canLearnCharms = character.getCharacterTemplate().getMagicTemplate().getCharmTemplate().canLearnCharms();
+    boolean canLearnCharms = character.getHeroTemplate().getMagicTemplate().getCharmTemplate().canLearnCharms();
     if (!canLearnCharms) {
       return;
     }
     ITemplateRegistry templateRegistry = CharacterGenericsExtractor.getGenerics(applicationModel).getTemplateRegistry();
     MagicDescriptionProvider provider = CharmDescriptionProviderExtractor.CreateFor(applicationModel, resources);
     CharacterCharmModel model = new CharacterCharmModel(character, provider);
-    ICharacterTemplate characterTemplate = character.getCharacterTemplate();
+    HeroTemplate characterTemplate = character.getHeroTemplate();
     ITreePresentationProperties presentationProperties =
             characterTemplate.getPresentationProperties().getCharmPresentationProperties();
     CharmDisplayPropertiesMap propertiesMap = new CharmDisplayPropertiesMap(templateRegistry);

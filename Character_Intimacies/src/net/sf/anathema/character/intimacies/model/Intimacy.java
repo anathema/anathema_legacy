@@ -1,6 +1,6 @@
 package net.sf.anathema.character.intimacies.model;
 
-import net.sf.anathema.character.generic.framework.additionaltemplate.model.ITraitContext;
+import net.sf.anathema.character.generic.framework.additionaltemplate.model.TraitContext;
 import net.sf.anathema.character.generic.impl.traits.SimpleTraitTemplate;
 import net.sf.anathema.character.generic.traits.GenericTrait;
 import net.sf.anathema.character.generic.traits.ITraitTemplate;
@@ -23,7 +23,7 @@ public class Intimacy implements IIntimacy {
   private boolean complete;
   private final Announcer<IBooleanValueChangedListener> control = Announcer.to(IBooleanValueChangedListener.class);
 
-  public Intimacy(String name, Integer initialValue, final GenericTrait maxValueTrait, ITraitContext context) {
+  public Intimacy(String name, Integer initialValue, final GenericTrait maxValueTrait, TraitContext context) {
     this.name = name;
     this.maxValueTrait = maxValueTrait;
     ITraitTemplate template = SimpleTraitTemplate.createVirtueLimitedTemplate(

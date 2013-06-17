@@ -1,6 +1,6 @@
 package net.sf.anathema.charmtree.view;
 
-import net.sf.anathema.character.generic.template.ICharacterTemplate;
+import net.sf.anathema.character.generic.template.HeroTemplate;
 import net.sf.anathema.character.generic.template.ITemplateRegistry;
 import net.sf.anathema.character.generic.type.ICharacterType;
 import net.sf.anathema.platform.tree.document.visualizer.ITreePresentationProperties;
@@ -13,7 +13,7 @@ public class CharmDisplayPropertiesMap {
   }
 
   public ITreePresentationProperties getDisplayProperties(ICharacterType characterType) {
-    ICharacterTemplate defaultTemplate = templateRegistry.getDefaultTemplate(characterType);
+    HeroTemplate defaultTemplate = templateRegistry.getDefaultTemplate(characterType);
     return defaultTemplate.getPresentationProperties().getCharmPresentationProperties();
   }
 }

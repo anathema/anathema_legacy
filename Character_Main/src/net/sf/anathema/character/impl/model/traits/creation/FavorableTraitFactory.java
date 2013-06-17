@@ -5,7 +5,7 @@ import net.sf.anathema.character.generic.additionalrules.IAdditionalTraitRules;
 import net.sf.anathema.character.generic.caste.ICasteType;
 import net.sf.anathema.character.generic.character.ILimitationContext;
 import net.sf.anathema.character.generic.framework.additionaltemplate.model.ICharacterListening;
-import net.sf.anathema.character.generic.framework.additionaltemplate.model.ITraitContext;
+import net.sf.anathema.character.generic.framework.additionaltemplate.model.TraitContext;
 import net.sf.anathema.character.generic.traits.ITraitTemplate;
 import net.sf.anathema.character.generic.traits.TraitType;
 import net.sf.anathema.character.generic.traits.groups.IIdentifiedCasteTraitTypeGroup;
@@ -22,10 +22,10 @@ public class FavorableTraitFactory {
 
   private final IBasicCharacterData basicCharacterData;
   private final ICharacterListening characterListening;
-  private final ITraitContext traitContext;
+  private final TraitContext traitContext;
   private final IAdditionalTraitRules additionalRules;
 
-  public FavorableTraitFactory(ITraitContext traitContext, IAdditionalTraitRules additionalRules, IBasicCharacterData basicCharacterData,
+  public FavorableTraitFactory(TraitContext traitContext, IAdditionalTraitRules additionalRules, IBasicCharacterData basicCharacterData,
                                ICharacterListening characterListening) {
     this.traitContext = traitContext;
     this.additionalRules = additionalRules;

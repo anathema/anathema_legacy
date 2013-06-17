@@ -12,7 +12,7 @@ import net.sf.anathema.character.generic.framework.additionaltemplate.model.ICha
 import net.sf.anathema.character.generic.framework.additionaltemplate.model.ICharmContext;
 import net.sf.anathema.character.generic.framework.additionaltemplate.model.ICharmLearnStrategy;
 import net.sf.anathema.character.generic.framework.additionaltemplate.model.IGenericSpecialtyContext;
-import net.sf.anathema.character.generic.framework.additionaltemplate.model.ITraitContext;
+import net.sf.anathema.character.generic.framework.additionaltemplate.model.TraitContext;
 import net.sf.anathema.character.generic.framework.additionaltemplate.model.ITraitValueStrategy;
 import net.sf.anathema.character.generic.template.magic.IGenericCharmConfiguration;
 import net.sf.anathema.character.generic.template.presentation.IPresentationProperties;
@@ -30,7 +30,7 @@ import net.sf.anathema.character.model.ISpellLearnStrategy;
 
 import java.util.List;
 
-public class CharacterModelContext implements ICharacterModelContext, ICharmContext, ITraitContext {
+public class CharacterModelContext implements ICharacterModelContext, ICharmContext, TraitContext {
 
   private final ProxyTraitValueStrategy traitValueStrategy = new ProxyTraitValueStrategy(new CreationTraitValueStrategy());
   private final ProxySpellLearnStrategy spellLearnStrategy = new ProxySpellLearnStrategy(new CreationSpellLearnStrategy());
@@ -109,7 +109,7 @@ public class CharacterModelContext implements ICharacterModelContext, ICharmCont
   }
 
   @Override
-  public ITraitContext getTraitContext() {
+  public TraitContext getTraitContext() {
     return this;
   }
 

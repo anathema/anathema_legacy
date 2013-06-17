@@ -1,7 +1,7 @@
 package net.sf.anathema.character.main.model.initialization;
 
 import net.sf.anathema.character.generic.framework.ICharacterGenerics;
-import net.sf.anathema.character.generic.template.ICharacterTemplate;
+import net.sf.anathema.character.generic.template.HeroTemplate;
 import net.sf.anathema.character.main.model.CharacterModel;
 import net.sf.anathema.character.main.model.CharacterModelAutoCollector;
 import net.sf.anathema.character.main.model.CharacterModelFactory;
@@ -21,9 +21,9 @@ import java.util.Map;
 public class CharacterModelInitializer {
 
   private InitializationContext context;
-  private ICharacterTemplate template;
+  private HeroTemplate template;
 
-  public CharacterModelInitializer(InitializationContext context, ICharacterTemplate template) {
+  public CharacterModelInitializer(InitializationContext context, HeroTemplate template) {
     this.context = context;
     this.template = template;
   }

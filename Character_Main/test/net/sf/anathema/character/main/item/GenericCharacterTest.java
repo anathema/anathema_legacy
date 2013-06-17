@@ -25,7 +25,7 @@ public class GenericCharacterTest {
     GenericEssenceTemplate essenceTemplate = new GenericEssenceTemplate();
     essenceTemplate.setEssenceUser(true);
     characterTemplate.setEssenceTemplate(essenceTemplate);
-    when(statistics.getCharacterTemplate()).thenReturn(characterTemplate);
+    when(statistics.getHeroTemplate()).thenReturn(characterTemplate);
     when(statistics.getEssencePool())
             .thenReturn(new EssencePoolModelImpl(essenceTemplate, new NullAdditionalRules(), new DummyCharacterModelContext()));
   }

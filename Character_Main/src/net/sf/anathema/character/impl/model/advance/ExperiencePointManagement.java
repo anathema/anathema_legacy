@@ -27,7 +27,7 @@ public class ExperiencePointManagement implements IExperiencePointManagement {
     this.character = character;
     this.basicCharacter = character.getCharacterContext().getBasicCharacterContext();
     this.traitConfiguration = character.getTraitModel();
-    this.calculator = new ExperiencePointCostCalculator(character.getCharacterTemplate().getExperienceCost());
+    this.calculator = new ExperiencePointCostCalculator(character.getHeroTemplate().getExperienceCost());
   }
 
   private IValueModel<Integer> getAbilityModel() {

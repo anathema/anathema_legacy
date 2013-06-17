@@ -15,7 +15,7 @@ import net.sf.anathema.character.generic.framework.xml.rules.GenericAdditionalRu
 import net.sf.anathema.character.generic.framework.xml.trait.GenericTraitTemplateFactory;
 import net.sf.anathema.character.generic.impl.caste.CasteCollection;
 import net.sf.anathema.character.generic.impl.traits.TraitTemplateCollection;
-import net.sf.anathema.character.generic.template.ICharacterTemplate;
+import net.sf.anathema.character.generic.template.HeroTemplate;
 import net.sf.anathema.character.generic.template.ITemplateType;
 import net.sf.anathema.character.generic.template.ITraitTemplateCollection;
 import net.sf.anathema.character.generic.template.abilities.GroupedTraitType;
@@ -33,7 +33,7 @@ import net.sf.anathema.lib.lang.clone.ICloneable;
 import java.util.ArrayList;
 import java.util.List;
 
-public class GenericCharacterTemplate implements ICharacterTemplate, ICloneable<GenericCharacterTemplate> {
+public class GenericCharacterTemplate implements HeroTemplate, ICloneable<GenericCharacterTemplate> {
 
   private IAdditionalRules additionalRules = new GenericAdditionalRules();
   private ITemplateType templateType;

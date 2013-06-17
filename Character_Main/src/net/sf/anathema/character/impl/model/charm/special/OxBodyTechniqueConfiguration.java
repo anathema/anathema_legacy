@@ -1,7 +1,7 @@
 package net.sf.anathema.character.impl.model.charm.special;
 
 import net.sf.anathema.character.generic.character.IGenericTraitCollection;
-import net.sf.anathema.character.generic.framework.additionaltemplate.model.ITraitContext;
+import net.sf.anathema.character.generic.framework.additionaltemplate.model.TraitContext;
 import net.sf.anathema.character.generic.health.HealthLevelType;
 import net.sf.anathema.character.generic.magic.ICharm;
 import net.sf.anathema.character.generic.magic.charms.special.IOxBodyTechniqueCharm;
@@ -27,7 +27,7 @@ public class OxBodyTechniqueConfiguration implements IOxBodyTechniqueConfigurati
   private final ICharm oxBodyTechnique;
   private final IHealthLevelProvider healthLevelProvider;
 
-  public OxBodyTechniqueConfiguration(ITraitContext context, final IGenericTraitCollection collection, ICharm oxBodyTechnique,
+  public OxBodyTechniqueConfiguration(TraitContext context, final IGenericTraitCollection collection, ICharm oxBodyTechnique,
                                       final TraitType[] relevantTraits, final IOxBodyTechniqueArbitrator arbitrator,
                                       IOxBodyTechniqueCharm properties) {
     this.oxBodyTechnique = oxBodyTechnique;
@@ -53,7 +53,7 @@ public class OxBodyTechniqueConfiguration implements IOxBodyTechniqueConfigurati
     this.healthLevelProvider = new OxBodyTechniqueHealthLevelProvider(categories);
   }
 
-  private OxBodyCategory[] createOxBodyCategories(ITraitContext context, IOxBodyTechniqueCharm properties) {
+  private OxBodyCategory[] createOxBodyCategories(TraitContext context, IOxBodyTechniqueCharm properties) {
     Set<String> ids = properties.getHealthLevels().keySet();
     List<OxBodyCategory> categoryList = new ArrayList<>();
     for (String id : ids) {

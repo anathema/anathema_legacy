@@ -21,7 +21,7 @@ public class SorceryInitializer implements CharacterModelInitializer {
 
   @Override
   public void initialize(SectionView sectionView, ICharacter character, Resources resources) {
-    boolean canLeanSorcery = character.getCharacterTemplate().getMagicTemplate().getSpellMagic().canLearnSorcery();
+    boolean canLeanSorcery = character.getHeroTemplate().getMagicTemplate().getSpellMagic().canLearnSorcery();
     if (canLeanSorcery) {
       String titleKey = "CardView.CharmConfiguration.Spells.Title";
       SpellModel spellModel = new SorceryModel(character);

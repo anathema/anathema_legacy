@@ -5,7 +5,7 @@ import net.sf.anathema.character.generic.health.HealthLevelType;
 import net.sf.anathema.character.generic.magic.ICharm;
 import net.sf.anathema.character.generic.magic.IGenericCombo;
 import net.sf.anathema.character.generic.magic.IMagic;
-import net.sf.anathema.character.generic.template.ICharacterTemplate;
+import net.sf.anathema.character.generic.template.HeroTemplate;
 import net.sf.anathema.character.generic.template.magic.IGenericCharmConfiguration;
 import net.sf.anathema.character.generic.traits.TraitType;
 import net.sf.anathema.character.generic.traits.groups.IIdentifiedTraitTypeGroup;
@@ -25,7 +25,7 @@ public interface IGenericCharacter extends ILimitationContext, IMagicCollection,
 
   boolean isAlienCharm(ICharm charm);
 
-  ICharacterTemplate getTemplate();
+  HeroTemplate getTemplate();
 
   Specialty[] getSpecialties(TraitType traitType);
 

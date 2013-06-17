@@ -17,7 +17,7 @@ import net.sf.anathema.character.generic.magic.ISpell;
 import net.sf.anathema.character.generic.magic.charms.special.IMultiLearnableCharm;
 import net.sf.anathema.character.generic.magic.charms.special.ISpecialCharmConfiguration;
 import net.sf.anathema.character.generic.magic.charms.special.ISubeffect;
-import net.sf.anathema.character.generic.template.ICharacterTemplate;
+import net.sf.anathema.character.generic.template.HeroTemplate;
 import net.sf.anathema.character.generic.template.ITraitLimitation;
 import net.sf.anathema.character.generic.traits.TraitType;
 import net.sf.anathema.character.generic.traits.groups.IIdentifiedTraitTypeGroup;
@@ -118,8 +118,8 @@ public class GenericCharacter implements IGenericCharacter {
   }
 
   @Override
-  public ICharacterTemplate getTemplate() {
-    return character.getCharacterTemplate();
+  public HeroTemplate getTemplate() {
+    return character.getHeroTemplate();
   }
 
   @Override
@@ -319,7 +319,7 @@ public class GenericCharacter implements IGenericCharacter {
     for (ILearningCharmGroup group : character.getCharms().getAllGroups()) {
       for (ICharm charm : group.getAllCharms()) {
         if (charm.isInstanceOfGenericCharm() &&
-            charm.getCharacterType().equals(character.getCharacterTemplate().getTemplateType().getCharacterType())) {
+            charm.getCharacterType().equals(character.getHeroTemplate().getTemplateType().getCharacterType())) {
           genericCharms.add(charm);
         }
       }

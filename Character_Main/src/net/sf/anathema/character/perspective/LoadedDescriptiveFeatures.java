@@ -30,7 +30,7 @@ public class LoadedDescriptiveFeatures implements DescriptiveFeatures {
   @Override
   public ITemplateType getTemplateType() {
     ICharacter character = (ICharacter) characterItem.getItemData();
-    return character.getCharacterTemplate().getTemplateType();
+    return character.getHeroTemplate().getTemplateType();
   }
 
   @Override

@@ -4,7 +4,7 @@ import net.sf.anathema.character.generic.additionalrules.IAdditionalRules;
 import net.sf.anathema.character.generic.caste.ICasteCollection;
 import net.sf.anathema.character.generic.impl.additional.NullAdditionalRules;
 import net.sf.anathema.character.generic.impl.template.essence.NullEssenceTemplate;
-import net.sf.anathema.character.generic.template.ICharacterTemplate;
+import net.sf.anathema.character.generic.template.HeroTemplate;
 import net.sf.anathema.character.generic.template.ITemplateType;
 import net.sf.anathema.character.generic.template.ITraitTemplateCollection;
 import net.sf.anathema.character.generic.template.TemplateType;
@@ -19,13 +19,12 @@ import net.sf.anathema.character.generic.template.magic.IMagicTemplate;
 import net.sf.anathema.character.generic.template.presentation.IPresentationProperties;
 import net.sf.anathema.character.generic.traits.TraitType;
 import net.sf.anathema.character.generic.type.ICharacterType;
-import net.sf.anathema.character.main.traits.model.TraitModel;
 import net.sf.anathema.lib.util.SimpleIdentifier;
 
 import java.util.ArrayList;
 import java.util.List;
 
-public class SimpleDummyCharacterTemplate implements ICharacterTemplate {
+public class SimpleDummyCharacterTemplate implements HeroTemplate {
 
   private final String subtype;
   private final ICharacterType type;

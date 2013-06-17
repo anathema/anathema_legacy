@@ -5,7 +5,7 @@ import net.sf.anathema.character.generic.IBasicCharacterData;
 import net.sf.anathema.character.generic.caste.ICasteType;
 import net.sf.anathema.character.generic.framework.additionaltemplate.listening.DedicatedCharacterChangeAdapter;
 import net.sf.anathema.character.generic.framework.additionaltemplate.model.ICharacterListening;
-import net.sf.anathema.character.generic.framework.additionaltemplate.model.ITraitContext;
+import net.sf.anathema.character.generic.framework.additionaltemplate.model.TraitContext;
 import net.sf.anathema.character.generic.traits.TraitType;
 import net.sf.anathema.character.library.ITraitFavorization;
 import net.sf.anathema.character.library.trait.favorable.IncrementChecker;
@@ -29,9 +29,9 @@ public class DefaultTrait implements Trait {
   private final ITraitRules traitRules;
   private final Announcer<IIntValueChangedListener> creationPointControl = Announcer.to(IIntValueChangedListener.class);
   private final Announcer<IIntValueChangedListener> currentValueControl = Announcer.to(IIntValueChangedListener.class);
-  private final ITraitContext traitContext;
+  private final TraitContext traitContext;
 
-  public DefaultTrait(IFavorableTraitRules traitRules, ICasteType[] castes, ITraitContext traitContext, IBasicCharacterData basicData,
+  public DefaultTrait(IFavorableTraitRules traitRules, ICasteType[] castes, TraitContext traitContext, IBasicCharacterData basicData,
                       ICharacterListening listening, IValueChangeChecker valueChangeChecker, IncrementChecker favoredIncrementChecker) {
     this(traitRules, traitContext, valueChangeChecker);
     this.traitFavorization = new TraitFavorization(basicData, castes, favoredIncrementChecker, this, traitRules.isRequiredFavored());
@@ -40,7 +40,7 @@ public class DefaultTrait implements Trait {
     traitFavorization.updateFavorableStateToCaste();
   }
 
-  public DefaultTrait(ITraitRules traitRules, ITraitContext traitContext, IValueChangeChecker checker) {
+  public DefaultTrait(ITraitRules traitRules, TraitContext traitContext, IValueChangeChecker checker) {
     Preconditions.checkNotNull(traitRules);
     this.traitRules = traitRules;
     this.traitContext = traitContext;

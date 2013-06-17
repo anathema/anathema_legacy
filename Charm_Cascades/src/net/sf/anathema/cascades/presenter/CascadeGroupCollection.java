@@ -6,7 +6,7 @@ import net.sf.anathema.character.generic.impl.magic.charm.MartialArtsCharmTree;
 import net.sf.anathema.character.generic.magic.charms.ICharmGroup;
 import net.sf.anathema.character.generic.magic.charms.ICharmTree;
 import net.sf.anathema.character.generic.magic.charms.MartialArtsLevel;
-import net.sf.anathema.character.generic.template.ICharacterTemplate;
+import net.sf.anathema.character.generic.template.HeroTemplate;
 import net.sf.anathema.character.generic.template.ITemplateRegistry;
 import net.sf.anathema.character.generic.template.magic.ICharmTemplate;
 import net.sf.anathema.character.generic.type.CharacterTypes;
@@ -39,7 +39,7 @@ public class CascadeGroupCollection implements CharmGroupCollection {
 
   private void initCharacterTypeCharms(List<ICharmGroup> allCharmGroups) {
     for (ICharacterType type : characterTypes.findAll()) {
-      ICharacterTemplate template = templateRegistry.getDefaultTemplate(type);
+      HeroTemplate template = templateRegistry.getDefaultTemplate(type);
       if (template == null) {
         continue;
       }
@@ -60,7 +60,7 @@ public class CascadeGroupCollection implements CharmGroupCollection {
   private ICharmTemplate findCharmTemplateOfCharacterTypeMostProficientWithMartialArts() {
     ICharmTemplate currentFavoriteTemplate = new NullCharmTemplate();
     for (ICharacterType type : characterTypes.findAll()) {
-      ICharacterTemplate defaultTemplate = templateRegistry.getDefaultTemplate(type);
+      HeroTemplate defaultTemplate = templateRegistry.getDefaultTemplate(type);
       if (defaultTemplate == null) {
         continue;
       }
@@ -74,7 +74,7 @@ public class CascadeGroupCollection implements CharmGroupCollection {
     return currentFavoriteTemplate;
   }
 
-  private void registerTypeCharms(List<ICharmGroup> allCharmGroups, ICharacterType type, ICharacterTemplate defaultTemplate) {
+  private void registerTypeCharms(List<ICharmGroup> allCharmGroups, ICharacterType type, HeroTemplate defaultTemplate) {
     ICharmTree typeTree = new CharmTree(defaultTemplate.getMagicTemplate().getCharmTemplate());
     registerGroups(allCharmGroups, type, typeTree);
   }

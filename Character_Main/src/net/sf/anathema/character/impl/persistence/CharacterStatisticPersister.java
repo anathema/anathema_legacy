@@ -5,7 +5,7 @@ import net.sf.anathema.character.generic.caste.ICasteCollection;
 import net.sf.anathema.character.generic.framework.ICharacterGenerics;
 import net.sf.anathema.character.generic.impl.magic.SpellException;
 import net.sf.anathema.character.generic.magic.charms.CharmException;
-import net.sf.anathema.character.generic.template.ICharacterTemplate;
+import net.sf.anathema.character.generic.template.HeroTemplate;
 import net.sf.anathema.character.generic.template.ITemplateType;
 import net.sf.anathema.character.generic.template.TemplateType;
 import net.sf.anathema.character.generic.traits.types.OtherTraitType;
@@ -57,7 +57,7 @@ public class CharacterStatisticPersister {
     Element statisticsElement = parent.addElement(TAG_STATISTICS);
     rulesPersister.save(statisticsElement);
     statisticsElement.addAttribute(ATTRIB_EXPERIENCED, String.valueOf(ExperienceModelFetcher.fetch(character).isExperienced()));
-    ICharacterTemplate template = character.getCharacterTemplate();
+    HeroTemplate template = character.getHeroTemplate();
     Element characterTypeElement = statisticsElement.addElement(TAG_CHARACTER_TYPE);
     characterTypeElement.addAttribute(ATTRIB_SUB_TYPE, template.getTemplateType().getSubType().getId());
     characterTypeElement.addText(template.getTemplateType().getCharacterType().getId());
@@ -78,7 +78,7 @@ public class CharacterStatisticPersister {
       Element statisticsElement = parent.element(TAG_STATISTICS);
       ITemplateType templateType = loadTemplateType(statisticsElement);
       boolean experienced = ElementUtilities.getBooleanAttribute(statisticsElement, ATTRIB_EXPERIENCED, false);
-      ICharacterTemplate template = generics.getTemplateRegistry().getTemplate(templateType);
+      HeroTemplate template = generics.getTemplateRegistry().getTemplate(templateType);
       ExaltedCharacter character = new ExaltedCharacter(template, generics);
       CharacterDescription characterDescription = CharacterDescriptionFetcher.fetch(character);
       descriptionPersister.load(parent, characterDescription);

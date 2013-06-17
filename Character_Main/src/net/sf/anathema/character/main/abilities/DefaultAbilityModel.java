@@ -2,7 +2,7 @@ package net.sf.anathema.character.main.abilities;
 
 import net.sf.anathema.character.generic.caste.ICasteCollection;
 import net.sf.anathema.character.generic.framework.additionaltemplate.model.ICharacterModelContext;
-import net.sf.anathema.character.generic.template.ICharacterTemplate;
+import net.sf.anathema.character.generic.template.HeroTemplate;
 import net.sf.anathema.character.generic.template.abilities.GroupedTraitType;
 import net.sf.anathema.character.generic.traits.TraitType;
 import net.sf.anathema.character.generic.traits.groups.IIdentifiedCasteTraitTypeGroup;
@@ -26,10 +26,10 @@ import java.util.List;
 public class DefaultAbilityModel extends DefaultTraitMap implements AbilityModel {
   private final IIdentifiedCasteTraitTypeGroup[] abilityTraitGroups;
   private final SpecialtiesConfiguration specialtyConfiguration;
-  private ICharacterTemplate template;
+  private HeroTemplate template;
   private ICharacterModelContext modelContext;
 
-  public DefaultAbilityModel(ICharacterTemplate template, ICharacterModelContext modelContext, TraitModel traitModel) {
+  public DefaultAbilityModel(HeroTemplate template, ICharacterModelContext modelContext, TraitModel traitModel) {
     this.template = template;
     this.modelContext = modelContext;
     ICasteCollection casteCollection = template.getCasteCollection();
@@ -40,7 +40,7 @@ public class DefaultAbilityModel extends DefaultTraitMap implements AbilityModel
     this.specialtyConfiguration = new SpecialtiesConfiguration(this, abilityTraitGroups, modelContext);
   }
 
-  private IncrementChecker createFavoredAbilityIncrementChecker(ICharacterTemplate template, TraitMap traitMap) {
+  private IncrementChecker createFavoredAbilityIncrementChecker(HeroTemplate template, TraitMap traitMap) {
     int maxFavoredAbilityCount = template.getCreationPoints().getAbilityCreationPoints().getFavorableTraitCount();
     List<TraitType> abilityTypes = new ArrayList<>();
     for (GroupedTraitType traitType : template.getAbilityGroups()) {

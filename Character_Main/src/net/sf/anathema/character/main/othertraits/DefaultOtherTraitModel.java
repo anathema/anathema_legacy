@@ -2,8 +2,8 @@ package net.sf.anathema.character.main.othertraits;
 
 import net.sf.anathema.character.generic.additionalrules.IAdditionalTraitRules;
 import net.sf.anathema.character.generic.framework.additionaltemplate.model.ICharacterModelContext;
-import net.sf.anathema.character.generic.framework.additionaltemplate.model.ITraitContext;
-import net.sf.anathema.character.generic.template.ICharacterTemplate;
+import net.sf.anathema.character.generic.framework.additionaltemplate.model.TraitContext;
+import net.sf.anathema.character.generic.template.HeroTemplate;
 import net.sf.anathema.character.generic.template.ITraitTemplateCollection;
 import net.sf.anathema.character.generic.traits.types.OtherTraitType;
 import net.sf.anathema.character.generic.traits.types.VirtueType;
@@ -25,9 +25,9 @@ import net.sf.anathema.lib.util.Identifier;
 public class DefaultOtherTraitModel extends DefaultTraitMap implements OtherTraitModel, CharacterModel {
 
   private Hero hero;
-  private ICharacterTemplate template;
+  private HeroTemplate template;
 
-  public DefaultOtherTraitModel(Hero hero, ICharacterTemplate template, ICharacterModelContext modelContext, TraitModel traitModel) {
+  public DefaultOtherTraitModel(Hero hero, HeroTemplate template, ICharacterModelContext modelContext, TraitModel traitModel) {
     this.hero = hero;
     this.template = template;
     addEssence(modelContext.getTraitContext());
@@ -48,19 +48,19 @@ public class DefaultOtherTraitModel extends DefaultTraitMap implements OtherTrai
     }
   }
 
-  private void addEssence(ITraitContext traitContext) {
+  private void addEssence(TraitContext traitContext) {
     TypedTraitTemplateFactory templateFactory = new EssenceTemplateFactory(getTemplateCollection().getTraitTemplateFactory());
     DefaultTraitFactory traitFactory = new DefaultTraitFactory(traitContext, getAdditionalTraitRules(), templateFactory);
     addTraits(traitFactory.createTrait(OtherTraitType.Essence));
   }
 
-  private void addVirtues(ITraitContext traitContext) {
+  private void addVirtues(TraitContext traitContext) {
     TypedTraitTemplateFactory templateFactory = new VirtueTemplateFactory(getTemplateCollection().getTraitTemplateFactory());
     DefaultTraitFactory traitFactory = new DefaultTraitFactory(traitContext, getAdditionalTraitRules(), templateFactory);
     addTraits(traitFactory.createTraits(VirtueType.values()));
   }
 
-  private void addWillpower(ITraitContext traitContext) {
+  private void addWillpower(TraitContext traitContext) {
     TypedTraitTemplateFactory templateFactory = new WillpowerTemplateFactory(getTemplateCollection().getTraitTemplateFactory());
     DefaultTraitFactory traitFactory = new DefaultTraitFactory(traitContext, getAdditionalTraitRules(), templateFactory);
     addTraits(traitFactory.createTrait(OtherTraitType.Willpower));

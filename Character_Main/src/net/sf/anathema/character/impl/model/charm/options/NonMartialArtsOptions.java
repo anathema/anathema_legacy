@@ -8,7 +8,7 @@ import net.sf.anathema.character.generic.magic.IExtendedCharmData;
 import net.sf.anathema.character.generic.magic.charms.ICharmGroup;
 import net.sf.anathema.character.generic.magic.charms.ICharmIdMap;
 import net.sf.anathema.character.generic.magic.charms.ICharmTree;
-import net.sf.anathema.character.generic.template.ICharacterTemplate;
+import net.sf.anathema.character.generic.template.HeroTemplate;
 import net.sf.anathema.character.generic.template.ITemplateRegistry;
 import net.sf.anathema.character.generic.template.ITemplateType;
 import net.sf.anathema.character.generic.template.magic.ICharmTemplate;
@@ -88,7 +88,7 @@ public class NonMartialArtsOptions implements ICharmIdMap, ICharmGroupArbitrator
   public ICharmTemplate getNativeCharmTemplate() {
     IBasicCharacterData basicCharacterContext = context.getBasicCharacterContext();
     ITemplateType templateType = basicCharacterContext.getTemplateType();
-    ICharacterTemplate template = registry.getTemplate(templateType);
+    HeroTemplate template = registry.getTemplate(templateType);
     IMagicTemplate magicTemplate = template.getMagicTemplate();
     return magicTemplate.getCharmTemplate();
   }
@@ -105,7 +105,7 @@ public class NonMartialArtsOptions implements ICharmIdMap, ICharmGroupArbitrator
   }
 
   private ICharmTemplate getCharmTemplate(ITemplateRegistry registry, ICharacterType type) {
-    ICharacterTemplate defaultTemplate = registry.getDefaultTemplate(type);
+    HeroTemplate defaultTemplate = registry.getDefaultTemplate(type);
     if (defaultTemplate == null) {
       return null;
     }

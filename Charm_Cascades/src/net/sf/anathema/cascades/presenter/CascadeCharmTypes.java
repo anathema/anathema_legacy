@@ -1,6 +1,6 @@
 package net.sf.anathema.cascades.presenter;
 
-import net.sf.anathema.character.generic.template.ICharacterTemplate;
+import net.sf.anathema.character.generic.template.HeroTemplate;
 import net.sf.anathema.character.generic.template.ITemplateRegistry;
 import net.sf.anathema.character.generic.type.CharacterTypes;
 import net.sf.anathema.character.generic.type.ICharacterType;
@@ -25,7 +25,7 @@ public class CascadeCharmTypes extends AbstractCharmTypes {
   protected List<Identifier> getCurrentCharacterTypes() {
     Set<Identifier> set = new LinkedHashSet<>();
     for (ICharacterType type : characterTypes.findAll()) {
-      ICharacterTemplate defaultTemplate = templateRegistry.getDefaultTemplate(type);
+      HeroTemplate defaultTemplate = templateRegistry.getDefaultTemplate(type);
       if (defaultTemplate == null) {
         continue;
       }

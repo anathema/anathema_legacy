@@ -6,7 +6,7 @@ import cucumber.api.java.en.Given;
 import cucumber.api.java.en.Then;
 import net.sf.anathema.character.generic.framework.CharacterGenericsExtractor;
 import net.sf.anathema.character.generic.framework.ICharacterGenerics;
-import net.sf.anathema.character.generic.template.ICharacterTemplate;
+import net.sf.anathema.character.generic.template.HeroTemplate;
 import net.sf.anathema.character.generic.template.TemplateType;
 import net.sf.anathema.character.generic.type.CharacterTypes;
 import net.sf.anathema.character.impl.model.CharacterStatisticsConfiguration;
@@ -70,26 +70,26 @@ public class CharacterCreationSteps {
 
 
   private ICharacter createCharacter(String type) {
-    ICharacterTemplate characterTemplate = loadDefaultTemplateForType(type);
+    HeroTemplate characterTemplate = loadDefaultTemplateForType(type);
     return createCharacter(characterTemplate);
   }
 
   private ICharacter createCharacter(String type, String subtype) {
-    ICharacterTemplate characterTemplate = loadTemplateForType(type, subtype);
+    HeroTemplate characterTemplate = loadTemplateForType(type, subtype);
     return createCharacter(characterTemplate);
   }
 
-  private ICharacterTemplate loadDefaultTemplateForType(String type) {
+  private HeroTemplate loadDefaultTemplateForType(String type) {
     ICharacterGenerics generics = CharacterGenericsExtractor.getGenerics(model);
     return generics.getTemplateRegistry().getDefaultTemplate(characterTypes.findById(type));
   }
 
-  private ICharacterTemplate loadTemplateForType(String type, String subtype) {
+  private HeroTemplate loadTemplateForType(String type, String subtype) {
     ICharacterGenerics generics = CharacterGenericsExtractor.getGenerics(model);
     return generics.getTemplateRegistry().getTemplate(new TemplateType(characterTypes.findById(type), new SimpleIdentifier(subtype)));
   }
 
-  private ICharacter createCharacter(ICharacterTemplate template) {
+  private ICharacter createCharacter(HeroTemplate template) {
     CharacterStatisticsConfiguration creationRules = new CharacterStatisticsConfiguration();
     creationRules.setTemplate(template);
     IRegistry<IItemType, IRepositoryItemPersister> persisterRegistry = model.getPersisterRegistry();

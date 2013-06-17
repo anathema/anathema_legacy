@@ -40,7 +40,7 @@ public class FavorableTraitConfigurationPresenter {
     this.traitConfiguration = character.getTraitModel();
     this.basicCharacterData = character.getCharacterContext().getBasicCharacterContext();
     this.characterListening = character.getCharacterContext().getCharacterListening();
-    this.presentationProperties = character.getCharacterTemplate().getPresentationProperties();
+    this.presentationProperties = character.getHeroTemplate().getPresentationProperties();
     this.resources = resources;
     this.view = view;
   }

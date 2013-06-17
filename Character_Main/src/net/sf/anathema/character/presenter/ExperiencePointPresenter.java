@@ -31,7 +31,7 @@ public class ExperiencePointPresenter {
 
   private void initExperiencePointPresentation(boolean experienced, SectionView section) {
     if (experienced) {
-      ICharacterType characterType = character.getCharacterTemplate().getTemplateType().getCharacterType();
+      ICharacterType characterType = character.getHeroTemplate().getTemplateType().getCharacterType();
       String header = resources.getString("CardView.ExperienceConfiguration.Title");
       ExperienceView experienceView = section.addView(header, ExperienceView.class, characterType);
       new ExperienceConfigurationPresenter(resources, ExperienceModelFetcher.fetch(character).getExperiencePoints(), experienceView)

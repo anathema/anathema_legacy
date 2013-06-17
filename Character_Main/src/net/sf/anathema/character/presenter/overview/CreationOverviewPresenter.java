@@ -2,7 +2,7 @@ package net.sf.anathema.character.presenter.overview;
 
 import net.sf.anathema.character.generic.caste.ICasteType;
 import net.sf.anathema.character.generic.framework.additionaltemplate.listening.GlobalCharacterChangeAdapter;
-import net.sf.anathema.character.generic.template.ICharacterTemplate;
+import net.sf.anathema.character.generic.template.HeroTemplate;
 import net.sf.anathema.character.library.overview.IAdditionalAlotmentView;
 import net.sf.anathema.character.library.overview.IOverviewCategory;
 import net.sf.anathema.character.main.concept.model.CharacterConceptFetcher;
@@ -25,7 +25,7 @@ public class CreationOverviewPresenter implements Presenter {
   private final CategorizedOverview view;
   private final ICharacter character;
   private final IBonusPointManagement management;
-  private final ICharacterTemplate template;
+  private final HeroTemplate template;
   private final List<IOverviewSubPresenter> presenters = new ArrayList<>();
   private final Map<String, IOverviewCategory> categoriesById = new LinkedHashMap<>();
 
@@ -33,7 +33,7 @@ public class CreationOverviewPresenter implements Presenter {
     this.management = management;
     this.resources = resources;
     this.character = character;
-    this.template = character.getCharacterTemplate();
+    this.template = character.getHeroTemplate();
     character.getCharacterContext().getCharacterListening().addChangeListener(new GlobalCharacterChangeAdapter() {
       @Override
       public void changeOccurred() {

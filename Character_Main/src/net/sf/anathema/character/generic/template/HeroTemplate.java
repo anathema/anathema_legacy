@@ -13,7 +13,7 @@ import net.sf.anathema.character.generic.traits.TraitType;
 
 import java.util.List;
 
-public interface ICharacterTemplate extends ICharacterExternalsTemplate {
+public interface HeroTemplate extends ICharacterExternalsTemplate {
 
   GroupedTraitType[] getAbilityGroups();
 

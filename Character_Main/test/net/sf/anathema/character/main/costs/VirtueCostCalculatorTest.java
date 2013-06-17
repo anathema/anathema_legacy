@@ -1,6 +1,6 @@
 package net.sf.anathema.character.main.costs;
 
-import net.sf.anathema.character.generic.framework.additionaltemplate.model.ITraitContext;
+import net.sf.anathema.character.generic.framework.additionaltemplate.model.TraitContext;
 import net.sf.anathema.character.generic.impl.additional.NullAdditionalRules;
 import net.sf.anathema.character.generic.impl.template.points.DefaultBonusPointCosts;
 import net.sf.anathema.character.generic.template.creation.BonusPointCosts;
@@ -25,7 +25,7 @@ public class VirtueCostCalculatorTest {
   @Before
   public void setUp() throws Exception {
     BonusPointCosts cost = new DefaultBonusPointCosts();
-    ITraitContext traitContext = new BasicCharacterTestCase().createModelContextWithEssence2(new CreationTraitValueStrategy()).getTraitContext();
+    TraitContext traitContext = new BasicCharacterTestCase().createModelContextWithEssence2(new CreationTraitValueStrategy()).getTraitContext();
     this.virtues = new DefaultTraitFactory(traitContext, new NullAdditionalRules(), new VirtueTemplateFactory(new DummyTraitTemplateFactory())).createTraits(VirtueType.values());
     this.calculator = new VirtueCostCalculator(virtues, 5, cost);
   }

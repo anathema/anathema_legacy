@@ -3,7 +3,7 @@ package net.sf.anathema.character.main.testing.dummy.trait;
 import net.sf.anathema.character.generic.caste.ICasteType;
 import net.sf.anathema.character.generic.character.IGenericTraitCollection;
 import net.sf.anathema.character.generic.character.ILimitationContext;
-import net.sf.anathema.character.generic.framework.additionaltemplate.model.ITraitContext;
+import net.sf.anathema.character.generic.framework.additionaltemplate.model.TraitContext;
 import net.sf.anathema.character.generic.framework.additionaltemplate.model.ITraitValueStrategy;
 import net.sf.anathema.character.generic.impl.traits.limitation.StaticTraitLimitation;
 import net.sf.anathema.character.generic.template.ITraitLimitation;
@@ -11,7 +11,7 @@ import net.sf.anathema.character.impl.model.context.trait.CreationTraitValueStra
 import net.sf.anathema.character.main.traits.model.GenericTraitCollectionFacade;
 import net.sf.anathema.character.main.traits.model.TraitMap;
 
-public class DummyTraitContext implements ITraitContext {
+public class DummyTraitContext implements TraitContext {
 
   private class DummyLimitationContext implements ILimitationContext {
 

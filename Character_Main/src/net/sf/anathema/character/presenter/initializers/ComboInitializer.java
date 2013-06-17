@@ -25,7 +25,7 @@ public class ComboInitializer implements CharacterModelInitializer {
 
   @Override
   public void initialize(SectionView sectionView, ICharacter character, Resources resources) {
-    boolean canLearnCharms = character.getCharacterTemplate().getMagicTemplate().getCharmTemplate().canLearnCharms();
+    boolean canLearnCharms = character.getHeroTemplate().getMagicTemplate().getCharmTemplate().canLearnCharms();
     if (!canLearnCharms) {
       return;
     }

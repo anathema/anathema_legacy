@@ -3,8 +3,8 @@ package net.sf.anathema.character.generic.framework.module;
 import net.sf.anathema.character.generic.framework.ICharacterGenerics;
 import net.sf.anathema.character.generic.framework.ICharacterTemplateResourceCache;
 import net.sf.anathema.character.generic.framework.xml.GenericCharacterTemplate;
+import net.sf.anathema.character.generic.template.HeroTemplate;
 import net.sf.anathema.character.generic.template.ICharacterExternalsTemplate;
-import net.sf.anathema.character.generic.template.ICharacterTemplate;
 import net.sf.anathema.character.generic.template.ITemplateRegistry;
 import net.sf.anathema.character.generic.template.ITemplateType;
 import net.sf.anathema.character.generic.type.ICharacterType;
@@ -29,7 +29,7 @@ public abstract class CharacterTypeModule extends CharacterModuleAdapter {
   protected ITemplateType[] getDefaultAndCustomTemplates(ICharacterGenerics generics) {
     List<ITemplateType> types = new ArrayList<>();
     ITemplateRegistry templateRegistry = generics.getTemplateRegistry();
-    ICharacterTemplate defaultTemplate = templateRegistry.getDefaultTemplate(getType());
+    HeroTemplate defaultTemplate = templateRegistry.getDefaultTemplate(getType());
     types.add(defaultTemplate.getTemplateType());
     ICharacterExternalsTemplate[] templatesForType = templateRegistry.getAllSupportedTemplates(getType());
     for (ICharacterExternalsTemplate template : templatesForType) {

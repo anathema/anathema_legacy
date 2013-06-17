@@ -7,7 +7,7 @@ import net.sf.anathema.character.generic.magic.ICharm;
 import net.sf.anathema.character.generic.magic.charms.ICharmGroup;
 import net.sf.anathema.character.generic.magic.charms.ICharmIdMap;
 import net.sf.anathema.character.generic.magic.charms.ICharmLearnableArbitrator;
-import net.sf.anathema.character.generic.template.ICharacterTemplate;
+import net.sf.anathema.character.generic.template.HeroTemplate;
 import net.sf.anathema.character.generic.template.ITemplateRegistry;
 import net.sf.anathema.character.generic.template.ITemplateType;
 import net.sf.anathema.character.generic.template.magic.ICharmTemplate;
@@ -31,7 +31,7 @@ public class MartialArtsOptions implements ICharmIdMap, ICharmLearnableArbitrato
   private ICharmTemplate getNativeCharmTemplate() {
     IBasicCharacterData basicCharacterContext = context.getBasicCharacterContext();
     ITemplateType templateType = basicCharacterContext.getTemplateType();
-    ICharacterTemplate template = registry.getTemplate(templateType);
+    HeroTemplate template = registry.getTemplate(templateType);
     IMagicTemplate magicTemplate = template.getMagicTemplate();
     return magicTemplate.getCharmTemplate();
   }

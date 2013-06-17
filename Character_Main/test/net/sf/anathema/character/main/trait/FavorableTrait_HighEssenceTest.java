@@ -2,7 +2,7 @@ package net.sf.anathema.character.main.trait;
 
 import net.sf.anathema.character.generic.caste.ICasteType;
 import net.sf.anathema.character.generic.framework.additionaltemplate.model.ICharacterModelContext;
-import net.sf.anathema.character.generic.framework.additionaltemplate.model.ITraitContext;
+import net.sf.anathema.character.generic.framework.additionaltemplate.model.TraitContext;
 import net.sf.anathema.character.generic.impl.traits.SimpleTraitTemplate;
 import net.sf.anathema.character.generic.traits.ITraitTemplate;
 import net.sf.anathema.character.generic.traits.types.AbilityType;
@@ -44,7 +44,7 @@ public class FavorableTrait_HighEssenceTest {
 
   private DefaultTrait createObjectUnderTest(ICharacterModelContext context) {
     ITraitTemplate archeryTemplate = SimpleTraitTemplate.createEssenceLimitedTemplate(0);
-    ITraitContext traitContext = context.getTraitContext();
+    TraitContext traitContext = context.getTraitContext();
     FavorableTraitRules rules = new FavorableTraitRules(AbilityType.Archery, archeryTemplate, traitContext.getLimitationContext());
     return new DefaultTrait(rules, new ICasteType[]{new DummyCasteType()}, traitContext, context.getBasicCharacterContext(),
             context.getCharacterListening(), new FriendlyValueChangeChecker(), incrementChecker);

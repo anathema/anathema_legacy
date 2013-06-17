@@ -1,6 +1,6 @@
 package net.sf.anathema;
 
-import net.sf.anathema.character.generic.template.ICharacterTemplate;
+import net.sf.anathema.character.generic.template.HeroTemplate;
 import net.sf.anathema.character.main.concept.model.CharacterConcept;
 import net.sf.anathema.character.main.concept.model.CharacterConceptFetcher;
 import net.sf.anathema.character.main.traits.model.TraitMap;
@@ -18,8 +18,8 @@ public class CharacterHolder {
     return character.getCharms();
   }
 
-  public ICharacterTemplate getCharacterTemplate() {
-    return character.getCharacterTemplate();
+  public HeroTemplate getCharacterTemplate() {
+    return character.getHeroTemplate();
   }
 
   public CharacterConcept getCharacterConcept() {

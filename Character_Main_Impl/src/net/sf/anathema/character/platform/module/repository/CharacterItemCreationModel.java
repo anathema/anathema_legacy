@@ -1,7 +1,7 @@
 package net.sf.anathema.character.platform.module.repository;
 
 import net.sf.anathema.character.generic.framework.ICharacterGenerics;
-import net.sf.anathema.character.generic.template.ICharacterTemplate;
+import net.sf.anathema.character.generic.template.HeroTemplate;
 import net.sf.anathema.character.generic.template.ITemplateRegistry;
 import net.sf.anathema.character.generic.type.CharacterTypes;
 import net.sf.anathema.character.generic.type.ICharacterType;
@@ -84,7 +84,7 @@ public class CharacterItemCreationModel implements ICharacterItemCreationModel {
     if (getAvailableTemplates().length == 0) {
       setSelectedTemplate(null);
     } else {
-      ICharacterTemplate defaultTemplate = generics.getTemplateRegistry().getDefaultTemplate(selectedType);
+      HeroTemplate defaultTemplate = generics.getTemplateRegistry().getDefaultTemplate(selectedType);
       for (ITemplateTypeAggregation aggregation : aggregationsByType.get(selectedType)) {
         if (aggregation.contains(defaultTemplate)) {
           setSelectedTemplate(aggregation);

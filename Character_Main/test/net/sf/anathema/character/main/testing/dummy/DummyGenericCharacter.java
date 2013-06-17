@@ -13,7 +13,7 @@ import net.sf.anathema.character.generic.magic.ICharm;
 import net.sf.anathema.character.generic.magic.IGenericCombo;
 import net.sf.anathema.character.generic.magic.IMagic;
 import net.sf.anathema.character.generic.magic.charms.special.IMultiLearnableCharm;
-import net.sf.anathema.character.generic.template.ICharacterTemplate;
+import net.sf.anathema.character.generic.template.HeroTemplate;
 import net.sf.anathema.character.generic.template.ITraitLimitation;
 import net.sf.anathema.character.generic.traits.GenericTrait;
 import net.sf.anathema.character.generic.traits.TraitType;
@@ -30,10 +30,10 @@ import java.util.Map;
 
 public class DummyGenericCharacter implements IGenericCharacter {
 
-  private final ICharacterTemplate template;
+  private final HeroTemplate template;
   private final Map<TraitType, GenericTrait> traitsByType = new HashMap<>();
 
-  public DummyGenericCharacter(ICharacterTemplate template) {
+  public DummyGenericCharacter(HeroTemplate template) {
     this.template = template;
   }
 
@@ -88,7 +88,7 @@ public class DummyGenericCharacter implements IGenericCharacter {
   }
 
   @Override
-  public ICharacterTemplate getTemplate() {
+  public HeroTemplate getTemplate() {
     return template;
   }
 

@@ -1,6 +1,6 @@
 package net.sf.anathema.character.model.charm;
 
-import net.sf.anathema.character.generic.framework.additionaltemplate.model.ITraitContext;
+import net.sf.anathema.character.generic.framework.additionaltemplate.model.TraitContext;
 import net.sf.anathema.character.generic.health.HealthLevelType;
 import net.sf.anathema.character.generic.impl.traits.SimpleTraitTemplate;
 import net.sf.anathema.character.library.trait.DefaultTraitType;
@@ -12,7 +12,7 @@ public class OxBodyCategory extends LimitedTrait {
   private final String id;
   private final HealthLevelType[] healthLevelTypes;
 
-  public OxBodyCategory(ITraitContext context, HealthLevelType[] healthLevelTypes, String id, IncrementChecker incrementChecker) {
+  public OxBodyCategory(TraitContext context, HealthLevelType[] healthLevelTypes, String id, IncrementChecker incrementChecker) {
     super(new DefaultTraitType("OxBodyTechnique"),
             SimpleTraitTemplate.createEssenceLimitedTemplate(0), incrementChecker, context);
     this.healthLevelTypes = healthLevelTypes;

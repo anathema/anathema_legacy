@@ -1,7 +1,7 @@
 package net.sf.anathema.character.main.magic;
 
 import net.sf.anathema.character.generic.caste.ICasteType;
-import net.sf.anathema.character.generic.framework.additionaltemplate.model.ITraitContext;
+import net.sf.anathema.character.generic.framework.additionaltemplate.model.TraitContext;
 import net.sf.anathema.character.generic.framework.additionaltemplate.model.ITraitValueStrategy;
 import net.sf.anathema.character.generic.health.HealthLevelType;
 import net.sf.anathema.character.generic.impl.magic.charm.special.OxBodyTechniqueCharm;
@@ -45,7 +45,7 @@ public class OxBodyTechniqueConfigurationTest {
     ITraitValueStrategy strategy = new CreationTraitValueStrategy();
     DummyCharacterModelContext modelContext = new BasicCharacterTestCase().createModelContextWithEssence2(strategy);
     ITraitTemplate enduranceTemplate = SimpleTraitTemplate.createEssenceLimitedTemplate(0);
-    ITraitContext traitContext = modelContext.getTraitContext();
+    TraitContext traitContext = modelContext.getTraitContext();
     FavorableTraitRules enduranceRules = new FavorableTraitRules(AbilityType.Resistance, enduranceTemplate, traitContext.getLimitationContext());
     endurance = new DefaultTrait(enduranceRules, new ICasteType[]{new DummyCasteType()}, traitContext, modelContext.getBasicCharacterContext(),
             modelContext.getCharacterListening(), new FriendlyValueChangeChecker(), new FriendlyIncrementChecker());

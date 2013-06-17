@@ -11,7 +11,7 @@ import net.sf.anathema.character.generic.impl.template.magic.NullCharmSet;
 import net.sf.anathema.character.generic.impl.template.magic.SpellMagicTemplate;
 import net.sf.anathema.character.generic.magic.charms.MartialArtsLevel;
 import net.sf.anathema.character.generic.magic.spells.CircleType;
-import net.sf.anathema.character.generic.template.ICharacterTemplate;
+import net.sf.anathema.character.generic.template.HeroTemplate;
 import net.sf.anathema.character.generic.template.magic.ICharmSet;
 import net.sf.anathema.character.generic.template.magic.ISpellMagicTemplate;
 import net.sf.anathema.character.generic.template.magic.MartialArtsRules;
@@ -47,11 +47,11 @@ public class GenericMagicTemplateParser extends AbstractXmlTemplateParser<Generi
   private static final String ATTRIB_ID = "id";
   private static final String TAG_GROUP_EXCEPTION = "groupException";
   private static final String ATTRIB_SUB_TEMPLATE = "subTemplate";
-  private final ICharacterTemplate hostTemplate;
+  private final HeroTemplate hostTemplate;
   private final ICharmCache cache;
   private final CharacterTypes characterTypes;
 
-  public GenericMagicTemplateParser(IXmlTemplateRegistry<GenericMagicTemplate> templateRegistry, ICharacterTemplate template, ICharmCache cache,
+  public GenericMagicTemplateParser(IXmlTemplateRegistry<GenericMagicTemplate> templateRegistry, HeroTemplate template, ICharmCache cache,
                                     CharacterTypes characterTypes) {
     super(templateRegistry);
     this.hostTemplate = template;

@@ -1,7 +1,7 @@
 package net.sf.anathema.character.library.trait.specialties;
 
 import net.sf.anathema.character.generic.framework.ITraitReference;
-import net.sf.anathema.character.generic.framework.additionaltemplate.model.ITraitContext;
+import net.sf.anathema.character.generic.framework.additionaltemplate.model.TraitContext;
 import net.sf.anathema.character.generic.impl.traits.SimpleTraitTemplate;
 import net.sf.anathema.character.generic.traits.TraitType;
 import net.sf.anathema.character.library.trait.DefaultTrait;
@@ -16,7 +16,7 @@ public class DefaultSpecialty extends DefaultTrait implements Specialty {
   private final AbstractSubTraitContainer container;
   private final ITraitReference reference;
 
-  public DefaultSpecialty(AbstractSubTraitContainer container, ITraitReference reference, String specialtyName, ITraitContext context) {
+  public DefaultSpecialty(AbstractSubTraitContainer container, ITraitReference reference, String specialtyName, TraitContext context) {
     super(new TraitRules(new DefaultTraitType("Specialty"), SimpleTraitTemplate.createStaticLimitedTemplate(0, 3), context.getLimitationContext()), context,
             new FriendlyValueChangeChecker());
     this.container = container;

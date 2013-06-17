@@ -1,8 +1,8 @@
 package net.sf.anathema.character.main.template;
 
 import net.sf.anathema.character.generic.impl.template.TemplateRegistry;
+import net.sf.anathema.character.generic.template.HeroTemplate;
 import net.sf.anathema.character.generic.template.ICharacterExternalsTemplate;
-import net.sf.anathema.character.generic.template.ICharacterTemplate;
 import net.sf.anathema.character.generic.template.ITemplateRegistry;
 import net.sf.anathema.character.generic.template.TemplateType;
 import net.sf.anathema.character.main.testing.dummy.DummyMundaneCharacterType;
@@ -44,8 +44,8 @@ public class TemplateRegistryTest {
 
   @Test
   public void testRegisterAndRetrieveAllSupportedTemplates() throws Exception {
-    ICharacterTemplate defaultTemplate = new SimpleDummyCharacterTemplate(characterType, null);
-    ICharacterTemplate otherTemplate = new SimpleDummyCharacterTemplate(characterType, "Second");
+    HeroTemplate defaultTemplate = new SimpleDummyCharacterTemplate(characterType, null);
+    HeroTemplate otherTemplate = new SimpleDummyCharacterTemplate(characterType, "Second");
     registry.register(defaultTemplate);
     registry.register(otherTemplate);
     ICharacterExternalsTemplate[] allSupportedTemplates = registry.getAllSupportedTemplates(characterType);

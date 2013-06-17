@@ -1,17 +1,17 @@
 package net.sf.anathema.character.impl.model;
 
-import net.sf.anathema.character.generic.template.ICharacterTemplate;
+import net.sf.anathema.character.generic.template.HeroTemplate;
 import net.sf.anathema.lib.workflow.wizard.selection.IDialogModelTemplate;
 
 public class CharacterStatisticsConfiguration implements IDialogModelTemplate {
 
-  private ICharacterTemplate template;
+  private HeroTemplate template;
 
-  public ICharacterTemplate getTemplate() {
+  public HeroTemplate getTemplate() {
     return template;
   }
 
-  public void setTemplate(ICharacterTemplate template) {
+  public void setTemplate(HeroTemplate template) {
     this.template = template;
   }
 }

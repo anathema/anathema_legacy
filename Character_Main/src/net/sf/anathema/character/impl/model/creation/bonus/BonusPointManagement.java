@@ -2,7 +2,7 @@ package net.sf.anathema.character.impl.model.creation.bonus;
 
 import net.sf.anathema.character.generic.additionalrules.IAdditionalRules;
 import net.sf.anathema.character.generic.additionaltemplate.IAdditionalModel;
-import net.sf.anathema.character.generic.template.ICharacterTemplate;
+import net.sf.anathema.character.generic.template.HeroTemplate;
 import net.sf.anathema.character.generic.template.creation.BonusPointCosts;
 import net.sf.anathema.character.generic.template.creation.ICreationPoints;
 import net.sf.anathema.character.generic.template.experience.CurrentRatingCosts;
@@ -59,14 +59,14 @@ public class BonusPointManagement implements IBonusPointManagement {
 
   public BonusPointManagement(ICharacter character) {
     this.character = character;
-    this.creationPoints = character.getCharacterTemplate().getCreationPoints();
+    this.creationPoints = character.getHeroTemplate().getCreationPoints();
     for (IAdditionalModel model : character.getExtendedConfiguration().getAdditionalModels()) {
       bonusPointCalculator.addAdditionalBonusPointCalculator(model.getBonusPointCalculator());
     }
     bonusAdditionalPools = new AdditionalBonusPointPoolManagement(character.getTraitModel(),
-            character.getCharacterTemplate().getAdditionalRules().getAdditionalBonusPointPools());
-    this.cost = character.getCharacterTemplate().getBonusPointCosts();
-    ICharacterTemplate characterTemplate = character.getCharacterTemplate();
+            character.getHeroTemplate().getAdditionalRules().getAdditionalBonusPointPools());
+    this.cost = character.getHeroTemplate().getBonusPointCosts();
+    HeroTemplate characterTemplate = character.getHeroTemplate();
     GenericCharacter characterAbstraction = GenericCharacterUtilities.createGenericCharacter(character);
     TraitMap traitConfiguration = character.getTraitModel();
     this.abilityCalculator =
@@ -171,7 +171,7 @@ public class BonusPointManagement implements IBonusPointManagement {
 
   @Override
   public IAdditionalSpendingModel getDefaultCharmModel() {
-    IAdditionalRules additionalRules = character.getCharacterTemplate().getAdditionalRules();
+    IAdditionalRules additionalRules = character.getHeroTemplate().getAdditionalRules();
     return new DefaultCharmModel(magicCalculator, magicAdditionalPools, creationPoints, additionalRules);
   }
 
@@ -205,7 +205,7 @@ public class BonusPointManagement implements IBonusPointManagement {
 
       @Override
       public boolean isExtensionRequired() {
-        IAdditionalRules additionalRules = character.getCharacterTemplate().getAdditionalRules();
+        IAdditionalRules additionalRules = character.getHeroTemplate().getAdditionalRules();
         return additionalRules != null && additionalRules.getAdditionalBonusPointPools().length > 0;
       }
 
@@ -253,7 +253,7 @@ public class BonusPointManagement implements IBonusPointManagement {
   }
 
   private void addCharmModels(List<IOverviewModel> models) {
-    if (!character.getCharacterTemplate().getMagicTemplate().getCharmTemplate().canLearnCharms()) {
+    if (!character.getHeroTemplate().getMagicTemplate().getCharmTemplate().canLearnCharms()) {
       return;
     }
     if (getFavoredCharmModel().getAlotment() > 0) {

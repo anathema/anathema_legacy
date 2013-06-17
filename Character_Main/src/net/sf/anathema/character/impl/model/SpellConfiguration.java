@@ -4,7 +4,7 @@ import net.sf.anathema.character.generic.impl.magic.SpellException;
 import net.sf.anathema.character.generic.impl.magic.persistence.ISpellCache;
 import net.sf.anathema.character.generic.magic.ISpell;
 import net.sf.anathema.character.generic.magic.spells.CircleType;
-import net.sf.anathema.character.generic.template.ICharacterTemplate;
+import net.sf.anathema.character.generic.template.HeroTemplate;
 import net.sf.anathema.character.generic.template.magic.ISpellMagicTemplate;
 import net.sf.anathema.character.model.IMagicLearnListener;
 import net.sf.anathema.character.model.ISpellConfiguration;
@@ -28,10 +28,10 @@ public class SpellConfiguration implements ISpellConfiguration {
   private final Map<CircleType, List<ISpell>> spellsByCircle = new HashMap<>();
   private final ICharmConfiguration charms;
   private final ISpellLearnStrategy strategy;
-  private final ICharacterTemplate characterTemplate;
+  private final HeroTemplate characterTemplate;
   private final ISpellMapper spellMapper;
 
-  public SpellConfiguration(ICharmConfiguration charms, ISpellLearnStrategy strategy, ICharacterTemplate template, ISpellCache cache) throws
+  public SpellConfiguration(ICharmConfiguration charms, ISpellLearnStrategy strategy, HeroTemplate template, ISpellCache cache) throws
           SpellException {
     this.charms = charms;
     this.strategy = strategy;

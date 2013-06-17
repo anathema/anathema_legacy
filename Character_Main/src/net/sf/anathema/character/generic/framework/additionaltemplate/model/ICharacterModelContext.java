@@ -28,7 +28,7 @@ public interface ICharacterModelContext {
 
   IGenericTraitCollection getTraitCollection();
 
-  ITraitContext getTraitContext();
+  TraitContext getTraitContext();
 
   IGenericSpecialtyContext getSpecialtyContext();
 

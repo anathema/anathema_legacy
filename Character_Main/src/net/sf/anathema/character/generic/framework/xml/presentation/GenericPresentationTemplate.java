@@ -1,6 +1,6 @@
 package net.sf.anathema.character.generic.framework.xml.presentation;
 
-import net.sf.anathema.character.generic.template.ICharacterTemplate;
+import net.sf.anathema.character.generic.template.HeroTemplate;
 import net.sf.anathema.character.generic.template.ITemplateType;
 import net.sf.anathema.character.generic.template.presentation.IPresentationProperties;
 import net.sf.anathema.lib.file.RelativePath;
@@ -49,7 +49,7 @@ public class GenericPresentationTemplate extends ReflectionCloneableObject<Gener
     this.templateType = templateType;
   }
 
-  public void setParentTemplate(ICharacterTemplate template) {
+  public void setParentTemplate(HeroTemplate template) {
     this.templateType = template.getTemplateType();
   }
 

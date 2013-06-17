@@ -2,7 +2,7 @@ package net.sf.anathema.character.presenter;
 
 import net.sf.anathema.character.generic.caste.ICasteType;
 import net.sf.anathema.character.generic.framework.additionaltemplate.listening.DedicatedCharacterChangeAdapter;
-import net.sf.anathema.character.generic.template.ICharacterTemplate;
+import net.sf.anathema.character.generic.template.HeroTemplate;
 import net.sf.anathema.character.main.concept.model.CharacterConceptFetcher;
 import net.sf.anathema.character.main.experience.model.ExperienceModelFetcher;
 import net.sf.anathema.character.model.ICharacter;
@@ -28,10 +28,10 @@ public class CastePresenter {
   }
 
   public void initPresentation() {
-    ICharacterTemplate template = character.getCharacterTemplate();
+    HeroTemplate template = character.getHeroTemplate();
     String casteLabelResourceKey = template.getPresentationProperties().getCasteLabelResource();
     ObjectUi<Object> casteUi = new CasteSelectObjectUi(resources, template.getPresentationProperties());
-    ICasteType[] casteTypes = template.getCasteCollection().getAllCasteTypes(character.getCharacterTemplate().getTemplateType());
+    ICasteType[] casteTypes = template.getCasteCollection().getAllCasteTypes(character.getHeroTemplate().getTemplateType());
     final IObjectSelectionView<ICasteType> casteView =
             view.addObjectSelectionView(resources.getString(casteLabelResourceKey), casteTypes, new ObjectUiListCellRenderer(casteUi), false);
     final ITypedDescription<ICasteType> caste = CharacterConceptFetcher.fetch(character).getCaste();

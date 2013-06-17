@@ -4,16 +4,16 @@ import net.sf.anathema.character.generic.magic.ICharm;
 import net.sf.anathema.character.generic.magic.ISpell;
 import net.sf.anathema.character.generic.magic.spells.CircleType;
 import net.sf.anathema.character.generic.magic.spells.ICircleTypeVisitor;
-import net.sf.anathema.character.generic.template.ICharacterTemplate;
+import net.sf.anathema.character.generic.template.HeroTemplate;
 import net.sf.anathema.character.generic.template.magic.ISpellMagicTemplate;
 
 public class SpellMagicTemplate implements ISpellMagicTemplate {
 
   private final CircleType[] sorceryCircles;
   private final CircleType[] necromancyCircles;
-  private final ICharacterTemplate template;
+  private final HeroTemplate template;
 
-  public SpellMagicTemplate(CircleType[] sorceryCircles, CircleType[] necromancyCircles, ICharacterTemplate template) {
+  public SpellMagicTemplate(CircleType[] sorceryCircles, CircleType[] necromancyCircles, HeroTemplate template) {
     this.sorceryCircles = sorceryCircles;
     this.necromancyCircles = necromancyCircles;
     this.template = template;

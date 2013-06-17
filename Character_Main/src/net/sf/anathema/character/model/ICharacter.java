@@ -1,7 +1,7 @@
 package net.sf.anathema.character.model;
 
 import net.sf.anathema.character.generic.framework.additionaltemplate.model.ICharacterModelContext;
-import net.sf.anathema.character.generic.template.ICharacterTemplate;
+import net.sf.anathema.character.generic.template.HeroTemplate;
 import net.sf.anathema.character.generic.type.ICharacterType;
 import net.sf.anathema.character.main.abilities.AbilityModel;
 import net.sf.anathema.character.main.attributes.model.temporary.AttributeModel;
@@ -35,7 +35,7 @@ public interface ICharacter extends IItemData, Hero {
 
   IExtendedConfiguration getExtendedConfiguration();
 
-  ICharacterTemplate getCharacterTemplate();
+  HeroTemplate getHeroTemplate();
 
   ICharacterType getCharacterType();
 }

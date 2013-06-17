@@ -11,7 +11,7 @@ import net.sf.anathema.character.generic.impl.template.magic.NullCharmSet;
 import net.sf.anathema.character.generic.impl.traits.TraitTemplateCollection;
 import net.sf.anathema.character.generic.magic.IMagic;
 import net.sf.anathema.character.generic.magic.charms.MartialArtsLevel;
-import net.sf.anathema.character.generic.template.ICharacterTemplate;
+import net.sf.anathema.character.generic.template.HeroTemplate;
 import net.sf.anathema.character.generic.template.ITemplateType;
 import net.sf.anathema.character.generic.template.ITraitTemplateCollection;
 import net.sf.anathema.character.generic.template.TemplateType;
@@ -37,7 +37,7 @@ import net.sf.anathema.lib.exception.NotYetImplementedException;
 import java.util.ArrayList;
 import java.util.List;
 
-public class DummyCharacterTemplate implements ICharacterTemplate {
+public class DummyCharacterTemplate implements HeroTemplate {
 
   private static final String DUMMYGROUP = "DummyGroup";
   private final ITraitTemplateCollection traitTemplateCollection = new TraitTemplateCollection(new DummyTraitTemplateFactory());

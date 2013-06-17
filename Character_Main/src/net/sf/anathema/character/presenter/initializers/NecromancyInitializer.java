@@ -22,7 +22,7 @@ public class NecromancyInitializer implements CharacterModelInitializer {
 
   @Override
   public void initialize(SectionView sectionView, ICharacter character, Resources resources) {
-    boolean canLeanNecromancy = character.getCharacterTemplate().getMagicTemplate().getSpellMagic().canLearnNecromancy();
+    boolean canLeanNecromancy = character.getHeroTemplate().getMagicTemplate().getSpellMagic().canLearnNecromancy();
     if (canLeanNecromancy) {
       String titleKey = "CardView.CharmConfiguration.Necromancy.Title";
       SpellModel spellModel = new NecromancyModel(character);

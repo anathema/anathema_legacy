@@ -15,6 +15,6 @@ public abstract class SpellModel {
   public abstract CircleType[] getCircles();
 
   protected final ISpellMagicTemplate getSpellMagicTemplate() {
-    return character.getCharacterTemplate().getMagicTemplate().getSpellMagic();
+    return character.getHeroTemplate().getMagicTemplate().getSpellMagic();
   }
 }

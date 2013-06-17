@@ -1,7 +1,7 @@
 package net.sf.anathema.character.main.attributes.model.temporary;
 
 import net.sf.anathema.character.generic.framework.additionaltemplate.model.ICharacterModelContext;
-import net.sf.anathema.character.generic.template.ICharacterTemplate;
+import net.sf.anathema.character.generic.template.HeroTemplate;
 import net.sf.anathema.character.generic.template.ITraitTemplateFactory;
 import net.sf.anathema.character.generic.traits.groups.IIdentifiedCasteTraitTypeGroup;
 import net.sf.anathema.character.generic.traits.groups.IIdentifiedTraitTypeGroup;
@@ -19,11 +19,11 @@ import net.sf.anathema.character.main.traits.model.TraitModel;
 
 public class DefaultAttributeModel extends DefaultTraitMap implements AttributeModel {
 
-  private ICharacterTemplate template;
+  private HeroTemplate template;
   private ICharacterModelContext modelContext;
   private final IIdentifiedCasteTraitTypeGroup[] attributeTraitGroups;
 
-  public DefaultAttributeModel(ICharacterTemplate template, ICharacterModelContext modelContext, TraitModel traitModel) {
+  public DefaultAttributeModel(HeroTemplate template, ICharacterModelContext modelContext, TraitModel traitModel) {
     this.template = template;
     this.modelContext = modelContext;
     this.attributeTraitGroups = new AttributeTypeGroupFactory().createTraitGroups(template.getCasteCollection(), template.getAttributeGroups());

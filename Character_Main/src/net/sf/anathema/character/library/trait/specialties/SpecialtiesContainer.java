@@ -1,16 +1,16 @@
 package net.sf.anathema.character.library.trait.specialties;
 
 import net.sf.anathema.character.generic.framework.ITraitReference;
-import net.sf.anathema.character.generic.framework.additionaltemplate.model.ITraitContext;
+import net.sf.anathema.character.generic.framework.additionaltemplate.model.TraitContext;
 import net.sf.anathema.character.library.trait.subtrait.AbstractSubTraitContainer;
 
 public class SpecialtiesContainer extends AbstractSubTraitContainer {
 
   public static final int ALLOWED_SPECIALTY_COUNT = 3;
   private final ITraitReference reference;
-  private final ITraitContext traitContext;
+  private final TraitContext traitContext;
 
-  public SpecialtiesContainer(ITraitReference reference, ITraitContext traitContext) {
+  public SpecialtiesContainer(ITraitReference reference, TraitContext traitContext) {
     this.reference = reference;
     this.traitContext = traitContext;
   }

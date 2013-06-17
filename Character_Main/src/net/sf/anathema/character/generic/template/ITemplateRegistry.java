@@ -6,11 +6,11 @@ public interface ITemplateRegistry {
 
   ICharacterExternalsTemplate[] getAllSupportedTemplates(ICharacterType type);
 
-  void register(ICharacterTemplate template);
+  void register(HeroTemplate template);
 
-  ICharacterTemplate getDefaultTemplate(ICharacterType type);
+  HeroTemplate getDefaultTemplate(ICharacterType type);
 
-  ICharacterTemplate getTemplate(ITemplateType type);
+  HeroTemplate getTemplate(ITemplateType type);
 
-  ICharacterTemplate getTemplate(ICharacterExternalsTemplate template);
+  HeroTemplate getTemplate(ICharacterExternalsTemplate template);
 }
