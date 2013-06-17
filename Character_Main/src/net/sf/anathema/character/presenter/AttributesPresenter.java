@@ -1,6 +1,7 @@
 package net.sf.anathema.character.presenter;
 
 import net.sf.anathema.character.generic.traits.groups.IIdentifiedTraitTypeGroup;
+import net.sf.anathema.character.main.attributes.AttributeModelFetcher;
 import net.sf.anathema.character.model.ICharacter;
 import net.sf.anathema.character.view.ColumnCount;
 import net.sf.anathema.character.view.IGroupedFavorableTraitConfigurationView;
@@ -11,7 +12,7 @@ public class AttributesPresenter {
   private final FavorableTraitConfigurationPresenter presenter;
 
   public AttributesPresenter(ICharacter character, Resources resources, IGroupedFavorableTraitConfigurationView view) {
-    IIdentifiedTraitTypeGroup[] traitTypeGroups = character.getAttributes().getAttributeTypeGroups();
+    IIdentifiedTraitTypeGroup[] traitTypeGroups = AttributeModelFetcher.fetch(character).getAttributeTypeGroups();
     view.initGui(new ColumnCount(1));
     this.presenter = new FavorableTraitConfigurationPresenter(traitTypeGroups, character, view, resources);
   }

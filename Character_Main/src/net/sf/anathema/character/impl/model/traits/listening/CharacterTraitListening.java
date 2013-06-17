@@ -11,6 +11,7 @@ import net.sf.anathema.character.library.trait.specialties.Specialty;
 import net.sf.anathema.character.library.trait.subtrait.ISpecialtyListener;
 import net.sf.anathema.character.main.abilities.AbilityModel;
 import net.sf.anathema.character.main.abilities.AbilityModelFetcher;
+import net.sf.anathema.character.main.attributes.AttributeModelFetcher;
 import net.sf.anathema.character.main.traits.model.TraitMap;
 import net.sf.anathema.character.model.ICharacter;
 
@@ -67,7 +68,7 @@ public class CharacterTraitListening {
   }
 
   private void initAttributeListening() {
-    for (Trait attribute : character.getAttributes().getAll()) {
+    for (Trait attribute : AttributeModelFetcher.fetch(character).getAll()) {
       listening.addTraitListening(attribute);
     }
   }

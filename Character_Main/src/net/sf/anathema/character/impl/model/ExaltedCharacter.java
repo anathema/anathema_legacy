@@ -17,8 +17,6 @@ import net.sf.anathema.character.impl.model.charm.ComboConfiguration;
 import net.sf.anathema.character.impl.model.context.CharacterModelContext;
 import net.sf.anathema.character.impl.model.statistics.ExtendedConfiguration;
 import net.sf.anathema.character.impl.model.traits.listening.CharacterTraitListening;
-import net.sf.anathema.character.main.attributes.AttributeModel;
-import net.sf.anathema.character.main.attributes.AttributeModelFetcher;
 import net.sf.anathema.character.main.description.model.CharacterDescription;
 import net.sf.anathema.character.main.description.model.CharacterDescriptionFetcher;
 import net.sf.anathema.character.main.essencepool.model.EssencePoolModel;
@@ -149,11 +147,6 @@ public class ExaltedCharacter implements ICharacter {
 
   private void initCharmListening(ICharmConfiguration charmConfiguration) {
     charmConfiguration.addCharmLearnListener(new CharacterChangeCharmListener(context.getCharacterListening()));
-  }
-
-  @Override
-  public AttributeModel getAttributes() {
-    return AttributeModelFetcher.fetch(hero);
   }
 
   public EssencePoolModel getEssencePool() {

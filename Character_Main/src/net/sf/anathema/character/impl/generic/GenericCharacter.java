@@ -28,6 +28,7 @@ import net.sf.anathema.character.library.trait.specialties.ISpecialtiesConfigura
 import net.sf.anathema.character.library.trait.specialties.Specialty;
 import net.sf.anathema.character.library.trait.subtrait.ISpecialtyListener;
 import net.sf.anathema.character.main.abilities.AbilityModelFetcher;
+import net.sf.anathema.character.main.attributes.AttributeModelFetcher;
 import net.sf.anathema.character.main.concept.model.CharacterConcept;
 import net.sf.anathema.character.main.concept.model.CharacterConceptFetcher;
 import net.sf.anathema.character.main.description.model.CharacterDescriptionFetcher;
@@ -273,7 +274,7 @@ public class GenericCharacter implements IGenericCharacter {
 
   @Override
   public IIdentifiedTraitTypeGroup[] getAttributeTypeGroups() {
-    return character.getAttributes().getAttributeTypeGroups();
+    return AttributeModelFetcher.fetch(character).getAttributeTypeGroups();
   }
 
   @Override
