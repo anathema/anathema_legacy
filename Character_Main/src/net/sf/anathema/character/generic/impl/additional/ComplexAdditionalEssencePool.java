@@ -4,9 +4,9 @@ import com.eteks.parser.CompilationException;
 import com.eteks.parser.CompiledExpression;
 import com.eteks.parser.ExpressionParser;
 import com.eteks.parser.IntegerInterpreter;
-import net.sf.anathema.character.generic.character.IGenericTraitCollection;
 import net.sf.anathema.character.generic.impl.util.AnathemaExpressionSyntax;
 import net.sf.anathema.character.generic.impl.util.ComplexPoolExpressionParameter;
+import net.sf.anathema.character.main.traits.model.TraitMap;
 import net.sf.anathema.lib.util.Identifier;
 
 import java.util.HashMap;
@@ -46,11 +46,11 @@ public class ComplexAdditionalEssencePool implements Identifier {
     override.put(value, pool);
   }
 
-  public int getPool(IGenericTraitCollection traitCollection, int x) {
+  public int getPool(TraitMap traitMap, int x) {
     if (override.containsKey(x)) {
       return override.get(x);
     }
-    parameter.setTraitCollection(traitCollection);
+    parameter.setTraitCollection(traitMap);
     parameter.setParameter(x);
     return (Integer) expression.computeExpression(new IntegerInterpreter());
   }

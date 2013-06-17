@@ -58,7 +58,7 @@ public class ExaltedCharacter implements ICharacter {
             template.getBaseHealthProviders());
     this.charms = new CharmConfiguration(this, health, context, generics.getCharacterTypes(), generics.getTemplateRegistry(), generics.getCharmProvider());
     initCharmListening(charms);
-    this.essencePool = new EssencePoolModelImpl(template, context);
+    this.essencePool = new EssencePoolModelImpl(TraitModelFetcher.fetch(hero), template, context);
     charms.initListening();
     this.combos = new ComboConfiguration(charms);
     combos.addComboConfigurationListener(new CharacterChangeComboListener(context.getCharacterListening()));

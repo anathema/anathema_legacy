@@ -6,6 +6,7 @@ import net.sf.anathema.character.generic.additionalrules.IAdditionalRules;
 import net.sf.anathema.character.generic.framework.additionaltemplate.model.ICharacterModelContext;
 import net.sf.anathema.character.generic.template.HeroTemplate;
 import net.sf.anathema.character.generic.template.essence.IEssenceTemplate;
+import net.sf.anathema.character.main.traits.model.TraitMap;
 import net.sf.anathema.lib.control.IChangeListener;
 import net.sf.anathema.lib.util.IdentifiedInteger;
 
@@ -15,13 +16,13 @@ public class EssencePoolModelImpl implements EssencePoolModel {
   private IAdditionalRules additionalRules;
   private IEssenceTemplate essenceTemplate;
 
-  public EssencePoolModelImpl(HeroTemplate template, ICharacterModelContext context) {
+  public EssencePoolModelImpl(TraitMap traitMap, HeroTemplate template, ICharacterModelContext context) {
     this.additionalRules = template.getAdditionalRules();
     this.essenceTemplate = template.getEssenceTemplate();
     if (!isEssenceUser()) {
       return;
     }
-    poolStrategy = new EssencePoolStrategyImpl(essenceTemplate, context, context.getTraitCollection(), context.getMagicCollection(),
+    poolStrategy = new EssencePoolStrategyImpl(essenceTemplate, context, traitMap, context.getMagicCollection(),
             context.getCharmContext().getCharmConfiguration(), additionalRules);
   }
 
