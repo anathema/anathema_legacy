@@ -4,7 +4,6 @@ import net.sf.anathema.character.generic.additionalrules.IAdditionalEssencePool;
 import net.sf.anathema.character.generic.additionalrules.IAdditionalRules;
 import net.sf.anathema.character.generic.character.IMagicCollection;
 import net.sf.anathema.character.generic.framework.additionaltemplate.listening.GlobalCharacterChangeAdapter;
-import net.sf.anathema.character.generic.framework.additionaltemplate.model.ICharacterModelContext;
 import net.sf.anathema.character.generic.framework.essence.IEssencePoolModifier;
 import net.sf.anathema.character.generic.magic.ICharm;
 import net.sf.anathema.character.generic.magic.IExtendedCharmData;
@@ -15,6 +14,7 @@ import net.sf.anathema.character.generic.template.magic.IGenericCharmConfigurati
 import net.sf.anathema.character.generic.traits.GenericTrait;
 import net.sf.anathema.character.generic.traits.types.OtherTraitType;
 import net.sf.anathema.character.generic.traits.types.VirtueType;
+import net.sf.anathema.character.main.model.InitializationContext;
 import net.sf.anathema.character.main.traits.model.TraitMap;
 import net.sf.anathema.lib.control.IChangeListener;
 import net.sf.anathema.lib.util.IdentifiedInteger;
@@ -33,9 +33,9 @@ public class EssencePoolStrategyImpl implements EssencePoolStrategy {
   private final TraitMap traitMap;
   private final IMagicCollection magicCollection;
   private final IGenericCharmConfiguration charmConfiguration;
-  private final ICharacterModelContext context;
+  private final InitializationContext context;
 
-  public EssencePoolStrategyImpl(IEssenceTemplate essenceTemplate, ICharacterModelContext context, TraitMap traitMap,
+  public EssencePoolStrategyImpl(IEssenceTemplate essenceTemplate, InitializationContext context, TraitMap traitMap,
                                  IMagicCollection magicCollection, IGenericCharmConfiguration charmConfiguration, IAdditionalRules additionalRules) {
     this.traitMap = traitMap;
     this.magicCollection = magicCollection;

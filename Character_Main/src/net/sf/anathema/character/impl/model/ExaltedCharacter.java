@@ -8,8 +8,6 @@ import net.sf.anathema.character.generic.magic.ICharm;
 import net.sf.anathema.character.generic.template.HeroTemplate;
 import net.sf.anathema.character.generic.template.additional.IAdditionalTemplate;
 import net.sf.anathema.character.generic.template.additional.IGlobalAdditionalTemplate;
-import net.sf.anathema.character.generic.traits.GenericTrait;
-import net.sf.anathema.character.generic.traits.TraitType;
 import net.sf.anathema.character.generic.type.ICharacterType;
 import net.sf.anathema.character.impl.generic.GenericCharacter;
 import net.sf.anathema.character.impl.model.charm.CharmConfiguration;
@@ -19,8 +17,6 @@ import net.sf.anathema.character.impl.model.statistics.ExtendedConfiguration;
 import net.sf.anathema.character.impl.model.traits.listening.CharacterTraitListening;
 import net.sf.anathema.character.main.description.model.CharacterDescription;
 import net.sf.anathema.character.main.description.model.CharacterDescriptionFetcher;
-import net.sf.anathema.character.main.essencepool.model.EssencePoolModel;
-import net.sf.anathema.character.main.essencepool.model.EssencePoolModelImpl;
 import net.sf.anathema.character.main.model.DefaultHero;
 import net.sf.anathema.character.main.model.HeroModel;
 import net.sf.anathema.character.main.model.ModelInitializationContext;
@@ -42,23 +38,25 @@ public class ExaltedCharacter implements ICharacter {
   private final CharacterChangeManagement management = new CharacterChangeManagement();
   private final CharacterModelContext context = new CharacterModelContext(new GenericCharacter(this), this);
   private final HeroTemplate heroTemplate;
-  private final EssencePoolModel essencePool;
   private final CharmConfiguration charms;
   private final IComboConfiguration combos;
   private final ISpellConfiguration spells;
   private final IHealthConfiguration health;
   private final ExtendedConfiguration extendedConfiguration = new ExtendedConfiguration(context);
   private final DefaultHero hero = new DefaultHero();
+  private final ModelInitializationContext initializationContext;
 
   public ExaltedCharacter(HeroTemplate template, ICharacterGenerics generics) {
     this.heroTemplate = template;
+    this.initializationContext = new ModelInitializationContext(context, this, heroTemplate);
     addModels(generics);
+
     new CharacterTraitListening(this, context.getCharacterListening()).initListening();
-    this.health = new HealthConfiguration(getTraitArray(template.getToughnessControllingTraitTypes()), TraitModelFetcher.fetch(hero),
-            template.getBaseHealthProviders());
-    this.charms = new CharmConfiguration(this, health, context, generics.getCharacterTypes(), generics.getTemplateRegistry(), generics.getCharmProvider());
-    initCharmListening(charms);
-    this.essencePool = new EssencePoolModelImpl(TraitModelFetcher.fetch(hero), template, context);
+    this.health = new HealthConfiguration(TraitModelFetcher.fetch(hero).getTraits(template.getToughnessControllingTraitTypes()),
+            TraitModelFetcher.fetch(hero), template.getBaseHealthProviders());
+    this.charms =
+            new CharmConfiguration(this, health, context, generics.getCharacterTypes(), generics.getTemplateRegistry(), generics.getCharmProvider());
+    charms.addCharmLearnListener(new CharacterChangeCharmListener(context.getCharacterListening()));
     charms.initListening();
     this.combos = new ComboConfiguration(charms);
     combos.addComboConfigurationListener(new CharacterChangeComboListener(context.getCharacterListening()));
@@ -84,7 +82,6 @@ public class ExaltedCharacter implements ICharacter {
   }
 
   private void addModels(ICharacterGenerics generics) {
-    ModelInitializationContext initializationContext = new ModelInitializationContext(context, this, heroTemplate);
     CharacterModelInitializer initializer = new CharacterModelInitializer(initializationContext, heroTemplate);
     initializer.addModels(generics, hero);
   }
@@ -134,22 +131,6 @@ public class ExaltedCharacter implements ICharacter {
   @Override
   public void setClean() {
     management.setClean();
-  }
-
-  private GenericTrait[] getTraitArray(TraitType[] types) {
-    GenericTrait[] traits = new GenericTrait[types.length];
-    for (int i = 0; i != types.length; i++) {
-      traits[i] = TraitModelFetcher.fetch(this).getTrait(types[i]);
-    }
-    return traits;
-  }
-
-  private void initCharmListening(ICharmConfiguration charmConfiguration) {
-    charmConfiguration.addCharmLearnListener(new CharacterChangeCharmListener(context.getCharacterListening()));
-  }
-
-  public EssencePoolModel getEssencePool() {
-    return essencePool;
   }
 
   public ICharmConfiguration getCharms() {

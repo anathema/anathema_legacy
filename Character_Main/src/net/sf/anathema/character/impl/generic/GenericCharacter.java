@@ -32,6 +32,7 @@ import net.sf.anathema.character.main.attributes.AttributeModelFetcher;
 import net.sf.anathema.character.main.concept.model.CharacterConcept;
 import net.sf.anathema.character.main.concept.model.CharacterConceptFetcher;
 import net.sf.anathema.character.main.description.model.CharacterDescriptionFetcher;
+import net.sf.anathema.character.main.essencepool.model.EssencePoolModelFetcher;
 import net.sf.anathema.character.main.experience.model.ExperienceModelFetcher;
 import net.sf.anathema.character.main.traits.model.GenericTraitCollectionFacade;
 import net.sf.anathema.character.main.traits.model.TraitMap;
@@ -146,7 +147,7 @@ public class GenericCharacter implements IGenericCharacter {
   @Override
   public String getPeripheralPool() {
     try {
-      return getTemplate().getEssenceTemplate().isEssenceUser() ? character.getEssencePool().getPeripheralPool() : null;
+      return getTemplate().getEssenceTemplate().isEssenceUser() ? EssencePoolModelFetcher.fetch(character).getPeripheralPool() : null;
     } catch (IllegalArgumentException e) {
       return null;
     }
@@ -154,13 +155,13 @@ public class GenericCharacter implements IGenericCharacter {
 
   @Override
   public int getPeripheralPoolValue() {
-    return getTemplate().getEssenceTemplate().isEssenceUser() ? character.getEssencePool().getPeripheralPoolValue() : 0;
+    return getTemplate().getEssenceTemplate().isEssenceUser() ? EssencePoolModelFetcher.fetch(character).getPeripheralPoolValue() : 0;
   }
 
   @Override
   public String getPersonalPool() {
     try {
-      return getTemplate().getEssenceTemplate().isEssenceUser() ? character.getEssencePool().getPersonalPool() : null;
+      return getTemplate().getEssenceTemplate().isEssenceUser() ? EssencePoolModelFetcher.fetch(character).getPersonalPool() : null;
     } catch (ContractFailedException e) {
       return null;
     }
@@ -168,18 +169,18 @@ public class GenericCharacter implements IGenericCharacter {
 
   @Override
   public int getPersonalPoolValue() {
-    return getTemplate().getEssenceTemplate().isEssenceUser() ? character.getEssencePool().getPersonalPoolValue() : 0;
+    return getTemplate().getEssenceTemplate().isEssenceUser() ? EssencePoolModelFetcher.fetch(character).getPersonalPoolValue() : 0;
   }
 
   @Override
   public int getOverdrivePoolValue() {
-    return getTemplate().getEssenceTemplate().isEssenceUser() ? character.getEssencePool().getOverdrivePoolValue() : 0;
+    return getTemplate().getEssenceTemplate().isEssenceUser() ? EssencePoolModelFetcher.fetch(character).getOverdrivePoolValue() : 0;
   }
 
   @Override
   public IdentifiedInteger[] getComplexPools() {
     if (getTemplate().getEssenceTemplate().isEssenceUser()) {
-      return character.getEssencePool().getComplexPools();
+      return EssencePoolModelFetcher.fetch(character).getComplexPools();
     } else {
       return new IdentifiedInteger[0];
     }
@@ -187,7 +188,7 @@ public class GenericCharacter implements IGenericCharacter {
 
   @Override
   public int getAttunedPoolValue() {
-    return getTemplate().getEssenceTemplate().isEssenceUser() ? character.getEssencePool().getAttunedPoolValue() : 0;
+    return getTemplate().getEssenceTemplate().isEssenceUser() ? EssencePoolModelFetcher.fetch(character).getAttunedPoolValue() : 0;
   }
 
   @Override

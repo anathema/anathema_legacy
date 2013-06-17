@@ -10,17 +10,17 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-public class DefaultTraitMap implements TraitMap{
+public class DefaultTraitMap implements TraitMap {
 
   private final Map<TraitType, Trait> traitsByType = new HashMap<>();
 
-  public final void addTraits(Trait... traits){
-    for (Trait trait: traits) {
+  public final void addTraits(Trait... traits) {
+    for (Trait trait : traits) {
       addSingleTrait(trait);
     }
   }
 
-  private void addSingleTrait(Trait trait){
+  private void addSingleTrait(Trait trait) {
     Preconditions.checkArgument(!contains(trait.getType()), "Trait of type already contained " + trait.getType());
     traitsByType.put(trait.getType(), trait);
   }

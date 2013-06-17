@@ -3,25 +3,37 @@ package net.sf.anathema.character.main.essencepool.model;
 import com.google.common.base.Preconditions;
 import net.sf.anathema.character.generic.additionalrules.IAdditionalEssencePool;
 import net.sf.anathema.character.generic.additionalrules.IAdditionalRules;
-import net.sf.anathema.character.generic.framework.additionaltemplate.model.ICharacterModelContext;
 import net.sf.anathema.character.generic.template.HeroTemplate;
 import net.sf.anathema.character.generic.template.essence.IEssenceTemplate;
+import net.sf.anathema.character.main.model.Hero;
+import net.sf.anathema.character.main.model.HeroModel;
+import net.sf.anathema.character.main.model.InitializationContext;
 import net.sf.anathema.character.main.traits.model.TraitMap;
+import net.sf.anathema.character.main.traits.model.TraitModelFetcher;
 import net.sf.anathema.lib.control.IChangeListener;
 import net.sf.anathema.lib.util.IdentifiedInteger;
+import net.sf.anathema.lib.util.Identifier;
 
-public class EssencePoolModelImpl implements EssencePoolModel {
+public class EssencePoolModelImpl implements EssencePoolModel, HeroModel {
 
   private EssencePoolStrategy poolStrategy = null;
   private IAdditionalRules additionalRules;
   private IEssenceTemplate essenceTemplate;
 
-  public EssencePoolModelImpl(TraitMap traitMap, HeroTemplate template, ICharacterModelContext context) {
+  @Override
+  public Identifier getId() {
+    return ID;
+  }
+
+  @Override
+  public void initialize(InitializationContext context, Hero hero) {
+    HeroTemplate template = context.getTemplate();
     this.additionalRules = template.getAdditionalRules();
     this.essenceTemplate = template.getEssenceTemplate();
     if (!isEssenceUser()) {
       return;
     }
+    TraitMap traitMap = TraitModelFetcher.fetch(hero);
     poolStrategy = new EssencePoolStrategyImpl(essenceTemplate, context, traitMap, context.getMagicCollection(),
             context.getCharmContext().getCharmConfiguration(), additionalRules);
   }
