@@ -1,4 +1,4 @@
-package net.sf.anathema.character.main.essencepool.model;
+package net.sf.anathema.hero.othertraits.model.pool;
 
 import net.sf.anathema.lib.control.IChangeListener;
 import net.sf.anathema.lib.util.IdentifiedInteger;

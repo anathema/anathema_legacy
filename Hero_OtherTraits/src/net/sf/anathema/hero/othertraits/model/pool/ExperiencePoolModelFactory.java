@@ -1,5 +1,6 @@
-package net.sf.anathema.character.main.essencepool.model;
+package net.sf.anathema.hero.othertraits.model.pool;
 
+import net.sf.anathema.character.main.essencepool.EssencePoolModel;
 import net.sf.anathema.character.main.model.CharacterModelAutoCollector;
 import net.sf.anathema.character.main.model.HeroModelFactory;
 import net.sf.anathema.character.main.model.initialization.SimpleModelTreeEntry;

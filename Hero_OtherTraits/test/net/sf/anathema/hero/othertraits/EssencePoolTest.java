@@ -1,21 +1,19 @@
-package net.sf.anathema.character.main.item;
+package net.sf.anathema.hero.othertraits;
 
 import net.sf.anathema.character.generic.framework.xml.essence.GenericEssenceTemplate;
 import net.sf.anathema.character.generic.traits.types.OtherTraitType;
 import net.sf.anathema.character.generic.traits.types.VirtueType;
 import net.sf.anathema.character.impl.generic.GenericCharacter;
-import net.sf.anathema.character.main.essencepool.model.EssencePoolModelFetcher;
-import net.sf.anathema.character.main.essencepool.model.EssencePoolModelImpl;
-import net.sf.anathema.character.main.model.Hero;
+import net.sf.anathema.character.main.essencepool.EssencePoolModelFetcher;
 import net.sf.anathema.character.main.model.InitializationContext;
 import net.sf.anathema.character.main.model.ModelInitializationContext;
 import net.sf.anathema.character.main.testing.dummy.DummyCharacterModelContext;
 import net.sf.anathema.character.main.testing.dummy.DummyHero;
 import net.sf.anathema.character.main.testing.dummy.template.DummyHeroTemplate;
 import net.sf.anathema.character.main.testing.dummy.trait.DummyTrait;
-import net.sf.anathema.character.main.traits.model.DefaultTraitMap;
 import net.sf.anathema.character.main.traits.model.TraitModelImpl;
 import net.sf.anathema.character.model.ICharacter;
+import net.sf.anathema.hero.othertraits.model.pool.EssencePoolModelImpl;
 import org.junit.Before;
 import org.junit.Test;
 
@@ -25,7 +23,7 @@ import static org.junit.Assert.assertThat;
 import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.when;
 
-public class GenericCharacterTest {
+public class EssencePoolTest {
   ICharacter statistics = mock(ICharacter.class);
 
   @Before

@@ -1,4 +1,4 @@
-package net.sf.anathema.character.main.essencepool.model;
+package net.sf.anathema.character.main.essencepool;
 
 import net.sf.anathema.character.main.model.Hero;
 

@@ -1,10 +1,11 @@
-package net.sf.anathema.character.main.essencepool.model;
+package net.sf.anathema.hero.othertraits.model.pool;
 
 import com.google.common.base.Preconditions;
 import net.sf.anathema.character.generic.additionalrules.IAdditionalEssencePool;
 import net.sf.anathema.character.generic.additionalrules.IAdditionalRules;
 import net.sf.anathema.character.generic.template.HeroTemplate;
 import net.sf.anathema.character.generic.template.essence.IEssenceTemplate;
+import net.sf.anathema.character.main.essencepool.EssencePoolModel;
 import net.sf.anathema.character.main.model.Hero;
 import net.sf.anathema.character.main.model.HeroModel;
 import net.sf.anathema.character.main.model.InitializationContext;

@@ -32,7 +32,7 @@ import net.sf.anathema.character.main.attributes.AttributeModelFetcher;
 import net.sf.anathema.character.main.concept.model.CharacterConcept;
 import net.sf.anathema.character.main.concept.model.CharacterConceptFetcher;
 import net.sf.anathema.character.main.description.model.CharacterDescriptionFetcher;
-import net.sf.anathema.character.main.essencepool.model.EssencePoolModelFetcher;
+import net.sf.anathema.character.main.essencepool.EssencePoolModelFetcher;
 import net.sf.anathema.character.main.experience.model.ExperienceModelFetcher;
 import net.sf.anathema.character.main.traits.model.GenericTraitCollectionFacade;
 import net.sf.anathema.character.main.traits.model.TraitMap;

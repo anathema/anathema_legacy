@@ -1,4 +1,4 @@
-package net.sf.anathema.character.main.essencepool.model;
+package net.sf.anathema.hero.othertraits.model.pool;
 
 import net.sf.anathema.character.generic.additionalrules.IAdditionalEssencePool;
 import net.sf.anathema.character.generic.additionalrules.IAdditionalRules;

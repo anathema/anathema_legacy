@@ -1,7 +1,7 @@
 package net.sf.anathema.character.presenter;
 
 import net.sf.anathema.character.generic.traits.types.OtherTraitType;
-import net.sf.anathema.character.main.essencepool.model.EssencePoolModelFetcher;
+import net.sf.anathema.character.main.essencepool.EssencePoolModelFetcher;
 import net.sf.anathema.character.main.traits.model.TraitMap;
 import net.sf.anathema.character.main.traits.model.TraitModelFetcher;
 import net.sf.anathema.character.model.ICharacter;
