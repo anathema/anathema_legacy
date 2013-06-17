@@ -6,6 +6,7 @@ import net.sf.anathema.interaction.Tool;
 import net.sf.anathema.lib.file.RelativePath;
 import net.sf.anathema.lib.gui.ConfigurableSwingUI;
 import net.sf.anathema.lib.gui.list.ComponentEnablingListSelectionListener;
+import net.sf.anathema.lib.gui.list.LegalityCheckListCellRenderer;
 import net.sf.anathema.lib.gui.ui.ObjectUiListCellRenderer;
 import net.sf.anathema.lib.util.Identifier;
 import net.sf.anathema.swing.interaction.ActionInteraction;
@@ -39,7 +40,7 @@ public class MagicLearnView implements IMagicLearnView {
   private final List<JButton> endButtons = new ArrayList<>();
 
   public void init(final IMagicLearnProperties properties) {
-    learnOptionsList.setCellRenderer(properties.getAvailableMagicRenderer());
+    learnOptionsList.setCellRenderer(new LegalityCheckListCellRenderer(properties.getLegalityCheck(), properties.getAvailableMagicRenderer()));
     learnOptionsList.setSelectionMode(SINGLE_SELECTION);
     ListCellRenderer renderer = new ObjectUiListCellRenderer(new ConfigurableSwingUI<>(properties.getLearnedMagicRenderer()));
     learnedList.setCellRenderer(renderer);

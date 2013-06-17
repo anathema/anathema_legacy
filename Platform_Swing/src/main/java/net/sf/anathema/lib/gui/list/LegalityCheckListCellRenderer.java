@@ -1,6 +1,6 @@
 package net.sf.anathema.lib.gui.list;
 
-import net.sf.anathema.lib.gui.AbstractUIConfiguration;
+import net.sf.anathema.lib.gui.AgnosticUIConfiguration;
 
 import javax.swing.DefaultListCellRenderer;
 import javax.swing.JComponent;
@@ -9,9 +9,9 @@ import java.awt.Component;
 
 public class LegalityCheckListCellRenderer extends DefaultListCellRenderer {
   private final LegalityCheck check;
-  private final AbstractUIConfiguration configuration;
+  private final AgnosticUIConfiguration configuration;
 
-  public LegalityCheckListCellRenderer(LegalityCheck check, AbstractUIConfiguration configuration) {
+  public LegalityCheckListCellRenderer(LegalityCheck check, AgnosticUIConfiguration configuration) {
     this.check = check;
     this.configuration = configuration;
   }

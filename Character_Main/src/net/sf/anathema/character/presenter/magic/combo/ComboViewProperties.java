@@ -11,11 +11,10 @@ import net.sf.anathema.charmtree.builder.stringbuilder.ICharmInfoStringBuilder;
 import net.sf.anathema.framework.presenter.resources.BasicUi;
 import net.sf.anathema.lib.file.RelativePath;
 import net.sf.anathema.lib.gui.AbstractUIConfiguration;
-import net.sf.anathema.lib.gui.list.LegalityCheckListCellRenderer;
+import net.sf.anathema.lib.gui.AgnosticUIConfiguration;
+import net.sf.anathema.lib.gui.list.LegalityCheck;
 import net.sf.anathema.lib.resources.Resources;
 import net.sf.anathema.lib.util.Identifier;
-
-import javax.swing.ListCellRenderer;
 
 public class ComboViewProperties extends AbstractMagicLearnProperties implements IComboViewProperties {
   private final IComboConfiguration comboConfiguration;
@@ -58,8 +57,13 @@ public class ComboViewProperties extends AbstractMagicLearnProperties implements
   }
 
   @Override
-  public ListCellRenderer getAvailableMagicRenderer() {
-    return new LegalityCheckListCellRenderer(new ComboLegality(comboConfiguration), new CharmUIConfiguration(getResources(), charmInfoStringProvider));
+  public AgnosticUIConfiguration getAvailableMagicRenderer() {
+    return new CharmUIConfiguration(getResources(), charmInfoStringProvider);
+  }
+
+  @Override
+  public LegalityCheck getLegalityCheck() {
+    return new ComboLegality(comboConfiguration);
   }
 
   @Override
