@@ -48,11 +48,16 @@ public class MagicLearnView implements IMagicLearnView {
         addButton.setEnabled(properties.isMagicSelectionAvailable(learnOptionsList.getSelectedValue()));
       }
     });
-    JButton removeButton = createRemoveMagicButton(properties.getRemoveButtonIcon(),
+    final JButton removeButton = createRemoveMagicButton(properties.getRemoveButtonIcon(),
             properties.getRemoveButtonToolTip());
     centerButtons.add(addButton);
     centerButtons.add(removeButton);
-    addSelectionListListener(properties.getRemoveButtonEnabledListener(removeButton, learnedList));
+    addSelectionListListener(new ListSelectionListener() {
+      @Override
+      public void valueChanged(ListSelectionEvent e) {
+        removeButton.setEnabled(properties.isRempveAllowed(learnedList));
+      }
+    });
   }
 
   private JButton createAddMagicButton(RelativePath icon, String tooltip) {

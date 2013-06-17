@@ -27,6 +27,6 @@ public interface IMagicLearnProperties {
 
   LegalityCheck getLegalityCheck();
 
-  //todo: Listener
-  ListSelectionListener getRemoveButtonEnabledListener(JButton button, JList list);
+  //Todo: Component
+  boolean isRempveAllowed(JList learnedList);
 }

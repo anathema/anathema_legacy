@@ -15,9 +15,7 @@ import net.sf.anathema.lib.gui.list.LegalityCheck;
 import net.sf.anathema.lib.resources.Resources;
 import net.sf.anathema.lib.util.Identifier;
 
-import javax.swing.JButton;
 import javax.swing.JList;
-import javax.swing.event.ListSelectionListener;
 
 public class ComboViewProperties extends AbstractMagicLearnProperties implements IComboViewProperties {
   private final IComboConfiguration comboConfiguration;
@@ -50,8 +48,8 @@ public class ComboViewProperties extends AbstractMagicLearnProperties implements
   }
 
   @Override
-  public ListSelectionListener getRemoveButtonEnabledListener(final JButton button, final JList list) {
-    return new CharmRemoveEnabledListener(button, list);
+  public boolean isRempveAllowed(JList list) {
+    return !list.isSelectionEmpty() && list.getSelectedValue() != null;
   }
 
   @Override

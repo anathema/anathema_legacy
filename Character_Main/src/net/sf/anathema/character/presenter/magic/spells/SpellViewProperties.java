@@ -3,6 +3,7 @@ package net.sf.anathema.character.presenter.magic.spells;
 import net.sf.anathema.character.generic.framework.magic.view.AbstractMagicLearnProperties;
 import net.sf.anathema.character.generic.magic.ISpell;
 import net.sf.anathema.character.generic.magic.description.MagicDescriptionProvider;
+import net.sf.anathema.character.main.experience.model.ExperienceModelFetcher;
 import net.sf.anathema.character.model.ICharacter;
 import net.sf.anathema.character.model.ISpellConfiguration;
 import net.sf.anathema.character.view.magic.ISpellViewProperties;
@@ -12,9 +13,7 @@ import net.sf.anathema.lib.gui.list.LegalityCheck;
 import net.sf.anathema.lib.resources.Resources;
 import net.sf.anathema.lib.util.Identifier;
 
-import javax.swing.JButton;
 import javax.swing.JList;
-import javax.swing.event.ListSelectionListener;
 
 public class SpellViewProperties extends AbstractMagicLearnProperties implements ISpellViewProperties {
 
@@ -66,7 +65,17 @@ public class SpellViewProperties extends AbstractMagicLearnProperties implements
   }
 
   @Override
-  public ListSelectionListener getRemoveButtonEnabledListener(final JButton button, final JList list) {
-    return new SpellRemoveListener(list, button, character, spellConfiguration);
+  public boolean isRempveAllowed(JList list) {
+    boolean enabled = !list.isSelectionEmpty();
+    if (enabled && ExperienceModelFetcher.fetch(character).isExperienced()) {
+      for (Object spellObject : list.getSelectedValuesList()) {
+        ISpell spell = (ISpell) spellObject;
+        if (spellConfiguration.isLearnedOnCreation(spell)) {
+          enabled = false;
+          break;
+        }
+      }
+    }
+    return enabled;
   }
 }
