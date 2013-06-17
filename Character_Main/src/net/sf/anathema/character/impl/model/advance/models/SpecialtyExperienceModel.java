@@ -4,7 +4,7 @@ import net.sf.anathema.character.impl.model.advance.IPointCostCalculator;
 import net.sf.anathema.character.library.trait.Trait;
 import net.sf.anathema.character.library.trait.specialties.ISpecialtiesConfiguration;
 import net.sf.anathema.character.library.trait.subtrait.ISubTraitContainer;
-import net.sf.anathema.character.main.abilities.AbilityModel;
+import net.sf.anathema.character.main.model.abilities.AbilityModel;
 
 public class SpecialtyExperienceModel extends AbstractIntegerValueModel {
 

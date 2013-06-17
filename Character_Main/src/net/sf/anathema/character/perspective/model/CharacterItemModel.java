@@ -1,6 +1,6 @@
 package net.sf.anathema.character.perspective.model;
 
-import net.sf.anathema.character.main.concept.model.CharacterConceptFetcher;
+import net.sf.anathema.character.main.model.concept.CharacterConceptFetcher;
 import net.sf.anathema.character.model.ICharacter;
 import net.sf.anathema.character.perspective.DescriptiveFeatures;
 import net.sf.anathema.character.perspective.LoadedDescriptiveFeatures;

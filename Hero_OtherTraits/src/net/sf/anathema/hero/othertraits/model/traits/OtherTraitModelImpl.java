@@ -14,13 +14,13 @@ import net.sf.anathema.character.impl.model.traits.creation.DefaultTraitFactory;
 import net.sf.anathema.character.impl.model.traits.creation.TypedTraitTemplateFactory;
 import net.sf.anathema.character.impl.model.traits.listening.WillpowerListening;
 import net.sf.anathema.character.library.trait.Trait;
-import net.sf.anathema.character.main.model.Hero;
-import net.sf.anathema.character.main.model.HeroModel;
-import net.sf.anathema.character.main.model.InitializationContext;
-import net.sf.anathema.character.main.othertraits.OtherTraitModel;
-import net.sf.anathema.character.main.traits.model.DefaultTraitMap;
-import net.sf.anathema.character.main.traits.model.TraitModel;
-import net.sf.anathema.character.main.traits.model.TraitModelFetcher;
+import net.sf.anathema.character.main.hero.Hero;
+import net.sf.anathema.character.main.hero.HeroModel;
+import net.sf.anathema.character.main.hero.InitializationContext;
+import net.sf.anathema.character.main.model.othertraits.OtherTraitModel;
+import net.sf.anathema.character.main.model.traits.DefaultTraitMap;
+import net.sf.anathema.character.main.model.traits.TraitModel;
+import net.sf.anathema.character.main.model.traits.TraitModelFetcher;
 import net.sf.anathema.lib.util.Identifier;
 
 public class OtherTraitModelImpl extends DefaultTraitMap implements OtherTraitModel, HeroModel {

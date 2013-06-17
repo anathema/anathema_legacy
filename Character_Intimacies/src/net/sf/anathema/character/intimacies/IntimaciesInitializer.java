@@ -3,7 +3,7 @@ package net.sf.anathema.character.intimacies;
 import net.sf.anathema.character.intimacies.presenter.IIntimaciesView;
 import net.sf.anathema.character.intimacies.presenter.IntimaciesPresenter;
 import net.sf.anathema.character.intimacies.template.IntimaciesTemplate;
-import net.sf.anathema.character.main.model.CharacterModelGroup;
+import net.sf.anathema.character.main.hero.CharacterModelGroup;
 import net.sf.anathema.character.model.ICharacter;
 import net.sf.anathema.character.presenter.initializers.CharacterModelInitializer;
 import net.sf.anathema.character.presenter.initializers.RegisteredInitializer;

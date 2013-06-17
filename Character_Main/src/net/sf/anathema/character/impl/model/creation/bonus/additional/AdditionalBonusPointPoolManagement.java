@@ -6,7 +6,7 @@ import net.sf.anathema.character.generic.template.creation.IGenericSpecialty;
 import net.sf.anathema.character.generic.template.experience.AbilityPointCosts;
 import net.sf.anathema.character.generic.traits.GenericTrait;
 import net.sf.anathema.character.library.trait.Trait;
-import net.sf.anathema.character.main.traits.model.TraitMap;
+import net.sf.anathema.character.main.model.traits.TraitMap;
 
 import java.util.ArrayList;
 import java.util.Arrays;

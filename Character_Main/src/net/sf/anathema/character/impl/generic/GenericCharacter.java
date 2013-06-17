@@ -27,16 +27,16 @@ import net.sf.anathema.character.library.trait.Trait;
 import net.sf.anathema.character.library.trait.specialties.ISpecialtiesConfiguration;
 import net.sf.anathema.character.library.trait.specialties.Specialty;
 import net.sf.anathema.character.library.trait.subtrait.ISpecialtyListener;
-import net.sf.anathema.character.main.abilities.AbilityModelFetcher;
-import net.sf.anathema.character.main.attributes.AttributeModelFetcher;
-import net.sf.anathema.character.main.concept.model.CharacterConcept;
-import net.sf.anathema.character.main.concept.model.CharacterConceptFetcher;
-import net.sf.anathema.character.main.description.model.CharacterDescriptionFetcher;
-import net.sf.anathema.character.main.essencepool.EssencePoolModelFetcher;
-import net.sf.anathema.character.main.experience.model.ExperienceModelFetcher;
-import net.sf.anathema.character.main.traits.model.GenericTraitCollectionFacade;
-import net.sf.anathema.character.main.traits.model.TraitMap;
-import net.sf.anathema.character.main.traits.model.TraitModelFetcher;
+import net.sf.anathema.character.main.model.abilities.AbilityModelFetcher;
+import net.sf.anathema.character.main.model.attributes.AttributeModelFetcher;
+import net.sf.anathema.character.main.model.concept.CharacterConcept;
+import net.sf.anathema.character.main.model.concept.CharacterConceptFetcher;
+import net.sf.anathema.character.main.model.description.HeroDescriptionFetcher;
+import net.sf.anathema.character.main.model.essencepool.EssencePoolModelFetcher;
+import net.sf.anathema.character.main.model.experience.ExperienceModelFetcher;
+import net.sf.anathema.character.main.model.traits.GenericTraitCollectionFacade;
+import net.sf.anathema.character.main.model.traits.TraitMap;
+import net.sf.anathema.character.main.model.traits.TraitModelFetcher;
 import net.sf.anathema.character.model.ICharacter;
 import net.sf.anathema.character.model.ITypedDescription;
 import net.sf.anathema.character.model.charm.ICharmConfiguration;
@@ -113,7 +113,7 @@ public class GenericCharacter implements IGenericCharacter {
 
   @Override
   public IGenericDescription getDescription() {
-    return new GenericDescription(CharacterDescriptionFetcher.fetch(character));
+    return new GenericDescription(HeroDescriptionFetcher.fetch(character));
   }
 
   @Override

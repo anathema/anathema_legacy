@@ -15,13 +15,13 @@ import net.sf.anathema.character.impl.model.charm.ComboConfiguration;
 import net.sf.anathema.character.impl.model.context.CharacterModelContext;
 import net.sf.anathema.character.impl.model.statistics.ExtendedConfiguration;
 import net.sf.anathema.character.impl.model.traits.listening.CharacterTraitListening;
-import net.sf.anathema.character.main.description.model.CharacterDescription;
-import net.sf.anathema.character.main.description.model.CharacterDescriptionFetcher;
-import net.sf.anathema.character.main.model.DefaultHero;
-import net.sf.anathema.character.main.model.HeroModel;
-import net.sf.anathema.character.main.model.ModelInitializationContext;
-import net.sf.anathema.character.main.model.initialization.CharacterModelInitializer;
-import net.sf.anathema.character.main.traits.model.TraitModelFetcher;
+import net.sf.anathema.character.main.model.description.HeroDescription;
+import net.sf.anathema.character.main.model.description.HeroDescriptionFetcher;
+import net.sf.anathema.character.main.hero.DefaultHero;
+import net.sf.anathema.character.main.hero.HeroModel;
+import net.sf.anathema.character.main.hero.ModelInitializationContext;
+import net.sf.anathema.character.main.hero.initialization.HeroModelInitializer;
+import net.sf.anathema.character.main.model.traits.TraitModelFetcher;
 import net.sf.anathema.character.model.ICharacter;
 import net.sf.anathema.character.model.ISpellConfiguration;
 import net.sf.anathema.character.model.charm.ICharmConfiguration;
@@ -82,7 +82,7 @@ public class ExaltedCharacter implements ICharacter {
   }
 
   private void addModels(ICharacterGenerics generics) {
-    CharacterModelInitializer initializer = new CharacterModelInitializer(initializationContext, heroTemplate);
+    HeroModelInitializer initializer = new HeroModelInitializer(initializationContext, heroTemplate);
     initializer.addModels(generics, hero);
   }
 
@@ -105,7 +105,7 @@ public class ExaltedCharacter implements ICharacter {
 
   // todo: remove itemDate-Relicts in Character (see ExaltedCharacterPersister)
   public void setPrintNameAdjuster(PrintNameAdjuster adjuster) {
-    CharacterDescription characterDescription = CharacterDescriptionFetcher.fetch(this);
+    HeroDescription characterDescription = HeroDescriptionFetcher.fetch(this);
     if (characterDescription == null) {
       return;
     }

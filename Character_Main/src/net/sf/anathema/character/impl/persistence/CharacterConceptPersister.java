@@ -2,8 +2,8 @@ package net.sf.anathema.character.impl.persistence;
 
 import net.sf.anathema.character.generic.caste.ICasteCollection;
 import net.sf.anathema.character.generic.caste.ICasteType;
-import net.sf.anathema.character.main.concept.model.CharacterConcept;
-import net.sf.anathema.character.main.description.model.CharacterDescription;
+import net.sf.anathema.character.main.model.concept.CharacterConcept;
+import net.sf.anathema.character.main.model.description.HeroDescription;
 import net.sf.anathema.character.model.IIntegerDescription;
 import net.sf.anathema.character.model.ITypedDescription;
 import net.sf.anathema.framework.persistence.TextPersister;
@@ -39,7 +39,7 @@ public class CharacterConceptPersister {
     parent.addAttribute(ATTRIB_AGE, Integer.toString(age.getValue()));
   }
 
-  public void load(Element parent, CharacterConcept characterConcept, CharacterDescription description, ICasteCollection casteCollection) throws
+  public void load(Element parent, CharacterConcept characterConcept, HeroDescription description, ICasteCollection casteCollection) throws
           PersistenceException {
     Element conceptElement = parent.element(TAG_CHARACTER_CONCEPT);
     loadCaste(conceptElement, characterConcept, casteCollection);

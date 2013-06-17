@@ -8,7 +8,7 @@ import net.sf.anathema.character.generic.traits.types.AttributeType;
 import net.sf.anathema.character.library.trait.Trait;
 import net.sf.anathema.character.library.trait.TraitGroup;
 import net.sf.anathema.character.library.trait.specialties.ISpecialtiesConfiguration;
-import net.sf.anathema.character.main.abilities.AbilityModel;
+import net.sf.anathema.character.main.model.abilities.AbilityModel;
 
 public class DummyAbilityModel implements AbilityModel {
 

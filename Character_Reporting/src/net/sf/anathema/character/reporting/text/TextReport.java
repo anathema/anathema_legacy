@@ -9,7 +9,7 @@ import com.itextpdf.text.pdf.PdfWriter;
 import net.sf.anathema.character.generic.character.IGenericCharacter;
 import net.sf.anathema.character.impl.generic.GenericDescription;
 import net.sf.anathema.character.impl.util.GenericCharacterUtilities;
-import net.sf.anathema.character.main.description.model.CharacterDescriptionFetcher;
+import net.sf.anathema.character.main.model.description.HeroDescriptionFetcher;
 import net.sf.anathema.character.model.ICharacter;
 import net.sf.anathema.framework.reporting.ReportException;
 import net.sf.anathema.framework.reporting.pdf.AbstractPdfReport;
@@ -38,7 +38,7 @@ public class TextReport extends AbstractPdfReport {
     columnText.addRegularColumns(document.left(), document.right(), 20, 2);
     ICharacter character = (ICharacter) item.getItemData();
     try {
-      GenericDescription description = new GenericDescription(CharacterDescriptionFetcher.fetch(character));
+      GenericDescription description = new GenericDescription(HeroDescriptionFetcher.fetch(character));
       new CharacterDescriptionTextEncoder(utils, resources).createParagraphs(columnText, description);
       IGenericCharacter genericCharacter = GenericCharacterUtilities.createGenericCharacter(character);
       new ConceptTextEncoder(utils, resources).createParagraphs(columnText, genericCharacter);

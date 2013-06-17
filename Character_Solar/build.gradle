@@ -2,4 +2,5 @@ dependencies {
     compile project(':Character_Main')
     compile project(':Character_Reporting')
     compile project(':Character_Equipment')
+    compile project(':Hero_Concept')
 }

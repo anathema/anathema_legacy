@@ -2,7 +2,7 @@ package net.sf.anathema.character.impl.persistence;
 
 import net.sf.anathema.character.generic.traits.types.OtherTraitType;
 import net.sf.anathema.character.library.trait.persistence.TraitPersister;
-import net.sf.anathema.character.main.traits.model.TraitMap;
+import net.sf.anathema.character.main.model.traits.TraitMap;
 import net.sf.anathema.lib.exception.PersistenceException;
 import org.dom4j.Element;
 

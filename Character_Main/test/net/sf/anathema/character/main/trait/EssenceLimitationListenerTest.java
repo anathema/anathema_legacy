@@ -4,7 +4,7 @@ import com.google.common.collect.Lists;
 import net.sf.anathema.character.impl.model.traits.EssenceLimitationListener;
 import net.sf.anathema.character.impl.model.traits.TraitIterable;
 import net.sf.anathema.character.library.trait.Trait;
-import net.sf.anathema.character.main.model.Hero;
+import net.sf.anathema.character.main.hero.Hero;
 import org.junit.Test;
 
 import static org.mockito.Mockito.mock;

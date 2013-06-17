@@ -2,7 +2,7 @@ package net.sf.anathema.character.impl.generic;
 
 import net.sf.anathema.character.generic.caste.ICasteType;
 import net.sf.anathema.character.generic.character.IConcept;
-import net.sf.anathema.character.main.concept.model.CharacterConcept;
+import net.sf.anathema.character.main.model.concept.CharacterConcept;
 
 public class GenericConcept implements IConcept {
 

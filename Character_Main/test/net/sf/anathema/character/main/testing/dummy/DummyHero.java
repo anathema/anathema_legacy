@@ -1,7 +1,7 @@
 package net.sf.anathema.character.main.testing.dummy;
 
-import net.sf.anathema.character.main.model.Hero;
-import net.sf.anathema.character.main.model.HeroModel;
+import net.sf.anathema.character.main.hero.Hero;
+import net.sf.anathema.character.main.hero.HeroModel;
 import net.sf.anathema.lib.util.Identifier;
 
 import java.util.HashMap;

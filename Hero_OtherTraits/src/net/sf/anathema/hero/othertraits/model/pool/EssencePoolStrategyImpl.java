@@ -14,8 +14,8 @@ import net.sf.anathema.character.generic.template.magic.IGenericCharmConfigurati
 import net.sf.anathema.character.generic.traits.GenericTrait;
 import net.sf.anathema.character.generic.traits.types.OtherTraitType;
 import net.sf.anathema.character.generic.traits.types.VirtueType;
-import net.sf.anathema.character.main.model.InitializationContext;
-import net.sf.anathema.character.main.traits.model.TraitMap;
+import net.sf.anathema.character.main.hero.InitializationContext;
+import net.sf.anathema.character.main.model.traits.TraitMap;
 import net.sf.anathema.lib.control.IChangeListener;
 import net.sf.anathema.lib.util.IdentifiedInteger;
 import org.jmock.example.announcer.Announcer;

@@ -1,7 +1,7 @@
 package net.sf.anathema.character.model;
 
 import net.sf.anathema.character.generic.additionaltemplate.IAdditionalModel;
-import net.sf.anathema.character.main.model.CharacterModelGroup;
+import net.sf.anathema.character.main.hero.CharacterModelGroup;
 
 public interface IExtendedConfiguration {
 

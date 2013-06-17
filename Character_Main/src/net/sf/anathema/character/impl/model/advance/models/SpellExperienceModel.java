@@ -3,7 +3,7 @@ package net.sf.anathema.character.impl.model.advance.models;
 import net.sf.anathema.character.generic.IBasicCharacterData;
 import net.sf.anathema.character.generic.magic.ISpell;
 import net.sf.anathema.character.impl.model.advance.IPointCostCalculator;
-import net.sf.anathema.character.main.traits.model.TraitMap;
+import net.sf.anathema.character.main.model.traits.TraitMap;
 import net.sf.anathema.character.model.ICharacter;
 
 public class SpellExperienceModel extends AbstractIntegerValueModel {

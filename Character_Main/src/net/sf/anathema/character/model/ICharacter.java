@@ -3,7 +3,7 @@ package net.sf.anathema.character.model;
 import net.sf.anathema.character.generic.framework.additionaltemplate.model.ICharacterModelContext;
 import net.sf.anathema.character.generic.template.HeroTemplate;
 import net.sf.anathema.character.generic.type.ICharacterType;
-import net.sf.anathema.character.main.model.Hero;
+import net.sf.anathema.character.main.hero.Hero;
 import net.sf.anathema.character.model.charm.ICharmConfiguration;
 import net.sf.anathema.character.model.charm.IComboConfiguration;
 import net.sf.anathema.character.model.health.IHealthConfiguration;

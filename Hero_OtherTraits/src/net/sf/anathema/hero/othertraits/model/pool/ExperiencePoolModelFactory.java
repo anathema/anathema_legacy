@@ -1,10 +1,10 @@
 package net.sf.anathema.hero.othertraits.model.pool;
 
-import net.sf.anathema.character.main.essencepool.EssencePoolModel;
-import net.sf.anathema.character.main.model.CharacterModelAutoCollector;
-import net.sf.anathema.character.main.model.HeroModelFactory;
-import net.sf.anathema.character.main.model.initialization.SimpleModelTreeEntry;
-import net.sf.anathema.character.main.model.template.TemplateFactory;
+import net.sf.anathema.character.main.model.essencepool.EssencePoolModel;
+import net.sf.anathema.character.main.hero.CharacterModelAutoCollector;
+import net.sf.anathema.character.main.hero.HeroModelFactory;
+import net.sf.anathema.character.main.hero.initialization.SimpleModelTreeEntry;
+import net.sf.anathema.character.main.hero.template.TemplateFactory;
 
 @CharacterModelAutoCollector
 public class ExperiencePoolModelFactory extends SimpleModelTreeEntry implements HeroModelFactory {

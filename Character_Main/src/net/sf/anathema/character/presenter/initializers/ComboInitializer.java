@@ -11,7 +11,7 @@ import net.sf.anathema.framework.IApplicationModel;
 import net.sf.anathema.initialization.reflections.Weight;
 import net.sf.anathema.lib.resources.Resources;
 
-import static net.sf.anathema.character.main.model.CharacterModelGroup.Magic;
+import static net.sf.anathema.character.main.hero.CharacterModelGroup.Magic;
 
 @RegisteredInitializer(Magic)
 @Weight(weight = 100)
