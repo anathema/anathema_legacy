@@ -1,6 +1,8 @@
 package net.sf.anathema.character.main.model;
 
 import net.sf.anathema.character.change.ChangeAnnouncer;
+import net.sf.anathema.character.generic.IBasicCharacterData;
+import net.sf.anathema.character.generic.framework.additionaltemplate.model.ICharacterListening;
 import net.sf.anathema.character.generic.framework.additionaltemplate.model.ICharacterModelContext;
 import net.sf.anathema.character.generic.framework.additionaltemplate.model.TraitContext;
 import net.sf.anathema.character.generic.template.HeroTemplate;
@@ -20,13 +22,26 @@ public class ModelInitializationContext implements InitializationContext {
   }
 
   @Override
-  public HeroTemplate getTemplate() {
-    return template;
+  @Deprecated
+  public IBasicCharacterData getBasicCharacterContext() {
+    return context.getBasicCharacterContext();
   }
 
   @Override
+  @Deprecated
+  public ICharacterListening getCharacterListening() {
+    return context.getCharacterListening();
+  }
+
+  @Override
+  @Deprecated
   public TraitContext getTraitContext() {
     return context.getTraitContext();
+  }
+
+  @Override
+  public HeroTemplate getTemplate() {
+    return template;
   }
 
   @Override

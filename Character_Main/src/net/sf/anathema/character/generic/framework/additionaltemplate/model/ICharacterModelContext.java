@@ -16,9 +16,9 @@ public interface ICharacterModelContext {
 
   IAdditionalRules getAdditionalRules();
 
-  IBasicCharacterData getBasicCharacterContext();
-
   IPresentationProperties getPresentationProperties();
+
+  IBasicCharacterData getBasicCharacterContext();
 
   ICharacterListening getCharacterListening();
 

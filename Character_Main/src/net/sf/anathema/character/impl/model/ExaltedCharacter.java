@@ -18,15 +18,15 @@ import net.sf.anathema.character.impl.model.context.CharacterModelContext;
 import net.sf.anathema.character.impl.model.statistics.ExtendedConfiguration;
 import net.sf.anathema.character.impl.model.traits.listening.CharacterTraitListening;
 import net.sf.anathema.character.main.abilities.AbilityModel;
-import net.sf.anathema.character.main.abilities.DefaultAbilityModel;
+import net.sf.anathema.character.main.abilities.AbilityModelFetcher;
 import net.sf.anathema.character.main.attributes.model.temporary.AttributeModel;
-import net.sf.anathema.character.main.attributes.model.temporary.DefaultAttributeModel;
+import net.sf.anathema.character.main.attributes.model.temporary.AttributeModelImpl;
 import net.sf.anathema.character.main.description.model.CharacterDescription;
 import net.sf.anathema.character.main.description.model.CharacterDescriptionFetcher;
 import net.sf.anathema.character.main.essencepool.model.EssencePoolModel;
 import net.sf.anathema.character.main.essencepool.model.EssencePoolModelImpl;
-import net.sf.anathema.character.main.model.CharacterModel;
 import net.sf.anathema.character.main.model.DefaultHero;
+import net.sf.anathema.character.main.model.HeroModel;
 import net.sf.anathema.character.main.model.ModelInitializationContext;
 import net.sf.anathema.character.main.model.initialization.CharacterModelInitializer;
 import net.sf.anathema.character.main.traits.model.TraitModel;
@@ -53,15 +53,13 @@ public class ExaltedCharacter implements ICharacter {
   private final IHealthConfiguration health;
   private final ExtendedConfiguration extendedConfiguration = new ExtendedConfiguration(context);
   private final DefaultHero hero = new DefaultHero();
-  private final DefaultAttributeModel attributes;
-  private final DefaultAbilityModel abilities;
+  private final AttributeModelImpl attributes;
 
   public ExaltedCharacter(HeroTemplate template, ICharacterGenerics generics) {
     this.heroTemplate = template;
     addModels(generics);
     // todo: Beware the side effects
-    this.abilities = new DefaultAbilityModel(template, context, getTraitModel());
-    this.attributes = new DefaultAttributeModel(template, context, getTraitModel());
+    this.attributes = new AttributeModelImpl(template, context, getTraitModel());
     new CharacterTraitListening(this, context.getCharacterListening()).initListening();
     this.health = new HealthConfiguration(getTraitArray(template.getToughnessControllingTraitTypes()), getTraitModel(),
             template.getBaseHealthProviders());
@@ -164,7 +162,7 @@ public class ExaltedCharacter implements ICharacter {
 
   @Override
   public AbilityModel getAbilities()  {
-    return abilities;
+    return AbilityModelFetcher.fetch(hero);
   }
 
   public EssencePoolModel getEssencePool() {
@@ -209,7 +207,7 @@ public class ExaltedCharacter implements ICharacter {
   }
 
   @Override
-  public <M extends CharacterModel> M getModel(Identifier id) {
+  public <M extends HeroModel> M getModel(Identifier id) {
     return hero.getModel(id);
   }
 

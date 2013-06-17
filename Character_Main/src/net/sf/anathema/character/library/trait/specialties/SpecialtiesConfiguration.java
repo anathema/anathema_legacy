@@ -3,12 +3,12 @@ package net.sf.anathema.character.library.trait.specialties;
 import com.google.common.base.Strings;
 import net.sf.anathema.character.generic.framework.ITraitReference;
 import net.sf.anathema.character.generic.framework.additionaltemplate.listening.ICharacterChangeListener;
-import net.sf.anathema.character.generic.framework.additionaltemplate.model.ICharacterModelContext;
 import net.sf.anathema.character.generic.traits.TraitType;
 import net.sf.anathema.character.generic.traits.groups.ITraitTypeGroup;
 import net.sf.anathema.character.generic.traits.groups.TraitTypeGroup;
 import net.sf.anathema.character.library.trait.Trait;
 import net.sf.anathema.character.library.trait.subtrait.ISubTraitContainer;
+import net.sf.anathema.character.main.model.InitializationContext;
 import net.sf.anathema.character.main.traits.model.TraitMap;
 import net.sf.anathema.lib.control.IChangeListener;
 import org.jmock.example.announcer.Announcer;
@@ -26,11 +26,11 @@ public class SpecialtiesConfiguration implements ISpecialtiesConfiguration {
   private final Map<ITraitReference, ISubTraitContainer> specialtiesByTrait = new HashMap<>();
   private final Announcer<IChangeListener> control = Announcer.to(IChangeListener.class);
   private final Announcer<ITraitReferencesChangeListener> traitControl = Announcer.to(ITraitReferencesChangeListener.class);
-  private final ICharacterModelContext context;
+  private final InitializationContext context;
   private String currentName;
   private ITraitReference currentType;
 
-  public SpecialtiesConfiguration(TraitMap traitMap, ITraitTypeGroup[] groups, ICharacterModelContext context) {
+  public SpecialtiesConfiguration(TraitMap traitMap, ITraitTypeGroup[] groups, InitializationContext context) {
     this.context = context;
     TraitType[] traitTypes = TraitTypeGroup.getAllTraitTypes(groups);
     for (Trait trait : traitMap.getTraits(traitTypes)) {

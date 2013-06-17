@@ -15,6 +15,7 @@
         <model id="Description"/>
         <model id="Concept"/>
         <model id="OtherTraits"/>
+        <model id="Abilities"/>
     </models>
     <creation>
         <bonusPointCosts uses="DefaultBonusPointCost2nd.template"/>

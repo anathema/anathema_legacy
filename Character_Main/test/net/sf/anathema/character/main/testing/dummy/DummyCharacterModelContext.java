@@ -1,5 +1,6 @@
 package net.sf.anathema.character.main.testing.dummy;
 
+import net.sf.anathema.character.change.ChangeAnnouncer;
 import net.sf.anathema.character.generic.IBasicCharacterData;
 import net.sf.anathema.character.generic.additionalrules.IAdditionalRules;
 import net.sf.anathema.character.generic.additionaltemplate.IAdditionalModel;
@@ -17,13 +18,15 @@ import net.sf.anathema.character.generic.template.presentation.IPresentationProp
 import net.sf.anathema.character.impl.model.context.BasicCharacterContext;
 import net.sf.anathema.character.impl.model.context.CharacterListening;
 import net.sf.anathema.character.impl.model.context.trait.CreationTraitValueStrategy;
+import net.sf.anathema.character.main.model.InitializationContext;
+import net.sf.anathema.character.main.model.change.ChangeAnnouncerAdapter;
 import net.sf.anathema.character.main.testing.dummy.magic.DummyCharmContext;
 import net.sf.anathema.character.main.testing.dummy.template.DummyCharacterTemplate;
 import net.sf.anathema.character.model.ICharacter;
 
 import java.util.List;
 
-public class DummyCharacterModelContext implements ICharacterModelContext {
+public class DummyCharacterModelContext implements ICharacterModelContext, InitializationContext {
 
   private ICharacterListening characterListening = new CharacterListening();
   private final ITraitValueStrategy valueStrategy;
@@ -90,6 +93,16 @@ public class DummyCharacterModelContext implements ICharacterModelContext {
   @Override
   public TraitContext getTraitContext() {
     return traitContext;
+  }
+
+  @Override
+  public HeroTemplate getTemplate() {
+    return character.getTemplate();
+  }
+
+  @Override
+  public ChangeAnnouncer getChangeAnnouncer() {
+    throw new UnsupportedOperationException();
   }
 
   @Override

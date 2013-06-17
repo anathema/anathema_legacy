@@ -17,13 +17,13 @@ import net.sf.anathema.character.main.traits.model.DefaultTraitMap;
 import net.sf.anathema.character.main.traits.model.MappedTraitGroup;
 import net.sf.anathema.character.main.traits.model.TraitModel;
 
-public class DefaultAttributeModel extends DefaultTraitMap implements AttributeModel {
+public class AttributeModelImpl extends DefaultTraitMap implements AttributeModel {
 
   private HeroTemplate template;
   private ICharacterModelContext modelContext;
   private final IIdentifiedCasteTraitTypeGroup[] attributeTraitGroups;
 
-  public DefaultAttributeModel(HeroTemplate template, ICharacterModelContext modelContext, TraitModel traitModel) {
+  public AttributeModelImpl(HeroTemplate template, ICharacterModelContext modelContext, TraitModel traitModel) {
     this.template = template;
     this.modelContext = modelContext;
     this.attributeTraitGroups = new AttributeTypeGroupFactory().createTraitGroups(template.getCasteCollection(), template.getAttributeGroups());

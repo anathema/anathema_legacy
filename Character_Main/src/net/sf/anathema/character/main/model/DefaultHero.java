@@ -7,15 +7,15 @@ import java.util.Map;
 
 public class DefaultHero implements Hero {
 
-  private Map<String, CharacterModel> modelsById = new HashMap<>();
+  private Map<String, HeroModel> modelsById = new HashMap<>();
   private boolean fullyLoaded = false;
 
-  public void addModel(CharacterModel model) {
+  public void addModel(HeroModel model) {
     modelsById.put(model.getId().getId(), model);
   }
 
   @Override
-  public <M extends CharacterModel> M getModel(Identifier id) {
+  public <M extends HeroModel> M getModel(Identifier id) {
     return (M) modelsById.get(id.getId());
   }
 

@@ -2,9 +2,9 @@ package net.sf.anathema.character.main.model.initialization;
 
 import net.sf.anathema.character.generic.framework.ICharacterGenerics;
 import net.sf.anathema.character.generic.template.HeroTemplate;
-import net.sf.anathema.character.main.model.CharacterModel;
+import net.sf.anathema.character.main.model.HeroModel;
 import net.sf.anathema.character.main.model.CharacterModelAutoCollector;
-import net.sf.anathema.character.main.model.CharacterModelFactory;
+import net.sf.anathema.character.main.model.HeroModelFactory;
 import net.sf.anathema.character.main.model.DefaultHero;
 import net.sf.anathema.character.main.model.DefaultTemplateFactory;
 import net.sf.anathema.character.main.model.InitializationContext;
@@ -29,38 +29,38 @@ public class CharacterModelInitializer {
   }
 
   public void addModels(ICharacterGenerics generics, DefaultHero hero) {
-    Map<String, CharacterModelFactory> factoriesById = createFactoriesMap(generics);
+    Map<String, HeroModelFactory> factoriesById = createFactoriesMap(generics);
     TemplateFactory templateFactory = new DefaultTemplateFactory(generics);
     Iterable<Identifier> sortedListOfRelevantModelIds = getSortedModelIdsForCharacter(factoriesById);
-    List<CharacterModel> modelList = new ArrayList<>();
+    List<HeroModel> modelList = new ArrayList<>();
     for (Identifier modelId : sortedListOfRelevantModelIds) {
       if (!factoriesById.containsKey(modelId.getId())) {
         throw new IllegalStateException("No model factory found for dependent model id " + modelId);
       }
-      CharacterModelFactory factory = factoriesById.get(modelId.getId());
+      HeroModelFactory factory = factoriesById.get(modelId.getId());
       modelList.add(factory.create(templateFactory));
     }
-    for (CharacterModel model : modelList) {
+    for (HeroModel model : modelList) {
       model.initialize(context, hero);
       hero.addModel(model);
     }
   }
 
-  private Map<String, CharacterModelFactory> createFactoriesMap(ICharacterGenerics generics) {
-    Map<String, CharacterModelFactory> factoriesById = new HashMap<>();
-    for (CharacterModelFactory factory : collectModelFactories(generics)) {
+  private Map<String, HeroModelFactory> createFactoriesMap(ICharacterGenerics generics) {
+    Map<String, HeroModelFactory> factoriesById = new HashMap<>();
+    for (HeroModelFactory factory : collectModelFactories(generics)) {
       factoriesById.put(factory.getModelId().getId(), factory);
     }
     return factoriesById;
   }
 
-  private Iterable<Identifier> getSortedModelIdsForCharacter(Map<String, CharacterModelFactory> factoriesById) {
-    List<CharacterModelFactory> configuredFactories = collectConfiguredModelFactories(factoriesById);
+  private Iterable<Identifier> getSortedModelIdsForCharacter(Map<String, HeroModelFactory> factoriesById) {
+    List<HeroModelFactory> configuredFactories = collectConfiguredModelFactories(factoriesById);
     return new ModelInitializationList<>(configuredFactories);
   }
 
-  private List<CharacterModelFactory> collectConfiguredModelFactories(Map<String, CharacterModelFactory> factoriesById) {
-    List<CharacterModelFactory> configuredFactories = new ArrayList<>();
+  private List<HeroModelFactory> collectConfiguredModelFactories(Map<String, HeroModelFactory> factoriesById) {
+    List<HeroModelFactory> configuredFactories = new ArrayList<>();
     for (String configuredId : template.getModels()) {
       if (!factoriesById.containsKey(configuredId)) {
         throw new IllegalStateException("No model factory found for configured model id " + configuredId);
@@ -70,7 +70,7 @@ public class CharacterModelInitializer {
     return configuredFactories;
   }
 
-  private Collection<CharacterModelFactory> collectModelFactories(ICharacterGenerics generics) {
+  private Collection<HeroModelFactory> collectModelFactories(ICharacterGenerics generics) {
     ObjectFactory objectFactory = generics.getInstantiater();
     return objectFactory.instantiateAll(CharacterModelAutoCollector.class);
   }

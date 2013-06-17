@@ -1,7 +1,7 @@
 package net.sf.anathema.character.main.abilities;
 
+import net.sf.anathema.character.generic.additionalrules.IAdditionalTraitRules;
 import net.sf.anathema.character.generic.caste.ICasteCollection;
-import net.sf.anathema.character.generic.framework.additionaltemplate.model.ICharacterModelContext;
 import net.sf.anathema.character.generic.template.HeroTemplate;
 import net.sf.anathema.character.generic.template.abilities.GroupedTraitType;
 import net.sf.anathema.character.generic.traits.TraitType;
@@ -15,30 +15,23 @@ import net.sf.anathema.character.library.trait.Trait;
 import net.sf.anathema.character.library.trait.TraitGroup;
 import net.sf.anathema.character.library.trait.favorable.IncrementChecker;
 import net.sf.anathema.character.library.trait.specialties.SpecialtiesConfiguration;
+import net.sf.anathema.character.main.model.Hero;
+import net.sf.anathema.character.main.model.HeroModel;
+import net.sf.anathema.character.main.model.InitializationContext;
 import net.sf.anathema.character.main.traits.model.DefaultTraitMap;
 import net.sf.anathema.character.main.traits.model.MappedTraitGroup;
 import net.sf.anathema.character.main.traits.model.TraitMap;
 import net.sf.anathema.character.main.traits.model.TraitModel;
+import net.sf.anathema.lib.util.Identifier;
 
 import java.util.ArrayList;
 import java.util.List;
 
-public class DefaultAbilityModel extends DefaultTraitMap implements AbilityModel {
-  private final IIdentifiedCasteTraitTypeGroup[] abilityTraitGroups;
-  private final SpecialtiesConfiguration specialtyConfiguration;
-  private HeroTemplate template;
-  private ICharacterModelContext modelContext;
+public class AbilityModelImpl extends DefaultTraitMap implements AbilityModel, HeroModel {
 
-  public DefaultAbilityModel(HeroTemplate template, ICharacterModelContext modelContext, TraitModel traitModel) {
-    this.template = template;
-    this.modelContext = modelContext;
-    ICasteCollection casteCollection = template.getCasteCollection();
-    this.abilityTraitGroups = new AbilityTypeGroupFactory().createTraitGroups(casteCollection, template.getAbilityGroups());
-    IncrementChecker incrementChecker = createFavoredAbilityIncrementChecker(template, this);
-    addFavorableTraits(incrementChecker, new AbilityTemplateFactory(template.getTraitTemplateCollection().getTraitTemplateFactory()));
-    traitModel.addTraits(getAll());
-    this.specialtyConfiguration = new SpecialtiesConfiguration(this, abilityTraitGroups, modelContext);
-  }
+  private IIdentifiedCasteTraitTypeGroup[] abilityTraitGroups;
+  private SpecialtiesConfiguration specialtyConfiguration;
+  private InitializationContext context;
 
   private IncrementChecker createFavoredAbilityIncrementChecker(HeroTemplate template, TraitMap traitMap) {
     int maxFavoredAbilityCount = template.getCreationPoints().getAbilityCreationPoints().getFavorableTraitCount();
@@ -58,8 +51,8 @@ public class DefaultAbilityModel extends DefaultTraitMap implements AbilityModel
   }
 
   private FavorableTraitFactory createFactory() {
-    return new FavorableTraitFactory(modelContext.getTraitContext(), template.getAdditionalRules().getAdditionalTraitRules(),
-            modelContext.getBasicCharacterContext(), modelContext.getCharacterListening());
+    IAdditionalTraitRules traitRules = context.getTemplate().getAdditionalRules().getAdditionalTraitRules();
+    return new FavorableTraitFactory(context.getTraitContext(), traitRules, context.getBasicCharacterContext(), context.getCharacterListening());
   }
 
   @Override
@@ -80,5 +73,23 @@ public class DefaultAbilityModel extends DefaultTraitMap implements AbilityModel
   @Override
   public SpecialtiesConfiguration getSpecialtyConfiguration() {
     return specialtyConfiguration;
+  }
+
+  @Override
+  public Identifier getId() {
+    return ID;
+  }
+
+  @Override
+  public void initialize(InitializationContext context, Hero hero) {
+    this.context = context;
+    HeroTemplate template = context.getTemplate();
+    ICasteCollection casteCollection = template.getCasteCollection();
+    this.abilityTraitGroups = new AbilityTypeGroupFactory().createTraitGroups(casteCollection, template.getAbilityGroups());
+    IncrementChecker incrementChecker = createFavoredAbilityIncrementChecker(template, this);
+    addFavorableTraits(incrementChecker, new AbilityTemplateFactory(template.getTraitTemplateCollection().getTraitTemplateFactory()));
+    TraitModel traitModel = (TraitModel) hero.getModel(TraitModel.ID);
+    traitModel.addTraits(getAll());
+    this.specialtyConfiguration = new SpecialtiesConfiguration(this, abilityTraitGroups, context);
   }
 }

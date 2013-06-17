@@ -2,7 +2,7 @@ package net.sf.anathema.character.main.description.model;
 
 import net.sf.anathema.character.change.AnnounceChangeValueListener;
 import net.sf.anathema.character.change.ChangeAnnouncer;
-import net.sf.anathema.character.main.model.CharacterModel;
+import net.sf.anathema.character.main.model.HeroModel;
 import net.sf.anathema.character.main.model.Hero;
 import net.sf.anathema.character.main.model.InitializationContext;
 import net.sf.anathema.lib.control.ObjectValueListener;
@@ -10,7 +10,7 @@ import net.sf.anathema.lib.util.Identifier;
 import net.sf.anathema.lib.workflow.textualdescription.ITextualDescription;
 import net.sf.anathema.lib.workflow.textualdescription.model.SimpleTextualDescription;
 
-public class TextualCharacterDescription implements CharacterDescription, CharacterModel {
+public class TextualCharacterDescription implements CharacterDescription, HeroModel {
 
   private final ITextualDescription name = new SimpleTextualDescription();
   private final ITextualDescription paraphrasis = new SimpleTextualDescription();
