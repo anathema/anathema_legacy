@@ -15,7 +15,6 @@ import net.sf.anathema.character.presenter.magic.CommonSpecialCharmList;
 import net.sf.anathema.character.presenter.magic.LearnInteractionPresenter;
 import net.sf.anathema.character.presenter.magic.SpecialCharmList;
 import net.sf.anathema.character.presenter.magic.SpecialCharmViewBuilder;
-import net.sf.anathema.character.presenter.magic.detail.DetailDemandingMagicPresenter;
 import net.sf.anathema.character.presenter.magic.detail.ShowMagicDetailListener;
 import net.sf.anathema.charmtree.presenter.AbstractCascadePresenter;
 import net.sf.anathema.charmtree.presenter.CharmFilterContainer;
@@ -26,7 +25,7 @@ import net.sf.anathema.lib.resources.Resources;
 import net.sf.anathema.lib.util.Identifier;
 import net.sf.anathema.platform.tree.document.visualizer.ITreePresentationProperties;
 
-public class CharacterCharmTreePresenter extends AbstractCascadePresenter implements DetailDemandingMagicPresenter {
+public class CharacterCharmTreePresenter extends AbstractCascadePresenter {
 
   private final ICharmView view;
   private final CharacterCharmModel model;
@@ -61,11 +60,6 @@ public class CharacterCharmTreePresenter extends AbstractCascadePresenter implem
   }
 
   @Override
-  public ICharmView getView() {
-    return view;
-  }
-
-  @Override
   protected CharmFilterContainer getFilterContainer() {
     return model.getCharmConfiguration();
   }
@@ -75,7 +69,7 @@ public class CharacterCharmTreePresenter extends AbstractCascadePresenter implem
     return new CharacterGroupCharmTree(model, cascadeType);
   }
 
-  @Override
+  @SuppressWarnings("UnusedDeclaration")
   public void addShowDetailListener(ShowMagicDetailListener listener) {
     view.addCharmInteractionListener(new ShowDetailInteractionListener(listener));
   }

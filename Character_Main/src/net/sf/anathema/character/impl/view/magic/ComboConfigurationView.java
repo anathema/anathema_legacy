@@ -11,6 +11,7 @@ import net.sf.anathema.character.view.magic.IComboConfigurationView;
 import net.sf.anathema.character.view.magic.IComboView;
 import net.sf.anathema.character.view.magic.IComboViewListener;
 import net.sf.anathema.character.view.magic.IComboViewProperties;
+import net.sf.anathema.framework.swing.IView;
 import net.sf.anathema.interaction.Command;
 import net.sf.anathema.interaction.Tool;
 import net.sf.anathema.lib.control.ObjectValueListener;
@@ -36,7 +37,7 @@ import javax.swing.event.ListSelectionListener;
 
 import static net.sf.anathema.lib.gui.swing.GuiUtilities.revalidate;
 
-public class ComboConfigurationView implements IComboConfigurationView {
+public class ComboConfigurationView implements IComboConfigurationView, IView {
   private static final int TEXT_COLUMNS = 20;
   private MagicLearnView magicLearnView = new MagicLearnView();
   private final JPanel viewPort = new JPanel(new MigLayout(new LC().insets("6").fill().wrapAfter(5)));

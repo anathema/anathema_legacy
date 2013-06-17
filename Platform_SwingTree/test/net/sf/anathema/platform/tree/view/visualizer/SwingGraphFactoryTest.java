@@ -3,7 +3,7 @@ package net.sf.anathema.platform.tree.view.visualizer;
 import net.sf.anathema.platform.tree.document.components.ILayer;
 import net.sf.anathema.platform.tree.document.components.IVisualizableNode;
 import net.sf.anathema.platform.tree.document.visualizer.ITreePresentationProperties;
-import net.sf.anathema.platform.tree.util.Area;
+import net.sf.anathema.framework.ui.Area;
 import org.junit.Before;
 import org.junit.Test;
 

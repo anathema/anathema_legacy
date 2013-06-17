@@ -10,11 +10,13 @@ import net.sf.anathema.charmtree.builder.stringbuilder.CharmInfoStringBuilder;
 import net.sf.anathema.charmtree.builder.stringbuilder.ICharmInfoStringBuilder;
 import net.sf.anathema.framework.presenter.resources.BasicUi;
 import net.sf.anathema.lib.file.RelativePath;
+import net.sf.anathema.lib.gui.AbstractUIConfiguration;
+import net.sf.anathema.lib.gui.AgnosticUIConfiguration;
+import net.sf.anathema.lib.gui.list.LegalityCheck;
 import net.sf.anathema.lib.resources.Resources;
+import net.sf.anathema.lib.util.Identifier;
 
-import javax.swing.ListCellRenderer;
-
-public final class ComboViewProperties extends AbstractMagicLearnProperties implements IComboViewProperties {
+public class ComboViewProperties extends AbstractMagicLearnProperties implements IComboViewProperties {
   private final IComboConfiguration comboConfiguration;
   private final ICharmInfoStringBuilder charmInfoStringProvider;
 
@@ -50,13 +52,18 @@ public final class ComboViewProperties extends AbstractMagicLearnProperties impl
   }
 
   @Override
-  public ListCellRenderer getLearnedMagicRenderer() {
-    return new AlwaysLegalCharmRenderer(getResources(), charmInfoStringProvider);
+  public AbstractUIConfiguration<Identifier> getLearnedMagicRenderer() {
+    return new CharmUIConfiguration(getResources(), charmInfoStringProvider);
   }
 
   @Override
-  public ListCellRenderer getAvailableMagicRenderer() {
-    return new ComboLegalityCharmRenderer(getResources(), charmInfoStringProvider, comboConfiguration);
+  public AgnosticUIConfiguration getAvailableMagicRenderer() {
+    return new CharmUIConfiguration(getResources(), charmInfoStringProvider);
+  }
+
+  @Override
+  public LegalityCheck getLegalityCheck() {
+    return new ComboLegality(comboConfiguration);
   }
 
   @Override
@@ -98,4 +105,5 @@ public final class ComboViewProperties extends AbstractMagicLearnProperties impl
   public String getCancelButtonEditToolTip() {
     return getResources().getString("CardView.CharmConfiguration.ComboCreation.ClearEditToolTip");
   }
+
 }

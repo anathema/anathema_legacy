@@ -9,17 +9,14 @@ import net.sf.anathema.character.model.ISpellConfiguration;
 import net.sf.anathema.character.view.magic.ISpellViewProperties;
 import net.sf.anathema.framework.ui.IdentifierConfiguration;
 import net.sf.anathema.lib.gui.AgnosticUIConfiguration;
-import net.sf.anathema.lib.gui.list.LegalityCheckListCellRenderer;
+import net.sf.anathema.lib.gui.list.LegalityCheck;
 import net.sf.anathema.lib.resources.Resources;
 import net.sf.anathema.lib.util.Identifier;
 
 import javax.swing.JButton;
-import javax.swing.JComponent;
 import javax.swing.JList;
-import javax.swing.ListCellRenderer;
 import javax.swing.event.ListSelectionEvent;
 import javax.swing.event.ListSelectionListener;
-import java.awt.Component;
 
 public class SpellViewProperties extends AbstractMagicLearnProperties implements ISpellViewProperties {
 
@@ -40,22 +37,13 @@ public class SpellViewProperties extends AbstractMagicLearnProperties implements
   }
 
   @Override
-  public ListCellRenderer getAvailableMagicRenderer() {
-    return new LegalityCheckListCellRenderer(getResources()) {
+  public AgnosticUIConfiguration getAvailableMagicRenderer() {
+    return new SpellUiConfiguration(getResources(), tooltipBuilder);
+  }
 
-      @Override
-      public Component getListCellRendererComponent(JList list, Object value, int index, boolean isSelected, boolean cellHasFocus) {
-        JComponent rendererComponent = (JComponent) super.getListCellRendererComponent(list, value, index, isSelected, cellHasFocus);
-        String tooltip = tooltipBuilder.createTooltip((ISpell) value);
-        rendererComponent.setToolTipText(tooltip);
-        return rendererComponent;
-      }
-
-      @Override
-      protected boolean isLegal(Object object) {
-        return spellConfiguration.isSpellAllowed((ISpell) object);
-      }
-    };
+  @Override
+  public LegalityCheck getLegalityCheck() {
+    return new SpellLegality(spellConfiguration);
   }
 
   @Override
@@ -97,4 +85,5 @@ public class SpellViewProperties extends AbstractMagicLearnProperties implements
       }
     };
   }
+
 }

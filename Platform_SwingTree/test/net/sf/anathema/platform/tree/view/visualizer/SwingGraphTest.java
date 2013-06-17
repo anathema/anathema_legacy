@@ -1,6 +1,6 @@
 package net.sf.anathema.platform.tree.view.visualizer;
 
-import net.sf.anathema.platform.tree.util.Area;
+import net.sf.anathema.framework.ui.Area;
 import net.sf.anathema.platform.tree.view.SwingCascadeBuilder;
 import net.sf.anathema.platform.tree.view.container.ContainerCascade;
 import net.sf.anathema.platform.tree.view.container.DefaultContainerCascade;

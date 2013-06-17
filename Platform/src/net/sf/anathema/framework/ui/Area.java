@@ -1,4 +1,4 @@
-package net.sf.anathema.platform.tree.util;
+package net.sf.anathema.framework.ui;
 
 public class Area {
 

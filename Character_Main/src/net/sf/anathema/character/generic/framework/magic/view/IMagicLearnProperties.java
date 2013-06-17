@@ -1,8 +1,9 @@
 package net.sf.anathema.character.generic.framework.magic.view;
 
 import net.sf.anathema.lib.file.RelativePath;
-
-import javax.swing.ListCellRenderer;
+import net.sf.anathema.lib.gui.AgnosticUIConfiguration;
+import net.sf.anathema.lib.gui.list.LegalityCheck;
+import net.sf.anathema.lib.util.Identifier;
 
 public interface IMagicLearnProperties {
 
@@ -14,9 +15,11 @@ public interface IMagicLearnProperties {
 
   String getRemoveButtonToolTip();
 
-  ListCellRenderer getAvailableMagicRenderer();
-
-  ListCellRenderer getLearnedMagicRenderer();
+  AgnosticUIConfiguration<Identifier> getLearnedMagicRenderer();
 
   boolean isMagicSelectionAvailable(Object selectedValue);
+
+  AgnosticUIConfiguration getAvailableMagicRenderer();
+
+  LegalityCheck getLegalityCheck();
 }

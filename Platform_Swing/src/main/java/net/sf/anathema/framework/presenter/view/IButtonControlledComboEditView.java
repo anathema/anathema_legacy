@@ -10,6 +10,7 @@ public interface IButtonControlledComboEditView<K> {
 
   void addEditChangedListener(ObjectValueListener<String> name);
 
+  //TODO: Listener
   void addButtonListener(ActionListener listener);
 
   void clear();

@@ -4,7 +4,7 @@ import net.sf.anathema.framework.swing.IView;
 import net.sf.anathema.framework.ui.RGBColor;
 import net.sf.anathema.platform.tree.presenter.view.NodeInteractionListener;
 
-public interface ICharmView extends ICascadeSelectionView, IView, ISpecialCharmViewContainer {
+public interface ICharmView extends ICascadeSelectionView, ISpecialCharmViewContainer {
 
   void addCharmInteractionListener(NodeInteractionListener listener);
 

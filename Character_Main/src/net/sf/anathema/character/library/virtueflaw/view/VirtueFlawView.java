@@ -10,7 +10,10 @@ import net.sf.anathema.framework.swing.IView;
 import net.sf.anathema.framework.swing.selection.ObjectSelectionView;
 import net.sf.anathema.framework.value.IIntValueView;
 import net.sf.anathema.framework.value.IntegerViewFactory;
+import net.sf.anathema.lib.gui.AgnosticUIConfiguration;
+import net.sf.anathema.lib.gui.ConfigurableSwingUI;
 import net.sf.anathema.lib.gui.selection.IObjectSelectionView;
+import net.sf.anathema.lib.gui.ui.ObjectUiListCellRenderer;
 import net.sf.anathema.lib.workflow.textualdescription.ITextView;
 import net.sf.anathema.lib.workflow.textualdescription.SwingTextView;
 import net.sf.anathema.lib.workflow.textualdescription.view.LabelTextView;
@@ -71,7 +74,8 @@ public class VirtueFlawView implements IVirtueFlawView, IView {
   }
 
   @Override
-  public IObjectSelectionView<TraitType> addVirtueFlawRootSelectionView(String labelText, ListCellRenderer renderer) {
+  public IObjectSelectionView<TraitType> addVirtueFlawRootSelectionView(String labelText, AgnosticUIConfiguration uiConfiguration) {
+    ListCellRenderer renderer = new ObjectUiListCellRenderer(new ConfigurableSwingUI(uiConfiguration));
     ObjectSelectionView<TraitType> rootSelectionView = new ObjectSelectionView<>(labelText, renderer, new TraitType[0]);
     rootSelectionView.addTo(virtueFlawPanel, new CC().growX());
     return rootSelectionView;
