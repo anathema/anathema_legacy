@@ -4,7 +4,7 @@ dependencies {
     compile project(':Hero_OtherTraits')
     compile project(':Hero_Traits')
     testCompile parent.ext.testDependencies
-    testCompile parent.ext.testDependencies
+    testCompile project(path: ':Platform', configuration: 'tests')
 }
 
 configurations {
