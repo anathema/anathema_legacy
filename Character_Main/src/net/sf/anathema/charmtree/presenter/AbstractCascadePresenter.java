@@ -17,10 +17,7 @@ import net.sf.anathema.lib.resources.Resources;
 import net.sf.anathema.lib.util.Identifier;
 import net.sf.anathema.platform.tree.presenter.view.CascadeLoadedListener;
 
-import javax.swing.JComponent;
 import java.awt.Component;
-import java.awt.event.MouseAdapter;
-import java.awt.event.MouseEvent;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -47,7 +44,7 @@ public abstract class AbstractCascadePresenter implements ICascadeSelectionPrese
     listenForCascadeLoading();
     initCharmTypeSelectionListening();
     specialCharmPresenter.initPresentation();
-    resetSpecialViewsAndTooltipsWhenCursorLeavesCharmArea();
+    view.whenCursorLeavesCharmAreaResetAllPopups();
     createCharmGroupSelector();
     initFilters();
     createHelpText();
@@ -78,20 +75,6 @@ public abstract class AbstractCascadePresenter implements ICascadeSelectionPrese
         specialCharmPresenter.showSpecialViews();
       }
     });
-  }
-
-  //TODO: AWT Tooltips
-  private void resetSpecialViewsAndTooltipsWhenCursorLeavesCharmArea() {
-    getCharmComponent().addMouseListener(new MouseAdapter() {
-      @Override
-      public void mouseExited(MouseEvent e) {
-        specialCharmPresenter.resetTooltipsWhenCursorLeavesCharmArea();
-      }
-    });
-  }
-
-  private JComponent getCharmComponent() {
-    return view.getCharmComponent();
   }
 
   protected Resources getResources() {

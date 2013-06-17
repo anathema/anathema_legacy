@@ -35,4 +35,6 @@ public interface ICascadeSelectionView {
   JComponent getCharmComponent();
 
   void initGui(ToolTipProperties treeProperties, NodeProperties properties);
+
+  void whenCursorLeavesCharmAreaResetAllPopups();
 }

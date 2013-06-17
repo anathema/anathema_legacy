@@ -5,8 +5,6 @@ import net.sf.anathema.character.model.charm.ICharmConfiguration;
 import net.sf.anathema.charmtree.presenter.SpecialCharmViewPresenter;
 import net.sf.anathema.charmtree.view.CharmGroupInformer;
 
-import javax.swing.ToolTipManager;
-
 public class CharacterSpecialCharmPresenter implements SpecialCharmViewPresenter {
   private final SpecialCharmList list;
   private final CharmGroupInformer charmGroupInformer;
@@ -25,13 +23,6 @@ public class CharacterSpecialCharmPresenter implements SpecialCharmViewPresenter
     for (ISpecialCharm charm : getCharmConfiguration().getSpecialCharms()) {
       list.add(charm);
     }
-  }
-
-  @Override
-  //TODO: Swing Tooltips
-  public void resetTooltipsWhenCursorLeavesCharmArea() {
-    ToolTipManager.sharedInstance().setEnabled(false);
-    ToolTipManager.sharedInstance().setEnabled(true);
   }
 
   @Override

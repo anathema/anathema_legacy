@@ -27,9 +27,12 @@ import javax.swing.JComponent;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.ListCellRenderer;
+import javax.swing.ToolTipManager;
 import javax.swing.border.TitledBorder;
 import java.awt.BorderLayout;
 import java.awt.Dimension;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
 
 import static net.sf.anathema.lib.gui.layout.LayoutUtils.withoutInsets;
 import static net.sf.anathema.lib.gui.swing.GuiUtilities.calculateComboBoxSize;
@@ -146,5 +149,16 @@ public abstract class AbstractCascadeSelectionView implements ICascadeSelectionV
   @Override
   public JComponent getCharmComponent() {
     return swingTreeView.getComponent();
+  }
+
+  @Override
+  public void whenCursorLeavesCharmAreaResetAllPopups() {
+    getCharmComponent().addMouseListener(new MouseAdapter() {
+      @Override
+      public void mouseExited(MouseEvent e) {
+        ToolTipManager.sharedInstance().setEnabled(false);
+        ToolTipManager.sharedInstance().setEnabled(true);
+      }
+    });
   }
 }
