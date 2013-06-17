@@ -4,7 +4,9 @@ import net.miginfocom.layout.CC;
 import net.sf.anathema.interaction.Command;
 import net.sf.anathema.interaction.Tool;
 import net.sf.anathema.lib.file.RelativePath;
+import net.sf.anathema.lib.gui.ConfigurableSwingUI;
 import net.sf.anathema.lib.gui.list.ComponentEnablingListSelectionListener;
+import net.sf.anathema.lib.gui.ui.ObjectUiListCellRenderer;
 import net.sf.anathema.lib.util.Identifier;
 import net.sf.anathema.swing.interaction.ActionInteraction;
 import net.sf.anathema.view.interaction.AddToButton;
@@ -16,6 +18,7 @@ import javax.swing.JButton;
 import javax.swing.JList;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
+import javax.swing.ListCellRenderer;
 import javax.swing.ListModel;
 import javax.swing.event.ListSelectionEvent;
 import javax.swing.event.ListSelectionListener;
@@ -38,7 +41,8 @@ public class MagicLearnView implements IMagicLearnView {
   public void init(final IMagicLearnProperties properties) {
     learnOptionsList.setCellRenderer(properties.getAvailableMagicRenderer());
     learnOptionsList.setSelectionMode(SINGLE_SELECTION);
-    learnedList.setCellRenderer(properties.getLearnedMagicRenderer());
+    ListCellRenderer renderer = new ObjectUiListCellRenderer(new ConfigurableSwingUI<>(properties.getLearnedMagicRenderer()));
+    learnedList.setCellRenderer(renderer);
     final JButton addButton = createAddMagicButton(properties.getAddButtonIcon(), properties.getAddButtonToolTip());
     addOptionListListener(new ListSelectionListener() {
       @Override

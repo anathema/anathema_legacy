@@ -8,10 +8,8 @@ import net.sf.anathema.character.generic.magic.spells.CircleType;
 import net.sf.anathema.character.model.ICharacter;
 import net.sf.anathema.character.model.IMagicLearnListener;
 import net.sf.anathema.character.model.ISpellConfiguration;
-import net.sf.anathema.character.presenter.magic.detail.DetailDemandingMagicPresenter;
 import net.sf.anathema.character.presenter.magic.detail.ShowMagicDetailListener;
 import net.sf.anathema.character.view.magic.ISpellView;
-import net.sf.anathema.framework.swing.IView;
 import net.sf.anathema.lib.compare.I18nedIdentificateComparator;
 import net.sf.anathema.lib.compare.I18nedIdentificateSorter;
 import net.sf.anathema.lib.control.ObjectValueListener;
@@ -27,7 +25,7 @@ import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
 
-public class SpellPresenter implements DetailDemandingMagicPresenter {
+public class SpellPresenter {
 
   private final ISpellConfiguration spellConfiguration;
   private SpellModel spellModel;
@@ -48,7 +46,6 @@ public class SpellPresenter implements DetailDemandingMagicPresenter {
     circle = spellModel.getCircles()[0];
   }
 
-  @Override
   public void initPresentation() {
     Identifier[] allowedCircles = spellModel.getCircles();
     view.initGui(allowedCircles);
@@ -147,12 +144,7 @@ public class SpellPresenter implements DetailDemandingMagicPresenter {
     return spellList.toArray(new ISpell[spellList.size()]);
   }
 
-  @Override
-  public IView getView() {
-    return view;
-  }
-
-  @Override
+  @SuppressWarnings("UnusedDeclaration")
   public void addShowDetailListener(final ShowMagicDetailListener listener) {
     ListSelectionListener editListener = new ListSelectionListener() {
       @Override

@@ -2,8 +2,11 @@ package net.sf.anathema.character.generic.framework.magic.view;
 
 import net.sf.anathema.framework.presenter.resources.BasicUi;
 import net.sf.anathema.framework.presenter.view.IdentificateListCellRenderer;
+import net.sf.anathema.framework.ui.IdentifierConfiguration;
 import net.sf.anathema.lib.file.RelativePath;
+import net.sf.anathema.lib.gui.AgnosticUIConfiguration;
 import net.sf.anathema.lib.resources.Resources;
+import net.sf.anathema.lib.util.Identifier;
 
 import javax.swing.ListCellRenderer;
 
@@ -30,7 +33,7 @@ public abstract class AbstractMagicLearnProperties implements IMagicLearnPropert
   }
 
   @Override
-  public ListCellRenderer getLearnedMagicRenderer() {
-    return new IdentificateListCellRenderer(getResources());
+  public AgnosticUIConfiguration<Identifier> getLearnedMagicRenderer() {
+    return new IdentifierConfiguration(resources);
   }
 }
