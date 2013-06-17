@@ -71,16 +71,6 @@ public class SpellView implements ISpellView, IView {
   }
 
   @Override
-  public void addOptionListListener(ListSelectionListener listener) {
-    magicLearnView.addOptionListListener(listener);
-  }
-
-  @Override
-  public void addSelectionListListener(ListSelectionListener listener) {
-    magicLearnView.addSelectionListListener(listener);
-  }
-
-  @Override
   public void addCircleSelectionListener(ObjectValueListener<CircleType> listener) {
     circleControl.addListener(listener);
   }

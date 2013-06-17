@@ -22,10 +22,4 @@ public interface IMagicLearnView {
   void clearSelection();
 
   void addMagicViewListener(IMagicViewListener listener);
-
-  //todo: Listener
-  void addSelectionListListener(ListSelectionListener listener);
-
-  //todo: Listener
-  void addOptionListListener(ListSelectionListener listener);
 }

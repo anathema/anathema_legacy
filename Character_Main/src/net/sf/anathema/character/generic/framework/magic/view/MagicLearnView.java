@@ -174,12 +174,10 @@ public class MagicLearnView implements IMagicLearnView {
     learnedList.clearSelection();
   }
 
-  @Override
   public void addSelectionListListener(ListSelectionListener listener) {
     learnedList.addListSelectionListener(listener);
   }
 
-  @Override
   public void addOptionListListener(ListSelectionListener listener) {
     learnOptionsList.addListSelectionListener(listener);
   }
