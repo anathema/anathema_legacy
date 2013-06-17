@@ -9,6 +9,7 @@ import net.sf.anathema.character.model.ISpellConfiguration;
 import net.sf.anathema.character.view.magic.ISpellViewProperties;
 import net.sf.anathema.framework.ui.IdentifierConfiguration;
 import net.sf.anathema.lib.gui.AgnosticUIConfiguration;
+import net.sf.anathema.lib.gui.list.LegalityCheckListCellRenderer;
 import net.sf.anathema.lib.resources.Resources;
 import net.sf.anathema.lib.util.Identifier;
 
@@ -38,7 +39,9 @@ public class SpellViewProperties extends AbstractMagicLearnProperties implements
 
   @Override
   public ListCellRenderer getAvailableMagicRenderer() {
-    return new SpellLegalityRenderer(getResources(), spellConfiguration, tooltipBuilder);
+    SpellLegality check = new SpellLegality(spellConfiguration);
+    SpellUiConfiguration configuration = new SpellUiConfiguration(getResources(), tooltipBuilder);
+    return new LegalityCheckListCellRenderer(check, configuration);
   }
 
   @Override

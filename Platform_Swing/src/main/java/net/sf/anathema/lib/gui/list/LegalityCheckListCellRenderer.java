@@ -7,11 +7,11 @@ import javax.swing.JComponent;
 import javax.swing.JList;
 import java.awt.Component;
 
-public abstract class LegalityCheckListCellRenderer extends DefaultListCellRenderer {
+public class LegalityCheckListCellRenderer extends DefaultListCellRenderer {
   private final LegalityCheck check;
   private final AbstractUIConfiguration configuration;
 
-  protected LegalityCheckListCellRenderer(LegalityCheck check, AbstractUIConfiguration configuration) {
+  public LegalityCheckListCellRenderer(LegalityCheck check, AbstractUIConfiguration configuration) {
     this.check = check;
     this.configuration = configuration;
   }
