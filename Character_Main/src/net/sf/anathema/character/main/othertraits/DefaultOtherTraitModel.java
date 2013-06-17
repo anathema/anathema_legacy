@@ -24,15 +24,17 @@ import net.sf.anathema.lib.util.Identifier;
 
 public class DefaultOtherTraitModel extends DefaultTraitMap implements OtherTraitModel, CharacterModel {
 
+  private Hero hero;
   private ICharacterTemplate template;
 
-  public DefaultOtherTraitModel(ICharacterTemplate template, ICharacterModelContext modelContext, TraitModel traitModel) {
+  public DefaultOtherTraitModel(Hero hero, ICharacterTemplate template, ICharacterModelContext modelContext, TraitModel traitModel) {
+    this.hero = hero;
     this.template = template;
     addEssence(modelContext.getTraitContext());
     addVirtues(modelContext.getTraitContext());
     addWillpower(modelContext.getTraitContext());
     connectWillpowerAndVirtues();
-    getTrait(OtherTraitType.Essence).addCurrentValueListener(new EssenceLimitationListener(traitModel, modelContext));
+    getTrait(OtherTraitType.Essence).addCurrentValueListener(new EssenceLimitationListener(traitModel, hero));
     traitModel.addTraits(getAll());
   }
 

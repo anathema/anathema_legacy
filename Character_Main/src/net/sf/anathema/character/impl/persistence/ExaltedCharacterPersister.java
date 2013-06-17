@@ -58,7 +58,7 @@ public class ExaltedCharacterPersister extends AbstractSingleFileItemPersister {
   @Override
   public IItem load(Document characterXml) throws PersistenceException {
     Element documentRoot = characterXml.getRootElement();
-    ICharacter character = statisticsPersister.load(documentRoot);
+    ExaltedCharacter character = statisticsPersister.load(documentRoot);
     descriptionPersister.load(documentRoot, CharacterDescriptionFetcher.fetch(character));
     markCharacterReadyForWork(character);
     IItem item = new AnathemaDataItem(characterType, character);
@@ -81,7 +81,7 @@ public class ExaltedCharacterPersister extends AbstractSingleFileItemPersister {
     }
   }
 
-  private void markCharacterReadyForWork(ICharacter character) {
-    character.getCharacterContext().setFullyLoaded(true);
+  private void markCharacterReadyForWork(ExaltedCharacter character) {
+    character.setFullyLoaded(true);
   }
 }

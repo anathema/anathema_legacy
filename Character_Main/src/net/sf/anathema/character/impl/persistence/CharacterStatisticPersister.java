@@ -73,7 +73,7 @@ public class CharacterStatisticPersister {
     additonalModelPersister.save(statisticsElement, character.getExtendedConfiguration().getAdditionalModels());
   }
 
-  public ICharacter load(Element parent) throws PersistenceException {
+  public ExaltedCharacter load(Element parent) throws PersistenceException {
     try {
       Element statisticsElement = parent.element(TAG_STATISTICS);
       ITemplateType templateType = loadTemplateType(statisticsElement);

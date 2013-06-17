@@ -108,17 +108,6 @@ public class DummyCharacterModelContext implements ICharacterModelContext {
   }
 
   @Override
-  public boolean isFullyLoaded() {
-    // Nothing to do
-    return false;
-  }
-
-  @Override
-  public void setFullyLoaded(boolean loaded) {
-    // Nothing to do
-  }
-
-  @Override
   public <T> List<T> getAllRegistered(Class<T> interfaceClass) {
     return getCharacter().getAllRegistered(interfaceClass);
   }

@@ -62,13 +62,13 @@ public class ExaltedCharacter implements ICharacter {
     this.characterTemplate = template;
     addModels(generics);
     // todo: Beware the side effects
-    OtherTraitModel otherTraitModel = new DefaultOtherTraitModel(template, context, getTraitModel());
+    OtherTraitModel otherTraitModel = new DefaultOtherTraitModel(hero, template, context, getTraitModel());
     this.abilities = new DefaultAbilityModel(template, context, getTraitModel());
     this.attributes = new DefaultAttributeModel(template, context, getTraitModel());
     new CharacterTraitListening(this, context.getCharacterListening()).initListening();
     this.health = new HealthConfiguration(getTraitArray(template.getToughnessControllingTraitTypes()), getTraitModel(),
             template.getBaseHealthProviders());
-    this.charms = new CharmConfiguration(health, context, generics.getCharacterTypes(), generics.getTemplateRegistry(), generics.getCharmProvider());
+    this.charms = new CharmConfiguration(this, health, context, generics.getCharacterTypes(), generics.getTemplateRegistry(), generics.getCharmProvider());
     initCharmListening(charms);
     this.essencePool = new EssencePoolModelImpl(template.getEssenceTemplate(), template.getAdditionalRules(), context);
     charms.initListening();
@@ -214,5 +214,14 @@ public class ExaltedCharacter implements ICharacter {
   @Override
   public <M extends CharacterModel> M getModel(Identifier id) {
     return hero.getModel(id);
+  }
+
+  public void setFullyLoaded(boolean loaded) {
+    hero.setFullyLoaded(loaded);
+  }
+
+  @Override
+  public boolean isFullyLoaded() {
+    return hero.isFullyLoaded();
   }
 }

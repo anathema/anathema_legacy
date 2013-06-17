@@ -34,9 +34,5 @@ public interface ICharacterModelContext {
 
   IAdditionalModel getAdditionalModel(String id);
 
-  boolean isFullyLoaded();
-
-  void setFullyLoaded(boolean loaded);
-
   <T> List<T> getAllRegistered(Class<T> interfaceClass);
 }

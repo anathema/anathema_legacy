@@ -51,7 +51,7 @@ public class ExaltedCharacterPersisterTest {
     ICharacterGenerics generics = createCharacterGenerics();
     ExaltedCharacterPersister persister = new ExaltedCharacterPersister(type, generics, messaging);
     ICharacter character = createNewCharacter(persister);
-    assertThat(character.getCharacterContext().isFullyLoaded(), is(true));
+    assertThat(character.isFullyLoaded(), is(true));
   }
 
   private ICharacterGenerics createCharacterGenerics() {

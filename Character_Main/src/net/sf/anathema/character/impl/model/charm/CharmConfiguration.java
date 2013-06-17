@@ -23,6 +23,7 @@ import net.sf.anathema.character.impl.model.charm.options.MartialArtsOptions;
 import net.sf.anathema.character.impl.model.charm.options.NonMartialArtsOptions;
 import net.sf.anathema.character.impl.model.charm.special.DefaultMartialArtsCharmConfiguration;
 import net.sf.anathema.character.impl.model.charm.special.SpecialCharmManager;
+import net.sf.anathema.character.main.model.Hero;
 import net.sf.anathema.character.model.charm.CharmLearnAdapter;
 import net.sf.anathema.character.model.charm.ICharmConfiguration;
 import net.sf.anathema.character.model.charm.ICharmLearnListener;
@@ -69,12 +70,14 @@ public class CharmConfiguration implements ICharmConfiguration {
   private PrerequisiteModifyingCharms prerequisiteModifyingCharms;
   private MartialArtsOptions martialArtsOptions;
   private NonMartialArtsOptions nonMartialArtsOptions;
+  private Hero hero;
 
-  public CharmConfiguration(IHealthConfiguration health, ICharacterModelContext context, CharacterTypes characterTypes, ITemplateRegistry registry,
+  public CharmConfiguration(Hero hero, IHealthConfiguration health, ICharacterModelContext context, CharacterTypes characterTypes, ITemplateRegistry registry,
                             ICharmProvider provider) {
+    this.hero = hero;
     this.martialArtsOptions = new MartialArtsOptions(context, registry);
     this.nonMartialArtsOptions = new NonMartialArtsOptions(context, characterTypes, registry);
-    this.manager = new SpecialCharmManager(this, health, context);
+    this.manager = new SpecialCharmManager(hero, this, health, context);
     this.context = context;
     this.provider = provider;
     this.martialArtsGroups = createGroups(martialArtsOptions.getAllCharmGroups());
@@ -328,7 +331,7 @@ public class CharmConfiguration implements ICharmConfiguration {
   }
 
   private void verifyCharms() {
-    if (!context.isFullyLoaded()) {
+    if (!hero.isFullyLoaded()) {
       return;
     }
     List<ICharm> charmsToUnlearn = new ArrayList<>();

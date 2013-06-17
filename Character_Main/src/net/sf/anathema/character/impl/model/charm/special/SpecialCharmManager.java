@@ -15,6 +15,7 @@ import net.sf.anathema.character.generic.magic.charms.special.ISubeffectCharm;
 import net.sf.anathema.character.generic.magic.charms.special.ITraitCapModifyingCharm;
 import net.sf.anathema.character.generic.magic.charms.special.IUpgradableCharm;
 import net.sf.anathema.character.impl.model.charm.ISpecialCharmManager;
+import net.sf.anathema.character.main.model.Hero;
 import net.sf.anathema.character.model.charm.CharmLearnAdapter;
 import net.sf.anathema.character.model.charm.ICharmConfiguration;
 import net.sf.anathema.character.model.charm.IExtendedCharmLearnableArbitrator;
@@ -30,9 +31,11 @@ public class SpecialCharmManager implements ISpecialCharmManager {
   private final IHealthConfiguration health;
   private final ICharacterModelContext context;
   private final IExtendedCharmLearnableArbitrator arbitrator;
+  private Hero hero;
   private final ICharmConfiguration config;
 
-  public SpecialCharmManager(ICharmConfiguration config, IHealthConfiguration health, ICharacterModelContext context) {
+  public SpecialCharmManager(Hero hero, ICharmConfiguration config, IHealthConfiguration health, ICharacterModelContext context) {
+    this.hero = hero;
     this.config = config;
     this.arbitrator = config;
     this.health = health;
@@ -145,7 +148,7 @@ public class SpecialCharmManager implements ISpecialCharmManager {
       configuration.addSpecialCharmLearnListener(new ISpecialCharmLearnListener() {
         @Override
         public void learnCountChanged(int newValue) {
-          if (!context.isFullyLoaded()) {
+          if (!hero.isFullyLoaded()) {
             return;
           }
           if (newValue == 0) {

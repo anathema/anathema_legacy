@@ -1,10 +1,10 @@
 package net.sf.anathema.character.main.trait;
 
 import com.google.common.collect.Lists;
-import net.sf.anathema.character.generic.framework.additionaltemplate.model.ICharacterModelContext;
 import net.sf.anathema.character.impl.model.traits.EssenceLimitationListener;
 import net.sf.anathema.character.impl.model.traits.TraitIterable;
 import net.sf.anathema.character.library.trait.Trait;
+import net.sf.anathema.character.main.model.Hero;
 import org.junit.Test;
 
 import static org.mockito.Mockito.mock;
@@ -15,11 +15,11 @@ public class EssenceLimitationListenerTest {
 
   @Test
   public void doesNotTriggerResetUntilCharacterIsFullyLoaded() throws Exception {
-    ICharacterModelContext context = mock(ICharacterModelContext.class);
+    Hero hero = mock(Hero.class);
     TraitIterable traits = mock(TraitIterable.class);
     Trait trait = mock(Trait.class);
     when(traits.iterator()).thenReturn(Lists.newArrayList(trait).iterator());
-    new EssenceLimitationListener(traits, context).valueChanged(7);
+    new EssenceLimitationListener(traits, hero).valueChanged(7);
     verifyZeroInteractions(trait);
   }
 }

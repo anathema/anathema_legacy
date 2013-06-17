@@ -39,7 +39,6 @@ public class CharacterModelContext implements ICharacterModelContext, ICharmCont
   private final IGenericCharacter character;
   private ICharacter hero;
   private final IBasicCharacterData characterData;
-  private boolean isFullyLoaded = false;
 
   public CharacterModelContext(IGenericCharacter character, ICharacter hero) {
     this.character = character;
@@ -137,16 +136,6 @@ public class CharacterModelContext implements ICharacterModelContext, ICharmCont
   @Override
   public IGenericCharmConfiguration getCharmConfiguration() {
     return character;
-  }
-
-  @Override
-  public boolean isFullyLoaded() {
-    return isFullyLoaded;
-  }
-
-  @Override
-  public void setFullyLoaded(boolean loaded) {
-    isFullyLoaded = loaded;
   }
 
   @Override
