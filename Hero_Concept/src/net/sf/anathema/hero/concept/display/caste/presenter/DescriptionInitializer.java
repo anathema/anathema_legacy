@@ -1,12 +1,13 @@
-package net.sf.anathema.character.presenter.initializers;
+package net.sf.anathema.hero.concept.display.caste.presenter;
 
 import net.sf.anathema.character.main.model.concept.CharacterConcept;
 import net.sf.anathema.character.main.model.concept.CharacterConceptFetcher;
 import net.sf.anathema.character.main.model.description.HeroDescription;
 import net.sf.anathema.character.main.model.description.HeroDescriptionFetcher;
 import net.sf.anathema.character.model.ICharacter;
-import net.sf.anathema.character.presenter.CharacterDescriptionPresenter;
 import net.sf.anathema.character.presenter.DescriptionDetails;
+import net.sf.anathema.character.presenter.initializers.CharacterModelInitializer;
+import net.sf.anathema.character.presenter.initializers.RegisteredInitializer;
 import net.sf.anathema.character.view.ICharacterDescriptionView;
 import net.sf.anathema.character.view.SectionView;
 import net.sf.anathema.framework.IApplicationModel;

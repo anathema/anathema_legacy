@@ -1,4 +1,4 @@
-package net.sf.anathema.character.presenter;
+package net.sf.anathema.hero.concept.display.caste.presenter;
 
 import net.sf.anathema.character.generic.caste.ICasteType;
 import net.sf.anathema.character.generic.framework.additionaltemplate.listening.DedicatedCharacterChangeAdapter;
@@ -7,7 +7,8 @@ import net.sf.anathema.character.main.model.concept.CharacterConceptFetcher;
 import net.sf.anathema.character.main.model.experience.ExperienceModelFetcher;
 import net.sf.anathema.character.model.ICharacter;
 import net.sf.anathema.character.model.ITypedDescription;
-import net.sf.anathema.character.view.concept.CasteView;
+import net.sf.anathema.character.presenter.CasteSelectObjectUi;
+import net.sf.anathema.hero.concept.display.caste.view.CasteView;
 import net.sf.anathema.lib.control.IChangeListener;
 import net.sf.anathema.lib.control.ObjectValueListener;
 import net.sf.anathema.lib.gui.selection.IObjectSelectionView;

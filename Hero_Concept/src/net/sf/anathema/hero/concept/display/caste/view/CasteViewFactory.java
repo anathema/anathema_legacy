@@ -1,9 +1,8 @@
-package net.sf.anathema.character.impl.view;
+package net.sf.anathema.hero.concept.display.caste.view;
 
 import net.sf.anathema.character.generic.type.ICharacterType;
-import net.sf.anathema.character.impl.view.concept.SimpleCasteView;
+import net.sf.anathema.character.impl.view.SubViewFactory;
 import net.sf.anathema.character.platform.RegisteredCharacterView;
-import net.sf.anathema.character.view.concept.CasteView;
 
 @RegisteredCharacterView(CasteView.class)
 public class CasteViewFactory implements SubViewFactory {

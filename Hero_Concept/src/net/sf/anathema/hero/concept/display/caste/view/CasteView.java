@@ -1,4 +1,4 @@
-package net.sf.anathema.character.view.concept;
+package net.sf.anathema.hero.concept.display.caste.view;
 
 import net.sf.anathema.lib.gui.selection.IObjectSelectionView;
 

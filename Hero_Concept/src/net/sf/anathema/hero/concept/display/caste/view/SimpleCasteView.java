@@ -1,8 +1,7 @@
-package net.sf.anathema.character.impl.view.concept;
+package net.sf.anathema.hero.concept.display.caste.view;
 
 import net.miginfocom.layout.CC;
 import net.miginfocom.swing.MigLayout;
-import net.sf.anathema.character.view.concept.CasteView;
 import net.sf.anathema.framework.swing.IView;
 import net.sf.anathema.framework.swing.selection.ObjectSelectionView;
 import net.sf.anathema.lib.gui.selection.IObjectSelectionView;
