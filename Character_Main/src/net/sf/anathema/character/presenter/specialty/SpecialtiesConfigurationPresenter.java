@@ -13,6 +13,7 @@ import net.sf.anathema.character.view.ISpecialtyView;
 import net.sf.anathema.framework.presenter.resources.BasicUi;
 import net.sf.anathema.framework.presenter.view.IButtonControlledComboEditView;
 import net.sf.anathema.framework.view.AbstractSelectCellRenderer;
+import net.sf.anathema.interaction.Command;
 import net.sf.anathema.lib.collection.IdentityMapping;
 import net.sf.anathema.lib.control.IChangeListener;
 import net.sf.anathema.lib.control.ObjectValueListener;
@@ -20,8 +21,6 @@ import net.sf.anathema.lib.file.RelativePath;
 import net.sf.anathema.lib.gui.Presenter;
 import net.sf.anathema.lib.resources.Resources;
 
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 import java.util.Arrays;
 import java.util.Comparator;
 
@@ -89,9 +88,9 @@ public class SpecialtiesConfigurationPresenter implements Presenter {
         specialtyManagement.setCurrentSpecialtyName(newSpecialtyName);
       }
     });
-    specialtySelectionView.addButtonListener(new ActionListener() {
+    specialtySelectionView.whenAddButtonIsClicked(new Command() {
       @Override
-      public void actionPerformed(ActionEvent e) {
+      public void execute() {
         specialtyManagement.commitSelection();
         reset(specialtySelectionView);
       }

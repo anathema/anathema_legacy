@@ -130,7 +130,8 @@ public class SpellPresenter {
     showSpells.removeAll(Arrays.asList(spellConfiguration.getLearnedSpells()));
     int count = showSpells.size();
     ISpell[] sortedSpells = new ISpell[count];
-    sortedSpells = new I18nedIdentificateSorter<ISpell>().sortAscending(showSpells.toArray(new ISpell[count]), sortedSpells, resources);
+    sortedSpells = new I18nedIdentificateSorter<ISpell>().sortAscending(showSpells.toArray(new ISpell[count]),
+            sortedSpells, resources);
     return sortedSpells;
   }
 
@@ -142,21 +143,5 @@ public class SpellPresenter {
       }
     }
     return spellList.toArray(new ISpell[spellList.size()]);
-  }
-
-  @SuppressWarnings("UnusedDeclaration")
-  public void addShowDetailListener(final ShowMagicDetailListener listener) {
-    ListSelectionListener editListener = new ListSelectionListener() {
-      @Override
-      public void valueChanged(ListSelectionEvent e) {
-        ISpell spell = (ISpell) ((JList) e.getSource()).getSelectedValue();
-        if (spell == null) {
-          return;
-        }
-        listener.showDetail(spell.getId());
-      }
-    };
-    view.addOptionListListener(editListener);
-    view.addSelectionListListener(editListener);
   }
 }

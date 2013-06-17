@@ -4,16 +4,13 @@ import net.miginfocom.layout.CC;
 import net.sf.anathema.interaction.Command;
 import net.sf.anathema.interaction.Tool;
 import net.sf.anathema.lib.file.RelativePath;
-import net.sf.anathema.lib.gui.ConfigurableSwingUI;
-import net.sf.anathema.lib.gui.list.ComponentEnablingListSelectionListener;
 import net.sf.anathema.lib.gui.list.LegalityCheckListCellRenderer;
-import net.sf.anathema.lib.gui.ui.ObjectUiListCellRenderer;
+import net.sf.anathema.lib.gui.ui.ConfigurableListCellRenderer;
 import net.sf.anathema.lib.util.Identifier;
 import net.sf.anathema.swing.interaction.ActionInteraction;
 import net.sf.anathema.view.interaction.AddToButton;
 import org.jmock.example.announcer.Announcer;
 
-import javax.swing.Action;
 import javax.swing.DefaultListModel;
 import javax.swing.JButton;
 import javax.swing.JList;
@@ -42,7 +39,7 @@ public class MagicLearnView implements IMagicLearnView {
   public void init(final IMagicLearnProperties properties) {
     learnOptionsList.setCellRenderer(new LegalityCheckListCellRenderer(properties.getLegalityCheck(), properties.getAvailableMagicRenderer()));
     learnOptionsList.setSelectionMode(SINGLE_SELECTION);
-    ListCellRenderer renderer = new ObjectUiListCellRenderer(new ConfigurableSwingUI<>(properties.getLearnedMagicRenderer()));
+    ListCellRenderer renderer = new ConfigurableListCellRenderer(properties.getLearnedMagicRenderer());
     learnedList.setCellRenderer(renderer);
     final JButton addButton = createAddMagicButton(properties.getAddButtonIcon(), properties.getAddButtonToolTip());
     addOptionListListener(new ListSelectionListener() {
@@ -51,15 +48,16 @@ public class MagicLearnView implements IMagicLearnView {
         addButton.setEnabled(properties.isMagicSelectionAvailable(learnOptionsList.getSelectedValue()));
       }
     });
-    JButton removeButton = createRemoveMagicButton(properties.getRemoveButtonIcon(),
+    final JButton removeButton = createRemoveMagicButton(properties.getRemoveButtonIcon(),
             properties.getRemoveButtonToolTip());
     centerButtons.add(addButton);
     centerButtons.add(removeButton);
-    addSelectionListListener(createLearnedListListener(removeButton, learnedList));
-  }
-
-  protected ListSelectionListener createLearnedListListener(JButton button, JList list) {
-    return new ComponentEnablingListSelectionListener(button, list);
+    addSelectionListListener(new ListSelectionListener() {
+      @Override
+      public void valueChanged(ListSelectionEvent e) {
+        removeButton.setEnabled(properties.isRempveAllowed(learnedList));
+      }
+    });
   }
 
   private JButton createAddMagicButton(RelativePath icon, String tooltip) {
@@ -129,12 +127,6 @@ public class MagicLearnView implements IMagicLearnView {
     control.addListener(listener);
   }
 
-  public JButton addAdditionalAction(Action action) {
-    JButton button = new JButton(action);
-    endButtons.add(button);
-    return button;
-  }
-
   public Tool addAdditionalTool() {
     ActionInteraction interaction = new ActionInteraction();
     JButton button = new JButton();
@@ -174,12 +166,10 @@ public class MagicLearnView implements IMagicLearnView {
     learnedList.clearSelection();
   }
 
-  @Override
   public void addSelectionListListener(ListSelectionListener listener) {
     learnedList.addListSelectionListener(listener);
   }
 
-  @Override
   public void addOptionListListener(ListSelectionListener listener) {
     learnOptionsList.addListSelectionListener(listener);
   }

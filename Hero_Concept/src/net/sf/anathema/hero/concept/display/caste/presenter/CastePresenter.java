@@ -16,6 +16,8 @@ import net.sf.anathema.lib.gui.ui.ObjectUi;
 import net.sf.anathema.lib.gui.ui.ObjectUiListCellRenderer;
 import net.sf.anathema.lib.resources.Resources;
 
+import javax.swing.ListCellRenderer;
+
 public class CastePresenter {
 
   private final CasteView view;
@@ -33,8 +35,9 @@ public class CastePresenter {
     String casteLabelResourceKey = template.getPresentationProperties().getCasteLabelResource();
     ObjectUi<Object> casteUi = new CasteSelectObjectUi(resources, template.getPresentationProperties());
     ICasteType[] casteTypes = template.getCasteCollection().getAllCasteTypes(character.getHeroTemplate().getTemplateType());
+    ListCellRenderer renderer = new ObjectUiListCellRenderer(casteUi);
     final IObjectSelectionView<ICasteType> casteView =
-            view.addObjectSelectionView(resources.getString(casteLabelResourceKey), casteTypes, new ObjectUiListCellRenderer(casteUi), false);
+            view.addObjectSelectionView(resources.getString(casteLabelResourceKey), casteTypes, renderer, false);
     final ITypedDescription<ICasteType> caste = CharacterConceptFetcher.fetch(character).getCaste();
     casteView.setSelectedObject(caste.getType());
     casteView.addObjectSelectionChangedListener(new ObjectValueListener<ICasteType>() {

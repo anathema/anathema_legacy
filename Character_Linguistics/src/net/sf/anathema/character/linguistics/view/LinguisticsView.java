@@ -13,9 +13,8 @@ import net.sf.anathema.framework.presenter.view.IButtonControlledObjectSelection
 import net.sf.anathema.framework.swing.IView;
 import net.sf.anathema.lib.file.RelativePath;
 import net.sf.anathema.lib.gui.AgnosticUIConfiguration;
-import net.sf.anathema.lib.gui.ConfigurableSwingUI;
 import net.sf.anathema.lib.gui.icon.ImageProvider;
-import net.sf.anathema.lib.gui.ui.ObjectUiListCellRenderer;
+import net.sf.anathema.lib.gui.ui.ConfigurableListCellRenderer;
 
 import javax.swing.JComponent;
 import javax.swing.JPanel;
@@ -57,15 +56,12 @@ public class LinguisticsView implements IView, ILinguisticsView {
 
   @SuppressWarnings("unchecked")
   @Override
-  public IButtonControlledObjectSelectionView<Object> addSelectionView(
-          String labelText,
-          AgnosticUIConfiguration uiConfiguration,
-          RelativePath addIcon) {
-    ListCellRenderer renderer = new ObjectUiListCellRenderer(new ConfigurableSwingUI(uiConfiguration));
+  public IButtonControlledObjectSelectionView<Object> addSelectionView(String labelText,
+                                                                       AgnosticUIConfiguration uiConfiguration,
+                                                                       RelativePath addIcon) {
+    ListCellRenderer renderer = new ConfigurableListCellRenderer(uiConfiguration);
     ButtonControlledObjectSelectionView<Object> objectSelectionView = new ButtonControlledObjectSelectionView<>(
-            renderer,
-            addIcon,
-            labelText);
+            renderer, addIcon, labelText);
     objectSelectionView.setEditor(new ProxyComboBoxEditor());
     objectSelectionView.addComponents(selectionPanel);
     return objectSelectionView;

@@ -3,6 +3,7 @@ package net.sf.anathema.framework.presenter.view;
 import net.miginfocom.layout.CC;
 import net.miginfocom.swing.MigLayout;
 import net.sf.anathema.framework.swing.IView;
+import net.sf.anathema.interaction.Command;
 import net.sf.anathema.lib.control.ObjectValueListener;
 import net.sf.anathema.lib.file.RelativePath;
 import net.sf.anathema.lib.gui.icon.ImageProvider;
@@ -17,6 +18,7 @@ import javax.swing.ListCellRenderer;
 import javax.swing.event.DocumentEvent;
 import javax.swing.event.DocumentListener;
 import java.awt.Dimension;
+import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 import static net.sf.anathema.lib.gui.layout.LayoutUtils.withoutInsets;
@@ -75,8 +77,13 @@ public class ButtonControlledComboEditView<V> implements IButtonControlledComboE
   }
 
   @Override
-  public void addButtonListener(ActionListener listener) {
-    addButton.addActionListener(listener);
+  public void whenAddButtonIsClicked(final Command command) {
+    addButton.addActionListener(new ActionListener() {
+      @Override
+      public void actionPerformed(ActionEvent e) {
+        command.execute();
+      }
+    });
   }
 
   @Override

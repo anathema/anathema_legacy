@@ -13,10 +13,7 @@ import net.sf.anathema.lib.gui.list.LegalityCheck;
 import net.sf.anathema.lib.resources.Resources;
 import net.sf.anathema.lib.util.Identifier;
 
-import javax.swing.JButton;
 import javax.swing.JList;
-import javax.swing.event.ListSelectionEvent;
-import javax.swing.event.ListSelectionListener;
 
 public class SpellViewProperties extends AbstractMagicLearnProperties implements ISpellViewProperties {
 
@@ -24,7 +21,8 @@ public class SpellViewProperties extends AbstractMagicLearnProperties implements
   private final ICharacter character;
   private final SpellTooltipBuilder tooltipBuilder;
 
-  public SpellViewProperties(Resources resources, ICharacter character, MagicDescriptionProvider magicDescriptionProvider) {
+  public SpellViewProperties(Resources resources, ICharacter character,
+                             MagicDescriptionProvider magicDescriptionProvider) {
     super(resources);
     this.character = character;
     this.spellConfiguration = character.getSpells();
@@ -67,23 +65,17 @@ public class SpellViewProperties extends AbstractMagicLearnProperties implements
   }
 
   @Override
-  public ListSelectionListener getRemoveButtonEnabledListener(final JButton button, final JList list) {
-    return new ListSelectionListener() {
-      @Override
-      public void valueChanged(ListSelectionEvent e) {
-        boolean enabled = !list.isSelectionEmpty();
-        if (enabled && ExperienceModelFetcher.fetch(character).isExperienced()) {
-          for (Object spellObject : list.getSelectedValuesList()) {
-            ISpell spell = (ISpell) spellObject;
-            if (spellConfiguration.isLearnedOnCreation(spell)) {
-              enabled = false;
-              break;
-            }
-          }
+  public boolean isRempveAllowed(JList list) {
+    boolean enabled = !list.isSelectionEmpty();
+    if (enabled && ExperienceModelFetcher.fetch(character).isExperienced()) {
+      for (Object spellObject : list.getSelectedValuesList()) {
+        ISpell spell = (ISpell) spellObject;
+        if (spellConfiguration.isLearnedOnCreation(spell)) {
+          enabled = false;
+          break;
         }
-        button.setEnabled(enabled);
       }
-    };
+    }
+    return enabled;
   }
-
 }

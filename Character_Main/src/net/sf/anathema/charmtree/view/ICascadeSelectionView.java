@@ -8,8 +8,6 @@ import net.sf.anathema.platform.tree.presenter.view.CascadeLoadedListener;
 import net.sf.anathema.platform.tree.presenter.view.NodeProperties;
 import net.sf.anathema.platform.tree.presenter.view.ToolTipProperties;
 
-import javax.swing.JComponent;
-
 public interface ICascadeSelectionView {
 
   CharmTreeRenderer getCharmTreeRenderer();
@@ -31,8 +29,7 @@ public interface ICascadeSelectionView {
 
   void addCharmCascadeHelp(String helpText);
 
-  //todo: Component
-  JComponent getCharmComponent();
-
   void initGui(ToolTipProperties treeProperties, NodeProperties properties);
+
+  void whenCursorLeavesCharmAreaResetAllPopups();
 }
