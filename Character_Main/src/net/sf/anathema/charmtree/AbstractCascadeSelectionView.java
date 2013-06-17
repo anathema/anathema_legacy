@@ -146,8 +146,7 @@ public abstract class AbstractCascadeSelectionView implements ICascadeSelectionV
     groupComboBox.setSelectedObject(null);
   }
 
-  @Override
-  public JComponent getCharmComponent() {
+  protected JComponent getCharmComponent() {
     return swingTreeView.getComponent();
   }
 
