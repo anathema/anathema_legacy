@@ -4,30 +4,31 @@ import net.sf.anathema.lib.resources.Resources;
 import net.sf.anathema.lib.util.Identifier;
 
 import javax.swing.DefaultListCellRenderer;
+import javax.swing.JComponent;
 import javax.swing.JList;
 import java.awt.Component;
 
 public abstract class LegalityCheckListCellRenderer extends DefaultListCellRenderer {
-  private final Resources resources;
+  private final LegalityCheck check;
 
-  protected LegalityCheckListCellRenderer(Resources resources) {
-    this.resources = resources;
+  protected LegalityCheckListCellRenderer(LegalityCheck check) {
+    this.check = check;
   }
 
   @Override
   public Component getListCellRendererComponent(JList list, Object value, int index, boolean isSelected, boolean cellHasFocus) {
-    String printName = getPrintName(resources, value);
-    boolean isLegal = isLegal(value);
+    String printName = getPrintName(value);
+    boolean isLegal = check.isLegal(value);
     boolean hasFocus = cellHasFocus && isLegal;
     boolean selected = isSelected && isLegal;
-    Component displayComponent = super.getListCellRendererComponent(list, printName, index, selected, hasFocus);
+    JComponent displayComponent = (JComponent) super.getListCellRendererComponent(list, printName, index, selected, hasFocus);
+    String tooltip = getToolTip(value);
+    displayComponent.setToolTipText(tooltip);
     displayComponent.setEnabled(isLegal);
     return displayComponent;
   }
 
-  protected abstract boolean isLegal(Object object);
+  protected abstract String getPrintName(Object value);
 
-  protected String getPrintName(Resources res, Object value) {
-    return res.getString(((Identifier) value).getId());
-  }
+  protected abstract String getToolTip(Object value);
 }
