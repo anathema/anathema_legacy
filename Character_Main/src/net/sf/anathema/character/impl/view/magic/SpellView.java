@@ -13,13 +13,10 @@ import net.sf.anathema.lib.gui.ui.ConfigurableListCellRenderer;
 import net.sf.anathema.lib.util.Identifier;
 import org.jmock.example.announcer.Announcer;
 
-import javax.swing.JButton;
 import javax.swing.JComboBox;
 import javax.swing.JComponent;
 import javax.swing.JLabel;
-import javax.swing.JList;
 import javax.swing.JPanel;
-import javax.swing.event.ListSelectionListener;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.Comparator;
@@ -35,12 +32,7 @@ public class SpellView implements ISpellView, IView {
   @Override
   public void prepare(final ISpellViewProperties properties) {
     this.properties = properties;
-    this.magicLearnView = new MagicLearnView() {
-      @Override
-      protected ListSelectionListener createLearnedListListener(JButton button, JList list) {
-        return properties.getRemoveButtonEnabledListener(button, list);
-      }
-    };
+    this.magicLearnView = new MagicLearnView();
   }
 
   @Override

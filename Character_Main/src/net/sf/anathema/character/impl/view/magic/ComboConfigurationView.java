@@ -22,16 +22,13 @@ import net.sf.anathema.lib.workflow.textualdescription.view.LineTextView;
 import org.jdesktop.swingx.JXTaskPaneContainer;
 import org.jmock.example.announcer.Announcer;
 
-import javax.swing.JButton;
 import javax.swing.JComponent;
 import javax.swing.JLabel;
-import javax.swing.JList;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.ListModel;
 import javax.swing.event.ListDataEvent;
 import javax.swing.event.ListDataListener;
-import javax.swing.event.ListSelectionListener;
 
 import static net.sf.anathema.lib.gui.swing.GuiUtilities.revalidate;
 
@@ -54,12 +51,7 @@ public class ComboConfigurationView implements IComboConfigurationView, IView {
   @Override
   public void initGui(final IComboViewProperties viewProperties) {
     this.properties = viewProperties;
-    magicLearnView = new MagicLearnView() {
-      @Override
-      protected ListSelectionListener createLearnedListListener(final JButton button, final JList list) {
-        return properties.getRemoveButtonEnabledListener(button, list);
-      }
-    };
+    this.magicLearnView = new MagicLearnView();
     magicLearnView.init(viewProperties);
 
     finalizeButton = createFinalizeComboButton(viewProperties);

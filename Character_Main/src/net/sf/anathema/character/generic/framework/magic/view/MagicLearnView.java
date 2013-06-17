@@ -4,7 +4,6 @@ import net.miginfocom.layout.CC;
 import net.sf.anathema.interaction.Command;
 import net.sf.anathema.interaction.Tool;
 import net.sf.anathema.lib.file.RelativePath;
-import net.sf.anathema.lib.gui.list.ComponentEnablingListSelectionListener;
 import net.sf.anathema.lib.gui.list.LegalityCheckListCellRenderer;
 import net.sf.anathema.lib.gui.ui.ConfigurableListCellRenderer;
 import net.sf.anathema.lib.util.Identifier;
@@ -53,11 +52,7 @@ public class MagicLearnView implements IMagicLearnView {
             properties.getRemoveButtonToolTip());
     centerButtons.add(addButton);
     centerButtons.add(removeButton);
-    addSelectionListListener(createLearnedListListener(removeButton, learnedList));
-  }
-
-  protected ListSelectionListener createLearnedListListener(JButton button, JList list) {
-    return new ComponentEnablingListSelectionListener(button, list);
+    addSelectionListListener(properties.getRemoveButtonEnabledListener(removeButton, learnedList));
   }
 
   private JButton createAddMagicButton(RelativePath icon, String tooltip) {
