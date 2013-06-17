@@ -80,6 +80,7 @@ public abstract class AbstractCascadePresenter implements ICascadeSelectionPrese
     });
   }
 
+  //TODO: AWT Tooltips
   private void resetSpecialViewsAndTooltipsWhenCursorLeavesCharmArea() {
     getCharmComponent().addMouseListener(new MouseAdapter() {
       @Override

@@ -16,6 +16,7 @@ import net.sf.anathema.lib.resources.Resources;
 import net.sf.anathema.lib.workflow.textualdescription.ITextView;
 import net.sf.anathema.lib.workflow.textualdescription.TextualPresentation;
 
+import javax.swing.JList;
 import java.awt.Component;
 
 public class VirtueFlawPresenter implements Presenter {
@@ -60,19 +61,19 @@ public class VirtueFlawPresenter implements Presenter {
   }
 
   protected void initRootPresentation(final IVirtueFlaw virtueFlaw, String nameReference) {
-    final IObjectSelectionView<TraitType> rootView =
-            view.addVirtueFlawRootSelectionView(resources.getString(nameReference), new AbstractSelectCellRenderer<TraitType>(resources) {
-              @Override
-              protected String getCustomizedDisplayValue(TraitType value) {
-                return resources.getString("VirtueType.Name." + value.getId());
-              }
+    AbstractSelectCellRenderer<TraitType> renderer = new AbstractSelectCellRenderer<TraitType>(resources) {
+      @Override
+      protected String getCustomizedDisplayValue(TraitType value) {
+        return resources.getString("VirtueType.Name." + value.getId());
+      }
 
-              @Override
-              public Component getListCellRendererComponent(javax.swing.JList list, Object value, int index, boolean isSelected,
-                                                            boolean cellHasFocus) {
-                return super.getListCellRendererComponent(list, value, index, isSelected, cellHasFocus);
-              }
-            });
+      @Override
+      public Component getListCellRendererComponent(JList list, Object value, int index, boolean isSelected,
+                                                    boolean cellHasFocus) {
+        return super.getListCellRendererComponent(list, value, index, isSelected, cellHasFocus);
+      }
+    };
+    final IObjectSelectionView<TraitType> rootView = view.addVirtueFlawRootSelectionView(resources.getString(nameReference), renderer);
     virtueFlaw.addRootChangeListener(new IChangeListener() {
       @Override
       public void changeOccurred() {
