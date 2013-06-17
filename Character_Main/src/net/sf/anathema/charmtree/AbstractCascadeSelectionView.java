@@ -16,6 +16,7 @@ import net.sf.anathema.platform.tree.presenter.view.CascadeLoadedListener;
 import net.sf.anathema.platform.tree.presenter.view.ITreeView;
 import net.sf.anathema.platform.tree.presenter.view.NodeProperties;
 import net.sf.anathema.platform.tree.presenter.view.ToolTipProperties;
+import net.sf.anathema.framework.ui.Area;
 import net.sf.anathema.platform.tree.view.SwingCascadeStrategy;
 import net.sf.anathema.platform.tree.view.SwingTreeView;
 
@@ -80,13 +81,13 @@ public abstract class AbstractCascadeSelectionView implements ICascadeSelectionV
 
   @Override
   public void addCharmGroupSelector(String title, ListCellRenderer renderer, final ICharmGroupChangeListener selectionListener,
-                                    Dimension preferredSize) {
+                                    Area preferredSize) {
     JPanel panel = new JPanel(new BorderLayout());
     panel.setBorder(new TitledBorder(title));
     groupComboBox = new ChangeableJComboBox<>(null, false);
     groupComboBox.setSelectedObject(null);
     groupComboBox.setRenderer(renderer);
-    groupComboBox.setPreferredSize(preferredSize);
+    groupComboBox.setPreferredSize(new Dimension(preferredSize.width, preferredSize.height));
     groupComboBox.addObjectSelectionChangedListener(new ObjectValueListener<Identifier>() {
       @Override
       public void valueChanged(Identifier newValue) {

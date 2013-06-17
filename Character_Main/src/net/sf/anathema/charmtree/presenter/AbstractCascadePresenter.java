@@ -16,10 +16,10 @@ import net.sf.anathema.lib.gui.dialog.userdialog.UserDialog;
 import net.sf.anathema.lib.resources.Resources;
 import net.sf.anathema.lib.util.Identifier;
 import net.sf.anathema.platform.tree.presenter.view.CascadeLoadedListener;
+import net.sf.anathema.framework.ui.Area;
 
 import javax.swing.JComponent;
 import java.awt.Component;
-import java.awt.Dimension;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.util.ArrayList;
@@ -101,7 +101,8 @@ public abstract class AbstractCascadePresenter implements ICascadeSelectionPrese
   protected void createCharmGroupSelector() {
     ICharmGroup[] allGroups = charmGroups.getCharmGroups();
     IdentificateSelectCellRenderer renderer = new IdentificateSelectCellRenderer(getResources());
-    Dimension preferredSize = net.sf.anathema.lib.gui.swing.GuiUtilities.calculateComboBoxSize(allGroups, renderer);
+    //TODO: Indirect access to Swing component
+    Area preferredSize = net.sf.anathema.lib.gui.swing.GuiUtilities.calculateComboBoxSize(allGroups, renderer);
     view.addCharmGroupSelector(getResources().getString("CardView.CharmConfiguration.AlienCharms.CharmGroup"), renderer, changeListener,
             preferredSize);
   }

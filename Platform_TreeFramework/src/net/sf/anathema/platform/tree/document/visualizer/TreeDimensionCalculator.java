@@ -1,7 +1,7 @@
 package net.sf.anathema.platform.tree.document.visualizer;
 
 import net.sf.anathema.platform.tree.document.components.ILayer;
-import net.sf.anathema.platform.tree.util.Area;
+import net.sf.anathema.framework.ui.Area;
 
 public class TreeDimensionCalculator {
 

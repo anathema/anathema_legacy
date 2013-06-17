@@ -5,7 +5,7 @@ import net.sf.anathema.platform.tree.document.visualizer.ITreePresentationProper
 import net.sf.anathema.platform.tree.document.visualizer.IVisualizedGraph;
 import net.sf.anathema.platform.tree.document.visualizer.TreeDimensionCalculator;
 import net.sf.anathema.platform.tree.document.visualizer.VisualizedGraphFactory;
-import net.sf.anathema.platform.tree.util.Area;
+import net.sf.anathema.framework.ui.Area;
 import net.sf.anathema.platform.tree.view.container.DefaultContainerCascade;
 
 public class SwingGraphFactory implements VisualizedGraphFactory {

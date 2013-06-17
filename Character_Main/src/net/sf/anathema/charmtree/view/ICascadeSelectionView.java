@@ -6,10 +6,10 @@ import net.sf.anathema.lib.util.Identifier;
 import net.sf.anathema.platform.tree.presenter.view.CascadeLoadedListener;
 import net.sf.anathema.platform.tree.presenter.view.NodeProperties;
 import net.sf.anathema.platform.tree.presenter.view.ToolTipProperties;
+import net.sf.anathema.framework.ui.Area;
 
 import javax.swing.JComponent;
 import javax.swing.ListCellRenderer;
-import java.awt.Dimension;
 
 public interface ICascadeSelectionView {
 
@@ -29,8 +29,8 @@ public interface ICascadeSelectionView {
 
   void fillCharmTypeBox(Identifier[] cascadeTypes);
 
-  //todo: Renderer, Dimension
-  void addCharmGroupSelector(String title, ListCellRenderer renderer, ICharmGroupChangeListener selectionListener, Dimension preferredSize);
+  //todo: Renderer
+  void addCharmGroupSelector(String title, ListCellRenderer renderer, ICharmGroupChangeListener selectionListener, Area preferredSize);
 
   void addCharmCascadeHelp(String helpText);
 

@@ -1,7 +1,7 @@
 package net.sf.anathema.platform.tree.document.components;
 
 import net.sf.anathema.graph.nodes.ISimpleNode;
-import net.sf.anathema.platform.tree.util.Area;
+import net.sf.anathema.framework.ui.Area;
 
 import java.util.ArrayList;
 import java.util.Arrays;
