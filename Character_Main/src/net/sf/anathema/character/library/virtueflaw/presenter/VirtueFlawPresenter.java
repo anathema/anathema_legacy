@@ -5,14 +5,17 @@ import net.sf.anathema.character.generic.traits.TraitType;
 import net.sf.anathema.character.library.trait.Trait;
 import net.sf.anathema.character.library.trait.presenter.TraitPresenter;
 import net.sf.anathema.character.library.virtueflaw.model.IVirtueFlaw;
+import net.sf.anathema.charmtree.presenter.SelectIdentifierConfiguration;
 import net.sf.anathema.framework.value.IIntValueView;
 import net.sf.anathema.framework.view.AbstractSelectCellRenderer;
 import net.sf.anathema.lib.control.IBooleanValueChangedListener;
 import net.sf.anathema.lib.control.IChangeListener;
 import net.sf.anathema.lib.control.ObjectValueListener;
+import net.sf.anathema.lib.gui.AgnosticUIConfiguration;
 import net.sf.anathema.lib.gui.Presenter;
 import net.sf.anathema.lib.gui.selection.IObjectSelectionView;
 import net.sf.anathema.lib.resources.Resources;
+import net.sf.anathema.lib.util.Identifier;
 import net.sf.anathema.lib.workflow.textualdescription.ITextView;
 import net.sf.anathema.lib.workflow.textualdescription.TextualPresentation;
 
@@ -61,19 +64,7 @@ public class VirtueFlawPresenter implements Presenter {
   }
 
   protected void initRootPresentation(final IVirtueFlaw virtueFlaw, String nameReference) {
-    AbstractSelectCellRenderer<TraitType> renderer = new AbstractSelectCellRenderer<TraitType>(resources) {
-      @Override
-      protected String getCustomizedDisplayValue(TraitType value) {
-        return resources.getString("VirtueType.Name." + value.getId());
-      }
-
-      @Override
-      public Component getListCellRendererComponent(JList list, Object value, int index, boolean isSelected,
-                                                    boolean cellHasFocus) {
-        return super.getListCellRendererComponent(list, value, index, isSelected, cellHasFocus);
-      }
-    };
-    final IObjectSelectionView<TraitType> rootView = view.addVirtueFlawRootSelectionView(resources.getString(nameReference), renderer);
+    final IObjectSelectionView<TraitType> rootView = view.addVirtueFlawRootSelectionView(resources.getString(nameReference), new VirtueTypeConfiguration());
     virtueFlaw.addRootChangeListener(new IChangeListener() {
       @Override
       public void changeOccurred() {
@@ -123,5 +114,16 @@ public class VirtueFlawPresenter implements Presenter {
 
   protected final Resources getResources() {
     return resources;
+  }
+
+  private class VirtueTypeConfiguration extends SelectIdentifierConfiguration {
+    public VirtueTypeConfiguration() {
+      super(VirtueFlawPresenter.this.resources);
+    }
+
+    @Override
+    protected String getKeyForObject(Identifier value) {
+      return "VirtueType.Name." + value.getId();
+    }
   }
 }

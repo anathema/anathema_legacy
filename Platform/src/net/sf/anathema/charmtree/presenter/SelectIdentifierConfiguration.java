@@ -16,8 +16,10 @@ public class SelectIdentifierConfiguration extends AbstractUIConfiguration {
     if (value == null) {
       return resources.getString("ComboBox.SelectLabel");
     }
-    StringBuilder builder = new StringBuilder();
-    builder.append(((Identifier) value).getId());
-    return resources.getString(builder.toString());
+    return resources.getString(getKeyForObject((Identifier) value));
+  }
+
+  protected String getKeyForObject(Identifier value) {
+    return value.getId();
   }
 }
