@@ -13,11 +13,6 @@ import static java.util.Arrays.asList;
 public class TraitModelImpl extends DefaultTraitMap implements TraitMap, TraitModel, HeroModel {
 
   @Override
-  public Iterator<Trait> iterator() {
-    return asList(getAll()).iterator();
-  }
-
-  @Override
   public Identifier getId() {
     return ID;
   }
@@ -25,5 +20,10 @@ public class TraitModelImpl extends DefaultTraitMap implements TraitMap, TraitMo
   @Override
   public void initialize(InitializationContext context, Hero hero) {
     //nothing to do
+  }
+
+  @Override
+  public Iterator<Trait> iterator() {
+    return asList(getAll()).iterator();
   }
 }

@@ -13,7 +13,7 @@ import net.sf.anathema.character.library.trait.TraitGroup;
 import net.sf.anathema.character.library.trait.specialties.ISpecialtiesConfiguration;
 import net.sf.anathema.character.library.trait.specialties.SpecialtiesConfiguration;
 import net.sf.anathema.character.main.abilities.AbilityModel;
-import net.sf.anathema.character.main.attributes.model.temporary.AttributeModel;
+import net.sf.anathema.character.main.attributes.AttributeModel;
 import net.sf.anathema.character.main.testing.dummy.DummyCharacterModelContext;
 import net.sf.anathema.character.main.traits.model.DefaultTraitMap;
 import net.sf.anathema.character.main.traits.model.MappedTraitGroup;

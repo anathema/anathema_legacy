@@ -2,8 +2,8 @@ package net.sf.anathema.character.main.description.model;
 
 import net.sf.anathema.character.change.AnnounceChangeValueListener;
 import net.sf.anathema.character.change.ChangeAnnouncer;
-import net.sf.anathema.character.main.model.HeroModel;
 import net.sf.anathema.character.main.model.Hero;
+import net.sf.anathema.character.main.model.HeroModel;
 import net.sf.anathema.character.main.model.InitializationContext;
 import net.sf.anathema.lib.control.ObjectValueListener;
 import net.sf.anathema.lib.util.Identifier;
@@ -25,6 +25,17 @@ public class TextualCharacterDescription implements CharacterDescription, HeroMo
   private final ITextualDescription sex = new SimpleTextualDescription();
   private final ITextualDescription skin = new SimpleTextualDescription();
   private final ITextualDescription anima = new SimpleTextualDescription();
+
+  @Override
+  public Identifier getId() {
+    return ID;
+  }
+
+  @Override
+  public void initialize(InitializationContext context, Hero hero) {
+    ChangeAnnouncer announcer = context.getChangeAnnouncer();
+    addOverallChangeListener(new AnnounceChangeValueListener(announcer));
+  }
 
   @Override
   public ITextualDescription getName() {
@@ -95,16 +106,5 @@ public class TextualCharacterDescription implements CharacterDescription, HeroMo
     for (ITextualDescription description : getAllDescriptions()) {
       description.addTextChangedListener(listener);
     }
-  }
-
-  @Override
-  public Identifier getId() {
-    return ID;
-  }
-
-  @Override
-  public void initialize(InitializationContext context, Hero hero) {
-    ChangeAnnouncer announcer = context.getChangeAnnouncer();
-    addOverallChangeListener(new AnnounceChangeValueListener(announcer));
   }
 }

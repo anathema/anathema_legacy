@@ -23,6 +23,7 @@ import net.sf.anathema.character.main.traits.model.DefaultTraitMap;
 import net.sf.anathema.character.main.traits.model.MappedTraitGroup;
 import net.sf.anathema.character.main.traits.model.TraitMap;
 import net.sf.anathema.character.main.traits.model.TraitModel;
+import net.sf.anathema.character.main.traits.model.TraitModelFetcher;
 import net.sf.anathema.lib.util.Identifier;
 
 import java.util.ArrayList;
@@ -33,6 +34,24 @@ public class AbilityModelImpl extends DefaultTraitMap implements AbilityModel, H
   private IIdentifiedCasteTraitTypeGroup[] abilityTraitGroups;
   private SpecialtiesConfiguration specialtyConfiguration;
   private InitializationContext context;
+
+  @Override
+  public Identifier getId() {
+    return ID;
+  }
+
+  @Override
+  public void initialize(InitializationContext context, Hero hero) {
+    this.context = context;
+    HeroTemplate template = context.getTemplate();
+    ICasteCollection casteCollection = template.getCasteCollection();
+    this.abilityTraitGroups = new AbilityTypeGroupFactory().createTraitGroups(casteCollection, template.getAbilityGroups());
+    IncrementChecker incrementChecker = createFavoredAbilityIncrementChecker(template, this);
+    addFavorableTraits(incrementChecker, new AbilityTemplateFactory(template.getTraitTemplateCollection().getTraitTemplateFactory()));
+    TraitModel traitModel = TraitModelFetcher.fetch(hero);
+    traitModel.addTraits(getAll());
+    this.specialtyConfiguration = new SpecialtiesConfiguration(this, abilityTraitGroups, context);
+  }
 
   private IncrementChecker createFavoredAbilityIncrementChecker(HeroTemplate template, TraitMap traitMap) {
     int maxFavoredAbilityCount = template.getCreationPoints().getAbilityCreationPoints().getFavorableTraitCount();
@@ -74,23 +93,5 @@ public class AbilityModelImpl extends DefaultTraitMap implements AbilityModel, H
   @Override
   public SpecialtiesConfiguration getSpecialtyConfiguration() {
     return specialtyConfiguration;
-  }
-
-  @Override
-  public Identifier getId() {
-    return ID;
-  }
-
-  @Override
-  public void initialize(InitializationContext context, Hero hero) {
-    this.context = context;
-    HeroTemplate template = context.getTemplate();
-    ICasteCollection casteCollection = template.getCasteCollection();
-    this.abilityTraitGroups = new AbilityTypeGroupFactory().createTraitGroups(casteCollection, template.getAbilityGroups());
-    IncrementChecker incrementChecker = createFavoredAbilityIncrementChecker(template, this);
-    addFavorableTraits(incrementChecker, new AbilityTemplateFactory(template.getTraitTemplateCollection().getTraitTemplateFactory()));
-    TraitModel traitModel = (TraitModel) hero.getModel(TraitModel.ID);
-    traitModel.addTraits(getAll());
-    this.specialtyConfiguration = new SpecialtiesConfiguration(this, abilityTraitGroups, context);
   }
 }

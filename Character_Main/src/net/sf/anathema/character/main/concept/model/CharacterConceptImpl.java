@@ -18,16 +18,6 @@ public class CharacterConceptImpl implements CharacterConcept, HeroModel {
   private final IIntegerDescription age = new IntegerDescription(0);
 
   @Override
-  public ITypedDescription<ICasteType> getCaste() {
-    return caste;
-  }
-
-  @Override
-  public IIntegerDescription getAge() {
-    return age;
-  }
-
-  @Override
   public Identifier getId() {
     return ID;
   }
@@ -37,5 +27,15 @@ public class CharacterConceptImpl implements CharacterConcept, HeroModel {
     ChangeAnnouncer announcer = context.getChangeAnnouncer();
     caste.addChangeListener(new AnnounceChangeListener(announcer, ConceptChange.FLAVOR_CASTE));
     age.addChangeListener(new AnnounceChangeListener(announcer, ConceptChange.FLAVOR_AGE));
+  }
+
+  @Override
+  public ITypedDescription<ICasteType> getCaste() {
+    return caste;
+  }
+
+  @Override
+  public IIntegerDescription getAge() {
+    return age;
   }
 }

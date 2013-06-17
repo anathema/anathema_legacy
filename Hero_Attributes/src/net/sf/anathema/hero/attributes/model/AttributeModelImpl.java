@@ -1,6 +1,5 @@
-package net.sf.anathema.character.main.attributes.model.temporary;
+package net.sf.anathema.hero.attributes.model;
 
-import net.sf.anathema.character.generic.framework.additionaltemplate.model.ICharacterModelContext;
 import net.sf.anathema.character.generic.template.HeroTemplate;
 import net.sf.anathema.character.generic.template.ITraitTemplateFactory;
 import net.sf.anathema.character.generic.traits.groups.IIdentifiedCasteTraitTypeGroup;
@@ -13,27 +12,40 @@ import net.sf.anathema.character.library.trait.Trait;
 import net.sf.anathema.character.library.trait.TraitGroup;
 import net.sf.anathema.character.library.trait.favorable.GrumpyIncrementChecker;
 import net.sf.anathema.character.library.trait.favorable.IncrementChecker;
+import net.sf.anathema.character.main.attributes.AttributeModel;
+import net.sf.anathema.character.main.model.Hero;
+import net.sf.anathema.character.main.model.HeroModel;
+import net.sf.anathema.character.main.model.InitializationContext;
 import net.sf.anathema.character.main.traits.model.DefaultTraitMap;
 import net.sf.anathema.character.main.traits.model.MappedTraitGroup;
 import net.sf.anathema.character.main.traits.model.TraitModel;
+import net.sf.anathema.character.main.traits.model.TraitModelFetcher;
+import net.sf.anathema.lib.util.Identifier;
 
-public class AttributeModelImpl extends DefaultTraitMap implements AttributeModel {
+public class AttributeModelImpl extends DefaultTraitMap implements AttributeModel, HeroModel {
 
   private HeroTemplate template;
-  private ICharacterModelContext modelContext;
-  private final IIdentifiedCasteTraitTypeGroup[] attributeTraitGroups;
+  private InitializationContext context;
+  private IIdentifiedCasteTraitTypeGroup[] attributeTraitGroups;
 
-  public AttributeModelImpl(HeroTemplate template, ICharacterModelContext modelContext, TraitModel traitModel) {
-    this.template = template;
-    this.modelContext = modelContext;
+  @Override
+  public Identifier getId() {
+    return ID;
+  }
+
+  @Override
+  public void initialize(InitializationContext context, Hero hero) {
+    this.template = context.getTemplate();
+    this.context = context;
     this.attributeTraitGroups = new AttributeTypeGroupFactory().createTraitGroups(template.getCasteCollection(), template.getAttributeGroups());
     addAttributes();
+    TraitModel traitModel = TraitModelFetcher.fetch(hero);
     traitModel.addTraits(getAll());
   }
 
   private FavorableTraitFactory createFactory() {
-    return new FavorableTraitFactory(modelContext.getTraitContext(), template.getAdditionalRules().getAdditionalTraitRules(),
-            modelContext.getBasicCharacterContext(), modelContext.getCharacterListening());
+    return new FavorableTraitFactory(context.getTraitContext(), template.getAdditionalRules().getAdditionalTraitRules(),
+            context.getBasicCharacterContext(), context.getCharacterListening());
   }
 
   private void addAttributes() {

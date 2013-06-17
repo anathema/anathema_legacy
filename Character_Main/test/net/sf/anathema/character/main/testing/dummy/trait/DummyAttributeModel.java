@@ -6,7 +6,7 @@ import net.sf.anathema.character.generic.traits.types.AttributeGroupType;
 import net.sf.anathema.character.generic.traits.types.AttributeType;
 import net.sf.anathema.character.library.trait.Trait;
 import net.sf.anathema.character.library.trait.TraitGroup;
-import net.sf.anathema.character.main.attributes.model.temporary.AttributeModel;
+import net.sf.anathema.character.main.attributes.AttributeModel;
 
 public class DummyAttributeModel implements AttributeModel {
 

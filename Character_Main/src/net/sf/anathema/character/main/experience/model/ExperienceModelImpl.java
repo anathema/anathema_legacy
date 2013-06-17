@@ -16,6 +16,18 @@ public class ExperienceModelImpl implements ExperienceModel, HeroModel {
   private final Announcer<IChangeListener> stateAnnouncer = new Announcer<>(IChangeListener.class);
   private boolean experienced = false;
 
+  @Override
+  public Identifier getId() {
+    return ID;
+  }
+
+  @Override
+  public void initialize(InitializationContext context, Hero hero) {
+    ChangeAnnouncer announcer = context.getChangeAnnouncer();
+    stateAnnouncer.addListener(new AnnounceChangeListener(announcer, ExperienceChange.FLAVOR_EXPERIENCE_STATE));
+    experiencePoints.addExperiencePointConfigurationListener(new AnnounceExperiencePointChange(announcer));
+  }
+
   public void addStateChangeListener(IChangeListener listener) {
     stateAnnouncer.addListener(listener);
   }
@@ -37,17 +49,5 @@ public class ExperienceModelImpl implements ExperienceModel, HeroModel {
     }
     this.experienced = experienced;
     stateAnnouncer.announce().changeOccurred();
-  }
-
-  @Override
-  public Identifier getId() {
-    return ID;
-  }
-
-  @Override
-  public void initialize(InitializationContext context, Hero hero) {
-    ChangeAnnouncer announcer = context.getChangeAnnouncer();
-    stateAnnouncer.addListener(new AnnounceChangeListener(announcer, ExperienceChange.FLAVOR_EXPERIENCE_STATE));
-    experiencePoints.addExperiencePointConfigurationListener(new AnnounceExperiencePointChange(announcer));
   }
 }

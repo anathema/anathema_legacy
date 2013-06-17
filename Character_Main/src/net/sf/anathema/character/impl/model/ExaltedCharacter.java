@@ -17,8 +17,8 @@ import net.sf.anathema.character.impl.model.charm.ComboConfiguration;
 import net.sf.anathema.character.impl.model.context.CharacterModelContext;
 import net.sf.anathema.character.impl.model.statistics.ExtendedConfiguration;
 import net.sf.anathema.character.impl.model.traits.listening.CharacterTraitListening;
-import net.sf.anathema.character.main.attributes.model.temporary.AttributeModel;
-import net.sf.anathema.character.main.attributes.model.temporary.AttributeModelImpl;
+import net.sf.anathema.character.main.attributes.AttributeModel;
+import net.sf.anathema.character.main.attributes.AttributeModelFetcher;
 import net.sf.anathema.character.main.description.model.CharacterDescription;
 import net.sf.anathema.character.main.description.model.CharacterDescriptionFetcher;
 import net.sf.anathema.character.main.essencepool.model.EssencePoolModel;
@@ -51,13 +51,11 @@ public class ExaltedCharacter implements ICharacter {
   private final IHealthConfiguration health;
   private final ExtendedConfiguration extendedConfiguration = new ExtendedConfiguration(context);
   private final DefaultHero hero = new DefaultHero();
-  private final AttributeModelImpl attributes;
 
   public ExaltedCharacter(HeroTemplate template, ICharacterGenerics generics) {
     this.heroTemplate = template;
     addModels(generics);
     // todo: Beware the side effects
-    this.attributes = new AttributeModelImpl(template, context, getTraitModel());
     new CharacterTraitListening(this, context.getCharacterListening()).initListening();
     this.health = new HealthConfiguration(getTraitArray(template.getToughnessControllingTraitTypes()), getTraitModel(),
             template.getBaseHealthProviders());
@@ -155,7 +153,7 @@ public class ExaltedCharacter implements ICharacter {
 
   @Override
   public AttributeModel getAttributes() {
-    return attributes;
+    return AttributeModelFetcher.fetch(hero);
   }
 
   public EssencePoolModel getEssencePool() {
