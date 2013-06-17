@@ -6,8 +6,7 @@ import net.sf.anathema.character.generic.health.HealthType;
 import net.sf.anathema.lib.control.ObjectValueListener;
 import net.sf.anathema.lib.exception.NotYetImplementedException;
 import net.sf.anathema.lib.gui.AgnosticUIConfiguration;
-import net.sf.anathema.lib.gui.ConfigurableSwingUI;
-import net.sf.anathema.lib.gui.ui.ObjectUiListCellRenderer;
+import net.sf.anathema.lib.gui.ui.ConfigurableListCellRenderer;
 import net.sf.anathema.lib.gui.widgets.ChangeableJComboBox;
 import net.sf.anathema.lib.gui.widgets.IChangeableJComboBox;
 import net.sf.anathema.lib.gui.widgets.IntegerSpinner;
@@ -49,7 +48,7 @@ public class WeaponDamageView implements IWeaponDamageView {
 
   @Override
   public void setHealthTypeRenderer(AgnosticUIConfiguration<HealthType> renderer) {
-    typeBox.setRenderer(new ObjectUiListCellRenderer(new ConfigurableSwingUI<>(renderer)));
+    typeBox.setRenderer(new ConfigurableListCellRenderer(renderer));
   }
 
   @Override

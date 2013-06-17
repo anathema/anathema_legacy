@@ -10,6 +10,7 @@ import net.sf.anathema.lib.control.ObjectValueListener;
 import net.sf.anathema.lib.gui.AgnosticUIConfiguration;
 import net.sf.anathema.lib.gui.ConfigurableSwingUI;
 import net.sf.anathema.lib.gui.action.SmartAction;
+import net.sf.anathema.lib.gui.ui.ConfigurableListCellRenderer;
 import net.sf.anathema.lib.gui.ui.ObjectUiListCellRenderer;
 import net.sf.anathema.lib.gui.widgets.ChangeableJComboBox;
 import net.sf.anathema.lib.gui.widgets.IChangeableJComboBox;
@@ -65,7 +66,7 @@ public abstract class AbstractCascadeSelectionView implements ICascadeSelectionV
     panel.setBorder(new TitledBorder(title));
     typeComboBox = new ChangeableJComboBox<>(types, false);
     typeComboBox.setSelectedObject(null);
-    ListCellRenderer renderer = new ObjectUiListCellRenderer(new ConfigurableSwingUI(uiConfig));
+    ListCellRenderer renderer = new ConfigurableListCellRenderer(uiConfig);
     typeComboBox.setRenderer(renderer);
     panel.add(typeComboBox.getComponent(), BorderLayout.CENTER);
     getSelectionComponent().add(panel);
@@ -87,13 +88,14 @@ public abstract class AbstractCascadeSelectionView implements ICascadeSelectionV
   }
 
   @Override
-  public void addCharmGroupSelector(String title, AgnosticUIConfiguration uiConfig, final ICharmGroupChangeListener selectionListener,
+  public void addCharmGroupSelector(String title, AgnosticUIConfiguration uiConfig,
+                                    final ICharmGroupChangeListener selectionListener,
                                     Identifier[] allPotentialGroups) {
     JPanel panel = new JPanel(new BorderLayout());
     panel.setBorder(new TitledBorder(title));
     groupComboBox = new ChangeableJComboBox<>(null, false);
     groupComboBox.setSelectedObject(null);
-    ListCellRenderer renderer = new ObjectUiListCellRenderer(new ConfigurableSwingUI(uiConfig));
+    ListCellRenderer renderer = new ConfigurableListCellRenderer(uiConfig);
     groupComboBox.setRenderer(renderer);
     Dimension preferredSize = calculateComboBoxSize(allPotentialGroups, renderer);
     groupComboBox.setPreferredSize(preferredSize);

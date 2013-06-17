@@ -3,12 +3,11 @@ package net.sf.anathema.framework.swing.selection;
 import net.sf.anathema.lib.control.ObjectValueListener;
 import net.sf.anathema.lib.exception.NotYetImplementedException;
 import net.sf.anathema.lib.gui.AgnosticUIConfiguration;
-import net.sf.anathema.lib.gui.ConfigurableSwingUI;
 import net.sf.anathema.lib.gui.list.SmartJList;
 import net.sf.anathema.lib.gui.list.VetoableListSelectionModel;
 import net.sf.anathema.lib.gui.list.veto.Vetor;
 import net.sf.anathema.lib.gui.selection.IListObjectSelectionView;
-import net.sf.anathema.lib.gui.ui.ObjectUiListCellRenderer;
+import net.sf.anathema.lib.gui.ui.ConfigurableListCellRenderer;
 
 import javax.swing.JComponent;
 import javax.swing.event.ListSelectionEvent;
@@ -34,20 +33,18 @@ public class ListObjectSelectionView<V> implements IListObjectSelectionView<V> {
 
   @Override
   public void setCellRenderer(AgnosticUIConfiguration<V> renderer) {
-    smartList.setCellRenderer(new ObjectUiListCellRenderer(new ConfigurableSwingUI<>(renderer)));
+    smartList.setCellRenderer(new ConfigurableListCellRenderer(renderer));
 
   }
 
   @Override
-  public void addObjectSelectionChangedListener(
-          final ObjectValueListener<V> listener) {
-    smartList.getSelectionModel().addListSelectionListener(
-            new ListSelectionListener() {
-              @Override
-              public void valueChanged(ListSelectionEvent e) {
-                listener.valueChanged(smartList.getSelectedValue());
-              }
-            });
+  public void addObjectSelectionChangedListener(final ObjectValueListener<V> listener) {
+    smartList.getSelectionModel().addListSelectionListener(new ListSelectionListener() {
+      @Override
+      public void valueChanged(ListSelectionEvent e) {
+        listener.valueChanged(smartList.getSelectedValue());
+      }
+    });
   }
 
   @Override

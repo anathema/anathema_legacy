@@ -9,8 +9,7 @@ import net.sf.anathema.character.view.magic.ISpellView;
 import net.sf.anathema.character.view.magic.ISpellViewProperties;
 import net.sf.anathema.framework.swing.IView;
 import net.sf.anathema.lib.control.ObjectValueListener;
-import net.sf.anathema.lib.gui.ConfigurableSwingUI;
-import net.sf.anathema.lib.gui.ui.ObjectUiListCellRenderer;
+import net.sf.anathema.lib.gui.ui.ConfigurableListCellRenderer;
 import net.sf.anathema.lib.util.Identifier;
 import org.jmock.example.announcer.Announcer;
 
@@ -34,7 +33,7 @@ public class SpellView implements ISpellView, IView {
   private ISpellViewProperties properties;
 
   @Override
-  public void prepare(final ISpellViewProperties properties){
+  public void prepare(final ISpellViewProperties properties) {
     this.properties = properties;
     this.magicLearnView = new MagicLearnView() {
       @Override
@@ -53,7 +52,7 @@ public class SpellView implements ISpellView, IView {
   public void initGui(Identifier[] circles) {
     content.add(new JLabel(properties.getCircleLabel()), new CC().split(2));
     final JComboBox<Identifier> box = new JComboBox<>(circles);
-    box.setRenderer(new ObjectUiListCellRenderer(new ConfigurableSwingUI<>(properties.getCircleSelectionRenderer())));
+    box.setRenderer(new ConfigurableListCellRenderer(properties.getCircleSelectionRenderer()));
     content.add(box, new CC().wrap());
     box.addActionListener(new ActionListener() {
       @Override
