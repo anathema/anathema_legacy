@@ -12,7 +12,6 @@ import net.sf.anathema.swing.interaction.ActionInteraction;
 import net.sf.anathema.view.interaction.AddToButton;
 import org.jmock.example.announcer.Announcer;
 
-import javax.swing.Action;
 import javax.swing.DefaultListModel;
 import javax.swing.JButton;
 import javax.swing.JList;
@@ -126,12 +125,6 @@ public class MagicLearnView implements IMagicLearnView {
   @Override
   public void addMagicViewListener(IMagicViewListener listener) {
     control.addListener(listener);
-  }
-
-  public JButton addAdditionalAction(Action action) {
-    JButton button = new JButton(action);
-    endButtons.add(button);
-    return button;
   }
 
   public Tool addAdditionalTool() {

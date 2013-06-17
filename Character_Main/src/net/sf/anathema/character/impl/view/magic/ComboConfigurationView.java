@@ -6,7 +6,6 @@ import net.miginfocom.layout.LC;
 import net.miginfocom.swing.MigLayout;
 import net.sf.anathema.character.generic.framework.magic.view.IMagicViewListener;
 import net.sf.anathema.character.generic.framework.magic.view.MagicLearnView;
-import net.sf.anathema.character.generic.magic.ICharm;
 import net.sf.anathema.character.view.magic.IComboConfigurationView;
 import net.sf.anathema.character.view.magic.IComboView;
 import net.sf.anathema.character.view.magic.IComboViewListener;
@@ -32,7 +31,6 @@ import javax.swing.JScrollPane;
 import javax.swing.ListModel;
 import javax.swing.event.ListDataEvent;
 import javax.swing.event.ListDataListener;
-import javax.swing.event.ListSelectionEvent;
 import javax.swing.event.ListSelectionListener;
 
 import static net.sf.anathema.lib.gui.swing.GuiUtilities.revalidate;
@@ -59,15 +57,11 @@ public class ComboConfigurationView implements IComboConfigurationView, IView {
     magicLearnView = new MagicLearnView() {
       @Override
       protected ListSelectionListener createLearnedListListener(final JButton button, final JList list) {
-        return new ListSelectionListener() {
-          @Override
-          public void valueChanged(ListSelectionEvent e) {
-            button.setEnabled(!list.isSelectionEmpty() && viewProperties.isRemoveButtonEnabled((ICharm) list.getSelectedValue()));
-          }
-        };
+        return properties.getRemoveButtonEnabledListener(button, list);
       }
     };
     magicLearnView.init(viewProperties);
+
     finalizeButton = createFinalizeComboButton(viewProperties);
     clearButton = createClearTool(viewProperties);
     final ListModel learnedListModel = magicLearnView.getLearnedListModel();
