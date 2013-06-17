@@ -18,6 +18,7 @@
         <model id="Abilities"/>
         <model id="Attributes"/>
         <model id="EssencePool"/>
+        <model id="Health"/>
     </models>
     <creation>
         <bonusPointCosts uses="DefaultBonusPointCost2nd.template"/>

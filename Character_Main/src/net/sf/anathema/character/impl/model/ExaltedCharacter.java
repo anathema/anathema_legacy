@@ -15,19 +15,18 @@ import net.sf.anathema.character.impl.model.charm.ComboConfiguration;
 import net.sf.anathema.character.impl.model.context.CharacterModelContext;
 import net.sf.anathema.character.impl.model.statistics.ExtendedConfiguration;
 import net.sf.anathema.character.impl.model.traits.listening.CharacterTraitListening;
-import net.sf.anathema.character.main.model.description.HeroDescription;
-import net.sf.anathema.character.main.model.description.HeroDescriptionFetcher;
 import net.sf.anathema.character.main.hero.DefaultHero;
 import net.sf.anathema.character.main.hero.HeroModel;
 import net.sf.anathema.character.main.hero.ModelInitializationContext;
 import net.sf.anathema.character.main.hero.initialization.HeroModelInitializer;
-import net.sf.anathema.character.main.model.health.HealthModelImpl;
-import net.sf.anathema.character.main.model.traits.TraitModelFetcher;
+import net.sf.anathema.character.main.model.description.HeroDescription;
+import net.sf.anathema.character.main.model.description.HeroDescriptionFetcher;
+import net.sf.anathema.character.main.model.health.HealthModel;
+import net.sf.anathema.character.main.model.health.HealthModelFetcher;
 import net.sf.anathema.character.model.ICharacter;
 import net.sf.anathema.character.model.ISpellConfiguration;
 import net.sf.anathema.character.model.charm.ICharmConfiguration;
 import net.sf.anathema.character.model.charm.IComboConfiguration;
-import net.sf.anathema.character.main.model.health.HealthModel;
 import net.sf.anathema.framework.presenter.itemmanagement.PrintNameAdjuster;
 import net.sf.anathema.lib.control.IChangeListener;
 import net.sf.anathema.lib.registry.IRegistry;
@@ -42,7 +41,6 @@ public class ExaltedCharacter implements ICharacter {
   private final CharmConfiguration charms;
   private final IComboConfiguration combos;
   private final ISpellConfiguration spells;
-  private final HealthModel health;
   private final ExtendedConfiguration extendedConfiguration = new ExtendedConfiguration(context);
   private final DefaultHero hero = new DefaultHero();
   private final ModelInitializationContext initializationContext;
@@ -53,10 +51,8 @@ public class ExaltedCharacter implements ICharacter {
     addModels(generics);
 
     new CharacterTraitListening(this, context.getCharacterListening()).initListening();
-    this.health = new HealthModelImpl(TraitModelFetcher.fetch(hero).getTraits(template.getToughnessControllingTraitTypes()),
-            TraitModelFetcher.fetch(hero), template.getBaseHealthProviders());
-    this.charms =
-            new CharmConfiguration(this, health, context, generics.getCharacterTypes(), generics.getTemplateRegistry(), generics.getCharmProvider());
+    this.charms = new CharmConfiguration(this, HealthModelFetcher.fetch(hero), context, generics.getCharacterTypes(), generics.getTemplateRegistry(),
+            generics.getCharmProvider());
     charms.addCharmLearnListener(new CharacterChangeCharmListener(context.getCharacterListening()));
     charms.initListening();
     this.combos = new ComboConfiguration(charms);
@@ -139,7 +135,7 @@ public class ExaltedCharacter implements ICharacter {
   }
 
   public HealthModel getHealth() {
-    return health;
+    return HealthModelFetcher.fetch(hero);
   }
 
   public IComboConfiguration getCombos() {

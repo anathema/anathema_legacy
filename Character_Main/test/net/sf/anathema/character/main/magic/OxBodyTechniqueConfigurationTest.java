@@ -1,16 +1,14 @@
 package net.sf.anathema.character.main.magic;
 
 import net.sf.anathema.character.generic.caste.ICasteType;
-import net.sf.anathema.character.generic.framework.additionaltemplate.model.TraitContext;
 import net.sf.anathema.character.generic.framework.additionaltemplate.model.ITraitValueStrategy;
+import net.sf.anathema.character.generic.framework.additionaltemplate.model.TraitContext;
 import net.sf.anathema.character.generic.health.HealthLevelType;
 import net.sf.anathema.character.generic.impl.magic.charm.special.OxBodyTechniqueCharm;
 import net.sf.anathema.character.generic.impl.traits.SimpleTraitTemplate;
-import net.sf.anathema.character.generic.traits.GenericTrait;
 import net.sf.anathema.character.generic.traits.ITraitTemplate;
 import net.sf.anathema.character.generic.traits.TraitType;
 import net.sf.anathema.character.generic.traits.types.AbilityType;
-import net.sf.anathema.character.main.model.health.HealthModelImpl;
 import net.sf.anathema.character.impl.model.charm.special.OxBodyTechniqueConfiguration;
 import net.sf.anathema.character.impl.model.context.trait.CreationTraitValueStrategy;
 import net.sf.anathema.character.library.trait.DefaultTrait;
@@ -18,11 +16,13 @@ import net.sf.anathema.character.library.trait.FriendlyValueChangeChecker;
 import net.sf.anathema.character.library.trait.Trait;
 import net.sf.anathema.character.library.trait.favorable.FriendlyIncrementChecker;
 import net.sf.anathema.character.library.trait.rules.FavorableTraitRules;
+import net.sf.anathema.character.main.model.health.HealthModelImpl;
+import net.sf.anathema.character.main.model.traits.GenericTraitCollectionFacade;
 import net.sf.anathema.character.main.testing.BasicCharacterTestCase;
 import net.sf.anathema.character.main.testing.dummy.DummyCasteType;
 import net.sf.anathema.character.main.testing.dummy.DummyCharacterModelContext;
-import net.sf.anathema.character.main.testing.dummy.trait.DummyCoreTraitConfiguration;
-import net.sf.anathema.character.main.model.traits.GenericTraitCollectionFacade;
+import net.sf.anathema.character.main.testing.dummy.DummyHero;
+import net.sf.anathema.character.main.testing.dummy.trait.DummyTraitModel;
 import net.sf.anathema.character.model.charm.OxBodyCategory;
 import net.sf.anathema.character.model.charm.special.IOxBodyTechniqueConfiguration;
 import org.junit.Before;
@@ -37,7 +37,7 @@ public class OxBodyTechniqueConfigurationTest {
   private Trait endurance;
   private IOxBodyTechniqueConfiguration configuration;
   private HealthModelImpl health;
-  private final DummyCoreTraitConfiguration collection = new DummyCoreTraitConfiguration();
+  private final DummyTraitModel traitModel = new DummyTraitModel();
 
   @SuppressWarnings("serial")
   @Before
@@ -49,10 +49,13 @@ public class OxBodyTechniqueConfigurationTest {
     FavorableTraitRules enduranceRules = new FavorableTraitRules(AbilityType.Resistance, enduranceTemplate, traitContext.getLimitationContext());
     endurance = new DefaultTrait(enduranceRules, new ICasteType[]{new DummyCasteType()}, traitContext, modelContext.getBasicCharacterContext(),
             modelContext.getCharacterListening(), new FriendlyValueChangeChecker(), new FriendlyIncrementChecker());
-    health = new HealthModelImpl(new GenericTrait[]{endurance});
-    collection.addTraits(endurance);
+    traitModel.addTraits(endurance);
+    health = new HealthModelImpl();
+    DummyHero hero = new DummyHero();
+    hero.addModel(traitModel);
+    health.initialize(modelContext, hero);
     configuration =
-            new OxBodyTechniqueConfiguration(traitContext, new GenericTraitCollectionFacade(collection), null, new TraitType[]{endurance.getType()},
+            new OxBodyTechniqueConfiguration(traitContext,new GenericTraitCollectionFacade(traitModel), null, new TraitType[]{endurance.getType()},
                     health.getOxBodyLearnArbitrator(), createObtCharm());
     health.getOxBodyLearnArbitrator().addOxBodyTechniqueConfiguration(configuration);
     health.addHealthLevelProvider(configuration.getHealthLevelProvider());
@@ -79,7 +82,7 @@ public class OxBodyTechniqueConfigurationTest {
   public void testTwoOxBodyTechniques() {
     @SuppressWarnings("serial") OxBodyTechniqueConfiguration secondConfiguration = new OxBodyTechniqueConfiguration(
             new BasicCharacterTestCase().createModelContextWithEssence2(new CreationTraitValueStrategy()).getTraitContext(),
-            new GenericTraitCollectionFacade(collection), null, new TraitType[]{endurance.getType()}, health.getOxBodyLearnArbitrator(),
+            new GenericTraitCollectionFacade(traitModel), null, new TraitType[]{endurance.getType()}, health.getOxBodyLearnArbitrator(),
             createObtCharm());
     health.getOxBodyLearnArbitrator().addOxBodyTechniqueConfiguration(secondConfiguration);
     health.addHealthLevelProvider(secondConfiguration.getHealthLevelProvider());

@@ -14,6 +14,7 @@ import net.sf.anathema.character.library.trait.specialties.ISpecialtiesConfigura
 import net.sf.anathema.character.library.trait.specialties.SpecialtiesConfiguration;
 import net.sf.anathema.character.main.model.abilities.AbilityModel;
 import net.sf.anathema.character.main.model.attributes.AttributeModel;
+import net.sf.anathema.character.main.model.traits.TraitModel;
 import net.sf.anathema.character.main.testing.dummy.DummyCharacterModelContext;
 import net.sf.anathema.character.main.model.traits.DefaultTraitMap;
 import net.sf.anathema.character.main.model.traits.MappedTraitGroup;

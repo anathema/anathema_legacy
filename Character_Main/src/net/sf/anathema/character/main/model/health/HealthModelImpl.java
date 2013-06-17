@@ -2,34 +2,43 @@ package net.sf.anathema.character.main.model.health;
 
 import net.sf.anathema.character.generic.health.HealthLevelType;
 import net.sf.anathema.character.generic.health.IHealthLevelTypeVisitor;
-import net.sf.anathema.character.generic.traits.GenericTrait;
+import net.sf.anathema.character.generic.template.HeroTemplate;
 import net.sf.anathema.character.generic.traits.types.AttributeType;
+import net.sf.anathema.character.main.hero.Hero;
+import net.sf.anathema.character.main.hero.HeroModel;
+import net.sf.anathema.character.main.hero.InitializationContext;
 import net.sf.anathema.character.main.model.traits.TraitMap;
+import net.sf.anathema.character.main.model.traits.TraitModelFetcher;
+import net.sf.anathema.lib.util.Identifier;
 
 import java.util.ArrayList;
 import java.util.List;
 
-public class HealthModelImpl implements HealthModel {
+public class HealthModelImpl implements HealthModel, HeroModel {
 
   private final List<IHealthLevelProvider> healthLevelProviders = new ArrayList<>();
   private final List<IPainToleranceProvider> painResistanceProviders = new ArrayList<>();
-  private final OxBodyTechniqueArbitratorImpl arbitrator;
+  private OxBodyTechniqueArbitratorImpl arbitrator;
 
-  public HealthModelImpl(GenericTrait[] toughnessControllingTraits) {
-    this.arbitrator = new OxBodyTechniqueArbitratorImpl(toughnessControllingTraits);
+  @Override
+  public Identifier getId() {
+    return ID;
   }
 
-  public HealthModelImpl(GenericTrait[] toughnessControllingTraits, TraitMap config, String[] providers) {
-    this.arbitrator = new OxBodyTechniqueArbitratorImpl(toughnessControllingTraits);
-    addHealthLevelProvider(new DyingStaminaHealthLevelProvider(config));
-    if (providers == null) {
+  @Override
+  public void initialize(InitializationContext context, Hero hero) {
+    TraitMap traitMap = TraitModelFetcher.fetch(hero);
+    HeroTemplate template = context.getTemplate();
+    this.arbitrator = new OxBodyTechniqueArbitratorImpl(traitMap.getTraits(template.getToughnessControllingTraitTypes()));
+    addHealthLevelProvider(new DyingStaminaHealthLevelProvider(traitMap));
+    if (template.getBaseHealthProviders() == null) {
       return;
     }
-    for (String providerString : providers) {
+    for (String providerString : template.getBaseHealthProviders()) {
       Class<?> loadedClass;
       try {
         loadedClass = Class.forName(providerString);
-        IHealthLevelProvider provider = (IHealthLevelProvider) loadedClass.getConstructors()[0].newInstance(config);
+        IHealthLevelProvider provider = (IHealthLevelProvider) loadedClass.getConstructors()[0].newInstance(traitMap);
         addHealthLevelProvider(provider);
       } catch (Exception e) {
         e.printStackTrace();

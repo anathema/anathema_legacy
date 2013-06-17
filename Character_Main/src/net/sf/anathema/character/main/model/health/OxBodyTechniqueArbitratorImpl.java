@@ -1,6 +1,7 @@
 package net.sf.anathema.character.main.model.health;
 
 import net.sf.anathema.character.generic.traits.GenericTrait;
+import net.sf.anathema.character.library.trait.Trait;
 import net.sf.anathema.character.model.charm.special.IOxBodyTechniqueConfiguration;
 
 import java.util.ArrayList;
@@ -8,9 +9,9 @@ import java.util.List;
 
 public class OxBodyTechniqueArbitratorImpl implements OxBodyTechniqueArbitrator {
   private final List<IOxBodyTechniqueConfiguration> oxBodyList = new ArrayList<>();
-  private final GenericTrait[] controllingTraits;
+  private final Trait[] controllingTraits;
 
-  public OxBodyTechniqueArbitratorImpl(GenericTrait[] toughnessControllingTraits) {
+  public OxBodyTechniqueArbitratorImpl(Trait[] toughnessControllingTraits) {
     this.controllingTraits = toughnessControllingTraits;
   }
 
