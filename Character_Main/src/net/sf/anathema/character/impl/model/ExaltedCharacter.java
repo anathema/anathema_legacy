@@ -29,8 +29,6 @@ import net.sf.anathema.character.main.model.CharacterModel;
 import net.sf.anathema.character.main.model.DefaultHero;
 import net.sf.anathema.character.main.model.ModelInitializationContext;
 import net.sf.anathema.character.main.model.initialization.CharacterModelInitializer;
-import net.sf.anathema.character.main.othertraits.DefaultOtherTraitModel;
-import net.sf.anathema.character.main.othertraits.OtherTraitModel;
 import net.sf.anathema.character.main.traits.model.TraitModel;
 import net.sf.anathema.character.model.ICharacter;
 import net.sf.anathema.character.model.ISpellConfiguration;
@@ -62,7 +60,6 @@ public class ExaltedCharacter implements ICharacter {
     this.heroTemplate = template;
     addModels(generics);
     // todo: Beware the side effects
-    OtherTraitModel otherTraitModel = new DefaultOtherTraitModel(hero, template, context, getTraitModel());
     this.abilities = new DefaultAbilityModel(template, context, getTraitModel());
     this.attributes = new DefaultAttributeModel(template, context, getTraitModel());
     new CharacterTraitListening(this, context.getCharacterListening()).initListening();

@@ -1,7 +1,6 @@
 package net.sf.anathema.character.main.othertraits;
 
 import net.sf.anathema.character.generic.additionalrules.IAdditionalTraitRules;
-import net.sf.anathema.character.generic.framework.additionaltemplate.model.ICharacterModelContext;
 import net.sf.anathema.character.generic.framework.additionaltemplate.model.TraitContext;
 import net.sf.anathema.character.generic.template.HeroTemplate;
 import net.sf.anathema.character.generic.template.ITraitTemplateCollection;
@@ -22,18 +21,23 @@ import net.sf.anathema.character.main.traits.model.DefaultTraitMap;
 import net.sf.anathema.character.main.traits.model.TraitModel;
 import net.sf.anathema.lib.util.Identifier;
 
-public class DefaultOtherTraitModel extends DefaultTraitMap implements OtherTraitModel, CharacterModel {
+public class OtherTraitModelImpl extends DefaultTraitMap implements OtherTraitModel, CharacterModel {
 
-  private Hero hero;
   private HeroTemplate template;
 
-  public DefaultOtherTraitModel(Hero hero, HeroTemplate template, ICharacterModelContext modelContext, TraitModel traitModel) {
-    this.hero = hero;
-    this.template = template;
-    addEssence(modelContext.getTraitContext());
-    addVirtues(modelContext.getTraitContext());
-    addWillpower(modelContext.getTraitContext());
+  @Override
+  public Identifier getId() {
+    return ID;
+  }
+
+  @Override
+  public void initialize(InitializationContext context, Hero hero) {
+    this.template = context.getTemplate();
+    addEssence(context.getTraitContext());
+    addVirtues(context.getTraitContext());
+    addWillpower(context.getTraitContext());
     connectWillpowerAndVirtues();
+    TraitModel traitModel = (TraitModel) hero.getModel(TraitModel.ID);
     getTrait(OtherTraitType.Essence).addCurrentValueListener(new EssenceLimitationListener(traitModel, hero));
     traitModel.addTraits(getAll());
   }
@@ -72,15 +76,5 @@ public class DefaultOtherTraitModel extends DefaultTraitMap implements OtherTrai
 
   private ITraitTemplateCollection getTemplateCollection() {
     return this.template.getTraitTemplateCollection();
-  }
-
-  @Override
-  public Identifier getId() {
-    return ID;
-  }
-
-  @Override
-  public void initialize(InitializationContext context, Hero hero) {
-    //To change body of implemented methods use File | Settings | File Templates.
   }
 }

@@ -10,7 +10,7 @@ import java.util.Iterator;
 
 import static java.util.Arrays.asList;
 
-public class DefaultTraitModel extends DefaultTraitMap implements TraitMap, TraitModel, CharacterModel {
+public class TraitModelImpl extends DefaultTraitMap implements TraitMap, TraitModel, CharacterModel {
 
   @Override
   public Iterator<Trait> iterator() {

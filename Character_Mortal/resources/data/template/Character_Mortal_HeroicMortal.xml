@@ -12,10 +12,9 @@
         </healthTemplate>
     </general>
     <models>
-        <model id="Experience"/>
         <model id="Description"/>
         <model id="Concept"/>
-        <model id="OverallTraitModel"/>
+        <model id="OtherTraits"/>
     </models>
     <creation>
         <bonusPointCosts uses="DefaultBonusPointCost2nd.template"/>
