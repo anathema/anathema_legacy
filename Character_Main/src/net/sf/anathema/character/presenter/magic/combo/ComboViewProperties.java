@@ -6,11 +6,14 @@ import net.sf.anathema.character.generic.magic.ICharm;
 import net.sf.anathema.character.generic.magic.description.MagicDescriptionProvider;
 import net.sf.anathema.character.model.charm.IComboConfiguration;
 import net.sf.anathema.character.view.magic.IComboViewProperties;
+import net.sf.anathema.charmtree.builder.MagicDisplayLabeler;
 import net.sf.anathema.charmtree.builder.stringbuilder.CharmInfoStringBuilder;
 import net.sf.anathema.charmtree.builder.stringbuilder.ICharmInfoStringBuilder;
 import net.sf.anathema.framework.presenter.resources.BasicUi;
 import net.sf.anathema.lib.file.RelativePath;
+import net.sf.anathema.lib.gui.AbstractUIConfiguration;
 import net.sf.anathema.lib.resources.Resources;
+import net.sf.anathema.lib.util.Identifier;
 
 import javax.swing.ListCellRenderer;
 
@@ -50,8 +53,8 @@ public final class ComboViewProperties extends AbstractMagicLearnProperties impl
   }
 
   @Override
-  public ListCellRenderer getLearnedMagicRenderer() {
-    return new AlwaysLegalCharmRenderer(getResources(), charmInfoStringProvider);
+  public AbstractUIConfiguration<Identifier> getLearnedMagicRenderer() {
+    return new CharmUIConfiguration();
   }
 
   @Override
@@ -97,5 +100,17 @@ public final class ComboViewProperties extends AbstractMagicLearnProperties impl
   @Override
   public String getCancelButtonEditToolTip() {
     return getResources().getString("CardView.CharmConfiguration.ComboCreation.ClearEditToolTip");
+  }
+
+  private class CharmUIConfiguration extends AbstractUIConfiguration<Identifier> {
+    @Override
+    public String getLabel(Identifier value) {
+      return new MagicDisplayLabeler(getResources()).getLabelForMagic((ICharm) value);
+    }
+
+    @Override
+    public String getToolTipText(Identifier value) {
+      return charmInfoStringProvider.getInfoString((ICharm) value, null);
+    }
   }
 }
