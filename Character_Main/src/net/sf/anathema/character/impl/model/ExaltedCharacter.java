@@ -49,32 +49,34 @@ public class ExaltedCharacter implements ICharacter {
     this.initializationContext = new ModelInitializationContext(context, this, heroTemplate);
     addModels(generics);
 
-    new CharacterTraitListening(this, context.getCharacterListening()).initListening();
     this.charms = new CharmConfiguration(this, HealthModelFetcher.fetch(hero), context, generics.getCharacterTypes(), generics.getTemplateRegistry(),
             generics.getCharmProvider());
-    charms.addCharmLearnListener(new CharacterChangeCharmListener(context.getCharacterListening()));
-    charms.initListening();
+    addCompulsiveCharms(template);
     this.combos = new ComboConfiguration(charms);
     combos.addComboConfigurationListener(new CharacterChangeComboListener(context.getCharacterListening()));
-    this.spells = new SpellConfiguration(charms, context.getSpellLearnStrategy(), template, generics.getDataSet(ISpellCache.class));
-    this.spells.addChangeListener(new IChangeListener() {
-      @Override
-      public void changeOccurred() {
-        context.getCharacterListening().fireCharacterChanged();
-      }
-    });
+    this.spells = new SpellConfiguration(charms, context.getSpellLearnStrategy(), initializationContext.getTemplate(),
+            generics.getDataSet(ISpellCache.class));
+    for (IGlobalAdditionalTemplate globalTemplate : generics.getGlobalAdditionalTemplateRegistry().getAll()) {
+      addAdditionalModels(generics, globalTemplate);
+    }
+    addAdditionalModels(generics, template.getAdditionalTemplates());
+
+    charms.initListening();
+    new CharacterTraitListening(this, context.getCharacterListening()).initListening();
+    getCharacterContext().getCharacterListening().addChangeListener(management.getStatisticsChangeListener());
+    charms.addCharmLearnListener(new CharacterChangeCharmListener(context.getCharacterListening()));
     extendedConfiguration.addAdditionalModelChangeListener(new IChangeListener() {
       @Override
       public void changeOccurred() {
         context.getCharacterListening().fireCharacterChanged();
       }
     });
-    for (IGlobalAdditionalTemplate globalTemplate : generics.getGlobalAdditionalTemplateRegistry().getAll()) {
-      addAdditionalModels(generics, globalTemplate);
-    }
-    addAdditionalModels(generics, template.getAdditionalTemplates());
-    addCompulsiveCharms(template);
-    getCharacterContext().getCharacterListening().addChangeListener(management.getStatisticsChangeListener());
+    this.spells.addChangeListener(new IChangeListener() {
+      @Override
+      public void changeOccurred() {
+        context.getCharacterListening().fireCharacterChanged();
+      }
+    });
   }
 
   private void addModels(ICharacterGenerics generics) {
