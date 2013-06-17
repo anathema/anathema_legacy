@@ -20,21 +20,21 @@ import net.sf.anathema.character.model.charm.CharmLearnAdapter;
 import net.sf.anathema.character.model.charm.ICharmConfiguration;
 import net.sf.anathema.character.model.charm.IExtendedCharmLearnableArbitrator;
 import net.sf.anathema.character.model.charm.ILearningCharmGroup;
-import net.sf.anathema.character.model.health.IHealthConfiguration;
-import net.sf.anathema.character.model.health.IPainToleranceProvider;
+import net.sf.anathema.character.main.model.health.HealthModel;
+import net.sf.anathema.character.main.model.health.IPainToleranceProvider;
 
 import java.util.HashMap;
 import java.util.Map;
 
 public class SpecialCharmManager implements ISpecialCharmManager {
   private final Map<ICharm, ISpecialCharmConfiguration> specialConfigurationsByCharm = new HashMap<>();
-  private final IHealthConfiguration health;
+  private final HealthModel health;
   private final ICharacterModelContext context;
   private final IExtendedCharmLearnableArbitrator arbitrator;
   private Hero hero;
   private final ICharmConfiguration config;
 
-  public SpecialCharmManager(Hero hero, ICharmConfiguration config, IHealthConfiguration health, ICharacterModelContext context) {
+  public SpecialCharmManager(Hero hero, ICharmConfiguration config, HealthModel health, ICharacterModelContext context) {
     this.hero = hero;
     this.config = config;
     this.arbitrator = config;

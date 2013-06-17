@@ -1,30 +1,26 @@
-package net.sf.anathema.character.impl.model;
+package net.sf.anathema.character.main.model.health;
 
 import net.sf.anathema.character.generic.health.HealthLevelType;
 import net.sf.anathema.character.generic.health.IHealthLevelTypeVisitor;
 import net.sf.anathema.character.generic.traits.GenericTrait;
 import net.sf.anathema.character.generic.traits.types.AttributeType;
 import net.sf.anathema.character.main.model.traits.TraitMap;
-import net.sf.anathema.character.model.health.IHealthConfiguration;
-import net.sf.anathema.character.model.health.IHealthLevelProvider;
-import net.sf.anathema.character.model.health.IOxBodyTechniqueArbitrator;
-import net.sf.anathema.character.model.health.IPainToleranceProvider;
 
 import java.util.ArrayList;
 import java.util.List;
 
-public class HealthConfiguration implements IHealthConfiguration {
+public class HealthModelImpl implements HealthModel {
 
   private final List<IHealthLevelProvider> healthLevelProviders = new ArrayList<>();
   private final List<IPainToleranceProvider> painResistanceProviders = new ArrayList<>();
-  private final OxBodyTechniqueArbitrator arbitrator;
+  private final OxBodyTechniqueArbitratorImpl arbitrator;
 
-  public HealthConfiguration(GenericTrait[] toughnessControllingTraits) {
-    this.arbitrator = new OxBodyTechniqueArbitrator(toughnessControllingTraits);
+  public HealthModelImpl(GenericTrait[] toughnessControllingTraits) {
+    this.arbitrator = new OxBodyTechniqueArbitratorImpl(toughnessControllingTraits);
   }
 
-  public HealthConfiguration(GenericTrait[] toughnessControllingTraits, TraitMap config, String[] providers) {
-    this.arbitrator = new OxBodyTechniqueArbitrator(toughnessControllingTraits);
+  public HealthModelImpl(GenericTrait[] toughnessControllingTraits, TraitMap config, String[] providers) {
+    this.arbitrator = new OxBodyTechniqueArbitratorImpl(toughnessControllingTraits);
     addHealthLevelProvider(new DyingStaminaHealthLevelProvider(config));
     if (providers == null) {
       return;
@@ -97,7 +93,7 @@ public class HealthConfiguration implements IHealthConfiguration {
   }
 
   @Override
-  public IOxBodyTechniqueArbitrator getOxBodyLearnArbitrator() {
+  public OxBodyTechniqueArbitrator getOxBodyLearnArbitrator() {
     return arbitrator;
   }
 

@@ -21,12 +21,13 @@ import net.sf.anathema.character.main.hero.DefaultHero;
 import net.sf.anathema.character.main.hero.HeroModel;
 import net.sf.anathema.character.main.hero.ModelInitializationContext;
 import net.sf.anathema.character.main.hero.initialization.HeroModelInitializer;
+import net.sf.anathema.character.main.model.health.HealthModelImpl;
 import net.sf.anathema.character.main.model.traits.TraitModelFetcher;
 import net.sf.anathema.character.model.ICharacter;
 import net.sf.anathema.character.model.ISpellConfiguration;
 import net.sf.anathema.character.model.charm.ICharmConfiguration;
 import net.sf.anathema.character.model.charm.IComboConfiguration;
-import net.sf.anathema.character.model.health.IHealthConfiguration;
+import net.sf.anathema.character.main.model.health.HealthModel;
 import net.sf.anathema.framework.presenter.itemmanagement.PrintNameAdjuster;
 import net.sf.anathema.lib.control.IChangeListener;
 import net.sf.anathema.lib.registry.IRegistry;
@@ -41,7 +42,7 @@ public class ExaltedCharacter implements ICharacter {
   private final CharmConfiguration charms;
   private final IComboConfiguration combos;
   private final ISpellConfiguration spells;
-  private final IHealthConfiguration health;
+  private final HealthModel health;
   private final ExtendedConfiguration extendedConfiguration = new ExtendedConfiguration(context);
   private final DefaultHero hero = new DefaultHero();
   private final ModelInitializationContext initializationContext;
@@ -52,7 +53,7 @@ public class ExaltedCharacter implements ICharacter {
     addModels(generics);
 
     new CharacterTraitListening(this, context.getCharacterListening()).initListening();
-    this.health = new HealthConfiguration(TraitModelFetcher.fetch(hero).getTraits(template.getToughnessControllingTraitTypes()),
+    this.health = new HealthModelImpl(TraitModelFetcher.fetch(hero).getTraits(template.getToughnessControllingTraitTypes()),
             TraitModelFetcher.fetch(hero), template.getBaseHealthProviders());
     this.charms =
             new CharmConfiguration(this, health, context, generics.getCharacterTypes(), generics.getTemplateRegistry(), generics.getCharmProvider());
@@ -137,7 +138,7 @@ public class ExaltedCharacter implements ICharacter {
     return charms;
   }
 
-  public IHealthConfiguration getHealth() {
+  public HealthModel getHealth() {
     return health;
   }
 

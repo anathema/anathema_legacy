@@ -1,8 +1,12 @@
-package net.sf.anathema.character.model.health;
+package net.sf.anathema.character.main.model.health;
 
 import net.sf.anathema.character.generic.health.HealthLevelType;
+import net.sf.anathema.lib.util.Identifier;
+import net.sf.anathema.lib.util.SimpleIdentifier;
 
-public interface IHealthConfiguration {
+public interface HealthModel {
+
+  Identifier ID = new SimpleIdentifier("Health");
 
   int getHealthLevelTypeCount(HealthLevelType type);
 
@@ -10,7 +14,7 @@ public interface IHealthConfiguration {
 
   void addPainToleranceProvider(IPainToleranceProvider provider);
 
-  IOxBodyTechniqueArbitrator getOxBodyLearnArbitrator();
+  OxBodyTechniqueArbitrator getOxBodyLearnArbitrator();
 
   int getPainToleranceLevel();
 }

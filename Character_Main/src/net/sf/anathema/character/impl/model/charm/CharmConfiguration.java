@@ -30,7 +30,7 @@ import net.sf.anathema.character.model.charm.ICharmLearnListener;
 import net.sf.anathema.character.model.charm.ILearningCharmGroup;
 import net.sf.anathema.character.model.charm.special.IMultiLearnableCharmConfiguration;
 import net.sf.anathema.character.model.charm.special.IMultipleEffectCharmConfiguration;
-import net.sf.anathema.character.model.health.IHealthConfiguration;
+import net.sf.anathema.character.main.model.health.HealthModel;
 import net.sf.anathema.character.presenter.magic.CharacterSourceBookFilter;
 import net.sf.anathema.character.presenter.magic.EssenceLevelCharmFilter;
 import net.sf.anathema.character.presenter.magic.ObtainableCharmFilter;
@@ -72,7 +72,7 @@ public class CharmConfiguration implements ICharmConfiguration {
   private NonMartialArtsOptions nonMartialArtsOptions;
   private Hero hero;
 
-  public CharmConfiguration(Hero hero, IHealthConfiguration health, ICharacterModelContext context, CharacterTypes characterTypes, ITemplateRegistry registry,
+  public CharmConfiguration(Hero hero, HealthModel health, ICharacterModelContext context, CharacterTypes characterTypes, ITemplateRegistry registry,
                             ICharmProvider provider) {
     this.hero = hero;
     this.martialArtsOptions = new MartialArtsOptions(context, registry);

@@ -10,7 +10,7 @@ import net.sf.anathema.character.generic.traits.GenericTrait;
 import net.sf.anathema.character.generic.traits.ITraitTemplate;
 import net.sf.anathema.character.generic.traits.TraitType;
 import net.sf.anathema.character.generic.traits.types.AbilityType;
-import net.sf.anathema.character.impl.model.HealthConfiguration;
+import net.sf.anathema.character.main.model.health.HealthModelImpl;
 import net.sf.anathema.character.impl.model.charm.special.OxBodyTechniqueConfiguration;
 import net.sf.anathema.character.impl.model.context.trait.CreationTraitValueStrategy;
 import net.sf.anathema.character.library.trait.DefaultTrait;
@@ -36,7 +36,7 @@ public class OxBodyTechniqueConfigurationTest {
 
   private Trait endurance;
   private IOxBodyTechniqueConfiguration configuration;
-  private HealthConfiguration health;
+  private HealthModelImpl health;
   private final DummyCoreTraitConfiguration collection = new DummyCoreTraitConfiguration();
 
   @SuppressWarnings("serial")
@@ -49,7 +49,7 @@ public class OxBodyTechniqueConfigurationTest {
     FavorableTraitRules enduranceRules = new FavorableTraitRules(AbilityType.Resistance, enduranceTemplate, traitContext.getLimitationContext());
     endurance = new DefaultTrait(enduranceRules, new ICasteType[]{new DummyCasteType()}, traitContext, modelContext.getBasicCharacterContext(),
             modelContext.getCharacterListening(), new FriendlyValueChangeChecker(), new FriendlyIncrementChecker());
-    health = new HealthConfiguration(new GenericTrait[]{endurance});
+    health = new HealthModelImpl(new GenericTrait[]{endurance});
     collection.addTraits(endurance);
     configuration =
             new OxBodyTechniqueConfiguration(traitContext, new GenericTraitCollectionFacade(collection), null, new TraitType[]{endurance.getType()},

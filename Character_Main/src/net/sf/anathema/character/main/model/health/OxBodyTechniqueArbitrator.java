@@ -1,8 +1,8 @@
-package net.sf.anathema.character.model.health;
+package net.sf.anathema.character.main.model.health;
 
 import net.sf.anathema.character.model.charm.special.IOxBodyTechniqueConfiguration;
 
-public interface IOxBodyTechniqueArbitrator {
+public interface OxBodyTechniqueArbitrator {
 
   void addOxBodyTechniqueConfiguration(IOxBodyTechniqueConfiguration configuration);
 

@@ -8,10 +8,10 @@ import net.sf.anathema.character.generic.magic.charms.special.IOxBodyTechniqueCh
 import net.sf.anathema.character.generic.magic.charms.special.ISpecialCharmLearnListener;
 import net.sf.anathema.character.generic.traits.TraitType;
 import net.sf.anathema.character.library.trait.favorable.IncrementChecker;
+import net.sf.anathema.character.main.model.health.OxBodyTechniqueArbitrator;
 import net.sf.anathema.character.model.charm.OxBodyCategory;
 import net.sf.anathema.character.model.charm.special.IOxBodyTechniqueConfiguration;
-import net.sf.anathema.character.model.health.IHealthLevelProvider;
-import net.sf.anathema.character.model.health.IOxBodyTechniqueArbitrator;
+import net.sf.anathema.character.main.model.health.IHealthLevelProvider;
 import net.sf.anathema.lib.control.IIntValueChangedListener;
 import org.jmock.example.announcer.Announcer;
 
@@ -28,7 +28,7 @@ public class OxBodyTechniqueConfiguration implements IOxBodyTechniqueConfigurati
   private final IHealthLevelProvider healthLevelProvider;
 
   public OxBodyTechniqueConfiguration(TraitContext context, final IGenericTraitCollection collection, ICharm oxBodyTechnique,
-                                      final TraitType[] relevantTraits, final IOxBodyTechniqueArbitrator arbitrator,
+                                      final TraitType[] relevantTraits, final OxBodyTechniqueArbitrator arbitrator,
                                       IOxBodyTechniqueCharm properties) {
     this.oxBodyTechnique = oxBodyTechnique;
     incrementChecker = new IncrementChecker() {
