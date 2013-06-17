@@ -28,6 +28,7 @@ public class CharacterSpecialCharmPresenter implements SpecialCharmViewPresenter
   }
 
   @Override
+  //TODO: Swing Tooltips
   public void resetTooltipsWhenCursorLeavesCharmArea() {
     ToolTipManager.sharedInstance().setEnabled(false);
     ToolTipManager.sharedInstance().setEnabled(true);

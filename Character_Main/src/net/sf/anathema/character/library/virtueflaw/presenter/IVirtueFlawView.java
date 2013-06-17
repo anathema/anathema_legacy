@@ -11,6 +11,7 @@ public interface IVirtueFlawView {
 
   ITextView addTextView(String label, int columnCount);
 
+  //TODO: Renderer
   IObjectSelectionView<TraitType> addVirtueFlawRootSelectionView(String string, ListCellRenderer renderer);
 
   IIntValueView addLimitValueView(String label, int value, int maxValue);

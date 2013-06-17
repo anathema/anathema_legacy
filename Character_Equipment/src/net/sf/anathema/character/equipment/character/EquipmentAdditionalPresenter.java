@@ -181,6 +181,7 @@ public class EquipmentAdditionalPresenter implements Presenter {
     }
   }
 
+  //TODO: Swing Dialog
   private void createPersonalizeTool(final IEquipmentItem selectedObject, EquipmentObjectPresenter objectPresenter) {
     Tool personalize = objectPresenter.addContextTool();
     personalize.setIcon(new BasicUi().getEditIconPath());
