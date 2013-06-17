@@ -21,7 +21,6 @@ import net.sf.anathema.character.main.hero.ModelInitializationContext;
 import net.sf.anathema.character.main.hero.initialization.HeroModelInitializer;
 import net.sf.anathema.character.main.model.description.HeroDescription;
 import net.sf.anathema.character.main.model.description.HeroDescriptionFetcher;
-import net.sf.anathema.character.main.model.health.HealthModel;
 import net.sf.anathema.character.main.model.health.HealthModelFetcher;
 import net.sf.anathema.character.model.ICharacter;
 import net.sf.anathema.character.model.ISpellConfiguration;
@@ -132,10 +131,6 @@ public class ExaltedCharacter implements ICharacter {
 
   public ICharmConfiguration getCharms() {
     return charms;
-  }
-
-  public HealthModel getHealth() {
-    return HealthModelFetcher.fetch(hero);
   }
 
   public IComboConfiguration getCombos() {

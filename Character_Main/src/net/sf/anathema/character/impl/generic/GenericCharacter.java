@@ -34,6 +34,7 @@ import net.sf.anathema.character.main.model.concept.CharacterConceptFetcher;
 import net.sf.anathema.character.main.model.description.HeroDescriptionFetcher;
 import net.sf.anathema.character.main.model.essencepool.EssencePoolModelFetcher;
 import net.sf.anathema.character.main.model.experience.ExperienceModelFetcher;
+import net.sf.anathema.character.main.model.health.HealthModelFetcher;
 import net.sf.anathema.character.main.model.traits.GenericTraitCollectionFacade;
 import net.sf.anathema.character.main.model.traits.TraitMap;
 import net.sf.anathema.character.main.model.traits.TraitModelFetcher;
@@ -141,7 +142,7 @@ public class GenericCharacter implements IGenericCharacter {
 
   @Override
   public int getHealthLevelTypeCount(HealthLevelType type) {
-    return character.getHealth().getHealthLevelTypeCount(type);
+    return HealthModelFetcher.fetch(character).getHealthLevelTypeCount(type);
   }
 
   @Override
@@ -250,7 +251,7 @@ public class GenericCharacter implements IGenericCharacter {
 
   @Override
   public int getPainTolerance() {
-    return character.getHealth().getPainToleranceLevel();
+    return HealthModelFetcher.fetch(character).getPainToleranceLevel();
   }
 
   @Override

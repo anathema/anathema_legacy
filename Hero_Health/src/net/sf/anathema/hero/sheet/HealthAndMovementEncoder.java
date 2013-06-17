@@ -1,6 +1,5 @@
-package net.sf.anathema.character.reporting.second.rendering.health;
+package net.sf.anathema.hero.sheet;
 
-import net.sf.anathema.character.reporting.pdf.rendering.boxes.health.AbstractHealthAndMovementEncoder;
 import net.sf.anathema.character.reporting.pdf.rendering.general.table.ITableEncoder;
 import net.sf.anathema.lib.resources.Resources;
 

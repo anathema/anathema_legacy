@@ -1,4 +1,4 @@
-package net.sf.anathema.character.reporting.second.rendering.health;
+package net.sf.anathema.hero.sheet;
 
 import net.sf.anathema.character.reporting.pdf.content.BasicContent;
 import net.sf.anathema.character.reporting.pdf.rendering.EncoderIds;

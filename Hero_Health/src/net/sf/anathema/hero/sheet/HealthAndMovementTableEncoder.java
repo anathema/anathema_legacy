@@ -1,4 +1,4 @@
-package net.sf.anathema.character.reporting.second.rendering.health;
+package net.sf.anathema.hero.sheet;
 
 import com.itextpdf.text.DocumentException;
 import com.itextpdf.text.Phrase;
@@ -8,7 +8,6 @@ import net.sf.anathema.character.generic.health.HealthLevelType;
 import net.sf.anathema.character.generic.traits.types.AbilityType;
 import net.sf.anathema.character.generic.traits.types.AttributeType;
 import net.sf.anathema.character.reporting.pdf.content.ReportSession;
-import net.sf.anathema.character.reporting.pdf.rendering.boxes.health.AbstractHealthAndMovementTableEncoder;
 import net.sf.anathema.character.reporting.pdf.rendering.extent.Bounds;
 import net.sf.anathema.character.reporting.pdf.rendering.graphics.SheetGraphics;
 import net.sf.anathema.character.reporting.second.content.combat.StatsModifiers;
