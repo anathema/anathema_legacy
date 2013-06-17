@@ -18,6 +18,7 @@ import net.sf.anathema.character.main.concept.model.CharacterConceptFetcher;
 import net.sf.anathema.character.main.description.model.CharacterDescription;
 import net.sf.anathema.character.main.description.model.CharacterDescriptionFetcher;
 import net.sf.anathema.character.main.experience.model.ExperienceModelFetcher;
+import net.sf.anathema.character.main.traits.model.TraitModelFetcher;
 import net.sf.anathema.character.model.ICharacter;
 import net.sf.anathema.framework.messaging.IMessaging;
 import net.sf.anathema.lib.exception.PersistenceException;
@@ -64,9 +65,9 @@ public class CharacterStatisticPersister {
     characterTypeElement.addAttribute(ATTRIB_SUB_TYPE, template.getTemplateType().getSubType().getId());
     characterTypeElement.addText(template.getTemplateType().getCharacterType().getId());
     characterConceptPersister.save(statisticsElement, CharacterConceptFetcher.fetch(character));
-    essencePersister.save(statisticsElement, character.getTraitModel());
-    willpowerPersister.save(statisticsElement, character.getTraitModel().getTrait(OtherTraitType.Willpower));
-    virtuePersister.save(statisticsElement, character.getTraitModel());
+    essencePersister.save(statisticsElement, TraitModelFetcher.fetch(character));
+    willpowerPersister.save(statisticsElement, TraitModelFetcher.fetch(character).getTrait(OtherTraitType.Willpower));
+    virtuePersister.save(statisticsElement, TraitModelFetcher.fetch(character));
     attributePersister.save(statisticsElement, AttributeModelFetcher.fetch(character));
     abilityPersister.save(statisticsElement, AbilityModelFetcher.fetch(character));
     charmPersister.save(statisticsElement, character);
@@ -87,14 +88,14 @@ public class CharacterStatisticPersister {
       ICasteCollection casteCollection = template.getCasteCollection();
       characterConceptPersister.load(statisticsElement, CharacterConceptFetcher.fetch(character), characterDescription, casteCollection);
       ExperienceModelFetcher.fetch(character).setExperienced(experienced);
-      essencePersister.load(statisticsElement, character.getTraitModel());
-      virtuePersister.load(statisticsElement, character.getTraitModel());
+      essencePersister.load(statisticsElement, TraitModelFetcher.fetch(character));
+      virtuePersister.load(statisticsElement, TraitModelFetcher.fetch(character));
       attributePersister.load(statisticsElement, AttributeModelFetcher.fetch(character));
       abilityPersister.load(statisticsElement, AbilityModelFetcher.fetch(character));
       charmPersister.load(statisticsElement, character);
       spellPersister.load(statisticsElement, character.getSpells());
       experiencePersister.load(statisticsElement, ExperienceModelFetcher.fetch(character).getExperiencePoints());
-      willpowerPersister.load(statisticsElement, character.getTraitModel().getTrait(OtherTraitType.Willpower));
+      willpowerPersister.load(statisticsElement, TraitModelFetcher.fetch(character).getTrait(OtherTraitType.Willpower));
       additonalModelPersister.load(statisticsElement, character.getExtendedConfiguration().getAdditionalModels());
       return character;
     } catch (CharmException | SpellException e) {

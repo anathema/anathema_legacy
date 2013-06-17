@@ -35,6 +35,7 @@ import net.sf.anathema.character.main.description.model.CharacterDescriptionFetc
 import net.sf.anathema.character.main.experience.model.ExperienceModelFetcher;
 import net.sf.anathema.character.main.traits.model.GenericTraitCollectionFacade;
 import net.sf.anathema.character.main.traits.model.TraitMap;
+import net.sf.anathema.character.main.traits.model.TraitModelFetcher;
 import net.sf.anathema.character.model.ICharacter;
 import net.sf.anathema.character.model.ITypedDescription;
 import net.sf.anathema.character.model.charm.ICharmConfiguration;
@@ -61,7 +62,7 @@ public class GenericCharacter implements IGenericCharacter {
 
   @Override
   public IGenericTraitCollection getTraitCollection() {
-    return new GenericTraitCollectionFacade(getTraitConfiguration());
+    return new GenericTraitCollectionFacade(getTraitMap());
   }
 
   @Override
@@ -258,7 +259,7 @@ public class GenericCharacter implements IGenericCharacter {
 
   @Override
   public int getEssenceCap(boolean modified) {
-    Trait essence = (Trait) getTraitConfiguration().getTrait(OtherTraitType.Essence);
+    Trait essence = (Trait) getTraitMap().getTrait(OtherTraitType.Essence);
     return modified ? essence.getModifiedMaximalValue() : essence.getUnmodifiedMaximalValue();
   }
 
@@ -356,7 +357,7 @@ public class GenericCharacter implements IGenericCharacter {
     }
   }
 
-  private TraitMap getTraitConfiguration() {
-    return character.getTraitModel();
+  private TraitMap getTraitMap() {
+    return TraitModelFetcher.fetch(character);
   }
 }

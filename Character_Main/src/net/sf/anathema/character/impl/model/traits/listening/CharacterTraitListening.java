@@ -13,6 +13,7 @@ import net.sf.anathema.character.main.abilities.AbilityModel;
 import net.sf.anathema.character.main.abilities.AbilityModelFetcher;
 import net.sf.anathema.character.main.attributes.AttributeModelFetcher;
 import net.sf.anathema.character.main.traits.model.TraitMap;
+import net.sf.anathema.character.main.traits.model.TraitModelFetcher;
 import net.sf.anathema.character.model.ICharacter;
 
 public class CharacterTraitListening {
@@ -23,7 +24,7 @@ public class CharacterTraitListening {
 
   public CharacterTraitListening(ICharacter character, CharacterListening listening) {
     this.character = character;
-    this.traitMap = character.getTraitModel();
+    this.traitMap = TraitModelFetcher.fetch(character);
     this.listening = listening;
   }
 

@@ -4,6 +4,7 @@ import net.sf.anathema.character.generic.template.HeroTemplate;
 import net.sf.anathema.character.main.concept.model.CharacterConcept;
 import net.sf.anathema.character.main.concept.model.CharacterConceptFetcher;
 import net.sf.anathema.character.main.traits.model.TraitMap;
+import net.sf.anathema.character.main.traits.model.TraitModelFetcher;
 import net.sf.anathema.character.model.ICharacter;
 import net.sf.anathema.character.model.charm.ICharmConfiguration;
 
@@ -27,7 +28,7 @@ public class CharacterHolder {
   }
 
   public TraitMap getTraitConfiguration() {
-    return character.getTraitModel();
+    return TraitModelFetcher.fetch(character);
   }
 
   public ICharacter getCharacter() {

@@ -7,6 +7,7 @@ import cucumber.api.java.en.When;
 import net.sf.anathema.character.generic.traits.types.AttributeType;
 import net.sf.anathema.character.library.trait.Trait;
 import net.sf.anathema.character.main.traits.model.TraitMap;
+import net.sf.anathema.character.main.traits.model.TraitModelFetcher;
 
 import static org.hamcrest.CoreMatchers.is;
 import static org.junit.Assert.assertThat;
@@ -54,7 +55,8 @@ public class AttributeSteps {
   }
 
   private Trait getAttribute(AttributeType type) {
-    TraitMap traitConfiguration = character.getCharacter().getTraitModel();
+
+    TraitMap traitConfiguration = TraitModelFetcher.fetch(character.getCharacter());
     return traitConfiguration.getTrait(type);
   }
 }

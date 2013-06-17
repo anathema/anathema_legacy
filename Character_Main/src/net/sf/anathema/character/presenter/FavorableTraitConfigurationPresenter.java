@@ -12,6 +12,7 @@ import net.sf.anathema.character.library.trait.favorable.FavorableState;
 import net.sf.anathema.character.library.trait.favorable.IFavorableStateChangedListener;
 import net.sf.anathema.character.library.trait.presenter.TraitPresenter;
 import net.sf.anathema.character.main.traits.model.TraitMap;
+import net.sf.anathema.character.main.traits.model.TraitModelFetcher;
 import net.sf.anathema.character.model.ICharacter;
 import net.sf.anathema.character.view.IGroupedFavorableTraitConfigurationView;
 import net.sf.anathema.interaction.Command;
@@ -37,7 +38,7 @@ public class FavorableTraitConfigurationPresenter {
   public FavorableTraitConfigurationPresenter(IIdentifiedTraitTypeGroup[] traitTypeGroups, ICharacter character,
                                               IGroupedFavorableTraitConfigurationView view, Resources resources) {
     this.traitTypeGroups = traitTypeGroups;
-    this.traitConfiguration = character.getTraitModel();
+    this.traitConfiguration = TraitModelFetcher.fetch(character);
     this.basicCharacterData = character.getCharacterContext().getBasicCharacterContext();
     this.characterListening = character.getCharacterContext().getCharacterListening();
     this.presentationProperties = character.getHeroTemplate().getPresentationProperties();

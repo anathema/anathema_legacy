@@ -13,6 +13,7 @@ import net.sf.anathema.character.impl.model.advance.models.VirtueExperienceModel
 import net.sf.anathema.character.impl.model.advance.models.WillpowerExperienceModel;
 import net.sf.anathema.character.main.abilities.AbilityModelFetcher;
 import net.sf.anathema.character.main.traits.model.TraitMap;
+import net.sf.anathema.character.main.traits.model.TraitModelFetcher;
 import net.sf.anathema.character.model.ICharacter;
 import net.sf.anathema.character.model.advance.IExperiencePointManagement;
 import net.sf.anathema.character.presenter.overview.IValueModel;
@@ -22,17 +23,17 @@ public class ExperiencePointManagement implements IExperiencePointManagement {
   private final IBasicCharacterData basicCharacter;
   private final IPointCostCalculator calculator;
   private final ICharacter character;
-  private final TraitMap traitConfiguration;
+  private final TraitMap traitMap;
 
   public ExperiencePointManagement(ICharacter character) {
     this.character = character;
     this.basicCharacter = character.getCharacterContext().getBasicCharacterContext();
-    this.traitConfiguration = character.getTraitModel();
+    this.traitMap = TraitModelFetcher.fetch(character);
     this.calculator = new ExperiencePointCostCalculator(character.getHeroTemplate().getExperienceCost());
   }
 
   private IValueModel<Integer> getAbilityModel() {
-    return new AbilityExperienceModel(traitConfiguration, calculator, character);
+    return new AbilityExperienceModel(traitMap, calculator, character);
   }
 
   @Override
@@ -43,15 +44,15 @@ public class ExperiencePointManagement implements IExperiencePointManagement {
   }
 
   private IValueModel<Integer> getAttributeModel() {
-    return new AttributeExperienceModel(traitConfiguration, calculator, character);
+    return new AttributeExperienceModel(traitMap, calculator, character);
   }
 
   private IValueModel<Integer> getCharmModel() {
-    return new CharmExperienceModel(traitConfiguration, calculator, character, basicCharacter);
+    return new CharmExperienceModel(traitMap, calculator, character, basicCharacter);
   }
 
   private IValueModel<Integer> getEssenceModel() {
-    return new EssenceExperienceModel(traitConfiguration, calculator);
+    return new EssenceExperienceModel(traitMap, calculator);
   }
 
   @Override
@@ -72,7 +73,7 @@ public class ExperiencePointManagement implements IExperiencePointManagement {
   }
 
   private IValueModel<Integer> getSpellModel() {
-    return new SpellExperienceModel(character, calculator, basicCharacter, traitConfiguration);
+    return new SpellExperienceModel(character, calculator, basicCharacter, traitMap);
   }
 
   @Override
@@ -91,11 +92,11 @@ public class ExperiencePointManagement implements IExperiencePointManagement {
   }
 
   private IValueModel<Integer> getVirtueModel() {
-    return new VirtueExperienceModel(traitConfiguration, calculator);
+    return new VirtueExperienceModel(traitMap, calculator);
   }
 
   private IValueModel<Integer> getWillpowerModel() {
-    return new WillpowerExperienceModel(traitConfiguration, calculator);
+    return new WillpowerExperienceModel(traitMap, calculator);
   }
 
   @Override

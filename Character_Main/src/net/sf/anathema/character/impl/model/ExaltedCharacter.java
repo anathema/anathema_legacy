@@ -25,7 +25,7 @@ import net.sf.anathema.character.main.model.DefaultHero;
 import net.sf.anathema.character.main.model.HeroModel;
 import net.sf.anathema.character.main.model.ModelInitializationContext;
 import net.sf.anathema.character.main.model.initialization.CharacterModelInitializer;
-import net.sf.anathema.character.main.traits.model.TraitModel;
+import net.sf.anathema.character.main.traits.model.TraitModelFetcher;
 import net.sf.anathema.character.model.ICharacter;
 import net.sf.anathema.character.model.ISpellConfiguration;
 import net.sf.anathema.character.model.charm.ICharmConfiguration;
@@ -54,7 +54,7 @@ public class ExaltedCharacter implements ICharacter {
     this.heroTemplate = template;
     addModels(generics);
     new CharacterTraitListening(this, context.getCharacterListening()).initListening();
-    this.health = new HealthConfiguration(getTraitArray(template.getToughnessControllingTraitTypes()), getTraitModel(),
+    this.health = new HealthConfiguration(getTraitArray(template.getToughnessControllingTraitTypes()), TraitModelFetcher.fetch(hero),
             template.getBaseHealthProviders());
     this.charms = new CharmConfiguration(this, health, context, generics.getCharacterTypes(), generics.getTemplateRegistry(), generics.getCharmProvider());
     initCharmListening(charms);
@@ -139,7 +139,7 @@ public class ExaltedCharacter implements ICharacter {
   private GenericTrait[] getTraitArray(TraitType[] types) {
     GenericTrait[] traits = new GenericTrait[types.length];
     for (int i = 0; i != types.length; i++) {
-      traits[i] = getTraitModel().getTrait(types[i]);
+      traits[i] = TraitModelFetcher.fetch(this).getTrait(types[i]);
     }
     return traits;
   }
@@ -179,10 +179,6 @@ public class ExaltedCharacter implements ICharacter {
 
   public ExtendedConfiguration getExtendedConfiguration() {
     return extendedConfiguration;
-  }
-
-  public TraitModel getTraitModel() {
-    return (TraitModel) getModel(TraitModel.ID);
   }
 
   public ICharacterModelContext getCharacterContext() {
