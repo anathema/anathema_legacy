@@ -4,6 +4,7 @@ import com.google.common.base.Preconditions;
 import net.sf.anathema.character.generic.additionalrules.IAdditionalEssencePool;
 import net.sf.anathema.character.generic.additionalrules.IAdditionalRules;
 import net.sf.anathema.character.generic.framework.additionaltemplate.model.ICharacterModelContext;
+import net.sf.anathema.character.generic.template.HeroTemplate;
 import net.sf.anathema.character.generic.template.essence.IEssenceTemplate;
 import net.sf.anathema.lib.control.IChangeListener;
 import net.sf.anathema.lib.util.IdentifiedInteger;
@@ -11,12 +12,12 @@ import net.sf.anathema.lib.util.IdentifiedInteger;
 public class EssencePoolModelImpl implements EssencePoolModel {
 
   private EssencePoolStrategy poolStrategy = null;
-  private final IAdditionalRules additionalRules;
-  private final IEssenceTemplate essenceTemplate;
+  private IAdditionalRules additionalRules;
+  private IEssenceTemplate essenceTemplate;
 
-  public EssencePoolModelImpl(IEssenceTemplate essenceTemplate, IAdditionalRules additionalRules, ICharacterModelContext context) {
-    this.additionalRules = additionalRules;
-    this.essenceTemplate = essenceTemplate;
+  public EssencePoolModelImpl(HeroTemplate template, ICharacterModelContext context) {
+    this.additionalRules = template.getAdditionalRules();
+    this.essenceTemplate = template.getEssenceTemplate();
     if (!isEssenceUser()) {
       return;
     }

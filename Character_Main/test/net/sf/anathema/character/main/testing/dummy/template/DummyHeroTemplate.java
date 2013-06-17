@@ -37,7 +37,7 @@ import net.sf.anathema.lib.exception.NotYetImplementedException;
 import java.util.ArrayList;
 import java.util.List;
 
-public class DummyCharacterTemplate implements HeroTemplate {
+public class DummyHeroTemplate implements HeroTemplate {
 
   private static final String DUMMYGROUP = "DummyGroup";
   private final ITraitTemplateCollection traitTemplateCollection = new TraitTemplateCollection(new DummyTraitTemplateFactory());

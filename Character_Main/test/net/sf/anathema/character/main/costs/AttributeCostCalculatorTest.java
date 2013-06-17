@@ -25,7 +25,7 @@ import net.sf.anathema.character.library.trait.rules.FavorableTraitRules;
 import net.sf.anathema.character.library.trait.rules.TraitRules;
 import net.sf.anathema.character.main.testing.dummy.DummyAdditionalBonusPointManagment;
 import net.sf.anathema.character.main.testing.dummy.DummyGenericCharacter;
-import net.sf.anathema.character.main.testing.dummy.template.DummyCharacterTemplate;
+import net.sf.anathema.character.main.testing.dummy.template.DummyHeroTemplate;
 import net.sf.anathema.character.main.testing.dummy.template.DummyTraitTemplateFactory;
 import net.sf.anathema.character.main.testing.dummy.trait.DummyCoreTraitConfiguration;
 import net.sf.anathema.character.main.testing.dummy.trait.DummyTraitContext;
@@ -122,7 +122,7 @@ public class AttributeCostCalculatorTest {
       ITraitTemplate traitTemplate = templateCollection.getTraitTemplate(traitType);
       IValueChangeChecker checker = new AdditionRulesTraitValueChangeChecker(traitType, limitationContext, additionalRules.getAdditionalTraitRules());
       Trait trait = new DefaultTrait(new FavorableTraitRules(traitType, traitTemplate, limitationContext), new ICasteType[0], traitContext,
-              new BasicCharacterContext(new DummyGenericCharacter(new DummyCharacterTemplate())), listening, checker, incrementChecker);
+              new BasicCharacterContext(new DummyGenericCharacter(new DummyHeroTemplate())), listening, checker, incrementChecker);
       coreTraits.addTraits(trait);
     }
   }

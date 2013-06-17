@@ -19,9 +19,8 @@ import net.sf.anathema.character.impl.model.context.BasicCharacterContext;
 import net.sf.anathema.character.impl.model.context.CharacterListening;
 import net.sf.anathema.character.impl.model.context.trait.CreationTraitValueStrategy;
 import net.sf.anathema.character.main.model.InitializationContext;
-import net.sf.anathema.character.main.model.change.ChangeAnnouncerAdapter;
 import net.sf.anathema.character.main.testing.dummy.magic.DummyCharmContext;
-import net.sf.anathema.character.main.testing.dummy.template.DummyCharacterTemplate;
+import net.sf.anathema.character.main.testing.dummy.template.DummyHeroTemplate;
 import net.sf.anathema.character.model.ICharacter;
 
 import java.util.List;
@@ -56,7 +55,7 @@ public class DummyCharacterModelContext implements ICharacterModelContext, Initi
 
   public DummyCharacterModelContext(final ITraitValueStrategy valueStrategy) {
     this.valueStrategy = valueStrategy;
-    HeroTemplate template = new DummyCharacterTemplate();
+    HeroTemplate template = new DummyHeroTemplate();
     this.character = new DummyGenericCharacter(template);
     this.charmContext = new DummyCharmContext(character, null);
   }
