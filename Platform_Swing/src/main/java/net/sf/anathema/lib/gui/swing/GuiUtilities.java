@@ -1,6 +1,5 @@
 package net.sf.anathema.lib.gui.swing;
 
-import net.sf.anathema.framework.ui.Area;
 import net.sf.anathema.lib.gui.widgets.ChangeableJComboBox;
 
 import javax.swing.JDialog;
@@ -297,10 +296,9 @@ public class GuiUtilities {
     }
   }
 
-  public static Area calculateComboBoxSize(Object[] objects, ListCellRenderer renderer) {
+  public static Dimension calculateComboBoxSize(Object[] objects, ListCellRenderer renderer) {
     ChangeableJComboBox<Object> box = new ChangeableJComboBox<>(objects, false);
     box.setRenderer(renderer);
-    Dimension size = box.getPreferredSize();
-    return new Area(size.width, size.height);
+    return box.getPreferredSize();
   }
 }

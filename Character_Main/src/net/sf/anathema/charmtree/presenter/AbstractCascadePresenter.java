@@ -7,16 +7,15 @@ import net.sf.anathema.charmtree.filters.CharmFilterSettingsPage;
 import net.sf.anathema.charmtree.filters.ICharmFilter;
 import net.sf.anathema.charmtree.view.ICascadeSelectionView;
 import net.sf.anathema.charmtree.view.ICharmGroupChangeListener;
-import net.sf.anathema.framework.view.IdentificateSelectCellRenderer;
 import net.sf.anathema.lib.compare.I18nedIdentificateSorter;
 import net.sf.anathema.lib.control.ObjectValueListener;
+import net.sf.anathema.lib.gui.AgnosticUIConfiguration;
 import net.sf.anathema.lib.gui.action.SmartAction;
 import net.sf.anathema.lib.gui.dialog.core.DialogResult;
 import net.sf.anathema.lib.gui.dialog.userdialog.UserDialog;
 import net.sf.anathema.lib.resources.Resources;
 import net.sf.anathema.lib.util.Identifier;
 import net.sf.anathema.platform.tree.presenter.view.CascadeLoadedListener;
-import net.sf.anathema.framework.ui.Area;
 
 import javax.swing.JComponent;
 import java.awt.Component;
@@ -100,16 +99,14 @@ public abstract class AbstractCascadePresenter implements ICascadeSelectionPrese
 
   protected void createCharmGroupSelector() {
     ICharmGroup[] allGroups = charmGroups.getCharmGroups();
-    IdentificateSelectCellRenderer renderer = new IdentificateSelectCellRenderer(getResources());
-    //TODO: Indirect access to Swing component
-    Area preferredSize = net.sf.anathema.lib.gui.swing.GuiUtilities.calculateComboBoxSize(allGroups, renderer);
-    view.addCharmGroupSelector(getResources().getString("CardView.CharmConfiguration.AlienCharms.CharmGroup"), renderer, changeListener,
-            preferredSize);
+    AgnosticUIConfiguration config = new SelectIdentifierConfiguration(resources);
+    view.addCharmGroupSelector(getResources().getString("CardView.CharmConfiguration.AlienCharms.CharmGroup"), config, changeListener,
+            allGroups);
   }
 
   protected void createCharmTypeSelector() {
     Identifier[] types = charmTypes.getCurrentCharmTypes();
-    view.addCharmTypeSelector(getResources().getString("CharmTreeView.GUI.CharmType"), types, new IdentificateSelectCellRenderer(getResources()));
+    view.addCharmTypeSelector(getResources().getString("CharmTreeView.GUI.CharmType"), types, new SelectIdentifierConfiguration(resources));
   }
 
   protected void createFilterButton(ICascadeSelectionView selectionView) {
