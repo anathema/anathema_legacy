@@ -14,5 +14,6 @@ public interface ISpellViewProperties extends IMagicLearnProperties {
 
   AgnosticUIConfiguration<Identifier> getCircleSelectionRenderer();
 
+  //todo: Listener
   ListSelectionListener getRemoveButtonEnabledListener(JButton button, JList list);
 }

@@ -3,7 +3,7 @@ package net.sf.anathema.character.view.magic;
 import net.sf.anathema.framework.swing.IView;
 import net.sf.anathema.lib.workflow.textualdescription.ITextView;
 
-public interface IComboConfigurationView extends IView {
+public interface IComboConfigurationView {
 
   void initGui(IComboViewProperties properties);
 

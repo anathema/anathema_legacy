@@ -17,20 +17,24 @@ public interface ICascadeSelectionView {
 
   void addCascadeLoadedListener(CascadeLoadedListener listener);
 
+  //todo: Renderer
   void addCharmTypeSelector(String title, Identifier[] types, ListCellRenderer renderer);
 
   void addCharmTypeSelectionListener(ObjectValueListener<Identifier> selectionListener);
 
+  //todo: Action
   void addCharmFilterButton(SmartAction action, String titleText);
 
   void fillCharmGroupBox(Identifier[] charmGroups);
 
   void fillCharmTypeBox(Identifier[] cascadeTypes);
 
+  //todo: Renderer, Dimension
   void addCharmGroupSelector(String title, ListCellRenderer renderer, ICharmGroupChangeListener selectionListener, Dimension preferredSize);
 
   void addCharmCascadeHelp(String helpText);
 
+  //todo: Component
   JComponent getCharmComponent();
 
   void initGui(ToolTipProperties treeProperties, NodeProperties properties);
