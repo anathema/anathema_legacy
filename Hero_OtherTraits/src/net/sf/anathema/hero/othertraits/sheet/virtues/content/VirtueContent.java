@@ -1,4 +1,4 @@
-package net.sf.anathema.character.reporting.pdf.content.virtues;
+package net.sf.anathema.hero.othertraits.sheet.virtues.content;
 
 import net.sf.anathema.character.generic.character.IGenericCharacter;
 import net.sf.anathema.character.generic.character.IGenericTraitCollection;

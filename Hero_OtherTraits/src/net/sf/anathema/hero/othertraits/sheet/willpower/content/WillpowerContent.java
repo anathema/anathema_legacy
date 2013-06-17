@@ -1,4 +1,4 @@
-package net.sf.anathema.character.reporting.pdf.content.willpower;
+package net.sf.anathema.hero.othertraits.sheet.willpower.content;
 
 import net.sf.anathema.character.generic.character.IGenericCharacter;
 import net.sf.anathema.character.generic.traits.types.OtherTraitType;

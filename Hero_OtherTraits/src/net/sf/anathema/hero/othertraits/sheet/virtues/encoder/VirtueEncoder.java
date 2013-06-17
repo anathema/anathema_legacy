@@ -1,10 +1,10 @@
-package net.sf.anathema.character.reporting.pdf.rendering.boxes.virtues;
+package net.sf.anathema.hero.othertraits.sheet.virtues.encoder;
 
 import com.itextpdf.text.DocumentException;
 import com.itextpdf.text.pdf.PdfContentByte;
 import net.sf.anathema.character.reporting.pdf.content.ReportSession;
 import net.sf.anathema.character.reporting.pdf.content.general.NamedValue;
-import net.sf.anathema.character.reporting.pdf.content.virtues.VirtueContent;
+import net.sf.anathema.hero.othertraits.sheet.virtues.content.VirtueContent;
 import net.sf.anathema.character.reporting.pdf.rendering.extent.Bounds;
 import net.sf.anathema.character.reporting.pdf.rendering.extent.Position;
 import net.sf.anathema.character.reporting.pdf.rendering.general.box.AbstractContentEncoder;

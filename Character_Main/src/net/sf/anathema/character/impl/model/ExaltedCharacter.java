@@ -53,7 +53,6 @@ public class ExaltedCharacter implements ICharacter {
   public ExaltedCharacter(HeroTemplate template, ICharacterGenerics generics) {
     this.heroTemplate = template;
     addModels(generics);
-    // todo: Beware the side effects
     new CharacterTraitListening(this, context.getCharacterListening()).initListening();
     this.health = new HealthConfiguration(getTraitArray(template.getToughnessControllingTraitTypes()), getTraitModel(),
             template.getBaseHealthProviders());

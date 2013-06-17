@@ -1,4 +1,4 @@
-package net.sf.anathema.character.main.othertraits;
+package net.sf.anathema.hero.othertraits.model;
 
 import net.sf.anathema.character.generic.additionalrules.IAdditionalTraitRules;
 import net.sf.anathema.character.generic.framework.additionaltemplate.model.TraitContext;
@@ -17,6 +17,7 @@ import net.sf.anathema.character.library.trait.Trait;
 import net.sf.anathema.character.main.model.Hero;
 import net.sf.anathema.character.main.model.HeroModel;
 import net.sf.anathema.character.main.model.InitializationContext;
+import net.sf.anathema.character.main.othertraits.OtherTraitModel;
 import net.sf.anathema.character.main.traits.model.DefaultTraitMap;
 import net.sf.anathema.character.main.traits.model.TraitModel;
 import net.sf.anathema.character.main.traits.model.TraitModelFetcher;
