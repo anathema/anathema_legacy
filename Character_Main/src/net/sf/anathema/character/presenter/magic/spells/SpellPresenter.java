@@ -1,25 +1,22 @@
 package net.sf.anathema.character.presenter.magic.spells;
 
-import net.sf.anathema.character.generic.framework.additionaltemplate.listening.DedicatedCharacterChangeAdapter;
 import net.sf.anathema.character.generic.framework.magic.view.IMagicViewListener;
 import net.sf.anathema.character.generic.magic.ISpell;
 import net.sf.anathema.character.generic.magic.description.MagicDescriptionProvider;
 import net.sf.anathema.character.generic.magic.spells.CircleType;
+import net.sf.anathema.character.main.model.experience.ExperienceModelFetcher;
 import net.sf.anathema.character.model.ICharacter;
 import net.sf.anathema.character.model.IMagicLearnListener;
 import net.sf.anathema.character.model.ISpellConfiguration;
-import net.sf.anathema.character.presenter.magic.detail.ShowMagicDetailListener;
 import net.sf.anathema.character.view.magic.ISpellView;
 import net.sf.anathema.lib.compare.I18nedIdentificateComparator;
 import net.sf.anathema.lib.compare.I18nedIdentificateSorter;
+import net.sf.anathema.lib.control.IChangeListener;
 import net.sf.anathema.lib.control.ObjectValueListener;
 import net.sf.anathema.lib.resources.Resources;
 import net.sf.anathema.lib.util.Identifier;
 import org.apache.commons.lang3.ArrayUtils;
 
-import javax.swing.JList;
-import javax.swing.event.ListSelectionEvent;
-import javax.swing.event.ListSelectionListener;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collections;
@@ -89,13 +86,13 @@ public class SpellPresenter {
       }
     });
     initSpellListsInView(view);
-    character.getCharacterContext().getCharacterListening().addChangeListener(new DedicatedCharacterChangeAdapter() {
+    ExperienceModelFetcher.fetch(character).addStateChangeListener(new IChangeListener() {
       @Override
-      public void experiencedChanged(boolean experienced) {
+      public void changeOccurred() {
         view.clearSelection();
       }
     });
-  }
+   }
 
   private void initSpellListsInView(ISpellView spellView) {
     spellView.setLearnedMagic(getCircleFilteredSpellList(spellConfiguration.getLearnedSpells()));

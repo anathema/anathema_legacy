@@ -4,6 +4,7 @@ import net.sf.anathema.character.generic.caste.ICasteType;
 import net.sf.anathema.character.generic.framework.additionaltemplate.listening.DedicatedCharacterChangeAdapter;
 import net.sf.anathema.character.generic.template.HeroTemplate;
 import net.sf.anathema.character.main.model.concept.CharacterConceptFetcher;
+import net.sf.anathema.character.main.model.experience.ExperienceModel;
 import net.sf.anathema.character.main.model.experience.ExperienceModelFetcher;
 import net.sf.anathema.character.model.ICharacter;
 import net.sf.anathema.character.model.ITypedDescription;
@@ -52,12 +53,17 @@ public class CastePresenter {
         casteView.setSelectedObject(caste.getType());
       }
     });
-    character.getCharacterContext().getCharacterListening().addChangeListener(new DedicatedCharacterChangeAdapter() {
+    initExperienceListening(casteView);
+  }
+
+  private void initExperienceListening(final IObjectSelectionView<ICasteType> casteView) {
+    final ExperienceModel experienceModel = ExperienceModelFetcher.fetch(character);
+    experienceModel.addStateChangeListener(new IChangeListener() {
       @Override
-      public void experiencedChanged(boolean experienced) {
-        casteView.setEnabled(!experienced);
+      public void changeOccurred() {
+        casteView.setEnabled(!experienceModel.isExperienced());
       }
     });
-    casteView.setEnabled(!ExperienceModelFetcher.fetch(character).isExperienced());
+    casteView.setEnabled(!experienceModel.isExperienced());
   }
 }

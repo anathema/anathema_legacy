@@ -2,11 +2,13 @@ package net.sf.anathema.character.presenter;
 
 import net.sf.anathema.character.generic.framework.additionaltemplate.listening.DedicatedCharacterChangeAdapter;
 import net.sf.anathema.character.generic.type.ICharacterType;
+import net.sf.anathema.character.main.model.experience.ExperienceModel;
 import net.sf.anathema.character.main.model.experience.ExperienceModelFetcher;
 import net.sf.anathema.character.model.ICharacter;
 import net.sf.anathema.character.presenter.advance.ExperienceConfigurationPresenter;
 import net.sf.anathema.character.view.SectionView;
 import net.sf.anathema.character.view.advance.ExperienceView;
+import net.sf.anathema.lib.control.IChangeListener;
 import net.sf.anathema.lib.resources.Resources;
 
 public class ExperiencePointPresenter {
@@ -20,11 +22,12 @@ public class ExperiencePointPresenter {
   }
 
   public void initPresentation(final SectionView section) {
-    initExperiencePointPresentation(ExperienceModelFetcher.fetch(character).isExperienced(), section);
-    character.getCharacterContext().getCharacterListening().addChangeListener(new DedicatedCharacterChangeAdapter() {
+    final ExperienceModel experienceModel = ExperienceModelFetcher.fetch(character);
+    initExperiencePointPresentation(experienceModel.isExperienced(), section);
+    experienceModel.addStateChangeListener(new IChangeListener() {
       @Override
-      public void experiencedChanged(boolean experienced) {
-        initExperiencePointPresentation(experienced, section);
+      public void changeOccurred() {
+        initExperiencePointPresentation(experienceModel.isExperienced(), section);
       }
     });
   }
