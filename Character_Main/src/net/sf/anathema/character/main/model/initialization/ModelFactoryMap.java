@@ -1,6 +1,6 @@
 package net.sf.anathema.character.main.model.initialization;
 
-import net.sf.anathema.character.main.model.CharacterModelFactory;
+import net.sf.anathema.character.main.model.HeroModelFactory;
 
 import java.text.MessageFormat;
 import java.util.Collection;
@@ -8,14 +8,14 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class ModelFactoryMap {
-  private final Map<String, CharacterModelFactory> factoriesById = new HashMap<>();
+  private final Map<String, HeroModelFactory> factoriesById = new HashMap<>();
 
   public ModelFactoryMap(ModelFactoryCollector collector) {
-    Collection<CharacterModelFactory> factories = collector.collect();
+    Collection<HeroModelFactory> factories = collector.collect();
     mapFactoriesById(factories);
   }
 
-  public CharacterModelFactory get(String configuredId) {
+  public HeroModelFactory get(String configuredId) {
     return factoriesById.get(configuredId);
   }
 
@@ -29,8 +29,8 @@ public class ModelFactoryMap {
     assertContainsModel(configuredId, errorMessage);
   }
 
-  private void mapFactoriesById(Collection<CharacterModelFactory> factories) {
-    for (CharacterModelFactory factory : factories) {
+  private void mapFactoriesById(Collection<HeroModelFactory> factories) {
+    for (HeroModelFactory factory : factories) {
       factoriesById.put(factory.getModelId().getId(), factory);
     }
   }

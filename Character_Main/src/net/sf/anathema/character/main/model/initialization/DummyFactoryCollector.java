@@ -1,7 +1,7 @@
 package net.sf.anathema.character.main.model.initialization;
 
-import net.sf.anathema.character.main.model.CharacterModel;
-import net.sf.anathema.character.main.model.CharacterModelFactory;
+import net.sf.anathema.character.main.model.HeroModel;
+import net.sf.anathema.character.main.model.HeroModelFactory;
 import net.sf.anathema.character.main.model.template.TemplateFactory;
 import net.sf.anathema.lib.util.Identifier;
 import net.sf.anathema.lib.util.SimpleIdentifier;
@@ -11,15 +11,15 @@ import java.util.Collection;
 
 public class DummyFactoryCollector implements ModelFactoryCollector {
   @Override
-  public Collection<CharacterModelFactory> collect() {
-    ArrayList<CharacterModelFactory> models = new ArrayList<>();
+  public Collection<HeroModelFactory> collect() {
+    ArrayList<HeroModelFactory> models = new ArrayList<>();
     models.add(new DummyModelFactory());
     return models;
   }
 
-  private static class DummyModelFactory implements CharacterModelFactory {
+  private static class DummyModelFactory implements HeroModelFactory {
     @Override
-    public <M extends CharacterModel> M create(TemplateFactory templateFactory) {
+    public <M extends HeroModel> M create(TemplateFactory templateFactory) {
       return null;
     }
 
