@@ -6,7 +6,6 @@ import net.sf.anathema.character.generic.magic.ICharm;
 import net.sf.anathema.character.generic.magic.description.MagicDescriptionProvider;
 import net.sf.anathema.character.model.charm.IComboConfiguration;
 import net.sf.anathema.character.view.magic.IComboViewProperties;
-import net.sf.anathema.charmtree.builder.MagicDisplayLabeler;
 import net.sf.anathema.charmtree.builder.stringbuilder.CharmInfoStringBuilder;
 import net.sf.anathema.charmtree.builder.stringbuilder.ICharmInfoStringBuilder;
 import net.sf.anathema.framework.presenter.resources.BasicUi;
@@ -54,7 +53,7 @@ public final class ComboViewProperties extends AbstractMagicLearnProperties impl
 
   @Override
   public AbstractUIConfiguration<Identifier> getLearnedMagicRenderer() {
-    return new CharmUIConfiguration();
+    return new CharmUIConfiguration(getResources(), charmInfoStringProvider);
   }
 
   @Override
@@ -102,15 +101,4 @@ public final class ComboViewProperties extends AbstractMagicLearnProperties impl
     return getResources().getString("CardView.CharmConfiguration.ComboCreation.ClearEditToolTip");
   }
 
-  private class CharmUIConfiguration extends AbstractUIConfiguration<Identifier> {
-    @Override
-    public String getLabel(Identifier value) {
-      return new MagicDisplayLabeler(getResources()).getLabelForMagic((ICharm) value);
-    }
-
-    @Override
-    public String getToolTipText(Identifier value) {
-      return charmInfoStringProvider.getInfoString((ICharm) value, null);
-    }
-  }
 }
