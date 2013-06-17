@@ -1,4 +1,4 @@
-package net.sf.anathema.hero.concept.display.caste.presenter;
+package net.sf.anathema.hero.concept.display.description;
 
 import net.sf.anathema.character.main.model.concept.CharacterConcept;
 import net.sf.anathema.character.main.model.concept.CharacterConceptFetcher;
@@ -30,7 +30,7 @@ public class DescriptionInitializer implements CharacterModelInitializer {
     String descriptionHeader = resources.getString("CardView.CharacterDescription.Title");
     ICharacterDescriptionView descriptionView = sectionView.addView(descriptionHeader, ICharacterDescriptionView.class, character.getCharacterType());
     DescriptionDetails descriptionDetails = createDescriptionDetails(character);
-    new CharacterDescriptionPresenter(descriptionDetails, resources, descriptionView).initPresentation();
+    new DescriptionPresenter(descriptionDetails, resources, descriptionView).initPresentation();
   }
 
   private DescriptionDetails createDescriptionDetails(ICharacter character) {

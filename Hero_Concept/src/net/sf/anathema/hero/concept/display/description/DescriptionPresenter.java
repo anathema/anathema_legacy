@@ -1,4 +1,4 @@
-package net.sf.anathema.hero.concept.display.caste.presenter;
+package net.sf.anathema.hero.concept.display.description;
 
 import net.sf.anathema.character.generic.framework.resources.CharacterUI;
 import net.sf.anathema.character.main.model.concept.CharacterConcept;
@@ -18,7 +18,7 @@ import net.sf.anathema.lib.workflow.textualdescription.TextualPresentation;
 import net.sf.anathema.namegenerator.domain.realm.RealmNameGenerator;
 import net.sf.anathema.namegenerator.exalted.domain.ThresholdNameGenerator;
 
-public class CharacterDescriptionPresenter {
+public class DescriptionPresenter {
 
   private final HeroDescription description;
   private final CharacterConcept characterConcept;
@@ -26,7 +26,7 @@ public class CharacterDescriptionPresenter {
   private final boolean hasAnima;
   private final Resources resources;
 
-  public CharacterDescriptionPresenter(DescriptionDetails descriptionDetails, Resources resources, ICharacterDescriptionView descriptionView) {
+  public DescriptionPresenter(DescriptionDetails descriptionDetails, Resources resources, ICharacterDescriptionView descriptionView) {
     this.resources = resources;
     this.description = descriptionDetails.getDescription();
     this.characterConcept = descriptionDetails.getCharacterConcept();

@@ -1,7 +1,8 @@
-package net.sf.anathema.character.presenter.initializers;
+package net.sf.anathema.hero.abilities.display;
 
 import net.sf.anathema.character.model.ICharacter;
-import net.sf.anathema.character.presenter.AbilitiesPresenter;
+import net.sf.anathema.character.presenter.initializers.CharacterModelInitializer;
+import net.sf.anathema.character.presenter.initializers.RegisteredInitializer;
 import net.sf.anathema.character.view.IGroupedFavorableTraitConfigurationView;
 import net.sf.anathema.character.view.SectionView;
 import net.sf.anathema.framework.IApplicationModel;
