@@ -10,7 +10,7 @@ import net.sf.anathema.character.library.trait.AbstractFavorableTraitCostCalcula
 import net.sf.anathema.character.library.trait.Trait;
 import net.sf.anathema.character.library.trait.specialties.ISpecialtiesConfiguration;
 import net.sf.anathema.character.library.trait.specialties.Specialty;
-import net.sf.anathema.character.main.abilities.AbilityModel;
+import net.sf.anathema.character.main.model.abilities.AbilityModel;
 
 import java.util.ArrayList;
 import java.util.List;

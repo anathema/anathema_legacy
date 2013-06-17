@@ -6,7 +6,7 @@ import net.sf.anathema.character.generic.template.additional.IAdditionalTemplate
 import net.sf.anathema.character.library.removableentry.presenter.RemovableEntryChangeAdapter;
 import net.sf.anathema.character.linguistics.ILinguisticsAdditionalModel;
 import net.sf.anathema.character.linguistics.presenter.ILinguisticsModel;
-import net.sf.anathema.character.main.model.CharacterModelGroup;
+import net.sf.anathema.character.main.hero.CharacterModelGroup;
 import net.sf.anathema.lib.control.IChangeListener;
 import net.sf.anathema.lib.util.Identifier;
 

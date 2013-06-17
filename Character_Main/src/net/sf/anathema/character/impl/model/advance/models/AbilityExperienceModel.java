@@ -4,7 +4,7 @@ import net.sf.anathema.character.generic.template.abilities.GroupedTraitType;
 import net.sf.anathema.character.generic.traits.TraitType;
 import net.sf.anathema.character.impl.model.advance.IPointCostCalculator;
 import net.sf.anathema.character.library.trait.Trait;
-import net.sf.anathema.character.main.traits.model.TraitMap;
+import net.sf.anathema.character.main.model.traits.TraitMap;
 import net.sf.anathema.character.model.ICharacter;
 
 import java.util.ArrayList;

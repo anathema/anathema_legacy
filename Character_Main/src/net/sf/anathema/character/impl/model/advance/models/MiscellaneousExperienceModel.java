@@ -1,7 +1,7 @@
 package net.sf.anathema.character.impl.model.advance.models;
 
 import net.sf.anathema.character.generic.additionaltemplate.IAdditionalModel;
-import net.sf.anathema.character.main.experience.model.ExperienceModelFetcher;
+import net.sf.anathema.character.main.model.experience.ExperienceModelFetcher;
 import net.sf.anathema.character.model.ICharacter;
 
 public class MiscellaneousExperienceModel extends AbstractIntegerValueModel {

@@ -8,6 +8,8 @@ include('Anathema',
 
         'Hero_Abilities',
         'Hero_Attributes',
+        'Hero_Concept',
+        'Hero_Experience',
         'Hero_OtherTraits',
         'Hero_Traits',
 

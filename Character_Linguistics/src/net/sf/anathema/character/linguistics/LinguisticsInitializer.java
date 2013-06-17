@@ -3,7 +3,7 @@ package net.sf.anathema.character.linguistics;
 import net.sf.anathema.character.linguistics.presenter.ILinguisticsView;
 import net.sf.anathema.character.linguistics.presenter.LinguisticsPresenter;
 import net.sf.anathema.character.linguistics.template.LinguisticsTemplate;
-import net.sf.anathema.character.main.model.CharacterModelGroup;
+import net.sf.anathema.character.main.hero.CharacterModelGroup;
 import net.sf.anathema.character.model.ICharacter;
 import net.sf.anathema.character.presenter.initializers.CharacterModelInitializer;
 import net.sf.anathema.character.presenter.initializers.RegisteredInitializer;

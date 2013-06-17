@@ -1,7 +1,7 @@
 package net.sf.anathema.character.generic.additionalrules;
 
 import net.sf.anathema.character.generic.character.IMagicCollection;
-import net.sf.anathema.character.main.traits.model.TraitMap;
+import net.sf.anathema.character.main.model.traits.TraitMap;
 import net.sf.anathema.lib.util.IdentifiedInteger;
 
 public interface IAdditionalEssencePool

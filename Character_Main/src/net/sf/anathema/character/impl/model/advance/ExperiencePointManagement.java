@@ -11,9 +11,9 @@ import net.sf.anathema.character.impl.model.advance.models.SpecialtyExperienceMo
 import net.sf.anathema.character.impl.model.advance.models.SpellExperienceModel;
 import net.sf.anathema.character.impl.model.advance.models.VirtueExperienceModel;
 import net.sf.anathema.character.impl.model.advance.models.WillpowerExperienceModel;
-import net.sf.anathema.character.main.abilities.AbilityModelFetcher;
-import net.sf.anathema.character.main.traits.model.TraitMap;
-import net.sf.anathema.character.main.traits.model.TraitModelFetcher;
+import net.sf.anathema.character.main.model.abilities.AbilityModelFetcher;
+import net.sf.anathema.character.main.model.traits.TraitMap;
+import net.sf.anathema.character.main.model.traits.TraitModelFetcher;
 import net.sf.anathema.character.model.ICharacter;
 import net.sf.anathema.character.model.advance.IExperiencePointManagement;
 import net.sf.anathema.character.presenter.overview.IValueModel;

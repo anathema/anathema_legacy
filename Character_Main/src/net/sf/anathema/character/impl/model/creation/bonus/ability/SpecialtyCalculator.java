@@ -3,7 +3,7 @@ package net.sf.anathema.character.impl.model.creation.bonus.ability;
 import net.sf.anathema.character.generic.template.creation.IGenericSpecialty;
 import net.sf.anathema.character.generic.template.experience.AbilityPointCosts;
 import net.sf.anathema.character.generic.traits.TraitType;
-import net.sf.anathema.character.main.traits.model.TraitMap;
+import net.sf.anathema.character.main.model.traits.TraitMap;
 
 import java.util.ArrayList;
 import java.util.Arrays;

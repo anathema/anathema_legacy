@@ -3,7 +3,7 @@ package net.sf.anathema.character.presenter;
 import net.sf.anathema.character.generic.traits.types.VirtueType;
 import net.sf.anathema.character.library.trait.Trait;
 import net.sf.anathema.character.library.trait.presenter.TraitPresenter;
-import net.sf.anathema.character.main.traits.model.TraitMap;
+import net.sf.anathema.character.main.model.traits.TraitMap;
 import net.sf.anathema.character.view.AdvantageView;
 import net.sf.anathema.framework.value.IIntValueView;
 import net.sf.anathema.lib.gui.Presenter;

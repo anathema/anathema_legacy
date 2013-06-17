@@ -24,6 +24,7 @@
         <model id="OtherTraits"/>
         <model id="Abilities"/>
         <model id="Attributes"/>
+        <model id="EssencePool"/>
     </models>
     <creation>
         <bonusPointCosts uses="SolaroidDefaultBonusPointCost2nd.template"/>

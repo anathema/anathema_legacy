@@ -9,11 +9,11 @@ import net.sf.anathema.character.library.trait.favorable.IFavorableStateChangedL
 import net.sf.anathema.character.library.trait.specialties.ISpecialtiesConfiguration;
 import net.sf.anathema.character.library.trait.specialties.Specialty;
 import net.sf.anathema.character.library.trait.subtrait.ISpecialtyListener;
-import net.sf.anathema.character.main.abilities.AbilityModel;
-import net.sf.anathema.character.main.abilities.AbilityModelFetcher;
-import net.sf.anathema.character.main.attributes.AttributeModelFetcher;
-import net.sf.anathema.character.main.traits.model.TraitMap;
-import net.sf.anathema.character.main.traits.model.TraitModelFetcher;
+import net.sf.anathema.character.main.model.abilities.AbilityModel;
+import net.sf.anathema.character.main.model.abilities.AbilityModelFetcher;
+import net.sf.anathema.character.main.model.attributes.AttributeModelFetcher;
+import net.sf.anathema.character.main.model.traits.TraitMap;
+import net.sf.anathema.character.main.model.traits.TraitModelFetcher;
 import net.sf.anathema.character.model.ICharacter;
 
 public class CharacterTraitListening {

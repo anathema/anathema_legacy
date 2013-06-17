@@ -18,7 +18,7 @@ import net.sf.anathema.character.generic.template.presentation.IPresentationProp
 import net.sf.anathema.character.impl.model.context.BasicCharacterContext;
 import net.sf.anathema.character.impl.model.context.CharacterListening;
 import net.sf.anathema.character.impl.model.context.trait.CreationTraitValueStrategy;
-import net.sf.anathema.character.main.model.InitializationContext;
+import net.sf.anathema.character.main.hero.InitializationContext;
 import net.sf.anathema.character.main.testing.dummy.magic.DummyCharmContext;
 import net.sf.anathema.character.main.testing.dummy.template.DummyHeroTemplate;
 import net.sf.anathema.character.model.ICharacter;

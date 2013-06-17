@@ -1,6 +1,6 @@
 package net.sf.anathema.character.generic.additionaltemplate;
 
-import net.sf.anathema.character.main.model.CharacterModelGroup;
+import net.sf.anathema.character.main.hero.CharacterModelGroup;
 import net.sf.anathema.lib.control.IChangeListener;
 
 public interface IAdditionalModel {

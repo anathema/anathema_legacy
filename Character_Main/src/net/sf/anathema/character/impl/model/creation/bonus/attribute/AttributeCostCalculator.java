@@ -15,7 +15,7 @@ import net.sf.anathema.character.impl.model.creation.bonus.util.TraitSorter;
 import net.sf.anathema.character.library.trait.AbstractFavorableTraitCostCalculator;
 import net.sf.anathema.character.library.trait.Trait;
 import net.sf.anathema.character.library.trait.TraitGroup;
-import net.sf.anathema.character.main.attributes.AttributeModel;
+import net.sf.anathema.character.main.model.attributes.AttributeModel;
 
 import java.util.ArrayList;
 import java.util.HashMap;

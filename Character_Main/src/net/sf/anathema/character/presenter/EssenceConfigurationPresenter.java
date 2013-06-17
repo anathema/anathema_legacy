@@ -3,8 +3,8 @@ package net.sf.anathema.character.presenter;
 import net.sf.anathema.character.generic.traits.types.OtherTraitType;
 import net.sf.anathema.character.library.trait.Trait;
 import net.sf.anathema.character.library.trait.presenter.TraitPresenter;
-import net.sf.anathema.character.main.essencepool.model.EssencePoolModel;
-import net.sf.anathema.character.main.traits.model.TraitMap;
+import net.sf.anathema.character.main.model.essencepool.EssencePoolModel;
+import net.sf.anathema.character.main.model.traits.TraitMap;
 import net.sf.anathema.character.view.AdvantageView;
 import net.sf.anathema.framework.value.IIntValueView;
 import net.sf.anathema.lib.control.IChangeListener;
@@ -16,34 +16,34 @@ import net.sf.anathema.lib.workflow.labelledvalue.NullValueView;
 public class EssenceConfigurationPresenter implements Presenter {
 
   private final AdvantageView view;
-  private final EssencePoolModel essence;
+  private final EssencePoolModel essencePool;
   private final Resources resources;
-  private final TraitMap traitConfiguration;
+  private final TraitMap traitMap;
 
-  public EssenceConfigurationPresenter(Resources resources, EssencePoolModel essence, TraitMap traitConfiguration, AdvantageView view) {
+  public EssenceConfigurationPresenter(Resources resources, EssencePoolModel essencePool, TraitMap traitMap, AdvantageView view) {
     this.resources = resources;
-    this.essence = essence;
-    this.traitConfiguration = traitConfiguration;
+    this.essencePool = essencePool;
+    this.traitMap = traitMap;
     this.view = view;
   }
 
   @Override
   public void initPresentation() {
-    Trait essenceTrait = traitConfiguration.getTrait(OtherTraitType.Essence);
+    Trait essenceTrait = traitMap.getTrait(OtherTraitType.Essence);
     IIntValueView essenceView =
             view.addEssenceView(resources.getString("Essence.Name"), essenceTrait.getCurrentValue(), essenceTrait.getMaximalValue(), essenceTrait);
-    if (essence.isEssenceUser()) {
+    if (essencePool.isEssenceUser()) {
       String key = "EssencePool.Name.Personal";
-      String personalPool = essence.getPersonalPool();
+      String personalPool = essencePool.getPersonalPool();
       final IValueView<String> personalView = addPool(key, personalPool);
       final IValueView<String> peripheralView = createPeripheralPoolView();
-      final IValueView<String> attunementView = addPool("EssencePool.Name.Attunement", essence.getAttunedPool());
-      essence.addPoolChangeListener(new IChangeListener() {
+      final IValueView<String> attunementView = addPool("EssencePool.Name.Attunement", essencePool.getAttunedPool());
+      essencePool.addPoolChangeListener(new IChangeListener() {
         @Override
         public void changeOccurred() {
-          personalView.setValue(essence.getPersonalPool());
+          personalView.setValue(essencePool.getPersonalPool());
           listenToPeripheralChanges(peripheralView);
-          attunementView.setValue(essence.getAttunedPool());
+          attunementView.setValue(essencePool.getAttunedPool());
         }
       });
     }
@@ -51,14 +51,14 @@ public class EssenceConfigurationPresenter implements Presenter {
   }
 
   private void listenToPeripheralChanges(IValueView<String> peripheralView) {
-    if (essence.hasPeripheralPool()) {
-      peripheralView.setValue(essence.getPeripheralPool());
+    if (essencePool.hasPeripheralPool()) {
+      peripheralView.setValue(essencePool.getPeripheralPool());
     }
   }
 
   private IValueView<String> createPeripheralPoolView() {
-    if (essence.hasPeripheralPool()) {
-      return addPool("EssencePool.Name.Peripheral", essence.getPeripheralPool());
+    if (essencePool.hasPeripheralPool()) {
+      return addPool("EssencePool.Name.Peripheral", essencePool.getPeripheralPool());
     }
     return new NullValueView<>();
   }

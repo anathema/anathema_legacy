@@ -12,14 +12,14 @@ import net.sf.anathema.character.library.trait.Trait;
 import net.sf.anathema.character.library.trait.TraitGroup;
 import net.sf.anathema.character.library.trait.favorable.GrumpyIncrementChecker;
 import net.sf.anathema.character.library.trait.favorable.IncrementChecker;
-import net.sf.anathema.character.main.attributes.AttributeModel;
-import net.sf.anathema.character.main.model.Hero;
-import net.sf.anathema.character.main.model.HeroModel;
-import net.sf.anathema.character.main.model.InitializationContext;
-import net.sf.anathema.character.main.traits.model.DefaultTraitMap;
-import net.sf.anathema.character.main.traits.model.MappedTraitGroup;
-import net.sf.anathema.character.main.traits.model.TraitModel;
-import net.sf.anathema.character.main.traits.model.TraitModelFetcher;
+import net.sf.anathema.character.main.model.attributes.AttributeModel;
+import net.sf.anathema.character.main.hero.Hero;
+import net.sf.anathema.character.main.hero.HeroModel;
+import net.sf.anathema.character.main.hero.InitializationContext;
+import net.sf.anathema.character.main.model.traits.DefaultTraitMap;
+import net.sf.anathema.character.main.model.traits.MappedTraitGroup;
+import net.sf.anathema.character.main.model.traits.TraitModel;
+import net.sf.anathema.character.main.model.traits.TraitModelFetcher;
 import net.sf.anathema.lib.util.Identifier;
 
 public class AttributeModelImpl extends DefaultTraitMap implements AttributeModel, HeroModel {

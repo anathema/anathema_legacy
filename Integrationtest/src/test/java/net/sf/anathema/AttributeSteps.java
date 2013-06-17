@@ -6,8 +6,8 @@ import cucumber.api.java.en.Then;
 import cucumber.api.java.en.When;
 import net.sf.anathema.character.generic.traits.types.AttributeType;
 import net.sf.anathema.character.library.trait.Trait;
-import net.sf.anathema.character.main.traits.model.TraitMap;
-import net.sf.anathema.character.main.traits.model.TraitModelFetcher;
+import net.sf.anathema.character.main.model.traits.TraitMap;
+import net.sf.anathema.character.main.model.traits.TraitModelFetcher;
 
 import static org.hamcrest.CoreMatchers.is;
 import static org.junit.Assert.assertThat;

@@ -1,7 +1,5 @@
 package net.sf.anathema.hero.attributes.template;
 
-import net.sf.anathema.character.main.traits.model.IdGroups;
-import net.sf.anathema.character.main.traits.model.TraitLearnValues;
 import net.sf.anathema.lib.util.Identifier;
 import net.sf.anathema.lib.util.SimpleIdentifier;
 

@@ -2,7 +2,7 @@ package net.sf.anathema.character.impl.model.advance.models;
 
 import net.sf.anathema.character.impl.model.advance.IPointCostCalculator;
 import net.sf.anathema.character.library.trait.TraitCollectionUtilities;
-import net.sf.anathema.character.main.traits.model.TraitMap;
+import net.sf.anathema.character.main.model.traits.TraitMap;
 
 public class EssenceExperienceModel extends AbstractIntegerValueModel {
   private final TraitMap traitCollection;

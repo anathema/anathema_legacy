@@ -2,6 +2,8 @@ dependencies {
     compile project(':Character_Main')
     compile project(':Character_Reporting')
     compile project(':Hero_Traits')
+    testCompile parent.ext.testDependencies
+    testCompile project(path: ':Platform', configuration: 'tests')
 }
 
 configurations {

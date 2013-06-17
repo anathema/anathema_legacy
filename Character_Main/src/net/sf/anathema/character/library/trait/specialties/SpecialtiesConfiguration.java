@@ -8,8 +8,8 @@ import net.sf.anathema.character.generic.traits.groups.ITraitTypeGroup;
 import net.sf.anathema.character.generic.traits.groups.TraitTypeGroup;
 import net.sf.anathema.character.library.trait.Trait;
 import net.sf.anathema.character.library.trait.subtrait.ISubTraitContainer;
-import net.sf.anathema.character.main.model.InitializationContext;
-import net.sf.anathema.character.main.traits.model.TraitMap;
+import net.sf.anathema.character.main.hero.InitializationContext;
+import net.sf.anathema.character.main.model.traits.TraitMap;
 import net.sf.anathema.lib.control.IChangeListener;
 import org.jmock.example.announcer.Announcer;
 

@@ -4,7 +4,7 @@ import net.sf.anathema.character.generic.framework.ICharacterGenerics;
 import net.sf.anathema.character.generic.impl.magic.SpellException;
 import net.sf.anathema.character.impl.model.CharacterStatisticsConfiguration;
 import net.sf.anathema.character.impl.model.ExaltedCharacter;
-import net.sf.anathema.character.main.description.model.CharacterDescriptionFetcher;
+import net.sf.anathema.character.main.model.description.HeroDescriptionFetcher;
 import net.sf.anathema.character.model.ICharacter;
 import net.sf.anathema.framework.item.IItemType;
 import net.sf.anathema.framework.messaging.IMessaging;
@@ -51,7 +51,7 @@ public class ExaltedCharacterPersister extends AbstractSingleFileItemPersister {
   }
 
   private void save(Element rootElement, ICharacter character) {
-    descriptionPersister.save(rootElement, CharacterDescriptionFetcher.fetch(character));
+    descriptionPersister.save(rootElement, HeroDescriptionFetcher.fetch(character));
     statisticsPersister.save(rootElement, character);
   }
 
@@ -59,7 +59,7 @@ public class ExaltedCharacterPersister extends AbstractSingleFileItemPersister {
   public IItem load(Document characterXml) throws PersistenceException {
     Element documentRoot = characterXml.getRootElement();
     ExaltedCharacter character = statisticsPersister.load(documentRoot);
-    descriptionPersister.load(documentRoot, CharacterDescriptionFetcher.fetch(character));
+    descriptionPersister.load(documentRoot, HeroDescriptionFetcher.fetch(character));
     markCharacterReadyForWork(character);
     IItem item = new AnathemaDataItem(characterType, character);
     repositoryItemPerister.load(documentRoot, item);

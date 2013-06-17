@@ -15,7 +15,7 @@ import net.sf.anathema.character.generic.magic.charms.special.ISubeffectCharm;
 import net.sf.anathema.character.generic.magic.charms.special.ITraitCapModifyingCharm;
 import net.sf.anathema.character.generic.magic.charms.special.IUpgradableCharm;
 import net.sf.anathema.character.impl.model.charm.ISpecialCharmManager;
-import net.sf.anathema.character.main.model.Hero;
+import net.sf.anathema.character.main.hero.Hero;
 import net.sf.anathema.character.model.charm.CharmLearnAdapter;
 import net.sf.anathema.character.model.charm.ICharmConfiguration;
 import net.sf.anathema.character.model.charm.IExtendedCharmLearnableArbitrator;

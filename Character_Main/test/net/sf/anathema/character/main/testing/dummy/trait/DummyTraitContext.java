@@ -8,8 +8,8 @@ import net.sf.anathema.character.generic.framework.additionaltemplate.model.ITra
 import net.sf.anathema.character.generic.impl.traits.limitation.StaticTraitLimitation;
 import net.sf.anathema.character.generic.template.ITraitLimitation;
 import net.sf.anathema.character.impl.model.context.trait.CreationTraitValueStrategy;
-import net.sf.anathema.character.main.traits.model.GenericTraitCollectionFacade;
-import net.sf.anathema.character.main.traits.model.TraitMap;
+import net.sf.anathema.character.main.model.traits.GenericTraitCollectionFacade;
+import net.sf.anathema.character.main.model.traits.TraitMap;
 
 public class DummyTraitContext implements TraitContext {
 

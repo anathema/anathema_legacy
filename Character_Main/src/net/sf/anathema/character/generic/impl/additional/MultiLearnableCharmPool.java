@@ -3,7 +3,7 @@ package net.sf.anathema.character.generic.impl.additional;
 import net.sf.anathema.character.generic.additionalrules.IAdditionalEssencePool;
 import net.sf.anathema.character.generic.character.IMagicCollection;
 import net.sf.anathema.character.generic.magic.charms.special.IMultiLearnableCharm;
-import net.sf.anathema.character.main.traits.model.TraitMap;
+import net.sf.anathema.character.main.model.traits.TraitMap;
 import net.sf.anathema.lib.util.IdentifiedInteger;
 
 public class MultiLearnableCharmPool implements IAdditionalEssencePool {

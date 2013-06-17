@@ -2,8 +2,8 @@ package net.sf.anathema.hero.attributes.template;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
-import net.sf.anathema.character.main.model.template.TemplateFactory;
-import net.sf.anathema.character.main.model.template.TemplateLoader;
+import net.sf.anathema.character.main.hero.template.TemplateFactory;
+import net.sf.anathema.character.main.hero.template.TemplateLoader;
 import net.sf.anathema.lib.exception.PersistenceException;
 import net.sf.anathema.lib.util.SimpleIdentifier;
 import org.apache.commons.io.IOUtils;
