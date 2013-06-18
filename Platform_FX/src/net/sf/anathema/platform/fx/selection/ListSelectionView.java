@@ -60,6 +60,7 @@ public class ListSelectionView<T> implements FxObjectSelectionView<T> {
       @Override
       public void run() {
         list.getSelectionModel().select(object);
+        list.scrollTo(list.getSelectionModel().getSelectedIndex());
       }
     });
   }
