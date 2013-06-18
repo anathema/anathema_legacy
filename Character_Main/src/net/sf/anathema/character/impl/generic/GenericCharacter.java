@@ -23,7 +23,6 @@ import net.sf.anathema.character.generic.traits.TraitType;
 import net.sf.anathema.character.generic.traits.groups.IIdentifiedTraitTypeGroup;
 import net.sf.anathema.character.generic.traits.types.OtherTraitType;
 import net.sf.anathema.character.impl.model.advance.ExperiencePointManagement;
-import net.sf.anathema.character.library.trait.Trait;
 import net.sf.anathema.character.library.trait.specialties.ISpecialtiesConfiguration;
 import net.sf.anathema.character.library.trait.specialties.Specialty;
 import net.sf.anathema.character.library.trait.subtrait.ISpecialtyListener;
@@ -35,6 +34,7 @@ import net.sf.anathema.character.main.model.description.HeroDescriptionFetcher;
 import net.sf.anathema.character.main.model.essencepool.EssencePoolModelFetcher;
 import net.sf.anathema.character.main.model.experience.ExperienceModelFetcher;
 import net.sf.anathema.character.main.model.health.HealthModelFetcher;
+import net.sf.anathema.character.main.model.othertraits.OtherTraitModelFetcher;
 import net.sf.anathema.character.main.model.traits.GenericTraitCollectionFacade;
 import net.sf.anathema.character.main.model.traits.TraitMap;
 import net.sf.anathema.character.main.model.traits.TraitModelFetcher;
@@ -261,8 +261,7 @@ public class GenericCharacter implements IGenericCharacter {
 
   @Override
   public int getEssenceCap(boolean modified) {
-    Trait essence = (Trait) getTraitMap().getTrait(OtherTraitType.Essence);
-    return modified ? essence.getModifiedMaximalValue() : essence.getUnmodifiedMaximalValue();
+    return OtherTraitModelFetcher.fetch(character).getEssenceCap(modified);
   }
 
   @Override

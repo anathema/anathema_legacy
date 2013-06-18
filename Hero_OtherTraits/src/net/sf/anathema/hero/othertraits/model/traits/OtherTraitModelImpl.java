@@ -87,4 +87,10 @@ public class OtherTraitModelImpl extends DefaultTraitMap implements OtherTraitMo
   private ITraitTemplateCollection getTemplateCollection() {
     return this.template.getTraitTemplateCollection();
   }
+
+  @Override
+  public int getEssenceCap(boolean modified) {
+    Trait essence = getTrait(OtherTraitType.Essence);
+    return modified ? essence.getModifiedMaximalValue() : essence.getUnmodifiedMaximalValue();
+  }
 }

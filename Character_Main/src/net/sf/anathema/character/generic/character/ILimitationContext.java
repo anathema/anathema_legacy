@@ -7,11 +7,11 @@ public interface ILimitationContext {
 
   ITraitLimitation getEssenceLimitation();
 
+  int getEssenceCap(boolean modified);
+
+  int getAge();
+
   ICasteType getCasteType();
 
   IGenericTraitCollection getTraitCollection();
-
-  int getAge();
-  
-  int getEssenceCap(boolean modified);
 }
