@@ -11,8 +11,8 @@ import net.sf.anathema.character.generic.framework.additionaltemplate.model.ICha
 import net.sf.anathema.character.generic.framework.additionaltemplate.model.ICharacterModelContext;
 import net.sf.anathema.character.generic.framework.additionaltemplate.model.ICharmContext;
 import net.sf.anathema.character.generic.framework.additionaltemplate.model.IGenericSpecialtyContext;
-import net.sf.anathema.character.generic.framework.additionaltemplate.model.TraitContext;
 import net.sf.anathema.character.generic.framework.additionaltemplate.model.ITraitValueStrategy;
+import net.sf.anathema.character.generic.framework.additionaltemplate.model.TraitContext;
 import net.sf.anathema.character.generic.impl.template.magic.ICharmProvider;
 import net.sf.anathema.character.generic.template.HeroTemplate;
 import net.sf.anathema.character.generic.template.ITemplateRegistry;
@@ -75,11 +75,6 @@ public class DummyCharacterModelContext implements ICharacterModelContext, Initi
   @Override
   public IAdditionalRules getAdditionalRules() {
     return getCharacter().getTemplate().getAdditionalRules();
-  }
-
-  @Override
-  public ICharmContext getCharmContext() {
-    return charmContext;
   }
 
   @Override

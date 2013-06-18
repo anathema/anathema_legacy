@@ -22,8 +22,6 @@ public interface ICharacterModelContext {
 
   ICharacterListening getCharacterListening();
 
-  ICharmContext getCharmContext();
-
   IMagicCollection getMagicCollection();
 
   IGenericTraitCollection getTraitCollection();

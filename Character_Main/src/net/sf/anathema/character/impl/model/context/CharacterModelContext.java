@@ -102,11 +102,6 @@ public class CharacterModelContext implements ICharacterModelContext, ICharmCont
   }
 
   @Override
-  public ICharmContext getCharmContext() {
-    return this;
-  }
-
-  @Override
   public CharacterListening getCharacterListening() {
     return characterListening;
   }

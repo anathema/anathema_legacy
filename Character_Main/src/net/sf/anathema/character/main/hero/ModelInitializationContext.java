@@ -6,7 +6,6 @@ import net.sf.anathema.character.generic.character.IMagicCollection;
 import net.sf.anathema.character.generic.framework.ICharacterGenerics;
 import net.sf.anathema.character.generic.framework.additionaltemplate.model.ICharacterListening;
 import net.sf.anathema.character.generic.framework.additionaltemplate.model.ICharacterModelContext;
-import net.sf.anathema.character.generic.framework.additionaltemplate.model.ICharmContext;
 import net.sf.anathema.character.generic.framework.additionaltemplate.model.TraitContext;
 import net.sf.anathema.character.generic.impl.template.magic.ICharmProvider;
 import net.sf.anathema.character.generic.template.HeroTemplate;
@@ -53,12 +52,6 @@ public class ModelInitializationContext implements InitializationContext {
   @Deprecated
   public IMagicCollection getMagicCollection() {
     return context.getMagicCollection();
-  }
-
-  @Override
-  @Deprecated
-  public ICharmContext getCharmContext() {
-    return context.getCharmContext();
   }
 
   @Override

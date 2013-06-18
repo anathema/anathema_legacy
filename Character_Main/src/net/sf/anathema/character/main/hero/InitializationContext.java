@@ -4,7 +4,6 @@ import net.sf.anathema.character.change.ChangeAnnouncer;
 import net.sf.anathema.character.generic.IBasicCharacterData;
 import net.sf.anathema.character.generic.character.IMagicCollection;
 import net.sf.anathema.character.generic.framework.additionaltemplate.model.ICharacterListening;
-import net.sf.anathema.character.generic.framework.additionaltemplate.model.ICharmContext;
 import net.sf.anathema.character.generic.framework.additionaltemplate.model.TraitContext;
 import net.sf.anathema.character.generic.impl.template.magic.ICharmProvider;
 import net.sf.anathema.character.generic.template.HeroTemplate;
@@ -26,9 +25,6 @@ public interface InitializationContext {
 
   @Deprecated
   IMagicCollection getMagicCollection();
-
-  @Deprecated
-  ICharmContext getCharmContext();
 
   <T> List<T> getAllRegistered(Class<T> interfaceClass);
 
