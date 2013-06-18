@@ -24,13 +24,15 @@ import net.sf.anathema.character.impl.model.charm.options.NonMartialArtsOptions;
 import net.sf.anathema.character.impl.model.charm.special.DefaultMartialArtsCharmConfiguration;
 import net.sf.anathema.character.impl.model.charm.special.SpecialCharmManager;
 import net.sf.anathema.character.main.hero.Hero;
+import net.sf.anathema.character.main.model.concept.CharacterConceptFetcher;
+import net.sf.anathema.character.main.model.experience.ExperienceModelFetcher;
+import net.sf.anathema.character.main.model.health.HealthModel;
 import net.sf.anathema.character.model.charm.CharmLearnAdapter;
 import net.sf.anathema.character.model.charm.ICharmConfiguration;
 import net.sf.anathema.character.model.charm.ICharmLearnListener;
 import net.sf.anathema.character.model.charm.ILearningCharmGroup;
 import net.sf.anathema.character.model.charm.special.IMultiLearnableCharmConfiguration;
 import net.sf.anathema.character.model.charm.special.IMultipleEffectCharmConfiguration;
-import net.sf.anathema.character.main.model.health.HealthModel;
 import net.sf.anathema.character.presenter.magic.CharacterSourceBookFilter;
 import net.sf.anathema.character.presenter.magic.EssenceLevelCharmFilter;
 import net.sf.anathema.character.presenter.magic.ObtainableCharmFilter;
@@ -366,7 +368,7 @@ public class CharmConfiguration implements ICharmConfiguration {
   @Override
   public final boolean isLearnable(ICharm charm) {
     if (isAlienCharm(charm)) {
-      ICasteType casteType = context.getBasicCharacterContext().getCasteType();
+      ICasteType casteType = CharacterConceptFetcher.fetch(hero).getCaste().getType();
       if (!nonMartialArtsOptions.getNativeCharmTemplate().isAllowedAlienCharms(casteType)) {
         return false;
       }
@@ -406,7 +408,7 @@ public class CharmConfiguration implements ICharmConfiguration {
   }
 
   private boolean isExperienced() {
-    return context.getBasicCharacterContext().isExperienced();
+    return ExperienceModelFetcher.fetch(hero).isExperienced();
   }
 
   private PrerequisiteModifyingCharms getPrerequisiteModifyingCharms() {
