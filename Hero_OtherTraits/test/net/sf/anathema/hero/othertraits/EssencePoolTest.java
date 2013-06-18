@@ -43,7 +43,7 @@ public class EssencePoolTest {
     EssencePoolModelImpl essencePoolModel = new EssencePoolModelImpl();
     DummyHero hero = new DummyHero();
     hero.addModel(traitMap);
-    InitializationContext initContext = new ModelInitializationContext(new DummyCharacterModelContext(), hero, heroTemplate);
+    InitializationContext initContext = new ModelInitializationContext(new DummyCharacterModelContext(), hero, heroTemplate, null);
     essencePoolModel.initialize(initContext, hero);
     when(EssencePoolModelFetcher.fetch(statistics)).thenReturn(essencePoolModel);
   }

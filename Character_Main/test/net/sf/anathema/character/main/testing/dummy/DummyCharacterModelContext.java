@@ -13,8 +13,11 @@ import net.sf.anathema.character.generic.framework.additionaltemplate.model.ICha
 import net.sf.anathema.character.generic.framework.additionaltemplate.model.IGenericSpecialtyContext;
 import net.sf.anathema.character.generic.framework.additionaltemplate.model.TraitContext;
 import net.sf.anathema.character.generic.framework.additionaltemplate.model.ITraitValueStrategy;
+import net.sf.anathema.character.generic.impl.template.magic.ICharmProvider;
 import net.sf.anathema.character.generic.template.HeroTemplate;
+import net.sf.anathema.character.generic.template.ITemplateRegistry;
 import net.sf.anathema.character.generic.template.presentation.IPresentationProperties;
+import net.sf.anathema.character.generic.type.CharacterTypes;
 import net.sf.anathema.character.impl.model.context.BasicCharacterContext;
 import net.sf.anathema.character.impl.model.context.CharacterListening;
 import net.sf.anathema.character.impl.model.context.trait.CreationTraitValueStrategy;
@@ -101,6 +104,21 @@ public class DummyCharacterModelContext implements ICharacterModelContext, Initi
 
   @Override
   public ChangeAnnouncer getChangeAnnouncer() {
+    throw new UnsupportedOperationException();
+  }
+
+  @Override
+  public CharacterTypes getCharacterTypes() {
+    throw new UnsupportedOperationException();
+  }
+
+  @Override
+  public ITemplateRegistry getTemplateRegistry() {
+    throw new UnsupportedOperationException();
+  }
+
+  @Override
+  public ICharmProvider getCharmProvider() {
     throw new UnsupportedOperationException();
   }
 

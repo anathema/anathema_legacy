@@ -45,12 +45,12 @@ public class ExaltedCharacter implements ICharacter {
 
   public ExaltedCharacter(HeroTemplate template, ICharacterGenerics generics) {
     this.heroTemplate = template;
-    this.initializationContext = new ModelInitializationContext(context, this, heroTemplate);
+    this.initializationContext = new ModelInitializationContext(context, this, heroTemplate, generics);
     addModels(generics);
 
     // Charm Model
-    this.charms = new CharmConfiguration(this, HealthModelFetcher.fetch(hero), context, generics.getCharacterTypes(), generics.getTemplateRegistry(),
-            generics.getCharmProvider());
+    this.charms = new CharmConfiguration(hero, HealthModelFetcher.fetch(hero), context, initializationContext.getCharacterTypes(),
+            initializationContext.getTemplateRegistry(), initializationContext.getCharmProvider());
     addCompulsiveCharms(template);
     charms.addCharmLearnListener(new CharacterChangeCharmListener(context.getCharacterListening()));
     charms.initListening();

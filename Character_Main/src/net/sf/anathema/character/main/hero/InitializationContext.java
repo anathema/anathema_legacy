@@ -6,7 +6,10 @@ import net.sf.anathema.character.generic.character.IMagicCollection;
 import net.sf.anathema.character.generic.framework.additionaltemplate.model.ICharacterListening;
 import net.sf.anathema.character.generic.framework.additionaltemplate.model.ICharmContext;
 import net.sf.anathema.character.generic.framework.additionaltemplate.model.TraitContext;
+import net.sf.anathema.character.generic.impl.template.magic.ICharmProvider;
 import net.sf.anathema.character.generic.template.HeroTemplate;
+import net.sf.anathema.character.generic.template.ITemplateRegistry;
+import net.sf.anathema.character.generic.type.CharacterTypes;
 
 import java.util.List;
 
@@ -32,4 +35,10 @@ public interface InitializationContext {
   HeroTemplate getTemplate();
 
   ChangeAnnouncer getChangeAnnouncer();
+
+  CharacterTypes getCharacterTypes();
+
+  ITemplateRegistry getTemplateRegistry();
+
+  ICharmProvider getCharmProvider();
 }

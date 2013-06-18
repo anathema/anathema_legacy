@@ -3,11 +3,15 @@ package net.sf.anathema.character.main.hero;
 import net.sf.anathema.character.change.ChangeAnnouncer;
 import net.sf.anathema.character.generic.IBasicCharacterData;
 import net.sf.anathema.character.generic.character.IMagicCollection;
+import net.sf.anathema.character.generic.framework.ICharacterGenerics;
 import net.sf.anathema.character.generic.framework.additionaltemplate.model.ICharacterListening;
 import net.sf.anathema.character.generic.framework.additionaltemplate.model.ICharacterModelContext;
 import net.sf.anathema.character.generic.framework.additionaltemplate.model.ICharmContext;
 import net.sf.anathema.character.generic.framework.additionaltemplate.model.TraitContext;
+import net.sf.anathema.character.generic.impl.template.magic.ICharmProvider;
 import net.sf.anathema.character.generic.template.HeroTemplate;
+import net.sf.anathema.character.generic.template.ITemplateRegistry;
+import net.sf.anathema.character.generic.type.CharacterTypes;
 import net.sf.anathema.character.impl.model.context.CharacterListening;
 import net.sf.anathema.character.main.hero.change.ChangeAnnouncerAdapter;
 
@@ -18,11 +22,13 @@ public class ModelInitializationContext implements InitializationContext {
   private ICharacterModelContext context;
   private Hero hero;
   private HeroTemplate template;
+  private ICharacterGenerics generics;
 
-  public ModelInitializationContext(ICharacterModelContext context, Hero hero, HeroTemplate template) {
+  public ModelInitializationContext(ICharacterModelContext context, Hero hero, HeroTemplate template, ICharacterGenerics generics) {
     this.context = context;
     this.hero = hero;
     this.template = template;
+    this.generics = generics;
   }
 
   @Override
@@ -69,5 +75,20 @@ public class ModelInitializationContext implements InitializationContext {
   public ChangeAnnouncer getChangeAnnouncer() {
     CharacterListening listening = (CharacterListening) context.getCharacterListening();
     return new ChangeAnnouncerAdapter(listening, hero);
+  }
+
+  @Override
+  public CharacterTypes getCharacterTypes() {
+    return generics.getCharacterTypes();
+  }
+
+  @Override
+  public ITemplateRegistry getTemplateRegistry() {
+    return generics.getTemplateRegistry();
+  }
+
+  @Override
+  public ICharmProvider getCharmProvider() {
+    return generics.getCharmProvider();
   }
 }
