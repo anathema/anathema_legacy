@@ -4,6 +4,7 @@ import net.sf.anathema.character.change.ChangeAnnouncer;
 import net.sf.anathema.character.generic.additionalrules.IAdditionalTraitRules;
 import net.sf.anathema.character.generic.framework.additionaltemplate.model.TraitContext;
 import net.sf.anathema.character.generic.template.HeroTemplate;
+import net.sf.anathema.character.generic.template.ITraitLimitation;
 import net.sf.anathema.character.generic.template.ITraitTemplateCollection;
 import net.sf.anathema.character.generic.traits.types.OtherTraitType;
 import net.sf.anathema.character.generic.traits.types.VirtueType;
@@ -81,16 +82,21 @@ public class OtherTraitModelImpl extends DefaultTraitMap implements OtherTraitMo
   }
 
   private IAdditionalTraitRules getAdditionalTraitRules() {
-    return this.template.getAdditionalRules().getAdditionalTraitRules();
+    return template.getAdditionalRules().getAdditionalTraitRules();
   }
 
   private ITraitTemplateCollection getTemplateCollection() {
-    return this.template.getTraitTemplateCollection();
+    return template.getTraitTemplateCollection();
   }
 
   @Override
   public int getEssenceCap(boolean modified) {
     Trait essence = getTrait(OtherTraitType.Essence);
     return modified ? essence.getModifiedMaximalValue() : essence.getUnmodifiedMaximalValue();
+  }
+
+  @Override
+  public ITraitLimitation getEssenceLimitation() {
+    return template.getTraitTemplateCollection().getTraitTemplate(OtherTraitType.Essence).getLimitation();
   }
 }
