@@ -1,5 +1,6 @@
 package net.sf.anathema.character.impl.model;
 
+import net.sf.anathema.character.change.ChangeAnnouncer;
 import net.sf.anathema.character.generic.framework.ICharacterGenerics;
 import net.sf.anathema.character.generic.framework.additionaltemplate.model.IAdditionalModelFactory;
 import net.sf.anathema.character.generic.framework.additionaltemplate.model.ICharacterModelContext;
@@ -32,18 +33,20 @@ import net.sf.anathema.lib.workflow.textualdescription.ITextualDescription;
 public class ExaltedCharacter implements ICharacter {
 
   private final CharacterChangeManagement management = new CharacterChangeManagement();
-  private final CharacterModelContext context = new CharacterModelContext(new GenericCharacter(this), this);
+  private final CharacterModelContext context;
   private final HeroTemplate heroTemplate;
   private final CharmConfiguration charms;
   private final IComboConfiguration combos;
   private final ISpellConfiguration spells;
-  private final ExtendedConfiguration extendedConfiguration = new ExtendedConfiguration(context);
+  private final ExtendedConfiguration extendedConfiguration;
   private final DefaultHero hero = new DefaultHero();
   private final ModelInitializationContext initializationContext;
 
   public ExaltedCharacter(HeroTemplate template, ICharacterGenerics generics) {
     this.heroTemplate = template;
-    this.initializationContext = new ModelInitializationContext(context, this, heroTemplate, generics);
+    context = new CharacterModelContext(new GenericCharacter(this), this, hero.getListening());
+    this.extendedConfiguration = new ExtendedConfiguration(context);
+    this.initializationContext = new ModelInitializationContext(context, heroTemplate, generics);
     addModels(generics);
 
     // Charm Model
@@ -149,6 +152,11 @@ public class ExaltedCharacter implements ICharacter {
 
   public ICharacterModelContext getCharacterContext() {
     return context;
+  }
+
+  @Override
+  public ChangeAnnouncer getChangeAnnouncer() {
+    return hero.getChangeAnnouncer();
   }
 
   @Override

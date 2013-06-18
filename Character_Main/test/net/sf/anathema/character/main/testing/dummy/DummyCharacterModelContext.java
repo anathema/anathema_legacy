@@ -1,6 +1,5 @@
 package net.sf.anathema.character.main.testing.dummy;
 
-import net.sf.anathema.character.change.ChangeAnnouncer;
 import net.sf.anathema.character.generic.IBasicCharacterData;
 import net.sf.anathema.character.generic.additionalrules.IAdditionalRules;
 import net.sf.anathema.character.generic.additionaltemplate.IAdditionalModel;
@@ -9,7 +8,6 @@ import net.sf.anathema.character.generic.character.ILimitationContext;
 import net.sf.anathema.character.generic.character.IMagicCollection;
 import net.sf.anathema.character.generic.framework.additionaltemplate.model.ICharacterListening;
 import net.sf.anathema.character.generic.framework.additionaltemplate.model.ICharacterModelContext;
-import net.sf.anathema.character.generic.framework.additionaltemplate.model.ICharmContext;
 import net.sf.anathema.character.generic.framework.additionaltemplate.model.IGenericSpecialtyContext;
 import net.sf.anathema.character.generic.framework.additionaltemplate.model.ITraitValueStrategy;
 import net.sf.anathema.character.generic.framework.additionaltemplate.model.TraitContext;
@@ -19,10 +17,8 @@ import net.sf.anathema.character.generic.template.ITemplateRegistry;
 import net.sf.anathema.character.generic.template.presentation.IPresentationProperties;
 import net.sf.anathema.character.generic.type.CharacterTypes;
 import net.sf.anathema.character.impl.model.context.BasicCharacterContext;
-import net.sf.anathema.character.impl.model.context.CharacterListening;
 import net.sf.anathema.character.impl.model.context.trait.CreationTraitValueStrategy;
 import net.sf.anathema.character.main.hero.InitializationContext;
-import net.sf.anathema.character.main.testing.dummy.magic.DummyCharmContext;
 import net.sf.anathema.character.main.testing.dummy.template.DummyHeroTemplate;
 import net.sf.anathema.character.model.ICharacter;
 
@@ -30,7 +26,7 @@ import java.util.List;
 
 public class DummyCharacterModelContext implements ICharacterModelContext, InitializationContext {
 
-  private ICharacterListening characterListening = new CharacterListening();
+  private DummyHero dummyHero = new DummyHero();
   private final ITraitValueStrategy valueStrategy;
   private DummyGenericCharacter character;
   private TraitContext traitContext = new TraitContext() {
@@ -45,7 +41,6 @@ public class DummyCharacterModelContext implements ICharacterModelContext, Initi
       return getCharacter();
     }
   };
-  private final ICharmContext charmContext;
 
   public DummyCharacterModelContext() {
     this(new CreationTraitValueStrategy());
@@ -60,7 +55,6 @@ public class DummyCharacterModelContext implements ICharacterModelContext, Initi
     this.valueStrategy = valueStrategy;
     HeroTemplate template = new DummyHeroTemplate();
     this.character = new DummyGenericCharacter(template);
-    this.charmContext = new DummyCharmContext(character);
   }
 
   public DummyGenericCharacter getCharacter() {
@@ -98,11 +92,6 @@ public class DummyCharacterModelContext implements ICharacterModelContext, Initi
   }
 
   @Override
-  public ChangeAnnouncer getChangeAnnouncer() {
-    throw new UnsupportedOperationException();
-  }
-
-  @Override
   public CharacterTypes getCharacterTypes() {
     throw new UnsupportedOperationException();
   }
@@ -119,7 +108,7 @@ public class DummyCharacterModelContext implements ICharacterModelContext, Initi
 
   @Override
   public ICharacterListening getCharacterListening() {
-    return characterListening;
+    return dummyHero.listening;
   }
 
   @Override

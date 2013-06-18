@@ -1,5 +1,6 @@
 package net.sf.anathema.character.impl.model.context;
 
+import net.sf.anathema.character.change.ChangeFlavor;
 import net.sf.anathema.character.generic.IBasicCharacterData;
 import net.sf.anathema.character.generic.additionalrules.IAdditionalRules;
 import net.sf.anathema.character.generic.additionaltemplate.IAdditionalModel;
@@ -7,7 +8,6 @@ import net.sf.anathema.character.generic.character.IGenericCharacter;
 import net.sf.anathema.character.generic.character.IGenericTraitCollection;
 import net.sf.anathema.character.generic.character.ILimitationContext;
 import net.sf.anathema.character.generic.character.IMagicCollection;
-import net.sf.anathema.character.generic.framework.additionaltemplate.listening.DedicatedCharacterChangeAdapter;
 import net.sf.anathema.character.generic.framework.additionaltemplate.model.ICharacterModelContext;
 import net.sf.anathema.character.generic.framework.additionaltemplate.model.ICharmContext;
 import net.sf.anathema.character.generic.framework.additionaltemplate.model.IGenericSpecialtyContext;
@@ -21,6 +21,9 @@ import net.sf.anathema.character.impl.model.context.magic.ProxySpellLearnStrateg
 import net.sf.anathema.character.impl.model.context.trait.CreationTraitValueStrategy;
 import net.sf.anathema.character.impl.model.context.trait.ExperiencedTraitValueStrategy;
 import net.sf.anathema.character.impl.model.context.trait.ProxyTraitValueStrategy;
+import net.sf.anathema.character.main.hero.change.FlavoredChangeListener;
+import net.sf.anathema.character.main.model.experience.ExperienceChange;
+import net.sf.anathema.character.main.model.experience.ExperienceModelFetcher;
 import net.sf.anathema.character.model.ICharacter;
 import net.sf.anathema.character.model.ISpellLearnStrategy;
 
@@ -30,19 +33,23 @@ public class CharacterModelContext implements ICharacterModelContext, ICharmCont
 
   private final ProxyTraitValueStrategy traitValueStrategy = new ProxyTraitValueStrategy(new CreationTraitValueStrategy());
   private final ProxySpellLearnStrategy spellLearnStrategy = new ProxySpellLearnStrategy(new CreationSpellLearnStrategy());
-  private final CharacterListening characterListening = new CharacterListening();
   private final IGenericCharacter character;
   private ICharacter hero;
+  private CharacterListening characterListening;
   private final IBasicCharacterData characterData;
 
-  public CharacterModelContext(IGenericCharacter character, ICharacter hero) {
+  public CharacterModelContext(IGenericCharacter character, final ICharacter hero, CharacterListening characterListening) {
     this.character = character;
     this.hero = hero;
+    this.characterListening = characterListening;
     this.characterData = new BasicCharacterContext(character);
-    characterListening.addChangeListener(new DedicatedCharacterChangeAdapter() {
+    hero.getChangeAnnouncer().addListener(new FlavoredChangeListener() {
       @Override
-      public void experiencedChanged(boolean experienced) {
-        updateLearnStrategies(experienced);
+      public void changeOccurred(ChangeFlavor flavor) {
+        if (flavor == ExperienceChange.FLAVOR_EXPERIENCE_STATE) {
+          boolean experienced = ExperienceModelFetcher.fetch(hero).isExperienced();
+          updateLearnStrategies(experienced);
+        }
       }
     });
   }

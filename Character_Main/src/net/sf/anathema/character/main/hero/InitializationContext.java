@@ -1,6 +1,5 @@
 package net.sf.anathema.character.main.hero;
 
-import net.sf.anathema.character.change.ChangeAnnouncer;
 import net.sf.anathema.character.generic.IBasicCharacterData;
 import net.sf.anathema.character.generic.character.IMagicCollection;
 import net.sf.anathema.character.generic.framework.additionaltemplate.model.ICharacterListening;
@@ -29,8 +28,6 @@ public interface InitializationContext {
   <T> List<T> getAllRegistered(Class<T> interfaceClass);
 
   HeroTemplate getTemplate();
-
-  ChangeAnnouncer getChangeAnnouncer();
 
   CharacterTypes getCharacterTypes();
 

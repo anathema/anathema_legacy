@@ -113,7 +113,7 @@ public class CharmConfiguration implements ICharmConfiguration {
     filterSet.add(new EssenceLevelCharmFilter());
     addCompulsiveCharms(context.getTemplate());
     EssencePoolModelFetcher.fetch(hero).addOverdrivePool(new CharmOverdrivePool(this, experience));
-    context.getChangeAnnouncer().addListener(new FlavoredChangeListener() {
+    hero.getChangeAnnouncer().addListener(new FlavoredChangeListener() {
       @Override
       public void changeOccurred(ChangeFlavor flavor) {
         verifyCharms();

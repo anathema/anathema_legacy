@@ -12,7 +12,6 @@ import net.sf.anathema.character.generic.traits.ITraitTemplate;
 import net.sf.anathema.character.generic.traits.types.AttributeGroupType;
 import net.sf.anathema.character.generic.traits.types.AttributeType;
 import net.sf.anathema.character.impl.model.context.BasicCharacterContext;
-import net.sf.anathema.character.impl.model.context.CharacterListening;
 import net.sf.anathema.character.impl.model.creation.bonus.attribute.AttributeCostCalculator;
 import net.sf.anathema.character.impl.model.creation.bonus.util.TraitGroupCost;
 import net.sf.anathema.character.impl.model.traits.creation.AdditionRulesTraitValueChangeChecker;
@@ -25,6 +24,7 @@ import net.sf.anathema.character.library.trait.rules.FavorableTraitRules;
 import net.sf.anathema.character.library.trait.rules.TraitRules;
 import net.sf.anathema.character.main.testing.dummy.DummyAdditionalBonusPointManagment;
 import net.sf.anathema.character.main.testing.dummy.DummyGenericCharacter;
+import net.sf.anathema.character.main.testing.dummy.DummyHero;
 import net.sf.anathema.character.main.testing.dummy.template.DummyHeroTemplate;
 import net.sf.anathema.character.main.testing.dummy.template.DummyTraitTemplateFactory;
 import net.sf.anathema.character.main.testing.dummy.trait.DummyCoreTraitConfiguration;
@@ -116,13 +116,12 @@ public class AttributeCostCalculatorTest {
     ILimitationContext limitationContext = traitContext.getLimitationContext();
     TraitRules essenceRules = new TraitRules(Essence, essenceTraitTemplate, limitationContext);
     coreTraits.addTraits(new DefaultTrait(essenceRules, traitContext, new FriendlyValueChangeChecker()));
-    CharacterListening listening = new CharacterListening();
     GrumpyIncrementChecker incrementChecker = new GrumpyIncrementChecker();
     for (AttributeType traitType : AttributeType.values()) {
       ITraitTemplate traitTemplate = templateCollection.getTraitTemplate(traitType);
       IValueChangeChecker checker = new AdditionRulesTraitValueChangeChecker(traitType, limitationContext, additionalRules.getAdditionalTraitRules());
       Trait trait = new DefaultTrait(new FavorableTraitRules(traitType, traitTemplate, limitationContext), new ICasteType[0], traitContext,
-              new BasicCharacterContext(new DummyGenericCharacter(new DummyHeroTemplate())), listening, checker, incrementChecker);
+              new BasicCharacterContext(new DummyGenericCharacter(new DummyHeroTemplate())), new DummyHero().listening, checker, incrementChecker);
       coreTraits.addTraits(trait);
     }
   }

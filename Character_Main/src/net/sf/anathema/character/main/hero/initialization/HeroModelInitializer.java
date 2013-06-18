@@ -54,7 +54,7 @@ public class HeroModelInitializer {
   private void initializeModelsInOrder(DefaultHero hero, Iterable<HeroModel> modelList) {
     for (HeroModel model : modelList) {
       model.initialize(context, hero);
-      model.initializeListening(context.getChangeAnnouncer());
+      model.initializeListening(hero.getChangeAnnouncer());
       hero.addModel(model);
     }
   }
