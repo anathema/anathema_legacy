@@ -14,7 +14,6 @@ import net.sf.anathema.character.impl.model.charm.CharmConfiguration;
 import net.sf.anathema.character.impl.model.charm.ComboConfiguration;
 import net.sf.anathema.character.impl.model.context.CharacterModelContext;
 import net.sf.anathema.character.impl.model.statistics.ExtendedConfiguration;
-import net.sf.anathema.character.impl.model.traits.listening.CharacterTraitListening;
 import net.sf.anathema.character.main.hero.DefaultHero;
 import net.sf.anathema.character.main.hero.HeroModel;
 import net.sf.anathema.character.main.hero.ModelInitializationContext;
@@ -62,7 +61,6 @@ public class ExaltedCharacter implements ICharacter {
     addAdditionalModels(generics, template.getAdditionalTemplates());
 
     charms.initListening();
-    new CharacterTraitListening(this, context.getCharacterListening()).initListening();
     getCharacterContext().getCharacterListening().addChangeListener(management.getStatisticsChangeListener());
     charms.addCharmLearnListener(new CharacterChangeCharmListener(context.getCharacterListening()));
     extendedConfiguration.addAdditionalModelChangeListener(new IChangeListener() {

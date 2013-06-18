@@ -1,5 +1,6 @@
 package net.sf.anathema.hero.attributes.model;
 
+import net.sf.anathema.character.change.ChangeAnnouncer;
 import net.sf.anathema.character.generic.template.HeroTemplate;
 import net.sf.anathema.character.generic.template.ITraitTemplateFactory;
 import net.sf.anathema.character.generic.traits.groups.IIdentifiedCasteTraitTypeGroup;
@@ -12,14 +13,15 @@ import net.sf.anathema.character.library.trait.Trait;
 import net.sf.anathema.character.library.trait.TraitGroup;
 import net.sf.anathema.character.library.trait.favorable.GrumpyIncrementChecker;
 import net.sf.anathema.character.library.trait.favorable.IncrementChecker;
-import net.sf.anathema.character.main.model.attributes.AttributeModel;
 import net.sf.anathema.character.main.hero.Hero;
 import net.sf.anathema.character.main.hero.HeroModel;
 import net.sf.anathema.character.main.hero.InitializationContext;
+import net.sf.anathema.character.main.model.attributes.AttributeModel;
 import net.sf.anathema.character.main.model.traits.DefaultTraitMap;
 import net.sf.anathema.character.main.model.traits.MappedTraitGroup;
 import net.sf.anathema.character.main.model.traits.TraitModel;
 import net.sf.anathema.character.main.model.traits.TraitModelFetcher;
+import net.sf.anathema.hero.traits.model.event.TraitValueChangedListener;
 import net.sf.anathema.lib.util.Identifier;
 
 public class AttributeModelImpl extends DefaultTraitMap implements AttributeModel, HeroModel {
@@ -41,6 +43,13 @@ public class AttributeModelImpl extends DefaultTraitMap implements AttributeMode
     addAttributes();
     TraitModel traitModel = TraitModelFetcher.fetch(hero);
     traitModel.addTraits(getAll());
+  }
+
+  @Override
+  public void initializeListening(ChangeAnnouncer announcer) {
+    for (Trait attribute : getAll()) {
+      attribute.addCurrentValueListener(new TraitValueChangedListener(announcer, attribute));
+    }
   }
 
   private FavorableTraitFactory createFactory() {

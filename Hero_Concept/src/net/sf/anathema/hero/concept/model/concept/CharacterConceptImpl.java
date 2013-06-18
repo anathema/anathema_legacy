@@ -26,7 +26,11 @@ public class CharacterConceptImpl implements CharacterConcept, HeroModel {
 
   @Override
   public void initialize(InitializationContext context, Hero hero) {
-    ChangeAnnouncer announcer = context.getChangeAnnouncer();
+    // nothing to do
+  }
+
+  @Override
+  public void initializeListening(ChangeAnnouncer announcer) {
     caste.addChangeListener(new AnnounceChangeListener(announcer, ConceptChange.FLAVOR_CASTE));
     age.addChangeListener(new AnnounceChangeListener(announcer, ConceptChange.FLAVOR_AGE));
   }

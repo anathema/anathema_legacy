@@ -1,5 +1,6 @@
 package net.sf.anathema.hero.othertraits.model.traits;
 
+import net.sf.anathema.character.change.ChangeAnnouncer;
 import net.sf.anathema.character.generic.additionalrules.IAdditionalTraitRules;
 import net.sf.anathema.character.generic.framework.additionaltemplate.model.TraitContext;
 import net.sf.anathema.character.generic.template.HeroTemplate;
@@ -12,7 +13,6 @@ import net.sf.anathema.character.impl.model.traits.VirtueTemplateFactory;
 import net.sf.anathema.character.impl.model.traits.WillpowerTemplateFactory;
 import net.sf.anathema.character.impl.model.traits.creation.DefaultTraitFactory;
 import net.sf.anathema.character.impl.model.traits.creation.TypedTraitTemplateFactory;
-import net.sf.anathema.character.impl.model.traits.listening.WillpowerListening;
 import net.sf.anathema.character.library.trait.Trait;
 import net.sf.anathema.character.main.hero.Hero;
 import net.sf.anathema.character.main.hero.HeroModel;
@@ -21,6 +21,7 @@ import net.sf.anathema.character.main.model.othertraits.OtherTraitModel;
 import net.sf.anathema.character.main.model.traits.DefaultTraitMap;
 import net.sf.anathema.character.main.model.traits.TraitModel;
 import net.sf.anathema.character.main.model.traits.TraitModelFetcher;
+import net.sf.anathema.hero.traits.model.event.TraitValueChangedListener;
 import net.sf.anathema.lib.util.Identifier;
 
 public class OtherTraitModelImpl extends DefaultTraitMap implements OtherTraitModel, HeroModel {
@@ -42,6 +43,13 @@ public class OtherTraitModelImpl extends DefaultTraitMap implements OtherTraitMo
     TraitModel traitModel = TraitModelFetcher.fetch(hero);
     getTrait(OtherTraitType.Essence).addCurrentValueListener(new EssenceLimitationListener(traitModel, hero));
     traitModel.addTraits(getAll());
+  }
+
+  @Override
+  public void initializeListening(ChangeAnnouncer announcer) {
+    for (Trait trait : getAll()) {
+      trait.addCurrentValueListener(new TraitValueChangedListener(announcer, trait));
+    }
   }
 
   private void connectWillpowerAndVirtues() {

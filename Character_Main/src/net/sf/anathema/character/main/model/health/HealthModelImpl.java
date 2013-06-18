@@ -1,5 +1,6 @@
 package net.sf.anathema.character.main.model.health;
 
+import net.sf.anathema.character.change.ChangeAnnouncer;
 import net.sf.anathema.character.generic.health.HealthLevelType;
 import net.sf.anathema.character.generic.health.IHealthLevelTypeVisitor;
 import net.sf.anathema.character.generic.template.HeroTemplate;
@@ -44,6 +45,11 @@ public class HealthModelImpl implements HealthModel, HeroModel {
         e.printStackTrace();
       }
     }
+  }
+
+  @Override
+  public void initializeListening(ChangeAnnouncer changeAnnouncer) {
+    // nothing to do
   }
 
   @Override

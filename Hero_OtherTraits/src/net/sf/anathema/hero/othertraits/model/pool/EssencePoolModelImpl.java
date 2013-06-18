@@ -1,6 +1,7 @@
 package net.sf.anathema.hero.othertraits.model.pool;
 
 import com.google.common.base.Preconditions;
+import net.sf.anathema.character.change.ChangeAnnouncer;
 import net.sf.anathema.character.generic.additionalrules.IAdditionalEssencePool;
 import net.sf.anathema.character.generic.additionalrules.IAdditionalRules;
 import net.sf.anathema.character.generic.template.HeroTemplate;
@@ -37,6 +38,11 @@ public class EssencePoolModelImpl implements EssencePoolModel, HeroModel {
     TraitMap traitMap = TraitModelFetcher.fetch(hero);
     poolStrategy = new EssencePoolStrategyImpl(essenceTemplate, context, traitMap, context.getMagicCollection(),
             context.getCharmContext().getCharmConfiguration(), additionalRules);
+  }
+
+  @Override
+  public void initializeListening(ChangeAnnouncer announcer) {
+    // nothing to do
   }
 
   @Override

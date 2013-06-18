@@ -2,6 +2,7 @@ package net.sf.anathema.character.impl.model.context;
 
 import net.sf.anathema.character.generic.framework.additionaltemplate.listening.ICharacterChangeListener;
 import net.sf.anathema.character.generic.framework.additionaltemplate.model.ICharacterListening;
+import net.sf.anathema.character.generic.traits.TraitType;
 import net.sf.anathema.character.impl.model.listening.CharacterListenerMapping;
 import net.sf.anathema.character.library.trait.Trait;
 import org.jmock.example.announcer.Announcer;
@@ -30,5 +31,9 @@ public class CharacterListening implements ICharacterListening {
 
   public void fireExperiencedChanged(boolean isExperienced) {
     changeControl.announce().experiencedChanged(isExperienced);
+  }
+
+  public void fireTraitChanged(TraitType traitType) {
+    changeControl.announce().traitChanged(traitType);
   }
 }

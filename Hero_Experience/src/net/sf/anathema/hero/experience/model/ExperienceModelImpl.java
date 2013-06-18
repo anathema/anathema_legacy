@@ -3,11 +3,11 @@ package net.sf.anathema.hero.experience.model;
 import net.sf.anathema.character.change.AnnounceChangeListener;
 import net.sf.anathema.character.change.ChangeAnnouncer;
 import net.sf.anathema.character.impl.model.advance.ExperiencePointConfiguration;
+import net.sf.anathema.character.main.hero.Hero;
+import net.sf.anathema.character.main.hero.HeroModel;
+import net.sf.anathema.character.main.hero.InitializationContext;
 import net.sf.anathema.character.main.model.experience.ExperienceChange;
 import net.sf.anathema.character.main.model.experience.ExperienceModel;
-import net.sf.anathema.character.main.hero.HeroModel;
-import net.sf.anathema.character.main.hero.Hero;
-import net.sf.anathema.character.main.hero.InitializationContext;
 import net.sf.anathema.character.model.advance.IExperiencePointConfiguration;
 import net.sf.anathema.lib.control.IChangeListener;
 import net.sf.anathema.lib.util.Identifier;
@@ -25,11 +25,16 @@ public class ExperienceModelImpl implements ExperienceModel, HeroModel {
 
   @Override
   public void initialize(InitializationContext context, Hero hero) {
-    ChangeAnnouncer announcer = context.getChangeAnnouncer();
+    // nothing to do
+  }
+
+  @Override
+  public void initializeListening(ChangeAnnouncer announcer) {
     stateAnnouncer.addListener(new AnnounceChangeListener(announcer, ExperienceChange.FLAVOR_EXPERIENCE_STATE));
     experiencePoints.addExperiencePointConfigurationListener(new AnnounceExperiencePointChange(announcer));
   }
 
+  // todo (sandra): redirect to ChangeAnnouncer
   public void addStateChangeListener(IChangeListener listener) {
     stateAnnouncer.addListener(listener);
   }

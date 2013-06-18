@@ -34,7 +34,11 @@ public class HeroDescriptionImpl implements HeroDescription, HeroModel {
 
   @Override
   public void initialize(InitializationContext context, Hero hero) {
-    ChangeAnnouncer announcer = context.getChangeAnnouncer();
+    // nothing to do
+  }
+
+  @Override
+  public void initializeListening(ChangeAnnouncer announcer) {
     addOverallChangeListener(new AnnounceChangeValueListener(announcer));
   }
 

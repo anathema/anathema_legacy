@@ -1,5 +1,6 @@
 package net.sf.anathema.character.main.testing.dummy.trait;
 
+import net.sf.anathema.character.change.ChangeAnnouncer;
 import net.sf.anathema.character.library.trait.Trait;
 import net.sf.anathema.character.main.hero.Hero;
 import net.sf.anathema.character.main.hero.HeroModel;
@@ -24,6 +25,11 @@ public class DummyTraitModel extends DefaultTraitMap implements TraitModel, Hero
 
   @Override
   public void initialize(InitializationContext context, Hero hero) {
+    // nothing to do
+  }
+
+  @Override
+  public void initializeListening(ChangeAnnouncer announcer) {
     // nothing to do
   }
 }

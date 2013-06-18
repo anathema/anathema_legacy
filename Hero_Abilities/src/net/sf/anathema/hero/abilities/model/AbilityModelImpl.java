@@ -1,5 +1,6 @@
 package net.sf.anathema.hero.abilities.model;
 
+import net.sf.anathema.character.change.ChangeAnnouncer;
 import net.sf.anathema.character.generic.additionalrules.IAdditionalTraitRules;
 import net.sf.anathema.character.generic.caste.ICasteCollection;
 import net.sf.anathema.character.generic.template.HeroTemplate;
@@ -15,15 +16,18 @@ import net.sf.anathema.character.library.trait.Trait;
 import net.sf.anathema.character.library.trait.TraitGroup;
 import net.sf.anathema.character.library.trait.favorable.IncrementChecker;
 import net.sf.anathema.character.library.trait.specialties.SpecialtiesConfiguration;
-import net.sf.anathema.character.main.model.abilities.AbilityModel;
 import net.sf.anathema.character.main.hero.Hero;
 import net.sf.anathema.character.main.hero.HeroModel;
 import net.sf.anathema.character.main.hero.InitializationContext;
+import net.sf.anathema.character.main.model.abilities.AbilityModel;
 import net.sf.anathema.character.main.model.traits.DefaultTraitMap;
 import net.sf.anathema.character.main.model.traits.MappedTraitGroup;
 import net.sf.anathema.character.main.model.traits.TraitMap;
 import net.sf.anathema.character.main.model.traits.TraitModel;
 import net.sf.anathema.character.main.model.traits.TraitModelFetcher;
+import net.sf.anathema.hero.traits.model.event.FavoredChangedListener;
+import net.sf.anathema.hero.abilities.model.event.SpecialtiesListener;
+import net.sf.anathema.hero.traits.model.event.TraitValueChangedListener;
 import net.sf.anathema.lib.util.Identifier;
 
 import java.util.ArrayList;
@@ -51,6 +55,15 @@ public class AbilityModelImpl extends DefaultTraitMap implements AbilityModel, H
     TraitModel traitModel = TraitModelFetcher.fetch(hero);
     traitModel.addTraits(getAll());
     this.specialtyConfiguration = new SpecialtiesConfiguration(this, abilityTraitGroups, context);
+  }
+
+  @Override
+  public void initializeListening(ChangeAnnouncer changeAnnouncer) {
+    for (Trait ability : getAll()) {
+      specialtyConfiguration.getSpecialtiesContainer(ability.getType()).addSubTraitListener(new SpecialtiesListener(changeAnnouncer));
+      ability.getFavorization().addFavorableStateChangedListener(new FavoredChangedListener(changeAnnouncer));
+      ability.addCurrentValueListener(new TraitValueChangedListener(changeAnnouncer, ability));
+    }
   }
 
   private IncrementChecker createFavoredAbilityIncrementChecker(HeroTemplate template, TraitMap traitMap) {

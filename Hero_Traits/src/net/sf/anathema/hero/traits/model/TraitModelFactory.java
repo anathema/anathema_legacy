@@ -1,4 +1,4 @@
-package net.sf.anathema.hero.traits;
+package net.sf.anathema.hero.traits.model;
 
 import net.sf.anathema.character.main.model.experience.ExperienceModel;
 import net.sf.anathema.character.main.hero.CharacterModelAutoCollector;

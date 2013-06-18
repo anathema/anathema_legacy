@@ -11,7 +11,7 @@ import net.sf.anathema.character.main.testing.dummy.DummyCharacterModelContext;
 import net.sf.anathema.character.main.testing.dummy.DummyHero;
 import net.sf.anathema.character.main.testing.dummy.template.DummyHeroTemplate;
 import net.sf.anathema.character.main.testing.dummy.trait.DummyTrait;
-import net.sf.anathema.hero.traits.TraitModelImpl;
+import net.sf.anathema.hero.traits.model.TraitModelImpl;
 import net.sf.anathema.character.model.ICharacter;
 import net.sf.anathema.hero.othertraits.model.pool.EssencePoolModelImpl;
 import org.junit.Before;

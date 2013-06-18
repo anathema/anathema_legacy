@@ -1,5 +1,6 @@
-package net.sf.anathema.hero.traits;
+package net.sf.anathema.hero.traits.model;
 
+import net.sf.anathema.character.change.ChangeAnnouncer;
 import net.sf.anathema.character.library.trait.Trait;
 import net.sf.anathema.character.main.hero.HeroModel;
 import net.sf.anathema.character.main.hero.Hero;
@@ -22,7 +23,12 @@ public class TraitModelImpl extends DefaultTraitMap implements TraitMap, TraitMo
 
   @Override
   public void initialize(InitializationContext context, Hero hero) {
-    //nothing to do
+    // nothing to do
+  }
+
+  @Override
+  public void initializeListening(ChangeAnnouncer announcer) {
+    // nothing to do
   }
 
   @Override
