@@ -1,21 +1,22 @@
 package net.sf.anathema.character.impl.model.charm;
 
-import net.sf.anathema.character.generic.framework.additionaltemplate.model.ICharacterModelContext;
 import net.sf.anathema.character.generic.magic.ICharm;
 import net.sf.anathema.character.generic.magic.charms.special.IPrerequisiteModifyingCharm;
 import net.sf.anathema.character.generic.magic.charms.special.TraitRequirementChecker;
 import net.sf.anathema.character.generic.traits.GenericTrait;
+import net.sf.anathema.character.library.trait.Trait;
+import net.sf.anathema.character.main.model.traits.TraitMap;
 import net.sf.anathema.character.model.charm.SpecialCharmLearnArbitrator;
 
 public class CharmTraitRequirementChecker implements TraitRequirementChecker {
   private final PrerequisiteModifyingCharms prerequisiteModifyingCharms;
-  private final ICharacterModelContext context;
+  private TraitMap traitMap;
   private final SpecialCharmLearnArbitrator learnArbitrator;
 
-  public CharmTraitRequirementChecker(PrerequisiteModifyingCharms prerequisiteModifyingCharms, ICharacterModelContext context,
+  public CharmTraitRequirementChecker(PrerequisiteModifyingCharms prerequisiteModifyingCharms, TraitMap traitMap,
                                       SpecialCharmLearnArbitrator learnArbitrator) {
     this.prerequisiteModifyingCharms = prerequisiteModifyingCharms;
-    this.context = context;
+    this.traitMap = traitMap;
     this.learnArbitrator = learnArbitrator;
   }
 
@@ -34,7 +35,7 @@ public class CharmTraitRequirementChecker implements TraitRequirementChecker {
 
   @Override
   public boolean isMinimumSatisfied(ICharm charm, GenericTrait prerequisite) {
-    GenericTrait actualTrait = context.getTraitCollection().getTrait(prerequisite.getType());
+    Trait actualTrait = traitMap.getTrait(prerequisite.getType());
     if (actualTrait == null) {
       return false;
     }

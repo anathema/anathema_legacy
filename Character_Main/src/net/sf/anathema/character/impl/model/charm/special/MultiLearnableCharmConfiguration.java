@@ -15,6 +15,7 @@ import net.sf.anathema.character.library.trait.DefaultTraitType;
 import net.sf.anathema.character.library.trait.LimitedTrait;
 import net.sf.anathema.character.library.trait.Trait;
 import net.sf.anathema.character.library.trait.favorable.IncrementChecker;
+import net.sf.anathema.character.main.model.traits.TraitMap;
 import net.sf.anathema.character.model.charm.ICharmConfiguration;
 import net.sf.anathema.character.model.charm.special.IMultiLearnableCharmConfiguration;
 import net.sf.anathema.lib.control.IIntValueChangedListener;
@@ -28,18 +29,21 @@ public class MultiLearnableCharmConfiguration implements IMultiLearnableCharmCon
   private ICharmConfiguration config;
   private ICharm charm;
   private IMultiLearnableCharm specialCharm;
+  private TraitMap traitMap;
   private ICharacterModelContext context;
   private ICharmLearnableArbitrator arbitrator;
 
-  public MultiLearnableCharmConfiguration(ICharacterModelContext context, ICharmConfiguration config, ICharm charm, IMultiLearnableCharm specialCharm,
-                                          ICharmLearnableArbitrator arbitrator) {
+  public MultiLearnableCharmConfiguration(TraitMap traitMap, ICharacterModelContext context, ICharmConfiguration config, ICharm charm,
+                                          IMultiLearnableCharm specialCharm, ICharmLearnableArbitrator arbitrator) {
+    this.traitMap = traitMap;
     this.context = context;
     this.config = config;
     this.charm = charm;
     this.specialCharm = specialCharm;
     this.arbitrator = arbitrator;
-    this.trait = new LimitedTrait(new DefaultTraitType(charm.getId()), SimpleTraitTemplate.createStaticLimitedTemplate(
-            0, specialCharm.getAbsoluteLearnLimit()), new MultiLearnableIncrementChecker(), context.getTraitContext());
+    this.trait = new LimitedTrait(new DefaultTraitType(charm.getId()),
+            SimpleTraitTemplate.createStaticLimitedTemplate(0, specialCharm.getAbsoluteLearnLimit()), new MultiLearnableIncrementChecker(),
+            context.getTraitContext());
     this.trait.addCurrentValueListener(new IIntValueChangedListener() {
       @Override
       public void valueChanged(int newValue) {
@@ -126,8 +130,8 @@ public class MultiLearnableCharmConfiguration implements IMultiLearnableCharmCon
   }
 
   private LearnRangeContext createLearnRangeContext() {
-    CharmTraitRequirementChecker requirementChecker =
-            new CharmTraitRequirementChecker(new PrerequisiteModifyingCharms(config.getSpecialCharms()), context, config);
+    PrerequisiteModifyingCharms modifyingCharms = new PrerequisiteModifyingCharms(config.getSpecialCharms());
+    CharmTraitRequirementChecker requirementChecker = new CharmTraitRequirementChecker(modifyingCharms, traitMap, config);
     return new LearnRangeContext(context.getTraitCollection(), requirementChecker, charm);
   }
 

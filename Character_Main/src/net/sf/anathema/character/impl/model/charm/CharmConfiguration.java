@@ -32,6 +32,8 @@ import net.sf.anathema.character.main.model.essencepool.EssencePoolModelFetcher;
 import net.sf.anathema.character.main.model.experience.ExperienceModel;
 import net.sf.anathema.character.main.model.experience.ExperienceModelFetcher;
 import net.sf.anathema.character.main.model.health.HealthModelFetcher;
+import net.sf.anathema.character.main.model.traits.TraitModel;
+import net.sf.anathema.character.main.model.traits.TraitModelFetcher;
 import net.sf.anathema.character.model.charm.CharmLearnAdapter;
 import net.sf.anathema.character.model.charm.ICharmConfiguration;
 import net.sf.anathema.character.model.charm.ICharmLearnListener;
@@ -74,6 +76,7 @@ public class CharmConfiguration implements ICharmConfiguration {
   private final Announcer<IChangeListener> control = Announcer.to(IChangeListener.class);
   private final ICharmProvider provider;
   private final ExperienceModel experience;
+  private final TraitModel traits;
   private List<ICharmFilter> filterSet = new ArrayList<>();
   private PrerequisiteModifyingCharms prerequisiteModifyingCharms;
   private MartialArtsOptions martialArtsOptions;
@@ -84,6 +87,7 @@ public class CharmConfiguration implements ICharmConfiguration {
 
   public CharmConfiguration(Hero hero, InitializationContext context, ICharacterModelContext characterContext) {
     this.experience = ExperienceModelFetcher.fetch(hero);
+    this.traits = TraitModelFetcher.fetch(hero);
     this.experience.addStateChangeListener(new IChangeListener() {
       @Override
       public void changeOccurred() {
@@ -416,7 +420,7 @@ public class CharmConfiguration implements ICharmConfiguration {
         return false;
       }
     }
-    if (!(new CharmTraitRequirementChecker(getPrerequisiteModifyingCharms(), characterContext, this).areTraitMinimumsSatisfied(charm))) {
+    if (!(new CharmTraitRequirementChecker(getPrerequisiteModifyingCharms(), traits, this).areTraitMinimumsSatisfied(charm))) {
       return false;
     }
     for (ICharm parentCharm : charm.getLearnPrerequisitesCharms(this)) {

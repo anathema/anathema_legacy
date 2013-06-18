@@ -16,12 +16,14 @@ import net.sf.anathema.character.generic.magic.charms.special.ITraitCapModifying
 import net.sf.anathema.character.generic.magic.charms.special.IUpgradableCharm;
 import net.sf.anathema.character.impl.model.charm.ISpecialCharmManager;
 import net.sf.anathema.character.main.hero.Hero;
+import net.sf.anathema.character.main.model.health.HealthModel;
+import net.sf.anathema.character.main.model.health.IPainToleranceProvider;
+import net.sf.anathema.character.main.model.traits.TraitMap;
+import net.sf.anathema.character.main.model.traits.TraitModelFetcher;
 import net.sf.anathema.character.model.charm.CharmLearnAdapter;
 import net.sf.anathema.character.model.charm.ICharmConfiguration;
 import net.sf.anathema.character.model.charm.IExtendedCharmLearnableArbitrator;
 import net.sf.anathema.character.model.charm.ILearningCharmGroup;
-import net.sf.anathema.character.main.model.health.HealthModel;
-import net.sf.anathema.character.main.model.health.IPainToleranceProvider;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -108,7 +110,8 @@ public class SpecialCharmManager implements ISpecialCharmManager {
   }
 
   private void registerMultiLearnableCharm(IMultiLearnableCharm visitedCharm, ICharm charm, ILearningCharmGroup group) {
-    MultiLearnableCharmConfiguration configuration = new MultiLearnableCharmConfiguration(context, config, charm, visitedCharm, arbitrator);
+    TraitMap traitMap = TraitModelFetcher.fetch(hero);
+    MultiLearnableCharmConfiguration configuration = new MultiLearnableCharmConfiguration(traitMap, context, config, charm, visitedCharm, arbitrator);
     addSpecialCharmConfiguration(charm, group, configuration, true, true);
   }
 
