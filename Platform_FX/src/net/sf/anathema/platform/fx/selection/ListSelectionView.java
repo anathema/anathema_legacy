@@ -43,6 +43,7 @@ public class ListSelectionView<T> implements FxObjectSelectionView<T> {
       public void run() {
         list.setCellFactory(new ConfigurableListCellFactory<>(ui));
         list.getSelectionModel().setSelectionMode(SelectionMode.SINGLE);
+        list.getStylesheets().add("skin/anathema/selectionlist.css");
         list.getSelectionModel().selectedItemProperty().addListener(new ChangeListener<T>() {
           @Override
           public void changed(ObservableValue<? extends T> observableValue, T v, T newValue) {
