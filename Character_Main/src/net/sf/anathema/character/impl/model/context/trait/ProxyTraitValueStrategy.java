@@ -1,15 +1,15 @@
 package net.sf.anathema.character.impl.model.context.trait;
 
-import net.sf.anathema.character.generic.framework.additionaltemplate.model.ITraitValueStrategy;
+import net.sf.anathema.character.generic.framework.additionaltemplate.model.TraitValueStrategy;
 import net.sf.anathema.character.library.trait.Trait;
 import net.sf.anathema.lib.control.IIntValueChangedListener;
 import org.jmock.example.announcer.Announcer;
 
-public class ProxyTraitValueStrategy implements ITraitValueStrategy {
+public class ProxyTraitValueStrategy implements TraitValueStrategy {
 
-  private ITraitValueStrategy strategy;
+  private TraitValueStrategy strategy;
 
-  public ProxyTraitValueStrategy(ITraitValueStrategy strategy) {
+  public ProxyTraitValueStrategy(TraitValueStrategy strategy) {
     this.strategy = strategy;
   }
 
@@ -33,7 +33,7 @@ public class ProxyTraitValueStrategy implements ITraitValueStrategy {
     strategy.notifyOnCreationValueChange(value, currentValueControl);
   }
 
-  public void setStrategy(ITraitValueStrategy strategy) {
+  public void setStrategy(TraitValueStrategy strategy) {
     this.strategy = strategy;
   }
 

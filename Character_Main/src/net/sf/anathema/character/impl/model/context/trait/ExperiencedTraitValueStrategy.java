@@ -1,12 +1,12 @@
 package net.sf.anathema.character.impl.model.context.trait;
 
-import net.sf.anathema.character.generic.framework.additionaltemplate.model.ITraitValueStrategy;
+import net.sf.anathema.character.generic.framework.additionaltemplate.model.TraitValueStrategy;
 import net.sf.anathema.character.library.trait.Trait;
 import net.sf.anathema.character.library.trait.rules.ITraitRules;
 import net.sf.anathema.lib.control.IIntValueChangedListener;
 import org.jmock.example.announcer.Announcer;
 
-public class ExperiencedTraitValueStrategy implements ITraitValueStrategy {
+public class ExperiencedTraitValueStrategy implements TraitValueStrategy {
 
   @Override
   public int getMinimalValue(Trait trait) {

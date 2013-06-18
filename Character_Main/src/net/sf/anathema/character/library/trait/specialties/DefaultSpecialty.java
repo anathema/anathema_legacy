@@ -17,8 +17,8 @@ public class DefaultSpecialty extends DefaultTrait implements Specialty {
   private final ITraitReference reference;
 
   public DefaultSpecialty(AbstractSubTraitContainer container, ITraitReference reference, String specialtyName, TraitContext context) {
-    super(new TraitRules(new DefaultTraitType("Specialty"), SimpleTraitTemplate.createStaticLimitedTemplate(0, 3), context.getLimitationContext()), context,
-            new FriendlyValueChangeChecker());
+    super(new TraitRules(new DefaultTraitType("Specialty"), SimpleTraitTemplate.createStaticLimitedTemplate(0, 3), context.getLimitationContext()),
+            new FriendlyValueChangeChecker(), context.getTraitValueStrategy());
     this.container = container;
     this.reference = reference;
     this.subTraitName = specialtyName;

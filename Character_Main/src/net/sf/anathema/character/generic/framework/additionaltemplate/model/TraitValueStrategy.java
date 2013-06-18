@@ -4,7 +4,7 @@ import net.sf.anathema.character.library.trait.Trait;
 import net.sf.anathema.lib.control.IIntValueChangedListener;
 import org.jmock.example.announcer.Announcer;
 
-public interface ITraitValueStrategy {
+public interface TraitValueStrategy {
 
   int getMinimalValue(Trait trait);
 

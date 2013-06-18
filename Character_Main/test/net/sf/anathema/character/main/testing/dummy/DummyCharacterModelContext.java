@@ -9,7 +9,7 @@ import net.sf.anathema.character.generic.character.IMagicCollection;
 import net.sf.anathema.character.generic.framework.additionaltemplate.model.ICharacterListening;
 import net.sf.anathema.character.generic.framework.additionaltemplate.model.ICharacterModelContext;
 import net.sf.anathema.character.generic.framework.additionaltemplate.model.IGenericSpecialtyContext;
-import net.sf.anathema.character.generic.framework.additionaltemplate.model.ITraitValueStrategy;
+import net.sf.anathema.character.generic.framework.additionaltemplate.model.TraitValueStrategy;
 import net.sf.anathema.character.generic.framework.additionaltemplate.model.TraitContext;
 import net.sf.anathema.character.generic.impl.template.magic.ICharmProvider;
 import net.sf.anathema.character.generic.template.ITemplateRegistry;
@@ -24,13 +24,13 @@ import java.util.List;
 
 public class DummyCharacterModelContext implements ICharacterModelContext, InitializationContext {
 
-  private final ITraitValueStrategy valueStrategy;
+  private final TraitValueStrategy valueStrategy;
   private DummyGenericCharacter character;
   private DummyHero dummyHero = new DummyHero();
   private TraitContext traitContext = new TraitContext() {
 
     @Override
-    public ITraitValueStrategy getTraitValueStrategy() {
+    public TraitValueStrategy getTraitValueStrategy() {
       return valueStrategy;
     }
 
@@ -49,7 +49,7 @@ public class DummyCharacterModelContext implements ICharacterModelContext, Initi
     return character.getAdditionalModel(id);
   }
 
-  public DummyCharacterModelContext(final ITraitValueStrategy valueStrategy) {
+  public DummyCharacterModelContext(final TraitValueStrategy valueStrategy) {
     this.valueStrategy = valueStrategy;
     this.character = new DummyGenericCharacter(dummyHero.getTemplate());
   }

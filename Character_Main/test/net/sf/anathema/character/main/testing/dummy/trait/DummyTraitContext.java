@@ -4,7 +4,7 @@ import net.sf.anathema.character.generic.caste.ICasteType;
 import net.sf.anathema.character.generic.character.IGenericTraitCollection;
 import net.sf.anathema.character.generic.character.ILimitationContext;
 import net.sf.anathema.character.generic.framework.additionaltemplate.model.TraitContext;
-import net.sf.anathema.character.generic.framework.additionaltemplate.model.ITraitValueStrategy;
+import net.sf.anathema.character.generic.framework.additionaltemplate.model.TraitValueStrategy;
 import net.sf.anathema.character.generic.impl.traits.limitation.StaticTraitLimitation;
 import net.sf.anathema.character.generic.template.ITraitLimitation;
 import net.sf.anathema.character.impl.model.context.trait.CreationTraitValueStrategy;
@@ -41,7 +41,7 @@ public class DummyTraitContext implements TraitContext {
     }
   }
 
-  private ITraitValueStrategy traitValueStrategy = new CreationTraitValueStrategy();
+  private TraitValueStrategy traitValueStrategy = new CreationTraitValueStrategy();
   private final TraitMap traitCollection;
   private final ILimitationContext limitationContext = new DummyLimitationContext();
 
@@ -50,7 +50,7 @@ public class DummyTraitContext implements TraitContext {
   }
 
   @Override
-  public ITraitValueStrategy getTraitValueStrategy() {
+  public TraitValueStrategy getTraitValueStrategy() {
     return traitValueStrategy;
   }
 

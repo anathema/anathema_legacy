@@ -39,6 +39,6 @@ public class DefaultTraitFactory {
     ILimitationContext limitationContext = traitContext.getLimitationContext();
     IValueChangeChecker checker = new AdditionRulesTraitValueChangeChecker(traitType, limitationContext, additionalRules);
     TraitRules rules = new TraitRules(traitType, traitTemplate, limitationContext);
-    return new DefaultTrait(rules, traitContext, checker);
+    return new DefaultTrait(rules, checker, traitContext.getTraitValueStrategy());
   }
 }

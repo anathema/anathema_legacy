@@ -1,7 +1,7 @@
 package net.sf.anathema.character.main.magic;
 
 import net.sf.anathema.character.generic.caste.ICasteType;
-import net.sf.anathema.character.generic.framework.additionaltemplate.model.ITraitValueStrategy;
+import net.sf.anathema.character.generic.framework.additionaltemplate.model.TraitValueStrategy;
 import net.sf.anathema.character.generic.framework.additionaltemplate.model.TraitContext;
 import net.sf.anathema.character.generic.health.HealthLevelType;
 import net.sf.anathema.character.generic.impl.magic.charm.special.OxBodyTechniqueCharm;
@@ -45,7 +45,7 @@ public class OxBodyTechniqueConfigurationTest {
   @SuppressWarnings("serial")
   @Before
   public void setUp() throws Exception {
-    ITraitValueStrategy strategy = new CreationTraitValueStrategy();
+    TraitValueStrategy strategy = new CreationTraitValueStrategy();
     DummyCharacterModelContext modelContext = new BasicCharacterTestCase().createModelContextWithEssence2(strategy);
     ITraitTemplate enduranceTemplate = SimpleTraitTemplate.createEssenceLimitedTemplate(0);
     TraitContext traitContext = modelContext.getTraitContext();

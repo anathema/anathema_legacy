@@ -42,7 +42,7 @@ public class Intimacy implements IIntimacy {
         return !complete && value < currentMaximum;
       }
     };
-    this.trait = new DefaultTrait(traitRules, context, incrementChecker);
+    this.trait = new DefaultTrait(traitRules, incrementChecker, context.getTraitValueStrategy());
   }
 
   @Override

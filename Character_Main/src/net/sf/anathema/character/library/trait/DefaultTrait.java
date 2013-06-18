@@ -6,6 +6,7 @@ import net.sf.anathema.character.generic.caste.ICasteType;
 import net.sf.anathema.character.generic.framework.additionaltemplate.listening.DedicatedCharacterChangeAdapter;
 import net.sf.anathema.character.generic.framework.additionaltemplate.model.ICharacterListening;
 import net.sf.anathema.character.generic.framework.additionaltemplate.model.TraitContext;
+import net.sf.anathema.character.generic.framework.additionaltemplate.model.TraitValueStrategy;
 import net.sf.anathema.character.generic.traits.TraitType;
 import net.sf.anathema.character.library.ITraitFavorization;
 import net.sf.anathema.character.library.trait.favorable.IncrementChecker;
@@ -29,21 +30,21 @@ public class DefaultTrait implements Trait {
   private final ITraitRules traitRules;
   private final Announcer<IIntValueChangedListener> creationPointControl = Announcer.to(IIntValueChangedListener.class);
   private final Announcer<IIntValueChangedListener> currentValueControl = Announcer.to(IIntValueChangedListener.class);
-  private final TraitContext traitContext;
+  private final TraitValueStrategy valueStrategy;
 
   public DefaultTrait(IFavorableTraitRules traitRules, ICasteType[] castes, TraitContext traitContext, IBasicCharacterData basicData,
                       ICharacterListening listening, IValueChangeChecker valueChangeChecker, IncrementChecker favoredIncrementChecker) {
-    this(traitRules, traitContext, valueChangeChecker);
+    this(traitRules, valueChangeChecker, traitContext.getTraitValueStrategy());
     this.traitFavorization = new TraitFavorization(basicData, castes, favoredIncrementChecker, this, traitRules.isRequiredFavored());
     listening.addChangeListener(new ResetCurrentValueOnCasteChange());
     listening.addChangeListener(new UpdateFavoredStateOnCasteChange());
     traitFavorization.updateFavorableStateToCaste();
   }
 
-  public DefaultTrait(ITraitRules traitRules, TraitContext traitContext, IValueChangeChecker checker) {
+  public DefaultTrait(ITraitRules traitRules, IValueChangeChecker checker, TraitValueStrategy valueStrategy) {
     Preconditions.checkNotNull(traitRules);
     this.traitRules = traitRules;
-    this.traitContext = traitContext;
+    this.valueStrategy = valueStrategy;
     this.traitFavorization = new NullTraitFavorization();
     this.checker = checker;
     this.creationValue = traitRules.getStartValue();
@@ -70,7 +71,7 @@ public class DefaultTrait implements Trait {
     }
     this.creationValue = correctedValue;
     creationPointControl.announce().valueChanged(this.creationValue);
-    traitContext.getTraitValueStrategy().notifyOnCreationValueChange(getCurrentValue(), currentValueControl);
+    valueStrategy.notifyOnCreationValueChange(getCurrentValue(), currentValueControl);
   }
 
   @Override
@@ -80,7 +81,7 @@ public class DefaultTrait implements Trait {
     }
     this.creationValue = value;
     creationPointControl.announce().valueChanged(this.creationValue);
-    traitContext.getTraitValueStrategy().notifyOnCreationValueChange(getCurrentValue(), currentValueControl);
+    valueStrategy.notifyOnCreationValueChange(getCurrentValue(), currentValueControl);
   }
 
   @Override
@@ -107,12 +108,12 @@ public class DefaultTrait implements Trait {
 
   @Override
   public int getCurrentValue() {
-    return traitContext.getTraitValueStrategy().getCurrentValue(this);
+    return valueStrategy.getCurrentValue(this);
   }
 
   @Override
   public final int getCalculationValue() {
-    return traitContext.getTraitValueStrategy().getCalculationValue(this);
+    return valueStrategy.getCalculationValue(this);
   }
 
   @Override
@@ -128,7 +129,7 @@ public class DefaultTrait implements Trait {
       if (value == getCurrentValue()) {
         return;
       }
-      traitContext.getTraitValueStrategy().setValue(this, value);
+      valueStrategy.setValue(this, value);
     }
   }
 
@@ -144,7 +145,7 @@ public class DefaultTrait implements Trait {
       return;
     }
     this.experiencedValue = correctedValue;
-    traitContext.getTraitValueStrategy().notifyOnLearnedValueChange(getCurrentValue(), currentValueControl);
+    valueStrategy.notifyOnLearnedValueChange(getCurrentValue(), currentValueControl);
   }
 
   @Override
@@ -153,12 +154,12 @@ public class DefaultTrait implements Trait {
       return;
     }
     this.experiencedValue = value;
-    traitContext.getTraitValueStrategy().notifyOnLearnedValueChange(getCurrentValue(), currentValueControl);
+    valueStrategy.notifyOnLearnedValueChange(getCurrentValue(), currentValueControl);
   }
 
   @Override
   public final void resetCurrentValue() {
-    traitContext.getTraitValueStrategy().resetCurrentValue(this);
+    valueStrategy.resetCurrentValue(this);
   }
 
   @Override
@@ -185,7 +186,7 @@ public class DefaultTrait implements Trait {
 
   @Override
   public final int getMinimalValue() {
-    return traitContext.getTraitValueStrategy().getMinimalValue(this);
+    return valueStrategy.getMinimalValue(this);
   }
 
   @Override

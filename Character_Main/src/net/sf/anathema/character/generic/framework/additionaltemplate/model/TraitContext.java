@@ -4,7 +4,7 @@ import net.sf.anathema.character.generic.character.ILimitationContext;
 
 public interface TraitContext {
 
-  ITraitValueStrategy getTraitValueStrategy();
+  TraitValueStrategy getTraitValueStrategy();
 
   ILimitationContext getLimitationContext();
 }

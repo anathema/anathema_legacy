@@ -11,7 +11,7 @@ public class LimitedTrait extends DefaultTrait {
   private final IncrementChecker incrementChecker;
 
   public LimitedTrait(TraitType type, ITraitTemplate template, IncrementChecker incrementChecker, TraitContext context) {
-    super(new TraitRules(type, template, context.getLimitationContext()), context, new FriendlyValueChangeChecker());
+    super(new TraitRules(type, template, context.getLimitationContext()), new FriendlyValueChangeChecker(), context.getTraitValueStrategy());
     this.incrementChecker = incrementChecker;
   }
 
