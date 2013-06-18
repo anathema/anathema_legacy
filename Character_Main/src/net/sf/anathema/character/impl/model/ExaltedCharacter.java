@@ -19,7 +19,6 @@ import net.sf.anathema.character.main.hero.ModelInitializationContext;
 import net.sf.anathema.character.main.hero.initialization.HeroModelInitializer;
 import net.sf.anathema.character.main.model.description.HeroDescription;
 import net.sf.anathema.character.main.model.description.HeroDescriptionFetcher;
-import net.sf.anathema.character.main.model.health.HealthModelFetcher;
 import net.sf.anathema.character.model.ICharacter;
 import net.sf.anathema.character.model.ISpellConfiguration;
 import net.sf.anathema.character.model.charm.ICharmConfiguration;
@@ -48,8 +47,7 @@ public class ExaltedCharacter implements ICharacter {
     addModels(generics);
 
     // Charm Model
-    this.charms = new CharmConfiguration(hero, template, HealthModelFetcher.fetch(hero), context, initializationContext.getCharacterTypes(),
-            initializationContext.getTemplateRegistry(), initializationContext.getCharmProvider());
+    this.charms = new CharmConfiguration(hero, initializationContext, context);
     charms.addCharmLearnListener(new CharacterChangeCharmListener(context.getCharacterListening()));
 
     // Combo Model
