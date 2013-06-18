@@ -10,7 +10,7 @@ import net.sf.anathema.charmtree.view.ICharmGroupArbitrator;
 import net.sf.anathema.lib.control.IChangeListener;
 import net.sf.anathema.lib.util.Identifier;
 
-public interface ICharmConfiguration extends CharmFilterContainer, IExtendedCharmLearnableArbitrator, ICharmGroupArbitrator, ICharmIdMap,
+public interface CharmModel extends CharmFilterContainer, IExtendedCharmLearnableArbitrator, ICharmGroupArbitrator, ICharmIdMap,
         SpecialCharmLearnArbitrator {
 
   void addLearnableListener(IChangeListener listener);

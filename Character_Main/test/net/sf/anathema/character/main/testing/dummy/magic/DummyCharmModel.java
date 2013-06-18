@@ -6,7 +6,7 @@ import net.sf.anathema.character.generic.magic.charms.ICharmIdMap;
 import net.sf.anathema.character.generic.magic.charms.special.ISpecialCharm;
 import net.sf.anathema.character.generic.magic.charms.special.ISpecialCharmConfiguration;
 import net.sf.anathema.character.generic.type.ICharacterType;
-import net.sf.anathema.character.model.charm.ICharmConfiguration;
+import net.sf.anathema.character.model.charm.CharmModel;
 import net.sf.anathema.character.model.charm.ICharmLearnListener;
 import net.sf.anathema.character.model.charm.ILearningCharmGroup;
 import net.sf.anathema.charmtree.filters.ICharmFilter;
@@ -16,7 +16,7 @@ import net.sf.anathema.lib.util.Identifier;
 
 import java.util.List;
 
-public class DummyCharmConfiguration implements ICharmConfiguration {
+public class DummyCharmModel implements CharmModel {
 
   private ICharm[] charms = new ICharm[0];
 

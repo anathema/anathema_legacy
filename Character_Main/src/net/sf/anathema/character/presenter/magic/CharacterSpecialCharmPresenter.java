@@ -1,7 +1,7 @@
 package net.sf.anathema.character.presenter.magic;
 
 import net.sf.anathema.character.generic.magic.charms.special.ISpecialCharm;
-import net.sf.anathema.character.model.charm.ICharmConfiguration;
+import net.sf.anathema.character.model.charm.CharmModel;
 import net.sf.anathema.charmtree.presenter.SpecialCharmViewPresenter;
 import net.sf.anathema.charmtree.view.CharmGroupInformer;
 
@@ -33,7 +33,7 @@ public class CharacterSpecialCharmPresenter implements SpecialCharmViewPresenter
     list.showViews();
   }
 
-  private ICharmConfiguration getCharmConfiguration() {
+  private CharmModel getCharmConfiguration() {
     return charmModel.getCharmConfiguration();
   }
 }

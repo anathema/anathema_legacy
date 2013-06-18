@@ -4,7 +4,7 @@ import net.sf.anathema.character.generic.magic.ICharm;
 import net.sf.anathema.character.impl.model.charm.combo.IComboArbitrator;
 import net.sf.anathema.character.impl.model.charm.combo.SecondEditionComboArbitrator;
 import net.sf.anathema.character.model.charm.CharmLearnAdapter;
-import net.sf.anathema.character.model.charm.ICharmConfiguration;
+import net.sf.anathema.character.model.charm.CharmModel;
 import net.sf.anathema.character.model.charm.ICombo;
 import net.sf.anathema.character.model.charm.IComboConfiguration;
 import net.sf.anathema.character.model.charm.IComboConfigurationListener;
@@ -22,7 +22,7 @@ public class ComboConfiguration implements IComboConfiguration {
   private final Announcer<IComboConfigurationListener> control = Announcer.to(IComboConfigurationListener.class);
   private final ComboIdProvider idProvider = new ComboIdProvider();
 
-  public ComboConfiguration(ICharmConfiguration charmConfiguration) {
+  public ComboConfiguration(CharmModel charmConfiguration) {
     charmConfiguration.addCharmLearnListener(new CharmLearnAdapter() {
       @Override
       public void charmForgotten(ICharm charm) {

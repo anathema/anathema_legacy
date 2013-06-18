@@ -14,7 +14,7 @@ import net.sf.anathema.character.library.trait.DefaultTraitType;
 import net.sf.anathema.character.library.trait.LimitedTrait;
 import net.sf.anathema.character.library.trait.persistence.TraitPersister;
 import net.sf.anathema.character.model.ICharacter;
-import net.sf.anathema.character.model.charm.ICharmConfiguration;
+import net.sf.anathema.character.model.charm.CharmModel;
 import net.sf.anathema.character.model.charm.ICombo;
 import net.sf.anathema.character.model.charm.IComboConfiguration;
 import net.sf.anathema.character.model.charm.ILearningCharmGroup;
@@ -66,13 +66,13 @@ public class CharmConfigurationPersister {
       return;
     }
     Element charmsElement = parent.addElement(TAG_CHARMS);
-    ICharmConfiguration charmConfiguration = character.getCharms();
+    CharmModel charmConfiguration = character.getCharms();
     saveCharms(charmsElement, charmTemplate, charmConfiguration);
     saveCombos(charmsElement, character.getCombos());
     saveFilters(charmsElement, charmConfiguration.getCharmFilters());
   }
 
-  private ICharmConfiguration saveCharms(Element charmsElement, ICharmTemplate charmTemplate, ICharmConfiguration charmConfiguration) {
+  private CharmModel saveCharms(Element charmsElement, ICharmTemplate charmTemplate, CharmModel charmConfiguration) {
     CharmSaver saver = new CharmSaver(charmConfiguration);
     for (Identifier type : charmConfiguration.getCharacterTypes(true)) {
       saver.saveCharms(type, charmsElement);
@@ -88,7 +88,7 @@ public class CharmConfigurationPersister {
     }
   }
 
-  private ISpecialCharmPersister createSpecialCharmPersister(ICharmConfiguration charmConfiguration) {
+  private ISpecialCharmPersister createSpecialCharmPersister(CharmModel charmConfiguration) {
     return new SpecialCharmPersister(charmConfiguration.getSpecialCharms(), charmConfiguration.getCharmIdMap());
   }
 
@@ -118,7 +118,7 @@ public class CharmConfigurationPersister {
       return;
     }
     context = character.getCharacterContext().getTraitContext();
-    ICharmConfiguration charmConfiguration = character.getCharms();
+    CharmModel charmConfiguration = character.getCharms();
     ISpecialCharmPersister specialPersister = createSpecialCharmPersister(charmConfiguration);
     for (Object groupObjectElement : charmsElement.elements(TAG_CHARMGROUP)) {
       Element groupElement = (Element) groupObjectElement;
@@ -128,7 +128,7 @@ public class CharmConfigurationPersister {
     loadFilters(charmsElement, character);
   }
 
-  private void loadCharmFromConfiguration(ICharmConfiguration charmConfiguration, Element groupElement,
+  private void loadCharmFromConfiguration(CharmModel charmConfiguration, Element groupElement,
                                           ISpecialCharmPersister specialPersister) throws PersistenceException {
     String groupName = groupElement.attributeValue(ATTRIB_NAME);
     String groupType = groupElement.attributeValue(ATTRIB_TYPE);
@@ -147,7 +147,7 @@ public class CharmConfigurationPersister {
     }
   }
 
-  private ILearningCharmGroup loadCharmGroup(ICharmConfiguration charmConfiguration, String groupName, String groupType) {
+  private ILearningCharmGroup loadCharmGroup(CharmModel charmConfiguration, String groupName, String groupType) {
     try {
       return charmConfiguration.getGroup(groupType, groupName);
     } catch (IllegalArgumentException e) {
@@ -156,7 +156,7 @@ public class CharmConfigurationPersister {
     }
   }
 
-  private void learnCharm(ICharmConfiguration charmConfiguration, ISpecialCharmPersister specialPersister, ILearningCharmGroup group,
+  private void learnCharm(CharmModel charmConfiguration, ISpecialCharmPersister specialPersister, ILearningCharmGroup group,
                           Element charmElement, String charmId) {
     try {
       ICharm charm = charmConfiguration.getCharmById(charmId);
@@ -175,7 +175,7 @@ public class CharmConfigurationPersister {
     }
   }
 
-  private String parseTrueName(Element element, String name, ICharmConfiguration config, boolean isExperienceLearned) {
+  private String parseTrueName(Element element, String name, CharmModel config, boolean isExperienceLearned) {
     StringBuilder baseCharmName = new StringBuilder();
     String[] components = name.split("\\.");
     if (components.length > 3) {
@@ -247,7 +247,7 @@ public class CharmConfigurationPersister {
   }
 
   private void loadFilters(Element parent, ICharacter character) {
-    ICharmConfiguration configuration = character.getCharms();
+    CharmModel configuration = character.getCharms();
     Element charmFilterNode = parent.element(TAG_CHARMFILTERS);
     if (charmFilterNode != null) {
       for (Object filterNode : charmFilterNode.elements()) {

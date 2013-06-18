@@ -10,7 +10,7 @@ import net.sf.anathema.character.generic.magic.charms.special.ISpecialCharmVisit
 import net.sf.anathema.character.generic.magic.charms.special.ISubeffectCharm;
 import net.sf.anathema.character.generic.magic.charms.special.ITraitCapModifyingCharm;
 import net.sf.anathema.character.generic.magic.charms.special.IUpgradableCharm;
-import net.sf.anathema.character.model.charm.ICharmConfiguration;
+import net.sf.anathema.character.model.charm.CharmModel;
 import net.sf.anathema.character.model.charm.special.IMultiLearnableCharmConfiguration;
 import net.sf.anathema.character.model.charm.special.IMultipleEffectCharmConfiguration;
 import net.sf.anathema.character.model.charm.special.IOxBodyTechniqueConfiguration;
@@ -25,9 +25,9 @@ public class SwingSpecialCharmViewBuilder implements SpecialCharmViewBuilder {
 
   private ISpecialNodeView result;
   private final Resources resources;
-  private final ICharmConfiguration configuration;
+  private final CharmModel configuration;
 
-  public SwingSpecialCharmViewBuilder(Resources resources, ICharmConfiguration configuration) {
+  public SwingSpecialCharmViewBuilder(Resources resources, CharmModel configuration) {
     this.resources = resources;
     this.configuration = configuration;
   }

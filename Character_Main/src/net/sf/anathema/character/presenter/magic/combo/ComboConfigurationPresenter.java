@@ -4,7 +4,7 @@ import com.google.common.base.Strings;
 import net.sf.anathema.character.generic.framework.additionaltemplate.listening.DedicatedCharacterChangeAdapter;
 import net.sf.anathema.character.generic.magic.ICharm;
 import net.sf.anathema.character.model.charm.CharmLearnAdapter;
-import net.sf.anathema.character.model.charm.ICharmConfiguration;
+import net.sf.anathema.character.model.charm.CharmModel;
 import net.sf.anathema.character.model.charm.ICharmLearnListener;
 import net.sf.anathema.character.model.charm.ICombo;
 import net.sf.anathema.character.model.charm.IComboConfiguration;
@@ -32,7 +32,7 @@ import java.util.Map;
 
 public class ComboConfigurationPresenter {
 
-  private final ICharmConfiguration charmConfiguration;
+  private final CharmModel charmConfiguration;
   private final IComboConfiguration comboConfiguration;
   private final Map<ICombo, IComboView> viewsByCombo = new HashMap<>();
   private final Map<ICombo, Tool> toolsByCombo = new HashMap<>();

@@ -1,6 +1,6 @@
 package net.sf.anathema.character.presenter.magic;
 
-import net.sf.anathema.character.model.charm.ICharmConfiguration;
+import net.sf.anathema.character.model.charm.CharmModel;
 import net.sf.anathema.character.model.charm.ICharmLearnListener;
 import net.sf.anathema.character.model.charm.ILearningCharmGroup;
 import net.sf.anathema.charmtree.presenter.CharmInteractionPresenter;
@@ -25,7 +25,7 @@ public class LearnInteractionPresenter implements CharmInteractionPresenter {
 
   @Override
   public void initPresentation() {
-    ICharmConfiguration charms = model.getCharmConfiguration();
+    CharmModel charms = model.getCharmConfiguration();
     view.addCharmInteractionListener(new NodeInteractionListener() {
       @Override
       public void nodeSelected(String charmId) {
@@ -49,7 +49,7 @@ public class LearnInteractionPresenter implements CharmInteractionPresenter {
     });
   }
 
-  private void initCharmLearnListening(ICharmConfiguration charmConfiguration) {
+  private void initCharmLearnListening(CharmModel charmConfiguration) {
     ICharmLearnListener charmLearnListener = new CharmLearnVisualizer(dye);
     for (ILearningCharmGroup group : charmConfiguration.getAllGroups()) {
       group.addCharmLearnListener(charmLearnListener);

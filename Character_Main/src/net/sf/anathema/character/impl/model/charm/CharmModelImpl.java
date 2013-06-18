@@ -35,7 +35,7 @@ import net.sf.anathema.character.main.model.experience.ExperienceModelFetcher;
 import net.sf.anathema.character.main.model.traits.TraitModel;
 import net.sf.anathema.character.main.model.traits.TraitModelFetcher;
 import net.sf.anathema.character.model.charm.CharmLearnAdapter;
-import net.sf.anathema.character.model.charm.ICharmConfiguration;
+import net.sf.anathema.character.model.charm.CharmModel;
 import net.sf.anathema.character.model.charm.ICharmLearnListener;
 import net.sf.anathema.character.model.charm.ILearningCharmGroup;
 import net.sf.anathema.character.model.charm.special.IMultiLearnableCharmConfiguration;
@@ -61,7 +61,7 @@ import static net.sf.anathema.character.generic.impl.magic.MartialArtsUtilities.
 import static net.sf.anathema.character.generic.impl.magic.MartialArtsUtilities.isMartialArtsCharm;
 import static net.sf.anathema.character.generic.magic.charms.MartialArtsLevel.Sidereal;
 
-public class CharmConfiguration implements ICharmConfiguration {
+public class CharmModelImpl implements CharmModel {
 
   private final ProxyCharmLearnStrategy charmLearnStrategy = new ProxyCharmLearnStrategy(new CreationCharmLearnStrategy());
   private final ISpecialCharmManager manager;
@@ -85,7 +85,7 @@ public class CharmConfiguration implements ICharmConfiguration {
   private InitializationContext context;
   private CharmSpecialistImpl specialist;
 
-  public CharmConfiguration(Hero hero, InitializationContext context, ICharacterModelContext characterContext) {
+  public CharmModelImpl(Hero hero, InitializationContext context, ICharacterModelContext characterContext) {
     this.specialist = new CharmSpecialistImpl(hero);
     this.experience = ExperienceModelFetcher.fetch(hero);
     this.traits = TraitModelFetcher.fetch(hero);
@@ -207,7 +207,7 @@ public class CharmConfiguration implements ICharmConfiguration {
       private void learnOtherCharmsFromMerge(ICharm charm) {
         for (ICharm mergedCharm : charm.getMergedCharms()) {
           if (!isLearned(mergedCharm) && isLearnableWithoutPrerequisites(mergedCharm) &&
-              CharmConfiguration.this.getSpecialCharmConfiguration(mergedCharm) == null) {
+              CharmModelImpl.this.getSpecialCharmConfiguration(mergedCharm) == null) {
             getGroup(mergedCharm).learnCharm(mergedCharm, isExperienced());
           }
         }

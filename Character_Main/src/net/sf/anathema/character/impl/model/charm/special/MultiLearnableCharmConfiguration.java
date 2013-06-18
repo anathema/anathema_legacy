@@ -16,7 +16,7 @@ import net.sf.anathema.character.library.trait.DefaultTraitType;
 import net.sf.anathema.character.library.trait.LimitedTrait;
 import net.sf.anathema.character.library.trait.Trait;
 import net.sf.anathema.character.library.trait.favorable.IncrementChecker;
-import net.sf.anathema.character.model.charm.ICharmConfiguration;
+import net.sf.anathema.character.model.charm.CharmModel;
 import net.sf.anathema.character.model.charm.special.IMultiLearnableCharmConfiguration;
 import net.sf.anathema.lib.control.IIntValueChangedListener;
 import net.sf.anathema.lib.data.Range;
@@ -26,14 +26,14 @@ public class MultiLearnableCharmConfiguration implements IMultiLearnableCharmCon
 
   private final Announcer<ISpecialCharmLearnListener> control = Announcer.to(ISpecialCharmLearnListener.class);
   private final Trait trait;
-  private ICharmConfiguration config;
+  private CharmModel config;
   private ICharm charm;
   private IMultiLearnableCharm specialCharm;
   private CharmSpecialist specialist;
   private ICharacterModelContext context;
   private ICharmLearnableArbitrator arbitrator;
 
-  public MultiLearnableCharmConfiguration(CharmSpecialist specialist, ICharacterModelContext context, ICharmConfiguration config, ICharm charm,
+  public MultiLearnableCharmConfiguration(CharmSpecialist specialist, ICharacterModelContext context, CharmModel config, ICharm charm,
                                           IMultiLearnableCharm specialCharm, ICharmLearnableArbitrator arbitrator) {
     this.specialist = specialist;
     this.context = context;

@@ -2,7 +2,7 @@ package net.sf.anathema.character.impl.persistence.charm;
 
 import net.sf.anathema.character.generic.magic.ICharm;
 import net.sf.anathema.character.generic.magic.charms.special.ISpecialCharmConfiguration;
-import net.sf.anathema.character.model.charm.ICharmConfiguration;
+import net.sf.anathema.character.model.charm.CharmModel;
 import net.sf.anathema.character.model.charm.ILearningCharmGroup;
 import net.sf.anathema.lib.util.Identifier;
 import org.dom4j.Element;
@@ -21,15 +21,15 @@ import static net.sf.anathema.character.impl.persistence.ICharacterXmlConstants.
 import static net.sf.anathema.character.impl.persistence.ICharacterXmlConstants.TAG_SPECIAL;
 
 public class CharmSaver {
-  private ICharmConfiguration charmConfiguration;
+  private CharmModel charmConfiguration;
   private final ISpecialCharmPersister specialPersister;
 
-  public CharmSaver(ICharmConfiguration charmConfiguration) {
+  public CharmSaver(CharmModel charmConfiguration) {
     this.charmConfiguration = charmConfiguration;
     this.specialPersister = createSpecialCharmPersister(charmConfiguration);
   }
 
-  private ISpecialCharmPersister createSpecialCharmPersister(ICharmConfiguration charmConfiguration) {
+  private ISpecialCharmPersister createSpecialCharmPersister(CharmModel charmConfiguration) {
     return new SpecialCharmPersister(charmConfiguration.getSpecialCharms(), charmConfiguration.getCharmIdMap());
   }
 
@@ -44,7 +44,7 @@ public class CharmSaver {
   }
 
   private void saveCharmGroup(Element charmsElement, ILearningCharmGroup group, ISpecialCharmPersister specialPersister,
-                              ICharmConfiguration charmConfiguration) {
+                              CharmModel charmConfiguration) {
     Element groupElement = charmsElement.addElement(TAG_CHARMGROUP);
     groupElement.addAttribute(ATTRIB_NAME, group.getId());
     groupElement.addAttribute(ATTRIB_TYPE, group.getCharacterType().getId());
@@ -64,7 +64,7 @@ public class CharmSaver {
     }
   }
 
-  private void saveCharm(ICharmConfiguration charmConfiguration, ISpecialCharmPersister specialPersister, Element groupElement, ICharm charm,
+  private void saveCharm(CharmModel charmConfiguration, ISpecialCharmPersister specialPersister, Element groupElement, ICharm charm,
                          boolean experienceLearned) {
     Element charmElement = groupElement.addElement(TAG_CHARM);
     charmElement.addAttribute(ATTRIB_NAME, charm.getId());

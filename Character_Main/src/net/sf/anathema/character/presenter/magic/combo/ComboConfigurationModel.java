@@ -7,7 +7,7 @@ import net.sf.anathema.character.generic.magic.description.MagicDescriptionProvi
 import net.sf.anathema.character.main.model.concept.CharacterConceptFetcher;
 import net.sf.anathema.character.main.model.experience.ExperienceModelFetcher;
 import net.sf.anathema.character.model.ICharacter;
-import net.sf.anathema.character.model.charm.ICharmConfiguration;
+import net.sf.anathema.character.model.charm.CharmModel;
 import net.sf.anathema.character.model.charm.IComboConfiguration;
 
 public class ComboConfigurationModel {
@@ -25,7 +25,7 @@ public class ComboConfigurationModel {
     return character.getTemplate().getMagicTemplate().getCharmTemplate().isAllowedAlienCharms(caste);
   }
 
-  public ICharmConfiguration getCharmConfiguration() {
+  public CharmModel getCharmConfiguration() {
     return character.getCharms();
   }
 

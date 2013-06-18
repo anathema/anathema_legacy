@@ -7,10 +7,10 @@ import net.sf.anathema.character.main.model.experience.ExperienceModel;
 
 public class CharmOverdrivePool implements OverdrivePool {
 
-  private CharmConfiguration charms;
+  private CharmModelImpl charms;
   private ExperienceModel experience;
 
-  public CharmOverdrivePool(CharmConfiguration charms, ExperienceModel experience) {
+  public CharmOverdrivePool(CharmModelImpl charms, ExperienceModel experience) {
     this.charms = charms;
     this.experience = experience;
   }

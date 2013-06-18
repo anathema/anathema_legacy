@@ -10,7 +10,7 @@ import net.sf.anathema.character.generic.template.additional.IAdditionalTemplate
 import net.sf.anathema.character.generic.template.additional.IGlobalAdditionalTemplate;
 import net.sf.anathema.character.generic.type.ICharacterType;
 import net.sf.anathema.character.impl.generic.GenericCharacter;
-import net.sf.anathema.character.impl.model.charm.CharmConfiguration;
+import net.sf.anathema.character.impl.model.charm.CharmModelImpl;
 import net.sf.anathema.character.impl.model.charm.ComboConfiguration;
 import net.sf.anathema.character.impl.model.context.CharacterModelContext;
 import net.sf.anathema.character.impl.model.statistics.ExtendedConfiguration;
@@ -22,7 +22,7 @@ import net.sf.anathema.character.main.model.description.HeroDescription;
 import net.sf.anathema.character.main.model.description.HeroDescriptionFetcher;
 import net.sf.anathema.character.model.ICharacter;
 import net.sf.anathema.character.model.ISpellConfiguration;
-import net.sf.anathema.character.model.charm.ICharmConfiguration;
+import net.sf.anathema.character.model.charm.CharmModel;
 import net.sf.anathema.character.model.charm.IComboConfiguration;
 import net.sf.anathema.framework.presenter.itemmanagement.PrintNameAdjuster;
 import net.sf.anathema.lib.control.IChangeListener;
@@ -34,7 +34,7 @@ public class ExaltedCharacter implements ICharacter {
 
   private final CharacterChangeManagement management = new CharacterChangeManagement();
   private final CharacterModelContext context;
-  private final CharmConfiguration charms;
+  private final CharmModelImpl charms;
   private final IComboConfiguration combos;
   private final ISpellConfiguration spells;
   private final ExtendedConfiguration extendedConfiguration;
@@ -49,7 +49,7 @@ public class ExaltedCharacter implements ICharacter {
     addModels(generics);
 
     // Charm Model
-    this.charms = new CharmConfiguration(hero, initializationContext, context);
+    this.charms = new CharmModelImpl(hero, initializationContext, context);
     charms.addCharmLearnListener(new CharacterChangeCharmListener(context.getCharacterListening()));
 
     // Combo Model
@@ -124,7 +124,7 @@ public class ExaltedCharacter implements ICharacter {
     management.setClean();
   }
 
-  public ICharmConfiguration getCharms() {
+  public CharmModel getCharms() {
     return charms;
   }
 

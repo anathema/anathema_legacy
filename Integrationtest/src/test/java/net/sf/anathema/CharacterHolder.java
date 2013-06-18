@@ -6,7 +6,7 @@ import net.sf.anathema.character.main.model.concept.CharacterConceptFetcher;
 import net.sf.anathema.character.main.model.traits.TraitMap;
 import net.sf.anathema.character.main.model.traits.TraitModelFetcher;
 import net.sf.anathema.character.model.ICharacter;
-import net.sf.anathema.character.model.charm.ICharmConfiguration;
+import net.sf.anathema.character.model.charm.CharmModel;
 
 public class CharacterHolder {
   private ICharacter character;
@@ -15,7 +15,7 @@ public class CharacterHolder {
     this.character = character;
   }
 
-  public ICharmConfiguration getCharms() {
+  public CharmModel getCharms() {
     return character.getCharms();
   }
 

@@ -1,7 +1,7 @@
 package net.sf.anathema.character.presenter.magic.charm;
 
 import net.sf.anathema.character.generic.magic.charms.GroupCharmTree;
-import net.sf.anathema.character.model.charm.ICharmConfiguration;
+import net.sf.anathema.character.model.charm.CharmModel;
 import net.sf.anathema.character.presenter.magic.CharacterAlienCharmPresenter;
 import net.sf.anathema.character.presenter.magic.CharacterCharmDye;
 import net.sf.anathema.character.presenter.magic.CharacterCharmGroupChangeListener;
@@ -34,7 +34,7 @@ public class CharacterCharmTreePresenter extends AbstractCascadePresenter {
                                      ITreePresentationProperties presentationProperties, CharmDisplayPropertiesMap displayPropertiesMap) {
     super(resources);
     this.model = charmModel;
-    ICharmConfiguration charmConfiguration = model.getCharmConfiguration();
+    CharmModel charmConfiguration = model.getCharmConfiguration();
     CharacterCharmTreeViewProperties viewProperties =
             new CharacterCharmTreeViewProperties(resources, charmConfiguration, model.getMagicDescriptionProvider());
     DefaultNodeProperties nodeProperties = new DefaultNodeProperties(resources, viewProperties, viewProperties);
@@ -55,7 +55,7 @@ public class CharacterCharmTreePresenter extends AbstractCascadePresenter {
     setCharmGroups(new CharacterGroupCollection(model));
   }
 
-  private SpecialCharmViewBuilder createSpecialCharmViewBuilder(Resources resources, ICharmConfiguration charmConfiguration) {
+  private SpecialCharmViewBuilder createSpecialCharmViewBuilder(Resources resources, CharmModel charmConfiguration) {
     return new SwingSpecialCharmViewBuilder(resources, charmConfiguration);
   }
 

@@ -19,10 +19,8 @@ import net.sf.anathema.character.impl.model.charm.ISpecialCharmManager;
 import net.sf.anathema.character.main.hero.Hero;
 import net.sf.anathema.character.main.model.health.HealthModel;
 import net.sf.anathema.character.main.model.health.IPainToleranceProvider;
-import net.sf.anathema.character.main.model.traits.TraitMap;
-import net.sf.anathema.character.main.model.traits.TraitModelFetcher;
 import net.sf.anathema.character.model.charm.CharmLearnAdapter;
-import net.sf.anathema.character.model.charm.ICharmConfiguration;
+import net.sf.anathema.character.model.charm.CharmModel;
 import net.sf.anathema.character.model.charm.IExtendedCharmLearnableArbitrator;
 import net.sf.anathema.character.model.charm.ILearningCharmGroup;
 
@@ -35,13 +33,13 @@ public class SpecialCharmManager implements ISpecialCharmManager {
   private ICharacterModelContext context;
   private CharmSpecialistImpl specialist;
   private Hero hero;
-  private final ICharmConfiguration config;
+  private final CharmModel charmModel;
 
-  public SpecialCharmManager(CharmSpecialistImpl specialist, Hero hero, ICharmConfiguration config, ICharacterModelContext context) {
+  public SpecialCharmManager(CharmSpecialistImpl specialist, Hero hero, CharmModel charmModel, ICharacterModelContext context) {
     this.specialist = specialist;
     this.hero = hero;
-    this.config = config;
-    this.arbitrator = config;
+    this.charmModel = charmModel;
+    this.arbitrator = charmModel;
     this.context = context;
   }
 
@@ -96,7 +94,7 @@ public class SpecialCharmManager implements ISpecialCharmManager {
   }
 
   private void registerTraitCapModifyingCharm(ITraitCapModifyingCharm specialCharm, ICharm charm, ILearningCharmGroup group) {
-    TraitCapModifyingCharmConfiguration configuration = new TraitCapModifyingCharmConfiguration(specialist, config, charm, specialCharm);
+    TraitCapModifyingCharmConfiguration configuration = new TraitCapModifyingCharmConfiguration(specialist, charmModel, charm, specialCharm);
     addSpecialCharmConfiguration(charm, group, configuration, true, true);
   }
 
@@ -111,8 +109,7 @@ public class SpecialCharmManager implements ISpecialCharmManager {
   }
 
   private void registerMultiLearnableCharm(IMultiLearnableCharm visitedCharm, ICharm charm, ILearningCharmGroup group) {
-    TraitMap traitMap = TraitModelFetcher.fetch(hero);
-    MultiLearnableCharmConfiguration configuration = new MultiLearnableCharmConfiguration(specialist, context, config, charm, visitedCharm, arbitrator);
+    MultiLearnableCharmConfiguration configuration = new MultiLearnableCharmConfiguration(specialist, context, charmModel, charm, visitedCharm, arbitrator);
     addSpecialCharmConfiguration(charm, group, configuration, true, true);
   }
 

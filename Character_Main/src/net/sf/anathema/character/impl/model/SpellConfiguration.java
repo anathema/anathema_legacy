@@ -10,7 +10,7 @@ import net.sf.anathema.character.model.IMagicLearnListener;
 import net.sf.anathema.character.model.ISpellConfiguration;
 import net.sf.anathema.character.model.ISpellLearnStrategy;
 import net.sf.anathema.character.model.ISpellMapper;
-import net.sf.anathema.character.model.charm.ICharmConfiguration;
+import net.sf.anathema.character.model.charm.CharmModel;
 import net.sf.anathema.lib.control.IChangeListener;
 import org.jmock.example.announcer.Announcer;
 
@@ -26,12 +26,12 @@ public class SpellConfiguration implements ISpellConfiguration {
   private final Announcer<IChangeListener> changeControl = Announcer.to(IChangeListener.class);
   private final Announcer<IMagicLearnListener> magicLearnControl = Announcer.to(IMagicLearnListener.class);
   private final Map<CircleType, List<ISpell>> spellsByCircle = new HashMap<>();
-  private final ICharmConfiguration charms;
+  private final CharmModel charms;
   private final ISpellLearnStrategy strategy;
   private final HeroTemplate characterTemplate;
   private final ISpellMapper spellMapper;
 
-  public SpellConfiguration(ICharmConfiguration charms, ISpellLearnStrategy strategy, HeroTemplate template, ISpellCache cache) throws
+  public SpellConfiguration(CharmModel charms, ISpellLearnStrategy strategy, HeroTemplate template, ISpellCache cache) throws
           SpellException {
     this.charms = charms;
     this.strategy = strategy;

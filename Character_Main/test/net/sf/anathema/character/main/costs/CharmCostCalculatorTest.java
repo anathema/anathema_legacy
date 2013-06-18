@@ -10,7 +10,7 @@ import net.sf.anathema.character.library.trait.favorable.FavorableState;
 import net.sf.anathema.character.main.testing.dummy.DummyAdditionalBonusPointManagment;
 import net.sf.anathema.character.main.testing.dummy.DummyAdditionalSpellPointManagement;
 import net.sf.anathema.character.main.testing.dummy.DummyGenericCharacter;
-import net.sf.anathema.character.main.testing.dummy.magic.DummyCharmConfiguration;
+import net.sf.anathema.character.main.testing.dummy.magic.DummyCharmModel;
 import net.sf.anathema.character.main.testing.dummy.magic.DummySpell;
 import net.sf.anathema.character.main.testing.dummy.magic.DummySpellConfiguration;
 import net.sf.anathema.character.main.testing.dummy.template.DummyHeroTemplate;
@@ -30,7 +30,7 @@ public class CharmCostCalculatorTest extends AbstractBonusPointTestCase {
 
   @Before
   public void setUp() throws Exception {
-    DummyCharmConfiguration charms = new DummyCharmConfiguration();
+    DummyCharmModel charms = new DummyCharmModel();
     spells = new DummySpellConfiguration();
     traitConfiguration = new DummyCoreTraitConfiguration();
     addAbilityAndEssence(traitConfiguration);

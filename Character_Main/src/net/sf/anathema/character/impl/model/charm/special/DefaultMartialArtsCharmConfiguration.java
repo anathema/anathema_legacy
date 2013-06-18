@@ -4,7 +4,7 @@ import net.sf.anathema.character.generic.character.IMagicCollection;
 import net.sf.anathema.character.generic.magic.ICharm;
 import net.sf.anathema.character.generic.template.magic.MartialArtsCharmConfiguration;
 import net.sf.anathema.character.main.model.experience.ExperienceModel;
-import net.sf.anathema.character.model.charm.ICharmConfiguration;
+import net.sf.anathema.character.model.charm.CharmModel;
 import net.sf.anathema.character.model.charm.ILearningCharmGroup;
 
 import java.util.HashSet;
@@ -16,11 +16,11 @@ import static net.sf.anathema.character.generic.magic.ICharmData.NO_STYLE_ATTRIB
 import static net.sf.anathema.character.generic.magic.charms.MartialArtsLevel.Celestial;
 
 public class DefaultMartialArtsCharmConfiguration implements MartialArtsCharmConfiguration {
-  private final ICharmConfiguration configuration;
+  private final CharmModel configuration;
   private final IMagicCollection collection;
   private ExperienceModel experience;
 
-  public DefaultMartialArtsCharmConfiguration(ICharmConfiguration configuration, IMagicCollection collection, ExperienceModel experience) {
+  public DefaultMartialArtsCharmConfiguration(CharmModel configuration, IMagicCollection collection, ExperienceModel experience) {
     this.configuration = configuration;
     this.collection = collection;
     this.experience = experience;

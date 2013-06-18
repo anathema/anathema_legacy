@@ -40,7 +40,7 @@ import net.sf.anathema.character.main.model.traits.TraitMap;
 import net.sf.anathema.character.main.model.traits.TraitModelFetcher;
 import net.sf.anathema.character.model.ICharacter;
 import net.sf.anathema.character.model.ITypedDescription;
-import net.sf.anathema.character.model.charm.ICharmConfiguration;
+import net.sf.anathema.character.model.charm.CharmModel;
 import net.sf.anathema.character.model.charm.ICombo;
 import net.sf.anathema.character.model.charm.ILearningCharmGroup;
 import net.sf.anathema.character.model.charm.special.IMultiLearnableCharmConfiguration;
@@ -74,7 +74,7 @@ public class GenericCharacter implements IGenericCharacter {
 
   @Override
   public int getLearnCount(String charmName) {
-    ICharmConfiguration charms = character.getCharms();
+    CharmModel charms = character.getCharms();
     try {
       IMultiLearnableCharmConfiguration configuration = (IMultiLearnableCharmConfiguration) charms.getSpecialCharmConfiguration(charmName);
       return configuration.getCurrentLearnCount();
@@ -90,7 +90,7 @@ public class GenericCharacter implements IGenericCharacter {
 
   @Override
   public void setLearnCount(String charmName, int newValue) {
-    ICharmConfiguration charms = character.getCharms();
+    CharmModel charms = character.getCharms();
     IMultiLearnableCharmConfiguration configuration = (IMultiLearnableCharmConfiguration) charms.getSpecialCharmConfiguration(charmName);
     configuration.setCurrentLearnCount(newValue);
   }
@@ -227,7 +227,7 @@ public class GenericCharacter implements IGenericCharacter {
     return getLearnCount(charm, character.getCharms());
   }
 
-  private int getLearnCount(ICharm charm, ICharmConfiguration configuration) {
+  private int getLearnCount(ICharm charm, CharmModel configuration) {
     ISpecialCharmConfiguration specialCharmConfiguration = configuration.getSpecialCharmConfiguration(charm.getId());
     if (specialCharmConfiguration != null) {
       return specialCharmConfiguration.getCurrentLearnCount();

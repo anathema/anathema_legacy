@@ -11,9 +11,9 @@ import net.sf.anathema.character.impl.model.context.trait.ExperiencedTraitValueS
 import net.sf.anathema.character.magic.dummy.DummyCharm;
 import net.sf.anathema.character.main.testing.dummy.DummyCharacterModelContext;
 import net.sf.anathema.character.main.testing.dummy.DummyHero;
-import net.sf.anathema.character.main.testing.dummy.magic.DummyCharmConfiguration;
+import net.sf.anathema.character.main.testing.dummy.magic.DummyCharmModel;
 import net.sf.anathema.character.main.testing.dummy.magic.DummyLearnableArbitrator;
-import net.sf.anathema.character.model.charm.ICharmConfiguration;
+import net.sf.anathema.character.model.charm.CharmModel;
 import org.junit.Test;
 
 import static org.hamcrest.CoreMatchers.is;
@@ -22,7 +22,7 @@ import static org.junit.Assert.assertThat;
 public class MultiLearnableCharmConfigurationTest {
 
   private ICharacterModelContext context = new DummyCharacterModelContext(new ExperiencedTraitValueStrategy());
-  private ICharmConfiguration config = new DummyCharmConfiguration();
+  private CharmModel config = new DummyCharmModel();
   private ICharm charm = new DummyCharm("id");
   private IMultiLearnableCharm specialCharm = new StaticMultiLearnableCharm("id", 5);
   private ICharmLearnableArbitrator arbitrator = new DummyLearnableArbitrator("id");
