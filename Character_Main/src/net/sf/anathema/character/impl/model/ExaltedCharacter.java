@@ -48,38 +48,40 @@ public class ExaltedCharacter implements ICharacter {
     this.initializationContext = new ModelInitializationContext(context, this, heroTemplate);
     addModels(generics);
 
+    // Charm Model
     this.charms = new CharmConfiguration(this, HealthModelFetcher.fetch(hero), context, generics.getCharacterTypes(), generics.getTemplateRegistry(),
             generics.getCharmProvider());
     addCompulsiveCharms(template);
+    charms.addCharmLearnListener(new CharacterChangeCharmListener(context.getCharacterListening()));
+    charms.initListening();
+
+    // Combo Model
     this.combos = new ComboConfiguration(charms);
     combos.addComboConfigurationListener(new CharacterChangeComboListener(context.getCharacterListening()));
+
+    // Spell Model
     this.spells = new SpellConfiguration(charms, context.getSpellLearnStrategy(), initializationContext.getTemplate(),
             generics.getDataSet(ISpellCache.class));
-    for (IGlobalAdditionalTemplate globalTemplate : generics.getGlobalAdditionalTemplateRegistry().getAll()) {
-      addAdditionalModels(generics, globalTemplate);
-    }
-    addAdditionalModels(generics, template.getAdditionalTemplates());
-
-    charms.initListening();
-    getCharacterContext().getCharacterListening().addChangeListener(management.getStatisticsChangeListener());
-    charms.addCharmLearnListener(new CharacterChangeCharmListener(context.getCharacterListening()));
-    extendedConfiguration.addAdditionalModelChangeListener(new IChangeListener() {
-      @Override
-      public void changeOccurred() {
-        context.getCharacterListening().fireCharacterChanged();
-      }
-    });
     this.spells.addChangeListener(new IChangeListener() {
       @Override
       public void changeOccurred() {
         context.getCharacterListening().fireCharacterChanged();
       }
     });
-  }
 
-  private void addModels(ICharacterGenerics generics) {
-    HeroModelInitializer initializer = new HeroModelInitializer(initializationContext, heroTemplate);
-    initializer.addModels(generics, hero);
+    // Additional Models
+    for (IGlobalAdditionalTemplate globalTemplate : generics.getGlobalAdditionalTemplateRegistry().getAll()) {
+      addAdditionalModels(generics, globalTemplate);
+    }
+    addAdditionalModels(generics, template.getAdditionalTemplates());
+    extendedConfiguration.addAdditionalModelChangeListener(new IChangeListener() {
+      @Override
+      public void changeOccurred() {
+        context.getCharacterListening().fireCharacterChanged();
+      }
+    });
+
+    getCharacterContext().getCharacterListening().addChangeListener(management.getStatisticsChangeListener());
   }
 
   private void addCompulsiveCharms(HeroTemplate template) {
@@ -89,6 +91,11 @@ public class ExaltedCharacter implements ICharacter {
       ICharm charm = charmConfiguration.getCharmById(charmId);
       charmConfiguration.getGroup(charm).learnCharm(charm, false);
     }
+  }
+
+  private void addModels(ICharacterGenerics generics) {
+    HeroModelInitializer initializer = new HeroModelInitializer(initializationContext, heroTemplate);
+    initializer.addModels(generics, hero);
   }
 
   private void addAdditionalModels(ICharacterGenerics generics, IAdditionalTemplate... additionalTemplates) {
