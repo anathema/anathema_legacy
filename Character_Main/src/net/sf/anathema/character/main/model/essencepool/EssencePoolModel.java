@@ -9,6 +9,8 @@ public interface EssencePoolModel {
 
   Identifier ID = new SimpleIdentifier("EssencePool");
 
+  void addOverdrivePool(OverdrivePool pool);
+
   String getPersonalPool();
 
   int getPersonalPoolValue();

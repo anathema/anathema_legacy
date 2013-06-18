@@ -1,9 +1,9 @@
 package net.sf.anathema.character.impl.model.charm.special;
 
-import net.sf.anathema.character.generic.IBasicCharacterData;
 import net.sf.anathema.character.generic.character.IMagicCollection;
 import net.sf.anathema.character.generic.magic.ICharm;
 import net.sf.anathema.character.generic.template.magic.MartialArtsCharmConfiguration;
+import net.sf.anathema.character.main.model.experience.ExperienceModel;
 import net.sf.anathema.character.model.charm.ICharmConfiguration;
 import net.sf.anathema.character.model.charm.ILearningCharmGroup;
 
@@ -18,17 +18,17 @@ import static net.sf.anathema.character.generic.magic.charms.MartialArtsLevel.Ce
 public class DefaultMartialArtsCharmConfiguration implements MartialArtsCharmConfiguration {
   private final ICharmConfiguration configuration;
   private final IMagicCollection collection;
-  private final IBasicCharacterData character;
+  private ExperienceModel experience;
 
-  public DefaultMartialArtsCharmConfiguration(ICharmConfiguration configuration, IMagicCollection collection, IBasicCharacterData character) {
+  public DefaultMartialArtsCharmConfiguration(ICharmConfiguration configuration, IMagicCollection collection, ExperienceModel experience) {
     this.configuration = configuration;
     this.collection = collection;
-    this.character = character;
+    this.experience = experience;
   }
 
   @Override
   public ICharm[] getLearnedCharms() {
-    return configuration.getLearnedCharms(character.isExperienced());
+    return configuration.getLearnedCharms(experience.isExperienced());
   }
 
   @Override

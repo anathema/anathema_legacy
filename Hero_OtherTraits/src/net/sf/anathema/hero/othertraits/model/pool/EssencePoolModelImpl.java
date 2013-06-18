@@ -6,10 +6,11 @@ import net.sf.anathema.character.generic.additionalrules.IAdditionalEssencePool;
 import net.sf.anathema.character.generic.additionalrules.IAdditionalRules;
 import net.sf.anathema.character.generic.template.HeroTemplate;
 import net.sf.anathema.character.generic.template.essence.IEssenceTemplate;
-import net.sf.anathema.character.main.model.essencepool.EssencePoolModel;
 import net.sf.anathema.character.main.hero.Hero;
 import net.sf.anathema.character.main.hero.HeroModel;
 import net.sf.anathema.character.main.hero.InitializationContext;
+import net.sf.anathema.character.main.model.essencepool.EssencePoolModel;
+import net.sf.anathema.character.main.model.essencepool.OverdrivePool;
 import net.sf.anathema.character.main.model.traits.TraitMap;
 import net.sf.anathema.character.main.model.traits.TraitModelFetcher;
 import net.sf.anathema.lib.control.IChangeListener;
@@ -18,6 +19,7 @@ import net.sf.anathema.lib.util.Identifier;
 
 public class EssencePoolModelImpl implements EssencePoolModel, HeroModel {
 
+  private final AggregatedOverdrivePool overdrivePool = new AggregatedOverdrivePool();
   private EssencePoolStrategy poolStrategy = null;
   private IAdditionalRules additionalRules;
   private IEssenceTemplate essenceTemplate;
@@ -37,12 +39,17 @@ public class EssencePoolModelImpl implements EssencePoolModel, HeroModel {
     }
     TraitMap traitMap = TraitModelFetcher.fetch(hero);
     poolStrategy = new EssencePoolStrategyImpl(essenceTemplate, context, traitMap, context.getMagicCollection(),
-            context.getCharmContext().getCharmConfiguration(), additionalRules);
+            overdrivePool, additionalRules);
   }
 
   @Override
   public void initializeListening(ChangeAnnouncer announcer) {
     // nothing to do
+  }
+
+  @Override
+  public void addOverdrivePool(OverdrivePool pool) {
+    overdrivePool.addOverdrivePool(pool);
   }
 
   @Override

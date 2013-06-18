@@ -5,16 +5,14 @@ import net.sf.anathema.character.generic.additionalrules.IAdditionalRules;
 import net.sf.anathema.character.generic.character.IMagicCollection;
 import net.sf.anathema.character.generic.framework.additionaltemplate.listening.GlobalCharacterChangeAdapter;
 import net.sf.anathema.character.generic.framework.essence.IEssencePoolModifier;
-import net.sf.anathema.character.generic.magic.ICharm;
-import net.sf.anathema.character.generic.magic.IExtendedCharmData;
 import net.sf.anathema.character.generic.template.essence.FactorizedTrait;
 import net.sf.anathema.character.generic.template.essence.FactorizedTraitSumCalculator;
 import net.sf.anathema.character.generic.template.essence.IEssenceTemplate;
-import net.sf.anathema.character.generic.template.magic.IGenericCharmConfiguration;
 import net.sf.anathema.character.generic.traits.GenericTrait;
 import net.sf.anathema.character.generic.traits.types.OtherTraitType;
 import net.sf.anathema.character.generic.traits.types.VirtueType;
 import net.sf.anathema.character.main.hero.InitializationContext;
+import net.sf.anathema.character.main.model.essencepool.OverdrivePool;
 import net.sf.anathema.character.main.model.traits.TraitMap;
 import net.sf.anathema.lib.control.IChangeListener;
 import net.sf.anathema.lib.util.IdentifiedInteger;
@@ -29,17 +27,17 @@ public class EssencePoolStrategyImpl implements EssencePoolStrategy {
 
   private final Announcer<IChangeListener> control = Announcer.to(IChangeListener.class);
   private final IEssenceTemplate essenceTemplate;
+  private OverdrivePool overdrivePool;
   private final IAdditionalRules additionalRules;
   private final TraitMap traitMap;
   private final IMagicCollection magicCollection;
-  private final IGenericCharmConfiguration charmConfiguration;
   private final InitializationContext context;
 
   public EssencePoolStrategyImpl(IEssenceTemplate essenceTemplate, InitializationContext context, TraitMap traitMap,
-                                 IMagicCollection magicCollection, IGenericCharmConfiguration charmConfiguration, IAdditionalRules additionalRules) {
+                                 IMagicCollection magicCollection, OverdrivePool overdrivePool, IAdditionalRules additionalRules) {
     this.traitMap = traitMap;
     this.magicCollection = magicCollection;
-    this.charmConfiguration = charmConfiguration;
+    this.overdrivePool = overdrivePool;
     this.additionalRules = additionalRules;
     context.getCharacterListening().addChangeListener(new GlobalCharacterChangeAdapter() {
       @Override
@@ -130,26 +128,7 @@ public class EssencePoolStrategyImpl implements EssencePoolStrategy {
 
   @Override
   public int getOverdrivePool() {
-    int overdrive = 0;
-    for (ICharm charm : charmConfiguration.getLearnedCharms()) {
-      if (charm.hasAttribute(IExtendedCharmData.OVERDRIVE_ATTRIBUTE)) {
-        int pool = 10;
-        String value = charm.getAttributeValue(IExtendedCharmData.OVERDRIVE_ATTRIBUTE);
-        if (value != null) {
-          try {
-            pool = Integer.valueOf(value);
-          } catch (NumberFormatException e) {
-            System.err.println("WARNING: could not parse Overdrive value for charm " + charm.getId() + "; ignoring keyword");
-            continue;
-          }
-        }
-        overdrive += pool;
-        if (overdrive >= 25) {
-          return 25;
-        }
-      }
-    }
-    return overdrive;
+    return overdrivePool.getPool();
   }
 
   @Override

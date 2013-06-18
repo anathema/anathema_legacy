@@ -60,7 +60,7 @@ public class DummyCharacterModelContext implements ICharacterModelContext, Initi
     this.valueStrategy = valueStrategy;
     HeroTemplate template = new DummyHeroTemplate();
     this.character = new DummyGenericCharacter(template);
-    this.charmContext = new DummyCharmContext(character, null);
+    this.charmContext = new DummyCharmContext(character);
   }
 
   public DummyGenericCharacter getCharacter() {

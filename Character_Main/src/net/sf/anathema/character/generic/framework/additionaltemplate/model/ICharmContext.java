@@ -4,7 +4,5 @@ import net.sf.anathema.character.generic.template.magic.IGenericCharmConfigurati
 
 public interface ICharmContext {
 
-  ICharmLearnStrategy getCharmLearnStrategy();
-
   IGenericCharmConfiguration getCharmConfiguration();
 }

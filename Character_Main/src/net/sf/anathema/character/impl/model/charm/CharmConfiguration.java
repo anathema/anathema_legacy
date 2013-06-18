@@ -2,9 +2,9 @@ package net.sf.anathema.character.impl.model.charm;
 
 import com.google.common.base.Functions;
 import net.sf.anathema.character.generic.caste.ICasteType;
+import net.sf.anathema.character.generic.character.IMagicCollection;
 import net.sf.anathema.character.generic.framework.additionaltemplate.listening.GlobalCharacterChangeAdapter;
 import net.sf.anathema.character.generic.framework.additionaltemplate.model.ICharacterModelContext;
-import net.sf.anathema.character.generic.framework.additionaltemplate.model.ICharmLearnStrategy;
 import net.sf.anathema.character.generic.impl.magic.MartialArtsUtilities;
 import net.sf.anathema.character.generic.impl.template.magic.ICharmProvider;
 import net.sf.anathema.character.generic.magic.ICharm;
@@ -22,9 +22,14 @@ import net.sf.anathema.character.impl.model.charm.options.MartialArtsOptions;
 import net.sf.anathema.character.impl.model.charm.options.NonMartialArtsOptions;
 import net.sf.anathema.character.impl.model.charm.special.DefaultMartialArtsCharmConfiguration;
 import net.sf.anathema.character.impl.model.charm.special.SpecialCharmManager;
+import net.sf.anathema.character.impl.model.context.magic.CreationCharmLearnStrategy;
+import net.sf.anathema.character.impl.model.context.magic.ExperiencedCharmLearnStrategy;
+import net.sf.anathema.character.impl.model.context.magic.ProxyCharmLearnStrategy;
 import net.sf.anathema.character.main.hero.Hero;
 import net.sf.anathema.character.main.hero.InitializationContext;
 import net.sf.anathema.character.main.model.concept.CharacterConceptFetcher;
+import net.sf.anathema.character.main.model.essencepool.EssencePoolModelFetcher;
+import net.sf.anathema.character.main.model.experience.ExperienceModel;
 import net.sf.anathema.character.main.model.experience.ExperienceModelFetcher;
 import net.sf.anathema.character.main.model.health.HealthModelFetcher;
 import net.sf.anathema.character.model.charm.CharmLearnAdapter;
@@ -56,6 +61,7 @@ import static net.sf.anathema.character.generic.magic.charms.MartialArtsLevel.Si
 
 public class CharmConfiguration implements ICharmConfiguration {
 
+  private final ProxyCharmLearnStrategy charmLearnStrategy = new ProxyCharmLearnStrategy(new CreationCharmLearnStrategy());
   private final ISpecialCharmManager manager;
   private final ILearningCharmGroupContainer learningCharmGroupContainer = new ILearningCharmGroupContainer() {
     @Override
@@ -65,17 +71,31 @@ public class CharmConfiguration implements ICharmConfiguration {
   };
   private final ILearningCharmGroup[] martialArtsGroups;
   private final Map<Identifier, ILearningCharmGroup[]> nonMartialArtsGroupsByType = new HashMap<>();
-  private final ICharacterModelContext characterContext;
   private final Announcer<IChangeListener> control = Announcer.to(IChangeListener.class);
   private final ICharmProvider provider;
+  private final ExperienceModel experience;
   private List<ICharmFilter> filterSet = new ArrayList<>();
   private PrerequisiteModifyingCharms prerequisiteModifyingCharms;
   private MartialArtsOptions martialArtsOptions;
   private NonMartialArtsOptions nonMartialArtsOptions;
   private Hero hero;
+  private final ICharacterModelContext characterContext;
+  private InitializationContext context;
 
   public CharmConfiguration(Hero hero, InitializationContext context, ICharacterModelContext characterContext) {
+    this.experience = ExperienceModelFetcher.fetch(hero);
+    this.experience.addStateChangeListener(new IChangeListener() {
+      @Override
+      public void changeOccurred() {
+        if (experience.isExperienced()) {
+          charmLearnStrategy.setStrategy(new ExperiencedCharmLearnStrategy());
+        } else {
+          charmLearnStrategy.setStrategy(new CreationCharmLearnStrategy());
+        }
+      }
+    });
     this.hero = hero;
+    this.context = context;
     this.martialArtsOptions = new MartialArtsOptions(characterContext, context.getTemplateRegistry());
     this.nonMartialArtsOptions = new NonMartialArtsOptions(characterContext, context.getCharacterTypes(), context.getTemplateRegistry());
     this.manager = new SpecialCharmManager(hero, this, HealthModelFetcher.fetch(hero), characterContext);
@@ -88,7 +108,27 @@ public class CharmConfiguration implements ICharmConfiguration {
     filterSet.add(new CharacterSourceBookFilter(this));
     filterSet.add(new EssenceLevelCharmFilter());
     addCompulsiveCharms(context.getTemplate());
-    initListening();
+    EssencePoolModelFetcher.fetch(hero).addOverdrivePool(new CharmOverdrivePool(this, experience));
+    this.characterContext.getCharacterListening().addChangeListener(new GlobalCharacterChangeAdapter() {
+      @Override
+      public void changeOccurred() {
+        verifyCharms();
+        control.announce().changeOccurred();
+      }
+    });
+    for (ILearningCharmGroup group : getAllGroups()) {
+      group.addCharmLearnListener(new CharmLearnAdapter() {
+        @Override
+        public void charmForgotten(ICharm charm) {
+          control.announce().changeOccurred();
+        }
+
+        @Override
+        public void charmLearned(ICharm charm) {
+          control.announce().changeOccurred();
+        }
+      });
+    }
   }
 
   private void addCompulsiveCharms(HeroTemplate template) {
@@ -208,7 +248,7 @@ public class CharmConfiguration implements ICharmConfiguration {
       }
     };
     for (ICharmGroup charmGroup : charmGroups) {
-      ILearningCharmGroup group = new LearningCharmGroup(getLearnStrategy(), charmGroup, this, learningCharmGroupContainer, this);
+      ILearningCharmGroup group = new LearningCharmGroup(charmLearnStrategy, charmGroup, this, learningCharmGroupContainer, this);
       newGroups.add(group);
 
       group.addCharmLearnListener(mergedListener);
@@ -320,27 +360,6 @@ public class CharmConfiguration implements ICharmConfiguration {
 
   }
 
-  public void initListening() {
-    characterContext.getCharacterListening().addChangeListener(new GlobalCharacterChangeAdapter() {
-      @Override
-      public void changeOccurred() {
-        verifyCharms();
-        fireLearnConditionsChanged();
-      }
-    });
-    addCharmLearnListener(new CharmLearnAdapter() {
-      @Override
-      public void charmForgotten(ICharm charm) {
-        fireLearnConditionsChanged();
-      }
-
-      @Override
-      public void charmLearned(ICharm charm) {
-        fireLearnConditionsChanged();
-      }
-    });
-  }
-
   private void verifyCharms() {
     if (!hero.isFullyLoaded()) {
       return;
@@ -366,14 +385,6 @@ public class CharmConfiguration implements ICharmConfiguration {
     control.addListener(listener);
   }
 
-  private void fireLearnConditionsChanged() {
-    control.announce().changeOccurred();
-  }
-
-  private ICharmLearnStrategy getLearnStrategy() {
-    return characterContext.getCharmContext().getCharmLearnStrategy();
-  }
-
   @Override
   public final boolean isLearnable(ICharm charm) {
     if (isAlienCharm(charm)) {
@@ -385,13 +396,13 @@ public class CharmConfiguration implements ICharmConfiguration {
         return false;
       }
     }
-    if (charm.isBlockedByAlternative(characterContext.getMagicCollection())) {
+    IMagicCollection magicCollection = context.getMagicCollection();
+    if (charm.isBlockedByAlternative(magicCollection)) {
       return false;
     }
     if (isMartialArtsCharm(charm)) {
       boolean isSiderealFormCharm = isFormCharm(charm) && hasLevel(Sidereal, charm);
-      MartialArtsCharmConfiguration martialArtsConfiguration =
-              new DefaultMartialArtsCharmConfiguration(this, characterContext.getMagicCollection(), characterContext.getBasicCharacterContext());
+      MartialArtsCharmConfiguration martialArtsConfiguration = new DefaultMartialArtsCharmConfiguration(this, magicCollection, experience);
       if (isSiderealFormCharm && !martialArtsConfiguration.isAnyCelestialStyleCompleted()) {
         return false;
       }
@@ -465,7 +476,7 @@ public class CharmConfiguration implements ICharmConfiguration {
 
   @Override
   public final boolean isCompulsiveCharm(ICharm charm) {
-    String[] compulsiveCharmIDs = characterContext.getAdditionalRules().getCompulsiveCharmIDs();
+    String[] compulsiveCharmIDs = context.getTemplate().getAdditionalRules().getCompulsiveCharmIDs();
     return ArrayUtils.contains(compulsiveCharmIDs, charm.getId());
   }
 

@@ -10,17 +10,13 @@ import net.sf.anathema.character.generic.character.IMagicCollection;
 import net.sf.anathema.character.generic.framework.additionaltemplate.listening.DedicatedCharacterChangeAdapter;
 import net.sf.anathema.character.generic.framework.additionaltemplate.model.ICharacterModelContext;
 import net.sf.anathema.character.generic.framework.additionaltemplate.model.ICharmContext;
-import net.sf.anathema.character.generic.framework.additionaltemplate.model.ICharmLearnStrategy;
 import net.sf.anathema.character.generic.framework.additionaltemplate.model.IGenericSpecialtyContext;
-import net.sf.anathema.character.generic.framework.additionaltemplate.model.TraitContext;
 import net.sf.anathema.character.generic.framework.additionaltemplate.model.ITraitValueStrategy;
+import net.sf.anathema.character.generic.framework.additionaltemplate.model.TraitContext;
 import net.sf.anathema.character.generic.template.magic.IGenericCharmConfiguration;
 import net.sf.anathema.character.generic.template.presentation.IPresentationProperties;
-import net.sf.anathema.character.impl.model.context.magic.CreationCharmLearnStrategy;
 import net.sf.anathema.character.impl.model.context.magic.CreationSpellLearnStrategy;
-import net.sf.anathema.character.impl.model.context.magic.ExperiencedCharmLearnStrategy;
 import net.sf.anathema.character.impl.model.context.magic.ExperiencedSpellLearnStrategy;
-import net.sf.anathema.character.impl.model.context.magic.ProxyCharmLearnStrategy;
 import net.sf.anathema.character.impl.model.context.magic.ProxySpellLearnStrategy;
 import net.sf.anathema.character.impl.model.context.trait.CreationTraitValueStrategy;
 import net.sf.anathema.character.impl.model.context.trait.ExperiencedTraitValueStrategy;
@@ -34,7 +30,6 @@ public class CharacterModelContext implements ICharacterModelContext, ICharmCont
 
   private final ProxyTraitValueStrategy traitValueStrategy = new ProxyTraitValueStrategy(new CreationTraitValueStrategy());
   private final ProxySpellLearnStrategy spellLearnStrategy = new ProxySpellLearnStrategy(new CreationSpellLearnStrategy());
-  private final ProxyCharmLearnStrategy charmLearnStrategy = new ProxyCharmLearnStrategy(new CreationCharmLearnStrategy());
   private final CharacterListening characterListening = new CharacterListening();
   private final IGenericCharacter character;
   private ICharacter hero;
@@ -70,17 +65,10 @@ public class CharacterModelContext implements ICharacterModelContext, ICharmCont
     if (experienced) {
       traitValueStrategy.setStrategy(new ExperiencedTraitValueStrategy());
       spellLearnStrategy.setStrategy(new ExperiencedSpellLearnStrategy());
-      charmLearnStrategy.setStrategy(new ExperiencedCharmLearnStrategy());
     } else {
       traitValueStrategy.setStrategy(new CreationTraitValueStrategy());
       spellLearnStrategy.setStrategy(new CreationSpellLearnStrategy());
-      charmLearnStrategy.setStrategy(new CreationCharmLearnStrategy());
     }
-  }
-
-  @Override
-  public ICharmLearnStrategy getCharmLearnStrategy() {
-    return charmLearnStrategy;
   }
 
   @Override
