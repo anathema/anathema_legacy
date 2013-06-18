@@ -14,6 +14,7 @@ import net.sf.anathema.character.generic.magic.charms.special.ISpecialCharmVisit
 import net.sf.anathema.character.generic.magic.charms.special.ISubeffectCharm;
 import net.sf.anathema.character.generic.magic.charms.special.ITraitCapModifyingCharm;
 import net.sf.anathema.character.generic.magic.charms.special.IUpgradableCharm;
+import net.sf.anathema.character.impl.model.charm.CharmSpecialistImpl;
 import net.sf.anathema.character.impl.model.charm.ISpecialCharmManager;
 import net.sf.anathema.character.main.hero.Hero;
 import net.sf.anathema.character.main.model.health.HealthModel;
@@ -30,17 +31,17 @@ import java.util.Map;
 
 public class SpecialCharmManager implements ISpecialCharmManager {
   private final Map<ICharm, ISpecialCharmConfiguration> specialConfigurationsByCharm = new HashMap<>();
-  private final HealthModel health;
-  private final ICharacterModelContext context;
   private final IExtendedCharmLearnableArbitrator arbitrator;
+  private ICharacterModelContext context;
+  private CharmSpecialistImpl specialist;
   private Hero hero;
   private final ICharmConfiguration config;
 
-  public SpecialCharmManager(Hero hero, ICharmConfiguration config, HealthModel health, ICharacterModelContext context) {
+  public SpecialCharmManager(CharmSpecialistImpl specialist, Hero hero, ICharmConfiguration config, ICharacterModelContext context) {
+    this.specialist = specialist;
     this.hero = hero;
     this.config = config;
     this.arbitrator = config;
-    this.health = health;
     this.context = context;
   }
 
@@ -95,29 +96,30 @@ public class SpecialCharmManager implements ISpecialCharmManager {
   }
 
   private void registerTraitCapModifyingCharm(ITraitCapModifyingCharm specialCharm, ICharm charm, ILearningCharmGroup group) {
-    TraitCapModifyingCharmConfiguration configuration = new TraitCapModifyingCharmConfiguration(context, config, charm, specialCharm);
+    TraitCapModifyingCharmConfiguration configuration = new TraitCapModifyingCharmConfiguration(specialist, config, charm, specialCharm);
     addSpecialCharmConfiguration(charm, group, configuration, true, true);
   }
 
   private void registerEffectMultilearnableCharm(IMultipleEffectCharm visited, ICharm charm, ILearningCharmGroup group) {
-    MultipleEffectCharmConfiguration configuration = new MultipleEffectCharmConfiguration(context, charm, visited, arbitrator);
+    MultipleEffectCharmConfiguration configuration = new MultipleEffectCharmConfiguration(specialist, charm, visited, arbitrator);
     addSpecialCharmConfiguration(charm, group, configuration, true, true);
   }
 
   private void registerUpgradableCharm(IUpgradableCharm visited, ICharm charm, ILearningCharmGroup group) {
-    UpgradableCharmConfiguration configuration = new UpgradableCharmConfiguration(context, charm, visited, arbitrator);
+    UpgradableCharmConfiguration configuration = new UpgradableCharmConfiguration(specialist, charm, visited, arbitrator);
     addSpecialCharmConfiguration(charm, group, configuration, visited.requiresBase(), false);
   }
 
   private void registerMultiLearnableCharm(IMultiLearnableCharm visitedCharm, ICharm charm, ILearningCharmGroup group) {
     TraitMap traitMap = TraitModelFetcher.fetch(hero);
-    MultiLearnableCharmConfiguration configuration = new MultiLearnableCharmConfiguration(traitMap, context, config, charm, visitedCharm, arbitrator);
+    MultiLearnableCharmConfiguration configuration = new MultiLearnableCharmConfiguration(specialist, context, config, charm, visitedCharm, arbitrator);
     addSpecialCharmConfiguration(charm, group, configuration, true, true);
   }
 
   private void registerOxBodyTechnique(IOxBodyTechniqueCharm visited, ICharm charm, ILearningCharmGroup group) {
+    HealthModel health = specialist.getHealth();
     OxBodyTechniqueConfiguration oxBodyTechniqueConfiguration =
-            new OxBodyTechniqueConfiguration(context.getTraitContext(), context.getTraitCollection(), charm, visited.getRelevantTraits(),
+            new OxBodyTechniqueConfiguration(context.getTraitContext(), specialist, charm, visited.getRelevantTraits(),
                     health.getOxBodyLearnArbitrator(), visited);
     addSpecialCharmConfiguration(charm, group, oxBodyTechniqueConfiguration, true, true);
     health.getOxBodyLearnArbitrator().addOxBodyTechniqueConfiguration(oxBodyTechniqueConfiguration);
@@ -133,11 +135,11 @@ public class SpecialCharmManager implements ISpecialCharmManager {
         return visitedCharm.getPainToleranceLevel(learnCount);
       }
     };
-    health.addPainToleranceProvider(painToleranceProvider);
+    specialist.getHealth().addPainToleranceProvider(painToleranceProvider);
   }
 
   private void registerSubeffectCharm(ISubeffectCharm visited, ICharm charm, ILearningCharmGroup group) {
-    SubeffectCharmConfiguration configuration = new SubeffectCharmConfiguration(context, charm, visited, arbitrator);
+    SubeffectCharmConfiguration configuration = new SubeffectCharmConfiguration(specialist, charm, visited, arbitrator);
     addSpecialCharmConfiguration(charm, group, configuration, true, true);
   }
 

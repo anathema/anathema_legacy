@@ -2,6 +2,8 @@ package net.sf.anathema.character.generic.impl.magic.charm.special;
 
 import net.sf.anathema.character.generic.IBasicCharacterData;
 import net.sf.anathema.character.generic.magic.charms.special.ISubeffect;
+import net.sf.anathema.character.impl.model.charm.CharmSpecialist;
+import net.sf.anathema.character.main.model.experience.ExperienceModel;
 import net.sf.anathema.lib.control.IChangeListener;
 import net.sf.anathema.lib.data.Condition;
 import net.sf.anathema.lib.util.SimpleIdentifier;
@@ -10,14 +12,14 @@ import org.jmock.example.announcer.Announcer;
 public class Subeffect extends SimpleIdentifier implements ISubeffect {
 
   private final Announcer<IChangeListener> control = Announcer.to(IChangeListener.class);
-  private final IBasicCharacterData data;
   private boolean learned = false;
   private boolean creationLearned = false;
   private final Condition learnable;
+  private ExperienceModel experience;
 
-  public Subeffect(String subeffectId, IBasicCharacterData data, Condition learnable) {
+  public Subeffect(String subeffectId, ExperienceModel experience, Condition learnable) {
     super(subeffectId);
-    this.data = data;
+    this.experience = experience;
     this.learnable = learnable;
   }
 
@@ -33,7 +35,7 @@ public class Subeffect extends SimpleIdentifier implements ISubeffect {
 
   @Override
   public boolean isLearned() {
-    if (!data.isExperienced()) {
+    if (!experience.isExperienced()) {
       return creationLearned;
     }
     return learned;
@@ -47,7 +49,7 @@ public class Subeffect extends SimpleIdentifier implements ISubeffect {
     if (learned && !learnable.isFulfilled()) {
       return;
     }
-    if (!data.isExperienced()) {
+    if (!experience.isExperienced()) {
       setCreationLearned(learned);
     } else {
       setExperienceLearned(learned);

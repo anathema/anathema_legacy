@@ -1,12 +1,10 @@
 package net.sf.anathema.character.generic.magic.charms.special;
 
-import net.sf.anathema.character.generic.IBasicCharacterData;
-import net.sf.anathema.character.generic.character.IGenericTraitCollection;
 import net.sf.anathema.character.generic.magic.ICharm;
 import net.sf.anathema.character.generic.magic.charms.ICharmLearnableArbitrator;
+import net.sf.anathema.character.impl.model.charm.CharmSpecialist;
 
 public interface IMultipleEffectCharm extends ISpecialCharm {
 
-  SubEffects buildSubeffects(IBasicCharacterData basicCharacterContext, IGenericTraitCollection traitCollection,
-                             ICharmLearnableArbitrator arbitrator, ICharm charm);
+  SubEffects buildSubeffects(CharmSpecialist specialist, ICharmLearnableArbitrator arbitrator, ICharm charm);
 }

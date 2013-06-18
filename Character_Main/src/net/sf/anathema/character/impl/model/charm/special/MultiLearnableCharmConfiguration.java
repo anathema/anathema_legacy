@@ -9,13 +9,13 @@ import net.sf.anathema.character.generic.magic.charms.special.IMultiLearnableCha
 import net.sf.anathema.character.generic.magic.charms.special.ISpecialCharmLearnListener;
 import net.sf.anathema.character.generic.magic.charms.special.LearnRangeContext;
 import net.sf.anathema.character.generic.traits.TraitType;
+import net.sf.anathema.character.impl.model.charm.CharmSpecialist;
 import net.sf.anathema.character.impl.model.charm.CharmTraitRequirementChecker;
 import net.sf.anathema.character.impl.model.charm.PrerequisiteModifyingCharms;
 import net.sf.anathema.character.library.trait.DefaultTraitType;
 import net.sf.anathema.character.library.trait.LimitedTrait;
 import net.sf.anathema.character.library.trait.Trait;
 import net.sf.anathema.character.library.trait.favorable.IncrementChecker;
-import net.sf.anathema.character.main.model.traits.TraitMap;
 import net.sf.anathema.character.model.charm.ICharmConfiguration;
 import net.sf.anathema.character.model.charm.special.IMultiLearnableCharmConfiguration;
 import net.sf.anathema.lib.control.IIntValueChangedListener;
@@ -29,13 +29,13 @@ public class MultiLearnableCharmConfiguration implements IMultiLearnableCharmCon
   private ICharmConfiguration config;
   private ICharm charm;
   private IMultiLearnableCharm specialCharm;
-  private TraitMap traitMap;
+  private CharmSpecialist specialist;
   private ICharacterModelContext context;
   private ICharmLearnableArbitrator arbitrator;
 
-  public MultiLearnableCharmConfiguration(TraitMap traitMap, ICharacterModelContext context, ICharmConfiguration config, ICharm charm,
+  public MultiLearnableCharmConfiguration(CharmSpecialist specialist, ICharacterModelContext context, ICharmConfiguration config, ICharm charm,
                                           IMultiLearnableCharm specialCharm, ICharmLearnableArbitrator arbitrator) {
-    this.traitMap = traitMap;
+    this.specialist = specialist;
     this.context = context;
     this.config = config;
     this.charm = charm;
@@ -131,7 +131,7 @@ public class MultiLearnableCharmConfiguration implements IMultiLearnableCharmCon
 
   private LearnRangeContext createLearnRangeContext() {
     PrerequisiteModifyingCharms modifyingCharms = new PrerequisiteModifyingCharms(config.getSpecialCharms());
-    CharmTraitRequirementChecker requirementChecker = new CharmTraitRequirementChecker(modifyingCharms, traitMap, config);
+    CharmTraitRequirementChecker requirementChecker = new CharmTraitRequirementChecker(modifyingCharms, specialist.getTraits(), config);
     return new LearnRangeContext(context.getTraitCollection(), requirementChecker, charm);
   }
 

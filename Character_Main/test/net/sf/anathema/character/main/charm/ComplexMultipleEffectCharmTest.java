@@ -1,11 +1,12 @@
 package net.sf.anathema.character.main.charm;
 
-import net.sf.anathema.character.generic.IBasicCharacterData;
 import net.sf.anathema.character.generic.impl.magic.charm.special.ComplexMultipleEffectCharm;
 import net.sf.anathema.character.generic.magic.ICharm;
 import net.sf.anathema.character.generic.magic.charms.ICharmLearnableArbitrator;
 import net.sf.anathema.character.generic.magic.charms.special.IMultipleEffectCharm;
 import net.sf.anathema.character.generic.magic.charms.special.ISubeffect;
+import net.sf.anathema.character.impl.model.charm.CharmSpecialistImpl;
+import net.sf.anathema.character.main.testing.dummy.DummyHero;
 import org.junit.Test;
 
 import java.util.HashMap;
@@ -15,7 +16,7 @@ import static org.junit.Assert.assertThat;
 import static org.mockito.Mockito.mock;
 
 public class ComplexMultipleEffectCharmTest {
-  private IBasicCharacterData data = mock(IBasicCharacterData.class);
+  private CharmSpecialistImpl specialist = new CharmSpecialistImpl(new DummyHero());
   private ICharmLearnableArbitrator arbitrator = mock(ICharmLearnableArbitrator.class);
   private ICharm baseCharm = mock(ICharm.class);
   private IMultipleEffectCharm charmWithThreeEffects =
@@ -23,14 +24,14 @@ public class ComplexMultipleEffectCharmTest {
 
   @Test
   public void instantiatesSubeffects() throws Exception {
-    ISubeffect[] subeffects = charmWithThreeEffects.buildSubeffects(data, null, arbitrator, baseCharm).getEffects();
+    ISubeffect[] subeffects = charmWithThreeEffects.buildSubeffects(specialist, arbitrator, baseCharm).getEffects();
     assertThat(subeffects.length, is(3));
   }
 
   @Test
   public void instantiatesSubeffectsOnlyOnce() throws Exception {
-    charmWithThreeEffects.buildSubeffects(data, null, arbitrator, baseCharm);
-    ISubeffect[] subeffectsAgain = charmWithThreeEffects.buildSubeffects(data, null, arbitrator, baseCharm).getEffects();
+    charmWithThreeEffects.buildSubeffects(specialist, arbitrator, baseCharm);
+    ISubeffect[] subeffectsAgain = charmWithThreeEffects.buildSubeffects(specialist, arbitrator, baseCharm).getEffects();
     assertThat(subeffectsAgain.length, is(3));
   }
 }

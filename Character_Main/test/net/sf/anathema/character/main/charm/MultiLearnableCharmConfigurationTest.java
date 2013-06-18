@@ -5,12 +5,12 @@ import net.sf.anathema.character.generic.impl.magic.charm.special.StaticMultiLea
 import net.sf.anathema.character.generic.magic.ICharm;
 import net.sf.anathema.character.generic.magic.charms.ICharmLearnableArbitrator;
 import net.sf.anathema.character.generic.magic.charms.special.IMultiLearnableCharm;
+import net.sf.anathema.character.impl.model.charm.CharmSpecialistImpl;
 import net.sf.anathema.character.impl.model.charm.special.MultiLearnableCharmConfiguration;
 import net.sf.anathema.character.impl.model.context.trait.ExperiencedTraitValueStrategy;
 import net.sf.anathema.character.magic.dummy.DummyCharm;
-import net.sf.anathema.character.main.model.traits.DefaultTraitMap;
-import net.sf.anathema.character.main.model.traits.TraitMap;
 import net.sf.anathema.character.main.testing.dummy.DummyCharacterModelContext;
+import net.sf.anathema.character.main.testing.dummy.DummyHero;
 import net.sf.anathema.character.main.testing.dummy.magic.DummyCharmConfiguration;
 import net.sf.anathema.character.main.testing.dummy.magic.DummyLearnableArbitrator;
 import net.sf.anathema.character.model.charm.ICharmConfiguration;
@@ -26,9 +26,9 @@ public class MultiLearnableCharmConfigurationTest {
   private ICharm charm = new DummyCharm("id");
   private IMultiLearnableCharm specialCharm = new StaticMultiLearnableCharm("id", 5);
   private ICharmLearnableArbitrator arbitrator = new DummyLearnableArbitrator("id");
-  private TraitMap traitMap = new DefaultTraitMap();
+  private final DummyHero hero = new DummyHero();
   private MultiLearnableCharmConfiguration configuration =
-          new MultiLearnableCharmConfiguration(traitMap, context, config, charm, specialCharm, arbitrator);
+          new MultiLearnableCharmConfiguration(new CharmSpecialistImpl(hero), context, config, charm, specialCharm, arbitrator);
 
   @Test
   public void learnsExperiencedIfCurrentlyExperienced() throws Exception {

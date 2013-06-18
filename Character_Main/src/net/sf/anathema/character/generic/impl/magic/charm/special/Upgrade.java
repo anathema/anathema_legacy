@@ -1,14 +1,14 @@
 package net.sf.anathema.character.generic.impl.magic.charm.special;
 
-import net.sf.anathema.character.generic.IBasicCharacterData;
+import net.sf.anathema.character.main.model.experience.ExperienceModel;
 import net.sf.anathema.lib.data.Condition;
 
 public class Upgrade extends Subeffect {
   private int bpCost;
   private int xpCost;
 
-  public Upgrade(String subeffectId, IBasicCharacterData data, Condition learnable, int bpCost, int xpCost) {
-    super(subeffectId, data, learnable);
+  public Upgrade(String subeffectId, ExperienceModel experience, Condition learnable, int bpCost, int xpCost) {
+    super(subeffectId, experience, learnable);
     this.bpCost = bpCost;
     this.xpCost = xpCost;
   }

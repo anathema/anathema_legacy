@@ -1,13 +1,12 @@
 package net.sf.anathema.character.generic.impl.magic.charm.special;
 
-import net.sf.anathema.character.generic.IBasicCharacterData;
-import net.sf.anathema.character.generic.character.IGenericTraitCollection;
 import net.sf.anathema.character.generic.magic.ICharm;
 import net.sf.anathema.character.generic.magic.charms.ICharmLearnableArbitrator;
 import net.sf.anathema.character.generic.magic.charms.special.ISpecialCharmVisitor;
 import net.sf.anathema.character.generic.magic.charms.special.IUpgradableCharm;
 import net.sf.anathema.character.generic.magic.charms.special.SubEffects;
 import net.sf.anathema.character.generic.traits.TraitType;
+import net.sf.anathema.character.impl.model.charm.CharmSpecialist;
 import net.sf.anathema.lib.data.Condition;
 
 import java.util.Map;
@@ -39,8 +38,7 @@ public class UpgradableCharm extends MultipleEffectCharm implements IUpgradableC
   }
 
   @Override
-  public SubEffects buildSubeffects(IBasicCharacterData data, IGenericTraitCollection traitCollection, ICharmLearnableArbitrator arbitrator,
-                                    ICharm charm) {
+  public SubEffects buildSubeffects(CharmSpecialist specialist, ICharmLearnableArbitrator arbitrator, ICharm charm) {
     UpgradableSubEffects subEffects = new UpgradableSubEffects();
     for (String id : effectIds) {
       Integer bpCost = bpCosts.get(id);
@@ -48,18 +46,16 @@ public class UpgradableCharm extends MultipleEffectCharm implements IUpgradableC
       Integer essenceMin = essenceMins.get(id);
       Integer traitMin = traitMins.get(id);
       TraitType trait = traits.get(id);
-      Upgrade upgrade =
-              new Upgrade(id, data, buildLearnCondition(arbitrator, data, traitCollection, charm, bpCost != null, essenceMin, traitMin, trait),
-                      bpCost == null ? NO_BP_UPGRADE : bpCost, xpCost);
+      Condition learnCondition = buildLearnCondition(arbitrator, specialist, charm, bpCost != null, essenceMin, traitMin, trait);
+      Upgrade upgrade = new Upgrade(id, specialist.getExperience(), learnCondition, bpCost == null ? NO_BP_UPGRADE : bpCost, xpCost);
       subEffects.add(upgrade);
     }
     return subEffects;
   }
 
-  private Condition buildLearnCondition(final ICharmLearnableArbitrator arbitrator, final IBasicCharacterData data,
-                                         final IGenericTraitCollection traitCollection, final ICharm charm, final boolean bpUpgradeAllowed,
-                                         final Integer essenceMin, final Integer traitMin, final TraitType trait) {
-    return new UpgradeCondition(arbitrator, charm, bpUpgradeAllowed, data, essenceMin, traitCollection, traitMin, trait);
+  private Condition buildLearnCondition(final ICharmLearnableArbitrator arbitrator, CharmSpecialist specialist, final ICharm charm,
+                                        final boolean bpUpgradeAllowed, final Integer essenceMin, final Integer traitMin, final TraitType trait) {
+    return new UpgradeCondition(arbitrator, charm, bpUpgradeAllowed, specialist, essenceMin, traitMin, trait);
   }
 
   @Override

@@ -1,14 +1,13 @@
 package net.sf.anathema.character.generic.impl.magic.charm.special;
 
 import com.google.common.base.Objects;
-import net.sf.anathema.character.generic.IBasicCharacterData;
-import net.sf.anathema.character.generic.character.IGenericTraitCollection;
 import net.sf.anathema.character.generic.magic.ICharm;
 import net.sf.anathema.character.generic.magic.charms.ICharmLearnableArbitrator;
 import net.sf.anathema.character.generic.magic.charms.special.IMultipleEffectCharm;
 import net.sf.anathema.character.generic.magic.charms.special.ISpecialCharmVisitor;
 import net.sf.anathema.character.generic.magic.charms.special.ISubeffect;
 import net.sf.anathema.character.generic.magic.charms.special.SubEffects;
+import net.sf.anathema.character.impl.model.charm.CharmSpecialist;
 import net.sf.anathema.lib.data.Condition;
 
 import java.util.ArrayList;
@@ -35,11 +34,10 @@ public class MultipleEffectCharm implements IMultipleEffectCharm {
   }
 
   @Override
-  public SubEffects buildSubeffects(IBasicCharacterData data, IGenericTraitCollection traitCollection, ICharmLearnableArbitrator arbitrator,
-                                    ICharm charm) {
+  public SubEffects buildSubeffects(CharmSpecialist specialist, ICharmLearnableArbitrator arbitrator, ICharm charm) {
     List<ISubeffect> effectList = new ArrayList<>();
     for (String id : effectIds) {
-      effectList.add(new Subeffect(id, data, buildLearnCondition(arbitrator, charm)));
+      effectList.add(new Subeffect(id, specialist.getExperience(), buildLearnCondition(arbitrator, charm)));
     }
     return new ArraySubEffects(effectList.toArray(new ISubeffect[effectList.size()]));
   }

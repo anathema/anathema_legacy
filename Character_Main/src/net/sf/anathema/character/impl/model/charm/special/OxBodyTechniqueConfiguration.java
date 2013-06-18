@@ -1,17 +1,17 @@
 package net.sf.anathema.character.impl.model.charm.special;
 
-import net.sf.anathema.character.generic.character.IGenericTraitCollection;
 import net.sf.anathema.character.generic.framework.additionaltemplate.model.TraitContext;
 import net.sf.anathema.character.generic.health.HealthLevelType;
 import net.sf.anathema.character.generic.magic.ICharm;
 import net.sf.anathema.character.generic.magic.charms.special.IOxBodyTechniqueCharm;
 import net.sf.anathema.character.generic.magic.charms.special.ISpecialCharmLearnListener;
 import net.sf.anathema.character.generic.traits.TraitType;
+import net.sf.anathema.character.impl.model.charm.CharmSpecialist;
 import net.sf.anathema.character.library.trait.favorable.IncrementChecker;
+import net.sf.anathema.character.main.model.health.IHealthLevelProvider;
 import net.sf.anathema.character.main.model.health.OxBodyTechniqueArbitrator;
 import net.sf.anathema.character.model.charm.OxBodyCategory;
 import net.sf.anathema.character.model.charm.special.IOxBodyTechniqueConfiguration;
-import net.sf.anathema.character.main.model.health.IHealthLevelProvider;
 import net.sf.anathema.lib.control.IIntValueChangedListener;
 import org.jmock.example.announcer.Announcer;
 
@@ -27,7 +27,7 @@ public class OxBodyTechniqueConfiguration implements IOxBodyTechniqueConfigurati
   private final ICharm oxBodyTechnique;
   private final IHealthLevelProvider healthLevelProvider;
 
-  public OxBodyTechniqueConfiguration(TraitContext context, final IGenericTraitCollection collection, ICharm oxBodyTechnique,
+  public OxBodyTechniqueConfiguration(TraitContext context, final CharmSpecialist specialist, ICharm oxBodyTechnique,
                                       final TraitType[] relevantTraits, final OxBodyTechniqueArbitrator arbitrator,
                                       IOxBodyTechniqueCharm properties) {
     this.oxBodyTechnique = oxBodyTechnique;
@@ -36,7 +36,7 @@ public class OxBodyTechniqueConfiguration implements IOxBodyTechniqueConfigurati
       public boolean isValidIncrement(int increment) {
         int minTrait = Integer.MAX_VALUE;
         for (TraitType type : relevantTraits) {
-          minTrait = Math.min(minTrait, collection.getTrait(type).getCurrentValue());
+          minTrait = Math.min(minTrait, specialist.getTraits().getTrait(type).getCurrentValue());
         }
         return increment < 0 || (arbitrator.isIncrementAllowed(increment) && getCurrentLearnCount() + increment <= minTrait);
       }

@@ -32,7 +32,6 @@ import net.sf.anathema.character.main.model.concept.CharacterConceptFetcher;
 import net.sf.anathema.character.main.model.essencepool.EssencePoolModelFetcher;
 import net.sf.anathema.character.main.model.experience.ExperienceModel;
 import net.sf.anathema.character.main.model.experience.ExperienceModelFetcher;
-import net.sf.anathema.character.main.model.health.HealthModelFetcher;
 import net.sf.anathema.character.main.model.traits.TraitModel;
 import net.sf.anathema.character.main.model.traits.TraitModelFetcher;
 import net.sf.anathema.character.model.charm.CharmLearnAdapter;
@@ -84,8 +83,10 @@ public class CharmConfiguration implements ICharmConfiguration {
   private NonMartialArtsOptions nonMartialArtsOptions;
   private Hero hero;
   private InitializationContext context;
+  private CharmSpecialistImpl specialist;
 
   public CharmConfiguration(Hero hero, InitializationContext context, ICharacterModelContext characterContext) {
+    this.specialist = new CharmSpecialistImpl(hero);
     this.experience = ExperienceModelFetcher.fetch(hero);
     this.traits = TraitModelFetcher.fetch(hero);
     this.experience.addStateChangeListener(new IChangeListener() {
@@ -102,7 +103,7 @@ public class CharmConfiguration implements ICharmConfiguration {
     this.context = context;
     this.martialArtsOptions = new MartialArtsOptions(characterContext, context.getTemplateRegistry());
     this.nonMartialArtsOptions = new NonMartialArtsOptions(characterContext, context.getCharacterTypes(), context.getTemplateRegistry());
-    this.manager = new SpecialCharmManager(hero, this, HealthModelFetcher.fetch(hero), characterContext);
+    this.manager = new SpecialCharmManager(specialist, hero, this, characterContext);
     this.provider = context.getCharmProvider();
     this.martialArtsGroups = createGroups(martialArtsOptions.getAllCharmGroups());
     initNonMartialArtsGroups();

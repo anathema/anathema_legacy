@@ -1,23 +1,23 @@
 package net.sf.anathema.character.impl.model.charm.special;
 
-import net.sf.anathema.character.generic.framework.additionaltemplate.model.ICharacterModelContext;
 import net.sf.anathema.character.generic.magic.ICharm;
 import net.sf.anathema.character.generic.magic.charms.special.ISpecialCharmLearnListener;
 import net.sf.anathema.character.generic.magic.charms.special.ITraitCapModifyingCharm;
+import net.sf.anathema.character.impl.model.charm.CharmSpecialist;
 import net.sf.anathema.character.library.trait.DefaultTrait;
 import net.sf.anathema.character.model.charm.ICharmConfiguration;
 import net.sf.anathema.character.model.charm.special.ITraitCapModifyingCharmConfiguration;
 
 public class TraitCapModifyingCharmConfiguration implements ITraitCapModifyingCharmConfiguration {
-  private final ICharacterModelContext context;
+  private CharmSpecialist specialist;
   private final ITraitCapModifyingCharm specialCharm;
   private final ICharmConfiguration config;
   private final ICharm charm;
 
-  public TraitCapModifyingCharmConfiguration(ICharacterModelContext context, ICharmConfiguration config, ICharm charm,
+  public TraitCapModifyingCharmConfiguration(CharmSpecialist specialist, ICharmConfiguration config, ICharm charm,
                                              ITraitCapModifyingCharm specialCharm) {
+    this.specialist = specialist;
     this.specialCharm = specialCharm;
-    this.context = context;
     this.config = config;
     this.charm = charm;
   }
@@ -33,13 +33,13 @@ public class TraitCapModifyingCharmConfiguration implements ITraitCapModifyingCh
   }
 
   public void applyModifier() {
-    DefaultTrait trait = (DefaultTrait) context.getTraitCollection().getTrait(specialCharm.getTraitType());
+    DefaultTrait trait = (DefaultTrait) specialist.getTraits().getTrait(specialCharm.getTraitType());
     trait.applyCapModifier(specialCharm.getModifier());
   }
 
   @Override
   public void forget() {
-    DefaultTrait trait = (DefaultTrait) context.getTraitCollection().getTrait(specialCharm.getTraitType());
+    DefaultTrait trait = (DefaultTrait) specialist.getTraits().getTrait(specialCharm.getTraitType());
     trait.applyCapModifier(-specialCharm.getModifier());
   }
 

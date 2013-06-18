@@ -1,12 +1,12 @@
 package net.sf.anathema.character.impl.model.charm.special;
 
-import net.sf.anathema.character.generic.framework.additionaltemplate.model.ICharacterModelContext;
 import net.sf.anathema.character.generic.magic.ICharm;
 import net.sf.anathema.character.generic.magic.charms.ICharmLearnableArbitrator;
 import net.sf.anathema.character.generic.magic.charms.special.IMultipleEffectCharm;
 import net.sf.anathema.character.generic.magic.charms.special.ISpecialCharmLearnListener;
 import net.sf.anathema.character.generic.magic.charms.special.ISubeffect;
 import net.sf.anathema.character.generic.magic.charms.special.SubEffects;
+import net.sf.anathema.character.impl.model.charm.CharmSpecialist;
 import net.sf.anathema.character.model.charm.special.IMultipleEffectCharmConfiguration;
 import net.sf.anathema.lib.control.IChangeListener;
 import org.jmock.example.announcer.Announcer;
@@ -16,10 +16,10 @@ public class MultipleEffectCharmConfiguration implements IMultipleEffectCharmCon
   private final SubEffects subeffects;
   private final Announcer<ISpecialCharmLearnListener> control = Announcer.to(ISpecialCharmLearnListener.class);
 
-  public MultipleEffectCharmConfiguration(ICharacterModelContext context, ICharm charm, IMultipleEffectCharm visited,
+  public MultipleEffectCharmConfiguration(CharmSpecialist specialist, ICharm charm, IMultipleEffectCharm visited,
                                           ICharmLearnableArbitrator arbitrator) {
     this.charm = charm;
-    this.subeffects = visited.buildSubeffects(context.getBasicCharacterContext(), context.getTraitCollection(), arbitrator, charm);
+    this.subeffects = visited.buildSubeffects(specialist, arbitrator, charm);
     for (ISubeffect subeffect : subeffects) {
       subeffect.addChangeListener(new IChangeListener() {
         @Override

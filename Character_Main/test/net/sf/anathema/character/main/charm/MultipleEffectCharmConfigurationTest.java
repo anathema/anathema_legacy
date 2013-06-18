@@ -1,21 +1,19 @@
 package net.sf.anathema.character.main.charm;
 
-import net.sf.anathema.character.generic.IBasicCharacterData;
-import net.sf.anathema.character.generic.character.IGenericTraitCollection;
 import net.sf.anathema.character.generic.impl.magic.charm.special.ArraySubEffects;
 import net.sf.anathema.character.generic.impl.magic.charm.special.Subeffect;
 import net.sf.anathema.character.generic.magic.ICharm;
 import net.sf.anathema.character.generic.magic.charms.ICharmLearnableArbitrator;
 import net.sf.anathema.character.generic.magic.charms.special.IMultipleEffectCharm;
 import net.sf.anathema.character.generic.magic.charms.special.ISubeffect;
+import net.sf.anathema.character.impl.model.charm.CharmSpecialist;
 import net.sf.anathema.character.impl.model.charm.special.MultipleEffectCharmConfiguration;
-import net.sf.anathema.character.main.testing.dummy.DummyCharacterModelContext;
+import net.sf.anathema.character.main.model.experience.ExperienceModel;
 import net.sf.anathema.character.main.testing.dummy.DummyCondition;
 import org.junit.Test;
 
 import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertTrue;
-import static org.mockito.Matchers.any;
 import static org.mockito.Matchers.isA;
 import static org.mockito.Matchers.isNull;
 import static org.mockito.Mockito.mock;
@@ -25,11 +23,11 @@ public class MultipleEffectCharmConfigurationTest {
 
   @Test
   public void learnsEffects() throws Exception {
-    IBasicCharacterData data = createData();
+    CharmSpecialist specialist = createExperiencedSpecialist();
     DummyCondition condition = createCondition();
-    Subeffect effect = new Subeffect("id", data, condition);
+    Subeffect effect = new Subeffect("id", specialist.getExperience(), condition);
     IMultipleEffectCharm charm = createCharm(effect);
-    MultipleEffectCharmConfiguration configuration = new MultipleEffectCharmConfiguration(new DummyCharacterModelContext(), null, charm, null);
+    MultipleEffectCharmConfiguration configuration = new MultipleEffectCharmConfiguration(specialist, null, charm, null);
     effect.setExperienceLearned(true);
     configuration.learn(true);
     assertTrue(effect.isLearned());
@@ -38,8 +36,8 @@ public class MultipleEffectCharmConfigurationTest {
 
   private IMultipleEffectCharm createCharm(Subeffect effect) {
     IMultipleEffectCharm charm = mock(IMultipleEffectCharm.class);
-    when(charm.buildSubeffects(isA(IBasicCharacterData.class), any(IGenericTraitCollection.class), (ICharmLearnableArbitrator) isNull(),
-            (ICharm) isNull())).thenReturn(new ArraySubEffects(new ISubeffect[]{effect}));
+    when(charm.buildSubeffects(isA(CharmSpecialist.class), (ICharmLearnableArbitrator) isNull(), (ICharm) isNull()))
+            .thenReturn(new ArraySubEffects(new ISubeffect[]{effect}));
     return charm;
   }
 
@@ -49,9 +47,11 @@ public class MultipleEffectCharmConfigurationTest {
     return condition;
   }
 
-  private IBasicCharacterData createData() {
-    IBasicCharacterData data = mock(IBasicCharacterData.class);
-    when(data.isExperienced()).thenReturn(true);
-    return data;
+  private CharmSpecialist createExperiencedSpecialist() {
+    ExperienceModel model = mock(ExperienceModel.class);
+    when(model.isExperienced()).thenReturn(true);
+    CharmSpecialist specialist = mock(CharmSpecialist.class);
+    when(specialist.getExperience()).thenReturn(model);
+    return specialist;
   }
 }
