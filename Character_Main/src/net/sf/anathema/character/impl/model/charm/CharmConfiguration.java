@@ -1,9 +1,9 @@
 package net.sf.anathema.character.impl.model.charm;
 
 import com.google.common.base.Functions;
+import net.sf.anathema.character.change.ChangeFlavor;
 import net.sf.anathema.character.generic.caste.ICasteType;
 import net.sf.anathema.character.generic.character.IMagicCollection;
-import net.sf.anathema.character.generic.framework.additionaltemplate.listening.GlobalCharacterChangeAdapter;
 import net.sf.anathema.character.generic.framework.additionaltemplate.model.ICharacterModelContext;
 import net.sf.anathema.character.generic.impl.magic.MartialArtsUtilities;
 import net.sf.anathema.character.generic.impl.template.magic.ICharmProvider;
@@ -27,6 +27,7 @@ import net.sf.anathema.character.impl.model.context.magic.ExperiencedCharmLearnS
 import net.sf.anathema.character.impl.model.context.magic.ProxyCharmLearnStrategy;
 import net.sf.anathema.character.main.hero.Hero;
 import net.sf.anathema.character.main.hero.InitializationContext;
+import net.sf.anathema.character.main.hero.change.FlavoredChangeListener;
 import net.sf.anathema.character.main.model.concept.CharacterConceptFetcher;
 import net.sf.anathema.character.main.model.essencepool.EssencePoolModelFetcher;
 import net.sf.anathema.character.main.model.experience.ExperienceModel;
@@ -82,7 +83,6 @@ public class CharmConfiguration implements ICharmConfiguration {
   private MartialArtsOptions martialArtsOptions;
   private NonMartialArtsOptions nonMartialArtsOptions;
   private Hero hero;
-  private final ICharacterModelContext characterContext;
   private InitializationContext context;
 
   public CharmConfiguration(Hero hero, InitializationContext context, ICharacterModelContext characterContext) {
@@ -103,7 +103,6 @@ public class CharmConfiguration implements ICharmConfiguration {
     this.martialArtsOptions = new MartialArtsOptions(characterContext, context.getTemplateRegistry());
     this.nonMartialArtsOptions = new NonMartialArtsOptions(characterContext, context.getCharacterTypes(), context.getTemplateRegistry());
     this.manager = new SpecialCharmManager(hero, this, HealthModelFetcher.fetch(hero), characterContext);
-    this.characterContext = characterContext;
     this.provider = context.getCharmProvider();
     this.martialArtsGroups = createGroups(martialArtsOptions.getAllCharmGroups());
     initNonMartialArtsGroups();
@@ -113,9 +112,9 @@ public class CharmConfiguration implements ICharmConfiguration {
     filterSet.add(new EssenceLevelCharmFilter());
     addCompulsiveCharms(context.getTemplate());
     EssencePoolModelFetcher.fetch(hero).addOverdrivePool(new CharmOverdrivePool(this, experience));
-    this.characterContext.getCharacterListening().addChangeListener(new GlobalCharacterChangeAdapter() {
+    context.getChangeAnnouncer().addListener(new FlavoredChangeListener() {
       @Override
-      public void changeOccurred() {
+      public void changeOccurred(ChangeFlavor flavor) {
         verifyCharms();
         control.announce().changeOccurred();
       }
