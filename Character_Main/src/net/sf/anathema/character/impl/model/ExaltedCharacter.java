@@ -4,7 +4,6 @@ import net.sf.anathema.character.generic.framework.ICharacterGenerics;
 import net.sf.anathema.character.generic.framework.additionaltemplate.model.IAdditionalModelFactory;
 import net.sf.anathema.character.generic.framework.additionaltemplate.model.ICharacterModelContext;
 import net.sf.anathema.character.generic.impl.magic.persistence.ISpellCache;
-import net.sf.anathema.character.generic.magic.ICharm;
 import net.sf.anathema.character.generic.template.HeroTemplate;
 import net.sf.anathema.character.generic.template.additional.IAdditionalTemplate;
 import net.sf.anathema.character.generic.template.additional.IGlobalAdditionalTemplate;
@@ -49,11 +48,9 @@ public class ExaltedCharacter implements ICharacter {
     addModels(generics);
 
     // Charm Model
-    this.charms = new CharmConfiguration(hero, HealthModelFetcher.fetch(hero), context, initializationContext.getCharacterTypes(),
+    this.charms = new CharmConfiguration(hero, template, HealthModelFetcher.fetch(hero), context, initializationContext.getCharacterTypes(),
             initializationContext.getTemplateRegistry(), initializationContext.getCharmProvider());
-    addCompulsiveCharms(template);
     charms.addCharmLearnListener(new CharacterChangeCharmListener(context.getCharacterListening()));
-    charms.initListening();
 
     // Combo Model
     this.combos = new ComboConfiguration(charms);
@@ -82,15 +79,6 @@ public class ExaltedCharacter implements ICharacter {
     });
 
     getCharacterContext().getCharacterListening().addChangeListener(management.getStatisticsChangeListener());
-  }
-
-  private void addCompulsiveCharms(HeroTemplate template) {
-    String[] compulsiveCharms = template.getAdditionalRules().getCompulsiveCharmIDs();
-    for (String charmId : compulsiveCharms) {
-      ICharmConfiguration charmConfiguration = getCharms();
-      ICharm charm = charmConfiguration.getCharmById(charmId);
-      charmConfiguration.getGroup(charm).learnCharm(charm, false);
-    }
   }
 
   private void addModels(ICharacterGenerics generics) {

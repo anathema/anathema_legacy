@@ -15,6 +15,7 @@ import net.sf.anathema.character.generic.magic.charms.ICharmIdMap;
 import net.sf.anathema.character.generic.magic.charms.IndirectCharmRequirement;
 import net.sf.anathema.character.generic.magic.charms.special.ISpecialCharm;
 import net.sf.anathema.character.generic.magic.charms.special.ISpecialCharmConfiguration;
+import net.sf.anathema.character.generic.template.HeroTemplate;
 import net.sf.anathema.character.generic.template.ITemplateRegistry;
 import net.sf.anathema.character.generic.template.magic.MartialArtsCharmConfiguration;
 import net.sf.anathema.character.generic.type.CharacterTypes;
@@ -74,7 +75,7 @@ public class CharmConfiguration implements ICharmConfiguration {
   private NonMartialArtsOptions nonMartialArtsOptions;
   private Hero hero;
 
-  public CharmConfiguration(Hero hero, HealthModel health, ICharacterModelContext context, CharacterTypes characterTypes, ITemplateRegistry registry,
+  public CharmConfiguration(Hero hero, HeroTemplate template, HealthModel health, ICharacterModelContext context, CharacterTypes characterTypes, ITemplateRegistry registry,
                             ICharmProvider provider) {
     this.hero = hero;
     this.martialArtsOptions = new MartialArtsOptions(context, registry);
@@ -88,6 +89,16 @@ public class CharmConfiguration implements ICharmConfiguration {
     filterSet.add(new ObtainableCharmFilter(this));
     filterSet.add(new CharacterSourceBookFilter(this));
     filterSet.add(new EssenceLevelCharmFilter());
+    addCompulsiveCharms(template);
+    initListening();
+  }
+
+  private void addCompulsiveCharms(HeroTemplate template) {
+    String[] compulsiveCharms = template.getAdditionalRules().getCompulsiveCharmIDs();
+    for (String charmId : compulsiveCharms) {
+      ICharm charm = getCharmById(charmId);
+      getGroup(charm).learnCharm(charm, false);
+    }
   }
 
   private void initNonMartialArtsGroups() {
