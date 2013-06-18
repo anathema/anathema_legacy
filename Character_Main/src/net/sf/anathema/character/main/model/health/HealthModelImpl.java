@@ -29,7 +29,7 @@ public class HealthModelImpl implements HealthModel, HeroModel {
   @Override
   public void initialize(InitializationContext context, Hero hero) {
     TraitMap traitMap = TraitModelFetcher.fetch(hero);
-    HeroTemplate template = context.getTemplate();
+    HeroTemplate template = hero.getTemplate();
     this.arbitrator = new OxBodyTechniqueArbitratorImpl(traitMap.getTraits(template.getToughnessControllingTraitTypes()));
     addHealthLevelProvider(new DyingStaminaHealthLevelProvider(traitMap));
     if (template.getBaseHealthProviders() == null) {

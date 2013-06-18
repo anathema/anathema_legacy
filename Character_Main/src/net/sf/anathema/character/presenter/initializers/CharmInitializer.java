@@ -29,14 +29,14 @@ public class CharmInitializer implements CharacterModelInitializer {
 
   @Override
   public void initialize(SectionView sectionView, ICharacter character, Resources resources) {
-    boolean canLearnCharms = character.getHeroTemplate().getMagicTemplate().getCharmTemplate().canLearnCharms();
+    boolean canLearnCharms = character.getTemplate().getMagicTemplate().getCharmTemplate().canLearnCharms();
     if (!canLearnCharms) {
       return;
     }
     ITemplateRegistry templateRegistry = CharacterGenericsExtractor.getGenerics(applicationModel).getTemplateRegistry();
     MagicDescriptionProvider provider = CharmDescriptionProviderExtractor.CreateFor(applicationModel, resources);
     CharacterCharmModel model = new CharacterCharmModel(character, provider);
-    HeroTemplate characterTemplate = character.getHeroTemplate();
+    HeroTemplate characterTemplate = character.getTemplate();
     ITreePresentationProperties presentationProperties =
             characterTemplate.getPresentationProperties().getCharmPresentationProperties();
     CharmDisplayPropertiesMap propertiesMap = new CharmDisplayPropertiesMap(templateRegistry);

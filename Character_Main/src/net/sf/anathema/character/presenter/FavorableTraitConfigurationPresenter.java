@@ -41,7 +41,7 @@ public class FavorableTraitConfigurationPresenter {
     this.traitConfiguration = TraitModelFetcher.fetch(character);
     this.basicCharacterData = character.getCharacterContext().getBasicCharacterContext();
     this.characterListening = character.getCharacterContext().getCharacterListening();
-    this.presentationProperties = character.getHeroTemplate().getPresentationProperties();
+    this.presentationProperties = character.getTemplate().getPresentationProperties();
     this.resources = resources;
     this.view = view;
   }

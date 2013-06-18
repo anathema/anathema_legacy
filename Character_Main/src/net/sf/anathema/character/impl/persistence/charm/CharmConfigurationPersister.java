@@ -60,7 +60,7 @@ public class CharmConfigurationPersister {
   }
 
   public void save(Element parent, ICharacter character) {
-    HeroTemplate template = character.getHeroTemplate();
+    HeroTemplate template = character.getTemplate();
     ICharmTemplate charmTemplate = template.getMagicTemplate().getCharmTemplate();
     if (!charmTemplate.canLearnCharms()) {
       return;

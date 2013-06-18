@@ -20,7 +20,7 @@ public interface ICharacter extends IItemData, Hero {
 
   IExtendedConfiguration getExtendedConfiguration();
 
-  HeroTemplate getHeroTemplate();
+  HeroTemplate getTemplate();
 
   ICharacterType getCharacterType();
 }

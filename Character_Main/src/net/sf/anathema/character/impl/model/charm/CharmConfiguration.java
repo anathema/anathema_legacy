@@ -111,7 +111,7 @@ public class CharmConfiguration implements ICharmConfiguration {
     filterSet.add(new ObtainableCharmFilter(this));
     filterSet.add(new CharacterSourceBookFilter(this));
     filterSet.add(new EssenceLevelCharmFilter());
-    addCompulsiveCharms(context.getTemplate());
+    addCompulsiveCharms(hero.getTemplate());
     EssencePoolModelFetcher.fetch(hero).addOverdrivePool(new CharmOverdrivePool(this, experience));
     hero.getChangeAnnouncer().addListener(new FlavoredChangeListener() {
       @Override
@@ -480,7 +480,7 @@ public class CharmConfiguration implements ICharmConfiguration {
 
   @Override
   public final boolean isCompulsiveCharm(ICharm charm) {
-    String[] compulsiveCharmIDs = context.getTemplate().getAdditionalRules().getCompulsiveCharmIDs();
+    String[] compulsiveCharmIDs = hero.getTemplate().getAdditionalRules().getCompulsiveCharmIDs();
     return ArrayUtils.contains(compulsiveCharmIDs, charm.getId());
   }
 

@@ -38,6 +38,7 @@ public class AbilityModelImpl extends DefaultTraitMap implements AbilityModel, H
   private IIdentifiedCasteTraitTypeGroup[] abilityTraitGroups;
   private SpecialtiesConfiguration specialtyConfiguration;
   private InitializationContext context;
+  private Hero hero;
 
   @Override
   public Identifier getId() {
@@ -47,7 +48,8 @@ public class AbilityModelImpl extends DefaultTraitMap implements AbilityModel, H
   @Override
   public void initialize(InitializationContext context, Hero hero) {
     this.context = context;
-    HeroTemplate template = context.getTemplate();
+    this.hero = hero;
+    HeroTemplate template = hero.getTemplate();
     ICasteCollection casteCollection = template.getCasteCollection();
     this.abilityTraitGroups = new AbilityTypeGroupFactory().createTraitGroups(casteCollection, template.getAbilityGroups());
     IncrementChecker incrementChecker = createFavoredAbilityIncrementChecker(template, this);
@@ -84,7 +86,7 @@ public class AbilityModelImpl extends DefaultTraitMap implements AbilityModel, H
   }
 
   private FavorableTraitFactory createFactory() {
-    IAdditionalTraitRules traitRules = context.getTemplate().getAdditionalRules().getAdditionalTraitRules();
+    IAdditionalTraitRules traitRules = hero.getTemplate().getAdditionalRules().getAdditionalTraitRules();
     return new FavorableTraitFactory(context.getTraitContext(), traitRules, context.getBasicCharacterContext(), context.getCharacterListening());
   }
 

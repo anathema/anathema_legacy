@@ -33,7 +33,7 @@ public class CreationOverviewPresenter implements Presenter {
     this.management = management;
     this.resources = resources;
     this.character = character;
-    this.template = character.getHeroTemplate();
+    this.template = character.getTemplate();
     character.getCharacterContext().getCharacterListening().addChangeListener(new GlobalCharacterChangeAdapter() {
       @Override
       public void changeOccurred() {

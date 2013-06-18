@@ -34,19 +34,18 @@ public class ExaltedCharacter implements ICharacter {
 
   private final CharacterChangeManagement management = new CharacterChangeManagement();
   private final CharacterModelContext context;
-  private final HeroTemplate heroTemplate;
   private final CharmConfiguration charms;
   private final IComboConfiguration combos;
   private final ISpellConfiguration spells;
   private final ExtendedConfiguration extendedConfiguration;
-  private final DefaultHero hero = new DefaultHero();
+  private final DefaultHero hero;
   private final ModelInitializationContext initializationContext;
 
   public ExaltedCharacter(HeroTemplate template, ICharacterGenerics generics) {
-    this.heroTemplate = template;
+    this.hero = new DefaultHero(template);
     context = new CharacterModelContext(new GenericCharacter(this), this, hero.getListening());
     this.extendedConfiguration = new ExtendedConfiguration(context);
-    this.initializationContext = new ModelInitializationContext(context, heroTemplate, generics);
+    this.initializationContext = new ModelInitializationContext(context, generics);
     addModels(generics);
 
     // Charm Model
@@ -58,7 +57,7 @@ public class ExaltedCharacter implements ICharacter {
     combos.addComboConfigurationListener(new CharacterChangeComboListener(context.getCharacterListening()));
 
     // Spell Model
-    this.spells = new SpellConfiguration(charms, context.getSpellLearnStrategy(), initializationContext.getTemplate(),
+    this.spells = new SpellConfiguration(charms, context.getSpellLearnStrategy(), getTemplate(),
             generics.getDataSet(ISpellCache.class));
     this.spells.addChangeListener(new IChangeListener() {
       @Override
@@ -83,7 +82,7 @@ public class ExaltedCharacter implements ICharacter {
   }
 
   private void addModels(ICharacterGenerics generics) {
-    HeroModelInitializer initializer = new HeroModelInitializer(initializationContext, heroTemplate);
+    HeroModelInitializer initializer = new HeroModelInitializer(initializationContext, getTemplate());
     initializer.addModels(generics, hero);
   }
 
@@ -95,7 +94,7 @@ public class ExaltedCharacter implements ICharacter {
     }
   }
 
-  // todo: remove itemDate-Relicts in Character (see ExaltedCharacterPersister)
+  // todo (sandra): remove itemDate-Relicts in Character (see ExaltedCharacterPersister)
   public void setPrintNameAdjuster(PrintNameAdjuster adjuster) {
     HeroDescription characterDescription = HeroDescriptionFetcher.fetch(this);
     if (characterDescription == null) {
@@ -137,13 +136,9 @@ public class ExaltedCharacter implements ICharacter {
     return spells;
   }
 
-  public HeroTemplate getHeroTemplate() {
-    return heroTemplate;
-  }
-
   @Override
   public ICharacterType getCharacterType() {
-    return getHeroTemplate().getTemplateType().getCharacterType();
+    return getTemplate().getTemplateType().getCharacterType();
   }
 
   public ExtendedConfiguration getExtendedConfiguration() {
@@ -152,6 +147,11 @@ public class ExaltedCharacter implements ICharacter {
 
   public ICharacterModelContext getCharacterContext() {
     return context;
+  }
+
+  @Override
+  public HeroTemplate getTemplate() {
+    return hero.getTemplate();
   }
 
   @Override

@@ -1,6 +1,7 @@
 package net.sf.anathema.character.main.hero;
 
 import net.sf.anathema.character.change.ChangeAnnouncer;
+import net.sf.anathema.character.generic.template.HeroTemplate;
 import net.sf.anathema.character.impl.model.context.CharacterListening;
 import net.sf.anathema.lib.util.Identifier;
 
@@ -12,13 +13,15 @@ public class DefaultHero implements Hero {
   private CharacterListening listening = new CharacterListening(this);
   private Map<String, HeroModel> modelsById = new HashMap<>();
   private boolean fullyLoaded = false;
+  private final HeroTemplate template;
 
-  public void addModel(HeroModel model) {
-    modelsById.put(model.getId().getId(), model);
+  public DefaultHero(HeroTemplate template) {
+    this.template = template;
   }
 
-  public CharacterListening getListening() {
-    return listening;
+  @Override
+  public HeroTemplate getTemplate() {
+    return template;
   }
 
   @Override
@@ -38,5 +41,13 @@ public class DefaultHero implements Hero {
 
   public void setFullyLoaded(boolean fullyLoaded) {
     this.fullyLoaded = fullyLoaded;
+  }
+
+  public void addModel(HeroModel model) {
+    modelsById.put(model.getId().getId(), model);
+  }
+
+  public CharacterListening getListening() {
+    return listening;
   }
 }

@@ -29,7 +29,7 @@ public class ExperiencePointManagement implements IExperiencePointManagement {
     this.character = character;
     this.basicCharacter = character.getCharacterContext().getBasicCharacterContext();
     this.traitMap = TraitModelFetcher.fetch(character);
-    this.calculator = new ExperiencePointCostCalculator(character.getHeroTemplate().getExperienceCost());
+    this.calculator = new ExperiencePointCostCalculator(character.getTemplate().getExperienceCost());
   }
 
   private IValueModel<Integer> getAbilityModel() {

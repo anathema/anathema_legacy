@@ -23,7 +23,7 @@ public class CasteInitializer implements CharacterModelInitializer {
 
   @Override
   public void initialize(SectionView sectionView, ICharacter character, Resources resources) {
-    if (character.getHeroTemplate().getCasteCollection().isEmpty()){
+    if (character.getTemplate().getCasteCollection().isEmpty()){
       return;
     }
     String conceptHeader = resources.getString("CardView.CharacterConcept.Title");

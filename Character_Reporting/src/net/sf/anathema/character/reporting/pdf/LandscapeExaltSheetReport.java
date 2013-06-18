@@ -103,6 +103,6 @@ public class LandscapeExaltSheetReport extends AbstractPdfReport {
       return false;
     }
     ICharacter character = (ICharacter) itemData;
-    return character.getHeroTemplate().getTemplateType().getCharacterType().isEssenceUser();
+    return character.getTemplate().getTemplateType().getCharacterType().isEssenceUser();
   }
 }

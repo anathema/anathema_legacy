@@ -124,7 +124,7 @@ public class GenericCharacter implements IGenericCharacter {
 
   @Override
   public HeroTemplate getTemplate() {
-    return character.getHeroTemplate();
+    return character.getTemplate();
   }
 
   @Override
@@ -323,7 +323,7 @@ public class GenericCharacter implements IGenericCharacter {
     for (ILearningCharmGroup group : character.getCharms().getAllGroups()) {
       for (ICharm charm : group.getAllCharms()) {
         if (charm.isInstanceOfGenericCharm() &&
-            charm.getCharacterType().equals(character.getHeroTemplate().getTemplateType().getCharacterType())) {
+            charm.getCharacterType().equals(character.getTemplate().getTemplateType().getCharacterType())) {
           genericCharms.add(charm);
         }
       }

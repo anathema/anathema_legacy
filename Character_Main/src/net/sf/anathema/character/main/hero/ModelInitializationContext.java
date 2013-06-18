@@ -7,7 +7,6 @@ import net.sf.anathema.character.generic.framework.additionaltemplate.model.ICha
 import net.sf.anathema.character.generic.framework.additionaltemplate.model.ICharacterModelContext;
 import net.sf.anathema.character.generic.framework.additionaltemplate.model.TraitContext;
 import net.sf.anathema.character.generic.impl.template.magic.ICharmProvider;
-import net.sf.anathema.character.generic.template.HeroTemplate;
 import net.sf.anathema.character.generic.template.ITemplateRegistry;
 import net.sf.anathema.character.generic.type.CharacterTypes;
 
@@ -16,12 +15,10 @@ import java.util.List;
 public class ModelInitializationContext implements InitializationContext {
 
   private ICharacterModelContext context;
-  private HeroTemplate template;
   private ICharacterGenerics generics;
 
-  public ModelInitializationContext(ICharacterModelContext context, HeroTemplate template, ICharacterGenerics generics) {
+  public ModelInitializationContext(ICharacterModelContext context, ICharacterGenerics generics) {
     this.context = context;
-    this.template = template;
     this.generics = generics;
   }
 
@@ -52,11 +49,6 @@ public class ModelInitializationContext implements InitializationContext {
   @Override
   public <T> List<T> getAllRegistered(Class<T> interfaceClass) {
     return context.getAllRegistered(interfaceClass);
-  }
-
-  @Override
-  public HeroTemplate getTemplate() {
-    return template;
   }
 
   @Override

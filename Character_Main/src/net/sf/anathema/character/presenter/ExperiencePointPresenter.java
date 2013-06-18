@@ -1,6 +1,5 @@
 package net.sf.anathema.character.presenter;
 
-import net.sf.anathema.character.generic.framework.additionaltemplate.listening.DedicatedCharacterChangeAdapter;
 import net.sf.anathema.character.generic.type.ICharacterType;
 import net.sf.anathema.character.main.model.experience.ExperienceModel;
 import net.sf.anathema.character.main.model.experience.ExperienceModelFetcher;
@@ -34,7 +33,7 @@ public class ExperiencePointPresenter {
 
   private void initExperiencePointPresentation(boolean experienced, SectionView section) {
     if (experienced) {
-      ICharacterType characterType = character.getHeroTemplate().getTemplateType().getCharacterType();
+      ICharacterType characterType = character.getTemplate().getTemplateType().getCharacterType();
       String header = resources.getString("CardView.ExperienceConfiguration.Title");
       ExperienceView experienceView = section.addView(header, ExperienceView.class, characterType);
       new ExperienceConfigurationPresenter(resources, ExperienceModelFetcher.fetch(character).getExperiencePoints(), experienceView)

@@ -31,7 +31,7 @@ public class EssencePoolModelImpl implements EssencePoolModel, HeroModel {
 
   @Override
   public void initialize(InitializationContext context, Hero hero) {
-    HeroTemplate template = context.getTemplate();
+    HeroTemplate template = hero.getTemplate();
     this.additionalRules = template.getAdditionalRules();
     this.essenceTemplate = template.getEssenceTemplate();
     if (!isEssenceUser()) {

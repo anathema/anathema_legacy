@@ -12,23 +12,21 @@ import net.sf.anathema.character.generic.framework.additionaltemplate.model.IGen
 import net.sf.anathema.character.generic.framework.additionaltemplate.model.ITraitValueStrategy;
 import net.sf.anathema.character.generic.framework.additionaltemplate.model.TraitContext;
 import net.sf.anathema.character.generic.impl.template.magic.ICharmProvider;
-import net.sf.anathema.character.generic.template.HeroTemplate;
 import net.sf.anathema.character.generic.template.ITemplateRegistry;
 import net.sf.anathema.character.generic.template.presentation.IPresentationProperties;
 import net.sf.anathema.character.generic.type.CharacterTypes;
 import net.sf.anathema.character.impl.model.context.BasicCharacterContext;
 import net.sf.anathema.character.impl.model.context.trait.CreationTraitValueStrategy;
 import net.sf.anathema.character.main.hero.InitializationContext;
-import net.sf.anathema.character.main.testing.dummy.template.DummyHeroTemplate;
 import net.sf.anathema.character.model.ICharacter;
 
 import java.util.List;
 
 public class DummyCharacterModelContext implements ICharacterModelContext, InitializationContext {
 
-  private DummyHero dummyHero = new DummyHero();
   private final ITraitValueStrategy valueStrategy;
   private DummyGenericCharacter character;
+  private DummyHero dummyHero = new DummyHero();
   private TraitContext traitContext = new TraitContext() {
 
     @Override
@@ -53,8 +51,7 @@ public class DummyCharacterModelContext implements ICharacterModelContext, Initi
 
   public DummyCharacterModelContext(final ITraitValueStrategy valueStrategy) {
     this.valueStrategy = valueStrategy;
-    HeroTemplate template = new DummyHeroTemplate();
-    this.character = new DummyGenericCharacter(template);
+    this.character = new DummyGenericCharacter(dummyHero.getTemplate());
   }
 
   public DummyGenericCharacter getCharacter() {
@@ -84,11 +81,6 @@ public class DummyCharacterModelContext implements ICharacterModelContext, Initi
   @Override
   public TraitContext getTraitContext() {
     return traitContext;
-  }
-
-  @Override
-  public HeroTemplate getTemplate() {
-    return character.getTemplate();
   }
 
   @Override

@@ -1,7 +1,6 @@
 package net.sf.anathema.hero.concept.display.caste.presenter;
 
 import net.sf.anathema.character.generic.caste.ICasteType;
-import net.sf.anathema.character.generic.framework.additionaltemplate.listening.DedicatedCharacterChangeAdapter;
 import net.sf.anathema.character.generic.template.HeroTemplate;
 import net.sf.anathema.character.main.model.concept.CharacterConceptFetcher;
 import net.sf.anathema.character.main.model.experience.ExperienceModel;
@@ -32,10 +31,10 @@ public class CastePresenter {
   }
 
   public void initPresentation() {
-    HeroTemplate template = character.getHeroTemplate();
+    HeroTemplate template = character.getTemplate();
     String casteLabelResourceKey = template.getPresentationProperties().getCasteLabelResource();
     ObjectUi<Object> casteUi = new CasteSelectObjectUi(resources, template.getPresentationProperties());
-    ICasteType[] casteTypes = template.getCasteCollection().getAllCasteTypes(character.getHeroTemplate().getTemplateType());
+    ICasteType[] casteTypes = template.getCasteCollection().getAllCasteTypes(character.getTemplate().getTemplateType());
     ListCellRenderer renderer = new ObjectUiListCellRenderer(casteUi);
     final IObjectSelectionView<ICasteType> casteView =
             view.addObjectSelectionView(resources.getString(casteLabelResourceKey), casteTypes, renderer, false);

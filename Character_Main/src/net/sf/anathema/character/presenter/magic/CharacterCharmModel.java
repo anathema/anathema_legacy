@@ -21,7 +21,7 @@ public class CharacterCharmModel {
   }
 
   public boolean isAllowedAlienCharms() {
-    ICharmTemplate charmTemplate = character.getHeroTemplate().getMagicTemplate().getCharmTemplate();
+    ICharmTemplate charmTemplate = character.getTemplate().getMagicTemplate().getCharmTemplate();
     return charmTemplate.isAllowedAlienCharms(getCaste().getType());
   }
 

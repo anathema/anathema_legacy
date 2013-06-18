@@ -37,7 +37,7 @@ public class AttributeModelImpl extends DefaultTraitMap implements AttributeMode
 
   @Override
   public void initialize(InitializationContext context, Hero hero) {
-    this.template = context.getTemplate();
+    this.template = hero.getTemplate();
     this.context = context;
     this.attributeTraitGroups = new AttributeTypeGroupFactory().createTraitGroups(template.getCasteCollection(), template.getAttributeGroups());
     addAttributes();

@@ -20,7 +20,7 @@ public class CharacterHolder {
   }
 
   public HeroTemplate getCharacterTemplate() {
-    return character.getHeroTemplate();
+    return character.getTemplate();
   }
 
   public CharacterConcept getCharacterConcept() {

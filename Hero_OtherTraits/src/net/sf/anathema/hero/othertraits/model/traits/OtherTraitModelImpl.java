@@ -35,7 +35,7 @@ public class OtherTraitModelImpl extends DefaultTraitMap implements OtherTraitMo
 
   @Override
   public void initialize(InitializationContext context, Hero hero) {
-    this.template = context.getTemplate();
+    this.template = hero.getTemplate();
     addEssence(context.getTraitContext());
     addVirtues(context.getTraitContext());
     addWillpower(context.getTraitContext());

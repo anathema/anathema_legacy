@@ -62,14 +62,14 @@ public class BonusPointManagement implements IBonusPointManagement {
 
   public BonusPointManagement(ICharacter character) {
     this.character = character;
-    this.creationPoints = character.getHeroTemplate().getCreationPoints();
+    this.creationPoints = character.getTemplate().getCreationPoints();
     for (IAdditionalModel model : character.getExtendedConfiguration().getAdditionalModels()) {
       bonusPointCalculator.addAdditionalBonusPointCalculator(model.getBonusPointCalculator());
     }
     bonusAdditionalPools = new AdditionalBonusPointPoolManagement(TraitModelFetcher.fetch(character),
-            character.getHeroTemplate().getAdditionalRules().getAdditionalBonusPointPools());
-    this.cost = character.getHeroTemplate().getBonusPointCosts();
-    HeroTemplate characterTemplate = character.getHeroTemplate();
+            character.getTemplate().getAdditionalRules().getAdditionalBonusPointPools());
+    this.cost = character.getTemplate().getBonusPointCosts();
+    HeroTemplate characterTemplate = character.getTemplate();
     GenericCharacter characterAbstraction = GenericCharacterUtilities.createGenericCharacter(character);
     TraitMap traitMap = TraitModelFetcher.fetch(character);
     this.abilityCalculator =
@@ -174,7 +174,7 @@ public class BonusPointManagement implements IBonusPointManagement {
 
   @Override
   public IAdditionalSpendingModel getDefaultCharmModel() {
-    IAdditionalRules additionalRules = character.getHeroTemplate().getAdditionalRules();
+    IAdditionalRules additionalRules = character.getTemplate().getAdditionalRules();
     return new DefaultCharmModel(magicCalculator, magicAdditionalPools, creationPoints, additionalRules);
   }
 
@@ -208,7 +208,7 @@ public class BonusPointManagement implements IBonusPointManagement {
 
       @Override
       public boolean isExtensionRequired() {
-        IAdditionalRules additionalRules = character.getHeroTemplate().getAdditionalRules();
+        IAdditionalRules additionalRules = character.getTemplate().getAdditionalRules();
         return additionalRules != null && additionalRules.getAdditionalBonusPointPools().length > 0;
       }
 
@@ -256,7 +256,7 @@ public class BonusPointManagement implements IBonusPointManagement {
   }
 
   private void addCharmModels(List<IOverviewModel> models) {
-    if (!character.getHeroTemplate().getMagicTemplate().getCharmTemplate().canLearnCharms()) {
+    if (!character.getTemplate().getMagicTemplate().getCharmTemplate().canLearnCharms()) {
       return;
     }
     if (getFavoredCharmModel().getAlotment() > 0) {

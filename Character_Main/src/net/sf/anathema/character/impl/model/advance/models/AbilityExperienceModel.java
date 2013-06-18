@@ -39,7 +39,7 @@ public class AbilityExperienceModel extends AbstractIntegerValueModel {
 
   private Trait[] getAllAbilities() {
     List<TraitType> abilityTypes = new ArrayList<>();
-    for (GroupedTraitType type : character.getHeroTemplate().getAbilityGroups()) {
+    for (GroupedTraitType type : character.getTemplate().getAbilityGroups()) {
       abilityTypes.add(type.getTraitType());
     }
     return traitMap.getTraits(abilityTypes.toArray(new TraitType[abilityTypes.size()]));

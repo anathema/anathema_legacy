@@ -5,7 +5,6 @@ import net.sf.anathema.character.generic.character.IMagicCollection;
 import net.sf.anathema.character.generic.framework.additionaltemplate.model.ICharacterListening;
 import net.sf.anathema.character.generic.framework.additionaltemplate.model.TraitContext;
 import net.sf.anathema.character.generic.impl.template.magic.ICharmProvider;
-import net.sf.anathema.character.generic.template.HeroTemplate;
 import net.sf.anathema.character.generic.template.ITemplateRegistry;
 import net.sf.anathema.character.generic.type.CharacterTypes;
 
@@ -26,8 +25,6 @@ public interface InitializationContext {
   IMagicCollection getMagicCollection();
 
   <T> List<T> getAllRegistered(Class<T> interfaceClass);
-
-  HeroTemplate getTemplate();
 
   CharacterTypes getCharacterTypes();
 

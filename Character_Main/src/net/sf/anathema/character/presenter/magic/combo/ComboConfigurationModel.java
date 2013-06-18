@@ -22,7 +22,7 @@ public class ComboConfigurationModel {
 
   public boolean isAlienCharmsAllowed() {
     ICasteType caste = CharacterConceptFetcher.fetch(character).getCaste().getType();
-    return character.getHeroTemplate().getMagicTemplate().getCharmTemplate().isAllowedAlienCharms(caste);
+    return character.getTemplate().getMagicTemplate().getCharmTemplate().isAllowedAlienCharms(caste);
   }
 
   public ICharmConfiguration getCharmConfiguration() {
