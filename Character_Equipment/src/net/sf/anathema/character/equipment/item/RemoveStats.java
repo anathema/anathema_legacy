@@ -1,14 +1,12 @@
 package net.sf.anathema.character.equipment.item;
 
-import net.sf.anathema.character.equipment.item.model.IEquipmentTemplateEditModel;
 import net.sf.anathema.character.equipment.item.view.ToolListView;
 import net.sf.anathema.character.generic.equipment.weapon.IEquipmentStats;
 import net.sf.anathema.framework.presenter.resources.BasicUi;
 import net.sf.anathema.interaction.Command;
 import net.sf.anathema.interaction.Tool;
+import net.sf.anathema.lib.control.IChangeListener;
 import net.sf.anathema.lib.resources.Resources;
-
-import java.util.List;
 
 public class RemoveStats {
 
@@ -27,22 +25,20 @@ public class RemoveStats {
     tool.setCommand(new Command() {
       @Override
       public void execute() {
-        List<IEquipmentStats> equipmentStats = statsListView.getSelectedItems();
-        IEquipmentStats[] stats = equipmentStats.toArray(new IEquipmentStats[equipmentStats.size()]);
-        editModel.removeStatistics(stats);
+        editModel.removeSelectedStatistics();
       }
     });
-    statsListView.addListSelectionListener(new Runnable() {
+    editModel.whenSelectedStatsChanges(new IChangeListener() {
       @Override
-      public void run() {
-        updateEnabled(statsListView, tool);
+      public void changeOccurred() {
+        updateEnabled(tool);
       }
     });
-    updateEnabled(statsListView, tool);
+    updateEnabled(tool);
   }
 
-  private void updateEnabled(ToolListView<IEquipmentStats> statsListView, Tool tool) {
-    if (statsListView.getSelectedItems().size() > 0) {
+  private void updateEnabled(Tool tool) {
+    if (editModel.hasSelectedStats()) {
       tool.enable();
     } else {
       tool.disable();

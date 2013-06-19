@@ -7,12 +7,15 @@ import net.sf.anathema.character.equipment.item.model.IEquipmentTemplateEditMode
 import net.sf.anathema.character.equipment.item.model.StatsEditor;
 import net.sf.anathema.character.generic.equipment.weapon.IEquipmentStats;
 import net.sf.anathema.lib.control.IChangeListener;
+import org.jmock.example.announcer.Announcer;
 
 import java.util.List;
 
 public class WrappingStatsEditModel implements StatsEditModel {
 
+  private static final IEquipmentStats NO_SELECTION = null;
   private final IEquipmentDatabaseManagement model;
+  private final Announcer<IChangeListener> announcer = new Announcer<>(IChangeListener.class);
   private IEquipmentStats selectedStats;
 
   public WrappingStatsEditModel(IEquipmentDatabaseManagement model) {
@@ -60,18 +63,36 @@ public class WrappingStatsEditModel implements StatsEditModel {
   }
 
   @Override
-  public void removeStatistics(IEquipmentStats[] stats) {
-    editModel().removeStatistics(stats);
+  public void removeSelectedStatistics() {
+    if(!hasSelectedStats()) {
+      return;
+    }
+    editModel().removeStatistics(selectedStats);
+    selectStats(NO_SELECTION);
   }
 
   @Override
   public void selectStats(IEquipmentStats selected) {
+    if (this.selectedStats == selected) {
+      return;
+    }
     this.selectedStats = selected;
+    announcer.announce().changeOccurred();
   }
 
   @Override
   public IEquipmentStats getSelectedStats() {
     return selectedStats;
+  }
+
+  @Override
+  public void whenSelectedStatsChanges(IChangeListener listener) {
+    announcer.addListener(listener);
+  }
+
+  @Override
+  public boolean hasSelectedStats() {
+    return selectedStats != NO_SELECTION;
   }
 
   private IEquipmentTemplateEditModel editModel() {

@@ -25,9 +25,13 @@ public interface StatsEditModel {
 
   void replaceSelectedStatistics(IEquipmentStats newStats);
 
-  void removeStatistics(IEquipmentStats[] stats);
+  void removeSelectedStatistics();
 
   void selectStats(IEquipmentStats selected);
 
   IEquipmentStats getSelectedStats();
+
+  void whenSelectedStatsChanges(IChangeListener iChangeListener);
+
+  boolean hasSelectedStats();
 }
