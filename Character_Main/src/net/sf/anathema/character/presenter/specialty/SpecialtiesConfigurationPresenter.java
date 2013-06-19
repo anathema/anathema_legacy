@@ -1,5 +1,6 @@
 package net.sf.anathema.character.presenter.specialty;
 
+import net.sf.anathema.character.change.ChangeFlavor;
 import net.sf.anathema.character.generic.framework.ITraitReference;
 import net.sf.anathema.character.generic.framework.additionaltemplate.listening.GlobalCharacterChangeAdapter;
 import net.sf.anathema.character.generic.framework.resources.TraitInternationalizer;
@@ -9,6 +10,9 @@ import net.sf.anathema.character.library.trait.specialties.ITraitReferencesChang
 import net.sf.anathema.character.library.trait.specialties.Specialty;
 import net.sf.anathema.character.library.trait.subtrait.ISpecialtyListener;
 import net.sf.anathema.character.library.trait.subtrait.ISubTraitContainer;
+import net.sf.anathema.character.main.hero.Hero;
+import net.sf.anathema.character.main.hero.change.FlavoredChangeListener;
+import net.sf.anathema.character.main.model.experience.ExperienceChange;
 import net.sf.anathema.character.view.ISpecialtyView;
 import net.sf.anathema.framework.presenter.resources.BasicUi;
 import net.sf.anathema.framework.presenter.view.IButtonControlledComboEditView;
@@ -51,10 +55,12 @@ public class SpecialtiesConfigurationPresenter implements Presenter {
 
   private final Resources resources;
   private final ISpecialtiesConfigurationView configurationView;
+  private Hero hero;
   private final ISpecialtiesConfiguration specialtyManagement;
 
-  public SpecialtiesConfigurationPresenter(ISpecialtiesConfiguration specialtyManagement, ISpecialtiesConfigurationView configurationView,
+  public SpecialtiesConfigurationPresenter(Hero hero, ISpecialtiesConfiguration specialtyManagement, ISpecialtiesConfigurationView configurationView,
                                            Resources resources) {
+    this.hero = hero;
     this.specialtyManagement = specialtyManagement;
     this.configurationView = configurationView;
     this.resources = resources;
@@ -119,16 +125,13 @@ public class SpecialtiesConfigurationPresenter implements Presenter {
         addSpecialtyView(specialty);
       }
     }
-    specialtyManagement.addCharacterChangeListener(new GlobalCharacterChangeAdapter() {
-
+    hero.getChangeAnnouncer().addListener(new FlavoredChangeListener() {
       @Override
-      public void changeOccurred() {
+      public void changeOccurred(ChangeFlavor flavor) {
+        if (flavor == ExperienceChange.FLAVOR_EXPERIENCE_STATE) {
+          updateSpecialtyViewButtons();
+        }
         setObjects(specialtySelectionView);
-      }
-
-      @Override
-      public void experiencedChanged(boolean experienced) {
-        updateSpecialtyViewButtons();
       }
     });
     updateSpecialtyViewButtons();

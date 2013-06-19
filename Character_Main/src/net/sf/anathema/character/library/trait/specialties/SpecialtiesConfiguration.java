@@ -2,7 +2,6 @@ package net.sf.anathema.character.library.trait.specialties;
 
 import com.google.common.base.Strings;
 import net.sf.anathema.character.generic.framework.ITraitReference;
-import net.sf.anathema.character.generic.framework.additionaltemplate.listening.ICharacterChangeListener;
 import net.sf.anathema.character.generic.traits.TraitType;
 import net.sf.anathema.character.generic.traits.groups.ITraitTypeGroup;
 import net.sf.anathema.character.generic.traits.groups.TraitTypeGroup;
@@ -119,11 +118,6 @@ public class SpecialtiesConfiguration implements ISpecialtiesConfiguration {
   @Override
   public boolean isExperienced() {
     return ExperienceModelFetcher.fetch(hero).isExperienced();
-  }
-
-  @Override
-  public void addCharacterChangeListener(ICharacterChangeListener listener) {
-    context.getCharacterListening().addChangeListener(listener);
   }
 
   @Override

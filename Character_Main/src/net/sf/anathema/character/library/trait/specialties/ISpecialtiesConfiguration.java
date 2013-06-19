@@ -1,7 +1,6 @@
 package net.sf.anathema.character.library.trait.specialties;
 
 import net.sf.anathema.character.generic.framework.ITraitReference;
-import net.sf.anathema.character.generic.framework.additionaltemplate.listening.ICharacterChangeListener;
 import net.sf.anathema.character.generic.traits.TraitType;
 import net.sf.anathema.character.library.trait.subtrait.ISubTraitContainer;
 import net.sf.anathema.lib.control.IChangeListener;
@@ -27,8 +26,6 @@ public interface ISpecialtiesConfiguration {
   boolean isEntryComplete();
 
   boolean isExperienced();
-
-  void addCharacterChangeListener(ICharacterChangeListener listener);
 
   void addSelectionChangeListener(IChangeListener listener);
 

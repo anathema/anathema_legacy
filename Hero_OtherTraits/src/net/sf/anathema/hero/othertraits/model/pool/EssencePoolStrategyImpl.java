@@ -1,9 +1,9 @@
 package net.sf.anathema.hero.othertraits.model.pool;
 
+import net.sf.anathema.character.change.ChangeFlavor;
 import net.sf.anathema.character.generic.additionalrules.IAdditionalEssencePool;
 import net.sf.anathema.character.generic.additionalrules.IAdditionalRules;
 import net.sf.anathema.character.generic.character.IMagicCollection;
-import net.sf.anathema.character.generic.framework.additionaltemplate.listening.GlobalCharacterChangeAdapter;
 import net.sf.anathema.character.generic.framework.essence.IEssencePoolModifier;
 import net.sf.anathema.character.generic.template.essence.FactorizedTrait;
 import net.sf.anathema.character.generic.template.essence.FactorizedTraitSumCalculator;
@@ -11,7 +11,9 @@ import net.sf.anathema.character.generic.template.essence.IEssenceTemplate;
 import net.sf.anathema.character.generic.traits.GenericTrait;
 import net.sf.anathema.character.generic.traits.types.OtherTraitType;
 import net.sf.anathema.character.generic.traits.types.VirtueType;
+import net.sf.anathema.character.main.hero.Hero;
 import net.sf.anathema.character.main.hero.InitializationContext;
+import net.sf.anathema.character.main.hero.change.FlavoredChangeListener;
 import net.sf.anathema.character.main.model.essencepool.OverdrivePool;
 import net.sf.anathema.character.main.model.traits.TraitMap;
 import net.sf.anathema.lib.control.IChangeListener;
@@ -33,15 +35,15 @@ public class EssencePoolStrategyImpl implements EssencePoolStrategy {
   private final IMagicCollection magicCollection;
   private final InitializationContext context;
 
-  public EssencePoolStrategyImpl(IEssenceTemplate essenceTemplate, InitializationContext context, TraitMap traitMap,
+  public EssencePoolStrategyImpl(Hero hero, IEssenceTemplate essenceTemplate, InitializationContext context, TraitMap traitMap,
                                  IMagicCollection magicCollection, OverdrivePool overdrivePool, IAdditionalRules additionalRules) {
     this.traitMap = traitMap;
     this.magicCollection = magicCollection;
     this.overdrivePool = overdrivePool;
     this.additionalRules = additionalRules;
-    context.getCharacterListening().addChangeListener(new GlobalCharacterChangeAdapter() {
+    hero.getChangeAnnouncer().addListener(new FlavoredChangeListener() {
       @Override
-      public void changeOccurred() {
+      public void changeOccurred(ChangeFlavor flavor) {
         control.announce().changeOccurred();
       }
     });
