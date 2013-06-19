@@ -1,11 +1,9 @@
 package net.sf.anathema.character.main.hero;
 
-import net.sf.anathema.character.generic.IBasicCharacterData;
 import net.sf.anathema.character.generic.character.IMagicCollection;
 import net.sf.anathema.character.generic.framework.ICharacterGenerics;
 import net.sf.anathema.character.generic.framework.additionaltemplate.model.ICharacterListening;
 import net.sf.anathema.character.generic.framework.additionaltemplate.model.ICharacterModelContext;
-import net.sf.anathema.character.generic.framework.additionaltemplate.model.TraitContext;
 import net.sf.anathema.character.generic.impl.template.magic.ICharmProvider;
 import net.sf.anathema.character.generic.template.ITemplateRegistry;
 import net.sf.anathema.character.generic.type.CharacterTypes;
@@ -24,20 +22,8 @@ public class ModelInitializationContext implements InitializationContext {
 
   @Override
   @Deprecated
-  public IBasicCharacterData getBasicCharacterContext() {
-    return context.getBasicCharacterContext();
-  }
-
-  @Override
-  @Deprecated
   public ICharacterListening getCharacterListening() {
     return context.getCharacterListening();
-  }
-
-  @Override
-  @Deprecated
-  public TraitContext getTraitContext() {
-    return context.getTraitContext();
   }
 
   @Override

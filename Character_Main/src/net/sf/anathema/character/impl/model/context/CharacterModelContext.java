@@ -1,32 +1,25 @@
 package net.sf.anathema.character.impl.model.context;
 
 import net.sf.anathema.character.generic.IBasicCharacterData;
-import net.sf.anathema.character.generic.additionalrules.IAdditionalRules;
 import net.sf.anathema.character.generic.additionaltemplate.IAdditionalModel;
 import net.sf.anathema.character.generic.character.IGenericCharacter;
 import net.sf.anathema.character.generic.character.IGenericTraitCollection;
-import net.sf.anathema.character.generic.character.ILimitationContext;
 import net.sf.anathema.character.generic.character.IMagicCollection;
 import net.sf.anathema.character.generic.framework.additionaltemplate.model.ICharacterModelContext;
 import net.sf.anathema.character.generic.framework.additionaltemplate.model.ICharmContext;
 import net.sf.anathema.character.generic.framework.additionaltemplate.model.IGenericSpecialtyContext;
-import net.sf.anathema.character.generic.framework.additionaltemplate.model.TraitContext;
 import net.sf.anathema.character.generic.template.magic.IGenericCharmConfiguration;
-import net.sf.anathema.character.generic.template.presentation.IPresentationProperties;
-import net.sf.anathema.character.model.ICharacter;
 
 import java.util.List;
 
-public class CharacterModelContext implements ICharacterModelContext, ICharmContext, TraitContext {
+public class CharacterModelContext implements ICharacterModelContext, ICharmContext {
 
   private final IGenericCharacter character;
-  private ICharacter hero;
   private CharacterListening characterListening;
   private final IBasicCharacterData characterData;
 
-  public CharacterModelContext(IGenericCharacter character, final ICharacter hero, CharacterListening characterListening) {
+  public CharacterModelContext(IGenericCharacter character, CharacterListening characterListening) {
     this.character = character;
-    this.hero = hero;
     this.characterListening = characterListening;
     this.characterData = new BasicCharacterContext(character);
   }
@@ -34,21 +27,6 @@ public class CharacterModelContext implements ICharacterModelContext, ICharmCont
   @Override
   public IAdditionalModel getAdditionalModel(String id) {
     return character.getAdditionalModel(id);
-  }
-
-  @Override
-  public ILimitationContext getLimitationContext() {
-    return character;
-  }
-
-  @Override
-  public ICharacter getHero() {
-    return hero;
-  }
-
-  @Override
-  public IAdditionalRules getAdditionalRules() {
-    return character.getTemplate().getAdditionalRules();
   }
 
   @Override
@@ -62,11 +40,6 @@ public class CharacterModelContext implements ICharacterModelContext, ICharmCont
   }
 
   @Override
-  public TraitContext getTraitContext() {
-    return this;
-  }
-
-  @Override
   public CharacterListening getCharacterListening() {
     return characterListening;
   }
@@ -74,11 +47,6 @@ public class CharacterModelContext implements ICharacterModelContext, ICharmCont
   @Override
   public IBasicCharacterData getBasicCharacterContext() {
     return characterData;
-  }
-
-  @Override
-  public IPresentationProperties getPresentationProperties() {
-    return character.getTemplate().getPresentationProperties();
   }
 
   @Override

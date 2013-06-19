@@ -1,13 +1,10 @@
 package net.sf.anathema.character.main.testing.dummy;
 
-import net.sf.anathema.character.generic.IBasicCharacterData;
 import net.sf.anathema.character.generic.character.IMagicCollection;
 import net.sf.anathema.character.generic.framework.additionaltemplate.model.ICharacterListening;
-import net.sf.anathema.character.generic.framework.additionaltemplate.model.TraitContext;
 import net.sf.anathema.character.generic.impl.template.magic.ICharmProvider;
 import net.sf.anathema.character.generic.template.ITemplateRegistry;
 import net.sf.anathema.character.generic.type.CharacterTypes;
-import net.sf.anathema.character.impl.model.context.BasicCharacterContext;
 import net.sf.anathema.character.main.hero.InitializationContext;
 
 import java.util.List;
@@ -32,11 +29,6 @@ public class DummyInitializationContext implements InitializationContext {
   }
 
   @Override
-  public TraitContext getTraitContext() {
-    throw new UnsupportedOperationException();
-  }
-
-  @Override
   public CharacterTypes getCharacterTypes() {
     throw new UnsupportedOperationException();
   }
@@ -54,11 +46,6 @@ public class DummyInitializationContext implements InitializationContext {
   @Override
   public ICharacterListening getCharacterListening() {
     return dummyHero.listening;
-  }
-
-  @Override
-  public IBasicCharacterData getBasicCharacterContext() {
-    return new BasicCharacterContext(character);
   }
 
   @Override

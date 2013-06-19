@@ -1,12 +1,11 @@
 package net.sf.anathema.character.presenter.specialty;
 
 import net.sf.anathema.character.generic.additionaltemplate.AbstractAdditionalModelAdapter;
-import net.sf.anathema.character.generic.framework.additionaltemplate.model.ICharacterModelContext;
 import net.sf.anathema.character.generic.template.additional.IAdditionalTemplate;
 import net.sf.anathema.character.library.trait.specialties.ISpecialtiesConfiguration;
-import net.sf.anathema.character.main.model.abilities.AbilityModelFetcher;
 import net.sf.anathema.character.main.hero.CharacterModelGroup;
-import net.sf.anathema.character.model.ICharacter;
+import net.sf.anathema.character.main.hero.Hero;
+import net.sf.anathema.character.main.model.abilities.AbilityModelFetcher;
 import net.sf.anathema.lib.control.IChangeListener;
 
 public class SpecialtiesAdditionalModel extends AbstractAdditionalModelAdapter implements ISpecialtiesAdditionalModel {
@@ -14,11 +13,10 @@ public class SpecialtiesAdditionalModel extends AbstractAdditionalModelAdapter i
   private final IAdditionalTemplate additionalTemplate;
   private final ISpecialtiesConfiguration model;
 
-  public SpecialtiesAdditionalModel(IAdditionalTemplate additionalTemplate, ICharacterModelContext context) {
+  public SpecialtiesAdditionalModel(Hero hero, IAdditionalTemplate additionalTemplate) {
     this.additionalTemplate = additionalTemplate;
-    // todo: move specialty configuration into specialty module
-    ICharacter character = context.getHero();
-    this.model = AbilityModelFetcher.fetch(character).getSpecialtyConfiguration();
+    // todo (sandra): move specialty configuration into specialty module
+    this.model = AbilityModelFetcher.fetch(hero).getSpecialtyConfiguration();
   }
 
   @Override

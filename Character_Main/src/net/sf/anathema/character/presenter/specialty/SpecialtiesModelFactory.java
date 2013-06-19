@@ -10,6 +10,6 @@ public class SpecialtiesModelFactory implements IAdditionalModelFactory {
 
   @Override
   public IAdditionalModel createModel(IAdditionalTemplate additionalTemplate, ICharacterModelContext context, Hero hero) {
-    return new SpecialtiesAdditionalModel(additionalTemplate, context);
+    return new SpecialtiesAdditionalModel(hero, additionalTemplate);
   }
 }
