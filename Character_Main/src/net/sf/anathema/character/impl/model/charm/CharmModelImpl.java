@@ -102,7 +102,7 @@ public class CharmModelImpl implements CharmModel {
     this.hero = hero;
     this.context = context;
     this.martialArtsOptions = new MartialArtsOptions(characterContext, context.getTemplateRegistry());
-    this.nonMartialArtsOptions = new NonMartialArtsOptions(characterContext, context.getCharacterTypes(), context.getTemplateRegistry());
+    this.nonMartialArtsOptions = new NonMartialArtsOptions(hero, context.getCharacterTypes(), context.getTemplateRegistry());
     this.manager = new SpecialCharmManager(specialist, hero, this);
     this.provider = context.getCharmProvider();
     this.martialArtsGroups = createGroups(martialArtsOptions.getAllCharmGroups());
