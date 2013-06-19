@@ -14,7 +14,7 @@ import net.sf.anathema.character.impl.model.ExaltedCharacter;
 import net.sf.anathema.character.impl.persistence.charm.CharmConfigurationPersister;
 import net.sf.anathema.character.main.model.abilities.AbilityModelFetcher;
 import net.sf.anathema.character.main.model.attributes.AttributeModelFetcher;
-import net.sf.anathema.character.main.model.concept.CharacterConceptFetcher;
+import net.sf.anathema.character.main.model.concept.HeroConceptFetcher;
 import net.sf.anathema.character.main.model.description.HeroDescription;
 import net.sf.anathema.character.main.model.description.HeroDescriptionFetcher;
 import net.sf.anathema.character.main.model.experience.ExperienceModelFetcher;
@@ -64,7 +64,7 @@ public class CharacterStatisticPersister {
     Element characterTypeElement = statisticsElement.addElement(TAG_CHARACTER_TYPE);
     characterTypeElement.addAttribute(ATTRIB_SUB_TYPE, template.getTemplateType().getSubType().getId());
     characterTypeElement.addText(template.getTemplateType().getCharacterType().getId());
-    characterConceptPersister.save(statisticsElement, CharacterConceptFetcher.fetch(character));
+    characterConceptPersister.save(statisticsElement, HeroConceptFetcher.fetch(character));
     essencePersister.save(statisticsElement, TraitModelFetcher.fetch(character));
     willpowerPersister.save(statisticsElement, TraitModelFetcher.fetch(character).getTrait(OtherTraitType.Willpower));
     virtuePersister.save(statisticsElement, TraitModelFetcher.fetch(character));
@@ -86,7 +86,7 @@ public class CharacterStatisticPersister {
       HeroDescription characterDescription = HeroDescriptionFetcher.fetch(character);
       descriptionPersister.load(parent, characterDescription);
       ICasteCollection casteCollection = template.getCasteCollection();
-      characterConceptPersister.load(statisticsElement, CharacterConceptFetcher.fetch(character), characterDescription, casteCollection);
+      characterConceptPersister.load(statisticsElement, HeroConceptFetcher.fetch(character), characterDescription, casteCollection);
       ExperienceModelFetcher.fetch(character).setExperienced(experienced);
       essencePersister.load(statisticsElement, TraitModelFetcher.fetch(character));
       virtuePersister.load(statisticsElement, TraitModelFetcher.fetch(character));

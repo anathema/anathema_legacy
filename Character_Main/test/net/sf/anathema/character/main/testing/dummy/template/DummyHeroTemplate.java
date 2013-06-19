@@ -1,8 +1,8 @@
 package net.sf.anathema.character.main.testing.dummy.template;
 
 import net.sf.anathema.character.generic.additionalrules.IAdditionalRules;
+import net.sf.anathema.character.generic.caste.CasteType;
 import net.sf.anathema.character.generic.caste.ICasteCollection;
-import net.sf.anathema.character.generic.caste.ICasteType;
 import net.sf.anathema.character.generic.impl.caste.CasteCollection;
 import net.sf.anathema.character.generic.impl.template.essence.NullEssenceTemplate;
 import net.sf.anathema.character.generic.impl.template.magic.CharmTemplate;
@@ -15,6 +15,7 @@ import net.sf.anathema.character.generic.template.HeroTemplate;
 import net.sf.anathema.character.generic.template.ITemplateType;
 import net.sf.anathema.character.generic.template.ITraitTemplateCollection;
 import net.sf.anathema.character.generic.template.TemplateType;
+import net.sf.anathema.character.generic.template.abilities.AbilityGroupType;
 import net.sf.anathema.character.generic.template.abilities.GroupedTraitType;
 import net.sf.anathema.character.generic.template.additional.IAdditionalTemplate;
 import net.sf.anathema.character.generic.template.creation.BonusPointCosts;
@@ -39,10 +40,10 @@ import java.util.List;
 
 public class DummyHeroTemplate implements HeroTemplate {
 
-  private static final String DUMMYGROUP = "DummyGroup";
   private final ITraitTemplateCollection traitTemplateCollection = new TraitTemplateCollection(new DummyTraitTemplateFactory());
   private ITemplateType type = new TemplateType(new DummyMundaneCharacterType());
   private IEssenceTemplate essenceTemplate = new NullEssenceTemplate();
+  public IAbilityCreationPoints abilityCreationPoints = new DummyAbilityCreationPoints();
 
   public void setEssenceTemplate(IEssenceTemplate essenceTemplate) {
     this.essenceTemplate = essenceTemplate;
@@ -58,7 +59,7 @@ public class DummyHeroTemplate implements HeroTemplate {
     AbilityType[] all = AbilityType.values();
     GroupedTraitType[] abilityTypes = new GroupedTraitType[all.length];
     for (int index = 0; index < all.length; index++) {
-      abilityTypes[index] = new GroupedTraitType(all[index], DUMMYGROUP, null);
+      abilityTypes[index] = new GroupedTraitType(all[index], AbilityGroupType.Life.getId(), new ArrayList<String>());
     }
     return abilityTypes;
   }
@@ -109,7 +110,7 @@ public class DummyHeroTemplate implements HeroTemplate {
 
       @Override
       public IAbilityCreationPoints getAbilityCreationPoints() {
-        throw new NotYetImplementedException();
+        return abilityCreationPoints;
       }
 
       @Override
@@ -141,7 +142,7 @@ public class DummyHeroTemplate implements HeroTemplate {
 
   @Override
   public ICasteCollection getCasteCollection() {
-    return new CasteCollection(new ICasteType[0]);
+    return new CasteCollection(new CasteType[0]);
   }
 
   @Override
@@ -186,15 +187,15 @@ public class DummyHeroTemplate implements HeroTemplate {
 
   @Override
   public GroupedTraitType[] getAttributeGroups() {
-    return new GroupedTraitType[]{new GroupedTraitType(AttributeType.Strength, AttributeGroupType.Physical.getId(), null),
-            new GroupedTraitType(AttributeType.Dexterity, AttributeGroupType.Physical.getId(), null),
-            new GroupedTraitType(AttributeType.Stamina, AttributeGroupType.Physical.getId(), null),
-            new GroupedTraitType(AttributeType.Charisma, AttributeGroupType.Social.getId(), null),
-            new GroupedTraitType(AttributeType.Manipulation, AttributeGroupType.Social.getId(), null),
-            new GroupedTraitType(AttributeType.Appearance, AttributeGroupType.Social.getId(), null),
-            new GroupedTraitType(AttributeType.Perception, AttributeGroupType.Mental.getId(), null),
-            new GroupedTraitType(AttributeType.Intelligence, AttributeGroupType.Mental.getId(), null),
-            new GroupedTraitType(AttributeType.Wits, AttributeGroupType.Mental.getId(), null),};
+    return new GroupedTraitType[]{new GroupedTraitType(AttributeType.Strength, AttributeGroupType.Physical.getId(), new ArrayList<String>()),
+            new GroupedTraitType(AttributeType.Dexterity, AttributeGroupType.Physical.getId(), new ArrayList<String>()),
+            new GroupedTraitType(AttributeType.Stamina, AttributeGroupType.Physical.getId(), new ArrayList<String>()),
+            new GroupedTraitType(AttributeType.Charisma, AttributeGroupType.Social.getId(), new ArrayList<String>()),
+            new GroupedTraitType(AttributeType.Manipulation, AttributeGroupType.Social.getId(), new ArrayList<String>()),
+            new GroupedTraitType(AttributeType.Appearance, AttributeGroupType.Social.getId(), new ArrayList<String>()),
+            new GroupedTraitType(AttributeType.Perception, AttributeGroupType.Mental.getId(), new ArrayList<String>()),
+            new GroupedTraitType(AttributeType.Intelligence, AttributeGroupType.Mental.getId(), new ArrayList<String>()),
+            new GroupedTraitType(AttributeType.Wits, AttributeGroupType.Mental.getId(), new ArrayList<String>())};
   }
 
   @Override
@@ -206,4 +207,5 @@ public class DummyHeroTemplate implements HeroTemplate {
   public boolean isCustomTemplate() {
     return false;
   }
+
 }

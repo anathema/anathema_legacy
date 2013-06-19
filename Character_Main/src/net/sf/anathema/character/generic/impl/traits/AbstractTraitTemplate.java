@@ -1,9 +1,9 @@
 package net.sf.anathema.character.generic.impl.traits;
 
-import net.sf.anathema.character.generic.character.ILimitationContext;
 import net.sf.anathema.character.generic.traits.ITraitTemplate;
 import net.sf.anathema.character.generic.traits.LowerableState;
 import net.sf.anathema.character.generic.traits.TraitType;
+import net.sf.anathema.character.main.hero.Hero;
 
 public abstract class AbstractTraitTemplate implements ITraitTemplate {
   protected final LowerableState lowerable;
@@ -37,8 +37,8 @@ public abstract class AbstractTraitTemplate implements ITraitTemplate {
   }
 
   @Override
-  public int getCalculationMinValue(ILimitationContext context, TraitType type) {
-    return getMinimumValue(context);
+  public int getCalculationMinValue(Hero hero, TraitType type) {
+    return getMinimumValue(hero);
   }
 
   @Override

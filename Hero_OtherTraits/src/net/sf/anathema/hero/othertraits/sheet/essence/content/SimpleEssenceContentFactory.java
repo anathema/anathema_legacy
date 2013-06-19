@@ -1,6 +1,7 @@
 package net.sf.anathema.hero.othertraits.sheet.essence.content;
 
 import net.sf.anathema.character.generic.character.IGenericCharacter;
+import net.sf.anathema.character.main.hero.Hero;
 import net.sf.anathema.character.reporting.pdf.content.RegisteredReportContent;
 import net.sf.anathema.character.reporting.pdf.content.ReportContentFactory;
 import net.sf.anathema.character.reporting.pdf.content.ReportSession;
@@ -16,7 +17,7 @@ public class SimpleEssenceContentFactory implements ReportContentFactory<SimpleE
   }
 
   @Override
-  public SimpleEssenceContent create(ReportSession session, IGenericCharacter character) {
-    return new SimpleEssenceContent(resources, character);
+  public SimpleEssenceContent create(ReportSession session, IGenericCharacter character, Hero hero) {
+    return new SimpleEssenceContent(resources, character, hero);
   }
 }

@@ -1,17 +1,17 @@
 package net.sf.anathema.character.main.testing.dummy;
 
 import net.sf.anathema.character.generic.IBasicCharacterData;
-import net.sf.anathema.character.generic.caste.ICasteType;
+import net.sf.anathema.character.generic.caste.CasteType;
 import net.sf.anathema.character.generic.template.ITemplateType;
 import net.sf.anathema.character.generic.type.ICharacterType;
 
 public class DummyBasicCharacterData implements IBasicCharacterData {
 
-  private ICasteType casteType;
+  private CasteType casteType;
   private ICharacterType characterType;
 
   @Override
-  public ICasteType getCasteType() {
+  public CasteType getCasteType() {
     return casteType;
   }
 
@@ -25,7 +25,7 @@ public class DummyBasicCharacterData implements IBasicCharacterData {
     return false;
   }
 
-  public void setCasteType(ICasteType casteType) {
+  public void setCasteType(CasteType casteType) {
     this.casteType = casteType;
   }
 

@@ -9,6 +9,7 @@ import net.sf.anathema.character.intimacies.IIntimaciesAdditionalModel;
 import net.sf.anathema.character.intimacies.presenter.IIntimaciesModel;
 import net.sf.anathema.character.library.removableentry.presenter.RemovableEntryChangeAdapter;
 import net.sf.anathema.character.main.hero.CharacterModelGroup;
+import net.sf.anathema.character.main.hero.Hero;
 import net.sf.anathema.lib.control.IChangeListener;
 
 public class IntimaciesAdditionalModel implements IIntimaciesAdditionalModel {
@@ -20,8 +21,8 @@ public class IntimaciesAdditionalModel implements IIntimaciesAdditionalModel {
     this.model = model;
   }
 
-  public IntimaciesAdditionalModel(IAdditionalTemplate additionalTemplate, ICharacterModelContext context) {
-    this(additionalTemplate, new IntimaciesModel(context));
+  public IntimaciesAdditionalModel(IAdditionalTemplate additionalTemplate, Hero hero) {
+    this(additionalTemplate, new IntimaciesModel(hero));
   }
 
   @Override

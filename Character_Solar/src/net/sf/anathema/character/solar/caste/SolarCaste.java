@@ -1,8 +1,8 @@
 package net.sf.anathema.character.solar.caste;
 
-import net.sf.anathema.character.generic.caste.ICasteType;
+import net.sf.anathema.character.generic.caste.CasteType;
 
-public enum SolarCaste implements ICasteType {
+public enum SolarCaste implements CasteType {
 
   Dawn, Zenith, Twilight, Night, Eclipse;
 

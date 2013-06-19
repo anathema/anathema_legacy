@@ -1,6 +1,7 @@
 package net.sf.anathema.hero.attributes.sheet.content;
 
 import net.sf.anathema.character.generic.character.IGenericCharacter;
+import net.sf.anathema.character.main.hero.Hero;
 import net.sf.anathema.character.reporting.pdf.content.RegisteredReportContent;
 import net.sf.anathema.character.reporting.pdf.content.ReportContentFactory;
 import net.sf.anathema.character.reporting.pdf.content.ReportSession;
@@ -15,7 +16,7 @@ public class AttributesContentFactory implements ReportContentFactory<Attributes
   }
 
   @Override
-  public AttributesContent create(ReportSession session, IGenericCharacter character) {
-    return new AttributesContent(character, resources);
+  public AttributesContent create(ReportSession session, IGenericCharacter character, Hero hero) {
+    return new AttributesContent(hero, character, resources);
   }
 }

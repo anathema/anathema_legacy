@@ -1,11 +1,12 @@
 package net.sf.anathema.character.main.model.othertraits;
 
 import net.sf.anathema.character.generic.template.ITraitLimitation;
+import net.sf.anathema.character.main.hero.HeroModel;
 import net.sf.anathema.character.main.model.traits.TraitMap;
 import net.sf.anathema.lib.util.Identifier;
 import net.sf.anathema.lib.util.SimpleIdentifier;
 
-public interface OtherTraitModel extends TraitMap {
+public interface OtherTraitModel extends TraitMap, HeroModel {
 
   Identifier ID = new SimpleIdentifier("OtherTraits");
 

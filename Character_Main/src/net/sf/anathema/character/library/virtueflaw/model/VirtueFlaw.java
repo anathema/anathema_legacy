@@ -1,17 +1,19 @@
 package net.sf.anathema.character.library.virtueflaw.model;
 
-import net.sf.anathema.character.generic.framework.additionaltemplate.model.ICharacterModelContext;
-import net.sf.anathema.character.generic.impl.traits.SimpleTraitTemplate;
+import net.sf.anathema.character.generic.traits.ITraitTemplate;
 import net.sf.anathema.character.generic.traits.LowerableState;
 import net.sf.anathema.character.generic.traits.TraitType;
 import net.sf.anathema.character.library.trait.DefaultTraitType;
 import net.sf.anathema.character.library.trait.LimitedTrait;
 import net.sf.anathema.character.library.trait.Trait;
 import net.sf.anathema.character.library.trait.favorable.FriendlyIncrementChecker;
+import net.sf.anathema.character.main.hero.Hero;
 import net.sf.anathema.lib.control.IChangeListener;
 import net.sf.anathema.lib.workflow.textualdescription.ITextualDescription;
 import net.sf.anathema.lib.workflow.textualdescription.model.SimpleTextualDescription;
 import org.jmock.example.announcer.Announcer;
+
+import static net.sf.anathema.character.generic.impl.traits.SimpleTraitTemplate.createStaticLimitedTemplate;
 
 public class VirtueFlaw implements IVirtueFlaw {
 
@@ -19,10 +21,10 @@ public class VirtueFlaw implements IVirtueFlaw {
   private Trait limitTrait;
   private final ITextualDescription name = new SimpleTextualDescription("");
   private final Announcer<IChangeListener> control = Announcer.to(IChangeListener.class);
-  private final ICharacterModelContext context;
+  private Hero hero;
 
-  public VirtueFlaw(ICharacterModelContext context) {
-    this.context = context;
+  public VirtueFlaw(Hero hero) {
+    this.hero = hero;
   }
 
   @Override
@@ -39,9 +41,9 @@ public class VirtueFlaw implements IVirtueFlaw {
   @Override
   public Trait getLimitTrait() {
     if (limitTrait == null) {
-      limitTrait =
-              new LimitedTrait(new DefaultTraitType(getLimitString()), SimpleTraitTemplate.createStaticLimitedTemplate(0, 10, LowerableState.LowerableLoss),
-                      new FriendlyIncrementChecker(), context.getTraitContext());
+      DefaultTraitType traitType = new DefaultTraitType(getLimitString());
+      ITraitTemplate limitedTemplate = createStaticLimitedTemplate(0, 10, LowerableState.LowerableLoss);
+      limitTrait = new LimitedTrait(hero, traitType, limitedTemplate, new FriendlyIncrementChecker());
     }
     return limitTrait;
   }

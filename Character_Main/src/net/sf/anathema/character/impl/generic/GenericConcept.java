@@ -1,24 +1,24 @@
 package net.sf.anathema.character.impl.generic;
 
-import net.sf.anathema.character.generic.caste.ICasteType;
+import net.sf.anathema.character.generic.caste.CasteType;
 import net.sf.anathema.character.generic.character.IConcept;
-import net.sf.anathema.character.main.model.concept.CharacterConcept;
+import net.sf.anathema.character.main.model.concept.HeroConcept;
 
 public class GenericConcept implements IConcept {
 
-  private final CharacterConcept characterConcept;
+  private final HeroConcept heroConcept;
 
-  public GenericConcept(CharacterConcept characterConcept) {
-    this.characterConcept = characterConcept;
+  public GenericConcept(HeroConcept heroConcept) {
+    this.heroConcept = heroConcept;
   }
 
   @Override
-  public ICasteType getCasteType() {
-    return characterConcept.getCaste().getType();
+  public CasteType getCasteType() {
+    return heroConcept.getCaste().getType();
   }
 
   @Override
   public int getAge() {
-    return characterConcept.getAge().getValue();
+    return heroConcept.getAge().getValue();
   }
 }

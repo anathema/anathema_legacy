@@ -1,6 +1,6 @@
 package net.sf.anathema.character.library.virtueflaw.model;
 
-import net.sf.anathema.character.generic.framework.additionaltemplate.model.ICharacterModelContext;
+import net.sf.anathema.character.main.hero.Hero;
 import net.sf.anathema.lib.workflow.textualdescription.ITextualDescription;
 import net.sf.anathema.lib.workflow.textualdescription.model.SimpleTextualDescription;
 
@@ -9,8 +9,8 @@ public class DescriptiveVirtueFlaw extends VirtueFlaw implements IDescriptiveVir
   private final ITextualDescription description = new SimpleTextualDescription("");
   private final ITextualDescription limitBreak = new SimpleTextualDescription("");
 
-  public DescriptiveVirtueFlaw(ICharacterModelContext context) {
-    super(context);
+  public DescriptiveVirtueFlaw(Hero hero) {
+    super(hero);
   }
 
   @Override

@@ -6,9 +6,9 @@ public interface ICasteCollection {
 
   boolean containsCasteType(String casteTypeId);
 
-  ICasteType[] getAllCasteTypes(ITemplateType template);
+  CasteType[] getAllCasteTypes(ITemplateType template);
 
-  ICasteType getById(String casteTypeId);
+  CasteType getById(String casteTypeId);
 
   boolean isEmpty();
 }

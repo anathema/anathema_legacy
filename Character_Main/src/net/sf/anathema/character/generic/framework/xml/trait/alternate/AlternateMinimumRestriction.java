@@ -1,8 +1,10 @@
 package net.sf.anathema.character.generic.framework.xml.trait.alternate;
 
-import net.sf.anathema.character.generic.character.ILimitationContext;
 import net.sf.anathema.character.generic.framework.xml.trait.IMinimumRestriction;
 import net.sf.anathema.character.generic.traits.TraitType;
+import net.sf.anathema.character.main.hero.Hero;
+import net.sf.anathema.character.main.model.traits.TraitModel;
+import net.sf.anathema.character.main.model.traits.TraitModelFetcher;
 import net.sf.anathema.lib.lang.ReflectionEqualsObject;
 
 import java.util.ArrayList;
@@ -21,31 +23,32 @@ public class AlternateMinimumRestriction extends ReflectionEqualsObject implemen
   }
 
   @Override
-  public boolean isFullfilledWithout(ILimitationContext context, TraitType traitType) {
-    int fullfillingTraitCount = 0;
+  public boolean isFulfilledWithout(Hero hero, TraitType traitType) {
+    TraitModel traits = TraitModelFetcher.fetch(hero);
+    int fulfillingTraitCount = 0;
     for (TraitType type : alternateTraitTypes) {
-      if (type != traitType && context.getTraitCollection().getTrait(type).
-              getCurrentValue() >= strictMinimumValue) {
-        fullfillingTraitCount++;
+      if (type != traitType && traits.getTrait(type).getCurrentValue() >= strictMinimumValue) {
+        fulfillingTraitCount++;
       }
     }
-    return fullfillingTraitCount >= minimumTraitCount;
+    return fulfillingTraitCount >= minimumTraitCount;
   }
 
   @Override
-  public int getCalculationMinValue(ILimitationContext context, TraitType traitType) {
+  public int getCalculationMinValue(Hero hero, TraitType traitType) {
     if (!isFreebie) {
       return 0;
     }
-    int fullfillingTraitCount = 0;
+    TraitModel traits = TraitModelFetcher.fetch(hero);
+    int fulfillingTraitCount = 0;
     for (TraitType type : alternateTraitTypes) {
-      if (context.getTraitCollection().getTrait(type).getCurrentValue() >= strictMinimumValue) {
-        fullfillingTraitCount++;
+      if (traits.getTrait(type).getCurrentValue() >= strictMinimumValue) {
+        fulfillingTraitCount++;
         if (type == traitType) {
           return strictMinimumValue;
         }
       }
-      if (fullfillingTraitCount == minimumTraitCount) {
+      if (fulfillingTraitCount == minimumTraitCount) {
         break;
       }
     }

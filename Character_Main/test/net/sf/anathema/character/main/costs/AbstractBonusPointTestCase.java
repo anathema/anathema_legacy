@@ -1,19 +1,12 @@
 package net.sf.anathema.character.main.costs;
 
-import net.sf.anathema.character.generic.IBasicCharacterData;
-import net.sf.anathema.character.generic.caste.ICasteType;
-import net.sf.anathema.character.generic.framework.additionaltemplate.listening.ICharacterChangeListener;
-import net.sf.anathema.character.generic.framework.additionaltemplate.model.ICharacterListening;
-import net.sf.anathema.character.generic.impl.additional.NullAdditionalRules;
-import net.sf.anathema.character.generic.template.ITemplateType;
-import net.sf.anathema.character.generic.template.TemplateType;
+import net.sf.anathema.character.generic.caste.CasteType;
 import net.sf.anathema.character.generic.traits.ITraitTemplate;
 import net.sf.anathema.character.generic.traits.TraitType;
 import net.sf.anathema.character.generic.traits.groups.IIdentifiedCasteTraitTypeGroup;
 import net.sf.anathema.character.generic.traits.groups.IdentifiedCasteTraitTypeGroup;
 import net.sf.anathema.character.generic.traits.types.AbilityType;
 import net.sf.anathema.character.generic.traits.types.OtherTraitType;
-import net.sf.anathema.character.generic.type.ICharacterType;
 import net.sf.anathema.character.impl.model.traits.EssenceTemplateFactory;
 import net.sf.anathema.character.impl.model.traits.creation.DefaultTraitFactory;
 import net.sf.anathema.character.impl.model.traits.creation.FavorableTraitFactory;
@@ -21,57 +14,24 @@ import net.sf.anathema.character.impl.model.traits.creation.TypedTraitTemplateFa
 import net.sf.anathema.character.library.trait.Trait;
 import net.sf.anathema.character.library.trait.favorable.FriendlyIncrementChecker;
 import net.sf.anathema.character.library.trait.favorable.IncrementChecker;
-import net.sf.anathema.character.main.testing.dummy.DummyCasteType;
-import net.sf.anathema.character.main.testing.dummy.DummyExaltCharacterType;
+import net.sf.anathema.character.main.model.traits.TraitModel;
+import net.sf.anathema.character.main.testing.dummy.DummyHero;
 import net.sf.anathema.character.main.testing.dummy.template.DummyTraitTemplateFactory;
-import net.sf.anathema.character.main.testing.dummy.trait.DummyCoreTraitConfiguration;
-import net.sf.anathema.character.main.testing.dummy.trait.DummyTraitContext;
 import net.sf.anathema.lib.collection.MultiEntryMap;
 import net.sf.anathema.lib.util.SimpleIdentifier;
 
 public abstract class AbstractBonusPointTestCase {
 
-  protected static void addAbilityAndEssence(DummyCoreTraitConfiguration coreTraits) {
-    NullAdditionalRules additionalRules = new NullAdditionalRules();
-    DummyTraitContext traitContext = new DummyTraitContext(coreTraits);
-    DefaultTraitFactory traitFactory =
-            new DefaultTraitFactory(traitContext, additionalRules, new EssenceTemplateFactory(new DummyTraitTemplateFactory()));
-    coreTraits.addTraits(traitFactory.createTrait(OtherTraitType.Essence));
-    FavorableTraitFactory favorableTraitFactory = new FavorableTraitFactory(traitContext, new NullAdditionalRules(), new IBasicCharacterData() {
-      @Override
-      public DummyCasteType getCasteType() {
-        return new DummyCasteType();
-      }
-
-      @Override
-      public ICharacterType getCharacterType() {
-        return getTemplateType().getCharacterType();
-      }
-
-      @Override
-      public boolean isExperienced() {
-        return false;
-      }
-
-      @Override
-      public ITemplateType getTemplateType() {
-        return new TemplateType(new DummyExaltCharacterType());
-      }
-    }, new ICharacterListening() {
-      @Override
-      public void addChangeListener(ICharacterChangeListener changeListener) {
-        // Nothing to do
-      }
-    }
-    );
+  protected static void addAbilityAndEssence(TraitModel traitModel, DummyHero hero) {
+    DefaultTraitFactory traitFactory = new DefaultTraitFactory(hero, new EssenceTemplateFactory(new DummyTraitTemplateFactory()));
+    traitModel.addTraits(traitFactory.createTrait(OtherTraitType.Essence));
+    FavorableTraitFactory favorableTraitFactory = new FavorableTraitFactory(hero);
     IncrementChecker friendlyIncrementChecker = new FriendlyIncrementChecker();
     for (final AbilityType traitType : AbilityType.values()) {
-      DummyCasteType[] casteType = {new DummyCasteType()};
-      IIdentifiedCasteTraitTypeGroup typeGroup = new IdentifiedCasteTraitTypeGroup(new TraitType[]{traitType}, new SimpleIdentifier("Test"),
-              new MultiEntryMap<TraitType, ICasteType>());
+      IIdentifiedCasteTraitTypeGroup typeGroup =
+              new IdentifiedCasteTraitTypeGroup(new TraitType[]{traitType}, new SimpleIdentifier("Test"), new MultiEntryMap<TraitType, CasteType>());
       Trait trait = favorableTraitFactory.createTraits(typeGroup, friendlyIncrementChecker, new DummyTypedTraitTemplateFactory(traitType))[0];
-      coreTraits.addTraits(trait);
-      coreTraits.addAbilityTypeToGroup(traitType, casteType[0].getId());
+      traitModel.addTraits(trait);
     }
   }
 

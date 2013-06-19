@@ -1,8 +1,9 @@
 package net.sf.anathema.character.generic.framework.xml.trait.allocation;
 
-import net.sf.anathema.character.generic.character.ILimitationContext;
 import net.sf.anathema.character.generic.framework.xml.trait.IMinimumRestriction;
 import net.sf.anathema.character.generic.traits.TraitType;
+import net.sf.anathema.character.main.hero.Hero;
+import net.sf.anathema.character.main.model.traits.TraitModelFetcher;
 import net.sf.anathema.lib.lang.ReflectionEqualsObject;
 
 import java.util.ArrayList;
@@ -11,12 +12,12 @@ import java.util.List;
 import java.util.Map;
 
 public class AllocationMinimumRestriction extends ReflectionEqualsObject implements IMinimumRestriction {
-  private final Map<ILimitationContext, Map<TraitType, Integer>> claimMap = new HashMap<>();
+  private final Map<Hero, Map<TraitType, Integer>> claimMap = new HashMap<>();
   private final List<AllocationMinimumRestriction> siblings;
   private final int dotCount;
   private int strictMinimumValue = 0;
   private final List<TraitType> alternateTraitTypes = new ArrayList<>();
-  private ILimitationContext latestContext = null;
+  private Hero latestHero = null;
   private TraitType latestTrait = null;
   private boolean isFreebie;
 
@@ -26,17 +27,17 @@ public class AllocationMinimumRestriction extends ReflectionEqualsObject impleme
   }
 
   @Override
-  public boolean isFullfilledWithout(ILimitationContext context, TraitType traitType) {
+  public boolean isFulfilledWithout(Hero hero, TraitType traitType) {
     int remainingDots = dotCount;
-    latestContext = context;
+    latestHero = hero;
     latestTrait = traitType;
     for (TraitType type : alternateTraitTypes) {
       if (type != traitType) {
-        int currentDots = context.getTraitCollection().getTrait(type).getCurrentValue();
-        int externalDots = getExternalClaims(context, type);
+        int currentDots = TraitModelFetcher.fetch(hero).getTrait(type).getCurrentValue();
+        int externalDots = getExternalClaims(hero, type);
         int claimedDots = Math.max(currentDots - externalDots, 0);
         claimedDots = Math.min(claimedDots, remainingDots);
-        claimDots(context, type, claimedDots);
+        claimDots(hero, type, claimedDots);
         remainingDots -= claimedDots;
       }
     }
@@ -45,24 +46,24 @@ public class AllocationMinimumRestriction extends ReflectionEqualsObject impleme
   }
 
   @Override
-  public int getCalculationMinValue(ILimitationContext context, TraitType traitType) {
+  public int getCalculationMinValue(Hero hero, TraitType traitType) {
     if (!isFreebie) {
       return 0;
     }
     int traitDots = 0;
     int remainingDots = dotCount;
     for (TraitType type : alternateTraitTypes) {
-      int currentDots = context.getTraitCollection().getTrait(type).getCurrentValue();
-      int externalDots = getExternalClaims(context, type);
+      int currentDots = TraitModelFetcher.fetch(hero).getTrait(type).getCurrentValue();
+      int externalDots = getExternalClaims(hero, type);
       int claimedDots = Math.max(currentDots - externalDots, 0);
       claimedDots = Math.min(claimedDots, remainingDots);
-      claimDots(context, type, claimedDots);
+      claimDots(hero, type, claimedDots);
       remainingDots -= claimedDots;
       if (type == traitType) {
         traitDots = claimedDots;
       }
     }
-    return traitDots + getExternalClaims(context, traitType);
+    return traitDots + getExternalClaims(hero, traitType);
   }
 
   @Override
@@ -70,23 +71,23 @@ public class AllocationMinimumRestriction extends ReflectionEqualsObject impleme
     isFreebie = value;
   }
 
-  private void claimDots(ILimitationContext context, TraitType type, int dots) {
-    Map<TraitType, Integer> map = claimMap.get(context);
+  private void claimDots(Hero hero, TraitType type, int dots) {
+    Map<TraitType, Integer> map = claimMap.get(hero);
     if (map == null) {
       map = new HashMap<>();
-      claimMap.put(context, map);
+      claimMap.put(hero, map);
     }
     map.put(type, dots);
   }
 
-  private int getExternalClaims(ILimitationContext context, TraitType traitType) {
+  private int getExternalClaims(Hero hero, TraitType traitType) {
     int claimed = 0;
     for (AllocationMinimumRestriction sibling : siblings) {
       if (sibling == this) {
         continue;
       }
       try {
-        Map<TraitType, Integer> map = sibling.claimMap.get(context);
+        Map<TraitType, Integer> map = sibling.claimMap.get(hero);
         claimed += map.get(traitType);
       } catch (NullPointerException ignored) {
       }
@@ -109,8 +110,8 @@ public class AllocationMinimumRestriction extends ReflectionEqualsObject impleme
 
   @Override
   public int getStrictMinimumValue() {
-    claimDots(latestContext, latestTrait, strictMinimumValue);
-    return strictMinimumValue + getExternalClaims(latestContext, latestTrait);
+    claimDots(latestHero, latestTrait, strictMinimumValue);
+    return strictMinimumValue + getExternalClaims(latestHero, latestTrait);
   }
 
   public String toString() {

@@ -4,7 +4,6 @@ import net.sf.anathema.framework.view.menu.AddToSwingComponent;
 import net.sf.anathema.lib.gui.layout.SwingLayoutUtils;
 
 import javax.swing.Action;
-import javax.swing.Icon;
 import javax.swing.JButton;
 import javax.swing.JPanel;
 import java.awt.Dimension;

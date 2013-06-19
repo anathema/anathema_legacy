@@ -1,7 +1,7 @@
 package net.sf.anathema.hero.concept.display.description;
 
-import net.sf.anathema.character.main.model.concept.CharacterConcept;
-import net.sf.anathema.character.main.model.concept.CharacterConceptFetcher;
+import net.sf.anathema.character.main.model.concept.HeroConcept;
+import net.sf.anathema.character.main.model.concept.HeroConceptFetcher;
 import net.sf.anathema.character.main.model.description.HeroDescription;
 import net.sf.anathema.character.main.model.description.HeroDescriptionFetcher;
 import net.sf.anathema.character.model.ICharacter;
@@ -35,8 +35,8 @@ public class DescriptionInitializer implements CharacterModelInitializer {
 
   private DescriptionDetails createDescriptionDetails(ICharacter character) {
     HeroDescription characterDescription = HeroDescriptionFetcher.fetch(character);
-    CharacterConcept characterConcept = CharacterConceptFetcher.fetch(character);
+    HeroConcept heroConcept = HeroConceptFetcher.fetch(character);
     boolean isExalt = character.getCharacterType().isExaltType();
-    return new DescriptionDetails(characterDescription, characterConcept, isExalt);
+    return new DescriptionDetails(characterDescription, heroConcept, isExalt);
   }
 }

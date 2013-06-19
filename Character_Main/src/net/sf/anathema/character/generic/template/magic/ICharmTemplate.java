@@ -1,12 +1,12 @@
 package net.sf.anathema.character.generic.template.magic;
 
-import net.sf.anathema.character.generic.caste.ICasteType;
+import net.sf.anathema.character.generic.caste.CasteType;
 
 public interface ICharmTemplate extends ICharmSet {
 
   boolean canLearnCharms();
 
-  boolean isAllowedAlienCharms(ICasteType caste);
+  boolean isAllowedAlienCharms(CasteType caste);
 
   MartialArtsRules getMartialArtsRules();
 }

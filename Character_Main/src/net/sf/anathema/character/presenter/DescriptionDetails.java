@@ -1,16 +1,16 @@
 package net.sf.anathema.character.presenter;
 
-import net.sf.anathema.character.main.model.concept.CharacterConcept;
+import net.sf.anathema.character.main.model.concept.HeroConcept;
 import net.sf.anathema.character.main.model.description.HeroDescription;
 
 public class DescriptionDetails {
   private final HeroDescription description;
-  private final CharacterConcept characterConcept;
+  private final HeroConcept heroConcept;
   private final boolean hasAnima;
 
-  public DescriptionDetails(HeroDescription description, CharacterConcept characterConcept, boolean hasAnima) {
+  public DescriptionDetails(HeroDescription description, HeroConcept heroConcept, boolean hasAnima) {
     this.description = description;
-    this.characterConcept = characterConcept;
+    this.heroConcept = heroConcept;
     this.hasAnima = hasAnima;
   }
 
@@ -18,8 +18,8 @@ public class DescriptionDetails {
     return description;
   }
 
-  public CharacterConcept getCharacterConcept() {
-    return characterConcept;
+  public HeroConcept getHeroConcept() {
+    return heroConcept;
   }
 
   public boolean isHasAnima() {

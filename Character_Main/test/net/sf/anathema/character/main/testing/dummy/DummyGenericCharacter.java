@@ -2,7 +2,7 @@ package net.sf.anathema.character.main.testing.dummy;
 
 import com.google.common.collect.Lists;
 import net.sf.anathema.character.generic.additionaltemplate.IAdditionalModel;
-import net.sf.anathema.character.generic.caste.ICasteType;
+import net.sf.anathema.character.generic.caste.CasteType;
 import net.sf.anathema.character.generic.character.IConcept;
 import net.sf.anathema.character.generic.character.IGenericCharacter;
 import net.sf.anathema.character.generic.character.IGenericDescription;
@@ -58,11 +58,6 @@ public class DummyGenericCharacter implements IGenericCharacter {
     };
   }
 
-  @Override
-  public int getEssenceCap(boolean modified) {
-    return 7;
-  }
-
   public void addTrait(GenericTrait trait) {
     traitsByType.put(trait.getType(), trait);
   }
@@ -98,7 +93,7 @@ public class DummyGenericCharacter implements IGenericCharacter {
   }
 
   @Override
-  public ICasteType getCasteType() {
+  public CasteType getCasteType() {
     return null;
   }
 
@@ -157,8 +152,8 @@ public class DummyGenericCharacter implements IGenericCharacter {
       }
 
       @Override
-      public ICasteType getCasteType() {
-        return ICasteType.NULL_CASTE_TYPE;
+      public CasteType getCasteType() {
+        return CasteType.NULL_CASTE_TYPE;
       }
     };
   }

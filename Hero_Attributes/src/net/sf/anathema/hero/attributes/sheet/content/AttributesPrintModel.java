@@ -6,6 +6,7 @@ import net.sf.anathema.character.generic.template.abilities.GroupedTraitType;
 import net.sf.anathema.character.generic.traits.ITraitTemplate;
 import net.sf.anathema.character.generic.traits.TraitType;
 import net.sf.anathema.character.generic.traits.types.AttributeType;
+import net.sf.anathema.character.main.hero.Hero;
 import net.sf.anathema.lib.util.Identifier;
 import net.sf.anathema.lib.util.SimpleIdentifier;
 
@@ -15,9 +16,11 @@ import java.util.List;
 public class AttributesPrintModel implements AttributesList {
 
   private IGenericCharacter character;
+  private Hero hero;
 
-  public AttributesPrintModel(IGenericCharacter character) {
+  public AttributesPrintModel(IGenericCharacter character, Hero hero) {
     this.character = character;
+    this.hero = hero;
   }
 
   public int getCurrentValue(Identifier traitId) {
@@ -28,7 +31,7 @@ public class AttributesPrintModel implements AttributesList {
   public int getTraitMaximum() {
     TraitType traitType = getGroupedAttributeTypes()[0].getTraitType();
     ITraitTemplate template = getTraitTemplateCollection().getTraitTemplate(traitType);
-    return template.getLimitation().getAbsoluteLimit(character);
+    return template.getLimitation().getAbsoluteLimit(hero);
   }
 
   @Override

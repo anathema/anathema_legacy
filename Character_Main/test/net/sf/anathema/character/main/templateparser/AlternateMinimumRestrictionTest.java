@@ -3,8 +3,9 @@ package net.sf.anathema.character.main.templateparser;
 import junit.framework.TestCase;
 import net.sf.anathema.character.generic.framework.xml.trait.alternate.AlternateMinimumRestriction;
 import net.sf.anathema.character.generic.traits.types.AbilityType;
-import net.sf.anathema.character.main.testing.dummy.DummyGenericTrait;
-import net.sf.anathema.character.main.testing.dummy.DummyLimitationContext;
+import net.sf.anathema.character.library.trait.Trait;
+import net.sf.anathema.character.main.testing.dummy.DummyHero;
+import net.sf.anathema.character.main.testing.dummy.trait.DummyTrait;
 
 public class AlternateMinimumRestrictionTest extends TestCase {
 
@@ -12,10 +13,8 @@ public class AlternateMinimumRestrictionTest extends TestCase {
     AlternateMinimumRestriction restriction = new AlternateMinimumRestriction(1, 1);
     restriction.addTraitType(AbilityType.Resistance);
     restriction.addTraitType(AbilityType.Sail);
-    DummyLimitationContext context = new DummyLimitationContext();
-    context.addTrait(new DummyGenericTrait(AbilityType.Resistance, 3));
-    context.addTrait(new DummyGenericTrait(AbilityType.Sail, 0));
-    assertTrue(restriction.isFullfilledWithout(context, AbilityType.Sail));
-    assertFalse(restriction.isFullfilledWithout(context, AbilityType.Resistance));
+    DummyHero hero = DummyHero.createWithTraits(new Trait[]{new DummyTrait(AbilityType.Resistance, 3), new DummyTrait(AbilityType.Sail, 0)});
+    assertTrue(restriction.isFulfilledWithout(hero, AbilityType.Sail));
+    assertFalse(restriction.isFulfilledWithout(hero, AbilityType.Resistance));
   }
 }

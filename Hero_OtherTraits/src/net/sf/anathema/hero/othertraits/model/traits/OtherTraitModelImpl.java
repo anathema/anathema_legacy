@@ -2,7 +2,6 @@ package net.sf.anathema.hero.othertraits.model.traits;
 
 import net.sf.anathema.character.change.ChangeAnnouncer;
 import net.sf.anathema.character.generic.additionalrules.IAdditionalTraitRules;
-import net.sf.anathema.character.generic.framework.additionaltemplate.model.TraitContext;
 import net.sf.anathema.character.generic.template.HeroTemplate;
 import net.sf.anathema.character.generic.template.ITraitLimitation;
 import net.sf.anathema.character.generic.template.ITraitTemplateCollection;
@@ -37,9 +36,9 @@ public class OtherTraitModelImpl extends DefaultTraitMap implements OtherTraitMo
   @Override
   public void initialize(InitializationContext context, Hero hero) {
     this.template = hero.getTemplate();
-    addEssence(context.getTraitContext());
-    addVirtues(context.getTraitContext());
-    addWillpower(context.getTraitContext());
+    addEssence(hero);
+    addVirtues(hero);
+    addWillpower(hero);
     connectWillpowerAndVirtues();
     TraitModel traitModel = TraitModelFetcher.fetch(hero);
     getTrait(OtherTraitType.Essence).addCurrentValueListener(new EssenceLimitationListener(traitModel, hero));
@@ -63,21 +62,21 @@ public class OtherTraitModelImpl extends DefaultTraitMap implements OtherTraitMo
     }
   }
 
-  private void addEssence(TraitContext traitContext) {
+  private void addEssence(Hero hero) {
     TypedTraitTemplateFactory templateFactory = new EssenceTemplateFactory(getTemplateCollection().getTraitTemplateFactory());
-    DefaultTraitFactory traitFactory = new DefaultTraitFactory(traitContext, getAdditionalTraitRules(), templateFactory);
+    DefaultTraitFactory traitFactory = new DefaultTraitFactory(hero, templateFactory);
     addTraits(traitFactory.createTrait(OtherTraitType.Essence));
   }
 
-  private void addVirtues(TraitContext traitContext) {
+  private void addVirtues(Hero hero) {
     TypedTraitTemplateFactory templateFactory = new VirtueTemplateFactory(getTemplateCollection().getTraitTemplateFactory());
-    DefaultTraitFactory traitFactory = new DefaultTraitFactory(traitContext, getAdditionalTraitRules(), templateFactory);
+    DefaultTraitFactory traitFactory = new DefaultTraitFactory(hero, templateFactory);
     addTraits(traitFactory.createTraits(VirtueType.values()));
   }
 
-  private void addWillpower(TraitContext traitContext) {
+  private void addWillpower(Hero hero) {
     TypedTraitTemplateFactory templateFactory = new WillpowerTemplateFactory(getTemplateCollection().getTraitTemplateFactory());
-    DefaultTraitFactory traitFactory = new DefaultTraitFactory(traitContext, getAdditionalTraitRules(), templateFactory);
+    DefaultTraitFactory traitFactory = new DefaultTraitFactory(hero, templateFactory);
     addTraits(traitFactory.createTrait(OtherTraitType.Willpower));
   }
 

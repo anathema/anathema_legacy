@@ -5,6 +5,7 @@ import net.sf.anathema.character.generic.framework.additionaltemplate.model.IAdd
 import net.sf.anathema.character.generic.framework.additionaltemplate.model.ICharacterModelContext;
 import net.sf.anathema.character.generic.template.additional.IAdditionalTemplate;
 import net.sf.anathema.character.main.hero.CharacterModelGroup;
+import net.sf.anathema.character.main.hero.Hero;
 import net.sf.anathema.character.model.IExtendedConfiguration;
 import net.sf.anathema.lib.control.IChangeListener;
 
@@ -15,14 +16,16 @@ public class ExtendedConfiguration implements IExtendedConfiguration {
 
   private final List<IAdditionalModel> additionalModels = new ArrayList<>();
   private final ICharacterModelContext context;
+  private Hero hero;
   private final List<IChangeListener> listeners = new ArrayList<>();
 
-  public ExtendedConfiguration(ICharacterModelContext context) {
+  public ExtendedConfiguration(ICharacterModelContext context, Hero hero) {
     this.context = context;
+    this.hero = hero;
   }
 
   public void addAdditionalModel(IAdditionalModelFactory factory, IAdditionalTemplate template) {
-    IAdditionalModel model = factory.createModel(template, context);
+    IAdditionalModel model = factory.createModel(template, context, hero);
     for (IChangeListener listener : listeners) {
       model.addChangeListener(listener);
     }

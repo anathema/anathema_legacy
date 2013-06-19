@@ -1,7 +1,7 @@
 package net.sf.anathema.character.impl.model.traits.creation;
 
+import net.sf.anathema.character.generic.caste.CasteType;
 import net.sf.anathema.character.generic.caste.ICasteCollection;
-import net.sf.anathema.character.generic.caste.ICasteType;
 import net.sf.anathema.character.generic.template.abilities.GroupedTraitType;
 import net.sf.anathema.character.generic.traits.TraitType;
 import net.sf.anathema.character.generic.traits.groups.IIdentifiedCasteTraitTypeGroup;
@@ -18,8 +18,7 @@ public abstract class AbstractTraitTypeGroupFactory {
 
   protected abstract Identifier getGroupIdentifier(ICasteCollection casteCollection, String groupId);
 
-  public IIdentifiedCasteTraitTypeGroup[] createTraitGroups(ICasteCollection casteCollection,
-                                                            GroupedTraitType[] traitTypes) {
+  public IIdentifiedCasteTraitTypeGroup[] createTraitGroups(ICasteCollection casteCollection, GroupedTraitType[] traitTypes) {
     Set<String> groupIds = new LinkedHashSet<>();
     MultiEntryMap<String, TraitType> traitTypesByGroupId = new MultiEntryMap<>();
     for (GroupedTraitType type : traitTypes) {
@@ -30,13 +29,13 @@ public abstract class AbstractTraitTypeGroupFactory {
     List<IIdentifiedCasteTraitTypeGroup> groups = new ArrayList<>();
     for (String groupId : groupIds) {
       List<TraitType> groupTraitTypes = traitTypesByGroupId.get(groupId);
-      MultiEntryMap<TraitType, ICasteType> castesByTrait = new MultiEntryMap<>();
+      MultiEntryMap<TraitType, CasteType> castesByTrait = new MultiEntryMap<>();
       for (GroupedTraitType type : traitTypes) {
         if (!type.getGroupId().equals(groupId)) {
           continue;
         }
         for (String casteTypeId : type.getTraitCasteSet()) {
-          ICasteType casteType = casteCollection.getById(casteTypeId);
+          CasteType casteType = casteCollection.getById(casteTypeId);
           castesByTrait.add(type.getTraitType(), casteType);
         }
       }

@@ -1,6 +1,5 @@
 package net.sf.anathema.character.generic.impl.traits;
 
-import net.sf.anathema.character.generic.character.ILimitationContext;
 import net.sf.anathema.character.generic.impl.traits.limitation.EssenceBasedLimitation;
 import net.sf.anathema.character.generic.impl.traits.limitation.StaticTraitLimitation;
 import net.sf.anathema.character.generic.impl.traits.limitation.VirtueBasedLimitation;
@@ -8,6 +7,7 @@ import net.sf.anathema.character.generic.template.ITraitLimitation;
 import net.sf.anathema.character.generic.traits.ITraitTemplate;
 import net.sf.anathema.character.generic.traits.LowerableState;
 import net.sf.anathema.character.generic.traits.types.VirtueType;
+import net.sf.anathema.character.main.hero.Hero;
 
 public class SimpleTraitTemplate extends AbstractTraitTemplate {
 
@@ -41,7 +41,7 @@ public class SimpleTraitTemplate extends AbstractTraitTemplate {
   }
 
   @Override
-  public int getMinimumValue(ILimitationContext limitationContext) {
+  public int getMinimumValue(Hero hero) {
     return minimumValue;
   }
 

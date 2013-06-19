@@ -1,26 +1,30 @@
 package net.sf.anathema.character.impl.model.charm.special;
 
-import net.sf.anathema.character.generic.framework.additionaltemplate.listening.DedicatedCharacterChangeAdapter;
-import net.sf.anathema.character.generic.framework.additionaltemplate.model.ICharacterModelContext;
-import net.sf.anathema.character.generic.impl.traits.SimpleTraitTemplate;
+import net.sf.anathema.character.change.ChangeFlavor;
 import net.sf.anathema.character.generic.magic.ICharm;
 import net.sf.anathema.character.generic.magic.charms.ICharmLearnableArbitrator;
 import net.sf.anathema.character.generic.magic.charms.special.IMultiLearnableCharm;
 import net.sf.anathema.character.generic.magic.charms.special.ISpecialCharmLearnListener;
 import net.sf.anathema.character.generic.magic.charms.special.LearnRangeContext;
-import net.sf.anathema.character.generic.traits.TraitType;
 import net.sf.anathema.character.impl.model.charm.CharmSpecialist;
+import net.sf.anathema.character.impl.model.charm.CharmSpecialistImpl;
 import net.sf.anathema.character.impl.model.charm.CharmTraitRequirementChecker;
 import net.sf.anathema.character.impl.model.charm.PrerequisiteModifyingCharms;
 import net.sf.anathema.character.library.trait.DefaultTraitType;
 import net.sf.anathema.character.library.trait.LimitedTrait;
 import net.sf.anathema.character.library.trait.Trait;
 import net.sf.anathema.character.library.trait.favorable.IncrementChecker;
+import net.sf.anathema.character.main.hero.Hero;
+import net.sf.anathema.character.main.hero.change.FlavoredChangeListener;
+import net.sf.anathema.character.main.model.traits.TraitChangeFlavor;
+import net.sf.anathema.character.main.model.traits.TraitModelFetcher;
 import net.sf.anathema.character.model.charm.CharmModel;
 import net.sf.anathema.character.model.charm.special.IMultiLearnableCharmConfiguration;
 import net.sf.anathema.lib.control.IIntValueChangedListener;
 import net.sf.anathema.lib.data.Range;
 import org.jmock.example.announcer.Announcer;
+
+import static net.sf.anathema.character.generic.impl.traits.SimpleTraitTemplate.createStaticLimitedTemplate;
 
 public class MultiLearnableCharmConfiguration implements IMultiLearnableCharmConfiguration {
 
@@ -30,30 +34,30 @@ public class MultiLearnableCharmConfiguration implements IMultiLearnableCharmCon
   private ICharm charm;
   private IMultiLearnableCharm specialCharm;
   private CharmSpecialist specialist;
-  private ICharacterModelContext context;
   private ICharmLearnableArbitrator arbitrator;
+  private Hero hero;
 
-  public MultiLearnableCharmConfiguration(CharmSpecialist specialist, ICharacterModelContext context, CharmModel config, ICharm charm,
-                                          IMultiLearnableCharm specialCharm, ICharmLearnableArbitrator arbitrator) {
-    this.specialist = specialist;
-    this.context = context;
+  public MultiLearnableCharmConfiguration(Hero hero, CharmModel config, ICharm charm, IMultiLearnableCharm specialCharm, ICharmLearnableArbitrator arbitrator) {
+    this.hero = hero;
+    this.specialist = new CharmSpecialistImpl(hero);
     this.config = config;
     this.charm = charm;
     this.specialCharm = specialCharm;
     this.arbitrator = arbitrator;
-    this.trait = new LimitedTrait(new DefaultTraitType(charm.getId()),
-            SimpleTraitTemplate.createStaticLimitedTemplate(0, specialCharm.getAbsoluteLearnLimit()), new MultiLearnableIncrementChecker(),
-            context.getTraitContext());
+    this.trait = new LimitedTrait(hero, new DefaultTraitType(charm.getId()), createStaticLimitedTemplate(0, specialCharm.getAbsoluteLearnLimit()),
+            new MultiLearnableIncrementChecker());
     this.trait.addCurrentValueListener(new IIntValueChangedListener() {
       @Override
       public void valueChanged(int newValue) {
         fireLearnCountChanged(newValue);
       }
     });
-    context.getCharacterListening().addChangeListener(new DedicatedCharacterChangeAdapter() {
+    hero.getChangeAnnouncer().addListener(new FlavoredChangeListener() {
       @Override
-      public void traitChanged(TraitType type) {
-        validateLearnCount();
+      public void changeOccurred(ChangeFlavor flavor) {
+        if (flavor instanceof TraitChangeFlavor) {
+          validateLearnCount();
+        }
       }
     });
   }
@@ -132,7 +136,7 @@ public class MultiLearnableCharmConfiguration implements IMultiLearnableCharmCon
   private LearnRangeContext createLearnRangeContext() {
     PrerequisiteModifyingCharms modifyingCharms = new PrerequisiteModifyingCharms(config.getSpecialCharms());
     CharmTraitRequirementChecker requirementChecker = new CharmTraitRequirementChecker(modifyingCharms, specialist.getTraits(), config);
-    return new LearnRangeContext(context.getTraitCollection(), requirementChecker, charm);
+    return new LearnRangeContext(TraitModelFetcher.fetch(hero), requirementChecker, charm);
   }
 
   private int getMergedDots() {

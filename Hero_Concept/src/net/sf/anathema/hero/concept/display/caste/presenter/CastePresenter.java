@@ -1,8 +1,8 @@
 package net.sf.anathema.hero.concept.display.caste.presenter;
 
-import net.sf.anathema.character.generic.caste.ICasteType;
+import net.sf.anathema.character.generic.caste.CasteType;
 import net.sf.anathema.character.generic.template.HeroTemplate;
-import net.sf.anathema.character.main.model.concept.CharacterConceptFetcher;
+import net.sf.anathema.character.main.model.concept.HeroConceptFetcher;
 import net.sf.anathema.character.main.model.experience.ExperienceModel;
 import net.sf.anathema.character.main.model.experience.ExperienceModelFetcher;
 import net.sf.anathema.character.model.ICharacter;
@@ -34,15 +34,15 @@ public class CastePresenter {
     HeroTemplate template = character.getTemplate();
     String casteLabelResourceKey = template.getPresentationProperties().getCasteLabelResource();
     ObjectUi<Object> casteUi = new CasteSelectObjectUi(resources, template.getPresentationProperties());
-    ICasteType[] casteTypes = template.getCasteCollection().getAllCasteTypes(character.getTemplate().getTemplateType());
+    CasteType[] casteTypes = template.getCasteCollection().getAllCasteTypes(character.getTemplate().getTemplateType());
     ListCellRenderer renderer = new ObjectUiListCellRenderer(casteUi);
-    final IObjectSelectionView<ICasteType> casteView =
+    final IObjectSelectionView<CasteType> casteView =
             view.addObjectSelectionView(resources.getString(casteLabelResourceKey), casteTypes, renderer, false);
-    final ITypedDescription<ICasteType> caste = CharacterConceptFetcher.fetch(character).getCaste();
+    final ITypedDescription<CasteType> caste = HeroConceptFetcher.fetch(character).getCaste();
     casteView.setSelectedObject(caste.getType());
-    casteView.addObjectSelectionChangedListener(new ObjectValueListener<ICasteType>() {
+    casteView.addObjectSelectionChangedListener(new ObjectValueListener<CasteType>() {
       @Override
-      public void valueChanged(ICasteType newValue) {
+      public void valueChanged(CasteType newValue) {
         caste.setType(newValue);
       }
     });
@@ -55,7 +55,7 @@ public class CastePresenter {
     initExperienceListening(casteView);
   }
 
-  private void initExperienceListening(final IObjectSelectionView<ICasteType> casteView) {
+  private void initExperienceListening(final IObjectSelectionView<CasteType> casteView) {
     final ExperienceModel experienceModel = ExperienceModelFetcher.fetch(character);
     experienceModel.addStateChangeListener(new IChangeListener() {
       @Override

@@ -1,10 +1,10 @@
 package net.sf.anathema.character.presenter.magic.combo;
 
-import net.sf.anathema.character.generic.caste.ICasteType;
+import net.sf.anathema.character.generic.caste.CasteType;
 import net.sf.anathema.character.generic.framework.additionaltemplate.listening.ICharacterChangeListener;
 import net.sf.anathema.character.generic.magic.ICharm;
 import net.sf.anathema.character.generic.magic.description.MagicDescriptionProvider;
-import net.sf.anathema.character.main.model.concept.CharacterConceptFetcher;
+import net.sf.anathema.character.main.model.concept.HeroConceptFetcher;
 import net.sf.anathema.character.main.model.experience.ExperienceModelFetcher;
 import net.sf.anathema.character.model.ICharacter;
 import net.sf.anathema.character.model.charm.CharmModel;
@@ -21,7 +21,7 @@ public class ComboConfigurationModel {
   }
 
   public boolean isAlienCharmsAllowed() {
-    ICasteType caste = CharacterConceptFetcher.fetch(character).getCaste().getType();
+    CasteType caste = HeroConceptFetcher.fetch(character).getCaste().getType();
     return character.getTemplate().getMagicTemplate().getCharmTemplate().isAllowedAlienCharms(caste);
   }
 

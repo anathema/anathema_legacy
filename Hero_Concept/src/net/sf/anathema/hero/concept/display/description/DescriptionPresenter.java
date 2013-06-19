@@ -1,7 +1,7 @@
 package net.sf.anathema.hero.concept.display.description;
 
 import net.sf.anathema.character.generic.framework.resources.CharacterUI;
-import net.sf.anathema.character.main.model.concept.CharacterConcept;
+import net.sf.anathema.character.main.model.concept.HeroConcept;
 import net.sf.anathema.character.main.model.description.HeroDescription;
 import net.sf.anathema.character.model.IIntegerDescription;
 import net.sf.anathema.character.presenter.DescriptionDetails;
@@ -21,7 +21,7 @@ import net.sf.anathema.namegenerator.exalted.domain.ThresholdNameGenerator;
 public class DescriptionPresenter {
 
   private final HeroDescription description;
-  private final CharacterConcept characterConcept;
+  private final HeroConcept heroConcept;
   private final ICharacterDescriptionView descriptionView;
   private final boolean hasAnima;
   private final Resources resources;
@@ -29,7 +29,7 @@ public class DescriptionPresenter {
   public DescriptionPresenter(DescriptionDetails descriptionDetails, Resources resources, ICharacterDescriptionView descriptionView) {
     this.resources = resources;
     this.description = descriptionDetails.getDescription();
-    this.characterConcept = descriptionDetails.getCharacterConcept();
+    this.heroConcept = descriptionDetails.getHeroConcept();
     this.hasAnima = descriptionDetails.isHasAnima();
     this.descriptionView = descriptionView;
   }
@@ -74,7 +74,7 @@ public class DescriptionPresenter {
     addField(componentLine, "CharacterDescription.Label.Hair", description.getHair(), presentation);
     addField(componentLine, "CharacterDescription.Label.Skin", description.getSkin(), presentation);
     addField(componentLine, "CharacterDescription.Label.Eyes", description.getEyes(), presentation);
-    addInteger(componentLine, "Label.Age", characterConcept.getAge());
+    addInteger(componentLine, "Label.Age", heroConcept.getAge());
   }
 
   private void addInteger(IMultiComponentLine componentLine, String label, final IIntegerDescription integerDescription) {

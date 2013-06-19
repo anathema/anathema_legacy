@@ -1,28 +1,26 @@
 package net.sf.anathema.character.impl.model.traits.creation;
 
 import net.sf.anathema.character.generic.additionalrules.IAdditionalTraitRules;
-import net.sf.anathema.character.generic.character.ILimitationContext;
-import net.sf.anathema.character.generic.framework.additionaltemplate.model.TraitContext;
 import net.sf.anathema.character.generic.traits.ITraitTemplate;
 import net.sf.anathema.character.generic.traits.TraitType;
 import net.sf.anathema.character.library.trait.DefaultTrait;
 import net.sf.anathema.character.library.trait.IValueChangeChecker;
 import net.sf.anathema.character.library.trait.Trait;
 import net.sf.anathema.character.library.trait.rules.TraitRules;
+import net.sf.anathema.character.main.hero.Hero;
 
 import java.util.ArrayList;
 import java.util.List;
 
 public class DefaultTraitFactory {
 
-  private final TraitContext traitContext;
+  private Hero hero;
   private final IAdditionalTraitRules additionalRules;
   private final TypedTraitTemplateFactory factory;
 
-  public DefaultTraitFactory(TraitContext traitContext, IAdditionalTraitRules additionalRules,
-                             TypedTraitTemplateFactory factory) {
-    this.traitContext = traitContext;
-    this.additionalRules = additionalRules;
+  public DefaultTraitFactory(Hero hero, TypedTraitTemplateFactory factory) {
+    this.hero = hero;
+    this.additionalRules = hero.getTemplate().getAdditionalRules().getAdditionalTraitRules();
     this.factory = factory;
   }
 
@@ -36,9 +34,8 @@ public class DefaultTraitFactory {
 
   public Trait createTrait(TraitType traitType) {
     ITraitTemplate traitTemplate = factory.create(traitType);
-    ILimitationContext limitationContext = traitContext.getLimitationContext();
-    IValueChangeChecker checker = new AdditionRulesTraitValueChangeChecker(traitType, limitationContext, additionalRules);
-    TraitRules rules = new TraitRules(traitType, traitTemplate, limitationContext);
-    return new DefaultTrait(rules, checker, traitContext.getTraitValueStrategy());
+    IValueChangeChecker checker = new AdditionRulesTraitValueChangeChecker(traitType, hero, additionalRules);
+    TraitRules rules = new TraitRules(traitType, traitTemplate, hero);
+    return new DefaultTrait(hero, rules, checker);
   }
 }

@@ -1,10 +1,10 @@
 package net.sf.anathema.character.generic.character;
 
-import net.sf.anathema.character.generic.caste.ICasteType;
+import net.sf.anathema.character.generic.caste.CasteType;
 
 public interface IConcept {
 
-  ICasteType getCasteType();
+  CasteType getCasteType();
 
   int getAge();
 }

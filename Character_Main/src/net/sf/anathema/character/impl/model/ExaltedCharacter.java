@@ -44,7 +44,7 @@ public class ExaltedCharacter implements ICharacter {
   public ExaltedCharacter(HeroTemplate template, ICharacterGenerics generics) {
     this.hero = new DefaultHero(template);
     context = new CharacterModelContext(new GenericCharacter(this), this, hero.getListening());
-    this.extendedConfiguration = new ExtendedConfiguration(context);
+    this.extendedConfiguration = new ExtendedConfiguration(context, hero);
     this.initializationContext = new ModelInitializationContext(context, generics);
     addModels(generics);
 

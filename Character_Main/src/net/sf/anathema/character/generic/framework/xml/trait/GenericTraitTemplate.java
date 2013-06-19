@@ -1,9 +1,9 @@
 package net.sf.anathema.character.generic.framework.xml.trait;
 
-import net.sf.anathema.character.generic.character.ILimitationContext;
 import net.sf.anathema.character.generic.template.ITraitLimitation;
 import net.sf.anathema.character.generic.traits.LowerableState;
 import net.sf.anathema.character.generic.traits.TraitType;
+import net.sf.anathema.character.main.hero.Hero;
 import net.sf.anathema.lib.lang.clone.ReflectionCloneableObject;
 
 public class GenericTraitTemplate extends ReflectionCloneableObject<IClonableTraitTemplate> implements IClonableTraitTemplate {
@@ -43,7 +43,7 @@ public class GenericTraitTemplate extends ReflectionCloneableObject<IClonableTra
   }
 
   @Override
-  public int getMinimumValue(ILimitationContext limitationContext) {
+  public int getMinimumValue(Hero hero) {
     return minimumValue;
   }
 
@@ -92,7 +92,7 @@ public class GenericTraitTemplate extends ReflectionCloneableObject<IClonableTra
   }
 
   @Override
-  public int getCalculationMinValue(ILimitationContext context, TraitType type) {
-    return isFreebie ? getMinimumValue(context) : 0;
+  public int getCalculationMinValue(Hero hero, TraitType type) {
+    return isFreebie ? getMinimumValue(hero) : 0;
   }
 }

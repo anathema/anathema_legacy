@@ -1,25 +1,25 @@
 package net.sf.anathema.character.generic.impl.traits.caste;
 
-import net.sf.anathema.character.generic.caste.ICasteType;
-import net.sf.anathema.character.generic.character.ILimitationContext;
+import net.sf.anathema.character.generic.caste.CasteType;
+import net.sf.anathema.character.main.hero.Hero;
 
 public class StaticCasteMinimum implements ICasteTraitMinimum {
 
-  private final ICasteType caste;
+  private final CasteType caste;
   private int minimum;
 
-  public StaticCasteMinimum(ICasteType casteType, int minimum) {
+  public StaticCasteMinimum(CasteType casteType, int minimum) {
     this.caste = casteType;
     this.minimum = minimum;
   }
 
   @Override
-  public ICasteType getCaste() {
+  public CasteType getCaste() {
     return caste;
   }
 
   @Override
-  public int getMinimumValue(ILimitationContext limitationContext) {
+  public int getMinimumValue(Hero hero) {
     return minimum;
   }
 }

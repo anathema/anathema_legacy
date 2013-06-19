@@ -1,12 +1,12 @@
 package net.sf.anathema.character.library;
 
-import net.sf.anathema.character.generic.caste.ICasteType;
+import net.sf.anathema.character.generic.caste.CasteType;
 import net.sf.anathema.character.library.trait.favorable.FavorableState;
 import net.sf.anathema.character.library.trait.favorable.IFavorableStateChangedListener;
 
 public interface ITraitFavorization {
 
-  ICasteType[] getCastes();
+  CasteType[] getCastes();
 
   void addFavorableStateChangedListener(IFavorableStateChangedListener listener);
 

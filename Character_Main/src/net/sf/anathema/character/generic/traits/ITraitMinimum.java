@@ -1,10 +1,10 @@
 package net.sf.anathema.character.generic.traits;
 
-import net.sf.anathema.character.generic.character.ILimitationContext;
+import net.sf.anathema.character.main.hero.Hero;
 
 public interface ITraitMinimum {
 
-  int getMinimumValue(ILimitationContext context);
+  int getMinimumValue(Hero hero);
   
-  int getCalculationMinValue(ILimitationContext context, TraitType traitType);
+  int getCalculationMinValue(Hero hero, TraitType traitType);
 }

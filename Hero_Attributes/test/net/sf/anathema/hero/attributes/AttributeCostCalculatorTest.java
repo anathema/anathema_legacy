@@ -1,34 +1,18 @@
-package net.sf.anathema.character.main.costs;
+package net.sf.anathema.hero.attributes;
 
-import net.sf.anathema.character.generic.additionalrules.IAdditionalRules;
-import net.sf.anathema.character.generic.caste.ICasteType;
-import net.sf.anathema.character.generic.character.ILimitationContext;
-import net.sf.anathema.character.generic.impl.additional.NullAdditionalRules;
 import net.sf.anathema.character.generic.impl.template.points.AttributeCreationPoints;
 import net.sf.anathema.character.generic.impl.template.points.DefaultBonusPointCosts;
-import net.sf.anathema.character.generic.impl.traits.TraitTemplateCollection;
 import net.sf.anathema.character.generic.template.points.IAttributeCreationPoints;
-import net.sf.anathema.character.generic.traits.ITraitTemplate;
 import net.sf.anathema.character.generic.traits.types.AttributeGroupType;
-import net.sf.anathema.character.generic.traits.types.AttributeType;
-import net.sf.anathema.character.impl.model.context.BasicCharacterContext;
 import net.sf.anathema.character.impl.model.creation.bonus.attribute.AttributeCostCalculator;
 import net.sf.anathema.character.impl.model.creation.bonus.util.TraitGroupCost;
-import net.sf.anathema.character.impl.model.traits.creation.AdditionRulesTraitValueChangeChecker;
-import net.sf.anathema.character.library.trait.DefaultTrait;
-import net.sf.anathema.character.library.trait.FriendlyValueChangeChecker;
-import net.sf.anathema.character.library.trait.IValueChangeChecker;
 import net.sf.anathema.character.library.trait.Trait;
-import net.sf.anathema.character.library.trait.favorable.GrumpyIncrementChecker;
-import net.sf.anathema.character.library.trait.rules.FavorableTraitRules;
-import net.sf.anathema.character.library.trait.rules.TraitRules;
 import net.sf.anathema.character.main.testing.dummy.DummyAdditionalBonusPointManagment;
-import net.sf.anathema.character.main.testing.dummy.DummyGenericCharacter;
 import net.sf.anathema.character.main.testing.dummy.DummyHero;
-import net.sf.anathema.character.main.testing.dummy.template.DummyHeroTemplate;
-import net.sf.anathema.character.main.testing.dummy.template.DummyTraitTemplateFactory;
-import net.sf.anathema.character.main.testing.dummy.trait.DummyCoreTraitConfiguration;
-import net.sf.anathema.character.main.testing.dummy.trait.DummyTraitContext;
+import net.sf.anathema.character.main.testing.dummy.models.DummyTraitModel;
+import net.sf.anathema.hero.attributes.model.AttributeModelImpl;
+import net.sf.anathema.character.main.testing.dummy.models.DummyHeroConcept;
+import net.sf.anathema.character.main.testing.dummy.models.DummyOtherTraitModel;
 import org.junit.Before;
 import org.junit.Test;
 
@@ -38,7 +22,6 @@ import java.util.List;
 import static net.sf.anathema.character.generic.traits.types.AttributeGroupType.Mental;
 import static net.sf.anathema.character.generic.traits.types.AttributeGroupType.Physical;
 import static net.sf.anathema.character.generic.traits.types.AttributeGroupType.Social;
-import static net.sf.anathema.character.generic.traits.types.OtherTraitType.Essence;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertTrue;
 
@@ -50,7 +33,6 @@ public class AttributeCostCalculatorTest {
     TraitGroupCost costs = calculator.getAttributePoints(groupType);
     assertEquals(0, costs.getBonusPointsSpent());
     assertEquals(0, costs.getDotsSpent());
-    assertTrue(traitConfiguration.containsAllTraits(groupType, costs.getTraits()));
   }
 
   private void assertFullyLearned(AttributeGroupType groupType, int allowedDotCount) {
@@ -58,7 +40,6 @@ public class AttributeCostCalculatorTest {
     assertEquals(0, costs.getBonusPointsSpent());
     assertEquals(allowedDotCount, costs.getDotsSpent());
     assertEquals(allowedDotCount, costs.getPointsToSpend());
-    assertTrue(traitConfiguration.containsAllTraits(groupType, costs.getTraits()));
   }
 
   private void assertOverlearned(AttributeGroupType groupType, int allowedDotCount, int bonusPoints) {
@@ -66,11 +47,10 @@ public class AttributeCostCalculatorTest {
     assertEquals(allowedDotCount, costs.getDotsSpent());
     assertEquals(allowedDotCount, costs.getPointsToSpend());
     assertEquals(bonusPoints, costs.getBonusPointsSpent());
-    assertTrue(traitConfiguration.containsAllTraits(groupType, costs.getTraits()));
   }
 
   public void spendPoints(AttributeGroupType groupType, int pointsToSpent) {
-    Trait[] groupAttributes = traitConfiguration.getAllTraits(groupType);
+    Trait[] groupAttributes = attributeModel.getAll(groupType);
     int perAttribute = (int) Math.ceil((double) pointsToSpent / groupAttributes.length);
     int remainingPointsToSpent = pointsToSpent;
     for (Trait attribute : groupAttributes) {
@@ -96,34 +76,20 @@ public class AttributeCostCalculatorTest {
 
   private IAttributeCreationPoints creationPoint;
   private AttributeCostCalculator calculator;
-  private DummyCoreTraitConfiguration traitConfiguration;
+  private AttributeModelImpl attributeModel = new AttributeModelImpl();
+  private DummyHero dummyHero = new DummyHero();
 
   @Before
   public void setUp() throws Exception {
+    dummyHero.addModel(attributeModel);
+    dummyHero.addModel(new DummyTraitModel());
+    dummyHero.addModel(new DummyHeroConcept());
+    dummyHero.addModel(new DummyOtherTraitModel());
+    attributeModel.initialize(null, dummyHero);
     this.creationPoint = new AttributeCreationPoints(6, 4, 2);
-    this.traitConfiguration = new DummyCoreTraitConfiguration();
     DummyAdditionalBonusPointManagment additionalBonusPointManagement = new DummyAdditionalBonusPointManagment();
-    addAttributesAndEssence(traitConfiguration);
     DefaultBonusPointCosts cost = new DefaultBonusPointCosts();
-    this.calculator = new AttributeCostCalculator(traitConfiguration.getAttributeModel(), creationPoint, cost, additionalBonusPointManagement);
-  }
-
-  private void addAttributesAndEssence(DummyCoreTraitConfiguration coreTraits) {
-    IAdditionalRules additionalRules = new NullAdditionalRules();
-    TraitTemplateCollection templateCollection = new TraitTemplateCollection(new DummyTraitTemplateFactory());
-    DummyTraitContext traitContext = new DummyTraitContext(coreTraits);
-    ITraitTemplate essenceTraitTemplate = templateCollection.getTraitTemplate(Essence);
-    ILimitationContext limitationContext = traitContext.getLimitationContext();
-    TraitRules essenceRules = new TraitRules(Essence, essenceTraitTemplate, limitationContext);
-    coreTraits.addTraits(new DefaultTrait(essenceRules, new FriendlyValueChangeChecker(), traitContext.getTraitValueStrategy()));
-    GrumpyIncrementChecker incrementChecker = new GrumpyIncrementChecker();
-    for (AttributeType traitType : AttributeType.values()) {
-      ITraitTemplate traitTemplate = templateCollection.getTraitTemplate(traitType);
-      IValueChangeChecker checker = new AdditionRulesTraitValueChangeChecker(traitType, limitationContext, additionalRules.getAdditionalTraitRules());
-      Trait trait = new DefaultTrait(new FavorableTraitRules(traitType, traitTemplate, limitationContext), new ICasteType[0], traitContext,
-              new BasicCharacterContext(new DummyGenericCharacter(new DummyHeroTemplate())), new DummyHero().listening, checker, incrementChecker);
-      coreTraits.addTraits(trait);
-    }
+    this.calculator = new AttributeCostCalculator(attributeModel, creationPoint, cost, additionalBonusPointManagement);
   }
 
   @Test

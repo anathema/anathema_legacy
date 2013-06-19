@@ -1,13 +1,11 @@
 package net.sf.anathema.character.main.testing.dummy.trait;
 
-import net.sf.anathema.character.generic.caste.ICasteType;
+import net.sf.anathema.character.generic.caste.CasteType;
 import net.sf.anathema.character.generic.character.IGenericTraitCollection;
 import net.sf.anathema.character.generic.character.ILimitationContext;
 import net.sf.anathema.character.generic.framework.additionaltemplate.model.TraitContext;
-import net.sf.anathema.character.generic.framework.additionaltemplate.model.TraitValueStrategy;
 import net.sf.anathema.character.generic.impl.traits.limitation.StaticTraitLimitation;
 import net.sf.anathema.character.generic.template.ITraitLimitation;
-import net.sf.anathema.character.impl.model.context.trait.CreationTraitValueStrategy;
 import net.sf.anathema.character.main.model.traits.GenericTraitCollectionFacade;
 import net.sf.anathema.character.main.model.traits.TraitMap;
 
@@ -21,7 +19,7 @@ public class DummyTraitContext implements TraitContext {
     }
 
     @Override
-    public ICasteType getCasteType() {
+    public CasteType getCasteType() {
       return null;
     }
 
@@ -31,27 +29,16 @@ public class DummyTraitContext implements TraitContext {
      }
 
     @Override
-    public int getEssenceCap(boolean modified) {
-      return 0;
-    }
-
-    @Override
     public int getAge() {
       return 0;
     }
   }
 
-  private TraitValueStrategy traitValueStrategy = new CreationTraitValueStrategy();
   private final TraitMap traitCollection;
   private final ILimitationContext limitationContext = new DummyLimitationContext();
 
   public DummyTraitContext(TraitMap traitCollection) {
     this.traitCollection = traitCollection;
-  }
-
-  @Override
-  public TraitValueStrategy getTraitValueStrategy() {
-    return traitValueStrategy;
   }
 
   @Override

@@ -7,6 +7,7 @@ import net.sf.anathema.character.library.trait.favorable.FriendlyIncrementChecke
 import net.sf.anathema.character.library.trait.favorable.GrumpyIncrementChecker;
 import net.sf.anathema.character.library.trait.favorable.TraitFavorization;
 import net.sf.anathema.character.main.testing.dummy.DummyBasicCharacterData;
+import net.sf.anathema.character.main.testing.dummy.DummyHero;
 import net.sf.anathema.character.main.testing.dummy.trait.DummyTrait;
 import org.junit.Before;
 import org.junit.Test;
@@ -23,8 +24,8 @@ public class TraitFavorizationRequiredFavoredTest {
   }
 
   private TraitFavorization createObjectUnderTest(boolean isRequiredFavored) {
-    IBasicCharacterData characterData = new DummyBasicCharacterData();
-    return new TraitFavorization(characterData, null, new FriendlyIncrementChecker(), trait, isRequiredFavored);
+    DummyHero dummyHero = new DummyHero();
+    return new TraitFavorization(dummyHero, null, new FriendlyIncrementChecker(), trait, isRequiredFavored);
   }
 
   @Test
@@ -48,8 +49,8 @@ public class TraitFavorizationRequiredFavoredTest {
 
   @Test(expected = IllegalStateException.class)
   public void testSetCasteNotAllowedForRequiredFavored() throws Exception {
-    IBasicCharacterData characterData = new DummyBasicCharacterData();
-    final TraitFavorization favorization = new TraitFavorization(characterData, null, new GrumpyIncrementChecker(), trait, true);
+    DummyHero dummyHero = new DummyHero();
+    final TraitFavorization favorization = new TraitFavorization(dummyHero, null, new GrumpyIncrementChecker(), trait, true);
     favorization.setCaste(true);
   }
 }

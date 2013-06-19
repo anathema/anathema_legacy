@@ -7,7 +7,7 @@ import net.sf.anathema.character.impl.generic.GenericCharacter;
 import net.sf.anathema.character.main.hero.InitializationContext;
 import net.sf.anathema.character.main.hero.ModelInitializationContext;
 import net.sf.anathema.character.main.model.essencepool.EssencePoolModelFetcher;
-import net.sf.anathema.character.main.testing.dummy.DummyCharacterModelContext;
+import net.sf.anathema.character.main.testing.dummy.DummyInitializationContext;
 import net.sf.anathema.character.main.testing.dummy.DummyHero;
 import net.sf.anathema.character.main.testing.dummy.trait.DummyTrait;
 import net.sf.anathema.character.model.ICharacter;
@@ -41,7 +41,7 @@ public class EssencePoolTest {
     hero.template.setEssenceTemplate(essenceTemplate);
     when(statistics.getTemplate()).thenReturn(hero.getTemplate());
     hero.addModel(traitMap);
-    InitializationContext initContext = new ModelInitializationContext(new DummyCharacterModelContext(), null);
+    InitializationContext initContext = new DummyInitializationContext();
     essencePoolModel.initialize(initContext, hero);
     when(EssencePoolModelFetcher.fetch(statistics)).thenReturn(essencePoolModel);
   }

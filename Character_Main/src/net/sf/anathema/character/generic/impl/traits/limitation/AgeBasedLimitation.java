@@ -1,7 +1,9 @@
 package net.sf.anathema.character.generic.impl.traits.limitation;
 
-import net.sf.anathema.character.generic.character.ILimitationContext;
 import net.sf.anathema.character.generic.template.ITraitLimitation;
+import net.sf.anathema.character.main.hero.Hero;
+import net.sf.anathema.character.main.model.concept.HeroConcept;
+import net.sf.anathema.character.main.model.concept.HeroConceptFetcher;
 import net.sf.anathema.lib.exception.UnreachableCodeReachedException;
 
 public class AgeBasedLimitation implements ITraitLimitation {
@@ -13,13 +15,14 @@ public class AgeBasedLimitation implements ITraitLimitation {
   }
 
   @Override
-  public int getAbsoluteLimit(ILimitationContext limitationContext) {
+  public int getAbsoluteLimit(Hero hero) {
     return absoluteLimit;
   }
 
   @Override
-  public int getCurrentMaximum(ILimitationContext limitationContext, boolean modified) {
-    int age = limitationContext.getAge();
+  public int getCurrentMaximum(Hero hero, boolean modified) {
+    HeroConcept concept = HeroConceptFetcher.fetch(hero);
+    int age = concept.getAge().getValue();
     for (int categories = 0; categories != ageArray.length; categories++) {
       if (age < ageArray[categories]) {
         return 5 + categories;

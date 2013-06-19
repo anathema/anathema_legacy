@@ -1,6 +1,6 @@
 package net.sf.anathema.character.generic.impl.template.magic;
 
-import net.sf.anathema.character.generic.caste.ICasteType;
+import net.sf.anathema.character.generic.caste.CasteType;
 import net.sf.anathema.character.generic.magic.ICharm;
 import net.sf.anathema.character.generic.template.magic.ICharmSet;
 import net.sf.anathema.character.generic.template.magic.ICharmTemplate;
@@ -41,7 +41,7 @@ public class CharmTemplate implements ICharmTemplate {
   }
 
   @Override
-  public boolean isAllowedAlienCharms(ICasteType caste) {
+  public boolean isAllowedAlienCharms(CasteType caste) {
     return alienAllowedCastes.contains(caste.getId());
   }
 

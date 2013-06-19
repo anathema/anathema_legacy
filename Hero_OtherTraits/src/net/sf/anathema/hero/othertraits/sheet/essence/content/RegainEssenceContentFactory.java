@@ -1,6 +1,7 @@
 package net.sf.anathema.hero.othertraits.sheet.essence.content;
 
 import net.sf.anathema.character.generic.character.IGenericCharacter;
+import net.sf.anathema.character.main.hero.Hero;
 import net.sf.anathema.character.reporting.pdf.content.RegisteredReportContent;
 import net.sf.anathema.character.reporting.pdf.content.ReportContentFactory;
 import net.sf.anathema.character.reporting.pdf.content.ReportSession;
@@ -16,7 +17,7 @@ public class RegainEssenceContentFactory implements ReportContentFactory<RegainE
   }
 
   @Override
-  public RegainEssenceContent create(ReportSession session, IGenericCharacter character) {
+  public RegainEssenceContent create(ReportSession session, IGenericCharacter character, Hero hero) {
     return new RegainEssenceContent(resources, character);
   }
 }

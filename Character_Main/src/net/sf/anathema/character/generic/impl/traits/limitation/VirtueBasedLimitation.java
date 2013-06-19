@@ -1,9 +1,10 @@
 package net.sf.anathema.character.generic.impl.traits.limitation;
 
-import net.sf.anathema.character.generic.character.ILimitationContext;
 import net.sf.anathema.character.generic.template.ITraitLimitation;
 import net.sf.anathema.character.generic.traits.TraitType;
 import net.sf.anathema.character.generic.traits.types.VirtueType;
+import net.sf.anathema.character.main.hero.Hero;
+import net.sf.anathema.character.main.model.traits.TraitModelFetcher;
 import net.sf.anathema.lib.exception.UnreachableCodeReachedException;
 
 public class VirtueBasedLimitation implements ITraitLimitation {
@@ -15,13 +16,13 @@ public class VirtueBasedLimitation implements ITraitLimitation {
   }
 
   @Override
-  public int getAbsoluteLimit(ILimitationContext limitationContext) {
+  public int getAbsoluteLimit(Hero hero) {
     return 5;
   }
 
   @Override
-  public int getCurrentMaximum(ILimitationContext limitationContext, boolean modified) {
-    return limitationContext.getTraitCollection().getTrait(limitingType).getCurrentValue();
+  public int getCurrentMaximum(Hero hero, boolean modified) {
+    return TraitModelFetcher.fetch(hero).getTrait(limitingType).getCurrentValue();
   }
 
   @Override

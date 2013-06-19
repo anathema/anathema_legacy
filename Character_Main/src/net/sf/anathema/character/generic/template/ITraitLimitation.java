@@ -1,11 +1,11 @@
 package net.sf.anathema.character.generic.template;
 
-import net.sf.anathema.character.generic.character.ILimitationContext;
+import net.sf.anathema.character.main.hero.Hero;
 import net.sf.anathema.lib.lang.clone.ICloneable;
 
 public interface ITraitLimitation extends ICloneable<ITraitLimitation> {
 
-  int getAbsoluteLimit(ILimitationContext limitationContext);
+  int getAbsoluteLimit(Hero hero);
 
-  int getCurrentMaximum(ILimitationContext limitationContext, boolean modified);
+  int getCurrentMaximum(Hero hero, boolean modified);
 }

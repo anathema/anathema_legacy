@@ -1,10 +1,10 @@
 package net.sf.anathema.character.generic.framework.xml.trait;
 
 import com.google.common.base.Preconditions;
-import net.sf.anathema.character.generic.character.ILimitationContext;
 import net.sf.anathema.character.generic.template.ITraitLimitation;
 import net.sf.anathema.character.generic.traits.LowerableState;
 import net.sf.anathema.character.generic.traits.TraitType;
+import net.sf.anathema.character.main.hero.Hero;
 import net.sf.anathema.lib.lang.clone.ReflectionCloneableObject;
 
 import java.util.ArrayList;
@@ -56,14 +56,14 @@ public class GenericRestrictedTraitTemplate extends ReflectionCloneableObject<IC
   }
 
   @Override
-  public int getMinimumValue(ILimitationContext limitationContext) {
+  public int getMinimumValue(Hero hero) {
     boolean restricted = false;
     int minimum = 0;
     for (IMinimumRestriction restriction : restrictions) {
       restriction.clear();
     }
     for (IMinimumRestriction restriction : restrictions) {
-      if (!restriction.isFullfilledWithout(limitationContext, traitType)) {
+      if (!restriction.isFulfilledWithout(hero, traitType)) {
         int newMin = restriction.getStrictMinimumValue();
         minimum = newMin > minimum ? newMin : minimum;
         restricted = true;
@@ -72,20 +72,20 @@ public class GenericRestrictedTraitTemplate extends ReflectionCloneableObject<IC
     if (restricted) {
       return minimum;
     }
-    return traitTemplate.getMinimumValue(limitationContext);
+    return traitTemplate.getMinimumValue(hero);
   }
 
   @Override
-  public int getCalculationMinValue(ILimitationContext limitationContext, TraitType type) {
+  public int getCalculationMinValue(Hero hero, TraitType type) {
     int minimum = 0;
     for (IMinimumRestriction restriction : restrictions) {
       restriction.clear();
     }
     for (IMinimumRestriction restriction : restrictions) {
-      int newMin = restriction.getCalculationMinValue(limitationContext, type);
+      int newMin = restriction.getCalculationMinValue(hero, type);
       minimum = newMin > minimum ? newMin : minimum;
     }
-    return Math.max(minimum, traitTemplate.getCalculationMinValue(limitationContext, type));
+    return Math.max(minimum, traitTemplate.getCalculationMinValue(hero, type));
   }
 
   public TraitType getTraitType() {

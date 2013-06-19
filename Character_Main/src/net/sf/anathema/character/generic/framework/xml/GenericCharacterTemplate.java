@@ -1,8 +1,8 @@
 package net.sf.anathema.character.generic.framework.xml;
 
 import net.sf.anathema.character.generic.additionalrules.IAdditionalRules;
+import net.sf.anathema.character.generic.caste.CasteType;
 import net.sf.anathema.character.generic.caste.ICasteCollection;
-import net.sf.anathema.character.generic.caste.ICasteType;
 import net.sf.anathema.character.generic.framework.xml.creation.GenericBonusPointCosts;
 import net.sf.anathema.character.generic.framework.xml.creation.GenericCreationPoints;
 import net.sf.anathema.character.generic.framework.xml.essence.GenericEssenceTemplate;
@@ -46,7 +46,7 @@ public class GenericCharacterTemplate implements HeroTemplate, ICloneable<Generi
   private GroupedTraitType[] abilityGroups;
   private GroupedTraitType[] attributeGroups;
   private GenericPresentationTemplate presentationTemplate;
-  private ICasteCollection casteCollection = new CasteCollection(new ICasteType[0]);
+  private ICasteCollection casteCollection = new CasteCollection(new CasteType[0]);
   // This is volatile instead of final to allow clone to be implemented
   private volatile List<IAdditionalTemplate> additionalTemplates = new ArrayList<>();
   private IHealthTemplate healthTemplate = new GenericHealthTemplate();
@@ -181,7 +181,7 @@ public class GenericCharacterTemplate implements HeroTemplate, ICloneable<Generi
       throw new UnreachableCodeReachedException(e);
     }
     clone.additionalRules = new GenericAdditionalRules();
-    clone.casteCollection = new CasteCollection(new ICasteType[0]);
+    clone.casteCollection = new CasteCollection(new CasteType[0]);
     clone.additionalTemplates = new ArrayList<>();
     clone.healthTemplate = new GenericHealthTemplate();
     if (bonusPointCosts != null) {

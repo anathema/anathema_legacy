@@ -1,6 +1,5 @@
 package net.sf.anathema.character.impl.model.charm.special;
 
-import net.sf.anathema.character.generic.framework.additionaltemplate.model.ICharacterModelContext;
 import net.sf.anathema.character.generic.magic.ICharm;
 import net.sf.anathema.character.generic.magic.charms.special.IMultiLearnableCharm;
 import net.sf.anathema.character.generic.magic.charms.special.IMultipleEffectCharm;
@@ -30,17 +29,15 @@ import java.util.Map;
 public class SpecialCharmManager implements ISpecialCharmManager {
   private final Map<ICharm, ISpecialCharmConfiguration> specialConfigurationsByCharm = new HashMap<>();
   private final IExtendedCharmLearnableArbitrator arbitrator;
-  private ICharacterModelContext context;
   private CharmSpecialistImpl specialist;
   private Hero hero;
   private final CharmModel charmModel;
 
-  public SpecialCharmManager(CharmSpecialistImpl specialist, Hero hero, CharmModel charmModel, ICharacterModelContext context) {
+  public SpecialCharmManager(CharmSpecialistImpl specialist, Hero hero, CharmModel charmModel) {
     this.specialist = specialist;
     this.hero = hero;
     this.charmModel = charmModel;
     this.arbitrator = charmModel;
-    this.context = context;
   }
 
   @Override
@@ -109,15 +106,14 @@ public class SpecialCharmManager implements ISpecialCharmManager {
   }
 
   private void registerMultiLearnableCharm(IMultiLearnableCharm visitedCharm, ICharm charm, ILearningCharmGroup group) {
-    MultiLearnableCharmConfiguration configuration = new MultiLearnableCharmConfiguration(specialist, context, charmModel, charm, visitedCharm, arbitrator);
+    MultiLearnableCharmConfiguration configuration = new MultiLearnableCharmConfiguration(hero, charmModel, charm, visitedCharm, arbitrator);
     addSpecialCharmConfiguration(charm, group, configuration, true, true);
   }
 
   private void registerOxBodyTechnique(IOxBodyTechniqueCharm visited, ICharm charm, ILearningCharmGroup group) {
     HealthModel health = specialist.getHealth();
     OxBodyTechniqueConfiguration oxBodyTechniqueConfiguration =
-            new OxBodyTechniqueConfiguration(context.getTraitContext(), specialist, charm, visited.getRelevantTraits(),
-                    health.getOxBodyLearnArbitrator(), visited);
+            new OxBodyTechniqueConfiguration(hero, charm, visited.getRelevantTraits(), health.getOxBodyLearnArbitrator(), visited);
     addSpecialCharmConfiguration(charm, group, oxBodyTechniqueConfiguration, true, true);
     health.getOxBodyLearnArbitrator().addOxBodyTechniqueConfiguration(oxBodyTechniqueConfiguration);
     health.addHealthLevelProvider(oxBodyTechniqueConfiguration.getHealthLevelProvider());

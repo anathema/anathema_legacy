@@ -1,7 +1,6 @@
 package net.sf.anathema.character.main.trait;
 
-import net.sf.anathema.character.generic.IBasicCharacterData;
-import net.sf.anathema.character.generic.caste.ICasteType;
+import net.sf.anathema.character.generic.caste.CasteType;
 import net.sf.anathema.character.generic.traits.types.AbilityType;
 import net.sf.anathema.character.library.trait.Trait;
 import net.sf.anathema.character.library.trait.favorable.FavorableState;
@@ -9,8 +8,8 @@ import net.sf.anathema.character.library.trait.favorable.FriendlyIncrementChecke
 import net.sf.anathema.character.library.trait.favorable.IFavorableStateChangedListener;
 import net.sf.anathema.character.library.trait.favorable.IncrementChecker;
 import net.sf.anathema.character.library.trait.favorable.TraitFavorization;
-import net.sf.anathema.character.main.testing.dummy.DummyBasicCharacterData;
 import net.sf.anathema.character.main.testing.dummy.DummyCasteType;
+import net.sf.anathema.character.main.testing.dummy.DummyHero;
 import net.sf.anathema.character.main.testing.dummy.trait.DummyTrait;
 import org.junit.Test;
 
@@ -30,8 +29,8 @@ public class TraitFavorizationSetFavoredTest {
   }
 
   private TraitFavorization createTraitFavorization(IncrementChecker incrementChecker) {
-    IBasicCharacterData characterData = new DummyBasicCharacterData();
-    return new TraitFavorization(characterData, new ICasteType[]{new DummyCasteType()}, incrementChecker, archeryTrait, false);
+    DummyHero dummyHero = new DummyHero();
+    return new TraitFavorization(dummyHero, new CasteType[]{new DummyCasteType()}, incrementChecker, archeryTrait, false);
   }
 
   @Test

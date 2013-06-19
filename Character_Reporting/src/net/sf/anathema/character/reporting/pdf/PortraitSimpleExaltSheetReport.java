@@ -36,8 +36,7 @@ public class PortraitSimpleExaltSheetReport extends AbstractPdfReport {
   private final PageSizePreference pageSizePreference;
   private CharacterReportingModuleObject moduleObject;
 
-  public PortraitSimpleExaltSheetReport(Resources resources, ICharacterGenerics characterGenerics,
-                                        PageSizePreference pageSizePreference) {
+  public PortraitSimpleExaltSheetReport(Resources resources, ICharacterGenerics characterGenerics, PageSizePreference pageSizePreference) {
     this.resources = resources;
     this.pageSizePreference = pageSizePreference;
     this.moduleObject = new CharacterReportingModuleObject(characterGenerics.getInstantiater(), resources);
@@ -58,7 +57,7 @@ public class PortraitSimpleExaltSheetReport extends AbstractPdfReport {
       IGenericCharacter character = GenericCharacterUtilities.createGenericCharacter(stattedCharacter);
       List<PageEncoder> encoderList = new ArrayList<>();
       encoderList.add(new FirstPageEncoder(configuration));
-      ReportSession session = new ReportSession(getContentRegistry(), character);
+      ReportSession session = new ReportSession(getContentRegistry(), character, stattedCharacter);
       Collections.addAll(encoderList, findAdditionalPages(pageSize, session));
       encoderList.add(new SecondPageEncoder());
       Sheet sheet = new Sheet(document, getEncoderRegistry(), resources, pageSize);

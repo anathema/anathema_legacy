@@ -1,7 +1,6 @@
 package net.sf.anathema.hero.abilities.model;
 
 import net.sf.anathema.character.change.ChangeAnnouncer;
-import net.sf.anathema.character.generic.additionalrules.IAdditionalTraitRules;
 import net.sf.anathema.character.generic.caste.ICasteCollection;
 import net.sf.anathema.character.generic.template.HeroTemplate;
 import net.sf.anathema.character.generic.template.abilities.GroupedTraitType;
@@ -25,8 +24,8 @@ import net.sf.anathema.character.main.model.traits.MappedTraitGroup;
 import net.sf.anathema.character.main.model.traits.TraitMap;
 import net.sf.anathema.character.main.model.traits.TraitModel;
 import net.sf.anathema.character.main.model.traits.TraitModelFetcher;
-import net.sf.anathema.hero.traits.model.event.FavoredChangedListener;
 import net.sf.anathema.hero.abilities.model.event.SpecialtiesListener;
+import net.sf.anathema.hero.traits.model.event.FavoredChangedListener;
 import net.sf.anathema.hero.traits.model.event.TraitValueChangedListener;
 import net.sf.anathema.lib.util.Identifier;
 
@@ -37,7 +36,6 @@ public class AbilityModelImpl extends DefaultTraitMap implements AbilityModel, H
 
   private IIdentifiedCasteTraitTypeGroup[] abilityTraitGroups;
   private SpecialtiesConfiguration specialtyConfiguration;
-  private InitializationContext context;
   private Hero hero;
 
   @Override
@@ -47,7 +45,6 @@ public class AbilityModelImpl extends DefaultTraitMap implements AbilityModel, H
 
   @Override
   public void initialize(InitializationContext context, Hero hero) {
-    this.context = context;
     this.hero = hero;
     HeroTemplate template = hero.getTemplate();
     ICasteCollection casteCollection = template.getCasteCollection();
@@ -56,7 +53,7 @@ public class AbilityModelImpl extends DefaultTraitMap implements AbilityModel, H
     addFavorableTraits(incrementChecker, new AbilityTemplateFactory(template.getTraitTemplateCollection().getTraitTemplateFactory()));
     TraitModel traitModel = TraitModelFetcher.fetch(hero);
     traitModel.addTraits(getAll());
-    this.specialtyConfiguration = new SpecialtiesConfiguration(this, abilityTraitGroups, context);
+    this.specialtyConfiguration = new SpecialtiesConfiguration(hero, abilityTraitGroups, context);
   }
 
   @Override
@@ -86,8 +83,7 @@ public class AbilityModelImpl extends DefaultTraitMap implements AbilityModel, H
   }
 
   private FavorableTraitFactory createFactory() {
-    IAdditionalTraitRules traitRules = hero.getTemplate().getAdditionalRules().getAdditionalTraitRules();
-    return new FavorableTraitFactory(context.getTraitContext(), traitRules, context.getBasicCharacterContext(), context.getCharacterListening());
+    return new FavorableTraitFactory(hero);
   }
 
   @Override

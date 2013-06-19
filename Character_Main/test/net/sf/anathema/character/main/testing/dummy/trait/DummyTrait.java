@@ -68,12 +68,12 @@ public class DummyTrait implements Trait {
 
   @Override
   public int getUnmodifiedMaximalValue() {
-    return 0;
+    return 10;
   }
 
   @Override
   public int getModifiedMaximalValue() {
-    return 0;
+    return 10;
   }
 
   @Override

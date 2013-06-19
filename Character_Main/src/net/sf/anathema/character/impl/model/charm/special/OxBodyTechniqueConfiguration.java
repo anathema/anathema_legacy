@@ -1,15 +1,17 @@
 package net.sf.anathema.character.impl.model.charm.special;
 
-import net.sf.anathema.character.generic.framework.additionaltemplate.model.TraitContext;
 import net.sf.anathema.character.generic.health.HealthLevelType;
 import net.sf.anathema.character.generic.magic.ICharm;
 import net.sf.anathema.character.generic.magic.charms.special.IOxBodyTechniqueCharm;
 import net.sf.anathema.character.generic.magic.charms.special.ISpecialCharmLearnListener;
 import net.sf.anathema.character.generic.traits.TraitType;
-import net.sf.anathema.character.impl.model.charm.CharmSpecialist;
+import net.sf.anathema.character.library.trait.Trait;
 import net.sf.anathema.character.library.trait.favorable.IncrementChecker;
+import net.sf.anathema.character.main.hero.Hero;
 import net.sf.anathema.character.main.model.health.IHealthLevelProvider;
 import net.sf.anathema.character.main.model.health.OxBodyTechniqueArbitrator;
+import net.sf.anathema.character.main.model.traits.TraitModel;
+import net.sf.anathema.character.main.model.traits.TraitModelFetcher;
 import net.sf.anathema.character.model.charm.OxBodyCategory;
 import net.sf.anathema.character.model.charm.special.IOxBodyTechniqueConfiguration;
 import net.sf.anathema.lib.control.IIntValueChangedListener;
@@ -27,21 +29,22 @@ public class OxBodyTechniqueConfiguration implements IOxBodyTechniqueConfigurati
   private final ICharm oxBodyTechnique;
   private final IHealthLevelProvider healthLevelProvider;
 
-  public OxBodyTechniqueConfiguration(TraitContext context, final CharmSpecialist specialist, ICharm oxBodyTechnique,
-                                      final TraitType[] relevantTraits, final OxBodyTechniqueArbitrator arbitrator,
-                                      IOxBodyTechniqueCharm properties) {
+  public OxBodyTechniqueConfiguration(final Hero hero, ICharm oxBodyTechnique, final TraitType[] relevantTraits,
+                                      final OxBodyTechniqueArbitrator arbitrator, IOxBodyTechniqueCharm properties) {
     this.oxBodyTechnique = oxBodyTechnique;
     incrementChecker = new IncrementChecker() {
       @Override
       public boolean isValidIncrement(int increment) {
         int minTrait = Integer.MAX_VALUE;
         for (TraitType type : relevantTraits) {
-          minTrait = Math.min(minTrait, specialist.getTraits().getTrait(type).getCurrentValue());
+          TraitModel traits = TraitModelFetcher.fetch(hero);
+          Trait trait = traits.getTrait(type);
+          minTrait = Math.min(minTrait, trait.getCurrentValue());
         }
         return increment < 0 || (arbitrator.isIncrementAllowed(increment) && getCurrentLearnCount() + increment <= minTrait);
       }
     };
-    categories = createOxBodyCategories(context, properties);
+    categories = createOxBodyCategories(hero, properties);
     for (OxBodyCategory category : categories) {
       category.addCurrentValueListener(new IIntValueChangedListener() {
         @Override
@@ -53,12 +56,12 @@ public class OxBodyTechniqueConfiguration implements IOxBodyTechniqueConfigurati
     this.healthLevelProvider = new OxBodyTechniqueHealthLevelProvider(categories);
   }
 
-  private OxBodyCategory[] createOxBodyCategories(TraitContext context, IOxBodyTechniqueCharm properties) {
+  private OxBodyCategory[] createOxBodyCategories(Hero hero, IOxBodyTechniqueCharm properties) {
     Set<String> ids = properties.getHealthLevels().keySet();
     List<OxBodyCategory> categoryList = new ArrayList<>();
     for (String id : ids) {
       HealthLevelType[] levels = properties.getHealthLevels().get(id);
-      OxBodyCategory category = new OxBodyCategory(context, levels, id, incrementChecker);
+      OxBodyCategory category = new OxBodyCategory(hero, levels, id, incrementChecker);
       categoryList.add(category);
     }
     return categoryList.toArray(new OxBodyCategory[categoryList.size()]);
