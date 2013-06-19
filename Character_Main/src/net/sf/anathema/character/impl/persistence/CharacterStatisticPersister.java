@@ -18,6 +18,7 @@ import net.sf.anathema.character.main.model.concept.HeroConceptFetcher;
 import net.sf.anathema.character.main.model.description.HeroDescription;
 import net.sf.anathema.character.main.model.description.HeroDescriptionFetcher;
 import net.sf.anathema.character.main.model.experience.ExperienceModelFetcher;
+import net.sf.anathema.character.main.model.spells.SpellsModelFetcher;
 import net.sf.anathema.character.main.model.traits.TraitModelFetcher;
 import net.sf.anathema.character.model.ICharacter;
 import net.sf.anathema.framework.messaging.IMessaging;
@@ -71,7 +72,7 @@ public class CharacterStatisticPersister {
     attributePersister.save(statisticsElement, AttributeModelFetcher.fetch(character));
     abilityPersister.save(statisticsElement, AbilityModelFetcher.fetch(character));
     charmPersister.save(statisticsElement, character);
-    spellPersister.save(statisticsElement, character.getSpells());
+    spellPersister.save(statisticsElement, SpellsModelFetcher.fetch(character));
     experiencePersister.save(statisticsElement, ExperienceModelFetcher.fetch(character).getExperiencePoints());
     additonalModelPersister.save(statisticsElement, character.getExtendedConfiguration().getAdditionalModels());
   }
@@ -93,7 +94,7 @@ public class CharacterStatisticPersister {
       attributePersister.load(statisticsElement, AttributeModelFetcher.fetch(character));
       abilityPersister.load(statisticsElement, AbilityModelFetcher.fetch(character));
       charmPersister.load(statisticsElement, character);
-      spellPersister.load(statisticsElement, character.getSpells());
+      spellPersister.load(statisticsElement, SpellsModelFetcher.fetch(character));
       experiencePersister.load(statisticsElement, ExperienceModelFetcher.fetch(character).getExperiencePoints());
       willpowerPersister.load(statisticsElement, TraitModelFetcher.fetch(character).getTrait(OtherTraitType.Willpower));
       additonalModelPersister.load(statisticsElement, character.getExtendedConfiguration().getAdditionalModels());

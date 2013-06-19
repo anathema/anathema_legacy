@@ -4,6 +4,7 @@ import net.sf.anathema.character.generic.framework.magic.view.AbstractMagicLearn
 import net.sf.anathema.character.generic.magic.ISpell;
 import net.sf.anathema.character.generic.magic.description.MagicDescriptionProvider;
 import net.sf.anathema.character.main.model.experience.ExperienceModelFetcher;
+import net.sf.anathema.character.main.model.spells.SpellsModelFetcher;
 import net.sf.anathema.character.model.*;
 import net.sf.anathema.character.view.magic.ISpellViewProperties;
 import net.sf.anathema.framework.ui.IdentifierConfiguration;
@@ -24,7 +25,7 @@ public class SpellViewProperties extends AbstractMagicLearnProperties implements
                              MagicDescriptionProvider magicDescriptionProvider) {
     super(resources);
     this.character = character;
-    this.spellConfiguration = character.getSpells();
+    this.spellConfiguration = SpellsModelFetcher.fetch(character);
     this.tooltipBuilder = new SpellTooltipBuilder(resources, this, magicDescriptionProvider);
   }
 

@@ -33,6 +33,7 @@ import net.sf.anathema.character.library.trait.experience.TraitRatingCostCalcula
 import net.sf.anathema.character.main.model.abilities.AbilityModelFetcher;
 import net.sf.anathema.character.main.model.attributes.AttributeModelFetcher;
 import net.sf.anathema.character.main.model.charms.CharmsModelFetcher;
+import net.sf.anathema.character.main.model.spells.SpellsModelFetcher;
 import net.sf.anathema.character.main.model.traits.TraitMap;
 import net.sf.anathema.character.main.model.traits.TraitModelFetcher;
 import net.sf.anathema.character.model.ICharacter;
@@ -73,18 +74,18 @@ public class BonusPointManagement implements IBonusPointManagement {
     HeroTemplate characterTemplate = character.getTemplate();
     GenericCharacter characterAbstraction = GenericCharacterUtilities.createGenericCharacter(character);
     TraitMap traitMap = TraitModelFetcher.fetch(character);
-    this.abilityCalculator =
-            new AbilityCostCalculator(AbilityModelFetcher.fetch(character), creationPoints.getAbilityCreationPoints(), creationPoints.getSpecialtyCreationPoints(),
-                    cost, bonusAdditionalPools);
-    this.attributeCalculator =
-            new AttributeCostCalculator(AttributeModelFetcher.fetch(character), creationPoints.getAttributeCreationPoints(), cost, bonusAdditionalPools);
+    this.abilityCalculator = new AbilityCostCalculator(AbilityModelFetcher.fetch(character), creationPoints.getAbilityCreationPoints(),
+            creationPoints.getSpecialtyCreationPoints(), cost, bonusAdditionalPools);
+    this.attributeCalculator = new AttributeCostCalculator(AttributeModelFetcher.fetch(character), creationPoints.getAttributeCreationPoints(), cost,
+            bonusAdditionalPools);
     Trait[] virtues = TraitCollectionUtilities.getVirtues(traitMap);
     this.virtueCalculator = new VirtueCostCalculator(virtues, creationPoints.getVirtueCreationPoints(), cost);
     magicAdditionalPools =
             new AdditionalMagicLearnPointManagement(characterTemplate.getAdditionalRules().getAdditionalMagicLearnPools(), characterAbstraction);
-    this.magicCalculator = new MagicCostCalculator(characterTemplate.getMagicTemplate(), CharmsModelFetcher.fetch(character), character.getSpells(),
-            creationPoints.getFavoredCreationCharmCount(), creationPoints.getDefaultCreationCharmCount(), cost, bonusAdditionalPools,
-            magicAdditionalPools, character, character.getCharacterContext().getTraitCollection());
+    this.magicCalculator =
+            new MagicCostCalculator(characterTemplate.getMagicTemplate(), CharmsModelFetcher.fetch(character), SpellsModelFetcher.fetch(character),
+                    creationPoints.getFavoredCreationCharmCount(), creationPoints.getDefaultCreationCharmCount(), cost, bonusAdditionalPools,
+                    magicAdditionalPools, character, character.getCharacterContext().getTraitCollection());
     this.willpower = TraitCollectionUtilities.getWillpower(traitMap);
     this.essence = TraitCollectionUtilities.getEssence(traitMap);
   }

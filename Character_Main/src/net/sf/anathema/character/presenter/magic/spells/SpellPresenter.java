@@ -5,6 +5,7 @@ import net.sf.anathema.character.generic.magic.ISpell;
 import net.sf.anathema.character.generic.magic.description.MagicDescriptionProvider;
 import net.sf.anathema.character.generic.magic.spells.CircleType;
 import net.sf.anathema.character.main.model.experience.ExperienceModelFetcher;
+import net.sf.anathema.character.main.model.spells.SpellsModelFetcher;
 import net.sf.anathema.character.model.ICharacter;
 import net.sf.anathema.character.model.IMagicLearnListener;
 import net.sf.anathema.character.view.magic.ISpellView;
@@ -36,7 +37,7 @@ public class SpellPresenter {
     this.character = character;
     SpellViewProperties properties = new SpellViewProperties(resources, character, magicDescriptionProvider);
     this.resources = resources;
-    this.spellConfiguration = character.getSpells();
+    this.spellConfiguration = SpellsModelFetcher.fetch(character);
     this.view = view;
     view.prepare(properties);
     circle = spellModel.getCircles()[0];

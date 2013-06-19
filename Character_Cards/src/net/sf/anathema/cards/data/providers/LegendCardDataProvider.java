@@ -10,6 +10,7 @@ import net.sf.anathema.character.generic.magic.ICharm;
 import net.sf.anathema.character.generic.magic.ISpell;
 import net.sf.anathema.character.main.model.charms.CharmsModelFetcher;
 import net.sf.anathema.character.main.model.experience.ExperienceModelFetcher;
+import net.sf.anathema.character.main.model.spells.SpellsModelFetcher;
 import net.sf.anathema.character.model.ICharacter;
 import net.sf.anathema.lib.resources.Resources;
 
@@ -165,7 +166,7 @@ public class LegendCardDataProvider implements ICardDataProvider {
 
   private ISpell[] getCurrentSpells(ICharacter character) {
     boolean experienced = ExperienceModelFetcher.fetch(character).isExperienced();
-    return character.getSpells().getLearnedSpells(experienced);
+    return SpellsModelFetcher.fetch(character).getLearnedSpells(experienced);
   }
 
 }

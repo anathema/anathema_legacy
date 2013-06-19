@@ -14,6 +14,7 @@ import net.sf.anathema.character.generic.magic.description.MagicDescription;
 import net.sf.anathema.character.impl.generic.GenericCharacter;
 import net.sf.anathema.character.main.model.charms.CharmsModelFetcher;
 import net.sf.anathema.character.main.model.experience.ExperienceModelFetcher;
+import net.sf.anathema.character.main.model.spells.SpellsModelFetcher;
 import net.sf.anathema.character.model.ICharacter;
 import net.sf.anathema.character.reporting.pdf.content.stats.magic.CharmStats;
 import net.sf.anathema.character.reporting.pdf.content.stats.magic.SpellStats;
@@ -186,7 +187,8 @@ public class MagicReport extends AbstractPdfReport {
   }
 
   private ISpell[] getCurrentSpells(ICharacter character) {
-    return character.getSpells().getLearnedSpells(ExperienceModelFetcher.fetch(character).isExperienced());
+    boolean experienced = ExperienceModelFetcher.fetch(character).isExperienced();
+    return SpellsModelFetcher.fetch(character).getLearnedSpells(experienced);
   }
 
   private ICharm[] getCurrentCharms(ICharacter character) {

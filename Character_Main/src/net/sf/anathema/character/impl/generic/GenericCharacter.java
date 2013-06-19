@@ -28,6 +28,7 @@ import net.sf.anathema.character.library.trait.subtrait.ISpecialtyListener;
 import net.sf.anathema.character.main.model.abilities.AbilityModelFetcher;
 import net.sf.anathema.character.main.model.attributes.AttributeModelFetcher;
 import net.sf.anathema.character.main.model.charms.CharmsModelFetcher;
+import net.sf.anathema.character.main.model.combos.CombosModelFetcher;
 import net.sf.anathema.character.main.model.concept.HeroConcept;
 import net.sf.anathema.character.main.model.concept.HeroConceptFetcher;
 import net.sf.anathema.character.main.model.description.HeroDescriptionFetcher;
@@ -35,6 +36,7 @@ import net.sf.anathema.character.main.model.essencepool.EssencePoolModelFetcher;
 import net.sf.anathema.character.main.model.experience.ExperienceModelFetcher;
 import net.sf.anathema.character.main.model.health.HealthModelFetcher;
 import net.sf.anathema.character.main.model.othertraits.OtherTraitModelFetcher;
+import net.sf.anathema.character.main.model.spells.SpellsModelFetcher;
 import net.sf.anathema.character.main.model.traits.GenericTraitCollectionFacade;
 import net.sf.anathema.character.main.model.traits.TraitMap;
 import net.sf.anathema.character.main.model.traits.TraitModelFetcher;
@@ -101,7 +103,7 @@ public class GenericCharacter implements IGenericCharacter {
     magic.accept(new IMagicVisitor() {
       @Override
       public void visitSpell(ISpell spell) {
-        isLearned[0] = character.getSpells().isLearned(spell);
+        isLearned[0] = SpellsModelFetcher.fetch(character).isLearned(spell);
       }
 
       @Override
@@ -218,7 +220,8 @@ public class GenericCharacter implements IGenericCharacter {
   public List<IMagic> getAllLearnedMagic() {
     List<IMagic> magicList = new ArrayList<>();
     magicList.addAll(Arrays.asList(getLearnedCharms()));
-    magicList.addAll(Arrays.asList(character.getSpells().getLearnedSpells(ExperienceModelFetcher.fetch(character).isExperienced())));
+    boolean experienced = ExperienceModelFetcher.fetch(character).isExperienced();
+    magicList.addAll(Arrays.asList(SpellsModelFetcher.fetch(character).getLearnedSpells(experienced)));
     return magicList;
   }
 
@@ -238,7 +241,7 @@ public class GenericCharacter implements IGenericCharacter {
   @Override
   public IGenericCombo[] getCombos() {
     List<IGenericCombo> genericCombos = new ArrayList<>();
-    for (ICombo combo : character.getCombos().getAllCombos()) {
+    for (ICombo combo : CombosModelFetcher.fetch(character).getAllCombos()) {
       genericCombos.add(new GenericCombo(combo));
     }
     return genericCombos.toArray(new IGenericCombo[genericCombos.size()]);

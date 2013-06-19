@@ -14,12 +14,8 @@ import net.sf.anathema.character.main.hero.DefaultHero;
 import net.sf.anathema.character.main.hero.HeroModel;
 import net.sf.anathema.character.main.hero.ModelInitializationContext;
 import net.sf.anathema.character.main.hero.initialization.HeroModelInitializer;
-import net.sf.anathema.character.main.model.combos.CombosModel;
-import net.sf.anathema.character.main.model.combos.CombosModelFetcher;
 import net.sf.anathema.character.main.model.description.HeroDescription;
 import net.sf.anathema.character.main.model.description.HeroDescriptionFetcher;
-import net.sf.anathema.character.main.model.spells.SpellModel;
-import net.sf.anathema.character.main.model.spells.SpellsModelFetcher;
 import net.sf.anathema.character.model.ICharacter;
 import net.sf.anathema.framework.presenter.itemmanagement.PrintNameAdjuster;
 import net.sf.anathema.lib.control.IChangeListener;
@@ -92,14 +88,6 @@ public class ExaltedCharacter implements ICharacter {
   @Override
   public void setClean() {
     management.setClean();
-  }
-
-  public CombosModel getCombos() {
-    return CombosModelFetcher.fetch(hero);
-  }
-
-  public SpellModel getSpells() {
-    return SpellsModelFetcher.fetch(hero);
   }
 
   public ExtendedConfiguration getExtendedConfiguration() {

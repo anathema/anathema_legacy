@@ -5,6 +5,7 @@ import net.sf.anathema.cards.data.SpellCardData;
 import net.sf.anathema.cards.layout.ICardReportResourceProvider;
 import net.sf.anathema.character.generic.magic.ISpell;
 import net.sf.anathema.character.main.model.experience.ExperienceModelFetcher;
+import net.sf.anathema.character.main.model.spells.SpellsModelFetcher;
 import net.sf.anathema.character.model.ICharacter;
 import net.sf.anathema.character.reporting.pdf.content.stats.magic.SpellStats;
 import net.sf.anathema.framework.IApplicationModel;
@@ -29,7 +30,8 @@ public class SpellCardDataProvider extends AbstractMagicCardDataProvider {
   }
 
   private ISpell[] getCurrentSpells(ICharacter character) {
-    return character.getSpells().getLearnedSpells(ExperienceModelFetcher.fetch(character).isExperienced());
+    boolean experienced = ExperienceModelFetcher.fetch(character).isExperienced();
+    return SpellsModelFetcher.fetch(character).getLearnedSpells(experienced);
   }
 
   private SpellStats createSpellStats(ISpell spell) {

@@ -14,6 +14,7 @@ import net.sf.anathema.character.library.trait.persistence.TraitPersister;
 import net.sf.anathema.character.main.hero.Hero;
 import net.sf.anathema.character.main.model.charms.CharmsModelFetcher;
 import net.sf.anathema.character.main.model.combos.CombosModel;
+import net.sf.anathema.character.main.model.combos.CombosModelFetcher;
 import net.sf.anathema.character.model.ICharacter;
 import net.sf.anathema.character.main.model.charms.CharmsModel;
 import net.sf.anathema.character.model.charm.ICombo;
@@ -68,7 +69,7 @@ public class CharmConfigurationPersister {
     Element charmsElement = parent.addElement(TAG_CHARMS);
     CharmsModel charmConfiguration = CharmsModelFetcher.fetch(character);
     saveCharms(charmsElement, charmConfiguration);
-    saveCombos(charmsElement, character.getCombos());
+    saveCombos(charmsElement, CombosModelFetcher.fetch(character));
     saveFilters(charmsElement, charmConfiguration.getCharmFilters());
   }
 
@@ -123,7 +124,7 @@ public class CharmConfigurationPersister {
       Element groupElement = (Element) groupObjectElement;
       loadCharmFromConfiguration(character, charmConfiguration, groupElement, specialPersister);
     }
-    loadCombos(charmsElement, character.getCombos(), charmConfiguration);
+    loadCombos(charmsElement, CombosModelFetcher.fetch(character), charmConfiguration);
     loadFilters(charmsElement, character);
   }
 
