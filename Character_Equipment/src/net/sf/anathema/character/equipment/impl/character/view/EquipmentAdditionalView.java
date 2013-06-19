@@ -2,9 +2,12 @@ package net.sf.anathema.character.equipment.impl.character.view;
 
 import net.miginfocom.layout.CC;
 import net.miginfocom.swing.MigLayout;
+import net.sf.anathema.character.equipment.character.DialogPersonalizationEditView;
+import net.sf.anathema.character.equipment.character.PersonalizationEditView;
 import net.sf.anathema.character.equipment.character.view.IEquipmentAdditionalView;
 import net.sf.anathema.character.equipment.character.view.IEquipmentObjectView;
 import net.sf.anathema.character.equipment.character.view.IMagicalMaterialView;
+import net.sf.anathema.character.equipment.item.personalization.EquipmentPersonalizationProperties;
 import net.sf.anathema.character.library.taskpane.ITaskPaneGroupViewFactory;
 import net.sf.anathema.character.library.taskpane.TaskPaneView;
 import net.sf.anathema.framework.swing.IView;
@@ -69,6 +72,11 @@ public class EquipmentAdditionalView implements IEquipmentAdditionalView, IView 
   @Override
   public void revalidateEquipmentViews() {
     taskPaneView.revalidateView();
+  }
+
+  @Override
+  public PersonalizationEditView startEditingPersonalization(EquipmentPersonalizationProperties properties) {
+    return new DialogPersonalizationEditView(properties);
   }
 
   @Override

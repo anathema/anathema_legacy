@@ -1,9 +1,9 @@
 package net.sf.anathema.character.equipment.item.personalization;
 
-import net.sf.anathema.character.equipment.character.model.IEquipmentPersonalizationModel;
 import net.sf.anathema.lib.control.ObjectValueListener;
 import net.sf.anathema.lib.gui.dialog.userdialog.page.AbstractDialogPage;
 import net.sf.anathema.lib.message.IBasicMessage;
+import net.sf.anathema.lib.util.Closure;
 import net.sf.anathema.lib.workflow.textualdescription.ITextView;
 
 import javax.swing.JComponent;
@@ -11,15 +11,27 @@ import javax.swing.JComponent;
 public class EquipmentPersonalizationPresenterPage extends AbstractDialogPage {
 
   private final EquipmentPersonalizationProperties properties;
-  private final IEquipmentPersonalizationModel model;
-  private EquipmentPersonalizationView view;
+  private final EquipmentPersonalizationView view = new EquipmentPersonalizationView();
+  private final ITextView description;
+  private final ITextView title;
+  private ProxyClosure<String> onTitleChange = new ProxyClosure<>();
+  private ProxyClosure<String> onDescriptionChange = new ProxyClosure<>();
 
-  public EquipmentPersonalizationPresenterPage(IEquipmentPersonalizationModel model,
-                                               EquipmentPersonalizationProperties personalizationProperties) {
+  public EquipmentPersonalizationPresenterPage(EquipmentPersonalizationProperties personalizationProperties) {
     super(personalizationProperties.getPersonalizeMessage());
     this.properties = personalizationProperties;
-    this.view = new EquipmentPersonalizationView();
-    this.model = model;
+    this.title = addField(properties.getTitleMessage(), new ObjectValueListener<String>() {
+      @Override
+      public void valueChanged(String newValue) {
+        onTitleChange.execute(newValue);
+      }
+    });
+    this.description = addField(properties.getDescriptionMessage(), new ObjectValueListener<String>() {
+      @Override
+      public void valueChanged(String newText) {
+        onDescriptionChange.execute(newText);
+      }
+    });
   }
 
   @Override
@@ -39,31 +51,33 @@ public class EquipmentPersonalizationPresenterPage extends AbstractDialogPage {
 
   @Override
   public JComponent createContent() {
-    addField(properties.getTitleMessage(), model.getTitle(), new ObjectValueListener<String>() {
-      @Override
-      public void valueChanged(String newValue) {
-        model.setTitle(newValue);
-      }
-    });
-    addField(properties.getDescriptionMessage(), model.getDescription(), new ObjectValueListener<String>() {
-      @Override
-      public void valueChanged(String newText) {
-        model.setDescription(newText);
-      }
-    });
     return view.getContent();
   }
 
-  private void addField(String label, String content, ObjectValueListener<String> listener) {
+  private ITextView addField(String label, ObjectValueListener<String> listener) {
     ITextView textView = view.addEntry(label);
-    if (content != null) {
-      textView.setText(content);
-    }
     textView.addTextChangedListener(listener);
+    return textView;
   }
 
   @Override
   public String getDescription() {
     return properties.getPersonalizeDetails();
+  }
+
+  public void setDescription(String description) {
+    this.description.setText(description);
+  }
+
+  public void setTitle(String title) {
+    this.title.setText(title);
+  }
+
+  public void whenTitleChanges(Closure<String> closure) {
+    onTitleChange.setDelegate(closure);
+  }
+
+  public void whenDescriptionChanges(Closure<String> closure) {
+    onDescriptionChange.setDelegate(closure);
   }
 }

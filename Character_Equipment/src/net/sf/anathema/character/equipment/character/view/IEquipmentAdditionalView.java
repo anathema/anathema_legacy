@@ -1,5 +1,7 @@
 package net.sf.anathema.character.equipment.character.view;
 
+import net.sf.anathema.character.equipment.character.PersonalizationEditView;
+import net.sf.anathema.character.equipment.item.personalization.EquipmentPersonalizationProperties;
 import net.sf.anathema.interaction.Tool;
 import net.sf.anathema.lib.gui.selection.IListObjectSelectionView;
 
@@ -16,4 +18,6 @@ public interface IEquipmentAdditionalView {
   IMagicalMaterialView getMagicMaterialView();
 
   void revalidateEquipmentViews();
+
+  PersonalizationEditView startEditingPersonalization(EquipmentPersonalizationProperties properties);
 }

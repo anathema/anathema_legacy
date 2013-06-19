@@ -11,10 +11,8 @@ import net.sf.anathema.character.equipment.character.view.IMagicalMaterialView;
 import net.sf.anathema.character.equipment.creation.presenter.stats.properties.EquipmentUI;
 import net.sf.anathema.character.equipment.item.EquipmentTemplateNameComparator;
 import net.sf.anathema.character.equipment.item.personalization.EquipmentPersonalizationModel;
-import net.sf.anathema.character.equipment.item.personalization.EquipmentPersonalizationPresenterPage;
 import net.sf.anathema.character.equipment.item.personalization.EquipmentPersonalizationProperties;
 import net.sf.anathema.framework.presenter.resources.BasicUi;
-import net.sf.anathema.framework.view.SwingApplicationFrame;
 import net.sf.anathema.interaction.Command;
 import net.sf.anathema.interaction.Tool;
 import net.sf.anathema.lib.control.IChangeListener;
@@ -22,10 +20,9 @@ import net.sf.anathema.lib.control.ICollectionListener;
 import net.sf.anathema.lib.control.ObjectValueListener;
 import net.sf.anathema.lib.gui.AgnosticUIConfiguration;
 import net.sf.anathema.lib.gui.Presenter;
-import net.sf.anathema.lib.gui.dialog.core.DialogResult;
-import net.sf.anathema.lib.gui.dialog.userdialog.UserDialog;
 import net.sf.anathema.lib.gui.selection.IListObjectSelectionView;
 import net.sf.anathema.lib.resources.Resources;
+import net.sf.anathema.lib.util.Closure;
 
 import java.util.Arrays;
 import java.util.HashMap;
@@ -109,7 +106,7 @@ public class EquipmentAdditionalPresenter implements Presenter {
   }
 
   private void createRefreshAction(final IListObjectSelectionView<String> equipmentTemplatePickList,
-                                          Tool refreshTool) {
+                                   Tool refreshTool) {
     refreshTool.setTooltip(resources.getString("AdditionalTemplateView.RefreshDatabase.Action.Tooltip"));
     refreshTool.setIcon(new EquipmentUI().getRefreshIconPath());
     refreshTool.setCommand(new Command() {
@@ -128,7 +125,7 @@ public class EquipmentAdditionalPresenter implements Presenter {
   }
 
   private void createTemplateAddAction(final IListObjectSelectionView<String> equipmentTemplatePickList,
-                                              final IMagicalMaterialView materialView, final Tool selectTool) {
+                                       final IMagicalMaterialView materialView, final Tool selectTool) {
     selectTool.setIcon(new BasicUi().getRightArrowIconPath());
     selectTool.setTooltip(resources.getString("AdditionalTemplateView.AddTemplate.Action.Tooltip"));
     selectTool.setCommand(new Command() {
@@ -149,8 +146,7 @@ public class EquipmentAdditionalPresenter implements Presenter {
   private void setEnabled(IListObjectSelectionView<String> equipmentTemplatePickList, Tool selectTool) {
     if (equipmentTemplatePickList.isObjectSelected()) {
       selectTool.enable();
-    }
-    else {
+    } else {
       selectTool.disable();
     }
   }
@@ -181,7 +177,6 @@ public class EquipmentAdditionalPresenter implements Presenter {
     }
   }
 
-  //TODO: Swing Dialog
   private void createPersonalizeTool(final IEquipmentItem selectedObject, EquipmentObjectPresenter objectPresenter) {
     Tool personalize = objectPresenter.addContextTool();
     personalize.setIcon(new BasicUi().getEditIconPath());
@@ -189,17 +184,7 @@ public class EquipmentAdditionalPresenter implements Presenter {
     personalize.setCommand(new Command() {
       @Override
       public void execute() {
-        EquipmentPersonalizationModel personalizationModel = new EquipmentPersonalizationModel(selectedObject);
-        EquipmentPersonalizationProperties properties = new EquipmentPersonalizationProperties(resources);
-        EquipmentPersonalizationPresenterPage page = new EquipmentPersonalizationPresenterPage(personalizationModel,
-                properties);
-        UserDialog dialog = new UserDialog(SwingApplicationFrame.getParentComponent(), page);
-        DialogResult result = dialog.show();
-        if (!result.isCanceled()) {
-          selectedObject.setPersonalization(personalizationModel.getTitle(), personalizationModel.getDescription());
-          initEquipmentObjectPresentation(selectedObject);
-          EquipmentAdditionalPresenter.this.model.updateItem(selectedObject);
-        }
+        personalizeItem(selectedObject);
       }
     });
   }
@@ -214,5 +199,38 @@ public class EquipmentAdditionalPresenter implements Presenter {
         model.removeItem(selectedObject);
       }
     });
+  }
+
+  private void personalizeItem(final IEquipmentItem selectedObject) {
+    PersonalizationEditView personalizationView = createView();
+    final EquipmentPersonalizationModel personalizationModel = new EquipmentPersonalizationModel(selectedObject);
+    personalizationView.setTitle(personalizationModel.getTitle());
+    personalizationView.setDescription(personalizationModel.getDescription());
+    personalizationView.whenTitleChanges(new Closure<String>() {
+      @Override
+      public void execute(String newValue) {
+        personalizationModel.setTitle(newValue);
+      }
+    });
+    personalizationView.whenDescriptionChanges(new Closure<String>() {
+      @Override
+      public void execute(String newValue) {
+        personalizationModel.setDescription(newValue);
+      }
+    });
+    personalizationView.whenChangeIsConfirmed(new Runnable() {
+      @Override
+      public void run() {
+        selectedObject.setPersonalization(personalizationModel.getTitle(), personalizationModel.getDescription());
+        initEquipmentObjectPresentation(selectedObject);
+        model.updateItem(selectedObject);
+      }
+    });
+    personalizationView.show();
+  }
+
+  private PersonalizationEditView createView() {
+    EquipmentPersonalizationProperties properties = new EquipmentPersonalizationProperties(resources);
+    return view.startEditingPersonalization(properties);
   }
 }

@@ -72,13 +72,6 @@ public class SwingStatsEditor implements StatsEditor {
     }
   }
 
-  private static class NullClosure implements Closure<IEquipmentStats> {
-    @Override
-    public void execute(IEquipmentStats value) {
-      //nothing to do;
-    }
-  }
-
   private class CreateStatsHandler implements DialogCloseHandler {
     private final IEquipmentStatisticsCreationModel model;
 
