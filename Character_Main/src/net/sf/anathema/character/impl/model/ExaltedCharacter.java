@@ -33,7 +33,7 @@ import net.sf.anathema.lib.workflow.textualdescription.ITextualDescription;
 
 public class ExaltedCharacter implements ICharacter {
 
-  private final CharacterChangeManagement management = new CharacterChangeManagement();
+  private final CharacterChangeManagement management = new CharacterChangeManagement(this);
   private final CharacterModelContext context;
   private final CharmModelImpl charms;
   private final IComboConfiguration combos;
@@ -67,7 +67,7 @@ public class ExaltedCharacter implements ICharacter {
     }
     addAdditionalModels(generics, template.getAdditionalTemplates());
     extendedConfiguration.addAdditionalModelChangeListener(new UnspecifiedChangeListener(hero.getChangeAnnouncer()));
-    getCharacterContext().getCharacterListening().addChangeListener(management.getStatisticsChangeListener());
+    management.initListening();
   }
 
   private void addModels(ICharacterGenerics generics) {

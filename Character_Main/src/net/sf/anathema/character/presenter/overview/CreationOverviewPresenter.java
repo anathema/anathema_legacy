@@ -1,10 +1,11 @@
 package net.sf.anathema.character.presenter.overview;
 
+import net.sf.anathema.character.change.ChangeFlavor;
 import net.sf.anathema.character.generic.caste.CasteType;
-import net.sf.anathema.character.generic.framework.additionaltemplate.listening.GlobalCharacterChangeAdapter;
 import net.sf.anathema.character.generic.template.HeroTemplate;
 import net.sf.anathema.character.library.overview.IAdditionalAlotmentView;
 import net.sf.anathema.character.library.overview.IOverviewCategory;
+import net.sf.anathema.character.main.hero.change.FlavoredChangeListener;
 import net.sf.anathema.character.main.model.concept.HeroConceptFetcher;
 import net.sf.anathema.character.model.ICharacter;
 import net.sf.anathema.character.model.creation.IBonusPointManagement;
@@ -34,9 +35,9 @@ public class CreationOverviewPresenter implements Presenter {
     this.resources = resources;
     this.character = character;
     this.template = character.getTemplate();
-    character.getCharacterContext().getCharacterListening().addChangeListener(new GlobalCharacterChangeAdapter() {
+    character.getChangeAnnouncer().addListener(new FlavoredChangeListener() {
       @Override
-      public void changeOccurred() {
+      public void changeOccurred(ChangeFlavor flavor) {
         updateOverview();
       }
     });

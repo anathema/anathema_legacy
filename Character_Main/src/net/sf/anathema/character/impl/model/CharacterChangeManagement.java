@@ -1,50 +1,20 @@
 package net.sf.anathema.character.impl.model;
 
-import net.sf.anathema.character.generic.framework.additionaltemplate.listening.ICharacterChangeListener;
-import net.sf.anathema.character.generic.traits.TraitType;
+import net.sf.anathema.character.change.ChangeFlavor;
+import net.sf.anathema.character.main.hero.Hero;
+import net.sf.anathema.character.main.hero.change.FlavoredChangeListener;
 import net.sf.anathema.framework.repository.IChangeManagement;
 import net.sf.anathema.lib.control.IChangeListener;
-import net.sf.anathema.lib.control.ObjectValueListener;
 import org.jmock.example.announcer.Announcer;
 
 public class CharacterChangeManagement implements IChangeManagement {
 
   private final Announcer<IChangeListener> control = Announcer.to(IChangeListener.class);
   private boolean dirty = false;
-  private final ICharacterChangeListener listener = new ICharacterChangeListener() {
-    @Override
-    public void casteChanged() {
-      setDirty();
-    }
+  private Hero hero;
 
-    @Override
-    public void changeOccurred() {
-      setDirty();
-    }
-
-    @Override
-    public void experiencedChanged(boolean experienced) {
-      setDirty();
-    }
-
-    @Override
-    public void traitChanged(TraitType type) {
-      setDirty();
-    }
-  };
-  private final ObjectValueListener<String> textListener = new ObjectValueListener<String>() {
-    @Override
-    public void valueChanged(String newValue) {
-      setDirty();
-    }
-  };
-
-  public ICharacterChangeListener getStatisticsChangeListener() {
-    return listener;
-  }
-
-  public ObjectValueListener<String> getDescriptionChangeListener() {
-    return textListener;
+  public CharacterChangeManagement(Hero hero) {
+    this.hero = hero;
   }
 
   @Override
@@ -71,5 +41,14 @@ public class CharacterChangeManagement implements IChangeManagement {
   @Override
   public void removeDirtyListener(IChangeListener changeListener) {
     control.removeListener(changeListener);
+  }
+
+  public void initListening() {
+    hero.getChangeAnnouncer().addListener(new FlavoredChangeListener() {
+      @Override
+      public void changeOccurred(ChangeFlavor flavor) {
+        setDirty();
+      }
+    });
   }
 }

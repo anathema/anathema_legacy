@@ -1,7 +1,8 @@
 package net.sf.anathema.character.presenter.overview;
 
-import net.sf.anathema.character.generic.framework.additionaltemplate.listening.GlobalCharacterChangeAdapter;
+import net.sf.anathema.character.change.ChangeFlavor;
 import net.sf.anathema.character.library.overview.IOverviewCategory;
+import net.sf.anathema.character.main.hero.change.FlavoredChangeListener;
 import net.sf.anathema.character.main.model.experience.ExperienceModelFetcher;
 import net.sf.anathema.character.model.ICharacter;
 import net.sf.anathema.character.model.advance.IExperiencePointConfigurationListener;
@@ -31,9 +32,9 @@ public class ExperiencedOverviewPresenter implements Presenter {
                                       IExperiencePointManagement experiencePoints) {
     this.resources = resources;
     this.character = character;
-    character.getCharacterContext().getCharacterListening().addChangeListener(new GlobalCharacterChangeAdapter() {
+    character.getChangeAnnouncer().addListener(new FlavoredChangeListener() {
       @Override
-      public void changeOccurred() {
+      public void changeOccurred(ChangeFlavor flavor) {
         if (ExperienceModelFetcher.fetch(character).isExperienced()) {
           calculateXPCost();
         }
