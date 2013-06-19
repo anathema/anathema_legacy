@@ -2,7 +2,7 @@ package net.sf.anathema.character.presenter.magic;
 
 import net.sf.anathema.character.generic.magic.ICharm;
 import net.sf.anathema.character.generic.magic.charms.IndirectCharmRequirement;
-import net.sf.anathema.character.model.charm.CharmModel;
+import net.sf.anathema.character.main.model.charms.CharmsModel;
 import net.sf.anathema.charmtree.presenter.AbstractCharmDye;
 import net.sf.anathema.charmtree.view.CharmGroupInformer;
 import net.sf.anathema.charmtree.view.ICharmView;
@@ -40,7 +40,7 @@ public class CharacterCharmDye extends AbstractCharmDye {
     view.setCharmVisuals(id, fillColor, MAXIMUM_OPACITY);
   }
 
-  private CharmModel getCharmConfiguration() {
+  private CharmsModel getCharmConfiguration() {
     return model.getCharmConfiguration();
   }
 }

@@ -7,7 +7,6 @@ import net.sf.anathema.character.generic.magic.spells.CircleType;
 import net.sf.anathema.character.main.model.experience.ExperienceModelFetcher;
 import net.sf.anathema.character.model.ICharacter;
 import net.sf.anathema.character.model.IMagicLearnListener;
-import net.sf.anathema.character.model.ISpellConfiguration;
 import net.sf.anathema.character.view.magic.ISpellView;
 import net.sf.anathema.lib.compare.I18nedIdentificateComparator;
 import net.sf.anathema.lib.compare.I18nedIdentificateSorter;
@@ -24,14 +23,14 @@ import java.util.List;
 
 public class SpellPresenter {
 
-  private final ISpellConfiguration spellConfiguration;
-  private SpellModel spellModel;
+  private final net.sf.anathema.character.main.model.spells.SpellModel spellConfiguration;
+  private net.sf.anathema.character.presenter.magic.spells.SpellModel spellModel;
   private final ICharacter character;
   private final Resources resources;
   private CircleType circle;
   private final ISpellView view;
 
-  public SpellPresenter(SpellModel spellModel, ICharacter character, Resources resources, ISpellView view,
+  public SpellPresenter(net.sf.anathema.character.presenter.magic.spells.SpellModel spellModel, ICharacter character, Resources resources, ISpellView view,
                         MagicDescriptionProvider magicDescriptionProvider) {
     this.spellModel = spellModel;
     this.character = character;

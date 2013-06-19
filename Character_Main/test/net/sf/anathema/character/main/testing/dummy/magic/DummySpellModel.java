@@ -1,19 +1,38 @@
 package net.sf.anathema.character.main.testing.dummy.magic;
 
+import net.sf.anathema.character.change.ChangeAnnouncer;
 import net.sf.anathema.character.generic.magic.ISpell;
 import net.sf.anathema.character.generic.magic.spells.CircleType;
+import net.sf.anathema.character.main.hero.Hero;
+import net.sf.anathema.character.main.hero.InitializationContext;
 import net.sf.anathema.character.model.IMagicLearnListener;
-import net.sf.anathema.character.model.ISpellConfiguration;
+import net.sf.anathema.character.main.model.spells.SpellModel;
 import net.sf.anathema.lib.control.IChangeListener;
 import net.sf.anathema.lib.exception.NotYetImplementedException;
+import net.sf.anathema.lib.util.Identifier;
 
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
-public class DummySpellConfiguration implements ISpellConfiguration {
+public class DummySpellModel implements SpellModel {
 
   private List<ISpell> spells = new ArrayList<>();
+
+  @Override
+  public Identifier getId() {
+    return ID;
+  }
+
+  @Override
+  public void initialize(InitializationContext context, Hero hero) {
+    // nothing to do
+  }
+
+  @Override
+  public void initializeListening(ChangeAnnouncer announcer) {
+    // nothing to do
+  }
 
   @Override
   public void removeSpells(ISpell[] removedSpells) {

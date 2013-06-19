@@ -12,8 +12,8 @@ import net.sf.anathema.character.impl.model.advance.CostAnalyzer;
 import net.sf.anathema.character.impl.model.creation.bonus.IAdditionalMagicLearnPointManagement;
 import net.sf.anathema.character.impl.model.creation.bonus.additional.IAdditionalBonusPointManagment;
 import net.sf.anathema.character.main.hero.Hero;
-import net.sf.anathema.character.model.ISpellConfiguration;
-import net.sf.anathema.character.model.charm.CharmModel;
+import net.sf.anathema.character.main.model.spells.SpellModel;
+import net.sf.anathema.character.main.model.charms.CharmsModel;
 import net.sf.anathema.character.model.charm.special.ISubeffectCharmConfiguration;
 import net.sf.anathema.character.model.charm.special.IUpgradableCharmConfiguration;
 
@@ -25,8 +25,8 @@ import java.util.Set;
 
 public class MagicCostCalculator {
 
-  private final CharmModel charms;
-  private final ISpellConfiguration spells;
+  private final CharmsModel charms;
+  private final SpellModel spells;
   private final int favoredCreationCharmCount;
   private final int defaultCreationCharmCount;
   private int generalPicksSpent = 0;
@@ -39,7 +39,7 @@ public class MagicCostCalculator {
   private final IAdditionalMagicLearnPointManagement magicPools;
   private final IMagicTemplate magicTemplate;
 
-  public MagicCostCalculator(IMagicTemplate magicTemplate, CharmModel charms, ISpellConfiguration spells, int favoredCreationCharmCount,
+  public MagicCostCalculator(IMagicTemplate magicTemplate, CharmsModel charms, SpellModel spells, int favoredCreationCharmCount,
                              int defaultCreationCharmCount, BonusPointCosts costs, IAdditionalBonusPointManagment bonusPools,
                              IAdditionalMagicLearnPointManagement magicPools, Hero hero,
                              IGenericTraitCollection traitCollection) {

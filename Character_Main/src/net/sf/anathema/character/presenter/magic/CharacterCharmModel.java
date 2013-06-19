@@ -7,7 +7,7 @@ import net.sf.anathema.character.generic.template.magic.ICharmTemplate;
 import net.sf.anathema.character.main.model.concept.HeroConceptFetcher;
 import net.sf.anathema.character.model.ICharacter;
 import net.sf.anathema.character.model.ITypedDescription;
-import net.sf.anathema.character.model.charm.CharmModel;
+import net.sf.anathema.character.main.model.charms.CharmsModel;
 import net.sf.anathema.character.model.charm.ILearningCharmGroup;
 import net.sf.anathema.lib.control.IChangeListener;
 
@@ -30,7 +30,7 @@ public class CharacterCharmModel {
     caste.addChangeListener(listener);
   }
 
-  public CharmModel getCharmConfiguration() {
+  public CharmsModel getCharmConfiguration() {
     return character.getCharms();
   }
 
@@ -39,13 +39,13 @@ public class CharacterCharmModel {
   }
 
   public void toggleLearned(String charmId) {
-    CharmModel charms = getCharmConfiguration();
+    CharmsModel charms = getCharmConfiguration();
     ILearningCharmGroup charmGroup = getCharmGroupByCharmId(charmId);
     charmGroup.toggleLearned(charms.getCharmById(charmId));
   }
 
   private ILearningCharmGroup getCharmGroupByCharmId(String charmId) {
-    CharmModel charms = getCharmConfiguration();
+    CharmsModel charms = getCharmConfiguration();
     ICharm charm = charms.getCharmById(charmId);
     return charms.getGroup(charm);
   }

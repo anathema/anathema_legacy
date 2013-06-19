@@ -1,12 +1,15 @@
 package net.sf.anathema.character.main.testing.dummy.magic;
 
+import net.sf.anathema.character.change.ChangeAnnouncer;
 import net.sf.anathema.character.generic.magic.ICharm;
 import net.sf.anathema.character.generic.magic.charms.ICharmGroup;
 import net.sf.anathema.character.generic.magic.charms.ICharmIdMap;
 import net.sf.anathema.character.generic.magic.charms.special.ISpecialCharm;
 import net.sf.anathema.character.generic.magic.charms.special.ISpecialCharmConfiguration;
 import net.sf.anathema.character.generic.type.ICharacterType;
-import net.sf.anathema.character.model.charm.CharmModel;
+import net.sf.anathema.character.main.hero.Hero;
+import net.sf.anathema.character.main.hero.InitializationContext;
+import net.sf.anathema.character.main.model.charms.CharmsModel;
 import net.sf.anathema.character.model.charm.ICharmLearnListener;
 import net.sf.anathema.character.model.charm.ILearningCharmGroup;
 import net.sf.anathema.charmtree.filters.ICharmFilter;
@@ -16,7 +19,7 @@ import net.sf.anathema.lib.util.Identifier;
 
 import java.util.List;
 
-public class DummyCharmModel implements CharmModel {
+public class DummyCharmsModel implements CharmsModel {
 
   private ICharm[] charms = new ICharm[0];
 
@@ -149,5 +152,20 @@ public class DummyCharmModel implements CharmModel {
 
   public void setGroups(ILearningCharmGroup... groups) {
     this.groups = groups;
+  }
+
+  @Override
+  public Identifier getId() {
+    return ID;
+  }
+
+  @Override
+  public void initialize(InitializationContext context, Hero hero) {
+    // nothing to do
+  }
+
+  @Override
+  public void initializeListening(ChangeAnnouncer announcer) {
+    // nothing to do
   }
 }

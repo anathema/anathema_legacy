@@ -1,13 +1,13 @@
 package net.sf.anathema.character.presenter.magic.spells;
 
 import net.sf.anathema.character.generic.magic.ISpell;
-import net.sf.anathema.character.model.ISpellConfiguration;
+import net.sf.anathema.character.main.model.spells.SpellModel;
 import net.sf.anathema.lib.gui.list.LegalityCheck;
 
 public class SpellLegality implements LegalityCheck {
-  private final ISpellConfiguration spellConfiguration;
+  private final SpellModel spellConfiguration;
 
-  public SpellLegality(ISpellConfiguration spellConfiguration) {
+  public SpellLegality(SpellModel spellConfiguration) {
     this.spellConfiguration = spellConfiguration;
   }
 

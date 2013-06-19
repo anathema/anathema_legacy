@@ -1,35 +1,53 @@
-package net.sf.anathema.character.impl.model.charm;
+package net.sf.anathema.character.main.model.combos;
 
+import net.sf.anathema.character.change.ChangeAnnouncer;
 import net.sf.anathema.character.generic.magic.ICharm;
+import net.sf.anathema.character.impl.model.CharacterChangeComboListener;
+import net.sf.anathema.character.impl.model.charm.Combo;
+import net.sf.anathema.character.impl.model.charm.ComboIdProvider;
 import net.sf.anathema.character.impl.model.charm.combo.IComboArbitrator;
 import net.sf.anathema.character.impl.model.charm.combo.SecondEditionComboArbitrator;
+import net.sf.anathema.character.main.hero.Hero;
+import net.sf.anathema.character.main.hero.InitializationContext;
+import net.sf.anathema.character.main.model.charms.CharmsModelFetcher;
 import net.sf.anathema.character.model.charm.CharmLearnAdapter;
-import net.sf.anathema.character.model.charm.CharmModel;
 import net.sf.anathema.character.model.charm.ICombo;
-import net.sf.anathema.character.model.charm.IComboConfiguration;
 import net.sf.anathema.character.model.charm.IComboConfigurationListener;
 import net.sf.anathema.lib.control.IChangeListener;
+import net.sf.anathema.lib.util.Identifier;
 import org.jmock.example.announcer.Announcer;
 
 import java.util.ArrayList;
 import java.util.List;
 
-public class ComboConfiguration implements IComboConfiguration {
+public class CombosModelImpl implements CombosModel {
 
   private final List<ICombo> comboList = new ArrayList<>();
-  private final IComboArbitrator rules;
+  private final IComboArbitrator rules =  new SecondEditionComboArbitrator();
   private final ICombo editCombo = new Combo();
   private final Announcer<IComboConfigurationListener> control = Announcer.to(IComboConfigurationListener.class);
   private final ComboIdProvider idProvider = new ComboIdProvider();
+  private Hero hero;
 
-  public ComboConfiguration(CharmModel charmConfiguration) {
-    charmConfiguration.addCharmLearnListener(new CharmLearnAdapter() {
+  @Override
+  public Identifier getId() {
+    return ID;
+  }
+
+  @Override
+  public void initialize(InitializationContext context, Hero hero) {
+    this.hero = hero;
+  }
+
+  @Override
+  public void initializeListening(ChangeAnnouncer announcer) {
+    CharmsModelFetcher.fetch(hero).addCharmLearnListener(new CharmLearnAdapter() {
       @Override
       public void charmForgotten(ICharm charm) {
         checkCombos(charm);
       }
     });
-    this.rules = new SecondEditionComboArbitrator();
+    addComboConfigurationListener(new CharacterChangeComboListener(hero.getChangeAnnouncer()));
   }
 
   @Override

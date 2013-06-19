@@ -3,11 +3,11 @@ package net.sf.anathema.character.presenter.magic.combo;
 import net.sf.anathema.character.generic.caste.CasteType;
 import net.sf.anathema.character.generic.magic.ICharm;
 import net.sf.anathema.character.generic.magic.description.MagicDescriptionProvider;
+import net.sf.anathema.character.main.model.combos.CombosModel;
 import net.sf.anathema.character.main.model.concept.HeroConceptFetcher;
 import net.sf.anathema.character.main.model.experience.ExperienceModelFetcher;
 import net.sf.anathema.character.model.ICharacter;
-import net.sf.anathema.character.model.charm.CharmModel;
-import net.sf.anathema.character.model.charm.IComboConfiguration;
+import net.sf.anathema.character.main.model.charms.CharmsModel;
 
 public class ComboConfigurationModel {
 
@@ -24,11 +24,11 @@ public class ComboConfigurationModel {
     return character.getTemplate().getMagicTemplate().getCharmTemplate().isAllowedAlienCharms(caste);
   }
 
-  public CharmModel getCharmConfiguration() {
+  public CharmsModel getCharmConfiguration() {
     return character.getCharms();
   }
 
-  public IComboConfiguration getCombos() {
+  public CombosModel getCombos() {
     return character.getCombos();
   }
 

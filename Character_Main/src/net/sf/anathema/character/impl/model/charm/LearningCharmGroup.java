@@ -6,7 +6,7 @@ import net.sf.anathema.character.generic.magic.ICharm;
 import net.sf.anathema.character.generic.magic.IExtendedCharmData;
 import net.sf.anathema.character.generic.magic.charms.ICharmGroup;
 import net.sf.anathema.character.generic.magic.charms.special.ISpecialCharmConfiguration;
-import net.sf.anathema.character.model.charm.CharmModel;
+import net.sf.anathema.character.main.model.charms.CharmsModel;
 import net.sf.anathema.character.model.charm.ICharmLearnListener;
 import net.sf.anathema.character.model.charm.IExtendedCharmLearnableArbitrator;
 import net.sf.anathema.character.model.charm.ILearningCharmGroup;
@@ -29,7 +29,7 @@ public class LearningCharmGroup extends CharmGroup implements ILearningCharmGrou
   private final IExtendedCharmLearnableArbitrator learnArbitrator;
   private final ICharmLearnStrategy learnStrategy;
   private final ILearningCharmGroupContainer charmGroupContainer;
-  private final CharmModel charmConfig;
+  private final CharmsModel charmConfig;
 
   public LearningCharmGroup(ICharmLearnStrategy learnStrategy, ICharmGroup simpleCharmGroup, IExtendedCharmLearnableArbitrator arbitrator,
                             ILearningCharmGroupContainer charmGroupContainer) {
@@ -37,7 +37,7 @@ public class LearningCharmGroup extends CharmGroup implements ILearningCharmGrou
   }
 
   public LearningCharmGroup(ICharmLearnStrategy learnStrategy, ICharmGroup simpleCharmGroup, IExtendedCharmLearnableArbitrator arbitrator,
-                            ILearningCharmGroupContainer charmGroupContainer, CharmModel charmConfig) {
+                            ILearningCharmGroupContainer charmGroupContainer, CharmsModel charmConfig) {
     super(simpleCharmGroup.getCharacterType(), simpleCharmGroup.getId(), simpleCharmGroup.getAllCharms(), simpleCharmGroup.isMartialArtsGroup());
     this.learnStrategy = learnStrategy;
     this.learnArbitrator = arbitrator;

@@ -4,8 +4,7 @@ import net.sf.anathema.character.generic.framework.magic.view.AbstractMagicLearn
 import net.sf.anathema.character.generic.magic.ISpell;
 import net.sf.anathema.character.generic.magic.description.MagicDescriptionProvider;
 import net.sf.anathema.character.main.model.experience.ExperienceModelFetcher;
-import net.sf.anathema.character.model.ICharacter;
-import net.sf.anathema.character.model.ISpellConfiguration;
+import net.sf.anathema.character.model.*;
 import net.sf.anathema.character.view.magic.ISpellViewProperties;
 import net.sf.anathema.framework.ui.IdentifierConfiguration;
 import net.sf.anathema.lib.gui.AgnosticUIConfiguration;
@@ -17,7 +16,7 @@ import javax.swing.JList;
 
 public class SpellViewProperties extends AbstractMagicLearnProperties implements ISpellViewProperties {
 
-  private final ISpellConfiguration spellConfiguration;
+  private final net.sf.anathema.character.main.model.spells.SpellModel spellConfiguration;
   private final ICharacter character;
   private final SpellTooltipBuilder tooltipBuilder;
 

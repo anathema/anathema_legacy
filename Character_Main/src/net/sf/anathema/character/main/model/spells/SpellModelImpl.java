@@ -1,24 +1,25 @@
-package net.sf.anathema.character.impl.model;
+package net.sf.anathema.character.main.model.spells;
 
+import net.sf.anathema.character.change.ChangeAnnouncer;
 import net.sf.anathema.character.change.ChangeFlavor;
-import net.sf.anathema.character.generic.impl.magic.SpellException;
-import net.sf.anathema.character.generic.impl.magic.persistence.ISpellCache;
 import net.sf.anathema.character.generic.magic.ISpell;
 import net.sf.anathema.character.generic.magic.spells.CircleType;
 import net.sf.anathema.character.generic.template.HeroTemplate;
 import net.sf.anathema.character.generic.template.magic.ISpellMagicTemplate;
-import net.sf.anathema.character.impl.model.context.magic.CreationSpellLearnStrategy;
-import net.sf.anathema.character.impl.model.context.magic.ExperiencedSpellLearnStrategy;
-import net.sf.anathema.character.impl.model.context.magic.ProxySpellLearnStrategy;
+import net.sf.anathema.character.impl.model.SpellMapper;
+import net.sf.anathema.character.impl.model.UnspecifiedChangeListener;
 import net.sf.anathema.character.main.hero.Hero;
+import net.sf.anathema.character.main.hero.InitializationContext;
 import net.sf.anathema.character.main.hero.change.FlavoredChangeListener;
+import net.sf.anathema.character.main.model.charms.CharmsModel;
+import net.sf.anathema.character.main.model.charms.CharmsModelFetcher;
 import net.sf.anathema.character.main.model.experience.ExperienceChange;
+import net.sf.anathema.character.main.model.experience.ExperienceModel;
 import net.sf.anathema.character.main.model.experience.ExperienceModelFetcher;
 import net.sf.anathema.character.model.IMagicLearnListener;
-import net.sf.anathema.character.model.ISpellConfiguration;
 import net.sf.anathema.character.model.ISpellMapper;
-import net.sf.anathema.character.model.charm.CharmModel;
 import net.sf.anathema.lib.control.IChangeListener;
+import net.sf.anathema.lib.util.Identifier;
 import org.jmock.example.announcer.Announcer;
 
 import java.util.ArrayList;
@@ -26,7 +27,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-public class SpellConfiguration implements ISpellConfiguration {
+public class SpellModelImpl implements SpellModel {
 
   private final ProxySpellLearnStrategy strategy = new ProxySpellLearnStrategy(new CreationSpellLearnStrategy());
   private final List<ISpell> creationLearnedList = new ArrayList<>();
@@ -34,29 +35,41 @@ public class SpellConfiguration implements ISpellConfiguration {
   private final Announcer<IChangeListener> changeControl = Announcer.to(IChangeListener.class);
   private final Announcer<IMagicLearnListener> magicLearnControl = Announcer.to(IMagicLearnListener.class);
   private final Map<CircleType, List<ISpell>> spellsByCircle = new HashMap<>();
-  private final CharmModel charms;
-  private final HeroTemplate heroTemplate;
-  private final ISpellMapper spellMapper;
+  private final ISpellMapper spellMapper = new SpellMapper();
+  private CharmsModel charms;
+  private HeroTemplate heroTemplate;
+  private ExperienceModel experience;
 
-  public SpellConfiguration(final Hero hero, CharmModel charms, ISpellCache cache) throws SpellException {
-    this.charms = charms;
+  @Override
+  public Identifier getId() {
+    return ID;
+  }
+
+  @Override
+  public void initialize(InitializationContext context, Hero hero) {
+    this.charms = CharmsModelFetcher.fetch(hero);
+    this.experience = ExperienceModelFetcher.fetch(hero);
     this.heroTemplate = hero.getTemplate();
     for (CircleType type : CircleType.values()) {
       spellsByCircle.put(type, new ArrayList<ISpell>());
     }
-    for (ISpell spell : cache.getSpells()) {
+    for (ISpell spell : context.getSpellCache().getSpells()) {
       spellsByCircle.get(spell.getCircleType()).add(spell);
     }
-    spellMapper = new SpellMapper();
-    hero.getChangeAnnouncer().addListener(new FlavoredChangeListener() {
+  }
+
+  @Override
+  public void initializeListening(ChangeAnnouncer announcer) {
+    announcer.addListener(new FlavoredChangeListener() {
       @Override
       public void changeOccurred(ChangeFlavor flavor) {
         if (flavor == ExperienceChange.FLAVOR_EXPERIENCE_STATE) {
-          boolean experienced = ExperienceModelFetcher.fetch(hero).isExperienced();
+          boolean experienced = experience.isExperienced();
           updateLearnStrategies(experienced);
         }
       }
     });
+    addChangeListener(new UnspecifiedChangeListener(announcer));
   }
 
   private void updateLearnStrategies(boolean experienced) {

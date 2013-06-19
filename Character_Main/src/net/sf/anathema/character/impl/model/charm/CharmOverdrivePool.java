@@ -2,15 +2,16 @@ package net.sf.anathema.character.impl.model.charm;
 
 import net.sf.anathema.character.generic.magic.ICharm;
 import net.sf.anathema.character.generic.magic.IExtendedCharmData;
+import net.sf.anathema.character.main.model.charms.CharmsModelImpl;
 import net.sf.anathema.character.main.model.essencepool.OverdrivePool;
 import net.sf.anathema.character.main.model.experience.ExperienceModel;
 
 public class CharmOverdrivePool implements OverdrivePool {
 
-  private CharmModelImpl charms;
+  private CharmsModelImpl charms;
   private ExperienceModel experience;
 
-  public CharmOverdrivePool(CharmModelImpl charms, ExperienceModel experience) {
+  public CharmOverdrivePool(CharmsModelImpl charms, ExperienceModel experience) {
     this.charms = charms;
     this.experience = experience;
   }

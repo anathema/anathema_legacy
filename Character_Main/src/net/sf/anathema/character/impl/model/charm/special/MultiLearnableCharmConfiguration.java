@@ -18,7 +18,7 @@ import net.sf.anathema.character.main.hero.Hero;
 import net.sf.anathema.character.main.hero.change.FlavoredChangeListener;
 import net.sf.anathema.character.main.model.traits.TraitChangeFlavor;
 import net.sf.anathema.character.main.model.traits.TraitModelFetcher;
-import net.sf.anathema.character.model.charm.CharmModel;
+import net.sf.anathema.character.main.model.charms.CharmsModel;
 import net.sf.anathema.character.model.charm.special.IMultiLearnableCharmConfiguration;
 import net.sf.anathema.lib.control.IIntValueChangedListener;
 import net.sf.anathema.lib.data.Range;
@@ -30,14 +30,14 @@ public class MultiLearnableCharmConfiguration implements IMultiLearnableCharmCon
 
   private final Announcer<ISpecialCharmLearnListener> control = Announcer.to(ISpecialCharmLearnListener.class);
   private final Trait trait;
-  private CharmModel config;
+  private CharmsModel config;
   private ICharm charm;
   private IMultiLearnableCharm specialCharm;
   private CharmSpecialist specialist;
   private ICharmLearnableArbitrator arbitrator;
   private Hero hero;
 
-  public MultiLearnableCharmConfiguration(Hero hero, CharmModel config, ICharm charm, IMultiLearnableCharm specialCharm, ICharmLearnableArbitrator arbitrator) {
+  public MultiLearnableCharmConfiguration(Hero hero, CharmsModel config, ICharm charm, IMultiLearnableCharm specialCharm, ICharmLearnableArbitrator arbitrator) {
     this.hero = hero;
     this.specialist = new CharmSpecialistImpl(hero);
     this.config = config;

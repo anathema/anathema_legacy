@@ -5,7 +5,7 @@ import net.sf.anathema.character.generic.impl.rules.SourceBook;
 import net.sf.anathema.character.generic.magic.ICharm;
 import net.sf.anathema.character.generic.magic.charms.ICharmGroup;
 import net.sf.anathema.character.generic.rules.IExaltedSourceBook;
-import net.sf.anathema.character.model.charm.CharmModel;
+import net.sf.anathema.character.main.model.charms.CharmsModel;
 import org.dom4j.Element;
 
 import java.util.List;
@@ -20,9 +20,9 @@ public class CharacterSourceBookFilter extends SourceBookCharmFilter {
   private static final String ATTRIB_EDITION = "edition";
   private static final String ATTRIB_SHOWPREREQ = "showprereqs";
 
-  private CharmModel characterSet;
+  private CharmsModel characterSet;
 
-  public CharacterSourceBookFilter(CharmModel characterSet) {
+  public CharacterSourceBookFilter(CharmsModel characterSet) {
     this.characterSet = characterSet;
     prepareEdition();
   }

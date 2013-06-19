@@ -1,7 +1,7 @@
 package net.sf.anathema.character.impl.persistence;
 
 import net.sf.anathema.character.generic.magic.ISpell;
-import net.sf.anathema.character.model.ISpellConfiguration;
+import net.sf.anathema.character.main.model.spells.SpellModel;
 import net.sf.anathema.lib.xml.ElementUtilities;
 import org.dom4j.Element;
 
@@ -15,7 +15,7 @@ import static net.sf.anathema.character.impl.persistence.ICharacterXmlConstants.
 
 public class SpellConfigurationPersister {
 
-  public void save(Element parent, ISpellConfiguration spells) {
+  public void save(Element parent, SpellModel spells) {
     Element spellsElement = parent.addElement(TAG_SPELLS);
     for (ISpell spell : spells.getLearnedSpells()) {
       Element spellElement = spellsElement.addElement(TAG_SPELL);
@@ -24,7 +24,7 @@ public class SpellConfigurationPersister {
     }
   }
 
-  public void load(Element parent, ISpellConfiguration spells) {
+  public void load(Element parent, SpellModel spells) {
     Element spellsElement = parent.element(TAG_SPELLS);
     if (spellsElement == null) {
       return;

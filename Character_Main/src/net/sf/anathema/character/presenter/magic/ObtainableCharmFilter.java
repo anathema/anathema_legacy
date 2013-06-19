@@ -1,7 +1,7 @@
 package net.sf.anathema.character.presenter.magic;
 
 import net.sf.anathema.character.generic.magic.ICharm;
-import net.sf.anathema.character.model.charm.CharmModel;
+import net.sf.anathema.character.main.model.charms.CharmsModel;
 import net.sf.anathema.charmtree.filters.ICharmFilter;
 import net.sf.anathema.charmtree.filters.ObtainableCharmFilterPage;
 import net.sf.anathema.lib.resources.Resources;
@@ -10,7 +10,7 @@ import org.dom4j.Element;
 import javax.swing.JPanel;
 
 public class ObtainableCharmFilter implements ICharmFilter {
-  CharmModel characterSet;
+  CharmsModel characterSet;
   boolean enabled;
 
   boolean[] workingEnabled = new boolean[1];
@@ -18,11 +18,11 @@ public class ObtainableCharmFilter implements ICharmFilter {
   static final String TAG_FILTERNAME = "ObtainFilter";
   static final String ATTRIB_ENABLED = "enabled";
 
-  public ObtainableCharmFilter(CharmModel characterSet) {
+  public ObtainableCharmFilter(CharmsModel characterSet) {
     this(characterSet, false);
   }
 
-  public ObtainableCharmFilter(CharmModel characterSet, boolean enabled) {
+  public ObtainableCharmFilter(CharmsModel characterSet, boolean enabled) {
     this.characterSet = characterSet;
     this.enabled = enabled;
   }

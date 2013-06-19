@@ -5,7 +5,7 @@ import net.sf.anathema.character.generic.magic.ICharm;
 import net.sf.anathema.character.impl.model.charm.special.DefaultMartialArtsCharmConfiguration;
 import net.sf.anathema.character.magic.dummy.DummyCharm;
 import net.sf.anathema.character.main.model.experience.ExperienceModel;
-import net.sf.anathema.character.main.testing.dummy.magic.DummyCharmModel;
+import net.sf.anathema.character.main.testing.dummy.magic.DummyCharmsModel;
 import net.sf.anathema.character.model.advance.IExperiencePointConfiguration;
 import net.sf.anathema.character.model.charm.ILearningCharmGroup;
 import net.sf.anathema.lib.control.IChangeListener;
@@ -22,7 +22,7 @@ public class DefaultMartialArtsCharmConfiguration_Test {
     ILearningCharmGroup group = Mockito.mock(ILearningCharmGroup.class);
     expectCoreCharmsCall(group);
     expectCoreCharmsCall(group);
-    DummyCharmModel dummyConfig = new DummyCharmModel();
+    DummyCharmsModel dummyConfig = new DummyCharmsModel();
     dummyConfig.setGroups(group);
     ExperienceModel experienceModel = new ExperienceModel() {
       public boolean experienced;

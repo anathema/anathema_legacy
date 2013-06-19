@@ -1,6 +1,7 @@
 package net.sf.anathema.character.main.hero;
 
 import net.sf.anathema.character.generic.character.IMagicCollection;
+import net.sf.anathema.character.generic.impl.magic.persistence.ISpellCache;
 import net.sf.anathema.character.generic.impl.template.magic.ICharmProvider;
 import net.sf.anathema.character.generic.template.ITemplateRegistry;
 import net.sf.anathema.character.generic.type.CharacterTypes;
@@ -19,4 +20,6 @@ public interface InitializationContext {
   ITemplateRegistry getTemplateRegistry();
 
   ICharmProvider getCharmProvider();
+
+  ISpellCache getSpellCache();
 }

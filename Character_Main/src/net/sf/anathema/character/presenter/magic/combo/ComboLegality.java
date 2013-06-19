@@ -1,13 +1,13 @@
 package net.sf.anathema.character.presenter.magic.combo;
 
 import net.sf.anathema.character.generic.magic.ICharm;
-import net.sf.anathema.character.model.charm.IComboConfiguration;
+import net.sf.anathema.character.main.model.combos.CombosModel;
 import net.sf.anathema.lib.gui.list.LegalityCheck;
 
 public class ComboLegality implements LegalityCheck {
-  private final IComboConfiguration comboConfiguration;
+  private final CombosModel comboConfiguration;
 
-  public ComboLegality(IComboConfiguration comboConfiguration) {
+  public ComboLegality(CombosModel comboConfiguration) {
     this.comboConfiguration = comboConfiguration;
   }
 

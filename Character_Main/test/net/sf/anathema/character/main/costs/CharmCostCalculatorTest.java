@@ -15,11 +15,11 @@ import net.sf.anathema.character.main.testing.dummy.DummyAdditionalBonusPointMan
 import net.sf.anathema.character.main.testing.dummy.DummyAdditionalSpellPointManagement;
 import net.sf.anathema.character.main.testing.dummy.DummyGenericCharacter;
 import net.sf.anathema.character.main.testing.dummy.DummyHero;
-import net.sf.anathema.character.main.testing.dummy.magic.DummyCharmModel;
+import net.sf.anathema.character.main.testing.dummy.magic.DummyCharmsModel;
 import net.sf.anathema.character.main.testing.dummy.magic.DummySpell;
-import net.sf.anathema.character.main.testing.dummy.magic.DummySpellConfiguration;
+import net.sf.anathema.character.main.testing.dummy.magic.DummySpellModel;
 import net.sf.anathema.character.main.testing.dummy.template.DummyHeroTemplate;
-import net.sf.anathema.character.model.ISpellConfiguration;
+import net.sf.anathema.character.main.model.spells.SpellModel;
 import org.junit.Before;
 import org.junit.Test;
 
@@ -28,13 +28,13 @@ import static org.junit.Assert.assertEquals;
 public class CharmCostCalculatorTest extends AbstractBonusPointTestCase {
 
   private MagicCostCalculator calculator;
-  private ISpellConfiguration spells;
+  private SpellModel spells;
   private TraitModel traitModel;
 
   @Before
   public void setUp() throws Exception {
-    DummyCharmModel charms = new DummyCharmModel();
-    spells = new DummySpellConfiguration();
+    DummyCharmsModel charms = new DummyCharmsModel();
+    spells = new DummySpellModel();
     DummyHero hero = new BasicCharacterTestCase().createModelContextWithEssence2(new CreationTraitValueStrategy());
     traitModel = TraitModelFetcher.fetch(hero);
     addAbilityAndEssence(traitModel, hero);

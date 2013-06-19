@@ -5,12 +5,12 @@ import net.sf.anathema.character.change.ChangeFlavor;
 import net.sf.anathema.character.generic.magic.ICharm;
 import net.sf.anathema.character.main.hero.Hero;
 import net.sf.anathema.character.main.hero.change.FlavoredChangeListener;
+import net.sf.anathema.character.main.model.combos.CombosModel;
 import net.sf.anathema.character.main.model.concept.ConceptChange;
 import net.sf.anathema.character.model.charm.CharmLearnAdapter;
-import net.sf.anathema.character.model.charm.CharmModel;
+import net.sf.anathema.character.main.model.charms.CharmsModel;
 import net.sf.anathema.character.model.charm.ICharmLearnListener;
 import net.sf.anathema.character.model.charm.ICombo;
-import net.sf.anathema.character.model.charm.IComboConfiguration;
 import net.sf.anathema.character.model.charm.IComboConfigurationListener;
 import net.sf.anathema.character.model.charm.ILearningCharmGroup;
 import net.sf.anathema.character.view.magic.IComboConfigurationView;
@@ -35,8 +35,8 @@ import java.util.Map;
 
 public class ComboConfigurationPresenter {
 
-  private final CharmModel charmConfiguration;
-  private final IComboConfiguration comboConfiguration;
+  private final CharmsModel charmConfiguration;
+  private final CombosModel comboConfiguration;
   private final Map<ICombo, IComboView> viewsByCombo = new HashMap<>();
   private final Map<ICombo, Tool> toolsByCombo = new HashMap<>();
   private final ComboConfigurationModel comboModel;

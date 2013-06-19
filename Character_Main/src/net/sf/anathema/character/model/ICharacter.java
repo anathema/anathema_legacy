@@ -4,17 +4,18 @@ import net.sf.anathema.character.generic.framework.additionaltemplate.model.ICha
 import net.sf.anathema.character.generic.template.HeroTemplate;
 import net.sf.anathema.character.generic.type.ICharacterType;
 import net.sf.anathema.character.main.hero.Hero;
-import net.sf.anathema.character.model.charm.CharmModel;
-import net.sf.anathema.character.model.charm.IComboConfiguration;
+import net.sf.anathema.character.main.model.charms.CharmsModel;
+import net.sf.anathema.character.main.model.combos.CombosModel;
+import net.sf.anathema.character.main.model.spells.SpellModel;
 import net.sf.anathema.framework.itemdata.model.IItemData;
 
 public interface ICharacter extends IItemData, Hero {
 
-  CharmModel getCharms();
+  CharmsModel getCharms();
 
-  IComboConfiguration getCombos();
+  CombosModel getCombos();
 
-  ISpellConfiguration getSpells();
+  SpellModel getSpells();
 
   ICharacterModelContext getCharacterContext();
 

@@ -8,10 +8,13 @@ include('Anathema',
 
         'Hero_Abilities',
         'Hero_Attributes',
+        'Hero_Charms',
+        'Hero_Combos',
         'Hero_Concept',
         'Hero_Experience',
         'Hero_Health',
         'Hero_OtherTraits',
+        'Hero_Spells',
         'Hero_Traits',
 
         'Magic_Description',

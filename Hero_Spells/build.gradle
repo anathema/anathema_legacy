@@ -1,0 +1,19 @@
+dependencies {
+    compile project(':Character_Main')
+    compile project(':Character_Reporting')
+    compile project(':Hero_Abilities')
+    compile project(':Hero_Attributes')
+    compile project(':Hero_Charms')
+    compile project(':Hero_Concept')
+    compile project(':Hero_OtherTraits')
+    compile project(':Hero_Traits')
+    testCompile parent.ext.testDependencies
+    testCompile project(path: ':Platform', configuration: 'tests')
+    testCompile project(path: ':Character_Main', configuration: 'tests')
+    testCompile project(path: ':Hero_Abilities', configuration: 'tests')
+    testCompile project(path: ':Hero_Attributes', configuration: 'tests')
+    testCompile project(path: ':Hero_Charms', configuration: 'tests')
+    testCompile project(path: ':Hero_Concept', configuration: 'tests')
+    testCompile project(path: ':Hero_Traits', configuration: 'tests')
+    testCompile project(path: ':Hero_OtherTraits', configuration: 'tests')
+}

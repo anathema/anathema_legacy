@@ -5,16 +5,16 @@ import net.sf.anathema.character.generic.magic.charms.special.ISpecialCharmLearn
 import net.sf.anathema.character.generic.magic.charms.special.ITraitCapModifyingCharm;
 import net.sf.anathema.character.impl.model.charm.CharmSpecialist;
 import net.sf.anathema.character.library.trait.DefaultTrait;
-import net.sf.anathema.character.model.charm.CharmModel;
+import net.sf.anathema.character.main.model.charms.CharmsModel;
 import net.sf.anathema.character.model.charm.special.ITraitCapModifyingCharmConfiguration;
 
 public class TraitCapModifyingCharmConfiguration implements ITraitCapModifyingCharmConfiguration {
   private CharmSpecialist specialist;
   private final ITraitCapModifyingCharm specialCharm;
-  private final CharmModel config;
+  private final CharmsModel config;
   private final ICharm charm;
 
-  public TraitCapModifyingCharmConfiguration(CharmSpecialist specialist, CharmModel config, ICharm charm,
+  public TraitCapModifyingCharmConfiguration(CharmSpecialist specialist, CharmsModel config, ICharm charm,
                                              ITraitCapModifyingCharm specialCharm) {
     this.specialist = specialist;
     this.specialCharm = specialCharm;

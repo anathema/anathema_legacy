@@ -1,6 +1,6 @@
 package net.sf.anathema.character.presenter.magic;
 
-import net.sf.anathema.character.model.charm.CharmModel;
+import net.sf.anathema.character.main.model.charms.CharmsModel;
 import net.sf.anathema.charmtree.presenter.AlienCharmPresenter;
 import net.sf.anathema.charmtree.view.ICharmView;
 import net.sf.anathema.lib.control.IChangeListener;
@@ -22,7 +22,7 @@ public class CharacterAlienCharmPresenter implements AlienCharmPresenter {
       @Override
       public void changeOccurred() {
         boolean alienCharms = model.isAllowedAlienCharms();
-        CharmModel charmConfiguration = model.getCharmConfiguration();
+        CharmsModel charmConfiguration = model.getCharmConfiguration();
         if (!alienCharms) {
           charmConfiguration.unlearnAllAlienCharms();
         }

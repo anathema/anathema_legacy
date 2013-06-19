@@ -1,30 +1,29 @@
 package net.sf.anathema.character.impl.model;
 
 import net.sf.anathema.character.change.ChangeAnnouncer;
-import net.sf.anathema.character.change.ChangeFlavor;
 import net.sf.anathema.character.generic.framework.ICharacterGenerics;
 import net.sf.anathema.character.generic.framework.additionaltemplate.model.IAdditionalModelFactory;
 import net.sf.anathema.character.generic.framework.additionaltemplate.model.ICharacterModelContext;
-import net.sf.anathema.character.generic.impl.magic.persistence.ISpellCache;
 import net.sf.anathema.character.generic.template.HeroTemplate;
 import net.sf.anathema.character.generic.template.additional.IAdditionalTemplate;
 import net.sf.anathema.character.generic.template.additional.IGlobalAdditionalTemplate;
 import net.sf.anathema.character.generic.type.ICharacterType;
 import net.sf.anathema.character.impl.generic.GenericCharacter;
-import net.sf.anathema.character.impl.model.charm.CharmModelImpl;
-import net.sf.anathema.character.impl.model.charm.ComboConfiguration;
 import net.sf.anathema.character.impl.model.context.CharacterModelContext;
 import net.sf.anathema.character.impl.model.statistics.ExtendedConfiguration;
 import net.sf.anathema.character.main.hero.DefaultHero;
 import net.sf.anathema.character.main.hero.HeroModel;
 import net.sf.anathema.character.main.hero.ModelInitializationContext;
 import net.sf.anathema.character.main.hero.initialization.HeroModelInitializer;
+import net.sf.anathema.character.main.model.charms.CharmsModel;
+import net.sf.anathema.character.main.model.charms.CharmsModelFetcher;
+import net.sf.anathema.character.main.model.combos.CombosModel;
+import net.sf.anathema.character.main.model.combos.CombosModelFetcher;
 import net.sf.anathema.character.main.model.description.HeroDescription;
 import net.sf.anathema.character.main.model.description.HeroDescriptionFetcher;
+import net.sf.anathema.character.main.model.spells.SpellModel;
+import net.sf.anathema.character.main.model.spells.SpellsModelFetcher;
 import net.sf.anathema.character.model.ICharacter;
-import net.sf.anathema.character.model.ISpellConfiguration;
-import net.sf.anathema.character.model.charm.CharmModel;
-import net.sf.anathema.character.model.charm.IComboConfiguration;
 import net.sf.anathema.framework.presenter.itemmanagement.PrintNameAdjuster;
 import net.sf.anathema.lib.control.IChangeListener;
 import net.sf.anathema.lib.registry.IRegistry;
@@ -35,9 +34,6 @@ public class ExaltedCharacter implements ICharacter {
 
   private final CharacterChangeManagement management = new CharacterChangeManagement(this);
   private final CharacterModelContext context;
-  private final CharmModelImpl charms;
-  private final IComboConfiguration combos;
-  private final ISpellConfiguration spells;
   private final ExtendedConfiguration extendedConfiguration;
   private final DefaultHero hero;
   private final ModelInitializationContext initializationContext;
@@ -48,18 +44,6 @@ public class ExaltedCharacter implements ICharacter {
     this.extendedConfiguration = new ExtendedConfiguration(context, hero);
     this.initializationContext = new ModelInitializationContext(context, generics);
     addModels(generics);
-
-    // Charm Model
-    this.charms = new CharmModelImpl(hero, initializationContext);
-    charms.addCharmLearnListener(new CharacterChangeCharmListener(hero.getChangeAnnouncer()));
-
-    // Combo Model
-    this.combos = new ComboConfiguration(charms);
-    combos.addComboConfigurationListener(new CharacterChangeComboListener(hero.getChangeAnnouncer()));
-
-    // Spell Model
-    this.spells = new SpellConfiguration(hero, charms, generics.getDataSet(ISpellCache.class));
-    this.spells.addChangeListener(new UnspecifiedChangeListener(hero.getChangeAnnouncer()));
 
     // Additional Models
     for (IGlobalAdditionalTemplate globalTemplate : generics.getGlobalAdditionalTemplateRegistry().getAll()) {
@@ -113,16 +97,16 @@ public class ExaltedCharacter implements ICharacter {
     management.setClean();
   }
 
-  public CharmModel getCharms() {
-    return charms;
+  public CharmsModel getCharms() {
+    return CharmsModelFetcher.fetch(hero);
   }
 
-  public IComboConfiguration getCombos() {
-    return combos;
+  public CombosModel getCombos() {
+    return CombosModelFetcher.fetch(hero);
   }
 
-  public ISpellConfiguration getSpells() {
-    return spells;
+  public SpellModel getSpells() {
+    return SpellsModelFetcher.fetch(hero);
   }
 
   @Override
@@ -162,17 +146,4 @@ public class ExaltedCharacter implements ICharacter {
     return hero.isFullyLoaded();
   }
 
-  public static class UnspecifiedChangeListener implements IChangeListener {
-
-    private ChangeAnnouncer changeAnnouncer;
-
-    public UnspecifiedChangeListener(ChangeAnnouncer changeAnnouncer) {
-      this.changeAnnouncer = changeAnnouncer;
-    }
-
-    @Override
-    public void changeOccurred() {
-      changeAnnouncer.announceChangeOf(ChangeFlavor.UNSPECIFIED);
-    }
-  }
 }

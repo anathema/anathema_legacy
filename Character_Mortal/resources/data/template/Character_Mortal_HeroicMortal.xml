@@ -19,6 +19,9 @@
         <model id="Attributes"/>
         <model id="EssencePool"/>
         <model id="Health"/>
+        <model id="Charms"/>
+        <model id="Combos"/>
+        <model id="Spells"/>
     </models>
     <creation>
         <bonusPointCosts uses="DefaultBonusPointCost2nd.template"/>

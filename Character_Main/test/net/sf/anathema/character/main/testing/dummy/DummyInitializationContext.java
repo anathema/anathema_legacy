@@ -1,6 +1,7 @@
 package net.sf.anathema.character.main.testing.dummy;
 
 import net.sf.anathema.character.generic.character.IMagicCollection;
+import net.sf.anathema.character.generic.impl.magic.persistence.ISpellCache;
 import net.sf.anathema.character.generic.impl.template.magic.ICharmProvider;
 import net.sf.anathema.character.generic.template.ITemplateRegistry;
 import net.sf.anathema.character.generic.type.CharacterTypes;
@@ -39,6 +40,11 @@ public class DummyInitializationContext implements InitializationContext {
 
   @Override
   public ICharmProvider getCharmProvider() {
+    throw new UnsupportedOperationException();
+  }
+
+  @Override
+  public ISpellCache getSpellCache() {
     throw new UnsupportedOperationException();
   }
 

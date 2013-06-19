@@ -11,9 +11,9 @@ import net.sf.anathema.character.impl.model.context.trait.ProxyTraitValueStrateg
 import net.sf.anathema.character.magic.dummy.DummyCharm;
 import net.sf.anathema.character.main.testing.BasicCharacterTestCase;
 import net.sf.anathema.character.main.testing.dummy.DummyHero;
-import net.sf.anathema.character.main.testing.dummy.magic.DummyCharmModel;
+import net.sf.anathema.character.main.testing.dummy.magic.DummyCharmsModel;
 import net.sf.anathema.character.main.testing.dummy.magic.DummyLearnableArbitrator;
-import net.sf.anathema.character.model.charm.CharmModel;
+import net.sf.anathema.character.main.model.charms.CharmsModel;
 import org.junit.Before;
 import org.junit.Test;
 
@@ -22,7 +22,7 @@ import static org.junit.Assert.assertThat;
 
 public class MultiLearnableCharmConfigurationTest {
 
-  private CharmModel config = new DummyCharmModel();
+  private CharmsModel config = new DummyCharmsModel();
   private ICharm charm = new DummyCharm("id");
   private IMultiLearnableCharm specialCharm = new StaticMultiLearnableCharm("id", 5);
   private ICharmLearnableArbitrator arbitrator = new DummyLearnableArbitrator("id");

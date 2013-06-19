@@ -4,7 +4,7 @@ import com.google.inject.Inject;
 import cucumber.api.java.en.And;
 import cucumber.api.java.en.Then;
 import net.sf.anathema.character.generic.magic.ICharm;
-import net.sf.anathema.character.model.charm.CharmModel;
+import net.sf.anathema.character.main.model.charms.CharmsModel;
 import net.sf.anathema.character.model.charm.special.IMultipleEffectCharmConfiguration;
 
 import static org.hamcrest.CoreMatchers.is;
@@ -47,7 +47,7 @@ public class CharmSteps {
 
   @Then("^she has chosen the effect (.*) for the Charm (.*)$")
   public void she_has_chosen_the_effect_for_the_Charm(String effect, String charmId) throws Throwable {
-    CharmModel charms = character.getCharms();
+    CharmsModel charms = character.getCharms();
     assertThat(charms.isLearned(charmId), is(true));
     IMultipleEffectCharmConfiguration configuration = (IMultipleEffectCharmConfiguration) charms.getSpecialCharmConfiguration(charmId);
     boolean effectLearned = configuration.getEffectById(effect).isLearned();

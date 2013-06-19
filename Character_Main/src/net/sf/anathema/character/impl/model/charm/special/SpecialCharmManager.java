@@ -19,7 +19,7 @@ import net.sf.anathema.character.main.hero.Hero;
 import net.sf.anathema.character.main.model.health.HealthModel;
 import net.sf.anathema.character.main.model.health.IPainToleranceProvider;
 import net.sf.anathema.character.model.charm.CharmLearnAdapter;
-import net.sf.anathema.character.model.charm.CharmModel;
+import net.sf.anathema.character.main.model.charms.CharmsModel;
 import net.sf.anathema.character.model.charm.IExtendedCharmLearnableArbitrator;
 import net.sf.anathema.character.model.charm.ILearningCharmGroup;
 
@@ -31,13 +31,13 @@ public class SpecialCharmManager implements ISpecialCharmManager {
   private final IExtendedCharmLearnableArbitrator arbitrator;
   private CharmSpecialistImpl specialist;
   private Hero hero;
-  private final CharmModel charmModel;
+  private final CharmsModel charmsModel;
 
-  public SpecialCharmManager(CharmSpecialistImpl specialist, Hero hero, CharmModel charmModel) {
+  public SpecialCharmManager(CharmSpecialistImpl specialist, Hero hero, CharmsModel charmsModel) {
     this.specialist = specialist;
     this.hero = hero;
-    this.charmModel = charmModel;
-    this.arbitrator = charmModel;
+    this.charmsModel = charmsModel;
+    this.arbitrator = charmsModel;
   }
 
   @Override
@@ -91,7 +91,7 @@ public class SpecialCharmManager implements ISpecialCharmManager {
   }
 
   private void registerTraitCapModifyingCharm(ITraitCapModifyingCharm specialCharm, ICharm charm, ILearningCharmGroup group) {
-    TraitCapModifyingCharmConfiguration configuration = new TraitCapModifyingCharmConfiguration(specialist, charmModel, charm, specialCharm);
+    TraitCapModifyingCharmConfiguration configuration = new TraitCapModifyingCharmConfiguration(specialist, charmsModel, charm, specialCharm);
     addSpecialCharmConfiguration(charm, group, configuration, true, true);
   }
 
@@ -106,7 +106,7 @@ public class SpecialCharmManager implements ISpecialCharmManager {
   }
 
   private void registerMultiLearnableCharm(IMultiLearnableCharm visitedCharm, ICharm charm, ILearningCharmGroup group) {
-    MultiLearnableCharmConfiguration configuration = new MultiLearnableCharmConfiguration(hero, charmModel, charm, visitedCharm, arbitrator);
+    MultiLearnableCharmConfiguration configuration = new MultiLearnableCharmConfiguration(hero, charmsModel, charm, visitedCharm, arbitrator);
     addSpecialCharmConfiguration(charm, group, configuration, true, true);
   }
 
