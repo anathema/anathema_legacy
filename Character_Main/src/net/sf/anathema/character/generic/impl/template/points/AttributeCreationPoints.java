@@ -96,7 +96,6 @@ public class AttributeCreationPoints extends ReflectionCloneableObject<IAttribut
 
   @Override
   public int getDefaultDotCount() {
-    // TODO Auto-generated method stub
     return 0;
   }
 }
