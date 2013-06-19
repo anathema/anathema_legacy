@@ -7,17 +7,18 @@ import net.sf.anathema.charmtree.filters.CharmFilterSettingsPage;
 import net.sf.anathema.charmtree.filters.ICharmFilter;
 import net.sf.anathema.charmtree.view.ICascadeSelectionView;
 import net.sf.anathema.charmtree.view.ICharmGroupChangeListener;
+import net.sf.anathema.framework.view.SwingApplicationFrame;
+import net.sf.anathema.interaction.Command;
+import net.sf.anathema.interaction.Tool;
 import net.sf.anathema.lib.compare.I18nedIdentificateSorter;
 import net.sf.anathema.lib.control.ObjectValueListener;
 import net.sf.anathema.lib.gui.AgnosticUIConfiguration;
-import net.sf.anathema.lib.gui.action.SmartAction;
 import net.sf.anathema.lib.gui.dialog.core.DialogResult;
 import net.sf.anathema.lib.gui.dialog.userdialog.UserDialog;
 import net.sf.anathema.lib.resources.Resources;
 import net.sf.anathema.lib.util.Identifier;
 import net.sf.anathema.platform.tree.presenter.view.CascadeLoadedListener;
 
-import java.awt.Component;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -93,13 +94,15 @@ public abstract class AbstractCascadePresenter implements ICascadeSelectionPrese
     view.addCharmTypeSelector(getResources().getString("CharmTreeView.GUI.CharmType"), types, new SelectIdentifierConfiguration(resources));
   }
 
+  //TODO: (Swing->FX) Opens a Swing Dialog in Presenter
   protected void createFilterButton(ICascadeSelectionView selectionView) {
-    SmartAction buttonAction = new SmartAction(resources.getString("CharmFilters.Define")) {
-
+    Tool tool = selectionView.addCharmFilterButton(resources.getString("CharmFilters.Filters"));
+    tool.setText(resources.getString("CharmFilters.Define"));
+    tool.setCommand(new Command() {
       @Override
-      protected void execute(Component parentComponent) {
+      public void execute() {
         CharmFilterSettingsPage page = new CharmFilterSettingsPage(getResources(), filterSet);
-        UserDialog userDialog = new UserDialog(parentComponent, page);
+        UserDialog userDialog = new UserDialog(SwingApplicationFrame.getParentComponent(), page);
         DialogResult result = userDialog.show();
         resetOrApplyFilters(result);
         reselectTypeAndGroup(result);
@@ -120,8 +123,7 @@ public abstract class AbstractCascadePresenter implements ICascadeSelectionPrese
           filterSet.applyAllFilters();
         }
       }
-    };
-    selectionView.addCharmFilterButton(buttonAction, resources.getString("CharmFilters.Filters"));
+    });
   }
 
   private void createHelpText() {

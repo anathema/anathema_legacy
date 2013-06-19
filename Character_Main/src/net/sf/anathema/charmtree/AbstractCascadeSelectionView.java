@@ -2,16 +2,15 @@ package net.sf.anathema.charmtree;
 
 import net.miginfocom.layout.CC;
 import net.miginfocom.swing.MigLayout;
+import net.sf.anathema.character.equipment.impl.character.view.AddToComponent;
 import net.sf.anathema.charmtree.view.CharmTreeRenderer;
 import net.sf.anathema.charmtree.view.ICascadeSelectionView;
 import net.sf.anathema.charmtree.view.ICharmGroupChangeListener;
 import net.sf.anathema.charmtree.view.svg.GenericCascadeRenderer;
+import net.sf.anathema.interaction.Tool;
 import net.sf.anathema.lib.control.ObjectValueListener;
 import net.sf.anathema.lib.gui.AgnosticUIConfiguration;
-import net.sf.anathema.lib.gui.ConfigurableSwingUI;
-import net.sf.anathema.lib.gui.action.SmartAction;
 import net.sf.anathema.lib.gui.ui.ConfigurableListCellRenderer;
-import net.sf.anathema.lib.gui.ui.ObjectUiListCellRenderer;
 import net.sf.anathema.lib.gui.widgets.ChangeableJComboBox;
 import net.sf.anathema.lib.gui.widgets.IChangeableJComboBox;
 import net.sf.anathema.lib.util.Identifier;
@@ -22,8 +21,8 @@ import net.sf.anathema.platform.tree.presenter.view.NodeProperties;
 import net.sf.anathema.platform.tree.presenter.view.ToolTipProperties;
 import net.sf.anathema.platform.tree.view.SwingCascadeStrategy;
 import net.sf.anathema.platform.tree.view.SwingTreeView;
+import net.sf.anathema.swing.interaction.ActionInteraction;
 
-import javax.swing.JButton;
 import javax.swing.JComponent;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
@@ -110,13 +109,13 @@ public abstract class AbstractCascadeSelectionView implements ICascadeSelectionV
   }
 
   @Override
-  public void addCharmFilterButton(SmartAction action, String titleText) {
+  public Tool addCharmFilterButton(String borderText) {
     JPanel buttonPanel = new JPanel();
-    JButton filterButton = new JButton();
-    filterButton.setAction(action);
-    buttonPanel.add(filterButton);
-    buttonPanel.setBorder(new TitledBorder(titleText));
+    ActionInteraction interaction = new ActionInteraction();
+    interaction.addTo(new AddToComponent(buttonPanel));
+    buttonPanel.setBorder(new TitledBorder(borderText));
     getSelectionComponent().add(buttonPanel);
+    return interaction;
   }
 
   @Override

@@ -1,8 +1,8 @@
 package net.sf.anathema.charmtree.view;
 
+import net.sf.anathema.interaction.Tool;
 import net.sf.anathema.lib.control.ObjectValueListener;
 import net.sf.anathema.lib.gui.AgnosticUIConfiguration;
-import net.sf.anathema.lib.gui.action.SmartAction;
 import net.sf.anathema.lib.util.Identifier;
 import net.sf.anathema.platform.tree.presenter.view.CascadeLoadedListener;
 import net.sf.anathema.platform.tree.presenter.view.NodeProperties;
@@ -18,8 +18,7 @@ public interface ICascadeSelectionView {
 
   void addCharmTypeSelectionListener(ObjectValueListener<Identifier> selectionListener);
 
-  //todo: (Swing->FX) Action
-  void addCharmFilterButton(SmartAction action, String titleText);
+  Tool addCharmFilterButton(String borderText);
 
   void fillCharmGroupBox(Identifier[] charmGroups);
 
