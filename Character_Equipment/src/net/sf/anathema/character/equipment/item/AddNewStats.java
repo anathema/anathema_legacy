@@ -1,7 +1,6 @@
 package net.sf.anathema.character.equipment.item;
 
 import net.sf.anathema.character.equipment.item.model.EquipmentStatsFactory;
-import net.sf.anathema.character.equipment.item.model.IEquipmentTemplateEditModel;
 import net.sf.anathema.character.equipment.item.view.ToolListView;
 import net.sf.anathema.character.generic.equipment.weapon.IEquipmentStats;
 import net.sf.anathema.interaction.Command;
@@ -15,10 +14,10 @@ import java.util.List;
 
 public class AddNewStats {
   protected final Resources resources;
-  protected final IEquipmentTemplateEditModel editModel;
+  protected final StatsEditModel editModel;
   protected final EquipmentStatsFactory statsFactory;
 
-  public AddNewStats(Resources resources, IEquipmentTemplateEditModel editModel,
+  public AddNewStats(Resources resources, StatsEditModel editModel,
                      EquipmentStatsFactory statsFactory) {
     this.editModel = editModel;
     this.statsFactory = statsFactory;

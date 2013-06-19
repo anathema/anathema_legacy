@@ -14,10 +14,10 @@ import java.util.List;
 public class EditStatsCommand implements Command {
   private final ToolListView<IEquipmentStats> statsListView;
   private final StatsEditor factory;
-  private final IEquipmentTemplateEditModel editModel;
+  private final StatsEditModel editModel;
   private final Resources resources;
 
-  public EditStatsCommand(ToolListView<IEquipmentStats> statsListView, StatsEditor factory, IEquipmentTemplateEditModel editModel, Resources resources) {
+  public EditStatsCommand(ToolListView<IEquipmentStats> statsListView, StatsEditor factory, StatsEditModel editModel, Resources resources) {
     this.statsListView = statsListView;
     this.factory = factory;
     this.editModel = editModel;

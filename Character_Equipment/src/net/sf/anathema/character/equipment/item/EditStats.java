@@ -1,6 +1,5 @@
 package net.sf.anathema.character.equipment.item;
 
-import net.sf.anathema.character.equipment.item.model.IEquipmentTemplateEditModel;
 import net.sf.anathema.character.equipment.item.model.StatsEditor;
 import net.sf.anathema.character.equipment.item.view.ToolListView;
 import net.sf.anathema.character.generic.equipment.weapon.IEquipmentStats;
@@ -11,9 +10,9 @@ import net.sf.anathema.lib.resources.Resources;
 public class EditStats {
   private final StatsEditor factory;
   private final Resources resources;
-  private final IEquipmentTemplateEditModel editModel;
+  private final StatsEditModel editModel;
 
-  public EditStats(Resources resources, IEquipmentTemplateEditModel editModel, StatsEditor factory) {
+  public EditStats(Resources resources, StatsEditModel editModel, StatsEditor factory) {
     this.resources = resources;
     this.editModel = editModel;
     this.factory = factory;

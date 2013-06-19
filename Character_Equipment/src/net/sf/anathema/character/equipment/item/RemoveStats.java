@@ -13,9 +13,9 @@ import java.util.List;
 public class RemoveStats {
 
   private final Resources resources;
-  private final IEquipmentTemplateEditModel editModel;
+  private final StatsEditModel editModel;
 
-  public RemoveStats(Resources resources, IEquipmentTemplateEditModel editModel) {
+  public RemoveStats(Resources resources, StatsEditModel editModel) {
     this.resources = resources;
     this.editModel = editModel;
   }
