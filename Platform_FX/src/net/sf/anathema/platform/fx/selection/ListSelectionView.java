@@ -13,6 +13,7 @@ import net.sf.anathema.lib.gui.AgnosticUIConfiguration;
 import net.sf.anathema.platform.fx.ConfigurableListCellFactory;
 import net.sf.anathema.platform.fx.FxObjectSelectionView;
 import net.sf.anathema.platform.fx.FxThreading;
+import net.sf.anathema.platform.fx.Stylesheet;
 import org.jmock.example.announcer.Announcer;
 import org.tbee.javafx.scene.layout.MigPane;
 
@@ -43,7 +44,7 @@ public class ListSelectionView<T> implements FxObjectSelectionView<T> {
       public void run() {
         list.setCellFactory(new ConfigurableListCellFactory<>(ui));
         list.getSelectionModel().setSelectionMode(SelectionMode.SINGLE);
-        list.getStylesheets().add("skin/anathema/selectionlist.css");
+        new Stylesheet("skin/anathema/selectionlist.css").applyToParent(list);
         list.getSelectionModel().selectedItemProperty().addListener(new ChangeListener<T>() {
           @Override
           public void changed(ObservableValue<? extends T> observableValue, T v, T newValue) {
