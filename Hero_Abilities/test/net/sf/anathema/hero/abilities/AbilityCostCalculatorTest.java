@@ -13,10 +13,10 @@ import net.sf.anathema.character.main.costs.AbstractBonusPointTestCase;
 import net.sf.anathema.character.main.testing.dummy.DummyAdditionalBonusPointManagment;
 import net.sf.anathema.character.main.testing.dummy.DummyHero;
 import net.sf.anathema.character.main.testing.dummy.DummyInitializationContext;
-import net.sf.anathema.character.main.testing.dummy.models.DummyTraitModel;
-import net.sf.anathema.hero.abilities.model.AbilityModelImpl;
 import net.sf.anathema.character.main.testing.dummy.models.DummyHeroConcept;
 import net.sf.anathema.character.main.testing.dummy.models.DummyOtherTraitModel;
+import net.sf.anathema.character.main.testing.dummy.models.DummyTraitModel;
+import net.sf.anathema.hero.abilities.model.AbilityModelImpl;
 import org.junit.Before;
 import org.junit.Test;
 
@@ -138,14 +138,10 @@ public class AbilityCostCalculatorTest extends AbstractBonusPointTestCase {
     attributesWithoutCost.remove(unfavoredAbility);
 
     FavorableTraitCost firstFavoredCost = calculator.getCosts(firstFavored)[0];
-    assertEquals("Ability " + firstFavored, 0, firstFavoredCost.getGeneralPointCost());
-    assertEquals("Ability " + firstFavored, 0, firstFavoredCost.getFavoredPointCost());
-    assertEquals("Ability " + firstFavored, 3, firstFavoredCost.getBonusCost());
-
     FavorableTraitCost secondFavoredCost = calculator.getCosts(secondFavored)[0];
-    assertEquals("Ability " + secondFavored, 0, secondFavoredCost.getGeneralPointCost());
-    assertEquals("Ability " + secondFavored, 3, secondFavoredCost.getFavoredPointCost());
-    assertEquals("Ability " + secondFavored, 0, secondFavoredCost.getBonusCost());
+    assertFavoredPointCostsSumUpTo(3, firstFavoredCost, secondFavoredCost);
+    assertGeneralPointCostsSumUpTo(0, firstFavoredCost, secondFavoredCost);
+    assertBonusPointCostsSumUpTo(3, firstFavoredCost, secondFavoredCost);
 
     FavorableTraitCost[] allAbilityCost = calculator.getCosts(unfavoredAbility);
     FavorableTraitCost abilityCost = allAbilityCost[0];
@@ -167,22 +163,14 @@ public class AbilityCostCalculatorTest extends AbstractBonusPointTestCase {
     AbilityCostCalculator calculator = startCalculation(abilityCreationPoints);
     assertEquals(4, calculator.getFreePointsSpent(true));
     assertEquals(2, calculator.getFreePointsSpent(false));
-    for (Trait ability : getAllAbilities()) {
-      if (ability == firstFavored) {
-        FavorableTraitCost[] allAbilityCost = calculator.getCosts(ability);
-        FavorableTraitCost abilityCost = allAbilityCost[0];
-        assertEquals("Ability " + ability, 2, abilityCost.getGeneralPointCost());
-        assertEquals("Ability " + ability, 1, abilityCost.getFavoredPointCost());
-        assertEquals("Ability " + ability, 0, abilityCost.getBonusCost());
-      } else if (ability == secondFavored) {
-        FavorableTraitCost[] allAbilityCost = calculator.getCosts(ability);
-        FavorableTraitCost abilityCost = allAbilityCost[0];
-        assertEquals("Ability " + ability, 0, abilityCost.getGeneralPointCost());
-        assertEquals("Ability " + ability, 3, abilityCost.getFavoredPointCost());
-        assertEquals("Ability " + ability, 0, abilityCost.getBonusCost());
-      } else {
+    assertGeneralPointCostsSumUpTo(2, calculator.getCosts(firstFavored)[0], calculator.getCosts(secondFavored)[0]);
+    assertFavoredPointCostsSumUpTo(4, calculator.getCosts(firstFavored)[0], calculator.getCosts(secondFavored)[0]);
+    assertBonusPointCostsSumUpTo(0, calculator.getCosts(firstFavored)[0], calculator.getCosts(secondFavored)[0]);
+    List<Trait> allEmptyAbilities = getAllAbilities();
+    allEmptyAbilities.remove(firstFavored);
+    allEmptyAbilities.remove(secondFavored);
+    for (Trait ability : allEmptyAbilities) {
         assertEmptyCosts(calculator, ability);
-      }
     }
   }
 
@@ -273,6 +261,30 @@ public class AbilityCostCalculatorTest extends AbstractBonusPointTestCase {
   private void initializeModelWith(AbilityCreationPoints abilityCreationPoints) {
     dummyHero.template.abilityCreationPoints = abilityCreationPoints;
     abilityModel.initialize(new DummyInitializationContext(), dummyHero);
+  }
+
+  private void assertBonusPointCostsSumUpTo(int value, FavorableTraitCost... costs) {
+    int sum = 0;
+    for (FavorableTraitCost cost : costs) {
+      sum += cost.getBonusCost();
+    }
+    assertEquals("Bonus cost sum " + sum, value, sum);
+  }
+
+  private void assertFavoredPointCostsSumUpTo(int value, FavorableTraitCost... costs) {
+    int sum = 0;
+    for (FavorableTraitCost cost : costs) {
+      sum += cost.getFavoredPointCost();
+    }
+    assertEquals("Favored point cost sum " + sum, value, sum);
+  }
+
+  private void assertGeneralPointCostsSumUpTo(int value, FavorableTraitCost... costs) {
+    int sum = 0;
+    for (FavorableTraitCost cost : costs) {
+      sum += cost.getGeneralPointCost();
+    }
+    assertEquals("General point cost sum " + sum, value, sum);
   }
 }
 
