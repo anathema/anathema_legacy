@@ -9,6 +9,7 @@ import net.sf.anathema.hero.change.ChangeFlavor;
 import net.sf.anathema.character.generic.traits.types.AbilityType;
 import net.sf.anathema.character.library.removableentry.model.AbstractRemovableEntryModel;
 import net.sf.anathema.character.library.trait.Trait;
+import net.sf.anathema.hero.change.RemovableEntryChangeAdapter;
 import net.sf.anathema.hero.model.Hero;
 import net.sf.anathema.hero.model.InitializationContext;
 import net.sf.anathema.hero.change.FlavoredChangeListener;

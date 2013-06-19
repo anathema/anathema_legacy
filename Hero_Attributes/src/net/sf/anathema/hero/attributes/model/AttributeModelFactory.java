@@ -1,5 +1,7 @@
 package net.sf.anathema.hero.attributes.model;
 
+import net.sf.anathema.character.main.model.concept.HeroConcept;
+import net.sf.anathema.character.main.model.experience.ExperienceModel;
 import net.sf.anathema.hero.model.HeroModelAutoCollector;
 import net.sf.anathema.character.main.model.attributes.AttributeModel;
 import net.sf.anathema.hero.model.HeroModelFactory;
@@ -12,7 +14,7 @@ import net.sf.anathema.character.main.model.traits.TraitModel;
 public class AttributeModelFactory extends SimpleModelTreeEntry implements HeroModelFactory {
 
   public AttributeModelFactory() {
-    super(AttributeModel.ID, OtherTraitModel.ID, TraitModel.ID);
+    super(AttributeModel.ID, OtherTraitModel.ID, TraitModel.ID, HeroConcept.ID, ExperienceModel.ID);
   }
 
   @Override

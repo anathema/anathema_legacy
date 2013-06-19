@@ -1,23 +1,21 @@
 package net.sf.anathema.character.intimacies.presenter;
 
-import net.sf.anathema.character.generic.additionaltemplate.HeroModelBonusPointCalculator;
-import net.sf.anathema.character.generic.additionaltemplate.HeroModelExperienceCalculator;
-import net.sf.anathema.character.generic.additionaltemplate.NullAdditionalModelBonusPointCalculator;
-import net.sf.anathema.character.generic.additionaltemplate.NullHeroModelExperienceCalculator;
-import net.sf.anathema.character.intimacies.IIntimaciesAdditionalModel;
-import net.sf.anathema.character.intimacies.model.IIntimacy;
-import net.sf.anathema.character.intimacies.template.IntimaciesTemplate;
 import net.sf.anathema.character.library.removableentry.presenter.IRemovableEntryListener;
-import net.sf.anathema.hero.display.HeroModelGroup;
+import net.sf.anathema.hero.change.ChangeAnnouncer;
 import net.sf.anathema.hero.change.FlavoredChangeListener;
+import net.sf.anathema.hero.intimacies.model.IntimaciesModel;
+import net.sf.anathema.hero.intimacies.model.Intimacy;
+import net.sf.anathema.hero.model.Hero;
+import net.sf.anathema.hero.model.InitializationContext;
 import net.sf.anathema.lib.control.IChangeListener;
+import net.sf.anathema.lib.util.Identifier;
 
 import java.util.ArrayList;
 import java.util.List;
 
-public class DemoIntimaciesModel implements IIntimaciesModel, IIntimaciesAdditionalModel {
+public class DemoIntimaciesModel implements IntimaciesModel {
 
-  private List<IIntimacy> entries = new ArrayList<>();
+  private List<Intimacy> entries = new ArrayList<>();
 
   @Override
   public void addModelChangeListener(IChangeListener listener) {
@@ -55,56 +53,41 @@ public class DemoIntimaciesModel implements IIntimaciesModel, IIntimaciesAdditio
   }
 
   @Override
-  public void addModelChangeListener(IRemovableEntryListener<IIntimacy> listener) {
+  public void addModelChangeListener(IRemovableEntryListener<Intimacy> listener) {
     throw new UnsupportedOperationException();
   }
 
   @Override
-  public IIntimacy commitSelection() {
+  public Intimacy commitSelection() {
     throw new UnsupportedOperationException();
   }
 
   @Override
-  public List<IIntimacy> getEntries() {
+  public List<Intimacy> getEntries() {
     return entries;
   }
 
   @Override
-  public void removeEntry(IIntimacy entry) {
+  public void removeEntry(Intimacy entry) {
     throw new UnsupportedOperationException();
   }
 
-  @Override
-  public void addChangeListener(IChangeListener listener) {
-    throw new UnsupportedOperationException();
-  }
-
-  @Override
-  public HeroModelGroup getAdditionalModelType() {
-    return HeroModelGroup.Outline;
-  }
-
-  @Override
-  public HeroModelBonusPointCalculator getBonusPointCalculator() {
-    return new NullAdditionalModelBonusPointCalculator();
-  }
-
-  @Override
-  public HeroModelExperienceCalculator getExperienceCalculator() {
-    return new NullHeroModelExperienceCalculator();
-  }
-
-  @Override
-  public String getTemplateId() {
-    return IntimaciesTemplate.ID;
-  }
-
-  public void addEntry(IIntimacy intimacy) {
+  public void addEntry(Intimacy intimacy) {
     entries.add(intimacy);
   }
 
   @Override
-  public IIntimaciesModel getIntimaciesModel() {
-    return this;
+  public Identifier getId() {
+    return IntimaciesModel.ID;
+  }
+
+  @Override
+  public void initialize(InitializationContext context, Hero hero) {
+    // nothing to do
+  }
+
+  @Override
+  public void initializeListening(ChangeAnnouncer announcer) {
+    // nothing to do
   }
 }

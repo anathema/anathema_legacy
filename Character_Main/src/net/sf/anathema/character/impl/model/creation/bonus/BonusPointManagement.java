@@ -1,7 +1,7 @@
 package net.sf.anathema.character.impl.model.creation.bonus;
 
 import net.sf.anathema.character.generic.additionalrules.IAdditionalRules;
-import net.sf.anathema.character.generic.additionaltemplate.IAdditionalModel;
+import net.sf.anathema.character.generic.additionaltemplate.HeroModelBonusPointCalculator;
 import net.sf.anathema.character.generic.template.HeroTemplate;
 import net.sf.anathema.character.generic.template.creation.BonusPointCosts;
 import net.sf.anathema.character.generic.template.creation.ICreationPoints;
@@ -41,6 +41,7 @@ import net.sf.anathema.character.model.creation.IBonusPointManagement;
 import net.sf.anathema.character.presenter.overview.IAdditionalSpendingModel;
 import net.sf.anathema.character.presenter.overview.IOverviewModel;
 import net.sf.anathema.character.presenter.overview.ISpendingModel;
+import net.sf.anathema.hero.points.PointModelFetcher;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -65,8 +66,8 @@ public class BonusPointManagement implements IBonusPointManagement {
   public BonusPointManagement(ICharacter character) {
     this.character = character;
     this.creationPoints = character.getTemplate().getCreationPoints();
-    for (IAdditionalModel model : character.getExtendedConfiguration().getAdditionalModels()) {
-      bonusPointCalculator.addAdditionalBonusPointCalculator(model.getBonusPointCalculator());
+    for (HeroModelBonusPointCalculator additionalCalculator : PointModelFetcher.fetch(character).getBonusPointCalculators()) {
+      bonusPointCalculator.addAdditionalBonusPointCalculator(additionalCalculator);
     }
     bonusAdditionalPools = new AdditionalBonusPointPoolManagement(TraitModelFetcher.fetch(character),
             character.getTemplate().getAdditionalRules().getAdditionalBonusPointPools());

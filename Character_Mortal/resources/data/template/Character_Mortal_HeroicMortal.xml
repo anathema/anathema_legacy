@@ -13,6 +13,7 @@
     </general>
     <models>
         <model id="Description"/>
+        <model id="Points"/>
         <model id="Concept"/>
         <model id="OtherTraits"/>
         <model id="Abilities"/>
@@ -23,6 +24,7 @@
         <model id="Combos"/>
         <model id="Spells"/>
         <model id="Languages"/>
+        <model id="Intimacies"/>
     </models>
     <creation>
         <bonusPointCosts uses="DefaultBonusPointCost2nd.template"/>

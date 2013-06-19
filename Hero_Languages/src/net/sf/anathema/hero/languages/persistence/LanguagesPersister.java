@@ -1,33 +1,15 @@
 package net.sf.anathema.hero.languages.persistence;
 
-import com.google.gson.Gson;
-import com.google.gson.GsonBuilder;
 import net.sf.anathema.hero.languages.model.LanguagesModel;
-import net.sf.anathema.hero.model.HeroModel;
-import net.sf.anathema.hero.persistence.HeroModelLoader;
-import net.sf.anathema.hero.persistence.HeroModelPersister;
+import net.sf.anathema.hero.persistence.AbstractModelJsonPersister;
 import net.sf.anathema.hero.persistence.HeroModelPersisterCollected;
-import net.sf.anathema.hero.persistence.HeroModelSaver;
-import net.sf.anathema.lib.exception.AnathemaException;
-import net.sf.anathema.lib.exception.PersistenceException;
 import net.sf.anathema.lib.util.Identifier;
-import org.apache.commons.io.IOUtils;
-
-import java.io.ByteArrayOutputStream;
-import java.io.IOException;
-import java.io.InputStream;
-import java.io.OutputStream;
 
 @HeroModelPersisterCollected
-public class LanguagesPersister implements HeroModelPersister {
-
-  private final String persistenceId = "languages";
-  private final Gson gson;
+public class LanguagesPersister extends AbstractModelJsonPersister<LanguagesPto, LanguagesModel> {
 
   public LanguagesPersister() {
-    GsonBuilder gsonBuilder = new GsonBuilder();
-    gsonBuilder.setPrettyPrinting();
-    gson = gsonBuilder.create();
+    super("languages", LanguagesPto.class);
   }
 
   @Override
@@ -35,32 +17,8 @@ public class LanguagesPersister implements HeroModelPersister {
     return LanguagesModel.ID;
   }
 
-  @Override
-  public void load(HeroModel model, HeroModelLoader loader) throws PersistenceException {
-    InputStream inputStream = null;
-    try {
-      inputStream = loader.openInputStream(persistenceId);
-      if (inputStream == null) {
-        return;
-      }
-      LanguagesPto pto = readFromJson(inputStream);
-      fillModel((LanguagesModel) model, pto);
-    } catch (IOException e) {
-      throw new AnathemaException(e);
-    } finally {
-      IOUtils.closeQuietly(inputStream);
-    }
-  }
-
-  private LanguagesPto readFromJson(InputStream inputStream) throws IOException {
-    ByteArrayOutputStream byteStream = new ByteArrayOutputStream();
-    IOUtils.copy(inputStream, byteStream);
-    String json = new String(byteStream.toByteArray());
-    return gson.fromJson(json, LanguagesPto.class);
-  }
-
-  private void fillModel(LanguagesModel model, LanguagesPto pto) {
-    for (String name : pto.languages) {
+  protected void fillModel(LanguagesModel model, LanguagesPto pto) {
+     for (String name : pto.languages) {
       Identifier language = model.getPredefinedLanguageById(name);
       if (language != null) {
         model.selectLanguage(language);
@@ -72,28 +30,11 @@ public class LanguagesPersister implements HeroModelPersister {
   }
 
   @Override
-  public void save(HeroModel heroModel, HeroModelSaver saver) {
-    String json = fillPto((LanguagesModel) heroModel);
-    writePersistence(saver, json);
-  }
-
-  private String fillPto(LanguagesModel model) {
+  protected LanguagesPto createPto(LanguagesModel languages) {
     LanguagesPto pto = new LanguagesPto();
-    for (Identifier language : model.getEntries()) {
+    for (Identifier language : languages.getEntries()) {
       pto.languages.add(language.getId());
     }
-    return gson.toJson(pto);
-  }
-
-  private void writePersistence(HeroModelSaver persistence, String json) {
-    OutputStream outputStream = null;
-    try {
-      outputStream = persistence.openOutputStream(persistenceId);
-      outputStream.write(json.getBytes());
-    } catch (IOException e) {
-      throw new AnathemaException(e);
-    } finally {
-      IOUtils.closeQuietly(outputStream);
-    }
+    return pto;
   }
 }
