@@ -33,7 +33,7 @@ public class ComboInitializer implements CharacterModelInitializer {
     IComboConfigurationView comboView = sectionView.addView(header, IComboConfigurationView.class, character.getCharacterType());
     MagicDescriptionProvider magicDescriptionProvider = CharmDescriptionProviderExtractor.CreateFor(model, resources);
     ComboConfigurationModel comboModel = new ComboConfigurationModel(character, magicDescriptionProvider);
-    new ComboConfigurationPresenter(resources, comboModel, comboView).initPresentation();
+    new ComboConfigurationPresenter(character, resources, comboModel, comboView).initPresentation();
 
   }
 }

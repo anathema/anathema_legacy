@@ -1,6 +1,8 @@
 package net.sf.anathema.character.presenter;
 
-import net.sf.anathema.character.generic.framework.additionaltemplate.listening.DedicatedCharacterChangeAdapter;
+import net.sf.anathema.character.change.ChangeFlavor;
+import net.sf.anathema.character.main.hero.change.FlavoredChangeListener;
+import net.sf.anathema.character.main.model.experience.ExperienceChange;
 import net.sf.anathema.character.main.model.experience.ExperienceModelFetcher;
 import net.sf.anathema.character.model.ICharacter;
 import net.sf.anathema.character.model.advance.IExperiencePointManagement;
@@ -36,13 +38,15 @@ public class OverviewPresenter implements Presenter {
     CategorizedOverview experiencePointView = container.addExperienceOverviewView();
     new ExperiencedOverviewPresenter(resources, character, experiencePointView, experiencePoints).initPresentation();
     setOverviewView(ExperienceModelFetcher.fetch(character).isExperienced());
-    character.getCharacterContext().getCharacterListening().addChangeListener(new DedicatedCharacterChangeAdapter() {
+    character.getChangeAnnouncer().addListener(new FlavoredChangeListener() {
       @Override
-      public void experiencedChanged(boolean experienced) {
-        setOverviewView(experienced);
+      public void changeOccurred(ChangeFlavor flavor) {
+        if (flavor == ExperienceChange.FLAVOR_EXPERIENCE_STATE) {
+          setOverviewView(ExperienceModelFetcher.fetch(character).isExperienced());
+        }
       }
     });
-  }
+   }
 
   private void setOverviewView(boolean experienced) {
     container.toggleOverviewView(experienced);

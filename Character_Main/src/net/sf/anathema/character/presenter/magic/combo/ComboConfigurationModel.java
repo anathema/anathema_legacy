@@ -1,7 +1,6 @@
 package net.sf.anathema.character.presenter.magic.combo;
 
 import net.sf.anathema.character.generic.caste.CasteType;
-import net.sf.anathema.character.generic.framework.additionaltemplate.listening.ICharacterChangeListener;
 import net.sf.anathema.character.generic.magic.ICharm;
 import net.sf.anathema.character.generic.magic.description.MagicDescriptionProvider;
 import net.sf.anathema.character.main.model.concept.HeroConceptFetcher;
@@ -35,10 +34,6 @@ public class ComboConfigurationModel {
 
   public MagicDescriptionProvider getMagicDescriptionProvider() {
     return magicDescriptionProvider;
-  }
-
-  public void addCharacterChangeListener(ICharacterChangeListener listener) {
-    character.getCharacterContext().getCharacterListening().addChangeListener(listener);
   }
 
   public ICharm[] getLearnedCharms() {

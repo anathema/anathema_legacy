@@ -1,8 +1,11 @@
 package net.sf.anathema.character.presenter.magic.combo;
 
 import com.google.common.base.Strings;
-import net.sf.anathema.character.generic.framework.additionaltemplate.listening.DedicatedCharacterChangeAdapter;
+import net.sf.anathema.character.change.ChangeFlavor;
 import net.sf.anathema.character.generic.magic.ICharm;
+import net.sf.anathema.character.main.hero.Hero;
+import net.sf.anathema.character.main.hero.change.FlavoredChangeListener;
+import net.sf.anathema.character.main.model.concept.ConceptChange;
 import net.sf.anathema.character.model.charm.CharmLearnAdapter;
 import net.sf.anathema.character.model.charm.CharmModel;
 import net.sf.anathema.character.model.charm.ICharmLearnListener;
@@ -37,11 +40,13 @@ public class ComboConfigurationPresenter {
   private final Map<ICombo, IComboView> viewsByCombo = new HashMap<>();
   private final Map<ICombo, Tool> toolsByCombo = new HashMap<>();
   private final ComboConfigurationModel comboModel;
+  private Hero hero;
   private final Resources resources;
   private final IComboConfigurationView view;
   private final MagicDisplayLabeler labeler;
 
-  public ComboConfigurationPresenter(Resources resources, ComboConfigurationModel comboModel, IComboConfigurationView view) {
+  public ComboConfigurationPresenter(Hero hero, Resources resources, ComboConfigurationModel comboModel, IComboConfigurationView view) {
+    this.hero = hero;
     this.resources = resources;
     this.comboModel = comboModel;
     this.charmConfiguration = comboModel.getCharmConfiguration();
@@ -63,10 +68,12 @@ public class ComboConfigurationPresenter {
     initViewListening(view);
     initComboModelListening(view);
     initComboConfigurationListening(view);
-    comboModel.addCharacterChangeListener(new DedicatedCharacterChangeAdapter() {
+    hero.getChangeAnnouncer().addListener(new FlavoredChangeListener() {
       @Override
-      public void casteChanged() {
-        enableCrossPrerequisiteTypeCombos();
+      public void changeOccurred(ChangeFlavor flavor) {
+        if (flavor == ConceptChange.FLAVOR_CASTE) {
+          enableCrossPrerequisiteTypeCombos();
+        }
       }
     });
     enableCrossPrerequisiteTypeCombos();
