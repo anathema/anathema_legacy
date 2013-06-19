@@ -1,6 +1,5 @@
 package net.sf.anathema.character.impl.model.advance.models;
 
-import net.sf.anathema.character.generic.IBasicCharacterData;
 import net.sf.anathema.character.generic.magic.ISpell;
 import net.sf.anathema.character.impl.model.advance.IPointCostCalculator;
 import net.sf.anathema.character.main.model.traits.TraitMap;
@@ -9,15 +8,12 @@ import net.sf.anathema.character.model.ICharacter;
 public class SpellExperienceModel extends AbstractIntegerValueModel {
   private final ICharacter character;
   private final IPointCostCalculator calculator;
-  private final IBasicCharacterData basicCharacter;
   private final TraitMap traitConfiguration;
 
-  public SpellExperienceModel(ICharacter character, IPointCostCalculator calculator, IBasicCharacterData basicCharacter,
-                              TraitMap traitConfiguration) {
+  public SpellExperienceModel(ICharacter character, IPointCostCalculator calculator, TraitMap traitConfiguration) {
     super("Experience", "Spells");
     this.character = character;
     this.calculator = calculator;
-    this.basicCharacter = basicCharacter;
     this.traitConfiguration = traitConfiguration;
   }
 
@@ -30,7 +26,7 @@ public class SpellExperienceModel extends AbstractIntegerValueModel {
     int experienceCosts = 0;
     for (ISpell spell : character.getSpells().getLearnedSpells(true)) {
       if (!character.getSpells().isLearnedOnCreation(spell)) {
-        experienceCosts += calculator.getSpellCosts(spell, basicCharacter, traitConfiguration);
+        experienceCosts += calculator.getSpellCosts(character, spell, traitConfiguration);
       }
     }
     return experienceCosts;

@@ -1,6 +1,5 @@
 package net.sf.anathema.character.impl.model.creation.bonus.magic;
 
-import net.sf.anathema.character.generic.IBasicCharacterData;
 import net.sf.anathema.character.generic.character.IGenericTraitCollection;
 import net.sf.anathema.character.generic.magic.ICharm;
 import net.sf.anathema.character.generic.magic.IMagic;
@@ -12,6 +11,7 @@ import net.sf.anathema.character.generic.template.magic.IMagicTemplate;
 import net.sf.anathema.character.impl.model.advance.CostAnalyzer;
 import net.sf.anathema.character.impl.model.creation.bonus.IAdditionalMagicLearnPointManagement;
 import net.sf.anathema.character.impl.model.creation.bonus.additional.IAdditionalBonusPointManagment;
+import net.sf.anathema.character.main.hero.Hero;
 import net.sf.anathema.character.model.ISpellConfiguration;
 import net.sf.anathema.character.model.charm.CharmModel;
 import net.sf.anathema.character.model.charm.special.ISubeffectCharmConfiguration;
@@ -41,7 +41,7 @@ public class MagicCostCalculator {
 
   public MagicCostCalculator(IMagicTemplate magicTemplate, CharmModel charms, ISpellConfiguration spells, int favoredCreationCharmCount,
                              int defaultCreationCharmCount, BonusPointCosts costs, IAdditionalBonusPointManagment bonusPools,
-                             IAdditionalMagicLearnPointManagement magicPools, IBasicCharacterData basicCharacter,
+                             IAdditionalMagicLearnPointManagement magicPools, Hero hero,
                              IGenericTraitCollection traitCollection) {
     this.magicTemplate = magicTemplate;
     this.charms = charms;
@@ -51,7 +51,7 @@ public class MagicCostCalculator {
     this.costs = costs;
     this.bonusPools = bonusPools;
     this.magicPools = magicPools;
-    this.analyzer = new CostAnalyzer(basicCharacter, traitCollection);
+    this.analyzer = new CostAnalyzer(hero, traitCollection);
   }
 
   public void calculateMagicCosts() {

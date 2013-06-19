@@ -1,6 +1,5 @@
 package net.sf.anathema.character.impl.model.advance.models;
 
-import net.sf.anathema.character.generic.IBasicCharacterData;
 import net.sf.anathema.character.generic.magic.ICharm;
 import net.sf.anathema.character.generic.magic.charms.special.ISpecialCharmConfiguration;
 import net.sf.anathema.character.impl.model.advance.IPointCostCalculator;
@@ -17,15 +16,12 @@ public class CharmExperienceModel extends AbstractIntegerValueModel {
   private final TraitMap traitConfiguration;
   private final IPointCostCalculator calculator;
   private final ICharacter character;
-  private final IBasicCharacterData basicCharacter;
 
-  public CharmExperienceModel(TraitMap traitConfiguration, IPointCostCalculator calculator, ICharacter character,
-                              IBasicCharacterData basicCharacter) {
+  public CharmExperienceModel(TraitMap traitConfiguration, IPointCostCalculator calculator, ICharacter character) {
     super("Experience", "Charms");
     this.traitConfiguration = traitConfiguration;
     this.calculator = calculator;
     this.character = character;
-    this.basicCharacter = basicCharacter;
   }
 
   @Override
@@ -50,7 +46,7 @@ public class CharmExperienceModel extends AbstractIntegerValueModel {
 
   private int calculateCharmCost(CharmModel charmConfiguration, ICharm charm, Set<ICharm> charmsCalculated) {
     ISpecialCharmConfiguration specialCharm = charmConfiguration.getSpecialCharmConfiguration(charm);
-    int charmCost = calculator.getCharmCosts(charm, basicCharacter, traitConfiguration);
+    int charmCost = calculator.getCharmCosts(character, charm, traitConfiguration);
     if (specialCharm != null) {
       int timesLearnedWithExperience = specialCharm.getCurrentLearnCount() - specialCharm.getCreationLearnCount();
       int specialCharmCost = timesLearnedWithExperience * charmCost;

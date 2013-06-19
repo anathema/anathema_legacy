@@ -4,7 +4,6 @@ import net.sf.anathema.character.generic.impl.template.points.DefaultBonusPointC
 import net.sf.anathema.character.generic.magic.ISpell;
 import net.sf.anathema.character.generic.template.creation.BonusPointCosts;
 import net.sf.anathema.character.generic.traits.types.AbilityType;
-import net.sf.anathema.character.impl.model.context.BasicCharacterContext;
 import net.sf.anathema.character.impl.model.context.trait.CreationTraitValueStrategy;
 import net.sf.anathema.character.impl.model.creation.bonus.magic.MagicCostCalculator;
 import net.sf.anathema.character.library.trait.favorable.FavorableState;
@@ -19,7 +18,6 @@ import net.sf.anathema.character.main.testing.dummy.DummyHero;
 import net.sf.anathema.character.main.testing.dummy.magic.DummyCharmModel;
 import net.sf.anathema.character.main.testing.dummy.magic.DummySpell;
 import net.sf.anathema.character.main.testing.dummy.magic.DummySpellConfiguration;
-import net.sf.anathema.character.main.testing.dummy.models.DummyTraitModel;
 import net.sf.anathema.character.main.testing.dummy.template.DummyHeroTemplate;
 import net.sf.anathema.character.model.ISpellConfiguration;
 import org.junit.Before;
@@ -41,9 +39,10 @@ public class CharmCostCalculatorTest extends AbstractBonusPointTestCase {
     traitModel = TraitModelFetcher.fetch(hero);
     addAbilityAndEssence(traitModel, hero);
     BonusPointCosts cost = new DefaultBonusPointCosts();
+
     DummyGenericCharacter genericCharacter = new DummyGenericCharacter(new DummyHeroTemplate());
     calculator = new MagicCostCalculator(genericCharacter.getTemplate().getMagicTemplate(), charms, spells, 2, 3, cost,
-            new DummyAdditionalBonusPointManagment(), new DummyAdditionalSpellPointManagement(), new BasicCharacterContext(genericCharacter),
+            new DummyAdditionalBonusPointManagment(), new DummyAdditionalSpellPointManagement(), hero,
             new GenericTraitCollectionFacade(traitModel));
   }
 

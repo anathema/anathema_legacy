@@ -8,6 +8,7 @@ import net.sf.anathema.character.generic.magic.general.ICostList;
 import net.sf.anathema.character.generic.magic.spells.CircleType;
 import net.sf.anathema.character.generic.rules.IExaltedSourceBook;
 import net.sf.anathema.character.generic.traits.types.AbilityType;
+import net.sf.anathema.character.main.hero.Hero;
 import net.sf.anathema.lib.exception.NotYetImplementedException;
 
 public class DummySpell implements ISpell {
@@ -46,7 +47,7 @@ public class DummySpell implements ISpell {
   }
 
   @Override
-  public boolean isFavored(IBasicCharacterData basicCharacter, IGenericTraitCollection traitCollection) {
+  public boolean isFavored(Hero hero, IGenericTraitCollection traitCollection) {
     return traitCollection.getTrait(AbilityType.Occult).isCasteOrFavored();
   }
 

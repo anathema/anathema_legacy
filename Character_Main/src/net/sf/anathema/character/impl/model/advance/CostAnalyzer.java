@@ -8,14 +8,15 @@ import net.sf.anathema.character.generic.magic.IMagic;
 import net.sf.anathema.character.generic.magic.charms.MartialArtsLevel;
 import net.sf.anathema.character.generic.template.experience.ICostAnalyzer;
 import net.sf.anathema.character.generic.traits.types.AbilityType;
+import net.sf.anathema.character.main.hero.Hero;
 
 public class CostAnalyzer implements ICostAnalyzer {
 
-  private final IBasicCharacterData basicCharacter;
+  private final Hero hero;
   private final IGenericTraitCollection traitCollection;
 
-  public CostAnalyzer(IBasicCharacterData basicCharacter, IGenericTraitCollection traitCollection) {
-    this.basicCharacter = basicCharacter;
+  public CostAnalyzer(Hero hero, IGenericTraitCollection traitCollection) {
+    this.hero = hero;
     this.traitCollection = traitCollection;
   }
 
@@ -26,7 +27,7 @@ public class CostAnalyzer implements ICostAnalyzer {
 
   @Override
   public final boolean isMagicFavored(IMagic magic) {
-    return magic.isFavored(basicCharacter, traitCollection);
+    return magic.isFavored(hero, traitCollection);
   }
 
   @Override

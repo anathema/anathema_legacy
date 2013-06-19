@@ -1,6 +1,5 @@
 package net.sf.anathema.character.magic.dummy;
 
-import net.sf.anathema.character.generic.IBasicCharacterData;
 import net.sf.anathema.character.generic.character.IGenericTraitCollection;
 import net.sf.anathema.character.generic.character.IMagicCollection;
 import net.sf.anathema.character.generic.impl.magic.CharmAttribute;
@@ -21,6 +20,7 @@ import net.sf.anathema.character.generic.traits.GenericTrait;
 import net.sf.anathema.character.generic.traits.TraitType;
 import net.sf.anathema.character.generic.traits.types.ValuedTraitType;
 import net.sf.anathema.character.generic.type.ICharacterType;
+import net.sf.anathema.character.main.hero.Hero;
 import net.sf.anathema.lib.util.Identifier;
 import net.sf.anathema.lib.util.SimpleIdentifier;
 
@@ -207,7 +207,7 @@ public class DummyCharm extends SimpleIdentifier implements ICharm {
   }
 
   @Override
-  public boolean isFavored(IBasicCharacterData basicCharacter, IGenericTraitCollection traitCollection) {
+  public boolean isFavored(Hero hero, IGenericTraitCollection traitCollection) {
     if (prerequisites.length <= 0) {
       return false;
     }

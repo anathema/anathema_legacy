@@ -1,12 +1,12 @@
 package net.sf.anathema.character.impl.model.advance;
 
-import net.sf.anathema.character.generic.IBasicCharacterData;
 import net.sf.anathema.character.generic.magic.ICharm;
 import net.sf.anathema.character.generic.magic.ISpell;
 import net.sf.anathema.character.generic.template.experience.CurrentRatingCosts;
 import net.sf.anathema.character.generic.template.experience.IExperiencePointCosts;
 import net.sf.anathema.character.library.trait.Trait;
 import net.sf.anathema.character.library.trait.experience.TraitRatingCostCalculator;
+import net.sf.anathema.character.main.hero.Hero;
 import net.sf.anathema.character.main.model.traits.GenericTraitCollectionFacade;
 import net.sf.anathema.character.main.model.traits.TraitMap;
 
@@ -53,12 +53,12 @@ public class ExperiencePointCostCalculator implements IPointCostCalculator {
   }
 
   @Override
-  public int getSpellCosts(ISpell spell, IBasicCharacterData basicCharacter, TraitMap traitMap) {
-    return costs.getSpellCosts(spell, basicCharacter, new GenericTraitCollectionFacade(traitMap));
+  public int getSpellCosts(Hero hero, ISpell spell, TraitMap traitMap) {
+    return costs.getSpellCosts(spell, hero, new GenericTraitCollectionFacade(traitMap));
   }
 
   @Override
-  public int getCharmCosts(ICharm charm, IBasicCharacterData basicCharacter, TraitMap traitMap) {
-    return costs.getCharmCosts(charm, new CostAnalyzer(basicCharacter, new GenericTraitCollectionFacade(traitMap)));
+  public int getCharmCosts(Hero hero, ICharm charm, TraitMap traitMap) {
+    return costs.getCharmCosts(charm, new CostAnalyzer(hero, new GenericTraitCollectionFacade(traitMap)));
   }
 }

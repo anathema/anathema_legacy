@@ -1,6 +1,5 @@
 package net.sf.anathema.character.impl.model.advance;
 
-import net.sf.anathema.character.generic.IBasicCharacterData;
 import net.sf.anathema.character.generic.additionaltemplate.IAdditionalModel;
 import net.sf.anathema.character.impl.model.advance.models.AbilityExperienceModel;
 import net.sf.anathema.character.impl.model.advance.models.AttributeExperienceModel;
@@ -20,14 +19,12 @@ import net.sf.anathema.character.presenter.overview.IValueModel;
 
 public class ExperiencePointManagement implements IExperiencePointManagement {
 
-  private final IBasicCharacterData basicCharacter;
   private final IPointCostCalculator calculator;
   private final ICharacter character;
   private final TraitMap traitMap;
 
   public ExperiencePointManagement(ICharacter character) {
     this.character = character;
-    this.basicCharacter = character.getCharacterContext().getBasicCharacterContext();
     this.traitMap = TraitModelFetcher.fetch(character);
     this.calculator = new ExperiencePointCostCalculator(character.getTemplate().getExperienceCost());
   }
@@ -48,7 +45,7 @@ public class ExperiencePointManagement implements IExperiencePointManagement {
   }
 
   private IValueModel<Integer> getCharmModel() {
-    return new CharmExperienceModel(traitMap, calculator, character, basicCharacter);
+    return new CharmExperienceModel(traitMap, calculator, character);
   }
 
   private IValueModel<Integer> getEssenceModel() {
@@ -73,7 +70,7 @@ public class ExperiencePointManagement implements IExperiencePointManagement {
   }
 
   private IValueModel<Integer> getSpellModel() {
-    return new SpellExperienceModel(character, calculator, basicCharacter, traitMap);
+    return new SpellExperienceModel(character, calculator, traitMap);
   }
 
   @Override

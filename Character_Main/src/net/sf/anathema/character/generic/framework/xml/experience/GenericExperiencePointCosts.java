@@ -1,6 +1,5 @@
 package net.sf.anathema.character.generic.framework.xml.experience;
 
-import net.sf.anathema.character.generic.IBasicCharacterData;
 import net.sf.anathema.character.generic.character.IGenericTraitCollection;
 import net.sf.anathema.character.generic.impl.template.points.FixedValueRatingCosts;
 import net.sf.anathema.character.generic.magic.ICharm;
@@ -10,6 +9,7 @@ import net.sf.anathema.character.generic.magic.charms.MartialArtsLevel;
 import net.sf.anathema.character.generic.template.experience.CurrentRatingCosts;
 import net.sf.anathema.character.generic.template.experience.ICostAnalyzer;
 import net.sf.anathema.character.generic.template.experience.IExperiencePointCosts;
+import net.sf.anathema.character.main.hero.Hero;
 import net.sf.anathema.lib.lang.clone.ReflectionCloneableObject;
 
 import java.util.HashMap;
@@ -46,8 +46,8 @@ public class GenericExperiencePointCosts extends ReflectionCloneableObject<Gener
   }
 
   @Override
-  public int getSpellCosts(ISpell spell, IBasicCharacterData basicCharacter, IGenericTraitCollection traitCollection) {
-    return spellCost != 0 ? spellCost : getCharmCosts(spell.isFavored(basicCharacter, traitCollection), null);
+  public int getSpellCosts(ISpell spell, Hero hero, IGenericTraitCollection traitCollection) {
+    return spellCost != 0 ? spellCost : getCharmCosts(spell.isFavored(hero, traitCollection), null);
   }
 
   @Override
