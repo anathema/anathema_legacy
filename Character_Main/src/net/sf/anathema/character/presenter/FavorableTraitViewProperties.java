@@ -1,35 +1,37 @@
 package net.sf.anathema.character.presenter;
 
-import net.sf.anathema.character.generic.IBasicCharacterData;
 import net.sf.anathema.character.generic.framework.resources.CharacterUI;
 import net.sf.anathema.character.generic.template.presentation.IPresentationProperties;
 import net.sf.anathema.character.library.intvalue.IIconToggleButtonProperties;
 import net.sf.anathema.character.library.trait.Trait;
+import net.sf.anathema.character.main.hero.Hero;
+import net.sf.anathema.character.main.model.concept.HeroConceptFetcher;
+import net.sf.anathema.character.main.model.experience.ExperienceModelFetcher;
 import net.sf.anathema.lib.file.RelativePath;
 import net.sf.anathema.lib.gui.AgnosticUIConfiguration;
 
 public class FavorableTraitViewProperties implements IIconToggleButtonProperties {
 
   private final Trait trait;
+  private Hero hero;
   private final IPresentationProperties properties;
-  private final IBasicCharacterData context;
 
-  public FavorableTraitViewProperties(IPresentationProperties properties, IBasicCharacterData context, Trait trait) {
+  public FavorableTraitViewProperties(Hero hero, IPresentationProperties properties, Trait trait) {
+    this.hero = hero;
     this.properties = properties;
-    this.context = context;
     this.trait = trait;
   }
 
   @Override
   public RelativePath createStandardIcon() {
     CasteUI casteUI = new CasteUI(properties);
-    if (context.isExperienced() && !trait.getFavorization().isCasteOrFavored()) {
+    if (ExperienceModelFetcher.fetch(hero).isExperienced() && !trait.getFavorization().isCasteOrFavored()) {
       return AgnosticUIConfiguration.NO_ICON;
     }
     if (trait.getFavorization().isCaste()) {
-      return casteUI.getSmallCasteIconPath(context.getCasteType());
+      return casteUI.getSmallCasteIconPath(HeroConceptFetcher.fetch(hero).getCaste().getType());
     }
-    return new CharacterUI().getMediumBallPath(context.getCharacterType());
+    return new CharacterUI().getMediumBallPath(hero.getTemplate().getTemplateType().getCharacterType());
   }
 
   @Override
