@@ -1,6 +1,6 @@
 package net.sf.anathema.character.impl.model.advance;
 
-import net.sf.anathema.character.generic.additionaltemplate.IAdditionalModel;
+import net.sf.anathema.character.generic.additionaltemplate.HeroModelExperienceCalculator;
 import net.sf.anathema.character.impl.model.advance.models.AbilityExperienceModel;
 import net.sf.anathema.character.impl.model.advance.models.AttributeExperienceModel;
 import net.sf.anathema.character.impl.model.advance.models.CharmExperienceModel;
@@ -16,6 +16,7 @@ import net.sf.anathema.character.main.model.traits.TraitModelFetcher;
 import net.sf.anathema.character.model.ICharacter;
 import net.sf.anathema.character.model.advance.IExperiencePointManagement;
 import net.sf.anathema.character.presenter.overview.IValueModel;
+import net.sf.anathema.hero.points.PointModelFetcher;
 
 public class ExperiencePointManagement implements IExperiencePointManagement {
 
@@ -55,8 +56,8 @@ public class ExperiencePointManagement implements IExperiencePointManagement {
   @Override
   public int getMiscGain() {
     int total = 0;
-    for (IAdditionalModel model : character.getExtendedConfiguration().getAdditionalModels()) {
-      total += model.getExperienceCalculator().calculateGain();
+    for (HeroModelExperienceCalculator experienceCalculator : PointModelFetcher.fetch(character).getExperienceCalculators()) {
+      total += experienceCalculator.calculateGain();
     }
     return total;
   }
