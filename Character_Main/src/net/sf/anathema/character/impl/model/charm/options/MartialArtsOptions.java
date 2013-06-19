@@ -1,7 +1,5 @@
 package net.sf.anathema.character.impl.model.charm.options;
 
-import net.sf.anathema.character.generic.IBasicCharacterData;
-import net.sf.anathema.character.generic.framework.additionaltemplate.model.ICharacterModelContext;
 import net.sf.anathema.character.generic.impl.magic.charm.MartialArtsCharmTree;
 import net.sf.anathema.character.generic.magic.ICharm;
 import net.sf.anathema.character.generic.magic.charms.ICharmGroup;
@@ -13,24 +11,24 @@ import net.sf.anathema.character.generic.template.ITemplateType;
 import net.sf.anathema.character.generic.template.magic.ICharmTemplate;
 import net.sf.anathema.character.generic.template.magic.IMagicTemplate;
 import net.sf.anathema.character.generic.template.magic.MartialArtsRules;
+import net.sf.anathema.character.main.hero.Hero;
 
 import static net.sf.anathema.character.generic.impl.magic.MartialArtsUtilities.isMartialArtsCharm;
 
 public class MartialArtsOptions implements ICharmIdMap, ICharmLearnableArbitrator {
 
   private final MartialArtsCharmTree martialArtsCharmTree;
-  private final ICharacterModelContext context;
   private ITemplateRegistry registry;
+  private Hero hero;
 
-  public MartialArtsOptions(ICharacterModelContext context, ITemplateRegistry registry) {
-    this.context = context;
+  public MartialArtsOptions(Hero hero, ITemplateRegistry registry) {
+    this.hero = hero;
     this.registry = registry;
     this.martialArtsCharmTree = new MartialArtsCharmTree(getNativeCharmTemplate());
   }
 
   private ICharmTemplate getNativeCharmTemplate() {
-    IBasicCharacterData basicCharacterContext = context.getBasicCharacterContext();
-    ITemplateType templateType = basicCharacterContext.getTemplateType();
+    ITemplateType templateType = hero.getTemplate().getTemplateType();
     HeroTemplate template = registry.getTemplate(templateType);
     IMagicTemplate magicTemplate = template.getMagicTemplate();
     return magicTemplate.getCharmTemplate();

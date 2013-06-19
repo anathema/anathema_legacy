@@ -49,7 +49,7 @@ public class ExaltedCharacter implements ICharacter {
     addModels(generics);
 
     // Charm Model
-    this.charms = new CharmModelImpl(hero, initializationContext, context);
+    this.charms = new CharmModelImpl(hero, initializationContext);
     charms.addCharmLearnListener(new CharacterChangeCharmListener(context.getCharacterListening()));
 
     // Combo Model

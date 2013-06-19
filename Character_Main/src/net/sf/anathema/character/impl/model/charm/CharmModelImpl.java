@@ -4,7 +4,6 @@ import com.google.common.base.Functions;
 import net.sf.anathema.character.change.ChangeFlavor;
 import net.sf.anathema.character.generic.caste.CasteType;
 import net.sf.anathema.character.generic.character.IMagicCollection;
-import net.sf.anathema.character.generic.framework.additionaltemplate.model.ICharacterModelContext;
 import net.sf.anathema.character.generic.impl.magic.MartialArtsUtilities;
 import net.sf.anathema.character.generic.impl.template.magic.ICharmProvider;
 import net.sf.anathema.character.generic.magic.ICharm;
@@ -85,7 +84,7 @@ public class CharmModelImpl implements CharmModel {
   private InitializationContext context;
   private CharmSpecialistImpl specialist;
 
-  public CharmModelImpl(Hero hero, InitializationContext context, ICharacterModelContext characterContext) {
+  public CharmModelImpl(Hero hero, InitializationContext context) {
     this.specialist = new CharmSpecialistImpl(hero);
     this.experience = ExperienceModelFetcher.fetch(hero);
     this.traits = TraitModelFetcher.fetch(hero);
@@ -101,7 +100,7 @@ public class CharmModelImpl implements CharmModel {
     });
     this.hero = hero;
     this.context = context;
-    this.martialArtsOptions = new MartialArtsOptions(characterContext, context.getTemplateRegistry());
+    this.martialArtsOptions = new MartialArtsOptions(hero, context.getTemplateRegistry());
     this.nonMartialArtsOptions = new NonMartialArtsOptions(hero, context.getCharacterTypes(), context.getTemplateRegistry());
     this.manager = new SpecialCharmManager(specialist, hero, this);
     this.provider = context.getCharmProvider();
