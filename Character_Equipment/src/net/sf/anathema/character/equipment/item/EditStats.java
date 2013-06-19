@@ -22,7 +22,7 @@ public class EditStats {
     final Tool tool = statsListView.addTool();
     tool.setIcon(new BasicUi().getEditIconPath());
     tool.setTooltip(resources.getString("Equipment.Creation.Stats.EditActionTooltip"));
-    tool.setCommand(new EditStatsCommand(statsListView, factory, editModel, resources));
+    tool.setCommand(new EditStatsCommand(factory, editModel, resources));
     statsListView.addListSelectionListener(new Runnable() {
       @Override
       public void run() {

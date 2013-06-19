@@ -6,31 +6,42 @@ import net.sf.anathema.character.generic.equipment.weapon.IEquipmentStats;
 import net.sf.anathema.lib.control.IChangeListener;
 import net.sf.anathema.lib.gui.Presenter;
 import net.sf.anathema.lib.resources.Resources;
+import net.sf.anathema.lib.util.Closure;
 
 public class EquipmentEditStatsPresenter implements Presenter {
 
   private final Resources resources;
-  private final EquipmentDetails view;
+  private final EquipmentDetails equipmentView;
   private final StatsEditModel model;
 
-  public EquipmentEditStatsPresenter(Resources resources, StatsEditModel model, EquipmentDetails view) {
+  public EquipmentEditStatsPresenter(Resources resources, StatsEditModel model, EquipmentDetails equipmentView) {
     this.resources = resources;
     this.model = model;
-    this.view = view;
+    this.equipmentView = equipmentView;
   }
 
   @Override
   public void initPresentation() {
     String title = resources.getString("Equipment.Creation.Stats");
-    final ToolListView<IEquipmentStats> statsListView = view.initStatsListView(title,
+    ToolListView<IEquipmentStats> statsListView = equipmentView.initStatsListView(title,
             new EquipmentStatsUIConfiguration(resources));
+    initListening(statsListView);
+    initButtons(statsListView);
+  }
+
+  private void initListening(final ToolListView<IEquipmentStats> view) {
     model.addStatsChangeListener(new IChangeListener() {
       @Override
       public void changeOccurred() {
-        updateStatListContent(statsListView);
+        updateStatListContent(view);
       }
     });
-    initButtons(statsListView);
+    view.addListSelectionListener(new Closure<IEquipmentStats>() {
+      @Override
+      public void execute(IEquipmentStats selected) {
+        model.selectStats(selected);
+      }
+    });
   }
 
   private void initButtons(ToolListView<IEquipmentStats> statsListView) {

@@ -23,7 +23,11 @@ public interface StatsEditModel {
 
   StatsEditor getStatsEditor();
 
-  void replaceStatistics(IEquipmentStats selectedStats, IEquipmentStats newStats);
+  void replaceSelectedStatistics(IEquipmentStats newStats);
 
   void removeStatistics(IEquipmentStats[] stats);
+
+  void selectStats(IEquipmentStats selected);
+
+  IEquipmentStats getSelectedStats();
 }

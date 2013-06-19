@@ -12,7 +12,8 @@ import java.util.List;
 
 public class WrappingStatsEditModel implements StatsEditModel {
 
-  private IEquipmentDatabaseManagement model;
+  private final IEquipmentDatabaseManagement model;
+  private IEquipmentStats selectedStats;
 
   public WrappingStatsEditModel(IEquipmentDatabaseManagement model) {
     this.model = model;
@@ -54,13 +55,23 @@ public class WrappingStatsEditModel implements StatsEditModel {
   }
 
   @Override
-  public void replaceStatistics(IEquipmentStats selectedStats, IEquipmentStats newStats) {
-    editModel().replaceStatistics(selectedStats, newStats);
+  public void replaceSelectedStatistics(IEquipmentStats newStats) {
+    editModel().replaceStatistics(this.selectedStats, newStats);
   }
 
   @Override
   public void removeStatistics(IEquipmentStats[] stats) {
     editModel().removeStatistics(stats);
+  }
+
+  @Override
+  public void selectStats(IEquipmentStats selected) {
+    this.selectedStats = selected;
+  }
+
+  @Override
+  public IEquipmentStats getSelectedStats() {
+    return selectedStats;
   }
 
   private IEquipmentTemplateEditModel editModel() {
