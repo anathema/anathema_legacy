@@ -23,7 +23,7 @@ public class UITableCell<T> extends ListCell<T> {
       return;
     }
     setText(configuration.getLabel(item));
-    if (FxUtilities.systemSupportsEmbeddedTooltips()) {
+    if (FxUtilities.systemSupportsPopUpsWhileEmbeddingFxIntoSwing()) {
       setTooltip(new Tooltip(configuration.getToolTipText(item)));
     }
     Image image = loadImageForItem(item);

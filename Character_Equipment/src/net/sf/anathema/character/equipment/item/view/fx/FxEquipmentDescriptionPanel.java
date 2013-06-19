@@ -12,15 +12,18 @@ import net.sf.anathema.character.equipment.item.view.EquipmentDescriptionPanel;
 import net.sf.anathema.lib.gui.AgnosticUIConfiguration;
 import net.sf.anathema.lib.gui.selection.IObjectSelectionView;
 import net.sf.anathema.lib.workflow.textualdescription.ITextView;
-import net.sf.anathema.platform.fx.ComboBoxSelectionView;
+import net.sf.anathema.platform.fx.FxObjectSelectionView;
 import net.sf.anathema.platform.fx.FxTextView;
+import net.sf.anathema.platform.fx.selection.SelectionViewFactory;
 import org.tbee.javafx.scene.layout.MigPane;
 
 public class FxEquipmentDescriptionPanel implements EquipmentDescriptionPanel {
 
+  private final SelectionViewFactory selectionViewFactory;
   private MigPane pane;
 
-  public FxEquipmentDescriptionPanel() {
+  public FxEquipmentDescriptionPanel(SelectionViewFactory selectionFactory) {
+    this.selectionViewFactory = selectionFactory;
     Platform.runLater(new Runnable() {
       @Override
       public void run() {
@@ -56,7 +59,7 @@ public class FxEquipmentDescriptionPanel implements EquipmentDescriptionPanel {
   @Override
   public IObjectSelectionView<MaterialComposition> addCompositionView(String label,
                                                                       AgnosticUIConfiguration<MaterialComposition> ui) {
-    final ComboBoxSelectionView<MaterialComposition> selectionView = new ComboBoxSelectionView<>(label, ui);
+    final FxObjectSelectionView<MaterialComposition> selectionView = selectionViewFactory.create(label, ui);
     Platform.runLater(new Runnable() {
       @Override
       public void run() {
@@ -69,7 +72,7 @@ public class FxEquipmentDescriptionPanel implements EquipmentDescriptionPanel {
   @Override
   public IObjectSelectionView<MagicalMaterial> addMaterialView(String label,
                                                                AgnosticUIConfiguration<MagicalMaterial> ui) {
-    final ComboBoxSelectionView<MagicalMaterial> selectionView = new ComboBoxSelectionView<>(label, ui);
+    final FxObjectSelectionView<MagicalMaterial> selectionView = selectionViewFactory.create(label, ui);
     Platform.runLater(new Runnable() {
       @Override
       public void run() {
@@ -81,7 +84,7 @@ public class FxEquipmentDescriptionPanel implements EquipmentDescriptionPanel {
 
   @Override
   public CostSelectionView addCostView(String label) {
-    final FxCostSelectionView costSelectionView = new FxCostSelectionView(label);
+    final FxCostSelectionView costSelectionView = new FxCostSelectionView(label, selectionViewFactory);
     Platform.runLater(new Runnable() {
       @Override
       public void run() {

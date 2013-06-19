@@ -37,7 +37,7 @@ public class EquipmentDatabasePresenter implements Presenter {
     new EquipmentTemplateListPresenter(resources, model, view).initPresentation();
     addEditTemplateActions();
     initBasicDetailsView();
-    new EquipmentEditStatsPresenter(resources, model, view).initPresentation();
+    new EquipmentEditStatsPresenter(resources, new WrappingStatsEditModel(model), view).initPresentation();
     model.getTemplateEditModel().setNewTemplate();
   }
 

@@ -11,6 +11,7 @@ import net.miginfocom.layout.CC;
 import net.sf.anathema.character.equipment.item.view.ToolListView;
 import net.sf.anathema.interaction.Tool;
 import net.sf.anathema.lib.gui.AgnosticUIConfiguration;
+import net.sf.anathema.lib.util.Closure;
 import net.sf.anathema.platform.fx.ConfigurableListCellFactory;
 import net.sf.anathema.platform.tool.FxButtonTool;
 import org.tbee.javafx.scene.layout.MigPane;
@@ -58,6 +59,17 @@ public class FxToolListView<T> implements ToolListView<T> {
       @Override
       public void changed(ObservableValue<? extends T> observableValue, T t, T t2) {
         listener.run();
+      }
+    });
+  }
+
+  @Override
+  public void addListSelectionListener(final Closure<T> listener) {
+    waitForContent();
+    list.getSelectionModel().selectedItemProperty().addListener(new ChangeListener<T>() {
+      @Override
+      public void changed(ObservableValue<? extends T> observableValue, T t, T newSelection) {
+        listener.execute(newSelection);
       }
     });
   }

@@ -11,15 +11,17 @@ import net.sf.anathema.character.generic.equipment.weapon.IEquipmentStats;
 import net.sf.anathema.lib.gui.AgnosticUIConfiguration;
 import net.sf.anathema.lib.gui.layout.LayoutUtils;
 import net.sf.anathema.platform.fx.BorderedTitledPane;
+import net.sf.anathema.platform.fx.selection.SelectionViewFactory;
 import org.tbee.javafx.scene.layout.MigPane;
 
 public class FxEquipmentDetails implements EquipmentDetails {
 
   private final FxToolListView<IEquipmentStats> listView = new FxToolListView<>();
-  private final FxEquipmentDescriptionPanel descriptionPanel = new FxEquipmentDescriptionPanel();
+  private final FxEquipmentDescriptionPanel descriptionPanel;
   private MigPane outerPane;
 
-  public FxEquipmentDetails() {
+  public FxEquipmentDetails(SelectionViewFactory selectionFactory) {
+    this.descriptionPanel = new FxEquipmentDescriptionPanel(selectionFactory);
     Platform.runLater(new Runnable() {
       @Override
       public void run() {

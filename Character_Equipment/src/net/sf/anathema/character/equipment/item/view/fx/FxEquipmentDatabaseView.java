@@ -1,20 +1,29 @@
 package net.sf.anathema.character.equipment.item.view.fx;
 
-import javafx.application.Platform;
 import net.sf.anathema.character.equipment.item.view.AgnosticEquipmentDatabaseView;
-import net.sf.anathema.platform.fx.FxThreading;
 import net.sf.anathema.platform.fx.PerspectivePane;
+import net.sf.anathema.platform.fx.selection.ComboBoxSelectionFactory;
+import net.sf.anathema.platform.fx.selection.PopUpLessSelectionFactory;
+import net.sf.anathema.platform.fx.selection.SelectionViewFactory;
+
+import static net.sf.anathema.platform.fx.FxThreading.runOnCorrectThread;
+import static net.sf.anathema.platform.fx.FxUtilities.systemSupportsPopUpsWhileEmbeddingFxIntoSwing;
 
 public class FxEquipmentDatabaseView {
 
   public final PerspectivePane perspectivePane = new PerspectivePane("skin/anathema/equipment.css");
-  private final FxEquipmentDetails details = new FxEquipmentDetails();
   private final FxEquipmentNavigation navigation = new FxEquipmentNavigation();
-  public final AgnosticEquipmentDatabaseView view = new AgnosticEquipmentDatabaseView(navigation, details);
+  private final FxEquipmentDetails details;
+  public final AgnosticEquipmentDatabaseView view;
 
   public FxEquipmentDatabaseView() {
-    FxThreading.assertNotOnFxThread();
-    Platform.runLater(new Runnable() {
+    this.details = new FxEquipmentDetails(selectionFactory());
+    this.view = new AgnosticEquipmentDatabaseView(navigation, details);
+    initializePerspective();
+  }
+
+  private void initializePerspective() {
+    runOnCorrectThread(new Runnable() {
       @Override
       public void run() {
         perspectivePane.addStyleSheetClass("equipment-perspective");
@@ -22,5 +31,13 @@ public class FxEquipmentDatabaseView {
         perspectivePane.setContentComponent(details.getNode());
       }
     });
+  }
+
+  private SelectionViewFactory selectionFactory() {
+    if (systemSupportsPopUpsWhileEmbeddingFxIntoSwing()) {
+      return new ComboBoxSelectionFactory();
+    } else {
+      return new PopUpLessSelectionFactory();
+    }
   }
 }
