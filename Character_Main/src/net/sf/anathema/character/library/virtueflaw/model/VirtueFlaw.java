@@ -7,7 +7,7 @@ import net.sf.anathema.character.library.trait.DefaultTraitType;
 import net.sf.anathema.character.library.trait.LimitedTrait;
 import net.sf.anathema.character.library.trait.Trait;
 import net.sf.anathema.character.library.trait.favorable.FriendlyIncrementChecker;
-import net.sf.anathema.character.main.hero.Hero;
+import net.sf.anathema.hero.model.Hero;
 import net.sf.anathema.lib.control.IChangeListener;
 import net.sf.anathema.lib.workflow.textualdescription.ITextualDescription;
 import net.sf.anathema.lib.workflow.textualdescription.model.SimpleTextualDescription;

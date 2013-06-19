@@ -6,7 +6,7 @@ import net.sf.anathema.character.generic.template.experience.CurrentRatingCosts;
 import net.sf.anathema.character.generic.template.experience.IExperiencePointCosts;
 import net.sf.anathema.character.library.trait.Trait;
 import net.sf.anathema.character.library.trait.experience.TraitRatingCostCalculator;
-import net.sf.anathema.character.main.hero.Hero;
+import net.sf.anathema.hero.model.Hero;
 import net.sf.anathema.character.main.model.traits.GenericTraitCollectionFacade;
 import net.sf.anathema.character.main.model.traits.TraitMap;
 

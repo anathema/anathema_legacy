@@ -1,6 +1,6 @@
 package net.sf.anathema.character.main.model.traits;
 
-import net.sf.anathema.character.change.ChangeFlavor;
+import net.sf.anathema.hero.change.ChangeFlavor;
 import net.sf.anathema.character.generic.traits.TraitType;
 
 public class TraitChangeFlavor extends ChangeFlavor {

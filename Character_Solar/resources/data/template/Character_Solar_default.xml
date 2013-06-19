@@ -29,6 +29,7 @@
         <model id="Charms"/>
         <model id="Combos"/>
         <model id="Spells"/>
+        <model id="Languages"/>
     </models>
     <creation>
         <bonusPointCosts uses="SolaroidDefaultBonusPointCost2nd.template"/>

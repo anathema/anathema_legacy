@@ -1,6 +1,5 @@
 package net.sf.anathema.character.generic.impl.magic;
 
-import net.sf.anathema.character.generic.IBasicCharacterData;
 import net.sf.anathema.character.generic.character.IGenericTraitCollection;
 import net.sf.anathema.character.generic.magic.IMagicVisitor;
 import net.sf.anathema.character.generic.magic.ISpell;
@@ -10,7 +9,7 @@ import net.sf.anathema.character.generic.magic.spells.CircleType;
 import net.sf.anathema.character.generic.rules.IExaltedSourceBook;
 import net.sf.anathema.character.generic.template.magic.FavoringTraitType;
 import net.sf.anathema.character.generic.traits.TraitType;
-import net.sf.anathema.character.main.hero.Hero;
+import net.sf.anathema.hero.model.Hero;
 import net.sf.anathema.lib.util.SimpleIdentifier;
 
 public class Spell extends SimpleIdentifier implements ISpell {

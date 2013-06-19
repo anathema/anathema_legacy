@@ -10,7 +10,7 @@ import net.sf.anathema.framework.IApplicationModel;
 import net.sf.anathema.initialization.reflections.Weight;
 import net.sf.anathema.lib.resources.Resources;
 
-import static net.sf.anathema.character.main.hero.CharacterModelGroup.Outline;
+import static net.sf.anathema.hero.display.HeroModelGroup.Outline;
 
 @RegisteredInitializer(Outline)
 @Weight(weight = 100)

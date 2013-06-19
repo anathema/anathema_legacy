@@ -1,8 +1,8 @@
 package net.sf.anathema.hero.charms.model;
 
 import com.google.common.base.Functions;
-import net.sf.anathema.character.change.ChangeAnnouncer;
-import net.sf.anathema.character.change.ChangeFlavor;
+import net.sf.anathema.hero.change.ChangeAnnouncer;
+import net.sf.anathema.hero.change.ChangeFlavor;
 import net.sf.anathema.character.generic.caste.CasteType;
 import net.sf.anathema.character.generic.character.IMagicCollection;
 import net.sf.anathema.character.generic.impl.magic.MartialArtsUtilities;
@@ -30,9 +30,9 @@ import net.sf.anathema.character.impl.model.charm.options.MartialArtsOptions;
 import net.sf.anathema.character.impl.model.charm.options.NonMartialArtsOptions;
 import net.sf.anathema.character.impl.model.charm.special.DefaultMartialArtsCharmConfiguration;
 import net.sf.anathema.character.impl.model.charm.special.SpecialCharmManager;
-import net.sf.anathema.character.main.hero.Hero;
-import net.sf.anathema.character.main.hero.InitializationContext;
-import net.sf.anathema.character.main.hero.change.FlavoredChangeListener;
+import net.sf.anathema.hero.model.Hero;
+import net.sf.anathema.hero.model.InitializationContext;
+import net.sf.anathema.hero.change.FlavoredChangeListener;
 import net.sf.anathema.character.main.model.charms.CharmsModel;
 import net.sf.anathema.character.main.model.concept.HeroConceptFetcher;
 import net.sf.anathema.character.main.model.essencepool.EssencePoolModelFetcher;

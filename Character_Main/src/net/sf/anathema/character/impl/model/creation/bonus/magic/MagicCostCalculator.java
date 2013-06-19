@@ -11,7 +11,7 @@ import net.sf.anathema.character.generic.template.magic.IMagicTemplate;
 import net.sf.anathema.character.impl.model.advance.CostAnalyzer;
 import net.sf.anathema.character.impl.model.creation.bonus.IAdditionalMagicLearnPointManagement;
 import net.sf.anathema.character.impl.model.creation.bonus.additional.IAdditionalBonusPointManagment;
-import net.sf.anathema.character.main.hero.Hero;
+import net.sf.anathema.hero.model.Hero;
 import net.sf.anathema.character.main.model.spells.SpellModel;
 import net.sf.anathema.character.main.model.charms.CharmsModel;
 import net.sf.anathema.character.model.charm.special.ISubeffectCharmConfiguration;

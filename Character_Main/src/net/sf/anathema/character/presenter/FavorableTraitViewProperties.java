@@ -4,7 +4,7 @@ import net.sf.anathema.character.generic.framework.resources.CharacterUI;
 import net.sf.anathema.character.generic.template.presentation.IPresentationProperties;
 import net.sf.anathema.character.library.intvalue.IIconToggleButtonProperties;
 import net.sf.anathema.character.library.trait.Trait;
-import net.sf.anathema.character.main.hero.Hero;
+import net.sf.anathema.hero.model.Hero;
 import net.sf.anathema.character.main.model.concept.HeroConceptFetcher;
 import net.sf.anathema.character.main.model.experience.ExperienceModelFetcher;
 import net.sf.anathema.lib.file.RelativePath;

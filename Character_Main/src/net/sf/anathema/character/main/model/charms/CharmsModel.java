@@ -5,7 +5,7 @@ import net.sf.anathema.character.generic.magic.charms.ICharmIdMap;
 import net.sf.anathema.character.generic.magic.charms.special.ISpecialCharm;
 import net.sf.anathema.character.generic.magic.charms.special.ISpecialCharmConfiguration;
 import net.sf.anathema.character.generic.type.ICharacterType;
-import net.sf.anathema.character.main.hero.HeroModel;
+import net.sf.anathema.hero.model.HeroModel;
 import net.sf.anathema.character.model.charm.IExtendedCharmLearnableArbitrator;
 import net.sf.anathema.character.model.charm.ILearningCharmGroup;
 import net.sf.anathema.character.model.charm.SpecialCharmLearnArbitrator;

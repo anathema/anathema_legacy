@@ -4,7 +4,7 @@ import com.google.common.base.Preconditions;
 import net.sf.anathema.character.generic.traits.ITraitTemplate;
 import net.sf.anathema.character.generic.traits.LowerableState;
 import net.sf.anathema.character.generic.traits.TraitType;
-import net.sf.anathema.character.main.hero.Hero;
+import net.sf.anathema.hero.model.Hero;
 import net.sf.anathema.lib.data.Range;
 
 public class TraitRules implements ITraitRules {

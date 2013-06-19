@@ -4,7 +4,7 @@ import net.sf.anathema.character.generic.additionalrules.IAdditionalTraitRules;
 import net.sf.anathema.character.generic.traits.TraitType;
 import net.sf.anathema.character.generic.traits.types.ValuedTraitType;
 import net.sf.anathema.character.library.trait.IValueChangeChecker;
-import net.sf.anathema.character.main.hero.Hero;
+import net.sf.anathema.hero.model.Hero;
 import net.sf.anathema.character.main.model.traits.TraitModelFetcher;
 
 public class AdditionRulesTraitValueChangeChecker implements IValueChangeChecker {

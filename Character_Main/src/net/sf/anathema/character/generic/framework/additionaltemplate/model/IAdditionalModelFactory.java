@@ -2,7 +2,7 @@ package net.sf.anathema.character.generic.framework.additionaltemplate.model;
 
 import net.sf.anathema.character.generic.additionaltemplate.IAdditionalModel;
 import net.sf.anathema.character.generic.template.additional.IAdditionalTemplate;
-import net.sf.anathema.character.main.hero.Hero;
+import net.sf.anathema.hero.model.Hero;
 
 public interface IAdditionalModelFactory {
 

@@ -3,7 +3,7 @@ package net.sf.anathema.character.generic.framework.xml.trait.caste;
 import net.sf.anathema.character.generic.caste.CasteType;
 import net.sf.anathema.character.generic.framework.xml.trait.IMinimumRestriction;
 import net.sf.anathema.character.generic.traits.TraitType;
-import net.sf.anathema.character.main.hero.Hero;
+import net.sf.anathema.hero.model.Hero;
 import net.sf.anathema.character.main.model.concept.HeroConceptFetcher;
 import net.sf.anathema.lib.lang.ReflectionEqualsObject;
 

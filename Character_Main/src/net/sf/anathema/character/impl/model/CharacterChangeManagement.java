@@ -1,8 +1,8 @@
 package net.sf.anathema.character.impl.model;
 
-import net.sf.anathema.character.change.ChangeFlavor;
-import net.sf.anathema.character.main.hero.Hero;
-import net.sf.anathema.character.main.hero.change.FlavoredChangeListener;
+import net.sf.anathema.hero.change.ChangeFlavor;
+import net.sf.anathema.hero.model.Hero;
+import net.sf.anathema.hero.change.FlavoredChangeListener;
 import net.sf.anathema.framework.repository.IChangeManagement;
 import net.sf.anathema.lib.control.IChangeListener;
 import org.jmock.example.announcer.Announcer;

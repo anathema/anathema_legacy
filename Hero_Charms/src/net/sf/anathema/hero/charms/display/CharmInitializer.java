@@ -18,7 +18,7 @@ import net.sf.anathema.initialization.reflections.Weight;
 import net.sf.anathema.lib.resources.Resources;
 import net.sf.anathema.platform.tree.document.visualizer.ITreePresentationProperties;
 
-import static net.sf.anathema.character.main.hero.CharacterModelGroup.Magic;
+import static net.sf.anathema.hero.display.HeroModelGroup.Magic;
 
 @RegisteredInitializer(Magic)
 @Weight(weight = 0)

@@ -1,11 +1,11 @@
 package net.sf.anathema.character.presenter.overview;
 
-import net.sf.anathema.character.change.ChangeFlavor;
+import net.sf.anathema.hero.change.ChangeFlavor;
 import net.sf.anathema.character.generic.caste.CasteType;
 import net.sf.anathema.character.generic.template.HeroTemplate;
 import net.sf.anathema.character.library.overview.IAdditionalAlotmentView;
 import net.sf.anathema.character.library.overview.IOverviewCategory;
-import net.sf.anathema.character.main.hero.change.FlavoredChangeListener;
+import net.sf.anathema.hero.change.FlavoredChangeListener;
 import net.sf.anathema.character.main.model.concept.HeroConceptFetcher;
 import net.sf.anathema.character.model.ICharacter;
 import net.sf.anathema.character.model.creation.IBonusPointManagement;

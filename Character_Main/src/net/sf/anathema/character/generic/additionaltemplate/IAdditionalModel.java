@@ -1,13 +1,13 @@
 package net.sf.anathema.character.generic.additionaltemplate;
 
-import net.sf.anathema.character.main.hero.CharacterModelGroup;
+import net.sf.anathema.hero.display.HeroModelGroup;
 import net.sf.anathema.lib.control.IChangeListener;
 
 public interface IAdditionalModel {
 
   String getTemplateId();
 
-  CharacterModelGroup getAdditionalModelType();
+  HeroModelGroup getAdditionalModelType();
 
   IAdditionalModelBonusPointCalculator getBonusPointCalculator();
 

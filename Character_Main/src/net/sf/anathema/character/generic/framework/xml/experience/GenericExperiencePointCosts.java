@@ -9,7 +9,7 @@ import net.sf.anathema.character.generic.magic.charms.MartialArtsLevel;
 import net.sf.anathema.character.generic.template.experience.CurrentRatingCosts;
 import net.sf.anathema.character.generic.template.experience.ICostAnalyzer;
 import net.sf.anathema.character.generic.template.experience.IExperiencePointCosts;
-import net.sf.anathema.character.main.hero.Hero;
+import net.sf.anathema.hero.model.Hero;
 import net.sf.anathema.lib.lang.clone.ReflectionCloneableObject;
 
 import java.util.HashMap;

@@ -8,8 +8,8 @@ import net.sf.anathema.character.intimacies.IIntimaciesAdditionalModel;
 import net.sf.anathema.character.intimacies.model.IIntimacy;
 import net.sf.anathema.character.intimacies.template.IntimaciesTemplate;
 import net.sf.anathema.character.library.removableentry.presenter.IRemovableEntryListener;
-import net.sf.anathema.character.main.hero.CharacterModelGroup;
-import net.sf.anathema.character.main.hero.change.FlavoredChangeListener;
+import net.sf.anathema.hero.display.HeroModelGroup;
+import net.sf.anathema.hero.change.FlavoredChangeListener;
 import net.sf.anathema.lib.control.IChangeListener;
 
 import java.util.ArrayList;
@@ -80,8 +80,8 @@ public class DemoIntimaciesModel implements IIntimaciesModel, IIntimaciesAdditio
   }
 
   @Override
-  public CharacterModelGroup getAdditionalModelType() {
-    return CharacterModelGroup.Outline;
+  public HeroModelGroup getAdditionalModelType() {
+    return HeroModelGroup.Outline;
   }
 
   @Override

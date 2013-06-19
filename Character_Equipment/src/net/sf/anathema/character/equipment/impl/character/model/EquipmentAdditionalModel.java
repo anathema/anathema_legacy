@@ -27,7 +27,7 @@ import net.sf.anathema.character.generic.framework.additionaltemplate.model.IGen
 import net.sf.anathema.character.generic.traits.types.AbilityType;
 import net.sf.anathema.character.generic.type.ICharacterType;
 import net.sf.anathema.character.library.trait.specialties.Specialty;
-import net.sf.anathema.character.main.hero.CharacterModelGroup;
+import net.sf.anathema.hero.display.HeroModelGroup;
 import net.sf.anathema.character.reporting.pdf.rendering.boxes.StatsModifierFactory;
 import net.sf.anathema.lib.control.IChangeListener;
 import net.sf.anathema.lib.control.ICollectionListener;
@@ -219,8 +219,8 @@ public class EquipmentAdditionalModel extends AbstractAdditionalModelAdapter imp
   }
 
   @Override
-  public CharacterModelGroup getAdditionalModelType() {
-    return CharacterModelGroup.Miscellaneous;
+  public HeroModelGroup getAdditionalModelType() {
+    return HeroModelGroup.Miscellaneous;
   }
 
   @Override

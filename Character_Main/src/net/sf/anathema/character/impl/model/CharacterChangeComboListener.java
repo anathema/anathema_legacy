@@ -1,7 +1,7 @@
 package net.sf.anathema.character.impl.model;
 
-import net.sf.anathema.character.change.ChangeAnnouncer;
-import net.sf.anathema.character.change.ChangeFlavor;
+import net.sf.anathema.hero.change.ChangeAnnouncer;
+import net.sf.anathema.hero.change.ChangeFlavor;
 import net.sf.anathema.character.model.charm.ICombo;
 import net.sf.anathema.character.model.charm.IComboConfigurationListener;
 

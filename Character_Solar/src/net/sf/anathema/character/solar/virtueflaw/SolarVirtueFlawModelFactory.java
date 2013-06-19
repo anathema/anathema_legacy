@@ -5,7 +5,7 @@ import net.sf.anathema.character.generic.framework.additionaltemplate.model.IAdd
 import net.sf.anathema.character.generic.framework.additionaltemplate.model.ICharacterModelContext;
 import net.sf.anathema.character.generic.template.additional.IAdditionalTemplate;
 import net.sf.anathema.character.library.virtueflaw.model.DescriptiveVirtueFlawModel;
-import net.sf.anathema.character.main.hero.Hero;
+import net.sf.anathema.hero.model.Hero;
 
 public class SolarVirtueFlawModelFactory implements IAdditionalModelFactory {
 

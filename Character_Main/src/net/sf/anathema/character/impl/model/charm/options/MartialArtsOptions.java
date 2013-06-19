@@ -11,7 +11,7 @@ import net.sf.anathema.character.generic.template.ITemplateType;
 import net.sf.anathema.character.generic.template.magic.ICharmTemplate;
 import net.sf.anathema.character.generic.template.magic.IMagicTemplate;
 import net.sf.anathema.character.generic.template.magic.MartialArtsRules;
-import net.sf.anathema.character.main.hero.Hero;
+import net.sf.anathema.hero.model.Hero;
 
 import static net.sf.anathema.character.generic.impl.magic.MartialArtsUtilities.isMartialArtsCharm;
 

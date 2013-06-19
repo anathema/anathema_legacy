@@ -1,7 +1,7 @@
 package net.sf.anathema.character.presenter;
 
-import net.sf.anathema.character.change.ChangeFlavor;
-import net.sf.anathema.character.main.hero.change.FlavoredChangeListener;
+import net.sf.anathema.hero.change.ChangeFlavor;
+import net.sf.anathema.hero.change.FlavoredChangeListener;
 import net.sf.anathema.character.main.model.experience.ExperienceChange;
 import net.sf.anathema.character.main.model.experience.ExperienceModelFetcher;
 import net.sf.anathema.character.model.ICharacter;

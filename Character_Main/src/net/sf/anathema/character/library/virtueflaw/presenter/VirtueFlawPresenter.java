@@ -1,13 +1,13 @@
 package net.sf.anathema.character.library.virtueflaw.presenter;
 
-import net.sf.anathema.character.change.ChangeFlavor;
+import net.sf.anathema.hero.change.ChangeFlavor;
 import net.sf.anathema.character.generic.traits.TraitType;
 import net.sf.anathema.character.generic.traits.types.VirtueType;
 import net.sf.anathema.character.library.trait.Trait;
 import net.sf.anathema.character.library.trait.presenter.TraitPresenter;
 import net.sf.anathema.character.library.virtueflaw.model.IVirtueFlaw;
-import net.sf.anathema.character.main.hero.Hero;
-import net.sf.anathema.character.main.hero.change.FlavoredChangeListener;
+import net.sf.anathema.hero.model.Hero;
+import net.sf.anathema.hero.change.FlavoredChangeListener;
 import net.sf.anathema.character.main.model.traits.TraitChangeFlavor;
 import net.sf.anathema.charmtree.presenter.SelectIdentifierConfiguration;
 import net.sf.anathema.framework.value.IIntValueView;

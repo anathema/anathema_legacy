@@ -7,7 +7,7 @@ import net.sf.anathema.character.generic.template.ITraitLimitation;
 import net.sf.anathema.character.generic.traits.ITraitTemplate;
 import net.sf.anathema.character.generic.traits.LowerableState;
 import net.sf.anathema.character.generic.traits.types.VirtueType;
-import net.sf.anathema.character.main.hero.Hero;
+import net.sf.anathema.hero.model.Hero;
 
 public class SimpleTraitTemplate extends AbstractTraitTemplate {
 

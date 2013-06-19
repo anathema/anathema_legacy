@@ -6,7 +6,7 @@ import net.sf.anathema.character.generic.template.magic.AbilityFavoringType;
 import net.sf.anathema.character.generic.traits.TraitType;
 import net.sf.anathema.character.generic.traits.groups.IIdentifiedTraitTypeGroup;
 import net.sf.anathema.character.generic.traits.types.AbilityType;
-import net.sf.anathema.character.main.hero.Hero;
+import net.sf.anathema.hero.model.Hero;
 import net.sf.anathema.character.reporting.pdf.content.traits.FavorableTraitContent;
 import net.sf.anathema.lib.resources.Resources;
 

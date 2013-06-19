@@ -3,7 +3,7 @@ package net.sf.anathema.character.library.trait.favorable;
 import net.sf.anathema.character.generic.caste.CasteType;
 import net.sf.anathema.character.library.ITraitFavorization;
 import net.sf.anathema.character.library.trait.Trait;
-import net.sf.anathema.character.main.hero.Hero;
+import net.sf.anathema.hero.model.Hero;
 import net.sf.anathema.character.main.model.concept.HeroConceptFetcher;
 import org.jmock.example.announcer.Announcer;
 

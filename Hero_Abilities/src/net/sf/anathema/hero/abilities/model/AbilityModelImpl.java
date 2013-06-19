@@ -1,6 +1,6 @@
 package net.sf.anathema.hero.abilities.model;
 
-import net.sf.anathema.character.change.ChangeAnnouncer;
+import net.sf.anathema.hero.change.ChangeAnnouncer;
 import net.sf.anathema.character.generic.caste.ICasteCollection;
 import net.sf.anathema.character.generic.template.HeroTemplate;
 import net.sf.anathema.character.generic.template.abilities.GroupedTraitType;
@@ -15,9 +15,9 @@ import net.sf.anathema.character.library.trait.Trait;
 import net.sf.anathema.character.library.trait.TraitGroup;
 import net.sf.anathema.character.library.trait.favorable.IncrementChecker;
 import net.sf.anathema.character.library.trait.specialties.SpecialtiesConfiguration;
-import net.sf.anathema.character.main.hero.Hero;
-import net.sf.anathema.character.main.hero.HeroModel;
-import net.sf.anathema.character.main.hero.InitializationContext;
+import net.sf.anathema.hero.model.Hero;
+import net.sf.anathema.hero.model.HeroModel;
+import net.sf.anathema.hero.model.InitializationContext;
 import net.sf.anathema.character.main.model.abilities.AbilityModel;
 import net.sf.anathema.character.main.model.traits.DefaultTraitMap;
 import net.sf.anathema.character.main.model.traits.MappedTraitGroup;

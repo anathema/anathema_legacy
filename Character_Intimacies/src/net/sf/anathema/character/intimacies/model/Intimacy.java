@@ -8,7 +8,7 @@ import net.sf.anathema.character.library.trait.DefaultTrait;
 import net.sf.anathema.character.library.trait.IValueChangeChecker;
 import net.sf.anathema.character.library.trait.Trait;
 import net.sf.anathema.character.library.trait.rules.TraitRules;
-import net.sf.anathema.character.main.hero.Hero;
+import net.sf.anathema.hero.model.Hero;
 import net.sf.anathema.lib.control.GlobalChangeAdapter;
 import net.sf.anathema.lib.control.IBooleanValueChangedListener;
 import net.sf.anathema.lib.control.IChangeListener;

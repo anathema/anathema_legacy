@@ -7,7 +7,7 @@ import net.sf.anathema.character.generic.magic.charms.special.ISpecialCharmLearn
 import net.sf.anathema.character.generic.traits.TraitType;
 import net.sf.anathema.character.library.trait.Trait;
 import net.sf.anathema.character.library.trait.favorable.IncrementChecker;
-import net.sf.anathema.character.main.hero.Hero;
+import net.sf.anathema.hero.model.Hero;
 import net.sf.anathema.character.main.model.health.IHealthLevelProvider;
 import net.sf.anathema.character.main.model.health.OxBodyTechniqueArbitrator;
 import net.sf.anathema.character.main.model.traits.TraitModel;

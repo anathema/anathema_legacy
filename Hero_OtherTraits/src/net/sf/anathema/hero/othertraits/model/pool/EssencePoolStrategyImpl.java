@@ -1,6 +1,6 @@
 package net.sf.anathema.hero.othertraits.model.pool;
 
-import net.sf.anathema.character.change.ChangeFlavor;
+import net.sf.anathema.hero.change.ChangeFlavor;
 import net.sf.anathema.character.generic.additionalrules.IAdditionalEssencePool;
 import net.sf.anathema.character.generic.additionalrules.IAdditionalRules;
 import net.sf.anathema.character.generic.character.IMagicCollection;
@@ -11,9 +11,9 @@ import net.sf.anathema.character.generic.template.essence.IEssenceTemplate;
 import net.sf.anathema.character.generic.traits.GenericTrait;
 import net.sf.anathema.character.generic.traits.types.OtherTraitType;
 import net.sf.anathema.character.generic.traits.types.VirtueType;
-import net.sf.anathema.character.main.hero.Hero;
-import net.sf.anathema.character.main.hero.InitializationContext;
-import net.sf.anathema.character.main.hero.change.FlavoredChangeListener;
+import net.sf.anathema.hero.model.Hero;
+import net.sf.anathema.hero.model.InitializationContext;
+import net.sf.anathema.hero.change.FlavoredChangeListener;
 import net.sf.anathema.character.main.model.essencepool.OverdrivePool;
 import net.sf.anathema.character.main.model.traits.TraitMap;
 import net.sf.anathema.lib.control.IChangeListener;

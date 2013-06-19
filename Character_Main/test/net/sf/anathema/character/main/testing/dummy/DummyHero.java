@@ -1,11 +1,11 @@
 package net.sf.anathema.character.main.testing.dummy;
 
-import net.sf.anathema.character.change.ChangeAnnouncer;
+import net.sf.anathema.hero.change.ChangeAnnouncer;
 import net.sf.anathema.character.generic.template.HeroTemplate;
 import net.sf.anathema.character.library.trait.Trait;
-import net.sf.anathema.character.main.hero.ChangeAnnouncerImpl;
-import net.sf.anathema.character.main.hero.Hero;
-import net.sf.anathema.character.main.hero.HeroModel;
+import net.sf.anathema.hero.change.ChangeAnnouncerImpl;
+import net.sf.anathema.hero.model.Hero;
+import net.sf.anathema.hero.model.HeroModel;
 import net.sf.anathema.character.main.testing.dummy.models.DummyTraitModel;
 import net.sf.anathema.character.main.testing.dummy.template.DummyHeroTemplate;
 import net.sf.anathema.lib.util.Identifier;

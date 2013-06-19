@@ -1,10 +1,9 @@
 package net.sf.anathema.character.generic.template.experience;
 
-import net.sf.anathema.character.generic.IBasicCharacterData;
 import net.sf.anathema.character.generic.character.IGenericTraitCollection;
 import net.sf.anathema.character.generic.magic.ICharm;
 import net.sf.anathema.character.generic.magic.ISpell;
-import net.sf.anathema.character.main.hero.Hero;
+import net.sf.anathema.hero.model.Hero;
 
 public interface IExperiencePointCosts {
 

@@ -1,6 +1,6 @@
 package net.sf.anathema.character.intimacies.presenter;
 
-import net.sf.anathema.character.change.ChangeFlavor;
+import net.sf.anathema.hero.change.ChangeFlavor;
 import net.sf.anathema.character.generic.additionaltemplate.IAdditionalModel;
 import net.sf.anathema.character.generic.additionaltemplate.IAdditionalModelBonusPointCalculator;
 import net.sf.anathema.character.intimacies.IntimaciesProperties;
@@ -10,8 +10,7 @@ import net.sf.anathema.character.library.overview.IOverviewCategory;
 import net.sf.anathema.character.library.removableentry.presenter.IRemovableEntryListener;
 import net.sf.anathema.character.library.selection.IStringSelectionView;
 import net.sf.anathema.character.library.trait.presenter.TraitPresenter;
-import net.sf.anathema.character.main.hero.Hero;
-import net.sf.anathema.character.main.hero.change.FlavoredChangeListener;
+import net.sf.anathema.hero.change.FlavoredChangeListener;
 import net.sf.anathema.character.main.model.experience.ExperienceChange;
 import net.sf.anathema.character.presenter.ExtensibleTraitView;
 import net.sf.anathema.framework.presenter.resources.BasicUi;

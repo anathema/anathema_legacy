@@ -1,6 +1,6 @@
 package net.sf.anathema.character.main.model.experience;
 
-import net.sf.anathema.character.change.ChangeFlavor;
+import net.sf.anathema.hero.change.ChangeFlavor;
 
 public interface ExperienceChange {
 

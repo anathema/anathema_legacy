@@ -8,7 +8,7 @@ import net.sf.anathema.character.library.trait.DefaultTraitType;
 import net.sf.anathema.character.library.trait.FriendlyValueChangeChecker;
 import net.sf.anathema.character.library.trait.rules.TraitRules;
 import net.sf.anathema.character.library.trait.subtrait.AbstractSubTraitContainer;
-import net.sf.anathema.character.main.hero.Hero;
+import net.sf.anathema.hero.model.Hero;
 
 public class DefaultSpecialty extends DefaultTrait implements Specialty {
 

@@ -1,7 +1,7 @@
 package net.sf.anathema.character.reporting.second.content.combat;
 
 import net.sf.anathema.character.generic.character.IGenericCharacter;
-import net.sf.anathema.character.main.hero.Hero;
+import net.sf.anathema.hero.model.Hero;
 import net.sf.anathema.character.reporting.pdf.content.RegisteredReportContent;
 import net.sf.anathema.character.reporting.pdf.content.ReportContentFactory;
 import net.sf.anathema.character.reporting.pdf.content.ReportSession;

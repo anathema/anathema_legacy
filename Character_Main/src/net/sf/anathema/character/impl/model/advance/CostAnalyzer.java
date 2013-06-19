@@ -1,6 +1,5 @@
 package net.sf.anathema.character.impl.model.advance;
 
-import net.sf.anathema.character.generic.IBasicCharacterData;
 import net.sf.anathema.character.generic.character.IGenericTraitCollection;
 import net.sf.anathema.character.generic.impl.magic.MartialArtsUtilities;
 import net.sf.anathema.character.generic.magic.ICharm;
@@ -8,7 +7,7 @@ import net.sf.anathema.character.generic.magic.IMagic;
 import net.sf.anathema.character.generic.magic.charms.MartialArtsLevel;
 import net.sf.anathema.character.generic.template.experience.ICostAnalyzer;
 import net.sf.anathema.character.generic.traits.types.AbilityType;
-import net.sf.anathema.character.main.hero.Hero;
+import net.sf.anathema.hero.model.Hero;
 
 public class CostAnalyzer implements ICostAnalyzer {
 

@@ -1,8 +1,8 @@
 package net.sf.anathema.character.main.model.initialization;
 
-import net.sf.anathema.character.main.hero.initialization.DummyFactoryCollector;
-import net.sf.anathema.character.main.hero.initialization.ModelFactoryCollector;
-import net.sf.anathema.character.main.hero.initialization.ModelFactoryMap;
+import net.sf.anathema.hero.initialization.DummyFactoryCollector;
+import net.sf.anathema.hero.initialization.ModelFactoryCollector;
+import net.sf.anathema.hero.initialization.ModelFactoryMap;
 import org.junit.Test;
 
 public class ModelFactoryMapTest {

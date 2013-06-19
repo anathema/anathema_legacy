@@ -1,7 +1,7 @@
 package net.sf.anathema.character.intimacies.model;
 
 import com.google.common.base.Strings;
-import net.sf.anathema.character.change.ChangeFlavor;
+import net.sf.anathema.hero.change.ChangeFlavor;
 import net.sf.anathema.character.generic.traits.GenericTrait;
 import net.sf.anathema.character.generic.traits.TraitType;
 import net.sf.anathema.character.generic.traits.types.OtherTraitType;
@@ -9,8 +9,8 @@ import net.sf.anathema.character.generic.traits.types.VirtueType;
 import net.sf.anathema.character.intimacies.presenter.IIntimaciesModel;
 import net.sf.anathema.character.library.removableentry.model.AbstractRemovableEntryModel;
 import net.sf.anathema.character.library.trait.Trait;
-import net.sf.anathema.character.main.hero.Hero;
-import net.sf.anathema.character.main.hero.change.FlavoredChangeListener;
+import net.sf.anathema.hero.model.Hero;
+import net.sf.anathema.hero.change.FlavoredChangeListener;
 import net.sf.anathema.character.main.model.experience.ExperienceModelFetcher;
 import net.sf.anathema.character.main.model.traits.TraitChangeFlavor;
 import net.sf.anathema.character.main.model.traits.TraitModelFetcher;

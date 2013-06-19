@@ -6,7 +6,7 @@ import net.sf.anathema.character.generic.template.abilities.GroupedTraitType;
 import net.sf.anathema.character.generic.traits.ITraitTemplate;
 import net.sf.anathema.character.generic.traits.TraitType;
 import net.sf.anathema.character.generic.traits.types.AttributeType;
-import net.sf.anathema.character.main.hero.Hero;
+import net.sf.anathema.hero.model.Hero;
 import net.sf.anathema.lib.util.Identifier;
 import net.sf.anathema.lib.util.SimpleIdentifier;
 

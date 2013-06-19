@@ -1,6 +1,6 @@
 package net.sf.anathema.character.presenter.initializers;
 
-import net.sf.anathema.character.main.hero.CharacterModelGroup;
+import net.sf.anathema.hero.display.HeroModelGroup;
 
 import java.lang.annotation.ElementType;
 import java.lang.annotation.Retention;
@@ -12,5 +12,5 @@ import java.lang.annotation.Target;
 /**All classes thus annotated must implement CharacterModelInitializer and have a constructor for ApplicationModel as its sole argument.*/
 public @interface RegisteredInitializer {
 
-  CharacterModelGroup value();
+  HeroModelGroup value();
 }

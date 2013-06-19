@@ -1,10 +1,10 @@
 package net.sf.anathema.hero.attributes.dummy;
 
-import net.sf.anathema.character.change.ChangeAnnouncer;
+import net.sf.anathema.hero.change.ChangeAnnouncer;
 import net.sf.anathema.character.generic.traits.groups.IIdentifiedTraitTypeGroup;
 import net.sf.anathema.character.library.trait.TraitGroup;
-import net.sf.anathema.character.main.hero.Hero;
-import net.sf.anathema.character.main.hero.InitializationContext;
+import net.sf.anathema.hero.model.Hero;
+import net.sf.anathema.hero.model.InitializationContext;
 import net.sf.anathema.character.main.model.attributes.AttributeModel;
 import net.sf.anathema.character.main.model.traits.DefaultTraitMap;
 import net.sf.anathema.lib.util.Identifier;

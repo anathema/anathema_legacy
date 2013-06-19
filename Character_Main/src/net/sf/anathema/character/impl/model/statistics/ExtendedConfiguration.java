@@ -4,8 +4,8 @@ import net.sf.anathema.character.generic.additionaltemplate.IAdditionalModel;
 import net.sf.anathema.character.generic.framework.additionaltemplate.model.IAdditionalModelFactory;
 import net.sf.anathema.character.generic.framework.additionaltemplate.model.ICharacterModelContext;
 import net.sf.anathema.character.generic.template.additional.IAdditionalTemplate;
-import net.sf.anathema.character.main.hero.CharacterModelGroup;
-import net.sf.anathema.character.main.hero.Hero;
+import net.sf.anathema.hero.display.HeroModelGroup;
+import net.sf.anathema.hero.model.Hero;
 import net.sf.anathema.character.model.IExtendedConfiguration;
 import net.sf.anathema.lib.control.IChangeListener;
 
@@ -38,7 +38,7 @@ public class ExtendedConfiguration implements IExtendedConfiguration {
   }
 
   @Override
-  public IAdditionalModel[] getAdditionalModels(CharacterModelGroup type) {
+  public IAdditionalModel[] getAdditionalModels(HeroModelGroup type) {
     List<IAdditionalModel> models = new ArrayList<>();
     for (IAdditionalModel model : additionalModels) {
       if (model.getAdditionalModelType() == type) {

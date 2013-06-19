@@ -1,12 +1,12 @@
 package net.sf.anathema.character.library.virtueflaw.model;
 
-import net.sf.anathema.character.change.ChangeFlavor;
+import net.sf.anathema.hero.display.HeroModelGroup;
+import net.sf.anathema.hero.change.ChangeFlavor;
 import net.sf.anathema.character.generic.additionaltemplate.AbstractAdditionalModelAdapter;
 import net.sf.anathema.character.generic.template.additional.IAdditionalTemplate;
 import net.sf.anathema.character.library.virtueflaw.presenter.IVirtueFlawModel;
-import net.sf.anathema.character.main.hero.CharacterModelGroup;
-import net.sf.anathema.character.main.hero.Hero;
-import net.sf.anathema.character.main.hero.change.FlavoredChangeListener;
+import net.sf.anathema.hero.model.Hero;
+import net.sf.anathema.hero.change.FlavoredChangeListener;
 import net.sf.anathema.character.main.model.experience.ExperienceChange;
 import net.sf.anathema.character.main.model.experience.ExperienceModelFetcher;
 import net.sf.anathema.lib.control.GlobalChangeAdapter;
@@ -41,8 +41,8 @@ public abstract class VirtueFlawModel extends AbstractAdditionalModelAdapter imp
   }
 
   @Override
-  public CharacterModelGroup getAdditionalModelType() {
-    return CharacterModelGroup.SpiritualTraits;
+  public HeroModelGroup getAdditionalModelType() {
+    return HeroModelGroup.SpiritualTraits;
   }
 
   @Override

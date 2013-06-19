@@ -2,7 +2,7 @@ package net.sf.anathema.hero.othertraits.sheet.essence.content;
 
 import net.sf.anathema.character.generic.character.IGenericCharacter;
 import net.sf.anathema.character.generic.traits.types.OtherTraitType;
-import net.sf.anathema.character.main.hero.Hero;
+import net.sf.anathema.hero.model.Hero;
 import net.sf.anathema.character.reporting.pdf.content.AbstractSubBoxContent;
 import net.sf.anathema.hero.othertraits.sheet.essence.content.pools.ComplexPoolRow;
 import net.sf.anathema.hero.othertraits.sheet.essence.content.pools.NullPoolRow;

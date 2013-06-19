@@ -4,7 +4,7 @@ import com.google.common.base.Preconditions;
 import net.sf.anathema.character.generic.template.ITraitLimitation;
 import net.sf.anathema.character.generic.traits.LowerableState;
 import net.sf.anathema.character.generic.traits.TraitType;
-import net.sf.anathema.character.main.hero.Hero;
+import net.sf.anathema.hero.model.Hero;
 import net.sf.anathema.lib.lang.clone.ReflectionCloneableObject;
 
 import java.util.ArrayList;

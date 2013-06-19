@@ -18,7 +18,7 @@ import net.sf.anathema.character.library.trait.specialties.DefaultTraitReference
 import net.sf.anathema.character.library.trait.specialties.SpecialtiesContainer;
 import net.sf.anathema.character.library.trait.specialties.Specialty;
 import net.sf.anathema.character.library.trait.subtrait.ISubTraitContainer;
-import net.sf.anathema.character.main.hero.Hero;
+import net.sf.anathema.hero.model.Hero;
 import net.sf.anathema.character.main.testing.dummy.DummyCasteType;
 import net.sf.anathema.character.main.testing.dummy.DummyHero;
 import net.sf.anathema.character.main.testing.dummy.models.DummyTraitModel;

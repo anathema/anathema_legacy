@@ -4,8 +4,7 @@ import net.sf.anathema.character.generic.framework.xml.essence.GenericEssenceTem
 import net.sf.anathema.character.generic.traits.types.OtherTraitType;
 import net.sf.anathema.character.generic.traits.types.VirtueType;
 import net.sf.anathema.character.impl.generic.GenericCharacter;
-import net.sf.anathema.character.main.hero.InitializationContext;
-import net.sf.anathema.character.main.hero.ModelInitializationContext;
+import net.sf.anathema.hero.model.InitializationContext;
 import net.sf.anathema.character.main.model.essencepool.EssencePoolModelFetcher;
 import net.sf.anathema.character.main.testing.dummy.DummyInitializationContext;
 import net.sf.anathema.character.main.testing.dummy.DummyHero;

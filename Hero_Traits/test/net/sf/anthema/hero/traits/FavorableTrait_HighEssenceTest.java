@@ -12,7 +12,7 @@ import net.sf.anathema.character.library.trait.DefaultTrait;
 import net.sf.anathema.character.library.trait.FriendlyValueChangeChecker;
 import net.sf.anathema.character.library.trait.favorable.IncrementChecker;
 import net.sf.anathema.character.library.trait.rules.FavorableTraitRules;
-import net.sf.anathema.character.main.hero.Hero;
+import net.sf.anathema.hero.model.Hero;
 import net.sf.anathema.character.main.testing.dummy.DummyCasteType;
 import net.sf.anathema.character.main.testing.dummy.DummyHero;
 import net.sf.anathema.character.main.testing.dummy.models.DummyTraitModel;

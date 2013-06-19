@@ -15,7 +15,7 @@ import net.sf.anathema.character.generic.magic.charms.special.ITraitCapModifying
 import net.sf.anathema.character.generic.magic.charms.special.IUpgradableCharm;
 import net.sf.anathema.character.impl.model.charm.CharmSpecialistImpl;
 import net.sf.anathema.character.impl.model.charm.ISpecialCharmManager;
-import net.sf.anathema.character.main.hero.Hero;
+import net.sf.anathema.hero.model.Hero;
 import net.sf.anathema.character.main.model.health.HealthModel;
 import net.sf.anathema.character.main.model.health.IPainToleranceProvider;
 import net.sf.anathema.character.model.charm.CharmLearnAdapter;

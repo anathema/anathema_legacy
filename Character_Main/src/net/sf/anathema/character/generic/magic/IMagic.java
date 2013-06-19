@@ -1,7 +1,7 @@
 package net.sf.anathema.character.generic.magic;
 
 import net.sf.anathema.character.generic.character.IGenericTraitCollection;
-import net.sf.anathema.character.main.hero.Hero;
+import net.sf.anathema.hero.model.Hero;
 
 public interface IMagic extends IMagicData {
 

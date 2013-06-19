@@ -1,7 +1,7 @@
 package net.sf.anathema.character.presenter.initializers;
 
 import net.sf.anathema.character.generic.framework.CharacterGenericsExtractor;
-import net.sf.anathema.character.main.hero.CharacterModelGroup;
+import net.sf.anathema.hero.display.HeroModelGroup;
 import net.sf.anathema.framework.IApplicationModel;
 import net.sf.anathema.initialization.ObjectFactory;
 
@@ -19,11 +19,11 @@ public class InitializerList {
     this.applicationModel = applicationModel;
   }
 
-  public List<CharacterModelInitializer> getInOrderFor(CharacterModelGroup group) {
+  public List<CharacterModelInitializer> getInOrderFor(HeroModelGroup group) {
     ArrayList<CharacterModelInitializer> initializerList = new ArrayList<>();
     Collection<CharacterModelInitializer> collection = objectFactory.instantiateOrdered(RegisteredInitializer.class, applicationModel);
     for (CharacterModelInitializer initializer : collection) {
-      CharacterModelGroup targetGroup = initializer.getClass().getAnnotation(RegisteredInitializer.class).value();
+      HeroModelGroup targetGroup = initializer.getClass().getAnnotation(RegisteredInitializer.class).value();
       if (targetGroup.equals(group)) {
         initializerList.add(initializer);
       }

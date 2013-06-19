@@ -1,7 +1,7 @@
 package net.sf.anathema.character.generic.impl.traits.limitation;
 
 import net.sf.anathema.character.generic.template.ITraitLimitation;
-import net.sf.anathema.character.main.hero.Hero;
+import net.sf.anathema.hero.model.Hero;
 import net.sf.anathema.character.main.model.concept.HeroConcept;
 import net.sf.anathema.character.main.model.concept.HeroConceptFetcher;
 import net.sf.anathema.lib.exception.UnreachableCodeReachedException;

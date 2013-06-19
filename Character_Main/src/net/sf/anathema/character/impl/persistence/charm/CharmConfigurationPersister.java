@@ -11,7 +11,7 @@ import net.sf.anathema.character.library.trait.DefaultTrait;
 import net.sf.anathema.character.library.trait.DefaultTraitType;
 import net.sf.anathema.character.library.trait.LimitedTrait;
 import net.sf.anathema.character.library.trait.persistence.TraitPersister;
-import net.sf.anathema.character.main.hero.Hero;
+import net.sf.anathema.hero.model.Hero;
 import net.sf.anathema.character.main.model.charms.CharmsModelFetcher;
 import net.sf.anathema.character.main.model.combos.CombosModel;
 import net.sf.anathema.character.main.model.combos.CombosModelFetcher;

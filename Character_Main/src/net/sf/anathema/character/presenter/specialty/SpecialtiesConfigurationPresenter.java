@@ -1,6 +1,6 @@
 package net.sf.anathema.character.presenter.specialty;
 
-import net.sf.anathema.character.change.ChangeFlavor;
+import net.sf.anathema.hero.change.ChangeFlavor;
 import net.sf.anathema.character.generic.framework.ITraitReference;
 import net.sf.anathema.character.generic.framework.resources.TraitInternationalizer;
 import net.sf.anathema.character.library.trait.presenter.TraitPresenter;
@@ -9,8 +9,8 @@ import net.sf.anathema.character.library.trait.specialties.ITraitReferencesChang
 import net.sf.anathema.character.library.trait.specialties.Specialty;
 import net.sf.anathema.character.library.trait.subtrait.ISpecialtyListener;
 import net.sf.anathema.character.library.trait.subtrait.ISubTraitContainer;
-import net.sf.anathema.character.main.hero.Hero;
-import net.sf.anathema.character.main.hero.change.FlavoredChangeListener;
+import net.sf.anathema.hero.model.Hero;
+import net.sf.anathema.hero.change.FlavoredChangeListener;
 import net.sf.anathema.character.main.model.experience.ExperienceChange;
 import net.sf.anathema.character.view.ISpecialtyView;
 import net.sf.anathema.framework.presenter.resources.BasicUi;

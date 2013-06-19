@@ -20,7 +20,7 @@ import net.sf.anathema.character.generic.traits.GenericTrait;
 import net.sf.anathema.character.generic.traits.TraitType;
 import net.sf.anathema.character.generic.traits.types.ValuedTraitType;
 import net.sf.anathema.character.generic.type.ICharacterType;
-import net.sf.anathema.character.main.hero.Hero;
+import net.sf.anathema.hero.model.Hero;
 import net.sf.anathema.lib.util.Identifier;
 import net.sf.anathema.lib.util.SimpleIdentifier;
 

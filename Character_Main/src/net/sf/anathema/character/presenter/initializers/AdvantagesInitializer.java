@@ -9,7 +9,7 @@ import net.sf.anathema.framework.IApplicationModel;
 import net.sf.anathema.initialization.reflections.Weight;
 import net.sf.anathema.lib.resources.Resources;
 
-import static net.sf.anathema.character.main.hero.CharacterModelGroup.SpiritualTraits;
+import static net.sf.anathema.hero.display.HeroModelGroup.SpiritualTraits;
 
 @RegisteredInitializer(SpiritualTraits)
 @Weight(weight = 0)

@@ -2,7 +2,7 @@ package net.sf.anathema.character.reporting.pdf.content;
 
 import net.sf.anathema.character.generic.character.IGenericCharacter;
 import net.sf.anathema.character.generic.character.IGenericDescription;
-import net.sf.anathema.character.main.hero.Hero;
+import net.sf.anathema.hero.model.Hero;
 
 import java.util.ArrayList;
 import java.util.List;

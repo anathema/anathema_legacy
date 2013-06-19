@@ -1,6 +1,6 @@
 package net.sf.anathema.character.impl.model;
 
-import net.sf.anathema.character.change.ChangeAnnouncer;
+import net.sf.anathema.hero.change.ChangeAnnouncer;
 import net.sf.anathema.character.generic.framework.ICharacterGenerics;
 import net.sf.anathema.character.generic.framework.additionaltemplate.model.IAdditionalModelFactory;
 import net.sf.anathema.character.generic.framework.additionaltemplate.model.ICharacterModelContext;
@@ -10,10 +10,10 @@ import net.sf.anathema.character.generic.template.additional.IGlobalAdditionalTe
 import net.sf.anathema.character.impl.generic.GenericCharacter;
 import net.sf.anathema.character.impl.model.context.CharacterModelContext;
 import net.sf.anathema.character.impl.model.statistics.ExtendedConfiguration;
-import net.sf.anathema.character.main.hero.DefaultHero;
-import net.sf.anathema.character.main.hero.HeroModel;
-import net.sf.anathema.character.main.hero.ModelInitializationContext;
-import net.sf.anathema.character.main.hero.initialization.HeroModelInitializer;
+import net.sf.anathema.hero.model.DefaultHero;
+import net.sf.anathema.hero.model.HeroModel;
+import net.sf.anathema.hero.model.ModelInitializationContext;
+import net.sf.anathema.hero.initialization.HeroModelInitializer;
 import net.sf.anathema.character.main.model.description.HeroDescription;
 import net.sf.anathema.character.main.model.description.HeroDescriptionFetcher;
 import net.sf.anathema.character.model.ICharacter;

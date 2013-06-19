@@ -1,6 +1,6 @@
 package net.sf.anathema.character.main.model.abilities;
 
-import net.sf.anathema.character.main.hero.Hero;
+import net.sf.anathema.hero.model.Hero;
 
 public class AbilityModelFetcher {
 

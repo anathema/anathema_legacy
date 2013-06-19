@@ -2,7 +2,7 @@ package net.sf.anathema.character.library.trait.rules;
 
 import net.sf.anathema.character.generic.traits.ITraitTemplate;
 import net.sf.anathema.character.generic.traits.TraitType;
-import net.sf.anathema.character.main.hero.Hero;
+import net.sf.anathema.hero.model.Hero;
 
 public class FavorableTraitRules extends TraitRules implements IFavorableTraitRules {
 

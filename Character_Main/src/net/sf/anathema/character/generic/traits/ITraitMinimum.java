@@ -1,6 +1,6 @@
 package net.sf.anathema.character.generic.traits;
 
-import net.sf.anathema.character.main.hero.Hero;
+import net.sf.anathema.hero.model.Hero;
 
 public interface ITraitMinimum {
 

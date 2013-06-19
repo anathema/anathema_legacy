@@ -9,7 +9,7 @@ import net.sf.anathema.framework.IApplicationModel;
 import net.sf.anathema.initialization.reflections.Weight;
 import net.sf.anathema.lib.resources.Resources;
 
-import static net.sf.anathema.character.main.hero.CharacterModelGroup.NaturalTraits;
+import static net.sf.anathema.hero.display.HeroModelGroup.NaturalTraits;
 
 @RegisteredInitializer(NaturalTraits)
 @Weight(weight = 100)

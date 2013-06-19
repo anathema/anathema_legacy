@@ -1,10 +1,10 @@
 package net.sf.anathema.character.presenter.magic.combo;
 
 import com.google.common.base.Strings;
-import net.sf.anathema.character.change.ChangeFlavor;
+import net.sf.anathema.hero.change.ChangeFlavor;
 import net.sf.anathema.character.generic.magic.ICharm;
-import net.sf.anathema.character.main.hero.Hero;
-import net.sf.anathema.character.main.hero.change.FlavoredChangeListener;
+import net.sf.anathema.hero.model.Hero;
+import net.sf.anathema.hero.change.FlavoredChangeListener;
 import net.sf.anathema.character.main.model.combos.CombosModel;
 import net.sf.anathema.character.main.model.concept.ConceptChange;
 import net.sf.anathema.character.model.charm.CharmLearnAdapter;

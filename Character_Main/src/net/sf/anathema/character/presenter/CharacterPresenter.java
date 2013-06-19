@@ -1,6 +1,6 @@
 package net.sf.anathema.character.presenter;
 
-import net.sf.anathema.character.main.hero.CharacterModelGroup;
+import net.sf.anathema.hero.display.HeroModelGroup;
 import net.sf.anathema.character.model.ICharacter;
 import net.sf.anathema.character.presenter.initializers.CharacterModelInitializer;
 import net.sf.anathema.character.presenter.initializers.InitializerList;
@@ -10,11 +10,11 @@ import net.sf.anathema.framework.IApplicationModel;
 import net.sf.anathema.lib.gui.Presenter;
 import net.sf.anathema.lib.resources.Resources;
 
-import static net.sf.anathema.character.main.hero.CharacterModelGroup.Magic;
-import static net.sf.anathema.character.main.hero.CharacterModelGroup.Miscellaneous;
-import static net.sf.anathema.character.main.hero.CharacterModelGroup.NaturalTraits;
-import static net.sf.anathema.character.main.hero.CharacterModelGroup.Outline;
-import static net.sf.anathema.character.main.hero.CharacterModelGroup.SpiritualTraits;
+import static net.sf.anathema.hero.display.HeroModelGroup.Magic;
+import static net.sf.anathema.hero.display.HeroModelGroup.Miscellaneous;
+import static net.sf.anathema.hero.display.HeroModelGroup.NaturalTraits;
+import static net.sf.anathema.hero.display.HeroModelGroup.Outline;
+import static net.sf.anathema.hero.display.HeroModelGroup.SpiritualTraits;
 
 public class CharacterPresenter implements Presenter {
 
@@ -39,7 +39,7 @@ public class CharacterPresenter implements Presenter {
     initializeSection("CardView.MiscellaneousConfiguration.Title", Miscellaneous);
   }
 
-  private void initializeSection(String titleKey, CharacterModelGroup group) {
+  private void initializeSection(String titleKey, HeroModelGroup group) {
     SectionView sectionView = prepareSection(titleKey);
     initializeGroup(group, sectionView);
     sectionView.finishInitialization();
@@ -50,7 +50,7 @@ public class CharacterPresenter implements Presenter {
     return characterView.addSection(sectionTitle);
   }
 
-  private void initializeGroup(CharacterModelGroup group, SectionView sectionView) {
+  private void initializeGroup(HeroModelGroup group, SectionView sectionView) {
     for (CharacterModelInitializer initializer : initializerList.getInOrderFor(group)) {
       initializer.initialize(sectionView, character, resources);
     }

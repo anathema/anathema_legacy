@@ -3,7 +3,7 @@ package net.sf.anathema.character.generic.impl.traits;
 import net.sf.anathema.character.generic.traits.ITraitTemplate;
 import net.sf.anathema.character.generic.traits.LowerableState;
 import net.sf.anathema.character.generic.traits.TraitType;
-import net.sf.anathema.character.main.hero.Hero;
+import net.sf.anathema.hero.model.Hero;
 
 public abstract class AbstractTraitTemplate implements ITraitTemplate {
   protected final LowerableState lowerable;

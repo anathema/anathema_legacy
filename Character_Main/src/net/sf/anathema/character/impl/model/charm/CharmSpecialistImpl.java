@@ -1,6 +1,6 @@
 package net.sf.anathema.character.impl.model.charm;
 
-import net.sf.anathema.character.main.hero.Hero;
+import net.sf.anathema.hero.model.Hero;
 import net.sf.anathema.character.main.model.experience.ExperienceModel;
 import net.sf.anathema.character.main.model.experience.ExperienceModelFetcher;
 import net.sf.anathema.character.main.model.health.HealthModel;

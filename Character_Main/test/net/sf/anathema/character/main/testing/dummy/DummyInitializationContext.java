@@ -5,7 +5,7 @@ import net.sf.anathema.character.generic.impl.magic.persistence.ISpellCache;
 import net.sf.anathema.character.generic.impl.template.magic.ICharmProvider;
 import net.sf.anathema.character.generic.template.ITemplateRegistry;
 import net.sf.anathema.character.generic.type.CharacterTypes;
-import net.sf.anathema.character.main.hero.InitializationContext;
+import net.sf.anathema.hero.model.InitializationContext;
 
 import java.util.List;
 

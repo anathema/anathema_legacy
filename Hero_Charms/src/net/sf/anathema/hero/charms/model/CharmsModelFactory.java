@@ -1,9 +1,9 @@
 package net.sf.anathema.hero.charms.model;
 
-import net.sf.anathema.character.main.hero.CharacterModelAutoCollector;
-import net.sf.anathema.character.main.hero.HeroModelFactory;
-import net.sf.anathema.character.main.hero.initialization.SimpleModelTreeEntry;
-import net.sf.anathema.character.main.hero.template.TemplateFactory;
+import net.sf.anathema.hero.model.HeroModelAutoCollector;
+import net.sf.anathema.hero.model.HeroModelFactory;
+import net.sf.anathema.hero.initialization.SimpleModelTreeEntry;
+import net.sf.anathema.hero.template.TemplateFactory;
 import net.sf.anathema.character.main.model.abilities.AbilityModel;
 import net.sf.anathema.character.main.model.attributes.AttributeModel;
 import net.sf.anathema.character.main.model.charms.CharmsModel;
@@ -13,7 +13,7 @@ import net.sf.anathema.character.main.model.health.HealthModel;
 import net.sf.anathema.character.main.model.othertraits.OtherTraitModel;
 import net.sf.anathema.character.main.model.traits.TraitModel;
 
-@CharacterModelAutoCollector
+@HeroModelAutoCollector
 public class CharmsModelFactory extends SimpleModelTreeEntry implements HeroModelFactory {
 
   public CharmsModelFactory() {
