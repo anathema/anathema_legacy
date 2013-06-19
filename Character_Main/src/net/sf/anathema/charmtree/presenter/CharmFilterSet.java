@@ -31,6 +31,7 @@ public class CharmFilterSet {
     }
   }
 
+  //TODO: (Swing->FX) Instantiates Swing Classes in Model
   public JComponent createFilterPanel(Resources resources) {
     JPanel panel = new JPanel(new MigLayout(new LC().wrapAfter(1).fill()));
     for (ICharmFilter filter : filterSet) {

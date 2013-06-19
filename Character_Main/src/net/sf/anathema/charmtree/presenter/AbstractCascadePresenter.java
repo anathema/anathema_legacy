@@ -182,11 +182,10 @@ public abstract class AbstractCascadePresenter implements ICascadeSelectionPrese
     this.charmGroups = charmGroups;
   }
 
-  //TODO: (Swing->FX) Instantiates a View in Presenter
   private class DefineCharmFilters implements Command {
     @Override
     public void execute() {
-      CharmFilterDefinitionView definitionView = new CharmFilterDefinitionView(resources, filterSet);
+      CharmFilterDefinitionView definitionView = view.startEditingFilters(resources, filterSet);
       definitionView.whenEditIsFinished(new FilterDefinitionListener() {
         @Override
         public void changeConfirmed() {

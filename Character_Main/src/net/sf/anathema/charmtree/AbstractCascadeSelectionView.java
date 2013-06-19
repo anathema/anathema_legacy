@@ -3,6 +3,9 @@ package net.sf.anathema.charmtree;
 import net.miginfocom.layout.CC;
 import net.miginfocom.swing.MigLayout;
 import net.sf.anathema.character.equipment.impl.character.view.AddToComponent;
+import net.sf.anathema.charmtree.presenter.CharmFilterDefinitionView;
+import net.sf.anathema.charmtree.presenter.CharmFilterSet;
+import net.sf.anathema.charmtree.presenter.SwingFilterDefinitionView;
 import net.sf.anathema.charmtree.view.CharmTreeRenderer;
 import net.sf.anathema.charmtree.view.ICascadeSelectionView;
 import net.sf.anathema.charmtree.view.ICharmGroupChangeListener;
@@ -13,6 +16,7 @@ import net.sf.anathema.lib.gui.AgnosticUIConfiguration;
 import net.sf.anathema.lib.gui.ui.ConfigurableListCellRenderer;
 import net.sf.anathema.lib.gui.widgets.ChangeableJComboBox;
 import net.sf.anathema.lib.gui.widgets.IChangeableJComboBox;
+import net.sf.anathema.lib.resources.Resources;
 import net.sf.anathema.lib.util.Identifier;
 import net.sf.anathema.platform.tree.document.GenericCascadeFactory;
 import net.sf.anathema.platform.tree.presenter.view.CascadeLoadedListener;
@@ -160,5 +164,10 @@ public abstract class AbstractCascadeSelectionView implements ICascadeSelectionV
         ToolTipManager.sharedInstance().setEnabled(true);
       }
     });
+  }
+
+  @Override
+  public CharmFilterDefinitionView startEditingFilters(Resources resources, CharmFilterSet filterSet) {
+    return new SwingFilterDefinitionView(resources, filterSet);
   }
 }
