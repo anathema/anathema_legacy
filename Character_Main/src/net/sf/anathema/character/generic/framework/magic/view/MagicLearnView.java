@@ -55,7 +55,8 @@ public class MagicLearnView implements IMagicLearnView {
     addSelectionListListener(new ListSelectionListener() {
       @Override
       public void valueChanged(ListSelectionEvent e) {
-        removeButton.setEnabled(properties.isRempveAllowed(learnedList));
+        List selectedValues = learnedList.getSelectedValuesList();
+        removeButton.setEnabled(properties.isRemoveAllowed(selectedValues));
       }
     });
   }

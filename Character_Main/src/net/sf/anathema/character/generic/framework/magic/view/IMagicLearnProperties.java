@@ -8,6 +8,7 @@ import net.sf.anathema.lib.util.Identifier;
 import javax.swing.JButton;
 import javax.swing.JList;
 import javax.swing.event.ListSelectionListener;
+import java.util.List;
 
 public interface IMagicLearnProperties {
 
@@ -27,6 +28,5 @@ public interface IMagicLearnProperties {
 
   LegalityCheck getLegalityCheck();
 
-  //Todo: (Swing->FX) Component
-  boolean isRempveAllowed(JList learnedList);
+  boolean isRemoveAllowed(List selectedObjects);
 }

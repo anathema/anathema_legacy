@@ -13,7 +13,7 @@ import net.sf.anathema.lib.gui.list.LegalityCheck;
 import net.sf.anathema.lib.resources.Resources;
 import net.sf.anathema.lib.util.Identifier;
 
-import javax.swing.JList;
+import java.util.List;
 
 public class SpellViewProperties extends AbstractMagicLearnProperties implements ISpellViewProperties {
 
@@ -65,10 +65,10 @@ public class SpellViewProperties extends AbstractMagicLearnProperties implements
   }
 
   @Override
-  public boolean isRempveAllowed(JList list) {
-    boolean enabled = !list.isSelectionEmpty();
+  public boolean isRemoveAllowed(List list) {
+    boolean enabled = !list.isEmpty();
     if (enabled && ExperienceModelFetcher.fetch(character).isExperienced()) {
-      for (Object spellObject : list.getSelectedValuesList()) {
+      for (Object spellObject : list) {
         ISpell spell = (ISpell) spellObject;
         if (spellConfiguration.isLearnedOnCreation(spell)) {
           enabled = false;

@@ -15,7 +15,7 @@ import net.sf.anathema.lib.gui.list.LegalityCheck;
 import net.sf.anathema.lib.resources.Resources;
 import net.sf.anathema.lib.util.Identifier;
 
-import javax.swing.JList;
+import java.util.List;
 
 public class ComboViewProperties extends AbstractMagicLearnProperties implements IComboViewProperties {
   private final CombosModel comboConfiguration;
@@ -48,8 +48,8 @@ public class ComboViewProperties extends AbstractMagicLearnProperties implements
   }
 
   @Override
-  public boolean isRempveAllowed(JList list) {
-    return !list.isSelectionEmpty() && list.getSelectedValue() != null;
+  public boolean isRemoveAllowed(List list) {
+    return !list.isEmpty();
   }
 
   @Override
