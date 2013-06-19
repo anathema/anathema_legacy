@@ -53,11 +53,6 @@ public class ListObjectSelectionView<V> implements IListObjectSelectionView<V> {
   }
 
   @Override
-  public void removeObjectSelectionChangedListener(ObjectValueListener<V> listener) {
-    throw new NotYetImplementedException();
-  }
-
-  @Override
   public void setObjects(V[] objects) {
     smartList.setObjects(objects);
   }

@@ -8,11 +8,9 @@ import jfxtras.labs.scene.control.ListSpinner;
 import net.sf.anathema.character.equipment.ItemCost;
 import net.sf.anathema.character.equipment.item.view.CostSelectionView;
 import net.sf.anathema.lib.control.ObjectValueListener;
-import net.sf.anathema.lib.control.ObjectValueListener;
 import net.sf.anathema.lib.gui.selection.ISelectionIntValueChangedListener;
 import net.sf.anathema.platform.fx.FxObjectSelectionView;
 import net.sf.anathema.platform.fx.selection.SelectionViewFactory;
-import net.sf.anathema.platform.fx.ComboBoxSelectionView;
 import org.jmock.example.announcer.Announcer;
 import org.tbee.javafx.scene.layout.MigPane;
 
