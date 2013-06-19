@@ -34,8 +34,8 @@ public class EquipmentCardDataProvider implements ICardDataProvider {
 
   @Override
   public ICardData[] getCards(ICharacter character, ICardReportResourceProvider resourceProvider) {
-    IEquipmentAdditionalModel model = (IEquipmentAdditionalModel) character.
-            getCharacterContext().getAdditionalModel(IEquipmentAdditionalModelTemplate.ID);
+    IEquipmentAdditionalModel model =
+            (IEquipmentAdditionalModel) character.getExtendedConfiguration().getAdditionalModel(IEquipmentAdditionalModelTemplate.ID);
     List<ICardData> data = new ArrayList<>();
     for (IEquipmentItem item : model.getEquipmentItems()) {
       String title = item.getTitle();
@@ -79,21 +79,18 @@ public class EquipmentCardDataProvider implements ICardDataProvider {
           if (artifactStats.getAttuneType() != ArtifactAttuneType.FullyAttuned) {
             continue;
           }
-          statsParagraph.add(new Phrase(resources.getString("Equipment.Stats.Short.AttuneCost").trim() + ": ",
-                  resourceProvider.getBoldFont()));
+          statsParagraph.add(new Phrase(resources.getString("Equipment.Stats.Short.AttuneCost").trim() + ": ", resourceProvider.getBoldFont()));
           statsParagraph.add(new Phrase(artifactStats.getAttuneCost() + "m", resourceProvider.getNormalFont()));
         } else {
           String statsString = stringBuilder.createString(item, stats);
           statsParagraph.add(new Phrase(stats.getId() + ": ", resourceProvider.getBoldFont()));
-          statsParagraph.add(
-                  new Phrase(statsString.substring(statsString.indexOf(':') + 2), resourceProvider.getNormalFont()));
+          statsParagraph.add(new Phrase(statsString.substring(statsString.indexOf(':') + 2), resourceProvider.getNormalFont()));
         }
 
         bodyText.add(statsParagraph);
       }
 
-      data.add(new EquipmentCardData(title, headerText, bodyText.toArray(new Phrase[bodyText.size()]),
-              resourceProvider.getNullIcon()));
+      data.add(new EquipmentCardData(title, headerText, bodyText.toArray(new Phrase[bodyText.size()]), resourceProvider.getNullIcon()));
     }
     return data.toArray(new ICardData[data.size()]);
   }
