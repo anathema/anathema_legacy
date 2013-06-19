@@ -1,7 +1,9 @@
 package net.sf.anathema.character.main.trait;
 
-import net.sf.anathema.character.generic.character.ILimitationContext;
 import net.sf.anathema.character.generic.impl.traits.limitation.AgeBasedLimitation;
+import net.sf.anathema.character.impl.model.IntegerDescription;
+import net.sf.anathema.character.main.model.concept.HeroConcept;
+import net.sf.anathema.character.main.testing.dummy.DummyHero;
 import org.junit.Test;
 
 import static org.hamcrest.CoreMatchers.is;
@@ -11,7 +13,7 @@ import static org.mockito.Mockito.when;
 
 public class AgeBasedLimitationTest {
 
-  private ILimitationContext context = mock(ILimitationContext.class);
+  private DummyHero hero = new DummyHero();
   private int absoluteLimit = 10;
   private AgeBasedLimitation limitation = new AgeBasedLimitation(absoluteLimit);
 
@@ -41,7 +43,10 @@ public class AgeBasedLimitationTest {
   }
 
   private void assertThatMaximumForAgeIs(int age, int value) {
-    when(context.getAge()).thenReturn(age);
-    assertThat(limitation.getCurrentMaximum(context, false), is(value));
+    HeroConcept concept = mock(HeroConcept.class);
+    when(concept.getId()).thenReturn(HeroConcept.ID);
+    when(concept.getAge()).thenReturn(new IntegerDescription(age));
+    hero.addModel(concept);
+    assertThat(limitation.getCurrentMaximum(hero, false), is(value));
   }
 }

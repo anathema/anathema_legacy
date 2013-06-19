@@ -8,8 +8,10 @@ import net.sf.anathema.character.generic.traits.groups.ITraitTypeGroup;
 import net.sf.anathema.character.generic.traits.groups.TraitTypeGroup;
 import net.sf.anathema.character.library.trait.Trait;
 import net.sf.anathema.character.library.trait.subtrait.ISubTraitContainer;
+import net.sf.anathema.character.main.hero.Hero;
 import net.sf.anathema.character.main.hero.InitializationContext;
-import net.sf.anathema.character.main.model.traits.TraitMap;
+import net.sf.anathema.character.main.model.experience.ExperienceModelFetcher;
+import net.sf.anathema.character.main.model.traits.TraitModelFetcher;
 import net.sf.anathema.lib.control.IChangeListener;
 import org.jmock.example.announcer.Announcer;
 
@@ -26,14 +28,16 @@ public class SpecialtiesConfiguration implements ISpecialtiesConfiguration {
   private final Map<ITraitReference, ISubTraitContainer> specialtiesByTrait = new HashMap<>();
   private final Announcer<IChangeListener> control = Announcer.to(IChangeListener.class);
   private final Announcer<ITraitReferencesChangeListener> traitControl = Announcer.to(ITraitReferencesChangeListener.class);
+  private Hero hero;
   private final InitializationContext context;
   private String currentName;
   private ITraitReference currentType;
 
-  public SpecialtiesConfiguration(TraitMap traitMap, ITraitTypeGroup[] groups, InitializationContext context) {
+  public SpecialtiesConfiguration(Hero hero, ITraitTypeGroup[] groups, InitializationContext context) {
+    this.hero = hero;
     this.context = context;
     TraitType[] traitTypes = TraitTypeGroup.getAllTraitTypes(groups);
-    for (Trait trait : traitMap.getTraits(traitTypes)) {
+    for (Trait trait : TraitModelFetcher.fetch(hero).getTraits(traitTypes)) {
       ITraitReference reference = new DefaultTraitReference(trait);
       SpecialtiesContainer container = addSpecialtiesContainer(reference);
       specialtiesByType.put(trait.getType(), container);
@@ -41,7 +45,7 @@ public class SpecialtiesConfiguration implements ISpecialtiesConfiguration {
   }
 
   private SpecialtiesContainer addSpecialtiesContainer(ITraitReference reference) {
-    SpecialtiesContainer specialtiesContainer = new SpecialtiesContainer(reference, context.getTraitContext());
+    SpecialtiesContainer specialtiesContainer = new SpecialtiesContainer(reference, hero);
     specialtiesByTrait.put(reference, specialtiesContainer);
     return specialtiesContainer;
   }
@@ -114,7 +118,7 @@ public class SpecialtiesConfiguration implements ISpecialtiesConfiguration {
 
   @Override
   public boolean isExperienced() {
-    return context.getBasicCharacterContext().isExperienced();
+    return ExperienceModelFetcher.fetch(hero).isExperienced();
   }
 
   @Override

@@ -4,8 +4,8 @@ import com.google.inject.Inject;
 import cucumber.api.java.en.Given;
 import cucumber.api.java.en.Then;
 import cucumber.api.java.en.When;
+import net.sf.anathema.character.generic.caste.CasteType;
 import net.sf.anathema.character.generic.caste.ICasteCollection;
-import net.sf.anathema.character.generic.caste.ICasteType;
 import net.sf.anathema.character.generic.impl.traits.TraitTypeUtils;
 import net.sf.anathema.character.generic.traits.TraitType;
 import net.sf.anathema.character.generic.traits.types.AbilityType;
@@ -38,7 +38,7 @@ public class CharacterChangeSteps {
   @When("^I set her Caste to (.*)$")
   public void I_set_her_Caste(String casteName) throws Throwable {
     ICasteCollection casteCollection = character.getCharacterTemplate().getCasteCollection();
-    ICasteType caste = casteCollection.getById(casteName);
+    CasteType caste = casteCollection.getById(casteName);
     character.getCharacterConcept().getCaste().setType(caste);
   }
 

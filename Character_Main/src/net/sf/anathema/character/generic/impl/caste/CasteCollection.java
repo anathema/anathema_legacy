@@ -1,29 +1,29 @@
 package net.sf.anathema.character.generic.impl.caste;
 
 import com.google.common.base.Functions;
+import net.sf.anathema.character.generic.caste.CasteType;
 import net.sf.anathema.character.generic.caste.ICasteCollection;
-import net.sf.anathema.character.generic.caste.ICasteType;
 import net.sf.anathema.character.generic.template.ITemplateType;
 
 import java.util.HashMap;
 import java.util.Map;
 
 public class CasteCollection implements ICasteCollection {
-  private final Map<ITemplateType, ICasteType[]> templateMap = new HashMap<>();
-  private final ICasteType[] allTypes;
+  private final Map<ITemplateType, CasteType[]> templateMap = new HashMap<>();
+  private final CasteType[] allTypes;
 
-  public CasteCollection(ICasteType[] allTypes, Map<ITemplateType, ICasteType[]> templateMap) {
+  public CasteCollection(CasteType[] allTypes, Map<ITemplateType, CasteType[]> templateMap) {
     this(allTypes);
     this.templateMap.putAll(templateMap);
   }
 
-  public CasteCollection(ICasteType[] allTypes) {
+  public CasteCollection(CasteType[] allTypes) {
     this.allTypes = allTypes;
   }
 
   @Override
-  public ICasteType getById(String casteTypeId) {
-    for (ICasteType type : allTypes) {
+  public CasteType getById(String casteTypeId) {
+    for (CasteType type : allTypes) {
       if (type.getId().equals(casteTypeId)) {
         return type;
       }
@@ -38,7 +38,7 @@ public class CasteCollection implements ICasteCollection {
 
   @Override
   public boolean containsCasteType(String casteTypeId) {
-    for (ICasteType type : allTypes) {
+    for (CasteType type : allTypes) {
       if (type.getId().equals(casteTypeId)) {
         return true;
       }
@@ -47,7 +47,7 @@ public class CasteCollection implements ICasteCollection {
   }
 
   @Override
-  public ICasteType[] getAllCasteTypes(ITemplateType template) {
+  public CasteType[] getAllCasteTypes(ITemplateType template) {
     return Functions.forMap(templateMap, allTypes).apply(template);
   }
 }

@@ -1,30 +1,30 @@
 package net.sf.anathema.character.library.trait.rules;
 
 import com.google.common.base.Preconditions;
-import net.sf.anathema.character.generic.character.ILimitationContext;
 import net.sf.anathema.character.generic.traits.ITraitTemplate;
 import net.sf.anathema.character.generic.traits.LowerableState;
 import net.sf.anathema.character.generic.traits.TraitType;
+import net.sf.anathema.character.main.hero.Hero;
 import net.sf.anathema.lib.data.Range;
 
 public class TraitRules implements ITraitRules {
   private int capModifier = 0;
   private final ITraitTemplate template;
-  private final ILimitationContext limitationContext;
   private final TraitType traitType;
   private Range modifiedCreationRange;
+  private Hero hero;
 
-  public TraitRules(TraitType traitType, ITraitTemplate template, ILimitationContext limitationContext) {
+  public TraitRules(TraitType traitType, ITraitTemplate template, Hero hero) {
     Preconditions.checkNotNull(traitType, "TemplateType must not be null.");
     Preconditions.checkNotNull(template, "Template must not be null.");
     this.traitType = traitType;
+    this.hero = hero;
     this.template = template;
-    this.limitationContext = limitationContext;
   }
 
   @Override
   public int getAbsoluteMaximumValue() {
-    return template.getLimitation().getAbsoluteLimit(limitationContext);
+    return template.getLimitation().getAbsoluteLimit(hero);
   }
 
   private int getCreationMaximumValue() {
@@ -36,20 +36,20 @@ public class TraitRules implements ITraitRules {
 
   @Override
   public int getCurrentMaximumValue(boolean modified) {
-    return template.getLimitation().getCurrentMaximum(limitationContext, modified) + (modified ? capModifier : 0);
+    return template.getLimitation().getCurrentMaximum(hero, modified) + (modified ? capModifier : 0);
   }
 
   @Override
   public int getAbsoluteMinimumValue() {
     if (modifiedCreationRange == null) {
-      return template.getMinimumValue(limitationContext);
+      return template.getMinimumValue(hero);
     }
     return modifiedCreationRange.getLowerBound();
   }
 
   @Override
   public int getCalculationMinValue() {
-    return template.getCalculationMinValue(limitationContext, traitType);
+    return template.getCalculationMinValue(hero, traitType);
   }
 
   @Override

@@ -2,25 +2,30 @@ package net.sf.anathema.character.intimacies.model;
 
 import com.google.common.base.Strings;
 import net.sf.anathema.character.generic.framework.additionaltemplate.listening.ConfigurableCharacterChangeListener;
-import net.sf.anathema.character.generic.framework.additionaltemplate.listening.ICharacterChangeListener;
 import net.sf.anathema.character.generic.framework.additionaltemplate.listening.VirtueChangeListener;
-import net.sf.anathema.character.generic.framework.additionaltemplate.model.ICharacterModelContext;
 import net.sf.anathema.character.generic.traits.GenericTrait;
+import net.sf.anathema.character.generic.traits.TraitType;
 import net.sf.anathema.character.generic.traits.types.OtherTraitType;
 import net.sf.anathema.character.generic.traits.types.VirtueType;
 import net.sf.anathema.character.intimacies.presenter.IIntimaciesModel;
 import net.sf.anathema.character.library.removableentry.model.AbstractRemovableEntryModel;
+import net.sf.anathema.character.library.trait.Trait;
+import net.sf.anathema.character.library.virtueflaw.model.ConfigurableFlavorChangeAdapter;
+import net.sf.anathema.character.main.hero.Hero;
+import net.sf.anathema.character.main.hero.change.FlavoredChangeListener;
+import net.sf.anathema.character.main.model.experience.ExperienceModelFetcher;
+import net.sf.anathema.character.main.model.traits.TraitModelFetcher;
 import net.sf.anathema.lib.control.IChangeListener;
 import org.jmock.example.announcer.Announcer;
 
 public class IntimaciesModel extends AbstractRemovableEntryModel<IIntimacy> implements IIntimaciesModel {
 
   private final Announcer<IChangeListener> changeControl = Announcer.to(IChangeListener.class);
-  private final ICharacterModelContext context;
   private String name;
+  private Hero hero;
 
-  public IntimaciesModel(ICharacterModelContext context) {
-    this.context = context;
+  public IntimaciesModel(Hero hero) {
+    this.hero = hero;
     VirtueChangeListener convictionListener = new VirtueChangeListener() {
       @Override
       public void configuredChangeOccured() {
@@ -39,14 +44,14 @@ public class IntimaciesModel extends AbstractRemovableEntryModel<IIntimacy> impl
       }
     };
     maximumListener.addTraitTypes(VirtueType.Compassion, OtherTraitType.Willpower);
-    context.getCharacterListening().addChangeListener(convictionListener);
-    context.getCharacterListening().addChangeListener(maximumListener);
+    hero.getChangeAnnouncer().addListener(new ConfigurableFlavorChangeAdapter(convictionListener));
+    hero.getChangeAnnouncer().addListener(new ConfigurableFlavorChangeAdapter(maximumListener));
   }
 
   @Override
   public int getFreeIntimacies() {
-    if (context.getAdditionalRules().isRevisedIntimacies()) {
-      return getCompassionValue() + context.getTraitCollection().getTrait(OtherTraitType.Willpower).getCurrentValue();
+    if (hero.getTemplate().getAdditionalRules().isRevisedIntimacies()) {
+      return getCompassionValue() + getTrait(OtherTraitType.Willpower).getCurrentValue();
     }
     else {
       return getCompassionValue();
@@ -54,7 +59,7 @@ public class IntimaciesModel extends AbstractRemovableEntryModel<IIntimacy> impl
   }
 
   protected int getCompassionValue() {
-    return context.getTraitCollection().getTrait(VirtueType.Compassion).getCurrentValue();
+    return getTrait(VirtueType.Compassion).getCurrentValue();
   }
 
   @Override
@@ -64,9 +69,14 @@ public class IntimaciesModel extends AbstractRemovableEntryModel<IIntimacy> impl
   }
 
   @Override
+  public void addChangeListener(FlavoredChangeListener listener) {
+    hero.getChangeAnnouncer().addListener(listener);
+  }
+
+  @Override
   protected IIntimacy createEntry() {
-    Intimacy intimacy = new Intimacy(name, getIntialValue(), getConviction(), context.getTraitContext());
-    intimacy.setComplete(!context.getBasicCharacterContext().isExperienced());
+    Intimacy intimacy = new Intimacy(hero, name, getInitialValue(), getConviction());
+    intimacy.setComplete(!isCharacterExperienced());
     intimacy.addChangeListener(new IChangeListener() {
       @Override
       public void changeOccurred() {
@@ -86,16 +96,20 @@ public class IntimaciesModel extends AbstractRemovableEntryModel<IIntimacy> impl
   }
 
   private GenericTrait getConviction() {
-    return context.getTraitCollection().getTrait(VirtueType.Conviction);
+    return getTrait(VirtueType.Conviction);
+  }
+
+  private Trait getTrait(TraitType traitType) {
+    return TraitModelFetcher.fetch(hero).getTrait(traitType);
   }
 
   @Override
   public int getIntimaciesLimit() {
-    return getCompassionValue() + context.getTraitCollection().getTrait(OtherTraitType.Willpower).getCurrentValue();
+    return getCompassionValue() + getTrait(OtherTraitType.Willpower).getCurrentValue();
   }
 
-  private Integer getIntialValue() {
-    if (context.getBasicCharacterContext().isExperienced()) {
+  private Integer getInitialValue() {
+    if (isCharacterExperienced()) {
       return 0;
     }
     return getConviction().getCurrentValue();
@@ -112,12 +126,8 @@ public class IntimaciesModel extends AbstractRemovableEntryModel<IIntimacy> impl
   }
 
   @Override
-  public void addCharacterChangeListener(ICharacterChangeListener listener) {
-    context.getCharacterListening().addChangeListener(listener);
+  public boolean isCharacterExperienced() {
+    return ExperienceModelFetcher.fetch(hero).isExperienced();
   }
 
-  @Override
-  public boolean isCharacterExperienced() {
-    return context.getBasicCharacterContext().isExperienced();
-  }
 }

@@ -2,7 +2,7 @@ package net.sf.anathema.character.impl.generic;
 
 import com.google.common.collect.Lists;
 import net.sf.anathema.character.generic.additionaltemplate.IAdditionalModel;
-import net.sf.anathema.character.generic.caste.ICasteType;
+import net.sf.anathema.character.generic.caste.CasteType;
 import net.sf.anathema.character.generic.character.IConcept;
 import net.sf.anathema.character.generic.character.IGenericCharacter;
 import net.sf.anathema.character.generic.character.IGenericDescription;
@@ -27,8 +27,8 @@ import net.sf.anathema.character.library.trait.specialties.Specialty;
 import net.sf.anathema.character.library.trait.subtrait.ISpecialtyListener;
 import net.sf.anathema.character.main.model.abilities.AbilityModelFetcher;
 import net.sf.anathema.character.main.model.attributes.AttributeModelFetcher;
-import net.sf.anathema.character.main.model.concept.CharacterConcept;
-import net.sf.anathema.character.main.model.concept.CharacterConceptFetcher;
+import net.sf.anathema.character.main.model.concept.HeroConcept;
+import net.sf.anathema.character.main.model.concept.HeroConceptFetcher;
 import net.sf.anathema.character.main.model.description.HeroDescriptionFetcher;
 import net.sf.anathema.character.main.model.essencepool.EssencePoolModelFetcher;
 import net.sf.anathema.character.main.model.experience.ExperienceModelFetcher;
@@ -133,9 +133,9 @@ public class GenericCharacter implements IGenericCharacter {
   }
 
   @Override
-  public ICasteType getCasteType() {
-    CharacterConcept characterConcept = CharacterConceptFetcher.fetch(character);
-    ITypedDescription<ICasteType> caste = characterConcept.getCaste();
+  public CasteType getCasteType() {
+    HeroConcept heroConcept = HeroConceptFetcher.fetch(character);
+    ITypedDescription<CasteType> caste = heroConcept.getCaste();
     return caste.getType();
   }
 
@@ -210,7 +210,7 @@ public class GenericCharacter implements IGenericCharacter {
 
   @Override
   public IConcept getConcept() {
-    return new GenericConcept(CharacterConceptFetcher.fetch(character));
+    return new GenericConcept(HeroConceptFetcher.fetch(character));
   }
 
   @Override
@@ -259,13 +259,8 @@ public class GenericCharacter implements IGenericCharacter {
   }
 
   @Override
-  public int getEssenceCap(boolean modified) {
-    return OtherTraitModelFetcher.fetch(character).getEssenceCap(modified);
-  }
-
-  @Override
   public int getAge() {
-    return CharacterConceptFetcher.fetch(character).getAge().getValue();
+    return HeroConceptFetcher.fetch(character).getAge().getValue();
   }
 
   @Override

@@ -1,12 +1,13 @@
 package net.sf.anathema.character.library.virtueflaw.model;
 
-import net.sf.anathema.character.generic.character.IGenericTraitCollection;
 import net.sf.anathema.character.generic.framework.additionaltemplate.listening.VirtueChangeListener;
-import net.sf.anathema.character.generic.framework.additionaltemplate.model.ICharacterModelContext;
 import net.sf.anathema.character.generic.template.additional.IAdditionalTemplate;
 import net.sf.anathema.character.generic.traits.TraitType;
 import net.sf.anathema.character.generic.traits.types.VirtueType;
 import net.sf.anathema.character.library.virtueflaw.presenter.IDescriptiveVirtueFlawModel;
+import net.sf.anathema.character.main.hero.Hero;
+import net.sf.anathema.character.main.model.traits.TraitModel;
+import net.sf.anathema.character.main.model.traits.TraitModelFetcher;
 import net.sf.anathema.lib.control.GlobalChangeAdapter;
 import net.sf.anathema.lib.control.IChangeListener;
 
@@ -16,17 +17,17 @@ import java.util.List;
 public class DescriptiveVirtueFlawModel extends VirtueFlawModel implements IDescriptiveVirtueFlawModel {
 
   private final IDescriptiveVirtueFlaw virtueFlaw;
-  private IGenericTraitCollection traitCollection;
+  private TraitModel traitModel;
 
-  public DescriptiveVirtueFlawModel(final ICharacterModelContext context, IAdditionalTemplate additionalTemplate) {
-    super(context, additionalTemplate);
-    this.traitCollection = context.getTraitCollection();
-    virtueFlaw = new DescriptiveVirtueFlaw(context);
+  public DescriptiveVirtueFlawModel(final Hero hero, IAdditionalTemplate additionalTemplate) {
+    super(hero, additionalTemplate);
+    this.traitModel = TraitModelFetcher.fetch(hero);
+    virtueFlaw = new DescriptiveVirtueFlaw(hero);
     addVirtueChangeListener(new VirtueChangeListener() {
       @Override
       public void configuredChangeOccured() {
         TraitType rootType = getVirtueFlaw().getRoot();
-        if (rootType != null && context.getTraitCollection().getTrait(rootType).getCurrentValue() < 3) {
+        if (rootType != null && traitModel.getTrait(rootType).getCurrentValue() < 3) {
           getVirtueFlaw().setRoot(null);
         }
       }
@@ -50,7 +51,7 @@ public class DescriptiveVirtueFlawModel extends VirtueFlawModel implements IDesc
   public TraitType[] getFlawVirtueTypes() {
     List<TraitType> flawVirtues = new ArrayList<>();
     for (VirtueType virtueType : VirtueType.values()) {
-      if (traitCollection.getTrait(virtueType).getCurrentValue() > 2) {
+      if (traitModel.getTrait(virtueType).getCurrentValue() > 2) {
         flawVirtues.add(virtueType);
       }
     }

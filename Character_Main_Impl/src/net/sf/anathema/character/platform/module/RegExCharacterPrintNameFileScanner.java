@@ -26,7 +26,7 @@ import java.util.Map;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-import static net.sf.anathema.character.generic.caste.ICasteType.NULL_CASTE_TYPE;
+import static net.sf.anathema.character.generic.caste.CasteType.NULL_CASTE_TYPE;
 import static net.sf.anathema.character.generic.impl.magic.ICharmXMLConstants.ATTRIB_TYPE;
 import static net.sf.anathema.character.impl.persistence.ICharacterXmlConstants.ATTRIB_SUB_TYPE;
 import static net.sf.anathema.character.impl.persistence.ICharacterXmlConstants.TAG_CASTE;

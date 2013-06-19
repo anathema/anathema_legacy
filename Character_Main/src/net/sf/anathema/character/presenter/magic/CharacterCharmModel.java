@@ -1,10 +1,10 @@
 package net.sf.anathema.character.presenter.magic;
 
-import net.sf.anathema.character.generic.caste.ICasteType;
+import net.sf.anathema.character.generic.caste.CasteType;
 import net.sf.anathema.character.generic.magic.ICharm;
 import net.sf.anathema.character.generic.magic.description.MagicDescriptionProvider;
 import net.sf.anathema.character.generic.template.magic.ICharmTemplate;
-import net.sf.anathema.character.main.model.concept.CharacterConceptFetcher;
+import net.sf.anathema.character.main.model.concept.HeroConceptFetcher;
 import net.sf.anathema.character.model.ICharacter;
 import net.sf.anathema.character.model.ITypedDescription;
 import net.sf.anathema.character.model.charm.CharmModel;
@@ -26,7 +26,7 @@ public class CharacterCharmModel {
   }
 
   public void addCasteChangeListener(IChangeListener listener) {
-    ITypedDescription<ICasteType> caste = getCaste();
+    ITypedDescription<CasteType> caste = getCaste();
     caste.addChangeListener(listener);
   }
 
@@ -34,8 +34,8 @@ public class CharacterCharmModel {
     return character.getCharms();
   }
 
-  private ITypedDescription<ICasteType> getCaste() {
-    return CharacterConceptFetcher.fetch(character).getCaste();
+  private ITypedDescription<CasteType> getCaste() {
+    return HeroConceptFetcher.fetch(character).getCaste();
   }
 
   public void toggleLearned(String charmId) {

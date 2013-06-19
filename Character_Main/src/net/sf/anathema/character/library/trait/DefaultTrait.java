@@ -1,11 +1,8 @@
 package net.sf.anathema.character.library.trait;
 
 import com.google.common.base.Preconditions;
-import net.sf.anathema.character.generic.IBasicCharacterData;
-import net.sf.anathema.character.generic.caste.ICasteType;
-import net.sf.anathema.character.generic.framework.additionaltemplate.listening.DedicatedCharacterChangeAdapter;
-import net.sf.anathema.character.generic.framework.additionaltemplate.model.ICharacterListening;
-import net.sf.anathema.character.generic.framework.additionaltemplate.model.TraitContext;
+import net.sf.anathema.character.change.ChangeFlavor;
+import net.sf.anathema.character.generic.caste.CasteType;
 import net.sf.anathema.character.generic.framework.additionaltemplate.model.TraitValueStrategy;
 import net.sf.anathema.character.generic.traits.TraitType;
 import net.sf.anathema.character.library.ITraitFavorization;
@@ -14,6 +11,11 @@ import net.sf.anathema.character.library.trait.favorable.NullTraitFavorization;
 import net.sf.anathema.character.library.trait.favorable.TraitFavorization;
 import net.sf.anathema.character.library.trait.rules.IFavorableTraitRules;
 import net.sf.anathema.character.library.trait.rules.ITraitRules;
+import net.sf.anathema.character.main.hero.Hero;
+import net.sf.anathema.character.main.hero.change.FlavoredChangeListener;
+import net.sf.anathema.character.main.model.concept.ConceptChange;
+import net.sf.anathema.character.main.model.traits.TraitModel;
+import net.sf.anathema.character.main.model.traits.TraitModelFetcher;
 import net.sf.anathema.lib.control.IChangeListener;
 import net.sf.anathema.lib.control.IIntValueChangedListener;
 import net.sf.anathema.lib.data.Range;
@@ -32,19 +34,20 @@ public class DefaultTrait implements Trait {
   private final Announcer<IIntValueChangedListener> currentValueControl = Announcer.to(IIntValueChangedListener.class);
   private final TraitValueStrategy valueStrategy;
 
-  public DefaultTrait(IFavorableTraitRules traitRules, ICasteType[] castes, TraitContext traitContext, IBasicCharacterData basicData,
-                      ICharacterListening listening, IValueChangeChecker valueChangeChecker, IncrementChecker favoredIncrementChecker) {
-    this(traitRules, valueChangeChecker, traitContext.getTraitValueStrategy());
-    this.traitFavorization = new TraitFavorization(basicData, castes, favoredIncrementChecker, this, traitRules.isRequiredFavored());
-    listening.addChangeListener(new ResetCurrentValueOnCasteChange());
-    listening.addChangeListener(new UpdateFavoredStateOnCasteChange());
+  public DefaultTrait(Hero hero, IFavorableTraitRules traitRules, CasteType[] castes, IValueChangeChecker valueChangeChecker,
+                      IncrementChecker favoredIncrementChecker) {
+    this(hero, traitRules, valueChangeChecker);
+    this.traitFavorization = new TraitFavorization(hero, castes, favoredIncrementChecker, this, traitRules.isRequiredFavored());
+    hero.getChangeAnnouncer().addListener(new ResetCurrentValueOnCasteChange());
+    hero.getChangeAnnouncer().addListener(new UpdateFavoredStateOnCasteChange());
     traitFavorization.updateFavorableStateToCaste();
   }
 
-  public DefaultTrait(ITraitRules traitRules, IValueChangeChecker checker, TraitValueStrategy valueStrategy) {
+  public DefaultTrait(Hero hero, ITraitRules traitRules, IValueChangeChecker checker) {
     Preconditions.checkNotNull(traitRules);
     this.traitRules = traitRules;
-    this.valueStrategy = valueStrategy;
+    TraitModel traits = TraitModelFetcher.fetch(hero);
+    this.valueStrategy = traits.getValueStrategy();
     this.traitFavorization = new NullTraitFavorization();
     this.checker = checker;
     this.creationValue = traitRules.getStartValue();
@@ -253,17 +256,23 @@ public class DefaultTrait implements Trait {
     return getType().getId().hashCode();
   }
 
-  public class ResetCurrentValueOnCasteChange extends DedicatedCharacterChangeAdapter {
+  public class ResetCurrentValueOnCasteChange implements FlavoredChangeListener {
+
     @Override
-    public void casteChanged() {
-      resetCurrentValue();
+    public void changeOccurred(ChangeFlavor flavor) {
+      if (flavor == ConceptChange.FLAVOR_CASTE) {
+        resetCurrentValue();
+      }
     }
   }
 
-  public class UpdateFavoredStateOnCasteChange extends DedicatedCharacterChangeAdapter {
+  public class UpdateFavoredStateOnCasteChange implements FlavoredChangeListener {
+
     @Override
-    public void casteChanged() {
-      traitFavorization.updateFavorableStateToCaste();
+    public void changeOccurred(ChangeFlavor flavor) {
+      if (flavor == ConceptChange.FLAVOR_CASTE) {
+        traitFavorization.updateFavorableStateToCaste();
+      }
     }
   }
 }

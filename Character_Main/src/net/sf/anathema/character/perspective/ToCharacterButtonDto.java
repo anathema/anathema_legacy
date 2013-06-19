@@ -9,7 +9,7 @@ import net.sf.anathema.lib.file.RelativePath;
 import net.sf.anathema.lib.resources.Resources;
 import net.sf.anathema.lib.util.Identifier;
 
-import static net.sf.anathema.character.generic.caste.ICasteType.NULL_CASTE_TYPE;
+import static net.sf.anathema.character.generic.caste.CasteType.NULL_CASTE_TYPE;
 import static net.sf.anathema.character.generic.impl.persistence.SecondEdition.SECOND_EDITION;
 
 public class ToCharacterButtonDto implements Function<DescriptiveFeatures, CharacterButtonDto> {

@@ -2,7 +2,7 @@ package net.sf.anathema.character.impl.model.charm;
 
 import com.google.common.base.Functions;
 import net.sf.anathema.character.change.ChangeFlavor;
-import net.sf.anathema.character.generic.caste.ICasteType;
+import net.sf.anathema.character.generic.caste.CasteType;
 import net.sf.anathema.character.generic.character.IMagicCollection;
 import net.sf.anathema.character.generic.framework.additionaltemplate.model.ICharacterModelContext;
 import net.sf.anathema.character.generic.impl.magic.MartialArtsUtilities;
@@ -28,7 +28,7 @@ import net.sf.anathema.character.impl.model.context.magic.ProxyCharmLearnStrateg
 import net.sf.anathema.character.main.hero.Hero;
 import net.sf.anathema.character.main.hero.InitializationContext;
 import net.sf.anathema.character.main.hero.change.FlavoredChangeListener;
-import net.sf.anathema.character.main.model.concept.CharacterConceptFetcher;
+import net.sf.anathema.character.main.model.concept.HeroConceptFetcher;
 import net.sf.anathema.character.main.model.essencepool.EssencePoolModelFetcher;
 import net.sf.anathema.character.main.model.experience.ExperienceModel;
 import net.sf.anathema.character.main.model.experience.ExperienceModelFetcher;
@@ -392,7 +392,7 @@ public class CharmModelImpl implements CharmModel {
   @Override
   public final boolean isLearnable(ICharm charm) {
     if (isAlienCharm(charm)) {
-      ICasteType casteType = CharacterConceptFetcher.fetch(hero).getCaste().getType();
+      CasteType casteType = HeroConceptFetcher.fetch(hero).getCaste().getType();
       if (!nonMartialArtsOptions.getNativeCharmTemplate().isAllowedAlienCharms(casteType)) {
         return false;
       }

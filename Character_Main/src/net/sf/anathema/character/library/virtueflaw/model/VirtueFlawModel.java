@@ -1,12 +1,15 @@
 package net.sf.anathema.character.library.virtueflaw.model;
 
+import net.sf.anathema.character.change.ChangeFlavor;
 import net.sf.anathema.character.generic.additionaltemplate.AbstractAdditionalModelAdapter;
-import net.sf.anathema.character.generic.framework.additionaltemplate.listening.DedicatedCharacterChangeAdapter;
 import net.sf.anathema.character.generic.framework.additionaltemplate.listening.VirtueChangeListener;
-import net.sf.anathema.character.generic.framework.additionaltemplate.model.ICharacterModelContext;
 import net.sf.anathema.character.generic.template.additional.IAdditionalTemplate;
 import net.sf.anathema.character.library.virtueflaw.presenter.IVirtueFlawModel;
 import net.sf.anathema.character.main.hero.CharacterModelGroup;
+import net.sf.anathema.character.main.hero.Hero;
+import net.sf.anathema.character.main.hero.change.FlavoredChangeListener;
+import net.sf.anathema.character.main.model.experience.ExperienceChange;
+import net.sf.anathema.character.main.model.experience.ExperienceModelFetcher;
 import net.sf.anathema.lib.control.GlobalChangeAdapter;
 import net.sf.anathema.lib.control.IBooleanValueChangedListener;
 import net.sf.anathema.lib.control.IChangeListener;
@@ -15,17 +18,17 @@ public abstract class VirtueFlawModel extends AbstractAdditionalModelAdapter imp
 
   private final String templateId;
   private final IVirtueFlaw virtueFlaw;
-  private final ICharacterModelContext context;
+  private final Hero hero;
 
-  public VirtueFlawModel(ICharacterModelContext context, IAdditionalTemplate additionalTemplate) {
-    this.context = context;
+  public VirtueFlawModel(Hero hero, IAdditionalTemplate additionalTemplate) {
+    this.hero = hero;
     this.templateId = additionalTemplate.getId();
-    virtueFlaw = new VirtueFlaw(context);
+    virtueFlaw = new VirtueFlaw(hero);
   }
 
   @Override
   public boolean isVirtueFlawChangable() {
-    return !getContext().getBasicCharacterContext().isExperienced();
+    return !ExperienceModelFetcher.fetch(hero).isExperienced();
   }
 
   @Override
@@ -52,21 +55,24 @@ public abstract class VirtueFlawModel extends AbstractAdditionalModelAdapter imp
   }
 
   @Override
-  public void addVirtueChangeListener(VirtueChangeListener listener) {
-    context.getCharacterListening().addChangeListener(listener);
+  public void addVirtueChangeListener(final VirtueChangeListener listener) {
+    hero.getChangeAnnouncer().addListener(new ConfigurableFlavorChangeAdapter(listener));
   }
 
-  protected ICharacterModelContext getContext() {
-    return context;
+  protected Hero getHero() {
+    return hero;
   }
 
   @Override
   public void addVirtueFlawChangableListener(final IBooleanValueChangedListener listener) {
-    getContext().getCharacterListening().addChangeListener(new DedicatedCharacterChangeAdapter() {
+    hero.getChangeAnnouncer().addListener(new FlavoredChangeListener() {
       @Override
-      public void experiencedChanged(boolean experienced) {
-        listener.valueChanged(isVirtueFlawChangable());
+      public void changeOccurred(ChangeFlavor flavor) {
+        if (flavor == ExperienceChange.FLAVOR_EXPERIENCE_STATE) {
+          listener.valueChanged(isVirtueFlawChangable());
+        }
       }
     });
   }
+
 }

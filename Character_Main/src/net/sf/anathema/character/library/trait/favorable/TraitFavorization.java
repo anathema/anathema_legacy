@@ -1,9 +1,10 @@
 package net.sf.anathema.character.library.trait.favorable;
 
-import net.sf.anathema.character.generic.IBasicCharacterData;
-import net.sf.anathema.character.generic.caste.ICasteType;
+import net.sf.anathema.character.generic.caste.CasteType;
 import net.sf.anathema.character.library.ITraitFavorization;
 import net.sf.anathema.character.library.trait.Trait;
+import net.sf.anathema.character.main.hero.Hero;
+import net.sf.anathema.character.main.model.concept.HeroConceptFetcher;
 import org.jmock.example.announcer.Announcer;
 
 public class TraitFavorization implements ITraitFavorization {
@@ -12,13 +13,12 @@ public class TraitFavorization implements ITraitFavorization {
   private final Announcer<IFavorableStateChangedListener> favorableStateControl = Announcer.to(IFavorableStateChangedListener.class);
   private final IncrementChecker favoredIncrementChecker;
   private final Trait trait;
-  private final ICasteType[] castes;
+  private final CasteType[] castes;
   private final boolean isRequiredFavored;
-  private final IBasicCharacterData basicData;
+  private final Hero hero;
 
-  public TraitFavorization(IBasicCharacterData basicData, ICasteType[] castes, IncrementChecker favoredIncrementChecker, Trait trait,
-                           boolean isRequiredFavored) {
-    this.basicData = basicData;
+  public TraitFavorization(Hero hero, CasteType[] castes, IncrementChecker favoredIncrementChecker, Trait trait, boolean isRequiredFavored) {
+    this.hero = hero;
     this.castes = castes;
     this.favoredIncrementChecker = favoredIncrementChecker;
     this.trait = trait;
@@ -53,7 +53,7 @@ public class TraitFavorization implements ITraitFavorization {
     final int minimalValue = getMinimalValue();
     if (trait.getCurrentValue() < minimalValue) {
       trait.setCurrentValue(minimalValue);
-     }
+    }
   }
 
   @Override
@@ -106,19 +106,19 @@ public class TraitFavorization implements ITraitFavorization {
   }
 
   @Override
-  public ICasteType[] getCastes() {
+  public CasteType[] getCastes() {
     return castes;
   }
 
   @Override
   public void updateFavorableStateToCaste() {
-    ICasteType casteType = basicData.getCasteType();
+    CasteType casteType = HeroConceptFetcher.fetch(hero).getCaste().getType();
     setCaste(isSupportedCasteType(casteType));
   }
 
-  private boolean isSupportedCasteType(ICasteType casteType) {
-    ICasteType[] favorizationCaste = getCastes();
-    for (ICasteType caste : favorizationCaste) {
+  private boolean isSupportedCasteType(CasteType casteType) {
+    CasteType[] favorizationCaste = getCastes();
+    for (CasteType caste : favorizationCaste) {
       if (caste == casteType) {
         return true;
       }

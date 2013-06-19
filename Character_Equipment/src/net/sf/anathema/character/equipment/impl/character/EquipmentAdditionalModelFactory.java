@@ -14,6 +14,7 @@ import net.sf.anathema.character.generic.framework.additionaltemplate.model.IAdd
 import net.sf.anathema.character.generic.framework.additionaltemplate.model.ICharacterModelContext;
 import net.sf.anathema.character.generic.template.additional.IAdditionalTemplate;
 import net.sf.anathema.character.generic.type.ICharacterType;
+import net.sf.anathema.character.main.hero.Hero;
 
 public class EquipmentAdditionalModelFactory implements IAdditionalModelFactory {
 
@@ -26,7 +27,7 @@ public class EquipmentAdditionalModelFactory implements IAdditionalModelFactory 
   }
 
   @Override
-  public IAdditionalModel createModel(IAdditionalTemplate additionalTemplate, ICharacterModelContext context) {
+  public IAdditionalModel createModel(IAdditionalTemplate additionalTemplate, ICharacterModelContext context, Hero hero) {
     IEquipmentAdditionalModelTemplate template = (IEquipmentAdditionalModelTemplate) additionalTemplate;
     IBasicCharacterData basicCharacterContext = context.getBasicCharacterContext();
     ICharacterType characterType = basicCharacterContext.getCharacterType();

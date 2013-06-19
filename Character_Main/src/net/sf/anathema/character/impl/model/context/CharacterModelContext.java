@@ -11,16 +11,12 @@ import net.sf.anathema.character.generic.character.IMagicCollection;
 import net.sf.anathema.character.generic.framework.additionaltemplate.model.ICharacterModelContext;
 import net.sf.anathema.character.generic.framework.additionaltemplate.model.ICharmContext;
 import net.sf.anathema.character.generic.framework.additionaltemplate.model.IGenericSpecialtyContext;
-import net.sf.anathema.character.generic.framework.additionaltemplate.model.TraitValueStrategy;
 import net.sf.anathema.character.generic.framework.additionaltemplate.model.TraitContext;
 import net.sf.anathema.character.generic.template.magic.IGenericCharmConfiguration;
 import net.sf.anathema.character.generic.template.presentation.IPresentationProperties;
 import net.sf.anathema.character.impl.model.context.magic.CreationSpellLearnStrategy;
 import net.sf.anathema.character.impl.model.context.magic.ExperiencedSpellLearnStrategy;
 import net.sf.anathema.character.impl.model.context.magic.ProxySpellLearnStrategy;
-import net.sf.anathema.character.impl.model.context.trait.CreationTraitValueStrategy;
-import net.sf.anathema.character.impl.model.context.trait.ExperiencedTraitValueStrategy;
-import net.sf.anathema.character.impl.model.context.trait.ProxyTraitValueStrategy;
 import net.sf.anathema.character.main.hero.change.FlavoredChangeListener;
 import net.sf.anathema.character.main.model.experience.ExperienceChange;
 import net.sf.anathema.character.main.model.experience.ExperienceModelFetcher;
@@ -31,7 +27,6 @@ import java.util.List;
 
 public class CharacterModelContext implements ICharacterModelContext, ICharmContext, TraitContext {
 
-  private final ProxyTraitValueStrategy traitValueStrategy = new ProxyTraitValueStrategy(new CreationTraitValueStrategy());
   private final ProxySpellLearnStrategy spellLearnStrategy = new ProxySpellLearnStrategy(new CreationSpellLearnStrategy());
   private final IGenericCharacter character;
   private ICharacter hero;
@@ -59,21 +54,14 @@ public class CharacterModelContext implements ICharacterModelContext, ICharmCont
     return character.getAdditionalModel(id);
   }
 
-  @Override
-  public TraitValueStrategy getTraitValueStrategy() {
-    return traitValueStrategy;
-  }
-
   public ISpellLearnStrategy getSpellLearnStrategy() {
     return spellLearnStrategy;
   }
 
   private void updateLearnStrategies(boolean experienced) {
     if (experienced) {
-      traitValueStrategy.setStrategy(new ExperiencedTraitValueStrategy());
       spellLearnStrategy.setStrategy(new ExperiencedSpellLearnStrategy());
     } else {
-      traitValueStrategy.setStrategy(new CreationTraitValueStrategy());
       spellLearnStrategy.setStrategy(new CreationSpellLearnStrategy());
     }
   }

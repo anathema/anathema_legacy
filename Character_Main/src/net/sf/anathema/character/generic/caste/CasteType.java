@@ -1,8 +1,8 @@
 package net.sf.anathema.character.generic.caste;
 
-public interface ICasteType extends ITypedDescriptionType {
+public interface CasteType extends ITypedDescriptionType {
 
-  ICasteType NULL_CASTE_TYPE = new ICasteType() {
+  CasteType NULL_CASTE_TYPE = new CasteType() {
     @Override
     public String getId() {
       return null;

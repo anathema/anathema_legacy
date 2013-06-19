@@ -1,21 +1,23 @@
-package net.sf.anathema.character.main.testing.dummy.trait;
+package net.sf.anathema.hero.attributes.dummy;
 
 import net.sf.anathema.character.change.ChangeAnnouncer;
-import net.sf.anathema.character.library.trait.Trait;
+import net.sf.anathema.character.generic.traits.groups.IIdentifiedTraitTypeGroup;
+import net.sf.anathema.character.library.trait.TraitGroup;
 import net.sf.anathema.character.main.hero.Hero;
-import net.sf.anathema.character.main.hero.HeroModel;
 import net.sf.anathema.character.main.hero.InitializationContext;
+import net.sf.anathema.character.main.model.attributes.AttributeModel;
 import net.sf.anathema.character.main.model.traits.DefaultTraitMap;
-import net.sf.anathema.character.main.model.traits.TraitModel;
-import net.sf.anathema.lib.exception.NotYetImplementedException;
 import net.sf.anathema.lib.util.Identifier;
 
-import java.util.Iterator;
-
-public class DummyTraitModel extends DefaultTraitMap implements TraitModel, HeroModel {
+public class DummyAttributeModel extends DefaultTraitMap implements AttributeModel {
   @Override
-  public Iterator<Trait> iterator() {
-    throw new NotYetImplementedException();
+  public TraitGroup[] getTraitGroups() {
+    return new TraitGroup[0];
+  }
+
+  @Override
+  public IIdentifiedTraitTypeGroup[] getAttributeTypeGroups() {
+    return new IIdentifiedTraitTypeGroup[0];
   }
 
   @Override

@@ -1,6 +1,6 @@
 package net.sf.anathema.character.generic.traits.groups;
 
-import net.sf.anathema.character.generic.caste.ICasteType;
+import net.sf.anathema.character.generic.caste.CasteType;
 import net.sf.anathema.character.generic.traits.TraitType;
 import net.sf.anathema.character.generic.traits.types.AttributeGroupType;
 import net.sf.anathema.character.generic.traits.types.AttributeType;
@@ -20,7 +20,7 @@ public class IdentifiedAttributeTypeGroup extends TraitTypeGroup implements IIde
   }
 
   @Override
-  public ICasteType[] getTraitCasteTypes(TraitType type) {
-    return new ICasteType[0];
+  public CasteType[] getTraitCasteTypes(TraitType type) {
+    return new CasteType[0];
   }
 }

@@ -109,15 +109,14 @@ public class SpecialCharmManager implements ISpecialCharmManager {
   }
 
   private void registerMultiLearnableCharm(IMultiLearnableCharm visitedCharm, ICharm charm, ILearningCharmGroup group) {
-    MultiLearnableCharmConfiguration configuration = new MultiLearnableCharmConfiguration(specialist, context, charmModel, charm, visitedCharm, arbitrator);
+    MultiLearnableCharmConfiguration configuration = new MultiLearnableCharmConfiguration(hero, charmModel, charm, visitedCharm, arbitrator);
     addSpecialCharmConfiguration(charm, group, configuration, true, true);
   }
 
   private void registerOxBodyTechnique(IOxBodyTechniqueCharm visited, ICharm charm, ILearningCharmGroup group) {
     HealthModel health = specialist.getHealth();
     OxBodyTechniqueConfiguration oxBodyTechniqueConfiguration =
-            new OxBodyTechniqueConfiguration(context.getTraitContext(), specialist, charm, visited.getRelevantTraits(),
-                    health.getOxBodyLearnArbitrator(), visited);
+            new OxBodyTechniqueConfiguration(hero, charm, visited.getRelevantTraits(), health.getOxBodyLearnArbitrator(), visited);
     addSpecialCharmConfiguration(charm, group, oxBodyTechniqueConfiguration, true, true);
     health.getOxBodyLearnArbitrator().addOxBodyTechniqueConfiguration(oxBodyTechniqueConfiguration);
     health.addHealthLevelProvider(oxBodyTechniqueConfiguration.getHealthLevelProvider());

@@ -2,6 +2,7 @@ package net.sf.anathema.hero.othertraits.sheet.essence.content;
 
 import net.sf.anathema.character.generic.character.IGenericCharacter;
 import net.sf.anathema.character.generic.traits.types.OtherTraitType;
+import net.sf.anathema.character.main.hero.Hero;
 import net.sf.anathema.character.reporting.pdf.content.AbstractSubBoxContent;
 import net.sf.anathema.hero.othertraits.sheet.essence.content.pools.ComplexPoolRow;
 import net.sf.anathema.hero.othertraits.sheet.essence.content.pools.NullPoolRow;
@@ -22,10 +23,12 @@ import java.util.List;
 public class ExtendedEssenceContent extends AbstractSubBoxContent {
 
   private IGenericCharacter character;
+  private Hero hero;
 
-  public ExtendedEssenceContent(Resources resources, IGenericCharacter character) {
+  public ExtendedEssenceContent(Resources resources, IGenericCharacter character, Hero hero) {
     super(resources);
     this.character = character;
+    this.hero = hero;
   }
 
   public List<PoolRow> getPoolRows() {
@@ -110,6 +113,6 @@ public class ExtendedEssenceContent extends AbstractSubBoxContent {
   }
 
   public int getEssenceMax() {
-    return character.getEssenceLimitation().getAbsoluteLimit(character);
+    return character.getEssenceLimitation().getAbsoluteLimit(hero);
   }
 }

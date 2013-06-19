@@ -1,6 +1,6 @@
 package net.sf.anathema.character.perspective.model;
 
-import net.sf.anathema.character.main.model.concept.CharacterConceptFetcher;
+import net.sf.anathema.character.main.model.concept.HeroConceptFetcher;
 import net.sf.anathema.character.model.ICharacter;
 import net.sf.anathema.character.perspective.DescriptiveFeatures;
 import net.sf.anathema.character.perspective.LoadedDescriptiveFeatures;
@@ -42,7 +42,7 @@ public class CharacterItemModel {
       }
     });
     ICharacter character = (ICharacter) item.getItemData();
-    CharacterConceptFetcher.fetch(character).getCaste().addChangeListener(new AnnouncingChangeListener());
+    HeroConceptFetcher.fetch(character).getCaste().addChangeListener(new AnnouncingChangeListener());
     item.addDirtyListener(new AnnouncingChangeListener());
   }
 

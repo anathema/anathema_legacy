@@ -2,16 +2,19 @@ package net.sf.anathema.hero.othertraits.sheet.essence.content;
 
 import net.sf.anathema.character.generic.character.IGenericCharacter;
 import net.sf.anathema.character.generic.traits.types.OtherTraitType;
+import net.sf.anathema.character.main.hero.Hero;
 import net.sf.anathema.character.reporting.pdf.content.AbstractSubBoxContent;
 import net.sf.anathema.lib.resources.Resources;
 
 public class SimpleEssenceContent extends AbstractSubBoxContent {
 
   private IGenericCharacter character;
+  private Hero hero;
 
-  public SimpleEssenceContent(Resources resources, IGenericCharacter character) {
+  public SimpleEssenceContent(Resources resources, IGenericCharacter character, Hero hero) {
     super(resources);
     this.character = character;
+    this.hero = hero;
   }
 
   @Override
@@ -29,7 +32,7 @@ public class SimpleEssenceContent extends AbstractSubBoxContent {
   }
 
   public int getEssenceMax() {
-    return character.getEssenceLimitation().getAbsoluteLimit(character);
+    return character.getEssenceLimitation().getAbsoluteLimit(hero);
   }
 
   public int getNumberOfPoolLines() {

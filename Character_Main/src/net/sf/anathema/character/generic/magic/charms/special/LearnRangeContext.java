@@ -4,14 +4,14 @@ import net.sf.anathema.character.generic.character.GenericTraitProvider;
 import net.sf.anathema.character.generic.magic.ICharm;
 import net.sf.anathema.character.generic.traits.GenericTrait;
 import net.sf.anathema.character.generic.traits.TraitType;
+import net.sf.anathema.character.main.model.traits.TraitMap;
 
 public class LearnRangeContext implements GenericTraitProvider {
-  private final GenericTraitProvider traitCollection;
+  private final TraitMap traitCollection;
   private final TraitRequirementChecker requirementChecker;
   private final ICharm charm;
 
-  public LearnRangeContext(GenericTraitProvider traitCollection, TraitRequirementChecker requirementChecker,
-                           ICharm charm) {
+  public LearnRangeContext(TraitMap traitCollection, TraitRequirementChecker requirementChecker, ICharm charm) {
     this.traitCollection = traitCollection;
     this.requirementChecker = requirementChecker;
     this.charm = charm;

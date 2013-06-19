@@ -5,17 +5,22 @@ import net.sf.anathema.character.generic.magic.ISpell;
 import net.sf.anathema.character.generic.template.creation.BonusPointCosts;
 import net.sf.anathema.character.generic.traits.types.AbilityType;
 import net.sf.anathema.character.impl.model.context.BasicCharacterContext;
+import net.sf.anathema.character.impl.model.context.trait.CreationTraitValueStrategy;
 import net.sf.anathema.character.impl.model.creation.bonus.magic.MagicCostCalculator;
 import net.sf.anathema.character.library.trait.favorable.FavorableState;
+import net.sf.anathema.character.main.model.traits.GenericTraitCollectionFacade;
+import net.sf.anathema.character.main.model.traits.TraitModel;
+import net.sf.anathema.character.main.model.traits.TraitModelFetcher;
+import net.sf.anathema.character.main.testing.BasicCharacterTestCase;
 import net.sf.anathema.character.main.testing.dummy.DummyAdditionalBonusPointManagment;
 import net.sf.anathema.character.main.testing.dummy.DummyAdditionalSpellPointManagement;
 import net.sf.anathema.character.main.testing.dummy.DummyGenericCharacter;
+import net.sf.anathema.character.main.testing.dummy.DummyHero;
 import net.sf.anathema.character.main.testing.dummy.magic.DummyCharmModel;
 import net.sf.anathema.character.main.testing.dummy.magic.DummySpell;
 import net.sf.anathema.character.main.testing.dummy.magic.DummySpellConfiguration;
+import net.sf.anathema.character.main.testing.dummy.models.DummyTraitModel;
 import net.sf.anathema.character.main.testing.dummy.template.DummyHeroTemplate;
-import net.sf.anathema.character.main.testing.dummy.trait.DummyCoreTraitConfiguration;
-import net.sf.anathema.character.main.model.traits.GenericTraitCollectionFacade;
 import net.sf.anathema.character.model.ISpellConfiguration;
 import org.junit.Before;
 import org.junit.Test;
@@ -26,19 +31,20 @@ public class CharmCostCalculatorTest extends AbstractBonusPointTestCase {
 
   private MagicCostCalculator calculator;
   private ISpellConfiguration spells;
-  private DummyCoreTraitConfiguration traitConfiguration;
+  private TraitModel traitModel;
 
   @Before
   public void setUp() throws Exception {
     DummyCharmModel charms = new DummyCharmModel();
     spells = new DummySpellConfiguration();
-    traitConfiguration = new DummyCoreTraitConfiguration();
-    addAbilityAndEssence(traitConfiguration);
+    DummyHero hero = new BasicCharacterTestCase().createModelContextWithEssence2(new CreationTraitValueStrategy());
+    traitModel = TraitModelFetcher.fetch(hero);
+    addAbilityAndEssence(traitModel, hero);
     BonusPointCosts cost = new DefaultBonusPointCosts();
     DummyGenericCharacter genericCharacter = new DummyGenericCharacter(new DummyHeroTemplate());
     calculator = new MagicCostCalculator(genericCharacter.getTemplate().getMagicTemplate(), charms, spells, 2, 3, cost,
             new DummyAdditionalBonusPointManagment(), new DummyAdditionalSpellPointManagement(), new BasicCharacterContext(genericCharacter),
-            new GenericTraitCollectionFacade(traitConfiguration));
+            new GenericTraitCollectionFacade(traitModel));
   }
 
   @Test
@@ -71,7 +77,7 @@ public class CharmCostCalculatorTest extends AbstractBonusPointTestCase {
   }
 
   private void setOccultFavored() {
-    traitConfiguration.getTrait(AbilityType.Occult).getFavorization().setFavorableState(FavorableState.Favored);
+    traitModel.getTrait(AbilityType.Occult).getFavorization().setFavorableState(FavorableState.Favored);
   }
 
   @Test

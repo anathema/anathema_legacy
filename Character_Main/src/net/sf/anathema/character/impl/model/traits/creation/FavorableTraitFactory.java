@@ -1,11 +1,7 @@
 package net.sf.anathema.character.impl.model.traits.creation;
 
-import net.sf.anathema.character.generic.IBasicCharacterData;
 import net.sf.anathema.character.generic.additionalrules.IAdditionalTraitRules;
-import net.sf.anathema.character.generic.caste.ICasteType;
-import net.sf.anathema.character.generic.character.ILimitationContext;
-import net.sf.anathema.character.generic.framework.additionaltemplate.model.ICharacterListening;
-import net.sf.anathema.character.generic.framework.additionaltemplate.model.TraitContext;
+import net.sf.anathema.character.generic.caste.CasteType;
 import net.sf.anathema.character.generic.traits.ITraitTemplate;
 import net.sf.anathema.character.generic.traits.TraitType;
 import net.sf.anathema.character.generic.traits.groups.IIdentifiedCasteTraitTypeGroup;
@@ -14,43 +10,36 @@ import net.sf.anathema.character.library.trait.IValueChangeChecker;
 import net.sf.anathema.character.library.trait.Trait;
 import net.sf.anathema.character.library.trait.favorable.IncrementChecker;
 import net.sf.anathema.character.library.trait.rules.FavorableTraitRules;
+import net.sf.anathema.character.main.hero.Hero;
 
 import java.util.ArrayList;
 import java.util.List;
 
 public class FavorableTraitFactory {
 
-  private final IBasicCharacterData basicCharacterData;
-  private final ICharacterListening characterListening;
-  private final TraitContext traitContext;
+  private Hero hero;
   private final IAdditionalTraitRules additionalRules;
 
-  public FavorableTraitFactory(TraitContext traitContext, IAdditionalTraitRules additionalRules, IBasicCharacterData basicCharacterData,
-                               ICharacterListening characterListening) {
-    this.traitContext = traitContext;
-    this.additionalRules = additionalRules;
-    this.basicCharacterData = basicCharacterData;
-    this.characterListening = characterListening;
+  public FavorableTraitFactory(Hero hero) {
+    this.hero = hero;
+    this.additionalRules = hero.getTemplate().getAdditionalRules().getAdditionalTraitRules();
   }
 
-  public Trait[] createTraits(IIdentifiedCasteTraitTypeGroup group, IncrementChecker favoredIncrementChecker,
-                                        TypedTraitTemplateFactory factory) {
+  public Trait[] createTraits(IIdentifiedCasteTraitTypeGroup group, IncrementChecker favoredIncrementChecker, TypedTraitTemplateFactory factory) {
     List<Trait> newTraits = new ArrayList<>();
     for (TraitType type : group.getAllGroupTypes()) {
-      ICasteType[] casteTypes = group.getTraitCasteTypes(type);
+      CasteType[] casteTypes = group.getTraitCasteTypes(type);
       Trait trait = createTrait(type, casteTypes, favoredIncrementChecker, factory);
       newTraits.add(trait);
     }
     return newTraits.toArray(new Trait[newTraits.size()]);
   }
 
-  private Trait createTrait(TraitType traitType, ICasteType[] casteTypes, IncrementChecker favoredIncrementChecker,
-                                      TypedTraitTemplateFactory factory) {
+  private Trait createTrait(TraitType traitType, CasteType[] casteTypes, IncrementChecker favoredIncrementChecker,
+                            TypedTraitTemplateFactory factory) {
     ITraitTemplate traitTemplate = factory.create(traitType);
-    ILimitationContext limitationContext = traitContext.getLimitationContext();
-    FavorableTraitRules favorableTraitRules = new FavorableTraitRules(traitType, traitTemplate, limitationContext);
-    IValueChangeChecker valueChecker = new AdditionRulesTraitValueChangeChecker(traitType, limitationContext, additionalRules);
-    return new DefaultTrait(favorableTraitRules, casteTypes, traitContext, basicCharacterData, characterListening, valueChecker,
-            favoredIncrementChecker);
+    FavorableTraitRules favorableTraitRules = new FavorableTraitRules(traitType, traitTemplate, hero);
+    IValueChangeChecker valueChecker = new AdditionRulesTraitValueChangeChecker(traitType, hero, additionalRules);
+    return new DefaultTrait(hero, favorableTraitRules, casteTypes, valueChecker, favoredIncrementChecker);
   }
 }

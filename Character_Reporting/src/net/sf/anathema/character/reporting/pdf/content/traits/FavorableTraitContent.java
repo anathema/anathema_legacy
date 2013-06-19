@@ -1,6 +1,6 @@
 package net.sf.anathema.character.reporting.pdf.content.traits;
 
-import net.sf.anathema.character.generic.caste.ICasteType;
+import net.sf.anathema.character.generic.caste.CasteType;
 import net.sf.anathema.character.generic.character.IGenericCharacter;
 import net.sf.anathema.character.generic.character.IGenericTraitCollection;
 import net.sf.anathema.character.generic.magic.IMagic;
@@ -8,6 +8,7 @@ import net.sf.anathema.character.generic.magic.IMagicStats;
 import net.sf.anathema.character.generic.traits.ITraitTemplate;
 import net.sf.anathema.character.generic.traits.TraitType;
 import net.sf.anathema.character.generic.traits.groups.IIdentifiedTraitTypeGroup;
+import net.sf.anathema.character.main.hero.Hero;
 import net.sf.anathema.character.reporting.pdf.content.AbstractSubBoxContent;
 import net.sf.anathema.character.reporting.pdf.content.magic.GenericCharmUtilities;
 import net.sf.anathema.character.reporting.pdf.util.MagicLearnUtilities;
@@ -21,10 +22,12 @@ import java.util.List;
 
 public abstract class FavorableTraitContent extends AbstractSubBoxContent {
 
+  private Hero hero;
   private IGenericCharacter character;
 
-  public FavorableTraitContent(IGenericCharacter character, Resources resources) {
+  public FavorableTraitContent(Hero hero, IGenericCharacter character, Resources resources) {
     super(resources);
+    this.hero = hero;
     this.character = character;
   }
 
@@ -81,7 +84,7 @@ public abstract class FavorableTraitContent extends AbstractSubBoxContent {
     IIdentifiedTraitTypeGroup group = getIdentifiedTraitTypeGroups()[0];
     TraitType traitType = group.getAllGroupTypes()[0];
     ITraitTemplate template = character.getTemplate().getTraitTemplateCollection().getTraitTemplate(traitType);
-    return template.getLimitation().getAbsoluteLimit(character);
+    return template.getLimitation().getAbsoluteLimit(hero);
   }
 
   @Override
@@ -94,7 +97,7 @@ public abstract class FavorableTraitContent extends AbstractSubBoxContent {
 
   public String getGroupLabel(Identifier groupId) {
     String groupIdAsString = groupId.getId();
-    String resourceKey = groupId instanceof ICasteType ? "Caste." + groupIdAsString : getGroupNamePrefix() + groupIdAsString;
+    String resourceKey = groupId instanceof CasteType ? "Caste." + groupIdAsString : getGroupNamePrefix() + groupIdAsString;
     return getString(resourceKey);
   }
 

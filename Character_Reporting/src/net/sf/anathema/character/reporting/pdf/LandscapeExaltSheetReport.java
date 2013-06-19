@@ -65,7 +65,7 @@ public class LandscapeExaltSheetReport extends AbstractPdfReport {
   private ReportSession createSession(IItem item) {
     ICharacter character = (ICharacter) item.getItemData();
     IGenericCharacter genericCharacter = GenericCharacterUtilities.createGenericCharacter(character);
-    return new ReportSession(getContentRegistry(), genericCharacter);
+    return new ReportSession(getContentRegistry(), genericCharacter, character);
   }
 
   private List<PageEncoder> collectPageEncoders(PageSize pageSize, ReportSession session) {

@@ -1,7 +1,7 @@
 package net.sf.anathema.character.generic.impl.traits.limitation;
 
-import net.sf.anathema.character.generic.character.ILimitationContext;
 import net.sf.anathema.character.generic.template.ITraitLimitation;
+import net.sf.anathema.character.main.hero.Hero;
 import net.sf.anathema.lib.lang.clone.ReflectionCloneableObject;
 
 public class StaticTraitLimitation extends ReflectionCloneableObject<ITraitLimitation> implements ITraitLimitation {
@@ -13,12 +13,12 @@ public class StaticTraitLimitation extends ReflectionCloneableObject<ITraitLimit
   }
 
   @Override
-  public int getAbsoluteLimit(ILimitationContext limitationContext) {
+  public int getAbsoluteLimit(Hero hero) {
     return staticLimit;
   }
 
   @Override
-  public int getCurrentMaximum(ILimitationContext limitationContext, boolean modified) {
+  public int getCurrentMaximum(Hero hero, boolean modified) {
     return staticLimit;
   }
 

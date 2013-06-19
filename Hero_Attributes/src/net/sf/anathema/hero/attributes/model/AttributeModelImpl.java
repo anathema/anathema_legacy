@@ -5,6 +5,7 @@ import net.sf.anathema.character.generic.template.HeroTemplate;
 import net.sf.anathema.character.generic.template.ITraitTemplateFactory;
 import net.sf.anathema.character.generic.traits.groups.IIdentifiedCasteTraitTypeGroup;
 import net.sf.anathema.character.generic.traits.groups.IIdentifiedTraitTypeGroup;
+import net.sf.anathema.character.generic.traits.types.AttributeGroupType;
 import net.sf.anathema.character.impl.model.traits.AttributeTemplateFactory;
 import net.sf.anathema.character.impl.model.traits.creation.AttributeTypeGroupFactory;
 import net.sf.anathema.character.impl.model.traits.creation.FavorableTraitFactory;
@@ -27,8 +28,8 @@ import net.sf.anathema.lib.util.Identifier;
 public class AttributeModelImpl extends DefaultTraitMap implements AttributeModel, HeroModel {
 
   private HeroTemplate template;
-  private InitializationContext context;
   private IIdentifiedCasteTraitTypeGroup[] attributeTraitGroups;
+  private Hero hero;
 
   @Override
   public Identifier getId() {
@@ -37,8 +38,8 @@ public class AttributeModelImpl extends DefaultTraitMap implements AttributeMode
 
   @Override
   public void initialize(InitializationContext context, Hero hero) {
+    this.hero = hero;
     this.template = hero.getTemplate();
-    this.context = context;
     this.attributeTraitGroups = new AttributeTypeGroupFactory().createTraitGroups(template.getCasteCollection(), template.getAttributeGroups());
     addAttributes();
     TraitModel traitModel = TraitModelFetcher.fetch(hero);
@@ -53,8 +54,7 @@ public class AttributeModelImpl extends DefaultTraitMap implements AttributeMode
   }
 
   private FavorableTraitFactory createFactory() {
-    return new FavorableTraitFactory(context.getTraitContext(), template.getAdditionalRules().getAdditionalTraitRules(),
-            context.getBasicCharacterContext(), context.getCharacterListening());
+    return new FavorableTraitFactory(hero);
   }
 
   private void addAttributes() {
@@ -84,5 +84,14 @@ public class AttributeModelImpl extends DefaultTraitMap implements AttributeMode
   @Override
   public IIdentifiedTraitTypeGroup[] getAttributeTypeGroups() {
     return attributeTraitGroups;
+  }
+
+  public Trait[] getAll(AttributeGroupType groupType) {
+    for (IIdentifiedTraitTypeGroup group : getAttributeTypeGroups()) {
+      if (group.getGroupId().equals(groupType)) {
+        return getTraits(group.getAllGroupTypes());
+      }
+    }
+    return new Trait[0];
   }
 }

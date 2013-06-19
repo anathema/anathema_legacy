@@ -30,8 +30,7 @@ public class PortraitSimpleMortalSheetReport extends AbstractPdfReport {
   private final PageSizePreference pageSizePreference;
   private CharacterReportingModuleObject reportingModuleObject;
 
-  public PortraitSimpleMortalSheetReport(Resources resources, ICharacterGenerics characterGenerics,
-          PageSizePreference pageSizePreference) {
+  public PortraitSimpleMortalSheetReport(Resources resources, ICharacterGenerics characterGenerics, PageSizePreference pageSizePreference) {
     this.resources = resources;
     this.pageSizePreference = pageSizePreference;
     this.reportingModuleObject = new CharacterReportingModuleObject(characterGenerics.getInstantiater(), resources);
@@ -52,7 +51,7 @@ public class PortraitSimpleMortalSheetReport extends AbstractPdfReport {
       IGenericCharacter character = GenericCharacterUtilities.createGenericCharacter(stattedCharacter);
       PageEncoder encoder = new MortalPageEncoder(configuration);
       SheetGraphics graphics = SheetGraphics.WithHelvetica(directContent);
-      ReportSession session = new ReportSession(getContentRegistry(), character);
+      ReportSession session = new ReportSession(getContentRegistry(), character, stattedCharacter);
       Sheet sheet = new Sheet(document, getEncoderRegistry(), resources, pageSize);
       encoder.encode(sheet, graphics, session);
     } catch (Exception e) {

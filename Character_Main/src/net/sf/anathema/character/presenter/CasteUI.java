@@ -1,6 +1,6 @@
 package net.sf.anathema.character.presenter;
 
-import net.sf.anathema.character.generic.caste.ICasteType;
+import net.sf.anathema.character.generic.caste.CasteType;
 import net.sf.anathema.character.generic.impl.persistence.SecondEdition;
 import net.sf.anathema.character.generic.template.presentation.IPresentationProperties;
 import net.sf.anathema.lib.file.RelativePath;
@@ -16,11 +16,11 @@ public class CasteUI extends AbstractUI {
     this.properties = properties;
   }
 
-  public Icon getSmallCasteIcon(ICasteType type) {
+  public Icon getSmallCasteIcon(CasteType type) {
     return getIcon(getSmallCasteIconPath(type));
   }
 
-  public RelativePath getSmallCasteIconPath(ICasteType type) {
+  public RelativePath getSmallCasteIconPath(CasteType type) {
     return properties.getSmallCasteIconResource(type.getId(), SecondEdition.SECOND_EDITION);
   }
 }

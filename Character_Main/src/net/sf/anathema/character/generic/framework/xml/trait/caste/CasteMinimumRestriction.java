@@ -1,8 +1,10 @@
 package net.sf.anathema.character.generic.framework.xml.trait.caste;
 
-import net.sf.anathema.character.generic.character.ILimitationContext;
+import net.sf.anathema.character.generic.caste.CasteType;
 import net.sf.anathema.character.generic.framework.xml.trait.IMinimumRestriction;
 import net.sf.anathema.character.generic.traits.TraitType;
+import net.sf.anathema.character.main.hero.Hero;
+import net.sf.anathema.character.main.model.concept.HeroConceptFetcher;
 import net.sf.anathema.lib.lang.ReflectionEqualsObject;
 
 import java.util.ArrayList;
@@ -38,24 +40,29 @@ public class CasteMinimumRestriction extends ReflectionEqualsObject implements I
   }
 
   @Override
-  public boolean isFullfilledWithout(ILimitationContext context, TraitType traitType) {
-    boolean caste = !context.getCasteType().toString().equals(this.caste);
-    boolean fulfilled = !caste && (restriction != null && restriction.isFullfilledWithout(context, traitType));
+  public boolean isFulfilledWithout(Hero hero, TraitType traitType) {
+    boolean caste = hasThisCaste(hero);
+    boolean fulfilled = !caste && (restriction != null && restriction.isFulfilledWithout(hero, traitType));
     return caste || fulfilled;
   }
 
   @Override
-  public int getCalculationMinValue(ILimitationContext context, TraitType traitType) {
+  public int getCalculationMinValue(Hero hero, TraitType traitType) {
     if (!isFreebie) {
       return 0;
     }
-    if (!context.getCasteType().toString().equals(this.caste)) {
+    if (!hasThisCaste(hero)) {
       return 0;
     }
     if (restriction != null) {
-      return restriction.getCalculationMinValue(context, traitType);
+      return restriction.getCalculationMinValue(hero, traitType);
     }
     return getStrictMinimumValue();
+  }
+
+  private boolean hasThisCaste(Hero hero) {
+    CasteType casteType = HeroConceptFetcher.fetch(hero).getCaste().getType();
+    return !casteType.toString().equals(this.caste);
   }
 
   @Override

@@ -1,7 +1,5 @@
 package net.sf.anathema.character.intimacies.model;
 
-import net.sf.anathema.character.generic.framework.additionaltemplate.model.TraitContext;
-import net.sf.anathema.character.generic.impl.traits.SimpleTraitTemplate;
 import net.sf.anathema.character.generic.traits.GenericTrait;
 import net.sf.anathema.character.generic.traits.ITraitTemplate;
 import net.sf.anathema.character.generic.traits.LowerableState;
@@ -10,10 +8,13 @@ import net.sf.anathema.character.library.trait.DefaultTrait;
 import net.sf.anathema.character.library.trait.IValueChangeChecker;
 import net.sf.anathema.character.library.trait.Trait;
 import net.sf.anathema.character.library.trait.rules.TraitRules;
+import net.sf.anathema.character.main.hero.Hero;
 import net.sf.anathema.lib.control.GlobalChangeAdapter;
 import net.sf.anathema.lib.control.IBooleanValueChangedListener;
 import net.sf.anathema.lib.control.IChangeListener;
 import org.jmock.example.announcer.Announcer;
+
+import static net.sf.anathema.character.generic.impl.traits.SimpleTraitTemplate.createVirtueLimitedTemplate;
 
 public class Intimacy implements IIntimacy {
 
@@ -23,15 +24,11 @@ public class Intimacy implements IIntimacy {
   private boolean complete;
   private final Announcer<IBooleanValueChangedListener> control = Announcer.to(IBooleanValueChangedListener.class);
 
-  public Intimacy(String name, Integer initialValue, final GenericTrait maxValueTrait, TraitContext context) {
+  public Intimacy(Hero hero, String name, Integer initialValue, final GenericTrait maxValueTrait) {
     this.name = name;
     this.maxValueTrait = maxValueTrait;
-    ITraitTemplate template = SimpleTraitTemplate.createVirtueLimitedTemplate(
-        0,
-        initialValue,
-        LowerableState.LowerableLoss,
-        VirtueType.Conviction);
-    TraitRules traitRules = new TraitRules(new IntimacyType(name), template, context.getLimitationContext());
+    ITraitTemplate template = createVirtueLimitedTemplate(0, initialValue, LowerableState.LowerableLoss, VirtueType.Conviction);
+    TraitRules traitRules = new TraitRules(new IntimacyType(name), template, hero);
     IValueChangeChecker incrementChecker = new IValueChangeChecker() {
       @Override
       public boolean isValidNewValue(int value) {
@@ -42,9 +39,8 @@ public class Intimacy implements IIntimacy {
         return !complete && value < currentMaximum;
       }
     };
-    this.trait = new DefaultTrait(traitRules, incrementChecker, context.getTraitValueStrategy());
+    this.trait = new DefaultTrait(hero, traitRules, incrementChecker);
   }
-
   @Override
   public String getName() {
     return name;

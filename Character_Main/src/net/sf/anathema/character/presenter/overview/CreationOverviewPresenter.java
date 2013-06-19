@@ -1,11 +1,11 @@
 package net.sf.anathema.character.presenter.overview;
 
-import net.sf.anathema.character.generic.caste.ICasteType;
+import net.sf.anathema.character.generic.caste.CasteType;
 import net.sf.anathema.character.generic.framework.additionaltemplate.listening.GlobalCharacterChangeAdapter;
 import net.sf.anathema.character.generic.template.HeroTemplate;
 import net.sf.anathema.character.library.overview.IAdditionalAlotmentView;
 import net.sf.anathema.character.library.overview.IOverviewCategory;
-import net.sf.anathema.character.main.model.concept.CharacterConceptFetcher;
+import net.sf.anathema.character.main.model.concept.HeroConceptFetcher;
 import net.sf.anathema.character.model.ICharacter;
 import net.sf.anathema.character.model.creation.IBonusPointManagement;
 import net.sf.anathema.character.view.overview.CategorizedOverview;
@@ -140,8 +140,8 @@ public class CreationOverviewPresenter implements Presenter {
   }
 
   private String getCasteValueResourceKey() {
-    ICasteType casteType = CharacterConceptFetcher.fetch(character).getCaste().getType();
-    if (casteType.equals(ICasteType.NULL_CASTE_TYPE)) {
+    CasteType casteType = HeroConceptFetcher.fetch(character).getCaste().getType();
+    if (casteType.equals(CasteType.NULL_CASTE_TYPE)) {
       return "";
     }
     return "Caste." + casteType.getId();

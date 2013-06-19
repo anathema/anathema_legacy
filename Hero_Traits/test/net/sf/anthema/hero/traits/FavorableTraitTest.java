@@ -1,11 +1,10 @@
-package net.sf.anathema.character.main.trait;
+package net.sf.anthema.hero.traits;
 
-import net.sf.anathema.character.generic.caste.ICasteType;
-import net.sf.anathema.character.generic.framework.additionaltemplate.model.ICharacterModelContext;
-import net.sf.anathema.character.generic.framework.additionaltemplate.model.TraitContext;
+import net.sf.anathema.character.generic.caste.CasteType;
 import net.sf.anathema.character.generic.impl.traits.SimpleTraitTemplate;
 import net.sf.anathema.character.generic.traits.ITraitTemplate;
 import net.sf.anathema.character.generic.traits.types.AbilityType;
+import net.sf.anathema.character.generic.traits.types.OtherTraitType;
 import net.sf.anathema.character.impl.model.context.trait.CreationTraitValueStrategy;
 import net.sf.anathema.character.impl.model.context.trait.ExperiencedTraitValueStrategy;
 import net.sf.anathema.character.impl.model.context.trait.ProxyTraitValueStrategy;
@@ -19,9 +18,12 @@ import net.sf.anathema.character.library.trait.specialties.DefaultTraitReference
 import net.sf.anathema.character.library.trait.specialties.SpecialtiesContainer;
 import net.sf.anathema.character.library.trait.specialties.Specialty;
 import net.sf.anathema.character.library.trait.subtrait.ISubTraitContainer;
-import net.sf.anathema.character.main.testing.BasicCharacterTestCase;
+import net.sf.anathema.character.main.hero.Hero;
 import net.sf.anathema.character.main.testing.dummy.DummyCasteType;
-import net.sf.anathema.character.main.testing.dummy.DummyCharacterModelContext;
+import net.sf.anathema.character.main.testing.dummy.DummyHero;
+import net.sf.anathema.character.main.testing.dummy.models.DummyTraitModel;
+import net.sf.anathema.character.main.testing.dummy.models.DummyHeroConcept;
+import net.sf.anathema.character.main.testing.dummy.models.DummyOtherTraitModel;
 import net.sf.anathema.lib.control.IIntValueChangedListener;
 import org.junit.Before;
 import org.junit.Test;
@@ -40,13 +42,19 @@ public class FavorableTraitTest {
   private IFavorableStateChangedListener abilityStateListener = Mockito.mock(IFavorableStateChangedListener.class);
   private ProxyTraitValueStrategy valueStrategy;
   private DefaultTrait trait;
-  private DummyCharacterModelContext modelContext;
+  private DummyHero dummyHero = new DummyHero();
 
   @Before
   public void createTrait() throws Exception {
     this.valueStrategy = new ProxyTraitValueStrategy(new CreationTraitValueStrategy());
-    this.modelContext = new BasicCharacterTestCase().createModelContextWithEssence2(valueStrategy);
-    this.trait = createObjectUnderTest(modelContext);
+    DummyTraitModel traits = new DummyTraitModel();
+    traits.valueStrategy = valueStrategy;
+    DummyOtherTraitModel otherTraitModel = new DummyOtherTraitModel();
+    dummyHero.addModel(otherTraitModel);
+    dummyHero.addModel(new DummyHeroConcept());
+    dummyHero.addModel(traits);
+    otherTraitModel.getTrait(OtherTraitType.Essence).setCurrentValue(2);
+    this.trait = createObjectUnderTest(dummyHero);
   }
 
   @Test
@@ -101,12 +109,10 @@ public class FavorableTraitTest {
     assertEquals(0, trait.getCreationValue());
   }
 
-  private DefaultTrait createObjectUnderTest(ICharacterModelContext context) {
+  private DefaultTrait createObjectUnderTest(Hero hero) {
     ITraitTemplate archeryTemplate = SimpleTraitTemplate.createEssenceLimitedTemplate(0);
-    TraitContext traitContext = context.getTraitContext();
-    FavorableTraitRules rules = new FavorableTraitRules(AbilityType.Archery, archeryTemplate, traitContext.getLimitationContext());
-    return new DefaultTrait(rules, new ICasteType[]{new DummyCasteType()}, traitContext, context.getBasicCharacterContext(),
-            context.getCharacterListening(), new FriendlyValueChangeChecker(), incrementChecker);
+    FavorableTraitRules rules = new FavorableTraitRules(AbilityType.Archery, archeryTemplate, hero);
+    return new DefaultTrait(hero, rules, new CasteType[]{new DummyCasteType()}, new FriendlyValueChangeChecker(), incrementChecker);
   }
 
   @Test
@@ -134,7 +140,7 @@ public class FavorableTraitTest {
 
   @Test
   public void testExperienceSpecialtyCount() throws Exception {
-    ISubTraitContainer container = new SpecialtiesContainer(new DefaultTraitReference(trait), modelContext.getTraitContext());
+    ISubTraitContainer container = new SpecialtiesContainer(new DefaultTraitReference(trait), dummyHero);
     Specialty specialty = container.addSubTrait("TestSpecialty");
     specialty.setCreationValue(1);
     valueStrategy.setStrategy(new ExperiencedTraitValueStrategy());
@@ -146,8 +152,7 @@ public class FavorableTraitTest {
 
   @Test
   public void testCreationSpecialtyDuringExperienced() throws Exception {
-    ICharacterModelContext context = new BasicCharacterTestCase().createModelContextWithEssence2(new ExperiencedTraitValueStrategy());
-    ISubTraitContainer container = new SpecialtiesContainer(new DefaultTraitReference(trait), context.getTraitContext());
+    ISubTraitContainer container = new SpecialtiesContainer(new DefaultTraitReference(trait), dummyHero);
     Specialty specialty = container.addSubTrait("TestSpecialty");
     specialty.setCreationValue(2);
     assertEquals(2, specialty.getCreationValue());

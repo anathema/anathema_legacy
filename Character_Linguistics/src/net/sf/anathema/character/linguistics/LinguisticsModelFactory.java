@@ -5,11 +5,12 @@ import net.sf.anathema.character.generic.framework.additionaltemplate.model.IAdd
 import net.sf.anathema.character.generic.framework.additionaltemplate.model.ICharacterModelContext;
 import net.sf.anathema.character.generic.template.additional.IAdditionalTemplate;
 import net.sf.anathema.character.linguistics.model.LinguisticsAdditionalModel;
+import net.sf.anathema.character.main.hero.Hero;
 
 public class LinguisticsModelFactory implements IAdditionalModelFactory {
 
   @Override
-  public IAdditionalModel createModel(IAdditionalTemplate additionalTemplate, ICharacterModelContext context) {
+  public IAdditionalModel createModel(IAdditionalTemplate additionalTemplate, ICharacterModelContext context, Hero hero) {
     return new LinguisticsAdditionalModel(additionalTemplate, context);
   }
 }

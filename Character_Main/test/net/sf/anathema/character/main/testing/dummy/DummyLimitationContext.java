@@ -1,6 +1,6 @@
 package net.sf.anathema.character.main.testing.dummy;
 
-import net.sf.anathema.character.generic.caste.ICasteType;
+import net.sf.anathema.character.generic.caste.CasteType;
 import net.sf.anathema.character.generic.character.IGenericTraitCollection;
 import net.sf.anathema.character.generic.character.ILimitationContext;
 import net.sf.anathema.character.generic.impl.traits.limitation.StaticTraitLimitation;
@@ -21,7 +21,7 @@ public class DummyLimitationContext implements ILimitationContext {
   }
 
   @Override
-  public ICasteType getCasteType() {
+  public CasteType getCasteType() {
     return null;
   }
 
@@ -44,11 +44,6 @@ public class DummyLimitationContext implements ILimitationContext {
         return getTrait(type).isCasteOrFavored();
       }
     };
-  }
-
-  @Override
-  public int getEssenceCap(boolean modified) {
-    return 0;
   }
 
   @Override

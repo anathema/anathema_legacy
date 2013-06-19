@@ -4,12 +4,12 @@ import net.sf.anathema.character.generic.additionaltemplate.IAdditionalModelBonu
 import net.sf.anathema.character.generic.additionaltemplate.IAdditionalModelExperienceCalculator;
 import net.sf.anathema.character.generic.additionaltemplate.NullAdditionalModelBonusPointCalculator;
 import net.sf.anathema.character.generic.additionaltemplate.NullAdditionalModelExperienceCalculator;
-import net.sf.anathema.character.generic.framework.additionaltemplate.listening.ICharacterChangeListener;
 import net.sf.anathema.character.intimacies.IIntimaciesAdditionalModel;
 import net.sf.anathema.character.intimacies.model.IIntimacy;
 import net.sf.anathema.character.intimacies.template.IntimaciesTemplate;
 import net.sf.anathema.character.library.removableentry.presenter.IRemovableEntryListener;
 import net.sf.anathema.character.main.hero.CharacterModelGroup;
+import net.sf.anathema.character.main.hero.change.FlavoredChangeListener;
 import net.sf.anathema.lib.control.IChangeListener;
 
 import java.util.ArrayList;
@@ -18,11 +18,6 @@ import java.util.List;
 public class DemoIntimaciesModel implements IIntimaciesModel, IIntimaciesAdditionalModel {
 
   private List<IIntimacy> entries = new ArrayList<>();
-
-  @Override
-  public void addCharacterChangeListener(ICharacterChangeListener listener) {
-    throw new UnsupportedOperationException();
-  }
 
   @Override
   public void addModelChangeListener(IChangeListener listener) {
@@ -51,6 +46,11 @@ public class DemoIntimaciesModel implements IIntimaciesModel, IIntimaciesAdditio
 
   @Override
   public void setCurrentName(String name) {
+    throw new UnsupportedOperationException();
+  }
+
+  @Override
+  public void addChangeListener(FlavoredChangeListener listener) {
     throw new UnsupportedOperationException();
   }
 

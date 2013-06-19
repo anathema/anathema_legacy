@@ -1,6 +1,6 @@
 package net.sf.anathema.hero.concept.sheet.personal;
 
-import net.sf.anathema.character.generic.caste.ICasteType;
+import net.sf.anathema.character.generic.caste.CasteType;
 import net.sf.anathema.character.generic.character.IGenericCharacter;
 import net.sf.anathema.character.generic.type.ICharacterType;
 import net.sf.anathema.character.reporting.pdf.content.ReportSession;
@@ -80,8 +80,8 @@ public class PersonalInfoEncoder implements IVariableContentEncoder {
     return (characterType.isExaltType() ? 4 : 3);
   }
 
-  private String getCasteString(ICasteType casteType) {
-    if (casteType == null || casteType == ICasteType.NULL_CASTE_TYPE) {
+  private String getCasteString(CasteType casteType) {
+    if (casteType == null || casteType == CasteType.NULL_CASTE_TYPE) {
       return null;
     }
     return resources.getString("Caste." + casteType.getId());
