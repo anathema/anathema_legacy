@@ -3,30 +3,31 @@
  */
 package net.sf.anathema.character.impl.model;
 
+import net.sf.anathema.character.change.ChangeAnnouncer;
+import net.sf.anathema.character.change.ChangeFlavor;
 import net.sf.anathema.character.generic.magic.ICharm;
-import net.sf.anathema.character.impl.model.context.CharacterListening;
 import net.sf.anathema.character.model.charm.CharmLearnAdapter;
 
 public final class CharacterChangeCharmListener extends CharmLearnAdapter {
 
-  private final CharacterListening listening;
+  private final ChangeAnnouncer announcer;
 
-  public CharacterChangeCharmListener(CharacterListening listening) {
-    this.listening = listening;
+  public CharacterChangeCharmListener(ChangeAnnouncer announcer) {
+    this.announcer = announcer;
   }
 
   @Override
   public void charmForgotten(ICharm charm) {
-    listening.fireCharacterChanged();
+    announcer.announceChangeOf(ChangeFlavor.UNSPECIFIED);
   }
 
   @Override
   public void charmLearned(ICharm charm) {
-    listening.fireCharacterChanged();
+    announcer.announceChangeOf(ChangeFlavor.UNSPECIFIED);
   }
 
   @Override
   public void recalculateRequested() {
-    listening.fireCharacterChanged();
+    announcer.announceChangeOf(ChangeFlavor.UNSPECIFIED);
   }
 }

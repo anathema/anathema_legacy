@@ -1,18 +1,16 @@
-/**
- *
- */
 package net.sf.anathema.character.impl.model;
 
-import net.sf.anathema.character.impl.model.context.CharacterListening;
+import net.sf.anathema.character.change.ChangeAnnouncer;
+import net.sf.anathema.character.change.ChangeFlavor;
 import net.sf.anathema.character.model.charm.ICombo;
 import net.sf.anathema.character.model.charm.IComboConfigurationListener;
 
 public final class CharacterChangeComboListener implements IComboConfigurationListener {
 
-  private final CharacterListening listening;
+  private ChangeAnnouncer announcer;
 
-  public CharacterChangeComboListener(CharacterListening listening) {
-    this.listening = listening;
+  public CharacterChangeComboListener(ChangeAnnouncer announcer) {
+    this.announcer = announcer;
   }
 
   @Override
@@ -27,16 +25,16 @@ public final class CharacterChangeComboListener implements IComboConfigurationLi
 
   @Override
   public void comboDeleted(ICombo combo) {
-    listening.fireCharacterChanged();
+    announcer.announceChangeOf(ChangeFlavor.UNSPECIFIED);
   }
 
   @Override
   public void comboChanged(ICombo combo) {
-    listening.fireCharacterChanged();
+    announcer.announceChangeOf(ChangeFlavor.UNSPECIFIED);
   }
 
   @Override
   public void comboAdded(ICombo combo) {
-    listening.fireCharacterChanged();
+    announcer.announceChangeOf(ChangeFlavor.UNSPECIFIED);
   }
 }

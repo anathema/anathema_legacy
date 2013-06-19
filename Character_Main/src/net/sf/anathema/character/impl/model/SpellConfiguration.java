@@ -1,14 +1,21 @@
 package net.sf.anathema.character.impl.model;
 
+import net.sf.anathema.character.change.ChangeFlavor;
 import net.sf.anathema.character.generic.impl.magic.SpellException;
 import net.sf.anathema.character.generic.impl.magic.persistence.ISpellCache;
 import net.sf.anathema.character.generic.magic.ISpell;
 import net.sf.anathema.character.generic.magic.spells.CircleType;
 import net.sf.anathema.character.generic.template.HeroTemplate;
 import net.sf.anathema.character.generic.template.magic.ISpellMagicTemplate;
+import net.sf.anathema.character.impl.model.context.magic.CreationSpellLearnStrategy;
+import net.sf.anathema.character.impl.model.context.magic.ExperiencedSpellLearnStrategy;
+import net.sf.anathema.character.impl.model.context.magic.ProxySpellLearnStrategy;
+import net.sf.anathema.character.main.hero.Hero;
+import net.sf.anathema.character.main.hero.change.FlavoredChangeListener;
+import net.sf.anathema.character.main.model.experience.ExperienceChange;
+import net.sf.anathema.character.main.model.experience.ExperienceModelFetcher;
 import net.sf.anathema.character.model.IMagicLearnListener;
 import net.sf.anathema.character.model.ISpellConfiguration;
-import net.sf.anathema.character.model.ISpellLearnStrategy;
 import net.sf.anathema.character.model.ISpellMapper;
 import net.sf.anathema.character.model.charm.CharmModel;
 import net.sf.anathema.lib.control.IChangeListener;
@@ -21,21 +28,19 @@ import java.util.Map;
 
 public class SpellConfiguration implements ISpellConfiguration {
 
+  private final ProxySpellLearnStrategy strategy = new ProxySpellLearnStrategy(new CreationSpellLearnStrategy());
   private final List<ISpell> creationLearnedList = new ArrayList<>();
   private final List<ISpell> experiencedLearnedList = new ArrayList<>();
   private final Announcer<IChangeListener> changeControl = Announcer.to(IChangeListener.class);
   private final Announcer<IMagicLearnListener> magicLearnControl = Announcer.to(IMagicLearnListener.class);
   private final Map<CircleType, List<ISpell>> spellsByCircle = new HashMap<>();
   private final CharmModel charms;
-  private final ISpellLearnStrategy strategy;
-  private final HeroTemplate characterTemplate;
+  private final HeroTemplate heroTemplate;
   private final ISpellMapper spellMapper;
 
-  public SpellConfiguration(CharmModel charms, ISpellLearnStrategy strategy, HeroTemplate template, ISpellCache cache) throws
-          SpellException {
+  public SpellConfiguration(final Hero hero, CharmModel charms, ISpellCache cache) throws SpellException {
     this.charms = charms;
-    this.strategy = strategy;
-    this.characterTemplate = template;
+    this.heroTemplate = hero.getTemplate();
     for (CircleType type : CircleType.values()) {
       spellsByCircle.put(type, new ArrayList<ISpell>());
     }
@@ -43,6 +48,23 @@ public class SpellConfiguration implements ISpellConfiguration {
       spellsByCircle.get(spell.getCircleType()).add(spell);
     }
     spellMapper = new SpellMapper();
+    hero.getChangeAnnouncer().addListener(new FlavoredChangeListener() {
+      @Override
+      public void changeOccurred(ChangeFlavor flavor) {
+        if (flavor == ExperienceChange.FLAVOR_EXPERIENCE_STATE) {
+          boolean experienced = ExperienceModelFetcher.fetch(hero).isExperienced();
+          updateLearnStrategies(experienced);
+        }
+      }
+    });
+  }
+
+  private void updateLearnStrategies(boolean experienced) {
+    if (experienced) {
+      strategy.setStrategy(new ExperiencedSpellLearnStrategy());
+    } else {
+      strategy.setStrategy(new CreationSpellLearnStrategy());
+    }
   }
 
   @Override
@@ -105,7 +127,7 @@ public class SpellConfiguration implements ISpellConfiguration {
     if (creationLearnedList.contains(spell) || (experienced && experiencedLearnedList.contains(spell))) {
       return false;
     }
-    ISpellMagicTemplate template = characterTemplate.getMagicTemplate().getSpellMagic();
+    ISpellMagicTemplate template = heroTemplate.getMagicTemplate().getSpellMagic();
     return template.canLearnSpell(spell, charms.getLearnedCharms(true));
   }
 

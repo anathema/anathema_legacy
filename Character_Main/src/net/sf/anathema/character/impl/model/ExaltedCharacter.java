@@ -1,6 +1,7 @@
 package net.sf.anathema.character.impl.model;
 
 import net.sf.anathema.character.change.ChangeAnnouncer;
+import net.sf.anathema.character.change.ChangeFlavor;
 import net.sf.anathema.character.generic.framework.ICharacterGenerics;
 import net.sf.anathema.character.generic.framework.additionaltemplate.model.IAdditionalModelFactory;
 import net.sf.anathema.character.generic.framework.additionaltemplate.model.ICharacterModelContext;
@@ -50,34 +51,22 @@ public class ExaltedCharacter implements ICharacter {
 
     // Charm Model
     this.charms = new CharmModelImpl(hero, initializationContext);
-    charms.addCharmLearnListener(new CharacterChangeCharmListener(context.getCharacterListening()));
+    charms.addCharmLearnListener(new CharacterChangeCharmListener(hero.getChangeAnnouncer()));
 
     // Combo Model
     this.combos = new ComboConfiguration(charms);
-    combos.addComboConfigurationListener(new CharacterChangeComboListener(context.getCharacterListening()));
+    combos.addComboConfigurationListener(new CharacterChangeComboListener(hero.getChangeAnnouncer()));
 
     // Spell Model
-    this.spells = new SpellConfiguration(charms, context.getSpellLearnStrategy(), getTemplate(),
-            generics.getDataSet(ISpellCache.class));
-    this.spells.addChangeListener(new IChangeListener() {
-      @Override
-      public void changeOccurred() {
-        context.getCharacterListening().fireCharacterChanged();
-      }
-    });
+    this.spells = new SpellConfiguration(hero, charms, generics.getDataSet(ISpellCache.class));
+    this.spells.addChangeListener(new UnspecifiedChangeListener(hero.getChangeAnnouncer()));
 
     // Additional Models
     for (IGlobalAdditionalTemplate globalTemplate : generics.getGlobalAdditionalTemplateRegistry().getAll()) {
       addAdditionalModels(generics, globalTemplate);
     }
     addAdditionalModels(generics, template.getAdditionalTemplates());
-    extendedConfiguration.addAdditionalModelChangeListener(new IChangeListener() {
-      @Override
-      public void changeOccurred() {
-        context.getCharacterListening().fireCharacterChanged();
-      }
-    });
-
+    extendedConfiguration.addAdditionalModelChangeListener(new UnspecifiedChangeListener(hero.getChangeAnnouncer()));
     getCharacterContext().getCharacterListening().addChangeListener(management.getStatisticsChangeListener());
   }
 
@@ -171,5 +160,19 @@ public class ExaltedCharacter implements ICharacter {
   @Override
   public boolean isFullyLoaded() {
     return hero.isFullyLoaded();
+  }
+
+  public static class UnspecifiedChangeListener implements IChangeListener {
+
+    private ChangeAnnouncer changeAnnouncer;
+
+    public UnspecifiedChangeListener(ChangeAnnouncer changeAnnouncer) {
+      this.changeAnnouncer = changeAnnouncer;
+    }
+
+    @Override
+    public void changeOccurred() {
+      changeAnnouncer.announceChangeOf(ChangeFlavor.UNSPECIFIED);
+    }
   }
 }
