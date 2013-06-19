@@ -1,8 +1,7 @@
 package net.sf.anathema.character.intimacies.model;
 
 import com.google.common.base.Strings;
-import net.sf.anathema.character.generic.framework.additionaltemplate.listening.ConfigurableCharacterChangeListener;
-import net.sf.anathema.character.generic.framework.additionaltemplate.listening.VirtueChangeListener;
+import net.sf.anathema.character.change.ChangeFlavor;
 import net.sf.anathema.character.generic.traits.GenericTrait;
 import net.sf.anathema.character.generic.traits.TraitType;
 import net.sf.anathema.character.generic.traits.types.OtherTraitType;
@@ -10,10 +9,10 @@ import net.sf.anathema.character.generic.traits.types.VirtueType;
 import net.sf.anathema.character.intimacies.presenter.IIntimaciesModel;
 import net.sf.anathema.character.library.removableentry.model.AbstractRemovableEntryModel;
 import net.sf.anathema.character.library.trait.Trait;
-import net.sf.anathema.character.library.virtueflaw.model.ConfigurableFlavorChangeAdapter;
 import net.sf.anathema.character.main.hero.Hero;
 import net.sf.anathema.character.main.hero.change.FlavoredChangeListener;
 import net.sf.anathema.character.main.model.experience.ExperienceModelFetcher;
+import net.sf.anathema.character.main.model.traits.TraitChangeFlavor;
 import net.sf.anathema.character.main.model.traits.TraitModelFetcher;
 import net.sf.anathema.lib.control.IChangeListener;
 import org.jmock.example.announcer.Announcer;
@@ -26,26 +25,26 @@ public class IntimaciesModel extends AbstractRemovableEntryModel<IIntimacy> impl
 
   public IntimaciesModel(Hero hero) {
     this.hero = hero;
-    VirtueChangeListener convictionListener = new VirtueChangeListener() {
+    hero.getChangeAnnouncer().addListener(new FlavoredChangeListener() {
       @Override
-      public void configuredChangeOccured() {
-        for (IIntimacy entry : getEntries()) {
-          entry.resetCurrentValue();
+      public void changeOccurred(ChangeFlavor flavor) {
+        if (TraitChangeFlavor.changes(flavor, VirtueType.Conviction)) {
+          for (IIntimacy entry : getEntries()) {
+            entry.resetCurrentValue();
+          }
+          fireModelChangedEvent();
         }
-        fireModelChangedEvent();
       }
-    };
-    convictionListener.addTraitTypes(VirtueType.Conviction);
-    ConfigurableCharacterChangeListener maximumListener = new ConfigurableCharacterChangeListener() {
+    });
+    hero.getChangeAnnouncer().addListener(new FlavoredChangeListener() {
       @Override
-      public void configuredChangeOccured() {
-        fireModelChangedEvent();
-        fireEntryChanged();
+      public void changeOccurred(ChangeFlavor flavor) {
+        if (TraitChangeFlavor.changes(flavor, VirtueType.Compassion, OtherTraitType.Willpower)) {
+          fireModelChangedEvent();
+          fireEntryChanged();
+        }
       }
-    };
-    maximumListener.addTraitTypes(VirtueType.Compassion, OtherTraitType.Willpower);
-    hero.getChangeAnnouncer().addListener(new ConfigurableFlavorChangeAdapter(convictionListener));
-    hero.getChangeAnnouncer().addListener(new ConfigurableFlavorChangeAdapter(maximumListener));
+    });
   }
 
   @Override

@@ -4,6 +4,7 @@ import net.sf.anathema.character.library.virtueflaw.model.IDescriptiveVirtueFlaw
 import net.sf.anathema.character.library.virtueflaw.presenter.IDescriptiveVirtueFlawModel;
 import net.sf.anathema.character.library.virtueflaw.presenter.IDescriptiveVirtueFlawView;
 import net.sf.anathema.character.library.virtueflaw.presenter.VirtueFlawPresenter;
+import net.sf.anathema.character.main.hero.Hero;
 import net.sf.anathema.lib.resources.Resources;
 import net.sf.anathema.lib.workflow.textualdescription.ITextView;
 import net.sf.anathema.lib.workflow.textualdescription.TextualPresentation;
@@ -13,8 +14,8 @@ public class SolarVirtueFlawPresenter extends VirtueFlawPresenter {
   private final IDescriptiveVirtueFlawView view;
   private final IDescriptiveVirtueFlawModel model;
 
-  public SolarVirtueFlawPresenter(Resources resources, IDescriptiveVirtueFlawView view, IDescriptiveVirtueFlawModel model) {
-    super(resources, view, model);
+  public SolarVirtueFlawPresenter(Hero hero, Resources resources, IDescriptiveVirtueFlawView view, IDescriptiveVirtueFlawModel model) {
+    super(hero, resources, view, model);
     this.view = view;
     this.model = model;
   }

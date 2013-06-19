@@ -7,6 +7,7 @@ import net.sf.anathema.character.library.removableentry.presenter.RemovableEntry
 import net.sf.anathema.character.linguistics.ILinguisticsAdditionalModel;
 import net.sf.anathema.character.linguistics.presenter.ILinguisticsModel;
 import net.sf.anathema.character.main.hero.CharacterModelGroup;
+import net.sf.anathema.character.main.hero.Hero;
 import net.sf.anathema.lib.control.IChangeListener;
 import net.sf.anathema.lib.util.Identifier;
 
@@ -15,9 +16,9 @@ public class LinguisticsAdditionalModel extends AbstractAdditionalModelAdapter i
   private final IAdditionalTemplate template;
   private final ILinguisticsModel model;
 
-  public LinguisticsAdditionalModel(IAdditionalTemplate additionalTemplate, ICharacterModelContext context) {
+  public LinguisticsAdditionalModel(Hero hero, IAdditionalTemplate additionalTemplate, ICharacterModelContext context) {
     this.template = additionalTemplate;
-    this.model = new LinguisticsModel(context);
+    this.model = new LinguisticsModel(hero, context);
   }
 
   @Override

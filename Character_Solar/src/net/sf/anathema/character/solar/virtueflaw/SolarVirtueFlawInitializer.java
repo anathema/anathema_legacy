@@ -30,7 +30,7 @@ public class SolarVirtueFlawInitializer implements CharacterModelInitializer {
     String viewName = resources.getString("AdditionalTemplateView.TabName.SolarVirtueFlaw");
     IDescriptiveVirtueFlawView view = sectionView.addView(viewName, IDescriptiveVirtueFlawView.class, character.getCharacterType());
     IDescriptiveVirtueFlawModel virtueFlawModel = (IDescriptiveVirtueFlawModel) character.getExtendedConfiguration().getAdditionalModel(SolarVirtueFlawTemplate.ID);
-    SolarVirtueFlawPresenter presenter = new SolarVirtueFlawPresenter(resources, view, virtueFlawModel);
+    SolarVirtueFlawPresenter presenter = new SolarVirtueFlawPresenter(character,resources, view, virtueFlawModel);
     presenter.initPresentation();
   }
 }

@@ -1,17 +1,19 @@
 package net.sf.anathema.character.library.virtueflaw.presenter;
 
-import net.sf.anathema.character.generic.framework.additionaltemplate.listening.VirtueChangeListener;
+import net.sf.anathema.character.change.ChangeFlavor;
 import net.sf.anathema.character.generic.traits.TraitType;
+import net.sf.anathema.character.generic.traits.types.VirtueType;
 import net.sf.anathema.character.library.trait.Trait;
 import net.sf.anathema.character.library.trait.presenter.TraitPresenter;
 import net.sf.anathema.character.library.virtueflaw.model.IVirtueFlaw;
+import net.sf.anathema.character.main.hero.Hero;
+import net.sf.anathema.character.main.hero.change.FlavoredChangeListener;
+import net.sf.anathema.character.main.model.traits.TraitChangeFlavor;
 import net.sf.anathema.charmtree.presenter.SelectIdentifierConfiguration;
 import net.sf.anathema.framework.value.IIntValueView;
-import net.sf.anathema.framework.view.AbstractSelectCellRenderer;
 import net.sf.anathema.lib.control.IBooleanValueChangedListener;
 import net.sf.anathema.lib.control.IChangeListener;
 import net.sf.anathema.lib.control.ObjectValueListener;
-import net.sf.anathema.lib.gui.AgnosticUIConfiguration;
 import net.sf.anathema.lib.gui.Presenter;
 import net.sf.anathema.lib.gui.selection.IObjectSelectionView;
 import net.sf.anathema.lib.resources.Resources;
@@ -19,16 +21,15 @@ import net.sf.anathema.lib.util.Identifier;
 import net.sf.anathema.lib.workflow.textualdescription.ITextView;
 import net.sf.anathema.lib.workflow.textualdescription.TextualPresentation;
 
-import javax.swing.JList;
-import java.awt.Component;
-
 public class VirtueFlawPresenter implements Presenter {
 
+  private Hero hero;
   private final Resources resources;
   private final IVirtueFlawView view;
   private final IVirtueFlawModel model;
 
-  public VirtueFlawPresenter(Resources resources, IVirtueFlawView virtueFlawView, IVirtueFlawModel model) {
+  public VirtueFlawPresenter(Hero hero, Resources resources, IVirtueFlawView virtueFlawView, IVirtueFlawModel model) {
+    this.hero = hero;
     this.resources = resources;
     this.view = virtueFlawView;
     this.model = model;
@@ -77,13 +78,15 @@ public class VirtueFlawPresenter implements Presenter {
         virtueFlaw.setRoot(newValue);
       }
     });
-    model.addVirtueChangeListener(new VirtueChangeListener() {
+    hero.getChangeAnnouncer().addListener(new FlavoredChangeListener() {
       @Override
-      public void configuredChangeOccured() {
-        updateRootView(rootView);
+      public void changeOccurred(ChangeFlavor flavor) {
+        if (TraitChangeFlavor.changes(flavor, VirtueType.values())) {
+          updateRootView(rootView);
+        }
       }
     });
-    updateRootView(rootView);
+     updateRootView(rootView);
   }
 
   private void updateRootView(IObjectSelectionView<TraitType> rootView) {

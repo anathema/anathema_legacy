@@ -29,6 +29,6 @@ public class SpecialtiesInitializer implements CharacterModelInitializer {
     ISpecialtiesConfigurationView view = sectionView.addView(viewName, ISpecialtiesConfigurationView.class, character.getCharacterType());
     ISpecialtiesAdditionalModel specialtiesAdditionalModel = (ISpecialtiesAdditionalModel) character.getExtendedConfiguration().getAdditionalModel(SpecialtiesTemplate.ID);
     ISpecialtiesConfiguration specialtiesModel = specialtiesAdditionalModel.getSpecialtiesModel();
-    new SpecialtiesConfigurationPresenter(specialtiesModel, view, resources).initPresentation();
+    new SpecialtiesConfigurationPresenter(character, specialtiesModel, view, resources).initPresentation();
   }
 }

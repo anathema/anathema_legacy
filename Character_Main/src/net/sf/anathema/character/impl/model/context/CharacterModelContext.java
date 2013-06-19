@@ -12,12 +12,10 @@ import java.util.List;
 public class CharacterModelContext implements ICharacterModelContext {
 
   private final IGenericCharacter character;
-  private CharacterListening characterListening;
   private final IBasicCharacterData characterData;
 
-  public CharacterModelContext(IGenericCharacter character, CharacterListening characterListening) {
+  public CharacterModelContext(IGenericCharacter character) {
     this.character = character;
-    this.characterListening = characterListening;
     this.characterData = new BasicCharacterContext(character);
   }
 
@@ -29,11 +27,6 @@ public class CharacterModelContext implements ICharacterModelContext {
   @Override
   public IMagicCollection getMagicCollection() {
     return character;
-  }
-
-  @Override
-  public CharacterListening getCharacterListening() {
-    return characterListening;
   }
 
   @Override

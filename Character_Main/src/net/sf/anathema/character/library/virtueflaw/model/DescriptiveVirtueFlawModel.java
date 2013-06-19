@@ -1,11 +1,13 @@
 package net.sf.anathema.character.library.virtueflaw.model;
 
-import net.sf.anathema.character.generic.framework.additionaltemplate.listening.VirtueChangeListener;
+import net.sf.anathema.character.change.ChangeFlavor;
 import net.sf.anathema.character.generic.template.additional.IAdditionalTemplate;
 import net.sf.anathema.character.generic.traits.TraitType;
 import net.sf.anathema.character.generic.traits.types.VirtueType;
 import net.sf.anathema.character.library.virtueflaw.presenter.IDescriptiveVirtueFlawModel;
 import net.sf.anathema.character.main.hero.Hero;
+import net.sf.anathema.character.main.hero.change.FlavoredChangeListener;
+import net.sf.anathema.character.main.model.traits.TraitChangeFlavor;
 import net.sf.anathema.character.main.model.traits.TraitModel;
 import net.sf.anathema.character.main.model.traits.TraitModelFetcher;
 import net.sf.anathema.lib.control.GlobalChangeAdapter;
@@ -23,12 +25,14 @@ public class DescriptiveVirtueFlawModel extends VirtueFlawModel implements IDesc
     super(hero, additionalTemplate);
     this.traitModel = TraitModelFetcher.fetch(hero);
     virtueFlaw = new DescriptiveVirtueFlaw(hero);
-    addVirtueChangeListener(new VirtueChangeListener() {
+    hero.getChangeAnnouncer().addListener(new FlavoredChangeListener() {
       @Override
-      public void configuredChangeOccured() {
-        TraitType rootType = getVirtueFlaw().getRoot();
-        if (rootType != null && traitModel.getTrait(rootType).getCurrentValue() < 3) {
-          getVirtueFlaw().setRoot(null);
+      public void changeOccurred(ChangeFlavor flavor) {
+        if (TraitChangeFlavor.changes(flavor, VirtueType.values())) {
+          TraitType rootType = getVirtueFlaw().getRoot();
+          if (rootType != null && traitModel.getTrait(rootType).getCurrentValue() < 3) {
+            getVirtueFlaw().setRoot(null);
+          }
         }
       }
     });

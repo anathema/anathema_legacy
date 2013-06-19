@@ -2,7 +2,6 @@ package net.sf.anathema.character.library.virtueflaw.model;
 
 import net.sf.anathema.character.change.ChangeFlavor;
 import net.sf.anathema.character.generic.additionaltemplate.AbstractAdditionalModelAdapter;
-import net.sf.anathema.character.generic.framework.additionaltemplate.listening.VirtueChangeListener;
 import net.sf.anathema.character.generic.template.additional.IAdditionalTemplate;
 import net.sf.anathema.character.library.virtueflaw.presenter.IVirtueFlawModel;
 import net.sf.anathema.character.main.hero.CharacterModelGroup;
@@ -52,11 +51,6 @@ public abstract class VirtueFlawModel extends AbstractAdditionalModelAdapter imp
     getVirtueFlaw().addRootChangeListener(listener);
     getVirtueFlaw().getName().addTextChangedListener(adapter);
     getVirtueFlaw().getLimitTrait().addCurrentValueListener(adapter);
-  }
-
-  @Override
-  public void addVirtueChangeListener(final VirtueChangeListener listener) {
-    hero.getChangeAnnouncer().addListener(new ConfigurableFlavorChangeAdapter(listener));
   }
 
   protected Hero getHero() {

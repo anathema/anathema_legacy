@@ -10,8 +10,6 @@ public interface ICharacterModelContext {
 
   IBasicCharacterData getBasicCharacterContext();
 
-  ICharacterListening getCharacterListening();
-
   IMagicCollection getMagicCollection();
 
   IGenericTraitCollection getTraitCollection();

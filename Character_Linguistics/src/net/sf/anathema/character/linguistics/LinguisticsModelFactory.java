@@ -11,6 +11,6 @@ public class LinguisticsModelFactory implements IAdditionalModelFactory {
 
   @Override
   public IAdditionalModel createModel(IAdditionalTemplate additionalTemplate, ICharacterModelContext context, Hero hero) {
-    return new LinguisticsAdditionalModel(additionalTemplate, context);
+    return new LinguisticsAdditionalModel(hero, additionalTemplate, context);
   }
 }
