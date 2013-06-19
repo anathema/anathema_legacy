@@ -1,6 +1,6 @@
 package net.sf.anathema.character.generic.additionaltemplate;
 
-public class NullAdditionalModelExperienceCalculator implements IAdditionalModelExperienceCalculator {
+public class NullHeroModelExperienceCalculator implements HeroModelExperienceCalculator {
   @Override
   public int calculateCost() {
     return 0;

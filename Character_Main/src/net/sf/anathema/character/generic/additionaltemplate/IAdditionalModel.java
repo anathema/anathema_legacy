@@ -9,9 +9,9 @@ public interface IAdditionalModel {
 
   HeroModelGroup getAdditionalModelType();
 
-  IAdditionalModelBonusPointCalculator getBonusPointCalculator();
+  HeroModelBonusPointCalculator getBonusPointCalculator();
 
   void addChangeListener(IChangeListener listener);
 
-  IAdditionalModelExperienceCalculator getExperienceCalculator();
+  HeroModelExperienceCalculator getExperienceCalculator();
 }

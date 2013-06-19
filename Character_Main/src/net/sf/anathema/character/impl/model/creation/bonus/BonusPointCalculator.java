@@ -1,6 +1,6 @@
 package net.sf.anathema.character.impl.model.creation.bonus;
 
-import net.sf.anathema.character.generic.additionaltemplate.IAdditionalModelBonusPointCalculator;
+import net.sf.anathema.character.generic.additionaltemplate.HeroModelBonusPointCalculator;
 import net.sf.anathema.character.impl.model.creation.bonus.additional.MiscBonusModel;
 import net.sf.anathema.character.presenter.overview.IOverviewModel;
 import net.sf.anathema.character.presenter.overview.IValueModel;
@@ -10,21 +10,21 @@ import java.util.List;
 
 public class BonusPointCalculator {
 
-  private final List<IAdditionalModelBonusPointCalculator> allAdditionalCalculators = new ArrayList<>();
+  private final List<HeroModelBonusPointCalculator> allAdditionalCalculators = new ArrayList<>();
 
-  public void addAdditionalBonusPointCalculator(IAdditionalModelBonusPointCalculator additionalCalculator) {
+  public void addAdditionalBonusPointCalculator(HeroModelBonusPointCalculator additionalCalculator) {
     allAdditionalCalculators.add(additionalCalculator);
   }
 
   public void recalculate() {
-    for (IAdditionalModelBonusPointCalculator calculator : allAdditionalCalculators) {
+    for (HeroModelBonusPointCalculator calculator : allAdditionalCalculators) {
       calculator.recalculate();
     }
   }
 
   public int getAdditionalGeneralBonusPoints() {
     int additionalGranted = 0;
-    for (IAdditionalModelBonusPointCalculator calculator : allAdditionalCalculators) {
+    for (HeroModelBonusPointCalculator calculator : allAdditionalCalculators) {
       additionalGranted += calculator.getBonusPointsGranted();
     }
     return additionalGranted;

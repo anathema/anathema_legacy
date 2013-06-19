@@ -1,9 +1,9 @@
 package net.sf.anathema.character.intimacies.model;
 
-import net.sf.anathema.character.generic.additionaltemplate.IAdditionalModelBonusPointCalculator;
+import net.sf.anathema.character.generic.additionaltemplate.HeroModelBonusPointCalculator;
 import net.sf.anathema.character.intimacies.presenter.IIntimaciesModel;
 
-public class IntimaciesBonusPointCalculator implements IAdditionalModelBonusPointCalculator {
+public class IntimaciesBonusPointCalculator implements HeroModelBonusPointCalculator {
 
   private final IIntimaciesModel model;
   private int cost;

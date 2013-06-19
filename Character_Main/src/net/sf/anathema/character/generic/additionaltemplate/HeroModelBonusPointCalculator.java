@@ -1,6 +1,6 @@
 package net.sf.anathema.character.generic.additionaltemplate;
 
-public interface IAdditionalModelBonusPointCalculator {
+public interface HeroModelBonusPointCalculator {
 
   void recalculate();
 

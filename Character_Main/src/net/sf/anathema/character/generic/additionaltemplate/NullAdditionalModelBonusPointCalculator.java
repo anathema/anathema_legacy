@@ -1,6 +1,6 @@
 package net.sf.anathema.character.generic.additionaltemplate;
 
-public class NullAdditionalModelBonusPointCalculator implements IAdditionalModelBonusPointCalculator {
+public class NullAdditionalModelBonusPointCalculator implements HeroModelBonusPointCalculator {
   @Override
   public void recalculate() {
     // Nothing to do

@@ -1,9 +1,9 @@
 package net.sf.anathema.character.intimacies.presenter;
 
-import net.sf.anathema.character.generic.additionaltemplate.IAdditionalModelBonusPointCalculator;
-import net.sf.anathema.character.generic.additionaltemplate.IAdditionalModelExperienceCalculator;
+import net.sf.anathema.character.generic.additionaltemplate.HeroModelBonusPointCalculator;
+import net.sf.anathema.character.generic.additionaltemplate.HeroModelExperienceCalculator;
 import net.sf.anathema.character.generic.additionaltemplate.NullAdditionalModelBonusPointCalculator;
-import net.sf.anathema.character.generic.additionaltemplate.NullAdditionalModelExperienceCalculator;
+import net.sf.anathema.character.generic.additionaltemplate.NullHeroModelExperienceCalculator;
 import net.sf.anathema.character.intimacies.IIntimaciesAdditionalModel;
 import net.sf.anathema.character.intimacies.model.IIntimacy;
 import net.sf.anathema.character.intimacies.template.IntimaciesTemplate;
@@ -85,13 +85,13 @@ public class DemoIntimaciesModel implements IIntimaciesModel, IIntimaciesAdditio
   }
 
   @Override
-  public IAdditionalModelBonusPointCalculator getBonusPointCalculator() {
+  public HeroModelBonusPointCalculator getBonusPointCalculator() {
     return new NullAdditionalModelBonusPointCalculator();
   }
 
   @Override
-  public IAdditionalModelExperienceCalculator getExperienceCalculator() {
-    return new NullAdditionalModelExperienceCalculator();
+  public HeroModelExperienceCalculator getExperienceCalculator() {
+    return new NullHeroModelExperienceCalculator();
   }
 
   @Override

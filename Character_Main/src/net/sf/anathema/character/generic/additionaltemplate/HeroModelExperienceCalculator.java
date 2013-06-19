@@ -1,6 +1,6 @@
 package net.sf.anathema.character.generic.additionaltemplate;
 
-public interface IAdditionalModelExperienceCalculator {
+public interface HeroModelExperienceCalculator {
 
   int calculateCost();
 
