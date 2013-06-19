@@ -27,6 +27,6 @@ public interface IMagicLearnProperties {
 
   LegalityCheck getLegalityCheck();
 
-  //Todo: Component
+  //Todo: (Swing->FX) Component
   boolean isRempveAllowed(JList learnedList);
 }

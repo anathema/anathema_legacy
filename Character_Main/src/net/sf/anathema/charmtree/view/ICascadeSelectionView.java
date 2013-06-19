@@ -18,7 +18,7 @@ public interface ICascadeSelectionView {
 
   void addCharmTypeSelectionListener(ObjectValueListener<Identifier> selectionListener);
 
-  //todo: Action
+  //todo: (Swing->FX) Action
   void addCharmFilterButton(SmartAction action, String titleText);
 
   void fillCharmGroupBox(Identifier[] charmGroups);

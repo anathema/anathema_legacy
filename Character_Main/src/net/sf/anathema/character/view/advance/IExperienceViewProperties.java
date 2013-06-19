@@ -7,10 +7,10 @@ import javax.swing.table.TableModel;
 
 public interface IExperienceViewProperties {
 
-  //TODO: TableModel
+  //TODO: (Swing->FX) TableModel
   TableModel getTableModel();
 
-  //TODO: Swing throughout
+  //TODO: (Swing->FX) Swing throughout
   ITableColumnViewSettings[] getColumnSettings();
 
   RelativePath getDeleteIcon();
