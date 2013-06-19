@@ -19,5 +19,6 @@ public interface ICharmFilter {
 
   boolean load(Element node);
 
+  //TODO: (Swing->FX) Instantiates Swing Classes in Model
   JPanel getFilterPreferencePanel(Resources resources);
 }

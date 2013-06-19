@@ -1,14 +1,9 @@
 package net.sf.anathema.charmtree.presenter;
 
 import com.google.common.collect.Lists;
-import net.miginfocom.layout.LC;
-import net.miginfocom.swing.MigLayout;
 import net.sf.anathema.character.generic.magic.ICharm;
 import net.sf.anathema.charmtree.filters.ICharmFilter;
-import net.sf.anathema.lib.resources.Resources;
 
-import javax.swing.JComponent;
-import javax.swing.JPanel;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -31,16 +26,6 @@ public class CharmFilterSet {
     }
   }
 
-  //TODO: (Swing->FX) Instantiates Swing Classes in Model
-  public JComponent createFilterPanel(Resources resources) {
-    JPanel panel = new JPanel(new MigLayout(new LC().wrapAfter(1).fill()));
-    for (ICharmFilter filter : filterSet) {
-      panel.add(filter.getFilterPreferencePanel(resources));
-    }
-    return panel;
-
-  }
-
   public boolean acceptsCharm(ICharm charm) {
     for (ICharmFilter filter : filterSet) {
       if (!filter.acceptsCharm(charm, false)) {
@@ -57,5 +42,9 @@ public class CharmFilterSet {
       }
     }
     return true;
+  }
+
+  public List<ICharmFilter> getAllFilters() {
+    return filterSet;
   }
 }
