@@ -26,7 +26,7 @@ public class SpecialtiesInitializer implements CharacterModelInitializer {
   @Override
   public void initialize(SectionView sectionView, ICharacter character, Resources resources) {
     String viewName = resources.getString("AdditionalTemplateView.TabName.Specialties");
-    ISpecialtiesConfigurationView view = sectionView.addView(viewName, ISpecialtiesConfigurationView.class, character.getCharacterType());
+    ISpecialtiesConfigurationView view = sectionView.addView(viewName, ISpecialtiesConfigurationView.class, character.getTemplate().getTemplateType().getCharacterType());
     ISpecialtiesAdditionalModel specialtiesAdditionalModel = (ISpecialtiesAdditionalModel) character.getExtendedConfiguration().getAdditionalModel(SpecialtiesTemplate.ID);
     ISpecialtiesConfiguration specialtiesModel = specialtiesAdditionalModel.getSpecialtiesModel();
     new SpecialtiesConfigurationPresenter(character, specialtiesModel, view, resources).initPresentation();

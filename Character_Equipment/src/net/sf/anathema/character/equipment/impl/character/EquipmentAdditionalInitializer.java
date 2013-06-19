@@ -24,7 +24,7 @@ public class EquipmentAdditionalInitializer implements CharacterModelInitializer
   @Override
   public void initialize(SectionView sectionView, ICharacter character, Resources resources) {
     String viewName = resources.getString("AdditionalTemplateView.TabName.Equipment");
-    IEquipmentAdditionalView view = sectionView.addView(viewName, IEquipmentAdditionalView.class, character.getCharacterType());
+    IEquipmentAdditionalView view = sectionView.addView(viewName, IEquipmentAdditionalView.class, character.getTemplate().getTemplateType().getCharacterType());
     IEquipmentAdditionalModel equipmentModel = (IEquipmentAdditionalModel) character.getExtendedConfiguration().getAdditionalModel(IEquipmentAdditionalModelTemplate.ID);
     new EquipmentAdditionalPresenter(resources, equipmentModel, view).initPresentation();
   }

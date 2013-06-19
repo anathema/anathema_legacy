@@ -32,7 +32,7 @@ public class ComboInitializer implements CharacterModelInitializer {
       return;
     }
     String header = resources.getString("CardView.CharmConfiguration.ComboCreation.Title");
-    IComboConfigurationView comboView = sectionView.addView(header, IComboConfigurationView.class, character.getCharacterType());
+    IComboConfigurationView comboView = sectionView.addView(header, IComboConfigurationView.class, character.getTemplate().getTemplateType().getCharacterType());
     MagicDescriptionProvider magicDescriptionProvider = CharmDescriptionProviderExtractor.CreateFor(model, resources);
     ComboConfigurationModel comboModel = new ComboConfigurationModel(character, magicDescriptionProvider);
     new ComboConfigurationPresenter(character, resources, comboModel, comboView).initPresentation();

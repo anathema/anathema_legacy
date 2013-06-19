@@ -24,7 +24,7 @@ public class IntimaciesInitializer implements CharacterModelInitializer {
   @Override
   public void initialize(SectionView sectionView, ICharacter character, final Resources resources) {
     String viewName = resources.getString("AdditionalTemplateView.TabName.Intimacies");
-    IIntimaciesView view = sectionView.addView(viewName, IIntimaciesView.class, character.getCharacterType());
+    IIntimaciesView view = sectionView.addView(viewName, IIntimaciesView.class, character.getTemplate().getTemplateType().getCharacterType());
     IIntimaciesAdditionalModel additionalModel = (IIntimaciesAdditionalModel) character.getExtendedConfiguration().getAdditionalModel(IntimaciesTemplate.ID);
     new IntimaciesPresenter(additionalModel.getIntimaciesModel(), additionalModel, view, resources).initPresentation();
   }

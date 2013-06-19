@@ -43,7 +43,7 @@ public class CharmInitializer implements CharacterModelInitializer {
             characterTemplate.getPresentationProperties().getCharmPresentationProperties();
     CharmDisplayPropertiesMap propertiesMap = new CharmDisplayPropertiesMap(templateRegistry);
     String header = resources.getString("CardView.CharmConfiguration.CharmSelection.Title");
-    ICharmView charmView = sectionView.addView(header, ICharmView.class, character.getCharacterType());
+    ICharmView charmView = sectionView.addView(header, ICharmView.class, character.getTemplate().getTemplateType().getCharacterType());
     CharacterCharmTreePresenter treePresenter = new CharacterCharmTreePresenter(resources, charmView, model, presentationProperties, propertiesMap);
     treePresenter.initPresentation();
     //MagicDetailPresenter detailPresenter = createMagicDetailPresenter();

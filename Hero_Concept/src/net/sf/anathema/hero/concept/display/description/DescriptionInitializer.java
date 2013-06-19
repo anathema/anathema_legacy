@@ -28,7 +28,8 @@ public class DescriptionInitializer implements CharacterModelInitializer {
   @Override
   public void initialize(SectionView sectionView, ICharacter character, Resources resources) {
     String descriptionHeader = resources.getString("CardView.CharacterDescription.Title");
-    ICharacterDescriptionView descriptionView = sectionView.addView(descriptionHeader, ICharacterDescriptionView.class, character.getCharacterType());
+    ICharacterDescriptionView descriptionView =
+            sectionView.addView(descriptionHeader, ICharacterDescriptionView.class, character.getTemplate().getTemplateType().getCharacterType());
     DescriptionDetails descriptionDetails = createDescriptionDetails(character);
     new DescriptionPresenter(descriptionDetails, resources, descriptionView).initPresentation();
   }
@@ -36,7 +37,7 @@ public class DescriptionInitializer implements CharacterModelInitializer {
   private DescriptionDetails createDescriptionDetails(ICharacter character) {
     HeroDescription characterDescription = HeroDescriptionFetcher.fetch(character);
     HeroConcept heroConcept = HeroConceptFetcher.fetch(character);
-    boolean isExalt = character.getCharacterType().isExaltType();
+    boolean isExalt = character.getTemplate().getTemplateType().getCharacterType().isExaltType();
     return new DescriptionDetails(characterDescription, heroConcept, isExalt);
   }
 }

@@ -22,7 +22,7 @@ public class AdvantagesInitializer implements CharacterModelInitializer {
   @Override
   public void initialize(SectionView sectionView, ICharacter character, Resources resources) {
     String header = new DefaultAdvantageViewProperties(resources).getOverallHeader();
-    AdvantageView view = sectionView.addView(header, AdvantageView.class, character.getCharacterType());
+    AdvantageView view = sectionView.addView(header, AdvantageView.class, character.getTemplate().getTemplateType().getCharacterType());
     new BasicAdvantagePresenter(resources, character, view).initPresentation();
   }
 }

@@ -1,8 +1,6 @@
 package net.sf.anathema.character.model;
 
 import net.sf.anathema.character.generic.framework.additionaltemplate.model.ICharacterModelContext;
-import net.sf.anathema.character.generic.template.HeroTemplate;
-import net.sf.anathema.character.generic.type.ICharacterType;
 import net.sf.anathema.character.main.hero.Hero;
 import net.sf.anathema.character.main.model.charms.CharmsModel;
 import net.sf.anathema.character.main.model.combos.CombosModel;
@@ -20,8 +18,4 @@ public interface ICharacter extends IItemData, Hero {
   ICharacterModelContext getCharacterContext();
 
   IExtendedConfiguration getExtendedConfiguration();
-
-  HeroTemplate getTemplate();
-
-  ICharacterType getCharacterType();
 }

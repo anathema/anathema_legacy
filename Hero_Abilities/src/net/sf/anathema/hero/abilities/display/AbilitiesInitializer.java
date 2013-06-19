@@ -22,8 +22,8 @@ public class AbilitiesInitializer implements CharacterModelInitializer {
   @Override
   public void initialize(SectionView sectionView, ICharacter character, Resources resources) {
     String abilityHeader = resources.getString("CardView.AbilityConfiguration.Title");
-    IGroupedFavorableTraitConfigurationView abilityView =
-            sectionView.addView(abilityHeader, IGroupedFavorableTraitConfigurationView.class, character.getCharacterType());
+    IGroupedFavorableTraitConfigurationView abilityView = sectionView
+            .addView(abilityHeader, IGroupedFavorableTraitConfigurationView.class, character.getTemplate().getTemplateType().getCharacterType());
     new AbilitiesPresenter(character, resources, abilityView).initPresentation();
   }
 }

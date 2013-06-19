@@ -7,7 +7,6 @@ import net.sf.anathema.character.generic.framework.additionaltemplate.model.ICha
 import net.sf.anathema.character.generic.template.HeroTemplate;
 import net.sf.anathema.character.generic.template.additional.IAdditionalTemplate;
 import net.sf.anathema.character.generic.template.additional.IGlobalAdditionalTemplate;
-import net.sf.anathema.character.generic.type.ICharacterType;
 import net.sf.anathema.character.impl.generic.GenericCharacter;
 import net.sf.anathema.character.impl.model.context.CharacterModelContext;
 import net.sf.anathema.character.impl.model.statistics.ExtendedConfiguration;
@@ -107,11 +106,6 @@ public class ExaltedCharacter implements ICharacter {
 
   public SpellModel getSpells() {
     return SpellsModelFetcher.fetch(hero);
-  }
-
-  @Override
-  public ICharacterType getCharacterType() {
-    return getTemplate().getTemplateType().getCharacterType();
   }
 
   public ExtendedConfiguration getExtendedConfiguration() {

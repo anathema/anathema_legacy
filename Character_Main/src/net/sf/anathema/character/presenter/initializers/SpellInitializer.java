@@ -24,7 +24,7 @@ public class SpellInitializer implements CharacterModelInitializer {
   @Override
   public void initialize(SectionView sectionView, ICharacter character, Resources resources) {
     String header = resources.getString(titleKey);
-    ISpellView view = sectionView.addView(header, ISpellView.class, character.getCharacterType());
+    ISpellView view = sectionView.addView(header, ISpellView.class, character.getTemplate().getTemplateType().getCharacterType());
     MagicDescriptionProvider magicDescriptionProvider = CharmDescriptionProviderExtractor.CreateFor(applicationModel, resources);
     new SpellPresenter(spellModel, character, resources, view, magicDescriptionProvider).initPresentation();
   }

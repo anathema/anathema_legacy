@@ -25,7 +25,7 @@ public class AttributesInitializer implements CharacterModelInitializer {
   public void initialize(SectionView sectionView, ICharacter character, Resources resources) {
     String attributeHeader = resources.getString("CardView.AttributeConfiguration.Title");
     IGroupedFavorableTraitConfigurationView attributeView =
-            sectionView.addView(attributeHeader, IGroupedFavorableTraitConfigurationView.class, character.getCharacterType());
+            sectionView.addView(attributeHeader, IGroupedFavorableTraitConfigurationView.class, character.getTemplate().getTemplateType().getCharacterType());
     new AttributesPresenter(character, resources, attributeView).initPresentation();
   }
 }

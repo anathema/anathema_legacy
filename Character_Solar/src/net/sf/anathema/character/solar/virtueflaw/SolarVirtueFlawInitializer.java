@@ -24,11 +24,11 @@ public class SolarVirtueFlawInitializer implements CharacterModelInitializer {
 
   @Override
   public void initialize(SectionView sectionView, ICharacter character, Resources resources) {
-    if (!(character.getCharacterType() instanceof SolarCharacterType)) {
+    if (!(character.getTemplate().getTemplateType().getCharacterType() instanceof SolarCharacterType)) {
       return;
     }
     String viewName = resources.getString("AdditionalTemplateView.TabName.SolarVirtueFlaw");
-    IDescriptiveVirtueFlawView view = sectionView.addView(viewName, IDescriptiveVirtueFlawView.class, character.getCharacterType());
+    IDescriptiveVirtueFlawView view = sectionView.addView(viewName, IDescriptiveVirtueFlawView.class, character.getTemplate().getTemplateType().getCharacterType());
     IDescriptiveVirtueFlawModel virtueFlawModel = (IDescriptiveVirtueFlawModel) character.getExtendedConfiguration().getAdditionalModel(SolarVirtueFlawTemplate.ID);
     SolarVirtueFlawPresenter presenter = new SolarVirtueFlawPresenter(character,resources, view, virtueFlawModel);
     presenter.initPresentation();

@@ -24,7 +24,7 @@ public class LinguisticsInitializer implements CharacterModelInitializer {
   @Override
   public void initialize(SectionView sectionView, ICharacter character, Resources resources) {
     String viewName = resources.getString("AdditionalTemplateView.TabName.Linguistics");
-    ILinguisticsView view = sectionView.addView(viewName, ILinguisticsView.class, character.getCharacterType());
+    ILinguisticsView view = sectionView.addView(viewName, ILinguisticsView.class, character.getTemplate().getTemplateType().getCharacterType());
     ILinguisticsAdditionalModel linguisticsModel = (ILinguisticsAdditionalModel) character.getExtendedConfiguration().getAdditionalModel(LinguisticsTemplate.ID);
     new LinguisticsPresenter(linguisticsModel.getLinguisticsModel(), view, resources).initPresentation();
   }

@@ -27,7 +27,7 @@ public class CasteInitializer implements CharacterModelInitializer {
       return;
     }
     String conceptHeader = resources.getString("CardView.CharacterConcept.Title");
-    ICharacterType characterType = character.getCharacterType();
+    ICharacterType characterType = character.getTemplate().getTemplateType().getCharacterType();
     CasteView conceptView = sectionView.addView(conceptHeader, CasteView.class, characterType);
     new CastePresenter(character, conceptView, resources).initPresentation();
   }
