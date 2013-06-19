@@ -15,6 +15,9 @@ import net.sf.anathema.framework.repository.IItem;
 import net.sf.anathema.framework.repository.RepositoryException;
 import net.sf.anathema.framework.repository.access.IRepositoryReadAccess;
 import net.sf.anathema.framework.repository.access.IRepositoryWriteAccess;
+import net.sf.anathema.hero.model.Hero;
+import net.sf.anathema.hero.model.HeroModel;
+import net.sf.anathema.hero.persistence.HeroModelPersister;
 import net.sf.anathema.hero.persistence.HeroModelPersisterAutoCollector;
 import net.sf.anathema.lib.exception.PersistenceException;
 import net.sf.anathema.lib.message.MessageType;
@@ -52,14 +55,25 @@ public class ExaltedCharacterPersister implements IRepositoryItemPersister {
   }
 
   @Override
-  public void save(IRepositoryWriteAccess writeAccess, IItem item) throws IOException, RepositoryException {
+  public void save(final IRepositoryWriteAccess writeAccess, IItem item) throws IOException, RepositoryException {
     OutputStream stream = null;
     try {
       stream = writeAccess.createMainOutputStream();
       saveMainFile(stream, item);
+      Hero hero = (Hero) item.getItemData();
+      saveModels(writeAccess, hero);
     }
     finally {
       IOUtils.closeQuietly(stream);
+    }
+  }
+
+  private void saveModels(IRepositoryWriteAccess writeAccess, Hero hero) {
+    for (HeroModelPersister persister : persisterAutoCollector.collect()) {
+      HeroModel heroModel = hero.getModel(persister.getModelId());
+      if (heroModel != null) {
+        persister.save(heroModel, new HeroModelSaverImpl(writeAccess));
+      }
     }
   }
 
@@ -88,6 +102,7 @@ public class ExaltedCharacterPersister implements IRepositoryItemPersister {
       Document document = saxReader.read(stream);
       IItem loadedItem = load(document);
       ExaltedCharacter character = (ExaltedCharacter) loadedItem.getItemData();
+      loadModels(readAccess, character);
       return loadedItem;
     }
     catch (DocumentException e) {
@@ -95,6 +110,15 @@ public class ExaltedCharacterPersister implements IRepositoryItemPersister {
     }
     finally {
       IOUtils.closeQuietly(stream);
+    }
+  }
+
+  private void loadModels(IRepositoryReadAccess readAccess, Hero hero) {
+    for (HeroModelPersister persister : persisterAutoCollector.collect()) {
+      HeroModel heroModel = hero.getModel(persister.getModelId());
+      if (heroModel != null) {
+        persister.load(heroModel, new HeroModelLoaderImpl(readAccess));
+      }
     }
   }
 
@@ -126,4 +150,5 @@ public class ExaltedCharacterPersister implements IRepositoryItemPersister {
   private void markCharacterReadyForWork(ExaltedCharacter character) {
     character.setFullyLoaded(true);
   }
+
 }

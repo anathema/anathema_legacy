@@ -42,7 +42,11 @@ public class MultiFileReadAccess implements IRepositoryReadAccess {
   }
 
   private InputStream openInputStream(String id) throws FileNotFoundException {
-    return new FileInputStream(new File(itemFolder, id + extension));
+    File file = new File(itemFolder, id + extension);
+    if (!file.exists()) {
+      return null;
+    }
+    return new FileInputStream(file);
   }
 
   @Override

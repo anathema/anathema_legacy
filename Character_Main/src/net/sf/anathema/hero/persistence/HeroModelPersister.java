@@ -8,7 +8,7 @@ public interface HeroModelPersister {
 
   Identifier getModelId();
 
-  void load(HeroModel model, HeroModelPersistence persistence) throws PersistenceException;
+  void load(HeroModel model, HeroModelLoader loader) throws PersistenceException;
 
-  void save(HeroModel heroModel, HeroModelPersistence persistence);
+  void save(HeroModel heroModel, HeroModelSaver saver);
 }

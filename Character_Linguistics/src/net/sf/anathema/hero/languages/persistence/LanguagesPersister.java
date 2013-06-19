@@ -4,9 +4,10 @@ import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import net.sf.anathema.hero.languages.model.LanguagesModel;
 import net.sf.anathema.hero.model.HeroModel;
-import net.sf.anathema.hero.persistence.HeroModelPersistence;
+import net.sf.anathema.hero.persistence.HeroModelLoader;
 import net.sf.anathema.hero.persistence.HeroModelPersister;
 import net.sf.anathema.hero.persistence.HeroModelPersisterCollected;
+import net.sf.anathema.hero.persistence.HeroModelSaver;
 import net.sf.anathema.lib.exception.AnathemaException;
 import net.sf.anathema.lib.exception.PersistenceException;
 import net.sf.anathema.lib.util.Identifier;
@@ -35,10 +36,13 @@ public class LanguagesPersister implements HeroModelPersister {
   }
 
   @Override
-  public void load(HeroModel model, HeroModelPersistence persistence) throws PersistenceException {
+  public void load(HeroModel model, HeroModelLoader loader) throws PersistenceException {
     InputStream inputStream = null;
     try {
-      inputStream = persistence.openInputStream(persistenceId);
+      inputStream = loader.openInputStream(persistenceId);
+      if (inputStream == null) {
+        return;
+      }
       LanguagesPto pto = readFromJson(inputStream);
       fillModel((LanguagesModel) model, pto);
     } catch (IOException e) {
@@ -68,9 +72,9 @@ public class LanguagesPersister implements HeroModelPersister {
   }
 
   @Override
-  public void save(HeroModel heroModel, HeroModelPersistence persistence) {
+  public void save(HeroModel heroModel, HeroModelSaver saver) {
     String json = fillPto((LanguagesModel) heroModel);
-    writePersistence(persistence, json);
+    writePersistence(saver, json);
   }
 
   private String fillPto(LanguagesModel model) {
@@ -81,7 +85,7 @@ public class LanguagesPersister implements HeroModelPersister {
     return gson.toJson(pto);
   }
 
-  private void writePersistence(HeroModelPersistence persistence, String json) {
+  private void writePersistence(HeroModelSaver persistence, String json) {
     OutputStream outputStream = null;
     try {
       outputStream = persistence.openOutputStream(persistenceId);
