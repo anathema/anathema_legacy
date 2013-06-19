@@ -6,6 +6,7 @@ import net.sf.anathema.hero.languages.model.LanguagesModel;
 import net.sf.anathema.hero.model.HeroModel;
 import net.sf.anathema.hero.persistence.HeroModelPersistence;
 import net.sf.anathema.hero.persistence.HeroModelPersister;
+import net.sf.anathema.hero.persistence.HeroModelPersisterCollected;
 import net.sf.anathema.lib.exception.AnathemaException;
 import net.sf.anathema.lib.exception.PersistenceException;
 import net.sf.anathema.lib.util.Identifier;
@@ -16,6 +17,7 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
 
+@HeroModelPersisterCollected
 public class LanguagesPersister implements HeroModelPersister {
 
   private final String persistenceId = "languages";

@@ -3,10 +3,10 @@ package net.sf.anathema.hero.initialization;
 import net.sf.anathema.character.generic.framework.ICharacterGenerics;
 import net.sf.anathema.character.generic.template.HeroTemplate;
 import net.sf.anathema.hero.model.DefaultHero;
-import net.sf.anathema.hero.template.DefaultTemplateFactory;
 import net.sf.anathema.hero.model.HeroModel;
 import net.sf.anathema.hero.model.HeroModelFactory;
 import net.sf.anathema.hero.model.InitializationContext;
+import net.sf.anathema.hero.template.DefaultTemplateFactory;
 import net.sf.anathema.hero.template.TemplateFactory;
 import net.sf.anathema.lib.util.Identifier;
 
@@ -34,10 +34,6 @@ public class HeroModelInitializer {
   private Iterable<Identifier> getSortedModelIdsForCharacter(ModelFactoryMap factoryMap) {
     List<HeroModelFactory> configuredFactories = collectConfiguredModelFactories(factoryMap);
     return new ModelInitializationList<>(configuredFactories);
-  }
-
-  public HeroModelInitializer() {
-    super();    //To change body of overridden methods use File | Settings | File Templates.
   }
 
   private Iterable<HeroModel> createSortedModels(ICharacterGenerics generics, ModelFactoryMap factoryMap, Iterable<Identifier> sortedRelevantModelIds) {
