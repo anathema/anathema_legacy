@@ -3,18 +3,14 @@ package net.sf.anathema.charmtree.presenter;
 import net.sf.anathema.character.generic.magic.ICharm;
 import net.sf.anathema.character.generic.magic.charms.GroupCharmTree;
 import net.sf.anathema.character.generic.magic.charms.ICharmGroup;
-import net.sf.anathema.charmtree.filters.CharmFilterSettingsPage;
 import net.sf.anathema.charmtree.filters.ICharmFilter;
 import net.sf.anathema.charmtree.view.ICascadeSelectionView;
 import net.sf.anathema.charmtree.view.ICharmGroupChangeListener;
-import net.sf.anathema.framework.view.SwingApplicationFrame;
 import net.sf.anathema.interaction.Command;
 import net.sf.anathema.interaction.Tool;
 import net.sf.anathema.lib.compare.I18nedIdentificateSorter;
 import net.sf.anathema.lib.control.ObjectValueListener;
 import net.sf.anathema.lib.gui.AgnosticUIConfiguration;
-import net.sf.anathema.lib.gui.dialog.core.DialogResult;
-import net.sf.anathema.lib.gui.dialog.userdialog.UserDialog;
 import net.sf.anathema.lib.resources.Resources;
 import net.sf.anathema.lib.util.Identifier;
 import net.sf.anathema.platform.tree.presenter.view.CascadeLoadedListener;
@@ -94,36 +90,10 @@ public abstract class AbstractCascadePresenter implements ICascadeSelectionPrese
     view.addCharmTypeSelector(getResources().getString("CharmTreeView.GUI.CharmType"), types, new SelectIdentifierConfiguration(resources));
   }
 
-  //TODO: (Swing->FX) Opens a Swing Dialog in Presenter
   protected void createFilterButton(ICascadeSelectionView selectionView) {
     Tool tool = selectionView.addCharmFilterButton(resources.getString("CharmFilters.Filters"));
     tool.setText(resources.getString("CharmFilters.Define"));
-    tool.setCommand(new Command() {
-      @Override
-      public void execute() {
-        CharmFilterSettingsPage page = new CharmFilterSettingsPage(getResources(), filterSet);
-        UserDialog userDialog = new UserDialog(SwingApplicationFrame.getParentComponent(), page);
-        DialogResult result = userDialog.show();
-        resetOrApplyFilters(result);
-        reselectTypeAndGroup(result);
-      }
-
-      private void reselectTypeAndGroup(DialogResult result) {
-        if (result.isCanceled()) {
-          return;
-        }
-        handleTypeSelectionChange(currentType);
-        changeListener.reselect();
-      }
-
-      private void resetOrApplyFilters(DialogResult result) {
-        if (result.isCanceled()) {
-          filterSet.resetAllFilters();
-        } else {
-          filterSet.applyAllFilters();
-        }
-      }
-    });
+    tool.setCommand(new DefineCharmFilters());
   }
 
   private void createHelpText() {
@@ -210,5 +180,27 @@ public abstract class AbstractCascadePresenter implements ICascadeSelectionPrese
 
   public void setCharmGroups(CharmGroupCollection charmGroups) {
     this.charmGroups = charmGroups;
+  }
+
+  //TODO: (Swing->FX) Instantiates a View in Presenter
+  private class DefineCharmFilters implements Command {
+    @Override
+    public void execute() {
+      CharmFilterDefinitionView definitionView = new CharmFilterDefinitionView(resources, filterSet);
+      definitionView.whenEditIsFinished(new FilterDefinitionListener() {
+        @Override
+        public void changeConfirmed() {
+          filterSet.applyAllFilters();
+          handleTypeSelectionChange(currentType);
+          changeListener.reselect();
+        }
+
+        @Override
+        public void changeAborted() {
+          filterSet.resetAllFilters();
+        }
+      });
+      definitionView.show();
+    }
   }
 }
