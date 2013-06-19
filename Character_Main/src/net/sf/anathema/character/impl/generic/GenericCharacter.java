@@ -27,6 +27,7 @@ import net.sf.anathema.character.library.trait.specialties.Specialty;
 import net.sf.anathema.character.library.trait.subtrait.ISpecialtyListener;
 import net.sf.anathema.character.main.model.abilities.AbilityModelFetcher;
 import net.sf.anathema.character.main.model.attributes.AttributeModelFetcher;
+import net.sf.anathema.character.main.model.charms.CharmsModelFetcher;
 import net.sf.anathema.character.main.model.concept.HeroConcept;
 import net.sf.anathema.character.main.model.concept.HeroConceptFetcher;
 import net.sf.anathema.character.main.model.description.HeroDescriptionFetcher;
@@ -73,7 +74,7 @@ public class GenericCharacter implements IGenericCharacter {
 
   @Override
   public int getLearnCount(String charmName) {
-    CharmsModel charms = character.getCharms();
+    CharmsModel charms = CharmsModelFetcher.fetch(character);
     try {
       IMultiLearnableCharmConfiguration configuration = (IMultiLearnableCharmConfiguration) charms.getSpecialCharmConfiguration(charmName);
       return configuration.getCurrentLearnCount();
@@ -89,7 +90,7 @@ public class GenericCharacter implements IGenericCharacter {
 
   @Override
   public void setLearnCount(String charmName, int newValue) {
-    CharmsModel charms = character.getCharms();
+    CharmsModel charms = CharmsModelFetcher.fetch(character);
     IMultiLearnableCharmConfiguration configuration = (IMultiLearnableCharmConfiguration) charms.getSpecialCharmConfiguration(charmName);
     configuration.setCurrentLearnCount(newValue);
   }
@@ -105,7 +106,7 @@ public class GenericCharacter implements IGenericCharacter {
 
       @Override
       public void visitCharm(ICharm charm) {
-        isLearned[0] = character.getCharms().isLearned(charm);
+        isLearned[0] = CharmsModelFetcher.fetch(character).isLearned(charm);
       }
     });
     return isLearned[0];
@@ -118,7 +119,7 @@ public class GenericCharacter implements IGenericCharacter {
 
   @Override
   public boolean isAlienCharm(ICharm charm) {
-    return character.getCharms().isAlienCharm(charm);
+    return CharmsModelFetcher.fetch(character).isAlienCharm(charm);
   }
 
   @Override
@@ -223,7 +224,7 @@ public class GenericCharacter implements IGenericCharacter {
 
   @Override
   public int getLearnCount(ICharm charm) {
-    return getLearnCount(charm, character.getCharms());
+    return getLearnCount(charm, CharmsModelFetcher.fetch(character));
   }
 
   private int getLearnCount(ICharm charm, CharmsModel configuration) {
@@ -285,19 +286,19 @@ public class GenericCharacter implements IGenericCharacter {
 
   @Override
   public boolean isSubeffectCharm(ICharm charm) {
-    ISpecialCharmConfiguration charmConfiguration = character.getCharms().getSpecialCharmConfiguration(charm);
+    ISpecialCharmConfiguration charmConfiguration = CharmsModelFetcher.fetch(character).getSpecialCharmConfiguration(charm);
     return charmConfiguration instanceof ISubeffectCharmConfiguration;
   }
 
   @Override
   public boolean isMultipleEffectCharm(ICharm charm) {
-    ISpecialCharmConfiguration charmConfiguration = character.getCharms().getSpecialCharmConfiguration(charm);
+    ISpecialCharmConfiguration charmConfiguration = CharmsModelFetcher.fetch(character).getSpecialCharmConfiguration(charm);
     return charmConfiguration instanceof IMultipleEffectCharmConfiguration && !(charmConfiguration instanceof ISubeffectCharmConfiguration);
   }
 
   @Override
   public String[] getLearnedEffects(ICharm charm) {
-    ISpecialCharmConfiguration charmConfiguration = character.getCharms().getSpecialCharmConfiguration(charm);
+    ISpecialCharmConfiguration charmConfiguration = CharmsModelFetcher.fetch(character).getSpecialCharmConfiguration(charm);
     if (!(charmConfiguration instanceof IMultipleEffectCharmConfiguration)) {
       return new String[0];
     }
@@ -314,7 +315,7 @@ public class GenericCharacter implements IGenericCharacter {
   @Override
   public ICharm[] getGenericCharms() {
     List<ICharm> genericCharms = new ArrayList<>();
-    for (ILearningCharmGroup group : character.getCharms().getAllGroups()) {
+    for (ILearningCharmGroup group : CharmsModelFetcher.fetch(character).getAllGroups()) {
       for (ICharm charm : group.getAllCharms()) {
         if (charm.isInstanceOfGenericCharm() &&
             charm.getCharacterType().equals(character.getTemplate().getTemplateType().getCharacterType())) {
@@ -327,7 +328,8 @@ public class GenericCharacter implements IGenericCharacter {
 
   @Override
   public ICharm[] getLearnedCharms() {
-    return character.getCharms().getLearnedCharms(ExperienceModelFetcher.fetch(character).isExperienced());
+    boolean experienced = ExperienceModelFetcher.fetch(character).isExperienced();
+    return CharmsModelFetcher.fetch(character).getLearnedCharms(experienced);
   }
 
   @Override

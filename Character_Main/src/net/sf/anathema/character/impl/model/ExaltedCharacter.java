@@ -14,8 +14,6 @@ import net.sf.anathema.character.main.hero.DefaultHero;
 import net.sf.anathema.character.main.hero.HeroModel;
 import net.sf.anathema.character.main.hero.ModelInitializationContext;
 import net.sf.anathema.character.main.hero.initialization.HeroModelInitializer;
-import net.sf.anathema.character.main.model.charms.CharmsModel;
-import net.sf.anathema.character.main.model.charms.CharmsModelFetcher;
 import net.sf.anathema.character.main.model.combos.CombosModel;
 import net.sf.anathema.character.main.model.combos.CombosModelFetcher;
 import net.sf.anathema.character.main.model.description.HeroDescription;
@@ -94,10 +92,6 @@ public class ExaltedCharacter implements ICharacter {
   @Override
   public void setClean() {
     management.setClean();
-  }
-
-  public CharmsModel getCharms() {
-    return CharmsModelFetcher.fetch(hero);
   }
 
   public CombosModel getCombos() {

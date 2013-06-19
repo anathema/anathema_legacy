@@ -12,6 +12,7 @@ import net.sf.anathema.character.generic.magic.IMagic;
 import net.sf.anathema.character.generic.magic.ISpell;
 import net.sf.anathema.character.generic.magic.description.MagicDescription;
 import net.sf.anathema.character.impl.generic.GenericCharacter;
+import net.sf.anathema.character.main.model.charms.CharmsModelFetcher;
 import net.sf.anathema.character.main.model.experience.ExperienceModelFetcher;
 import net.sf.anathema.character.model.ICharacter;
 import net.sf.anathema.character.reporting.pdf.content.stats.magic.CharmStats;
@@ -189,6 +190,7 @@ public class MagicReport extends AbstractPdfReport {
   }
 
   private ICharm[] getCurrentCharms(ICharacter character) {
-    return character.getCharms().getLearnedCharms(ExperienceModelFetcher.fetch(character).isExperienced());
+    boolean experienced = ExperienceModelFetcher.fetch(character).isExperienced();
+    return CharmsModelFetcher.fetch(character).getLearnedCharms(experienced);
   }
 }

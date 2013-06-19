@@ -12,6 +12,7 @@ import net.sf.anathema.character.library.trait.DefaultTraitType;
 import net.sf.anathema.character.library.trait.LimitedTrait;
 import net.sf.anathema.character.library.trait.persistence.TraitPersister;
 import net.sf.anathema.character.main.hero.Hero;
+import net.sf.anathema.character.main.model.charms.CharmsModelFetcher;
 import net.sf.anathema.character.main.model.combos.CombosModel;
 import net.sf.anathema.character.model.ICharacter;
 import net.sf.anathema.character.main.model.charms.CharmsModel;
@@ -65,7 +66,7 @@ public class CharmConfigurationPersister {
       return;
     }
     Element charmsElement = parent.addElement(TAG_CHARMS);
-    CharmsModel charmConfiguration = character.getCharms();
+    CharmsModel charmConfiguration = CharmsModelFetcher.fetch(character);
     saveCharms(charmsElement, charmConfiguration);
     saveCombos(charmsElement, character.getCombos());
     saveFilters(charmsElement, charmConfiguration.getCharmFilters());
@@ -116,7 +117,7 @@ public class CharmConfigurationPersister {
     if (charmsElement == null) {
       return;
     }
-    CharmsModel charmConfiguration = character.getCharms();
+    CharmsModel charmConfiguration = CharmsModelFetcher.fetch(character);
     ISpecialCharmPersister specialPersister = createSpecialCharmPersister(charmConfiguration);
     for (Object groupObjectElement : charmsElement.elements(TAG_CHARMGROUP)) {
       Element groupElement = (Element) groupObjectElement;
@@ -243,7 +244,7 @@ public class CharmConfigurationPersister {
   }
 
   private void loadFilters(Element parent, ICharacter character) {
-    CharmsModel configuration = character.getCharms();
+    CharmsModel configuration = CharmsModelFetcher.fetch(character);
     Element charmFilterNode = parent.element(TAG_CHARMFILTERS);
     if (charmFilterNode != null) {
       for (Object filterNode : charmFilterNode.elements()) {

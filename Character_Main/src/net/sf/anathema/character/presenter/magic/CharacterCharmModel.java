@@ -4,6 +4,7 @@ import net.sf.anathema.character.generic.caste.CasteType;
 import net.sf.anathema.character.generic.magic.ICharm;
 import net.sf.anathema.character.generic.magic.description.MagicDescriptionProvider;
 import net.sf.anathema.character.generic.template.magic.ICharmTemplate;
+import net.sf.anathema.character.main.model.charms.CharmsModelFetcher;
 import net.sf.anathema.character.main.model.concept.HeroConceptFetcher;
 import net.sf.anathema.character.model.ICharacter;
 import net.sf.anathema.character.model.ITypedDescription;
@@ -31,7 +32,7 @@ public class CharacterCharmModel {
   }
 
   public CharmsModel getCharmConfiguration() {
-    return character.getCharms();
+    return CharmsModelFetcher.fetch(character);
   }
 
   private ITypedDescription<CasteType> getCaste() {

@@ -8,6 +8,7 @@ import net.sf.anathema.cards.layout.ICardReportResourceProvider;
 import net.sf.anathema.character.generic.impl.magic.MartialArtsUtilities;
 import net.sf.anathema.character.generic.magic.ICharm;
 import net.sf.anathema.character.generic.magic.ISpell;
+import net.sf.anathema.character.main.model.charms.CharmsModelFetcher;
 import net.sf.anathema.character.main.model.experience.ExperienceModelFetcher;
 import net.sf.anathema.character.model.ICharacter;
 import net.sf.anathema.lib.resources.Resources;
@@ -158,11 +159,13 @@ public class LegendCardDataProvider implements ICardDataProvider {
   }
 
   private ICharm[] getCurrentCharms(ICharacter character) {
-    return character.getCharms().getLearnedCharms(ExperienceModelFetcher.fetch(character).isExperienced());
+    boolean experienced = ExperienceModelFetcher.fetch(character).isExperienced();
+    return CharmsModelFetcher.fetch(character).getLearnedCharms(experienced);
   }
 
   private ISpell[] getCurrentSpells(ICharacter character) {
-    return character.getSpells().getLearnedSpells(ExperienceModelFetcher.fetch(character).isExperienced());
+    boolean experienced = ExperienceModelFetcher.fetch(character).isExperienced();
+    return character.getSpells().getLearnedSpells(experienced);
   }
 
 }

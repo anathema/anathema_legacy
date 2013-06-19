@@ -3,6 +3,7 @@ package net.sf.anathema.character.impl.model.advance.models;
 import net.sf.anathema.character.generic.magic.ICharm;
 import net.sf.anathema.character.generic.magic.charms.special.ISpecialCharmConfiguration;
 import net.sf.anathema.character.impl.model.advance.IPointCostCalculator;
+import net.sf.anathema.character.main.model.charms.CharmsModelFetcher;
 import net.sf.anathema.character.main.model.traits.TraitMap;
 import net.sf.anathema.character.model.ICharacter;
 import net.sf.anathema.character.main.model.charms.CharmsModel;
@@ -31,7 +32,7 @@ public class CharmExperienceModel extends AbstractIntegerValueModel {
 
   private int getCharmCosts() {
     int experienceCosts = 0;
-    CharmsModel charmConfiguration = character.getCharms();
+    CharmsModel charmConfiguration = CharmsModelFetcher.fetch(character);
     Set<ICharm> charmsCalculated = new HashSet<>();
     for (ICharm charm : charmConfiguration.getLearnedCharms(true)) {
       int charmCosts = calculateCharmCost(charmConfiguration, charm, charmsCalculated);
@@ -79,6 +80,6 @@ public class CharmExperienceModel extends AbstractIntegerValueModel {
   }
 
   private boolean isSpecialCharm(ICharm charm) {
-    return character.getCharms().getSpecialCharmConfiguration(charm) != null;
+    return CharmsModelFetcher.fetch(character).getSpecialCharmConfiguration(charm) != null;
   }
 }

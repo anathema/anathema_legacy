@@ -32,6 +32,7 @@ import net.sf.anathema.character.library.trait.TraitCollectionUtilities;
 import net.sf.anathema.character.library.trait.experience.TraitRatingCostCalculator;
 import net.sf.anathema.character.main.model.abilities.AbilityModelFetcher;
 import net.sf.anathema.character.main.model.attributes.AttributeModelFetcher;
+import net.sf.anathema.character.main.model.charms.CharmsModelFetcher;
 import net.sf.anathema.character.main.model.traits.TraitMap;
 import net.sf.anathema.character.main.model.traits.TraitModelFetcher;
 import net.sf.anathema.character.model.ICharacter;
@@ -81,7 +82,7 @@ public class BonusPointManagement implements IBonusPointManagement {
     this.virtueCalculator = new VirtueCostCalculator(virtues, creationPoints.getVirtueCreationPoints(), cost);
     magicAdditionalPools =
             new AdditionalMagicLearnPointManagement(characterTemplate.getAdditionalRules().getAdditionalMagicLearnPools(), characterAbstraction);
-    this.magicCalculator = new MagicCostCalculator(characterTemplate.getMagicTemplate(), character.getCharms(), character.getSpells(),
+    this.magicCalculator = new MagicCostCalculator(characterTemplate.getMagicTemplate(), CharmsModelFetcher.fetch(character), character.getSpells(),
             creationPoints.getFavoredCreationCharmCount(), creationPoints.getDefaultCreationCharmCount(), cost, bonusAdditionalPools,
             magicAdditionalPools, character, character.getCharacterContext().getTraitCollection());
     this.willpower = TraitCollectionUtilities.getWillpower(traitMap);
