@@ -1,7 +1,6 @@
 package net.sf.anathema.hero.intimacies.sheet.encoder;
 
 import com.itextpdf.text.DocumentException;
-import net.sf.anathema.hero.intimacies.sheet.content.ExtendedIntimaciesContent;
 import net.sf.anathema.character.reporting.pdf.content.ReportSession;
 import net.sf.anathema.character.reporting.pdf.content.general.NamedValue;
 import net.sf.anathema.character.reporting.pdf.rendering.extent.Bounds;
@@ -9,12 +8,11 @@ import net.sf.anathema.character.reporting.pdf.rendering.extent.Position;
 import net.sf.anathema.character.reporting.pdf.rendering.general.box.AbstractContentEncoder;
 import net.sf.anathema.character.reporting.pdf.rendering.general.traits.PdfTraitEncoder;
 import net.sf.anathema.character.reporting.pdf.rendering.graphics.SheetGraphics;
+import net.sf.anathema.hero.intimacies.sheet.content.ExtendedIntimaciesContent;
 
 import static net.sf.anathema.character.reporting.pdf.rendering.page.IVoidStateFormatConstants.LINE_HEIGHT;
 
 public class ExtendedIntimaciesEncoder extends AbstractContentEncoder<ExtendedIntimaciesContent> {
-  // TODO: Give this and BackgroundsEncoder a common base class, which may be more broadly useful.
-
   private final PdfTraitEncoder traitEncoder = PdfTraitEncoder.createSmallTraitEncoder();
 
   public ExtendedIntimaciesEncoder() {
