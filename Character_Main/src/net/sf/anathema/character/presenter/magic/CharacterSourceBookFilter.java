@@ -41,12 +41,10 @@ public class CharacterSourceBookFilter extends SourceBookCharmFilter {
   public void save(Element parent) {
     Element sourceBookFilter = parent.addElement(TAG_FILTERNAME);
     List<IExaltedSourceBook> list = excludedMaterial;
-    if (list != null) {
-      for (IExaltedSourceBook book : list) {
-        Element bookElement = sourceBookFilter.addElement(TAG_SOURCEBOOK);
-        bookElement.addAttribute(ATTRIB_NAME, book.getId());
-        bookElement.addAttribute(ATTRIB_EDITION, SECOND_EDITION);
-      }
+    for (IExaltedSourceBook book : list) {
+      Element bookElement = sourceBookFilter.addElement(TAG_SOURCEBOOK);
+      bookElement.addAttribute(ATTRIB_NAME, book.getId());
+      bookElement.addAttribute(ATTRIB_EDITION, SECOND_EDITION);
     }
     sourceBookFilter.addAttribute(ATTRIB_SHOWPREREQ, includePrereqs ? "true" : "false");
   }

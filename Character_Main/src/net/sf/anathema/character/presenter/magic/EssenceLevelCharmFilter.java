@@ -1,8 +1,8 @@
 package net.sf.anathema.character.presenter.magic;
 
 import net.sf.anathema.character.generic.magic.ICharm;
+import net.sf.anathema.charmtree.filters.CharmFilter;
 import net.sf.anathema.charmtree.filters.EssenceLevelCharmFilterPage;
-import net.sf.anathema.charmtree.filters.ICharmFilter;
 import net.sf.anathema.lib.exception.PersistenceException;
 import net.sf.anathema.lib.resources.Resources;
 import net.sf.anathema.lib.xml.ElementUtilities;
@@ -10,12 +10,12 @@ import org.dom4j.Element;
 
 import javax.swing.JPanel;
 
-public class EssenceLevelCharmFilter implements ICharmFilter {
+public class EssenceLevelCharmFilter implements CharmFilter {
   private int essenceLevel = 5;
-  boolean enabled;
+  private boolean enabled;
 
-  boolean[] workingEnabled = new boolean[1];
-  int[] workingEssenceLevel = new int[1];
+  private final boolean[] workingEnabled = new boolean[1];
+  private final int[] workingEssenceLevel = new int[1];
 
   static final String TAG_FILTERNAME = "EssenceFilter";
   static final String ATTRIB_ENABLED = "enabled";

@@ -2,32 +2,32 @@ package net.sf.anathema.charmtree.presenter;
 
 import com.google.common.collect.Lists;
 import net.sf.anathema.character.generic.magic.ICharm;
-import net.sf.anathema.charmtree.filters.ICharmFilter;
+import net.sf.anathema.charmtree.filters.CharmFilter;
 
 import java.util.ArrayList;
 import java.util.List;
 
 public class CharmFilterSet {
-  private List<ICharmFilter> filterSet = new ArrayList<>();
+  private List<CharmFilter> filterSet = new ArrayList<>();
 
-  public void init(Iterable<ICharmFilter> filters) {
+  public void init(Iterable<CharmFilter> filters) {
     filterSet = Lists.newArrayList(filters);
   }
 
   public void resetAllFilters() {
-    for (ICharmFilter filter : filterSet) {
+    for (CharmFilter filter : filterSet) {
       filter.reset();
     }
   }
 
   public void applyAllFilters() {
-    for (ICharmFilter filter : filterSet) {
+    for (CharmFilter filter : filterSet) {
       filter.apply();
     }
   }
 
   public boolean acceptsCharm(ICharm charm) {
-    for (ICharmFilter filter : filterSet) {
+    for (CharmFilter filter : filterSet) {
       if (!filter.acceptsCharm(charm, false)) {
         return false;
       }
@@ -36,7 +36,7 @@ public class CharmFilterSet {
   }
 
   public boolean filterCharm(ICharm charm, boolean isAncestor) {
-    for (ICharmFilter filter : filterSet) {
+    for (CharmFilter filter : filterSet) {
       if (!filter.acceptsCharm(charm, isAncestor)) {
         return false;
       }
@@ -44,7 +44,7 @@ public class CharmFilterSet {
     return true;
   }
 
-  public List<ICharmFilter> getAllFilters() {
+  public List<CharmFilter> getAllFilters() {
     return filterSet;
   }
 }

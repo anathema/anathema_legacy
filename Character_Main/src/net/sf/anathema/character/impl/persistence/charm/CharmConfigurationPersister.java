@@ -11,18 +11,18 @@ import net.sf.anathema.character.library.trait.DefaultTrait;
 import net.sf.anathema.character.library.trait.DefaultTraitType;
 import net.sf.anathema.character.library.trait.LimitedTrait;
 import net.sf.anathema.character.library.trait.persistence.TraitPersister;
-import net.sf.anathema.hero.model.Hero;
+import net.sf.anathema.character.main.model.charms.CharmsModel;
 import net.sf.anathema.character.main.model.charms.CharmsModelFetcher;
 import net.sf.anathema.character.main.model.combos.CombosModel;
 import net.sf.anathema.character.main.model.combos.CombosModelFetcher;
 import net.sf.anathema.character.model.ICharacter;
-import net.sf.anathema.character.main.model.charms.CharmsModel;
 import net.sf.anathema.character.model.charm.ICombo;
 import net.sf.anathema.character.model.charm.ILearningCharmGroup;
 import net.sf.anathema.character.model.charm.special.IMultiLearnableCharmConfiguration;
-import net.sf.anathema.charmtree.filters.ICharmFilter;
+import net.sf.anathema.charmtree.filters.CharmFilter;
 import net.sf.anathema.framework.messaging.IMessaging;
 import net.sf.anathema.framework.persistence.TextPersister;
+import net.sf.anathema.hero.model.Hero;
 import net.sf.anathema.lib.exception.PersistenceException;
 import net.sf.anathema.lib.message.MessageType;
 import net.sf.anathema.lib.util.Identifier;
@@ -82,9 +82,9 @@ public class CharmConfigurationPersister {
     return charmConfiguration;
   }
 
-  private void saveFilters(Element charmsElement, List<ICharmFilter> charmFilters) {
+  private void saveFilters(Element charmsElement, List<CharmFilter> charmFilters) {
     Element filtersElement = charmsElement.addElement(TAG_CHARMFILTERS);
-    for (ICharmFilter filter : charmFilters) {
+    for (CharmFilter filter : charmFilters) {
       filter.save(filtersElement);
     }
   }
@@ -250,7 +250,7 @@ public class CharmConfigurationPersister {
     if (charmFilterNode != null) {
       for (Object filterNode : charmFilterNode.elements()) {
         Element node = (Element) filterNode;
-        for (ICharmFilter filter : configuration.getCharmFilters()) {
+        for (CharmFilter filter : configuration.getCharmFilters()) {
           if (filter.load(node)) {
             break;
           }

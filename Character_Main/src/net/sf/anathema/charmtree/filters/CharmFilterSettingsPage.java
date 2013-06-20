@@ -23,7 +23,7 @@ public class CharmFilterSettingsPage extends AbstractDialogPage {
   @Override
   public JComponent createContent() {
     JPanel panel = new JPanel(new MigLayout(new LC().wrapAfter(1).fill()));
-    for (ICharmFilter filter : filterSet.getAllFilters()) {
+    for (CharmFilter filter : filterSet.getAllFilters()) {
       panel.add(filter.getFilterPreferencePanel(resources));
     }
     return panel;

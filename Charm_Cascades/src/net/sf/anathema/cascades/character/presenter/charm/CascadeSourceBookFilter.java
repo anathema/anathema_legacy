@@ -1,4 +1,4 @@
-package net.sf.anathema.character.presenter.charm;
+package net.sf.anathema.cascades.character.presenter.charm;
 
 import com.google.common.collect.Lists;
 import net.sf.anathema.character.generic.magic.ICharm;

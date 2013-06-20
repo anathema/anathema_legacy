@@ -2,16 +2,16 @@ package net.sf.anathema.character.presenter.magic;
 
 import net.sf.anathema.character.generic.magic.ICharm;
 import net.sf.anathema.character.main.model.charms.CharmsModel;
-import net.sf.anathema.charmtree.filters.ICharmFilter;
+import net.sf.anathema.charmtree.filters.CharmFilter;
 import net.sf.anathema.charmtree.filters.ObtainableCharmFilterPage;
 import net.sf.anathema.lib.resources.Resources;
 import org.dom4j.Element;
 
 import javax.swing.JPanel;
 
-public class ObtainableCharmFilter implements ICharmFilter {
-  CharmsModel characterSet;
-  boolean enabled;
+public class ObtainableCharmFilter implements CharmFilter {
+  private final CharmsModel characterSet;
+  private boolean enabled;
 
   boolean[] workingEnabled = new boolean[1];
 

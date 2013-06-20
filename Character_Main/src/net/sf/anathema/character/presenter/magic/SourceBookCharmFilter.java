@@ -5,7 +5,7 @@ import com.google.common.collect.Lists;
 import net.sf.anathema.character.generic.magic.ICharm;
 import net.sf.anathema.character.generic.magic.charms.ICharmGroup;
 import net.sf.anathema.character.generic.rules.IExaltedSourceBook;
-import net.sf.anathema.charmtree.filters.ICharmFilter;
+import net.sf.anathema.charmtree.filters.CharmFilter;
 import net.sf.anathema.charmtree.filters.SourceBookCharmFilterPage;
 import net.sf.anathema.lib.resources.Resources;
 
@@ -18,7 +18,7 @@ import java.util.Set;
 import static com.google.common.collect.Lists.newArrayList;
 import static java.util.Collections.addAll;
 
-public abstract class SourceBookCharmFilter implements ICharmFilter {
+public abstract class SourceBookCharmFilter implements CharmFilter {
 
   private final ArrayList<IExaltedSourceBook> allMaterial = new ArrayList<>();
   protected final ArrayList<IExaltedSourceBook> excludedMaterial = new ArrayList<>();

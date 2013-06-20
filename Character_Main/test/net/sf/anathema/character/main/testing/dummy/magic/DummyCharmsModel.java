@@ -1,18 +1,18 @@
 package net.sf.anathema.character.main.testing.dummy.magic;
 
-import net.sf.anathema.hero.change.ChangeAnnouncer;
 import net.sf.anathema.character.generic.magic.ICharm;
 import net.sf.anathema.character.generic.magic.charms.ICharmGroup;
 import net.sf.anathema.character.generic.magic.charms.ICharmIdMap;
 import net.sf.anathema.character.generic.magic.charms.special.ISpecialCharm;
 import net.sf.anathema.character.generic.magic.charms.special.ISpecialCharmConfiguration;
 import net.sf.anathema.character.generic.type.ICharacterType;
-import net.sf.anathema.hero.model.Hero;
-import net.sf.anathema.hero.model.InitializationContext;
 import net.sf.anathema.character.main.model.charms.CharmsModel;
 import net.sf.anathema.character.model.charm.ICharmLearnListener;
 import net.sf.anathema.character.model.charm.ILearningCharmGroup;
-import net.sf.anathema.charmtree.filters.ICharmFilter;
+import net.sf.anathema.charmtree.filters.CharmFilter;
+import net.sf.anathema.hero.change.ChangeAnnouncer;
+import net.sf.anathema.hero.model.Hero;
+import net.sf.anathema.hero.model.InitializationContext;
 import net.sf.anathema.lib.control.IChangeListener;
 import net.sf.anathema.lib.exception.NotYetImplementedException;
 import net.sf.anathema.lib.util.Identifier;
@@ -72,10 +72,6 @@ public class DummyCharmsModel implements CharmsModel {
 
   @Override
   public ICharm getCharmById(String charmId) {
-    throw new NotYetImplementedException();
-  }
-
-  public ICharacterType getCharacterType() {
     throw new NotYetImplementedException();
   }
 
@@ -140,7 +136,7 @@ public class DummyCharmsModel implements CharmsModel {
   }
 
   @Override
-  public List<ICharmFilter> getCharmFilters() {
+  public List<CharmFilter> getCharmFilters() {
     return null;
   }
 

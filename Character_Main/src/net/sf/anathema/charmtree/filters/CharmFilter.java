@@ -6,7 +6,7 @@ import org.dom4j.Element;
 
 import javax.swing.JPanel;
 
-public interface ICharmFilter {
+public interface CharmFilter {
   boolean acceptsCharm(ICharm charm, boolean isAncestor);
 
   boolean isDirty();
