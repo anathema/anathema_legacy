@@ -1,9 +1,9 @@
 package net.sf.anathema.cascades.presenter;
 
 import com.google.common.collect.Lists;
-import net.sf.anathema.cascades.character.presenter.charm.CascadeSourceBookFilter;
-import net.sf.anathema.character.presenter.magic.EssenceLevelCharmFilter;
-import net.sf.anathema.character.presenter.magic.SourceBookCharmFilter;
+import net.sf.anathema.cascades.filter.CascadeSourceBookFilter;
+import net.sf.anathema.character.presenter.magic.filter.EssenceLevelCharmFilter;
+import net.sf.anathema.character.presenter.magic.filter.SourceBookCharmFilter;
 import net.sf.anathema.charmtree.filters.CharmFilter;
 import net.sf.anathema.charmtree.presenter.CharmFilterContainer;
 import net.sf.anathema.charmtree.presenter.CharmGroupCollection;

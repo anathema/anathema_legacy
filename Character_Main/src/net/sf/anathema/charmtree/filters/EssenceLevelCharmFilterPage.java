@@ -1,6 +1,7 @@
 package net.sf.anathema.charmtree.filters;
 
 import net.sf.anathema.character.generic.impl.traits.EssenceTemplate;
+import net.sf.anathema.character.presenter.magic.filter.EssenceLevel;
 import net.sf.anathema.lib.resources.Resources;
 
 import javax.swing.BorderFactory;
@@ -17,9 +18,9 @@ import java.awt.event.ItemListener;
 public class EssenceLevelCharmFilterPage implements ICharmFilterPage {
   private final Resources resources;
   private final boolean[] enabled;
-  private final int[] essence;
+  private final EssenceLevel essence;
 
-  public EssenceLevelCharmFilterPage(Resources resources, boolean[] enabled, int[] essence) {
+  public EssenceLevelCharmFilterPage(Resources resources, boolean[] enabled, EssenceLevel essence) {
     this.resources = resources;
     this.enabled = enabled;
     this.essence = essence;
@@ -29,7 +30,7 @@ public class EssenceLevelCharmFilterPage implements ICharmFilterPage {
   public JPanel getContent() {
     JPanel panel = new JPanel();
 
-    final SpinnerNumberModel model = new SpinnerNumberModel(essence[0], 1, EssenceTemplate.SYSTEM_ESSENCE_MAX, 1);
+    final SpinnerNumberModel model = new SpinnerNumberModel(essence.getValue(), 1, EssenceTemplate.SYSTEM_ESSENCE_MAX, 1);
     JPanel stringPanel = new JPanel();
     JSpinner essenceSpinner = new JSpinner(model);
     stringPanel.add(essenceSpinner);
@@ -37,7 +38,7 @@ public class EssenceLevelCharmFilterPage implements ICharmFilterPage {
     essenceSpinner.addChangeListener(new ChangeListener() {
       @Override
       public void stateChanged(ChangeEvent arg0) {
-        essence[0] = model.getNumber().intValue();
+        essence.setValueTo(model.getNumber().intValue());
       }
     });
 

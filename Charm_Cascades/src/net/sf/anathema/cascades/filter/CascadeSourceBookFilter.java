@@ -1,9 +1,9 @@
-package net.sf.anathema.cascades.character.presenter.charm;
+package net.sf.anathema.cascades.filter;
 
 import com.google.common.collect.Lists;
 import net.sf.anathema.character.generic.magic.ICharm;
 import net.sf.anathema.character.generic.magic.charms.ICharmGroup;
-import net.sf.anathema.character.presenter.magic.SourceBookCharmFilter;
+import net.sf.anathema.character.presenter.magic.filter.SourceBookCharmFilter;
 import net.sf.anathema.charmtree.presenter.CharmGroupCollection;
 import org.dom4j.Element;
 

@@ -1,4 +1,4 @@
-package net.sf.anathema.character.presenter.magic;
+package net.sf.anathema.character.presenter.magic.filter;
 
 import net.sf.anathema.character.generic.magic.ICharm;
 import net.sf.anathema.character.main.model.charms.CharmsModel;

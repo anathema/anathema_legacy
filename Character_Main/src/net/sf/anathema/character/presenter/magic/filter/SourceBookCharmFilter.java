@@ -1,4 +1,4 @@
-package net.sf.anathema.character.presenter.magic;
+package net.sf.anathema.character.presenter.magic.filter;
 
 import com.google.common.base.Function;
 import com.google.common.collect.Lists;
