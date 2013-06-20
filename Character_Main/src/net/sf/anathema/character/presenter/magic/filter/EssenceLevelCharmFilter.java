@@ -15,9 +15,8 @@ import static net.sf.anathema.lib.xml.ElementUtilities.getIntAttrib;
 public class EssenceLevelCharmFilter implements CharmFilter {
   private final EssenceLevel essenceLevel = new EssenceLevel(5);
   private final EssenceLevel workingEssenceLevel = new EssenceLevel(0);
-  private boolean enabled;
-
-  private final boolean[] workingEnabled = new boolean[1];
+  private final Enablement enabled = new Enablement();
+  private final Enablement workingEnabled = new Enablement();
 
   private static final String TAG_FILTERNAME = "EssenceFilter";
   private static final String ATTRIB_ENABLED = "enabled";
@@ -25,29 +24,29 @@ public class EssenceLevelCharmFilter implements CharmFilter {
 
   @Override
   public boolean acceptsCharm(ICharm charm, boolean isAncestor) {
-    return !enabled || essenceLevel.isGreaterOrEqualThan(charm.getEssence());
+    return !enabled.isEnabled() || essenceLevel.isGreaterOrEqualThan(charm.getEssence());
   }
 
   @Override
   public boolean isDirty() {
-    return enabled != workingEnabled[0] || !essenceLevel.isEqualTo(workingEssenceLevel);
+    return !enabled.isEqualTo(workingEnabled) || !essenceLevel.isEqualTo(workingEssenceLevel);
   }
 
   @Override
   public void apply() {
-    enabled = workingEnabled[0];
+    enabled.setValueTo(workingEnabled);
     essenceLevel.setValueTo(workingEssenceLevel);
   }
 
   @Override
   public void reset() {
-    workingEnabled[0] = enabled;
+    copyCurrentEnabledStateToWorkingEnabledState();
     copyCurrentValueToWorkingEssenceLevel();
   }
 
   @Override
   public void save(Element parent) {
-    if (enabled) {
+    if (enabled.isEnabled()) {
       Element sourceElement = parent.addElement(TAG_FILTERNAME);
       sourceElement.addAttribute(ATTRIB_ENABLED, "true");
       addAttribute(sourceElement, ATTRIB_ESSENCE, essenceLevel.getValue());
@@ -58,7 +57,7 @@ public class EssenceLevelCharmFilter implements CharmFilter {
   public boolean load(Element node) {
     if (node.getName().equals(TAG_FILTERNAME)) {
       if (node.attribute(ATTRIB_ENABLED).getValue().equals("true")) {
-        enabled = true;
+        enabled.enable();
       }
       try {
         essenceLevel.setValueTo(getIntAttrib(node, ATTRIB_ESSENCE, 5));
@@ -72,9 +71,13 @@ public class EssenceLevelCharmFilter implements CharmFilter {
 
   @Override
   public JPanel getFilterPreferencePanel(Resources resources) {
-    workingEnabled[0] = enabled;
+    copyCurrentEnabledStateToWorkingEnabledState();
     copyCurrentValueToWorkingEssenceLevel();
     return new EssenceLevelCharmFilterPage(resources, workingEnabled, workingEssenceLevel).getContent();
+  }
+
+  private void copyCurrentEnabledStateToWorkingEnabledState() {
+    workingEnabled.setValueTo(enabled);
   }
 
   private void copyCurrentValueToWorkingEssenceLevel() {

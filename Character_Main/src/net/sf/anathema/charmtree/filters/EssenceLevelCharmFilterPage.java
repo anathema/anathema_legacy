@@ -1,6 +1,7 @@
 package net.sf.anathema.charmtree.filters;
 
 import net.sf.anathema.character.generic.impl.traits.EssenceTemplate;
+import net.sf.anathema.character.presenter.magic.filter.Enablement;
 import net.sf.anathema.character.presenter.magic.filter.EssenceLevel;
 import net.sf.anathema.lib.resources.Resources;
 
@@ -17,10 +18,10 @@ import java.awt.event.ItemListener;
 
 public class EssenceLevelCharmFilterPage implements ICharmFilterPage {
   private final Resources resources;
-  private final boolean[] enabled;
+  private final Enablement enabled;
   private final EssenceLevel essence;
 
-  public EssenceLevelCharmFilterPage(Resources resources, boolean[] enabled, EssenceLevel essence) {
+  public EssenceLevelCharmFilterPage(Resources resources, Enablement enabled, EssenceLevel essence) {
     this.resources = resources;
     this.enabled = enabled;
     this.essence = essence;
@@ -43,11 +44,11 @@ public class EssenceLevelCharmFilterPage implements ICharmFilterPage {
     });
 
     JCheckBox checkBox = new JCheckBox(resources.getString("CharmFilters.EssenceLevel.ShowOnly"));
-    checkBox.setSelected(enabled[0]);
+    checkBox.setSelected(enabled.isEnabled());
     checkBox.addItemListener(new ItemListener() {
       @Override
       public void itemStateChanged(ItemEvent arg0) {
-        enabled[0] = arg0.getStateChange() == ItemEvent.SELECTED;
+        enabled.setValueTo(arg0.getStateChange() == ItemEvent.SELECTED);
       }
     });
 
