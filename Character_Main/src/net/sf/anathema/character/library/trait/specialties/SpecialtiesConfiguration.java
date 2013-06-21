@@ -7,7 +7,7 @@ import net.sf.anathema.character.generic.traits.groups.ITraitTypeGroup;
 import net.sf.anathema.character.generic.traits.groups.TraitTypeGroup;
 import net.sf.anathema.character.library.trait.Trait;
 import net.sf.anathema.character.library.trait.subtrait.ISubTraitContainer;
-import net.sf.anathema.character.main.model.abilities.AbilityModelFetcher;
+import net.sf.anathema.character.main.model.abilities.AbilityModel;
 import net.sf.anathema.character.main.model.experience.ExperienceModelFetcher;
 import net.sf.anathema.character.main.model.traits.TraitModelFetcher;
 import net.sf.anathema.hero.change.ChangeAnnouncer;
@@ -35,12 +35,17 @@ public class SpecialtiesConfiguration implements ISpecialtiesConfiguration, Hero
   private InitializationContext context;
   private String currentName;
   private ITraitReference currentType;
+  private AbilityModel abilities;
+
+  public SpecialtiesConfiguration(AbilityModel abilities) {
+    this.abilities = abilities;
+  }
 
   @Override
   public void initialize(InitializationContext context, Hero hero) {
     this.hero = hero;
     this.context = context;
-    ITraitTypeGroup[] groups = AbilityModelFetcher.fetch(hero).getAbilityTypeGroups();
+    ITraitTypeGroup[] groups = abilities.getAbilityTypeGroups();
     TraitType[] traitTypes =  TraitTypeGroup.getAllTraitTypes(groups);
     for (Trait trait : TraitModelFetcher.fetch(hero).getTraits(traitTypes)) {
       ITraitReference reference = new DefaultTraitReference(trait);
@@ -51,7 +56,7 @@ public class SpecialtiesConfiguration implements ISpecialtiesConfiguration, Hero
 
   @Override
   public void initializeListening(ChangeAnnouncer announcer) {
-    for (Trait ability : AbilityModelFetcher.fetch(hero).getAll()) {
+    for (Trait ability : abilities.getAll()) {
       getSpecialtiesContainer(ability.getType()).addSubTraitListener(new SpecialtiesListener(announcer));
     }
   }

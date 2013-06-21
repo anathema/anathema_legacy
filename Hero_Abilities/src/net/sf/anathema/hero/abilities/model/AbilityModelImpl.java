@@ -50,7 +50,7 @@ public class AbilityModelImpl extends DefaultTraitMap implements AbilityModel, H
     addFavorableTraits(incrementChecker, new AbilityTemplateFactory(template.getTraitTemplateCollection().getTraitTemplateFactory()));
     TraitModel traitModel = TraitModelFetcher.fetch(hero);
     traitModel.addTraits(getAll());
-    this.specialtyConfiguration = new SpecialtiesConfiguration();
+    this.specialtyConfiguration = new SpecialtiesConfiguration(this);
     specialtyConfiguration.initialize(context, hero);
   }
 
