@@ -14,6 +14,7 @@ import net.sf.anathema.character.main.model.traits.TraitModelFetcher;
 import net.sf.anathema.hero.change.ChangeAnnouncer;
 import net.sf.anathema.hero.change.ChangeFlavor;
 import net.sf.anathema.hero.change.FlavoredChangeListener;
+import net.sf.anathema.hero.change.RemovableEntryChangeAdapter;
 import net.sf.anathema.hero.intimacies.points.IntimaciesBonusPointCalculator;
 import net.sf.anathema.hero.model.Hero;
 import net.sf.anathema.hero.model.InitializationContext;
@@ -24,7 +25,7 @@ import org.jmock.example.announcer.Announcer;
 
 public class IntimaciesModelImpl extends AbstractRemovableEntryModel<Intimacy> implements IntimaciesModel {
 
-  private final Announcer<IChangeListener> changeControl = Announcer.to(IChangeListener.class);
+  private final Announcer<IChangeListener> announcer = Announcer.to(IChangeListener.class);
   private String name;
   private Hero hero;
 
@@ -40,8 +41,9 @@ public class IntimaciesModelImpl extends AbstractRemovableEntryModel<Intimacy> i
   }
 
   @Override
-  public void initializeListening(ChangeAnnouncer announcer) {
+  public void initializeListening(final ChangeAnnouncer announcer) {
     addModelChangeListener(new UnspecifiedChangeListener(announcer));
+    addModelChangeListener(new RemovableEntryChangeAdapter<Intimacy>(announcer));
     announcer.addListener(new FlavoredChangeListener() {
       @Override
       public void changeOccurred(ChangeFlavor flavor) {
@@ -103,7 +105,7 @@ public class IntimaciesModelImpl extends AbstractRemovableEntryModel<Intimacy> i
   }
 
   private void fireModelChangedEvent() {
-    changeControl.announce().changeOccurred();
+    announcer.announce().changeOccurred();
   }
 
   @Override
@@ -138,7 +140,7 @@ public class IntimaciesModelImpl extends AbstractRemovableEntryModel<Intimacy> i
 
   @Override
   public void addModelChangeListener(IChangeListener listener) {
-    changeControl.addListener(listener);
+    announcer.addListener(listener);
   }
 
   @Override

@@ -69,6 +69,11 @@ public class CharacterCreationSteps {
   }
 
 
+  @Given("^a new Character of any kind$")
+  public void a_new_Character_of_any_kind() throws Throwable {
+    I_create_a_new_character("Solar");
+  }
+
   private ICharacter createCharacter(String type) {
     HeroTemplate characterTemplate = loadDefaultTemplateForType(type);
     return createCharacter(characterTemplate);

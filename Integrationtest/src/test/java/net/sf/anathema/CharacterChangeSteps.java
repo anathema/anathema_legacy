@@ -11,6 +11,8 @@ import net.sf.anathema.character.generic.traits.TraitType;
 import net.sf.anathema.character.generic.traits.types.AbilityType;
 import net.sf.anathema.character.library.trait.Trait;
 import net.sf.anathema.character.main.model.experience.ExperienceModelFetcher;
+import net.sf.anathema.hero.intimacies.model.IntimaciesModel;
+import net.sf.anathema.hero.intimacies.model.IntimaciesModelFetcher;
 
 import static org.hamcrest.CoreMatchers.is;
 import static org.hamcrest.MatcherAssert.assertThat;
@@ -51,6 +53,13 @@ public class CharacterChangeSteps {
     } else {
       trait.setCreationValue(value);
     }
+  }
+
+  @When("^I add a fresh intimacy$")
+  public void I_add_a_fresh_intimacy() throws Throwable {
+    IntimaciesModel model = IntimaciesModelFetcher.fetch(character.getCharacter());
+    model.setCurrentName("New Intimacy");
+    model.commitSelection();
   }
 
   @Then("^she has (\\d+) dots in ability (.*)$")

@@ -1,11 +1,8 @@
 package net.sf.anathema.hero.change;
 
 import net.sf.anathema.character.library.removableentry.presenter.IRemovableEntryListener;
-import net.sf.anathema.hero.change.ChangeAnnouncer;
-import net.sf.anathema.hero.change.ChangeFlavor;
-import net.sf.anathema.lib.util.Identifier;
 
-public class RemovableEntryChangeAdapter implements IRemovableEntryListener<Identifier> {
+public class RemovableEntryChangeAdapter<E> implements IRemovableEntryListener<E> {
   private final ChangeAnnouncer announcer;
 
   public RemovableEntryChangeAdapter(ChangeAnnouncer announcer) {
@@ -13,12 +10,12 @@ public class RemovableEntryChangeAdapter implements IRemovableEntryListener<Iden
   }
 
   @Override
-  public void entryAdded(Identifier entry) {
+  public void entryAdded(E entry) {
     announcer.announceChangeOf(ChangeFlavor.UNSPECIFIED);
   }
 
   @Override
-  public void entryRemoved(Identifier entry) {
+  public void entryRemoved(E entry) {
     announcer.announceChangeOf(ChangeFlavor.UNSPECIFIED);
   }
 

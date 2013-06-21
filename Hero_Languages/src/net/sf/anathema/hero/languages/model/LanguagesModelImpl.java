@@ -4,17 +4,17 @@ import com.google.common.base.Objects;
 import com.google.common.base.Preconditions;
 import com.google.common.base.Predicate;
 import com.google.common.collect.Iterables;
-import net.sf.anathema.hero.change.ChangeAnnouncer;
-import net.sf.anathema.hero.change.ChangeFlavor;
 import net.sf.anathema.character.generic.traits.types.AbilityType;
 import net.sf.anathema.character.library.removableentry.model.AbstractRemovableEntryModel;
 import net.sf.anathema.character.library.trait.Trait;
+import net.sf.anathema.character.main.model.abilities.AbilityModelFetcher;
+import net.sf.anathema.character.main.model.traits.TraitChangeFlavor;
+import net.sf.anathema.hero.change.ChangeAnnouncer;
+import net.sf.anathema.hero.change.ChangeFlavor;
+import net.sf.anathema.hero.change.FlavoredChangeListener;
 import net.sf.anathema.hero.change.RemovableEntryChangeAdapter;
 import net.sf.anathema.hero.model.Hero;
 import net.sf.anathema.hero.model.InitializationContext;
-import net.sf.anathema.hero.change.FlavoredChangeListener;
-import net.sf.anathema.character.main.model.abilities.AbilityModelFetcher;
-import net.sf.anathema.character.main.model.traits.TraitChangeFlavor;
 import net.sf.anathema.lib.control.IChangeListener;
 import net.sf.anathema.lib.lang.StringUtilities;
 import net.sf.anathema.lib.util.Identifier;
@@ -51,7 +51,7 @@ public class LanguagesModelImpl extends AbstractRemovableEntryModel<Identifier> 
 
   @Override
   public void initializeListening(final ChangeAnnouncer announcer) {
-    addModelChangeListener(new RemovableEntryChangeAdapter(announcer));
+    addModelChangeListener(new RemovableEntryChangeAdapter<Identifier>(announcer));
     announcer.addListener(new FlavoredChangeListener() {
       @Override
       public void changeOccurred(ChangeFlavor flavor) {
