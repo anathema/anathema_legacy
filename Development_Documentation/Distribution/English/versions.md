@@ -41,6 +41,13 @@ leading us to the assumption that not many of you used it.
 * Corrects the description of [Solar/Archery] "Essence Arrow Attack".
 * Corrects the page for [Lunar/Human] "Blood Shaping Technique".
 
+## Release 5.0.2
+
+### NO FURTHER UPDATES
+This is the last release of the 5.0 release train.
+Anathema 5.1, our final major release for Exalted, Second Edition will be available shortly.
+Please un-install and re-install Anathema to use it.
+
 ## Release 5.0.1
 
 There was a critical issue with 5.0.0, rendering the update manager unusable.
