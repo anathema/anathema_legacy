@@ -11,6 +11,11 @@ Set Up
 1. Run ``gradlew eclipseProject eclipseClasspath eclipseJdt`` to create the Eclipse project files.
 2. Import all projects into Eclipse.
 
+### Developing with NetBeans ###
+1. Have the [Gradle Support](http://plugins.netbeans.org/plugin/44510/gradle-support) plugin installed.
+2. Optional: [Configure](https://github.com/kelemen/netbeans-gradle-project/wiki/Global-Settings) your global preferences.
+3. Open the project as you would open any other project in NetBeans.
+
 Development
 ===========
 ### Launching Anathema (IDE)###
