@@ -44,9 +44,11 @@ leading us to the assumption that not many of you used it.
 ## Release 5.0.2
 
 ### NO FURTHER UPDATES
-This is the last release of the 5.0 release train.
-Anathema 5.1, our final major release for Exalted, Second Edition will be available shortly.
+This is an indicator release to ask you to re-download Anathema from our website.
+There are no changes here, but Anathema 5.1, our final major release for Exalted, Second Edition will be available shortly.
 Please un-install and re-install Anathema to use it.
+
+We are sorry for the inconvenience.
 
 ## Release 5.0.1
 
