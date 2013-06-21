@@ -3,9 +3,9 @@ import org.apache.tools.ant.filters.ReplaceTokens
 import org.ajoberstar.gradle.git.tasks.GitTag;
 import org.ajoberstar.gradle.git.tasks.GitPush;
 
-ext.jreVersion = "1.7.0_21"
-ext.dependenciesDir = new File(buildDir, 'dependencies')
-ext.versionString = "${version_major}.${version_minor}.${version_revision}"
+ext.jreVersion       = "1.7.0_21"
+ext.dependenciesDir  = new File(buildDir, 'dependencies')
+ext.versionString    = "${version_major}.${version_minor}.${version_revision}"
 ext.testDependencies = ['junit:junit-dep:4.11', 'org.mockito:mockito-core:1.9.5', 'org.hamcrest:hamcrest-core:1.3', 'org.hamcrest:hamcrest-library:1.3']
 ext.integrationTestDependencies = ['info.cukes:cucumber-java:1.1.3', 'info.cukes:cucumber-junit:1.1.3', 'info.cukes:cucumber-guice:1.1.3', 'com.google.inject:guice:3.0']
 
@@ -13,45 +13,45 @@ apply from: "publishUpdate.gradle"
 apply from: "publishFullRelease.gradle"
 
 buildscript {
-    repositories {
-        mavenLocal()
-        mavenCentral()
-    }
-    dependencies {
-        classpath 'org.ajoberstar:gradle-git:0.2.0'
-    }
+  repositories {
+    mavenLocal()
+    mavenCentral()
+  }
+  dependencies {
+    classpath 'org.ajoberstar:gradle-git:0.2.0'
+  }
 }
 
 configurations.all {
-    resolutionStrategy {
-        force 'commons-io:commons-io:2.4'
-    }
+  resolutionStrategy {
+     force 'commons-io:commons-io:2.4'
+  }
 }
 
 repositories {
-    mavenCentral()
-    maven {
-        url 'http://anathema.butatopanto.de:8081/maven/releases/'
-    }
+  mavenCentral()
+  maven {
+    url 'http://anathema.butatopanto.de:8081/maven/releases/'
+  }
 }
 configurations {
-    launch4j
-    nsis
-    scp
-    bundleapp
-    jreWin
-    jreMac
+  launch4j
+  nsis
+  scp
+  bundleapp
+  jreWin
+  jreMac
 }
 dependencies {
-    launch4j files(
-            "./Development_Distribution/Windows/Binaries/launch4j/launch4j.jar",
-            "./Development_Distribution/Windows/Binaries/launch4j/xstream.jar",
-    )
-    nsis files("./Development_Distribution/Windows/Binaries/NSIS/nsisant-1.3.jar")
-    scp 'org.apache.ant:ant-jsch:1.8.4', 'com.jcraft:jsch:0.1.48'
-    bundleapp files("./Development_Distribution/Mac/Binaries/appbundler-1.0.jar")
-    jreWin "oracle:jre-win32:${jreVersion}@zip"
-    jreMac "oracle:jre-mac64:${jreVersion}@zip"
+  launch4j files(
+    "./Development_Distribution/Windows/Binaries/launch4j/launch4j.jar",
+    "./Development_Distribution/Windows/Binaries/launch4j/xstream.jar",
+  )
+  nsis files("./Development_Distribution/Windows/Binaries/NSIS/nsisant-1.3.jar")
+  scp 'org.apache.ant:ant-jsch:1.8.4', 'com.jcraft:jsch:0.1.48'
+  bundleapp files( "./Development_Distribution/Mac/Binaries/appbundler-1.0.jar")
+  jreWin "oracle:jre-win32:${jreVersion}@zip"
+  jreMac "oracle:jre-mac64:${jreVersion}@zip"
 }
 
 apply plugin: 'idea'
@@ -59,188 +59,190 @@ apply plugin: 'idea'
 idea { project { languageLevel = '1.7' } }
 
 task wrapper(type: Wrapper) {
-    gradleVersion = '1.3'
+  gradleVersion = '1.3'
 }
 
 def os = operatingSystem()
 
 String operatingSystem() {
-    def os = System.getProperty('os.name').toLowerCase()
-    def result = ""
-    if (os.indexOf("win") >= 0) result = "win"
-    if (os.indexOf("mac") >= 0) result = "mac"
-    if (os.indexOf("nix") >= 0         //  unix
-            || os.indexOf("nux") >= 0) result = "linux"
-    if (os.indexOf("sunos") >= 0) result = "solaris"
-    return result
+  def os = System.getProperty('os.name').toLowerCase()
+  def result = ""
+  if( os.indexOf("win"  ) >= 0 ) result = "win"
+  if( os.indexOf("mac"  ) >= 0 ) result = "mac"
+  if( os.indexOf("nix"  ) >= 0         //  unix
+  ||  os.indexOf("nux"  ) >= 0 ) result = "linux"
+  if( os.indexOf("sunos") >= 0 ) result = "solaris"
+  return result
 }
 
 subprojects {
-    apply plugin: 'java'
-    sourceCompatibility = 1.7
+  apply plugin: 'java'
+  sourceCompatibility = 1.7
 
-    apply plugin: 'idea'
-    apply plugin: 'eclipse'
-
-    repositories {
-        mavenCentral()
-        maven {
-            url 'https://github.com/anathema/anathema-thirdparty/raw/master/releases/'
-        }
+  apply plugin: 'idea'
+  apply plugin: 'eclipse'
+  
+  repositories {
+    mavenCentral()
+    maven {
+      url 'https://github.com/anathema/anathema-thirdparty/raw/master/releases/'
     }
+  }
 
-    configurations.all {
-        resolutionStrategy {
-            force 'commons-io:commons-io:2.4'
-        }
+  configurations.all {
+    resolutionStrategy {
+      force 'commons-io:commons-io:2.4'
     }
+  }
 
-    sourceSets.main.java.srcDir 'src'
-    sourceSets.test.java.srcDir 'test'
-    sourceSets.main.resources.srcDir 'resources'
+  sourceSets.main.java.srcDir 'src'
+  sourceSets.test.java.srcDir 'test'
+  sourceSets.main.resources.srcDir 'resources'
 
-    task collectTransitiveDependencies() << {
-        copy {
-            from configurations.compile.findAll { File dependency -> (dependency.absolutePath.contains('cache')) }
-            into parent.ext.dependenciesDir
-        }
+  task collectTransitiveDependencies() << {
+    copy {
+      from configurations.compile.findAll { File dependency -> (dependency.absolutePath.contains('cache')) }
+      into parent.ext.dependenciesDir
     }
+  }
 
-    task testJar(type: Jar, dependsOn: testClasses) {
-        baseName = "test-${project.archivesBaseName}"
-        from sourceSets.test.output
-    }
+  task testJar(type: Jar, dependsOn: testClasses) {
+    baseName = "test-${project.archivesBaseName}"
+    from sourceSets.test.output
+  }
 }
 
 task clean << {
-    buildDir.mkdirs()
-    ant.delete(includeemptydirs: true, quiet: false) {
-        fileset(dir: buildDir, includes: "**/*", defaultexcludes: false)
-    }
+  buildDir.mkdirs()
+  ant.delete(includeemptydirs:true, quiet:false) {
+    fileset(dir:buildDir, includes:"**/*", defaultexcludes:false )
+  }
 }
 
 def projectLibrary(String project) {
-    return zipTree("$project/build/libs/${project}.jar")
+  return zipTree("$project/build/libs/${project}.jar")
 }
 
 task createModule << {
-    if (!project.hasProperty('moduleName')) {
-        throw new StopExecutionException("\nPlease specify your new module name like so: gradlew createModule -PmoduleName=MyNewModuleNameHere\n")
-    } else {
-        if (new File(moduleName).exists()) {
-            throw new StopExecutionException("Module $moduleName already exists.")
-        } else {
-            mkdir moduleName
-            mkdir "$moduleName/src"
-            mkdir "$moduleName/resources"
-            mkdir "$moduleName/test"
-            new File("$moduleName/build.gradle").withWriter { out ->
-                out.println "dependencies {\n//  Insert your dependencies here like so:\n//  compile project(':Project_X')\n}"
-            }
-        }
+  if (!project.hasProperty('moduleName')) {
+    throw new StopExecutionException( "\nPlease specify your new module name like so: gradlew createModule -PmoduleName=MyNewModuleNameHere\n")
+  }
+  else {
+    if (new File(moduleName).exists()) {
+      throw new StopExecutionException("Module $moduleName already exists.")
     }
+    else {
+      mkdir moduleName
+      mkdir "$moduleName/src"
+      mkdir "$moduleName/resources"
+      mkdir "$moduleName/test"
+      new File("$moduleName/build.gradle").withWriter { out ->
+        out.println "dependencies {\n//  Insert your dependencies here like so:\n//  compile project(':Character_Equipment')\n//  compile project(':Character_Equipment_Impl')\n}"
+      }
+    }
+  }
 }
 
 // Release Variables
-ext.projectName = "Anathema"
+ext.projectName    = "Anathema"
 ext.releaseZipName = "${projectName}_Zip_v${versionString}.zip"
 ext.releaseWinName = "${projectName}_Win_v${versionString}.exe"
 ext.releaseMacName = "${projectName}_Mac_v${versionString}.zip"
-ext.macAppDir = "${projectName}.app"
+ext.macAppDir      = "${projectName}.app"
 ext.releaseDirName = "${projectName} ${versionString}"
-if ("${version_revision}" == '0') releaseDirName += " ${version_name}"
-ext.releaseDir = new File("${buildDir}/${releaseDirName}")
+if( "${version_revision}" == '0') releaseDirName += " ${version_name}"
+ext.releaseDir     = new File( "${buildDir}/${releaseDirName}" )
 
 // All Releases
 task release << {
-    // grab the latest updates for this release from versions.md and put into readme.md for sourceforge
-    String delim = "## Release ${versionString}"
-    String delim2 = "## Release "
-    String releaseNotes = new File("Development_Documentation/Distribution/English/versions.md").getText('UTF-8')
-    try {
-        new File("${releaseDir}/readme.md").write(delim + releaseNotes.split(delim)[1].split(delim2)[0], 'UTF-8')
-    } catch (java.lang.ArrayIndexOutOfBoundsException e) {
-        out.println("Unable to generate readme.md, the version number in gradle.properties is not found in versions.md")
-    }
+  // grab the latest updates for this release from versions.md and put into readme.md for sourceforge
+  String delim  = "## Release ${versionString}"
+  String delim2 = "## Release "
+  String releaseNotes = new File("Development_Documentation/Distribution/English/versions.md").getText( 'UTF-8' )
+  try {
+    new File("${releaseDir}/readme.md").write( delim + releaseNotes.split( delim )[1].split(delim2)[0], 'UTF-8' )
+  } catch( java.lang.ArrayIndexOutOfBoundsException e ){
+    out.println( "Unable to generate readme.md, the version number in gradle.properties is not found in versions.md" )
+  }
 }
 
 release.group = 'Release'
 release.description = 'Builds all artifacts required to release a new version.'
 
 task tag
-
+  
 task tagVersion(type: GitTag) {
-    message = "Version ${versionString}"
-    tagName = "v${versionString}"
-    force = true
+  message = "Version ${versionString}"
+  tagName = "v${versionString}"
+  force   = true
 }
 
 // If you use ssh for git, your github ssh key-auth passphrase will be prompted for.
 // If you use https for git, your github username and password will be prompted for, or can be entered at the command line like so:
 // gradlew tag -Pgithub.credentials.username=MyUsernameHere -Pgithub.credentials.password=MyPasswordHere
 task tagPush(type: GitPush) {
-    pushTags = true
+  pushTags = true
 }
 
 tag.group = 'Release'
 tag.description = 'Tags the release and pushes the tag to github. [Requires contributor status]'
 
 task version << {
-    out.println("\nPlease update the version number and name.  Enter nothing to default to the old value.")
-    def vNumber = usePropertyOrPrompt("versionNumber", "\n\nVersion Number | old: ${versionString} new: ")
-    def vName = usePropertyOrPrompt("versionName", "\nVersion Name | old: ${version_name} new: ")
-    ext.versionString = vNumber == "" ? versionString : vNumber
-    ext.version_name = vName == "" ? version_name : vName
-    try {
-        ext.version_major = versionString.split("\\.")[0]
-        ext.version_minor = versionString.split("\\.")[1]
-        ext.version_revision = versionString.split("\\.")[2]
-    } catch (java.lang.ArrayIndexOutOfBoundsException e) {
-        throw new StopExecutionException("Error setting new version number, please use the format major.minor.revision (4.1.2).")
-    }
-    def p = new Properties()
-    def f = new File("gradle.properties")
-    new File("gradle.properties").withReader {
-        p.load(it)
-        p.setProperty("version_major", version_major)
-        p.setProperty("version_minor", version_minor)
-        p.setProperty("version_revision", version_revision)
-        p.setProperty("version_name", version_name)
-    }
-    f.withWriter {
-        p.store(it, "Please update this file using this command: gradlew version")
-    }
-    out.println("\nVersion number and name have been updated.")
-    out.println("A new build must be run in order to use the new values.")
+  out.println( "\nPlease update the version number and name.  Enter nothing to default to the old value.")
+  def vNumber = usePropertyOrPrompt("versionNumber", "\n\nVersion Number | old: ${versionString} new: ")
+  def vName   = usePropertyOrPrompt("versionName",  "\nVersion Name | old: ${version_name} new: ")
+  ext.versionString    = vNumber == "" ? versionString : vNumber
+  ext.version_name     = vName == "" ? version_name : vName
+  try {
+    ext.version_major    = versionString.split( "\\." )[0]
+    ext.version_minor    = versionString.split( "\\." )[1]
+    ext.version_revision = versionString.split( "\\." )[2]
+  } catch( java.lang.ArrayIndexOutOfBoundsException e ){
+    throw new StopExecutionException("Error setting new version number, please use the format major.minor.revision (4.1.2)." )
+  }
+  def p = new Properties()
+  def f = new File("gradle.properties")
+  new File("gradle.properties").withReader {
+    p.load(it)
+    p.setProperty( "version_major", version_major )
+    p.setProperty( "version_minor", version_minor )
+    p.setProperty( "version_revision", version_revision )
+    p.setProperty( "version_name", version_name )
+  }
+  f.withWriter {
+    p.store(it, "Please update this file using this command: gradlew version")
+  }
+  out.println( "\nVersion number and name have been updated.")
+  out.println(   "A new build must be run in order to use the new values.")
 }
 
 task createReleaseDirectory << {
-    releaseDir.mkdirs()
+  releaseDir.mkdirs()
 }
 
 // JRE archive download and explosion into build folder
 task prepareWinJRE(type: Copy) {
-    def target = new File('build/jre/win32');
-    into target
-    from zipTree(configurations.jreWin.singleFile)
-    onlyIf { !target.exists() }
-    doLast {
-        ant.delete(includeemptydirs: true, quiet: true) {
-            fileset(dir: buildDir, includes: "tmp/expandedArchives/jre-win32*/**", defaultexcludes: false)
-        }
+  def target = new File('build/jre/win32');
+  into target
+  from { zipTree(configurations.jreWin.singleFile) }
+  onlyIf { !target.exists() }
+  doLast {
+    ant.delete(includeemptydirs:true, quiet:true) {
+      fileset(dir:buildDir, includes:"tmp/expandedArchives/jre-win32*/**", defaultexcludes:false )
     }
+  }
 }
 
-task prepareMacJRE(type: Copy) {
-    def target = new File('build/jre/mac64');
-    into target
-    from zipTree(configurations.jreMac.singleFile)
-    onlyIf { !target.exists() }
-    doLast {
-        ant.delete(includeemptydirs: true, quiet: true) {
-            fileset(dir: buildDir, includes: "tmp/expandedArchives/jre-mac64*/**", defaultexcludes: false)
-        }
+task prepareMacJRE(type:Copy) {
+  def target = new File('build/jre/mac64');
+  into target
+  from { zipTree(configurations.jreMac.singleFile) }
+  onlyIf { !target.exists() }
+  doLast {
+    ant.delete(includeemptydirs:true, quiet:true) {
+      fileset(dir:buildDir, includes:"tmp/expandedArchives/jre-mac64*/**", defaultexcludes:false )
     }
+  }
 }
 
 task prepareJRE dependsOn(prepareWinJRE, prepareMacJRE)
@@ -270,152 +272,152 @@ extractMacJRE.onlyIf { os.equals("mac") }
   
 // Zip Release
 task buildZip(type: Zip) {
-    archiveName = releaseZipName
-    destinationDir = releaseDir
-    from 'Anathema/build/libs'
-    into('lib') {
-        from('build/dependencies')
-        from('build/plugins')
-    }
-    from("Development_Distribution/Linux") {
-        include 'anathema.sh'
-        filter(FixCrLfFilter.class,
-                eol: FixCrLfFilter.CrLf.newInstance("lf"))
-        fileMode = 0755
-    }
-    from("build/launcher") {
-        include 'anathema.exe'
-    }
-    from("Development_Documentation/Distribution/English") {
-        include 'license.txt'
-        include 'versions.md'
-        rename 'versions.md', 'release_notes.txt'
-    }
+  archiveName = releaseZipName
+  destinationDir = releaseDir
+  from 'Anathema/build/libs'
+  into('lib') {
+    from('build/dependencies')
+    from('build/plugins')
+  }
+  from("Development_Distribution/Linux") {
+    include 'anathema.sh'
+    filter( FixCrLfFilter.class,
+            eol:FixCrLfFilter.CrLf.newInstance("lf") )
+    fileMode = 0755
+  }
+  from("build/launcher") {
+    include 'anathema.exe'
+  }
+  from("Development_Documentation/Distribution/English") {
+    include 'license.txt'
+    include 'versions.md'
+    rename  'versions.md', 'release_notes.txt'
+  }
 }
 
 task releaseZip
 
 // Windows Release
 task buildWin << {
-    def launch4jPath = "Development_Distribution/Windows/Binaries/launch4j/bin_" + os
+  def launch4jPath = "Development_Distribution/Windows/Binaries/launch4j/bin_" + os
 
-    mkdir("./build/launcher")
-    def exeVersion = "${versionString}.0"
-    def versionText = "${versionString} \"$version_name\""
-    ant.taskdef(
-            name: 'launch4j',
+  mkdir("./build/launcher")
+  def exeVersion = "${versionString}.0"
+  def versionText = "${versionString} \"$version_name\""
+  ant.taskdef(
+                 name: 'launch4j',
             classname: 'net.sf.launch4j.ant.Launch4jTask',
             classpath: configurations.launch4j.asPath
-    )
-    ant.launch4j(
-            bindir: launch4jPath
+  )
+  ant.launch4j(
+               bindir: launch4jPath
+  ) {
+    config(
+              outfile: 'build/launcher/anathema.exe',
+              jarPath: 'anathema.jar',
+          dontwrapjar: true,
+           headerType: 'gui',
+                 icon: 'Development_Distribution/Windows/anathema.ico'
     ) {
-        config(
-                outfile: 'build/launcher/anathema.exe',
-                jarPath: 'anathema.jar',
-                dontwrapjar: true,
-                headerType: 'gui',
-                icon: 'Development_Distribution/Windows/anathema.ico'
-        ) {
-            versionInfo(
-                    fileVersion: exeVersion,
-                    txtFileVersion: versionText,
-                    fileDescription: "Anathema Windows Launcher",
-                    copyright: "anathema.github.com",
-                    productVersion: exeVersion,
-                    txtProductVersion: versionText,
-                    productName: "$projectName",
-                    internalName: "anathema",
-                    originalFilename: "anathema.exe"
-            )
-            jre(
-                    path: "./jre",
-                    minVersion: jreVersion
-            )
-        }
+      versionInfo(
+          fileVersion: exeVersion,
+       txtFileVersion: versionText,
+      fileDescription: "Anathema Windows Launcher",
+            copyright: "anathema.github.com",
+       productVersion: exeVersion,
+    txtProductVersion: versionText,
+          productName: "$projectName",
+         internalName: "anathema",
+     originalFilename: "anathema.exe"
+      )
+      jre( 
+                 path: "./jre",
+           minVersion: jreVersion
+      )
     }
+  }
 }
 
 task releaseWin << {
-    def nsisPath = "Development_Distribution/Windows/Binaries/NSIS/bin_" + os
+  def nsisPath = "Development_Distribution/Windows/Binaries/NSIS/bin_" + os
 
-    ant.taskdef(name: "nsis",
-            classname: "com.danielreese.nsisant.Task",
-            classpath: configurations.nsis.asPath)
-    ant.nsis(script: "Development_Distribution/Windows/NSIS/anathema.nsi", path: nsisPath) {
-        define(name: "RELEASE_DIR", value: "${releaseDir}")
-        define(name: "RELEASE_FILE", value: "${releaseWinName}")
-        define(name: "RELEASE_VERSION", value: "${versionString}")
-        define(name: "VERSION", value: "${versionString}.0")
-        define(name: "JRE_PATH", value: "build\\jre\\win32\\jre${jreVersion}")
-    }
+  ant.taskdef(name: "nsis",
+              classname: "com.danielreese.nsisant.Task",
+              classpath: configurations.nsis.asPath)
+  ant.nsis(script: "Development_Distribution/Windows/NSIS/anathema.nsi", path: nsisPath) {
+    define(name: "RELEASE_DIR",     value: "${releaseDir}")
+    define(name: "RELEASE_FILE",    value: "${releaseWinName}")
+    define(name: "RELEASE_VERSION", value: "${versionString}")
+    define(name: "VERSION",         value: "${versionString}.0")
+    define(name: "JRE_PATH",        value: "build\\jre\\win32\\jre${jreVersion}")
+  }
 }
 
 // Mac Release
 task buildMac << {
-    ant.taskdef(
-            name: "bundleapp",
-            classname: "com.oracle.appbundler.AppBundlerTask",
-            classpath: configurations.bundleapp.asPath
-    )
-    ant.bundleapp(
-            outputdirectory: "${buildDir}",
-            name: "Anathema",
-            displayname: "Anathema",
-            identifier: "net.sf.anathema",
-            icon: "Development_Distribution/Mac/sungear.icns", //opt
-            shortversion: "${versionString}", //opt
-            signature: "????", //opt
-            //copyright: blah , //opt
-            applicationCategory: "public.app-category.utilities", //opt
-            mainclassname: "net/sf/anathema/AnathemaBootLoader"
-    ) {
-
-        runtime(dir: "build/jre/mac64/jre${jreVersion}/Contents/Home")  //opt
-
-        classpath(dir: "Anathema/build/libs/")
-        classpath(file: "Anathema/resources/icons/core/AnathemaSplashNew.png")
-        classpath(dir: "${buildDir}/dependencies/")
-        classpath(dir: "${buildDir}/plugins/")
-
-        option(value: "-splash:\$APP_ROOT/Contents/Java/AnathemaSplashNew.png")
-        option(value: "-Dapple.laf-useScreenMenuBar=true")
-        option(value: "-Ddefaultrepository=%USER_HOME%/Library/Application Support/Anathema")
-    }
+  ant.taskdef(
+         name: "bundleapp",
+    classname: "com.oracle.appbundler.AppBundlerTask",
+    classpath: configurations.bundleapp.asPath
+  )
+  ant.bundleapp(
+    outputdirectory: "${buildDir}",
+               name: "Anathema",
+        displayname: "Anathema",
+         identifier: "net.sf.anathema",
+               icon: "Development_Distribution/Mac/sungear.icns", //opt
+       shortversion: "${versionString}", //opt
+          signature: "????", //opt
+        //copyright: blah , //opt
+applicationCategory: "public.app-category.utilities" , //opt
+      mainclassname: "net/sf/anathema/AnathemaBootLoader"
+  ) {
+    
+    runtime(    dir: "build/jre/mac64/jre${jreVersion}/Contents/Home")  //opt 
+      
+    classpath(  dir: "Anathema/build/libs/")
+    classpath( file: "Anathema/resources/icons/core/AnathemaSplashNew.png")
+    classpath(  dir: "${buildDir}/dependencies/")
+    classpath(  dir: "${buildDir}/plugins/")
+      
+    option(   value: "-splash:\$APP_ROOT/Contents/Java/AnathemaSplashNew.png")
+    option(   value: "-Dapple.laf-useScreenMenuBar=true")
+    option(   value: "-Ddefaultrepository=%USER_HOME%/Library/Application Support/Anathema")
+  }
 }
 
 task releaseMac(type: Zip) {
-    archiveName = releaseMacName
-    destinationDir = releaseDir
-    into("${projectName}") {
-        from("${buildDir}")
-        include "${macAppDir}/**"
-        exclude "${projectName}/${macAppDir}/Contents/MacOS/JavaAppLauncher" // Skipping this because...
-    }
-    into("${projectName}/${macAppDir}/Contents/MacOS/") {                    // We include it here with the execute bit set.
-        from("${buildDir}/${macAppDir}/Contents/MacOS/")                       // Necessary when building on a windows system
-        include 'JavaAppLauncher'
-        fileMode = 0755
-    }
-    into("${projectName}") {
-        from("Development_Documentation/Distribution/English")
-        include 'license.txt'
-        include 'versions.md'
-        rename 'versions.md', 'release_notes.txt'
-        include 'installation_instructions.webloc'
-    }
+  archiveName = releaseMacName
+  destinationDir = releaseDir
+  into("${projectName}") {
+    from("${buildDir}")
+      include "${macAppDir}/**"
+      exclude "${projectName}/${macAppDir}/Contents/MacOS/JavaAppLauncher" // Skipping this because...
+  }
+  into("${projectName}/${macAppDir}/Contents/MacOS/") {                    // We include it here with the execute bit set.
+    from("${buildDir}/${macAppDir}/Contents/MacOS/")                       // Necessary when building on a windows system
+    include 'JavaAppLauncher'
+    fileMode = 0755
+  }
+  into( "${projectName}") {
+    from("Development_Documentation/Distribution/English")
+    include 'license.txt'
+    include 'versions.md'
+    rename  'versions.md', 'release_notes.txt'
+    include 'installation_instructions.webloc'
+  }
 }
 
 // Release Dependencies
 [buildWin, buildMac, buildZip].each {
-    it.dependsOn createReleaseDirectory
-    it.dependsOn ':Anathema:jar'
+  it.dependsOn createReleaseDirectory
+  it.dependsOn ':Anathema:jar'
 }
 
 buildZip.dependsOn buildWin  // Builds the exe launcher which gets included in the zip distribution
 buildWin.dependsOn prepareWinJRE
 buildMac.dependsOn prepareMacJRE
-
+  
 releaseZip.dependsOn buildZip
 releaseWin.dependsOn buildWin
 releaseMac.dependsOn buildMac
@@ -429,83 +431,83 @@ tag.dependsOn tagVersion, tagPush
 apply from: 'plugins.gradle'
 
 tasks.each {
-    def isPluginTask = it.name.matches('build.*Plugin')
-    if (isPluginTask) {
-        buildZip.dependsOn it
-        buildWin.dependsOn it
-        buildMac.dependsOn it
-    }
+  def isPluginTask = it.name.matches('build.*Plugin')
+  if (isPluginTask) {
+    buildZip.dependsOn it
+    buildWin.dependsOn it
+    buildMac.dependsOn it
+  }
 }
 
 //SSH Support
 def usePropertyOrPrompt(property, prompt) {
-    if (project.hasProperty(property)) {
-        return project.property(property);
-    }
-    def propertyValue = System.console().readLine("\n${prompt}: ")
-    ext[property] = propertyValue
-    return propertyValue
+  if (project.hasProperty(property)) {
+    return project.property(property);
+  }
+  def propertyValue = System.console().readLine("\n${prompt}: ")
+  ext[property] = propertyValue
+  return propertyValue
 }
 
 def usePropertyOrPromptForPassphrase(property, prompt) {
-    if (project.hasProperty(property)) {
-        return project.property(property);
-    }
-    def password = System.console().readPassword("\n${prompt}: ")
-    ext[property] = password
-    return password
+  if (project.hasProperty(property)) {
+    return project.property(property);
+  }
+  def password = System.console().readPassword("\n${prompt}: ")
+  ext[property] = password
+  return password
 }
 
 def findKeyFile() {
-    def keyfile = "${System.properties['user.home']}/.ssh/id_rsa"
-    while (!new File(keyfile).exists()) {
-        keyfile = System.console().readLine("\nCould not find the ssh private keyfile: ${keyfile}\nEnter your keyfile pathname: ")
-        keyfile = keyfile.replace("~", System.properties['user.home'])
-    }
-    return keyfile
+  def keyfile = "${System.properties['user.home']}/.ssh/id_rsa"
+  while (!new File(keyfile).exists()) {
+    keyfile = System.console().readLine("\nCould not find the ssh private keyfile: ${keyfile}\nEnter your keyfile pathname: ")
+    keyfile = keyfile.replace("~", System.properties['user.home'])
+  }
+  return keyfile
 }
 
-void runSshExecOnBuildServer(command) {
-    def host = "butatopanto.de"
-    def user = "anathema"
-    def keyfile = findKeyFile()
-    def passphrase = usePropertyOrPrompt('anathemaPassphrase', "Anathema SSH Key Passphrase")
-    sshExec(host, user, keyfile, passphrase, command)
+void runSshExecOnBuildServer(command){
+  def host     = "butatopanto.de"
+  def user     = "anathema"
+  def keyfile  = findKeyFile()
+  def passphrase = usePropertyOrPrompt('anathemaPassphrase', "Anathema SSH Key Passphrase")
+  sshExec(host, user, keyfile, passphrase, command)
 }
 
 void sshExec(String host, String user, keyfile, passphrase, command) {
-    ant.taskdef(
-            name: "sshexec",
-            classname: "org.apache.tools.ant.taskdefs.optional.ssh.SSHExec",
-            classpath: configurations.scp.asPath
-    )
-    ant.sshexec(
-            host: host,
-            username: user,
-            keyfile: keyfile,
-            passphrase: "${passphrase}",
-            trust: "true",
-            command: command
-    )
+  ant.taskdef(
+          name: "sshexec",
+          classname: "org.apache.tools.ant.taskdefs.optional.ssh.SSHExec",
+          classpath: configurations.scp.asPath
+  )
+  ant.sshexec(
+          host: host,
+          username: user,
+          keyfile: keyfile,
+          passphrase: "${passphrase}",
+          trust: "true",
+          command: command
+  )
 }
 
 def scp(connectString, keyfile, passphrase, Closure fileset) {
-    out.println("\nPlease be patient, it takes a few minutes to upload the releases")
-    out.println("Unfortunately, feedback during the upload is unavailable (unless you use the -i option)")
+  out.println("\nPlease be patient, it takes a few minutes to upload the releases")
+  out.println("Unfortunately, feedback during the upload is unavailable (unless you use the -i option)")
 
-    ant.taskdef(
-            name: "scp2",
-            classname: "org.apache.tools.ant.taskdefs.optional.ssh.Scp",
-            classpath: configurations.scp.asPath
-    )
-    ant.scp2(
-            todir: connectString,
-            keyfile: keyfile,
-            passphrase: "${passphrase}",
-            trust: "true",
-            verbose: "true", // only visible at the info logging level
-            sftp: "true"
-    ) {
-        fileset()
-    }
+  ant.taskdef(
+          name: "scp2",
+          classname: "org.apache.tools.ant.taskdefs.optional.ssh.Scp",
+          classpath: configurations.scp.asPath
+  )
+  ant.scp2(
+          todir: connectString,
+          keyfile: keyfile,
+          passphrase: "${passphrase}",
+          trust: "true",
+          verbose: "true", // only visible at the info logging level
+          sftp: "true"
+  ) {
+    fileset()
+  }
 }
