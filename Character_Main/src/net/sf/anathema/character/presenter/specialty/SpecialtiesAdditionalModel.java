@@ -3,9 +3,9 @@ package net.sf.anathema.character.presenter.specialty;
 import net.sf.anathema.character.generic.additionaltemplate.AbstractAdditionalModelAdapter;
 import net.sf.anathema.character.generic.template.additional.IAdditionalTemplate;
 import net.sf.anathema.character.library.trait.specialties.ISpecialtiesConfiguration;
+import net.sf.anathema.character.library.trait.specialties.SpecialtyModelFetcher;
 import net.sf.anathema.hero.display.HeroModelGroup;
 import net.sf.anathema.hero.model.Hero;
-import net.sf.anathema.character.main.model.abilities.AbilityModelFetcher;
 import net.sf.anathema.lib.control.IChangeListener;
 
 public class SpecialtiesAdditionalModel extends AbstractAdditionalModelAdapter implements ISpecialtiesAdditionalModel {
@@ -16,7 +16,7 @@ public class SpecialtiesAdditionalModel extends AbstractAdditionalModelAdapter i
   public SpecialtiesAdditionalModel(Hero hero, IAdditionalTemplate additionalTemplate) {
     this.additionalTemplate = additionalTemplate;
     // todo (sandra): move specialty configuration into specialty module
-    this.model = AbilityModelFetcher.fetch(hero).getSpecialtyConfiguration();
+    this.model = SpecialtyModelFetcher.fetch(hero);
   }
 
   @Override

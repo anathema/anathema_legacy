@@ -18,7 +18,6 @@ import net.sf.anathema.character.main.model.traits.DefaultTraitMap;
 import net.sf.anathema.character.main.model.traits.TraitMap;
 import net.sf.anathema.character.main.model.traits.TraitModel;
 import net.sf.anathema.character.main.model.traits.TraitModelFetcher;
-import net.sf.anathema.hero.abilities.model.event.SpecialtiesListener;
 import net.sf.anathema.hero.change.ChangeAnnouncer;
 import net.sf.anathema.hero.model.Hero;
 import net.sf.anathema.hero.model.HeroModel;
@@ -51,13 +50,14 @@ public class AbilityModelImpl extends DefaultTraitMap implements AbilityModel, H
     addFavorableTraits(incrementChecker, new AbilityTemplateFactory(template.getTraitTemplateCollection().getTraitTemplateFactory()));
     TraitModel traitModel = TraitModelFetcher.fetch(hero);
     traitModel.addTraits(getAll());
-    this.specialtyConfiguration = new SpecialtiesConfiguration(hero, abilityTraitGroups, context);
+    this.specialtyConfiguration = new SpecialtiesConfiguration();
+    specialtyConfiguration.initialize(context, hero);
   }
 
   @Override
   public void initializeListening(ChangeAnnouncer changeAnnouncer) {
     for (Trait ability : getAll()) {
-      specialtyConfiguration.getSpecialtiesContainer(ability.getType()).addSubTraitListener(new SpecialtiesListener(changeAnnouncer));
+      specialtyConfiguration.initializeListening(changeAnnouncer);
       ability.getFavorization().addFavorableStateChangedListener(new FavoredChangedListener(changeAnnouncer));
       ability.addCurrentValueListener(new TraitValueChangedListener(changeAnnouncer, ability));
     }

@@ -4,8 +4,12 @@ import net.sf.anathema.character.generic.framework.ITraitReference;
 import net.sf.anathema.character.generic.traits.TraitType;
 import net.sf.anathema.character.library.trait.subtrait.ISubTraitContainer;
 import net.sf.anathema.lib.control.IChangeListener;
+import net.sf.anathema.lib.util.Identifier;
+import net.sf.anathema.lib.util.SimpleIdentifier;
 
 public interface ISpecialtiesConfiguration {
+
+  Identifier ID = new SimpleIdentifier("Specialties");
 
   ISubTraitContainer getSpecialtiesContainer(ITraitReference reference);
 

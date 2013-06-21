@@ -1,9 +1,8 @@
-package net.sf.anathema.hero.abilities.model.event;
+package net.sf.anathema.character.library.trait.specialties;
 
+import net.sf.anathema.character.library.trait.subtrait.ISpecialtyListener;
 import net.sf.anathema.hero.change.ChangeAnnouncer;
 import net.sf.anathema.hero.change.ChangeFlavor;
-import net.sf.anathema.character.library.trait.specialties.Specialty;
-import net.sf.anathema.character.library.trait.subtrait.ISpecialtyListener;
 
 public class SpecialtiesListener implements ISpecialtyListener {
   private final ChangeAnnouncer changeAnnouncer;

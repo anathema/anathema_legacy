@@ -7,11 +7,15 @@ import net.sf.anathema.character.generic.traits.groups.ITraitTypeGroup;
 import net.sf.anathema.character.generic.traits.groups.TraitTypeGroup;
 import net.sf.anathema.character.library.trait.Trait;
 import net.sf.anathema.character.library.trait.subtrait.ISubTraitContainer;
-import net.sf.anathema.hero.model.Hero;
-import net.sf.anathema.hero.model.InitializationContext;
+import net.sf.anathema.character.main.model.abilities.AbilityModelFetcher;
 import net.sf.anathema.character.main.model.experience.ExperienceModelFetcher;
 import net.sf.anathema.character.main.model.traits.TraitModelFetcher;
+import net.sf.anathema.hero.change.ChangeAnnouncer;
+import net.sf.anathema.hero.model.Hero;
+import net.sf.anathema.hero.model.HeroModel;
+import net.sf.anathema.hero.model.InitializationContext;
 import net.sf.anathema.lib.control.IChangeListener;
+import net.sf.anathema.lib.util.Identifier;
 import org.jmock.example.announcer.Announcer;
 
 import java.util.ArrayList;
@@ -21,26 +25,40 @@ import java.util.List;
 import java.util.Map;
 import java.util.Set;
 
-public class SpecialtiesConfiguration implements ISpecialtiesConfiguration {
+public class SpecialtiesConfiguration implements ISpecialtiesConfiguration, HeroModel {
 
   private final Map<TraitType, ISubTraitContainer> specialtiesByType = new HashMap<>();
   private final Map<ITraitReference, ISubTraitContainer> specialtiesByTrait = new HashMap<>();
   private final Announcer<IChangeListener> control = Announcer.to(IChangeListener.class);
   private final Announcer<ITraitReferencesChangeListener> traitControl = Announcer.to(ITraitReferencesChangeListener.class);
   private Hero hero;
-  private final InitializationContext context;
+  private InitializationContext context;
   private String currentName;
   private ITraitReference currentType;
 
-  public SpecialtiesConfiguration(Hero hero, ITraitTypeGroup[] groups, InitializationContext context) {
+  @Override
+  public void initialize(InitializationContext context, Hero hero) {
     this.hero = hero;
     this.context = context;
-    TraitType[] traitTypes = TraitTypeGroup.getAllTraitTypes(groups);
+    ITraitTypeGroup[] groups = AbilityModelFetcher.fetch(hero).getAbilityTypeGroups();
+    TraitType[] traitTypes =  TraitTypeGroup.getAllTraitTypes(groups);
     for (Trait trait : TraitModelFetcher.fetch(hero).getTraits(traitTypes)) {
       ITraitReference reference = new DefaultTraitReference(trait);
       SpecialtiesContainer container = addSpecialtiesContainer(reference);
       specialtiesByType.put(trait.getType(), container);
-     }
+    }
+  }
+
+  @Override
+  public void initializeListening(ChangeAnnouncer announcer) {
+    for (Trait ability : AbilityModelFetcher.fetch(hero).getAll()) {
+      getSpecialtiesContainer(ability.getType()).addSubTraitListener(new SpecialtiesListener(announcer));
+    }
+  }
+
+  @Override
+  public Identifier getId() {
+    return ISpecialtiesConfiguration.ID;
   }
 
   private SpecialtiesContainer addSpecialtiesContainer(ITraitReference reference) {
