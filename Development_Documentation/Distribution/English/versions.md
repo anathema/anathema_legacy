@@ -4,6 +4,14 @@ Exalted © 2001-2012 by White Wolf Publishing, Inc.
 
 Website: [anathema.github.com](http://anathema.github.com)
 
+## Release 5.0.2
+
+### NO FURTHER UPDATES
+This is the last release of the 5.0.x release train.
+Anathema 5.1, our final major release for Exalted, Second Edition will be available shortly.
+Please un-install and re-install Anathema to use it.
+(We are sorry for the inconvenience. We botched our planning.)
+
 ## Release 5.0.1
 
 There was a critical issue with 5.0.0, rendering the update manager unusable.
