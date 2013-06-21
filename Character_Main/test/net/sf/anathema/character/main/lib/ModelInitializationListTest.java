@@ -14,13 +14,13 @@ import static org.hamcrest.MatcherAssert.assertThat;
 
 public class ModelInitializationListTest {
 
-  private List<SimpleModelTreeEntry> configuredEntries = new ArrayList<>();
+  private List<SimpleModelTreeEntry> availableTreeEntries = new ArrayList<>();
+  private List<Identifier> configuredIdentifiers = new ArrayList<>();
 
   @Test
   public void hasSingleEntryWithoutRequirementsFirst() throws Exception {
     addConfiguredEntry("Single");
-    ModelInitializationList list = new ModelInitializationList(configuredEntries);
-    assertThat(list.get(0).getId(), is("Single"));
+    assertContainsOrder("Single");
   }
 
   @Test
@@ -50,12 +50,33 @@ public class ModelInitializationListTest {
     assertContainsOrder("Start", "Middle", "End");
   }
 
+  @Test
+  public void doesNotConfigureEntriesThatAreNotRequired() throws Exception {
+    addAvailableEntry("End", new SimpleIdentifier("Middle"));
+    addConfiguredEntry("Middle", new SimpleIdentifier("Start"));
+    assertContainsOrder("Start", "Middle");
+  }
+
+  @Test
+  public void respectsTransitiveRelationsEvenWhenTheyAreNotRegistered() throws Exception {
+    addConfiguredEntry("End", new SimpleIdentifier("Middle"));
+    addAvailableEntry("Middle", new SimpleIdentifier("Start"));
+    assertContainsOrder("Start", "Middle", "End");
+  }
+
+  private void addAvailableEntry(String id, Identifier... requirements) {
+    SimpleIdentifier modelId = new SimpleIdentifier(id);
+    availableTreeEntries.add(new SimpleModelTreeEntry(modelId, requirements));
+  }
+
   private void addConfiguredEntry(String id, Identifier... requirements) {
-    configuredEntries.add(new SimpleModelTreeEntry(new SimpleIdentifier(id), requirements));
+    SimpleIdentifier modelId = new SimpleIdentifier(id);
+    availableTreeEntries.add(new SimpleModelTreeEntry(modelId, requirements));
+    configuredIdentifiers.add(modelId);
   }
 
   private void assertContainsOrder(String... ids) {
-    ModelInitializationList list = new ModelInitializationList(configuredEntries);
+    ModelInitializationList list = new ModelInitializationList(configuredIdentifiers, availableTreeEntries);
     for (int index = 0; index < ids.length; index++) {
       assertThat(list.get(index).getId(), is(ids[index]));
     }

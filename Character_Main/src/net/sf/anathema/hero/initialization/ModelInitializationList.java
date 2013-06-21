@@ -9,35 +9,38 @@ import java.util.List;
 public class ModelInitializationList<E extends ModelTreeEntry> implements Iterable<Identifier> {
 
   private List<Identifier> sortedModelIds = new ArrayList<>();
-  private List<E> configuredEntries;
+  private List<Identifier> configuredIdentifiers;
+  private Iterable<E> availableEntries;
 
-  public ModelInitializationList(List<E> configuredEntries) {
-    this.configuredEntries = configuredEntries;
-    startSort(configuredEntries);
+  public ModelInitializationList(List<Identifier> configuredIdentifiers, Iterable<E> availableEntries) {
+    this.configuredIdentifiers = configuredIdentifiers;
+    this.availableEntries = availableEntries;
+    startSort();
   }
 
-  private void startSort(List<E> configuredEntries) {
-    for (E entry : configuredEntries) {
+  private void startSort() {
+    for (Identifier entry : configuredIdentifiers) {
       handleEntry(entry);
     }
   }
 
-  private void handleEntry(E entry) {
-    if (sortedModelIds.contains(entry.getModelId())) {
+  private void handleEntry(Identifier entry) {
+    if (sortedModelIds.contains(entry)) {
       return;
     }
     handleRequirements(entry);
-    addModelId(entry.getModelId());
+    addModelId(entry);
   }
 
-  private void handleRequirements(E entry) {
-    for (Identifier id : entry.getRequiredModelIds()) {
+  private void handleRequirements(Identifier entry) {
+    E entryModel = findConfigurationWithId(entry);
+    for (Identifier id : entryModel.getRequiredModelIds()) {
       if (sortedModelIds.contains(id)) {
         continue;
       }
       E configuration = findConfigurationWithId(id);
       if (configuration != null) {
-        handleEntry(configuration);
+        handleEntry(id);
       }
       addModelId(id);
     }
@@ -51,7 +54,7 @@ public class ModelInitializationList<E extends ModelTreeEntry> implements Iterab
   }
 
   private E findConfigurationWithId(Identifier id) {
-    for (E entry : configuredEntries) {
+    for (E entry : availableEntries) {
       if (entry.getModelId().equals(id)) {
         return entry;
       }

@@ -1,5 +1,6 @@
 package net.sf.anathema.hero.initialization;
 
+import com.google.common.collect.Lists;
 import net.sf.anathema.character.generic.framework.ICharacterGenerics;
 import net.sf.anathema.character.generic.template.HeroTemplate;
 import net.sf.anathema.hero.model.DefaultHero;
@@ -32,8 +33,8 @@ public class HeroModelInitializer {
   }
 
   private Iterable<Identifier> getSortedModelIdsForCharacter(ModelFactoryMap factoryMap) {
-    List<HeroModelFactory> configuredFactories = collectConfiguredModelFactories(factoryMap);
-    return new ModelInitializationList<>(configuredFactories);
+    List<Identifier> configuredModels = Lists.transform(template.getModels(), new WrapStringInIdentifier());
+    return new ModelInitializationList<>(configuredModels, factoryMap);
   }
 
   private Iterable<HeroModel> createSortedModels(ICharacterGenerics generics, ModelFactoryMap factoryMap, Iterable<Identifier> sortedRelevantModelIds) {
@@ -53,15 +54,5 @@ public class HeroModelInitializer {
       model.initializeListening(hero.getChangeAnnouncer());
       hero.addModel(model);
     }
-  }
-
-  private List<HeroModelFactory> collectConfiguredModelFactories(ModelFactoryMap factoryMap) {
-    List<HeroModelFactory> configuredFactories = new ArrayList<>();
-    for (String configuredId : template.getModels()) {
-      factoryMap.assertContainsConfiguredModel(configuredId);
-      HeroModelFactory factory = factoryMap.get(configuredId);
-      configuredFactories.add(factory);
-    }
-    return configuredFactories;
   }
 }
