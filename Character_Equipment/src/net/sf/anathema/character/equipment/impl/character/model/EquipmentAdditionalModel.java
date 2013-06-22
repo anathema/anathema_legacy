@@ -23,7 +23,6 @@ import net.sf.anathema.character.generic.equipment.ArtifactStats;
 import net.sf.anathema.character.generic.equipment.ICharacterStatsModifiers;
 import net.sf.anathema.character.generic.equipment.weapon.IArmourStats;
 import net.sf.anathema.character.generic.equipment.weapon.IEquipmentStats;
-import net.sf.anathema.character.generic.framework.additionaltemplate.model.SpecialtiesCollection;
 import net.sf.anathema.character.generic.traits.types.AbilityType;
 import net.sf.anathema.character.generic.type.ICharacterType;
 import net.sf.anathema.character.library.trait.specialties.Specialty;
@@ -31,6 +30,7 @@ import net.sf.anathema.character.main.model.essencepool.EssencePoolModelFetcher;
 import net.sf.anathema.character.reporting.pdf.rendering.boxes.StatsModifierFactory;
 import net.sf.anathema.hero.display.HeroModelGroup;
 import net.sf.anathema.hero.model.Hero;
+import net.sf.anathema.hero.specialties.model.SpecialtiesCollectionImpl;
 import net.sf.anathema.lib.control.IChangeListener;
 import net.sf.anathema.lib.control.ICollectionListener;
 import org.apache.commons.lang3.ArrayUtils;
@@ -59,8 +59,7 @@ public class EquipmentAdditionalModel extends AbstractAdditionalModelAdapter imp
   };
 
   public EquipmentAdditionalModel(Hero hero, ICharacterType characterType, IArmourStats naturalArmour, IEquipmentTemplateProvider equipmentTemplateProvider,
-                                  SpecialtiesCollection context, IEquipmentCharacterDataProvider dataProvider, MaterialRules materialRules,
-                                  IEquipmentTemplate... naturalWeapons) {
+                                  IEquipmentCharacterDataProvider dataProvider, MaterialRules materialRules, IEquipmentTemplate... naturalWeapons) {
     this.printModel = new EquipmentPrintModel(this, naturalArmour);
     this.characterType = characterType;
     this.defaultMaterial = evaluateDefaultMaterial(materialRules);
@@ -73,7 +72,7 @@ public class EquipmentAdditionalModel extends AbstractAdditionalModelAdapter imp
       IEquipmentItem item = createItem(template, null);
       naturalWeaponItems.add(item);
     }
-    context.addSpecialtyListChangeListener(new SpecialtyPrintRemover(dataProvider));
+    new SpecialtiesCollectionImpl(hero).addSpecialtyListChangeListener(new SpecialtyPrintRemover(dataProvider));
     EssencePoolModelFetcher.fetch(hero).addEssencePoolModifier(this);
   }
 

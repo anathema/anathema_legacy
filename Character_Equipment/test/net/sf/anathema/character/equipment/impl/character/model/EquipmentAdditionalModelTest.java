@@ -6,10 +6,10 @@ import net.sf.anathema.character.equipment.impl.character.model.natural.DefaultN
 import net.sf.anathema.character.equipment.item.model.IEquipmentTemplateProvider;
 import net.sf.anathema.character.generic.equipment.weapon.IArmourStats;
 import net.sf.anathema.character.generic.equipment.weapon.IEquipmentStats;
-import net.sf.anathema.character.generic.framework.additionaltemplate.model.SpecialtiesCollection;
 import net.sf.anathema.character.main.testing.dummy.DummyEssenceCharacterType;
 import net.sf.anathema.character.main.testing.dummy.DummyGenericTrait;
 import net.sf.anathema.character.main.testing.dummy.DummyHero;
+import net.sf.anathema.hero.abilities.model.AbilityModelImpl;
 import net.sf.anathema.hero.othertraits.model.pool.EssencePoolModelImpl;
 import org.junit.Before;
 import org.junit.Test;
@@ -21,7 +21,6 @@ public class EquipmentAdditionalModelTest {
   private final DummyEssenceCharacterType characterType = new DummyEssenceCharacterType();
   IArmourStats naturalArmor = new DefaultNaturalSoak(new DummyGenericTrait(Stamina, 5), characterType);
   IEquipmentTemplateProvider templateProvider = mock(IEquipmentTemplateProvider.class);
-  SpecialtiesCollection context = mock(SpecialtiesCollection.class);
   IEquipmentCharacterDataProvider dataProvider = mock(IEquipmentCharacterDataProvider.class);
   EquipmentAdditionalModel model;
 
@@ -29,8 +28,8 @@ public class EquipmentAdditionalModelTest {
   public void setUp() throws Exception {
     DummyHero hero = new DummyHero();
     hero.addModel(new EssencePoolModelImpl());
-    model = new EquipmentAdditionalModel(hero, characterType, naturalArmor, templateProvider, context, dataProvider,
-            new DummyMaterialRules());
+    hero.addModel(new AbilityModelImpl());
+    model = new EquipmentAdditionalModel(hero, characterType, naturalArmor, templateProvider, dataProvider, new DummyMaterialRules());
   }
 
   @Test

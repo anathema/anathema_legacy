@@ -17,6 +17,7 @@ import net.sf.anathema.character.main.testing.dummy.models.DummyHeroConcept;
 import net.sf.anathema.character.main.testing.dummy.models.DummyOtherTraitModel;
 import net.sf.anathema.character.main.testing.dummy.models.DummyTraitModel;
 import net.sf.anathema.hero.abilities.model.AbilityModelImpl;
+import net.sf.anathema.hero.points.PointModelImpl;
 import org.junit.Before;
 import org.junit.Test;
 
@@ -260,6 +261,7 @@ public class AbilityCostCalculatorTest extends AbstractBonusPointTestCase {
 
   private void initializeModelWith(AbilityCreationPoints abilityCreationPoints) {
     dummyHero.template.creationPoints.abilityCreationPoints = abilityCreationPoints;
+    dummyHero.addModel(new PointModelImpl());
     abilityModel.initialize(new DummyInitializationContext(), dummyHero);
   }
 

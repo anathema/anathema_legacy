@@ -32,7 +32,7 @@ import java.util.List;
 public class AbilityModelImpl extends DefaultTraitMap implements AbilityModel, HeroModel {
 
   private IIdentifiedCasteTraitTypeGroup[] abilityTraitGroups;
-  private SpecialtiesConfiguration specialtyConfiguration;
+  private SpecialtiesConfiguration specialtyConfiguration = new SpecialtiesConfiguration(this);
   private Hero hero;
 
   @Override
@@ -50,7 +50,6 @@ public class AbilityModelImpl extends DefaultTraitMap implements AbilityModel, H
     addFavorableTraits(incrementChecker, new AbilityTemplateFactory(template.getTraitTemplateCollection().getTraitTemplateFactory()));
     TraitModel traitModel = TraitModelFetcher.fetch(hero);
     traitModel.addTraits(getAll());
-    this.specialtyConfiguration = new SpecialtiesConfiguration(this);
     specialtyConfiguration.initialize(context, hero);
   }
 

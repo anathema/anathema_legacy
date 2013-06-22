@@ -11,9 +11,11 @@ dependencies {
     compile project(':Platform_FX')
     compile project(':Character_Main')
     compile project(':Character_Reporting')
+    compile project(':Hero_Abilities')
     compile project(':Hero_OtherTraits')
     testCompile parent.ext.testDependencies
     testCompile project(path: ':Platform', configuration: 'tests')
     testCompile project(path: ':Character_Main', configuration: 'tests')
+    testCompile project(path: ':Hero_Abilities', configuration: 'tests')
     testCompile project(path: ':Hero_OtherTraits', configuration: 'tests')
 }
