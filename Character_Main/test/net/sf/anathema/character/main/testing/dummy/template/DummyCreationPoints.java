@@ -7,7 +7,7 @@ import net.sf.anathema.lib.exception.NotYetImplementedException;
 
 public class DummyCreationPoints implements ICreationPoints {
 
-  public DummyAbilityCreationPoints abilityCreationPoints = new DummyAbilityCreationPoints();
+  public IAbilityCreationPoints abilityCreationPoints = new DummyAbilityCreationPoints();
   public int favoredCreationCharmCount = 0;
   public int defaultCreationCharmCount = 0;
 

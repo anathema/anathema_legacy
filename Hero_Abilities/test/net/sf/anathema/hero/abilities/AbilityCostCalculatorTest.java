@@ -129,7 +129,7 @@ public class AbilityCostCalculatorTest extends AbstractBonusPointTestCase {
     Trait firstFavored = setFavoredAbilityTo(AbilityType.Melee, 3);
     Trait secondFavored = setFavoredAbilityTo(AbilityType.Ride, 3);
     Trait unfavoredAbility = setUnfavoredAbilityTo(AbilityType.Archery, 3);
-    AbilityCostCalculator calculator = startCalculation(dummyHero.template.abilityCreationPoints);
+    AbilityCostCalculator calculator = startCalculation(dummyHero.template.creationPoints.abilityCreationPoints);
     assertEquals(3, calculator.getFreePointsSpent(true));
     assertEquals(2, calculator.getFreePointsSpent(false));
     List<Trait> attributesWithoutCost = getAllAbilities();
@@ -259,7 +259,7 @@ public class AbilityCostCalculatorTest extends AbstractBonusPointTestCase {
   }
 
   private void initializeModelWith(AbilityCreationPoints abilityCreationPoints) {
-    dummyHero.template.abilityCreationPoints = abilityCreationPoints;
+    dummyHero.template.creationPoints.abilityCreationPoints = abilityCreationPoints;
     abilityModel.initialize(new DummyInitializationContext(), dummyHero);
   }
 
