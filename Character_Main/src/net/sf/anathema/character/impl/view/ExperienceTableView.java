@@ -120,4 +120,9 @@ public class ExperienceTableView implements ExperienceView, IView {
     getTableModel().setValueAt(experiencePoints, rowIndex, VALUE_INDEX);
     getTableModel().setValueAt(text, rowIndex, DESCRIPTION_INDEX);
   }
+
+  @Override
+  public void removeEntry(int rowIndex) {
+    getTableModel().removeRow(rowIndex);
+  }
 }

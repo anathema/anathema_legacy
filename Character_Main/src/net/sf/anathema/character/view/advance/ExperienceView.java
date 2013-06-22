@@ -16,4 +16,6 @@ public interface ExperienceView {
   DefaultTableModel getTableModel();
 
   void updateEntry(int rowIndex, int experiencePoints, String text);
+
+  void removeEntry(int rowIndex);
 }

@@ -99,7 +99,7 @@ public class ExperienceConfigurationPresenter {
 
   private void removeFromView(IExperiencePointEntry entry) {
     int rowIndex = indexByEntry.get(entry);
-    tableModel.removeRow(rowIndex);
+    experienceView.removeEntry(rowIndex);
     updateTotal();
   }
 
