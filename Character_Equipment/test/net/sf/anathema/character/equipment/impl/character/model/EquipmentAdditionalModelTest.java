@@ -16,7 +16,7 @@ import static org.mockito.Mockito.mock;
 
 public class EquipmentAdditionalModelTest {
   private final DummyEssenceCharacterType characterType = new DummyEssenceCharacterType();
-  IArmourStats naturalArmor = new DefaultNaturalSoak(new DummyGenericTrait(Stamina, 5), characterType, null);
+  IArmourStats naturalArmor = new DefaultNaturalSoak(new DummyGenericTrait(Stamina, 5), characterType);
   IEquipmentTemplateProvider templateProvider = mock(IEquipmentTemplateProvider.class);
   IGenericSpecialtyContext context = mock(IGenericSpecialtyContext.class);
   IEquipmentCharacterDataProvider dataProvider = mock(IEquipmentCharacterDataProvider.class);
