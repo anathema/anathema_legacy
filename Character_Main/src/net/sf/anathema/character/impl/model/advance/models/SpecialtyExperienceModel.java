@@ -3,20 +3,18 @@ package net.sf.anathema.character.impl.model.advance.models;
 import net.sf.anathema.character.generic.template.experience.IExperiencePointCosts;
 import net.sf.anathema.character.library.trait.Trait;
 import net.sf.anathema.character.library.trait.specialties.ISpecialtiesConfiguration;
+import net.sf.anathema.character.library.trait.specialties.SpecialtyModelFetcher;
 import net.sf.anathema.character.library.trait.subtrait.ISubTraitContainer;
-import net.sf.anathema.character.main.model.abilities.AbilityModel;
 import net.sf.anathema.character.main.model.abilities.AbilityModelFetcher;
 import net.sf.anathema.hero.model.Hero;
 
 public class SpecialtyExperienceModel extends AbstractIntegerValueModel {
 
   private Hero hero;
-  private final AbilityModel abilityModel;
 
   public SpecialtyExperienceModel(Hero hero) {
     super("Experience", "Specialties");
     this.hero = hero;
-    this.abilityModel = AbilityModelFetcher.fetch(hero);
   }
 
   @Override
@@ -26,7 +24,7 @@ public class SpecialtyExperienceModel extends AbstractIntegerValueModel {
 
   private int getSpecialtyCosts() {
     int experienceCosts = 0;
-    for (Trait ability : abilityModel.getAll()) {
+    for (Trait ability : AbilityModelFetcher.fetch(hero).getAll()) {
       experienceCosts += getExperienceDots(ability) * getCostPerSpecialtyDot(ability);
     }
     return experienceCosts;
@@ -38,7 +36,7 @@ public class SpecialtyExperienceModel extends AbstractIntegerValueModel {
   }
 
   private ISubTraitContainer getSpecialtyContainer(Trait ability) {
-    ISpecialtiesConfiguration specialtyConfiguration = abilityModel.getSpecialtyConfiguration();
+    ISpecialtiesConfiguration specialtyConfiguration = SpecialtyModelFetcher.fetch(hero);
     return specialtyConfiguration.getSpecialtiesContainer(ability.getType());
   }
 

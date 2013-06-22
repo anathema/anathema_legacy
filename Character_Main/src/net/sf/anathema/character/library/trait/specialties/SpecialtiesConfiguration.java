@@ -5,6 +5,7 @@ import net.sf.anathema.character.generic.framework.ITraitReference;
 import net.sf.anathema.character.generic.traits.TraitType;
 import net.sf.anathema.character.generic.traits.groups.ITraitTypeGroup;
 import net.sf.anathema.character.generic.traits.groups.TraitTypeGroup;
+import net.sf.anathema.character.impl.model.advance.models.SpecialtyExperienceModel;
 import net.sf.anathema.character.library.trait.Trait;
 import net.sf.anathema.character.library.trait.subtrait.ISubTraitContainer;
 import net.sf.anathema.character.main.model.abilities.AbilityModel;
@@ -14,6 +15,7 @@ import net.sf.anathema.hero.change.ChangeAnnouncer;
 import net.sf.anathema.hero.model.Hero;
 import net.sf.anathema.hero.model.HeroModel;
 import net.sf.anathema.hero.model.InitializationContext;
+import net.sf.anathema.hero.points.PointModelFetcher;
 import net.sf.anathema.lib.control.IChangeListener;
 import net.sf.anathema.lib.util.Identifier;
 import org.jmock.example.announcer.Announcer;
@@ -32,7 +34,6 @@ public class SpecialtiesConfiguration implements ISpecialtiesConfiguration, Hero
   private final Announcer<IChangeListener> control = Announcer.to(IChangeListener.class);
   private final Announcer<ITraitReferencesChangeListener> traitControl = Announcer.to(ITraitReferencesChangeListener.class);
   private Hero hero;
-  private InitializationContext context;
   private String currentName;
   private ITraitReference currentType;
   private AbilityModel abilities;
@@ -44,7 +45,7 @@ public class SpecialtiesConfiguration implements ISpecialtiesConfiguration, Hero
   @Override
   public void initialize(InitializationContext context, Hero hero) {
     this.hero = hero;
-    this.context = context;
+    PointModelFetcher.fetch(hero).addToExperienceOverview(new SpecialtyExperienceModel(hero));
     ITraitTypeGroup[] groups = abilities.getAbilityTypeGroups();
     TraitType[] traitTypes =  TraitTypeGroup.getAllTraitTypes(groups);
     for (Trait trait : TraitModelFetcher.fetch(hero).getTraits(traitTypes)) {
