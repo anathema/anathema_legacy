@@ -4,6 +4,11 @@ Exalted © 2001-2012 by White Wolf Publishing, Inc.
 
 Website: [anathema.github.com](http://anathema.github.com)
 
+## Release 5.1.1
+
+### Bugfixes
+* Corrects prerequisites for [Solar/Investigation] "Oracular Magistrate Understanding"
+
 ## Release 5.1.0
 
 Anathema now requires Java 7 Update 21 or later. Windows and OS X releases include a suitable version.
