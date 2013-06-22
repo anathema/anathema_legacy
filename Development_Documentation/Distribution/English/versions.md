@@ -7,6 +7,7 @@ Website: [anathema.github.com](http://anathema.github.com)
 ## Release 5.1.1
 
 ### Bugfixes
+* Fixes rendering where the upper left node was vertically aligned with later nodes that required movement, e.g. [Solar/Medicine]
 * Corrects prerequisites for [Solar/Investigation] "Oracular Magistrate Understanding"
 
 ## Release 5.1.0
