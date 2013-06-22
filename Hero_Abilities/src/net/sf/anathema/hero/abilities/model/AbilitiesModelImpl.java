@@ -12,7 +12,7 @@ import net.sf.anathema.character.impl.model.traits.creation.FavoredIncrementChec
 import net.sf.anathema.character.impl.model.traits.creation.TypedTraitTemplateFactory;
 import net.sf.anathema.character.library.trait.Trait;
 import net.sf.anathema.character.library.trait.favorable.IncrementChecker;
-import net.sf.anathema.character.main.model.abilities.AbilityModel;
+import net.sf.anathema.character.main.model.abilities.AbilitiesModel;
 import net.sf.anathema.character.main.model.traits.DefaultTraitMap;
 import net.sf.anathema.character.main.model.traits.TraitMap;
 import net.sf.anathema.character.main.model.traits.TraitModel;
@@ -28,7 +28,7 @@ import net.sf.anathema.lib.util.Identifier;
 import java.util.ArrayList;
 import java.util.List;
 
-public class AbilityModelImpl extends DefaultTraitMap implements AbilityModel, HeroModel {
+public class AbilitiesModelImpl extends DefaultTraitMap implements AbilitiesModel, HeroModel {
 
   private IIdentifiedCasteTraitTypeGroup[] abilityTraitGroups;
   private Hero hero;

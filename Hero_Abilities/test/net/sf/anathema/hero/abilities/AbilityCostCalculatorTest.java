@@ -18,7 +18,7 @@ import net.sf.anathema.character.main.testing.dummy.DummyInitializationContext;
 import net.sf.anathema.character.main.testing.dummy.models.DummyHeroConcept;
 import net.sf.anathema.character.main.testing.dummy.models.DummyOtherTraitModel;
 import net.sf.anathema.character.main.testing.dummy.models.DummyTraitModel;
-import net.sf.anathema.hero.abilities.model.AbilityModelImpl;
+import net.sf.anathema.hero.abilities.model.AbilitiesModelImpl;
 import net.sf.anathema.hero.points.PointModelImpl;
 import org.junit.Before;
 import org.junit.Test;
@@ -68,7 +68,7 @@ public class AbilityCostCalculatorTest extends AbstractBonusPointTestCase {
 
   private AbilityPointCosts costs;
   private DummyAdditionalBonusPointManagement additionalBonusPointManagment;
-  private AbilityModelImpl abilityModel = new AbilityModelImpl();
+  private AbilitiesModelImpl abilityModel = new AbilitiesModelImpl();
   private DummyHero dummyHero = new DummyHero();
 
   private Trait setFavoredAbilityTo(AbilityType abilityType, int value) {
@@ -89,7 +89,7 @@ public class AbilityCostCalculatorTest extends AbstractBonusPointTestCase {
 
   @Before
   public void setUp() throws Exception {
-    this.abilityModel = new AbilityModelImpl();
+    this.abilityModel = new AbilitiesModelImpl();
     dummyHero.addModel(abilityModel);
     dummyHero.addModel(new DummyTraitModel());
     dummyHero.addModel(new DummyHeroConcept());

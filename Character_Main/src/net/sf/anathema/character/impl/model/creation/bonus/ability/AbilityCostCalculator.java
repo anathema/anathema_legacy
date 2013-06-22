@@ -12,7 +12,7 @@ import net.sf.anathema.character.library.trait.specialties.SpecialtiesModel;
 import net.sf.anathema.character.library.trait.specialties.SpecialtiesModelFetcher;
 import net.sf.anathema.character.library.trait.specialties.Specialty;
 import net.sf.anathema.character.library.trait.subtrait.ISubTraitContainer;
-import net.sf.anathema.character.main.model.abilities.AbilityModel;
+import net.sf.anathema.character.main.model.abilities.AbilitiesModel;
 import net.sf.anathema.hero.model.Hero;
 
 import java.util.ArrayList;
@@ -27,13 +27,13 @@ public class AbilityCostCalculator extends AbstractFavorableTraitCostCalculator 
   private int specialtyDotSum;
   private SpecialtyCalculator specialtyCalculator;
 
-  public AbilityCostCalculator(Hero hero, AbilityModel abilityModel, IFavorableTraitCreationPoints points, int specialtyPoints,
+  public AbilityCostCalculator(Hero hero, AbilitiesModel abilitiesModel, IFavorableTraitCreationPoints points, int specialtyPoints,
                                AbilityPointCosts costs, IAdditionalBonusPointManagement additionalPools) {
-    super(additionalPools, points, costs.getMaximumFreeAbilityRank(), abilityModel.getAll());
+    super(additionalPools, points, costs.getMaximumFreeAbilityRank(), abilitiesModel.getAll());
     this.hero = hero;
     this.costs = costs;
     this.additionalPools = additionalPools;
-    this.specialtyCalculator = new SpecialtyCalculator(abilityModel, specialtyPoints);
+    this.specialtyCalculator = new SpecialtyCalculator(abilitiesModel, specialtyPoints);
   }
 
   @Override

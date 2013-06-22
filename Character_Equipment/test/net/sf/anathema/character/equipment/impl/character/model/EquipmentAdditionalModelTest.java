@@ -10,7 +10,7 @@ import net.sf.anathema.character.library.trait.specialties.SpecialtiesModelImpl;
 import net.sf.anathema.character.main.testing.dummy.DummyEssenceCharacterType;
 import net.sf.anathema.character.main.testing.dummy.DummyGenericTrait;
 import net.sf.anathema.character.main.testing.dummy.DummyHero;
-import net.sf.anathema.hero.abilities.model.AbilityModelImpl;
+import net.sf.anathema.hero.abilities.model.AbilitiesModelImpl;
 import net.sf.anathema.hero.othertraits.model.pool.EssencePoolModelImpl;
 import org.junit.Before;
 import org.junit.Test;
@@ -29,7 +29,7 @@ public class EquipmentAdditionalModelTest {
   public void setUp() throws Exception {
     DummyHero hero = new DummyHero();
     hero.addModel(new EssencePoolModelImpl());
-    hero.addModel(new AbilityModelImpl());
+    hero.addModel(new AbilitiesModelImpl());
     hero.addModel(new SpecialtiesModelImpl());
     model = new EquipmentAdditionalModel(hero, characterType, naturalArmor, templateProvider, dataProvider, new DummyMaterialRules());
   }

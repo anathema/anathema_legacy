@@ -1,6 +1,6 @@
 package net.sf.anathema.hero.abilities.model;
 
-import net.sf.anathema.character.main.model.abilities.AbilityModel;
+import net.sf.anathema.character.main.model.abilities.AbilitiesModel;
 import net.sf.anathema.character.main.model.concept.HeroConcept;
 import net.sf.anathema.character.main.model.experience.ExperienceModel;
 import net.sf.anathema.character.main.model.othertraits.OtherTraitModel;
@@ -14,11 +14,11 @@ import net.sf.anathema.hero.template.TemplateFactory;
 public class AbilityModelFactory extends SimpleModelTreeEntry implements HeroModelFactory {
 
   public AbilityModelFactory() {
-    super(AbilityModel.ID, OtherTraitModel.ID, TraitModel.ID, HeroConcept.ID, ExperienceModel.ID);
+    super(AbilitiesModel.ID, OtherTraitModel.ID, TraitModel.ID, HeroConcept.ID, ExperienceModel.ID);
   }
 
   @Override
-  public AbilityModelImpl create(TemplateFactory templateFactory) {
-    return new AbilityModelImpl();
+  public AbilitiesModelImpl create(TemplateFactory templateFactory) {
+    return new AbilitiesModelImpl();
   }
 }

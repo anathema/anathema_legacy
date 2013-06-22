@@ -7,7 +7,7 @@ import net.sf.anathema.character.main.model.traits.TraitMap;
 import net.sf.anathema.lib.util.Identifier;
 import net.sf.anathema.lib.util.SimpleIdentifier;
 
-public interface AbilityModel extends TraitMap{
+public interface AbilitiesModel extends TraitMap {
 
   Identifier ID = new SimpleIdentifier("Abilities");
 

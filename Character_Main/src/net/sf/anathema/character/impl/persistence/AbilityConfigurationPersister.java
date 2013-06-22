@@ -9,7 +9,7 @@ import net.sf.anathema.character.library.trait.specialties.DefaultTraitReference
 import net.sf.anathema.character.library.trait.specialties.SpecialtiesModel;
 import net.sf.anathema.character.library.trait.specialties.Specialty;
 import net.sf.anathema.character.library.trait.subtrait.ISubTraitContainer;
-import net.sf.anathema.character.main.model.abilities.AbilityModel;
+import net.sf.anathema.character.main.model.abilities.AbilitiesModel;
 import net.sf.anathema.lib.exception.PersistenceException;
 import net.sf.anathema.lib.xml.ElementUtilities;
 import org.dom4j.Element;
@@ -25,7 +25,7 @@ public class AbilityConfigurationPersister {
 
   private final TraitPersister persister = new TraitPersister();
 
-  public void save(Element parent, AbilityModel abilities, SpecialtiesModel specialties) {
+  public void save(Element parent, AbilitiesModel abilities, SpecialtiesModel specialties) {
     Element abilitiesElement = parent.addElement(TAG_ABILITIES);
     for (Trait ability : abilities.getAll()) {
       saveAbility(abilitiesElement, ability, specialties);
@@ -49,17 +49,17 @@ public class AbilityConfigurationPersister {
     }
   }
 
-  public void load(Element parent, AbilityModel abilityModel, SpecialtiesModel specialties) throws PersistenceException {
+  public void load(Element parent, AbilitiesModel abilitiesModel, SpecialtiesModel specialties) throws PersistenceException {
     Element abilitiesElement = ElementUtilities.getRequiredElement(parent, TAG_ABILITIES);
     List<Element> abilityElements = ElementUtilities.elements(abilitiesElement);
     for (Element element : abilityElements) {
-      loadAbility(element, abilityModel, specialties);
+      loadAbility(element, abilitiesModel, specialties);
     }
   }
 
-  private void loadAbility(final Element abilityElement, AbilityModel abilityModel, SpecialtiesModel specialties) throws PersistenceException {
+  private void loadAbility(final Element abilityElement, AbilitiesModel abilitiesModel, SpecialtiesModel specialties) throws PersistenceException {
     AbilityType abilityType = AbilityType.valueOf(abilityElement.getName());
-    Trait ability = abilityModel.getTrait(abilityType);
+    Trait ability = abilitiesModel.getTrait(abilityType);
     persister.restoreTrait(abilityElement, ability);
     boolean favored = ElementUtilities.getBooleanAttribute(abilityElement, ATTRIB_FAVORED, false);
     ability.getFavorization().setFavored(favored);
