@@ -7,8 +7,9 @@ import net.sf.anathema.lib.exception.NotYetImplementedException;
 
 public class DummyCreationPoints implements ICreationPoints {
 
-  public int favoredCreationCharmCount = 0;
   public DummyAbilityCreationPoints abilityCreationPoints = new DummyAbilityCreationPoints();
+  public int favoredCreationCharmCount = 0;
+  public int defaultCreationCharmCount = 0;
 
   @Override
   public int getBackgroundPointCount() {
@@ -47,7 +48,7 @@ public class DummyCreationPoints implements ICreationPoints {
 
   @Override
   public int getDefaultCreationCharmCount() {
-    throw new NotYetImplementedException();
+    return defaultCreationCharmCount;
   }
 
   @Override
