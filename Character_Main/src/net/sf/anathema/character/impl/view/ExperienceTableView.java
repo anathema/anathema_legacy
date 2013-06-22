@@ -11,6 +11,9 @@ import net.sf.anathema.framework.swing.IView;
 import net.sf.anathema.lib.gui.action.SmartAction;
 import net.sf.anathema.lib.gui.icon.ImageProvider;
 import net.sf.anathema.lib.gui.table.SmartTable;
+import net.sf.anathema.lib.gui.table.columsettings.ITableColumnViewSettings;
+import net.sf.anathema.lib.gui.table.columsettings.IntegerTableColumnSettings;
+import net.sf.anathema.lib.gui.table.columsettings.StringTableColumnSettings;
 import net.sf.anathema.lib.workflow.labelledvalue.view.LabelledIntegerValueView;
 import org.jmock.example.announcer.Announcer;
 
@@ -25,6 +28,7 @@ import javax.swing.event.TableModelEvent;
 import javax.swing.event.TableModelListener;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableColumn;
+import java.awt.Color;
 import java.awt.Component;
 import java.awt.Dimension;
 
@@ -45,7 +49,8 @@ public class ExperienceTableView implements ExperienceView, IView {
     headers[ExperienceTableView.DESCRIPTION_INDEX] = properties.getDescriptionHeader();
     headers[ExperienceTableView.VALUE_INDEX] = properties.getPointHeader();
     DefaultTableModel tableModel = new DefaultTableModel(headers, 0);
-    smartTable = new SmartTable(tableModel, properties.getColumnSettings());
+    ITableColumnViewSettings[] settings = new ITableColumnViewSettings[]{new StringTableColumnSettings(), new IntegerTableColumnSettings(-10000, 10000, 5, Color.RED)};
+    smartTable = new SmartTable(tableModel, settings);
     Icon addIcon = new ImageProvider().getImageIcon(properties.getAddIcon());
     smartTable.addAction(new SmartAction(addIcon) {
       @Override
