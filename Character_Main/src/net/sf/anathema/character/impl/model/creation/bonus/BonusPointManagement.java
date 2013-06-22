@@ -82,8 +82,8 @@ public class BonusPointManagement implements IBonusPointManagement {
     magicAdditionalPools =
             new AdditionalMagicLearnPointManagement(characterTemplate.getAdditionalRules().getAdditionalMagicLearnPools(), characterAbstraction);
     this.magicCalculator =
-            new MagicCostCalculator(creationPoints.getFavoredCreationCharmCount(), creationPoints.getDefaultCreationCharmCount(), cost, bonusAdditionalPools,
-                    magicAdditionalPools, character);
+            new MagicCostCalculator(character, creationPoints.getFavoredCreationCharmCount(), creationPoints.getDefaultCreationCharmCount(), cost, bonusAdditionalPools,
+                    magicAdditionalPools);
     this.willpower = TraitCollectionUtilities.getWillpower(traitMap);
     this.essence = TraitCollectionUtilities.getEssence(traitMap);
   }

@@ -40,8 +40,8 @@ public class MagicCostCalculator {
   private final IAdditionalMagicLearnPointManagement magicPools;
   private final IMagicTemplate magicTemplate;
 
-  public MagicCostCalculator(int favoredCreationCharmCount, int defaultCreationCharmCount, BonusPointCosts costs,
-                             IAdditionalBonusPointManagement bonusPools, IAdditionalMagicLearnPointManagement magicPools, Hero hero) {
+  public MagicCostCalculator(Hero hero, int favoredCreationCharmCount, int defaultCreationCharmCount, BonusPointCosts costs,
+                             IAdditionalBonusPointManagement bonusPools, IAdditionalMagicLearnPointManagement magicPools) {
     this.magicTemplate = hero.getTemplate().getMagicTemplate();
     this.charms = CharmsModelFetcher.fetch(hero);
     this.spells = SpellsModelFetcher.fetch(hero);

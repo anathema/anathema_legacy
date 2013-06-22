@@ -2,7 +2,6 @@ package net.sf.anathema.character.main.costs;
 
 import net.sf.anathema.character.generic.impl.template.points.DefaultBonusPointCosts;
 import net.sf.anathema.character.generic.magic.ISpell;
-import net.sf.anathema.character.generic.template.creation.BonusPointCosts;
 import net.sf.anathema.character.generic.traits.types.AbilityType;
 import net.sf.anathema.character.impl.model.context.trait.CreationTraitValueStrategy;
 import net.sf.anathema.character.impl.model.creation.bonus.magic.MagicCostCalculator;
@@ -37,9 +36,8 @@ public class CharmCostCalculatorTest extends AbstractBonusPointTestCase {
     hero.addModel(spells);
     traitModel = TraitModelFetcher.fetch(hero);
     addAbilityAndEssence(traitModel, hero);
-    BonusPointCosts cost = new DefaultBonusPointCosts();
-    calculator = new MagicCostCalculator(2, 3, cost,
-            new DummyAdditionalBonusPointManagement(), new DummyAdditionalSpellPointManagement(), hero);
+    calculator = new MagicCostCalculator(hero, 2, 3, new DefaultBonusPointCosts(), new DummyAdditionalBonusPointManagement(),
+            new DummyAdditionalSpellPointManagement());
   }
 
   @Test

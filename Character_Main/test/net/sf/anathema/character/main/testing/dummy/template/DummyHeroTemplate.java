@@ -40,10 +40,12 @@ import java.util.List;
 
 public class DummyHeroTemplate implements HeroTemplate {
 
-  private final ITraitTemplateCollection traitTemplateCollection = new TraitTemplateCollection(new DummyTraitTemplateFactory());
-  private ITemplateType type = new TemplateType(new DummyMundaneCharacterType());
-  private IEssenceTemplate essenceTemplate = new NullEssenceTemplate();
+  public final ITraitTemplateCollection traitTemplateCollection = new TraitTemplateCollection(new DummyTraitTemplateFactory());
+  public ITemplateType type = new TemplateType(new DummyMundaneCharacterType());
+  public IEssenceTemplate essenceTemplate = new NullEssenceTemplate();
   public IAbilityCreationPoints abilityCreationPoints = new DummyAbilityCreationPoints();
+  public DummyCreationPoints creationPoints = new DummyCreationPoints();
+  public DummyMagicTemplate magicTemplate = new DummyMagicTemplate();
 
   public void setEssenceTemplate(IEssenceTemplate essenceTemplate) {
     this.essenceTemplate = essenceTemplate;
@@ -86,53 +88,7 @@ public class DummyHeroTemplate implements HeroTemplate {
 
   @Override
   public ICreationPoints getCreationPoints() {
-    return new ICreationPoints() {
-
-      @Override
-      public int getBackgroundPointCount() {
-        throw new NotYetImplementedException();
-      }
-
-      @Override
-      public int getBonusPointCount() {
-        throw new NotYetImplementedException();
-      }
-
-      @Override
-      public int getVirtueCreationPoints() {
-        throw new NotYetImplementedException();
-      }
-
-      @Override
-      public int getSpecialtyCreationPoints() {
-        throw new NotYetImplementedException();
-      }
-
-      @Override
-      public IAbilityCreationPoints getAbilityCreationPoints() {
-        return abilityCreationPoints;
-      }
-
-      @Override
-      public IAttributeCreationPoints getAttributeCreationPoints() {
-        throw new NotYetImplementedException();
-      }
-
-      @Override
-      public int getFavoredCreationCharmCount() {
-        throw new NotYetImplementedException();
-      }
-
-      @Override
-      public int getDefaultCreationCharmCount() {
-        throw new NotYetImplementedException();
-      }
-
-      @Override
-      public int getUniqueRequiredCreationCharmCount() {
-        throw new NotYetImplementedException();
-      }
-    };
+    return creationPoints;
   }
 
   @Override
@@ -147,22 +103,7 @@ public class DummyHeroTemplate implements HeroTemplate {
 
   @Override
   public IMagicTemplate getMagicTemplate() {
-    return new IMagicTemplate() {
-      @Override
-      public boolean canBuyFromFreePicks(IMagic magic) {
-        return true;
-      }
-
-      @Override
-      public ISpellMagicTemplate getSpellMagic() {
-        throw new NotYetImplementedException();
-      }
-
-      @Override
-      public ICharmTemplate getCharmTemplate() {
-        return new CharmTemplate(new DefaultMartialArtsRules(MartialArtsLevel.Mortal), new NullCharmSet());
-      }
-    };
+    return magicTemplate;
   }
 
   @Override
@@ -208,4 +149,68 @@ public class DummyHeroTemplate implements HeroTemplate {
     return false;
   }
 
+  private static class DummyMagicTemplate implements IMagicTemplate {
+    @Override
+    public boolean canBuyFromFreePicks(IMagic magic) {
+      return true;
+    }
+
+    @Override
+    public ISpellMagicTemplate getSpellMagic() {
+      throw new NotYetImplementedException();
+    }
+
+    @Override
+    public ICharmTemplate getCharmTemplate() {
+      return new CharmTemplate(new DefaultMartialArtsRules(MartialArtsLevel.Mortal), new NullCharmSet());
+    }
+  }
+
+  private class DummyCreationPoints implements ICreationPoints {
+
+    @Override
+    public int getBackgroundPointCount() {
+      throw new NotYetImplementedException();
+    }
+
+    @Override
+    public int getBonusPointCount() {
+      throw new NotYetImplementedException();
+    }
+
+    @Override
+    public int getVirtueCreationPoints() {
+      throw new NotYetImplementedException();
+    }
+
+    @Override
+    public int getSpecialtyCreationPoints() {
+      throw new NotYetImplementedException();
+    }
+
+    @Override
+    public IAbilityCreationPoints getAbilityCreationPoints() {
+      return abilityCreationPoints;
+    }
+
+    @Override
+    public IAttributeCreationPoints getAttributeCreationPoints() {
+      throw new NotYetImplementedException();
+    }
+
+    @Override
+    public int getFavoredCreationCharmCount() {
+      throw new NotYetImplementedException();
+    }
+
+    @Override
+    public int getDefaultCreationCharmCount() {
+      throw new NotYetImplementedException();
+    }
+
+    @Override
+    public int getUniqueRequiredCreationCharmCount() {
+      throw new NotYetImplementedException();
+    }
+  }
 }
