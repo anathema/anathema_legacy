@@ -12,11 +12,6 @@ public class DummyCreationPoints implements ICreationPoints {
   public int defaultCreationCharmCount = 0;
 
   @Override
-  public int getBackgroundPointCount() {
-    throw new NotYetImplementedException();
-  }
-
-  @Override
   public int getBonusPointCount() {
     throw new NotYetImplementedException();
   }
@@ -49,10 +44,5 @@ public class DummyCreationPoints implements ICreationPoints {
   @Override
   public int getDefaultCreationCharmCount() {
     return defaultCreationCharmCount;
-  }
-
-  @Override
-  public int getUniqueRequiredCreationCharmCount() {
-    throw new NotYetImplementedException();
   }
 }

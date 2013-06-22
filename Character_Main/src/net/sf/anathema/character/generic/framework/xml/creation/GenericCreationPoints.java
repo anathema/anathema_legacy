@@ -12,11 +12,9 @@ public class GenericCreationPoints extends ReflectionCloneableObject<GenericCrea
 
   private IAbilityCreationPoints abilityCreationPoints = new AbilityCreationPoints(0, 0, 0);
   private IAttributeCreationPoints attributeCreationPoints = new AttributeCreationPoints(0, 0, 0);
-  private int backgroundPointCount = 0;
   private int bonusPointCount = 0;
   private int defaultCreationCharmCount = 0;
   private int favoredCreationCharmCount = 0;
-  private int uniqueCreationCharmCount = 0;
   private int virtueCreationPoints = 0;
   private int specialityCreationPoints = 0;
 
@@ -28,11 +26,6 @@ public class GenericCreationPoints extends ReflectionCloneableObject<GenericCrea
   @Override
   public IAttributeCreationPoints getAttributeCreationPoints() {
     return attributeCreationPoints;
-  }
-
-  @Override
-  public int getBackgroundPointCount() {
-    return backgroundPointCount;
   }
 
   @Override
@@ -48,11 +41,6 @@ public class GenericCreationPoints extends ReflectionCloneableObject<GenericCrea
   @Override
   public int getFavoredCreationCharmCount() {
     return favoredCreationCharmCount;
-  }
-
-  @Override
-  public int getUniqueRequiredCreationCharmCount() {
-    return uniqueCreationCharmCount;
   }
 
   @Override
@@ -75,11 +63,6 @@ public class GenericCreationPoints extends ReflectionCloneableObject<GenericCrea
     this.attributeCreationPoints = attributeCreationPoints;
   }
 
-  public void setBackgroundPointCount(int backgroundPointCount) {
-    Preconditions.checkArgument(backgroundPointCount >= 0, "Background point count must be positive.");
-    this.backgroundPointCount = backgroundPointCount;
-  }
-
   public void setBonusPointCount(int bonusPointCount) {
     Preconditions.checkArgument(bonusPointCount >= 0, "Bonus point count must be positive.");
     this.bonusPointCount = bonusPointCount;
@@ -93,11 +76,6 @@ public class GenericCreationPoints extends ReflectionCloneableObject<GenericCrea
   public void setFavoredCreationCharmCount(int charmCount) {
     Preconditions.checkArgument(charmCount >= 0, "Favored charm count must be positive.");
     this.favoredCreationCharmCount = charmCount;
-  }
-
-  public void setUniqueCreationCharmCount(int charmCount) {
-    Preconditions.checkArgument(charmCount >= 0, "Unique charm count must be positive.");
-    this.uniqueCreationCharmCount = charmCount;
   }
 
   public void setVirtueCreationPoints(int virtueCreationPoints) {

@@ -5,8 +5,6 @@ import net.sf.anathema.character.generic.template.points.IAttributeCreationPoint
 
 public interface ICreationPoints {
 
-  int getBackgroundPointCount();
-
   int getBonusPointCount();
 
   int getVirtueCreationPoints();
@@ -20,6 +18,4 @@ public interface ICreationPoints {
   int getFavoredCreationCharmCount();
 
   int getDefaultCreationCharmCount();
-
-  int getUniqueRequiredCreationCharmCount();
 }

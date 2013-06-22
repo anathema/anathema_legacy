@@ -15,7 +15,6 @@ public class CreationPointTemplateParser extends AbstractXmlTemplateParser<Gener
   private static final String ATTRIB_FAVORED_PICKS = "favoredPicks";
   private static final String ATTRIB_FAVORED_DOTS = "favoredDots";
   private static final String ATTRIB_GENERIC_DOTS = "genericDots";
-  private static final String ATTRIB_UNIQUE = "unique";
   private static final String ATTRIB_GENERAL = "general";
   private static final String ATTRIB_PRIMARY = "primary";
   private static final String ATTRIB_SECONDARY = "secondary";
@@ -23,7 +22,6 @@ public class CreationPointTemplateParser extends AbstractXmlTemplateParser<Gener
   private static final String TAG_ABILITY_DOTS = "abilityDots";
   private static final String TAG_CHARM_PICKS = "charmPicks";
   private static final String TAG_ATTRIBUTE_DOTS = "attributeDots";
-  private static final String TAG_BACKGROUND_DOTS = "backgroundDots";
   private static final String TAG_SPECIALTY_DOTS = "specialtyDots";
   private static final String TAG_VIRTUE_DOTS = "virtueDots";
   private static final String TAG_BONUS_POINTS = "bonusPoints";
@@ -38,10 +36,6 @@ public class CreationPointTemplateParser extends AbstractXmlTemplateParser<Gener
     parseAttributeCreationPoints(element.element(TAG_ATTRIBUTE_DOTS), creationPoints);
     parseAbilityCreationPoints(element.element(TAG_ABILITY_DOTS), creationPoints);
     parseCharmCreationPoints(element.element(TAG_CHARM_PICKS), creationPoints);
-    Element backgroundElement = element.element(TAG_BACKGROUND_DOTS);
-    if (backgroundElement != null) {
-      creationPoints.setBackgroundPointCount(getCountAttribute(backgroundElement));
-    }
     Element virtueElement = element.element(TAG_VIRTUE_DOTS);
     if (virtueElement != null) {
       creationPoints.setVirtueCreationPoints(getCountAttribute(virtueElement));
@@ -91,10 +85,8 @@ public class CreationPointTemplateParser extends AbstractXmlTemplateParser<Gener
     }
     int generalPicks = ElementUtilities.getIntAttrib(element, ATTRIB_GENERAL, 0);
     int favoredPicks = ElementUtilities.getIntAttrib(element, ATTRIB_FAVORED, 0);
-    int uniquePicks = ElementUtilities.getIntAttrib(element, ATTRIB_UNIQUE, 0);
     creationPoints.setGeneralCreationCharmCount(generalPicks);
     creationPoints.setFavoredCreationCharmCount(favoredPicks);
-    creationPoints.setUniqueCreationCharmCount(uniquePicks);
   }
 
   @Override

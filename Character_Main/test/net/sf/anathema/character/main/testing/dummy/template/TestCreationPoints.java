@@ -19,11 +19,6 @@ public class TestCreationPoints extends AbstractCreationPoints {
   }
 
   @Override
-  public int getBackgroundPointCount() {
-    return 7;
-  }
-
-  @Override
   public int getSpecialtyCreationPoints() {
     return 0;
   }
@@ -41,10 +36,5 @@ public class TestCreationPoints extends AbstractCreationPoints {
   @Override
   public int getDefaultCreationCharmCount() {
     return 5;
-  }
-
-  @Override
-  public int getUniqueRequiredCreationCharmCount() {
-    return 0;
   }
 }
