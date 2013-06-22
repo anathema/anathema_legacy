@@ -10,7 +10,6 @@ Set Up
 ### Developing with Eclipse ###
 1. Run ``gradlew eclipseProject eclipseClasspath eclipseJdt`` to create the Eclipse project files.
 2. Import all projects into Eclipse.
-3. Add your JDK's ``jfxrt.jar`` to the JDK configuration.
 
 ### Developing with NetBeans ###
 1. Have the [Gradle Support](http://plugins.netbeans.org/plugin/44510/gradle-support) plugin installed.
