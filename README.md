@@ -36,7 +36,7 @@ Run ``gradlew test``
 
 1. Run ``gradlew createModule -PmoduleName=MODULENAME``
 2. In ``settings.gradle``, add your module name.
-4. Run ``gradlew eclipseProject eclipseClasspath eclipseJdt`` or ``gradlew idea``.
+4. Regenerate your IDE's workspace as per the "Developing with..." sections above.
 5. [Eclipse Only] import the project.
 
 Deployment
