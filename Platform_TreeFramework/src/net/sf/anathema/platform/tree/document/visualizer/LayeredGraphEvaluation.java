@@ -11,7 +11,7 @@ public class LayeredGraphEvaluation {
     this.graph = graph;
   }
 
-  public boolean layerHasLeaved(int layer) {
+  public boolean layerHasLeaves(int layer) {
     for (ISimpleNode node : graph.getNodesByLayer(layer)) {
       if (node.isLeafNode()) {
         return true;

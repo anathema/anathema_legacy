@@ -37,7 +37,7 @@ public class SimplifiedBottomUpGraphVisualizer extends AbstractCascadeVisualizer
     LayeredGraphEvaluation evaluation = new LayeredGraphEvaluation(getGraph());
     int deepestLayer = getGraph().getDeepestLayer();
     for (int index = 1; index < deepestLayer; index++) {
-      if (evaluation.layerHasLeaved(index)) {
+      if (evaluation.layerHasLeaves(index)) {
         return false;
       }
     }

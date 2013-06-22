@@ -4,7 +4,13 @@ Exalted © 2001-2012 by White Wolf Publishing, Inc.
 
 Website: [anathema.github.com](http://anathema.github.com)
 
-## Release 5.1.0
+## Release 5.1.1
+
+### Bugfixes
+* Fixes rendering where the upper left node was vertically aligned with later nodes that required movement, e.g. [Solar/Medicine]
+* Corrects prerequisites for [Solar/Investigation] "Oracular Magistrate Understanding"
+
+## Release 5.1.0 "Twilight"
 
 Anathema now requires Java 7 Update 21 or later. Windows and OS X releases include a suitable version.
 Due to changed dependencies, Anathema only runs on Windows, OS X and Linux.

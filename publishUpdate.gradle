@@ -2,7 +2,7 @@
 // Your ssh key-auth passphrase for the Anathema Update Server will be prompted for, or can be entered at the command line like so:
 // gradlew uploadUpdate -PanathemaUsername=MyPassphraseHere
 
-def updateLocation = "wwwroot/updates2"
+def updateLocation = "wwwroot/updates3"
 
 task prepareUpdate << {
   def command = "mkdir -p ~/${updateLocation}/${versionString}"

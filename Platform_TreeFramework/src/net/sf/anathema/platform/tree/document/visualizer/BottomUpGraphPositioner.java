@@ -315,17 +315,18 @@ public class BottomUpGraphPositioner extends AbstractCascadeVisualizer {
       for (int nodeIndex = 0; nodeIndex < layerNodes.length - 1; nodeIndex++) {
         IVisualizableNode node = layerNodes[nodeIndex];
         IVisualizableNode nextNode = layerNodes[nodeIndex + 1];
-        int missingSpace = node.getRightSide() + getProperties().getGapDimension().width - nextNode.getLeftSide();
+        int missingSpace = calculateMissingSpaceBetweenNeighboringNodes(node, nextNode);
         if (missingSpace > 0) {
-          int projectionIndex = nodeProjection.indexOf(nextNode);
-          while (nodeProjection.get(projectionIndex - 1).getLeftSide() == nodeProjection.get(
-                  projectionIndex).getLeftSide()) {
-            projectionIndex--;
-          }
-          nodeProjection.forceAllRemainingNodesLeft(projectionIndex, -missingSpace);
+          nodeProjection.forceAllNodesOnTheSamePositionToTheLeft(nextNode, missingSpace);
         }
       }
     }
+  }
+
+  private int calculateMissingSpaceBetweenNeighboringNodes(IVisualizableNode node, IVisualizableNode nextNode) {
+    int firstPossibleStartingPosition = node.getRightSide() + getProperties().getGapDimension().width;
+    int actualStartingPosition = nextNode.getLeftSide();
+    return firstPossibleStartingPosition - actualStartingPosition;
   }
 
   private void removeWhiteSpace(ILayer[] layers) {

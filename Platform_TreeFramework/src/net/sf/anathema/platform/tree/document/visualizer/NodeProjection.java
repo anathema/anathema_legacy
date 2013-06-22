@@ -19,6 +19,11 @@ public class NodeProjection {
     Collections.sort(nodeProjection, new VisualizableNodeLeftSideComparator());
   }
 
+  public void forceAllNodesOnTheSamePositionToTheLeft(IVisualizableNode node, int space) {
+    int projectionIndex = getIndexOfFirstNodeOnSameHorizontalPosition(node);
+    forceAllRemainingNodesLeft(projectionIndex, -space);
+  }
+
   public void forceAllRemainingNodesLeft(int startIndex, int whiteSpace) {
     for (int moveNodeIndex = startIndex; moveNodeIndex < nodeProjection.size(); moveNodeIndex++) {
       nodeProjection.get(moveNodeIndex).forceShiftRight(-whiteSpace);
@@ -36,6 +41,14 @@ public class NodeProjection {
   public int getDistanceToPredecessors(int index) {
     IVisualizableNode node = get(index);
     return node.getLeftSide() - getRightmostSideUpTo(index - 1);
+  }
+
+  private int getIndexOfFirstNodeOnSameHorizontalPosition(IVisualizableNode nextNode) {
+    int projectionIndex = indexOf(nextNode);
+    while (projectionIndex > 0 && get(projectionIndex - 1).getLeftSide() == get(projectionIndex).getLeftSide()) {
+      projectionIndex--;
+    }
+    return projectionIndex;
   }
 
   private int getRightmostSideUpTo(int index) {
