@@ -2,8 +2,6 @@ package net.sf.anathema.character.view.advance;
 
 import net.sf.anathema.character.presenter.advance.ExperienceUpdateListener;
 
-import javax.swing.table.DefaultTableModel;
-
 public interface ExperienceView {
 
   void initGui(IExperienceViewProperties properties);
@@ -14,12 +12,11 @@ public interface ExperienceView {
 
   void setTotalValueLabel(int overallExperiencePoints);
 
-  //TODO (Swing->FX) TableModel
-  DefaultTableModel getTableModel();
-
   void addEntry(int experiencePoints, String text);
 
   void clearEntries();
 
   void addUpdateListener(ExperienceUpdateListener experienceUpdateListener);
+
+  int getNumberOfEntriesOnDisplay();
 }

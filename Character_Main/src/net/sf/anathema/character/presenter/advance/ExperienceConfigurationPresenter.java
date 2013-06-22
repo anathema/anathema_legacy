@@ -7,7 +7,6 @@ import net.sf.anathema.character.view.advance.ExperienceConfigurationViewListene
 import net.sf.anathema.character.view.advance.ExperienceView;
 import net.sf.anathema.lib.resources.Resources;
 
-import javax.swing.table.DefaultTableModel;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -15,7 +14,6 @@ public class ExperienceConfigurationPresenter {
 
   private final IExperiencePointConfiguration experiencePoints;
   private final ExperienceView experienceView;
-  private DefaultTableModel tableModel;
   private final Map<Integer, IExperiencePointEntry> entriesByIndex = new HashMap<>();
   private final Resources resources;
 
@@ -61,7 +59,6 @@ public class ExperienceConfigurationPresenter {
       }
     });
     experienceView.initGui(new ExperienceViewProperties(resources));
-    this.tableModel = experienceView.getTableModel();
     refreshEntriesInView();
     experienceView.addUpdateListener(new ExperienceUpdateListener() {
       public void update(int index, int points, String description) {
@@ -82,7 +79,7 @@ public class ExperienceConfigurationPresenter {
   }
 
   private void addToView(IExperiencePointEntry entry) {
-    entriesByIndex.put(tableModel.getRowCount(), entry);
+    entriesByIndex.put(experienceView.getNumberOfEntriesOnDisplay(), entry);
     experienceView.addEntry(entry.getExperiencePoints(), entry.getTextualDescription().getText());
   }
 

@@ -114,11 +114,6 @@ public class ExperienceTableView implements ExperienceView, IView {
   }
 
   @Override
-  public DefaultTableModel getTableModel() {
-    return (DefaultTableModel) smartTable.getTable().getModel();
-  }
-
-  @Override
   public void addEntry(int experiencePoints, String text) {
     Object[] values = new Object[2];
     values[ExperienceTableView.VALUE_INDEX] = experiencePoints;
@@ -145,5 +140,14 @@ public class ExperienceTableView implements ExperienceView, IView {
         experienceUpdateListener.update(tableRowIndex, experiencePoints, description);
       }
     });
+  }
+
+  @Override
+  public int getNumberOfEntriesOnDisplay() {
+    return getTableModel().getRowCount();
+  }
+
+  private DefaultTableModel getTableModel() {
+    return (DefaultTableModel) smartTable.getTable().getModel();
   }
 }
