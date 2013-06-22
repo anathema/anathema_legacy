@@ -3,8 +3,9 @@ package net.sf.anathema.character.impl.view;
 import net.miginfocom.layout.CC;
 import net.miginfocom.layout.LC;
 import net.miginfocom.swing.MigLayout;
+import net.sf.anathema.character.presenter.advance.ExperienceUpdateListener;
+import net.sf.anathema.character.view.advance.ExperienceConfigurationViewListener;
 import net.sf.anathema.character.view.advance.ExperienceView;
-import net.sf.anathema.character.view.advance.IExperienceConfigurationViewListener;
 import net.sf.anathema.character.view.advance.IExperienceViewProperties;
 import net.sf.anathema.framework.swing.IView;
 import net.sf.anathema.lib.gui.action.SmartAction;
@@ -20,6 +21,8 @@ import javax.swing.JPanel;
 import javax.swing.SwingConstants;
 import javax.swing.event.ListSelectionEvent;
 import javax.swing.event.ListSelectionListener;
+import javax.swing.event.TableModelEvent;
+import javax.swing.event.TableModelListener;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableColumn;
 import java.awt.Component;
@@ -30,7 +33,7 @@ import static net.sf.anathema.lib.gui.layout.LayoutUtils.fillWithoutInsets;
 public class ExperienceTableView implements ExperienceView, IView {
   public static final int VALUE_INDEX = 1;
   public static final int DESCRIPTION_INDEX = 0;
-  private final Announcer<IExperienceConfigurationViewListener> listeners = Announcer.to(IExperienceConfigurationViewListener.class);
+  private final Announcer<ExperienceConfigurationViewListener> listeners = Announcer.to(ExperienceConfigurationViewListener.class);
   private SmartTable smartTable;
   private Action deleteAction;
   private LabelledIntegerValueView labelledIntValueView;
@@ -96,7 +99,7 @@ public class ExperienceTableView implements ExperienceView, IView {
   }
 
   @Override
-  public void addExperienceConfigurationViewListener(IExperienceConfigurationViewListener listener) {
+  public void addExperienceConfigurationViewListener(ExperienceConfigurationViewListener listener) {
     listeners.addListener(listener);
   }
 
@@ -116,13 +119,31 @@ public class ExperienceTableView implements ExperienceView, IView {
   }
 
   @Override
-  public void updateEntry(int rowIndex, int experiencePoints, String text) {
-    getTableModel().setValueAt(experiencePoints, rowIndex, VALUE_INDEX);
-    getTableModel().setValueAt(text, rowIndex, DESCRIPTION_INDEX);
+  public void addEntry(int experiencePoints, String text) {
+    Object[] values = new Object[2];
+    values[ExperienceTableView.VALUE_INDEX] = experiencePoints;
+    values[ExperienceTableView.DESCRIPTION_INDEX] = text;
+    getTableModel().addRow(values);
   }
 
   @Override
-  public void removeEntry(int rowIndex) {
-    getTableModel().removeRow(rowIndex);
+  public void clearEntries() {
+    getTableModel().setRowCount(0);
+  }
+
+  @Override
+  public void addUpdateListener(final ExperienceUpdateListener experienceUpdateListener) {
+    getTableModel().addTableModelListener(new TableModelListener() {
+      @Override
+      public void tableChanged(TableModelEvent e) {
+        if (e.getType() != TableModelEvent.UPDATE) {
+          return;
+        }
+        int tableRowIndex = e.getFirstRow();
+        Integer experiencePoints = (Integer) getTableModel().getValueAt(tableRowIndex, ExperienceTableView.VALUE_INDEX);
+        String description = (String) getTableModel().getValueAt(tableRowIndex, ExperienceTableView.DESCRIPTION_INDEX);
+        experienceUpdateListener.update(tableRowIndex, experiencePoints, description);
+      }
+    });
   }
 }

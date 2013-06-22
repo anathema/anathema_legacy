@@ -1,6 +1,6 @@
 package net.sf.anathema.character.model.advance;
 
-public interface IExperiencePointConfigurationListener {
+public interface ExperiencePointConfigurationListener {
 
   void entryAdded(IExperiencePointEntry entry);
 

@@ -1,15 +1,12 @@
 package net.sf.anathema.character.presenter.advance;
 
-import net.sf.anathema.character.impl.view.ExperienceTableView;
+import net.sf.anathema.character.model.advance.ExperiencePointConfigurationListener;
 import net.sf.anathema.character.model.advance.IExperiencePointConfiguration;
-import net.sf.anathema.character.model.advance.IExperiencePointConfigurationListener;
 import net.sf.anathema.character.model.advance.IExperiencePointEntry;
+import net.sf.anathema.character.view.advance.ExperienceConfigurationViewListener;
 import net.sf.anathema.character.view.advance.ExperienceView;
-import net.sf.anathema.character.view.advance.IExperienceConfigurationViewListener;
 import net.sf.anathema.lib.resources.Resources;
 
-import javax.swing.event.TableModelEvent;
-import javax.swing.event.TableModelListener;
 import javax.swing.table.DefaultTableModel;
 import java.util.HashMap;
 import java.util.Map;
@@ -20,7 +17,6 @@ public class ExperienceConfigurationPresenter {
   private final ExperienceView experienceView;
   private DefaultTableModel tableModel;
   private final Map<Integer, IExperiencePointEntry> entriesByIndex = new HashMap<>();
-  private final Map<IExperiencePointEntry, Integer> indexByEntry = new HashMap<>();
   private final Resources resources;
 
   public ExperienceConfigurationPresenter(Resources resources, IExperiencePointConfiguration experiencePoints,
@@ -31,7 +27,7 @@ public class ExperienceConfigurationPresenter {
   }
 
   public void initPresentation() {
-    experienceView.addExperienceConfigurationViewListener(new IExperienceConfigurationViewListener() {
+    experienceView.addExperienceConfigurationViewListener(new ExperienceConfigurationViewListener() {
       @Override
       public void removeRequested(int index) {
         experiencePoints.removeEntry(entriesByIndex.get(index));
@@ -48,65 +44,46 @@ public class ExperienceConfigurationPresenter {
       }
 
     });
-    experiencePoints.addExperiencePointConfigurationListener(new IExperiencePointConfigurationListener() {
+    experiencePoints.addExperiencePointConfigurationListener(new ExperiencePointConfigurationListener() {
       @Override
       public void entryRemoved(IExperiencePointEntry entry) {
-        removeFromView(entry);
+        refreshEntriesInView();
       }
 
       @Override
       public void entryAdded(IExperiencePointEntry entry) {
-        addToView(entry);
+        refreshEntriesInView();
       }
 
       @Override
       public void entryChanged(IExperiencePointEntry entry) {
-        updateView(entry);
+        refreshEntriesInView();
       }
     });
     experienceView.initGui(new ExperienceViewProperties(resources));
     this.tableModel = experienceView.getTableModel();
-    showEntriesInView();
-    tableModel.addTableModelListener(new TableModelListener() {
-      @Override
-      public void tableChanged(TableModelEvent e) {
-        if (e.getType() != TableModelEvent.UPDATE) {
-          return;
-        }
-        int tableRowIndex = e.getFirstRow();
-        IExperiencePointEntry entry = entriesByIndex.get(tableRowIndex);
-        entry.setExperiencePoints((Integer) tableModel.getValueAt(tableRowIndex, ExperienceTableView.VALUE_INDEX));
-        entry.getTextualDescription().setText((String) tableModel.getValueAt(tableRowIndex, ExperienceTableView.DESCRIPTION_INDEX));
+    refreshEntriesInView();
+    experienceView.addUpdateListener(new ExperienceUpdateListener() {
+      public void update(int index, int points, String description) {
+        IExperiencePointEntry entry = entriesByIndex.get(index);
+        entry.setExperiencePoints(points);
+        entry.getTextualDescription().setText(description);
       }
     });
     updateTotal();
   }
 
-  private void showEntriesInView() {
+  private void refreshEntriesInView() {
+    experienceView.clearEntries();
     for (IExperiencePointEntry entry : experiencePoints.getAllEntries()) {
       addToView(entry);
     }
+    updateTotal();
   }
 
   private void addToView(IExperiencePointEntry entry) {
     entriesByIndex.put(tableModel.getRowCount(), entry);
-    indexByEntry.put(entry, tableModel.getRowCount());
-    Object[] values = new Object[2];
-    values[ExperienceTableView.VALUE_INDEX] = entry.getExperiencePoints();
-    values[ExperienceTableView.DESCRIPTION_INDEX] = entry.getTextualDescription().getText();
-    tableModel.addRow(values);
-  }
-
-  private void removeFromView(IExperiencePointEntry entry) {
-    int rowIndex = indexByEntry.get(entry);
-    experienceView.removeEntry(rowIndex);
-    updateTotal();
-  }
-
-  private void updateView(IExperiencePointEntry entry) {
-    int rowIndex = indexByEntry.get(entry);
-    experienceView.updateEntry(rowIndex, entry.getExperiencePoints(), entry.getTextualDescription().getText());
-    updateTotal();
+    experienceView.addEntry(entry.getExperiencePoints(), entry.getTextualDescription().getText());
   }
 
   private void updateTotal() {

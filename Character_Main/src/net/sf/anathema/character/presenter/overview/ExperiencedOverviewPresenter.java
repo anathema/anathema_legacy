@@ -1,14 +1,14 @@
 package net.sf.anathema.character.presenter.overview;
 
-import net.sf.anathema.hero.change.ChangeFlavor;
 import net.sf.anathema.character.library.overview.IOverviewCategory;
-import net.sf.anathema.hero.change.FlavoredChangeListener;
 import net.sf.anathema.character.main.model.experience.ExperienceModelFetcher;
 import net.sf.anathema.character.model.ICharacter;
-import net.sf.anathema.character.model.advance.IExperiencePointConfigurationListener;
+import net.sf.anathema.character.model.advance.ExperiencePointConfigurationListener;
 import net.sf.anathema.character.model.advance.IExperiencePointEntry;
 import net.sf.anathema.character.model.advance.IExperiencePointManagement;
 import net.sf.anathema.character.view.overview.CategorizedOverview;
+import net.sf.anathema.hero.change.ChangeFlavor;
+import net.sf.anathema.hero.change.FlavoredChangeListener;
 import net.sf.anathema.lib.control.legality.LegalityColorProvider;
 import net.sf.anathema.lib.gui.Presenter;
 import net.sf.anathema.lib.resources.Resources;
@@ -58,7 +58,7 @@ public class ExperiencedOverviewPresenter implements Presenter {
   private void initTotal(IOverviewCategory category) {
     totalView = category.addAlotmentView(getString("Overview.Experience.Total"), 4);
     ExperienceModelFetcher.fetch(character).getExperiencePoints()
-                          .addExperiencePointConfigurationListener(new IExperiencePointConfigurationListener() {
+                          .addExperiencePointConfigurationListener(new ExperiencePointConfigurationListener() {
                             @Override
                             public void entryAdded(IExperiencePointEntry entry) {
                               calculateXPCost();

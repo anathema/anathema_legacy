@@ -1,6 +1,6 @@
 package net.sf.anathema.character.view.advance;
 
-public interface IExperienceConfigurationViewListener {
+public interface ExperienceConfigurationViewListener {
 
   void addRequested();
 

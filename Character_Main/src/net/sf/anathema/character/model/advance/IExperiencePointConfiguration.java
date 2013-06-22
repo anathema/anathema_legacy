@@ -12,7 +12,7 @@ public interface IExperiencePointConfiguration {
 
   int getTotalExperiencePoints();
 
-  void addExperiencePointConfigurationListener(IExperiencePointConfigurationListener listener);
+  void addExperiencePointConfigurationListener(ExperiencePointConfigurationListener listener);
 
   int getExtraSpendings();
 }

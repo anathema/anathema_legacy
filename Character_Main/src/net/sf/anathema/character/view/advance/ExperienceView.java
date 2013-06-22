@@ -1,12 +1,14 @@
 package net.sf.anathema.character.view.advance;
 
+import net.sf.anathema.character.presenter.advance.ExperienceUpdateListener;
+
 import javax.swing.table.DefaultTableModel;
 
 public interface ExperienceView {
 
   void initGui(IExperienceViewProperties properties);
 
-  void addExperienceConfigurationViewListener(IExperienceConfigurationViewListener listener);
+  void addExperienceConfigurationViewListener(ExperienceConfigurationViewListener listener);
 
   void setRemoveButtonEnabled(boolean enabled);
 
@@ -15,7 +17,9 @@ public interface ExperienceView {
   //TODO (Swing->FX) TableModel
   DefaultTableModel getTableModel();
 
-  void updateEntry(int rowIndex, int experiencePoints, String text);
+  void addEntry(int experiencePoints, String text);
 
-  void removeEntry(int rowIndex);
+  void clearEntries();
+
+  void addUpdateListener(ExperienceUpdateListener experienceUpdateListener);
 }
