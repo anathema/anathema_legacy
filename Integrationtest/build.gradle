@@ -1,11 +1,4 @@
-def javaFxHome = "${System.properties['java.home']}";
-
-configurations {
-    providedCompile
-}
-
 dependencies {
-  providedCompile files("$javaFxHome/lib/jfxrt.jar")
   testCompile parent.ext.testDependencies
   testCompile parent.ext.integrationTestDependencies
   testCompile project(path:':Engine_Character', configuration:'tests')
@@ -15,11 +8,6 @@ dependencies {
       testCompile project(":${it.name}")
     }
   }
-}
-
-compileJava {
-    sourceSets.test.compileClasspath += configurations.providedCompile
-    sourceSets.test.runtimeClasspath += configurations.providedCompile
 }
 
 private boolean isRelevant(project) {
