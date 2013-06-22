@@ -1,14 +1,8 @@
 configurations {
     tests
-    provided
-}
-
-sourceSets {
-    main { compileClasspath += configurations.provided }
 }
 
 dependencies {
-    provided files("${System.properties['java.home']}/lib/jfxrt.jar")
     compile project(':Character_Main')
     compile project(':Platform_FX')
     testCompile parent.ext.testDependencies
