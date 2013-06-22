@@ -8,7 +8,7 @@ Set Up
 3. (If necessary,) open the 'Project Structure' Dialog (Ctrl+Alt+Shift+S) and set the Project SDK to a SDK > 6.0.
 
 ### Developing with Eclipse ###
-1. Run ``gradlew eclipseProject eclipseClasspath eclipseJdt`` to create the Eclipse project files.
+1. Run ``gradlew eclipse`` to create the Eclipse project files.
 2. Import all projects into Eclipse.
 
 ### Developing with NetBeans ###
