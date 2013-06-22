@@ -14,21 +14,21 @@ public class NaturalSoakTest {
 
   @Test
   public void testSoakForMortals() {
-    DefaultNaturalSoak naturalSoak = new DefaultNaturalSoak(new ValuedTraitType(AttributeType.Stamina, 2), new DummyMundaneCharacterType());
+    DefaultNaturalSoak naturalSoak = new DefaultNaturalSoak(new ValuedTraitType(AttributeType.Stamina, 2), new DummyMundaneCharacterType(), null);
     Assert.assertEquals(Integer.valueOf(0), naturalSoak.getSoak(HealthType.Lethal));
     Assert.assertEquals(Integer.valueOf(2), naturalSoak.getSoak(HealthType.Bashing));
   }
 
   @Test
   public void testSoakForExalts() {
-    DefaultNaturalSoak naturalSoak = new DefaultNaturalSoak(new ValuedTraitType(AttributeType.Stamina, 2), new DummyExaltCharacterType());
+    DefaultNaturalSoak naturalSoak = new DefaultNaturalSoak(new ValuedTraitType(AttributeType.Stamina, 2), new DummyExaltCharacterType(), null);
     Assert.assertEquals(new Integer(1), naturalSoak.getSoak(HealthType.Lethal));
     Assert.assertEquals(new Integer(2), naturalSoak.getSoak(HealthType.Bashing));
   }
 
   @Test
   public void testSoakForEssenceUsers() {
-    DefaultNaturalSoak naturalSoak = new DefaultNaturalSoak(new ValuedTraitType(AttributeType.Stamina, 2), new DummyEssenceCharacterType());
+    DefaultNaturalSoak naturalSoak = new DefaultNaturalSoak(new ValuedTraitType(AttributeType.Stamina, 2), new DummyEssenceCharacterType(), null);
     Assert.assertEquals(new Integer(1), naturalSoak.getSoak(HealthType.Lethal));
     Assert.assertEquals(new Integer(2), naturalSoak.getSoak(HealthType.Bashing));
   }

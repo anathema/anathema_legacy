@@ -7,12 +7,12 @@ import net.sf.anathema.character.equipment.impl.character.model.EquipmentAdditio
 import net.sf.anathema.character.equipment.impl.character.model.natural.DefaultNaturalSoak;
 import net.sf.anathema.character.equipment.impl.character.model.natural.NaturalWeaponTemplate;
 import net.sf.anathema.character.equipment.item.model.IEquipmentTemplateProvider;
-import net.sf.anathema.character.generic.IBasicCharacterData;
 import net.sf.anathema.character.generic.additionaltemplate.IAdditionalModel;
 import net.sf.anathema.character.generic.equipment.weapon.IArmourStats;
 import net.sf.anathema.character.generic.framework.additionaltemplate.model.IAdditionalModelFactory;
 import net.sf.anathema.character.generic.framework.additionaltemplate.model.ICharacterModelContext;
 import net.sf.anathema.character.generic.template.additional.IAdditionalTemplate;
+import net.sf.anathema.character.generic.traits.types.AttributeType;
 import net.sf.anathema.character.generic.type.ICharacterType;
 import net.sf.anathema.hero.model.Hero;
 
@@ -29,9 +29,9 @@ public class EquipmentAdditionalModelFactory implements IAdditionalModelFactory 
   @Override
   public IAdditionalModel createModel(IAdditionalTemplate additionalTemplate, ICharacterModelContext context, Hero hero) {
     IEquipmentAdditionalModelTemplate template = (IEquipmentAdditionalModelTemplate) additionalTemplate;
-    IBasicCharacterData basicCharacterContext = context.getBasicCharacterContext();
-    ICharacterType characterType = basicCharacterContext.getCharacterType();
-    IArmourStats naturalArmour = new DefaultNaturalSoak(context);
+    ICharacterType characterType = hero.getTemplate().getTemplateType().getCharacterType();
+    IArmourStats naturalArmour = new DefaultNaturalSoak(
+            context.getTraitCollection().getTrait(AttributeType.Stamina), context.getBasicCharacterContext().getCharacterType(), context);
     EquipmentCharacterDataProvider dataProvider = new EquipmentCharacterDataProvider(context, materialRules);
     return new EquipmentAdditionalModel(characterType, naturalArmour, equipmentTemplateProvider, context.getSpecialtyContext(), dataProvider,
             materialRules, new NaturalWeaponTemplate(), template.getNaturalWeaponTemplate(characterType));
