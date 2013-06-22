@@ -150,7 +150,7 @@ ext.releaseWinName = "${projectName}_Win_v${versionString}.exe"
 ext.releaseMacName = "${projectName}_Mac_v${versionString}.zip"
 ext.macAppDir      = "${projectName}.app"
 ext.releaseDirName = "${projectName} ${versionString}"
-if( "${version_revision}" == '0') releaseDirName += " ${version_name}"
+if( "${version_revision}" == '0') releaseDirName
 ext.releaseDir     = new File( "${buildDir}/${releaseDirName}" )
 
 // All Releases
@@ -190,9 +190,7 @@ tag.description = 'Tags the release and pushes the tag to github. [Requires cont
 task version << {
   out.println( "\nPlease update the version number and name.  Enter nothing to default to the old value.")
   def vNumber = usePropertyOrPrompt("versionNumber", "\n\nVersion Number | old: ${versionString} new: ")
-  def vName   = usePropertyOrPrompt("versionName",  "\nVersion Name | old: ${version_name} new: ")
   ext.versionString    = vNumber == "" ? versionString : vNumber
-  ext.version_name     = vName == "" ? version_name : vName
   try {
     ext.version_major    = versionString.split( "\\." )[0]
     ext.version_minor    = versionString.split( "\\." )[1]
@@ -207,7 +205,6 @@ task version << {
     p.setProperty( "version_major", version_major )
     p.setProperty( "version_minor", version_minor )
     p.setProperty( "version_revision", version_revision )
-    p.setProperty( "version_name", version_name )
   }
   f.withWriter {
     p.store(it, "Please update this file using this command: gradlew version")
@@ -303,7 +300,7 @@ task buildWin << {
 
   mkdir("./build/launcher")
   def exeVersion = "${versionString}.0"
-  def versionText = "${versionString} \"$version_name\""
+  def versionText = "${versionString}"
   ant.taskdef(
                  name: 'launch4j',
             classname: 'net.sf.launch4j.ant.Launch4jTask',

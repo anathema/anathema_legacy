@@ -17,11 +17,10 @@ dependencies {
 processResources {
     String versionDate = new Date().format('MM/dd/yy')
     String versionString = project.parent.ext.versionString
-    String versionName = version_name
     // work-around for filter corrupting binary resources
     from("./resources") {
         include '**/*.properties'
-        filter(org.apache.tools.ant.filters.ReplaceTokens, tokens: [VersionString: versionString, VersionName: versionName, VersionDate: versionDate])
+        filter(org.apache.tools.ant.filters.ReplaceTokens, tokens: [VersionString: versionString, VersionDate: versionDate])
     }
     from("./resources") {
         exclude '**/*.properties'

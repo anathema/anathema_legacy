@@ -35,9 +35,6 @@ public class AboutDialogPage extends AbstractDialogPage {
   public String getDescription() {
     return "Anathema v"
         + getString("Anathema.Version.Numeric")
-        + " \""
-        + getString("Anathema.Version.Title")
-        + "\""
         + " ("
         + getString("Help.AboutDialog.BuiltLabel")
         + " "
