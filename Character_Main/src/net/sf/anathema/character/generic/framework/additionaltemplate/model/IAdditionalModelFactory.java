@@ -6,5 +6,5 @@ import net.sf.anathema.hero.model.Hero;
 
 public interface IAdditionalModelFactory {
 
-  IAdditionalModel createModel(IAdditionalTemplate additionalTemplate, ICharacterModelContext context, Hero hero);
+  IAdditionalModel createModel(IAdditionalTemplate additionalTemplate, Hero hero);
 }

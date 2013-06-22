@@ -1,23 +1,20 @@
 package net.sf.anathema.character.impl.model;
 
-import net.sf.anathema.hero.change.ChangeAnnouncer;
 import net.sf.anathema.character.generic.framework.ICharacterGenerics;
 import net.sf.anathema.character.generic.framework.additionaltemplate.model.IAdditionalModelFactory;
-import net.sf.anathema.character.generic.framework.additionaltemplate.model.ICharacterModelContext;
 import net.sf.anathema.character.generic.template.HeroTemplate;
 import net.sf.anathema.character.generic.template.additional.IAdditionalTemplate;
 import net.sf.anathema.character.generic.template.additional.IGlobalAdditionalTemplate;
-import net.sf.anathema.character.impl.generic.GenericCharacter;
-import net.sf.anathema.character.impl.model.context.CharacterModelContext;
 import net.sf.anathema.character.impl.model.statistics.ExtendedConfiguration;
-import net.sf.anathema.hero.model.DefaultHero;
-import net.sf.anathema.hero.model.HeroModel;
-import net.sf.anathema.hero.model.ModelInitializationContext;
-import net.sf.anathema.hero.initialization.HeroModelInitializer;
 import net.sf.anathema.character.main.model.description.HeroDescription;
 import net.sf.anathema.character.main.model.description.HeroDescriptionFetcher;
 import net.sf.anathema.character.model.ICharacter;
 import net.sf.anathema.framework.presenter.itemmanagement.PrintNameAdjuster;
+import net.sf.anathema.hero.change.ChangeAnnouncer;
+import net.sf.anathema.hero.initialization.HeroModelInitializer;
+import net.sf.anathema.hero.model.DefaultHero;
+import net.sf.anathema.hero.model.HeroModel;
+import net.sf.anathema.hero.model.ModelInitializationContext;
 import net.sf.anathema.lib.control.IChangeListener;
 import net.sf.anathema.lib.registry.IRegistry;
 import net.sf.anathema.lib.util.Identifier;
@@ -26,15 +23,13 @@ import net.sf.anathema.lib.workflow.textualdescription.ITextualDescription;
 public class ExaltedCharacter implements ICharacter {
 
   private final CharacterChangeManagement management = new CharacterChangeManagement(this);
-  private final CharacterModelContext context;
   private final ExtendedConfiguration extendedConfiguration;
   private final DefaultHero hero;
   private final ModelInitializationContext initializationContext;
 
   public ExaltedCharacter(HeroTemplate template, ICharacterGenerics generics) {
     this.hero = new DefaultHero(template);
-    context = new CharacterModelContext(new GenericCharacter(this));
-    this.extendedConfiguration = new ExtendedConfiguration(context, hero);
+    this.extendedConfiguration = new ExtendedConfiguration(hero);
     this.initializationContext = new ModelInitializationContext(generics);
     addModels(generics);
 
@@ -92,10 +87,6 @@ public class ExaltedCharacter implements ICharacter {
 
   public ExtendedConfiguration getExtendedConfiguration() {
     return extendedConfiguration;
-  }
-
-  public ICharacterModelContext getCharacterContext() {
-    return context;
   }
 
   @Override
