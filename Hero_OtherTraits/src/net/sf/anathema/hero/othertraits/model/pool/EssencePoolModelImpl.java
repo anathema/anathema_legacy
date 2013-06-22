@@ -1,18 +1,19 @@
 package net.sf.anathema.hero.othertraits.model.pool;
 
 import com.google.common.base.Preconditions;
-import net.sf.anathema.hero.change.ChangeAnnouncer;
 import net.sf.anathema.character.generic.additionalrules.IAdditionalEssencePool;
 import net.sf.anathema.character.generic.additionalrules.IAdditionalRules;
 import net.sf.anathema.character.generic.template.HeroTemplate;
 import net.sf.anathema.character.generic.template.essence.IEssenceTemplate;
-import net.sf.anathema.hero.model.Hero;
-import net.sf.anathema.hero.model.HeroModel;
-import net.sf.anathema.hero.model.InitializationContext;
 import net.sf.anathema.character.main.model.essencepool.EssencePoolModel;
 import net.sf.anathema.character.main.model.essencepool.OverdrivePool;
 import net.sf.anathema.character.main.model.traits.TraitMap;
 import net.sf.anathema.character.main.model.traits.TraitModelFetcher;
+import net.sf.anathema.hero.change.ChangeAnnouncer;
+import net.sf.anathema.hero.magic.MagicCollectionImpl;
+import net.sf.anathema.hero.model.Hero;
+import net.sf.anathema.hero.model.HeroModel;
+import net.sf.anathema.hero.model.InitializationContext;
 import net.sf.anathema.lib.control.IChangeListener;
 import net.sf.anathema.lib.util.IdentifiedInteger;
 import net.sf.anathema.lib.util.Identifier;
@@ -38,7 +39,7 @@ public class EssencePoolModelImpl implements EssencePoolModel, HeroModel {
       return;
     }
     TraitMap traitMap = TraitModelFetcher.fetch(hero);
-    poolStrategy = new EssencePoolStrategyImpl(hero, essenceTemplate, context, traitMap, context.getMagicCollection(),
+    poolStrategy = new EssencePoolStrategyImpl(hero, essenceTemplate, context, traitMap, new MagicCollectionImpl(hero),
             overdrivePool, additionalRules);
   }
 

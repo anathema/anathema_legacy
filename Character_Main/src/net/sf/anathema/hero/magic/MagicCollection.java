@@ -1,9 +1,9 @@
-package net.sf.anathema.character.generic.character;
+package net.sf.anathema.hero.magic;
 
 import net.sf.anathema.character.generic.magic.IMagic;
 import net.sf.anathema.character.generic.magic.charms.special.IMultiLearnableCharm;
 
-public interface IMagicCollection {
+public interface MagicCollection {
 	
   int getLearnCount(String charmName);
 

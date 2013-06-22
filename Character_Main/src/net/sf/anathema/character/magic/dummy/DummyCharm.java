@@ -1,6 +1,6 @@
 package net.sf.anathema.character.magic.dummy;
 
-import net.sf.anathema.character.generic.character.IMagicCollection;
+import net.sf.anathema.hero.magic.MagicCollection;
 import net.sf.anathema.character.generic.impl.magic.CharmAttribute;
 import net.sf.anathema.character.generic.impl.magic.CostList;
 import net.sf.anathema.character.generic.impl.magic.charm.type.CharmTypeModel;
@@ -198,7 +198,7 @@ public class DummyCharm extends SimpleIdentifier implements ICharm {
   }
 
   @Override
-  public boolean isBlockedByAlternative(IMagicCollection magicCollection) {
+  public boolean isBlockedByAlternative(MagicCollection magicCollection) {
     return false;
   }
 

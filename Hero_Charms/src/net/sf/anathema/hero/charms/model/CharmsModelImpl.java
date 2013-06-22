@@ -2,7 +2,6 @@ package net.sf.anathema.hero.charms.model;
 
 import com.google.common.base.Functions;
 import net.sf.anathema.character.generic.caste.CasteType;
-import net.sf.anathema.character.generic.character.IMagicCollection;
 import net.sf.anathema.character.generic.impl.magic.MartialArtsUtilities;
 import net.sf.anathema.character.generic.impl.template.magic.ICharmProvider;
 import net.sf.anathema.character.generic.magic.ICharm;
@@ -47,6 +46,8 @@ import net.sf.anathema.charmtree.filters.CharmFilter;
 import net.sf.anathema.hero.change.ChangeAnnouncer;
 import net.sf.anathema.hero.change.ChangeFlavor;
 import net.sf.anathema.hero.change.FlavoredChangeListener;
+import net.sf.anathema.hero.magic.MagicCollection;
+import net.sf.anathema.hero.magic.MagicCollectionImpl;
 import net.sf.anathema.hero.model.Hero;
 import net.sf.anathema.hero.model.InitializationContext;
 import net.sf.anathema.lib.control.IChangeListener;
@@ -416,7 +417,7 @@ public class CharmsModelImpl implements CharmsModel {
         return false;
       }
     }
-    IMagicCollection magicCollection = context.getMagicCollection();
+    MagicCollection magicCollection = new MagicCollectionImpl(hero);
     if (charm.isBlockedByAlternative(magicCollection)) {
       return false;
     }

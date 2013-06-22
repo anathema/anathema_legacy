@@ -1,9 +1,9 @@
 package net.sf.anathema.hero.othertraits.model.pool;
 
+import net.sf.anathema.hero.magic.MagicCollection;
 import net.sf.anathema.hero.change.ChangeFlavor;
 import net.sf.anathema.character.generic.additionalrules.IAdditionalEssencePool;
 import net.sf.anathema.character.generic.additionalrules.IAdditionalRules;
-import net.sf.anathema.character.generic.character.IMagicCollection;
 import net.sf.anathema.character.generic.framework.essence.IEssencePoolModifier;
 import net.sf.anathema.character.generic.template.essence.FactorizedTrait;
 import net.sf.anathema.character.generic.template.essence.FactorizedTraitSumCalculator;
@@ -32,11 +32,11 @@ public class EssencePoolStrategyImpl implements EssencePoolStrategy {
   private OverdrivePool overdrivePool;
   private final IAdditionalRules additionalRules;
   private final TraitMap traitMap;
-  private final IMagicCollection magicCollection;
+  private final MagicCollection magicCollection;
   private final InitializationContext context;
 
   public EssencePoolStrategyImpl(Hero hero, IEssenceTemplate essenceTemplate, InitializationContext context, TraitMap traitMap,
-                                 IMagicCollection magicCollection, OverdrivePool overdrivePool, IAdditionalRules additionalRules) {
+                                 MagicCollection magicCollection, OverdrivePool overdrivePool, IAdditionalRules additionalRules) {
     this.traitMap = traitMap;
     this.magicCollection = magicCollection;
     this.overdrivePool = overdrivePool;

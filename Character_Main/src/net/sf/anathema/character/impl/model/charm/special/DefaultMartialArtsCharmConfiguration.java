@@ -1,6 +1,6 @@
 package net.sf.anathema.character.impl.model.charm.special;
 
-import net.sf.anathema.character.generic.character.IMagicCollection;
+import net.sf.anathema.hero.magic.MagicCollection;
 import net.sf.anathema.character.generic.magic.ICharm;
 import net.sf.anathema.character.generic.template.magic.MartialArtsCharmConfiguration;
 import net.sf.anathema.character.main.model.experience.ExperienceModel;
@@ -17,10 +17,10 @@ import static net.sf.anathema.character.generic.magic.charms.MartialArtsLevel.Ce
 
 public class DefaultMartialArtsCharmConfiguration implements MartialArtsCharmConfiguration {
   private final CharmsModel configuration;
-  private final IMagicCollection collection;
+  private final MagicCollection collection;
   private ExperienceModel experience;
 
-  public DefaultMartialArtsCharmConfiguration(CharmsModel configuration, IMagicCollection collection, ExperienceModel experience) {
+  public DefaultMartialArtsCharmConfiguration(CharmsModel configuration, MagicCollection collection, ExperienceModel experience) {
     this.configuration = configuration;
     this.collection = collection;
     this.experience = experience;

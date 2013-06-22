@@ -1,6 +1,5 @@
 package net.sf.anathema.character.main.testing.dummy;
 
-import net.sf.anathema.character.generic.character.IMagicCollection;
 import net.sf.anathema.character.generic.impl.magic.persistence.ISpellCache;
 import net.sf.anathema.character.generic.impl.template.magic.ICharmProvider;
 import net.sf.anathema.character.generic.template.ITemplateRegistry;
@@ -21,11 +20,6 @@ public class DummyInitializationContext implements InitializationContext {
 
   public DummyInitializationContext(DummyHero hero) {
     this.dummyHero = hero;
-  }
-
-  @Override
-  public IMagicCollection getMagicCollection() {
-    return character;
   }
 
   @Override

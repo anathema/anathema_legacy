@@ -1,6 +1,6 @@
 package net.sf.anathema.character.generic.magic;
 
-import net.sf.anathema.character.generic.character.IMagicCollection;
+import net.sf.anathema.hero.magic.MagicCollection;
 import net.sf.anathema.character.generic.magic.charms.ICharmLearnArbitrator;
 import net.sf.anathema.character.generic.magic.charms.IndirectCharmRequirement;
 import net.sf.anathema.lib.util.Identifier;
@@ -15,7 +15,7 @@ public interface ICharm extends ICharmData, IMagic {
 
   Set<ICharm> getLearnPrerequisitesCharms(ICharmLearnArbitrator learnArbitrator);
 
-  boolean isBlockedByAlternative(IMagicCollection magicCollection);
+  boolean isBlockedByAlternative(MagicCollection magicCollection);
   
   Set<ICharm> getMergedCharms();
   

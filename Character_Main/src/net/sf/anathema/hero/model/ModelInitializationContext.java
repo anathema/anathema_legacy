@@ -1,6 +1,5 @@
 package net.sf.anathema.hero.model;
 
-import net.sf.anathema.character.generic.character.IMagicCollection;
 import net.sf.anathema.character.generic.framework.ICharacterGenerics;
 import net.sf.anathema.character.generic.framework.additionaltemplate.model.ICharacterModelContext;
 import net.sf.anathema.character.generic.impl.magic.persistence.ISpellCache;
@@ -25,12 +24,6 @@ public class ModelInitializationContext implements InitializationContext {
   @Deprecated
   public ISpellCache getSpellCache() {
     return generics.getDataSet(ISpellCache.class);
-  }
-
-  @Override
-  @Deprecated
-  public IMagicCollection getMagicCollection() {
-    return context.getMagicCollection();
   }
 
   @Override

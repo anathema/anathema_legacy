@@ -1,13 +1,13 @@
 package net.sf.anathema.character.main.testing.dummy;
 
-import net.sf.anathema.character.generic.character.IMagicCollection;
+import net.sf.anathema.hero.magic.MagicCollection;
 import net.sf.anathema.character.generic.magic.IMagic;
 import net.sf.anathema.character.generic.magic.charms.special.IMultiLearnableCharm;
 
 import java.util.HashMap;
 import java.util.Map;
 
-public class DummyMagicCollection implements IMagicCollection {
+public class DummyMagicCollection implements MagicCollection {
 
   private final Map<IMultiLearnableCharm, Integer> counts = new HashMap<>();
 

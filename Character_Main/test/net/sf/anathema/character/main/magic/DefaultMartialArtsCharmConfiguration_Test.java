@@ -1,6 +1,6 @@
 package net.sf.anathema.character.main.magic;
 
-import net.sf.anathema.character.generic.character.IMagicCollection;
+import net.sf.anathema.hero.magic.MagicCollection;
 import net.sf.anathema.character.generic.magic.ICharm;
 import net.sf.anathema.character.impl.model.charm.special.DefaultMartialArtsCharmConfiguration;
 import net.sf.anathema.character.magic.dummy.DummyCharm;
@@ -18,7 +18,7 @@ public class DefaultMartialArtsCharmConfiguration_Test {
 
   @Test
   public void testAlternativesDontBlockCompletion() throws Exception {
-    IMagicCollection collection = Mockito.mock(IMagicCollection.class);
+    MagicCollection collection = Mockito.mock(MagicCollection.class);
     ILearningCharmGroup group = Mockito.mock(ILearningCharmGroup.class);
     expectCoreCharmsCall(group);
     expectCoreCharmsCall(group);
@@ -55,7 +55,7 @@ public class DefaultMartialArtsCharmConfiguration_Test {
   private void expectCoreCharmsCall(ILearningCharmGroup group) {
     Mockito.when(group.getCoreCharms()).thenReturn(new ICharm[]{new DummyCharm() {
       @Override
-      public boolean isBlockedByAlternative(IMagicCollection magicCollection) {
+      public boolean isBlockedByAlternative(MagicCollection magicCollection) {
         return true;
       }
 

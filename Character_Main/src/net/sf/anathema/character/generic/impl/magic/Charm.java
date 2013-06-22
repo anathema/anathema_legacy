@@ -1,7 +1,7 @@
 package net.sf.anathema.character.generic.impl.magic;
 
 import com.google.common.base.Preconditions;
-import net.sf.anathema.character.generic.character.IMagicCollection;
+import net.sf.anathema.hero.magic.MagicCollection;
 import net.sf.anathema.character.generic.impl.magic.charm.prerequisite.CompositeLearnWorker;
 import net.sf.anathema.character.generic.impl.magic.charm.prerequisite.ICharmLearnWorker;
 import net.sf.anathema.character.generic.impl.magic.charm.prerequisite.SelectiveCharmGroup;
@@ -177,7 +177,7 @@ public class Charm extends SimpleIdentifier implements ICharm {
   }
 
   @Override
-  public boolean isBlockedByAlternative(IMagicCollection magicCollection) {
+  public boolean isBlockedByAlternative(MagicCollection magicCollection) {
     for (Set<ICharm> alternative : alternatives) {
       for (ICharm charm : alternative) {
         boolean isThis = charm.getId().equals(getId());
