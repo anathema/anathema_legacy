@@ -1,7 +1,6 @@
 package net.sf.anathema.character.generic.impl.magic;
 
 import com.google.common.base.Preconditions;
-import net.sf.anathema.character.generic.character.IGenericTraitCollection;
 import net.sf.anathema.character.generic.character.IMagicCollection;
 import net.sf.anathema.character.generic.impl.magic.charm.prerequisite.CompositeLearnWorker;
 import net.sf.anathema.character.generic.impl.magic.charm.prerequisite.ICharmLearnWorker;
@@ -24,6 +23,9 @@ import net.sf.anathema.character.generic.traits.GenericTrait;
 import net.sf.anathema.character.generic.traits.TraitType;
 import net.sf.anathema.character.generic.traits.types.OtherTraitType;
 import net.sf.anathema.character.generic.type.ICharacterType;
+import net.sf.anathema.character.main.model.concept.HeroConcept;
+import net.sf.anathema.character.main.model.traits.TraitMap;
+import net.sf.anathema.character.main.model.traits.TraitModelFetcher;
 import net.sf.anathema.hero.model.Hero;
 import net.sf.anathema.character.main.model.concept.HeroConceptFetcher;
 import net.sf.anathema.lib.util.Identifier;
@@ -361,8 +363,10 @@ public class Charm extends SimpleIdentifier implements ICharm {
   }
 
   @Override
-  public boolean isFavored(Hero hero, IGenericTraitCollection traitCollection) {
-    boolean specialFavored = favoredCasteIds.contains(HeroConceptFetcher.fetch(hero).getCaste().getType().getId());
+  public boolean isFavored(Hero hero) {
+    HeroConcept concept = HeroConceptFetcher.fetch(hero);
+    TraitMap traitMap = TraitModelFetcher.fetch(hero);
+    boolean specialFavored = favoredCasteIds.contains(concept.getCaste().getType().getId());
     if (specialFavored) {
       return true;
     }
@@ -370,10 +374,10 @@ public class Charm extends SimpleIdentifier implements ICharm {
       return false;
     }
     TraitType primaryTraitType = getPrimaryTraitType();
-    if (hasAttribute(new SimpleIdentifier("MartialArts")) && traitCollection.getTrait(MartialArts).isCasteOrFavored()) {
+    if (hasAttribute(new SimpleIdentifier("MartialArts")) && traitMap.getTrait(MartialArts).isCasteOrFavored()) {
       return true;
     }
-    GenericTrait trait = traitCollection.getTrait(primaryTraitType);
+    GenericTrait trait = traitMap.getTrait(primaryTraitType);
     return trait.isCasteOrFavored();
   }
 

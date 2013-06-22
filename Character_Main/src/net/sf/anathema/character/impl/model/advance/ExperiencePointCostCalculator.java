@@ -59,6 +59,6 @@ public class ExperiencePointCostCalculator implements IPointCostCalculator {
 
   @Override
   public int getCharmCosts(Hero hero, ICharm charm, TraitMap traitMap) {
-    return costs.getCharmCosts(charm, new CostAnalyzer(hero, new GenericTraitCollectionFacade(traitMap)));
+    return costs.getCharmCosts(charm, new CostAnalyzer(hero));
   }
 }

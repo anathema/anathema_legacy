@@ -12,7 +12,7 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
-public class AdditionalBonusPointPoolManagement implements IAdditionalBonusPointManagment {
+public class AdditionalBonusPointPoolManagement implements IAdditionalBonusPointManagement {
 
   private final AdditionalBonusPointPoolCalculator[] additionalPoolCalculators;
 

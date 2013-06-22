@@ -4,9 +4,9 @@ import net.sf.anathema.character.generic.magic.IMagic;
 import net.sf.anathema.character.generic.template.creation.IGenericSpecialty;
 import net.sf.anathema.character.generic.template.experience.AbilityPointCosts;
 import net.sf.anathema.character.generic.traits.GenericTrait;
-import net.sf.anathema.character.impl.model.creation.bonus.additional.IAdditionalBonusPointManagment;
+import net.sf.anathema.character.impl.model.creation.bonus.additional.IAdditionalBonusPointManagement;
 
-public class DummyAdditionalBonusPointManagment implements IAdditionalBonusPointManagment {
+public class DummyAdditionalBonusPointManagement implements IAdditionalBonusPointManagement {
 
   @Override
   public void spendOn(GenericTrait trait, int bonusCost) {

@@ -1,6 +1,5 @@
 package net.sf.anathema.character.magic.dummy;
 
-import net.sf.anathema.character.generic.character.IGenericTraitCollection;
 import net.sf.anathema.character.generic.character.IMagicCollection;
 import net.sf.anathema.character.generic.impl.magic.CharmAttribute;
 import net.sf.anathema.character.generic.impl.magic.CostList;
@@ -20,6 +19,8 @@ import net.sf.anathema.character.generic.traits.GenericTrait;
 import net.sf.anathema.character.generic.traits.TraitType;
 import net.sf.anathema.character.generic.traits.types.ValuedTraitType;
 import net.sf.anathema.character.generic.type.ICharacterType;
+import net.sf.anathema.character.main.model.traits.TraitMap;
+import net.sf.anathema.character.main.model.traits.TraitModelFetcher;
 import net.sf.anathema.hero.model.Hero;
 import net.sf.anathema.lib.util.Identifier;
 import net.sf.anathema.lib.util.SimpleIdentifier;
@@ -207,11 +208,12 @@ public class DummyCharm extends SimpleIdentifier implements ICharm {
   }
 
   @Override
-  public boolean isFavored(Hero hero, IGenericTraitCollection traitCollection) {
+  public boolean isFavored(Hero hero) {
     if (prerequisites.length <= 0) {
       return false;
     }
-    GenericTrait trait = traitCollection.getTrait(getPrimaryTraitType());
+    TraitMap traitMap = TraitModelFetcher.fetch(hero);
+    GenericTrait trait = traitMap.getTrait(getPrimaryTraitType());
     return trait.isCasteOrFavored();
   }
 

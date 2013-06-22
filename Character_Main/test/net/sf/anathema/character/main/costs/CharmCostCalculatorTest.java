@@ -7,18 +7,15 @@ import net.sf.anathema.character.generic.traits.types.AbilityType;
 import net.sf.anathema.character.impl.model.context.trait.CreationTraitValueStrategy;
 import net.sf.anathema.character.impl.model.creation.bonus.magic.MagicCostCalculator;
 import net.sf.anathema.character.library.trait.favorable.FavorableState;
-import net.sf.anathema.character.main.model.traits.GenericTraitCollectionFacade;
 import net.sf.anathema.character.main.model.traits.TraitModel;
 import net.sf.anathema.character.main.model.traits.TraitModelFetcher;
 import net.sf.anathema.character.main.testing.BasicCharacterTestCase;
-import net.sf.anathema.character.main.testing.dummy.DummyAdditionalBonusPointManagment;
+import net.sf.anathema.character.main.testing.dummy.DummyAdditionalBonusPointManagement;
 import net.sf.anathema.character.main.testing.dummy.DummyAdditionalSpellPointManagement;
-import net.sf.anathema.character.main.testing.dummy.DummyGenericCharacter;
 import net.sf.anathema.character.main.testing.dummy.DummyHero;
 import net.sf.anathema.character.main.testing.dummy.magic.DummyCharmsModel;
 import net.sf.anathema.character.main.testing.dummy.magic.DummySpell;
 import net.sf.anathema.character.main.testing.dummy.magic.DummySpellModel;
-import net.sf.anathema.character.main.testing.dummy.template.DummyHeroTemplate;
 import net.sf.anathema.character.main.model.spells.SpellModel;
 import org.junit.Before;
 import org.junit.Test;
@@ -36,14 +33,13 @@ public class CharmCostCalculatorTest extends AbstractBonusPointTestCase {
     DummyCharmsModel charms = new DummyCharmsModel();
     spells = new DummySpellModel();
     DummyHero hero = new BasicCharacterTestCase().createModelContextWithEssence2(new CreationTraitValueStrategy());
+    hero.addModel(charms);
+    hero.addModel(spells);
     traitModel = TraitModelFetcher.fetch(hero);
     addAbilityAndEssence(traitModel, hero);
     BonusPointCosts cost = new DefaultBonusPointCosts();
-
-    DummyGenericCharacter genericCharacter = new DummyGenericCharacter(new DummyHeroTemplate());
-    calculator = new MagicCostCalculator(genericCharacter.getTemplate().getMagicTemplate(), charms, spells, 2, 3, cost,
-            new DummyAdditionalBonusPointManagment(), new DummyAdditionalSpellPointManagement(), hero,
-            new GenericTraitCollectionFacade(traitModel));
+    calculator = new MagicCostCalculator(2, 3, cost,
+            new DummyAdditionalBonusPointManagement(), new DummyAdditionalSpellPointManagement(), hero);
   }
 
   @Test

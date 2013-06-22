@@ -5,7 +5,7 @@ import net.sf.anathema.character.generic.template.points.AttributeGroupPriority;
 import net.sf.anathema.character.generic.template.points.IAttributeCreationPoints;
 import net.sf.anathema.character.generic.template.points.IAttributeGroupPriorityVisitor;
 import net.sf.anathema.character.generic.traits.types.AttributeGroupType;
-import net.sf.anathema.character.impl.model.creation.bonus.additional.IAdditionalBonusPointManagment;
+import net.sf.anathema.character.impl.model.creation.bonus.additional.IAdditionalBonusPointManagement;
 import net.sf.anathema.character.impl.model.creation.bonus.basic.ElementCreationCost;
 import net.sf.anathema.character.impl.model.creation.bonus.basic.ElementCreationCostCalculator;
 import net.sf.anathema.character.impl.model.creation.bonus.basic.ICostElement;
@@ -32,7 +32,7 @@ public class AttributeCostCalculator extends AbstractFavorableTraitCostCalculato
   private static final int SORTING_BONUS_COST_SCALE_FACTOR = 1000;
 
   public AttributeCostCalculator(AttributeModel attributes, IAttributeCreationPoints points, BonusPointCosts costs,
-                                 IAdditionalBonusPointManagment additionalPools) {
+                                 IAdditionalBonusPointManagement additionalPools) {
     super(additionalPools, points, costs.getMaximumFreeAbilityRank(), attributes.getAll());
     this.traitGroups = attributes.getTraitGroups();
     this.costs = costs;

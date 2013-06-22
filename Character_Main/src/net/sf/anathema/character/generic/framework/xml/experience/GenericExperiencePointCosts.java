@@ -46,7 +46,7 @@ public class GenericExperiencePointCosts extends ReflectionCloneableObject<Gener
 
   @Override
   public int getSpellCosts(ISpell spell, Hero hero, IGenericTraitCollection traitCollection) {
-    return spellCost != 0 ? spellCost : getCharmCosts(spell.isFavored(hero, traitCollection), null);
+    return spellCost != 0 ? spellCost : getCharmCosts(spell.isFavored(hero), null);
   }
 
   @Override

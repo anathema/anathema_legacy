@@ -1,6 +1,5 @@
 package net.sf.anathema.character.impl.model.creation.bonus.magic;
 
-import net.sf.anathema.character.generic.character.IGenericTraitCollection;
 import net.sf.anathema.character.generic.magic.ICharm;
 import net.sf.anathema.character.generic.magic.IMagic;
 import net.sf.anathema.character.generic.magic.IMagicVisitor;
@@ -10,12 +9,14 @@ import net.sf.anathema.character.generic.template.creation.BonusPointCosts;
 import net.sf.anathema.character.generic.template.magic.IMagicTemplate;
 import net.sf.anathema.character.impl.model.advance.CostAnalyzer;
 import net.sf.anathema.character.impl.model.creation.bonus.IAdditionalMagicLearnPointManagement;
-import net.sf.anathema.character.impl.model.creation.bonus.additional.IAdditionalBonusPointManagment;
-import net.sf.anathema.hero.model.Hero;
-import net.sf.anathema.character.main.model.spells.SpellModel;
+import net.sf.anathema.character.impl.model.creation.bonus.additional.IAdditionalBonusPointManagement;
 import net.sf.anathema.character.main.model.charms.CharmsModel;
+import net.sf.anathema.character.main.model.charms.CharmsModelFetcher;
+import net.sf.anathema.character.main.model.spells.SpellModel;
+import net.sf.anathema.character.main.model.spells.SpellsModelFetcher;
 import net.sf.anathema.character.model.charm.special.ISubeffectCharmConfiguration;
 import net.sf.anathema.character.model.charm.special.IUpgradableCharmConfiguration;
+import net.sf.anathema.hero.model.Hero;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -34,24 +35,22 @@ public class MagicCostCalculator {
   private int bonusPointsSpentForCharms = 0;
   private final BonusPointCosts costs;
   private CostAnalyzer analyzer;
-  private final IAdditionalBonusPointManagment bonusPools;
+  private final IAdditionalBonusPointManagement bonusPools;
   protected int bonusPointsSpentForSpells;
   private final IAdditionalMagicLearnPointManagement magicPools;
   private final IMagicTemplate magicTemplate;
 
-  public MagicCostCalculator(IMagicTemplate magicTemplate, CharmsModel charms, SpellModel spells, int favoredCreationCharmCount,
-                             int defaultCreationCharmCount, BonusPointCosts costs, IAdditionalBonusPointManagment bonusPools,
-                             IAdditionalMagicLearnPointManagement magicPools, Hero hero,
-                             IGenericTraitCollection traitCollection) {
-    this.magicTemplate = magicTemplate;
-    this.charms = charms;
-    this.spells = spells;
+  public MagicCostCalculator(int favoredCreationCharmCount, int defaultCreationCharmCount, BonusPointCosts costs,
+                             IAdditionalBonusPointManagement bonusPools, IAdditionalMagicLearnPointManagement magicPools, Hero hero) {
+    this.magicTemplate = hero.getTemplate().getMagicTemplate();
+    this.charms = CharmsModelFetcher.fetch(hero);
+    this.spells = SpellsModelFetcher.fetch(hero);
     this.favoredCreationCharmCount = favoredCreationCharmCount;
     this.defaultCreationCharmCount = defaultCreationCharmCount;
     this.costs = costs;
     this.bonusPools = bonusPools;
     this.magicPools = magicPools;
-    this.analyzer = new CostAnalyzer(hero, traitCollection);
+    this.analyzer = new CostAnalyzer(hero);
   }
 
   public void calculateMagicCosts() {
