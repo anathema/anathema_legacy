@@ -30,7 +30,7 @@ public class EquipmentAdditionalModelFactory implements IAdditionalModelFactory 
   public IAdditionalModel createModel(IAdditionalTemplate additionalTemplate, ICharacterModelContext context, Hero hero) {
     IEquipmentAdditionalModelTemplate template = (IEquipmentAdditionalModelTemplate) additionalTemplate;
     ICharacterType characterType = hero.getTemplate().getTemplateType().getCharacterType();
-    IArmourStats naturalArmour = new DefaultNaturalSoak(context.getTraitCollection().getTrait(AttributeType.Stamina), characterType, context);
+    IArmourStats naturalArmour = new DefaultNaturalSoak(context.getTraitCollection().getTrait(AttributeType.Stamina), characterType);
     EquipmentCharacterDataProvider dataProvider = new EquipmentCharacterDataProvider(hero, context, materialRules);
     return new EquipmentAdditionalModel(characterType, naturalArmour, equipmentTemplateProvider, context.getSpecialtyContext(), dataProvider,
             materialRules, new NaturalWeaponTemplate(), template.getNaturalWeaponTemplate(characterType));

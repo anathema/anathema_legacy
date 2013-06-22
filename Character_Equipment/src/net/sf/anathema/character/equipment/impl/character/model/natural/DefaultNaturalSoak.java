@@ -2,10 +2,8 @@ package net.sf.anathema.character.equipment.impl.character.model.natural;
 
 import net.sf.anathema.character.equipment.impl.character.model.stats.AbstractCombatStats;
 import net.sf.anathema.character.generic.equipment.weapon.IArmourStats;
-import net.sf.anathema.character.generic.framework.additionaltemplate.model.ICharacterModelContext;
 import net.sf.anathema.character.generic.health.HealthType;
 import net.sf.anathema.character.generic.traits.GenericTrait;
-import net.sf.anathema.character.generic.traits.types.OtherTraitType;
 import net.sf.anathema.character.generic.type.ICharacterType;
 import net.sf.anathema.lib.util.Identifier;
 import net.sf.anathema.lib.util.SimpleIdentifier;
@@ -14,16 +12,10 @@ public class DefaultNaturalSoak extends AbstractCombatStats implements IArmourSt
 
   private final GenericTrait stamina;
   private final ICharacterType characterType;
-  private final ICharacterModelContext context;
-  
-  private static final String INVINCIBLE_ESSENCE_REINFORCEMENT = "Solar.InvincibleEssenceReinforcement";
 
-  private static final String SCAR_WRIT_SAGA_SHIELD = "Infernal.ScarWritSagaShield";
-
-  public DefaultNaturalSoak(GenericTrait stamina, ICharacterType characterType, ICharacterModelContext context) {
+  public DefaultNaturalSoak(GenericTrait stamina, ICharacterType characterType) {
     this.stamina = stamina;
     this.characterType = characterType;
-    this.context = context;
   }
 
   @Override
@@ -33,28 +25,7 @@ public class DefaultNaturalSoak extends AbstractCombatStats implements IArmourSt
 
   @Override
   public Integer getHardness(HealthType type) {
-    if (context == null) {
-      return null;
-    }
-    int ierCount = context.getMagicCollection().getLearnCount(INVINCIBLE_ESSENCE_REINFORCEMENT);
-    int swssCount = context.getMagicCollection().getLearnCount(SCAR_WRIT_SAGA_SHIELD);
-    if ((ierCount == 0 && swssCount == 0) || (ierCount > 0 && context.getTraitCollection().getTrait(OtherTraitType.Essence).getCurrentValue() < 4)) {
-      return null;
-    }
-    else if ((ierCount > 0) && (type == HealthType.Bashing || type == HealthType.Lethal)) {
-      return ierCount;
-    }
-    else if ((swssCount == 1 || swssCount == 2) && (type == HealthType.Bashing)) {
-      return stamina.getCurrentValue();
-    }
-    else if ((swssCount == 3) && (type == HealthType.Bashing || type == HealthType.Lethal)) {
-      int essence = context.getTraitCollection().getTrait(OtherTraitType.Essence).getCurrentValue();
-      return (stamina.getCurrentValue() + essence);
-    }
-    else {
-      return null;
-    }
-
+    return null;
   }
 
   @Override
@@ -74,36 +45,12 @@ public class DefaultNaturalSoak extends AbstractCombatStats implements IArmourSt
   }
 
   private Integer getExaltedSoak(HealthType type) {
-  	int ierCount;
-  	int swssCount;
-  	int essence;
-  	
-	if (context == null) {
-		ierCount = 0;
-		swssCount = 0;
-		essence = 0;
-	}
-	else {	
-  	  ierCount = context.getMagicCollection().getLearnCount(INVINCIBLE_ESSENCE_REINFORCEMENT);
-      swssCount = context.getMagicCollection().getLearnCount(SCAR_WRIT_SAGA_SHIELD);
-      essence = context.getTraitCollection().getTrait(OtherTraitType.Essence).getCurrentValue();
-	}
-	
-    if (ierCount > 0) { 
-      return (stamina.getCurrentValue() + 3*ierCount);
-    }
-    else if ((swssCount == 1) && (type == HealthType.Lethal)) {
-    	return stamina.getCurrentValue();
-    }
-    else if (swssCount >= 2) {
-    	return (stamina.getCurrentValue() + essence);
-    }
-    else if (type == HealthType.Lethal) {
+    if (type == HealthType.Lethal) {
         return (stamina.getCurrentValue() / 2);
     }
-    else
-        return stamina.getCurrentValue();
-    
+    else {
+      return stamina.getCurrentValue();
+    }
   }
 
   @Override
