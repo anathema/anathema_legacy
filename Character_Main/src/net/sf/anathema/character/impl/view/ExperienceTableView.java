@@ -20,6 +20,7 @@ import javax.swing.JPanel;
 import javax.swing.SwingConstants;
 import javax.swing.event.ListSelectionEvent;
 import javax.swing.event.ListSelectionListener;
+import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableColumn;
 import java.awt.Component;
 import java.awt.Dimension;
@@ -27,6 +28,8 @@ import java.awt.Dimension;
 import static net.sf.anathema.lib.gui.layout.LayoutUtils.fillWithoutInsets;
 
 public class ExperienceTableView implements ExperienceView, IView {
+  public static final int VALUE_INDEX = 1;
+  public static final int DESCRIPTION_INDEX = 0;
   private final Announcer<IExperienceConfigurationViewListener> listeners = Announcer.to(IExperienceConfigurationViewListener.class);
   private SmartTable smartTable;
   private Action deleteAction;
@@ -35,7 +38,11 @@ public class ExperienceTableView implements ExperienceView, IView {
 
   @Override
   public final void initGui(final IExperienceViewProperties properties) {
-    smartTable = new SmartTable(properties.getTableModel(), properties.getColumnSettings());
+    String[] headers = new String[2];
+    headers[ExperienceTableView.DESCRIPTION_INDEX] = properties.getDescriptionHeader();
+    headers[ExperienceTableView.VALUE_INDEX] = properties.getPointHeader();
+    DefaultTableModel tableModel = new DefaultTableModel(headers, 0);
+    smartTable = new SmartTable(tableModel, properties.getColumnSettings());
     Icon addIcon = new ImageProvider().getImageIcon(properties.getAddIcon());
     smartTable.addAction(new SmartAction(addIcon) {
       @Override
@@ -101,5 +108,10 @@ public class ExperienceTableView implements ExperienceView, IView {
   @Override
   public void setTotalValueLabel(int overallExperiencePoints) {
     labelledIntValueView.setValue(overallExperiencePoints);
+  }
+
+  @Override
+  public DefaultTableModel getTableModel() {
+    return (DefaultTableModel) smartTable.getTable().getModel();
   }
 }

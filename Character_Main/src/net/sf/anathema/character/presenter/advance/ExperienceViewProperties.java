@@ -8,24 +8,16 @@ import net.sf.anathema.lib.gui.table.columsettings.IntegerTableColumnSettings;
 import net.sf.anathema.lib.gui.table.columsettings.StringTableColumnSettings;
 import net.sf.anathema.lib.resources.Resources;
 
-import javax.swing.table.TableModel;
 import java.awt.Color;
 
 public class ExperienceViewProperties implements IExperienceViewProperties {
 
-  private final TableModel tableModel;
   private final BasicUi basicUi;
   private Resources resources;
 
-  public ExperienceViewProperties(Resources resources, TableModel tableModel) {
+  public ExperienceViewProperties(Resources resources) {
     this.basicUi = new BasicUi();
-    this.tableModel = tableModel;
     this.resources = resources;
-  }
-
-  @Override
-  public TableModel getTableModel() {
-    return tableModel;
   }
 
   @Override
@@ -46,5 +38,15 @@ public class ExperienceViewProperties implements IExperienceViewProperties {
   @Override
   public String getTotalString() {
     return resources.getString("CardView.Experience.Total");
+  }
+
+  @Override
+  public String getPointHeader() {
+    return resources.getString("CardView.Experience.ExperiencePoints");
+  }
+
+  @Override
+  public String getDescriptionHeader() {
+    return resources.getString("CardView.Experience.Description");
   }
 }

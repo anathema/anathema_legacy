@@ -1,5 +1,6 @@
 package net.sf.anathema.character.presenter.advance;
 
+import net.sf.anathema.character.impl.view.ExperienceTableView;
 import net.sf.anathema.character.model.advance.IExperiencePointConfiguration;
 import net.sf.anathema.character.model.advance.IExperiencePointConfigurationListener;
 import net.sf.anathema.character.model.advance.IExperiencePointEntry;
@@ -15,8 +16,6 @@ import java.util.Map;
 
 public class ExperienceConfigurationPresenter {
 
-  private static final int VALUE_INDEX = 1;
-  private static final int DESCRIPTION_INDEX = 0;
   private final IExperiencePointConfiguration experiencePoints;
   private final ExperienceView experienceView;
   private DefaultTableModel tableModel;
@@ -32,7 +31,6 @@ public class ExperienceConfigurationPresenter {
   }
 
   public void initPresentation() {
-    initTableModel();
     experienceView.addExperienceConfigurationViewListener(new IExperienceConfigurationViewListener() {
       @Override
       public void removeRequested(int index) {
@@ -66,7 +64,9 @@ public class ExperienceConfigurationPresenter {
         updateView(entry);
       }
     });
-    experienceView.initGui(new ExperienceViewProperties(resources, tableModel));
+    experienceView.initGui(new ExperienceViewProperties(resources));
+    this.tableModel = experienceView.getTableModel();
+    showEntriesInView();
     tableModel.addTableModelListener(new TableModelListener() {
       @Override
       public void tableChanged(TableModelEvent e) {
@@ -75,18 +75,14 @@ public class ExperienceConfigurationPresenter {
         }
         int tableRowIndex = e.getFirstRow();
         IExperiencePointEntry entry = entriesByIndex.get(tableRowIndex);
-        entry.setExperiencePoints((Integer) tableModel.getValueAt(tableRowIndex, VALUE_INDEX));
-        entry.getTextualDescription().setText((String) tableModel.getValueAt(tableRowIndex, DESCRIPTION_INDEX));
+        entry.setExperiencePoints((Integer) tableModel.getValueAt(tableRowIndex, ExperienceTableView.VALUE_INDEX));
+        entry.getTextualDescription().setText((String) tableModel.getValueAt(tableRowIndex, ExperienceTableView.DESCRIPTION_INDEX));
       }
     });
     updateTotal();
   }
 
-  private void initTableModel() {
-    String[] headers = new String[2];
-    headers[DESCRIPTION_INDEX] = resources.getString("CardView.Experience.Description");
-    headers[VALUE_INDEX] = resources.getString("CardView.Experience.ExperiencePoints");
-    this.tableModel = new DefaultTableModel(headers, 0);
+  private void showEntriesInView() {
     for (IExperiencePointEntry entry : experiencePoints.getAllEntries()) {
       addToView(entry);
     }
@@ -96,8 +92,8 @@ public class ExperienceConfigurationPresenter {
     entriesByIndex.put(tableModel.getRowCount(), entry);
     indexByEntry.put(entry, tableModel.getRowCount());
     Object[] values = new Object[2];
-    values[VALUE_INDEX] = entry.getExperiencePoints();
-    values[DESCRIPTION_INDEX] = entry.getTextualDescription().getText();
+    values[ExperienceTableView.VALUE_INDEX] = entry.getExperiencePoints();
+    values[ExperienceTableView.DESCRIPTION_INDEX] = entry.getTextualDescription().getText();
     tableModel.addRow(values);
   }
 
@@ -109,8 +105,8 @@ public class ExperienceConfigurationPresenter {
 
   protected void updateView(IExperiencePointEntry entry) {
     int rowIndex = indexByEntry.get(entry);
-    tableModel.setValueAt(entry.getExperiencePoints(), rowIndex, VALUE_INDEX);
-    tableModel.setValueAt(entry.getTextualDescription().getText(), rowIndex, DESCRIPTION_INDEX);
+    tableModel.setValueAt(entry.getExperiencePoints(), rowIndex, ExperienceTableView.VALUE_INDEX);
+    tableModel.setValueAt(entry.getTextualDescription().getText(), rowIndex, ExperienceTableView.DESCRIPTION_INDEX);
     updateTotal();
   }
 

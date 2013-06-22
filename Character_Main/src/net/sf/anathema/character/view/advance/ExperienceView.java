@@ -1,5 +1,7 @@
 package net.sf.anathema.character.view.advance;
 
+import javax.swing.table.DefaultTableModel;
+
 public interface ExperienceView {
 
   void initGui(IExperienceViewProperties properties);
@@ -9,4 +11,7 @@ public interface ExperienceView {
   void setRemoveButtonEnabled(boolean enabled);
 
   void setTotalValueLabel(int overallExperiencePoints);
+
+  //TODO (Swing->FX) TableModel
+  DefaultTableModel getTableModel();
 }
