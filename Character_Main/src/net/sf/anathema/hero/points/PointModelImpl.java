@@ -2,6 +2,7 @@ package net.sf.anathema.hero.points;
 
 import net.sf.anathema.character.generic.additionaltemplate.HeroModelBonusPointCalculator;
 import net.sf.anathema.character.generic.additionaltemplate.HeroModelExperienceCalculator;
+import net.sf.anathema.character.presenter.overview.IOverviewModel;
 import net.sf.anathema.hero.change.ChangeAnnouncer;
 import net.sf.anathema.hero.model.Hero;
 import net.sf.anathema.hero.model.InitializationContext;
@@ -13,6 +14,7 @@ import java.util.List;
 public class PointModelImpl implements PointsModel {
 
   private final List<HeroModelExperienceCalculator> experienceCalculators = new ArrayList<>();
+  private final List<IOverviewModel> experienceOverviewModels = new ArrayList<>();
   private final List<HeroModelBonusPointCalculator> bonusPointCalculators = new ArrayList<>();
 
   @Override
@@ -27,6 +29,11 @@ public class PointModelImpl implements PointsModel {
   @Override
   public void addBonusPointCalculator(HeroModelBonusPointCalculator calculator) {
     bonusPointCalculators.add(calculator);
+  }
+
+  @Override
+  public void addToExperienceOverview(IOverviewModel model) {
+    experienceOverviewModels.add(model);
   }
 
   @Override

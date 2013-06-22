@@ -43,11 +43,6 @@ public class DefaultExperienceCosts implements IExperiencePointCosts {
   }
 
   @Override
-  public int getBackgroundCost() {
-    return 3;
-  }
-
-  @Override
   public CurrentRatingCosts getEssenceCosts() {
     return new MultiplyRatingCosts(8);
   }

@@ -22,6 +22,4 @@ public interface IExperiencePointCosts {
   CurrentRatingCosts getWillpowerCosts();
 
   int getSpellCosts(ISpell spell, Hero hero, IGenericTraitCollection traitCollection);
-
-  int getBackgroundCost();
 }

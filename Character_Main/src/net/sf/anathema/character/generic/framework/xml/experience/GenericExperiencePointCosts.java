@@ -31,7 +31,6 @@ public class GenericExperiencePointCosts extends ReflectionCloneableObject<Gener
   private int favoredHighLevelCharmCost = 0;
   private int spellCost = 0;
   private MartialArtsLevel standardMartialArtsLevel = MartialArtsLevel.Terrestrial;
-  private int backgroundCosts = 0;
   private Map<String, Integer> keywordGeneralCosts = new HashMap<>();
   private Map<String, Integer> keywordFavoredCosts = new HashMap<>();
 
@@ -131,15 +130,6 @@ public class GenericExperiencePointCosts extends ReflectionCloneableObject<Gener
 
   public void setSpellCost(int spellCost) {
     this.spellCost = spellCost;
-  }
-
-  @Override
-  public int getBackgroundCost() {
-    return backgroundCosts;
-  }
-
-  public void setBackgroundCosts(int backgroundCosts) {
-    this.backgroundCosts = backgroundCosts;
   }
 
   public void setMartialArtsCosts(int favoredMartialArtsCost, int generalMartialArtsCost) {

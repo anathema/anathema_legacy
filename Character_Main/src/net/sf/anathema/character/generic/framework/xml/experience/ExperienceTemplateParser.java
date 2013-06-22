@@ -97,18 +97,9 @@ public class ExperienceTemplateParser extends AbstractXmlTemplateParser<GenericE
     if (advantages == null) {
       return;
     }
-    setBackgroundCosts(costs, advantages);
     setWillpowerCosts(costs, advantages);
     setVirtueCosts(costs, advantages);
     setEssenceCosts(costs, advantages);
-  }
-
-  private void setBackgroundCosts(GenericExperiencePointCosts costs, Element advantages) throws PersistenceException {
-    Element element = advantages.element(TAG_BACKGROUNDS);
-    if (element == null) {
-      return;
-    }
-    costs.setBackgroundCosts(ElementUtilities.getRequiredIntAttrib(element, ATTRIB_COST));
   }
 
   private void setEssenceCosts(GenericExperiencePointCosts costs, Element advantages) throws PersistenceException {

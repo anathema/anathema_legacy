@@ -7,5 +7,4 @@ public interface IOverviewModel extends Identifier {
   void accept(IOverviewModelVisitor visitor);
 
   String getCategoryId();
-
 }

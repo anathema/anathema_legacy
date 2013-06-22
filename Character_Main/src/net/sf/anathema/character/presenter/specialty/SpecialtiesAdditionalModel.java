@@ -2,10 +2,12 @@ package net.sf.anathema.character.presenter.specialty;
 
 import net.sf.anathema.character.generic.additionaltemplate.AbstractAdditionalModelAdapter;
 import net.sf.anathema.character.generic.template.additional.IAdditionalTemplate;
+import net.sf.anathema.character.impl.model.advance.models.SpecialtyExperienceModel;
 import net.sf.anathema.character.library.trait.specialties.ISpecialtiesConfiguration;
 import net.sf.anathema.character.library.trait.specialties.SpecialtyModelFetcher;
 import net.sf.anathema.hero.display.HeroModelGroup;
 import net.sf.anathema.hero.model.Hero;
+import net.sf.anathema.hero.points.PointModelFetcher;
 import net.sf.anathema.lib.control.IChangeListener;
 
 public class SpecialtiesAdditionalModel extends AbstractAdditionalModelAdapter implements ISpecialtiesAdditionalModel {
@@ -16,6 +18,7 @@ public class SpecialtiesAdditionalModel extends AbstractAdditionalModelAdapter i
   public SpecialtiesAdditionalModel(Hero hero, IAdditionalTemplate additionalTemplate) {
     this.additionalTemplate = additionalTemplate;
     // todo (sandra): move specialty configuration into specialty module
+    PointModelFetcher.fetch(hero).addToExperienceOverview(new SpecialtyExperienceModel(hero));
     this.model = SpecialtyModelFetcher.fetch(hero);
   }
 
