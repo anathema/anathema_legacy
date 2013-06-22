@@ -114,4 +114,10 @@ public class ExperienceTableView implements ExperienceView, IView {
   public DefaultTableModel getTableModel() {
     return (DefaultTableModel) smartTable.getTable().getModel();
   }
+
+  @Override
+  public void updateEntry(int rowIndex, int experiencePoints, String text) {
+    getTableModel().setValueAt(experiencePoints, rowIndex, VALUE_INDEX);
+    getTableModel().setValueAt(text, rowIndex, DESCRIPTION_INDEX);
+  }
 }

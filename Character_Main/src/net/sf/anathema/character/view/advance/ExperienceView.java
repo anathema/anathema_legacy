@@ -14,4 +14,6 @@ public interface ExperienceView {
 
   //TODO (Swing->FX) TableModel
   DefaultTableModel getTableModel();
+
+  void updateEntry(int rowIndex, int experiencePoints, String text);
 }

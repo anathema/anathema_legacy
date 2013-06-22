@@ -103,10 +103,9 @@ public class ExperienceConfigurationPresenter {
     updateTotal();
   }
 
-  protected void updateView(IExperiencePointEntry entry) {
+  private void updateView(IExperiencePointEntry entry) {
     int rowIndex = indexByEntry.get(entry);
-    tableModel.setValueAt(entry.getExperiencePoints(), rowIndex, ExperienceTableView.VALUE_INDEX);
-    tableModel.setValueAt(entry.getTextualDescription().getText(), rowIndex, ExperienceTableView.DESCRIPTION_INDEX);
+    experienceView.updateEntry(rowIndex, entry.getExperiencePoints(), entry.getTextualDescription().getText());
     updateTotal();
   }
 
