@@ -11,7 +11,6 @@ import net.sf.anathema.character.generic.traits.TraitType;
 import net.sf.anathema.character.generic.traits.groups.IIdentifiedTraitTypeGroup;
 import net.sf.anathema.character.library.trait.specialties.Specialty;
 import net.sf.anathema.hero.magic.MagicCollection;
-import net.sf.anathema.lib.control.IChangeListener;
 import net.sf.anathema.lib.util.IdentifiedInteger;
 
 import java.util.List;
@@ -69,8 +68,6 @@ public interface IGenericCharacter extends ILimitationContext, MagicCollection, 
   boolean isMultipleEffectCharm(ICharm magic);
 
   boolean isSubeffectCharm(ICharm magic);
-
-  void addSpecialtyListChangeListener(IChangeListener listener);
 
   ICharm[] getGenericCharms();
 

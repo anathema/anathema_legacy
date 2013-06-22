@@ -19,7 +19,6 @@ import net.sf.anathema.character.generic.traits.GenericTrait;
 import net.sf.anathema.character.generic.traits.TraitType;
 import net.sf.anathema.character.generic.traits.groups.IIdentifiedTraitTypeGroup;
 import net.sf.anathema.character.library.trait.specialties.Specialty;
-import net.sf.anathema.lib.control.IChangeListener;
 import net.sf.anathema.lib.exception.NotYetImplementedException;
 import net.sf.anathema.lib.util.IdentifiedInteger;
 
@@ -250,11 +249,6 @@ public class DummyGenericCharacter implements IGenericCharacter {
 
   @Override
   public void setLearnCount(String charmName, int newValue) {
-    // nothing to do
-  }
-
-  @Override
-  public void addSpecialtyListChangeListener(IChangeListener listener) {
     // nothing to do
   }
 

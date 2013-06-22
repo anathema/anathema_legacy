@@ -23,7 +23,7 @@ import net.sf.anathema.character.generic.equipment.ArtifactStats;
 import net.sf.anathema.character.generic.equipment.ICharacterStatsModifiers;
 import net.sf.anathema.character.generic.equipment.weapon.IArmourStats;
 import net.sf.anathema.character.generic.equipment.weapon.IEquipmentStats;
-import net.sf.anathema.character.generic.framework.additionaltemplate.model.IGenericSpecialtyContext;
+import net.sf.anathema.character.generic.framework.additionaltemplate.model.SpecialtiesCollection;
 import net.sf.anathema.character.generic.traits.types.AbilityType;
 import net.sf.anathema.character.generic.type.ICharacterType;
 import net.sf.anathema.character.library.trait.specialties.Specialty;
@@ -57,7 +57,7 @@ public class EquipmentAdditionalModel extends AbstractAdditionalModelAdapter imp
   };
 
   public EquipmentAdditionalModel(ICharacterType characterType, IArmourStats naturalArmour, IEquipmentTemplateProvider equipmentTemplateProvider,
-                                  IGenericSpecialtyContext context, IEquipmentCharacterDataProvider dataProvider, MaterialRules materialRules,
+                                  SpecialtiesCollection context, IEquipmentCharacterDataProvider dataProvider, MaterialRules materialRules,
                                   IEquipmentTemplate... naturalWeapons) {
     this.printModel = new EquipmentPrintModel(this, naturalArmour);
     this.characterType = characterType;

@@ -14,6 +14,7 @@ import net.sf.anathema.character.generic.framework.additionaltemplate.model.ICha
 import net.sf.anathema.character.generic.template.additional.IAdditionalTemplate;
 import net.sf.anathema.character.generic.traits.types.AttributeType;
 import net.sf.anathema.character.generic.type.ICharacterType;
+import net.sf.anathema.hero.specialties.model.SpecialtiesCollectionImpl;
 import net.sf.anathema.character.library.trait.Trait;
 import net.sf.anathema.character.main.model.traits.TraitModelFetcher;
 import net.sf.anathema.hero.model.Hero;
@@ -34,8 +35,8 @@ public class EquipmentAdditionalModelFactory implements IAdditionalModelFactory 
     ICharacterType characterType = hero.getTemplate().getTemplateType().getCharacterType();
     Trait stamina = TraitModelFetcher.fetch(hero).getTrait(AttributeType.Stamina);
     IArmourStats naturalArmour = new DefaultNaturalSoak(stamina, characterType);
-    EquipmentCharacterDataProvider dataProvider = new EquipmentCharacterDataProvider(hero, context, materialRules);
-    return new EquipmentAdditionalModel(characterType, naturalArmour, equipmentTemplateProvider, context.getSpecialtyContext(), dataProvider,
+    EquipmentCharacterDataProvider dataProvider = new EquipmentCharacterDataProvider(hero, materialRules);
+    return new EquipmentAdditionalModel(characterType, naturalArmour, equipmentTemplateProvider, new SpecialtiesCollectionImpl(hero), dataProvider,
             materialRules, new NaturalWeaponTemplate(), template.getNaturalWeaponTemplate(characterType));
   }
 }

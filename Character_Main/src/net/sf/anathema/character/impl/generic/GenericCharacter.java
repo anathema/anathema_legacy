@@ -7,7 +7,6 @@ import net.sf.anathema.character.generic.character.IConcept;
 import net.sf.anathema.character.generic.character.IGenericCharacter;
 import net.sf.anathema.character.generic.character.IGenericDescription;
 import net.sf.anathema.character.generic.character.IGenericTraitCollection;
-import net.sf.anathema.character.generic.framework.ITraitReference;
 import net.sf.anathema.character.generic.health.HealthLevelType;
 import net.sf.anathema.character.generic.magic.ICharm;
 import net.sf.anathema.character.generic.magic.IGenericCombo;
@@ -25,7 +24,6 @@ import net.sf.anathema.character.impl.model.advance.ExperiencePointManagement;
 import net.sf.anathema.character.library.trait.specialties.ISpecialtiesConfiguration;
 import net.sf.anathema.character.library.trait.specialties.Specialty;
 import net.sf.anathema.character.library.trait.specialties.SpecialtyModelFetcher;
-import net.sf.anathema.character.library.trait.subtrait.ISpecialtyListener;
 import net.sf.anathema.character.main.model.abilities.AbilityModelFetcher;
 import net.sf.anathema.character.main.model.attributes.AttributeModelFetcher;
 import net.sf.anathema.character.main.model.charms.CharmsModel;
@@ -49,7 +47,6 @@ import net.sf.anathema.character.model.charm.ILearningCharmGroup;
 import net.sf.anathema.character.model.charm.special.IMultiLearnableCharmConfiguration;
 import net.sf.anathema.character.model.charm.special.IMultipleEffectCharmConfiguration;
 import net.sf.anathema.character.model.charm.special.ISubeffectCharmConfiguration;
-import net.sf.anathema.lib.control.IChangeListener;
 import net.sf.anathema.lib.exception.ContractFailedException;
 import net.sf.anathema.lib.util.IdentifiedInteger;
 
@@ -334,28 +331,6 @@ public class GenericCharacter implements IGenericCharacter {
   public ICharm[] getLearnedCharms() {
     boolean experienced = ExperienceModelFetcher.fetch(character).isExperienced();
     return CharmsModelFetcher.fetch(character).getLearnedCharms(experienced);
-  }
-
-  @Override
-  public void addSpecialtyListChangeListener(final IChangeListener listener) {
-    ISpecialtiesConfiguration config = SpecialtyModelFetcher.fetch(character);
-    for (ITraitReference trait : config.getAllTraits()) {
-      config.getSpecialtiesContainer(trait).addSubTraitListener(new ISpecialtyListener() {
-        @Override
-        public void subTraitValueChanged() {
-        }
-
-        @Override
-        public void subTraitAdded(Specialty subTrait) {
-          listener.changeOccurred();
-        }
-
-        @Override
-        public void subTraitRemoved(Specialty subTrait) {
-          listener.changeOccurred();
-        }
-      });
-    }
   }
 
   private TraitMap getTraitMap() {

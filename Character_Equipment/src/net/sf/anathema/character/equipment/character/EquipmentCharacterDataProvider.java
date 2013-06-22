@@ -5,10 +5,10 @@ import net.sf.anathema.character.equipment.MaterialRules;
 import net.sf.anathema.character.equipment.character.model.IEquipmentItem;
 import net.sf.anathema.character.equipment.character.model.IEquipmentStatsOption;
 import net.sf.anathema.character.generic.equipment.ArtifactAttuneType;
-import net.sf.anathema.character.generic.framework.additionaltemplate.model.ICharacterModelContext;
 import net.sf.anathema.character.generic.traits.TraitType;
 import net.sf.anathema.character.generic.traits.types.AbilityType;
 import net.sf.anathema.character.generic.type.ICharacterType;
+import net.sf.anathema.hero.specialties.model.SpecialtiesCollectionImpl;
 import net.sf.anathema.character.library.trait.specialties.Specialty;
 import net.sf.anathema.hero.model.Hero;
 import net.sf.anathema.lib.control.IChangeListener;
@@ -20,24 +20,22 @@ import static net.sf.anathema.character.generic.equipment.ArtifactAttuneType.Unh
 public class EquipmentCharacterDataProvider implements IEquipmentCharacterDataProvider {
 
   private Hero hero;
-  private final ICharacterModelContext context;
   private final MaterialRules materialRules;
 
-  public EquipmentCharacterDataProvider(Hero hero, ICharacterModelContext context, MaterialRules materialRules) {
+  public EquipmentCharacterDataProvider(Hero hero, MaterialRules materialRules) {
     this.hero = hero;
-    this.context = context;
     this.materialRules = materialRules;
   }
 
   @Override
   public Specialty[] getSpecialties(TraitType trait) {
-    return context.getSpecialtyContext().getSpecialties(trait);
+    return new SpecialtiesCollectionImpl(hero).getSpecialties(trait);
   }
 
   @Override
   public IEquipmentStatsOption getCharacterSpecialtyOption(String name, String type) {
     TraitType trait = AbilityType.valueOf(type);
-    for (Specialty specialty : context.getSpecialtyContext().getSpecialties(trait)) {
+    for (Specialty specialty : getSpecialties(trait)) {
       if (specialty.getName().equals(name)) {
         return new EquipmentSpecialtyOption(specialty, trait);
       }
@@ -72,7 +70,7 @@ public class EquipmentCharacterDataProvider implements IEquipmentCharacterDataPr
 
   @Override
   public void addCharacterSpecialtyListChangeListener(IChangeListener listener) {
-    context.getSpecialtyContext().addSpecialtyListChangeListener(listener);
+    new SpecialtiesCollectionImpl(hero).addSpecialtyListChangeListener(listener);
   }
 
   private ICharacterType getCharacterType() {
