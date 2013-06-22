@@ -36,7 +36,8 @@ public class CharmCostCalculatorTest extends AbstractBonusPointTestCase {
     hero.addModel(spells);
     traitModel = TraitModelFetcher.fetch(hero);
     addAbilityAndEssence(traitModel, hero);
-    calculator = new MagicCostCalculator(hero, 2, 3, new DefaultBonusPointCosts(), new DummyAdditionalBonusPointManagement(),
+    hero.template.creationPoints.favoredCreationCharmCount = 2;
+    calculator = new MagicCostCalculator(hero, 3, new DefaultBonusPointCosts(), new DummyAdditionalBonusPointManagement(),
             new DummyAdditionalSpellPointManagement());
   }
 
