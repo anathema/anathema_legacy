@@ -6,7 +6,6 @@ import net.sf.anathema.character.impl.model.advance.models.AttributeExperienceMo
 import net.sf.anathema.character.impl.model.advance.models.CharmExperienceModel;
 import net.sf.anathema.character.impl.model.advance.models.EssenceExperienceModel;
 import net.sf.anathema.character.impl.model.advance.models.MiscellaneousExperienceModel;
-import net.sf.anathema.character.impl.model.advance.models.SpecialtyExperienceModel;
 import net.sf.anathema.character.impl.model.advance.models.SpellExperienceModel;
 import net.sf.anathema.character.impl.model.advance.models.VirtueExperienceModel;
 import net.sf.anathema.character.impl.model.advance.models.WillpowerExperienceModel;
@@ -16,6 +15,9 @@ import net.sf.anathema.character.model.ICharacter;
 import net.sf.anathema.character.model.advance.IExperiencePointManagement;
 import net.sf.anathema.character.presenter.overview.IValueModel;
 import net.sf.anathema.hero.points.PointModelFetcher;
+
+import java.util.ArrayList;
+import java.util.List;
 
 public class ExperiencePointManagement implements IExperiencePointManagement {
 
@@ -34,10 +36,21 @@ public class ExperiencePointManagement implements IExperiencePointManagement {
   }
 
   @Override
-  @SuppressWarnings("unchecked")
-  public IValueModel<Integer>[] getAllModels() {
-    return new IValueModel[]{getAttributeModel(), getAbilityModel(), getSpecialtyModel(), getCharmModel(), getSpellModel(), getVirtueModel(),
-            getWillpowerModel(), getEssenceModel(), getMiscModel()};
+  public List<IValueModel<Integer>> getAllModels() {
+    final List<IValueModel<Integer>> allModels = new ArrayList<>();
+    // todo (sandra): Sorting
+    allModels.add(getAbilityModel());
+    allModels.add(getAttributeModel());
+    allModels.add(getCharmModel());
+    allModels.add(getEssenceModel());
+    allModels.add(getSpellModel());
+    allModels.add(getVirtueModel());
+    allModels.add(getWillpowerModel());
+    allModels.add(getMiscModel());
+    for (IValueModel<Integer>  model : PointModelFetcher.fetch(character).getExperienceOverviewModels()) {
+      allModels.add(model);
+    }
+    return allModels;
   }
 
   private IValueModel<Integer> getAttributeModel() {
@@ -65,10 +78,6 @@ public class ExperiencePointManagement implements IExperiencePointManagement {
     return new MiscellaneousExperienceModel(character);
   }
 
-  private IValueModel<Integer> getSpecialtyModel() {
-    return new SpecialtyExperienceModel(character);
-  }
-
   private IValueModel<Integer> getSpellModel() {
     return new SpellExperienceModel(character, calculator, traitMap);
   }
@@ -76,15 +85,9 @@ public class ExperiencePointManagement implements IExperiencePointManagement {
   @Override
   public int getTotalCosts() {
     int experienceCosts = 0;
-    experienceCosts += getAbilityModel().getValue();
-    experienceCosts += getAttributeModel().getValue();
-    experienceCosts += getCharmModel().getValue();
-    experienceCosts += getEssenceModel().getValue();
-    experienceCosts += getSpecialtyModel().getValue();
-    experienceCosts += getSpellModel().getValue();
-    experienceCosts += getVirtueModel().getValue();
-    experienceCosts += getWillpowerModel().getValue();
-    experienceCosts += getMiscModel().getValue();
+    for (IValueModel<Integer> model : getAllModels()) {
+      experienceCosts += model.getValue();
+    }
     return experienceCosts;
   }
 
@@ -98,15 +101,14 @@ public class ExperiencePointManagement implements IExperiencePointManagement {
 
   @Override
   public String toString() {
-    return "Abilities: "
-           + getAbilityModel().getValue() + "\nAttributes: "
-           + getAttributeModel().getValue() + "\nCharms: "
-           + getCharmModel().getValue() + "\nEssence: "
-           + getEssenceModel().getValue() + "\nSpecialties: "
-           + getSpecialtyModel().getValue() + "\nSpells: "
-           + getSpellModel().getValue() + "\nVirtues: "
-           + getVirtueModel().getValue() + "\nWillpower: "
-           + getWillpowerModel().getValue() + "\nMisc: "
-           + getMiscModel().getValue() + "\nOverall: " + getTotalCosts();
+    StringBuffer stringBuffer = new StringBuffer();
+    for (IValueModel<Integer> model : getAllModels()) {
+      stringBuffer.append(model.getCategoryId());
+      stringBuffer.append(": ");
+      stringBuffer.append(model.getValue());
+    }
+    stringBuffer.append("Overall: ");
+    stringBuffer.append(getTotalCosts());
+    return stringBuffer.toString();
   }
 }
