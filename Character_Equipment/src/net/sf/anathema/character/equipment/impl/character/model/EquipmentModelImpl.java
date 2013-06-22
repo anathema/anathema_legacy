@@ -2,55 +2,71 @@ package net.sf.anathema.character.equipment.impl.character.model;
 
 import com.google.common.collect.HashBasedTable;
 import com.google.common.collect.Table;
-import net.sf.anathema.character.equipment.IEquipmentAdditionalModelTemplate;
 import net.sf.anathema.character.equipment.MagicalMaterial;
 import net.sf.anathema.character.equipment.MaterialComposition;
 import net.sf.anathema.character.equipment.MaterialRules;
+import net.sf.anathema.character.equipment.NaturalWeaponMap;
+import net.sf.anathema.character.equipment.ReflectionMaterialRules;
+import net.sf.anathema.character.equipment.character.EquipmentCharacterDataProvider;
+import net.sf.anathema.character.equipment.character.EquipmentOptionsProvider;
 import net.sf.anathema.character.equipment.character.IEquipmentCharacterDataProvider;
-import net.sf.anathema.character.equipment.character.IEquipmentCharacterOptionProvider;
-import net.sf.anathema.character.equipment.character.model.IEquipmentAdditionalModel;
+import net.sf.anathema.character.impl.model.UnspecifiedChangeListener;
+import net.sf.anathema.hero.equipment.model.EquipmentModel;
 import net.sf.anathema.character.equipment.character.model.IEquipmentItem;
 import net.sf.anathema.character.equipment.character.model.IEquipmentPrintModel;
 import net.sf.anathema.character.equipment.character.model.IEquipmentStatsOption;
+import net.sf.anathema.character.equipment.impl.EquipmentDirectAccess;
+import net.sf.anathema.character.equipment.impl.character.model.natural.DefaultNaturalSoak;
+import net.sf.anathema.character.equipment.impl.character.model.natural.NaturalWeaponTemplate;
 import net.sf.anathema.character.equipment.impl.character.model.print.EquipmentPrintModel;
 import net.sf.anathema.character.equipment.impl.character.model.stats.CharacterStatsModifiers;
+import net.sf.anathema.character.equipment.impl.item.model.gson.GsonEquipmentDatabase;
 import net.sf.anathema.character.equipment.impl.reporting.EquipmentStatsModifierFactory;
 import net.sf.anathema.character.equipment.item.model.IEquipmentTemplateProvider;
 import net.sf.anathema.character.equipment.template.IEquipmentTemplate;
-import net.sf.anathema.character.generic.additionaltemplate.AbstractAdditionalModelAdapter;
 import net.sf.anathema.character.generic.character.IGenericCharacter;
 import net.sf.anathema.character.generic.equipment.ArtifactStats;
 import net.sf.anathema.character.generic.equipment.ICharacterStatsModifiers;
 import net.sf.anathema.character.generic.equipment.weapon.IArmourStats;
 import net.sf.anathema.character.generic.equipment.weapon.IEquipmentStats;
 import net.sf.anathema.character.generic.traits.types.AbilityType;
+import net.sf.anathema.character.generic.traits.types.AttributeType;
+import net.sf.anathema.character.generic.type.CharacterTypes;
 import net.sf.anathema.character.generic.type.ICharacterType;
+import net.sf.anathema.character.library.trait.Trait;
 import net.sf.anathema.character.library.trait.specialties.Specialty;
 import net.sf.anathema.character.main.model.essencepool.EssencePoolModelFetcher;
+import net.sf.anathema.character.main.model.traits.TraitModelFetcher;
 import net.sf.anathema.character.reporting.pdf.rendering.boxes.StatsModifierFactory;
-import net.sf.anathema.hero.display.HeroModelGroup;
+import net.sf.anathema.hero.change.ChangeAnnouncer;
 import net.sf.anathema.hero.model.Hero;
+import net.sf.anathema.hero.model.InitializationContext;
 import net.sf.anathema.hero.specialties.model.SpecialtiesCollectionImpl;
+import net.sf.anathema.initialization.ObjectFactory;
 import net.sf.anathema.lib.control.IChangeListener;
 import net.sf.anathema.lib.control.ICollectionListener;
+import net.sf.anathema.lib.util.Identifier;
 import org.apache.commons.lang3.ArrayUtils;
 import org.jmock.example.announcer.Announcer;
 
+import java.nio.file.Path;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
-public class EquipmentAdditionalModel extends AbstractAdditionalModelAdapter implements IEquipmentCharacterOptionProvider, IEquipmentAdditionalModel, StatsModifierFactory {
-  private final IEquipmentTemplateProvider equipmentTemplateProvider;
-  private final ICharacterType characterType;
-  private final MagicalMaterial defaultMaterial;
+import static net.sf.anathema.character.equipment.impl.item.model.gson.GsonEquipmentDatabase.DATABASE_FOLDER;
+
+public class EquipmentModelImpl implements EquipmentOptionsProvider, EquipmentModel, StatsModifierFactory {
+  private IEquipmentTemplateProvider equipmentTemplateProvider;
+  private ICharacterType characterType;
+  private MagicalMaterial defaultMaterial;
   private final List<IEquipmentItem> naturalWeaponItems = new ArrayList<>();
   private final Table<IEquipmentItem, IEquipmentStats, List<IEquipmentStatsOption>> optionsTable = HashBasedTable.create();
-  private final IEquipmentCharacterDataProvider dataProvider;
+  private IEquipmentCharacterDataProvider dataProvider;
   private final Announcer<IChangeListener> modelChangeControl = Announcer.to(IChangeListener.class);
   private final Announcer<ICollectionListener> equipmentItemControl = Announcer.to(ICollectionListener.class);
   private final EquipmentCollection equipmentItems = new EquipmentCollection();
-  private final IEquipmentPrintModel printModel;
+  private IEquipmentPrintModel printModel;
   private final IChangeListener itemChangePropagator = new IChangeListener() {
     @Override
     public void changeOccurred() {
@@ -58,13 +74,30 @@ public class EquipmentAdditionalModel extends AbstractAdditionalModelAdapter imp
     }
   };
 
-  public EquipmentAdditionalModel(Hero hero, ICharacterType characterType, IArmourStats naturalArmour, IEquipmentTemplateProvider equipmentTemplateProvider,
-                                  IEquipmentCharacterDataProvider dataProvider, MaterialRules materialRules, IEquipmentTemplate... naturalWeapons) {
+  @Override
+  public Identifier getId() {
+    return ID;
+  }
+
+  @Override
+  public void initialize(InitializationContext context, Hero hero) {
+    Path dataBaseDirectory = context.getDataFileProvider().getDataBaseDirectory(DATABASE_FOLDER);
+    EquipmentDirectAccess access = new EquipmentDirectAccess(dataBaseDirectory);
+    ObjectFactory objectFactory = context.getObjectFactory();
+    IEquipmentTemplateProvider equipmentDatabase = new GsonEquipmentDatabase(access);
+    MaterialRules materialRules = new ReflectionMaterialRules(objectFactory);
+    CharacterTypes characterTypes = context.getCharacterTypes();
+    NaturalWeaponMap naturalWeaponMap = new NaturalWeaponMapImpl(characterTypes, objectFactory);
+    ICharacterType characterType = hero.getTemplate().getTemplateType().getCharacterType();
+    Trait stamina = TraitModelFetcher.fetch(hero).getTrait(AttributeType.Stamina);
+    IArmourStats naturalArmour = new DefaultNaturalSoak(stamina, characterType);
     this.printModel = new EquipmentPrintModel(this, naturalArmour);
-    this.characterType = characterType;
+    this.characterType = hero.getTemplate().getTemplateType().getCharacterType();
     this.defaultMaterial = evaluateDefaultMaterial(materialRules);
-    this.equipmentTemplateProvider = equipmentTemplateProvider;
-    this.dataProvider = dataProvider;
+    this.equipmentTemplateProvider = equipmentDatabase;
+    this.dataProvider = new EquipmentCharacterDataProvider(hero, materialRules);
+    IEquipmentTemplate[] naturalWeapons =
+            new IEquipmentTemplate[]{new NaturalWeaponTemplate(), naturalWeaponMap.getNaturalWeaponTemplate(characterType)};
     for (IEquipmentTemplate template : naturalWeapons) {
       if (template == null) {
         continue;
@@ -72,11 +105,15 @@ public class EquipmentAdditionalModel extends AbstractAdditionalModelAdapter imp
       IEquipmentItem item = createItem(template, null);
       naturalWeaponItems.add(item);
     }
-    new SpecialtiesCollectionImpl(hero).addSpecialtyListChangeListener(new SpecialtyPrintRemover(dataProvider));
+    new SpecialtiesCollectionImpl(hero).addSpecialtyListChangeListener(new SpecialtyPrintRemover(
+            new EquipmentCharacterDataProvider(hero, materialRules)));
     EssencePoolModelFetcher.fetch(hero).addEssencePoolModifier(this);
   }
 
-
+  @Override
+  public void initializeListening(ChangeAnnouncer announcer) {
+    addChangeListener(new UnspecifiedChangeListener(announcer));
+  }
 
   @Override
   public IEquipmentCharacterDataProvider getCharacterDataProvider() {
@@ -84,7 +121,7 @@ public class EquipmentAdditionalModel extends AbstractAdditionalModelAdapter imp
   }
 
   @Override
-  public IEquipmentCharacterOptionProvider getCharacterOptionProvider() {
+  public EquipmentOptionsProvider getOptionProvider() {
     return this;
   }
 
@@ -223,16 +260,6 @@ public class EquipmentAdditionalModel extends AbstractAdditionalModelAdapter imp
   }
 
   @Override
-  public HeroModelGroup getAdditionalModelType() {
-    return HeroModelGroup.Miscellaneous;
-  }
-
-  @Override
-  public String getTemplateId() {
-    return IEquipmentAdditionalModelTemplate.ID;
-  }
-
-  @Override
   public IEquipmentItem[] getEquipmentItems() {
     return equipmentItems.asArray();
   }
@@ -286,7 +313,7 @@ public class EquipmentAdditionalModel extends AbstractAdditionalModelAdapter imp
         IEquipmentItem refreshedItem = refreshItem(item);
         if (refreshedItem != null) {
           refreshedItem.setPersonalization(item);
-          getCharacterOptionProvider().transferOptions(item, refreshedItem);
+          getOptionProvider().transferOptions(item, refreshedItem);
           announceItemAndListenForChanges(refreshedItem);
         }
       }
@@ -323,7 +350,6 @@ public class EquipmentAdditionalModel extends AbstractAdditionalModelAdapter imp
     return template.getMaterial();
   }
 
-  @Override
   public void addChangeListener(IChangeListener listener) {
     modelChangeControl.addListener(listener);
   }

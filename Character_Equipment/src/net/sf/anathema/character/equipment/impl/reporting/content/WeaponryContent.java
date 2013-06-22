@@ -1,9 +1,9 @@
 package net.sf.anathema.character.equipment.impl.reporting.content;
 
+import net.sf.anathema.character.equipment.character.EquipmentOptionsProvider;
 import net.sf.anathema.character.equipment.character.IEquipmentCharacterDataProvider;
-import net.sf.anathema.character.equipment.character.IEquipmentCharacterOptionProvider;
-import net.sf.anathema.character.equipment.character.model.IEquipmentAdditionalModel;
-import net.sf.anathema.character.equipment.impl.character.model.EquipmentAdditionalModelTemplate;
+import net.sf.anathema.hero.equipment.model.EquipmentModel;
+import net.sf.anathema.character.equipment.impl.character.model.NaturalWeaponMapImpl;
 import net.sf.anathema.character.equipment.impl.reporting.content.stats.weapons.AbstractDefenceWeaponStatsGroup;
 import net.sf.anathema.character.equipment.impl.reporting.content.stats.weapons.AccuracyWeaponStatsGroup;
 import net.sf.anathema.character.equipment.impl.reporting.content.stats.weapons.RateWeaponStatsGroup;
@@ -16,13 +16,13 @@ import net.sf.anathema.lib.resources.Resources;
 public class WeaponryContent extends AbstractWeaponryContent implements SubBoxContent {
 
   private final IEquipmentCharacterDataProvider provider;
-  private final IEquipmentCharacterOptionProvider optionProvider;
+  private final EquipmentOptionsProvider optionProvider;
 
   public WeaponryContent(Resources resources, IGenericCharacter character) {
     super(resources, character);
-    IEquipmentAdditionalModel additionalModel = (IEquipmentAdditionalModel) character.getAdditionalModel(EquipmentAdditionalModelTemplate.ID);
+    EquipmentModel additionalModel = (EquipmentModel) character.getAdditionalModel(NaturalWeaponMapImpl.ID);
     provider = additionalModel.getCharacterDataProvider();
-    optionProvider = additionalModel.getCharacterOptionProvider();
+    optionProvider = additionalModel.getOptionProvider();
   }
 
   @Override
