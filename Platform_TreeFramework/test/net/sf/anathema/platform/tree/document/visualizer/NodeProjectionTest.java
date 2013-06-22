@@ -1,9 +1,9 @@
 package net.sf.anathema.platform.tree.document.visualizer;
 
+import net.sf.anathema.framework.ui.Area;
 import net.sf.anathema.platform.tree.document.components.ILayer;
 import net.sf.anathema.platform.tree.document.components.IVisualizableNode;
 import net.sf.anathema.platform.tree.document.components.Layer;
-import net.sf.anathema.platform.tree.util.Area;
 import org.junit.Test;
 
 import static org.mockito.Mockito.mock;

@@ -1,6 +1,6 @@
 # Anathema Version History
-Anathema © 2004 - 2012 by The Anathema Developers
-Exalted © 2001-2012 by White Wolf Publishing, Inc.
+Anathema © 2004 - 2013 by The Anathema Developers
+Exalted © 2001-2013 by White Wolf Publishing, Inc.
 
 Website: [anathema.github.com](http://anathema.github.com)
 
