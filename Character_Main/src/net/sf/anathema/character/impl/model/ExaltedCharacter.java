@@ -35,7 +35,7 @@ public class ExaltedCharacter implements ICharacter {
     this.hero = new DefaultHero(template);
     context = new CharacterModelContext(new GenericCharacter(this));
     this.extendedConfiguration = new ExtendedConfiguration(context, hero);
-    this.initializationContext = new ModelInitializationContext(context, generics);
+    this.initializationContext = new ModelInitializationContext(generics);
     addModels(generics);
 
     // Additional Models

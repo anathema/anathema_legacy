@@ -27,8 +27,10 @@ import net.sf.anathema.character.generic.framework.additionaltemplate.model.Spec
 import net.sf.anathema.character.generic.traits.types.AbilityType;
 import net.sf.anathema.character.generic.type.ICharacterType;
 import net.sf.anathema.character.library.trait.specialties.Specialty;
-import net.sf.anathema.hero.display.HeroModelGroup;
+import net.sf.anathema.character.main.model.essencepool.EssencePoolModelFetcher;
 import net.sf.anathema.character.reporting.pdf.rendering.boxes.StatsModifierFactory;
+import net.sf.anathema.hero.display.HeroModelGroup;
+import net.sf.anathema.hero.model.Hero;
 import net.sf.anathema.lib.control.IChangeListener;
 import net.sf.anathema.lib.control.ICollectionListener;
 import org.apache.commons.lang3.ArrayUtils;
@@ -56,7 +58,7 @@ public class EquipmentAdditionalModel extends AbstractAdditionalModelAdapter imp
     }
   };
 
-  public EquipmentAdditionalModel(ICharacterType characterType, IArmourStats naturalArmour, IEquipmentTemplateProvider equipmentTemplateProvider,
+  public EquipmentAdditionalModel(Hero hero, ICharacterType characterType, IArmourStats naturalArmour, IEquipmentTemplateProvider equipmentTemplateProvider,
                                   SpecialtiesCollection context, IEquipmentCharacterDataProvider dataProvider, MaterialRules materialRules,
                                   IEquipmentTemplate... naturalWeapons) {
     this.printModel = new EquipmentPrintModel(this, naturalArmour);
@@ -72,7 +74,10 @@ public class EquipmentAdditionalModel extends AbstractAdditionalModelAdapter imp
       naturalWeaponItems.add(item);
     }
     context.addSpecialtyListChangeListener(new SpecialtyPrintRemover(dataProvider));
+    EssencePoolModelFetcher.fetch(hero).addEssencePoolModifier(this);
   }
+
+
 
   @Override
   public IEquipmentCharacterDataProvider getCharacterDataProvider() {

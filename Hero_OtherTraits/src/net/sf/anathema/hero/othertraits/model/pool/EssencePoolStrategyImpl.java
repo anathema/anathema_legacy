@@ -1,7 +1,5 @@
 package net.sf.anathema.hero.othertraits.model.pool;
 
-import net.sf.anathema.hero.magic.MagicCollection;
-import net.sf.anathema.hero.change.ChangeFlavor;
 import net.sf.anathema.character.generic.additionalrules.IAdditionalEssencePool;
 import net.sf.anathema.character.generic.additionalrules.IAdditionalRules;
 import net.sf.anathema.character.generic.framework.essence.IEssencePoolModifier;
@@ -11,17 +9,19 @@ import net.sf.anathema.character.generic.template.essence.IEssenceTemplate;
 import net.sf.anathema.character.generic.traits.GenericTrait;
 import net.sf.anathema.character.generic.traits.types.OtherTraitType;
 import net.sf.anathema.character.generic.traits.types.VirtueType;
-import net.sf.anathema.hero.model.Hero;
-import net.sf.anathema.hero.model.InitializationContext;
-import net.sf.anathema.hero.change.FlavoredChangeListener;
+import net.sf.anathema.character.main.model.essencepool.EssencePoolModelFetcher;
 import net.sf.anathema.character.main.model.essencepool.OverdrivePool;
 import net.sf.anathema.character.main.model.traits.TraitMap;
+import net.sf.anathema.hero.change.ChangeFlavor;
+import net.sf.anathema.hero.change.FlavoredChangeListener;
+import net.sf.anathema.hero.magic.MagicCollection;
+import net.sf.anathema.hero.model.Hero;
+import net.sf.anathema.hero.model.InitializationContext;
 import net.sf.anathema.lib.control.IChangeListener;
 import net.sf.anathema.lib.util.IdentifiedInteger;
 import org.jmock.example.announcer.Announcer;
 
 import java.util.HashMap;
-import java.util.List;
 import java.util.Map;
 import java.util.Map.Entry;
 
@@ -31,12 +31,14 @@ public class EssencePoolStrategyImpl implements EssencePoolStrategy {
   private final IEssenceTemplate essenceTemplate;
   private OverdrivePool overdrivePool;
   private final IAdditionalRules additionalRules;
+  private Hero hero;
   private final TraitMap traitMap;
   private final MagicCollection magicCollection;
   private final InitializationContext context;
 
   public EssencePoolStrategyImpl(Hero hero, IEssenceTemplate essenceTemplate, InitializationContext context, TraitMap traitMap,
                                  MagicCollection magicCollection, OverdrivePool overdrivePool, IAdditionalRules additionalRules) {
+    this.hero = hero;
     this.traitMap = traitMap;
     this.magicCollection = magicCollection;
     this.overdrivePool = overdrivePool;
@@ -157,9 +159,8 @@ public class EssencePoolStrategyImpl implements EssencePoolStrategy {
 
   @Override
   public int getAttunementExpenditures() {
-    List<IEssencePoolModifier> modifiers = context.getAllRegistered(IEssencePoolModifier.class);
     int expenditure = 0;
-    for (IEssencePoolModifier modifier : modifiers) {
+    for (IEssencePoolModifier modifier : EssencePoolModelFetcher.fetch(hero).getEssencePoolModifiers()) {
       expenditure += modifier.getMotesExpended();
     }
     return expenditure;

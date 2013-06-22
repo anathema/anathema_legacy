@@ -36,7 +36,7 @@ public class EquipmentAdditionalModelFactory implements IAdditionalModelFactory 
     Trait stamina = TraitModelFetcher.fetch(hero).getTrait(AttributeType.Stamina);
     IArmourStats naturalArmour = new DefaultNaturalSoak(stamina, characterType);
     EquipmentCharacterDataProvider dataProvider = new EquipmentCharacterDataProvider(hero, materialRules);
-    return new EquipmentAdditionalModel(characterType, naturalArmour, equipmentTemplateProvider, new SpecialtiesCollectionImpl(hero), dataProvider,
+    return new EquipmentAdditionalModel(hero, characterType, naturalArmour, equipmentTemplateProvider, new SpecialtiesCollectionImpl(hero), dataProvider,
             materialRules, new NaturalWeaponTemplate(), template.getNaturalWeaponTemplate(characterType));
   }
 }

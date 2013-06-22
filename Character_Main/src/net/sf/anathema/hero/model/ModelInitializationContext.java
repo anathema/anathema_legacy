@@ -1,21 +1,16 @@
 package net.sf.anathema.hero.model;
 
 import net.sf.anathema.character.generic.framework.ICharacterGenerics;
-import net.sf.anathema.character.generic.framework.additionaltemplate.model.ICharacterModelContext;
 import net.sf.anathema.character.generic.impl.magic.persistence.ISpellCache;
 import net.sf.anathema.character.generic.impl.template.magic.ICharmProvider;
 import net.sf.anathema.character.generic.template.ITemplateRegistry;
 import net.sf.anathema.character.generic.type.CharacterTypes;
 
-import java.util.List;
-
 public class ModelInitializationContext implements InitializationContext {
 
-  private ICharacterModelContext context;
   private ICharacterGenerics generics;
 
-  public ModelInitializationContext(ICharacterModelContext context, ICharacterGenerics generics) {
-    this.context = context;
+  public ModelInitializationContext(ICharacterGenerics generics) {
     this.generics = generics;
   }
 
@@ -24,11 +19,6 @@ public class ModelInitializationContext implements InitializationContext {
   @Deprecated
   public ISpellCache getSpellCache() {
     return generics.getDataSet(ISpellCache.class);
-  }
-
-  @Override
-  public <T> List<T> getAllRegistered(Class<T> interfaceClass) {
-    return context.getAllRegistered(interfaceClass);
   }
 
   @Override

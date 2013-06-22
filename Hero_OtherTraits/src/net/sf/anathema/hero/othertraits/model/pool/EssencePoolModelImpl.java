@@ -3,6 +3,7 @@ package net.sf.anathema.hero.othertraits.model.pool;
 import com.google.common.base.Preconditions;
 import net.sf.anathema.character.generic.additionalrules.IAdditionalEssencePool;
 import net.sf.anathema.character.generic.additionalrules.IAdditionalRules;
+import net.sf.anathema.character.generic.framework.essence.IEssencePoolModifier;
 import net.sf.anathema.character.generic.template.HeroTemplate;
 import net.sf.anathema.character.generic.template.essence.IEssenceTemplate;
 import net.sf.anathema.character.main.model.essencepool.EssencePoolModel;
@@ -18,12 +19,16 @@ import net.sf.anathema.lib.control.IChangeListener;
 import net.sf.anathema.lib.util.IdentifiedInteger;
 import net.sf.anathema.lib.util.Identifier;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class EssencePoolModelImpl implements EssencePoolModel, HeroModel {
 
   private final AggregatedOverdrivePool overdrivePool = new AggregatedOverdrivePool();
   private EssencePoolStrategy poolStrategy = null;
   private IAdditionalRules additionalRules;
   private IEssenceTemplate essenceTemplate;
+  private List<IEssencePoolModifier> essencePoolModifiers = new ArrayList<>();
 
   @Override
   public Identifier getId() {
@@ -123,5 +128,15 @@ public class EssencePoolModelImpl implements EssencePoolModel, HeroModel {
   @Override
   public void addPoolChangeListener(IChangeListener listener) {
     poolStrategy.addPoolChangeListener(listener);
+  }
+
+  @Override
+  public Iterable<IEssencePoolModifier> getEssencePoolModifiers() {
+    return essencePoolModifiers;
+  }
+
+  @Override
+  public void addEssencePoolModifier(IEssencePoolModifier modifier) {
+    essencePoolModifiers.add(modifier);
   }
 }

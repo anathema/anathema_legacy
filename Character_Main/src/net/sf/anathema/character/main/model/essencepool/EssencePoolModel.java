@@ -1,9 +1,12 @@
 package net.sf.anathema.character.main.model.essencepool;
 
+import net.sf.anathema.character.generic.framework.essence.IEssencePoolModifier;
 import net.sf.anathema.lib.control.IChangeListener;
 import net.sf.anathema.lib.util.IdentifiedInteger;
 import net.sf.anathema.lib.util.Identifier;
 import net.sf.anathema.lib.util.SimpleIdentifier;
+
+import java.util.List;
 
 public interface EssencePoolModel {
 
@@ -32,4 +35,8 @@ public interface EssencePoolModel {
   boolean hasPeripheralPool();
 
   void addPoolChangeListener(IChangeListener listener);
+
+  Iterable<IEssencePoolModifier> getEssencePoolModifiers();
+
+  void addEssencePoolModifier(IEssencePoolModifier modifier);
 }

@@ -6,8 +6,6 @@ import net.sf.anathema.character.generic.template.ITemplateRegistry;
 import net.sf.anathema.character.generic.type.CharacterTypes;
 import net.sf.anathema.hero.model.InitializationContext;
 
-import java.util.List;
-
 public class DummyInitializationContext implements InitializationContext {
 
   public DummyGenericCharacter character;
@@ -40,10 +38,5 @@ public class DummyInitializationContext implements InitializationContext {
   @Override
   public ISpellCache getSpellCache() {
     throw new UnsupportedOperationException();
-  }
-
-  @Override
-  public <T> List<T> getAllRegistered(Class<T> interfaceClass) {
-    return character.getAllRegistered(interfaceClass);
   }
 }

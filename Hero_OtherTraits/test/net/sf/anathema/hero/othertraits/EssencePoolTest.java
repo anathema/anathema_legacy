@@ -37,6 +37,7 @@ public class EssencePoolTest {
     traitMap.addTraits(new DummyTrait(VirtueType.Valor));
     EssencePoolModelImpl essencePoolModel = new EssencePoolModelImpl();
     DummyHero hero = new DummyHero();
+    hero.addModel(new EssencePoolModelImpl());
     hero.template.setEssenceTemplate(essenceTemplate);
     when(statistics.getTemplate()).thenReturn(hero.getTemplate());
     hero.addModel(traitMap);

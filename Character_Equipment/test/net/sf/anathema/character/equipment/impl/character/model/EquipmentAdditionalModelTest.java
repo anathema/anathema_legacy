@@ -9,6 +9,9 @@ import net.sf.anathema.character.generic.equipment.weapon.IEquipmentStats;
 import net.sf.anathema.character.generic.framework.additionaltemplate.model.SpecialtiesCollection;
 import net.sf.anathema.character.main.testing.dummy.DummyEssenceCharacterType;
 import net.sf.anathema.character.main.testing.dummy.DummyGenericTrait;
+import net.sf.anathema.character.main.testing.dummy.DummyHero;
+import net.sf.anathema.hero.othertraits.model.pool.EssencePoolModelImpl;
+import org.junit.Before;
 import org.junit.Test;
 
 import static net.sf.anathema.character.generic.traits.types.AttributeType.Stamina;
@@ -20,8 +23,15 @@ public class EquipmentAdditionalModelTest {
   IEquipmentTemplateProvider templateProvider = mock(IEquipmentTemplateProvider.class);
   SpecialtiesCollection context = mock(SpecialtiesCollection.class);
   IEquipmentCharacterDataProvider dataProvider = mock(IEquipmentCharacterDataProvider.class);
-  EquipmentAdditionalModel model =
-          new EquipmentAdditionalModel(characterType, naturalArmor, templateProvider, context, dataProvider, new DummyMaterialRules());
+  EquipmentAdditionalModel model;
+
+  @Before
+  public void setUp() throws Exception {
+    DummyHero hero = new DummyHero();
+    hero.addModel(new EssencePoolModelImpl());
+    model = new EquipmentAdditionalModel(hero, characterType, naturalArmor, templateProvider, context, dataProvider,
+            new DummyMaterialRules());
+  }
 
   @Test
   public void removesStatsWithoutNpe() throws Exception {
