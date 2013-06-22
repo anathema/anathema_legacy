@@ -23,6 +23,7 @@
         <model id="Charms"/>
         <model id="Combos"/>
         <model id="Spells"/>
+        <model id="Specialties"/>
         <model id="Languages"/>
         <model id="Intimacies"/>
     </models>

@@ -3,19 +3,17 @@ package net.sf.anathema.character.library.trait.specialties;
 import com.google.common.base.Strings;
 import net.sf.anathema.character.generic.framework.ITraitReference;
 import net.sf.anathema.character.generic.traits.TraitType;
-import net.sf.anathema.character.generic.traits.groups.ITraitTypeGroup;
-import net.sf.anathema.character.generic.traits.groups.TraitTypeGroup;
 import net.sf.anathema.character.impl.model.advance.models.SpecialtyExperienceModel;
 import net.sf.anathema.character.library.trait.Trait;
 import net.sf.anathema.character.library.trait.subtrait.ISubTraitContainer;
-import net.sf.anathema.character.main.model.abilities.AbilityModel;
+import net.sf.anathema.character.main.model.abilities.AbilityModelFetcher;
 import net.sf.anathema.character.main.model.experience.ExperienceModelFetcher;
-import net.sf.anathema.character.main.model.traits.TraitModelFetcher;
 import net.sf.anathema.hero.change.ChangeAnnouncer;
 import net.sf.anathema.hero.model.Hero;
 import net.sf.anathema.hero.model.HeroModel;
 import net.sf.anathema.hero.model.InitializationContext;
 import net.sf.anathema.hero.points.PointModelFetcher;
+import net.sf.anathema.hero.points.PointsModel;
 import net.sf.anathema.lib.control.IChangeListener;
 import net.sf.anathema.lib.util.Identifier;
 import org.jmock.example.announcer.Announcer;
@@ -36,28 +34,29 @@ public class SpecialtiesModelImpl implements SpecialtiesModel, HeroModel {
   private Hero hero;
   private String currentName;
   private ITraitReference currentType;
-  private AbilityModel abilities;
-
-  public SpecialtiesModelImpl(AbilityModel abilities) {
-    this.abilities = abilities;
-  }
 
   @Override
   public void initialize(InitializationContext context, Hero hero) {
     this.hero = hero;
-    PointModelFetcher.fetch(hero).addToExperienceOverview(new SpecialtyExperienceModel(hero));
-    ITraitTypeGroup[] groups = abilities.getAbilityTypeGroups();
-    TraitType[] traitTypes =  TraitTypeGroup.getAllTraitTypes(groups);
-    for (Trait trait : TraitModelFetcher.fetch(hero).getTraits(traitTypes)) {
+    for (Trait trait : AbilityModelFetcher.fetch(hero).getAll()) {
       ITraitReference reference = new DefaultTraitReference(trait);
       SpecialtiesContainer container = addSpecialtiesContainer(reference);
       specialtiesByType.put(trait.getType(), container);
     }
+    addExperiencePoints(hero);
+  }
+
+  private void addExperiencePoints(Hero hero) {
+    PointsModel pointsModel = PointModelFetcher.fetch(hero);
+    if (pointsModel == null) {
+      return;
+    }
+    pointsModel.addToExperienceOverview(new SpecialtyExperienceModel(hero));
   }
 
   @Override
   public void initializeListening(ChangeAnnouncer announcer) {
-    for (Trait ability : abilities.getAll()) {
+    for (Trait ability : AbilityModelFetcher.fetch(hero).getAll()) {
       getSpecialtiesContainer(ability.getType()).addSubTraitListener(new SpecialtiesListener(announcer));
     }
   }

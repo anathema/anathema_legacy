@@ -29,6 +29,7 @@
         <model id="Spells"/>
         <model id="Languages"/>
         <model id="Intimacies"/>
+        <model id="Specialties"/>
         <model id="SolarVirtueFlaw"/>
     </models>
     <creation>

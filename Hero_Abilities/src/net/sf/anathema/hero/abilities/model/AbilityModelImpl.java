@@ -12,7 +12,6 @@ import net.sf.anathema.character.impl.model.traits.creation.FavoredIncrementChec
 import net.sf.anathema.character.impl.model.traits.creation.TypedTraitTemplateFactory;
 import net.sf.anathema.character.library.trait.Trait;
 import net.sf.anathema.character.library.trait.favorable.IncrementChecker;
-import net.sf.anathema.character.library.trait.specialties.SpecialtiesModelImpl;
 import net.sf.anathema.character.main.model.abilities.AbilityModel;
 import net.sf.anathema.character.main.model.traits.DefaultTraitMap;
 import net.sf.anathema.character.main.model.traits.TraitMap;
@@ -32,7 +31,6 @@ import java.util.List;
 public class AbilityModelImpl extends DefaultTraitMap implements AbilityModel, HeroModel {
 
   private IIdentifiedCasteTraitTypeGroup[] abilityTraitGroups;
-  private SpecialtiesModelImpl specialtyConfiguration = new SpecialtiesModelImpl(this);
   private Hero hero;
 
   @Override
@@ -50,13 +48,11 @@ public class AbilityModelImpl extends DefaultTraitMap implements AbilityModel, H
     addFavorableTraits(incrementChecker, new AbilityTemplateFactory(template.getTraitTemplateCollection().getTraitTemplateFactory()));
     TraitModel traitModel = TraitModelFetcher.fetch(hero);
     traitModel.addTraits(getAll());
-    specialtyConfiguration.initialize(context, hero);
   }
 
   @Override
   public void initializeListening(ChangeAnnouncer changeAnnouncer) {
     for (Trait ability : getAll()) {
-      specialtyConfiguration.initializeListening(changeAnnouncer);
       ability.getFavorization().addFavorableStateChangedListener(new FavoredChangedListener(changeAnnouncer));
       ability.addCurrentValueListener(new TraitValueChangedListener(changeAnnouncer, ability));
     }
@@ -86,10 +82,5 @@ public class AbilityModelImpl extends DefaultTraitMap implements AbilityModel, H
   @Override
   public IIdentifiedCasteTraitTypeGroup[] getAbilityTypeGroups() {
     return abilityTraitGroups;
-  }
-
-  @Override
-  public SpecialtiesModelImpl getSpecialtyConfiguration() {
-    return specialtyConfiguration;
   }
 }

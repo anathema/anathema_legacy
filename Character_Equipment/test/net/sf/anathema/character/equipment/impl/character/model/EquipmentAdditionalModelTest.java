@@ -6,6 +6,7 @@ import net.sf.anathema.character.equipment.impl.character.model.natural.DefaultN
 import net.sf.anathema.character.equipment.item.model.IEquipmentTemplateProvider;
 import net.sf.anathema.character.generic.equipment.weapon.IArmourStats;
 import net.sf.anathema.character.generic.equipment.weapon.IEquipmentStats;
+import net.sf.anathema.character.library.trait.specialties.SpecialtiesModelImpl;
 import net.sf.anathema.character.main.testing.dummy.DummyEssenceCharacterType;
 import net.sf.anathema.character.main.testing.dummy.DummyGenericTrait;
 import net.sf.anathema.character.main.testing.dummy.DummyHero;
@@ -29,6 +30,7 @@ public class EquipmentAdditionalModelTest {
     DummyHero hero = new DummyHero();
     hero.addModel(new EssencePoolModelImpl());
     hero.addModel(new AbilityModelImpl());
+    hero.addModel(new SpecialtiesModelImpl());
     model = new EquipmentAdditionalModel(hero, characterType, naturalArmor, templateProvider, dataProvider, new DummyMaterialRules());
   }
 

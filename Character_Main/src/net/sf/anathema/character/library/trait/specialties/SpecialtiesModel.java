@@ -3,11 +3,12 @@ package net.sf.anathema.character.library.trait.specialties;
 import net.sf.anathema.character.generic.framework.ITraitReference;
 import net.sf.anathema.character.generic.traits.TraitType;
 import net.sf.anathema.character.library.trait.subtrait.ISubTraitContainer;
+import net.sf.anathema.hero.model.HeroModel;
 import net.sf.anathema.lib.control.IChangeListener;
 import net.sf.anathema.lib.util.Identifier;
 import net.sf.anathema.lib.util.SimpleIdentifier;
 
-public interface SpecialtiesModel {
+public interface SpecialtiesModel extends HeroModel {
 
   Identifier ID = new SimpleIdentifier("Specialties");
 
