@@ -7,7 +7,7 @@ import net.sf.anathema.lib.control.IChangeListener;
 import net.sf.anathema.lib.util.Identifier;
 import net.sf.anathema.lib.util.SimpleIdentifier;
 
-public interface ISpecialtiesConfiguration {
+public interface SpecialtiesModel {
 
   Identifier ID = new SimpleIdentifier("Specialties");
 

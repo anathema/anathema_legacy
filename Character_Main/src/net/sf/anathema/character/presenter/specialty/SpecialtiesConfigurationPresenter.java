@@ -1,10 +1,10 @@
 package net.sf.anathema.character.presenter.specialty;
 
+import net.sf.anathema.character.library.trait.specialties.SpecialtiesModel;
 import net.sf.anathema.hero.change.ChangeFlavor;
 import net.sf.anathema.character.generic.framework.ITraitReference;
 import net.sf.anathema.character.generic.framework.resources.TraitInternationalizer;
 import net.sf.anathema.character.library.trait.presenter.TraitPresenter;
-import net.sf.anathema.character.library.trait.specialties.ISpecialtiesConfiguration;
 import net.sf.anathema.character.library.trait.specialties.ITraitReferencesChangeListener;
 import net.sf.anathema.character.library.trait.specialties.Specialty;
 import net.sf.anathema.character.library.trait.subtrait.ISpecialtyListener;
@@ -55,9 +55,9 @@ public class SpecialtiesConfigurationPresenter implements Presenter {
   private final Resources resources;
   private final ISpecialtiesConfigurationView configurationView;
   private Hero hero;
-  private final ISpecialtiesConfiguration specialtyManagement;
+  private final SpecialtiesModel specialtyManagement;
 
-  public SpecialtiesConfigurationPresenter(Hero hero, ISpecialtiesConfiguration specialtyManagement, ISpecialtiesConfigurationView configurationView,
+  public SpecialtiesConfigurationPresenter(Hero hero, SpecialtiesModel specialtyManagement, ISpecialtiesConfigurationView configurationView,
                                            Resources resources) {
     this.hero = hero;
     this.specialtyManagement = specialtyManagement;

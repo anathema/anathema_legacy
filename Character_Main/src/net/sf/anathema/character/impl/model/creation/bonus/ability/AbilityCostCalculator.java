@@ -8,9 +8,11 @@ import net.sf.anathema.character.impl.model.creation.bonus.additional.IAdditiona
 import net.sf.anathema.character.library.ITraitFavorization;
 import net.sf.anathema.character.library.trait.AbstractFavorableTraitCostCalculator;
 import net.sf.anathema.character.library.trait.Trait;
-import net.sf.anathema.character.library.trait.specialties.ISpecialtiesConfiguration;
+import net.sf.anathema.character.library.trait.specialties.SpecialtiesModel;
+import net.sf.anathema.character.library.trait.specialties.SpecialtiesModelFetcher;
 import net.sf.anathema.character.library.trait.specialties.Specialty;
 import net.sf.anathema.character.main.model.abilities.AbilityModel;
+import net.sf.anathema.hero.model.Hero;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -18,16 +20,16 @@ import java.util.List;
 public class AbilityCostCalculator extends AbstractFavorableTraitCostCalculator implements IAbilityCostCalculator {
 
   private final IAdditionalSpecialtyBonusPointManagement additionalPools;
-  private final AbilityModel abilityModel;
+  private Hero hero;
   private final AbilityPointCosts costs;
   private int specialtyBonusPointCosts;
   private int specialtyDotSum;
   private SpecialtyCalculator specialtyCalculator;
 
-  public AbilityCostCalculator(AbilityModel abilityModel, IFavorableTraitCreationPoints points, int specialtyPoints,
+  public AbilityCostCalculator(Hero hero, AbilityModel abilityModel, IFavorableTraitCreationPoints points, int specialtyPoints,
                                AbilityPointCosts costs, IAdditionalBonusPointManagement additionalPools) {
     super(additionalPools, points, costs.getMaximumFreeAbilityRank(), abilityModel.getAll());
-    this.abilityModel = abilityModel;
+    this.hero = hero;
     this.costs = costs;
     this.additionalPools = additionalPools;
     this.specialtyCalculator = new SpecialtyCalculator(abilityModel, specialtyPoints);
@@ -56,7 +58,7 @@ public class AbilityCostCalculator extends AbstractFavorableTraitCostCalculator 
   private IGenericSpecialty[] createGenericSpecialties() {
     List<IGenericSpecialty> specialties = new ArrayList<>();
     for (Trait ability : getTraits()) {
-      ISpecialtiesConfiguration specialtyConfiguration = abilityModel.getSpecialtyConfiguration();
+      SpecialtiesModel specialtyConfiguration = SpecialtiesModelFetcher.fetch(hero);
       for (Specialty specialty : specialtyConfiguration.getSpecialtiesContainer(ability.getType()).getSubTraits()) {
         for (int index = 0; index < specialty.getCalculationValue(); index++) {
           specialties.add(new GenericSpecialty(ability));

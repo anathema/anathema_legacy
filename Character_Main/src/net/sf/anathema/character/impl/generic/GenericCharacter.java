@@ -21,11 +21,11 @@ import net.sf.anathema.character.generic.template.ITraitLimitation;
 import net.sf.anathema.character.generic.traits.TraitType;
 import net.sf.anathema.character.generic.traits.groups.IIdentifiedTraitTypeGroup;
 import net.sf.anathema.character.impl.model.advance.ExperiencePointManagement;
-import net.sf.anathema.character.library.trait.specialties.ISpecialtiesConfiguration;
+import net.sf.anathema.character.library.trait.specialties.SpecialtiesModel;
+import net.sf.anathema.character.library.trait.specialties.SpecialtiesModelFetcher;
 import net.sf.anathema.character.library.trait.specialties.Specialty;
-import net.sf.anathema.character.library.trait.specialties.SpecialtyModelFetcher;
 import net.sf.anathema.character.main.model.abilities.AbilityModelFetcher;
-import net.sf.anathema.character.main.model.attributes.AttributeModelFetcher;
+import net.sf.anathema.character.main.model.attributes.AttributesModelFetcher;
 import net.sf.anathema.character.main.model.charms.CharmsModel;
 import net.sf.anathema.character.main.model.charms.CharmsModelFetcher;
 import net.sf.anathema.character.main.model.combos.CombosModelFetcher;
@@ -129,7 +129,7 @@ public class GenericCharacter implements IGenericCharacter {
 
   @Override
   public Specialty[] getSpecialties(TraitType traitType) {
-    ISpecialtiesConfiguration specialtyConfiguration = SpecialtyModelFetcher.fetch(character);
+    SpecialtiesModel specialtyConfiguration = SpecialtiesModelFetcher.fetch(character);
     return specialtyConfiguration.getSpecialtiesContainer(traitType).getSubTraits();
   }
 
@@ -272,7 +272,7 @@ public class GenericCharacter implements IGenericCharacter {
 
   @Override
   public IIdentifiedTraitTypeGroup[] getAttributeTypeGroups() {
-    return AttributeModelFetcher.fetch(character).getAttributeTypeGroups();
+    return AttributesModelFetcher.fetch(character).getAttributeTypeGroups();
   }
 
   @Override

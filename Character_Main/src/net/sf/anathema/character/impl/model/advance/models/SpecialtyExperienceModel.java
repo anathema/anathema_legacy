@@ -2,8 +2,8 @@ package net.sf.anathema.character.impl.model.advance.models;
 
 import net.sf.anathema.character.generic.template.experience.IExperiencePointCosts;
 import net.sf.anathema.character.library.trait.Trait;
-import net.sf.anathema.character.library.trait.specialties.ISpecialtiesConfiguration;
-import net.sf.anathema.character.library.trait.specialties.SpecialtyModelFetcher;
+import net.sf.anathema.character.library.trait.specialties.SpecialtiesModel;
+import net.sf.anathema.character.library.trait.specialties.SpecialtiesModelFetcher;
 import net.sf.anathema.character.library.trait.subtrait.ISubTraitContainer;
 import net.sf.anathema.character.main.model.abilities.AbilityModelFetcher;
 import net.sf.anathema.hero.model.Hero;
@@ -36,7 +36,7 @@ public class SpecialtyExperienceModel extends AbstractIntegerValueModel {
   }
 
   private ISubTraitContainer getSpecialtyContainer(Trait ability) {
-    ISpecialtiesConfiguration specialtyConfiguration = SpecialtyModelFetcher.fetch(hero);
+    SpecialtiesModel specialtyConfiguration = SpecialtiesModelFetcher.fetch(hero);
     return specialtyConfiguration.getSpecialtiesContainer(ability.getType());
   }
 

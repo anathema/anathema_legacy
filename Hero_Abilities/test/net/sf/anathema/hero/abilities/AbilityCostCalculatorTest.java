@@ -97,7 +97,7 @@ public class AbilityCostCalculatorTest extends AbstractBonusPointTestCase {
   }
 
   private AbilityCostCalculator startCalculation(IFavorableTraitCreationPoints creationPoints) {
-    AbilityCostCalculator calculator = new AbilityCostCalculator(abilityModel, creationPoints, 0, costs, additionalBonusPointManagment);
+    AbilityCostCalculator calculator = new AbilityCostCalculator(dummyHero, abilityModel, creationPoints, 0, costs, additionalBonusPointManagment);
     calculator.calculateCosts();
     return calculator;
   }

@@ -31,7 +31,7 @@ import net.sf.anathema.character.library.trait.Trait;
 import net.sf.anathema.character.library.trait.TraitCollectionUtilities;
 import net.sf.anathema.character.library.trait.experience.TraitRatingCostCalculator;
 import net.sf.anathema.character.main.model.abilities.AbilityModelFetcher;
-import net.sf.anathema.character.main.model.attributes.AttributeModelFetcher;
+import net.sf.anathema.character.main.model.attributes.AttributesModelFetcher;
 import net.sf.anathema.character.main.model.traits.TraitMap;
 import net.sf.anathema.character.main.model.traits.TraitModelFetcher;
 import net.sf.anathema.character.model.ICharacter;
@@ -73,9 +73,9 @@ public class BonusPointManagement implements IBonusPointManagement {
     HeroTemplate characterTemplate = character.getTemplate();
     GenericCharacter characterAbstraction = GenericCharacterUtilities.createGenericCharacter(character);
     TraitMap traitMap = TraitModelFetcher.fetch(character);
-    this.abilityCalculator = new AbilityCostCalculator(AbilityModelFetcher.fetch(character), creationPoints.getAbilityCreationPoints(),
+    this.abilityCalculator = new AbilityCostCalculator(character, AbilityModelFetcher.fetch(character), creationPoints.getAbilityCreationPoints(),
             creationPoints.getSpecialtyCreationPoints(), cost, bonusAdditionalPools);
-    this.attributeCalculator = new AttributeCostCalculator(AttributeModelFetcher.fetch(character), creationPoints.getAttributeCreationPoints(), cost,
+    this.attributeCalculator = new AttributeCostCalculator(AttributesModelFetcher.fetch(character), creationPoints.getAttributeCreationPoints(), cost,
             bonusAdditionalPools);
     Trait[] virtues = TraitCollectionUtilities.getVirtues(traitMap);
     this.virtueCalculator = new VirtueCostCalculator(virtues, creationPoints.getVirtueCreationPoints(), cost);

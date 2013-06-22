@@ -27,7 +27,7 @@ import java.util.List;
 import java.util.Map;
 import java.util.Set;
 
-public class SpecialtiesConfiguration implements ISpecialtiesConfiguration, HeroModel {
+public class SpecialtiesModelImpl implements SpecialtiesModel, HeroModel {
 
   private final Map<TraitType, ISubTraitContainer> specialtiesByType = new HashMap<>();
   private final Map<ITraitReference, ISubTraitContainer> specialtiesByTrait = new HashMap<>();
@@ -38,7 +38,7 @@ public class SpecialtiesConfiguration implements ISpecialtiesConfiguration, Hero
   private ITraitReference currentType;
   private AbilityModel abilities;
 
-  public SpecialtiesConfiguration(AbilityModel abilities) {
+  public SpecialtiesModelImpl(AbilityModel abilities) {
     this.abilities = abilities;
   }
 
@@ -64,7 +64,7 @@ public class SpecialtiesConfiguration implements ISpecialtiesConfiguration, Hero
 
   @Override
   public Identifier getId() {
-    return ISpecialtiesConfiguration.ID;
+    return SpecialtiesModel.ID;
   }
 
   private SpecialtiesContainer addSpecialtiesContainer(ITraitReference reference) {
