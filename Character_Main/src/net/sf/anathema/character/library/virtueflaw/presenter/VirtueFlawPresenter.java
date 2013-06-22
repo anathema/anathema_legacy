@@ -1,11 +1,12 @@
 package net.sf.anathema.character.library.virtueflaw.presenter;
 
+import net.sf.anathema.character.library.virtueflaw.model.VirtueFlaw;
+import net.sf.anathema.character.library.virtueflaw.model.VirtueFlawModel;
 import net.sf.anathema.hero.change.ChangeFlavor;
 import net.sf.anathema.character.generic.traits.TraitType;
 import net.sf.anathema.character.generic.traits.types.VirtueType;
 import net.sf.anathema.character.library.trait.Trait;
 import net.sf.anathema.character.library.trait.presenter.TraitPresenter;
-import net.sf.anathema.character.library.virtueflaw.model.IVirtueFlaw;
 import net.sf.anathema.hero.model.Hero;
 import net.sf.anathema.hero.change.FlavoredChangeListener;
 import net.sf.anathema.character.main.model.traits.TraitChangeFlavor;
@@ -26,9 +27,9 @@ public class VirtueFlawPresenter implements Presenter {
   private Hero hero;
   private final Resources resources;
   private final IVirtueFlawView view;
-  private final IVirtueFlawModel model;
+  private final VirtueFlawModel model;
 
-  public VirtueFlawPresenter(Hero hero, Resources resources, IVirtueFlawView virtueFlawView, IVirtueFlawModel model) {
+  public VirtueFlawPresenter(Hero hero, Resources resources, IVirtueFlawView virtueFlawView, VirtueFlawModel model) {
     this.hero = hero;
     this.resources = resources;
     this.view = virtueFlawView;
@@ -48,23 +49,23 @@ public class VirtueFlawPresenter implements Presenter {
   }
 
   protected void initBasicPresentation() {
-    IVirtueFlaw virtueFlaw = model.getVirtueFlaw();
+    VirtueFlaw virtueFlaw = model.getVirtueFlaw();
     initRootPresentation(virtueFlaw);
     initNamePresentation(virtueFlaw);
   }
 
-  protected void initLimitPresentation(IVirtueFlaw virtueFlaw) {
+  protected void initLimitPresentation(VirtueFlaw virtueFlaw) {
     Trait trait = virtueFlaw.getLimitTrait();
     IIntValueView traitView =
             view.addLimitValueView(getResources().getString(trait.getType().getId()), trait.getCurrentValue(), trait.getMaximalValue());
     new TraitPresenter(trait, traitView).initPresentation();
   }
 
-  protected void initRootPresentation(IVirtueFlaw virtueFlaw) {
+  protected void initRootPresentation(VirtueFlaw virtueFlaw) {
     initRootPresentation(virtueFlaw, "VirtueFlaw.Root.Name");
   }
 
-  protected void initRootPresentation(final IVirtueFlaw virtueFlaw, String nameReference) {
+  protected void initRootPresentation(final VirtueFlaw virtueFlaw, String nameReference) {
     final IObjectSelectionView<TraitType> rootView = view.addVirtueFlawRootSelectionView(resources.getString(nameReference), new VirtueTypeConfiguration());
     virtueFlaw.addRootChangeListener(new IChangeListener() {
       @Override
@@ -95,7 +96,7 @@ public class VirtueFlawPresenter implements Presenter {
     rootView.setSelectedObject(rootCopy);
   }
 
-  protected ITextView initNamePresentation(IVirtueFlaw virtueFlaw) {
+  protected ITextView initNamePresentation(VirtueFlaw virtueFlaw) {
     ITextView titleView = view.addTextView(resources.getString("VirtueFlaw.Name.Name"), 30);
     new TextualPresentation().initView(titleView, virtueFlaw.getName());
     return titleView;
@@ -111,7 +112,7 @@ public class VirtueFlawPresenter implements Presenter {
     view.setEnabled(model.isVirtueFlawChangable());
   }
 
-  protected final IVirtueFlawModel getModel() {
+  protected final VirtueFlawModel getModel() {
     return model;
   }
 

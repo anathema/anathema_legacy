@@ -11,10 +11,7 @@
             <revisedIntimacies value="true"/>
             <willpowerVirtueBased value="false"/>
         </additionalRules>
-        <additionalTemplates>
-            <template id="SolarVirtueFlaw"/>
-        </additionalTemplates>
-        <healthTemplate>
+         <healthTemplate>
             <toughnessControllingTrait type="Resistance"/>
         </healthTemplate>
     </general>
@@ -32,6 +29,7 @@
         <model id="Spells"/>
         <model id="Languages"/>
         <model id="Intimacies"/>
+        <model id="SolarVirtueFlaw"/>
     </models>
     <creation>
         <bonusPointCosts uses="SolaroidDefaultBonusPointCost2nd.template"/>

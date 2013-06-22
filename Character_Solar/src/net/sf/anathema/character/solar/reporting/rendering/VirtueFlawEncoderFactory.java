@@ -5,7 +5,6 @@ import net.sf.anathema.character.reporting.pdf.rendering.EncoderIds;
 import net.sf.anathema.character.reporting.pdf.rendering.boxes.AbstractEncoderFactory;
 import net.sf.anathema.character.reporting.pdf.rendering.boxes.RegisteredEncoderFactory;
 import net.sf.anathema.character.reporting.pdf.rendering.general.box.ContentEncoder;
-import net.sf.anathema.character.solar.virtueflaw.SolarVirtueFlawTemplate;
 import net.sf.anathema.lib.resources.Resources;
 
 @RegisteredEncoderFactory
@@ -22,6 +21,6 @@ public class VirtueFlawEncoderFactory extends AbstractEncoderFactory {
 
   @Override
   public boolean supports(BasicContent content) {
-    return content.getAdditionalModel(SolarVirtueFlawTemplate.ID) != null;
+    return content.isEssenceUser();
   }
 }

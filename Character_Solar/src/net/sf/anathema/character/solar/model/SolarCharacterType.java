@@ -1,4 +1,4 @@
-package net.sf.anathema.character.solar;
+package net.sf.anathema.character.solar.model;
 
 import net.sf.anathema.character.generic.template.magic.AbilityFavoringType;
 import net.sf.anathema.character.generic.template.magic.FavoringTraitType;

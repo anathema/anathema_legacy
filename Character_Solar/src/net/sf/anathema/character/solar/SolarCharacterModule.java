@@ -1,18 +1,13 @@
 package net.sf.anathema.character.solar;
 
 import net.sf.anathema.character.generic.framework.ICharacterGenerics;
-import net.sf.anathema.character.generic.framework.additionaltemplate.model.IAdditionalModelFactory;
-import net.sf.anathema.character.generic.framework.additionaltemplate.persistence.IAdditionalPersisterFactory;
 import net.sf.anathema.character.generic.framework.module.CharacterModule;
 import net.sf.anathema.character.generic.framework.module.CharacterTypeModule;
 import net.sf.anathema.character.generic.impl.caste.CasteCollection;
 import net.sf.anathema.character.generic.template.TemplateType;
 import net.sf.anathema.character.generic.type.ICharacterType;
-import net.sf.anathema.character.solar.caste.SolarCaste;
-import net.sf.anathema.character.solar.virtueflaw.SolarVirtueFlawModelFactory;
-import net.sf.anathema.character.solar.virtueflaw.SolarVirtueFlawPersisterFactory;
-import net.sf.anathema.character.solar.virtueflaw.SolarVirtueFlawTemplate;
-import net.sf.anathema.lib.registry.IRegistry;
+import net.sf.anathema.character.solar.model.SolarCaste;
+import net.sf.anathema.character.solar.model.SolarCharacterType;
 
 @CharacterModule
 public class SolarCharacterModule extends CharacterTypeModule {
@@ -24,15 +19,6 @@ public class SolarCharacterModule extends CharacterTypeModule {
   @Override
   public void registerCommonData(ICharacterGenerics characterGenerics) {
     characterGenerics.getCasteCollectionRegistry().register(type, new CasteCollection(SolarCaste.values()));
-  }
-
-  @Override
-  public void addAdditionalTemplateData(ICharacterGenerics characterGenerics) {
-    IRegistry<String, IAdditionalModelFactory> additionalModelFactoryRegistry = characterGenerics.getAdditionalModelFactoryRegistry();
-    String templateId = SolarVirtueFlawTemplate.ID;
-    additionalModelFactoryRegistry.register(templateId, new SolarVirtueFlawModelFactory());
-    IRegistry<String, IAdditionalPersisterFactory> persisterFactory = characterGenerics.getAdditonalPersisterFactoryRegistry();
-    persisterFactory.register(templateId, new SolarVirtueFlawPersisterFactory());
   }
 
   @Override

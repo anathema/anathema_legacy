@@ -1,4 +1,4 @@
-package net.sf.anathema.character.solar;
+package net.sf.anathema.character.solar.model;
 
 import net.sf.anathema.character.equipment.MagicalMaterial;
 import net.sf.anathema.character.equipment.MaterialRulesDefinition;

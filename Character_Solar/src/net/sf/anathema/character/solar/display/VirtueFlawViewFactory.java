@@ -1,4 +1,4 @@
-package net.sf.anathema.character.solar.virtueflaw;
+package net.sf.anathema.character.solar.display;
 
 import net.sf.anathema.character.generic.type.ICharacterType;
 import net.sf.anathema.character.impl.view.SubViewFactory;
