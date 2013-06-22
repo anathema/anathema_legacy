@@ -10,6 +10,7 @@ import net.sf.anathema.character.generic.traits.TraitType;
 import net.sf.anathema.character.generic.traits.types.AbilityType;
 import net.sf.anathema.character.generic.type.ICharacterType;
 import net.sf.anathema.character.library.trait.specialties.Specialty;
+import net.sf.anathema.hero.model.Hero;
 import net.sf.anathema.lib.control.IChangeListener;
 
 import static net.sf.anathema.character.generic.equipment.ArtifactAttuneType.FullyAttuned;
@@ -18,10 +19,12 @@ import static net.sf.anathema.character.generic.equipment.ArtifactAttuneType.Unh
 
 public class EquipmentCharacterDataProvider implements IEquipmentCharacterDataProvider {
 
+  private Hero hero;
   private final ICharacterModelContext context;
   private final MaterialRules materialRules;
 
-  public EquipmentCharacterDataProvider(ICharacterModelContext context, MaterialRules materialRules) {
+  public EquipmentCharacterDataProvider(Hero hero, ICharacterModelContext context, MaterialRules materialRules) {
+    this.hero = hero;
     this.context = context;
     this.materialRules = materialRules;
   }
@@ -34,8 +37,11 @@ public class EquipmentCharacterDataProvider implements IEquipmentCharacterDataPr
   @Override
   public IEquipmentStatsOption getCharacterSpecialtyOption(String name, String type) {
     TraitType trait = AbilityType.valueOf(type);
-    for (Specialty specialty : context.getSpecialtyContext().getSpecialties(trait))
-      if (specialty.getName().equals(name)) return new EquipmentSpecialtyOption(specialty, trait);
+    for (Specialty specialty : context.getSpecialtyContext().getSpecialties(trait)) {
+      if (specialty.getName().equals(name)) {
+        return new EquipmentSpecialtyOption(specialty, trait);
+      }
+    }
     return null;
   }
 
@@ -70,6 +76,6 @@ public class EquipmentCharacterDataProvider implements IEquipmentCharacterDataPr
   }
 
   private ICharacterType getCharacterType() {
-    return context.getBasicCharacterContext().getCharacterType();
+    return hero.getTemplate().getTemplateType().getCharacterType();
   }
 }
