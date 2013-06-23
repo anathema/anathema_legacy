@@ -1,15 +1,15 @@
 package net.sf.anathema.framework.presenter;
 
-import net.sf.anathema.framework.repository.IItem;
+import net.sf.anathema.framework.repository.Item;
 import net.sf.anathema.framework.view.ItemView;
 
 public interface IModelViewMapping {
 
-  IItem getModelByView(ItemView view);
+  Item getModelByView(ItemView view);
 
-  void addModelAndView(IItem model, ItemView view);
+  void addModelAndView(Item model, ItemView view);
 
-  ItemView getViewByModel(IItem model);
+  ItemView getViewByModel(Item model);
 
-  void removeModelAndView(IItem item, ItemView view);
+  void removeModelAndView(Item item, ItemView view);
 }

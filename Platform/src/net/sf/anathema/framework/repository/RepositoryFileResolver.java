@@ -41,7 +41,7 @@ public class RepositoryFileResolver implements IRepositoryFileResolver {
     return new File(repositoryFile, configuration.getFolderName());
   }
 
-  public File getItemFile(IItem item) {
+  public File getItemFile(Item item) {
     IItemType type = item.getItemType();
     String id = item.getId();
     return getItemFile(type.getRepositoryConfiguration(), id);
@@ -59,7 +59,7 @@ public class RepositoryFileResolver implements IRepositoryFileResolver {
     return itemFolder;
   }
 
-  public File getExistingItemFolder(IItem item) {
+  public File getExistingItemFolder(Item item) {
     return getExistingItemFolder(item.getItemType(), item.getId());
   }
 

@@ -1,8 +1,8 @@
 package net.sf.anathema.framework.presenter;
 
 import com.google.common.base.Preconditions;
-import net.sf.anathema.framework.repository.IItem;
 import net.sf.anathema.framework.repository.IItemListener;
+import net.sf.anathema.framework.repository.Item;
 import net.sf.anathema.framework.view.ItemView;
 
 import java.util.HashMap;
@@ -10,17 +10,17 @@ import java.util.Map;
 
 public class ModelViewMapping implements IModelViewMapping {
 
-  private final Map<ItemView, IItem> modelByView = new HashMap<>();
-  private final Map<IItem, ItemView> viewByModel = new HashMap<>();
-  private final Map<IItem, IItemListener> listenersByModel = new HashMap<>();
+  private final Map<ItemView, Item> modelByView = new HashMap<>();
+  private final Map<Item, ItemView> viewByModel = new HashMap<>();
+  private final Map<Item, IItemListener> listenersByModel = new HashMap<>();
 
   @Override
-  public IItem getModelByView(ItemView view) {
+  public Item getModelByView(ItemView view) {
     return modelByView.get(view);
   }
 
   @Override
-  public synchronized void addModelAndView(IItem model, final ItemView view) {
+  public synchronized void addModelAndView(Item model, final ItemView view) {
     Preconditions.checkArgument(!viewByModel.containsKey(model), "Model already managed.");
     modelByView.put(view, model);
     IItemListener listener = new IItemListener() {
@@ -35,12 +35,12 @@ public class ModelViewMapping implements IModelViewMapping {
   }
 
   @Override
-  public ItemView getViewByModel(IItem model) {
+  public ItemView getViewByModel(Item model) {
     return viewByModel.get(model);
   }
 
   @Override
-  public void removeModelAndView(IItem model, ItemView view) {
+  public void removeModelAndView(Item model, ItemView view) {
     modelByView.remove(view);
     IItemListener listener = listenersByModel.get(model);
     model.removeItemListener(listener);

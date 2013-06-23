@@ -1,6 +1,6 @@
 package net.sf.anathema.framework.reporting;
 
-import net.sf.anathema.framework.repository.IItem;
+import net.sf.anathema.framework.repository.Item;
 import net.sf.anathema.lib.lang.StringUtilities;
 import net.sf.anathema.lib.resources.Resources;
 
@@ -10,10 +10,10 @@ import java.nio.file.Path;
 
 public class QuickFileChooser implements FileChooser {
 
-  private IItem item;
+  private Item item;
   private Resources resources;
 
-  public QuickFileChooser(IItem item, Resources resources) {
+  public QuickFileChooser(Item item, Resources resources) {
     this.item = item;
     this.resources = resources;
   }
@@ -33,7 +33,7 @@ public class QuickFileChooser implements FileChooser {
       }
     }
 
-  private String getBaseName(IItem item) {
+  private String getBaseName(Item item) {
     return StringUtilities.getFileNameRepresentation(item.getDisplayName());
   }
 }

@@ -1,18 +1,18 @@
 package net.sf.anathema;
 
 import net.sf.anathema.character.generic.template.HeroTemplate;
+import net.sf.anathema.character.main.model.charms.CharmsModel;
 import net.sf.anathema.character.main.model.charms.CharmsModelFetcher;
 import net.sf.anathema.character.main.model.concept.HeroConcept;
 import net.sf.anathema.character.main.model.concept.HeroConceptFetcher;
 import net.sf.anathema.character.main.model.traits.TraitMap;
 import net.sf.anathema.character.main.model.traits.TraitModelFetcher;
-import net.sf.anathema.character.model.ICharacter;
-import net.sf.anathema.character.main.model.charms.CharmsModel;
+import net.sf.anathema.character.model.Character;
 
 public class CharacterHolder {
-  private ICharacter character;
+  private Character character;
 
-  public void setCharacter(ICharacter character) {
+  public void setCharacter(Character character) {
     this.character = character;
   }
 
@@ -32,7 +32,7 @@ public class CharacterHolder {
     return TraitModelFetcher.fetch(character);
   }
 
-  public ICharacter getCharacter() {
+  public Character getCharacter() {
     return character;
   }
 }

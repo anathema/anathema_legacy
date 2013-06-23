@@ -3,7 +3,7 @@ package net.sf.anathema.framework.itemdata.model;
 import net.sf.anathema.framework.presenter.itemmanagement.PrintNameAdjuster;
 import net.sf.anathema.lib.control.IChangeListener;
 
-public abstract class NonPersistableItemData implements IItemData {
+public abstract class NonPersistableItemData implements ItemData {
 
   @Override
   public void addDirtyListener(IChangeListener changeListener) {

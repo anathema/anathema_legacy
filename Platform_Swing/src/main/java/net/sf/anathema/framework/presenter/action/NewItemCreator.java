@@ -2,7 +2,7 @@ package net.sf.anathema.framework.presenter.action;
 
 import net.sf.anathema.framework.IApplicationModel;
 import net.sf.anathema.framework.item.IItemType;
-import net.sf.anathema.framework.repository.IItem;
+import net.sf.anathema.framework.repository.Item;
 import net.sf.anathema.lib.exception.PersistenceException;
 import net.sf.anathema.lib.workflow.wizard.selection.IDialogModelTemplate;
 
@@ -15,8 +15,8 @@ public class NewItemCreator implements IItemCreator {
   }
 
   @Override
-  public IItem createItem(IItemType type, IDialogModelTemplate template) throws PersistenceException {
-    IItem item = anathemaModel.getPersisterRegistry().get(type).createNew(template);
+  public Item createItem(IItemType type, IDialogModelTemplate template) throws PersistenceException {
+    Item item = anathemaModel.getPersisterRegistry().get(type).createNew(template);
     item.setClean();
     return item;
   }

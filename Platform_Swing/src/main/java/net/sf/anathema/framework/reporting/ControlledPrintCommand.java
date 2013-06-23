@@ -3,8 +3,8 @@ package net.sf.anathema.framework.reporting;
 import net.sf.anathema.framework.IApplicationModel;
 import net.sf.anathema.framework.ObjectSelectionDialogPage;
 import net.sf.anathema.framework.module.DefaultObjectSelectionProperties;
-import net.sf.anathema.framework.repository.IItem;
 import net.sf.anathema.framework.repository.IObjectSelectionProperties;
+import net.sf.anathema.framework.repository.Item;
 import net.sf.anathema.interaction.Command;
 import net.sf.anathema.lib.gui.dialog.core.DialogResult;
 import net.sf.anathema.lib.gui.dialog.userdialog.UserDialog;
@@ -19,9 +19,9 @@ public class ControlledPrintCommand implements Command {
   private Resources resources;
   private IApplicationModel model;
   private JComponent parent;
-  private IItem item;
+  private Item item;
 
-  public ControlledPrintCommand(Resources resources, IApplicationModel model, IItem item) {
+  public ControlledPrintCommand(Resources resources, IApplicationModel model, Item item) {
     this.resources = resources;
     this.model = model;
     this.parent = (JComponent) ((JFrame) JOptionPane.getRootFrame()).getContentPane();
@@ -38,7 +38,7 @@ public class ControlledPrintCommand implements Command {
     new PrintCommand(resources, parent, item, report, fileChooser).execute();
   }
 
-  private Report selectReport(IItem item) {
+  private Report selectReport(Item item) {
     IReportRegistry reportRegistry = model.getReportRegistry();
     Report[] reports = reportRegistry.getReports(item);
     if (reports.length == 1) {

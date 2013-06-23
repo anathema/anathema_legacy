@@ -2,7 +2,7 @@ package net.sf.anathema.framework.presenter.action;
 
 import net.sf.anathema.framework.item.IItemType;
 import net.sf.anathema.framework.presenter.ItemReceiver;
-import net.sf.anathema.framework.repository.IItem;
+import net.sf.anathema.framework.repository.Item;
 import net.sf.anathema.framework.swing.MessageUtilities;
 import net.sf.anathema.lib.exception.PersistenceException;
 import net.sf.anathema.lib.message.Message;
@@ -23,7 +23,7 @@ public class ItemCreationOperator implements IItemOperator {
   @Override
   public void operate(Component parentComponent, IItemType type,
                       IDialogModelTemplate template) throws PersistenceException {
-    final IItem item = creator.createItem(type, template);
+    final Item item = creator.createItem(type, template);
     try {
       receiver.addItem(item);
     } catch (Throwable e) {

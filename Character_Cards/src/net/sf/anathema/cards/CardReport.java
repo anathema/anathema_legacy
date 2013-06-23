@@ -12,6 +12,7 @@ import net.sf.anathema.character.main.model.experience.ExperienceModelFetcher;
 import net.sf.anathema.framework.reporting.ReportException;
 import net.sf.anathema.framework.reporting.pdf.AbstractPdfReport;
 import net.sf.anathema.framework.repository.IItem;
+import net.sf.anathema.framework.repository.Item;
 import net.sf.anathema.hero.model.Hero;
 import net.sf.anathema.lib.resources.Resources;
 
@@ -37,7 +38,7 @@ public class CardReport extends AbstractPdfReport {
   }
 
   @Override
-  public void performPrint(IItem item, Document document, PdfWriter writer) throws ReportException {
+  public void performPrint(Item item, Document document, PdfWriter writer) throws ReportException {
     try {
       PdfContentByte directContent = writer.getDirectContent();
       document.setMargins(20, 20, document.topMargin(), document.bottomMargin());
@@ -77,7 +78,7 @@ public class CardReport extends AbstractPdfReport {
   }
 
   @Override
-  public boolean supports(IItem item) {
+  public boolean supports(Item item) {
     if (item == null || !(item.getItemData() instanceof Hero)) {
       return false;
     }

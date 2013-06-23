@@ -3,7 +3,7 @@ package net.sf.anathema.character.perspective.model;
 import net.sf.anathema.framework.IApplicationModel;
 import net.sf.anathema.framework.item.IItemType;
 import net.sf.anathema.framework.persistence.IRepositoryItemPersister;
-import net.sf.anathema.framework.repository.IItem;
+import net.sf.anathema.framework.repository.Item;
 import net.sf.anathema.framework.repository.Repository;
 import net.sf.anathema.framework.repository.access.IRepositoryReadAccess;
 import net.sf.anathema.framework.repository.access.IRepositoryWriteAccess;
@@ -30,7 +30,7 @@ public class CharacterPersistenceModel {
     return access.collectAllPrintNameFiles(characterItemType);
   }
 
-  public IItem loadItem(CharacterIdentifier identifier) {
+  public Item loadItem(CharacterIdentifier identifier) {
     IRepositoryReadAccess readAccess = createReadAccess(identifier.getId());
     IRepositoryItemPersister persister = findPersister();
     return persister.load(readAccess);
@@ -50,7 +50,7 @@ public class CharacterPersistenceModel {
     return retrieveCharacterItemType(model);
   }
 
-  public void save(IItem item) throws IOException {
+  public void save(Item item) throws IOException {
     IRepositoryItemPersister persister = findPersister();
     Repository repository = model.getRepository();
     IRepositoryWriteAccess writeAccess = repository.createWriteAccess(item);

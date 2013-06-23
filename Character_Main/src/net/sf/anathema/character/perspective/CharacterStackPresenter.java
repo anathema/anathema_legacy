@@ -2,7 +2,7 @@ package net.sf.anathema.character.perspective;
 
 import net.sf.anathema.character.perspective.model.CharacterIdentifier;
 import net.sf.anathema.character.perspective.model.ItemSystemModel;
-import net.sf.anathema.framework.repository.IItem;
+import net.sf.anathema.framework.repository.Item;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -27,7 +27,7 @@ public class CharacterStackPresenter {
   }
 
   public void addViewForCharacter(CharacterIdentifier identifier) {
-    IItem item = model.loadItem(identifier);
+    Item item = model.loadItem(identifier);
     bridge.addViewForCharacter(identifier, item);
   }
 }

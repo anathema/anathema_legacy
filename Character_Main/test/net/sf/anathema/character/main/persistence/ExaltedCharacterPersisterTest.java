@@ -12,10 +12,10 @@ import net.sf.anathema.character.impl.persistence.DummyObjectFactory;
 import net.sf.anathema.character.impl.persistence.ExaltedCharacterPersister;
 import net.sf.anathema.character.main.testing.dummy.DummyExaltCharacterType;
 import net.sf.anathema.character.main.testing.dummy.template.SimpleDummyCharacterTemplate;
-import net.sf.anathema.character.model.ICharacter;
+import net.sf.anathema.character.model.Character;
 import net.sf.anathema.framework.item.IItemType;
 import net.sf.anathema.framework.messaging.IMessaging;
-import net.sf.anathema.framework.repository.IItem;
+import net.sf.anathema.framework.repository.Item;
 import net.sf.anathema.lib.exception.PersistenceException;
 import org.junit.Before;
 import org.junit.Ignore;
@@ -50,7 +50,7 @@ public class ExaltedCharacterPersisterTest {
   public void createsFullyLoadedCharacter() throws Exception {
     ICharacterGenerics generics = createCharacterGenerics();
     ExaltedCharacterPersister persister = new ExaltedCharacterPersister(type, generics, messaging);
-    ICharacter character = createNewCharacter(persister);
+    Character character = createNewCharacter(persister);
     assertThat(character.isFullyLoaded(), is(true));
   }
 
@@ -63,8 +63,8 @@ public class ExaltedCharacterPersisterTest {
     return generics;
   }
 
-  private ICharacter createNewCharacter(ExaltedCharacterPersister persister) throws PersistenceException {
-    IItem item = persister.createNew(configuration);
-    return (ICharacter) item.getItemData();
+  private Character createNewCharacter(ExaltedCharacterPersister persister) throws PersistenceException {
+    Item item = persister.createNew(configuration);
+    return (net.sf.anathema.character.model.Character) item.getItemData();
   }
 }
