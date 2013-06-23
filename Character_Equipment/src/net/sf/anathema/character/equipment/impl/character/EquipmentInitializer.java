@@ -15,9 +15,9 @@ import net.sf.anathema.lib.resources.Resources;
 
 @RegisteredInitializer(HeroModelGroup.Miscellaneous)
 @Weight(weight = 200)
-public class EquipmentAdditionalInitializer implements CharacterModelInitializer {
+public class EquipmentInitializer implements CharacterModelInitializer {
   @SuppressWarnings("UnusedParameters")
-  public EquipmentAdditionalInitializer(ApplicationModel model) {
+  public EquipmentInitializer(ApplicationModel model) {
     //nothing to do
   }
 

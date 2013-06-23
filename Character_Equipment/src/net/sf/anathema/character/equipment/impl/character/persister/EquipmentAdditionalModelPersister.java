@@ -7,7 +7,7 @@ import net.sf.anathema.character.equipment.character.EquipmentOptionsProvider;
 import net.sf.anathema.character.equipment.character.model.EquipmentModel;
 import net.sf.anathema.character.equipment.character.model.IEquipmentItem;
 import net.sf.anathema.character.equipment.character.model.IEquipmentStatsOption;
-import net.sf.anathema.character.equipment.impl.character.model.EquipmentAdditionalModel;
+import net.sf.anathema.character.equipment.impl.character.model.EquipmentModelImpl;
 import net.sf.anathema.character.equipment.impl.character.model.MissingMaterialException;
 import net.sf.anathema.character.generic.additionaltemplate.IAdditionalModel;
 import net.sf.anathema.character.generic.equipment.weapon.IEquipmentStats;
@@ -71,7 +71,7 @@ public class EquipmentAdditionalModelPersister implements IAdditionalPersister {
 
   @Override
   public void load(Element parent, IAdditionalModel model) throws PersistenceException {
-    EquipmentModel equipmentModel = (EquipmentAdditionalModel) model;
+    EquipmentModel equipmentModel = (EquipmentModelImpl) model;
     for (Element itemElement : ElementUtilities.elements(parent, TAG_ITEM)) {
       String templateId = itemElement.elementText(TAG_TEMPLATE_ID);
       String title = itemElement.elementText(TAG_CUSTOM_TITLE);

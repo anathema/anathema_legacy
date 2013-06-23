@@ -40,7 +40,7 @@ public class EquipmentAdditionalModelTemplate extends SimpleIdentifier implement
     try {
       return objectFactory.instantiateAll(RegisteredNaturalWeapon.class);
     } catch (InitializationException e) {
-      Logger.getLogger(EquipmentAdditionalModel.class).error("Could not collect additional natural weapons.", e);
+      Logger.getLogger(EquipmentModelImpl.class).error("Could not collect additional natural weapons.", e);
       return Collections.emptyList();
     }
   }

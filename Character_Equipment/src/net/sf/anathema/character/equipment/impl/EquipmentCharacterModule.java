@@ -3,7 +3,7 @@ package net.sf.anathema.character.equipment.impl;
 import net.sf.anathema.character.equipment.IEquipmentAdditionalModelTemplate;
 import net.sf.anathema.character.equipment.MaterialRules;
 import net.sf.anathema.character.equipment.ReflectionMaterialRules;
-import net.sf.anathema.character.equipment.impl.character.EquipmentAdditionalModelFactory;
+import net.sf.anathema.character.equipment.impl.character.EquipmentModelFactory;
 import net.sf.anathema.character.equipment.impl.character.EquipmentAdditionalPersisterFactory;
 import net.sf.anathema.character.equipment.impl.character.model.EquipmentAdditionalModelTemplate;
 import net.sf.anathema.character.equipment.impl.item.model.gson.GsonEquipmentDatabase;
@@ -29,7 +29,7 @@ public class EquipmentCharacterModule extends CharacterModuleAdapter {
     IEquipmentTemplateProvider equipmentDatabase = new GsonEquipmentDatabase(access);
     MaterialRules materialRules = new ReflectionMaterialRules(objectFactory);
     characterGenerics.getAdditionalModelFactoryRegistry()
-                     .register(IEquipmentAdditionalModelTemplate.ID, new EquipmentAdditionalModelFactory(equipmentDatabase, materialRules));
+                     .register(IEquipmentAdditionalModelTemplate.ID, new EquipmentModelFactory(equipmentDatabase, materialRules));
     characterGenerics.getAdditonalPersisterFactoryRegistry()
                      .register(IEquipmentAdditionalModelTemplate.ID, new EquipmentAdditionalPersisterFactory());
     characterGenerics.getGlobalAdditionalTemplateRegistry()

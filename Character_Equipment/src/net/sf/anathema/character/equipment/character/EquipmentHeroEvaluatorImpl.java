@@ -17,12 +17,12 @@ import static net.sf.anathema.character.generic.equipment.ArtifactAttuneType.Ful
 import static net.sf.anathema.character.generic.equipment.ArtifactAttuneType.Unattuned;
 import static net.sf.anathema.character.generic.equipment.ArtifactAttuneType.UnharmoniouslyAttuned;
 
-public class EquipmentCharacterDataProvider implements EquipmentHeroEvaluator {
+public class EquipmentHeroEvaluatorImpl implements EquipmentHeroEvaluator {
 
   private Hero hero;
   private final MaterialRules materialRules;
 
-  public EquipmentCharacterDataProvider(Hero hero, MaterialRules materialRules) {
+  public EquipmentHeroEvaluatorImpl(Hero hero, MaterialRules materialRules) {
     this.hero = hero;
     this.materialRules = materialRules;
   }

@@ -2,8 +2,8 @@ package net.sf.anathema.character.equipment.impl.character;
 
 import net.sf.anathema.character.equipment.IEquipmentAdditionalModelTemplate;
 import net.sf.anathema.character.equipment.MaterialRules;
-import net.sf.anathema.character.equipment.character.EquipmentCharacterDataProvider;
-import net.sf.anathema.character.equipment.impl.character.model.EquipmentAdditionalModel;
+import net.sf.anathema.character.equipment.character.EquipmentHeroEvaluatorImpl;
+import net.sf.anathema.character.equipment.impl.character.model.EquipmentModelImpl;
 import net.sf.anathema.character.equipment.impl.character.model.natural.DefaultNaturalSoak;
 import net.sf.anathema.character.equipment.impl.character.model.natural.NaturalWeaponTemplate;
 import net.sf.anathema.character.equipment.item.model.IEquipmentTemplateProvider;
@@ -17,12 +17,12 @@ import net.sf.anathema.character.library.trait.Trait;
 import net.sf.anathema.character.main.model.traits.TraitModelFetcher;
 import net.sf.anathema.hero.model.Hero;
 
-public class EquipmentAdditionalModelFactory implements IAdditionalModelFactory {
+public class EquipmentModelFactory implements IAdditionalModelFactory {
 
   private final IEquipmentTemplateProvider equipmentTemplateProvider;
   private final MaterialRules materialRules;
 
-  public EquipmentAdditionalModelFactory(IEquipmentTemplateProvider equipmentTemplateProvider, MaterialRules materialRules) {
+  public EquipmentModelFactory(IEquipmentTemplateProvider equipmentTemplateProvider, MaterialRules materialRules) {
     this.equipmentTemplateProvider = equipmentTemplateProvider;
     this.materialRules = materialRules;
   }
@@ -33,8 +33,8 @@ public class EquipmentAdditionalModelFactory implements IAdditionalModelFactory 
     ICharacterType characterType = hero.getTemplate().getTemplateType().getCharacterType();
     Trait stamina = TraitModelFetcher.fetch(hero).getTrait(AttributeType.Stamina);
     IArmourStats naturalArmour = new DefaultNaturalSoak(stamina, characterType);
-    EquipmentCharacterDataProvider dataProvider = new EquipmentCharacterDataProvider(hero, materialRules);
-    return new EquipmentAdditionalModel(hero, characterType, naturalArmour, equipmentTemplateProvider, dataProvider,
+    EquipmentHeroEvaluatorImpl dataProvider = new EquipmentHeroEvaluatorImpl(hero, materialRules);
+    return new EquipmentModelImpl(hero, characterType, naturalArmour, equipmentTemplateProvider, dataProvider,
             materialRules, new NaturalWeaponTemplate(), template.getNaturalWeaponTemplate(characterType));
   }
 }

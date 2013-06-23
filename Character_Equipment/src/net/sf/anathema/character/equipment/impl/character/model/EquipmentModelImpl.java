@@ -40,7 +40,7 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
-public class EquipmentAdditionalModel extends AbstractAdditionalModelAdapter implements EquipmentOptionsProvider, EquipmentModel, StatsModifierFactory {
+public class EquipmentModelImpl extends AbstractAdditionalModelAdapter implements EquipmentOptionsProvider, EquipmentModel, StatsModifierFactory {
   private final IEquipmentTemplateProvider equipmentTemplateProvider;
   private final ICharacterType characterType;
   private final MagicalMaterial defaultMaterial;
@@ -58,8 +58,8 @@ public class EquipmentAdditionalModel extends AbstractAdditionalModelAdapter imp
     }
   };
 
-  public EquipmentAdditionalModel(Hero hero, ICharacterType characterType, IArmourStats naturalArmour, IEquipmentTemplateProvider equipmentTemplateProvider,
-                                  EquipmentHeroEvaluator dataProvider, MaterialRules materialRules, IEquipmentTemplate... naturalWeapons) {
+  public EquipmentModelImpl(Hero hero, ICharacterType characterType, IArmourStats naturalArmour, IEquipmentTemplateProvider equipmentTemplateProvider,
+                            EquipmentHeroEvaluator dataProvider, MaterialRules materialRules, IEquipmentTemplate... naturalWeapons) {
     this.printModel = new EquipmentPrintModel(this, naturalArmour);
     this.characterType = characterType;
     this.defaultMaterial = evaluateDefaultMaterial(materialRules);
