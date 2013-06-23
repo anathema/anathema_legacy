@@ -2,15 +2,15 @@ package net.sf.anathema.character.impl.model.advance.models;
 
 import net.sf.anathema.character.generic.additionaltemplate.HeroModelExperienceCalculator;
 import net.sf.anathema.character.main.model.experience.ExperienceModelFetcher;
-import net.sf.anathema.character.model.ICharacter;
+import net.sf.anathema.hero.model.Hero;
 import net.sf.anathema.hero.points.PointModelFetcher;
 
 public class MiscellaneousExperienceModel extends AbstractIntegerValueModel {
-  private final ICharacter character;
+  private final Hero hero;
 
-  public MiscellaneousExperienceModel(ICharacter character) {
+  public MiscellaneousExperienceModel(Hero hero) {
     super("Experience", "Miscellaneous");
-    this.character = character;
+    this.hero = hero;
   }
 
   @Override
@@ -20,10 +20,10 @@ public class MiscellaneousExperienceModel extends AbstractIntegerValueModel {
 
   private int getMiscCosts() {
     int total = 0;
-    for (HeroModelExperienceCalculator calculator : PointModelFetcher.fetch(character).getExperienceCalculators()) {
+    for (HeroModelExperienceCalculator calculator : PointModelFetcher.fetch(hero).getExperienceCalculators()) {
       total += calculator.calculateCost();
     }
-    total += ExperienceModelFetcher.fetch(character).getExperiencePoints().getExtraSpendings();
+    total += ExperienceModelFetcher.fetch(hero).getExperiencePoints().getExtraSpendings();
     return total;
   }
 }

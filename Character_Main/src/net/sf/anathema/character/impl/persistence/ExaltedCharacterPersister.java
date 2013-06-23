@@ -5,7 +5,6 @@ import net.sf.anathema.character.generic.impl.magic.SpellException;
 import net.sf.anathema.character.impl.model.CharacterStatisticsConfiguration;
 import net.sf.anathema.character.impl.model.ExaltedCharacter;
 import net.sf.anathema.character.main.model.description.HeroDescriptionFetcher;
-import net.sf.anathema.character.model.ICharacter;
 import net.sf.anathema.framework.item.IItemType;
 import net.sf.anathema.framework.messaging.IMessaging;
 import net.sf.anathema.framework.persistence.IRepositoryItemPersister;
@@ -81,13 +80,13 @@ public class ExaltedCharacterPersister implements IRepositoryItemPersister {
     messaging.addMessage("CharacterPersistence.SavingCharacter", MessageType.INFORMATION, item.getDisplayName());
     Element rootElement = DocumentHelper.createElement(TAG_EXALTED_CHARACTER_ROOT);
     repositoryItemPerister.save(rootElement, item);
-    save(rootElement, (ICharacter) item.getItemData());
+    save(rootElement, (Hero) item.getItemData());
     DocumentUtilities.save(DocumentHelper.createDocument(rootElement), stream);
   }
 
-  private void save(Element rootElement, ICharacter character) {
-    descriptionPersister.save(rootElement, HeroDescriptionFetcher.fetch(character));
-    statisticsPersister.save(rootElement, character);
+  private void save(Element rootElement, Hero hero) {
+    descriptionPersister.save(rootElement, HeroDescriptionFetcher.fetch(hero));
+    statisticsPersister.save(rootElement, hero);
   }
 
   @Override

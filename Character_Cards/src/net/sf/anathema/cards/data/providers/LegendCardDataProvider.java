@@ -11,7 +11,7 @@ import net.sf.anathema.character.generic.magic.ISpell;
 import net.sf.anathema.character.main.model.charms.CharmsModelFetcher;
 import net.sf.anathema.character.main.model.experience.ExperienceModelFetcher;
 import net.sf.anathema.character.main.model.spells.SpellsModelFetcher;
-import net.sf.anathema.character.model.ICharacter;
+import net.sf.anathema.hero.model.Hero;
 import net.sf.anathema.lib.resources.Resources;
 
 import java.util.ArrayList;
@@ -35,7 +35,7 @@ public class LegendCardDataProvider implements ICardDataProvider {
   }
 
   @Override
-  public ICardData[] getCards(ICharacter character, ICardReportResourceProvider resourceProvider) {
+  public ICardData[] getCards(Hero hero, ICardReportResourceProvider resourceProvider) {
     traits.clear();
     characterTypes.clear();
     spellCircles.clear();
@@ -43,8 +43,8 @@ public class LegendCardDataProvider implements ICardDataProvider {
     martialArtStyles.clear();
     misc.clear();
 
-    buildCharmEntries(resourceProvider, getCurrentCharms(character));
-    buildSpellEntries(resourceProvider, getCurrentSpells(character));
+    buildCharmEntries(resourceProvider, getCurrentCharms(hero));
+    buildSpellEntries(resourceProvider, getCurrentSpells(hero));
 
     cleanEntries();
 
@@ -159,14 +159,14 @@ public class LegendCardDataProvider implements ICardDataProvider {
     }
   }
 
-  private ICharm[] getCurrentCharms(ICharacter character) {
-    boolean experienced = ExperienceModelFetcher.fetch(character).isExperienced();
-    return CharmsModelFetcher.fetch(character).getLearnedCharms(experienced);
+  private ICharm[] getCurrentCharms(Hero hero) {
+    boolean experienced = ExperienceModelFetcher.fetch(hero).isExperienced();
+    return CharmsModelFetcher.fetch(hero).getLearnedCharms(experienced);
   }
 
-  private ISpell[] getCurrentSpells(ICharacter character) {
-    boolean experienced = ExperienceModelFetcher.fetch(character).isExperienced();
-    return SpellsModelFetcher.fetch(character).getLearnedSpells(experienced);
+  private ISpell[] getCurrentSpells(Hero hero) {
+    boolean experienced = ExperienceModelFetcher.fetch(hero).isExperienced();
+    return SpellsModelFetcher.fetch(hero).getLearnedSpells(experienced);
   }
 
 }

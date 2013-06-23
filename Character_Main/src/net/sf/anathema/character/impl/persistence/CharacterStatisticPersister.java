@@ -21,8 +21,8 @@ import net.sf.anathema.character.main.model.description.HeroDescriptionFetcher;
 import net.sf.anathema.character.main.model.experience.ExperienceModelFetcher;
 import net.sf.anathema.character.main.model.spells.SpellsModelFetcher;
 import net.sf.anathema.character.main.model.traits.TraitModelFetcher;
-import net.sf.anathema.character.model.ICharacter;
 import net.sf.anathema.framework.messaging.IMessaging;
+import net.sf.anathema.hero.model.Hero;
 import net.sf.anathema.lib.exception.PersistenceException;
 import net.sf.anathema.lib.util.Identifier;
 import net.sf.anathema.lib.util.SimpleIdentifier;
@@ -54,25 +54,25 @@ public class CharacterStatisticPersister {
     this.charmPersister = new CharmConfigurationPersister(messaging);
   }
 
-  public void save(Element parent, ICharacter character) {
-    Preconditions.checkNotNull(character);
-    descriptionPersister.save(parent, HeroDescriptionFetcher.fetch(character));
+  public void save(Element parent, Hero hero) {
+    Preconditions.checkNotNull(hero);
+    descriptionPersister.save(parent, HeroDescriptionFetcher.fetch(hero));
     Element statisticsElement = parent.addElement(TAG_STATISTICS);
     rulesPersister.save(statisticsElement);
-    statisticsElement.addAttribute(ATTRIB_EXPERIENCED, String.valueOf(ExperienceModelFetcher.fetch(character).isExperienced()));
-    HeroTemplate template = character.getTemplate();
+    statisticsElement.addAttribute(ATTRIB_EXPERIENCED, String.valueOf(ExperienceModelFetcher.fetch(hero).isExperienced()));
+    HeroTemplate template = hero.getTemplate();
     Element characterTypeElement = statisticsElement.addElement(TAG_CHARACTER_TYPE);
     characterTypeElement.addAttribute(ATTRIB_SUB_TYPE, template.getTemplateType().getSubType().getId());
     characterTypeElement.addText(template.getTemplateType().getCharacterType().getId());
-    characterConceptPersister.save(statisticsElement, HeroConceptFetcher.fetch(character));
-    essencePersister.save(statisticsElement, TraitModelFetcher.fetch(character));
-    willpowerPersister.save(statisticsElement, TraitModelFetcher.fetch(character).getTrait(OtherTraitType.Willpower));
-    virtuePersister.save(statisticsElement, TraitModelFetcher.fetch(character));
-    attributePersister.save(statisticsElement, AttributesModelFetcher.fetch(character));
-    abilityPersister.save(statisticsElement, AbilityModelFetcher.fetch(character), SpecialtiesModelFetcher.fetch(character));
-    charmPersister.save(statisticsElement, character);
-    spellPersister.save(statisticsElement, SpellsModelFetcher.fetch(character));
-    experiencePersister.save(statisticsElement, ExperienceModelFetcher.fetch(character).getExperiencePoints());
+    characterConceptPersister.save(statisticsElement, HeroConceptFetcher.fetch(hero));
+    essencePersister.save(statisticsElement, TraitModelFetcher.fetch(hero));
+    willpowerPersister.save(statisticsElement, TraitModelFetcher.fetch(hero).getTrait(OtherTraitType.Willpower));
+    virtuePersister.save(statisticsElement, TraitModelFetcher.fetch(hero));
+    attributePersister.save(statisticsElement, AttributesModelFetcher.fetch(hero));
+    abilityPersister.save(statisticsElement, AbilityModelFetcher.fetch(hero), SpecialtiesModelFetcher.fetch(hero));
+    charmPersister.save(statisticsElement, hero);
+    spellPersister.save(statisticsElement, SpellsModelFetcher.fetch(hero));
+    experiencePersister.save(statisticsElement, ExperienceModelFetcher.fetch(hero).getExperiencePoints());
   }
 
   public ExaltedCharacter load(Element parent) throws PersistenceException {

@@ -5,17 +5,16 @@ import com.itextpdf.text.Phrase;
 import net.sf.anathema.cards.data.EquipmentCardData;
 import net.sf.anathema.cards.data.ICardData;
 import net.sf.anathema.cards.layout.ICardReportResourceProvider;
-import net.sf.anathema.hero.equipment.EquipmentModelFetcher;
-import net.sf.anathema.hero.equipment.NaturalWeaponsMap;
 import net.sf.anathema.character.equipment.MaterialComposition;
 import net.sf.anathema.character.equipment.character.EquipmentStringBuilder;
 import net.sf.anathema.character.equipment.character.IEquipmentStringBuilder;
-import net.sf.anathema.hero.equipment.EquipmentModel;
 import net.sf.anathema.character.equipment.character.model.IEquipmentItem;
 import net.sf.anathema.character.generic.equipment.ArtifactAttuneType;
 import net.sf.anathema.character.generic.equipment.ArtifactStats;
 import net.sf.anathema.character.generic.equipment.weapon.IEquipmentStats;
-import net.sf.anathema.character.model.ICharacter;
+import net.sf.anathema.hero.equipment.EquipmentModel;
+import net.sf.anathema.hero.equipment.EquipmentModelFetcher;
+import net.sf.anathema.hero.model.Hero;
 import net.sf.anathema.lib.resources.Resources;
 
 import java.util.ArrayList;
@@ -34,8 +33,8 @@ public class EquipmentCardDataProvider implements ICardDataProvider {
   }
 
   @Override
-  public ICardData[] getCards(ICharacter character, ICardReportResourceProvider resourceProvider) {
-    EquipmentModel model = EquipmentModelFetcher.fetch(character);
+  public ICardData[] getCards(Hero hero, ICardReportResourceProvider resourceProvider) {
+    EquipmentModel model = EquipmentModelFetcher.fetch(hero);
     List<ICardData> data = new ArrayList<>();
     for (IEquipmentItem item : model.getEquipmentItems()) {
       String title = item.getTitle();

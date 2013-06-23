@@ -1,15 +1,15 @@
 package net.sf.anathema.character.presenter.overview;
 
-import net.sf.anathema.hero.change.ChangeFlavor;
 import net.sf.anathema.character.generic.caste.CasteType;
 import net.sf.anathema.character.generic.template.HeroTemplate;
 import net.sf.anathema.character.library.overview.IAdditionalAlotmentView;
 import net.sf.anathema.character.library.overview.IOverviewCategory;
-import net.sf.anathema.hero.change.FlavoredChangeListener;
 import net.sf.anathema.character.main.model.concept.HeroConceptFetcher;
-import net.sf.anathema.character.model.ICharacter;
 import net.sf.anathema.character.model.creation.IBonusPointManagement;
 import net.sf.anathema.character.view.overview.CategorizedOverview;
+import net.sf.anathema.hero.change.ChangeFlavor;
+import net.sf.anathema.hero.change.FlavoredChangeListener;
+import net.sf.anathema.hero.model.Hero;
 import net.sf.anathema.lib.gui.Presenter;
 import net.sf.anathema.lib.resources.Resources;
 import net.sf.anathema.lib.workflow.labelledvalue.ILabelledAlotmentView;
@@ -24,18 +24,18 @@ public class CreationOverviewPresenter implements Presenter {
 
   private final Resources resources;
   private final CategorizedOverview view;
-  private final ICharacter character;
+  private final Hero hero;
   private final IBonusPointManagement management;
   private final HeroTemplate template;
   private final List<IOverviewSubPresenter> presenters = new ArrayList<>();
   private final Map<String, IOverviewCategory> categoriesById = new LinkedHashMap<>();
 
-  public CreationOverviewPresenter(Resources resources, ICharacter character, CategorizedOverview overviewView, IBonusPointManagement management) {
+  public CreationOverviewPresenter(Resources resources, Hero hero, CategorizedOverview overviewView, IBonusPointManagement management) {
     this.management = management;
     this.resources = resources;
-    this.character = character;
-    this.template = character.getTemplate();
-    character.getChangeAnnouncer().addListener(new FlavoredChangeListener() {
+    this.hero = hero;
+    this.template = hero.getTemplate();
+    hero.getChangeAnnouncer().addListener(new FlavoredChangeListener() {
       @Override
       public void changeOccurred(ChangeFlavor flavor) {
         updateOverview();
@@ -141,7 +141,7 @@ public class CreationOverviewPresenter implements Presenter {
   }
 
   private String getCasteValueResourceKey() {
-    CasteType casteType = HeroConceptFetcher.fetch(character).getCaste().getType();
+    CasteType casteType = HeroConceptFetcher.fetch(hero).getCaste().getType();
     if (casteType.equals(CasteType.NULL_CASTE_TYPE)) {
       return "";
     }

@@ -15,7 +15,6 @@ import net.sf.anathema.character.main.model.charms.CharmsModel;
 import net.sf.anathema.character.main.model.charms.CharmsModelFetcher;
 import net.sf.anathema.character.main.model.combos.CombosModel;
 import net.sf.anathema.character.main.model.combos.CombosModelFetcher;
-import net.sf.anathema.character.model.ICharacter;
 import net.sf.anathema.character.model.charm.ICombo;
 import net.sf.anathema.character.model.charm.ILearningCharmGroup;
 import net.sf.anathema.character.model.charm.special.IMultiLearnableCharmConfiguration;
@@ -60,16 +59,16 @@ public class CharmConfigurationPersister {
     this.messageIndicator = messageIndicator;
   }
 
-  public void save(Element parent, ICharacter character) {
-    HeroTemplate template = character.getTemplate();
+  public void save(Element parent, Hero hero) {
+    HeroTemplate template = hero.getTemplate();
     ICharmTemplate charmTemplate = template.getMagicTemplate().getCharmTemplate();
     if (!charmTemplate.canLearnCharms()) {
       return;
     }
     Element charmsElement = parent.addElement(TAG_CHARMS);
-    CharmsModel charmConfiguration = CharmsModelFetcher.fetch(character);
+    CharmsModel charmConfiguration = CharmsModelFetcher.fetch(hero);
     saveCharms(charmsElement, charmConfiguration);
-    saveCombos(charmsElement, CombosModelFetcher.fetch(character));
+    saveCombos(charmsElement, CombosModelFetcher.fetch(hero));
     saveFilters(charmsElement, charmConfiguration.getCharmFilters());
   }
 
@@ -113,19 +112,19 @@ public class CharmConfigurationPersister {
     }
   }
 
-  public void load(Element parent, ICharacter character) throws PersistenceException {
+  public void load(Element parent, Hero hero) throws PersistenceException {
     Element charmsElement = parent.element(TAG_CHARMS);
     if (charmsElement == null) {
       return;
     }
-    CharmsModel charmConfiguration = CharmsModelFetcher.fetch(character);
+    CharmsModel charmConfiguration = CharmsModelFetcher.fetch(hero);
     ISpecialCharmPersister specialPersister = createSpecialCharmPersister(charmConfiguration);
     for (Object groupObjectElement : charmsElement.elements(TAG_CHARMGROUP)) {
       Element groupElement = (Element) groupObjectElement;
-      loadCharmFromConfiguration(character, charmConfiguration, groupElement, specialPersister);
+      loadCharmFromConfiguration(hero, charmConfiguration, groupElement, specialPersister);
     }
-    loadCombos(charmsElement, CombosModelFetcher.fetch(character), charmConfiguration);
-    loadFilters(charmsElement, character);
+    loadCombos(charmsElement, CombosModelFetcher.fetch(hero), charmConfiguration);
+    loadFilters(charmsElement, hero);
   }
 
   private void loadCharmFromConfiguration(Hero hero, CharmsModel charmConfiguration, Element groupElement, ISpecialCharmPersister specialPersister) {
@@ -244,8 +243,8 @@ public class CharmConfigurationPersister {
     }
   }
 
-  private void loadFilters(Element parent, ICharacter character) {
-    CharmsModel configuration = CharmsModelFetcher.fetch(character);
+  private void loadFilters(Element parent, Hero hero) {
+    CharmsModel configuration = CharmsModelFetcher.fetch(hero);
     Element charmFilterNode = parent.element(TAG_CHARMFILTERS);
     if (charmFilterNode != null) {
       for (Object filterNode : charmFilterNode.elements()) {

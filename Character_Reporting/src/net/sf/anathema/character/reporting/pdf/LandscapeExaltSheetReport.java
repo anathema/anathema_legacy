@@ -23,6 +23,7 @@ import net.sf.anathema.framework.reporting.ReportException;
 import net.sf.anathema.framework.reporting.pdf.AbstractPdfReport;
 import net.sf.anathema.framework.reporting.pdf.PageSize;
 import net.sf.anathema.framework.repository.IItem;
+import net.sf.anathema.hero.model.Hero;
 import net.sf.anathema.lib.resources.Resources;
 
 import java.util.ArrayList;
@@ -63,9 +64,9 @@ public class LandscapeExaltSheetReport extends AbstractPdfReport {
   }
 
   private ReportSession createSession(IItem item) {
-    ICharacter character = (ICharacter) item.getItemData();
-    IGenericCharacter genericCharacter = GenericCharacterUtilities.createGenericCharacter(character);
-    return new ReportSession(getContentRegistry(), genericCharacter, character);
+    Hero hero = (Hero) item.getItemData();
+    IGenericCharacter genericCharacter = GenericCharacterUtilities.createGenericCharacter(hero);
+    return new ReportSession(getContentRegistry(), genericCharacter, hero);
   }
 
   private List<PageEncoder> collectPageEncoders(PageSize pageSize, ReportSession session) {
@@ -99,10 +100,10 @@ public class LandscapeExaltSheetReport extends AbstractPdfReport {
       return false;
     }
     IItemData itemData = item.getItemData();
-    if (!(itemData instanceof ICharacter)) {
+    if (!(itemData instanceof Hero)) {
       return false;
     }
-    ICharacter character = (ICharacter) itemData;
-    return character.getTemplate().getTemplateType().getCharacterType().isEssenceUser();
+    Hero hero = (Hero) itemData;
+    return hero.getTemplate().getTemplateType().getCharacterType().isEssenceUser();
   }
 }

@@ -9,10 +9,10 @@ import net.sf.anathema.cards.layout.ICardLayout;
 import net.sf.anathema.character.generic.magic.ICharm;
 import net.sf.anathema.character.main.model.charms.CharmsModelFetcher;
 import net.sf.anathema.character.main.model.experience.ExperienceModelFetcher;
-import net.sf.anathema.character.model.ICharacter;
 import net.sf.anathema.framework.reporting.ReportException;
 import net.sf.anathema.framework.reporting.pdf.AbstractPdfReport;
 import net.sf.anathema.framework.repository.IItem;
+import net.sf.anathema.hero.model.Hero;
 import net.sf.anathema.lib.resources.Resources;
 
 import java.util.ArrayList;
@@ -46,7 +46,7 @@ public class CardReport extends AbstractPdfReport {
       // all spells and charms
       List<ICardData> cardDataSet = new ArrayList<>();
       for (ICardDataProvider provider : cardDataProviders) {
-        Collections.addAll(cardDataSet, provider.getCards((ICharacter) item.getItemData(), layout.getResourceProvider()));
+        Collections.addAll(cardDataSet, provider.getCards((Hero) item.getItemData(), layout.getResourceProvider()));
       }
 
       float documentWidth = document.right() - document.left();
@@ -78,14 +78,14 @@ public class CardReport extends AbstractPdfReport {
 
   @Override
   public boolean supports(IItem item) {
-    if (item == null || !(item.getItemData() instanceof ICharacter)) {
+    if (item == null || !(item.getItemData() instanceof Hero)) {
       return false;
     }
-    ICharacter character = (ICharacter) item.getItemData();
-    return getCurrentCharms(character).length > 0;
+    Hero hero = (Hero) item.getItemData();
+    return getCurrentCharms(hero).length > 0;
   }
 
-  private ICharm[] getCurrentCharms(ICharacter character) {
-    return CharmsModelFetcher.fetch(character).getLearnedCharms(ExperienceModelFetcher.fetch(character).isExperienced());
+  private ICharm[] getCurrentCharms(Hero hero) {
+    return CharmsModelFetcher.fetch(hero).getLearnedCharms(ExperienceModelFetcher.fetch(hero).isExperienced());
   }
 }

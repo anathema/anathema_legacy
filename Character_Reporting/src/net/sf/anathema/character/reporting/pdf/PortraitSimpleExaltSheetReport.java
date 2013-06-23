@@ -24,6 +24,7 @@ import net.sf.anathema.framework.reporting.ReportException;
 import net.sf.anathema.framework.reporting.pdf.AbstractPdfReport;
 import net.sf.anathema.framework.reporting.pdf.PageSize;
 import net.sf.anathema.framework.repository.IItem;
+import net.sf.anathema.hero.model.Hero;
 import net.sf.anathema.lib.resources.Resources;
 
 import java.util.ArrayList;
@@ -50,7 +51,7 @@ public class PortraitSimpleExaltSheetReport extends AbstractPdfReport {
   @Override
   public void performPrint(IItem item, Document document, PdfWriter writer) throws ReportException {
     PageSize pageSize = pageSizePreference.getPageSize();
-    ICharacter stattedCharacter = (ICharacter) item.getItemData();
+    Hero stattedCharacter = (Hero) item.getItemData();
     PdfContentByte directContent = writer.getDirectContent();
     PageConfiguration configuration = PageConfiguration.ForPortrait(pageSize);
     try {
@@ -94,10 +95,10 @@ public class PortraitSimpleExaltSheetReport extends AbstractPdfReport {
       return false;
     }
     IItemData itemData = item.getItemData();
-    if (!(itemData instanceof ICharacter)) {
+    if (!(itemData instanceof Hero)) {
       return false;
     }
-    ICharacter character = (ICharacter) itemData;
-    return character.getTemplate().getTemplateType().getCharacterType().isEssenceUser();
+    Hero hero = (Hero) itemData;
+    return hero.getTemplate().getTemplateType().getCharacterType().isEssenceUser();
   }
 }

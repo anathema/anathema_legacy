@@ -4,7 +4,6 @@ import net.sf.anathema.character.CharacterPrintNameFileScanner;
 import net.sf.anathema.character.generic.framework.CharacterGenericsExtractor;
 import net.sf.anathema.character.generic.framework.ICharacterGenerics;
 import net.sf.anathema.character.main.model.experience.ExperienceModelFetcher;
-import net.sf.anathema.character.model.ICharacter;
 import net.sf.anathema.character.perspective.PreloadedDescriptiveFeatures;
 import net.sf.anathema.character.perspective.model.CharacterIdentifier;
 import net.sf.anathema.character.perspective.model.CharacterItemModel;
@@ -20,6 +19,7 @@ import net.sf.anathema.framework.reporting.QuickPrintCommand;
 import net.sf.anathema.framework.repository.IItem;
 import net.sf.anathema.framework.repository.IRepositoryFileResolver;
 import net.sf.anathema.framework.view.PrintNameFile;
+import net.sf.anathema.hero.model.Hero;
 import net.sf.anathema.lib.control.IChangeListener;
 import net.sf.anathema.lib.resources.Resources;
 import org.jmock.example.announcer.Announcer;
@@ -167,11 +167,11 @@ public class CharacterSystemModel implements ItemSystemModel {
   }
 
   private void notifyExperiencedListeners() {
-    ICharacter character = getCurrentCharacter();
-    if (ExperienceModelFetcher.fetch(character).isExperienced()) {
+    Hero hero = getCurrentCharacter();
+    if (ExperienceModelFetcher.fetch(hero).isExperienced()) {
       becomesExperiencedListener.announce().changeOccurred();
     }
-    if (!ExperienceModelFetcher.fetch(character).isExperienced()) {
+    if (!ExperienceModelFetcher.fetch(hero).isExperienced()) {
       becomesInexperiencedListener.announce().changeOccurred();
     }
   }
@@ -203,8 +203,8 @@ public class CharacterSystemModel implements ItemSystemModel {
     return modelsByIdentifier.get(currentCharacter).getItem();
   }
 
-  private ICharacter getCurrentCharacter() {
-    return (ICharacter) getCurrentItem().getItemData();
+  private Hero getCurrentCharacter() {
+    return (Hero) getCurrentItem().getItemData();
   }
 
   @Override

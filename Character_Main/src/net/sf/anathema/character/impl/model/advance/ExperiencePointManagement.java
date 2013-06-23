@@ -11,9 +11,9 @@ import net.sf.anathema.character.impl.model.advance.models.VirtueExperienceModel
 import net.sf.anathema.character.impl.model.advance.models.WillpowerExperienceModel;
 import net.sf.anathema.character.main.model.traits.TraitMap;
 import net.sf.anathema.character.main.model.traits.TraitModelFetcher;
-import net.sf.anathema.character.model.ICharacter;
 import net.sf.anathema.character.model.advance.IExperiencePointManagement;
 import net.sf.anathema.character.presenter.overview.IValueModel;
+import net.sf.anathema.hero.model.Hero;
 import net.sf.anathema.hero.points.PointModelFetcher;
 
 import java.util.ArrayList;
@@ -22,17 +22,17 @@ import java.util.List;
 public class ExperiencePointManagement implements IExperiencePointManagement {
 
   private final IPointCostCalculator calculator;
-  private final ICharacter character;
+  private final Hero hero;
   private final TraitMap traitMap;
 
-  public ExperiencePointManagement(ICharacter character) {
-    this.character = character;
-    this.traitMap = TraitModelFetcher.fetch(character);
-    this.calculator = new ExperiencePointCostCalculator(character.getTemplate().getExperienceCost());
+  public ExperiencePointManagement(Hero hero) {
+    this.hero = hero;
+    this.traitMap = TraitModelFetcher.fetch(hero);
+    this.calculator = new ExperiencePointCostCalculator(hero.getTemplate().getExperienceCost());
   }
 
   private IValueModel<Integer> getAbilityModel() {
-    return new AbilityExperienceModel(traitMap, calculator, character);
+    return new AbilityExperienceModel(traitMap, calculator, hero);
   }
 
   @Override
@@ -47,18 +47,18 @@ public class ExperiencePointManagement implements IExperiencePointManagement {
     allModels.add(getVirtueModel());
     allModels.add(getWillpowerModel());
     allModels.add(getMiscModel());
-    for (IValueModel<Integer>  model : PointModelFetcher.fetch(character).getExperienceOverviewModels()) {
+    for (IValueModel<Integer>  model : PointModelFetcher.fetch(hero).getExperienceOverviewModels()) {
       allModels.add(model);
     }
     return allModels;
   }
 
   private IValueModel<Integer> getAttributeModel() {
-    return new AttributeExperienceModel(traitMap, calculator, character);
+    return new AttributeExperienceModel(traitMap, calculator, hero);
   }
 
   private IValueModel<Integer> getCharmModel() {
-    return new CharmExperienceModel(traitMap, calculator, character);
+    return new CharmExperienceModel(traitMap, calculator, hero);
   }
 
   private IValueModel<Integer> getEssenceModel() {
@@ -68,18 +68,18 @@ public class ExperiencePointManagement implements IExperiencePointManagement {
   @Override
   public int getMiscGain() {
     int total = 0;
-    for (HeroModelExperienceCalculator experienceCalculator : PointModelFetcher.fetch(character).getExperienceCalculators()) {
+    for (HeroModelExperienceCalculator experienceCalculator : PointModelFetcher.fetch(hero).getExperienceCalculators()) {
       total += experienceCalculator.calculateGain();
     }
     return total;
   }
 
   private IValueModel<Integer> getMiscModel() {
-    return new MiscellaneousExperienceModel(character);
+    return new MiscellaneousExperienceModel(hero);
   }
 
   private IValueModel<Integer> getSpellModel() {
-    return new SpellExperienceModel(character, calculator, traitMap);
+    return new SpellExperienceModel(hero, calculator, traitMap);
   }
 
   @Override

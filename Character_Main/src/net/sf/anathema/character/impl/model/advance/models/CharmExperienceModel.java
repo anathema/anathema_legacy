@@ -3,12 +3,12 @@ package net.sf.anathema.character.impl.model.advance.models;
 import net.sf.anathema.character.generic.magic.ICharm;
 import net.sf.anathema.character.generic.magic.charms.special.ISpecialCharmConfiguration;
 import net.sf.anathema.character.impl.model.advance.IPointCostCalculator;
+import net.sf.anathema.character.main.model.charms.CharmsModel;
 import net.sf.anathema.character.main.model.charms.CharmsModelFetcher;
 import net.sf.anathema.character.main.model.traits.TraitMap;
-import net.sf.anathema.character.model.ICharacter;
-import net.sf.anathema.character.main.model.charms.CharmsModel;
 import net.sf.anathema.character.model.charm.special.ISubeffectCharmConfiguration;
 import net.sf.anathema.character.model.charm.special.IUpgradableCharmConfiguration;
+import net.sf.anathema.hero.model.Hero;
 
 import java.util.HashSet;
 import java.util.Set;
@@ -16,13 +16,13 @@ import java.util.Set;
 public class CharmExperienceModel extends AbstractIntegerValueModel {
   private final TraitMap traitConfiguration;
   private final IPointCostCalculator calculator;
-  private final ICharacter character;
+  private final Hero hero;
 
-  public CharmExperienceModel(TraitMap traitConfiguration, IPointCostCalculator calculator, ICharacter character) {
+  public CharmExperienceModel(TraitMap traitConfiguration, IPointCostCalculator calculator, Hero hero) {
     super("Experience", "Charms");
     this.traitConfiguration = traitConfiguration;
     this.calculator = calculator;
-    this.character = character;
+    this.hero = hero;
   }
 
   @Override
@@ -32,7 +32,7 @@ public class CharmExperienceModel extends AbstractIntegerValueModel {
 
   private int getCharmCosts() {
     int experienceCosts = 0;
-    CharmsModel charmConfiguration = CharmsModelFetcher.fetch(character);
+    CharmsModel charmConfiguration = CharmsModelFetcher.fetch(hero);
     Set<ICharm> charmsCalculated = new HashSet<>();
     for (ICharm charm : charmConfiguration.getLearnedCharms(true)) {
       int charmCosts = calculateCharmCost(charmConfiguration, charm, charmsCalculated);
@@ -47,7 +47,7 @@ public class CharmExperienceModel extends AbstractIntegerValueModel {
 
   private int calculateCharmCost(CharmsModel charmConfiguration, ICharm charm, Set<ICharm> charmsCalculated) {
     ISpecialCharmConfiguration specialCharm = charmConfiguration.getSpecialCharmConfiguration(charm);
-    int charmCost = calculator.getCharmCosts(character, charm, traitConfiguration);
+    int charmCost = calculator.getCharmCosts(hero, charm, traitConfiguration);
     if (specialCharm != null) {
       int timesLearnedWithExperience = specialCharm.getCurrentLearnCount() - specialCharm.getCreationLearnCount();
       int specialCharmCost = timesLearnedWithExperience * charmCost;
@@ -80,6 +80,6 @@ public class CharmExperienceModel extends AbstractIntegerValueModel {
   }
 
   private boolean isSpecialCharm(ICharm charm) {
-    return CharmsModelFetcher.fetch(character).getSpecialCharmConfiguration(charm) != null;
+    return CharmsModelFetcher.fetch(hero).getSpecialCharmConfiguration(charm) != null;
   }
 }

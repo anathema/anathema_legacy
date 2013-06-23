@@ -6,9 +6,9 @@ import net.sf.anathema.cards.layout.ICardReportResourceProvider;
 import net.sf.anathema.character.generic.magic.ISpell;
 import net.sf.anathema.character.main.model.experience.ExperienceModelFetcher;
 import net.sf.anathema.character.main.model.spells.SpellsModelFetcher;
-import net.sf.anathema.character.model.ICharacter;
 import net.sf.anathema.character.reporting.pdf.content.stats.magic.SpellStats;
 import net.sf.anathema.framework.IApplicationModel;
+import net.sf.anathema.hero.model.Hero;
 import net.sf.anathema.lib.resources.Resources;
 
 import java.util.ArrayList;
@@ -21,17 +21,17 @@ public class SpellCardDataProvider extends AbstractMagicCardDataProvider {
   }
 
   @Override
-  public ICardData[] getCards(ICharacter character, ICardReportResourceProvider fontProvider) {
+  public ICardData[] getCards(Hero hero, ICardReportResourceProvider fontProvider) {
     List<ICardData> cards = new ArrayList<>();
-    for (ISpell spell : getCurrentSpells(character)) {
+    for (ISpell spell : getCurrentSpells(hero)) {
       cards.add(new SpellCardData(spell, createSpellStats(spell), getMagicDescription(spell), fontProvider, getResources()));
     }
     return cards.toArray(new ICardData[cards.size()]);
   }
 
-  private ISpell[] getCurrentSpells(ICharacter character) {
-    boolean experienced = ExperienceModelFetcher.fetch(character).isExperienced();
-    return SpellsModelFetcher.fetch(character).getLearnedSpells(experienced);
+  private ISpell[] getCurrentSpells(Hero hero) {
+    boolean experienced = ExperienceModelFetcher.fetch(hero).isExperienced();
+    return SpellsModelFetcher.fetch(hero).getLearnedSpells(experienced);
   }
 
   private SpellStats createSpellStats(ISpell spell) {

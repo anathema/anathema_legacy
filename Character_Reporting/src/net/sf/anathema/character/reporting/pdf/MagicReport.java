@@ -15,7 +15,6 @@ import net.sf.anathema.character.impl.generic.GenericCharacter;
 import net.sf.anathema.character.main.model.charms.CharmsModelFetcher;
 import net.sf.anathema.character.main.model.experience.ExperienceModelFetcher;
 import net.sf.anathema.character.main.model.spells.SpellsModelFetcher;
-import net.sf.anathema.character.model.ICharacter;
 import net.sf.anathema.character.reporting.pdf.content.stats.magic.CharmStats;
 import net.sf.anathema.character.reporting.pdf.content.stats.magic.SpellStats;
 import net.sf.anathema.charmtree.builder.MagicDisplayLabeler;
@@ -27,6 +26,7 @@ import net.sf.anathema.framework.reporting.ReportException;
 import net.sf.anathema.framework.reporting.pdf.AbstractPdfReport;
 import net.sf.anathema.framework.reporting.pdf.PdfReportUtils;
 import net.sf.anathema.framework.repository.IItem;
+import net.sf.anathema.hero.model.Hero;
 import net.sf.anathema.lib.resources.Resources;
 
 import static java.text.MessageFormat.format;
@@ -52,7 +52,7 @@ public class MagicReport extends AbstractPdfReport {
   public void performPrint(IItem item, Document document, PdfWriter writer) throws ReportException {
     MultiColumnText columnText = new MultiColumnText(document.top() - document.bottom() - 15);
     columnText.addRegularColumns(document.left(), document.right(), 20, 2);
-    ICharacter character = (ICharacter) item.getItemData();
+    Hero character = (Hero) item.getItemData();
     try {
       printCharms(columnText, character);
       printSpells(columnText, character);
@@ -62,9 +62,9 @@ public class MagicReport extends AbstractPdfReport {
     }
   }
 
-  private void printSpells(MultiColumnText columnText, ICharacter character) throws DocumentException {
+  private void printSpells(MultiColumnText columnText, Hero hero) throws DocumentException {
     String currentGroup = "";
-    for (ISpell spell : getCurrentSpells(character)) {
+    for (ISpell spell : getCurrentSpells(hero)) {
       SpellStats spellStats = createSpellStats(spell);
       String nextGroupName = format("{0} {1}", spellStats.getType(resources), spellStats.getGroupName(resources));
       if (!currentGroup.equals(nextGroupName)) {
@@ -78,10 +78,10 @@ public class MagicReport extends AbstractPdfReport {
     }
   }
 
-  public void printCharms(MultiColumnText columnText, ICharacter character) throws DocumentException {
+  public void printCharms(MultiColumnText columnText, Hero hero) throws DocumentException {
     String currentGroup = "";
-    for (ICharm charm : getCurrentCharms(character)) {
-      CharmStats charmStats = createCharmStats(character, charm);
+    for (ICharm charm : getCurrentCharms(hero)) {
+      CharmStats charmStats = createCharmStats(hero, charm);
       if (!currentGroup.equals(charmStats.getGroupName(resources))) {
         currentGroup = charmStats.getGroupName(resources);
         columnText.addElement(partFactory.createGroupTitle(currentGroup));
@@ -154,16 +154,12 @@ public class MagicReport extends AbstractPdfReport {
     }
   }
 
-  private CharmStats createCharmStats(ICharacter character, ICharm charm) {
-    return new CharmStats(charm, createGenericCharacter(character));
+  private CharmStats createCharmStats(Hero hero, ICharm charm) {
+    return new CharmStats(charm, new GenericCharacter(hero));
   }
 
   private SpellStats createSpellStats(ISpell spell) {
     return new SpellStats(spell);
-  }
-
-  private GenericCharacter createGenericCharacter(ICharacter character) {
-    return new GenericCharacter(character);
   }
 
   private MagicDescription getCharmDescription(IMagic magic) {
@@ -179,20 +175,20 @@ public class MagicReport extends AbstractPdfReport {
 
   @Override
   public boolean supports(IItem item) {
-    if (item == null || !(item.getItemData() instanceof ICharacter)) {
+    if (item == null || !(item.getItemData() instanceof Hero)) {
       return false;
     }
-    ICharacter character = (ICharacter) item.getItemData();
-    return getCurrentCharms(character).length > 0;
+    Hero hero = (Hero) item.getItemData();
+    return getCurrentCharms(hero).length > 0;
   }
 
-  private ISpell[] getCurrentSpells(ICharacter character) {
-    boolean experienced = ExperienceModelFetcher.fetch(character).isExperienced();
-    return SpellsModelFetcher.fetch(character).getLearnedSpells(experienced);
+  private ISpell[] getCurrentSpells(Hero hero) {
+    boolean experienced = ExperienceModelFetcher.fetch(hero).isExperienced();
+    return SpellsModelFetcher.fetch(hero).getLearnedSpells(experienced);
   }
 
-  private ICharm[] getCurrentCharms(ICharacter character) {
-    boolean experienced = ExperienceModelFetcher.fetch(character).isExperienced();
-    return CharmsModelFetcher.fetch(character).getLearnedCharms(experienced);
+  private ICharm[] getCurrentCharms(Hero hero) {
+    boolean experienced = ExperienceModelFetcher.fetch(hero).isExperienced();
+    return CharmsModelFetcher.fetch(hero).getLearnedCharms(experienced);
   }
 }

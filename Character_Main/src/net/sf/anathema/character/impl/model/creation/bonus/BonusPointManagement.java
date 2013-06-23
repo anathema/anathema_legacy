@@ -39,6 +39,7 @@ import net.sf.anathema.character.model.creation.IBonusPointManagement;
 import net.sf.anathema.character.presenter.overview.IAdditionalSpendingModel;
 import net.sf.anathema.character.presenter.overview.IOverviewModel;
 import net.sf.anathema.character.presenter.overview.ISpendingModel;
+import net.sf.anathema.hero.model.Hero;
 import net.sf.anathema.hero.points.PointModelFetcher;
 
 import java.util.ArrayList;
@@ -56,12 +57,12 @@ public class BonusPointManagement implements IBonusPointManagement {
   private final BonusPointCosts cost;
   private final Trait essence;
   private final ICreationPoints creationPoints;
-  private final ICharacter character;
+  private final Hero character;
   private int essenceBonusPoints;
   private int willpowerBonusPoints;
   private final BonusPointCalculator bonusPointCalculator = new BonusPointCalculator();
 
-  public BonusPointManagement(ICharacter character) {
+  public BonusPointManagement(Hero character) {
     this.character = character;
     this.creationPoints = character.getTemplate().getCreationPoints();
     for (HeroModelBonusPointCalculator additionalCalculator : PointModelFetcher.fetch(character).getBonusPointCalculators()) {

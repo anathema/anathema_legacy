@@ -16,6 +16,7 @@ import net.sf.anathema.character.view.OverviewContainer;
 import net.sf.anathema.framework.IApplicationModel;
 import net.sf.anathema.framework.repository.IItem;
 import net.sf.anathema.framework.swing.IView;
+import net.sf.anathema.hero.model.Hero;
 import net.sf.anathema.lib.resources.Resources;
 import net.sf.anathema.swing.character.perspective.ItemViewFactory;
 
@@ -30,18 +31,18 @@ public class CharacterViewFactory implements ItemViewFactory {
 
   @Override
   public IView createView(IItem item) {
-    ICharacter character = (ICharacter) item.getItemData();
+    Hero hero = (Hero) item.getItemData();
     SubViewRegistry viewFactory = new SubViewMap(CharacterGenericsExtractor.getGenerics(model).getInstantiater());
     CharacterView characterView = new TaskedCharacterView(viewFactory);
-    new CharacterPresenter(character, characterView, resources, model).initPresentation();
-    initOverviewPresentation(character, characterView, resources);
+    new CharacterPresenter(hero, characterView, resources, model).initPresentation();
+    initOverviewPresentation(hero, characterView, resources);
     item.getItemData().setClean();
     return characterView;
   }
 
-  private void initOverviewPresentation(ICharacter character, OverviewContainer container, Resources resources) {
-    IBonusPointManagement bonusPointManagement = new BonusPointManagement(character);
-    IExperiencePointManagement experiencePointManagement = new ExperiencePointManagement(character);
-    new OverviewPresenter(resources, character, container, bonusPointManagement, experiencePointManagement).initPresentation();
+  private void initOverviewPresentation(Hero hero, OverviewContainer container, Resources resources) {
+    IBonusPointManagement bonusPointManagement = new BonusPointManagement(hero);
+    IExperiencePointManagement experiencePointManagement = new ExperiencePointManagement(hero);
+    new OverviewPresenter(resources, hero, container, bonusPointManagement, experiencePointManagement).initPresentation();
   }
 }

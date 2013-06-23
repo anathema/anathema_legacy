@@ -37,12 +37,12 @@ import net.sf.anathema.character.main.model.spells.SpellsModelFetcher;
 import net.sf.anathema.character.main.model.traits.GenericTraitCollectionFacade;
 import net.sf.anathema.character.main.model.traits.TraitMap;
 import net.sf.anathema.character.main.model.traits.TraitModelFetcher;
-import net.sf.anathema.character.model.ICharacter;
 import net.sf.anathema.character.model.ITypedDescription;
 import net.sf.anathema.character.model.charm.ICombo;
 import net.sf.anathema.character.model.charm.ILearningCharmGroup;
 import net.sf.anathema.character.model.charm.special.IMultipleEffectCharmConfiguration;
 import net.sf.anathema.character.model.charm.special.ISubeffectCharmConfiguration;
+import net.sf.anathema.hero.model.Hero;
 import net.sf.anathema.lib.exception.ContractFailedException;
 import net.sf.anathema.lib.util.IdentifiedInteger;
 
@@ -52,10 +52,10 @@ import java.util.List;
 
 public class GenericCharacter implements IGenericCharacter {
 
-  private final ICharacter character;
+  private final Hero hero;
 
-  public GenericCharacter(ICharacter character) {
-    this.character = character;
+  public GenericCharacter(Hero hero) {
+    this.hero = hero;
   }
 
   @Override
@@ -69,12 +69,12 @@ public class GenericCharacter implements IGenericCharacter {
     magic.accept(new IMagicVisitor() {
       @Override
       public void visitSpell(ISpell spell) {
-        isLearned[0] = SpellsModelFetcher.fetch(character).isLearned(spell);
+        isLearned[0] = SpellsModelFetcher.fetch(hero).isLearned(spell);
       }
 
       @Override
       public void visitCharm(ICharm charm) {
-        isLearned[0] = CharmsModelFetcher.fetch(character).isLearned(charm);
+        isLearned[0] = CharmsModelFetcher.fetch(hero).isLearned(charm);
       }
     });
     return isLearned[0];
@@ -82,41 +82,41 @@ public class GenericCharacter implements IGenericCharacter {
 
   @Override
   public IGenericDescription getDescription() {
-    return new GenericDescription(HeroDescriptionFetcher.fetch(character));
+    return new GenericDescription(HeroDescriptionFetcher.fetch(hero));
   }
 
   @Override
   public boolean isAlienCharm(ICharm charm) {
-    return CharmsModelFetcher.fetch(character).isAlienCharm(charm);
+    return CharmsModelFetcher.fetch(hero).isAlienCharm(charm);
   }
 
   @Override
   public HeroTemplate getTemplate() {
-    return character.getTemplate();
+    return hero.getTemplate();
   }
 
   @Override
   public Specialty[] getSpecialties(TraitType traitType) {
-    SpecialtiesModel specialtyConfiguration = SpecialtiesModelFetcher.fetch(character);
+    SpecialtiesModel specialtyConfiguration = SpecialtiesModelFetcher.fetch(hero);
     return specialtyConfiguration.getSpecialtiesContainer(traitType).getSubTraits();
   }
 
   @Override
   public CasteType getCasteType() {
-    HeroConcept heroConcept = HeroConceptFetcher.fetch(character);
+    HeroConcept heroConcept = HeroConceptFetcher.fetch(hero);
     ITypedDescription<CasteType> caste = heroConcept.getCaste();
     return caste.getType();
   }
 
   @Override
   public int getHealthLevelTypeCount(HealthLevelType type) {
-    return HealthModelFetcher.fetch(character).getHealthLevelTypeCount(type);
+    return HealthModelFetcher.fetch(hero).getHealthLevelTypeCount(type);
   }
 
   @Override
   public String getPeripheralPool() {
     try {
-      return getTemplate().getEssenceTemplate().isEssenceUser() ? EssencePoolModelFetcher.fetch(character).getPeripheralPool() : null;
+      return getTemplate().getEssenceTemplate().isEssenceUser() ? EssencePoolModelFetcher.fetch(hero).getPeripheralPool() : null;
     } catch (IllegalArgumentException e) {
       return null;
     }
@@ -124,13 +124,13 @@ public class GenericCharacter implements IGenericCharacter {
 
   @Override
   public int getPeripheralPoolValue() {
-    return getTemplate().getEssenceTemplate().isEssenceUser() ? EssencePoolModelFetcher.fetch(character).getPeripheralPoolValue() : 0;
+    return getTemplate().getEssenceTemplate().isEssenceUser() ? EssencePoolModelFetcher.fetch(hero).getPeripheralPoolValue() : 0;
   }
 
   @Override
   public String getPersonalPool() {
     try {
-      return getTemplate().getEssenceTemplate().isEssenceUser() ? EssencePoolModelFetcher.fetch(character).getPersonalPool() : null;
+      return getTemplate().getEssenceTemplate().isEssenceUser() ? EssencePoolModelFetcher.fetch(hero).getPersonalPool() : null;
     } catch (ContractFailedException e) {
       return null;
     }
@@ -138,18 +138,18 @@ public class GenericCharacter implements IGenericCharacter {
 
   @Override
   public int getPersonalPoolValue() {
-    return getTemplate().getEssenceTemplate().isEssenceUser() ? EssencePoolModelFetcher.fetch(character).getPersonalPoolValue() : 0;
+    return getTemplate().getEssenceTemplate().isEssenceUser() ? EssencePoolModelFetcher.fetch(hero).getPersonalPoolValue() : 0;
   }
 
   @Override
   public int getOverdrivePoolValue() {
-    return getTemplate().getEssenceTemplate().isEssenceUser() ? EssencePoolModelFetcher.fetch(character).getOverdrivePoolValue() : 0;
+    return getTemplate().getEssenceTemplate().isEssenceUser() ? EssencePoolModelFetcher.fetch(hero).getOverdrivePoolValue() : 0;
   }
 
   @Override
   public IdentifiedInteger[] getComplexPools() {
     if (getTemplate().getEssenceTemplate().isEssenceUser()) {
-      return EssencePoolModelFetcher.fetch(character).getComplexPools();
+      return EssencePoolModelFetcher.fetch(hero).getComplexPools();
     } else {
       return new IdentifiedInteger[0];
     }
@@ -157,26 +157,26 @@ public class GenericCharacter implements IGenericCharacter {
 
   @Override
   public int getAttunedPoolValue() {
-    return getTemplate().getEssenceTemplate().isEssenceUser() ? EssencePoolModelFetcher.fetch(character).getAttunedPoolValue() : 0;
+    return getTemplate().getEssenceTemplate().isEssenceUser() ? EssencePoolModelFetcher.fetch(hero).getAttunedPoolValue() : 0;
   }
 
   @Override
   public IConcept getConcept() {
-    return new GenericConcept(HeroConceptFetcher.fetch(character));
+    return new GenericConcept(HeroConceptFetcher.fetch(hero));
   }
 
   @Override
   public List<IMagic> getAllLearnedMagic() {
     List<IMagic> magicList = new ArrayList<>();
     magicList.addAll(Arrays.asList(getLearnedCharms()));
-    boolean experienced = ExperienceModelFetcher.fetch(character).isExperienced();
-    magicList.addAll(Arrays.asList(SpellsModelFetcher.fetch(character).getLearnedSpells(experienced)));
+    boolean experienced = ExperienceModelFetcher.fetch(hero).isExperienced();
+    magicList.addAll(Arrays.asList(SpellsModelFetcher.fetch(hero).getLearnedSpells(experienced)));
     return magicList;
   }
 
   @Override
   public int getLearnCount(ICharm charm) {
-    return getLearnCount(charm, CharmsModelFetcher.fetch(character));
+    return getLearnCount(charm, CharmsModelFetcher.fetch(hero));
   }
 
   private int getLearnCount(ICharm charm, CharmsModel configuration) {
@@ -190,7 +190,7 @@ public class GenericCharacter implements IGenericCharacter {
   @Override
   public IGenericCombo[] getCombos() {
     List<IGenericCombo> genericCombos = new ArrayList<>();
-    for (ICombo combo : CombosModelFetcher.fetch(character).getAllCombos()) {
+    for (ICombo combo : CombosModelFetcher.fetch(hero).getAllCombos()) {
       genericCombos.add(new GenericCombo(combo));
     }
     return genericCombos.toArray(new IGenericCombo[genericCombos.size()]);
@@ -198,59 +198,59 @@ public class GenericCharacter implements IGenericCharacter {
 
   @Override
   public boolean isExperienced() {
-    return ExperienceModelFetcher.fetch(character).isExperienced();
+    return ExperienceModelFetcher.fetch(hero).isExperienced();
   }
 
   @Override
   public int getPainTolerance() {
-    return HealthModelFetcher.fetch(character).getPainToleranceLevel();
+    return HealthModelFetcher.fetch(hero).getPainToleranceLevel();
   }
 
   @Override
   public ITraitLimitation getEssenceLimitation() {
-    return OtherTraitModelFetcher.fetch(character).getEssenceLimitation();
+    return OtherTraitModelFetcher.fetch(hero).getEssenceLimitation();
   }
 
   @Override
   public int getAge() {
-    return HeroConceptFetcher.fetch(character).getAge().getValue();
+    return HeroConceptFetcher.fetch(hero).getAge().getValue();
   }
 
   @Override
   public IIdentifiedTraitTypeGroup[] getAbilityTypeGroups() {
-    return AbilityModelFetcher.fetch(character).getAbilityTypeGroups();
+    return AbilityModelFetcher.fetch(hero).getAbilityTypeGroups();
   }
 
   @Override
   public IIdentifiedTraitTypeGroup[] getAttributeTypeGroups() {
-    return AttributesModelFetcher.fetch(character).getAttributeTypeGroups();
+    return AttributesModelFetcher.fetch(hero).getAttributeTypeGroups();
   }
 
   @Override
   public int getSpentExperiencePoints() {
-    return new ExperiencePointManagement(character).getTotalCosts();
+    return new ExperiencePointManagement(hero).getTotalCosts();
   }
 
   @Override
   public int getTotalExperiencePoints() {
-    return ExperienceModelFetcher.fetch(character).getExperiencePoints().getTotalExperiencePoints();
+    return ExperienceModelFetcher.fetch(hero).getExperiencePoints().getTotalExperiencePoints();
   }
 
   @Override
   public boolean isSubeffectCharm(ICharm charm) {
-    ISpecialCharmConfiguration charmConfiguration = CharmsModelFetcher.fetch(character).getSpecialCharmConfiguration(charm);
+    ISpecialCharmConfiguration charmConfiguration = CharmsModelFetcher.fetch(hero).getSpecialCharmConfiguration(charm);
     return charmConfiguration instanceof ISubeffectCharmConfiguration;
   }
 
   @Override
   public boolean isMultipleEffectCharm(ICharm charm) {
-    ISpecialCharmConfiguration charmConfiguration = CharmsModelFetcher.fetch(character).getSpecialCharmConfiguration(charm);
+    ISpecialCharmConfiguration charmConfiguration = CharmsModelFetcher.fetch(hero).getSpecialCharmConfiguration(charm);
     return charmConfiguration instanceof IMultipleEffectCharmConfiguration && !(charmConfiguration instanceof ISubeffectCharmConfiguration);
   }
 
   @Override
   public String[] getLearnedEffects(ICharm charm) {
-    ISpecialCharmConfiguration charmConfiguration = CharmsModelFetcher.fetch(character).getSpecialCharmConfiguration(charm);
+    ISpecialCharmConfiguration charmConfiguration = CharmsModelFetcher.fetch(hero).getSpecialCharmConfiguration(charm);
     if (!(charmConfiguration instanceof IMultipleEffectCharmConfiguration)) {
       return new String[0];
     }
@@ -267,10 +267,10 @@ public class GenericCharacter implements IGenericCharacter {
   @Override
   public ICharm[] getGenericCharms() {
     List<ICharm> genericCharms = new ArrayList<>();
-    for (ILearningCharmGroup group : CharmsModelFetcher.fetch(character).getAllGroups()) {
+    for (ILearningCharmGroup group : CharmsModelFetcher.fetch(hero).getAllGroups()) {
       for (ICharm charm : group.getAllCharms()) {
         if (charm.isInstanceOfGenericCharm() &&
-            charm.getCharacterType().equals(character.getTemplate().getTemplateType().getCharacterType())) {
+            charm.getCharacterType().equals(hero.getTemplate().getTemplateType().getCharacterType())) {
           genericCharms.add(charm);
         }
       }
@@ -280,11 +280,11 @@ public class GenericCharacter implements IGenericCharacter {
 
   @Override
   public ICharm[] getLearnedCharms() {
-    boolean experienced = ExperienceModelFetcher.fetch(character).isExperienced();
-    return CharmsModelFetcher.fetch(character).getLearnedCharms(experienced);
+    boolean experienced = ExperienceModelFetcher.fetch(hero).isExperienced();
+    return CharmsModelFetcher.fetch(hero).getLearnedCharms(experienced);
   }
 
   private TraitMap getTraitMap() {
-    return TraitModelFetcher.fetch(character);
+    return TraitModelFetcher.fetch(hero);
   }
 }

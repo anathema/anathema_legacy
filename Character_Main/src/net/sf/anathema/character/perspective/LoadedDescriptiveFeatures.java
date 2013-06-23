@@ -5,6 +5,7 @@ import net.sf.anathema.character.main.model.concept.HeroConceptFetcher;
 import net.sf.anathema.character.model.ICharacter;
 import net.sf.anathema.character.perspective.model.CharacterIdentifier;
 import net.sf.anathema.framework.repository.IItem;
+import net.sf.anathema.hero.model.Hero;
 import net.sf.anathema.lib.util.Identifier;
 
 public class LoadedDescriptiveFeatures implements DescriptiveFeatures {
@@ -29,14 +30,14 @@ public class LoadedDescriptiveFeatures implements DescriptiveFeatures {
 
   @Override
   public ITemplateType getTemplateType() {
-    ICharacter character = (ICharacter) characterItem.getItemData();
-    return character.getTemplate().getTemplateType();
+    Hero hero = (Hero) characterItem.getItemData();
+    return hero.getTemplate().getTemplateType();
   }
 
   @Override
   public Identifier getCasteType() {
-    ICharacter character = (ICharacter) characterItem.getItemData();
-    return HeroConceptFetcher.fetch(character).getCaste().getType();
+    Hero hero = (Hero) characterItem.getItemData();
+    return HeroConceptFetcher.fetch(hero).getCaste().getType();
   }
 
   @Override

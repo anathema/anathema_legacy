@@ -1,11 +1,11 @@
 package net.sf.anathema.character.perspective.model;
 
 import net.sf.anathema.character.main.model.concept.HeroConceptFetcher;
-import net.sf.anathema.character.model.ICharacter;
 import net.sf.anathema.character.perspective.DescriptiveFeatures;
 import net.sf.anathema.character.perspective.LoadedDescriptiveFeatures;
 import net.sf.anathema.framework.repository.IItem;
 import net.sf.anathema.framework.repository.IItemListener;
+import net.sf.anathema.hero.model.Hero;
 import net.sf.anathema.lib.control.IChangeListener;
 import org.jmock.example.announcer.Announcer;
 
@@ -41,8 +41,8 @@ public class CharacterItemModel {
         featuresChangeAnnouncer.announce().changeOccurred();
       }
     });
-    ICharacter character = (ICharacter) item.getItemData();
-    HeroConceptFetcher.fetch(character).getCaste().addChangeListener(new AnnouncingChangeListener());
+    Hero hero = (Hero) item.getItemData();
+    HeroConceptFetcher.fetch(hero).getCaste().addChangeListener(new AnnouncingChangeListener());
     item.addDirtyListener(new AnnouncingChangeListener());
   }
 

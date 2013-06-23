@@ -1,12 +1,12 @@
 package net.sf.anathema.character.presenter;
 
 import net.sf.anathema.character.presenter.initializers.HeroModelInitializer;
-import net.sf.anathema.hero.display.HeroModelGroup;
-import net.sf.anathema.character.model.ICharacter;
 import net.sf.anathema.character.presenter.initializers.InitializerList;
 import net.sf.anathema.character.view.CharacterView;
 import net.sf.anathema.character.view.SectionView;
 import net.sf.anathema.framework.IApplicationModel;
+import net.sf.anathema.hero.display.HeroModelGroup;
+import net.sf.anathema.hero.model.Hero;
 import net.sf.anathema.lib.gui.Presenter;
 import net.sf.anathema.lib.resources.Resources;
 
@@ -19,13 +19,13 @@ import static net.sf.anathema.hero.display.HeroModelGroup.SpiritualTraits;
 public class CharacterPresenter implements Presenter {
 
   private final InitializerList initializerList;
-  private final ICharacter character;
+  private final Hero hero;
   private final CharacterView characterView;
   private final Resources resources;
 
-  public CharacterPresenter(ICharacter character, CharacterView view, Resources resources, IApplicationModel applicationModel) {
+  public CharacterPresenter(Hero hero, CharacterView view, Resources resources, IApplicationModel applicationModel) {
     this.initializerList = new InitializerList(applicationModel);
-    this.character = character;
+    this.hero = hero;
     this.characterView = view;
     this.resources = resources;
   }
@@ -52,7 +52,7 @@ public class CharacterPresenter implements Presenter {
 
   private void initializeGroup(HeroModelGroup group, SectionView sectionView) {
     for (HeroModelInitializer initializer : initializerList.getInOrderFor(group)) {
-      initializer.initialize(sectionView, character, resources);
+      initializer.initialize(sectionView, hero, resources);
     }
   }
 }

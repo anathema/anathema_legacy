@@ -5,7 +5,7 @@ import net.sf.anathema.character.generic.traits.TraitType;
 import net.sf.anathema.character.impl.model.advance.IPointCostCalculator;
 import net.sf.anathema.character.library.trait.Trait;
 import net.sf.anathema.character.main.model.traits.TraitMap;
-import net.sf.anathema.character.model.ICharacter;
+import net.sf.anathema.hero.model.Hero;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -14,13 +14,13 @@ public class AttributeExperienceModel extends AbstractIntegerValueModel {
 
   private final TraitMap traitMap;
   private final IPointCostCalculator calculator;
-  private final ICharacter character;
+  private final Hero hero;
 
-  public AttributeExperienceModel(TraitMap traitMap, IPointCostCalculator calculator, ICharacter character) {
+  public AttributeExperienceModel(TraitMap traitMap, IPointCostCalculator calculator, Hero hero) {
     super("Experience", "Attributes");
     this.traitMap = traitMap;
     this.calculator = calculator;
-    this.character = character;
+    this.hero = hero;
   }
 
   @Override
@@ -38,7 +38,7 @@ public class AttributeExperienceModel extends AbstractIntegerValueModel {
 
   private Trait[] getAllAttributes() {
     List<TraitType> attributeTypes = new ArrayList<>();
-    for (GroupedTraitType type : character.getTemplate().getAttributeGroups()) {
+    for (GroupedTraitType type : hero.getTemplate().getAttributeGroups()) {
       attributeTypes.add(type.getTraitType());
     }
     return traitMap.getTraits(attributeTypes.toArray(new TraitType[attributeTypes.size()]));
