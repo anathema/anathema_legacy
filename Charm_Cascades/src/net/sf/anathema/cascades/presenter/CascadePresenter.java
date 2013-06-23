@@ -29,18 +29,13 @@ public class CascadePresenter extends AbstractCascadePresenter implements ICasca
     view.initGui(viewProperties, nodeProperties);
     ITemplateRegistry templateRegistry = generics.getTemplateRegistry();
     CascadeCharmGroupChangeListener selectionListener =
-            new CascadeCharmGroupChangeListener(view, viewProperties, filterSet, new CharmDisplayPropertiesMap(templateRegistry));
+            new CascadeCharmGroupChangeListener(view, viewProperties, new CharmDisplayPropertiesMap(templateRegistry));
     CharacterTypes characterTypes = generics.getCharacterTypes();
     setCharmTypes(new CascadeCharmTypes(characterTypes, templateRegistry));
     setChangeListener(selectionListener);
     setView(view);
     setCharmDye(new CascadeCharmDye(view, selectionListener));
     setCharmGroups(new CascadeGroupCollection(characterTypes, templateRegistry, treeIdentificateMap));
-  }
-
-  @Override
-  protected CascadeFilterContainer getFilterContainer() {
-    return new CascadeFilterContainer(charmGroups);
   }
 
   @Override

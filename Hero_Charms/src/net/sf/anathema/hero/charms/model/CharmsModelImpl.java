@@ -39,10 +39,6 @@ import net.sf.anathema.character.model.charm.ICharmLearnListener;
 import net.sf.anathema.character.model.charm.ILearningCharmGroup;
 import net.sf.anathema.character.model.charm.special.IMultiLearnableCharmConfiguration;
 import net.sf.anathema.character.model.charm.special.IMultipleEffectCharmConfiguration;
-import net.sf.anathema.character.presenter.magic.filter.CharacterSourceBookFilter;
-import net.sf.anathema.character.presenter.magic.filter.EssenceLevelCharmFilter;
-import net.sf.anathema.character.presenter.magic.filter.ObtainableCharmFilter;
-import net.sf.anathema.charmtree.filters.CharmFilter;
 import net.sf.anathema.hero.change.ChangeAnnouncer;
 import net.sf.anathema.hero.change.ChangeFlavor;
 import net.sf.anathema.hero.change.FlavoredChangeListener;
@@ -83,13 +79,10 @@ public class CharmsModelImpl implements CharmsModel {
   private ICharmProvider provider;
   private ExperienceModel experience;
   private TraitModel traits;
-  private List<CharmFilter> filterSet = new ArrayList<>();
   private PrerequisiteModifyingCharms prerequisiteModifyingCharms;
   private MartialArtsOptions martialArtsOptions;
   private NonMartialArtsOptions nonMartialArtsOptions;
   private Hero hero;
-  private InitializationContext context;
-  private CharmSpecialistImpl specialist;
 
   @Override
   public Identifier getId() {
@@ -98,11 +91,10 @@ public class CharmsModelImpl implements CharmsModel {
 
   @Override
   public void initialize(InitializationContext context, Hero hero) {
-    this.specialist = new CharmSpecialistImpl(hero);
+    CharmSpecialistImpl specialist = new CharmSpecialistImpl(hero);
     this.experience = ExperienceModelFetcher.fetch(hero);
     this.traits = TraitModelFetcher.fetch(hero);
      this.hero = hero;
-    this.context = context;
     this.martialArtsOptions = new MartialArtsOptions(hero, context.getTemplateRegistry());
     this.nonMartialArtsOptions = new NonMartialArtsOptions(hero, context.getCharacterTypes(), context.getTemplateRegistry());
     this.manager = new SpecialCharmManager(specialist, hero, this);
@@ -110,9 +102,6 @@ public class CharmsModelImpl implements CharmsModel {
     this.martialArtsGroups = createGroups(martialArtsOptions.getAllCharmGroups());
     initNonMartialArtsGroups();
     initSpecialCharmConfigurations();
-    filterSet.add(new ObtainableCharmFilter(this));
-    filterSet.add(new CharacterSourceBookFilter(this));
-    filterSet.add(new EssenceLevelCharmFilter());
     addCompulsiveCharms(hero.getTemplate());
     EssencePoolModelFetcher.fetch(hero).addOverdrivePool(new CharmOverdrivePool(this, experience));
   }
@@ -527,10 +516,5 @@ public class CharmsModelImpl implements CharmsModel {
   @Override
   public ICharm[] getCharms(ICharmGroup charmGroup) {
     return nonMartialArtsOptions.getCharms(charmGroup);
-  }
-
-  @Override
-  public List<CharmFilter> getCharmFilters() {
-    return filterSet;
   }
 }

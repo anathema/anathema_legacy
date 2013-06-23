@@ -17,7 +17,6 @@ import net.sf.anathema.character.presenter.magic.SpecialCharmList;
 import net.sf.anathema.character.presenter.magic.SpecialCharmViewBuilder;
 import net.sf.anathema.character.presenter.magic.detail.ShowMagicDetailListener;
 import net.sf.anathema.charmtree.presenter.AbstractCascadePresenter;
-import net.sf.anathema.charmtree.presenter.CharmFilterContainer;
 import net.sf.anathema.charmtree.view.CharmDisplayPropertiesMap;
 import net.sf.anathema.charmtree.view.DefaultNodeProperties;
 import net.sf.anathema.charmtree.view.ICharmView;
@@ -41,7 +40,7 @@ public class CharacterCharmTreePresenter extends AbstractCascadePresenter {
     this.view = view;
     view.initGui(viewProperties, nodeProperties);
     CharacterCharmGroupChangeListener charmGroupChangeListener =
-            new CharacterCharmGroupChangeListener(charmConfiguration, filterSet, view.getCharmTreeRenderer(), displayPropertiesMap);
+            new CharacterCharmGroupChangeListener(charmConfiguration, view.getCharmTreeRenderer(), displayPropertiesMap);
     CharacterCharmDye dye = new CharacterCharmDye(model, charmGroupChangeListener, presentationProperties.getColor(), view);
     setCharmTypes(new CharacterCharmTypes(charmModel));
     setChangeListener(charmGroupChangeListener);
@@ -57,11 +56,6 @@ public class CharacterCharmTreePresenter extends AbstractCascadePresenter {
 
   private SpecialCharmViewBuilder createSpecialCharmViewBuilder(Resources resources, CharmsModel charmConfiguration) {
     return new SwingSpecialCharmViewBuilder(resources, charmConfiguration);
-  }
-
-  @Override
-  protected CharmFilterContainer getFilterContainer() {
-    return model.getCharmConfiguration();
   }
 
   @Override

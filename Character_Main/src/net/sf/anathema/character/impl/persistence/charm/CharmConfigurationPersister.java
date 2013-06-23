@@ -19,7 +19,6 @@ import net.sf.anathema.character.model.ICharacter;
 import net.sf.anathema.character.model.charm.ICombo;
 import net.sf.anathema.character.model.charm.ILearningCharmGroup;
 import net.sf.anathema.character.model.charm.special.IMultiLearnableCharmConfiguration;
-import net.sf.anathema.charmtree.filters.CharmFilter;
 import net.sf.anathema.framework.messaging.IMessaging;
 import net.sf.anathema.framework.persistence.TextPersister;
 import net.sf.anathema.hero.model.Hero;
@@ -29,14 +28,11 @@ import net.sf.anathema.lib.util.Identifier;
 import net.sf.anathema.lib.xml.ElementUtilities;
 import org.dom4j.Element;
 
-import java.util.List;
-
 import static net.sf.anathema.character.generic.impl.traits.SimpleTraitTemplate.createEssenceLimitedTemplate;
 import static net.sf.anathema.character.impl.persistence.ICharacterXmlConstants.ATTRIB_EXPERIENCE_LEARNED;
 import static net.sf.anathema.character.impl.persistence.ICharacterXmlConstants.ATTRIB_NAME;
 import static net.sf.anathema.character.impl.persistence.ICharacterXmlConstants.ATTRIB_TYPE;
 import static net.sf.anathema.character.impl.persistence.ICharacterXmlConstants.TAG_CHARM;
-import static net.sf.anathema.character.impl.persistence.ICharacterXmlConstants.TAG_CHARMFILTERS;
 import static net.sf.anathema.character.impl.persistence.ICharacterXmlConstants.TAG_CHARMGROUP;
 import static net.sf.anathema.character.impl.persistence.ICharacterXmlConstants.TAG_CHARMS;
 import static net.sf.anathema.character.impl.persistence.ICharacterXmlConstants.TAG_COMBO;
@@ -70,7 +66,6 @@ public class CharmConfigurationPersister {
     CharmsModel charmConfiguration = CharmsModelFetcher.fetch(character);
     saveCharms(charmsElement, charmConfiguration);
     saveCombos(charmsElement, CombosModelFetcher.fetch(character));
-    saveFilters(charmsElement, charmConfiguration.getCharmFilters());
   }
 
   private CharmsModel saveCharms(Element charmsElement, CharmsModel charmConfiguration) {
@@ -80,13 +75,6 @@ public class CharmConfigurationPersister {
     }
     saver.saveCharms(MartialArtsUtilities.MARTIAL_ARTS, charmsElement);
     return charmConfiguration;
-  }
-
-  private void saveFilters(Element charmsElement, List<CharmFilter> charmFilters) {
-    Element filtersElement = charmsElement.addElement(TAG_CHARMFILTERS);
-    for (CharmFilter filter : charmFilters) {
-      filter.save(filtersElement);
-    }
   }
 
   private ISpecialCharmPersister createSpecialCharmPersister(CharmsModel charmConfiguration) {
@@ -125,7 +113,6 @@ public class CharmConfigurationPersister {
       loadCharmFromConfiguration(character, charmConfiguration, groupElement, specialPersister);
     }
     loadCombos(charmsElement, CombosModelFetcher.fetch(character), charmConfiguration);
-    loadFilters(charmsElement, character);
   }
 
   private void loadCharmFromConfiguration(Hero hero, CharmsModel charmConfiguration, Element groupElement, ISpecialCharmPersister specialPersister) {
@@ -244,18 +231,4 @@ public class CharmConfigurationPersister {
     }
   }
 
-  private void loadFilters(Element parent, ICharacter character) {
-    CharmsModel configuration = CharmsModelFetcher.fetch(character);
-    Element charmFilterNode = parent.element(TAG_CHARMFILTERS);
-    if (charmFilterNode != null) {
-      for (Object filterNode : charmFilterNode.elements()) {
-        Element node = (Element) filterNode;
-        for (CharmFilter filter : configuration.getCharmFilters()) {
-          if (filter.load(node)) {
-            break;
-          }
-        }
-      }
-    }
-  }
 }
