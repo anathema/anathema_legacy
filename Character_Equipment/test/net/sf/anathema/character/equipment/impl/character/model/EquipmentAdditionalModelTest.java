@@ -23,7 +23,7 @@ public class EquipmentAdditionalModelTest {
   IArmourStats naturalArmor = new DefaultNaturalSoak(new DummyGenericTrait(Stamina, 5), characterType);
   IEquipmentTemplateProvider templateProvider = mock(IEquipmentTemplateProvider.class);
   IEquipmentCharacterDataProvider dataProvider = mock(IEquipmentCharacterDataProvider.class);
-  EquipmentModelImpl model;
+  EquipmentAdditionalModel model;
 
   @Before
   public void setUp() throws Exception {
@@ -31,8 +31,7 @@ public class EquipmentAdditionalModelTest {
     hero.addModel(new EssencePoolModelImpl());
     hero.addModel(new AbilitiesModelImpl());
     hero.addModel(new SpecialtiesModelImpl());
-    //model = new EquipmentModelImpl(hero, naturalArmor, templateProvider, dataProvider, new DummyMaterialRules());
-    model = new EquipmentModelImpl();
+    model = new EquipmentAdditionalModel(hero, characterType, naturalArmor, templateProvider, dataProvider, new DummyMaterialRules());
   }
 
   @Test

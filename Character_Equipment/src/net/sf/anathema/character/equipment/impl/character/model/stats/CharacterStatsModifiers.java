@@ -1,6 +1,6 @@
 package net.sf.anathema.character.equipment.impl.character.model.stats;
 
-import net.sf.anathema.hero.equipment.model.EquipmentModel;
+import net.sf.anathema.character.equipment.character.model.IEquipmentAdditionalModel;
 import net.sf.anathema.character.equipment.character.model.IEquipmentItem;
 import net.sf.anathema.character.generic.character.IGenericCharacter;
 import net.sf.anathema.character.generic.equipment.ICharacterStatsModifiers;
@@ -13,14 +13,14 @@ import java.util.ArrayList;
 import java.util.List;
 
 import static com.google.common.collect.Lists.newArrayList;
-import static net.sf.anathema.character.equipment.NaturalWeaponMap.ID;
+import static net.sf.anathema.character.equipment.IEquipmentAdditionalModelTemplate.ID;
 
 public class CharacterStatsModifiers implements ICharacterStatsModifiers {
   private final List<ITraitModifyingStats> stats = new ArrayList<>();
   private int mobilityPenalty;
 
   public static CharacterStatsModifiers extractFromCharacter(IGenericCharacter character) {
-    EquipmentModel model = (EquipmentModel) character.getAdditionalModel(ID);
+    IEquipmentAdditionalModel model = (IEquipmentAdditionalModel) character.getAdditionalModel(ID);
     IEquipmentItem[] items = model.getEquipmentItems();
     List<IEquipmentItem> list = newArrayList(items);
     return new CharacterStatsModifiers(list);

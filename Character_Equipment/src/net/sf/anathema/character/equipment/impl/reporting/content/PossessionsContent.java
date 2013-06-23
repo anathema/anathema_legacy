@@ -1,7 +1,7 @@
 package net.sf.anathema.character.equipment.impl.reporting.content;
 
-import net.sf.anathema.character.equipment.NaturalWeaponMap;
-import net.sf.anathema.hero.equipment.model.EquipmentModel;
+import net.sf.anathema.character.equipment.IEquipmentAdditionalModelTemplate;
+import net.sf.anathema.character.equipment.character.model.IEquipmentAdditionalModel;
 import net.sf.anathema.character.equipment.character.model.IEquipmentItem;
 import net.sf.anathema.character.generic.character.IGenericCharacter;
 import net.sf.anathema.character.generic.equipment.weapon.IEquipmentStats;
@@ -56,7 +56,7 @@ public class PossessionsContent extends AbstractSubBoxContent implements ListSub
   }
 
   private IEquipmentItem[] getEquipmentItems() {
-    EquipmentModel model = (EquipmentModel) character.getAdditionalModel(NaturalWeaponMap.ID);
+    IEquipmentAdditionalModel model = (IEquipmentAdditionalModel) character.getAdditionalModel(IEquipmentAdditionalModelTemplate.ID);
     return model.getEquipmentItems();
   }
 

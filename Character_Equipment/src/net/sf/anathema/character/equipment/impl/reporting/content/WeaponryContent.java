@@ -1,9 +1,8 @@
 package net.sf.anathema.character.equipment.impl.reporting.content;
 
-import net.sf.anathema.character.equipment.character.EquipmentOptionsProvider;
 import net.sf.anathema.character.equipment.character.IEquipmentCharacterDataProvider;
-import net.sf.anathema.hero.equipment.model.EquipmentModel;
-import net.sf.anathema.character.equipment.impl.character.model.NaturalWeaponMapImpl;
+import net.sf.anathema.character.equipment.character.model.IEquipmentAdditionalModel;
+import net.sf.anathema.character.equipment.impl.character.model.EquipmentAdditionalModelTemplate;
 import net.sf.anathema.character.equipment.impl.reporting.content.stats.weapons.AbstractDefenceWeaponStatsGroup;
 import net.sf.anathema.character.equipment.impl.reporting.content.stats.weapons.AccuracyWeaponStatsGroup;
 import net.sf.anathema.character.equipment.impl.reporting.content.stats.weapons.RateWeaponStatsGroup;
@@ -12,17 +11,18 @@ import net.sf.anathema.character.equipment.impl.reporting.content.stats.weapons.
 import net.sf.anathema.character.generic.character.IGenericCharacter;
 import net.sf.anathema.character.reporting.pdf.content.SubBoxContent;
 import net.sf.anathema.lib.resources.Resources;
+import net.sf.anathema.character.equipment.character.IEquipmentCharacterOptionProvider;
 
 public class WeaponryContent extends AbstractWeaponryContent implements SubBoxContent {
 
   private final IEquipmentCharacterDataProvider provider;
-  private final EquipmentOptionsProvider optionProvider;
+  private final IEquipmentCharacterOptionProvider optionProvider;
 
   public WeaponryContent(Resources resources, IGenericCharacter character) {
     super(resources, character);
-    EquipmentModel additionalModel = (EquipmentModel) character.getAdditionalModel(NaturalWeaponMapImpl.ID);
+    IEquipmentAdditionalModel additionalModel = (IEquipmentAdditionalModel) character.getAdditionalModel(EquipmentAdditionalModelTemplate.ID);
     provider = additionalModel.getCharacterDataProvider();
-    optionProvider = additionalModel.getOptionProvider();
+    optionProvider = additionalModel.getCharacterOptionProvider();
   }
 
   @Override
