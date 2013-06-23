@@ -6,7 +6,7 @@ import net.sf.anathema.character.platform.module.repository.CharacterCreationTem
 import net.sf.anathema.framework.item.IItemType;
 import net.sf.anathema.framework.presenter.view.AbstractItemTypeViewProperties;
 import net.sf.anathema.lib.resources.Resources;
-import net.sf.anathema.lib.workflow.wizard.selection.DialogBasedTemplateFactory;
+import net.sf.anathema.lib.workflow.wizard.selection.ItemTemplateFactory;
 
 public class CharacterViewProperties extends AbstractItemTypeViewProperties {
 
@@ -19,7 +19,7 @@ public class CharacterViewProperties extends AbstractItemTypeViewProperties {
   }
 
   @Override
-  public DialogBasedTemplateFactory getNewItemWizardFactory() {
+  public ItemTemplateFactory getNewItemWizardFactory() {
     return factory;
   }
 }
