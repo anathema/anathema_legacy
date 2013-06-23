@@ -6,23 +6,23 @@ import net.sf.anathema.character.generic.magic.description.MagicDescriptionProvi
 import net.sf.anathema.character.generic.template.magic.ICharmTemplate;
 import net.sf.anathema.character.main.model.charms.CharmsModelFetcher;
 import net.sf.anathema.character.main.model.concept.HeroConceptFetcher;
-import net.sf.anathema.character.model.ICharacter;
 import net.sf.anathema.character.model.ITypedDescription;
 import net.sf.anathema.character.main.model.charms.CharmsModel;
 import net.sf.anathema.character.model.charm.ILearningCharmGroup;
+import net.sf.anathema.hero.model.Hero;
 import net.sf.anathema.lib.control.IChangeListener;
 
 public class CharacterCharmModel {
-  private ICharacter character;
+  private Hero hero;
   private MagicDescriptionProvider magicDescriptionProvider;
 
-  public CharacterCharmModel(ICharacter character, MagicDescriptionProvider magicDescriptionProvider) {
-    this.character = character;
+  public CharacterCharmModel(Hero hero, MagicDescriptionProvider magicDescriptionProvider) {
+    this.hero = hero;
     this.magicDescriptionProvider = magicDescriptionProvider;
   }
 
   public boolean isAllowedAlienCharms() {
-    ICharmTemplate charmTemplate = character.getTemplate().getMagicTemplate().getCharmTemplate();
+    ICharmTemplate charmTemplate = hero.getTemplate().getMagicTemplate().getCharmTemplate();
     return charmTemplate.isAllowedAlienCharms(getCaste().getType());
   }
 
@@ -32,11 +32,11 @@ public class CharacterCharmModel {
   }
 
   public CharmsModel getCharmConfiguration() {
-    return CharmsModelFetcher.fetch(character);
+    return CharmsModelFetcher.fetch(hero);
   }
 
   private ITypedDescription<CasteType> getCaste() {
-    return HeroConceptFetcher.fetch(character).getCaste();
+    return HeroConceptFetcher.fetch(hero).getCaste();
   }
 
   public void toggleLearned(String charmId) {

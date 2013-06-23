@@ -5,9 +5,9 @@ import net.sf.anathema.character.generic.magic.ISpell;
 import net.sf.anathema.character.generic.magic.description.MagicDescriptionProvider;
 import net.sf.anathema.character.main.model.experience.ExperienceModelFetcher;
 import net.sf.anathema.character.main.model.spells.SpellsModelFetcher;
-import net.sf.anathema.character.model.*;
 import net.sf.anathema.character.view.magic.ISpellViewProperties;
 import net.sf.anathema.framework.ui.IdentifierConfiguration;
+import net.sf.anathema.hero.model.Hero;
 import net.sf.anathema.lib.gui.AgnosticUIConfiguration;
 import net.sf.anathema.lib.gui.list.LegalityCheck;
 import net.sf.anathema.lib.resources.Resources;
@@ -18,14 +18,14 @@ import java.util.List;
 public class SpellViewProperties extends AbstractMagicLearnProperties implements ISpellViewProperties {
 
   private final net.sf.anathema.character.main.model.spells.SpellModel spellConfiguration;
-  private final ICharacter character;
+  private final Hero hero;
   private final SpellTooltipBuilder tooltipBuilder;
 
-  public SpellViewProperties(Resources resources, ICharacter character,
+  public SpellViewProperties(Resources resources, Hero hero,
                              MagicDescriptionProvider magicDescriptionProvider) {
     super(resources);
-    this.character = character;
-    this.spellConfiguration = SpellsModelFetcher.fetch(character);
+    this.hero = hero;
+    this.spellConfiguration = SpellsModelFetcher.fetch(hero);
     this.tooltipBuilder = new SpellTooltipBuilder(resources, this, magicDescriptionProvider);
   }
 
@@ -67,7 +67,7 @@ public class SpellViewProperties extends AbstractMagicLearnProperties implements
   @Override
   public boolean isRemoveAllowed(List list) {
     boolean enabled = !list.isEmpty();
-    if (enabled && ExperienceModelFetcher.fetch(character).isExperienced()) {
+    if (enabled && ExperienceModelFetcher.fetch(hero).isExperienced()) {
       for (Object spellObject : list) {
         ISpell spell = (ISpell) spellObject;
         if (spellConfiguration.isLearnedOnCreation(spell)) {

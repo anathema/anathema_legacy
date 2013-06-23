@@ -19,10 +19,10 @@ public class InitializerList {
     this.applicationModel = applicationModel;
   }
 
-  public List<CharacterModelInitializer> getInOrderFor(HeroModelGroup group) {
-    ArrayList<CharacterModelInitializer> initializerList = new ArrayList<>();
-    Collection<CharacterModelInitializer> collection = objectFactory.instantiateOrdered(RegisteredInitializer.class, applicationModel);
-    for (CharacterModelInitializer initializer : collection) {
+  public List<HeroModelInitializer> getInOrderFor(HeroModelGroup group) {
+    ArrayList<HeroModelInitializer> initializerList = new ArrayList<>();
+    Collection<HeroModelInitializer> collection = objectFactory.instantiateOrdered(RegisteredInitializer.class, applicationModel);
+    for (HeroModelInitializer initializer : collection) {
       HeroModelGroup targetGroup = initializer.getClass().getAnnotation(RegisteredInitializer.class).value();
       if (targetGroup.equals(group)) {
         initializerList.add(initializer);

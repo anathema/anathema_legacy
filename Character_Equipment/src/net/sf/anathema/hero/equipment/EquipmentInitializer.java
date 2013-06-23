@@ -3,29 +3,29 @@ package net.sf.anathema.hero.equipment;
 import net.sf.anathema.character.equipment.character.EquipmentPresenter;
 import net.sf.anathema.character.equipment.character.view.EquipmentView;
 import net.sf.anathema.character.generic.type.ICharacterType;
-import net.sf.anathema.hero.display.HeroModelGroup;
-import net.sf.anathema.character.model.ICharacter;
-import net.sf.anathema.character.presenter.initializers.CharacterModelInitializer;
+import net.sf.anathema.character.presenter.initializers.HeroModelInitializer;
 import net.sf.anathema.character.presenter.initializers.RegisteredInitializer;
 import net.sf.anathema.character.view.SectionView;
 import net.sf.anathema.framework.model.ApplicationModel;
+import net.sf.anathema.hero.display.HeroModelGroup;
+import net.sf.anathema.hero.model.Hero;
 import net.sf.anathema.initialization.reflections.Weight;
 import net.sf.anathema.lib.resources.Resources;
 
 @RegisteredInitializer(HeroModelGroup.Miscellaneous)
 @Weight(weight = 200)
-public class EquipmentInitializer implements CharacterModelInitializer {
+public class EquipmentInitializer implements HeroModelInitializer {
   @SuppressWarnings("UnusedParameters")
   public EquipmentInitializer(ApplicationModel model) {
     //nothing to do
   }
 
   @Override
-  public void initialize(SectionView sectionView, ICharacter character, Resources resources) {
+  public void initialize(SectionView sectionView, Hero hero, Resources resources) {
     String viewName = resources.getString("AdditionalTemplateView.TabName.Equipment");
-    ICharacterType characterType = character.getTemplate().getTemplateType().getCharacterType();
+    ICharacterType characterType = hero.getTemplate().getTemplateType().getCharacterType();
     EquipmentView view = sectionView.addView(viewName, EquipmentView.class, characterType);
-    EquipmentModel equipmentModel = character.getModel(EquipmentModel.ID);
+    EquipmentModel equipmentModel = hero.getModel(EquipmentModel.ID);
     new EquipmentPresenter(resources, equipmentModel, view).initPresentation();
   }
 }

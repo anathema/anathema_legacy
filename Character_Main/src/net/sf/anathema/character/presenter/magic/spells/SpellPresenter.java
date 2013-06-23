@@ -6,9 +6,9 @@ import net.sf.anathema.character.generic.magic.description.MagicDescriptionProvi
 import net.sf.anathema.character.generic.magic.spells.CircleType;
 import net.sf.anathema.character.main.model.experience.ExperienceModelFetcher;
 import net.sf.anathema.character.main.model.spells.SpellsModelFetcher;
-import net.sf.anathema.character.model.ICharacter;
 import net.sf.anathema.character.model.IMagicLearnListener;
 import net.sf.anathema.character.view.magic.ISpellView;
+import net.sf.anathema.hero.model.Hero;
 import net.sf.anathema.lib.compare.I18nedIdentificateComparator;
 import net.sf.anathema.lib.compare.I18nedIdentificateSorter;
 import net.sf.anathema.lib.control.IChangeListener;
@@ -26,18 +26,18 @@ public class SpellPresenter {
 
   private final net.sf.anathema.character.main.model.spells.SpellModel spellConfiguration;
   private net.sf.anathema.character.presenter.magic.spells.SpellModel spellModel;
-  private final ICharacter character;
+  private final Hero hero;
   private final Resources resources;
   private CircleType circle;
   private final ISpellView view;
 
-  public SpellPresenter(net.sf.anathema.character.presenter.magic.spells.SpellModel spellModel, ICharacter character, Resources resources, ISpellView view,
+  public SpellPresenter(net.sf.anathema.character.presenter.magic.spells.SpellModel spellModel, Hero hero, Resources resources, ISpellView view,
                         MagicDescriptionProvider magicDescriptionProvider) {
     this.spellModel = spellModel;
-    this.character = character;
-    SpellViewProperties properties = new SpellViewProperties(resources, character, magicDescriptionProvider);
+    this.hero  = hero;
+    SpellViewProperties properties = new SpellViewProperties(resources, hero, magicDescriptionProvider);
     this.resources = resources;
-    this.spellConfiguration = SpellsModelFetcher.fetch(character);
+    this.spellConfiguration = SpellsModelFetcher.fetch(hero);
     this.view = view;
     view.prepare(properties);
     circle = spellModel.getCircles()[0];
@@ -86,7 +86,7 @@ public class SpellPresenter {
       }
     });
     initSpellListsInView(view);
-    ExperienceModelFetcher.fetch(character).addStateChangeListener(new IChangeListener() {
+    ExperienceModelFetcher.fetch(hero).addStateChangeListener(new IChangeListener() {
       @Override
       public void changeOccurred() {
         view.clearSelection();

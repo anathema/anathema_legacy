@@ -1,8 +1,8 @@
 package net.sf.anathema.character.presenter;
 
+import net.sf.anathema.character.presenter.initializers.HeroModelInitializer;
 import net.sf.anathema.hero.display.HeroModelGroup;
 import net.sf.anathema.character.model.ICharacter;
-import net.sf.anathema.character.presenter.initializers.CharacterModelInitializer;
 import net.sf.anathema.character.presenter.initializers.InitializerList;
 import net.sf.anathema.character.view.CharacterView;
 import net.sf.anathema.character.view.SectionView;
@@ -51,7 +51,7 @@ public class CharacterPresenter implements Presenter {
   }
 
   private void initializeGroup(HeroModelGroup group, SectionView sectionView) {
-    for (CharacterModelInitializer initializer : initializerList.getInOrderFor(group)) {
+    for (HeroModelInitializer initializer : initializerList.getInOrderFor(group)) {
       initializer.initialize(sectionView, character, resources);
     }
   }

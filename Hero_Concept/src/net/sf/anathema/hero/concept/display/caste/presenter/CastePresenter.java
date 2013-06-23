@@ -5,10 +5,10 @@ import net.sf.anathema.character.generic.template.HeroTemplate;
 import net.sf.anathema.character.main.model.concept.HeroConceptFetcher;
 import net.sf.anathema.character.main.model.experience.ExperienceModel;
 import net.sf.anathema.character.main.model.experience.ExperienceModelFetcher;
-import net.sf.anathema.character.model.ICharacter;
 import net.sf.anathema.character.model.ITypedDescription;
 import net.sf.anathema.character.presenter.CasteSelectObjectUi;
 import net.sf.anathema.hero.concept.display.caste.view.CasteView;
+import net.sf.anathema.hero.model.Hero;
 import net.sf.anathema.lib.control.IChangeListener;
 import net.sf.anathema.lib.control.ObjectValueListener;
 import net.sf.anathema.lib.gui.selection.IObjectSelectionView;
@@ -21,24 +21,24 @@ import javax.swing.ListCellRenderer;
 public class CastePresenter {
 
   private final CasteView view;
-  private final ICharacter character;
+  private final Hero hero;
   private final Resources resources;
 
-  public CastePresenter(ICharacter character, CasteView view, Resources resources) {
-    this.character = character;
+  public CastePresenter(Hero hero, CasteView view, Resources resources) {
+    this.hero = hero;
     this.view = view;
     this.resources = resources;
   }
 
   public void initPresentation() {
-    HeroTemplate template = character.getTemplate();
+    HeroTemplate template = hero.getTemplate();
     String casteLabelResourceKey = template.getPresentationProperties().getCasteLabelResource();
     ObjectUi<Object> casteUi = new CasteSelectObjectUi(resources, template.getPresentationProperties());
-    CasteType[] casteTypes = template.getCasteCollection().getAllCasteTypes(character.getTemplate().getTemplateType());
+    CasteType[] casteTypes = template.getCasteCollection().getAllCasteTypes(hero.getTemplate().getTemplateType());
     ListCellRenderer renderer = new ObjectUiListCellRenderer(casteUi);
     final IObjectSelectionView<CasteType> casteView =
             view.addObjectSelectionView(resources.getString(casteLabelResourceKey), casteTypes, renderer, false);
-    final ITypedDescription<CasteType> caste = HeroConceptFetcher.fetch(character).getCaste();
+    final ITypedDescription<CasteType> caste = HeroConceptFetcher.fetch(hero).getCaste();
     casteView.setSelectedObject(caste.getType());
     casteView.addObjectSelectionChangedListener(new ObjectValueListener<CasteType>() {
       @Override
@@ -56,7 +56,7 @@ public class CastePresenter {
   }
 
   private void initExperienceListening(final IObjectSelectionView<CasteType> casteView) {
-    final ExperienceModel experienceModel = ExperienceModelFetcher.fetch(character);
+    final ExperienceModel experienceModel = ExperienceModelFetcher.fetch(hero);
     experienceModel.addStateChangeListener(new IChangeListener() {
       @Override
       public void changeOccurred() {
