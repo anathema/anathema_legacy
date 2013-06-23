@@ -58,10 +58,10 @@ public class EquipmentModelImpl extends AbstractAdditionalModelAdapter implement
     }
   };
 
-  public EquipmentModelImpl(Hero hero, ICharacterType characterType, IArmourStats naturalArmour, IEquipmentTemplateProvider equipmentTemplateProvider,
+  public EquipmentModelImpl(Hero hero, IArmourStats naturalArmour, IEquipmentTemplateProvider equipmentTemplateProvider,
                             EquipmentHeroEvaluator dataProvider, MaterialRules materialRules, IEquipmentTemplate... naturalWeapons) {
     this.printModel = new EquipmentPrintModel(this, naturalArmour);
-    this.characterType = characterType;
+    this.characterType = hero.getTemplate().getTemplateType().getCharacterType();
     this.defaultMaterial = evaluateDefaultMaterial(materialRules);
     this.equipmentTemplateProvider = equipmentTemplateProvider;
     this.dataProvider = dataProvider;

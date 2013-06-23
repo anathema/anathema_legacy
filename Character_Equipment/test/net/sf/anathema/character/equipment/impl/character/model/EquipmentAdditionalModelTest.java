@@ -31,7 +31,7 @@ public class EquipmentAdditionalModelTest {
     hero.addModel(new EssencePoolModelImpl());
     hero.addModel(new AbilitiesModelImpl());
     hero.addModel(new SpecialtiesModelImpl());
-    model = new EquipmentModelImpl(hero, characterType, naturalArmor, templateProvider, dataProvider, new DummyMaterialRules());
+    model = new EquipmentModelImpl(hero, naturalArmor, templateProvider, dataProvider, new DummyMaterialRules());
   }
 
   @Test
