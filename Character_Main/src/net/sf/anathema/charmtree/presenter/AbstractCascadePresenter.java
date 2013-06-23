@@ -1,13 +1,9 @@
 package net.sf.anathema.charmtree.presenter;
 
-import net.sf.anathema.character.generic.magic.ICharm;
 import net.sf.anathema.character.generic.magic.charms.GroupCharmTree;
 import net.sf.anathema.character.generic.magic.charms.ICharmGroup;
-import net.sf.anathema.charmtree.filters.CharmFilter;
 import net.sf.anathema.charmtree.view.ICascadeSelectionView;
 import net.sf.anathema.charmtree.view.ICharmGroupChangeListener;
-import net.sf.anathema.interaction.Command;
-import net.sf.anathema.interaction.Tool;
 import net.sf.anathema.lib.compare.I18nedIdentificateSorter;
 import net.sf.anathema.lib.control.ObjectValueListener;
 import net.sf.anathema.lib.gui.AgnosticUIConfiguration;
@@ -16,14 +12,12 @@ import net.sf.anathema.lib.util.Identifier;
 import net.sf.anathema.platform.tree.presenter.view.CascadeLoadedListener;
 
 import java.util.ArrayList;
-import java.util.List;
+import java.util.Collections;
 
 public abstract class AbstractCascadePresenter implements ICascadeSelectionPresenter {
 
   private final Resources resources;
-  protected CharmFilterSet filterSet = new CharmFilterSet();
   private ICharmGroupChangeListener changeListener;
-  private Identifier currentType;
   private ICascadeSelectionView view;
   private CharmDye dye;
   private CharmTypes charmTypes;
@@ -43,7 +37,6 @@ public abstract class AbstractCascadePresenter implements ICascadeSelectionPrese
     specialCharmPresenter.initPresentation();
     view.whenCursorLeavesCharmAreaResetAllPopups();
     createCharmGroupSelector();
-    initFilters();
     createHelpText();
     alienPresenter.initPresentation();
     interactionPresenter.initPresentation();
@@ -53,7 +46,6 @@ public abstract class AbstractCascadePresenter implements ICascadeSelectionPrese
     view.addCharmTypeSelectionListener(new ObjectValueListener<Identifier>() {
       @Override
       public void valueChanged(Identifier cascadeType) {
-        currentType = cascadeType;
         handleTypeSelectionChange(cascadeType);
       }
     });
@@ -90,31 +82,13 @@ public abstract class AbstractCascadePresenter implements ICascadeSelectionPrese
     view.addCharmTypeSelector(getResources().getString("CharmTreeView.GUI.CharmType"), types, new SelectIdentifierConfiguration(resources));
   }
 
-  protected void createFilterButton(ICascadeSelectionView selectionView) {
-    Tool tool = selectionView.addCharmFilterButton(resources.getString("CharmFilters.Filters"));
-    tool.setText(resources.getString("CharmFilters.Define"));
-    tool.setCommand(new DefineCharmFilters());
-  }
-
   private void createHelpText() {
     view.addCharmCascadeHelp(resources.getString("CharmTreeView.GUI.HelpText"));
   }
 
   private ICharmGroup[] sortCharmGroups(ICharmGroup[] originalGroups) {
     ArrayList<ICharmGroup> filteredGroups = new ArrayList<>();
-    for (ICharmGroup group : originalGroups) {
-      boolean acceptGroup = false;
-      for (ICharm charm : group.getAllCharms()) {
-        boolean acceptCharm = filterSet.acceptsCharm(charm);
-        if (acceptCharm) {
-          acceptGroup = true;
-          break;
-        }
-      }
-      if (acceptGroup) {
-        filteredGroups.add(group);
-      }
-    }
+    Collections.addAll(filteredGroups, originalGroups);
     ICharmGroup[] filteredGroupArray = filteredGroups.toArray(new ICharmGroup[filteredGroups.size()]);
     if (!filteredGroups.isEmpty()) {
       I18nedIdentificateSorter<ICharmGroup> sorter = new I18nedIdentificateSorter<>();
@@ -161,15 +135,6 @@ public abstract class AbstractCascadePresenter implements ICascadeSelectionPrese
 
   protected abstract GroupCharmTree getCharmTree(Identifier type);
 
-  private void initFilters() {
-    CharmFilterContainer charms = getFilterContainer();
-    List<CharmFilter> charmFilters = charms.getCharmFilters();
-    filterSet.init(charmFilters);
-    createFilterButton(view);
-  }
-
-  protected abstract CharmFilterContainer getFilterContainer();
-
   protected void setAlienCharmPresenter(AlienCharmPresenter presenter) {
     this.alienPresenter = presenter;
   }
@@ -180,26 +145,5 @@ public abstract class AbstractCascadePresenter implements ICascadeSelectionPrese
 
   public void setCharmGroups(CharmGroupCollection charmGroups) {
     this.charmGroups = charmGroups;
-  }
-
-  private class DefineCharmFilters implements Command {
-    @Override
-    public void execute() {
-      CharmFilterDefinitionView definitionView = view.startEditingFilters(resources, filterSet);
-      definitionView.whenEditIsFinished(new FilterDefinitionListener() {
-        @Override
-        public void changeConfirmed() {
-          filterSet.applyAllFilters();
-          handleTypeSelectionChange(currentType);
-          changeListener.reselect();
-        }
-
-        @Override
-        public void changeAborted() {
-          filterSet.resetAllFilters();
-        }
-      });
-      definitionView.show();
-    }
   }
 }

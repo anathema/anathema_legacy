@@ -4,7 +4,6 @@ import net.sf.anathema.character.generic.magic.ICharm;
 import net.sf.anathema.character.generic.magic.charms.ICharmGroup;
 import net.sf.anathema.character.generic.type.ICharacterType;
 import net.sf.anathema.charmtree.builder.CharmGraphNodeBuilder;
-import net.sf.anathema.charmtree.presenter.CharmFilterSet;
 import net.sf.anathema.graph.nodes.IIdentifiedRegularNode;
 import net.sf.anathema.graph.nodes.IRegularNode;
 import net.sf.anathema.lib.util.Identifier;
@@ -22,31 +21,20 @@ public abstract class AbstractCharmGroupChangeListener implements ICharmGroupCha
 
   private final ICharmGroupArbitrator arbitrator;
   private final CharmTreeRenderer charmTreeRenderer;
-  private final CharmFilterSet charmFilterSet;
   private ICharmGroup currentGroup;
   private Identifier currentType;
   private final CharmDisplayPropertiesMap displayPropertiesMap;
 
-  public AbstractCharmGroupChangeListener(ICharmGroupArbitrator arbitrator, CharmFilterSet charmFilterSet, CharmTreeRenderer treeRenderer,
+  public AbstractCharmGroupChangeListener(ICharmGroupArbitrator arbitrator, CharmTreeRenderer treeRenderer,
                                           CharmDisplayPropertiesMap charmDisplayPropertiesMap) {
     this.charmTreeRenderer = treeRenderer;
     this.arbitrator = arbitrator;
-    this.charmFilterSet = charmFilterSet;
     this.displayPropertiesMap = charmDisplayPropertiesMap;
   }
 
   @Override
   public final void valueChanged(Object cascade, Object type) {
     loadCharmTree((ICharmGroup) cascade, (Identifier) type);
-  }
-
-  protected boolean filterAncestors(ICharm charm) {
-    for (ICharm prerequisite : charm.getRenderingPrerequisiteCharms()) {
-      if (!charmFilterSet.filterCharm(prerequisite, true) || !filterAncestors(prerequisite)) {
-        return false;
-      }
-    }
-    return true;
   }
 
   private void loadCharmTree(ICharmGroup charmGroup, Identifier type) {
@@ -79,9 +67,6 @@ public abstract class AbstractCharmGroupChangeListener implements ICharmGroupCha
   private Set<ICharm> getDisplayCharms(ICharmGroup charmGroup) {
     Set<ICharm> charmsToDisplay = new LinkedHashSet<>();
     for (ICharm charm : arbitrator.getCharms(charmGroup)) {
-      if (!charmFilterSet.filterCharm(charm, false) || !filterAncestors(charm)) {
-        continue;
-      }
       charmsToDisplay.add(charm);
       for (ICharm prerequisite : charm.getRenderingPrerequisiteCharms()) {
         if (charmGroup.getId().equals(prerequisite.getGroupId())) {

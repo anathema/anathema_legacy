@@ -9,15 +9,12 @@ import net.sf.anathema.character.generic.type.ICharacterType;
 import net.sf.anathema.character.main.model.charms.CharmsModel;
 import net.sf.anathema.character.model.charm.ICharmLearnListener;
 import net.sf.anathema.character.model.charm.ILearningCharmGroup;
-import net.sf.anathema.charmtree.filters.CharmFilter;
 import net.sf.anathema.hero.change.ChangeAnnouncer;
 import net.sf.anathema.hero.model.Hero;
 import net.sf.anathema.hero.model.InitializationContext;
 import net.sf.anathema.lib.control.IChangeListener;
 import net.sf.anathema.lib.exception.NotYetImplementedException;
 import net.sf.anathema.lib.util.Identifier;
-
-import java.util.List;
 
 public class DummyCharmsModel implements CharmsModel {
 
@@ -133,11 +130,6 @@ public class DummyCharmsModel implements CharmsModel {
   @Override
   public ISpecialCharm[] getSpecialCharms() {
     return new ISpecialCharm[0];
-  }
-
-  @Override
-  public List<CharmFilter> getCharmFilters() {
-    return null;
   }
 
   @Override

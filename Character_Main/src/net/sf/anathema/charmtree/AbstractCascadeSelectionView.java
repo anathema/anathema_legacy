@@ -2,21 +2,15 @@ package net.sf.anathema.charmtree;
 
 import net.miginfocom.layout.CC;
 import net.miginfocom.swing.MigLayout;
-import net.sf.anathema.character.equipment.impl.character.view.AddToComponent;
-import net.sf.anathema.charmtree.presenter.CharmFilterDefinitionView;
-import net.sf.anathema.charmtree.presenter.CharmFilterSet;
-import net.sf.anathema.charmtree.presenter.SwingFilterDefinitionView;
 import net.sf.anathema.charmtree.view.CharmTreeRenderer;
 import net.sf.anathema.charmtree.view.ICascadeSelectionView;
 import net.sf.anathema.charmtree.view.ICharmGroupChangeListener;
 import net.sf.anathema.charmtree.view.svg.GenericCascadeRenderer;
-import net.sf.anathema.interaction.Tool;
 import net.sf.anathema.lib.control.ObjectValueListener;
 import net.sf.anathema.lib.gui.AgnosticUIConfiguration;
 import net.sf.anathema.lib.gui.ui.ConfigurableListCellRenderer;
 import net.sf.anathema.lib.gui.widgets.ChangeableJComboBox;
 import net.sf.anathema.lib.gui.widgets.IChangeableJComboBox;
-import net.sf.anathema.lib.resources.Resources;
 import net.sf.anathema.lib.util.Identifier;
 import net.sf.anathema.platform.tree.document.GenericCascadeFactory;
 import net.sf.anathema.platform.tree.presenter.view.CascadeLoadedListener;
@@ -25,7 +19,6 @@ import net.sf.anathema.platform.tree.presenter.view.NodeProperties;
 import net.sf.anathema.platform.tree.presenter.view.ToolTipProperties;
 import net.sf.anathema.platform.tree.view.SwingCascadeStrategy;
 import net.sf.anathema.platform.tree.view.SwingTreeView;
-import net.sf.anathema.swing.interaction.ActionInteraction;
 
 import javax.swing.JComponent;
 import javax.swing.JLabel;
@@ -113,16 +106,6 @@ public abstract class AbstractCascadeSelectionView implements ICascadeSelectionV
   }
 
   @Override
-  public Tool addCharmFilterButton(String borderText) {
-    JPanel buttonPanel = new JPanel();
-    ActionInteraction interaction = new ActionInteraction();
-    interaction.addTo(new AddToComponent(buttonPanel));
-    buttonPanel.setBorder(new TitledBorder(borderText));
-    getSelectionComponent().add(buttonPanel);
-    return interaction;
-  }
-
-  @Override
   public void addCharmCascadeHelp(String helpText) {
     JLabel help = new JLabel(helpText);
     getSelectionComponent().add(help, new CC().growX().pushX());
@@ -164,10 +147,5 @@ public abstract class AbstractCascadeSelectionView implements ICascadeSelectionV
         ToolTipManager.sharedInstance().setEnabled(true);
       }
     });
-  }
-
-  @Override
-  public CharmFilterDefinitionView startEditingFilters(Resources resources, CharmFilterSet filterSet) {
-    return new SwingFilterDefinitionView(resources, filterSet);
   }
 }
