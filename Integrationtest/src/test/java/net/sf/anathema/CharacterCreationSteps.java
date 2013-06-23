@@ -14,7 +14,7 @@ import net.sf.anathema.character.itemtype.CharacterItemTypeRetrieval;
 import net.sf.anathema.character.model.Character;
 import net.sf.anathema.framework.IApplicationModel;
 import net.sf.anathema.framework.item.IItemType;
-import net.sf.anathema.framework.persistence.IRepositoryItemPersister;
+import net.sf.anathema.framework.persistence.RepositoryItemPersister;
 import net.sf.anathema.framework.repository.Item;
 import net.sf.anathema.lib.registry.IRegistry;
 import net.sf.anathema.lib.util.SimpleIdentifier;
@@ -97,9 +97,9 @@ public class CharacterCreationSteps {
   private Character createCharacter(HeroTemplate template) {
     CharacterStatisticsConfiguration creationRules = new CharacterStatisticsConfiguration();
     creationRules.setTemplate(template);
-    IRegistry<IItemType, IRepositoryItemPersister> persisterRegistry = model.getPersisterRegistry();
+    IRegistry<IItemType, RepositoryItemPersister> persisterRegistry = model.getPersisterRegistry();
     IItemType characterItemType = model.getItemTypeRegistry().getById(CharacterItemTypeRetrieval.CHARACTER_ITEM_TYPE_ID);
-    IRepositoryItemPersister itemPersister = persisterRegistry.get(characterItemType);
+    RepositoryItemPersister itemPersister = persisterRegistry.get(characterItemType);
     Item item = itemPersister.createNew(creationRules);
     return (net.sf.anathema.character.model.Character) item.getItemData();
   }

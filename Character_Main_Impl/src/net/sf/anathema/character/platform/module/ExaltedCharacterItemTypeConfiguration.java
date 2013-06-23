@@ -10,7 +10,7 @@ import net.sf.anathema.character.itemtype.CharacterItemTypeRetrieval;
 import net.sf.anathema.character.platform.module.repository.CharacterCreationTemplateFactory;
 import net.sf.anathema.framework.IApplicationModel;
 import net.sf.anathema.framework.module.AbstractPersistableItemTypeConfiguration;
-import net.sf.anathema.framework.persistence.IRepositoryItemPersister;
+import net.sf.anathema.framework.persistence.RepositoryItemPersister;
 import net.sf.anathema.framework.presenter.view.IItemTypeViewProperties;
 import net.sf.anathema.framework.repository.IRepositoryFileResolver;
 import net.sf.anathema.framework.repository.ItemType;
@@ -30,7 +30,7 @@ public class ExaltedCharacterItemTypeConfiguration extends AbstractPersistableIt
   }
 
   @Override
-  protected IRepositoryItemPersister createPersister(IApplicationModel model) {
+  protected RepositoryItemPersister createPersister(IApplicationModel model) {
     return new ExaltedCharacterPersister(getItemType(), CharacterGenericsExtractor.getGenerics(model), model.getMessaging());
   }
 

@@ -7,7 +7,7 @@ import net.sf.anathema.character.impl.model.ExaltedCharacter;
 import net.sf.anathema.character.main.model.description.HeroDescriptionFetcher;
 import net.sf.anathema.framework.item.IItemType;
 import net.sf.anathema.framework.messaging.IMessaging;
-import net.sf.anathema.framework.persistence.IRepositoryItemPersister;
+import net.sf.anathema.framework.persistence.ItemMetaDataPersister;
 import net.sf.anathema.framework.persistence.RepositoryItemPersister;
 import net.sf.anathema.framework.repository.AnathemaDataItem;
 import net.sf.anathema.framework.repository.IItem;
@@ -35,9 +35,9 @@ import java.io.OutputStream;
 
 import static net.sf.anathema.character.impl.persistence.ICharacterXmlConstants.TAG_EXALTED_CHARACTER_ROOT;
 
-public class ExaltedCharacterPersister implements IRepositoryItemPersister {
+public class ExaltedCharacterPersister implements RepositoryItemPersister {
 
-  private final RepositoryItemPersister repositoryItemPerister = new RepositoryItemPersister();
+  private final ItemMetaDataPersister repositoryItemPerister = new ItemMetaDataPersister();
   private final CharacterDescriptionPersister descriptionPersister = new CharacterDescriptionPersister();
   private final CharacterStatisticPersister statisticsPersister;
   private final IItemType characterType;

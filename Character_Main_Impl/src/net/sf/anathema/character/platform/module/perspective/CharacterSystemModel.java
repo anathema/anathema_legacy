@@ -3,6 +3,7 @@ package net.sf.anathema.character.platform.module.perspective;
 import net.sf.anathema.character.CharacterPrintNameFileScanner;
 import net.sf.anathema.character.generic.framework.CharacterGenericsExtractor;
 import net.sf.anathema.character.generic.framework.ICharacterGenerics;
+import net.sf.anathema.character.impl.persistence.ExaltedCharacterPersister;
 import net.sf.anathema.character.main.model.experience.ExperienceModelFetcher;
 import net.sf.anathema.character.perspective.PreloadedDescriptiveFeatures;
 import net.sf.anathema.character.perspective.model.CharacterIdentifier;
@@ -11,7 +12,10 @@ import net.sf.anathema.character.perspective.model.CharacterPersistenceModel;
 import net.sf.anathema.character.perspective.model.ItemSystemModel;
 import net.sf.anathema.character.perspective.model.NewCharacterListener;
 import net.sf.anathema.character.platform.module.RegExCharacterPrintNameFileScanner;
+import net.sf.anathema.character.platform.module.repository.CharacterCreationTemplateFactory;
 import net.sf.anathema.framework.IApplicationModel;
+import net.sf.anathema.framework.item.IItemType;
+import net.sf.anathema.framework.persistence.RepositoryItemPersister;
 import net.sf.anathema.framework.presenter.ItemReceiver;
 import net.sf.anathema.framework.presenter.action.NewItemCommand;
 import net.sf.anathema.framework.reporting.ControlledPrintCommand;
@@ -22,6 +26,7 @@ import net.sf.anathema.framework.view.PrintNameFile;
 import net.sf.anathema.hero.model.Hero;
 import net.sf.anathema.lib.control.IChangeListener;
 import net.sf.anathema.lib.resources.Resources;
+import net.sf.anathema.lib.workflow.wizard.selection.ItemTemplateFactory;
 import org.jmock.example.announcer.Announcer;
 
 import java.io.IOException;
@@ -76,9 +81,13 @@ public class CharacterSystemModel implements ItemSystemModel {
   }
 
   private CharacterPrintNameFileScanner createFileScanner() {
-    ICharacterGenerics generics = CharacterGenericsExtractor.getGenerics(model);
+    ICharacterGenerics generics = getCharacterGenerics();
     IRepositoryFileResolver repositoryFileResolver = model.getRepository().getRepositoryFileResolver();
     return new RegExCharacterPrintNameFileScanner(generics.getCharacterTypes(), generics.getCasteCollectionRegistry(), repositoryFileResolver);
+  }
+
+  private ICharacterGenerics getCharacterGenerics() {
+    return CharacterGenericsExtractor.getGenerics(model);
   }
 
   @Override
@@ -150,7 +159,10 @@ public class CharacterSystemModel implements ItemSystemModel {
         characterAddedListener.announce().added(character);
       }
     };
-    new NewItemCommand(retrieveCharacterItemType(model), model, resources, receiver).execute();
+    IItemType itemType = retrieveCharacterItemType(model);
+    ItemTemplateFactory factory = new CharacterCreationTemplateFactory(getCharacterGenerics(), resources);
+    RepositoryItemPersister persister = new ExaltedCharacterPersister(itemType, getCharacterGenerics(), model.getMessaging());
+    new NewItemCommand(factory, resources, receiver, persister).execute();
   }
 
   @Override

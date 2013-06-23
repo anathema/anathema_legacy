@@ -3,7 +3,7 @@ package net.sf.anathema.framework.module;
 import net.sf.anathema.framework.IApplicationModel;
 import net.sf.anathema.framework.extension.IAnathemaExtension;
 import net.sf.anathema.framework.item.IItemType;
-import net.sf.anathema.framework.persistence.IRepositoryItemPersister;
+import net.sf.anathema.framework.persistence.RepositoryItemPersister;
 import net.sf.anathema.framework.presenter.item.ItemTypeCreationViewPropertiesExtensionPoint;
 import net.sf.anathema.framework.presenter.view.IItemTypeViewProperties;
 import net.sf.anathema.framework.view.ApplicationView;
@@ -31,5 +31,5 @@ public abstract class AbstractPersistableItemTypeConfiguration extends AbstractI
 
   protected abstract IItemTypeViewProperties createItemTypeCreationProperties(IApplicationModel anathemaModel, Resources resources);
 
-  protected abstract IRepositoryItemPersister createPersister(IApplicationModel model);
+  protected abstract RepositoryItemPersister createPersister(IApplicationModel model);
 }
