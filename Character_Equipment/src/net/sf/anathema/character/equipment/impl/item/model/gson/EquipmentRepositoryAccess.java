@@ -1,7 +1,7 @@
 package net.sf.anathema.character.equipment.impl.item.model.gson;
 
 import net.sf.anathema.framework.item.IItemType;
-import net.sf.anathema.framework.repository.IRepository;
+import net.sf.anathema.framework.repository.Repository;
 import net.sf.anathema.framework.repository.RepositoryStringAccess;
 
 import java.nio.file.Path;
@@ -9,11 +9,11 @@ import java.util.Collection;
 
 public class EquipmentRepositoryAccess implements EquipmentAccess {
 
-  private final IRepository repository;
+  private final Repository repository;
   private final IItemType equipmentType;
   private final RepositoryStringAccess repositoryStringAccess;
 
-  public EquipmentRepositoryAccess(IRepository repository, IItemType equipmentType) {
+  public EquipmentRepositoryAccess(Repository repository, IItemType equipmentType) {
     this.repository = repository;
     this.equipmentType = equipmentType;
     this.repositoryStringAccess = new RepositoryStringAccess(repository, equipmentType);
@@ -24,6 +24,7 @@ public class EquipmentRepositoryAccess implements EquipmentAccess {
     return repository.getRepositoryFileResolver().listAllFiles(equipmentType.getRepositoryConfiguration());
   }
 
+  @SuppressWarnings("ResultOfMethodCallIgnored")
   @Override
   public void delete(String id) {
     repository.getRepositoryFileResolver().getMainFile(equipmentType.getRepositoryConfiguration(), id).delete();

@@ -12,10 +12,10 @@ import java.io.InputStream;
 import java.io.OutputStream;
 
 public class RepositoryStringAccess {
-  private final IRepository repository;
+  private final Repository repository;
   private final IItemType itemType;
 
-  public RepositoryStringAccess(IRepository repository, IItemType itemType) {
+  public RepositoryStringAccess(Repository repository, IItemType itemType) {
     this.repository = repository;
     this.itemType = itemType;
   }

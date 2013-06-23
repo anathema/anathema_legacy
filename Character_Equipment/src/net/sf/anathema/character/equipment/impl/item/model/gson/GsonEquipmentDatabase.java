@@ -7,7 +7,7 @@ import net.sf.anathema.framework.IApplicationModel;
 import net.sf.anathema.framework.item.IItemType;
 import net.sf.anathema.framework.item.IItemTypeRegistry;
 import net.sf.anathema.framework.itemdata.model.NonPersistableItemData;
-import net.sf.anathema.framework.repository.IRepository;
+import net.sf.anathema.framework.repository.Repository;
 import net.sf.anathema.lib.control.IChangeListener;
 import org.apache.commons.io.FilenameUtils;
 import org.jmock.example.announcer.Announcer;
@@ -21,7 +21,7 @@ public class GsonEquipmentDatabase extends NonPersistableItemData implements IEq
   public static final String DATABASE_FOLDER = "equipment";
 
   public static GsonEquipmentDatabase CreateFrom(IApplicationModel anathemaModel) {
-    IRepository repository = anathemaModel.getRepository();
+    Repository repository = anathemaModel.getRepository();
     IItemType itemType = getItemType(anathemaModel);
     return new GsonEquipmentDatabase(new EquipmentRepositoryAccess(repository, itemType));
   }

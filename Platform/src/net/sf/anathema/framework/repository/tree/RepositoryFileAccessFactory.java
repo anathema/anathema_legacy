@@ -1,7 +1,7 @@
 package net.sf.anathema.framework.repository.tree;
 
 import net.sf.anathema.framework.presenter.action.ConfigurableFileProvider;
-import net.sf.anathema.framework.repository.IRepository;
+import net.sf.anathema.framework.repository.Repository;
 import net.sf.anathema.framework.repository.access.IRepositoryFileAccess;
 import net.sf.anathema.framework.repository.access.IRepositoryReadAccess;
 import net.sf.anathema.framework.view.PrintNameFile;
@@ -12,9 +12,9 @@ import java.io.FileNotFoundException;
 import java.io.InputStream;
 
 public class RepositoryFileAccessFactory {
-  private final IRepository repository;
+  private final Repository repository;
 
-  public RepositoryFileAccessFactory(IRepository repository) {
+  public RepositoryFileAccessFactory(Repository repository) {
     this.repository = repository;
   }
 

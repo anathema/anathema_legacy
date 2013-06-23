@@ -9,7 +9,7 @@ import net.sf.anathema.framework.messaging.IMessaging;
 import net.sf.anathema.framework.messaging.Messaging;
 import net.sf.anathema.framework.persistence.IRepositoryItemPersister;
 import net.sf.anathema.framework.reporting.IReportRegistry;
-import net.sf.anathema.framework.repository.IRepository;
+import net.sf.anathema.framework.repository.FileSystemRepository;
 import net.sf.anathema.framework.repository.Repository;
 import net.sf.anathema.initialization.reflections.ResourceLoader;
 import net.sf.anathema.lib.registry.IRegistry;
@@ -24,12 +24,12 @@ public class ApplicationModel implements IApplicationModel {
   private final IRegistry<IItemType, IRepositoryItemPersister> persisterRegistry = new Registry<>();
   private final IReportRegistry reportRegistry = new ReportRegistry();
   private final IItemTypeRegistry itemTypes = new ItemTypeRegistry();
-  private final Repository repository;
+  private final FileSystemRepository repository;
   private final Messaging messaging;
   private final ResourceLoader resourceLoader;
 
   public ApplicationModel(File repositoryFolder, Resources resources, ResourceLoader resourceLoader) {
-    this.repository = new Repository(repositoryFolder);
+    this.repository = new FileSystemRepository(repositoryFolder);
     this.messaging = new Messaging(resources);
     InformativeMessages informativeMessages = new WordsOfTheWise(resourceLoader);
     this.resourceLoader = resourceLoader;
@@ -37,7 +37,7 @@ public class ApplicationModel implements IApplicationModel {
   }
 
   @Override
-  public final IRepository getRepository() {
+  public final Repository getRepository() {
     return repository;
   }
 

@@ -11,7 +11,7 @@ import net.sf.anathema.character.generic.template.additional.IGlobalAdditionalTe
 import net.sf.anathema.character.generic.type.CharacterTypes;
 import net.sf.anathema.character.generic.type.ICharacterType;
 import net.sf.anathema.initialization.ObjectFactory;
-import net.sf.anathema.initialization.repository.IDataFileProvider;
+import net.sf.anathema.initialization.repository.DataFileProvider;
 import net.sf.anathema.lib.registry.IIdentificateRegistry;
 import net.sf.anathema.lib.registry.IRegistry;
 
@@ -33,7 +33,7 @@ public interface ICharacterGenerics {
 
   ICharmProvider getCharmProvider();
 
-  IDataFileProvider getDataFileProvider();
+  DataFileProvider getDataFileProvider();
 
   <T extends IExtensibleDataSet> T getDataSet(Class<T> set);
 

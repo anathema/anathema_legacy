@@ -3,7 +3,7 @@ package net.sf.anathema.framework.repository.tree;
 import net.sf.anathema.framework.item.IItemType;
 import net.sf.anathema.framework.item.IItemTypeRegistry;
 import net.sf.anathema.framework.repository.IBasicRepositoryIdData;
-import net.sf.anathema.framework.repository.IRepository;
+import net.sf.anathema.framework.repository.Repository;
 import net.sf.anathema.framework.repository.RepositoryException;
 import net.sf.anathema.framework.repository.access.IRepositoryFileAccess;
 import net.sf.anathema.framework.repository.access.IRepositoryWriteAccess;
@@ -20,12 +20,12 @@ public class RepositoryTreeModel implements IRepositoryTreeModel {
   private final IItemType[] integratedItemTypes;
   private final Announcer<IRepositoryTreeModelListener> control = Announcer.to(IRepositoryTreeModelListener.class);
   private final Announcer<IChangeListener> changeControl = Announcer.to(IChangeListener.class);
-  private final IRepository repository;
+  private final Repository repository;
   private final IItemTypeRegistry itemTypes;
   private Object[] currentlySelectedUserObjects;
   private final RepositoryFileAccessFactory repositoryFileAccessFactory;
 
-  public RepositoryTreeModel(IRepository repository, IItemTypeRegistry itemTypes) {
+  public RepositoryTreeModel(Repository repository, IItemTypeRegistry itemTypes) {
     this.repository = repository;
     this.itemTypes = itemTypes;
     this.integratedItemTypes = createIntegratedItemTypes(itemTypes);
@@ -143,6 +143,5 @@ public class RepositoryTreeModel implements IRepositoryTreeModel {
   @Override
   public void refreshItem(IItemType type, String id) {
     control.announce().printNameFileAdded(repository.getPrintNameFileAccess().getPrintNameFile(type, id));
-    repository.refresh();
   }
 }

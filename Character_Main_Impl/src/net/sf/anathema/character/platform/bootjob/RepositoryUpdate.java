@@ -5,7 +5,6 @@ import net.sf.anathema.framework.IApplicationModel;
 import net.sf.anathema.framework.Version;
 import net.sf.anathema.initialization.BootJob;
 import net.sf.anathema.initialization.IBootJob;
-import net.sf.anathema.initialization.bootjob.RepositoryBackup;
 import net.sf.anathema.initialization.reflections.Weight;
 import net.sf.anathema.lib.logging.Logger;
 import net.sf.anathema.lib.resources.Resources;
@@ -17,8 +16,8 @@ import static java.text.MessageFormat.format;
 
 @BootJob
 @Weight(weight = 5)
-public class RepositoryCleanup implements IBootJob {
-  private static final Logger logger = Logger.getLogger(RepositoryCleanup.class);
+public class RepositoryUpdate implements IBootJob {
+  private static final Logger logger = Logger.getLogger(RepositoryUpdate.class);
 
   @Override
   public void run(Resources resources, IApplicationModel model) {
@@ -35,13 +34,6 @@ public class RepositoryCleanup implements IBootJob {
       return;
     }
     logger.info(format("Updating to {0}.", anathemaVersion.asString()));
-    updateRepository(resources, model, anathemaVersion, repositoryVersion);
-  }
-
-  private void updateRepository(Resources resources, IApplicationModel model, Version anathemaVersion, RepositoryVersion repositoryVersion) {
-    new RepositoryBackup(resources, model).backupRepository();
-    new FirstEditionDeleter(model).actOnAllCharacters();
-    new CharacterTransformer(model, new TemplateTransformer()).actOnAllCharacters();
     repositoryVersion.updateTo(anathemaVersion);
   }
 

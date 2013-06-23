@@ -4,7 +4,7 @@ import net.sf.anathema.framework.IApplicationModel;
 import net.sf.anathema.framework.item.IItemType;
 import net.sf.anathema.framework.persistence.IRepositoryItemPersister;
 import net.sf.anathema.framework.repository.IItem;
-import net.sf.anathema.framework.repository.IRepository;
+import net.sf.anathema.framework.repository.Repository;
 import net.sf.anathema.framework.repository.access.IRepositoryReadAccess;
 import net.sf.anathema.framework.repository.access.IRepositoryWriteAccess;
 import net.sf.anathema.framework.repository.access.printname.IPrintNameFileAccess;
@@ -42,7 +42,7 @@ public class CharacterPersistenceModel {
   }
 
   private IRepositoryReadAccess createReadAccess(String repositoryId) {
-    IRepository repository = model.getRepository();
+    Repository repository = model.getRepository();
     return repository.openReadAccess(getCharacterItemType(), repositoryId);
   }
 
@@ -52,7 +52,7 @@ public class CharacterPersistenceModel {
 
   public void save(IItem item) throws IOException {
     IRepositoryItemPersister persister = findPersister();
-    IRepository repository = model.getRepository();
+    Repository repository = model.getRepository();
     IRepositoryWriteAccess writeAccess = repository.createWriteAccess(item);
     persister.save(writeAccess, item);
   }

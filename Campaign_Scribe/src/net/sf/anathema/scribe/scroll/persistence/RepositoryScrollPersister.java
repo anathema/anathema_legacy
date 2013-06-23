@@ -1,6 +1,6 @@
 package net.sf.anathema.scribe.scroll.persistence;
 
-import net.sf.anathema.framework.repository.IRepository;
+import net.sf.anathema.framework.repository.Repository;
 import net.sf.anathema.framework.repository.access.IRepositoryReadAccess;
 import net.sf.anathema.framework.repository.access.IRepositoryWriteAccess;
 import net.sf.anathema.framework.repository.access.printname.ReferenceAccess;
@@ -16,11 +16,11 @@ import java.util.Collection;
 
 public class RepositoryScrollPersister implements ScrollPersister {
 
-  private final IRepository model;
+  private final Repository model;
   private final Clock clock;
   private final ScrollGson scrollGson = new ScrollGson();
 
-  public RepositoryScrollPersister(IRepository model, Clock clock) {
+  public RepositoryScrollPersister(Repository model, Clock clock) {
     this.model = model;
     this.clock = clock;
   }
