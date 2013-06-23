@@ -6,8 +6,9 @@ import net.sf.anathema.character.generic.template.magic.AbilityFavoringType;
 import net.sf.anathema.character.generic.traits.TraitType;
 import net.sf.anathema.character.generic.traits.groups.IIdentifiedTraitTypeGroup;
 import net.sf.anathema.character.generic.traits.types.AbilityType;
-import net.sf.anathema.hero.model.Hero;
+import net.sf.anathema.character.main.model.abilities.AbilityModelFetcher;
 import net.sf.anathema.character.reporting.pdf.content.traits.FavorableTraitContent;
+import net.sf.anathema.hero.model.Hero;
 import net.sf.anathema.lib.resources.Resources;
 
 import java.util.Arrays;
@@ -15,8 +16,11 @@ import java.util.List;
 
 public class AbilitiesContent extends FavorableTraitContent {
 
+  private Hero hero;
+
   public AbilitiesContent(Hero hero, IGenericCharacter character, Resources resources) {
     super(hero, character, resources);
+    this.hero = hero;
   }
 
   @Override
@@ -31,7 +35,7 @@ public class AbilitiesContent extends FavorableTraitContent {
 
   @Override
   public IIdentifiedTraitTypeGroup[] getIdentifiedTraitTypeGroups() {
-    return getCharacter().getAbilityTypeGroups();
+    return AbilityModelFetcher.fetch(hero).getAbilityTypeGroups();
   }
 
   @Override

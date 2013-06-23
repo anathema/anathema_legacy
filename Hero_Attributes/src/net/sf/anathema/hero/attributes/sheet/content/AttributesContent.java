@@ -1,8 +1,8 @@
 package net.sf.anathema.hero.attributes.sheet.content;
 
 import net.sf.anathema.character.generic.character.IGenericCharacter;
-import net.sf.anathema.hero.model.Hero;
 import net.sf.anathema.character.reporting.pdf.content.AbstractSubBoxContent;
+import net.sf.anathema.hero.model.Hero;
 import net.sf.anathema.lib.resources.Resources;
 
 import java.util.List;

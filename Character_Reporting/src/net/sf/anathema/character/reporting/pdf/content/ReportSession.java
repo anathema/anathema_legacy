@@ -51,6 +51,6 @@ public class ReportSession {
 
   public <C extends SubContent> C createContent(Class<C> contentClass) {
     ReportContentFactory<C> factory = registry.getFactory(contentClass);
-    return factory.create(this, character, hero);
+    return factory.create(this);
   }
 }

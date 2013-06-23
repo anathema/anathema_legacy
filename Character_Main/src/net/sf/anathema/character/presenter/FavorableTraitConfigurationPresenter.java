@@ -1,6 +1,5 @@
 package net.sf.anathema.character.presenter;
 
-import net.sf.anathema.hero.change.ChangeFlavor;
 import net.sf.anathema.character.generic.template.presentation.IPresentationProperties;
 import net.sf.anathema.character.generic.traits.groups.IIdentifiedTraitTypeGroup;
 import net.sf.anathema.character.generic.traits.groups.TraitTypeGroup;
@@ -9,13 +8,14 @@ import net.sf.anathema.character.library.trait.Trait;
 import net.sf.anathema.character.library.trait.favorable.FavorableState;
 import net.sf.anathema.character.library.trait.favorable.IFavorableStateChangedListener;
 import net.sf.anathema.character.library.trait.presenter.TraitPresenter;
-import net.sf.anathema.hero.model.Hero;
-import net.sf.anathema.hero.change.FlavoredChangeListener;
 import net.sf.anathema.character.main.model.experience.ExperienceChange;
 import net.sf.anathema.character.main.model.experience.ExperienceModelFetcher;
 import net.sf.anathema.character.main.model.traits.TraitMap;
 import net.sf.anathema.character.main.model.traits.TraitModelFetcher;
 import net.sf.anathema.character.view.IGroupedFavorableTraitConfigurationView;
+import net.sf.anathema.hero.change.ChangeFlavor;
+import net.sf.anathema.hero.change.FlavoredChangeListener;
+import net.sf.anathema.hero.model.Hero;
 import net.sf.anathema.interaction.Command;
 import net.sf.anathema.interaction.ToggleTool;
 import net.sf.anathema.lib.collection.IdentityMapping;

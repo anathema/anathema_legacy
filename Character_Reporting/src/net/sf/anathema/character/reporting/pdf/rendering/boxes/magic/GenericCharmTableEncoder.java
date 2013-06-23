@@ -57,7 +57,7 @@ public class GenericCharmTableEncoder extends AbstractTableEncoder<ReportSession
   protected PdfPTable createTable(SheetGraphics graphics, ReportSession session, Bounds bounds) throws DocumentException {
     IGenericCharacter character = session.getCharacter();
     PdfContentByte directContent = graphics.getDirectContent();
-    List<TraitType> traits = GenericCharmUtilities.getGenericCharmTraits(character);
+    List<TraitType> traits = GenericCharmUtilities.getGenericCharmTraits(session.getHero());
     Font font = graphics.createTableFont();
     PdfTemplate learnedTemplate = createCharmDotTemplate(directContent, BaseColor.BLACK);
     PdfTemplate notLearnedTemplate = createCharmDotTemplate(directContent, BaseColor.WHITE);

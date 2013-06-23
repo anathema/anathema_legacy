@@ -1,12 +1,12 @@
 package net.sf.anathema.character.main.testing.dummy.magic;
 
-import net.sf.anathema.hero.change.ChangeAnnouncer;
 import net.sf.anathema.character.generic.magic.ISpell;
 import net.sf.anathema.character.generic.magic.spells.CircleType;
+import net.sf.anathema.character.main.model.spells.SpellModel;
+import net.sf.anathema.character.model.IMagicLearnListener;
+import net.sf.anathema.hero.change.ChangeAnnouncer;
 import net.sf.anathema.hero.model.Hero;
 import net.sf.anathema.hero.model.InitializationContext;
-import net.sf.anathema.character.model.IMagicLearnListener;
-import net.sf.anathema.character.main.model.spells.SpellModel;
 import net.sf.anathema.lib.control.IChangeListener;
 import net.sf.anathema.lib.exception.NotYetImplementedException;
 import net.sf.anathema.lib.util.Identifier;

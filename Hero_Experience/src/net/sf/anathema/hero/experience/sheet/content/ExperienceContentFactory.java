@@ -1,7 +1,5 @@
 package net.sf.anathema.hero.experience.sheet.content;
 
-import net.sf.anathema.character.generic.character.IGenericCharacter;
-import net.sf.anathema.hero.model.Hero;
 import net.sf.anathema.character.reporting.pdf.content.RegisteredReportContent;
 import net.sf.anathema.character.reporting.pdf.content.ReportContentFactory;
 import net.sf.anathema.character.reporting.pdf.content.ReportSession;
@@ -17,7 +15,7 @@ public class ExperienceContentFactory implements ReportContentFactory<Experience
   }
 
   @Override
-  public ExperienceContent create(ReportSession session, IGenericCharacter character, Hero hero) {
-    return new ExperienceContent(resources, character);
+  public ExperienceContent create(ReportSession session) {
+    return new ExperienceContent(resources, session.getCharacter());
   }
 }

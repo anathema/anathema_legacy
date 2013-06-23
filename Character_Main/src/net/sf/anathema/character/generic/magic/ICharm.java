@@ -1,8 +1,8 @@
 package net.sf.anathema.character.generic.magic;
 
-import net.sf.anathema.hero.magic.MagicCollection;
 import net.sf.anathema.character.generic.magic.charms.ICharmLearnArbitrator;
 import net.sf.anathema.character.generic.magic.charms.IndirectCharmRequirement;
+import net.sf.anathema.hero.magic.MagicCollection;
 import net.sf.anathema.lib.util.Identifier;
 
 import java.util.Set;

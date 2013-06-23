@@ -1,7 +1,6 @@
 package net.sf.anathema.character.generic.impl.magic;
 
 import com.google.common.base.Preconditions;
-import net.sf.anathema.hero.magic.MagicCollection;
 import net.sf.anathema.character.generic.impl.magic.charm.prerequisite.CompositeLearnWorker;
 import net.sf.anathema.character.generic.impl.magic.charm.prerequisite.ICharmLearnWorker;
 import net.sf.anathema.character.generic.impl.magic.charm.prerequisite.SelectiveCharmGroup;
@@ -24,10 +23,11 @@ import net.sf.anathema.character.generic.traits.TraitType;
 import net.sf.anathema.character.generic.traits.types.OtherTraitType;
 import net.sf.anathema.character.generic.type.ICharacterType;
 import net.sf.anathema.character.main.model.concept.HeroConcept;
+import net.sf.anathema.character.main.model.concept.HeroConceptFetcher;
 import net.sf.anathema.character.main.model.traits.TraitMap;
 import net.sf.anathema.character.main.model.traits.TraitModelFetcher;
+import net.sf.anathema.hero.magic.MagicCollection;
 import net.sf.anathema.hero.model.Hero;
-import net.sf.anathema.character.main.model.concept.HeroConceptFetcher;
 import net.sf.anathema.lib.util.Identifier;
 import net.sf.anathema.lib.util.SimpleIdentifier;
 

@@ -212,11 +212,6 @@ public class GenericCharacter implements IGenericCharacter {
   }
 
   @Override
-  public int getAge() {
-    return HeroConceptFetcher.fetch(hero).getAge().getValue();
-  }
-
-  @Override
   public IIdentifiedTraitTypeGroup[] getAbilityTypeGroups() {
     return AbilityModelFetcher.fetch(hero).getAbilityTypeGroups();
   }

@@ -1,6 +1,5 @@
 package net.sf.anathema.character.magic.dummy;
 
-import net.sf.anathema.hero.magic.MagicCollection;
 import net.sf.anathema.character.generic.impl.magic.CharmAttribute;
 import net.sf.anathema.character.generic.impl.magic.CostList;
 import net.sf.anathema.character.generic.impl.magic.charm.type.CharmTypeModel;
@@ -21,6 +20,7 @@ import net.sf.anathema.character.generic.traits.types.ValuedTraitType;
 import net.sf.anathema.character.generic.type.ICharacterType;
 import net.sf.anathema.character.main.model.traits.TraitMap;
 import net.sf.anathema.character.main.model.traits.TraitModelFetcher;
+import net.sf.anathema.hero.magic.MagicCollection;
 import net.sf.anathema.hero.model.Hero;
 import net.sf.anathema.lib.util.Identifier;
 import net.sf.anathema.lib.util.SimpleIdentifier;

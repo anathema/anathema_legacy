@@ -2,7 +2,6 @@ package net.sf.anathema.character.generic.framework.magic.view;
 
 import net.sf.anathema.lib.util.Identifier;
 
-import javax.swing.event.ListSelectionListener;
 import java.util.Comparator;
 
 public interface IMagicLearnView {

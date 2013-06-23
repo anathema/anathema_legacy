@@ -6,8 +6,6 @@ import net.sf.anathema.lib.gui.AgnosticUIConfiguration;
 import net.sf.anathema.lib.gui.selection.IObjectSelectionView;
 import net.sf.anathema.lib.workflow.textualdescription.ITextView;
 
-import javax.swing.ListCellRenderer;
-
 public interface IVirtueFlawView {
 
   ITextView addTextView(String label, int columnCount);

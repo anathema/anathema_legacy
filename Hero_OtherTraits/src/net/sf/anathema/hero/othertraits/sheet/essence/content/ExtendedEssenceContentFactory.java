@@ -1,7 +1,5 @@
 package net.sf.anathema.hero.othertraits.sheet.essence.content;
 
-import net.sf.anathema.character.generic.character.IGenericCharacter;
-import net.sf.anathema.hero.model.Hero;
 import net.sf.anathema.character.reporting.pdf.content.RegisteredReportContent;
 import net.sf.anathema.character.reporting.pdf.content.ReportContentFactory;
 import net.sf.anathema.character.reporting.pdf.content.ReportSession;
@@ -17,7 +15,7 @@ public class ExtendedEssenceContentFactory implements ReportContentFactory<Exten
   }
 
   @Override
-  public ExtendedEssenceContent create(ReportSession session, IGenericCharacter character, Hero hero) {
-    return new ExtendedEssenceContent(resources, character, hero);
+  public ExtendedEssenceContent create(ReportSession session) {
+    return new ExtendedEssenceContent(resources, session.getCharacter(), session.getHero());
   }
 }

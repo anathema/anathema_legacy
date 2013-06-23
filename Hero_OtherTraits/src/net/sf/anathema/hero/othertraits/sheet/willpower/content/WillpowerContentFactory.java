@@ -1,7 +1,5 @@
 package net.sf.anathema.hero.othertraits.sheet.willpower.content;
 
-import net.sf.anathema.character.generic.character.IGenericCharacter;
-import net.sf.anathema.hero.model.Hero;
 import net.sf.anathema.character.reporting.pdf.content.RegisteredReportContent;
 import net.sf.anathema.character.reporting.pdf.content.ReportContentFactory;
 import net.sf.anathema.character.reporting.pdf.content.ReportSession;
@@ -17,7 +15,7 @@ public class WillpowerContentFactory implements ReportContentFactory<WillpowerCo
   }
 
   @Override
-  public WillpowerContent create(ReportSession session, IGenericCharacter character, Hero hero) {
-    return new WillpowerContent(resources, character);
+  public WillpowerContent create(ReportSession session) {
+    return new WillpowerContent(resources, session.getCharacter());
   }
 }

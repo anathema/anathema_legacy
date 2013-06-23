@@ -14,11 +14,9 @@ import net.sf.anathema.lib.util.IdentifiedInteger;
 
 import java.util.List;
 
-public interface IGenericCharacter extends ILimitationContext {
+public interface IGenericCharacter {
 
   ITraitLimitation getEssenceLimitation();
-
-  int getAge();
 
   CasteType getCasteType();
 

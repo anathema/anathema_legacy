@@ -1,9 +1,9 @@
 package net.sf.anathema.platform.tree.document.components;
 
+import net.sf.anathema.framework.ui.Area;
 import net.sf.anathema.graph.nodes.IIdentifiedRegularNode;
 import net.sf.anathema.graph.nodes.ISimpleNode;
 import net.sf.anathema.lib.collection.MultiEntryMap;
-import net.sf.anathema.framework.ui.Area;
 
 import java.util.Map;
 import java.util.Set;

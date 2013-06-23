@@ -18,12 +18,12 @@ import net.sf.anathema.character.library.trait.specialties.DefaultTraitReference
 import net.sf.anathema.character.library.trait.specialties.SpecialtiesContainer;
 import net.sf.anathema.character.library.trait.specialties.Specialty;
 import net.sf.anathema.character.library.trait.subtrait.ISubTraitContainer;
-import net.sf.anathema.hero.model.Hero;
 import net.sf.anathema.character.main.testing.dummy.DummyCasteType;
 import net.sf.anathema.character.main.testing.dummy.DummyHero;
-import net.sf.anathema.character.main.testing.dummy.models.DummyTraitModel;
 import net.sf.anathema.character.main.testing.dummy.models.DummyHeroConcept;
 import net.sf.anathema.character.main.testing.dummy.models.DummyOtherTraitModel;
+import net.sf.anathema.character.main.testing.dummy.models.DummyTraitModel;
+import net.sf.anathema.hero.model.Hero;
 import net.sf.anathema.lib.control.IIntValueChangedListener;
 import org.junit.Before;
 import org.junit.Test;

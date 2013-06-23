@@ -2,7 +2,6 @@ package net.sf.anathema.character.equipment.character;
 
 import net.sf.anathema.character.equipment.MagicalMaterial;
 import net.sf.anathema.character.equipment.MaterialComposition;
-import net.sf.anathema.hero.equipment.EquipmentModel;
 import net.sf.anathema.character.equipment.character.model.IEquipmentItem;
 import net.sf.anathema.character.equipment.character.preference.AnathemaEquipmentPreferences;
 import net.sf.anathema.character.equipment.character.view.EquipmentView;
@@ -13,6 +12,7 @@ import net.sf.anathema.character.equipment.item.EquipmentTemplateNameComparator;
 import net.sf.anathema.character.equipment.item.personalization.EquipmentPersonalizationModel;
 import net.sf.anathema.character.equipment.item.personalization.EquipmentPersonalizationProperties;
 import net.sf.anathema.framework.presenter.resources.BasicUi;
+import net.sf.anathema.hero.equipment.EquipmentModel;
 import net.sf.anathema.interaction.Command;
 import net.sf.anathema.interaction.Tool;
 import net.sf.anathema.lib.control.IChangeListener;

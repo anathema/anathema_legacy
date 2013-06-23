@@ -1,14 +1,11 @@
 package net.sf.anathema.character.presenter.magic.combo;
 
 import com.google.common.base.Strings;
-import net.sf.anathema.hero.change.ChangeFlavor;
 import net.sf.anathema.character.generic.magic.ICharm;
-import net.sf.anathema.hero.model.Hero;
-import net.sf.anathema.hero.change.FlavoredChangeListener;
+import net.sf.anathema.character.main.model.charms.CharmsModel;
 import net.sf.anathema.character.main.model.combos.CombosModel;
 import net.sf.anathema.character.main.model.concept.ConceptChange;
 import net.sf.anathema.character.model.charm.CharmLearnAdapter;
-import net.sf.anathema.character.main.model.charms.CharmsModel;
 import net.sf.anathema.character.model.charm.ICharmLearnListener;
 import net.sf.anathema.character.model.charm.ICombo;
 import net.sf.anathema.character.model.charm.IComboConfigurationListener;
@@ -18,6 +15,9 @@ import net.sf.anathema.character.view.magic.IComboView;
 import net.sf.anathema.character.view.magic.IComboViewListener;
 import net.sf.anathema.charmtree.builder.MagicDisplayLabeler;
 import net.sf.anathema.framework.presenter.resources.BasicUi;
+import net.sf.anathema.hero.change.ChangeFlavor;
+import net.sf.anathema.hero.change.FlavoredChangeListener;
+import net.sf.anathema.hero.model.Hero;
 import net.sf.anathema.interaction.Command;
 import net.sf.anathema.interaction.Tool;
 import net.sf.anathema.lib.compare.I18nedIdentificateComparator;

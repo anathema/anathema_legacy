@@ -1,6 +1,5 @@
 package net.sf.anathema.character.impl.model.charm.special;
 
-import net.sf.anathema.hero.change.ChangeFlavor;
 import net.sf.anathema.character.generic.magic.ICharm;
 import net.sf.anathema.character.generic.magic.charms.ICharmLearnableArbitrator;
 import net.sf.anathema.character.generic.magic.charms.special.IMultiLearnableCharm;
@@ -14,12 +13,13 @@ import net.sf.anathema.character.library.trait.DefaultTraitType;
 import net.sf.anathema.character.library.trait.LimitedTrait;
 import net.sf.anathema.character.library.trait.Trait;
 import net.sf.anathema.character.library.trait.favorable.IncrementChecker;
-import net.sf.anathema.hero.model.Hero;
-import net.sf.anathema.hero.change.FlavoredChangeListener;
+import net.sf.anathema.character.main.model.charms.CharmsModel;
 import net.sf.anathema.character.main.model.traits.TraitChangeFlavor;
 import net.sf.anathema.character.main.model.traits.TraitModelFetcher;
-import net.sf.anathema.character.main.model.charms.CharmsModel;
 import net.sf.anathema.character.model.charm.special.IMultiLearnableCharmConfiguration;
+import net.sf.anathema.hero.change.ChangeFlavor;
+import net.sf.anathema.hero.change.FlavoredChangeListener;
+import net.sf.anathema.hero.model.Hero;
 import net.sf.anathema.lib.control.IIntValueChangedListener;
 import net.sf.anathema.lib.data.Range;
 import org.jmock.example.announcer.Announcer;

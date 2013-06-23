@@ -8,10 +8,10 @@ import net.sf.anathema.character.generic.magic.IMagicStats;
 import net.sf.anathema.character.generic.traits.ITraitTemplate;
 import net.sf.anathema.character.generic.traits.TraitType;
 import net.sf.anathema.character.generic.traits.groups.IIdentifiedTraitTypeGroup;
-import net.sf.anathema.hero.model.Hero;
 import net.sf.anathema.character.reporting.pdf.content.AbstractSubBoxContent;
 import net.sf.anathema.character.reporting.pdf.content.magic.GenericCharmUtilities;
 import net.sf.anathema.character.reporting.pdf.util.MagicLearnUtilities;
+import net.sf.anathema.hero.model.Hero;
 import net.sf.anathema.lib.resources.Resources;
 import net.sf.anathema.lib.util.Identifier;
 

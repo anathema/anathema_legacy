@@ -1,11 +1,11 @@
 package net.sf.anathema.character.impl.model.charm.special;
 
-import net.sf.anathema.hero.magic.MagicCollection;
 import net.sf.anathema.character.generic.magic.ICharm;
 import net.sf.anathema.character.generic.template.magic.MartialArtsCharmConfiguration;
-import net.sf.anathema.character.main.model.experience.ExperienceModel;
 import net.sf.anathema.character.main.model.charms.CharmsModel;
+import net.sf.anathema.character.main.model.experience.ExperienceModel;
 import net.sf.anathema.character.model.charm.ILearningCharmGroup;
+import net.sf.anathema.hero.magic.MagicCollection;
 
 import java.util.HashSet;
 import java.util.Set;

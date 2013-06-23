@@ -1,7 +1,5 @@
 package net.sf.anathema.character.reporting.pdf.content.magic;
 
-import net.sf.anathema.character.generic.character.IGenericCharacter;
-import net.sf.anathema.hero.model.Hero;
 import net.sf.anathema.character.reporting.pdf.content.RegisteredReportContent;
 import net.sf.anathema.character.reporting.pdf.content.ReportContentFactory;
 import net.sf.anathema.character.reporting.pdf.content.ReportSession;
@@ -17,7 +15,7 @@ public class SpellsOnlyContentFactory implements ReportContentFactory<SpellsOnly
     }
 
   @Override
-  public SpellsOnlyContent create(ReportSession session, IGenericCharacter character, Hero hero) {
-    return new SpellsOnlyContent(character, session, resources);
+  public SpellsOnlyContent create(ReportSession session) {
+    return new SpellsOnlyContent(session.getCharacter(), session, resources);
   }
 }

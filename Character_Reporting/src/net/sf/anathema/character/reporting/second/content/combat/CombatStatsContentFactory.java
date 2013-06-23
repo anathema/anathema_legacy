@@ -1,7 +1,5 @@
 package net.sf.anathema.character.reporting.second.content.combat;
 
-import net.sf.anathema.character.generic.character.IGenericCharacter;
-import net.sf.anathema.hero.model.Hero;
 import net.sf.anathema.character.reporting.pdf.content.RegisteredReportContent;
 import net.sf.anathema.character.reporting.pdf.content.ReportContentFactory;
 import net.sf.anathema.character.reporting.pdf.content.ReportSession;
@@ -16,7 +14,7 @@ public class CombatStatsContentFactory implements ReportContentFactory<CombatSta
   }
 
   @Override
-  public CombatStatsContent create(ReportSession session, IGenericCharacter character, Hero hero) {
-    return new CombatStatsContent(hero, character, resources);
+  public CombatStatsContent create(ReportSession session) {
+    return new CombatStatsContent(session.getHero(), session.getCharacter(), resources);
   }
 }

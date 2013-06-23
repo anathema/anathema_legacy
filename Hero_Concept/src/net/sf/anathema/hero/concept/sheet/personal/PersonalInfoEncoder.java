@@ -3,6 +3,7 @@ package net.sf.anathema.hero.concept.sheet.personal;
 import net.sf.anathema.character.generic.caste.CasteType;
 import net.sf.anathema.character.generic.character.IGenericCharacter;
 import net.sf.anathema.character.generic.type.ICharacterType;
+import net.sf.anathema.character.main.model.concept.HeroConceptFetcher;
 import net.sf.anathema.character.reporting.pdf.content.ReportSession;
 import net.sf.anathema.character.reporting.pdf.rendering.extent.Bounds;
 import net.sf.anathema.character.reporting.pdf.rendering.extent.Position;
@@ -52,7 +53,7 @@ public class PersonalInfoEncoder implements IVariableContentEncoder {
     for (int i = 0; i < shortColumnCount; i++) {
       shortColumnX[i] = bounds.x + i * (shortEntryWidth + TEXT_PADDING);
     }
-    String ageContent = Integer.toString(reportSession.getCharacter().getAge());
+    String ageContent = Integer.toString(HeroConceptFetcher.fetch(reportSession.getHero()).getAge().getValue());
     graphics.drawLabelledContent(getLabel("Age"), ageContent, new Position(shortColumnX[0], secondRowY), shortEntryWidth);
     String sexContent = reportSession.getDescription().getSex();
     graphics.drawLabelledContent(getLabel("Sex"), sexContent, new Position(shortColumnX[1], secondRowY), shortEntryWidth);

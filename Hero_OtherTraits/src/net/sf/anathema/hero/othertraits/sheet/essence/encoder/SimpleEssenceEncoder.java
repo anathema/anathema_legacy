@@ -3,12 +3,12 @@ package net.sf.anathema.hero.othertraits.sheet.essence.encoder;
 import com.itextpdf.text.DocumentException;
 import com.itextpdf.text.pdf.PdfContentByte;
 import net.sf.anathema.character.reporting.pdf.content.ReportSession;
-import net.sf.anathema.hero.othertraits.sheet.essence.content.SimpleEssenceContent;
 import net.sf.anathema.character.reporting.pdf.rendering.extent.Bounds;
 import net.sf.anathema.character.reporting.pdf.rendering.extent.Position;
 import net.sf.anathema.character.reporting.pdf.rendering.general.box.AbstractContentEncoder;
 import net.sf.anathema.character.reporting.pdf.rendering.general.traits.PdfTraitEncoder;
 import net.sf.anathema.character.reporting.pdf.rendering.graphics.SheetGraphics;
+import net.sf.anathema.hero.othertraits.sheet.essence.content.SimpleEssenceContent;
 
 import static com.itextpdf.text.pdf.PdfContentByte.ALIGN_RIGHT;
 

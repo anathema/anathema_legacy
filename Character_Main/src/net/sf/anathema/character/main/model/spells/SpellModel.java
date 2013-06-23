@@ -2,8 +2,8 @@ package net.sf.anathema.character.main.model.spells;
 
 import net.sf.anathema.character.generic.magic.ISpell;
 import net.sf.anathema.character.generic.magic.spells.CircleType;
-import net.sf.anathema.hero.model.HeroModel;
 import net.sf.anathema.character.model.IMagicLearnListener;
+import net.sf.anathema.hero.model.HeroModel;
 import net.sf.anathema.lib.control.IChangeListener;
 import net.sf.anathema.lib.util.Identifier;
 import net.sf.anathema.lib.util.SimpleIdentifier;

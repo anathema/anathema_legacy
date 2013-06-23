@@ -1,6 +1,5 @@
 package net.sf.anathema.hero.othertraits.model.traits;
 
-import net.sf.anathema.hero.change.ChangeAnnouncer;
 import net.sf.anathema.character.generic.additionalrules.IAdditionalTraitRules;
 import net.sf.anathema.character.generic.template.HeroTemplate;
 import net.sf.anathema.character.generic.template.ITraitLimitation;
@@ -14,13 +13,14 @@ import net.sf.anathema.character.impl.model.traits.WillpowerTemplateFactory;
 import net.sf.anathema.character.impl.model.traits.creation.DefaultTraitFactory;
 import net.sf.anathema.character.impl.model.traits.creation.TypedTraitTemplateFactory;
 import net.sf.anathema.character.library.trait.Trait;
-import net.sf.anathema.hero.model.Hero;
-import net.sf.anathema.hero.model.HeroModel;
-import net.sf.anathema.hero.model.InitializationContext;
 import net.sf.anathema.character.main.model.othertraits.OtherTraitModel;
 import net.sf.anathema.character.main.model.traits.DefaultTraitMap;
 import net.sf.anathema.character.main.model.traits.TraitModel;
 import net.sf.anathema.character.main.model.traits.TraitModelFetcher;
+import net.sf.anathema.hero.change.ChangeAnnouncer;
+import net.sf.anathema.hero.model.Hero;
+import net.sf.anathema.hero.model.HeroModel;
+import net.sf.anathema.hero.model.InitializationContext;
 import net.sf.anathema.hero.traits.model.event.TraitValueChangedListener;
 import net.sf.anathema.lib.util.Identifier;
 

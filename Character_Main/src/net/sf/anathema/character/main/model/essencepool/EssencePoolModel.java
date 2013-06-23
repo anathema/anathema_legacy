@@ -6,8 +6,6 @@ import net.sf.anathema.lib.util.IdentifiedInteger;
 import net.sf.anathema.lib.util.Identifier;
 import net.sf.anathema.lib.util.SimpleIdentifier;
 
-import java.util.List;
-
 public interface EssencePoolModel {
 
   Identifier ID = new SimpleIdentifier("EssencePool");

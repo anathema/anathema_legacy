@@ -6,6 +6,7 @@ import net.sf.anathema.character.generic.traits.types.AbilityType;
 import net.sf.anathema.character.impl.model.context.trait.CreationTraitValueStrategy;
 import net.sf.anathema.character.impl.model.creation.bonus.magic.MagicCostCalculator;
 import net.sf.anathema.character.library.trait.favorable.FavorableState;
+import net.sf.anathema.character.main.model.spells.SpellModel;
 import net.sf.anathema.character.main.model.traits.TraitModel;
 import net.sf.anathema.character.main.model.traits.TraitModelFetcher;
 import net.sf.anathema.character.main.testing.BasicCharacterTestCase;
@@ -15,7 +16,6 @@ import net.sf.anathema.character.main.testing.dummy.DummyHero;
 import net.sf.anathema.character.main.testing.dummy.magic.DummyCharmsModel;
 import net.sf.anathema.character.main.testing.dummy.magic.DummySpell;
 import net.sf.anathema.character.main.testing.dummy.magic.DummySpellModel;
-import net.sf.anathema.character.main.model.spells.SpellModel;
 import org.junit.Before;
 import org.junit.Test;
 

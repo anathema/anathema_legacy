@@ -171,11 +171,6 @@ public class DummyGenericCharacter implements IGenericCharacter {
   }
 
   @Override
-  public int getAge() {
-    return 0;
-  }
-
-  @Override
   public IIdentifiedTraitTypeGroup[] getAbilityTypeGroups() {
     return new IIdentifiedTraitTypeGroup[0];
   }

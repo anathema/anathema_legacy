@@ -2,8 +2,8 @@ package net.sf.anathema.character.generic.framework.xml.trait.allocation;
 
 import net.sf.anathema.character.generic.framework.xml.trait.IMinimumRestriction;
 import net.sf.anathema.character.generic.traits.TraitType;
-import net.sf.anathema.hero.model.Hero;
 import net.sf.anathema.character.main.model.traits.TraitModelFetcher;
+import net.sf.anathema.hero.model.Hero;
 import net.sf.anathema.lib.lang.ReflectionEqualsObject;
 
 import java.util.ArrayList;

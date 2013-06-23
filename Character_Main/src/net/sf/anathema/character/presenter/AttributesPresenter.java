@@ -2,9 +2,9 @@ package net.sf.anathema.character.presenter;
 
 import net.sf.anathema.character.generic.traits.groups.IIdentifiedTraitTypeGroup;
 import net.sf.anathema.character.main.model.attributes.AttributesModelFetcher;
-import net.sf.anathema.hero.model.Hero;
 import net.sf.anathema.character.view.ColumnCount;
 import net.sf.anathema.character.view.IGroupedFavorableTraitConfigurationView;
+import net.sf.anathema.hero.model.Hero;
 import net.sf.anathema.lib.resources.Resources;
 
 public class AttributesPresenter {

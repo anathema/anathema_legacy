@@ -1,7 +1,5 @@
 package net.sf.anathema.character.equipment.impl.reporting.content;
 
-import net.sf.anathema.character.generic.character.IGenericCharacter;
-import net.sf.anathema.hero.model.Hero;
 import net.sf.anathema.character.reporting.pdf.content.RegisteredReportContent;
 import net.sf.anathema.character.reporting.pdf.content.ReportContentFactory;
 import net.sf.anathema.character.reporting.pdf.content.ReportSession;
@@ -17,7 +15,7 @@ public class WeaponryContentFactory implements ReportContentFactory<WeaponryCont
   }
 
   @Override
-  public WeaponryContent create(ReportSession session, IGenericCharacter character, Hero hero) {
-    return new WeaponryContent(hero, resources);
+  public WeaponryContent create(ReportSession session) {
+    return new WeaponryContent(session.getHero(), resources);
   }
 }

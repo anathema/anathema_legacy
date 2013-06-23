@@ -10,8 +10,6 @@ import com.itextpdf.text.Phrase;
 import com.itextpdf.text.Rectangle;
 import com.itextpdf.text.pdf.PdfPCell;
 import com.itextpdf.text.pdf.PdfPTable;
-import net.sf.anathema.hero.othertraits.sheet.essence.content.ExtendedEssenceContent;
-import net.sf.anathema.hero.othertraits.sheet.essence.content.pools.PoolRow;
 import net.sf.anathema.character.reporting.pdf.rendering.extent.Bounds;
 import net.sf.anathema.character.reporting.pdf.rendering.extent.Position;
 import net.sf.anathema.character.reporting.pdf.rendering.general.table.ITableEncoder;
@@ -19,6 +17,8 @@ import net.sf.anathema.character.reporting.pdf.rendering.general.traits.PdfTrait
 import net.sf.anathema.character.reporting.pdf.rendering.graphics.GraphicsTemplate;
 import net.sf.anathema.character.reporting.pdf.rendering.graphics.SheetGraphics;
 import net.sf.anathema.character.reporting.pdf.rendering.graphics.TableCell;
+import net.sf.anathema.hero.othertraits.sheet.essence.content.ExtendedEssenceContent;
+import net.sf.anathema.hero.othertraits.sheet.essence.content.pools.PoolRow;
 import org.apache.commons.lang3.ArrayUtils;
 
 import java.util.List;

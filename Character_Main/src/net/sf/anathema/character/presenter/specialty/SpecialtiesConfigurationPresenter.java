@@ -1,21 +1,21 @@
 package net.sf.anathema.character.presenter.specialty;
 
-import net.sf.anathema.character.library.trait.specialties.SpecialtiesModel;
-import net.sf.anathema.hero.change.ChangeFlavor;
 import net.sf.anathema.character.generic.framework.ITraitReference;
 import net.sf.anathema.character.generic.framework.resources.TraitInternationalizer;
 import net.sf.anathema.character.library.trait.presenter.TraitPresenter;
 import net.sf.anathema.character.library.trait.specialties.ITraitReferencesChangeListener;
+import net.sf.anathema.character.library.trait.specialties.SpecialtiesModel;
 import net.sf.anathema.character.library.trait.specialties.Specialty;
 import net.sf.anathema.character.library.trait.subtrait.ISpecialtyListener;
 import net.sf.anathema.character.library.trait.subtrait.ISubTraitContainer;
-import net.sf.anathema.hero.model.Hero;
-import net.sf.anathema.hero.change.FlavoredChangeListener;
 import net.sf.anathema.character.main.model.experience.ExperienceChange;
 import net.sf.anathema.character.view.ISpecialtyView;
 import net.sf.anathema.framework.presenter.resources.BasicUi;
 import net.sf.anathema.framework.presenter.view.IButtonControlledComboEditView;
 import net.sf.anathema.framework.view.AbstractSelectCellRenderer;
+import net.sf.anathema.hero.change.ChangeFlavor;
+import net.sf.anathema.hero.change.FlavoredChangeListener;
+import net.sf.anathema.hero.model.Hero;
 import net.sf.anathema.interaction.Command;
 import net.sf.anathema.lib.collection.IdentityMapping;
 import net.sf.anathema.lib.control.IChangeListener;

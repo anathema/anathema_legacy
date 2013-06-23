@@ -1,12 +1,12 @@
 package net.sf.anathema.character.impl.model.charm;
 
-import net.sf.anathema.hero.model.Hero;
 import net.sf.anathema.character.main.model.experience.ExperienceModel;
 import net.sf.anathema.character.main.model.experience.ExperienceModelFetcher;
 import net.sf.anathema.character.main.model.health.HealthModel;
 import net.sf.anathema.character.main.model.health.HealthModelFetcher;
 import net.sf.anathema.character.main.model.traits.TraitModel;
 import net.sf.anathema.character.main.model.traits.TraitModelFetcher;
+import net.sf.anathema.hero.model.Hero;
 
 public class CharmSpecialistImpl implements CharmSpecialist {
 

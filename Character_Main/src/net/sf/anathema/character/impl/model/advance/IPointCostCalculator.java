@@ -3,8 +3,8 @@ package net.sf.anathema.character.impl.model.advance;
 import net.sf.anathema.character.generic.magic.ICharm;
 import net.sf.anathema.character.generic.magic.ISpell;
 import net.sf.anathema.character.library.trait.Trait;
-import net.sf.anathema.hero.model.Hero;
 import net.sf.anathema.character.main.model.traits.TraitMap;
+import net.sf.anathema.hero.model.Hero;
 
 public interface IPointCostCalculator {
 

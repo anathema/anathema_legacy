@@ -11,8 +11,11 @@ import net.sf.anathema.character.generic.template.magic.FavoringTraitType;
 import net.sf.anathema.character.generic.traits.TraitType;
 import net.sf.anathema.character.generic.traits.groups.IIdentifiedTraitTypeGroup;
 import net.sf.anathema.character.generic.traits.groups.ITraitTypeGroup;
+import net.sf.anathema.character.main.model.abilities.AbilityModelFetcher;
+import net.sf.anathema.character.main.model.attributes.AttributesModelFetcher;
 import net.sf.anathema.character.reporting.pdf.content.ReportSession;
 import net.sf.anathema.character.reporting.pdf.content.stats.magic.GenericCharmStats;
+import net.sf.anathema.hero.model.Hero;
 
 import java.util.ArrayList;
 import java.util.Collections;
@@ -65,10 +68,10 @@ public class GenericCharmUtilities {
     return getDisplayedGenericCharmCount(session.getCharacter()) > 0;
   }
 
-  public static List<TraitType> getGenericCharmTraits(IGenericCharacter character) {
+  public static List<TraitType> getGenericCharmTraits(Hero hero) {
     List<TraitType> traits = new ArrayList<>();
-    FavoringTraitType type = character.getTemplate().getTemplateType().getCharacterType().getFavoringTraitType();
-    for (ITraitTypeGroup group : getCharmTraitGroups(character)) {
+    FavoringTraitType type = hero.getTemplate().getTemplateType().getCharacterType().getFavoringTraitType();
+    for (ITraitTypeGroup group : getCharmTraitGroups(hero)) {
       Collections.addAll(traits, group.getAllGroupTypes());
     }
     if (traits.isEmpty()) {
@@ -77,13 +80,13 @@ public class GenericCharmUtilities {
     return traits;
   }
 
-  private static IIdentifiedTraitTypeGroup[] getCharmTraitGroups(IGenericCharacter character) {
-    FavoringTraitType type = character.getTemplate().getTemplateType().getCharacterType().getFavoringTraitType();
+  private static IIdentifiedTraitTypeGroup[] getCharmTraitGroups(Hero  hero) {
+    FavoringTraitType type = hero.getTemplate().getTemplateType().getCharacterType().getFavoringTraitType();
     if (type.equals(new AbilityFavoringType())) {
-      return character.getAbilityTypeGroups();
+      return AbilityModelFetcher.fetch(hero).getAbilityTypeGroups();
     }
     if (type.equals(new AttributeFavoringType())) {
-      return character.getAttributeTypeGroups();
+      return AttributesModelFetcher.fetch(hero).getAttributeTypeGroups();
     }
     return new IIdentifiedTraitTypeGroup[0];
   }

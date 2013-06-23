@@ -7,13 +7,13 @@ import net.sf.anathema.character.generic.magic.charms.special.ISpecialCharmLearn
 import net.sf.anathema.character.generic.traits.TraitType;
 import net.sf.anathema.character.library.trait.Trait;
 import net.sf.anathema.character.library.trait.favorable.IncrementChecker;
-import net.sf.anathema.hero.model.Hero;
 import net.sf.anathema.character.main.model.health.IHealthLevelProvider;
 import net.sf.anathema.character.main.model.health.OxBodyTechniqueArbitrator;
 import net.sf.anathema.character.main.model.traits.TraitModel;
 import net.sf.anathema.character.main.model.traits.TraitModelFetcher;
 import net.sf.anathema.character.model.charm.OxBodyCategory;
 import net.sf.anathema.character.model.charm.special.IOxBodyTechniqueConfiguration;
+import net.sf.anathema.hero.model.Hero;
 import net.sf.anathema.lib.control.IIntValueChangedListener;
 import org.jmock.example.announcer.Announcer;
 

@@ -14,10 +14,10 @@ import net.sf.anathema.character.generic.template.magic.IMagicTemplate;
 import net.sf.anathema.character.generic.type.CharacterTypes;
 import net.sf.anathema.character.generic.type.ICharacterType;
 import net.sf.anathema.character.impl.model.charm.GroupedCharmIdMap;
-import net.sf.anathema.hero.model.Hero;
 import net.sf.anathema.character.main.model.concept.HeroConcept;
 import net.sf.anathema.character.main.model.concept.HeroConceptFetcher;
 import net.sf.anathema.charmtree.view.ICharmGroupArbitrator;
+import net.sf.anathema.hero.model.Hero;
 import net.sf.anathema.lib.util.Identifier;
 
 import java.util.ArrayList;

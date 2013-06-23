@@ -6,7 +6,6 @@ import net.sf.anathema.character.impl.model.CharacterStatisticsConfiguration;
 import net.sf.anathema.character.impl.model.ExaltedCharacter;
 import net.sf.anathema.character.item.DataItem;
 import net.sf.anathema.character.main.model.description.HeroDescriptionFetcher;
-import net.sf.anathema.character.model.Character;
 import net.sf.anathema.framework.item.IItemType;
 import net.sf.anathema.framework.messaging.IMessaging;
 import net.sf.anathema.framework.persistence.ItemMetaDataPersister;

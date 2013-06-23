@@ -1,7 +1,5 @@
 package net.sf.anathema.character.reporting.pdf.content.magic;
 
-import net.sf.anathema.character.generic.character.IGenericCharacter;
-import net.sf.anathema.hero.model.Hero;
 import net.sf.anathema.character.reporting.pdf.content.RegisteredReportContent;
 import net.sf.anathema.character.reporting.pdf.content.ReportContentFactory;
 import net.sf.anathema.character.reporting.pdf.content.ReportSession;
@@ -17,7 +15,7 @@ public class AllMagicContentFactory implements ReportContentFactory<AllMagicCont
     }
 
   @Override
-  public AllMagicContent create(ReportSession session, IGenericCharacter character, Hero hero) {
-    return new AllMagicContent(character, session, resources);
+  public AllMagicContent create(ReportSession session) {
+    return new AllMagicContent(session.getCharacter(), session, resources);
   }
 }

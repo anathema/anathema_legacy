@@ -1,14 +1,14 @@
 package net.sf.anathema.hero.experience.model;
 
-import net.sf.anathema.hero.change.AnnounceChangeListener;
-import net.sf.anathema.hero.change.ChangeAnnouncer;
 import net.sf.anathema.character.impl.model.advance.ExperiencePointConfiguration;
-import net.sf.anathema.hero.model.Hero;
-import net.sf.anathema.hero.model.HeroModel;
-import net.sf.anathema.hero.model.InitializationContext;
 import net.sf.anathema.character.main.model.experience.ExperienceChange;
 import net.sf.anathema.character.main.model.experience.ExperienceModel;
 import net.sf.anathema.character.model.advance.IExperiencePointConfiguration;
+import net.sf.anathema.hero.change.AnnounceChangeListener;
+import net.sf.anathema.hero.change.ChangeAnnouncer;
+import net.sf.anathema.hero.model.Hero;
+import net.sf.anathema.hero.model.HeroModel;
+import net.sf.anathema.hero.model.InitializationContext;
 import net.sf.anathema.lib.control.IChangeListener;
 import net.sf.anathema.lib.util.Identifier;
 import org.jmock.example.announcer.Announcer;

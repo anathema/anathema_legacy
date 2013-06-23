@@ -2,7 +2,6 @@ package net.sf.anathema.hero.points;
 
 import net.sf.anathema.character.generic.additionaltemplate.HeroModelBonusPointCalculator;
 import net.sf.anathema.character.generic.additionaltemplate.HeroModelExperienceCalculator;
-import net.sf.anathema.character.presenter.overview.IOverviewModel;
 import net.sf.anathema.character.presenter.overview.IValueModel;
 import net.sf.anathema.hero.change.ChangeAnnouncer;
 import net.sf.anathema.hero.model.Hero;
