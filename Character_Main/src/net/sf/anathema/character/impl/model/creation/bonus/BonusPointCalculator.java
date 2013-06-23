@@ -32,11 +32,11 @@ public class BonusPointCalculator {
 
   public void addMiscModel(List<IOverviewModel> models) {
     if (allCalculators.size() > 0) {
-      models.add(getAdditionalModelModel());
+      models.add(getMiscellaneousModel());
     }
   }
 
-  public IValueModel<Integer> getAdditionalModelModel() {
+  public IValueModel<Integer> getMiscellaneousModel() {
     return new MiscBonusModel(allCalculators);
   }
 }

@@ -122,7 +122,7 @@ public class BonusPointManagement implements IBonusPointManagement {
   private int getTotalBonusPointsSpent() {
     return attributeCalculator.getBonusPoints() + getDefaultAbilityModel().getSpentBonusPoints() + abilityCalculator.getSpecialtyBonusPointCosts() +
            getDefaultCharmModel().getSpentBonusPoints() + getVirtueModel().getSpentBonusPoints() +
-           willpowerBonusPoints + essenceBonusPoints + bonusPointCalculator.getAdditionalModelModel().getValue();
+           willpowerBonusPoints + essenceBonusPoints + bonusPointCalculator.getMiscellaneousModel().getValue();
   }
 
   private ISpendingModel getVirtueModel() {
