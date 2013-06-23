@@ -47,8 +47,7 @@ public abstract class Initializer {
   }
 
   protected void initPresentation(LocaleResources resources, IApplicationModel anathemaModel, ApplicationView view) {
-    Collection<ItemTypeConfiguration> itemTypes = itemTypeCollection.getItemTypes();
-    AnathemaPresenter presenter = new AnathemaPresenter(anathemaModel, view, resources, itemTypes, objectFactory);
+    AnathemaPresenter presenter = new AnathemaPresenter(anathemaModel, view, resources, objectFactory);
     presenter.initPresentation();
   }
 
@@ -58,7 +57,7 @@ public abstract class Initializer {
 
   private IApplicationModel initModel(Resources resources, ResourceLoader loader) throws InitializationException {
     displayMessage("Creating Model...");
-    Collection<net.sf.anathema.framework.module.ItemTypeConfiguration> itemTypes = itemTypeCollection.getItemTypes();
+    Collection<ItemTypeConfiguration> itemTypes = itemTypeCollection.getItemTypes();
     AnathemaModelInitializer modelInitializer = new AnathemaModelInitializer(initializationPreferences, itemTypes, extensionCollection);
     return modelInitializer.initializeModel(resources, reflections, loader);
   }

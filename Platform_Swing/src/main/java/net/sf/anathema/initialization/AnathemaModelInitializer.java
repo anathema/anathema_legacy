@@ -21,8 +21,7 @@ public class AnathemaModelInitializer {
   private final Collection<ItemTypeConfiguration> itemTypeConfigurations;
   private Iterable<ExtensionWithId> extensions;
 
-  public AnathemaModelInitializer(IInitializationPreferences preferences, Collection<ItemTypeConfiguration> itemTypeConfigurations,
-                                  Iterable<ExtensionWithId> extensions) {
+  public AnathemaModelInitializer(IInitializationPreferences preferences, Collection<ItemTypeConfiguration> itemTypeConfigurations, Iterable<ExtensionWithId> extensions) {
     this.preferences = preferences;
     this.itemTypeConfigurations = itemTypeConfigurations;
     this.extensions = extensions;
@@ -33,8 +32,8 @@ public class AnathemaModelInitializer {
     for (ExtensionWithId extension : extensions) {
       extension.register(model, finder, loader);
     }
-    for (net.sf.anathema.framework.module.ItemTypeConfiguration itemTypeConfiguration : itemTypeConfigurations) {
-      model.getItemTypeRegistry().registerItemType(itemTypeConfiguration.getItemType());
+    for (ItemTypeConfiguration configuration : itemTypeConfigurations) {
+      model.getItemTypeRegistry().registerItemType(configuration.getItemType());
     }
     return model;
   }

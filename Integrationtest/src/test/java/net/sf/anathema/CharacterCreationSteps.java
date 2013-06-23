@@ -97,7 +97,7 @@ public class CharacterCreationSteps {
   private Character createCharacter(HeroTemplate template) {
     CharacterStatisticsConfiguration creationRules = new CharacterStatisticsConfiguration();
     creationRules.setTemplate(template);
-    IItemType characterItemType = model.getItemTypeRegistry().getById(CharacterItemTypeRetrieval.CHARACTER_ITEM_TYPE_ID);
+    IItemType characterItemType = CharacterItemTypeRetrieval.retrieveCharacterItemType(model);
     RepositoryItemPersister itemPersister = new ExaltedCharacterPersister(characterItemType, getCharacterGenerics(), model.getMessaging());
     Item item = itemPersister.createNew(creationRules);
     return (net.sf.anathema.character.model.Character) item.getItemData();
