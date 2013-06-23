@@ -178,43 +178,7 @@ public class BonusPointManagement implements IBonusPointManagement {
 
   @Override
   public IAdditionalSpendingModel getTotalModel() {
-    return new AbstractAdditionalSpendingModel("Bonus", "Total") {
-      @Override
-      public int getAdditionalRestrictedAlotment() {
-        return getAdditionalBonusPointAmount();
-      }
-
-      @Override
-      public int getAdditionalValue() {
-        return getAdditionalBonusPointSpent();
-      }
-
-      @Override
-      public int getSpentBonusPoints() {
-        return 0;
-      }
-
-      @Override
-      public Integer getValue() {
-        return getStandardBonusPointsSpent();
-      }
-
-      @Override
-      public int getAlotment() {
-        return creationPoints.getBonusPointCount() + bonusPointCalculator.getAdditionalGeneralBonusPoints();
-      }
-
-      @Override
-      public boolean isExtensionRequired() {
-        IAdditionalRules additionalRules = hero.getTemplate().getAdditionalRules();
-        return additionalRules != null && additionalRules.getAdditionalBonusPointPools().length > 0;
-      }
-
-      @Override
-      public int getRequiredSize() {
-        return 5;
-      }
-    };
+    return new TotalBonusPointModel();
   }
 
   @Override
@@ -261,5 +225,47 @@ public class BonusPointManagement implements IBonusPointManagement {
       models.add(getFavoredCharmModel());
     }
     models.add(getDefaultCharmModel());
+  }
+
+  private class TotalBonusPointModel extends AbstractAdditionalSpendingModel {
+    public TotalBonusPointModel() {
+      super("Bonus", "Total");
+    }
+
+    @Override
+    public int getAdditionalRestrictedAlotment() {
+      return getAdditionalBonusPointAmount();
+    }
+
+    @Override
+    public int getAdditionalValue() {
+      return getAdditionalBonusPointSpent();
+    }
+
+    @Override
+    public int getSpentBonusPoints() {
+      return 0;
+    }
+
+    @Override
+    public Integer getValue() {
+      return getStandardBonusPointsSpent();
+    }
+
+    @Override
+    public int getAlotment() {
+      return creationPoints.getBonusPointCount() + bonusPointCalculator.getAdditionalGeneralBonusPoints();
+    }
+
+    @Override
+    public boolean isExtensionRequired() {
+      IAdditionalRules additionalRules = hero.getTemplate().getAdditionalRules();
+      return additionalRules != null && additionalRules.getAdditionalBonusPointPools().length > 0;
+    }
+
+    @Override
+    public int getRequiredSize() {
+      return 5;
+    }
   }
 }
