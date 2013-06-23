@@ -56,16 +56,16 @@ public class CharmConfigurationPersister {
     this.messageIndicator = messageIndicator;
   }
 
-  public void save(Element parent, ICharacter character) {
-    HeroTemplate template = character.getTemplate();
+  public void save(Element parent, Hero hero) {
+    HeroTemplate template = hero.getTemplate();
     ICharmTemplate charmTemplate = template.getMagicTemplate().getCharmTemplate();
     if (!charmTemplate.canLearnCharms()) {
       return;
     }
     Element charmsElement = parent.addElement(TAG_CHARMS);
-    CharmsModel charmConfiguration = CharmsModelFetcher.fetch(character);
+    CharmsModel charmConfiguration = CharmsModelFetcher.fetch(hero);
     saveCharms(charmsElement, charmConfiguration);
-    saveCombos(charmsElement, CombosModelFetcher.fetch(character));
+    saveCombos(charmsElement, CombosModelFetcher.fetch(hero));
   }
 
   private CharmsModel saveCharms(Element charmsElement, CharmsModel charmConfiguration) {
