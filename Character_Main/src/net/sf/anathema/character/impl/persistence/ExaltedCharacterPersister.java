@@ -4,13 +4,14 @@ import net.sf.anathema.character.generic.framework.ICharacterGenerics;
 import net.sf.anathema.character.generic.impl.magic.SpellException;
 import net.sf.anathema.character.impl.model.CharacterStatisticsConfiguration;
 import net.sf.anathema.character.impl.model.ExaltedCharacter;
+import net.sf.anathema.character.item.DataItem;
 import net.sf.anathema.character.main.model.description.HeroDescriptionFetcher;
+import net.sf.anathema.character.model.Character;
 import net.sf.anathema.framework.item.IItemType;
 import net.sf.anathema.framework.messaging.IMessaging;
 import net.sf.anathema.framework.persistence.ItemMetaDataPersister;
 import net.sf.anathema.framework.persistence.RepositoryItemPersister;
-import net.sf.anathema.framework.repository.AnathemaDataItem;
-import net.sf.anathema.framework.repository.IItem;
+import net.sf.anathema.framework.repository.Item;
 import net.sf.anathema.framework.repository.RepositoryException;
 import net.sf.anathema.framework.repository.access.IRepositoryReadAccess;
 import net.sf.anathema.framework.repository.access.IRepositoryWriteAccess;
@@ -54,7 +55,7 @@ public class ExaltedCharacterPersister implements RepositoryItemPersister {
   }
 
   @Override
-  public void save(final IRepositoryWriteAccess writeAccess, IItem item) throws IOException, RepositoryException {
+  public void save(final IRepositoryWriteAccess writeAccess, Item item) throws IOException, RepositoryException {
     OutputStream stream = null;
     try {
       stream = writeAccess.createMainOutputStream();
@@ -76,7 +77,7 @@ public class ExaltedCharacterPersister implements RepositoryItemPersister {
     }
   }
 
-  public void saveMainFile(OutputStream stream, IItem item) throws IOException {
+  public void saveMainFile(OutputStream stream, Item item) throws IOException {
     messaging.addMessage("CharacterPersistence.SavingCharacter", MessageType.INFORMATION, item.getDisplayName());
     Element rootElement = DocumentHelper.createElement(TAG_EXALTED_CHARACTER_ROOT);
     repositoryItemPerister.save(rootElement, item);
@@ -90,7 +91,7 @@ public class ExaltedCharacterPersister implements RepositoryItemPersister {
   }
 
   @Override
-  public IItem load(IRepositoryReadAccess readAccess) throws PersistenceException, RepositoryException {
+  public Item load(IRepositoryReadAccess readAccess) throws PersistenceException, RepositoryException {
     InputStream stream = null;
     try {
       if (readAccess == null) {
@@ -99,7 +100,7 @@ public class ExaltedCharacterPersister implements RepositoryItemPersister {
       stream = readAccess.openMainInputStream();
       SAXReader saxReader = new SAXReader();
       Document document = saxReader.read(stream);
-      IItem loadedItem = load(document);
+      Item loadedItem = load(document);
       ExaltedCharacter character = (ExaltedCharacter) loadedItem.getItemData();
       loadModels(readAccess, character);
       return loadedItem;
@@ -121,18 +122,18 @@ public class ExaltedCharacterPersister implements RepositoryItemPersister {
     }
   }
 
-  public IItem load(Document characterXml) throws PersistenceException {
+  public Item load(Document characterXml) throws PersistenceException {
     Element documentRoot = characterXml.getRootElement();
     ExaltedCharacter character = statisticsPersister.load(documentRoot);
     descriptionPersister.load(documentRoot, HeroDescriptionFetcher.fetch(character));
     markCharacterReadyForWork(character);
-    IItem item = new AnathemaDataItem(characterType, character);
+    Item item = createItem(character);
     repositoryItemPerister.load(documentRoot, item);
     return item;
   }
 
   @Override
-  public IItem createNew(IDialogModelTemplate template) throws PersistenceException {
+  public Item createNew(IDialogModelTemplate template) throws PersistenceException {
     if (!(template instanceof CharacterStatisticsConfiguration)) {
       throw new IllegalArgumentException("Bad template type for character creation.");
     }
@@ -140,10 +141,14 @@ public class ExaltedCharacterPersister implements RepositoryItemPersister {
     try {
       ExaltedCharacter character = new ExaltedCharacter(configuration.getTemplate(), generics);
       markCharacterReadyForWork(character);
-      return new AnathemaDataItem(characterType, character);
+      return createItem(character);
     } catch (SpellException e) {
       throw new PersistenceException("A problem occured while creating a new character", e);
     }
+  }
+
+  private Item createItem(ExaltedCharacter character) {
+    return new DataItem(characterType, character);
   }
 
   private void markCharacterReadyForWork(ExaltedCharacter character) {

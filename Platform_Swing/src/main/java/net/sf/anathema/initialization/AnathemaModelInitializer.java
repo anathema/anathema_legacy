@@ -3,7 +3,7 @@ package net.sf.anathema.initialization;
 import net.sf.anathema.framework.IApplicationModel;
 import net.sf.anathema.framework.configuration.IInitializationPreferences;
 import net.sf.anathema.framework.model.ApplicationModel;
-import net.sf.anathema.framework.module.IItemTypeConfiguration;
+import net.sf.anathema.framework.module.ItemTypeConfiguration;
 import net.sf.anathema.framework.repository.RepositoryException;
 import net.sf.anathema.initialization.reflections.AnnotationFinder;
 import net.sf.anathema.initialization.reflections.ResourceLoader;
@@ -18,10 +18,10 @@ import java.util.Collection;
 public class AnathemaModelInitializer {
 
   private final IInitializationPreferences preferences;
-  private final Collection<IItemTypeConfiguration> itemTypeConfigurations;
+  private final Collection<ItemTypeConfiguration> itemTypeConfigurations;
   private Iterable<ExtensionWithId> extensions;
 
-  public AnathemaModelInitializer(IInitializationPreferences preferences, Collection<IItemTypeConfiguration> itemTypeConfigurations,
+  public AnathemaModelInitializer(IInitializationPreferences preferences, Collection<ItemTypeConfiguration> itemTypeConfigurations,
                                   Iterable<ExtensionWithId> extensions) {
     this.preferences = preferences;
     this.itemTypeConfigurations = itemTypeConfigurations;
@@ -33,7 +33,7 @@ public class AnathemaModelInitializer {
     for (ExtensionWithId extension : extensions) {
       extension.register(model, finder, loader);
     }
-    for (IItemTypeConfiguration itemTypeConfiguration : itemTypeConfigurations) {
+    for (net.sf.anathema.framework.module.ItemTypeConfiguration itemTypeConfiguration : itemTypeConfigurations) {
       model.getItemTypeRegistry().registerItemType(itemTypeConfiguration.getItemType());
     }
     return model;

@@ -10,22 +10,21 @@ import net.sf.anathema.character.platform.module.repository.CharacterCreationTem
 import net.sf.anathema.framework.IApplicationModel;
 import net.sf.anathema.framework.extension.IAnathemaExtension;
 import net.sf.anathema.framework.item.IItemType;
-import net.sf.anathema.framework.module.IItemTypeConfiguration;
+import net.sf.anathema.framework.module.ItemTypeConfiguration;
 import net.sf.anathema.framework.presenter.item.ItemTypeCreationViewPropertiesExtensionPoint;
 import net.sf.anathema.framework.presenter.view.IItemTypeViewProperties;
 import net.sf.anathema.framework.repository.IRepositoryFileResolver;
 import net.sf.anathema.framework.repository.ItemType;
 import net.sf.anathema.framework.repository.RepositoryConfiguration;
 import net.sf.anathema.framework.view.ApplicationView;
-import net.sf.anathema.initialization.ItemTypeConfiguration;
 import net.sf.anathema.initialization.reflections.Weight;
 import net.sf.anathema.lib.exception.AnathemaException;
 import net.sf.anathema.lib.registry.IRegistry;
 import net.sf.anathema.lib.resources.Resources;
 
-@ItemTypeConfiguration
+@net.sf.anathema.initialization.ItemTypeConfiguration
 @Weight(weight = 0)
-public class ExaltedCharacterItemTypeConfiguration implements IItemTypeConfiguration {
+public class ExaltedCharacterItemTypeConfiguration implements ItemTypeConfiguration {
 
   private final IItemType type;
 

@@ -3,7 +3,7 @@ package net.sf.anathema.initialization;
 import net.sf.anathema.framework.IApplicationModel;
 import net.sf.anathema.framework.initialization.IReportFactory;
 import net.sf.anathema.framework.messaging.IMessageContainer;
-import net.sf.anathema.framework.module.IItemTypeConfiguration;
+import net.sf.anathema.framework.module.ItemTypeConfiguration;
 import net.sf.anathema.framework.module.PreferencesElementsExtensionPoint;
 import net.sf.anathema.framework.presenter.action.preferences.IPreferencesElement;
 import net.sf.anathema.framework.view.ApplicationView;
@@ -17,11 +17,11 @@ public class AnathemaPresenter {
   private final IApplicationModel model;
   private final ApplicationView view;
   private final Resources resources;
-  private final Collection<IItemTypeConfiguration> itemTypeConfigurations;
+  private final Collection<ItemTypeConfiguration> itemTypeConfigurations;
   private final ObjectFactory objectFactory;
 
   public AnathemaPresenter(IApplicationModel model, ApplicationView view, Resources resources,
-                           Collection<IItemTypeConfiguration> itemTypeConfigurations, ObjectFactory objectFactory) {
+                           Collection<ItemTypeConfiguration> itemTypeConfigurations, ObjectFactory objectFactory) {
     this.objectFactory = objectFactory;
     this.model = model;
     this.view = view;
@@ -30,7 +30,7 @@ public class AnathemaPresenter {
   }
 
   public void initPresentation() throws InitializationException {
-    for (IItemTypeConfiguration configuration : itemTypeConfigurations) {
+    for (net.sf.anathema.framework.module.ItemTypeConfiguration configuration : itemTypeConfigurations) {
       configuration.fillPresentationExtensionPoints(model.getExtensionPointRegistry(), resources, model, view);
     }
     initializePreferences();

@@ -7,7 +7,7 @@ import net.sf.anathema.framework.view.ApplicationView;
 import net.sf.anathema.lib.registry.IRegistry;
 import net.sf.anathema.lib.resources.Resources;
 
-public interface IItemTypeConfiguration {
+public interface ItemTypeConfiguration {
 
   IItemType getItemType();
 

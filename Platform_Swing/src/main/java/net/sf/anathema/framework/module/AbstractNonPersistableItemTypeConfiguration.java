@@ -7,7 +7,7 @@ import net.sf.anathema.framework.view.ApplicationView;
 import net.sf.anathema.lib.registry.IRegistry;
 import net.sf.anathema.lib.resources.Resources;
 
-public abstract class AbstractNonPersistableItemTypeConfiguration implements IItemTypeConfiguration {
+public abstract class AbstractNonPersistableItemTypeConfiguration implements ItemTypeConfiguration {
 
   private IItemType type;
 

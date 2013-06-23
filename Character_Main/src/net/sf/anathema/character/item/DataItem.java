@@ -1,4 +1,4 @@
-package net.sf.anathema.framework.repository;
+package net.sf.anathema.character.item;
 
 import com.google.common.base.Objects;
 import com.google.common.base.Preconditions;
@@ -6,6 +6,11 @@ import com.google.common.base.Strings;
 import net.sf.anathema.framework.item.IItemType;
 import net.sf.anathema.framework.itemdata.model.ItemData;
 import net.sf.anathema.framework.presenter.itemmanagement.PrintNameAdjuster;
+import net.sf.anathema.framework.repository.ChangeManagement;
+import net.sf.anathema.framework.repository.IItemListener;
+import net.sf.anathema.framework.repository.IItemRepositoryLocation;
+import net.sf.anathema.framework.repository.Item;
+import net.sf.anathema.framework.repository.RepositoryLocation;
 import net.sf.anathema.lib.util.Identifier;
 import org.jmock.example.announcer.Announcer;
 
