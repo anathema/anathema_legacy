@@ -18,6 +18,6 @@ public class ArmourContentFactory implements ReportContentFactory<ArmourContent>
 
   @Override
   public ArmourContent create(ReportSession session, IGenericCharacter character, Hero hero) {
-    return new ArmourContent(hero, resources, character);
+    return new ArmourContent(hero, resources);
   }
 }

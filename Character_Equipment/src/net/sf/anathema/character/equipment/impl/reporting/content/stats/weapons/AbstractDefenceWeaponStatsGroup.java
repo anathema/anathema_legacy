@@ -3,20 +3,13 @@ package net.sf.anathema.character.equipment.impl.reporting.content.stats.weapons
 import com.itextpdf.text.Font;
 import com.itextpdf.text.pdf.PdfPTable;
 import net.sf.anathema.character.equipment.impl.reporting.content.stats.AbstractValueEquipmentStatsGroup;
-import net.sf.anathema.character.generic.character.IGenericCharacter;
-import net.sf.anathema.character.generic.character.IGenericTraitCollection;
 import net.sf.anathema.character.generic.equipment.weapon.IWeaponStats;
 import net.sf.anathema.lib.resources.Resources;
 
 public abstract class AbstractDefenceWeaponStatsGroup extends AbstractValueEquipmentStatsGroup<IWeaponStats> {
 
-  private final IGenericCharacter character;
-  private final IGenericTraitCollection traitCollection;
-
-  public AbstractDefenceWeaponStatsGroup(Resources resources, IGenericCharacter character, IGenericTraitCollection traitCollection) {
+  public AbstractDefenceWeaponStatsGroup(Resources resources) {
     super(resources, "Defence");
-    this.character = character;
-    this.traitCollection = traitCollection;
   }
 
   @Override
@@ -40,12 +33,4 @@ public abstract class AbstractDefenceWeaponStatsGroup extends AbstractValueEquip
   }
 
   protected abstract int getDefenceValue(IWeaponStats weapon);
-
-  protected final IGenericCharacter getCharacter() {
-    return character;
-  }
-
-  protected final IGenericTraitCollection getTraitCollection() {
-    return traitCollection == null ? character.getTraitCollection() : traitCollection;
-  }
 }

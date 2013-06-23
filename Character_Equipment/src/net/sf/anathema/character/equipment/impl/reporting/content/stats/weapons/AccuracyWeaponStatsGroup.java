@@ -7,21 +7,21 @@ import net.sf.anathema.character.equipment.character.EquipmentOptionsProvider;
 import net.sf.anathema.character.equipment.character.model.IEquipmentStatsOption;
 import net.sf.anathema.character.equipment.impl.creation.model.WeaponTag;
 import net.sf.anathema.character.equipment.impl.reporting.content.stats.AbstractValueEquipmentStatsGroup;
-import net.sf.anathema.character.generic.character.IGenericTraitCollection;
 import net.sf.anathema.character.generic.equipment.weapon.IWeaponStats;
 import net.sf.anathema.character.generic.traits.GenericTrait;
 import net.sf.anathema.character.generic.traits.types.AttributeType;
+import net.sf.anathema.character.main.model.traits.TraitMap;
 import net.sf.anathema.lib.resources.Resources;
 
 import java.util.Arrays;
 
 public class AccuracyWeaponStatsGroup extends AbstractValueEquipmentStatsGroup<IWeaponStats> {
 
-  private final IGenericTraitCollection collection;
+  private final TraitMap collection;
   private final EquipmentHeroEvaluator provider;
   private EquipmentOptionsProvider optionProvider;
 
-  public AccuracyWeaponStatsGroup(Resources resources, IGenericTraitCollection collection, EquipmentHeroEvaluator provider,
+  public AccuracyWeaponStatsGroup(Resources resources, TraitMap collection, EquipmentHeroEvaluator provider,
                                   EquipmentOptionsProvider optionProvider) {
     super(resources, "Accuracy");
     this.collection = collection;

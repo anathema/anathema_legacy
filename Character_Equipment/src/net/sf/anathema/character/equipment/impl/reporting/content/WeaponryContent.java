@@ -2,14 +2,13 @@ package net.sf.anathema.character.equipment.impl.reporting.content;
 
 import net.sf.anathema.character.equipment.character.EquipmentHeroEvaluator;
 import net.sf.anathema.character.equipment.character.EquipmentOptionsProvider;
-import net.sf.anathema.hero.equipment.EquipmentModel;
 import net.sf.anathema.character.equipment.impl.reporting.content.stats.weapons.AbstractDefenceWeaponStatsGroup;
 import net.sf.anathema.character.equipment.impl.reporting.content.stats.weapons.AccuracyWeaponStatsGroup;
 import net.sf.anathema.character.equipment.impl.reporting.content.stats.weapons.RateWeaponStatsGroup;
 import net.sf.anathema.character.equipment.impl.reporting.content.stats.weapons.SecondEditionDefenceWeaponStatsGroup;
 import net.sf.anathema.character.equipment.impl.reporting.content.stats.weapons.SecondEditionSpeedWeaponStatsGroup;
-import net.sf.anathema.character.generic.character.IGenericCharacter;
 import net.sf.anathema.character.reporting.pdf.content.SubBoxContent;
+import net.sf.anathema.hero.equipment.EquipmentModel;
 import net.sf.anathema.hero.model.Hero;
 import net.sf.anathema.lib.resources.Resources;
 
@@ -18,8 +17,8 @@ public class WeaponryContent extends AbstractWeaponryContent implements SubBoxCo
   private final EquipmentHeroEvaluator provider;
   private final EquipmentOptionsProvider optionProvider;
 
-  public WeaponryContent(Hero hero, Resources resources, IGenericCharacter character) {
-    super(hero, resources, character);
+  public WeaponryContent(Hero hero, Resources resources) {
+    super(hero, resources);
     EquipmentModel model = hero.getModel (EquipmentModel.ID);
     provider = model.getHeroEvaluator();
     optionProvider = model.getOptionProvider();
@@ -37,12 +36,12 @@ public class WeaponryContent extends AbstractWeaponryContent implements SubBoxCo
 
   @Override
   protected AbstractDefenceWeaponStatsGroup createDefenceGroup() {
-    return new SecondEditionDefenceWeaponStatsGroup(getResources(), getCharacter(), getTraitCollection(), provider, optionProvider);
+    return new SecondEditionDefenceWeaponStatsGroup(getResources(), getHero(), provider, optionProvider);
   }
 
   @Override
   protected AccuracyWeaponStatsGroup createAccuracyGroup() {
-    return new AccuracyWeaponStatsGroup(getResources(), getTraitCollection(), provider, optionProvider);
+    return new AccuracyWeaponStatsGroup(getResources(), getOverallTraits(), provider, optionProvider);
   }
 
   @Override

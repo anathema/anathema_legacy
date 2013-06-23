@@ -9,16 +9,16 @@ import net.sf.anathema.character.equipment.impl.reporting.content.stats.weapons.
 import net.sf.anathema.character.equipment.impl.reporting.content.stats.weapons.RangeWeaponStatsGroup;
 import net.sf.anathema.character.equipment.impl.reporting.content.stats.weapons.RateWeaponStatsGroup;
 import net.sf.anathema.character.equipment.impl.reporting.content.stats.weapons.TagsStatsGroup;
-import net.sf.anathema.character.generic.character.IGenericCharacter;
-import net.sf.anathema.character.generic.character.IGenericTraitCollection;
 import net.sf.anathema.character.generic.equipment.weapon.IWeaponStats;
+import net.sf.anathema.character.main.model.traits.TraitMap;
+import net.sf.anathema.character.main.model.traits.TraitModelFetcher;
 import net.sf.anathema.hero.model.Hero;
 import net.sf.anathema.lib.resources.Resources;
 
 public abstract class AbstractWeaponryContent extends AbstractEquipmentContent<IWeaponStats> {
 
-  public AbstractWeaponryContent(Hero hero, Resources resources, IGenericCharacter character) {
-    super(hero, resources, character);
+  public AbstractWeaponryContent(Hero hero, Resources resources) {
+    super(hero, resources);
   }
 
   @Override
@@ -37,7 +37,7 @@ public abstract class AbstractWeaponryContent extends AbstractEquipmentContent<I
   }
 
   private DamageWeaponStatsGroup createDamageGroup() {
-    return new DamageWeaponStatsGroup(getResources(), getTraitCollection());
+    return new DamageWeaponStatsGroup(getResources(), getOverallTraits());
   }
 
   private RangeWeaponStatsGroup createRangeWeaponGroup() {
@@ -56,7 +56,7 @@ public abstract class AbstractWeaponryContent extends AbstractEquipmentContent<I
 
   protected abstract AbstractSpeedWeaponStatsGroup createSpeedGroup();
 
-  protected IGenericTraitCollection getTraitCollection() {
-    return getCharacter().getTraitCollection();
+  protected TraitMap getOverallTraits() {
+    return TraitModelFetcher.fetch(getHero());
   }
 }

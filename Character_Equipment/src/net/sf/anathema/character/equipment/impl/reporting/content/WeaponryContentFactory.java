@@ -18,6 +18,6 @@ public class WeaponryContentFactory implements ReportContentFactory<WeaponryCont
 
   @Override
   public WeaponryContent create(ReportSession session, IGenericCharacter character, Hero hero) {
-    return new WeaponryContent(hero, resources, character);
+    return new WeaponryContent(hero, resources);
   }
 }

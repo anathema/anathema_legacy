@@ -4,19 +4,19 @@ import com.itextpdf.text.Element;
 import com.itextpdf.text.Font;
 import com.itextpdf.text.pdf.PdfPTable;
 import net.sf.anathema.character.equipment.impl.reporting.content.stats.AbstractValueEquipmentStatsGroup;
-import net.sf.anathema.character.generic.character.IGenericTraitCollection;
 import net.sf.anathema.character.generic.equipment.weapon.IWeaponStats;
 import net.sf.anathema.character.generic.health.HealthType;
 import net.sf.anathema.character.generic.traits.TraitType;
+import net.sf.anathema.character.main.model.traits.TraitMap;
 import net.sf.anathema.lib.resources.Resources;
 
 public class DamageWeaponStatsGroup extends AbstractValueEquipmentStatsGroup<IWeaponStats> {
 
-  private final IGenericTraitCollection collection;
+  private final TraitMap traitMap;
 
-  public DamageWeaponStatsGroup(Resources resources, IGenericTraitCollection collection) {
+  public DamageWeaponStatsGroup(Resources resources, TraitMap traitMap) {
     super(resources, "Damage");
-    this.collection = collection;
+    this.traitMap = traitMap;
   }
 
   @Override
@@ -46,7 +46,7 @@ public class DamageWeaponStatsGroup extends AbstractValueEquipmentStatsGroup<IWe
       int finalValue = weaponValue;
       TraitType damageTraitType = weapon.getDamageTraitType();
       if (damageTraitType != null) {
-        finalValue = calculateFinalValue(weaponValue, collection.getTrait(damageTraitType));
+        finalValue = calculateFinalValue(weaponValue, traitMap.getTrait(damageTraitType));
         table.addCell(createEquipmentValueCell(font, weaponValue));
       } else {
         table.addCell(createEquipmentValueCell(font, null));
