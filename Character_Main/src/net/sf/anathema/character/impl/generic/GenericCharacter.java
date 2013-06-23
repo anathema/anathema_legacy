@@ -11,7 +11,6 @@ import net.sf.anathema.character.generic.magic.IGenericCombo;
 import net.sf.anathema.character.generic.magic.IMagic;
 import net.sf.anathema.character.generic.magic.IMagicVisitor;
 import net.sf.anathema.character.generic.magic.ISpell;
-import net.sf.anathema.character.generic.magic.charms.special.IMultiLearnableCharm;
 import net.sf.anathema.character.generic.magic.charms.special.ISpecialCharmConfiguration;
 import net.sf.anathema.character.generic.magic.charms.special.ISubeffect;
 import net.sf.anathema.character.generic.template.HeroTemplate;
@@ -42,7 +41,6 @@ import net.sf.anathema.character.model.ICharacter;
 import net.sf.anathema.character.model.ITypedDescription;
 import net.sf.anathema.character.model.charm.ICombo;
 import net.sf.anathema.character.model.charm.ILearningCharmGroup;
-import net.sf.anathema.character.model.charm.special.IMultiLearnableCharmConfiguration;
 import net.sf.anathema.character.model.charm.special.IMultipleEffectCharmConfiguration;
 import net.sf.anathema.character.model.charm.special.ISubeffectCharmConfiguration;
 import net.sf.anathema.lib.exception.ContractFailedException;
@@ -63,34 +61,6 @@ public class GenericCharacter implements IGenericCharacter {
   @Override
   public IGenericTraitCollection getTraitCollection() {
     return new GenericTraitCollectionFacade(getTraitMap());
-  }
-
-  @Override
-  public int getLearnCount(IMultiLearnableCharm charm) {
-    return getLearnCount(charm.getCharmId());
-  }
-
-  @Override
-  public int getLearnCount(String charmName) {
-    CharmsModel charms = CharmsModelFetcher.fetch(character);
-    try {
-      IMultiLearnableCharmConfiguration configuration = (IMultiLearnableCharmConfiguration) charms.getSpecialCharmConfiguration(charmName);
-      return configuration.getCurrentLearnCount();
-    } catch (IllegalArgumentException e) {
-      return 0;
-    }
-  }
-
-  @Override
-  public void setLearnCount(IMultiLearnableCharm multiLearnableCharm, int newValue) {
-    setLearnCount(multiLearnableCharm.getCharmId(), newValue);
-  }
-
-  @Override
-  public void setLearnCount(String charmName, int newValue) {
-    CharmsModel charms = CharmsModelFetcher.fetch(character);
-    IMultiLearnableCharmConfiguration configuration = (IMultiLearnableCharmConfiguration) charms.getSpecialCharmConfiguration(charmName);
-    configuration.setCurrentLearnCount(newValue);
   }
 
   @Override

@@ -56,11 +56,6 @@ public class DummyGenericCharacter implements IGenericCharacter {
   }
 
   @Override
-  public int getLearnCount(IMultiLearnableCharm charm) {
-    return 0;
-  }
-
-  @Override
   public boolean isLearned(IMagic magic) {
     return false;
   }
@@ -182,11 +177,6 @@ public class DummyGenericCharacter implements IGenericCharacter {
   }
 
   @Override
-  public void setLearnCount(IMultiLearnableCharm multiLearnableCharm, int newValue) {
-    // Nothing to do
-  }
-
-  @Override
   public IIdentifiedTraitTypeGroup[] getAbilityTypeGroups() {
     return new IIdentifiedTraitTypeGroup[0];
   }
@@ -229,15 +219,5 @@ public class DummyGenericCharacter implements IGenericCharacter {
   @Override
   public ICharm[] getGenericCharms() {
     return new ICharm[0];
-  }
-
-  @Override
-  public int getLearnCount(String charmName) {
-    return 0;
-  }
-
-  @Override
-  public void setLearnCount(String charmName, int newValue) {
-    // nothing to do
   }
 }
