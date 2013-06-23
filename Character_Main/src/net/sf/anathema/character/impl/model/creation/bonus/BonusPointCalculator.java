@@ -10,33 +10,33 @@ import java.util.List;
 
 public class BonusPointCalculator {
 
-  private final List<HeroModelBonusPointCalculator> allAdditionalCalculators = new ArrayList<>();
+  private final List<HeroModelBonusPointCalculator> allCalculators = new ArrayList<>();
 
-  public void addAdditionalBonusPointCalculator(HeroModelBonusPointCalculator additionalCalculator) {
-    allAdditionalCalculators.add(additionalCalculator);
+  public void addBonusPointCalculator(HeroModelBonusPointCalculator additionalCalculator) {
+    allCalculators.add(additionalCalculator);
   }
 
   public void recalculate() {
-    for (HeroModelBonusPointCalculator calculator : allAdditionalCalculators) {
+    for (HeroModelBonusPointCalculator calculator : allCalculators) {
       calculator.recalculate();
     }
   }
 
   public int getAdditionalGeneralBonusPoints() {
     int additionalGranted = 0;
-    for (HeroModelBonusPointCalculator calculator : allAdditionalCalculators) {
+    for (HeroModelBonusPointCalculator calculator : allCalculators) {
       additionalGranted += calculator.getBonusPointsGranted();
     }
     return additionalGranted;
   }
 
   public void addMiscModel(List<IOverviewModel> models) {
-    if (allAdditionalCalculators.size() > 0) {
+    if (allCalculators.size() > 0) {
       models.add(getAdditionalModelModel());
     }
   }
 
   public IValueModel<Integer> getAdditionalModelModel() {
-    return new MiscBonusModel(allAdditionalCalculators);
+    return new MiscBonusModel(allCalculators);
   }
 }
