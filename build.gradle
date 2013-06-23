@@ -101,7 +101,7 @@ subprojects {
 
   task collectTransitiveDependencies() << {
     copy {
-      from configurations.compile.findAll { File dependency -> (dependency.absolutePath.contains('cache')) }
+      from configurations.compile.findAll { File dependency -> (!dependency.absolutePath.contains('jfxrt.jar')) }
       into parent.ext.dependenciesDir
     }
   }
