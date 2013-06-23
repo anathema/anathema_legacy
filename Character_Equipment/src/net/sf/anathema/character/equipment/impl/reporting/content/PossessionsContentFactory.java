@@ -18,6 +18,6 @@ public class PossessionsContentFactory implements ReportContentFactory<Possessio
 
   @Override
   public PossessionsContent create(ReportSession session, IGenericCharacter character, Hero hero) {
-    return new PossessionsContent(resources, character);
+    return new PossessionsContent(hero, resources);
   }
 }

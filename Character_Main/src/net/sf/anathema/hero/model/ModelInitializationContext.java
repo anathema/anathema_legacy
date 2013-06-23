@@ -5,6 +5,8 @@ import net.sf.anathema.character.generic.impl.magic.persistence.ISpellCache;
 import net.sf.anathema.character.generic.impl.template.magic.ICharmProvider;
 import net.sf.anathema.character.generic.template.ITemplateRegistry;
 import net.sf.anathema.character.generic.type.CharacterTypes;
+import net.sf.anathema.initialization.ObjectFactory;
+import net.sf.anathema.initialization.repository.IDataFileProvider;
 
 public class ModelInitializationContext implements InitializationContext {
 
@@ -19,6 +21,16 @@ public class ModelInitializationContext implements InitializationContext {
   @Deprecated
   public ISpellCache getSpellCache() {
     return generics.getDataSet(ISpellCache.class);
+  }
+
+  @Override
+  public ObjectFactory getObjectFactory() {
+    return generics.getInstantiater();
+  }
+
+  @Override
+  public IDataFileProvider getDataFileProvider() {
+    return generics.getDataFileProvider();
   }
 
   @Override

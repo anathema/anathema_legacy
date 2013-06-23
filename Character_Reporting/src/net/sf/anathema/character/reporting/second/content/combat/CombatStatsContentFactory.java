@@ -17,6 +17,6 @@ public class CombatStatsContentFactory implements ReportContentFactory<CombatSta
 
   @Override
   public CombatStatsContent create(ReportSession session, IGenericCharacter character, Hero hero) {
-    return new CombatStatsContent(character, resources);
+    return new CombatStatsContent(hero, character, resources);
   }
 }

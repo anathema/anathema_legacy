@@ -2,8 +2,7 @@ package net.sf.anathema.character.equipment.impl.reporting.content;
 
 import net.sf.anathema.character.equipment.character.EquipmentHeroEvaluator;
 import net.sf.anathema.character.equipment.character.EquipmentOptionsProvider;
-import net.sf.anathema.character.equipment.character.model.EquipmentModel;
-import net.sf.anathema.character.equipment.impl.character.model.EquipmentAdditionalModelTemplate;
+import net.sf.anathema.hero.equipment.EquipmentModel;
 import net.sf.anathema.character.equipment.impl.reporting.content.stats.weapons.AbstractDefenceWeaponStatsGroup;
 import net.sf.anathema.character.equipment.impl.reporting.content.stats.weapons.AccuracyWeaponStatsGroup;
 import net.sf.anathema.character.equipment.impl.reporting.content.stats.weapons.RateWeaponStatsGroup;
@@ -11,6 +10,7 @@ import net.sf.anathema.character.equipment.impl.reporting.content.stats.weapons.
 import net.sf.anathema.character.equipment.impl.reporting.content.stats.weapons.SecondEditionSpeedWeaponStatsGroup;
 import net.sf.anathema.character.generic.character.IGenericCharacter;
 import net.sf.anathema.character.reporting.pdf.content.SubBoxContent;
+import net.sf.anathema.hero.model.Hero;
 import net.sf.anathema.lib.resources.Resources;
 
 public class WeaponryContent extends AbstractWeaponryContent implements SubBoxContent {
@@ -18,11 +18,11 @@ public class WeaponryContent extends AbstractWeaponryContent implements SubBoxCo
   private final EquipmentHeroEvaluator provider;
   private final EquipmentOptionsProvider optionProvider;
 
-  public WeaponryContent(Resources resources, IGenericCharacter character) {
-    super(resources, character);
-    EquipmentModel additionalModel = (EquipmentModel) character.getAdditionalModel(EquipmentAdditionalModelTemplate.ID);
-    provider = additionalModel.getCharacterDataProvider();
-    optionProvider = additionalModel.getCharacterOptionProvider();
+  public WeaponryContent(Hero hero, Resources resources, IGenericCharacter character) {
+    super(hero, resources, character);
+    EquipmentModel model = hero.getModel (EquipmentModel.ID);
+    provider = model.getHeroEvaluator();
+    optionProvider = model.getOptionProvider();
   }
 
   @Override

@@ -5,5 +5,4 @@ import net.sf.anathema.hero.model.Hero;
 
 public interface ICharacter extends IItemData, Hero {
 
-  IExtendedConfiguration getExtendedConfiguration();
 }

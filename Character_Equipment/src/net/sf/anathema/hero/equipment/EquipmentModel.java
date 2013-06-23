@@ -1,16 +1,23 @@
-package net.sf.anathema.character.equipment.character.model;
+package net.sf.anathema.hero.equipment;
 
 import net.sf.anathema.character.equipment.MagicalMaterial;
 import net.sf.anathema.character.equipment.MaterialComposition;
 import net.sf.anathema.character.equipment.character.EquipmentHeroEvaluator;
 import net.sf.anathema.character.equipment.character.EquipmentOptionsProvider;
+import net.sf.anathema.character.equipment.character.model.IEquipmentItem;
+import net.sf.anathema.character.equipment.character.model.IEquipmentItemCollection;
+import net.sf.anathema.character.equipment.character.model.IEquipmentPrintModel;
 import net.sf.anathema.character.equipment.item.model.IEquipmentTemplateProvider;
-import net.sf.anathema.character.generic.additionaltemplate.IAdditionalModel;
-import net.sf.anathema.character.generic.character.IGenericCharacter;
 import net.sf.anathema.character.generic.equipment.ICharacterStatsModifiers;
 import net.sf.anathema.character.generic.framework.essence.IEssencePoolModifier;
+import net.sf.anathema.hero.model.Hero;
+import net.sf.anathema.hero.model.HeroModel;
+import net.sf.anathema.lib.util.Identifier;
+import net.sf.anathema.lib.util.SimpleIdentifier;
 
-public interface EquipmentModel extends IAdditionalModel, IEquipmentItemCollection, IEquipmentTemplateProvider, IEssencePoolModifier {
+public interface EquipmentModel extends HeroModel, IEquipmentItemCollection, IEquipmentTemplateProvider, IEssencePoolModifier {
+
+  Identifier ID = new SimpleIdentifier("Equipment");
 
   MagicalMaterial getDefaultMaterial();
 
@@ -20,13 +27,13 @@ public interface EquipmentModel extends IAdditionalModel, IEquipmentItemCollecti
 
   IEquipmentPrintModel getPrintModel();
 
-  EquipmentHeroEvaluator getCharacterDataProvider();
+  EquipmentHeroEvaluator getHeroEvaluator();
 
   void updateItem(IEquipmentItem item);
 
   void refreshItems();
 
-  EquipmentOptionsProvider getCharacterOptionProvider();
+  EquipmentOptionsProvider getOptionProvider();
 
-  ICharacterStatsModifiers createStatsModifiers(IGenericCharacter character);
+  ICharacterStatsModifiers createStatsModifiers(Hero hero);
 }

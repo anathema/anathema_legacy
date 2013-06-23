@@ -1,7 +1,5 @@
 package net.sf.anathema.character.impl.generic;
 
-import com.google.common.collect.Lists;
-import net.sf.anathema.character.generic.additionaltemplate.IAdditionalModel;
 import net.sf.anathema.character.generic.caste.CasteType;
 import net.sf.anathema.character.generic.character.IConcept;
 import net.sf.anathema.character.generic.character.IGenericCharacter;
@@ -190,23 +188,6 @@ public class GenericCharacter implements IGenericCharacter {
   @Override
   public int getAttunedPoolValue() {
     return getTemplate().getEssenceTemplate().isEssenceUser() ? EssencePoolModelFetcher.fetch(character).getAttunedPoolValue() : 0;
-  }
-
-  @Override
-  public <T> List<T> getAllRegistered(Class<T> interfaceClass) {
-    IAdditionalModel[] additionalModels = character.getExtendedConfiguration().getAdditionalModels();
-    List<T> registeredModels = Lists.newArrayList();
-    for (IAdditionalModel additionalModel : additionalModels) {
-      if (interfaceClass.isInstance(additionalModel)) {
-        registeredModels.add((T) additionalModel);
-      }
-    }
-    return registeredModels;
-  }
-
-  @Override
-  public IAdditionalModel getAdditionalModel(String id) {
-    return character.getExtendedConfiguration().getAdditionalModel(id);
   }
 
   @Override

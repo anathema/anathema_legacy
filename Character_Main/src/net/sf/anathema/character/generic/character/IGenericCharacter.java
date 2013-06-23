@@ -1,6 +1,5 @@
 package net.sf.anathema.character.generic.character;
 
-import net.sf.anathema.character.generic.additionaltemplate.IAdditionalModel;
 import net.sf.anathema.character.generic.health.HealthLevelType;
 import net.sf.anathema.character.generic.magic.ICharm;
 import net.sf.anathema.character.generic.magic.IGenericCombo;
@@ -45,8 +44,6 @@ public interface IGenericCharacter extends ILimitationContext, MagicCollection, 
 
   int getAttunedPoolValue();
 
-  IAdditionalModel getAdditionalModel(String templateId);
-
   IConcept getConcept();
 
   List<IMagic> getAllLearnedMagic();
@@ -70,6 +67,4 @@ public interface IGenericCharacter extends ILimitationContext, MagicCollection, 
   boolean isSubeffectCharm(ICharm magic);
 
   ICharm[] getGenericCharms();
-
-  <T> List<T> getAllRegistered(Class<T> interfaceClass);
 }

@@ -1,5 +1,6 @@
 package net.sf.anathema.hero.initialization;
 
+import net.sf.anathema.lib.logging.Logger;
 import net.sf.anathema.lib.util.Identifier;
 
 import java.util.ArrayList;
@@ -11,6 +12,7 @@ public class ModelInitializationList<E extends ModelTreeEntry> implements Iterab
   private List<Identifier> sortedModelIds = new ArrayList<>();
   private List<Identifier> configuredIdentifiers;
   private Iterable<E> availableEntries;
+  private Logger logger = Logger.getLogger(ModelInitializationList.class);
 
   public ModelInitializationList(List<Identifier> configuredIdentifiers, Iterable<E> availableEntries) {
     this.configuredIdentifiers = configuredIdentifiers;
@@ -34,6 +36,9 @@ public class ModelInitializationList<E extends ModelTreeEntry> implements Iterab
 
   private void handleRequirements(Identifier entry) {
     E entryModel = findConfigurationWithId(entry);
+    if (entryModel == null) {
+      logger.warn("Not found entry " + entry.getId());
+    }
     for (Identifier id : entryModel.getRequiredModelIds()) {
       if (sortedModelIds.contains(id)) {
         continue;

@@ -24,6 +24,10 @@ public class ReportSession {
     return character;
   }
 
+  public Hero getHero() {
+    return hero;
+  }
+
   public IGenericDescription getDescription() {
     return character.getDescription();
   }

@@ -8,6 +8,7 @@ import net.sf.anathema.character.library.trait.specialties.HighestSpecialty;
 import net.sf.anathema.character.reporting.pdf.content.combat.AbstractCombatStatsContent;
 import net.sf.anathema.character.reporting.pdf.content.combat.CombatAction;
 import net.sf.anathema.character.reporting.pdf.content.general.QualifiedText;
+import net.sf.anathema.hero.model.Hero;
 import net.sf.anathema.lib.resources.Resources;
 
 import static net.sf.anathema.character.reporting.pdf.content.general.TextType.Comment;
@@ -19,11 +20,11 @@ public class CombatStatsContent extends AbstractCombatStatsContent {
   private final HighestSpecialty awarenessSpecialty;
   private final ICharacterStatsModifiers modifiers;
 
-  protected CombatStatsContent(IGenericCharacter character, Resources resources) {
+  protected CombatStatsContent(Hero hero, IGenericCharacter character, Resources resources) {
     super(resources, character);
     dodgeSpecialty = new HighestSpecialty(character, AbilityType.Dodge);
     awarenessSpecialty = new HighestSpecialty(character, AbilityType.Awareness);
-    modifiers = StatsModifiers.allStatsModifiers(character);
+    modifiers = StatsModifiers.allStatsModifiers(hero);
   }
 
   public String getJoinLabel() {

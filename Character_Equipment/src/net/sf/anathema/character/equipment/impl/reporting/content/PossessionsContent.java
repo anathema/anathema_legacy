@@ -1,12 +1,14 @@
 package net.sf.anathema.character.equipment.impl.reporting.content;
 
-import net.sf.anathema.character.equipment.IEquipmentAdditionalModelTemplate;
-import net.sf.anathema.character.equipment.character.model.EquipmentModel;
+import net.sf.anathema.hero.equipment.EquipmentModelFetcher;
+import net.sf.anathema.hero.equipment.NaturalWeaponsMap;
+import net.sf.anathema.hero.equipment.EquipmentModel;
 import net.sf.anathema.character.equipment.character.model.IEquipmentItem;
 import net.sf.anathema.character.generic.character.IGenericCharacter;
 import net.sf.anathema.character.generic.equipment.weapon.IEquipmentStats;
 import net.sf.anathema.character.reporting.pdf.content.AbstractSubBoxContent;
 import net.sf.anathema.character.reporting.pdf.content.ListSubBoxContent;
+import net.sf.anathema.hero.model.Hero;
 import net.sf.anathema.lib.resources.Resources;
 
 import java.util.ArrayList;
@@ -17,11 +19,11 @@ import static net.sf.anathema.character.equipment.MaterialComposition.Variable;
 
 public class PossessionsContent extends AbstractSubBoxContent implements ListSubBoxContent {
 
-  private IGenericCharacter character;
+  private Hero hero;
 
-  public PossessionsContent(Resources resources, IGenericCharacter character) {
+  public PossessionsContent(Hero hero, Resources resources) {
     super(resources);
-    this.character = character;
+    this.hero = hero;
   }
 
   @Override
@@ -56,7 +58,7 @@ public class PossessionsContent extends AbstractSubBoxContent implements ListSub
   }
 
   private IEquipmentItem[] getEquipmentItems() {
-    EquipmentModel model = (EquipmentModel) character.getAdditionalModel(IEquipmentAdditionalModelTemplate.ID);
+    EquipmentModel model = EquipmentModelFetcher.fetch(hero);
     return model.getEquipmentItems();
   }
 

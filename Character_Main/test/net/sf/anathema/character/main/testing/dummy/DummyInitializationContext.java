@@ -5,11 +5,17 @@ import net.sf.anathema.character.generic.impl.template.magic.ICharmProvider;
 import net.sf.anathema.character.generic.template.ITemplateRegistry;
 import net.sf.anathema.character.generic.type.CharacterTypes;
 import net.sf.anathema.hero.model.InitializationContext;
+import net.sf.anathema.initialization.ObjectFactory;
+import net.sf.anathema.initialization.repository.IDataFileProvider;
+import org.mockito.Mockito;
 
 public class DummyInitializationContext implements InitializationContext {
 
   public DummyGenericCharacter character;
   public final DummyHero dummyHero;
+  public DummyCharacterTypes characterTypes = new DummyCharacterTypes();
+  public IDataFileProvider mockFileProvider = Mockito.mock(IDataFileProvider.class);
+  public ObjectFactory mockObjectFactory = Mockito.mock(ObjectFactory.class);
 
   public DummyInitializationContext() {
     this(new DummyHero());
@@ -22,7 +28,7 @@ public class DummyInitializationContext implements InitializationContext {
 
   @Override
   public CharacterTypes getCharacterTypes() {
-    throw new UnsupportedOperationException();
+    return characterTypes;
   }
 
   @Override
@@ -38,5 +44,15 @@ public class DummyInitializationContext implements InitializationContext {
   @Override
   public ISpellCache getSpellCache() {
     throw new UnsupportedOperationException();
+  }
+
+  @Override
+  public ObjectFactory getObjectFactory() {
+    return mockObjectFactory;
+  }
+
+  @Override
+  public IDataFileProvider getDataFileProvider() {
+    return mockFileProvider;
   }
 }

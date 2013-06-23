@@ -1,16 +1,15 @@
 package net.sf.anathema.character.equipment.impl.reporting;
 
-import net.sf.anathema.character.equipment.IEquipmentAdditionalModelTemplate;
-import net.sf.anathema.character.equipment.character.model.EquipmentModel;
-import net.sf.anathema.character.generic.character.IGenericCharacter;
 import net.sf.anathema.character.generic.equipment.ICharacterStatsModifiers;
 import net.sf.anathema.character.reporting.pdf.rendering.boxes.StatsModifierFactory;
+import net.sf.anathema.hero.equipment.EquipmentModel;
+import net.sf.anathema.hero.equipment.EquipmentModelFetcher;
+import net.sf.anathema.hero.model.Hero;
 
 public class EquipmentStatsModifierFactory implements StatsModifierFactory {
   @Override
-  public ICharacterStatsModifiers create(IGenericCharacter character) {
-    EquipmentModel equipment = (EquipmentModel) character.getAdditionalModel(
-            IEquipmentAdditionalModelTemplate.ID);
-    return equipment.createStatsModifiers(character);
+  public ICharacterStatsModifiers create(Hero hero) {
+    EquipmentModel equipment = EquipmentModelFetcher.fetch(hero);
+    return equipment.createStatsModifiers(hero);
   }
 }

@@ -1,9 +1,8 @@
-package net.sf.anathema.character.equipment.impl.character;
+package net.sf.anathema.hero.equipment;
 
-import net.sf.anathema.character.equipment.IEquipmentAdditionalModelTemplate;
-import net.sf.anathema.character.equipment.character.EquipmentAdditionalPresenter;
-import net.sf.anathema.character.equipment.character.model.EquipmentModel;
-import net.sf.anathema.character.equipment.character.view.IEquipmentAdditionalView;
+import net.sf.anathema.character.equipment.character.EquipmentPresenter;
+import net.sf.anathema.character.equipment.character.view.EquipmentView;
+import net.sf.anathema.character.generic.type.ICharacterType;
 import net.sf.anathema.hero.display.HeroModelGroup;
 import net.sf.anathema.character.model.ICharacter;
 import net.sf.anathema.character.presenter.initializers.CharacterModelInitializer;
@@ -24,8 +23,9 @@ public class EquipmentInitializer implements CharacterModelInitializer {
   @Override
   public void initialize(SectionView sectionView, ICharacter character, Resources resources) {
     String viewName = resources.getString("AdditionalTemplateView.TabName.Equipment");
-    IEquipmentAdditionalView view = sectionView.addView(viewName, IEquipmentAdditionalView.class, character.getTemplate().getTemplateType().getCharacterType());
-    EquipmentModel equipmentModel = (EquipmentModel) character.getExtendedConfiguration().getAdditionalModel(IEquipmentAdditionalModelTemplate.ID);
-    new EquipmentAdditionalPresenter(resources, equipmentModel, view).initPresentation();
+    ICharacterType characterType = character.getTemplate().getTemplateType().getCharacterType();
+    EquipmentView view = sectionView.addView(viewName, EquipmentView.class, characterType);
+    EquipmentModel equipmentModel = character.getModel(EquipmentModel.ID);
+    new EquipmentPresenter(resources, equipmentModel, view).initPresentation();
   }
 }

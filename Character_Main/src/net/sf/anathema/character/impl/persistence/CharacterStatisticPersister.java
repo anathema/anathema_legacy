@@ -47,13 +47,11 @@ public class CharacterStatisticPersister {
   private final ExperiencePointsPersister experiencePersister = new ExperiencePointsPersister();
   private final RulesPersister rulesPersister = new RulesPersister();
   private final ICharacterGenerics generics;
-  private final AdditionalModelPersister additonalModelPersister;
   private final CharacterDescriptionPersister descriptionPersister = new CharacterDescriptionPersister();
 
   public CharacterStatisticPersister(ICharacterGenerics generics, IMessaging messaging) {
     this.generics = generics;
     this.charmPersister = new CharmConfigurationPersister(messaging);
-    this.additonalModelPersister = new AdditionalModelPersister(generics.getAdditonalPersisterFactoryRegistry(), messaging);
   }
 
   public void save(Element parent, ICharacter character) {
@@ -75,7 +73,6 @@ public class CharacterStatisticPersister {
     charmPersister.save(statisticsElement, character);
     spellPersister.save(statisticsElement, SpellsModelFetcher.fetch(character));
     experiencePersister.save(statisticsElement, ExperienceModelFetcher.fetch(character).getExperiencePoints());
-    additonalModelPersister.save(statisticsElement, character.getExtendedConfiguration().getAdditionalModels());
   }
 
   public ExaltedCharacter load(Element parent) throws PersistenceException {
@@ -98,7 +95,6 @@ public class CharacterStatisticPersister {
       spellPersister.load(statisticsElement, SpellsModelFetcher.fetch(character));
       experiencePersister.load(statisticsElement, ExperienceModelFetcher.fetch(character).getExperiencePoints());
       willpowerPersister.load(statisticsElement, TraitModelFetcher.fetch(character).getTrait(OtherTraitType.Willpower));
-      additonalModelPersister.load(statisticsElement, character.getExtendedConfiguration().getAdditionalModels());
       return character;
     } catch (CharmException | SpellException e) {
       throw new PersistenceException(e);

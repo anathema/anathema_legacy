@@ -43,7 +43,7 @@ public class SocialCombatStatsTableEncoder extends AbstractFixedLineStatsTableEn
   protected ISocialCombatStats[] getPrintStats(ReportSession session) {
     IGenericCharacter character = session.getCharacter();
     IGenericTraitCollection traitCollection = character.getTraitCollection();
-    ICharacterStatsModifiers modifiers = StatsModifiers.allStatsModifiers(character);
+    ICharacterStatsModifiers modifiers = StatsModifiers.allStatsModifiers(session.getHero());
     return new ISocialCombatStats[]{new PresenceSocialAttack(traitCollection, modifiers), new PerformanceSocialAttack(
             traitCollection, modifiers), new InvestigationSocialAttack(traitCollection, modifiers)};
   }

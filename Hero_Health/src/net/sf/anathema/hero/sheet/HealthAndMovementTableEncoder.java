@@ -23,7 +23,7 @@ public class HealthAndMovementTableEncoder extends AbstractHealthAndMovementTabl
 
   @Override
   public final float encodeTable(SheetGraphics graphics, ReportSession session, Bounds bounds) throws DocumentException {
-    mobilityPenalty = Math.min(0, StatsModifiers.allStatsModifiers(session.getCharacter()).getMobilityPenalty());
+    mobilityPenalty = Math.min(0, StatsModifiers.allStatsModifiers(session.getHero()).getMobilityPenalty());
     return super.encodeTable(graphics, session, bounds);
   }
 

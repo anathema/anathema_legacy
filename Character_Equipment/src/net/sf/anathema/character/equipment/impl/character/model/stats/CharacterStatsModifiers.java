@@ -1,26 +1,26 @@
 package net.sf.anathema.character.equipment.impl.character.model.stats;
 
-import net.sf.anathema.character.equipment.character.model.EquipmentModel;
 import net.sf.anathema.character.equipment.character.model.IEquipmentItem;
-import net.sf.anathema.character.generic.character.IGenericCharacter;
 import net.sf.anathema.character.generic.equipment.ICharacterStatsModifiers;
 import net.sf.anathema.character.generic.equipment.ITraitModifyingStats;
 import net.sf.anathema.character.generic.equipment.weapon.IArmourStats;
 import net.sf.anathema.character.generic.equipment.weapon.IEquipmentStats;
 import net.sf.anathema.character.generic.equipment.weapon.IWeaponStats;
+import net.sf.anathema.hero.equipment.EquipmentModel;
+import net.sf.anathema.hero.equipment.EquipmentModelFetcher;
+import net.sf.anathema.hero.model.Hero;
 
 import java.util.ArrayList;
 import java.util.List;
 
 import static com.google.common.collect.Lists.newArrayList;
-import static net.sf.anathema.character.equipment.IEquipmentAdditionalModelTemplate.ID;
 
 public class CharacterStatsModifiers implements ICharacterStatsModifiers {
   private final List<ITraitModifyingStats> stats = new ArrayList<>();
   private int mobilityPenalty;
 
-  public static CharacterStatsModifiers extractFromCharacter(IGenericCharacter character) {
-    EquipmentModel model = (EquipmentModel) character.getAdditionalModel(ID);
+  public static CharacterStatsModifiers extractFromCharacter(Hero hero) {
+    EquipmentModel model = EquipmentModelFetcher.fetch(hero);
     IEquipmentItem[] items = model.getEquipmentItems();
     List<IEquipmentItem> list = newArrayList(items);
     return new CharacterStatsModifiers(list);

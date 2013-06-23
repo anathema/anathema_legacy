@@ -4,7 +4,7 @@ import net.miginfocom.layout.CC;
 import net.miginfocom.swing.MigLayout;
 import net.sf.anathema.character.equipment.character.DialogPersonalizationEditView;
 import net.sf.anathema.character.equipment.character.PersonalizationEditView;
-import net.sf.anathema.character.equipment.character.view.IEquipmentAdditionalView;
+import net.sf.anathema.character.equipment.character.view.EquipmentView;
 import net.sf.anathema.character.equipment.character.view.IEquipmentObjectView;
 import net.sf.anathema.character.equipment.character.view.IMagicalMaterialView;
 import net.sf.anathema.character.equipment.item.personalization.EquipmentPersonalizationProperties;
@@ -23,7 +23,7 @@ import java.awt.Dimension;
 
 import static net.sf.anathema.lib.gui.layout.LayoutUtils.withoutInsets;
 
-public class EquipmentAdditionalView implements IEquipmentAdditionalView, IView {
+public class EquipmentViewImpl implements EquipmentView, IView {
   private final ListObjectSelectionView<String> equipmentPickList = new ListObjectSelectionView<>(String.class);
   private final JPanel panel = new JPanel(new MigLayout(withoutInsets()));
   private final JPanel buttonPanel = new JPanel(new MigLayout(withoutInsets().wrapAfter(1)));
@@ -35,7 +35,7 @@ public class EquipmentAdditionalView implements IEquipmentAdditionalView, IView 
   });
   private final MagicMaterialView magicMaterialView = new MagicMaterialView();
 
-  public EquipmentAdditionalView() {
+  public EquipmentViewImpl() {
     JScrollPane itemScrollpane = new JScrollPane(equipmentPickList.getComponent());
     itemScrollpane.setPreferredSize(new Dimension(150, 250));
     taskPaneView.getComponent().setPreferredSize(new Dimension(150, 250));

@@ -57,10 +57,6 @@ public class DummyGenericCharacter implements IGenericCharacter {
     };
   }
 
-  public void addTrait(GenericTrait trait) {
-    traitsByType.put(trait.getType(), trait);
-  }
-
   @Override
   public int getLearnCount(IMultiLearnableCharm charm) {
     return 0;
@@ -134,11 +130,6 @@ public class DummyGenericCharacter implements IGenericCharacter {
   @Override
   public int getAttunedPoolValue() {
     return 0;
-  }
-
-  @Override
-  public IAdditionalModel getAdditionalModel(String templateId) {
-    return null;
   }
 
   @Override
@@ -250,10 +241,5 @@ public class DummyGenericCharacter implements IGenericCharacter {
   @Override
   public void setLearnCount(String charmName, int newValue) {
     // nothing to do
-  }
-
-  @Override
-  public <T> List<T> getAllRegistered(Class<T> interfaceClass) {
-    return Lists.newArrayList();
   }
 }

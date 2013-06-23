@@ -1,13 +1,11 @@
-package net.sf.anathema.character.equipment.impl.character.persister;
+package net.sf.anathema.hero.equipment;
 
 import net.sf.anathema.character.equipment.MagicalMaterial;
 import net.sf.anathema.character.equipment.MaterialComposition;
 import net.sf.anathema.character.equipment.character.EquipmentHeroEvaluator;
 import net.sf.anathema.character.equipment.character.EquipmentOptionsProvider;
-import net.sf.anathema.character.equipment.character.model.EquipmentModel;
 import net.sf.anathema.character.equipment.character.model.IEquipmentItem;
 import net.sf.anathema.character.equipment.character.model.IEquipmentStatsOption;
-import net.sf.anathema.character.equipment.impl.character.model.EquipmentModelImpl;
 import net.sf.anathema.character.equipment.impl.character.model.MissingMaterialException;
 import net.sf.anathema.character.generic.additionaltemplate.IAdditionalModel;
 import net.sf.anathema.character.generic.equipment.weapon.IEquipmentStats;
@@ -38,8 +36,8 @@ public class EquipmentAdditionalModelPersister implements IAdditionalPersister {
   @Override
   public void save(Element parent, IAdditionalModel model) {
     EquipmentModel equipmentModel = (EquipmentModel) model;
-    saveItems(parent, equipmentModel.getNaturalWeapons(), equipmentModel.getCharacterOptionProvider());
-    saveItems(parent, equipmentModel.getEquipmentItems(), equipmentModel.getCharacterOptionProvider());
+    saveItems(parent, equipmentModel.getNaturalWeapons(), equipmentModel.getOptionProvider());
+    saveItems(parent, equipmentModel.getEquipmentItems(), equipmentModel.getOptionProvider());
   }
 
   private void saveItems(Element parent, IEquipmentItem[] equipmentItems, EquipmentOptionsProvider provider) {
@@ -98,12 +96,12 @@ public class EquipmentAdditionalModelPersister implements IAdditionalPersister {
         String printedStatId = statsElement.getText().trim();
         item.setPrinted(printedStatId);
 
-        EquipmentHeroEvaluator provider = equipmentModel.getCharacterDataProvider();
+        EquipmentHeroEvaluator provider = equipmentModel.getHeroEvaluator();
         IEquipmentStats stats = item.getStat(printedStatId);
         for (Element optionsElement : ElementUtilities.elements(statsElement, TAG_SPECIALTY_OPTION)) {
           IEquipmentStatsOption option =
                   provider.getCharacterSpecialtyOption(optionsElement.attributeValue(ATTRIB_NAME), optionsElement.attributeValue(ATTRIB_TYPE));
-          equipmentModel.getCharacterOptionProvider().enableStatOption(item, stats, option);
+          equipmentModel.getOptionProvider().enableStatOption(item, stats, option);
         }
       }
     }

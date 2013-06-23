@@ -36,7 +36,7 @@ public class SocialCombatStatsBoxEncoder implements ContentEncoder {
   @Override
   public void encode(SheetGraphics graphics, ReportSession reportSession, Bounds bounds) throws DocumentException {
     IGenericCharacter character = reportSession.getCharacter();
-    ICharacterStatsModifiers modifiers = StatsModifiers.allStatsModifiers(character);
+    ICharacterStatsModifiers modifiers = StatsModifiers.allStatsModifiers(reportSession.getHero());
     float valueWidth = bounds.width;
     Bounds valueBounds = new Bounds(bounds.x, bounds.y +3, valueWidth, bounds.height);
     float valueHeight = encodeValues(graphics, valueBounds, character, modifiers) -5;

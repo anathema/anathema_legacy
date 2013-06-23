@@ -31,6 +31,7 @@
         <model id="Intimacies"/>
         <model id="Specialties"/>
         <model id="SolarVirtueFlaw"/>
+        <model id="Equipment"/>
     </models>
     <creation>
         <bonusPointCosts uses="SolaroidDefaultBonusPointCost2nd.template"/>

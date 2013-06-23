@@ -1,25 +1,22 @@
-package net.sf.anathema.character.equipment.impl.character.model;
+package net.sf.anathema.hero.equipment;
 
-import net.sf.anathema.character.equipment.IEquipmentAdditionalModelTemplate;
+import net.sf.anathema.character.equipment.impl.character.model.RegisteredNaturalWeapon;
 import net.sf.anathema.character.equipment.template.IEquipmentTemplate;
-import net.sf.anathema.character.generic.template.additional.IGlobalAdditionalTemplate;
 import net.sf.anathema.character.generic.type.CharacterTypes;
 import net.sf.anathema.character.generic.type.ICharacterType;
 import net.sf.anathema.initialization.InitializationException;
 import net.sf.anathema.initialization.ObjectFactory;
 import net.sf.anathema.lib.logging.Logger;
-import net.sf.anathema.lib.util.SimpleIdentifier;
 
 import java.util.Collection;
 import java.util.Collections;
 
-public class EquipmentAdditionalModelTemplate extends SimpleIdentifier implements IGlobalAdditionalTemplate, IEquipmentAdditionalModelTemplate {
+public class NaturalWeaponsMapImpl implements NaturalWeaponsMap {
 
   private CharacterTypes characterTypes;
   private ObjectFactory objectFactory;
 
-  public EquipmentAdditionalModelTemplate(CharacterTypes characterTypes, ObjectFactory objectFactory) {
-    super(ID);
+  public NaturalWeaponsMapImpl(CharacterTypes characterTypes, ObjectFactory objectFactory) {
     this.characterTypes = characterTypes;
     this.objectFactory = objectFactory;
   }

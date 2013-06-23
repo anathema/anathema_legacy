@@ -26,6 +26,7 @@
         <model id="Specialties"/>
         <model id="Languages"/>
         <model id="Intimacies"/>
+        <model id="Equipment"/>
     </models>
     <creation>
         <bonusPointCosts uses="DefaultBonusPointCost2nd.template"/>

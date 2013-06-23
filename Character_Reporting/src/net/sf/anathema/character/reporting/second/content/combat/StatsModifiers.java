@@ -1,17 +1,16 @@
 package net.sf.anathema.character.reporting.second.content.combat;
 
-import net.sf.anathema.character.generic.character.IGenericCharacter;
 import net.sf.anathema.character.generic.equipment.ICharacterStatsModifiers;
+import net.sf.anathema.character.reporting.pdf.model.StatsModelFetcher;
 import net.sf.anathema.character.reporting.pdf.rendering.boxes.StatsModifierFactory;
-
-import java.util.List;
+import net.sf.anathema.hero.model.Hero;
 
 public class StatsModifiers {
-  public static ICharacterStatsModifiers allStatsModifiers(IGenericCharacter character) {
+
+  public static ICharacterStatsModifiers allStatsModifiers(Hero hero) {
     AggregatedStatsModifiers allModifiers = new AggregatedStatsModifiers();
-    List<StatsModifierFactory> modifiers = character.getAllRegistered(StatsModifierFactory.class);
-    for (StatsModifierFactory factory : modifiers) {
-      ICharacterStatsModifiers statsModifiers = factory.create(character);
+    for (StatsModifierFactory factory : StatsModelFetcher.fetch(hero).getModifierFactories()) {
+      ICharacterStatsModifiers statsModifiers = factory.create(hero);
       allModifiers.add(statsModifiers);
     }
     return allModifiers;

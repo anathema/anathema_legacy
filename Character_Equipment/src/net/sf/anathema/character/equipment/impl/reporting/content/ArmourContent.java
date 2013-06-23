@@ -9,12 +9,13 @@ import net.sf.anathema.character.equipment.impl.reporting.content.stats.armour.S
 import net.sf.anathema.character.generic.character.IGenericCharacter;
 import net.sf.anathema.character.generic.equipment.weapon.IArmourStats;
 import net.sf.anathema.character.reporting.pdf.content.stats.IStatsGroup;
+import net.sf.anathema.hero.model.Hero;
 import net.sf.anathema.lib.resources.Resources;
 
 public class ArmourContent extends AbstractEquipmentContent<IArmourStats> {
 
-  public ArmourContent(Resources resources, IGenericCharacter character) {
-    super(resources, character);
+  public ArmourContent(Hero hero, Resources resources, IGenericCharacter character) {
+    super(hero, resources, character);
   }
 
   @Override
