@@ -3,7 +3,7 @@ package net.sf.anathema.initialization.bootjob;
 import net.sf.anathema.framework.IApplicationModel;
 import net.sf.anathema.framework.Version;
 import net.sf.anathema.framework.item.IItemType;
-import net.sf.anathema.framework.repository.IRepository;
+import net.sf.anathema.framework.repository.Repository;
 import net.sf.anathema.framework.repository.tree.FileExporter;
 import net.sf.anathema.framework.repository.tree.RepositoryZipPathCreator;
 import net.sf.anathema.lib.resources.Resources;
@@ -23,7 +23,7 @@ public class RepositoryBackup {
 
   public void backupRepository() {
     try {
-      IRepository repository = model.getRepository();
+      Repository repository = model.getRepository();
       IItemType[] itemTypes = model.getItemTypeRegistry().getAllItemTypes();
       CleanupExportModel exportModel = new CleanupExportModel(itemTypes, repository);
       if (exportModel.getPrintNameFilesInSelection().length == 0) {
@@ -38,7 +38,7 @@ public class RepositoryBackup {
   }
 
   private Path getSaveFile() {
-    IRepository repository = model.getRepository();
+    Repository repository = model.getRepository();
     String version = new Version(resources).asString();
     return Paths.get(repository.getRepositoryPath()).resolve("BackupForFirstLaunchOf" + version + ".zip");
   }

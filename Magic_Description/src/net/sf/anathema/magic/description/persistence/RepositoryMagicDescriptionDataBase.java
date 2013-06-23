@@ -5,7 +5,7 @@ import com.google.gson.GsonBuilder;
 import net.sf.anathema.framework.IApplicationModel;
 import net.sf.anathema.framework.item.IItemType;
 import net.sf.anathema.framework.item.IItemTypeRegistry;
-import net.sf.anathema.framework.repository.IRepository;
+import net.sf.anathema.framework.repository.Repository;
 import net.sf.anathema.framework.repository.RepositoryStringAccess;
 
 import static net.sf.anathema.magic.description.module.MagicDescriptionItemTypeConfiguration.MAGIC_DESCRIPTION_ITEM_TYPE_ID;
@@ -13,7 +13,7 @@ import static net.sf.anathema.magic.description.module.MagicDescriptionItemTypeC
 public class RepositoryMagicDescriptionDataBase implements MagicDescriptionDataBase {
 
   public static RepositoryMagicDescriptionDataBase CreateFrom(IApplicationModel anathemaModel) {
-    IRepository repository = anathemaModel.getRepository();
+    Repository repository = anathemaModel.getRepository();
     IItemType itemType = getItemType(anathemaModel);
     return new RepositoryMagicDescriptionDataBase(repository, itemType);
   }
@@ -23,11 +23,11 @@ public class RepositoryMagicDescriptionDataBase implements MagicDescriptionDataB
     return registry.getById(MAGIC_DESCRIPTION_ITEM_TYPE_ID);
   }
 
-  private IRepository repository;
+  private Repository repository;
   private IItemType itemType;
   private final Gson gson;
 
-  public RepositoryMagicDescriptionDataBase(IRepository repository, IItemType itemType) {
+  public RepositoryMagicDescriptionDataBase(Repository repository, IItemType itemType) {
     this.repository = repository;
     this.itemType = itemType;
     this.gson = new GsonBuilder().setPrettyPrinting().create();

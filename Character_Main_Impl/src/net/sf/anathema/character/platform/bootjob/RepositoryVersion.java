@@ -1,7 +1,7 @@
 package net.sf.anathema.character.platform.bootjob;
 
 import net.sf.anathema.framework.Version;
-import net.sf.anathema.framework.repository.IRepository;
+import net.sf.anathema.framework.repository.Repository;
 import net.sf.anathema.lib.io.PathUtils;
 import net.sf.anathema.lib.logging.Logger;
 
@@ -13,9 +13,9 @@ import java.nio.file.Paths;
 public class RepositoryVersion {
   private static final Logger logger = Logger.getLogger(RepositoryVersion.class);
 
-  private final IRepository repository;
+  private final Repository repository;
 
-  public RepositoryVersion(IRepository repository) {
+  public RepositoryVersion(Repository repository) {
     this.repository = repository;
   }
 
@@ -51,7 +51,7 @@ public class RepositoryVersion {
     }
   }
 
-  private Path getVersionFile(IRepository repository) {
+  private Path getVersionFile(Repository repository) {
     return Paths.get(repository.getRepositoryPath()).resolve("repository.version");
   }
 

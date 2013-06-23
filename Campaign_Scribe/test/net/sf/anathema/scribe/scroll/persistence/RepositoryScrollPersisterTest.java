@@ -1,7 +1,7 @@
 package net.sf.anathema.scribe.scroll.persistence;
 
 import net.sf.anathema.framework.repository.IBasicRepositoryIdData;
-import net.sf.anathema.framework.repository.IRepository;
+import net.sf.anathema.framework.repository.Repository;
 import net.sf.anathema.framework.repository.access.printname.ReferenceAccess;
 import net.sf.anathema.framework.repository.access.printname.ReferenceBuilder;
 import org.junit.Test;
@@ -20,7 +20,7 @@ import static org.mockito.Mockito.when;
 
 public class RepositoryScrollPersisterTest {
 
-  private final IRepository repository = mock(IRepository.class);
+  private final Repository repository = mock(Repository.class);
   private final Date date = new Date();
   private final Clock clock = new StaticClock(date);
   private final RepositoryScrollPersister persister = new RepositoryScrollPersister(repository, clock);

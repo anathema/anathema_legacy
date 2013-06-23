@@ -5,7 +5,7 @@ import net.sf.anathema.framework.presenter.action.preferences.IPreferencesElemen
 import net.sf.anathema.initialization.Extension;
 import net.sf.anathema.initialization.reflections.AnnotationFinder;
 import net.sf.anathema.initialization.reflections.ResourceLoader;
-import net.sf.anathema.initialization.repository.IDataFileProvider;
+import net.sf.anathema.initialization.repository.DataFileProvider;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -17,7 +17,7 @@ public class PreferencesElementsExtensionPoint implements IAnathemaExtension {
   private final List<IPreferencesElement> elements = new ArrayList<>();
 
   @Override
-  public void initialize(IDataFileProvider dataFileProvider, AnnotationFinder finder, ResourceLoader loader) {
+  public void initialize(DataFileProvider dataFileProvider, AnnotationFinder finder, ResourceLoader loader) {
     // nothing to do
   }
 

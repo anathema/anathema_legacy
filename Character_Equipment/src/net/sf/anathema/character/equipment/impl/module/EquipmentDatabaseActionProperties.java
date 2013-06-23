@@ -3,7 +3,7 @@ package net.sf.anathema.character.equipment.impl.module;
 import net.sf.anathema.character.equipment.impl.item.model.gson.GsonEquipmentDatabase;
 import net.sf.anathema.framework.IApplicationModel;
 import net.sf.anathema.framework.module.IDatabaseActionProperties;
-import net.sf.anathema.initialization.repository.IDataFileProvider;
+import net.sf.anathema.initialization.repository.DataFileProvider;
 import net.sf.anathema.lib.resources.Resources;
 
 public class EquipmentDatabaseActionProperties implements IDatabaseActionProperties {
@@ -22,7 +22,7 @@ public class EquipmentDatabaseActionProperties implements IDatabaseActionPropert
   }
 
   @Override
-  public GsonEquipmentDatabase createItemData(IDataFileProvider provider) {
+  public GsonEquipmentDatabase createItemData(DataFileProvider provider) {
     return GsonEquipmentDatabase.CreateFrom(anathemaModel);
   }
 }

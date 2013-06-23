@@ -7,7 +7,7 @@ import net.sf.anathema.character.generic.framework.module.ICharacterModule;
 import net.sf.anathema.initialization.InitializationException;
 import net.sf.anathema.initialization.ObjectFactory;
 import net.sf.anathema.initialization.reflections.ResourceLoader;
-import net.sf.anathema.initialization.repository.IDataFileProvider;
+import net.sf.anathema.initialization.repository.DataFileProvider;
 
 import java.util.Collection;
 
@@ -21,13 +21,13 @@ public class CharacterModuleContainerInitializer {
     this.objectFactory = objectFactory;
   }
 
-  public CharacterModuleContainer initContainer(IDataFileProvider dataFileProvider) throws InitializationException {
+  public CharacterModuleContainer initContainer(DataFileProvider dataFileProvider) throws InitializationException {
     CharacterModuleContainer container = createModuleContainer(dataFileProvider);
     addModules(container);
     return container;
   }
 
-  private CharacterModuleContainer createModuleContainer(IDataFileProvider dataFileProvider) {
+  private CharacterModuleContainer createModuleContainer(DataFileProvider dataFileProvider) {
     IExtensibleDataSetProvider dataSetManager = loadExtensibleResources();
     return new CharacterModuleContainer(dataSetManager, dataFileProvider, objectFactory);
   }

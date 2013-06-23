@@ -18,7 +18,7 @@ import net.sf.anathema.character.generic.type.CharacterTypes;
 import net.sf.anathema.character.generic.type.ICharacterType;
 import net.sf.anathema.character.generic.type.ReflectionCharacterTypes;
 import net.sf.anathema.initialization.ObjectFactory;
-import net.sf.anathema.initialization.repository.IDataFileProvider;
+import net.sf.anathema.initialization.repository.DataFileProvider;
 import net.sf.anathema.lib.registry.IIdentificateRegistry;
 import net.sf.anathema.lib.registry.IRegistry;
 import net.sf.anathema.lib.registry.IdentificateRegistry;
@@ -34,12 +34,12 @@ public class CharacterGenerics implements ICharacterGenerics {
   private final IRegistry<ICharacterType, ICasteCollection> casteCollectionRegistry = new Registry<>();
   private final IRegistry<String, IAdditionalTemplateParser> additionalTemplateParserRegistry = new Registry<>();
   private final ICharmProvider charmProvider;
-  private final IDataFileProvider dataFileProvider;
+  private final DataFileProvider dataFileProvider;
   private final IExtensibleDataSetProvider dataSetProvider;
   private final ObjectFactory objectFactory;
   private final CharacterTypes characterTypes;
 
-  public CharacterGenerics(IDataFileProvider dataFileProvider, ObjectFactory objectFactory, IExtensibleDataSetProvider dataSetProvider) {
+  public CharacterGenerics(DataFileProvider dataFileProvider, ObjectFactory objectFactory, IExtensibleDataSetProvider dataSetProvider) {
     this.objectFactory = objectFactory;
     this.additionalPersisterRegistry = new Registry<String, IAdditionalPersisterFactory>(new NullAdditionalPersisterFactory());
     this.dataFileProvider = dataFileProvider;
@@ -100,7 +100,7 @@ public class CharacterGenerics implements ICharacterGenerics {
   }
 
   @Override
-  public IDataFileProvider getDataFileProvider() {
+  public DataFileProvider getDataFileProvider() {
     return dataFileProvider;
   }
 
