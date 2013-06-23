@@ -5,11 +5,9 @@ import net.sf.anathema.framework.item.IItemType;
 import net.sf.anathema.framework.module.ItemTypeConfiguration;
 import net.sf.anathema.framework.repository.ItemType;
 import net.sf.anathema.framework.repository.RepositoryConfiguration;
-import net.sf.anathema.initialization.reflections.Weight;
 import net.sf.anathema.lib.exception.AnathemaException;
 
 @net.sf.anathema.initialization.ItemTypeConfiguration
-@Weight(weight = 0)
 public class ExaltedCharacterItemTypeConfiguration implements ItemTypeConfiguration {
 
   private final IItemType type;

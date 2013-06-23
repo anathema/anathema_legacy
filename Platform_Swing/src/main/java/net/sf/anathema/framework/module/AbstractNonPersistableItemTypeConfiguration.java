@@ -14,5 +14,4 @@ public abstract class AbstractNonPersistableItemTypeConfiguration implements Ite
   public IItemType getItemType() {
     return type;
   }
-
 }

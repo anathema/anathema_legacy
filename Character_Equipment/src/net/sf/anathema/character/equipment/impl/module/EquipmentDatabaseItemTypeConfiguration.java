@@ -4,10 +4,8 @@ import net.sf.anathema.framework.module.AbstractNonPersistableItemTypeConfigurat
 import net.sf.anathema.framework.repository.ItemType;
 import net.sf.anathema.framework.repository.RepositoryConfiguration;
 import net.sf.anathema.initialization.ItemTypeConfiguration;
-import net.sf.anathema.initialization.reflections.Weight;
 
 @ItemTypeConfiguration
-@Weight(weight = 10)
 public class EquipmentDatabaseItemTypeConfiguration extends AbstractNonPersistableItemTypeConfiguration {
 
   public static final String EQUIPMENT_DATABASE_ITEM_TYPE_ID = "EquipmentDatabase";
