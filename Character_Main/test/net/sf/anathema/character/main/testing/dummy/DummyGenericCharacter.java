@@ -10,7 +10,6 @@ import net.sf.anathema.character.generic.impl.traits.limitation.StaticTraitLimit
 import net.sf.anathema.character.generic.magic.ICharm;
 import net.sf.anathema.character.generic.magic.IGenericCombo;
 import net.sf.anathema.character.generic.magic.IMagic;
-import net.sf.anathema.character.generic.magic.charms.special.IMultiLearnableCharm;
 import net.sf.anathema.character.generic.template.HeroTemplate;
 import net.sf.anathema.character.generic.template.ITraitLimitation;
 import net.sf.anathema.character.generic.traits.GenericTrait;
@@ -209,11 +208,6 @@ public class DummyGenericCharacter implements IGenericCharacter {
   @Override
   public boolean isSubeffectCharm(ICharm magic) {
     return false;
-  }
-
-  @Override
-  public ICharm[] getLearnedCharms() {
-    return new ICharm[0];
   }
 
   @Override

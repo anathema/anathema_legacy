@@ -278,8 +278,7 @@ public class GenericCharacter implements IGenericCharacter {
     return genericCharms.toArray(new ICharm[genericCharms.size()]);
   }
 
-  @Override
-  public ICharm[] getLearnedCharms() {
+  private ICharm[] getLearnedCharms() {
     boolean experienced = ExperienceModelFetcher.fetch(hero).isExperienced();
     return CharmsModelFetcher.fetch(hero).getLearnedCharms(experienced);
   }

@@ -1,11 +1,12 @@
 package net.sf.anathema.character.generic.character;
 
+import net.sf.anathema.character.generic.caste.CasteType;
 import net.sf.anathema.character.generic.health.HealthLevelType;
 import net.sf.anathema.character.generic.magic.ICharm;
 import net.sf.anathema.character.generic.magic.IGenericCombo;
 import net.sf.anathema.character.generic.magic.IMagic;
 import net.sf.anathema.character.generic.template.HeroTemplate;
-import net.sf.anathema.character.generic.template.magic.IGenericCharmConfiguration;
+import net.sf.anathema.character.generic.template.ITraitLimitation;
 import net.sf.anathema.character.generic.traits.TraitType;
 import net.sf.anathema.character.generic.traits.groups.IIdentifiedTraitTypeGroup;
 import net.sf.anathema.character.library.trait.specialties.Specialty;
@@ -13,7 +14,15 @@ import net.sf.anathema.lib.util.IdentifiedInteger;
 
 import java.util.List;
 
-public interface IGenericCharacter extends ILimitationContext, IGenericCharmConfiguration {
+public interface IGenericCharacter extends ILimitationContext {
+
+  ITraitLimitation getEssenceLimitation();
+
+  int getAge();
+
+  CasteType getCasteType();
+
+  IGenericTraitCollection getTraitCollection();
 
   boolean isLearned(IMagic magic);
 
