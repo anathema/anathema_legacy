@@ -12,7 +12,7 @@ import net.sf.anathema.initialization.repository.DataFileProvider;
 
 public interface Repository extends DataFileProvider {
 
-  IRepositoryWriteAccess createWriteAccess(IItem item) throws RepositoryException;
+  IRepositoryWriteAccess createWriteAccess(Item item) throws RepositoryException;
 
   IRepositoryWriteAccess createWriteAccess(IItemType type, String id) throws RepositoryException;
 

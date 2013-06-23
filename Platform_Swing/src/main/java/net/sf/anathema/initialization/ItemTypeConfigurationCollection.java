@@ -1,23 +1,19 @@
 package net.sf.anathema.initialization;
 
-import net.sf.anathema.framework.module.AbstractItemTypeConfiguration;
-import net.sf.anathema.framework.module.IItemTypeConfiguration;
-
 import java.util.ArrayList;
 import java.util.Collection;
 
-public class ItemTypeConfigurationCollection  {
+public class ItemTypeConfigurationCollection {
 
-  private final Collection<AbstractItemTypeConfiguration> itemTypeConfigurations = new ArrayList<>();
+  private final Collection<net.sf.anathema.framework.module.ItemTypeConfiguration> itemTypeConfigurations = new ArrayList<>();
 
   public ItemTypeConfigurationCollection(ObjectFactory objectFactory)
-      throws InitializationException {
-    Collection<AbstractItemTypeConfiguration> configurations = objectFactory.instantiateOrdered(
-            ItemTypeConfiguration.class);
+          throws InitializationException {
+    Collection<net.sf.anathema.framework.module.ItemTypeConfiguration> configurations = objectFactory.instantiateOrdered(net.sf.anathema.initialization.ItemTypeConfiguration.class);
     itemTypeConfigurations.addAll(configurations);
   }
 
-  public Collection<IItemTypeConfiguration> getItemTypes() {
-    return new ArrayList<IItemTypeConfiguration>(itemTypeConfigurations);
+  public Collection<net.sf.anathema.framework.module.ItemTypeConfiguration> getItemTypes() {
+    return new ArrayList<>(itemTypeConfigurations);
   }
 }

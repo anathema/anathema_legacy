@@ -1,12 +1,12 @@
 package net.sf.anathema.framework.reporting;
 
-import net.sf.anathema.framework.repository.IItem;
+import net.sf.anathema.framework.repository.Item;
 
 import java.io.OutputStream;
 
 public interface Report {
 
-  boolean supports(IItem item);
+  boolean supports(Item item);
 
-  void print(IItem item, OutputStream stream) throws ReportException;
+  void print(Item item, OutputStream stream) throws ReportException;
 }

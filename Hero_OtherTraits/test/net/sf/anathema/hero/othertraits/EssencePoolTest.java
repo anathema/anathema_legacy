@@ -4,12 +4,12 @@ import net.sf.anathema.character.generic.framework.xml.essence.GenericEssenceTem
 import net.sf.anathema.character.generic.traits.types.OtherTraitType;
 import net.sf.anathema.character.generic.traits.types.VirtueType;
 import net.sf.anathema.character.impl.generic.GenericCharacter;
-import net.sf.anathema.hero.model.InitializationContext;
 import net.sf.anathema.character.main.model.essencepool.EssencePoolModelFetcher;
-import net.sf.anathema.character.main.testing.dummy.DummyInitializationContext;
 import net.sf.anathema.character.main.testing.dummy.DummyHero;
+import net.sf.anathema.character.main.testing.dummy.DummyInitializationContext;
 import net.sf.anathema.character.main.testing.dummy.trait.DummyTrait;
-import net.sf.anathema.character.model.ICharacter;
+import net.sf.anathema.character.model.Character;
+import net.sf.anathema.hero.model.InitializationContext;
 import net.sf.anathema.hero.othertraits.model.pool.EssencePoolModelImpl;
 import net.sf.anathema.hero.traits.model.TraitModelImpl;
 import org.junit.Before;
@@ -22,7 +22,7 @@ import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.when;
 
 public class EssencePoolTest {
-  ICharacter statistics = mock(ICharacter.class);
+  Character statistics = mock(net.sf.anathema.character.model.Character.class);
 
   @Before
   public void createEssenceUserWithoutPeripheralPool() throws Exception {

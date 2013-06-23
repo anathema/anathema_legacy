@@ -10,11 +10,11 @@ import net.sf.anathema.character.generic.character.IGenericCharacter;
 import net.sf.anathema.character.impl.generic.GenericDescription;
 import net.sf.anathema.character.impl.util.GenericCharacterUtilities;
 import net.sf.anathema.character.main.model.description.HeroDescriptionFetcher;
-import net.sf.anathema.character.model.ICharacter;
+import net.sf.anathema.character.model.Character;
 import net.sf.anathema.framework.reporting.ReportException;
 import net.sf.anathema.framework.reporting.pdf.AbstractPdfReport;
 import net.sf.anathema.framework.reporting.pdf.PdfReportUtils;
-import net.sf.anathema.framework.repository.IItem;
+import net.sf.anathema.framework.repository.Item;
 import net.sf.anathema.lib.resources.Resources;
 
 public class TextReport extends AbstractPdfReport {
@@ -33,10 +33,10 @@ public class TextReport extends AbstractPdfReport {
   }
 
   @Override
-  public void performPrint(IItem item, Document document, PdfWriter writer) throws ReportException {
+  public void performPrint(Item item, Document document, PdfWriter writer) throws ReportException {
     MultiColumnText columnText = new MultiColumnText(document.top() - document.bottom() - 15);
     columnText.addRegularColumns(document.left(), document.right(), 20, 2);
-    ICharacter character = (ICharacter) item.getItemData();
+    Character character = (Character) item.getItemData();
     try {
       GenericDescription description = new GenericDescription(HeroDescriptionFetcher.fetch(character));
       new CharacterDescriptionTextEncoder(utils, resources).createParagraphs(columnText, description);
@@ -70,7 +70,7 @@ public class TextReport extends AbstractPdfReport {
   }
 
   @Override
-  public boolean supports(IItem item) {
-    return item != null && item.getItemData() instanceof ICharacter;
+  public boolean supports(Item item) {
+    return item != null && item.getItemData() instanceof net.sf.anathema.character.model.Character;
   }
 }

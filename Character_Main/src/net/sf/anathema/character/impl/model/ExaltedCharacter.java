@@ -4,18 +4,18 @@ import net.sf.anathema.character.generic.framework.ICharacterGenerics;
 import net.sf.anathema.character.generic.template.HeroTemplate;
 import net.sf.anathema.character.main.model.description.HeroDescription;
 import net.sf.anathema.character.main.model.description.HeroDescriptionFetcher;
-import net.sf.anathema.character.model.ICharacter;
+import net.sf.anathema.character.model.Character;
 import net.sf.anathema.framework.presenter.itemmanagement.PrintNameAdjuster;
+import net.sf.anathema.framework.repository.ChangeManagement;
 import net.sf.anathema.hero.change.ChangeAnnouncer;
 import net.sf.anathema.hero.initialization.HeroModelInitializer;
 import net.sf.anathema.hero.model.DefaultHero;
 import net.sf.anathema.hero.model.HeroModel;
 import net.sf.anathema.hero.model.ModelInitializationContext;
-import net.sf.anathema.lib.control.IChangeListener;
 import net.sf.anathema.lib.util.Identifier;
 import net.sf.anathema.lib.workflow.textualdescription.ITextualDescription;
 
-public class ExaltedCharacter implements ICharacter {
+public class ExaltedCharacter implements Character {
 
   private final CharacterChangeManagement management = new CharacterChangeManagement(this);
   private final DefaultHero hero;
@@ -44,23 +44,8 @@ public class ExaltedCharacter implements ICharacter {
   }
 
   @Override
-  public void addDirtyListener(IChangeListener changeListener) {
-    management.addDirtyListener(changeListener);
-  }
-
-  @Override
-  public boolean isDirty() {
-    return management.isDirty();
-  }
-
-  @Override
-  public void removeDirtyListener(IChangeListener changeListener) {
-    management.removeDirtyListener(changeListener);
-  }
-
-  @Override
-  public void setClean() {
-    management.setClean();
+  public ChangeManagement getChangeManagement() {
+    return management;
   }
 
   @Override

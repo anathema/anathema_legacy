@@ -1,6 +1,6 @@
 package net.sf.anathema.framework.reporting;
 
-import net.sf.anathema.framework.repository.IItem;
+import net.sf.anathema.framework.repository.Item;
 import net.sf.anathema.lib.gui.file.FileChoosingUtilities;
 import net.sf.anathema.lib.lang.StringUtilities;
 import net.sf.anathema.lib.resources.Resources;
@@ -13,11 +13,11 @@ import java.nio.file.Path;
 
 public class ControlledFileChooser implements FileChooser {
 
-  private IItem item;
+  private Item item;
   private Resources resources;
   private JComponent parent;
 
-  public ControlledFileChooser(IItem item, Resources resources, JComponent parent) {
+  public ControlledFileChooser(Item item, Resources resources, JComponent parent) {
     this.item = item;
     this.resources = resources;
     this.parent = parent;
@@ -42,7 +42,7 @@ public class ControlledFileChooser implements FileChooser {
     return !Files.exists(selectedFile) || JOptionPane.showConfirmDialog(parentComponent, message, title, JOptionPane.YES_NO_OPTION) != 1;
   }
 
-  private String getBaseName(IItem item) {
+  private String getBaseName(Item item) {
     return StringUtilities.getFileNameRepresentation(item.getDisplayName());
   }
 }

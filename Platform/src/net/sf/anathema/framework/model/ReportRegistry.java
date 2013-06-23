@@ -2,7 +2,7 @@ package net.sf.anathema.framework.model;
 
 import net.sf.anathema.framework.reporting.IReportRegistry;
 import net.sf.anathema.framework.reporting.Report;
-import net.sf.anathema.framework.repository.IItem;
+import net.sf.anathema.framework.repository.Item;
 
 import java.util.ArrayList;
 import java.util.Collections;
@@ -22,7 +22,7 @@ public class ReportRegistry implements IReportRegistry {
   }
 
   @Override
-  public Report[] getReports(IItem item) {
+  public Report[] getReports(Item item) {
     List<Report> supportedReports = new ArrayList<>();
     for (Report report : reports) {
       if (report.supports(item)) {

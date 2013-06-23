@@ -1,15 +1,17 @@
 package net.sf.anathema.character.perspective.model;
 
+import net.sf.anathema.character.generic.framework.CharacterGenericsExtractor;
+import net.sf.anathema.character.generic.framework.ICharacterGenerics;
+import net.sf.anathema.character.impl.persistence.ExaltedCharacterPersister;
 import net.sf.anathema.framework.IApplicationModel;
 import net.sf.anathema.framework.item.IItemType;
-import net.sf.anathema.framework.persistence.IRepositoryItemPersister;
-import net.sf.anathema.framework.repository.IItem;
+import net.sf.anathema.framework.persistence.RepositoryItemPersister;
+import net.sf.anathema.framework.repository.Item;
 import net.sf.anathema.framework.repository.Repository;
 import net.sf.anathema.framework.repository.access.IRepositoryReadAccess;
 import net.sf.anathema.framework.repository.access.IRepositoryWriteAccess;
 import net.sf.anathema.framework.repository.access.printname.IPrintNameFileAccess;
 import net.sf.anathema.framework.view.PrintNameFile;
-import net.sf.anathema.lib.registry.IRegistry;
 
 import java.io.IOException;
 import java.util.Collection;
@@ -30,15 +32,23 @@ public class CharacterPersistenceModel {
     return access.collectAllPrintNameFiles(characterItemType);
   }
 
-  public IItem loadItem(CharacterIdentifier identifier) {
+  public Item loadItem(CharacterIdentifier identifier) {
     IRepositoryReadAccess readAccess = createReadAccess(identifier.getId());
-    IRepositoryItemPersister persister = findPersister();
+    RepositoryItemPersister persister = findPersister();
     return persister.load(readAccess);
   }
 
-  private IRepositoryItemPersister findPersister() {
-    IRegistry<IItemType, IRepositoryItemPersister> registry = model.getPersisterRegistry();
-    return registry.get(getCharacterItemType());
+  public void save(Item item) throws IOException {
+    RepositoryItemPersister persister = findPersister();
+    Repository repository = model.getRepository();
+    IRepositoryWriteAccess writeAccess = repository.createWriteAccess(item);
+    persister.save(writeAccess, item);
+  }
+
+  private RepositoryItemPersister findPersister() {
+    ICharacterGenerics generics = CharacterGenericsExtractor.getGenerics(model);
+    IItemType itemType = getCharacterItemType();
+    return new ExaltedCharacterPersister(itemType, generics, model.getMessaging());
   }
 
   private IRepositoryReadAccess createReadAccess(String repositoryId) {
@@ -48,12 +58,5 @@ public class CharacterPersistenceModel {
 
   private IItemType getCharacterItemType() {
     return retrieveCharacterItemType(model);
-  }
-
-  public void save(IItem item) throws IOException {
-    IRepositoryItemPersister persister = findPersister();
-    Repository repository = model.getRepository();
-    IRepositoryWriteAccess writeAccess = repository.createWriteAccess(item);
-    persister.save(writeAccess, item);
   }
 }

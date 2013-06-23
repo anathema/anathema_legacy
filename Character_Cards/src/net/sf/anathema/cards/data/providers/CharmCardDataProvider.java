@@ -7,7 +7,6 @@ import net.sf.anathema.character.generic.magic.ICharm;
 import net.sf.anathema.character.impl.generic.GenericCharacter;
 import net.sf.anathema.character.main.model.charms.CharmsModelFetcher;
 import net.sf.anathema.character.main.model.experience.ExperienceModelFetcher;
-import net.sf.anathema.character.model.ICharacter;
 import net.sf.anathema.character.reporting.pdf.content.stats.magic.CharmStats;
 import net.sf.anathema.framework.IApplicationModel;
 import net.sf.anathema.hero.model.Hero;
@@ -43,5 +42,4 @@ public class CharmCardDataProvider extends AbstractMagicCardDataProvider {
   private GenericCharacter createGenericCharacter(Hero hero) {
     return new GenericCharacter(hero);
   }
-
 }

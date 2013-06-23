@@ -3,6 +3,7 @@ package net.sf.anathema.character.platform.module.perspective;
 import net.sf.anathema.character.CharacterPrintNameFileScanner;
 import net.sf.anathema.character.generic.framework.CharacterGenericsExtractor;
 import net.sf.anathema.character.generic.framework.ICharacterGenerics;
+import net.sf.anathema.character.impl.persistence.ExaltedCharacterPersister;
 import net.sf.anathema.character.main.model.experience.ExperienceModelFetcher;
 import net.sf.anathema.character.perspective.PreloadedDescriptiveFeatures;
 import net.sf.anathema.character.perspective.model.CharacterIdentifier;
@@ -11,17 +12,21 @@ import net.sf.anathema.character.perspective.model.CharacterPersistenceModel;
 import net.sf.anathema.character.perspective.model.ItemSystemModel;
 import net.sf.anathema.character.perspective.model.NewCharacterListener;
 import net.sf.anathema.character.platform.module.RegExCharacterPrintNameFileScanner;
+import net.sf.anathema.character.platform.module.repository.CharacterCreationTemplateFactory;
 import net.sf.anathema.framework.IApplicationModel;
+import net.sf.anathema.framework.item.IItemType;
+import net.sf.anathema.framework.persistence.RepositoryItemPersister;
 import net.sf.anathema.framework.presenter.ItemReceiver;
 import net.sf.anathema.framework.presenter.action.NewItemCommand;
 import net.sf.anathema.framework.reporting.ControlledPrintCommand;
 import net.sf.anathema.framework.reporting.QuickPrintCommand;
-import net.sf.anathema.framework.repository.IItem;
 import net.sf.anathema.framework.repository.IRepositoryFileResolver;
+import net.sf.anathema.framework.repository.Item;
 import net.sf.anathema.framework.view.PrintNameFile;
 import net.sf.anathema.hero.model.Hero;
 import net.sf.anathema.lib.control.IChangeListener;
 import net.sf.anathema.lib.resources.Resources;
+import net.sf.anathema.lib.workflow.wizard.selection.ItemTemplateFactory;
 import org.jmock.example.announcer.Announcer;
 
 import java.io.IOException;
@@ -76,25 +81,29 @@ public class CharacterSystemModel implements ItemSystemModel {
   }
 
   private CharacterPrintNameFileScanner createFileScanner() {
-    ICharacterGenerics generics = CharacterGenericsExtractor.getGenerics(model);
+    ICharacterGenerics generics = getCharacterGenerics();
     IRepositoryFileResolver repositoryFileResolver = model.getRepository().getRepositoryFileResolver();
     return new RegExCharacterPrintNameFileScanner(generics.getCharacterTypes(), generics.getCasteCollectionRegistry(), repositoryFileResolver);
   }
 
+  private ICharacterGenerics getCharacterGenerics() {
+    return CharacterGenericsExtractor.getGenerics(model);
+  }
+
   @Override
-  public IItem loadItem(CharacterIdentifier identifier) {
+  public Item loadItem(CharacterIdentifier identifier) {
     CharacterItemModel character = modelsByIdentifier.get(identifier);
     if (character.isLoaded()) {
       return character.getItem();
     }
-    IItem item = persistenceModel.loadItem(identifier);
+    Item item = persistenceModel.loadItem(identifier);
     character.setItem(item);
     initCharacterListening(item);
     return item;
   }
 
-  private void initCharacterListening(IItem item) {
-    item.addDirtyListener(dirtyListener);
+  private void initCharacterListening(Item item) {
+    item.getChangeManagement().addDirtyListener(dirtyListener);
   }
 
   @Override
@@ -142,7 +151,7 @@ public class CharacterSystemModel implements ItemSystemModel {
   public void createNew(final Resources resources) {
     ItemReceiver receiver = new ItemReceiver() {
       @Override
-      public void addItem(IItem item) {
+      public void addItem(Item item) {
         CharacterIdentifier identifier = new CharacterIdentifier("InternalNewCharacter" + newCharacterCount++);
         initCharacterListening(item);
         CharacterItemModel character = new CharacterItemModel(identifier, item);
@@ -150,7 +159,10 @@ public class CharacterSystemModel implements ItemSystemModel {
         characterAddedListener.announce().added(character);
       }
     };
-    new NewItemCommand(retrieveCharacterItemType(model), model, resources, receiver).execute();
+    IItemType itemType = retrieveCharacterItemType(model);
+    ItemTemplateFactory factory = new CharacterCreationTemplateFactory(getCharacterGenerics(), resources);
+    RepositoryItemPersister persister = new ExaltedCharacterPersister(itemType, getCharacterGenerics(), model.getMessaging());
+    new NewItemCommand(factory, resources, receiver, persister).execute();
   }
 
   @Override
@@ -187,19 +199,19 @@ public class CharacterSystemModel implements ItemSystemModel {
     notifyDirtyListeners(getCurrentItem());
   }
 
-  private void notifyDirtyListeners(IItem item) {
+  private void notifyDirtyListeners(Item item) {
     if (item == null) {
       return;
     }
-    if (item.isDirty()) {
+    boolean dirty = item.getChangeManagement().isDirty();
+    if (dirty) {
       becomesDirtyAnnouncer.announce().changeOccurred();
-    }
-    if (!item.isDirty()) {
+    } else {
       becomesCleanAnnouncer.announce().changeOccurred();
     }
   }
 
-  private IItem getCurrentItem() {
+  private Item getCurrentItem() {
     return modelsByIdentifier.get(currentCharacter).getItem();
   }
 
@@ -212,8 +224,8 @@ public class CharacterSystemModel implements ItemSystemModel {
     save(getCurrentItem());
   }
 
-  private void save(IItem item) throws IOException {
+  private void save(Item item) throws IOException {
     persistenceModel.save(item);
-    item.setClean();
+    item.getChangeManagement().setClean();
   }
 }

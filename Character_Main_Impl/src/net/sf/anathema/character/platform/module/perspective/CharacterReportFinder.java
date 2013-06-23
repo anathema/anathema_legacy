@@ -3,7 +3,7 @@ package net.sf.anathema.character.platform.module.perspective;
 import net.sf.anathema.framework.IApplicationModel;
 import net.sf.anathema.framework.reporting.DefaultReportFinder;
 import net.sf.anathema.framework.reporting.Report;
-import net.sf.anathema.framework.repository.IItem;
+import net.sf.anathema.framework.repository.Item;
 import net.sf.anathema.lib.resources.Resources;
 
 public class CharacterReportFinder implements DefaultReportFinder {
@@ -16,7 +16,7 @@ public class CharacterReportFinder implements DefaultReportFinder {
     this.resources = resources;
   }
 
-  public Report getDefaultReport(IItem item) {
+  public Report getDefaultReport(Item item) {
     String reportName = resources.getString("CharacterModule.Reporting.Sheet.Name");
     for (Report report : anathemaModel.getReportRegistry().getReports(item)) {
       if (reportName.equals(report.toString())) {

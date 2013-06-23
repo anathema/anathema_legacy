@@ -1,7 +1,7 @@
 package net.sf.anathema.framework.presenter;
 
-import net.sf.anathema.framework.repository.IItem;
+import net.sf.anathema.framework.repository.Item;
 
 public interface ItemReceiver {
-  void addItem(IItem item);
+  void addItem(Item item);
 }

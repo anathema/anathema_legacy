@@ -4,13 +4,13 @@ import com.itextpdf.text.Document;
 import com.itextpdf.text.DocumentException;
 import com.itextpdf.text.pdf.PdfWriter;
 import net.sf.anathema.framework.reporting.ReportException;
-import net.sf.anathema.framework.repository.IItem;
+import net.sf.anathema.framework.repository.Item;
 
 import java.io.OutputStream;
 
 public class PdfReportPrinter {
 
-  public void printReport(IItem item, PdfReport report, OutputStream outputStream) throws ReportException {
+  public void printReport(Item item, PdfReport report, OutputStream outputStream) throws ReportException {
     Document document = new Document();
     try {
       PdfWriter writer = PdfWriter.getInstance(document, outputStream);

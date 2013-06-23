@@ -81,12 +81,12 @@ public class LegendCardDataProvider implements ICardDataProvider {
       }
 
       if (cardEntries.size() > 0) {
-        cards.add(new LegendCardData(resourceProvider, legend, cardEntries.toArray(new LegendEntry[0]), newPage));
+        cards.add(new LegendCardData(resourceProvider, legend, cardEntries.toArray(new LegendEntry[cardEntries.size()]), newPage));
       }
       newPage = false;
     }
 
-    return cards.toArray(new ICardData[0]);
+    return cards.toArray(new ICardData[cards.size()]);
   }
 
   private void buildCharmEntries(ICardReportResourceProvider resourceProvider, ICharm[] charms) {

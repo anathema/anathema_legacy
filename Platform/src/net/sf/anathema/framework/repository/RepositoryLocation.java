@@ -6,10 +6,10 @@ import net.sf.anathema.lib.lang.StringUtilities;
 
 public class RepositoryLocation implements IItemRepositoryLocation {
 
-  private final IItem item;
+  private final Item item;
   private String id;
 
-  public RepositoryLocation(IItem item) {
+  public RepositoryLocation(Item item) {
     this.item = item;
   }
 

@@ -1,13 +1,13 @@
 package net.sf.anathema.framework.presenter.itemmanagement;
 
-import net.sf.anathema.framework.repository.IItem;
+import net.sf.anathema.framework.repository.Item;
 import net.sf.anathema.lib.control.ObjectValueListener;
 
 public class PrintNameAdjuster implements ObjectValueListener<String> {
 
-  private final IItem item;
+  private final Item item;
 
-  public PrintNameAdjuster(IItem item) {
+  public PrintNameAdjuster(Item item) {
     this.item = item;
   }
 

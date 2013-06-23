@@ -1,6 +1,6 @@
 package net.sf.anathema.framework.reporting;
 
-import net.sf.anathema.framework.repository.IItem;
+import net.sf.anathema.framework.repository.Item;
 import net.sf.anathema.framework.view.SwingApplicationFrame;
 import net.sf.anathema.interaction.Command;
 import net.sf.anathema.lib.resources.Resources;
@@ -12,9 +12,9 @@ public class QuickPrintCommand implements Command {
   private Resources resources;
   private DefaultReportFinder finder;
   private JComponent parent;
-  private IItem item;
+  private Item item;
 
-  public QuickPrintCommand(Resources resources, IItem item, DefaultReportFinder finder) {
+  public QuickPrintCommand(Resources resources, Item item, DefaultReportFinder finder) {
     this.resources = resources;
     this.finder = finder;
     this.parent = SwingApplicationFrame.getParentComponent();

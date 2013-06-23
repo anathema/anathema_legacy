@@ -1,6 +1,6 @@
 package net.sf.anathema.framework.reporting;
 
-import net.sf.anathema.framework.repository.IItem;
+import net.sf.anathema.framework.repository.Item;
 import net.sf.anathema.framework.swing.MessageUtilities;
 import net.sf.anathema.interaction.Command;
 import net.sf.anathema.lib.io.PathUtils;
@@ -22,7 +22,7 @@ public class PrintCommand implements Command {
   public static final String PDF_EXTENSION = ".pdf";
   private final Resources resources;
   private final JComponent parent;
-  private final IItem item;
+  private final Item item;
   private final Report report;
   private final FileChooser fileChooser;
 
@@ -30,7 +30,7 @@ public class PrintCommand implements Command {
     return isDesktopSupported();
   }
 
-  public PrintCommand(Resources resources, JComponent parent, IItem item, Report report, FileChooser fileChooser) {
+  public PrintCommand(Resources resources, JComponent parent, Item item, Report report, FileChooser fileChooser) {
     this.resources = resources;
     this.parent = parent;
     this.item = item;
@@ -61,7 +61,7 @@ public class PrintCommand implements Command {
     MessageUtilities.indicateMessage(getClass(), parent, new Message(errorMessage, e));
   }
 
-  private void performPrint(IItem item, Report selectedReport, Path selectedFile) throws IOException, ReportException {
+  private void performPrint(Item item, Report selectedReport, Path selectedFile) throws IOException, ReportException {
     OutputStream stream = null;
     try {
       stream = Files.newOutputStream(selectedFile);

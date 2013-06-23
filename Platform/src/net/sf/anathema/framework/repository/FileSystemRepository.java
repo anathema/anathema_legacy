@@ -57,7 +57,7 @@ public class FileSystemRepository implements Repository {
   }
 
   @Override
-  public synchronized IRepositoryWriteAccess createWriteAccess(IItem item) throws RepositoryException {
+  public synchronized IRepositoryWriteAccess createWriteAccess(Item item) throws RepositoryException {
     try {
       if (item.getId() == null) {
         item.getRepositoryLocation().setId(createUniqueRepositoryId(item.getRepositoryLocation()));
@@ -90,7 +90,7 @@ public class FileSystemRepository implements Repository {
     return createMultiFileWriteAccess(type, itemFolder);
   }
 
-  private IRepositoryWriteAccess createMultiFileWriteAccess(IItem item) {
+  private IRepositoryWriteAccess createMultiFileWriteAccess(Item item) {
     File itemFolder = resolver.getExistingItemFolder(item);
     return createMultiFileWriteAccess(item.getItemType(), itemFolder);
   }
@@ -105,7 +105,7 @@ public class FileSystemRepository implements Repository {
     return createSingleFileWriteAccess(file);
   }
 
-  private IRepositoryWriteAccess createSingleFileWriteAccess(IItem item) throws RepositoryException {
+  private IRepositoryWriteAccess createSingleFileWriteAccess(Item item) throws RepositoryException {
     File file = resolver.getItemFile(item);
     return createSingleFileWriteAccess(file);
   }

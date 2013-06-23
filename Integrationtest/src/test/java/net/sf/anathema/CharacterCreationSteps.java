@@ -10,13 +10,13 @@ import net.sf.anathema.character.generic.template.HeroTemplate;
 import net.sf.anathema.character.generic.template.TemplateType;
 import net.sf.anathema.character.generic.type.CharacterTypes;
 import net.sf.anathema.character.impl.model.CharacterStatisticsConfiguration;
+import net.sf.anathema.character.impl.persistence.ExaltedCharacterPersister;
 import net.sf.anathema.character.itemtype.CharacterItemTypeRetrieval;
-import net.sf.anathema.character.model.ICharacter;
+import net.sf.anathema.character.model.Character;
 import net.sf.anathema.framework.IApplicationModel;
 import net.sf.anathema.framework.item.IItemType;
-import net.sf.anathema.framework.persistence.IRepositoryItemPersister;
-import net.sf.anathema.framework.repository.IItem;
-import net.sf.anathema.lib.registry.IRegistry;
+import net.sf.anathema.framework.persistence.RepositoryItemPersister;
+import net.sf.anathema.framework.repository.Item;
 import net.sf.anathema.lib.util.SimpleIdentifier;
 
 public class CharacterCreationSteps {
@@ -43,7 +43,7 @@ public class CharacterCreationSteps {
 
   @Given("^a new default (.*)$")
   public void I_create_a_new_character(String type) throws Throwable {
-    ICharacter character = createCharacter(type);
+    Character character = createCharacter(type);
     holder.setCharacter(character);
   }
 
@@ -54,7 +54,7 @@ public class CharacterCreationSteps {
 
   @Given("^a new (.*) using rules for (.*)$")
   public void I_create_a_new_character_with_subtype(String type, String subtype) throws Throwable {
-    ICharacter character = createCharacter(type, subtype);
+    Character character = createCharacter(type, subtype);
     holder.setCharacter(character);
   }
 
@@ -74,33 +74,36 @@ public class CharacterCreationSteps {
     I_create_a_new_character("Solar");
   }
 
-  private ICharacter createCharacter(String type) {
+  private Character createCharacter(String type) {
     HeroTemplate characterTemplate = loadDefaultTemplateForType(type);
     return createCharacter(characterTemplate);
   }
 
-  private ICharacter createCharacter(String type, String subtype) {
+  private Character createCharacter(String type, String subtype) {
     HeroTemplate characterTemplate = loadTemplateForType(type, subtype);
     return createCharacter(characterTemplate);
   }
 
   private HeroTemplate loadDefaultTemplateForType(String type) {
-    ICharacterGenerics generics = CharacterGenericsExtractor.getGenerics(model);
+    ICharacterGenerics generics = getCharacterGenerics();
     return generics.getTemplateRegistry().getDefaultTemplate(characterTypes.findById(type));
   }
 
   private HeroTemplate loadTemplateForType(String type, String subtype) {
-    ICharacterGenerics generics = CharacterGenericsExtractor.getGenerics(model);
+    ICharacterGenerics generics = getCharacterGenerics();
     return generics.getTemplateRegistry().getTemplate(new TemplateType(characterTypes.findById(type), new SimpleIdentifier(subtype)));
   }
 
-  private ICharacter createCharacter(HeroTemplate template) {
+  private Character createCharacter(HeroTemplate template) {
     CharacterStatisticsConfiguration creationRules = new CharacterStatisticsConfiguration();
     creationRules.setTemplate(template);
-    IRegistry<IItemType, IRepositoryItemPersister> persisterRegistry = model.getPersisterRegistry();
-    IItemType characterItemType = model.getItemTypeRegistry().getById(CharacterItemTypeRetrieval.CHARACTER_ITEM_TYPE_ID);
-    IRepositoryItemPersister itemPersister = persisterRegistry.get(characterItemType);
-    IItem item = itemPersister.createNew(creationRules);
-    return (ICharacter) item.getItemData();
+    IItemType characterItemType = CharacterItemTypeRetrieval.retrieveCharacterItemType(model);
+    RepositoryItemPersister itemPersister = new ExaltedCharacterPersister(characterItemType, getCharacterGenerics(), model.getMessaging());
+    Item item = itemPersister.createNew(creationRules);
+    return (net.sf.anathema.character.model.Character) item.getItemData();
+  }
+
+  private ICharacterGenerics getCharacterGenerics() {
+    return CharacterGenericsExtractor.getGenerics(model);
   }
 }

@@ -101,14 +101,14 @@ public class ExperiencePointManagement implements IExperiencePointManagement {
 
   @Override
   public String toString() {
-    StringBuffer stringBuffer = new StringBuffer();
+    StringBuilder builder = new StringBuilder();
     for (IValueModel<Integer> model : getAllModels()) {
-      stringBuffer.append(model.getCategoryId());
-      stringBuffer.append(": ");
-      stringBuffer.append(model.getValue());
+      builder.append(model.getCategoryId());
+      builder.append(": ");
+      builder.append(model.getValue());
     }
-    stringBuffer.append("Overall: ");
-    stringBuffer.append(getTotalCosts());
-    return stringBuffer.toString();
+    builder.append("Overall: ");
+    builder.append(getTotalCosts());
+    return builder.toString();
   }
 }
