@@ -16,6 +16,6 @@ public class CharacterFrameworkSteps {
 
   @Then("^the character needs to be saved$")
   public void the_character_needs_to_be_saved() throws Throwable {
-    assertThat(character.getCharacter().isDirty(), is(true));
+    assertThat(character.getCharacter().getChangeManagement().isDirty(), is(true));
   }
 }

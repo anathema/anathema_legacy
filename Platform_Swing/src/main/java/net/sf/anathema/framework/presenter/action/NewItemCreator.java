@@ -17,7 +17,7 @@ public class NewItemCreator implements IItemCreator {
   @Override
   public Item createItem(IItemType type, IDialogModelTemplate template) throws PersistenceException {
     Item item = anathemaModel.getPersisterRegistry().get(type).createNew(template);
-    item.setClean();
+    item.getChangeManagement().setClean();
     return item;
   }
 }

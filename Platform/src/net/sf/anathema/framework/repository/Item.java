@@ -3,13 +3,15 @@ package net.sf.anathema.framework.repository;
 import net.sf.anathema.framework.item.IItemType;
 import net.sf.anathema.framework.itemdata.model.ItemData;
 
-public interface Item extends ChangeManagement {
+public interface Item {
 
   String DEFAULT_PRINT_NAME = "Unnamed";
 
   ItemData getItemData();
 
   IItemType getItemType();
+
+  ChangeManagement getChangeManagement();
 
   IItemRepositoryLocation getRepositoryLocation();
 
@@ -19,6 +21,7 @@ public interface Item extends ChangeManagement {
 
   void addItemListener(IItemListener listener);
 
+  @SuppressWarnings("UnusedDeclaration")
   void removeItemListener(IItemListener listener);
   
   String getId();

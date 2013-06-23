@@ -6,7 +6,6 @@ import com.google.common.base.Strings;
 import net.sf.anathema.framework.item.IItemType;
 import net.sf.anathema.framework.itemdata.model.ItemData;
 import net.sf.anathema.framework.presenter.itemmanagement.PrintNameAdjuster;
-import net.sf.anathema.lib.control.IChangeListener;
 import net.sf.anathema.lib.util.Identifier;
 import org.jmock.example.announcer.Announcer;
 
@@ -40,26 +39,6 @@ public class DataItem implements Item {
   }
 
   @Override
-  public boolean isDirty() {
-    return itemData.isDirty();
-  }
-
-  @Override
-  public void setClean() {
-    itemData.setClean();
-  }
-
-  @Override
-  public void addDirtyListener(IChangeListener changeListener) {
-    itemData.addDirtyListener(changeListener);
-  }
-
-  @Override
-  public void removeDirtyListener(IChangeListener changeListener) {
-    itemData.removeDirtyListener(changeListener);
-  }
-
-  @Override
   public void addItemListener(IItemListener listener) {
     repositoryItemListeners.addListener(listener);
   }
@@ -76,6 +55,11 @@ public class DataItem implements Item {
   @Override
   public final IItemType getItemType() {
     return itemType;
+  }
+
+  @Override
+  public ChangeManagement getChangeManagement() {
+    return itemData.getChangeManagement();
   }
 
   @Override
