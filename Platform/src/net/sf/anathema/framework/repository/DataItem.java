@@ -11,6 +11,7 @@ import org.jmock.example.announcer.Announcer;
 
 public class DataItem implements Item {
 
+  private final static String NOT_SET = null;
   private final ItemData itemData;
   private final IItemType itemType;
   private final RepositoryLocation repositoryLocation;
@@ -69,13 +70,13 @@ public class DataItem implements Item {
 
   @Override
   public String getDisplayName() {
-    return printName == null ? DEFAULT_PRINT_NAME : printName;
+    return printName == NOT_SET ? DEFAULT_PRINT_NAME : printName;
   }
 
   @Override
   public void setPrintName(String printName) {
     if (Strings.isNullOrEmpty(printName)) {
-      printName = null;
+      printName = NOT_SET;
     }
     if (Objects.equal(this.printName, printName)) {
       return;
