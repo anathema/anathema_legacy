@@ -6,7 +6,6 @@ import com.itextpdf.text.pdf.PdfWriter;
 import net.sf.anathema.character.generic.character.IGenericCharacter;
 import net.sf.anathema.character.generic.framework.ICharacterGenerics;
 import net.sf.anathema.character.impl.util.GenericCharacterUtilities;
-import net.sf.anathema.character.model.ICharacter;
 import net.sf.anathema.character.reporting.CharacterReportingModuleObject;
 import net.sf.anathema.character.reporting.pdf.content.ReportContentRegistry;
 import net.sf.anathema.character.reporting.pdf.content.ReportSession;
@@ -17,12 +16,12 @@ import net.sf.anathema.character.reporting.pdf.rendering.boxes.EncoderRegistry;
 import net.sf.anathema.character.reporting.pdf.rendering.graphics.SheetGraphics;
 import net.sf.anathema.character.reporting.pdf.rendering.page.PageEncoder;
 import net.sf.anathema.character.reporting.pdf.rendering.pages.PageRegistry;
-import net.sf.anathema.framework.itemdata.model.IItemData;
+import net.sf.anathema.framework.itemdata.model.ItemData;
 import net.sf.anathema.framework.module.preferences.PageSizePreference;
 import net.sf.anathema.framework.reporting.ReportException;
 import net.sf.anathema.framework.reporting.pdf.AbstractPdfReport;
 import net.sf.anathema.framework.reporting.pdf.PageSize;
-import net.sf.anathema.framework.repository.IItem;
+import net.sf.anathema.framework.repository.Item;
 import net.sf.anathema.hero.model.Hero;
 import net.sf.anathema.lib.resources.Resources;
 
@@ -48,7 +47,7 @@ public class LandscapeExaltSheetReport extends AbstractPdfReport {
   }
 
   @Override
-  public void performPrint(IItem item, Document document, PdfWriter writer) throws ReportException {
+  public void performPrint(Item item, Document document, PdfWriter writer) throws ReportException {
     PageSize pageSize = pageSizePreference.getPageSize();
     PdfContentByte directContent = writer.getDirectContent();
     try {
@@ -63,7 +62,7 @@ public class LandscapeExaltSheetReport extends AbstractPdfReport {
     }
   }
 
-  private ReportSession createSession(IItem item) {
+  private ReportSession createSession(Item item) {
     Hero hero = (Hero) item.getItemData();
     IGenericCharacter genericCharacter = GenericCharacterUtilities.createGenericCharacter(hero);
     return new ReportSession(getContentRegistry(), genericCharacter, hero);
@@ -95,11 +94,11 @@ public class LandscapeExaltSheetReport extends AbstractPdfReport {
   }
 
   @Override
-  public boolean supports(IItem item) {
+  public boolean supports(Item item) {
     if (item == null) {
       return false;
     }
-    IItemData itemData = item.getItemData();
+    ItemData itemData = item.getItemData();
     if (!(itemData instanceof Hero)) {
       return false;
     }

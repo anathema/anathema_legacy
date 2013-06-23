@@ -2,7 +2,6 @@ package net.sf.anathema.character.presenter.overview;
 
 import net.sf.anathema.character.library.overview.IOverviewCategory;
 import net.sf.anathema.character.main.model.experience.ExperienceModelFetcher;
-import net.sf.anathema.character.model.ICharacter;
 import net.sf.anathema.character.model.advance.ExperiencePointConfigurationListener;
 import net.sf.anathema.character.model.advance.IExperiencePointEntry;
 import net.sf.anathema.character.model.advance.IExperiencePointManagement;

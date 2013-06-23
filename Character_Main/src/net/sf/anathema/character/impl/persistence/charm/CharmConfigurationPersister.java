@@ -15,7 +15,6 @@ import net.sf.anathema.character.main.model.charms.CharmsModel;
 import net.sf.anathema.character.main.model.charms.CharmsModelFetcher;
 import net.sf.anathema.character.main.model.combos.CombosModel;
 import net.sf.anathema.character.main.model.combos.CombosModelFetcher;
-import net.sf.anathema.character.model.ICharacter;
 import net.sf.anathema.character.model.charm.ICombo;
 import net.sf.anathema.character.model.charm.ILearningCharmGroup;
 import net.sf.anathema.character.model.charm.special.IMultiLearnableCharmConfiguration;
@@ -101,18 +100,18 @@ public class CharmConfigurationPersister {
     }
   }
 
-  public void load(Element parent, ICharacter character) throws PersistenceException {
+  public void load(Element parent, Hero hero) throws PersistenceException {
     Element charmsElement = parent.element(TAG_CHARMS);
     if (charmsElement == null) {
       return;
     }
-    CharmsModel charmConfiguration = CharmsModelFetcher.fetch(character);
+    CharmsModel charmConfiguration = CharmsModelFetcher.fetch(hero);
     ISpecialCharmPersister specialPersister = createSpecialCharmPersister(charmConfiguration);
     for (Object groupObjectElement : charmsElement.elements(TAG_CHARMGROUP)) {
       Element groupElement = (Element) groupObjectElement;
-      loadCharmFromConfiguration(character, charmConfiguration, groupElement, specialPersister);
+      loadCharmFromConfiguration(hero, charmConfiguration, groupElement, specialPersister);
     }
-    loadCombos(charmsElement, CombosModelFetcher.fetch(character), charmConfiguration);
+    loadCombos(charmsElement, CombosModelFetcher.fetch(hero), charmConfiguration);
   }
 
   private void loadCharmFromConfiguration(Hero hero, CharmsModel charmConfiguration, Element groupElement, ISpecialCharmPersister specialPersister) {

@@ -20,8 +20,8 @@ import net.sf.anathema.framework.presenter.ItemReceiver;
 import net.sf.anathema.framework.presenter.action.NewItemCommand;
 import net.sf.anathema.framework.reporting.ControlledPrintCommand;
 import net.sf.anathema.framework.reporting.QuickPrintCommand;
-import net.sf.anathema.framework.repository.IItem;
 import net.sf.anathema.framework.repository.IRepositoryFileResolver;
+import net.sf.anathema.framework.repository.Item;
 import net.sf.anathema.framework.view.PrintNameFile;
 import net.sf.anathema.hero.model.Hero;
 import net.sf.anathema.lib.control.IChangeListener;
@@ -91,19 +91,19 @@ public class CharacterSystemModel implements ItemSystemModel {
   }
 
   @Override
-  public IItem loadItem(CharacterIdentifier identifier) {
+  public Item loadItem(CharacterIdentifier identifier) {
     CharacterItemModel character = modelsByIdentifier.get(identifier);
     if (character.isLoaded()) {
       return character.getItem();
     }
-    IItem item = persistenceModel.loadItem(identifier);
+    Item item = persistenceModel.loadItem(identifier);
     character.setItem(item);
     initCharacterListening(item);
     return item;
   }
 
-  private void initCharacterListening(IItem item) {
-    item.addDirtyListener(dirtyListener);
+  private void initCharacterListening(Item item) {
+    item.getChangeManagement().addDirtyListener(dirtyListener);
   }
 
   @Override
@@ -151,7 +151,7 @@ public class CharacterSystemModel implements ItemSystemModel {
   public void createNew(final Resources resources) {
     ItemReceiver receiver = new ItemReceiver() {
       @Override
-      public void addItem(IItem item) {
+      public void addItem(Item item) {
         CharacterIdentifier identifier = new CharacterIdentifier("InternalNewCharacter" + newCharacterCount++);
         initCharacterListening(item);
         CharacterItemModel character = new CharacterItemModel(identifier, item);
@@ -199,19 +199,19 @@ public class CharacterSystemModel implements ItemSystemModel {
     notifyDirtyListeners(getCurrentItem());
   }
 
-  private void notifyDirtyListeners(IItem item) {
+  private void notifyDirtyListeners(Item item) {
     if (item == null) {
       return;
     }
-    if (item.isDirty()) {
+    boolean dirty = item.getChangeManagement().isDirty();
+    if (dirty) {
       becomesDirtyAnnouncer.announce().changeOccurred();
-    }
-    if (!item.isDirty()) {
+    } else {
       becomesCleanAnnouncer.announce().changeOccurred();
     }
   }
 
-  private IItem getCurrentItem() {
+  private Item getCurrentItem() {
     return modelsByIdentifier.get(currentCharacter).getItem();
   }
 
@@ -224,8 +224,8 @@ public class CharacterSystemModel implements ItemSystemModel {
     save(getCurrentItem());
   }
 
-  private void save(IItem item) throws IOException {
+  private void save(Item item) throws IOException {
     persistenceModel.save(item);
-    item.setClean();
+    item.getChangeManagement().setClean();
   }
 }

@@ -25,7 +25,7 @@ import net.sf.anathema.framework.IApplicationModel;
 import net.sf.anathema.framework.reporting.ReportException;
 import net.sf.anathema.framework.reporting.pdf.AbstractPdfReport;
 import net.sf.anathema.framework.reporting.pdf.PdfReportUtils;
-import net.sf.anathema.framework.repository.IItem;
+import net.sf.anathema.framework.repository.Item;
 import net.sf.anathema.hero.model.Hero;
 import net.sf.anathema.lib.resources.Resources;
 
@@ -49,7 +49,7 @@ public class MagicReport extends AbstractPdfReport {
   }
 
   @Override
-  public void performPrint(IItem item, Document document, PdfWriter writer) throws ReportException {
+  public void performPrint(Item item, Document document, PdfWriter writer) throws ReportException {
     MultiColumnText columnText = new MultiColumnText(document.top() - document.bottom() - 15);
     columnText.addRegularColumns(document.left(), document.right(), 20, 2);
     Hero character = (Hero) item.getItemData();
@@ -174,7 +174,7 @@ public class MagicReport extends AbstractPdfReport {
   }
 
   @Override
-  public boolean supports(IItem item) {
+  public boolean supports(Item item) {
     if (item == null || !(item.getItemData() instanceof Hero)) {
       return false;
     }

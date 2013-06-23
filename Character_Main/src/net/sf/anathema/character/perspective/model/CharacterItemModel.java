@@ -3,7 +3,6 @@ package net.sf.anathema.character.perspective.model;
 import net.sf.anathema.character.main.model.concept.HeroConceptFetcher;
 import net.sf.anathema.character.perspective.DescriptiveFeatures;
 import net.sf.anathema.character.perspective.LoadedDescriptiveFeatures;
-import net.sf.anathema.framework.repository.IItem;
 import net.sf.anathema.framework.repository.IItemListener;
 import net.sf.anathema.framework.repository.Item;
 import net.sf.anathema.hero.model.Hero;

@@ -2,18 +2,17 @@ package net.sf.anathema.character.perspective;
 
 import net.sf.anathema.character.generic.template.ITemplateType;
 import net.sf.anathema.character.main.model.concept.HeroConceptFetcher;
-import net.sf.anathema.character.model.ICharacter;
 import net.sf.anathema.character.perspective.model.CharacterIdentifier;
-import net.sf.anathema.framework.repository.IItem;
+import net.sf.anathema.framework.repository.Item;
 import net.sf.anathema.hero.model.Hero;
 import net.sf.anathema.lib.util.Identifier;
 
 public class LoadedDescriptiveFeatures implements DescriptiveFeatures {
 
   private CharacterIdentifier identifier;
-  private IItem characterItem;
+  private Item characterItem;
 
-  public LoadedDescriptiveFeatures(CharacterIdentifier identifier, IItem characterItem) {
+  public LoadedDescriptiveFeatures(CharacterIdentifier identifier, Item characterItem) {
     this.identifier = identifier;
     this.characterItem = characterItem;
   }
