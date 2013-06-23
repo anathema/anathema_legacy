@@ -19,7 +19,6 @@ import net.sf.anathema.character.generic.template.HeroTemplate;
 import net.sf.anathema.character.generic.template.ITemplateType;
 import net.sf.anathema.character.generic.template.ITraitTemplateCollection;
 import net.sf.anathema.character.generic.template.abilities.GroupedTraitType;
-import net.sf.anathema.character.generic.template.additional.IAdditionalTemplate;
 import net.sf.anathema.character.generic.template.creation.BonusPointCosts;
 import net.sf.anathema.character.generic.template.creation.ICreationPoints;
 import net.sf.anathema.character.generic.template.essence.IEssenceTemplate;
@@ -48,7 +47,6 @@ public class GenericCharacterTemplate implements HeroTemplate, ICloneable<Generi
   private GenericPresentationTemplate presentationTemplate;
   private ICasteCollection casteCollection = new CasteCollection(new CasteType[0]);
   // This is volatile instead of final to allow clone to be implemented
-  private volatile List<IAdditionalTemplate> additionalTemplates = new ArrayList<>();
   private IHealthTemplate healthTemplate = new GenericHealthTemplate();
   private boolean isCustomTemplate;
   private final List<String> models = new ArrayList<>();
@@ -118,11 +116,6 @@ public class GenericCharacterTemplate implements HeroTemplate, ICloneable<Generi
   }
 
   @Override
-  public IAdditionalTemplate[] getAdditionalTemplates() {
-    return additionalTemplates.toArray(new IAdditionalTemplate[additionalTemplates.size()]);
-  }
-
-  @Override
   public List<String> getModels() {
     return new ArrayList<>(models);
   }
@@ -182,7 +175,6 @@ public class GenericCharacterTemplate implements HeroTemplate, ICloneable<Generi
     }
     clone.additionalRules = new GenericAdditionalRules();
     clone.casteCollection = new CasteCollection(new CasteType[0]);
-    clone.additionalTemplates = new ArrayList<>();
     clone.healthTemplate = new GenericHealthTemplate();
     if (bonusPointCosts != null) {
       clone.bonusPointCosts = bonusPointCosts.clone();
@@ -212,10 +204,6 @@ public class GenericCharacterTemplate implements HeroTemplate, ICloneable<Generi
 
   public void setAttributeGroups(GroupedTraitType[] traitTypeGroups) {
     this.attributeGroups = traitTypeGroups;
-  }
-
-  public void addAdditionalTemplate(IAdditionalTemplate template) {
-    additionalTemplates.add(template);
   }
 
   public void setHealthTemplate(IHealthTemplate template) {

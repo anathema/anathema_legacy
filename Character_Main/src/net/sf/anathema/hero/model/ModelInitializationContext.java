@@ -6,7 +6,7 @@ import net.sf.anathema.character.generic.impl.template.magic.ICharmProvider;
 import net.sf.anathema.character.generic.template.ITemplateRegistry;
 import net.sf.anathema.character.generic.type.CharacterTypes;
 import net.sf.anathema.initialization.ObjectFactory;
-import net.sf.anathema.initialization.repository.IDataFileProvider;
+import net.sf.anathema.initialization.repository.DataFileProvider;
 
 public class ModelInitializationContext implements InitializationContext {
 
@@ -29,7 +29,7 @@ public class ModelInitializationContext implements InitializationContext {
   }
 
   @Override
-  public IDataFileProvider getDataFileProvider() {
+  public DataFileProvider getDataFileProvider() {
     return generics.getDataFileProvider();
   }
 

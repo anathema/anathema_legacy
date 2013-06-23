@@ -1,7 +1,5 @@
 package net.sf.anathema.character.main.testing.dummy;
 
-import com.google.common.collect.Lists;
-import net.sf.anathema.character.generic.additionaltemplate.IAdditionalModel;
 import net.sf.anathema.character.generic.caste.CasteType;
 import net.sf.anathema.character.generic.character.IConcept;
 import net.sf.anathema.character.generic.character.IGenericCharacter;

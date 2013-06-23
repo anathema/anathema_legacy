@@ -6,7 +6,7 @@ import net.sf.anathema.character.generic.template.ITemplateRegistry;
 import net.sf.anathema.character.generic.type.CharacterTypes;
 import net.sf.anathema.hero.model.InitializationContext;
 import net.sf.anathema.initialization.ObjectFactory;
-import net.sf.anathema.initialization.repository.IDataFileProvider;
+import net.sf.anathema.initialization.repository.DataFileProvider;
 import org.mockito.Mockito;
 
 public class DummyInitializationContext implements InitializationContext {
@@ -14,7 +14,7 @@ public class DummyInitializationContext implements InitializationContext {
   public DummyGenericCharacter character;
   public final DummyHero dummyHero;
   public DummyCharacterTypes characterTypes = new DummyCharacterTypes();
-  public IDataFileProvider mockFileProvider = Mockito.mock(IDataFileProvider.class);
+  public DataFileProvider mockFileProvider = Mockito.mock(DataFileProvider.class);
   public ObjectFactory mockObjectFactory = Mockito.mock(ObjectFactory.class);
 
   public DummyInitializationContext() {
@@ -52,7 +52,7 @@ public class DummyInitializationContext implements InitializationContext {
   }
 
   @Override
-  public IDataFileProvider getDataFileProvider() {
+  public DataFileProvider getDataFileProvider() {
     return mockFileProvider;
   }
 }

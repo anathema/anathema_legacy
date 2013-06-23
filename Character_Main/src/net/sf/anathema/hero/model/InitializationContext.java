@@ -5,7 +5,7 @@ import net.sf.anathema.character.generic.impl.template.magic.ICharmProvider;
 import net.sf.anathema.character.generic.template.ITemplateRegistry;
 import net.sf.anathema.character.generic.type.CharacterTypes;
 import net.sf.anathema.initialization.ObjectFactory;
-import net.sf.anathema.initialization.repository.IDataFileProvider;
+import net.sf.anathema.initialization.repository.DataFileProvider;
 
 public interface InitializationContext {
 
@@ -19,5 +19,5 @@ public interface InitializationContext {
 
   ObjectFactory getObjectFactory();
 
-  IDataFileProvider getDataFileProvider();
+  DataFileProvider getDataFileProvider();
 }

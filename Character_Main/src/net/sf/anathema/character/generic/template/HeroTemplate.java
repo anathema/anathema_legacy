@@ -3,7 +3,6 @@ package net.sf.anathema.character.generic.template;
 import net.sf.anathema.character.generic.additionalrules.IAdditionalRules;
 import net.sf.anathema.character.generic.caste.ICasteCollection;
 import net.sf.anathema.character.generic.template.abilities.GroupedTraitType;
-import net.sf.anathema.character.generic.template.additional.IAdditionalTemplate;
 import net.sf.anathema.character.generic.template.creation.BonusPointCosts;
 import net.sf.anathema.character.generic.template.creation.ICreationPoints;
 import net.sf.anathema.character.generic.template.essence.IEssenceTemplate;
@@ -36,8 +35,6 @@ public interface HeroTemplate extends ICharacterExternalsTemplate {
   TraitType[] getToughnessControllingTraitTypes();
 
   String[] getBaseHealthProviders();
-
-  IAdditionalTemplate[] getAdditionalTemplates();
 
   List<String> getModels();
 

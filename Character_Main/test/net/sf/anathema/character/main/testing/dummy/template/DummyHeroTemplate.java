@@ -17,7 +17,6 @@ import net.sf.anathema.character.generic.template.ITraitTemplateCollection;
 import net.sf.anathema.character.generic.template.TemplateType;
 import net.sf.anathema.character.generic.template.abilities.AbilityGroupType;
 import net.sf.anathema.character.generic.template.abilities.GroupedTraitType;
-import net.sf.anathema.character.generic.template.additional.IAdditionalTemplate;
 import net.sf.anathema.character.generic.template.creation.BonusPointCosts;
 import net.sf.anathema.character.generic.template.creation.ICreationPoints;
 import net.sf.anathema.character.generic.template.essence.IEssenceTemplate;
@@ -111,11 +110,6 @@ public class DummyHeroTemplate implements HeroTemplate {
   @Override
   public TraitType[] getToughnessControllingTraitTypes() {
     return new TraitType[]{AbilityType.Resistance};
-  }
-
-  @Override
-  public IAdditionalTemplate[] getAdditionalTemplates() {
-    return new IAdditionalTemplate[0];
   }
 
   @Override
