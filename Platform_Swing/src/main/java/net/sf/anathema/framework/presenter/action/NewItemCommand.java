@@ -46,12 +46,10 @@ public class NewItemCommand implements Command {
             (ItemTypeCreationViewPropertiesExtensionPoint) registry.get(ItemTypeCreationViewPropertiesExtensionPoint.ID);
     DialogBasedTemplateFactory factory = extension.get(type).getNewItemWizardFactory();
     IDialogModelTemplate template = factory.createTemplate();
-    if (factory.needsFurtherDetails()) {
-      IDialogPage page = factory.createPage(template);
-      boolean canceled = showDialog(parent, page);
-      if (canceled) {
-        return;
-      }
+    IDialogPage page = factory.createPage(template);
+    boolean canceled = showDialog(parent, page);
+    if (canceled) {
+      return;
     }
     try {
       itemCreationOperator.operate(parent, type, template);

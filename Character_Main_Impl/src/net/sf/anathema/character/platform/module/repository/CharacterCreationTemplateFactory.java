@@ -33,8 +33,4 @@ public class CharacterCreationTemplateFactory implements DialogBasedTemplateFact
     return new CharacterStatisticsConfiguration();
   }
 
-  @Override
-  public boolean needsFurtherDetails() {
-    return true;
-  }
 }
