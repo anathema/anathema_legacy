@@ -2,12 +2,10 @@ package net.sf.anathema.framework.model;
 
 import net.sf.anathema.framework.IApplicationModel;
 import net.sf.anathema.framework.extension.IAnathemaExtension;
-import net.sf.anathema.framework.item.IItemType;
 import net.sf.anathema.framework.item.IItemTypeRegistry;
 import net.sf.anathema.framework.messaging.IMessageContainer;
 import net.sf.anathema.framework.messaging.IMessaging;
 import net.sf.anathema.framework.messaging.Messaging;
-import net.sf.anathema.framework.persistence.RepositoryItemPersister;
 import net.sf.anathema.framework.reporting.IReportRegistry;
 import net.sf.anathema.framework.repository.FileSystemRepository;
 import net.sf.anathema.framework.repository.Repository;
@@ -21,7 +19,6 @@ import java.io.File;
 public class ApplicationModel implements IApplicationModel {
 
   private final IRegistry<String, IAnathemaExtension> extensionRegistry = new Registry<>();
-  private final IRegistry<IItemType, RepositoryItemPersister> persisterRegistry = new Registry<>();
   private final IReportRegistry reportRegistry = new ReportRegistry();
   private final IItemTypeRegistry itemTypes = new ItemTypeRegistry();
   private final FileSystemRepository repository;
@@ -49,11 +46,6 @@ public class ApplicationModel implements IApplicationModel {
   @Override
   public final IRegistry<String, IAnathemaExtension> getExtensionPointRegistry() {
     return extensionRegistry;
-  }
-
-  @Override
-  public final IRegistry<IItemType, RepositoryItemPersister> getPersisterRegistry() {
-    return persisterRegistry;
   }
 
   @Override

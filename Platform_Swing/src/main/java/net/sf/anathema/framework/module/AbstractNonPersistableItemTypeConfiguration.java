@@ -21,18 +21,8 @@ public abstract class AbstractNonPersistableItemTypeConfiguration implements IIt
   }
 
   @Override
-  public final void registerViewFactory(IApplicationModel anathemaModel, Resources resources) {
-    // nothing to do
-  }
-
-  @Override
   public final void fillPresentationExtensionPoints(IRegistry<String, IAnathemaExtension> extensionPointRegistry, Resources resources,
                                                     IApplicationModel model, ApplicationView view) {
     //nothing to do
-  }
-
-  @Override
-  public void initModel(IApplicationModel model) {
-    //nothing to do    
   }
 }

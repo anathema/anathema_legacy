@@ -36,9 +36,6 @@ public class AnathemaModelInitializer {
     for (IItemTypeConfiguration itemTypeConfiguration : itemTypeConfigurations) {
       model.getItemTypeRegistry().registerItemType(itemTypeConfiguration.getItemType());
     }
-    for (IItemTypeConfiguration itemTypeConfiguration : itemTypeConfigurations) {
-      itemTypeConfiguration.initModel(model);
-    }
     return model;
   }
 

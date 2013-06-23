@@ -9,11 +9,7 @@ import net.sf.anathema.lib.resources.Resources;
 
 public interface IItemTypeConfiguration {
 
-  void registerViewFactory(IApplicationModel anathemaModel, Resources resources);
-
   IItemType getItemType();
-
-  void initModel(IApplicationModel model);
 
   void fillPresentationExtensionPoints(IRegistry<String, IAnathemaExtension> extensionPointRegistry, Resources resources, IApplicationModel model,
                                        ApplicationView view);

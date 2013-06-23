@@ -34,9 +34,6 @@ public class AnathemaPresenter {
       configuration.fillPresentationExtensionPoints(model.getExtensionPointRegistry(), resources, model, view);
     }
     initializePreferences();
-    for (IItemTypeConfiguration configuration : itemTypeConfigurations) {
-      configuration.registerViewFactory(model, resources);
-    }
     runBootJobs();
     initializeReports();
     IMessageContainer messageContainer = model.getMessageContainer();

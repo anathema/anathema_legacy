@@ -10,13 +10,13 @@ import net.sf.anathema.character.generic.template.HeroTemplate;
 import net.sf.anathema.character.generic.template.TemplateType;
 import net.sf.anathema.character.generic.type.CharacterTypes;
 import net.sf.anathema.character.impl.model.CharacterStatisticsConfiguration;
+import net.sf.anathema.character.impl.persistence.ExaltedCharacterPersister;
 import net.sf.anathema.character.itemtype.CharacterItemTypeRetrieval;
 import net.sf.anathema.character.model.Character;
 import net.sf.anathema.framework.IApplicationModel;
 import net.sf.anathema.framework.item.IItemType;
 import net.sf.anathema.framework.persistence.RepositoryItemPersister;
 import net.sf.anathema.framework.repository.Item;
-import net.sf.anathema.lib.registry.IRegistry;
 import net.sf.anathema.lib.util.SimpleIdentifier;
 
 public class CharacterCreationSteps {
@@ -85,22 +85,25 @@ public class CharacterCreationSteps {
   }
 
   private HeroTemplate loadDefaultTemplateForType(String type) {
-    ICharacterGenerics generics = CharacterGenericsExtractor.getGenerics(model);
+    ICharacterGenerics generics = getCharacterGenerics();
     return generics.getTemplateRegistry().getDefaultTemplate(characterTypes.findById(type));
   }
 
   private HeroTemplate loadTemplateForType(String type, String subtype) {
-    ICharacterGenerics generics = CharacterGenericsExtractor.getGenerics(model);
+    ICharacterGenerics generics = getCharacterGenerics();
     return generics.getTemplateRegistry().getTemplate(new TemplateType(characterTypes.findById(type), new SimpleIdentifier(subtype)));
   }
 
   private Character createCharacter(HeroTemplate template) {
     CharacterStatisticsConfiguration creationRules = new CharacterStatisticsConfiguration();
     creationRules.setTemplate(template);
-    IRegistry<IItemType, RepositoryItemPersister> persisterRegistry = model.getPersisterRegistry();
     IItemType characterItemType = model.getItemTypeRegistry().getById(CharacterItemTypeRetrieval.CHARACTER_ITEM_TYPE_ID);
-    RepositoryItemPersister itemPersister = persisterRegistry.get(characterItemType);
+    RepositoryItemPersister itemPersister = new ExaltedCharacterPersister(characterItemType, getCharacterGenerics(), model.getMessaging());
     Item item = itemPersister.createNew(creationRules);
     return (net.sf.anathema.character.model.Character) item.getItemData();
+  }
+
+  private ICharacterGenerics getCharacterGenerics() {
+    return CharacterGenericsExtractor.getGenerics(model);
   }
 }
