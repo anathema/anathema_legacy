@@ -7,6 +7,7 @@ public interface ChangeManagement {
 
   void setClean();
 
+  @SuppressWarnings("UnusedDeclaration")
   void removeDirtyListener(IChangeListener changeListener);
 
   void addDirtyListener(IChangeListener changeListener);
