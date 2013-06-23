@@ -2,7 +2,7 @@ package net.sf.anathema.character.equipment.character;
 
 import net.sf.anathema.character.equipment.MagicalMaterial;
 import net.sf.anathema.character.equipment.MaterialComposition;
-import net.sf.anathema.character.equipment.character.model.IEquipmentAdditionalModel;
+import net.sf.anathema.character.equipment.character.model.EquipmentModel;
 import net.sf.anathema.character.equipment.character.model.IEquipmentItem;
 import net.sf.anathema.character.equipment.character.preference.AnathemaEquipmentPreferences;
 import net.sf.anathema.character.equipment.character.view.IEquipmentAdditionalView;
@@ -31,11 +31,11 @@ import java.util.Map;
 public class EquipmentAdditionalPresenter implements Presenter {
 
   private final Resources resources;
-  private final IEquipmentAdditionalModel model;
+  private final EquipmentModel model;
   private final IEquipmentAdditionalView view;
   private final Map<IEquipmentItem, IEquipmentObjectView> viewsByItem = new HashMap<>();
 
-  public EquipmentAdditionalPresenter(Resources resources, final IEquipmentAdditionalModel model,
+  public EquipmentAdditionalPresenter(Resources resources, final EquipmentModel model,
                                       IEquipmentAdditionalView view) {
     this.resources = resources;
     this.model = model;

@@ -2,7 +2,7 @@ package net.sf.anathema.character.equipment.impl.character;
 
 import net.sf.anathema.character.equipment.IEquipmentAdditionalModelTemplate;
 import net.sf.anathema.character.equipment.character.EquipmentAdditionalPresenter;
-import net.sf.anathema.character.equipment.character.model.IEquipmentAdditionalModel;
+import net.sf.anathema.character.equipment.character.model.EquipmentModel;
 import net.sf.anathema.character.equipment.character.view.IEquipmentAdditionalView;
 import net.sf.anathema.hero.display.HeroModelGroup;
 import net.sf.anathema.character.model.ICharacter;
@@ -25,7 +25,7 @@ public class EquipmentAdditionalInitializer implements CharacterModelInitializer
   public void initialize(SectionView sectionView, ICharacter character, Resources resources) {
     String viewName = resources.getString("AdditionalTemplateView.TabName.Equipment");
     IEquipmentAdditionalView view = sectionView.addView(viewName, IEquipmentAdditionalView.class, character.getTemplate().getTemplateType().getCharacterType());
-    IEquipmentAdditionalModel equipmentModel = (IEquipmentAdditionalModel) character.getExtendedConfiguration().getAdditionalModel(IEquipmentAdditionalModelTemplate.ID);
+    EquipmentModel equipmentModel = (EquipmentModel) character.getExtendedConfiguration().getAdditionalModel(IEquipmentAdditionalModelTemplate.ID);
     new EquipmentAdditionalPresenter(resources, equipmentModel, view).initPresentation();
   }
 }

@@ -17,7 +17,7 @@ import static net.sf.anathema.character.generic.equipment.ArtifactAttuneType.Ful
 import static net.sf.anathema.character.generic.equipment.ArtifactAttuneType.Unattuned;
 import static net.sf.anathema.character.generic.equipment.ArtifactAttuneType.UnharmoniouslyAttuned;
 
-public class EquipmentCharacterDataProvider implements IEquipmentCharacterDataProvider {
+public class EquipmentCharacterDataProvider implements EquipmentHeroEvaluator {
 
   private Hero hero;
   private final MaterialRules materialRules;

@@ -6,9 +6,9 @@ import net.sf.anathema.character.equipment.IEquipmentAdditionalModelTemplate;
 import net.sf.anathema.character.equipment.MagicalMaterial;
 import net.sf.anathema.character.equipment.MaterialComposition;
 import net.sf.anathema.character.equipment.MaterialRules;
-import net.sf.anathema.character.equipment.character.IEquipmentCharacterDataProvider;
-import net.sf.anathema.character.equipment.character.IEquipmentCharacterOptionProvider;
-import net.sf.anathema.character.equipment.character.model.IEquipmentAdditionalModel;
+import net.sf.anathema.character.equipment.character.EquipmentHeroEvaluator;
+import net.sf.anathema.character.equipment.character.EquipmentOptionsProvider;
+import net.sf.anathema.character.equipment.character.model.EquipmentModel;
 import net.sf.anathema.character.equipment.character.model.IEquipmentItem;
 import net.sf.anathema.character.equipment.character.model.IEquipmentPrintModel;
 import net.sf.anathema.character.equipment.character.model.IEquipmentStatsOption;
@@ -40,13 +40,13 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
-public class EquipmentAdditionalModel extends AbstractAdditionalModelAdapter implements IEquipmentCharacterOptionProvider, IEquipmentAdditionalModel, StatsModifierFactory {
+public class EquipmentAdditionalModel extends AbstractAdditionalModelAdapter implements EquipmentOptionsProvider, EquipmentModel, StatsModifierFactory {
   private final IEquipmentTemplateProvider equipmentTemplateProvider;
   private final ICharacterType characterType;
   private final MagicalMaterial defaultMaterial;
   private final List<IEquipmentItem> naturalWeaponItems = new ArrayList<>();
   private final Table<IEquipmentItem, IEquipmentStats, List<IEquipmentStatsOption>> optionsTable = HashBasedTable.create();
-  private final IEquipmentCharacterDataProvider dataProvider;
+  private final EquipmentHeroEvaluator dataProvider;
   private final Announcer<IChangeListener> modelChangeControl = Announcer.to(IChangeListener.class);
   private final Announcer<ICollectionListener> equipmentItemControl = Announcer.to(ICollectionListener.class);
   private final EquipmentCollection equipmentItems = new EquipmentCollection();
@@ -59,7 +59,7 @@ public class EquipmentAdditionalModel extends AbstractAdditionalModelAdapter imp
   };
 
   public EquipmentAdditionalModel(Hero hero, ICharacterType characterType, IArmourStats naturalArmour, IEquipmentTemplateProvider equipmentTemplateProvider,
-                                  IEquipmentCharacterDataProvider dataProvider, MaterialRules materialRules, IEquipmentTemplate... naturalWeapons) {
+                                  EquipmentHeroEvaluator dataProvider, MaterialRules materialRules, IEquipmentTemplate... naturalWeapons) {
     this.printModel = new EquipmentPrintModel(this, naturalArmour);
     this.characterType = characterType;
     this.defaultMaterial = evaluateDefaultMaterial(materialRules);
@@ -79,12 +79,12 @@ public class EquipmentAdditionalModel extends AbstractAdditionalModelAdapter imp
 
 
   @Override
-  public IEquipmentCharacterDataProvider getCharacterDataProvider() {
+  public EquipmentHeroEvaluator getCharacterDataProvider() {
     return dataProvider;
   }
 
   @Override
-  public IEquipmentCharacterOptionProvider getCharacterOptionProvider() {
+  public EquipmentOptionsProvider getCharacterOptionProvider() {
     return this;
   }
 
@@ -347,9 +347,9 @@ public class EquipmentAdditionalModel extends AbstractAdditionalModelAdapter imp
   }
 
   private class SpecialtyPrintRemover implements IChangeListener {
-    private final IEquipmentCharacterDataProvider dataProvider;
+    private final EquipmentHeroEvaluator dataProvider;
 
-    public SpecialtyPrintRemover(IEquipmentCharacterDataProvider dataProvider) {
+    public SpecialtyPrintRemover(EquipmentHeroEvaluator dataProvider) {
       this.dataProvider = dataProvider;
     }
 

@@ -1,9 +1,9 @@
 package net.sf.anathema.character.equipment.view;
 
 import junit.framework.TestCase;
+import net.sf.anathema.character.equipment.character.EquipmentHeroEvaluator;
 import net.sf.anathema.character.equipment.character.EquipmentObjectPresenter;
-import net.sf.anathema.character.equipment.character.IEquipmentCharacterDataProvider;
-import net.sf.anathema.character.equipment.character.IEquipmentCharacterOptionProvider;
+import net.sf.anathema.character.equipment.character.EquipmentOptionsProvider;
 import net.sf.anathema.character.equipment.character.IEquipmentStringBuilder;
 import net.sf.anathema.character.equipment.character.model.IEquipmentItem;
 import net.sf.anathema.character.equipment.character.view.IEquipmentObjectView;
@@ -42,8 +42,8 @@ public class EquipmentItemPresenterTest extends TestCase {
   }
 
   private void initPresentation(IEquipmentItem model, IEquipmentObjectView view) {
-    IEquipmentCharacterDataProvider dataProvider = mock(IEquipmentCharacterDataProvider.class);
-    IEquipmentCharacterOptionProvider optionProvider = mock(IEquipmentCharacterOptionProvider.class);
+    EquipmentHeroEvaluator dataProvider = mock(EquipmentHeroEvaluator.class);
+    EquipmentOptionsProvider optionProvider = mock(EquipmentOptionsProvider.class);
     when(dataProvider.getSpecialties(isA(TraitType.class))).thenReturn(new Specialty[0]);
     new EquipmentObjectPresenter(model, view, equipmentStringBuilder, dataProvider, optionProvider, new LocaleResources()).initPresentation();
   }

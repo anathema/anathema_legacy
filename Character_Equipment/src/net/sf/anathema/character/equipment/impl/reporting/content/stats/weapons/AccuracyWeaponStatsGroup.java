@@ -2,8 +2,8 @@ package net.sf.anathema.character.equipment.impl.reporting.content.stats.weapons
 
 import com.itextpdf.text.Font;
 import com.itextpdf.text.pdf.PdfPTable;
-import net.sf.anathema.character.equipment.character.IEquipmentCharacterDataProvider;
-import net.sf.anathema.character.equipment.character.IEquipmentCharacterOptionProvider;
+import net.sf.anathema.character.equipment.character.EquipmentHeroEvaluator;
+import net.sf.anathema.character.equipment.character.EquipmentOptionsProvider;
 import net.sf.anathema.character.equipment.character.model.IEquipmentStatsOption;
 import net.sf.anathema.character.equipment.impl.creation.model.WeaponTag;
 import net.sf.anathema.character.equipment.impl.reporting.content.stats.AbstractValueEquipmentStatsGroup;
@@ -18,11 +18,11 @@ import java.util.Arrays;
 public class AccuracyWeaponStatsGroup extends AbstractValueEquipmentStatsGroup<IWeaponStats> {
 
   private final IGenericTraitCollection collection;
-  private final IEquipmentCharacterDataProvider provider;
-  private IEquipmentCharacterOptionProvider optionProvider;
+  private final EquipmentHeroEvaluator provider;
+  private EquipmentOptionsProvider optionProvider;
 
-  public AccuracyWeaponStatsGroup(Resources resources, IGenericTraitCollection collection, IEquipmentCharacterDataProvider provider,
-                                  IEquipmentCharacterOptionProvider optionProvider) {
+  public AccuracyWeaponStatsGroup(Resources resources, IGenericTraitCollection collection, EquipmentHeroEvaluator provider,
+                                  EquipmentOptionsProvider optionProvider) {
     super(resources, "Accuracy");
     this.collection = collection;
     this.optionProvider = optionProvider;

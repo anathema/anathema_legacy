@@ -5,7 +5,7 @@ import net.sf.anathema.character.generic.traits.TraitType;
 import net.sf.anathema.character.library.trait.specialties.Specialty;
 import net.sf.anathema.lib.control.IChangeListener;
 
-public interface IEquipmentCharacterDataProvider extends ItemAttunementEvaluator {
+public interface EquipmentHeroEvaluator extends ItemAttunementEvaluator {
 
   IEquipmentStatsOption getCharacterSpecialtyOption(String name, String type);
 

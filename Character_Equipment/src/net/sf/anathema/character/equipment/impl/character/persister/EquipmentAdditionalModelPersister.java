@@ -2,9 +2,9 @@ package net.sf.anathema.character.equipment.impl.character.persister;
 
 import net.sf.anathema.character.equipment.MagicalMaterial;
 import net.sf.anathema.character.equipment.MaterialComposition;
-import net.sf.anathema.character.equipment.character.IEquipmentCharacterDataProvider;
-import net.sf.anathema.character.equipment.character.IEquipmentCharacterOptionProvider;
-import net.sf.anathema.character.equipment.character.model.IEquipmentAdditionalModel;
+import net.sf.anathema.character.equipment.character.EquipmentHeroEvaluator;
+import net.sf.anathema.character.equipment.character.EquipmentOptionsProvider;
+import net.sf.anathema.character.equipment.character.model.EquipmentModel;
 import net.sf.anathema.character.equipment.character.model.IEquipmentItem;
 import net.sf.anathema.character.equipment.character.model.IEquipmentStatsOption;
 import net.sf.anathema.character.equipment.impl.character.model.EquipmentAdditionalModel;
@@ -37,12 +37,12 @@ public class EquipmentAdditionalModelPersister implements IAdditionalPersister {
 
   @Override
   public void save(Element parent, IAdditionalModel model) {
-    IEquipmentAdditionalModel equipmentModel = (IEquipmentAdditionalModel) model;
+    EquipmentModel equipmentModel = (EquipmentModel) model;
     saveItems(parent, equipmentModel.getNaturalWeapons(), equipmentModel.getCharacterOptionProvider());
     saveItems(parent, equipmentModel.getEquipmentItems(), equipmentModel.getCharacterOptionProvider());
   }
 
-  private void saveItems(Element parent, IEquipmentItem[] equipmentItems, IEquipmentCharacterOptionProvider provider) {
+  private void saveItems(Element parent, IEquipmentItem[] equipmentItems, EquipmentOptionsProvider provider) {
     for (IEquipmentItem item : equipmentItems) {
       Element itemElement = parent.addElement(TAG_ITEM);
       itemElement.addElement(TAG_TEMPLATE_ID).addCDATA(item.getTemplateId());
@@ -71,7 +71,7 @@ public class EquipmentAdditionalModelPersister implements IAdditionalPersister {
 
   @Override
   public void load(Element parent, IAdditionalModel model) throws PersistenceException {
-    IEquipmentAdditionalModel equipmentModel = (EquipmentAdditionalModel) model;
+    EquipmentModel equipmentModel = (EquipmentAdditionalModel) model;
     for (Element itemElement : ElementUtilities.elements(parent, TAG_ITEM)) {
       String templateId = itemElement.elementText(TAG_TEMPLATE_ID);
       String title = itemElement.elementText(TAG_CUSTOM_TITLE);
@@ -98,7 +98,7 @@ public class EquipmentAdditionalModelPersister implements IAdditionalPersister {
         String printedStatId = statsElement.getText().trim();
         item.setPrinted(printedStatId);
 
-        IEquipmentCharacterDataProvider provider = equipmentModel.getCharacterDataProvider();
+        EquipmentHeroEvaluator provider = equipmentModel.getCharacterDataProvider();
         IEquipmentStats stats = item.getStat(printedStatId);
         for (Element optionsElement : ElementUtilities.elements(statsElement, TAG_SPECIALTY_OPTION)) {
           IEquipmentStatsOption option =

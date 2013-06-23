@@ -4,7 +4,7 @@ import net.sf.anathema.character.equipment.character.model.IEquipmentItem;
 import net.sf.anathema.character.equipment.character.model.IEquipmentStatsOption;
 import net.sf.anathema.character.generic.equipment.weapon.IEquipmentStats;
 
-public interface IEquipmentCharacterOptionProvider {
+public interface EquipmentOptionsProvider {
   void enableStatOption(IEquipmentItem item, IEquipmentStats stats, IEquipmentStatsOption option);
 
   void disableStatOption(IEquipmentItem item, IEquipmentStats stats, IEquipmentStatsOption option);

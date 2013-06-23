@@ -1,6 +1,6 @@
 package net.sf.anathema.character.equipment.impl.character.model.stats;
 
-import net.sf.anathema.character.equipment.character.model.IEquipmentAdditionalModel;
+import net.sf.anathema.character.equipment.character.model.EquipmentModel;
 import net.sf.anathema.character.equipment.character.model.IEquipmentItem;
 import net.sf.anathema.character.generic.character.IGenericCharacter;
 import net.sf.anathema.character.generic.equipment.ICharacterStatsModifiers;
@@ -20,7 +20,7 @@ public class CharacterStatsModifiers implements ICharacterStatsModifiers {
   private int mobilityPenalty;
 
   public static CharacterStatsModifiers extractFromCharacter(IGenericCharacter character) {
-    IEquipmentAdditionalModel model = (IEquipmentAdditionalModel) character.getAdditionalModel(ID);
+    EquipmentModel model = (EquipmentModel) character.getAdditionalModel(ID);
     IEquipmentItem[] items = model.getEquipmentItems();
     List<IEquipmentItem> list = newArrayList(items);
     return new CharacterStatsModifiers(list);

@@ -1,7 +1,7 @@
 package net.sf.anathema.character.equipment.impl.reporting.content.stats.weapons;
 
-import net.sf.anathema.character.equipment.character.IEquipmentCharacterDataProvider;
-import net.sf.anathema.character.equipment.character.IEquipmentCharacterOptionProvider;
+import net.sf.anathema.character.equipment.character.EquipmentHeroEvaluator;
+import net.sf.anathema.character.equipment.character.EquipmentOptionsProvider;
 import net.sf.anathema.character.equipment.character.model.IEquipmentStatsOption;
 import net.sf.anathema.character.generic.character.IGenericCharacter;
 import net.sf.anathema.character.generic.character.IGenericTraitCollection;
@@ -11,11 +11,11 @@ import net.sf.anathema.lib.resources.Resources;
 
 public class SecondEditionDefenceWeaponStatsGroup extends AbstractDefenceWeaponStatsGroup {
 
-  private final IEquipmentCharacterDataProvider provider;
-  private IEquipmentCharacterOptionProvider optionProvider;
+  private final EquipmentHeroEvaluator provider;
+  private EquipmentOptionsProvider optionProvider;
 
   public SecondEditionDefenceWeaponStatsGroup(Resources resources, IGenericCharacter character, IGenericTraitCollection traitCollection,
-                                              IEquipmentCharacterDataProvider provider, IEquipmentCharacterOptionProvider optionProvider) {
+                                              EquipmentHeroEvaluator provider, EquipmentOptionsProvider optionProvider) {
     super(resources, character, traitCollection);
     this.provider = provider;
     this.optionProvider = optionProvider;

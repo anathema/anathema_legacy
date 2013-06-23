@@ -28,13 +28,13 @@ public class EquipmentObjectPresenter implements Presenter {
   private final IEquipmentItem model;
   private final IEquipmentObjectView view;
   private final IEquipmentStringBuilder stringBuilder;
-  private final IEquipmentCharacterOptionProvider characterOptionProvider;
-  private final IEquipmentCharacterDataProvider dataProvider;
+  private final EquipmentOptionsProvider characterOptionProvider;
+  private final EquipmentHeroEvaluator dataProvider;
   private final Resources resources;
 
   public EquipmentObjectPresenter(IEquipmentItem model, IEquipmentObjectView view,
-                                  IEquipmentStringBuilder stringBuilder, IEquipmentCharacterDataProvider dataProvider,
-                                  IEquipmentCharacterOptionProvider characterOptionProvider, Resources resources) {
+                                  IEquipmentStringBuilder stringBuilder, EquipmentHeroEvaluator dataProvider,
+                                  EquipmentOptionsProvider characterOptionProvider, Resources resources) {
     this.model = model;
     this.view = view;
     this.stringBuilder = stringBuilder;

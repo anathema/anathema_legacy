@@ -9,7 +9,7 @@ import net.sf.anathema.character.equipment.IEquipmentAdditionalModelTemplate;
 import net.sf.anathema.character.equipment.MaterialComposition;
 import net.sf.anathema.character.equipment.character.EquipmentStringBuilder;
 import net.sf.anathema.character.equipment.character.IEquipmentStringBuilder;
-import net.sf.anathema.character.equipment.character.model.IEquipmentAdditionalModel;
+import net.sf.anathema.character.equipment.character.model.EquipmentModel;
 import net.sf.anathema.character.equipment.character.model.IEquipmentItem;
 import net.sf.anathema.character.generic.equipment.ArtifactAttuneType;
 import net.sf.anathema.character.generic.equipment.ArtifactStats;
@@ -34,8 +34,8 @@ public class EquipmentCardDataProvider implements ICardDataProvider {
 
   @Override
   public ICardData[] getCards(ICharacter character, ICardReportResourceProvider resourceProvider) {
-    IEquipmentAdditionalModel model =
-            (IEquipmentAdditionalModel) character.getExtendedConfiguration().getAdditionalModel(IEquipmentAdditionalModelTemplate.ID);
+    EquipmentModel model =
+            (EquipmentModel) character.getExtendedConfiguration().getAdditionalModel(IEquipmentAdditionalModelTemplate.ID);
     List<ICardData> data = new ArrayList<>();
     for (IEquipmentItem item : model.getEquipmentItems()) {
       String title = item.getTitle();

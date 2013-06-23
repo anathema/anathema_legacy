@@ -1,6 +1,6 @@
 package net.sf.anathema.character.equipment.impl.character.model;
 
-import net.sf.anathema.character.equipment.character.IEquipmentCharacterDataProvider;
+import net.sf.anathema.character.equipment.character.EquipmentHeroEvaluator;
 import net.sf.anathema.character.equipment.dummy.DummyEquipmentObject;
 import net.sf.anathema.character.equipment.impl.character.model.natural.DefaultNaturalSoak;
 import net.sf.anathema.character.equipment.item.model.IEquipmentTemplateProvider;
@@ -22,7 +22,7 @@ public class EquipmentAdditionalModelTest {
   private final DummyEssenceCharacterType characterType = new DummyEssenceCharacterType();
   IArmourStats naturalArmor = new DefaultNaturalSoak(new DummyGenericTrait(Stamina, 5), characterType);
   IEquipmentTemplateProvider templateProvider = mock(IEquipmentTemplateProvider.class);
-  IEquipmentCharacterDataProvider dataProvider = mock(IEquipmentCharacterDataProvider.class);
+  EquipmentHeroEvaluator dataProvider = mock(EquipmentHeroEvaluator.class);
   EquipmentAdditionalModel model;
 
   @Before
