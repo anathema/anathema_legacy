@@ -19,23 +19,25 @@ public class SimpleTraitView implements ITraitView {
   private final CC dotAlignment;
   private final CC labelAlignment;
   private final IIntValueDisplay valueDisplay;
-  private final String labelText;
 
   public SimpleTraitView(IntegerViewFactory factory, String labelText, int value, int maxValue) {
-    this(factory, labelText, value, maxValue, null);
+    this(factory, labelText, value, maxValue, new NullUpperBounds());
   }
 
   public SimpleTraitView(IntegerViewFactory factory, String labelText, int value, int maxValue, Trait trait) {
-    this(factory, labelText, value, maxValue, trait, new CC().alignX("right"), new CC().growX().pushX());
+    this(factory, labelText, value, maxValue, new TraitUpperBounds(trait));
   }
 
-  public SimpleTraitView(IntegerViewFactory factory, String labelText, int value, int maxValue, Trait trait,
-                         CC dotAlignment, CC labelAlignment) {
-    this.labelText = labelText;
-    TwoUpperBounds bounds = createBounds(trait);
-    this.valueDisplay = factory.createIntValueDisplay(maxValue, value, bounds);
-    this.label = new JLabel(getLabelText());
-    this.displayComponent = getValueDisplay().getComponent();
+  public SimpleTraitView(IntegerViewFactory factory, String labelText, int value, int maxValue,
+                         TwoUpperBounds upperBounds) {
+    this(factory, labelText, value, maxValue, upperBounds, new CC().alignX("right"), new CC().growX().pushX());
+  }
+
+  public SimpleTraitView(IntegerViewFactory factory, String labelText, int value, int maxValue,
+                         TwoUpperBounds upperBounds, CC dotAlignment, CC labelAlignment) {
+    this.valueDisplay = factory.createIntValueDisplay(maxValue, value, upperBounds);
+    this.label = new JLabel(labelText);
+    this.displayComponent = valueDisplay.getComponent();
     this.dotAlignment = dotAlignment;
     this.labelAlignment = labelAlignment;
   }
@@ -44,13 +46,6 @@ public class SimpleTraitView implements ITraitView {
   public void addComponents(JPanel panel) {
     panel.add(label, labelAlignment);
     panel.add(displayComponent, dotAlignment);
-  }
-
-  private TwoUpperBounds createBounds(Trait trait) {
-    if (trait == null) {
-      return new NullUpperBounds();
-    }
-    return new TraitUpperBounds(trait);
   }
 
   @Override
@@ -66,14 +61,6 @@ public class SimpleTraitView implements ITraitView {
   @Override
   public void removeIntValueChangedListener(IIntValueChangedListener listener) {
     valueDisplay.removeIntValueChangedListener(listener);
-  }
-
-  protected String getLabelText() {
-    return labelText;
-  }
-
-  protected IIntValueDisplay getValueDisplay() {
-    return valueDisplay;
   }
 
   @Override

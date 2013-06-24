@@ -10,6 +10,7 @@ import net.sf.anathema.framework.swing.IView;
 import net.sf.anathema.framework.swing.selection.ObjectSelectionView;
 import net.sf.anathema.framework.value.IIntValueView;
 import net.sf.anathema.framework.value.IntegerViewFactory;
+import net.sf.anathema.framework.value.NullUpperBounds;
 import net.sf.anathema.lib.gui.AgnosticUIConfiguration;
 import net.sf.anathema.lib.gui.selection.IObjectSelectionView;
 import net.sf.anathema.lib.gui.ui.ConfigurableListCellRenderer;
@@ -43,7 +44,7 @@ public class VirtueFlawView implements IVirtueFlawView, IView {
 
   @Override
   public IIntValueView addLimitValueView(String label, int value, int maxValue) {
-    SimpleTraitView traitView = new SimpleTraitView(intValueDisplayFactory, label, value, maxValue, null, new CC().alignX("left"), new CC());
+    SimpleTraitView traitView = new SimpleTraitView(intValueDisplayFactory, label, value, maxValue, new NullUpperBounds(), new CC().alignX("left"), new CC());
     traitView.addComponents(virtueFlawPanel);
     return traitView;
   }
