@@ -9,7 +9,7 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 import java.awt.Component;
 
-public class SimpleTraitView extends AbstractTraitView implements ITraitView<SimpleTraitView> {
+public class SimpleTraitView extends AbstractTraitView implements ITraitView {
   private final JLabel label;
   private final Component displayComponent;
   private final CC dotAlignment;
@@ -17,19 +17,11 @@ public class SimpleTraitView extends AbstractTraitView implements ITraitView<Sim
   private JPanel traitViewPanel;
 
   public SimpleTraitView(IntegerViewFactory factory, String labelText, int value, int maxValue) {
-    this(factory, labelText, value, maxValue, null, new CC().alignX("right"));
+    this(factory, labelText, value, maxValue, null);
   }
 
-  public SimpleTraitView(String labelText, int value, int maxValue, Trait trait, IntegerViewFactory factory) {
-    this(factory, labelText, value, maxValue, trait, new CC().alignX("right"));
-  }
-
-  public SimpleTraitView(IntegerViewFactory factory, String labelText, int value, int maxValue, CC dotAlignment) {
-    this(factory, labelText, value, maxValue, null, dotAlignment, new CC().growX().pushX());
-  }
-
-  public SimpleTraitView(IntegerViewFactory factory, String labelText, int value, int maxValue, Trait trait, CC dotAlignment) {
-    this(factory, labelText, value, maxValue, trait, dotAlignment, new CC().growX().pushX());
+  public SimpleTraitView(IntegerViewFactory factory, String labelText, int value, int maxValue, Trait trait) {
+    this(factory, labelText, value, maxValue, trait, new CC().alignX("right"), new CC().growX().pushX());
   }
 
   public SimpleTraitView(IntegerViewFactory factory, String labelText, int value, int maxValue, Trait trait, CC dotAlignment,
@@ -56,10 +48,5 @@ public class SimpleTraitView extends AbstractTraitView implements ITraitView<Sim
     traitViewPanel.remove(label);
     traitViewPanel.remove(displayComponent);
     traitViewPanel.revalidate();
-  }
-
-  @Override
-  public SimpleTraitView getInnerView() {
-    return this;
   }
 }
