@@ -15,14 +15,6 @@ public class IdentityMapping<K, V> {
     mappings.add(new KeyValueMapping<>(key, value));
   }
 
-  public List<K> getAllKeys() {
-    List<K> list = new ArrayList<>();
-    for (KeyValueMapping<K, V> mapping : mappings) {
-      list.add(mapping.getKey());
-    }
-    return list;
-  }
-
   public V get(K key) {
     for (KeyValueMapping<K, V> mapping : mappings) {
       if (key == mapping.getKey()) {
