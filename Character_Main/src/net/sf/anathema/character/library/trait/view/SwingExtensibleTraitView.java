@@ -21,7 +21,7 @@ public class SwingExtensibleTraitView implements ExtensibleTraitView {
   private final JPanel rear = new JPanel(new MigLayout(fillWithoutInsets()));
   private final IIntValueView view;
 
-  public SwingExtensibleTraitView(SimpleTraitView view) {
+  public SwingExtensibleTraitView(ITraitView view) {
     this.view = view;
     view.addComponents(center);
   }

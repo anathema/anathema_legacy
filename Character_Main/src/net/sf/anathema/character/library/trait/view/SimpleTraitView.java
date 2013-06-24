@@ -1,6 +1,5 @@
 package net.sf.anathema.character.library.trait.view;
 
-import com.google.common.base.Preconditions;
 import net.miginfocom.layout.CC;
 import net.sf.anathema.character.library.intvalue.TraitUpperBounds;
 import net.sf.anathema.character.library.trait.Trait;
@@ -21,7 +20,6 @@ public class SimpleTraitView implements ITraitView {
   private final CC labelAlignment;
   private final IIntValueDisplay valueDisplay;
   private final String labelText;
-  private JPanel traitViewPanel;
 
   public SimpleTraitView(IntegerViewFactory factory, String labelText, int value, int maxValue) {
     this(factory, labelText, value, maxValue, null);
@@ -35,28 +33,17 @@ public class SimpleTraitView implements ITraitView {
                          CC dotAlignment, CC labelAlignment) {
     this.labelText = labelText;
     TwoUpperBounds bounds = createBounds(trait);
-    this.valueDisplay = maxValue > 0 ? factory.createIntValueDisplay(maxValue, value, bounds) : null;
-    Preconditions.checkArgument(getLabelText() != null, "Label-Text must be set.");
+    this.valueDisplay = factory.createIntValueDisplay(maxValue, value, bounds);
     this.label = new JLabel(getLabelText());
-    this.displayComponent = maxValue > 0 ? getValueDisplay().getComponent() : null;
+    this.displayComponent = getValueDisplay().getComponent();
     this.dotAlignment = dotAlignment;
     this.labelAlignment = labelAlignment;
   }
 
   @Override
   public void addComponents(JPanel panel) {
-    this.traitViewPanel = panel;
     panel.add(label, labelAlignment);
-    if (displayComponent != null) {
-      panel.add(displayComponent, dotAlignment);
-    }
-  }
-
-  @Override
-  public void delete() {
-    traitViewPanel.remove(label);
-    traitViewPanel.remove(displayComponent);
-    traitViewPanel.revalidate();
+    panel.add(displayComponent, dotAlignment);
   }
 
   private TwoUpperBounds createBounds(Trait trait) {
@@ -68,23 +55,17 @@ public class SimpleTraitView implements ITraitView {
 
   @Override
   public void setValue(int newValue) {
-    if (valueDisplay != null) {
-      valueDisplay.setValue(newValue);
-    }
+    valueDisplay.setValue(newValue);
   }
 
   @Override
   public void addIntValueChangedListener(IIntValueChangedListener listener) {
-    if (valueDisplay != null) {
-      valueDisplay.addIntValueChangedListener(listener);
-    }
+    valueDisplay.addIntValueChangedListener(listener);
   }
 
   @Override
   public void removeIntValueChangedListener(IIntValueChangedListener listener) {
-    if (valueDisplay != null) {
-      valueDisplay.removeIntValueChangedListener(listener);
-    }
+    valueDisplay.removeIntValueChangedListener(listener);
   }
 
   protected String getLabelText() {
