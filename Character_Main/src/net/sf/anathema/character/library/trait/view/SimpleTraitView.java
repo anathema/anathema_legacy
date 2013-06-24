@@ -11,14 +11,12 @@ import net.sf.anathema.lib.control.IIntValueChangedListener;
 
 import javax.swing.JLabel;
 import javax.swing.JPanel;
-import java.awt.Component;
 
 public class SimpleTraitView implements ITraitView {
-  private final JLabel label;
-  private final Component displayComponent;
   private final CC dotAlignment;
   private final CC labelAlignment;
   private final IIntValueDisplay valueDisplay;
+  private final String labelText;
 
   public SimpleTraitView(IntegerViewFactory factory, String labelText, int value, int maxValue) {
     this(factory, labelText, value, maxValue, new NullUpperBounds());
@@ -35,17 +33,16 @@ public class SimpleTraitView implements ITraitView {
 
   public SimpleTraitView(IntegerViewFactory factory, String labelText, int value, int maxValue,
                          TwoUpperBounds upperBounds, CC dotAlignment, CC labelAlignment) {
+    this.labelText = labelText;
     this.valueDisplay = factory.createIntValueDisplay(maxValue, value, upperBounds);
-    this.label = new JLabel(labelText);
-    this.displayComponent = valueDisplay.getComponent();
     this.dotAlignment = dotAlignment;
     this.labelAlignment = labelAlignment;
   }
 
   @Override
   public void addComponents(JPanel panel) {
-    panel.add(label, labelAlignment);
-    panel.add(displayComponent, dotAlignment);
+    panel.add(new JLabel(labelText), labelAlignment);
+    panel.add(valueDisplay.getComponent(), dotAlignment);
   }
 
   @Override
