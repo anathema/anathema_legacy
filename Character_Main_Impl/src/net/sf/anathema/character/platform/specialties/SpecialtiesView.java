@@ -3,9 +3,10 @@ package net.sf.anathema.character.platform.specialties;
 import net.miginfocom.layout.CC;
 import net.miginfocom.swing.MigLayout;
 import net.sf.anathema.character.generic.framework.ITraitReference;
-import net.sf.anathema.character.impl.view.SpecialtyView;
+import net.sf.anathema.character.library.trait.view.SimpleTraitView;
+import net.sf.anathema.character.library.trait.view.SwingExtensibleTraitView;
+import net.sf.anathema.character.presenter.ExtensibleTraitView;
 import net.sf.anathema.character.presenter.specialty.ISpecialtiesConfigurationView;
-import net.sf.anathema.character.view.ISpecialtyView;
 import net.sf.anathema.framework.presenter.view.ButtonControlledComboEditView;
 import net.sf.anathema.framework.presenter.view.IButtonControlledComboEditView;
 import net.sf.anathema.framework.swing.IView;
@@ -23,22 +24,27 @@ public class SpecialtiesView implements ISpecialtiesConfigurationView, IView {
 
   private final IntegerViewFactory factory;
   private final JPanel mainPanel = new JPanel(new MigLayout(withoutInsets().wrapAfter(1).fillY()));
-  private final JPanel specialtyPanel = new JPanel(new MigLayout(withoutInsets().wrapAfter(5)));
+  private final JPanel specialtyPanel = new JPanel(new MigLayout(withoutInsets().wrapAfter(3)));
 
   public SpecialtiesView(IntegerViewFactory factory) {
     this.factory = factory;
   }
 
   @Override
-  public ISpecialtyView addSpecialtyView(String abilityName, String specialtyName, RelativePath deleteIcon, int value, int maxValue) {
-    SpecialtyView specialtyView = new SpecialtyView(factory, abilityName, deleteIcon, specialtyName, value, maxValue);
-    specialtyView.addComponents(specialtyPanel);
-    return specialtyView;
+  public ExtensibleTraitView addSpecialtyView(String abilityName, String specialtyName, RelativePath deleteIcon,
+                                              int value, int maxValue) {
+    SimpleTraitView view = new SimpleTraitView(factory, abilityName + " - " + specialtyName, value, maxValue);
+    SwingExtensibleTraitView extensibleTraitView = new SwingExtensibleTraitView(view);
+    extensibleTraitView.addComponents(specialtyPanel);
+    return extensibleTraitView;
   }
 
   @Override
-  public IButtonControlledComboEditView<ITraitReference> addSpecialtySelectionView(String labelText, ListCellRenderer renderer, RelativePath addIcon) {
-    ButtonControlledComboEditView<ITraitReference> objectSelectionView = new ButtonControlledComboEditView<>(addIcon, renderer);
+  public IButtonControlledComboEditView<ITraitReference> addSpecialtySelectionView(String labelText,
+                                                                                   ListCellRenderer renderer,
+                                                                                   RelativePath addIcon) {
+    ButtonControlledComboEditView<ITraitReference> objectSelectionView = new ButtonControlledComboEditView<>(addIcon,
+            renderer);
     mainPanel.add(objectSelectionView.getComponent(), 0);
     return objectSelectionView;
   }

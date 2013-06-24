@@ -9,7 +9,7 @@ import net.sf.anathema.character.library.trait.specialties.Specialty;
 import net.sf.anathema.character.library.trait.subtrait.ISpecialtyListener;
 import net.sf.anathema.character.library.trait.subtrait.ISubTraitContainer;
 import net.sf.anathema.character.main.model.experience.ExperienceChange;
-import net.sf.anathema.character.view.ISpecialtyView;
+import net.sf.anathema.character.presenter.ExtensibleTraitView;
 import net.sf.anathema.framework.presenter.resources.BasicUi;
 import net.sf.anathema.framework.presenter.view.IButtonControlledComboEditView;
 import net.sf.anathema.framework.view.AbstractSelectCellRenderer;
@@ -17,6 +17,7 @@ import net.sf.anathema.hero.change.ChangeFlavor;
 import net.sf.anathema.hero.change.FlavoredChangeListener;
 import net.sf.anathema.hero.model.Hero;
 import net.sf.anathema.interaction.Command;
+import net.sf.anathema.interaction.Tool;
 import net.sf.anathema.lib.collection.IdentityMapping;
 import net.sf.anathema.lib.control.IChangeListener;
 import net.sf.anathema.lib.control.ObjectValueListener;
@@ -29,7 +30,8 @@ import java.util.Comparator;
 
 public class SpecialtiesConfigurationPresenter implements Presenter {
 
-  private final IdentityMapping<Specialty, ISpecialtyView> viewsBySpecialty = new IdentityMapping<>();
+  private final IdentityMapping<Specialty, ExtensibleTraitView> viewsBySpecialty = new IdentityMapping<>();
+  private final IdentityMapping<Specialty, Tool> deleteToolsBySpecialty = new IdentityMapping<>();
   private final TraitInternationalizer i18ner;
   private final Comparator<ITraitReference> comparator;
 
@@ -41,9 +43,9 @@ public class SpecialtiesConfigurationPresenter implements Presenter {
 
     @Override
     public void subTraitRemoved(Specialty specialty) {
-      ISpecialtyView view = viewsBySpecialty.get(specialty);
+      ExtensibleTraitView view = viewsBySpecialty.get(specialty);
       viewsBySpecialty.remove(specialty);
-      view.delete();
+      view.remove();
     }
 
     @Override
@@ -57,8 +59,8 @@ public class SpecialtiesConfigurationPresenter implements Presenter {
   private Hero hero;
   private final SpecialtiesModel specialtyManagement;
 
-  public SpecialtiesConfigurationPresenter(Hero hero, SpecialtiesModel specialtyManagement, ISpecialtiesConfigurationView configurationView,
-                                           Resources resources) {
+  public SpecialtiesConfigurationPresenter(Hero hero, SpecialtiesModel specialtyManagement,
+                                           ISpecialtiesConfigurationView configurationView, Resources resources) {
     this.hero = hero;
     this.specialtyManagement = specialtyManagement;
     this.configurationView = configurationView;
@@ -71,15 +73,15 @@ public class SpecialtiesConfigurationPresenter implements Presenter {
   public void initPresentation() {
     initTraitListening();
     RelativePath addIcon = new BasicUi().getAddIconPath();
-    final IButtonControlledComboEditView<ITraitReference> specialtySelectionView = configurationView
-            .addSpecialtySelectionView(resources.getString("SpecialtyConfigurationView.SelectionCombo.Label"),
-                    new AbstractSelectCellRenderer<ITraitReference>(resources) {
+    final IButtonControlledComboEditView<ITraitReference> specialtySelectionView = configurationView.addSpecialtySelectionView(
+            resources.getString("SpecialtyConfigurationView.SelectionCombo.Label"),
+            new AbstractSelectCellRenderer<ITraitReference>(resources) {
 
-                      @Override
-                      protected String getCustomizedDisplayValue(ITraitReference value) {
-                        return i18ner.getScreenName(value);
-                      }
-                    }, addIcon);
+              @Override
+              protected String getCustomizedDisplayValue(ITraitReference value) {
+                return i18ner.getScreenName(value);
+              }
+            }, addIcon);
     setObjects(specialtySelectionView);
     specialtySelectionView.addSelectionChangedListener(new ObjectValueListener<ITraitReference>() {
       @Override
@@ -168,8 +170,12 @@ public class SpecialtiesConfigurationPresenter implements Presenter {
   private void updateSpecialtyViewButtons() {
     for (ITraitReference trait : getAllTraits()) {
       for (Specialty specialty : getSpecialtyContainer(trait).getSubTraits()) {
-        ISpecialtyView view = viewsBySpecialty.get(specialty);
-        view.setDeleteButtonEnabled(specialty.getCreationValue() == 0 || !specialtyManagement.isExperienced());
+        Tool tool = deleteToolsBySpecialty.get(specialty);
+        if (specialty.getCreationValue() == 0 || !specialtyManagement.isExperienced()) {
+          tool.enable();
+        } else {
+          tool.disable();
+        }
       }
     }
   }
@@ -179,16 +185,18 @@ public class SpecialtiesConfigurationPresenter implements Presenter {
     String traitName = i18ner.getScreenName(traitReference);
     String specialtyName = specialty.getName();
     RelativePath deleteIcon = new BasicUi().getRemoveIconPath();
-    ISpecialtyView specialtyView =
-            configurationView.addSpecialtyView(traitName, specialtyName, deleteIcon, specialty.getCurrentValue(), specialty.getMaximalValue());
-    new TraitPresenter(specialty, specialtyView).initPresentation();
-    specialtyView.addDeleteListener(new IChangeListener() {
+    final ExtensibleTraitView specialtyView = configurationView.addSpecialtyView(traitName, specialtyName, deleteIcon,
+            specialty.getCurrentValue(), specialty.getMaximalValue());
+    new TraitPresenter(specialty, specialtyView.getIntValueView()).initPresentation();
+    Tool deleteTool = specialtyView.addToolBehind();
+    deleteTool.setIcon(deleteIcon);
+    deleteTool.setCommand(new Command() {
       @Override
-      public void changeOccurred() {
+      public void execute() {
         getSpecialtyContainer(traitReference).removeSubTrait(specialty);
       }
     });
     viewsBySpecialty.put(specialty, specialtyView);
+    deleteToolsBySpecialty.put(specialty, deleteTool);
   }
-
 }
