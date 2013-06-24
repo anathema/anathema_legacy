@@ -62,7 +62,7 @@ public class IntimaciesViewImpl implements IntimaciesView, IView {
 
   @Override
   public ExtensibleTraitView addIntimacy(String name, int currentValue, int maximalValue) {
-    SimpleTraitView view = new SimpleTraitView(factory, name, currentValue, maximalValue);
+    SimpleTraitView view = SimpleTraitView.RightAlignedWithoutUpperBounds(factory, name, currentValue, maximalValue);
     SwingExtensibleTraitView traitView = new SwingExtensibleTraitView(view);
     traitView.addComponents(entryPanel);
     return traitView;

@@ -23,7 +23,8 @@ public class SwingGroupedTraitView implements GroupedTraitView {
   @Override
   public ExtensibleTraitView addExtensibleTraitView(String labelText, int value, int maxValue, Trait trait,
                                                     IntegerViewFactory factory) {
-    SimpleTraitView view = new SimpleTraitView(factory, labelText, value, maxValue, trait);
+    SimpleTraitView view = SimpleTraitView.RightAlignedWithUpperBoundsForTrait(factory, labelText, value, maxValue,
+            trait);
     SwingExtensibleTraitView extensibleTraitView = new SwingExtensibleTraitView(view);
     extensibleTraitView.addComponents(panel.getCurrentColumn());
     return extensibleTraitView;

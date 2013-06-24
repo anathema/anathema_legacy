@@ -1,6 +1,5 @@
 package net.sf.anathema.character.library.trait.view;
 
-import net.miginfocom.layout.CC;
 import net.sf.anathema.character.library.intvalue.TraitUpperBounds;
 import net.sf.anathema.character.library.trait.Trait;
 import net.sf.anathema.framework.value.IIntValueDisplay;
@@ -12,37 +11,39 @@ import net.sf.anathema.lib.control.IIntValueChangedListener;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 
+import static net.sf.anathema.character.library.trait.view.ConfigurableLayout.Left;
+import static net.sf.anathema.character.library.trait.view.ConfigurableLayout.Right;
+
 public class SimpleTraitView implements ITraitView {
-  private final CC dotAlignment;
-  private final CC labelAlignment;
+  public static SimpleTraitView RightAlignedWithoutUpperBounds(IntegerViewFactory factory, String labelText, int value,
+                                                               int maxValue) {
+    return new SimpleTraitView(factory, labelText, value, maxValue, new NullUpperBounds(), Right());
+  }
+
+  public static SimpleTraitView RightAlignedWithUpperBoundsForTrait(IntegerViewFactory factory, String labelText,
+                                                                    int value, int maxValue, Trait trait) {
+    return new SimpleTraitView(factory, labelText, value, maxValue, new TraitUpperBounds(trait), Right());
+  }
+
+  public static SimpleTraitView LeftAlignedWithoutUpperBounds(IntegerViewFactory factory, String labelText, int value,
+                                                              int maxValue) {
+    return new SimpleTraitView(factory, labelText, value, maxValue, new NullUpperBounds(), Left());
+  }
+
+  private final ConfigurableLayout layout;
   private final IIntValueDisplay valueDisplay;
   private final String labelText;
 
-  public SimpleTraitView(IntegerViewFactory factory, String labelText, int value, int maxValue) {
-    this(factory, labelText, value, maxValue, new NullUpperBounds());
-  }
-
-  public SimpleTraitView(IntegerViewFactory factory, String labelText, int value, int maxValue, Trait trait) {
-    this(factory, labelText, value, maxValue, new TraitUpperBounds(trait));
-  }
-
   public SimpleTraitView(IntegerViewFactory factory, String labelText, int value, int maxValue,
-                         TwoUpperBounds upperBounds) {
-    this(factory, labelText, value, maxValue, upperBounds, new CC().alignX("right"), new CC().growX().pushX());
-  }
-
-  public SimpleTraitView(IntegerViewFactory factory, String labelText, int value, int maxValue,
-                         TwoUpperBounds upperBounds, CC dotAlignment, CC labelAlignment) {
+                         TwoUpperBounds upperBounds, ConfigurableLayout layout) {
     this.labelText = labelText;
     this.valueDisplay = factory.createIntValueDisplay(maxValue, value, upperBounds);
-    this.dotAlignment = dotAlignment;
-    this.labelAlignment = labelAlignment;
+    this.layout = layout;
   }
 
   @Override
   public void addComponents(JPanel panel) {
-    panel.add(new JLabel(labelText), labelAlignment);
-    panel.add(valueDisplay.getComponent(), dotAlignment);
+    layout.addLabel(new JLabel(labelText)).addDisplay(valueDisplay.getComponent()).toPanel(panel);
   }
 
   @Override
@@ -64,4 +65,5 @@ public class SimpleTraitView implements ITraitView {
   public void setMaximum(int maximalValue) {
     valueDisplay.setMaximum(maximalValue);
   }
+
 }

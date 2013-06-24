@@ -33,7 +33,8 @@ public class SpecialtiesView implements ISpecialtiesConfigurationView, IView {
   @Override
   public ExtensibleTraitView addSpecialtyView(String abilityName, String specialtyName, RelativePath deleteIcon,
                                               int value, int maxValue) {
-    SimpleTraitView view = new SimpleTraitView(factory, abilityName + " - " + specialtyName, value, maxValue);
+    SimpleTraitView view = SimpleTraitView.RightAlignedWithoutUpperBounds(factory, abilityName + " - " + specialtyName,
+            value, maxValue);
     SwingExtensibleTraitView extensibleTraitView = new SwingExtensibleTraitView(view);
     extensibleTraitView.addComponents(specialtyPanel);
     return extensibleTraitView;

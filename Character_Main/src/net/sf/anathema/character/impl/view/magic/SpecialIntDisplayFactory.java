@@ -12,12 +12,13 @@ public class SpecialIntDisplayFactory implements ContentFactory {
     this.factory = factory;
   }
 
+  @SuppressWarnings("unchecked")
   @Override
   public IIntValueView create(Object... parameters) {
     String label = (String) parameters[0];
     int value = (Integer) parameters[1];
     int maxValue = (Integer) parameters[2];
-    SimpleTraitView view = new SimpleTraitView(factory, label, value, maxValue);
+    SimpleTraitView view = SimpleTraitView.RightAlignedWithoutUpperBounds(factory, label, value, maxValue);
     return new SpecialIntValueView(view);
   }
 }

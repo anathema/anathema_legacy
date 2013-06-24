@@ -48,14 +48,16 @@ public class BasicAdvantageView implements AdvantageView, IView {
 
   @Override
   public IIntValueView addVirtue(String labelText, int value, int maxValue) {
-    SimpleTraitView virtueView = new SimpleTraitView(guiConfiguration, labelText, value, maxValue);
+    SimpleTraitView virtueView = SimpleTraitView.RightAlignedWithoutUpperBounds(guiConfiguration, labelText, value,
+            maxValue);
     virtueView.addComponents(virtuePanel);
     return virtueView;
   }
 
   @Override
   public IIntValueView addWillpower(String labelText, int value, int maxValue) {
-    SimpleTraitView willpowerView = new SimpleTraitView(guiConfiguration, labelText, value, maxValue);
+    SimpleTraitView willpowerView = SimpleTraitView.RightAlignedWithoutUpperBounds(guiConfiguration, labelText, value,
+            maxValue);
     willpowerView.addComponents(willpowerPanel);
     return willpowerView;
   }

@@ -24,7 +24,8 @@ public class EssencePanelView implements IView {
   }
 
   public IIntValueView addEssenceView(String labelText, int value, int maxValue, Trait trait) {
-    SimpleTraitView essenceView = new SimpleTraitView(guiConfiguration, labelText, value, maxValue, trait);
+    SimpleTraitView essenceView = SimpleTraitView.RightAlignedWithUpperBoundsForTrait(guiConfiguration, labelText,
+            value, maxValue, trait);
     essenceView.addComponents(panel);
     return essenceView;
   }
