@@ -18,7 +18,7 @@ public class GroupedColumnPanel {
     for (int i = 0; i < columns.length; i++) {
       columns[i] = new JPanel(new MigLayout(LayoutUtils.withoutInsets().wrapAfter(3)));
     }
-    addOverallView(parent);
+    addColumnsToContainer(parent);
   }
 
   public void startNewGroup(String groupLabel) {
@@ -39,7 +39,7 @@ public class GroupedColumnPanel {
     return columns[columnIndex];
   }
 
-  private void addOverallView(JComponent container) {
+  private void addColumnsToContainer(JComponent container) {
     container.setLayout(new MigLayout(LayoutUtils.withoutInsets().wrapAfter(columns.length).gridGapX("15")));
     for (JPanel column : columns) {
       container.add(column, new CC().alignY("top"));
