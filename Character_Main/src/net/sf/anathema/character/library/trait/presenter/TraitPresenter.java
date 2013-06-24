@@ -2,7 +2,6 @@ package net.sf.anathema.character.library.trait.presenter;
 
 import net.sf.anathema.character.library.trait.Trait;
 import net.sf.anathema.framework.value.IIntValueView;
-import net.sf.anathema.lib.control.IChangeListener;
 import net.sf.anathema.lib.control.IIntValueChangedListener;
 import net.sf.anathema.lib.gui.Presenter;
 
@@ -27,12 +26,6 @@ public class TraitPresenter implements Presenter {
       @Override
       public void valueChanged(int newValue) {
         view.setValue(newValue);
-      }
-    });
-    trait.addRangeListener(new IChangeListener() {
-      @Override
-      public void changeOccurred() {
-        view.setMaximum(trait.getMaximalValue());
       }
     });
   }

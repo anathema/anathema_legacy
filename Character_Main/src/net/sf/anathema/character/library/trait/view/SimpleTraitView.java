@@ -60,10 +60,4 @@ public class SimpleTraitView implements ITraitView {
   public void removeIntValueChangedListener(IIntValueChangedListener listener) {
     valueDisplay.removeIntValueChangedListener(listener);
   }
-
-  @Override
-  public void setMaximum(int maximalValue) {
-    valueDisplay.setMaximum(maximalValue);
-  }
-
 }

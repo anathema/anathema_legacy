@@ -196,9 +196,4 @@ public class IntValueDisplay implements IIntValueDisplay {
   private void fireValueChangedEvent(int value) {
     valueControl.announce().valueChanged(value);
   }
-
-  @Override
-  public void setMaximum(int maximalValue) {
-    initializeLabels(maximalValue);
-  }
 }

@@ -2,7 +2,6 @@ package net.sf.anathema.character.library.trait;
 
 import net.sf.anathema.character.generic.traits.GenericTrait;
 import net.sf.anathema.character.library.ITraitFavorization;
-import net.sf.anathema.lib.control.IChangeListener;
 import net.sf.anathema.lib.control.IIntValueChangedListener;
 
 public interface Trait extends GenericTrait {
@@ -62,6 +61,4 @@ public interface Trait extends GenericTrait {
   void resetCurrentValue();
 
   void setModifiedCreationRange(int newInitialValue, int newUpperValue);
-
-  void addRangeListener(IChangeListener listener);
 }

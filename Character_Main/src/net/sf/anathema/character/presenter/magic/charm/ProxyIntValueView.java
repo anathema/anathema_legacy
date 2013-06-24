@@ -58,18 +58,6 @@ public class ProxyIntValueView implements IIntValueView {
     valueListeners.removeListener(listener);
   }
 
-  @Override
-  public void setMaximum(int maximalValue) {
-    if (actualView != null) {
-      actualView.setMaximum(maximalValue);
-      return;
-    }
-    this.maxValue = maximalValue;
-    if (value > maxValue) {
-      setValue(maximalValue);
-    }
-  }
-
   public int getMaxValue() {
     return maxValue;
   }

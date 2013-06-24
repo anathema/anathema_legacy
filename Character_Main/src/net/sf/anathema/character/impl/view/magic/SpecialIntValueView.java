@@ -34,11 +34,6 @@ public class SpecialIntValueView implements IIntValueView, SpecialContent {
   }
 
   @Override
-  public void setMaximum(int maximalValue) {
-    view.setMaximum(maximalValue);
-  }
-
-  @Override
   public void addTo(JComponent menu) {
     JPanel container = new JPanel(new MigLayout(fillWithoutInsets().wrapAfter(2)));
     view.addComponents(container);

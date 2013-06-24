@@ -16,14 +16,12 @@ import net.sf.anathema.character.main.model.traits.TraitModelFetcher;
 import net.sf.anathema.hero.change.ChangeFlavor;
 import net.sf.anathema.hero.change.FlavoredChangeListener;
 import net.sf.anathema.hero.model.Hero;
-import net.sf.anathema.lib.control.IChangeListener;
 import net.sf.anathema.lib.control.IIntValueChangedListener;
 import net.sf.anathema.lib.data.Range;
 import org.jmock.example.announcer.Announcer;
 
 public class DefaultTrait implements Trait {
 
-  private final Announcer<IChangeListener> rangeControl = Announcer.to(IChangeListener.class);
   private int capModifier = 0;
   private int creationValue;
   private int experiencedValue = ITraitRules.UNEXPERIENCED;
@@ -97,11 +95,6 @@ public class DefaultTrait implements Trait {
     if (getExperiencedValue() != ITraitRules.UNEXPERIENCED) {
       setExperiencedValue(Math.max(getCreationValue(), getExperiencedValue()));
     }
-  }
-
-  @Override
-  public final void addRangeListener(IChangeListener listener) {
-    rangeControl.addListener(listener);
   }
 
   @Override
