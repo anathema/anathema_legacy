@@ -7,12 +7,10 @@ import net.sf.anathema.framework.item.IItemType;
 import net.sf.anathema.framework.itemdata.model.ItemData;
 import net.sf.anathema.framework.presenter.itemmanagement.PrintNameAdjuster;
 import net.sf.anathema.framework.repository.ChangeManagement;
-import net.sf.anathema.framework.repository.IItemListener;
 import net.sf.anathema.framework.repository.IItemRepositoryLocation;
 import net.sf.anathema.framework.repository.Item;
 import net.sf.anathema.framework.repository.RepositoryLocation;
 import net.sf.anathema.lib.util.Identifier;
-import org.jmock.example.announcer.Announcer;
 
 public class DataItem implements Item {
 
@@ -20,8 +18,7 @@ public class DataItem implements Item {
   private final ItemData itemData;
   private final IItemType itemType;
   private final RepositoryLocation repositoryLocation;
-  private final Identifier identificate;
-  private final Announcer<IItemListener> repositoryItemListeners = Announcer.to(IItemListener.class);
+  private final Identifier identifier;
   private String printName;
 
   public DataItem(IItemType type, ItemData itemData) {
@@ -29,7 +26,7 @@ public class DataItem implements Item {
     Preconditions.checkNotNull(itemData);
     this.itemType = type;
     this.repositoryLocation = new RepositoryLocation(this);
-    this.identificate = new Identifier() {
+    this.identifier = new Identifier() {
       @Override
       public String getId() {
         return repositoryLocation.getId();
@@ -45,20 +42,6 @@ public class DataItem implements Item {
   }
 
   @Override
-  public void addItemListener(IItemListener listener) {
-    repositoryItemListeners.addListener(listener);
-  }
-
-  @Override
-  public void removeItemListener(IItemListener listener) {
-    repositoryItemListeners.removeListener(listener);
-  }
-
-  private void firePrintNameChanged(String name) {
-    repositoryItemListeners.announce().printNameChanged(name);
-  }
-
-  @Override
   public final IItemType getItemType() {
     return itemType;
   }
@@ -70,7 +53,7 @@ public class DataItem implements Item {
 
   @Override
   public final synchronized String getId() {
-    return identificate.getId();
+    return identifier.getId();
   }
 
   @Override
@@ -87,7 +70,6 @@ public class DataItem implements Item {
       return;
     }
     this.printName = printName;
-    firePrintNameChanged(getDisplayName());
   }
 
   @Override

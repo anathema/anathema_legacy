@@ -19,10 +19,5 @@ public interface Item {
 
   void setPrintName(String printName);
 
-  void addItemListener(IItemListener listener);
-
-  @SuppressWarnings("UnusedDeclaration")
-  void removeItemListener(IItemListener listener);
-  
   String getId();
 }
