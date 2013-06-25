@@ -1,4 +1,4 @@
-package net.sf.anathema.character.equipment.impl.character.view;
+package net.sf.anathema.view.interaction;
 
 import net.sf.anathema.framework.view.menu.AddToSwingComponent;
 
