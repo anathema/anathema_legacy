@@ -7,7 +7,7 @@ import net.sf.anathema.character.model.charm.ICombo;
 import net.sf.anathema.lib.control.ChangeListener;
 import net.sf.anathema.lib.exception.UnreachableCodeReachedException;
 import net.sf.anathema.lib.workflow.textualdescription.ITextualDescription;
-import net.sf.anathema.lib.workflow.textualdescription.model.SimpleTextualDescription;
+import net.sf.anathema.lib.workflow.textualdescription.SimpleTextualDescription;
 import org.jmock.example.announcer.Announcer;
 
 import java.util.ArrayList;

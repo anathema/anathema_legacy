@@ -10,7 +10,7 @@ import net.sf.anathema.character.library.trait.favorable.FriendlyIncrementChecke
 import net.sf.anathema.hero.model.Hero;
 import net.sf.anathema.lib.control.ChangeListener;
 import net.sf.anathema.lib.workflow.textualdescription.ITextualDescription;
-import net.sf.anathema.lib.workflow.textualdescription.model.SimpleTextualDescription;
+import net.sf.anathema.lib.workflow.textualdescription.SimpleTextualDescription;
 import org.jmock.example.announcer.Announcer;
 
 import static net.sf.anathema.character.generic.impl.traits.SimpleTraitTemplate.createStaticLimitedTemplate;

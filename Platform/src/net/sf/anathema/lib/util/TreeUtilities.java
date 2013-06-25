@@ -8,11 +8,6 @@ import java.util.List;
 
 public class TreeUtilities {
 
-  public static DefaultMutableTreeNode getSelectedHierachyNode(JTree tree) {
-    TreePath selectionPath = tree.getSelectionPath();
-    return getNode(selectionPath);
-  }
-
   public static DefaultMutableTreeNode[] getSelectedHierachyNodes(JTree tree) {
     List<DefaultMutableTreeNode> list = new ArrayList<>();
     TreePath[] selectionPaths = tree.getSelectionPaths();

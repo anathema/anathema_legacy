@@ -1,7 +1,7 @@
 package net.sf.anathema.framework.itemdata.model;
 
 import net.sf.anathema.lib.workflow.textualdescription.ITextualDescription;
-import net.sf.anathema.lib.workflow.textualdescription.model.SimpleTextualDescription;
+import net.sf.anathema.lib.workflow.textualdescription.SimpleTextualDescription;
 
 public class ItemDescription implements IItemDescription {
 

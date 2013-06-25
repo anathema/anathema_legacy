@@ -9,7 +9,7 @@ import net.sf.anathema.hero.model.InitializationContext;
 import net.sf.anathema.lib.control.ObjectValueListener;
 import net.sf.anathema.lib.util.Identifier;
 import net.sf.anathema.lib.workflow.textualdescription.ITextualDescription;
-import net.sf.anathema.lib.workflow.textualdescription.model.SimpleTextualDescription;
+import net.sf.anathema.lib.workflow.textualdescription.SimpleTextualDescription;
 
 public class HeroDescriptionImpl implements HeroDescription, HeroModel {
 

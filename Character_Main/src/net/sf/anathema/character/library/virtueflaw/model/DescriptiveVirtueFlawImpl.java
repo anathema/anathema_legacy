@@ -2,7 +2,7 @@ package net.sf.anathema.character.library.virtueflaw.model;
 
 import net.sf.anathema.hero.model.Hero;
 import net.sf.anathema.lib.workflow.textualdescription.ITextualDescription;
-import net.sf.anathema.lib.workflow.textualdescription.model.SimpleTextualDescription;
+import net.sf.anathema.lib.workflow.textualdescription.SimpleTextualDescription;
 
 public class DescriptiveVirtueFlawImpl extends VirtueFlawImpl implements DescriptiveVirtueFlaw {
 

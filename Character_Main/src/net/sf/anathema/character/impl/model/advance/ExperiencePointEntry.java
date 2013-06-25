@@ -3,7 +3,7 @@ package net.sf.anathema.character.impl.model.advance;
 import net.sf.anathema.character.model.advance.IExperiencePointEntry;
 import net.sf.anathema.lib.control.ObjectValueListener;
 import net.sf.anathema.lib.workflow.textualdescription.ITextualDescription;
-import net.sf.anathema.lib.workflow.textualdescription.model.SimpleTextualDescription;
+import net.sf.anathema.lib.workflow.textualdescription.SimpleTextualDescription;
 import org.jmock.example.announcer.Announcer;
 
 public class ExperiencePointEntry implements IExperiencePointEntry {
