@@ -12,7 +12,6 @@ import net.sf.anathema.character.equipment.template.IEquipmentTemplate;
 import net.sf.anathema.character.generic.equipment.weapon.IEquipmentStats;
 import net.sf.anathema.framework.itemdata.model.IItemDescription;
 import net.sf.anathema.framework.itemdata.model.ItemDescription;
-import net.sf.anathema.framework.styledtext.model.ITextPart;
 import net.sf.anathema.lib.control.ChangeListener;
 import org.jmock.example.announcer.Announcer;
 
@@ -74,7 +73,7 @@ public class EquipmentTemplateEditModel implements IEquipmentTemplateEditModel {
     editTemplateId = null;
     editedTemplate = null;
     getDescription().getName().setText(null);
-    getDescription().getContent().setText(new ITextPart[0]);
+    getDescription().getContent().setText(null);
     setMaterialComposition(MaterialComposition.None);
     setCost(new ItemCost("Resources", 0));
     statses.clear();

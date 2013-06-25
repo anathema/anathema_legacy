@@ -6,10 +6,11 @@ import net.sf.anathema.lib.control.ObjectValueListener;
 import net.sf.anathema.lib.workflow.textualdescription.ITextualDescription;
 import org.jmock.example.announcer.Announcer;
 
-public class SimpleTextualDescription extends AbstractTextualDescription implements ITextualDescription {
+public class SimpleTextualDescription implements ITextualDescription {
 
   private final Announcer<ObjectValueListener> control = Announcer.to(ObjectValueListener.class);
   private String text;
+  private boolean dirty = true;
 
   public SimpleTextualDescription() {
     // Nothing to do
@@ -33,7 +34,6 @@ public class SimpleTextualDescription extends AbstractTextualDescription impleme
     setDirty(true);
   }
 
-  @Override
   protected void fireChangedEvent() {
     control.announce().valueChanged(text);
   }
@@ -51,5 +51,16 @@ public class SimpleTextualDescription extends AbstractTextualDescription impleme
   @Override
   public boolean isEmpty() {
     return Strings.isNullOrEmpty(getText());
+  }
+
+  @Override
+  public boolean isDirty() {
+    return dirty;
+  }
+
+  @Override
+  public void setDirty(boolean isDirty) {
+    this.dirty = isDirty;
+    fireChangedEvent();
   }
 }
