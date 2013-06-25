@@ -4,7 +4,6 @@ import net.sf.anathema.character.generic.traits.TraitType;
 import net.sf.anathema.character.library.ITraitFavorization;
 import net.sf.anathema.character.library.trait.Trait;
 import net.sf.anathema.character.library.trait.favorable.NullTraitFavorization;
-import net.sf.anathema.lib.control.IChangeListener;
 import net.sf.anathema.lib.control.IIntValueChangedListener;
 
 public class DummyTrait implements Trait {
@@ -49,11 +48,6 @@ public class DummyTrait implements Trait {
   @Override
   public boolean isCasteOrFavored() {
     return false;
-  }
-
-  @Override
-  public void addRangeListener(IChangeListener listener) {
-    //not yet implemented
   }
 
   @Override
