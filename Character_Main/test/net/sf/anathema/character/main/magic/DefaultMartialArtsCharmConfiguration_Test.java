@@ -8,7 +8,7 @@ import net.sf.anathema.character.main.testing.dummy.magic.DummyCharmsModel;
 import net.sf.anathema.character.model.advance.IExperiencePointConfiguration;
 import net.sf.anathema.character.model.charm.ILearningCharmGroup;
 import net.sf.anathema.hero.magic.MagicCollection;
-import net.sf.anathema.lib.control.IChangeListener;
+import net.sf.anathema.lib.control.ChangeListener;
 import net.sf.anathema.lib.util.Identifier;
 import org.junit.Assert;
 import org.junit.Test;
@@ -43,7 +43,7 @@ public class DefaultMartialArtsCharmConfiguration_Test {
       }
 
       @Override
-      public void addStateChangeListener(IChangeListener listener) {
+      public void addStateChangeListener(ChangeListener listener) {
         // nothing to do
       }
     };

@@ -10,7 +10,7 @@ import net.sf.anathema.character.main.model.concept.HeroConceptFetcher;
 import net.sf.anathema.character.model.ITypedDescription;
 import net.sf.anathema.character.model.charm.ILearningCharmGroup;
 import net.sf.anathema.hero.model.Hero;
-import net.sf.anathema.lib.control.IChangeListener;
+import net.sf.anathema.lib.control.ChangeListener;
 
 public class CharacterCharmModel {
   private Hero hero;
@@ -26,7 +26,7 @@ public class CharacterCharmModel {
     return charmTemplate.isAllowedAlienCharms(getCaste().getType());
   }
 
-  public void addCasteChangeListener(IChangeListener listener) {
+  public void addCasteChangeListener(ChangeListener listener) {
     ITypedDescription<CasteType> caste = getCaste();
     caste.addChangeListener(listener);
   }

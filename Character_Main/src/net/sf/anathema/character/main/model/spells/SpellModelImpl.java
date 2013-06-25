@@ -18,7 +18,7 @@ import net.sf.anathema.hero.change.ChangeFlavor;
 import net.sf.anathema.hero.change.FlavoredChangeListener;
 import net.sf.anathema.hero.model.Hero;
 import net.sf.anathema.hero.model.InitializationContext;
-import net.sf.anathema.lib.control.IChangeListener;
+import net.sf.anathema.lib.control.ChangeListener;
 import net.sf.anathema.lib.util.Identifier;
 import org.jmock.example.announcer.Announcer;
 
@@ -32,7 +32,7 @@ public class SpellModelImpl implements SpellModel {
   private final ProxySpellLearnStrategy strategy = new ProxySpellLearnStrategy(new CreationSpellLearnStrategy());
   private final List<ISpell> creationLearnedList = new ArrayList<>();
   private final List<ISpell> experiencedLearnedList = new ArrayList<>();
-  private final Announcer<IChangeListener> changeControl = Announcer.to(IChangeListener.class);
+  private final Announcer<ChangeListener> changeControl = Announcer.to(ChangeListener.class);
   private final Announcer<IMagicLearnListener> magicLearnControl = Announcer.to(IMagicLearnListener.class);
   private final Map<CircleType, List<ISpell>> spellsByCircle = new HashMap<>();
   private final ISpellMapper spellMapper = new SpellMapper();
@@ -160,7 +160,7 @@ public class SpellModelImpl implements SpellModel {
   }
 
   @Override
-  public void addChangeListener(IChangeListener listener) {
+  public void addChangeListener(ChangeListener listener) {
     changeControl.addListener(listener);
   }
 

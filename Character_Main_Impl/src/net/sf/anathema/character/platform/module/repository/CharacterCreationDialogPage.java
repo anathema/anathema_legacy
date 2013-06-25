@@ -3,7 +3,7 @@ package net.sf.anathema.character.platform.module.repository;
 import net.sf.anathema.character.generic.type.ICharacterType;
 import net.sf.anathema.character.platform.module.IToggleButtonPanel;
 import net.sf.anathema.character.view.repository.ITemplateTypeAggregation;
-import net.sf.anathema.lib.control.IChangeListener;
+import net.sf.anathema.lib.control.ChangeListener;
 import net.sf.anathema.lib.control.ObjectValueListener;
 import net.sf.anathema.lib.gui.action.SmartAction;
 import net.sf.anathema.lib.gui.dialog.userdialog.page.AbstractDialogPage;
@@ -29,7 +29,7 @@ public class CharacterCreationDialogPage extends AbstractDialogPage {
   }
 
   @Override
-  public void setInputValidListener(IChangeListener inputValidListener) {
+  public void setInputValidListener(ChangeListener inputValidListener) {
     model.addListener(inputValidListener);
   }
 
@@ -92,7 +92,7 @@ public class CharacterCreationDialogPage extends AbstractDialogPage {
       }
     });
     list.setCellRenderer(properties.getTemplateUI());
-    model.addListener(new IChangeListener() {
+    model.addListener(new ChangeListener() {
       @Override
       public void changeOccurred() {
         refreshList(list);

@@ -4,7 +4,7 @@ import net.sf.anathema.character.generic.framework.ITraitReference;
 import net.sf.anathema.character.generic.traits.TraitType;
 import net.sf.anathema.character.library.trait.subtrait.ISubTraitContainer;
 import net.sf.anathema.hero.model.HeroModel;
-import net.sf.anathema.lib.control.IChangeListener;
+import net.sf.anathema.lib.control.ChangeListener;
 import net.sf.anathema.lib.util.Identifier;
 import net.sf.anathema.lib.util.SimpleIdentifier;
 
@@ -32,7 +32,7 @@ public interface SpecialtiesModel extends HeroModel {
 
   boolean isExperienced();
 
-  void addSelectionChangeListener(IChangeListener listener);
+  void addSelectionChangeListener(ChangeListener listener);
 
   void addTraitListChangeListener(ITraitReferencesChangeListener listener);
 }

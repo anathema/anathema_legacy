@@ -7,7 +7,7 @@ import net.sf.anathema.character.presenter.advance.ExperienceConfigurationPresen
 import net.sf.anathema.character.view.SectionView;
 import net.sf.anathema.character.view.advance.ExperienceView;
 import net.sf.anathema.hero.model.Hero;
-import net.sf.anathema.lib.control.IChangeListener;
+import net.sf.anathema.lib.control.ChangeListener;
 import net.sf.anathema.lib.resources.Resources;
 
 public class ExperiencePointPresenter {
@@ -23,7 +23,7 @@ public class ExperiencePointPresenter {
   public void initPresentation(final SectionView section) {
     final ExperienceModel experienceModel = ExperienceModelFetcher.fetch(hero);
     initExperiencePointPresentation(experienceModel.isExperienced(), section);
-    experienceModel.addStateChangeListener(new IChangeListener() {
+    experienceModel.addStateChangeListener(new ChangeListener() {
       @Override
       public void changeOccurred() {
         initExperiencePointPresentation(experienceModel.isExperienced(), section);

@@ -18,7 +18,7 @@ import net.sf.anathema.character.generic.equipment.weapon.IArmourStats;
 import net.sf.anathema.character.generic.equipment.weapon.IEquipmentStats;
 import net.sf.anathema.character.generic.equipment.weapon.IWeaponStats;
 import net.sf.anathema.character.generic.util.IProxy;
-import net.sf.anathema.lib.control.IChangeListener;
+import net.sf.anathema.lib.control.ChangeListener;
 import org.jmock.example.announcer.Announcer;
 
 import java.util.ArrayList;
@@ -33,7 +33,7 @@ import static net.sf.anathema.lib.lang.ArrayUtilities.transform;
 public class EquipmentItem implements IEquipmentItem {
 
   private final Set<IEquipmentStats> printedStats = new HashSet<>();
-  private final Announcer<IChangeListener> changeControl = Announcer.to(IChangeListener.class);
+  private final Announcer<ChangeListener> changeControl = Announcer.to(ChangeListener.class);
   private final IEquipmentTemplate template;
   private final MagicalMaterial material;
   private final ModifierFactory modifiers;
@@ -186,12 +186,12 @@ public class EquipmentItem implements IEquipmentItem {
   }
 
   @Override
-  public void addChangeListener(IChangeListener listener) {
+  public void addChangeListener(ChangeListener listener) {
     changeControl.addListener(listener);
   }
 
   @Override
-  public void removeChangeListener(IChangeListener listener) {
+  public void removeChangeListener(ChangeListener listener) {
     changeControl.removeListener(listener);
   }
 

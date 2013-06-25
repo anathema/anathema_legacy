@@ -46,7 +46,7 @@ import net.sf.anathema.hero.magic.MagicCollection;
 import net.sf.anathema.hero.magic.MagicCollectionImpl;
 import net.sf.anathema.hero.model.Hero;
 import net.sf.anathema.hero.model.InitializationContext;
-import net.sf.anathema.lib.control.IChangeListener;
+import net.sf.anathema.lib.control.ChangeListener;
 import net.sf.anathema.lib.util.Identifier;
 import org.apache.commons.lang3.ArrayUtils;
 import org.jmock.example.announcer.Announcer;
@@ -75,7 +75,7 @@ public class CharmsModelImpl implements CharmsModel {
   };
   private ILearningCharmGroup[] martialArtsGroups;
   private final Map<Identifier, ILearningCharmGroup[]> nonMartialArtsGroupsByType = new HashMap<>();
-  private final Announcer<IChangeListener> control = Announcer.to(IChangeListener.class);
+  private final Announcer<ChangeListener> control = Announcer.to(ChangeListener.class);
   private ICharmProvider provider;
   private ExperienceModel experience;
   private TraitModel traits;
@@ -121,7 +121,7 @@ public class CharmsModelImpl implements CharmsModel {
         }
       });
     }
-    this.experience.addStateChangeListener(new IChangeListener() {
+    this.experience.addStateChangeListener(new ChangeListener() {
       @Override
       public void changeOccurred() {
         if (experience.isExperienced()) {
@@ -391,7 +391,7 @@ public class CharmsModelImpl implements CharmsModel {
   }
 
   @Override
-  public void addLearnableListener(IChangeListener listener) {
+  public void addLearnableListener(ChangeListener listener) {
     control.addListener(listener);
   }
 

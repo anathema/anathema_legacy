@@ -15,7 +15,7 @@ import net.sf.anathema.framework.presenter.resources.BasicUi;
 import net.sf.anathema.hero.equipment.EquipmentModel;
 import net.sf.anathema.interaction.Command;
 import net.sf.anathema.interaction.Tool;
-import net.sf.anathema.lib.control.IChangeListener;
+import net.sf.anathema.lib.control.ChangeListener;
 import net.sf.anathema.lib.control.ICollectionListener;
 import net.sf.anathema.lib.control.ObjectValueListener;
 import net.sf.anathema.lib.gui.AgnosticUIConfiguration;
@@ -40,7 +40,7 @@ public class EquipmentPresenter implements Presenter {
     this.model = model;
     this.view = view;
 
-    model.getHeroEvaluator().addCharacterSpecialtyListChangeListener(new IChangeListener() {
+    model.getHeroEvaluator().addCharacterSpecialtyListChangeListener(new ChangeListener() {
       @Override
       public void changeOccurred() {
         for (IEquipmentItem item : model.getNaturalWeapons()) {

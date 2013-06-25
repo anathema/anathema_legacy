@@ -4,7 +4,7 @@ import net.sf.anathema.character.generic.magic.ICharm;
 import net.sf.anathema.character.model.charm.ICombo;
 import net.sf.anathema.character.model.charm.IComboConfigurationListener;
 import net.sf.anathema.hero.model.HeroModel;
-import net.sf.anathema.lib.control.IChangeListener;
+import net.sf.anathema.lib.control.ChangeListener;
 import net.sf.anathema.lib.util.Identifier;
 import net.sf.anathema.lib.util.SimpleIdentifier;
 
@@ -14,7 +14,7 @@ public interface CombosModel extends HeroModel {
 
   void addCharmToCombo(ICharm charm, boolean experienced);
 
-  void addComboModelListener(IChangeListener listener);
+  void addComboModelListener(ChangeListener listener);
 
   void removeCharmsFromCombo(ICharm[] charms);
 

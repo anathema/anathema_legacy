@@ -8,7 +8,7 @@ import net.sf.anathema.framework.repository.RepositoryException;
 import net.sf.anathema.framework.repository.access.IRepositoryFileAccess;
 import net.sf.anathema.framework.repository.access.IRepositoryWriteAccess;
 import net.sf.anathema.framework.view.PrintNameFile;
-import net.sf.anathema.lib.control.IChangeListener;
+import net.sf.anathema.lib.control.ChangeListener;
 import org.jmock.example.announcer.Announcer;
 
 import java.util.ArrayList;
@@ -19,7 +19,7 @@ public class RepositoryTreeModel implements IRepositoryTreeModel {
 
   private final IItemType[] integratedItemTypes;
   private final Announcer<IRepositoryTreeModelListener> control = Announcer.to(IRepositoryTreeModelListener.class);
-  private final Announcer<IChangeListener> changeControl = Announcer.to(IChangeListener.class);
+  private final Announcer<ChangeListener> changeControl = Announcer.to(ChangeListener.class);
   private final Repository repository;
   private final IItemTypeRegistry itemTypes;
   private Object[] currentlySelectedUserObjects;
@@ -86,7 +86,7 @@ public class RepositoryTreeModel implements IRepositoryTreeModel {
   }
 
   @Override
-  public void addTreeSelectionChangeListener(IChangeListener changeListener) {
+  public void addTreeSelectionChangeListener(ChangeListener changeListener) {
     changeControl.addListener(changeListener);
   }
 

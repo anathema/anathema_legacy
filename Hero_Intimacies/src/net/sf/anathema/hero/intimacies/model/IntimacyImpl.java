@@ -9,9 +9,9 @@ import net.sf.anathema.character.library.trait.IValueChangeChecker;
 import net.sf.anathema.character.library.trait.Trait;
 import net.sf.anathema.character.library.trait.rules.TraitRules;
 import net.sf.anathema.hero.model.Hero;
+import net.sf.anathema.lib.control.ChangeListener;
 import net.sf.anathema.lib.control.GlobalChangeAdapter;
 import net.sf.anathema.lib.control.IBooleanValueChangedListener;
-import net.sf.anathema.lib.control.IChangeListener;
 import org.jmock.example.announcer.Announcer;
 
 import static net.sf.anathema.character.generic.impl.traits.SimpleTraitTemplate.createVirtueLimitedTemplate;
@@ -76,7 +76,7 @@ public class IntimacyImpl implements Intimacy {
     return complete;
   }
 
-  public void addChangeListener(IChangeListener listener) {
+  public void addChangeListener(ChangeListener listener) {
     GlobalChangeAdapter< ? > adapter = new GlobalChangeAdapter<Object>(listener);
     control.addListener(adapter);
     trait.addCurrentValueListener(adapter);

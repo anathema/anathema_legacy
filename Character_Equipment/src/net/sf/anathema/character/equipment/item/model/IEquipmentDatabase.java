@@ -1,11 +1,11 @@
 package net.sf.anathema.character.equipment.item.model;
 
 import net.sf.anathema.character.equipment.template.IEquipmentTemplate;
-import net.sf.anathema.lib.control.IChangeListener;
+import net.sf.anathema.lib.control.ChangeListener;
 
 public interface IEquipmentDatabase extends IEquipmentTemplateProvider {
 
-  void addAvailableTemplateChangeListener(IChangeListener listener);
+  void addAvailableTemplateChangeListener(ChangeListener listener);
 
   void deleteTemplate(String editTemplateId);
 

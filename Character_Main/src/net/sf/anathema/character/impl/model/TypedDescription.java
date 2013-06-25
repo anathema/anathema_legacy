@@ -3,12 +3,12 @@ package net.sf.anathema.character.impl.model;
 import com.google.common.base.Preconditions;
 import net.sf.anathema.character.generic.caste.ITypedDescriptionType;
 import net.sf.anathema.character.model.ITypedDescription;
-import net.sf.anathema.lib.control.IChangeListener;
+import net.sf.anathema.lib.control.ChangeListener;
 import org.jmock.example.announcer.Announcer;
 
 public class TypedDescription<T extends ITypedDescriptionType> implements ITypedDescription<T> {
 
-  private final Announcer<IChangeListener> control = Announcer.to(IChangeListener.class);
+  private final Announcer<ChangeListener> control = Announcer.to(ChangeListener.class);
   private T type;
 
   public TypedDescription(T type) {
@@ -31,7 +31,7 @@ public class TypedDescription<T extends ITypedDescriptionType> implements ITyped
   }
 
   @Override
-  public final void addChangeListener(IChangeListener listener) {
+  public final void addChangeListener(ChangeListener listener) {
     control.addListener(listener);
   }
 

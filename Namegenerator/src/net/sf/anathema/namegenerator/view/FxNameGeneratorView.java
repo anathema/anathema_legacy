@@ -3,7 +3,6 @@ package net.sf.anathema.namegenerator.view;
 import com.google.common.collect.BiMap;
 import com.google.common.collect.HashBiMap;
 import javafx.application.Platform;
-import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
 import javafx.event.EventHandler;
 import javafx.scene.control.Button;
@@ -14,7 +13,7 @@ import javafx.scene.control.ToggleGroup;
 import net.miginfocom.layout.CC;
 import net.miginfocom.layout.LC;
 import net.sf.anathema.interaction.Command;
-import net.sf.anathema.lib.control.IChangeListener;
+import net.sf.anathema.lib.control.ChangeListener;
 import net.sf.anathema.namegenerator.presenter.view.NameGeneratorView;
 import net.sf.anathema.platform.fx.FxThreading;
 import net.sf.anathema.platform.fx.PerspectivePane;
@@ -30,7 +29,7 @@ public class FxNameGeneratorView implements NameGeneratorView {
   private final ToggleGroup nameGeneratorTypeGroup = new ToggleGroup();
   private final TextArea resultView = new TextArea();
   private final BiMap<RadioButton, Object> generatorsByButton = HashBiMap.create();
-  private final Announcer<IChangeListener> generatorListeners = Announcer.to(IChangeListener.class);
+  private final Announcer<ChangeListener> generatorListeners = Announcer.to(ChangeListener.class);
 
   public FxNameGeneratorView() {
     FxThreading.assertNotOnFxThread();
@@ -42,7 +41,7 @@ public class FxNameGeneratorView implements NameGeneratorView {
         resultView.setPrefRowCount(5);
         pane.setContentComponent(resultView);
         resultView.setEditable(false);
-        nameGeneratorTypeGroup.selectedToggleProperty().addListener(new ChangeListener<Toggle>() {
+        nameGeneratorTypeGroup.selectedToggleProperty().addListener(new javafx.beans.value.ChangeListener<Toggle>() {
           @Override
           public void changed(ObservableValue<? extends Toggle> observableValue, Toggle toggle, Toggle toggle2) {
             if (toggle2 != null) {
@@ -89,7 +88,7 @@ public class FxNameGeneratorView implements NameGeneratorView {
   }
 
   @Override
-  public void addGeneratorTypeChangeListener(IChangeListener listener) {
+  public void addGeneratorTypeChangeListener(ChangeListener listener) {
     generatorListeners.addListener(listener);
   }
 

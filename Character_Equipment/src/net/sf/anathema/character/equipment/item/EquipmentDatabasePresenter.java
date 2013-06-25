@@ -8,7 +8,7 @@ import net.sf.anathema.character.equipment.item.model.IEquipmentDatabaseManageme
 import net.sf.anathema.character.equipment.item.view.CostSelectionView;
 import net.sf.anathema.character.equipment.item.view.EquipmentDatabaseView;
 import net.sf.anathema.character.equipment.item.view.EquipmentDescriptionPanel;
-import net.sf.anathema.lib.control.IChangeListener;
+import net.sf.anathema.lib.control.ChangeListener;
 import net.sf.anathema.lib.control.ObjectValueListener;
 import net.sf.anathema.lib.gui.Presenter;
 import net.sf.anathema.lib.gui.selection.IObjectSelectionView;
@@ -76,7 +76,7 @@ public class EquipmentDatabasePresenter implements Presenter {
         model.getTemplateEditModel().setMaterialComposition(newValue);
       }
     });
-    model.getTemplateEditModel().addCompositionChangeListener(new IChangeListener() {
+    model.getTemplateEditModel().addCompositionChangeListener(new ChangeListener() {
       @Override
       public void changeOccurred() {
         MaterialComposition materialComposition = model.getTemplateEditModel().getMaterialComposition();
@@ -90,7 +90,7 @@ public class EquipmentDatabasePresenter implements Presenter {
         model.getTemplateEditModel().setMagicalMaterial(newValue);
       }
     });
-    model.getTemplateEditModel().addMagicalMaterialChangeListener(new IChangeListener() {
+    model.getTemplateEditModel().addMagicalMaterialChangeListener(new ChangeListener() {
       @Override
       public void changeOccurred() {
         materialView.setSelectedObject(model.getTemplateEditModel().getMagicalMaterial());
@@ -108,7 +108,7 @@ public class EquipmentDatabasePresenter implements Presenter {
         }
       }
     });
-    model.getTemplateEditModel().addCostChangeListener(new IChangeListener() {
+    model.getTemplateEditModel().addCostChangeListener(new ChangeListener() {
       @Override
       public void changeOccurred() {
         costView.setValue(model.getTemplateEditModel().getCost());

@@ -8,7 +8,7 @@ import net.sf.anathema.framework.view.SwingApplicationFrame;
 import net.sf.anathema.interaction.Command;
 import net.sf.anathema.interaction.Hotkey;
 import net.sf.anathema.interaction.Tool;
-import net.sf.anathema.lib.control.IChangeListener;
+import net.sf.anathema.lib.control.ChangeListener;
 import net.sf.anathema.lib.control.ObjectValueListener;
 import net.sf.anathema.lib.file.RelativePath;
 import net.sf.anathema.lib.resources.Resources;
@@ -52,7 +52,7 @@ public class SaveEquipmentTemplateAction {
   }
 
 
-  private class UpdateOnChange implements ObjectValueListener<String>, IChangeListener {
+  private class UpdateOnChange implements ObjectValueListener<String>, ChangeListener {
     private Tool saveTool;
 
     public UpdateOnChange(Tool saveTool) {

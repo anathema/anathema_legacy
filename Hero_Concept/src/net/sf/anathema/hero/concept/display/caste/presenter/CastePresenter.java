@@ -9,7 +9,7 @@ import net.sf.anathema.character.model.ITypedDescription;
 import net.sf.anathema.character.presenter.CasteSelectObjectUi;
 import net.sf.anathema.hero.concept.display.caste.view.CasteView;
 import net.sf.anathema.hero.model.Hero;
-import net.sf.anathema.lib.control.IChangeListener;
+import net.sf.anathema.lib.control.ChangeListener;
 import net.sf.anathema.lib.control.ObjectValueListener;
 import net.sf.anathema.lib.gui.selection.IObjectSelectionView;
 import net.sf.anathema.lib.gui.ui.ObjectUi;
@@ -46,7 +46,7 @@ public class CastePresenter {
         caste.setType(newValue);
       }
     });
-    caste.addChangeListener(new IChangeListener() {
+    caste.addChangeListener(new ChangeListener() {
       @Override
       public void changeOccurred() {
         casteView.setSelectedObject(caste.getType());
@@ -57,7 +57,7 @@ public class CastePresenter {
 
   private void initExperienceListening(final IObjectSelectionView<CasteType> casteView) {
     final ExperienceModel experienceModel = ExperienceModelFetcher.fetch(hero);
-    experienceModel.addStateChangeListener(new IChangeListener() {
+    experienceModel.addStateChangeListener(new ChangeListener() {
       @Override
       public void changeOccurred() {
         casteView.setEnabled(!experienceModel.isExperienced());

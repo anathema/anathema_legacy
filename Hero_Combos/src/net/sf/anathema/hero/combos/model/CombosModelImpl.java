@@ -14,7 +14,7 @@ import net.sf.anathema.character.model.charm.IComboConfigurationListener;
 import net.sf.anathema.hero.change.ChangeAnnouncer;
 import net.sf.anathema.hero.model.Hero;
 import net.sf.anathema.hero.model.InitializationContext;
-import net.sf.anathema.lib.control.IChangeListener;
+import net.sf.anathema.lib.control.ChangeListener;
 import net.sf.anathema.lib.util.Identifier;
 import org.jmock.example.announcer.Announcer;
 
@@ -85,7 +85,7 @@ public class CombosModelImpl implements CombosModel {
   }
 
   @Override
-  public void addComboModelListener(IChangeListener listener) {
+  public void addComboModelListener(ChangeListener listener) {
     editCombo.addComboModelListener(listener);
   }
 

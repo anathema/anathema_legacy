@@ -4,7 +4,7 @@ import net.sf.anathema.framework.item.IItemType;
 import net.sf.anathema.framework.repository.RepositoryException;
 import net.sf.anathema.framework.repository.access.IRepositoryWriteAccess;
 import net.sf.anathema.framework.view.PrintNameFile;
-import net.sf.anathema.lib.control.IChangeListener;
+import net.sf.anathema.lib.control.ChangeListener;
 
 import java.util.Collection;
 
@@ -25,7 +25,7 @@ public interface IRepositoryTreeModel extends ExportModel {
 
   void setSelectedObject(Object[] object);
 
-  void addTreeSelectionChangeListener(IChangeListener changeListener);
+  void addTreeSelectionChangeListener(ChangeListener changeListener);
 
   String createUniqueId(IItemType type, String id);
 

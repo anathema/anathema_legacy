@@ -12,8 +12,8 @@ import net.sf.anathema.framework.value.IIntValueView;
 import net.sf.anathema.hero.change.ChangeFlavor;
 import net.sf.anathema.hero.change.FlavoredChangeListener;
 import net.sf.anathema.hero.model.Hero;
+import net.sf.anathema.lib.control.ChangeListener;
 import net.sf.anathema.lib.control.IBooleanValueChangedListener;
-import net.sf.anathema.lib.control.IChangeListener;
 import net.sf.anathema.lib.control.ObjectValueListener;
 import net.sf.anathema.lib.gui.Presenter;
 import net.sf.anathema.lib.gui.selection.IObjectSelectionView;
@@ -67,7 +67,7 @@ public class VirtueFlawPresenter implements Presenter {
 
   protected void initRootPresentation(final VirtueFlaw virtueFlaw, String nameReference) {
     final IObjectSelectionView<TraitType> rootView = view.addVirtueFlawRootSelectionView(resources.getString(nameReference), new VirtueTypeConfiguration());
-    virtueFlaw.addRootChangeListener(new IChangeListener() {
+    virtueFlaw.addRootChangeListener(new ChangeListener() {
       @Override
       public void changeOccurred() {
         rootView.setSelectedObject(virtueFlaw.getRoot());

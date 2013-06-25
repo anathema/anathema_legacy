@@ -12,7 +12,7 @@ import net.sf.anathema.character.model.charm.ILearningCharmGroup;
 import net.sf.anathema.hero.change.ChangeAnnouncer;
 import net.sf.anathema.hero.model.Hero;
 import net.sf.anathema.hero.model.InitializationContext;
-import net.sf.anathema.lib.control.IChangeListener;
+import net.sf.anathema.lib.control.ChangeListener;
 import net.sf.anathema.lib.exception.NotYetImplementedException;
 import net.sf.anathema.lib.util.Identifier;
 
@@ -23,7 +23,7 @@ public class DummyCharmsModel implements CharmsModel {
   private ILearningCharmGroup[] groups;
 
   @Override
-  public void addLearnableListener(IChangeListener listener) {
+  public void addLearnableListener(ChangeListener listener) {
     throw new NotYetImplementedException();
   }
 

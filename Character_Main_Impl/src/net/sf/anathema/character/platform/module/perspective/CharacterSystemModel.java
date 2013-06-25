@@ -24,7 +24,7 @@ import net.sf.anathema.framework.repository.IRepositoryFileResolver;
 import net.sf.anathema.framework.repository.Item;
 import net.sf.anathema.framework.view.PrintNameFile;
 import net.sf.anathema.hero.model.Hero;
-import net.sf.anathema.lib.control.IChangeListener;
+import net.sf.anathema.lib.control.ChangeListener;
 import net.sf.anathema.lib.resources.Resources;
 import net.sf.anathema.lib.workflow.wizard.selection.ItemTemplateFactory;
 import org.jmock.example.announcer.Announcer;
@@ -41,14 +41,14 @@ import static net.sf.anathema.character.itemtype.CharacterItemTypeRetrieval.retr
 public class CharacterSystemModel implements ItemSystemModel {
 
   private final Map<CharacterIdentifier, CharacterItemModel> modelsByIdentifier = new HashMap<>();
-  private Announcer<IChangeListener> getsSelectionListener = Announcer.to(IChangeListener.class);
-  private Announcer<IChangeListener> becomesExperiencedListener = Announcer.to(IChangeListener.class);
-  private Announcer<IChangeListener> becomesInexperiencedListener = Announcer.to(IChangeListener.class);
+  private Announcer<ChangeListener> getsSelectionListener = Announcer.to(ChangeListener.class);
+  private Announcer<ChangeListener> becomesExperiencedListener = Announcer.to(ChangeListener.class);
+  private Announcer<ChangeListener> becomesInexperiencedListener = Announcer.to(ChangeListener.class);
   private Announcer<NewCharacterListener> characterAddedListener = Announcer.to(NewCharacterListener.class);
   private CharacterIdentifier currentCharacter;
-  private Announcer<IChangeListener> becomesDirtyAnnouncer = Announcer.to(IChangeListener.class);
-  private Announcer<IChangeListener> becomesCleanAnnouncer = Announcer.to(IChangeListener.class);
-  private IChangeListener dirtyListener = new IChangeListener() {
+  private Announcer<ChangeListener> becomesDirtyAnnouncer = Announcer.to(ChangeListener.class);
+  private Announcer<ChangeListener> becomesCleanAnnouncer = Announcer.to(ChangeListener.class);
+  private ChangeListener dirtyListener = new ChangeListener() {
     @Override
     public void changeOccurred() {
       notifyDirtyListeners();
@@ -107,27 +107,27 @@ public class CharacterSystemModel implements ItemSystemModel {
   }
 
   @Override
-  public void whenCurrentSelectionBecomesDirty(IChangeListener listener) {
+  public void whenCurrentSelectionBecomesDirty(ChangeListener listener) {
     becomesDirtyAnnouncer.addListener(listener);
   }
 
   @Override
-  public void whenCurrentSelectionBecomesClean(IChangeListener listener) {
+  public void whenCurrentSelectionBecomesClean(ChangeListener listener) {
     becomesCleanAnnouncer.addListener(listener);
   }
 
   @Override
-  public void whenGetsSelection(IChangeListener listener) {
+  public void whenGetsSelection(ChangeListener listener) {
     getsSelectionListener.addListener(listener);
   }
 
   @Override
-  public void whenCurrentSelectionBecomesExperienced(IChangeListener listener) {
+  public void whenCurrentSelectionBecomesExperienced(ChangeListener listener) {
     becomesExperiencedListener.addListener(listener);
   }
 
   @Override
-  public void whenCurrentSelectionBecomesInexperienced(IChangeListener listener) {
+  public void whenCurrentSelectionBecomesInexperienced(ChangeListener listener) {
     becomesInexperiencedListener.addListener(listener);
   }
 

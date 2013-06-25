@@ -1,6 +1,6 @@
 package net.sf.anathema.lib.gui.dialog.userdialog.page;
 
-import net.sf.anathema.lib.control.IChangeListener;
+import net.sf.anathema.lib.control.ChangeListener;
 import net.sf.anathema.lib.gui.dialog.core.IPage;
 import net.sf.anathema.lib.message.IBasicMessage;
 
@@ -14,5 +14,5 @@ public interface IDialogPage extends IPage {
 
   IBasicMessage getDefaultMessage();
 
-  void setInputValidListener(IChangeListener listener);
+  void setInputValidListener(ChangeListener listener);
 }

@@ -1,7 +1,7 @@
 package net.sf.anathema.lib.model;
 
 import com.google.common.base.Objects;
-import net.sf.anathema.lib.control.IChangeListener;
+import net.sf.anathema.lib.control.ChangeListener;
 import net.sf.anathema.lib.exception.UnreachableCodeReachedException;
 import org.jmock.example.announcer.Announcer;
 
@@ -11,14 +11,14 @@ import java.util.concurrent.locks.ReentrantReadWriteLock;
 
 public abstract class SmartChangeableModel implements Cloneable, IChangeableModel {
 
-  private transient Announcer<IChangeListener> listeners = Announcer.to(IChangeListener.class);
+  private transient Announcer<ChangeListener> listeners = Announcer.to(ChangeListener.class);
   private transient ReadWriteLock readWriteLock = new ReentrantReadWriteLock();
 
   @Override
   protected Object clone() {
     try {
       SmartChangeableModel clone = (SmartChangeableModel) super.clone();
-      clone.listeners = Announcer.to(IChangeListener.class);
+      clone.listeners = Announcer.to(ChangeListener.class);
       clone.readWriteLock = new ReentrantReadWriteLock();
       return clone;
     }
@@ -28,12 +28,12 @@ public abstract class SmartChangeableModel implements Cloneable, IChangeableMode
   }
 
   @Override
-  public void addChangeListener(IChangeListener listener) {
+  public void addChangeListener(ChangeListener listener) {
     listeners.addListener(listener);
   }
 
   @Override
-  public void removeChangeListener(IChangeListener listener) {
+  public void removeChangeListener(ChangeListener listener) {
     listeners.removeListener(listener);
   }
 

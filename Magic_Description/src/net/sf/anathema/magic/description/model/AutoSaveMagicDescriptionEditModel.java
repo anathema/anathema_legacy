@@ -1,13 +1,13 @@
 package net.sf.anathema.magic.description.model;
 
 import com.google.common.base.Objects;
-import net.sf.anathema.lib.control.IChangeListener;
+import net.sf.anathema.lib.control.ChangeListener;
 import net.sf.anathema.magic.description.persistence.MagicDescriptionDataBase;
 import org.jmock.example.announcer.Announcer;
 
 public class AutoSaveMagicDescriptionEditModel implements MagicDescriptionEditModel {
 
-  private final Announcer<IChangeListener> changeControl = Announcer.to(IChangeListener.class);
+  private final Announcer<ChangeListener> changeControl = Announcer.to(ChangeListener.class);
   private final MagicDescriptionDataBase dataBase;
   private String editId = "";
   private String currentDescription;
@@ -55,12 +55,12 @@ public class AutoSaveMagicDescriptionEditModel implements MagicDescriptionEditMo
   }
 
   @Override
-  public void addDescriptionChangedListener(IChangeListener listener) {
+  public void addDescriptionChangedListener(ChangeListener listener) {
     changeControl.addListener(listener);
   }
 
   @Override
-  public void removeDescriptionChangeListener(IChangeListener listener) {
+  public void removeDescriptionChangeListener(ChangeListener listener) {
     changeControl.removeListener(listener);
   }
 }

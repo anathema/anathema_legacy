@@ -8,7 +8,7 @@ import net.sf.anathema.character.library.trait.specialties.SpecialtiesModelFetch
 import net.sf.anathema.character.library.trait.specialties.Specialty;
 import net.sf.anathema.character.library.trait.subtrait.ISpecialtyListener;
 import net.sf.anathema.hero.model.Hero;
-import net.sf.anathema.lib.control.IChangeListener;
+import net.sf.anathema.lib.control.ChangeListener;
 
 public class SpecialtiesCollectionImpl implements SpecialtiesCollection {
 
@@ -25,7 +25,7 @@ public class SpecialtiesCollectionImpl implements SpecialtiesCollection {
   }
 
   @Override
-  public void addSpecialtyListChangeListener(final IChangeListener listener) {
+  public void addSpecialtyListChangeListener(final ChangeListener listener) {
     SpecialtiesModel config = SpecialtiesModelFetcher.fetch(hero);
     for (ITraitReference trait : config.getAllTraits()) {
       config.getSpecialtiesContainer(trait).addSubTraitListener(new ISpecialtyListener() {

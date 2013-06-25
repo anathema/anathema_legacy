@@ -2,7 +2,7 @@ package net.sf.anathema.lib.gui.dialog.widgets;
 
 import com.google.common.base.Preconditions;
 import com.google.common.base.Supplier;
-import net.sf.anathema.lib.control.IChangeListener;
+import net.sf.anathema.lib.control.ChangeListener;
 import net.sf.anathema.lib.gui.swing.SwingColors;
 import net.sf.anathema.lib.model.ObjectModel;
 import net.sf.anathema.lib.text.TextAlignment;
@@ -90,7 +90,7 @@ public class AutoWrappingTextComponent extends JComponent {
     };
     addMouseListener(mouseListener);
     addMouseMotionListener(mouseListener);
-    selectionModel.addChangeListener(new IChangeListener() {
+    selectionModel.addChangeListener(new ChangeListener() {
       @Override
       public void changeOccurred() {
         repaint();

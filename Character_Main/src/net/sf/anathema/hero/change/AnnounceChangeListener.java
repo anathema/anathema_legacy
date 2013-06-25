@@ -1,8 +1,8 @@
 package net.sf.anathema.hero.change;
 
-import net.sf.anathema.lib.control.IChangeListener;
+import net.sf.anathema.lib.control.ChangeListener;
 
-public class AnnounceChangeListener implements IChangeListener {
+public class AnnounceChangeListener implements ChangeListener {
   private final ChangeAnnouncer announcer;
   private final ChangeFlavor flavor;
 

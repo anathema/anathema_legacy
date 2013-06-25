@@ -2,9 +2,9 @@ package net.sf.anathema.character.impl.model;
 
 import net.sf.anathema.hero.change.ChangeAnnouncer;
 import net.sf.anathema.hero.change.ChangeFlavor;
-import net.sf.anathema.lib.control.IChangeListener;
+import net.sf.anathema.lib.control.ChangeListener;
 
-public class UnspecifiedChangeListener implements IChangeListener {
+public class UnspecifiedChangeListener implements ChangeListener {
 
   private ChangeAnnouncer changeAnnouncer;
 

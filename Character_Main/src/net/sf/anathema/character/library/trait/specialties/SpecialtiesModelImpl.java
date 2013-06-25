@@ -14,7 +14,7 @@ import net.sf.anathema.hero.model.HeroModel;
 import net.sf.anathema.hero.model.InitializationContext;
 import net.sf.anathema.hero.points.PointModelFetcher;
 import net.sf.anathema.hero.points.PointsModel;
-import net.sf.anathema.lib.control.IChangeListener;
+import net.sf.anathema.lib.control.ChangeListener;
 import net.sf.anathema.lib.util.Identifier;
 import org.jmock.example.announcer.Announcer;
 
@@ -29,7 +29,7 @@ public class SpecialtiesModelImpl implements SpecialtiesModel, HeroModel {
 
   private final Map<TraitType, ISubTraitContainer> specialtiesByType = new HashMap<>();
   private final Map<ITraitReference, ISubTraitContainer> specialtiesByTrait = new HashMap<>();
-  private final Announcer<IChangeListener> control = Announcer.to(IChangeListener.class);
+  private final Announcer<ChangeListener> control = Announcer.to(ChangeListener.class);
   private final Announcer<ITraitReferencesChangeListener> traitControl = Announcer.to(ITraitReferencesChangeListener.class);
   private Hero hero;
   private String currentName;
@@ -129,7 +129,7 @@ public class SpecialtiesModelImpl implements SpecialtiesModel, HeroModel {
   }
 
   @Override
-  public void addSelectionChangeListener(IChangeListener listener) {
+  public void addSelectionChangeListener(ChangeListener listener) {
     control.addListener(listener);
   }
 

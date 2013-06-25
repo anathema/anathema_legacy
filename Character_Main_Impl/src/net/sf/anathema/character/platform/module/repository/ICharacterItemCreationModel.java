@@ -2,7 +2,7 @@ package net.sf.anathema.character.platform.module.repository;
 
 import net.sf.anathema.character.generic.type.ICharacterType;
 import net.sf.anathema.character.view.repository.ITemplateTypeAggregation;
-import net.sf.anathema.lib.control.IChangeListener;
+import net.sf.anathema.lib.control.ChangeListener;
 
 public interface ICharacterItemCreationModel {
 
@@ -10,7 +10,7 @@ public interface ICharacterItemCreationModel {
 
   void setCharacterType(ICharacterType type);
 
-  void addListener(IChangeListener listener);
+  void addListener(ChangeListener listener);
 
   ITemplateTypeAggregation[] getAvailableTemplates();
 

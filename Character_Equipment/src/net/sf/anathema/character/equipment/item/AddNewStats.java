@@ -5,7 +5,7 @@ import net.sf.anathema.character.equipment.item.view.ToolListView;
 import net.sf.anathema.character.generic.equipment.weapon.IEquipmentStats;
 import net.sf.anathema.interaction.Command;
 import net.sf.anathema.interaction.Tool;
-import net.sf.anathema.lib.control.IChangeListener;
+import net.sf.anathema.lib.control.ChangeListener;
 import net.sf.anathema.lib.file.RelativePath;
 import net.sf.anathema.lib.resources.Resources;
 
@@ -44,7 +44,7 @@ public class AddNewStats {
       }
     });
     controlAvailability(newStatsConfiguration, newTool);
-    editModel.addCompositionChangeListener(new IChangeListener() {
+    editModel.addCompositionChangeListener(new ChangeListener() {
       @Override
       public void changeOccurred() {
         controlAvailability(newStatsConfiguration, newTool);

@@ -1,6 +1,6 @@
 package net.sf.anathema.character.generic.magic.charms.special;
 
-import net.sf.anathema.lib.control.IChangeListener;
+import net.sf.anathema.lib.control.ChangeListener;
 import net.sf.anathema.lib.util.Identifier;
 
 public interface ISubeffect extends Identifier {
@@ -9,7 +9,7 @@ public interface ISubeffect extends Identifier {
 
   boolean isCreationLearned();
 
-  void addChangeListener(IChangeListener listener);
+  void addChangeListener(ChangeListener listener);
 
   void setLearned(boolean learned);
 

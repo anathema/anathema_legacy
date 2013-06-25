@@ -3,7 +3,7 @@ package net.sf.anathema.framework.repository.tree;
 import net.sf.anathema.framework.presenter.resources.FileUi;
 import net.sf.anathema.framework.repository.RepositoryException;
 import net.sf.anathema.interaction.Command;
-import net.sf.anathema.lib.control.IChangeListener;
+import net.sf.anathema.lib.control.ChangeListener;
 import net.sf.anathema.lib.gui.Presenter;
 import net.sf.anathema.lib.gui.action.SmartAction;
 import net.sf.anathema.lib.gui.dialog.message.MessageDialogFactory;
@@ -57,7 +57,7 @@ public class RepositoryItemDeletionPresenter implements Presenter {
     };
     action.setToolTipText(resources.getString("AnathemaCore.Tools.RepositoryView.DeleteToolTip"));
     treeView.addActionButton(action);
-    repositoryModel.addTreeSelectionChangeListener(new IChangeListener() {
+    repositoryModel.addTreeSelectionChangeListener(new ChangeListener() {
       @Override
       public void changeOccurred() {
         action.setEnabled(repositoryModel.canSelectionBeDeleted());

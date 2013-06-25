@@ -11,7 +11,7 @@ import net.sf.anathema.framework.presenter.itemmanagement.PrintNameAdjuster;
 import net.sf.anathema.framework.repository.ChangeManagement;
 import net.sf.anathema.framework.repository.NullChangeManagement;
 import net.sf.anathema.framework.repository.Repository;
-import net.sf.anathema.lib.control.IChangeListener;
+import net.sf.anathema.lib.control.ChangeListener;
 import org.apache.commons.io.FilenameUtils;
 import org.jmock.example.announcer.Announcer;
 
@@ -34,7 +34,7 @@ public class GsonEquipmentDatabase implements IEquipmentDatabase, ItemData {
     return registry.getById(EQUIPMENT_DATABASE_ITEM_TYPE_ID);
   }
 
-  private final Announcer<IChangeListener> availableTemplatesChangeControl = Announcer.to(IChangeListener.class);
+  private final Announcer<ChangeListener> availableTemplatesChangeControl = Announcer.to(ChangeListener.class);
   private final EquipmentGson gson = new EquipmentGson();
   private final EquipmentAccess access;
 
@@ -74,7 +74,7 @@ public class GsonEquipmentDatabase implements IEquipmentDatabase, ItemData {
   }
 
   @Override
-  public void addAvailableTemplateChangeListener(IChangeListener listener) {
+  public void addAvailableTemplateChangeListener(ChangeListener listener) {
     availableTemplatesChangeControl.addListener(listener);
   }
 

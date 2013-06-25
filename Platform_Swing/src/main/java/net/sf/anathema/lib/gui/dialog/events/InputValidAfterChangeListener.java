@@ -1,8 +1,8 @@
 package net.sf.anathema.lib.gui.dialog.events;
 
-import net.sf.anathema.lib.control.IChangeListener;
+import net.sf.anathema.lib.control.ChangeListener;
 
-public class InputValidAfterChangeListener implements IChangeListener {
+public class InputValidAfterChangeListener implements ChangeListener {
 
   private final IInputValidCheckable checkable;
 

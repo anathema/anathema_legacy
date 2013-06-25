@@ -1,7 +1,7 @@
 package net.sf.anathema.namegenerator.presenter.view;
 
 import net.sf.anathema.interaction.Command;
-import net.sf.anathema.lib.control.IChangeListener;
+import net.sf.anathema.lib.control.ChangeListener;
 
 import javax.swing.JComponent;
 
@@ -13,7 +13,7 @@ public interface NameGeneratorView {
 
   Object getSelectedGeneratorType();
 
-  void addGeneratorTypeChangeListener(IChangeListener listener);
+  void addGeneratorTypeChangeListener(ChangeListener listener);
 
   void setSelectedGeneratorType(Object generatorType);
 

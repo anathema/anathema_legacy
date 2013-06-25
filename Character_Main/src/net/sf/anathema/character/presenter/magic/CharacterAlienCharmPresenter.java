@@ -3,7 +3,7 @@ package net.sf.anathema.character.presenter.magic;
 import net.sf.anathema.character.main.model.charms.CharmsModel;
 import net.sf.anathema.charmtree.presenter.AlienCharmPresenter;
 import net.sf.anathema.charmtree.view.ICharmView;
-import net.sf.anathema.lib.control.IChangeListener;
+import net.sf.anathema.lib.control.ChangeListener;
 import net.sf.anathema.lib.util.Identifier;
 
 public class CharacterAlienCharmPresenter implements AlienCharmPresenter {
@@ -18,7 +18,7 @@ public class CharacterAlienCharmPresenter implements AlienCharmPresenter {
 
   @Override
   public void initPresentation() {
-    model.addCasteChangeListener(new IChangeListener() {
+    model.addCasteChangeListener(new ChangeListener() {
       @Override
       public void changeOccurred() {
         boolean alienCharms = model.isAllowedAlienCharms();

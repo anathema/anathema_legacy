@@ -1,7 +1,7 @@
 package net.sf.anathema.lib.gui.dialog.userdialog.page;
 
 import com.google.common.base.Preconditions;
-import net.sf.anathema.lib.control.IChangeListener;
+import net.sf.anathema.lib.control.ChangeListener;
 import net.sf.anathema.lib.message.BasicMessage;
 import net.sf.anathema.lib.message.IBasicMessage;
 
@@ -14,7 +14,7 @@ public abstract class AbstractDialogPage implements IDialogPage {
   }
 
   @Override
-  public void setInputValidListener(IChangeListener inputValidListener) {
+  public void setInputValidListener(ChangeListener inputValidListener) {
     //nothing to do
   }
 

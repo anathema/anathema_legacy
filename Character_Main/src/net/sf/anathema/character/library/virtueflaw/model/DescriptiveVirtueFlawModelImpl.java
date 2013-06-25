@@ -11,8 +11,8 @@ import net.sf.anathema.hero.change.ChangeFlavor;
 import net.sf.anathema.hero.change.FlavoredChangeListener;
 import net.sf.anathema.hero.model.Hero;
 import net.sf.anathema.hero.model.InitializationContext;
+import net.sf.anathema.lib.control.ChangeListener;
 import net.sf.anathema.lib.control.GlobalChangeAdapter;
-import net.sf.anathema.lib.control.IChangeListener;
 import net.sf.anathema.lib.util.Identifier;
 
 import java.util.ArrayList;
@@ -52,7 +52,7 @@ public class DescriptiveVirtueFlawModelImpl extends AbstractVirtueFlawModel impl
   }
 
   @Override
-  public void addChangeListener(IChangeListener listener) {
+  public void addChangeListener(ChangeListener listener) {
     super.addChangeListener(listener);
     GlobalChangeAdapter<String> changeAdapter = new GlobalChangeAdapter<>(listener);
     virtueFlaw.getDescription().addTextChangedListener(changeAdapter);

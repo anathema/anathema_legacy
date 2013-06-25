@@ -1,7 +1,7 @@
 package net.sf.anathema.lib.gui.dialog.core.message;
 
 import com.google.common.base.Preconditions;
-import net.sf.anathema.lib.control.IChangeListener;
+import net.sf.anathema.lib.control.ChangeListener;
 import net.sf.anathema.lib.gui.dialog.animation.AnimatedCompositeComponent;
 import net.sf.anathema.lib.gui.dialog.animation.OverlaidComponentBorder;
 
@@ -23,7 +23,7 @@ public class DialogMessagePanel {
 
     this.content = new AnimatedCompositeComponent(baseMessageComponent, overlaidMessageComponent);
 
-    messageModel.addChangeListener(new IChangeListener() {
+    messageModel.addChangeListener(new ChangeListener() {
       @Override
       public void changeOccurred() {
         updateMessage();

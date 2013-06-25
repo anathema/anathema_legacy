@@ -6,7 +6,7 @@ import net.sf.anathema.character.model.charm.ILearningCharmGroup;
 import net.sf.anathema.charmtree.presenter.CharmInteractionPresenter;
 import net.sf.anathema.charmtree.view.ICharmTreeViewProperties;
 import net.sf.anathema.charmtree.view.ICharmView;
-import net.sf.anathema.lib.control.IChangeListener;
+import net.sf.anathema.lib.control.ChangeListener;
 import net.sf.anathema.platform.tree.presenter.view.NodeInteractionListener;
 
 public class LearnInteractionPresenter implements CharmInteractionPresenter {
@@ -41,7 +41,7 @@ public class LearnInteractionPresenter implements CharmInteractionPresenter {
       }
     });
     initCharmLearnListening(charms);
-    charms.addLearnableListener(new IChangeListener() {
+    charms.addLearnableListener(new ChangeListener() {
       @Override
       public void changeOccurred() {
         dye.setCharmVisuals();

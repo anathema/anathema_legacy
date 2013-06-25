@@ -3,7 +3,7 @@ package net.sf.anathema.magic.description.presenter;
 import net.sf.anathema.character.presenter.magic.detail.MagicDetailModel;
 import net.sf.anathema.character.presenter.magic.detail.MagicDetailPresenter;
 import net.sf.anathema.framework.swing.IView;
-import net.sf.anathema.lib.control.IChangeListener;
+import net.sf.anathema.lib.control.ChangeListener;
 import net.sf.anathema.lib.control.ObjectValueListener;
 import net.sf.anathema.lib.resources.Resources;
 import net.sf.anathema.magic.description.model.MagicDescriptionEditDetailModel;
@@ -25,7 +25,7 @@ public class MagicDescriptionEditPresenter implements MagicDetailPresenter {
 
   @Override
   public void initPresentation() {
-    model.addDescriptionChangedListener(new IChangeListener() {
+    model.addDescriptionChangedListener(new ChangeListener() {
 
       @Override
       public void changeOccurred() {

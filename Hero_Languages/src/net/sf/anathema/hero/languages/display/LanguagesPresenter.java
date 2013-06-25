@@ -7,7 +7,7 @@ import net.sf.anathema.framework.presenter.resources.BasicUi;
 import net.sf.anathema.framework.presenter.view.IButtonControlledObjectSelectionView;
 import net.sf.anathema.hero.languages.model.LanguagesModel;
 import net.sf.anathema.interaction.Command;
-import net.sf.anathema.lib.control.IChangeListener;
+import net.sf.anathema.lib.control.ChangeListener;
 import net.sf.anathema.lib.control.ObjectValueListener;
 import net.sf.anathema.lib.control.legality.LegalityColorProvider;
 import net.sf.anathema.lib.file.RelativePath;
@@ -64,7 +64,7 @@ public class LanguagesPresenter {
         updateOverview(familyView, totalView, barbarianView);
       }
     });
-    model.addCharacterChangedListener(new IChangeListener() {
+    model.addCharacterChangedListener(new ChangeListener() {
       @Override
       public void changeOccurred() {
         updateOverview(familyView, totalView, barbarianView);

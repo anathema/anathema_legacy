@@ -9,13 +9,13 @@ import net.sf.anathema.hero.change.ChangeAnnouncer;
 import net.sf.anathema.hero.model.Hero;
 import net.sf.anathema.hero.model.HeroModel;
 import net.sf.anathema.hero.model.InitializationContext;
-import net.sf.anathema.lib.control.IChangeListener;
+import net.sf.anathema.lib.control.ChangeListener;
 import net.sf.anathema.lib.util.Identifier;
 import org.jmock.example.announcer.Announcer;
 
 public class ExperienceModelImpl implements ExperienceModel, HeroModel {
   private final IExperiencePointConfiguration experiencePoints = new ExperiencePointConfiguration();
-  private final Announcer<IChangeListener> stateAnnouncer = new Announcer<>(IChangeListener.class);
+  private final Announcer<ChangeListener> stateAnnouncer = new Announcer<>(ChangeListener.class);
   private boolean experienced = false;
 
   @Override
@@ -35,7 +35,7 @@ public class ExperienceModelImpl implements ExperienceModel, HeroModel {
   }
 
   // todo (sandra): redirect to ChangeAnnouncer
-  public void addStateChangeListener(IChangeListener listener) {
+  public void addStateChangeListener(ChangeListener listener) {
     stateAnnouncer.addListener(listener);
   }
 

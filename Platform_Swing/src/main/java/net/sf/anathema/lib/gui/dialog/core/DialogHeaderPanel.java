@@ -3,7 +3,7 @@ package net.sf.anathema.lib.gui.dialog.core;
 import com.google.common.base.Preconditions;
 import net.miginfocom.layout.CC;
 import net.miginfocom.swing.MigLayout;
-import net.sf.anathema.lib.control.IChangeListener;
+import net.sf.anathema.lib.control.ChangeListener;
 import net.sf.anathema.lib.file.RelativePath;
 import net.sf.anathema.lib.gui.dialog.core.message.DialogMessageModel;
 import net.sf.anathema.lib.gui.dialog.core.message.DialogMessagePanel;
@@ -39,7 +39,7 @@ public class DialogHeaderPanel {
     descriptionLabel = new JLabel("!Dialog.description!", SwingConstants.LEFT);
     descriptionLabel.setForeground(IDialogConstants.HEADER_TEXT_COLOR);
     descriptionLabel.setFont(IDialogConstants.HEADER_TITLE_FONT);
-    descriptionModel.addChangeListener(new IChangeListener() {
+    descriptionModel.addChangeListener(new ChangeListener() {
       @Override
       public void changeOccurred() {
         updateDescription();

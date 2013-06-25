@@ -4,12 +4,12 @@ import net.sf.anathema.character.equipment.MaterialComposition;
 import net.sf.anathema.character.equipment.item.model.EquipmentStatsFactory;
 import net.sf.anathema.character.equipment.item.model.StatsEditor;
 import net.sf.anathema.character.generic.equipment.weapon.IEquipmentStats;
-import net.sf.anathema.lib.control.IChangeListener;
+import net.sf.anathema.lib.control.ChangeListener;
 
 import java.util.List;
 
 public interface StatsEditModel {
-  void addStatsChangeListener(IChangeListener iChangeListener);
+  void addStatsChangeListener(ChangeListener changeListener);
 
   EquipmentStatsFactory getStatsCreationFactory();
 
@@ -17,7 +17,7 @@ public interface StatsEditModel {
 
   void addStatistics(IEquipmentStats equipmentStats);
 
-  void addCompositionChangeListener(IChangeListener iChangeListener);
+  void addCompositionChangeListener(ChangeListener changeListener);
 
   MaterialComposition getMaterialComposition();
 
@@ -31,7 +31,7 @@ public interface StatsEditModel {
 
   IEquipmentStats getSelectedStats();
 
-  void whenSelectedStatsChanges(IChangeListener iChangeListener);
+  void whenSelectedStatsChanges(ChangeListener changeListener);
 
   boolean hasSelectedStats();
 }

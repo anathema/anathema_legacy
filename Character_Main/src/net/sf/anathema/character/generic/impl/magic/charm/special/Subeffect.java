@@ -2,14 +2,14 @@ package net.sf.anathema.character.generic.impl.magic.charm.special;
 
 import net.sf.anathema.character.generic.magic.charms.special.ISubeffect;
 import net.sf.anathema.character.main.model.experience.ExperienceModel;
-import net.sf.anathema.lib.control.IChangeListener;
+import net.sf.anathema.lib.control.ChangeListener;
 import net.sf.anathema.lib.data.Condition;
 import net.sf.anathema.lib.util.SimpleIdentifier;
 import org.jmock.example.announcer.Announcer;
 
 public class Subeffect extends SimpleIdentifier implements ISubeffect {
 
-  private final Announcer<IChangeListener> control = Announcer.to(IChangeListener.class);
+  private final Announcer<ChangeListener> control = Announcer.to(ChangeListener.class);
   private boolean learned = false;
   private boolean creationLearned = false;
   private final Condition learnable;
@@ -22,7 +22,7 @@ public class Subeffect extends SimpleIdentifier implements ISubeffect {
   }
 
   @Override
-  public void addChangeListener(IChangeListener listener) {
+  public void addChangeListener(ChangeListener listener) {
     control.addListener(listener);
   }
 

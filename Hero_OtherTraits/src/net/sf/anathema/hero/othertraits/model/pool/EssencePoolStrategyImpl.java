@@ -17,7 +17,7 @@ import net.sf.anathema.hero.change.FlavoredChangeListener;
 import net.sf.anathema.hero.magic.MagicCollection;
 import net.sf.anathema.hero.model.Hero;
 import net.sf.anathema.hero.model.InitializationContext;
-import net.sf.anathema.lib.control.IChangeListener;
+import net.sf.anathema.lib.control.ChangeListener;
 import net.sf.anathema.lib.util.IdentifiedInteger;
 import org.jmock.example.announcer.Announcer;
 
@@ -27,7 +27,7 @@ import java.util.Map.Entry;
 
 public class EssencePoolStrategyImpl implements EssencePoolStrategy {
 
-  private final Announcer<IChangeListener> control = Announcer.to(IChangeListener.class);
+  private final Announcer<ChangeListener> control = Announcer.to(ChangeListener.class);
   private final IEssenceTemplate essenceTemplate;
   private OverdrivePool overdrivePool;
   private final IAdditionalRules additionalRules;
@@ -54,7 +54,7 @@ public class EssencePoolStrategyImpl implements EssencePoolStrategy {
   }
 
   @Override
-  public void addPoolChangeListener(IChangeListener listener) {
+  public void addPoolChangeListener(ChangeListener listener) {
     control.addListener(listener);
   }
 

@@ -15,7 +15,7 @@ import net.sf.anathema.hero.magic.MagicCollectionImpl;
 import net.sf.anathema.hero.model.Hero;
 import net.sf.anathema.hero.model.HeroModel;
 import net.sf.anathema.hero.model.InitializationContext;
-import net.sf.anathema.lib.control.IChangeListener;
+import net.sf.anathema.lib.control.ChangeListener;
 import net.sf.anathema.lib.util.IdentifiedInteger;
 import net.sf.anathema.lib.util.Identifier;
 
@@ -126,7 +126,7 @@ public class EssencePoolModelImpl implements EssencePoolModel, HeroModel {
   }
 
   @Override
-  public void addPoolChangeListener(IChangeListener listener) {
+  public void addPoolChangeListener(ChangeListener listener) {
     poolStrategy.addPoolChangeListener(listener);
   }
 

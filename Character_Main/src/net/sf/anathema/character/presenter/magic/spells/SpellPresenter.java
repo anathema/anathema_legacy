@@ -11,7 +11,7 @@ import net.sf.anathema.character.view.magic.ISpellView;
 import net.sf.anathema.hero.model.Hero;
 import net.sf.anathema.lib.compare.I18nedIdentificateComparator;
 import net.sf.anathema.lib.compare.I18nedIdentificateSorter;
-import net.sf.anathema.lib.control.IChangeListener;
+import net.sf.anathema.lib.control.ChangeListener;
 import net.sf.anathema.lib.control.ObjectValueListener;
 import net.sf.anathema.lib.resources.Resources;
 import net.sf.anathema.lib.util.Identifier;
@@ -86,7 +86,7 @@ public class SpellPresenter {
       }
     });
     initSpellListsInView(view);
-    ExperienceModelFetcher.fetch(hero).addStateChangeListener(new IChangeListener() {
+    ExperienceModelFetcher.fetch(hero).addStateChangeListener(new ChangeListener() {
       @Override
       public void changeOccurred() {
         view.clearSelection();

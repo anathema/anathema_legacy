@@ -11,7 +11,7 @@ import net.sf.anathema.character.generic.type.ICharacterType;
 import net.sf.anathema.character.library.trait.specialties.Specialty;
 import net.sf.anathema.hero.model.Hero;
 import net.sf.anathema.hero.specialties.model.SpecialtiesCollectionImpl;
-import net.sf.anathema.lib.control.IChangeListener;
+import net.sf.anathema.lib.control.ChangeListener;
 
 import static net.sf.anathema.character.generic.equipment.ArtifactAttuneType.FullyAttuned;
 import static net.sf.anathema.character.generic.equipment.ArtifactAttuneType.Unattuned;
@@ -69,7 +69,7 @@ public class EquipmentHeroEvaluatorImpl implements EquipmentHeroEvaluator {
   }
 
   @Override
-  public void addCharacterSpecialtyListChangeListener(IChangeListener listener) {
+  public void addCharacterSpecialtyListChangeListener(ChangeListener listener) {
     new SpecialtiesCollectionImpl(hero).addSpecialtyListChangeListener(listener);
   }
 

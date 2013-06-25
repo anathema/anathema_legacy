@@ -4,7 +4,7 @@ import net.sf.anathema.character.generic.magic.ISpell;
 import net.sf.anathema.character.generic.magic.spells.CircleType;
 import net.sf.anathema.character.model.IMagicLearnListener;
 import net.sf.anathema.hero.model.HeroModel;
-import net.sf.anathema.lib.control.IChangeListener;
+import net.sf.anathema.lib.control.ChangeListener;
 import net.sf.anathema.lib.util.Identifier;
 import net.sf.anathema.lib.util.SimpleIdentifier;
 
@@ -18,7 +18,7 @@ public interface SpellModel extends HeroModel {
 
   ISpell[] getLearnedSpells();
 
-  void addChangeListener(IChangeListener listener);
+  void addChangeListener(ChangeListener listener);
 
   void addMagicLearnListener(IMagicLearnListener<ISpell> listener);
 

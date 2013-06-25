@@ -1,11 +1,10 @@
 package net.sf.anathema.character.equipment.wizard;
 
+import net.sf.anathema.lib.control.ChangeListener;
 import net.sf.anathema.lib.control.IBooleanValueChangedListener;
-import net.sf.anathema.lib.control.IChangeListener;
 import net.sf.anathema.lib.control.ObjectValueListener;
 
-public class CheckInputListener implements
-    IChangeListener,
+public class CheckInputListener implements ChangeListener,
     IBooleanValueChangedListener, ObjectValueListener<String> {
 
   private final Runnable executionBlock;

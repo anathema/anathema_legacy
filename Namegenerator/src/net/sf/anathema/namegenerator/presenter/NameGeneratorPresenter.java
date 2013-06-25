@@ -2,7 +2,7 @@ package net.sf.anathema.namegenerator.presenter;
 
 import com.google.common.base.Joiner;
 import net.sf.anathema.interaction.Command;
-import net.sf.anathema.lib.control.IChangeListener;
+import net.sf.anathema.lib.control.ChangeListener;
 import net.sf.anathema.lib.gui.Presenter;
 import net.sf.anathema.lib.resources.Resources;
 import net.sf.anathema.lib.util.Identifier;
@@ -44,13 +44,13 @@ public class NameGeneratorPresenter implements Presenter {
   }
 
   private void initSelectedGeneratorTypePresentation() {
-    view.addGeneratorTypeChangeListener(new IChangeListener() {
+    view.addGeneratorTypeChangeListener(new ChangeListener() {
       @Override
       public void changeOccurred() {
         model.setGeneratorType((Identifier) view.getSelectedGeneratorType());
       }
     });
-    model.addGeneratorTypeChangeListener(new IChangeListener() {
+    model.addGeneratorTypeChangeListener(new ChangeListener() {
       @Override
       public void changeOccurred() {
         view.setSelectedGeneratorType(model.getSelectedGeneratorType());

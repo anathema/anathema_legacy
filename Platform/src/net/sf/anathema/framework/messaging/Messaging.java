@@ -1,6 +1,6 @@
 package net.sf.anathema.framework.messaging;
 
-import net.sf.anathema.lib.control.IChangeListener;
+import net.sf.anathema.lib.control.ChangeListener;
 import net.sf.anathema.lib.message.BasicMessage;
 import net.sf.anathema.lib.message.IBasicMessage;
 import net.sf.anathema.lib.message.MessageType;
@@ -14,7 +14,7 @@ public class Messaging implements IMessaging, IMessageContainer {
 
   private final Resources resources;
   private final List<IBasicMessage> messages = new ArrayList<>();
-  private final Announcer<IChangeListener> changeControl = Announcer.to(IChangeListener.class);
+  private final Announcer<ChangeListener> changeControl = Announcer.to(ChangeListener.class);
 
   public Messaging(Resources resources) {
     this.resources = resources;
@@ -36,7 +36,7 @@ public class Messaging implements IMessaging, IMessageContainer {
   }
 
   @Override
-  public void addChangeListener(IChangeListener listener) {
+  public void addChangeListener(ChangeListener listener) {
     changeControl.addListener(listener);
   }
 

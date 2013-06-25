@@ -1,6 +1,6 @@
 package net.sf.anathema.framework.repository;
 
-import net.sf.anathema.lib.control.IChangeListener;
+import net.sf.anathema.lib.control.ChangeListener;
 
 public interface ChangeManagement {
   boolean isDirty();
@@ -8,7 +8,7 @@ public interface ChangeManagement {
   void setClean();
 
   @SuppressWarnings("UnusedDeclaration")
-  void removeDirtyListener(IChangeListener changeListener);
+  void removeDirtyListener(ChangeListener changeListener);
 
-  void addDirtyListener(IChangeListener changeListener);
+  void addDirtyListener(ChangeListener changeListener);
 }

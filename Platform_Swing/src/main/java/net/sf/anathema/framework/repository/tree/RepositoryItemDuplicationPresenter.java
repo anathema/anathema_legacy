@@ -6,7 +6,7 @@ import net.sf.anathema.framework.presenter.resources.FileUi;
 import net.sf.anathema.framework.repository.RepositoryException;
 import net.sf.anathema.framework.repository.access.IRepositoryFileAccess;
 import net.sf.anathema.framework.view.PrintNameFile;
-import net.sf.anathema.lib.control.IChangeListener;
+import net.sf.anathema.lib.control.ChangeListener;
 import net.sf.anathema.lib.gui.Presenter;
 import net.sf.anathema.lib.gui.action.SmartAction;
 import net.sf.anathema.lib.logging.Logger;
@@ -76,7 +76,7 @@ public class RepositoryItemDuplicationPresenter implements Presenter {
     };
     action.setToolTipText(resources.getString("AnathemaCore.Tools.RepositoryView.DuplicateToolTip"));
     view.addActionButton(action);
-    model.addTreeSelectionChangeListener(new IChangeListener() {
+    model.addTreeSelectionChangeListener(new ChangeListener() {
       @Override
       public void changeOccurred() {
         action.setEnabled(model.getPrintNameFilesInSelection().length == 1);

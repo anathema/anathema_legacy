@@ -10,7 +10,7 @@ import net.sf.anathema.character.generic.equipment.weapon.IEquipmentStats;
 import net.sf.anathema.character.generic.equipment.weapon.IWeaponStats;
 import net.sf.anathema.character.library.trait.specialties.Specialty;
 import net.sf.anathema.interaction.Tool;
-import net.sf.anathema.lib.control.IChangeListener;
+import net.sf.anathema.lib.control.ChangeListener;
 import net.sf.anathema.lib.gui.Presenter;
 import net.sf.anathema.lib.model.BooleanModel;
 import net.sf.anathema.lib.resources.Resources;
@@ -87,7 +87,7 @@ public class EquipmentObjectPresenter implements Presenter {
         otherStatFlags.put(equipment, booleanModel);
       }
       booleanModel.setValue(model.isPrintEnabled(equipment));
-      booleanModel.addChangeListener(new IChangeListener() {
+      booleanModel.addChangeListener(new ChangeListener() {
         @Override
         public void changeOccurred() {
           model.setPrintEnabled(equipment, booleanModel.getValue());
@@ -131,7 +131,7 @@ public class EquipmentObjectPresenter implements Presenter {
                 weaponStats.getTraitType());
         final IEquipmentStats baseStat = model.getStat(stats.getId());
         booleanModel.setValue(characterOptionProvider.isStatOptionEnabled(model, baseStat, specialtyOption));
-        booleanModel.addChangeListener(new IChangeListener() {
+        booleanModel.addChangeListener(new ChangeListener() {
           @Override
           public void changeOccurred() {
             if (booleanModel.getValue()) characterOptionProvider.enableStatOption(model, baseStat, specialtyOption);

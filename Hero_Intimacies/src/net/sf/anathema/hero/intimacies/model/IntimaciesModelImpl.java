@@ -19,13 +19,13 @@ import net.sf.anathema.hero.intimacies.points.IntimaciesBonusPointCalculator;
 import net.sf.anathema.hero.model.Hero;
 import net.sf.anathema.hero.model.InitializationContext;
 import net.sf.anathema.hero.points.PointModelFetcher;
-import net.sf.anathema.lib.control.IChangeListener;
+import net.sf.anathema.lib.control.ChangeListener;
 import net.sf.anathema.lib.util.Identifier;
 import org.jmock.example.announcer.Announcer;
 
 public class IntimaciesModelImpl extends AbstractRemovableEntryModel<Intimacy> implements IntimaciesModel {
 
-  private final Announcer<IChangeListener> announcer = Announcer.to(IChangeListener.class);
+  private final Announcer<ChangeListener> announcer = Announcer.to(ChangeListener.class);
   private String name;
   private Hero hero;
 
@@ -95,7 +95,7 @@ public class IntimaciesModelImpl extends AbstractRemovableEntryModel<Intimacy> i
   protected Intimacy createEntry() {
     IntimacyImpl intimacy = new IntimacyImpl(hero, name, getInitialValue(), getConviction());
     intimacy.setComplete(!isCharacterExperienced());
-    intimacy.addChangeListener(new IChangeListener() {
+    intimacy.addChangeListener(new ChangeListener() {
       @Override
       public void changeOccurred() {
         fireModelChangedEvent();
@@ -139,7 +139,7 @@ public class IntimaciesModelImpl extends AbstractRemovableEntryModel<Intimacy> i
   }
 
   @Override
-  public void addModelChangeListener(IChangeListener listener) {
+  public void addModelChangeListener(ChangeListener listener) {
     announcer.addListener(listener);
   }
 

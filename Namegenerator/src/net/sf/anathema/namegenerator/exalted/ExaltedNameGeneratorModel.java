@@ -1,7 +1,7 @@
 package net.sf.anathema.namegenerator.exalted;
 
 import com.google.common.base.Objects;
-import net.sf.anathema.lib.control.IChangeListener;
+import net.sf.anathema.lib.control.ChangeListener;
 import net.sf.anathema.lib.util.Identifier;
 import net.sf.anathema.lib.util.SimpleIdentifier;
 import net.sf.anathema.namegenerator.domain.INameGenerator;
@@ -17,7 +17,7 @@ import java.util.Set;
 public class ExaltedNameGeneratorModel implements INameGeneratorModel {
 
   private Identifier selectedGeneratorType;
-  private final Announcer<IChangeListener> selectedGeneratorTypeListeners = Announcer.to(IChangeListener.class);
+  private final Announcer<ChangeListener> selectedGeneratorTypeListeners = Announcer.to(ChangeListener.class);
   private final Map<Identifier, INameGenerator> generatorsByIdentificate = new LinkedHashMap<>();
 
   public ExaltedNameGeneratorModel() {
@@ -32,7 +32,7 @@ public class ExaltedNameGeneratorModel implements INameGeneratorModel {
   }
 
   @Override
-  public void addGeneratorTypeChangeListener(IChangeListener listener) {
+  public void addGeneratorTypeChangeListener(ChangeListener listener) {
     selectedGeneratorTypeListeners.addListener(listener);
   }
 

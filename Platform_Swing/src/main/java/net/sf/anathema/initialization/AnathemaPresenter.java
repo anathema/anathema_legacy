@@ -9,7 +9,7 @@ import net.sf.anathema.framework.presenter.action.preferences.IPreferencesElemen
 import net.sf.anathema.framework.presenter.item.ItemTypeCreationViewPropertiesExtensionPoint;
 import net.sf.anathema.framework.presenter.view.IItemTypeViewProperties;
 import net.sf.anathema.framework.view.ApplicationView;
-import net.sf.anathema.lib.control.IChangeListener;
+import net.sf.anathema.lib.control.ChangeListener;
 import net.sf.anathema.lib.resources.Resources;
 
 import java.util.Collection;
@@ -49,7 +49,7 @@ public class AnathemaPresenter {
   }
 
   private void init(final IMessageContainer messageContainer) {
-    messageContainer.addChangeListener(new IChangeListener() {
+    messageContainer.addChangeListener(new ChangeListener() {
       @Override
       public void changeOccurred() {
         showLatestMessage(messageContainer);

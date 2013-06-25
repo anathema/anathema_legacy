@@ -1,6 +1,6 @@
 package net.sf.anathema.character.perspective.model;
 
-import net.sf.anathema.lib.control.IChangeListener;
+import net.sf.anathema.lib.control.ChangeListener;
 import net.sf.anathema.lib.resources.Resources;
 
 import java.io.IOException;
@@ -9,15 +9,15 @@ public interface ItemSelectionModel {
 
   void saveCurrent() throws IOException;
 
-  void whenCurrentSelectionBecomesDirty(IChangeListener listener);
+  void whenCurrentSelectionBecomesDirty(ChangeListener listener);
 
-  void whenCurrentSelectionBecomesClean(IChangeListener listener);
+  void whenCurrentSelectionBecomesClean(ChangeListener listener);
 
-  void whenGetsSelection(IChangeListener listener);
+  void whenGetsSelection(ChangeListener listener);
 
-  void whenCurrentSelectionBecomesExperienced(IChangeListener listener);
+  void whenCurrentSelectionBecomesExperienced(ChangeListener listener);
 
-  void whenCurrentSelectionBecomesInexperienced(IChangeListener listener);
+  void whenCurrentSelectionBecomesInexperienced(ChangeListener listener);
 
   void convertCurrentToExperienced();
 

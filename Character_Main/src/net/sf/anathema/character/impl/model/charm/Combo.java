@@ -4,7 +4,7 @@ import com.google.common.base.Preconditions;
 import net.sf.anathema.character.generic.magic.ICharm;
 import net.sf.anathema.character.generic.magic.charms.type.CharmType;
 import net.sf.anathema.character.model.charm.ICombo;
-import net.sf.anathema.lib.control.IChangeListener;
+import net.sf.anathema.lib.control.ChangeListener;
 import net.sf.anathema.lib.exception.UnreachableCodeReachedException;
 import net.sf.anathema.lib.workflow.textualdescription.ITextualDescription;
 import net.sf.anathema.lib.workflow.textualdescription.model.SimpleTextualDescription;
@@ -16,7 +16,7 @@ import java.util.List;
 
 public class Combo implements ICombo {
 
-  private volatile Announcer<IChangeListener> control = Announcer.to(IChangeListener.class);
+  private volatile Announcer<ChangeListener> control = Announcer.to(ChangeListener.class);
   private volatile List<ICharm> creationCharmList = new ArrayList<>();
   private volatile List<ICharm> experiencedCharmList = new ArrayList<>();
   private ICharm extraActionCharm = null;
@@ -57,7 +57,7 @@ public class Combo implements ICombo {
   }
 
   @Override
-  public void addComboModelListener(IChangeListener listener) {
+  public void addComboModelListener(ChangeListener listener) {
     control.addListener(listener);
   }
 
@@ -88,7 +88,7 @@ public class Combo implements ICombo {
     } catch (CloneNotSupportedException e) {
       throw new UnreachableCodeReachedException(e);
     }
-    clone.control = Announcer.to(IChangeListener.class);
+    clone.control = Announcer.to(ChangeListener.class);
     clone.creationCharmList = new ArrayList<>(creationCharmList.size());
     clone.experiencedCharmList = new ArrayList<>(experiencedCharmList.size());
     clone.name = new SimpleTextualDescription();

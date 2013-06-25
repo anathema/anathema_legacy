@@ -3,7 +3,7 @@ package net.sf.anathema.character.equipment.item;
 import net.sf.anathema.character.equipment.item.model.IEquipmentDatabaseManagement;
 import net.sf.anathema.character.equipment.item.model.IEquipmentTemplateEditModel;
 import net.sf.anathema.character.equipment.item.view.EquipmentNavigation;
-import net.sf.anathema.lib.control.IChangeListener;
+import net.sf.anathema.lib.control.ChangeListener;
 import net.sf.anathema.lib.control.ObjectValueListener;
 import net.sf.anathema.lib.gui.Presenter;
 import net.sf.anathema.lib.resources.Resources;
@@ -38,7 +38,7 @@ public class EquipmentTemplateListPresenter implements Presenter {
 
   @Override
   public void initPresentation() {
-    model.getDatabase().addAvailableTemplateChangeListener(new IChangeListener() {
+    model.getDatabase().addAvailableTemplateChangeListener(new ChangeListener() {
       @Override
       public void changeOccurred() {
         updateAvailableTemplates();

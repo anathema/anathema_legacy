@@ -8,7 +8,7 @@ import net.sf.anathema.character.generic.magic.charms.special.ISubeffect;
 import net.sf.anathema.character.generic.magic.charms.special.SubEffects;
 import net.sf.anathema.character.impl.model.charm.CharmSpecialist;
 import net.sf.anathema.character.model.charm.special.IMultipleEffectCharmConfiguration;
-import net.sf.anathema.lib.control.IChangeListener;
+import net.sf.anathema.lib.control.ChangeListener;
 import org.jmock.example.announcer.Announcer;
 
 public class MultipleEffectCharmConfiguration implements IMultipleEffectCharmConfiguration {
@@ -21,7 +21,7 @@ public class MultipleEffectCharmConfiguration implements IMultipleEffectCharmCon
     this.charm = charm;
     this.subeffects = visited.buildSubeffects(specialist, arbitrator, charm);
     for (ISubeffect subeffect : subeffects) {
-      subeffect.addChangeListener(new IChangeListener() {
+      subeffect.addChangeListener(new ChangeListener() {
         @Override
         public void changeOccurred() {
           fireLearnCountChanged();

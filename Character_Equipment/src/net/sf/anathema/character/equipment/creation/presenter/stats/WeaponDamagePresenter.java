@@ -4,7 +4,7 @@ import net.sf.anathema.character.equipment.creation.model.stats.IWeaponDamageMod
 import net.sf.anathema.character.equipment.creation.presenter.stats.properties.WeaponDamageProperties;
 import net.sf.anathema.character.equipment.creation.view.IWeaponDamageView;
 import net.sf.anathema.character.generic.health.HealthType;
-import net.sf.anathema.lib.control.IChangeListener;
+import net.sf.anathema.lib.control.ChangeListener;
 import net.sf.anathema.lib.control.ObjectValueListener;
 import net.sf.anathema.lib.gui.Presenter;
 import net.sf.anathema.lib.gui.widgets.IntegerSpinner;
@@ -30,7 +30,7 @@ public class WeaponDamagePresenter implements Presenter {
     new IntValuePresentation().initView(damageSpinner, model.getDamageModel());
     damageSpinner.setMinimum(0);
     view.setObjects(HealthType.values());
-    model.addHealthTypeChangeListener(new IChangeListener() {
+    model.addHealthTypeChangeListener(new ChangeListener() {
       @Override
       public void changeOccurred() {
         updateHealthTypeInView();

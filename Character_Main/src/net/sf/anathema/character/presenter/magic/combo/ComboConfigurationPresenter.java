@@ -21,7 +21,7 @@ import net.sf.anathema.hero.model.Hero;
 import net.sf.anathema.interaction.Command;
 import net.sf.anathema.interaction.Tool;
 import net.sf.anathema.lib.compare.I18nedIdentificateComparator;
-import net.sf.anathema.lib.control.IChangeListener;
+import net.sf.anathema.lib.control.ChangeListener;
 import net.sf.anathema.lib.resources.Resources;
 import net.sf.anathema.lib.workflow.textualdescription.ITextView;
 import net.sf.anathema.lib.workflow.textualdescription.TextualPresentation;
@@ -200,7 +200,7 @@ public class ComboConfigurationPresenter {
   }
 
   private void initComboModelListening(final IComboConfigurationView comboView) {
-    comboConfiguration.addComboModelListener(new IChangeListener() {
+    comboConfiguration.addComboModelListener(new ChangeListener() {
       @Override
       public void changeOccurred() {
         updateCharmListsInView(comboView);

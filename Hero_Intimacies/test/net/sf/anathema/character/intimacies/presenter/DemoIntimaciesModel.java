@@ -7,7 +7,7 @@ import net.sf.anathema.hero.intimacies.model.IntimaciesModel;
 import net.sf.anathema.hero.intimacies.model.Intimacy;
 import net.sf.anathema.hero.model.Hero;
 import net.sf.anathema.hero.model.InitializationContext;
-import net.sf.anathema.lib.control.IChangeListener;
+import net.sf.anathema.lib.control.ChangeListener;
 import net.sf.anathema.lib.util.Identifier;
 
 import java.util.ArrayList;
@@ -18,7 +18,7 @@ public class DemoIntimaciesModel implements IntimaciesModel {
   private List<Intimacy> entries = new ArrayList<>();
 
   @Override
-  public void addModelChangeListener(IChangeListener listener) {
+  public void addModelChangeListener(ChangeListener listener) {
     throw new UnsupportedOperationException();
   }
 

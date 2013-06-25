@@ -6,7 +6,7 @@ import net.sf.anathema.character.perspective.DescriptiveFeatures;
 import net.sf.anathema.character.perspective.LoadedDescriptiveFeatures;
 import net.sf.anathema.framework.repository.Item;
 import net.sf.anathema.hero.model.Hero;
-import net.sf.anathema.lib.control.IChangeListener;
+import net.sf.anathema.lib.control.ChangeListener;
 import net.sf.anathema.lib.control.ObjectValueListener;
 import org.jmock.example.announcer.Announcer;
 
@@ -14,7 +14,7 @@ public class CharacterItemModel {
 
   private DescriptiveFeatures descriptiveFeatures;
   private Item item;
-  private final Announcer<IChangeListener> featuresChangeAnnouncer = Announcer.to(IChangeListener.class);
+  private final Announcer<ChangeListener> featuresChangeAnnouncer = Announcer.to(ChangeListener.class);
 
   public CharacterItemModel(DescriptiveFeatures descriptiveFeatures) {
     this.descriptiveFeatures = descriptiveFeatures;
@@ -55,11 +55,11 @@ public class CharacterItemModel {
     return item;
   }
 
-  public void whenFeaturesChange(IChangeListener listener) {
+  public void whenFeaturesChange(ChangeListener listener) {
     featuresChangeAnnouncer.addListener(listener);
   }
 
-  private class AnnouncingChangeListener implements IChangeListener {
+  private class AnnouncingChangeListener implements ChangeListener {
     @Override
     public void changeOccurred() {
       featuresChangeAnnouncer.announce().changeOccurred();

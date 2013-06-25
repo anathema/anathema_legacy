@@ -1,6 +1,6 @@
 package net.sf.anathema.framework.repository;
 
-import net.sf.anathema.lib.control.IChangeListener;
+import net.sf.anathema.lib.control.ChangeListener;
 
 public class NullChangeManagement implements ChangeManagement {
   @Override
@@ -14,12 +14,12 @@ public class NullChangeManagement implements ChangeManagement {
   }
 
   @Override
-  public void removeDirtyListener(IChangeListener changeListener) {
+  public void removeDirtyListener(ChangeListener changeListener) {
     //nothing to do
   }
 
   @Override
-  public void addDirtyListener(IChangeListener changeListener) {
+  public void addDirtyListener(ChangeListener changeListener) {
     //nothing to do
   }
 }

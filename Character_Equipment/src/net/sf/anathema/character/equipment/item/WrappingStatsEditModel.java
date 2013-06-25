@@ -6,7 +6,7 @@ import net.sf.anathema.character.equipment.item.model.IEquipmentDatabaseManageme
 import net.sf.anathema.character.equipment.item.model.IEquipmentTemplateEditModel;
 import net.sf.anathema.character.equipment.item.model.StatsEditor;
 import net.sf.anathema.character.generic.equipment.weapon.IEquipmentStats;
-import net.sf.anathema.lib.control.IChangeListener;
+import net.sf.anathema.lib.control.ChangeListener;
 import org.jmock.example.announcer.Announcer;
 
 import java.util.List;
@@ -15,7 +15,7 @@ public class WrappingStatsEditModel implements StatsEditModel {
 
   private static final IEquipmentStats NO_SELECTION = null;
   private final IEquipmentDatabaseManagement model;
-  private final Announcer<IChangeListener> announcer = new Announcer<>(IChangeListener.class);
+  private final Announcer<ChangeListener> announcer = new Announcer<>(ChangeListener.class);
   private IEquipmentStats selectedStats;
 
   public WrappingStatsEditModel(IEquipmentDatabaseManagement model) {
@@ -23,7 +23,7 @@ public class WrappingStatsEditModel implements StatsEditModel {
   }
 
   @Override
-  public void addStatsChangeListener(IChangeListener listener) {
+  public void addStatsChangeListener(ChangeListener listener) {
     editModel().addStatsChangeListener(listener);
   }
 
@@ -43,7 +43,7 @@ public class WrappingStatsEditModel implements StatsEditModel {
   }
 
   @Override
-  public void addCompositionChangeListener(IChangeListener listener) {
+  public void addCompositionChangeListener(ChangeListener listener) {
     editModel().addCompositionChangeListener(listener);
   }
 
@@ -86,7 +86,7 @@ public class WrappingStatsEditModel implements StatsEditModel {
   }
 
   @Override
-  public void whenSelectedStatsChanges(IChangeListener listener) {
+  public void whenSelectedStatsChanges(ChangeListener listener) {
     announcer.addListener(listener);
   }
 

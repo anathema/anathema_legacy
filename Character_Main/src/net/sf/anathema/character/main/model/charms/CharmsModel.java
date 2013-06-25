@@ -10,7 +10,7 @@ import net.sf.anathema.character.model.charm.ILearningCharmGroup;
 import net.sf.anathema.character.model.charm.SpecialCharmLearnArbitrator;
 import net.sf.anathema.charmtree.view.ICharmGroupArbitrator;
 import net.sf.anathema.hero.model.HeroModel;
-import net.sf.anathema.lib.control.IChangeListener;
+import net.sf.anathema.lib.control.ChangeListener;
 import net.sf.anathema.lib.util.Identifier;
 import net.sf.anathema.lib.util.SimpleIdentifier;
 
@@ -19,7 +19,7 @@ public interface CharmsModel extends HeroModel, IExtendedCharmLearnableArbitrato
 
   Identifier ID = new SimpleIdentifier("Charms");
 
-  void addLearnableListener(IChangeListener listener);
+  void addLearnableListener(ChangeListener listener);
 
   ILearningCharmGroup[] getAllGroups();
 

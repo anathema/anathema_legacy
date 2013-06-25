@@ -8,7 +8,7 @@ import net.sf.anathema.character.generic.type.ICharacterType;
 import net.sf.anathema.character.impl.model.CharacterStatisticsConfiguration;
 import net.sf.anathema.character.view.repository.ITemplateTypeAggregation;
 import net.sf.anathema.lib.collection.MultiEntryMap;
-import net.sf.anathema.lib.control.IChangeListener;
+import net.sf.anathema.lib.control.ChangeListener;
 import org.jmock.example.announcer.Announcer;
 
 import java.util.ArrayList;
@@ -18,7 +18,7 @@ public class CharacterItemCreationModel implements ICharacterItemCreationModel {
 
   private final CharacterTypes characterTypes;
   private ICharacterType selectedType;
-  private final Announcer<IChangeListener> control = Announcer.to(IChangeListener.class);
+  private final Announcer<ChangeListener> control = Announcer.to(ChangeListener.class);
   private ITemplateTypeAggregation selectedTemplate;
   private final MultiEntryMap<ICharacterType, ITemplateTypeAggregation> aggregationsByType = new MultiEntryMap<>();
   private final CharacterStatisticsConfiguration configuration;
@@ -126,7 +126,7 @@ public class CharacterItemCreationModel implements ICharacterItemCreationModel {
   }
 
   @Override
-  public void addListener(IChangeListener listener) {
+  public void addListener(ChangeListener listener) {
     control.addListener(listener);
   }
 }

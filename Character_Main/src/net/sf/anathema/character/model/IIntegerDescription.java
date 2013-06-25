@@ -1,6 +1,6 @@
 package net.sf.anathema.character.model;
 
-import net.sf.anathema.lib.control.IChangeListener;
+import net.sf.anathema.lib.control.ChangeListener;
 
 public interface IIntegerDescription {
 
@@ -8,5 +8,5 @@ public interface IIntegerDescription {
 
   void setValue(int value);
 
-  void addChangeListener(IChangeListener listener);
+  void addChangeListener(ChangeListener listener);
 }

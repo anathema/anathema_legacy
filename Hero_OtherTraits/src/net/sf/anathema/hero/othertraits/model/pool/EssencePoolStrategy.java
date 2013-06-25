@@ -1,6 +1,6 @@
 package net.sf.anathema.hero.othertraits.model.pool;
 
-import net.sf.anathema.lib.control.IChangeListener;
+import net.sf.anathema.lib.control.ChangeListener;
 import net.sf.anathema.lib.util.IdentifiedInteger;
 
 public interface EssencePoolStrategy {
@@ -27,5 +27,5 @@ public interface EssencePoolStrategy {
 
   int getAttunementExpenditures();
 
-  void addPoolChangeListener(IChangeListener listener);
+  void addPoolChangeListener(ChangeListener listener);
 }

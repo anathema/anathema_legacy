@@ -8,7 +8,7 @@ import net.sf.anathema.character.library.trait.LimitedTrait;
 import net.sf.anathema.character.library.trait.Trait;
 import net.sf.anathema.character.library.trait.favorable.FriendlyIncrementChecker;
 import net.sf.anathema.hero.model.Hero;
-import net.sf.anathema.lib.control.IChangeListener;
+import net.sf.anathema.lib.control.ChangeListener;
 import net.sf.anathema.lib.workflow.textualdescription.ITextualDescription;
 import net.sf.anathema.lib.workflow.textualdescription.model.SimpleTextualDescription;
 import org.jmock.example.announcer.Announcer;
@@ -20,7 +20,7 @@ public class VirtueFlawImpl implements VirtueFlaw {
   private TraitType root;
   private Trait limitTrait;
   private final ITextualDescription name = new SimpleTextualDescription("");
-  private final Announcer<IChangeListener> control = Announcer.to(IChangeListener.class);
+  private final Announcer<ChangeListener> control = Announcer.to(ChangeListener.class);
   private Hero hero;
 
   public VirtueFlawImpl(Hero hero) {
@@ -53,7 +53,7 @@ public class VirtueFlawImpl implements VirtueFlaw {
   }
 
   @Override
-  public void addRootChangeListener(IChangeListener listener) {
+  public void addRootChangeListener(ChangeListener listener) {
     control.addListener(listener);
   }
 

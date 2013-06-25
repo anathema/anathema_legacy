@@ -2,7 +2,7 @@ package net.sf.anathema.framework.itemdata.model;
 
 import net.sf.anathema.framework.styledtext.model.IStyledTextualDescription;
 import net.sf.anathema.framework.styledtext.model.StyledTextualDescription;
-import net.sf.anathema.lib.control.IChangeListener;
+import net.sf.anathema.lib.control.ChangeListener;
 import net.sf.anathema.lib.control.ObjectValueListener;
 import net.sf.anathema.lib.workflow.textualdescription.ITextualDescription;
 import net.sf.anathema.lib.workflow.textualdescription.model.SimpleTextualDescription;
@@ -12,7 +12,7 @@ public class ItemDescription implements IItemDescription {
 
   private final ITextualDescription name;
   private final IStyledTextualDescription content;
-  private final Announcer<IChangeListener> control = Announcer.to(IChangeListener.class);
+  private final Announcer<ChangeListener> control = Announcer.to(ChangeListener.class);
 
   public ItemDescription() {
     this("");
@@ -54,12 +54,12 @@ public class ItemDescription implements IItemDescription {
   }
 
   @Override
-  public void addDirtyListener(IChangeListener changeListener) {
+  public void addDirtyListener(ChangeListener changeListener) {
     control.addListener(changeListener);
   }
 
   @Override
-  public void removeDirtyListener(IChangeListener changeListener) {
+  public void removeDirtyListener(ChangeListener changeListener) {
     control.removeListener(changeListener);
   }
 }

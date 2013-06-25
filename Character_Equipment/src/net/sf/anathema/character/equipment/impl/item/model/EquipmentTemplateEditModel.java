@@ -13,7 +13,7 @@ import net.sf.anathema.character.generic.equipment.weapon.IEquipmentStats;
 import net.sf.anathema.framework.itemdata.model.IItemDescription;
 import net.sf.anathema.framework.itemdata.model.ItemDescription;
 import net.sf.anathema.framework.styledtext.model.ITextPart;
-import net.sf.anathema.lib.control.IChangeListener;
+import net.sf.anathema.lib.control.ChangeListener;
 import org.jmock.example.announcer.Announcer;
 
 import java.util.ArrayList;
@@ -28,10 +28,10 @@ public class EquipmentTemplateEditModel implements IEquipmentTemplateEditModel {
   private final IEquipmentDatabase database;
   private IEquipmentTemplate editedTemplate;
   private final List<IEquipmentStats> statses = new ArrayList<>();
-  private final Announcer<IChangeListener> statsChangeControl = Announcer.to(IChangeListener.class);
-  private final Announcer<IChangeListener> magicalMaterialControl = Announcer.to(IChangeListener.class);
-  private final Announcer<IChangeListener> compositionControl = Announcer.to(IChangeListener.class);
-  private final Announcer<IChangeListener> costControl = Announcer.to(IChangeListener.class);
+  private final Announcer<ChangeListener> statsChangeControl = Announcer.to(ChangeListener.class);
+  private final Announcer<ChangeListener> magicalMaterialControl = Announcer.to(ChangeListener.class);
+  private final Announcer<ChangeListener> compositionControl = Announcer.to(ChangeListener.class);
+  private final Announcer<ChangeListener> costControl = Announcer.to(ChangeListener.class);
   private String editTemplateId;
   private MaterialComposition composition;
   private MagicalMaterial material;
@@ -139,7 +139,7 @@ public class EquipmentTemplateEditModel implements IEquipmentTemplateEditModel {
   }
 
   @Override
-  public void addStatsChangeListener(IChangeListener changeListener) {
+  public void addStatsChangeListener(ChangeListener changeListener) {
     statsChangeControl.addListener(changeListener);
   }
 
@@ -155,17 +155,17 @@ public class EquipmentTemplateEditModel implements IEquipmentTemplateEditModel {
   }
 
   @Override
-  public void addMagicalMaterialChangeListener(IChangeListener listener) {
+  public void addMagicalMaterialChangeListener(ChangeListener listener) {
     magicalMaterialControl.addListener(listener);
   }
 
   @Override
-  public void addCompositionChangeListener(IChangeListener listener) {
+  public void addCompositionChangeListener(ChangeListener listener) {
     compositionControl.addListener(listener);
   }
 
   @Override
-  public void addCostChangeListener(IChangeListener listener) {
+  public void addCostChangeListener(ChangeListener listener) {
     costControl.addListener(listener);
   }
 

@@ -1,9 +1,9 @@
 package net.sf.anathema.character.platform.module.perspective;
 
 import net.sf.anathema.interaction.Tool;
-import net.sf.anathema.lib.control.IChangeListener;
+import net.sf.anathema.lib.control.ChangeListener;
 
-public class DisableInteraction implements IChangeListener {
+public class DisableInteraction implements ChangeListener {
   private Tool interaction;
 
   public DisableInteraction(Tool interaction) {

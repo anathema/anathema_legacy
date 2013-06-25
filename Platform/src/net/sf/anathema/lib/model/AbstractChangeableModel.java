@@ -1,18 +1,18 @@
 package net.sf.anathema.lib.model;
 
-import net.sf.anathema.lib.control.IChangeListener;
+import net.sf.anathema.lib.control.ChangeListener;
 import net.sf.anathema.lib.exception.UnreachableCodeReachedException;
 import org.jmock.example.announcer.Announcer;
 
 public abstract class AbstractChangeableModel implements Cloneable, IChangeableModel {
 
-  private transient Announcer<IChangeListener> listeners = Announcer.to(IChangeListener.class);
+  private transient Announcer<ChangeListener> listeners = Announcer.to(ChangeListener.class);
 
   @Override
   protected Object clone() {
     try {
       AbstractChangeableModel clone = (AbstractChangeableModel) super.clone();
-      clone.listeners = Announcer.to(IChangeListener.class);
+      clone.listeners = Announcer.to(ChangeListener.class);
       return clone;
     }
     catch (CloneNotSupportedException e) {
@@ -21,12 +21,12 @@ public abstract class AbstractChangeableModel implements Cloneable, IChangeableM
   }
 
   @Override
-  public void addChangeListener(IChangeListener listener) {
+  public void addChangeListener(ChangeListener listener) {
     listeners.addListener(listener);
   }
 
   @Override
-  public void removeChangeListener(IChangeListener listener) {
+  public void removeChangeListener(ChangeListener listener) {
     listeners.removeListener(listener);
   }
 

@@ -1,6 +1,6 @@
 package net.sf.anathema.scribe.editor.model;
 
-import net.sf.anathema.lib.control.IChangeListener;
+import net.sf.anathema.lib.control.ChangeListener;
 import net.sf.anathema.scribe.scroll.persistence.RepositoryId;
 import net.sf.anathema.scribe.scroll.persistence.Scroll;
 import net.sf.anathema.scribe.scroll.persistence.ScrollDto;
@@ -30,7 +30,7 @@ public class ScrollModel {
 
   private final Announcer<ScrollChangedListener> contentChangeAnnouncer = new Announcer(ScrollChangedListener.class);
   private final Announcer<ScrollChangedListener> nameChangeAnnouncer = new Announcer(ScrollChangedListener.class);
-  private final Announcer<IChangeListener> listChangeAnnouncer = new Announcer(IChangeListener.class);
+  private final Announcer<ChangeListener> listChangeAnnouncer = new Announcer(ChangeListener.class);
   private final ScrollPersister persister;
   private WikiText wikiText;
   private String name;
@@ -98,7 +98,7 @@ public class ScrollModel {
     setName(scroll.dto.title);
   }
 
-  public void addScrollListChangeListener(IChangeListener listener) {
+  public void addScrollListChangeListener(ChangeListener listener) {
     listChangeAnnouncer.addListener(listener);
   }
 }

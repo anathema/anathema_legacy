@@ -3,9 +3,9 @@ package net.sf.anathema.lib.control;
 public class GlobalChangeAdapter<T> implements ObjectValueListener<T>,
     IIntValueChangedListener, IBooleanValueChangedListener {
 
-  private final IChangeListener listener;
+  private final ChangeListener listener;
 
-  public GlobalChangeAdapter(IChangeListener listener) {
+  public GlobalChangeAdapter(ChangeListener listener) {
     this.listener = listener;
   }
 

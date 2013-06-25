@@ -1,6 +1,6 @@
 package net.sf.anathema.magic.description.model;
 
-import net.sf.anathema.lib.control.IChangeListener;
+import net.sf.anathema.lib.control.ChangeListener;
 
 public interface MagicDescriptionEditModel {
 
@@ -14,7 +14,7 @@ public interface MagicDescriptionEditModel {
 
   void updateCurrentDescription(String newDescription);
 
-  void addDescriptionChangedListener(IChangeListener listener);
+  void addDescriptionChangedListener(ChangeListener listener);
 
-  void removeDescriptionChangeListener(IChangeListener listener);
+  void removeDescriptionChangeListener(ChangeListener listener);
 }

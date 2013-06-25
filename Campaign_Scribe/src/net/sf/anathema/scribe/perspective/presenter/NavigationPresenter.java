@@ -1,7 +1,7 @@
 package net.sf.anathema.scribe.perspective.presenter;
 
 import net.sf.anathema.interaction.Command;
-import net.sf.anathema.lib.control.IChangeListener;
+import net.sf.anathema.lib.control.ChangeListener;
 import net.sf.anathema.scribe.editor.model.HtmlText;
 import net.sf.anathema.scribe.editor.model.ScrollChangedListener;
 import net.sf.anathema.scribe.editor.model.WikiText;
@@ -20,7 +20,7 @@ public class NavigationPresenter {
 
   public void initializeNavigationPresentation() {
     addAllReferences();
-    model.scrollModel.addScrollListChangeListener(new IChangeListener() {
+    model.scrollModel.addScrollListChangeListener(new ChangeListener() {
       @Override
       public void changeOccurred() {
         view.clear();

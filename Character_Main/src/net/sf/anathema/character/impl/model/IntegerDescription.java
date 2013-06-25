@@ -1,12 +1,12 @@
 package net.sf.anathema.character.impl.model;
 
 import net.sf.anathema.character.model.IIntegerDescription;
-import net.sf.anathema.lib.control.IChangeListener;
+import net.sf.anathema.lib.control.ChangeListener;
 import org.jmock.example.announcer.Announcer;
 
 public class IntegerDescription implements IIntegerDescription {
 
-  private final Announcer<IChangeListener> control = Announcer.to(IChangeListener.class);
+  private final Announcer<ChangeListener> control = Announcer.to(ChangeListener.class);
   private int value;
 
   public IntegerDescription(int value) {
@@ -28,7 +28,7 @@ public class IntegerDescription implements IIntegerDescription {
   }
 
   @Override
-  public final void addChangeListener(IChangeListener listener) {
+  public final void addChangeListener(ChangeListener listener) {
     control.addListener(listener);
   }
 

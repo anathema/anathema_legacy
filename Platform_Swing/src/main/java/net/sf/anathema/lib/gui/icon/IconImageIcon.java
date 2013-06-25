@@ -1,6 +1,6 @@
 package net.sf.anathema.lib.gui.icon;
 
-import net.sf.anathema.lib.control.IChangeListener;
+import net.sf.anathema.lib.control.ChangeListener;
 import net.sf.anathema.lib.gui.action.IconUtilities;
 import net.sf.anathema.lib.model.IChangeableModel;
 
@@ -14,7 +14,7 @@ public class IconImageIcon extends ImageIcon {
     super(createImage(icon));
     if (icon instanceof IChangeableModel) {
       IChangeableModel changeableModel = (IChangeableModel) icon;
-      changeableModel.addChangeListener(new IChangeListener() {
+      changeableModel.addChangeListener(new ChangeListener() {
         @Override
         public void changeOccurred() {
           setImage(createImage(icon));

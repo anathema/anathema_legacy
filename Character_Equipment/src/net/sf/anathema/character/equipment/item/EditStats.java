@@ -5,7 +5,7 @@ import net.sf.anathema.character.equipment.item.view.ToolListView;
 import net.sf.anathema.character.generic.equipment.weapon.IEquipmentStats;
 import net.sf.anathema.framework.presenter.resources.BasicUi;
 import net.sf.anathema.interaction.Tool;
-import net.sf.anathema.lib.control.IChangeListener;
+import net.sf.anathema.lib.control.ChangeListener;
 import net.sf.anathema.lib.resources.Resources;
 
 public class EditStats {
@@ -24,7 +24,7 @@ public class EditStats {
     tool.setIcon(new BasicUi().getEditIconPath());
     tool.setTooltip(resources.getString("Equipment.Creation.Stats.EditActionTooltip"));
     tool.setCommand(new EditStatsCommand(factory, editModel, resources));
-    editModel.whenSelectedStatsChanges(new IChangeListener() {
+    editModel.whenSelectedStatsChanges(new ChangeListener() {
       @Override
       public void changeOccurred() {
         updateEnabled(tool);

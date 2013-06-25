@@ -4,7 +4,7 @@ import net.sf.anathema.character.equipment.item.WrappingStatsEditModel;
 import net.sf.anathema.character.equipment.item.model.IEquipmentDatabaseManagement;
 import net.sf.anathema.character.equipment.item.model.IEquipmentTemplateEditModel;
 import net.sf.anathema.character.generic.equipment.weapon.IEquipmentStats;
-import net.sf.anathema.lib.control.IChangeListener;
+import net.sf.anathema.lib.control.ChangeListener;
 import org.junit.Before;
 import org.junit.Test;
 
@@ -46,7 +46,7 @@ public class WrappingStatsEditModelTest {
 
   @Test
   public void notifiesClientsOfSelection() throws Exception {
-    IChangeListener listener = addAListener();
+    ChangeListener listener = addAListener();
     selectOriginalStats();
     verify(listener).changeOccurred();
   }
@@ -54,7 +54,7 @@ public class WrappingStatsEditModelTest {
   @Test
   public void doesNotNotifyWhenNoActualChangeOccurs() throws Exception {
     selectOriginalStats();
-    IChangeListener listener = addAListener();
+    ChangeListener listener = addAListener();
     selectOriginalStats();
     verifyZeroInteractions(listener);
   }
@@ -90,13 +90,13 @@ public class WrappingStatsEditModelTest {
   @Test
   public void notifiesClientsOfRemoval() throws Exception {
     selectOriginalStats();
-    IChangeListener listener = addAListener();
+    ChangeListener listener = addAListener();
     editModel.removeSelectedStatistics();
     verify(listener).changeOccurred();
   }
 
-  private IChangeListener addAListener() {
-    IChangeListener listener = mock(IChangeListener.class);
+  private ChangeListener addAListener() {
+    ChangeListener listener = mock(ChangeListener.class);
     editModel.whenSelectedStatsChanges(listener);
     return listener;
   }

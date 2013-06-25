@@ -19,7 +19,7 @@ import net.sf.anathema.hero.model.Hero;
 import net.sf.anathema.interaction.Command;
 import net.sf.anathema.interaction.Tool;
 import net.sf.anathema.lib.collection.IdentityMapping;
-import net.sf.anathema.lib.control.IChangeListener;
+import net.sf.anathema.lib.control.ChangeListener;
 import net.sf.anathema.lib.control.ObjectValueListener;
 import net.sf.anathema.lib.file.RelativePath;
 import net.sf.anathema.lib.gui.Presenter;
@@ -102,7 +102,7 @@ public class SpecialtiesConfigurationPresenter implements Presenter {
         reset(specialtySelectionView);
       }
     });
-    specialtyManagement.addSelectionChangeListener(new IChangeListener() {
+    specialtyManagement.addSelectionChangeListener(new ChangeListener() {
       @Override
       public void changeOccurred() {
         specialtySelectionView.setButtonEnabled(specialtyManagement.isEntryComplete());

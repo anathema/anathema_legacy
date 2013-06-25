@@ -15,7 +15,7 @@ import net.sf.anathema.hero.change.FlavoredChangeListener;
 import net.sf.anathema.hero.change.RemovableEntryChangeAdapter;
 import net.sf.anathema.hero.model.Hero;
 import net.sf.anathema.hero.model.InitializationContext;
-import net.sf.anathema.lib.control.IChangeListener;
+import net.sf.anathema.lib.control.ChangeListener;
 import net.sf.anathema.lib.lang.StringUtilities;
 import net.sf.anathema.lib.util.Identifier;
 import net.sf.anathema.lib.util.SimpleIdentifier;
@@ -36,7 +36,7 @@ public class LanguagesModelImpl extends AbstractRemovableEntryModel<Identifier> 
   private Identifier selection;
   private int languagePointsAllowed;
   private Hero hero;
-  private final Announcer<IChangeListener> pointControl = Announcer.to(IChangeListener.class);
+  private final Announcer<ChangeListener> pointControl = Announcer.to(ChangeListener.class);
 
   @Override
   public Identifier getId() {
@@ -130,7 +130,7 @@ public class LanguagesModelImpl extends AbstractRemovableEntryModel<Identifier> 
   }
 
   @Override
-  public void addCharacterChangedListener(IChangeListener listener) {
+  public void addCharacterChangedListener(ChangeListener listener) {
     pointControl.addListener(listener);
   }
 

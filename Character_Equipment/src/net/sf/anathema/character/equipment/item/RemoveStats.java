@@ -5,7 +5,7 @@ import net.sf.anathema.character.generic.equipment.weapon.IEquipmentStats;
 import net.sf.anathema.framework.presenter.resources.BasicUi;
 import net.sf.anathema.interaction.Command;
 import net.sf.anathema.interaction.Tool;
-import net.sf.anathema.lib.control.IChangeListener;
+import net.sf.anathema.lib.control.ChangeListener;
 import net.sf.anathema.lib.resources.Resources;
 
 public class RemoveStats {
@@ -28,7 +28,7 @@ public class RemoveStats {
         editModel.removeSelectedStatistics();
       }
     });
-    editModel.whenSelectedStatsChanges(new IChangeListener() {
+    editModel.whenSelectedStatsChanges(new ChangeListener() {
       @Override
       public void changeOccurred() {
         updateEnabled(tool);

@@ -6,7 +6,7 @@ import net.sf.anathema.character.equipment.MaterialComposition;
 import net.sf.anathema.character.equipment.template.IEquipmentTemplate;
 import net.sf.anathema.character.generic.equipment.weapon.IEquipmentStats;
 import net.sf.anathema.framework.itemdata.model.IItemDescription;
-import net.sf.anathema.lib.control.IChangeListener;
+import net.sf.anathema.lib.control.ChangeListener;
 
 import java.util.List;
 
@@ -24,7 +24,7 @@ public interface IEquipmentTemplateEditModel {
 
   void setEditTemplate(String templateId);
 
-  void addStatsChangeListener(IChangeListener changeListener);
+  void addStatsChangeListener(ChangeListener changeListener);
 
   IEquipmentTemplate createTemplate();
 
@@ -38,7 +38,7 @@ public interface IEquipmentTemplateEditModel {
 
   void setMaterialComposition(MaterialComposition newValue);
   
-  void addCostChangeListener(IChangeListener listener);
+  void addCostChangeListener(ChangeListener listener);
   
   void setCost(ItemCost cost);
   
@@ -48,9 +48,9 @@ public interface IEquipmentTemplateEditModel {
 
   MaterialComposition getMaterialComposition();
 
-  void addMagicalMaterialChangeListener(IChangeListener listener);
+  void addMagicalMaterialChangeListener(ChangeListener listener);
 
-  void addCompositionChangeListener(IChangeListener listener);
+  void addCompositionChangeListener(ChangeListener listener);
 
   void replaceStatistics(IEquipmentStats selectedStats, IEquipmentStats equipmentStats);
 }

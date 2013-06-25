@@ -7,7 +7,7 @@ import net.sf.anathema.character.main.model.essencepool.EssencePoolModel;
 import net.sf.anathema.character.main.model.traits.TraitMap;
 import net.sf.anathema.character.view.AdvantageView;
 import net.sf.anathema.framework.value.IIntValueView;
-import net.sf.anathema.lib.control.IChangeListener;
+import net.sf.anathema.lib.control.ChangeListener;
 import net.sf.anathema.lib.gui.Presenter;
 import net.sf.anathema.lib.resources.Resources;
 import net.sf.anathema.lib.workflow.labelledvalue.IValueView;
@@ -38,7 +38,7 @@ public class EssenceConfigurationPresenter implements Presenter {
       final IValueView<String> personalView = addPool(key, personalPool);
       final IValueView<String> peripheralView = createPeripheralPoolView();
       final IValueView<String> attunementView = addPool("EssencePool.Name.Attunement", essencePool.getAttunedPool());
-      essencePool.addPoolChangeListener(new IChangeListener() {
+      essencePool.addPoolChangeListener(new ChangeListener() {
         @Override
         public void changeOccurred() {
           personalView.setValue(essencePool.getPersonalPool());

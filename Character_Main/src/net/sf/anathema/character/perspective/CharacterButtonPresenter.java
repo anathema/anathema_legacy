@@ -2,7 +2,7 @@ package net.sf.anathema.character.perspective;
 
 import net.sf.anathema.character.perspective.model.CharacterIdentifier;
 import net.sf.anathema.character.perspective.model.CharacterItemModel;
-import net.sf.anathema.lib.control.IChangeListener;
+import net.sf.anathema.lib.control.ChangeListener;
 import net.sf.anathema.lib.resources.Resources;
 
 public class CharacterButtonPresenter {
@@ -26,7 +26,7 @@ public class CharacterButtonPresenter {
   }
 
   private void initDescriptiveFeatureListening() {
-    character.whenFeaturesChange(new IChangeListener() {
+    character.whenFeaturesChange(new ChangeListener() {
       @Override
       public void changeOccurred() {
         view.updateButton(extractButtonDto());

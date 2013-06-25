@@ -1,10 +1,10 @@
 package net.sf.anathema.lib.model;
 
-import net.sf.anathema.lib.control.IChangeListener;
+import net.sf.anathema.lib.control.ChangeListener;
 
 public interface IChangeableModel {
 
-  void addChangeListener(IChangeListener listener);
+  void addChangeListener(ChangeListener listener);
 
-  void removeChangeListener(IChangeListener listener);
+  void removeChangeListener(ChangeListener listener);
 }

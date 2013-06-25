@@ -42,7 +42,7 @@ import net.sf.anathema.hero.model.Hero;
 import net.sf.anathema.hero.model.InitializationContext;
 import net.sf.anathema.hero.specialties.model.SpecialtiesCollectionImpl;
 import net.sf.anathema.initialization.ObjectFactory;
-import net.sf.anathema.lib.control.IChangeListener;
+import net.sf.anathema.lib.control.ChangeListener;
 import net.sf.anathema.lib.control.ICollectionListener;
 import net.sf.anathema.lib.util.Identifier;
 import org.apache.commons.lang3.ArrayUtils;
@@ -58,11 +58,11 @@ import static net.sf.anathema.character.equipment.impl.item.model.gson.GsonEquip
 public class EquipmentModelImpl implements EquipmentOptionsProvider, EquipmentModel, StatsModifierFactory {
   private final List<IEquipmentItem> naturalWeaponItems = new ArrayList<>();
   private final Table<IEquipmentItem, IEquipmentStats, List<IEquipmentStatsOption>> optionsTable = HashBasedTable.create();
-  private final Announcer<IChangeListener> modelChangeControl = Announcer.to(IChangeListener.class);
+  private final Announcer<ChangeListener> modelChangeControl = Announcer.to(ChangeListener.class);
   private final Announcer<ICollectionListener> equipmentItemControl = Announcer.to(ICollectionListener.class);
   private final EquipmentCollection equipmentItems = new EquipmentCollection();
   private IEquipmentTemplateProvider equipmentTemplateProvider;
-  private final IChangeListener itemChangePropagator = new IChangeListener() {
+  private final ChangeListener itemChangePropagator = new ChangeListener() {
     @Override
     public void changeOccurred() {
       fireModelChanged();
@@ -347,7 +347,7 @@ public class EquipmentModelImpl implements EquipmentOptionsProvider, EquipmentMo
     return template.getMaterial();
   }
 
-  public void addChangeListener(IChangeListener listener) {
+  public void addChangeListener(ChangeListener listener) {
     modelChangeControl.addListener(listener);
   }
 
@@ -369,7 +369,7 @@ public class EquipmentModelImpl implements EquipmentOptionsProvider, EquipmentMo
     return new EquipmentStatsModifierFactory().create(hero);
   }
 
-  private class SpecialtyPrintRemover implements IChangeListener {
+  private class SpecialtyPrintRemover implements ChangeListener {
     private final EquipmentHeroEvaluator dataProvider;
 
     public SpecialtyPrintRemover(EquipmentHeroEvaluator dataProvider) {

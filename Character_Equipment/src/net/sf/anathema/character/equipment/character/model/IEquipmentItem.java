@@ -5,7 +5,7 @@ import net.sf.anathema.character.equipment.MagicalMaterial;
 import net.sf.anathema.character.equipment.MaterialComposition;
 import net.sf.anathema.character.generic.equipment.ArtifactAttuneType;
 import net.sf.anathema.character.generic.equipment.weapon.IEquipmentStats;
-import net.sf.anathema.lib.control.IChangeListener;
+import net.sf.anathema.lib.control.ChangeListener;
 
 public interface IEquipmentItem {
 
@@ -41,7 +41,7 @@ public interface IEquipmentItem {
   
   ArtifactAttuneType getAttunementState();
 
-  void addChangeListener(IChangeListener listener);
+  void addChangeListener(ChangeListener listener);
 
-  void removeChangeListener(IChangeListener listener);
+  void removeChangeListener(ChangeListener listener);
 }
