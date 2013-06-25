@@ -16,7 +16,6 @@ import net.sf.anathema.hero.change.ChangeFlavor;
 import net.sf.anathema.hero.change.FlavoredChangeListener;
 import net.sf.anathema.hero.magic.MagicCollection;
 import net.sf.anathema.hero.model.Hero;
-import net.sf.anathema.hero.model.InitializationContext;
 import net.sf.anathema.lib.control.ChangeListener;
 import net.sf.anathema.lib.util.IdentifiedInteger;
 import org.jmock.example.announcer.Announcer;
@@ -34,10 +33,9 @@ public class EssencePoolStrategyImpl implements EssencePoolStrategy {
   private Hero hero;
   private final TraitMap traitMap;
   private final MagicCollection magicCollection;
-  private final InitializationContext context;
 
-  public EssencePoolStrategyImpl(Hero hero, IEssenceTemplate essenceTemplate, InitializationContext context, TraitMap traitMap,
-                                 MagicCollection magicCollection, OverdrivePool overdrivePool, IAdditionalRules additionalRules) {
+  public EssencePoolStrategyImpl(Hero hero, IEssenceTemplate essenceTemplate, TraitMap traitMap, MagicCollection magicCollection, OverdrivePool overdrivePool,
+                                 IAdditionalRules additionalRules) {
     this.hero = hero;
     this.traitMap = traitMap;
     this.magicCollection = magicCollection;
@@ -49,7 +47,6 @@ public class EssencePoolStrategyImpl implements EssencePoolStrategy {
         control.announce().changeOccurred();
       }
     });
-    this.context = context;
     this.essenceTemplate = essenceTemplate;
   }
 

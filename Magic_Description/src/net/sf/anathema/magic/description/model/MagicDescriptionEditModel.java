@@ -16,5 +16,6 @@ public interface MagicDescriptionEditModel {
 
   void addDescriptionChangedListener(ChangeListener listener);
 
+  @SuppressWarnings("UnusedDeclaration")
   void removeDescriptionChangeListener(ChangeListener listener);
 }

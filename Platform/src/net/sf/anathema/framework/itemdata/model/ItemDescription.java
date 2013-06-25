@@ -2,17 +2,13 @@ package net.sf.anathema.framework.itemdata.model;
 
 import net.sf.anathema.framework.styledtext.model.IStyledTextualDescription;
 import net.sf.anathema.framework.styledtext.model.StyledTextualDescription;
-import net.sf.anathema.lib.control.ChangeListener;
-import net.sf.anathema.lib.control.ObjectValueListener;
 import net.sf.anathema.lib.workflow.textualdescription.ITextualDescription;
 import net.sf.anathema.lib.workflow.textualdescription.model.SimpleTextualDescription;
-import org.jmock.example.announcer.Announcer;
 
 public class ItemDescription implements IItemDescription {
 
   private final ITextualDescription name;
   private final IStyledTextualDescription content;
-  private final Announcer<ChangeListener> control = Announcer.to(ChangeListener.class);
 
   public ItemDescription() {
     this("");
@@ -20,15 +16,7 @@ public class ItemDescription implements IItemDescription {
 
   public ItemDescription(String initialName) {
     this.name = new SimpleTextualDescription(initialName);
-    ObjectValueListener<String> listener = new ObjectValueListener<String>() {
-      @Override
-      public void valueChanged(String newValue) {
-        control.announce().changeOccurred();
-      }
-    };
     this.content = new StyledTextualDescription();
-    name.addTextChangedListener(listener);
-    content.addTextChangedListener(listener);
   }
 
   @Override
@@ -39,27 +27,5 @@ public class ItemDescription implements IItemDescription {
   @Override
   public IStyledTextualDescription getContent() {
     return content;
-  }
-
-  @Override
-  public void setClean() {
-    name.setDirty(false);
-    content.setDirty(false);
-    control.announce().changeOccurred();
-  }
-
-  @Override
-  public boolean isDirty() {
-    return name.isDirty() || content.isDirty();
-  }
-
-  @Override
-  public void addDirtyListener(ChangeListener changeListener) {
-    control.addListener(changeListener);
-  }
-
-  @Override
-  public void removeDirtyListener(ChangeListener changeListener) {
-    control.removeListener(changeListener);
   }
 }

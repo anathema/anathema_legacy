@@ -44,7 +44,7 @@ public class EssencePoolModelImpl implements EssencePoolModel, HeroModel {
       return;
     }
     TraitMap traitMap = TraitModelFetcher.fetch(hero);
-    poolStrategy = new EssencePoolStrategyImpl(hero, essenceTemplate, context, traitMap, new MagicCollectionImpl(hero),
+    poolStrategy = new EssencePoolStrategyImpl(hero, essenceTemplate, traitMap, new MagicCollectionImpl(hero),
             overdrivePool, additionalRules);
   }
 

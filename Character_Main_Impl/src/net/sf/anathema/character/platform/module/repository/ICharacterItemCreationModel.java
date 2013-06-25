@@ -19,6 +19,4 @@ public interface ICharacterItemCreationModel {
   void setSelectedTemplate(ITemplateTypeAggregation newValue);
 
   boolean isSelectionComplete();
-
-  boolean isCharacterTypeSelected();
 }

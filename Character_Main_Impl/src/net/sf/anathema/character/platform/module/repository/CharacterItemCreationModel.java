@@ -61,11 +61,6 @@ public class CharacterItemCreationModel implements ICharacterItemCreationModel {
   }
 
   @Override
-  public boolean isCharacterTypeSelected() {
-    return selectedType != null;
-  }
-
-  @Override
   public ICharacterType[] getAvailableCharacterTypes() {
     return types;
   }
