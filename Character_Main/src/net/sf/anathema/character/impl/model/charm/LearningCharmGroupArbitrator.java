@@ -21,6 +21,7 @@ public class LearningCharmGroupArbitrator implements ICharmGroupArbitrator {
     this.context = context;
   }
 
+  //TODO (#343) CharacterType Identity => Equality
   @Override
   public ICharm[] getCharms(ICharmGroup charmGroup) {
     IBasicCharacterData data = context.getBasicCharacterContext();

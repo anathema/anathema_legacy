@@ -70,6 +70,7 @@ public class CharacterItemCreationModel implements ICharacterItemCreationModel {
     return types;
   }
 
+  //TODO (#343) CharacterType Identity => Equality
   @Override
   public void setCharacterType(ICharacterType type) {
     if (selectedType == type) {

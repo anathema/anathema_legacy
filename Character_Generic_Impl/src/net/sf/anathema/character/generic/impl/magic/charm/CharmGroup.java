@@ -44,6 +44,7 @@ public class CharmGroup implements ICharmGroup, Identified {
     return isMartialArtsGroup;
   }
 
+  //TODO (#343) CharacterType Identity => Equality
   @Override
   public boolean equals(Object obj) {
     if (obj == null || obj.getClass() != getClass()) {

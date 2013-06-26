@@ -22,6 +22,7 @@ public class VisibilityPredicate implements Predicate<String> {
     return isVisible(charm);
   }
 
+  //TODO (#343) CharacterType Identity => Equality
   private boolean isVisible(ICharm charm) {
     if (!charmGroupInformer.hasGroupSelected()) {
       return false;
