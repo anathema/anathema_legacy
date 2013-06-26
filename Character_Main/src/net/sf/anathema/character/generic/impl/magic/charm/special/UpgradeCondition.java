@@ -4,8 +4,8 @@ import net.sf.anathema.character.generic.magic.ICharm;
 import net.sf.anathema.character.generic.magic.charms.ICharmLearnableArbitrator;
 import net.sf.anathema.character.generic.traits.TraitType;
 import net.sf.anathema.character.generic.traits.types.OtherTraitType;
-import net.sf.anathema.character.impl.model.charm.CharmSpecialist;
 import net.sf.anathema.character.main.model.traits.TraitModel;
+import net.sf.anathema.character.model.charm.CharmSpecialist;
 import net.sf.anathema.lib.data.Condition;
 
 public class UpgradeCondition implements Condition {

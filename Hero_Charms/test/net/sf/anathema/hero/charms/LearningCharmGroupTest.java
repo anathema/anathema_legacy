@@ -8,7 +8,6 @@ import net.sf.anathema.character.generic.magic.charms.ICharmTree;
 import net.sf.anathema.character.generic.traits.GenericTrait;
 import net.sf.anathema.character.generic.traits.types.AbilityType;
 import net.sf.anathema.character.generic.traits.types.ValuedTraitType;
-import net.sf.anathema.character.impl.model.charm.LearningCharmGroup;
 import net.sf.anathema.character.magic.dummy.DummyCharm;
 import net.sf.anathema.character.main.testing.dummy.DummyExaltCharacterType;
 import net.sf.anathema.character.main.testing.dummy.magic.DummyLearnableArbitrator;
@@ -16,6 +15,7 @@ import net.sf.anathema.character.main.testing.dummy.magic.DummyLearningCharmGrou
 import net.sf.anathema.character.main.testing.dummy.template.DummyCharmTemplate;
 import net.sf.anathema.character.model.charm.IExtendedCharmLearnableArbitrator;
 import net.sf.anathema.character.model.charm.ILearningCharmGroup;
+import net.sf.anathema.character.model.charm.LearningCharmGroup;
 import net.sf.anathema.hero.charms.model.CreationCharmLearnStrategy;
 import org.junit.Test;
 

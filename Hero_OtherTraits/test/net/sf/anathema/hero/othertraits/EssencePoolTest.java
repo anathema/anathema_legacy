@@ -1,9 +1,9 @@
 package net.sf.anathema.hero.othertraits;
 
+import net.sf.anathema.character.generic.GenericCharacter;
 import net.sf.anathema.character.generic.framework.xml.essence.GenericEssenceTemplate;
 import net.sf.anathema.character.generic.traits.types.OtherTraitType;
 import net.sf.anathema.character.generic.traits.types.VirtueType;
-import net.sf.anathema.character.impl.generic.GenericCharacter;
 import net.sf.anathema.character.main.model.essencepool.EssencePoolModelFetcher;
 import net.sf.anathema.character.main.testing.dummy.DummyHero;
 import net.sf.anathema.character.main.testing.dummy.DummyInitializationContext;

@@ -3,14 +3,14 @@ package net.sf.anathema.character.main.costs;
 import net.sf.anathema.character.generic.impl.template.points.DefaultBonusPointCosts;
 import net.sf.anathema.character.generic.template.creation.BonusPointCosts;
 import net.sf.anathema.character.generic.traits.types.VirtueType;
-import net.sf.anathema.character.impl.model.context.trait.CreationTraitValueStrategy;
-import net.sf.anathema.character.impl.model.creation.bonus.virtue.VirtueCostCalculator;
-import net.sf.anathema.character.impl.model.traits.VirtueTemplateFactory;
-import net.sf.anathema.character.impl.model.traits.creation.DefaultTraitFactory;
 import net.sf.anathema.character.library.trait.Trait;
 import net.sf.anathema.character.main.testing.BasicCharacterTestCase;
 import net.sf.anathema.character.main.testing.dummy.DummyHero;
 import net.sf.anathema.character.main.testing.dummy.template.DummyTraitTemplateFactory;
+import net.sf.anathema.character.model.context.trait.CreationTraitValueStrategy;
+import net.sf.anathema.character.model.creation.bonus.virtue.VirtueCostCalculator;
+import net.sf.anathema.character.model.traits.VirtueTemplateFactory;
+import net.sf.anathema.character.model.traits.creation.DefaultTraitFactory;
 import org.junit.Before;
 import org.junit.Test;
 

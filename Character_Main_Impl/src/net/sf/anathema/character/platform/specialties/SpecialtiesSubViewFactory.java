@@ -1,10 +1,10 @@
 package net.sf.anathema.character.platform.specialties;
 
 import net.sf.anathema.character.generic.type.ICharacterType;
-import net.sf.anathema.character.impl.view.SubViewFactory;
 import net.sf.anathema.character.library.intvalue.IntValueDisplayFactoryPrototype;
 import net.sf.anathema.character.platform.RegisteredCharacterView;
 import net.sf.anathema.character.presenter.specialty.ISpecialtiesConfigurationView;
+import net.sf.anathema.character.view.SubViewFactory;
 import net.sf.anathema.framework.value.IntegerViewFactory;
 
 @RegisteredCharacterView(ISpecialtiesConfigurationView.class)

@@ -5,8 +5,8 @@ import net.sf.anathema.character.generic.magic.ICharm;
 import net.sf.anathema.character.generic.magic.charms.ICharmLearnableArbitrator;
 import net.sf.anathema.character.generic.magic.charms.special.IMultipleEffectCharm;
 import net.sf.anathema.character.generic.magic.charms.special.ISubeffect;
-import net.sf.anathema.character.impl.model.charm.CharmSpecialistImpl;
 import net.sf.anathema.character.main.testing.dummy.DummyHero;
+import net.sf.anathema.character.model.charm.CharmSpecialistImpl;
 import org.junit.Test;
 
 import java.util.HashMap;

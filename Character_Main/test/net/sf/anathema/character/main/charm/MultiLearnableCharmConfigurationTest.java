@@ -4,16 +4,16 @@ import net.sf.anathema.character.generic.impl.magic.charm.special.StaticMultiLea
 import net.sf.anathema.character.generic.magic.ICharm;
 import net.sf.anathema.character.generic.magic.charms.ICharmLearnableArbitrator;
 import net.sf.anathema.character.generic.magic.charms.special.IMultiLearnableCharm;
-import net.sf.anathema.character.impl.model.charm.special.MultiLearnableCharmConfiguration;
-import net.sf.anathema.character.impl.model.context.trait.CreationTraitValueStrategy;
-import net.sf.anathema.character.impl.model.context.trait.ExperiencedTraitValueStrategy;
-import net.sf.anathema.character.impl.model.context.trait.ProxyTraitValueStrategy;
 import net.sf.anathema.character.magic.dummy.DummyCharm;
 import net.sf.anathema.character.main.model.charms.CharmsModel;
 import net.sf.anathema.character.main.testing.BasicCharacterTestCase;
 import net.sf.anathema.character.main.testing.dummy.DummyHero;
 import net.sf.anathema.character.main.testing.dummy.magic.DummyCharmsModel;
 import net.sf.anathema.character.main.testing.dummy.magic.DummyLearnableArbitrator;
+import net.sf.anathema.character.model.charm.special.MultiLearnableCharmConfiguration;
+import net.sf.anathema.character.model.context.trait.CreationTraitValueStrategy;
+import net.sf.anathema.character.model.context.trait.ExperiencedTraitValueStrategy;
+import net.sf.anathema.character.model.context.trait.ProxyTraitValueStrategy;
 import org.junit.Before;
 import org.junit.Test;
 

@@ -6,10 +6,10 @@ import net.sf.anathema.character.generic.magic.ICharm;
 import net.sf.anathema.character.generic.magic.charms.ICharmLearnableArbitrator;
 import net.sf.anathema.character.generic.magic.charms.special.IMultipleEffectCharm;
 import net.sf.anathema.character.generic.magic.charms.special.ISubeffect;
-import net.sf.anathema.character.impl.model.charm.CharmSpecialist;
-import net.sf.anathema.character.impl.model.charm.special.MultipleEffectCharmConfiguration;
 import net.sf.anathema.character.main.model.experience.ExperienceModel;
 import net.sf.anathema.character.main.testing.dummy.DummyCondition;
+import net.sf.anathema.character.model.charm.CharmSpecialist;
+import net.sf.anathema.character.model.charm.special.MultipleEffectCharmConfiguration;
 import org.junit.Test;
 
 import static org.junit.Assert.assertFalse;

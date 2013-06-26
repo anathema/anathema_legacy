@@ -2,7 +2,7 @@ package net.sf.anathema;
 
 import com.google.inject.Inject;
 import cucumber.api.java.en.Then;
-import net.sf.anathema.character.impl.model.creation.bonus.BonusPointManagement;
+import net.sf.anathema.character.model.creation.bonus.BonusPointManagement;
 
 import static org.hamcrest.CoreMatchers.is;
 import static org.hamcrest.MatcherAssert.assertThat;

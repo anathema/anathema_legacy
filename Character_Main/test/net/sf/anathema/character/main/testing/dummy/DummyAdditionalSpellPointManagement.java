@@ -1,7 +1,7 @@
 package net.sf.anathema.character.main.testing.dummy;
 
 import net.sf.anathema.character.generic.magic.IMagic;
-import net.sf.anathema.character.impl.model.creation.bonus.IAdditionalMagicLearnPointManagement;
+import net.sf.anathema.character.model.creation.bonus.IAdditionalMagicLearnPointManagement;
 
 import java.util.List;
 

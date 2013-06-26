@@ -1,9 +1,9 @@
 package net.sf.anathema.hero.intimacies.display;
 
 import net.sf.anathema.character.generic.type.ICharacterType;
-import net.sf.anathema.character.impl.view.SubViewFactory;
 import net.sf.anathema.character.library.intvalue.IntValueDisplayFactoryPrototype;
 import net.sf.anathema.character.platform.RegisteredCharacterView;
+import net.sf.anathema.character.view.SubViewFactory;
 import net.sf.anathema.framework.value.IntegerViewFactory;
 
 @RegisteredCharacterView(IntimaciesView.class)

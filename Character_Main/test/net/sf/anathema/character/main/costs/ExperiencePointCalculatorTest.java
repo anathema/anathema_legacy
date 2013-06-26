@@ -4,8 +4,8 @@ import net.sf.anathema.character.generic.impl.template.points.MultiplyRatingCost
 import net.sf.anathema.character.generic.template.experience.IExperiencePointCosts;
 import net.sf.anathema.character.generic.traits.types.OtherTraitType;
 import net.sf.anathema.character.generic.traits.types.VirtueType;
-import net.sf.anathema.character.impl.model.advance.ExperiencePointCostCalculator;
 import net.sf.anathema.character.main.testing.dummy.trait.DummyTrait;
+import net.sf.anathema.character.model.advance.ExperiencePointCostCalculator;
 import org.junit.Test;
 
 import static org.junit.Assert.assertEquals;

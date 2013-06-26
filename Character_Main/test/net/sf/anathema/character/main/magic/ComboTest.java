@@ -8,9 +8,9 @@ import net.sf.anathema.character.generic.magic.charms.type.CharmType;
 import net.sf.anathema.character.generic.traits.types.AbilityType;
 import net.sf.anathema.character.generic.traits.types.AttributeType;
 import net.sf.anathema.character.generic.traits.types.ValuedTraitType;
-import net.sf.anathema.character.impl.model.charm.Combo;
-import net.sf.anathema.character.impl.model.charm.combo.ComboArbitrator;
 import net.sf.anathema.character.magic.dummy.DummyCharmUtilities;
+import net.sf.anathema.character.model.charm.Combo;
+import net.sf.anathema.character.model.charm.combo.ComboArbitrator;
 import org.junit.Test;
 
 import static org.junit.Assert.assertEquals;

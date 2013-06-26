@@ -1,17 +1,17 @@
 package net.sf.anathema.character.platform.module;
 
 import net.sf.anathema.character.generic.framework.CharacterGenericsExtractor;
-import net.sf.anathema.character.impl.model.advance.ExperiencePointManagement;
-import net.sf.anathema.character.impl.model.creation.bonus.BonusPointManagement;
-import net.sf.anathema.character.impl.view.SubViewMap;
-import net.sf.anathema.character.impl.view.SubViewRegistry;
-import net.sf.anathema.character.impl.view.TaskedCharacterView;
+import net.sf.anathema.character.model.advance.ExperiencePointManagement;
 import net.sf.anathema.character.model.advance.IExperiencePointManagement;
 import net.sf.anathema.character.model.creation.IBonusPointManagement;
+import net.sf.anathema.character.model.creation.bonus.BonusPointManagement;
 import net.sf.anathema.character.presenter.CharacterPresenter;
 import net.sf.anathema.character.presenter.OverviewPresenter;
 import net.sf.anathema.character.view.CharacterView;
 import net.sf.anathema.character.view.OverviewContainer;
+import net.sf.anathema.character.view.SubViewMap;
+import net.sf.anathema.character.view.SubViewRegistry;
+import net.sf.anathema.character.view.TaskedCharacterView;
 import net.sf.anathema.framework.IApplicationModel;
 import net.sf.anathema.framework.repository.Item;
 import net.sf.anathema.framework.swing.IView;
