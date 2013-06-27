@@ -69,7 +69,6 @@ public class CharacterCreationDialogPage extends AbstractDialogPage {
     return properties.getConfirmMessage();
   }
 
-  //TODO (#343) CharacterType Identity => Equality
   @Override
   public JComponent createContent() {
     IToggleButtonPanel panel = view.addToggleButtonPanel();
