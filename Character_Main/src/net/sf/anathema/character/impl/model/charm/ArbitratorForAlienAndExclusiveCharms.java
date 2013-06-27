@@ -22,7 +22,6 @@ public class ArbitratorForAlienAndExclusiveCharms implements ICharmGroupArbitrat
     this.context = context;
   }
 
-  //TODO (#343) CharacterType Identity => Equality
   @Override
   public ICharm[] getCharms(ICharmGroup charmGroup) {
     ICharm[] allCharms = charmGroup.getAllCharms();
@@ -36,17 +35,15 @@ public class ArbitratorForAlienAndExclusiveCharms implements ICharmGroupArbitrat
     List<ICharm> charms = new ArrayList<>();
     for (ICharm charm : allCharms) {
       boolean isExclusiveCharm = charm.hasAttribute(EXCLUSIVE_ATTRIBUTE);
-      boolean isCharmForCharacterType = isCharmForCharactersOwnType(charm);
-      if (!isExclusiveCharm || isCharmForCharacterType) {
+      if (!isExclusiveCharm) {
+        charms.add(charm);
+      }
+      boolean isCharmForCharacterType = new CharmHasSameTypeAsCharacter(context).apply(charm);
+      if (isCharmForCharacterType) {
         charms.add(charm);
       }
     }
     return charms.toArray(new ICharm[charms.size()]);
-  }
-
-  private boolean isCharmForCharactersOwnType(ICharm charm) {
-    IBasicCharacterData basicCharacterContext = context.getBasicCharacterContext();
-    return basicCharacterContext.getCharacterType() == charm.getCharacterType();
   }
 
   private boolean characterMayLearnAlienCharms() {
