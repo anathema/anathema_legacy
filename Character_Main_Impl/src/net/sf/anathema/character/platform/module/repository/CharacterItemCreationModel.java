@@ -1,5 +1,6 @@
 package net.sf.anathema.character.platform.module.repository;
 
+import com.google.common.base.Objects;
 import net.sf.anathema.character.generic.framework.ICharacterGenerics;
 import net.sf.anathema.character.generic.template.ICharacterTemplate;
 import net.sf.anathema.character.generic.template.ITemplateRegistry;
@@ -70,10 +71,9 @@ public class CharacterItemCreationModel implements ICharacterItemCreationModel {
     return types;
   }
 
-  //TODO (#343) CharacterType Identity => Equality
   @Override
   public void setCharacterType(ICharacterType type) {
-    if (selectedType == type) {
+    if (Objects.equal(selectedType, type)) {
       return;
     }
     this.selectedType = type;
