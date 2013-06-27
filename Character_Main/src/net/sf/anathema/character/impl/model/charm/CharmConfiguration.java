@@ -90,7 +90,7 @@ public class CharmConfiguration implements ICharmConfiguration {
     this.characterTypes = characterTypes;
     List<ICharacterType> allCharacterTypes = new ArrayList<>();
     ICharmTemplate nativeCharmTemplate = getNativeCharmTemplate(registry);
-    this.arbitrator = new LearningCharmGroupArbitrator(nativeCharmTemplate, context);
+    this.arbitrator = new ArbitratorForAlienAndExclusiveCharms(nativeCharmTemplate, context);
     this.martialArtsCharmTree = new MartialArtsCharmTree(nativeCharmTemplate);
     this.martialArtsGroups = createGroups(martialArtsCharmTree.getAllCharmGroups());
     initCharacterType(nativeCharmTemplate, getNativeCharacterType());
