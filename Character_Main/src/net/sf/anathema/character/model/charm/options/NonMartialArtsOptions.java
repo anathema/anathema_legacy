@@ -2,7 +2,6 @@ package net.sf.anathema.character.model.charm.options;
 
 import net.sf.anathema.character.generic.impl.magic.charm.CharmTree;
 import net.sf.anathema.character.generic.magic.ICharm;
-import net.sf.anathema.character.generic.magic.IExtendedCharmData;
 import net.sf.anathema.character.generic.magic.charms.ICharmGroup;
 import net.sf.anathema.character.generic.magic.charms.ICharmIdMap;
 import net.sf.anathema.character.generic.magic.charms.ICharmTree;
@@ -13,17 +12,21 @@ import net.sf.anathema.character.generic.template.magic.ICharmTemplate;
 import net.sf.anathema.character.generic.template.magic.IMagicTemplate;
 import net.sf.anathema.character.generic.type.CharacterTypes;
 import net.sf.anathema.character.generic.type.ICharacterType;
+import net.sf.anathema.character.impl.model.charm.CharmHasSameTypeAsCharacter;
 import net.sf.anathema.character.main.model.concept.HeroConcept;
 import net.sf.anathema.character.main.model.concept.HeroConceptFetcher;
 import net.sf.anathema.character.model.charm.GroupedCharmIdMap;
 import net.sf.anathema.charmtree.view.ICharmGroupArbitrator;
 import net.sf.anathema.hero.model.Hero;
+import net.sf.anathema.hero.template.NativeCharacterType;
 import net.sf.anathema.lib.util.Identifier;
 
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+
+import static net.sf.anathema.character.generic.magic.IExtendedCharmData.EXCLUSIVE_ATTRIBUTE;
 
 public class NonMartialArtsOptions implements ICharmIdMap, ICharmGroupArbitrator {
 
@@ -68,22 +71,37 @@ public class NonMartialArtsOptions implements ICharmIdMap, ICharmGroupArbitrator
 
   @Override
   public ICharm[] getCharms(ICharmGroup charmGroup) {
-    HeroConcept concept = HeroConceptFetcher.fetch(hero);
     ICharm[] allCharms = charmGroup.getAllCharms();
-    if (getNativeCharmTemplate().isAllowedAlienCharms(concept.getCaste().getType())) {
+    if (characterMayLearnAlienCharms()) {
       return allCharms;
     }
+    return charmsThatAreNativeOrNotExclusive(allCharms);
+  }
+
+  private ICharm[] charmsThatAreNativeOrNotExclusive(ICharm[] allCharms) {
     List<ICharm> charms = new ArrayList<>();
     for (ICharm charm : allCharms) {
-      if (!charm.hasAttribute(IExtendedCharmData.EXCLUSIVE_ATTRIBUTE) || getNativeCharacterType() == charm.getCharacterType()) {
+      if (!charm.hasAttribute(EXCLUSIVE_ATTRIBUTE)) {
+        charms.add(charm);
+      }
+      if (isNativeCharm(charm)) {
         charms.add(charm);
       }
     }
     return charms.toArray(new ICharm[charms.size()]);
   }
 
+  private boolean isNativeCharm(ICharm charm) {
+    return new CharmHasSameTypeAsCharacter(hero).apply(charm);
+  }
+
+  private boolean characterMayLearnAlienCharms() {
+    HeroConcept concept = HeroConceptFetcher.fetch(hero);
+    return getNativeCharmTemplate().isAllowedAlienCharms(concept.getCaste().getType());
+  }
+
   public ICharacterType getNativeCharacterType() {
-    return hero.getTemplate().getTemplateType().getCharacterType();
+    return NativeCharacterType.get(hero);
   }
 
   public ICharmTemplate getNativeCharmTemplate() {
@@ -96,7 +114,7 @@ public class NonMartialArtsOptions implements ICharmIdMap, ICharmGroupArbitrator
   private void initCharmTreesForAvailableTypes() {
     for (ICharacterType type : availableTypes) {
       ICharmTemplate charmTemplate = getCharmTemplate(registry, type);
-      if (charmTemplate != null  && type == getNativeCharacterType()) {
+      if (charmTemplate != null && type == getNativeCharacterType()) {
         treesByType.put(type, new CharmTree(charmTemplate));
       } else if (charmTemplate != null && charmTemplate.canLearnCharms()) {
         treesByType.put(type, new CharmTree(charmTemplate));

@@ -1,9 +1,10 @@
 package net.sf.anathema.character.impl.model.charm;
 
-import net.sf.anathema.character.generic.dummy.DummyBasicCharacterData;
-import net.sf.anathema.character.generic.dummy.DummyExaltCharacterType;
-import net.sf.anathema.character.generic.framework.additionaltemplate.model.ICharacterModelContext;
-import net.sf.anathema.dummy.character.magic.DummyCharm;
+import net.sf.anathema.character.generic.type.ICharacterType;
+import net.sf.anathema.character.magic.dummy.DummyCharm;
+import net.sf.anathema.character.main.testing.dummy.DummyMundaneCharacterType;
+import net.sf.anathema.character.main.testing.dummy.template.DummyHeroTemplate;
+import net.sf.anathema.hero.model.Hero;
 import org.junit.Test;
 
 import static org.hamcrest.CoreMatchers.is;
@@ -15,23 +16,23 @@ public class CharmHasSameTypeAsCharacterTest {
 
   @Test
   public void identifiesMatchingCharacterTypesIfTheyAreNotIdentical() throws Exception {
-    ICharacterModelContext context = createCharacterWithType(new DummyExaltCharacterType());
-    DummyCharm charm = createCharmForCharacterType(new DummyExaltCharacterType());
-    CharmHasSameTypeAsCharacter predicate = new CharmHasSameTypeAsCharacter(context);
+    DummyCharm charm = createCharmForCharacterType(new DummyMundaneCharacterType());
+    Hero hero = createHeroWithType(new DummyMundaneCharacterType());
+    CharmHasSameTypeAsCharacter predicate = new CharmHasSameTypeAsCharacter(hero);
     assertThat(predicate.apply(charm), is(true));
   }
 
-  private DummyCharm createCharmForCharacterType(DummyExaltCharacterType characterTypeForCharm) {
+  private Hero createHeroWithType(ICharacterType characterType) {
+    Hero hero = mock(Hero.class);
+    DummyHeroTemplate template = new DummyHeroTemplate();
+    template.setCharacterType(characterType);
+    when(hero.getTemplate()).thenReturn(template);
+    return hero;
+  }
+
+  private DummyCharm createCharmForCharacterType(ICharacterType characterTypeForCharm) {
     DummyCharm charm = new DummyCharm();
     charm.setCharacterType(characterTypeForCharm);
     return charm;
-  }
-
-  private ICharacterModelContext createCharacterWithType(DummyExaltCharacterType characterTypeForCharacter) {
-    ICharacterModelContext context = mock(ICharacterModelContext.class);
-    DummyBasicCharacterData basicContext = new DummyBasicCharacterData();
-    basicContext.setCharacterType(characterTypeForCharacter);
-    when(context.getBasicCharacterContext()).thenReturn(basicContext);
-    return context;
   }
 }

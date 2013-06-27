@@ -25,4 +25,8 @@ public class DummyMundaneCharacterType implements ICharacterType {
   public String getId() {
     return "Dummy";
   }
+
+  public boolean equals(Object other) {
+    return other instanceof DummyMundaneCharacterType;
+  }
 }

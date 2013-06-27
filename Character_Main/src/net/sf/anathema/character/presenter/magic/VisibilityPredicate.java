@@ -4,23 +4,21 @@ import com.google.common.base.Predicate;
 import net.sf.anathema.character.generic.magic.ICharm;
 import net.sf.anathema.character.generic.magic.charms.ICharmGroup;
 import net.sf.anathema.character.generic.magic.charms.ICharmIdMap;
-import net.sf.anathema.charmtree.presenter.view.CharmGroupInformer;
-import net.sf.anathema.character.main.model.charms.CharmsModel;
 import net.sf.anathema.charmtree.view.CharmGroupInformer;
 
 public class VisibilityPredicate implements Predicate<String> {
 
-  private final CharmsModel charmConfiguration;
+  private final ICharmIdMap charmMap;
   private final CharmGroupInformer charmGroupInformer;
 
-  public VisibilityPredicate(CharmsModel charmConfiguration, CharmGroupInformer informer) {
-    this.charmConfiguration = charmConfiguration;
+  public VisibilityPredicate(ICharmIdMap charmMap, CharmGroupInformer informer) {
+    this.charmMap = charmMap;
     this.charmGroupInformer = informer;
   }
 
   @Override
   public boolean apply(String charmId) {
-    ICharm charm = charmConfiguration.getCharmById(charmId);
+    ICharm charm = charmMap.getCharmById(charmId);
     return isVisible(charm);
   }
 

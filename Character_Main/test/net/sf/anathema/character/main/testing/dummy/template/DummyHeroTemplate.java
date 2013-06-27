@@ -29,6 +29,7 @@ import net.sf.anathema.character.generic.traits.TraitType;
 import net.sf.anathema.character.generic.traits.types.AbilityType;
 import net.sf.anathema.character.generic.traits.types.AttributeGroupType;
 import net.sf.anathema.character.generic.traits.types.AttributeType;
+import net.sf.anathema.character.generic.type.ICharacterType;
 import net.sf.anathema.character.main.testing.dummy.DummyMundaneCharacterType;
 import net.sf.anathema.lib.exception.NotYetImplementedException;
 
@@ -138,6 +139,10 @@ public class DummyHeroTemplate implements HeroTemplate {
   @Override
   public boolean isCustomTemplate() {
     return false;
+  }
+
+  public void setCharacterType(ICharacterType characterType) {
+    this.type = new TemplateType(characterType);
   }
 
   private static class DummyMagicTemplate implements IMagicTemplate {

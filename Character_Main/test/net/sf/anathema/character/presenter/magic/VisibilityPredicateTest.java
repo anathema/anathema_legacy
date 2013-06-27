@@ -1,11 +1,11 @@
 package net.sf.anathema.character.presenter.magic;
 
-import net.sf.anathema.character.generic.dummy.DummyExaltCharacterType;
 import net.sf.anathema.character.generic.magic.charms.ICharmGroup;
 import net.sf.anathema.character.generic.magic.charms.ICharmIdMap;
 import net.sf.anathema.character.generic.type.ICharacterType;
-import net.sf.anathema.charmtree.presenter.view.CharmGroupInformer;
-import net.sf.anathema.dummy.character.magic.DummyCharm;
+import net.sf.anathema.character.magic.dummy.DummyCharm;
+import net.sf.anathema.character.main.testing.dummy.DummyExaltCharacterType;
+import net.sf.anathema.charmtree.view.CharmGroupInformer;
 import org.junit.Test;
 
 import static org.hamcrest.CoreMatchers.is;

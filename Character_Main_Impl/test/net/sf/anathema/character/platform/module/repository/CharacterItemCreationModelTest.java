@@ -1,14 +1,14 @@
 package net.sf.anathema.character.platform.module.repository;
 
-import net.sf.anathema.character.generic.dummy.DummyCharacterTypes;
-import net.sf.anathema.character.generic.dummy.DummyMundaneCharacterType;
-import net.sf.anathema.character.generic.dummy.template.SimpleDummyCharacterTemplate;
 import net.sf.anathema.character.generic.framework.ICharacterGenerics;
 import net.sf.anathema.character.generic.template.ICharacterExternalsTemplate;
 import net.sf.anathema.character.generic.template.ITemplateRegistry;
 import net.sf.anathema.character.generic.type.ICharacterType;
-import net.sf.anathema.character.impl.model.CharacterStatisticsConfiguration;
-import net.sf.anathema.lib.control.IChangeListener;
+import net.sf.anathema.character.main.testing.dummy.DummyCharacterTypes;
+import net.sf.anathema.character.main.testing.dummy.DummyMundaneCharacterType;
+import net.sf.anathema.character.main.testing.dummy.template.SimpleDummyCharacterTemplate;
+import net.sf.anathema.character.model.CharacterStatisticsConfiguration;
+import net.sf.anathema.lib.control.ChangeListener;
 import org.junit.Test;
 
 import static org.mockito.Mockito.mock;
@@ -22,7 +22,7 @@ public class CharacterItemCreationModelTest {
     ICharacterGenerics generics = createGenericsWithCharacterType(new DummyMundaneCharacterType());
     CharacterStatisticsConfiguration configuration = mock(CharacterStatisticsConfiguration.class);
     CharacterItemCreationModel model = new CharacterItemCreationModel(generics, configuration);
-    IChangeListener listener = mock(IChangeListener.class);
+    ChangeListener listener = mock(ChangeListener.class);
     model.addListener(listener);
     model.setCharacterType(new DummyMundaneCharacterType());
     verifyZeroInteractions(listener);

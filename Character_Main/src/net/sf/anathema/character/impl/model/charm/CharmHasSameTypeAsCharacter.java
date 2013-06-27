@@ -1,15 +1,15 @@
 package net.sf.anathema.character.impl.model.charm;
 
 import com.google.common.base.Predicate;
-import net.sf.anathema.character.generic.IBasicCharacterData;
-import net.sf.anathema.character.generic.framework.additionaltemplate.model.ICharacterModelContext;
 import net.sf.anathema.character.generic.magic.ICharm;
+import net.sf.anathema.hero.model.Hero;
+import net.sf.anathema.hero.template.NativeCharacterType;
 
 public class CharmHasSameTypeAsCharacter implements Predicate<ICharm> {
-  private ICharacterModelContext context;
+  private Hero hero;
 
-  public CharmHasSameTypeAsCharacter(ICharacterModelContext context) {
-    this.context = context;
+  public CharmHasSameTypeAsCharacter(Hero hero) {
+    this.hero = hero;
   }
 
   @Override
@@ -19,7 +19,6 @@ public class CharmHasSameTypeAsCharacter implements Predicate<ICharm> {
 
 
   private boolean isCharmForCharactersOwnType(ICharm charm) {
-    IBasicCharacterData basicCharacterContext = context.getBasicCharacterContext();
-    return basicCharacterContext.getCharacterType().equals(charm.getCharacterType());
+    return NativeCharacterType.get(hero).equals(charm.getCharacterType());
   }
 }

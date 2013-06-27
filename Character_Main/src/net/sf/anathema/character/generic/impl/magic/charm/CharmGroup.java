@@ -50,7 +50,7 @@ public class CharmGroup implements ICharmGroup, Identifier {
       return false;
     }
     CharmGroup other = (CharmGroup) obj;
-    return super.equals(obj) && other.getCharacterType() == getCharacterType();
+    return  other.getCharacterType().equals(getCharacterType());
   }
 
   @Override
