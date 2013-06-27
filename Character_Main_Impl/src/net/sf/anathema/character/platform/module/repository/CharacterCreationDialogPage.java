@@ -46,7 +46,7 @@ public class CharacterCreationDialogPage extends AbstractDialogPage {
   }
 
   private String getTemplateResource(ITemplateTypeAggregation o1) {
-    return o1.getPresentationProperties().getNewActionResource();
+    return properties.getTemplateUI().getLabel(o1);
   }
 
   @Override
