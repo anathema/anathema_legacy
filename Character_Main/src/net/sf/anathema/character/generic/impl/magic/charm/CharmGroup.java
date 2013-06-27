@@ -45,6 +45,13 @@ public class CharmGroup implements ICharmGroup, Identifier {
   }
 
   @Override
+  public boolean isCharmFromGroup(ICharm charm) {
+    boolean isOfGroupType =  charm.getCharacterType().equals(type);
+    boolean isFromGroupWithId = charm.getGroupId().equals(id);
+    return isOfGroupType && isFromGroupWithId;
+  }
+
+  @Override
   public boolean equals(Object obj) {
     if (obj == null || obj.getClass() != getClass()) {
       return false;

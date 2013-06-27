@@ -11,4 +11,6 @@ public interface ICharmGroup extends Identifier {
   ICharacterType getCharacterType();
 
   boolean isMartialArtsGroup();
+
+  boolean isCharmFromGroup(ICharm charm);
 }

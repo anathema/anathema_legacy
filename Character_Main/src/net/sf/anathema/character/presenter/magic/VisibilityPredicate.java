@@ -27,7 +27,6 @@ public class VisibilityPredicate implements Predicate<String> {
       return false;
     }
     ICharmGroup group = charmGroupInformer.getCurrentGroup();
-    boolean isOfGroupType = charm.getCharacterType().equals(group.getCharacterType());
-    return isOfGroupType && charm.getGroupId().equals(group.getId());
+    return group.isCharmFromGroup(charm);
   }
 }

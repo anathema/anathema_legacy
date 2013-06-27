@@ -112,6 +112,11 @@ public class NullLearningCharmGroup implements ILearningCharmGroup {
   }
 
   @Override
+  public boolean isCharmFromGroup(ICharm charm) {
+    return false;
+  }
+
+  @Override
   public String getId() {
     return null;
   }
