@@ -79,7 +79,7 @@ public class CharacterCreationDialogPage extends AbstractDialogPage {
           model.setCharacterType(type);
         }
       }, properties.getTypeString(type));
-      button.setSelected(type == model.getSelectedTemplate().getTemplateType().getCharacterType());
+      button.setSelected(type.equals(model.getSelectedTemplate().getTemplateType().getCharacterType()));
     }
     final IListObjectSelectionView<ITemplateTypeAggregation> list = view.addObjectSelectionList();
     list.addObjectSelectionChangedListener(new ObjectValueListener<ITemplateTypeAggregation>() {
