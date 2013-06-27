@@ -22,13 +22,12 @@ public class VisibilityPredicate implements Predicate<String> {
     return isVisible(charm);
   }
 
-  //TODO (#343) CharacterType Identity => Equality
   private boolean isVisible(ICharm charm) {
     if (!charmGroupInformer.hasGroupSelected()) {
       return false;
     }
     ICharmGroup group = charmGroupInformer.getCurrentGroup();
-    boolean isOfGroupType = charm.getCharacterType() == group.getCharacterType();
+    boolean isOfGroupType = charm.getCharacterType().equals(group.getCharacterType());
     return isOfGroupType && charm.getGroupId().equals(group.getId());
   }
 }
