@@ -4,6 +4,11 @@ Exalted © 2001-2012 by White Wolf Publishing, Inc.
 
 Website: [anathema.github.com](http://anathema.github.com)
 
+## Release 5.1.2
+
+### Bugfix
+* Restores "Exclusive" Charms to all Charm trees.
+
 ## Release 5.1.1
 
 ### Bugfixes
