@@ -4,11 +4,11 @@ import net.sf.anathema.character.generic.magic.ICharm;
 import net.sf.anathema.character.generic.magic.charms.IndirectCharmRequirement;
 import net.sf.anathema.character.main.model.charms.CharmsModel;
 import net.sf.anathema.character.presenter.magic.CharacterCharmModel;
-import net.sf.anathema.character.presenter.magic.CharmColoringStrategy;
+import net.sf.anathema.character.presenter.magic.CharmColoring;
 import net.sf.anathema.charmtree.view.ICharmView;
 import net.sf.anathema.framework.ui.RGBColor;
 
-public class CharacterColoringStrategy implements CharmColoringStrategy {
+public class CharacterColoringStrategy implements CharmColoring {
 
 
   private static final int MAXIMUM_OPACITY = 255;

@@ -1,22 +1,28 @@
 package net.sf.anathema.charmtree.presenter;
 
 import net.sf.anathema.character.generic.magic.ICharm;
-import net.sf.anathema.character.generic.magic.charms.IndirectCharmRequirement;
-import net.sf.anathema.character.presenter.magic.CharmColoringStrategy;
+import net.sf.anathema.character.presenter.magic.CharmColoring;
 import net.sf.anathema.charmtree.view.CharmGroupInformer;
+
+import java.util.ArrayList;
+import java.util.List;
 
 public class ConfigurableCharmDye implements CharmDye {
 
   private final CharmGroupInformer groupInformer;
-  private final CharmColoringStrategy dye;
+  private final CharmColoring coloring;
+  private final List<CharmColorer> colorers = new ArrayList<>();
 
-  public ConfigurableCharmDye(CharmGroupInformer informer, CharmColoringStrategy dye) {
+  public ConfigurableCharmDye(CharmGroupInformer informer, CharmColoring coloring) {
     this.groupInformer = informer;
-    this.dye = dye;
+    this.coloring = coloring;
+    colorers.add(new SimpleCharmColorer(coloring));
+    colorers.add(new ExternalPrerequisitesColorer(groupInformer, coloring));
+    colorers.add(new NonCharmPrerequisitesColorer(coloring));
   }
 
   public void colorCharm(ICharm charm) {
-    dye.colorCharm(charm);
+    coloring.colorCharm(charm);
   }
 
   public void setCharmVisuals() {
@@ -24,32 +30,13 @@ public class ConfigurableCharmDye implements CharmDye {
       return;
     }
     for (ICharm charm : getAllCharmsFromCurrentGroup()) {
-      dye.colorCharm(charm);
-      colorExternalCharmPrerequisites(charm);
-      colorNonCharmPrerequisite(charm);
-    }
-  }
-
-  private void colorNonCharmPrerequisite(ICharm charm) {
-    for (IndirectCharmRequirement requirement : charm.getIndirectRequirements()) {
-      dye.setPrerequisiteVisuals(requirement);
-    }
-  }
-
-  private void colorExternalCharmPrerequisites(ICharm charm) {
-    for (ICharm prerequisite : charm.getRenderingPrerequisiteCharms()) {
-      if (isPartOfCurrentGroup(prerequisite)) {
-        return;
+      for (CharmColorer colorer : colorers) {
+        colorer.color(charm);
       }
-      dye.colorCharm(prerequisite);
     }
   }
 
-  private boolean isPartOfCurrentGroup(ICharm charm) {
-    return charm.getGroupId().equals(groupInformer.getCurrentGroup().getId());
-  }
-
-  protected ICharm[] getAllCharmsFromCurrentGroup() {
+  private ICharm[] getAllCharmsFromCurrentGroup() {
     return groupInformer.getCurrentGroup().getAllCharms();
   }
 }
