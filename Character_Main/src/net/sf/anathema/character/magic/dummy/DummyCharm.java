@@ -67,7 +67,7 @@ public class DummyCharm extends SimpleIdentifier implements ICharm {
     this(id, new ICharm[0]);
   }
 
-  public DummyCharm(String id, ICharm[] parents) {
+  public DummyCharm(String id, ICharm... parents) {
     this(id, parents, new GenericTrait[0]);
   }
 
@@ -83,6 +83,7 @@ public class DummyCharm extends SimpleIdentifier implements ICharm {
     visitor.visitCharm(this);
   }
 
+  @SuppressWarnings("UnusedDeclaration")
   public void addAttributeRequirement(IndirectCharmRequirement requirement) {
     requirements.add(requirement);
   }
