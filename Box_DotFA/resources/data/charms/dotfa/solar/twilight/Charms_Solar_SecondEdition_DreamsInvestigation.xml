@@ -42,7 +42,7 @@
      <charm id="Solar.OracularMagistrateUnderstanding" exalt="Solar" group="Investigation">
           <prerequisite>
                <trait id="Investigation" value="5" />
-               <essence value="5" />
+               <essence value="4" />
                <charmReference id="Solar.Evidence-DiscerningMethod" />
           </prerequisite>
           <cost />
