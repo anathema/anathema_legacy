@@ -5,6 +5,7 @@ import net.sf.anathema.character.generic.framework.magic.view.CharmDescriptionPr
 import net.sf.anathema.character.generic.magic.description.MagicDescriptionProvider;
 import net.sf.anathema.character.generic.template.HeroTemplate;
 import net.sf.anathema.character.generic.template.ITemplateRegistry;
+import net.sf.anathema.character.model.charm.options.DefaultCharmTemplateRetriever;
 import net.sf.anathema.character.presenter.initializers.HeroModelInitializer;
 import net.sf.anathema.character.presenter.initializers.RegisteredInitializer;
 import net.sf.anathema.character.presenter.magic.CharacterCharmModel;
@@ -31,7 +32,7 @@ public class CharmInitializer implements HeroModelInitializer {
 
   @Override
   public void initialize(SectionView sectionView, Hero hero, Resources resources) {
-    boolean canLearnCharms = hero.getTemplate().getMagicTemplate().getCharmTemplate().canLearnCharms();
+    boolean canLearnCharms = DefaultCharmTemplateRetriever.getNativeTemplate(hero).canLearnCharms();
     if (!canLearnCharms) {
       return;
     }

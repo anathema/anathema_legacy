@@ -11,6 +11,7 @@ import net.sf.anathema.character.generic.template.ITemplateRegistry;
 import net.sf.anathema.character.generic.template.magic.ICharmTemplate;
 import net.sf.anathema.character.generic.type.CharacterTypes;
 import net.sf.anathema.character.generic.type.ICharacterType;
+import net.sf.anathema.character.model.charm.options.DefaultCharmTemplateRetriever;
 import net.sf.anathema.charmtree.presenter.CharmGroupCollection;
 import net.sf.anathema.lib.util.Identifier;
 
@@ -43,7 +44,7 @@ public class CascadeGroupCollection implements CharmGroupCollection {
       if (template == null) {
         continue;
       }
-      ICharmTemplate charmTemplate = template.getMagicTemplate().getCharmTemplate();
+      ICharmTemplate charmTemplate = DefaultCharmTemplateRetriever.getCharmTemplate(template);
       if (charmTemplate.canLearnCharms()) {
         registerTypeCharms(allCharmGroups, type, template);
       }
@@ -64,7 +65,7 @@ public class CascadeGroupCollection implements CharmGroupCollection {
       if (defaultTemplate == null) {
         continue;
       }
-      ICharmTemplate charmTemplate = defaultTemplate.getMagicTemplate().getCharmTemplate();
+      ICharmTemplate charmTemplate = DefaultCharmTemplateRetriever.getCharmTemplate(defaultTemplate);
       MartialArtsLevel martialArtsLevel = charmTemplate.getMartialArtsRules().getStandardLevel();
       MartialArtsLevel highestLevelSoFar = currentFavoriteTemplate.getMartialArtsRules().getStandardLevel();
       if (martialArtsLevel.compareTo(highestLevelSoFar) > 0) {
@@ -75,7 +76,7 @@ public class CascadeGroupCollection implements CharmGroupCollection {
   }
 
   private void registerTypeCharms(List<ICharmGroup> allCharmGroups, ICharacterType type, HeroTemplate defaultTemplate) {
-    ICharmTree typeTree = new CharmTree(defaultTemplate.getMagicTemplate().getCharmTemplate());
+    ICharmTree typeTree = new CharmTree(DefaultCharmTemplateRetriever.getCharmTemplate(defaultTemplate));
     registerGroups(allCharmGroups, type, typeTree);
   }
 

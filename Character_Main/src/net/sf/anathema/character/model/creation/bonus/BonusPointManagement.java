@@ -17,6 +17,7 @@ import net.sf.anathema.character.main.model.attributes.AttributesModelFetcher;
 import net.sf.anathema.character.main.model.traits.TraitMap;
 import net.sf.anathema.character.main.model.traits.TraitModelFetcher;
 import net.sf.anathema.character.model.advance.models.AbstractAdditionalSpendingModel;
+import net.sf.anathema.character.model.charm.options.DefaultCharmTemplateRetriever;
 import net.sf.anathema.character.model.creation.IBonusPointManagement;
 import net.sf.anathema.character.model.creation.bonus.ability.AbilityCostCalculator;
 import net.sf.anathema.character.model.creation.bonus.ability.DefaultAbilityBonusModel;
@@ -218,7 +219,7 @@ public class BonusPointManagement implements IBonusPointManagement {
   }
 
   private void addCharmModels(List<IOverviewModel> models) {
-    if (!hero.getTemplate().getMagicTemplate().getCharmTemplate().canLearnCharms()) {
+    if (!(DefaultCharmTemplateRetriever.getNativeTemplate(hero).canLearnCharms())) {
       return;
     }
     if (getFavoredCharmModel().getAlotment() > 0) {

@@ -2,6 +2,7 @@ package net.sf.anathema.hero.combos.display;
 
 import net.sf.anathema.character.generic.framework.magic.view.CharmDescriptionProviderExtractor;
 import net.sf.anathema.character.generic.magic.description.MagicDescriptionProvider;
+import net.sf.anathema.character.model.charm.options.DefaultCharmTemplateRetriever;
 import net.sf.anathema.character.presenter.initializers.HeroModelInitializer;
 import net.sf.anathema.character.presenter.initializers.RegisteredInitializer;
 import net.sf.anathema.character.presenter.magic.combo.ComboConfigurationModel;
@@ -27,7 +28,7 @@ public class ComboInitializer implements HeroModelInitializer {
 
   @Override
   public void initialize(SectionView sectionView, Hero hero, Resources resources) {
-    boolean canLearnCharms = hero.getTemplate().getMagicTemplate().getCharmTemplate().canLearnCharms();
+    boolean canLearnCharms = DefaultCharmTemplateRetriever.getNativeTemplate(hero).canLearnCharms();
     if (!canLearnCharms) {
       return;
     }

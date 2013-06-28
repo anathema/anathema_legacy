@@ -5,7 +5,6 @@ import net.sf.anathema.character.generic.magic.ICharm;
 import net.sf.anathema.character.generic.magic.charms.CharmIdMap;
 import net.sf.anathema.character.generic.magic.charms.ICharmGroup;
 import net.sf.anathema.character.generic.magic.charms.ICharmTree;
-import net.sf.anathema.character.generic.template.ITemplateRegistry;
 import net.sf.anathema.character.generic.template.magic.ICharmTemplate;
 import net.sf.anathema.character.generic.type.CharacterTypes;
 import net.sf.anathema.character.generic.type.ICharacterType;
@@ -24,6 +23,7 @@ import java.util.List;
 import java.util.Map;
 
 import static net.sf.anathema.character.generic.magic.IExtendedCharmData.EXCLUSIVE_ATTRIBUTE;
+import static net.sf.anathema.character.model.charm.options.DefaultCharmTemplateRetriever.getNativeTemplate;
 
 public class NonMartialArtsOptions implements CharmIdMap, CharmGroupArbitrator {
 
@@ -33,10 +33,10 @@ public class NonMartialArtsOptions implements CharmIdMap, CharmGroupArbitrator {
   private final CharmTemplateRetriever templateRetriever;
   private Hero hero;
 
-  public NonMartialArtsOptions(Hero hero, CharacterTypes characterTypes, ITemplateRegistry registry) {
+  public NonMartialArtsOptions(Hero hero, CharacterTypes characterTypes, CharmTemplateRetriever charmTemplateRetriever) {
     this.hero = hero;
     this.characterTypes = characterTypes;
-    this.templateRetriever = new CharmTemplateRetriever(registry);
+    this.templateRetriever = charmTemplateRetriever;
     this.availableTypes = new AvailableCharacterTypes(templateRetriever);
     availableTypes.collectAvailableTypes(getNativeCharacterType(), characterTypes);
     initCharmTreesForAvailableTypes();
@@ -84,15 +84,11 @@ public class NonMartialArtsOptions implements CharmIdMap, CharmGroupArbitrator {
 
   private boolean characterMayLearnAlienCharms() {
     HeroConcept concept = HeroConceptFetcher.fetch(hero);
-    return getNativeCharmTemplate().isAllowedAlienCharms(concept.getCaste().getType());
+    return getNativeTemplate(hero).isAllowedAlienCharms(concept.getCaste().getType());
   }
 
   public ICharacterType getNativeCharacterType() {
     return NativeCharacterType.get(hero);
-  }
-
-  public ICharmTemplate getNativeCharmTemplate() {
-    return templateRetriever.getNativeTemplate(hero);
   }
 
   private void initCharmTreesForAvailableTypes() {

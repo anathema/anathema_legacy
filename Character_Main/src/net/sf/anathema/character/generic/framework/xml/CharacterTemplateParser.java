@@ -26,11 +26,14 @@ import net.sf.anathema.character.generic.framework.xml.trait.GenericTraitTemplat
 import net.sf.anathema.character.generic.framework.xml.trait.GenericTraitTemplateFactoryParser;
 import net.sf.anathema.character.generic.impl.magic.persistence.ICharmCache;
 import net.sf.anathema.character.generic.impl.template.magic.ICharmProvider;
+import net.sf.anathema.character.generic.magic.charms.MartialArtsLevel;
+import net.sf.anathema.character.generic.template.HeroTemplate;
 import net.sf.anathema.character.generic.template.ITemplateType;
 import net.sf.anathema.character.generic.traits.groups.AllAbilityTraitTypeGroup;
 import net.sf.anathema.character.generic.traits.groups.AllAttributeTraitTypeGroup;
 import net.sf.anathema.character.generic.type.CharacterTypes;
 import net.sf.anathema.character.generic.type.ICharacterType;
+import net.sf.anathema.character.model.charm.options.DefaultCharmTemplateRetriever;
 import net.sf.anathema.lib.exception.PersistenceException;
 import net.sf.anathema.lib.registry.IRegistry;
 import org.dom4j.Element;
@@ -139,9 +142,13 @@ public class CharacterTemplateParser extends AbstractXmlTemplateParser<GenericCh
       return;
     }
     BonusPointCostTemplateParser parser = new BonusPointCostTemplateParser(registryCollection.getBonusPointTemplateRegistry(),
-            characterTemplate.getMagicTemplate().getCharmTemplate().getMartialArtsRules().getStandardLevel());
+            getMartialArtsStandardLevel(characterTemplate));
     GenericBonusPointCosts bonusPoints = parser.parseTemplate(bonusPointsElement);
     characterTemplate.setBonusPointCosts(bonusPoints);
+  }
+
+  private MartialArtsLevel getMartialArtsStandardLevel(HeroTemplate heroTemplate) {
+    return DefaultCharmTemplateRetriever.getCharmTemplate(heroTemplate).getMartialArtsRules().getStandardLevel();
   }
 
   private void setCreationPoints(GenericCharacterTemplate characterTemplate, Element creationElement) throws PersistenceException {
@@ -174,7 +181,7 @@ public class CharacterTemplateParser extends AbstractXmlTemplateParser<GenericCh
       return;
     }
     ExperienceTemplateParser parser = new ExperienceTemplateParser(registryCollection.getExperienceTemplateRegistry(),
-            characterTemplate.getMagicTemplate().getCharmTemplate().getMartialArtsRules().getStandardLevel());
+            getMartialArtsStandardLevel(characterTemplate));
     GenericExperiencePointCosts experienceTemplate = parser.parseTemplate(experiencePointsElement);
     characterTemplate.setExperiencePointCosts(experienceTemplate);
   }

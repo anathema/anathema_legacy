@@ -9,6 +9,7 @@ import net.sf.anathema.character.main.model.charms.CharmsModelFetcher;
 import net.sf.anathema.character.main.model.concept.HeroConceptFetcher;
 import net.sf.anathema.character.model.ITypedDescription;
 import net.sf.anathema.character.model.charm.ILearningCharmGroup;
+import net.sf.anathema.character.model.charm.options.DefaultCharmTemplateRetriever;
 import net.sf.anathema.hero.model.Hero;
 import net.sf.anathema.lib.control.ChangeListener;
 
@@ -22,7 +23,7 @@ public class CharacterCharmModel {
   }
 
   public boolean isAllowedAlienCharms() {
-    ICharmTemplate charmTemplate = hero.getTemplate().getMagicTemplate().getCharmTemplate();
+    ICharmTemplate charmTemplate = DefaultCharmTemplateRetriever.getNativeTemplate(hero);
     return charmTemplate.isAllowedAlienCharms(getCaste().getType());
   }
 

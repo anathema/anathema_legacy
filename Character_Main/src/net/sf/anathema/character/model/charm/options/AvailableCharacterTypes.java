@@ -27,7 +27,6 @@ public class AvailableCharacterTypes implements Iterable<ICharacterType> {
     availableTypes.add(0, nativeCharacterType);
   }
 
-
   @Override
   public Iterator<ICharacterType> iterator() {
     return availableTypes.iterator();

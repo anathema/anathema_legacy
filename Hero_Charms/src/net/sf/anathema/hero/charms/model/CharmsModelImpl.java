@@ -62,6 +62,7 @@ import static net.sf.anathema.character.generic.impl.magic.MartialArtsUtilities.
 import static net.sf.anathema.character.generic.impl.magic.MartialArtsUtilities.isFormCharm;
 import static net.sf.anathema.character.generic.impl.magic.MartialArtsUtilities.isMartialArtsCharm;
 import static net.sf.anathema.character.generic.magic.charms.MartialArtsLevel.Sidereal;
+import static net.sf.anathema.character.model.charm.options.DefaultCharmTemplateRetriever.getNativeTemplate;
 
 public class CharmsModelImpl implements CharmsModel {
 
@@ -94,9 +95,9 @@ public class CharmsModelImpl implements CharmsModel {
     CharmSpecialistImpl specialist = new CharmSpecialistImpl(hero);
     this.experience = ExperienceModelFetcher.fetch(hero);
     this.traits = TraitModelFetcher.fetch(hero);
-     this.hero = hero;
-    this.martialArtsOptions = new MartialArtsOptions(hero, context.getTemplateRegistry());
-    this.nonMartialArtsOptions = new NonMartialArtsOptions(hero, context.getCharacterTypes(), context.getTemplateRegistry());
+    this.hero = hero;
+    this.martialArtsOptions = new MartialArtsOptions(hero);
+    this.nonMartialArtsOptions = new NonMartialArtsOptions(hero, context.getCharacterTypes(), context.getCharmTemplateRetriever());
     this.manager = new SpecialCharmManager(specialist, hero, this);
     this.provider = context.getCharmProvider();
     this.martialArtsGroups = createGroups(martialArtsOptions.getAllCharmGroups());
@@ -213,7 +214,7 @@ public class CharmsModelImpl implements CharmsModel {
       private void learnOtherCharmsFromMerge(ICharm charm) {
         for (ICharm mergedCharm : charm.getMergedCharms()) {
           if (!isLearned(mergedCharm) && isLearnableWithoutPrerequisites(mergedCharm) &&
-              CharmsModelImpl.this.getSpecialCharmConfiguration(mergedCharm) == null) {
+                  CharmsModelImpl.this.getSpecialCharmConfiguration(mergedCharm) == null) {
             getGroup(mergedCharm).learnCharm(mergedCharm, isExperienced());
           }
         }
@@ -399,7 +400,7 @@ public class CharmsModelImpl implements CharmsModel {
   public final boolean isLearnable(ICharm charm) {
     if (isAlienCharm(charm)) {
       CasteType casteType = HeroConceptFetcher.fetch(hero).getCaste().getType();
-      if (!nonMartialArtsOptions.getNativeCharmTemplate().isAllowedAlienCharms(casteType)) {
+      if (!(getNativeTemplate(hero).isAllowedAlienCharms(casteType))) {
         return false;
       }
       if (charm.hasAttribute(ICharmData.NATIVE)) {
