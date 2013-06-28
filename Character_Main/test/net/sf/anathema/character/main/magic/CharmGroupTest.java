@@ -13,10 +13,16 @@ public class CharmGroupTest {
   private static final String Default_Group_Id = "AnyId";
 
   @Test
-  public void equalsCharmGroupWithMatchingCharacterTypeThatIsNotIdentical() throws Exception {
-    CharmGroup group1 = createGroupWithCharacterType(new DummyExaltCharacterType());
-    CharmGroup group2 = createGroupWithCharacterType(new DummyExaltCharacterType());
-    assertThat(group1.equals(group2), is(true));
+  public void equalsSelf() throws Exception {
+    CharmGroup group = createGroupWithCharacterType();
+    assertThat(group.equals(group), is(true));
+  }
+
+  @Test
+  public void doesNotEqualSimilarGroup() throws Exception {
+    CharmGroup group = createGroupWithCharacterType();
+    CharmGroup group2 = createGroupWithCharacterType();
+    assertThat(group.equals(group2), is(false));
   }
 
   @Test
@@ -25,6 +31,10 @@ public class CharmGroupTest {
     ICharm charm = CharmMother.createCharmForCharacterTypeFromGroup(new DummyExaltCharacterType(), Default_Group_Id);
     assertThat(group.isCharmFromGroup(charm), is(true));
 
+  }
+
+  private CharmGroup createGroupWithCharacterType() {
+    return createGroupWithCharacterType(new DummyExaltCharacterType());
   }
 
   private CharmGroup createGroupWithCharacterType(DummyExaltCharacterType type) {

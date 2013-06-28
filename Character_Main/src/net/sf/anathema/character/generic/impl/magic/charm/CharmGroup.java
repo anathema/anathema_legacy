@@ -50,20 +50,4 @@ public class CharmGroup implements ICharmGroup, Identifier {
     boolean isFromGroupWithId = charm.getGroupId().equals(id);
     return isOfGroupType && isFromGroupWithId;
   }
-
-  @Override
-  public boolean equals(Object obj) {
-    if (obj == null || obj.getClass() != getClass()) {
-      return false;
-    }
-    CharmGroup other = (CharmGroup) obj;
-    return  other.getCharacterType().equals(getCharacterType());
-  }
-
-  @Override
-  public int hashCode() {
-    int hash = 7 * super.hashCode();
-    hash += 11 * System.identityHashCode(getCharacterType());
-    return hash;
-  }
 }
