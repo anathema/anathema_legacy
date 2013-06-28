@@ -6,9 +6,9 @@ import net.sf.anathema.character.generic.impl.magic.MartialArtsUtilities;
 import net.sf.anathema.character.generic.impl.template.magic.ICharmProvider;
 import net.sf.anathema.character.generic.magic.ICharm;
 import net.sf.anathema.character.generic.magic.ICharmData;
+import net.sf.anathema.character.generic.magic.charms.CharmIdMap;
 import net.sf.anathema.character.generic.magic.charms.GroupCharmTree;
 import net.sf.anathema.character.generic.magic.charms.ICharmGroup;
-import net.sf.anathema.character.generic.magic.charms.ICharmIdMap;
 import net.sf.anathema.character.generic.magic.charms.IndirectCharmRequirement;
 import net.sf.anathema.character.generic.magic.charms.special.ISpecialCharm;
 import net.sf.anathema.character.generic.magic.charms.special.ISpecialCharmConfiguration;
@@ -164,8 +164,8 @@ public class CharmsModelImpl implements CharmsModel {
   }
 
   @Override
-  public ICharmIdMap getCharmIdMap() {
-    List<ICharmIdMap> trees = new ArrayList<>();
+  public CharmIdMap getCharmIdMap() {
+    List<CharmIdMap> trees = new ArrayList<>();
     trees.add(nonMartialArtsOptions);
     trees.add(martialArtsOptions);
     return new GroupedCharmIdMap(trees);
@@ -177,7 +177,7 @@ public class CharmsModelImpl implements CharmsModel {
   }
 
   private void initSpecialCharmConfigurations() {
-    ICharmIdMap charmIdMap = getCharmIdMap();
+    CharmIdMap charmIdMap = getCharmIdMap();
     ISpecialCharm[] specialCharms = getSpecialCharms();
     for (ISpecialCharm specialCharm : specialCharms) {
       ICharm charm = charmIdMap.getCharmById(specialCharm.getCharmId());

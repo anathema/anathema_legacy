@@ -1,20 +1,20 @@
 package net.sf.anathema.character.main.model.charms;
 
 import net.sf.anathema.character.generic.magic.ICharm;
-import net.sf.anathema.character.generic.magic.charms.ICharmIdMap;
+import net.sf.anathema.character.generic.magic.charms.CharmIdMap;
 import net.sf.anathema.character.generic.magic.charms.special.ISpecialCharm;
 import net.sf.anathema.character.generic.magic.charms.special.ISpecialCharmConfiguration;
 import net.sf.anathema.character.generic.type.ICharacterType;
 import net.sf.anathema.character.model.charm.IExtendedCharmLearnableArbitrator;
 import net.sf.anathema.character.model.charm.ILearningCharmGroup;
 import net.sf.anathema.character.model.charm.SpecialCharmLearnArbitrator;
-import net.sf.anathema.charmtree.view.ICharmGroupArbitrator;
+import net.sf.anathema.charmtree.view.CharmGroupArbitrator;
 import net.sf.anathema.hero.model.HeroModel;
 import net.sf.anathema.lib.control.ChangeListener;
 import net.sf.anathema.lib.util.Identifier;
 import net.sf.anathema.lib.util.SimpleIdentifier;
 
-public interface CharmsModel extends HeroModel, IExtendedCharmLearnableArbitrator, ICharmGroupArbitrator, ICharmIdMap,
+public interface CharmsModel extends HeroModel, IExtendedCharmLearnableArbitrator, CharmGroupArbitrator, CharmIdMap,
         SpecialCharmLearnArbitrator {
 
   Identifier ID = new SimpleIdentifier("Charms");
@@ -25,7 +25,7 @@ public interface CharmsModel extends HeroModel, IExtendedCharmLearnableArbitrato
 
   ICharacterType[] getCharacterTypes(boolean includeAlienTypes);
 
-  ICharmIdMap getCharmIdMap();
+  CharmIdMap getCharmIdMap();
 
   String getCharmTrueName(String charmName);
 

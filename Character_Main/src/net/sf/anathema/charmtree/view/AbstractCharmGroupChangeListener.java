@@ -19,13 +19,13 @@ import java.util.Set;
 
 public abstract class AbstractCharmGroupChangeListener implements ICharmGroupChangeListener, CharmGroupInformer {
 
-  private final ICharmGroupArbitrator arbitrator;
+  private final CharmGroupArbitrator arbitrator;
   private final CharmTreeRenderer charmTreeRenderer;
   private ICharmGroup currentGroup;
   private Identifier currentType;
   private final CharmDisplayPropertiesMap displayPropertiesMap;
 
-  public AbstractCharmGroupChangeListener(ICharmGroupArbitrator arbitrator, CharmTreeRenderer treeRenderer,
+  public AbstractCharmGroupChangeListener(CharmGroupArbitrator arbitrator, CharmTreeRenderer treeRenderer,
                                           CharmDisplayPropertiesMap charmDisplayPropertiesMap) {
     this.charmTreeRenderer = treeRenderer;
     this.arbitrator = arbitrator;

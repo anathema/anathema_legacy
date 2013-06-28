@@ -1,8 +1,8 @@
 package net.sf.anathema.character.main.testing.dummy.magic;
 
 import net.sf.anathema.character.generic.magic.ICharm;
+import net.sf.anathema.character.generic.magic.charms.CharmIdMap;
 import net.sf.anathema.character.generic.magic.charms.ICharmGroup;
-import net.sf.anathema.character.generic.magic.charms.ICharmIdMap;
 import net.sf.anathema.character.generic.magic.charms.special.ISpecialCharm;
 import net.sf.anathema.character.generic.magic.charms.special.ISpecialCharmConfiguration;
 import net.sf.anathema.character.generic.type.ICharacterType;
@@ -123,7 +123,7 @@ public class DummyCharmsModel implements CharmsModel {
   }
 
   @Override
-  public ICharmIdMap getCharmIdMap() {
+  public CharmIdMap getCharmIdMap() {
     throw new NotYetImplementedException();
   }
 

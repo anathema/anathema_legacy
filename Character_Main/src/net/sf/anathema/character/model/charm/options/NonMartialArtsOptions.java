@@ -2,8 +2,8 @@ package net.sf.anathema.character.model.charm.options;
 
 import net.sf.anathema.character.generic.impl.magic.charm.CharmTree;
 import net.sf.anathema.character.generic.magic.ICharm;
+import net.sf.anathema.character.generic.magic.charms.CharmIdMap;
 import net.sf.anathema.character.generic.magic.charms.ICharmGroup;
-import net.sf.anathema.character.generic.magic.charms.ICharmIdMap;
 import net.sf.anathema.character.generic.magic.charms.ICharmTree;
 import net.sf.anathema.character.generic.template.HeroTemplate;
 import net.sf.anathema.character.generic.template.ITemplateRegistry;
@@ -16,7 +16,7 @@ import net.sf.anathema.character.impl.model.charm.CharmHasSameTypeAsCharacter;
 import net.sf.anathema.character.main.model.concept.HeroConcept;
 import net.sf.anathema.character.main.model.concept.HeroConceptFetcher;
 import net.sf.anathema.character.model.charm.GroupedCharmIdMap;
-import net.sf.anathema.charmtree.view.ICharmGroupArbitrator;
+import net.sf.anathema.charmtree.view.CharmGroupArbitrator;
 import net.sf.anathema.hero.model.Hero;
 import net.sf.anathema.hero.template.NativeCharacterType;
 import net.sf.anathema.lib.util.Identifier;
@@ -28,7 +28,7 @@ import java.util.Map;
 
 import static net.sf.anathema.character.generic.magic.IExtendedCharmData.EXCLUSIVE_ATTRIBUTE;
 
-public class NonMartialArtsOptions implements ICharmIdMap, ICharmGroupArbitrator {
+public class NonMartialArtsOptions implements CharmIdMap, CharmGroupArbitrator {
 
   private final CharacterTypes characterTypes;
   private final ITemplateRegistry registry;

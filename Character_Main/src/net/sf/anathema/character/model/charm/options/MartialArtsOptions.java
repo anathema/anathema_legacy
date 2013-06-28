@@ -2,8 +2,8 @@ package net.sf.anathema.character.model.charm.options;
 
 import net.sf.anathema.character.generic.impl.magic.charm.MartialArtsCharmTree;
 import net.sf.anathema.character.generic.magic.ICharm;
+import net.sf.anathema.character.generic.magic.charms.CharmIdMap;
 import net.sf.anathema.character.generic.magic.charms.ICharmGroup;
-import net.sf.anathema.character.generic.magic.charms.ICharmIdMap;
 import net.sf.anathema.character.generic.magic.charms.ICharmLearnableArbitrator;
 import net.sf.anathema.character.generic.template.HeroTemplate;
 import net.sf.anathema.character.generic.template.ITemplateRegistry;
@@ -15,7 +15,7 @@ import net.sf.anathema.hero.model.Hero;
 
 import static net.sf.anathema.character.generic.impl.magic.MartialArtsUtilities.isMartialArtsCharm;
 
-public class MartialArtsOptions implements ICharmIdMap, ICharmLearnableArbitrator {
+public class MartialArtsOptions implements CharmIdMap, ICharmLearnableArbitrator {
 
   private final MartialArtsCharmTree martialArtsCharmTree;
   private ITemplateRegistry registry;

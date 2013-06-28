@@ -1,7 +1,7 @@
 package net.sf.anathema.character.persistence.charm;
 
 import net.sf.anathema.character.generic.magic.ICharm;
-import net.sf.anathema.character.generic.magic.charms.ICharmIdMap;
+import net.sf.anathema.character.generic.magic.charms.CharmIdMap;
 import net.sf.anathema.character.generic.magic.charms.special.IMultiLearnableCharm;
 import net.sf.anathema.character.generic.magic.charms.special.IMultipleEffectCharm;
 import net.sf.anathema.character.generic.magic.charms.special.IOxBodyTechniqueCharm;
@@ -23,7 +23,7 @@ public class SpecialCharmPersister implements ISpecialCharmPersister {
 
   private final Map<ICharm, ISpecialCharmPersister> persisterByCharm = new HashMap<>();
 
-  public SpecialCharmPersister(ISpecialCharm[] charms, final ICharmIdMap charmTree) {
+  public SpecialCharmPersister(ISpecialCharm[] charms, final CharmIdMap charmTree) {
     for (ISpecialCharm specialCharm : charms) {
       specialCharm.accept(new ISpecialCharmVisitor() {
         @Override
@@ -69,7 +69,7 @@ public class SpecialCharmPersister implements ISpecialCharmPersister {
     }
   }
 
-  private ICharm getCharm(String charmId, ICharmIdMap charmTree) {
+  private ICharm getCharm(String charmId, CharmIdMap charmTree) {
     return charmTree.getCharmById(charmId);
   }
 

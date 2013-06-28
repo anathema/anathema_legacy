@@ -2,7 +2,7 @@ package net.sf.anathema.character.persistence.charm;
 
 import net.sf.anathema.character.generic.impl.magic.MartialArtsUtilities;
 import net.sf.anathema.character.generic.magic.ICharm;
-import net.sf.anathema.character.generic.magic.charms.ICharmIdMap;
+import net.sf.anathema.character.generic.magic.charms.CharmIdMap;
 import net.sf.anathema.character.generic.magic.charms.special.ISpecialCharmConfiguration;
 import net.sf.anathema.character.generic.template.HeroTemplate;
 import net.sf.anathema.character.generic.template.magic.ICharmTemplate;
@@ -28,7 +28,17 @@ import net.sf.anathema.lib.xml.ElementUtilities;
 import org.dom4j.Element;
 
 import static net.sf.anathema.character.generic.impl.traits.SimpleTraitTemplate.createEssenceLimitedTemplate;
-import static net.sf.anathema.character.persistence.ICharacterXmlConstants.*;
+import static net.sf.anathema.character.persistence.ICharacterXmlConstants.ATTRIB_EXPERIENCE_LEARNED;
+import static net.sf.anathema.character.persistence.ICharacterXmlConstants.ATTRIB_NAME;
+import static net.sf.anathema.character.persistence.ICharacterXmlConstants.ATTRIB_TYPE;
+import static net.sf.anathema.character.persistence.ICharacterXmlConstants.TAG_CHARM;
+import static net.sf.anathema.character.persistence.ICharacterXmlConstants.TAG_CHARMGROUP;
+import static net.sf.anathema.character.persistence.ICharacterXmlConstants.TAG_CHARMS;
+import static net.sf.anathema.character.persistence.ICharacterXmlConstants.TAG_COMBO;
+import static net.sf.anathema.character.persistence.ICharacterXmlConstants.TAG_COMBOS;
+import static net.sf.anathema.character.persistence.ICharacterXmlConstants.TAG_DESCRIPTION;
+import static net.sf.anathema.character.persistence.ICharacterXmlConstants.TAG_NAME;
+import static net.sf.anathema.character.persistence.ICharacterXmlConstants.TAG_SPECIAL;
 
 public class CharmConfigurationPersister {
 
@@ -195,7 +205,7 @@ public class CharmConfigurationPersister {
     return ElementUtilities.getBooleanAttribute(charmElement, ATTRIB_EXPERIENCE_LEARNED, false);
   }
 
-  private void loadCombos(Element parent, CombosModel comboConfiguration, ICharmIdMap charms) throws PersistenceException {
+  private void loadCombos(Element parent, CombosModel comboConfiguration, CharmIdMap charms) throws PersistenceException {
     Element combosElement = parent.element(TAG_COMBOS);
     if (combosElement == null) {
       return;

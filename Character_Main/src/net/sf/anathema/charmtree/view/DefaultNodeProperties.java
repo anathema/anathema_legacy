@@ -2,7 +2,7 @@ package net.sf.anathema.charmtree.view;
 
 import com.google.common.base.Preconditions;
 import net.sf.anathema.character.generic.magic.ICharm;
-import net.sf.anathema.character.generic.magic.charms.ICharmIdMap;
+import net.sf.anathema.character.generic.magic.charms.CharmIdMap;
 import net.sf.anathema.charmtree.builder.MagicDisplayLabeler;
 import net.sf.anathema.lib.logging.Logger;
 import net.sf.anathema.lib.resources.Resources;
@@ -18,9 +18,9 @@ public class DefaultNodeProperties implements NodeProperties {
   private final ICharmTreeViewProperties properties;
   private final MagicDisplayLabeler charmLabeler;
   private final Resources resources;
-  private final ICharmIdMap map;
+  private final CharmIdMap map;
 
-  public DefaultNodeProperties(Resources resources, ICharmTreeViewProperties properties, ICharmIdMap map) {
+  public DefaultNodeProperties(Resources resources, ICharmTreeViewProperties properties, CharmIdMap map) {
     this.properties = properties;
     this.resources = resources;
     this.map = map;

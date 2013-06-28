@@ -1,8 +1,8 @@
 package net.sf.anathema.character.presenter.magic;
 
 import net.sf.anathema.character.generic.magic.ICharm;
+import net.sf.anathema.character.generic.magic.charms.CharmIdMap;
 import net.sf.anathema.character.generic.magic.charms.ICharmGroup;
-import net.sf.anathema.character.generic.magic.charms.ICharmIdMap;
 import net.sf.anathema.character.generic.type.ICharacterType;
 import net.sf.anathema.character.main.testing.dummy.DummyExaltCharacterType;
 import net.sf.anathema.charmtree.view.CharmGroupInformer;
@@ -22,7 +22,7 @@ public class VisibilityPredicateTest {
   public void charmIsVisibleIfCharacterTypesMatchButAreNotIdentical() throws Exception {
     ICharacterType characterTypeForCharm = new DummyExaltCharacterType();
     ICharm charm = createCharmForCharacterTypeFromGroup(characterTypeForCharm, ANY_ID);
-    ICharmIdMap map = createMapWithCharm(charm);
+    CharmIdMap map = createMapWithCharm(charm);
     ICharmGroup charmGroup = createACharmGroupThatContainsTheCharm(charm);
     selectGroup(charmGroup);
     VisibilityPredicate predicate = new VisibilityPredicate(map, informer);
@@ -40,8 +40,8 @@ public class VisibilityPredicateTest {
     when(informer.getCurrentGroup()).thenReturn(charmGroup);
   }
 
-  private ICharmIdMap createMapWithCharm(ICharm charm) {
-    ICharmIdMap map = mock(ICharmIdMap.class);
+  private CharmIdMap createMapWithCharm(ICharm charm) {
+    CharmIdMap map = mock(CharmIdMap.class);
     when(map.getCharmById(ANY_ID)).thenReturn(charm);
     return map;
   }

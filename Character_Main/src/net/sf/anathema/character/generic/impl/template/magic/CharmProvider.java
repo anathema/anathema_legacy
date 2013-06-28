@@ -2,7 +2,7 @@ package net.sf.anathema.character.generic.impl.template.magic;
 
 import net.sf.anathema.character.generic.impl.magic.persistence.ICharmCache;
 import net.sf.anathema.character.generic.magic.ICharm;
-import net.sf.anathema.character.generic.magic.charms.ICharmIdMap;
+import net.sf.anathema.character.generic.magic.charms.CharmIdMap;
 import net.sf.anathema.character.generic.magic.charms.ICharmLearnableArbitrator;
 import net.sf.anathema.character.generic.magic.charms.special.ISpecialCharm;
 import net.sf.anathema.lib.util.Identifier;
@@ -26,7 +26,7 @@ public class CharmProvider implements ICharmProvider {
   }
 
   @Override
-  public ISpecialCharm[] getSpecialCharms(ICharmLearnableArbitrator arbitrator, ICharmIdMap map, Identifier preferredType) {
+  public ISpecialCharm[] getSpecialCharms(ICharmLearnableArbitrator arbitrator, CharmIdMap map, Identifier preferredType) {
     List<ISpecialCharm> relevantCharms = new ArrayList<>();
     ISpecialCharm[] allSpecialCharms = getAllSpecialCharms(preferredType);
     for (ISpecialCharm specialCharm : allSpecialCharms) {
