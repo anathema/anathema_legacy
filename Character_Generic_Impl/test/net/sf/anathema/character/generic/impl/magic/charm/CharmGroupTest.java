@@ -9,13 +9,19 @@ import static org.junit.Assert.assertThat;
 
 public class CharmGroupTest {
   @Test
-  public void equalsCharmGroupWithMatchingCharacterTypeThatIsNotIdentical() throws Exception {
-    CharmGroup group1 = createGroupWithCharacterType(new DummyExaltCharacterType());
-    CharmGroup group2 = createGroupWithCharacterType(new DummyExaltCharacterType());
-    assertThat(group1.equals(group2), is(true));
+  public void equalsSelf() throws Exception {
+    CharmGroup group = createGroupWithCharacterType();
+    assertThat(group.equals(group), is(true));
   }
 
-  private CharmGroup createGroupWithCharacterType(DummyExaltCharacterType type) {
-    return new CharmGroup(type, "AnyId", new ICharm[0], false);
+  @Test
+  public void doesNotEqualSimilarGroup() throws Exception {
+    CharmGroup group = createGroupWithCharacterType();
+    CharmGroup group2 = createGroupWithCharacterType();
+    assertThat(group.equals(group2), is(false));
+  }
+
+  private CharmGroup createGroupWithCharacterType() {
+    return new CharmGroup(new DummyExaltCharacterType(), "AnyId", new ICharm[0], false);
   }
 }
