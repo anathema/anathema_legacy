@@ -23,7 +23,6 @@ public class GenericTraitTemplateParser {
   private static final String ATTRIB_FREEBIE = "isFreebie";
   private static final String TAG_MINIMUM = "minimum";
   private static final String TAG_LIMITATION = "limitation";
-  private static final String TAG_TAG = "tag";
   private static final String VALUE_STATIC = "Static";
   private static final String VALUE_ESSENCE = "Essence";
   private static final String VALUE_AGE = "Age";
@@ -53,11 +52,6 @@ public class GenericTraitTemplateParser {
 
     defaultTraitTemplate.setMinimumValue(Integer.parseInt(minimumValueElement.attributeValue(ATTRIB_VALUE)));
     defaultTraitTemplate.setMinimumValue(ElementUtilities.getRequiredIntAttrib(minimumValueElement, ATTRIB_VALUE));
-
-    Element tagElement = traitElement.element(TAG_TAG);
-    if (tagElement != null) {
-      defaultTraitTemplate.setTag(ElementUtilities.getRequiredAttrib(tagElement, ATTRIB_VALUE));
-    }
 
     return defaultTraitTemplate;
   }

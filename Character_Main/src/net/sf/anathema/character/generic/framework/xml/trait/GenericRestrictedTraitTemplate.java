@@ -111,8 +111,4 @@ public class GenericRestrictedTraitTemplate extends ReflectionCloneableObject<IC
     return clone;
   }
 
-  @Override
-  public String getTag() {
-    return null;
-  }
 }

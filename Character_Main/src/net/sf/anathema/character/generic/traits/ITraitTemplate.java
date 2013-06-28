@@ -13,6 +13,4 @@ public interface ITraitTemplate extends ITraitMinimum {
   int getZeroLevelValue();
 
   boolean isRequiredFavored();
-  
-  String getTag();
 }

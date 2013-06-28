@@ -41,8 +41,4 @@ public abstract class AbstractTraitTemplate implements ITraitTemplate {
     return getMinimumValue(hero);
   }
 
-  @Override
-  public String getTag() {
-    return null;
-  }
 }
