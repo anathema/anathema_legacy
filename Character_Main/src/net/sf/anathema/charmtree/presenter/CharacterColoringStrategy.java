@@ -1,27 +1,28 @@
-package net.sf.anathema.character.presenter.magic;
+package net.sf.anathema.charmtree.presenter;
 
 import net.sf.anathema.character.generic.magic.ICharm;
 import net.sf.anathema.character.generic.magic.charms.IndirectCharmRequirement;
 import net.sf.anathema.character.main.model.charms.CharmsModel;
-import net.sf.anathema.charmtree.presenter.AbstractCharmDye;
-import net.sf.anathema.charmtree.view.CharmGroupInformer;
+import net.sf.anathema.character.presenter.magic.CharacterCharmModel;
+import net.sf.anathema.character.presenter.magic.CharmColoringStrategy;
 import net.sf.anathema.charmtree.view.ICharmView;
 import net.sf.anathema.framework.ui.RGBColor;
 
-public class CharacterCharmDye extends AbstractCharmDye {
+public class CharacterColoringStrategy implements CharmColoringStrategy {
+
 
   private static final int MAXIMUM_OPACITY = 255;
   private static final int REDUCED_OPACITY = 70;
   private static final RGBColor UNSELECTED_COLOR = RGBColor.White;
-  private final RGBColor characterColor;
-  private final CharacterCharmModel model;
-  private final ICharmView view;
 
-  public CharacterCharmDye(CharacterCharmModel model, CharmGroupInformer informer, RGBColor characterColor, ICharmView view) {
-    super(informer);
+  private final RGBColor characterColor;
+  private final ICharmView view;
+  private final CharacterCharmModel model;
+
+  public CharacterColoringStrategy(RGBColor characterColor, ICharmView view, CharacterCharmModel model) {
     this.characterColor = characterColor;
-    this.model = model;
     this.view = view;
+    this.model = model;
   }
 
   @Override
@@ -33,7 +34,7 @@ public class CharacterCharmDye extends AbstractCharmDye {
   }
 
   @Override
-  protected void setPrerequisiteVisuals(IndirectCharmRequirement requirement) {
+  public void setPrerequisiteVisuals(IndirectCharmRequirement requirement) {
     String id = requirement.getStringRepresentation();
     boolean fulfilled = requirement.isFulfilled(getCharmConfiguration().getLearnedCharms(true));
     RGBColor fillColor = fulfilled ? characterColor.brighter() : UNSELECTED_COLOR;

@@ -3,7 +3,6 @@ package net.sf.anathema.character.presenter.magic.charm;
 import net.sf.anathema.character.generic.magic.charms.GroupCharmTree;
 import net.sf.anathema.character.main.model.charms.CharmsModel;
 import net.sf.anathema.character.presenter.magic.CharacterAlienCharmPresenter;
-import net.sf.anathema.character.presenter.magic.CharacterCharmDye;
 import net.sf.anathema.character.presenter.magic.CharacterCharmGroupChangeListener;
 import net.sf.anathema.character.presenter.magic.CharacterCharmModel;
 import net.sf.anathema.character.presenter.magic.CharacterCharmTreeViewProperties;
@@ -17,6 +16,8 @@ import net.sf.anathema.character.presenter.magic.SpecialCharmList;
 import net.sf.anathema.character.presenter.magic.SpecialCharmViewBuilder;
 import net.sf.anathema.character.presenter.magic.detail.ShowMagicDetailListener;
 import net.sf.anathema.charmtree.presenter.AbstractCascadePresenter;
+import net.sf.anathema.charmtree.presenter.CharacterColoringStrategy;
+import net.sf.anathema.charmtree.presenter.ConfigurableCharmDye;
 import net.sf.anathema.charmtree.view.CharmDisplayPropertiesMap;
 import net.sf.anathema.charmtree.view.DefaultNodeProperties;
 import net.sf.anathema.charmtree.view.ICharmView;
@@ -41,16 +42,16 @@ public class CharacterCharmTreePresenter extends AbstractCascadePresenter {
     view.initGui(viewProperties, nodeProperties);
     CharacterCharmGroupChangeListener charmGroupChangeListener =
             new CharacterCharmGroupChangeListener(charmConfiguration, view.getCharmTreeRenderer(), displayPropertiesMap);
-    CharacterCharmDye dye = new CharacterCharmDye(model, charmGroupChangeListener, presentationProperties.getColor(), view);
+    ConfigurableCharmDye colorist = new ConfigurableCharmDye(charmGroupChangeListener, new CharacterColoringStrategy(presentationProperties.getColor(), view, model));
     setCharmTypes(new CharacterCharmTypes(charmModel));
     setChangeListener(charmGroupChangeListener);
     setView(view);
     SpecialCharmViewBuilder specialViewBuilder = createSpecialCharmViewBuilder(resources, charmConfiguration);
     SpecialCharmList specialCharmList = new CommonSpecialCharmList(view, specialViewBuilder);
     setSpecialPresenter(new CharacterSpecialCharmPresenter(charmGroupChangeListener, charmModel, specialCharmList));
-    setCharmDye(dye);
+    setCharmDye(colorist);
     setAlienCharmPresenter(new CharacterAlienCharmPresenter(model, view));
-    setInteractionPresenter(new LearnInteractionPresenter(model, view, viewProperties, dye));
+    setInteractionPresenter(new LearnInteractionPresenter(model, view, viewProperties, colorist));
     setCharmGroups(new CharacterGroupCollection(model));
   }
 

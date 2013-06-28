@@ -2,23 +2,29 @@ package net.sf.anathema.charmtree.presenter;
 
 import net.sf.anathema.character.generic.magic.ICharm;
 import net.sf.anathema.character.generic.magic.charms.IndirectCharmRequirement;
+import net.sf.anathema.character.presenter.magic.CharmColoringStrategy;
 import net.sf.anathema.charmtree.view.CharmGroupInformer;
 
-public abstract class AbstractCharmDye implements CharmDye {
+public class ConfigurableCharmDye implements CharmDye {
 
-  private CharmGroupInformer groupInformer;
+  private final CharmGroupInformer groupInformer;
+  private final CharmColoringStrategy dye;
 
-  public AbstractCharmDye(CharmGroupInformer informer) {
+  public ConfigurableCharmDye(CharmGroupInformer informer, CharmColoringStrategy dye) {
     this.groupInformer = informer;
+    this.dye = dye;
   }
 
-  @Override
+  public void colorCharm(ICharm charm) {
+    dye.colorCharm(charm);
+  }
+
   public void setCharmVisuals() {
     if (!groupInformer.hasGroupSelected()) {
       return;
     }
     for (ICharm charm : getAllCharmsFromCurrentGroup()) {
-      colorCharm(charm);
+      dye.colorCharm(charm);
       colorExternalCharmPrerequisites(charm);
       colorNonCharmPrerequisite(charm);
     }
@@ -26,7 +32,7 @@ public abstract class AbstractCharmDye implements CharmDye {
 
   private void colorNonCharmPrerequisite(ICharm charm) {
     for (IndirectCharmRequirement requirement : charm.getIndirectRequirements()) {
-      setPrerequisiteVisuals(requirement);
+      dye.setPrerequisiteVisuals(requirement);
     }
   }
 
@@ -35,7 +41,7 @@ public abstract class AbstractCharmDye implements CharmDye {
       if (isPartOfCurrentGroup(prerequisite)) {
         return;
       }
-      colorCharm(prerequisite);
+      dye.colorCharm(prerequisite);
     }
   }
 
@@ -46,6 +52,4 @@ public abstract class AbstractCharmDye implements CharmDye {
   protected ICharm[] getAllCharmsFromCurrentGroup() {
     return groupInformer.getCurrentGroup().getAllCharms();
   }
-
-  protected abstract void setPrerequisiteVisuals(IndirectCharmRequirement requirement);
 }

@@ -3,6 +3,7 @@ package net.sf.anathema.character.presenter.magic;
 import net.sf.anathema.character.main.model.charms.CharmsModel;
 import net.sf.anathema.character.model.charm.ICharmLearnListener;
 import net.sf.anathema.character.model.charm.ILearningCharmGroup;
+import net.sf.anathema.charmtree.presenter.CharmDye;
 import net.sf.anathema.charmtree.presenter.CharmInteractionPresenter;
 import net.sf.anathema.charmtree.view.ICharmTreeViewProperties;
 import net.sf.anathema.charmtree.view.ICharmView;
@@ -14,9 +15,9 @@ public class LearnInteractionPresenter implements CharmInteractionPresenter {
   private ICharmView view;
   private CharacterCharmModel model;
   private ICharmTreeViewProperties viewProperties;
-  private CharacterCharmDye dye;
+  private CharmDye dye;
 
-  public LearnInteractionPresenter(CharacterCharmModel model, ICharmView view, ICharmTreeViewProperties viewProperties, CharacterCharmDye dye) {
+  public LearnInteractionPresenter(CharacterCharmModel model, ICharmView view, ICharmTreeViewProperties viewProperties, CharmDye dye) {
     this.model = model;
     this.view = view;
     this.viewProperties = viewProperties;

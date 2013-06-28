@@ -9,6 +9,8 @@ import net.sf.anathema.character.generic.magic.description.MagicDescriptionProvi
 import net.sf.anathema.character.generic.template.ITemplateRegistry;
 import net.sf.anathema.character.generic.type.CharacterTypes;
 import net.sf.anathema.charmtree.presenter.AbstractCascadePresenter;
+import net.sf.anathema.charmtree.presenter.CharmDye;
+import net.sf.anathema.charmtree.presenter.ConfigurableCharmDye;
 import net.sf.anathema.charmtree.view.CharmDisplayPropertiesMap;
 import net.sf.anathema.charmtree.view.DefaultNodeProperties;
 import net.sf.anathema.lib.resources.Resources;
@@ -34,7 +36,8 @@ public class CascadePresenter extends AbstractCascadePresenter implements ICasca
     setCharmTypes(new CascadeCharmTypes(characterTypes, templateRegistry));
     setChangeListener(selectionListener);
     setView(view);
-    setCharmDye(new CascadeCharmDye(view, selectionListener));
+    CharmDye dye = new ConfigurableCharmDye(selectionListener, new CascadeColoringStrategy(view));
+    setCharmDye(dye);
     setCharmGroups(new CascadeGroupCollection(characterTypes, templateRegistry, treeIdentificateMap));
   }
 
