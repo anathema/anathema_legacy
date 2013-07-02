@@ -3,7 +3,6 @@ package net.sf.anathema.character.main.testing.dummy;
 import net.sf.anathema.character.generic.character.IGenericCharacter;
 import net.sf.anathema.character.generic.character.IGenericTraitCollection;
 import net.sf.anathema.character.generic.magic.ICharm;
-import net.sf.anathema.character.generic.magic.IGenericCombo;
 import net.sf.anathema.character.generic.magic.IMagic;
 import net.sf.anathema.character.generic.traits.GenericTrait;
 import net.sf.anathema.character.generic.traits.TraitType;
@@ -53,16 +52,6 @@ public class DummyGenericCharacter implements IGenericCharacter {
   @Override
   public List<IMagic> getAllLearnedMagic() {
     return new ArrayList<>();
-  }
-
-  @Override
-  public int getLearnCount(ICharm charm) {
-    return 0;
-  }
-
-  @Override
-  public IGenericCombo[] getCombos() {
-    return new IGenericCombo[0];
   }
 
   @Override

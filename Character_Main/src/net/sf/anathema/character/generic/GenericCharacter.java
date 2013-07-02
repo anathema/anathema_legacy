@@ -3,7 +3,6 @@ package net.sf.anathema.character.generic;
 import net.sf.anathema.character.generic.character.IGenericCharacter;
 import net.sf.anathema.character.generic.character.IGenericTraitCollection;
 import net.sf.anathema.character.generic.magic.ICharm;
-import net.sf.anathema.character.generic.magic.IGenericCombo;
 import net.sf.anathema.character.generic.magic.IMagic;
 import net.sf.anathema.character.generic.magic.IMagicVisitor;
 import net.sf.anathema.character.generic.magic.ISpell;
@@ -14,15 +13,11 @@ import net.sf.anathema.character.library.trait.specialties.SpecialtiesModel;
 import net.sf.anathema.character.library.trait.specialties.SpecialtiesModelFetcher;
 import net.sf.anathema.character.library.trait.specialties.Specialty;
 import net.sf.anathema.character.library.trait.subtrait.ISubTraitContainer;
-import net.sf.anathema.character.main.model.charms.CharmsModel;
 import net.sf.anathema.character.main.model.charms.CharmsModelFetcher;
-import net.sf.anathema.character.main.model.combos.CombosModelFetcher;
 import net.sf.anathema.character.main.model.experience.ExperienceModelFetcher;
 import net.sf.anathema.character.main.model.spells.SpellsModelFetcher;
 import net.sf.anathema.character.main.model.traits.GenericTraitCollectionFacade;
-import net.sf.anathema.character.main.model.traits.TraitMap;
 import net.sf.anathema.character.main.model.traits.TraitModelFetcher;
-import net.sf.anathema.character.model.charm.ICombo;
 import net.sf.anathema.character.model.charm.ILearningCharmGroup;
 import net.sf.anathema.character.model.charm.special.IMultipleEffectCharmConfiguration;
 import net.sf.anathema.character.model.charm.special.ISubeffectCharmConfiguration;
@@ -42,7 +37,7 @@ public class GenericCharacter implements IGenericCharacter {
 
   @Override
   public IGenericTraitCollection getTraitCollection() {
-    return new GenericTraitCollectionFacade(getTraitMap());
+    return new GenericTraitCollectionFacade(TraitModelFetcher.fetch(hero));
   }
 
   @Override
@@ -76,28 +71,6 @@ public class GenericCharacter implements IGenericCharacter {
     boolean experienced = ExperienceModelFetcher.fetch(hero).isExperienced();
     magicList.addAll(Arrays.asList(SpellsModelFetcher.fetch(hero).getLearnedSpells(experienced)));
     return magicList;
-  }
-
-  @Override
-  public int getLearnCount(ICharm charm) {
-    return getLearnCount(charm, CharmsModelFetcher.fetch(hero));
-  }
-
-  private int getLearnCount(ICharm charm, CharmsModel configuration) {
-    ISpecialCharmConfiguration specialCharmConfiguration = configuration.getSpecialCharmConfiguration(charm.getId());
-    if (specialCharmConfiguration != null) {
-      return specialCharmConfiguration.getCurrentLearnCount();
-    }
-    return configuration.isLearned(charm) ? 1 : 0;
-  }
-
-  @Override
-  public IGenericCombo[] getCombos() {
-    List<IGenericCombo> genericCombos = new ArrayList<>();
-    for (ICombo combo : CombosModelFetcher.fetch(hero).getAllCombos()) {
-      genericCombos.add(new GenericCombo(combo));
-    }
-    return genericCombos.toArray(new IGenericCombo[genericCombos.size()]);
   }
 
   @Override
@@ -139,9 +112,5 @@ public class GenericCharacter implements IGenericCharacter {
   private ICharm[] getLearnedCharms() {
     boolean experienced = ExperienceModelFetcher.fetch(hero).isExperienced();
     return CharmsModelFetcher.fetch(hero).getLearnedCharms(experienced);
-  }
-
-  private TraitMap getTraitMap() {
-    return TraitModelFetcher.fetch(hero);
   }
 }

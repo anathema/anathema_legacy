@@ -1,23 +1,25 @@
 package net.sf.anathema.hero.combos.sheet.content;
 
-import net.sf.anathema.character.generic.character.IGenericCharacter;
+import net.sf.anathema.character.generic.GenericCombo;
 import net.sf.anathema.character.generic.magic.IGenericCombo;
+import net.sf.anathema.character.main.model.combos.CombosModelFetcher;
+import net.sf.anathema.character.model.charm.ICombo;
 import net.sf.anathema.character.reporting.pdf.content.AbstractSubBoxContent;
+import net.sf.anathema.hero.model.Hero;
 import net.sf.anathema.lib.resources.Resources;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 
 import static com.google.common.collect.Lists.transform;
 
 public class ComboContent extends AbstractSubBoxContent {
 
-  private IGenericCharacter character;
+  private Hero hero;
 
-  public ComboContent(IGenericCharacter character, Resources resources) {
+  public ComboContent(Hero hero, Resources resources) {
     super(resources);
-    this.character = character;
+    this.hero = hero;
   }
 
   @Override
@@ -35,6 +37,10 @@ public class ComboContent extends AbstractSubBoxContent {
   }
 
   private List<IGenericCombo> getGenericCombos() {
-    return new ArrayList<>(Arrays.asList(character.getCombos()));
+    List<IGenericCombo> genericCombos = new ArrayList<>();
+    for (ICombo combo : CombosModelFetcher.fetch(hero).getAllCombos()) {
+      genericCombos.add(new GenericCombo(combo));
+    }
+    return genericCombos;
   }
 }
