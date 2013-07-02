@@ -25,14 +25,14 @@ public class DefaultTrait implements Trait {
   private int capModifier = 0;
   private int creationValue;
   private int experiencedValue = ITraitRules.UNEXPERIENCED;
-  private final IValueChangeChecker checker;
+  private final ValueChangeChecker checker;
   private ITraitFavorization traitFavorization;
   private final ITraitRules traitRules;
   private final Announcer<IIntValueChangedListener> creationPointControl = Announcer.to(IIntValueChangedListener.class);
   private final Announcer<IIntValueChangedListener> currentValueControl = Announcer.to(IIntValueChangedListener.class);
   private final TraitValueStrategy valueStrategy;
 
-  public DefaultTrait(Hero hero, IFavorableTraitRules traitRules, CasteType[] castes, IValueChangeChecker valueChangeChecker,
+  public DefaultTrait(Hero hero, IFavorableTraitRules traitRules, CasteType[] castes, ValueChangeChecker valueChangeChecker,
                       IncrementChecker favoredIncrementChecker) {
     this(hero, traitRules, valueChangeChecker);
     this.traitFavorization = new TraitFavorization(hero, castes, favoredIncrementChecker, this, traitRules.isRequiredFavored());
@@ -41,7 +41,7 @@ public class DefaultTrait implements Trait {
     traitFavorization.updateFavorableStateToCaste();
   }
 
-  public DefaultTrait(Hero hero, ITraitRules traitRules, IValueChangeChecker checker) {
+  public DefaultTrait(Hero hero, ITraitRules traitRules, ValueChangeChecker checker) {
     Preconditions.checkNotNull(traitRules);
     this.traitRules = traitRules;
     TraitModel traits = TraitModelFetcher.fetch(hero);

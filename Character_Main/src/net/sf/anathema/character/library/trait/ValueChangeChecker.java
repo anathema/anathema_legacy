@@ -1,6 +1,6 @@
 package net.sf.anathema.character.library.trait;
 
-public interface IValueChangeChecker {
+public interface ValueChangeChecker {
 
   boolean isValidNewValue(int value);
 }

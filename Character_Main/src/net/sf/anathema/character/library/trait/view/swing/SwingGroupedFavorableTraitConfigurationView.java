@@ -1,9 +1,10 @@
-package net.sf.anathema.character.view;
+package net.sf.anathema.character.library.trait.view.swing;
 
 import net.sf.anathema.character.library.trait.Trait;
+import net.sf.anathema.character.library.trait.view.GroupedFavorableTraitConfigurationView;
 import net.sf.anathema.character.library.trait.view.GroupedTraitView;
-import net.sf.anathema.character.library.trait.view.SwingGroupedTraitView;
 import net.sf.anathema.character.presenter.ExtensibleTraitView;
+import net.sf.anathema.character.view.ColumnCount;
 import net.sf.anathema.framework.swing.IView;
 import net.sf.anathema.framework.value.IntegerViewFactory;
 

@@ -5,8 +5,8 @@ import net.sf.anathema.character.generic.traits.ITraitTemplate;
 import net.sf.anathema.character.generic.traits.LowerableState;
 import net.sf.anathema.character.generic.traits.types.VirtueType;
 import net.sf.anathema.character.library.trait.DefaultTrait;
-import net.sf.anathema.character.library.trait.IValueChangeChecker;
 import net.sf.anathema.character.library.trait.Trait;
+import net.sf.anathema.character.library.trait.ValueChangeChecker;
 import net.sf.anathema.character.library.trait.rules.TraitRules;
 import net.sf.anathema.hero.model.Hero;
 import net.sf.anathema.lib.control.ChangeListener;
@@ -29,16 +29,7 @@ public class IntimacyImpl implements Intimacy {
     this.maxValueTrait = maxValueTrait;
     ITraitTemplate template = createVirtueLimitedTemplate(0, initialValue, LowerableState.LowerableLoss, VirtueType.Conviction);
     TraitRules traitRules = new TraitRules(new IntimacyType(name), template, hero);
-    IValueChangeChecker incrementChecker = new IValueChangeChecker() {
-      @Override
-      public boolean isValidNewValue(int value) {
-        int currentMaximum = maxValueTrait.getCurrentValue();
-        if (value == currentMaximum) {
-          return true;
-        }
-        return !complete && value < currentMaximum;
-      }
-    };
+    ValueChangeChecker incrementChecker = new IntimacyValueChangeChecker(maxValueTrait);
     this.trait = new DefaultTrait(hero, traitRules, incrementChecker);
   }
   @Override
@@ -80,5 +71,21 @@ public class IntimacyImpl implements Intimacy {
     GlobalChangeAdapter< ? > adapter = new GlobalChangeAdapter<Object>(listener);
     control.addListener(adapter);
     trait.addCurrentValueListener(adapter);
+  }
+
+  private class IntimacyValueChangeChecker implements ValueChangeChecker {
+    private final GenericTrait maxValueTrait;
+
+    public IntimacyValueChangeChecker(GenericTrait maxValueTrait) {
+      this.maxValueTrait = maxValueTrait;
+    }
+
+    @Override
+    public boolean isValidNewValue(int value) {
+      int currentMaximum = maxValueTrait.getCurrentValue();
+      boolean atMaximumValue = value == currentMaximum;
+      boolean incompleteAndBelowMaximum = !complete && value < currentMaximum;
+      return atMaximumValue || incompleteAndBelowMaximum;
+    }
   }
 }

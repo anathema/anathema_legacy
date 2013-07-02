@@ -1,8 +1,9 @@
-package net.sf.anathema.character.library.trait.view;
+package net.sf.anathema.character.library.trait.view.swing;
 
 import net.miginfocom.layout.CC;
 import net.miginfocom.swing.MigLayout;
 import net.sf.anathema.character.library.intvalue.IIconToggleButtonProperties;
+import net.sf.anathema.character.library.trait.view.TraitView;
 import net.sf.anathema.character.presenter.ExtensibleTraitView;
 import net.sf.anathema.framework.value.IIntValueView;
 import net.sf.anathema.interaction.ToggleTool;
@@ -21,7 +22,7 @@ public class SwingExtensibleTraitView implements ExtensibleTraitView {
   private final JPanel rear = new JPanel(new MigLayout(fillWithoutInsets()));
   private final IIntValueView view;
 
-  public SwingExtensibleTraitView(ITraitView view) {
+  public SwingExtensibleTraitView(TraitView view) {
     this.view = view;
     view.addComponents(center);
   }

@@ -1,4 +1,4 @@
-package net.sf.anathema.character.library.trait.view;
+package net.sf.anathema.character.library.trait.view.swing;
 
 import net.sf.anathema.framework.view.menu.AddToSwingComponent;
 import net.sf.anathema.lib.gui.layout.SwingLayoutUtils;
