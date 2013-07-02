@@ -171,16 +171,6 @@ public class DummyGenericCharacter implements IGenericCharacter {
   }
 
   @Override
-  public IIdentifiedTraitTypeGroup[] getAbilityTypeGroups() {
-    return new IIdentifiedTraitTypeGroup[0];
-  }
-
-  @Override
-  public IIdentifiedTraitTypeGroup[] getAttributeTypeGroups() {
-    return new IIdentifiedTraitTypeGroup[0];
-  }
-
-  @Override
   public int getSpentExperiencePoints() {
     return 0;
   }

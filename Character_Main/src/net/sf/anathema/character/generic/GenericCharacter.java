@@ -16,12 +16,9 @@ import net.sf.anathema.character.generic.magic.charms.special.ISubeffect;
 import net.sf.anathema.character.generic.template.HeroTemplate;
 import net.sf.anathema.character.generic.template.ITraitLimitation;
 import net.sf.anathema.character.generic.traits.TraitType;
-import net.sf.anathema.character.generic.traits.groups.IIdentifiedTraitTypeGroup;
 import net.sf.anathema.character.library.trait.specialties.SpecialtiesModel;
 import net.sf.anathema.character.library.trait.specialties.SpecialtiesModelFetcher;
 import net.sf.anathema.character.library.trait.specialties.Specialty;
-import net.sf.anathema.character.main.model.abilities.AbilityModelFetcher;
-import net.sf.anathema.character.main.model.attributes.AttributesModelFetcher;
 import net.sf.anathema.character.main.model.charms.CharmsModel;
 import net.sf.anathema.character.main.model.charms.CharmsModelFetcher;
 import net.sf.anathema.character.main.model.combos.CombosModelFetcher;
@@ -211,15 +208,6 @@ public class GenericCharacter implements IGenericCharacter {
     return OtherTraitModelFetcher.fetch(hero).getEssenceLimitation();
   }
 
-  @Override
-  public IIdentifiedTraitTypeGroup[] getAbilityTypeGroups() {
-    return AbilityModelFetcher.fetch(hero).getAbilityTypeGroups();
-  }
-
-  @Override
-  public IIdentifiedTraitTypeGroup[] getAttributeTypeGroups() {
-    return AttributesModelFetcher.fetch(hero).getAttributeTypeGroups();
-  }
 
   @Override
   public int getSpentExperiencePoints() {

@@ -8,7 +8,6 @@ import net.sf.anathema.character.generic.magic.IMagic;
 import net.sf.anathema.character.generic.template.HeroTemplate;
 import net.sf.anathema.character.generic.template.ITraitLimitation;
 import net.sf.anathema.character.generic.traits.TraitType;
-import net.sf.anathema.character.generic.traits.groups.IIdentifiedTraitTypeGroup;
 import net.sf.anathema.character.library.trait.specialties.Specialty;
 import net.sf.anathema.lib.util.IdentifiedInteger;
 
@@ -23,10 +22,6 @@ public interface IGenericCharacter {
   IGenericTraitCollection getTraitCollection();
 
   boolean isLearned(IMagic magic);
-
-  IIdentifiedTraitTypeGroup[] getAbilityTypeGroups();
-
-  IIdentifiedTraitTypeGroup[] getAttributeTypeGroups();
 
   IGenericDescription getDescription();
 
