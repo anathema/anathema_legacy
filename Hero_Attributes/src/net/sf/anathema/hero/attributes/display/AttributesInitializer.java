@@ -1,8 +1,8 @@
 package net.sf.anathema.hero.attributes.display;
 
+import net.sf.anathema.character.library.trait.view.GroupedFavorableTraitConfigurationView;
 import net.sf.anathema.character.presenter.initializers.HeroModelInitializer;
 import net.sf.anathema.character.presenter.initializers.RegisteredInitializer;
-import net.sf.anathema.character.view.GroupedFavorableTraitConfigurationView;
 import net.sf.anathema.character.view.SectionView;
 import net.sf.anathema.framework.IApplicationModel;
 import net.sf.anathema.hero.model.Hero;

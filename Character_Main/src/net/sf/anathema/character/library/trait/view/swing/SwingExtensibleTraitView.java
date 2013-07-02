@@ -1,8 +1,9 @@
-package net.sf.anathema.character.library.trait.view;
+package net.sf.anathema.character.library.trait.view.swing;
 
 import net.miginfocom.layout.CC;
 import net.miginfocom.swing.MigLayout;
 import net.sf.anathema.character.library.intvalue.IIconToggleButtonProperties;
+import net.sf.anathema.character.library.trait.view.ITraitView;
 import net.sf.anathema.character.presenter.ExtensibleTraitView;
 import net.sf.anathema.framework.value.IIntValueView;
 import net.sf.anathema.interaction.ToggleTool;

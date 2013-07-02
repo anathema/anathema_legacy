@@ -1,4 +1,4 @@
-package net.sf.anathema.character.library.trait.view;
+package net.sf.anathema.character.library.trait.view.swing;
 
 import net.sf.anathema.character.library.intvalue.IIconToggleButtonProperties;
 import net.sf.anathema.framework.value.IconToggleButton;

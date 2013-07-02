@@ -1,6 +1,6 @@
 package net.sf.anathema.character.view.magic;
 
-import net.sf.anathema.character.library.trait.view.SimpleTraitView;
+import net.sf.anathema.character.library.trait.view.swing.SimpleTraitView;
 import net.sf.anathema.framework.value.IIntValueView;
 import net.sf.anathema.framework.value.IntegerViewFactory;
 import net.sf.anathema.platform.tree.presenter.view.ContentFactory;
