@@ -1,4 +1,4 @@
-package net.sf.anathema.character.presenter;
+package net.sf.anathema.hero.traits.display;
 
 import net.sf.anathema.character.generic.template.presentation.IPresentationProperties;
 import net.sf.anathema.character.generic.traits.groups.IIdentifiedTraitTypeGroup;
@@ -12,6 +12,8 @@ import net.sf.anathema.character.main.model.experience.ExperienceChange;
 import net.sf.anathema.character.main.model.experience.ExperienceModelFetcher;
 import net.sf.anathema.character.main.model.traits.TraitMap;
 import net.sf.anathema.character.main.model.traits.TraitModelFetcher;
+import net.sf.anathema.character.presenter.ExtensibleTraitView;
+import net.sf.anathema.character.presenter.FavorableTraitViewProperties;
 import net.sf.anathema.character.view.GroupedFavorableTraitConfigurationView;
 import net.sf.anathema.hero.change.ChangeFlavor;
 import net.sf.anathema.hero.change.FlavoredChangeListener;
