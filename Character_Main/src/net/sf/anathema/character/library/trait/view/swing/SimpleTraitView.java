@@ -2,7 +2,7 @@ package net.sf.anathema.character.library.trait.view.swing;
 
 import net.sf.anathema.character.library.intvalue.TraitUpperBounds;
 import net.sf.anathema.character.library.trait.Trait;
-import net.sf.anathema.character.library.trait.view.ITraitView;
+import net.sf.anathema.character.library.trait.view.TraitView;
 import net.sf.anathema.framework.value.IIntValueDisplay;
 import net.sf.anathema.framework.value.IntegerViewFactory;
 import net.sf.anathema.framework.value.NullUpperBounds;
@@ -15,7 +15,7 @@ import javax.swing.JPanel;
 import static net.sf.anathema.character.library.trait.view.swing.ConfigurableLayout.Left;
 import static net.sf.anathema.character.library.trait.view.swing.ConfigurableLayout.Right;
 
-public class SimpleTraitView implements ITraitView {
+public class SimpleTraitView implements TraitView {
   public static SimpleTraitView RightAlignedWithoutUpperBounds(IntegerViewFactory factory, String labelText, int value,
                                                                int maxValue) {
     return new SimpleTraitView(factory, labelText, value, maxValue, new NullUpperBounds(), Right());

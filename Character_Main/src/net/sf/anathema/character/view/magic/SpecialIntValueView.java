@@ -1,7 +1,7 @@
 package net.sf.anathema.character.view.magic;
 
 import net.miginfocom.swing.MigLayout;
-import net.sf.anathema.character.library.trait.view.ITraitView;
+import net.sf.anathema.character.library.trait.view.TraitView;
 import net.sf.anathema.framework.value.IIntValueView;
 import net.sf.anathema.lib.control.IIntValueChangedListener;
 import net.sf.anathema.platform.tree.view.interaction.SpecialContent;
@@ -12,9 +12,9 @@ import javax.swing.JPanel;
 import static net.sf.anathema.lib.gui.layout.LayoutUtils.fillWithoutInsets;
 
 public class SpecialIntValueView implements IIntValueView, SpecialContent {
-  private final ITraitView view;
+  private final TraitView view;
 
-  public SpecialIntValueView(ITraitView view) {
+  public SpecialIntValueView(TraitView view) {
     this.view = view;
   }
 

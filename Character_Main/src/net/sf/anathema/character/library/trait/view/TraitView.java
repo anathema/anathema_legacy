@@ -4,7 +4,7 @@ import net.sf.anathema.framework.value.IIntValueView;
 
 import javax.swing.JPanel;
 
-public interface ITraitView extends IIntValueView {
+public interface TraitView extends IIntValueView {
 
   void addComponents(JPanel viewPanel);
 }
