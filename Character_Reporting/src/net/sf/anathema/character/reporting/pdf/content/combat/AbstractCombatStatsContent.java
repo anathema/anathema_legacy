@@ -5,14 +5,17 @@ import net.sf.anathema.character.generic.character.IGenericTraitCollection;
 import net.sf.anathema.character.generic.impl.CharacterUtilities;
 import net.sf.anathema.character.generic.type.ICharacterType;
 import net.sf.anathema.character.reporting.pdf.content.AbstractSubBoxContent;
+import net.sf.anathema.hero.model.Hero;
 import net.sf.anathema.lib.resources.Resources;
 
 public abstract class AbstractCombatStatsContent extends AbstractSubBoxContent {
 
+  private Hero hero;
   private IGenericCharacter character;
 
-  protected AbstractCombatStatsContent(Resources resources, IGenericCharacter character) {
+  protected AbstractCombatStatsContent(Resources resources, Hero hero, IGenericCharacter character) {
     super(resources);
+    this.hero = hero;
     this.character = character;
   }
 
@@ -59,7 +62,7 @@ public abstract class AbstractCombatStatsContent extends AbstractSubBoxContent {
   }
 
   protected ICharacterType getCharacterType() {
-    return getCharacter().getTemplate().getTemplateType().getCharacterType();
+    return hero.getTemplate().getTemplateType().getCharacterType();
   }
 
   protected IGenericTraitCollection getTraitCollection() {

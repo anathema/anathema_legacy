@@ -21,7 +21,7 @@ public class CombatStatsContent extends AbstractCombatStatsContent {
   private final ICharacterStatsModifiers modifiers;
 
   protected CombatStatsContent(Hero hero, IGenericCharacter character, Resources resources) {
-    super(resources, character);
+    super(resources, hero, character);
     dodgeSpecialty = new HighestSpecialty(character, AbilityType.Dodge);
     awarenessSpecialty = new HighestSpecialty(character, AbilityType.Awareness);
     modifiers = StatsModifiers.allStatsModifiers(hero);
