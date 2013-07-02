@@ -6,8 +6,8 @@ import net.sf.anathema.character.generic.traits.ITraitTemplate;
 import net.sf.anathema.character.generic.traits.TraitType;
 import net.sf.anathema.character.generic.traits.groups.IIdentifiedCasteTraitTypeGroup;
 import net.sf.anathema.character.library.trait.DefaultTrait;
-import net.sf.anathema.character.library.trait.IValueChangeChecker;
 import net.sf.anathema.character.library.trait.Trait;
+import net.sf.anathema.character.library.trait.ValueChangeChecker;
 import net.sf.anathema.character.library.trait.favorable.IncrementChecker;
 import net.sf.anathema.character.library.trait.rules.FavorableTraitRules;
 import net.sf.anathema.hero.model.Hero;
@@ -39,7 +39,7 @@ public class FavorableTraitFactory {
                             TypedTraitTemplateFactory factory) {
     ITraitTemplate traitTemplate = factory.create(traitType);
     FavorableTraitRules favorableTraitRules = new FavorableTraitRules(traitType, traitTemplate, hero);
-    IValueChangeChecker valueChecker = new AdditionRulesTraitValueChangeChecker(traitType, hero, additionalRules);
+    ValueChangeChecker valueChecker = new AdditionRulesTraitValueChangeChecker(traitType, hero, additionalRules);
     return new DefaultTrait(hero, favorableTraitRules, casteTypes, valueChecker, favoredIncrementChecker);
   }
 }

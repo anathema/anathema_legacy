@@ -4,8 +4,8 @@ import net.sf.anathema.character.generic.additionalrules.IAdditionalTraitRules;
 import net.sf.anathema.character.generic.traits.ITraitTemplate;
 import net.sf.anathema.character.generic.traits.TraitType;
 import net.sf.anathema.character.library.trait.DefaultTrait;
-import net.sf.anathema.character.library.trait.IValueChangeChecker;
 import net.sf.anathema.character.library.trait.Trait;
+import net.sf.anathema.character.library.trait.ValueChangeChecker;
 import net.sf.anathema.character.library.trait.rules.TraitRules;
 import net.sf.anathema.hero.model.Hero;
 
@@ -34,7 +34,7 @@ public class DefaultTraitFactory {
 
   public Trait createTrait(TraitType traitType) {
     ITraitTemplate traitTemplate = factory.create(traitType);
-    IValueChangeChecker checker = new AdditionRulesTraitValueChangeChecker(traitType, hero, additionalRules);
+    ValueChangeChecker checker = new AdditionRulesTraitValueChangeChecker(traitType, hero, additionalRules);
     TraitRules rules = new TraitRules(traitType, traitTemplate, hero);
     return new DefaultTrait(hero, rules, checker);
   }
