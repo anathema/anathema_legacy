@@ -34,14 +34,12 @@ import net.sf.anathema.character.main.model.traits.GenericTraitCollectionFacade;
 import net.sf.anathema.character.main.model.traits.TraitMap;
 import net.sf.anathema.character.main.model.traits.TraitModelFetcher;
 import net.sf.anathema.character.model.ITypedDescription;
-import net.sf.anathema.character.model.advance.ExperiencePointManagement;
 import net.sf.anathema.character.model.charm.ICombo;
 import net.sf.anathema.character.model.charm.ILearningCharmGroup;
 import net.sf.anathema.character.model.charm.special.IMultipleEffectCharmConfiguration;
 import net.sf.anathema.character.model.charm.special.ISubeffectCharmConfiguration;
 import net.sf.anathema.hero.model.Hero;
 import net.sf.anathema.lib.exception.ContractFailedException;
-import net.sf.anathema.lib.util.IdentifiedInteger;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -120,41 +118,12 @@ public class GenericCharacter implements IGenericCharacter {
   }
 
   @Override
-  public int getPeripheralPoolValue() {
-    return getTemplate().getEssenceTemplate().isEssenceUser() ? EssencePoolModelFetcher.fetch(hero).getPeripheralPoolValue() : 0;
-  }
-
-  @Override
   public String getPersonalPool() {
     try {
       return getTemplate().getEssenceTemplate().isEssenceUser() ? EssencePoolModelFetcher.fetch(hero).getPersonalPool() : null;
     } catch (ContractFailedException e) {
       return null;
     }
-  }
-
-  @Override
-  public int getPersonalPoolValue() {
-    return getTemplate().getEssenceTemplate().isEssenceUser() ? EssencePoolModelFetcher.fetch(hero).getPersonalPoolValue() : 0;
-  }
-
-  @Override
-  public int getOverdrivePoolValue() {
-    return getTemplate().getEssenceTemplate().isEssenceUser() ? EssencePoolModelFetcher.fetch(hero).getOverdrivePoolValue() : 0;
-  }
-
-  @Override
-  public IdentifiedInteger[] getComplexPools() {
-    if (getTemplate().getEssenceTemplate().isEssenceUser()) {
-      return EssencePoolModelFetcher.fetch(hero).getComplexPools();
-    } else {
-      return new IdentifiedInteger[0];
-    }
-  }
-
-  @Override
-  public int getAttunedPoolValue() {
-    return getTemplate().getEssenceTemplate().isEssenceUser() ? EssencePoolModelFetcher.fetch(hero).getAttunedPoolValue() : 0;
   }
 
   @Override

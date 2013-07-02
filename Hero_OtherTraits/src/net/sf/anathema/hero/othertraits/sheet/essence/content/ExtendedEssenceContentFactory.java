@@ -16,6 +16,6 @@ public class ExtendedEssenceContentFactory implements ReportContentFactory<Exten
 
   @Override
   public ExtendedEssenceContent create(ReportSession session) {
-    return new ExtendedEssenceContent(resources, session.getCharacter(), session.getHero());
+    return new ExtendedEssenceContent(resources, session.getHero());
   }
 }

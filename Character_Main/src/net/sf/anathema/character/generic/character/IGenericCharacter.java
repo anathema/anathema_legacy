@@ -9,7 +9,6 @@ import net.sf.anathema.character.generic.template.HeroTemplate;
 import net.sf.anathema.character.generic.template.ITraitLimitation;
 import net.sf.anathema.character.generic.traits.TraitType;
 import net.sf.anathema.character.library.trait.specialties.Specialty;
-import net.sf.anathema.lib.util.IdentifiedInteger;
 
 import java.util.List;
 
@@ -35,17 +34,7 @@ public interface IGenericCharacter {
 
   String getPeripheralPool();
 
-  int getPeripheralPoolValue();
-
   String getPersonalPool();
-
-  int getPersonalPoolValue();
-
-  int getOverdrivePoolValue();
-
-  IdentifiedInteger[] getComplexPools();
-
-  int getAttunedPoolValue();
 
   IConcept getConcept();
 

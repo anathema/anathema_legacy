@@ -1,7 +1,8 @@
 package net.sf.anathema.hero.othertraits.sheet.essence.content;
 
-import net.sf.anathema.character.generic.character.IGenericCharacter;
 import net.sf.anathema.character.generic.traits.types.OtherTraitType;
+import net.sf.anathema.character.main.model.essencepool.EssencePoolModelFetcher;
+import net.sf.anathema.character.main.model.othertraits.OtherTraitModelFetcher;
 import net.sf.anathema.character.reporting.pdf.content.AbstractSubBoxContent;
 import net.sf.anathema.hero.model.Hero;
 import net.sf.anathema.hero.othertraits.sheet.essence.content.pools.ComplexPoolRow;
@@ -22,12 +23,10 @@ import java.util.List;
 
 public class ExtendedEssenceContent extends AbstractSubBoxContent {
 
-  private IGenericCharacter character;
   private Hero hero;
 
-  public ExtendedEssenceContent(Resources resources, IGenericCharacter character, Hero hero) {
+  public ExtendedEssenceContent(Resources resources, Hero hero) {
     super(resources);
-    this.character = character;
     this.hero = hero;
   }
 
@@ -53,15 +52,15 @@ public class ExtendedEssenceContent extends AbstractSubBoxContent {
 
   private List<PoolRow> getAvailablePoolRows() {
     List<PoolRow> rows = new ArrayList<>();
-    addPool(rows, new PersonalPoolRow(getResources(), character));
-    addPool(rows, new PeripheralPoolRow(getResources(), character));
-    addPool(rows, new OverdrivePoolRow(getResources(), character));
+    addPool(rows, new PersonalPoolRow(getResources(), hero));
+    addPool(rows, new PeripheralPoolRow(getResources(), hero));
+    addPool(rows, new OverdrivePoolRow(getResources(), hero));
     addComplexPools(rows);
     return rows;
   }
 
   private void addComplexPools(List<PoolRow> rows) {
-    for (IdentifiedInteger complexPool : character.getComplexPools()) {
+    for (IdentifiedInteger complexPool : EssencePoolModelFetcher.fetch(hero).getComplexPools()) {
       ComplexPoolRow poolRow = new ComplexPoolRow(getResources(), complexPool);
       addPool(rows, poolRow);
     }
@@ -97,7 +96,7 @@ public class ExtendedEssenceContent extends AbstractSubBoxContent {
   }
 
   public int getEssenceValue() {
-    return  character.getTraitCollection().getTrait(OtherTraitType.Essence).getCurrentValue();
+    return OtherTraitModelFetcher.fetch(hero).getTrait(OtherTraitType.Essence).getCurrentValue();
   }
 
   public String getEssenceTotalHeaderLabel() {
@@ -113,6 +112,6 @@ public class ExtendedEssenceContent extends AbstractSubBoxContent {
   }
 
   public int getEssenceMax() {
-    return character.getEssenceLimitation().getAbsoluteLimit(hero);
+    return OtherTraitModelFetcher.fetch(hero).getEssenceLimitation().getAbsoluteLimit(hero);
   }
 }

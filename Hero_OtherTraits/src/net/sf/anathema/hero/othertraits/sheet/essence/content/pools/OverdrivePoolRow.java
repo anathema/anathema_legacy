@@ -1,16 +1,17 @@
 package net.sf.anathema.hero.othertraits.sheet.essence.content.pools;
 
-import net.sf.anathema.character.generic.character.IGenericCharacter;
+import net.sf.anathema.character.main.model.essencepool.EssencePoolModelFetcher;
+import net.sf.anathema.hero.model.Hero;
 import net.sf.anathema.lib.resources.Resources;
 
 public class OverdrivePoolRow extends AbstractPoolRow {
 
   private Resources resources;
-  private IGenericCharacter character;
+  private Hero hero;
 
-  public OverdrivePoolRow(Resources resources, IGenericCharacter character) {
+  public OverdrivePoolRow(Resources resources, Hero hero) {
     this.resources = resources;
-    this.character = character;
+    this.hero = hero;
   }
 
   @Override
@@ -20,7 +21,7 @@ public class OverdrivePoolRow extends AbstractPoolRow {
 
   @Override
   public int getCapacityValue() {
-    return character.getOverdrivePoolValue();
+    return EssencePoolModelFetcher.fetch(hero).getOverdrivePoolValue();
   }
 
   @Override

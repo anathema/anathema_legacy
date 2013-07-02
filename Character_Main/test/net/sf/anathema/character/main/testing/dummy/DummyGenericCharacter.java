@@ -14,10 +14,8 @@ import net.sf.anathema.character.generic.template.HeroTemplate;
 import net.sf.anathema.character.generic.template.ITraitLimitation;
 import net.sf.anathema.character.generic.traits.GenericTrait;
 import net.sf.anathema.character.generic.traits.TraitType;
-import net.sf.anathema.character.generic.traits.groups.IIdentifiedTraitTypeGroup;
 import net.sf.anathema.character.library.trait.specialties.Specialty;
 import net.sf.anathema.lib.exception.NotYetImplementedException;
-import net.sf.anathema.lib.util.IdentifiedInteger;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -95,33 +93,8 @@ public class DummyGenericCharacter implements IGenericCharacter {
   }
 
   @Override
-  public int getPeripheralPoolValue() {
-    return 0;
-  }
-
-  @Override
   public String getPersonalPool() {
     return null;
-  }
-
-  @Override
-  public int getPersonalPoolValue() {
-    return 0;
-  }
-
-  @Override
-  public int getOverdrivePoolValue() {
-    return 0;
-  }
-
-  @Override
-  public IdentifiedInteger[] getComplexPools() {
-    return new IdentifiedInteger[0];
-  }
-
-  @Override
-  public int getAttunedPoolValue() {
-    return 0;
   }
 
   @Override

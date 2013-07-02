@@ -1,16 +1,18 @@
 package net.sf.anathema.hero.othertraits.sheet.essence.content.pools;
 
-import net.sf.anathema.character.generic.character.IGenericCharacter;
+import net.sf.anathema.character.main.model.essencepool.EssencePoolModel;
+import net.sf.anathema.character.main.model.essencepool.EssencePoolModelFetcher;
+import net.sf.anathema.hero.model.Hero;
 import net.sf.anathema.lib.resources.Resources;
 
 public class PeripheralPoolRow extends AbstractPoolRow {
 
   private Resources resources;
-  private IGenericCharacter character;
+  private Hero hero;
 
-  public PeripheralPoolRow(Resources resources, IGenericCharacter character) {
+  public PeripheralPoolRow(Resources resources, Hero hero) {
     this.resources = resources;
-    this.character = character;
+    this.hero = hero;
   }
 
   @Override
@@ -20,12 +22,16 @@ public class PeripheralPoolRow extends AbstractPoolRow {
 
   @Override
   public int getCapacityValue() {
-    return character.getPeripheralPoolValue();
+    return getModel().getPeripheralPoolValue();
   }
 
   @Override
   public Integer getCommittedValue() {
-    int committed = character.getAttunedPoolValue();
-    return Math.min(character.getPeripheralPoolValue(), committed);
+    int committed = getModel().getAttunedPoolValue();
+    return Math.min(getModel().getPeripheralPoolValue(), committed);
+  }
+
+  public EssencePoolModel getModel() {
+    return EssencePoolModelFetcher.fetch(hero);
   }
 }
