@@ -1,9 +1,6 @@
 package net.sf.anathema.character.main.testing.dummy;
 
-import net.sf.anathema.character.generic.caste.CasteType;
-import net.sf.anathema.character.generic.character.IConcept;
 import net.sf.anathema.character.generic.character.IGenericCharacter;
-import net.sf.anathema.character.generic.character.IGenericDescription;
 import net.sf.anathema.character.generic.character.IGenericTraitCollection;
 import net.sf.anathema.character.generic.magic.ICharm;
 import net.sf.anathema.character.generic.magic.IGenericCombo;
@@ -49,34 +46,8 @@ public class DummyGenericCharacter implements IGenericCharacter {
   }
 
   @Override
-  public IGenericDescription getDescription() {
-    return null;
-  }
-
-  @Override
-  public boolean isAlienCharm(ICharm charm) {
-    return false;
-  }
-
-  @Override
   public Specialty[] getSpecialties(TraitType type) {
     return new Specialty[0];
-  }
-
-  @Override
-  public IConcept getConcept() {
-    return new IConcept() {
-
-      @Override
-      public int getAge() {
-        return 0;
-      }
-
-      @Override
-      public CasteType getCasteType() {
-        return CasteType.NULL_CASTE_TYPE;
-      }
-    };
   }
 
   @Override

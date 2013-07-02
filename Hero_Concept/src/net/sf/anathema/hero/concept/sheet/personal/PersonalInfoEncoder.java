@@ -39,7 +39,7 @@ public class PersonalInfoEncoder implements IVariableContentEncoder {
     String conceptLabel = getLabel("Concept");
     if (characterType.isExaltType()) {
       graphics.drawLabelledContent(conceptLabel, conceptContent, new Position(firstColumnX, firstRowY), entryWidth);
-      String casteContent = getCasteString(reportSession.getCharacter().getConcept().getCasteType());
+      String casteContent = getCasteString(HeroConceptFetcher.fetch(reportSession.getHero()).getCaste().getType());
       graphics.drawLabelledContent(getLabel("Caste." + characterType.getId()), casteContent, new Position(secondColumnX, firstRowY), entryWidth);
     } else {
       graphics.drawLabelledContent(conceptLabel, conceptContent, new Position(firstColumnX, firstRowY), 2 * entryWidth + TEXT_PADDING);

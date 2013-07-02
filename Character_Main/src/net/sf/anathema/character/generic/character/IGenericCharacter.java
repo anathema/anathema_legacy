@@ -14,13 +14,7 @@ public interface IGenericCharacter {
 
   boolean isLearned(IMagic magic);
 
-  IGenericDescription getDescription();
-
-  boolean isAlienCharm(ICharm charm);
-
   Specialty[] getSpecialties(TraitType traitType);
-
-  IConcept getConcept();
 
   List<IMagic> getAllLearnedMagic();
 

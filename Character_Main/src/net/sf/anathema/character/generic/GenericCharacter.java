@@ -1,8 +1,6 @@
 package net.sf.anathema.character.generic;
 
-import net.sf.anathema.character.generic.character.IConcept;
 import net.sf.anathema.character.generic.character.IGenericCharacter;
-import net.sf.anathema.character.generic.character.IGenericDescription;
 import net.sf.anathema.character.generic.character.IGenericTraitCollection;
 import net.sf.anathema.character.generic.magic.ICharm;
 import net.sf.anathema.character.generic.magic.IGenericCombo;
@@ -19,8 +17,6 @@ import net.sf.anathema.character.library.trait.subtrait.ISubTraitContainer;
 import net.sf.anathema.character.main.model.charms.CharmsModel;
 import net.sf.anathema.character.main.model.charms.CharmsModelFetcher;
 import net.sf.anathema.character.main.model.combos.CombosModelFetcher;
-import net.sf.anathema.character.main.model.concept.HeroConceptFetcher;
-import net.sf.anathema.character.main.model.description.HeroDescriptionFetcher;
 import net.sf.anathema.character.main.model.experience.ExperienceModelFetcher;
 import net.sf.anathema.character.main.model.spells.SpellsModelFetcher;
 import net.sf.anathema.character.main.model.traits.GenericTraitCollectionFacade;
@@ -67,25 +63,10 @@ public class GenericCharacter implements IGenericCharacter {
   }
 
   @Override
-  public IGenericDescription getDescription() {
-    return new GenericDescription(HeroDescriptionFetcher.fetch(hero));
-  }
-
-  @Override
-  public boolean isAlienCharm(ICharm charm) {
-    return CharmsModelFetcher.fetch(hero).isAlienCharm(charm);
-  }
-
-  @Override
   public Specialty[] getSpecialties(TraitType traitType) {
     SpecialtiesModel specialtyConfiguration = SpecialtiesModelFetcher.fetch(hero);
     ISubTraitContainer specialtiesContainer = specialtyConfiguration.getSpecialtiesContainer(traitType);
     return specialtiesContainer.getSubTraits();
-  }
-
-  @Override
-  public IConcept getConcept() {
-    return new GenericConcept(HeroConceptFetcher.fetch(hero));
   }
 
   @Override
