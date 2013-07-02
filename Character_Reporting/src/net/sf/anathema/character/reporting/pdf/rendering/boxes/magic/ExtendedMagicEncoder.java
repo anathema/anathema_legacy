@@ -16,6 +16,7 @@ import net.sf.anathema.character.reporting.pdf.content.stats.magic.SpellStats;
 import net.sf.anathema.character.reporting.pdf.rendering.extent.Bounds;
 import net.sf.anathema.character.reporting.pdf.rendering.general.box.ContentEncoder;
 import net.sf.anathema.character.reporting.pdf.rendering.graphics.SheetGraphics;
+import net.sf.anathema.hero.model.Hero;
 import net.sf.anathema.lib.resources.Resources;
 import net.sf.anathema.lib.util.Identifier;
 import net.sf.anathema.lib.util.SimpleIdentifier;
@@ -28,18 +29,18 @@ public class ExtendedMagicEncoder<C extends AbstractMagicContent> implements Con
   private Resources resources;
 
   public static List<IMagicStats> collectPrintCharms(ReportSession session) {
-    return collectPrintMagic(session.getCharacter(), false, true);
+    return collectPrintMagic(session.getHero(), session.getCharacter(), false, true);
   }
 
   public static List<IMagicStats> collectPrintSpells(ReportSession session) {
-    return collectPrintMagic(session.getCharacter(), true, false);
+    return collectPrintMagic(session.getHero(), session.getCharacter(), true, false);
   }
 
-  private static List<IMagicStats> collectPrintMagic(final IGenericCharacter character, final boolean includeSpells,
+  private static List<IMagicStats> collectPrintMagic(final Hero hero, final IGenericCharacter character, final boolean includeSpells,
           final boolean includeCharms) {
     final List<IMagicStats> printStats = new ArrayList<>();
     if (includeCharms) {
-      for (IMagicStats stats : GenericCharmUtilities.getGenericCharmStats(character)) {
+      for (IMagicStats stats : GenericCharmUtilities.getGenericCharmStats(hero, character)) {
         if (GenericCharmUtilities.shouldShowCharm(stats, character)) {
           printStats.add(stats);
         }
@@ -52,7 +53,7 @@ public class ExtendedMagicEncoder<C extends AbstractMagicContent> implements Con
         if (!includeCharms) {
           return;
         }
-        if (GenericCharmUtilities.isGenericCharmFor(charm, character)) {
+        if (GenericCharmUtilities.isGenericCharmFor(charm, hero, character)) {
           return;
         }
         if (charm.hasAttribute(KNACK)) {
@@ -65,7 +66,7 @@ public class ExtendedMagicEncoder<C extends AbstractMagicContent> implements Con
             printStats.add(new MultipleEffectCharmStats(charm, effect));
           }
         } else {
-          printStats.add(new CharmStats(charm, character));
+          printStats.add(new CharmStats(charm, hero));
         }
       }
 

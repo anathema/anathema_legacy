@@ -33,8 +33,8 @@ public class GenericCharmUtilities {
     return false;
   }
 
-  public static boolean isGenericCharmFor(ICharm charm, IGenericCharacter character) {
-    IMagicStats[] genericCharmStats = getGenericCharmStats(character);
+  public static boolean isGenericCharmFor(ICharm charm, Hero hero, IGenericCharacter character) {
+    IMagicStats[] genericCharmStats = getGenericCharmStats(hero, character);
     String charmId = charm.getId();
     for (IMagicStats stat : genericCharmStats) {
       if (charmId.startsWith(stat.getName().getId())) {
@@ -44,19 +44,19 @@ public class GenericCharmUtilities {
     return false;
   }
 
-  public static IMagicStats[] getGenericCharmStats(IGenericCharacter character) {
+  public static IMagicStats[] getGenericCharmStats(Hero hero, IGenericCharacter character) {
     List<IMagicStats> genericCharmStats = new ArrayList<>();
     ICharm[] charms = character.getGenericCharms();
     for (ICharm charm : charms) {
-      IMagicStats stats = new GenericCharmStats(charm, character);
+      IMagicStats stats = new GenericCharmStats(charm, hero);
       if (!genericCharmStats.contains(stats)) genericCharmStats.add(stats);
     }
     return genericCharmStats.toArray(new IMagicStats[genericCharmStats.size()]);
   }
 
-  public static int getDisplayedGenericCharmCount(IGenericCharacter character) {
+  public static int getDisplayedGenericCharmCount(Hero hero, IGenericCharacter character) {
     int count = 0;
-    for (IMagicStats stats : getGenericCharmStats(character)) {
+    for (IMagicStats stats : getGenericCharmStats(hero, character)) {
       if (shouldShowCharm(stats, character)) {
         count++;
       }
@@ -65,7 +65,7 @@ public class GenericCharmUtilities {
   }
 
   public static boolean hasDisplayedGenericCharms(ReportSession session) {
-    return getDisplayedGenericCharmCount(session.getCharacter()) > 0;
+    return getDisplayedGenericCharmCount(session.getHero(), session.getCharacter()) > 0;
   }
 
   public static List<TraitType> getGenericCharmTraits(Hero hero) {

@@ -12,6 +12,6 @@ public class BasicContentFactory implements ReportContentFactory<BasicContent> {
 
   @Override
   public BasicContent create(ReportSession session) {
-    return new BasicContent(session.getCharacter());
+    return new BasicContent(session.getHero());
   }
 }

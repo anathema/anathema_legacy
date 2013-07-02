@@ -6,7 +6,6 @@ import com.itextpdf.text.DocumentException;
 import com.itextpdf.text.pdf.MultiColumnText;
 import com.itextpdf.text.pdf.PdfPTable;
 import com.itextpdf.text.pdf.PdfWriter;
-import net.sf.anathema.character.generic.GenericCharacter;
 import net.sf.anathema.character.generic.framework.magic.view.CharmDescriptionProviderExtractor;
 import net.sf.anathema.character.generic.magic.ICharm;
 import net.sf.anathema.character.generic.magic.IMagic;
@@ -155,7 +154,7 @@ public class MagicReport extends AbstractPdfReport {
   }
 
   private CharmStats createCharmStats(Hero hero, ICharm charm) {
-    return new CharmStats(charm, new GenericCharacter(hero));
+    return new CharmStats(charm, hero);
   }
 
   private SpellStats createSpellStats(ISpell spell) {

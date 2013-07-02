@@ -4,7 +4,6 @@ import net.sf.anathema.character.generic.character.IConcept;
 import net.sf.anathema.character.generic.character.IGenericCharacter;
 import net.sf.anathema.character.generic.character.IGenericDescription;
 import net.sf.anathema.character.generic.character.IGenericTraitCollection;
-import net.sf.anathema.character.generic.health.HealthLevelType;
 import net.sf.anathema.character.generic.magic.ICharm;
 import net.sf.anathema.character.generic.magic.IGenericCombo;
 import net.sf.anathema.character.generic.magic.IMagic;
@@ -12,18 +11,17 @@ import net.sf.anathema.character.generic.magic.IMagicVisitor;
 import net.sf.anathema.character.generic.magic.ISpell;
 import net.sf.anathema.character.generic.magic.charms.special.ISpecialCharmConfiguration;
 import net.sf.anathema.character.generic.magic.charms.special.ISubeffect;
-import net.sf.anathema.character.generic.template.HeroTemplate;
 import net.sf.anathema.character.generic.traits.TraitType;
 import net.sf.anathema.character.library.trait.specialties.SpecialtiesModel;
 import net.sf.anathema.character.library.trait.specialties.SpecialtiesModelFetcher;
 import net.sf.anathema.character.library.trait.specialties.Specialty;
+import net.sf.anathema.character.library.trait.subtrait.ISubTraitContainer;
 import net.sf.anathema.character.main.model.charms.CharmsModel;
 import net.sf.anathema.character.main.model.charms.CharmsModelFetcher;
 import net.sf.anathema.character.main.model.combos.CombosModelFetcher;
 import net.sf.anathema.character.main.model.concept.HeroConceptFetcher;
 import net.sf.anathema.character.main.model.description.HeroDescriptionFetcher;
 import net.sf.anathema.character.main.model.experience.ExperienceModelFetcher;
-import net.sf.anathema.character.main.model.health.HealthModelFetcher;
 import net.sf.anathema.character.main.model.spells.SpellsModelFetcher;
 import net.sf.anathema.character.main.model.traits.GenericTraitCollectionFacade;
 import net.sf.anathema.character.main.model.traits.TraitMap;
@@ -79,19 +77,10 @@ public class GenericCharacter implements IGenericCharacter {
   }
 
   @Override
-  public HeroTemplate getTemplate() {
-    return hero.getTemplate();
-  }
-
-  @Override
   public Specialty[] getSpecialties(TraitType traitType) {
     SpecialtiesModel specialtyConfiguration = SpecialtiesModelFetcher.fetch(hero);
-    return specialtyConfiguration.getSpecialtiesContainer(traitType).getSubTraits();
-  }
-
-  @Override
-  public int getHealthLevelTypeCount(HealthLevelType type) {
-    return HealthModelFetcher.fetch(hero).getHealthLevelTypeCount(type);
+    ISubTraitContainer specialtiesContainer = specialtyConfiguration.getSpecialtiesContainer(traitType);
+    return specialtiesContainer.getSubTraits();
   }
 
   @Override
@@ -128,22 +117,6 @@ public class GenericCharacter implements IGenericCharacter {
       genericCombos.add(new GenericCombo(combo));
     }
     return genericCombos.toArray(new IGenericCombo[genericCombos.size()]);
-  }
-
-  @Override
-  public boolean isExperienced() {
-    return ExperienceModelFetcher.fetch(hero).isExperienced();
-  }
-
-  @Override
-  public int getPainTolerance() {
-    return HealthModelFetcher.fetch(hero).getPainToleranceLevel();
-  }
-
-  @Override
-  public boolean isSubeffectCharm(ICharm charm) {
-    ISpecialCharmConfiguration charmConfiguration = CharmsModelFetcher.fetch(hero).getSpecialCharmConfiguration(charm);
-    return charmConfiguration instanceof ISubeffectCharmConfiguration;
   }
 
   @Override

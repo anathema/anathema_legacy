@@ -3,7 +3,6 @@ package net.sf.anathema.cards.data.providers;
 import net.sf.anathema.cards.data.CharmCardData;
 import net.sf.anathema.cards.data.ICardData;
 import net.sf.anathema.cards.layout.ICardReportResourceProvider;
-import net.sf.anathema.character.generic.GenericCharacter;
 import net.sf.anathema.character.generic.magic.ICharm;
 import net.sf.anathema.character.main.model.charms.CharmsModelFetcher;
 import net.sf.anathema.character.main.model.experience.ExperienceModelFetcher;
@@ -36,10 +35,6 @@ public class CharmCardDataProvider extends AbstractMagicCardDataProvider {
   }
 
   private CharmStats createCharmStats(Hero hero, ICharm charm) {
-    return new CharmStats(charm, createGenericCharacter(hero));
-  }
-
-  private GenericCharacter createGenericCharacter(Hero hero) {
-    return new GenericCharacter(hero);
+    return new CharmStats(charm, hero);
   }
 }

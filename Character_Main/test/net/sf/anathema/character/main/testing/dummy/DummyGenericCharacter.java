@@ -5,11 +5,9 @@ import net.sf.anathema.character.generic.character.IConcept;
 import net.sf.anathema.character.generic.character.IGenericCharacter;
 import net.sf.anathema.character.generic.character.IGenericDescription;
 import net.sf.anathema.character.generic.character.IGenericTraitCollection;
-import net.sf.anathema.character.generic.health.HealthLevelType;
 import net.sf.anathema.character.generic.magic.ICharm;
 import net.sf.anathema.character.generic.magic.IGenericCombo;
 import net.sf.anathema.character.generic.magic.IMagic;
-import net.sf.anathema.character.generic.template.HeroTemplate;
 import net.sf.anathema.character.generic.traits.GenericTrait;
 import net.sf.anathema.character.generic.traits.TraitType;
 import net.sf.anathema.character.library.trait.specialties.Specialty;
@@ -22,12 +20,7 @@ import java.util.Map;
 
 public class DummyGenericCharacter implements IGenericCharacter {
 
-  private final HeroTemplate template;
   private final Map<TraitType, GenericTrait> traitsByType = new HashMap<>();
-
-  public DummyGenericCharacter(HeroTemplate template) {
-    this.template = template;
-  }
 
   @Override
   public IGenericTraitCollection getTraitCollection() {
@@ -66,18 +59,8 @@ public class DummyGenericCharacter implements IGenericCharacter {
   }
 
   @Override
-  public HeroTemplate getTemplate() {
-    return template;
-  }
-
-  @Override
   public Specialty[] getSpecialties(TraitType type) {
     return new Specialty[0];
-  }
-
-  @Override
-  public int getHealthLevelTypeCount(HealthLevelType type) {
-    return 0;
   }
 
   @Override
@@ -112,27 +95,12 @@ public class DummyGenericCharacter implements IGenericCharacter {
   }
 
   @Override
-  public boolean isExperienced() {
-    return false;
-  }
-
-  @Override
-  public int getPainTolerance() {
-    return 0;
-  }
-
-  @Override
   public String[] getLearnedEffects(ICharm charm) {
     return new String[0];
   }
 
   @Override
   public boolean isMultipleEffectCharm(ICharm magic) {
-    return false;
-  }
-
-  @Override
-  public boolean isSubeffectCharm(ICharm magic) {
     return false;
   }
 

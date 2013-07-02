@@ -14,12 +14,14 @@ import com.itextpdf.text.pdf.PdfPTable;
 import net.sf.anathema.character.generic.character.IGenericCharacter;
 import net.sf.anathema.character.generic.character.IGenericTraitCollection;
 import net.sf.anathema.character.generic.health.HealthLevelType;
+import net.sf.anathema.character.main.model.health.HealthModelFetcher;
 import net.sf.anathema.character.reporting.pdf.content.ReportSession;
 import net.sf.anathema.character.reporting.pdf.rendering.extent.Bounds;
 import net.sf.anathema.character.reporting.pdf.rendering.general.table.ITableEncoder;
 import net.sf.anathema.character.reporting.pdf.rendering.general.table.TableEncodingUtilities;
 import net.sf.anathema.character.reporting.pdf.rendering.graphics.SheetGraphics;
 import net.sf.anathema.character.reporting.pdf.rendering.graphics.TableCell;
+import net.sf.anathema.hero.model.Hero;
 import net.sf.anathema.lib.resources.Resources;
 import org.apache.commons.lang3.ArrayUtils;
 
@@ -65,7 +67,7 @@ public abstract class AbstractHealthAndMovementTableEncoder implements ITableEnc
       PdfPTable table = new PdfPTable(columnWidth);
       addHeaders(graphics, table);
       for (HealthLevelType type : HealthLevelType.values()) {
-        addHealthTypeRows(graphics, table, session.getCharacter(), activeTemplate, passiveTemplate, type);
+        addHealthTypeRows(graphics, table, session.getHero(), session.getCharacter(), activeTemplate, passiveTemplate, type);
       }
       return table;
     } catch (BadElementException e) {
@@ -73,7 +75,7 @@ public abstract class AbstractHealthAndMovementTableEncoder implements ITableEnc
     }
   }
 
-  private void addHealthTypeRows(SheetGraphics graphics, PdfPTable table, IGenericCharacter character, Image activeTemplate, Image passiveTemplate, HealthLevelType type) {
+  private void addHealthTypeRows(SheetGraphics graphics, PdfPTable table, Hero hero, IGenericCharacter character, Image activeTemplate, Image passiveTemplate, HealthLevelType type) {
     if (type == HealthLevelType.DYING) {
       return;
     }
@@ -81,7 +83,7 @@ public abstract class AbstractHealthAndMovementTableEncoder implements ITableEnc
     int rowCount = getRowCount(type);
     for (int rowIndex = 0; rowIndex < rowCount; rowIndex++) {
       if (rowIndex == 0) {
-        int painTolerance = character.getPainTolerance();
+        int painTolerance = HealthModelFetcher.fetch(hero).getPainToleranceLevel();;
         if (type == HealthLevelType.INCAPACITATED) {
           addIncapacitatedMovement(graphics, table);
         } else {
@@ -91,7 +93,7 @@ public abstract class AbstractHealthAndMovementTableEncoder implements ITableEnc
       } else {
         addSpaceCells(graphics, table, getMovementColumns().length + HEALTH_LEVEL_COLUMNS.length);
       }
-      addHealthCells(graphics, table, character, type, rowIndex, activeTemplate, passiveTemplate);
+      addHealthCells(graphics, table, hero, type, rowIndex, activeTemplate, passiveTemplate);
     }
   }
 
@@ -163,7 +165,7 @@ public abstract class AbstractHealthAndMovementTableEncoder implements ITableEnc
     return Math.min(0, level.getIntValue() + painTolerance);
   }
 
-  private void addHealthCells(SheetGraphics graphics, PdfPTable table, IGenericCharacter character, HealthLevelType level, int row, Image activeImage, Image passiveImage) {
+  private void addHealthCells(SheetGraphics graphics, PdfPTable table, Hero hero, HealthLevelType level, int row, Image activeImage, Image passiveImage) {
     int naturalCount = getNaturalHealthLevels(level);
     if (row < naturalCount) {
       table.addCell(createHealthCell(activeImage));
@@ -183,7 +185,7 @@ public abstract class AbstractHealthAndMovementTableEncoder implements ITableEnc
     if (level == HealthLevelType.INCAPACITATED) {
       addSpaceCells(graphics, table, 1);
       for (int index = 0; index < additionalCount - 1; index++) {
-        if (index < character.getHealthLevelTypeCount(HealthLevelType.DYING)) {
+        if (index < HealthModelFetcher.fetch(hero).getHealthLevelTypeCount(HealthLevelType.DYING)) {
           table.addCell(createHealthCell(activeImage));
         } else {
           table.addCell(createHealthCell(passiveImage));
@@ -193,7 +195,7 @@ public abstract class AbstractHealthAndMovementTableEncoder implements ITableEnc
     }
     for (int index = 0; index < additionalCount; index++) {
       int value = naturalCount + row * additionalCount + index + 1;
-      if (value <= character.getHealthLevelTypeCount(level)) {
+      if (value <=  HealthModelFetcher.fetch(hero).getHealthLevelTypeCount(level)) {
         table.addCell(createHealthCell(activeImage));
       } else {
         table.addCell(createHealthCell(passiveImage));

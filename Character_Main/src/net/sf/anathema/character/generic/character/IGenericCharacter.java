@@ -1,10 +1,8 @@
 package net.sf.anathema.character.generic.character;
 
-import net.sf.anathema.character.generic.health.HealthLevelType;
 import net.sf.anathema.character.generic.magic.ICharm;
 import net.sf.anathema.character.generic.magic.IGenericCombo;
 import net.sf.anathema.character.generic.magic.IMagic;
-import net.sf.anathema.character.generic.template.HeroTemplate;
 import net.sf.anathema.character.generic.traits.TraitType;
 import net.sf.anathema.character.library.trait.specialties.Specialty;
 
@@ -20,11 +18,7 @@ public interface IGenericCharacter {
 
   boolean isAlienCharm(ICharm charm);
 
-  HeroTemplate getTemplate();
-
   Specialty[] getSpecialties(TraitType traitType);
-
-  int getHealthLevelTypeCount(HealthLevelType type);
 
   IConcept getConcept();
 
@@ -34,15 +28,9 @@ public interface IGenericCharacter {
 
   IGenericCombo[] getCombos();
 
-  boolean isExperienced();
-
-  int getPainTolerance();
-
   String[] getLearnedEffects(ICharm charm);
 
   boolean isMultipleEffectCharm(ICharm magic);
-
-  boolean isSubeffectCharm(ICharm magic);
 
   ICharm[] getGenericCharms();
 }

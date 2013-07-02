@@ -1,26 +1,19 @@
 package net.sf.anathema.character.reporting.pdf.content.magic;
 
-import net.sf.anathema.character.generic.character.IGenericCharacter;
-import net.sf.anathema.character.generic.magic.IMagic;
 import net.sf.anathema.character.generic.magic.IMagicStats;
-import net.sf.anathema.character.generic.magic.IMagicVisitor;
 import net.sf.anathema.character.reporting.pdf.content.ReportSession;
 import net.sf.anathema.character.reporting.pdf.rendering.boxes.magic.ExtendedMagicEncoder;
-import net.sf.anathema.character.reporting.pdf.rendering.boxes.magic.MagicStatsFactoryVisitor;
 import net.sf.anathema.lib.resources.Resources;
 
-import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
 public class CharmsOnlyContent extends AbstractMagicContent {
 
-  private IGenericCharacter character;
   private ReportSession session;
 
-  public CharmsOnlyContent(IGenericCharacter character, ReportSession session, Resources resources) {
+  public CharmsOnlyContent(ReportSession session, Resources resources) {
     super(resources);
-    this.character = character;
     this.session = session;
     storeMnemonicIfNecessary(session);
   }
@@ -45,28 +38,6 @@ public class CharmsOnlyContent extends AbstractMagicContent {
   @Override
   public String getHeaderKey() {
     return "Charms";
-  }
-
-  private List<IMagicStats> collectPrintMagic() {
-    List<IMagicStats> printStats = new ArrayList<>();
-    addGenericCharmsForPrint(printStats);
-    addConcreteLearnedMagicForPrint(printStats);
-    return printStats;
-  }
-
-  private void addGenericCharmsForPrint(List<IMagicStats> printStats) {
-    for (IMagicStats stats : GenericCharmUtilities.getGenericCharmStats(character)) {
-      if (GenericCharmUtilities.shouldShowCharm(stats, character)) {
-        printStats.add(stats);
-      }
-    }
-  }
-
-  private void addConcreteLearnedMagicForPrint(List<IMagicStats> printStats) {
-    IMagicVisitor statsCollector = new MagicStatsFactoryVisitor(character, printStats);
-    for (IMagic magic : character.getAllLearnedMagic()) {
-      magic.accept(statsCollector);
-    }
   }
 }
 

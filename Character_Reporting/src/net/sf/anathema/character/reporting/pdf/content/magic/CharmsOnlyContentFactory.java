@@ -16,6 +16,6 @@ public class CharmsOnlyContentFactory implements ReportContentFactory<CharmsOnly
 
   @Override
   public CharmsOnlyContent create(ReportSession session) {
-    return new CharmsOnlyContent (session.getCharacter(), session, resources);
+    return new CharmsOnlyContent (session, resources);
   }
 }

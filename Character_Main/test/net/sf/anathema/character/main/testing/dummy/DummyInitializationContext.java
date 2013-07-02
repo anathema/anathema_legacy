@@ -19,7 +19,7 @@ public class DummyInitializationContext implements InitializationContext {
 
   public DummyInitializationContext() {
     this(new DummyHero());
-    this.character = new DummyGenericCharacter(dummyHero.getTemplate());
+    this.character = new DummyGenericCharacter();
   }
 
   public DummyInitializationContext(DummyHero hero) {

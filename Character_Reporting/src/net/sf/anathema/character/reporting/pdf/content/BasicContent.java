@@ -1,14 +1,14 @@
 package net.sf.anathema.character.reporting.pdf.content;
 
-import net.sf.anathema.character.generic.character.IGenericCharacter;
 import net.sf.anathema.character.generic.type.ICharacterType;
+import net.sf.anathema.hero.model.Hero;
 
 public class BasicContent implements SubContent {
 
-  private IGenericCharacter character;
+  private Hero hero;
 
-  public BasicContent(IGenericCharacter character) {
-    this.character = character;
+  public BasicContent(Hero hero) {
+    this.hero = hero;
   }
 
   public boolean isEssenceUser() {
@@ -16,7 +16,7 @@ public class BasicContent implements SubContent {
   }
 
   private ICharacterType getCharacterType() {
-    return character.getTemplate().getTemplateType().getCharacterType();
+    return hero.getTemplate().getTemplateType().getCharacterType();
   }
 
   public boolean isOfType(ICharacterType type) {

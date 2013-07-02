@@ -3,7 +3,7 @@ package net.sf.anathema.character.reporting.pdf.rendering.boxes.abilities;
 import net.sf.anathema.character.generic.character.IGenericCharacter;
 import net.sf.anathema.character.generic.traits.TraitType;
 import net.sf.anathema.character.generic.traits.groups.IIdentifiedTraitTypeGroup;
-import net.sf.anathema.character.main.model.attributes.AttributesModelFetcher;
+import net.sf.anathema.character.main.model.abilities.AbilityModelFetcher;
 import net.sf.anathema.character.reporting.pdf.content.ReportSession;
 import net.sf.anathema.character.reporting.pdf.content.stats.IValuedTraitReference;
 import net.sf.anathema.character.reporting.pdf.rendering.extent.Position;
@@ -31,7 +31,7 @@ public class SpecialtiesEncoder extends AbstractNamedTraitEncoder implements INa
     IGenericCharacter character = session.getCharacter();
     String title = getResources().getString("Sheet.AbilitySubHeader.Specialties");
     List<IValuedTraitReference> references = new ArrayList<>();
-    for (IIdentifiedTraitTypeGroup group : AttributesModelFetcher.fetch(session.getHero()).getAttributeTypeGroups()) {
+    for (IIdentifiedTraitTypeGroup group : AbilityModelFetcher.fetch(session.getHero()).getAbilityTypeGroups()) {
       for (TraitType traitType : group.getAllGroupTypes()) {
         Collections.addAll(references, getTraitReferences(character.getSpecialties(traitType), traitType));
       }
