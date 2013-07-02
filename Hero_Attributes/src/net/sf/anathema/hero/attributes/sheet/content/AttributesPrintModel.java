@@ -53,7 +53,7 @@ public class AttributesPrintModel implements AttributesList {
   }
 
   private ITraitTemplateCollection getTraitTemplateCollection() {
-    return character.getTemplate().getTraitTemplateCollection();
+    return hero.getTemplate().getTraitTemplateCollection();
   }
 
   private List<TraitType> getTraitTypes(Identifier groupId) {
@@ -78,6 +78,6 @@ public class AttributesPrintModel implements AttributesList {
   }
 
   private GroupedTraitType[] getGroupedAttributeTypes() {
-    return character.getTemplate().getAttributeGroups();
+    return hero.getTemplate().getAttributeGroups();
   }
 }

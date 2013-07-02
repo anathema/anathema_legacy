@@ -1,6 +1,5 @@
 package net.sf.anathema.character.generic;
 
-import net.sf.anathema.character.generic.caste.CasteType;
 import net.sf.anathema.character.generic.character.IConcept;
 import net.sf.anathema.character.generic.character.IGenericCharacter;
 import net.sf.anathema.character.generic.character.IGenericDescription;
@@ -14,7 +13,6 @@ import net.sf.anathema.character.generic.magic.ISpell;
 import net.sf.anathema.character.generic.magic.charms.special.ISpecialCharmConfiguration;
 import net.sf.anathema.character.generic.magic.charms.special.ISubeffect;
 import net.sf.anathema.character.generic.template.HeroTemplate;
-import net.sf.anathema.character.generic.template.ITraitLimitation;
 import net.sf.anathema.character.generic.traits.TraitType;
 import net.sf.anathema.character.library.trait.specialties.SpecialtiesModel;
 import net.sf.anathema.character.library.trait.specialties.SpecialtiesModelFetcher;
@@ -22,17 +20,14 @@ import net.sf.anathema.character.library.trait.specialties.Specialty;
 import net.sf.anathema.character.main.model.charms.CharmsModel;
 import net.sf.anathema.character.main.model.charms.CharmsModelFetcher;
 import net.sf.anathema.character.main.model.combos.CombosModelFetcher;
-import net.sf.anathema.character.main.model.concept.HeroConcept;
 import net.sf.anathema.character.main.model.concept.HeroConceptFetcher;
 import net.sf.anathema.character.main.model.description.HeroDescriptionFetcher;
 import net.sf.anathema.character.main.model.experience.ExperienceModelFetcher;
 import net.sf.anathema.character.main.model.health.HealthModelFetcher;
-import net.sf.anathema.character.main.model.othertraits.OtherTraitModelFetcher;
 import net.sf.anathema.character.main.model.spells.SpellsModelFetcher;
 import net.sf.anathema.character.main.model.traits.GenericTraitCollectionFacade;
 import net.sf.anathema.character.main.model.traits.TraitMap;
 import net.sf.anathema.character.main.model.traits.TraitModelFetcher;
-import net.sf.anathema.character.model.ITypedDescription;
 import net.sf.anathema.character.model.charm.ICombo;
 import net.sf.anathema.character.model.charm.ILearningCharmGroup;
 import net.sf.anathema.character.model.charm.special.IMultipleEffectCharmConfiguration;
@@ -95,13 +90,6 @@ public class GenericCharacter implements IGenericCharacter {
   }
 
   @Override
-  public CasteType getCasteType() {
-    HeroConcept heroConcept = HeroConceptFetcher.fetch(hero);
-    ITypedDescription<CasteType> caste = heroConcept.getCaste();
-    return caste.getType();
-  }
-
-  @Override
   public int getHealthLevelTypeCount(HealthLevelType type) {
     return HealthModelFetcher.fetch(hero).getHealthLevelTypeCount(type);
   }
@@ -150,11 +138,6 @@ public class GenericCharacter implements IGenericCharacter {
   @Override
   public int getPainTolerance() {
     return HealthModelFetcher.fetch(hero).getPainToleranceLevel();
-  }
-
-  @Override
-  public ITraitLimitation getEssenceLimitation() {
-    return OtherTraitModelFetcher.fetch(hero).getEssenceLimitation();
   }
 
   @Override

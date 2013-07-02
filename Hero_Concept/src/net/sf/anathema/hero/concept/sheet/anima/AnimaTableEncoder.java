@@ -40,13 +40,6 @@ public class AnimaTableEncoder extends AbstractTableEncoder<ReportSession> {
     this.stealthProvider = new AnimaTableStealthProvider(resources);
   }
 
-  public AnimaTableEncoder(Resources resources, float fontSize, IAnimaTableStealthProvider stealthProvider) {
-    this.resources = resources;
-    this.fontSize = fontSize;
-    this.rangeProvider = new AnimaTableRangeProvider();
-    this.stealthProvider = stealthProvider;
-  }
-
   @Override
   protected PdfPTable createTable(SheetGraphics graphics, ReportSession session, Bounds bounds) {
     ColumnDescriptor[] columns = getColumns();
@@ -55,7 +48,7 @@ public class AnimaTableEncoder extends AbstractTableEncoder<ReportSession> {
     for (ColumnDescriptor column : columns) {
       table.addCell(createHeaderCell(graphics, getString(column.getHeaderKey())));
     }
-    ICharacterType type = session.getCharacter().getTemplate().getTemplateType().getCharacterType();
+    ICharacterType type = session.getHero().getTemplate().getTemplateType().getCharacterType();
     String descriptionPrefix = "Sheet.AnimaTable.Description." + type.getId();
     for (int index = 0; index < 5; index++) {
       addAnimaRow(graphics, table, index, session, descriptionPrefix);

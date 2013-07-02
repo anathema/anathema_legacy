@@ -6,12 +6,10 @@ import net.sf.anathema.character.generic.character.IGenericCharacter;
 import net.sf.anathema.character.generic.character.IGenericDescription;
 import net.sf.anathema.character.generic.character.IGenericTraitCollection;
 import net.sf.anathema.character.generic.health.HealthLevelType;
-import net.sf.anathema.character.generic.impl.traits.limitation.StaticTraitLimitation;
 import net.sf.anathema.character.generic.magic.ICharm;
 import net.sf.anathema.character.generic.magic.IGenericCombo;
 import net.sf.anathema.character.generic.magic.IMagic;
 import net.sf.anathema.character.generic.template.HeroTemplate;
-import net.sf.anathema.character.generic.template.ITraitLimitation;
 import net.sf.anathema.character.generic.traits.GenericTrait;
 import net.sf.anathema.character.generic.traits.TraitType;
 import net.sf.anathema.character.library.trait.specialties.Specialty;
@@ -78,11 +76,6 @@ public class DummyGenericCharacter implements IGenericCharacter {
   }
 
   @Override
-  public CasteType getCasteType() {
-    return null;
-  }
-
-  @Override
   public int getHealthLevelTypeCount(HealthLevelType type) {
     return 0;
   }
@@ -126,11 +119,6 @@ public class DummyGenericCharacter implements IGenericCharacter {
   @Override
   public int getPainTolerance() {
     return 0;
-  }
-
-  @Override
-  public ITraitLimitation getEssenceLimitation() {
-    return new StaticTraitLimitation(7);
   }
 
   @Override

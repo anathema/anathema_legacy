@@ -4,8 +4,10 @@ import com.itextpdf.text.DocumentException;
 import com.itextpdf.text.Phrase;
 import com.itextpdf.text.pdf.MultiColumnText;
 import net.sf.anathema.character.generic.caste.CasteType;
-import net.sf.anathema.character.generic.character.IGenericCharacter;
+import net.sf.anathema.character.generic.type.ICharacterType;
+import net.sf.anathema.character.main.model.concept.HeroConceptFetcher;
 import net.sf.anathema.framework.reporting.pdf.PdfReportUtils;
+import net.sf.anathema.hero.model.Hero;
 import net.sf.anathema.lib.resources.Resources;
 
 public class ConceptTextEncoder extends AbstractTextEncoder {
@@ -14,11 +16,11 @@ public class ConceptTextEncoder extends AbstractTextEncoder {
     super(utils, resources);
   }
 
-  public void createParagraphs(MultiColumnText columnText, IGenericCharacter character) throws DocumentException {
-    CasteType casteType = character.getCasteType();
+  public void createParagraphs(MultiColumnText columnText, Hero hero) throws DocumentException {
+    CasteType casteType = HeroConceptFetcher.fetch(hero).getCaste().getType();
     if (casteType != CasteType.NULL_CASTE_TYPE) {
-      Phrase castePhrase = createTextParagraph(
-              createBoldTitle(getString("Sheet.Label.Caste." + character.getTemplate().getTemplateType().getCharacterType().getId()) + ": "));
+      ICharacterType characterType = hero.getTemplate().getTemplateType().getCharacterType();
+      Phrase castePhrase = createTextParagraph(createBoldTitle(getString("Sheet.Label.Caste." + characterType.getId()) + ": "));
       String casteId = casteType.getId();
       castePhrase.add(createTextChunk(casteId));
       columnText.addElement(castePhrase);

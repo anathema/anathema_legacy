@@ -41,7 +41,7 @@ public class TextReport extends AbstractPdfReport {
       GenericDescription description = new GenericDescription(HeroDescriptionFetcher.fetch(character));
       new CharacterDescriptionTextEncoder(utils, resources).createParagraphs(columnText, description);
       IGenericCharacter genericCharacter = GenericCharacterUtilities.createGenericCharacter(character);
-      new ConceptTextEncoder(utils, resources).createParagraphs(columnText, genericCharacter);
+      new ConceptTextEncoder(utils, resources).createParagraphs(columnText, character);
       createConceptParagraph(columnText, description);
       new AttributeTextEncoder(utils, resources).createParagraphs(columnText, genericCharacter);
       new VirtueTextEncoder(utils, resources).createParagraphs(columnText, genericCharacter);

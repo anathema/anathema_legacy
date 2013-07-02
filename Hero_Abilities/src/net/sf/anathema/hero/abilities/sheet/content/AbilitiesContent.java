@@ -30,7 +30,7 @@ public class AbilitiesContent extends FavorableTraitContent {
 
   @Override
   public boolean shouldShowExcellencies() {
-    return getCharacter().getTemplate().getTemplateType().getCharacterType().getFavoringTraitType().equals(new AbilityFavoringType());
+    return hero.getTemplate().getTemplateType().getCharacterType().getFavoringTraitType().equals(new AbilityFavoringType());
   }
 
   @Override

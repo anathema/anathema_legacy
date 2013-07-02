@@ -1,7 +1,6 @@
 package net.sf.anathema.hero.concept.sheet.personal;
 
 import net.sf.anathema.character.generic.caste.CasteType;
-import net.sf.anathema.character.generic.character.IGenericCharacter;
 import net.sf.anathema.character.generic.type.ICharacterType;
 import net.sf.anathema.character.main.model.concept.HeroConceptFetcher;
 import net.sf.anathema.character.reporting.pdf.content.ReportSession;
@@ -9,6 +8,7 @@ import net.sf.anathema.character.reporting.pdf.rendering.extent.Bounds;
 import net.sf.anathema.character.reporting.pdf.rendering.extent.Position;
 import net.sf.anathema.character.reporting.pdf.rendering.general.box.IVariableContentEncoder;
 import net.sf.anathema.character.reporting.pdf.rendering.graphics.SheetGraphics;
+import net.sf.anathema.hero.model.Hero;
 import net.sf.anathema.lib.lang.StringUtilities;
 import net.sf.anathema.lib.resources.Resources;
 
@@ -25,7 +25,7 @@ public class PersonalInfoEncoder implements IVariableContentEncoder {
 
   @Override
   public void encode(SheetGraphics graphics, ReportSession reportSession, Bounds bounds) {
-    ICharacterType characterType = reportSession.getCharacter().getTemplate().getTemplateType().getCharacterType();
+    ICharacterType characterType = reportSession.getHero().getTemplate().getTemplateType().getCharacterType();
 
     int lines = getNumberOfLines(characterType);
 
@@ -73,8 +73,8 @@ public class PersonalInfoEncoder implements IVariableContentEncoder {
     }
   }
 
-  private int getNumberOfLines(IGenericCharacter character) {
-    return getNumberOfLines(character.getTemplate().getTemplateType().getCharacterType());
+  private int getNumberOfLines(Hero hero) {
+    return getNumberOfLines(hero.getTemplate().getTemplateType().getCharacterType());
   }
 
   private int getNumberOfLines(ICharacterType characterType) {
@@ -109,6 +109,6 @@ public class PersonalInfoEncoder implements IVariableContentEncoder {
   }
 
   public float getPreferredContentHeight(ReportSession session) {
-    return getNumberOfLines(session.getCharacter()) * BARE_LINE_HEIGHT + TEXT_PADDING;
+    return getNumberOfLines(session.getHero()) * BARE_LINE_HEIGHT + TEXT_PADDING;
   }
 }

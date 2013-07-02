@@ -3,8 +3,8 @@ package net.sf.anathema.hero.concept.sheet.anima;
 import com.itextpdf.text.Chunk;
 import com.itextpdf.text.DocumentException;
 import com.itextpdf.text.Phrase;
-import net.sf.anathema.character.generic.character.IGenericCharacter;
 import net.sf.anathema.character.generic.type.ICharacterType;
+import net.sf.anathema.character.main.model.concept.HeroConceptFetcher;
 import net.sf.anathema.character.reporting.pdf.content.ReportSession;
 import net.sf.anathema.character.reporting.pdf.rendering.extent.Bounds;
 import net.sf.anathema.character.reporting.pdf.rendering.extent.Position;
@@ -14,6 +14,7 @@ import net.sf.anathema.character.reporting.pdf.rendering.general.box.ContentEnco
 import net.sf.anathema.character.reporting.pdf.rendering.general.table.ITableEncoder;
 import net.sf.anathema.character.reporting.pdf.rendering.graphics.SheetGraphics;
 import net.sf.anathema.character.reporting.pdf.rendering.page.IVoidStateFormatConstants;
+import net.sf.anathema.hero.model.Hero;
 import net.sf.anathema.lib.resources.Resources;
 
 import static net.sf.anathema.character.generic.impl.persistence.SecondEdition.SECOND_EDITION;
@@ -37,19 +38,18 @@ public class GenericAnimaEncoder implements ContentEncoder {
   public void encode(SheetGraphics graphics, ReportSession reportSession, Bounds bounds) throws DocumentException {
     float powerHeight = bounds.getHeight() - AnimaTableEncoder.TABLE_HEIGHT - IVoidStateFormatConstants.TEXT_PADDING / 2f;
     Bounds animaPowerBounds = new Bounds(bounds.getMinX(), bounds.getMaxY() - powerHeight, bounds.getWidth(), powerHeight);
-    encodeAnimaPowers(graphics, reportSession.getCharacter(), animaPowerBounds);
-
+    encodeAnimaPowers(graphics, reportSession.getHero(), animaPowerBounds);
     Bounds animaTableBounds = new Bounds(bounds.getMinX(), bounds.getMinY(), bounds.getWidth(), AnimaTableEncoder.TABLE_HEIGHT);
     tableEncoder.encodeTable(graphics, reportSession, animaTableBounds);
   }
 
-  private void encodeAnimaPowers(SheetGraphics graphics, IGenericCharacter character, Bounds bounds) throws DocumentException {
+  private void encodeAnimaPowers(SheetGraphics graphics, Hero hero, Bounds bounds) throws DocumentException {
     Phrase phrase = new Phrase("", graphics.createFont(fontSize));
     // Add standard powers for character type
     Chunk symbolChunk = graphics.createSymbolChunk();
-    ICharacterType characterType = character.getTemplate().getTemplateType().getCharacterType();
+    ICharacterType characterType = hero.getTemplate().getTemplateType().getCharacterType();
     ListUtils.addBulletedListText(resources, symbolChunk, "Sheet.AnimaPower." + characterType.getId(), phrase, false);
-    String casteResourceKey = "Sheet.AnimaPower." + character.getCasteType().getId() + "." + SECOND_EDITION;
+    String casteResourceKey = "Sheet.AnimaPower." + HeroConceptFetcher.fetch(hero).getCaste().getType().getId() + "." + SECOND_EDITION;
     if (resources.supportsKey(casteResourceKey)) {
       phrase.add(symbolChunk);
       phrase.add(resources.getString(casteResourceKey) + "\n");
