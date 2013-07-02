@@ -171,16 +171,6 @@ public class DummyGenericCharacter implements IGenericCharacter {
   }
 
   @Override
-  public int getSpentExperiencePoints() {
-    return 0;
-  }
-
-  @Override
-  public int getTotalExperiencePoints() {
-    return 0;
-  }
-
-  @Override
   public String[] getLearnedEffects(ICharm charm) {
     return new String[0];
   }

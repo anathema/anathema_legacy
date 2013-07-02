@@ -16,6 +16,6 @@ public class ExperienceContentFactory implements ReportContentFactory<Experience
 
   @Override
   public ExperienceContent create(ReportSession session) {
-    return new ExperienceContent(resources, session.getCharacter());
+    return new ExperienceContent(resources, session.getHero());
   }
 }

@@ -208,17 +208,6 @@ public class GenericCharacter implements IGenericCharacter {
     return OtherTraitModelFetcher.fetch(hero).getEssenceLimitation();
   }
 
-
-  @Override
-  public int getSpentExperiencePoints() {
-    return new ExperiencePointManagement(hero).getTotalCosts();
-  }
-
-  @Override
-  public int getTotalExperiencePoints() {
-    return ExperienceModelFetcher.fetch(hero).getExperiencePoints().getTotalExperiencePoints();
-  }
-
   @Override
   public boolean isSubeffectCharm(ICharm charm) {
     ISpecialCharmConfiguration charmConfiguration = CharmsModelFetcher.fetch(hero).getSpecialCharmConfiguration(charm);

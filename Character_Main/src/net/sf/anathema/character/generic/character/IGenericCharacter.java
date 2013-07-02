@@ -59,10 +59,6 @@ public interface IGenericCharacter {
 
   int getPainTolerance();
 
-  int getTotalExperiencePoints();
-
-  int getSpentExperiencePoints();
-
   String[] getLearnedEffects(ICharm charm);
 
   boolean isMultipleEffectCharm(ICharm magic);

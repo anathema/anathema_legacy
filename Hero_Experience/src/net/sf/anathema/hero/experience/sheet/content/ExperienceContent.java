@@ -1,23 +1,25 @@
 package net.sf.anathema.hero.experience.sheet.content;
 
-import net.sf.anathema.character.generic.character.IGenericCharacter;
+import net.sf.anathema.character.main.model.experience.ExperienceModelFetcher;
+import net.sf.anathema.character.model.advance.ExperiencePointManagement;
 import net.sf.anathema.character.reporting.pdf.content.AbstractSubBoxContent;
+import net.sf.anathema.hero.model.Hero;
 import net.sf.anathema.lib.resources.Resources;
 
 import java.text.MessageFormat;
 
 public class ExperienceContent extends AbstractSubBoxContent {
 
-  private IGenericCharacter character;
+  private Hero hero;
 
-  public ExperienceContent(Resources resources, IGenericCharacter character) {
+  public ExperienceContent(Resources resources, Hero hero) {
     super(resources);
-    this.character = character;
+    this.hero = hero;
   }
 
   public String getExperienceText() {
-    int totalPoints = character.getTotalExperiencePoints();
-    int spentPoints = character.getSpentExperiencePoints();
+    int totalPoints = ExperienceModelFetcher.fetch(hero).getExperiencePoints().getTotalExperiencePoints();
+    int spentPoints = new ExperiencePointManagement(hero).getTotalCosts();
     String experienceMessage = getResources().getString("Sheet.Experience.MessageFormat");
     return MessageFormat.format(experienceMessage, totalPoints, spentPoints, totalPoints - spentPoints);
   }
