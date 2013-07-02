@@ -1,7 +1,6 @@
 dependencies {
     compile project(':Character_Main')
     compile project(':Character_Main_Impl')
-    compile project(':Hero_Abilities')
     testCompile parent.ext.testDependencies
     testCompile project(path: ':Character_Main', configuration: 'tests')
 }
