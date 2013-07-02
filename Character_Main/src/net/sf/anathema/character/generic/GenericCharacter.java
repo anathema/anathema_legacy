@@ -4,8 +4,6 @@ import net.sf.anathema.character.generic.character.IGenericCharacter;
 import net.sf.anathema.character.generic.character.IGenericTraitCollection;
 import net.sf.anathema.character.generic.magic.ICharm;
 import net.sf.anathema.character.generic.magic.IMagic;
-import net.sf.anathema.character.generic.magic.IMagicVisitor;
-import net.sf.anathema.character.generic.magic.ISpell;
 import net.sf.anathema.character.generic.magic.charms.special.ISpecialCharmConfiguration;
 import net.sf.anathema.character.generic.magic.charms.special.ISubeffect;
 import net.sf.anathema.character.generic.traits.TraitType;
@@ -38,23 +36,6 @@ public class GenericCharacter implements IGenericCharacter {
   @Override
   public IGenericTraitCollection getTraitCollection() {
     return new GenericTraitCollectionFacade(TraitModelFetcher.fetch(hero));
-  }
-
-  @Override
-  public boolean isLearned(IMagic magic) {
-    final boolean[] isLearned = new boolean[1];
-    magic.accept(new IMagicVisitor() {
-      @Override
-      public void visitSpell(ISpell spell) {
-        isLearned[0] = SpellsModelFetcher.fetch(hero).isLearned(spell);
-      }
-
-      @Override
-      public void visitCharm(ICharm charm) {
-        isLearned[0] = CharmsModelFetcher.fetch(hero).isLearned(charm);
-      }
-    });
-    return isLearned[0];
   }
 
   @Override

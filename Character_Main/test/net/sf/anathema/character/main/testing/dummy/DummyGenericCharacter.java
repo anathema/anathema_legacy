@@ -40,11 +40,6 @@ public class DummyGenericCharacter implements IGenericCharacter {
   }
 
   @Override
-  public boolean isLearned(IMagic magic) {
-    return false;
-  }
-
-  @Override
   public Specialty[] getSpecialties(TraitType type) {
     return new Specialty[0];
   }

@@ -11,8 +11,6 @@ public interface IGenericCharacter {
 
   IGenericTraitCollection getTraitCollection();
 
-  boolean isLearned(IMagic magic);
-
   Specialty[] getSpecialties(TraitType traitType);
 
   List<IMagic> getAllLearnedMagic();
