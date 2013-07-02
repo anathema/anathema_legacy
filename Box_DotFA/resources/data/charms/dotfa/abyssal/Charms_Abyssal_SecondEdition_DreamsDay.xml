@@ -28,7 +28,6 @@
 			<trait id="Athletics" value="5" />
 			<essence value="4" />
 			<charmReference id="Abyssal.RaitonsNimblePerch" />
-			<charmAttributeRequirement attribute="ExcellencyAthletics" count="1" />
 		</prerequisite>
 		<cost>
 			<essence cost="6" />
