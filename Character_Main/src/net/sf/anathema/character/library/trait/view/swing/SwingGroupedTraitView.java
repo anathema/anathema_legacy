@@ -11,9 +11,11 @@ import javax.swing.JComponent;
 public class SwingGroupedTraitView implements GroupedTraitView {
 
   private final GroupedColumnPanel panel;
+  private final IntegerViewFactory factory;
 
-  public SwingGroupedTraitView(JComponent parent, ColumnCount columnCount) {
-    panel = new GroupedColumnPanel(parent, columnCount);
+  public SwingGroupedTraitView(JComponent parent, ColumnCount columnCount, IntegerViewFactory factory) {
+    this.factory = factory;
+    this.panel = new GroupedColumnPanel(parent, columnCount);
   }
 
   @Override
@@ -22,8 +24,7 @@ public class SwingGroupedTraitView implements GroupedTraitView {
   }
 
   @Override
-  public ExtensibleTraitView addExtensibleTraitView(String labelText, int value, int maxValue, Trait trait,
-                                                    IntegerViewFactory factory) {
+  public ExtensibleTraitView addExtensibleTraitView(String labelText, int value, int maxValue, Trait trait) {
     SimpleTraitView view = SimpleTraitView.RightAlignedWithUpperBoundsForTrait(factory, labelText, value, maxValue,
             trait);
     SwingExtensibleTraitView extensibleTraitView = new SwingExtensibleTraitView(view);
