@@ -54,7 +54,7 @@ public class AllMagicContent extends AbstractMagicContent {
   }
 
   private void addGenericCharmsForPrint(List<IMagicStats> printStats) {
-    for (IMagicStats stats : GenericCharmUtilities.getGenericCharmStats(character)) {
+    for (IMagicStats stats : GenericCharmUtilities.getGenericCharmStats(session.getHero(), character)) {
       if (GenericCharmUtilities.shouldShowCharm(stats, character)) {
         printStats.add(stats);
       }
@@ -62,7 +62,7 @@ public class AllMagicContent extends AbstractMagicContent {
   }
 
   private void addConcreteLearnedMagicForPrint(List<IMagicStats> printStats) {
-    IMagicVisitor statsCollector = new MagicStatsFactoryVisitor(character, printStats);
+    IMagicVisitor statsCollector = new MagicStatsFactoryVisitor(session.getHero(), printStats);
     for (IMagic magic : character.getAllLearnedMagic()) {
       magic.accept(statsCollector);
     }

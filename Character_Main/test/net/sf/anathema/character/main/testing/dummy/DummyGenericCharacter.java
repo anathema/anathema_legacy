@@ -132,11 +132,6 @@ public class DummyGenericCharacter implements IGenericCharacter {
   }
 
   @Override
-  public boolean isSubeffectCharm(ICharm magic) {
-    return false;
-  }
-
-  @Override
   public ICharm[] getGenericCharms() {
     return new ICharm[0];
   }

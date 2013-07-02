@@ -55,6 +55,6 @@ public class GenericCharmContent implements SubBoxContent {
   }
 
   public int getGenericCharmCount() {
-    return GenericCharmUtilities.getDisplayedGenericCharmCount(character);
+    return GenericCharmUtilities.getDisplayedGenericCharmCount(hero, character);
   }
 }

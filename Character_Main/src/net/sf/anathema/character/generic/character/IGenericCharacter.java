@@ -42,7 +42,5 @@ public interface IGenericCharacter {
 
   boolean isMultipleEffectCharm(ICharm magic);
 
-  boolean isSubeffectCharm(ICharm magic);
-
   ICharm[] getGenericCharms();
 }

@@ -17,6 +17,7 @@ import net.sf.anathema.character.generic.traits.TraitType;
 import net.sf.anathema.character.library.trait.specialties.SpecialtiesModel;
 import net.sf.anathema.character.library.trait.specialties.SpecialtiesModelFetcher;
 import net.sf.anathema.character.library.trait.specialties.Specialty;
+import net.sf.anathema.character.library.trait.subtrait.ISubTraitContainer;
 import net.sf.anathema.character.main.model.charms.CharmsModel;
 import net.sf.anathema.character.main.model.charms.CharmsModelFetcher;
 import net.sf.anathema.character.main.model.combos.CombosModelFetcher;
@@ -86,7 +87,8 @@ public class GenericCharacter implements IGenericCharacter {
   @Override
   public Specialty[] getSpecialties(TraitType traitType) {
     SpecialtiesModel specialtyConfiguration = SpecialtiesModelFetcher.fetch(hero);
-    return specialtyConfiguration.getSpecialtiesContainer(traitType).getSubTraits();
+    ISubTraitContainer specialtiesContainer = specialtyConfiguration.getSpecialtiesContainer(traitType);
+    return specialtiesContainer.getSubTraits();
   }
 
   @Override
@@ -138,12 +140,6 @@ public class GenericCharacter implements IGenericCharacter {
   @Override
   public int getPainTolerance() {
     return HealthModelFetcher.fetch(hero).getPainToleranceLevel();
-  }
-
-  @Override
-  public boolean isSubeffectCharm(ICharm charm) {
-    ISpecialCharmConfiguration charmConfiguration = CharmsModelFetcher.fetch(hero).getSpecialCharmConfiguration(charm);
-    return charmConfiguration instanceof ISubeffectCharmConfiguration;
   }
 
   @Override
