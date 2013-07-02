@@ -12,7 +12,7 @@ import net.sf.anathema.character.main.model.experience.ExperienceChange;
 import net.sf.anathema.character.main.model.experience.ExperienceModelFetcher;
 import net.sf.anathema.character.main.model.traits.TraitMap;
 import net.sf.anathema.character.main.model.traits.TraitModelFetcher;
-import net.sf.anathema.character.view.IGroupedFavorableTraitConfigurationView;
+import net.sf.anathema.character.view.GroupedFavorableTraitConfigurationView;
 import net.sf.anathema.hero.change.ChangeFlavor;
 import net.sf.anathema.hero.change.FlavoredChangeListener;
 import net.sf.anathema.hero.model.Hero;
@@ -27,7 +27,7 @@ import static net.sf.anathema.character.library.trait.favorable.FavorableState.F
 
 public class FavorableTraitConfigurationPresenter {
 
-  private final IGroupedFavorableTraitConfigurationView view;
+  private final GroupedFavorableTraitConfigurationView view;
   private final IdentityMapping<Trait, ToggleTool> traitViewsByTrait = new IdentityMapping<>();
   private final Resources resources;
   private final IIdentifiedTraitTypeGroup[] traitTypeGroups;
@@ -35,7 +35,7 @@ public class FavorableTraitConfigurationPresenter {
   private final IPresentationProperties presentationProperties;
   private Hero hero;
 
-  public FavorableTraitConfigurationPresenter(IIdentifiedTraitTypeGroup[] traitTypeGroups, Hero hero, IGroupedFavorableTraitConfigurationView view,
+  public FavorableTraitConfigurationPresenter(IIdentifiedTraitTypeGroup[] traitTypeGroups, Hero hero, GroupedFavorableTraitConfigurationView view,
                                               Resources resources) {
     this.hero = hero;
     this.traitTypeGroups = traitTypeGroups;
