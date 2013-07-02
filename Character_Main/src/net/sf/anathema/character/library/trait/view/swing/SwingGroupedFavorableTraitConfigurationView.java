@@ -23,12 +23,12 @@ public class SwingGroupedFavorableTraitConfigurationView implements GroupedFavor
 
   @Override
   public void initGui(ColumnCount columnCount) {
-    this.groupedTraitView = new SwingGroupedTraitView(parent, columnCount);
+    this.groupedTraitView = new SwingGroupedTraitView(parent, columnCount, markerIntValueDisplayFactory);
   }
 
   @Override
   public ExtensibleTraitView addExtensibleTraitView(String labelText, int value, int maxValue, Trait trait) {
-    return groupedTraitView.addExtensibleTraitView(labelText, value, maxValue, trait, markerIntValueDisplayFactory);
+    return groupedTraitView.addExtensibleTraitView(labelText, value, maxValue, trait);
   }
 
   @Override
