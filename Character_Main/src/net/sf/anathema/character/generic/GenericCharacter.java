@@ -25,7 +25,6 @@ import net.sf.anathema.character.main.model.combos.CombosModelFetcher;
 import net.sf.anathema.character.main.model.concept.HeroConcept;
 import net.sf.anathema.character.main.model.concept.HeroConceptFetcher;
 import net.sf.anathema.character.main.model.description.HeroDescriptionFetcher;
-import net.sf.anathema.character.main.model.essencepool.EssencePoolModelFetcher;
 import net.sf.anathema.character.main.model.experience.ExperienceModelFetcher;
 import net.sf.anathema.character.main.model.health.HealthModelFetcher;
 import net.sf.anathema.character.main.model.othertraits.OtherTraitModelFetcher;
@@ -39,7 +38,6 @@ import net.sf.anathema.character.model.charm.ILearningCharmGroup;
 import net.sf.anathema.character.model.charm.special.IMultipleEffectCharmConfiguration;
 import net.sf.anathema.character.model.charm.special.ISubeffectCharmConfiguration;
 import net.sf.anathema.hero.model.Hero;
-import net.sf.anathema.lib.exception.ContractFailedException;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -106,24 +104,6 @@ public class GenericCharacter implements IGenericCharacter {
   @Override
   public int getHealthLevelTypeCount(HealthLevelType type) {
     return HealthModelFetcher.fetch(hero).getHealthLevelTypeCount(type);
-  }
-
-  @Override
-  public String getPeripheralPool() {
-    try {
-      return getTemplate().getEssenceTemplate().isEssenceUser() ? EssencePoolModelFetcher.fetch(hero).getPeripheralPool() : null;
-    } catch (IllegalArgumentException e) {
-      return null;
-    }
-  }
-
-  @Override
-  public String getPersonalPool() {
-    try {
-      return getTemplate().getEssenceTemplate().isEssenceUser() ? EssencePoolModelFetcher.fetch(hero).getPersonalPool() : null;
-    } catch (ContractFailedException e) {
-      return null;
-    }
   }
 
   @Override

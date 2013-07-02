@@ -88,16 +88,6 @@ public class DummyGenericCharacter implements IGenericCharacter {
   }
 
   @Override
-  public String getPeripheralPool() {
-    return null;
-  }
-
-  @Override
-  public String getPersonalPool() {
-    return null;
-  }
-
-  @Override
   public IConcept getConcept() {
     return new IConcept() {
 

@@ -16,6 +16,6 @@ public class SimpleEssenceContentFactory implements ReportContentFactory<SimpleE
 
   @Override
   public SimpleEssenceContent create(ReportSession session) {
-    return new SimpleEssenceContent(resources, session.getCharacter(), session.getHero());
+    return new SimpleEssenceContent(resources, session.getHero());
   }
 }

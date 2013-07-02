@@ -32,10 +32,6 @@ public interface IGenericCharacter {
 
   int getHealthLevelTypeCount(HealthLevelType type);
 
-  String getPeripheralPool();
-
-  String getPersonalPool();
-
   IConcept getConcept();
 
   List<IMagic> getAllLearnedMagic();

@@ -1,19 +1,19 @@
 package net.sf.anathema.hero.othertraits.sheet.essence.content;
 
-import net.sf.anathema.character.generic.character.IGenericCharacter;
 import net.sf.anathema.character.generic.traits.types.OtherTraitType;
+import net.sf.anathema.character.main.model.essencepool.EssencePoolModelFetcher;
+import net.sf.anathema.character.main.model.othertraits.OtherTraitModelFetcher;
 import net.sf.anathema.character.reporting.pdf.content.AbstractSubBoxContent;
 import net.sf.anathema.hero.model.Hero;
+import net.sf.anathema.lib.exception.ContractFailedException;
 import net.sf.anathema.lib.resources.Resources;
 
 public class SimpleEssenceContent extends AbstractSubBoxContent {
 
-  private IGenericCharacter character;
   private Hero hero;
 
-  public SimpleEssenceContent(Resources resources, IGenericCharacter character, Hero hero) {
+  public SimpleEssenceContent(Resources resources, Hero hero) {
     super(resources);
-    this.character = character;
     this.hero = hero;
   }
 
@@ -28,11 +28,11 @@ public class SimpleEssenceContent extends AbstractSubBoxContent {
   }
 
   public int getEssenceValue() {
-    return character.getTraitCollection().getTrait(OtherTraitType.Essence).getCurrentValue();
+    return OtherTraitModelFetcher.fetch(hero).getTrait(OtherTraitType.Essence).getCurrentValue();
   }
 
   public int getEssenceMax() {
-    return character.getEssenceLimitation().getAbsoluteLimit(hero);
+    return OtherTraitModelFetcher.fetch(hero).getEssenceLimitation().getAbsoluteLimit(hero);
   }
 
   public int getNumberOfPoolLines() {
@@ -47,12 +47,20 @@ public class SimpleEssenceContent extends AbstractSubBoxContent {
     return getPersonalPool() != null;
   }
 
-  public String getPersonalPool() {
-    return character.getPersonalPool();
+  public String getPeripheralPool() {
+    try {
+      return hero.getTemplate().getEssenceTemplate().isEssenceUser() ? EssencePoolModelFetcher.fetch(hero).getPeripheralPool() : null;
+    } catch (IllegalArgumentException e) {
+      return null;
+    }
   }
 
-  public String getPeripheralPool() {
-    return character.getPeripheralPool();
+  public String getPersonalPool() {
+    try {
+      return hero.getTemplate().getEssenceTemplate().isEssenceUser() ? EssencePoolModelFetcher.fetch(hero).getPersonalPool() : null;
+    } catch (ContractFailedException e) {
+      return null;
+    }
   }
 
   public String getPersonalPoolLabel() {
