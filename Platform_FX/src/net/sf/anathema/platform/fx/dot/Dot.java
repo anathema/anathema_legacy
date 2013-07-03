@@ -1,4 +1,4 @@
-package net.sf.anathema.character.equipment.item.view.fx;
+package net.sf.anathema.platform.fx.dot;
 
 import javafx.scene.Group;
 import javafx.scene.Node;
@@ -9,8 +9,6 @@ import javafx.scene.shape.Circle;
 import javafx.scene.shape.Ellipse;
 import javafx.scene.shape.Rectangle;
 import javafx.scene.shape.Shape;
-
-import static net.sf.anathema.character.equipment.item.view.fx.DotSelectionSpinnerSkin.FILLED;
 
 public class Dot {
 
@@ -32,7 +30,7 @@ public class Dot {
 
   private Group prepareContainer() {
     Group indicator = new Group();
-    indicator.getStyleClass().add(FILLED);
+    indicator.getStyleClass().add(DotSelectionSpinnerSkin.FILLED);
     indicator.getChildren().clear();
     return indicator;
   }

@@ -1,0 +1,4 @@
+.filled {
+    -fx-indicator-inner-color: derive(purple, 120%);
+    -fx-indicator-outer-color: derive(purple, 80%);
+}

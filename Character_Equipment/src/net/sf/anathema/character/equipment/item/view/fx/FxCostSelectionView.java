@@ -4,12 +4,12 @@ import javafx.application.Platform;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
 import javafx.scene.Node;
-import jfxtras.labs.scene.control.ListSpinner;
 import net.sf.anathema.character.equipment.ItemCost;
 import net.sf.anathema.character.equipment.item.view.CostSelectionView;
 import net.sf.anathema.lib.control.ObjectValueListener;
 import net.sf.anathema.lib.gui.selection.ISelectionIntValueChangedListener;
 import net.sf.anathema.platform.fx.FxObjectSelectionView;
+import net.sf.anathema.platform.fx.dot.DotSelectionSpinner;
 import net.sf.anathema.platform.fx.selection.SelectionViewFactory;
 import org.jmock.example.announcer.Announcer;
 import org.tbee.javafx.scene.layout.MigPane;
@@ -20,7 +20,7 @@ public class FxCostSelectionView implements CostSelectionView {
 
   private final SelectionViewFactory selectionViewFactory;
   private FxObjectSelectionView<String> selection;
-  private ListSpinner<Integer> spinner;
+  private final DotSelectionSpinner spinner = new DotSelectionSpinner(0,5);
   private final MigPane pane = new MigPane(withoutInsets());
   private final Announcer<ISelectionIntValueChangedListener> announcer = new Announcer<>(
           ISelectionIntValueChangedListener.class);
@@ -33,10 +33,8 @@ public class FxCostSelectionView implements CostSelectionView {
       @Override
       public void run() {
         selection = selectionViewFactory.create(text, new SimpleUiConfiguration());
-        spinner = new ListSpinner<>(0, 5);
-        spinner.getStyleClass().add("dots");
         pane.add(selection.getNode());
-        pane.add(spinner);
+        pane.add(spinner.getNode());
         startListening();
       }
     });
@@ -81,13 +79,13 @@ public class FxCostSelectionView implements CostSelectionView {
 
   private void startListening() {
     selection.addObjectSelectionChangedListener(typeChangeListener);
-    spinner.indexProperty().addListener(valueChangeListener);
+    spinner.addListener(valueChangeListener);
   }
 
 
   private void stopListening() {
     selection.removeObjectSelectionChangedListener(typeChangeListener);
-    spinner.indexProperty().removeListener(valueChangeListener);
+    spinner.removeListener(valueChangeListener);
   }
 
   @SuppressWarnings("unchecked")

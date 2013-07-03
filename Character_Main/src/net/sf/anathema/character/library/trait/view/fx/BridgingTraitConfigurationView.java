@@ -24,7 +24,7 @@ public class BridgingTraitConfigurationView implements IView, GroupedFavorableTr
   @Override
   public void initGui(ColumnCount columnCount) {
     fxView.initGui(columnCount);
-    Platform.runLater(new InitScene(panel, new ViewHolder()));
+    Platform.runLater(new InitScene(panel, new ViewHolder(), "skin/anathema/dotselector.css", "skin/anathema/character/trait.css"));
   }
 
   @Override
@@ -42,7 +42,7 @@ public class BridgingTraitConfigurationView implements IView, GroupedFavorableTr
     return panel;
   }
 
-  private class ViewHolder implements ParentHolder{
+  private class ViewHolder implements ParentHolder {
     @Override
     public Parent getParent() {
       return (Parent) fxView.getNode();

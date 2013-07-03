@@ -50,11 +50,15 @@ public class FxGroupedColumnPanel {
     return columns[columnIndex];
   }
 
-  public void add(final Node node) {
+  public void add(Node node) {
+    add(node, new CC());
+  }
+
+  public void add(final Node node, final CC constraints) {
     FxThreading.runOnCorrectThread(new Runnable() {
       @Override
       public void run() {
-        getCurrentColumn().add(node);
+        getCurrentColumn().add(node, constraints);
       }
     });
   }
