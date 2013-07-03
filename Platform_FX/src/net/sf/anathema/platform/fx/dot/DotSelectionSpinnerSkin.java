@@ -1,4 +1,4 @@
-package net.sf.anathema.character.equipment.item.view.fx;
+package net.sf.anathema.platform.fx.dot;
 
 import com.sun.javafx.Utils;
 import com.sun.javafx.scene.control.skin.SkinBase;
@@ -133,6 +133,7 @@ public class DotSelectionSpinnerSkin<T> extends SkinBase<ListSpinner<T>, ListSpi
     updateRating(getSkinnable().getIndex());
   }
 
+  @SuppressWarnings("unchecked")
   private void updateRating(Integer newRating) {
     if (newRating == rating) {
       return;
@@ -185,6 +186,7 @@ public class DotSelectionSpinnerSkin<T> extends SkinBase<ListSpinner<T>, ListSpi
     timeline.play();
   }
 
+  @SuppressWarnings("unchecked")
   private int getMaximumValue() {
     ObservableList<Integer> items = (ObservableList<Integer>) getSkinnable().getItems();
     return Collections.max(items);

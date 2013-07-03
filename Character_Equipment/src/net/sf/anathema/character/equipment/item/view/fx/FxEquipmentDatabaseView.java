@@ -11,7 +11,7 @@ import static net.sf.anathema.platform.fx.FxUtilities.systemSupportsPopUpsWhileE
 
 public class FxEquipmentDatabaseView {
 
-  public final PerspectivePane perspectivePane = new PerspectivePane("skin/anathema/equipment.css");
+  public final PerspectivePane perspectivePane = new PerspectivePane("skin/anathema/equipment.css", "skin/anathema/dotselector.css");
   private final FxEquipmentNavigation navigation = new FxEquipmentNavigation();
   private final FxEquipmentDetails details;
   public final AgnosticEquipmentDatabaseView view;
