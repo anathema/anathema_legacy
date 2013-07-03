@@ -31,14 +31,14 @@ public class FxExtensibleTraitView implements ExtensibleTraitView {
 
   @Override
   public ToggleTool addToggleInFront(IIconToggleButtonProperties properties) {
-    FxToggleTool toggleTool = new FxToggleTool();
+    FxToggleTool toggleTool = FxToggleTool.create();
     addToPanel(front, toggleTool);
     return toggleTool;
   }
 
   @Override
   public ToggleTool addToggleBehind(IIconToggleButtonProperties properties) {
-    FxToggleTool toggleTool = new FxToggleTool();
+    FxToggleTool toggleTool = FxToggleTool.create();
     addToPanel(rear, toggleTool);
     return toggleTool;
   }
