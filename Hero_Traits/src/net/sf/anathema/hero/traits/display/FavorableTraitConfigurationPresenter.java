@@ -111,6 +111,7 @@ public class FavorableTraitConfigurationPresenter {
     boolean select = state == Favored || state == Caste;
     boolean enable = state == Favored || state == Default;
     setButtonState(view, select, enable);
+    new FavoredIconSelector(view, presentationProperties).setIconFor(hero, state);
   }
 
   private void setButtonState(ToggleTool view, boolean select, boolean enable) {

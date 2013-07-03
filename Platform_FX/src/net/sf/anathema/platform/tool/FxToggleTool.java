@@ -5,6 +5,7 @@ import javafx.scene.Node;
 import javafx.scene.control.ToggleButton;
 import javafx.scene.control.Tooltip;
 import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import net.sf.anathema.interaction.AcceleratorMap;
 import net.sf.anathema.interaction.Command;
 import net.sf.anathema.interaction.CommandProxy;
@@ -26,7 +27,9 @@ public class FxToggleTool implements ToggleTool, FxComponent {
   private final CommandProxy command = new CommandProxy();
 
   public FxToggleTool() {
-    this.button = new ToggleButton();
+    ImageView imageView = new ImageView();
+    this.button = new ToggleButton("", imageView);
+    onLoad.add(new SetImage(imageView));
   }
 
   @Override
