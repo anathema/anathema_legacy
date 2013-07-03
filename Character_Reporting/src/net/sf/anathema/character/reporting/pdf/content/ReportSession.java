@@ -1,7 +1,9 @@
 package net.sf.anathema.character.reporting.pdf.content;
 
+import net.sf.anathema.character.generic.GenericDescription;
 import net.sf.anathema.character.generic.character.IGenericCharacter;
 import net.sf.anathema.character.generic.character.IGenericDescription;
+import net.sf.anathema.character.main.model.description.HeroDescriptionFetcher;
 import net.sf.anathema.hero.model.Hero;
 
 import java.util.ArrayList;
@@ -29,7 +31,7 @@ public class ReportSession {
   }
 
   public IGenericDescription getDescription() {
-    return character.getDescription();
+    return new GenericDescription(HeroDescriptionFetcher.fetch(hero));
   }
 
   public void storeMnemonic(Object mnemonic) {

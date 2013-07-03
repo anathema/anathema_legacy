@@ -15,6 +15,6 @@ public class ComboContentFactory implements ReportContentFactory<ComboContent> {
 
   @Override
   public ComboContent create(ReportSession session) {
-    return new ComboContent(session.getCharacter(), resources);
+    return new ComboContent(session.getHero(), resources);
   }
 }
