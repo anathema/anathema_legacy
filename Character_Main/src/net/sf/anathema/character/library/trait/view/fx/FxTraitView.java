@@ -18,6 +18,7 @@ public class FxTraitView implements IIntValueView {
   public FxTraitView(String labelText, int value, int maxValue) {
     this.label = new Label(labelText);
     this.spinner = new ListSpinner<>(0, maxValue);
+    spinner.getStyleClass().add("dots");
     setValue(value);
     initListening();
   }
