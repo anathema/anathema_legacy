@@ -4,19 +4,25 @@ import net.sf.anathema.character.library.trait.Trait;
 import net.sf.anathema.character.library.trait.view.GroupedTraitView;
 import net.sf.anathema.character.presenter.ExtensibleTraitView;
 import net.sf.anathema.character.view.ColumnCount;
+import org.tbee.javafx.scene.layout.MigPane;
 
 public class FxGroupedTraitView implements GroupedTraitView {
-  public FxGroupedTraitView(ColumnCount columnCount) {
-    //To change body of created methods use File | Settings | File Templates.
+  private final FxGroupedColumnPanel panel;
+
+  public FxGroupedTraitView(MigPane pane, ColumnCount columnCount) {
+    this.panel = new FxGroupedColumnPanel(pane, columnCount);
   }
 
   @Override
   public void startNewGroup(String groupLabel) {
-    //To change body of implemented methods use File | Settings | File Templates.
+    panel.startNewGroup(groupLabel);
   }
 
   @Override
   public ExtensibleTraitView addExtensibleTraitView(String labelText, int value, int maxValue, Trait trait) {
-    return null;  //To change body of implemented methods use File | Settings | File Templates.
+    FxTraitView view = new FxTraitView(value, maxValue, trait);
+    FxExtensibleTraitView extensibleTraitView = new FxExtensibleTraitView(view);
+    panel.add(extensibleTraitView.getNode());
+    return extensibleTraitView;
   }
 }
