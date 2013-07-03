@@ -1,5 +1,6 @@
 package net.sf.anathema.character.library.trait.view.fx;
 
+import net.miginfocom.layout.CC;
 import net.sf.anathema.character.library.intvalue.IIconToggleButtonProperties;
 import net.sf.anathema.character.presenter.ExtensibleTraitView;
 import net.sf.anathema.framework.value.IIntValueView;
@@ -65,7 +66,7 @@ public class FxExtensibleTraitView implements ExtensibleTraitView {
 
   public void addTo(FxGroupedColumnPanel panel) {
     panel.add(front);
-    panel.add(center);
+    panel.add(center, new CC().growX().pushX());
     panel.add(rear);
   }
 
