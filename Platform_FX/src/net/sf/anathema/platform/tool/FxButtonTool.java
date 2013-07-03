@@ -14,6 +14,7 @@ import net.sf.anathema.interaction.Hotkey;
 import net.sf.anathema.interaction.ProxyAcceleratorMap;
 import net.sf.anathema.interaction.Tool;
 import net.sf.anathema.lib.file.RelativePath;
+import net.sf.anathema.platform.fx.FxComponent;
 
 import java.util.ArrayList;
 import java.util.Collections;
@@ -21,7 +22,7 @@ import java.util.List;
 
 import static net.sf.anathema.platform.fx.FxUtilities.systemSupportsPopUpsWhileEmbeddingFxIntoSwing;
 
-public class FxButtonTool implements Tool {
+public class FxButtonTool implements Tool, FxComponent {
 
   public static FxButtonTool ForToolbar() {
     ImageView mainIcon = new ImageView();
@@ -145,6 +146,7 @@ public class FxButtonTool implements Tool {
     acceleratorMap.setActualMap(actualMap);
   }
 
+  @Override
   public Node getNode() {
     return button;
   }

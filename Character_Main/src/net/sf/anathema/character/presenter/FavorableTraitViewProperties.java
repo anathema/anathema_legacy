@@ -39,8 +39,4 @@ public class FavorableTraitViewProperties implements IIconToggleButtonProperties
     return AgnosticUIConfiguration.NO_ICON;
   }
 
-  @Override
-  public String getToolTipText() {
-    return AgnosticUIConfiguration.NO_TOOLTIP;
-  }
 }

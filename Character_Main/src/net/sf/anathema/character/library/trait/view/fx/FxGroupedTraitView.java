@@ -20,9 +20,9 @@ public class FxGroupedTraitView implements GroupedTraitView {
 
   @Override
   public ExtensibleTraitView addExtensibleTraitView(String labelText, int value, int maxValue, Trait trait) {
-    FxTraitView view = new FxTraitView(value, maxValue);
+    FxTraitView view = new FxTraitView(labelText, value, maxValue);
     FxExtensibleTraitView extensibleTraitView = new FxExtensibleTraitView(view);
-    panel.add(extensibleTraitView.getNode());
+    extensibleTraitView.addTo(panel);
     return extensibleTraitView;
   }
 }

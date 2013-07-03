@@ -24,8 +24,4 @@ public class IntimaciesProperties implements IIconToggleButtonProperties {
     return NO_ICON;
   }
 
-  @Override
-  public String getToolTipText() {
-    return resources.getString("Intimacies.LockButton.Tooltip");
-  }
 }

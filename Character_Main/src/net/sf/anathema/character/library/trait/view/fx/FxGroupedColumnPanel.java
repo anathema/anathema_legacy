@@ -5,6 +5,7 @@ import javafx.scene.control.Label;
 import net.miginfocom.layout.CC;
 import net.sf.anathema.character.view.ColumnCount;
 import net.sf.anathema.lib.gui.layout.LayoutUtils;
+import net.sf.anathema.platform.fx.FxThreading;
 import org.tbee.javafx.scene.layout.MigPane;
 
 public class FxGroupedColumnPanel {
@@ -33,18 +34,28 @@ public class FxGroupedColumnPanel {
     }
   }
 
-  public void startNewGroup(String groupLabel) {
-    increaseColumnIndex();
-    if (groupLabel != null) {
-      getCurrentColumn().add(new Label(groupLabel), new CC().gapTop("5").spanX().growX().pushX());
-    }
+  public void startNewGroup(final String groupLabel) {
+    FxThreading.runOnCorrectThread(new Runnable() {
+      @Override
+      public void run() {
+        increaseColumnIndex();
+        if (groupLabel != null) {
+          getCurrentColumn().add(new Label(groupLabel), new CC().gapTop("5").spanX().growX().pushX());
+        }
+      }
+    });
   }
 
   public MigPane getCurrentColumn() {
     return columns[columnIndex];
   }
 
-  public void add(Node node) {
-    getCurrentColumn().add(node);
+  public void add(final Node node) {
+    FxThreading.runOnCorrectThread(new Runnable() {
+      @Override
+      public void run() {
+        getCurrentColumn().add(node);
+      }
+    });
   }
 }

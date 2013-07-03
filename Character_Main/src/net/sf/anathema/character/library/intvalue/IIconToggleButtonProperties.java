@@ -7,6 +7,4 @@ public interface IIconToggleButtonProperties {
   RelativePath createStandardIcon();
 
   RelativePath createUnselectedIcon();
-
-  String getToolTipText();
 }

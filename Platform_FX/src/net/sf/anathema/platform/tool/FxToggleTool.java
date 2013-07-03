@@ -12,13 +12,14 @@ import net.sf.anathema.interaction.Hotkey;
 import net.sf.anathema.interaction.ProxyAcceleratorMap;
 import net.sf.anathema.interaction.ToggleTool;
 import net.sf.anathema.lib.file.RelativePath;
+import net.sf.anathema.platform.fx.FxComponent;
 
 import java.util.ArrayList;
 import java.util.List;
 
 import static net.sf.anathema.platform.fx.FxUtilities.systemSupportsPopUpsWhileEmbeddingFxIntoSwing;
 
-public class FxToggleTool implements ToggleTool {
+public class FxToggleTool implements ToggleTool, FxComponent {
   private final ToggleButton button;
   private final List<ImageClosure> onLoad = new ArrayList<>();
   private final ProxyAcceleratorMap acceleratorMap = new ProxyAcceleratorMap();
@@ -105,6 +106,7 @@ public class FxToggleTool implements ToggleTool {
     acceleratorMap.setActualMap(actualMap);
   }
 
+  @Override
   public Node getNode() {
     return button;
   }

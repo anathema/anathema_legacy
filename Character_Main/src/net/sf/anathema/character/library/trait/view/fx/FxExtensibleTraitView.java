@@ -1,11 +1,12 @@
 package net.sf.anathema.character.library.trait.view.fx;
 
-import javafx.scene.Node;
 import net.sf.anathema.character.library.intvalue.IIconToggleButtonProperties;
 import net.sf.anathema.character.presenter.ExtensibleTraitView;
 import net.sf.anathema.framework.value.IIntValueView;
 import net.sf.anathema.interaction.ToggleTool;
 import net.sf.anathema.interaction.Tool;
+import net.sf.anathema.platform.fx.FxComponent;
+import net.sf.anathema.platform.fx.FxThreading;
 import net.sf.anathema.platform.tool.FxButtonTool;
 import net.sf.anathema.platform.tool.FxToggleTool;
 import org.tbee.javafx.scene.layout.MigPane;
@@ -20,10 +21,7 @@ public class FxExtensibleTraitView implements ExtensibleTraitView {
 
   public FxExtensibleTraitView(FxTraitView view) {
     this.view = view;
-  }
-
-  public Node getNode() {
-    return view.getNode();
+    view.addTo(center);
   }
 
   @Override
@@ -34,21 +32,21 @@ public class FxExtensibleTraitView implements ExtensibleTraitView {
   @Override
   public ToggleTool addToggleInFront(IIconToggleButtonProperties properties) {
     FxToggleTool toggleTool = new FxToggleTool();
-    front.add(toggleTool.getNode());
+    addToPanel(front, toggleTool);
     return toggleTool;
   }
 
   @Override
   public ToggleTool addToggleBehind(IIconToggleButtonProperties properties) {
     FxToggleTool toggleTool = new FxToggleTool();
-    rear.add(toggleTool.getNode());
+    addToPanel(rear, toggleTool);
     return toggleTool;
   }
 
   @Override
   public Tool addToolBehind() {
     FxButtonTool buttonTool = FxButtonTool.ForAnyPurpose();
-    rear.add(buttonTool.getNode());
+    addToPanel(rear, buttonTool);
     return buttonTool;
   }
 
@@ -61,5 +59,20 @@ public class FxExtensibleTraitView implements ExtensibleTraitView {
 
   private void removePart(MigPane panel) {
     //panel.getParent().getChildren().remove(panel);
+  }
+
+  public void addTo(FxGroupedColumnPanel panel) {
+    panel.add(front);
+    panel.add(center);
+    panel.add(rear);
+  }
+
+  private void addToPanel(final MigPane pane, final FxComponent toggleTool) {
+    FxThreading.runOnCorrectThread(new Runnable() {
+      @Override
+      public void run() {
+        pane.add(toggleTool.getNode());
+      }
+    });
   }
 }
