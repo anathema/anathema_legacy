@@ -11,10 +11,11 @@ import com.itextpdf.text.Rectangle;
 import com.itextpdf.text.pdf.PdfContentByte;
 import com.itextpdf.text.pdf.PdfPCell;
 import com.itextpdf.text.pdf.PdfPTable;
-import net.sf.anathema.character.generic.character.IGenericCharacter;
 import net.sf.anathema.character.generic.character.IGenericTraitCollection;
 import net.sf.anathema.character.generic.health.HealthLevelType;
 import net.sf.anathema.character.main.model.health.HealthModelFetcher;
+import net.sf.anathema.character.main.model.traits.GenericTraitCollectionFacade;
+import net.sf.anathema.character.main.model.traits.TraitModelFetcher;
 import net.sf.anathema.character.reporting.pdf.content.ReportSession;
 import net.sf.anathema.character.reporting.pdf.rendering.extent.Bounds;
 import net.sf.anathema.character.reporting.pdf.rendering.general.table.ITableEncoder;
@@ -47,8 +48,8 @@ public abstract class AbstractHealthAndMovementTableEncoder implements ITableEnc
     return table.getTotalHeight();
   }
 
-  protected IGenericTraitCollection getTraits(IGenericCharacter character) {
-    return character.getTraitCollection();
+  protected IGenericTraitCollection getTraits(Hero hero) {
+    return new GenericTraitCollectionFacade(TraitModelFetcher.fetch(hero));
   }
 
   private int getRowCount(HealthLevelType type) {
@@ -67,7 +68,7 @@ public abstract class AbstractHealthAndMovementTableEncoder implements ITableEnc
       PdfPTable table = new PdfPTable(columnWidth);
       addHeaders(graphics, table);
       for (HealthLevelType type : HealthLevelType.values()) {
-        addHealthTypeRows(graphics, table, session.getHero(), session.getCharacter(), activeTemplate, passiveTemplate, type);
+        addHealthTypeRows(graphics, table, session.getHero(), activeTemplate, passiveTemplate, type);
       }
       return table;
     } catch (BadElementException e) {
@@ -75,7 +76,7 @@ public abstract class AbstractHealthAndMovementTableEncoder implements ITableEnc
     }
   }
 
-  private void addHealthTypeRows(SheetGraphics graphics, PdfPTable table, Hero hero, IGenericCharacter character, Image activeTemplate, Image passiveTemplate, HealthLevelType type) {
+  private void addHealthTypeRows(SheetGraphics graphics, PdfPTable table, Hero hero, Image activeTemplate, Image passiveTemplate, HealthLevelType type) {
     if (type == HealthLevelType.DYING) {
       return;
     }
@@ -87,7 +88,7 @@ public abstract class AbstractHealthAndMovementTableEncoder implements ITableEnc
         if (type == HealthLevelType.INCAPACITATED) {
           addIncapacitatedMovement(graphics, table);
         } else {
-          addMovementCells(graphics, table, type, painTolerance, getTraits(character));
+          addMovementCells(graphics, table, type, painTolerance, getTraits(hero));
         }
         addHealthTypeCells(graphics, table, type, painTolerance);
       } else {

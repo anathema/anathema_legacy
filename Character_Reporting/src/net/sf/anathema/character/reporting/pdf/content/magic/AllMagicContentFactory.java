@@ -16,6 +16,6 @@ public class AllMagicContentFactory implements ReportContentFactory<AllMagicCont
 
   @Override
   public AllMagicContent create(ReportSession session) {
-    return new AllMagicContent(session.getCharacter(), session, resources);
+    return new AllMagicContent(session, resources);
   }
 }

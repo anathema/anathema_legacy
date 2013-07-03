@@ -1,9 +1,10 @@
 package net.sf.anathema.character.reporting.pdf.content.combat;
 
-import net.sf.anathema.character.generic.character.IGenericCharacter;
 import net.sf.anathema.character.generic.character.IGenericTraitCollection;
 import net.sf.anathema.character.generic.impl.CharacterUtilities;
 import net.sf.anathema.character.generic.type.ICharacterType;
+import net.sf.anathema.character.main.model.traits.GenericTraitCollectionFacade;
+import net.sf.anathema.character.main.model.traits.TraitModelFetcher;
 import net.sf.anathema.character.reporting.pdf.content.AbstractSubBoxContent;
 import net.sf.anathema.hero.model.Hero;
 import net.sf.anathema.lib.resources.Resources;
@@ -11,16 +12,14 @@ import net.sf.anathema.lib.resources.Resources;
 public abstract class AbstractCombatStatsContent extends AbstractSubBoxContent {
 
   private Hero hero;
-  private IGenericCharacter character;
 
-  protected AbstractCombatStatsContent(Resources resources, Hero hero, IGenericCharacter character) {
+  protected AbstractCombatStatsContent(Resources resources, Hero hero) {
     super(resources);
     this.hero = hero;
-    this.character = character;
   }
 
   public int getKnockdownPool() {
-    return CharacterUtilities.getKnockdownPool(getCharacter());
+    return CharacterUtilities.getKnockdownPool(hero);
   }
 
   public int getStunningThreshold() {
@@ -57,15 +56,11 @@ public abstract class AbstractCombatStatsContent extends AbstractSubBoxContent {
     return true;
   }
 
-  protected IGenericCharacter getCharacter() {
-    return character;
-  }
-
   protected ICharacterType getCharacterType() {
     return hero.getTemplate().getTemplateType().getCharacterType();
   }
 
   protected IGenericTraitCollection getTraitCollection() {
-    return getCharacter().getTraitCollection();
+    return new GenericTraitCollectionFacade(TraitModelFetcher.fetch(hero));
   }
 }

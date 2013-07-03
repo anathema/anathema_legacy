@@ -1,6 +1,5 @@
 package net.sf.anathema.character.reporting.pdf.rendering.boxes.abilities;
 
-import net.sf.anathema.character.generic.character.IGenericCharacter;
 import net.sf.anathema.character.generic.traits.TraitType;
 import net.sf.anathema.character.generic.traits.groups.IIdentifiedTraitTypeGroup;
 import net.sf.anathema.character.main.model.abilities.AbilityModelFetcher;
@@ -28,12 +27,12 @@ public class SpecialtiesEncoder extends AbstractNamedTraitEncoder implements INa
 
   @Override
   public float encode(SheetGraphics graphics, ReportSession session, Position position, float width, float height) {
-    IGenericCharacter character = session.getCharacter();
+    SpecialtiesContentCandidate content = new SpecialtiesContentCandidate(session.getHero());
     String title = getResources().getString("Sheet.AbilitySubHeader.Specialties");
     List<IValuedTraitReference> references = new ArrayList<>();
     for (IIdentifiedTraitTypeGroup group : AbilityModelFetcher.fetch(session.getHero()).getAbilityTypeGroups()) {
       for (TraitType traitType : group.getAllGroupTypes()) {
-        Collections.addAll(references, getTraitReferences(character.getSpecialties(traitType), traitType));
+        Collections.addAll(references, getTraitReferences(content.getSpecialties(traitType), traitType));
       }
     }
     IValuedTraitReference[] specialties = references.toArray(new IValuedTraitReference[references.size()]);

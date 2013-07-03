@@ -16,6 +16,6 @@ public class SpellsOnlyContentFactory implements ReportContentFactory<SpellsOnly
 
   @Override
   public SpellsOnlyContent create(ReportSession session) {
-    return new SpellsOnlyContent(session.getCharacter(), session, resources);
+    return new SpellsOnlyContent(session, resources);
   }
 }

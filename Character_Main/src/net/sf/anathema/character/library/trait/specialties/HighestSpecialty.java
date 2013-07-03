@@ -1,15 +1,17 @@
 package net.sf.anathema.character.library.trait.specialties;
 
-import net.sf.anathema.character.generic.character.IGenericCharacter;
+import net.sf.anathema.character.generic.traits.TraitType;
 import net.sf.anathema.character.generic.traits.types.AbilityType;
+import net.sf.anathema.character.library.trait.subtrait.ISubTraitContainer;
+import net.sf.anathema.hero.model.Hero;
 
 public class HighestSpecialty {
 
   private int value = 0;
   private String name;
 
-  public HighestSpecialty(IGenericCharacter character, AbilityType type) {
-    for (Specialty t : character.getSpecialties(type)) {
+  public HighestSpecialty(Hero hero, AbilityType type) {
+    for (Specialty t : getSpecialties(hero, type)) {
       if (value < t.getCurrentValue()) {
         value = t.getCurrentValue();
         name = t.getName();
@@ -30,4 +32,9 @@ public class HighestSpecialty {
     return name;
   }
 
+  public Specialty[] getSpecialties(Hero hero, TraitType traitType) {
+    SpecialtiesModel specialtyConfiguration = SpecialtiesModelFetcher.fetch(hero);
+    ISubTraitContainer specialtiesContainer = specialtyConfiguration.getSpecialtiesContainer(traitType);
+    return specialtiesContainer.getSubTraits();
+  }
 }

@@ -12,20 +12,18 @@ import com.itextpdf.text.pdf.PdfContentByte;
 import com.itextpdf.text.pdf.PdfPCell;
 import com.itextpdf.text.pdf.PdfPTable;
 import com.itextpdf.text.pdf.PdfTemplate;
-import net.sf.anathema.character.generic.character.IGenericCharacter;
 import net.sf.anathema.character.generic.magic.IMagic;
 import net.sf.anathema.character.generic.magic.IMagicStats;
 import net.sf.anathema.character.generic.traits.TraitType;
 import net.sf.anathema.character.reporting.pdf.content.ReportSession;
 import net.sf.anathema.character.reporting.pdf.content.magic.GenericCharmContent;
-import net.sf.anathema.character.reporting.pdf.content.magic.GenericCharmUtilities;
+import net.sf.anathema.character.reporting.pdf.content.magic.MagicContentHelper;
 import net.sf.anathema.character.reporting.pdf.rendering.boxes.EncodingMetrics;
 import net.sf.anathema.character.reporting.pdf.rendering.extent.Bounds;
 import net.sf.anathema.character.reporting.pdf.rendering.general.table.AbstractTableEncoder;
 import net.sf.anathema.character.reporting.pdf.rendering.graphics.SheetGraphics;
 import net.sf.anathema.character.reporting.pdf.rendering.graphics.TableCell;
 import net.sf.anathema.character.reporting.pdf.rendering.page.IVoidStateFormatConstants;
-import net.sf.anathema.character.reporting.pdf.util.MagicLearnUtilities;
 import net.sf.anathema.lib.resources.Resources;
 
 import java.util.Arrays;
@@ -50,14 +48,14 @@ public class GenericCharmTableEncoder extends AbstractTableEncoder<ReportSession
 
   @Override
   public boolean hasContent(ReportSession session) {
-    return createContent(session).hasContent() && GenericCharmUtilities.hasDisplayedGenericCharms(session);
+    return createContent(session).hasContent() && new MagicContentHelper(session.getHero()).hasDisplayedGenericCharms();
   }
 
   @Override
   protected PdfPTable createTable(SheetGraphics graphics, ReportSession session, Bounds bounds) throws DocumentException {
-    IGenericCharacter character = session.getCharacter();
     PdfContentByte directContent = graphics.getDirectContent();
-    List<TraitType> traits = GenericCharmUtilities.getGenericCharmTraits(session.getHero());
+    MagicContentHelper helper = new MagicContentHelper(session.getHero());
+    List<TraitType> traits = helper.getGenericCharmTraits();
     Font font = graphics.createTableFont();
     PdfTemplate learnedTemplate = createCharmDotTemplate(directContent, BaseColor.BLACK);
     PdfTemplate notLearnedTemplate = createCharmDotTemplate(directContent, BaseColor.WHITE);
@@ -67,14 +65,14 @@ public class GenericCharmTableEncoder extends AbstractTableEncoder<ReportSession
     for (TraitType trait : traits) {
       table.addCell(createHeaderCell(graphics, directContent, trait));
     }
-    for (IMagicStats stats : GenericCharmUtilities.getGenericCharmStats(session.getHero(), character)) {
-      if (!GenericCharmUtilities.shouldShowCharm(stats, character))
+    for (IMagicStats stats : helper.getGenericCharmStats()) {
+      if (!helper.shouldShowCharm(stats))
       	continue;
       Phrase charmPhrase = new Phrase(stats.getNameString(resources), font);
       table.addCell(new TableCell(charmPhrase, Rectangle.NO_BORDER));
       String genericId = stats.getName().getId();
       for (TraitType trait : traits) {
-        table.addCell(createGenericCell(character, trait, genericId, learnedTemplate, notLearnedTemplate));
+        table.addCell(createGenericCell(helper, trait, genericId, learnedTemplate, notLearnedTemplate));
       }
     }
     return table;
@@ -93,10 +91,10 @@ public class GenericCharmTableEncoder extends AbstractTableEncoder<ReportSession
     return template;
   }
 
-  private PdfPCell createGenericCell(IGenericCharacter character, TraitType type, String genericId, PdfTemplate learnedTemplate, PdfTemplate notLearnedTemplate) throws DocumentException {
+  private PdfPCell createGenericCell(MagicContentHelper helper, TraitType type, String genericId, PdfTemplate learnedTemplate, PdfTemplate notLearnedTemplate) throws DocumentException {
     final String charmId = genericId + "." + type.getId();
-    List<IMagic> allLearnedMagic = character.getAllLearnedMagic();
-    boolean isLearned = MagicLearnUtilities.isCharmLearned(allLearnedMagic, charmId);
+    List<IMagic> allLearnedMagic = helper.getAllLearnedMagic();
+    boolean isLearned = helper.isCharmLearned(allLearnedMagic, charmId);
     Image image = Image.getInstance(isLearned ? learnedTemplate : notLearnedTemplate);
     TableCell tableCell = new TableCell(image);
     tableCell.setPadding(0);

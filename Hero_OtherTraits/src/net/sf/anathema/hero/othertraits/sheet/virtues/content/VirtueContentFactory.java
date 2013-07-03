@@ -16,6 +16,6 @@ public class VirtueContentFactory implements ReportContentFactory<VirtueContent>
 
   @Override
   public VirtueContent create(ReportSession session) {
-    return new VirtueContent(resources, session.getCharacter());
+    return new VirtueContent(resources, session.getHero());
   }
 }

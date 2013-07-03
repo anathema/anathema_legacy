@@ -1,6 +1,5 @@
 package net.sf.anathema.character.reporting.pdf.content.magic;
 
-import net.sf.anathema.character.generic.character.IGenericCharacter;
 import net.sf.anathema.character.generic.magic.IMagic;
 import net.sf.anathema.character.generic.magic.IMagicStats;
 import net.sf.anathema.character.generic.magic.IMagicVisitor;
@@ -14,12 +13,12 @@ import java.util.List;
 
 public class AllMagicContent extends AbstractMagicContent {
 
-  private IGenericCharacter character;
+  private final MagicContentHelper helper;
   private ReportSession session;
 
-  public AllMagicContent(IGenericCharacter character, ReportSession session, Resources resources) {
+  public AllMagicContent(ReportSession session, Resources resources) {
     super(resources);
-    this.character = character;
+    this.helper = new MagicContentHelper(session.getHero());
     this.session = session;
     storeMnemonicIfNecessary(session);
   }
@@ -54,8 +53,8 @@ public class AllMagicContent extends AbstractMagicContent {
   }
 
   private void addGenericCharmsForPrint(List<IMagicStats> printStats) {
-    for (IMagicStats stats : GenericCharmUtilities.getGenericCharmStats(session.getHero(), character)) {
-      if (GenericCharmUtilities.shouldShowCharm(stats, character)) {
+    for (IMagicStats stats : helper.getGenericCharmStats()) {
+      if (helper.shouldShowCharm(stats)) {
         printStats.add(stats);
       }
     }
@@ -63,7 +62,7 @@ public class AllMagicContent extends AbstractMagicContent {
 
   private void addConcreteLearnedMagicForPrint(List<IMagicStats> printStats) {
     IMagicVisitor statsCollector = new MagicStatsFactoryVisitor(session.getHero(), printStats);
-    for (IMagic magic : character.getAllLearnedMagic()) {
+    for (IMagic magic : helper.getAllLearnedMagic()) {
       magic.accept(statsCollector);
     }
   }

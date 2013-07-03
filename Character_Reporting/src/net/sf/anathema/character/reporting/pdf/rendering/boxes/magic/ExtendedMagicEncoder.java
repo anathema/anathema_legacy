@@ -1,7 +1,6 @@
 package net.sf.anathema.character.reporting.pdf.rendering.boxes.magic;
 
 import com.itextpdf.text.DocumentException;
-import net.sf.anathema.character.generic.character.IGenericCharacter;
 import net.sf.anathema.character.generic.magic.ICharm;
 import net.sf.anathema.character.generic.magic.IMagic;
 import net.sf.anathema.character.generic.magic.IMagicStats;
@@ -9,7 +8,7 @@ import net.sf.anathema.character.generic.magic.IMagicVisitor;
 import net.sf.anathema.character.generic.magic.ISpell;
 import net.sf.anathema.character.reporting.pdf.content.ReportSession;
 import net.sf.anathema.character.reporting.pdf.content.magic.AbstractMagicContent;
-import net.sf.anathema.character.reporting.pdf.content.magic.GenericCharmUtilities;
+import net.sf.anathema.character.reporting.pdf.content.magic.MagicContentHelper;
 import net.sf.anathema.character.reporting.pdf.content.stats.magic.CharmStats;
 import net.sf.anathema.character.reporting.pdf.content.stats.magic.MultipleEffectCharmStats;
 import net.sf.anathema.character.reporting.pdf.content.stats.magic.SpellStats;
@@ -29,19 +28,19 @@ public class ExtendedMagicEncoder<C extends AbstractMagicContent> implements Con
   private Resources resources;
 
   public static List<IMagicStats> collectPrintCharms(ReportSession session) {
-    return collectPrintMagic(session.getHero(), session.getCharacter(), false, true);
+    return collectPrintMagic(session.getHero(), false, true);
   }
 
   public static List<IMagicStats> collectPrintSpells(ReportSession session) {
-    return collectPrintMagic(session.getHero(), session.getCharacter(), true, false);
+    return collectPrintMagic(session.getHero(), true, false);
   }
 
-  private static List<IMagicStats> collectPrintMagic(final Hero hero, final IGenericCharacter character, final boolean includeSpells,
-          final boolean includeCharms) {
+  private static List<IMagicStats> collectPrintMagic(final Hero hero,  final boolean includeSpells, final boolean includeCharms) {
     final List<IMagicStats> printStats = new ArrayList<>();
+    final MagicContentHelper helper = new MagicContentHelper(hero);
     if (includeCharms) {
-      for (IMagicStats stats : GenericCharmUtilities.getGenericCharmStats(hero, character)) {
-        if (GenericCharmUtilities.shouldShowCharm(stats, character)) {
+      for (IMagicStats stats : helper.getGenericCharmStats()) {
+        if (helper.shouldShowCharm(stats)) {
           printStats.add(stats);
         }
       }
@@ -53,20 +52,20 @@ public class ExtendedMagicEncoder<C extends AbstractMagicContent> implements Con
         if (!includeCharms) {
           return;
         }
-        if (GenericCharmUtilities.isGenericCharmFor(charm, hero, character)) {
+        if (helper.isGenericCharmFor(charm)) {
           return;
         }
         if (charm.hasAttribute(KNACK)) {
           return;
         }
 
-        if (character.isMultipleEffectCharm(charm)) {
-          String[] effects = character.getLearnedEffects(charm);
+        if (helper.isMultipleEffectCharm(charm)) {
+          String[] effects = helper.getLearnedEffects(charm);
           for (String effect : effects) {
             printStats.add(new MultipleEffectCharmStats(charm, effect));
           }
         } else {
-          printStats.add(new CharmStats(charm, hero));
+          printStats.add(new CharmStats(charm, new MagicContentHelper(hero)));
         }
       }
 
@@ -77,7 +76,7 @@ public class ExtendedMagicEncoder<C extends AbstractMagicContent> implements Con
         }
       }
     };
-    for (IMagic magic : character.getAllLearnedMagic()) {
+    for (IMagic magic : helper.getAllLearnedMagic()) {
       magic.accept(statsCollector);
     }
     return printStats;

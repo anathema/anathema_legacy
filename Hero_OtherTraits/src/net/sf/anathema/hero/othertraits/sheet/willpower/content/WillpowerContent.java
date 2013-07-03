@@ -1,19 +1,20 @@
 package net.sf.anathema.hero.othertraits.sheet.willpower.content;
 
-import net.sf.anathema.character.generic.character.IGenericCharacter;
 import net.sf.anathema.character.generic.traits.types.OtherTraitType;
+import net.sf.anathema.character.main.model.othertraits.OtherTraitModelFetcher;
 import net.sf.anathema.character.reporting.pdf.content.AbstractSubBoxContent;
 import net.sf.anathema.character.reporting.pdf.content.general.BulletList;
 import net.sf.anathema.character.reporting.pdf.rendering.general.ListUtils;
+import net.sf.anathema.hero.model.Hero;
 import net.sf.anathema.lib.resources.Resources;
 
 public class WillpowerContent extends AbstractSubBoxContent {
 
-  private IGenericCharacter character;
+  private Hero hero;
 
-  public WillpowerContent(Resources resources, IGenericCharacter character) {
+  public WillpowerContent(Resources resources, Hero hero) {
     super(resources);
-    this.character = character;
+    this.hero = hero;
   }
 
   @Override
@@ -22,7 +23,7 @@ public class WillpowerContent extends AbstractSubBoxContent {
   }
 
   public int getWillpowerValue() {
-    return character.getTraitCollection().getTrait(OtherTraitType.Willpower).getCurrentValue();
+    return OtherTraitModelFetcher.fetch(hero).getTrait(OtherTraitType.Willpower).getCurrentValue();
   }
 
   public String getWillpowerSpendingNote() {

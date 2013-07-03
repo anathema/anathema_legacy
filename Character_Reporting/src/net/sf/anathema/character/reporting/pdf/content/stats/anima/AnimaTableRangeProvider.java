@@ -1,6 +1,6 @@
 package net.sf.anathema.character.reporting.pdf.content.stats.anima;
 
-import net.sf.anathema.character.generic.character.IGenericCharacter;
+import net.sf.anathema.hero.model.Hero;
 
 public class AnimaTableRangeProvider implements IAnimaTableRangeProvider {
 
@@ -8,7 +8,7 @@ public class AnimaTableRangeProvider implements IAnimaTableRangeProvider {
   //
 
   @Override
-  public String getRange(int level, IGenericCharacter character) {
+  public String getRange(int level, Hero hero) {
     return ranges[level];
   }
 }

@@ -3,8 +3,6 @@ package net.sf.anathema.character.reporting.pdf;
 import com.itextpdf.text.Document;
 import com.itextpdf.text.pdf.PdfContentByte;
 import com.itextpdf.text.pdf.PdfWriter;
-import net.sf.anathema.character.generic.GenericCharacterUtilities;
-import net.sf.anathema.character.generic.character.IGenericCharacter;
 import net.sf.anathema.character.generic.framework.ICharacterGenerics;
 import net.sf.anathema.character.reporting.CharacterReportingModuleObject;
 import net.sf.anathema.character.reporting.pdf.content.ReportContentRegistry;
@@ -50,14 +48,13 @@ public class PortraitSimpleExaltSheetReport extends AbstractPdfReport {
   @Override
   public void performPrint(Item item, Document document, PdfWriter writer) throws ReportException {
     PageSize pageSize = pageSizePreference.getPageSize();
-    Hero stattedCharacter = (Hero) item.getItemData();
+    Hero hero = (Hero) item.getItemData();
     PdfContentByte directContent = writer.getDirectContent();
     PageConfiguration configuration = PageConfiguration.ForPortrait(pageSize);
     try {
-      IGenericCharacter character = GenericCharacterUtilities.createGenericCharacter(stattedCharacter);
       List<PageEncoder> encoderList = new ArrayList<>();
       encoderList.add(new FirstPageEncoder(configuration));
-      ReportSession session = new ReportSession(getContentRegistry(), character, stattedCharacter);
+      ReportSession session = new ReportSession(getContentRegistry(), hero);
       Collections.addAll(encoderList, findAdditionalPages(pageSize, session));
       encoderList.add(new SecondPageEncoder());
       Sheet sheet = new Sheet(document, getEncoderRegistry(), resources, pageSize);

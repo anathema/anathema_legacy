@@ -14,6 +14,7 @@ import net.sf.anathema.character.generic.magic.description.MagicDescription;
 import net.sf.anathema.character.main.model.charms.CharmsModelFetcher;
 import net.sf.anathema.character.main.model.experience.ExperienceModelFetcher;
 import net.sf.anathema.character.main.model.spells.SpellsModelFetcher;
+import net.sf.anathema.character.reporting.pdf.content.magic.MagicContentHelper;
 import net.sf.anathema.character.reporting.pdf.content.stats.magic.CharmStats;
 import net.sf.anathema.character.reporting.pdf.content.stats.magic.SpellStats;
 import net.sf.anathema.charmtree.builder.MagicDisplayLabeler;
@@ -154,7 +155,7 @@ public class MagicReport extends AbstractPdfReport {
   }
 
   private CharmStats createCharmStats(Hero hero, ICharm charm) {
-    return new CharmStats(charm, hero);
+    return new CharmStats(charm, new MagicContentHelper(hero));
   }
 
   private SpellStats createSpellStats(ISpell spell) {

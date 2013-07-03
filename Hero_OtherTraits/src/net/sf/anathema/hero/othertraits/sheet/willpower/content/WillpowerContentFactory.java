@@ -16,6 +16,6 @@ public class WillpowerContentFactory implements ReportContentFactory<WillpowerCo
 
   @Override
   public WillpowerContent create(ReportSession session) {
-    return new WillpowerContent(resources, session.getCharacter());
+    return new WillpowerContent(resources, session.getHero());
   }
 }

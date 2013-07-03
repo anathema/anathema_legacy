@@ -1,7 +1,6 @@
 package net.sf.anathema.character.reporting.pdf.content;
 
 import net.sf.anathema.character.generic.GenericDescription;
-import net.sf.anathema.character.generic.character.IGenericCharacter;
 import net.sf.anathema.character.generic.character.IGenericDescription;
 import net.sf.anathema.character.main.model.description.HeroDescriptionFetcher;
 import net.sf.anathema.hero.model.Hero;
@@ -11,19 +10,13 @@ import java.util.List;
 
 public class ReportSession {
 
-  private final IGenericCharacter character;
   private Hero hero;
   private final ReportContentRegistry registry;
   private final List<Object> mnemonics = new ArrayList<>();
 
-  public ReportSession(ReportContentRegistry registry, IGenericCharacter character, Hero hero) {
+  public ReportSession(ReportContentRegistry registry, Hero hero) {
     this.registry = registry;
-    this.character = character;
     this.hero = hero;
-  }
-
-  public IGenericCharacter getCharacter() {
-    return character;
   }
 
   public Hero getHero() {

@@ -6,9 +6,7 @@ import com.itextpdf.text.DocumentException;
 import com.itextpdf.text.Phrase;
 import com.itextpdf.text.pdf.MultiColumnText;
 import com.itextpdf.text.pdf.PdfWriter;
-import net.sf.anathema.character.generic.GenericCharacterUtilities;
 import net.sf.anathema.character.generic.GenericDescription;
-import net.sf.anathema.character.generic.character.IGenericCharacter;
 import net.sf.anathema.character.main.model.description.HeroDescriptionFetcher;
 import net.sf.anathema.character.model.Character;
 import net.sf.anathema.framework.reporting.ReportException;
@@ -40,12 +38,11 @@ public class TextReport extends AbstractPdfReport {
     try {
       GenericDescription description = new GenericDescription(HeroDescriptionFetcher.fetch(character));
       new CharacterDescriptionTextEncoder(utils, resources).createParagraphs(columnText, description);
-      IGenericCharacter genericCharacter = GenericCharacterUtilities.createGenericCharacter(character);
       new ConceptTextEncoder(utils, resources).createParagraphs(columnText, character);
       createConceptParagraph(columnText, description);
-      new AttributeTextEncoder(utils, resources).createParagraphs(columnText, genericCharacter);
-      new VirtueTextEncoder(utils, resources).createParagraphs(columnText, genericCharacter);
-      new AbilityTextEncoder(utils, resources).createParagraphs(columnText, genericCharacter);
+      new AttributeTextEncoder(utils, resources).createParagraphs(columnText, character);
+      new VirtueTextEncoder(utils, resources).createParagraphs(columnText, character);
+      new AbilityTextEncoder(utils, resources).createParagraphs(columnText, character);
       writeColumnText(document, columnText);
     } catch (DocumentException e) {
       e.printStackTrace();

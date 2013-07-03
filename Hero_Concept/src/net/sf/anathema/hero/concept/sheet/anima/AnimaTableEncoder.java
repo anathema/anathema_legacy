@@ -6,7 +6,6 @@ import com.itextpdf.text.Phrase;
 import com.itextpdf.text.Rectangle;
 import com.itextpdf.text.pdf.PdfPCell;
 import com.itextpdf.text.pdf.PdfPTable;
-import net.sf.anathema.character.generic.character.IGenericCharacter;
 import net.sf.anathema.character.generic.type.ICharacterType;
 import net.sf.anathema.character.reporting.pdf.content.ReportSession;
 import net.sf.anathema.character.reporting.pdf.content.stats.anima.AnimaTableRangeProvider;
@@ -18,6 +17,7 @@ import net.sf.anathema.character.reporting.pdf.content.stats.anima.IAnimaTableSt
 import net.sf.anathema.character.reporting.pdf.rendering.extent.Bounds;
 import net.sf.anathema.character.reporting.pdf.rendering.general.table.AbstractTableEncoder;
 import net.sf.anathema.character.reporting.pdf.rendering.graphics.SheetGraphics;
+import net.sf.anathema.hero.model.Hero;
 import net.sf.anathema.lib.resources.Resources;
 
 public class AnimaTableEncoder extends AbstractTableEncoder<ReportSession> {
@@ -57,7 +57,7 @@ public class AnimaTableEncoder extends AbstractTableEncoder<ReportSession> {
   }
 
   protected void addAnimaRow(SheetGraphics graphics, PdfPTable table, int level, ReportSession session, String descriptionPrefix) {
-    table.addCell(createRangeCell(graphics, level, session.getCharacter()));
+    table.addCell(createRangeCell(graphics, level, session.getHero()));
     table.addCell(createDescriptionCell(graphics, level, descriptionPrefix));
     table.addCell(createStealthCell(graphics, level));
   }
@@ -70,8 +70,8 @@ public class AnimaTableEncoder extends AbstractTableEncoder<ReportSession> {
     return createContentCell(graphics, getString(descriptionPrefix + "." + AnimaUtils.resourceIds[level]));
   }
 
-  protected PdfPCell createRangeCell(SheetGraphics graphics, int level, IGenericCharacter character) {
-    return createContentCell(graphics, rangeProvider.getRange(level, character));
+  protected PdfPCell createRangeCell(SheetGraphics graphics, int level, Hero hero) {
+    return createContentCell(graphics, rangeProvider.getRange(level, hero));
   }
 
   private float[] getColumnWidths(ColumnDescriptor[] columns) {

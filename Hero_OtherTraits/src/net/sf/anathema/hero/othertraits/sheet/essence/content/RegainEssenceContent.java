@@ -1,6 +1,5 @@
 package net.sf.anathema.hero.othertraits.sheet.essence.content;
 
-import net.sf.anathema.character.generic.character.IGenericCharacter;
 import net.sf.anathema.character.reporting.pdf.content.AbstractSubContent;
 import net.sf.anathema.character.reporting.pdf.content.SubBoxContent;
 import net.sf.anathema.hero.othertraits.sheet.essence.content.recovery.NaturalRecoveryRow;
@@ -15,11 +14,8 @@ import java.util.List;
 
 public class RegainEssenceContent extends AbstractSubContent implements SubBoxContent{
 
-  private IGenericCharacter character;
-
-  public RegainEssenceContent(Resources resources, IGenericCharacter character) {
+  public RegainEssenceContent(Resources resources) {
     super(resources);
-    this.character = character;
   }
 
   public List<RecoveryRow> getRecoveryRows() {

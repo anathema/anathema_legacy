@@ -5,12 +5,13 @@ import com.itextpdf.text.Font;
 import com.itextpdf.text.Phrase;
 import com.itextpdf.text.Rectangle;
 import com.itextpdf.text.pdf.PdfPTable;
-import net.sf.anathema.character.generic.character.IGenericCharacter;
 import net.sf.anathema.character.generic.character.IGenericTraitCollection;
 import net.sf.anathema.character.generic.equipment.ICharacterStatsModifiers;
 import net.sf.anathema.character.generic.impl.CharacterUtilities;
 import net.sf.anathema.character.generic.traits.types.AbilityType;
 import net.sf.anathema.character.library.trait.specialties.HighestSpecialty;
+import net.sf.anathema.character.main.model.traits.GenericTraitCollectionFacade;
+import net.sf.anathema.character.main.model.traits.TraitModelFetcher;
 import net.sf.anathema.character.reporting.pdf.content.ReportSession;
 import net.sf.anathema.character.reporting.pdf.rendering.extent.Bounds;
 import net.sf.anathema.character.reporting.pdf.rendering.extent.Position;
@@ -20,6 +21,7 @@ import net.sf.anathema.character.reporting.pdf.rendering.general.table.ITableEnc
 import net.sf.anathema.character.reporting.pdf.rendering.graphics.SheetGraphics;
 import net.sf.anathema.character.reporting.pdf.rendering.graphics.TableCell;
 import net.sf.anathema.character.reporting.second.content.combat.StatsModifiers;
+import net.sf.anathema.hero.model.Hero;
 import net.sf.anathema.lib.resources.Resources;
 
 import static net.sf.anathema.character.reporting.pdf.rendering.page.IVoidStateFormatConstants.COMMENT_FONT_SIZE;
@@ -35,11 +37,10 @@ public class SocialCombatStatsBoxEncoder implements ContentEncoder {
   @SuppressWarnings("unchecked")
   @Override
   public void encode(SheetGraphics graphics, ReportSession reportSession, Bounds bounds) throws DocumentException {
-    IGenericCharacter character = reportSession.getCharacter();
     ICharacterStatsModifiers modifiers = StatsModifiers.allStatsModifiers(reportSession.getHero());
     float valueWidth = bounds.width;
-    Bounds valueBounds = new Bounds(bounds.x, bounds.y +3, valueWidth, bounds.height);
-    float valueHeight = encodeValues(graphics, valueBounds, character, modifiers) -5;
+    Bounds valueBounds = new Bounds(bounds.x, bounds.y + 3, valueWidth, bounds.height);
+    float valueHeight = encodeValues(graphics, valueBounds, reportSession.getHero(), modifiers) - 5;
     Bounds attackTableBounds = new Bounds(bounds.x, bounds.y, valueWidth, bounds.height - valueHeight);
 
     ITableEncoder tableEncoder = new SocialCombatStatsTableEncoder(resources);
@@ -80,11 +81,9 @@ public class SocialCombatStatsBoxEncoder implements ContentEncoder {
 
   private void createCommonDVRow(SheetGraphics graphics, PdfPTable table, String sourceId) {
     Font commentFont = graphics.createCommentFont();
-    String sourceName = resources.getString(
-            "Sheet.SocialCombat.DVModifiers." + sourceId + ".Name");
+    String sourceName = resources.getString("Sheet.SocialCombat.DVModifiers." + sourceId + ".Name");
     table.addCell(createCommonActionsCell(new Phrase(sourceName, commentFont)));
-    String dvModifier = resources.getString(
-            "Sheet.SocialCombat.DVModifiers." + sourceId + ".DV");
+    String dvModifier = resources.getString("Sheet.SocialCombat.DVModifiers." + sourceId + ".DV");
     table.addCell(createCommonActionsCell(new Phrase(dvModifier, commentFont)));
   }
 
@@ -118,14 +117,11 @@ public class SocialCombatStatsBoxEncoder implements ContentEncoder {
 
   private void addCommonActionsRow(SheetGraphics graphics, PdfPTable table, String actionId) {
     Font commentFont = graphics.createCommentFont();
-    String actionName = resources.getString(
-            "Sheet.SocialCombat.CommonActions." + actionId + ".Name");
+    String actionName = resources.getString("Sheet.SocialCombat.CommonActions." + actionId + ".Name");
     table.addCell(createCommonActionsCell(new Phrase(actionName, commentFont)));
-    String actionSpeed = resources.getString(
-            "Sheet.SocialCombat.CommonActions." + actionId + ".Speed");
+    String actionSpeed = resources.getString("Sheet.SocialCombat.CommonActions." + actionId + ".Speed");
     table.addCell(createCommonActionsCell(new Phrase(actionSpeed, commentFont)));
-    String actionDV = resources.getString(
-            "Sheet.SocialCombat.CommonActions." + actionId + ".DV");
+    String actionDV = resources.getString("Sheet.SocialCombat.CommonActions." + actionId + ".DV");
     table.addCell(createCommonActionsCell(new Phrase(actionDV, commentFont)));
   }
 
@@ -135,11 +131,10 @@ public class SocialCombatStatsBoxEncoder implements ContentEncoder {
     return cell;
   }
 
-  private float encodeValues(SheetGraphics graphics, Bounds bounds, IGenericCharacter character,
-                             ICharacterStatsModifiers equipment) {
-    IGenericTraitCollection traitCollection = character.getTraitCollection();
-    HighestSpecialty awarenessSpecialty = new HighestSpecialty( character, AbilityType.Awareness );
-    HighestSpecialty integritySpecialty = new HighestSpecialty( character, AbilityType.Integrity );
+  private float encodeValues(SheetGraphics graphics, Bounds bounds, Hero hero, ICharacterStatsModifiers equipment) {
+    IGenericTraitCollection traitCollection = new GenericTraitCollectionFacade(TraitModelFetcher.fetch(hero));
+    HighestSpecialty awarenessSpecialty = new HighestSpecialty(hero, AbilityType.Awareness);
+    HighestSpecialty integritySpecialty = new HighestSpecialty(hero, AbilityType.Integrity);
     String joinLabel = resources.getString("Sheet.SocialCombat.JoinDebateBattle");
     String dodgeLabel = resources.getString("Sheet.SocialCombat.DodgeMDV");
     String normalLabel = resources.getString("Sheet.Combat.NormalSpecialty");
@@ -149,28 +144,30 @@ public class SocialCombatStatsBoxEncoder implements ContentEncoder {
     int dodgeMDVWithSpecialty = CharacterUtilities.getDodgeMdvWithSpecialty(traitCollection, equipment, integritySpecialty.getValue());
     Position upperLeftCorner = new Position(bounds.x, bounds.getMaxY());
     LabelledValueEncoder encoder = new LabelledValueEncoder(2, upperLeftCorner, bounds.width, 3);
-    displayJoinDebateWithSpecialty( graphics, encoder,  joinLabel, joinDebate, joinDebateWithSpecialty, normalLabel + awarenessSpecialty );
-    displayDodgeWithSpecialty(      graphics, encoder, dodgeLabel, dodgeMDV,   dodgeMDVWithSpecialty,   normalLabel + integritySpecialty );
+    displayJoinDebateWithSpecialty(graphics, encoder, joinLabel, joinDebate, joinDebateWithSpecialty, normalLabel + awarenessSpecialty);
+    displayDodgeWithSpecialty(graphics, encoder, dodgeLabel, dodgeMDV, dodgeMDVWithSpecialty, normalLabel + integritySpecialty);
     return encoder.getHeight() + 1;
   }
-  
-  private void displayJoinDebateWithSpecialty(  SheetGraphics graphics, LabelledValueEncoder encoder, String joinLabel, int joinDebate, int joinDebateWithSpecialty, String joinDebateSpecialtyLabel) {
-      if( joinDebate != joinDebateWithSpecialty ) {
-          encoder.addLabelledValue(graphics, 0, joinLabel, joinDebate, joinDebateWithSpecialty);
-          encoder.addComment( graphics, joinDebateSpecialtyLabel, 0 );
-      } else {
-          encoder.addLabelledValue(graphics, 0, joinLabel, joinDebate);
-          encoder.addComment( graphics, "", 0 );
-      }
+
+  private void displayJoinDebateWithSpecialty(SheetGraphics graphics, LabelledValueEncoder encoder, String joinLabel, int joinDebate,
+                                              int joinDebateWithSpecialty, String joinDebateSpecialtyLabel) {
+    if (joinDebate != joinDebateWithSpecialty) {
+      encoder.addLabelledValue(graphics, 0, joinLabel, joinDebate, joinDebateWithSpecialty);
+      encoder.addComment(graphics, joinDebateSpecialtyLabel, 0);
+    } else {
+      encoder.addLabelledValue(graphics, 0, joinLabel, joinDebate);
+      encoder.addComment(graphics, "", 0);
+    }
   }
 
-  private void displayDodgeWithSpecialty( SheetGraphics graphics, LabelledValueEncoder encoder, String dodgeLabel, int dodgeMDV, int dodgeMDVWithSpecialty, String dodgeSpecialtyLabel ) {
-      if( dodgeMDV != dodgeMDVWithSpecialty ) {
-        encoder.addLabelledValue(graphics, 1, dodgeLabel, dodgeMDV, dodgeMDVWithSpecialty);
-        encoder.addComment( graphics, dodgeSpecialtyLabel, 1 );
-      } else {
-        encoder.addLabelledValue(graphics, 1, dodgeLabel, dodgeMDV);
-      }
+  private void displayDodgeWithSpecialty(SheetGraphics graphics, LabelledValueEncoder encoder, String dodgeLabel, int dodgeMDV,
+                                         int dodgeMDVWithSpecialty, String dodgeSpecialtyLabel) {
+    if (dodgeMDV != dodgeMDVWithSpecialty) {
+      encoder.addLabelledValue(graphics, 1, dodgeLabel, dodgeMDV, dodgeMDVWithSpecialty);
+      encoder.addComment(graphics, dodgeSpecialtyLabel, 1);
+    } else {
+      encoder.addLabelledValue(graphics, 1, dodgeLabel, dodgeMDV);
+    }
   }
 
   @Override

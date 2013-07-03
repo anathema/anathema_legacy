@@ -1,7 +1,6 @@
 package net.sf.anathema.character.model.creation.bonus;
 
 import net.sf.anathema.character.generic.additionalrules.IAdditionalMagicLearnPool;
-import net.sf.anathema.character.generic.character.IGenericCharacter;
 import net.sf.anathema.character.generic.magic.IMagic;
 import net.sf.anathema.hero.model.Hero;
 
@@ -12,10 +11,10 @@ public class AdditionalMagicLearnPointManagement implements IAdditionalMagicLear
 
   private final IAdditionalMagicLearnPoolCalculator[] calculators;
 
-  public AdditionalMagicLearnPointManagement(IAdditionalMagicLearnPool[] pools, Hero hero, IGenericCharacter abstraction) {
+  public AdditionalMagicLearnPointManagement(IAdditionalMagicLearnPool[] pools, Hero hero) {
     calculators = new IAdditionalMagicLearnPoolCalculator[pools.length];
     for (int index = 0; index < pools.length; index++) {
-      calculators[index] = new AdditionalMagicLearnPoolCalculator(pools[index], hero, abstraction);
+      calculators[index] = new AdditionalMagicLearnPoolCalculator(pools[index], hero);
     }
   }
 

@@ -16,6 +16,6 @@ public class GenericCharmContentFactory implements ReportContentFactory<GenericC
 
   @Override
   public GenericCharmContent create(ReportSession session) {
-    return new GenericCharmContent(resources, session.getHero(), session.getCharacter());
+    return new GenericCharmContent(resources, session.getHero());
   }
 }

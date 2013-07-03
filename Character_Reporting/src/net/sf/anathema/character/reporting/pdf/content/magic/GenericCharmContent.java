@@ -1,6 +1,5 @@
 package net.sf.anathema.character.reporting.pdf.content.magic;
 
-import net.sf.anathema.character.generic.character.IGenericCharacter;
 import net.sf.anathema.character.generic.traits.TraitType;
 import net.sf.anathema.character.reporting.pdf.content.SubBoxContent;
 import net.sf.anathema.hero.model.Hero;
@@ -15,12 +14,10 @@ public class GenericCharmContent implements SubBoxContent {
 
   private Resources resources;
   private Hero hero;
-  private IGenericCharacter character;
 
-  public GenericCharmContent(Resources resources, Hero hero, IGenericCharacter character) {
+  public GenericCharmContent(Resources resources, Hero hero) {
     this.resources = resources;
     this.hero = hero;
-    this.character = character;
   }
 
   @Override
@@ -51,10 +48,10 @@ public class GenericCharmContent implements SubBoxContent {
   }
 
   private List<TraitType> getTraits() {
-    return GenericCharmUtilities.getGenericCharmTraits(hero);
+    return new MagicContentHelper(hero).getGenericCharmTraits();
   }
 
   public int getGenericCharmCount() {
-    return GenericCharmUtilities.getDisplayedGenericCharmCount(hero, character);
+    return new MagicContentHelper(hero).getDisplayedGenericCharmCount();
   }
 }

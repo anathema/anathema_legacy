@@ -1,7 +1,5 @@
 package net.sf.anathema.character.model.creation.bonus;
 
-import net.sf.anathema.character.generic.GenericCharacter;
-import net.sf.anathema.character.generic.GenericCharacterUtilities;
 import net.sf.anathema.character.generic.additionalrules.IAdditionalRules;
 import net.sf.anathema.character.generic.additionaltemplate.HeroModelBonusPointCalculator;
 import net.sf.anathema.character.generic.template.HeroTemplate;
@@ -72,7 +70,6 @@ public class BonusPointManagement implements IBonusPointManagement {
             hero.getTemplate().getAdditionalRules().getAdditionalBonusPointPools());
     this.cost = hero.getTemplate().getBonusPointCosts();
     HeroTemplate characterTemplate = hero.getTemplate();
-    GenericCharacter characterAbstraction = GenericCharacterUtilities.createGenericCharacter(hero);
     TraitMap traitMap = TraitModelFetcher.fetch(hero);
     this.abilityCalculator = new AbilityCostCalculator(hero, AbilityModelFetcher.fetch(hero), creationPoints.getAbilityCreationPoints(),
             creationPoints.getSpecialtyCreationPoints(), cost, bonusAdditionalPools);
@@ -80,8 +77,7 @@ public class BonusPointManagement implements IBonusPointManagement {
             new AttributeCostCalculator(AttributesModelFetcher.fetch(hero), creationPoints.getAttributeCreationPoints(), cost, bonusAdditionalPools);
     Trait[] virtues = TraitCollectionUtilities.getVirtues(traitMap);
     this.virtueCalculator = new VirtueCostCalculator(virtues, creationPoints.getVirtueCreationPoints(), cost);
-    magicAdditionalPools =
-            new AdditionalMagicLearnPointManagement(characterTemplate.getAdditionalRules().getAdditionalMagicLearnPools(), hero, characterAbstraction);
+    magicAdditionalPools = new AdditionalMagicLearnPointManagement(characterTemplate.getAdditionalRules().getAdditionalMagicLearnPools(), hero);
     this.magicCalculator = new MagicCostCalculator(hero, cost, bonusAdditionalPools, magicAdditionalPools);
     this.willpower = TraitCollectionUtilities.getWillpower(traitMap);
     this.essence = TraitCollectionUtilities.getEssence(traitMap);

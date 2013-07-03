@@ -1,7 +1,6 @@
 package net.sf.anathema.character.reporting.pdf.content.traits;
 
 import net.sf.anathema.character.generic.caste.CasteType;
-import net.sf.anathema.character.generic.character.IGenericCharacter;
 import net.sf.anathema.character.generic.character.IGenericTraitCollection;
 import net.sf.anathema.character.generic.magic.IMagic;
 import net.sf.anathema.character.generic.magic.IMagicStats;
@@ -9,8 +8,7 @@ import net.sf.anathema.character.generic.traits.ITraitTemplate;
 import net.sf.anathema.character.generic.traits.TraitType;
 import net.sf.anathema.character.generic.traits.groups.IIdentifiedTraitTypeGroup;
 import net.sf.anathema.character.reporting.pdf.content.AbstractSubBoxContent;
-import net.sf.anathema.character.reporting.pdf.content.magic.GenericCharmUtilities;
-import net.sf.anathema.character.reporting.pdf.util.MagicLearnUtilities;
+import net.sf.anathema.character.reporting.pdf.content.magic.MagicContentHelper;
 import net.sf.anathema.hero.model.Hero;
 import net.sf.anathema.lib.resources.Resources;
 import net.sf.anathema.lib.util.Identifier;
@@ -23,24 +21,18 @@ import java.util.List;
 public abstract class FavorableTraitContent extends AbstractSubBoxContent {
 
   private Hero hero;
-  private IGenericCharacter character;
 
-  public FavorableTraitContent(Hero hero, IGenericCharacter character, Resources resources) {
+  public FavorableTraitContent(Hero hero, Resources resources) {
     super(resources);
     this.hero = hero;
-    this.character = character;
   }
 
   public abstract List<? extends TraitType> getMarkedTraitTypes();
 
-  protected IGenericCharacter getCharacter() {
-    return character;
-  }
-
   public IMagicStats[] getExcellencies() {
     List<IMagicStats> excellencies = new ArrayList<>();
     if (shouldShowExcellencies()) {
-      for (IMagicStats stats : GenericCharmUtilities.getGenericCharmStats(hero, character)) {
+      for (IMagicStats stats : new MagicContentHelper(hero).getGenericCharmStats()) {
         String genericId = stats.getName().getId();
         if (genericId.endsWith("Excellency")) {
           excellencies.add(stats);
@@ -69,11 +61,11 @@ public abstract class FavorableTraitContent extends AbstractSubBoxContent {
 
   public boolean[] hasExcellenciesLearned(TraitType traitType) {
     IMagicStats[] excellencies = getExcellencies();
-    List<IMagic> allLearnedMagic = character.getAllLearnedMagic();
+    List<IMagic> allLearnedMagic = new MagicContentHelper(hero).getAllLearnedMagic();
     boolean[] excellencyLearned = new boolean[excellencies.length];
     for (int i = 0; i < excellencies.length; i++) {
       String charmId = excellencies[i].getName().getId() + "." + traitType.getId();
-      excellencyLearned[i] = MagicLearnUtilities.isCharmLearned(allLearnedMagic, charmId);
+      excellencyLearned[i] = new MagicContentHelper(hero).isCharmLearned(allLearnedMagic, charmId);
     }
     return excellencyLearned;
   }

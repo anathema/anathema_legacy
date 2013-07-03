@@ -11,7 +11,6 @@ import org.mockito.Mockito;
 
 public class DummyInitializationContext implements InitializationContext {
 
-  public DummyGenericCharacter character;
   public final DummyHero dummyHero;
   public DummyCharacterTypes characterTypes = new DummyCharacterTypes();
   public DataFileProvider mockFileProvider = Mockito.mock(DataFileProvider.class);
@@ -19,7 +18,6 @@ public class DummyInitializationContext implements InitializationContext {
 
   public DummyInitializationContext() {
     this(new DummyHero());
-    this.character = new DummyGenericCharacter();
   }
 
   public DummyInitializationContext(DummyHero hero) {

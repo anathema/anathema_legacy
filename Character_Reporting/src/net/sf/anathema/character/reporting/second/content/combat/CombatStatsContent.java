@@ -1,6 +1,5 @@
 package net.sf.anathema.character.reporting.second.content.combat;
 
-import net.sf.anathema.character.generic.character.IGenericCharacter;
 import net.sf.anathema.character.generic.equipment.ICharacterStatsModifiers;
 import net.sf.anathema.character.generic.impl.CharacterUtilities;
 import net.sf.anathema.character.generic.traits.types.AbilityType;
@@ -20,10 +19,10 @@ public class CombatStatsContent extends AbstractCombatStatsContent {
   private final HighestSpecialty awarenessSpecialty;
   private final ICharacterStatsModifiers modifiers;
 
-  protected CombatStatsContent(Hero hero, IGenericCharacter character, Resources resources) {
-    super(resources, hero, character);
-    dodgeSpecialty = new HighestSpecialty(character, AbilityType.Dodge);
-    awarenessSpecialty = new HighestSpecialty(character, AbilityType.Awareness);
+  protected CombatStatsContent(Hero hero, Resources resources) {
+    super(resources, hero);
+    dodgeSpecialty = new HighestSpecialty(hero, AbilityType.Dodge);
+    awarenessSpecialty = new HighestSpecialty(hero, AbilityType.Awareness);
     modifiers = StatsModifiers.allStatsModifiers(hero);
   }
 

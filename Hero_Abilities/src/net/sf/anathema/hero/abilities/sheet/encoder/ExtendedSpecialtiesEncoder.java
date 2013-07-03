@@ -5,6 +5,7 @@ import net.sf.anathema.character.generic.traits.groups.IIdentifiedTraitTypeGroup
 import net.sf.anathema.character.main.model.abilities.AbilityModelFetcher;
 import net.sf.anathema.character.reporting.pdf.content.ReportSession;
 import net.sf.anathema.character.reporting.pdf.content.stats.IValuedTraitReference;
+import net.sf.anathema.character.reporting.pdf.rendering.boxes.abilities.SpecialtiesContentCandidate;
 import net.sf.anathema.character.reporting.pdf.rendering.extent.Bounds;
 import net.sf.anathema.character.reporting.pdf.rendering.extent.Position;
 import net.sf.anathema.character.reporting.pdf.rendering.general.box.ContentEncoder;
@@ -30,10 +31,11 @@ public class ExtendedSpecialtiesEncoder extends AbstractNamedTraitEncoder implem
 
   @Override
   public void encode(SheetGraphics graphics, ReportSession reportSession, Bounds bounds) {
+    SpecialtiesContentCandidate content = new SpecialtiesContentCandidate(reportSession.getHero());
     List<IValuedTraitReference> references = new ArrayList<>();
     for (IIdentifiedTraitTypeGroup group :  AbilityModelFetcher.fetch(reportSession.getHero()).getAbilityTypeGroups()) {
       for (TraitType traitType : group.getAllGroupTypes()) {
-        Collections.addAll(references, getTraitReferences(reportSession.getCharacter().getSpecialties(traitType), traitType));
+        Collections.addAll(references, getTraitReferences(content.getSpecialties(traitType), traitType));
       }
     }
     IValuedTraitReference[] specialties = references.toArray(new IValuedTraitReference[references.size()]);

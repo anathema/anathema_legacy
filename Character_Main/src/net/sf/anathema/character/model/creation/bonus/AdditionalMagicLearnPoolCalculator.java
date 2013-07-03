@@ -1,29 +1,28 @@
 package net.sf.anathema.character.model.creation.bonus;
 
 import net.sf.anathema.character.generic.additionalrules.IAdditionalMagicLearnPool;
-import net.sf.anathema.character.generic.character.IGenericCharacter;
 import net.sf.anathema.character.generic.character.IGenericTraitCollection;
 import net.sf.anathema.character.generic.magic.ICharm;
 import net.sf.anathema.character.generic.magic.IMagic;
 import net.sf.anathema.character.main.model.charms.CharmsModelFetcher;
+import net.sf.anathema.character.main.model.traits.GenericTraitCollectionFacade;
+import net.sf.anathema.character.main.model.traits.TraitModelFetcher;
 import net.sf.anathema.hero.model.Hero;
 
 public class AdditionalMagicLearnPoolCalculator implements IAdditionalMagicLearnPoolCalculator {
 
   private final IAdditionalMagicLearnPool pool;
   private Hero hero;
-  private final IGenericCharacter character;
   private int pointsSpent = 0;
 
-  public AdditionalMagicLearnPoolCalculator(IAdditionalMagicLearnPool pool, Hero hero, IGenericCharacter abstraction) {
+  public AdditionalMagicLearnPoolCalculator(IAdditionalMagicLearnPool pool, Hero hero) {
     this.pool = pool;
     this.hero = hero;
-    this.character = abstraction;
   }
 
   @Override
   public boolean canSpendOn(IMagic magic) {
-    IGenericTraitCollection traitCollection = character.getTraitCollection();
+    IGenericTraitCollection traitCollection = new GenericTraitCollectionFacade(TraitModelFetcher.fetch(hero));
     if (!pool.isAllowedFor(traitCollection, magic)) {
       return false;
     }
@@ -47,7 +46,7 @@ public class AdditionalMagicLearnPoolCalculator implements IAdditionalMagicLearn
 
   @Override
   public int getTotalPoints() {
-    return pool.getAdditionalMagicCount(character.getTraitCollection());
+    return pool.getAdditionalMagicCount(new GenericTraitCollectionFacade(TraitModelFetcher.fetch(hero)));
   }
 
   @Override

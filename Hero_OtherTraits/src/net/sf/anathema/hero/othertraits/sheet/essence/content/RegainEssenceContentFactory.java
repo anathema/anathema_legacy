@@ -16,6 +16,6 @@ public class RegainEssenceContentFactory implements ReportContentFactory<RegainE
 
   @Override
   public RegainEssenceContent create(ReportSession session) {
-    return new RegainEssenceContent(resources, session.getCharacter());
+    return new RegainEssenceContent(resources);
   }
 }

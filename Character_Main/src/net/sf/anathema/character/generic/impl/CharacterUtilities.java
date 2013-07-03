@@ -1,6 +1,5 @@
 package net.sf.anathema.character.generic.impl;
 
-import net.sf.anathema.character.generic.character.IGenericCharacter;
 import net.sf.anathema.character.generic.character.IGenericTraitCollection;
 import net.sf.anathema.character.generic.equipment.ICharacterStatsModifiers;
 import net.sf.anathema.character.generic.traits.TraitType;
@@ -8,6 +7,9 @@ import net.sf.anathema.character.generic.traits.types.AbilityType;
 import net.sf.anathema.character.generic.traits.types.AttributeType;
 import net.sf.anathema.character.generic.traits.types.OtherTraitType;
 import net.sf.anathema.character.generic.type.ICharacterType;
+import net.sf.anathema.character.main.model.traits.GenericTraitCollectionFacade;
+import net.sf.anathema.character.main.model.traits.TraitModelFetcher;
+import net.sf.anathema.hero.model.Hero;
 
 public class CharacterUtilities {
 
@@ -71,8 +73,8 @@ public class CharacterUtilities {
     return Math.max(baseValue, 0);
   }
 
-  public static int getKnockdownPool(IGenericCharacter character) {
-    return getKnockdownPool(character.getTraitCollection());
+  public static int getKnockdownPool(Hero hero) {
+    return getKnockdownPool(new GenericTraitCollectionFacade(TraitModelFetcher.fetch(hero)));
   }
 
   public static int getKnockdownPool(IGenericTraitCollection traitCollection) {

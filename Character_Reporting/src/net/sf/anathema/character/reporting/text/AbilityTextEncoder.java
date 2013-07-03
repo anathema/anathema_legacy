@@ -1,9 +1,9 @@
 package net.sf.anathema.character.reporting.text;
 
-import net.sf.anathema.character.generic.character.IGenericCharacter;
 import net.sf.anathema.character.generic.traits.TraitType;
 import net.sf.anathema.character.generic.traits.types.AbilityType;
 import net.sf.anathema.framework.reporting.pdf.PdfReportUtils;
+import net.sf.anathema.hero.model.Hero;
 import net.sf.anathema.lib.resources.Resources;
 
 public class AbilityTextEncoder extends AbstractTraitTextEncoder {
@@ -13,7 +13,7 @@ public class AbilityTextEncoder extends AbstractTraitTextEncoder {
   }
 
   @Override
-  protected TraitType[] getTypes(IGenericCharacter genericCharacter) {
+  protected TraitType[] getTypes(Hero hero) {
     return AbilityType.values();
   }
 

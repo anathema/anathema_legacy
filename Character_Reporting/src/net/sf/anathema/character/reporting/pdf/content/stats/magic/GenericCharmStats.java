@@ -2,6 +2,7 @@ package net.sf.anathema.character.reporting.pdf.content.stats.magic;
 
 import net.sf.anathema.character.generic.magic.ICharm;
 import net.sf.anathema.character.generic.magic.IMagicStats;
+import net.sf.anathema.character.reporting.pdf.content.magic.MagicContentHelper;
 import net.sf.anathema.charmtree.builder.MagicDisplayLabeler;
 import net.sf.anathema.hero.model.Hero;
 import net.sf.anathema.lib.resources.Resources;
@@ -13,7 +14,7 @@ public class GenericCharmStats extends CharmStats {
   private final String genericId;
 
   public GenericCharmStats(ICharm charm, Hero hero) {
-    super(charm, hero);
+    super(charm, new MagicContentHelper(hero));
     String charmId = charm.getId();
     genericId = charmId.substring(0, charmId.lastIndexOf('.'));
   }

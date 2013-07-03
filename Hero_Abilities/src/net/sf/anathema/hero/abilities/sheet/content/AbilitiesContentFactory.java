@@ -15,6 +15,6 @@ public class AbilitiesContentFactory implements ReportContentFactory<AbilitiesCo
 
   @Override
   public AbilitiesContent create(ReportSession session) {
-    return new AbilitiesContent(session.getHero(), session.getCharacter(), resources);
+    return new AbilitiesContent(session.getHero(), resources);
   }
 }

@@ -1,6 +1,5 @@
 package net.sf.anathema.character.reporting.pdf.content.magic;
 
-import net.sf.anathema.character.generic.character.IGenericCharacter;
 import net.sf.anathema.character.generic.magic.IMagicStats;
 import net.sf.anathema.character.reporting.pdf.content.ReportSession;
 import net.sf.anathema.character.reporting.pdf.rendering.boxes.magic.ExtendedMagicEncoder;
@@ -11,12 +10,10 @@ import java.util.List;
 
 public class SpellsOnlyContent extends AbstractMagicContent {
 
-  private IGenericCharacter character;
   private ReportSession session;
 
-  public SpellsOnlyContent(IGenericCharacter character, ReportSession session, Resources resources) {
+  public SpellsOnlyContent(ReportSession session, Resources resources) {
     super(resources);
-    this.character = character;
     this.session = session;
     storeMnemonicIfNecessary(session);
   }

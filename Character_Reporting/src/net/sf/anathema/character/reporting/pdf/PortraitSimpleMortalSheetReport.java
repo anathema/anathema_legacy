@@ -3,8 +3,6 @@ package net.sf.anathema.character.reporting.pdf;
 import com.itextpdf.text.Document;
 import com.itextpdf.text.pdf.PdfContentByte;
 import com.itextpdf.text.pdf.PdfWriter;
-import net.sf.anathema.character.generic.GenericCharacterUtilities;
-import net.sf.anathema.character.generic.character.IGenericCharacter;
 import net.sf.anathema.character.generic.framework.ICharacterGenerics;
 import net.sf.anathema.character.model.Character;
 import net.sf.anathema.character.reporting.CharacterReportingModuleObject;
@@ -22,6 +20,7 @@ import net.sf.anathema.framework.reporting.ReportException;
 import net.sf.anathema.framework.reporting.pdf.AbstractPdfReport;
 import net.sf.anathema.framework.reporting.pdf.PageSize;
 import net.sf.anathema.framework.repository.Item;
+import net.sf.anathema.hero.model.Hero;
 import net.sf.anathema.lib.resources.Resources;
 
 public class PortraitSimpleMortalSheetReport extends AbstractPdfReport {
@@ -44,14 +43,13 @@ public class PortraitSimpleMortalSheetReport extends AbstractPdfReport {
   @Override
   public void performPrint(Item item, Document document, PdfWriter writer) throws ReportException {
     PageSize pageSize = pageSizePreference.getPageSize();
-    Character stattedCharacter = (Character) item.getItemData();
+    Hero hero = (Hero) item.getItemData();
     PdfContentByte directContent = writer.getDirectContent();
     PageConfiguration configuration = PageConfiguration.ForPortrait(pageSize);
     try {
-      IGenericCharacter character = GenericCharacterUtilities.createGenericCharacter(stattedCharacter);
       PageEncoder encoder = new MortalPageEncoder(configuration);
       SheetGraphics graphics = SheetGraphics.WithHelvetica(directContent);
-      ReportSession session = new ReportSession(getContentRegistry(), character, stattedCharacter);
+      ReportSession session = new ReportSession(getContentRegistry(), hero);
       Sheet sheet = new Sheet(document, getEncoderRegistry(), resources, pageSize);
       encoder.encode(sheet, graphics, session);
     } catch (Exception e) {

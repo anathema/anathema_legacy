@@ -15,6 +15,6 @@ public class AttributesContentFactory implements ReportContentFactory<Attributes
 
   @Override
   public AttributesContent create(ReportSession session) {
-    return new AttributesContent(session.getHero(), session.getCharacter(), resources);
+    return new AttributesContent(session.getHero(), resources);
   }
 }
