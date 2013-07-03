@@ -4,7 +4,6 @@ import javafx.application.Platform;
 import javafx.scene.Node;
 import javafx.scene.control.ToggleButton;
 import javafx.scene.control.Tooltip;
-import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import net.sf.anathema.interaction.AcceleratorMap;
 import net.sf.anathema.interaction.Command;
@@ -16,6 +15,7 @@ import net.sf.anathema.lib.file.RelativePath;
 import net.sf.anathema.platform.fx.FxComponent;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 import static net.sf.anathema.platform.fx.FxUtilities.systemSupportsPopUpsWhileEmbeddingFxIntoSwing;
@@ -29,7 +29,7 @@ public class FxToggleTool implements ToggleTool, FxComponent {
   public FxToggleTool() {
     ImageView imageView = new ImageView();
     this.button = new ToggleButton("", imageView);
-    onLoad.add(new SetImage(imageView));
+    Collections.addAll(onLoad, new AdjustSize(button), new SetImage(imageView));
   }
 
   @Override
@@ -37,7 +37,7 @@ public class FxToggleTool implements ToggleTool, FxComponent {
     Platform.runLater(new Runnable() {
       @Override
       public void run() {
-        Image image = new LoadImage(relativePath).run();
+        ImageContainer image = new LoadImage(relativePath).run();
         for (ImageClosure action : onLoad) {
           action.run(image);
         }

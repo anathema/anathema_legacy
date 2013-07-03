@@ -6,6 +6,8 @@ import net.sf.anathema.platform.fx.ResourceLoader;
 
 import java.io.InputStream;
 
+import static net.sf.anathema.lib.gui.AgnosticUIConfiguration.NO_ICON;
+
 public class LoadImage {
   private final RelativePath relativePath;
 
@@ -13,9 +15,12 @@ public class LoadImage {
     this.relativePath = relativePath;
   }
 
-  public Image run() {
+  public ImageContainer run() {
+    if (relativePath == NO_ICON) {
+      return new NullImageContainer();
+    }
     ResourceLoader resourceLoader = new ResourceLoader();
     InputStream imageStream = resourceLoader.loadResource(relativePath);
-    return new Image(imageStream);
+    return new DefaultImageContainer(new Image(imageStream));
   }
 }

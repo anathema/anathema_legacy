@@ -4,7 +4,6 @@ import javafx.application.Platform;
 import javafx.scene.Node;
 import javafx.scene.control.Button;
 import javafx.scene.control.Tooltip;
-import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import jfxtras.labs.scene.control.MiniIconButton;
 import net.sf.anathema.interaction.AcceleratorMap;
@@ -69,7 +68,7 @@ public class FxButtonTool implements Tool, FxComponent {
     Platform.runLater(new Runnable() {
       @Override
       public void run() {
-        Image image = new LoadImage(relativePath).run();
+        ImageContainer image = new LoadImage(relativePath).run();
         for (ImageClosure action : onLoad) {
           action.run(image);
         }
@@ -83,7 +82,7 @@ public class FxButtonTool implements Tool, FxComponent {
     Platform.runLater(new Runnable() {
       @Override
       public void run() {
-        Image image = new LoadImage(relativePath).run();
+        ImageContainer image = new LoadImage(relativePath).run();
         new SetImage(overlay).run(image);
       }
     });

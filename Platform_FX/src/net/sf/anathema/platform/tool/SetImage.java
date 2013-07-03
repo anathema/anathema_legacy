@@ -1,6 +1,5 @@
 package net.sf.anathema.platform.tool;
 
-import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 
 public class SetImage implements ImageClosure {
@@ -11,7 +10,7 @@ public class SetImage implements ImageClosure {
   }
 
   @Override
-  public void run(Image image) {
-    imageView.setImage(image);
+  public void run(ImageContainer image) {
+    image.displayIn(imageView);
   }
 }
