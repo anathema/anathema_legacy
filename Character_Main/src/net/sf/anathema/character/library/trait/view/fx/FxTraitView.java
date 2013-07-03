@@ -1,25 +1,48 @@
 package net.sf.anathema.character.library.trait.view.fx;
 
-import net.sf.anathema.character.library.trait.Trait;
+import javafx.beans.value.ChangeListener;
+import javafx.beans.value.ObservableValue;
+import javafx.scene.Node;
+import jfxtras.labs.scene.control.ListSpinner;
 import net.sf.anathema.framework.value.IIntValueView;
 import net.sf.anathema.lib.control.IIntValueChangedListener;
+import org.jmock.example.announcer.Announcer;
 
 public class FxTraitView implements IIntValueView {
-  public FxTraitView(int value, int maxValue, Trait trait) {
+  private final ListSpinner<Integer> spinner;
+  private final Announcer<IIntValueChangedListener> valueChangeAnnouncer = new Announcer<>(IIntValueChangedListener.class);
+
+  public FxTraitView(int value, int maxValue) {
+    this.spinner = new ListSpinner<>(0, maxValue);
+    setValue(value);
+    initListening();
+  }
+
+  public Node getNode() {
+    return spinner;
   }
 
   @Override
   public void setValue(int newValue) {
-    //To change body of implemented methods use File | Settings | File Templates.
+    spinner.setValue(newValue);
   }
 
   @Override
   public void addIntValueChangedListener(IIntValueChangedListener listener) {
-    //To change body of implemented methods use File | Settings | File Templates.
+    valueChangeAnnouncer.addListener(listener);
   }
 
   @Override
   public void removeIntValueChangedListener(IIntValueChangedListener listener) {
-    //To change body of implemented methods use File | Settings | File Templates.
+    valueChangeAnnouncer.removeListener(listener);
+  }
+
+  private void initListening() {
+    spinner.valueProperty().addListener(new ChangeListener<Integer>() {
+      @Override
+      public void changed(ObservableValue<? extends Integer> observableValue, Integer integer, Integer newValue) {
+        valueChangeAnnouncer.announce().valueChanged(newValue);
+      }
+    });
   }
 }

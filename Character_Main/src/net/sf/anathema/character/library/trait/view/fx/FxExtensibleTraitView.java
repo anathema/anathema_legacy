@@ -6,8 +6,16 @@ import net.sf.anathema.character.presenter.ExtensibleTraitView;
 import net.sf.anathema.framework.value.IIntValueView;
 import net.sf.anathema.interaction.ToggleTool;
 import net.sf.anathema.interaction.Tool;
+import net.sf.anathema.platform.tool.FxButtonTool;
+import net.sf.anathema.platform.tool.FxToggleTool;
+import org.tbee.javafx.scene.layout.MigPane;
+
+import static net.sf.anathema.lib.gui.layout.LayoutUtils.fillWithoutInsets;
 
 public class FxExtensibleTraitView implements ExtensibleTraitView {
+  private final MigPane front = new MigPane(fillWithoutInsets());
+  private final MigPane center = new MigPane(fillWithoutInsets().wrapAfter(2));
+  private final MigPane rear = new MigPane(fillWithoutInsets());
   private FxTraitView view;
 
   public FxExtensibleTraitView(FxTraitView view) {
@@ -15,7 +23,7 @@ public class FxExtensibleTraitView implements ExtensibleTraitView {
   }
 
   public Node getNode() {
-    return null;
+    return view.getNode();
   }
 
   @Override
@@ -25,21 +33,33 @@ public class FxExtensibleTraitView implements ExtensibleTraitView {
 
   @Override
   public ToggleTool addToggleInFront(IIconToggleButtonProperties properties) {
-    return null;  //To change body of implemented methods use File | Settings | File Templates.
+    FxToggleTool toggleTool = new FxToggleTool();
+    front.add(toggleTool.getNode());
+    return toggleTool;
   }
 
   @Override
   public ToggleTool addToggleBehind(IIconToggleButtonProperties properties) {
-    return null;  //To change body of implemented methods use File | Settings | File Templates.
+    FxToggleTool toggleTool = new FxToggleTool();
+    rear.add(toggleTool.getNode());
+    return toggleTool;
   }
 
   @Override
   public Tool addToolBehind() {
-    return null;  //To change body of implemented methods use File | Settings | File Templates.
+    FxButtonTool buttonTool = FxButtonTool.ForAnyPurpose();
+    rear.add(buttonTool.getNode());
+    return buttonTool;
   }
 
   @Override
   public void remove() {
-    //To change body of implemented methods use File | Settings | File Templates.
+    removePart(front);
+    removePart(center);
+    removePart(rear);
+  }
+
+  private void removePart(MigPane panel) {
+    //panel.getParent().getChildren().remove(panel);
   }
 }
