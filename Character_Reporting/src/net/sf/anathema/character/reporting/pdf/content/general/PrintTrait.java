@@ -1,15 +1,15 @@
 package net.sf.anathema.character.reporting.pdf.content.general;
 
-import net.sf.anathema.character.generic.traits.GenericTrait;
+import net.sf.anathema.character.generic.traits.ValuedTraitType;
 import net.sf.anathema.character.generic.traits.TraitType;
 import net.sf.anathema.lib.resources.Resources;
 
 public class PrintTrait implements NamedValue {
 
   private Resources resources;
-  private GenericTrait trait;
+  private ValuedTraitType trait;
 
-  public PrintTrait(Resources resources, GenericTrait trait) {
+  public PrintTrait(Resources resources, ValuedTraitType trait) {
     this.resources = resources;
     this.trait = trait;
   }

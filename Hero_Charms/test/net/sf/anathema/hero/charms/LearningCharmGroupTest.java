@@ -5,9 +5,8 @@ import net.sf.anathema.character.generic.impl.magic.charm.CharmGroup;
 import net.sf.anathema.character.generic.impl.magic.charm.CharmTree;
 import net.sf.anathema.character.generic.magic.ICharm;
 import net.sf.anathema.character.generic.magic.charms.ICharmTree;
-import net.sf.anathema.character.generic.traits.GenericTrait;
+import net.sf.anathema.character.generic.traits.ValuedTraitType;
 import net.sf.anathema.character.generic.traits.types.AbilityType;
-import net.sf.anathema.character.generic.traits.types.ValuedTraitType;
 import net.sf.anathema.character.magic.dummy.DummyCharm;
 import net.sf.anathema.character.main.testing.dummy.DummyExaltCharacterType;
 import net.sf.anathema.character.main.testing.dummy.magic.DummyLearnableArbitrator;
@@ -73,11 +72,11 @@ public class LearningCharmGroupTest {
     String externalPrerequisiteId = "externalPrerquisite";
     String learCharmID = "learnCharm";
     DummyCharm internalPrerequisite =
-            new DummyCharm(internalPrerequisiteId, new ICharm[0], new GenericTrait[]{new ValuedTraitType(AbilityType.Melee, 1)});
+            new DummyCharm(internalPrerequisiteId, new ICharm[0], new ValuedTraitType[]{new net.sf.anathema.character.generic.traits.types.ValuedTraitType(AbilityType.Melee, 1)});
     DummyCharm externalPrerequisite =
-            new DummyCharm(externalPrerequisiteId, new ICharm[0], new GenericTrait[]{new ValuedTraitType(AbilityType.Archery, 1)});
+            new DummyCharm(externalPrerequisiteId, new ICharm[0], new ValuedTraitType[]{new net.sf.anathema.character.generic.traits.types.ValuedTraitType(AbilityType.Archery, 1)});
     DummyCharm learnCharm = new DummyCharm(learCharmID, new ICharm[]{internalPrerequisite, externalPrerequisite},
-            new GenericTrait[]{new ValuedTraitType(AbilityType.Melee, 1)});
+            new ValuedTraitType[]{new net.sf.anathema.character.generic.traits.types.ValuedTraitType(AbilityType.Melee, 1)});
     ICharmTree charmTree = new CharmTree(new ICharm[]{internalPrerequisite, externalPrerequisite, learnCharm});
     externalPrerequisite.addLearnFollowUpCharm(learnCharm);
     IExtendedCharmLearnableArbitrator learnableArbitrator =

@@ -14,9 +14,8 @@ import net.sf.anathema.character.generic.magic.charms.duration.IDuration;
 import net.sf.anathema.character.generic.magic.charms.duration.SimpleDuration;
 import net.sf.anathema.character.generic.magic.charms.type.CharmType;
 import net.sf.anathema.character.generic.rules.IExaltedSourceBook;
-import net.sf.anathema.character.generic.traits.GenericTrait;
+import net.sf.anathema.character.generic.traits.ValuedTraitType;
 import net.sf.anathema.character.generic.traits.TraitType;
-import net.sf.anathema.character.generic.traits.types.ValuedTraitType;
 import net.sf.anathema.character.generic.type.ICharacterType;
 import net.sf.anathema.character.main.model.traits.TraitMap;
 import net.sf.anathema.character.main.model.traits.TraitModelFetcher;
@@ -36,7 +35,7 @@ public class DummyCharm extends SimpleIdentifier implements ICharm {
 
   private IDuration duration;
   private IComboRestrictions comboRestrictions = new ComboRestrictions();
-  private GenericTrait[] prerequisites;
+  private ValuedTraitType[] prerequisites;
   private Set<ICharm> parentCharms;
   private Set<ICharm> learnFollowUpCharms = new HashSet<>();
   private List<IndirectCharmRequirement> requirements = new ArrayList<>();
@@ -51,7 +50,7 @@ public class DummyCharm extends SimpleIdentifier implements ICharm {
 
   private boolean isGeneric = false;
 
-  public DummyCharm(String duration, CharmType charmType, IComboRestrictions comboRestrictions, GenericTrait[] prerequisites) {
+  public DummyCharm(String duration, CharmType charmType, IComboRestrictions comboRestrictions, ValuedTraitType[] prerequisites) {
     super("DummyCharmDefaultId");
     this.prerequisites = prerequisites;
     this.duration = SimpleDuration.getDuration(duration);
@@ -68,10 +67,10 @@ public class DummyCharm extends SimpleIdentifier implements ICharm {
   }
 
   public DummyCharm(String id, ICharm... parents) {
-    this(id, parents, new GenericTrait[0]);
+    this(id, parents, new ValuedTraitType[0]);
   }
 
-  public DummyCharm(String id, ICharm[] parents, GenericTrait[] prerequisites) {
+  public DummyCharm(String id, ICharm[] parents, ValuedTraitType[] prerequisites) {
     super(id);
     this.parentCharms = new LinkedHashSet<>();
     Collections.addAll(parentCharms, parents);
@@ -127,7 +126,7 @@ public class DummyCharm extends SimpleIdentifier implements ICharm {
   }
 
   @Override
-  public GenericTrait getEssence() {
+  public ValuedTraitType getEssence() {
     return null;
   }
 
@@ -157,7 +156,7 @@ public class DummyCharm extends SimpleIdentifier implements ICharm {
   }
 
   @Override
-  public GenericTrait[] getPrerequisites() {
+  public ValuedTraitType[] getPrerequisites() {
     return prerequisites;
   }
 
@@ -214,7 +213,7 @@ public class DummyCharm extends SimpleIdentifier implements ICharm {
       return false;
     }
     TraitMap traitMap = TraitModelFetcher.fetch(hero);
-    GenericTrait trait = traitMap.getTrait(getPrimaryTraitType());
+    ValuedTraitType trait = traitMap.getTrait(getPrimaryTraitType());
     return trait.isCasteOrFavored();
   }
 
@@ -250,7 +249,7 @@ public class DummyCharm extends SimpleIdentifier implements ICharm {
     this.duration = duration;
   }
 
-  public void setPrerequisites(ValuedTraitType[] prerequisites) {
+  public void setPrerequisites(net.sf.anathema.character.generic.traits.types.ValuedTraitType[] prerequisites) {
     this.prerequisites = prerequisites;
   }
 

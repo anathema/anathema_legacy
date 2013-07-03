@@ -1,7 +1,7 @@
 package net.sf.anathema.character.main.model.traits;
 
 import net.sf.anathema.character.generic.character.IGenericTraitCollection;
-import net.sf.anathema.character.generic.traits.GenericTrait;
+import net.sf.anathema.character.generic.traits.ValuedTraitType;
 import net.sf.anathema.character.generic.traits.TraitType;
 
 public class GenericTraitCollectionFacade implements IGenericTraitCollection {
@@ -13,7 +13,7 @@ public class GenericTraitCollectionFacade implements IGenericTraitCollection {
   }
 
   @Override
-  public GenericTrait[] getTraits(TraitType[] traitTypes) {
+  public ValuedTraitType[] getTraits(TraitType[] traitTypes) {
     return traitMap.getTraits(traitTypes);
   }
 
@@ -23,7 +23,7 @@ public class GenericTraitCollectionFacade implements IGenericTraitCollection {
   }
 
   @Override
-  public GenericTrait getTrait(TraitType type) {
+  public ValuedTraitType getTrait(TraitType type) {
     return traitMap.getTrait(type);
   }
 }

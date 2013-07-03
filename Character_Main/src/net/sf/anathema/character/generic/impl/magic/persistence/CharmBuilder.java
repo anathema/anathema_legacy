@@ -26,7 +26,7 @@ import net.sf.anathema.character.generic.magic.charms.special.ISpecialCharm;
 import net.sf.anathema.character.generic.magic.charms.type.ICharmTypeModel;
 import net.sf.anathema.character.generic.magic.general.ICostList;
 import net.sf.anathema.character.generic.rules.IExaltedSourceBook;
-import net.sf.anathema.character.generic.traits.GenericTrait;
+import net.sf.anathema.character.generic.traits.ValuedTraitType;
 import net.sf.anathema.character.generic.type.CharacterTypes;
 import net.sf.anathema.character.generic.type.ICharacterType;
 import net.sf.anathema.lib.exception.PersistenceException;
@@ -90,8 +90,8 @@ public class CharmBuilder implements ICharmBuilder {
       ICharmTypeModel charmTypeModel = charmTypeBuilder.build(charmElement);
       IExaltedSourceBook[] sources = sourceBuilder.buildSourceList(charmElement);
       CharmPrerequisiteList prerequisiteList = getPrerequisites(charmElement);
-      GenericTrait[] prerequisites = prerequisiteList.getPrerequisites();
-      GenericTrait primaryPrerequisite = prerequisites.length != 0 ? prerequisites[0] : null;
+      ValuedTraitType[] prerequisites = prerequisiteList.getPrerequisites();
+      ValuedTraitType primaryPrerequisite = prerequisites.length != 0 ? prerequisites[0] : null;
       String group = groupBuilder.build(charmElement, primaryPrerequisite);
       Charm charm =
               new Charm(characterType, id, group, isBuildingGenericCharms(), prerequisiteList, temporaryCost, comboRules, duration, charmTypeModel,

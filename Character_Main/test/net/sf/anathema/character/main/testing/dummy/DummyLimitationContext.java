@@ -5,7 +5,7 @@ import net.sf.anathema.character.generic.character.IGenericTraitCollection;
 import net.sf.anathema.character.generic.character.ILimitationContext;
 import net.sf.anathema.character.generic.impl.traits.limitation.StaticTraitLimitation;
 import net.sf.anathema.character.generic.template.ITraitLimitation;
-import net.sf.anathema.character.generic.traits.GenericTrait;
+import net.sf.anathema.character.generic.traits.ValuedTraitType;
 import net.sf.anathema.character.generic.traits.TraitType;
 import net.sf.anathema.lib.exception.NotYetImplementedException;
 
@@ -13,7 +13,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class DummyLimitationContext implements ILimitationContext {
-  private final Map<TraitType, GenericTrait> traits = new HashMap<>();
+  private final Map<TraitType, ValuedTraitType> traits = new HashMap<>();
 
   @Override
   public ITraitLimitation getEssenceLimitation() {
@@ -30,12 +30,12 @@ public class DummyLimitationContext implements ILimitationContext {
     return new IGenericTraitCollection() {
 
       @Override
-      public GenericTrait getTrait(TraitType type) {
+      public ValuedTraitType getTrait(TraitType type) {
         return traits.get(type);
       }
 
       @Override
-      public GenericTrait[] getTraits(TraitType[] traitTypes) {
+      public ValuedTraitType[] getTraits(TraitType[] traitTypes) {
         throw new NotYetImplementedException();
       }
 
@@ -51,7 +51,7 @@ public class DummyLimitationContext implements ILimitationContext {
     return 0;
   }
 
-  public void addTrait(GenericTrait trait) {
+  public void addTrait(ValuedTraitType trait) {
     traits.put(trait.getType(), trait);
   }
 }

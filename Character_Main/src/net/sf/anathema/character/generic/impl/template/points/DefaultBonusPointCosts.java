@@ -8,7 +8,7 @@ import net.sf.anathema.character.generic.magic.charms.MartialArtsLevel;
 import net.sf.anathema.character.generic.template.creation.BonusPointCosts;
 import net.sf.anathema.character.generic.template.experience.CurrentRatingCosts;
 import net.sf.anathema.character.generic.template.experience.ICostAnalyzer;
-import net.sf.anathema.character.generic.traits.GenericTrait;
+import net.sf.anathema.character.generic.traits.ValuedTraitType;
 
 public class DefaultBonusPointCosts implements BonusPointCosts {
 
@@ -42,7 +42,7 @@ public class DefaultBonusPointCosts implements BonusPointCosts {
   }
 
   @Override
-  public int getAttributeCosts(GenericTrait trait) {
+  public int getAttributeCosts(ValuedTraitType trait) {
     return new FixedValueRatingCosts(4).getRatingCosts(trait.getCurrentValue());
   }
 

@@ -1,6 +1,6 @@
 package net.sf.anathema.character.generic.impl.magic.persistence.builder.prerequisite;
 
-import net.sf.anathema.character.generic.traits.GenericTrait;
+import net.sf.anathema.character.generic.traits.ValuedTraitType;
 import net.sf.anathema.character.generic.traits.TraitType;
 import net.sf.anathema.lib.exception.PersistenceException;
 import net.sf.anathema.lib.xml.ElementUtilities;
@@ -16,8 +16,8 @@ public class GenericTraitPrerequisitesBuilder implements ITraitPrerequisitesBuil
   private final GenericTraitPrerequisiteBuilder genericBuilder = new GenericTraitPrerequisiteBuilder();
 
   @Override
-  public GenericTrait[] buildTraitPrerequisites(Element prerequisiteListElement) throws PersistenceException {
-    List<GenericTrait> allPrerequisites = new ArrayList<>();
+  public ValuedTraitType[] buildTraitPrerequisites(Element prerequisiteListElement) throws PersistenceException {
+    List<ValuedTraitType> allPrerequisites = new ArrayList<>();
     ITraitPrerequisiteBuilder traitBuilder = new TraitPrerequisiteBuilder();
     List<Element> elements = ElementUtilities.elements(prerequisiteListElement, TAG_TRAIT);
     try {
@@ -28,7 +28,7 @@ public class GenericTraitPrerequisitesBuilder implements ITraitPrerequisitesBuil
     } catch (Exception e) {
       throw new PersistenceException(e);
     }
-    return allPrerequisites.toArray(new GenericTrait[allPrerequisites.size()]);
+    return allPrerequisites.toArray(new ValuedTraitType[allPrerequisites.size()]);
   }
 
   public void setType(TraitType type) {

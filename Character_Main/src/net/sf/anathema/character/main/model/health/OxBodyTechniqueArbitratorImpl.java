@@ -1,6 +1,6 @@
 package net.sf.anathema.character.main.model.health;
 
-import net.sf.anathema.character.generic.traits.GenericTrait;
+import net.sf.anathema.character.generic.traits.ValuedTraitType;
 import net.sf.anathema.character.library.trait.Trait;
 import net.sf.anathema.character.model.charm.special.IOxBodyTechniqueConfiguration;
 
@@ -24,7 +24,7 @@ public class OxBodyTechniqueArbitratorImpl implements OxBodyTechniqueArbitrator 
   public boolean isIncrementAllowed(int increment) {
     int oxBodyCount = 0;
     int maxCount = Integer.MAX_VALUE;
-    for (GenericTrait trait : controllingTraits) {
+    for (ValuedTraitType trait : controllingTraits) {
       maxCount = Math.min(maxCount, trait.getCurrentValue());
     }
     for (IOxBodyTechniqueConfiguration configuration : oxBodyList) {

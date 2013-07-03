@@ -1,6 +1,6 @@
 package net.sf.anathema.hero.othertraits.sheet.virtues.content;
 
-import net.sf.anathema.character.generic.traits.GenericTrait;
+import net.sf.anathema.character.generic.traits.ValuedTraitType;
 import net.sf.anathema.character.generic.traits.types.VirtueType;
 import net.sf.anathema.character.main.model.othertraits.OtherTraitModelFetcher;
 import net.sf.anathema.character.main.model.traits.TraitMap;
@@ -37,7 +37,7 @@ public class VirtueContent extends AbstractSubBoxContent {
 
   private NamedValue getVirtue(VirtueType type) {
     TraitMap virtueCollection = getVirtueCollection();
-    GenericTrait virtue = virtueCollection.getTrait(type);
+    ValuedTraitType virtue = virtueCollection.getTrait(type);
     Resources resources = getResources();
     return new PrintTrait(resources, virtue);
   }

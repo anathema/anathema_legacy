@@ -5,7 +5,7 @@ import net.sf.anathema.character.generic.framework.xml.essence.EssenceTemplatePa
 import net.sf.anathema.character.generic.framework.xml.essence.GenericEssenceTemplate;
 import net.sf.anathema.character.generic.template.essence.FactorizedTrait;
 import net.sf.anathema.character.generic.template.essence.IEssenceTemplate;
-import net.sf.anathema.character.generic.traits.GenericTrait;
+import net.sf.anathema.character.generic.traits.ValuedTraitType;
 import net.sf.anathema.character.generic.traits.types.OtherTraitType;
 import net.sf.anathema.character.generic.traits.types.VirtueType;
 import net.sf.anathema.character.main.testing.dummy.DummyGenericTrait;
@@ -51,8 +51,8 @@ public class EssenceTemplateParserTest extends TestCase {
   public void testPersonalPool() throws Exception {
     Document testDocument = createTestDocument();
     IEssenceTemplate essenceTemplate = createEssenceTemplateParser().parseTemplate(testDocument.getRootElement());
-    GenericTrait[] testVirtues =
-            new GenericTrait[]{new DummyGenericTrait(VirtueType.Compassion, 2), new DummyGenericTrait(VirtueType.Temperance, 3),
+    ValuedTraitType[] testVirtues =
+            new ValuedTraitType[]{new DummyGenericTrait(VirtueType.Compassion, 2), new DummyGenericTrait(VirtueType.Temperance, 3),
                     new DummyGenericTrait(VirtueType.Valor, 1), new DummyGenericTrait(VirtueType.Conviction, 4)};
     DummyGenericTrait testWillpower = new DummyGenericTrait(OtherTraitType.Willpower, 2);
     FactorizedTrait[] personalTraits =
@@ -65,8 +65,8 @@ public class EssenceTemplateParserTest extends TestCase {
   public void testPeripheralPool() throws Exception {
     Document testDocument = createTestDocument();
     IEssenceTemplate essenceTemplate = createEssenceTemplateParser().parseTemplate(testDocument.getRootElement());
-    GenericTrait[] testVirtues =
-            new GenericTrait[]{new DummyGenericTrait(VirtueType.Compassion, 2), new DummyGenericTrait(VirtueType.Temperance, 3),
+    ValuedTraitType[] testVirtues =
+            new ValuedTraitType[]{new DummyGenericTrait(VirtueType.Compassion, 2), new DummyGenericTrait(VirtueType.Temperance, 3),
                     new DummyGenericTrait(VirtueType.Valor, 1), new DummyGenericTrait(VirtueType.Conviction, 4)};
     DummyGenericTrait testWillpower = new DummyGenericTrait(OtherTraitType.Willpower, 2);
     FactorizedTrait[] peripheralTraits =

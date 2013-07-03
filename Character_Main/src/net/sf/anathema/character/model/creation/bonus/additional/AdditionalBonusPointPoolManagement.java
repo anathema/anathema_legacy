@@ -4,7 +4,7 @@ import net.sf.anathema.character.generic.additionalrules.IAdditionalBonusPointPo
 import net.sf.anathema.character.generic.magic.IMagic;
 import net.sf.anathema.character.generic.template.creation.IGenericSpecialty;
 import net.sf.anathema.character.generic.template.experience.AbilityPointCosts;
-import net.sf.anathema.character.generic.traits.GenericTrait;
+import net.sf.anathema.character.generic.traits.ValuedTraitType;
 import net.sf.anathema.character.library.trait.Trait;
 import net.sf.anathema.character.main.model.traits.TraitMap;
 
@@ -38,7 +38,7 @@ public class AdditionalBonusPointPoolManagement implements IAdditionalBonusPoint
   }
 
   @Override
-  public void spendOn(GenericTrait trait, int bonusCost) {
+  public void spendOn(ValuedTraitType trait, int bonusCost) {
     if (bonusCost == 0) {
       return;
     }

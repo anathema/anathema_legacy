@@ -3,17 +3,17 @@ package net.sf.anathema.character.equipment.impl.character.model.natural;
 import net.sf.anathema.character.equipment.impl.character.model.stats.AbstractCombatStats;
 import net.sf.anathema.character.generic.equipment.weapon.IArmourStats;
 import net.sf.anathema.character.generic.health.HealthType;
-import net.sf.anathema.character.generic.traits.GenericTrait;
+import net.sf.anathema.character.generic.traits.ValuedTraitType;
 import net.sf.anathema.character.generic.type.ICharacterType;
 import net.sf.anathema.lib.util.Identifier;
 import net.sf.anathema.lib.util.SimpleIdentifier;
 
 public class DefaultNaturalSoak extends AbstractCombatStats implements IArmourStats, NaturalSoak {
 
-  private final GenericTrait stamina;
+  private final ValuedTraitType stamina;
   private final ICharacterType characterType;
 
-  public DefaultNaturalSoak(GenericTrait stamina, ICharacterType characterType) {
+  public DefaultNaturalSoak(ValuedTraitType stamina, ICharacterType characterType) {
     this.stamina = stamina;
     this.characterType = characterType;
   }

@@ -5,7 +5,7 @@ import net.sf.anathema.character.generic.additionalrules.IAdditionalEssencePool;
 import net.sf.anathema.character.generic.additionalrules.IAdditionalMagicLearnPool;
 import net.sf.anathema.character.generic.additionalrules.IAdditionalRules;
 import net.sf.anathema.character.generic.additionalrules.IAdditionalTraitRules;
-import net.sf.anathema.character.generic.traits.GenericTrait;
+import net.sf.anathema.character.generic.traits.ValuedTraitType;
 import net.sf.anathema.character.main.model.traits.TraitMap;
 
 public class NullAdditionalRules implements IAdditionalRules, IAdditionalTraitRules {
@@ -36,7 +36,7 @@ public class NullAdditionalRules implements IAdditionalRules, IAdditionalTraitRu
   }
 
   @Override
-  public boolean isAllowedTraitValue(GenericTrait trait, TraitMap traitMap) {
+  public boolean isAllowedTraitValue(ValuedTraitType trait, TraitMap traitMap) {
     return true;
   }
 

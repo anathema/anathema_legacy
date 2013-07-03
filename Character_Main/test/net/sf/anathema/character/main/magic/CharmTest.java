@@ -9,10 +9,9 @@ import net.sf.anathema.character.generic.magic.charms.ComboRestrictions;
 import net.sf.anathema.character.generic.magic.charms.IndirectCharmRequirement;
 import net.sf.anathema.character.generic.magic.charms.duration.SimpleDuration;
 import net.sf.anathema.character.generic.magic.charms.type.CharmType;
-import net.sf.anathema.character.generic.traits.GenericTrait;
+import net.sf.anathema.character.generic.traits.ValuedTraitType;
 import net.sf.anathema.character.generic.traits.types.AbilityType;
 import net.sf.anathema.character.generic.traits.types.OtherTraitType;
-import net.sf.anathema.character.generic.traits.types.ValuedTraitType;
 import net.sf.anathema.character.main.testing.dummy.DummyExaltCharacterType;
 import org.junit.Test;
 
@@ -22,8 +21,8 @@ public class CharmTest {
 
   @Test
   public void testCharmNoSource() throws Exception {
-    GenericTrait[] prerequisites = new GenericTrait[]{new ValuedTraitType(AbilityType.Archery, 5)};
-    GenericTrait essence = new ValuedTraitType(OtherTraitType.Essence, 3);
+    ValuedTraitType[] prerequisites = new ValuedTraitType[]{new net.sf.anathema.character.generic.traits.types.ValuedTraitType(AbilityType.Archery, 5)};
+    ValuedTraitType essence = new net.sf.anathema.character.generic.traits.types.ValuedTraitType(OtherTraitType.Essence, 3);
     CharmPrerequisiteList prerequisiteList =
             new CharmPrerequisiteList(prerequisites, essence, new String[0], new SelectiveCharmGroupTemplate[0], new IndirectCharmRequirement[0]);
     CharmTypeModel model = new CharmTypeModel();

@@ -4,8 +4,7 @@ import net.sf.anathema.character.generic.impl.magic.persistence.prerequisite.Cha
 import net.sf.anathema.character.generic.impl.magic.persistence.prerequisite.SelectiveCharmGroupTemplate;
 import net.sf.anathema.character.generic.magic.charms.CharmException;
 import net.sf.anathema.character.generic.magic.charms.IndirectCharmRequirement;
-import net.sf.anathema.character.generic.traits.GenericTrait;
-import net.sf.anathema.character.generic.traits.types.ValuedTraitType;
+import net.sf.anathema.character.generic.traits.ValuedTraitType;
 import net.sf.anathema.lib.exception.PersistenceException;
 import net.sf.anathema.lib.xml.ElementUtilities;
 import org.dom4j.Element;
@@ -34,15 +33,15 @@ public class PrerequisiteListBuilder {
   }
 
   public CharmPrerequisiteList buildPrerequisiteList(Element prerequisiteListElement) throws PersistenceException {
-    GenericTrait[] allPrerequisites = traitBuilder.buildTraitPrerequisites(prerequisiteListElement);
-    GenericTrait essence = buildEssencePrerequisite(prerequisiteListElement);
+    ValuedTraitType[] allPrerequisites = traitBuilder.buildTraitPrerequisites(prerequisiteListElement);
+    ValuedTraitType essence = buildEssencePrerequisite(prerequisiteListElement);
     String[] prerequisiteCharmIDs = charmBuilder.buildCharmPrerequisites(prerequisiteListElement);
     SelectiveCharmGroupTemplate[] selectiveCharmGroups = buildSelectiveCharmGroups(prerequisiteListElement);
     IndirectCharmRequirement[] indirectRequirements = attributeBuilder.getCharmAttributeRequirements(prerequisiteListElement);
     return new CharmPrerequisiteList(allPrerequisites, essence, prerequisiteCharmIDs, selectiveCharmGroups, indirectRequirements);
   }
 
-  private GenericTrait buildEssencePrerequisite(Element prerequisiteListElement) throws CharmException {
+  private ValuedTraitType buildEssencePrerequisite(Element prerequisiteListElement) throws CharmException {
     Element essenceElement = prerequisiteListElement.element(TAG_ESSENCE);
     if (essenceElement == null) {
       throw new CharmException("Cannot process Charm without essence prerequisite.");
@@ -53,7 +52,7 @@ public class PrerequisiteListBuilder {
     } catch (NumberFormatException e) {
       throw new CharmException("Bad value on essence prerequisite.");
     }
-    return new ValuedTraitType(Essence, minValue);
+    return new net.sf.anathema.character.generic.traits.types.ValuedTraitType(Essence, minValue);
   }
 
   private SelectiveCharmGroupTemplate[] buildSelectiveCharmGroups(Element prerequisiteListElement) throws PersistenceException {

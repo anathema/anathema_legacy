@@ -1,7 +1,7 @@
 package net.sf.anathema.character.reporting.pdf.content.magic;
 
 import net.sf.anathema.character.generic.magic.ICharm;
-import net.sf.anathema.character.generic.traits.GenericTrait;
+import net.sf.anathema.character.generic.traits.ValuedTraitType;
 import net.sf.anathema.character.generic.traits.types.AbilityType;
 import net.sf.anathema.character.magic.dummy.DummyCharm;
 import net.sf.anathema.character.main.testing.dummy.DummyGenericTrait;
@@ -17,7 +17,7 @@ import static org.mockito.Mockito.when;
 public class CharmPrintNameTransformerTest {
   Resources resources = mock(Resources.class);
   DummyCharm charm = new DummyCharm("Abyssal.SecondExcellency.Archery", new ICharm[0],
-          new GenericTrait[]{new DummyGenericTrait(AbilityType.Archery, 5)});
+          new ValuedTraitType[]{new DummyGenericTrait(AbilityType.Archery, 5)});
 
   @Before
   public void setUp() throws Exception {

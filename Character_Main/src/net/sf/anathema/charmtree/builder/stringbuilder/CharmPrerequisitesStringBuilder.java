@@ -2,7 +2,7 @@ package net.sf.anathema.charmtree.builder.stringbuilder;
 
 import net.sf.anathema.character.generic.magic.ICharm;
 import net.sf.anathema.character.generic.magic.IMagic;
-import net.sf.anathema.character.generic.traits.GenericTrait;
+import net.sf.anathema.character.generic.traits.ValuedTraitType;
 import net.sf.anathema.lib.gui.TooltipBuilder;
 import net.sf.anathema.lib.resources.Resources;
 
@@ -17,12 +17,12 @@ public class CharmPrerequisitesStringBuilder implements IMagicTooltipStringBuild
   public void buildStringForMagic(StringBuilder builder, IMagic magic, Object details) {
     if (magic instanceof ICharm) {
       createPrerequisiteLines(builder, ((ICharm) magic).getPrerequisites());
-      createPrerequisiteLines(builder, new GenericTrait[]{((ICharm) magic).getEssence()});
+      createPrerequisiteLines(builder, new ValuedTraitType[]{((ICharm) magic).getEssence()});
     }
   }
 
-  private void createPrerequisiteLines(StringBuilder builder, GenericTrait[] prerequisites) {
-    for (GenericTrait prerequisite : prerequisites) {
+  private void createPrerequisiteLines(StringBuilder builder, ValuedTraitType[] prerequisites) {
+    for (ValuedTraitType prerequisite : prerequisites) {
       if (prerequisite.getCurrentValue() == 0) {
         continue;
       }

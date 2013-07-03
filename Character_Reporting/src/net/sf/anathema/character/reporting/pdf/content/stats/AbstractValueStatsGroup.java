@@ -5,7 +5,7 @@ import com.itextpdf.text.Element;
 import com.itextpdf.text.Font;
 import com.itextpdf.text.Rectangle;
 import com.itextpdf.text.pdf.PdfPCell;
-import net.sf.anathema.character.generic.traits.GenericTrait;
+import net.sf.anathema.character.generic.traits.ValuedTraitType;
 import net.sf.anathema.character.generic.util.IStats;
 import net.sf.anathema.character.reporting.pdf.rendering.general.table.TableEncodingUtilities;
 import net.sf.anathema.lib.resources.Resources;
@@ -93,9 +93,9 @@ public abstract class AbstractValueStatsGroup<T extends IStats> implements IStat
     return TableEncodingUtilities.createContentCellTable(borderColor, text, font, borderWidth, Rectangle.BOX, alignment, enabled);
   }
 
-  protected final int calculateFinalValue(int weaponValue, GenericTrait... traits) {
+  protected final int calculateFinalValue(int weaponValue, ValuedTraitType... traits) {
     int totalValue = weaponValue;
-    for (GenericTrait trait : traits) {
+    for (ValuedTraitType trait : traits) {
       totalValue += trait.getCurrentValue();
     }
     return totalValue;

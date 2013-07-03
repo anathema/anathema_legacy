@@ -2,17 +2,17 @@ package net.sf.anathema.character.generic.impl.magic.persistence.prerequisite;
 
 import com.google.common.base.Preconditions;
 import net.sf.anathema.character.generic.magic.charms.IndirectCharmRequirement;
-import net.sf.anathema.character.generic.traits.GenericTrait;
+import net.sf.anathema.character.generic.traits.ValuedTraitType;
 
 public class CharmPrerequisiteList {
 
   private final String[] parentCharmIDs;
-  private final GenericTrait[] prerequisites;
-  private final GenericTrait essence;
+  private final ValuedTraitType[] prerequisites;
+  private final ValuedTraitType essence;
   private final SelectiveCharmGroupTemplate[] selectiveCharmGroups;
   private final IndirectCharmRequirement[] indirectRequirements;
 
-  public CharmPrerequisiteList(GenericTrait[] prerequisites, GenericTrait essence, String[] prerequisiteCharmID,
+  public CharmPrerequisiteList(ValuedTraitType[] prerequisites, ValuedTraitType essence, String[] prerequisiteCharmID,
                                SelectiveCharmGroupTemplate[] selectiveCharmGroups, IndirectCharmRequirement[] indirectRequirements) {
     Preconditions.checkNotNull(prerequisites);
     Preconditions.checkNotNull(essence);
@@ -25,11 +25,11 @@ public class CharmPrerequisiteList {
     this.indirectRequirements = indirectRequirements;
   }
 
-  public GenericTrait getEssence() {
+  public ValuedTraitType getEssence() {
     return essence;
   }
 
-  public GenericTrait[] getPrerequisites() {
+  public ValuedTraitType[] getPrerequisites() {
     return prerequisites;
   }
 

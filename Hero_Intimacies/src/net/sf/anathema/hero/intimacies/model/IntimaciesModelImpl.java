@@ -1,7 +1,7 @@
 package net.sf.anathema.hero.intimacies.model;
 
 import com.google.common.base.Strings;
-import net.sf.anathema.character.generic.traits.GenericTrait;
+import net.sf.anathema.character.generic.traits.ValuedTraitType;
 import net.sf.anathema.character.generic.traits.TraitType;
 import net.sf.anathema.character.generic.traits.types.OtherTraitType;
 import net.sf.anathema.character.generic.traits.types.VirtueType;
@@ -113,7 +113,7 @@ public class IntimaciesModelImpl extends AbstractRemovableEntryModel<Intimacy> i
     return 5;
   }
 
-  private GenericTrait getConviction() {
+  private ValuedTraitType getConviction() {
     return getTrait(VirtueType.Conviction);
   }
 

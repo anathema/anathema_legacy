@@ -1,6 +1,6 @@
 package net.sf.anathema.hero.intimacies.model;
 
-import net.sf.anathema.character.generic.traits.GenericTrait;
+import net.sf.anathema.character.generic.traits.ValuedTraitType;
 import net.sf.anathema.character.generic.traits.ITraitTemplate;
 import net.sf.anathema.character.generic.traits.LowerableState;
 import net.sf.anathema.character.generic.traits.types.VirtueType;
@@ -20,11 +20,11 @@ public class IntimacyImpl implements Intimacy {
 
   private final String name;
   private final Trait trait;
-  private final GenericTrait maxValueTrait;
+  private final ValuedTraitType maxValueTrait;
   private boolean complete;
   private final Announcer<IBooleanValueChangedListener> control = Announcer.to(IBooleanValueChangedListener.class);
 
-  public IntimacyImpl(Hero hero, String name, Integer initialValue, final GenericTrait maxValueTrait) {
+  public IntimacyImpl(Hero hero, String name, Integer initialValue, final ValuedTraitType maxValueTrait) {
     this.name = name;
     this.maxValueTrait = maxValueTrait;
     ITraitTemplate template = createVirtueLimitedTemplate(0, initialValue, LowerableState.LowerableLoss, VirtueType.Conviction);
@@ -74,9 +74,9 @@ public class IntimacyImpl implements Intimacy {
   }
 
   private class IntimacyValueChangeChecker implements ValueChangeChecker {
-    private final GenericTrait maxValueTrait;
+    private final ValuedTraitType maxValueTrait;
 
-    public IntimacyValueChangeChecker(GenericTrait maxValueTrait) {
+    public IntimacyValueChangeChecker(ValuedTraitType maxValueTrait) {
       this.maxValueTrait = maxValueTrait;
     }
 

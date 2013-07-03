@@ -2,7 +2,7 @@ package net.sf.anathema.character.generic.impl.magic.persistence.builder;
 
 import net.sf.anathema.character.generic.impl.magic.CharmAttribute;
 import net.sf.anathema.character.generic.magic.charms.ICharmAttribute;
-import net.sf.anathema.character.generic.traits.GenericTrait;
+import net.sf.anathema.character.generic.traits.ValuedTraitType;
 import net.sf.anathema.lib.xml.ElementUtilities;
 import org.dom4j.Element;
 
@@ -17,7 +17,7 @@ import static net.sf.anathema.character.generic.impl.magic.ICharmXMLConstants.TA
 
 public class CharmAttributeBuilder {
 
-  public ICharmAttribute[] buildCharmAttributes(Element rulesElement, GenericTrait primaryPrerequisite) {
+  public ICharmAttribute[] buildCharmAttributes(Element rulesElement, ValuedTraitType primaryPrerequisite) {
     List<ICharmAttribute> attributes = new ArrayList<>();
     for (Element attributeElement : ElementUtilities.elements(rulesElement, TAG_ATTRIBUTE)) {
       String attributeId = attributeElement.attributeValue(ATTRIB_ATTRIBUTE);

@@ -1,10 +1,10 @@
 package net.sf.anathema.character.generic.traits.types;
 
-import net.sf.anathema.character.generic.traits.TraitType;
+import net.sf.anathema.character.generic.traits.*;
 
-public class ValuedTraitType implements net.sf.anathema.character.generic.traits.ValuedTraitType {
+public class SimpleValuedTraitType implements net.sf.anathema.character.generic.traits.ValuedTraitType {
 
-  public static final ValuedTraitType NULL_TYPE = new ValuedTraitType(null, 1);
+  public static final SimpleValuedTraitType NULL_TYPE = new SimpleValuedTraitType(null, 1);
   private final TraitType traitType;
   private final int value;
 
@@ -23,7 +23,7 @@ public class ValuedTraitType implements net.sf.anathema.character.generic.traits
     return false;
   }
 
-  public ValuedTraitType(TraitType traitType, int value) {
+  public SimpleValuedTraitType(TraitType traitType, int value) {
     this.traitType = traitType;
     this.value = value;
   }
@@ -33,10 +33,10 @@ public class ValuedTraitType implements net.sf.anathema.character.generic.traits
     if (obj == this) {
       return true;
     }
-    if (!(obj instanceof ValuedTraitType)) {
+    if (!(obj instanceof SimpleValuedTraitType)) {
       return false;
     }
-    ValuedTraitType otherType = (ValuedTraitType) obj;
+    SimpleValuedTraitType otherType = (SimpleValuedTraitType) obj;
     if (otherType.getType() == null) {
       return false;
     }

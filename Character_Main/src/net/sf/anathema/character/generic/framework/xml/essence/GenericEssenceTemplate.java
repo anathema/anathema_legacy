@@ -2,7 +2,7 @@ package net.sf.anathema.character.generic.framework.xml.essence;
 
 import net.sf.anathema.character.generic.template.essence.FactorizedTrait;
 import net.sf.anathema.character.generic.template.essence.IEssenceTemplate;
-import net.sf.anathema.character.generic.traits.GenericTrait;
+import net.sf.anathema.character.generic.traits.ValuedTraitType;
 import net.sf.anathema.lib.lang.clone.ReflectionCloneableObject;
 
 import java.util.ArrayList;
@@ -15,8 +15,8 @@ public class GenericEssenceTemplate extends ReflectionCloneableObject<GenericEss
   private IEssencePoolConfiguration personalPoolConfiguration;
   private IEssencePoolConfiguration peripheralPoolConfiguration;
 
-  private FactorizedTrait[] createFactorizedTraits(IEssencePoolConfiguration poolConfiguration, GenericTrait willpower, GenericTrait[] virtues,
-                                                   GenericTrait essence) {
+  private FactorizedTrait[] createFactorizedTraits(IEssencePoolConfiguration poolConfiguration, ValuedTraitType willpower, ValuedTraitType[] virtues,
+                                                   ValuedTraitType essence) {
     if (poolConfiguration == null) {
       return new FactorizedTrait[0];
     }
@@ -28,12 +28,12 @@ public class GenericEssenceTemplate extends ReflectionCloneableObject<GenericEss
   }
 
   @Override
-  public FactorizedTrait[] getPersonalTraits(GenericTrait willpower, GenericTrait[] virtues, GenericTrait essence) {
+  public FactorizedTrait[] getPersonalTraits(ValuedTraitType willpower, ValuedTraitType[] virtues, ValuedTraitType essence) {
     return createFactorizedTraits(personalPoolConfiguration, willpower, virtues, essence);
   }
 
   @Override
-  public FactorizedTrait[] getPeripheralTraits(GenericTrait willpower, GenericTrait[] virtues, GenericTrait essence) {
+  public FactorizedTrait[] getPeripheralTraits(ValuedTraitType willpower, ValuedTraitType[] virtues, ValuedTraitType essence) {
     return createFactorizedTraits(peripheralPoolConfiguration, willpower, virtues, essence);
   }
 

@@ -8,7 +8,7 @@ import net.sf.anathema.character.equipment.character.model.IEquipmentStatsOption
 import net.sf.anathema.character.equipment.impl.creation.model.WeaponTag;
 import net.sf.anathema.character.equipment.impl.reporting.content.stats.AbstractValueEquipmentStatsGroup;
 import net.sf.anathema.character.generic.equipment.weapon.IWeaponStats;
-import net.sf.anathema.character.generic.traits.GenericTrait;
+import net.sf.anathema.character.generic.traits.ValuedTraitType;
 import net.sf.anathema.character.generic.traits.types.AttributeType;
 import net.sf.anathema.character.main.model.traits.TraitMap;
 import net.sf.anathema.lib.resources.Resources;
@@ -59,9 +59,9 @@ public class AccuracyWeaponStatsGroup extends AbstractValueEquipmentStatsGroup<I
   }
 
   protected int getFinalValue(IWeaponStats weapon, int weaponValue) {
-    GenericTrait trait = collection.getTrait(AttributeType.Dexterity);
+    ValuedTraitType trait = collection.getTrait(AttributeType.Dexterity);
     if (Arrays.asList(weapon.getTags()).contains(WeaponTag.ClinchEnhancer)) {
-      GenericTrait str = collection.getTrait(AttributeType.Strength);
+      ValuedTraitType str = collection.getTrait(AttributeType.Strength);
       if (trait.getCurrentValue() < str.getCurrentValue()) {
         trait = str;
       }

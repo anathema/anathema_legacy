@@ -10,10 +10,9 @@ import net.sf.anathema.character.generic.magic.charms.type.CharmType;
 import net.sf.anathema.character.generic.magic.charms.type.ICharmTypeModel;
 import net.sf.anathema.character.generic.magic.general.ICostList;
 import net.sf.anathema.character.generic.rules.IExaltedSourceBook;
-import net.sf.anathema.character.generic.traits.GenericTrait;
+import net.sf.anathema.character.generic.traits.ValuedTraitType;
 import net.sf.anathema.character.generic.traits.TraitType;
 import net.sf.anathema.character.generic.traits.types.AbilityType;
-import net.sf.anathema.character.generic.traits.types.ValuedTraitType;
 import net.sf.anathema.character.generic.type.ICharacterType;
 import net.sf.anathema.lib.exception.NotYetImplementedException;
 
@@ -40,8 +39,8 @@ public class DummyCharmData implements ICharmData {
   }
 
   @Override
-  public GenericTrait getEssence() {
-    return new ValuedTraitType(null, 1);
+  public ValuedTraitType getEssence() {
+    return new net.sf.anathema.character.generic.traits.types.ValuedTraitType(null, 1);
   }
 
   @Override
@@ -50,8 +49,8 @@ public class DummyCharmData implements ICharmData {
   }
 
   @Override
-  public GenericTrait[] getPrerequisites() {
-    return new GenericTrait[0];
+  public ValuedTraitType[] getPrerequisites() {
+    return new ValuedTraitType[0];
   }
 
   @Override
