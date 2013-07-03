@@ -30,6 +30,12 @@ public class FxToggleTool implements ToggleTool, FxComponent {
     ImageView imageView = new ImageView();
     this.button = new ToggleButton("", imageView);
     Collections.addAll(onLoad, new AdjustSize(button), new SetImage(imageView));
+    Platform.runLater(new Runnable() {
+      @Override
+      public void run() {
+        button.setOnAction(new Execute(command));
+      }
+    });
   }
 
   @Override
