@@ -3,7 +3,6 @@ package net.sf.anathema.character.library.trait.view.fx;
 import javafx.application.Platform;
 import javafx.embed.swing.JFXPanel;
 import javafx.scene.Parent;
-import net.sf.anathema.character.library.trait.Trait;
 import net.sf.anathema.character.library.trait.view.GroupedFavorableTraitConfigurationView;
 import net.sf.anathema.character.presenter.ExtensibleTraitView;
 import net.sf.anathema.character.view.ColumnCount;
@@ -33,8 +32,8 @@ public class BridgingTraitConfigurationView implements IView, GroupedFavorableTr
   }
 
   @Override
-  public ExtensibleTraitView addExtensibleTraitView(String string, int currentValue, int maximalValue, Trait favorableTrait) {
-    return fxView.addExtensibleTraitView(string, currentValue, maximalValue, favorableTrait);
+  public ExtensibleTraitView addExtensibleTraitView(String string, int currentValue, int maximalValue) {
+    return fxView.addExtensibleTraitView(string, currentValue, maximalValue);
   }
 
   @Override

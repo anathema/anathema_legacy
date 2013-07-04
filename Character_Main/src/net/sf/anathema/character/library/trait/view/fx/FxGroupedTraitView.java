@@ -1,6 +1,5 @@
 package net.sf.anathema.character.library.trait.view.fx;
 
-import net.sf.anathema.character.library.trait.Trait;
 import net.sf.anathema.character.library.trait.view.GroupedTraitView;
 import net.sf.anathema.character.presenter.ExtensibleTraitView;
 import net.sf.anathema.character.view.ColumnCount;
@@ -19,7 +18,7 @@ public class FxGroupedTraitView implements GroupedTraitView {
   }
 
   @Override
-  public ExtensibleTraitView addExtensibleTraitView(String labelText, int value, int maxValue, Trait trait) {
+  public ExtensibleTraitView addExtensibleTraitView(String labelText, int value, int maxValue) {
     FxTraitView view = new FxTraitView(labelText, value, maxValue);
     FxExtensibleTraitView extensibleTraitView = new FxExtensibleTraitView(view);
     extensibleTraitView.addTo(panel);

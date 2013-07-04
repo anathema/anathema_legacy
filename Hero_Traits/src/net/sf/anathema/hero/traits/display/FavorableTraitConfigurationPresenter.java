@@ -83,9 +83,8 @@ public class FavorableTraitConfigurationPresenter {
   }
 
   private void addTraitView(final Trait favorableTrait) {
-    String id = favorableTrait.getType().getId();
-    final ExtensibleTraitView traitView =
-            view.addExtensibleTraitView(resources.getString(id), favorableTrait.getCurrentValue(), favorableTrait.getMaximalValue(), favorableTrait);
+    String traitName = resources.getString(favorableTrait.getType().getId());
+    ExtensibleTraitView traitView = view.addExtensibleTraitView(traitName, favorableTrait.getCurrentValue(), favorableTrait.getMaximalValue());
     new TraitPresenter(favorableTrait, traitView.getIntValueView()).initPresentation();
     addCasteAndFavoredToggle(favorableTrait, traitView);
   }
