@@ -29,6 +29,7 @@ public class DotSelectionSpinner {
   }
 
   public void addListener(ChangeListener<Integer> listener) {
+    waitForComponent();
     spinner.valueProperty().addListener(listener);
   }
 

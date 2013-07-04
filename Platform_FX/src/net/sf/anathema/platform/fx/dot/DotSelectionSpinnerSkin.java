@@ -38,6 +38,7 @@ public class DotSelectionSpinnerSkin<T> extends SkinBase<ListSpinner<T>, ListSpi
 
   public static final String FILLED = "filled";
   public static final String EMPTY = "empty";
+  public static final String DOTBACKGROUND = "dotbackground";
   private static final String INVISIBLECONTAINER = "invisiblecontainer";
   private static final String RATING_PROPERTY = "RATING";
   private static final String MAXIMUM_PROPERTY = "MAX";
@@ -75,8 +76,8 @@ public class DotSelectionSpinnerSkin<T> extends SkinBase<ListSpinner<T>, ListSpi
     super(control, new ListSpinnerBehavior<>(control));
     getStyleClass().add(INVISIBLECONTAINER);
     createOuterContainer();
-    createOverlay();
     createButtons();
+    createOverlay();
     updateRating((Integer) getSkinnable().getValue());
     registerChangeListener(control.valueProperty(), RATING_PROPERTY);
   }
@@ -87,7 +88,7 @@ public class DotSelectionSpinnerSkin<T> extends SkinBase<ListSpinner<T>, ListSpi
   }
 
   private void createOverlay() {
-    overlay.setFill(new Color(0, 0, 0, 0.3));
+    overlay.setFill(new Color(0, 0, 0, 0.1));
     overlay.setStroke(Color.BLACK);
     overlay.setStrokeWidth(1);
     outerContainer.getChildren().add(overlay);

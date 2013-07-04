@@ -1,24 +1,22 @@
 package net.sf.anathema.platform.fx.dot;
 
-import javafx.scene.Group;
 import javafx.scene.Node;
 import javafx.scene.effect.BlurType;
 import javafx.scene.effect.InnerShadow;
+import javafx.scene.layout.StackPane;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Circle;
 import javafx.scene.shape.Ellipse;
-import javafx.scene.shape.Rectangle;
-import javafx.scene.shape.Shape;
 
 public class Dot {
 
   public static final double SIZE = 18;
 
-  /**Drawing code adapted from JFXtras SimpleIndicatorSkin.*/
+  /**
+   * Drawing code adapted from JFXtras SimpleIndicatorSkin.
+   */
   public Node create() {
-    Group indicator = prepareContainer();
-    Shape outerBounds = createBounds(SIZE);
-    indicator.getChildren().add(outerBounds);
+    StackPane indicator = prepareContainer();
     Circle frame = createFrame(SIZE);
     Circle corpus = createCorpus(SIZE);
     addInnerShadow(corpus);
@@ -28,17 +26,12 @@ public class Dot {
     return indicator;
   }
 
-  private Group prepareContainer() {
-    Group indicator = new Group();
+  private StackPane prepareContainer() {
+    StackPane indicator = new StackPane();
     indicator.getStyleClass().add(DotSelectionSpinnerSkin.FILLED);
+    indicator.getStyleClass().add(DotSelectionSpinnerSkin.DOTBACKGROUND);
     indicator.getChildren().clear();
     return indicator;
-  }
-
-  private Shape createBounds(double size) {
-    Shape outerBounds = new Rectangle(0, 0, size, size);
-    outerBounds.setOpacity(0.0);
-    return outerBounds;
   }
 
   private Circle createFrame(double size) {
@@ -68,6 +61,7 @@ public class Dot {
   private Ellipse createHighlight(double size) {
     Ellipse highlight = new Ellipse(0.504 * size, 0.294 * size, 0.26 * size, 0.15 * size);
     highlight.getStyleClass().add("indicator-highlight-fill");
+    highlight.setStyle("-fx-translate-y:" + -0.225 * size + ";");
     return highlight;
   }
 }
