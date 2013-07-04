@@ -78,17 +78,20 @@ public class FavorableTraitConfigurationPresenter {
 
   private void addTraitViews(Trait[] traits) {
     for (Trait trait : traits) {
-      ToggleTool traitView = addTraitView(trait);
-      traitViewsByTrait.put(trait, traitView);
+      addTraitView(trait);
     }
   }
 
-  private ToggleTool addTraitView(final Trait favorableTrait) {
+  private void addTraitView(final Trait favorableTrait) {
     String id = favorableTrait.getType().getId();
-    FavorableTraitViewProperties properties = new FavorableTraitViewProperties(hero, presentationProperties, favorableTrait);
     final ExtensibleTraitView traitView =
             view.addExtensibleTraitView(resources.getString(id), favorableTrait.getCurrentValue(), favorableTrait.getMaximalValue(), favorableTrait);
     new TraitPresenter(favorableTrait, traitView.getIntValueView()).initPresentation();
+    addCasteAndFavoredToggle(favorableTrait, traitView);
+  }
+
+  private void addCasteAndFavoredToggle(final Trait favorableTrait, ExtensibleTraitView traitView) {
+    FavorableTraitViewProperties properties = new FavorableTraitViewProperties(hero, presentationProperties, favorableTrait);
     final ToggleTool casteTool = traitView.addToggleInFront(properties);
     casteTool.setCommand(new Command() {
       @Override
@@ -104,7 +107,7 @@ public class FavorableTraitConfigurationPresenter {
       }
     });
     updateView(casteTool, favorableTrait.getFavorization().getFavorableState());
-    return casteTool;
+    traitViewsByTrait.put(favorableTrait, casteTool);
   }
 
   private void updateView(final ToggleTool view, FavorableState state) {
