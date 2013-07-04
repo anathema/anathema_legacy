@@ -17,6 +17,7 @@ public class TraitPresenter implements Presenter {
 
   @Override
   public void initPresentation() {
+    view.setValue(trait.getCurrentValue());
     initModelValueListening();
     initViewValueListening();
   }

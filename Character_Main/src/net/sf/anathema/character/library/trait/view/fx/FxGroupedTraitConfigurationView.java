@@ -21,8 +21,8 @@ public class FxGroupedTraitConfigurationView implements GroupedFavorableTraitCon
   }
 
   @Override
-  public ExtensibleTraitView addExtensibleTraitView(String string, int currentValue, int maximalValue) {
-    return groupedView.addExtensibleTraitView(string, currentValue, maximalValue);
+  public ExtensibleTraitView addExtensibleTraitView(String string, int maximalValue) {
+    return groupedView.addExtensibleTraitView(string, maximalValue);
   }
 
   public Node getNode() {

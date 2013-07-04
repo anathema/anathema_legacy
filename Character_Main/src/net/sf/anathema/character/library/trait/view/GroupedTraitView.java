@@ -5,5 +5,5 @@ import net.sf.anathema.character.presenter.ExtensibleTraitView;
 public interface GroupedTraitView {
   void startNewGroup(String groupLabel);
 
-  ExtensibleTraitView addExtensibleTraitView(String labelText, int value, int maxValue);
+  ExtensibleTraitView addExtensibleTraitView(String labelText, int maxValue);
 }

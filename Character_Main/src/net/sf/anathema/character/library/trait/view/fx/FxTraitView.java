@@ -15,10 +15,9 @@ public class FxTraitView implements IIntValueView {
   private final Label label;
   private final FxConfigurableLayout layout = FxConfigurableLayout.Right();
 
-  public FxTraitView(String labelText, int value, int maxValue) {
+  public FxTraitView(String labelText, int maxValue) {
     this.label = new Label(labelText);
     this.spinner = new DotSelectionSpinner(0, maxValue);
-    setValue(value);
     initListening();
   }
 

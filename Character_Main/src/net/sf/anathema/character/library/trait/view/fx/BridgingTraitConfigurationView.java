@@ -32,8 +32,8 @@ public class BridgingTraitConfigurationView implements IView, GroupedFavorableTr
   }
 
   @Override
-  public ExtensibleTraitView addExtensibleTraitView(String string, int currentValue, int maximalValue) {
-    return fxView.addExtensibleTraitView(string, currentValue, maximalValue);
+  public ExtensibleTraitView addExtensibleTraitView(String string, int maximalValue) {
+    return fxView.addExtensibleTraitView(string, maximalValue);
   }
 
   @Override

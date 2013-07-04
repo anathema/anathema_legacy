@@ -9,5 +9,5 @@ public interface GroupedFavorableTraitConfigurationView {
 
   void startNewTraitGroup(String groupLabel);
 
-  ExtensibleTraitView addExtensibleTraitView(String string, int currentValue, int maximalValue);
+  ExtensibleTraitView addExtensibleTraitView(String string, int maximalValue);
 }
