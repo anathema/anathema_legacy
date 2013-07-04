@@ -1,22 +1,33 @@
 package net.sf.anathema.platform.fx.dot;
 
+import javafx.animation.KeyFrame;
+import javafx.animation.KeyValue;
+import javafx.animation.Timeline;
 import javafx.scene.Node;
+import javafx.scene.effect.Bloom;
 import javafx.scene.effect.BlurType;
 import javafx.scene.effect.InnerShadow;
 import javafx.scene.layout.StackPane;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Circle;
 import javafx.scene.shape.Ellipse;
+import javafx.util.Duration;
+
+import java.util.List;
 
 public class Dot {
+  private static final String FILLED = "filled";
+  private static final String EMPTY = "empty";
+  private static final String DOTBACKGROUND = "dotbackground";
 
   public static final double SIZE = 18;
+  private StackPane indicator;
 
   /**
    * Drawing code adapted from JFXtras SimpleIndicatorSkin.
    */
   public Node create() {
-    StackPane indicator = prepareContainer();
+    this.indicator = prepareContainer();
     Circle frame = createFrame(SIZE);
     Circle corpus = createCorpus(SIZE);
     addInnerShadow(corpus);
@@ -28,8 +39,8 @@ public class Dot {
 
   private StackPane prepareContainer() {
     StackPane indicator = new StackPane();
-    indicator.getStyleClass().add(DotSelectionSpinnerSkin.FILLED);
-    indicator.getStyleClass().add(DotSelectionSpinnerSkin.DOTBACKGROUND);
+    indicator.getStyleClass().add(FILLED);
+    indicator.getStyleClass().add(DOTBACKGROUND);
     indicator.getChildren().clear();
     return indicator;
   }
@@ -63,5 +74,53 @@ public class Dot {
     highlight.getStyleClass().add("indicator-highlight-fill");
     highlight.setStyle("-fx-translate-y:" + -0.225 * size + ";");
     return highlight;
+  }
+
+  public List<String> getStyleClass() {
+    return indicator.getStyleClass();
+  }
+
+  public void fill() {
+    List<String> styleClass = getStyleClass();
+    boolean isFilled = styleClass.contains(FILLED);
+    if (!isFilled) {
+      styleClass.remove(EMPTY);
+      styleClass.add(FILLED);
+      animateFill();
+    }
+  }
+
+  public void drain() {
+    List<String> styleClass = getStyleClass();
+    boolean isFilled = styleClass.contains(FILLED);
+    if (isFilled) {
+      styleClass.remove(FILLED);
+      styleClass.add(EMPTY);
+      animateDrain();
+    }
+  }
+
+  private void animateFill() {
+    Bloom bloom = new Bloom(0.0);
+    indicator.setEffect(bloom);
+    Timeline timeline = new Timeline();
+    KeyValue keyValue = new KeyValue(bloom.thresholdProperty(), 1.0);
+    KeyFrame keyFrame = new KeyFrame(Duration.millis(500), keyValue);
+    KeyValue keyValue2 = new KeyValue(bloom.thresholdProperty(), 0.0);
+    KeyFrame keyFrame1 = new KeyFrame(Duration.millis(50), keyValue2);
+    timeline.getKeyFrames().addAll(keyFrame, keyFrame1);
+    timeline.play();
+  }
+
+  private void animateDrain() {
+    Bloom bloom = new Bloom(0.0);
+    indicator.setEffect(bloom);
+    Timeline timeline = new Timeline();
+    KeyValue keyValue = new KeyValue(bloom.thresholdProperty(), 1.0);
+    KeyFrame keyFrame = new KeyFrame(Duration.millis(50), keyValue);
+    KeyValue keyValue2 = new KeyValue(bloom.thresholdProperty(), 0.0);
+    KeyFrame keyFrame1 = new KeyFrame(Duration.millis(500), keyValue2);
+    timeline.getKeyFrames().addAll(keyFrame, keyFrame1);
+    timeline.play();
   }
 }

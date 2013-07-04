@@ -2,23 +2,18 @@ package net.sf.anathema.platform.fx.dot;
 
 import com.sun.javafx.Utils;
 import com.sun.javafx.scene.control.skin.SkinBase;
-import javafx.animation.KeyFrame;
-import javafx.animation.KeyValue;
-import javafx.animation.Timeline;
 import javafx.collections.ObservableList;
 import javafx.event.EventHandler;
 import javafx.geometry.Insets;
 import javafx.geometry.Point2D;
 import javafx.geometry.Pos;
 import javafx.scene.Node;
-import javafx.scene.effect.Bloom;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.Pane;
 import javafx.scene.layout.StackPane;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Rectangle;
-import javafx.util.Duration;
 import jfxtras.labs.internal.scene.control.behavior.ListSpinnerBehavior;
 import jfxtras.labs.scene.control.ListSpinner;
 
@@ -36,15 +31,13 @@ import static javafx.scene.input.MouseEvent.MOUSE_RELEASED;
 @SuppressWarnings("UnusedDeclaration")
 public class DotSelectionSpinnerSkin<T> extends SkinBase<ListSpinner<T>, ListSpinnerBehavior<T>> {
 
-  public static final String FILLED = "filled";
-  public static final String EMPTY = "empty";
-  public static final String DOTBACKGROUND = "dotbackground";
   private static final String INVISIBLECONTAINER = "invisiblecontainer";
   private static final String RATING_PROPERTY = "RATING";
   private static final String MAXIMUM_PROPERTY = "MAX";
 
   private StackPane outerContainer = new StackPane();
   private Pane dotContainer = new HBox();
+  private List<Dot> dots = new ArrayList<>();
   private Rectangle overlay = new Rectangle();
 
   private double rating = -1;
@@ -59,7 +52,7 @@ public class DotSelectionSpinnerSkin<T> extends SkinBase<ListSpinner<T>, ListSpi
     @Override
     public void handle(MouseEvent event) {
       Point2D location = new Point2D(event.getSceneX(), event.getSceneY());
-      double overlayWidth = Utils.clamp(0, dotContainer.sceneToLocal(location).getX(), dotContainer.getWidth()-2);
+      double overlayWidth = Utils.clamp(0, dotContainer.sceneToLocal(location).getX(), dotContainer.getWidth() - 2);
       overlay.setVisible(true);
       overlay.setWidth(overlayWidth);
       overlay.setHeight(Dot.SIZE);
@@ -104,14 +97,21 @@ public class DotSelectionSpinnerSkin<T> extends SkinBase<ListSpinner<T>, ListSpi
   }
 
   private void createButtons() {
-    dotContainer.setPadding(new Insets(1,0,0,0));
+    dotContainer.setPadding(new Insets(1, 0, 0, 0));
     dotContainer.addEventHandler(MOUSE_CLICKED, updateRating);
     dotContainer.addEventHandler(MOUSE_DRAGGED, updateRating);
     dotContainer.addEventHandler(MOUSE_DRAGGED, updateOverlay);
     dotContainer.addEventHandler(MOUSE_RELEASED, hideOverlay);
     for (int index = 0; index < getMaximumValue(); index++) {
-      Node backgroundNode = new Dot().create();
+      if (index > 0 && index % 5 == 0) {
+        Rectangle blockSeparator = new Rectangle(Dot.SIZE / 2, Dot.SIZE);
+        blockSeparator.getStyleClass().add(INVISIBLECONTAINER);
+        dotContainer.getChildren().add(blockSeparator);
+      }
+      Dot dot = new Dot();
+      Node backgroundNode = dot.create();
       dotContainer.getChildren().add(backgroundNode);
+      dots.add(dot);
     }
     outerContainer.getChildren().add(dotContainer);
   }
@@ -144,47 +144,14 @@ public class DotSelectionSpinnerSkin<T> extends SkinBase<ListSpinner<T>, ListSpi
       getSkinnable().setValue((T) (Integer) Double.valueOf(rating).intValue());
     }
     int max = getMaximumValue();
-    List<Node> buttons = new ArrayList<>(dotContainer.getChildren());
     for (int index = 0; index < max; index++) {
-      Node button = buttons.get(index);
-      List<String> styleClass = button.getStyleClass();
-      boolean isFilled = styleClass.contains(FILLED);
+      Dot dot = dots.get(index);
       if (index < rating) {
-        if (!isFilled) {
-          styleClass.remove(EMPTY);
-          styleClass.add(FILLED);
-          animateFill(button);
-        }
-      } else if (isFilled) {
-        styleClass.remove(FILLED);
-        styleClass.add(EMPTY);
-        animateDrain(button);
+        dot.fill();
+      } else {
+        dot.drain();
       }
     }
-  }
-
-  private void animateDrain(Node button) {
-    Bloom bloom = new Bloom(0.0);
-    button.setEffect(bloom);
-    Timeline timeline = new Timeline();
-    KeyValue keyValue = new KeyValue(bloom.thresholdProperty(), 1.0);
-    KeyFrame keyFrame = new KeyFrame(Duration.millis(50), keyValue);
-    KeyValue keyValue2 = new KeyValue(bloom.thresholdProperty(), 0.0);
-    KeyFrame keyFrame1 = new KeyFrame(Duration.millis(500), keyValue2);
-    timeline.getKeyFrames().addAll(keyFrame, keyFrame1);
-    timeline.play();
-  }
-
-  private void animateFill(Node button) {
-    Bloom bloom = new Bloom(0.0);
-    button.setEffect(bloom);
-    Timeline timeline = new Timeline();
-    KeyValue keyValue = new KeyValue(bloom.thresholdProperty(), 1.0);
-    KeyFrame keyFrame = new KeyFrame(Duration.millis(500), keyValue);
-    KeyValue keyValue2 = new KeyValue(bloom.thresholdProperty(), 0.0);
-    KeyFrame keyFrame1 = new KeyFrame(Duration.millis(50), keyValue2);
-    timeline.getKeyFrames().addAll(keyFrame, keyFrame1);
-    timeline.play();
   }
 
   @SuppressWarnings("unchecked")
