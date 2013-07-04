@@ -101,25 +101,21 @@ public class Dot {
   }
 
   private void animateFill() {
-    Bloom bloom = new Bloom(0.0);
-    indicator.setEffect(bloom);
-    Timeline timeline = new Timeline();
-    KeyValue keyValue = new KeyValue(bloom.thresholdProperty(), 1.0);
-    KeyFrame keyFrame = new KeyFrame(Duration.millis(500), keyValue);
-    KeyValue keyValue2 = new KeyValue(bloom.thresholdProperty(), 0.0);
-    KeyFrame keyFrame1 = new KeyFrame(Duration.millis(50), keyValue2);
-    timeline.getKeyFrames().addAll(keyFrame, keyFrame1);
-    timeline.play();
+    animateChange(500, 50);
   }
 
   private void animateDrain() {
+    animateChange(50, 500);
+  }
+
+  private void animateChange(int upTime, int downTime) {
     Bloom bloom = new Bloom(0.0);
     indicator.setEffect(bloom);
     Timeline timeline = new Timeline();
     KeyValue keyValue = new KeyValue(bloom.thresholdProperty(), 1.0);
-    KeyFrame keyFrame = new KeyFrame(Duration.millis(50), keyValue);
+    KeyFrame keyFrame = new KeyFrame(Duration.millis(upTime), keyValue);
     KeyValue keyValue2 = new KeyValue(bloom.thresholdProperty(), 0.0);
-    KeyFrame keyFrame1 = new KeyFrame(Duration.millis(500), keyValue2);
+    KeyFrame keyFrame1 = new KeyFrame(Duration.millis(downTime), keyValue2);
     timeline.getKeyFrames().addAll(keyFrame, keyFrame1);
     timeline.play();
   }
