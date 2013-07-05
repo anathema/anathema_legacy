@@ -17,7 +17,6 @@ public class AgnosticCasteUi extends SelectIdentifierConfiguration<CasteType> {
 
   @Override
   protected boolean isUnselected(CasteType value) {
-    System.out.println(value);
     return super.isUnselected(value) || value == CasteType.NULL_CASTE_TYPE;
   }
 
