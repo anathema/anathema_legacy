@@ -5,7 +5,6 @@ import net.sf.anathema.character.generic.template.HeroTemplate;
 import net.sf.anathema.character.main.model.concept.HeroConceptFetcher;
 import net.sf.anathema.character.main.model.experience.ExperienceModel;
 import net.sf.anathema.character.main.model.experience.ExperienceModelFetcher;
-import net.sf.anathema.hero.concept.display.caste.view.CasteView;
 import net.sf.anathema.hero.concept.model.concept.CasteSelection;
 import net.sf.anathema.hero.model.Hero;
 import net.sf.anathema.lib.control.ChangeListener;

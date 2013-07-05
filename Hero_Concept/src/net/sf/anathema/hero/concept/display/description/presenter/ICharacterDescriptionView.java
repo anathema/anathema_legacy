@@ -1,4 +1,4 @@
-package net.sf.anathema.character.view;
+package net.sf.anathema.hero.concept.display.description.presenter;
 
 import net.sf.anathema.interaction.Tool;
 import net.sf.anathema.lib.workflow.textualdescription.ITextView;

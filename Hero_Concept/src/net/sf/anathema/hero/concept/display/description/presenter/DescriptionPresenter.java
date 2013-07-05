@@ -6,8 +6,6 @@ import net.sf.anathema.character.main.model.description.HeroDescription;
 import net.sf.anathema.character.model.IIntegerDescription;
 import net.sf.anathema.character.presenter.DescriptionDetails;
 import net.sf.anathema.character.presenter.NameGeneratorCommand;
-import net.sf.anathema.character.view.ICharacterDescriptionView;
-import net.sf.anathema.character.view.IMultiComponentLine;
 import net.sf.anathema.interaction.Tool;
 import net.sf.anathema.lib.control.IIntValueChangedListener;
 import net.sf.anathema.lib.gui.widgets.IIntegerView;
