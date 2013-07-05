@@ -6,12 +6,13 @@ import net.sf.anathema.character.generic.caste.CasteType;
 import net.sf.anathema.lib.gui.AgnosticUIConfiguration;
 import net.sf.anathema.lib.gui.selection.IObjectSelectionView;
 import net.sf.anathema.platform.fx.FxThreading;
+import net.sf.anathema.platform.fx.NodeHolder;
 import net.sf.anathema.platform.fx.selection.ComboBoxSelectionView;
 import org.tbee.javafx.scene.layout.MigPane;
 
 import static net.sf.anathema.lib.gui.layout.LayoutUtils.withoutInsets;
 
-public class FxCasteView implements CasteView {
+public class FxCasteView implements CasteView, NodeHolder {
   private MigPane node = new MigPane(withoutInsets().wrapAfter(2));
 
   @Override

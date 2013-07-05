@@ -2,13 +2,12 @@ package net.sf.anathema.hero.concept.display.caste.view;
 
 import javafx.application.Platform;
 import javafx.embed.swing.JFXPanel;
-import javafx.scene.Parent;
 import net.sf.anathema.character.generic.caste.CasteType;
 import net.sf.anathema.framework.swing.IView;
 import net.sf.anathema.lib.gui.AgnosticUIConfiguration;
 import net.sf.anathema.lib.gui.selection.IObjectSelectionView;
 import net.sf.anathema.platform.fx.InitScene;
-import net.sf.anathema.platform.fx.ParentHolder;
+import net.sf.anathema.platform.fx.ViewHolder;
 
 import javax.swing.JComponent;
 
@@ -18,7 +17,7 @@ public class BridgingCasteView implements CasteView, IView {
 
   public BridgingCasteView(FxCasteView fxView) {
     this.fxView = fxView;
-    Platform.runLater(new InitScene(panel, new ViewHolder()));
+    Platform.runLater(new InitScene(panel, new ViewHolder(fxView)));
   }
 
   @Override
@@ -31,10 +30,4 @@ public class BridgingCasteView implements CasteView, IView {
     return fxView.addObjectSelectionView(labelText, renderer);
   }
 
-  private class ViewHolder implements ParentHolder {
-    @Override
-    public Parent getParent() {
-      return (Parent) fxView.getNode();
-    }
-  }
 }

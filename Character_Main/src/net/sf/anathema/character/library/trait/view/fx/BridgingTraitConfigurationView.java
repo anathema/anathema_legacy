@@ -2,14 +2,13 @@ package net.sf.anathema.character.library.trait.view.fx;
 
 import javafx.application.Platform;
 import javafx.embed.swing.JFXPanel;
-import javafx.scene.Parent;
 import net.sf.anathema.character.generic.type.ICharacterType;
 import net.sf.anathema.character.library.trait.view.GroupedFavorableTraitConfigurationView;
 import net.sf.anathema.character.presenter.ExtensibleTraitView;
 import net.sf.anathema.character.view.ColumnCount;
 import net.sf.anathema.framework.swing.IView;
 import net.sf.anathema.platform.fx.InitScene;
-import net.sf.anathema.platform.fx.ParentHolder;
+import net.sf.anathema.platform.fx.ViewHolder;
 
 import javax.swing.JComponent;
 
@@ -31,7 +30,7 @@ public class BridgingTraitConfigurationView implements IView, GroupedFavorableTr
     } else {
       characterTypeSkin = "skin/anathema/character/trait.css";
     }
-    Platform.runLater(new InitScene(panel, new ViewHolder(), coreSkin, characterTypeSkin));
+    Platform.runLater(new InitScene(panel, new ViewHolder(fxView), coreSkin, characterTypeSkin));
   }
 
   @Override
@@ -47,12 +46,5 @@ public class BridgingTraitConfigurationView implements IView, GroupedFavorableTr
   @Override
   public JComponent getComponent() {
     return panel;
-  }
-
-  private class ViewHolder implements ParentHolder {
-    @Override
-    public Parent getParent() {
-      return (Parent) fxView.getNode();
-    }
   }
 }

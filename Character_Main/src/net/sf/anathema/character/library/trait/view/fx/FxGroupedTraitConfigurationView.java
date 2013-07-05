@@ -5,9 +5,10 @@ import net.sf.anathema.character.generic.type.ICharacterType;
 import net.sf.anathema.character.library.trait.view.GroupedFavorableTraitConfigurationView;
 import net.sf.anathema.character.presenter.ExtensibleTraitView;
 import net.sf.anathema.character.view.ColumnCount;
+import net.sf.anathema.platform.fx.NodeHolder;
 import org.tbee.javafx.scene.layout.MigPane;
 
-public class FxGroupedTraitConfigurationView implements GroupedFavorableTraitConfigurationView {
+public class FxGroupedTraitConfigurationView implements GroupedFavorableTraitConfigurationView, NodeHolder {
   private FxGroupedTraitView groupedView;
   private final MigPane pane = new MigPane();
 
@@ -26,6 +27,7 @@ public class FxGroupedTraitConfigurationView implements GroupedFavorableTraitCon
     return groupedView.addExtensibleTraitView(string, maximalValue);
   }
 
+  @Override
   public Node getNode() {
     return pane;
   }
