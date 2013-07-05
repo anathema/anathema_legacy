@@ -20,7 +20,7 @@ public class WeaponDamageView implements IWeaponDamageView {
   private final JLabel minDamageLabel = new JLabel();
   private final IntegerSpinner damageValueSpinner = new IntegerSpinner(0);
   private final IntegerSpinner minDamageValueSpinner = new IntegerSpinner(0);
-  private final IChangeableJComboBox<HealthType> typeBox = new ChangeableJComboBox<>(new HealthType[0], false);
+  private final IChangeableJComboBox<HealthType> typeBox = new ChangeableJComboBox<>(new HealthType[0]);
 
   @Override
   public void addTo(JPanel panel, CC data) {

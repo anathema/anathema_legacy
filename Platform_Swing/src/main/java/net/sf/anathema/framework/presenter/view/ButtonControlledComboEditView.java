@@ -29,7 +29,7 @@ public class ButtonControlledComboEditView<V> implements IButtonControlledComboE
   protected final JTextField text;
 
   public ButtonControlledComboEditView(RelativePath addIcon, ListCellRenderer renderer) {
-    this.comboBox = new ChangeableJComboBox<>(false);
+    this.comboBox = new ChangeableJComboBox<>();
     comboBox.setRenderer(renderer);
     this.text = new JTextField(30);
     Icon icon = new ImageProvider().getImageIcon(addIcon);

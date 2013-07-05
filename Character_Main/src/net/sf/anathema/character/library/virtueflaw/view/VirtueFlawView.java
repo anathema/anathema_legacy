@@ -75,7 +75,7 @@ public class VirtueFlawView implements IVirtueFlawView, IView {
   @Override
   public IObjectSelectionView<TraitType> addVirtueFlawRootSelectionView(String labelText, AgnosticUIConfiguration uiConfiguration) {
     ListCellRenderer renderer = new ConfigurableListCellRenderer(uiConfiguration);
-    ObjectSelectionView<TraitType> rootSelectionView = new ObjectSelectionView<>(labelText, renderer, new TraitType[0]);
+    ObjectSelectionView<TraitType> rootSelectionView = new ObjectSelectionView<>(labelText, renderer);
     rootSelectionView.addTo(virtueFlawPanel, new CC().growX());
     return rootSelectionView;
   }

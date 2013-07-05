@@ -60,7 +60,7 @@ public abstract class AbstractCascadeSelectionView implements ICascadeSelectionV
   public void addCharmTypeSelector(String title, Identifier[] types, AgnosticUIConfiguration uiConfig) {
     JPanel panel = new JPanel(new BorderLayout());
     panel.setBorder(new TitledBorder(title));
-    typeComboBox = new ChangeableJComboBox<>(types, false);
+    typeComboBox = new ChangeableJComboBox<>(types);
     typeComboBox.setSelectedObject(null);
     ListCellRenderer renderer = new ConfigurableListCellRenderer(uiConfig);
     typeComboBox.setRenderer(renderer);
@@ -89,7 +89,7 @@ public abstract class AbstractCascadeSelectionView implements ICascadeSelectionV
                                     Identifier[] allPotentialGroups) {
     JPanel panel = new JPanel(new BorderLayout());
     panel.setBorder(new TitledBorder(title));
-    groupComboBox = new ChangeableJComboBox<>(null, false);
+    groupComboBox = new ChangeableJComboBox<>();
     groupComboBox.setSelectedObject(null);
     ListCellRenderer renderer = new ConfigurableListCellRenderer(uiConfig);
     groupComboBox.setRenderer(renderer);
@@ -119,6 +119,7 @@ public abstract class AbstractCascadeSelectionView implements ICascadeSelectionV
     return swingTreeView;
   }
 
+  @SuppressWarnings("unchecked")
   @Override
   public CharmTreeRenderer getCharmTreeRenderer() {
     return GenericCascadeRenderer.CreateFor(swingTreeView, new GenericCascadeFactory(new SwingCascadeStrategy()));

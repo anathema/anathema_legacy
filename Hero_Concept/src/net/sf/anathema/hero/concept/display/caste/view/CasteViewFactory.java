@@ -6,8 +6,9 @@ import net.sf.anathema.character.view.SubViewFactory;
 
 @RegisteredCharacterView(CasteView.class)
 public class CasteViewFactory implements SubViewFactory {
+  @SuppressWarnings("unchecked")
   @Override
   public <T> T create(ICharacterType type) {
-    return (T) new SimpleCasteView();
+    return (T) new BridgingCasteView(new FxCasteView());
   }
 }

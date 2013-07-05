@@ -8,10 +8,10 @@ import net.sf.anathema.character.generic.equipment.weapon.IEquipmentStats;
 import net.sf.anathema.character.generic.equipment.weapon.IWeaponStats;
 import net.sf.anathema.lib.exception.UnreachableCodeReachedException;
 import net.sf.anathema.lib.file.RelativePath;
-import net.sf.anathema.lib.gui.AgnosticUIConfiguration;
+import net.sf.anathema.lib.gui.AbstractUIConfiguration;
 import net.sf.anathema.lib.resources.Resources;
 
-public class EquipmentStatsUIConfiguration implements AgnosticUIConfiguration<IEquipmentStats> {
+public class EquipmentStatsUIConfiguration extends AbstractUIConfiguration<IEquipmentStats> {
   private final EquipmentStringBuilder tooltipFactory;
 
   public EquipmentStatsUIConfiguration(Resources resources) {
@@ -19,7 +19,7 @@ public class EquipmentStatsUIConfiguration implements AgnosticUIConfiguration<IE
   }
 
   @Override
-  public RelativePath getIconsRelativePath(IEquipmentStats value) {
+  protected RelativePath iconForExistingValue(IEquipmentStats value) {
     if (value instanceof IWeaponStats) {
       if (((IWeaponStats) value).isRangedCombat()) {
         return new RelativePath("icons/RangedCombat16.png");
@@ -39,12 +39,12 @@ public class EquipmentStatsUIConfiguration implements AgnosticUIConfiguration<IE
   }
 
   @Override
-  public String getLabel(IEquipmentStats value) {
+  protected String labelForExistingValue(IEquipmentStats value) {
     return value.getName().getId();
   }
 
   @Override
-  public String getToolTipText(IEquipmentStats value) {
+  protected String tooltipForExistingValue(IEquipmentStats value) {
     return tooltipFactory.createString(null, value);
   }
 }

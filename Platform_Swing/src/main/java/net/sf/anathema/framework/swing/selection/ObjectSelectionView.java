@@ -7,7 +7,6 @@ import net.sf.anathema.lib.gui.selection.IObjectSelectionView;
 import net.sf.anathema.lib.gui.widgets.ChangeableJComboBox;
 import net.sf.anathema.lib.gui.widgets.IChangeableJComboBox;
 
-import javax.swing.JComboBox;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.ListCellRenderer;
@@ -20,17 +19,9 @@ public class ObjectSelectionView<V> implements IObjectSelectionView<V>, Additive
   private final JLabel label;
   private Color disabledLabelColor = SystemColor.textInactiveText;
 
-  public JComboBox getComboBox() {
-    return comboBox.getComponent();
-  }
-
-  public ObjectSelectionView(String labelString, ListCellRenderer renderer, V... objects) {
-    this(labelString, renderer, false, objects);
-  }
-
-  public ObjectSelectionView(String labelString, ListCellRenderer renderer, boolean editable, V... objects) {
+  public ObjectSelectionView(String labelString, ListCellRenderer renderer) {
     this.label = new JLabel(labelString);
-    this.comboBox = new ChangeableJComboBox<>(objects, editable);
+    this.comboBox = new ChangeableJComboBox<>();
     setCellRenderer(renderer);
     setSelectedObject(null);
   }
@@ -84,9 +75,5 @@ public class ObjectSelectionView<V> implements IObjectSelectionView<V>, Additive
   @Override
   public boolean isObjectSelected() {
     return getSelectedObject() != null;
-  }
-
-  public void setDisabledLabelColor(Color color) {
-    this.disabledLabelColor = color;
   }
 }

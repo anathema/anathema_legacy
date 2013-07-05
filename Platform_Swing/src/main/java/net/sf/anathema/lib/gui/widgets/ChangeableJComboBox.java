@@ -15,17 +15,17 @@ public class ChangeableJComboBox<V> implements IChangeableJComboBox<V> {
   private final JComboBox comboBox;
   private final Announcer<ObjectValueListener> control = Announcer.to(ObjectValueListener.class);
 
-  public ChangeableJComboBox(boolean editable) {
-    this(new UnselectingComboBoxModel(), editable);
+  public ChangeableJComboBox() {
+    this(new UnselectingComboBoxModel());
   }
 
-  public ChangeableJComboBox(V[] objects, boolean editable) {
-    this(new UnselectingComboBoxModel(objects), editable);
+  public ChangeableJComboBox(V[] objects) {
+    this(new UnselectingComboBoxModel(objects));
   }
 
-  private ChangeableJComboBox(UnselectingComboBoxModel model, boolean editable) {
+  private ChangeableJComboBox(UnselectingComboBoxModel model) {
     this.comboBox = new ColoredJComboBox(model);
-    this.comboBox.setEditable(editable);
+    this.comboBox.setEditable(false);
     setSelectedObject(null);
     comboBox.addItemListener(new ItemListener() {
       @Override
@@ -46,6 +46,7 @@ public class ChangeableJComboBox<V> implements IChangeableJComboBox<V> {
     comboBox.setSelectedItem(object);
   }
 
+  @SuppressWarnings("unchecked")
   @Override
   public void setObjects(V[] objects) {
     Object selectedItem = comboBox.getSelectedItem();
@@ -76,6 +77,7 @@ public class ChangeableJComboBox<V> implements IChangeableJComboBox<V> {
     return (V) comboBox.getSelectedItem();
   }
 
+  @SuppressWarnings("unchecked")
   @Override
   public void setRenderer(ListCellRenderer renderer) {
     comboBox.setRenderer(renderer);

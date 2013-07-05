@@ -6,17 +6,13 @@ import net.sf.anathema.character.main.model.concept.HeroConceptFetcher;
 import net.sf.anathema.character.main.model.experience.ExperienceModel;
 import net.sf.anathema.character.main.model.experience.ExperienceModelFetcher;
 import net.sf.anathema.character.model.ITypedDescription;
-import net.sf.anathema.character.presenter.CasteSelectObjectUi;
 import net.sf.anathema.hero.concept.display.caste.view.CasteView;
 import net.sf.anathema.hero.model.Hero;
 import net.sf.anathema.lib.control.ChangeListener;
 import net.sf.anathema.lib.control.ObjectValueListener;
+import net.sf.anathema.lib.gui.AgnosticUIConfiguration;
 import net.sf.anathema.lib.gui.selection.IObjectSelectionView;
-import net.sf.anathema.lib.gui.ui.ObjectUi;
-import net.sf.anathema.lib.gui.ui.ObjectUiListCellRenderer;
 import net.sf.anathema.lib.resources.Resources;
-
-import javax.swing.ListCellRenderer;
 
 public class CastePresenter {
 
@@ -33,11 +29,10 @@ public class CastePresenter {
   public void initPresentation() {
     HeroTemplate template = hero.getTemplate();
     String casteLabelResourceKey = template.getPresentationProperties().getCasteLabelResource();
-    ObjectUi<Object> casteUi = new CasteSelectObjectUi(resources, template.getPresentationProperties());
     CasteType[] casteTypes = template.getCasteCollection().getAllCasteTypes(hero.getTemplate().getTemplateType());
-    ListCellRenderer renderer = new ObjectUiListCellRenderer(casteUi);
-    final IObjectSelectionView<CasteType> casteView =
-            view.addObjectSelectionView(resources.getString(casteLabelResourceKey), casteTypes, renderer, false);
+    AgnosticUIConfiguration<CasteType> casteUi = new AgnosticCasteUi(resources, template.getPresentationProperties());
+    final IObjectSelectionView<CasteType> casteView = view.addObjectSelectionView(resources.getString(casteLabelResourceKey), casteUi);
+    casteView.setObjects(casteTypes);
     final ITypedDescription<CasteType> caste = HeroConceptFetcher.fetch(hero).getCaste();
     casteView.setSelectedObject(caste.getType());
     casteView.addObjectSelectionChangedListener(new ObjectValueListener<CasteType>() {

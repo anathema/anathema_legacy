@@ -12,7 +12,7 @@ public class CompositionUi extends AbstractUIConfiguration<MaterialComposition> 
   }
 
   @Override
-  public String getLabel(MaterialComposition value) {
+  protected String labelForExistingValue(MaterialComposition value) {
     return resources.getString("MaterialComposition." + value.getId());
   }
 }

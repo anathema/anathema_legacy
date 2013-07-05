@@ -297,7 +297,7 @@ public class GuiUtilities {
   }
 
   public static Dimension calculateComboBoxSize(Object[] objects, ListCellRenderer renderer) {
-    ChangeableJComboBox<Object> box = new ChangeableJComboBox<>(objects, false);
+    ChangeableJComboBox<Object> box = new ChangeableJComboBox<>(objects);
     box.setRenderer(renderer);
     return box.getPreferredSize();
   }

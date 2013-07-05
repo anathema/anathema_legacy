@@ -10,6 +10,7 @@ import net.sf.anathema.lib.gui.AgnosticUIConfiguration;
 import java.io.InputStream;
 
 public class UITableCell<T> extends ListCell<T> {
+  private static final Image NO_IMAGE = null;
   private AgnosticUIConfiguration<T> configuration;
 
   public UITableCell(AgnosticUIConfiguration<T> configuration) {
@@ -19,13 +20,18 @@ public class UITableCell<T> extends ListCell<T> {
   @Override
   public void updateItem(T item, boolean empty) {
     super.updateItem(item, empty);
-    if (item == null) {
-      return;
-    }
     setText(configuration.getLabel(item));
+    setTooltip(item);
+    setImage(item);
+  }
+
+  private void setTooltip(T item) {
     if (FxUtilities.systemSupportsPopUpsWhileEmbeddingFxIntoSwing()) {
       setTooltip(new Tooltip(configuration.getToolTipText(item)));
     }
+  }
+
+  private void setImage(T item) {
     Image image = loadImageForItem(item);
     setGraphic(new ImageView(image));
   }
@@ -33,7 +39,7 @@ public class UITableCell<T> extends ListCell<T> {
   private Image loadImageForItem(T item) {
     RelativePath relativePath = configuration.getIconsRelativePath(item);
     if (relativePath == AgnosticUIConfiguration.NO_ICON) {
-      return null;
+      return NO_IMAGE;
     }
     ResourceLoader resourceLoader = new ResourceLoader();
     InputStream imageStream = resourceLoader.loadResource(relativePath);
