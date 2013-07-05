@@ -34,6 +34,9 @@ public class CastePresenter {
     final IObjectSelectionView<CasteType> casteView = view.addObjectSelectionView(resources.getString(casteLabelResourceKey), casteUi);
     casteView.setObjects(casteTypes);
     final ITypedDescription<CasteType> caste = HeroConceptFetcher.fetch(hero).getCaste();
+    if (caste.isNotSelected()) {
+      caste.setType(casteTypes[0]);
+    }
     casteView.setSelectedObject(caste.getType());
     casteView.addObjectSelectionChangedListener(new ObjectValueListener<CasteType>() {
       @Override

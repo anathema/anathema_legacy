@@ -13,7 +13,7 @@ import net.sf.anathema.lib.util.Identifier;
 
 public class DummyHeroConcept implements HeroConcept {
 
-  public ITypedDescription<CasteType> caste = new TypedDescription<CasteType>(CasteType.NULL_CASTE_TYPE);
+  public ITypedDescription<CasteType> caste = new TypedDescription();
   private IIntegerDescription age = new IntegerDescription(0);
 
   @Override

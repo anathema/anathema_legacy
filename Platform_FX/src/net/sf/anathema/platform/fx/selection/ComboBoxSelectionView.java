@@ -74,9 +74,13 @@ public class ComboBoxSelectionView<V> implements FxObjectSelectionView<V> {
   }
 
   @Override
-  public void setObjects(V[] objects) {
-    waitForContent();
-    comboBox.setItems(new ObservableListWrapper<>(Arrays.asList(objects)));
+  public void setObjects(final V[] objects) {
+    FxThreading.runOnCorrectThread(new Runnable() {
+      @Override
+      public void run() {
+        comboBox.setItems(new ObservableListWrapper<>(Arrays.asList(objects)));
+      }
+    });
   }
 
   private void waitForContent() {
@@ -101,6 +105,7 @@ public class ComboBoxSelectionView<V> implements FxObjectSelectionView<V> {
 
   @Override
   public void setEnabled(boolean enabled) {
+    waitForContent();
     label.setDisable(!enabled);
     comboBox.setDisable(!enabled);
   }

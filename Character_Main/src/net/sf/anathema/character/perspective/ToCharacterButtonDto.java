@@ -43,8 +43,7 @@ public class ToCharacterButtonDto implements Function<DescriptiveFeatures, Chara
     } else {
       GenericPresentationTemplate presentationTemplate = new GenericPresentationTemplate();
       presentationTemplate.setParentTemplate(templateType);
-      RelativePath casteIcon = presentationTemplate.getLargeCasteIconResource(casteType.getId(), SECOND_EDITION);
-      return casteIcon;
+      return presentationTemplate.getLargeCasteIconResource(casteType.getId(), SECOND_EDITION);
     }
   }
 }

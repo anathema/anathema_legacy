@@ -1,26 +1,22 @@
 package net.sf.anathema.character.model;
 
 import com.google.common.base.Preconditions;
-import net.sf.anathema.character.generic.caste.ITypedDescriptionType;
+import net.sf.anathema.character.generic.caste.CasteType;
 import net.sf.anathema.lib.control.ChangeListener;
 import org.jmock.example.announcer.Announcer;
 
-public class TypedDescription<T extends ITypedDescriptionType> implements ITypedDescription<T> {
+public class TypedDescription implements ITypedDescription<CasteType> {
 
   private final Announcer<ChangeListener> control = Announcer.to(ChangeListener.class);
-  private T type;
-
-  public TypedDescription(T type) {
-    this.type = type;
-  }
+  private CasteType type = CasteType.NULL_CASTE_TYPE;
 
   @Override
-  public final T getType() {
+  public final CasteType getType() {
     return type;
   }
 
   @Override
-  public final void setType(T type) {
+  public final void setType(CasteType type) {
     Preconditions.checkNotNull(type);
     if (this.type == type) {
       return;
@@ -32,6 +28,11 @@ public class TypedDescription<T extends ITypedDescriptionType> implements ITyped
   @Override
   public final void addChangeListener(ChangeListener listener) {
     control.addListener(listener);
+  }
+
+  @Override
+  public boolean isNotSelected() {
+    return type == CasteType.NULL_CASTE_TYPE;
   }
 
   private void fireTypeChangedEvent() {

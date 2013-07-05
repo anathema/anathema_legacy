@@ -16,7 +16,7 @@ import net.sf.anathema.lib.util.Identifier;
 
 public class HeroConceptImpl implements HeroConcept, HeroModel {
 
-  private final ITypedDescription<CasteType> caste = new TypedDescription<>(CasteType.NULL_CASTE_TYPE);
+  private final ITypedDescription<CasteType> caste = new TypedDescription();
   private final IIntegerDescription age = new IntegerDescription(0);
 
   @Override

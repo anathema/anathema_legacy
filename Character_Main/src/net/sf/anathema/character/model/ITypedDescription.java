@@ -10,4 +10,6 @@ public interface ITypedDescription<T extends ITypedDescriptionType> {
   void setType(T type);
 
   void addChangeListener(ChangeListener listener);
+
+  boolean isNotSelected();
 }
