@@ -23,7 +23,7 @@ public class FxTraitView implements IIntValueView {
 
   @Override
   public void setValue(int newValue) {
-    spinner.setValue(newValue);
+    spinner.setValueSilently(newValue);
   }
 
   @Override
@@ -45,7 +45,8 @@ public class FxTraitView implements IIntValueView {
   private void initListening() {
     spinner.addListener(new ChangeListener<Integer>() {
       @Override
-      public void changed(ObservableValue<? extends Integer> observableValue, Integer integer, Integer newValue) {
+      public void changed(ObservableValue<? extends Integer> observableValue, Integer oldValue, Integer newValue) {
+        spinner.setValueSilently(oldValue);
         valueChangeAnnouncer.announce().valueChanged(newValue);
       }
     });
