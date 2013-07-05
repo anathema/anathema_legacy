@@ -3,9 +3,8 @@ package net.sf.anathema.character.library.trait.presenter;
 import net.sf.anathema.character.library.trait.Trait;
 import net.sf.anathema.framework.value.IIntValueView;
 import net.sf.anathema.lib.control.IIntValueChangedListener;
-import net.sf.anathema.lib.gui.Presenter;
 
-public class TraitPresenter implements Presenter {
+public class TraitPresenter {
 
   private final Trait trait;
   private final IIntValueView view;
@@ -15,7 +14,6 @@ public class TraitPresenter implements Presenter {
     this.view = view;
   }
 
-  @Override
   public void initPresentation() {
     view.setValue(trait.getCurrentValue());
     initModelValueListening();

@@ -20,7 +20,7 @@ public class FxCostSelectionView implements CostSelectionView {
 
   private final SelectionViewFactory selectionViewFactory;
   private FxObjectSelectionView<String> selection;
-  private final DotSelectionSpinner spinner = new DotSelectionSpinner(0,5);
+  private final DotSelectionSpinner spinner = new DotSelectionSpinner(0, 5);
   private final MigPane pane = new MigPane(withoutInsets());
   private final Announcer<ISelectionIntValueChangedListener> announcer = new Announcer<>(
           ISelectionIntValueChangedListener.class);
@@ -35,7 +35,8 @@ public class FxCostSelectionView implements CostSelectionView {
         selection = selectionViewFactory.create(text, new SimpleUiConfiguration());
         pane.add(selection.getNode());
         pane.add(spinner.getNode());
-        startListening();
+        selection.addObjectSelectionChangedListener(typeChangeListener);
+        spinner.addListener(valueChangeListener);
       }
     });
   }
@@ -45,17 +46,21 @@ public class FxCostSelectionView implements CostSelectionView {
     Platform.runLater(new Runnable() {
       @Override
       public void run() {
-        stopListening();
         if (cost == null) {
-          selection.setSelectedObject(null);
-          spinner.setValue(0);
+          selectTypeSilently(null);
+          spinner.setValueSilently(0);
         } else {
-          selection.setSelectedObject(cost.getType());
-          spinner.setValue(cost.getValue());
+          selectTypeSilently(cost.getType());
+          spinner.setValueSilently(cost.getValue());
         }
-        startListening();
       }
     });
+  }
+
+  private void selectTypeSilently(String type) {
+    selection.removeObjectSelectionChangedListener(typeChangeListener);
+    selection.setSelectedObject(type);
+    selection.addObjectSelectionChangedListener(typeChangeListener);
   }
 
   @Override
@@ -75,17 +80,6 @@ public class FxCostSelectionView implements CostSelectionView {
 
   public Node getNode() {
     return pane;
-  }
-
-  private void startListening() {
-    selection.addObjectSelectionChangedListener(typeChangeListener);
-    spinner.addListener(valueChangeListener);
-  }
-
-
-  private void stopListening() {
-    selection.removeObjectSelectionChangedListener(typeChangeListener);
-    spinner.removeListener(valueChangeListener);
   }
 
   @SuppressWarnings("unchecked")
