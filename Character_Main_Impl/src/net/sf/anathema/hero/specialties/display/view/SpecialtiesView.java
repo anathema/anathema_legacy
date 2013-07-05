@@ -8,14 +8,15 @@ import net.sf.anathema.character.library.trait.view.swing.SwingExtensibleTraitVi
 import net.sf.anathema.character.presenter.ExtensibleTraitView;
 import net.sf.anathema.framework.swing.IView;
 import net.sf.anathema.framework.value.IntegerViewFactory;
-import net.sf.anathema.hero.specialties.display.presenter.IButtonControlledComboEditView;
 import net.sf.anathema.hero.specialties.display.presenter.SpecialtiesConfigurationView;
+import net.sf.anathema.hero.specialties.display.presenter.SpecialtyCreationView;
 import net.sf.anathema.lib.file.RelativePath;
+import net.sf.anathema.lib.gui.AgnosticUIConfiguration;
+import net.sf.anathema.lib.gui.ui.ConfigurableListCellRenderer;
 
 import javax.swing.JComponent;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
-import javax.swing.ListCellRenderer;
 
 import static net.sf.anathema.lib.gui.layout.LayoutUtils.withoutInsets;
 
@@ -40,11 +41,10 @@ public class SpecialtiesView implements SpecialtiesConfigurationView, IView {
   }
 
   @Override
-  public IButtonControlledComboEditView<ITraitReference> addSpecialtySelectionView(String labelText,
-                                                                                   ListCellRenderer renderer,
-                                                                                   RelativePath addIcon) {
-    ButtonControlledComboEditView<ITraitReference> objectSelectionView = new ButtonControlledComboEditView<>(addIcon,
-            renderer);
+  public SpecialtyCreationView addSpecialtySelectionView(AgnosticUIConfiguration<ITraitReference> configuration,
+                                                         RelativePath addIcon) {
+    SwingSpecialtyCreationView objectSelectionView = new SwingSpecialtyCreationView(addIcon,
+            new ConfigurableListCellRenderer(configuration));
     mainPanel.add(objectSelectionView.getComponent(), 0);
     return objectSelectionView;
   }

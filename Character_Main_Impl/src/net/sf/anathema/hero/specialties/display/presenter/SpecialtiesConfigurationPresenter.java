@@ -11,7 +11,6 @@ import net.sf.anathema.character.library.trait.subtrait.ISubTraitContainer;
 import net.sf.anathema.character.main.model.experience.ExperienceChange;
 import net.sf.anathema.character.presenter.ExtensibleTraitView;
 import net.sf.anathema.framework.presenter.resources.BasicUi;
-import net.sf.anathema.framework.view.AbstractSelectCellRenderer;
 import net.sf.anathema.hero.change.ChangeFlavor;
 import net.sf.anathema.hero.change.FlavoredChangeListener;
 import net.sf.anathema.hero.model.Hero;
@@ -21,6 +20,8 @@ import net.sf.anathema.lib.collection.IdentityMapping;
 import net.sf.anathema.lib.control.ChangeListener;
 import net.sf.anathema.lib.control.ObjectValueListener;
 import net.sf.anathema.lib.file.RelativePath;
+import net.sf.anathema.lib.gui.AbstractUIConfiguration;
+import net.sf.anathema.lib.gui.AgnosticUIConfiguration;
 import net.sf.anathema.lib.gui.Presenter;
 import net.sf.anathema.lib.resources.Resources;
 
@@ -53,7 +54,6 @@ public class SpecialtiesConfigurationPresenter implements Presenter {
     }
   };
 
-  private final Resources resources;
   private final SpecialtiesConfigurationView configurationView;
   private Hero hero;
   private final SpecialtiesModel specialtyManagement;
@@ -63,7 +63,6 @@ public class SpecialtiesConfigurationPresenter implements Presenter {
     this.hero = hero;
     this.specialtyManagement = specialtyManagement;
     this.configurationView = configurationView;
-    this.resources = resources;
     this.i18ner = new TraitInternationalizer(resources);
     this.comparator = new TraitReferenceByNameComparator(i18ner);
   }
@@ -72,15 +71,13 @@ public class SpecialtiesConfigurationPresenter implements Presenter {
   public void initPresentation() {
     initTraitListening();
     RelativePath addIcon = new BasicUi().getAddIconPath();
-    final IButtonControlledComboEditView<ITraitReference> specialtySelectionView = configurationView.addSpecialtySelectionView(
-            resources.getString("SpecialtyConfigurationView.SelectionCombo.Label"),
-            new AbstractSelectCellRenderer<ITraitReference>(resources) {
-
-              @Override
-              protected String getCustomizedDisplayValue(ITraitReference value) {
-                return i18ner.getScreenName(value);
-              }
-            }, addIcon);
+    AgnosticUIConfiguration<ITraitReference> configuration = new AbstractUIConfiguration<ITraitReference>() {
+      @Override
+      protected String labelForExistingValue(ITraitReference value) {
+        return i18ner.getScreenName(value);
+      }
+    };
+    final SpecialtyCreationView specialtySelectionView = configurationView.addSpecialtySelectionView(configuration, addIcon);
     setObjects(specialtySelectionView);
     specialtySelectionView.addSelectionChangedListener(new ObjectValueListener<ITraitReference>() {
       @Override
@@ -137,7 +134,7 @@ public class SpecialtiesConfigurationPresenter implements Presenter {
     updateSpecialtyViewButtons();
   }
 
-  private void setObjects(IButtonControlledComboEditView<ITraitReference> specialtySelectionView) {
+  private void setObjects(SpecialtyCreationView specialtySelectionView) {
     ITraitReference[] allTraits = getAllEligibleTraits();
     Arrays.sort(allTraits, comparator);
     specialtySelectionView.setObjects(allTraits);
@@ -153,9 +150,10 @@ public class SpecialtiesConfigurationPresenter implements Presenter {
     return specialtyManagement.getSpecialtiesContainer(reference);
   }
 
-  private void reset(IButtonControlledComboEditView<?> specialtySelectionView) {
+  private void reset(SpecialtyCreationView specialtySelectionView) {
     specialtyManagement.clear();
     specialtySelectionView.clear();
+    specialtyManagement.setCurrentTrait(getAllEligibleTraits()[0]);
   }
 
   private ITraitReference[] getAllTraits() {

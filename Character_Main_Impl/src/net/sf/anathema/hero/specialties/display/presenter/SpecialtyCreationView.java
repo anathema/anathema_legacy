@@ -1,11 +1,12 @@
 package net.sf.anathema.hero.specialties.display.presenter;
 
+import net.sf.anathema.character.generic.framework.ITraitReference;
 import net.sf.anathema.interaction.Command;
 import net.sf.anathema.lib.control.ObjectValueListener;
 
-public interface IButtonControlledComboEditView<K> {
+public interface SpecialtyCreationView {
 
-  void addSelectionChangedListener(ObjectValueListener<K> name);
+  void addSelectionChangedListener(ObjectValueListener<ITraitReference> name);
 
   void addEditChangedListener(ObjectValueListener<String> name);
 
@@ -15,5 +16,5 @@ public interface IButtonControlledComboEditView<K> {
 
   void setButtonEnabled(boolean enabled);
 
-  void setObjects(K[] objects);
+  void setObjects(ITraitReference[] objects);
 }

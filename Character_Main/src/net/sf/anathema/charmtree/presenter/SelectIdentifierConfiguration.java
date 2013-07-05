@@ -22,7 +22,7 @@ public class SelectIdentifierConfiguration<T extends Identifier> extends Abstrac
 
   @Override
   public RelativePath getIconsRelativePath(T value) {
-    if (isUnselected(value)){
+    if (isUnselected(value)) {
       return NO_ICON;
     }
     return getIconForObject(value);

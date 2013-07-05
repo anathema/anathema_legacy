@@ -2,8 +2,9 @@ package net.sf.anathema.hero.specialties.display.view;
 
 import net.miginfocom.layout.CC;
 import net.miginfocom.swing.MigLayout;
+import net.sf.anathema.character.generic.framework.ITraitReference;
 import net.sf.anathema.framework.swing.IView;
-import net.sf.anathema.hero.specialties.display.presenter.IButtonControlledComboEditView;
+import net.sf.anathema.hero.specialties.display.presenter.SpecialtyCreationView;
 import net.sf.anathema.interaction.Command;
 import net.sf.anathema.lib.control.ObjectValueListener;
 import net.sf.anathema.lib.file.RelativePath;
@@ -24,12 +25,12 @@ import java.awt.event.ActionListener;
 
 import static net.sf.anathema.lib.gui.layout.LayoutUtils.withoutInsets;
 
-public class ButtonControlledComboEditView<V> implements IButtonControlledComboEditView<V>, IView {
-  protected final ChangeableJComboBox<V> comboBox;
+public class SwingSpecialtyCreationView implements SpecialtyCreationView, IView {
+  protected final ChangeableJComboBox<ITraitReference> comboBox;
   protected final JButton addButton;
   protected final JTextField text;
 
-  public ButtonControlledComboEditView(RelativePath addIcon, ListCellRenderer renderer) {
+  public SwingSpecialtyCreationView(RelativePath addIcon, ListCellRenderer renderer) {
     this.comboBox = new ChangeableJComboBox<>();
     comboBox.setRenderer(renderer);
     this.text = new JTextField(30);
@@ -68,12 +69,12 @@ public class ButtonControlledComboEditView<V> implements IButtonControlledComboE
   }
 
   @Override
-  public void setObjects(V[] objects) {
+  public void setObjects(ITraitReference[] objects) {
     comboBox.setObjects(objects);
   }
 
   @Override
-  public void addSelectionChangedListener(ObjectValueListener<V> listener) {
+  public void addSelectionChangedListener(ObjectValueListener<ITraitReference> listener) {
     comboBox.addObjectSelectionChangedListener(listener);
   }
 
