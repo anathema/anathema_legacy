@@ -1,7 +1,11 @@
-package net.sf.anathema.character.view;
+package net.sf.anathema.hero.concept.display.description.view;
 
 import net.miginfocom.layout.CC;
 import net.miginfocom.swing.MigLayout;
+import net.sf.anathema.character.view.AddToButtonPanel;
+import net.sf.anathema.character.view.ICharacterDescriptionView;
+import net.sf.anathema.character.view.IMultiComponentLine;
+import net.sf.anathema.character.view.MultiComponentLine;
 import net.sf.anathema.framework.swing.IView;
 import net.sf.anathema.interaction.Tool;
 import net.sf.anathema.lib.workflow.textualdescription.ITextView;

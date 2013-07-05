@@ -1,4 +1,4 @@
-package net.sf.anathema.hero.concept.display.description;
+package net.sf.anathema.hero.concept.display.description.presenter;
 
 import net.sf.anathema.character.main.model.concept.HeroConcept;
 import net.sf.anathema.character.main.model.concept.HeroConceptFetcher;
