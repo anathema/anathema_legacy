@@ -73,8 +73,8 @@ public class CreationOverviewPresenter implements Presenter {
         public void visitAdditionalAlotmentModel(IAdditionalSpendingModel visitedModel) {
           if (visitedModel.isExtensionRequired()) {
             IAdditionalAlotmentView valueView = categoriesById.get(visitedModel.getCategoryId())
-                                                              .addAdditionalAlotmentView(getLabelString(visitedModel),
-                                                                      visitedModel.getRequiredSize());
+                    .addAdditionalAlotmentView(getLabelString(visitedModel),
+                            visitedModel.getRequiredSize());
             presenters.add(new AdditionalAlotmentSubPresenter(visitedModel, valueView));
           } else {
             visitAlotmentModel(visitedModel);
@@ -112,8 +112,8 @@ public class CreationOverviewPresenter implements Presenter {
   }
 
   private void initConcept() {
-    IOverviewCategory category = view.addOverviewCategory(getString("Overview.Creation.Category.Concept"));
     if (!template.getCasteCollection().isEmpty()) {
+      IOverviewCategory category = view.addOverviewCategory(getString("Overview.Creation.Category.Concept"));
       IValueView<String> casteView = category.addStringValueView(getString(template.getPresentationProperties().getCasteLabelResource()));
       IValueModel<String> casteModel = new IValueModel<String>() {
         @Override
