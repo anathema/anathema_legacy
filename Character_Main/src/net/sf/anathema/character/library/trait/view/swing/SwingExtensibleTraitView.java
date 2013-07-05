@@ -33,8 +33,8 @@ public class SwingExtensibleTraitView implements ExtensibleTraitView {
   }
 
   @Override
-  public ToggleTool addToggleInFront(IIconToggleButtonProperties properties) {
-    return addToggle(properties, front);
+  public ToggleTool addToggleInFront() {
+    throw new UnsupportedOperationException("No longer required");
   }
 
   @Override

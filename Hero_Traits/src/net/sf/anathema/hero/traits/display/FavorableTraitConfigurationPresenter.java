@@ -14,7 +14,6 @@ import net.sf.anathema.character.main.model.experience.ExperienceModelFetcher;
 import net.sf.anathema.character.main.model.traits.TraitMap;
 import net.sf.anathema.character.main.model.traits.TraitModelFetcher;
 import net.sf.anathema.character.presenter.ExtensibleTraitView;
-import net.sf.anathema.character.presenter.FavorableTraitViewProperties;
 import net.sf.anathema.hero.change.ChangeFlavor;
 import net.sf.anathema.hero.change.FlavoredChangeListener;
 import net.sf.anathema.hero.model.Hero;
@@ -95,8 +94,7 @@ public class FavorableTraitConfigurationPresenter {
   }
 
   private void addCasteAndFavoredToggle(final Trait favorableTrait, ExtensibleTraitView traitView) {
-    FavorableTraitViewProperties properties = new FavorableTraitViewProperties(hero, presentationProperties, favorableTrait);
-    final ToggleTool casteTool = traitView.addToggleInFront(properties);
+    final ToggleTool casteTool = traitView.addToggleInFront();
     casteTool.setCommand(new Command() {
       @Override
       public void execute() {

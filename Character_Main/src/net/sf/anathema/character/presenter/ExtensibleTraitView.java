@@ -8,7 +8,7 @@ import net.sf.anathema.interaction.Tool;
 public interface ExtensibleTraitView {
   IIntValueView getIntValueView();
 
-  ToggleTool addToggleInFront(IIconToggleButtonProperties properties);
+  ToggleTool addToggleInFront();
 
   ToggleTool addToggleBehind(IIconToggleButtonProperties properties);
 
