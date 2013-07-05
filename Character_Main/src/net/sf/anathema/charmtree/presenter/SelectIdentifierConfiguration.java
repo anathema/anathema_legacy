@@ -28,10 +28,6 @@ public class SelectIdentifierConfiguration<T extends Identifier> extends Abstrac
     return getIconForObject(value);
   }
 
-  protected boolean isUnselected(T value) {
-    return value == null;
-  }
-
   @SuppressWarnings("UnusedParameters")
   protected RelativePath getIconForObject(T value) {
     return NO_ICON;
@@ -39,5 +35,9 @@ public class SelectIdentifierConfiguration<T extends Identifier> extends Abstrac
 
   protected String getKeyForObject(T value) {
     return value.getId();
+  }
+
+  private boolean isUnselected(T value) {
+    return value == null;
   }
 }
