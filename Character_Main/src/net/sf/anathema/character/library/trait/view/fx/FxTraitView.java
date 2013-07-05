@@ -13,6 +13,7 @@ public class FxTraitView implements IIntValueView {
   private final Announcer<IIntValueChangedListener> valueChangeAnnouncer = new Announcer<>(IIntValueChangedListener.class);
   private final DotSelectionSpinner spinner;
   private final Label label;
+
   private final FxConfigurableLayout layout = FxConfigurableLayout.Right();
 
   public FxTraitView(String labelText, int maxValue) {
