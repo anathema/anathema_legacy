@@ -1,0 +1,5 @@
+.filled {
+    -mortal: rgba(177, 177, 253);
+    -fx-indicator-inner-color: derive(-mortal , 20%);
+    -fx-indicator-outer-color: derive(-mortal , -20%);
+}

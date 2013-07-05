@@ -1,5 +1,5 @@
 .filled {
-    -solar: rgba(247, 234, 130, 1);
+    -solar: rgba(247, 234, 130);
     -fx-indicator-inner-color: derive(-solar , 20%);
     -fx-indicator-outer-color: derive(-solar , -20%);
 }
