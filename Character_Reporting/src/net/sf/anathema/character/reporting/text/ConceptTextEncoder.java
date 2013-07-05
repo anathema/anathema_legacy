@@ -18,12 +18,10 @@ public class ConceptTextEncoder extends AbstractTextEncoder {
 
   public void createParagraphs(MultiColumnText columnText, Hero hero) throws DocumentException {
     CasteType casteType = HeroConceptFetcher.fetch(hero).getCaste().getType();
-    if (casteType != CasteType.NULL_CASTE_TYPE) {
-      ICharacterType characterType = hero.getTemplate().getTemplateType().getCharacterType();
-      Phrase castePhrase = createTextParagraph(createBoldTitle(getString("Sheet.Label.Caste." + characterType.getId()) + ": "));
-      String casteId = casteType.getId();
-      castePhrase.add(createTextChunk(casteId));
-      columnText.addElement(castePhrase);
-    }
+    ICharacterType characterType = hero.getTemplate().getTemplateType().getCharacterType();
+    Phrase castePhrase = createTextParagraph(createBoldTitle(getString("Sheet.Label.Caste." + characterType.getId()) + ": "));
+    String casteId = casteType.getId();
+    castePhrase.add(createTextChunk(casteId));
+    columnText.addElement(castePhrase);
   }
 }

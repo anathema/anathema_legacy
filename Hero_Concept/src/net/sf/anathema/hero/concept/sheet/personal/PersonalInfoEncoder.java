@@ -81,10 +81,8 @@ public class PersonalInfoEncoder implements IVariableContentEncoder {
     return (characterType.isExaltType() ? 4 : 3);
   }
 
+  //TODO (Duplication) Duplicates rendering info from AgnosticCasteUI
   private String getCasteString(CasteType casteType) {
-    if (casteType == null || casteType == CasteType.NULL_CASTE_TYPE) {
-      return null;
-    }
     return resources.getString("Caste." + casteType.getId());
   }
 

@@ -102,19 +102,13 @@ public class TraitFavorization implements ITraitFavorization {
   }
 
   @Override
-  public CasteType[] getCastes() {
-    return castes;
-  }
-
-  @Override
   public void updateFavorableStateToCaste() {
     CasteType casteType = HeroConceptFetcher.fetch(hero).getCaste().getType();
     setCaste(isSupportedCasteType(casteType));
   }
 
   private boolean isSupportedCasteType(CasteType casteType) {
-    CasteType[] favorizationCaste = getCastes();
-    for (CasteType caste : favorizationCaste) {
+    for (CasteType caste : castes) {
       if (caste == casteType) {
         return true;
       }

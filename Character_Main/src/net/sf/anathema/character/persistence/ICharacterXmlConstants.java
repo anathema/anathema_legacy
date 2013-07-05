@@ -12,7 +12,6 @@ public interface ICharacterXmlConstants {
 
   String TAG_ABILITIES = "Abilities";
   String TAG_ATTRIBUTES = "Attributes";
-  String TAG_BACKGROUNDS = "Backgrounds";
   String TAG_CASTE = "Caste";
   String TAG_CATEGORIES = "Categories";
   String TAG_CHARACTER_CONCEPT = "CharacterConcept";
@@ -30,7 +29,6 @@ public interface ICharacterXmlConstants {
   String TAG_EXALTED_CHARACTER_ROOT = "ExaltedCharacter";
   String TAG_EYES = "Eyes";
   String TAG_HAIR = "Hair";
-  String TAG_MOTIVATION = "Motivation";
   String TAG_NAME = "Name";
   String TAG_NOTES = "Notes";
   String TAG_PERIPHRASE = "Periphrase";
@@ -48,6 +46,4 @@ public interface ICharacterXmlConstants {
   String TAG_STATISTICS = "Statistics";
   String TAG_VIRTUES = "Virtues";
   String TAG_WILLPOWER = "Willpower";
-
-  String TAG_CHARMFILTERS = "CharmFilters";
 }

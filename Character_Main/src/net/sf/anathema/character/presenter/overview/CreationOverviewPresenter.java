@@ -140,11 +140,9 @@ public class CreationOverviewPresenter implements Presenter {
     }
   }
 
+  //TODO (Duplication) Duplicates rendering info from AgnosticCasteUI
   private String getCasteValueResourceKey() {
     CasteType casteType = HeroConceptFetcher.fetch(hero).getCaste().getType();
-    if (casteType.equals(CasteType.NULL_CASTE_TYPE)) {
-      return "";
-    }
     return "Caste." + casteType.getId();
   }
 }

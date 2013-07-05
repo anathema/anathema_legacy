@@ -7,14 +7,12 @@ import net.sf.anathema.character.generic.template.TemplateType;
 import net.sf.anathema.character.generic.type.CharacterTypes;
 import net.sf.anathema.character.generic.type.ICharacterType;
 import net.sf.anathema.framework.repository.IRepositoryFileResolver;
-import net.sf.anathema.framework.repository.access.printname.PrintNameFileAccess;
 import net.sf.anathema.framework.view.PrintNameFile;
 import net.sf.anathema.lib.exception.AnathemaException;
 import net.sf.anathema.lib.registry.IRegistry;
 import net.sf.anathema.lib.util.Identifier;
 import net.sf.anathema.lib.util.SimpleIdentifier;
 import net.sf.anathema.lib.xml.DocumentUtilities;
-import org.apache.commons.io.FileUtils;
 import org.dom4j.Attribute;
 import org.dom4j.Document;
 import org.dom4j.Element;
@@ -23,8 +21,6 @@ import java.io.File;
 import java.io.IOException;
 import java.util.HashMap;
 import java.util.Map;
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
 
 import static net.sf.anathema.character.generic.caste.CasteType.NULL_CASTE_TYPE;
 import static net.sf.anathema.character.generic.impl.magic.ICharmXMLConstants.ATTRIB_TYPE;
@@ -37,9 +33,6 @@ public class RegExCharacterPrintNameFileScanner implements CharacterPrintNameFil
   private static final String TYPE_ELEMENT_NAME = TAG_CHARACTER_TYPE;
   private static final String CASTE_ELEMENT_NAME = TAG_CASTE;
   private static final String CASTE_ELEMENT_TYPE_ATTR = ATTRIB_TYPE;
-  private static final Pattern typePattern =
-          Pattern.compile("<" + TYPE_ELEMENT_NAME + ATTRIB_SUB_TYPE + "=\"(.*?)\"" + ".*>(.*?)</" + TYPE_ELEMENT_NAME + ">");
-  private static final Pattern castePattern = Pattern.compile("<" + CASTE_ELEMENT_NAME + " " + CASTE_ELEMENT_TYPE_ATTR + "=\"(.*?)\"/>");
   private final Map<PrintNameFile, ITemplateType> typesByFile = new HashMap<>();
   private final Map<PrintNameFile, Identifier> castesByFile = new HashMap<>();
   private final IRegistry<ICharacterType, ICasteCollection> registry;
@@ -59,7 +52,6 @@ public class RegExCharacterPrintNameFileScanner implements CharacterPrintNameFil
       File scanFile = resolver.getMainFile(file.getItemType().getRepositoryConfiguration(), file.getRepositoryId());
       document = DocumentUtilities.read(scanFile.toPath());
     } catch (AnathemaException ex) {
-      scanCompatible(file);
       return;
     }
 
@@ -73,7 +65,7 @@ public class RegExCharacterPrintNameFileScanner implements CharacterPrintNameFil
     String casteTypeStr = casteTypeAttr != null ? casteTypeAttr.getValue() : null;
 
     if (typeString == null) {
-      throw new IllegalStateException("Missing Hero Type in " + file);
+      throw new IllegalStateException("Missing Hero type in " + file);
     }
 
     ICharacterType characterType = characterTypes.findById(typeString);
@@ -89,25 +81,6 @@ public class RegExCharacterPrintNameFileScanner implements CharacterPrintNameFil
     castesByFile.put(file, casteType);
   }
 
-  // Used only by scan as a fall-back method for backward compatibility when all fails.
-  private void scanCompatible(PrintNameFile file) throws IOException {
-    File scanFile = resolver.getMainFile(file.getItemType().getRepositoryConfiguration(), file.getRepositoryId());
-    String content = FileUtils.readFileToString(scanFile, PrintNameFileAccess.COMPATIBILITY_ENCODING);
-    Matcher typeMatcher = typePattern.matcher(content);
-    typeMatcher.find();
-    ICharacterType characterType;
-    characterType = characterTypes.findById(typeMatcher.group(1));
-    SimpleIdentifier subType = new SimpleIdentifier(typeMatcher.group(1));
-    typesByFile.put(file, new TemplateType(characterType, subType));
-    Matcher casteMatcher = castePattern.matcher(content);
-    if (!casteMatcher.find()) {
-      castesByFile.put(file, null);
-      return;
-    }
-    Identifier casteType = registry.get(characterType).getById(casteMatcher.group(1));
-    castesByFile.put(file, casteType);
-  }
-
   @Override
   public ICharacterType getCharacterType(PrintNameFile file) {
     ITemplateType templateType = getTemplateType(file);
@@ -119,9 +92,8 @@ public class RegExCharacterPrintNameFileScanner implements CharacterPrintNameFil
 
   @Override
   public ITemplateType getTemplateType(PrintNameFile file) {
-    ITemplateType templateType = typesByFile.get(file);
-    if (templateType != null) {
-      return templateType;
+    if (typesByFile.containsKey(file)) {
+      return typesByFile.get(file);
     }
     try {
       scan(file);
@@ -133,9 +105,8 @@ public class RegExCharacterPrintNameFileScanner implements CharacterPrintNameFil
 
   @Override
   public Identifier getCasteType(PrintNameFile file) {
-    Identifier caste = castesByFile.get(file);
-    if (caste != null) {
-      return caste;
+    if (castesByFile.containsKey(file)) {
+      return castesByFile.get(file);
     }
     try {
       scan(file);

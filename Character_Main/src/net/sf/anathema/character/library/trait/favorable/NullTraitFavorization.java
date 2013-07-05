@@ -1,6 +1,5 @@
 package net.sf.anathema.character.library.trait.favorable;
 
-import net.sf.anathema.character.generic.caste.CasteType;
 import net.sf.anathema.character.library.ITraitFavorization;
 
 public class NullTraitFavorization implements ITraitFavorization {
@@ -8,11 +7,6 @@ public class NullTraitFavorization implements ITraitFavorization {
   @Override
   public void addFavorableStateChangedListener(IFavorableStateChangedListener listener) {
     // nothing to do
-  }
-
-  @Override
-  public CasteType[] getCastes() {
-    return new CasteType[]{CasteType.NULL_CASTE_TYPE};
   }
 
   @Override
