@@ -20,11 +20,11 @@ public class DescriptionPresenter {
 
   private final HeroDescription description;
   private final HeroConcept heroConcept;
-  private final ICharacterDescriptionView descriptionView;
+  private final CharacterDescriptionView descriptionView;
   private final boolean hasAnima;
   private final Resources resources;
 
-  public DescriptionPresenter(DescriptionDetails descriptionDetails, Resources resources, ICharacterDescriptionView descriptionView) {
+  public DescriptionPresenter(DescriptionDetails descriptionDetails, Resources resources, CharacterDescriptionView descriptionView) {
     this.resources = resources;
     this.description = descriptionDetails.getDescription();
     this.heroConcept = descriptionDetails.getHeroConcept();
@@ -67,16 +67,16 @@ public class DescriptionPresenter {
   }
 
   private void initMinorTraits(TextualPresentation presentation) {
-    IMultiComponentLine basicLooks = descriptionView.addMultiComponentLine();
+    MultiComponentLine basicLooks = descriptionView.addMultiComponentLine();
     addField(basicLooks, "CharacterDescription.Label.Hair", description.getHair(), presentation);
     addField(basicLooks, "CharacterDescription.Label.Skin", description.getSkin(), presentation);
     addField(basicLooks, "CharacterDescription.Label.Eyes", description.getEyes(), presentation);
-    IMultiComponentLine sexAndAge = descriptionView.addMultiComponentLine();
+    MultiComponentLine sexAndAge = descriptionView.addMultiComponentLine();
     addField(sexAndAge, "CharacterDescription.Label.Sex", description.getSex(), presentation);
     addInteger(sexAndAge, "Label.Age", heroConcept.getAge());
   }
 
-  private void addInteger(IMultiComponentLine componentLine, String label, final IIntegerDescription integerDescription) {
+  private void addInteger(MultiComponentLine componentLine, String label, final IIntegerDescription integerDescription) {
     String title = resources.getString(label);
     IIntegerView view = componentLine.addIntegerView(title, integerDescription);
     view.addChangeListener(new IIntValueChangedListener() {
@@ -87,7 +87,7 @@ public class DescriptionPresenter {
     });
   }
 
-  private void addField(IMultiComponentLine componentLine, String label, ITextualDescription description, TextualPresentation presentation) {
+  private void addField(MultiComponentLine componentLine, String label, ITextualDescription description, TextualPresentation presentation) {
     String labelText = resources.getString(label);
     ITextView textView = componentLine.addFieldsView(labelText);
     presentation.initView(textView, description);

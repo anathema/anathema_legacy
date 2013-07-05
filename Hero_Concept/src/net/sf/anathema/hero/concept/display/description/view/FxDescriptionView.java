@@ -2,8 +2,8 @@ package net.sf.anathema.hero.concept.display.description.view;
 
 import javafx.scene.Node;
 import net.miginfocom.layout.CC;
-import net.sf.anathema.hero.concept.display.description.presenter.ICharacterDescriptionView;
-import net.sf.anathema.hero.concept.display.description.presenter.IMultiComponentLine;
+import net.sf.anathema.hero.concept.display.description.presenter.CharacterDescriptionView;
+import net.sf.anathema.hero.concept.display.description.presenter.MultiComponentLine;
 import net.sf.anathema.interaction.Tool;
 import net.sf.anathema.lib.workflow.textualdescription.ITextView;
 import net.sf.anathema.platform.fx.FxTextView;
@@ -17,12 +17,12 @@ import java.util.List;
 
 import static net.sf.anathema.lib.gui.layout.LayoutUtils.withoutInsets;
 
-public class FxDescriptionView implements ICharacterDescriptionView, NodeHolder {
+public class FxDescriptionView implements CharacterDescriptionView, NodeHolder {
   private MigPane pane = new MigPane(withoutInsets().wrapAfter(2));
   private final List<MigPane> buttonPanels = new ArrayList<>();
 
   @Override
-  public IMultiComponentLine addMultiComponentLine() {
+  public MultiComponentLine addMultiComponentLine() {
     final FxMultiComponentLine line = new FxMultiComponentLine();
     FxThreading.runOnCorrectThread(new Runnable() {
       @Override

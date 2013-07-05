@@ -3,9 +3,9 @@ package net.sf.anathema.hero.concept.display.description.view;
 import net.sf.anathema.character.generic.type.ICharacterType;
 import net.sf.anathema.character.platform.RegisteredCharacterView;
 import net.sf.anathema.character.view.SubViewFactory;
-import net.sf.anathema.hero.concept.display.description.presenter.ICharacterDescriptionView;
+import net.sf.anathema.hero.concept.display.description.presenter.CharacterDescriptionView;
 
-@RegisteredCharacterView(ICharacterDescriptionView.class)
+@RegisteredCharacterView(CharacterDescriptionView.class)
 public class DescriptionViewFactory implements SubViewFactory {
   @SuppressWarnings("unchecked")
   @Override

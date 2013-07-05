@@ -3,7 +3,7 @@ package net.sf.anathema.hero.concept.display.description.presenter;
 import net.sf.anathema.interaction.Tool;
 import net.sf.anathema.lib.workflow.textualdescription.ITextView;
 
-public interface ICharacterDescriptionView {
+public interface CharacterDescriptionView {
 
   ITextView addLineView(String labelText);
 
@@ -11,5 +11,5 @@ public interface ICharacterDescriptionView {
 
   Tool addEditAction();
 
-  IMultiComponentLine addMultiComponentLine();
+  MultiComponentLine addMultiComponentLine();
 }

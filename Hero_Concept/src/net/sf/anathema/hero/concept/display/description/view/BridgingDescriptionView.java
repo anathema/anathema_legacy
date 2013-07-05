@@ -1,15 +1,15 @@
 package net.sf.anathema.hero.concept.display.description.view;
 
 import net.sf.anathema.framework.swing.IView;
-import net.sf.anathema.hero.concept.display.description.presenter.ICharacterDescriptionView;
-import net.sf.anathema.hero.concept.display.description.presenter.IMultiComponentLine;
+import net.sf.anathema.hero.concept.display.description.presenter.CharacterDescriptionView;
+import net.sf.anathema.hero.concept.display.description.presenter.MultiComponentLine;
 import net.sf.anathema.interaction.Tool;
 import net.sf.anathema.lib.workflow.textualdescription.ITextView;
 import net.sf.anathema.platform.fx.BridgingPanel;
 
 import javax.swing.JComponent;
 
-public class BridgingDescriptionView implements ICharacterDescriptionView, IView {
+public class BridgingDescriptionView implements CharacterDescriptionView, IView {
   private final FxDescriptionView fxView;
   private final BridgingPanel panel = new BridgingPanel();
 
@@ -39,7 +39,7 @@ public class BridgingDescriptionView implements ICharacterDescriptionView, IView
   }
 
   @Override
-  public IMultiComponentLine addMultiComponentLine() {
+  public MultiComponentLine addMultiComponentLine() {
     return fxView.addMultiComponentLine();
   }
 }

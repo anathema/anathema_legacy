@@ -3,14 +3,14 @@ package net.sf.anathema.hero.concept.display.description.view;
 import javafx.scene.Node;
 import javafx.scene.control.Label;
 import net.sf.anathema.character.model.IIntegerDescription;
-import net.sf.anathema.hero.concept.display.description.presenter.IMultiComponentLine;
+import net.sf.anathema.hero.concept.display.description.presenter.MultiComponentLine;
 import net.sf.anathema.lib.gui.widgets.IIntegerView;
 import net.sf.anathema.lib.workflow.textualdescription.ITextView;
 import net.sf.anathema.platform.fx.FxTextView;
 import net.sf.anathema.platform.fx.FxThreading;
 import org.tbee.javafx.scene.layout.MigPane;
 
-public class FxMultiComponentLine implements IMultiComponentLine {
+public class FxMultiComponentLine implements MultiComponentLine {
   private final MigPane fieldPanel = new MigPane();
 
   @Override
