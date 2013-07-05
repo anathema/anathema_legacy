@@ -14,8 +14,9 @@ public class CharacterConceptFactory extends SimpleModelTreeEntry implements Her
     super(HeroConcept.ID, ExperienceModel.ID);
   }
 
+  @SuppressWarnings("unchecked")
   @Override
-  public HeroConceptImpl create(TemplateFactory templateFactory) {
-    return new HeroConceptImpl();
+  public DefaultHeroConcept create(TemplateFactory templateFactory) {
+    return new DefaultHeroConcept();
   }
 }

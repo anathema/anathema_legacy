@@ -1,23 +1,22 @@
 package net.sf.anathema.character.main.testing.dummy.models;
 
-import net.sf.anathema.character.generic.caste.CasteType;
 import net.sf.anathema.character.main.model.concept.HeroConcept;
 import net.sf.anathema.character.model.IIntegerDescription;
-import net.sf.anathema.character.model.ITypedDescription;
 import net.sf.anathema.character.model.IntegerDescription;
-import net.sf.anathema.character.model.TypedDescription;
 import net.sf.anathema.hero.change.ChangeAnnouncer;
+import net.sf.anathema.hero.concept.model.concept.CasteSelection;
+import net.sf.anathema.hero.concept.model.concept.DefaultCasteSelection;
 import net.sf.anathema.hero.model.Hero;
 import net.sf.anathema.hero.model.InitializationContext;
 import net.sf.anathema.lib.util.Identifier;
 
 public class DummyHeroConcept implements HeroConcept {
 
-  public ITypedDescription<CasteType> caste = new TypedDescription();
+  public CasteSelection caste = new DefaultCasteSelection();
   private IIntegerDescription age = new IntegerDescription(0);
 
   @Override
-  public ITypedDescription<CasteType> getCaste() {
+  public CasteSelection getCaste() {
     return caste;
   }
 

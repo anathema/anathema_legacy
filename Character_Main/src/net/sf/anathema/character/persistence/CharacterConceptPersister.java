@@ -5,8 +5,8 @@ import net.sf.anathema.character.generic.caste.ICasteCollection;
 import net.sf.anathema.character.main.model.concept.HeroConcept;
 import net.sf.anathema.character.main.model.description.HeroDescription;
 import net.sf.anathema.character.model.IIntegerDescription;
-import net.sf.anathema.character.model.ITypedDescription;
 import net.sf.anathema.framework.persistence.TextPersister;
+import net.sf.anathema.hero.concept.model.concept.CasteSelection;
 import net.sf.anathema.lib.exception.PersistenceException;
 import net.sf.anathema.lib.xml.ElementUtilities;
 import org.dom4j.Element;
@@ -27,7 +27,7 @@ public class CharacterConceptPersister {
     saveAge(characterConceptElement, heroConcept.getAge());
   }
 
-  private void saveCaste(Element parent, ITypedDescription<CasteType> caste) {
+  private void saveCaste(Element parent, CasteSelection caste) {
     CasteType casteType = caste.getType();
     if (casteType.getId() != null) {
       Element casteElement = parent.addElement(TAG_CASTE);

@@ -1,11 +1,11 @@
-package net.sf.anathema.character.model;
+package net.sf.anathema.hero.concept.model.concept;
 
 import com.google.common.base.Preconditions;
 import net.sf.anathema.character.generic.caste.CasteType;
 import net.sf.anathema.lib.control.ChangeListener;
 import org.jmock.example.announcer.Announcer;
 
-public class TypedDescription implements ITypedDescription<CasteType> {
+public class DefaultCasteSelection implements CasteSelection {
 
   private final Announcer<ChangeListener> control = Announcer.to(ChangeListener.class);
   private CasteType type = CasteType.NULL_CASTE_TYPE;
