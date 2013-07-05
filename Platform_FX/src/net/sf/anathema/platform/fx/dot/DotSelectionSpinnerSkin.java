@@ -67,6 +67,7 @@ public class DotSelectionSpinnerSkin<T> extends SkinBase<ListSpinner<T>, ListSpi
 
   public DotSelectionSpinnerSkin(ListSpinner<T> control) {
     super(control, new ListSpinnerBehavior<>(control));
+    getStyleClass().add(INVISIBLECONTAINER);
     createOuterContainer();
     createOverlay();
     createButtons();
