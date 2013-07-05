@@ -3,6 +3,8 @@ package net.sf.anathema.platform.fx.dot;
 import javafx.animation.KeyFrame;
 import javafx.animation.KeyValue;
 import javafx.animation.Timeline;
+import javafx.event.ActionEvent;
+import javafx.event.EventHandler;
 import javafx.scene.Node;
 import javafx.scene.effect.Bloom;
 import javafx.scene.effect.BlurType;
@@ -18,7 +20,6 @@ import java.util.List;
 public class Dot {
   private static final String FILLED = "filled";
   private static final String EMPTY = "empty";
-  private static final String DOTBACKGROUND = "dotbackground";
 
   public static final double SIZE = 18;
   private StackPane indicator;
@@ -108,14 +109,20 @@ public class Dot {
   }
 
   private void animateChange(int upTime, int downTime) {
-    Bloom bloom = new Bloom(0.0);
+    Bloom bloom = new Bloom();
     indicator.setEffect(bloom);
     Timeline timeline = new Timeline();
     KeyValue keyValue = new KeyValue(bloom.thresholdProperty(), 1.0);
     KeyFrame keyFrame = new KeyFrame(Duration.millis(upTime), keyValue);
-    KeyValue keyValue2 = new KeyValue(bloom.thresholdProperty(), 0.0);
+    KeyValue keyValue2 = new KeyValue(bloom.thresholdProperty(), 0.3);
     KeyFrame keyFrame1 = new KeyFrame(Duration.millis(downTime), keyValue2);
     timeline.getKeyFrames().addAll(keyFrame, keyFrame1);
+    timeline.setOnFinished(new EventHandler<ActionEvent>() {
+      @Override
+      public void handle(ActionEvent actionEvent) {
+        indicator.setEffect(null);
+      }
+    });
     timeline.play();
   }
 }
