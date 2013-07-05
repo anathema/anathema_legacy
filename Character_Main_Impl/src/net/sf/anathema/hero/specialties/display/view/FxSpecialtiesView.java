@@ -19,6 +19,10 @@ public class FxSpecialtiesView implements SpecialtiesConfigurationView, NodeHold
   private final MigPane pane = new MigPane();
   private final FxGroupedColumnPanel columnPanel = new FxGroupedColumnPanel(pane, new ColumnCount(1));
 
+  public FxSpecialtiesView() {
+    columnPanel.startNewGroup(null);
+  }
+
   @Override
   public ExtensibleTraitView addSpecialtyView(String abilityName, String specialtyName, RelativePath deleteIcon, int value, int maxValue) {
     FxTraitView view = new FxTraitView(abilityName + " - " + specialtyName, maxValue);
