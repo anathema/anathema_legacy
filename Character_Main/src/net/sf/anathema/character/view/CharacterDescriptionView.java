@@ -2,6 +2,7 @@ package net.sf.anathema.character.view;
 
 import net.miginfocom.layout.CC;
 import net.miginfocom.swing.MigLayout;
+import net.sf.anathema.framework.swing.IView;
 import net.sf.anathema.interaction.Tool;
 import net.sf.anathema.lib.workflow.textualdescription.ITextView;
 import net.sf.anathema.lib.workflow.textualdescription.SwingTextView;
@@ -18,7 +19,7 @@ import java.util.List;
 
 import static net.sf.anathema.lib.gui.layout.LayoutUtils.withoutInsets;
 
-public class CharacterDescriptionView implements ICharacterDescriptionView {
+public class CharacterDescriptionView implements ICharacterDescriptionView, IView {
 
   private static final int TEXT_COLUMNS = 45;
   private final JPanel content = new JPanel(new MigLayout(withoutInsets().wrapAfter(2)));

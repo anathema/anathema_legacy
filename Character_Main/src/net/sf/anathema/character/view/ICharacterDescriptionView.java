@@ -1,10 +1,9 @@
 package net.sf.anathema.character.view;
 
-import net.sf.anathema.framework.swing.IView;
 import net.sf.anathema.interaction.Tool;
 import net.sf.anathema.lib.workflow.textualdescription.ITextView;
 
-public interface ICharacterDescriptionView extends IView {
+public interface ICharacterDescriptionView {
 
   ITextView addLineView(String labelText);
 
