@@ -2,7 +2,3 @@
     -fx-indicator-inner-color: derive(purple, 120%);
     -fx-indicator-outer-color: derive(purple, 80%);
 }
-
-.dotbackground{
-    -fx-background-color: rgba(0,0,0,0);
-}

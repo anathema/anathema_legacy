@@ -6,8 +6,8 @@ Clients need to define the ".filled" class.*/
 }
 
 .empty {
-    -fx-indicator-inner-color: derive(lightgrey, 120%);
-    -fx-indicator-outer-color: derive(lightgrey, 80%);
+    -fx-indicator-inner-color: derive(darkgrey, 120%);
+    -fx-indicator-outer-color: derive(darkgrey, 80%);
 }
 
 .invisiblecontainer {

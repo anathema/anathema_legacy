@@ -40,7 +40,6 @@ public class Dot {
   private StackPane prepareContainer() {
     StackPane indicator = new StackPane();
     indicator.getStyleClass().add(FILLED);
-    indicator.getStyleClass().add(DOTBACKGROUND);
     indicator.getChildren().clear();
     return indicator;
   }
