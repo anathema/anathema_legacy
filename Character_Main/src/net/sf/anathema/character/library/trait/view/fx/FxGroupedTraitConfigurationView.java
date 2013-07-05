@@ -1,6 +1,7 @@
 package net.sf.anathema.character.library.trait.view.fx;
 
 import javafx.scene.Node;
+import net.sf.anathema.character.generic.type.ICharacterType;
 import net.sf.anathema.character.library.trait.view.GroupedFavorableTraitConfigurationView;
 import net.sf.anathema.character.presenter.ExtensibleTraitView;
 import net.sf.anathema.character.view.ColumnCount;
@@ -11,7 +12,7 @@ public class FxGroupedTraitConfigurationView implements GroupedFavorableTraitCon
   private final MigPane pane = new MigPane();
 
   @Override
-  public void initGui(ColumnCount columnCount) {
+  public void initGui(ColumnCount columnCount, ICharacterType characterType) {
     this.groupedView = new FxGroupedTraitView(pane, columnCount);
   }
 

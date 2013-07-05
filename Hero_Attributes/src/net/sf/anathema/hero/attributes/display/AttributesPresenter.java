@@ -14,7 +14,7 @@ public class AttributesPresenter {
 
   public AttributesPresenter(Hero hero, Resources resources, GroupedFavorableTraitConfigurationView view) {
     IIdentifiedTraitTypeGroup[] traitTypeGroups = AttributesModelFetcher.fetch(hero).getAttributeTypeGroups();
-    view.initGui(new ColumnCount(1));
+    view.initGui(new ColumnCount(1), hero.getTemplate().getTemplateType().getCharacterType());
     this.presenter = new FavorableTraitConfigurationPresenter(traitTypeGroups, hero, view, resources);
   }
 

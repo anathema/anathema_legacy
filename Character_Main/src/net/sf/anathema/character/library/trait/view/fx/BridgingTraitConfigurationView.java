@@ -3,6 +3,7 @@ package net.sf.anathema.character.library.trait.view.fx;
 import javafx.application.Platform;
 import javafx.embed.swing.JFXPanel;
 import javafx.scene.Parent;
+import net.sf.anathema.character.generic.type.ICharacterType;
 import net.sf.anathema.character.library.trait.view.GroupedFavorableTraitConfigurationView;
 import net.sf.anathema.character.presenter.ExtensibleTraitView;
 import net.sf.anathema.character.view.ColumnCount;
@@ -21,9 +22,16 @@ public class BridgingTraitConfigurationView implements IView, GroupedFavorableTr
   }
 
   @Override
-  public void initGui(ColumnCount columnCount) {
-    fxView.initGui(columnCount);
-    Platform.runLater(new InitScene(panel, new ViewHolder(), "skin/anathema/dotselector.css", "skin/anathema/character/trait.css"));
+  public void initGui(ColumnCount columnCount, ICharacterType characterType) {
+    fxView.initGui(columnCount, characterType);
+    String coreSkin = "skin/anathema/dotselector.css";
+    String characterTypeSkin;
+    if (characterType.getId().equals("Solar")) {
+      characterTypeSkin = "skin/solar/trait.css";
+    } else {
+      characterTypeSkin = "skin/anathema/character/trait.css";
+    }
+    Platform.runLater(new InitScene(panel, new ViewHolder(), coreSkin, characterTypeSkin));
   }
 
   @Override
