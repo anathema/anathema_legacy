@@ -10,6 +10,7 @@ public class DescriptionViewFactory implements SubViewFactory {
   @SuppressWarnings("unchecked")
   @Override
   public <T> T create(ICharacterType type) {
-    return (T) new CharacterDescriptionView();
+    FxDescriptionView view = new FxDescriptionView();
+    return (T) new BridgingDescriptionView(view);
   }
 }

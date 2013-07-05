@@ -22,6 +22,13 @@ public class FxTextView implements ITextView {
     return new FxTextView(label, textArea);
   }
 
+  public static FxTextView MultiLine(String label, int preferredRows) {
+    TextArea textArea = new TextArea();
+    textArea.setWrapText(true);
+    textArea.setPrefRowCount(preferredRows);
+    return new FxTextView(label, textArea);
+  }
+
   private final TextInputControl view;
 
   public FxTextView(String label, TextInputControl view) {

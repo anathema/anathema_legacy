@@ -7,7 +7,7 @@ public interface ICharacterDescriptionView {
 
   ITextView addLineView(String labelText);
 
-  ITextView addAreaView(String labelText, int rowCount);
+  ITextView addAreaView(String labelText);
 
   Tool addEditAction();
 

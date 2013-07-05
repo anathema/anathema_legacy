@@ -37,12 +37,12 @@ public class DescriptionPresenter {
     initNameLineView(presentation);
     initLineView("CharacterDescription.Label.Player", description.getPlayer(), presentation);
     initLineView("Label.Concept", description.getConcept(), presentation);
-    initAreaView("CharacterDescription.Label.Characterization", description.getCharacterization(), presentation);
-    initAreaView("CharacterDescription.Label.PhysicalDescription", description.getPhysicalDescription(), presentation);
-    initMinorTraits(presentation);
     if (hasAnima) {
       initLineView("CharacterDescription.Label.Anima", description.getAnima(), presentation);
     }
+    initAreaView("CharacterDescription.Label.Characterization", description.getCharacterization(), presentation);
+    initAreaView("CharacterDescription.Label.PhysicalDescription", description.getPhysicalDescription(), presentation);
+    initMinorTraits(presentation);
     initAreaView("CharacterDescription.Label.Notes", description.getNotes(), presentation);
   }
 
@@ -67,12 +67,13 @@ public class DescriptionPresenter {
   }
 
   private void initMinorTraits(TextualPresentation presentation) {
-    IMultiComponentLine componentLine = descriptionView.addMultiComponentLine();
-    addField(componentLine, "CharacterDescription.Label.Sex", description.getSex(), presentation);
-    addField(componentLine, "CharacterDescription.Label.Hair", description.getHair(), presentation);
-    addField(componentLine, "CharacterDescription.Label.Skin", description.getSkin(), presentation);
-    addField(componentLine, "CharacterDescription.Label.Eyes", description.getEyes(), presentation);
-    addInteger(componentLine, "Label.Age", heroConcept.getAge());
+    IMultiComponentLine basicLooks = descriptionView.addMultiComponentLine();
+    addField(basicLooks, "CharacterDescription.Label.Hair", description.getHair(), presentation);
+    addField(basicLooks, "CharacterDescription.Label.Skin", description.getSkin(), presentation);
+    addField(basicLooks, "CharacterDescription.Label.Eyes", description.getEyes(), presentation);
+    IMultiComponentLine sexAndAge = descriptionView.addMultiComponentLine();
+    addField(sexAndAge, "CharacterDescription.Label.Sex", description.getSex(), presentation);
+    addInteger(sexAndAge, "Label.Age", heroConcept.getAge());
   }
 
   private void addInteger(IMultiComponentLine componentLine, String label, final IIntegerDescription integerDescription) {
@@ -98,7 +99,7 @@ public class DescriptionPresenter {
   }
 
   private void initAreaView(String labelResourceKey, ITextualDescription textualDescription, TextualPresentation presentation) {
-    ITextView textView = descriptionView.addAreaView(resources.getString(labelResourceKey), 6);
+    ITextView textView = descriptionView.addAreaView(resources.getString(labelResourceKey));
     presentation.initView(textView, textualDescription);
   }
 }
