@@ -1,4 +1,4 @@
-package net.sf.anathema.character.presenter.specialty;
+package net.sf.anathema.hero.specialties.display.presenter;
 
 import net.sf.anathema.character.generic.framework.ITraitReference;
 import net.sf.anathema.character.generic.framework.resources.TraitInternationalizer;
@@ -11,7 +11,6 @@ import net.sf.anathema.character.library.trait.subtrait.ISubTraitContainer;
 import net.sf.anathema.character.main.model.experience.ExperienceChange;
 import net.sf.anathema.character.presenter.ExtensibleTraitView;
 import net.sf.anathema.framework.presenter.resources.BasicUi;
-import net.sf.anathema.framework.presenter.view.IButtonControlledComboEditView;
 import net.sf.anathema.framework.view.AbstractSelectCellRenderer;
 import net.sf.anathema.hero.change.ChangeFlavor;
 import net.sf.anathema.hero.change.FlavoredChangeListener;
@@ -55,12 +54,12 @@ public class SpecialtiesConfigurationPresenter implements Presenter {
   };
 
   private final Resources resources;
-  private final ISpecialtiesConfigurationView configurationView;
+  private final SpecialtiesConfigurationView configurationView;
   private Hero hero;
   private final SpecialtiesModel specialtyManagement;
 
   public SpecialtiesConfigurationPresenter(Hero hero, SpecialtiesModel specialtyManagement,
-                                           ISpecialtiesConfigurationView configurationView, Resources resources) {
+                                           SpecialtiesConfigurationView configurationView, Resources resources) {
     this.hero = hero;
     this.specialtyManagement = specialtyManagement;
     this.configurationView = configurationView;

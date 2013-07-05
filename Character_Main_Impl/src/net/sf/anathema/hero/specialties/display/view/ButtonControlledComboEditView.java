@@ -1,8 +1,9 @@
-package net.sf.anathema.framework.presenter.view;
+package net.sf.anathema.hero.specialties.display.view;
 
 import net.miginfocom.layout.CC;
 import net.miginfocom.swing.MigLayout;
 import net.sf.anathema.framework.swing.IView;
+import net.sf.anathema.hero.specialties.display.presenter.IButtonControlledComboEditView;
 import net.sf.anathema.interaction.Command;
 import net.sf.anathema.lib.control.ObjectValueListener;
 import net.sf.anathema.lib.file.RelativePath;

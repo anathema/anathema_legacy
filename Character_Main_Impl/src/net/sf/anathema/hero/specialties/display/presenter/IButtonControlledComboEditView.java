@@ -1,4 +1,4 @@
-package net.sf.anathema.framework.presenter.view;
+package net.sf.anathema.hero.specialties.display.presenter;
 
 import net.sf.anathema.interaction.Command;
 import net.sf.anathema.lib.control.ObjectValueListener;

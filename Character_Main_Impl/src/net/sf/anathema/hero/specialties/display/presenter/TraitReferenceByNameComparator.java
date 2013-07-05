@@ -1,4 +1,4 @@
-package net.sf.anathema.character.presenter.specialty;
+package net.sf.anathema.hero.specialties.display.presenter;
 
 import net.sf.anathema.character.generic.framework.ITraitReference;
 import net.sf.anathema.character.generic.framework.resources.TraitInternationalizer;

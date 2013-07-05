@@ -1,12 +1,10 @@
-package net.sf.anathema.character.platform.specialties;
+package net.sf.anathema.hero.specialties.display.presenter;
 
 import net.sf.anathema.character.generic.type.ICharacterType;
 import net.sf.anathema.character.library.trait.specialties.SpecialtiesModel;
 import net.sf.anathema.character.library.trait.specialties.SpecialtiesModelFetcher;
 import net.sf.anathema.character.presenter.initializers.HeroModelInitializer;
 import net.sf.anathema.character.presenter.initializers.RegisteredInitializer;
-import net.sf.anathema.character.presenter.specialty.ISpecialtiesConfigurationView;
-import net.sf.anathema.character.presenter.specialty.SpecialtiesConfigurationPresenter;
 import net.sf.anathema.character.view.SectionView;
 import net.sf.anathema.framework.model.ApplicationModel;
 import net.sf.anathema.hero.display.HeroModelGroup;
@@ -27,7 +25,7 @@ public class SpecialtiesInitializer implements HeroModelInitializer {
   public void initialize(SectionView sectionView, Hero hero, Resources resources) {
     String viewName = resources.getString("AdditionalTemplateView.TabName.Specialties");
     ICharacterType characterType = hero.getTemplate().getTemplateType().getCharacterType();
-    ISpecialtiesConfigurationView view = sectionView.addView(viewName, ISpecialtiesConfigurationView.class, characterType);
+    SpecialtiesConfigurationView view = sectionView.addView(viewName, SpecialtiesConfigurationView.class, characterType);
     SpecialtiesModel specialtiesModel = SpecialtiesModelFetcher.fetch(hero);
     new SpecialtiesConfigurationPresenter(hero, specialtiesModel, view, resources).initPresentation();
   }
