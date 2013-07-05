@@ -14,13 +14,12 @@ public class TaskedCharacterView implements CharacterView {
   private CategorizedOverview creationOverviewView;
   private CategorizedOverview experienceOverviewView;
   private CategorizedOverview overviewView = new NullOverviewContainer();
-  private final TaskedCharacterPane characterPane;
+  private final TaskedCharacterPane characterPane = new TaskedCharacterPane();
   private final OptionalViewBar optionalViewPane = new OptionalViewBar();
   private JPanel content;
   private final SubViewRegistry subViewFactory;
 
   public TaskedCharacterView(SubViewRegistry viewFactory) {
-    this.characterPane = new TaskedCharacterPane();
     this.subViewFactory = viewFactory;
   }
 

@@ -1,4 +1,4 @@
-package net.sf.anathema.character.platform.module;
+package net.sf.anathema.swing.character.perspective;
 
 import net.sf.anathema.character.generic.framework.CharacterGenericsExtractor;
 import net.sf.anathema.character.model.advance.ExperiencePointManagement;
@@ -17,9 +17,8 @@ import net.sf.anathema.framework.repository.Item;
 import net.sf.anathema.framework.swing.IView;
 import net.sf.anathema.hero.model.Hero;
 import net.sf.anathema.lib.resources.Resources;
-import net.sf.anathema.swing.character.perspective.ItemViewFactory;
 
-public class CharacterViewFactory implements ItemViewFactory {
+public class CharacterViewFactory {
   private final Resources resources;
   private final IApplicationModel model;
 
@@ -28,7 +27,6 @@ public class CharacterViewFactory implements ItemViewFactory {
     this.model = model;
   }
 
-  @Override
   public IView createView(Item item) {
     Hero hero = (Hero) item.getItemData();
     SubViewRegistry viewFactory = new SubViewMap(CharacterGenericsExtractor.getGenerics(model).getInstantiater());

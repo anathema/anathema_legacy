@@ -10,9 +10,9 @@ import javax.swing.JComponent;
 public class CharacterStackSwingBridge implements CharacterStackBridge {
 
   private final StackView stackView;
-  private final ItemViewFactory viewFactory;
+  private final CharacterViewFactory viewFactory;
 
-  public CharacterStackSwingBridge(ItemViewFactory viewFactory, StackView stackView) {
+  public CharacterStackSwingBridge(CharacterViewFactory viewFactory, StackView stackView) {
     this.viewFactory = viewFactory;
     this.stackView = stackView;
   }

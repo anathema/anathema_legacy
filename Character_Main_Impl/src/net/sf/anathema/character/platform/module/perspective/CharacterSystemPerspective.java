@@ -4,7 +4,6 @@ import net.sf.anathema.character.perspective.CharacterGridPresenter;
 import net.sf.anathema.character.perspective.CharacterStackBridge;
 import net.sf.anathema.character.perspective.CharacterStackPresenter;
 import net.sf.anathema.character.perspective.ShowOnSelect;
-import net.sf.anathema.character.platform.module.CharacterViewFactory;
 import net.sf.anathema.framework.IApplicationModel;
 import net.sf.anathema.framework.view.perspective.Container;
 import net.sf.anathema.framework.view.perspective.Perspective;
@@ -15,6 +14,7 @@ import net.sf.anathema.lib.file.RelativePath;
 import net.sf.anathema.lib.resources.Resources;
 import net.sf.anathema.swing.character.perspective.CharacterStackSwingBridge;
 import net.sf.anathema.swing.character.perspective.CharacterSystemView;
+import net.sf.anathema.swing.character.perspective.CharacterViewFactory;
 
 @PerspectiveAutoCollector
 @Weight(weight = 1)
