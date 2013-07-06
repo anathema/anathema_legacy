@@ -9,7 +9,7 @@ import java.util.List;
 import java.util.Map;
 import java.util.Set;
 
-public abstract class AbstractFavorableTraitCostCalculator implements IFavorableTraitCostCalculator {
+public abstract class AbstractFavorableTraitCostCalculator {
 
   protected final IFavorableTraitCreationPoints points;
   private final Map<Trait, FavorableTraitCost[]> costsByTrait = new HashMap<>();
@@ -30,7 +30,6 @@ public abstract class AbstractFavorableTraitCostCalculator implements IFavorable
     this.traits = traits;
   }
 
-  @Override
   public void calculateCosts() {
     clear();
     countFavoredTraits();
@@ -67,7 +66,6 @@ public abstract class AbstractFavorableTraitCostCalculator implements IFavorable
     costsByTrait.clear();
   }
 
-  @Override
   public int getBonusPointsSpent() {
     int bonusPointSum = 0;
     for (FavorableTraitCost[] allCosts : costsByTrait.values()) {
@@ -80,7 +78,6 @@ public abstract class AbstractFavorableTraitCostCalculator implements IFavorable
 
   protected abstract int getCostFactor(Trait trait);
 
-  @Override
   public FavorableTraitCost[] getCosts(Trait trait) {
     return costsByTrait.get(trait);
   }
@@ -101,22 +98,18 @@ public abstract class AbstractFavorableTraitCostCalculator implements IFavorable
     return points.getExtraGenericDotCount();
   }
 
-  @Override
   public int getFavoredPicksSpent() {
     return favoredPicksSpent;
   }
 
-  @Override
   public int getExtraFavoredDotsSpent() {
     return extraFavoredDotSum;
   }
 
-  @Override
   public int getExtraGenericDotsSpent() {
     return extraGenericDotSum;
   }
 
-  @Override
   public int getFreePointsSpent(boolean favored) {
     return favored ? favoredDotSum : generalDotSum;
   }
