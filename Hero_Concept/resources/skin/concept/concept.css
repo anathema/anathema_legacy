@@ -1,0 +1,8 @@
+.casteselection:disabled {
+    -fx-opacity: 1.0;
+    -fx-background-color: transparent;
+}
+
+.casteselection:disabled>.arrow-button{
+    -fx-opacity: 0.0;
+}

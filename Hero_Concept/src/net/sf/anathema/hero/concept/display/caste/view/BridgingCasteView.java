@@ -15,7 +15,7 @@ public class BridgingCasteView implements CasteView, IView {
 
   public BridgingCasteView(FxCasteView fxView) {
     this.fxView = fxView;
-    panel.init(fxView);
+    panel.init(fxView, "skin/concept/concept.css");
   }
 
   @Override
