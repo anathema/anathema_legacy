@@ -6,7 +6,6 @@ import net.sf.anathema.character.generic.template.ConfiguredModel;
 import net.sf.anathema.lib.logging.Logger;
 import net.sf.anathema.lib.util.Identifier;
 
-import javax.annotation.Nullable;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
@@ -82,7 +81,6 @@ public class ModelInitializationList<E extends ModelTreeEntry> implements Iterab
   @Override
   public Iterator<ConfiguredModel> iterator() {
     return Lists.transform(sortedModelIds, new Function<Identifier, ConfiguredModel>() {
-      @Nullable
       @Override
       public ConfiguredModel apply(Identifier input) {
         ConfiguredModel configuredModel = getConfiguredModelFor(input);
