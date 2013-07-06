@@ -1,6 +1,7 @@
 package net.sf.anathema.hero.initialization;
 
 import net.sf.anathema.character.generic.framework.ICharacterGenerics;
+import net.sf.anathema.character.generic.template.ConfiguredModel;
 import net.sf.anathema.character.generic.template.HeroTemplate;
 import net.sf.anathema.hero.model.DefaultHero;
 import net.sf.anathema.hero.model.HeroModelAutoCollector;
@@ -26,7 +27,7 @@ public class HeroModelInitializerTest {
   private static final String Required_Model = "RequirementOfConfiguredModel";
   private static final String Transitively_Required_Model = "TransitiveRequiremmentOfRequiredModel";
 
-  private final List<String> configuredModels = new ArrayList<>();
+  private final List<ConfiguredModel> configuredModels = new ArrayList<>();
   private final List availableModels = new ArrayList<>();
   private final InitializationContext context = mock(InitializationContext.class);
   private final HeroTemplate template = createTemplate();
@@ -61,7 +62,7 @@ public class HeroModelInitializerTest {
   }
 
   private void addModelToConfiguration(String id) {
-    configuredModels.add(id);
+    configuredModels.add(new ConfiguredModel(id, null));
   }
 
   @SuppressWarnings("unchecked")

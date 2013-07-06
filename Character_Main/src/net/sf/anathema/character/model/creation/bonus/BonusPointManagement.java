@@ -1,7 +1,5 @@
 package net.sf.anathema.character.model.creation.bonus;
 
-import net.sf.anathema.character.generic.additionalrules.IAdditionalRules;
-import net.sf.anathema.character.generic.template.HeroTemplate;
 import net.sf.anathema.character.generic.template.creation.BonusPointCosts;
 import net.sf.anathema.character.generic.template.creation.ICreationPoints;
 import net.sf.anathema.character.generic.template.experience.CurrentRatingCosts;

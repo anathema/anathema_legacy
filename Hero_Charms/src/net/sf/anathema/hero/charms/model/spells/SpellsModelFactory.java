@@ -23,7 +23,7 @@ public class SpellsModelFactory extends SimpleModelTreeEntry implements HeroMode
   }
 
   @Override
-  public SpellModel create(TemplateFactory templateFactory) {
+  public SpellModel create(TemplateFactory templateFactory, String templateId) {
     return new SpellModelImpl();
   }
 }

@@ -19,7 +19,7 @@
         <model id="Description"/>
         <model id="Points"/>
         <model id="Concept"/>
-        <model id="OtherTraits"/>
+        <model id="OtherTraits" template="ExaltOtherTraits"/>
         <model id="Abilities"/>
         <model id="AbilitiesPoints"/>
         <model id="Attributes"/>

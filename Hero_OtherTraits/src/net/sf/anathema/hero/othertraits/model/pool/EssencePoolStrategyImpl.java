@@ -1,7 +1,5 @@
 package net.sf.anathema.hero.othertraits.model.pool;
 
-import net.sf.anathema.character.generic.additionalrules.IAdditionalEssencePool;
-import net.sf.anathema.character.generic.additionalrules.IAdditionalRules;
 import net.sf.anathema.character.generic.framework.essence.IEssencePoolModifier;
 import net.sf.anathema.character.generic.template.essence.FactorizedTrait;
 import net.sf.anathema.character.generic.template.essence.FactorizedTraitSumCalculator;
@@ -20,27 +18,20 @@ import net.sf.anathema.lib.control.ChangeListener;
 import net.sf.anathema.lib.util.IdentifiedInteger;
 import org.jmock.example.announcer.Announcer;
 
-import java.util.HashMap;
-import java.util.Map;
-import java.util.Map.Entry;
-
 public class EssencePoolStrategyImpl implements EssencePoolStrategy {
 
   private final Announcer<ChangeListener> control = Announcer.to(ChangeListener.class);
   private final IEssenceTemplate essenceTemplate;
   private OverdrivePool overdrivePool;
-  private final IAdditionalRules additionalRules;
   private Hero hero;
   private final TraitMap traitMap;
   private final MagicCollection magicCollection;
 
-  public EssencePoolStrategyImpl(Hero hero, IEssenceTemplate essenceTemplate, TraitMap traitMap, MagicCollection magicCollection, OverdrivePool overdrivePool,
-                                 IAdditionalRules additionalRules) {
+  public EssencePoolStrategyImpl(Hero hero, IEssenceTemplate essenceTemplate, TraitMap traitMap, MagicCollection magicCollection, OverdrivePool overdrivePool) {
     this.hero = hero;
     this.traitMap = traitMap;
     this.magicCollection = magicCollection;
     this.overdrivePool = overdrivePool;
-    this.additionalRules = additionalRules;
     hero.getChangeAnnouncer().addListener(new FlavoredChangeListener() {
       @Override
       public void changeOccurred(ChangeFlavor flavor) {
@@ -57,32 +48,17 @@ public class EssencePoolStrategyImpl implements EssencePoolStrategy {
 
   @Override
   public int getFullPersonalPool() {
-    int additionalPool = 0;
-    for (IAdditionalEssencePool pool : additionalRules.getAdditionalEssencePools()) {
-      additionalPool += pool.getAdditionalPersonalPool(traitMap, magicCollection);
-    }
-    return getUnmodifiedPersonalPool() + additionalPool;
+    return getUnmodifiedPersonalPool();
   }
 
   @Override
   public int getExtendedPersonalPool() {
-    int additionalPool = 0;
-    for (IAdditionalEssencePool pool : additionalRules.getAdditionalEssencePools()) {
-      if (!pool.modifiesBasePool()) {
-        additionalPool += pool.getAdditionalPersonalPool(traitMap, magicCollection);
-      }
-    }
-    return getStandardPersonalPool() + additionalPool;
+    return getStandardPersonalPool();
   }
 
   @Override
   public int getStandardPersonalPool() {
     int personal = getUnmodifiedPersonalPool();
-    for (IAdditionalEssencePool pool : additionalRules.getAdditionalEssencePools()) {
-      if (pool.modifiesBasePool()) {
-        personal += pool.getAdditionalPersonalPool(traitMap, magicCollection);
-      }
-    }
     return personal - Math.max(0, getAttunementExpenditures() - getUnmodifiedPeripheralPool());
   }
 
@@ -93,32 +69,17 @@ public class EssencePoolStrategyImpl implements EssencePoolStrategy {
 
   @Override
   public int getFullPeripheralPool() {
-    int additionalPool = 0;
-    for (IAdditionalEssencePool pool : additionalRules.getAdditionalEssencePools()) {
-      additionalPool += pool.getAdditionalPeripheralPool(traitMap, magicCollection);
-    }
-    return getUnmodifiedPeripheralPool() + additionalPool;
+     return getUnmodifiedPeripheralPool();
   }
 
   @Override
   public int getExtendedPeripheralPool() {
-    int additionalPool = 0;
-    for (IAdditionalEssencePool pool : additionalRules.getAdditionalEssencePools()) {
-      if (!pool.modifiesBasePool()) {
-        additionalPool += pool.getAdditionalPeripheralPool(traitMap, magicCollection);
-      }
-    }
-    return getStandardPeripheralPool() + additionalPool;
+    return getStandardPeripheralPool();
   }
 
   @Override
   public int getStandardPeripheralPool() {
     int peripheral = getUnmodifiedPeripheralPool();
-    for (IAdditionalEssencePool pool : additionalRules.getAdditionalEssencePools()) {
-      if (pool.modifiesBasePool()) {
-        peripheral += pool.getAdditionalPeripheralPool(traitMap, magicCollection);
-      }
-    }
     return Math.max(0, peripheral - getAttunementExpenditures());
   }
 
@@ -134,24 +95,7 @@ public class EssencePoolStrategyImpl implements EssencePoolStrategy {
 
   @Override
   public IdentifiedInteger[] getComplexPools() {
-    Map<String, Integer> complexPools = new HashMap<>();
-    for (IAdditionalEssencePool pool : additionalRules.getAdditionalEssencePools()) {
-      for (IdentifiedInteger complexPool : pool.getAdditionalComplexPools(traitMap, magicCollection)) {
-        String id = complexPool.getId();
-        int value = complexPool.getValue();
-        if (complexPools.containsKey(id)) {
-          value += complexPools.get(id);
-        }
-        complexPools.put(id, value);
-      }
-    }
-    IdentifiedInteger[] r = new IdentifiedInteger[complexPools.size()];
-    int i = 0;
-    for (Entry<String, Integer> entry : complexPools.entrySet()) {
-      r[i] = new IdentifiedInteger(entry.getKey(), entry.getValue());
-      i++;
-    }
-    return r;
+    return new IdentifiedInteger[0];
   }
 
   @Override

@@ -1,8 +1,6 @@
 package net.sf.anathema.hero.othertraits.model.pool;
 
 import com.google.common.base.Preconditions;
-import net.sf.anathema.character.generic.additionalrules.IAdditionalEssencePool;
-import net.sf.anathema.character.generic.additionalrules.IAdditionalRules;
 import net.sf.anathema.character.generic.framework.essence.IEssencePoolModifier;
 import net.sf.anathema.character.generic.template.HeroTemplate;
 import net.sf.anathema.character.generic.template.essence.IEssenceTemplate;
@@ -26,7 +24,6 @@ public class EssencePoolModelImpl implements EssencePoolModel, HeroModel {
 
   private final AggregatedOverdrivePool overdrivePool = new AggregatedOverdrivePool();
   private EssencePoolStrategy poolStrategy = null;
-  private IAdditionalRules additionalRules;
   private IEssenceTemplate essenceTemplate;
   private List<IEssencePoolModifier> essencePoolModifiers = new ArrayList<>();
 
@@ -38,14 +35,12 @@ public class EssencePoolModelImpl implements EssencePoolModel, HeroModel {
   @Override
   public void initialize(InitializationContext context, Hero hero) {
     HeroTemplate template = hero.getTemplate();
-    this.additionalRules = template.getAdditionalRules();
     this.essenceTemplate = template.getEssenceTemplate();
     if (!isEssenceUser()) {
       return;
     }
     TraitMap traitMap = TraitModelFetcher.fetch(hero);
-    poolStrategy = new EssencePoolStrategyImpl(hero, essenceTemplate, traitMap, new MagicCollectionImpl(hero),
-            overdrivePool, additionalRules);
+    poolStrategy = new EssencePoolStrategyImpl(hero, essenceTemplate, traitMap, new MagicCollectionImpl(hero), overdrivePool);
   }
 
   @Override
@@ -107,11 +102,6 @@ public class EssencePoolModelImpl implements EssencePoolModel, HeroModel {
   }
 
   private boolean hasAdditionalPools() {
-    for (IAdditionalEssencePool pool : additionalRules.getAdditionalEssencePools()) {
-      if (!pool.modifiesBasePool()) {
-        return true;
-      }
-    }
     return false;
   }
 

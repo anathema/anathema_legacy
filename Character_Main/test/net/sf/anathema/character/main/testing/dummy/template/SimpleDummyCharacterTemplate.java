@@ -1,9 +1,8 @@
 package net.sf.anathema.character.main.testing.dummy.template;
 
-import net.sf.anathema.character.generic.additionalrules.IAdditionalRules;
 import net.sf.anathema.character.generic.caste.ICasteCollection;
-import net.sf.anathema.character.generic.impl.additional.NullAdditionalRules;
 import net.sf.anathema.character.generic.impl.template.essence.NullEssenceTemplate;
+import net.sf.anathema.character.generic.template.ConfiguredModel;
 import net.sf.anathema.character.generic.template.HeroTemplate;
 import net.sf.anathema.character.generic.template.ITemplateType;
 import net.sf.anathema.character.generic.template.ITraitTemplateCollection;
@@ -41,11 +40,6 @@ public class SimpleDummyCharacterTemplate implements HeroTemplate {
   @Override
   public GroupedTraitType[] getAttributeGroups() {
     return new GroupedTraitType[0];
-  }
-
-  @Override
-  public IAdditionalRules getAdditionalRules() {
-    return new NullAdditionalRules();
   }
 
   @Override
@@ -97,7 +91,7 @@ public class SimpleDummyCharacterTemplate implements HeroTemplate {
   }
 
   @Override
-  public List<String> getModels() {
+  public List<ConfiguredModel> getModels() {
     return new ArrayList<>();
   }
 

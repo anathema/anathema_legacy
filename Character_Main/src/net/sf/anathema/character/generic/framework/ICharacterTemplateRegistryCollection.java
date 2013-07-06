@@ -10,7 +10,6 @@ import net.sf.anathema.character.generic.framework.xml.health.GenericHealthTempl
 import net.sf.anathema.character.generic.framework.xml.magic.GenericMagicTemplate;
 import net.sf.anathema.character.generic.framework.xml.presentation.GenericPresentationTemplate;
 import net.sf.anathema.character.generic.framework.xml.registry.IXmlTemplateRegistry;
-import net.sf.anathema.character.generic.framework.xml.rules.GenericAdditionalRules;
 import net.sf.anathema.character.generic.framework.xml.trait.GenericTraitTemplateFactory;
 import net.sf.anathema.character.generic.framework.xml.trait.pool.GenericTraitTemplatePool;
 
@@ -37,6 +36,4 @@ public interface ICharacterTemplateRegistryCollection {
   IXmlTemplateRegistry<GenericPresentationTemplate> getPresentationTemplateRegistry();
 
   IXmlTemplateRegistry<GenericHealthTemplate> getHealthTemplateRegistry();
-
-  IXmlTemplateRegistry<GenericAdditionalRules> getAdditionalRulesRegistry();
 }

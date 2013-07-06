@@ -1,28 +1,32 @@
 package net.sf.anathema.hero.initialization;
 
+import com.google.common.base.Function;
+import com.google.common.collect.Lists;
+import net.sf.anathema.character.generic.template.ConfiguredModel;
 import net.sf.anathema.lib.logging.Logger;
 import net.sf.anathema.lib.util.Identifier;
 
+import javax.annotation.Nullable;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 
-public class ModelInitializationList<E extends ModelTreeEntry> implements Iterable<Identifier> {
+public class ModelInitializationList<E extends ModelTreeEntry> implements Iterable<ConfiguredModel> {
 
   private List<Identifier> sortedModelIds = new ArrayList<>();
-  private List<Identifier> configuredIdentifiers;
+  private List<ConfiguredModel> configuredModels;
   private Iterable<E> availableEntries;
   private Logger logger = Logger.getLogger(ModelInitializationList.class);
 
-  public ModelInitializationList(List<Identifier> configuredIdentifiers, Iterable<E> availableEntries) {
-    this.configuredIdentifiers = configuredIdentifiers;
+  public ModelInitializationList(List<ConfiguredModel> configuredModels, Iterable<E> availableEntries) {
+    this.configuredModels = configuredModels;
     this.availableEntries = availableEntries;
     startSort();
   }
 
   private void startSort() {
-    for (Identifier entry : configuredIdentifiers) {
-      handleEntry(entry);
+    for (ConfiguredModel entry : configuredModels) {
+      handleEntry(entry.modelId);
     }
   }
 
@@ -76,7 +80,26 @@ public class ModelInitializationList<E extends ModelTreeEntry> implements Iterab
   }
 
   @Override
-  public Iterator<Identifier> iterator() {
-    return sortedModelIds.iterator();
+  public Iterator<ConfiguredModel> iterator() {
+    return Lists.transform(sortedModelIds, new Function<Identifier, ConfiguredModel>() {
+      @Nullable
+      @Override
+      public ConfiguredModel apply(Identifier input) {
+        ConfiguredModel configuredModel = getConfiguredModelFor(input);
+        if (configuredModel != null) {
+          return configuredModel;
+        }
+        return new ConfiguredModel(input.getId(), null);
+      }
+
+      private ConfiguredModel getConfiguredModelFor(Identifier identifier) {
+        for (ConfiguredModel model : configuredModels) {
+          if (model.modelId.equals(identifier)) {
+            return model;
+          }
+        }
+        return null;
+      }
+    }).iterator();
   }
 }

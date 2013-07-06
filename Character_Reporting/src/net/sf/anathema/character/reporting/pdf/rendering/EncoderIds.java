@@ -13,8 +13,6 @@ public interface EncoderIds {
   String COMBOS = "Combos";
   String ESSENCE_DOTS = "EssenceDots";
   String ESSENCE_SIMPLE = "EssenceSimple";
-  String ESSENCE_EXTENDED = "EssenceExtended";
-  String ESSENCE_REGAIN = "EssenceRegain";
   String EXPERIENCE = "Experience";
   String GENERIC_CHARMS = "GenericCharms";
   String GREAT_CURSE = "GreatCurse";
@@ -22,8 +20,6 @@ public interface EncoderIds {
   String INTIMACIES_SIMPLE = "IntimaciesSimple";
   String LANGUAGES = "Languages";
   String HEALTH_AND_MOVEMENT = "HealthAndMovement";
-  String HEALTH = "Health";
-  String MOVEMENT = "Movement";
   String MUTATIONS = "Mutations";
   String CHARMS_AND_SORCERY = "CharmsAndSorcery";
   String CHARMS_ONLY = "CharmsOnly";
@@ -38,5 +34,4 @@ public interface EncoderIds {
   String WILLPOWER_SIMPLE = "WillpowerSimple";
   String WILLPOWER_EXTENDED = "WillpowerExtended";
   String VIRTUES = "Virtues";
-  String YOZI_LIST = "YoziList";
 }

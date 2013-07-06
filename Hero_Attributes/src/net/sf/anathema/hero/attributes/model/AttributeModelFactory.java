@@ -17,7 +17,7 @@ public class AttributeModelFactory extends SimpleModelTreeEntry implements HeroM
   }
 
   @Override
-  public AttributeModelImpl create(TemplateFactory templateFactory) {
+  public AttributeModelImpl create(TemplateFactory templateFactory, String templateId) {
     return new AttributeModelImpl();
   }
 }

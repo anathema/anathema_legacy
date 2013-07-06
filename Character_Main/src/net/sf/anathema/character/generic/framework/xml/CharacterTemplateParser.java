@@ -20,12 +20,9 @@ import net.sf.anathema.character.generic.framework.xml.magic.GenericMagicTemplat
 import net.sf.anathema.character.generic.framework.xml.presentation.GenericPresentationTemplate;
 import net.sf.anathema.character.generic.framework.xml.presentation.PresentationPropertiesParser;
 import net.sf.anathema.character.generic.framework.xml.registry.IXmlTemplateRegistry;
-import net.sf.anathema.character.generic.framework.xml.rules.AdditionalRulesTemplateParser;
-import net.sf.anathema.character.generic.framework.xml.rules.GenericAdditionalRules;
 import net.sf.anathema.character.generic.framework.xml.trait.GenericTraitTemplateFactory;
 import net.sf.anathema.character.generic.framework.xml.trait.GenericTraitTemplateFactoryParser;
 import net.sf.anathema.character.generic.impl.magic.persistence.ICharmCache;
-import net.sf.anathema.character.generic.impl.template.magic.ICharmProvider;
 import net.sf.anathema.character.generic.magic.charms.MartialArtsLevel;
 import net.sf.anathema.character.generic.template.HeroTemplate;
 import net.sf.anathema.character.generic.template.ITemplateType;
@@ -53,21 +50,18 @@ public class CharacterTemplateParser extends AbstractXmlTemplateParser<GenericCh
   private static final String TAG_PRESENTATION_TEMPLATE = "presentation";
   public static final String ATTRIB_ID = "id";
   private static final String TAG_HEALTH_TEMPLATE = "healthTemplate";
-  private static final String TAG_ADDITIONAL_RULES = "additionalRules";
 
   private CharacterTypes characterTypes;
   private final ICharacterTemplateRegistryCollection registryCollection;
   private final IRegistry<ICharacterType, ICasteCollection> casteCollectionRegistry;
-  private final ICharmProvider provider;
   private final ICharmCache cache;
 
   public CharacterTemplateParser(CharacterTypes characterTypes, ICharacterTemplateRegistryCollection registryCollection,
-                                 IRegistry<ICharacterType, ICasteCollection> casteCollectionRegistry, ICharmProvider provider, ICharmCache cache) {
+                                 IRegistry<ICharacterType, ICasteCollection> casteCollectionRegistry, ICharmCache cache) {
     super(registryCollection.getCharacterTemplateRegistry());
     this.characterTypes = characterTypes;
     this.registryCollection = registryCollection;
     this.casteCollectionRegistry = casteCollectionRegistry;
-    this.provider = provider;
     this.cache = cache;
   }
 
@@ -197,7 +191,6 @@ public class CharacterTemplateParser extends AbstractXmlTemplateParser<GenericCh
     setTraitCollection(generalElement, characterTemplate);
     setMagicTemplate(generalElement, characterTemplate);
     setPresentationTemplate(generalElement, characterTemplate);
-    setAdditionalRules(generalElement, characterTemplate);
     setToughnessControllingTrait(generalElement, characterTemplate);
   }
 
@@ -208,19 +201,9 @@ public class CharacterTemplateParser extends AbstractXmlTemplateParser<GenericCh
     }
     for (Object modelElement : modelsElement.elements()) {
       String modelId = ((Element) modelElement).attributeValue("id");
-      characterTemplate.addModel(modelId);
+      String modelTemplateId = ((Element) modelElement).attributeValue("template");
+      characterTemplate.addModel(modelId, modelTemplateId);
     }
-  }
-
-  private void setAdditionalRules(Element generalElement, GenericCharacterTemplate characterTemplate) throws PersistenceException {
-    Element element = generalElement.element(TAG_ADDITIONAL_RULES);
-    if (element == null) {
-      return;
-    }
-    AdditionalRulesTemplateParser parser = new AdditionalRulesTemplateParser(registryCollection.getAdditionalRulesRegistry(),
-            provider.getSpecialCharms(characterTemplate.getTemplateType().getCharacterType()), characterTypes);
-    GenericAdditionalRules rules = parser.parseTemplate(element);
-    characterTemplate.setAdditionalRules(rules);
   }
 
   private void setToughnessControllingTrait(Element generalElement, GenericCharacterTemplate characterTemplate) throws PersistenceException {

@@ -12,7 +12,7 @@ import java.util.List;
 @ExtensibleDataSetCompiler
 public class HeroModelTemplateCompiler implements IExtensibleDataSetCompiler {
 
-  private static final String TEMPLATE_FILE_RECOGNITION_PATTERN = "(.+?)\\.cmt";
+  private static final String TEMPLATE_FILE_RECOGNITION_PATTERN = "(.+?)\\.template";
 
   private final List<ResourceFile> templateResources = new ArrayList<>();
 

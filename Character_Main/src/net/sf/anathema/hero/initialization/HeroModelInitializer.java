@@ -1,7 +1,7 @@
 package net.sf.anathema.hero.initialization;
 
-import com.google.common.collect.Lists;
 import net.sf.anathema.character.generic.framework.ICharacterGenerics;
+import net.sf.anathema.character.generic.template.ConfiguredModel;
 import net.sf.anathema.character.generic.template.HeroTemplate;
 import net.sf.anathema.hero.model.DefaultHero;
 import net.sf.anathema.hero.model.HeroModel;
@@ -9,7 +9,6 @@ import net.sf.anathema.hero.model.HeroModelFactory;
 import net.sf.anathema.hero.model.InitializationContext;
 import net.sf.anathema.hero.template.DefaultTemplateFactory;
 import net.sf.anathema.hero.template.TemplateFactory;
-import net.sf.anathema.lib.util.Identifier;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -27,23 +26,22 @@ public class HeroModelInitializer {
   public void addModels(ICharacterGenerics generics, DefaultHero hero) {
     ModelFactoryAutoCollector collector = new ModelFactoryAutoCollector(generics);
     ModelFactoryMap factoryMap = new ModelFactoryMap(collector);
-    Iterable<Identifier> sortedRelevantModelIds = getSortedModelIdsForCharacter(factoryMap);
+    Iterable<ConfiguredModel> sortedRelevantModelIds = getSortedModelIdsForHero(factoryMap);
     Iterable<HeroModel> sortedModels = createSortedModels(generics, factoryMap, sortedRelevantModelIds);
     initializeModelsInOrder(hero, sortedModels);
   }
 
-  private Iterable<Identifier> getSortedModelIdsForCharacter(ModelFactoryMap factoryMap) {
-    List<Identifier> configuredModels = Lists.transform(template.getModels(), new WrapStringInIdentifier());
-    return new ModelInitializationList<>(configuredModels, factoryMap);
+  private Iterable<ConfiguredModel> getSortedModelIdsForHero(ModelFactoryMap factoryMap) {
+    return new ModelInitializationList<ModelTreeEntry>(template.getModels(), factoryMap);
   }
 
-  private Iterable<HeroModel> createSortedModels(ICharacterGenerics generics, ModelFactoryMap factoryMap, Iterable<Identifier> sortedRelevantModelIds) {
+  private Iterable<HeroModel> createSortedModels(ICharacterGenerics generics, ModelFactoryMap factoryMap, Iterable<ConfiguredModel> sortedRelevantModelIds) {
     TemplateFactory templateFactory = new DefaultTemplateFactory(generics);
     List<HeroModel> modelList = new ArrayList<>();
-    for (Identifier modelId : sortedRelevantModelIds) {
-      factoryMap.assertContainsRequiredModel(modelId.getId());
-      HeroModelFactory factory = factoryMap.get(modelId.getId());
-      modelList.add(factory.create(templateFactory));
+    for (ConfiguredModel configuredModel : sortedRelevantModelIds) {
+      factoryMap.assertContainsRequiredModel(configuredModel.modelId.getId());
+      HeroModelFactory factory = factoryMap.get(configuredModel.modelId.getId());
+      modelList.add(factory.create(templateFactory, configuredModel.modelTemplateId));
     }
     return modelList;
   }

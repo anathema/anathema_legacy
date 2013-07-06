@@ -143,7 +143,8 @@ public class CharmsModelImpl implements CharmsModel {
   }
 
   private void addCompulsiveCharms(HeroTemplate template) {
-    String[] compulsiveCharms = template.getAdditionalRules().getCompulsiveCharmIDs();
+    String[] compulsiveCharms = getCompulsiveCharmIds();
+
     for (String charmId : compulsiveCharms) {
       ICharm charm = getCharmById(charmId);
       getGroup(charm).learnCharm(charm, false);
@@ -487,7 +488,7 @@ public class CharmsModelImpl implements CharmsModel {
 
   @Override
   public final boolean isCompulsiveCharm(ICharm charm) {
-    String[] compulsiveCharmIDs = hero.getTemplate().getAdditionalRules().getCompulsiveCharmIDs();
+    String[] compulsiveCharmIDs = getCompulsiveCharmIds();
     return ArrayUtils.contains(compulsiveCharmIDs, charm.getId());
   }
 
@@ -517,5 +518,10 @@ public class CharmsModelImpl implements CharmsModel {
   @Override
   public ICharm[] getCharms(ICharmGroup charmGroup) {
     return nonMartialArtsOptions.getCharms(charmGroup);
+  }
+
+  private String[] getCompulsiveCharmIds() {
+    // todo (sandra): compulsive charms
+    return new String[0];
   }
 }

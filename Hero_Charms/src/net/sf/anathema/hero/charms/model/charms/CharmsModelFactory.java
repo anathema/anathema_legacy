@@ -22,7 +22,7 @@ public class CharmsModelFactory extends SimpleModelTreeEntry implements HeroMode
   }
 
   @Override
-  public CharmsModel create(TemplateFactory templateFactory) {
+  public CharmsModel create(TemplateFactory templateFactory, String templateId) {
     return new CharmsModelImpl();
   }
 }

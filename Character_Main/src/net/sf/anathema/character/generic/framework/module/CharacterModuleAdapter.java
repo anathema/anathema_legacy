@@ -29,8 +29,7 @@ public abstract class CharacterModuleAdapter implements ICharacterModule {
 
   protected final GenericCharacterTemplate registerParsedTemplate(ICharacterGenerics generics, ResourceFile resource) {
     ICharacterTemplateRegistryCollection characterTemplateRegistries = generics.getCharacterTemplateRegistries();
-    new CharacterTemplateParser(generics.getCharacterTypes(), characterTemplateRegistries, generics.getCasteCollectionRegistry(),
-            generics.getCharmProvider(), generics.getDataSet(ICharmCache.class));
+    new CharacterTemplateParser(generics.getCharacterTypes(), characterTemplateRegistries, generics.getCasteCollectionRegistry(), generics.getDataSet(ICharmCache.class));
     try {
       GenericCharacterTemplate template = characterTemplateRegistries.getCharacterTemplateRegistry().get(resource);
       generics.getTemplateRegistry().register(template);

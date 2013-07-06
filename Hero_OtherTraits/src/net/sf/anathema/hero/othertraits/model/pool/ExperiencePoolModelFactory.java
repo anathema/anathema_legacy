@@ -14,7 +14,7 @@ public class ExperiencePoolModelFactory extends SimpleModelTreeEntry implements 
   }
 
   @Override
-  public EssencePoolModelImpl create(TemplateFactory templateFactory) {
+  public EssencePoolModelImpl create(TemplateFactory templateFactory, String templateId) {
     return new EssencePoolModelImpl();
   }
 }

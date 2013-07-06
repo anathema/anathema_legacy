@@ -15,7 +15,7 @@ public class SpecialtiesModelFactory extends SimpleModelTreeEntry implements Her
   }
 
   @Override
-  public SpecialtiesModel create(TemplateFactory templateFactory) {
+  public SpecialtiesModel create(TemplateFactory templateFactory, String templateId) {
     return new SpecialtiesModelImpl();
   }
 }

@@ -14,7 +14,7 @@ public class ExperienceModelFactory extends SimpleModelTreeEntry implements Hero
   }
 
   @Override
-  public ExperienceModelImpl create(TemplateFactory templateFactory) {
+  public ExperienceModelImpl create(TemplateFactory templateFactory, String templateId) {
     return new ExperienceModelImpl();
   }
 }

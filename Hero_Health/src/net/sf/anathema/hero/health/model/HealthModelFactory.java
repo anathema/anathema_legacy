@@ -19,7 +19,7 @@ public class HealthModelFactory extends SimpleModelTreeEntry implements HeroMode
   }
 
   @Override
-  public HealthModelImpl create(TemplateFactory templateFactory) {
+  public HealthModelImpl create(TemplateFactory templateFactory, String templateId) {
     return new HealthModelImpl();
   }
 }

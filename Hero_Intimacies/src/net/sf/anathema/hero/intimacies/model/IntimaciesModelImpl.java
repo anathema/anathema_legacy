@@ -68,12 +68,7 @@ public class IntimaciesModelImpl extends AbstractRemovableEntryModel<Intimacy> i
 
   @Override
   public int getFreeIntimacies() {
-    if (hero.getTemplate().getAdditionalRules().isRevisedIntimacies()) {
-      return getCompassionValue() + getTrait(OtherTraitType.Willpower).getCurrentValue();
-    }
-    else {
-      return getCompassionValue();
-    }
+    return getCompassionValue() + getTrait(OtherTraitType.Willpower).getCurrentValue();
   }
 
   protected int getCompassionValue() {
@@ -99,7 +94,7 @@ public class IntimaciesModelImpl extends AbstractRemovableEntryModel<Intimacy> i
       @Override
       public void changeOccurred() {
         fireModelChangedEvent();
-      }      
+      }
     });
     return intimacy;
   }

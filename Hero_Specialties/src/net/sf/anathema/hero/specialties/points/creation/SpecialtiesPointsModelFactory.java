@@ -16,7 +16,7 @@ public class SpecialtiesPointsModelFactory extends SimpleModelTreeEntry implemen
   }
 
   @Override
-  public SpecialtiesPointsModel create(TemplateFactory templateFactory) {
+  public SpecialtiesPointsModel create(TemplateFactory templateFactory, String templateId) {
     return new SpecialtiesPointsModel();
   }
 }

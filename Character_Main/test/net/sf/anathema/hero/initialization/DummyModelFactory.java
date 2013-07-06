@@ -21,7 +21,7 @@ public class DummyModelFactory implements HeroModelFactory {
 
   @SuppressWarnings("unchecked")
   @Override
-  public <M extends HeroModel> M create(TemplateFactory templateFactory) {
+  public <M extends HeroModel> M create(TemplateFactory templateFactory, String templateId) {
     return (M) new DummyHeroModel(id);
   }
 

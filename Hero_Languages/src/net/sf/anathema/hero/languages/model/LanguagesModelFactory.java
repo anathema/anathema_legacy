@@ -18,7 +18,7 @@ public class LanguagesModelFactory extends SimpleModelTreeEntry implements HeroM
   }
 
   @Override
-  public LanguagesModel create(TemplateFactory templateFactory) {
+  public LanguagesModel create(TemplateFactory templateFactory, String templateId) {
     return new LanguagesModelImpl();
   }
 }

@@ -1,6 +1,5 @@
 package net.sf.anathema.character.generic.template;
 
-import net.sf.anathema.character.generic.additionalrules.IAdditionalRules;
 import net.sf.anathema.character.generic.caste.ICasteCollection;
 import net.sf.anathema.character.generic.template.abilities.GroupedTraitType;
 import net.sf.anathema.character.generic.template.creation.BonusPointCosts;
@@ -18,8 +17,6 @@ public interface HeroTemplate extends ICharacterExternalsTemplate {
 
   GroupedTraitType[] getAttributeGroups();
 
-  IAdditionalRules getAdditionalRules();
-
   BonusPointCosts getBonusPointCosts();
 
   ICasteCollection getCasteCollection();
@@ -36,7 +33,7 @@ public interface HeroTemplate extends ICharacterExternalsTemplate {
 
   String[] getBaseHealthProviders();
 
-  List<String> getModels();
+  List<ConfiguredModel> getModels();
 
   IMagicTemplate getMagicTemplate();
 

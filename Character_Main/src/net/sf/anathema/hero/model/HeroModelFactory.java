@@ -5,5 +5,5 @@ import net.sf.anathema.hero.template.TemplateFactory;
 
 public interface HeroModelFactory extends ModelTreeEntry {
 
-  <M extends HeroModel> M create(TemplateFactory templateFactory);
+  <M extends HeroModel> M create(TemplateFactory templateFactory, String templateId);
 }

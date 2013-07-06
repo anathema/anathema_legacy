@@ -18,7 +18,7 @@ public class IntimaciesModelFactory extends SimpleModelTreeEntry implements Hero
   }
 
   @Override
-  public IntimaciesModel create(TemplateFactory templateFactory) {
+  public IntimaciesModel create(TemplateFactory templateFactory, String templateId) {
     return new IntimaciesModelImpl();
   }
 }

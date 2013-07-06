@@ -13,7 +13,7 @@ public class StatsModelFactory extends SimpleModelTreeEntry implements HeroModel
   }
 
   @Override
-  public StatsModelImpl create(TemplateFactory templateFactory) {
+  public StatsModelImpl create(TemplateFactory templateFactory, String templateId) {
     return new StatsModelImpl();
   }
 }

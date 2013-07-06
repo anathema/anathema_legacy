@@ -1,6 +1,5 @@
 package net.sf.anathema.character.generic.framework.xml;
 
-import net.sf.anathema.character.generic.additionalrules.IAdditionalRules;
 import net.sf.anathema.character.generic.caste.CasteType;
 import net.sf.anathema.character.generic.caste.ICasteCollection;
 import net.sf.anathema.character.generic.framework.xml.creation.GenericBonusPointCosts;
@@ -11,10 +10,10 @@ import net.sf.anathema.character.generic.framework.xml.health.GenericHealthTempl
 import net.sf.anathema.character.generic.framework.xml.health.IHealthTemplate;
 import net.sf.anathema.character.generic.framework.xml.magic.GenericMagicTemplate;
 import net.sf.anathema.character.generic.framework.xml.presentation.GenericPresentationTemplate;
-import net.sf.anathema.character.generic.framework.xml.rules.GenericAdditionalRules;
 import net.sf.anathema.character.generic.framework.xml.trait.GenericTraitTemplateFactory;
 import net.sf.anathema.character.generic.impl.caste.CasteCollection;
 import net.sf.anathema.character.generic.impl.traits.TraitTemplateCollection;
+import net.sf.anathema.character.generic.template.ConfiguredModel;
 import net.sf.anathema.character.generic.template.HeroTemplate;
 import net.sf.anathema.character.generic.template.ITemplateType;
 import net.sf.anathema.character.generic.template.ITraitTemplateCollection;
@@ -34,7 +33,6 @@ import java.util.List;
 
 public class GenericCharacterTemplate implements HeroTemplate, ICloneable<GenericCharacterTemplate> {
 
-  private IAdditionalRules additionalRules = new GenericAdditionalRules();
   private ITemplateType templateType;
   private ITraitTemplateCollection traitTemplateCollection;
   private GenericMagicTemplate magicTemplate;
@@ -49,16 +47,11 @@ public class GenericCharacterTemplate implements HeroTemplate, ICloneable<Generi
   // This is volatile instead of final to allow clone to be implemented
   private IHealthTemplate healthTemplate = new GenericHealthTemplate();
   private boolean isCustomTemplate;
-  private final List<String> models = new ArrayList<>();
+  private final List<ConfiguredModel> models = new ArrayList<>();
 
   @Override
   public GroupedTraitType[] getAbilityGroups() {
     return abilityGroups;
-  }
-
-  @Override
-  public IAdditionalRules getAdditionalRules() {
-    return additionalRules;
   }
 
   @Override
@@ -116,7 +109,7 @@ public class GenericCharacterTemplate implements HeroTemplate, ICloneable<Generi
   }
 
   @Override
-  public List<String> getModels() {
+  public List<ConfiguredModel> getModels() {
     return new ArrayList<>(models);
   }
 
@@ -173,7 +166,6 @@ public class GenericCharacterTemplate implements HeroTemplate, ICloneable<Generi
     } catch (CloneNotSupportedException e) {
       throw new UnreachableCodeReachedException(e);
     }
-    clone.additionalRules = new GenericAdditionalRules();
     clone.casteCollection = new CasteCollection(new CasteType[0]);
     clone.healthTemplate = new GenericHealthTemplate();
     if (bonusPointCosts != null) {
@@ -210,10 +202,6 @@ public class GenericCharacterTemplate implements HeroTemplate, ICloneable<Generi
     this.healthTemplate = template;
   }
 
-  public void setAdditionalRules(GenericAdditionalRules rules) {
-    this.additionalRules = rules;
-  }
-
   @Override
   public boolean isCustomTemplate() {
     return isCustomTemplate;
@@ -223,7 +211,7 @@ public class GenericCharacterTemplate implements HeroTemplate, ICloneable<Generi
     isCustomTemplate = custom;
   }
 
-  public void addModel(String modelId) {
-    models.add(modelId);
+  public void addModel(String modelId, String templateId) {
+    models.add(new ConfiguredModel(modelId, templateId));
   }
 }

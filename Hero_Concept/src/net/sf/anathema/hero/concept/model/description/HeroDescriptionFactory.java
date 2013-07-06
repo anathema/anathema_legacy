@@ -15,7 +15,7 @@ public class HeroDescriptionFactory extends SimpleModelTreeEntry implements Hero
   }
 
   @Override
-  public HeroDescriptionImpl create(TemplateFactory templateFactory) {
+  public HeroDescriptionImpl create(TemplateFactory templateFactory, String templateId) {
     return new HeroDescriptionImpl();
   }
 }

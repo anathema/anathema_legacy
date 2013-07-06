@@ -1,6 +1,5 @@
 package net.sf.anathema.hero.othertraits.model.traits;
 
-import net.sf.anathema.character.generic.additionalrules.IAdditionalTraitRules;
 import net.sf.anathema.character.generic.template.HeroTemplate;
 import net.sf.anathema.character.generic.template.ITraitLimitation;
 import net.sf.anathema.character.generic.template.ITraitTemplateCollection;
@@ -21,12 +20,18 @@ import net.sf.anathema.hero.change.ChangeAnnouncer;
 import net.sf.anathema.hero.model.Hero;
 import net.sf.anathema.hero.model.HeroModel;
 import net.sf.anathema.hero.model.InitializationContext;
+import net.sf.anathema.hero.othertraits.template.OtherTraitsTemplate;
 import net.sf.anathema.hero.traits.model.event.TraitValueChangedListener;
 import net.sf.anathema.lib.util.Identifier;
 
 public class OtherTraitModelImpl extends DefaultTraitMap implements OtherTraitModel, HeroModel {
 
-  private HeroTemplate template;
+  private HeroTemplate heroTemplate;
+  private OtherTraitsTemplate template;
+
+  public OtherTraitModelImpl(OtherTraitsTemplate template) {
+    this.template = template;
+  }
 
   @Override
   public Identifier getId() {
@@ -35,7 +40,7 @@ public class OtherTraitModelImpl extends DefaultTraitMap implements OtherTraitMo
 
   @Override
   public void initialize(InitializationContext context, Hero hero) {
-    this.template = hero.getTemplate();
+    this.heroTemplate = hero.getTemplate();
     addEssence(hero);
     addVirtues(hero);
     addWillpower(hero);
@@ -55,7 +60,7 @@ public class OtherTraitModelImpl extends DefaultTraitMap implements OtherTraitMo
   private void connectWillpowerAndVirtues() {
     Trait willpower = getTrait(OtherTraitType.Willpower);
     Trait[] virtues = getTraits(VirtueType.values());
-    if (getAdditionalTraitRules().isWillpowerVirtueBased()) {
+    if (template.willpower.isVirtueBased) {
       new WillpowerListening().initListening(willpower, virtues);
     } else {
       willpower.setModifiedCreationRange(5, 10);
@@ -80,12 +85,8 @@ public class OtherTraitModelImpl extends DefaultTraitMap implements OtherTraitMo
     addTraits(traitFactory.createTrait(OtherTraitType.Willpower));
   }
 
-  private IAdditionalTraitRules getAdditionalTraitRules() {
-    return template.getAdditionalRules().getAdditionalTraitRules();
-  }
-
   private ITraitTemplateCollection getTemplateCollection() {
-    return template.getTraitTemplateCollection();
+    return heroTemplate.getTraitTemplateCollection();
   }
 
   @Override
@@ -96,6 +97,6 @@ public class OtherTraitModelImpl extends DefaultTraitMap implements OtherTraitMo
 
   @Override
   public ITraitLimitation getEssenceLimitation() {
-    return template.getTraitTemplateCollection().getTraitTemplate(OtherTraitType.Essence).getLimitation();
+    return heroTemplate.getTraitTemplateCollection().getTraitTemplate(OtherTraitType.Essence).getLimitation();
   }
 }

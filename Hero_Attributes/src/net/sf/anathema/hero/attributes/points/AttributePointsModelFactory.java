@@ -15,7 +15,7 @@ public class AttributePointsModelFactory extends SimpleModelTreeEntry implements
   }
 
   @Override
-  public AttributePointsModel create(TemplateFactory templateFactory) {
+  public AttributePointsModel create(TemplateFactory templateFactory, String templateId) {
     return new AttributePointsModel();
   }
 }

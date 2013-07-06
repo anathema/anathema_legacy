@@ -19,7 +19,7 @@ public class SolarVirtueFlawModelFactory extends SimpleModelTreeEntry implements
   }
 
   @Override
-  public DescriptiveVirtueFlawModelImpl create(TemplateFactory templateFactory) {
+  public DescriptiveVirtueFlawModelImpl create(TemplateFactory templateFactory, String templateId) {
     return new DescriptiveVirtueFlawModelImpl();
   }
 }

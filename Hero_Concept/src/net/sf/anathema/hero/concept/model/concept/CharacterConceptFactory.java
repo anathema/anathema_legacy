@@ -16,7 +16,7 @@ public class CharacterConceptFactory extends SimpleModelTreeEntry implements Her
 
   @SuppressWarnings("unchecked")
   @Override
-  public DefaultHeroConcept create(TemplateFactory templateFactory) {
+  public DefaultHeroConcept create(TemplateFactory templateFactory, String templateId) {
     return new DefaultHeroConcept();
   }
 }

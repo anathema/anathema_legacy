@@ -11,7 +11,6 @@ import net.sf.anathema.character.generic.framework.xml.experience.GenericExperie
 import net.sf.anathema.character.generic.framework.xml.health.GenericHealthTemplate;
 import net.sf.anathema.character.generic.framework.xml.magic.GenericMagicTemplate;
 import net.sf.anathema.character.generic.framework.xml.presentation.GenericPresentationTemplate;
-import net.sf.anathema.character.generic.framework.xml.rules.GenericAdditionalRules;
 import net.sf.anathema.character.generic.framework.xml.trait.GenericTraitTemplateFactory;
 import net.sf.anathema.character.generic.framework.xml.trait.pool.GenericTraitTemplatePool;
 
@@ -28,7 +27,6 @@ public class CharacterTemplateRegistryCollection implements ICharacterTemplateRe
   private final IXmlTemplateRegistry<GenericMagicTemplate> magicTemplateRegistry;
   private final IXmlTemplateRegistry<GenericPresentationTemplate> presentationTemplateRegistry;
   private final IXmlTemplateRegistry<GenericHealthTemplate> healthTemplateRegistry;
-  private final IXmlTemplateRegistry<GenericAdditionalRules> rulesRegistry;
 
   public CharacterTemplateRegistryCollection(ICharacterTemplateExtensionResourceCache cache) {
     characterTemplateRegistry = new XmlTemplateRegistry<>(cache);
@@ -42,7 +40,6 @@ public class CharacterTemplateRegistryCollection implements ICharacterTemplateRe
     magicTemplateRegistry = new XmlTemplateRegistry<>(cache);
     presentationTemplateRegistry = new XmlTemplateRegistry<>(cache);
     healthTemplateRegistry = new XmlTemplateRegistry<>(cache);
-    rulesRegistry = new XmlTemplateRegistry<>(cache);
   }
 
   @Override
@@ -98,10 +95,5 @@ public class CharacterTemplateRegistryCollection implements ICharacterTemplateRe
   @Override
   public IXmlTemplateRegistry<GenericHealthTemplate> getHealthTemplateRegistry() {
     return healthTemplateRegistry;
-  }
-
-  @Override
-  public IXmlTemplateRegistry<GenericAdditionalRules> getAdditionalRulesRegistry() {
-    return rulesRegistry;
   }
 }

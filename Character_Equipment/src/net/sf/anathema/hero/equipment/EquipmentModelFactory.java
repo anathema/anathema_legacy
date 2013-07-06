@@ -16,7 +16,7 @@ public class EquipmentModelFactory extends SimpleModelTreeEntry implements HeroM
   }
 
   @Override
-  public EquipmentModel create(TemplateFactory templateFactory) {
+  public EquipmentModel create(TemplateFactory templateFactory, String templateId) {
     return new EquipmentModelImpl();
   }
 }

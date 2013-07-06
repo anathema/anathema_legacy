@@ -33,7 +33,7 @@ public class HeroModelTemplateCache implements IExtensibleDataSet {
 
   private ResourceFile getResourceFileFor(Identifier templateId) {
     for (ResourceFile file : templateResources) {
-      if (file.getFileName().endsWith("/" + templateId.getId() + ".cmt")) {
+      if (file.getFileName().endsWith("/" + templateId.getId() + ".template")) {
         return file;
       }
     }

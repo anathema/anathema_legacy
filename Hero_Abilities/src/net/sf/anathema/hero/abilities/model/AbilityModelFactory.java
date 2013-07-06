@@ -18,7 +18,7 @@ public class AbilityModelFactory extends SimpleModelTreeEntry implements HeroMod
   }
 
   @Override
-  public AbilitiesModelImpl create(TemplateFactory templateFactory) {
+  public AbilitiesModelImpl create(TemplateFactory templateFactory, String templateId) {
     return new AbilitiesModelImpl();
   }
 }

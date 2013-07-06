@@ -1,6 +1,5 @@
 package net.sf.anathema.character.main.testing.dummy.template;
 
-import net.sf.anathema.character.generic.additionalrules.IAdditionalRules;
 import net.sf.anathema.character.generic.caste.CasteType;
 import net.sf.anathema.character.generic.caste.ICasteCollection;
 import net.sf.anathema.character.generic.impl.caste.CasteCollection;
@@ -11,6 +10,7 @@ import net.sf.anathema.character.generic.impl.template.magic.NullCharmSet;
 import net.sf.anathema.character.generic.impl.traits.TraitTemplateCollection;
 import net.sf.anathema.character.generic.magic.IMagic;
 import net.sf.anathema.character.generic.magic.charms.MartialArtsLevel;
+import net.sf.anathema.character.generic.template.ConfiguredModel;
 import net.sf.anathema.character.generic.template.HeroTemplate;
 import net.sf.anathema.character.generic.template.ITemplateType;
 import net.sf.anathema.character.generic.template.ITraitTemplateCollection;
@@ -79,11 +79,6 @@ public class DummyHeroTemplate implements HeroTemplate {
   }
 
   @Override
-  public IAdditionalRules getAdditionalRules() {
-    return new DummyAdditionalRules();
-  }
-
-  @Override
   public ICreationPoints getCreationPoints() {
     return creationPoints;
   }
@@ -114,7 +109,7 @@ public class DummyHeroTemplate implements HeroTemplate {
   }
 
   @Override
-  public List<String> getModels() {
+  public List<ConfiguredModel> getModels() {
     return new ArrayList<>();
   }
 

@@ -23,7 +23,7 @@ public class CombosModelFactory extends SimpleModelTreeEntry implements HeroMode
   }
 
   @Override
-  public CombosModel create(TemplateFactory templateFactory) {
+  public CombosModel create(TemplateFactory templateFactory, String templateId) {
     return new CombosModelImpl();
   }
 }

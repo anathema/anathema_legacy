@@ -13,7 +13,7 @@ public class PointModelFactory extends SimpleModelTreeEntry implements HeroModel
   }
 
   @Override
-  public PointsModel create(TemplateFactory templateFactory) {
+  public PointsModel create(TemplateFactory templateFactory, String templateId) {
     return new PointModelImpl();
   }
 }

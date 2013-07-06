@@ -15,7 +15,7 @@ public class TraitModelFactory extends SimpleModelTreeEntry implements HeroModel
   }
 
   @Override
-  public TraitModelImpl create(TemplateFactory templateFactory) {
+  public TraitModelImpl create(TemplateFactory templateFactory, String templateId) {
     return new TraitModelImpl();
   }
 }

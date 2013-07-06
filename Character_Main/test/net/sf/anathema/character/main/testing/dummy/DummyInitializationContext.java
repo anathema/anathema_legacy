@@ -5,6 +5,7 @@ import net.sf.anathema.character.generic.impl.template.magic.ICharmProvider;
 import net.sf.anathema.character.generic.type.CharacterTypes;
 import net.sf.anathema.character.model.charm.options.CharmTemplateRetriever;
 import net.sf.anathema.hero.model.InitializationContext;
+import net.sf.anathema.hero.template.TemplateFactory;
 import net.sf.anathema.initialization.ObjectFactory;
 import net.sf.anathema.initialization.repository.DataFileProvider;
 import org.mockito.Mockito;
