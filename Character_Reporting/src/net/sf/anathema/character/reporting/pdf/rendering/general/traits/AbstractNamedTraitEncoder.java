@@ -61,7 +61,7 @@ public abstract class AbstractNamedTraitEncoder {
     return height;
   }
 
-  private final float drawSubsectionHeader(SheetGraphics graphics, String text, Position position, float width) {
+  private float drawSubsectionHeader(SheetGraphics graphics, String text, Position position, float width) {
     setSubsectionFont(graphics);
     graphics.drawText(text, new Position(position.x + width / 2, position.y), PdfContentByte.ALIGN_CENTER);
     return SUBSECTION_FONT_SIZE * 1.5f;

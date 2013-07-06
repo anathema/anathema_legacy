@@ -46,8 +46,9 @@ public class SpecialtiesModelImpl implements SpecialtiesModel, HeroModel {
     this.hero = hero;
     for (Trait trait : AbilityModelFetcher.fetch(hero).getAll()) {
       ITraitReference reference = new DefaultTraitReference(trait);
-      SpecialtiesContainer container = addSpecialtiesContainer(reference);
-      specialtiesByType.put(trait.getType(), container);
+      SpecialtiesContainer specialtiesContainer = new SpecialtiesContainer(reference, this.hero);
+      specialtiesByTrait.put(reference, specialtiesContainer);
+      specialtiesByType.put(trait.getType(), specialtiesContainer);
     }
     addExperiencePoints(hero);
   }
@@ -72,12 +73,6 @@ public class SpecialtiesModelImpl implements SpecialtiesModel, HeroModel {
     return SpecialtiesModel.ID;
   }
 
-  private SpecialtiesContainer addSpecialtiesContainer(ITraitReference reference) {
-    SpecialtiesContainer specialtiesContainer = new SpecialtiesContainer(reference, hero);
-    specialtiesByTrait.put(reference, specialtiesContainer);
-    return specialtiesContainer;
-  }
-
   @Override
   public ISubTraitContainer getSpecialtiesContainer(ITraitReference trait) {
     return specialtiesByTrait.get(trait);
@@ -96,15 +91,15 @@ public class SpecialtiesModelImpl implements SpecialtiesModel, HeroModel {
 
   @Override
   public ITraitReference[] getAllEligibleTraits() {
-    List<ITraitReference> keySet = new ArrayList<>(specialtiesByTrait.keySet());
+    List<ITraitReference> eligibleTraits = new ArrayList<>(specialtiesByTrait.keySet());
     Set<ITraitReference> toRemove = new HashSet<>();
-    for (ITraitReference trait : keySet) {
+    for (ITraitReference trait : eligibleTraits) {
       if (!getSpecialtiesContainer(trait.getTraitType()).isNewSubTraitAllowed()) {
         toRemove.add(trait);
       }
     }
-    keySet.removeAll(toRemove);
-    return keySet.toArray(new ITraitReference[keySet.size()]);
+    eligibleTraits.removeAll(toRemove);
+    return eligibleTraits.toArray(new ITraitReference[eligibleTraits.size()]);
   }
 
   @Override
