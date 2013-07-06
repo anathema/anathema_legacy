@@ -4,7 +4,7 @@ import net.sf.anathema.character.generic.traits.TraitType;
 import net.sf.anathema.character.generic.traits.groups.IIdentifiedTraitTypeGroup;
 import net.sf.anathema.character.main.model.abilities.AbilityModelFetcher;
 import net.sf.anathema.character.reporting.pdf.content.ReportSession;
-import net.sf.anathema.character.reporting.pdf.content.stats.IValuedTraitReference;
+import net.sf.anathema.character.reporting.pdf.content.stats.ValuedTraitReference;
 import net.sf.anathema.character.reporting.pdf.rendering.extent.Position;
 import net.sf.anathema.character.reporting.pdf.rendering.general.traits.AbstractNamedTraitEncoder;
 import net.sf.anathema.character.reporting.pdf.rendering.general.traits.INamedTraitEncoder;
@@ -30,13 +30,13 @@ public class SpecialtiesEncoder extends AbstractNamedTraitEncoder implements INa
   public float encode(SheetGraphics graphics, ReportSession session, Position position, float width, float height) {
     SpecialtiesContentCandidate content = new SpecialtiesContentCandidate(session.getHero());
     String title = getResources().getString("Sheet.AbilitySubHeader.Specialties");
-    List<IValuedTraitReference> references = new ArrayList<>();
+    List<ValuedTraitReference> references = new ArrayList<>();
     for (IIdentifiedTraitTypeGroup group : AbilityModelFetcher.fetch(session.getHero()).getAbilityTypeGroups()) {
       for (TraitType traitType : group.getAllGroupTypes()) {
         Collections.addAll(references, getTraitReferences(content.getSpecialties(traitType), traitType));
       }
     }
-    IValuedTraitReference[] specialties = references.toArray(new IValuedTraitReference[references.size()]);
+    ValuedTraitReference[] specialties = references.toArray(new ValuedTraitReference[references.size()]);
     if (specialtyCount > 0) {
       return _drawNamedTraitSection(graphics, title, specialties, position, width, specialtyCount, 3);
     } else {

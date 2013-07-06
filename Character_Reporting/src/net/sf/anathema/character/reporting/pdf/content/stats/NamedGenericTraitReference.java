@@ -3,7 +3,7 @@ package net.sf.anathema.character.reporting.pdf.content.stats;
 import net.sf.anathema.character.generic.traits.TraitType;
 import net.sf.anathema.character.library.trait.specialties.Specialty;
 
-public class NamedGenericTraitReference implements IValuedTraitReference {
+public class NamedGenericTraitReference implements ValuedTraitReference {
 
   private final String name;
   private final TraitType type;

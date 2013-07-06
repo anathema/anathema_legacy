@@ -1,10 +1,8 @@
 package net.sf.anathema.hero.specialties.display.presenter;
 
-import net.sf.anathema.character.generic.framework.ITraitReference;
-import net.sf.anathema.character.generic.framework.resources.TraitInternationalizer;
+import net.sf.anathema.character.generic.framework.resources.TraitTypeInternationalizer;
 import net.sf.anathema.character.generic.traits.TraitType;
 import net.sf.anathema.character.library.trait.presenter.TraitPresenter;
-import net.sf.anathema.character.library.trait.specialties.DefaultTraitReference;
 import net.sf.anathema.character.library.trait.specialties.SpecialtiesModel;
 import net.sf.anathema.character.library.trait.specialties.Specialty;
 import net.sf.anathema.character.library.trait.subtrait.ISpecialtyListener;
@@ -33,7 +31,7 @@ public class SpecialtiesConfigurationPresenter implements Presenter {
 
   private final IdentityMapping<Specialty, ExtensibleTraitView> viewsBySpecialty = new IdentityMapping<>();
   private final IdentityMapping<Specialty, Tool> deleteToolsBySpecialty = new IdentityMapping<>();
-  private final TraitInternationalizer i18ner;
+  private final TraitTypeInternationalizer i18ner;
   private final Comparator<TraitType> comparator;
 
   private final ISpecialtyListener specialtyListener = new ISpecialtyListener() {
@@ -64,17 +62,17 @@ public class SpecialtiesConfigurationPresenter implements Presenter {
     this.hero = hero;
     this.specialtyManagement = specialtyManagement;
     this.configurationView = configurationView;
-    this.i18ner = new TraitInternationalizer(resources);
-    this.comparator = new TraitReferenceByNameComparator(i18ner);
+    this.i18ner = new TraitTypeInternationalizer(resources);
+    this.comparator = new TraitTypeByNameComparator(i18ner);
   }
 
   @Override
   public void initPresentation() {
     initTraitListening();
     RelativePath addIcon = new BasicUi().getAddIconPath();
-    AgnosticUIConfiguration<ITraitReference> configuration = new AbstractUIConfiguration<ITraitReference>() {
+    AgnosticUIConfiguration<TraitType> configuration = new AbstractUIConfiguration<TraitType>() {
       @Override
-      protected String labelForExistingValue(ITraitReference value) {
+      protected String labelForExistingValue(TraitType value) {
         return i18ner.getScreenName(value);
       }
     };
@@ -178,7 +176,7 @@ public class SpecialtiesConfigurationPresenter implements Presenter {
 
   private void addSpecialtyView(final Specialty specialty) {
     final TraitType type = specialty.getBasicTraitType();
-    String traitName = i18ner.getScreenName(new DefaultTraitReference(type));
+    String traitName = i18ner.getScreenName(type);
     String specialtyName = specialty.getName();
     RelativePath deleteIcon = new BasicUi().getRemoveIconPath();
     final ExtensibleTraitView specialtyView = configurationView.addSpecialtyView(traitName, specialtyName, deleteIcon,

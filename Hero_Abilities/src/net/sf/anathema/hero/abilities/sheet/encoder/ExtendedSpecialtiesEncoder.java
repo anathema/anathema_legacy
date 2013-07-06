@@ -4,14 +4,14 @@ import net.sf.anathema.character.generic.traits.TraitType;
 import net.sf.anathema.character.generic.traits.groups.IIdentifiedTraitTypeGroup;
 import net.sf.anathema.character.main.model.abilities.AbilityModelFetcher;
 import net.sf.anathema.character.reporting.pdf.content.ReportSession;
-import net.sf.anathema.character.reporting.pdf.content.stats.IValuedTraitReference;
-import net.sf.anathema.hero.abilities.sheet.content.SpecialtiesContentCandidate;
+import net.sf.anathema.character.reporting.pdf.content.stats.ValuedTraitReference;
 import net.sf.anathema.character.reporting.pdf.rendering.extent.Bounds;
 import net.sf.anathema.character.reporting.pdf.rendering.extent.Position;
 import net.sf.anathema.character.reporting.pdf.rendering.general.box.ContentEncoder;
 import net.sf.anathema.character.reporting.pdf.rendering.general.traits.AbstractNamedTraitEncoder;
 import net.sf.anathema.character.reporting.pdf.rendering.general.traits.PdfTraitEncoder;
 import net.sf.anathema.character.reporting.pdf.rendering.graphics.SheetGraphics;
+import net.sf.anathema.hero.abilities.sheet.content.SpecialtiesContentCandidate;
 import net.sf.anathema.lib.resources.Resources;
 
 import java.util.ArrayList;
@@ -32,17 +32,17 @@ public class ExtendedSpecialtiesEncoder extends AbstractNamedTraitEncoder implem
   @Override
   public void encode(SheetGraphics graphics, ReportSession reportSession, Bounds bounds) {
     SpecialtiesContentCandidate content = new SpecialtiesContentCandidate(reportSession.getHero());
-    List<IValuedTraitReference> references = new ArrayList<>();
+    List<ValuedTraitReference> references = new ArrayList<>();
     for (IIdentifiedTraitTypeGroup group :  AbilityModelFetcher.fetch(reportSession.getHero()).getAbilityTypeGroups()) {
       for (TraitType traitType : group.getAllGroupTypes()) {
         Collections.addAll(references, getTraitReferences(content.getSpecialties(traitType), traitType));
       }
     }
-    IValuedTraitReference[] specialties = references.toArray(new IValuedTraitReference[references.size()]);
+    ValuedTraitReference[] specialties = references.toArray(new ValuedTraitReference[references.size()]);
 
     int lineCount = getLineCount(null, bounds.height);
-    IValuedTraitReference[] leftSpecialties = Arrays.copyOfRange(specialties, 0, Math.min(specialties.length, lineCount));
-    IValuedTraitReference[] rightSpecialties = Arrays.copyOfRange(specialties, leftSpecialties.length, specialties.length);
+    ValuedTraitReference[] leftSpecialties = Arrays.copyOfRange(specialties, 0, Math.min(specialties.length, lineCount));
+    ValuedTraitReference[] rightSpecialties = Arrays.copyOfRange(specialties, leftSpecialties.length, specialties.length);
 
     float columnWidth = (bounds.width - PADDING) / 2f;
     float columnHeight = bounds.height - TEXT_PADDING / 2f;

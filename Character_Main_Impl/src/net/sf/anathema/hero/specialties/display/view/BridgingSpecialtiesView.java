@@ -1,6 +1,6 @@
 package net.sf.anathema.hero.specialties.display.view;
 
-import net.sf.anathema.character.generic.framework.ITraitReference;
+import net.sf.anathema.character.generic.traits.TraitType;
 import net.sf.anathema.character.library.util.CssSkinner;
 import net.sf.anathema.character.presenter.ExtensibleTraitView;
 import net.sf.anathema.framework.swing.IView;
@@ -33,7 +33,7 @@ public class BridgingSpecialtiesView implements SpecialtiesConfigurationView, IV
   }
 
   @Override
-  public SpecialtyCreationView addSpecialtyCreationView(AgnosticUIConfiguration<ITraitReference> configuration, RelativePath addIcon) {
+  public SpecialtyCreationView addSpecialtyCreationView(AgnosticUIConfiguration<TraitType> configuration, RelativePath addIcon) {
     return fxView.addSpecialtyCreationView(configuration, addIcon);
   }
 }

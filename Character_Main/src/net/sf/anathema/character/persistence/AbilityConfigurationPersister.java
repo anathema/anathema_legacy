@@ -1,11 +1,9 @@
 package net.sf.anathema.character.persistence;
 
-import net.sf.anathema.character.generic.framework.ITraitReference;
 import net.sf.anathema.character.generic.traits.TraitType;
 import net.sf.anathema.character.generic.traits.types.AbilityType;
 import net.sf.anathema.character.library.trait.Trait;
 import net.sf.anathema.character.library.trait.persistence.TraitPersister;
-import net.sf.anathema.character.library.trait.specialties.DefaultTraitReference;
 import net.sf.anathema.character.library.trait.specialties.SpecialtiesModel;
 import net.sf.anathema.character.library.trait.specialties.Specialty;
 import net.sf.anathema.character.library.trait.subtrait.ISubTraitContainer;
@@ -38,12 +36,11 @@ public class AbilityConfigurationPersister {
     if (ability.getFavorization().isFavored()) {
       ElementUtilities.addAttribute(abilityElement, ATTRIB_FAVORED, ability.getFavorization().isFavored());
     }
-    DefaultTraitReference reference = new DefaultTraitReference(ability);
-    saveSpecialties(specialtyConfiguration, abilityElement, reference);
+    saveSpecialties(specialtyConfiguration, abilityElement, ability.getType());
   }
 
-  private void saveSpecialties(SpecialtiesModel specialtyConfiguration, Element abilityElement, ITraitReference reference) {
-    for (Specialty specialty : specialtyConfiguration.getSpecialtiesContainer(reference.getTraitType()).getSubTraits()) {
+  private void saveSpecialties(SpecialtiesModel specialtyConfiguration, Element abilityElement, TraitType type) {
+    for (Specialty specialty : specialtyConfiguration.getSpecialtiesContainer(type).getSubTraits()) {
       Element specialtyElement = persister.saveTrait(abilityElement, TAG_SPECIALTY, specialty);
       specialtyElement.addAttribute(ATTRIB_NAME, specialty.getName());
     }
@@ -63,15 +60,15 @@ public class AbilityConfigurationPersister {
     persister.restoreTrait(abilityElement, ability);
     boolean favored = ElementUtilities.getBooleanAttribute(abilityElement, ATTRIB_FAVORED, false);
     ability.getFavorization().setFavored(favored);
-    loadSpecialties(abilityElement, specialties, new DefaultTraitReference(ability));
+    loadSpecialties(abilityElement, specialties, ability.getType());
   }
 
-  private void loadSpecialties(Element abilityElement, SpecialtiesModel specialtyConfiguration, ITraitReference reference) throws
+  private void loadSpecialties(Element abilityElement, SpecialtiesModel specialtyConfiguration, TraitType type) throws
           PersistenceException {
     List<Element> specialtyElements = ElementUtilities.elements(abilityElement, TAG_SPECIALTY);
     for (Element specialtyElement : specialtyElements) {
       String specialtyName = specialtyElement.attributeValue(ATTRIB_NAME);
-      ISubTraitContainer specialtiesContainer = specialtyConfiguration.getSpecialtiesContainer(reference.getTraitType());
+      ISubTraitContainer specialtiesContainer = specialtyConfiguration.getSpecialtiesContainer(type);
       Specialty specialty = specialtiesContainer.addSubTrait(specialtyName);
       persister.restoreTrait(specialtyElement, specialty);
     }

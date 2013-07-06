@@ -1,11 +1,11 @@
 package net.sf.anathema.character.reporting.pdf.rendering.general.traits;
 
 import com.itextpdf.text.pdf.PdfContentByte;
-import net.sf.anathema.character.generic.framework.resources.TraitInternationalizer;
+import net.sf.anathema.character.generic.framework.resources.TraitReferenceInternationalizer;
 import net.sf.anathema.character.generic.traits.TraitType;
 import net.sf.anathema.character.library.trait.specialties.Specialty;
-import net.sf.anathema.character.reporting.pdf.content.stats.IValuedTraitReference;
 import net.sf.anathema.character.reporting.pdf.content.stats.NamedGenericTraitReference;
+import net.sf.anathema.character.reporting.pdf.content.stats.ValuedTraitReference;
 import net.sf.anathema.character.reporting.pdf.rendering.extent.Position;
 import net.sf.anathema.character.reporting.pdf.rendering.graphics.SheetGraphics;
 import net.sf.anathema.lib.resources.Resources;
@@ -35,18 +35,18 @@ public abstract class AbstractNamedTraitEncoder {
     return (int) (height / traitEncoder.getTraitHeight());
   }
 
-  protected float drawNamedTraitSection(SheetGraphics graphics, String title, IValuedTraitReference[] traits, Position position, float width, float height, int dotCount) {
+  protected float drawNamedTraitSection(SheetGraphics graphics, String title, ValuedTraitReference[] traits, Position position, float width, float height, int dotCount) {
     return _drawNamedTraitSection(graphics, title, traits, position, width, getLineCount(title, height), dotCount);
   }
 
-  protected float _drawNamedTraitSection(SheetGraphics graphics, String title, IValuedTraitReference[] traits, Position position, float width, int lineCount, int dotCount) {
+  protected float _drawNamedTraitSection(SheetGraphics graphics, String title, ValuedTraitReference[] traits, Position position, float width, int lineCount, int dotCount) {
     float height = 0;
     if (title != null) {
       height = drawSubsectionHeader(graphics, title, position, width);
     }
-    TraitInternationalizer internationalizer = new TraitInternationalizer(getResources());
+    TraitReferenceInternationalizer internationalizer = new TraitReferenceInternationalizer(getResources());
     for (int index = 0; index < lineCount && index < traits.length; index++) {
-      IValuedTraitReference trait = traits[index];
+      ValuedTraitReference trait = traits[index];
       String name = internationalizer.getSheetName(trait);
       Position traitPosition = new Position(position.x, position.y - height);
       int value = trait.getValue();
@@ -71,11 +71,11 @@ public abstract class AbstractNamedTraitEncoder {
     graphics.setSubsectionFont();
   }
 
-  protected final IValuedTraitReference[] getTraitReferences(Specialty[] traits, TraitType type) {
-    List<IValuedTraitReference> references = new ArrayList<>();
+  protected final ValuedTraitReference[] getTraitReferences(Specialty[] traits, TraitType type) {
+    List<ValuedTraitReference> references = new ArrayList<>();
     for (Specialty trait : traits) {
       references.add(new NamedGenericTraitReference(trait, type));
     }
-    return references.toArray(new IValuedTraitReference[references.size()]);
+    return references.toArray(new ValuedTraitReference[references.size()]);
   }
 }
