@@ -14,7 +14,7 @@ import net.sf.anathema.character.main.testing.dummy.DummyInitializationContext;
 import net.sf.anathema.character.main.testing.dummy.models.DummyHeroConcept;
 import net.sf.anathema.character.main.testing.dummy.models.DummyOtherTraitModel;
 import net.sf.anathema.character.main.testing.dummy.models.DummyTraitModel;
-import net.sf.anathema.character.model.creation.bonus.ability.AbilityCostCalculator;
+import net.sf.anathema.hero.abilities.points.creation.AbilityCostCalculator;
 import net.sf.anathema.hero.abilities.model.AbilitiesModelImpl;
 import net.sf.anathema.hero.points.PointModelImpl;
 import org.junit.Before;

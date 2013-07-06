@@ -1,4 +1,4 @@
-package net.sf.anathema.hero.abilities.points;
+package net.sf.anathema.hero.specialties.points.experience;
 
 import net.sf.anathema.character.generic.template.experience.IExperiencePointCosts;
 import net.sf.anathema.character.library.trait.Trait;

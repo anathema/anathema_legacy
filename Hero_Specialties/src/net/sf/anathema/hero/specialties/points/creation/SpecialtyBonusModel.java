@@ -1,4 +1,4 @@
-package net.sf.anathema.character.model.creation.bonus.ability;
+package net.sf.anathema.hero.specialties.points.creation;
 
 import net.sf.anathema.character.generic.template.creation.ICreationPoints;
 import net.sf.anathema.character.model.advance.models.AbstractSpendingModel;

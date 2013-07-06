@@ -1,10 +1,8 @@
-package net.sf.anathema.hero.specialties.points;
+package net.sf.anathema.hero.specialties.points.creation;
 
 import net.sf.anathema.character.generic.template.creation.ICreationPoints;
 import net.sf.anathema.character.main.model.abilities.AbilityModelFetcher;
 import net.sf.anathema.character.main.model.traits.TraitMap;
-import net.sf.anathema.character.model.creation.bonus.ability.SpecialtiesCostCalculator;
-import net.sf.anathema.character.model.creation.bonus.ability.SpecialtyBonusModel;
 import net.sf.anathema.hero.change.ChangeAnnouncer;
 import net.sf.anathema.hero.model.Hero;
 import net.sf.anathema.hero.model.HeroModel;
