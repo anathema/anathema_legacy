@@ -4,12 +4,12 @@ import net.sf.anathema.character.generic.template.creation.BonusPointCosts;
 import net.sf.anathema.character.generic.template.points.AttributeGroupPriority;
 import net.sf.anathema.character.generic.template.points.IAttributeCreationPoints;
 import net.sf.anathema.character.generic.template.points.IAttributeGroupPriorityVisitor;
+import net.sf.anathema.character.generic.template.points.IFavorableTraitCreationPoints;
 import net.sf.anathema.character.generic.traits.types.AttributeGroupType;
-import net.sf.anathema.character.library.trait.AbstractFavorableTraitCostCalculator;
+import net.sf.anathema.character.library.trait.FavorableTraitCost;
 import net.sf.anathema.character.library.trait.Trait;
 import net.sf.anathema.character.library.trait.TraitGroup;
 import net.sf.anathema.character.main.model.attributes.AttributeModel;
-import net.sf.anathema.character.model.creation.bonus.additional.IAdditionalBonusPointManagement;
 import net.sf.anathema.character.model.creation.bonus.basic.ElementCreationCost;
 import net.sf.anathema.character.model.creation.bonus.basic.ElementCreationCostCalculator;
 import net.sf.anathema.character.model.creation.bonus.basic.ICostElement;
@@ -22,18 +22,21 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-public class AttributeCostCalculator extends AbstractFavorableTraitCostCalculator implements IAttributeCostCalculator {
+public class AttributeCostCalculator implements IAttributeCostCalculator {
 
+  private static final int SORTING_BONUS_COST_SCALE_FACTOR = 1000;
   private final Map<Trait, ElementCreationCost> costsByAttribute = new HashMap<>();
   private List<TraitGroupCost> orderedGroups;
   private final TraitGroup[] traitGroups;
   private final BonusPointCosts costs;
   private final List<List<TraitGroup>> priorityPermutations = new ArrayList<>();
-  private static final int SORTING_BONUS_COST_SCALE_FACTOR = 1000;
+  protected final IFavorableTraitCreationPoints points;
+  private final Map<Trait, FavorableTraitCost[]> costsByTrait = new HashMap<>();
+  private int favoredDotSum = 0;
+  private int generalDotSum = 0;
 
-  public AttributeCostCalculator(AttributeModel attributes, IAttributeCreationPoints points, BonusPointCosts costs,
-                                 IAdditionalBonusPointManagement additionalPools) {
-    super(additionalPools, points, costs.getMaximumFreeAbilityRank(), attributes.getAll());
+  public AttributeCostCalculator(AttributeModel attributes, IAttributeCreationPoints points, BonusPointCosts costs) {
+    this.points = points;
     this.traitGroups = attributes.getTraitGroups();
     this.costs = costs;
     createPermutations(new ArrayList<TraitGroup>());
@@ -59,7 +62,6 @@ public class AttributeCostCalculator extends AbstractFavorableTraitCostCalculato
   public void calculateAttributeCosts() {
     clear();
     costsByAttribute.clear();
-    countFavoredTraits();
     IAttributeCreationPoints attributeCreation = (IAttributeCreationPoints) points;
     int bestCost = Integer.MAX_VALUE;
     int bestPermutation = 0;
@@ -168,8 +170,31 @@ public class AttributeCostCalculator extends AbstractFavorableTraitCostCalculato
     return pointsSpent;
   }
 
-  @Override
-  protected int getCostFactor(Trait trait) {
-    return costs.getAttributeCosts(trait);
+  private void clear() {
+    favoredDotSum = 0;
+    generalDotSum = 0;
+    costsByTrait.clear();
+  }
+
+  public int getBonusPointsSpent() {
+    int bonusPointSum = 0;
+    for (FavorableTraitCost[] allCosts : costsByTrait.values()) {
+      for (FavorableTraitCost cost : allCosts) {
+        bonusPointSum += cost.getBonusCost();
+      }
+    }
+    return bonusPointSum;
+  }
+
+  private int getExtraFavoredDotCount() {
+    return points.getExtraFavoredDotCount();
+  }
+
+  private int getExtraGenericDotCount() {
+    return points.getExtraGenericDotCount();
+  }
+
+  public int getFreePointsSpent(boolean favored) {
+    return favored ? favoredDotSum : generalDotSum;
   }
 }

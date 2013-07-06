@@ -89,7 +89,7 @@ public class AttributeCostCalculatorTest {
     this.creationPoint = new AttributeCreationPoints(6, 4, 2);
     DummyAdditionalBonusPointManagement additionalBonusPointManagement = new DummyAdditionalBonusPointManagement();
     DefaultBonusPointCosts cost = new DefaultBonusPointCosts();
-    this.calculator = new AttributeCostCalculator(attributeModel, creationPoint, cost, additionalBonusPointManagement);
+    this.calculator = new AttributeCostCalculator(attributeModel, creationPoint, cost);
   }
 
   @Test

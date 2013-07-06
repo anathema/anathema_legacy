@@ -71,7 +71,7 @@ public class BonusPointManagement implements IBonusPointManagement {
     this.abilityCalculator = new AbilityCostCalculator(hero, AbilityModelFetcher.fetch(hero), creationPoints.getAbilityCreationPoints(),
             creationPoints.getSpecialtyCreationPoints(), cost, bonusAdditionalPools);
     this.attributeCalculator =
-            new AttributeCostCalculator(AttributesModelFetcher.fetch(hero), creationPoints.getAttributeCreationPoints(), cost, bonusAdditionalPools);
+            new AttributeCostCalculator(AttributesModelFetcher.fetch(hero), creationPoints.getAttributeCreationPoints(), cost);
     Trait[] virtues = TraitCollectionUtilities.getVirtues(traitMap);
     this.virtueCalculator = new VirtueCostCalculator(virtues, creationPoints.getVirtueCreationPoints(), cost);
     magicAdditionalPools = new AdditionalMagicLearnPointManagement(characterTemplate.getAdditionalRules().getAdditionalMagicLearnPools(), hero);
