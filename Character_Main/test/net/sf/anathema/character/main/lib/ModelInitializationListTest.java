@@ -1,5 +1,6 @@
 package net.sf.anathema.character.main.lib;
 
+import net.sf.anathema.character.generic.template.ConfiguredModel;
 import net.sf.anathema.hero.initialization.ModelInitializationList;
 import net.sf.anathema.hero.initialization.SimpleModelTreeEntry;
 import net.sf.anathema.lib.util.Identifier;
@@ -15,7 +16,7 @@ import static org.hamcrest.MatcherAssert.assertThat;
 public class ModelInitializationListTest {
 
   private List<SimpleModelTreeEntry> availableTreeEntries = new ArrayList<>();
-  private List<Identifier> configuredIdentifiers = new ArrayList<>();
+  private List<ConfiguredModel> configuredModels = new ArrayList<>();
 
   @Test
   public void hasSingleEntryWithoutRequirementsFirst() throws Exception {
@@ -72,11 +73,11 @@ public class ModelInitializationListTest {
   private void addConfiguredEntry(String id, Identifier... requirements) {
     SimpleIdentifier modelId = new SimpleIdentifier(id);
     availableTreeEntries.add(new SimpleModelTreeEntry(modelId, requirements));
-    configuredIdentifiers.add(modelId);
+    configuredModels.add(new ConfiguredModel(modelId.getId(), null));
   }
 
   private void assertContainsOrder(String... ids) {
-    ModelInitializationList list = new ModelInitializationList(configuredIdentifiers, availableTreeEntries);
+    ModelInitializationList list = new ModelInitializationList(configuredModels, availableTreeEntries);
     for (int index = 0; index < ids.length; index++) {
       assertThat(list.get(index).getId(), is(ids[index]));
     }
