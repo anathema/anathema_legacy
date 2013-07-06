@@ -20,7 +20,8 @@ import net.sf.anathema.character.model.creation.bonus.ability.FavoredAbilityBonu
 import net.sf.anathema.character.model.creation.bonus.ability.FavoredAbilityPickModel;
 import net.sf.anathema.character.model.creation.bonus.ability.IAbilityCostCalculator;
 import net.sf.anathema.character.model.creation.bonus.ability.SpecialtyBonusModel;
-import net.sf.anathema.character.model.creation.bonus.additional.AdditionalBonusPointPoolManagement;
+import net.sf.anathema.character.model.creation.bonus.additional.AdditionalBonusPoints;
+import net.sf.anathema.character.model.creation.bonus.additional.AdditionalBonusPointsImpl;
 import net.sf.anathema.character.model.creation.bonus.magic.DefaultCharmModel;
 import net.sf.anathema.character.model.creation.bonus.magic.FavoredCharmModel;
 import net.sf.anathema.character.model.creation.bonus.magic.MagicCostCalculator;
@@ -39,7 +40,7 @@ import java.util.List;
 public class BonusPointManagement implements IBonusPointManagement {
 
   private final IAdditionalMagicLearnPointManagement magicAdditionalPools;
-  private final AdditionalBonusPointPoolManagement bonusAdditionalPools;
+  private final AdditionalBonusPoints bonusAdditionalPools;
   private final IAbilityCostCalculator abilityCalculator;
   private final VirtueCostCalculator virtueCalculator;
   private final MagicCostCalculator magicCalculator;
@@ -58,8 +59,7 @@ public class BonusPointManagement implements IBonusPointManagement {
     for (HeroBonusPointCalculator additionalCalculator : PointModelFetcher.fetch(hero).getBonusPointCalculators()) {
       bonusPointCalculator.addBonusPointCalculator(additionalCalculator);
     }
-    bonusAdditionalPools = new AdditionalBonusPointPoolManagement(TraitModelFetcher.fetch(hero),
-            hero.getTemplate().getAdditionalRules().getAdditionalBonusPointPools());
+    bonusAdditionalPools = PointModelFetcher.fetch(hero).getAdditionalBonusPoints();
     this.cost = hero.getTemplate().getBonusPointCosts();
     HeroTemplate characterTemplate = hero.getTemplate();
     TraitMap traitMap = TraitModelFetcher.fetch(hero);

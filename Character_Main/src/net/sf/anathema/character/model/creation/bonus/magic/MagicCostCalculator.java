@@ -15,7 +15,7 @@ import net.sf.anathema.character.model.advance.CostAnalyzer;
 import net.sf.anathema.character.model.charm.special.ISubeffectCharmConfiguration;
 import net.sf.anathema.character.model.charm.special.IUpgradableCharmConfiguration;
 import net.sf.anathema.character.model.creation.bonus.IAdditionalMagicLearnPointManagement;
-import net.sf.anathema.character.model.creation.bonus.additional.IAdditionalBonusPointManagement;
+import net.sf.anathema.character.model.creation.bonus.additional.AdditionalBonusPoints;
 import net.sf.anathema.hero.model.Hero;
 
 import java.util.ArrayList;
@@ -35,12 +35,12 @@ public class MagicCostCalculator {
   private int bonusPointsSpentForCharms = 0;
   private final BonusPointCosts costs;
   private CostAnalyzer analyzer;
-  private final IAdditionalBonusPointManagement bonusPools;
+  private final AdditionalBonusPoints bonusPools;
   protected int bonusPointsSpentForSpells;
   private final IAdditionalMagicLearnPointManagement magicPools;
   private final IMagicTemplate magicTemplate;
 
-  public MagicCostCalculator(Hero hero, BonusPointCosts costs, IAdditionalBonusPointManagement bonusPools,
+  public MagicCostCalculator(Hero hero, BonusPointCosts costs, AdditionalBonusPoints bonusPools,
                              IAdditionalMagicLearnPointManagement magicPools) {
     this.magicTemplate = hero.getTemplate().getMagicTemplate();
     this.charms = CharmsModelFetcher.fetch(hero);

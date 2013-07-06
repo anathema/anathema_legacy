@@ -12,11 +12,11 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
-public class AdditionalBonusPointPoolManagement implements IAdditionalBonusPointManagement {
+public class AdditionalBonusPointsImpl implements AdditionalBonusPoints {
 
   private final AdditionalBonusPointPoolCalculator[] additionalPoolCalculators;
 
-  public AdditionalBonusPointPoolManagement(TraitMap traitCollection, IAdditionalBonusPointPool[] pools) {
+  public AdditionalBonusPointsImpl(TraitMap traitCollection, IAdditionalBonusPointPool[] pools) {
     additionalPoolCalculators = new AdditionalBonusPointPoolCalculator[pools.length];
     for (int index = 0; index < pools.length; index++) {
       additionalPoolCalculators[index] = new AdditionalBonusPointPoolCalculator(pools[index], traitCollection);

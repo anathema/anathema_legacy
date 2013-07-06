@@ -11,7 +11,7 @@ import net.sf.anathema.character.library.trait.specialties.SpecialtiesModelFetch
 import net.sf.anathema.character.library.trait.specialties.Specialty;
 import net.sf.anathema.character.library.trait.subtrait.ISubTraitContainer;
 import net.sf.anathema.character.main.model.abilities.AbilitiesModel;
-import net.sf.anathema.character.model.creation.bonus.additional.IAdditionalBonusPointManagement;
+import net.sf.anathema.character.model.creation.bonus.additional.AdditionalBonusPoints;
 import net.sf.anathema.hero.model.Hero;
 
 import java.util.ArrayList;
@@ -23,7 +23,7 @@ import java.util.Set;
 
 public class AbilityCostCalculator implements IAbilityCostCalculator {
 
-  private final IAdditionalBonusPointManagement additionalPools;
+  private final AdditionalBonusPoints additionalPools;
   private Hero hero;
   private final AbilityPointCosts costs;
   private int specialtyBonusPointCosts;
@@ -38,7 +38,7 @@ public class AbilityCostCalculator implements IAbilityCostCalculator {
   private int generalDotSum = 0;
 
   public AbilityCostCalculator(Hero hero, AbilitiesModel abilitiesModel, IFavorableTraitCreationPoints points, int specialtyPoints,
-                               AbilityPointCosts costs, IAdditionalBonusPointManagement additionalPools) {
+                               AbilityPointCosts costs, AdditionalBonusPoints additionalPools) {
     this.additionalPools = additionalPools;
     this.points = points;
     this.freeTraitMax = costs.getMaximumFreeAbilityRank();
