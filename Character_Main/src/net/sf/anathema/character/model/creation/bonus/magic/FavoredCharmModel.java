@@ -24,7 +24,7 @@ public class FavoredCharmModel extends AbstractSpendingModel {
   }
 
   @Override
-  public int getAlotment() {
+  public int getAllotment() {
     return creationPoints.getFavoredCreationCharmCount();
   }
 }

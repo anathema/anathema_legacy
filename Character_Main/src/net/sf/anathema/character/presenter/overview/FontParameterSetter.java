@@ -22,7 +22,7 @@ public class FontParameterSetter {
     view.setFontStyle(legalityFontProvider.getFontStyle(fontStyleState));
     LegalityColorProvider legalityColorProvider = new LegalityColorProvider();
     ValueLegalityState textColorState = null;
-    int alotment = model.getAlotment();
+    int alotment = model.getAllotment();
     if (model.getValue() < alotment) {
       textColorState = ValueLegalityState.Lowered;
     }

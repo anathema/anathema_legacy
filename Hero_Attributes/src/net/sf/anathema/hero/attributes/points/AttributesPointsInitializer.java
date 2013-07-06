@@ -5,8 +5,6 @@ import net.sf.anathema.character.generic.template.creation.BonusPointCosts;
 import net.sf.anathema.character.generic.template.points.AttributeGroupPriority;
 import net.sf.anathema.character.generic.template.points.IAttributeCreationPoints;
 import net.sf.anathema.character.main.model.attributes.AttributeModel;
-import net.sf.anathema.character.model.creation.bonus.attribute.AttributeBonusModel;
-import net.sf.anathema.character.model.creation.bonus.attribute.AttributeCostCalculator;
 import net.sf.anathema.hero.points.PointsModel;
 import net.sf.anathema.hero.points.overview.ISpendingModel;
 import net.sf.anathema.hero.points.overview.WeightedCategory;

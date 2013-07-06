@@ -4,5 +4,5 @@ public interface ISpendingModel extends IValueModel<Integer> {
 
   int getSpentBonusPoints();
 
-  int getAlotment();
+  int getAllotment();
 }

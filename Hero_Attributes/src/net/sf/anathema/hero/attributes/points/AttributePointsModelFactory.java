@@ -11,11 +11,11 @@ import net.sf.anathema.hero.template.TemplateFactory;
 public class AttributePointsModelFactory extends SimpleModelTreeEntry implements HeroModelFactory {
 
   public AttributePointsModelFactory() {
-    super(AttributePointsModelImpl.ID, AttributeModel.ID, PointsModel.ID);
+    super(AttributePointsModel.ID, AttributeModel.ID, PointsModel.ID);
   }
 
   @Override
-  public AttributePointsModelImpl create(TemplateFactory templateFactory) {
-    return new AttributePointsModelImpl();
+  public AttributePointsModel create(TemplateFactory templateFactory) {
+    return new AttributePointsModel();
   }
 }

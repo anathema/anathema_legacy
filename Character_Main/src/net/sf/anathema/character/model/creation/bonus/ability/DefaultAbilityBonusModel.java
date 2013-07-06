@@ -24,7 +24,7 @@ public class DefaultAbilityBonusModel extends AbstractSpendingModel {
   }
 
   @Override
-  public int getAlotment() {
+  public int getAllotment() {
     return creationPoints.getAbilityCreationPoints().getDefaultDotCount();
   }
 }

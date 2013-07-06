@@ -24,7 +24,7 @@ public class SpecialtyBonusModel extends AbstractSpendingModel {
   }
 
   @Override
-  public int getAlotment() {
+  public int getAllotment() {
     return creationPoints.getSpecialtyCreationPoints();
   }
 }

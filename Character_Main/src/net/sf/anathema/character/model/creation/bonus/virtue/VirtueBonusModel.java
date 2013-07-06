@@ -24,7 +24,7 @@ public class VirtueBonusModel extends AbstractSpendingModel {
   }
 
   @Override
-  public int getAlotment() {
+  public int getAllotment() {
     return creationPoints.getVirtueCreationPoints();
   }
 }

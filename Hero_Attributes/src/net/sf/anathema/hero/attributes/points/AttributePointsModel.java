@@ -6,8 +6,6 @@ import net.sf.anathema.character.generic.template.points.AttributeGroupPriority;
 import net.sf.anathema.character.generic.template.points.IAttributeCreationPoints;
 import net.sf.anathema.character.main.model.attributes.AttributeModel;
 import net.sf.anathema.character.main.model.attributes.AttributesModelFetcher;
-import net.sf.anathema.character.model.creation.bonus.attribute.AttributeBonusModel;
-import net.sf.anathema.character.model.creation.bonus.attribute.AttributeCostCalculator;
 import net.sf.anathema.hero.change.ChangeAnnouncer;
 import net.sf.anathema.hero.model.Hero;
 import net.sf.anathema.hero.model.HeroModel;
@@ -18,7 +16,7 @@ import net.sf.anathema.hero.points.overview.WeightedCategory;
 import net.sf.anathema.lib.util.Identifier;
 import net.sf.anathema.lib.util.SimpleIdentifier;
 
-public class AttributePointsModelImpl implements HeroModel {
+public class AttributePointsModel implements HeroModel {
 
   public static final SimpleIdentifier ID = new SimpleIdentifier("AttributePoints");
 

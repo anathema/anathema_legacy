@@ -155,11 +155,11 @@ public class BonusPointManagement implements IBonusPointManagement {
     List<IOverviewModel> models = new ArrayList<>();
 
     models.add(getFavoredAbilityPickModel());
-    if (getFavoredAbilityModel().getAlotment() > 0) {
+    if (getFavoredAbilityModel().getAllotment() > 0) {
       models.add(getFavoredAbilityModel());
     }
     models.add(getDefaultAbilityModel());
-    if (getSpecialtiesModel().getAlotment() > 0) {
+    if (getSpecialtiesModel().getAllotment() > 0) {
       models.add(getSpecialtiesModel());
     }
     addCharmModels(models);
@@ -172,7 +172,7 @@ public class BonusPointManagement implements IBonusPointManagement {
     if (!(DefaultCharmTemplateRetriever.getNativeTemplate(hero).canLearnCharms())) {
       return;
     }
-    if (getFavoredCharmModel().getAlotment() > 0) {
+    if (getFavoredCharmModel().getAllotment() > 0) {
       models.add(getFavoredCharmModel());
     }
     models.add(getDefaultCharmModel());
@@ -204,7 +204,7 @@ public class BonusPointManagement implements IBonusPointManagement {
     }
 
     @Override
-    public int getAlotment() {
+    public int getAllotment() {
       return creationPoints.getBonusPointCount() + bonusPointCalculator.getAdditionalGeneralBonusPoints();
     }
 

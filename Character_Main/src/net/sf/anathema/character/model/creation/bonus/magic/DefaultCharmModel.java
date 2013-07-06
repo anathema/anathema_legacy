@@ -56,7 +56,7 @@ public class DefaultCharmModel extends AbstractAdditionalSpendingModel {
   }
 
   @Override
-  public int getAlotment() {
+  public int getAllotment() {
     return creationPoints.getDefaultCreationCharmCount();
   }
 

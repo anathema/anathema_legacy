@@ -18,7 +18,7 @@ public class AdditionalAlotmentSubPresenter implements IOverviewSubPresenter {
   @Override
   public void update() {
     view.setValue(model.getValue(), model.getAdditionalValue());
-    view.setAlotment(model.getAlotment(), model.getAdditionalRestrictedAlotment());
+    view.setAlotment(model.getAllotment(), model.getAdditionalRestrictedAlotment());
     setter.setFontParameters();
   }
 }

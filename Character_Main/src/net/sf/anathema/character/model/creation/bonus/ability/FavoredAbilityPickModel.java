@@ -25,7 +25,7 @@ public class FavoredAbilityPickModel extends AbstractSpendingModel {
   }
 
   @Override
-  public int getAlotment() {
+  public int getAllotment() {
     return creationPoints.getAbilityCreationPoints().getFavorableTraitCount();
   }
 }
