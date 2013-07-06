@@ -1,4 +1,4 @@
-package net.sf.anathema;
+package anathema.integration;
 
 import cucumber.api.junit.Cucumber;
 import org.junit.runner.RunWith;
