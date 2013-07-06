@@ -10,6 +10,7 @@ public class CssSkinner {
   public String[] getSkins(ICharacterType characterType) {
     List<String> skins = new ArrayList<>();
     skins.add("skin/platform/dotselector.css");
+    skins.add("skin/character/favorable.css");
     skins.add(chooseSkinForCharacterType(characterType));
     return skins.toArray(new String[skins.size()]);
   }

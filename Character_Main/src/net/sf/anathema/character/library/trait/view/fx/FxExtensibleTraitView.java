@@ -34,7 +34,7 @@ public class FxExtensibleTraitView implements ExtensibleTraitView {
   @Override
   public ToggleTool addToggleInFront() {
     FxToggleTool toggleTool = FxToggleTool.create();
-    toggleTool.setStyle("-fx-opacity:1.0");
+    toggleTool.setStyleClass("castebutton");
     addToPanel(front, toggleTool);
     return toggleTool;
   }
