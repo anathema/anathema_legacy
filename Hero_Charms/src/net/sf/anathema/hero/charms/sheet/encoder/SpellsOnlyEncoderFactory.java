@@ -1,6 +1,7 @@
-package net.sf.anathema.character.reporting.pdf.rendering.boxes.magic;
+package net.sf.anathema.hero.charms.sheet.encoder;
 
 import net.sf.anathema.character.reporting.pdf.content.BasicContent;
+import net.sf.anathema.hero.charms.sheet.content.SpellsOnlyContent;
 import net.sf.anathema.character.reporting.pdf.rendering.EncoderIds;
 import net.sf.anathema.character.reporting.pdf.rendering.boxes.AbstractEncoderFactory;
 import net.sf.anathema.character.reporting.pdf.rendering.boxes.RegisteredEncoderFactory;
@@ -8,15 +9,15 @@ import net.sf.anathema.character.reporting.pdf.rendering.general.box.ContentEnco
 import net.sf.anathema.lib.resources.Resources;
 
 @RegisteredEncoderFactory
-public class SimpleMagicEncoderFactory extends AbstractEncoderFactory{
+public class SpellsOnlyEncoderFactory extends AbstractEncoderFactory{
 
-  public SimpleMagicEncoderFactory() {
-    super(EncoderIds.CHARMS_AND_SORCERY);
+  public SpellsOnlyEncoderFactory() {
+    super(EncoderIds.SPELLS_ONLY);
   }
 
   @Override
   public ContentEncoder create(Resources resources, BasicContent content) {
-    return new SimpleMagicEncoder();
+    return new ExtendedMagicEncoder<>(resources, SpellsOnlyContent.class, false, "Magic");
   }
 
   @Override

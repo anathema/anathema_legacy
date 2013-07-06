@@ -1,4 +1,4 @@
-package net.sf.anathema.character.reporting.pdf.rendering.boxes.magic;
+package net.sf.anathema.hero.charms.sheet.encoder;
 
 import com.itextpdf.text.BaseColor;
 import com.itextpdf.text.DocumentException;

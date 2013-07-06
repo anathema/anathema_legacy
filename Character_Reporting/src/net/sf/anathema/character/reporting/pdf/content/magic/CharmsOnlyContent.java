@@ -2,7 +2,6 @@ package net.sf.anathema.character.reporting.pdf.content.magic;
 
 import net.sf.anathema.character.generic.magic.IMagicStats;
 import net.sf.anathema.character.reporting.pdf.content.ReportSession;
-import net.sf.anathema.character.reporting.pdf.rendering.boxes.magic.ExtendedMagicEncoder;
 import net.sf.anathema.lib.resources.Resources;
 
 import java.util.Collections;
@@ -20,7 +19,7 @@ public class CharmsOnlyContent extends AbstractMagicContent {
 
   @Override
   protected MagicMnemonic createMnemonic() {
-    List<IMagicStats> printMagic = ExtendedMagicEncoder.collectPrintCharms(session);
+    List<IMagicStats> printMagic = MagicContentHelper.collectPrintCharms(session);
     Collections.sort(printMagic);
     return new CharmsOnlyMnemonic(printMagic);
   }

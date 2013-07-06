@@ -8,6 +8,8 @@ import net.sf.anathema.character.generic.framework.configuration.AnathemaCharact
 import net.sf.anathema.character.generic.magic.ICharm;
 import net.sf.anathema.character.generic.magic.IMagic;
 import net.sf.anathema.character.generic.magic.IMagicStats;
+import net.sf.anathema.character.generic.magic.IMagicVisitor;
+import net.sf.anathema.character.generic.magic.ISpell;
 import net.sf.anathema.character.generic.magic.charms.special.ISpecialCharmConfiguration;
 import net.sf.anathema.character.generic.magic.charms.special.ISubeffect;
 import net.sf.anathema.character.generic.template.magic.AbilityFavoringType;
@@ -31,7 +33,11 @@ import net.sf.anathema.character.main.model.traits.TraitModelFetcher;
 import net.sf.anathema.character.model.charm.ILearningCharmGroup;
 import net.sf.anathema.character.model.charm.special.IMultipleEffectCharmConfiguration;
 import net.sf.anathema.character.model.charm.special.ISubeffectCharmConfiguration;
+import net.sf.anathema.character.reporting.pdf.content.ReportSession;
+import net.sf.anathema.character.reporting.pdf.content.stats.magic.CharmStats;
 import net.sf.anathema.character.reporting.pdf.content.stats.magic.GenericCharmStats;
+import net.sf.anathema.character.reporting.pdf.content.stats.magic.MultipleEffectCharmStats;
+import net.sf.anathema.character.reporting.pdf.content.stats.magic.SpellStats;
 import net.sf.anathema.hero.model.Hero;
 
 import java.util.ArrayList;
@@ -45,6 +51,57 @@ public class MagicContentHelper {
 
   public MagicContentHelper(Hero hero) {
     this.hero = hero;
+  }
+
+  public static List<IMagicStats> collectPrintMagic(final Hero hero, final boolean includeSpells, final boolean includeCharms) {
+    final List<IMagicStats> printStats = new ArrayList<>();
+    final MagicContentHelper helper = new MagicContentHelper(hero);
+    if (includeCharms) {
+      for (IMagicStats stats : helper.getGenericCharmStats()) {
+        if (helper.shouldShowCharm(stats)) {
+          printStats.add(stats);
+        }
+      }
+    }
+
+    IMagicVisitor statsCollector = new IMagicVisitor() {
+      @Override
+      public void visitCharm(ICharm charm) {
+        if (!includeCharms) {
+          return;
+        }
+        if (helper.isGenericCharmFor(charm)) {
+          return;
+        }
+         if (helper.isMultipleEffectCharm(charm)) {
+          String[] effects = helper.getLearnedEffects(charm);
+          for (String effect : effects) {
+            printStats.add(new MultipleEffectCharmStats(charm, effect));
+          }
+        } else {
+          printStats.add(new CharmStats(charm, new MagicContentHelper(hero)));
+        }
+      }
+
+      @Override
+      public void visitSpell(ISpell spell) {
+        if (includeSpells) {
+          printStats.add(new SpellStats(spell));
+        }
+      }
+    };
+    for (IMagic magic : helper.getAllLearnedMagic()) {
+      magic.accept(statsCollector);
+    }
+    return printStats;
+  }
+
+  public static List<IMagicStats> collectPrintCharms(ReportSession session) {
+    return collectPrintMagic(session.getHero(), false, true);
+  }
+
+  public static List<IMagicStats> collectPrintSpells(ReportSession session) {
+    return collectPrintMagic(session.getHero(), true, false);
   }
 
   public IGenericTraitCollection getTraitCollection() {
