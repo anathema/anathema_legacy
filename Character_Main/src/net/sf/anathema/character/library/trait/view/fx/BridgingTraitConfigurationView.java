@@ -2,6 +2,7 @@ package net.sf.anathema.character.library.trait.view.fx;
 
 import net.sf.anathema.character.generic.type.ICharacterType;
 import net.sf.anathema.character.library.trait.view.GroupedFavorableTraitConfigurationView;
+import net.sf.anathema.character.library.util.CssSkinner;
 import net.sf.anathema.character.presenter.ExtensibleTraitView;
 import net.sf.anathema.character.view.ColumnCount;
 import net.sf.anathema.framework.swing.IView;
@@ -20,9 +21,8 @@ public class BridgingTraitConfigurationView implements IView, GroupedFavorableTr
   @Override
   public void initGui(ColumnCount columnCount, ICharacterType characterType) {
     fxView.initGui(columnCount, characterType);
-    String coreSkin = "skin/anathema/dotselector.css";
-    String characterTypeSkin = chooseSkinForCharacterType(characterType);
-    panel.init(fxView, coreSkin, characterTypeSkin);
+    String[] skins = new CssSkinner().getSkins(characterType);
+    panel.init(fxView, skins);
   }
 
   @Override
@@ -38,15 +38,5 @@ public class BridgingTraitConfigurationView implements IView, GroupedFavorableTr
   @Override
   public JComponent getComponent() {
     return panel.getComponent();
-  }
-
-  private String chooseSkinForCharacterType(ICharacterType characterType) {
-    if (characterType.getId().equals("Solar")) {
-      return "skin/solar/trait.css";
-    } else if (characterType.getId().equals("Mortal")) {
-      return "skin/mortal/trait.css";
-    } else {
-      return "skin/anathema/character/trait.css";
-    }
   }
 }

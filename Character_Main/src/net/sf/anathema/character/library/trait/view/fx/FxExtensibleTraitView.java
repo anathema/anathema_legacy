@@ -6,7 +6,6 @@ import net.sf.anathema.character.presenter.ExtensibleTraitView;
 import net.sf.anathema.framework.value.IIntValueView;
 import net.sf.anathema.interaction.ToggleTool;
 import net.sf.anathema.interaction.Tool;
-import net.sf.anathema.lib.exception.NotYetImplementedException;
 import net.sf.anathema.platform.fx.FxComponent;
 import net.sf.anathema.platform.fx.FxThreading;
 import net.sf.anathema.platform.tool.FxButtonTool;
@@ -20,6 +19,7 @@ public class FxExtensibleTraitView implements ExtensibleTraitView {
   private final MigPane center = new MigPane(fillWithoutInsets().wrapAfter(2));
   private final MigPane rear = new MigPane(fillWithoutInsets());
   private FxTraitView view;
+  private FxGroupedColumnPanel parent;
 
   public FxExtensibleTraitView(FxTraitView view) {
     this.view = view;
@@ -47,7 +47,7 @@ public class FxExtensibleTraitView implements ExtensibleTraitView {
 
   @Override
   public Tool addToolBehind() {
-    FxButtonTool buttonTool = FxButtonTool.ForAnyPurpose();
+    FxButtonTool buttonTool = FxButtonTool.ForToolbar();
     addToPanel(rear, buttonTool);
     return buttonTool;
   }
@@ -61,10 +61,11 @@ public class FxExtensibleTraitView implements ExtensibleTraitView {
 
   @SuppressWarnings("UnusedParameters")
   private void removePart(MigPane panel) {
-    throw new NotYetImplementedException();
+    parent.remove(panel);
   }
 
   public void addTo(FxGroupedColumnPanel panel) {
+    this.parent = panel;
     panel.add(front);
     panel.add(center, new CC().growX().pushX());
     panel.add(rear);

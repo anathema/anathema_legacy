@@ -11,16 +11,21 @@ import net.sf.anathema.hero.specialties.display.presenter.SpecialtiesConfigurati
 import net.sf.anathema.hero.specialties.display.presenter.SpecialtyCreationView;
 import net.sf.anathema.lib.file.RelativePath;
 import net.sf.anathema.lib.gui.AgnosticUIConfiguration;
+import net.sf.anathema.lib.gui.layout.LayoutUtils;
 import net.sf.anathema.platform.fx.FxThreading;
 import net.sf.anathema.platform.fx.NodeHolder;
 import org.tbee.javafx.scene.layout.MigPane;
 
 public class FxSpecialtiesView implements SpecialtiesConfigurationView, NodeHolder {
-  private final MigPane pane = new MigPane();
-  private final FxGroupedColumnPanel columnPanel = new FxGroupedColumnPanel(pane, new ColumnCount(1));
+  private final MigPane pane = new MigPane(LayoutUtils.withoutInsets().wrapAfter(1));
+  private final MigPane existingSpecialtiesPane = new MigPane(LayoutUtils.withoutInsets());
+  private final MigPane creationPane = new MigPane(LayoutUtils.withoutInsets());
+  private final FxGroupedColumnPanel columnPanel = new FxGroupedColumnPanel(existingSpecialtiesPane, new ColumnCount(1));
 
   public FxSpecialtiesView() {
     columnPanel.startNewGroup(null);
+    pane.add(creationPane);
+    pane.add(existingSpecialtiesPane);
   }
 
   @Override
@@ -33,11 +38,11 @@ public class FxSpecialtiesView implements SpecialtiesConfigurationView, NodeHold
 
   @Override
   public SpecialtyCreationView addSpecialtySelectionView(AgnosticUIConfiguration<ITraitReference> configuration, RelativePath addIcon) {
-    final FxSpecialtyCreationView view = new FxSpecialtyCreationView();
+    final FxSpecialtyCreationView view = new FxSpecialtyCreationView(addIcon);
     FxThreading.runOnCorrectThread(new Runnable() {
       @Override
       public void run() {
-        pane.getChildren().add(0, view.getNode());
+        creationPane.add(view.getNode());
       }
     });
     return view;

@@ -62,4 +62,8 @@ public class FxGroupedColumnPanel {
       }
     });
   }
+
+  public void remove(MigPane panel) {
+    getCurrentColumn().getChildren().remove(panel);
+  }
 }
