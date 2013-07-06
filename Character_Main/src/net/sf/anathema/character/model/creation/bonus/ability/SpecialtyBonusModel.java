@@ -4,23 +4,23 @@ import net.sf.anathema.character.generic.template.creation.ICreationPoints;
 import net.sf.anathema.character.model.advance.models.AbstractSpendingModel;
 
 public class SpecialtyBonusModel extends AbstractSpendingModel {
-  private final IAbilityCostCalculator abilityCalculator;
+  private final SpecialtiesCostCalculator calculator;
   private final ICreationPoints creationPoints;
 
-  public SpecialtyBonusModel(IAbilityCostCalculator abilityCalculator, ICreationPoints creationPoints) {
+  public SpecialtyBonusModel(SpecialtiesCostCalculator calculator, ICreationPoints creationPoints) {
     super("Abilities", "Specialties");
-    this.abilityCalculator = abilityCalculator;
+    this.calculator = calculator;
     this.creationPoints = creationPoints;
   }
 
   @Override
   public Integer getValue() {
-    return abilityCalculator.getFreeSpecialtyPointsSpent();
+    return calculator.getFreePointsSpent();
   }
 
   @Override
   public int getSpentBonusPoints() {
-    return abilityCalculator.getSpecialtyBonusPointCosts();
+    return calculator.getBonusPointCost();
   }
 
   @Override

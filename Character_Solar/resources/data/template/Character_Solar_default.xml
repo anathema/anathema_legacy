@@ -31,6 +31,7 @@
         <model id="Languages"/>
         <model id="Intimacies"/>
         <model id="Specialties"/>
+        <model id="SpecialtiesPoints"/>
         <model id="SolarVirtueFlaw"/>
         <model id="Equipment"/>
     </models>

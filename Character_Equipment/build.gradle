@@ -14,10 +14,12 @@ dependencies {
     compile project(':Hero_Abilities')
     compile project(':Hero_Attributes')
     compile project(':Hero_OtherTraits')
+    compile project(':Hero_Specialties')
     testCompile parent.ext.testDependencies
     testCompile project(path: ':Platform', configuration: 'tests')
     testCompile project(path: ':Character_Main', configuration: 'tests')
     testCompile project(path: ':Hero_Abilities', configuration: 'tests')
     testCompile project(path: ':Hero_Attributes', configuration: 'tests')
     testCompile project(path: ':Hero_OtherTraits', configuration: 'tests')
+    testCompile project(path: ':Hero_Specialties', configuration: 'tests')
 }

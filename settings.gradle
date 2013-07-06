@@ -16,6 +16,7 @@ include('Anathema',
         'Hero_Intimacies',
         'Hero_Languages',
         'Hero_OtherTraits',
+        'Hero_Specialties',
         'Hero_Spells',
         'Hero_Traits',
 

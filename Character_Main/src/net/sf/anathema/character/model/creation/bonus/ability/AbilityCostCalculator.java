@@ -7,7 +7,6 @@ import net.sf.anathema.character.library.trait.FavorableTraitCost;
 import net.sf.anathema.character.library.trait.Trait;
 import net.sf.anathema.character.main.model.abilities.AbilitiesModel;
 import net.sf.anathema.character.model.creation.bonus.additional.AdditionalBonusPoints;
-import net.sf.anathema.hero.model.Hero;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -27,29 +26,19 @@ public class AbilityCostCalculator implements IAbilityCostCalculator {
   private int favoredPicksSpent = 0;
   private int favoredDotSum = 0;
   private int generalDotSum = 0;
-  private final SpecialtiesCostCalculator specialtiesCostCalculator;
 
-  public AbilityCostCalculator(Hero hero, AbilitiesModel abilitiesModel, IFavorableTraitCreationPoints points, int specialtyPoints,
-                               AbilityPointCosts costs, AdditionalBonusPoints additionalPools) {
+  public AbilityCostCalculator(AbilitiesModel abilitiesModel, IFavorableTraitCreationPoints points, AbilityPointCosts costs,
+                               AdditionalBonusPoints additionalPools) {
     this.additionalPools = additionalPools;
     this.points = points;
     this.freeTraitMax = costs.getMaximumFreeAbilityRank();
     this.traits = abilitiesModel.getAll();
     this.costs = costs;
-    this.specialtiesCostCalculator = new SpecialtiesCostCalculator(hero, abilitiesModel, specialtyPoints, costs, additionalPools);
   }
 
   protected int getCostFactor(Trait trait) {
     ITraitFavorization favorization = trait.getFavorization();
     return costs.getAbilityCosts(favorization.isCasteOrFavored()).getRatingCosts(trait.getCalculationValue());
-  }
-
-  public int getSpecialtyBonusPointCosts() {
-    return specialtiesCostCalculator.getBonusPointCost();
-  }
-
-  public int getFreeSpecialtyPointsSpent() {
-    return specialtiesCostCalculator.getFreePointsSpent();
   }
 
   public void recalculate() {
@@ -69,7 +58,6 @@ public class AbilityCostCalculator implements IAbilityCostCalculator {
       }
       costsByTrait.put(trait, allCosts);
     }
-    specialtiesCostCalculator.recalculate();
   }
 
   private void clear() {

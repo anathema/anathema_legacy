@@ -9,8 +9,4 @@ public interface IAbilityCostCalculator  {
   int getBonusPointsSpent();
 
   int getFavoredPicksSpent();
-
-  int getSpecialtyBonusPointCosts();
-
-  int getFreeSpecialtyPointsSpent();
 }

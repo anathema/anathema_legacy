@@ -25,6 +25,7 @@
         <model id="Combos"/>
         <model id="Spells"/>
         <model id="Specialties"/>
+        <model id="SpecialtiesPoints"/>
         <model id="Languages"/>
         <model id="Intimacies"/>
         <model id="Equipment"/>
