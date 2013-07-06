@@ -68,6 +68,7 @@ public class SpecialtiesConfigurationPresenter implements Presenter {
 
   @Override
   public void initPresentation() {
+    configurationView.initGui(hero.getTemplate().getTemplateType().getCharacterType());
     initTraitListening();
     RelativePath addIcon = new BasicUi().getAddIconPath();
     AgnosticUIConfiguration<TraitType> configuration = new AbstractUIConfiguration<TraitType>() {
