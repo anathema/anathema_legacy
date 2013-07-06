@@ -15,8 +15,6 @@ public interface IBonusPointManagement {
 
   ISpendingModel getFavoredAbilityPickModel();
 
-  ISpendingModel getAttributeModel(AttributeGroupPriority priority);
-
   ISpendingModel getFavoredCharmModel();
 
   IAdditionalSpendingModel getDefaultCharmModel();

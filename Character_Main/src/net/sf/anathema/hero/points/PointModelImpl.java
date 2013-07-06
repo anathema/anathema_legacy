@@ -1,6 +1,5 @@
 package net.sf.anathema.hero.points;
 
-import com.google.common.collect.Lists;
 import net.sf.anathema.hero.points.overview.IOverviewModel;
 import net.sf.anathema.hero.points.overview.IValueModel;
 import net.sf.anathema.hero.change.ChangeAnnouncer;
@@ -17,7 +16,7 @@ public class PointModelImpl implements PointsModel {
 
   private final List<HeroModelExperienceCalculator> experienceCalculators = new ArrayList<>();
   private final List<IValueModel<Integer>> experienceOverviewModels = new ArrayList<>();
-  private final List<HeroModelBonusPointCalculator> bonusPointCalculators = new ArrayList<>();
+  private final List<HeroBonusPointCalculator> bonusPointCalculators = new ArrayList<>();
   private final List<IOverviewModel> bonusOverviewModels = new ArrayList<>();
   private final List<WeightedCategory> bonusCategories = new ArrayList<>();
 
@@ -32,7 +31,7 @@ public class PointModelImpl implements PointsModel {
   }
 
   @Override
-  public void addBonusPointCalculator(HeroModelBonusPointCalculator calculator) {
+  public void addBonusPointCalculator(HeroBonusPointCalculator calculator) {
     bonusPointCalculators.add(calculator);
   }
 
@@ -58,7 +57,7 @@ public class PointModelImpl implements PointsModel {
   }
 
   @Override
-  public Iterable<HeroModelBonusPointCalculator> getBonusPointCalculators() {
+  public Iterable<HeroBonusPointCalculator> getBonusPointCalculators() {
     return bonusPointCalculators;
   }
 

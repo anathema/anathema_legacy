@@ -11,7 +11,7 @@ public interface PointsModel extends HeroModel {
 
   Identifier ID = new SimpleIdentifier("Points");
 
-  void addBonusPointCalculator(HeroModelBonusPointCalculator bonusPointCalculator);
+  void addBonusPointCalculator(HeroBonusPointCalculator bonusPointCalculator);
 
   void addBonusCategory(WeightedCategory category);
 
@@ -21,7 +21,7 @@ public interface PointsModel extends HeroModel {
 
   void addToExperienceOverview(IValueModel<Integer> model);
 
-  Iterable<HeroModelBonusPointCalculator> getBonusPointCalculators();
+  Iterable<HeroBonusPointCalculator> getBonusPointCalculators();
 
   Iterable<HeroModelExperienceCalculator> getExperienceCalculators();
 

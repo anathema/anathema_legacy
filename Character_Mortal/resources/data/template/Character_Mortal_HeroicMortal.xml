@@ -18,6 +18,7 @@
         <model id="OtherTraits"/>
         <model id="Abilities"/>
         <model id="Attributes"/>
+        <model id="AttributePoints"/>
         <model id="EssencePool"/>
         <model id="Health"/>
         <model id="Charms"/>

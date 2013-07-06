@@ -94,7 +94,7 @@ public class AttributeCostCalculatorTest {
 
   @Test
   public void testNoAttributesLearned() throws Exception {
-    calculator.calculateAttributeCosts();
+    calculator.recalculate();
     assertEmptyPoints(Physical);
     assertEmptyPoints(Social);
     assertEmptyPoints(Mental);
@@ -104,7 +104,7 @@ public class AttributeCostCalculatorTest {
   @Test
   public void testFirstGroupIsPrimaryGroup() throws Exception {
     spendPoints(Physical, creationPoint.getPrimaryCount());
-    calculator.calculateAttributeCosts();
+    calculator.recalculate();
     assertEmptyPoints(Social);
     assertEmptyPoints(Mental);
     assertFullyLearned(Physical, creationPoint.getPrimaryCount());
@@ -114,7 +114,7 @@ public class AttributeCostCalculatorTest {
   @Test
   public void testLastGroupIsPrimaryGroup() throws Exception {
     spendPoints(Mental, creationPoint.getPrimaryCount());
-    calculator.calculateAttributeCosts();
+    calculator.recalculate();
     assertEmptyPoints(Physical);
     assertEmptyPoints(Social);
     assertFullyLearned(Mental, creationPoint.getPrimaryCount());
@@ -126,7 +126,7 @@ public class AttributeCostCalculatorTest {
     spendPoints(Physical, creationPoint.getPrimaryCount());
     spendPoints(Mental, creationPoint.getSecondaryCount());
     spendPoints(Social, creationPoint.getTertiaryCount());
-    calculator.calculateAttributeCosts();
+    calculator.recalculate();
     assertFullyLearned(Physical, creationPoint.getPrimaryCount());
     assertFullyLearned(Mental, creationPoint.getSecondaryCount());
     assertFullyLearned(Social, creationPoint.getTertiaryCount());
@@ -137,7 +137,7 @@ public class AttributeCostCalculatorTest {
     spendPoints(Physical, creationPoint.getPrimaryCount() + 1);
     spendPoints(Mental, creationPoint.getSecondaryCount());
     spendPoints(Social, creationPoint.getTertiaryCount());
-    calculator.calculateAttributeCosts();
+    calculator.recalculate();
     assertOverlearned(Physical, creationPoint.getPrimaryCount(), ATTRIBUTE_BONUS_POINT_COST);
     assertFullyLearned(Mental, creationPoint.getSecondaryCount());
     assertFullyLearned(Social, creationPoint.getTertiaryCount());
@@ -148,7 +148,7 @@ public class AttributeCostCalculatorTest {
     spendPoints(Physical, creationPoint.getPrimaryCount() + 1);
     spendPoints(Mental, creationPoint.getSecondaryCount() + 1);
     spendPoints(Social, creationPoint.getTertiaryCount() + 1);
-    calculator.calculateAttributeCosts();
+    calculator.recalculate();
     assertOverlearned(Physical, creationPoint.getPrimaryCount(), ATTRIBUTE_BONUS_POINT_COST);
     assertOverlearned(Mental, creationPoint.getSecondaryCount(), ATTRIBUTE_BONUS_POINT_COST);
     assertOverlearned(Social, creationPoint.getTertiaryCount(), ATTRIBUTE_BONUS_POINT_COST);

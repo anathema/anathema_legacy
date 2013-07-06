@@ -1,6 +1,6 @@
 package net.sf.anathema.hero.intimacies.display;
 
-import net.sf.anathema.hero.points.HeroModelBonusPointCalculator;
+import net.sf.anathema.hero.points.HeroBonusPointCalculator;
 import net.sf.anathema.character.library.intvalue.IIconToggleButtonProperties;
 import net.sf.anathema.character.library.overview.IOverviewCategory;
 import net.sf.anathema.character.library.removableentry.presenter.IRemovableEntryListener;
@@ -122,7 +122,7 @@ public class IntimaciesPresenter {
   }
 
   private void adjustOverview(IValueView<Integer> valueView) {
-    HeroModelBonusPointCalculator bonusPointCalculator = new IntimaciesBonusPointCalculator(model);
+    HeroBonusPointCalculator bonusPointCalculator = new IntimaciesBonusPointCalculator(model);
     bonusPointCalculator.recalculate();
     valueView.setValue(bonusPointCalculator.getBonusPointCost());
   }

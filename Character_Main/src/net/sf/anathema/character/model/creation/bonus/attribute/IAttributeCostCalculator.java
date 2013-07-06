@@ -2,11 +2,7 @@ package net.sf.anathema.character.model.creation.bonus.attribute;
 
 public interface IAttributeCostCalculator {
 
-  int getFreePointsSpent(boolean favored);
+  void recalculate();
 
-  int getBonusPointsSpent();
-
-  void calculateAttributeCosts();
-
-  int getBonusPoints();
+  int getBonusPointCost();
 }

@@ -1,6 +1,6 @@
 package net.sf.anathema.hero.points;
 
-public interface HeroModelBonusPointCalculator {
+public interface HeroBonusPointCalculator {
 
   void recalculate();
 
