@@ -1,12 +1,8 @@
-package net.sf.anathema.character.view;
+package net.sf.anathema.hero.experience.display;
 
 import net.miginfocom.layout.CC;
 import net.miginfocom.layout.LC;
 import net.miginfocom.swing.MigLayout;
-import net.sf.anathema.character.presenter.advance.ExperienceUpdateListener;
-import net.sf.anathema.character.view.advance.ExperienceConfigurationViewListener;
-import net.sf.anathema.character.view.advance.ExperienceView;
-import net.sf.anathema.character.view.advance.IExperienceViewProperties;
 import net.sf.anathema.framework.swing.IView;
 import net.sf.anathema.lib.gui.action.SmartAction;
 import net.sf.anathema.lib.gui.icon.ImageProvider;

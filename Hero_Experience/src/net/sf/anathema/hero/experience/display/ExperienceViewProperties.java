@@ -1,6 +1,5 @@
-package net.sf.anathema.character.presenter.advance;
+package net.sf.anathema.hero.experience.display;
 
-import net.sf.anathema.character.view.advance.IExperienceViewProperties;
 import net.sf.anathema.framework.presenter.resources.BasicUi;
 import net.sf.anathema.lib.file.RelativePath;
 import net.sf.anathema.lib.resources.Resources;

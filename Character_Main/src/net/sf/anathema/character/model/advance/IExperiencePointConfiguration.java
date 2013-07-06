@@ -6,8 +6,6 @@ public interface IExperiencePointConfiguration {
 
   IExperiencePointEntry addEntry();
 
-  void addEntry(String description, int xpCost);
-
   void removeEntry(IExperiencePointEntry entry);
 
   int getTotalExperiencePoints();

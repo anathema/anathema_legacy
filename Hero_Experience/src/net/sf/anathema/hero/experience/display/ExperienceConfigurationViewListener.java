@@ -1,4 +1,4 @@
-package net.sf.anathema.character.view.advance;
+package net.sf.anathema.hero.experience.display;
 
 public interface ExperienceConfigurationViewListener {
 
