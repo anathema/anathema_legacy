@@ -14,8 +14,6 @@ import net.sf.anathema.character.main.model.spells.SpellsModelFetcher;
 import net.sf.anathema.character.model.advance.CostAnalyzer;
 import net.sf.anathema.character.model.charm.special.ISubeffectCharmConfiguration;
 import net.sf.anathema.character.model.charm.special.IUpgradableCharmConfiguration;
-import net.sf.anathema.character.model.creation.bonus.IAdditionalMagicLearnPointManagement;
-import net.sf.anathema.character.model.creation.bonus.additional.AdditionalBonusPoints;
 import net.sf.anathema.hero.model.Hero;
 
 import java.util.ArrayList;
@@ -35,27 +33,22 @@ public class MagicCostCalculator {
   private int bonusPointsSpentForCharms = 0;
   private final BonusPointCosts costs;
   private CostAnalyzer analyzer;
-  private final AdditionalBonusPoints bonusPools;
   protected int bonusPointsSpentForSpells;
-  private final IAdditionalMagicLearnPointManagement magicPools;
   private final IMagicTemplate magicTemplate;
 
-  public MagicCostCalculator(Hero hero, BonusPointCosts costs, AdditionalBonusPoints bonusPools,
-                             IAdditionalMagicLearnPointManagement magicPools) {
+  public MagicCostCalculator(Hero hero, BonusPointCosts costs) {
     this.magicTemplate = hero.getTemplate().getMagicTemplate();
     this.charms = CharmsModelFetcher.fetch(hero);
     this.spells = SpellsModelFetcher.fetch(hero);
     this.favoredCreationCharmCount = hero.getTemplate().getCreationPoints().getFavoredCreationCharmCount();
     this.defaultCreationCharmCount = hero.getTemplate().getCreationPoints().getDefaultCreationCharmCount();
     this.costs = costs;
-    this.bonusPools = bonusPools;
-    this.magicPools = magicPools;
     this.analyzer = new CostAnalyzer(hero);
   }
 
   public void calculateMagicCosts() {
     clear();
-    List<IMagic> magicToHandle = handleAdditionalMagicPools();
+    List<IMagic> magicToHandle = compileCompleteMagicList();
     if (magicToHandle == null || magicToHandle.size() == 0) {
       return;
     }
@@ -135,15 +128,7 @@ public class MagicCostCalculator {
     return completeList;
   }
 
-  @SuppressWarnings("UnnecessaryLocalVariable")
-  private List<IMagic> handleAdditionalMagicPools() {
-    List<IMagic> magicToHandle = compileCompleteMagicList();
-    List<IMagic> leftOverMagic = magicPools.spendOn(magicToHandle);
-    return leftOverMagic;
-  }
-
   private void clear() {
-    magicPools.clear();
     generalPicksSpent = 0;
     favoredPicksSpent = 0;
     bonusPointsSpentForCharms = 0;
@@ -194,7 +179,6 @@ public class MagicCostCalculator {
     if (canBuyFromFreePicks(magic) && generalPicksSpent < defaultCreationCharmCount) {
       generalPicksSpent++;
     } else {
-      bonusPools.spendOn(magic, bonusPointFactor);
       magic.accept(new IMagicVisitor() {
         @Override
         public void visitCharm(ICharm charm) {
@@ -223,9 +207,5 @@ public class MagicCostCalculator {
 
   public int getBonusPointsSpentForSpells() {
     return bonusPointsSpentForSpells;
-  }
-
-  public int getAdditionalPointsSpent() {
-    return magicPools.getPointsSpent();
   }
 }

@@ -1,6 +1,5 @@
 package net.sf.anathema.character.model.creation;
 
-import net.sf.anathema.hero.points.overview.IAdditionalSpendingModel;
 import net.sf.anathema.hero.points.overview.IOverviewModel;
 import net.sf.anathema.hero.points.overview.ISpendingModel;
 
@@ -10,9 +9,9 @@ public interface IBonusPointManagement {
 
   ISpendingModel getFavoredCharmModel();
 
-  IAdditionalSpendingModel getDefaultCharmModel();
+  ISpendingModel getDefaultCharmModel();
 
-  IAdditionalSpendingModel getTotalModel();
+  ISpendingModel getTotalModel();
 
   IOverviewModel[] getAllModels();
 }

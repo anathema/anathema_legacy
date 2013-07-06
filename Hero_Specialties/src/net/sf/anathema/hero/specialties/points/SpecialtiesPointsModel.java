@@ -1,12 +1,10 @@
 package net.sf.anathema.hero.specialties.points;
 
-import net.sf.anathema.character.generic.template.creation.BonusPointCosts;
 import net.sf.anathema.character.generic.template.creation.ICreationPoints;
 import net.sf.anathema.character.main.model.abilities.AbilityModelFetcher;
 import net.sf.anathema.character.main.model.traits.TraitMap;
 import net.sf.anathema.character.model.creation.bonus.ability.SpecialtiesCostCalculator;
 import net.sf.anathema.character.model.creation.bonus.ability.SpecialtyBonusModel;
-import net.sf.anathema.character.model.creation.bonus.additional.AdditionalBonusPoints;
 import net.sf.anathema.hero.change.ChangeAnnouncer;
 import net.sf.anathema.hero.model.Hero;
 import net.sf.anathema.hero.model.HeroModel;
@@ -28,13 +26,10 @@ public class SpecialtiesPointsModel implements HeroModel {
   @Override
   public void initialize(InitializationContext context, Hero hero) {
     ICreationPoints creationPoints = hero.getTemplate().getCreationPoints();
-    BonusPointCosts costs = hero.getTemplate().getBonusPointCosts();
     PointsModel pointsModel = PointModelFetcher.fetch(hero);
     TraitMap traitMap = AbilityModelFetcher.fetch(hero);
     int specialtyCreationPoints = creationPoints.getSpecialtyCreationPoints();
-    AdditionalBonusPoints additionalBonusPoints = pointsModel.getAdditionalBonusPoints();
-    SpecialtiesCostCalculator specialtiesCostCalculator =
-            new SpecialtiesCostCalculator(hero, traitMap, specialtyCreationPoints, costs, additionalBonusPoints);
+    SpecialtiesCostCalculator specialtiesCostCalculator = new SpecialtiesCostCalculator(hero, traitMap, specialtyCreationPoints);
     pointsModel.addBonusPointCalculator(specialtiesCostCalculator);
     pointsModel.addToBonusOverview(new SpecialtyBonusModel(specialtiesCostCalculator, creationPoints));
   }

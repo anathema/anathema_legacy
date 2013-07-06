@@ -6,7 +6,6 @@ import net.sf.anathema.character.library.ITraitFavorization;
 import net.sf.anathema.character.library.trait.FavorableTraitCost;
 import net.sf.anathema.character.library.trait.Trait;
 import net.sf.anathema.character.main.model.abilities.AbilitiesModel;
-import net.sf.anathema.character.model.creation.bonus.additional.AdditionalBonusPoints;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -17,7 +16,6 @@ import java.util.Set;
 
 public class AbilityCostCalculator implements IAbilityCostCalculator {
 
-  private final AdditionalBonusPoints additionalPools;
   private final AbilityPointCosts costs;
   protected final IFavorableTraitCreationPoints points;
   private final Map<Trait, FavorableTraitCost[]> costsByTrait = new HashMap<>();
@@ -27,9 +25,7 @@ public class AbilityCostCalculator implements IAbilityCostCalculator {
   private int favoredDotSum = 0;
   private int generalDotSum = 0;
 
-  public AbilityCostCalculator(AbilitiesModel abilitiesModel, IFavorableTraitCreationPoints points, AbilityPointCosts costs,
-                               AdditionalBonusPoints additionalPools) {
-    this.additionalPools = additionalPools;
+  public AbilityCostCalculator(AbilitiesModel abilitiesModel, IFavorableTraitCreationPoints points, AbilityPointCosts costs) {
     this.points = points;
     this.freeTraitMax = costs.getMaximumFreeAbilityRank();
     this.traits = abilitiesModel.getAll();
@@ -52,9 +48,6 @@ public class AbilityCostCalculator implements IAbilityCostCalculator {
         allCosts = handleFavoredTrait(trait, costFactor);
       } else {
         allCosts = handleGeneralTrait(trait, costFactor);
-      }
-      for (FavorableTraitCost cost : allCosts) {
-        additionalPools.spendOn(trait, cost.getBonusCost());
       }
       costsByTrait.put(trait, allCosts);
     }

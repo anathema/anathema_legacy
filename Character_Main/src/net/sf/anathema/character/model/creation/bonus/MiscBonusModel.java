@@ -1,4 +1,4 @@
-package net.sf.anathema.character.model.creation.bonus.additional;
+package net.sf.anathema.character.model.creation.bonus;
 
 import net.sf.anathema.hero.points.HeroBonusPointCalculator;
 import net.sf.anathema.character.model.advance.models.AbstractIntegerValueModel;

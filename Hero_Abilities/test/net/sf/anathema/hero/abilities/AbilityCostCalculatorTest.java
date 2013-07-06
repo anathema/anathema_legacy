@@ -9,7 +9,6 @@ import net.sf.anathema.character.generic.traits.types.AbilityType;
 import net.sf.anathema.character.library.trait.FavorableTraitCost;
 import net.sf.anathema.character.library.trait.Trait;
 import net.sf.anathema.character.main.costs.AbstractBonusPointTestCase;
-import net.sf.anathema.character.main.testing.dummy.DummyAdditionalBonusPointManagement;
 import net.sf.anathema.character.main.testing.dummy.DummyHero;
 import net.sf.anathema.character.main.testing.dummy.DummyInitializationContext;
 import net.sf.anathema.character.main.testing.dummy.models.DummyHeroConcept;
@@ -65,7 +64,6 @@ public class AbilityCostCalculatorTest extends AbstractBonusPointTestCase {
   }
 
   private AbilityPointCosts costs;
-  private DummyAdditionalBonusPointManagement additionalBonusPointManagment;
   private AbilitiesModelImpl abilityModel = new AbilitiesModelImpl();
   private DummyHero dummyHero = new DummyHero();
 
@@ -93,11 +91,10 @@ public class AbilityCostCalculatorTest extends AbstractBonusPointTestCase {
     dummyHero.addModel(new DummyHeroConcept());
     dummyHero.addModel(new DummyOtherTraitModel());
     costs = new DummyAbilityPointCosts();
-    additionalBonusPointManagment = new DummyAdditionalBonusPointManagement();
   }
 
   private AbilityCostCalculator startCalculation(IFavorableTraitCreationPoints creationPoints) {
-    AbilityCostCalculator calculator = new AbilityCostCalculator(abilityModel, creationPoints, costs, additionalBonusPointManagment);
+    AbilityCostCalculator calculator = new AbilityCostCalculator(abilityModel, creationPoints, costs);
     calculator.recalculate();
     return calculator;
   }

@@ -1,6 +1,5 @@
 package net.sf.anathema.character.model.creation.bonus;
 
-import net.sf.anathema.character.model.creation.bonus.additional.MiscBonusModel;
 import net.sf.anathema.hero.points.HeroBonusPointCalculator;
 import net.sf.anathema.hero.points.overview.IValueModel;
 

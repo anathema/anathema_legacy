@@ -5,7 +5,6 @@ import net.sf.anathema.character.generic.impl.template.points.DefaultBonusPointC
 import net.sf.anathema.character.generic.template.points.IAttributeCreationPoints;
 import net.sf.anathema.character.generic.traits.types.AttributeGroupType;
 import net.sf.anathema.character.library.trait.Trait;
-import net.sf.anathema.character.main.testing.dummy.DummyAdditionalBonusPointManagement;
 import net.sf.anathema.character.main.testing.dummy.DummyHero;
 import net.sf.anathema.character.main.testing.dummy.models.DummyHeroConcept;
 import net.sf.anathema.character.main.testing.dummy.models.DummyOtherTraitModel;
@@ -87,7 +86,6 @@ public class AttributeCostCalculatorTest {
     dummyHero.addModel(new DummyOtherTraitModel());
     attributeModel.initialize(null, dummyHero);
     this.creationPoint = new AttributeCreationPoints(6, 4, 2);
-    DummyAdditionalBonusPointManagement additionalBonusPointManagement = new DummyAdditionalBonusPointManagement();
     DefaultBonusPointCosts cost = new DefaultBonusPointCosts();
     this.calculator = new AttributeCostCalculator(attributeModel, creationPoint, cost);
   }

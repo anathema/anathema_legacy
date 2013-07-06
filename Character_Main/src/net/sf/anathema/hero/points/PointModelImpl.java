@@ -1,13 +1,10 @@
 package net.sf.anathema.hero.points;
 
-import net.sf.anathema.character.main.model.traits.TraitModelFetcher;
-import net.sf.anathema.character.model.creation.bonus.additional.AdditionalBonusPoints;
-import net.sf.anathema.character.model.creation.bonus.additional.AdditionalBonusPointsImpl;
-import net.sf.anathema.hero.points.overview.IOverviewModel;
-import net.sf.anathema.hero.points.overview.IValueModel;
 import net.sf.anathema.hero.change.ChangeAnnouncer;
 import net.sf.anathema.hero.model.Hero;
 import net.sf.anathema.hero.model.InitializationContext;
+import net.sf.anathema.hero.points.overview.IOverviewModel;
+import net.sf.anathema.hero.points.overview.IValueModel;
 import net.sf.anathema.hero.points.overview.WeightedCategory;
 import net.sf.anathema.lib.util.Identifier;
 
@@ -22,12 +19,10 @@ public class PointModelImpl implements PointsModel {
   private final List<HeroBonusPointCalculator> bonusPointCalculators = new ArrayList<>();
   private final List<IOverviewModel> bonusOverviewModels = new ArrayList<>();
   private final List<WeightedCategory> bonusCategories = new ArrayList<>();
-  private AdditionalBonusPoints additionalBonusPoints;
 
   @Override
   public void initialize(InitializationContext context, Hero hero) {
-    this.additionalBonusPoints = new AdditionalBonusPointsImpl(TraitModelFetcher.fetch(hero),
-            hero.getTemplate().getAdditionalRules().getAdditionalBonusPointPools());
+    // nothing to do
   }
 
   @Override
@@ -84,11 +79,6 @@ public class PointModelImpl implements PointsModel {
   @Override
   public Iterable<WeightedCategory> getBonusCategories() {
     return bonusCategories;
-  }
-
-  @Override
-  public AdditionalBonusPoints getAdditionalBonusPoints() {
-    return additionalBonusPoints;
   }
 
   @Override

@@ -11,6 +11,6 @@ public abstract class AbstractSpendingModel extends AbstractOverviewModel implem
 
   @Override
   public void accept(IOverviewModelVisitor visitor) {
-    visitor.visitAlotmentModel(this);
+    visitor.visitAllotmentModel(this);
   }
 }

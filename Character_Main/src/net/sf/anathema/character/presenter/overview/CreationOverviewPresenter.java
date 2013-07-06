@@ -2,7 +2,6 @@ package net.sf.anathema.character.presenter.overview;
 
 import net.sf.anathema.character.generic.caste.CasteType;
 import net.sf.anathema.character.generic.template.HeroTemplate;
-import net.sf.anathema.character.library.overview.IAdditionalAlotmentView;
 import net.sf.anathema.character.library.overview.IOverviewCategory;
 import net.sf.anathema.character.main.model.concept.HeroConceptFetcher;
 import net.sf.anathema.character.model.creation.IBonusPointManagement;
@@ -11,7 +10,6 @@ import net.sf.anathema.hero.change.ChangeFlavor;
 import net.sf.anathema.hero.change.FlavoredChangeListener;
 import net.sf.anathema.hero.model.Hero;
 import net.sf.anathema.hero.points.PointModelFetcher;
-import net.sf.anathema.hero.points.overview.IAdditionalSpendingModel;
 import net.sf.anathema.hero.points.overview.IOverviewModel;
 import net.sf.anathema.hero.points.overview.IOverviewModelVisitor;
 import net.sf.anathema.hero.points.overview.ISpendingModel;
@@ -150,21 +148,9 @@ public class CreationOverviewPresenter implements Presenter {
     }
 
     @Override
-    public void visitAlotmentModel(ISpendingModel visitedModel) {
+    public void visitAllotmentModel(ISpendingModel visitedModel) {
       ILabelledAlotmentView valueView = categoriesById.get(visitedModel.getCategoryId()).addAlotmentView(getLabelString(visitedModel), 2);
       presenters.add(new AlotmentSubPresenter(visitedModel, valueView));
-    }
-
-    @Override
-    public void visitAdditionalAlotmentModel(IAdditionalSpendingModel visitedModel) {
-      if (visitedModel.isExtensionRequired()) {
-        IAdditionalAlotmentView valueView = categoriesById.get(visitedModel.getCategoryId())
-                .addAdditionalAlotmentView(getLabelString(visitedModel),
-                        visitedModel.getRequiredSize());
-        presenters.add(new AdditionalAlotmentSubPresenter(visitedModel, valueView));
-      } else {
-        visitAlotmentModel(visitedModel);
-      }
     }
   }
 }

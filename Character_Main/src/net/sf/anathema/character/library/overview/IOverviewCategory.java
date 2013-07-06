@@ -10,6 +10,4 @@ public interface IOverviewCategory {
   IValueView<Integer> addIntegerValueView(String labelText, int maxValueLength);
 
   IValueView<String> addStringValueView(String labelText);
-
-  IAdditionalAlotmentView addAdditionalAlotmentView(String labelText, int maxValueLength);
 }

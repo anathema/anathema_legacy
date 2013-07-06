@@ -6,7 +6,5 @@ public interface IOverviewModelVisitor {
 
   void visitIntegerValueModel(IValueModel<Integer> model);
 
-  void visitAlotmentModel(ISpendingModel visitedModel);
-
-  void visitAdditionalAlotmentModel(IAdditionalSpendingModel visitedModel);
+  void visitAllotmentModel(ISpendingModel visitedModel);
 }

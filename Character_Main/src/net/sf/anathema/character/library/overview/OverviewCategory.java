@@ -42,13 +42,6 @@ public class OverviewCategory implements IOverviewCategory, IView {
   }
 
   @Override
-  public IAdditionalAlotmentView addAdditionalAlotmentView(String labelText, int maxValueLength) {
-    LabelledAdditionalAlotmentView view = new LabelledAdditionalAlotmentView(labelText, maxValueLength);
-    view.addTo(panel);
-    return view;
-  }
-
-  @Override
   public IValueView<Integer> addIntegerValueView(String labelText, int maxValueLength) {
     LabelledIntegerValueView view = new LabelledIntegerValueView(labelText, 0, true, maxValueLength);
     view.addComponents(panel);

@@ -1,34 +1,17 @@
 package net.sf.anathema.character.model.creation.bonus.magic;
 
-import net.sf.anathema.character.generic.additionalrules.IAdditionalRules;
 import net.sf.anathema.character.generic.template.creation.ICreationPoints;
-import net.sf.anathema.character.model.advance.models.AbstractAdditionalSpendingModel;
-import net.sf.anathema.character.model.creation.bonus.IAdditionalMagicLearnPointManagement;
+import net.sf.anathema.character.model.advance.models.AbstractSpendingModel;
 
-public class DefaultCharmModel extends AbstractAdditionalSpendingModel {
+public class DefaultCharmModel extends AbstractSpendingModel {
 
   private final MagicCostCalculator magicCalculator;
-  private final IAdditionalMagicLearnPointManagement magicAdditionalPools;
   private final ICreationPoints creationPoints;
-  private final IAdditionalRules additionalRules;
 
-  public DefaultCharmModel(MagicCostCalculator magicCalculator, IAdditionalMagicLearnPointManagement magicAdditionalPools,
-                           ICreationPoints creationPoints, IAdditionalRules additionalRules) {
+  public DefaultCharmModel(MagicCostCalculator magicCalculator, ICreationPoints creationPoints) {
     super("Charms", "General");
     this.magicCalculator = magicCalculator;
-    this.magicAdditionalPools = magicAdditionalPools;
     this.creationPoints = creationPoints;
-    this.additionalRules = additionalRules;
-  }
-
-  @Override
-  public int getAdditionalRestrictedAlotment() {
-    return magicAdditionalPools.getAdditionalPointsAmount();
-  }
-
-  @Override
-  public int getAdditionalValue() {
-    return magicCalculator.getAdditionalPointsSpent();
   }
 
   @Override
@@ -58,15 +41,5 @@ public class DefaultCharmModel extends AbstractAdditionalSpendingModel {
   @Override
   public int getAllotment() {
     return creationPoints.getDefaultCreationCharmCount();
-  }
-
-  @Override
-  public boolean isExtensionRequired() {
-    return additionalRules != null && additionalRules.getAdditionalMagicLearnPools().length > 0;
-  }
-
-  @Override
-  public int getRequiredSize() {
-    return 3;
   }
 }

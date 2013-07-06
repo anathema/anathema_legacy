@@ -12,7 +12,7 @@ public class WeightedCategory implements Comparable<WeightedCategory> {
 
   @Override
   public int compareTo(WeightedCategory o) {
-    return o.weight - weight;
+    return weight - o.weight;
   }
 
   public String getId() {
