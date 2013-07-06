@@ -10,6 +10,8 @@ import net.sf.anathema.character.generic.framework.ITraitReference;
 import net.sf.anathema.hero.specialties.display.presenter.SpecialtyCreationView;
 import net.sf.anathema.interaction.Command;
 import net.sf.anathema.lib.control.ObjectValueListener;
+import net.sf.anathema.lib.file.RelativePath;
+import net.sf.anathema.platform.fx.FxThreading;
 import net.sf.anathema.platform.tool.FxButtonTool;
 import org.tbee.javafx.scene.layout.MigPane;
 
@@ -22,10 +24,11 @@ public class FxSpecialtyCreationView implements SpecialtyCreationView {
   private final FxButtonTool tool = FxButtonTool.ForToolbar();
   private final MigPane pane = new MigPane();
 
-  public FxSpecialtyCreationView() {
+  public FxSpecialtyCreationView(RelativePath addIcon) {
     pane.add(box);
     pane.add(field);
     pane.add(tool.getNode());
+    tool.setIcon(addIcon);
   }
 
   @Override
@@ -69,8 +72,13 @@ public class FxSpecialtyCreationView implements SpecialtyCreationView {
   }
 
   @Override
-  public void setObjects(ITraitReference[] references) {
-    box.setItems(new ObservableListWrapper<>(Arrays.asList(references)));
+  public void setObjects(final ITraitReference[] references) {
+    FxThreading.runOnCorrectThread(new Runnable() {
+      @Override
+      public void run() {
+        box.setItems(new ObservableListWrapper<>(Arrays.asList(references)));
+      }
+    });
   }
 
   public Node getNode() {
