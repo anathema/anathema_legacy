@@ -1,7 +1,6 @@
 package net.sf.anathema.platform.fx.selection;
 
 import com.sun.javafx.collections.ObservableListWrapper;
-import javafx.application.Platform;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
 import javafx.scene.Node;
@@ -9,6 +8,7 @@ import javafx.scene.control.ComboBox;
 import javafx.scene.control.Label;
 import net.sf.anathema.lib.control.ObjectValueListener;
 import net.sf.anathema.lib.gui.AgnosticUIConfiguration;
+import net.sf.anathema.lib.lang.StringUtilities;
 import net.sf.anathema.platform.fx.ConfigurableListCellFactory;
 import net.sf.anathema.platform.fx.FxObjectSelectionView;
 import net.sf.anathema.platform.fx.FxThreading;
@@ -34,7 +34,9 @@ public class ComboBoxSelectionView<V> implements FxObjectSelectionView<V> {
         comboBox = new ComboBox<>();
         label = new Label(description);
         pane = new MigPane(withoutInsets());
-        pane.add(label);
+        if (!StringUtilities.isNullOrTrimmedEmpty(description)) {
+          pane.add(label);
+        }
         pane.add(comboBox);
       }
     });
@@ -55,7 +57,7 @@ public class ComboBoxSelectionView<V> implements FxObjectSelectionView<V> {
 
   @Override
   public void setSelectedObject(final V object) {
-    Platform.runLater(new Runnable() {
+    FxThreading.runOnCorrectThread(new Runnable() {
       @Override
       public void run() {
         comboBox.getSelectionModel().select(object);
@@ -114,5 +116,9 @@ public class ComboBoxSelectionView<V> implements FxObjectSelectionView<V> {
   public Node getNode() {
     waitForContent();
     return pane;
+  }
+
+  public void clearSelection() {
+    comboBox.getSelectionModel().clearSelection();
   }
 }

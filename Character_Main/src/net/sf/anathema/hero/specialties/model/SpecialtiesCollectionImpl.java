@@ -1,6 +1,5 @@
 package net.sf.anathema.hero.specialties.model;
 
-import net.sf.anathema.character.generic.framework.ITraitReference;
 import net.sf.anathema.character.generic.framework.additionaltemplate.model.SpecialtiesCollection;
 import net.sf.anathema.character.generic.traits.TraitType;
 import net.sf.anathema.character.library.trait.specialties.SpecialtiesModel;
@@ -27,7 +26,7 @@ public class SpecialtiesCollectionImpl implements SpecialtiesCollection {
   @Override
   public void addSpecialtyListChangeListener(final ChangeListener listener) {
     SpecialtiesModel config = SpecialtiesModelFetcher.fetch(hero);
-    for (ITraitReference trait : config.getAllTraits()) {
+    for (TraitType trait : config.getAllTraits()) {
       config.getSpecialtiesContainer(trait).addSubTraitListener(new ISpecialtyListener() {
         @Override
         public void subTraitValueChanged() {

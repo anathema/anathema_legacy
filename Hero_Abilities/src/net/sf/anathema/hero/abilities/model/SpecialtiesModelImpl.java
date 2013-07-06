@@ -1,11 +1,8 @@
 package net.sf.anathema.hero.abilities.model;
 
 import com.google.common.base.Strings;
-import net.sf.anathema.character.generic.framework.ITraitReference;
 import net.sf.anathema.character.generic.traits.TraitType;
 import net.sf.anathema.character.library.trait.Trait;
-import net.sf.anathema.character.library.trait.specialties.DefaultTraitReference;
-import net.sf.anathema.character.library.trait.specialties.ITraitReferencesChangeListener;
 import net.sf.anathema.character.library.trait.specialties.SpecialtiesContainer;
 import net.sf.anathema.character.library.trait.specialties.SpecialtiesListener;
 import net.sf.anathema.character.library.trait.specialties.SpecialtiesModel;
@@ -34,20 +31,17 @@ import java.util.Set;
 public class SpecialtiesModelImpl implements SpecialtiesModel, HeroModel {
 
   private final Map<TraitType, ISubTraitContainer> specialtiesByType = new HashMap<>();
-  private final Map<ITraitReference, ISubTraitContainer> specialtiesByTrait = new HashMap<>();
   private final Announcer<ChangeListener> control = Announcer.to(ChangeListener.class);
-  private final Announcer<ITraitReferencesChangeListener> traitControl = Announcer.to(ITraitReferencesChangeListener.class);
   private Hero hero;
   private String currentName;
-  private ITraitReference currentType;
+  private TraitType currentType;
 
   @Override
   public void initialize(InitializationContext context, Hero hero) {
     this.hero = hero;
     for (Trait trait : AbilityModelFetcher.fetch(hero).getAll()) {
-      ITraitReference reference = new DefaultTraitReference(trait);
-      SpecialtiesContainer container = addSpecialtiesContainer(reference);
-      specialtiesByType.put(trait.getType(), container);
+      SpecialtiesContainer specialtiesContainer = new SpecialtiesContainer(trait.getType(), hero);
+      specialtiesByType.put(trait.getType(), specialtiesContainer);
     }
     addExperiencePoints(hero);
   }
@@ -72,39 +66,28 @@ public class SpecialtiesModelImpl implements SpecialtiesModel, HeroModel {
     return SpecialtiesModel.ID;
   }
 
-  private SpecialtiesContainer addSpecialtiesContainer(ITraitReference reference) {
-    SpecialtiesContainer specialtiesContainer = new SpecialtiesContainer(reference, hero);
-    specialtiesByTrait.put(reference, specialtiesContainer);
-    return specialtiesContainer;
-  }
-
-  @Override
-  public ISubTraitContainer getSpecialtiesContainer(ITraitReference trait) {
-    return specialtiesByTrait.get(trait);
-  }
-
   @Override
   public ISubTraitContainer getSpecialtiesContainer(TraitType traitType) {
     return specialtiesByType.get(traitType);
   }
 
   @Override
-  public ITraitReference[] getAllTraits() {
-    Set<ITraitReference> keySet = specialtiesByTrait.keySet();
-    return keySet.toArray(new ITraitReference[keySet.size()]);
+  public TraitType[] getAllTraits() {
+    Set<TraitType> keySet = specialtiesByType.keySet();
+    return keySet.toArray(new TraitType[keySet.size()]);
   }
 
   @Override
-  public ITraitReference[] getAllEligibleTraits() {
-    List<ITraitReference> keySet = new ArrayList<>(specialtiesByTrait.keySet());
-    Set<ITraitReference> toRemove = new HashSet<>();
-    for (ITraitReference trait : keySet) {
-      if (!getSpecialtiesContainer(trait.getTraitType()).isNewSubTraitAllowed()) {
-        toRemove.add(trait);
+  public TraitType[] getAllEligibleTraits() {
+    List<TraitType> eligibleTypes = new ArrayList<>(specialtiesByType.keySet());
+    Set<TraitType> toRemove = new HashSet<>();
+    for (TraitType type : eligibleTypes) {
+      if (!getSpecialtiesContainer(type).isNewSubTraitAllowed()) {
+        toRemove.add(type);
       }
     }
-    keySet.removeAll(toRemove);
-    return keySet.toArray(new ITraitReference[keySet.size()]);
+    eligibleTypes.removeAll(toRemove);
+    return eligibleTypes.toArray(new TraitType[eligibleTypes.size()]);
   }
 
   @Override
@@ -114,7 +97,7 @@ public class SpecialtiesModelImpl implements SpecialtiesModel, HeroModel {
   }
 
   @Override
-  public void setCurrentTrait(ITraitReference newValue) {
+  public void setCurrentTrait(TraitType newValue) {
     this.currentType = newValue;
     control.announce().changeOccurred();
   }
@@ -140,6 +123,16 @@ public class SpecialtiesModelImpl implements SpecialtiesModel, HeroModel {
   }
 
   @Override
+  public TraitType getCurrentTrait() {
+    return currentType;
+  }
+
+  @Override
+  public String getCurrentName() {
+    return currentName;
+  }
+
+  @Override
   public boolean isEntryComplete() {
     return !Strings.isNullOrEmpty(currentName) && currentType != null;
   }
@@ -147,10 +140,5 @@ public class SpecialtiesModelImpl implements SpecialtiesModel, HeroModel {
   @Override
   public boolean isExperienced() {
     return ExperienceModelFetcher.fetch(hero).isExperienced();
-  }
-
-  @Override
-  public void addTraitListChangeListener(ITraitReferencesChangeListener listener) {
-    traitControl.addListener(listener);
   }
 }

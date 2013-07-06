@@ -1,7 +1,7 @@
 package net.sf.anathema.hero.specialties.display.view;
 
 import javafx.scene.Node;
-import net.sf.anathema.character.generic.framework.ITraitReference;
+import net.sf.anathema.character.generic.traits.TraitType;
 import net.sf.anathema.character.library.trait.view.fx.FxExtensibleTraitView;
 import net.sf.anathema.character.library.trait.view.fx.FxGroupedColumnPanel;
 import net.sf.anathema.character.library.trait.view.fx.FxTraitView;
@@ -37,8 +37,8 @@ public class FxSpecialtiesView implements SpecialtiesConfigurationView, NodeHold
   }
 
   @Override
-  public SpecialtyCreationView addSpecialtySelectionView(AgnosticUIConfiguration<ITraitReference> configuration, RelativePath addIcon) {
-    final FxSpecialtyCreationView view = new FxSpecialtyCreationView(addIcon);
+  public SpecialtyCreationView addSpecialtyCreationView(AgnosticUIConfiguration<TraitType> configuration, RelativePath addIcon) {
+    final FxSpecialtyCreationView view = new FxSpecialtyCreationView(configuration, addIcon);
     FxThreading.runOnCorrectThread(new Runnable() {
       @Override
       public void run() {

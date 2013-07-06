@@ -1,6 +1,5 @@
 package net.sf.anathema.character.library.trait.specialties;
 
-import net.sf.anathema.character.generic.framework.ITraitReference;
 import net.sf.anathema.character.generic.traits.TraitType;
 import net.sf.anathema.character.library.trait.subtrait.ISubTraitContainer;
 import net.sf.anathema.hero.model.HeroModel;
@@ -12,15 +11,13 @@ public interface SpecialtiesModel extends HeroModel {
 
   Identifier ID = new SimpleIdentifier("Specialties");
 
-  ISubTraitContainer getSpecialtiesContainer(ITraitReference reference);
-
   ISubTraitContainer getSpecialtiesContainer(TraitType traitType);
 
-  ITraitReference[] getAllTraits();
+  TraitType[] getAllTraits();
 
-  ITraitReference[] getAllEligibleTraits();
+  TraitType[] getAllEligibleTraits();
 
-  void setCurrentTrait(ITraitReference newValue);
+  void setCurrentTrait(TraitType newValue);
 
   void setCurrentSpecialtyName(String newSpecialtyName);
 
@@ -34,5 +31,7 @@ public interface SpecialtiesModel extends HeroModel {
 
   void addSelectionChangeListener(ChangeListener listener);
 
-  void addTraitListChangeListener(ITraitReferencesChangeListener listener);
+  TraitType getCurrentTrait();
+
+  String getCurrentName();
 }

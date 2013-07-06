@@ -11,7 +11,6 @@ import net.sf.anathema.character.library.trait.favorable.FavorableState;
 import net.sf.anathema.character.library.trait.favorable.IFavorableStateChangedListener;
 import net.sf.anathema.character.library.trait.favorable.IncrementChecker;
 import net.sf.anathema.character.library.trait.rules.FavorableTraitRules;
-import net.sf.anathema.character.library.trait.specialties.DefaultTraitReference;
 import net.sf.anathema.character.library.trait.specialties.SpecialtiesContainer;
 import net.sf.anathema.character.library.trait.specialties.Specialty;
 import net.sf.anathema.character.library.trait.subtrait.ISubTraitContainer;
@@ -140,7 +139,7 @@ public class FavorableTraitTest {
 
   @Test
   public void testExperienceSpecialtyCount() throws Exception {
-    ISubTraitContainer container = new SpecialtiesContainer(new DefaultTraitReference(trait), dummyHero);
+    ISubTraitContainer container = new SpecialtiesContainer(trait.getType(), dummyHero);
     Specialty specialty = container.addSubTrait("TestSpecialty");
     specialty.setCreationValue(1);
     valueStrategy.setStrategy(new ExperiencedTraitValueStrategy());
@@ -152,7 +151,7 @@ public class FavorableTraitTest {
 
   @Test
   public void testCreationSpecialtyDuringExperienced() throws Exception {
-    ISubTraitContainer container = new SpecialtiesContainer(new DefaultTraitReference(trait), dummyHero);
+    ISubTraitContainer container = new SpecialtiesContainer(trait.getType(), dummyHero);
     Specialty specialty = container.addSubTrait("TestSpecialty");
     specialty.setCreationValue(2);
     assertEquals(2, specialty.getCreationValue());

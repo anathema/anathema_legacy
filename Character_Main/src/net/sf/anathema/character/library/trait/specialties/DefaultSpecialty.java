@@ -1,6 +1,5 @@
 package net.sf.anathema.character.library.trait.specialties;
 
-import net.sf.anathema.character.generic.framework.ITraitReference;
 import net.sf.anathema.character.generic.impl.traits.SimpleTraitTemplate;
 import net.sf.anathema.character.generic.traits.TraitType;
 import net.sf.anathema.character.library.trait.DefaultTrait;
@@ -14,16 +13,16 @@ public class DefaultSpecialty extends DefaultTrait implements Specialty {
 
   private final String subTraitName;
   private final AbstractSubTraitContainer container;
-  private final ITraitReference reference;
+  private final TraitType type;
 
   private static TraitRules createSpecialtyRules(Hero hero) {
     return new TraitRules(new DefaultTraitType("Specialty"), SimpleTraitTemplate.createStaticLimitedTemplate(0, 3), hero);
   }
 
-  public DefaultSpecialty(Hero hero, AbstractSubTraitContainer container, ITraitReference reference, String specialtyName) {
+  public DefaultSpecialty(Hero hero, AbstractSubTraitContainer container, TraitType type, String specialtyName) {
     super(hero, createSpecialtyRules(hero), new FriendlyValueChangeChecker());
     this.container = container;
-    this.reference = reference;
+    this.type = type;
     this.subTraitName = specialtyName;
   }
 
@@ -33,13 +32,8 @@ public class DefaultSpecialty extends DefaultTrait implements Specialty {
   }
 
   @Override
-  public ITraitReference getTraitReference() {
-    return reference;
-  }
-
-  @Override
   public TraitType getBasicTraitType() {
-    return reference.getTraitType();
+    return type;
   }
 
   @Override

@@ -1,34 +1,28 @@
 package net.sf.anathema.character.generic.framework.resources;
 
-import net.sf.anathema.character.generic.framework.ITraitReference;
+import net.sf.anathema.character.reporting.pdf.content.stats.ValuedTraitReference;
 import net.sf.anathema.lib.resources.Resources;
 
-public class TraitInternationalizer {
+public class TraitReferenceInternationalizer {
 
   private static final String SHEET_MESSAGE = "SubtraitSheetMessage";
-  private static final String SCREEN_MESSAGE = "SubtraitScreenMessage";
   private final Resources resources;
 
-  public TraitInternationalizer(Resources resources) {
+  public TraitReferenceInternationalizer(Resources resources) {
     this.resources = resources;
   }
 
-  public String getScreenName(ITraitReference reference) {
-    return getI18nForMessage(reference, SCREEN_MESSAGE);
-  }
-
-  public String getSheetName(ITraitReference reference) {
+  public String getSheetName(ValuedTraitReference reference) {
     return getI18nForMessage(reference, SHEET_MESSAGE);
   }
 
-  private String getI18nForMessage(ITraitReference reference, String message) {
-    String id = reference.getTraitType().getId();
-    String i18nedId = resources.getString(id);
+  private String getI18nForMessage(ValuedTraitReference reference, String message) {
+    String i18nedId = new TraitTypeInternationalizer(resources).getScreenName(reference.getTraitType());
     String name = reference.getName();
     if (name == null) {
       return i18nedId;
     }
-    String subtraitNameKey = id + "." + name;
+    String subtraitNameKey = reference.getTraitType().getId() + "." + name;
     if (!resources.supportsKey(subtraitNameKey)) {
       return resources.getString(message, i18nedId, name);
     }
