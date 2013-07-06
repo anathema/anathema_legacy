@@ -10,7 +10,7 @@ public class BorderedTitledPane extends StackPane {
 
   public static BorderedTitledPane Create(String titleString, Node content) {
     BorderedTitledPane titledPane = new BorderedTitledPane(titleString, content);
-    new Stylesheet("skin/anathema/borderedtitledpane.css").applyToParent(titledPane);
+    new Stylesheet("skin/platform/borderedtitledpane.css").applyToParent(titledPane);
     return titledPane;
   }
 

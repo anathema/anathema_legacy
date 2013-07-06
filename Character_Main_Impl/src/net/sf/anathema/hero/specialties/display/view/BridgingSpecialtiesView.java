@@ -1,6 +1,7 @@
 package net.sf.anathema.hero.specialties.display.view;
 
 import net.sf.anathema.character.generic.traits.TraitType;
+import net.sf.anathema.character.generic.type.ICharacterType;
 import net.sf.anathema.character.library.util.CssSkinner;
 import net.sf.anathema.character.presenter.ExtensibleTraitView;
 import net.sf.anathema.framework.swing.IView;
@@ -18,6 +19,9 @@ public class BridgingSpecialtiesView implements SpecialtiesConfigurationView, IV
 
   public BridgingSpecialtiesView(FxSpecialtiesView fxView) {
     this.fxView = fxView;
+  }
+
+  public void initGui(ICharacterType type){
     String[] skins = new CssSkinner().getSkins(null);
     panel.init(fxView, skins);
   }

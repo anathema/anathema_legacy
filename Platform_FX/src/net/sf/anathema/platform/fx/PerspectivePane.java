@@ -39,7 +39,7 @@ public class PerspectivePane {
   }
 
   private String[] getAllStyleSheetPaths(String[] styleSheetPaths) {
-    return ArrayUtilities.concat(String.class, styleSheetPaths, "skin/anathema/perspective.css");
+    return ArrayUtilities.concat(String.class, styleSheetPaths, "skin/platform/perspective.css");
   }
 
   public void setNavigationComponent(Node component) {

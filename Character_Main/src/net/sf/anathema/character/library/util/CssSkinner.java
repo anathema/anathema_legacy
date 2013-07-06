@@ -9,21 +9,21 @@ public class CssSkinner {
 
   public String[] getSkins(ICharacterType characterType) {
     List<String> skins = new ArrayList<>();
-    skins.add("skin/anathema/dotselector.css");
+    skins.add("skin/platform/dotselector.css");
     skins.add(chooseSkinForCharacterType(characterType));
     return skins.toArray(new String[skins.size()]);
   }
 
   private String chooseSkinForCharacterType(ICharacterType characterType) {
     if (characterType == null) {
-      return "skin/anathema/character/trait.css";
+      return "skin/character/trait.css";
     }
     if (characterType.getId().equals("Solar")) {
       return "skin/solar/trait.css";
     } else if (characterType.getId().equals("Mortal")) {
       return "skin/mortal/trait.css";
     } else {
-      return "skin/anathema/character/trait.css";
+      return "skin/character/trait.css";
     }
   }
 }
