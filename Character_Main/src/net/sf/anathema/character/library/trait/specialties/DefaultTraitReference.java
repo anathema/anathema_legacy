@@ -12,6 +12,10 @@ public class DefaultTraitReference implements ITraitReference {
     this.type = visitedTrait.getType();
   }
 
+  public DefaultTraitReference(TraitType type) {
+    this.type = type;
+  }
+
   @Override
   public TraitType getTraitType() {
     return type;
@@ -22,6 +26,7 @@ public class DefaultTraitReference implements ITraitReference {
     return null;
   }
 
+  @SuppressWarnings("SimplifiableIfStatement")
   @Override
   public boolean equals(Object obj) {
     if (!(obj instanceof DefaultTraitReference)) {

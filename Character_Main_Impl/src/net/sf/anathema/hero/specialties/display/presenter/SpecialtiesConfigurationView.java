@@ -9,5 +9,5 @@ public interface SpecialtiesConfigurationView {
 
   ExtensibleTraitView addSpecialtyView(String abilityName, String specialtyName, RelativePath deleteIcon, int value, int maxValue);
 
-  SpecialtyCreationView addSpecialtySelectionView(AgnosticUIConfiguration<ITraitReference> configuration, RelativePath addIcon);
+  SpecialtyCreationView addSpecialtyCreationView(AgnosticUIConfiguration<ITraitReference> configuration, RelativePath addIcon);
 }

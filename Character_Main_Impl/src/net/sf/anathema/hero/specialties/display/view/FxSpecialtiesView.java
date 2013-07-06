@@ -37,7 +37,7 @@ public class FxSpecialtiesView implements SpecialtiesConfigurationView, NodeHold
   }
 
   @Override
-  public SpecialtyCreationView addSpecialtySelectionView(AgnosticUIConfiguration<ITraitReference> configuration, RelativePath addIcon) {
+  public SpecialtyCreationView addSpecialtyCreationView(AgnosticUIConfiguration<ITraitReference> configuration, RelativePath addIcon) {
     final FxSpecialtyCreationView view = new FxSpecialtyCreationView(addIcon);
     FxThreading.runOnCorrectThread(new Runnable() {
       @Override

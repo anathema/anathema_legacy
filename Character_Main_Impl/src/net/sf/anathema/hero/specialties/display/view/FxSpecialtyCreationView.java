@@ -6,7 +6,7 @@ import javafx.beans.value.ObservableValue;
 import javafx.scene.Node;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.TextField;
-import net.sf.anathema.character.generic.framework.ITraitReference;
+import net.sf.anathema.character.generic.traits.TraitType;
 import net.sf.anathema.hero.specialties.display.presenter.SpecialtyCreationView;
 import net.sf.anathema.interaction.Command;
 import net.sf.anathema.lib.control.ObjectValueListener;
@@ -19,7 +19,7 @@ import java.util.Arrays;
 
 public class FxSpecialtyCreationView implements SpecialtyCreationView {
 
-  private final ComboBox<ITraitReference> box = new ComboBox<>();
+  private final ComboBox<TraitType> box = new ComboBox<>();
   private final TextField field = new TextField();
   private final FxButtonTool tool = FxButtonTool.ForToolbar();
   private final MigPane pane = new MigPane();
@@ -32,10 +32,10 @@ public class FxSpecialtyCreationView implements SpecialtyCreationView {
   }
 
   @Override
-  public void addSelectionChangedListener(final ObjectValueListener<ITraitReference> listener) {
-    box.getSelectionModel().selectedItemProperty().addListener(new ChangeListener<ITraitReference>() {
+  public void addSelectionChangedListener(final ObjectValueListener<TraitType> listener) {
+    box.getSelectionModel().selectedItemProperty().addListener(new ChangeListener<TraitType>() {
       @Override
-      public void changed(ObservableValue observableValue, ITraitReference o, ITraitReference newValue) {
+      public void changed(ObservableValue observableValue, TraitType o, TraitType newValue) {
         listener.valueChanged(newValue);
       }
     });
@@ -72,11 +72,31 @@ public class FxSpecialtyCreationView implements SpecialtyCreationView {
   }
 
   @Override
-  public void setObjects(final ITraitReference[] references) {
+  public void setObjects(final TraitType[] references) {
     FxThreading.runOnCorrectThread(new Runnable() {
       @Override
       public void run() {
         box.setItems(new ObservableListWrapper<>(Arrays.asList(references)));
+      }
+    });
+  }
+
+  @Override
+  public void selectTrait(final TraitType currentTrait) {
+    FxThreading.runOnCorrectThread(new Runnable() {
+      @Override
+      public void run() {
+        box.getSelectionModel().select(currentTrait);
+      }
+    });
+  }
+
+  @Override
+  public void enterName(final String currentName) {
+    FxThreading.runOnCorrectThread(new Runnable() {
+      @Override
+      public void run() {
+        field.setText(currentName);
       }
     });
   }

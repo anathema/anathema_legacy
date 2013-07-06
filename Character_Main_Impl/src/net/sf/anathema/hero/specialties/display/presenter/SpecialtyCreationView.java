@@ -1,12 +1,12 @@
 package net.sf.anathema.hero.specialties.display.presenter;
 
-import net.sf.anathema.character.generic.framework.ITraitReference;
+import net.sf.anathema.character.generic.traits.TraitType;
 import net.sf.anathema.interaction.Command;
 import net.sf.anathema.lib.control.ObjectValueListener;
 
 public interface SpecialtyCreationView {
 
-  void addSelectionChangedListener(ObjectValueListener<ITraitReference> name);
+  void addSelectionChangedListener(ObjectValueListener<TraitType> name);
 
   void addEditChangedListener(ObjectValueListener<String> name);
 
@@ -16,5 +16,9 @@ public interface SpecialtyCreationView {
 
   void setButtonEnabled(boolean enabled);
 
-  void setObjects(ITraitReference[] objects);
+  void setObjects(TraitType[] objects);
+
+  void enterName(String currentName);
+
+  void selectTrait(TraitType currentTrait);
 }

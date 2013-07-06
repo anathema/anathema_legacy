@@ -33,7 +33,7 @@ public class BridgingSpecialtiesView implements SpecialtiesConfigurationView, IV
   }
 
   @Override
-  public SpecialtyCreationView addSpecialtySelectionView(AgnosticUIConfiguration<ITraitReference> configuration, RelativePath addIcon) {
-    return fxView.addSpecialtySelectionView(configuration, addIcon);
+  public SpecialtyCreationView addSpecialtyCreationView(AgnosticUIConfiguration<ITraitReference> configuration, RelativePath addIcon) {
+    return fxView.addSpecialtyCreationView(configuration, addIcon);
   }
 }

@@ -2,8 +2,9 @@ package net.sf.anathema.hero.specialties.display.presenter;
 
 import net.sf.anathema.character.generic.framework.ITraitReference;
 import net.sf.anathema.character.generic.framework.resources.TraitInternationalizer;
+import net.sf.anathema.character.generic.traits.TraitType;
 import net.sf.anathema.character.library.trait.presenter.TraitPresenter;
-import net.sf.anathema.character.library.trait.specialties.ITraitReferencesChangeListener;
+import net.sf.anathema.character.library.trait.specialties.DefaultTraitReference;
 import net.sf.anathema.character.library.trait.specialties.SpecialtiesModel;
 import net.sf.anathema.character.library.trait.specialties.Specialty;
 import net.sf.anathema.character.library.trait.subtrait.ISpecialtyListener;
@@ -33,7 +34,7 @@ public class SpecialtiesConfigurationPresenter implements Presenter {
   private final IdentityMapping<Specialty, ExtensibleTraitView> viewsBySpecialty = new IdentityMapping<>();
   private final IdentityMapping<Specialty, Tool> deleteToolsBySpecialty = new IdentityMapping<>();
   private final TraitInternationalizer i18ner;
-  private final Comparator<ITraitReference> comparator;
+  private final Comparator<TraitType> comparator;
 
   private final ISpecialtyListener specialtyListener = new ISpecialtyListener() {
     @Override
@@ -77,47 +78,34 @@ public class SpecialtiesConfigurationPresenter implements Presenter {
         return i18ner.getScreenName(value);
       }
     };
-    final SpecialtyCreationView specialtySelectionView = configurationView.addSpecialtySelectionView(configuration, addIcon);
-    setObjects(specialtySelectionView);
-    specialtySelectionView.addSelectionChangedListener(new ObjectValueListener<ITraitReference>() {
+    final SpecialtyCreationView creationView = configurationView.addSpecialtyCreationView(configuration, addIcon);
+    setObjects(creationView);
+    creationView.addSelectionChangedListener(new ObjectValueListener<TraitType>() {
       @Override
-      public void valueChanged(ITraitReference newValue) {
+      public void valueChanged(TraitType newValue) {
         specialtyManagement.setCurrentTrait(newValue);
       }
     });
-    specialtySelectionView.addEditChangedListener(new ObjectValueListener<String>() {
+    creationView.addEditChangedListener(new ObjectValueListener<String>() {
       @Override
       public void valueChanged(String newSpecialtyName) {
         specialtyManagement.setCurrentSpecialtyName(newSpecialtyName);
       }
     });
-    specialtySelectionView.whenAddButtonIsClicked(new Command() {
+    creationView.whenAddButtonIsClicked(new Command() {
       @Override
       public void execute() {
         specialtyManagement.commitSelection();
-        reset(specialtySelectionView);
+        resetAndSyncView(creationView);
       }
     });
     specialtyManagement.addSelectionChangeListener(new ChangeListener() {
       @Override
       public void changeOccurred() {
-        specialtySelectionView.setButtonEnabled(specialtyManagement.isEntryComplete());
+        creationView.setButtonEnabled(specialtyManagement.isEntryComplete());
       }
     });
-    specialtyManagement.addTraitListChangeListener(new ITraitReferencesChangeListener() {
-      @Override
-      public void referenceAdded(ITraitReference reference) {
-        setObjects(specialtySelectionView);
-        getSpecialtyContainer(reference).addSubTraitListener(specialtyListener);
-      }
-
-      @Override
-      public void referenceRemoved(ITraitReference reference) {
-        specialtySelectionView.setObjects(specialtyManagement.getAllEligibleTraits());
-      }
-    });
-    reset(specialtySelectionView);
-    for (ITraitReference reference : getAllTraits()) {
+    for (TraitType reference : getAllTraits()) {
       for (Specialty specialty : getSpecialtyContainer(reference).getSubTraits()) {
         addSpecialtyView(specialty);
       }
@@ -128,44 +116,55 @@ public class SpecialtiesConfigurationPresenter implements Presenter {
         if (flavor == ExperienceChange.FLAVOR_EXPERIENCE_STATE) {
           updateSpecialtyViewButtons();
         }
-        setObjects(specialtySelectionView);
+        setObjects(creationView);
       }
     });
+    resetAndSyncView(creationView);
     updateSpecialtyViewButtons();
   }
 
+  private void resetAndSyncView(SpecialtyCreationView creationView) {
+    reset();
+    sync(creationView);
+  }
+
+  private void reset() {
+    specialtyManagement.clear();
+    specialtyManagement.setCurrentTrait(getSortedEligibleTraits()[0]);
+  }
+
+  private void sync(SpecialtyCreationView creationView) {
+    creationView.selectTrait(specialtyManagement.getCurrentTrait());
+    creationView.enterName(specialtyManagement.getCurrentName());
+  }
+
   private void setObjects(SpecialtyCreationView specialtySelectionView) {
-    ITraitReference[] allTraits = getAllEligibleTraits();
-    Arrays.sort(allTraits, comparator);
+    TraitType[] allTraits = getSortedEligibleTraits();
     specialtySelectionView.setObjects(allTraits);
   }
 
+  private TraitType[] getSortedEligibleTraits() {
+    TraitType[] allTraits = getAllEligibleTraits();
+    Arrays.sort(allTraits, comparator);
+    return allTraits;
+  }
+
   private void initTraitListening() {
-    for (ITraitReference reference : getAllTraits()) {
+    for (TraitType reference : getAllTraits()) {
       getSpecialtyContainer(reference).addSubTraitListener(specialtyListener);
     }
   }
 
-  private ISubTraitContainer getSpecialtyContainer(ITraitReference reference) {
-    return specialtyManagement.getSpecialtiesContainer(reference);
-  }
-
-  private void reset(SpecialtyCreationView specialtySelectionView) {
-    specialtyManagement.clear();
-    specialtySelectionView.clear();
-    specialtyManagement.setCurrentTrait(getAllEligibleTraits()[0]);
-  }
-
-  private ITraitReference[] getAllTraits() {
+  private TraitType[] getAllTraits() {
     return specialtyManagement.getAllTraits();
   }
 
-  private ITraitReference[] getAllEligibleTraits() {
+  private TraitType[] getAllEligibleTraits() {
     return specialtyManagement.getAllEligibleTraits();
   }
 
   private void updateSpecialtyViewButtons() {
-    for (ITraitReference trait : getAllTraits()) {
+    for (TraitType trait : getAllTraits()) {
       for (Specialty specialty : getSpecialtyContainer(trait).getSubTraits()) {
         Tool tool = deleteToolsBySpecialty.get(specialty);
         if (specialty.getCreationValue() == 0 || !specialtyManagement.isExperienced()) {
@@ -178,8 +177,8 @@ public class SpecialtiesConfigurationPresenter implements Presenter {
   }
 
   private void addSpecialtyView(final Specialty specialty) {
-    final ITraitReference traitReference = specialty.getTraitReference();
-    String traitName = i18ner.getScreenName(traitReference);
+    final TraitType type = specialty.getBasicTraitType();
+    String traitName = i18ner.getScreenName(new DefaultTraitReference(type));
     String specialtyName = specialty.getName();
     RelativePath deleteIcon = new BasicUi().getRemoveIconPath();
     final ExtensibleTraitView specialtyView = configurationView.addSpecialtyView(traitName, specialtyName, deleteIcon,
@@ -191,10 +190,14 @@ public class SpecialtiesConfigurationPresenter implements Presenter {
     deleteTool.setCommand(new Command() {
       @Override
       public void execute() {
-        getSpecialtyContainer(traitReference).removeSubTrait(specialty);
+        getSpecialtyContainer(type).removeSubTrait(specialty);
       }
     });
     viewsBySpecialty.put(specialty, specialtyView);
     deleteToolsBySpecialty.put(specialty, deleteTool);
+  }
+
+  private ISubTraitContainer getSpecialtyContainer(TraitType type) {
+    return specialtyManagement.getSpecialtiesContainer(type);
   }
 }

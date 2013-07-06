@@ -1,17 +1,17 @@
 package net.sf.anathema.character.library.trait.specialties;
 
-import net.sf.anathema.character.generic.framework.ITraitReference;
+import net.sf.anathema.character.generic.traits.TraitType;
 import net.sf.anathema.character.library.trait.subtrait.AbstractSubTraitContainer;
 import net.sf.anathema.hero.model.Hero;
 
 public class SpecialtiesContainer extends AbstractSubTraitContainer {
 
   public static final int ALLOWED_SPECIALTY_COUNT = 3;
-  private final ITraitReference reference;
+  private final TraitType type;
   private final Hero hero;
 
-  public SpecialtiesContainer(ITraitReference reference, Hero hero) {
-    this.reference = reference;
+  public SpecialtiesContainer(TraitType type, Hero hero) {
+    this.type = type;
     this.hero = hero;
   }
 
@@ -29,6 +29,6 @@ public class SpecialtiesContainer extends AbstractSubTraitContainer {
 
   @Override
   public Specialty createSubTrait(String name) {
-    return new DefaultSpecialty(hero, this, reference, name);
+    return new DefaultSpecialty(hero, this, type, name);
   }
 }

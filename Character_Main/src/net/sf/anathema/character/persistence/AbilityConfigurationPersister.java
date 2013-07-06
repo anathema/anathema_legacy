@@ -43,7 +43,7 @@ public class AbilityConfigurationPersister {
   }
 
   private void saveSpecialties(SpecialtiesModel specialtyConfiguration, Element abilityElement, ITraitReference reference) {
-    for (Specialty specialty : specialtyConfiguration.getSpecialtiesContainer(reference).getSubTraits()) {
+    for (Specialty specialty : specialtyConfiguration.getSpecialtiesContainer(reference.getTraitType()).getSubTraits()) {
       Element specialtyElement = persister.saveTrait(abilityElement, TAG_SPECIALTY, specialty);
       specialtyElement.addAttribute(ATTRIB_NAME, specialty.getName());
     }
@@ -71,7 +71,7 @@ public class AbilityConfigurationPersister {
     List<Element> specialtyElements = ElementUtilities.elements(abilityElement, TAG_SPECIALTY);
     for (Element specialtyElement : specialtyElements) {
       String specialtyName = specialtyElement.attributeValue(ATTRIB_NAME);
-      ISubTraitContainer specialtiesContainer = specialtyConfiguration.getSpecialtiesContainer(reference);
+      ISubTraitContainer specialtiesContainer = specialtyConfiguration.getSpecialtiesContainer(reference.getTraitType());
       Specialty specialty = specialtiesContainer.addSubTrait(specialtyName);
       persister.restoreTrait(specialtyElement, specialty);
     }
