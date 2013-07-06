@@ -2,6 +2,7 @@ package net.sf.anathema.hero.specialties.display.view;
 
 import javafx.scene.Node;
 import net.sf.anathema.character.generic.traits.TraitType;
+import net.sf.anathema.character.generic.type.ICharacterType;
 import net.sf.anathema.character.library.trait.view.fx.FxExtensibleTraitView;
 import net.sf.anathema.character.library.trait.view.fx.FxGroupedColumnPanel;
 import net.sf.anathema.character.library.trait.view.fx.FxTraitView;
@@ -26,6 +27,11 @@ public class FxSpecialtiesView implements SpecialtiesConfigurationView, NodeHold
     columnPanel.startNewGroup(null);
     pane.add(creationPane);
     pane.add(existingSpecialtiesPane);
+  }
+
+  @Override
+  public void initGui(ICharacterType type) {
+    //nothing to do
   }
 
   @Override
