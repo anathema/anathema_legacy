@@ -101,8 +101,6 @@ public class AttributeCostCalculator extends AbstractFavorableTraitCostCalculato
         extraGenericDotsLeft -= cost.getExtraGenericDotsSpent();
         bonusCost += cost.getBonusPointsSpent();
         if (record) {
-          increaseExtraFavoredDotSum(cost.getExtraFavoredDotsSpent());
-          increaseExtraGenericDotSum(cost.getExtraGenericDotsSpent());
           costsByAttribute.put(attribute, cost);
           orderedGroups.get(i).addTraitToCost(attribute, cost);
         }

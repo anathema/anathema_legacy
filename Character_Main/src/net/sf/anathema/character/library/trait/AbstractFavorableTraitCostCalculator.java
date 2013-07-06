@@ -19,8 +19,6 @@ public abstract class AbstractFavorableTraitCostCalculator {
   private int favoredPicksSpent = 0;
   private int favoredDotSum = 0;
   private int generalDotSum = 0;
-  private int extraFavoredDotSum = 0;
-  private int extraGenericDotSum = 0;
 
   public AbstractFavorableTraitCostCalculator(IAdditionalTraitBonusPointManagement additionalPools, IFavorableTraitCreationPoints points,
                                               int freeTraitMax, Trait[] traits) {
@@ -60,8 +58,6 @@ public abstract class AbstractFavorableTraitCostCalculator {
   protected void clear() {
     favoredPicksSpent = 0;
     favoredDotSum = 0;
-    extraFavoredDotSum = 0;
-    extraGenericDotSum = 0;
     generalDotSum = 0;
     costsByTrait.clear();
   }
@@ -100,14 +96,6 @@ public abstract class AbstractFavorableTraitCostCalculator {
 
   public int getFavoredPicksSpent() {
     return favoredPicksSpent;
-  }
-
-  public int getExtraFavoredDotsSpent() {
-    return extraFavoredDotSum;
-  }
-
-  public int getExtraGenericDotsSpent() {
-    return extraGenericDotSum;
   }
 
   public int getFreePointsSpent(boolean favored) {
@@ -182,14 +170,6 @@ public abstract class AbstractFavorableTraitCostCalculator {
     final List<FavorableTraitCost> allCosts = new ArrayList<>();
     allCosts.add(handleGeneralSingleTrait(trait, bonusPointCostFactor));
     return allCosts.toArray(new FavorableTraitCost[allCosts.size()]);
-  }
-
-  protected void increaseExtraFavoredDotSum(int extraDotsSpent) {
-    extraFavoredDotSum += extraDotsSpent;
-  }
-
-  protected void increaseExtraGenericDotSum(int extraDotsSpent) {
-    extraGenericDotSum += extraDotsSpent;
   }
 
   private void increaseFavoredDotSum(int favoredDotsSpent) {
