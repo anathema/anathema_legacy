@@ -16,7 +16,6 @@ import net.sf.anathema.character.generic.magic.IMagic;
 import net.sf.anathema.character.generic.magic.IMagicStats;
 import net.sf.anathema.character.generic.traits.TraitType;
 import net.sf.anathema.character.reporting.pdf.content.ReportSession;
-import net.sf.anathema.character.reporting.pdf.content.magic.GenericCharmContent;
 import net.sf.anathema.character.reporting.pdf.content.magic.MagicContentHelper;
 import net.sf.anathema.character.reporting.pdf.rendering.boxes.EncodingMetrics;
 import net.sf.anathema.character.reporting.pdf.rendering.extent.Bounds;
@@ -24,6 +23,8 @@ import net.sf.anathema.character.reporting.pdf.rendering.general.table.AbstractT
 import net.sf.anathema.character.reporting.pdf.rendering.graphics.SheetGraphics;
 import net.sf.anathema.character.reporting.pdf.rendering.graphics.TableCell;
 import net.sf.anathema.character.reporting.pdf.rendering.page.IVoidStateFormatConstants;
+import net.sf.anathema.hero.charms.sheet.content.GenericCharmContent;
+import net.sf.anathema.hero.charms.sheet.content.GenericCharmContentHelper;
 import net.sf.anathema.lib.resources.Resources;
 
 import java.util.Arrays;
@@ -48,14 +49,14 @@ public class GenericCharmTableEncoder extends AbstractTableEncoder<ReportSession
 
   @Override
   public boolean hasContent(ReportSession session) {
-    return createContent(session).hasContent() && new MagicContentHelper(session.getHero()).hasDisplayedGenericCharms();
+    return createContent(session).hasContent() && new GenericCharmContentHelper(session.getHero()).hasDisplayedGenericCharms();
   }
 
   @Override
   protected PdfPTable createTable(SheetGraphics graphics, ReportSession session, Bounds bounds) throws DocumentException {
     PdfContentByte directContent = graphics.getDirectContent();
     MagicContentHelper helper = new MagicContentHelper(session.getHero());
-    List<TraitType> traits = helper.getGenericCharmTraits();
+    List<TraitType> traits = new GenericCharmContentHelper(session.getHero()).getGenericCharmTraits();
     Font font = graphics.createTableFont();
     PdfTemplate learnedTemplate = createCharmDotTemplate(directContent, BaseColor.BLACK);
     PdfTemplate notLearnedTemplate = createCharmDotTemplate(directContent, BaseColor.WHITE);

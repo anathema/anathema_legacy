@@ -1,4 +1,4 @@
-package net.sf.anathema.character.reporting.pdf.content.magic;
+package net.sf.anathema.hero.charms.sheet.content;
 
 import net.sf.anathema.character.generic.traits.TraitType;
 import net.sf.anathema.character.reporting.pdf.content.SubBoxContent;
@@ -48,10 +48,10 @@ public class GenericCharmContent implements SubBoxContent {
   }
 
   private List<TraitType> getTraits() {
-    return new MagicContentHelper(hero).getGenericCharmTraits();
+    return new GenericCharmContentHelper(hero).getGenericCharmTraits();
   }
 
   public int getGenericCharmCount() {
-    return new MagicContentHelper(hero).getDisplayedGenericCharmCount();
+    return new GenericCharmContentHelper(hero).getDisplayedGenericCharmCount();
   }
 }

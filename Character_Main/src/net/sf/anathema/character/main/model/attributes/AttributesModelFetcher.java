@@ -5,6 +5,6 @@ import net.sf.anathema.hero.model.Hero;
 public class AttributesModelFetcher {
 
   public static AttributeModel fetch(Hero hero) {
-    return (AttributeModel) hero.getModel(AttributeModel.ID);
+    return hero.getModel(AttributeModel.ID);
   }
 }

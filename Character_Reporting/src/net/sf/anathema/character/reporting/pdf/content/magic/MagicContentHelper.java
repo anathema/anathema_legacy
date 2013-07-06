@@ -3,7 +3,6 @@ package net.sf.anathema.character.reporting.pdf.content.magic;
 import com.google.common.base.Optional;
 import com.google.common.base.Predicate;
 import com.google.common.collect.Iterables;
-import net.sf.anathema.character.generic.character.IGenericTraitCollection;
 import net.sf.anathema.character.generic.framework.configuration.AnathemaCharacterPreferences;
 import net.sf.anathema.character.generic.magic.ICharm;
 import net.sf.anathema.character.generic.magic.IMagic;
@@ -12,24 +11,10 @@ import net.sf.anathema.character.generic.magic.IMagicVisitor;
 import net.sf.anathema.character.generic.magic.ISpell;
 import net.sf.anathema.character.generic.magic.charms.special.ISpecialCharmConfiguration;
 import net.sf.anathema.character.generic.magic.charms.special.ISubeffect;
-import net.sf.anathema.character.generic.template.magic.AbilityFavoringType;
-import net.sf.anathema.character.generic.template.magic.AttributeFavoringType;
-import net.sf.anathema.character.generic.template.magic.FavoringTraitType;
-import net.sf.anathema.character.generic.traits.TraitType;
-import net.sf.anathema.character.generic.traits.groups.IIdentifiedTraitTypeGroup;
-import net.sf.anathema.character.generic.traits.groups.ITraitTypeGroup;
-import net.sf.anathema.character.library.trait.specialties.SpecialtiesModel;
-import net.sf.anathema.character.library.trait.specialties.SpecialtiesModelFetcher;
-import net.sf.anathema.character.library.trait.specialties.Specialty;
-import net.sf.anathema.character.library.trait.subtrait.ISubTraitContainer;
-import net.sf.anathema.character.main.model.abilities.AbilityModelFetcher;
-import net.sf.anathema.character.main.model.attributes.AttributesModelFetcher;
 import net.sf.anathema.character.main.model.charms.CharmsModel;
 import net.sf.anathema.character.main.model.charms.CharmsModelFetcher;
 import net.sf.anathema.character.main.model.experience.ExperienceModelFetcher;
 import net.sf.anathema.character.main.model.spells.SpellsModelFetcher;
-import net.sf.anathema.character.main.model.traits.GenericTraitCollectionFacade;
-import net.sf.anathema.character.main.model.traits.TraitModelFetcher;
 import net.sf.anathema.character.model.charm.ILearningCharmGroup;
 import net.sf.anathema.character.model.charm.special.IMultipleEffectCharmConfiguration;
 import net.sf.anathema.character.model.charm.special.ISubeffectCharmConfiguration;
@@ -42,7 +27,6 @@ import net.sf.anathema.hero.model.Hero;
 
 import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.Collections;
 import java.util.List;
 
 public class MagicContentHelper {
@@ -102,16 +86,6 @@ public class MagicContentHelper {
 
   public static List<IMagicStats> collectPrintSpells(ReportSession session) {
     return collectPrintMagic(session.getHero(), true, false);
-  }
-
-  public IGenericTraitCollection getTraitCollection() {
-    return new GenericTraitCollectionFacade(TraitModelFetcher.fetch(hero));
-  }
-
-  public Specialty[] getSpecialties(TraitType traitType) {
-    SpecialtiesModel specialtyConfiguration = SpecialtiesModelFetcher.fetch(hero);
-    ISubTraitContainer specialtiesContainer = specialtyConfiguration.getSpecialtiesContainer(traitType);
-    return specialtiesContainer.getSubTraits();
   }
 
   public List<IMagic> getAllLearnedMagic() {
@@ -205,43 +179,6 @@ public class MagicContentHelper {
       if (!genericCharmStats.contains(stats)) genericCharmStats.add(stats);
     }
     return genericCharmStats.toArray(new IMagicStats[genericCharmStats.size()]);
-  }
-
-  public int getDisplayedGenericCharmCount() {
-    int count = 0;
-    for (IMagicStats stats : getGenericCharmStats()) {
-      if (shouldShowCharm(stats)) {
-        count++;
-      }
-    }
-    return count;
-  }
-
-  public boolean hasDisplayedGenericCharms() {
-    return getDisplayedGenericCharmCount() > 0;
-  }
-
-  public List<TraitType> getGenericCharmTraits() {
-    List<TraitType> traits = new ArrayList<>();
-    FavoringTraitType type = hero.getTemplate().getTemplateType().getCharacterType().getFavoringTraitType();
-    for (ITraitTypeGroup group : getCharmTraitGroups()) {
-      Collections.addAll(traits, group.getAllGroupTypes());
-    }
-    if (traits.isEmpty()) {
-      Collections.addAll(traits, type.getTraitTypesForGenericCharms());
-    }
-    return traits;
-  }
-
-  private IIdentifiedTraitTypeGroup[] getCharmTraitGroups() {
-    FavoringTraitType type = hero.getTemplate().getTemplateType().getCharacterType().getFavoringTraitType();
-    if (type.equals(new AbilityFavoringType())) {
-      return AbilityModelFetcher.fetch(hero).getAbilityTypeGroups();
-    }
-    if (type.equals(new AttributeFavoringType())) {
-      return AttributesModelFetcher.fetch(hero).getAttributeTypeGroups();
-    }
-    return new IIdentifiedTraitTypeGroup[0];
   }
 
   public boolean isCharmLearned(List<IMagic> allLearnedMagic, final String charmId) {
