@@ -1,6 +1,7 @@
-package net.sf.anathema.character.main.model.spells;
+package net.sf.anathema.hero.charms.model.spells;
 
 import net.sf.anathema.character.generic.magic.ISpell;
+import net.sf.anathema.character.main.model.spells.SpellModel;
 
 public class CreationSpellLearnStrategy implements ISpellLearnStrategy {
 

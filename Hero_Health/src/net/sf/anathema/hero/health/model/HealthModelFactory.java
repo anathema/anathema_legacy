@@ -1,7 +1,7 @@
 package net.sf.anathema.hero.health.model;
 
 import net.sf.anathema.character.main.model.abilities.AbilitiesModel;
-import net.sf.anathema.character.main.model.attributes.AttributeModel;
+import net.sf.anathema.hero.attributes.model.AttributeModel;
 import net.sf.anathema.character.main.model.experience.ExperienceModel;
 import net.sf.anathema.character.main.model.health.HealthModel;
 import net.sf.anathema.character.main.model.health.HealthModelImpl;

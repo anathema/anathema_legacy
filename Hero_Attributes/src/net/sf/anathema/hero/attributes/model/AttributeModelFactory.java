@@ -1,6 +1,5 @@
 package net.sf.anathema.hero.attributes.model;
 
-import net.sf.anathema.character.main.model.attributes.AttributeModel;
 import net.sf.anathema.character.main.model.concept.HeroConcept;
 import net.sf.anathema.character.main.model.experience.ExperienceModel;
 import net.sf.anathema.character.main.model.othertraits.OtherTraitModel;

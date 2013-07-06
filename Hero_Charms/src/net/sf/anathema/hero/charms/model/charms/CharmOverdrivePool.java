@@ -1,4 +1,4 @@
-package net.sf.anathema.hero.charms.model;
+package net.sf.anathema.hero.charms.model.charms;
 
 import net.sf.anathema.character.generic.magic.ICharm;
 import net.sf.anathema.character.generic.magic.IExtendedCharmData;

@@ -1,6 +1,7 @@
 package net.sf.anathema.character.library.virtueflaw.persistence;
 
 import net.sf.anathema.character.generic.traits.types.VirtueType;
+import net.sf.anathema.character.library.trait.Trait;
 import net.sf.anathema.character.library.virtueflaw.model.DescriptiveVirtueFlaw;
 import net.sf.anathema.character.library.virtueflaw.model.VirtueFlawModel;
 import net.sf.anathema.hero.persistence.AbstractModelJsonPersister;
@@ -16,9 +17,10 @@ public class GreatCursePersister extends AbstractModelJsonPersister<VirtueFlawPt
 
   @Override
   protected void fillModel(VirtueFlawModel model, VirtueFlawPto pto) {
-    model.getVirtueFlaw().getLimitTrait().setUncheckedCreationValue(pto.limit.creationValue);
+    Trait limitTrait = model.getVirtueFlaw().getLimitTrait();
+    limitTrait.setUncheckedCreationValue(pto.limit.creationValue);
     if (pto.limit.experienceValue != null) {
-      model.getVirtueFlaw().getLimitTrait().setUncheckedExperiencedValue(pto.limit.experienceValue);
+      limitTrait.setUncheckedExperiencedValue(pto.limit.experienceValue);
     }
     if (pto.rootVirtue != null) {
       model.getVirtueFlaw().setRoot(VirtueType.valueOf(pto.rootVirtue));

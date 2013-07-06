@@ -9,7 +9,7 @@ import net.sf.anathema.character.generic.traits.types.AttributeGroupType;
 import net.sf.anathema.character.library.trait.FavorableTraitCost;
 import net.sf.anathema.character.library.trait.Trait;
 import net.sf.anathema.character.library.trait.TraitGroup;
-import net.sf.anathema.character.main.model.attributes.AttributeModel;
+import net.sf.anathema.hero.attributes.model.AttributeModel;
 import net.sf.anathema.character.model.creation.bonus.basic.ElementCreationCost;
 import net.sf.anathema.character.model.creation.bonus.basic.ElementCreationCostCalculator;
 import net.sf.anathema.character.model.creation.bonus.basic.ICostElement;

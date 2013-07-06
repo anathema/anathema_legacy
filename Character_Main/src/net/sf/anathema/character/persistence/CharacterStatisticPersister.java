@@ -12,7 +12,6 @@ import net.sf.anathema.character.generic.traits.types.OtherTraitType;
 import net.sf.anathema.character.generic.type.ICharacterType;
 import net.sf.anathema.character.library.trait.specialties.SpecialtiesModelFetcher;
 import net.sf.anathema.character.main.model.abilities.AbilityModelFetcher;
-import net.sf.anathema.character.main.model.attributes.AttributesModelFetcher;
 import net.sf.anathema.character.main.model.concept.HeroConceptFetcher;
 import net.sf.anathema.character.main.model.description.HeroDescription;
 import net.sf.anathema.character.main.model.description.HeroDescriptionFetcher;
@@ -36,7 +35,6 @@ import static net.sf.anathema.character.persistence.ICharacterXmlConstants.TAG_S
 
 public class CharacterStatisticPersister {
 
-  private final AttributeConfigurationPersister attributePersister = new AttributeConfigurationPersister();
   private final AbilityConfigurationPersister abilityPersister = new AbilityConfigurationPersister();
   private final CharacterConceptPersister characterConceptPersister = new CharacterConceptPersister();
   private final EssenceConfigurationPersister essencePersister = new EssenceConfigurationPersister();
@@ -68,7 +66,6 @@ public class CharacterStatisticPersister {
     essencePersister.save(statisticsElement, TraitModelFetcher.fetch(hero));
     willpowerPersister.save(statisticsElement, TraitModelFetcher.fetch(hero).getTrait(OtherTraitType.Willpower));
     virtuePersister.save(statisticsElement, TraitModelFetcher.fetch(hero));
-    attributePersister.save(statisticsElement, AttributesModelFetcher.fetch(hero));
     abilityPersister.save(statisticsElement, AbilityModelFetcher.fetch(hero), SpecialtiesModelFetcher.fetch(hero));
     charmPersister.save(statisticsElement, hero);
     spellPersister.save(statisticsElement, SpellsModelFetcher.fetch(hero));
@@ -89,7 +86,6 @@ public class CharacterStatisticPersister {
       ExperienceModelFetcher.fetch(character).setExperienced(experienced);
       essencePersister.load(statisticsElement, TraitModelFetcher.fetch(character));
       virtuePersister.load(statisticsElement, TraitModelFetcher.fetch(character));
-      attributePersister.load(statisticsElement, AttributesModelFetcher.fetch(character));
       abilityPersister.load(statisticsElement, AbilityModelFetcher.fetch(character), SpecialtiesModelFetcher.fetch(character));
       charmPersister.load(statisticsElement, character);
       spellPersister.load(statisticsElement, SpellsModelFetcher.fetch(character));

@@ -1,4 +1,4 @@
-package net.sf.anathema.character.main.model.spells;
+package net.sf.anathema.hero.charms.model.spells;
 
 import net.sf.anathema.character.generic.magic.ISpell;
 import net.sf.anathema.character.generic.magic.spells.CircleType;
@@ -9,6 +9,7 @@ import net.sf.anathema.character.main.model.charms.CharmsModelFetcher;
 import net.sf.anathema.character.main.model.experience.ExperienceChange;
 import net.sf.anathema.character.main.model.experience.ExperienceModel;
 import net.sf.anathema.character.main.model.experience.ExperienceModelFetcher;
+import net.sf.anathema.character.main.model.spells.SpellModel;
 import net.sf.anathema.character.model.IMagicLearnListener;
 import net.sf.anathema.character.model.ISpellMapper;
 import net.sf.anathema.character.model.SpellMapper;

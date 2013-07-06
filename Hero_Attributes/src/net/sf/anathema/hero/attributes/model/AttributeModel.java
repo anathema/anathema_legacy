@@ -1,4 +1,4 @@
-package net.sf.anathema.character.main.model.attributes;
+package net.sf.anathema.hero.attributes.model;
 
 import net.sf.anathema.character.generic.traits.groups.IIdentifiedTraitTypeGroup;
 import net.sf.anathema.character.library.trait.Trait;

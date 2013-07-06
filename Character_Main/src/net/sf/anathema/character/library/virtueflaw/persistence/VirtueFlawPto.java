@@ -6,5 +6,5 @@ public class VirtueFlawPto {
   String limitBreak;
   String description;
   String rootVirtue;
-  TraitPto limit = new TraitPto();
+  LimitPto limit = new LimitPto();
 }

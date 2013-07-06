@@ -1,7 +1,8 @@
-package net.sf.anathema.character.library.virtueflaw.persistence;
+package net.sf.anathema.hero.traits.persistence;
 
 public class TraitPto {
 
+  public String name;
   public int creationValue;
   public Integer experienceValue;
 }

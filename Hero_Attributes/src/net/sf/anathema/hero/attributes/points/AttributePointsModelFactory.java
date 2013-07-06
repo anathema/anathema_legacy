@@ -1,6 +1,6 @@
 package net.sf.anathema.hero.attributes.points;
 
-import net.sf.anathema.character.main.model.attributes.AttributeModel;
+import net.sf.anathema.hero.attributes.model.AttributeModel;
 import net.sf.anathema.hero.initialization.SimpleModelTreeEntry;
 import net.sf.anathema.hero.model.HeroModelAutoCollector;
 import net.sf.anathema.hero.model.HeroModelFactory;

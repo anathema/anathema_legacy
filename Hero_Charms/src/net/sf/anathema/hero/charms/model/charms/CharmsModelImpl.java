@@ -1,4 +1,4 @@
-package net.sf.anathema.hero.charms.model;
+package net.sf.anathema.hero.charms.model.charms;
 
 import com.google.common.base.Functions;
 import net.sf.anathema.character.generic.caste.CasteType;
