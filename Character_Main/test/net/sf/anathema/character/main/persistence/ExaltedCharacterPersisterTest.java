@@ -26,7 +26,6 @@ import static org.junit.Assert.assertThat;
 import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.when;
 
-@Ignore
 public class ExaltedCharacterPersisterTest {
   private IMessaging messaging = mock(IMessaging.class);
   private IItemType type;
