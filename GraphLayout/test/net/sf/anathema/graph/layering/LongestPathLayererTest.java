@@ -5,7 +5,6 @@ import net.sf.anathema.graph.nodes.ISimpleNode;
 import net.sf.anathema.graph.nodes.IdentifiedRegularNode;
 import net.sf.anathema.graph.nodes.NodeFactory;
 import org.junit.Before;
-import org.junit.Ignore;
 import org.junit.Test;
 
 import static org.junit.Assert.assertEquals;
@@ -42,24 +41,6 @@ public class LongestPathLayererTest {
     assertEquals(root.getLayer(), 1);
     assertEquals(leaf1.getLayer(), 2);
     assertEquals(leaf2.getLayer(), 2);
-  }
-
-  @Test
-  @Ignore(value = "Apparently this optimization leads to questionable results.")
-  public void testLayerDualRootDualChild() throws Exception {
-    IRegularNode leaf1 = NodeFactory.createChildlessNode("leaf1");
-    IRegularNode leaf2 = NodeFactory.createChildlessNode("leaf2");
-    IRegularNode root1 = new IdentifiedRegularNode("root1", leaf1, leaf2);
-    IRegularNode root2 = new IdentifiedRegularNode("root2", leaf1, leaf2);
-    IRegularNode[] acyclicGraph = new IRegularNode[]{leaf1, leaf2, root1, root2};
-    connect(acyclicGraph);
-    int deepestLayer = layerer.layerGraph(acyclicGraph);
-    assertEquals(3, deepestLayer);
-    assertEquals(root1.getLayer(), 1);
-    assertEquals(root2.getLayer(), 1);
-    assertTrue(leaf1.getLayer() == 2 || leaf1.getLayer() == 3);
-    assertTrue(leaf2.getLayer() == 2 || leaf2.getLayer() == 3);
-    assertTrue(leaf1.getLayer() != leaf2.getLayer());
   }
 
   private void connect(IRegularNode[] acyclicGraph) {
