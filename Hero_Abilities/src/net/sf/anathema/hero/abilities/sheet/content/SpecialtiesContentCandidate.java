@@ -1,4 +1,4 @@
-package net.sf.anathema.character.reporting.pdf.rendering.boxes.abilities;
+package net.sf.anathema.hero.abilities.sheet.content;
 
 import net.sf.anathema.character.generic.traits.TraitType;
 import net.sf.anathema.character.library.trait.specialties.SpecialtiesModel;

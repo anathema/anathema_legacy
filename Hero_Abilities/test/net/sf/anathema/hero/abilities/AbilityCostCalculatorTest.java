@@ -9,7 +9,7 @@ import net.sf.anathema.character.generic.traits.types.AbilityType;
 import net.sf.anathema.character.library.trait.FavorableTraitCost;
 import net.sf.anathema.character.library.trait.Trait;
 import net.sf.anathema.character.library.trait.specialties.SpecialtiesModelFetcher;
-import net.sf.anathema.character.library.trait.specialties.SpecialtiesModelImpl;
+import net.sf.anathema.hero.abilities.model.SpecialtiesModelImpl;
 import net.sf.anathema.character.main.costs.AbstractBonusPointTestCase;
 import net.sf.anathema.character.main.testing.dummy.DummyAdditionalBonusPointManagement;
 import net.sf.anathema.character.main.testing.dummy.DummyHero;

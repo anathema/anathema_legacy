@@ -1,9 +1,15 @@
-package net.sf.anathema.character.library.trait.specialties;
+package net.sf.anathema.hero.abilities.model;
 
 import com.google.common.base.Strings;
 import net.sf.anathema.character.generic.framework.ITraitReference;
 import net.sf.anathema.character.generic.traits.TraitType;
 import net.sf.anathema.character.library.trait.Trait;
+import net.sf.anathema.character.library.trait.specialties.DefaultTraitReference;
+import net.sf.anathema.character.library.trait.specialties.ITraitReferencesChangeListener;
+import net.sf.anathema.character.library.trait.specialties.SpecialtiesContainer;
+import net.sf.anathema.character.library.trait.specialties.SpecialtiesListener;
+import net.sf.anathema.character.library.trait.specialties.SpecialtiesModel;
+import net.sf.anathema.character.library.trait.specialties.Specialty;
 import net.sf.anathema.character.library.trait.subtrait.ISubTraitContainer;
 import net.sf.anathema.character.main.model.abilities.AbilityModelFetcher;
 import net.sf.anathema.character.main.model.experience.ExperienceModelFetcher;

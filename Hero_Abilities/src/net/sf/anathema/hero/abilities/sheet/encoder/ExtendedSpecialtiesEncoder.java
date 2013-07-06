@@ -5,7 +5,7 @@ import net.sf.anathema.character.generic.traits.groups.IIdentifiedTraitTypeGroup
 import net.sf.anathema.character.main.model.abilities.AbilityModelFetcher;
 import net.sf.anathema.character.reporting.pdf.content.ReportSession;
 import net.sf.anathema.character.reporting.pdf.content.stats.IValuedTraitReference;
-import net.sf.anathema.character.reporting.pdf.rendering.boxes.abilities.SpecialtiesContentCandidate;
+import net.sf.anathema.hero.abilities.sheet.content.SpecialtiesContentCandidate;
 import net.sf.anathema.character.reporting.pdf.rendering.extent.Bounds;
 import net.sf.anathema.character.reporting.pdf.rendering.extent.Position;
 import net.sf.anathema.character.reporting.pdf.rendering.general.box.ContentEncoder;
