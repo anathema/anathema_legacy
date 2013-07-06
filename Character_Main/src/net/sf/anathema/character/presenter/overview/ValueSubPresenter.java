@@ -1,5 +1,6 @@
 package net.sf.anathema.character.presenter.overview;
 
+import net.sf.anathema.hero.points.overview.IValueModel;
 import net.sf.anathema.lib.workflow.labelledvalue.IValueView;
 
 public class ValueSubPresenter implements IOverviewSubPresenter {

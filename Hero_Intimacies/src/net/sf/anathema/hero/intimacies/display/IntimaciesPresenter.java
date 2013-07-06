@@ -1,6 +1,6 @@
 package net.sf.anathema.hero.intimacies.display;
 
-import net.sf.anathema.character.generic.additionaltemplate.HeroModelBonusPointCalculator;
+import net.sf.anathema.hero.points.HeroModelBonusPointCalculator;
 import net.sf.anathema.character.library.intvalue.IIconToggleButtonProperties;
 import net.sf.anathema.character.library.overview.IOverviewCategory;
 import net.sf.anathema.character.library.removableentry.presenter.IRemovableEntryListener;

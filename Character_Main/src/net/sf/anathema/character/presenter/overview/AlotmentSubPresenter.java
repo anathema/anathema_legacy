@@ -1,5 +1,6 @@
 package net.sf.anathema.character.presenter.overview;
 
+import net.sf.anathema.hero.points.overview.ISpendingModel;
 import net.sf.anathema.lib.workflow.labelledvalue.ILabelledAlotmentView;
 
 public class AlotmentSubPresenter implements IOverviewSubPresenter {

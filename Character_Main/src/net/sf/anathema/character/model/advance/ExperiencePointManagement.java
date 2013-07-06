@@ -1,6 +1,6 @@
 package net.sf.anathema.character.model.advance;
 
-import net.sf.anathema.character.generic.additionaltemplate.HeroModelExperienceCalculator;
+import net.sf.anathema.hero.points.HeroModelExperienceCalculator;
 import net.sf.anathema.character.main.model.traits.TraitMap;
 import net.sf.anathema.character.main.model.traits.TraitModelFetcher;
 import net.sf.anathema.character.model.advance.models.AbilityExperienceModel;
@@ -11,7 +11,7 @@ import net.sf.anathema.character.model.advance.models.MiscellaneousExperienceMod
 import net.sf.anathema.character.model.advance.models.SpellExperienceModel;
 import net.sf.anathema.character.model.advance.models.VirtueExperienceModel;
 import net.sf.anathema.character.model.advance.models.WillpowerExperienceModel;
-import net.sf.anathema.character.presenter.overview.IValueModel;
+import net.sf.anathema.hero.points.overview.IValueModel;
 import net.sf.anathema.hero.model.Hero;
 import net.sf.anathema.hero.points.PointModelFetcher;
 

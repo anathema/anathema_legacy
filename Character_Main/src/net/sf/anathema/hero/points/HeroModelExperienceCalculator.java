@@ -1,4 +1,4 @@
-package net.sf.anathema.character.generic.additionaltemplate;
+package net.sf.anathema.hero.points;
 
 public interface HeroModelExperienceCalculator {
 

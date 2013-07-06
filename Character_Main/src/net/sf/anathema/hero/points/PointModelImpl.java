@@ -1,14 +1,16 @@
 package net.sf.anathema.hero.points;
 
-import net.sf.anathema.character.generic.additionaltemplate.HeroModelBonusPointCalculator;
-import net.sf.anathema.character.generic.additionaltemplate.HeroModelExperienceCalculator;
-import net.sf.anathema.character.presenter.overview.IValueModel;
+import com.google.common.collect.Lists;
+import net.sf.anathema.hero.points.overview.IOverviewModel;
+import net.sf.anathema.hero.points.overview.IValueModel;
 import net.sf.anathema.hero.change.ChangeAnnouncer;
 import net.sf.anathema.hero.model.Hero;
 import net.sf.anathema.hero.model.InitializationContext;
+import net.sf.anathema.hero.points.overview.WeightedCategory;
 import net.sf.anathema.lib.util.Identifier;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 public class PointModelImpl implements PointsModel {
@@ -16,6 +18,8 @@ public class PointModelImpl implements PointsModel {
   private final List<HeroModelExperienceCalculator> experienceCalculators = new ArrayList<>();
   private final List<IValueModel<Integer>> experienceOverviewModels = new ArrayList<>();
   private final List<HeroModelBonusPointCalculator> bonusPointCalculators = new ArrayList<>();
+  private final List<IOverviewModel> bonusOverviewModels = new ArrayList<>();
+  private final List<WeightedCategory> bonusCategories = new ArrayList<>();
 
   @Override
   public void initialize(InitializationContext context, Hero hero) {
@@ -30,6 +34,17 @@ public class PointModelImpl implements PointsModel {
   @Override
   public void addBonusPointCalculator(HeroModelBonusPointCalculator calculator) {
     bonusPointCalculators.add(calculator);
+  }
+
+  @Override
+  public void addBonusCategory(WeightedCategory category) {
+    bonusCategories.add(category);
+    Collections.sort(bonusCategories);
+  }
+
+  @Override
+  public void addToBonusOverview(IOverviewModel bonusPointModel) {
+    bonusOverviewModels.add(bonusPointModel);
   }
 
   @Override
@@ -55,6 +70,16 @@ public class PointModelImpl implements PointsModel {
   @Override
   public Iterable<IValueModel<Integer>> getExperienceOverviewModels() {
     return experienceOverviewModels;
+  }
+
+  @Override
+  public Iterable<IOverviewModel> getBonusOverviewModels() {
+    return bonusOverviewModels;
+  }
+
+  @Override
+  public Iterable<WeightedCategory> getBonusCategories() {
+    return bonusCategories;
   }
 
   @Override

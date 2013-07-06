@@ -1,7 +1,7 @@
 package net.sf.anathema.character.model.creation.bonus;
 
 import net.sf.anathema.character.generic.additionalrules.IAdditionalRules;
-import net.sf.anathema.character.generic.additionaltemplate.HeroModelBonusPointCalculator;
+import net.sf.anathema.hero.points.HeroModelBonusPointCalculator;
 import net.sf.anathema.character.generic.template.HeroTemplate;
 import net.sf.anathema.character.generic.template.creation.BonusPointCosts;
 import net.sf.anathema.character.generic.template.creation.ICreationPoints;
@@ -26,17 +26,14 @@ import net.sf.anathema.character.model.creation.bonus.ability.SpecialtyBonusMode
 import net.sf.anathema.character.model.creation.bonus.additional.AdditionalBonusPointPoolManagement;
 import net.sf.anathema.character.model.creation.bonus.attribute.AttributeBonusModel;
 import net.sf.anathema.character.model.creation.bonus.attribute.AttributeCostCalculator;
-import net.sf.anathema.character.model.creation.bonus.attribute.FavoredAttributeDotBonusModel;
-import net.sf.anathema.character.model.creation.bonus.attribute.FavoredAttributePickModel;
-import net.sf.anathema.character.model.creation.bonus.attribute.GenericAttributeDotBonusModel;
 import net.sf.anathema.character.model.creation.bonus.magic.DefaultCharmModel;
 import net.sf.anathema.character.model.creation.bonus.magic.FavoredCharmModel;
 import net.sf.anathema.character.model.creation.bonus.magic.MagicCostCalculator;
 import net.sf.anathema.character.model.creation.bonus.virtue.VirtueBonusModel;
 import net.sf.anathema.character.model.creation.bonus.virtue.VirtueCostCalculator;
-import net.sf.anathema.character.presenter.overview.IAdditionalSpendingModel;
-import net.sf.anathema.character.presenter.overview.IOverviewModel;
-import net.sf.anathema.character.presenter.overview.ISpendingModel;
+import net.sf.anathema.hero.points.overview.IAdditionalSpendingModel;
+import net.sf.anathema.hero.points.overview.IOverviewModel;
+import net.sf.anathema.hero.points.overview.ISpendingModel;
 import net.sf.anathema.hero.model.Hero;
 import net.sf.anathema.hero.points.PointModelFetcher;
 
@@ -150,18 +147,6 @@ public class BonusPointManagement implements IBonusPointManagement {
     return new AttributeBonusModel(attributeCalculator, priority, creationPoints);
   }
 
-  public ISpendingModel getFavoredAttributeDotModel() {
-    return new FavoredAttributeDotBonusModel(attributeCalculator, creationPoints);
-  }
-
-  public ISpendingModel getGenericAttributeDotModel(boolean isExtraDots) {
-    return new GenericAttributeDotBonusModel(attributeCalculator, creationPoints, isExtraDots);
-  }
-
-  public ISpendingModel getFavoredAttributePickModel() {
-    return new FavoredAttributePickModel(attributeCalculator, creationPoints);
-  }
-
   @Override
   public ISpendingModel getFavoredCharmModel() {
     return new FavoredCharmModel(magicCalculator, creationPoints);
@@ -182,23 +167,12 @@ public class BonusPointManagement implements IBonusPointManagement {
   public IOverviewModel[] getAllModels() {
     List<IOverviewModel> models = new ArrayList<>();
 
-    boolean showingAttributeGroups = false;
     if (getAttributeModel(AttributeGroupPriority.Primary).getAlotment() > 0) {
       models.add(getAttributeModel(AttributeGroupPriority.Primary));
       models.add(getAttributeModel(AttributeGroupPriority.Secondary));
       models.add(getAttributeModel(AttributeGroupPriority.Tertiary));
-      showingAttributeGroups = true;
     }
 
-    if (getFavoredAttributePickModel().getAlotment() > 0) {
-      models.add(getFavoredAttributePickModel());
-    }
-    if (getFavoredAttributeDotModel().getAlotment() > 0) {
-      models.add(getFavoredAttributeDotModel());
-    }
-    if (getGenericAttributeDotModel(showingAttributeGroups).getAlotment() > 0) {
-      models.add(getGenericAttributeDotModel(showingAttributeGroups));
-    }
     models.add(getFavoredAbilityPickModel());
     if (getFavoredAbilityModel().getAlotment() > 0) {
       models.add(getFavoredAbilityModel());

@@ -1,6 +1,6 @@
 package net.sf.anathema.character.model.creation.bonus.additional;
 
-import net.sf.anathema.character.generic.additionaltemplate.HeroModelBonusPointCalculator;
+import net.sf.anathema.hero.points.HeroModelBonusPointCalculator;
 import net.sf.anathema.character.model.advance.models.AbstractIntegerValueModel;
 
 import java.util.List;

@@ -10,6 +10,13 @@ import net.sf.anathema.character.view.overview.CategorizedOverview;
 import net.sf.anathema.hero.change.ChangeFlavor;
 import net.sf.anathema.hero.change.FlavoredChangeListener;
 import net.sf.anathema.hero.model.Hero;
+import net.sf.anathema.hero.points.PointModelFetcher;
+import net.sf.anathema.hero.points.overview.IAdditionalSpendingModel;
+import net.sf.anathema.hero.points.overview.IOverviewModel;
+import net.sf.anathema.hero.points.overview.IOverviewModelVisitor;
+import net.sf.anathema.hero.points.overview.ISpendingModel;
+import net.sf.anathema.hero.points.overview.IValueModel;
+import net.sf.anathema.hero.points.overview.WeightedCategory;
 import net.sf.anathema.lib.gui.Presenter;
 import net.sf.anathema.lib.resources.Resources;
 import net.sf.anathema.lib.workflow.labelledvalue.ILabelledAlotmentView;
@@ -49,50 +56,34 @@ public class CreationOverviewPresenter implements Presenter {
     this.management.recalculate();
     IOverviewModel[] allModels = management.getAllModels();
     initConcept();
+    initCategories(PointModelFetcher.fetch(hero).getBonusCategories());
     initCategories(allModels);
+    for (IOverviewModel model : PointModelFetcher.fetch(hero).getBonusOverviewModels()) {
+      model.accept(new InitPresentationVisitor());
+    }
     for (IOverviewModel model : allModels) {
-      model.accept(new IOverviewModelVisitor() {
-        @Override
-        public void visitStringValueModel(IValueModel<String> visitedModel) {
-          //Nothing to do
-        }
-
-        @Override
-        public void visitIntegerValueModel(IValueModel<Integer> visitedModel) {
-          IValueView<Integer> valueView = categoriesById.get(visitedModel.getCategoryId()).addIntegerValueView(getLabelString(visitedModel), 2);
-          presenters.add(new ValueSubPresenter(visitedModel, valueView));
-        }
-
-        @Override
-        public void visitAlotmentModel(ISpendingModel visitedModel) {
-          ILabelledAlotmentView valueView = categoriesById.get(visitedModel.getCategoryId()).addAlotmentView(getLabelString(visitedModel), 2);
-          presenters.add(new AlotmentSubPresenter(visitedModel, valueView));
-        }
-
-        @Override
-        public void visitAdditionalAlotmentModel(IAdditionalSpendingModel visitedModel) {
-          if (visitedModel.isExtensionRequired()) {
-            IAdditionalAlotmentView valueView = categoriesById.get(visitedModel.getCategoryId())
-                    .addAdditionalAlotmentView(getLabelString(visitedModel),
-                            visitedModel.getRequiredSize());
-            presenters.add(new AdditionalAlotmentSubPresenter(visitedModel, valueView));
-          } else {
-            visitAlotmentModel(visitedModel);
-          }
-        }
-      });
+      model.accept(new InitPresentationVisitor());
     }
     updateOverview();
   }
 
+  private void initCategories(Iterable<WeightedCategory> bonusCategories) {
+    for (WeightedCategory category : bonusCategories) {
+      initCategory(category.getId());
+    }
+  }
+
   private void initCategories(IOverviewModel[] allModels) {
     for (IOverviewModel model : allModels) {
-      String categoryId = model.getCategoryId();
-      IOverviewCategory category = categoriesById.get(categoryId);
-      if (category == null) {
-        category = view.addOverviewCategory(getString("Overview.Creation.Category." + categoryId));
-        categoriesById.put(categoryId, category);
-      }
+      initCategory(model.getCategoryId());
+    }
+  }
+
+  private void initCategory(String categoryId) {
+    IOverviewCategory category = categoriesById.get(categoryId);
+    if (category == null) {
+      category = view.addOverviewCategory(getString("Overview.Creation.Category." + categoryId));
+      categoriesById.put(categoryId, category);
     }
   }
 
@@ -144,5 +135,36 @@ public class CreationOverviewPresenter implements Presenter {
   private String getCasteValueResourceKey() {
     CasteType casteType = HeroConceptFetcher.fetch(hero).getCaste().getType();
     return "Caste." + casteType.getId();
+  }
+
+  private class InitPresentationVisitor implements IOverviewModelVisitor {
+    @Override
+    public void visitStringValueModel(IValueModel<String> visitedModel) {
+      //Nothing to do
+    }
+
+    @Override
+    public void visitIntegerValueModel(IValueModel<Integer> visitedModel) {
+      IValueView<Integer> valueView = categoriesById.get(visitedModel.getCategoryId()).addIntegerValueView(getLabelString(visitedModel), 2);
+      presenters.add(new ValueSubPresenter(visitedModel, valueView));
+    }
+
+    @Override
+    public void visitAlotmentModel(ISpendingModel visitedModel) {
+      ILabelledAlotmentView valueView = categoriesById.get(visitedModel.getCategoryId()).addAlotmentView(getLabelString(visitedModel), 2);
+      presenters.add(new AlotmentSubPresenter(visitedModel, valueView));
+    }
+
+    @Override
+    public void visitAdditionalAlotmentModel(IAdditionalSpendingModel visitedModel) {
+      if (visitedModel.isExtensionRequired()) {
+        IAdditionalAlotmentView valueView = categoriesById.get(visitedModel.getCategoryId())
+                .addAdditionalAlotmentView(getLabelString(visitedModel),
+                        visitedModel.getRequiredSize());
+        presenters.add(new AdditionalAlotmentSubPresenter(visitedModel, valueView));
+      } else {
+        visitAlotmentModel(visitedModel);
+      }
+    }
   }
 }

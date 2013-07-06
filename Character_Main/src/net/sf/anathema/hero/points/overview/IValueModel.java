@@ -1,4 +1,4 @@
-package net.sf.anathema.character.presenter.overview;
+package net.sf.anathema.hero.points.overview;
 
 public interface IValueModel<E> extends IOverviewModel {
 

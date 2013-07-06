@@ -1,7 +1,7 @@
 package net.sf.anathema.character.model.advance.models;
 
-import net.sf.anathema.character.presenter.overview.IAdditionalSpendingModel;
-import net.sf.anathema.character.presenter.overview.IOverviewModelVisitor;
+import net.sf.anathema.hero.points.overview.IAdditionalSpendingModel;
+import net.sf.anathema.hero.points.overview.IOverviewModelVisitor;
 
 public abstract class AbstractAdditionalSpendingModel extends AbstractOverviewModel implements IAdditionalSpendingModel {
 
