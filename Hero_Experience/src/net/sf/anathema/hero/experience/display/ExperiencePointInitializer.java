@@ -1,4 +1,4 @@
-package net.sf.anathema.character.presenter;
+package net.sf.anathema.hero.experience.display;
 
 import net.sf.anathema.character.presenter.initializers.HeroModelInitializer;
 import net.sf.anathema.character.presenter.initializers.RegisteredInitializer;
@@ -9,10 +9,10 @@ import net.sf.anathema.hero.model.Hero;
 import net.sf.anathema.lib.resources.Resources;
 
 @RegisteredInitializer(HeroModelGroup.Miscellaneous)
-public class PlayerHeroPointPresentation implements HeroModelInitializer {
+public class ExperiencePointInitializer implements HeroModelInitializer {
 
   @SuppressWarnings("UnusedParameters")
-  public PlayerHeroPointPresentation(ApplicationModel model) {
+  public ExperiencePointInitializer(ApplicationModel model) {
     //nothing to do
   }
 

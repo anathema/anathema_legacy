@@ -1,6 +1,4 @@
-package net.sf.anathema.character.view.advance;
-
-import net.sf.anathema.character.presenter.advance.ExperienceUpdateListener;
+package net.sf.anathema.hero.experience.display;
 
 public interface ExperienceView {
 
