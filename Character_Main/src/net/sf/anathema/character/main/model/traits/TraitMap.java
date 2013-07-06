@@ -8,4 +8,6 @@ public interface TraitMap {
   Trait getTrait(TraitType traitType);
 
   Trait[] getTraits(TraitType... traitType);
+
+  Trait[] getAll();
 }

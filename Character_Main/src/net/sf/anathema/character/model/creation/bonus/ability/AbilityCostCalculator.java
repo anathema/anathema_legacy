@@ -1,15 +1,10 @@
 package net.sf.anathema.character.model.creation.bonus.ability;
 
-import net.sf.anathema.character.generic.template.creation.IGenericSpecialty;
 import net.sf.anathema.character.generic.template.experience.AbilityPointCosts;
 import net.sf.anathema.character.generic.template.points.IFavorableTraitCreationPoints;
 import net.sf.anathema.character.library.ITraitFavorization;
 import net.sf.anathema.character.library.trait.FavorableTraitCost;
 import net.sf.anathema.character.library.trait.Trait;
-import net.sf.anathema.character.library.trait.specialties.SpecialtiesModel;
-import net.sf.anathema.character.library.trait.specialties.SpecialtiesModelFetcher;
-import net.sf.anathema.character.library.trait.specialties.Specialty;
-import net.sf.anathema.character.library.trait.subtrait.ISubTraitContainer;
 import net.sf.anathema.character.main.model.abilities.AbilitiesModel;
 import net.sf.anathema.character.model.creation.bonus.additional.AdditionalBonusPoints;
 import net.sf.anathema.hero.model.Hero;
@@ -24,11 +19,7 @@ import java.util.Set;
 public class AbilityCostCalculator implements IAbilityCostCalculator {
 
   private final AdditionalBonusPoints additionalPools;
-  private Hero hero;
   private final AbilityPointCosts costs;
-  private int specialtyBonusPointCosts;
-  private int specialtyDotSum;
-  private SpecialtyCalculator specialtyCalculator;
   protected final IFavorableTraitCreationPoints points;
   private final Map<Trait, FavorableTraitCost[]> costsByTrait = new HashMap<>();
   private final int freeTraitMax;
@@ -36,6 +27,7 @@ public class AbilityCostCalculator implements IAbilityCostCalculator {
   private int favoredPicksSpent = 0;
   private int favoredDotSum = 0;
   private int generalDotSum = 0;
+  private final SpecialtiesCostCalculator specialtiesCostCalculator;
 
   public AbilityCostCalculator(Hero hero, AbilitiesModel abilitiesModel, IFavorableTraitCreationPoints points, int specialtyPoints,
                                AbilityPointCosts costs, AdditionalBonusPoints additionalPools) {
@@ -43,39 +35,8 @@ public class AbilityCostCalculator implements IAbilityCostCalculator {
     this.points = points;
     this.freeTraitMax = costs.getMaximumFreeAbilityRank();
     this.traits = abilitiesModel.getAll();
-    this.hero = hero;
     this.costs = costs;
-    this.specialtyCalculator = new SpecialtyCalculator(abilitiesModel, specialtyPoints);
-  }
-
-  private void calculateSpecialtyCosts() {
-    IGenericSpecialty[] specialties = createGenericSpecialties();
-    specialtyDotSum = specialtyCalculator.getSpecialtyPointsSpent(specialties);
-    specialtyBonusPointCosts = specialtyCalculator.getSpecialtyCosts(specialties);
-    additionalPools.spendOn(specialties, costs);
-  }
-
-  protected void clear() {
-    favoredPicksSpent = 0;
-    favoredDotSum = 0;
-    generalDotSum = 0;
-    costsByTrait.clear();
-    specialtyDotSum = 0;
-    specialtyBonusPointCosts = 0;
-  }
-
-  private IGenericSpecialty[] createGenericSpecialties() {
-    List<IGenericSpecialty> specialties = new ArrayList<>();
-    for (Trait ability : getTraits()) {
-      SpecialtiesModel specialtiesModel = SpecialtiesModelFetcher.fetch(hero);
-      ISubTraitContainer specialtiesContainer = specialtiesModel.getSpecialtiesContainer(ability.getType());
-      for (Specialty specialty : specialtiesContainer.getSubTraits()) {
-        for (int index = 0; index < specialty.getCalculationValue(); index++) {
-          specialties.add(new GenericSpecialty(ability));
-        }
-      }
-    }
-    return specialties.toArray(new IGenericSpecialty[specialties.size()]);
+    this.specialtiesCostCalculator = new SpecialtiesCostCalculator(hero, abilitiesModel, specialtyPoints, costs, additionalPools);
   }
 
   protected int getCostFactor(Trait trait) {
@@ -84,11 +45,11 @@ public class AbilityCostCalculator implements IAbilityCostCalculator {
   }
 
   public int getSpecialtyBonusPointCosts() {
-    return specialtyBonusPointCosts;
+    return specialtiesCostCalculator.getBonusPointCost();
   }
 
   public int getFreeSpecialtyPointsSpent() {
-    return specialtyDotSum;
+    return specialtiesCostCalculator.getFreePointsSpent();
   }
 
   public void recalculate() {
@@ -108,10 +69,17 @@ public class AbilityCostCalculator implements IAbilityCostCalculator {
       }
       costsByTrait.put(trait, allCosts);
     }
-    calculateSpecialtyCosts();
+    specialtiesCostCalculator.recalculate();
   }
 
-  protected void countFavoredTraits() {
+  private void clear() {
+    favoredPicksSpent = 0;
+    favoredDotSum = 0;
+    generalDotSum = 0;
+    costsByTrait.clear();
+  }
+
+  private void countFavoredTraits() {
     for (Trait trait : traits) {
       if (trait.getFavorization().isFavored()) {
         increaseFavoredPicksSpent();

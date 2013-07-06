@@ -11,8 +11,6 @@ public interface AbilitiesModel extends TraitMap {
 
   Identifier ID = new SimpleIdentifier("Abilities");
 
-  Trait[] getAll();
-
   Trait getTrait(TraitType type);
 
   IIdentifiedTraitTypeGroup[] getAbilityTypeGroups();
