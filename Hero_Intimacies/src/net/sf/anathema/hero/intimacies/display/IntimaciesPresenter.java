@@ -150,11 +150,11 @@ public class IntimaciesPresenter {
     int maximalValue = model.getCompletionValue();
     int currentValue = intimacy.getTrait().getCurrentValue();
     String name = intimacy.getName();
-    ExtensibleTraitView extensibleTraitView = view.addIntimacy(name, currentValue, maximalValue);
-    new TraitPresenter(intimacy.getTrait(), extensibleTraitView.getIntValueView()).initPresentation();
-    addLinkToggle(extensibleTraitView, intimacy);
-    addDeleteTool(extensibleTraitView, intimacy);
-    return extensibleTraitView;
+    ExtensibleTraitView intimacyView = view.addIntimacy(name, currentValue, maximalValue);
+    new TraitPresenter(intimacy.getTrait(), intimacyView.getIntValueView()).initPresentation();
+    addLinkToggle(intimacyView, intimacy);
+    addDeleteTool(intimacyView, intimacy);
+    return intimacyView;
   }
 
   private void addDeleteTool(ExtensibleTraitView extensibleTraitView, final Intimacy intimacy) {

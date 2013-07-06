@@ -181,7 +181,6 @@ public class SpecialtiesConfigurationPresenter implements Presenter {
     RelativePath deleteIcon = new BasicUi().getRemoveIconPath();
     final ExtensibleTraitView specialtyView = configurationView.addSpecialtyView(traitName, specialtyName, deleteIcon,
             specialty.getCurrentValue(), specialty.getMaximalValue());
-    specialtyView.getIntValueView().setValue(specialty.getCurrentValue());
     new TraitPresenter(specialty, specialtyView.getIntValueView()).initPresentation();
     Tool deleteTool = specialtyView.addToolBehind();
     deleteTool.setIcon(deleteIcon);
