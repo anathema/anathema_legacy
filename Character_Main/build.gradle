@@ -1,5 +1,4 @@
 dependencies {
-    compile 'com.eteks:parser:1.0.2'
     compile project(':Platform')
     compile project(':Platform_Swing')
     compile project(':Platform_SwingTree')
