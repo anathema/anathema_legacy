@@ -86,11 +86,4 @@ public class ExperiencePointConfiguration implements IExperiencePointConfigurati
     return sum;
   }
 
-  @Override
-  public void addEntry(String description, int xpCost) {
-    IExperiencePointEntry entry = addEntryWithoutEvent();
-    entry.getTextualDescription().setText(description);
-    entry.setExperiencePoints(xpCost);
-    addEntryListeningAndFireEvent(entry);
-  }
 }
