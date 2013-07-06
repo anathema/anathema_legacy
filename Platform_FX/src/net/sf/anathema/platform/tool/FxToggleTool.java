@@ -38,8 +38,8 @@ public class FxToggleTool extends FxBaseTool implements ToggleTool {
     button.setSelected(false);
   }
 
-  public void setStyle(String style) {
-    button.setStyle(style);
+  public void setStyleClass(String styleClass) {
+    button.getStyleClass().add(styleClass);
   }
 
   private class DeselectToggleButtonAndProcess implements Command {
