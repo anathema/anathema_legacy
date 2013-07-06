@@ -21,7 +21,6 @@ import net.sf.anathema.character.model.creation.bonus.ability.FavoredAbilityPick
 import net.sf.anathema.character.model.creation.bonus.ability.IAbilityCostCalculator;
 import net.sf.anathema.character.model.creation.bonus.ability.SpecialtyBonusModel;
 import net.sf.anathema.character.model.creation.bonus.additional.AdditionalBonusPoints;
-import net.sf.anathema.character.model.creation.bonus.additional.AdditionalBonusPointsImpl;
 import net.sf.anathema.character.model.creation.bonus.magic.DefaultCharmModel;
 import net.sf.anathema.character.model.creation.bonus.magic.FavoredCharmModel;
 import net.sf.anathema.character.model.creation.bonus.magic.MagicCostCalculator;
@@ -76,7 +75,7 @@ public class BonusPointManagement implements IBonusPointManagement {
   @Override
   public void recalculate() {
     bonusAdditionalPools.reset();
-    abilityCalculator.calculateCosts();
+    abilityCalculator.recalculate();
     virtueCalculator.calculateVirtuePoints();
     magicCalculator.calculateMagicCosts();
     willpowerBonusPoints = calculateWillpowerPoints();

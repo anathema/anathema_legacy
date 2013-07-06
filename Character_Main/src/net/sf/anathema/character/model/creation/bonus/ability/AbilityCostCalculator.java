@@ -91,7 +91,7 @@ public class AbilityCostCalculator implements IAbilityCostCalculator {
     return specialtyDotSum;
   }
 
-  public void calculateCosts() {
+  public void recalculate() {
     clear();
     countFavoredTraits();
     Set<Trait> sortedTraits = sortTraitsByStatus();
