@@ -10,7 +10,7 @@ import net.sf.anathema.character.library.trait.specialties.Specialty;
 import net.sf.anathema.character.library.trait.subtrait.ISubTraitContainer;
 import net.sf.anathema.character.main.model.abilities.AbilityModelFetcher;
 import net.sf.anathema.character.main.model.experience.ExperienceModelFetcher;
-import net.sf.anathema.character.model.advance.models.SpecialtyExperienceModel;
+import net.sf.anathema.hero.abilities.points.SpecialtyExperienceModel;
 import net.sf.anathema.hero.change.ChangeAnnouncer;
 import net.sf.anathema.hero.model.Hero;
 import net.sf.anathema.hero.model.HeroModel;
