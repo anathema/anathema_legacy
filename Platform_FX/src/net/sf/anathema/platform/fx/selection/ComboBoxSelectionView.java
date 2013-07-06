@@ -121,4 +121,9 @@ public class ComboBoxSelectionView<V> implements FxObjectSelectionView<V> {
   public void clearSelection() {
     comboBox.getSelectionModel().clearSelection();
   }
+
+  public void setStyleClass(String styleClass) {
+    waitForContent();
+    comboBox.getStyleClass().add(styleClass);
+  }
 }

@@ -19,6 +19,7 @@ public class FxCasteView implements CasteView, NodeHolder {
   @Override
   public IObjectSelectionView<CasteType> addObjectSelectionView(String labelText, AgnosticUIConfiguration<CasteType> configuration) {
     final ComboBoxSelectionView<CasteType> view = new ComboBoxSelectionView<>(labelText, configuration);
+    view.setStyleClass("casteselection");
     FxThreading.runOnCorrectThread(new Runnable() {
       @Override
       public void run() {
