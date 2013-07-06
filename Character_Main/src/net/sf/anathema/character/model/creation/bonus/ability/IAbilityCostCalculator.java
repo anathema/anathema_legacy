@@ -1,12 +1,10 @@
 package net.sf.anathema.character.model.creation.bonus.ability;
 
-public interface IAbilityCostCalculator  {
+import net.sf.anathema.hero.points.HeroBonusPointCalculator;
 
-  void recalculate();
+public interface IAbilityCostCalculator extends HeroBonusPointCalculator {
 
   int getFreePointsSpent(boolean favored);
-
-  int getBonusPointsSpent();
 
   int getFavoredPicksSpent();
 }

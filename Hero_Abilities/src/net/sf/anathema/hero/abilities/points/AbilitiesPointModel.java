@@ -1,15 +1,19 @@
 package net.sf.anathema.hero.abilities.points;
 
 import net.sf.anathema.character.generic.template.creation.BonusPointCosts;
-import net.sf.anathema.character.generic.template.creation.ICreationPoints;
+import net.sf.anathema.character.generic.template.points.IAbilityCreationPoints;
 import net.sf.anathema.character.main.model.abilities.AbilityModelFetcher;
 import net.sf.anathema.character.model.creation.bonus.ability.AbilityCostCalculator;
+import net.sf.anathema.character.model.creation.bonus.ability.DefaultAbilityBonusModel;
+import net.sf.anathema.character.model.creation.bonus.ability.FavoredAbilityBonusModel;
+import net.sf.anathema.character.model.creation.bonus.ability.FavoredAbilityPickModel;
 import net.sf.anathema.hero.change.ChangeAnnouncer;
 import net.sf.anathema.hero.model.Hero;
 import net.sf.anathema.hero.model.HeroModel;
 import net.sf.anathema.hero.model.InitializationContext;
 import net.sf.anathema.hero.points.PointModelFetcher;
 import net.sf.anathema.hero.points.PointsModel;
+import net.sf.anathema.hero.points.overview.WeightedCategory;
 import net.sf.anathema.lib.util.Identifier;
 import net.sf.anathema.lib.util.SimpleIdentifier;
 
@@ -24,11 +28,19 @@ public class AbilitiesPointModel implements HeroModel {
 
   @Override
   public void initialize(InitializationContext context, Hero hero) {
-    ICreationPoints creationPoints = hero.getTemplate().getCreationPoints();
-    BonusPointCosts cost = hero.getTemplate().getBonusPointCosts();
     PointsModel pointsModel = PointModelFetcher.fetch(hero);
-    AbilityCostCalculator abilityCalculator =
-            new AbilityCostCalculator(AbilityModelFetcher.fetch(hero), creationPoints.getAbilityCreationPoints(), cost, pointsModel.getAdditionalBonusPoints());
+    pointsModel.addBonusCategory(new WeightedCategory(200, "Abilities"));
+    AbilityCostCalculator abilityCalculator = createCalculator(hero, pointsModel);
+    pointsModel.addBonusPointCalculator(abilityCalculator);
+    pointsModel.addToBonusOverview(new DefaultAbilityBonusModel(abilityCalculator, hero.getTemplate().getCreationPoints()));
+    pointsModel.addToBonusOverview(new FavoredAbilityBonusModel(abilityCalculator, hero.getTemplate().getCreationPoints()));
+    pointsModel.addToBonusOverview(new FavoredAbilityPickModel(abilityCalculator, hero.getTemplate().getCreationPoints()));
+  }
+
+  private AbilityCostCalculator createCalculator(Hero hero, PointsModel pointsModel) {
+    IAbilityCreationPoints abilityCreationPoints = hero.getTemplate().getCreationPoints().getAbilityCreationPoints();
+    BonusPointCosts costs = hero.getTemplate().getBonusPointCosts();
+    return new AbilityCostCalculator(AbilityModelFetcher.fetch(hero), abilityCreationPoints, costs, pointsModel.getAdditionalBonusPoints());
   }
 
   @Override

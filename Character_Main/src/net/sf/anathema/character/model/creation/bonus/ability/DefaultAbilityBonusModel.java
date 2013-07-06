@@ -20,7 +20,7 @@ public class DefaultAbilityBonusModel extends AbstractSpendingModel {
 
   @Override
   public int getSpentBonusPoints() {
-    return abilityCalculator.getBonusPointsSpent();
+    return abilityCalculator.getBonusPointCost();
   }
 
   @Override

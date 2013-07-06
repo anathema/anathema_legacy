@@ -75,7 +75,7 @@ public class AbilityCostCalculator implements IAbilityCostCalculator {
     }
   }
 
-  public int getBonusPointsSpent() {
+  public int getBonusPointCost() {
     int bonusPointSum = 0;
     for (FavorableTraitCost[] allCosts : costsByTrait.values()) {
       for (FavorableTraitCost cost : allCosts) {
@@ -83,6 +83,11 @@ public class AbilityCostCalculator implements IAbilityCostCalculator {
       }
     }
     return bonusPointSum;
+  }
+
+  @Override
+  public int getBonusPointsGranted() {
+    return 0;
   }
 
   public FavorableTraitCost[] getCosts(Trait trait) {

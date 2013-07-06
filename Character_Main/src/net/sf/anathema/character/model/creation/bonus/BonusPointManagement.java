@@ -8,17 +8,14 @@ import net.sf.anathema.character.generic.template.experience.CurrentRatingCosts;
 import net.sf.anathema.character.library.trait.Trait;
 import net.sf.anathema.character.library.trait.TraitCollectionUtilities;
 import net.sf.anathema.character.library.trait.experience.TraitRatingCostCalculator;
-import net.sf.anathema.character.main.model.abilities.AbilityModelFetcher;
 import net.sf.anathema.character.main.model.traits.TraitMap;
 import net.sf.anathema.character.main.model.traits.TraitModelFetcher;
 import net.sf.anathema.character.model.advance.models.AbstractAdditionalSpendingModel;
 import net.sf.anathema.character.model.charm.options.DefaultCharmTemplateRetriever;
 import net.sf.anathema.character.model.creation.IBonusPointManagement;
-import net.sf.anathema.character.model.creation.bonus.ability.AbilityCostCalculator;
 import net.sf.anathema.character.model.creation.bonus.ability.DefaultAbilityBonusModel;
 import net.sf.anathema.character.model.creation.bonus.ability.FavoredAbilityBonusModel;
 import net.sf.anathema.character.model.creation.bonus.ability.FavoredAbilityPickModel;
-import net.sf.anathema.character.model.creation.bonus.ability.IAbilityCostCalculator;
 import net.sf.anathema.character.model.creation.bonus.additional.AdditionalBonusPoints;
 import net.sf.anathema.character.model.creation.bonus.magic.DefaultCharmModel;
 import net.sf.anathema.character.model.creation.bonus.magic.FavoredCharmModel;
@@ -39,7 +36,6 @@ public class BonusPointManagement implements IBonusPointManagement {
 
   private final IAdditionalMagicLearnPointManagement magicAdditionalPools;
   private final AdditionalBonusPoints bonusAdditionalPools;
-  private final IAbilityCostCalculator abilityCalculator;
   private final VirtueCostCalculator virtueCalculator;
   private final MagicCostCalculator magicCalculator;
   private final Trait willpower;
@@ -61,8 +57,6 @@ public class BonusPointManagement implements IBonusPointManagement {
     this.cost = hero.getTemplate().getBonusPointCosts();
     HeroTemplate characterTemplate = hero.getTemplate();
     TraitMap traitMap = TraitModelFetcher.fetch(hero);
-    this.abilityCalculator =
-            new AbilityCostCalculator(AbilityModelFetcher.fetch(hero), creationPoints.getAbilityCreationPoints(), cost, bonusAdditionalPools);
     Trait[] virtues = TraitCollectionUtilities.getVirtues(traitMap);
     this.virtueCalculator = new VirtueCostCalculator(virtues, creationPoints.getVirtueCreationPoints(), cost);
     magicAdditionalPools = new AdditionalMagicLearnPointManagement(characterTemplate.getAdditionalRules().getAdditionalMagicLearnPools(), hero);
@@ -74,7 +68,6 @@ public class BonusPointManagement implements IBonusPointManagement {
   @Override
   public void recalculate() {
     bonusAdditionalPools.reset();
-    abilityCalculator.recalculate();
     virtueCalculator.calculateVirtuePoints();
     magicCalculator.calculateMagicCosts();
     willpowerBonusPoints = calculateWillpowerPoints();
@@ -104,28 +97,12 @@ public class BonusPointManagement implements IBonusPointManagement {
   }
 
   private int getTotalBonusPointsSpent() {
-    return getDefaultAbilityModel().getSpentBonusPoints() +
-           getDefaultCharmModel().getSpentBonusPoints() + getVirtueModel().getSpentBonusPoints() +
+    return getDefaultCharmModel().getSpentBonusPoints() + getVirtueModel().getSpentBonusPoints() +
            willpowerBonusPoints + essenceBonusPoints + bonusPointCalculator.getMiscellaneousModel().getValue();
   }
 
   private ISpendingModel getVirtueModel() {
     return new VirtueBonusModel(virtueCalculator, creationPoints);
-  }
-
-  @Override
-  public ISpendingModel getDefaultAbilityModel() {
-    return new DefaultAbilityBonusModel(abilityCalculator, creationPoints);
-  }
-
-  @Override
-  public ISpendingModel getFavoredAbilityModel() {
-    return new FavoredAbilityBonusModel(abilityCalculator, creationPoints);
-  }
-
-  @Override
-  public ISpendingModel getFavoredAbilityPickModel() {
-    return new FavoredAbilityPickModel(abilityCalculator, creationPoints);
   }
 
   @Override
@@ -147,12 +124,6 @@ public class BonusPointManagement implements IBonusPointManagement {
   @Override
   public IOverviewModel[] getAllModels() {
     List<IOverviewModel> models = new ArrayList<>();
-
-    models.add(getFavoredAbilityPickModel());
-    if (getFavoredAbilityModel().getAllotment() > 0) {
-      models.add(getFavoredAbilityModel());
-    }
-    models.add(getDefaultAbilityModel());
     addCharmModels(models);
     models.add(getVirtueModel());
     models.add(getTotalModel());

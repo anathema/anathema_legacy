@@ -17,6 +17,7 @@
         <model id="Concept"/>
         <model id="OtherTraits"/>
         <model id="Abilities"/>
+        <model id="AbilitiesPoints"/>
         <model id="Attributes"/>
         <model id="AttributePoints"/>
         <model id="EssencePool"/>
