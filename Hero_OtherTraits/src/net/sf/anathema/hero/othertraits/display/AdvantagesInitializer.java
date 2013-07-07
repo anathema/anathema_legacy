@@ -1,8 +1,7 @@
-package net.sf.anathema.character.main.presenter.initializers;
+package net.sf.anathema.hero.othertraits.display;
 
-import net.sf.anathema.character.main.presenter.BasicAdvantagePresenter;
-import net.sf.anathema.character.main.presenter.DefaultAdvantageViewProperties;
-import net.sf.anathema.character.main.view.AdvantageView;
+import net.sf.anathema.character.main.presenter.initializers.HeroModelInitializer;
+import net.sf.anathema.character.main.presenter.initializers.RegisteredInitializer;
 import net.sf.anathema.character.main.view.SectionView;
 import net.sf.anathema.framework.IApplicationModel;
 import net.sf.anathema.hero.model.Hero;

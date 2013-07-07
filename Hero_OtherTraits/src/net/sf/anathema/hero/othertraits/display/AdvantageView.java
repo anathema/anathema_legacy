@@ -1,4 +1,4 @@
-package net.sf.anathema.character.main.view;
+package net.sf.anathema.hero.othertraits.display;
 
 import net.sf.anathema.character.main.library.trait.Trait;
 import net.sf.anathema.framework.value.IIntValueView;
