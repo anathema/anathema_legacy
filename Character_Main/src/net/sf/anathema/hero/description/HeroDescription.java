@@ -1,10 +1,11 @@
 package net.sf.anathema.hero.description;
 
+import net.sf.anathema.hero.model.HeroModel;
 import net.sf.anathema.lib.control.ObjectValueListener;
 import net.sf.anathema.lib.util.SimpleIdentifier;
 import net.sf.anathema.lib.workflow.textualdescription.ITextualDescription;
 
-public interface HeroDescription {
+public interface HeroDescription extends HeroModel {
 
   SimpleIdentifier ID = new SimpleIdentifier("Description");
 

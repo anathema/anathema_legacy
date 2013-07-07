@@ -10,7 +10,7 @@ import net.sf.anathema.initialization.ObjectFactory;
 import net.sf.anathema.initialization.repository.DataFileProvider;
 import net.sf.anathema.lib.registry.IRegistry;
 
-public interface ICharacterGenerics {
+public interface HeroEnvironment {
 
   ITemplateRegistry getTemplateRegistry();
 
@@ -24,7 +24,7 @@ public interface ICharacterGenerics {
 
   <T extends IExtensibleDataSet> T getDataSet(Class<T> set);
 
-  ObjectFactory getInstantiater();
+  ObjectFactory getObjectFactory();
 
   CharacterTypes getCharacterTypes();
 }

@@ -1,6 +1,6 @@
 package net.sf.anathema.character.platform.module.repository;
 
-import net.sf.anathema.character.main.framework.ICharacterGenerics;
+import net.sf.anathema.character.main.framework.HeroEnvironment;
 import net.sf.anathema.character.main.template.ICharacterExternalsTemplate;
 import net.sf.anathema.character.main.template.ITemplateRegistry;
 import net.sf.anathema.character.main.type.ICharacterType;
@@ -19,7 +19,7 @@ public class CharacterItemCreationModelTest {
 
   @Test
   public void comparesNewlySetCharacterTypeViaEqualsNotIdentity() throws Exception {
-    ICharacterGenerics generics = createGenericsWithCharacterType(new DummyMundaneCharacterType());
+    HeroEnvironment generics = createGenericsWithCharacterType(new DummyMundaneCharacterType());
     CharacterStatisticsConfiguration configuration = mock(CharacterStatisticsConfiguration.class);
     CharacterItemCreationModel model = new CharacterItemCreationModel(generics, configuration);
     ChangeListener listener = mock(ChangeListener.class);
@@ -28,8 +28,8 @@ public class CharacterItemCreationModelTest {
     verifyZeroInteractions(listener);
   }
 
-  private ICharacterGenerics createGenericsWithCharacterType(ICharacterType characterType) {
-    ICharacterGenerics generics = mock(ICharacterGenerics.class);
+  private HeroEnvironment createGenericsWithCharacterType(ICharacterType characterType) {
+    HeroEnvironment generics = mock(HeroEnvironment.class);
     DummyCharacterTypes characterTypes = new DummyCharacterTypes();
     characterTypes.add(characterType);
     when(generics.getCharacterTypes()).thenReturn(characterTypes);

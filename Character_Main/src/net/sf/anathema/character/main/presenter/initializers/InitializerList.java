@@ -15,7 +15,7 @@ public class InitializerList {
   private final ObjectFactory objectFactory;
 
   public InitializerList(IApplicationModel applicationModel) {
-    this.objectFactory = CharacterGenericsExtractor.getGenerics(applicationModel).getInstantiater();
+    this.objectFactory = CharacterGenericsExtractor.getGenerics(applicationModel).getObjectFactory();
     this.applicationModel = applicationModel;
   }
 

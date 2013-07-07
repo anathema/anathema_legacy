@@ -79,7 +79,7 @@ public class AnathemaPresenter {
   }
 
   private void initializeReports() throws InitializationException {
-    Collection<IReportFactory> factories = objectFactory.instantiateOrdered(ReportFactoryAutoCollector.class);
+    Collection<IReportFactory> factories = objectFactory.instantiateOrdered(RegisteredReportFactory.class);
     for (IReportFactory factory : factories) {
       model.getReportRegistry().addReports(factory.createReport(resources, model));
     }

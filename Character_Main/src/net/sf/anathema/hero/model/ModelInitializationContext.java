@@ -1,6 +1,6 @@
 package net.sf.anathema.hero.model;
 
-import net.sf.anathema.character.main.framework.ICharacterGenerics;
+import net.sf.anathema.character.main.framework.HeroEnvironment;
 import net.sf.anathema.character.main.magic.persistence.ISpellCache;
 import net.sf.anathema.character.main.template.magic.ICharmProvider;
 import net.sf.anathema.character.main.type.CharacterTypes;
@@ -11,9 +11,9 @@ import net.sf.anathema.initialization.repository.DataFileProvider;
 
 public class ModelInitializationContext implements InitializationContext {
 
-  private ICharacterGenerics generics;
+  private HeroEnvironment generics;
 
-  public ModelInitializationContext(ICharacterGenerics generics) {
+  public ModelInitializationContext(HeroEnvironment generics) {
     this.generics = generics;
   }
 
@@ -26,7 +26,7 @@ public class ModelInitializationContext implements InitializationContext {
 
   @Override
   public ObjectFactory getObjectFactory() {
-    return generics.getInstantiater();
+    return generics.getObjectFactory();
   }
 
   @Override

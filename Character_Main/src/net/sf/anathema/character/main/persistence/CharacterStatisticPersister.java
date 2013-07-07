@@ -2,7 +2,7 @@ package net.sf.anathema.character.main.persistence;
 
 import com.google.common.base.Preconditions;
 import net.sf.anathema.character.main.caste.ICasteCollection;
-import net.sf.anathema.character.main.framework.ICharacterGenerics;
+import net.sf.anathema.character.main.framework.HeroEnvironment;
 import net.sf.anathema.character.main.magic.SpellException;
 import net.sf.anathema.character.main.magic.charms.CharmException;
 import net.sf.anathema.character.main.template.HeroTemplate;
@@ -44,10 +44,10 @@ public class CharacterStatisticPersister {
   private final SpellConfigurationPersister spellPersister = new SpellConfigurationPersister();
   private final ExperiencePointsPersister experiencePersister = new ExperiencePointsPersister();
   private final RulesPersister rulesPersister = new RulesPersister();
-  private final ICharacterGenerics generics;
+  private final HeroEnvironment generics;
   private final CharacterDescriptionPersister descriptionPersister = new CharacterDescriptionPersister();
 
-  public CharacterStatisticPersister(ICharacterGenerics generics, IMessaging messaging) {
+  public CharacterStatisticPersister(HeroEnvironment generics, IMessaging messaging) {
     this.generics = generics;
     this.charmPersister = new CharmConfigurationPersister(messaging);
   }

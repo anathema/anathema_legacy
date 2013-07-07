@@ -29,7 +29,7 @@ public class CharacterViewFactory {
 
   public IView createView(Item item) {
     Hero hero = (Hero) item.getItemData();
-    SubViewRegistry viewFactory = new SubViewMap(CharacterGenericsExtractor.getGenerics(model).getInstantiater());
+    SubViewRegistry viewFactory = new SubViewMap(CharacterGenericsExtractor.getGenerics(model).getObjectFactory());
     CharacterView characterView = new TaskedCharacterView(viewFactory);
     new CharacterPresenter(hero, characterView, resources, model).initPresentation();
     initOverviewPresentation(hero, characterView, resources);

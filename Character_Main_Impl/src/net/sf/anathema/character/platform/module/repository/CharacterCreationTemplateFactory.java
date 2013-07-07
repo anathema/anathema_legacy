@@ -1,6 +1,6 @@
 package net.sf.anathema.character.platform.module.repository;
 
-import net.sf.anathema.character.main.framework.ICharacterGenerics;
+import net.sf.anathema.character.main.framework.HeroEnvironment;
 import net.sf.anathema.character.main.CharacterStatisticsConfiguration;
 import net.sf.anathema.framework.view.SwingApplicationFrame;
 import net.sf.anathema.lib.gui.dialog.core.DialogResult;
@@ -15,9 +15,9 @@ import net.sf.anathema.lib.workflow.wizard.selection.ItemTemplateFactory;
 public class CharacterCreationTemplateFactory implements ItemTemplateFactory {
 
   private final Resources resources;
-  private final ICharacterGenerics generics;
+  private final HeroEnvironment generics;
 
-  public CharacterCreationTemplateFactory(ICharacterGenerics generics, Resources resources) {
+  public CharacterCreationTemplateFactory(HeroEnvironment generics, Resources resources) {
     this.generics = generics;
     this.resources = resources;
   }

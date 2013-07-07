@@ -10,14 +10,14 @@ import net.sf.anathema.cards.layout.ICardLayout;
 import net.sf.anathema.framework.IApplicationModel;
 import net.sf.anathema.framework.initialization.IReportFactory;
 import net.sf.anathema.framework.reporting.Report;
-import net.sf.anathema.initialization.ReportFactoryAutoCollector;
+import net.sf.anathema.initialization.RegisteredReportFactory;
 import net.sf.anathema.initialization.reflections.Weight;
 import net.sf.anathema.lib.resources.Resources;
 
 import java.util.ArrayList;
 import java.util.List;
 
-@ReportFactoryAutoCollector
+@RegisteredReportFactory
 @Weight(weight = 40)
 public class CardReportFactory implements IReportFactory {
   @Override

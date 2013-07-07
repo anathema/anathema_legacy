@@ -1,4 +1,4 @@
-package net.sf.anathema.character.reporting.text.description;
+package net.sf.anathema.hero.concept.sheet.text.description;
 
 import com.google.common.base.Strings;
 import net.sf.anathema.hero.description.HeroDescription;

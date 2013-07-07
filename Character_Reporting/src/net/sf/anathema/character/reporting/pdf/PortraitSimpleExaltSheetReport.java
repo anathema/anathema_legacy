@@ -3,7 +3,7 @@ package net.sf.anathema.character.reporting.pdf;
 import com.itextpdf.text.Document;
 import com.itextpdf.text.pdf.PdfContentByte;
 import com.itextpdf.text.pdf.PdfWriter;
-import net.sf.anathema.character.main.framework.ICharacterGenerics;
+import net.sf.anathema.character.main.framework.HeroEnvironment;
 import net.sf.anathema.character.reporting.CharacterReportingModuleObject;
 import net.sf.anathema.character.reporting.pdf.content.ReportContentRegistry;
 import net.sf.anathema.character.reporting.pdf.content.ReportSession;
@@ -34,10 +34,10 @@ public class PortraitSimpleExaltSheetReport extends AbstractPdfReport {
   private final PageSizePreference pageSizePreference;
   private CharacterReportingModuleObject moduleObject;
 
-  public PortraitSimpleExaltSheetReport(Resources resources, ICharacterGenerics characterGenerics, PageSizePreference pageSizePreference) {
+  public PortraitSimpleExaltSheetReport(Resources resources, HeroEnvironment characterGenerics, PageSizePreference pageSizePreference) {
     this.resources = resources;
     this.pageSizePreference = pageSizePreference;
-    this.moduleObject = new CharacterReportingModuleObject(characterGenerics.getInstantiater(), resources);
+    this.moduleObject = new CharacterReportingModuleObject(characterGenerics.getObjectFactory(), resources);
   }
 
   @Override

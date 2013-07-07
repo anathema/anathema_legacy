@@ -1,6 +1,6 @@
 package net.sf.anathema.character.main.framework.module;
 
-import net.sf.anathema.character.main.framework.ICharacterGenerics;
+import net.sf.anathema.character.main.framework.HeroEnvironment;
 import net.sf.anathema.character.main.framework.ICharacterTemplateRegistryCollection;
 import net.sf.anathema.character.main.xml.CharacterTemplateParser;
 import net.sf.anathema.character.main.xml.GenericCharacterTemplate;
@@ -13,21 +13,21 @@ import net.sf.anathema.lib.resources.ResourceFile;
 public abstract class CharacterModuleAdapter implements ICharacterModule {
 
   @Override
-  public void addAdditionalTemplateData(ICharacterGenerics characterGenerics) throws InitializationException {
+  public void addAdditionalTemplateData(HeroEnvironment characterGenerics) throws InitializationException {
     // Nothing to do
   }
 
   @Override
-  public void addCharacterTemplates(ICharacterGenerics characterGenerics) {
+  public void addCharacterTemplates(HeroEnvironment characterGenerics) {
     // Nothing to do
   }
 
   @Override
-  public void registerCommonData(ICharacterGenerics characterGenerics) {
+  public void registerCommonData(HeroEnvironment characterGenerics) {
     // Nothing to do
   }
 
-  protected final GenericCharacterTemplate registerParsedTemplate(ICharacterGenerics generics, ResourceFile resource) {
+  protected final GenericCharacterTemplate registerParsedTemplate(HeroEnvironment generics, ResourceFile resource) {
     ICharacterTemplateRegistryCollection characterTemplateRegistries = generics.getCharacterTemplateRegistries();
     new CharacterTemplateParser(generics.getCharacterTypes(), characterTemplateRegistries, generics.getCasteCollectionRegistry(), generics.getDataSet(ICharmCache.class));
     try {

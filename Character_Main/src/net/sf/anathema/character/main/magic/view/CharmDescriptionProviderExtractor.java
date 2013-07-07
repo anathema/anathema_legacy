@@ -23,7 +23,7 @@ public class CharmDescriptionProviderExtractor {
   }
 
   private static Collection<MagicDescriptionProviderFactory> findFactories(IApplicationModel model) {
-    ObjectFactory objectFactory = CharacterGenericsExtractor.getGenerics(model).getInstantiater();
+    ObjectFactory objectFactory = CharacterGenericsExtractor.getGenerics(model).getObjectFactory();
     return objectFactory.instantiateAll(RegisteredMagicDescriptionProviderFactory.class);
   }
 

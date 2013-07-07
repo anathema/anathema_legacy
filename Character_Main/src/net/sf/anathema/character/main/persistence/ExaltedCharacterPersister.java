@@ -1,6 +1,6 @@
 package net.sf.anathema.character.main.persistence;
 
-import net.sf.anathema.character.main.framework.ICharacterGenerics;
+import net.sf.anathema.character.main.framework.HeroEnvironment;
 import net.sf.anathema.character.main.magic.SpellException;
 import net.sf.anathema.character.main.item.DataItem;
 import net.sf.anathema.hero.description.HeroDescriptionFetcher;
@@ -41,11 +41,11 @@ public class ExaltedCharacterPersister implements RepositoryItemPersister {
   private final CharacterDescriptionPersister descriptionPersister = new CharacterDescriptionPersister();
   private final CharacterStatisticPersister statisticsPersister;
   private final IItemType characterType;
-  private final ICharacterGenerics generics;
+  private final HeroEnvironment generics;
   private final IMessaging messaging;
   private final HeroModelPersisterAutoCollector persisterAutoCollector;
 
-  public ExaltedCharacterPersister(IItemType characterType, ICharacterGenerics generics, IMessaging messaging) {
+  public ExaltedCharacterPersister(IItemType characterType, HeroEnvironment generics, IMessaging messaging) {
     this.characterType = characterType;
     this.generics = generics;
     this.messaging = messaging;

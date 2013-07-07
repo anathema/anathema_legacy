@@ -1,7 +1,7 @@
 package net.sf.anathema.character.platform.module;
 
 import net.sf.anathema.character.main.framework.CharacterModuleContainerInitializer;
-import net.sf.anathema.character.main.framework.ICharacterGenerics;
+import net.sf.anathema.character.main.framework.HeroEnvironment;
 import net.sf.anathema.character.main.framework.ICharacterGenericsExtension;
 import net.sf.anathema.character.main.framework.module.CharacterModuleContainer;
 import net.sf.anathema.framework.extension.IAnathemaExtension;
@@ -15,7 +15,7 @@ import net.sf.anathema.initialization.repository.DataFileProvider;
 @Extension(id = "CharacterGenericsExtension")
 public class CharacterGenericsExtension implements ICharacterGenericsExtension, IAnathemaExtension {
 
-  private ICharacterGenerics characterGenerics;
+  private HeroEnvironment characterGenerics;
 
   @Override
   public void initialize(DataFileProvider dataFileProvider, AnnotationFinder finder, ResourceLoader loader) throws
@@ -27,7 +27,7 @@ public class CharacterGenericsExtension implements ICharacterGenericsExtension, 
   }
 
   @Override
-  public ICharacterGenerics getCharacterGenerics() {
+  public HeroEnvironment getCharacterGenerics() {
     return characterGenerics;
   }
 }

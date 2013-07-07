@@ -17,7 +17,7 @@ import net.sf.anathema.initialization.repository.DataFileProvider;
 import net.sf.anathema.lib.registry.IRegistry;
 import net.sf.anathema.lib.registry.Registry;
 
-public class CharacterGenerics implements ICharacterGenerics {
+public class CharacterGenerics implements HeroEnvironment {
 
   private final ITemplateRegistry templateRegistry = new TemplateRegistry();
   private final ICharacterTemplateRegistryCollection templateRegistries;
@@ -53,7 +53,7 @@ public class CharacterGenerics implements ICharacterGenerics {
   }
 
   @Override
-  public ObjectFactory getInstantiater() {
+  public ObjectFactory getObjectFactory() {
     return objectFactory;
   }
 

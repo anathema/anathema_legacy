@@ -6,7 +6,7 @@ import net.sf.anathema.lib.registry.IRegistry;
 
 public class CharacterGenericsExtractor {
 
-  public static ICharacterGenerics getGenerics(IApplicationModel model) {
+  public static HeroEnvironment getGenerics(IApplicationModel model) {
     IRegistry<String, IAnathemaExtension> registry = model.getExtensionPointRegistry();
     ICharacterGenericsExtension genericsExtension = (ICharacterGenericsExtension) registry.get(ICharacterGenericsExtension.ID);
     return genericsExtension.getCharacterGenerics();

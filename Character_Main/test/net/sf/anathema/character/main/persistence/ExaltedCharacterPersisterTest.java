@@ -2,7 +2,7 @@ package net.sf.anathema.character.main.persistence;
 
 import net.sf.anathema.character.main.data.IExtensibleDataSetProvider;
 import net.sf.anathema.character.main.framework.CharacterGenerics;
-import net.sf.anathema.character.main.framework.ICharacterGenerics;
+import net.sf.anathema.character.main.framework.HeroEnvironment;
 import net.sf.anathema.character.main.magic.persistence.CharmCache;
 import net.sf.anathema.character.main.magic.persistence.ICharmCache;
 import net.sf.anathema.character.main.magic.persistence.ISpellCache;
@@ -44,17 +44,17 @@ public class ExaltedCharacterPersisterTest {
 
   @Test
   public void createsFullyLoadedCharacter() throws Exception {
-    ICharacterGenerics generics = createCharacterGenerics();
+    HeroEnvironment generics = createCharacterGenerics();
     ExaltedCharacterPersister persister = new ExaltedCharacterPersister(type, generics, messaging);
     Character character = createNewCharacter(persister);
     assertThat(character.isFullyLoaded(), is(true));
   }
 
-  private ICharacterGenerics createCharacterGenerics() {
+  private HeroEnvironment createCharacterGenerics() {
     IExtensibleDataSetProvider dataSetProvider = mock(IExtensibleDataSetProvider.class);
     when(dataSetProvider.getDataSet(ICharmCache.class)).thenReturn(new CharmCache());
     when(dataSetProvider.getDataSet(ISpellCache.class)).thenReturn(new SpellCache());
-    ICharacterGenerics generics = new CharacterGenerics(null, new DummyObjectFactory(), dataSetProvider);
+    HeroEnvironment generics = new CharacterGenerics(null, new DummyObjectFactory(), dataSetProvider);
     generics.getTemplateRegistry().register(template);
     return generics;
   }

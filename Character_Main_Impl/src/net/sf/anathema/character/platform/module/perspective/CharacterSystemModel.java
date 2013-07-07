@@ -1,8 +1,8 @@
 package net.sf.anathema.character.platform.module.perspective;
 
+import net.sf.anathema.character.main.framework.HeroEnvironment;
 import net.sf.anathema.character.main.item.CharacterPrintNameFileScanner;
 import net.sf.anathema.character.main.framework.CharacterGenericsExtractor;
-import net.sf.anathema.character.main.framework.ICharacterGenerics;
 import net.sf.anathema.hero.experience.ExperienceModelFetcher;
 import net.sf.anathema.character.main.persistence.ExaltedCharacterPersister;
 import net.sf.anathema.character.main.perspective.PreloadedDescriptiveFeatures;
@@ -81,12 +81,12 @@ public class CharacterSystemModel implements ItemSystemModel {
   }
 
   private CharacterPrintNameFileScanner createFileScanner() {
-    ICharacterGenerics generics = getCharacterGenerics();
+    HeroEnvironment generics = getCharacterGenerics();
     IRepositoryFileResolver repositoryFileResolver = model.getRepository().getRepositoryFileResolver();
     return new RegExCharacterPrintNameFileScanner(generics.getCharacterTypes(), generics.getCasteCollectionRegistry(), repositoryFileResolver);
   }
 
-  private ICharacterGenerics getCharacterGenerics() {
+  private HeroEnvironment getCharacterGenerics() {
     return CharacterGenericsExtractor.getGenerics(model);
   }
 

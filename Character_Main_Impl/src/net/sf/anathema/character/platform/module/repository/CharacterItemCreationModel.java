@@ -1,7 +1,7 @@
 package net.sf.anathema.character.platform.module.repository;
 
 import com.google.common.base.Objects;
-import net.sf.anathema.character.main.framework.ICharacterGenerics;
+import net.sf.anathema.character.main.framework.HeroEnvironment;
 import net.sf.anathema.character.main.template.HeroTemplate;
 import net.sf.anathema.character.main.template.ITemplateRegistry;
 import net.sf.anathema.character.main.type.CharacterTypes;
@@ -23,10 +23,10 @@ public class CharacterItemCreationModel implements ICharacterItemCreationModel {
   private ITemplateTypeAggregation selectedTemplate;
   private final MultiEntryMap<ICharacterType, ITemplateTypeAggregation> aggregationsByType = new MultiEntryMap<>();
   private final CharacterStatisticsConfiguration configuration;
-  private final ICharacterGenerics generics;
+  private final HeroEnvironment generics;
   private final ICharacterType[] types;
 
-  public CharacterItemCreationModel(ICharacterGenerics generics, CharacterStatisticsConfiguration configuration) {
+  public CharacterItemCreationModel(HeroEnvironment generics, CharacterStatisticsConfiguration configuration) {
     this.generics = generics;
     this.configuration = configuration;
     this.characterTypes = generics.getCharacterTypes();

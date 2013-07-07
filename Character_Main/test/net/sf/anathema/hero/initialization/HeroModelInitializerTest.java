@@ -1,6 +1,6 @@
 package net.sf.anathema.hero.initialization;
 
-import net.sf.anathema.character.main.framework.ICharacterGenerics;
+import net.sf.anathema.character.main.framework.HeroEnvironment;
 import net.sf.anathema.character.main.template.ConfiguredModel;
 import net.sf.anathema.character.main.template.HeroTemplate;
 import net.sf.anathema.hero.model.DefaultHero;
@@ -47,7 +47,7 @@ public class HeroModelInitializerTest {
   }
 
   private void initializeModelsForHero(DefaultHero hero) {
-    ICharacterGenerics generics = createGenerics();
+    HeroEnvironment generics = createGenerics();
     initializer.addModels(generics, hero);
   }
 
@@ -66,11 +66,11 @@ public class HeroModelInitializerTest {
   }
 
   @SuppressWarnings("unchecked")
-  private ICharacterGenerics createGenerics() {
-    ICharacterGenerics generics = mock(ICharacterGenerics.class);
+  private HeroEnvironment createGenerics() {
+    HeroEnvironment generics = mock(HeroEnvironment.class);
     ObjectFactory objectFactory = mock(ObjectFactory.class);
     when(objectFactory.instantiateAll(HeroModelAutoCollector.class)).thenReturn(availableModels);
-    when(generics.getInstantiater()).thenReturn(objectFactory);
+    when(generics.getObjectFactory()).thenReturn(objectFactory);
     return generics;
   }
 

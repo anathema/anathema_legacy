@@ -2,7 +2,7 @@ package net.sf.anathema.cascades.presenter;
 
 import net.sf.anathema.cascades.module.ICascadeViewFactory;
 import net.sf.anathema.cascades.presenter.view.ICascadeView;
-import net.sf.anathema.character.main.framework.ICharacterGenerics;
+import net.sf.anathema.character.main.framework.HeroEnvironment;
 import net.sf.anathema.character.main.magic.persistence.ICharmCache;
 import net.sf.anathema.character.main.magic.charms.GroupCharmTree;
 import net.sf.anathema.character.main.magic.description.MagicDescriptionProvider;
@@ -20,7 +20,7 @@ public class CascadePresenter extends AbstractCascadePresenter implements ICasca
 
   private final CharmTreeIdentificateMap treeIdentificateMap = new CharmTreeIdentificateMap();
 
-  public CascadePresenter(Resources resources, ICharacterGenerics generics, ICascadeViewFactory factory,
+  public CascadePresenter(Resources resources, HeroEnvironment generics, ICascadeViewFactory factory,
                           MagicDescriptionProvider magicDescriptionProvider) {
     super(resources);
     ICharmCache cache = generics.getDataSet(ICharmCache.class);

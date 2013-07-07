@@ -1,7 +1,7 @@
 package net.sf.anathema.character.main.perspective.model;
 
 import net.sf.anathema.character.main.framework.CharacterGenericsExtractor;
-import net.sf.anathema.character.main.framework.ICharacterGenerics;
+import net.sf.anathema.character.main.framework.HeroEnvironment;
 import net.sf.anathema.character.main.persistence.ExaltedCharacterPersister;
 import net.sf.anathema.framework.IApplicationModel;
 import net.sf.anathema.framework.item.IItemType;
@@ -46,7 +46,7 @@ public class CharacterPersistenceModel {
   }
 
   private RepositoryItemPersister findPersister() {
-    ICharacterGenerics generics = CharacterGenericsExtractor.getGenerics(model);
+    HeroEnvironment generics = CharacterGenericsExtractor.getGenerics(model);
     IItemType itemType = getCharacterItemType();
     return new ExaltedCharacterPersister(itemType, generics, model.getMessaging());
   }

@@ -1,6 +1,6 @@
 package net.sf.anathema.character.main;
 
-import net.sf.anathema.character.main.framework.ICharacterGenerics;
+import net.sf.anathema.character.main.framework.HeroEnvironment;
 import net.sf.anathema.character.main.template.HeroTemplate;
 import net.sf.anathema.hero.description.HeroDescription;
 import net.sf.anathema.hero.description.HeroDescriptionFetcher;
@@ -22,14 +22,14 @@ public class ExaltedCharacter implements Character {
   private final DefaultHero hero;
   private final ModelInitializationContext initializationContext;
 
-  public ExaltedCharacter(HeroTemplate template, ICharacterGenerics generics) {
+  public ExaltedCharacter(HeroTemplate template, HeroEnvironment generics) {
     this.hero = new DefaultHero(template);
     this.initializationContext = new ModelInitializationContext(generics);
     addModels(generics);
     management.initListening();
   }
 
-  private void addModels(ICharacterGenerics generics) {
+  private void addModels(HeroEnvironment generics) {
     HeroModelInitializer initializer = new HeroModelInitializer(initializationContext, getTemplate());
     initializer.addModels(generics, hero);
   }

@@ -4,5 +4,5 @@ public interface ICharacterGenericsExtension {
 
   String ID = "CharacterGenericsExtension";
 
-  ICharacterGenerics getCharacterGenerics();
+  HeroEnvironment getCharacterGenerics();
 }

@@ -1,4 +1,4 @@
-package net.sf.anathema.character.reporting.text.description;
+package net.sf.anathema.hero.concept.sheet.text.description;
 
 import com.itextpdf.text.Chunk;
 import com.itextpdf.text.DocumentException;
@@ -7,7 +7,7 @@ import com.itextpdf.text.Font;
 import com.itextpdf.text.Paragraph;
 import com.itextpdf.text.Phrase;
 import com.itextpdf.text.pdf.MultiColumnText;
-import net.sf.anathema.character.reporting.text.AbstractTextEncoder;
+import net.sf.anathema.hero.sheet.text.AbstractTextEncoder;
 import net.sf.anathema.framework.reporting.pdf.PdfReportUtils;
 import net.sf.anathema.hero.description.HeroDescriptionFetcher;
 import net.sf.anathema.hero.model.Hero;

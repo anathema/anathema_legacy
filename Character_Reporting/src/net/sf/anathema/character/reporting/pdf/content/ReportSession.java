@@ -1,8 +1,5 @@
 package net.sf.anathema.character.reporting.pdf.content;
 
-import net.sf.anathema.character.reporting.text.description.TextDescriptionContentImpl;
-import net.sf.anathema.character.reporting.text.description.TextDescriptionContent;
-import net.sf.anathema.hero.description.HeroDescriptionFetcher;
 import net.sf.anathema.hero.model.Hero;
 
 import java.util.ArrayList;
@@ -21,10 +18,6 @@ public class ReportSession {
 
   public Hero getHero() {
     return hero;
-  }
-
-  public TextDescriptionContent getDescription() {
-    return new TextDescriptionContentImpl(HeroDescriptionFetcher.fetch(hero));
   }
 
   public void storeMnemonic(Object mnemonic) {

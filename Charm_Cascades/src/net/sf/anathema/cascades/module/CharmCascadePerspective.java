@@ -2,7 +2,7 @@ package net.sf.anathema.cascades.module;
 
 import net.sf.anathema.cascades.presenter.CascadePresenter;
 import net.sf.anathema.character.main.framework.CharacterGenericsExtractor;
-import net.sf.anathema.character.main.framework.ICharacterGenerics;
+import net.sf.anathema.character.main.framework.HeroEnvironment;
 import net.sf.anathema.character.main.magic.view.CharmDescriptionProviderExtractor;
 import net.sf.anathema.character.main.magic.description.MagicDescriptionProvider;
 import net.sf.anathema.framework.IApplicationModel;
@@ -26,7 +26,7 @@ public class CharmCascadePerspective implements Perspective {
   @Override
   public void initContent(Container container, IApplicationModel applicationModel, Resources resources) {
     CharmCascadeModuleView view = new CharmCascadeModuleView();
-    ICharacterGenerics characterGenerics = CharacterGenericsExtractor.getGenerics(applicationModel);
+    HeroEnvironment characterGenerics = CharacterGenericsExtractor.getGenerics(applicationModel);
     MagicDescriptionProvider magicDescriptionProvider = getCharmDescriptionProvider(applicationModel, resources);
     new CascadePresenter(resources, characterGenerics, view, magicDescriptionProvider).initPresentation();
     container.setSwingContent(view.getComponent());

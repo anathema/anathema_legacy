@@ -1,6 +1,6 @@
 package net.sf.anathema.character.main.framework.module;
 
-import net.sf.anathema.character.main.framework.ICharacterGenerics;
+import net.sf.anathema.character.main.framework.HeroEnvironment;
 import net.sf.anathema.character.main.framework.ICharacterTemplateResourceCache;
 import net.sf.anathema.character.main.xml.GenericCharacterTemplate;
 import net.sf.anathema.character.main.template.HeroTemplate;
@@ -16,7 +16,7 @@ import java.util.List;
 public abstract class CharacterTypeModule extends CharacterModuleAdapter {
 
   @Override
-  public void addCharacterTemplates(ICharacterGenerics characterGenerics) {
+  public void addCharacterTemplates(HeroEnvironment characterGenerics) {
     ICharacterTemplateResourceCache cache = characterGenerics.getDataSet(ICharacterTemplateResourceCache.class);
     for (ResourceFile templateResource : cache.getTemplateResourcesForType(getType().getId())) {
       GenericCharacterTemplate template = registerParsedTemplate(characterGenerics, templateResource);
@@ -26,7 +26,7 @@ public abstract class CharacterTypeModule extends CharacterModuleAdapter {
     }
   }
 
-  protected ITemplateType[] getDefaultAndCustomTemplates(ICharacterGenerics generics) {
+  protected ITemplateType[] getDefaultAndCustomTemplates(HeroEnvironment generics) {
     List<ITemplateType> types = new ArrayList<>();
     ITemplateRegistry templateRegistry = generics.getTemplateRegistry();
     HeroTemplate defaultTemplate = templateRegistry.getDefaultTemplate(getType());

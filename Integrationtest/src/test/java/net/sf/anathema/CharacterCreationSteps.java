@@ -5,7 +5,7 @@ import cucumber.api.java.Before;
 import cucumber.api.java.en.Given;
 import cucumber.api.java.en.Then;
 import net.sf.anathema.character.main.framework.CharacterGenericsExtractor;
-import net.sf.anathema.character.main.framework.ICharacterGenerics;
+import net.sf.anathema.character.main.framework.HeroEnvironment;
 import net.sf.anathema.character.main.template.HeroTemplate;
 import net.sf.anathema.character.main.template.TemplateType;
 import net.sf.anathema.character.main.type.CharacterTypes;
@@ -85,12 +85,12 @@ public class CharacterCreationSteps {
   }
 
   private HeroTemplate loadDefaultTemplateForType(String type) {
-    ICharacterGenerics generics = getCharacterGenerics();
+    HeroEnvironment generics = getCharacterGenerics();
     return generics.getTemplateRegistry().getDefaultTemplate(characterTypes.findById(type));
   }
 
   private HeroTemplate loadTemplateForType(String type, String subtype) {
-    ICharacterGenerics generics = getCharacterGenerics();
+    HeroEnvironment generics = getCharacterGenerics();
     return generics.getTemplateRegistry().getTemplate(new TemplateType(characterTypes.findById(type), new SimpleIdentifier(subtype)));
   }
 
@@ -103,7 +103,7 @@ public class CharacterCreationSteps {
     return (Character) item.getItemData();
   }
 
-  private ICharacterGenerics getCharacterGenerics() {
+  private HeroEnvironment getCharacterGenerics() {
     return CharacterGenericsExtractor.getGenerics(model);
   }
 }

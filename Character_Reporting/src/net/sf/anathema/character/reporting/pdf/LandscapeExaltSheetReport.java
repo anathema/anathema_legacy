@@ -3,7 +3,7 @@ package net.sf.anathema.character.reporting.pdf;
 import com.itextpdf.text.Document;
 import com.itextpdf.text.pdf.PdfContentByte;
 import com.itextpdf.text.pdf.PdfWriter;
-import net.sf.anathema.character.main.framework.ICharacterGenerics;
+import net.sf.anathema.character.main.framework.HeroEnvironment;
 import net.sf.anathema.character.reporting.CharacterReportingModuleObject;
 import net.sf.anathema.character.reporting.pdf.content.ReportContentRegistry;
 import net.sf.anathema.character.reporting.pdf.content.ReportSession;
@@ -32,11 +32,11 @@ public class LandscapeExaltSheetReport extends AbstractPdfReport {
   private PageSizePreference pageSizePreference;
   private final CharacterReportingModuleObject reportingModuleObject;
 
-  public LandscapeExaltSheetReport(Resources resources, ICharacterGenerics characterGenerics,
+  public LandscapeExaltSheetReport(Resources resources, HeroEnvironment characterGenerics,
                                    PageSizePreference pageSizePreference) {
     this.resources = resources;
     this.pageSizePreference = pageSizePreference;
-    this.reportingModuleObject = new CharacterReportingModuleObject(characterGenerics.getInstantiater(), resources);
+    this.reportingModuleObject = new CharacterReportingModuleObject(characterGenerics.getObjectFactory(), resources);
   }
 
   @Override
