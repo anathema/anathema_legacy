@@ -4,12 +4,12 @@ import com.itextpdf.text.Chunk;
 import com.itextpdf.text.Phrase;
 import com.itextpdf.text.Rectangle;
 import com.itextpdf.text.pdf.PdfPTable;
-import net.sf.anathema.character.reporting.pdf.content.ReportSession;
+import net.sf.anathema.hero.sheet.pdf.session.ReportSession;
 import net.sf.anathema.character.reporting.pdf.content.combat.CombatAction;
-import net.sf.anathema.character.reporting.pdf.rendering.boxes.combat.AbstractCombatRulesTableEncoder;
-import net.sf.anathema.character.reporting.pdf.rendering.graphics.SheetGraphics;
-import net.sf.anathema.character.reporting.pdf.rendering.graphics.TableCell;
-import net.sf.anathema.character.reporting.pdf.rendering.graphics.TableList;
+import net.sf.anathema.hero.sheet.pdf.encoder.boxes.combat.AbstractCombatRulesTableEncoder;
+import net.sf.anathema.hero.sheet.pdf.encoder.graphics.SheetGraphics;
+import net.sf.anathema.hero.sheet.pdf.encoder.graphics.TableCell;
+import net.sf.anathema.hero.sheet.pdf.encoder.graphics.TableList;
 import net.sf.anathema.character.reporting.second.content.combat.CombatStatsContent;
 
 public class CombatRulesTableEncoder extends AbstractCombatRulesTableEncoder {

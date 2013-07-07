@@ -1,7 +1,7 @@
 package net.sf.anathema.character.equipment.impl.reporting;
 
 import net.sf.anathema.character.main.equipment.ICharacterStatsModifiers;
-import net.sf.anathema.character.reporting.pdf.rendering.boxes.StatsModifierFactory;
+import net.sf.anathema.hero.sheet.pdf.encoder.boxes.StatsModifierFactory;
 import net.sf.anathema.hero.equipment.EquipmentModel;
 import net.sf.anathema.hero.equipment.EquipmentModelFetcher;
 import net.sf.anathema.hero.model.Hero;

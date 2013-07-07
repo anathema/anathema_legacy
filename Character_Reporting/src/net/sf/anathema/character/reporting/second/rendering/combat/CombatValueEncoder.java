@@ -1,11 +1,11 @@
 package net.sf.anathema.character.reporting.second.rendering.combat;
 
-import net.sf.anathema.character.reporting.pdf.content.ReportSession;
-import net.sf.anathema.character.reporting.pdf.rendering.extent.Bounds;
-import net.sf.anathema.character.reporting.pdf.rendering.extent.Position;
-import net.sf.anathema.character.reporting.pdf.rendering.general.LabelledValueEncoder;
-import net.sf.anathema.character.reporting.pdf.rendering.general.box.IContentEncoder;
-import net.sf.anathema.character.reporting.pdf.rendering.graphics.SheetGraphics;
+import net.sf.anathema.hero.sheet.pdf.session.ReportSession;
+import net.sf.anathema.hero.sheet.pdf.encoder.extent.Bounds;
+import net.sf.anathema.hero.sheet.pdf.encoder.extent.Position;
+import net.sf.anathema.hero.sheet.pdf.encoder.general.LabelledValueEncoder;
+import net.sf.anathema.hero.sheet.pdf.encoder.general.box.IContentEncoder;
+import net.sf.anathema.hero.sheet.pdf.encoder.graphics.SheetGraphics;
 import net.sf.anathema.character.reporting.second.content.combat.CombatStatsContent;
 
 public class CombatValueEncoder implements IContentEncoder {

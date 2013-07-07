@@ -18,7 +18,7 @@ import net.sf.anathema.hero.spells.SpellsModelFetcher;
 import net.sf.anathema.character.main.charm.ILearningCharmGroup;
 import net.sf.anathema.character.main.charm.special.IMultipleEffectCharmConfiguration;
 import net.sf.anathema.character.main.charm.special.ISubeffectCharmConfiguration;
-import net.sf.anathema.character.reporting.pdf.content.ReportSession;
+import net.sf.anathema.hero.sheet.pdf.session.ReportSession;
 import net.sf.anathema.hero.charms.sheet.content.stats.CharmStats;
 import net.sf.anathema.hero.charms.sheet.content.stats.GenericCharmStats;
 import net.sf.anathema.hero.charms.sheet.content.stats.MultipleEffectCharmStats;

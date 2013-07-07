@@ -10,7 +10,7 @@ import com.itextpdf.text.pdf.PdfPCell;
 import com.itextpdf.text.pdf.PdfPTable;
 import net.sf.anathema.character.equipment.impl.reporting.content.stats.IEquipmentStatsGroup;
 import net.sf.anathema.character.main.equipment.weapon.IWeaponStats;
-import net.sf.anathema.character.reporting.pdf.rendering.general.table.TableEncodingUtilities;
+import net.sf.anathema.hero.sheet.pdf.encoder.general.table.TableEncodingUtilities;
 import net.sf.anathema.lib.resources.Resources;
 import net.sf.anathema.lib.util.Identifier;
 

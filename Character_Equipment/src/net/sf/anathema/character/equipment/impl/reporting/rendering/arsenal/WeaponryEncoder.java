@@ -1,11 +1,11 @@
 package net.sf.anathema.character.equipment.impl.reporting.rendering.arsenal;
 
 import com.itextpdf.text.DocumentException;
-import net.sf.anathema.character.reporting.pdf.content.ReportSession;
-import net.sf.anathema.character.reporting.pdf.content.SubBoxContent;
-import net.sf.anathema.character.reporting.pdf.rendering.extent.Bounds;
-import net.sf.anathema.character.reporting.pdf.rendering.general.box.AbstractContentEncoder;
-import net.sf.anathema.character.reporting.pdf.rendering.graphics.SheetGraphics;
+import net.sf.anathema.hero.sheet.pdf.session.ReportSession;
+import net.sf.anathema.hero.sheet.pdf.content.SubBoxContent;
+import net.sf.anathema.hero.sheet.pdf.encoder.extent.Bounds;
+import net.sf.anathema.hero.sheet.pdf.encoder.general.box.AbstractContentEncoder;
+import net.sf.anathema.hero.sheet.pdf.encoder.graphics.SheetGraphics;
 
 public class WeaponryEncoder<C extends SubBoxContent> extends AbstractContentEncoder<C> {
 

@@ -1,11 +1,10 @@
 package net.sf.anathema.hero.charms.sheet.encoder;
 
 import com.itextpdf.text.DocumentException;
-import net.sf.anathema.character.reporting.pdf.content.ReportSession;
-import net.sf.anathema.hero.charms.sheet.encoder.GenericCharmTableEncoder;
-import net.sf.anathema.character.reporting.pdf.rendering.extent.Bounds;
-import net.sf.anathema.character.reporting.pdf.rendering.general.box.IVariableContentEncoder;
-import net.sf.anathema.character.reporting.pdf.rendering.graphics.SheetGraphics;
+import net.sf.anathema.hero.sheet.pdf.session.ReportSession;
+import net.sf.anathema.hero.sheet.pdf.encoder.extent.Bounds;
+import net.sf.anathema.hero.sheet.pdf.encoder.general.box.IVariableContentEncoder;
+import net.sf.anathema.hero.sheet.pdf.encoder.graphics.SheetGraphics;
 import net.sf.anathema.lib.resources.Resources;
 
 public class GenericCharmEncoder implements IVariableContentEncoder {

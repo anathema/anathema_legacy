@@ -1,10 +1,10 @@
 package net.sf.anathema.hero.sheet;
 
-import net.sf.anathema.character.reporting.pdf.content.BasicContent;
-import net.sf.anathema.character.reporting.pdf.rendering.EncoderIds;
-import net.sf.anathema.character.reporting.pdf.rendering.boxes.AbstractEncoderFactory;
-import net.sf.anathema.character.reporting.pdf.rendering.boxes.RegisteredEncoderFactory;
-import net.sf.anathema.character.reporting.pdf.rendering.general.box.ContentEncoder;
+import net.sf.anathema.hero.sheet.pdf.content.BasicContent;
+import net.sf.anathema.hero.sheet.pdf.encoder.EncoderIds;
+import net.sf.anathema.hero.sheet.pdf.encoder.boxes.AbstractEncoderFactory;
+import net.sf.anathema.hero.sheet.pdf.encoder.boxes.RegisteredEncoderFactory;
+import net.sf.anathema.hero.sheet.pdf.encoder.general.box.ContentEncoder;
 import net.sf.anathema.lib.resources.Resources;
 
 @RegisteredEncoderFactory

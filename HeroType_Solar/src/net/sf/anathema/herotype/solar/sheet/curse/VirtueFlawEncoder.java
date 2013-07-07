@@ -4,15 +4,14 @@ import com.itextpdf.text.Chunk;
 import com.itextpdf.text.DocumentException;
 import com.itextpdf.text.Font;
 import com.itextpdf.text.Phrase;
-import net.sf.anathema.character.reporting.pdf.content.ReportSession;
-import net.sf.anathema.character.reporting.pdf.rendering.boxes.virtueflaw.VirtueFlawBoxEncoder;
-import net.sf.anathema.character.reporting.pdf.rendering.extent.Bounds;
-import net.sf.anathema.character.reporting.pdf.rendering.extent.Position;
-import net.sf.anathema.character.reporting.pdf.rendering.general.box.AbstractContentEncoder;
-import net.sf.anathema.character.reporting.pdf.rendering.graphics.SheetGraphics;
-import net.sf.anathema.herotype.solar.sheet.curse.VirtueFlawContent;
+import net.sf.anathema.hero.sheet.pdf.session.ReportSession;
+import net.sf.anathema.hero.sheet.pdf.encoder.boxes.virtueflaw.VirtueFlawBoxEncoder;
+import net.sf.anathema.hero.sheet.pdf.encoder.extent.Bounds;
+import net.sf.anathema.hero.sheet.pdf.encoder.extent.Position;
+import net.sf.anathema.hero.sheet.pdf.encoder.general.box.AbstractContentEncoder;
+import net.sf.anathema.hero.sheet.pdf.encoder.graphics.SheetGraphics;
 
-import static net.sf.anathema.character.reporting.pdf.rendering.page.IVoidStateFormatConstants.REDUCED_LINE_HEIGHT;
+import static net.sf.anathema.hero.sheet.pdf.page.IVoidStateFormatConstants.REDUCED_LINE_HEIGHT;
 
 public class VirtueFlawEncoder extends AbstractContentEncoder<VirtueFlawContent> {
 

@@ -5,10 +5,10 @@ import net.sf.anathema.character.equipment.impl.reporting.content.ArmourContent;
 import net.sf.anathema.character.equipment.impl.reporting.content.stats.armour.IArmourStatsGroup;
 import net.sf.anathema.character.equipment.impl.reporting.rendering.EquipmentTableEncoder;
 import net.sf.anathema.character.main.equipment.weapon.IArmourStats;
-import net.sf.anathema.character.reporting.pdf.content.ReportSession;
-import net.sf.anathema.character.reporting.pdf.content.stats.IStatsGroup;
-import net.sf.anathema.character.reporting.pdf.rendering.extent.Bounds;
-import net.sf.anathema.character.reporting.pdf.rendering.graphics.SheetGraphics;
+import net.sf.anathema.hero.sheet.pdf.session.ReportSession;
+import net.sf.anathema.hero.sheet.pdf.content.stats.IStatsGroup;
+import net.sf.anathema.hero.sheet.pdf.encoder.extent.Bounds;
+import net.sf.anathema.hero.sheet.pdf.encoder.graphics.SheetGraphics;
 
 public class ArmourTableEncoder extends EquipmentTableEncoder<IArmourStats, ArmourContent> {
 

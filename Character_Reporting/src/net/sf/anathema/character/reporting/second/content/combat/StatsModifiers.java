@@ -1,8 +1,8 @@
 package net.sf.anathema.character.reporting.second.content.combat;
 
 import net.sf.anathema.character.main.equipment.ICharacterStatsModifiers;
-import net.sf.anathema.character.reporting.pdf.model.StatsModelFetcher;
-import net.sf.anathema.character.reporting.pdf.rendering.boxes.StatsModifierFactory;
+import net.sf.anathema.hero.sheet.pdf.content.stats.StatsModelFetcher;
+import net.sf.anathema.hero.sheet.pdf.encoder.boxes.StatsModifierFactory;
 import net.sf.anathema.hero.model.Hero;
 
 public class StatsModifiers {

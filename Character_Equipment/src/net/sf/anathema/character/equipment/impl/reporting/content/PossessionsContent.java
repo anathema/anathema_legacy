@@ -2,8 +2,8 @@ package net.sf.anathema.character.equipment.impl.reporting.content;
 
 import net.sf.anathema.character.equipment.character.model.IEquipmentItem;
 import net.sf.anathema.character.main.equipment.weapon.IEquipmentStats;
-import net.sf.anathema.character.reporting.pdf.content.AbstractSubBoxContent;
-import net.sf.anathema.character.reporting.pdf.content.ListSubBoxContent;
+import net.sf.anathema.hero.sheet.pdf.content.AbstractSubBoxContent;
+import net.sf.anathema.hero.sheet.pdf.content.ListSubBoxContent;
 import net.sf.anathema.hero.equipment.EquipmentModel;
 import net.sf.anathema.hero.equipment.EquipmentModelFetcher;
 import net.sf.anathema.hero.model.Hero;

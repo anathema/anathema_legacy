@@ -5,7 +5,7 @@ import net.sf.anathema.character.main.util.CharacterUtilities;
 import net.sf.anathema.character.main.type.ICharacterType;
 import net.sf.anathema.hero.traits.GenericTraitCollectionFacade;
 import net.sf.anathema.hero.traits.TraitModelFetcher;
-import net.sf.anathema.character.reporting.pdf.content.AbstractSubBoxContent;
+import net.sf.anathema.hero.sheet.pdf.content.AbstractSubBoxContent;
 import net.sf.anathema.hero.model.Hero;
 import net.sf.anathema.lib.resources.Resources;
 

@@ -1,8 +1,8 @@
 package net.sf.anathema.hero.charms.sheet.content;
 
-import net.sf.anathema.character.reporting.pdf.content.RegisteredReportContent;
-import net.sf.anathema.character.reporting.pdf.content.ReportContentFactory;
-import net.sf.anathema.character.reporting.pdf.content.ReportSession;
+import net.sf.anathema.hero.sheet.pdf.content.RegisteredReportContent;
+import net.sf.anathema.hero.sheet.pdf.content.ReportContentFactory;
+import net.sf.anathema.hero.sheet.pdf.session.ReportSession;
 import net.sf.anathema.lib.resources.Resources;
 
 @RegisteredReportContent(produces = GenericCharmContent.class)

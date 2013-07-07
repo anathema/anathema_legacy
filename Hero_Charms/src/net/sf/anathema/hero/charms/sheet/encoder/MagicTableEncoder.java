@@ -3,12 +3,12 @@ package net.sf.anathema.hero.charms.sheet.encoder;
 import com.google.common.base.Objects;
 import com.itextpdf.text.pdf.PdfPTable;
 import net.sf.anathema.character.main.magic.IMagicStats;
-import net.sf.anathema.character.reporting.pdf.content.ReportSession;
+import net.sf.anathema.hero.sheet.pdf.session.ReportSession;
 import net.sf.anathema.hero.charms.sheet.content.AbstractMagicContent;
-import net.sf.anathema.character.reporting.pdf.content.stats.IStatsGroup;
-import net.sf.anathema.character.reporting.pdf.rendering.extent.Bounds;
-import net.sf.anathema.character.reporting.pdf.rendering.general.stats.AbstractStatsTableEncoder;
-import net.sf.anathema.character.reporting.pdf.rendering.graphics.SheetGraphics;
+import net.sf.anathema.hero.sheet.pdf.content.stats.IStatsGroup;
+import net.sf.anathema.hero.sheet.pdf.encoder.extent.Bounds;
+import net.sf.anathema.hero.sheet.pdf.encoder.general.stats.AbstractStatsTableEncoder;
+import net.sf.anathema.hero.sheet.pdf.encoder.graphics.SheetGraphics;
 
 public class MagicTableEncoder <C extends AbstractMagicContent> extends AbstractStatsTableEncoder<IMagicStats, ReportSession> {
 

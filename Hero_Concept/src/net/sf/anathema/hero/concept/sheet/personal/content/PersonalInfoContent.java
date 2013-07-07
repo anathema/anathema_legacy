@@ -2,8 +2,8 @@ package net.sf.anathema.hero.concept.sheet.personal.content;
 
 import net.sf.anathema.character.main.caste.CasteType;
 import net.sf.anathema.character.main.type.ICharacterType;
-import net.sf.anathema.character.reporting.pdf.content.AbstractSubContent;
-import net.sf.anathema.character.reporting.pdf.content.SubBoxContent;
+import net.sf.anathema.hero.sheet.pdf.content.AbstractSubContent;
+import net.sf.anathema.hero.sheet.pdf.content.SubBoxContent;
 import net.sf.anathema.hero.concept.HeroConceptFetcher;
 import net.sf.anathema.hero.description.HeroDescription;
 import net.sf.anathema.hero.description.HeroDescriptionFetcher;

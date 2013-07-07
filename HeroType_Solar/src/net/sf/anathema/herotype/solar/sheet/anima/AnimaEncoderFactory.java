@@ -1,8 +1,8 @@
 package net.sf.anathema.herotype.solar.sheet.anima;
 
-import net.sf.anathema.character.reporting.pdf.content.BasicContent;
-import net.sf.anathema.character.reporting.pdf.rendering.boxes.RegisteredEncoderFactory;
-import net.sf.anathema.character.reporting.pdf.rendering.general.table.ITableEncoder;
+import net.sf.anathema.hero.sheet.pdf.content.BasicContent;
+import net.sf.anathema.hero.sheet.pdf.encoder.boxes.RegisteredEncoderFactory;
+import net.sf.anathema.hero.sheet.pdf.encoder.general.table.ITableEncoder;
 import net.sf.anathema.herotype.solar.SolarCharacterModule;
 import net.sf.anathema.hero.concept.sheet.anima.AbstractAnimaEncoderFactory;
 import net.sf.anathema.hero.concept.sheet.anima.AnimaTableEncoder;

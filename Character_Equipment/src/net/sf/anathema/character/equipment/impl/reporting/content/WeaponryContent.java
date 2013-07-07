@@ -7,7 +7,7 @@ import net.sf.anathema.character.equipment.impl.reporting.content.stats.weapons.
 import net.sf.anathema.character.equipment.impl.reporting.content.stats.weapons.RateWeaponStatsGroup;
 import net.sf.anathema.character.equipment.impl.reporting.content.stats.weapons.SecondEditionDefenceWeaponStatsGroup;
 import net.sf.anathema.character.equipment.impl.reporting.content.stats.weapons.SecondEditionSpeedWeaponStatsGroup;
-import net.sf.anathema.character.reporting.pdf.content.SubBoxContent;
+import net.sf.anathema.hero.sheet.pdf.content.SubBoxContent;
 import net.sf.anathema.hero.equipment.EquipmentModel;
 import net.sf.anathema.hero.model.Hero;
 import net.sf.anathema.lib.resources.Resources;

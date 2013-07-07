@@ -1,13 +1,13 @@
 package net.sf.anathema.hero.concept.sheet.anima;
 
-import net.sf.anathema.character.reporting.pdf.content.BasicContent;
-import net.sf.anathema.character.reporting.pdf.rendering.EncoderIds;
-import net.sf.anathema.character.reporting.pdf.rendering.boxes.AbstractEncoderFactory;
-import net.sf.anathema.character.reporting.pdf.rendering.general.box.ContentEncoder;
-import net.sf.anathema.character.reporting.pdf.rendering.general.table.ITableEncoder;
+import net.sf.anathema.hero.sheet.pdf.content.BasicContent;
+import net.sf.anathema.hero.sheet.pdf.encoder.EncoderIds;
+import net.sf.anathema.hero.sheet.pdf.encoder.boxes.AbstractEncoderFactory;
+import net.sf.anathema.hero.sheet.pdf.encoder.general.box.ContentEncoder;
+import net.sf.anathema.hero.sheet.pdf.encoder.general.table.ITableEncoder;
 import net.sf.anathema.lib.resources.Resources;
 
-import static net.sf.anathema.character.reporting.pdf.rendering.page.IVoidStateFormatConstants.SMALLER_FONT_SIZE;
+import static net.sf.anathema.hero.sheet.pdf.page.IVoidStateFormatConstants.SMALLER_FONT_SIZE;
 
 public abstract class AbstractAnimaEncoderFactory extends AbstractEncoderFactory {
 

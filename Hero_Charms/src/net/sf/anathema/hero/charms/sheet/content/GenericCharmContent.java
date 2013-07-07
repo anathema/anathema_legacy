@@ -1,14 +1,14 @@
 package net.sf.anathema.hero.charms.sheet.content;
 
 import net.sf.anathema.character.main.traits.TraitType;
-import net.sf.anathema.character.reporting.pdf.content.SubBoxContent;
+import net.sf.anathema.hero.sheet.pdf.content.SubBoxContent;
 import net.sf.anathema.hero.model.Hero;
 import net.sf.anathema.lib.resources.Resources;
 
 import java.util.ArrayList;
 import java.util.List;
 
-import static net.sf.anathema.character.reporting.pdf.rendering.page.IVoidStateFormatConstants.TYPE_LONG_FORM_CUTOFF;
+import static net.sf.anathema.hero.sheet.pdf.page.IVoidStateFormatConstants.TYPE_LONG_FORM_CUTOFF;
 
 public class GenericCharmContent implements SubBoxContent {
 

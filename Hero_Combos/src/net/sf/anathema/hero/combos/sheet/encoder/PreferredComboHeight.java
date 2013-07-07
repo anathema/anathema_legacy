@@ -1,10 +1,10 @@
 package net.sf.anathema.hero.combos.sheet.encoder;
 
 import com.itextpdf.text.DocumentException;
-import net.sf.anathema.character.reporting.pdf.rendering.boxes.EncodingMetrics;
-import net.sf.anathema.character.reporting.pdf.rendering.boxes.PreferredHeight;
-import net.sf.anathema.character.reporting.pdf.rendering.extent.Bounds;
-import net.sf.anathema.character.reporting.pdf.rendering.graphics.SheetGraphics;
+import net.sf.anathema.hero.sheet.pdf.encoder.boxes.EncodingMetrics;
+import net.sf.anathema.hero.sheet.pdf.encoder.boxes.PreferredHeight;
+import net.sf.anathema.hero.sheet.pdf.encoder.extent.Bounds;
+import net.sf.anathema.hero.sheet.pdf.encoder.graphics.SheetGraphics;
 
 public class PreferredComboHeight implements PreferredHeight {
 

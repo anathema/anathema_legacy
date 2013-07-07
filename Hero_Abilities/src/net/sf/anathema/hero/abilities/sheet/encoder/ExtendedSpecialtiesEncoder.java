@@ -3,14 +3,14 @@ package net.sf.anathema.hero.abilities.sheet.encoder;
 import net.sf.anathema.character.main.traits.TraitType;
 import net.sf.anathema.character.main.traits.groups.IIdentifiedTraitTypeGroup;
 import net.sf.anathema.hero.abilities.model.AbilityModelFetcher;
-import net.sf.anathema.character.reporting.pdf.content.ReportSession;
-import net.sf.anathema.character.reporting.pdf.content.stats.ValuedTraitReference;
-import net.sf.anathema.character.reporting.pdf.rendering.extent.Bounds;
-import net.sf.anathema.character.reporting.pdf.rendering.extent.Position;
-import net.sf.anathema.character.reporting.pdf.rendering.general.box.ContentEncoder;
-import net.sf.anathema.character.reporting.pdf.rendering.general.traits.AbstractNamedTraitEncoder;
-import net.sf.anathema.character.reporting.pdf.rendering.general.traits.PdfTraitEncoder;
-import net.sf.anathema.character.reporting.pdf.rendering.graphics.SheetGraphics;
+import net.sf.anathema.hero.sheet.pdf.session.ReportSession;
+import net.sf.anathema.hero.sheet.pdf.content.stats.ValuedTraitReference;
+import net.sf.anathema.hero.sheet.pdf.encoder.extent.Bounds;
+import net.sf.anathema.hero.sheet.pdf.encoder.extent.Position;
+import net.sf.anathema.hero.sheet.pdf.encoder.general.box.ContentEncoder;
+import net.sf.anathema.hero.sheet.pdf.encoder.general.traits.AbstractNamedTraitEncoder;
+import net.sf.anathema.hero.sheet.pdf.encoder.general.traits.PdfTraitEncoder;
+import net.sf.anathema.hero.sheet.pdf.encoder.graphics.SheetGraphics;
 import net.sf.anathema.hero.abilities.sheet.content.SpecialtiesContentCandidate;
 import net.sf.anathema.lib.resources.Resources;
 
@@ -19,9 +19,9 @@ import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
 
-import static net.sf.anathema.character.reporting.pdf.rendering.page.IVoidStateFormatConstants.BARE_LINE_HEIGHT;
-import static net.sf.anathema.character.reporting.pdf.rendering.page.IVoidStateFormatConstants.PADDING;
-import static net.sf.anathema.character.reporting.pdf.rendering.page.IVoidStateFormatConstants.TEXT_PADDING;
+import static net.sf.anathema.hero.sheet.pdf.page.IVoidStateFormatConstants.BARE_LINE_HEIGHT;
+import static net.sf.anathema.hero.sheet.pdf.page.IVoidStateFormatConstants.PADDING;
+import static net.sf.anathema.hero.sheet.pdf.page.IVoidStateFormatConstants.TEXT_PADDING;
 
 public class ExtendedSpecialtiesEncoder extends AbstractNamedTraitEncoder implements ContentEncoder {
 

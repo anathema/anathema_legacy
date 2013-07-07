@@ -1,10 +1,10 @@
 package net.sf.anathema.character.equipment.impl.reporting.rendering.possessions;
 
-import net.sf.anathema.character.reporting.pdf.content.BasicContent;
-import net.sf.anathema.character.reporting.pdf.rendering.EncoderIds;
-import net.sf.anathema.character.reporting.pdf.rendering.boxes.GlobalEncoderFactory;
-import net.sf.anathema.character.reporting.pdf.rendering.boxes.RegisteredEncoderFactory;
-import net.sf.anathema.character.reporting.pdf.rendering.general.box.ContentEncoder;
+import net.sf.anathema.hero.sheet.pdf.content.BasicContent;
+import net.sf.anathema.hero.sheet.pdf.encoder.EncoderIds;
+import net.sf.anathema.hero.sheet.pdf.encoder.boxes.GlobalEncoderFactory;
+import net.sf.anathema.hero.sheet.pdf.encoder.boxes.RegisteredEncoderFactory;
+import net.sf.anathema.hero.sheet.pdf.encoder.general.box.ContentEncoder;
 import net.sf.anathema.lib.resources.Resources;
 
 @RegisteredEncoderFactory

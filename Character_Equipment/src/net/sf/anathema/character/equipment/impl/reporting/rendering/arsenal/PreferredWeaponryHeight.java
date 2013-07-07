@@ -1,10 +1,10 @@
 package net.sf.anathema.character.equipment.impl.reporting.rendering.arsenal;
 
-import net.sf.anathema.character.reporting.pdf.rendering.boxes.EncodingMetrics;
-import net.sf.anathema.character.reporting.pdf.rendering.boxes.PreferredHeight;
-import net.sf.anathema.character.reporting.pdf.rendering.general.box.BoxBoundsFactory;
+import net.sf.anathema.hero.sheet.pdf.encoder.boxes.EncodingMetrics;
+import net.sf.anathema.hero.sheet.pdf.encoder.boxes.PreferredHeight;
+import net.sf.anathema.hero.sheet.pdf.encoder.general.box.BoxBoundsFactory;
 
-import static net.sf.anathema.character.reporting.pdf.rendering.page.IVoidStateFormatConstants.WEAPON_HEIGHT_SECOND_EDITION;
+import static net.sf.anathema.hero.sheet.pdf.page.IVoidStateFormatConstants.WEAPON_HEIGHT_SECOND_EDITION;
 
 public class PreferredWeaponryHeight implements PreferredHeight {
   @Override
