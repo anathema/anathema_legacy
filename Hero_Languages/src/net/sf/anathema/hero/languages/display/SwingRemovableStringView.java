@@ -11,14 +11,14 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 import java.awt.Dimension;
 
-public class RemovableStringView implements IRemovableEntryView {
+public class SwingRemovableStringView implements RemovableEntryView {
 
   private final JButton button;
   private final JLabel label;
   private JPanel contentPanel;
   private final Icon removeIcon;
 
-  public RemovableStringView(Icon removeIcon, String string) {
+  public SwingRemovableStringView(Icon removeIcon, String string) {
     this.removeIcon = removeIcon;
     this.label = new JLabel(string);
     this.button = new JButton(removeIcon);

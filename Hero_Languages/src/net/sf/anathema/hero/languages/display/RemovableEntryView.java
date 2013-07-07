@@ -2,7 +2,7 @@ package net.sf.anathema.hero.languages.display;
 
 import net.sf.anathema.interaction.Command;
 
-public interface IRemovableEntryView {
+public interface RemovableEntryView {
 
   void addButtonListener(Command command);
 

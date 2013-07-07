@@ -1,6 +1,6 @@
 package net.sf.anathema.character.main.overview;
 
-import net.sf.anathema.character.main.library.overview.OverviewCategory;
+import net.sf.anathema.character.main.library.overview.SwingOverviewCategory;
 import org.junit.Test;
 
 import javax.swing.JComponent;
@@ -15,6 +15,6 @@ public class OverviewCategory_Test {
   public void canCreateBorderOnJava7() {
     assumeTrue(!GraphicsEnvironment.isHeadless());
     JComponent parent = new JPanel();
-    new OverviewCategory(parent, "Title", true);
+    new SwingOverviewCategory(parent, "Title", true);
   }
 }

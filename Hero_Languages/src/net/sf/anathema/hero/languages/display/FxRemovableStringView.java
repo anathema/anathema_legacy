@@ -1,26 +1,37 @@
 package net.sf.anathema.hero.languages.display;
 
+import javafx.scene.control.Label;
+import net.miginfocom.layout.CC;
 import net.sf.anathema.interaction.Command;
+import net.sf.anathema.lib.file.RelativePath;
+import net.sf.anathema.platform.tool.FxButtonTool;
 import org.tbee.javafx.scene.layout.MigPane;
 
-import javax.swing.ImageIcon;
+public class FxRemovableStringView implements RemovableEntryView {
+  private final Label label;
+  private final FxButtonTool button;
+  private MigPane parent;
 
-public class FxRemovableStringView implements IRemovableEntryView{
-  public FxRemovableStringView(ImageIcon removeIcon, String label) {
-    //To change body of created methods use File | Settings | File Templates.
+  public FxRemovableStringView(RelativePath removeIcon, String label) {
+    this.label = new Label(label);
+    this.button = FxButtonTool.ForToolbar();
+    button.setIcon(removeIcon);
   }
 
   public void addTo(MigPane entryPanel) {
-    //To change body of created methods use File | Settings | File Templates.
+    this.parent = entryPanel;
+    entryPanel.add(label, new CC().growX().pushX().alignY("top"));
+    entryPanel.add(button.getNode(), new CC().alignY("top"));
   }
 
   @Override
   public void addButtonListener(Command command) {
-    //To change body of implemented methods use File | Settings | File Templates.
+    button.setCommand(command);
   }
 
   @Override
   public void delete() {
-    //To change body of implemented methods use File | Settings | File Templates.
+    parent.getChildren().remove(label);
+    parent.getChildren().remove(button.getNode());
   }
 }

@@ -1,6 +1,6 @@
 package net.sf.anathema.hero.languages.display;
 
-import net.sf.anathema.character.main.library.overview.IOverviewCategory;
+import net.sf.anathema.character.main.library.overview.OverviewCategory;
 import net.sf.anathema.character.main.library.removableentry.RemovableEntryListener;
 import net.sf.anathema.framework.presenter.resources.BasicUi;
 import net.sf.anathema.hero.languages.model.LanguagesModel;
@@ -25,7 +25,7 @@ public class LanguagesPresenter {
   private final LanguagesModel model;
   private final LanguagesView view;
   private final Resources resources;
-  private final Map<Identifier, IRemovableEntryView> viewsByEntry = new HashMap<>();
+  private final Map<Identifier, RemovableEntryView> viewsByEntry = new HashMap<>();
   private final Map<String, Identifier> languagesByDisplayName = new HashMap<>();
 
   public LanguagesPresenter(LanguagesModel model, LanguagesView view, Resources resources) {
@@ -40,7 +40,7 @@ public class LanguagesPresenter {
   }
 
   private void initPointPresentation() {
-    IOverviewCategory overview = view.addOverview(resources.getString("Linguistics.Overview.Border"));
+    OverviewCategory overview = view.addOverview(resources.getString("Linguistics.Overview.Border"));
     final IValueView<Integer> familyView = overview.addIntegerValueView(
             resources.getString("Linguistics.Overview.Families"), 1);
     final IValueView<Integer> barbarianView = overview.addIntegerValueView(
@@ -92,7 +92,7 @@ public class LanguagesPresenter {
   @SuppressWarnings("serial")
   private void initEntryPresentation() {
     String labelText = resources.getString("Linguistics.SelectionView.Label");
-    AgnosticUIConfiguration uiConfiguration = new LanguageUiConfiguration();
+    AgnosticUIConfiguration<Object> uiConfiguration = new LanguageUiConfiguration();
     final ObjectSelectionViewWithTool<Object> selectionView = view.addSelectionView(labelText, uiConfiguration);
     selectionView.setObjects(model.getPredefinedLanguages());
     selectionView.addObjectSelectionChangedListener(new ObjectValueListener<Object>() {
@@ -138,7 +138,7 @@ public class LanguagesPresenter {
 
       @Override
       public void entryRemoved(Identifier entry) {
-        IRemovableEntryView entryView = viewsByEntry.remove(entry);
+        RemovableEntryView entryView = viewsByEntry.remove(entry);
         view.removeEntryView(entryView);
       }
     });
@@ -152,7 +152,7 @@ public class LanguagesPresenter {
 
   private void addEntry(final Identifier language) {
     RelativePath removeIcon = new BasicUi().getRemoveIconPath();
-    IRemovableEntryView entryView = view.addEntryView(removeIcon, getDisplayString(language));
+    RemovableEntryView entryView = view.addEntryView(removeIcon, getDisplayString(language));
     viewsByEntry.put(language, entryView);
     entryView.addButtonListener(new Command() {
       @Override
