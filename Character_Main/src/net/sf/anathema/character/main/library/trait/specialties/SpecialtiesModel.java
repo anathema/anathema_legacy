@@ -13,9 +13,9 @@ public interface SpecialtiesModel extends HeroModel {
 
   ISubTraitContainer getSpecialtiesContainer(TraitType traitType);
 
-  TraitType[] getAllTraits();
+  TraitType[] getAllParentTraits();
 
-  TraitType[] getAllEligibleTraits();
+  TraitType[] getAllEligibleParentTraits();
 
   void setCurrentTrait(TraitType newValue);
 

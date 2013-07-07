@@ -5,4 +5,5 @@ public class TraitPto {
   public String name;
   public int creationValue;
   public Integer experienceValue;
+  public Boolean favored;
 }

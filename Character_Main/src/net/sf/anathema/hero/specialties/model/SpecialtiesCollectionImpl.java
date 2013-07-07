@@ -26,7 +26,7 @@ public class SpecialtiesCollectionImpl implements SpecialtiesCollection {
   @Override
   public void addSpecialtyListChangeListener(final ChangeListener listener) {
     SpecialtiesModel config = SpecialtiesModelFetcher.fetch(hero);
-    for (TraitType trait : config.getAllTraits()) {
+    for (TraitType trait : config.getAllParentTraits()) {
       config.getSpecialtiesContainer(trait).addSubTraitListener(new ISpecialtyListener() {
         @Override
         public void subTraitValueChanged() {

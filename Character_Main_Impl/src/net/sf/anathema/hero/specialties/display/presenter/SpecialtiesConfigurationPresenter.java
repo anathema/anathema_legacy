@@ -155,11 +155,11 @@ public class SpecialtiesConfigurationPresenter implements Presenter {
   }
 
   private TraitType[] getAllTraits() {
-    return specialtyManagement.getAllTraits();
+    return specialtyManagement.getAllParentTraits();
   }
 
   private TraitType[] getAllEligibleTraits() {
-    return specialtyManagement.getAllEligibleTraits();
+    return specialtyManagement.getAllEligibleParentTraits();
   }
 
   private void updateSpecialtyViewButtons() {
