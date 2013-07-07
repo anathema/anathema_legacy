@@ -129,6 +129,7 @@ public class LanguagesPresenter {
 
       @Override
       public void entryAllowed(boolean complete) {
+        selectionView.setSelectedObject(model.getSelectedEntry());
         if (complete) {
           addButton.enable();
         } else {
