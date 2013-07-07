@@ -17,6 +17,7 @@ public class FxSelectionViewWithTool<V> implements ObjectSelectionViewWithTool<V
 
   public FxSelectionViewWithTool(AgnosticUIConfiguration<V> configuration, String labelText) {
     comboBox = new ComboBoxSelectionView<>(labelText, configuration);
+    comboBox.makeEditable();
   }
 
   @Override
@@ -56,8 +57,13 @@ public class FxSelectionViewWithTool<V> implements ObjectSelectionViewWithTool<V
 
   @Override
   public Tool addTool() {
-    FxButtonTool tool = FxButtonTool.ForToolbar();
-    buttonPanel.add(tool.getNode());
+    final FxButtonTool tool = FxButtonTool.ForToolbar();
+    FxThreading.runOnCorrectThread(new Runnable() {
+      @Override
+      public void run() {
+        buttonPanel.add(tool.getNode());
+      }
+    });
     return tool;
   }
 
