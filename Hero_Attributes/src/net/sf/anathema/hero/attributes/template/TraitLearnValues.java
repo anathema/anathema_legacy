@@ -1,6 +1,6 @@
 package net.sf.anathema.hero.attributes.template;
 
-import net.sf.anathema.character.library.trait.rules.ITraitRules;
+import net.sf.anathema.character.main.library.trait.rules.ITraitRules;
 import net.sf.anathema.lib.util.Identifier;
 
 public class TraitLearnValues {

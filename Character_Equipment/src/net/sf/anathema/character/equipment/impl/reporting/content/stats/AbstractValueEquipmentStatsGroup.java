@@ -1,6 +1,6 @@
 package net.sf.anathema.character.equipment.impl.reporting.content.stats;
 
-import net.sf.anathema.character.generic.equipment.weapon.IEquipmentStats;
+import net.sf.anathema.character.main.equipment.weapon.IEquipmentStats;
 import net.sf.anathema.character.reporting.pdf.content.stats.AbstractValueStatsGroup;
 import net.sf.anathema.lib.resources.Resources;
 

@@ -1,9 +1,9 @@
 package net.sf.anathema.character.main.testing.dummy.magic;
 
-import net.sf.anathema.character.generic.magic.ISpell;
-import net.sf.anathema.character.generic.magic.spells.CircleType;
+import net.sf.anathema.character.main.magic.ISpell;
+import net.sf.anathema.character.main.magic.spells.CircleType;
 import net.sf.anathema.character.main.model.spells.SpellModel;
-import net.sf.anathema.character.model.IMagicLearnListener;
+import net.sf.anathema.character.main.IMagicLearnListener;
 import net.sf.anathema.hero.change.ChangeAnnouncer;
 import net.sf.anathema.hero.model.Hero;
 import net.sf.anathema.hero.model.InitializationContext;

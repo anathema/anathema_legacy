@@ -1,7 +1,7 @@
 package net.sf.anathema.hero.template;
 
-import net.sf.anathema.character.generic.data.IExtensibleDataSet;
-import net.sf.anathema.character.generic.data.IExtensibleDataSetCompiler;
+import net.sf.anathema.character.main.data.IExtensibleDataSet;
+import net.sf.anathema.character.main.data.IExtensibleDataSetCompiler;
 import net.sf.anathema.initialization.ExtensibleDataSetCompiler;
 import net.sf.anathema.initialization.ObjectFactory;
 import net.sf.anathema.lib.resources.ResourceFile;

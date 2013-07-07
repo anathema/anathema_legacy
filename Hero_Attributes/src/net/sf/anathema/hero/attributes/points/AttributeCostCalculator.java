@@ -1,21 +1,21 @@
 package net.sf.anathema.hero.attributes.points;
 
-import net.sf.anathema.character.generic.template.creation.BonusPointCosts;
-import net.sf.anathema.character.generic.template.points.AttributeGroupPriority;
-import net.sf.anathema.character.generic.template.points.IAttributeCreationPoints;
-import net.sf.anathema.character.generic.template.points.IAttributeGroupPriorityVisitor;
-import net.sf.anathema.character.generic.template.points.IFavorableTraitCreationPoints;
-import net.sf.anathema.character.generic.traits.types.AttributeGroupType;
-import net.sf.anathema.character.library.trait.FavorableTraitCost;
-import net.sf.anathema.character.library.trait.Trait;
-import net.sf.anathema.character.library.trait.TraitGroup;
+import net.sf.anathema.character.main.template.creation.BonusPointCosts;
+import net.sf.anathema.character.main.template.points.AttributeGroupPriority;
+import net.sf.anathema.character.main.template.points.IAttributeCreationPoints;
+import net.sf.anathema.character.main.template.points.IAttributeGroupPriorityVisitor;
+import net.sf.anathema.character.main.template.points.IFavorableTraitCreationPoints;
+import net.sf.anathema.character.main.traits.types.AttributeGroupType;
+import net.sf.anathema.character.main.library.trait.FavorableTraitCost;
+import net.sf.anathema.character.main.library.trait.Trait;
+import net.sf.anathema.character.main.library.trait.TraitGroup;
 import net.sf.anathema.hero.attributes.model.AttributeModel;
-import net.sf.anathema.character.model.creation.bonus.basic.ElementCreationCost;
-import net.sf.anathema.character.model.creation.bonus.basic.ElementCreationCostCalculator;
-import net.sf.anathema.character.model.creation.bonus.basic.ICostElement;
-import net.sf.anathema.character.model.creation.bonus.trait.TraitCostElement;
-import net.sf.anathema.character.model.creation.bonus.util.TraitGroupCost;
-import net.sf.anathema.character.model.creation.bonus.util.TraitSorter;
+import net.sf.anathema.character.main.creation.bonus.basic.ElementCreationCost;
+import net.sf.anathema.character.main.creation.bonus.basic.ElementCreationCostCalculator;
+import net.sf.anathema.character.main.creation.bonus.basic.ICostElement;
+import net.sf.anathema.character.main.creation.bonus.trait.TraitCostElement;
+import net.sf.anathema.character.main.creation.bonus.util.TraitGroupCost;
+import net.sf.anathema.character.main.creation.bonus.util.TraitSorter;
 import net.sf.anathema.hero.points.HeroBonusPointCalculator;
 
 import java.util.ArrayList;

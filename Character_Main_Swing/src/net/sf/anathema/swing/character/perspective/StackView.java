@@ -1,6 +1,6 @@
 package net.sf.anathema.swing.character.perspective;
 
-import net.sf.anathema.character.perspective.model.CharacterIdentifier;
+import net.sf.anathema.character.main.perspective.model.CharacterIdentifier;
 import net.sf.anathema.framework.swing.IView;
 
 import javax.swing.JComponent;

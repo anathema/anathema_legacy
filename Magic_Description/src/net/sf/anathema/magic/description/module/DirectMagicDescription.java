@@ -1,6 +1,6 @@
 package net.sf.anathema.magic.description.module;
 
-import net.sf.anathema.character.generic.magic.description.MagicDescription;
+import net.sf.anathema.character.main.magic.description.MagicDescription;
 
 public class DirectMagicDescription implements MagicDescription {
   private String description;

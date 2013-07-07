@@ -1,11 +1,11 @@
 package net.sf.anathema.character.main.templateparser;
 
 import junit.framework.TestCase;
-import net.sf.anathema.character.generic.framework.xml.trait.GenericTraitTemplate;
-import net.sf.anathema.character.generic.framework.xml.trait.GenericTraitTemplateParser;
-import net.sf.anathema.character.generic.impl.traits.limitation.EssenceBasedLimitation;
-import net.sf.anathema.character.generic.impl.traits.limitation.StaticTraitLimitation;
-import net.sf.anathema.character.generic.traits.LowerableState;
+import net.sf.anathema.character.main.xml.trait.GenericTraitTemplate;
+import net.sf.anathema.character.main.xml.trait.GenericTraitTemplateParser;
+import net.sf.anathema.character.main.traits.limitation.EssenceBasedLimitation;
+import net.sf.anathema.character.main.traits.limitation.StaticTraitLimitation;
+import net.sf.anathema.character.main.traits.LowerableState;
 import net.sf.anathema.lib.exception.AnathemaException;
 import net.sf.anathema.lib.xml.DocumentUtilities;
 import org.dom4j.Element;

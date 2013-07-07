@@ -1,6 +1,6 @@
 package net.sf.anathema.character.equipment.item;
 
-import net.sf.anathema.character.generic.equipment.ArtifactStats;
+import net.sf.anathema.character.main.equipment.ArtifactStats;
 import net.sf.anathema.lib.util.Identifier;
 
 public interface MutableArtifactStats extends ArtifactStats {

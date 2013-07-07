@@ -1,8 +1,8 @@
 package net.sf.anathema.character.equipment;
 
 import com.google.common.base.Functions;
-import net.sf.anathema.character.generic.equipment.ArtifactAttuneType;
-import net.sf.anathema.character.generic.type.ICharacterType;
+import net.sf.anathema.character.main.equipment.ArtifactAttuneType;
+import net.sf.anathema.character.main.type.ICharacterType;
 import net.sf.anathema.initialization.ObjectFactory;
 
 import java.util.Collection;

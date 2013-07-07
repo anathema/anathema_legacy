@@ -1,6 +1,6 @@
 package net.sf.anathema.character.main.trait;
 
-import net.sf.anathema.character.generic.traits.types.AttributeGroupType;
+import net.sf.anathema.character.main.traits.types.AttributeGroupType;
 import org.junit.Test;
 
 import java.util.Arrays;

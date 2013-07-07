@@ -1,8 +1,8 @@
 package net.sf.anathema.character.equipment.dummy;
 
 import net.sf.anathema.character.equipment.impl.character.model.stats.AbstractCombatStats;
-import net.sf.anathema.character.generic.equipment.weapon.IArmourStats;
-import net.sf.anathema.character.generic.health.HealthType;
+import net.sf.anathema.character.main.equipment.weapon.IArmourStats;
+import net.sf.anathema.character.main.health.HealthType;
 import net.sf.anathema.lib.util.Identifier;
 
 public class DemoNaturalArmour extends AbstractCombatStats implements IArmourStats {

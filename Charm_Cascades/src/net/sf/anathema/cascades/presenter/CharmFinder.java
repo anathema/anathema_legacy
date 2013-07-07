@@ -1,14 +1,14 @@
 package net.sf.anathema.cascades.presenter;
 
 import com.google.common.base.Predicate;
-import net.sf.anathema.character.generic.impl.magic.persistence.ICharmCache;
-import net.sf.anathema.character.generic.magic.ICharm;
-import net.sf.anathema.character.generic.type.CharacterTypes;
-import net.sf.anathema.character.generic.type.ICharacterType;
+import net.sf.anathema.character.main.magic.persistence.ICharmCache;
+import net.sf.anathema.character.main.magic.ICharm;
+import net.sf.anathema.character.main.type.CharacterTypes;
+import net.sf.anathema.character.main.type.ICharacterType;
 import net.sf.anathema.lib.lang.ArrayUtilities;
 import net.sf.anathema.lib.util.Identifier;
 
-import static net.sf.anathema.character.generic.impl.magic.MartialArtsUtilities.MARTIAL_ARTS;
+import static net.sf.anathema.character.main.magic.MartialArtsUtilities.MARTIAL_ARTS;
 
 public class CharmFinder {
 

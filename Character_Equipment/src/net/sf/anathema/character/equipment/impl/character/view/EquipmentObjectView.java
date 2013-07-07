@@ -2,8 +2,8 @@ package net.sf.anathema.character.equipment.impl.character.view;
 
 import net.miginfocom.swing.MigLayout;
 import net.sf.anathema.character.equipment.character.view.IEquipmentObjectView;
-import net.sf.anathema.character.library.taskpane.ITaskPaneGroupView;
-import net.sf.anathema.character.view.magic.AddToTaskPane;
+import net.sf.anathema.character.main.library.taskpane.ITaskPaneGroupView;
+import net.sf.anathema.character.main.view.magic.AddToTaskPane;
 import net.sf.anathema.interaction.Tool;
 import net.sf.anathema.lib.gui.action.ActionWidgetFactory;
 import net.sf.anathema.lib.gui.action.SmartToggleAction;

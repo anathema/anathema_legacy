@@ -1,9 +1,9 @@
 package net.sf.anathema.character.platform.module;
 
-import net.sf.anathema.character.generic.framework.CharacterModuleContainerInitializer;
-import net.sf.anathema.character.generic.framework.ICharacterGenerics;
-import net.sf.anathema.character.generic.framework.ICharacterGenericsExtension;
-import net.sf.anathema.character.generic.framework.module.CharacterModuleContainer;
+import net.sf.anathema.character.main.framework.CharacterModuleContainerInitializer;
+import net.sf.anathema.character.main.framework.ICharacterGenerics;
+import net.sf.anathema.character.main.framework.ICharacterGenericsExtension;
+import net.sf.anathema.character.main.framework.module.CharacterModuleContainer;
 import net.sf.anathema.framework.extension.IAnathemaExtension;
 import net.sf.anathema.initialization.Extension;
 import net.sf.anathema.initialization.InitializationException;
@@ -12,7 +12,7 @@ import net.sf.anathema.initialization.reflections.ReflectionObjectFactory;
 import net.sf.anathema.initialization.reflections.ResourceLoader;
 import net.sf.anathema.initialization.repository.DataFileProvider;
 
-@Extension(id = "net.sf.anathema.character.generic.framework.ICharacterGenericsExtension")
+@Extension(id = "CharacterGenericsExtension")
 public class CharacterGenericsExtension implements ICharacterGenericsExtension, IAnathemaExtension {
 
   private ICharacterGenerics characterGenerics;

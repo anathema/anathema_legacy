@@ -1,13 +1,13 @@
 package net.sf.anathema.cascades.presenter;
 
-import net.sf.anathema.character.generic.framework.ICharacterGenerics;
-import net.sf.anathema.character.generic.impl.magic.persistence.ICharmCache;
-import net.sf.anathema.character.generic.magic.ICharm;
-import net.sf.anathema.character.generic.magic.charms.CharmIdMap;
-import net.sf.anathema.character.generic.magic.charms.special.ISpecialCharm;
-import net.sf.anathema.character.generic.magic.description.MagicDescriptionProvider;
-import net.sf.anathema.charmtree.view.AbstractCharmTreeViewProperties;
-import net.sf.anathema.charmtree.view.NullSpecialCharm;
+import net.sf.anathema.character.main.framework.ICharacterGenerics;
+import net.sf.anathema.character.main.magic.persistence.ICharmCache;
+import net.sf.anathema.character.main.magic.ICharm;
+import net.sf.anathema.character.main.magic.charms.CharmIdMap;
+import net.sf.anathema.character.main.magic.charms.special.ISpecialCharm;
+import net.sf.anathema.character.main.magic.description.MagicDescriptionProvider;
+import net.sf.anathema.character.main.charmtree.view.AbstractCharmTreeViewProperties;
+import net.sf.anathema.character.main.charmtree.view.NullSpecialCharm;
 import net.sf.anathema.lib.resources.Resources;
 import net.sf.anathema.lib.util.Identifier;
 

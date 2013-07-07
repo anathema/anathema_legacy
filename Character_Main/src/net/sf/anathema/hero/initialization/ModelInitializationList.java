@@ -2,7 +2,7 @@ package net.sf.anathema.hero.initialization;
 
 import com.google.common.base.Function;
 import com.google.common.collect.Lists;
-import net.sf.anathema.character.generic.template.ConfiguredModel;
+import net.sf.anathema.character.main.template.ConfiguredModel;
 import net.sf.anathema.lib.logging.Logger;
 import net.sf.anathema.lib.util.Identifier;
 

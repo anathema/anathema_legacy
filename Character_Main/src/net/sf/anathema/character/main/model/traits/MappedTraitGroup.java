@@ -1,9 +1,9 @@
 package net.sf.anathema.character.main.model.traits;
 
-import net.sf.anathema.character.generic.traits.TraitType;
-import net.sf.anathema.character.generic.traits.groups.IIdentifiedTraitTypeGroup;
-import net.sf.anathema.character.library.trait.Trait;
-import net.sf.anathema.character.library.trait.TraitGroup;
+import net.sf.anathema.character.main.traits.TraitType;
+import net.sf.anathema.character.main.traits.groups.IIdentifiedTraitTypeGroup;
+import net.sf.anathema.character.main.library.trait.Trait;
+import net.sf.anathema.character.main.library.trait.TraitGroup;
 import net.sf.anathema.lib.util.Identifier;
 
 import java.util.ArrayList;

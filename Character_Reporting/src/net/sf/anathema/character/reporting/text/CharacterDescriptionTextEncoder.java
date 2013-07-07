@@ -8,7 +8,7 @@ import com.itextpdf.text.Font;
 import com.itextpdf.text.Paragraph;
 import com.itextpdf.text.Phrase;
 import com.itextpdf.text.pdf.MultiColumnText;
-import net.sf.anathema.character.generic.character.IGenericDescription;
+import net.sf.anathema.character.main.IGenericDescription;
 import net.sf.anathema.framework.reporting.pdf.PdfReportUtils;
 import net.sf.anathema.lib.resources.Resources;
 

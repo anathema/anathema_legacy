@@ -1,8 +1,8 @@
 package net.sf.anathema.character.main.charmparser;
 
-import net.sf.anathema.character.generic.impl.magic.persistence.builder.CostListBuilder;
-import net.sf.anathema.character.generic.magic.general.ICost;
-import net.sf.anathema.character.generic.magic.general.ICostList;
+import net.sf.anathema.character.main.magic.persistence.builder.CostListBuilder;
+import net.sf.anathema.character.main.magic.general.ICost;
+import net.sf.anathema.character.main.magic.general.ICostList;
 import net.sf.anathema.lib.exception.PersistenceException;
 import org.junit.Test;
 

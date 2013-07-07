@@ -2,7 +2,7 @@ package net.sf.anathema.character.equipment.impl.character.model.print;
 
 import net.sf.anathema.character.equipment.character.model.IEquipmentItem;
 import net.sf.anathema.character.equipment.impl.character.model.stats.WeaponStatsDecorator;
-import net.sf.anathema.character.generic.equipment.weapon.IWeaponStats;
+import net.sf.anathema.character.main.equipment.weapon.IWeaponStats;
 import net.sf.anathema.lib.resources.Resources;
 
 public class WeaponStatsDecorationFactory implements IEquipmentStatsDecorationFactory<IWeaponStats> {

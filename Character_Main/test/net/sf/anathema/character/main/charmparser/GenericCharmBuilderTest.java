@@ -1,14 +1,14 @@
 package net.sf.anathema.character.main.charmparser;
 
-import net.sf.anathema.character.generic.impl.magic.Charm;
-import net.sf.anathema.character.generic.impl.magic.persistence.GenericCharmBuilder;
-import net.sf.anathema.character.generic.impl.magic.persistence.GenericCharmPrerequisiteBuilder;
-import net.sf.anathema.character.generic.impl.magic.persistence.builder.GenericComboRulesBuilder;
-import net.sf.anathema.character.generic.impl.magic.persistence.builder.GenericIdStringBuilder;
-import net.sf.anathema.character.generic.impl.magic.persistence.builder.prerequisite.GenericAttributeRequirementBuilder;
-import net.sf.anathema.character.generic.impl.magic.persistence.builder.prerequisite.GenericTraitPrerequisitesBuilder;
-import net.sf.anathema.character.generic.impl.magic.persistence.builder.special.SpecialCharmBuilder;
-import net.sf.anathema.character.generic.traits.types.AbilityType;
+import net.sf.anathema.character.main.magic.Charm;
+import net.sf.anathema.character.main.magic.persistence.GenericCharmBuilder;
+import net.sf.anathema.character.main.magic.persistence.GenericCharmPrerequisiteBuilder;
+import net.sf.anathema.character.main.magic.persistence.builder.GenericComboRulesBuilder;
+import net.sf.anathema.character.main.magic.persistence.builder.GenericIdStringBuilder;
+import net.sf.anathema.character.main.magic.persistence.builder.prerequisite.GenericAttributeRequirementBuilder;
+import net.sf.anathema.character.main.magic.persistence.builder.prerequisite.GenericTraitPrerequisitesBuilder;
+import net.sf.anathema.character.main.magic.persistence.builder.special.SpecialCharmBuilder;
+import net.sf.anathema.character.main.traits.types.AbilityType;
 import net.sf.anathema.character.main.testing.dummy.DummyCharacterTypes;
 import net.sf.anathema.character.main.testing.dummy.DummyExaltCharacterType;
 import org.dom4j.Element;

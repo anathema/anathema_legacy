@@ -1,8 +1,8 @@
 package net.sf.anathema.character.main.testing.dummy;
 
-import net.sf.anathema.character.generic.template.magic.AbilityFavoringType;
-import net.sf.anathema.character.generic.template.magic.FavoringTraitType;
-import net.sf.anathema.character.generic.type.ICharacterType;
+import net.sf.anathema.character.main.template.magic.AbilityFavoringType;
+import net.sf.anathema.character.main.template.magic.FavoringTraitType;
+import net.sf.anathema.character.main.type.ICharacterType;
 
 public class DummyExaltCharacterType implements ICharacterType {
 

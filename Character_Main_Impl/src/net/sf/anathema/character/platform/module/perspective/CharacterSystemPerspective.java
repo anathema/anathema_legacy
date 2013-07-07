@@ -1,9 +1,9 @@
 package net.sf.anathema.character.platform.module.perspective;
 
-import net.sf.anathema.character.perspective.CharacterGridPresenter;
-import net.sf.anathema.character.perspective.CharacterStackBridge;
-import net.sf.anathema.character.perspective.CharacterStackPresenter;
-import net.sf.anathema.character.perspective.ShowOnSelect;
+import net.sf.anathema.character.main.perspective.CharacterGridPresenter;
+import net.sf.anathema.character.main.perspective.CharacterStackBridge;
+import net.sf.anathema.character.main.perspective.CharacterStackPresenter;
+import net.sf.anathema.character.main.perspective.ShowOnSelect;
 import net.sf.anathema.framework.IApplicationModel;
 import net.sf.anathema.framework.view.perspective.Container;
 import net.sf.anathema.framework.view.perspective.Perspective;

@@ -4,9 +4,9 @@ import net.sf.anathema.character.equipment.character.model.IEquipmentItem;
 import net.sf.anathema.character.equipment.character.model.IEquipmentItemCollection;
 import net.sf.anathema.character.equipment.character.model.IEquipmentPrintModel;
 import net.sf.anathema.character.equipment.impl.character.model.natural.EffectiveArmour;
-import net.sf.anathema.character.generic.equipment.weapon.IArmourStats;
-import net.sf.anathema.character.generic.equipment.weapon.IEquipmentStats;
-import net.sf.anathema.character.generic.equipment.weapon.IWeaponStats;
+import net.sf.anathema.character.main.equipment.weapon.IArmourStats;
+import net.sf.anathema.character.main.equipment.weapon.IEquipmentStats;
+import net.sf.anathema.character.main.equipment.weapon.IWeaponStats;
 import net.sf.anathema.lib.resources.Resources;
 
 import java.util.ArrayList;

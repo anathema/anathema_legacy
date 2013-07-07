@@ -1,7 +1,7 @@
 package net.sf.anathema.character.main.model.traits;
 
-import net.sf.anathema.character.generic.traits.TraitType;
-import net.sf.anathema.character.library.trait.Trait;
+import net.sf.anathema.character.main.traits.TraitType;
+import net.sf.anathema.character.main.library.trait.Trait;
 
 public interface TraitMap {
 

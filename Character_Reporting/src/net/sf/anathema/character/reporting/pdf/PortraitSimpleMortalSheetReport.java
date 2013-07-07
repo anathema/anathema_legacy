@@ -3,8 +3,8 @@ package net.sf.anathema.character.reporting.pdf;
 import com.itextpdf.text.Document;
 import com.itextpdf.text.pdf.PdfContentByte;
 import com.itextpdf.text.pdf.PdfWriter;
-import net.sf.anathema.character.generic.framework.ICharacterGenerics;
-import net.sf.anathema.character.model.Character;
+import net.sf.anathema.character.main.framework.ICharacterGenerics;
+import net.sf.anathema.character.main.Character;
 import net.sf.anathema.character.reporting.CharacterReportingModuleObject;
 import net.sf.anathema.character.reporting.pdf.content.ReportContentRegistry;
 import net.sf.anathema.character.reporting.pdf.content.ReportSession;
@@ -79,7 +79,7 @@ public class PortraitSimpleMortalSheetReport extends AbstractPdfReport {
     if (!(itemData instanceof Character)) {
       return false;
     }
-    Character character = (net.sf.anathema.character.model.Character) itemData;
+    Character character = (Character) itemData;
     return !character.getTemplate().getTemplateType().getCharacterType().isEssenceUser();
   }
 }

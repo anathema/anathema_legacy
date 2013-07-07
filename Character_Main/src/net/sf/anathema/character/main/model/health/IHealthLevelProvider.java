@@ -1,6 +1,6 @@
 package net.sf.anathema.character.main.model.health;
 
-import net.sf.anathema.character.generic.health.HealthLevelType;
+import net.sf.anathema.character.main.health.HealthLevelType;
 
 public interface IHealthLevelProvider {
 

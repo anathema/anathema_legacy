@@ -1,7 +1,7 @@
 package net.sf.anathema.character.main.testing.dummy.template;
 
-import net.sf.anathema.character.generic.framework.xml.ITemplateParser;
-import net.sf.anathema.character.generic.framework.xml.registry.IXmlTemplateRegistry;
+import net.sf.anathema.character.main.xml.ITemplateParser;
+import net.sf.anathema.character.main.xml.registry.IXmlTemplateRegistry;
 import net.sf.anathema.lib.registry.Registry;
 import net.sf.anathema.lib.resources.ResourceFile;
 

@@ -1,6 +1,6 @@
 package net.sf.anathema.herotype.solar.model;
 
-import net.sf.anathema.character.library.virtueflaw.model.DescriptiveVirtueFlawModelImpl;
+import net.sf.anathema.character.main.library.virtueflaw.model.DescriptiveVirtueFlawModelImpl;
 import net.sf.anathema.character.main.model.othertraits.OtherTraitModel;
 import net.sf.anathema.hero.initialization.SimpleModelTreeEntry;
 import net.sf.anathema.hero.model.HeroModelAutoCollector;

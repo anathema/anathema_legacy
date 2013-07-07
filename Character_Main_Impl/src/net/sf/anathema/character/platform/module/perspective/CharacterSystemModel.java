@@ -1,16 +1,16 @@
 package net.sf.anathema.character.platform.module.perspective;
 
-import net.sf.anathema.character.CharacterPrintNameFileScanner;
-import net.sf.anathema.character.generic.framework.CharacterGenericsExtractor;
-import net.sf.anathema.character.generic.framework.ICharacterGenerics;
+import net.sf.anathema.character.main.item.CharacterPrintNameFileScanner;
+import net.sf.anathema.character.main.framework.CharacterGenericsExtractor;
+import net.sf.anathema.character.main.framework.ICharacterGenerics;
 import net.sf.anathema.character.main.model.experience.ExperienceModelFetcher;
-import net.sf.anathema.character.persistence.ExaltedCharacterPersister;
-import net.sf.anathema.character.perspective.PreloadedDescriptiveFeatures;
-import net.sf.anathema.character.perspective.model.CharacterIdentifier;
-import net.sf.anathema.character.perspective.model.CharacterItemModel;
-import net.sf.anathema.character.perspective.model.CharacterPersistenceModel;
-import net.sf.anathema.character.perspective.model.ItemSystemModel;
-import net.sf.anathema.character.perspective.model.NewCharacterListener;
+import net.sf.anathema.character.main.persistence.ExaltedCharacterPersister;
+import net.sf.anathema.character.main.perspective.PreloadedDescriptiveFeatures;
+import net.sf.anathema.character.main.perspective.model.CharacterIdentifier;
+import net.sf.anathema.character.main.perspective.model.CharacterItemModel;
+import net.sf.anathema.character.main.perspective.model.CharacterPersistenceModel;
+import net.sf.anathema.character.main.perspective.model.ItemSystemModel;
+import net.sf.anathema.character.main.perspective.model.NewCharacterListener;
 import net.sf.anathema.character.platform.module.RegExCharacterPrintNameFileScanner;
 import net.sf.anathema.character.platform.module.repository.CharacterCreationTemplateFactory;
 import net.sf.anathema.framework.IApplicationModel;
@@ -36,7 +36,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-import static net.sf.anathema.character.itemtype.CharacterItemTypeRetrieval.retrieveCharacterItemType;
+import static net.sf.anathema.character.main.itemtype.CharacterItemTypeRetrieval.retrieveCharacterItemType;
 
 public class CharacterSystemModel implements ItemSystemModel {
 

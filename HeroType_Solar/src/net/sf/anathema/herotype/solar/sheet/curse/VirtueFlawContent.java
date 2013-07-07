@@ -1,9 +1,9 @@
 package net.sf.anathema.herotype.solar.sheet.curse;
 
 import com.google.common.base.Strings;
-import net.sf.anathema.character.library.virtueflaw.model.DescriptiveVirtueFlaw;
-import net.sf.anathema.character.library.virtueflaw.model.DescriptiveVirtueFlawModel;
-import net.sf.anathema.character.library.virtueflaw.model.GreatCurseFetcher;
+import net.sf.anathema.character.main.library.virtueflaw.model.DescriptiveVirtueFlaw;
+import net.sf.anathema.character.main.library.virtueflaw.model.DescriptiveVirtueFlawModel;
+import net.sf.anathema.character.main.library.virtueflaw.model.GreatCurseFetcher;
 import net.sf.anathema.character.reporting.pdf.content.AbstractSubBoxContent;
 import net.sf.anathema.hero.model.Hero;
 import net.sf.anathema.lib.lang.StringUtilities;

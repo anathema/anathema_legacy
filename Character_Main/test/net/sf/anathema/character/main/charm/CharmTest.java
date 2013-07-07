@@ -1,8 +1,8 @@
 package net.sf.anathema.character.main.charm;
 
-import net.sf.anathema.character.generic.impl.magic.Charm;
-import net.sf.anathema.character.generic.magic.ICharm;
-import net.sf.anathema.character.magic.dummy.DummyCharm;
+import net.sf.anathema.character.main.magic.Charm;
+import net.sf.anathema.character.main.magic.ICharm;
+import net.sf.anathema.character.main.dummy.DummyCharm;
 import net.sf.anathema.character.main.testing.dummy.DummyCharmData;
 import org.junit.Test;
 

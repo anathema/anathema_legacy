@@ -1,11 +1,11 @@
 package net.sf.anathema.hero.concept.display.description.presenter;
 
-import net.sf.anathema.character.generic.framework.resources.CharacterUI;
+import net.sf.anathema.character.main.CharacterUI;
 import net.sf.anathema.character.main.model.concept.HeroConcept;
 import net.sf.anathema.character.main.model.description.HeroDescription;
-import net.sf.anathema.character.model.IIntegerDescription;
-import net.sf.anathema.character.presenter.DescriptionDetails;
-import net.sf.anathema.character.presenter.NameGeneratorCommand;
+import net.sf.anathema.character.main.IIntegerDescription;
+import net.sf.anathema.character.main.presenter.DescriptionDetails;
+import net.sf.anathema.character.main.presenter.NameGeneratorCommand;
 import net.sf.anathema.interaction.Tool;
 import net.sf.anathema.lib.control.IIntValueChangedListener;
 import net.sf.anathema.lib.gui.widgets.IIntegerView;

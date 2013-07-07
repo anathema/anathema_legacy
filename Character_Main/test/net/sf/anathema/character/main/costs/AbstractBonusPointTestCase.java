@@ -1,22 +1,22 @@
 package net.sf.anathema.character.main.costs;
 
-import net.sf.anathema.character.generic.caste.CasteType;
-import net.sf.anathema.character.generic.traits.ITraitTemplate;
-import net.sf.anathema.character.generic.traits.TraitType;
-import net.sf.anathema.character.generic.traits.groups.IIdentifiedCasteTraitTypeGroup;
-import net.sf.anathema.character.generic.traits.groups.IdentifiedCasteTraitTypeGroup;
-import net.sf.anathema.character.generic.traits.types.AbilityType;
-import net.sf.anathema.character.generic.traits.types.OtherTraitType;
-import net.sf.anathema.character.library.trait.Trait;
-import net.sf.anathema.character.library.trait.favorable.FriendlyIncrementChecker;
-import net.sf.anathema.character.library.trait.favorable.IncrementChecker;
+import net.sf.anathema.character.main.caste.CasteType;
+import net.sf.anathema.character.main.traits.ITraitTemplate;
+import net.sf.anathema.character.main.traits.TraitType;
+import net.sf.anathema.character.main.traits.groups.IIdentifiedCasteTraitTypeGroup;
+import net.sf.anathema.character.main.traits.groups.IdentifiedCasteTraitTypeGroup;
+import net.sf.anathema.character.main.traits.types.AbilityType;
+import net.sf.anathema.character.main.traits.types.OtherTraitType;
+import net.sf.anathema.character.main.library.trait.Trait;
+import net.sf.anathema.character.main.library.trait.favorable.FriendlyIncrementChecker;
+import net.sf.anathema.character.main.library.trait.favorable.IncrementChecker;
 import net.sf.anathema.character.main.model.traits.TraitModel;
 import net.sf.anathema.character.main.testing.dummy.DummyHero;
 import net.sf.anathema.character.main.testing.dummy.template.DummyTraitTemplateFactory;
-import net.sf.anathema.character.model.traits.EssenceTemplateFactory;
-import net.sf.anathema.character.model.traits.creation.DefaultTraitFactory;
-import net.sf.anathema.character.model.traits.creation.FavorableTraitFactory;
-import net.sf.anathema.character.model.traits.creation.TypedTraitTemplateFactory;
+import net.sf.anathema.character.main.traits.EssenceTemplateFactory;
+import net.sf.anathema.character.main.traits.creation.DefaultTraitFactory;
+import net.sf.anathema.character.main.traits.creation.FavorableTraitFactory;
+import net.sf.anathema.character.main.traits.creation.TypedTraitTemplateFactory;
 import net.sf.anathema.lib.collection.MultiEntryMap;
 import net.sf.anathema.lib.util.SimpleIdentifier;
 

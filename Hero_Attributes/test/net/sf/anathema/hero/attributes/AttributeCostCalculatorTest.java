@@ -1,16 +1,16 @@
 package net.sf.anathema.hero.attributes;
 
-import net.sf.anathema.character.generic.impl.template.points.AttributeCreationPoints;
-import net.sf.anathema.character.generic.impl.template.points.DefaultBonusPointCosts;
-import net.sf.anathema.character.generic.template.points.IAttributeCreationPoints;
-import net.sf.anathema.character.generic.traits.types.AttributeGroupType;
-import net.sf.anathema.character.library.trait.Trait;
+import net.sf.anathema.character.main.template.points.AttributeCreationPoints;
+import net.sf.anathema.character.main.template.points.DefaultBonusPointCosts;
+import net.sf.anathema.character.main.template.points.IAttributeCreationPoints;
+import net.sf.anathema.character.main.traits.types.AttributeGroupType;
+import net.sf.anathema.character.main.library.trait.Trait;
 import net.sf.anathema.character.main.testing.dummy.DummyHero;
 import net.sf.anathema.character.main.testing.dummy.models.DummyHeroConcept;
 import net.sf.anathema.character.main.testing.dummy.models.DummyOtherTraitModel;
 import net.sf.anathema.character.main.testing.dummy.models.DummyTraitModel;
 import net.sf.anathema.hero.attributes.points.AttributeCostCalculator;
-import net.sf.anathema.character.model.creation.bonus.util.TraitGroupCost;
+import net.sf.anathema.character.main.creation.bonus.util.TraitGroupCost;
 import net.sf.anathema.hero.attributes.model.AttributeModelImpl;
 import org.junit.Before;
 import org.junit.Test;
@@ -18,9 +18,9 @@ import org.junit.Test;
 import java.util.ArrayList;
 import java.util.List;
 
-import static net.sf.anathema.character.generic.traits.types.AttributeGroupType.Mental;
-import static net.sf.anathema.character.generic.traits.types.AttributeGroupType.Physical;
-import static net.sf.anathema.character.generic.traits.types.AttributeGroupType.Social;
+import static net.sf.anathema.character.main.traits.types.AttributeGroupType.Mental;
+import static net.sf.anathema.character.main.traits.types.AttributeGroupType.Physical;
+import static net.sf.anathema.character.main.traits.types.AttributeGroupType.Social;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertTrue;
 

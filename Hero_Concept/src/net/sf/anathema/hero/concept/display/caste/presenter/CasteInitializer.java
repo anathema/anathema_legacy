@@ -1,9 +1,9 @@
 package net.sf.anathema.hero.concept.display.caste.presenter;
 
-import net.sf.anathema.character.generic.type.ICharacterType;
-import net.sf.anathema.character.presenter.initializers.HeroModelInitializer;
-import net.sf.anathema.character.presenter.initializers.RegisteredInitializer;
-import net.sf.anathema.character.view.SectionView;
+import net.sf.anathema.character.main.type.ICharacterType;
+import net.sf.anathema.character.main.presenter.initializers.HeroModelInitializer;
+import net.sf.anathema.character.main.presenter.initializers.RegisteredInitializer;
+import net.sf.anathema.character.main.view.SectionView;
 import net.sf.anathema.framework.IApplicationModel;
 import net.sf.anathema.hero.model.Hero;
 import net.sf.anathema.initialization.reflections.Weight;

@@ -7,7 +7,7 @@ import net.sf.anathema.character.equipment.impl.character.model.stats.MeleeWeapo
 import net.sf.anathema.character.equipment.impl.character.model.stats.RangedWeaponStats;
 import net.sf.anathema.character.equipment.impl.character.model.stats.TraitModifyingStats;
 import net.sf.anathema.character.equipment.template.IEquipmentTemplate;
-import net.sf.anathema.character.generic.equipment.weapon.IEquipmentStats;
+import net.sf.anathema.character.main.equipment.weapon.IEquipmentStats;
 import org.junit.Test;
 
 import static net.sf.anathema.character.equipment.MagicalMaterial.Orichalcum;

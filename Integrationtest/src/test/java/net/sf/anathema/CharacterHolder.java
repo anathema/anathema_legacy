@@ -1,13 +1,13 @@
 package net.sf.anathema;
 
-import net.sf.anathema.character.generic.template.HeroTemplate;
+import net.sf.anathema.character.main.template.HeroTemplate;
 import net.sf.anathema.character.main.model.charms.CharmsModel;
 import net.sf.anathema.character.main.model.charms.CharmsModelFetcher;
 import net.sf.anathema.character.main.model.concept.HeroConcept;
 import net.sf.anathema.character.main.model.concept.HeroConceptFetcher;
 import net.sf.anathema.character.main.model.traits.TraitMap;
 import net.sf.anathema.character.main.model.traits.TraitModelFetcher;
-import net.sf.anathema.character.model.Character;
+import net.sf.anathema.character.main.Character;
 
 public class CharacterHolder {
   private Character character;

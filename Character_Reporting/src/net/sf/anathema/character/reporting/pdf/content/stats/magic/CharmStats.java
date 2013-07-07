@@ -1,6 +1,6 @@
 package net.sf.anathema.character.reporting.pdf.content.stats.magic;
 
-import net.sf.anathema.character.generic.magic.ICharm;
+import net.sf.anathema.character.main.magic.ICharm;
 import net.sf.anathema.character.reporting.pdf.content.magic.MagicContentHelper;
 import net.sf.anathema.lib.resources.Resources;
 

@@ -1,9 +1,9 @@
 package net.sf.anathema.hero.attributes.points;
 
-import net.sf.anathema.character.generic.template.HeroTemplate;
-import net.sf.anathema.character.generic.template.creation.BonusPointCosts;
-import net.sf.anathema.character.generic.template.points.AttributeGroupPriority;
-import net.sf.anathema.character.generic.template.points.IAttributeCreationPoints;
+import net.sf.anathema.character.main.template.HeroTemplate;
+import net.sf.anathema.character.main.template.creation.BonusPointCosts;
+import net.sf.anathema.character.main.template.points.AttributeGroupPriority;
+import net.sf.anathema.character.main.template.points.IAttributeCreationPoints;
 import net.sf.anathema.hero.attributes.model.AttributeModel;
 import net.sf.anathema.hero.attributes.model.AttributesModelFetcher;
 import net.sf.anathema.hero.change.ChangeAnnouncer;

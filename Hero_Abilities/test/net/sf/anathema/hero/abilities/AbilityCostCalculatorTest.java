@@ -1,13 +1,13 @@
 package net.sf.anathema.hero.abilities;
 
-import net.sf.anathema.character.generic.impl.template.points.AbilityCreationPoints;
-import net.sf.anathema.character.generic.impl.template.points.FixedValueRatingCosts;
-import net.sf.anathema.character.generic.template.experience.AbilityPointCosts;
-import net.sf.anathema.character.generic.template.experience.CurrentRatingCosts;
-import net.sf.anathema.character.generic.template.points.IFavorableTraitCreationPoints;
-import net.sf.anathema.character.generic.traits.types.AbilityType;
-import net.sf.anathema.character.library.trait.FavorableTraitCost;
-import net.sf.anathema.character.library.trait.Trait;
+import net.sf.anathema.character.main.template.points.AbilityCreationPoints;
+import net.sf.anathema.character.main.template.points.FixedValueRatingCosts;
+import net.sf.anathema.character.main.template.experience.AbilityPointCosts;
+import net.sf.anathema.character.main.template.experience.CurrentRatingCosts;
+import net.sf.anathema.character.main.template.points.IFavorableTraitCreationPoints;
+import net.sf.anathema.character.main.traits.types.AbilityType;
+import net.sf.anathema.character.main.library.trait.FavorableTraitCost;
+import net.sf.anathema.character.main.library.trait.Trait;
 import net.sf.anathema.character.main.costs.AbstractBonusPointTestCase;
 import net.sf.anathema.character.main.testing.dummy.DummyHero;
 import net.sf.anathema.character.main.testing.dummy.DummyInitializationContext;

@@ -4,7 +4,7 @@ import com.itextpdf.text.pdf.PdfPTable;
 import net.sf.anathema.character.equipment.impl.reporting.content.ArmourContent;
 import net.sf.anathema.character.equipment.impl.reporting.content.stats.armour.IArmourStatsGroup;
 import net.sf.anathema.character.equipment.impl.reporting.rendering.EquipmentTableEncoder;
-import net.sf.anathema.character.generic.equipment.weapon.IArmourStats;
+import net.sf.anathema.character.main.equipment.weapon.IArmourStats;
 import net.sf.anathema.character.reporting.pdf.content.ReportSession;
 import net.sf.anathema.character.reporting.pdf.content.stats.IStatsGroup;
 import net.sf.anathema.character.reporting.pdf.rendering.extent.Bounds;

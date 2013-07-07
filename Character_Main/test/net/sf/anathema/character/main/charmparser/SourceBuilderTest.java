@@ -1,8 +1,8 @@
 package net.sf.anathema.character.main.charmparser;
 
-import net.sf.anathema.character.generic.impl.magic.persistence.builder.SourceBuilder;
-import net.sf.anathema.character.generic.impl.rules.SourceBook;
-import net.sf.anathema.character.generic.rules.IExaltedSourceBook;
+import net.sf.anathema.character.main.magic.persistence.builder.SourceBuilder;
+import net.sf.anathema.character.main.rules.SourceBook;
+import net.sf.anathema.character.main.rules.IExaltedSourceBook;
 import net.sf.anathema.lib.xml.DocumentUtilities;
 import org.dom4j.Element;
 import org.junit.Test;

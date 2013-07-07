@@ -1,7 +1,7 @@
 package net.sf.anathema.hero.specialties.display.presenter;
 
-import net.sf.anathema.character.generic.framework.resources.TraitTypeInternationalizer;
-import net.sf.anathema.character.generic.traits.TraitType;
+import net.sf.anathema.character.main.TraitTypeInternationalizer;
+import net.sf.anathema.character.main.traits.TraitType;
 
 import java.util.Comparator;
 

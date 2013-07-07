@@ -1,8 +1,8 @@
 package net.sf.anathema.character.main.charmparser;
 
-import net.sf.anathema.character.generic.impl.magic.persistence.builder.IIdStringBuilder;
-import net.sf.anathema.character.generic.impl.magic.persistence.builder.IdStringBuilder;
-import net.sf.anathema.character.generic.magic.charms.CharmException;
+import net.sf.anathema.character.main.magic.persistence.builder.IIdStringBuilder;
+import net.sf.anathema.character.main.magic.persistence.builder.IdStringBuilder;
+import net.sf.anathema.character.main.magic.charms.CharmException;
 import net.sf.anathema.lib.xml.DocumentUtilities;
 import org.dom4j.Element;
 import org.junit.Test;

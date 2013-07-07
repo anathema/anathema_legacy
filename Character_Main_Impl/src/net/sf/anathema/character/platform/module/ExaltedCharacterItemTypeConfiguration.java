@@ -1,6 +1,6 @@
 package net.sf.anathema.character.platform.module;
 
-import net.sf.anathema.character.itemtype.CharacterItemTypeRetrieval;
+import net.sf.anathema.character.main.itemtype.CharacterItemTypeRetrieval;
 import net.sf.anathema.framework.item.IItemType;
 import net.sf.anathema.framework.module.ItemTypeConfiguration;
 import net.sf.anathema.framework.repository.ItemType;

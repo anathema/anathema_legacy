@@ -1,19 +1,19 @@
 package net.sf.anathema.character.main.testing.dummy;
 
-import net.sf.anathema.character.generic.magic.ICharm;
-import net.sf.anathema.character.generic.magic.ICharmData;
-import net.sf.anathema.character.generic.magic.charms.ICharmAttribute;
-import net.sf.anathema.character.generic.magic.charms.IComboRestrictions;
-import net.sf.anathema.character.generic.magic.charms.IndirectCharmRequirement;
-import net.sf.anathema.character.generic.magic.charms.duration.SimpleDuration;
-import net.sf.anathema.character.generic.magic.charms.type.CharmType;
-import net.sf.anathema.character.generic.magic.charms.type.ICharmTypeModel;
-import net.sf.anathema.character.generic.magic.general.ICostList;
-import net.sf.anathema.character.generic.rules.IExaltedSourceBook;
-import net.sf.anathema.character.generic.traits.ValuedTraitType;
-import net.sf.anathema.character.generic.traits.TraitType;
-import net.sf.anathema.character.generic.traits.types.AbilityType;
-import net.sf.anathema.character.generic.type.ICharacterType;
+import net.sf.anathema.character.main.magic.ICharm;
+import net.sf.anathema.character.main.magic.ICharmData;
+import net.sf.anathema.character.main.magic.charms.ICharmAttribute;
+import net.sf.anathema.character.main.magic.charms.IComboRestrictions;
+import net.sf.anathema.character.main.magic.charms.IndirectCharmRequirement;
+import net.sf.anathema.character.main.magic.charms.duration.SimpleDuration;
+import net.sf.anathema.character.main.magic.charms.type.CharmType;
+import net.sf.anathema.character.main.magic.charms.type.ICharmTypeModel;
+import net.sf.anathema.character.main.magic.general.ICostList;
+import net.sf.anathema.character.main.rules.IExaltedSourceBook;
+import net.sf.anathema.character.main.traits.ValuedTraitType;
+import net.sf.anathema.character.main.traits.TraitType;
+import net.sf.anathema.character.main.traits.types.AbilityType;
+import net.sf.anathema.character.main.type.ICharacterType;
 import net.sf.anathema.lib.exception.NotYetImplementedException;
 
 import java.util.Collections;
@@ -40,7 +40,7 @@ public class DummyCharmData implements ICharmData {
 
   @Override
   public ValuedTraitType getEssence() {
-    return new net.sf.anathema.character.generic.traits.types.ValuedTraitType(null, 1);
+    return new net.sf.anathema.character.main.traits.types.ValuedTraitType(null, 1);
   }
 
   @Override

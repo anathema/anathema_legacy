@@ -1,9 +1,9 @@
 package net.sf.anathema.character.main.trait;
 
-import net.sf.anathema.character.generic.impl.traits.limitation.AgeBasedLimitation;
+import net.sf.anathema.character.main.traits.limitation.AgeBasedLimitation;
 import net.sf.anathema.character.main.model.concept.HeroConcept;
 import net.sf.anathema.character.main.testing.dummy.DummyHero;
-import net.sf.anathema.character.model.IntegerDescription;
+import net.sf.anathema.character.main.IntegerDescription;
 import org.junit.Test;
 
 import static org.hamcrest.CoreMatchers.is;

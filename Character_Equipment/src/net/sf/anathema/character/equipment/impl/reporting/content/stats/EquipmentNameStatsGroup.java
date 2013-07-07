@@ -3,7 +3,7 @@ package net.sf.anathema.character.equipment.impl.reporting.content.stats;
 import com.itextpdf.text.Font;
 import com.itextpdf.text.pdf.PdfPTable;
 import net.sf.anathema.character.equipment.character.EquipmentObjectPresenter;
-import net.sf.anathema.character.generic.equipment.weapon.IEquipmentStats;
+import net.sf.anathema.character.main.equipment.weapon.IEquipmentStats;
 import net.sf.anathema.character.reporting.pdf.content.stats.AbstractNameStatsGroup;
 import net.sf.anathema.lib.resources.Resources;
 

@@ -1,8 +1,8 @@
 package net.sf.anathema.character.platform.module.repository;
 
-import net.sf.anathema.character.generic.framework.resources.CharacterUI;
-import net.sf.anathema.character.generic.type.ICharacterType;
-import net.sf.anathema.character.view.repository.ITemplateTypeAggregation;
+import net.sf.anathema.character.main.CharacterUI;
+import net.sf.anathema.character.main.type.ICharacterType;
+import net.sf.anathema.character.main.view.repository.ITemplateTypeAggregation;
 import net.sf.anathema.lib.gui.AbstractUIConfiguration;
 import net.sf.anathema.lib.gui.AgnosticUIConfiguration;
 import net.sf.anathema.lib.message.BasicMessage;

@@ -3,7 +3,7 @@ package net.sf.anathema.character.equipment.impl.character.model.stats;
 import net.sf.anathema.character.equipment.IWeaponModifiers;
 import net.sf.anathema.character.equipment.impl.character.model.ModifierFactory;
 import net.sf.anathema.character.equipment.impl.character.model.stats.modification.BaseMaterial;
-import net.sf.anathema.character.generic.equipment.weapon.IWeaponStats;
+import net.sf.anathema.character.main.equipment.weapon.IWeaponStats;
 import net.sf.anathema.lib.util.Identifier;
 import org.junit.Before;
 import org.junit.Test;

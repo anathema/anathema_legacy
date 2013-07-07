@@ -1,8 +1,7 @@
 package net.sf.anathema.character.main.magic;
 
-import net.sf.anathema.character.generic.magic.ICharm;
-import net.sf.anathema.character.generic.type.ICharacterType;
-import net.sf.anathema.character.magic.dummy.DummyCharm;
+import net.sf.anathema.character.main.type.ICharacterType;
+import net.sf.anathema.character.main.dummy.DummyCharm;
 
 public class CharmMother {
 

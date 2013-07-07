@@ -1,6 +1,6 @@
 package net.sf.anathema.hero.template;
 
-import net.sf.anathema.character.generic.framework.ICharacterGenerics;
+import net.sf.anathema.character.main.framework.ICharacterGenerics;
 import net.sf.anathema.lib.util.Identifier;
 
 public class DefaultTemplateFactory implements TemplateFactory {

@@ -1,6 +1,6 @@
 package net.sf.anathema.herotype.solar.model;
 
-import net.sf.anathema.character.generic.caste.CasteType;
+import net.sf.anathema.character.main.caste.CasteType;
 
 public enum SolarCaste implements CasteType {
 

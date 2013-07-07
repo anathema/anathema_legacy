@@ -2,17 +2,17 @@ package net.sf.anathema.cascades.presenter;
 
 import net.sf.anathema.cascades.module.ICascadeViewFactory;
 import net.sf.anathema.cascades.presenter.view.ICascadeView;
-import net.sf.anathema.character.generic.framework.ICharacterGenerics;
-import net.sf.anathema.character.generic.impl.magic.persistence.ICharmCache;
-import net.sf.anathema.character.generic.magic.charms.GroupCharmTree;
-import net.sf.anathema.character.generic.magic.description.MagicDescriptionProvider;
-import net.sf.anathema.character.generic.template.ITemplateRegistry;
-import net.sf.anathema.character.generic.type.CharacterTypes;
-import net.sf.anathema.charmtree.presenter.AbstractCascadePresenter;
-import net.sf.anathema.charmtree.presenter.CharmDye;
-import net.sf.anathema.charmtree.presenter.ConfigurableCharmDye;
-import net.sf.anathema.charmtree.view.CharmDisplayPropertiesMap;
-import net.sf.anathema.charmtree.view.DefaultNodeProperties;
+import net.sf.anathema.character.main.framework.ICharacterGenerics;
+import net.sf.anathema.character.main.magic.persistence.ICharmCache;
+import net.sf.anathema.character.main.magic.charms.GroupCharmTree;
+import net.sf.anathema.character.main.magic.description.MagicDescriptionProvider;
+import net.sf.anathema.character.main.template.ITemplateRegistry;
+import net.sf.anathema.character.main.type.CharacterTypes;
+import net.sf.anathema.character.main.charmtree.presenter.AbstractCascadePresenter;
+import net.sf.anathema.character.main.charmtree.presenter.CharmDye;
+import net.sf.anathema.character.main.charmtree.presenter.ConfigurableCharmDye;
+import net.sf.anathema.character.main.charmtree.view.CharmDisplayPropertiesMap;
+import net.sf.anathema.character.main.charmtree.view.DefaultNodeProperties;
 import net.sf.anathema.lib.resources.Resources;
 import net.sf.anathema.lib.util.Identifier;
 

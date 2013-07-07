@@ -2,7 +2,7 @@ package net.sf.anathema.character.equipment.impl.creation.view;
 
 import net.miginfocom.layout.CC;
 import net.sf.anathema.character.equipment.creation.view.IWeaponDamageView;
-import net.sf.anathema.character.generic.health.HealthType;
+import net.sf.anathema.character.main.health.HealthType;
 import net.sf.anathema.lib.control.ObjectValueListener;
 import net.sf.anathema.lib.exception.NotYetImplementedException;
 import net.sf.anathema.lib.gui.AgnosticUIConfiguration;

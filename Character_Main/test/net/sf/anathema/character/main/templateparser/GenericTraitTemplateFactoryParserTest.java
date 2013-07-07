@@ -1,13 +1,13 @@
 package net.sf.anathema.character.main.templateparser;
 
 import junit.framework.TestCase;
-import net.sf.anathema.character.generic.framework.xml.trait.GenericTraitTemplateFactory;
-import net.sf.anathema.character.generic.framework.xml.trait.GenericTraitTemplateFactoryParser;
-import net.sf.anathema.character.generic.framework.xml.trait.pool.GenericTraitTemplatePool;
-import net.sf.anathema.character.generic.traits.ITraitTemplate;
-import net.sf.anathema.character.generic.traits.types.AbilityType;
-import net.sf.anathema.character.generic.traits.types.AttributeType;
-import net.sf.anathema.character.generic.traits.types.VirtueType;
+import net.sf.anathema.character.main.xml.trait.GenericTraitTemplateFactory;
+import net.sf.anathema.character.main.xml.trait.GenericTraitTemplateFactoryParser;
+import net.sf.anathema.character.main.xml.trait.pool.GenericTraitTemplatePool;
+import net.sf.anathema.character.main.traits.ITraitTemplate;
+import net.sf.anathema.character.main.traits.types.AbilityType;
+import net.sf.anathema.character.main.traits.types.AttributeType;
+import net.sf.anathema.character.main.traits.types.VirtueType;
 import net.sf.anathema.character.main.testing.dummy.template.DummyXmlTemplateRegistry;
 import net.sf.anathema.lib.xml.DocumentUtilities;
 import org.dom4j.Element;

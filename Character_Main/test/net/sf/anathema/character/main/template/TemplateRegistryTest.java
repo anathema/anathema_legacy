@@ -1,10 +1,5 @@
 package net.sf.anathema.character.main.template;
 
-import net.sf.anathema.character.generic.impl.template.TemplateRegistry;
-import net.sf.anathema.character.generic.template.HeroTemplate;
-import net.sf.anathema.character.generic.template.ICharacterExternalsTemplate;
-import net.sf.anathema.character.generic.template.ITemplateRegistry;
-import net.sf.anathema.character.generic.template.TemplateType;
 import net.sf.anathema.character.main.testing.dummy.DummyMundaneCharacterType;
 import net.sf.anathema.character.main.testing.dummy.template.SimpleDummyCharacterTemplate;
 import org.apache.commons.lang3.ArrayUtils;

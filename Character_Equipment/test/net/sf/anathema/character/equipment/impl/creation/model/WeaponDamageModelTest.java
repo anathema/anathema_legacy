@@ -1,7 +1,7 @@
 package net.sf.anathema.character.equipment.impl.creation.model;
 
 import junit.framework.TestCase;
-import net.sf.anathema.character.generic.health.HealthType;
+import net.sf.anathema.character.main.health.HealthType;
 import net.sf.anathema.lib.control.ChangeListener;
 import net.sf.anathema.lib.control.IIntValueChangedListener;
 

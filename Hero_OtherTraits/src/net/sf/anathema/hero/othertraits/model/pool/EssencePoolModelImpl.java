@@ -1,9 +1,9 @@
 package net.sf.anathema.hero.othertraits.model.pool;
 
 import com.google.common.base.Preconditions;
-import net.sf.anathema.character.generic.framework.essence.IEssencePoolModifier;
-import net.sf.anathema.character.generic.template.HeroTemplate;
-import net.sf.anathema.character.generic.template.essence.IEssenceTemplate;
+import net.sf.anathema.character.main.essence.IEssencePoolModifier;
+import net.sf.anathema.character.main.template.HeroTemplate;
+import net.sf.anathema.character.main.template.essence.IEssenceTemplate;
 import net.sf.anathema.character.main.model.essencepool.EssencePoolModel;
 import net.sf.anathema.character.main.model.essencepool.OverdrivePool;
 import net.sf.anathema.character.main.model.traits.TraitMap;

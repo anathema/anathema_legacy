@@ -1,9 +1,9 @@
 package net.sf.anathema.character.platform.module.perspective;
 
-import net.sf.anathema.character.perspective.CharacterGridView;
-import net.sf.anathema.character.perspective.Selector;
-import net.sf.anathema.character.perspective.model.CharacterIdentifier;
-import net.sf.anathema.character.perspective.model.ItemSelectionModel;
+import net.sf.anathema.character.main.perspective.CharacterGridView;
+import net.sf.anathema.character.main.perspective.Selector;
+import net.sf.anathema.character.main.perspective.model.CharacterIdentifier;
+import net.sf.anathema.character.main.perspective.model.ItemSelectionModel;
 import net.sf.anathema.interaction.Tool;
 import net.sf.anathema.lib.resources.Resources;
 import net.sf.anathema.platform.fx.InteractionView;

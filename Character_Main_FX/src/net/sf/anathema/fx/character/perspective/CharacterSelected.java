@@ -2,8 +2,8 @@ package net.sf.anathema.fx.character.perspective;
 
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
-import net.sf.anathema.character.perspective.Selector;
-import net.sf.anathema.character.perspective.model.CharacterIdentifier;
+import net.sf.anathema.character.main.perspective.Selector;
+import net.sf.anathema.character.main.perspective.model.CharacterIdentifier;
 
 import javax.swing.SwingUtilities;
 

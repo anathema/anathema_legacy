@@ -1,11 +1,11 @@
 package net.sf.anathema.hero.specialties.points.creation;
 
-import net.sf.anathema.character.generic.template.creation.IGenericSpecialty;
-import net.sf.anathema.character.library.trait.Trait;
-import net.sf.anathema.character.library.trait.specialties.SpecialtiesModel;
-import net.sf.anathema.character.library.trait.specialties.SpecialtiesModelFetcher;
-import net.sf.anathema.character.library.trait.specialties.Specialty;
-import net.sf.anathema.character.library.trait.subtrait.ISubTraitContainer;
+import net.sf.anathema.character.main.template.creation.IGenericSpecialty;
+import net.sf.anathema.character.main.library.trait.Trait;
+import net.sf.anathema.character.main.library.trait.specialties.SpecialtiesModel;
+import net.sf.anathema.character.main.library.trait.specialties.SpecialtiesModelFetcher;
+import net.sf.anathema.character.main.library.trait.specialties.Specialty;
+import net.sf.anathema.character.main.library.trait.subtrait.ISubTraitContainer;
 import net.sf.anathema.character.main.model.traits.TraitMap;
 import net.sf.anathema.hero.model.Hero;
 import net.sf.anathema.hero.points.HeroBonusPointCalculator;

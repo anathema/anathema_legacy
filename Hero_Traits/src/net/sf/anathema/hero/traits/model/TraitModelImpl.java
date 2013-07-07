@@ -1,16 +1,16 @@
 package net.sf.anathema.hero.traits.model;
 
-import net.sf.anathema.character.generic.framework.additionaltemplate.model.TraitValueStrategy;
-import net.sf.anathema.character.library.trait.Trait;
+import net.sf.anathema.character.main.traits.TraitValueStrategy;
+import net.sf.anathema.character.main.library.trait.Trait;
 import net.sf.anathema.character.main.model.experience.ExperienceChange;
 import net.sf.anathema.character.main.model.experience.ExperienceModel;
 import net.sf.anathema.character.main.model.experience.ExperienceModelFetcher;
 import net.sf.anathema.character.main.model.traits.DefaultTraitMap;
 import net.sf.anathema.character.main.model.traits.TraitMap;
 import net.sf.anathema.character.main.model.traits.TraitModel;
-import net.sf.anathema.character.model.context.trait.CreationTraitValueStrategy;
-import net.sf.anathema.character.model.context.trait.ExperiencedTraitValueStrategy;
-import net.sf.anathema.character.model.context.trait.ProxyTraitValueStrategy;
+import net.sf.anathema.character.main.traits.context.CreationTraitValueStrategy;
+import net.sf.anathema.character.main.traits.context.ExperiencedTraitValueStrategy;
+import net.sf.anathema.character.main.traits.context.ProxyTraitValueStrategy;
 import net.sf.anathema.hero.change.ChangeAnnouncer;
 import net.sf.anathema.hero.change.ChangeFlavor;
 import net.sf.anathema.hero.change.FlavoredChangeListener;

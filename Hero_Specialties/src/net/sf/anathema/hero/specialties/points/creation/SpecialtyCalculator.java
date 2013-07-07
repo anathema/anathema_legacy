@@ -1,8 +1,8 @@
 package net.sf.anathema.hero.specialties.points.creation;
 
-import net.sf.anathema.character.generic.template.creation.IGenericSpecialty;
-import net.sf.anathema.character.generic.template.experience.AbilityPointCosts;
-import net.sf.anathema.character.generic.traits.TraitType;
+import net.sf.anathema.character.main.template.creation.IGenericSpecialty;
+import net.sf.anathema.character.main.template.experience.AbilityPointCosts;
+import net.sf.anathema.character.main.traits.TraitType;
 import net.sf.anathema.character.main.model.traits.TraitMap;
 
 import java.util.ArrayList;

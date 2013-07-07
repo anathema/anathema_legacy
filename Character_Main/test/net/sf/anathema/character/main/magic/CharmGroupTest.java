@@ -1,7 +1,6 @@
 package net.sf.anathema.character.main.magic;
 
-import net.sf.anathema.character.generic.impl.magic.charm.CharmGroup;
-import net.sf.anathema.character.generic.magic.ICharm;
+import net.sf.anathema.character.main.magic.charm.CharmGroup;
 import net.sf.anathema.character.main.testing.dummy.DummyExaltCharacterType;
 import org.junit.Test;
 

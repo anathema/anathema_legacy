@@ -2,10 +2,10 @@ package net.sf.anathema.character.equipment.impl.character.model.stats;
 
 import com.google.common.base.Function;
 import net.sf.anathema.character.equipment.impl.creation.model.WeaponTag;
-import net.sf.anathema.character.generic.equipment.weapon.IWeaponStats;
-import net.sf.anathema.character.generic.health.HealthType;
-import net.sf.anathema.character.generic.traits.TraitType;
-import net.sf.anathema.character.generic.traits.types.AttributeType;
+import net.sf.anathema.character.main.equipment.weapon.IWeaponStats;
+import net.sf.anathema.character.main.health.HealthType;
+import net.sf.anathema.character.main.traits.TraitType;
+import net.sf.anathema.character.main.traits.types.AttributeType;
 import net.sf.anathema.lib.util.Identifier;
 
 import java.util.ArrayList;

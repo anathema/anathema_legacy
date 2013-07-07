@@ -1,12 +1,12 @@
 package net.sf.anathema.character.main.testing.dummy;
 
-import net.sf.anathema.character.generic.caste.CasteType;
-import net.sf.anathema.character.generic.character.IGenericTraitCollection;
-import net.sf.anathema.character.generic.character.ILimitationContext;
-import net.sf.anathema.character.generic.impl.traits.limitation.StaticTraitLimitation;
-import net.sf.anathema.character.generic.template.ITraitLimitation;
-import net.sf.anathema.character.generic.traits.ValuedTraitType;
-import net.sf.anathema.character.generic.traits.TraitType;
+import net.sf.anathema.character.main.caste.CasteType;
+import net.sf.anathema.character.main.IGenericTraitCollection;
+import net.sf.anathema.character.main.ILimitationContext;
+import net.sf.anathema.character.main.traits.limitation.StaticTraitLimitation;
+import net.sf.anathema.character.main.template.ITraitLimitation;
+import net.sf.anathema.character.main.traits.ValuedTraitType;
+import net.sf.anathema.character.main.traits.TraitType;
 import net.sf.anathema.lib.exception.NotYetImplementedException;
 
 import java.util.HashMap;

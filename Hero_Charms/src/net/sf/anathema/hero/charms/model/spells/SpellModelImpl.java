@@ -1,19 +1,19 @@
 package net.sf.anathema.hero.charms.model.spells;
 
-import net.sf.anathema.character.generic.magic.ISpell;
-import net.sf.anathema.character.generic.magic.spells.CircleType;
-import net.sf.anathema.character.generic.template.HeroTemplate;
-import net.sf.anathema.character.generic.template.magic.ISpellMagicTemplate;
+import net.sf.anathema.character.main.magic.ISpell;
+import net.sf.anathema.character.main.magic.spells.CircleType;
+import net.sf.anathema.character.main.template.HeroTemplate;
+import net.sf.anathema.character.main.template.magic.ISpellMagicTemplate;
 import net.sf.anathema.character.main.model.charms.CharmsModel;
 import net.sf.anathema.character.main.model.charms.CharmsModelFetcher;
 import net.sf.anathema.character.main.model.experience.ExperienceChange;
 import net.sf.anathema.character.main.model.experience.ExperienceModel;
 import net.sf.anathema.character.main.model.experience.ExperienceModelFetcher;
 import net.sf.anathema.character.main.model.spells.SpellModel;
-import net.sf.anathema.character.model.IMagicLearnListener;
-import net.sf.anathema.character.model.ISpellMapper;
-import net.sf.anathema.character.model.SpellMapper;
-import net.sf.anathema.character.model.UnspecifiedChangeListener;
+import net.sf.anathema.character.main.IMagicLearnListener;
+import net.sf.anathema.character.main.ISpellMapper;
+import net.sf.anathema.character.main.SpellMapper;
+import net.sf.anathema.character.main.UnspecifiedChangeListener;
 import net.sf.anathema.hero.change.ChangeAnnouncer;
 import net.sf.anathema.hero.change.ChangeFlavor;
 import net.sf.anathema.hero.change.FlavoredChangeListener;

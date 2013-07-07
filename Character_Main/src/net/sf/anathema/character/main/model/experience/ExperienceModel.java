@@ -1,6 +1,6 @@
 package net.sf.anathema.character.main.model.experience;
 
-import net.sf.anathema.character.model.advance.IExperiencePointConfiguration;
+import net.sf.anathema.character.main.advance.IExperiencePointConfiguration;
 import net.sf.anathema.lib.control.ChangeListener;
 import net.sf.anathema.lib.util.Identifier;
 import net.sf.anathema.lib.util.SimpleIdentifier;

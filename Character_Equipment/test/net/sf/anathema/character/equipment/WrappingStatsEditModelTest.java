@@ -3,7 +3,7 @@ package net.sf.anathema.character.equipment;
 import net.sf.anathema.character.equipment.item.WrappingStatsEditModel;
 import net.sf.anathema.character.equipment.item.model.IEquipmentDatabaseManagement;
 import net.sf.anathema.character.equipment.item.model.IEquipmentTemplateEditModel;
-import net.sf.anathema.character.generic.equipment.weapon.IEquipmentStats;
+import net.sf.anathema.character.main.equipment.weapon.IEquipmentStats;
 import net.sf.anathema.lib.control.ChangeListener;
 import org.junit.Before;
 import org.junit.Test;

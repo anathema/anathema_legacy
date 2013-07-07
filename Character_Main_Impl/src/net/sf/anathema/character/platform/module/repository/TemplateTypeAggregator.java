@@ -1,10 +1,10 @@
 package net.sf.anathema.character.platform.module.repository;
 
-import net.sf.anathema.character.generic.template.ICharacterExternalsTemplate;
-import net.sf.anathema.character.generic.template.ITemplateRegistry;
-import net.sf.anathema.character.generic.template.ITemplateType;
-import net.sf.anathema.character.generic.type.ICharacterType;
-import net.sf.anathema.character.view.repository.ITemplateTypeAggregation;
+import net.sf.anathema.character.main.template.ICharacterExternalsTemplate;
+import net.sf.anathema.character.main.template.ITemplateRegistry;
+import net.sf.anathema.character.main.template.ITemplateType;
+import net.sf.anathema.character.main.type.ICharacterType;
+import net.sf.anathema.character.main.view.repository.ITemplateTypeAggregation;
 
 import java.util.Collection;
 import java.util.LinkedHashMap;

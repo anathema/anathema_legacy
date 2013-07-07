@@ -1,7 +1,7 @@
 package net.sf.anathema.hero.experience.sheet.content;
 
 import net.sf.anathema.character.main.model.experience.ExperienceModelFetcher;
-import net.sf.anathema.character.model.advance.ExperiencePointManagement;
+import net.sf.anathema.character.main.advance.ExperiencePointManagement;
 import net.sf.anathema.character.reporting.pdf.content.AbstractSubBoxContent;
 import net.sf.anathema.hero.model.Hero;
 import net.sf.anathema.lib.resources.Resources;

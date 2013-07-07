@@ -1,6 +1,6 @@
 package net.sf.anathema.hero.othertraits.model.traits;
 
-import net.sf.anathema.character.library.trait.Trait;
+import net.sf.anathema.character.main.library.trait.Trait;
 import net.sf.anathema.lib.control.IIntValueChangedListener;
 
 import java.util.Arrays;

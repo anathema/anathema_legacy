@@ -2,8 +2,8 @@ package net.sf.anathema.hero.concept.model.concept;
 
 import net.sf.anathema.character.main.model.concept.ConceptChange;
 import net.sf.anathema.character.main.model.concept.HeroConcept;
-import net.sf.anathema.character.model.IIntegerDescription;
-import net.sf.anathema.character.model.IntegerDescription;
+import net.sf.anathema.character.main.IIntegerDescription;
+import net.sf.anathema.character.main.IntegerDescription;
 import net.sf.anathema.hero.change.AnnounceChangeListener;
 import net.sf.anathema.hero.change.ChangeAnnouncer;
 import net.sf.anathema.hero.model.Hero;

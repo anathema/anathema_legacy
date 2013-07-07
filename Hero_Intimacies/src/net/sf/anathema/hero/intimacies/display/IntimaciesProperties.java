@@ -1,7 +1,7 @@
 package net.sf.anathema.hero.intimacies.display;
 
-import net.sf.anathema.character.generic.framework.resources.CharacterUI;
-import net.sf.anathema.character.library.intvalue.IIconToggleButtonProperties;
+import net.sf.anathema.character.main.CharacterUI;
+import net.sf.anathema.character.main.library.intvalue.IIconToggleButtonProperties;
 import net.sf.anathema.lib.file.RelativePath;
 import net.sf.anathema.lib.resources.Resources;
 

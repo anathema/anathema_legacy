@@ -1,9 +1,9 @@
 package net.sf.anathema.character.platform.module.repository;
 
-import net.sf.anathema.character.generic.template.HeroTemplate;
-import net.sf.anathema.character.generic.template.ITemplateType;
-import net.sf.anathema.character.generic.template.presentation.ICommonPresentationProperties;
-import net.sf.anathema.character.view.repository.ITemplateTypeAggregation;
+import net.sf.anathema.character.main.template.HeroTemplate;
+import net.sf.anathema.character.main.template.ITemplateType;
+import net.sf.anathema.character.main.template.presentation.ICommonPresentationProperties;
+import net.sf.anathema.character.main.view.repository.ITemplateTypeAggregation;
 
 public class TemplateTypeAggregation implements ITemplateTypeAggregation {
 

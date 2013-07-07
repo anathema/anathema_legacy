@@ -1,10 +1,10 @@
 package net.sf.anathema.character.main.charmparser;
 
-import net.sf.anathema.character.generic.impl.magic.CharmAttribute;
-import net.sf.anathema.character.generic.impl.magic.persistence.builder.CharmAttributeBuilder;
-import net.sf.anathema.character.generic.magic.charms.ICharmAttribute;
-import net.sf.anathema.character.generic.traits.types.AbilityType;
-import net.sf.anathema.character.generic.traits.types.ValuedTraitType;
+import net.sf.anathema.character.main.magic.CharmAttribute;
+import net.sf.anathema.character.main.magic.persistence.builder.CharmAttributeBuilder;
+import net.sf.anathema.character.main.magic.charms.ICharmAttribute;
+import net.sf.anathema.character.main.traits.types.AbilityType;
+import net.sf.anathema.character.main.traits.types.ValuedTraitType;
 import net.sf.anathema.lib.xml.DocumentUtilities;
 import org.apache.commons.lang3.ArrayUtils;
 import org.dom4j.Element;

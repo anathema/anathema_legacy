@@ -1,7 +1,7 @@
 package net.sf.anathema.character.reporting.pdf.rendering.general.stats;
 
 import com.itextpdf.text.pdf.PdfPTable;
-import net.sf.anathema.character.generic.util.IStats;
+import net.sf.anathema.character.main.util.IStats;
 import net.sf.anathema.character.reporting.pdf.content.ReportSession;
 import net.sf.anathema.character.reporting.pdf.content.stats.IStatsGroup;
 import net.sf.anathema.character.reporting.pdf.rendering.extent.Bounds;

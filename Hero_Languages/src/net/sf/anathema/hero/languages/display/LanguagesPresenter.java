@@ -1,8 +1,8 @@
 package net.sf.anathema.hero.languages.display;
 
-import net.sf.anathema.character.library.overview.IOverviewCategory;
-import net.sf.anathema.character.library.removableentry.presenter.IRemovableEntryListener;
-import net.sf.anathema.character.library.removableentry.presenter.IRemovableEntryView;
+import net.sf.anathema.character.main.library.overview.IOverviewCategory;
+import net.sf.anathema.character.main.library.removableentry.presenter.IRemovableEntryListener;
+import net.sf.anathema.character.main.library.removableentry.presenter.IRemovableEntryView;
 import net.sf.anathema.framework.presenter.resources.BasicUi;
 import net.sf.anathema.framework.presenter.view.IButtonControlledObjectSelectionView;
 import net.sf.anathema.hero.languages.model.LanguagesModel;

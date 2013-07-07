@@ -1,8 +1,8 @@
 package net.sf.anathema.hero.intimacies.display;
 
-import net.sf.anathema.character.library.overview.IOverviewCategory;
-import net.sf.anathema.character.library.selection.IStringSelectionView;
-import net.sf.anathema.character.presenter.ExtensibleTraitView;
+import net.sf.anathema.character.main.library.overview.IOverviewCategory;
+import net.sf.anathema.character.main.library.selection.IStringSelectionView;
+import net.sf.anathema.character.main.presenter.ExtensibleTraitView;
 import net.sf.anathema.lib.file.RelativePath;
 
 public interface IntimaciesView {
