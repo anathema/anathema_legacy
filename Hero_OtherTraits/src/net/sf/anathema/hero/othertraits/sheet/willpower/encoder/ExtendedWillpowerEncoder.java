@@ -9,7 +9,7 @@ import net.sf.anathema.hero.sheet.pdf.encoder.extent.Bounds;
 import net.sf.anathema.hero.sheet.pdf.encoder.extent.Position;
 import net.sf.anathema.hero.sheet.pdf.encoder.general.ListUtils;
 import net.sf.anathema.hero.sheet.pdf.encoder.general.box.AbstractContentEncoder;
-import net.sf.anathema.hero.sheet.pdf.encoder.general.traits.PdfTraitEncoder;
+import net.sf.anathema.hero.traits.sheet.content.PdfTraitEncoder;
 import net.sf.anathema.hero.sheet.pdf.encoder.graphics.SheetGraphics;
 import net.sf.anathema.hero.othertraits.sheet.willpower.content.WillpowerContent;
 

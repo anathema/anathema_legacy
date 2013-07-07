@@ -1,4 +1,4 @@
-package net.sf.anathema.hero.sheet.pdf.content.stats;
+package net.sf.anathema.hero.traits.sheet.content;
 
 import net.sf.anathema.character.main.traits.TraitType;
 import net.sf.anathema.character.main.library.trait.specialties.Specialty;

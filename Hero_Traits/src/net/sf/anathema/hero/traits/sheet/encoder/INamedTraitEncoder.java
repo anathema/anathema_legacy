@@ -1,4 +1,4 @@
-package net.sf.anathema.hero.sheet.pdf.encoder.general.traits;
+package net.sf.anathema.hero.traits.sheet.encoder;
 
 import net.sf.anathema.hero.sheet.pdf.session.ReportSession;
 import net.sf.anathema.hero.sheet.pdf.encoder.extent.Position;

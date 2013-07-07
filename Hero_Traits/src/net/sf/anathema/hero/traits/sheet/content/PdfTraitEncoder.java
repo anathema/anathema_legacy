@@ -1,4 +1,4 @@
-package net.sf.anathema.hero.sheet.pdf.encoder.general.traits;
+package net.sf.anathema.hero.traits.sheet.content;
 
 import com.itextpdf.text.pdf.PdfContentByte;
 import net.sf.anathema.character.reporting.pdf.content.general.NamedValue;

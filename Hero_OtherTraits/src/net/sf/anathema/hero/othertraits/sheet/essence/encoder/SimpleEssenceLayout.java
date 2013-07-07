@@ -2,7 +2,7 @@ package net.sf.anathema.hero.othertraits.sheet.essence.encoder;
 
 import net.sf.anathema.hero.sheet.pdf.encoder.extent.Bounds;
 import net.sf.anathema.hero.sheet.pdf.encoder.extent.Position;
-import net.sf.anathema.hero.sheet.pdf.encoder.general.traits.PdfTraitEncoder;
+import net.sf.anathema.hero.traits.sheet.content.PdfTraitEncoder;
 import net.sf.anathema.hero.sheet.pdf.encoder.graphics.TextMetrics;
 
 import static net.sf.anathema.hero.sheet.pdf.page.IVoidStateFormatConstants.TEXT_PADDING;
