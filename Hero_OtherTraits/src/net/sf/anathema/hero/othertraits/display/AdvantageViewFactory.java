@@ -9,6 +9,7 @@ import net.sf.anathema.framework.value.IntegerViewFactory;
 @RegisteredCharacterView(AdvantageView.class)
 public class AdvantageViewFactory implements SubViewFactory {
 
+  //TODO (Swing->FX) Needs character type
   @SuppressWarnings("unchecked")
   @Override
   public <T> T create(ICharacterType type) {
