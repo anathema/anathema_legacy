@@ -1,12 +1,10 @@
 package net.sf.anathema.hero.magic.display.tree;
 
-import net.sf.anathema.character.main.presenter.magic.CharacterCharmModel;
-import net.sf.anathema.character.main.presenter.magic.CharmLearnVisualizer;
+import net.sf.anathema.hero.magic.model.CharacterCharmModel;
 import net.sf.anathema.hero.charms.CharmsModel;
 import net.sf.anathema.character.main.magic.model.charm.ICharmLearnListener;
 import net.sf.anathema.character.main.magic.model.charms.ILearningCharmGroup;
-import net.sf.anathema.character.main.magic.display.presenter.CharmDye;
-import net.sf.anathema.character.main.magic.display.presenter.CharmInteractionPresenter;
+import net.sf.anathema.hero.magic.display.coloring.CharmDye;
 import net.sf.anathema.character.main.magic.display.view.charmtree.ICharmTreeViewProperties;
 import net.sf.anathema.character.main.magic.display.view.charmtree.ICharmView;
 import net.sf.anathema.lib.control.ChangeListener;

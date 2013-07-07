@@ -1,12 +1,12 @@
 package net.sf.anathema.hero.magic.presenter;
 
-import net.sf.anathema.character.main.magic.display.presenter.ExternalPrerequisitesColorer;
+import net.sf.anathema.hero.magic.display.coloring.ExternalPrerequisitesColorer;
 import net.sf.anathema.character.main.magic.model.charm.CharmGroup;
 import net.sf.anathema.character.main.magic.model.charm.ICharm;
 import net.sf.anathema.character.main.magic.model.charm.ICharmGroup;
 import net.sf.anathema.character.main.dummy.DummyCharm;
 import net.sf.anathema.character.main.testing.dummy.DummyMundaneCharacterType;
-import net.sf.anathema.character.main.presenter.magic.CharmColoring;
+import net.sf.anathema.hero.magic.display.coloring.CharmColoring;
 import net.sf.anathema.character.main.magic.display.view.charmtree.CharmGroupInformer;
 import org.junit.Test;
 

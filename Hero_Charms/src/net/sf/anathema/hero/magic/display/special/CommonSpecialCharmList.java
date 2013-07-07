@@ -4,7 +4,7 @@ import com.google.common.base.Predicate;
 import com.google.common.base.Predicates;
 import net.sf.anathema.character.main.magic.model.charm.special.ISpecialCharm;
 import net.sf.anathema.character.main.magic.display.view.charmtree.ISpecialCharmViewContainer;
-import net.sf.anathema.character.main.presenter.magic.SpecialCharmList;
+import net.sf.anathema.hero.magic.model.charms.special.SpecialCharmList;
 import net.sf.anathema.platform.tree.presenter.view.ISpecialNodeView;
 
 import java.util.ArrayList;

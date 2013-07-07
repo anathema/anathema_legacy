@@ -10,15 +10,10 @@ import net.sf.anathema.character.main.magic.model.charm.special.ISpecialCharmVis
 import net.sf.anathema.character.main.magic.model.charm.special.ISubeffectCharm;
 import net.sf.anathema.character.main.magic.model.charm.special.ITraitCapModifyingCharm;
 import net.sf.anathema.character.main.magic.model.charm.special.IUpgradableCharm;
-import net.sf.anathema.character.main.presenter.magic.charm.BooleanSelectionSpecialNodeView;
-import net.sf.anathema.character.main.presenter.magic.charm.SwingCategorizedSpecialView;
 import net.sf.anathema.hero.charms.CharmsModel;
 import net.sf.anathema.character.main.magic.model.charm.special.IMultiLearnableCharmConfiguration;
 import net.sf.anathema.character.main.magic.model.charm.special.IMultipleEffectCharmConfiguration;
 import net.sf.anathema.character.main.magic.model.charm.special.IOxBodyTechniqueConfiguration;
-import net.sf.anathema.character.main.presenter.magic.MultiLearnableCharmPresenter;
-import net.sf.anathema.character.main.presenter.magic.MultipleEffectCharmPresenter;
-import net.sf.anathema.character.main.presenter.magic.OxBodyTechniquePresenter;
 import net.sf.anathema.lib.resources.Resources;
 import net.sf.anathema.platform.tree.presenter.view.ISpecialNodeView;
 

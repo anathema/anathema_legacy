@@ -4,7 +4,7 @@ import net.sf.anathema.character.main.magic.model.charm.ICharm;
 import net.sf.anathema.character.main.magic.model.charm.CharmIdMap;
 import net.sf.anathema.character.main.magic.model.charm.ICharmGroup;
 import net.sf.anathema.character.main.type.ICharacterType;
-import net.sf.anathema.character.main.presenter.magic.VisibilityPredicate;
+import net.sf.anathema.hero.magic.display.special.VisibilityPredicate;
 import net.sf.anathema.character.main.testing.dummy.DummyExaltCharacterType;
 import net.sf.anathema.character.main.magic.display.view.charmtree.CharmGroupInformer;
 import org.junit.Test;

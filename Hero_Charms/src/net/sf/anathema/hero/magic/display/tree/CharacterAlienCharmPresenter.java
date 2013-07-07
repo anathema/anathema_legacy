@@ -1,9 +1,8 @@
 package net.sf.anathema.hero.magic.display.tree;
 
-import net.sf.anathema.character.main.presenter.magic.CharacterCharmModel;
-import net.sf.anathema.character.main.presenter.magic.CharacterCharmTypes;
+import net.sf.anathema.hero.magic.model.CharacterCharmModel;
+import net.sf.anathema.hero.magic.model.charms.CharacterCharmTypes;
 import net.sf.anathema.hero.charms.CharmsModel;
-import net.sf.anathema.character.main.magic.display.presenter.AlienCharmPresenter;
 import net.sf.anathema.character.main.magic.display.view.charmtree.ICharmView;
 import net.sf.anathema.lib.control.ChangeListener;
 import net.sf.anathema.lib.util.Identifier;
