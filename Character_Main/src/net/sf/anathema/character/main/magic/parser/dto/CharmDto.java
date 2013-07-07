@@ -7,6 +7,8 @@ public class CharmDto {
 
   public String charmId;
   public String characterType;
+  public String group;
+  public List<String> attributes;
   public CostListDto costList = new CostListDto();
   public DurationDto duration = new DurationDto();
   public List<String> sources = new ArrayList<>();
