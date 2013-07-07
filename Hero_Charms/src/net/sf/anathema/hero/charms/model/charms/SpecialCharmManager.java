@@ -1,5 +1,10 @@
-package net.sf.anathema.character.main.charm.special;
+package net.sf.anathema.hero.charms.model.charms;
 
+import net.sf.anathema.character.main.charm.special.MultipleEffectCharmConfiguration;
+import net.sf.anathema.character.main.charm.special.OxBodyTechniqueConfiguration;
+import net.sf.anathema.hero.charms.model.charms.special.SubeffectCharmConfiguration;
+import net.sf.anathema.character.main.charm.special.TraitCapModifyingCharmConfiguration;
+import net.sf.anathema.hero.charms.model.charms.special.UpgradableCharmConfiguration;
 import net.sf.anathema.character.main.magic.ICharm;
 import net.sf.anathema.character.main.magic.charms.special.IMultiLearnableCharm;
 import net.sf.anathema.character.main.magic.charms.special.IMultipleEffectCharm;
@@ -14,6 +19,7 @@ import net.sf.anathema.character.main.magic.charms.special.ISubeffectCharm;
 import net.sf.anathema.character.main.magic.charms.special.ITraitCapModifyingCharm;
 import net.sf.anathema.character.main.magic.charms.special.IUpgradableCharm;
 import net.sf.anathema.hero.charms.CharmsModel;
+import net.sf.anathema.hero.charms.model.charms.special.MultiLearnableCharmConfiguration;
 import net.sf.anathema.hero.health.HealthModel;
 import net.sf.anathema.hero.health.IPainToleranceProvider;
 import net.sf.anathema.character.main.charm.CharmLearnAdapter;

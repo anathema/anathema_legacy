@@ -1,4 +1,4 @@
-package net.sf.anathema.character.main.charm.special;
+package net.sf.anathema.hero.charms.model.charms;
 
 import net.sf.anathema.character.main.magic.ICharm;
 import net.sf.anathema.character.main.template.magic.MartialArtsCharmConfiguration;

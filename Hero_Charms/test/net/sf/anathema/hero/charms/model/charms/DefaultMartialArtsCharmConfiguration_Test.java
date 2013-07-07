@@ -2,7 +2,6 @@ package net.sf.anathema.hero.charms.model.charms;
 
 import net.sf.anathema.character.main.advance.IExperiencePointConfiguration;
 import net.sf.anathema.character.main.charm.ILearningCharmGroup;
-import net.sf.anathema.character.main.charm.special.DefaultMartialArtsCharmConfiguration;
 import net.sf.anathema.character.main.dummy.DummyCharm;
 import net.sf.anathema.character.main.magic.ICharm;
 import net.sf.anathema.character.main.testing.dummy.magic.DummyCharmsModel;

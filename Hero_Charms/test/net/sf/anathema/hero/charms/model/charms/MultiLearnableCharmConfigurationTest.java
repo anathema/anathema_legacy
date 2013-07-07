@@ -10,10 +10,10 @@ import net.sf.anathema.character.main.testing.BasicCharacterTestCase;
 import net.sf.anathema.character.main.testing.dummy.DummyHero;
 import net.sf.anathema.character.main.testing.dummy.magic.DummyCharmsModel;
 import net.sf.anathema.character.main.testing.dummy.magic.DummyLearnableArbitrator;
-import net.sf.anathema.character.main.charm.special.MultiLearnableCharmConfiguration;
 import net.sf.anathema.character.main.traits.context.CreationTraitValueStrategy;
 import net.sf.anathema.character.main.traits.context.ExperiencedTraitValueStrategy;
 import net.sf.anathema.character.main.traits.context.ProxyTraitValueStrategy;
+import net.sf.anathema.hero.charms.model.charms.special.MultiLearnableCharmConfiguration;
 import org.junit.Before;
 import org.junit.Test;
 

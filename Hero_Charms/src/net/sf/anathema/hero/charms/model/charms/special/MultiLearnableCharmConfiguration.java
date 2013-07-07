@@ -1,5 +1,6 @@
-package net.sf.anathema.character.main.charm.special;
+package net.sf.anathema.hero.charms.model.charms.special;
 
+import net.sf.anathema.character.main.charm.special.IMultiLearnableCharmConfiguration;
 import net.sf.anathema.character.main.magic.ICharm;
 import net.sf.anathema.character.main.magic.charms.ICharmLearnableArbitrator;
 import net.sf.anathema.character.main.magic.charms.special.IMultiLearnableCharm;
