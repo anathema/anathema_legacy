@@ -1,4 +1,4 @@
-package net.sf.anathema.character.main.view.magic;
+package net.sf.anathema.hero.charms.display;
 
 import net.sf.anathema.character.main.type.ICharacterType;
 import net.sf.anathema.character.main.library.intvalue.IntValueDisplayFactoryPrototype;

@@ -1,10 +1,12 @@
-package net.sf.anathema.character.main.view.magic;
+package net.sf.anathema.hero.charms.display;
 
 import net.miginfocom.layout.CC;
 import net.miginfocom.layout.LC;
 import net.miginfocom.swing.MigLayout;
 import net.sf.anathema.character.main.charmtree.AbstractCascadeSelectionView;
 import net.sf.anathema.character.main.charmtree.view.ICharmView;
+import net.sf.anathema.hero.charms.display.special.SpecialBooleanDisplayFactory;
+import net.sf.anathema.hero.charms.display.special.SpecialIntDisplayFactory;
 import net.sf.anathema.framework.swing.IView;
 import net.sf.anathema.framework.ui.RGBColor;
 import net.sf.anathema.framework.value.IIntValueView;

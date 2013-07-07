@@ -3,6 +3,7 @@ package net.sf.anathema.character.reporting.pdf.content.magic;
 import net.sf.anathema.character.main.magic.IMagic;
 import net.sf.anathema.character.main.magic.IMagicStats;
 import net.sf.anathema.character.main.magic.IMagicVisitor;
+import net.sf.anathema.character.reporting.pdf.content.PageBreakChecker;
 import net.sf.anathema.character.reporting.pdf.content.ReportSession;
 import net.sf.anathema.lib.resources.Resources;
 
@@ -20,6 +21,7 @@ public class AllMagicContent extends AbstractMagicContent {
     this.helper = new MagicContentHelper(session.getHero());
     this.session = session;
     storeMnemonicIfNecessary(session);
+    session.setPageBreakChecker(new AllMagicPageBreakChecker());
   }
 
   @Override
@@ -63,6 +65,13 @@ public class AllMagicContent extends AbstractMagicContent {
     IMagicVisitor statsCollector = new MagicStatsFactoryVisitor(session.getHero(), printStats);
     for (IMagic magic : helper.getAllLearnedMagic()) {
       magic.accept(statsCollector);
+    }
+  }
+
+  private class AllMagicPageBreakChecker implements PageBreakChecker {
+    @Override
+    public boolean isRequired() {
+      return hasUnprintedCharms();
     }
   }
 }

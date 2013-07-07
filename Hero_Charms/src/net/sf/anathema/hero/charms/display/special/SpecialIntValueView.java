@@ -1,4 +1,4 @@
-package net.sf.anathema.character.main.view.magic;
+package net.sf.anathema.hero.charms.display.special;
 
 import net.miginfocom.swing.MigLayout;
 import net.sf.anathema.character.main.library.trait.view.TraitView;

@@ -1,4 +1,4 @@
-package net.sf.anathema.character.main.charmtree.presenter;
+package net.sf.anathema.hero.charms.display.coloring;
 
 import net.sf.anathema.character.main.magic.ICharm;
 import net.sf.anathema.character.main.magic.charms.IndirectCharmRequirement;

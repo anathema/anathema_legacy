@@ -13,6 +13,7 @@ import net.sf.anathema.character.main.view.SectionView;
 import net.sf.anathema.character.main.charmtree.view.CharmDisplayPropertiesMap;
 import net.sf.anathema.character.main.charmtree.view.ICharmView;
 import net.sf.anathema.framework.IApplicationModel;
+import net.sf.anathema.hero.charms.display.tree.CharacterCharmTreePresenter;
 import net.sf.anathema.hero.model.Hero;
 import net.sf.anathema.initialization.reflections.Weight;
 import net.sf.anathema.lib.resources.Resources;

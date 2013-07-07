@@ -1,7 +1,6 @@
 package net.sf.anathema.character.reporting.pdf.layout.simple;
 
 import net.sf.anathema.character.reporting.pdf.content.ReportSession;
-import net.sf.anathema.character.reporting.pdf.content.magic.AllMagicContent;
 import net.sf.anathema.character.reporting.pdf.layout.Sheet;
 import net.sf.anathema.character.reporting.pdf.layout.SheetPage;
 import net.sf.anathema.character.reporting.pdf.layout.field.LayoutField;
@@ -35,8 +34,7 @@ public class SecondPageEncoder implements PageEncoder {
   }
 
   private void encodeAdditionalMagicPages(Sheet sheet, SheetGraphics graphics, ReportSession session) {
-    AllMagicContent charmContent = session.createContent(AllMagicContent.class);
-    while (charmContent.hasUnprintedCharms()) {
+    while (session.isPageBreakRequired()) {
       SheetPage page = sheet.startPortraitPage(graphics, session);
       page.place(CHARMS_AND_SORCERY).atStartOf(page).fillToBottomOfPage().andColumnSpan(3).now();
     }

@@ -10,6 +10,7 @@ public class ReportSession {
   private Hero hero;
   private final ReportContentRegistry registry;
   private final List<Object> mnemonics = new ArrayList<>();
+  private PageBreakChecker pageBreakChecker = new NoPageBreak();
 
   public ReportSession(ReportContentRegistry registry, Hero hero) {
     this.registry = registry;
@@ -35,6 +36,14 @@ public class ReportSession {
 
   public <T> boolean knowsMnemonic(Class<T> mnemonicClass) {
     return retrieveMnemonic(mnemonicClass) != null;
+  }
+
+  public void setPageBreakChecker(PageBreakChecker checker) {
+    this.pageBreakChecker = checker;
+  }
+
+  public boolean isPageBreakRequired() {
+    return pageBreakChecker.isRequired();
   }
 
   public <C extends SubContent> C createContent(Class<C> contentClass) {

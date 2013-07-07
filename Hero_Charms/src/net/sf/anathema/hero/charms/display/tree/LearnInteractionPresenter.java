@@ -1,4 +1,4 @@
-package net.sf.anathema.hero.charms.display;
+package net.sf.anathema.hero.charms.display.tree;
 
 import net.sf.anathema.character.main.presenter.magic.CharacterCharmModel;
 import net.sf.anathema.character.main.presenter.magic.CharmLearnVisualizer;
