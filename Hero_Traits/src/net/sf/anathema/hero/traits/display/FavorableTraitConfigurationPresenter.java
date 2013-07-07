@@ -3,17 +3,17 @@ package net.sf.anathema.hero.traits.display;
 import net.sf.anathema.character.generic.template.presentation.IPresentationProperties;
 import net.sf.anathema.character.generic.traits.groups.IIdentifiedTraitTypeGroup;
 import net.sf.anathema.character.generic.traits.groups.TraitTypeGroup;
-import net.sf.anathema.character.library.ITraitFavorization;
-import net.sf.anathema.character.library.trait.Trait;
-import net.sf.anathema.character.library.trait.favorable.FavorableState;
-import net.sf.anathema.character.library.trait.favorable.IFavorableStateChangedListener;
-import net.sf.anathema.character.library.trait.presenter.TraitPresenter;
-import net.sf.anathema.character.library.trait.view.GroupedFavorableTraitConfigurationView;
+import net.sf.anathema.character.main.library.ITraitFavorization;
+import net.sf.anathema.character.main.library.trait.Trait;
+import net.sf.anathema.character.main.library.trait.favorable.FavorableState;
+import net.sf.anathema.character.main.library.trait.favorable.IFavorableStateChangedListener;
+import net.sf.anathema.character.main.library.trait.presenter.TraitPresenter;
+import net.sf.anathema.character.main.library.trait.view.GroupedFavorableTraitConfigurationView;
 import net.sf.anathema.character.main.model.experience.ExperienceChange;
 import net.sf.anathema.character.main.model.experience.ExperienceModelFetcher;
 import net.sf.anathema.character.main.model.traits.TraitMap;
 import net.sf.anathema.character.main.model.traits.TraitModelFetcher;
-import net.sf.anathema.character.presenter.ExtensibleTraitView;
+import net.sf.anathema.character.main.presenter.ExtensibleTraitView;
 import net.sf.anathema.hero.change.ChangeFlavor;
 import net.sf.anathema.hero.change.FlavoredChangeListener;
 import net.sf.anathema.hero.model.Hero;
@@ -22,9 +22,9 @@ import net.sf.anathema.interaction.ToggleTool;
 import net.sf.anathema.lib.collection.IdentityMapping;
 import net.sf.anathema.lib.resources.Resources;
 
-import static net.sf.anathema.character.library.trait.favorable.FavorableState.Caste;
-import static net.sf.anathema.character.library.trait.favorable.FavorableState.Default;
-import static net.sf.anathema.character.library.trait.favorable.FavorableState.Favored;
+import static net.sf.anathema.character.main.library.trait.favorable.FavorableState.Caste;
+import static net.sf.anathema.character.main.library.trait.favorable.FavorableState.Default;
+import static net.sf.anathema.character.main.library.trait.favorable.FavorableState.Favored;
 
 public class FavorableTraitConfigurationPresenter {
 

@@ -4,7 +4,7 @@ import net.miginfocom.layout.CC;
 import net.miginfocom.swing.MigLayout;
 import net.sf.anathema.character.platform.module.IToggleButtonPanel;
 import net.sf.anathema.character.platform.module.ToggleButtonPanel;
-import net.sf.anathema.character.view.repository.ITemplateTypeAggregation;
+import net.sf.anathema.character.model.view.repository.ITemplateTypeAggregation;
 import net.sf.anathema.framework.swing.selection.ListObjectSelectionView;
 import net.sf.anathema.lib.gui.layout.LayoutUtils;
 import net.sf.anathema.lib.gui.selection.IListObjectSelectionView;

@@ -2,7 +2,7 @@ package net.sf.anathema.hero.specialties.display.presenter;
 
 import net.sf.anathema.character.generic.traits.TraitType;
 import net.sf.anathema.character.generic.type.ICharacterType;
-import net.sf.anathema.character.presenter.ExtensibleTraitView;
+import net.sf.anathema.character.main.presenter.ExtensibleTraitView;
 import net.sf.anathema.lib.file.RelativePath;
 import net.sf.anathema.lib.gui.AgnosticUIConfiguration;
 

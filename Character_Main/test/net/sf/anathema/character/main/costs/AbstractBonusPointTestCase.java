@@ -7,9 +7,9 @@ import net.sf.anathema.character.generic.traits.groups.IIdentifiedCasteTraitType
 import net.sf.anathema.character.generic.traits.groups.IdentifiedCasteTraitTypeGroup;
 import net.sf.anathema.character.generic.traits.types.AbilityType;
 import net.sf.anathema.character.generic.traits.types.OtherTraitType;
-import net.sf.anathema.character.library.trait.Trait;
-import net.sf.anathema.character.library.trait.favorable.FriendlyIncrementChecker;
-import net.sf.anathema.character.library.trait.favorable.IncrementChecker;
+import net.sf.anathema.character.main.library.trait.Trait;
+import net.sf.anathema.character.main.library.trait.favorable.FriendlyIncrementChecker;
+import net.sf.anathema.character.main.library.trait.favorable.IncrementChecker;
 import net.sf.anathema.character.main.model.traits.TraitModel;
 import net.sf.anathema.character.main.testing.dummy.DummyHero;
 import net.sf.anathema.character.main.testing.dummy.template.DummyTraitTemplateFactory;

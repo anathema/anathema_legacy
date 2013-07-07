@@ -1,7 +1,7 @@
 package net.sf.anathema.character.main.trait;
 
 import com.google.common.collect.Lists;
-import net.sf.anathema.character.library.trait.Trait;
+import net.sf.anathema.character.main.library.trait.Trait;
 import net.sf.anathema.character.model.traits.EssenceLimitationListener;
 import net.sf.anathema.character.model.traits.TraitIterable;
 import net.sf.anathema.hero.model.Hero;

@@ -8,7 +8,7 @@ import net.sf.anathema.character.generic.magic.charms.ICharmTree;
 import net.sf.anathema.character.generic.template.magic.ICharmTemplate;
 import net.sf.anathema.character.generic.type.CharacterTypes;
 import net.sf.anathema.character.generic.type.ICharacterType;
-import net.sf.anathema.character.impl.model.charm.CharmHasSameTypeAsCharacter;
+import net.sf.anathema.character.main.charm.CharmHasSameTypeAsCharacter;
 import net.sf.anathema.character.main.model.concept.HeroConcept;
 import net.sf.anathema.character.main.model.concept.HeroConceptFetcher;
 import net.sf.anathema.character.model.charm.GroupedCharmIdMap;

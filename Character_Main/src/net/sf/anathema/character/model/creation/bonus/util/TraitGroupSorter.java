@@ -1,6 +1,6 @@
 package net.sf.anathema.character.model.creation.bonus.util;
 
-import net.sf.anathema.character.library.trait.TraitGroup;
+import net.sf.anathema.character.main.library.trait.TraitGroup;
 import net.sf.anathema.lib.compare.WeightedObject;
 import net.sf.anathema.lib.compare.WeightedObjectSorter;
 

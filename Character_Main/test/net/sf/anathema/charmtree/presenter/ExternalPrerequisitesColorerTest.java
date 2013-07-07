@@ -3,9 +3,9 @@ package net.sf.anathema.charmtree.presenter;
 import net.sf.anathema.character.generic.impl.magic.charm.CharmGroup;
 import net.sf.anathema.character.generic.magic.ICharm;
 import net.sf.anathema.character.generic.magic.charms.ICharmGroup;
-import net.sf.anathema.character.magic.dummy.DummyCharm;
+import net.sf.anathema.character.main.dummy.DummyCharm;
 import net.sf.anathema.character.main.testing.dummy.DummyMundaneCharacterType;
-import net.sf.anathema.character.presenter.magic.CharmColoring;
+import net.sf.anathema.character.main.presenter.magic.CharmColoring;
 import net.sf.anathema.charmtree.view.CharmGroupInformer;
 import org.junit.Test;
 

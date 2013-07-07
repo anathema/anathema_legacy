@@ -1,7 +1,7 @@
 package net.sf.anathema.hero.attributes.persistence;
 
 import net.sf.anathema.character.generic.traits.types.AttributeType;
-import net.sf.anathema.character.library.trait.Trait;
+import net.sf.anathema.character.main.library.trait.Trait;
 import net.sf.anathema.hero.attributes.model.AttributeModel;
 import net.sf.anathema.hero.persistence.AbstractModelJsonPersister;
 import net.sf.anathema.hero.persistence.HeroModelPersisterCollected;

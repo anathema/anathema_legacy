@@ -6,9 +6,9 @@ import net.sf.anathema.character.generic.template.points.IAttributeCreationPoint
 import net.sf.anathema.character.generic.template.points.IAttributeGroupPriorityVisitor;
 import net.sf.anathema.character.generic.template.points.IFavorableTraitCreationPoints;
 import net.sf.anathema.character.generic.traits.types.AttributeGroupType;
-import net.sf.anathema.character.library.trait.FavorableTraitCost;
-import net.sf.anathema.character.library.trait.Trait;
-import net.sf.anathema.character.library.trait.TraitGroup;
+import net.sf.anathema.character.main.library.trait.FavorableTraitCost;
+import net.sf.anathema.character.main.library.trait.Trait;
+import net.sf.anathema.character.main.library.trait.TraitGroup;
 import net.sf.anathema.hero.attributes.model.AttributeModel;
 import net.sf.anathema.character.model.creation.bonus.basic.ElementCreationCost;
 import net.sf.anathema.character.model.creation.bonus.basic.ElementCreationCostCalculator;

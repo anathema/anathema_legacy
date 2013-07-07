@@ -8,7 +8,7 @@ import net.sf.anathema.character.generic.equipment.ArtifactAttuneType;
 import net.sf.anathema.character.generic.equipment.ArtifactStats;
 import net.sf.anathema.character.generic.equipment.weapon.IEquipmentStats;
 import net.sf.anathema.character.generic.equipment.weapon.IWeaponStats;
-import net.sf.anathema.character.library.trait.specialties.Specialty;
+import net.sf.anathema.character.main.library.trait.specialties.Specialty;
 import net.sf.anathema.interaction.Tool;
 import net.sf.anathema.lib.control.ChangeListener;
 import net.sf.anathema.lib.gui.Presenter;

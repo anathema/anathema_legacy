@@ -1,9 +1,9 @@
 package net.sf.anathema.character.model.charm;
 
 import net.sf.anathema.character.generic.health.HealthLevelType;
-import net.sf.anathema.character.library.trait.DefaultTraitType;
-import net.sf.anathema.character.library.trait.LimitedTrait;
-import net.sf.anathema.character.library.trait.favorable.IncrementChecker;
+import net.sf.anathema.character.main.library.trait.DefaultTraitType;
+import net.sf.anathema.character.main.library.trait.LimitedTrait;
+import net.sf.anathema.character.main.library.trait.favorable.IncrementChecker;
 import net.sf.anathema.hero.model.Hero;
 
 import static net.sf.anathema.character.generic.impl.traits.SimpleTraitTemplate.createEssenceLimitedTemplate;

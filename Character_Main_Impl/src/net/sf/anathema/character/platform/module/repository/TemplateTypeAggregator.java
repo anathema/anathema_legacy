@@ -4,7 +4,7 @@ import net.sf.anathema.character.generic.template.ICharacterExternalsTemplate;
 import net.sf.anathema.character.generic.template.ITemplateRegistry;
 import net.sf.anathema.character.generic.template.ITemplateType;
 import net.sf.anathema.character.generic.type.ICharacterType;
-import net.sf.anathema.character.view.repository.ITemplateTypeAggregation;
+import net.sf.anathema.character.model.view.repository.ITemplateTypeAggregation;
 
 import java.util.Collection;
 import java.util.LinkedHashMap;

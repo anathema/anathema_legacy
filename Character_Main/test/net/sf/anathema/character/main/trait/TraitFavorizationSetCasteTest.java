@@ -2,11 +2,11 @@ package net.sf.anathema.character.main.trait;
 
 import net.sf.anathema.character.generic.caste.CasteType;
 import net.sf.anathema.character.generic.traits.types.AbilityType;
-import net.sf.anathema.character.library.trait.Trait;
-import net.sf.anathema.character.library.trait.favorable.FavorableState;
-import net.sf.anathema.character.library.trait.favorable.FriendlyIncrementChecker;
-import net.sf.anathema.character.library.trait.favorable.IncrementChecker;
-import net.sf.anathema.character.library.trait.favorable.TraitFavorization;
+import net.sf.anathema.character.main.library.trait.Trait;
+import net.sf.anathema.character.main.library.trait.favorable.FavorableState;
+import net.sf.anathema.character.main.library.trait.favorable.FriendlyIncrementChecker;
+import net.sf.anathema.character.main.library.trait.favorable.IncrementChecker;
+import net.sf.anathema.character.main.library.trait.favorable.TraitFavorization;
 import net.sf.anathema.character.main.testing.dummy.DummyCasteType;
 import net.sf.anathema.character.main.testing.dummy.DummyHero;
 import net.sf.anathema.character.main.testing.dummy.trait.DummyTrait;

@@ -2,10 +2,10 @@ package net.sf.anathema.hero.specialties.model;
 
 import net.sf.anathema.character.generic.framework.additionaltemplate.model.SpecialtiesCollection;
 import net.sf.anathema.character.generic.traits.TraitType;
-import net.sf.anathema.character.library.trait.specialties.SpecialtiesModel;
-import net.sf.anathema.character.library.trait.specialties.SpecialtiesModelFetcher;
-import net.sf.anathema.character.library.trait.specialties.Specialty;
-import net.sf.anathema.character.library.trait.subtrait.ISpecialtyListener;
+import net.sf.anathema.character.main.library.trait.specialties.SpecialtiesModel;
+import net.sf.anathema.character.main.library.trait.specialties.SpecialtiesModelFetcher;
+import net.sf.anathema.character.main.library.trait.specialties.Specialty;
+import net.sf.anathema.character.main.library.trait.subtrait.ISpecialtyListener;
 import net.sf.anathema.hero.model.Hero;
 import net.sf.anathema.lib.control.ChangeListener;
 

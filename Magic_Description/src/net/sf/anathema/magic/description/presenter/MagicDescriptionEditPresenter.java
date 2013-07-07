@@ -1,7 +1,7 @@
 package net.sf.anathema.magic.description.presenter;
 
-import net.sf.anathema.character.presenter.magic.detail.MagicDetailModel;
-import net.sf.anathema.character.presenter.magic.detail.MagicDetailPresenter;
+import net.sf.anathema.character.main.presenter.magic.detail.MagicDetailModel;
+import net.sf.anathema.character.main.presenter.magic.detail.MagicDetailPresenter;
 import net.sf.anathema.framework.swing.IView;
 import net.sf.anathema.lib.control.ChangeListener;
 import net.sf.anathema.lib.control.ObjectValueListener;

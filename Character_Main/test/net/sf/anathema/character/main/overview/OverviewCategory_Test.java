@@ -1,6 +1,6 @@
 package net.sf.anathema.character.main.overview;
 
-import net.sf.anathema.character.library.overview.OverviewCategory;
+import net.sf.anathema.character.main.library.overview.OverviewCategory;
 import org.junit.Test;
 
 import javax.swing.JComponent;

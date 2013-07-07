@@ -1,6 +1,6 @@
 package net.sf.anathema.character.platform.module;
 
-import net.sf.anathema.character.CharacterPrintNameFileScanner;
+import net.sf.anathema.character.main.item.CharacterPrintNameFileScanner;
 import net.sf.anathema.character.generic.caste.ICasteCollection;
 import net.sf.anathema.character.generic.framework.CharacterGenericsExtractor;
 import net.sf.anathema.character.generic.framework.ICharacterGenerics;
@@ -13,8 +13,8 @@ import net.sf.anathema.initialization.RegisteredItemTypePresentation;
 import net.sf.anathema.lib.registry.IRegistry;
 import net.sf.anathema.lib.resources.Resources;
 
-import static net.sf.anathema.character.itemtype.CharacterItemTypeRetrieval.CHARACTER_ITEM_TYPE_ID;
-import static net.sf.anathema.character.itemtype.CharacterItemTypeRetrieval.retrieveCharacterItemType;
+import static net.sf.anathema.character.main.itemtype.CharacterItemTypeRetrieval.CHARACTER_ITEM_TYPE_ID;
+import static net.sf.anathema.character.main.itemtype.CharacterItemTypeRetrieval.retrieveCharacterItemType;
 
 @RegisteredItemTypePresentation(itemType = CHARACTER_ITEM_TYPE_ID)
 public class CharacterItemTypePresentationFactory implements ItemTypePresentationFactory {

@@ -8,7 +8,7 @@ import net.sf.anathema.character.generic.equipment.ArtifactAttuneType;
 import net.sf.anathema.character.generic.traits.TraitType;
 import net.sf.anathema.character.generic.traits.types.AbilityType;
 import net.sf.anathema.character.generic.type.ICharacterType;
-import net.sf.anathema.character.library.trait.specialties.Specialty;
+import net.sf.anathema.character.main.library.trait.specialties.Specialty;
 import net.sf.anathema.hero.model.Hero;
 import net.sf.anathema.hero.specialties.model.SpecialtiesCollectionImpl;
 import net.sf.anathema.lib.control.ChangeListener;

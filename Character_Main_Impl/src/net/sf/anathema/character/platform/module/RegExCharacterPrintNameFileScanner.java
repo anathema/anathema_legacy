@@ -1,6 +1,6 @@
 package net.sf.anathema.character.platform.module;
 
-import net.sf.anathema.character.CharacterPrintNameFileScanner;
+import net.sf.anathema.character.main.item.CharacterPrintNameFileScanner;
 import net.sf.anathema.character.generic.caste.ICasteCollection;
 import net.sf.anathema.character.generic.template.ITemplateType;
 import net.sf.anathema.character.generic.template.TemplateType;
@@ -24,9 +24,9 @@ import java.util.Map;
 
 import static net.sf.anathema.character.generic.caste.CasteType.NULL_CASTE_TYPE;
 import static net.sf.anathema.character.generic.impl.magic.ICharmXMLConstants.ATTRIB_TYPE;
-import static net.sf.anathema.character.persistence.ICharacterXmlConstants.ATTRIB_SUB_TYPE;
-import static net.sf.anathema.character.persistence.ICharacterXmlConstants.TAG_CASTE;
-import static net.sf.anathema.character.persistence.ICharacterXmlConstants.TAG_CHARACTER_TYPE;
+import static net.sf.anathema.character.main.persistence.ICharacterXmlConstants.ATTRIB_SUB_TYPE;
+import static net.sf.anathema.character.main.persistence.ICharacterXmlConstants.TAG_CASTE;
+import static net.sf.anathema.character.main.persistence.ICharacterXmlConstants.TAG_CHARACTER_TYPE;
 
 public class RegExCharacterPrintNameFileScanner implements CharacterPrintNameFileScanner {
 

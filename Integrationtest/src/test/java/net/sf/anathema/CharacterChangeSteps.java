@@ -9,7 +9,7 @@ import net.sf.anathema.character.generic.caste.ICasteCollection;
 import net.sf.anathema.character.generic.impl.traits.TraitTypeUtils;
 import net.sf.anathema.character.generic.traits.TraitType;
 import net.sf.anathema.character.generic.traits.types.AbilityType;
-import net.sf.anathema.character.library.trait.Trait;
+import net.sf.anathema.character.main.library.trait.Trait;
 import net.sf.anathema.character.main.model.experience.ExperienceModelFetcher;
 import net.sf.anathema.hero.intimacies.model.IntimaciesModel;
 import net.sf.anathema.hero.intimacies.model.IntimaciesModelFetcher;

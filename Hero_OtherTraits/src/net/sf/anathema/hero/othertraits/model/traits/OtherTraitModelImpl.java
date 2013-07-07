@@ -5,7 +5,7 @@ import net.sf.anathema.character.generic.template.ITraitLimitation;
 import net.sf.anathema.character.generic.template.ITraitTemplateCollection;
 import net.sf.anathema.character.generic.traits.types.OtherTraitType;
 import net.sf.anathema.character.generic.traits.types.VirtueType;
-import net.sf.anathema.character.library.trait.Trait;
+import net.sf.anathema.character.main.library.trait.Trait;
 import net.sf.anathema.character.main.model.othertraits.OtherTraitModel;
 import net.sf.anathema.character.main.model.traits.DefaultTraitMap;
 import net.sf.anathema.character.main.model.traits.TraitModel;

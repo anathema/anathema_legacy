@@ -2,7 +2,7 @@ package net.sf.anathema.character.main.model.traits;
 
 import com.google.common.base.Preconditions;
 import net.sf.anathema.character.generic.traits.TraitType;
-import net.sf.anathema.character.library.trait.Trait;
+import net.sf.anathema.character.main.library.trait.Trait;
 
 import java.util.ArrayList;
 import java.util.Collection;

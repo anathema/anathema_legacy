@@ -1,7 +1,7 @@
 package net.sf.anathema.character.model.creation.bonus.util;
 
-import net.sf.anathema.character.library.trait.Trait;
-import net.sf.anathema.character.library.trait.TraitGroup;
+import net.sf.anathema.character.main.library.trait.Trait;
+import net.sf.anathema.character.main.library.trait.TraitGroup;
 import net.sf.anathema.character.model.creation.bonus.basic.ElementCreationCost;
 
 import java.util.ArrayList;

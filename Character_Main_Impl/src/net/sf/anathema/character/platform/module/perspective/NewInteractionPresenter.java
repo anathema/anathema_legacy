@@ -1,12 +1,12 @@
 package net.sf.anathema.character.platform.module.perspective;
 
-import net.sf.anathema.character.perspective.CharacterButtonPresenter;
-import net.sf.anathema.character.perspective.CharacterGridView;
-import net.sf.anathema.character.perspective.Selector;
-import net.sf.anathema.character.perspective.model.CharacterIdentifier;
-import net.sf.anathema.character.perspective.model.CharacterItemModel;
-import net.sf.anathema.character.perspective.model.ItemSelectionModel;
-import net.sf.anathema.character.perspective.model.NewCharacterListener;
+import net.sf.anathema.character.main.perspective.CharacterButtonPresenter;
+import net.sf.anathema.character.main.perspective.CharacterGridView;
+import net.sf.anathema.character.main.perspective.Selector;
+import net.sf.anathema.character.main.perspective.model.CharacterIdentifier;
+import net.sf.anathema.character.main.perspective.model.CharacterItemModel;
+import net.sf.anathema.character.main.perspective.model.ItemSelectionModel;
+import net.sf.anathema.character.main.perspective.model.NewCharacterListener;
 import net.sf.anathema.framework.presenter.resources.BasicUi;
 import net.sf.anathema.interaction.Command;
 import net.sf.anathema.interaction.Tool;

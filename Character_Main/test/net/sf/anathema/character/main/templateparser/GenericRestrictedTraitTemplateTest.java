@@ -5,7 +5,7 @@ import net.sf.anathema.character.generic.framework.xml.trait.GenericRestrictedTr
 import net.sf.anathema.character.generic.framework.xml.trait.GenericTraitTemplate;
 import net.sf.anathema.character.generic.framework.xml.trait.alternate.AlternateMinimumRestriction;
 import net.sf.anathema.character.generic.traits.types.AbilityType;
-import net.sf.anathema.character.library.trait.Trait;
+import net.sf.anathema.character.main.library.trait.Trait;
 import net.sf.anathema.character.main.testing.dummy.DummyHero;
 import net.sf.anathema.character.main.testing.dummy.trait.DummyTrait;
 

@@ -1,6 +1,6 @@
 package net.sf.anathema.swing.character.perspective;
 
-import net.sf.anathema.character.perspective.CharacterGridView;
+import net.sf.anathema.character.main.perspective.CharacterGridView;
 import net.sf.anathema.framework.perspective.SwingPerspectivePane;
 import net.sf.anathema.fx.character.perspective.CharacterGridFxView;
 import net.sf.anathema.platform.fx.InteractionView;

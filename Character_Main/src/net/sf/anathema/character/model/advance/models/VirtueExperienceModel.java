@@ -1,7 +1,7 @@
 package net.sf.anathema.character.model.advance.models;
 
-import net.sf.anathema.character.library.trait.Trait;
-import net.sf.anathema.character.library.trait.TraitCollectionUtilities;
+import net.sf.anathema.character.main.library.trait.Trait;
+import net.sf.anathema.character.main.library.trait.TraitCollectionUtilities;
 import net.sf.anathema.character.main.model.traits.TraitMap;
 import net.sf.anathema.character.model.advance.IPointCostCalculator;
 

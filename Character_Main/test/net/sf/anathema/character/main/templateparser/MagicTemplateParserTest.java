@@ -6,8 +6,8 @@ import net.sf.anathema.character.generic.impl.template.magic.DefaultMartialArtsR
 import net.sf.anathema.character.generic.magic.charms.MartialArtsLevel;
 import net.sf.anathema.character.generic.magic.spells.CircleType;
 import net.sf.anathema.character.generic.template.magic.ICharmTemplate;
-import net.sf.anathema.character.magic.dummy.DummyCharm;
-import net.sf.anathema.character.magic.dummy.DummyCharmUtilities;
+import net.sf.anathema.character.main.dummy.DummyCharm;
+import net.sf.anathema.character.main.dummy.DummyCharmUtilities;
 import net.sf.anathema.character.main.testing.dummy.DummyCasteType;
 import net.sf.anathema.character.main.testing.dummy.DummyCharacterTypes;
 import net.sf.anathema.character.main.testing.dummy.magic.DummyMartialArtsRules;

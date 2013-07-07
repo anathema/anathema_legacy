@@ -7,7 +7,7 @@ import net.sf.anathema.character.generic.magic.ICharm;
 import net.sf.anathema.character.generic.magic.charms.ICharmTree;
 import net.sf.anathema.character.generic.traits.ValuedTraitType;
 import net.sf.anathema.character.generic.traits.types.AbilityType;
-import net.sf.anathema.character.magic.dummy.DummyCharm;
+import net.sf.anathema.character.main.dummy.DummyCharm;
 import net.sf.anathema.character.main.testing.dummy.DummyExaltCharacterType;
 import net.sf.anathema.character.main.testing.dummy.magic.DummyLearnableArbitrator;
 import net.sf.anathema.character.main.testing.dummy.magic.DummyLearningCharmGroupContainer;

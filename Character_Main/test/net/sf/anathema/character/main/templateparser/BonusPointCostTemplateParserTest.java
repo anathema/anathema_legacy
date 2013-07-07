@@ -7,7 +7,7 @@ import net.sf.anathema.character.generic.magic.IMagic;
 import net.sf.anathema.character.generic.magic.charms.MartialArtsLevel;
 import net.sf.anathema.character.generic.template.experience.ICostAnalyzer;
 import net.sf.anathema.character.generic.traits.types.AttributeType;
-import net.sf.anathema.character.magic.dummy.DummyCharm;
+import net.sf.anathema.character.main.dummy.DummyCharm;
 import net.sf.anathema.character.main.testing.dummy.DummyGenericTrait;
 import net.sf.anathema.character.main.testing.dummy.template.DummyXmlTemplateRegistry;
 import net.sf.anathema.lib.exception.AnathemaException;

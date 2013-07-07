@@ -1,10 +1,10 @@
 package net.sf.anathema.hero.specialties.points.experience;
 
 import net.sf.anathema.character.generic.template.experience.IExperiencePointCosts;
-import net.sf.anathema.character.library.trait.Trait;
-import net.sf.anathema.character.library.trait.specialties.SpecialtiesModel;
-import net.sf.anathema.character.library.trait.specialties.SpecialtiesModelFetcher;
-import net.sf.anathema.character.library.trait.subtrait.ISubTraitContainer;
+import net.sf.anathema.character.main.library.trait.Trait;
+import net.sf.anathema.character.main.library.trait.specialties.SpecialtiesModel;
+import net.sf.anathema.character.main.library.trait.specialties.SpecialtiesModelFetcher;
+import net.sf.anathema.character.main.library.trait.subtrait.ISubTraitContainer;
 import net.sf.anathema.character.main.model.abilities.AbilityModelFetcher;
 import net.sf.anathema.character.model.advance.models.AbstractIntegerValueModel;
 import net.sf.anathema.hero.model.Hero;

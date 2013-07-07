@@ -1,7 +1,7 @@
 package net.sf.anathema.charmtree.presenter;
 
 import net.sf.anathema.character.generic.magic.ICharm;
-import net.sf.anathema.character.presenter.magic.CharmColoring;
+import net.sf.anathema.character.main.presenter.magic.CharmColoring;
 import net.sf.anathema.charmtree.view.CharmGroupInformer;
 
 public class ExternalPrerequisitesColorer implements CharmColorer{

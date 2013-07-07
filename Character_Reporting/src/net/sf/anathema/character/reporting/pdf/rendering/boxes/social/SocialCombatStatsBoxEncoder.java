@@ -9,7 +9,7 @@ import net.sf.anathema.character.generic.character.IGenericTraitCollection;
 import net.sf.anathema.character.generic.equipment.ICharacterStatsModifiers;
 import net.sf.anathema.character.generic.impl.CharacterUtilities;
 import net.sf.anathema.character.generic.traits.types.AbilityType;
-import net.sf.anathema.character.library.trait.specialties.HighestSpecialty;
+import net.sf.anathema.character.main.library.trait.specialties.HighestSpecialty;
 import net.sf.anathema.character.main.model.traits.GenericTraitCollectionFacade;
 import net.sf.anathema.character.main.model.traits.TraitModelFetcher;
 import net.sf.anathema.character.reporting.pdf.content.ReportSession;

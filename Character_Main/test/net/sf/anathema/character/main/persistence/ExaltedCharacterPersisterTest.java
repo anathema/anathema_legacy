@@ -11,14 +11,11 @@ import net.sf.anathema.character.main.testing.dummy.DummyExaltCharacterType;
 import net.sf.anathema.character.main.testing.dummy.template.SimpleDummyCharacterTemplate;
 import net.sf.anathema.character.model.Character;
 import net.sf.anathema.character.model.CharacterStatisticsConfiguration;
-import net.sf.anathema.character.persistence.DummyObjectFactory;
-import net.sf.anathema.character.persistence.ExaltedCharacterPersister;
 import net.sf.anathema.framework.item.IItemType;
 import net.sf.anathema.framework.messaging.IMessaging;
 import net.sf.anathema.framework.repository.Item;
 import net.sf.anathema.lib.exception.PersistenceException;
 import org.junit.Before;
-import org.junit.Ignore;
 import org.junit.Test;
 
 import static org.hamcrest.CoreMatchers.is;

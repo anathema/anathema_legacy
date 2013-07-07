@@ -4,7 +4,7 @@ import com.itextpdf.text.DocumentException;
 import com.itextpdf.text.Phrase;
 import com.itextpdf.text.pdf.MultiColumnText;
 import net.sf.anathema.character.generic.traits.TraitType;
-import net.sf.anathema.character.library.trait.Trait;
+import net.sf.anathema.character.main.library.trait.Trait;
 import net.sf.anathema.character.main.model.traits.TraitModelFetcher;
 import net.sf.anathema.framework.reporting.pdf.PdfReportUtils;
 import net.sf.anathema.hero.model.Hero;

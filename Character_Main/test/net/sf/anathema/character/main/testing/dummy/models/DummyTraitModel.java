@@ -1,7 +1,7 @@
 package net.sf.anathema.character.main.testing.dummy.models;
 
 import net.sf.anathema.character.generic.framework.additionaltemplate.model.TraitValueStrategy;
-import net.sf.anathema.character.library.trait.Trait;
+import net.sf.anathema.character.main.library.trait.Trait;
 import net.sf.anathema.character.main.model.traits.DefaultTraitMap;
 import net.sf.anathema.character.main.model.traits.TraitModel;
 import net.sf.anathema.character.model.context.trait.CreationTraitValueStrategy;

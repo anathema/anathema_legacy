@@ -12,7 +12,7 @@ import net.sf.anathema.character.equipment.dummy.DummyEquipmentObject;
 import net.sf.anathema.character.generic.equipment.weapon.IEquipmentStats;
 import net.sf.anathema.character.generic.health.HealthType;
 import net.sf.anathema.character.generic.traits.TraitType;
-import net.sf.anathema.character.library.trait.specialties.Specialty;
+import net.sf.anathema.character.main.library.trait.specialties.Specialty;
 import net.sf.anathema.framework.resources.LocaleResources;
 import net.sf.anathema.lib.model.BooleanModel;
 import net.sf.anathema.lib.util.SimpleIdentifier;

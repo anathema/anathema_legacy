@@ -6,11 +6,11 @@ import net.sf.anathema.character.generic.magic.description.MagicDescriptionProvi
 import net.sf.anathema.character.generic.template.HeroTemplate;
 import net.sf.anathema.character.generic.template.ITemplateRegistry;
 import net.sf.anathema.character.model.charm.options.DefaultCharmTemplateRetriever;
-import net.sf.anathema.character.presenter.initializers.HeroModelInitializer;
-import net.sf.anathema.character.presenter.initializers.RegisteredInitializer;
-import net.sf.anathema.character.presenter.magic.CharacterCharmModel;
-import net.sf.anathema.character.presenter.magic.charm.CharacterCharmTreePresenter;
-import net.sf.anathema.character.view.SectionView;
+import net.sf.anathema.character.main.presenter.initializers.HeroModelInitializer;
+import net.sf.anathema.character.main.presenter.initializers.RegisteredInitializer;
+import net.sf.anathema.character.main.presenter.magic.CharacterCharmModel;
+import net.sf.anathema.character.main.presenter.magic.charm.CharacterCharmTreePresenter;
+import net.sf.anathema.character.model.view.SectionView;
 import net.sf.anathema.charmtree.view.CharmDisplayPropertiesMap;
 import net.sf.anathema.charmtree.view.ICharmView;
 import net.sf.anathema.framework.IApplicationModel;
