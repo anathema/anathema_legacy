@@ -3,6 +3,7 @@ package net.sf.anathema.hero.languages.display.overview;
 import javafx.scene.control.Label;
 import net.miginfocom.layout.CC;
 import net.sf.anathema.framework.ui.RGBColor;
+import net.sf.anathema.lib.control.legality.FontStyle;
 import net.sf.anathema.lib.workflow.labelledvalue.ILabelledAlotmentView;
 import org.tbee.javafx.scene.layout.MigPane;
 
@@ -43,7 +44,7 @@ public class FxAlotmentOverview implements ILabelledAlotmentView {
   }
 
   @Override
-  public void setFontStyle(int style) {
+  public void setFontStyle(FontStyle style) {
     styler.setStyle(style);
   }
 }

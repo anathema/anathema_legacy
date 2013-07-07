@@ -3,6 +3,7 @@ package net.sf.anathema.hero.languages.display.overview;
 import javafx.scene.control.Label;
 import net.miginfocom.layout.CC;
 import net.sf.anathema.framework.ui.RGBColor;
+import net.sf.anathema.lib.control.legality.FontStyle;
 import net.sf.anathema.lib.workflow.labelledvalue.IValueView;
 import org.tbee.javafx.scene.layout.MigPane;
 
@@ -31,7 +32,7 @@ public class FxIntegerOverview implements IValueView<Integer> {
   }
 
   @Override
-  public void setFontStyle(int style) {
+  public void setFontStyle(FontStyle style) {
     styler.setStyle(style);
   }
 }
