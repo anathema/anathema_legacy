@@ -1,4 +1,4 @@
-package net.sf.anathema.framework.presenter.view;
+package net.sf.anathema.hero.languages.display;
 
 import net.sf.anathema.lib.control.ObjectValueListener;
 import net.sf.anathema.lib.gui.selection.IObjectSelectionView;

@@ -1,9 +1,7 @@
 package net.sf.anathema.hero.languages.display;
 
 import net.sf.anathema.character.main.library.overview.IOverviewCategory;
-import net.sf.anathema.character.main.library.removableentry.presenter.IRemovableEntryView;
 import net.sf.anathema.character.main.library.trait.Trait;
-import net.sf.anathema.framework.presenter.view.IButtonControlledObjectSelectionView;
 import net.sf.anathema.lib.file.RelativePath;
 import net.sf.anathema.lib.gui.AgnosticUIConfiguration;
 

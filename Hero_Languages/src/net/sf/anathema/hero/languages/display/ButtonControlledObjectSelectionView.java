@@ -2,7 +2,6 @@ package net.sf.anathema.hero.languages.display;
 
 import com.google.common.base.Strings;
 import net.miginfocom.layout.CC;
-import net.sf.anathema.framework.presenter.view.IButtonControlledObjectSelectionView;
 import net.sf.anathema.framework.presenter.view.ITextFieldComboBoxEditor;
 import net.sf.anathema.lib.control.ObjectValueListener;
 import net.sf.anathema.lib.exception.NotYetImplementedException;

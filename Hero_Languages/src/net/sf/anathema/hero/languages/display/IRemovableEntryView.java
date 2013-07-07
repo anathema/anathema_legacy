@@ -1,4 +1,4 @@
-package net.sf.anathema.character.main.library.removableentry.presenter;
+package net.sf.anathema.hero.languages.display;
 
 import net.sf.anathema.interaction.Command;
 
