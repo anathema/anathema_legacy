@@ -1,7 +1,7 @@
 package net.sf.anathema.hero.intimacies.display;
 
 import net.sf.anathema.character.main.library.intvalue.IIconToggleButtonProperties;
-import net.sf.anathema.character.main.library.overview.IOverviewCategory;
+import net.sf.anathema.character.main.library.overview.OverviewCategory;
 import net.sf.anathema.character.main.library.removableentry.RemovableEntryListener;
 import net.sf.anathema.character.main.library.selection.IStringSelectionView;
 import net.sf.anathema.character.main.library.trait.presenter.TraitPresenter;
@@ -57,7 +57,7 @@ public class IntimaciesPresenter {
   }
 
   private void initOverviewView() {
-    final IOverviewCategory creationOverview = view.addOverview(
+    final OverviewCategory creationOverview = view.addOverview(
             resources.getString("Intimacies.Overview.BorderLabel"));
     final ILabelledAlotmentView freeIntimaciesView = creationOverview.addAlotmentView(
             resources.getString("Intimacies.Overview.Free"), 2);
@@ -65,7 +65,7 @@ public class IntimaciesPresenter {
             resources.getString("Intimacies.Overview.Maximum"), 2);
     final IValueView<Integer> bonusPointsView = creationOverview.addIntegerValueView(
             resources.getString("Intimacies.Overview.BonusPoints"), 2);
-    final IOverviewCategory experienceOverview = view.addOverview(
+    final OverviewCategory experienceOverview = view.addOverview(
             resources.getString("Intimacies.Overview.BorderLabel"));
     final ILabelledAlotmentView experienceMaximumView = experienceOverview.addAlotmentView(
             resources.getString("Intimacies.Overview.Maximum"), 2);
@@ -104,8 +104,8 @@ public class IntimaciesPresenter {
     recalculateOverview(freeIntimaciesView, totalIntimaciesView, bonusPointsView, experienceMaximumView);
   }
 
-  private void setOverview(boolean experienced, IOverviewCategory experienceOverview,
-                           IOverviewCategory creationOverview) {
+  private void setOverview(boolean experienced, OverviewCategory experienceOverview,
+                           OverviewCategory creationOverview) {
     if (experienced) {
       view.setOverview(experienceOverview);
     } else {

@@ -3,10 +3,10 @@ package net.sf.anathema.hero.languages.display;
 import javafx.scene.Node;
 import javafx.scene.control.ScrollPane;
 import net.miginfocom.layout.CC;
-import net.sf.anathema.character.main.library.overview.IOverviewCategory;
+import net.sf.anathema.character.main.library.overview.OverviewCategory;
+import net.sf.anathema.hero.languages.display.overview.FxOverviewCategory;
 import net.sf.anathema.lib.file.RelativePath;
 import net.sf.anathema.lib.gui.AgnosticUIConfiguration;
-import net.sf.anathema.lib.gui.icon.ImageProvider;
 import net.sf.anathema.platform.fx.NodeHolder;
 import org.tbee.javafx.scene.layout.MigPane;
 
@@ -42,19 +42,19 @@ public class FxLanguagesView implements LanguagesView, NodeHolder {
   }
 
   @Override
-  public IOverviewCategory addOverview(String label) {
+  public OverviewCategory addOverview(String label) {
     return new FxOverviewCategory(overviewPanel, label);
   }
 
   @Override
-  public IRemovableEntryView addEntryView(RelativePath removeIcon, String label) {
-    FxRemovableStringView view = new FxRemovableStringView(new ImageProvider().getImageIcon(removeIcon), label);
+  public RemovableEntryView addEntryView(RelativePath removeIcon, String label) {
+    FxRemovableStringView view = new FxRemovableStringView(removeIcon, label);
     view.addTo(entryPanel);
     return view;
   }
 
   @Override
-  public void removeEntryView(IRemovableEntryView removableView) {
+  public void removeEntryView(RemovableEntryView removableView) {
     removableView.delete();
   }
 }

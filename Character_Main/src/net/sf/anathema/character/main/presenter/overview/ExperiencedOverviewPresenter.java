@@ -1,13 +1,13 @@
 package net.sf.anathema.character.main.presenter.overview;
 
-import net.sf.anathema.character.main.library.overview.IOverviewCategory;
-import net.sf.anathema.hero.experience.ExperienceModelFetcher;
 import net.sf.anathema.character.main.advance.ExperiencePointConfigurationListener;
 import net.sf.anathema.character.main.advance.IExperiencePointEntry;
 import net.sf.anathema.character.main.advance.IExperiencePointManagement;
+import net.sf.anathema.character.main.library.overview.OverviewCategory;
 import net.sf.anathema.character.main.view.overview.CategorizedOverview;
 import net.sf.anathema.hero.change.ChangeFlavor;
 import net.sf.anathema.hero.change.FlavoredChangeListener;
+import net.sf.anathema.hero.experience.ExperienceModelFetcher;
 import net.sf.anathema.hero.model.Hero;
 import net.sf.anathema.hero.points.overview.IValueModel;
 import net.sf.anathema.lib.control.legality.LegalityColorProvider;
@@ -47,7 +47,7 @@ public class ExperiencedOverviewPresenter implements Presenter {
 
   @Override
   public void initPresentation() {
-    IOverviewCategory category = view.addOverviewCategory(getString("Overview.Experience.Title"));
+    OverviewCategory category = view.addOverviewCategory(getString("Overview.Experience.Title"));
     for (IValueModel<Integer> model : management.getAllModels()) {
       IValueView<Integer> valueView = category.addIntegerValueView(getString("Overview.Experience." + model.getId()), 2);
       presenters.add(new ValueSubPresenter(model, valueView));
@@ -56,7 +56,7 @@ public class ExperiencedOverviewPresenter implements Presenter {
     calculateXPCost();
   }
 
-  private void initTotal(IOverviewCategory category) {
+  private void initTotal(OverviewCategory category) {
     totalView = category.addAlotmentView(getString("Overview.Experience.Total"), 4);
     ExperienceModelFetcher.fetch(hero).getExperiencePoints().addExperiencePointConfigurationListener(new ExperiencePointConfigurationListener() {
       @Override

@@ -1,10 +1,10 @@
 package net.sf.anathema.character.main.view.overview;
 
-import net.sf.anathema.character.main.library.overview.IOverviewCategory;
+import net.sf.anathema.character.main.library.overview.OverviewCategory;
 
 public interface CategorizedOverview {
 
-  IOverviewCategory addOverviewCategory(String borderLabel);
+  OverviewCategory addOverviewCategory(String borderLabel);
 
   void showIn(OverviewDisplay characterPane);
 }

@@ -2,8 +2,8 @@ package net.sf.anathema.hero.intimacies.display;
 
 import net.miginfocom.layout.CC;
 import net.miginfocom.swing.MigLayout;
-import net.sf.anathema.character.main.library.overview.IOverviewCategory;
 import net.sf.anathema.character.main.library.overview.OverviewCategory;
+import net.sf.anathema.character.main.library.overview.SwingOverviewCategory;
 import net.sf.anathema.character.main.library.selection.IStringSelectionView;
 import net.sf.anathema.character.main.library.selection.StringSelectionView;
 import net.sf.anathema.character.main.library.trait.view.swing.SimpleTraitView;
@@ -49,12 +49,12 @@ public class IntimaciesViewImpl implements IntimaciesView, IView {
   }
 
   @Override
-  public IOverviewCategory addOverview(String border) {
-    return new OverviewCategory(overviewPanel, border, false);
+  public OverviewCategory addOverview(String border) {
+    return new SwingOverviewCategory(overviewPanel, border, false);
   }
 
   @Override
-  public void setOverview(IOverviewCategory overviewView) {
+  public void setOverview(OverviewCategory overviewView) {
     overviewPanel.removeAll();
     IView view = (IView) overviewView;
     overviewPanel.add(view.getComponent());

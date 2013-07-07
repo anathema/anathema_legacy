@@ -1,12 +1,12 @@
 package net.sf.anathema.character.main.view.overview;
 
-import net.sf.anathema.character.main.library.overview.IOverviewCategory;
 import net.sf.anathema.character.main.library.overview.OverviewCategory;
+import net.sf.anathema.character.main.library.overview.SwingOverviewCategory;
 
 public class NullOverviewContainer implements CategorizedOverview {
   @Override
-  public IOverviewCategory addOverviewCategory(String borderLabel) {
-    return new OverviewCategory(null, null, false);
+  public OverviewCategory addOverviewCategory(String borderLabel) {
+    return new SwingOverviewCategory(null, null, false);
   }
 
   @Override

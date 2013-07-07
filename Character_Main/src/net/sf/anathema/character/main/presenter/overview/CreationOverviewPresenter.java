@@ -1,13 +1,13 @@
 package net.sf.anathema.character.main.presenter.overview;
 
 import net.sf.anathema.character.main.caste.CasteType;
-import net.sf.anathema.character.main.template.HeroTemplate;
-import net.sf.anathema.character.main.library.overview.IOverviewCategory;
-import net.sf.anathema.hero.concept.HeroConceptFetcher;
 import net.sf.anathema.character.main.creation.IBonusPointManagement;
+import net.sf.anathema.character.main.library.overview.OverviewCategory;
+import net.sf.anathema.character.main.template.HeroTemplate;
 import net.sf.anathema.character.main.view.overview.CategorizedOverview;
 import net.sf.anathema.hero.change.ChangeFlavor;
 import net.sf.anathema.hero.change.FlavoredChangeListener;
+import net.sf.anathema.hero.concept.HeroConceptFetcher;
 import net.sf.anathema.hero.model.Hero;
 import net.sf.anathema.hero.points.PointModelFetcher;
 import net.sf.anathema.hero.points.overview.IOverviewModel;
@@ -33,7 +33,7 @@ public class CreationOverviewPresenter implements Presenter {
   private final IBonusPointManagement management;
   private final HeroTemplate template;
   private final List<IOverviewSubPresenter> presenters = new ArrayList<>();
-  private final Map<String, IOverviewCategory> categoriesById = new LinkedHashMap<>();
+  private final Map<String, OverviewCategory> categoriesById = new LinkedHashMap<>();
 
   public CreationOverviewPresenter(Resources resources, Hero hero, CategorizedOverview overviewView, IBonusPointManagement management) {
     this.management = management;
@@ -78,7 +78,7 @@ public class CreationOverviewPresenter implements Presenter {
   }
 
   private void initCategory(String categoryId) {
-    IOverviewCategory category = categoriesById.get(categoryId);
+    OverviewCategory category = categoriesById.get(categoryId);
     if (category == null) {
       category = view.addOverviewCategory(getString("Overview.Creation.Category." + categoryId));
       categoriesById.put(categoryId, category);
@@ -102,7 +102,7 @@ public class CreationOverviewPresenter implements Presenter {
 
   private void initConcept() {
     if (!template.getCasteCollection().isEmpty()) {
-      IOverviewCategory category = view.addOverviewCategory(getString("Overview.Creation.Category.Concept"));
+      OverviewCategory category = view.addOverviewCategory(getString("Overview.Creation.Category.Concept"));
       IValueView<String> casteView = category.addStringValueView(getString(template.getPresentationProperties().getCasteLabelResource()));
       IValueModel<String> casteModel = new IValueModel<String>() {
         @Override

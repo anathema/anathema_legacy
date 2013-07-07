@@ -2,8 +2,8 @@ package net.sf.anathema.hero.languages.display;
 
 import net.miginfocom.layout.CC;
 import net.miginfocom.swing.MigLayout;
-import net.sf.anathema.character.main.library.overview.IOverviewCategory;
 import net.sf.anathema.character.main.library.overview.OverviewCategory;
+import net.sf.anathema.character.main.library.overview.SwingOverviewCategory;
 import net.sf.anathema.framework.swing.IView;
 import net.sf.anathema.lib.file.RelativePath;
 import net.sf.anathema.lib.gui.AgnosticUIConfiguration;
@@ -35,15 +35,15 @@ public class LanguagesViewImpl implements IView, LanguagesView {
   }
 
   @Override
-  public IRemovableEntryView addEntryView(RelativePath removeIcon, String string) {
-    RemovableStringView view = new RemovableStringView(new ImageProvider().getImageIcon(removeIcon), string);
+  public RemovableEntryView addEntryView(RelativePath removeIcon, String string) {
+    SwingRemovableStringView view = new SwingRemovableStringView(new ImageProvider().getImageIcon(removeIcon), string);
     view.addContent(entryPanel);
     panel.revalidate();
     return view;
   }
 
   @Override
-  public void removeEntryView(IRemovableEntryView removableView) {
+  public void removeEntryView(RemovableEntryView removableView) {
     removableView.delete();
     entryPanel.repaint();
   }
@@ -58,7 +58,7 @@ public class LanguagesViewImpl implements IView, LanguagesView {
   }
 
   @Override
-  public IOverviewCategory addOverview(String border) {
-    return new OverviewCategory(overviewPanel, border, false);
+  public OverviewCategory addOverview(String border) {
+    return new SwingOverviewCategory(overviewPanel, border, false);
   }
 }
