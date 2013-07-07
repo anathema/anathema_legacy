@@ -35,7 +35,7 @@ public class FxLanguagesView implements LanguagesView, NodeHolder {
   }
 
   @Override
-  public IButtonControlledObjectSelectionView<Object> addSelectionView(String labelText, AgnosticUIConfiguration renderer, RelativePath addIcon) {
+  public ObjectSelectionViewWithTool<Object> addSelectionView(String labelText, AgnosticUIConfiguration renderer) {
     return null;  //To change body of implemented methods use File | Settings | File Templates.
   }
 

@@ -7,7 +7,7 @@ import net.sf.anathema.lib.gui.AgnosticUIConfiguration;
 
 public interface LanguagesView {
 
-  IButtonControlledObjectSelectionView<Object> addSelectionView(String labelText, AgnosticUIConfiguration renderer, RelativePath addIcon);
+  ObjectSelectionViewWithTool<Object> addSelectionView(String labelText, AgnosticUIConfiguration renderer);
 
   IOverviewCategory addOverview(String border);
 
