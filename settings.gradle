@@ -23,7 +23,6 @@ include('Anathema',
         'Hero_Languages',
         'Hero_OtherTraits',
         'Hero_Specialties',
-        'Hero_Spells',
         'Hero_Traits',
 
         'Hero_Sheet',
