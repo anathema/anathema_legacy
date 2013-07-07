@@ -1,6 +1,11 @@
 package net.sf.anathema.character.reporting.text.description;
 
+import com.google.common.base.Strings;
 import net.sf.anathema.hero.description.HeroDescription;
+import net.sf.anathema.lib.workflow.textualdescription.ITextualDescription;
+
+import java.util.ArrayList;
+import java.util.List;
 
 public class TextDescriptionContentImpl implements TextDescriptionContent {
 
@@ -16,47 +21,26 @@ public class TextDescriptionContentImpl implements TextDescriptionContent {
   }
 
   @Override
-  public String getCharacterization() {
-    return description.getCharacterization().getText();
-  }
-
-  @Override
-  public String getPhysicalAppearance() {
-    return description.getPhysicalDescription().getText();
-  }
-
-  @Override
-  public String getEyes() {
-    return description.getEyes().getText();
-  }
-
-  @Override
-  public String getHair() {
-    return description.getHair().getText();
-  }
-
-  @Override
-  public String getSex() {
-    return description.getSex().getText();
-  }
-
-  @Override
-  public String getSkin() {
-    return description.getSkin().getText();
-  }
-
-  @Override
-  public String getAnima() {
-    return description.getAnima().getText();
-  }
-
-  @Override
-  public String getNotes() {
-    return description.getNotes().getText();
-  }
-
-  @Override
   public String getConceptText() {
     return description.getConcept().getText();
+  }
+
+  @Override
+  public List<String> getDescription() {
+    List<String> descriptionParts = new ArrayList<>();
+    addNonEmptyText(descriptionParts, description.getCharacterization());
+    addNonEmptyText(descriptionParts, description.getPhysicalDescription());
+    addNonEmptyText(descriptionParts, description.getNotes());
+    return descriptionParts;
+  }
+
+  private void addNonEmptyText(List<String> descriptionParts, ITextualDescription textualDescription) {
+    if (!isEmpty(textualDescription)) {
+      descriptionParts.add(textualDescription.getText());
+    }
+  }
+
+  private boolean isEmpty(ITextualDescription textualDescription) {
+    return Strings.isNullOrEmpty(textualDescription.getText());
   }
 }

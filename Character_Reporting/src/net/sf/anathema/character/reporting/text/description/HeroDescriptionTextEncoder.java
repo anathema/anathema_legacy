@@ -1,6 +1,5 @@
 package net.sf.anathema.character.reporting.text.description;
 
-import com.google.common.base.Strings;
 import com.itextpdf.text.Chunk;
 import com.itextpdf.text.DocumentException;
 import com.itextpdf.text.Element;
@@ -10,6 +9,8 @@ import com.itextpdf.text.Phrase;
 import com.itextpdf.text.pdf.MultiColumnText;
 import net.sf.anathema.character.reporting.text.AbstractTextEncoder;
 import net.sf.anathema.framework.reporting.pdf.PdfReportUtils;
+import net.sf.anathema.hero.description.HeroDescriptionFetcher;
+import net.sf.anathema.hero.model.Hero;
 import net.sf.anathema.lib.resources.Resources;
 
 public class HeroDescriptionTextEncoder extends AbstractTextEncoder {
@@ -18,29 +19,15 @@ public class HeroDescriptionTextEncoder extends AbstractTextEncoder {
     super(utils, resources);
   }
 
-  public void createParagraphs(MultiColumnText columnText, TextDescriptionContent description) throws DocumentException {
-    columnText.addElement(createNameParagraph(description.getName()));
-    if (Strings.isNullOrEmpty(description.getCharacterization()) && Strings.isNullOrEmpty(
-            description.getPhysicalAppearance()) &&
-            Strings.isNullOrEmpty(description.getNotes())) {
-      return;
-    }
+  public void createParagraphs(MultiColumnText columnText, Hero hero) throws DocumentException {
+    TextDescriptionContentImpl content = new TextDescriptionContentImpl(HeroDescriptionFetcher.fetch(hero));
+    columnText.addElement(createNameParagraph(content.getName()));
     Phrase descriptionPhrase = createTextParagraph(createBoldTitle(getString("TextDescription.Label.Description") + ": "));
-    //
     boolean isFirst = true;
-    if (!Strings.isNullOrEmpty(description.getCharacterization())) {
-      descriptionPhrase.add(createTextChunk(description.getCharacterization()));
-      columnText.addElement(descriptionPhrase);
+    for (String descriptionPart : content.getDescription()) {
+      Chunk chunk = createTextChunk(descriptionPart);
+      addTextualDescriptionPart(columnText, descriptionPhrase, isFirst, chunk);
       isFirst = false;
-    }
-    if (!Strings.isNullOrEmpty(description.getPhysicalAppearance())) {
-      Chunk descriptionChunk = createTextChunk(description.getPhysicalAppearance());
-      addTextualDescriptionPart(columnText, descriptionPhrase, isFirst, descriptionChunk);
-      isFirst = false;
-    }
-    if (!Strings.isNullOrEmpty(description.getNotes())) {
-      Chunk noteChunk = createTextChunk(description.getNotes());
-      addTextualDescriptionPart(columnText, descriptionPhrase, isFirst, noteChunk);
     }
   }
 
@@ -52,11 +39,10 @@ public class HeroDescriptionTextEncoder extends AbstractTextEncoder {
     return paragraph;
   }
 
-  private void addTextualDescriptionPart(MultiColumnText columnText, Phrase potentialParentPhrase, boolean isFirst,
-                                         Chunk chunk) throws DocumentException {
+  private void addTextualDescriptionPart(MultiColumnText columnText, Phrase potentialParent, boolean isFirst, Chunk chunk) throws DocumentException {
     if (isFirst) {
-      potentialParentPhrase.add(chunk);
-      columnText.addElement(potentialParentPhrase);
+      potentialParent.add(chunk);
+      columnText.addElement(potentialParent);
     } else {
       Paragraph descriptionParagraph = createTextParagraph(chunk);
       descriptionParagraph.setFirstLineIndent(5f);
