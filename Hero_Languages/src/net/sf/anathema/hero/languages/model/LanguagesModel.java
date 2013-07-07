@@ -1,12 +1,12 @@
 package net.sf.anathema.hero.languages.model;
 
-import net.sf.anathema.character.main.library.removableentry.presenter.IRemovableEntryModel;
+import net.sf.anathema.character.main.library.removableentry.RemovableEntryModel;
 import net.sf.anathema.hero.model.HeroModel;
 import net.sf.anathema.lib.control.ChangeListener;
 import net.sf.anathema.lib.util.Identifier;
 import net.sf.anathema.lib.util.SimpleIdentifier;
 
-public interface LanguagesModel extends IRemovableEntryModel<Identifier>, HeroModel {
+public interface LanguagesModel extends RemovableEntryModel<Identifier>, HeroModel {
 
   Identifier ID = new SimpleIdentifier("Languages");
 

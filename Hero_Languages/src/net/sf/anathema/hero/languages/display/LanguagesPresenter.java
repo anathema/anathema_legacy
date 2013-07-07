@@ -1,7 +1,7 @@
 package net.sf.anathema.hero.languages.display;
 
 import net.sf.anathema.character.main.library.overview.IOverviewCategory;
-import net.sf.anathema.character.main.library.removableentry.presenter.IRemovableEntryListener;
+import net.sf.anathema.character.main.library.removableentry.RemovableEntryListener;
 import net.sf.anathema.framework.presenter.resources.BasicUi;
 import net.sf.anathema.hero.languages.model.LanguagesModel;
 import net.sf.anathema.interaction.Command;
@@ -46,7 +46,7 @@ public class LanguagesPresenter {
             resources.getString("Linguistics.Overview.Barbarian"), 2);
     final ILabelledAlotmentView totalView = overview.addAlotmentView(
             resources.getString("Linguistics.Overview.Total"), 2);
-    model.addModelChangeListener(new IRemovableEntryListener<Identifier>() {
+    model.addModelChangeListener(new RemovableEntryListener<Identifier>() {
       @Override
       public void entryAdded(Identifier entry) {
         updateOverview(familyView, totalView, barbarianView);
@@ -121,7 +121,7 @@ public class LanguagesPresenter {
         model.commitSelection();
       }
     });
-    model.addModelChangeListener(new IRemovableEntryListener<Identifier>() {
+    model.addModelChangeListener(new RemovableEntryListener<Identifier>() {
       @Override
       public void entryAdded(Identifier entry) {
         addEntry(entry);

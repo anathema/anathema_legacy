@@ -1,8 +1,8 @@
 package net.sf.anathema.hero.change;
 
-import net.sf.anathema.character.main.library.removableentry.presenter.IRemovableEntryListener;
+import net.sf.anathema.character.main.library.removableentry.RemovableEntryListener;
 
-public class RemovableEntryChangeAdapter<E> implements IRemovableEntryListener<E> {
+public class RemovableEntryChangeAdapter<E> implements RemovableEntryListener<E> {
   private final ChangeAnnouncer announcer;
 
   public RemovableEntryChangeAdapter(ChangeAnnouncer announcer) {
