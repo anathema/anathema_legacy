@@ -1,7 +1,6 @@
-package net.sf.anathema.character.main.library.removableentry.view;
+package net.sf.anathema.hero.languages.display;
 
 import net.miginfocom.layout.CC;
-import net.sf.anathema.character.main.library.removableentry.presenter.IRemovableEntryView;
 import net.sf.anathema.interaction.Command;
 import net.sf.anathema.lib.gui.CommandAction;
 import net.sf.anathema.lib.gui.layout.SwingLayoutUtils;
