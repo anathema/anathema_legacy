@@ -4,9 +4,9 @@ import javafx.scene.Node;
 import javafx.scene.control.ScrollPane;
 import net.miginfocom.layout.CC;
 import net.sf.anathema.character.main.library.overview.IOverviewCategory;
-import net.sf.anathema.character.main.library.trait.Trait;
 import net.sf.anathema.lib.file.RelativePath;
 import net.sf.anathema.lib.gui.AgnosticUIConfiguration;
+import net.sf.anathema.lib.gui.icon.ImageProvider;
 import net.sf.anathema.platform.fx.NodeHolder;
 import org.tbee.javafx.scene.layout.MigPane;
 
@@ -16,11 +16,11 @@ public class FxLanguagesView implements LanguagesView, NodeHolder {
 
   private final MigPane selectionPanel = new MigPane(withoutInsets().fillX());
   private final MigPane entryPanel = new MigPane(withoutInsets().wrapAfter(2).fillX());
-  private final MigPane mainPanel = new MigPane(withoutInsets().wrapAfter(1));
   private final MigPane overviewPanel = new MigPane(withoutInsets());
   private final MigPane panel = new MigPane(withoutInsets());
 
   public FxLanguagesView() {
+    MigPane mainPanel = new MigPane(withoutInsets().wrapAfter(1));
     mainPanel.add(selectionPanel);
     ScrollPane scrollPane = new ScrollPane();
     scrollPane.setContent(entryPanel);
@@ -35,22 +35,26 @@ public class FxLanguagesView implements LanguagesView, NodeHolder {
   }
 
   @Override
-  public ObjectSelectionViewWithTool<Object> addSelectionView(String labelText, AgnosticUIConfiguration renderer) {
-    return null;  //To change body of implemented methods use File | Settings | File Templates.
+  public ObjectSelectionViewWithTool<Object> addSelectionView(String labelText, AgnosticUIConfiguration<Object> renderer) {
+    FxSelectionViewWithTool<Object> view = new FxSelectionViewWithTool<>(renderer, labelText);
+    view.addTo(selectionPanel);
+    return view;
   }
 
   @Override
-  public IOverviewCategory addOverview(String border) {
-    return null;  //To change body of implemented methods use File | Settings | File Templates.
+  public IOverviewCategory addOverview(String label) {
+    return new FxOverviewCategory(overviewPanel, label);
   }
 
   @Override
-  public IRemovableEntryView addEntryView(RelativePath removeIcon, Trait trait, String string) {
-    return null;  //To change body of implemented methods use File | Settings | File Templates.
+  public IRemovableEntryView addEntryView(RelativePath removeIcon, String label) {
+    FxRemovableStringView view = new FxRemovableStringView(new ImageProvider().getImageIcon(removeIcon), label);
+    view.addTo(entryPanel);
+    return view;
   }
 
   @Override
   public void removeEntryView(IRemovableEntryView removableView) {
-    //To change body of implemented methods use File | Settings | File Templates.
+    removableView.delete();
   }
 }

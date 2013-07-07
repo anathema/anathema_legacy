@@ -152,7 +152,7 @@ public class LanguagesPresenter {
 
   private void addEntry(final Identifier language) {
     RelativePath removeIcon = new BasicUi().getRemoveIconPath();
-    IRemovableEntryView entryView = view.addEntryView(removeIcon, null, getDisplayString(language));
+    IRemovableEntryView entryView = view.addEntryView(removeIcon, getDisplayString(language));
     viewsByEntry.put(language, entryView);
     entryView.addButtonListener(new Command() {
       @Override
@@ -184,7 +184,7 @@ public class LanguagesPresenter {
     return object.toString();
   }
 
-  private class LanguageUiConfiguration extends AbstractUIConfiguration {
+  private class LanguageUiConfiguration extends AbstractUIConfiguration<Object> {
     @Override
     public String getLabel(Object value) {
       return getDisplayString(value);

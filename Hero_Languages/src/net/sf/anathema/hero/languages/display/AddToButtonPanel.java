@@ -8,10 +8,8 @@ import javax.swing.AbstractButton;
 import javax.swing.Action;
 import javax.swing.JButton;
 import javax.swing.JPanel;
-import java.awt.Insets;
 
 public class AddToButtonPanel implements AddToSwingComponent {
-  private static final Insets TOOLBAR_BUTTON_MARGIN = new Insets(1, 1, 1, 1);
   private JPanel panel;
 
   public AddToButtonPanel(JPanel panel) {
@@ -26,19 +24,8 @@ public class AddToButtonPanel implements AddToSwingComponent {
 
   private AbstractButton createToolBarButton(Action action) {
     AbstractButton button = createButton(action);
-    configureToolBarButton(button);
+    ToolbarUtilities.configureToolBarButton(button);
     return button;
-  }
-
-  private void configureToolBarButton(AbstractButton button) {
-    button.setFocusPainted(false);
-    button.setMargin(TOOLBAR_BUTTON_MARGIN);
-    if (button.getToolTipText() == null) {
-      button.setToolTipText(button.getText());
-    }
-    if (button.getIcon() != null) {
-      button.setText(null);
-    }
   }
 
   private AbstractButton createButton(Action action) {

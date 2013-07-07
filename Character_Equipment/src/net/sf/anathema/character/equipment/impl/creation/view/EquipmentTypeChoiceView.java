@@ -3,9 +3,9 @@ package net.sf.anathema.character.equipment.impl.creation.view;
 import net.miginfocom.layout.CC;
 import net.miginfocom.swing.MigLayout;
 import net.sf.anathema.character.equipment.creation.view.IEquipmentTypeChoiceView;
+import net.sf.anathema.hero.languages.display.ToolbarUtilities;
 import net.sf.anathema.lib.gui.dialog.core.IPageContent;
 import net.sf.anathema.lib.gui.layout.LayoutUtils;
-import net.sf.anathema.lib.gui.toolbar.ToolBarUtilities;
 import net.sf.anathema.lib.gui.widgets.HorizontalLine;
 
 import javax.swing.Action;
@@ -48,7 +48,7 @@ public class EquipmentTypeChoiceView implements IPageContent, IEquipmentTypeChoi
       focusComponent = toggleButton;
     }
     toggleButton.setSelected(isSelected);
-    ToolBarUtilities.configureToolBarButton(toggleButton);
+    ToolbarUtilities.configureToolBarButton(toggleButton);
     buttonGroup.add(toggleButton);
     return toggleButton;
   }

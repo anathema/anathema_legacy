@@ -4,7 +4,6 @@ import net.miginfocom.layout.CC;
 import net.miginfocom.swing.MigLayout;
 import net.sf.anathema.character.main.library.overview.IOverviewCategory;
 import net.sf.anathema.character.main.library.overview.OverviewCategory;
-import net.sf.anathema.character.main.library.trait.Trait;
 import net.sf.anathema.framework.swing.IView;
 import net.sf.anathema.lib.file.RelativePath;
 import net.sf.anathema.lib.gui.AgnosticUIConfiguration;
@@ -36,7 +35,7 @@ public class LanguagesViewImpl implements IView, LanguagesView {
   }
 
   @Override
-  public IRemovableEntryView addEntryView(RelativePath removeIcon, Trait trait, String string) {
+  public IRemovableEntryView addEntryView(RelativePath removeIcon, String string) {
     RemovableStringView view = new RemovableStringView(new ImageProvider().getImageIcon(removeIcon), string);
     view.addContent(entryPanel);
     panel.revalidate();

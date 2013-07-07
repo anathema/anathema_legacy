@@ -2,7 +2,7 @@ package net.sf.anathema.character.platform.module;
 
 import net.miginfocom.swing.MigLayout;
 import net.sf.anathema.framework.swing.IView;
-import net.sf.anathema.lib.gui.toolbar.ToolBarUtilities;
+import net.sf.anathema.hero.languages.display.ToolbarUtilities;
 
 import javax.swing.Action;
 import javax.swing.ButtonGroup;
@@ -26,7 +26,7 @@ public class ToggleButtonPanel implements IToggleButtonPanel, IView {
   @Override
   public JToggleButton addButton(Action action, String text) {
     JToggleButton toggleButton = new JToggleButton(action);
-    ToolBarUtilities.configureToolBarButton(toggleButton);
+    ToolbarUtilities.configureToolBarButton(toggleButton);
     buttonGroup.add(toggleButton);
     panel.add(toggleButton, constraintsForImageButton(toggleButton));
     panel.add(new JLabel(text));
