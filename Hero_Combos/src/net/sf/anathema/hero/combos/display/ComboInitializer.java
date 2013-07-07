@@ -2,13 +2,13 @@ package net.sf.anathema.hero.combos.display;
 
 import net.sf.anathema.character.main.magic.view.CharmDescriptionProviderExtractor;
 import net.sf.anathema.character.main.magic.description.MagicDescriptionProvider;
-import net.sf.anathema.character.main.charm.options.DefaultCharmTemplateRetriever;
+import net.sf.anathema.character.main.magic.charms.options.DefaultCharmTemplateRetriever;
 import net.sf.anathema.character.main.presenter.initializers.HeroModelInitializer;
 import net.sf.anathema.character.main.presenter.initializers.RegisteredInitializer;
 import net.sf.anathema.character.main.presenter.magic.combo.ComboConfigurationModel;
 import net.sf.anathema.character.main.presenter.magic.combo.ComboConfigurationPresenter;
 import net.sf.anathema.character.main.view.SectionView;
-import net.sf.anathema.character.main.view.magic.IComboConfigurationView;
+import net.sf.anathema.character.main.magic.view.IComboConfigurationView;
 import net.sf.anathema.framework.IApplicationModel;
 import net.sf.anathema.hero.model.Hero;
 import net.sf.anathema.initialization.reflections.Weight;

@@ -7,8 +7,8 @@ import net.sf.anathema.character.main.magic.Cost;
 import net.sf.anathema.character.main.magic.HealthCost;
 import net.sf.anathema.character.main.magic.IMagic;
 import net.sf.anathema.character.main.magic.description.MagicDescription;
-import net.sf.anathema.character.main.charmtree.builder.stringbuilder.ScreenDisplayInfoStringBuilder;
-import net.sf.anathema.character.main.charmtree.builder.stringbuilder.source.MagicSourceStringBuilder;
+import net.sf.anathema.character.main.magic.charmtree.builder.stringbuilder.ScreenDisplayInfoStringBuilder;
+import net.sf.anathema.character.main.magic.charmtree.builder.stringbuilder.source.MagicSourceStringBuilder;
 import net.sf.anathema.lib.resources.Resources;
 
 public abstract class AbstractMagicCardData implements ICardData {

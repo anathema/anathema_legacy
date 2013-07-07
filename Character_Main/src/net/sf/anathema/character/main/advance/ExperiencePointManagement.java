@@ -5,7 +5,7 @@ import net.sf.anathema.hero.traits.TraitMap;
 import net.sf.anathema.hero.traits.TraitModelFetcher;
 import net.sf.anathema.character.main.advance.models.AbilityExperienceModel;
 import net.sf.anathema.character.main.advance.models.AttributeExperienceModel;
-import net.sf.anathema.character.main.advance.models.CharmExperienceModel;
+import net.sf.anathema.character.main.magic.advance.CharmExperienceModel;
 import net.sf.anathema.character.main.advance.models.EssenceExperienceModel;
 import net.sf.anathema.character.main.advance.models.MiscellaneousExperienceModel;
 import net.sf.anathema.character.main.advance.models.SpellExperienceModel;

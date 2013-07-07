@@ -3,7 +3,7 @@ package net.sf.anathema.character.main.testing.dummy;
 import net.sf.anathema.character.main.magic.persistence.ISpellCache;
 import net.sf.anathema.character.main.template.magic.ICharmProvider;
 import net.sf.anathema.character.main.type.CharacterTypes;
-import net.sf.anathema.character.main.charm.options.CharmTemplateRetriever;
+import net.sf.anathema.character.main.magic.charms.options.CharmTemplateRetriever;
 import net.sf.anathema.hero.model.InitializationContext;
 import net.sf.anathema.initialization.ObjectFactory;
 import net.sf.anathema.initialization.repository.DataFileProvider;

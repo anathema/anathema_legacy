@@ -2,7 +2,7 @@ package net.sf.anathema.hero.health;
 
 import net.sf.anathema.character.main.traits.ValuedTraitType;
 import net.sf.anathema.character.main.library.trait.Trait;
-import net.sf.anathema.character.main.charm.special.IOxBodyTechniqueConfiguration;
+import net.sf.anathema.character.main.magic.charms.special.IOxBodyTechniqueConfiguration;
 
 import java.util.ArrayList;
 import java.util.List;

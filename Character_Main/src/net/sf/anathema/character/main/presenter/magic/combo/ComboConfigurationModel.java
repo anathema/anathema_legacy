@@ -9,7 +9,7 @@ import net.sf.anathema.hero.combos.CombosModel;
 import net.sf.anathema.hero.combos.CombosModelFetcher;
 import net.sf.anathema.hero.concept.HeroConceptFetcher;
 import net.sf.anathema.hero.experience.ExperienceModelFetcher;
-import net.sf.anathema.character.main.charm.options.DefaultCharmTemplateRetriever;
+import net.sf.anathema.character.main.magic.charms.options.DefaultCharmTemplateRetriever;
 import net.sf.anathema.hero.model.Hero;
 
 public class ComboConfigurationModel {

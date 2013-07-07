@@ -1,6 +1,6 @@
 package net.sf.anathema.character.main.framework;
 
-import net.sf.anathema.character.main.data.IExtensibleDataSetProvider;
+import net.sf.anathema.character.main.framework.data.IExtensibleDataSetProvider;
 import net.sf.anathema.character.main.framework.module.CharacterModule;
 import net.sf.anathema.character.main.framework.module.CharacterModuleContainer;
 import net.sf.anathema.character.main.framework.module.ICharacterModule;

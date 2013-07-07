@@ -1,8 +1,8 @@
 package net.sf.anathema.character.main.presenter.magic.combo;
 
 import net.sf.anathema.character.main.magic.ICharm;
-import net.sf.anathema.character.main.charmtree.builder.MagicDisplayLabeler;
-import net.sf.anathema.character.main.charmtree.builder.stringbuilder.ICharmInfoStringBuilder;
+import net.sf.anathema.character.main.magic.charmtree.builder.MagicDisplayLabeler;
+import net.sf.anathema.character.main.magic.charmtree.builder.stringbuilder.ICharmInfoStringBuilder;
 import net.sf.anathema.lib.gui.AbstractUIConfiguration;
 import net.sf.anathema.lib.resources.Resources;
 import net.sf.anathema.lib.util.Identifier;

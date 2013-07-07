@@ -10,7 +10,7 @@ import net.sf.anathema.character.main.testing.dummy.models.DummyHeroConcept;
 import net.sf.anathema.character.main.testing.dummy.models.DummyOtherTraitModel;
 import net.sf.anathema.character.main.testing.dummy.models.DummyTraitModel;
 import net.sf.anathema.hero.attributes.points.AttributeCostCalculator;
-import net.sf.anathema.character.main.creation.bonus.util.TraitGroupCost;
+import net.sf.anathema.character.main.creation.bonus.trait.TraitGroupCost;
 import net.sf.anathema.hero.attributes.model.AttributeModelImpl;
 import org.junit.Before;
 import org.junit.Test;

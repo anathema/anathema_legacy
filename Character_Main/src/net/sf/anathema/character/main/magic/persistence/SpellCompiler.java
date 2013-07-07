@@ -1,7 +1,7 @@
 package net.sf.anathema.character.main.magic.persistence;
 
-import net.sf.anathema.character.main.data.IExtensibleDataSet;
-import net.sf.anathema.character.main.data.IExtensibleDataSetCompiler;
+import net.sf.anathema.character.main.framework.data.IExtensibleDataSet;
+import net.sf.anathema.character.main.framework.data.IExtensibleDataSetCompiler;
 import net.sf.anathema.character.main.magic.SpellException;
 import net.sf.anathema.character.main.magic.ISpell;
 import net.sf.anathema.initialization.ExtensibleDataSetCompiler;

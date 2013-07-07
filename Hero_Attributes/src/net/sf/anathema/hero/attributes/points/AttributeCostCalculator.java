@@ -14,8 +14,8 @@ import net.sf.anathema.character.main.creation.bonus.basic.ElementCreationCost;
 import net.sf.anathema.character.main.creation.bonus.basic.ElementCreationCostCalculator;
 import net.sf.anathema.character.main.creation.bonus.basic.ICostElement;
 import net.sf.anathema.character.main.creation.bonus.trait.TraitCostElement;
-import net.sf.anathema.character.main.creation.bonus.util.TraitGroupCost;
-import net.sf.anathema.character.main.creation.bonus.util.TraitSorter;
+import net.sf.anathema.character.main.creation.bonus.trait.TraitGroupCost;
+import net.sf.anathema.character.main.creation.bonus.trait.TraitSorter;
 import net.sf.anathema.hero.points.HeroBonusPointCalculator;
 
 import java.util.ArrayList;

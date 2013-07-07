@@ -5,7 +5,7 @@ import cucumber.api.java.en.And;
 import cucumber.api.java.en.Then;
 import net.sf.anathema.character.main.magic.ICharm;
 import net.sf.anathema.hero.charms.CharmsModel;
-import net.sf.anathema.character.main.charm.special.IMultipleEffectCharmConfiguration;
+import net.sf.anathema.character.main.magic.charms.special.IMultipleEffectCharmConfiguration;
 
 import static org.hamcrest.CoreMatchers.is;
 import static org.hamcrest.MatcherAssert.assertThat;

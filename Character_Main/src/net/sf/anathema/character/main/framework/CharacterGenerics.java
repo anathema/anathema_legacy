@@ -1,8 +1,8 @@
 package net.sf.anathema.character.main.framework;
 
 import net.sf.anathema.character.main.caste.ICasteCollection;
-import net.sf.anathema.character.main.data.IExtensibleDataSet;
-import net.sf.anathema.character.main.data.IExtensibleDataSetProvider;
+import net.sf.anathema.character.main.framework.data.IExtensibleDataSet;
+import net.sf.anathema.character.main.framework.data.IExtensibleDataSetProvider;
 import net.sf.anathema.character.main.xml.registry.CharacterTemplateRegistryCollection;
 import net.sf.anathema.character.main.magic.persistence.ICharmCache;
 import net.sf.anathema.character.main.template.TemplateRegistry;

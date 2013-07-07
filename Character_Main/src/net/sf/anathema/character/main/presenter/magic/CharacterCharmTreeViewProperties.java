@@ -5,8 +5,8 @@ import net.sf.anathema.character.main.magic.charms.CharmIdMap;
 import net.sf.anathema.character.main.magic.charms.special.ISpecialCharm;
 import net.sf.anathema.character.main.magic.description.MagicDescriptionProvider;
 import net.sf.anathema.hero.charms.CharmsModel;
-import net.sf.anathema.character.main.charmtree.view.AbstractCharmTreeViewProperties;
-import net.sf.anathema.character.main.charmtree.view.NullSpecialCharm;
+import net.sf.anathema.character.main.magic.charmtree.view.AbstractCharmTreeViewProperties;
+import net.sf.anathema.character.main.magic.charmtree.view.NullSpecialCharm;
 import net.sf.anathema.lib.resources.Resources;
 
 public class CharacterCharmTreeViewProperties extends AbstractCharmTreeViewProperties implements CharmIdMap {

@@ -1,8 +1,8 @@
 package net.sf.anathema.character.main.framework;
 
 import net.sf.anathema.ProxySplashscreen;
-import net.sf.anathema.character.main.data.IExtensibleDataSetCompiler;
-import net.sf.anathema.character.main.data.IExtensibleDataSetProvider;
+import net.sf.anathema.character.main.framework.data.IExtensibleDataSetCompiler;
+import net.sf.anathema.character.main.framework.data.IExtensibleDataSetProvider;
 import net.sf.anathema.initialization.ExtensibleDataSetCompiler;
 import net.sf.anathema.initialization.InitializationException;
 import net.sf.anathema.initialization.ObjectFactory;

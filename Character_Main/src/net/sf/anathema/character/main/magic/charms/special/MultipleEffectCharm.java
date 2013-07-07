@@ -3,7 +3,7 @@ package net.sf.anathema.character.main.magic.charms.special;
 import com.google.common.base.Objects;
 import net.sf.anathema.character.main.magic.ICharm;
 import net.sf.anathema.character.main.magic.charms.ICharmLearnableArbitrator;
-import net.sf.anathema.character.main.charm.CharmSpecialist;
+import net.sf.anathema.character.main.magic.charms.CharmSpecialist;
 import net.sf.anathema.lib.data.Condition;
 
 import java.util.ArrayList;

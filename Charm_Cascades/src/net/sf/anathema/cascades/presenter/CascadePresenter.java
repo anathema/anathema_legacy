@@ -8,11 +8,11 @@ import net.sf.anathema.character.main.magic.charms.GroupCharmTree;
 import net.sf.anathema.character.main.magic.description.MagicDescriptionProvider;
 import net.sf.anathema.character.main.template.ITemplateRegistry;
 import net.sf.anathema.character.main.type.CharacterTypes;
-import net.sf.anathema.character.main.charmtree.presenter.AbstractCascadePresenter;
-import net.sf.anathema.character.main.charmtree.presenter.CharmDye;
-import net.sf.anathema.character.main.charmtree.presenter.ConfigurableCharmDye;
-import net.sf.anathema.character.main.charmtree.view.CharmDisplayPropertiesMap;
-import net.sf.anathema.character.main.charmtree.view.DefaultNodeProperties;
+import net.sf.anathema.character.main.magic.charmtree.presenter.AbstractCascadePresenter;
+import net.sf.anathema.character.main.magic.charmtree.presenter.CharmDye;
+import net.sf.anathema.character.main.magic.charmtree.presenter.ConfigurableCharmDye;
+import net.sf.anathema.character.main.magic.charmtree.view.CharmDisplayPropertiesMap;
+import net.sf.anathema.character.main.magic.charmtree.view.DefaultNodeProperties;
 import net.sf.anathema.lib.resources.Resources;
 import net.sf.anathema.lib.util.Identifier;
 

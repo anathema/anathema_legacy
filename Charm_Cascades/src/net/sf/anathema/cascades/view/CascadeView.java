@@ -3,7 +3,7 @@ package net.sf.anathema.cascades.view;
 import net.miginfocom.layout.CC;
 import net.miginfocom.swing.MigLayout;
 import net.sf.anathema.cascades.presenter.view.ICascadeView;
-import net.sf.anathema.character.main.charmtree.AbstractCascadeSelectionView;
+import net.sf.anathema.character.main.magic.charmtree.AbstractCascadeSelectionView;
 import net.sf.anathema.framework.swing.IView;
 import net.sf.anathema.framework.ui.RGBColor;
 import net.sf.anathema.platform.tree.presenter.view.NodeProperties;

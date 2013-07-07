@@ -30,7 +30,7 @@ import net.sf.anathema.character.main.traits.groups.AllAbilityTraitTypeGroup;
 import net.sf.anathema.character.main.traits.groups.AllAttributeTraitTypeGroup;
 import net.sf.anathema.character.main.type.CharacterTypes;
 import net.sf.anathema.character.main.type.ICharacterType;
-import net.sf.anathema.character.main.charm.options.DefaultCharmTemplateRetriever;
+import net.sf.anathema.character.main.magic.charms.options.DefaultCharmTemplateRetriever;
 import net.sf.anathema.lib.exception.PersistenceException;
 import net.sf.anathema.lib.registry.IRegistry;
 import org.dom4j.Element;
