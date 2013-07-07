@@ -1,4 +1,4 @@
-package net.sf.anathema.herotype.solar.display;
+package net.sf.anathema.herotype.solar.display.curse;
 
 import net.sf.anathema.character.main.framework.RegisteredCharacterView;
 import net.sf.anathema.character.main.library.intvalue.IntValueDisplayFactoryPrototype;
