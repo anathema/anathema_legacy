@@ -1,21 +1,15 @@
 package net.sf.anathema.hero.traits.sheet.content;
 
-import net.sf.anathema.character.main.caste.CasteType;
 import net.sf.anathema.character.main.IGenericTraitCollection;
-import net.sf.anathema.character.main.magic.IMagic;
-import net.sf.anathema.character.main.magic.IMagicStats;
+import net.sf.anathema.character.main.caste.CasteType;
 import net.sf.anathema.character.main.traits.ITraitTemplate;
 import net.sf.anathema.character.main.traits.TraitType;
 import net.sf.anathema.character.main.traits.groups.IIdentifiedTraitTypeGroup;
 import net.sf.anathema.character.reporting.pdf.content.AbstractSubBoxContent;
-import net.sf.anathema.character.reporting.pdf.content.magic.MagicContentHelper;
 import net.sf.anathema.hero.model.Hero;
 import net.sf.anathema.lib.resources.Resources;
 import net.sf.anathema.lib.util.Identifier;
 
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.Comparator;
 import java.util.List;
 
 public abstract class FavorableTraitContent extends AbstractSubBoxContent {
@@ -29,48 +23,9 @@ public abstract class FavorableTraitContent extends AbstractSubBoxContent {
 
   public abstract List<? extends TraitType> getMarkedTraitTypes();
 
-  public IMagicStats[] getExcellencies() {
-    List<IMagicStats> excellencies = new ArrayList<>();
-    if (shouldShowExcellencies()) {
-      for (IMagicStats stats : new MagicContentHelper(hero).getGenericCharmStats()) {
-        String genericId = stats.getName().getId();
-        if (genericId.endsWith("Excellency")) {
-          excellencies.add(stats);
-        }
-      }
-      Collections.sort(excellencies, new Comparator<IMagicStats>() {
-        @Override
-        public int compare(IMagicStats a, IMagicStats b) {
-          String aId = a.getName().getId();
-          String bId = b.getName().getId();
-
-          Integer aIndex = new Integer(aId.substring(aId.lastIndexOf('.') + 1, aId.indexOf("Excellency") - 2));
-          Integer bIndex = new Integer(bId.substring(bId.lastIndexOf('.') + 1, bId.indexOf("Excellency") - 2));
-          return aIndex.compareTo(bIndex);
-        }
-      });
-    }
-    return excellencies.toArray(new IMagicStats[excellencies.size()]);
-  }
-
-  public abstract boolean shouldShowExcellencies();
-
   public abstract IIdentifiedTraitTypeGroup[] getIdentifiedTraitTypeGroups();
 
   public abstract IGenericTraitCollection getTraitCollection();
-
-  public boolean[] hasExcellenciesLearned(TraitType traitType) {
-    IMagicStats[] excellencies = getExcellencies();
-    List<IMagic> allLearnedMagic = new MagicContentHelper(hero).getAllLearnedMagic();
-    boolean[] excellencyLearned = new boolean[excellencies.length];
-    for (int i = 0; i < excellencies.length; i++) {
-      String charmId = excellencies[i].getName().getId() + "." + traitType.getId();
-      excellencyLearned[i] = new MagicContentHelper(hero).isCharmLearned(allLearnedMagic, charmId);
-    }
-    return excellencyLearned;
-  }
-
-  public abstract String getExcellencyCommentKey();
 
   public int getTraitMax() {
     IIdentifiedTraitTypeGroup group = getIdentifiedTraitTypeGroups()[0];
@@ -110,13 +65,4 @@ public abstract class FavorableTraitContent extends AbstractSubBoxContent {
   }
 
   public abstract String getMarkerCommentKey();
-
-  public String getExcellenciesComment() {
-    int nExcellencies = getExcellencies().length;
-    StringBuilder numbers = new StringBuilder();
-    for (int i = 1; i <= nExcellencies; i++) {
-      numbers.append(Integer.toString(i));
-    }
-    return numbers.toString() + ": " + getString(getExcellencyCommentKey());
-  }
 }

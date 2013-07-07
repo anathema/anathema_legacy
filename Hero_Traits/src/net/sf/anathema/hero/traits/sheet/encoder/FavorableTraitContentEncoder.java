@@ -2,11 +2,10 @@ package net.sf.anathema.hero.traits.sheet.encoder;
 
 import com.itextpdf.text.pdf.PdfContentByte;
 import net.sf.anathema.character.main.IGenericTraitCollection;
-import net.sf.anathema.character.main.traits.ValuedTraitType;
 import net.sf.anathema.character.main.traits.TraitType;
+import net.sf.anathema.character.main.traits.ValuedTraitType;
 import net.sf.anathema.character.main.traits.groups.IIdentifiedTraitTypeGroup;
 import net.sf.anathema.character.reporting.pdf.content.ReportSession;
-import net.sf.anathema.hero.traits.sheet.content.FavorableTraitContent;
 import net.sf.anathema.character.reporting.pdf.rendering.extent.Bounds;
 import net.sf.anathema.character.reporting.pdf.rendering.extent.Position;
 import net.sf.anathema.character.reporting.pdf.rendering.general.box.AbstractContentEncoder;
@@ -14,6 +13,7 @@ import net.sf.anathema.character.reporting.pdf.rendering.general.traits.INamedTr
 import net.sf.anathema.character.reporting.pdf.rendering.general.traits.PdfTraitEncoder;
 import net.sf.anathema.character.reporting.pdf.rendering.graphics.SheetGraphics;
 import net.sf.anathema.character.reporting.pdf.rendering.page.IVoidStateFormatConstants;
+import net.sf.anathema.hero.traits.sheet.content.FavorableTraitContent;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -41,10 +41,6 @@ public class FavorableTraitContentEncoder<C extends FavorableTraitContent> exten
     Position position = new Position(bounds.getMinX(), bounds.getMaxY());
     float width = bounds.width;
     float bottom = bounds.getMinY() + IVoidStateFormatConstants.TEXT_PADDING;
-    int nExcellencies = content.getExcellencies().length;
-    if (nExcellencies > 0) {
-      bottom += encodeExcellencyCommentText(graphics, content, position, bottom);
-    }
     if (!content.getMarkedTraitTypes().isEmpty()) {
       bottom += encodeMarkerCommentText(graphics, content, position, bottom);
     }
@@ -68,7 +64,8 @@ public class FavorableTraitContentEncoder<C extends FavorableTraitContent> exten
     return yPosition;
   }
 
-  private float encodeTraitGroup(SheetGraphics graphics, FavorableTraitContent content, IIdentifiedTraitTypeGroup group, Position position, float width) {
+  private float encodeTraitGroup(SheetGraphics graphics, FavorableTraitContent content, IIdentifiedTraitTypeGroup group, Position position,
+                                 float width) {
     float height = 0;
     float groupLabelWidth = IVoidStateFormatConstants.LINE_HEIGHT + IVoidStateFormatConstants.TEXT_PADDING;
     float traitX = position.x + groupLabelWidth;
@@ -84,12 +81,7 @@ public class FavorableTraitContentEncoder<C extends FavorableTraitContent> exten
       IGenericTraitCollection traitCollection = content.getTraitCollection();
       ValuedTraitType trait = traitCollection.getTrait(traitType);
       String label = content.getTraitLabel(traitType);
-      if (content.shouldShowExcellencies()) {
-        boolean[] excellencyLearned = content.hasExcellenciesLearned(traitType);
-        height += encodeFavorableTrait(graphics, content, label, trait, excellencyLearned, new Position(traitX, yPosition), width - groupLabelWidth);
-      } else {
-        height += encodeFavorableTrait(graphics, content, label, trait, new Position(traitX, yPosition), width - groupLabelWidth);
-      }
+      height += encodeFavorableTrait(graphics, content, label, trait, new Position(traitX, yPosition), width - groupLabelWidth);
     }
     Position groupLabelPosition = new Position(groupLabelX, position.y - height / 2f);
     addGroupLabel(graphics, content, group, groupLabelPosition);
@@ -104,16 +96,11 @@ public class FavorableTraitContentEncoder<C extends FavorableTraitContent> exten
     graphics.drawVerticalText(groupLabel, position, PdfContentByte.ALIGN_CENTER);
   }
 
-  private float encodeFavorableTrait(SheetGraphics graphics, FavorableTraitContent content, String label, ValuedTraitType trait, Position position, float width) {
+  private float encodeFavorableTrait(SheetGraphics graphics, FavorableTraitContent content, String label, ValuedTraitType trait, Position position,
+                                     float width) {
     int value = trait.getCurrentValue();
     boolean favored = trait.isCasteOrFavored();
     return traitEncoder.encodeWithTextAndRectangle(graphics, label, position, width, value, favored, content.getTraitMax());
-  }
-
-  private float encodeFavorableTrait(SheetGraphics graphics, FavorableTraitContent content, String label, ValuedTraitType trait, boolean[] excellencyLearned, Position position, float width) {
-    int value = trait.getCurrentValue();
-    boolean favored = trait.isCasteOrFavored();
-    return traitEncoder.encodeWithExcellencies(graphics, label, position, width, value, favored, excellencyLearned, content.getTraitMax());
   }
 
   private void encodeMarker(SheetGraphics graphics, Position markerPosition) {
@@ -130,13 +117,6 @@ public class FavorableTraitContentEncoder<C extends FavorableTraitContent> exten
     encodeMarker(graphics, new Position(position.x, yPosition));
     String mobilityPenaltyText = content.getMobilityPenaltyText();
     Position commentPosition = new Position(position.x + 5, yPosition);
-    graphics.drawComment(mobilityPenaltyText, commentPosition, PdfContentByte.ALIGN_LEFT);
-    return 7;
-  }
-
-  private float encodeExcellencyCommentText(SheetGraphics graphics, FavorableTraitContent content, Position position, float yPosition) {
-    String mobilityPenaltyText = content.getExcellenciesComment();
-    Position commentPosition = new Position(position.x, yPosition);
     graphics.drawComment(mobilityPenaltyText, commentPosition, PdfContentByte.ALIGN_LEFT);
     return 7;
   }
