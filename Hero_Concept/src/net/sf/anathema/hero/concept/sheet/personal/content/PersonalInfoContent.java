@@ -62,22 +62,6 @@ public class PersonalInfoContent extends AbstractSubContent implements SubBoxCon
     return new PersonalInfoRow(animaInfo);
   }
 
-  public int getNumberOfRows() {
-    return rows.size();
-  }
-
-  public int getNumberOfColumns() {
-    return 3;
-  }
-
-  public PersonalInfoRow getFirstRow() {
-    return rows.get(0);
-  }
-
-  public PersonalInfoRow getSecondRow() {
-    return rows.get(1);
-  }
-
   private String getAge() {
     return String.valueOf(HeroConceptFetcher.fetch(hero).getAge().getValue());
   }
@@ -86,13 +70,21 @@ public class PersonalInfoContent extends AbstractSubContent implements SubBoxCon
     return hero.getTemplate().getTemplateType().getCharacterType();
   }
 
-  private final String getLabel(String key) {
+  private String getCasteContent() {
+    CasteType casteType = HeroConceptFetcher.fetch(hero).getCaste().getType();
+    return getResources().getString("Caste." + casteType.getId());
+  }
+
+  private String getLabel(String key) {
     return getResources().getString("Sheet.Label." + key) + ":";
   }
 
-  private final String getCasteContent() {
-    CasteType casteType = HeroConceptFetcher.fetch(hero).getCaste().getType();
-    return getResources().getString("Caste." + casteType.getId());
+  public int getNumberOfRows() {
+    return rows.size();
+  }
+
+  public int getNumberOfColumns() {
+    return 3;
   }
 
   @Override
