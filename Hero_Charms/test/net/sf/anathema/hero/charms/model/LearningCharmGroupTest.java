@@ -1,4 +1,4 @@
-package net.sf.anathema.hero.charms;
+package net.sf.anathema.hero.charms.model;
 
 import net.sf.anathema.character.main.charm.ICharmLearnStrategy;
 import net.sf.anathema.character.main.magic.charms.CharmGroup;

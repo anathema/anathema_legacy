@@ -2,7 +2,7 @@ package net.sf.anathema.hero.charms.sheet.encoder;
 
 import com.itextpdf.text.DocumentException;
 import net.sf.anathema.character.reporting.pdf.content.ReportSession;
-import net.sf.anathema.character.reporting.pdf.content.magic.AbstractMagicContent;
+import net.sf.anathema.hero.charms.sheet.content.AbstractMagicContent;
 import net.sf.anathema.character.reporting.pdf.rendering.extent.Bounds;
 import net.sf.anathema.character.reporting.pdf.rendering.general.box.ContentEncoder;
 import net.sf.anathema.character.reporting.pdf.rendering.graphics.SheetGraphics;

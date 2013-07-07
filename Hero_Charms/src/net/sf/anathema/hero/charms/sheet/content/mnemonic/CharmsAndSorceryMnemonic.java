@@ -1,4 +1,4 @@
-package net.sf.anathema.character.reporting.pdf.content.magic;
+package net.sf.anathema.hero.charms.sheet.content.mnemonic;
 
 import net.sf.anathema.character.main.magic.IMagicStats;
 

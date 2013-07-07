@@ -2,9 +2,8 @@ package net.sf.anathema.hero.charms.sheet.content;
 
 import net.sf.anathema.character.main.magic.IMagicStats;
 import net.sf.anathema.character.reporting.pdf.content.ReportSession;
-import net.sf.anathema.character.reporting.pdf.content.magic.AbstractMagicContent;
 import net.sf.anathema.character.reporting.pdf.content.magic.MagicContentHelper;
-import net.sf.anathema.character.reporting.pdf.content.magic.MagicMnemonic;
+import net.sf.anathema.hero.charms.sheet.content.mnemonic.MagicMnemonic;
 import net.sf.anathema.lib.resources.Resources;
 
 import java.util.Collections;

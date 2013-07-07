@@ -1,8 +1,9 @@
-package net.sf.anathema.character.reporting.pdf.content.magic;
+package net.sf.anathema.hero.charms.sheet.content;
 
 import net.sf.anathema.character.main.magic.IMagicStats;
 import net.sf.anathema.character.reporting.pdf.content.AbstractSubBoxContent;
 import net.sf.anathema.character.reporting.pdf.content.ReportSession;
+import net.sf.anathema.hero.charms.sheet.content.mnemonic.MagicMnemonic;
 import net.sf.anathema.character.reporting.pdf.content.stats.IStatsGroup;
 import net.sf.anathema.character.reporting.pdf.content.stats.magic.MagicCostStatsGroup;
 import net.sf.anathema.character.reporting.pdf.content.stats.magic.MagicDetailsStatsGroup;

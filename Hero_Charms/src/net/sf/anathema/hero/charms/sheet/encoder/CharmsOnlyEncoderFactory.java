@@ -1,11 +1,10 @@
 package net.sf.anathema.hero.charms.sheet.encoder;
 
 import net.sf.anathema.character.reporting.pdf.content.BasicContent;
-import net.sf.anathema.character.reporting.pdf.content.magic.CharmsOnlyContent;
+import net.sf.anathema.hero.charms.sheet.content.CharmsOnlyContent;
 import net.sf.anathema.character.reporting.pdf.rendering.EncoderIds;
 import net.sf.anathema.character.reporting.pdf.rendering.boxes.AbstractEncoderFactory;
 import net.sf.anathema.character.reporting.pdf.rendering.boxes.RegisteredEncoderFactory;
-import net.sf.anathema.hero.charms.sheet.encoder.ExtendedMagicEncoder;
 import net.sf.anathema.character.reporting.pdf.rendering.general.box.ContentEncoder;
 import net.sf.anathema.lib.resources.Resources;
 
