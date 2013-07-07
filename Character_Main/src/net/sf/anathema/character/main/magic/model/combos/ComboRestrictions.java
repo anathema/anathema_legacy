@@ -12,22 +12,16 @@ public class ComboRestrictions implements IComboRestrictions {
 
   private final boolean allAbilities;
   private final String[] selectAbilities;
-  private final Boolean combosAllowed;
   private final List<String> restrictedCharmIds = new ArrayList<>();
   private final List<CharmType> restrictedCharmTypes = new ArrayList<>();
   private final List<TraitType> restrictedTraitTypes = new ArrayList<>();
 
   public ComboRestrictions() {
-    this(false, null);
+    this(false, "");
   }
 
-  public ComboRestrictions(boolean allAbilities, Boolean combosAllowed) {
-    this(allAbilities, "", combosAllowed);
-  }
-
-  public ComboRestrictions(boolean allAbilities, String selectAbilities, Boolean combosAllowed) {
+  public ComboRestrictions(boolean allAbilities, String selectAbilities) {
     this.allAbilities = allAbilities;
-    this.combosAllowed = combosAllowed;
     this.selectAbilities = selectAbilities.split(",");
   }
 
@@ -58,11 +52,6 @@ public class ComboRestrictions implements IComboRestrictions {
   @Override
   public TraitType[] getRestrictedTraitTypes() {
     return restrictedTraitTypes.toArray(new TraitType[restrictedTraitTypes.size()]);
-  }
-
-  @Override
-  public boolean isComboAllowed(boolean isAllowedByDefault) {
-    return combosAllowed == null ? isAllowedByDefault : combosAllowed;
   }
 
   @Override

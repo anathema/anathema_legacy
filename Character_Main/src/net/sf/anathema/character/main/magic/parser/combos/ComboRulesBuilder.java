@@ -1,17 +1,16 @@
 package net.sf.anathema.character.main.magic.parser.combos;
 
-import net.sf.anathema.character.main.traits.TraitTypeUtils;
 import net.sf.anathema.character.main.magic.model.charm.CharmException;
+import net.sf.anathema.character.main.magic.model.charm.type.CharmType;
 import net.sf.anathema.character.main.magic.model.combos.ComboRestrictions;
 import net.sf.anathema.character.main.magic.model.combos.IComboRestrictions;
-import net.sf.anathema.character.main.magic.model.charm.type.CharmType;
+import net.sf.anathema.character.main.traits.TraitTypeUtils;
 import net.sf.anathema.lib.xml.ElementUtilities;
 import org.dom4j.Element;
 
 import java.util.List;
 
 import static net.sf.anathema.character.main.magic.model.charm.ICharmXMLConstants.ATTRIB_ALL_ABILITIES;
-import static net.sf.anathema.character.main.magic.model.charm.ICharmXMLConstants.ATTRIB_COMBOABLE;
 import static net.sf.anathema.character.main.magic.model.charm.ICharmXMLConstants.ATTRIB_ID;
 import static net.sf.anathema.character.main.magic.model.charm.ICharmXMLConstants.ATTRIB_SELECT_ABILITIES;
 import static net.sf.anathema.character.main.magic.model.charm.ICharmXMLConstants.ATTRIB_TYPE;
@@ -33,9 +32,7 @@ public class ComboRulesBuilder implements IComboRulesBuilder {
     }
     Boolean allAbilities = ElementUtilities.getBooleanAttribute(comboElement, ATTRIB_ALL_ABILITIES, false);
     String selectAbilities = comboElement.attributeValue(ATTRIB_SELECT_ABILITIES, "");
-    String comboAllowedValue = comboElement.attributeValue(ATTRIB_COMBOABLE);
-    Boolean comboAllowed = comboAllowedValue == null ? null : Boolean.valueOf(comboAllowedValue);
-    ComboRestrictions comboRules = new ComboRestrictions(allAbilities, selectAbilities, comboAllowed);
+    ComboRestrictions comboRules = new ComboRestrictions(allAbilities, selectAbilities);
     Element restrictionElement = comboElement.element(TAG_RESTRICTIONS);
     if (restrictionElement != null) {
       buildRestrictionList(comboRules, restrictionElement);

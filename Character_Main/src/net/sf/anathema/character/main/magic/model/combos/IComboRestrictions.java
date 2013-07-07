@@ -10,8 +10,6 @@ public interface IComboRestrictions {
   
   boolean combosSelectAbility(AbilityType type);
 
-  boolean isComboAllowed(boolean isAllowedByDefault);
-
   boolean isRestrictedCharm(ICharm charm);
 
   TraitType[] getRestrictedTraitTypes();

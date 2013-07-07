@@ -1,14 +1,14 @@
 package net.sf.anathema.hero.magic.model.charms;
 
-import net.sf.anathema.character.main.magic.model.charm.ICharm;
-import net.sf.anathema.character.main.magic.model.combos.ComboRestrictions;
-import net.sf.anathema.character.main.magic.model.charm.duration.SimpleDuration;
-import net.sf.anathema.character.main.magic.model.charm.type.CharmType;
-import net.sf.anathema.character.main.traits.types.AbilityType;
-import net.sf.anathema.character.main.traits.types.ValuedTraitType;
 import net.sf.anathema.character.main.dummy.DummyCharm;
 import net.sf.anathema.character.main.dummy.DummyCharmUtilities;
+import net.sf.anathema.character.main.magic.model.charm.ICharm;
+import net.sf.anathema.character.main.magic.model.charm.duration.SimpleDuration;
+import net.sf.anathema.character.main.magic.model.charm.type.CharmType;
 import net.sf.anathema.character.main.magic.model.combos.ComboArbitrator;
+import net.sf.anathema.character.main.magic.model.combos.ComboRestrictions;
+import net.sf.anathema.character.main.traits.types.AbilityType;
+import net.sf.anathema.character.main.traits.types.ValuedTraitType;
 import org.junit.Test;
 
 import static org.junit.Assert.assertFalse;
@@ -25,8 +25,7 @@ public class ComboRulesTest extends AbstractComboRulesTestCase {
 
   @Test
   public void testDurationComboLegal() throws Exception {
-    assertTrue(rules.isCharmComboLegal(new DummyCharm("Instant",
-            CharmType.Reflexive, new ComboRestrictions(), null)));
+    assertTrue(rules.isCharmComboLegal(new DummyCharm("Instant", CharmType.Reflexive, new ComboRestrictions(), null)));
   }
 
   @Test
@@ -37,16 +36,7 @@ public class ComboRulesTest extends AbstractComboRulesTestCase {
         return false;
       }
     };
-    assertFalse(rules.isCharmComboLegal(new DummyCharm("Other",
-            CharmType.Reflexive, new ComboRestrictions(), null)));
-  }
-
-  @Test
-  public void testRestrictionComboLegal() throws Exception {
-    assertFalse(rules.isCharmComboLegal(DummyCharmUtilities.createCharm("Instant", new ComboRestrictions(
-            false, Boolean.FALSE))));
-    assertTrue(rules.isCharmComboLegal(DummyCharmUtilities.createCharm("DurationType", new ComboRestrictions(
-            false, Boolean.TRUE))));
+    assertFalse(rules.isCharmComboLegal(new DummyCharm("Other", CharmType.Reflexive, new ComboRestrictions(), null)));
   }
 
   @Test

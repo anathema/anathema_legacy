@@ -21,8 +21,7 @@ public abstract class ComboArbitrator implements IComboArbitrator {
   }
 
   public boolean isCharmComboLegal(ICharm charm) {
-    boolean isLegal = isCharmLegalByRules(charm);
-    return charm.getComboRules().isComboAllowed(isLegal);
+    return isCharmLegalByRules(charm);
   }
 
   protected abstract boolean isCharmLegalByRules(ICharm charm);

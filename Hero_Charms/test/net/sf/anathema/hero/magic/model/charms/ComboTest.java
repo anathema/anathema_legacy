@@ -1,16 +1,16 @@
 package net.sf.anathema.hero.magic.model.charms;
 
+import net.sf.anathema.character.main.dummy.DummyCharmUtilities;
 import net.sf.anathema.character.main.magic.model.charm.ICharm;
-import net.sf.anathema.character.main.magic.model.combos.ComboRestrictions;
-import net.sf.anathema.character.main.magic.model.combos.IComboRestrictions;
 import net.sf.anathema.character.main.magic.model.charm.duration.SimpleDuration;
 import net.sf.anathema.character.main.magic.model.charm.type.CharmType;
+import net.sf.anathema.character.main.magic.model.combos.Combo;
+import net.sf.anathema.character.main.magic.model.combos.ComboArbitrator;
+import net.sf.anathema.character.main.magic.model.combos.ComboRestrictions;
+import net.sf.anathema.character.main.magic.model.combos.IComboRestrictions;
 import net.sf.anathema.character.main.traits.types.AbilityType;
 import net.sf.anathema.character.main.traits.types.AttributeType;
 import net.sf.anathema.character.main.traits.types.ValuedTraitType;
-import net.sf.anathema.character.main.dummy.DummyCharmUtilities;
-import net.sf.anathema.character.main.magic.model.combos.Combo;
-import net.sf.anathema.character.main.magic.model.combos.ComboArbitrator;
 import org.junit.Test;
 
 import static org.junit.Assert.assertEquals;
@@ -69,14 +69,6 @@ public class ComboTest {
     assertTrue(comboRules.canBeAddedToCombo(combo, dummy1));
     final ICharm dummy2 = DummyCharmUtilities.createCharm("Other", new ComboRestrictions());
     assertFalse(comboRules.canBeAddedToCombo(combo, dummy2));
-  }
-
-  @Test
-  public void testComboRestrictionComboAllowed() throws Exception {
-    assertFalse(comboRules.canBeAddedToCombo(combo, createCharm("Instant", new ComboRestrictions(
-            false, Boolean.FALSE))));
-    assertTrue(comboRules.canBeAddedToCombo(combo, createCharm("Other", new ComboRestrictions(
-            false, Boolean.TRUE))));
   }
 
   @Test

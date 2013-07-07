@@ -15,7 +15,6 @@ public interface ICharmXMLConstants {
   String ATTRIB_SELECT_ABILITIES = "selectAbilities";
   String ATTRIB_AMOUNT = "amount";
   String ATTRIB_ATTRIBUTE = "attribute";
-  String ATTRIB_COMBOABLE = "comboable";
   String ATTRIB_COUNT = "count";
   String ATTRIB_DURATION = "duration";
   String ATTRIB_EVENT = "event";

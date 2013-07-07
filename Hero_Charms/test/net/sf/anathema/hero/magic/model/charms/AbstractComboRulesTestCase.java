@@ -50,7 +50,7 @@ public abstract class AbstractComboRulesTestCase {
   }
 
   protected boolean comboAllAbilitiesCharmWithAbility(CharmType type1, CharmType type2) {
-    ICharm charm1 = DummyCharmUtilities.createCharm(type1, new ComboRestrictions(true, null), new ValuedTraitType(AbilityType.Performance, 3));
+    ICharm charm1 = DummyCharmUtilities.createCharm(type1, new ComboRestrictions(true, ""), new ValuedTraitType(AbilityType.Performance, 3));
     ICharm charm2 = DummyCharmUtilities.createCharm(type2, new ValuedTraitType(AbilityType.Archery, 3));
     return rules.isComboLegal(charm1, charm2);
   }
