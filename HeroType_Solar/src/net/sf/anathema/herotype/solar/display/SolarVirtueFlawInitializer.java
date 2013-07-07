@@ -27,7 +27,7 @@ public class SolarVirtueFlawInitializer implements HeroModelInitializer {
       return;
     }
     String viewName = resources.getString("AdditionalTemplateView.TabName.SolarVirtueFlaw");
-    IDescriptiveVirtueFlawView view = sectionView.addView(viewName, IDescriptiveVirtueFlawView.class, hero.getTemplate().getTemplateType().getCharacterType());
+    DescriptiveVirtueFlawView view = sectionView.addView(viewName, DescriptiveVirtueFlawView.class, hero.getTemplate().getTemplateType().getCharacterType());
     DescriptiveVirtueFlawModel virtueFlawModel = (DescriptiveVirtueFlawModel) GreatCurseFetcher.fetch(hero);
     SolarVirtueFlawPresenter presenter = new SolarVirtueFlawPresenter(hero,resources, view, virtueFlawModel);
     presenter.initPresentation();

@@ -9,10 +9,10 @@ import net.sf.anathema.lib.workflow.textualdescription.TextualPresentation;
 
 public class SolarVirtueFlawPresenter extends VirtueFlawPresenter {
 
-  private final IDescriptiveVirtueFlawView view;
+  private final DescriptiveVirtueFlawView view;
   private final DescriptiveVirtueFlawModel model;
 
-  public SolarVirtueFlawPresenter(Hero hero, Resources resources, IDescriptiveVirtueFlawView view, DescriptiveVirtueFlawModel model) {
+  public SolarVirtueFlawPresenter(Hero hero, Resources resources, DescriptiveVirtueFlawView view, DescriptiveVirtueFlawModel model) {
     super(hero, resources, view, model);
     this.view = view;
     this.model = model;

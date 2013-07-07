@@ -26,10 +26,10 @@ public class VirtueFlawPresenter implements Presenter {
 
   private Hero hero;
   private final Resources resources;
-  private final IVirtueFlawView view;
+  private final VirtueFlawView view;
   private final VirtueFlawModel model;
 
-  public VirtueFlawPresenter(Hero hero, Resources resources, IVirtueFlawView virtueFlawView, VirtueFlawModel model) {
+  public VirtueFlawPresenter(Hero hero, Resources resources, VirtueFlawView virtueFlawView, VirtueFlawModel model) {
     this.hero = hero;
     this.resources = resources;
     this.view = virtueFlawView;
