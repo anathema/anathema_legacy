@@ -21,7 +21,7 @@ public abstract class AbstractTraitTextEncoder extends TextPartFactory implement
 
   @Override
   public void createParagraphs(MultiColumnText columnText, Hero hero) throws DocumentException {
-    Phrase traitPhrase = createTextParagraph(createBoldTitle(resources.getString(getLabelKey()) + ": "));
+    Phrase traitPhrase = createTextParagraph(createBoldChunk(resources.getString(getLabelKey()) + ": "));
     boolean firstPrinted = true;
     for (TraitType type : getTypes(hero)) {
       Trait trait = TraitModelFetcher.fetch(hero).getTrait(type);
