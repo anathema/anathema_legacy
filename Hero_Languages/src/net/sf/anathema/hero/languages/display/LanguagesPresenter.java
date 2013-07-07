@@ -5,6 +5,7 @@ import net.sf.anathema.character.main.library.removableentry.RemovableEntryListe
 import net.sf.anathema.framework.presenter.resources.BasicUi;
 import net.sf.anathema.hero.languages.model.LanguagesModel;
 import net.sf.anathema.interaction.Command;
+import net.sf.anathema.interaction.Tool;
 import net.sf.anathema.lib.control.ChangeListener;
 import net.sf.anathema.lib.control.ObjectValueListener;
 import net.sf.anathema.lib.control.legality.LegalityColorProvider;
@@ -91,12 +92,8 @@ public class LanguagesPresenter {
   @SuppressWarnings("serial")
   private void initEntryPresentation() {
     String labelText = resources.getString("Linguistics.SelectionView.Label");
-    RelativePath addIcon = new BasicUi().getAddIconPath();
     AgnosticUIConfiguration uiConfiguration = new LanguageUiConfiguration();
-    final IButtonControlledObjectSelectionView<Object> selectionView = view.addSelectionView(
-            labelText,
-            uiConfiguration,
-            addIcon);
+    final ObjectSelectionViewWithTool<Object> selectionView = view.addSelectionView(labelText, uiConfiguration);
     selectionView.setObjects(model.getPredefinedLanguages());
     selectionView.addObjectSelectionChangedListener(new ObjectValueListener<Object>() {
       @Override
@@ -112,9 +109,11 @@ public class LanguagesPresenter {
         }
       }
     });
-    selectionView.addButtonListener(new ObjectValueListener<Object>() {
+    final Tool addButton = selectionView.addTool();
+    addButton.setIcon(new BasicUi().getAddIconPath());
+    addButton.setCommand(new Command() {
       @Override
-      public void valueChanged(Object newValue) {
+      public void execute() {
         if (!model.isEntryAllowed()) {
           return;
         }
@@ -130,7 +129,11 @@ public class LanguagesPresenter {
 
       @Override
       public void entryAllowed(boolean complete) {
-        selectionView.setButtonEnabled(complete);
+        if (complete) {
+          addButton.enable();
+        } else {
+          addButton.disable();
+        }
       }
 
       @Override

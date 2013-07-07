@@ -113,6 +113,7 @@ public class LanguagesModelImpl extends AbstractRemovableEntryModel<Identifier> 
       }
     }, null);
     if (foundLanguage != null) {
+      fireEntryChanged();
       return;
     }
     this.selection = language;

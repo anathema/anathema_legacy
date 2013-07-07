@@ -5,7 +5,6 @@ import net.miginfocom.swing.MigLayout;
 import net.sf.anathema.character.main.library.overview.IOverviewCategory;
 import net.sf.anathema.character.main.library.overview.OverviewCategory;
 import net.sf.anathema.character.main.library.trait.Trait;
-import net.sf.anathema.character.main.library.util.ProxyComboBoxEditor;
 import net.sf.anathema.framework.swing.IView;
 import net.sf.anathema.lib.file.RelativePath;
 import net.sf.anathema.lib.gui.AgnosticUIConfiguration;
@@ -52,12 +51,9 @@ public class LanguagesViewImpl implements IView, LanguagesView {
 
   @SuppressWarnings("unchecked")
   @Override
-  public IButtonControlledObjectSelectionView<Object> addSelectionView(String labelText,
-                                                                       AgnosticUIConfiguration uiConfiguration,
-                                                                       RelativePath addIcon) {
+  public ObjectSelectionViewWithTool<Object> addSelectionView(String labelText, AgnosticUIConfiguration uiConfiguration) {
     ListCellRenderer renderer = new ConfigurableListCellRenderer(uiConfiguration);
-    ButtonControlledObjectSelectionView objectSelectionView = new ButtonControlledObjectSelectionView(renderer, addIcon, labelText);
-    objectSelectionView.setEditor(new ProxyComboBoxEditor());
+    SwingSelectionViewWithTool objectSelectionView = new SwingSelectionViewWithTool(renderer, labelText);
     objectSelectionView.addComponents(selectionPanel);
     return objectSelectionView;
   }
