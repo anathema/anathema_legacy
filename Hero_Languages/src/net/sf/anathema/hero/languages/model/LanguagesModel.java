@@ -31,4 +31,6 @@ public interface LanguagesModel extends RemovableEntryModel<Identifier>, HeroMod
   void addCharacterChangedListener(ChangeListener listener);
 
   int getLanguagePointsAllowed();
+
+  Identifier getSelectedEntry();
 }

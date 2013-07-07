@@ -129,6 +129,7 @@ public class LanguagesPresenter {
 
       @Override
       public void entryAllowed(boolean complete) {
+        selectionView.setSelectedObject(model.getSelectedEntry());
         if (complete) {
           addButton.enable();
         } else {
@@ -139,7 +140,7 @@ public class LanguagesPresenter {
       @Override
       public void entryRemoved(Identifier entry) {
         RemovableEntryView entryView = viewsByEntry.remove(entry);
-        view.removeEntryView(entryView);
+        entryView.delete();
       }
     });
     for (Identifier language : model.getPredefinedLanguages()) {

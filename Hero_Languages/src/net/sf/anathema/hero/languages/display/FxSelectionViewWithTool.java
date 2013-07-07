@@ -3,53 +3,71 @@ package net.sf.anathema.hero.languages.display;
 import net.sf.anathema.interaction.Tool;
 import net.sf.anathema.lib.control.ObjectValueListener;
 import net.sf.anathema.lib.gui.AgnosticUIConfiguration;
+import net.sf.anathema.platform.fx.FxThreading;
+import net.sf.anathema.platform.fx.selection.ComboBoxSelectionView;
+import net.sf.anathema.platform.tool.FxButtonTool;
 import org.tbee.javafx.scene.layout.MigPane;
 
+import static net.sf.anathema.lib.gui.layout.LayoutUtils.withoutInsets;
+
 public class FxSelectionViewWithTool<V> implements ObjectSelectionViewWithTool<V> {
+
+  private final ComboBoxSelectionView<V> comboBox;
+  private final MigPane buttonPanel = new MigPane(withoutInsets());
+
   public FxSelectionViewWithTool(AgnosticUIConfiguration<V> configuration, String labelText) {
+    comboBox = new ComboBoxSelectionView<>(labelText, configuration);
   }
 
   @Override
   public void setSelectedObject(V object) {
-    //To change body of implemented methods use File | Settings | File Templates.
+    comboBox.setSelectedObject(object);
   }
 
   @Override
   public void addObjectSelectionChangedListener(ObjectValueListener<V> listener) {
-    //To change body of implemented methods use File | Settings | File Templates.
+    comboBox.addObjectSelectionChangedListener(listener);
   }
 
   @Override
   public void removeObjectSelectionChangedListener(ObjectValueListener<V> listener) {
-    //To change body of implemented methods use File | Settings | File Templates.
+    comboBox.removeObjectSelectionChangedListener(listener);
   }
 
   @Override
   public void setObjects(V[] objects) {
-    //To change body of implemented methods use File | Settings | File Templates.
+    comboBox.setObjects(objects);
   }
 
   @Override
   public V getSelectedObject() {
-    return null;  //To change body of implemented methods use File | Settings | File Templates.
+    return comboBox.getSelectedObject();
   }
 
   @Override
   public boolean isObjectSelected() {
-    return false;  //To change body of implemented methods use File | Settings | File Templates.
+    return comboBox.isObjectSelected();
   }
 
   @Override
   public void setEnabled(boolean enabled) {
-    //To change body of implemented methods use File | Settings | File Templates.
+    throw new UnsupportedOperationException("Lack of Interface Segregation detected.");
   }
 
   @Override
   public Tool addTool() {
-    return null;  //To change body of implemented methods use File | Settings | File Templates.
+    FxButtonTool tool = FxButtonTool.ForToolbar();
+    buttonPanel.add(tool.getNode());
+    return tool;
   }
 
-  public void addTo(MigPane selectionPanel) {
-    //To change body of created methods use File | Settings | File Templates.
+  public void addTo(final MigPane selectionPanel) {
+    FxThreading.runOnCorrectThread(new Runnable() {
+      @Override
+      public void run() {
+        selectionPanel.add(comboBox.getNode());
+        selectionPanel.add(buttonPanel);
+      }
+    });
   }
 }

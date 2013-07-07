@@ -153,6 +153,11 @@ public class LanguagesModelImpl extends AbstractRemovableEntryModel<Identifier> 
   }
 
   @Override
+  public Identifier getSelectedEntry() {
+    return selection;
+  }
+
+  @Override
   public int getLanguagePointsSpent() {
     int spent = getPredefinedLanguageCount();
     spent += Math.ceil((double) getBarbarianLanguageCount() / barbarianLanguagesPerPoint);

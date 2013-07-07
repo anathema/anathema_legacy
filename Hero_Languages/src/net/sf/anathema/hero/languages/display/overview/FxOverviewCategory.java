@@ -4,6 +4,7 @@ import net.sf.anathema.character.main.library.overview.OverviewCategory;
 import net.sf.anathema.lib.workflow.labelledvalue.ILabelledAlotmentView;
 import net.sf.anathema.lib.workflow.labelledvalue.IValueView;
 import net.sf.anathema.platform.fx.BorderedTitledPane;
+import net.sf.anathema.platform.fx.FxThreading;
 import org.tbee.javafx.scene.layout.MigPane;
 
 import static net.sf.anathema.lib.gui.layout.LayoutUtils.withoutInsets;
@@ -11,9 +12,14 @@ import static net.sf.anathema.lib.gui.layout.LayoutUtils.withoutInsets;
 public class FxOverviewCategory implements OverviewCategory {
   private final MigPane panel = new MigPane(withoutInsets().wrapAfter(4));
 
-  public FxOverviewCategory(MigPane parent, String label) {
-    BorderedTitledPane border = BorderedTitledPane.Create(label, panel);
-    parent.add(border);
+  public FxOverviewCategory(final MigPane parent, final String label) {
+    FxThreading.runOnCorrectThread(new Runnable() {
+      @Override
+      public void run() {
+        BorderedTitledPane border = BorderedTitledPane.Create(label, panel);
+        parent.add(border);
+      }
+    });
   }
 
   @Override
