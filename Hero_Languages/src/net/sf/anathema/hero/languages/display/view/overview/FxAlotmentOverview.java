@@ -5,6 +5,7 @@ import net.miginfocom.layout.CC;
 import net.sf.anathema.framework.ui.RGBColor;
 import net.sf.anathema.lib.control.legality.FontStyle;
 import net.sf.anathema.lib.workflow.labelledvalue.ILabelledAlotmentView;
+import net.sf.anathema.platform.fx.FxThreading;
 import org.tbee.javafx.scene.layout.MigPane;
 
 public class FxAlotmentOverview implements ILabelledAlotmentView {
@@ -21,11 +22,16 @@ public class FxAlotmentOverview implements ILabelledAlotmentView {
     separatorLabel.setText("/");
   }
 
-  public void addTo(MigPane panel) {
-    panel.add(titleLabel, new CC().growX().pushX());
-    panel.add(valueLabel, new CC().growX());
-    panel.add(separatorLabel, new CC().alignX("right"));
-    panel.add(alotmentLabel, new CC().alignX("right"));
+  public void addTo(final MigPane panel) {
+    FxThreading.runOnCorrectThread(new Runnable() {
+      @Override
+      public void run() {
+        panel.add(titleLabel, new CC().growX().pushX());
+        panel.add(valueLabel, new CC().growX());
+        panel.add(separatorLabel, new CC().alignX("right"));
+        panel.add(alotmentLabel, new CC().alignX("right"));
+      }
+    });
   }
 
   @Override

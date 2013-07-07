@@ -25,7 +25,7 @@ public class FxRemovableStringView implements RemovableEntryView {
     FxThreading.runOnCorrectThread(new Runnable() {
       @Override
       public void run() {
-        parent.add(label, new CC().growX().pushX().alignY("top"));
+        parent.add(label, new CC().growX().alignY("top"));
         parent.add(button.getNode(), new CC().alignY("top").alignX("right"));
       }
     });

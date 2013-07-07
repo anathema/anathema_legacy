@@ -5,6 +5,7 @@ import net.miginfocom.layout.CC;
 import net.sf.anathema.framework.ui.RGBColor;
 import net.sf.anathema.lib.control.legality.FontStyle;
 import net.sf.anathema.lib.workflow.labelledvalue.IValueView;
+import net.sf.anathema.platform.fx.FxThreading;
 import org.tbee.javafx.scene.layout.MigPane;
 
 public class FxIntegerOverview implements IValueView<Integer> {
@@ -16,9 +17,14 @@ public class FxIntegerOverview implements IValueView<Integer> {
     titleLabel.setText(labelText);
   }
 
-  public void addTo(MigPane panel) {
-    panel.add(titleLabel);
-    panel.add(valueLabel, new CC().alignX("right").span());
+  public void addTo(final MigPane panel) {
+    FxThreading.runOnCorrectThread(new Runnable() {
+      @Override
+      public void run() {
+        panel.add(titleLabel);
+        panel.add(valueLabel, new CC().alignX("right").span());
+      }
+    });
   }
 
   @Override

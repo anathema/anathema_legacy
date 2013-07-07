@@ -1,7 +1,6 @@
 package net.sf.anathema.hero.languages.display.view;
 
 import javafx.scene.Node;
-import javafx.scene.control.ScrollPane;
 import net.miginfocom.layout.CC;
 import net.sf.anathema.character.main.library.overview.OverviewCategory;
 import net.sf.anathema.hero.languages.display.presenter.LanguagesView;
@@ -18,16 +17,14 @@ import static net.sf.anathema.lib.gui.layout.LayoutUtils.withoutInsets;
 public class FxLanguagesView implements LanguagesView, NodeHolder {
 
   private final MigPane selectionPanel = new MigPane(withoutInsets().fillX());
-  private final MigPane entryPanel = new MigPane(withoutInsets().wrapAfter(2).fillX());
+  private final MigPane entryPanel = new MigPane(withoutInsets().wrapAfter(2).fill());
   private final MigPane overviewPanel = new MigPane(withoutInsets());
   private final MigPane panel = new MigPane(withoutInsets());
 
   public FxLanguagesView() {
     MigPane mainPanel = new MigPane(withoutInsets().wrapAfter(1));
     mainPanel.add(selectionPanel);
-    ScrollPane scrollPane = new ScrollPane();
-    scrollPane.setContent(entryPanel);
-    mainPanel.add(scrollPane, new CC().grow().pushY());
+    mainPanel.add(entryPanel, new CC().growX().pushX());
     panel.add(mainPanel, new CC().grow().pushY());
     panel.add(overviewPanel, new CC().alignY("top"));
   }
