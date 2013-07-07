@@ -1,4 +1,4 @@
-package net.sf.anathema.character.mortal;
+package net.sf.anathema.herotype.mortal;
 
 import net.sf.anathema.character.generic.template.magic.AbilityFavoringType;
 import net.sf.anathema.character.generic.template.magic.FavoringTraitType;

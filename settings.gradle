@@ -25,6 +25,7 @@ include('Anathema',
         'Hero_Spells',
         'Hero_Traits',
 
+        'HeroType_Mortal',
         'HeroType_Solar',
 
         'Magic_Description',
@@ -43,7 +44,5 @@ include('Anathema',
 
         'Character_Equipment',
         'Character_MartialArts',
-
-        'Character_Mortal',
 
         'Integrationtest')
