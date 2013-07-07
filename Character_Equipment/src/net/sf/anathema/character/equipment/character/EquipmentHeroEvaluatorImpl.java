@@ -10,7 +10,7 @@ import net.sf.anathema.character.main.traits.types.AbilityType;
 import net.sf.anathema.character.main.type.ICharacterType;
 import net.sf.anathema.character.main.library.trait.specialties.Specialty;
 import net.sf.anathema.hero.model.Hero;
-import net.sf.anathema.hero.specialties.model.SpecialtiesCollectionImpl;
+import net.sf.anathema.hero.equipment.SpecialtiesCollectionImpl;
 import net.sf.anathema.lib.control.ChangeListener;
 
 import static net.sf.anathema.character.main.equipment.ArtifactAttuneType.FullyAttuned;

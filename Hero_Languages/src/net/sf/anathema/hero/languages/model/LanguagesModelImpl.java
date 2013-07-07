@@ -7,7 +7,7 @@ import com.google.common.collect.Iterables;
 import net.sf.anathema.character.main.traits.types.AbilityType;
 import net.sf.anathema.character.main.library.removableentry.model.AbstractRemovableEntryModel;
 import net.sf.anathema.character.main.library.trait.Trait;
-import net.sf.anathema.hero.abilities.AbilityModelFetcher;
+import net.sf.anathema.hero.abilities.model.AbilityModelFetcher;
 import net.sf.anathema.hero.traits.TraitChangeFlavor;
 import net.sf.anathema.hero.change.ChangeAnnouncer;
 import net.sf.anathema.hero.change.ChangeFlavor;

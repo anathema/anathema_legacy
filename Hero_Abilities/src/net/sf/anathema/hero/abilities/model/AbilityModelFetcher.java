@@ -1,4 +1,4 @@
-package net.sf.anathema.hero.abilities;
+package net.sf.anathema.hero.abilities.model;
 
 import net.sf.anathema.hero.model.Hero;
 

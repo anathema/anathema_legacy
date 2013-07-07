@@ -1,6 +1,6 @@
 package net.sf.anathema.hero.combos.model;
 
-import net.sf.anathema.hero.abilities.AbilitiesModel;
+import net.sf.anathema.hero.abilities.model.AbilitiesModel;
 import net.sf.anathema.hero.attributes.model.AttributeModel;
 import net.sf.anathema.hero.charms.CharmsModel;
 import net.sf.anathema.hero.combos.CombosModel;

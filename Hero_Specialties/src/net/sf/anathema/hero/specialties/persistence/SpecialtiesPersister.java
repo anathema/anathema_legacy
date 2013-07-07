@@ -4,7 +4,6 @@ import net.sf.anathema.character.main.library.trait.specialties.SpecialtiesModel
 import net.sf.anathema.character.main.library.trait.specialties.Specialty;
 import net.sf.anathema.character.main.library.trait.subtrait.ISubTraitContainer;
 import net.sf.anathema.character.main.traits.types.AbilityType;
-import net.sf.anathema.character.main.traits.types.AttributeType;
 import net.sf.anathema.hero.persistence.AbstractModelJsonPersister;
 import net.sf.anathema.hero.persistence.HeroModelPersisterCollected;
 import net.sf.anathema.hero.traits.persistence.TraitPersister;
@@ -28,7 +27,7 @@ public class SpecialtiesPersister extends AbstractModelJsonPersister<Specialties
   @Override
   protected void fillModel(SpecialtiesModel model, SpecialtiesPto pto) {
     for (SpecialtiesTraitPto traitPto : pto.traits) {
-      ISubTraitContainer container = model.getSpecialtiesContainer(AttributeType.valueOf(traitPto.traitName));
+      ISubTraitContainer container = model.getSpecialtiesContainer(AbilityType.valueOf(traitPto.traitName));
       for (TraitPto specialtyPto : traitPto.specialties) {
         Specialty specialty = container.addSubTrait(specialtyPto.name);
         traitPersister.load(specialty, specialtyPto);

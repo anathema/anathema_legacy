@@ -7,7 +7,7 @@ import net.sf.anathema.character.main.template.magic.FavoringTraitType;
 import net.sf.anathema.character.main.traits.TraitType;
 import net.sf.anathema.character.main.traits.groups.IIdentifiedTraitTypeGroup;
 import net.sf.anathema.character.main.traits.groups.ITraitTypeGroup;
-import net.sf.anathema.hero.abilities.AbilityModelFetcher;
+import net.sf.anathema.hero.abilities.model.AbilityModelFetcher;
 import net.sf.anathema.hero.attributes.model.AttributesModelFetcher;
 import net.sf.anathema.character.reporting.pdf.content.magic.MagicContentHelper;
 import net.sf.anathema.hero.model.Hero;

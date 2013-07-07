@@ -2,7 +2,7 @@ package net.sf.anathema.hero.abilities.persistence;
 
 import net.sf.anathema.character.main.library.trait.Trait;
 import net.sf.anathema.character.main.traits.types.AbilityType;
-import net.sf.anathema.hero.abilities.AbilitiesModel;
+import net.sf.anathema.hero.abilities.model.AbilitiesModel;
 import net.sf.anathema.hero.persistence.AbstractModelJsonPersister;
 import net.sf.anathema.hero.persistence.HeroModelPersisterCollected;
 import net.sf.anathema.hero.traits.persistence.TraitPersister;

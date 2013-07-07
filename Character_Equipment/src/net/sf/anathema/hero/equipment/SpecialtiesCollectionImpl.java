@@ -1,4 +1,4 @@
-package net.sf.anathema.hero.specialties.model;
+package net.sf.anathema.hero.equipment;
 
 import net.sf.anathema.character.main.traits.SpecialtiesCollection;
 import net.sf.anathema.character.main.traits.TraitType;

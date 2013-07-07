@@ -40,7 +40,6 @@ import net.sf.anathema.character.reporting.pdf.rendering.boxes.StatsModifierFact
 import net.sf.anathema.hero.change.ChangeAnnouncer;
 import net.sf.anathema.hero.model.Hero;
 import net.sf.anathema.hero.model.InitializationContext;
-import net.sf.anathema.hero.specialties.model.SpecialtiesCollectionImpl;
 import net.sf.anathema.initialization.ObjectFactory;
 import net.sf.anathema.lib.control.ChangeListener;
 import net.sf.anathema.lib.control.ICollectionListener;
