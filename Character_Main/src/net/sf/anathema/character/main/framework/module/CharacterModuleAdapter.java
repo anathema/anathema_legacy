@@ -4,7 +4,7 @@ import net.sf.anathema.character.main.framework.HeroEnvironment;
 import net.sf.anathema.character.main.framework.ICharacterTemplateRegistryCollection;
 import net.sf.anathema.character.main.xml.CharacterTemplateParser;
 import net.sf.anathema.character.main.xml.GenericCharacterTemplate;
-import net.sf.anathema.character.main.magic.persistence.ICharmCache;
+import net.sf.anathema.character.main.magic.parser.ICharmCache;
 import net.sf.anathema.initialization.InitializationException;
 import net.sf.anathema.lib.exception.PersistenceException;
 import net.sf.anathema.lib.logging.Logger;

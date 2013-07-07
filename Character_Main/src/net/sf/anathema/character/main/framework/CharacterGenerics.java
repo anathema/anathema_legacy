@@ -4,7 +4,7 @@ import net.sf.anathema.character.main.caste.ICasteCollection;
 import net.sf.anathema.character.main.framework.data.IExtensibleDataSet;
 import net.sf.anathema.character.main.framework.data.IExtensibleDataSetProvider;
 import net.sf.anathema.character.main.xml.registry.CharacterTemplateRegistryCollection;
-import net.sf.anathema.character.main.magic.persistence.ICharmCache;
+import net.sf.anathema.character.main.magic.parser.ICharmCache;
 import net.sf.anathema.character.main.template.TemplateRegistry;
 import net.sf.anathema.character.main.template.magic.CharmProvider;
 import net.sf.anathema.character.main.template.magic.ICharmProvider;

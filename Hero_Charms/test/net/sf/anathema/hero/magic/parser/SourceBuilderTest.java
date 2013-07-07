@@ -1,6 +1,6 @@
 package net.sf.anathema.hero.magic.parser;
 
-import net.sf.anathema.character.main.magic.persistence.builder.SourceBuilder;
+import net.sf.anathema.character.main.magic.parser.SourceBuilder;
 import net.sf.anathema.character.main.rules.SourceBook;
 import net.sf.anathema.character.main.rules.IExaltedSourceBook;
 import net.sf.anathema.lib.xml.DocumentUtilities;

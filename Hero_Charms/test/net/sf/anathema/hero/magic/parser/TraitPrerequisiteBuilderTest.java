@@ -1,7 +1,7 @@
 package net.sf.anathema.hero.magic.parser;
 
-import net.sf.anathema.character.main.magic.persistence.builder.prerequisite.ITraitPrerequisiteBuilder;
-import net.sf.anathema.character.main.magic.persistence.builder.prerequisite.TraitPrerequisiteBuilder;
+import net.sf.anathema.character.main.magic.parser.prerequisite.ITraitPrerequisiteBuilder;
+import net.sf.anathema.character.main.magic.parser.prerequisite.TraitPrerequisiteBuilder;
 import net.sf.anathema.character.main.traits.ValuedTraitType;
 import net.sf.anathema.character.main.traits.types.AbilityType;
 import net.sf.anathema.lib.exception.PersistenceException;

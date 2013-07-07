@@ -1,6 +1,6 @@
 package net.sf.anathema.character.main.template;
 
-import net.sf.anathema.character.main.magic.persistence.prerequisite.SelectiveCharmGroupTemplate;
+import net.sf.anathema.character.main.magic.parser.SelectiveCharmGroupTemplate;
 import org.junit.Test;
 
 public class SelectiveCharmGroupTemplateTest {

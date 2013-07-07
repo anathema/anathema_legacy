@@ -2,7 +2,7 @@ package net.sf.anathema.hero.magic.parser;
 
 import net.sf.anathema.hero.health.HealthType;
 import net.sf.anathema.character.main.magic.model.magic.HealthCost;
-import net.sf.anathema.character.main.magic.persistence.builder.HealthCostBuilder;
+import net.sf.anathema.character.main.magic.parser.HealthCostBuilder;
 import net.sf.anathema.character.main.magic.model.magic.IHealthCost;
 import net.sf.anathema.lib.exception.PersistenceException;
 import org.dom4j.Element;

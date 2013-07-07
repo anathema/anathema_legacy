@@ -2,7 +2,7 @@ package net.sf.anathema.character.main.magic.model.charm.prerequisite;
 
 import com.google.common.base.Preconditions;
 import net.sf.anathema.character.main.magic.model.charm.Charm;
-import net.sf.anathema.character.main.magic.persistence.prerequisite.SelectiveCharmGroupTemplate;
+import net.sf.anathema.character.main.magic.parser.SelectiveCharmGroupTemplate;
 import net.sf.anathema.character.main.magic.model.charm.ICharm;
 import net.sf.anathema.character.main.magic.model.charmtree.ICharmLearnArbitrator;
 import net.sf.anathema.lib.logging.Logger;
