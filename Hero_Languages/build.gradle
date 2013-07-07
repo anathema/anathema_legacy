@@ -1,5 +1,5 @@
 dependencies {
     compile project(':Character_Main')
-    compile project(':Character_Reporting')
     compile project(':Hero_Abilities')
+    compile project(':Hero_Sheet')
 }

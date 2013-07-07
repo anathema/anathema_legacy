@@ -1,11 +1,11 @@
 dependencies {
     compile project(':Character_Main')
-    compile project(':Character_Reporting')
     compile project(':Hero_Abilities')
     compile project(':Hero_Attributes')
     compile project(':Hero_Charms')
     compile project(':Hero_Concept')
     compile project(':Hero_OtherTraits')
+    compile project(':Hero_Sheet')
     compile project(':Hero_Traits')
     testCompile parent.ext.testDependencies
     testCompile project(path: ':Platform', configuration: 'tests')

@@ -26,6 +26,8 @@ include('Anathema',
         'Hero_Spells',
         'Hero_Traits',
 
+        'Hero_Sheet',
+
         'HeroType_Mortal',
         'HeroType_Solar',
 
@@ -40,8 +42,6 @@ include('Anathema',
         'Character_Main_Impl',
         'Character_Main_FX',
         'Character_Main_Swing',
-
-        'Character_Reporting',
 
         'Character_Equipment',
         'Character_MartialArts',
