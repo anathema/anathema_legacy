@@ -1,7 +1,5 @@
-package net.sf.anathema.character.main.library.removableentry.model;
+package net.sf.anathema.character.main.library.removableentry;
 
-import net.sf.anathema.character.main.library.removableentry.presenter.IRemovableEntryListener;
-import net.sf.anathema.character.main.library.removableentry.presenter.IRemovableEntryModel;
 import org.jmock.example.announcer.Announcer;
 
 import java.util.ArrayList;
@@ -13,6 +11,7 @@ public abstract class AbstractRemovableEntryModel<E> implements IRemovableEntryM
   private final List<E> entries = new ArrayList<>();
   private final Announcer<IRemovableEntryListener> control = Announcer.to(IRemovableEntryListener.class);
 
+  @SuppressWarnings("unchecked")
   @Override
   public E commitSelection() {
     E entry = createEntry();
@@ -23,6 +22,7 @@ public abstract class AbstractRemovableEntryModel<E> implements IRemovableEntryM
 
   protected abstract E createEntry();
 
+  @SuppressWarnings("unchecked")
   @Override
   public void removeEntry(E entry) {
     entries.remove(entry);

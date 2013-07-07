@@ -1,4 +1,4 @@
-package net.sf.anathema.character.main.library.removableentry.presenter;
+package net.sf.anathema.character.main.library.removableentry;
 
 import java.util.List;
 
