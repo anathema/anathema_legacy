@@ -1,4 +1,4 @@
-package net.sf.anathema.hero.concept.sheet.personal;
+package net.sf.anathema.hero.concept.sheet.personal.encoder;
 
 import net.sf.anathema.character.reporting.pdf.rendering.boxes.EncodingMetrics;
 import net.sf.anathema.character.reporting.pdf.rendering.boxes.PreferredHeight;

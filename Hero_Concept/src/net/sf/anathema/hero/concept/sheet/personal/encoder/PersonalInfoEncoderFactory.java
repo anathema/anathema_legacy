@@ -1,4 +1,4 @@
-package net.sf.anathema.hero.concept.sheet.personal;
+package net.sf.anathema.hero.concept.sheet.personal.encoder;
 
 import net.sf.anathema.character.reporting.pdf.content.BasicContent;
 import net.sf.anathema.character.reporting.pdf.rendering.EncoderIds;
@@ -18,5 +18,4 @@ public class PersonalInfoEncoderFactory extends GlobalEncoderFactory {
   public PersonalInfoEncoder create(Resources resources, BasicContent content) {
     return new PersonalInfoEncoder(resources);
   }
-
 }
