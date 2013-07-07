@@ -6,7 +6,7 @@ import net.sf.anathema.character.main.library.overview.IOverviewCategory;
 import net.sf.anathema.character.main.library.removableentry.presenter.IRemovableEntryListener;
 import net.sf.anathema.character.main.library.selection.IStringSelectionView;
 import net.sf.anathema.character.main.library.trait.presenter.TraitPresenter;
-import net.sf.anathema.character.main.model.experience.ExperienceChange;
+import net.sf.anathema.hero.experience.ExperienceChange;
 import net.sf.anathema.character.main.presenter.ExtensibleTraitView;
 import net.sf.anathema.framework.presenter.resources.BasicUi;
 import net.sf.anathema.hero.change.ChangeFlavor;

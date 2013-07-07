@@ -1,7 +1,7 @@
 package net.sf.anathema.character.main;
 
 import net.sf.anathema.character.main.caste.CasteType;
-import net.sf.anathema.character.main.model.concept.HeroConcept;
+import net.sf.anathema.hero.concept.HeroConcept;
 
 public class GenericConcept implements IConcept {
 

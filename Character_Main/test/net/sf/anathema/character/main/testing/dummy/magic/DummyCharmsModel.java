@@ -6,7 +6,7 @@ import net.sf.anathema.character.main.magic.charms.ICharmGroup;
 import net.sf.anathema.character.main.magic.charms.special.ISpecialCharm;
 import net.sf.anathema.character.main.magic.charms.special.ISpecialCharmConfiguration;
 import net.sf.anathema.character.main.type.ICharacterType;
-import net.sf.anathema.character.main.model.charms.CharmsModel;
+import net.sf.anathema.hero.charms.CharmsModel;
 import net.sf.anathema.character.main.charm.ICharmLearnListener;
 import net.sf.anathema.character.main.charm.ILearningCharmGroup;
 import net.sf.anathema.hero.change.ChangeAnnouncer;

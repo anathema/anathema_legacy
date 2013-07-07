@@ -1,16 +1,16 @@
 package net.sf.anathema.character.main.charm.special;
 
-import net.sf.anathema.character.main.health.HealthLevelType;
+import net.sf.anathema.hero.health.HealthLevelType;
 import net.sf.anathema.character.main.magic.ICharm;
 import net.sf.anathema.character.main.magic.charms.special.IOxBodyTechniqueCharm;
 import net.sf.anathema.character.main.magic.charms.special.ISpecialCharmLearnListener;
 import net.sf.anathema.character.main.traits.TraitType;
 import net.sf.anathema.character.main.library.trait.Trait;
 import net.sf.anathema.character.main.library.trait.favorable.IncrementChecker;
-import net.sf.anathema.character.main.model.health.IHealthLevelProvider;
-import net.sf.anathema.character.main.model.health.OxBodyTechniqueArbitrator;
-import net.sf.anathema.character.main.model.traits.TraitModel;
-import net.sf.anathema.character.main.model.traits.TraitModelFetcher;
+import net.sf.anathema.hero.health.IHealthLevelProvider;
+import net.sf.anathema.hero.health.OxBodyTechniqueArbitrator;
+import net.sf.anathema.hero.traits.TraitModel;
+import net.sf.anathema.hero.traits.TraitModelFetcher;
 import net.sf.anathema.character.main.charm.OxBodyCategory;
 import net.sf.anathema.hero.model.Hero;
 import net.sf.anathema.lib.control.IIntValueChangedListener;

@@ -3,7 +3,7 @@ package net.sf.anathema.character.equipment.impl.character.model.natural;
 import net.sf.anathema.character.equipment.impl.character.model.stats.AbstractCombatStats;
 import net.sf.anathema.character.main.equipment.weapon.IEquipmentStats;
 import net.sf.anathema.character.main.equipment.weapon.IWeaponStats;
-import net.sf.anathema.character.main.health.HealthType;
+import net.sf.anathema.hero.health.HealthType;
 
 public abstract class AbstractNaturalWeaponStats extends AbstractCombatStats implements IWeaponStats {
 

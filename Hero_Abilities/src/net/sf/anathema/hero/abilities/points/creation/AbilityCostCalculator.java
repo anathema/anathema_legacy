@@ -5,7 +5,7 @@ import net.sf.anathema.character.main.template.points.IFavorableTraitCreationPoi
 import net.sf.anathema.character.main.library.ITraitFavorization;
 import net.sf.anathema.character.main.library.trait.FavorableTraitCost;
 import net.sf.anathema.character.main.library.trait.Trait;
-import net.sf.anathema.character.main.model.abilities.AbilitiesModel;
+import net.sf.anathema.hero.abilities.AbilitiesModel;
 
 import java.util.ArrayList;
 import java.util.HashMap;

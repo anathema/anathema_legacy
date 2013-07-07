@@ -2,9 +2,9 @@ package net.sf.anathema.hero.charms.model.charms;
 
 import net.sf.anathema.character.main.magic.ICharm;
 import net.sf.anathema.character.main.magic.IExtendedCharmData;
-import net.sf.anathema.character.main.model.charms.CharmsModel;
-import net.sf.anathema.character.main.model.essencepool.OverdrivePool;
-import net.sf.anathema.character.main.model.experience.ExperienceModel;
+import net.sf.anathema.hero.charms.CharmsModel;
+import net.sf.anathema.hero.essencepool.OverdrivePool;
+import net.sf.anathema.hero.experience.ExperienceModel;
 
 public class CharmOverdrivePool implements OverdrivePool {
 

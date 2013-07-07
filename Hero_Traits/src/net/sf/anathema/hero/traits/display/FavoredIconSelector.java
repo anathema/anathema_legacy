@@ -5,7 +5,7 @@ import net.sf.anathema.character.main.CharacterUI;
 import net.sf.anathema.character.main.template.presentation.IPresentationProperties;
 import net.sf.anathema.character.main.type.ICharacterType;
 import net.sf.anathema.character.main.library.trait.favorable.FavorableState;
-import net.sf.anathema.character.main.model.concept.HeroConceptFetcher;
+import net.sf.anathema.hero.concept.HeroConceptFetcher;
 import net.sf.anathema.character.main.presenter.CasteUI;
 import net.sf.anathema.hero.model.Hero;
 import net.sf.anathema.interaction.Tool;

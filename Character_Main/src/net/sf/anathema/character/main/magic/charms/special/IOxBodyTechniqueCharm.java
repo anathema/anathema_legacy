@@ -1,6 +1,6 @@
 package net.sf.anathema.character.main.magic.charms.special;
 
-import net.sf.anathema.character.main.health.HealthLevelType;
+import net.sf.anathema.hero.health.HealthLevelType;
 import net.sf.anathema.character.main.traits.TraitType;
 
 import java.util.Map;

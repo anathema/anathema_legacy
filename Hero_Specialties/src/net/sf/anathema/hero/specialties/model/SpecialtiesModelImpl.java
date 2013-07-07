@@ -8,8 +8,8 @@ import net.sf.anathema.character.main.library.trait.specialties.SpecialtiesListe
 import net.sf.anathema.character.main.library.trait.specialties.SpecialtiesModel;
 import net.sf.anathema.character.main.library.trait.specialties.Specialty;
 import net.sf.anathema.character.main.library.trait.subtrait.ISubTraitContainer;
-import net.sf.anathema.character.main.model.abilities.AbilityModelFetcher;
-import net.sf.anathema.character.main.model.experience.ExperienceModelFetcher;
+import net.sf.anathema.hero.abilities.AbilityModelFetcher;
+import net.sf.anathema.hero.experience.ExperienceModelFetcher;
 import net.sf.anathema.hero.specialties.points.experience.SpecialtyExperienceModel;
 import net.sf.anathema.hero.change.ChangeAnnouncer;
 import net.sf.anathema.hero.model.Hero;

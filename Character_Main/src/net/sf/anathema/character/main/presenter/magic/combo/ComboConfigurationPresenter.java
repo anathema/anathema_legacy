@@ -2,9 +2,9 @@ package net.sf.anathema.character.main.presenter.magic.combo;
 
 import com.google.common.base.Strings;
 import net.sf.anathema.character.main.magic.ICharm;
-import net.sf.anathema.character.main.model.charms.CharmsModel;
-import net.sf.anathema.character.main.model.combos.CombosModel;
-import net.sf.anathema.character.main.model.concept.ConceptChange;
+import net.sf.anathema.hero.charms.CharmsModel;
+import net.sf.anathema.hero.combos.CombosModel;
+import net.sf.anathema.hero.concept.ConceptChange;
 import net.sf.anathema.character.main.charm.CharmLearnAdapter;
 import net.sf.anathema.character.main.charm.ICharmLearnListener;
 import net.sf.anathema.character.main.charm.ICombo;

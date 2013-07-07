@@ -10,9 +10,9 @@ import net.sf.anathema.character.main.library.trait.favorable.NullTraitFavorizat
 import net.sf.anathema.character.main.library.trait.favorable.TraitFavorization;
 import net.sf.anathema.character.main.library.trait.rules.IFavorableTraitRules;
 import net.sf.anathema.character.main.library.trait.rules.ITraitRules;
-import net.sf.anathema.character.main.model.concept.ConceptChange;
-import net.sf.anathema.character.main.model.traits.TraitModel;
-import net.sf.anathema.character.main.model.traits.TraitModelFetcher;
+import net.sf.anathema.hero.concept.ConceptChange;
+import net.sf.anathema.hero.traits.TraitModel;
+import net.sf.anathema.hero.traits.TraitModelFetcher;
 import net.sf.anathema.hero.change.ChangeFlavor;
 import net.sf.anathema.hero.change.FlavoredChangeListener;
 import net.sf.anathema.hero.model.Hero;

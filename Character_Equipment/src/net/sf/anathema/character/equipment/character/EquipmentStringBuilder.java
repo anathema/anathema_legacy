@@ -6,7 +6,7 @@ import net.sf.anathema.character.main.equipment.ITraitModifyingStats;
 import net.sf.anathema.character.main.equipment.weapon.IArmourStats;
 import net.sf.anathema.character.main.equipment.weapon.IEquipmentStats;
 import net.sf.anathema.character.main.equipment.weapon.IWeaponStats;
-import net.sf.anathema.character.main.health.HealthType;
+import net.sf.anathema.hero.health.HealthType;
 import net.sf.anathema.lib.exception.UnreachableCodeReachedException;
 import net.sf.anathema.lib.resources.Resources;
 import net.sf.anathema.lib.util.Identifier;

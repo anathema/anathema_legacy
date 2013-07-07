@@ -1,7 +1,7 @@
 package net.sf.anathema.character.main.charm;
 
 import net.sf.anathema.character.main.magic.charm.special.Subeffect;
-import net.sf.anathema.character.main.model.experience.ExperienceModel;
+import net.sf.anathema.hero.experience.ExperienceModel;
 import net.sf.anathema.character.main.testing.dummy.DummyCondition;
 import org.junit.Assert;
 import org.junit.Test;

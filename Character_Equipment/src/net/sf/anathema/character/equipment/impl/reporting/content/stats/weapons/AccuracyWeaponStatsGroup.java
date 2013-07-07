@@ -10,7 +10,7 @@ import net.sf.anathema.character.equipment.impl.reporting.content.stats.Abstract
 import net.sf.anathema.character.main.equipment.weapon.IWeaponStats;
 import net.sf.anathema.character.main.traits.ValuedTraitType;
 import net.sf.anathema.character.main.traits.types.AttributeType;
-import net.sf.anathema.character.main.model.traits.TraitMap;
+import net.sf.anathema.hero.traits.TraitMap;
 import net.sf.anathema.lib.resources.Resources;
 
 import java.util.Arrays;

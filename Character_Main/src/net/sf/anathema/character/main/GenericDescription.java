@@ -1,6 +1,6 @@
 package net.sf.anathema.character.main;
 
-import net.sf.anathema.character.main.model.description.HeroDescription;
+import net.sf.anathema.hero.description.HeroDescription;
 
 public class GenericDescription implements IGenericDescription {
 

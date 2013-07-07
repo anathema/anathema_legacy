@@ -5,7 +5,7 @@ import net.sf.anathema.character.main.library.trait.Trait;
 import net.sf.anathema.character.main.library.trait.specialties.SpecialtiesModel;
 import net.sf.anathema.character.main.library.trait.specialties.SpecialtiesModelFetcher;
 import net.sf.anathema.character.main.library.trait.subtrait.ISubTraitContainer;
-import net.sf.anathema.character.main.model.abilities.AbilityModelFetcher;
+import net.sf.anathema.hero.abilities.AbilityModelFetcher;
 import net.sf.anathema.character.main.advance.models.AbstractIntegerValueModel;
 import net.sf.anathema.hero.model.Hero;
 

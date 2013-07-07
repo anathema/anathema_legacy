@@ -2,10 +2,10 @@ package net.sf.anathema.hero.concept.display.caste.presenter;
 
 import net.sf.anathema.character.main.caste.CasteType;
 import net.sf.anathema.character.main.template.HeroTemplate;
-import net.sf.anathema.character.main.model.concept.HeroConceptFetcher;
-import net.sf.anathema.character.main.model.experience.ExperienceModel;
-import net.sf.anathema.character.main.model.experience.ExperienceModelFetcher;
-import net.sf.anathema.hero.concept.model.concept.CasteSelection;
+import net.sf.anathema.hero.concept.HeroConceptFetcher;
+import net.sf.anathema.hero.experience.ExperienceModel;
+import net.sf.anathema.hero.experience.ExperienceModelFetcher;
+import net.sf.anathema.hero.concept.CasteSelection;
 import net.sf.anathema.hero.model.Hero;
 import net.sf.anathema.lib.control.ChangeListener;
 import net.sf.anathema.lib.control.ObjectValueListener;

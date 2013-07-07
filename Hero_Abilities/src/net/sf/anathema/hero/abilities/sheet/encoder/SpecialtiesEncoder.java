@@ -2,7 +2,7 @@ package net.sf.anathema.hero.abilities.sheet.encoder;
 
 import net.sf.anathema.character.main.traits.TraitType;
 import net.sf.anathema.character.main.traits.groups.IIdentifiedTraitTypeGroup;
-import net.sf.anathema.character.main.model.abilities.AbilityModelFetcher;
+import net.sf.anathema.hero.abilities.AbilityModelFetcher;
 import net.sf.anathema.character.reporting.pdf.content.ReportSession;
 import net.sf.anathema.character.reporting.pdf.content.stats.ValuedTraitReference;
 import net.sf.anathema.character.reporting.pdf.rendering.extent.Position;

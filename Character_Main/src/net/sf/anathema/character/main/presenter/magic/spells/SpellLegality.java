@@ -1,7 +1,7 @@
 package net.sf.anathema.character.main.presenter.magic.spells;
 
 import net.sf.anathema.character.main.magic.ISpell;
-import net.sf.anathema.character.main.model.spells.SpellModel;
+import net.sf.anathema.hero.spells.SpellModel;
 import net.sf.anathema.lib.gui.list.LegalityCheck;
 
 public class SpellLegality implements LegalityCheck {

@@ -6,8 +6,8 @@ import net.sf.anathema.character.main.magic.IMagic;
 import net.sf.anathema.character.main.magic.charms.MartialArtsLevel;
 import net.sf.anathema.character.main.template.experience.ICostAnalyzer;
 import net.sf.anathema.character.main.traits.types.AbilityType;
-import net.sf.anathema.character.main.model.traits.TraitMap;
-import net.sf.anathema.character.main.model.traits.TraitModelFetcher;
+import net.sf.anathema.hero.traits.TraitMap;
+import net.sf.anathema.hero.traits.TraitModelFetcher;
 import net.sf.anathema.hero.model.Hero;
 
 public class CostAnalyzer implements ICostAnalyzer {

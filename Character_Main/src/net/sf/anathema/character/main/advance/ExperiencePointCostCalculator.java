@@ -6,8 +6,8 @@ import net.sf.anathema.character.main.template.experience.CurrentRatingCosts;
 import net.sf.anathema.character.main.template.experience.IExperiencePointCosts;
 import net.sf.anathema.character.main.library.trait.Trait;
 import net.sf.anathema.character.main.library.trait.experience.TraitRatingCostCalculator;
-import net.sf.anathema.character.main.model.traits.GenericTraitCollectionFacade;
-import net.sf.anathema.character.main.model.traits.TraitMap;
+import net.sf.anathema.hero.traits.GenericTraitCollectionFacade;
+import net.sf.anathema.hero.traits.TraitMap;
 import net.sf.anathema.hero.model.Hero;
 
 public class ExperiencePointCostCalculator implements IPointCostCalculator {

@@ -3,12 +3,12 @@ package net.sf.anathema.character.main.presenter.magic.combo;
 import net.sf.anathema.character.main.caste.CasteType;
 import net.sf.anathema.character.main.magic.ICharm;
 import net.sf.anathema.character.main.magic.description.MagicDescriptionProvider;
-import net.sf.anathema.character.main.model.charms.CharmsModel;
-import net.sf.anathema.character.main.model.charms.CharmsModelFetcher;
-import net.sf.anathema.character.main.model.combos.CombosModel;
-import net.sf.anathema.character.main.model.combos.CombosModelFetcher;
-import net.sf.anathema.character.main.model.concept.HeroConceptFetcher;
-import net.sf.anathema.character.main.model.experience.ExperienceModelFetcher;
+import net.sf.anathema.hero.charms.CharmsModel;
+import net.sf.anathema.hero.charms.CharmsModelFetcher;
+import net.sf.anathema.hero.combos.CombosModel;
+import net.sf.anathema.hero.combos.CombosModelFetcher;
+import net.sf.anathema.hero.concept.HeroConceptFetcher;
+import net.sf.anathema.hero.experience.ExperienceModelFetcher;
 import net.sf.anathema.character.main.charm.options.DefaultCharmTemplateRetriever;
 import net.sf.anathema.hero.model.Hero;
 

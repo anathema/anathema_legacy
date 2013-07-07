@@ -1,7 +1,7 @@
 package net.sf.anathema.character.equipment.impl.character.model.stats;
 
 import net.sf.anathema.character.main.equipment.weapon.IArmourStats;
-import net.sf.anathema.character.main.health.HealthType;
+import net.sf.anathema.hero.health.HealthType;
 
 import java.util.HashMap;
 import java.util.Map;

@@ -3,7 +3,7 @@ package net.sf.anathema.character.main.persistence;
 import net.sf.anathema.character.main.framework.ICharacterGenerics;
 import net.sf.anathema.character.main.magic.SpellException;
 import net.sf.anathema.character.main.item.DataItem;
-import net.sf.anathema.character.main.model.description.HeroDescriptionFetcher;
+import net.sf.anathema.hero.description.HeroDescriptionFetcher;
 import net.sf.anathema.character.main.CharacterStatisticsConfiguration;
 import net.sf.anathema.character.main.ExaltedCharacter;
 import net.sf.anathema.framework.item.IItemType;

@@ -1,9 +1,9 @@
 package net.sf.anathema.character.main.presenter;
 
 import net.sf.anathema.character.main.traits.types.OtherTraitType;
-import net.sf.anathema.character.main.model.essencepool.EssencePoolModelFetcher;
-import net.sf.anathema.character.main.model.traits.TraitMap;
-import net.sf.anathema.character.main.model.traits.TraitModelFetcher;
+import net.sf.anathema.hero.essencepool.EssencePoolModelFetcher;
+import net.sf.anathema.hero.traits.TraitMap;
+import net.sf.anathema.hero.traits.TraitModelFetcher;
 import net.sf.anathema.character.main.view.AdvantageView;
 import net.sf.anathema.hero.model.Hero;
 import net.sf.anathema.lib.gui.Presenter;

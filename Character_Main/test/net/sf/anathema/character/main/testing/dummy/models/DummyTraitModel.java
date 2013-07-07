@@ -2,8 +2,8 @@ package net.sf.anathema.character.main.testing.dummy.models;
 
 import net.sf.anathema.character.main.traits.TraitValueStrategy;
 import net.sf.anathema.character.main.library.trait.Trait;
-import net.sf.anathema.character.main.model.traits.DefaultTraitMap;
-import net.sf.anathema.character.main.model.traits.TraitModel;
+import net.sf.anathema.hero.traits.DefaultTraitMap;
+import net.sf.anathema.hero.traits.TraitModel;
 import net.sf.anathema.character.main.traits.context.CreationTraitValueStrategy;
 import net.sf.anathema.hero.change.ChangeAnnouncer;
 import net.sf.anathema.hero.model.Hero;

@@ -4,8 +4,8 @@ import net.sf.anathema.character.main.magic.view.IMagicViewListener;
 import net.sf.anathema.character.main.magic.ISpell;
 import net.sf.anathema.character.main.magic.description.MagicDescriptionProvider;
 import net.sf.anathema.character.main.magic.spells.CircleType;
-import net.sf.anathema.character.main.model.experience.ExperienceModelFetcher;
-import net.sf.anathema.character.main.model.spells.SpellsModelFetcher;
+import net.sf.anathema.hero.experience.ExperienceModelFetcher;
+import net.sf.anathema.hero.spells.SpellsModelFetcher;
 import net.sf.anathema.character.main.IMagicLearnListener;
 import net.sf.anathema.character.main.view.magic.ISpellView;
 import net.sf.anathema.hero.model.Hero;
@@ -24,7 +24,7 @@ import java.util.List;
 
 public class SpellPresenter {
 
-  private final net.sf.anathema.character.main.model.spells.SpellModel spellConfiguration;
+  private final net.sf.anathema.hero.spells.SpellModel spellConfiguration;
   private net.sf.anathema.character.main.presenter.magic.spells.SpellModel spellModel;
   private final Hero hero;
   private final Resources resources;

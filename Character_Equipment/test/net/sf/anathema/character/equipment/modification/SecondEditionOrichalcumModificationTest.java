@@ -2,7 +2,7 @@ package net.sf.anathema.character.equipment.modification;
 
 import net.sf.anathema.character.equipment.MagicalMaterial;
 import net.sf.anathema.character.equipment.impl.character.model.stats.modification.WeaponStatsType;
-import net.sf.anathema.character.main.health.HealthType;
+import net.sf.anathema.hero.health.HealthType;
 import org.junit.Test;
 
 public class SecondEditionOrichalcumModificationTest extends AbstractEquipmentModificationTest {

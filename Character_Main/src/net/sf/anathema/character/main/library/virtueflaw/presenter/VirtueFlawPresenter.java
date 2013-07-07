@@ -6,7 +6,7 @@ import net.sf.anathema.character.main.library.trait.Trait;
 import net.sf.anathema.character.main.library.trait.presenter.TraitPresenter;
 import net.sf.anathema.character.main.library.virtueflaw.model.VirtueFlaw;
 import net.sf.anathema.character.main.library.virtueflaw.model.VirtueFlawModel;
-import net.sf.anathema.character.main.model.traits.TraitChangeFlavor;
+import net.sf.anathema.hero.traits.TraitChangeFlavor;
 import net.sf.anathema.character.main.charmtree.presenter.SelectIdentifierConfiguration;
 import net.sf.anathema.framework.value.IIntValueView;
 import net.sf.anathema.hero.change.ChangeFlavor;

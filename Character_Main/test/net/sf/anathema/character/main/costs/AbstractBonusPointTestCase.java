@@ -10,7 +10,7 @@ import net.sf.anathema.character.main.traits.types.OtherTraitType;
 import net.sf.anathema.character.main.library.trait.Trait;
 import net.sf.anathema.character.main.library.trait.favorable.FriendlyIncrementChecker;
 import net.sf.anathema.character.main.library.trait.favorable.IncrementChecker;
-import net.sf.anathema.character.main.model.traits.TraitModel;
+import net.sf.anathema.hero.traits.TraitModel;
 import net.sf.anathema.character.main.testing.dummy.DummyHero;
 import net.sf.anathema.character.main.testing.dummy.template.DummyTraitTemplateFactory;
 import net.sf.anathema.character.main.traits.EssenceTemplateFactory;

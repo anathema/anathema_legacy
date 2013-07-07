@@ -1,8 +1,8 @@
 package net.sf.anathema.character.main.advance;
 
 import net.sf.anathema.hero.points.HeroModelExperienceCalculator;
-import net.sf.anathema.character.main.model.traits.TraitMap;
-import net.sf.anathema.character.main.model.traits.TraitModelFetcher;
+import net.sf.anathema.hero.traits.TraitMap;
+import net.sf.anathema.hero.traits.TraitModelFetcher;
 import net.sf.anathema.character.main.advance.models.AbilityExperienceModel;
 import net.sf.anathema.character.main.advance.models.AttributeExperienceModel;
 import net.sf.anathema.character.main.advance.models.CharmExperienceModel;

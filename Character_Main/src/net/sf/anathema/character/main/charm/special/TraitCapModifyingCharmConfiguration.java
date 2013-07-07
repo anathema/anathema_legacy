@@ -4,7 +4,7 @@ import net.sf.anathema.character.main.magic.ICharm;
 import net.sf.anathema.character.main.magic.charms.special.ISpecialCharmLearnListener;
 import net.sf.anathema.character.main.magic.charms.special.ITraitCapModifyingCharm;
 import net.sf.anathema.character.main.library.trait.DefaultTrait;
-import net.sf.anathema.character.main.model.charms.CharmsModel;
+import net.sf.anathema.hero.charms.CharmsModel;
 import net.sf.anathema.character.main.charm.CharmSpecialist;
 
 public class TraitCapModifyingCharmConfiguration implements ITraitCapModifyingCharmConfiguration {

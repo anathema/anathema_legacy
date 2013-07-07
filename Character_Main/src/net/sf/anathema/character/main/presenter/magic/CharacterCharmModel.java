@@ -3,12 +3,12 @@ package net.sf.anathema.character.main.presenter.magic;
 import net.sf.anathema.character.main.magic.ICharm;
 import net.sf.anathema.character.main.magic.description.MagicDescriptionProvider;
 import net.sf.anathema.character.main.template.magic.ICharmTemplate;
-import net.sf.anathema.character.main.model.charms.CharmsModel;
-import net.sf.anathema.character.main.model.charms.CharmsModelFetcher;
-import net.sf.anathema.character.main.model.concept.HeroConceptFetcher;
+import net.sf.anathema.hero.charms.CharmsModel;
+import net.sf.anathema.hero.charms.CharmsModelFetcher;
+import net.sf.anathema.hero.concept.HeroConceptFetcher;
 import net.sf.anathema.character.main.charm.ILearningCharmGroup;
 import net.sf.anathema.character.main.charm.options.DefaultCharmTemplateRetriever;
-import net.sf.anathema.hero.concept.model.concept.CasteSelection;
+import net.sf.anathema.hero.concept.CasteSelection;
 import net.sf.anathema.hero.model.Hero;
 import net.sf.anathema.lib.control.ChangeListener;
 

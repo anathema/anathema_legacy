@@ -2,7 +2,7 @@ package net.sf.anathema.character.main.charmtree.presenter;
 
 import net.sf.anathema.character.main.magic.ICharm;
 import net.sf.anathema.character.main.magic.charms.IndirectCharmRequirement;
-import net.sf.anathema.character.main.model.charms.CharmsModel;
+import net.sf.anathema.hero.charms.CharmsModel;
 import net.sf.anathema.character.main.presenter.magic.CharacterCharmModel;
 import net.sf.anathema.character.main.presenter.magic.CharmColoring;
 import net.sf.anathema.character.main.charmtree.view.ICharmView;

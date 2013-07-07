@@ -3,7 +3,7 @@ package net.sf.anathema.character.main.traits.limitation;
 import net.sf.anathema.character.main.template.ITraitLimitation;
 import net.sf.anathema.character.main.traits.TraitType;
 import net.sf.anathema.character.main.traits.types.VirtueType;
-import net.sf.anathema.character.main.model.traits.TraitModelFetcher;
+import net.sf.anathema.hero.traits.TraitModelFetcher;
 import net.sf.anathema.hero.model.Hero;
 import net.sf.anathema.lib.exception.UnreachableCodeReachedException;
 

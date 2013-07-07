@@ -3,8 +3,8 @@ package net.sf.anathema.character.main.presenter.magic.spells;
 import net.sf.anathema.character.main.magic.view.AbstractMagicLearnProperties;
 import net.sf.anathema.character.main.magic.ISpell;
 import net.sf.anathema.character.main.magic.description.MagicDescriptionProvider;
-import net.sf.anathema.character.main.model.experience.ExperienceModelFetcher;
-import net.sf.anathema.character.main.model.spells.SpellsModelFetcher;
+import net.sf.anathema.hero.experience.ExperienceModelFetcher;
+import net.sf.anathema.hero.spells.SpellsModelFetcher;
 import net.sf.anathema.character.main.view.magic.ISpellViewProperties;
 import net.sf.anathema.framework.ui.IdentifierConfiguration;
 import net.sf.anathema.hero.model.Hero;
@@ -17,7 +17,7 @@ import java.util.List;
 
 public class SpellViewProperties extends AbstractMagicLearnProperties implements ISpellViewProperties {
 
-  private final net.sf.anathema.character.main.model.spells.SpellModel spellConfiguration;
+  private final net.sf.anathema.hero.spells.SpellModel spellConfiguration;
   private final Hero hero;
   private final SpellTooltipBuilder tooltipBuilder;
 

@@ -1,7 +1,7 @@
 package net.sf.anathema.character.main.magic;
 
 import com.google.common.base.Preconditions;
-import net.sf.anathema.character.main.health.HealthType;
+import net.sf.anathema.hero.health.HealthType;
 import net.sf.anathema.character.main.magic.general.IHealthCost;
 
 public class HealthCost extends Cost implements IHealthCost {

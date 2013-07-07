@@ -1,8 +1,8 @@
 package net.sf.anathema.hero.specialties.points.creation;
 
 import net.sf.anathema.character.main.template.creation.ICreationPoints;
-import net.sf.anathema.character.main.model.abilities.AbilityModelFetcher;
-import net.sf.anathema.character.main.model.traits.TraitMap;
+import net.sf.anathema.hero.abilities.AbilityModelFetcher;
+import net.sf.anathema.hero.traits.TraitMap;
 import net.sf.anathema.hero.change.ChangeAnnouncer;
 import net.sf.anathema.hero.model.Hero;
 import net.sf.anathema.hero.model.HeroModel;

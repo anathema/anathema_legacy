@@ -1,8 +1,8 @@
 package net.sf.anathema.character.main.charm;
 
-import net.sf.anathema.character.main.model.experience.ExperienceModel;
-import net.sf.anathema.character.main.model.health.HealthModel;
-import net.sf.anathema.character.main.model.traits.TraitModel;
+import net.sf.anathema.hero.experience.ExperienceModel;
+import net.sf.anathema.hero.health.HealthModel;
+import net.sf.anathema.hero.traits.TraitModel;
 
 public interface CharmSpecialist {
 

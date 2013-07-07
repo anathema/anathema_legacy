@@ -14,7 +14,7 @@ import net.sf.anathema.character.main.equipment.ITraitModifyingStats;
 import net.sf.anathema.character.main.equipment.weapon.IArmourStats;
 import net.sf.anathema.character.main.equipment.weapon.IEquipmentStats;
 import net.sf.anathema.character.main.equipment.weapon.IWeaponStats;
-import net.sf.anathema.character.main.health.HealthType;
+import net.sf.anathema.hero.health.HealthType;
 import net.sf.anathema.lib.util.Identifier;
 
 import static net.sf.anathema.character.equipment.item.model.EquipmentStatisticsType.Artifact;

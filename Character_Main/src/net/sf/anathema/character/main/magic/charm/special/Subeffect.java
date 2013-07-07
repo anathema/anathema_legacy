@@ -1,7 +1,7 @@
 package net.sf.anathema.character.main.magic.charm.special;
 
 import net.sf.anathema.character.main.magic.charms.special.ISubeffect;
-import net.sf.anathema.character.main.model.experience.ExperienceModel;
+import net.sf.anathema.hero.experience.ExperienceModel;
 import net.sf.anathema.lib.control.ChangeListener;
 import net.sf.anathema.lib.data.Condition;
 import net.sf.anathema.lib.util.SimpleIdentifier;

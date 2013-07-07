@@ -8,9 +8,9 @@ import net.sf.anathema.cards.layout.ICardReportResourceProvider;
 import net.sf.anathema.character.main.magic.MartialArtsUtilities;
 import net.sf.anathema.character.main.magic.ICharm;
 import net.sf.anathema.character.main.magic.ISpell;
-import net.sf.anathema.character.main.model.charms.CharmsModelFetcher;
-import net.sf.anathema.character.main.model.experience.ExperienceModelFetcher;
-import net.sf.anathema.character.main.model.spells.SpellsModelFetcher;
+import net.sf.anathema.hero.charms.CharmsModelFetcher;
+import net.sf.anathema.hero.experience.ExperienceModelFetcher;
+import net.sf.anathema.hero.spells.SpellsModelFetcher;
 import net.sf.anathema.hero.model.Hero;
 import net.sf.anathema.lib.resources.Resources;
 

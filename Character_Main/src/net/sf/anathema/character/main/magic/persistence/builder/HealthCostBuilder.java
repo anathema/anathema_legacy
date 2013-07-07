@@ -1,6 +1,6 @@
 package net.sf.anathema.character.main.magic.persistence.builder;
 
-import net.sf.anathema.character.main.health.HealthType;
+import net.sf.anathema.hero.health.HealthType;
 import net.sf.anathema.character.main.magic.HealthCost;
 import net.sf.anathema.character.main.magic.ICharmXMLConstants;
 import net.sf.anathema.character.main.magic.general.IHealthCost;

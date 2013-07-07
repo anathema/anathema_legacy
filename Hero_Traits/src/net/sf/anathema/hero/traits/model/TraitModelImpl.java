@@ -2,12 +2,12 @@ package net.sf.anathema.hero.traits.model;
 
 import net.sf.anathema.character.main.traits.TraitValueStrategy;
 import net.sf.anathema.character.main.library.trait.Trait;
-import net.sf.anathema.character.main.model.experience.ExperienceChange;
-import net.sf.anathema.character.main.model.experience.ExperienceModel;
-import net.sf.anathema.character.main.model.experience.ExperienceModelFetcher;
-import net.sf.anathema.character.main.model.traits.DefaultTraitMap;
-import net.sf.anathema.character.main.model.traits.TraitMap;
-import net.sf.anathema.character.main.model.traits.TraitModel;
+import net.sf.anathema.hero.experience.ExperienceChange;
+import net.sf.anathema.hero.experience.ExperienceModel;
+import net.sf.anathema.hero.experience.ExperienceModelFetcher;
+import net.sf.anathema.hero.traits.DefaultTraitMap;
+import net.sf.anathema.hero.traits.TraitMap;
+import net.sf.anathema.hero.traits.TraitModel;
 import net.sf.anathema.character.main.traits.context.CreationTraitValueStrategy;
 import net.sf.anathema.character.main.traits.context.ExperiencedTraitValueStrategy;
 import net.sf.anathema.character.main.traits.context.ProxyTraitValueStrategy;

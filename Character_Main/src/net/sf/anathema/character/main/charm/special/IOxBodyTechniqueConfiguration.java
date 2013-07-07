@@ -1,7 +1,7 @@
 package net.sf.anathema.character.main.charm.special;
 
 import net.sf.anathema.character.main.magic.charms.special.ISpecialCharmConfiguration;
-import net.sf.anathema.character.main.model.health.IHealthLevelProvider;
+import net.sf.anathema.hero.health.IHealthLevelProvider;
 import net.sf.anathema.character.main.charm.OxBodyCategory;
 
 public interface IOxBodyTechniqueConfiguration extends ISpecialCharmConfiguration {

@@ -2,8 +2,8 @@ package net.sf.anathema.character.main.charm.special;
 
 import net.sf.anathema.character.main.magic.ICharm;
 import net.sf.anathema.character.main.template.magic.MartialArtsCharmConfiguration;
-import net.sf.anathema.character.main.model.charms.CharmsModel;
-import net.sf.anathema.character.main.model.experience.ExperienceModel;
+import net.sf.anathema.hero.charms.CharmsModel;
+import net.sf.anathema.hero.experience.ExperienceModel;
 import net.sf.anathema.character.main.charm.ILearningCharmGroup;
 import net.sf.anathema.hero.magic.MagicCollection;
 

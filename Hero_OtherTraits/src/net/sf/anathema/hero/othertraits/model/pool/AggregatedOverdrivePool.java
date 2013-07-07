@@ -1,6 +1,6 @@
 package net.sf.anathema.hero.othertraits.model.pool;
 
-import net.sf.anathema.character.main.model.essencepool.OverdrivePool;
+import net.sf.anathema.hero.essencepool.OverdrivePool;
 
 import java.util.ArrayList;
 import java.util.List;

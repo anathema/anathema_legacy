@@ -5,7 +5,7 @@ import net.sf.anathema.character.equipment.impl.character.model.stats.ArtifactSt
 import net.sf.anathema.character.equipment.impl.character.model.stats.MeleeWeaponStats;
 import net.sf.anathema.character.equipment.impl.character.model.stats.RangedWeaponStats;
 import net.sf.anathema.character.equipment.impl.character.model.stats.TraitModifyingStats;
-import net.sf.anathema.character.main.health.HealthType;
+import net.sf.anathema.hero.health.HealthType;
 import net.sf.anathema.lib.util.SimpleIdentifier;
 
 import static java.lang.Integer.MAX_VALUE;

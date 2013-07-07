@@ -1,7 +1,7 @@
 package net.sf.anathema.character.main.perspective.model;
 
-import net.sf.anathema.character.main.model.concept.HeroConceptFetcher;
-import net.sf.anathema.character.main.model.description.HeroDescriptionFetcher;
+import net.sf.anathema.hero.concept.HeroConceptFetcher;
+import net.sf.anathema.hero.description.HeroDescriptionFetcher;
 import net.sf.anathema.character.main.perspective.DescriptiveFeatures;
 import net.sf.anathema.character.main.perspective.LoadedDescriptiveFeatures;
 import net.sf.anathema.framework.repository.Item;

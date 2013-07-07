@@ -4,7 +4,7 @@ import net.sf.anathema.character.main.GenericTraitProvider;
 import net.sf.anathema.character.main.magic.ICharm;
 import net.sf.anathema.character.main.traits.ValuedTraitType;
 import net.sf.anathema.character.main.traits.TraitType;
-import net.sf.anathema.character.main.model.traits.TraitMap;
+import net.sf.anathema.hero.traits.TraitMap;
 
 public class LearnRangeContext implements GenericTraitProvider {
   private final TraitMap traitCollection;

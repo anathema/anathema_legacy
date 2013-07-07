@@ -6,7 +6,7 @@ import net.sf.anathema.character.main.magic.general.ICostList;
 import net.sf.anathema.character.main.magic.spells.CircleType;
 import net.sf.anathema.character.main.rules.IExaltedSourceBook;
 import net.sf.anathema.character.main.traits.types.AbilityType;
-import net.sf.anathema.character.main.model.traits.TraitModelFetcher;
+import net.sf.anathema.hero.traits.TraitModelFetcher;
 import net.sf.anathema.hero.model.Hero;
 import net.sf.anathema.lib.exception.NotYetImplementedException;
 

@@ -7,8 +7,8 @@ import net.sf.anathema.character.main.traits.types.AbilityType;
 import net.sf.anathema.character.main.traits.types.AttributeType;
 import net.sf.anathema.character.main.traits.types.OtherTraitType;
 import net.sf.anathema.character.main.type.ICharacterType;
-import net.sf.anathema.character.main.model.traits.GenericTraitCollectionFacade;
-import net.sf.anathema.character.main.model.traits.TraitModelFetcher;
+import net.sf.anathema.hero.traits.GenericTraitCollectionFacade;
+import net.sf.anathema.hero.traits.TraitModelFetcher;
 import net.sf.anathema.hero.model.Hero;
 
 public class CharacterUtilities {

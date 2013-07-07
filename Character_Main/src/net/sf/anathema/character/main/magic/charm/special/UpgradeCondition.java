@@ -4,7 +4,7 @@ import net.sf.anathema.character.main.magic.ICharm;
 import net.sf.anathema.character.main.magic.charms.ICharmLearnableArbitrator;
 import net.sf.anathema.character.main.traits.TraitType;
 import net.sf.anathema.character.main.traits.types.OtherTraitType;
-import net.sf.anathema.character.main.model.traits.TraitModel;
+import net.sf.anathema.hero.traits.TraitModel;
 import net.sf.anathema.character.main.charm.CharmSpecialist;
 import net.sf.anathema.lib.data.Condition;
 

@@ -1,9 +1,9 @@
 package net.sf.anathema.character.main.advance.models;
 
 import net.sf.anathema.character.main.magic.ISpell;
-import net.sf.anathema.character.main.model.spells.SpellModel;
-import net.sf.anathema.character.main.model.spells.SpellsModelFetcher;
-import net.sf.anathema.character.main.model.traits.TraitMap;
+import net.sf.anathema.hero.spells.SpellModel;
+import net.sf.anathema.hero.spells.SpellsModelFetcher;
+import net.sf.anathema.hero.traits.TraitMap;
 import net.sf.anathema.character.main.advance.IPointCostCalculator;
 import net.sf.anathema.hero.model.Hero;
 

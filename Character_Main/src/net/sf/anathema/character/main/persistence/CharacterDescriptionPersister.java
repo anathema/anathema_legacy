@@ -1,6 +1,6 @@
 package net.sf.anathema.character.main.persistence;
 
-import net.sf.anathema.character.main.model.description.HeroDescription;
+import net.sf.anathema.hero.description.HeroDescription;
 import net.sf.anathema.framework.persistence.TextPersister;
 import org.dom4j.Element;
 

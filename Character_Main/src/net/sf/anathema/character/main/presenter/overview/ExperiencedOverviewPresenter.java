@@ -1,7 +1,7 @@
 package net.sf.anathema.character.main.presenter.overview;
 
 import net.sf.anathema.character.main.library.overview.IOverviewCategory;
-import net.sf.anathema.character.main.model.experience.ExperienceModelFetcher;
+import net.sf.anathema.hero.experience.ExperienceModelFetcher;
 import net.sf.anathema.character.main.advance.ExperiencePointConfigurationListener;
 import net.sf.anathema.character.main.advance.IExperiencePointEntry;
 import net.sf.anathema.character.main.advance.IExperiencePointManagement;

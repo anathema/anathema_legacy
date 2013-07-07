@@ -1,6 +1,6 @@
 package net.sf.anathema.character.main.magic.charm.special;
 
-import net.sf.anathema.character.main.health.HealthLevelType;
+import net.sf.anathema.hero.health.HealthLevelType;
 import net.sf.anathema.character.main.magic.charms.special.IOxBodyTechniqueCharm;
 import net.sf.anathema.character.main.magic.charms.special.ISpecialCharmVisitor;
 import net.sf.anathema.character.main.traits.TraitType;

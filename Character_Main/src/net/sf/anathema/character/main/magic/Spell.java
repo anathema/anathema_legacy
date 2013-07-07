@@ -6,7 +6,7 @@ import net.sf.anathema.character.main.magic.spells.CircleType;
 import net.sf.anathema.character.main.rules.IExaltedSourceBook;
 import net.sf.anathema.character.main.template.magic.FavoringTraitType;
 import net.sf.anathema.character.main.traits.TraitType;
-import net.sf.anathema.character.main.model.traits.TraitModelFetcher;
+import net.sf.anathema.hero.traits.TraitModelFetcher;
 import net.sf.anathema.hero.model.Hero;
 import net.sf.anathema.lib.util.SimpleIdentifier;
 

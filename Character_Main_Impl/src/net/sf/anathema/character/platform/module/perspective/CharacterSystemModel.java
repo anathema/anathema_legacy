@@ -3,7 +3,7 @@ package net.sf.anathema.character.platform.module.perspective;
 import net.sf.anathema.character.main.item.CharacterPrintNameFileScanner;
 import net.sf.anathema.character.main.framework.CharacterGenericsExtractor;
 import net.sf.anathema.character.main.framework.ICharacterGenerics;
-import net.sf.anathema.character.main.model.experience.ExperienceModelFetcher;
+import net.sf.anathema.hero.experience.ExperienceModelFetcher;
 import net.sf.anathema.character.main.persistence.ExaltedCharacterPersister;
 import net.sf.anathema.character.main.perspective.PreloadedDescriptiveFeatures;
 import net.sf.anathema.character.main.perspective.model.CharacterIdentifier;

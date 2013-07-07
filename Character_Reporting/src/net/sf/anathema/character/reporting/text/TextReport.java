@@ -7,7 +7,7 @@ import com.itextpdf.text.Phrase;
 import com.itextpdf.text.pdf.MultiColumnText;
 import com.itextpdf.text.pdf.PdfWriter;
 import net.sf.anathema.character.main.GenericDescription;
-import net.sf.anathema.character.main.model.description.HeroDescriptionFetcher;
+import net.sf.anathema.hero.description.HeroDescriptionFetcher;
 import net.sf.anathema.character.main.Character;
 import net.sf.anathema.framework.reporting.ReportException;
 import net.sf.anathema.framework.reporting.pdf.AbstractPdfReport;

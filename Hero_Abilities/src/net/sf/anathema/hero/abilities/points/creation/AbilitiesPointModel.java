@@ -2,7 +2,7 @@ package net.sf.anathema.hero.abilities.points.creation;
 
 import net.sf.anathema.character.main.template.creation.BonusPointCosts;
 import net.sf.anathema.character.main.template.points.IAbilityCreationPoints;
-import net.sf.anathema.character.main.model.abilities.AbilityModelFetcher;
+import net.sf.anathema.hero.abilities.AbilityModelFetcher;
 import net.sf.anathema.hero.change.ChangeAnnouncer;
 import net.sf.anathema.hero.model.Hero;
 import net.sf.anathema.hero.model.HeroModel;

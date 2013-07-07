@@ -5,9 +5,9 @@ import net.sf.anathema.character.main.magic.IMagic;
 import net.sf.anathema.character.main.magic.IMagicVisitor;
 import net.sf.anathema.character.main.magic.ISpell;
 import net.sf.anathema.character.main.magic.charms.special.IMultiLearnableCharm;
-import net.sf.anathema.character.main.model.charms.CharmsModel;
-import net.sf.anathema.character.main.model.charms.CharmsModelFetcher;
-import net.sf.anathema.character.main.model.spells.SpellsModelFetcher;
+import net.sf.anathema.hero.charms.CharmsModel;
+import net.sf.anathema.hero.charms.CharmsModelFetcher;
+import net.sf.anathema.hero.spells.SpellsModelFetcher;
 import net.sf.anathema.character.main.charm.special.IMultiLearnableCharmConfiguration;
 import net.sf.anathema.hero.model.Hero;
 

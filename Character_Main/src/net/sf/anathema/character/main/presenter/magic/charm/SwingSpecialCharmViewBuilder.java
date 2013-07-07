@@ -10,7 +10,7 @@ import net.sf.anathema.character.main.magic.charms.special.ISpecialCharmVisitor;
 import net.sf.anathema.character.main.magic.charms.special.ISubeffectCharm;
 import net.sf.anathema.character.main.magic.charms.special.ITraitCapModifyingCharm;
 import net.sf.anathema.character.main.magic.charms.special.IUpgradableCharm;
-import net.sf.anathema.character.main.model.charms.CharmsModel;
+import net.sf.anathema.hero.charms.CharmsModel;
 import net.sf.anathema.character.main.charm.special.IMultiLearnableCharmConfiguration;
 import net.sf.anathema.character.main.charm.special.IMultipleEffectCharmConfiguration;
 import net.sf.anathema.character.main.charm.special.IOxBodyTechniqueConfiguration;

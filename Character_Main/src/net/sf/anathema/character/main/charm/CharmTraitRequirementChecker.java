@@ -5,7 +5,7 @@ import net.sf.anathema.character.main.magic.charms.special.IPrerequisiteModifyin
 import net.sf.anathema.character.main.magic.charms.special.TraitRequirementChecker;
 import net.sf.anathema.character.main.traits.ValuedTraitType;
 import net.sf.anathema.character.main.library.trait.Trait;
-import net.sf.anathema.character.main.model.traits.TraitMap;
+import net.sf.anathema.hero.traits.TraitMap;
 
 public class CharmTraitRequirementChecker implements TraitRequirementChecker {
   private final PrerequisiteModifyingCharms prerequisiteModifyingCharms;

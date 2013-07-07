@@ -1,7 +1,7 @@
 package net.sf.anathema.hero.othertraits.sheet.essence.content.pools;
 
-import net.sf.anathema.character.main.model.essencepool.EssencePoolModel;
-import net.sf.anathema.character.main.model.essencepool.EssencePoolModelFetcher;
+import net.sf.anathema.hero.essencepool.EssencePoolModel;
+import net.sf.anathema.hero.essencepool.EssencePoolModelFetcher;
 import net.sf.anathema.hero.model.Hero;
 import net.sf.anathema.lib.resources.Resources;
 

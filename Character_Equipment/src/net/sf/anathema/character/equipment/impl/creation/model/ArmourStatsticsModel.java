@@ -1,8 +1,8 @@
 package net.sf.anathema.character.equipment.impl.creation.model;
 
 import net.sf.anathema.character.equipment.creation.model.stats.IArmourStatisticsModel;
-import net.sf.anathema.character.main.health.HealthType;
-import net.sf.anathema.character.main.health.IHealthTypeVisitor;
+import net.sf.anathema.hero.health.HealthType;
+import net.sf.anathema.hero.health.IHealthTypeVisitor;
 import net.sf.anathema.lib.data.Range;
 import net.sf.anathema.lib.workflow.intvalue.IIntValueModel;
 import net.sf.anathema.lib.workflow.intvalue.RangedIntValueModel;

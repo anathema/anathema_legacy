@@ -1,6 +1,6 @@
 package net.sf.anathema.character.main.presenter.magic;
 
-import net.sf.anathema.character.main.model.charms.CharmsModel;
+import net.sf.anathema.hero.charms.CharmsModel;
 import net.sf.anathema.character.main.charm.ICharmLearnListener;
 import net.sf.anathema.character.main.charm.ILearningCharmGroup;
 import net.sf.anathema.character.main.charmtree.presenter.CharmDye;

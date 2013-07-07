@@ -3,7 +3,7 @@ package net.sf.anathema.character.main.presenter.overview;
 import net.sf.anathema.character.main.caste.CasteType;
 import net.sf.anathema.character.main.template.HeroTemplate;
 import net.sf.anathema.character.main.library.overview.IOverviewCategory;
-import net.sf.anathema.character.main.model.concept.HeroConceptFetcher;
+import net.sf.anathema.hero.concept.HeroConceptFetcher;
 import net.sf.anathema.character.main.creation.IBonusPointManagement;
 import net.sf.anathema.character.main.view.overview.CategorizedOverview;
 import net.sf.anathema.hero.change.ChangeFlavor;

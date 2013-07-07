@@ -1,6 +1,6 @@
 package net.sf.anathema.hero.concept.model.description;
 
-import net.sf.anathema.character.main.model.description.HeroDescription;
+import net.sf.anathema.hero.description.HeroDescription;
 import net.sf.anathema.hero.change.AnnounceChangeValueListener;
 import net.sf.anathema.hero.change.ChangeAnnouncer;
 import net.sf.anathema.hero.model.Hero;
