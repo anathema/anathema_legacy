@@ -1,6 +1,6 @@
 package net.sf.anathema.character.main.library.removableentry;
 
-public interface IRemovableEntryListener<E> {
+public interface RemovableEntryListener<E> {
 
   void entryAdded(E entry);
 

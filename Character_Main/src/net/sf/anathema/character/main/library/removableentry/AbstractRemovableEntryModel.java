@@ -6,10 +6,10 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
-public abstract class AbstractRemovableEntryModel<E> implements IRemovableEntryModel<E> {
+public abstract class AbstractRemovableEntryModel<E> implements RemovableEntryModel<E> {
 
   private final List<E> entries = new ArrayList<>();
-  private final Announcer<IRemovableEntryListener> control = Announcer.to(IRemovableEntryListener.class);
+  private final Announcer<RemovableEntryListener> control = Announcer.to(RemovableEntryListener.class);
 
   @SuppressWarnings("unchecked")
   @Override
@@ -41,7 +41,7 @@ public abstract class AbstractRemovableEntryModel<E> implements IRemovableEntryM
   protected abstract boolean isEntryAllowed();
 
   @Override
-  public void addModelChangeListener(IRemovableEntryListener<E> listener) {
+  public void addModelChangeListener(RemovableEntryListener<E> listener) {
     control.addListener(listener);
   }
 }

@@ -2,7 +2,7 @@ package net.sf.anathema.hero.intimacies.display;
 
 import net.sf.anathema.character.main.library.intvalue.IIconToggleButtonProperties;
 import net.sf.anathema.character.main.library.overview.IOverviewCategory;
-import net.sf.anathema.character.main.library.removableentry.IRemovableEntryListener;
+import net.sf.anathema.character.main.library.removableentry.RemovableEntryListener;
 import net.sf.anathema.character.main.library.selection.IStringSelectionView;
 import net.sf.anathema.character.main.library.trait.presenter.TraitPresenter;
 import net.sf.anathema.character.main.presenter.ExtensibleTraitView;
@@ -75,7 +75,7 @@ public class IntimaciesPresenter {
         recalculateOverview(freeIntimaciesView, totalIntimaciesView, bonusPointsView, experienceMaximumView);
       }
     });
-    model.addModelChangeListener(new IRemovableEntryListener<Intimacy>() {
+    model.addModelChangeListener(new RemovableEntryListener<Intimacy>() {
       @Override
       public void entryAdded(Intimacy entry) {
         recalculateOverview(freeIntimaciesView, totalIntimaciesView, bonusPointsView, experienceMaximumView);
@@ -196,7 +196,7 @@ public class IntimaciesPresenter {
   }
 
   protected void initModelListening(final IStringSelectionView selectionView) {
-    model.addModelChangeListener(new IRemovableEntryListener<Intimacy>() {
+    model.addModelChangeListener(new RemovableEntryListener<Intimacy>() {
       @Override
       public void entryAdded(Intimacy v) {
         addSubView(v);
