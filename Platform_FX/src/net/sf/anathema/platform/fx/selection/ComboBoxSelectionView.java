@@ -126,4 +126,9 @@ public class ComboBoxSelectionView<V> implements FxObjectSelectionView<V> {
     waitForContent();
     comboBox.getStyleClass().add(styleClass);
   }
+
+  public void makeEditable() {
+    waitForContent();
+    comboBox.setEditable(true);
+  }
 }
