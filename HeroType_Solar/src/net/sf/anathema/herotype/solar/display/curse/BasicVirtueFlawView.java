@@ -1,4 +1,4 @@
-package net.sf.anathema.herotype.solar.display;
+package net.sf.anathema.herotype.solar.display.curse;
 
 import net.miginfocom.layout.CC;
 import net.miginfocom.swing.MigLayout;

@@ -1,4 +1,4 @@
-package net.sf.anathema.herotype.solar.model;
+package net.sf.anathema.herotype.solar.model.curse;
 
 import net.sf.anathema.hero.initialization.SimpleModelTreeEntry;
 import net.sf.anathema.hero.model.HeroModelAutoCollector;

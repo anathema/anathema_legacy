@@ -1,4 +1,4 @@
-package net.sf.anathema.herotype.solar.model;
+package net.sf.anathema.herotype.solar.model.curse;
 
 import net.sf.anathema.character.main.library.trait.Trait;
 import net.sf.anathema.character.main.traits.TraitType;
