@@ -1,6 +1,5 @@
-package net.sf.anathema.character.main.library.virtueflaw.view;
+package net.sf.anathema.herotype.solar.display;
 
-import net.sf.anathema.character.main.library.virtueflaw.presenter.IDescriptiveVirtueFlawView;
 import net.sf.anathema.framework.value.IntegerViewFactory;
 import net.sf.anathema.lib.workflow.textualdescription.ITextView;
 import net.sf.anathema.lib.workflow.textualdescription.view.AreaTextView;
@@ -8,10 +7,10 @@ import net.sf.anathema.lib.workflow.textualdescription.view.AreaTextView;
 import java.util.ArrayList;
 import java.util.List;
 
-public class DescriptiveVirtueFlawView extends VirtueFlawView implements IDescriptiveVirtueFlawView {
+public class DefaultDescriptiveVirtueFlawView extends BasicVirtueFlawView implements DescriptiveVirtueFlawView {
   private final List<ITextView> textViews = new ArrayList<>();
 
-  public DescriptiveVirtueFlawView(IntegerViewFactory factory) {
+  public DefaultDescriptiveVirtueFlawView(IntegerViewFactory factory) {
     super(factory);
   }
 

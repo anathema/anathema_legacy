@@ -1,12 +1,12 @@
-package net.sf.anathema.character.main.library.virtueflaw.model;
+package net.sf.anathema.herotype.solar.model;
 
-import net.sf.anathema.character.main.traits.ITraitTemplate;
-import net.sf.anathema.character.main.traits.LowerableState;
-import net.sf.anathema.character.main.traits.TraitType;
 import net.sf.anathema.character.main.library.trait.DefaultTraitType;
 import net.sf.anathema.character.main.library.trait.LimitedTrait;
 import net.sf.anathema.character.main.library.trait.Trait;
 import net.sf.anathema.character.main.library.trait.favorable.FriendlyIncrementChecker;
+import net.sf.anathema.character.main.traits.ITraitTemplate;
+import net.sf.anathema.character.main.traits.LowerableState;
+import net.sf.anathema.character.main.traits.TraitType;
 import net.sf.anathema.hero.model.Hero;
 import net.sf.anathema.lib.control.ChangeListener;
 import net.sf.anathema.lib.workflow.textualdescription.ITextualDescription;

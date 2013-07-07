@@ -1,17 +1,17 @@
-package net.sf.anathema.character.main.library.virtueflaw.presenter;
+package net.sf.anathema.herotype.solar.display;
 
-import net.sf.anathema.character.main.traits.TraitType;
-import net.sf.anathema.character.main.traits.types.VirtueType;
 import net.sf.anathema.character.main.library.trait.Trait;
 import net.sf.anathema.character.main.library.trait.presenter.TraitPresenter;
-import net.sf.anathema.character.main.library.virtueflaw.model.VirtueFlaw;
-import net.sf.anathema.character.main.library.virtueflaw.model.VirtueFlawModel;
-import net.sf.anathema.hero.traits.TraitChangeFlavor;
 import net.sf.anathema.character.main.presenter.SelectIdentifierConfiguration;
+import net.sf.anathema.character.main.traits.TraitType;
+import net.sf.anathema.character.main.traits.types.VirtueType;
 import net.sf.anathema.framework.value.IIntValueView;
 import net.sf.anathema.hero.change.ChangeFlavor;
 import net.sf.anathema.hero.change.FlavoredChangeListener;
 import net.sf.anathema.hero.model.Hero;
+import net.sf.anathema.hero.traits.TraitChangeFlavor;
+import net.sf.anathema.herotype.solar.model.VirtueFlaw;
+import net.sf.anathema.herotype.solar.model.VirtueFlawModel;
 import net.sf.anathema.lib.control.ChangeListener;
 import net.sf.anathema.lib.control.IBooleanValueChangedListener;
 import net.sf.anathema.lib.control.ObjectValueListener;
@@ -26,10 +26,10 @@ public class VirtueFlawPresenter implements Presenter {
 
   private Hero hero;
   private final Resources resources;
-  private final IVirtueFlawView view;
+  private final VirtueFlawView view;
   private final VirtueFlawModel model;
 
-  public VirtueFlawPresenter(Hero hero, Resources resources, IVirtueFlawView virtueFlawView, VirtueFlawModel model) {
+  public VirtueFlawPresenter(Hero hero, Resources resources, VirtueFlawView virtueFlawView, VirtueFlawModel model) {
     this.hero = hero;
     this.resources = resources;
     this.view = virtueFlawView;
@@ -110,10 +110,6 @@ public class VirtueFlawPresenter implements Presenter {
       }
     });
     view.setEnabled(model.isVirtueFlawChangable());
-  }
-
-  protected final VirtueFlawModel getModel() {
-    return model;
   }
 
   protected final Resources getResources() {

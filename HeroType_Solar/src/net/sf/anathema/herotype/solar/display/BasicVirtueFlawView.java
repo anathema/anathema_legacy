@@ -1,11 +1,10 @@
-package net.sf.anathema.character.main.library.virtueflaw.view;
+package net.sf.anathema.herotype.solar.display;
 
 import net.miginfocom.layout.CC;
 import net.miginfocom.swing.MigLayout;
 import net.sf.anathema.character.main.experience.ExperienceUtilities;
-import net.sf.anathema.character.main.traits.TraitType;
 import net.sf.anathema.character.main.library.trait.view.swing.SimpleTraitView;
-import net.sf.anathema.character.main.library.virtueflaw.presenter.IVirtueFlawView;
+import net.sf.anathema.character.main.traits.TraitType;
 import net.sf.anathema.framework.swing.IView;
 import net.sf.anathema.framework.swing.selection.ObjectSelectionView;
 import net.sf.anathema.framework.value.IIntValueView;
@@ -26,11 +25,11 @@ import java.awt.Container;
 
 import static net.sf.anathema.lib.gui.layout.LayoutUtils.withoutInsets;
 
-public class VirtueFlawView implements IVirtueFlawView, IView {
+public class BasicVirtueFlawView implements VirtueFlawView, IView {
   private final JPanel virtueFlawPanel = new JPanel(new MigLayout(withoutInsets().wrapAfter(2)));
   private final IntegerViewFactory intValueDisplayFactory;
 
-  public VirtueFlawView(IntegerViewFactory factory) {
+  public BasicVirtueFlawView(IntegerViewFactory factory) {
     this.intValueDisplayFactory = factory;
   }
 

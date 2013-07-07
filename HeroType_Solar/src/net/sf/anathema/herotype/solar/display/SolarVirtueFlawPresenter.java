@@ -1,20 +1,18 @@
 package net.sf.anathema.herotype.solar.display;
 
-import net.sf.anathema.character.main.library.virtueflaw.model.DescriptiveVirtueFlaw;
-import net.sf.anathema.character.main.library.virtueflaw.model.DescriptiveVirtueFlawModel;
-import net.sf.anathema.character.main.library.virtueflaw.presenter.IDescriptiveVirtueFlawView;
-import net.sf.anathema.character.main.library.virtueflaw.presenter.VirtueFlawPresenter;
 import net.sf.anathema.hero.model.Hero;
+import net.sf.anathema.herotype.solar.model.DescriptiveVirtueFlaw;
+import net.sf.anathema.herotype.solar.model.DescriptiveVirtueFlawModel;
 import net.sf.anathema.lib.resources.Resources;
 import net.sf.anathema.lib.workflow.textualdescription.ITextView;
 import net.sf.anathema.lib.workflow.textualdescription.TextualPresentation;
 
 public class SolarVirtueFlawPresenter extends VirtueFlawPresenter {
 
-  private final IDescriptiveVirtueFlawView view;
+  private final DescriptiveVirtueFlawView view;
   private final DescriptiveVirtueFlawModel model;
 
-  public SolarVirtueFlawPresenter(Hero hero, Resources resources, IDescriptiveVirtueFlawView view, DescriptiveVirtueFlawModel model) {
+  public SolarVirtueFlawPresenter(Hero hero, Resources resources, DescriptiveVirtueFlawView view, DescriptiveVirtueFlawModel model) {
     super(hero, resources, view, model);
     this.view = view;
     this.model = model;
