@@ -22,7 +22,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-import static net.sf.anathema.character.main.magic.model.charm.IExtendedCharmData.EXCLUSIVE_ATTRIBUTE;
+import static net.sf.anathema.character.main.magic.model.charm.CharmAttributeList.EXCLUSIVE_ATTRIBUTE;
 import static net.sf.anathema.character.main.magic.model.charms.options.DefaultCharmTemplateRetriever.getNativeTemplate;
 
 public class NonMartialArtsOptions implements CharmIdMap, CharmGroupArbitrator {

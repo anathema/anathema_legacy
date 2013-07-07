@@ -189,8 +189,8 @@ public class Charm extends SimpleIdentifier implements ICharm {
   public void addMerged(Set<ICharm> merged) {
     if (!merged.isEmpty()) {
       merges.add(merged);
-      if (!hasAttribute(MERGED_ATTRIBUTE)) {
-        addCharmAttribute(new CharmAttribute(MERGED_ATTRIBUTE.getId(), true));
+      if (!hasAttribute(CharmAttributeList.MERGED_ATTRIBUTE)) {
+        addCharmAttribute(new CharmAttribute(CharmAttributeList.MERGED_ATTRIBUTE.getId(), true));
       }
     }
   }
@@ -249,7 +249,7 @@ public class Charm extends SimpleIdentifier implements ICharm {
   }
 
   @Override
-  public List<String> getParentSubeffects() {
+  public List<String> getParentSubEffects() {
     return requiredSubeffects;
   }
 

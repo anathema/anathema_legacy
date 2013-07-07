@@ -12,7 +12,7 @@ import java.util.Set;
 
 import static net.sf.anathema.character.main.magic.model.charms.MartialArtsUtilities.MARTIAL_ARTS;
 import static net.sf.anathema.character.main.magic.model.charms.MartialArtsUtilities.hasLevel;
-import static net.sf.anathema.character.main.magic.model.charm.ICharmData.NO_STYLE_ATTRIBUTE;
+import static net.sf.anathema.character.main.magic.model.charm.CharmAttributeList.NO_STYLE_ATTRIBUTE;
 import static net.sf.anathema.character.main.magic.model.charm.MartialArtsLevel.Celestial;
 
 public class DefaultMartialArtsCharmConfiguration implements MartialArtsCharmConfiguration {

@@ -111,7 +111,7 @@ public class DummyCharm extends SimpleIdentifier implements ICharm {
   }
 
   @Override
-  public List<String> getParentSubeffects() {
+  public List<String> getParentSubEffects() {
     return new ArrayList<>();
   }
 

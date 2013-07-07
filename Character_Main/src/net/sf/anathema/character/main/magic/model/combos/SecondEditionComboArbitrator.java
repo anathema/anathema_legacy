@@ -1,7 +1,7 @@
 package net.sf.anathema.character.main.magic.model.combos;
 
+import net.sf.anathema.character.main.magic.model.charm.CharmAttributeList;
 import net.sf.anathema.character.main.magic.model.charm.ICharm;
-import net.sf.anathema.character.main.magic.model.charm.IExtendedCharmData;
 import net.sf.anathema.character.main.magic.model.charm.type.CharmType;
 
 public class SecondEditionComboArbitrator extends ComboArbitrator {
@@ -9,7 +9,7 @@ public class SecondEditionComboArbitrator extends ComboArbitrator {
   @Override
   protected boolean isCharmLegalByRules(ICharm charm) {
     boolean comboBasic = isComboBasic(charm);
-    boolean comboOk = charm.hasAttribute(IExtendedCharmData.COMBO_OK_ATTRIBUTE);
+    boolean comboOk = charm.hasAttribute(CharmAttributeList.COMBO_OK_ATTRIBUTE);
     return comboBasic || comboOk;
   }
 
@@ -22,6 +22,6 @@ public class SecondEditionComboArbitrator extends ComboArbitrator {
   }
 
   private boolean isComboBasic(ICharm charm) {
-    return charm.hasAttribute(IExtendedCharmData.COMBO_BASIC_ATTRIBUTE);
+    return charm.hasAttribute(CharmAttributeList.COMBO_BASIC_ATTRIBUTE);
   }
 }

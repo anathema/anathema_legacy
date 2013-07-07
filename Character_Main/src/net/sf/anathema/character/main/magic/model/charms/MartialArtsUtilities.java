@@ -7,7 +7,7 @@ import net.sf.anathema.lib.util.SimpleIdentifier;
 
 import java.text.MessageFormat;
 
-import static net.sf.anathema.character.main.magic.model.charm.ICharmData.FORM_ATTRIBUTE;
+import static net.sf.anathema.character.main.magic.model.charm.CharmAttributeList.FORM_ATTRIBUTE;
 
 public class MartialArtsUtilities {
 

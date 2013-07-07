@@ -1,11 +1,11 @@
 package net.sf.anathema.character.main.magic.model.charms;
 
+import net.sf.anathema.character.main.magic.model.charm.CharmAttributeList;
 import net.sf.anathema.character.main.magic.model.charm.CharmGroup;
 import net.sf.anathema.character.main.magic.model.charm.ICharmGroup;
 import net.sf.anathema.character.main.magic.model.charm.ICharmLearnListener;
 import net.sf.anathema.character.main.magic.model.charm.ICharmLearnStrategy;
 import net.sf.anathema.character.main.magic.model.charm.ICharm;
-import net.sf.anathema.character.main.magic.model.charm.IExtendedCharmData;
 import net.sf.anathema.character.main.magic.model.charm.special.ISpecialCharmConfiguration;
 import net.sf.anathema.hero.charms.CharmsModel;
 import net.sf.anathema.character.main.magic.model.charm.special.IMultiLearnableCharmConfiguration;
@@ -126,7 +126,7 @@ public class LearningCharmGroup extends CharmGroup implements ILearningCharmGrou
     for (ICharm parent : charm.getLearnPrerequisitesCharms(learnArbitrator)) {
       ILearningCharmGroup parentGroup = charmGroupContainer.getLearningCharmGroup(parent);
       boolean subeffectHandled = false;
-      for (String subeffectRequirement : charm.getParentSubeffects()) {
+      for (String subeffectRequirement : charm.getParentSubEffects()) {
         if (getSubeffectParent(subeffectRequirement).equals(parent.getId())) {
           ISpecialCharmConfiguration config = charmConfig.getSpecialCharmConfiguration(getSubeffectParent(subeffectRequirement));
           if (config instanceof IMultipleEffectCharmConfiguration) {
@@ -254,7 +254,7 @@ public class LearningCharmGroup extends CharmGroup implements ILearningCharmGrou
     ICharm[] allCharms = getAllCharms();
     List<ICharm> charms = new ArrayList<>();
     for (ICharm charm : allCharms) {
-      if (!charm.hasAttribute(IExtendedCharmData.EXCLUSIVE_ATTRIBUTE)) {
+      if (!charm.hasAttribute(CharmAttributeList.EXCLUSIVE_ATTRIBUTE)) {
         charms.add(charm);
       }
     }

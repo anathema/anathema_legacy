@@ -1,7 +1,7 @@
 package net.sf.anathema.hero.magic.model.charms;
 
+import net.sf.anathema.character.main.magic.model.charm.CharmAttributeList;
 import net.sf.anathema.character.main.magic.model.charm.ICharm;
-import net.sf.anathema.character.main.magic.model.charm.IExtendedCharmData;
 import net.sf.anathema.hero.charms.CharmsModel;
 import net.sf.anathema.hero.essencepool.OverdrivePool;
 import net.sf.anathema.hero.experience.ExperienceModel;
@@ -20,9 +20,9 @@ public class CharmOverdrivePool implements OverdrivePool {
   public int getPool() {
     int overdrive = 0;
     for (ICharm charm : charms.getLearnedCharms(experience.isExperienced())) {
-      if (charm.hasAttribute(IExtendedCharmData.OVERDRIVE_ATTRIBUTE)) {
+      if (charm.hasAttribute(CharmAttributeList.OVERDRIVE_ATTRIBUTE)) {
         int pool = 10;
-        String value = charm.getAttributeValue(IExtendedCharmData.OVERDRIVE_ATTRIBUTE);
+        String value = charm.getAttributeValue(CharmAttributeList.OVERDRIVE_ATTRIBUTE);
         if (value != null) {
           try {
             pool = Integer.valueOf(value);

@@ -1,6 +1,7 @@
 package net.sf.anathema.hero.magic.model.charms;
 
 import net.sf.anathema.character.main.advance.IExperiencePointConfiguration;
+import net.sf.anathema.character.main.magic.model.charm.CharmAttributeList;
 import net.sf.anathema.character.main.magic.model.charms.ILearningCharmGroup;
 import net.sf.anathema.character.main.dummy.DummyCharm;
 import net.sf.anathema.character.main.magic.model.charm.ICharm;
@@ -60,7 +61,7 @@ public class DefaultMartialArtsCharmConfiguration_Test {
 
       @Override
       public boolean hasAttribute(Identifier attribute) {
-        return !attribute.equals(NO_STYLE_ATTRIBUTE);
+        return !attribute.equals(CharmAttributeList.NO_STYLE_ATTRIBUTE);
       }
     }});
   }

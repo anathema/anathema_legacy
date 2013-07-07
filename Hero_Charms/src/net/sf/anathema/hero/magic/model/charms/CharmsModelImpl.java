@@ -3,6 +3,7 @@ package net.sf.anathema.hero.magic.model.charms;
 import com.google.common.base.Functions;
 import net.sf.anathema.character.main.magic.display.view.charms.CharacterChangeCharmListener;
 import net.sf.anathema.character.main.caste.CasteType;
+import net.sf.anathema.character.main.magic.model.charm.CharmAttributeList;
 import net.sf.anathema.character.main.magic.model.charm.CharmLearnAdapter;
 import net.sf.anathema.character.main.magic.model.charm.CharmSpecialistImpl;
 import net.sf.anathema.character.main.magic.model.charmtree.CharmTraitRequirementChecker;
@@ -18,7 +19,6 @@ import net.sf.anathema.character.main.magic.model.charms.options.NonMartialArtsO
 import net.sf.anathema.character.main.magic.model.charm.special.IMultiLearnableCharmConfiguration;
 import net.sf.anathema.character.main.magic.model.charm.special.IMultipleEffectCharmConfiguration;
 import net.sf.anathema.character.main.magic.model.charm.ICharm;
-import net.sf.anathema.character.main.magic.model.charm.ICharmData;
 import net.sf.anathema.character.main.magic.model.charms.MartialArtsUtilities;
 import net.sf.anathema.character.main.magic.model.charm.CharmIdMap;
 import net.sf.anathema.character.main.magic.model.charmtree.GroupCharmTree;
@@ -238,7 +238,7 @@ public class CharmsModelImpl implements CharmsModel {
         for (ICharm charm : getLearnedCharms(true)) {
           boolean prereqsMet = true;
           for (ICharm parent : charm.getParentCharms()) {
-            for (String subeffectRequirement : charm.getParentSubeffects()) {
+            for (String subeffectRequirement : charm.getParentSubEffects()) {
               if (getSubeffectParent(subeffectRequirement).equals(parent.getId())) {
                 ISpecialCharmConfiguration config = getSpecialCharmConfiguration(getSubeffectParent(subeffectRequirement));
                 if (config instanceof IMultipleEffectCharmConfiguration) {
@@ -405,7 +405,7 @@ public class CharmsModelImpl implements CharmsModel {
       if (!(getNativeTemplate(hero).isAllowedAlienCharms(casteType))) {
         return false;
       }
-      if (charm.hasAttribute(ICharmData.NATIVE)) {
+      if (charm.hasAttribute(CharmAttributeList.NATIVE)) {
         return false;
       }
     }

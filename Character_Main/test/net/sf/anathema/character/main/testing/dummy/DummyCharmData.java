@@ -44,7 +44,7 @@ public class DummyCharmData implements ICharmData {
   }
 
   @Override
-  public List<String> getParentSubeffects() {
+  public List<String> getParentSubEffects() {
     throw new NotYetImplementedException();
   }
 

@@ -4,7 +4,8 @@ import net.sf.anathema.lib.util.Identifier;
 import net.sf.anathema.lib.util.SimpleIdentifier;
 
 @SuppressWarnings("UnusedDeclaration")
-public interface IExtendedCharmData extends ICharmData {
+public interface CharmAttributeList {
+
   Identifier COMBO_BASIC_ATTRIBUTE = new SimpleIdentifier("Combo-Basic");
   Identifier COMBO_OK_ATTRIBUTE = new SimpleIdentifier("Combo-OK");
   Identifier COMPULSION_ATTRIBUTE = new SimpleIdentifier("Compulsion");
@@ -14,7 +15,7 @@ public interface IExtendedCharmData extends ICharmData {
 
   Identifier HOLY_ATTRIBUTE = new SimpleIdentifier("Holy");
   Identifier ILLUSION_ATTRIBUTE = new SimpleIdentifier("Illusion");
-  Identifier KNOCKBACK_ATTRIBUTE = new SimpleIdentifier("Knockback");
+  Identifier KNOCK_BACK_ATTRIBUTE = new SimpleIdentifier("Knockback");
   Identifier MANDATE_ATTRIBUTE = new SimpleIdentifier("Mandate");
   Identifier OBVIOUS_ATTRIBUTE = new SimpleIdentifier("Obvious");
   Identifier OVERDRIVE_ATTRIBUTE = new SimpleIdentifier("Overdrive");
@@ -29,4 +30,8 @@ public interface IExtendedCharmData extends ICharmData {
   Identifier WAR_ATTRIBUTE = new SimpleIdentifier("War");
 
   Identifier EXCLUSIVE_ATTRIBUTE = new SimpleIdentifier("Exclusive");
+  Identifier FORM_ATTRIBUTE = new SimpleIdentifier("Form");
+  Identifier MERGED_ATTRIBUTE = new SimpleIdentifier("Merged");
+  Identifier NO_STYLE_ATTRIBUTE = new SimpleIdentifier("NoStyle");
+  Identifier NATIVE = new SimpleIdentifier("Native");
 }
