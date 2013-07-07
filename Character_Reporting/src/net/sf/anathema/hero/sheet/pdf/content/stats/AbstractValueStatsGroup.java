@@ -7,7 +7,7 @@ import com.itextpdf.text.Rectangle;
 import com.itextpdf.text.pdf.PdfPCell;
 import net.sf.anathema.character.main.traits.ValuedTraitType;
 import net.sf.anathema.character.main.util.IStats;
-import net.sf.anathema.hero.sheet.pdf.encoder.general.table.TableEncodingUtilities;
+import net.sf.anathema.hero.sheet.pdf.encoder.table.TableEncodingUtilities;
 import net.sf.anathema.lib.resources.Resources;
 
 public abstract class AbstractValueStatsGroup<T extends IStats> implements IStatsGroup<T> {

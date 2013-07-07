@@ -5,7 +5,7 @@ import net.sf.anathema.character.main.traits.groups.IIdentifiedTraitTypeGroup;
 import net.sf.anathema.hero.abilities.model.AbilityModelFetcher;
 import net.sf.anathema.hero.sheet.pdf.session.ReportSession;
 import net.sf.anathema.hero.traits.sheet.content.ValuedTraitReference;
-import net.sf.anathema.hero.sheet.pdf.encoder.Position;
+import net.sf.anathema.hero.sheet.pdf.encoder.general.Position;
 import net.sf.anathema.hero.traits.sheet.encoder.AbstractNamedTraitEncoder;
 import net.sf.anathema.hero.traits.sheet.encoder.INamedTraitEncoder;
 import net.sf.anathema.hero.traits.sheet.content.PdfTraitEncoder;

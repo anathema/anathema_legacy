@@ -2,7 +2,7 @@ package net.sf.anathema.hero.sheet.pdf.encoder.graphics.shape;
 
 import com.itextpdf.text.BaseColor;
 import com.itextpdf.text.pdf.PdfContentByte;
-import net.sf.anathema.hero.sheet.pdf.encoder.Bounds;
+import net.sf.anathema.hero.sheet.pdf.encoder.general.Bounds;
 
 public class Box {
 

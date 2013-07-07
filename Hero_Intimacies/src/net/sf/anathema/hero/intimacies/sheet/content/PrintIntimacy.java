@@ -1,6 +1,6 @@
 package net.sf.anathema.hero.intimacies.sheet.content;
 
-import net.sf.anathema.character.reporting.pdf.content.general.NamedValue;
+import net.sf.anathema.hero.traits.sheet.content.NamedValue;
 import net.sf.anathema.hero.intimacies.model.Intimacy;
 
 public class PrintIntimacy implements NamedValue {

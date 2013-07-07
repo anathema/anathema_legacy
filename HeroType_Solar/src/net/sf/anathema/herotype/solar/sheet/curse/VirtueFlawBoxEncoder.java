@@ -1,7 +1,7 @@
 package net.sf.anathema.herotype.solar.sheet.curse;
 
-import net.sf.anathema.hero.sheet.pdf.encoder.Bounds;
-import net.sf.anathema.hero.sheet.pdf.encoder.Position;
+import net.sf.anathema.hero.sheet.pdf.encoder.general.Bounds;
+import net.sf.anathema.hero.sheet.pdf.encoder.general.Position;
 import net.sf.anathema.hero.traits.sheet.content.PdfTraitEncoder;
 import net.sf.anathema.hero.sheet.pdf.encoder.graphics.SheetGraphics;
 

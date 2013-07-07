@@ -1,6 +1,6 @@
 package net.sf.anathema.hero.sheet.pdf.page.layout.field;
 
-import net.sf.anathema.hero.sheet.pdf.encoder.general.box.BoxBoundsFactory;
+import net.sf.anathema.hero.sheet.pdf.encoder.boxes.BoxBoundsFactory;
 
 public class PreferredHeight implements HeightStrategy {
 

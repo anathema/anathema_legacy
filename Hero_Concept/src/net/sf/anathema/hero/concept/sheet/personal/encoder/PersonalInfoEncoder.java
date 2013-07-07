@@ -1,9 +1,9 @@
 package net.sf.anathema.hero.concept.sheet.personal.encoder;
 
 import net.sf.anathema.hero.sheet.pdf.session.ReportSession;
-import net.sf.anathema.hero.sheet.pdf.encoder.Bounds;
-import net.sf.anathema.hero.sheet.pdf.encoder.Position;
-import net.sf.anathema.hero.sheet.pdf.encoder.general.box.IVariableContentEncoder;
+import net.sf.anathema.hero.sheet.pdf.encoder.general.Bounds;
+import net.sf.anathema.hero.sheet.pdf.encoder.general.Position;
+import net.sf.anathema.hero.sheet.pdf.encoder.boxes.IVariableContentEncoder;
 import net.sf.anathema.hero.sheet.pdf.encoder.graphics.SheetGraphics;
 import net.sf.anathema.hero.concept.sheet.personal.content.PersonalInfoContent;
 import net.sf.anathema.hero.concept.sheet.personal.content.PersonalInfoRow;

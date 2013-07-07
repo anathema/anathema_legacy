@@ -1,8 +1,7 @@
 package net.sf.anathema.hero.traits.sheet.content;
 
 import com.itextpdf.text.pdf.PdfContentByte;
-import net.sf.anathema.character.reporting.pdf.content.general.NamedValue;
-import net.sf.anathema.hero.sheet.pdf.encoder.Position;
+import net.sf.anathema.hero.sheet.pdf.encoder.general.Position;
 import net.sf.anathema.hero.sheet.pdf.encoder.graphics.GraphicsTemplate;
 import net.sf.anathema.hero.sheet.pdf.encoder.graphics.SheetGraphics;
 import net.sf.anathema.hero.sheet.pdf.encoder.graphics.shape.Dot;

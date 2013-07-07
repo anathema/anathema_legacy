@@ -8,9 +8,9 @@ import net.sf.anathema.hero.health.HealthLevelType;
 import net.sf.anathema.character.main.traits.types.AbilityType;
 import net.sf.anathema.character.main.traits.types.AttributeType;
 import net.sf.anathema.hero.sheet.pdf.session.ReportSession;
-import net.sf.anathema.hero.sheet.pdf.encoder.Bounds;
+import net.sf.anathema.hero.sheet.pdf.encoder.general.Bounds;
 import net.sf.anathema.hero.sheet.pdf.encoder.graphics.SheetGraphics;
-import net.sf.anathema.character.reporting.second.content.combat.StatsModifiers;
+import net.sf.anathema.hero.sheet.pdf.content.stats.StatsModifiers;
 import net.sf.anathema.lib.resources.Resources;
 
 public class HealthAndMovementTableEncoder extends AbstractHealthAndMovementTableEncoder {

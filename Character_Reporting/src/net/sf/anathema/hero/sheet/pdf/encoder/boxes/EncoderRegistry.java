@@ -2,7 +2,6 @@ package net.sf.anathema.hero.sheet.pdf.encoder.boxes;
 
 import net.sf.anathema.hero.sheet.pdf.content.BasicContent;
 import net.sf.anathema.hero.sheet.pdf.session.ReportSession;
-import net.sf.anathema.hero.sheet.pdf.encoder.general.box.ContentEncoder;
 import net.sf.anathema.initialization.InitializationException;
 import net.sf.anathema.initialization.ObjectFactory;
 import net.sf.anathema.lib.collection.MultiEntryMap;

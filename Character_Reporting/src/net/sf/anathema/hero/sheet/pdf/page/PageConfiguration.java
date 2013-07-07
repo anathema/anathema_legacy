@@ -1,7 +1,7 @@
 package net.sf.anathema.hero.sheet.pdf.page;
 
 import com.itextpdf.text.Rectangle;
-import net.sf.anathema.hero.sheet.pdf.encoder.Bounds;
+import net.sf.anathema.hero.sheet.pdf.encoder.general.Bounds;
 import net.sf.anathema.framework.reporting.pdf.PageSize;
 
 import java.awt.Dimension;

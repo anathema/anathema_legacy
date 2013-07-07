@@ -1,6 +1,6 @@
 package net.sf.anathema.hero.sheet.pdf.encoder.graphics.shape;
 
-import net.sf.anathema.hero.sheet.pdf.encoder.Position;
+import net.sf.anathema.hero.sheet.pdf.encoder.general.Position;
 
 public interface Shape {
 

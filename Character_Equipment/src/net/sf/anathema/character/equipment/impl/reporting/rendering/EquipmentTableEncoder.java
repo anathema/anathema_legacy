@@ -4,7 +4,7 @@ import net.sf.anathema.character.main.equipment.weapon.IEquipmentStats;
 import net.sf.anathema.hero.sheet.pdf.session.ReportSession;
 import net.sf.anathema.hero.sheet.pdf.content.stats.FixedLineStatsContent;
 import net.sf.anathema.hero.sheet.pdf.content.stats.IStatsGroup;
-import net.sf.anathema.hero.sheet.pdf.encoder.general.stats.AbstractFixedLineStatsTableEncoder;
+import net.sf.anathema.hero.sheet.pdf.encoder.stats.AbstractFixedLineStatsTableEncoder;
 
 public class EquipmentTableEncoder<
         STATS extends IEquipmentStats, CONTENT extends FixedLineStatsContent<STATS>> extends AbstractFixedLineStatsTableEncoder<STATS> {

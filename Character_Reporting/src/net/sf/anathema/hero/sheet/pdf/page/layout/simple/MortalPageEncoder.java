@@ -4,7 +4,7 @@ import net.sf.anathema.hero.sheet.pdf.session.ReportSession;
 import net.sf.anathema.hero.sheet.pdf.page.layout.Sheet;
 import net.sf.anathema.hero.sheet.pdf.page.layout.SheetPage;
 import net.sf.anathema.hero.sheet.pdf.page.layout.field.LayoutField;
-import net.sf.anathema.hero.sheet.pdf.encoder.general.CopyrightEncoder;
+import net.sf.anathema.hero.sheet.pdf.encoder.CopyrightEncoder;
 import net.sf.anathema.hero.sheet.pdf.encoder.graphics.SheetGraphics;
 import net.sf.anathema.hero.sheet.pdf.page.PageConfiguration;
 import net.sf.anathema.hero.sheet.pdf.page.PageEncoder;

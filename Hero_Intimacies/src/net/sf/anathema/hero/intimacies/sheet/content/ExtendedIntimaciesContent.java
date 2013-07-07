@@ -4,7 +4,7 @@ import net.sf.anathema.character.main.framework.configuration.AnathemaCharacterP
 import net.sf.anathema.character.main.traits.types.VirtueType;
 import net.sf.anathema.hero.othertraits.OtherTraitModelFetcher;
 import net.sf.anathema.hero.sheet.pdf.content.AbstractSubBoxContent;
-import net.sf.anathema.character.reporting.pdf.content.general.NamedValue;
+import net.sf.anathema.hero.traits.sheet.content.NamedValue;
 import net.sf.anathema.hero.intimacies.model.IntimaciesModel;
 import net.sf.anathema.hero.intimacies.model.IntimaciesModelFetcher;
 import net.sf.anathema.hero.intimacies.model.Intimacy;
