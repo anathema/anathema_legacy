@@ -12,7 +12,7 @@ import net.sf.anathema.character.main.charm.CharmHasSameTypeAsCharacter;
 import net.sf.anathema.character.main.model.concept.HeroConcept;
 import net.sf.anathema.character.main.model.concept.HeroConceptFetcher;
 import net.sf.anathema.character.main.charm.GroupedCharmIdMap;
-import net.sf.anathema.charmtree.view.CharmGroupArbitrator;
+import net.sf.anathema.character.main.charmtree.view.CharmGroupArbitrator;
 import net.sf.anathema.hero.model.Hero;
 import net.sf.anathema.hero.template.NativeCharacterType;
 import net.sf.anathema.lib.util.Identifier;

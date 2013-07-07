@@ -11,8 +11,8 @@ import net.sf.anathema.character.main.presenter.initializers.RegisteredInitializ
 import net.sf.anathema.character.main.presenter.magic.CharacterCharmModel;
 import net.sf.anathema.character.main.presenter.magic.charm.CharacterCharmTreePresenter;
 import net.sf.anathema.character.main.view.SectionView;
-import net.sf.anathema.charmtree.view.CharmDisplayPropertiesMap;
-import net.sf.anathema.charmtree.view.ICharmView;
+import net.sf.anathema.character.main.charmtree.view.CharmDisplayPropertiesMap;
+import net.sf.anathema.character.main.charmtree.view.ICharmView;
 import net.sf.anathema.framework.IApplicationModel;
 import net.sf.anathema.hero.model.Hero;
 import net.sf.anathema.initialization.reflections.Weight;

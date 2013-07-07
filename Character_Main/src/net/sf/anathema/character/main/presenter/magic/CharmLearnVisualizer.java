@@ -2,7 +2,7 @@ package net.sf.anathema.character.main.presenter.magic;
 
 import net.sf.anathema.character.main.magic.ICharm;
 import net.sf.anathema.character.main.charm.CharmLearnAdapter;
-import net.sf.anathema.charmtree.presenter.CharmDye;
+import net.sf.anathema.character.main.charmtree.presenter.CharmDye;
 
 import java.awt.Toolkit;
 

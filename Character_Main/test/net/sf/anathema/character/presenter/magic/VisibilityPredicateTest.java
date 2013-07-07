@@ -6,7 +6,7 @@ import net.sf.anathema.character.main.magic.charms.ICharmGroup;
 import net.sf.anathema.character.main.type.ICharacterType;
 import net.sf.anathema.character.main.presenter.magic.VisibilityPredicate;
 import net.sf.anathema.character.main.testing.dummy.DummyExaltCharacterType;
-import net.sf.anathema.charmtree.view.CharmGroupInformer;
+import net.sf.anathema.character.main.charmtree.view.CharmGroupInformer;
 import org.junit.Test;
 
 import static net.sf.anathema.character.main.magic.CharmMother.createCharmForCharacterTypeFromGroup;

@@ -1,6 +1,6 @@
 package net.sf.anathema.character.main.presenter.magic;
 
-import net.sf.anathema.charmtree.presenter.CharmTypes;
+import net.sf.anathema.character.main.charmtree.presenter.CharmTypes;
 import net.sf.anathema.lib.util.Identifier;
 
 import java.util.ArrayList;

@@ -4,7 +4,7 @@ import net.sf.anathema.character.main.type.ICharacterType;
 import net.sf.anathema.character.main.library.intvalue.IntValueDisplayFactoryPrototype;
 import net.sf.anathema.character.main.framework.RegisteredCharacterView;
 import net.sf.anathema.character.main.view.SubViewFactory;
-import net.sf.anathema.charmtree.view.ICharmView;
+import net.sf.anathema.character.main.charmtree.view.ICharmView;
 import net.sf.anathema.framework.value.IntegerViewFactory;
 
 @RegisteredCharacterView(ICharmView.class)

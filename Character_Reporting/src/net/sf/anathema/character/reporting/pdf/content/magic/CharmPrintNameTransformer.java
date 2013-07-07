@@ -2,7 +2,7 @@ package net.sf.anathema.character.reporting.pdf.content.magic;
 
 import com.google.common.base.Function;
 import net.sf.anathema.character.main.magic.ICharm;
-import net.sf.anathema.charmtree.builder.MagicDisplayLabeler;
+import net.sf.anathema.character.main.charmtree.builder.MagicDisplayLabeler;
 import net.sf.anathema.lib.resources.Resources;
 
 public class CharmPrintNameTransformer implements Function<ICharm, String> {

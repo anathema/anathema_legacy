@@ -1,7 +1,7 @@
 package net.sf.anathema.character.main.presenter.magic;
 
 import net.sf.anathema.character.main.magic.charms.ICharmGroup;
-import net.sf.anathema.charmtree.presenter.CharmGroupCollection;
+import net.sf.anathema.character.main.charmtree.presenter.CharmGroupCollection;
 
 public class CharacterGroupCollection implements CharmGroupCollection {
   private CharacterCharmModel model;

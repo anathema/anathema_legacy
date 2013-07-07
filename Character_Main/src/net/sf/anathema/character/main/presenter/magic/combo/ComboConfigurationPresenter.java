@@ -13,7 +13,7 @@ import net.sf.anathema.character.main.charm.ILearningCharmGroup;
 import net.sf.anathema.character.main.view.magic.IComboConfigurationView;
 import net.sf.anathema.character.main.view.magic.IComboView;
 import net.sf.anathema.character.main.view.magic.IComboViewListener;
-import net.sf.anathema.charmtree.builder.MagicDisplayLabeler;
+import net.sf.anathema.character.main.charmtree.builder.MagicDisplayLabeler;
 import net.sf.anathema.framework.presenter.resources.BasicUi;
 import net.sf.anathema.hero.change.ChangeFlavor;
 import net.sf.anathema.hero.change.FlavoredChangeListener;

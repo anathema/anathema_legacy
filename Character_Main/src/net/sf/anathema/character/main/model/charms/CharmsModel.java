@@ -8,7 +8,7 @@ import net.sf.anathema.character.main.type.ICharacterType;
 import net.sf.anathema.character.main.charm.IExtendedCharmLearnableArbitrator;
 import net.sf.anathema.character.main.charm.ILearningCharmGroup;
 import net.sf.anathema.character.main.charm.SpecialCharmLearnArbitrator;
-import net.sf.anathema.charmtree.view.CharmGroupArbitrator;
+import net.sf.anathema.character.main.charmtree.view.CharmGroupArbitrator;
 import net.sf.anathema.hero.model.HeroModel;
 import net.sf.anathema.lib.control.ChangeListener;
 import net.sf.anathema.lib.util.Identifier;

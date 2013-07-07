@@ -1,12 +1,13 @@
 package net.sf.anathema.charmtree.presenter;
 
+import net.sf.anathema.character.main.charmtree.presenter.ExternalPrerequisitesColorer;
 import net.sf.anathema.character.main.magic.charm.CharmGroup;
 import net.sf.anathema.character.main.magic.ICharm;
 import net.sf.anathema.character.main.magic.charms.ICharmGroup;
 import net.sf.anathema.character.main.dummy.DummyCharm;
 import net.sf.anathema.character.main.testing.dummy.DummyMundaneCharacterType;
 import net.sf.anathema.character.main.presenter.magic.CharmColoring;
-import net.sf.anathema.charmtree.view.CharmGroupInformer;
+import net.sf.anathema.character.main.charmtree.view.CharmGroupInformer;
 import org.junit.Test;
 
 import static org.mockito.Mockito.mock;

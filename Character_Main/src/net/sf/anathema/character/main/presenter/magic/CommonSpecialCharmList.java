@@ -3,7 +3,7 @@ package net.sf.anathema.character.main.presenter.magic;
 import com.google.common.base.Predicate;
 import com.google.common.base.Predicates;
 import net.sf.anathema.character.main.magic.charms.special.ISpecialCharm;
-import net.sf.anathema.charmtree.view.ISpecialCharmViewContainer;
+import net.sf.anathema.character.main.charmtree.view.ISpecialCharmViewContainer;
 import net.sf.anathema.platform.tree.presenter.view.ISpecialNodeView;
 
 import java.util.ArrayList;

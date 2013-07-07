@@ -5,9 +5,9 @@ import net.sf.anathema.character.main.magic.ICharm;
 import net.sf.anathema.character.main.magic.IMagicStats;
 import net.sf.anathema.character.main.magic.charms.ICharmAttribute;
 import net.sf.anathema.character.main.magic.charms.type.ICharmTypeModel;
-import net.sf.anathema.charmtree.builder.stringbuilder.IMagicSourceStringBuilder;
-import net.sf.anathema.charmtree.builder.stringbuilder.source.MagicSourceStringBuilder;
-import net.sf.anathema.charmtree.builder.stringbuilder.type.ShortCharmTypeStringBuilder;
+import net.sf.anathema.character.main.charmtree.builder.stringbuilder.IMagicSourceStringBuilder;
+import net.sf.anathema.character.main.charmtree.builder.stringbuilder.source.MagicSourceStringBuilder;
+import net.sf.anathema.character.main.charmtree.builder.stringbuilder.type.ShortCharmTypeStringBuilder;
 import net.sf.anathema.lib.resources.Resources;
 
 import java.util.ArrayList;
