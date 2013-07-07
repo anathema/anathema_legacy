@@ -3,7 +3,7 @@ package net.sf.anathema.hero.abilities.sheet.encoder;
 import net.sf.anathema.character.reporting.pdf.content.ReportSession;
 import net.sf.anathema.character.reporting.pdf.rendering.extent.Bounds;
 import net.sf.anathema.character.reporting.pdf.rendering.extent.Position;
-import net.sf.anathema.character.reporting.pdf.rendering.general.traits.FavorableTraitContentEncoder;
+import net.sf.anathema.hero.traits.sheet.encoder.FavorableTraitContentEncoder;
 import net.sf.anathema.character.reporting.pdf.rendering.graphics.SheetGraphics;
 import net.sf.anathema.hero.abilities.sheet.content.AbilitiesContent;
 import net.sf.anathema.lib.resources.Resources;

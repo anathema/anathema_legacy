@@ -5,7 +5,7 @@ import net.sf.anathema.character.reporting.pdf.rendering.EncoderIds;
 import net.sf.anathema.character.reporting.pdf.rendering.boxes.GlobalEncoderFactory;
 import net.sf.anathema.character.reporting.pdf.rendering.boxes.RegisteredEncoderFactory;
 import net.sf.anathema.character.reporting.pdf.rendering.general.box.ContentEncoder;
-import net.sf.anathema.character.reporting.pdf.rendering.general.traits.FavorableTraitContentEncoder;
+import net.sf.anathema.hero.traits.sheet.encoder.FavorableTraitContentEncoder;
 import net.sf.anathema.character.reporting.pdf.rendering.general.traits.PdfTraitEncoder;
 import net.sf.anathema.hero.abilities.sheet.content.AbilitiesContent;
 import net.sf.anathema.lib.resources.Resources;

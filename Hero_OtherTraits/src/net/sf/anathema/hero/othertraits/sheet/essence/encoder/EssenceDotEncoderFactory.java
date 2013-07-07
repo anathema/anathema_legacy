@@ -6,7 +6,7 @@ import net.sf.anathema.character.reporting.pdf.content.BasicContent;
 import net.sf.anathema.character.reporting.pdf.rendering.EncoderIds;
 import net.sf.anathema.character.reporting.pdf.rendering.boxes.AbstractEncoderFactory;
 import net.sf.anathema.character.reporting.pdf.rendering.boxes.RegisteredEncoderFactory;
-import net.sf.anathema.character.reporting.pdf.rendering.general.DotBoxContentEncoder;
+import net.sf.anathema.hero.traits.sheet.encoder.DotBoxContentEncoder;
 import net.sf.anathema.character.reporting.pdf.rendering.general.box.ContentEncoder;
 import net.sf.anathema.lib.resources.Resources;
 

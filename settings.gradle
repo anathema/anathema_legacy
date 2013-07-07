@@ -1,6 +1,11 @@
 include('Anathema',
 
-        'Platform', 'Platform_Swing', 'Platform_FX', 'GraphLayout', 'Platform_TreeFramework', 'Platform_SwingTree',
+        'Platform',
+        'Platform_Swing',
+        'Platform_FX',
+        'GraphLayout',
+        'Platform_TreeFramework',
+        'Platform_SwingTree',
 
         'Namegenerator',
 
@@ -20,6 +25,8 @@ include('Anathema',
         'Hero_Spells',
         'Hero_Traits',
 
+        'HeroType_Solar',
+
         'Magic_Description',
         'Charm_Cascades',
         'Character_Cards',
@@ -38,6 +45,5 @@ include('Anathema',
         'Character_MartialArts',
 
         'Character_Mortal',
-        'Character_Solar',
 
         'Integrationtest')

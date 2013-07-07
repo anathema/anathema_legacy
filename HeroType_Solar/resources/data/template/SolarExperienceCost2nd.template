@@ -1,0 +1,7 @@
+<experiencePointCost uses="experience/DefaultExperienceCost.template">
+  <magic>
+    <charms favored="8" general="10">
+    	<highLevelMartialArts favored="12" general="15"/>
+    </charms>
+  </magic>
+</experiencePointCost>
