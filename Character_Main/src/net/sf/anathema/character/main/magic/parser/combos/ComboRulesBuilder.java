@@ -43,7 +43,8 @@ public class ComboRulesBuilder implements IComboRulesBuilder {
   protected void buildRestrictionList(ComboRestrictions comboRules, Element restrictionElement) throws CharmException {
     List<Element> restrictedCharmList = ElementUtilities.elements(restrictionElement, TAG_CHARM);
     for (Element element : restrictedCharmList) {
-      comboRules.addRestrictedCharmId(element.attributeValue(ATTRIB_ID));
+      String charmId = element.attributeValue(ATTRIB_ID);
+      comboRules.addRestrictedCharmId(charmId);
     }
     List<Element> restrictedCharmTypeList = ElementUtilities.elements(restrictionElement, TAG_CHARMTYPE);
     for (Element element : restrictedCharmTypeList) {
