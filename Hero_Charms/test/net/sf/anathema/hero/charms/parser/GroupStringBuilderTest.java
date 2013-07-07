@@ -1,4 +1,4 @@
-package net.sf.anathema.hero.charms.charmparser;
+package net.sf.anathema.hero.charms.parser;
 
 import net.sf.anathema.character.main.magic.persistence.builder.GroupStringBuilder;
 import net.sf.anathema.character.main.magic.charms.CharmException;

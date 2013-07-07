@@ -1,4 +1,4 @@
-package net.sf.anathema.hero.charms.charmparser;
+package net.sf.anathema.hero.charms.parser;
 
 import net.sf.anathema.hero.health.HealthType;
 import net.sf.anathema.character.main.magic.HealthCost;

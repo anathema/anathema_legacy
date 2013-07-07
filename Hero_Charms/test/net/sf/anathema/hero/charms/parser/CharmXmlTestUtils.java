@@ -1,4 +1,4 @@
-package net.sf.anathema.hero.charms.charmparser;
+package net.sf.anathema.hero.charms.parser;
 
 import org.dom4j.Element;
 import org.dom4j.tree.DefaultElement;
