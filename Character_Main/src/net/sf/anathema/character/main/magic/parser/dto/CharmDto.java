@@ -4,5 +4,6 @@ public class CharmDto {
 
   public String charmId;
   public String characterType;
-  public CostListDto costsDto = new CostListDto();
+  public CostListDto costList = new CostListDto();
+  public DurationDto duration = new DurationDto();
 }
