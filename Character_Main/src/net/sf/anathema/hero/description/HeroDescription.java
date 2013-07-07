@@ -10,8 +10,6 @@ public interface HeroDescription {
 
   ITextualDescription getName();
 
-  ITextualDescription getPeriphrasis();
-
   ITextualDescription getCharacterization();
 
   ITextualDescription getPhysicalDescription();
