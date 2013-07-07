@@ -1,14 +1,12 @@
 package net.sf.anathema.lib.control.legality;
 
-import java.awt.Font;
-
 public class LegalityFontProvider {
 
-  public static final int NO_BONUS = Font.PLAIN;
-  public static final int BONUS = Font.BOLD;
+  public static final FontStyle NO_BONUS = FontStyle.Plain;
+  public static final FontStyle BONUS = FontStyle.Bold;
 
-  public int getFontStyle(ValueLegalityState state) {
-    final int[] style = new int[1];
+  public FontStyle getFontStyle(ValueLegalityState state) {
+    final FontStyle[] style = new FontStyle[1];
     state.accept(new IValueLegalityStateVisitor() {
       @Override
       public void visitLow(ValueLegalityState visitedState) {

@@ -1,4 +1,4 @@
-package net.sf.anathema.hero.languages.display;
+package net.sf.anathema.hero.languages.display.presenter;
 
 import net.sf.anathema.character.main.library.overview.OverviewCategory;
 import net.sf.anathema.character.main.library.removableentry.RemovableEntryListener;

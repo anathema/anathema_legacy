@@ -1,6 +1,8 @@
 package net.sf.anathema.lib.workflow.labelledvalue.view;
 
 import net.sf.anathema.framework.ui.RGBColor;
+import net.sf.anathema.lib.control.legality.FontStyle;
+import net.sf.anathema.lib.control.legality.SwingFontStyleMapping;
 
 import javax.swing.JComponent;
 import javax.swing.JLabel;
@@ -25,6 +27,7 @@ public abstract class AbstractLabelledValueView {
     return sizeLabel.getPreferredSize();
   }
 
+  @SuppressWarnings("MagicConstant")
   protected static JLabel createLabel(String text, String sizeText, int horizontalAlignment, boolean adjustFontSize) {
     JLabel label = new JLabel(text);
     label.setPreferredSize(createBoldSize(sizeText, adjustFontSize));
@@ -66,9 +69,11 @@ public abstract class AbstractLabelledValueView {
     }
   }
 
-  public void setFontStyle(int style) {
+  @SuppressWarnings({"MagicConstant", "UnusedDeclaration"})
+  public void setFontStyle(FontStyle style) {
     for (JComponent component : getComponents()) {
-      component.setFont(component.getFont().deriveFont(style));
+      int awtFontStyle = SwingFontStyleMapping.map(style);
+      component.setFont(component.getFont().deriveFont(awtFontStyle));
     }
   }
 

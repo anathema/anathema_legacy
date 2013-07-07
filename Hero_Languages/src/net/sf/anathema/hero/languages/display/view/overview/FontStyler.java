@@ -1,15 +1,14 @@
-package net.sf.anathema.hero.languages.display.overview;
+package net.sf.anathema.hero.languages.display.view.overview;
 
 import com.google.common.base.Joiner;
 import javafx.scene.control.Label;
 import net.sf.anathema.framework.ui.RGBColor;
-
-import java.awt.Font;
+import net.sf.anathema.lib.control.legality.FontStyle;
 
 public class FontStyler {
   private final Label[] labels;
   private RGBColor color = RGBColor.Black;
-  private int style = Font.PLAIN;
+  private FontStyle style = FontStyle.Plain;
 
   public FontStyler(Label... labels) {
     this.labels = labels;
@@ -20,7 +19,7 @@ public class FontStyler {
     style();
   }
 
-  public void setStyle(int style) {
+  public void setStyle(FontStyle style) {
     this.style = style;
     style();
   }
@@ -28,7 +27,7 @@ public class FontStyler {
   @SuppressWarnings("StringConcatenationInsideStringBufferAppend")
   private void style() {
     StringBuilder styleBuilder = new StringBuilder();
-    if (Font.BOLD == style) {
+    if (FontStyle.Bold == style) {
       styleBuilder.append("-fx-font-weight:bold;");
     } else {
       styleBuilder.append("-fx-font-weight:normal;");

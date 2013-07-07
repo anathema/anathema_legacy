@@ -1,6 +1,7 @@
 package net.sf.anathema.character.main.presenter.overview;
 
 import net.sf.anathema.hero.points.overview.ISpendingModel;
+import net.sf.anathema.lib.control.legality.FontStyle;
 import net.sf.anathema.lib.control.legality.LegalityColorProvider;
 import net.sf.anathema.lib.control.legality.LegalityFontProvider;
 import net.sf.anathema.lib.control.legality.ValueLegalityState;
@@ -17,9 +18,9 @@ public class FontParameterSetter {
   }
 
   public void setFontParameters() {
-    LegalityFontProvider legalityFontProvider = new LegalityFontProvider();
     ValueLegalityState fontStyleState = model.getSpentBonusPoints() > 0 ? ValueLegalityState.Increased : ValueLegalityState.Okay;
-    view.setFontStyle(legalityFontProvider.getFontStyle(fontStyleState));
+    FontStyle fontStyle = new LegalityFontProvider().getFontStyle(fontStyleState);
+    view.setFontStyle(fontStyle);
     LegalityColorProvider legalityColorProvider = new LegalityColorProvider();
     ValueLegalityState textColorState = null;
     int alotment = model.getAllotment();

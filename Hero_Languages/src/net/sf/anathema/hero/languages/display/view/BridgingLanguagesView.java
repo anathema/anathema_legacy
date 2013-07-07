@@ -1,7 +1,10 @@
-package net.sf.anathema.hero.languages.display;
+package net.sf.anathema.hero.languages.display.view;
 
 import net.sf.anathema.character.main.library.overview.OverviewCategory;
 import net.sf.anathema.framework.swing.IView;
+import net.sf.anathema.hero.languages.display.presenter.LanguagesView;
+import net.sf.anathema.hero.languages.display.presenter.ObjectSelectionViewWithTool;
+import net.sf.anathema.hero.languages.display.presenter.RemovableEntryView;
 import net.sf.anathema.lib.file.RelativePath;
 import net.sf.anathema.lib.gui.AgnosticUIConfiguration;
 import net.sf.anathema.platform.fx.BridgingPanel;

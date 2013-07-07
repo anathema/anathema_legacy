@@ -1,6 +1,7 @@
 package net.sf.anathema.lib.workflow.labelledvalue;
 
 import net.sf.anathema.framework.ui.RGBColor;
+import net.sf.anathema.lib.control.legality.FontStyle;
 
 public class NullValueView<E> implements IValueView<E>{
   @Override
@@ -14,7 +15,7 @@ public class NullValueView<E> implements IValueView<E>{
   }
 
   @Override
-  public void setFontStyle(int style) {
+  public void setFontStyle(FontStyle style) {
     //nothing to do
   }
 }

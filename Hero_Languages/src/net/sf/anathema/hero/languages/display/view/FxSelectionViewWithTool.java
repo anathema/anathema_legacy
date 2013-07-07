@@ -1,5 +1,6 @@
-package net.sf.anathema.hero.languages.display;
+package net.sf.anathema.hero.languages.display.view;
 
+import net.sf.anathema.hero.languages.display.presenter.ObjectSelectionViewWithTool;
 import net.sf.anathema.interaction.Tool;
 import net.sf.anathema.lib.control.ObjectValueListener;
 import net.sf.anathema.lib.gui.AgnosticUIConfiguration;

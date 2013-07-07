@@ -1,6 +1,5 @@
-package net.sf.anathema.character.main.presenter;
+package net.sf.anathema.hero.othertraits.display;
 
-import net.sf.anathema.character.main.view.AdvantageViewProperties;
 import net.sf.anathema.lib.resources.Resources;
 
 public class DefaultAdvantageViewProperties implements AdvantageViewProperties {
