@@ -1,4 +1,4 @@
-package net.sf.anathema.character.main.library.virtueflaw.model;
+package net.sf.anathema.herotype.solar.model;
 
 public interface DescriptiveVirtueFlawModel extends VirtueFlawModel {
   @Override

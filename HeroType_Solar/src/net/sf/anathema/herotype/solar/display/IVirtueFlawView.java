@@ -1,4 +1,4 @@
-package net.sf.anathema.character.main.library.virtueflaw.presenter;
+package net.sf.anathema.herotype.solar.display;
 
 import net.sf.anathema.character.main.traits.TraitType;
 import net.sf.anathema.framework.value.IIntValueView;

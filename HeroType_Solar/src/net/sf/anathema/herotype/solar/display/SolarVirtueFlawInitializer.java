@@ -1,15 +1,14 @@
 package net.sf.anathema.herotype.solar.display;
 
-import net.sf.anathema.character.main.library.virtueflaw.model.DescriptiveVirtueFlawModel;
-import net.sf.anathema.character.main.library.virtueflaw.model.GreatCurseFetcher;
-import net.sf.anathema.character.main.library.virtueflaw.presenter.IDescriptiveVirtueFlawView;
 import net.sf.anathema.character.main.presenter.initializers.HeroModelInitializer;
 import net.sf.anathema.character.main.presenter.initializers.RegisteredInitializer;
-import net.sf.anathema.herotype.solar.model.SolarCharacterType;
 import net.sf.anathema.character.main.view.SectionView;
 import net.sf.anathema.framework.model.ApplicationModel;
 import net.sf.anathema.hero.display.HeroModelGroup;
 import net.sf.anathema.hero.model.Hero;
+import net.sf.anathema.herotype.solar.model.DescriptiveVirtueFlawModel;
+import net.sf.anathema.herotype.solar.model.GreatCurseFetcher;
+import net.sf.anathema.herotype.solar.model.SolarCharacterType;
 import net.sf.anathema.initialization.reflections.Weight;
 import net.sf.anathema.lib.resources.Resources;
 

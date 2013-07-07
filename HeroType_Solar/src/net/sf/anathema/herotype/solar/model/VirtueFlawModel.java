@@ -1,4 +1,4 @@
-package net.sf.anathema.character.main.library.virtueflaw.model;
+package net.sf.anathema.herotype.solar.model;
 
 import net.sf.anathema.character.main.traits.TraitType;
 import net.sf.anathema.hero.model.HeroModel;

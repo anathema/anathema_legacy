@@ -1,16 +1,16 @@
-package net.sf.anathema.character.main.library.virtueflaw.model;
+package net.sf.anathema.herotype.solar.model;
 
+import net.sf.anathema.character.main.UnspecifiedChangeListener;
 import net.sf.anathema.character.main.traits.TraitType;
 import net.sf.anathema.character.main.traits.types.VirtueType;
-import net.sf.anathema.hero.traits.TraitChangeFlavor;
-import net.sf.anathema.hero.traits.TraitModel;
-import net.sf.anathema.hero.traits.TraitModelFetcher;
-import net.sf.anathema.character.main.UnspecifiedChangeListener;
 import net.sf.anathema.hero.change.ChangeAnnouncer;
 import net.sf.anathema.hero.change.ChangeFlavor;
 import net.sf.anathema.hero.change.FlavoredChangeListener;
 import net.sf.anathema.hero.model.Hero;
 import net.sf.anathema.hero.model.InitializationContext;
+import net.sf.anathema.hero.traits.TraitChangeFlavor;
+import net.sf.anathema.hero.traits.TraitModel;
+import net.sf.anathema.hero.traits.TraitModelFetcher;
 import net.sf.anathema.lib.control.ChangeListener;
 import net.sf.anathema.lib.control.GlobalChangeAdapter;
 import net.sf.anathema.lib.util.Identifier;

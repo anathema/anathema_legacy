@@ -1,4 +1,4 @@
-package net.sf.anathema.character.main.library.virtueflaw.persistence;
+package net.sf.anathema.herotype.solar.persistence;
 
 public class VirtueFlawPto {
 

@@ -1,11 +1,11 @@
-package net.sf.anathema.character.main.library.virtueflaw.persistence;
+package net.sf.anathema.herotype.solar.persistence;
 
-import net.sf.anathema.character.main.traits.types.VirtueType;
 import net.sf.anathema.character.main.library.trait.Trait;
-import net.sf.anathema.character.main.library.virtueflaw.model.DescriptiveVirtueFlaw;
-import net.sf.anathema.character.main.library.virtueflaw.model.VirtueFlawModel;
+import net.sf.anathema.character.main.traits.types.VirtueType;
 import net.sf.anathema.hero.persistence.AbstractModelJsonPersister;
 import net.sf.anathema.hero.persistence.HeroModelPersisterCollected;
+import net.sf.anathema.herotype.solar.model.DescriptiveVirtueFlaw;
+import net.sf.anathema.herotype.solar.model.VirtueFlawModel;
 import net.sf.anathema.lib.util.Identifier;
 
 @HeroModelPersisterCollected
@@ -25,7 +25,7 @@ public class GreatCursePersister extends AbstractModelJsonPersister<VirtueFlawPt
     if (pto.rootVirtue != null) {
       model.getVirtueFlaw().setRoot(VirtueType.valueOf(pto.rootVirtue));
     }
-    if (model.getVirtueFlaw() instanceof  DescriptiveVirtueFlaw) {
+    if (model.getVirtueFlaw() instanceof DescriptiveVirtueFlaw) {
       DescriptiveVirtueFlaw virtueFlaw = (DescriptiveVirtueFlaw) model.getVirtueFlaw();
       virtueFlaw.getLimitBreak().setText(pto.limitBreak);
       virtueFlaw.getDescription().setText(pto.description);
@@ -45,7 +45,7 @@ public class GreatCursePersister extends AbstractModelJsonPersister<VirtueFlawPt
     if (heroModel.getVirtueFlaw().getRoot() != null) {
       pto.rootVirtue = heroModel.getVirtueFlaw().getRoot().getId();
     }
-    if (heroModel.getVirtueFlaw() instanceof  DescriptiveVirtueFlaw) {
+    if (heroModel.getVirtueFlaw() instanceof DescriptiveVirtueFlaw) {
       DescriptiveVirtueFlaw virtueFlaw = (DescriptiveVirtueFlaw) heroModel.getVirtueFlaw();
       pto.limitBreak = virtueFlaw.getLimitBreak().getText();
       pto.description = virtueFlaw.getDescription().getText();

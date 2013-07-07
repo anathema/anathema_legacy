@@ -1,11 +1,10 @@
-package net.sf.anathema.character.main.library.virtueflaw.view;
+package net.sf.anathema.herotype.solar.display;
 
 import net.miginfocom.layout.CC;
 import net.miginfocom.swing.MigLayout;
 import net.sf.anathema.character.main.experience.ExperienceUtilities;
-import net.sf.anathema.character.main.traits.TraitType;
 import net.sf.anathema.character.main.library.trait.view.swing.SimpleTraitView;
-import net.sf.anathema.character.main.library.virtueflaw.presenter.IVirtueFlawView;
+import net.sf.anathema.character.main.traits.TraitType;
 import net.sf.anathema.framework.swing.IView;
 import net.sf.anathema.framework.swing.selection.ObjectSelectionView;
 import net.sf.anathema.framework.value.IIntValueView;

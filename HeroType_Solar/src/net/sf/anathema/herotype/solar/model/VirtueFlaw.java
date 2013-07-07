@@ -1,7 +1,7 @@
-package net.sf.anathema.character.main.library.virtueflaw.model;
+package net.sf.anathema.herotype.solar.model;
 
-import net.sf.anathema.character.main.traits.TraitType;
 import net.sf.anathema.character.main.library.trait.Trait;
+import net.sf.anathema.character.main.traits.TraitType;
 import net.sf.anathema.lib.control.ChangeListener;
 import net.sf.anathema.lib.workflow.textualdescription.ITextualDescription;
 
