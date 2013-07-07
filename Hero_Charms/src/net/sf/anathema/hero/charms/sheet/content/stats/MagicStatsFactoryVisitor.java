@@ -1,12 +1,13 @@
-package net.sf.anathema.character.reporting.pdf.content.magic;
+package net.sf.anathema.hero.charms.sheet.content.stats;
 
 import net.sf.anathema.character.main.magic.ICharm;
 import net.sf.anathema.character.main.magic.IMagicStats;
 import net.sf.anathema.character.main.magic.IMagicVisitor;
 import net.sf.anathema.character.main.magic.ISpell;
-import net.sf.anathema.character.reporting.pdf.content.stats.magic.CharmStats;
-import net.sf.anathema.character.reporting.pdf.content.stats.magic.MultipleEffectCharmStats;
-import net.sf.anathema.character.reporting.pdf.content.stats.magic.SpellStats;
+import net.sf.anathema.hero.charms.sheet.content.MagicContentHelper;
+import net.sf.anathema.hero.charms.sheet.content.stats.CharmStats;
+import net.sf.anathema.hero.charms.sheet.content.stats.MultipleEffectCharmStats;
+import net.sf.anathema.hero.charms.sheet.content.stats.SpellStats;
 import net.sf.anathema.hero.model.Hero;
 
 import java.util.List;

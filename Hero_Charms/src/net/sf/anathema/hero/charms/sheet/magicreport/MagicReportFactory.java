@@ -1,4 +1,4 @@
-package net.sf.anathema.character.reporting.pdf;
+package net.sf.anathema.hero.charms.sheet.magicreport;
 
 import net.sf.anathema.framework.IApplicationModel;
 import net.sf.anathema.framework.initialization.IReportFactory;

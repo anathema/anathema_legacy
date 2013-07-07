@@ -16,7 +16,7 @@ import net.sf.anathema.character.main.magic.IMagic;
 import net.sf.anathema.character.main.magic.IMagicStats;
 import net.sf.anathema.character.main.traits.TraitType;
 import net.sf.anathema.character.reporting.pdf.content.ReportSession;
-import net.sf.anathema.character.reporting.pdf.content.magic.MagicContentHelper;
+import net.sf.anathema.hero.charms.sheet.content.MagicContentHelper;
 import net.sf.anathema.character.reporting.pdf.rendering.boxes.EncodingMetrics;
 import net.sf.anathema.character.reporting.pdf.rendering.extent.Bounds;
 import net.sf.anathema.character.reporting.pdf.rendering.general.table.AbstractTableEncoder;

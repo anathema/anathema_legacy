@@ -1,4 +1,4 @@
-package net.sf.anathema.character.reporting.pdf;
+package net.sf.anathema.hero.charms.sheet.magicreport;
 
 import com.itextpdf.text.Chunk;
 import com.itextpdf.text.Element;
@@ -23,12 +23,6 @@ public final class MagicPartFactory {
 
   public MagicPartFactory(PdfReportUtils utils) {
     this.utils = utils;
-  }
-
-  public Element createFirstGroupTitle(String groupTitle) {
-    Paragraph paragraph = createGroupTitle(groupTitle);
-    paragraph.setLeading(0f);
-    return paragraph;
   }
 
   public Paragraph createGroupTitle(String groupTitle) {

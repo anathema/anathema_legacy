@@ -1,4 +1,4 @@
-package net.sf.anathema.character.reporting.pdf.content.magic;
+package net.sf.anathema.hero.charms.sheet.content;
 
 import com.google.common.base.Optional;
 import com.google.common.base.Predicate;
@@ -19,10 +19,10 @@ import net.sf.anathema.character.main.charm.ILearningCharmGroup;
 import net.sf.anathema.character.main.charm.special.IMultipleEffectCharmConfiguration;
 import net.sf.anathema.character.main.charm.special.ISubeffectCharmConfiguration;
 import net.sf.anathema.character.reporting.pdf.content.ReportSession;
-import net.sf.anathema.character.reporting.pdf.content.stats.magic.CharmStats;
-import net.sf.anathema.character.reporting.pdf.content.stats.magic.GenericCharmStats;
-import net.sf.anathema.character.reporting.pdf.content.stats.magic.MultipleEffectCharmStats;
-import net.sf.anathema.character.reporting.pdf.content.stats.magic.SpellStats;
+import net.sf.anathema.hero.charms.sheet.content.stats.CharmStats;
+import net.sf.anathema.hero.charms.sheet.content.stats.GenericCharmStats;
+import net.sf.anathema.hero.charms.sheet.content.stats.MultipleEffectCharmStats;
+import net.sf.anathema.hero.charms.sheet.content.stats.SpellStats;
 import net.sf.anathema.hero.model.Hero;
 
 import java.util.ArrayList;

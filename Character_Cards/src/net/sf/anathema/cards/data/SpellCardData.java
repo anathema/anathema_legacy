@@ -8,7 +8,7 @@ import com.itextpdf.text.Phrase;
 import net.sf.anathema.cards.layout.ICardReportResourceProvider;
 import net.sf.anathema.character.main.magic.ISpell;
 import net.sf.anathema.character.main.magic.description.MagicDescription;
-import net.sf.anathema.character.reporting.pdf.content.stats.magic.SpellStats;
+import net.sf.anathema.hero.charms.sheet.content.stats.SpellStats;
 import net.sf.anathema.lib.resources.Resources;
 
 public class SpellCardData extends AbstractMagicCardData {

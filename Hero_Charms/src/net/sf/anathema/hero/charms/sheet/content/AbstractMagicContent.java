@@ -5,12 +5,12 @@ import net.sf.anathema.character.reporting.pdf.content.AbstractSubBoxContent;
 import net.sf.anathema.character.reporting.pdf.content.ReportSession;
 import net.sf.anathema.hero.charms.sheet.content.mnemonic.MagicMnemonic;
 import net.sf.anathema.character.reporting.pdf.content.stats.IStatsGroup;
-import net.sf.anathema.character.reporting.pdf.content.stats.magic.MagicCostStatsGroup;
-import net.sf.anathema.character.reporting.pdf.content.stats.magic.MagicDetailsStatsGroup;
-import net.sf.anathema.character.reporting.pdf.content.stats.magic.MagicDurationStatsGroup;
-import net.sf.anathema.character.reporting.pdf.content.stats.magic.MagicNameStatsGroup;
-import net.sf.anathema.character.reporting.pdf.content.stats.magic.MagicSourceStatsGroup;
-import net.sf.anathema.character.reporting.pdf.content.stats.magic.MagicTypeStatsGroup;
+import net.sf.anathema.hero.charms.sheet.content.stats.MagicCostStatsGroup;
+import net.sf.anathema.hero.charms.sheet.content.stats.MagicDetailsStatsGroup;
+import net.sf.anathema.hero.charms.sheet.content.stats.MagicDurationStatsGroup;
+import net.sf.anathema.hero.charms.sheet.content.stats.MagicNameStatsGroup;
+import net.sf.anathema.hero.charms.sheet.content.stats.MagicSourceStatsGroup;
+import net.sf.anathema.hero.charms.sheet.content.stats.MagicTypeStatsGroup;
 import net.sf.anathema.lib.resources.Resources;
 
 import java.util.List;
