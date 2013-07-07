@@ -1,23 +1,18 @@
-package net.sf.anathema.character.main;
+package net.sf.anathema.character.reporting.text.description;
 
 import net.sf.anathema.hero.description.HeroDescription;
 
-public class GenericDescription implements IGenericDescription {
+public class TextDescriptionContentImpl implements TextDescriptionContent {
 
   private final HeroDescription description;
 
-  public GenericDescription(HeroDescription description) {
+  public TextDescriptionContentImpl(HeroDescription description) {
     this.description = description;
   }
 
   @Override
   public String getName() {
     return description.getName().getText();
-  }
-
-  @Override
-  public String getPeriphrase() {
-    return description.getPeriphrasis().getText();
   }
 
   @Override
@@ -53,11 +48,6 @@ public class GenericDescription implements IGenericDescription {
   @Override
   public String getAnima() {
     return description.getAnima().getText();
-  }
-
-  @Override
-  public String getPlayer() {
-    return description.getPlayer().getText();
   }
 
   @Override

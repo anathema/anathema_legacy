@@ -31,7 +31,6 @@ public interface ICharacterXmlConstants {
   String TAG_HAIR = "Hair";
   String TAG_NAME = "Name";
   String TAG_NOTES = "Notes";
-  String TAG_PERIPHRASE = "Periphrase";
   String TAG_PHYSICAL_DESCRIPTION = "PhysicalDescription";
   String TAG_PLAYER = "Player";
   String TAG_RULES = "Rules";

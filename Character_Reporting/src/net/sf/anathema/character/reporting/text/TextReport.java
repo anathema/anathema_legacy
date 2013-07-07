@@ -6,7 +6,8 @@ import com.itextpdf.text.DocumentException;
 import com.itextpdf.text.Phrase;
 import com.itextpdf.text.pdf.MultiColumnText;
 import com.itextpdf.text.pdf.PdfWriter;
-import net.sf.anathema.character.main.GenericDescription;
+import net.sf.anathema.character.reporting.text.description.TextDescriptionContentImpl;
+import net.sf.anathema.character.reporting.text.description.HeroDescriptionTextEncoder;
 import net.sf.anathema.hero.description.HeroDescriptionFetcher;
 import net.sf.anathema.character.main.Character;
 import net.sf.anathema.framework.reporting.ReportException;
@@ -36,8 +37,8 @@ public class TextReport extends AbstractPdfReport {
     columnText.addRegularColumns(document.left(), document.right(), 20, 2);
     Character character = (Character) item.getItemData();
     try {
-      GenericDescription description = new GenericDescription(HeroDescriptionFetcher.fetch(character));
-      new CharacterDescriptionTextEncoder(utils, resources).createParagraphs(columnText, description);
+      TextDescriptionContentImpl description = new TextDescriptionContentImpl(HeroDescriptionFetcher.fetch(character));
+      new HeroDescriptionTextEncoder(utils, resources).createParagraphs(columnText, description);
       new ConceptTextEncoder(utils, resources).createParagraphs(columnText, character);
       createConceptParagraph(columnText, description);
       new AttributeTextEncoder(utils, resources).createParagraphs(columnText, character);
@@ -49,7 +50,7 @@ public class TextReport extends AbstractPdfReport {
     }
   }
 
-  private void createConceptParagraph(MultiColumnText columnText, GenericDescription description) throws DocumentException {
+  private void createConceptParagraph(MultiColumnText columnText, TextDescriptionContentImpl description) throws DocumentException {
     TextPartFactory factory = new TextPartFactory(utils);
     String conceptText = description.getConceptText();
     if (!Strings.isNullOrEmpty(conceptText)) {

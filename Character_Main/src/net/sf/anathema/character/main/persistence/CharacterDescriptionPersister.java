@@ -18,7 +18,6 @@ public class CharacterDescriptionPersister {
     textPersister.restoreTextualDescription(descriptionElement, TAG_PLAYER, description.getPlayer());
     textPersister.restoreTextualDescription(descriptionElement, TAG_CHARACTERIZATION, description.getCharacterization());
     textPersister.restoreTextualDescription(descriptionElement, TAG_PHYSICAL_DESCRIPTION, description.getPhysicalDescription());
-    textPersister.restoreTextualDescription(descriptionElement, TAG_PERIPHRASE, description.getPeriphrasis());
     textPersister.restoreTextualDescription(descriptionElement, TAG_NOTES, description.getNotes());
     textPersister.restoreTextualDescription(descriptionElement, TAG_CONCEPT, description.getConcept());
 
@@ -35,7 +34,6 @@ public class CharacterDescriptionPersister {
     textPersister.saveTextualDescription(descriptionElement, TAG_PLAYER, description.getPlayer());
     textPersister.saveTextualDescription(descriptionElement, TAG_CHARACTERIZATION, description.getCharacterization());
     textPersister.saveTextualDescription(descriptionElement, TAG_PHYSICAL_DESCRIPTION, description.getPhysicalDescription());
-    textPersister.saveTextualDescription(descriptionElement, TAG_PERIPHRASE, description.getPeriphrasis());
     textPersister.saveTextualDescription(descriptionElement, TAG_NOTES, description.getNotes());
     textPersister.saveTextualDescription(descriptionElement, TAG_CONCEPT, description.getConcept());
 

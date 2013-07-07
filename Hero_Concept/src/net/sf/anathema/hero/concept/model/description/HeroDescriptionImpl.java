@@ -53,11 +53,6 @@ public class HeroDescriptionImpl implements HeroDescription, HeroModel {
   }
 
   @Override
-  public ITextualDescription getPeriphrasis() {
-    return paraphrasis;
-  }
-
-  @Override
   public ITextualDescription getCharacterization() {
     return characterization;
   }

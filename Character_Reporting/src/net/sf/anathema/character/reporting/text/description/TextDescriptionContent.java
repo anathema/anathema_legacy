@@ -1,10 +1,8 @@
-package net.sf.anathema.character.main;
+package net.sf.anathema.character.reporting.text.description;
 
-public interface IGenericDescription {
+public interface TextDescriptionContent {
 
   String getName();
-
-  String getPeriphrase();
 
   String getCharacterization();
 
@@ -19,8 +17,6 @@ public interface IGenericDescription {
   String getSkin();
   
   String getAnima();
-
-  String getPlayer();
 
   String getNotes();
 
