@@ -5,7 +5,7 @@ import net.sf.anathema.character.generic.magic.ISpell;
 import net.sf.anathema.character.generic.magic.description.MagicDescriptionProvider;
 import net.sf.anathema.character.main.model.experience.ExperienceModelFetcher;
 import net.sf.anathema.character.main.model.spells.SpellsModelFetcher;
-import net.sf.anathema.character.model.view.magic.ISpellViewProperties;
+import net.sf.anathema.character.main.view.magic.ISpellViewProperties;
 import net.sf.anathema.framework.ui.IdentifierConfiguration;
 import net.sf.anathema.hero.model.Hero;
 import net.sf.anathema.lib.gui.AgnosticUIConfiguration;

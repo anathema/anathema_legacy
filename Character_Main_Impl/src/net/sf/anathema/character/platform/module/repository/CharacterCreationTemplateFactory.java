@@ -1,7 +1,7 @@
 package net.sf.anathema.character.platform.module.repository;
 
 import net.sf.anathema.character.generic.framework.ICharacterGenerics;
-import net.sf.anathema.character.model.CharacterStatisticsConfiguration;
+import net.sf.anathema.character.main.CharacterStatisticsConfiguration;
 import net.sf.anathema.framework.view.SwingApplicationFrame;
 import net.sf.anathema.lib.gui.dialog.core.DialogResult;
 import net.sf.anathema.lib.gui.dialog.core.ISwingFrameOrDialog;

@@ -18,7 +18,7 @@ import net.sf.anathema.character.main.model.description.HeroDescriptionFetcher;
 import net.sf.anathema.character.main.model.experience.ExperienceModelFetcher;
 import net.sf.anathema.character.main.model.spells.SpellsModelFetcher;
 import net.sf.anathema.character.main.model.traits.TraitModelFetcher;
-import net.sf.anathema.character.model.ExaltedCharacter;
+import net.sf.anathema.character.main.ExaltedCharacter;
 import net.sf.anathema.character.main.persistence.charm.CharmConfigurationPersister;
 import net.sf.anathema.framework.messaging.IMessaging;
 import net.sf.anathema.hero.model.Hero;

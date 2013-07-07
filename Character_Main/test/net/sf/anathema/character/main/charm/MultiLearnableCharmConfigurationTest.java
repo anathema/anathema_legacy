@@ -11,9 +11,9 @@ import net.sf.anathema.character.main.testing.dummy.DummyHero;
 import net.sf.anathema.character.main.testing.dummy.magic.DummyCharmsModel;
 import net.sf.anathema.character.main.testing.dummy.magic.DummyLearnableArbitrator;
 import net.sf.anathema.character.main.charm.special.MultiLearnableCharmConfiguration;
-import net.sf.anathema.character.model.context.trait.CreationTraitValueStrategy;
-import net.sf.anathema.character.model.context.trait.ExperiencedTraitValueStrategy;
-import net.sf.anathema.character.model.context.trait.ProxyTraitValueStrategy;
+import net.sf.anathema.character.main.traits.context.CreationTraitValueStrategy;
+import net.sf.anathema.character.main.traits.context.ExperiencedTraitValueStrategy;
+import net.sf.anathema.character.main.traits.context.ProxyTraitValueStrategy;
 import org.junit.Before;
 import org.junit.Test;
 

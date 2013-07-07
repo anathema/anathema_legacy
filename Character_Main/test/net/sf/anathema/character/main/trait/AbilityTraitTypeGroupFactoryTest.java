@@ -7,7 +7,7 @@ import net.sf.anathema.character.generic.template.abilities.GroupedTraitType;
 import net.sf.anathema.character.generic.traits.TraitType;
 import net.sf.anathema.character.generic.traits.groups.IIdentifiedTraitTypeGroup;
 import net.sf.anathema.character.main.testing.dummy.DummyCasteType;
-import net.sf.anathema.character.model.traits.creation.AbilityTypeGroupFactory;
+import net.sf.anathema.character.main.traits.creation.AbilityTypeGroupFactory;
 import org.junit.Test;
 
 import java.util.Collections;

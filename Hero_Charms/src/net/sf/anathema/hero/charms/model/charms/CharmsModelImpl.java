@@ -22,7 +22,7 @@ import net.sf.anathema.character.main.model.experience.ExperienceModel;
 import net.sf.anathema.character.main.model.experience.ExperienceModelFetcher;
 import net.sf.anathema.character.main.model.traits.TraitModel;
 import net.sf.anathema.character.main.model.traits.TraitModelFetcher;
-import net.sf.anathema.character.model.CharacterChangeCharmListener;
+import net.sf.anathema.character.main.CharacterChangeCharmListener;
 import net.sf.anathema.character.main.charm.CharmLearnAdapter;
 import net.sf.anathema.character.main.charm.CharmSpecialistImpl;
 import net.sf.anathema.character.main.charm.CharmTraitRequirementChecker;

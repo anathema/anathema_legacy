@@ -2,7 +2,7 @@ package net.sf.anathema.hero.concept.display.description.view;
 
 import net.sf.anathema.character.generic.type.ICharacterType;
 import net.sf.anathema.character.main.framework.RegisteredCharacterView;
-import net.sf.anathema.character.model.view.SubViewFactory;
+import net.sf.anathema.character.main.view.SubViewFactory;
 import net.sf.anathema.hero.concept.display.description.presenter.CharacterDescriptionView;
 
 @RegisteredCharacterView(CharacterDescriptionView.class)

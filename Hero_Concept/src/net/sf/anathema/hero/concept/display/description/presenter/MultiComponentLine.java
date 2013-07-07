@@ -1,6 +1,6 @@
 package net.sf.anathema.hero.concept.display.description.presenter;
 
-import net.sf.anathema.character.model.IIntegerDescription;
+import net.sf.anathema.character.main.IIntegerDescription;
 import net.sf.anathema.lib.gui.widgets.IIntegerView;
 import net.sf.anathema.lib.workflow.textualdescription.ITextView;
 

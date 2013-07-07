@@ -7,8 +7,8 @@ import net.sf.anathema.character.main.presenter.initializers.HeroModelInitialize
 import net.sf.anathema.character.main.presenter.initializers.RegisteredInitializer;
 import net.sf.anathema.character.main.presenter.magic.combo.ComboConfigurationModel;
 import net.sf.anathema.character.main.presenter.magic.combo.ComboConfigurationPresenter;
-import net.sf.anathema.character.model.view.SectionView;
-import net.sf.anathema.character.model.view.magic.IComboConfigurationView;
+import net.sf.anathema.character.main.view.SectionView;
+import net.sf.anathema.character.main.view.magic.IComboConfigurationView;
 import net.sf.anathema.framework.IApplicationModel;
 import net.sf.anathema.hero.model.Hero;
 import net.sf.anathema.initialization.reflections.Weight;

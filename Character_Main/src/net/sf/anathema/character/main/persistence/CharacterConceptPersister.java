@@ -4,7 +4,7 @@ import net.sf.anathema.character.generic.caste.CasteType;
 import net.sf.anathema.character.generic.caste.ICasteCollection;
 import net.sf.anathema.character.main.model.concept.HeroConcept;
 import net.sf.anathema.character.main.model.description.HeroDescription;
-import net.sf.anathema.character.model.IIntegerDescription;
+import net.sf.anathema.character.main.IIntegerDescription;
 import net.sf.anathema.framework.persistence.TextPersister;
 import net.sf.anathema.hero.concept.model.concept.CasteSelection;
 import net.sf.anathema.lib.exception.PersistenceException;

@@ -2,7 +2,7 @@ package net.sf.anathema.character.main.library.trait.view.fx;
 
 import net.sf.anathema.character.main.library.trait.view.GroupedTraitView;
 import net.sf.anathema.character.main.presenter.ExtensibleTraitView;
-import net.sf.anathema.character.model.view.ColumnCount;
+import net.sf.anathema.character.main.view.ColumnCount;
 import org.tbee.javafx.scene.layout.MigPane;
 
 public class FxGroupedTraitView implements GroupedTraitView {

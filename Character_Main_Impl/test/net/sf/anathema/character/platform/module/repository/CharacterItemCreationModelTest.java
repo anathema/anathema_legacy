@@ -7,7 +7,7 @@ import net.sf.anathema.character.generic.type.ICharacterType;
 import net.sf.anathema.character.main.testing.dummy.DummyCharacterTypes;
 import net.sf.anathema.character.main.testing.dummy.DummyMundaneCharacterType;
 import net.sf.anathema.character.main.testing.dummy.template.SimpleDummyCharacterTemplate;
-import net.sf.anathema.character.model.CharacterStatisticsConfiguration;
+import net.sf.anathema.character.main.CharacterStatisticsConfiguration;
 import net.sf.anathema.lib.control.ChangeListener;
 import org.junit.Test;
 

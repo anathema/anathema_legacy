@@ -5,7 +5,7 @@ import net.sf.anathema.character.main.library.intvalue.IntValueDisplayFactoryPro
 import net.sf.anathema.character.main.library.virtueflaw.presenter.IDescriptiveVirtueFlawView;
 import net.sf.anathema.character.main.library.virtueflaw.view.DescriptiveVirtueFlawView;
 import net.sf.anathema.character.main.framework.RegisteredCharacterView;
-import net.sf.anathema.character.model.view.SubViewFactory;
+import net.sf.anathema.character.main.view.SubViewFactory;
 import net.sf.anathema.framework.value.IntegerViewFactory;
 
 @RegisteredCharacterView(IDescriptiveVirtueFlawView.class)

@@ -6,8 +6,8 @@ import net.sf.anathema.character.generic.magic.description.MagicDescriptionProvi
 import net.sf.anathema.character.generic.magic.spells.CircleType;
 import net.sf.anathema.character.main.model.experience.ExperienceModelFetcher;
 import net.sf.anathema.character.main.model.spells.SpellsModelFetcher;
-import net.sf.anathema.character.model.IMagicLearnListener;
-import net.sf.anathema.character.model.view.magic.ISpellView;
+import net.sf.anathema.character.main.IMagicLearnListener;
+import net.sf.anathema.character.main.view.magic.ISpellView;
 import net.sf.anathema.hero.model.Hero;
 import net.sf.anathema.lib.compare.I18nedIdentificateComparator;
 import net.sf.anathema.lib.compare.I18nedIdentificateSorter;

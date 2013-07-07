@@ -10,7 +10,7 @@ import net.sf.anathema.character.main.presenter.initializers.HeroModelInitialize
 import net.sf.anathema.character.main.presenter.initializers.RegisteredInitializer;
 import net.sf.anathema.character.main.presenter.magic.CharacterCharmModel;
 import net.sf.anathema.character.main.presenter.magic.charm.CharacterCharmTreePresenter;
-import net.sf.anathema.character.model.view.SectionView;
+import net.sf.anathema.character.main.view.SectionView;
 import net.sf.anathema.charmtree.view.CharmDisplayPropertiesMap;
 import net.sf.anathema.charmtree.view.ICharmView;
 import net.sf.anathema.framework.IApplicationModel;

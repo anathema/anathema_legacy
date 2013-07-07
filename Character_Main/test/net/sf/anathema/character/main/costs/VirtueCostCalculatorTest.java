@@ -7,10 +7,10 @@ import net.sf.anathema.character.main.library.trait.Trait;
 import net.sf.anathema.character.main.testing.BasicCharacterTestCase;
 import net.sf.anathema.character.main.testing.dummy.DummyHero;
 import net.sf.anathema.character.main.testing.dummy.template.DummyTraitTemplateFactory;
-import net.sf.anathema.character.model.context.trait.CreationTraitValueStrategy;
-import net.sf.anathema.character.model.creation.bonus.virtue.VirtueCostCalculator;
-import net.sf.anathema.character.model.traits.VirtueTemplateFactory;
-import net.sf.anathema.character.model.traits.creation.DefaultTraitFactory;
+import net.sf.anathema.character.main.traits.context.CreationTraitValueStrategy;
+import net.sf.anathema.character.main.creation.bonus.virtue.VirtueCostCalculator;
+import net.sf.anathema.character.main.traits.VirtueTemplateFactory;
+import net.sf.anathema.character.main.traits.creation.DefaultTraitFactory;
 import org.junit.Before;
 import org.junit.Test;
 

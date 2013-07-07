@@ -4,7 +4,7 @@ import javafx.scene.Node;
 import net.sf.anathema.character.generic.type.ICharacterType;
 import net.sf.anathema.character.main.library.trait.view.GroupedFavorableTraitConfigurationView;
 import net.sf.anathema.character.main.presenter.ExtensibleTraitView;
-import net.sf.anathema.character.model.view.ColumnCount;
+import net.sf.anathema.character.main.view.ColumnCount;
 import net.sf.anathema.platform.fx.NodeHolder;
 import org.tbee.javafx.scene.layout.MigPane;
 

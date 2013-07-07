@@ -2,8 +2,8 @@ package net.sf.anathema.character.main.presenter.initializers;
 
 import net.sf.anathema.character.main.presenter.BasicAdvantagePresenter;
 import net.sf.anathema.character.main.presenter.DefaultAdvantageViewProperties;
-import net.sf.anathema.character.model.view.AdvantageView;
-import net.sf.anathema.character.model.view.SectionView;
+import net.sf.anathema.character.main.view.AdvantageView;
+import net.sf.anathema.character.main.view.SectionView;
 import net.sf.anathema.framework.IApplicationModel;
 import net.sf.anathema.hero.model.Hero;
 import net.sf.anathema.initialization.reflections.Weight;

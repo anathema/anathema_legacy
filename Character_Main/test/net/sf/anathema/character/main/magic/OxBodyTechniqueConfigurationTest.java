@@ -23,7 +23,7 @@ import net.sf.anathema.character.main.testing.dummy.DummyInitializationContext;
 import net.sf.anathema.character.main.charm.OxBodyCategory;
 import net.sf.anathema.character.main.charm.special.IOxBodyTechniqueConfiguration;
 import net.sf.anathema.character.main.charm.special.OxBodyTechniqueConfiguration;
-import net.sf.anathema.character.model.context.trait.CreationTraitValueStrategy;
+import net.sf.anathema.character.main.traits.context.CreationTraitValueStrategy;
 import org.junit.Before;
 import org.junit.Test;
 

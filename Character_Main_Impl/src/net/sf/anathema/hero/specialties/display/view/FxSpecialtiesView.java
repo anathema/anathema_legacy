@@ -7,7 +7,7 @@ import net.sf.anathema.character.main.library.trait.view.fx.FxExtensibleTraitVie
 import net.sf.anathema.character.main.library.trait.view.fx.FxGroupedColumnPanel;
 import net.sf.anathema.character.main.library.trait.view.fx.FxTraitView;
 import net.sf.anathema.character.main.presenter.ExtensibleTraitView;
-import net.sf.anathema.character.model.view.ColumnCount;
+import net.sf.anathema.character.main.view.ColumnCount;
 import net.sf.anathema.hero.specialties.display.presenter.SpecialtiesConfigurationView;
 import net.sf.anathema.hero.specialties.display.presenter.SpecialtyCreationView;
 import net.sf.anathema.lib.file.RelativePath;

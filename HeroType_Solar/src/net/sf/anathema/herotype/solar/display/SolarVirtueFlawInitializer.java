@@ -6,7 +6,7 @@ import net.sf.anathema.character.main.library.virtueflaw.presenter.IDescriptiveV
 import net.sf.anathema.character.main.presenter.initializers.HeroModelInitializer;
 import net.sf.anathema.character.main.presenter.initializers.RegisteredInitializer;
 import net.sf.anathema.herotype.solar.model.SolarCharacterType;
-import net.sf.anathema.character.model.view.SectionView;
+import net.sf.anathema.character.main.view.SectionView;
 import net.sf.anathema.framework.model.ApplicationModel;
 import net.sf.anathema.hero.display.HeroModelGroup;
 import net.sf.anathema.hero.model.Hero;

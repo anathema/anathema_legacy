@@ -34,7 +34,7 @@ import net.sf.anathema.character.main.library.trait.Trait;
 import net.sf.anathema.character.main.library.trait.specialties.Specialty;
 import net.sf.anathema.character.main.model.essencepool.EssencePoolModelFetcher;
 import net.sf.anathema.character.main.model.traits.TraitModelFetcher;
-import net.sf.anathema.character.model.UnspecifiedChangeListener;
+import net.sf.anathema.character.main.UnspecifiedChangeListener;
 import net.sf.anathema.character.reporting.pdf.model.StatsModelFetcher;
 import net.sf.anathema.character.reporting.pdf.rendering.boxes.StatsModifierFactory;
 import net.sf.anathema.hero.change.ChangeAnnouncer;

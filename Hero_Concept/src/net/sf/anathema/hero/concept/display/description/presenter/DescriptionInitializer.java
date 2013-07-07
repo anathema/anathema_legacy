@@ -7,7 +7,7 @@ import net.sf.anathema.character.main.model.description.HeroDescriptionFetcher;
 import net.sf.anathema.character.main.presenter.DescriptionDetails;
 import net.sf.anathema.character.main.presenter.initializers.HeroModelInitializer;
 import net.sf.anathema.character.main.presenter.initializers.RegisteredInitializer;
-import net.sf.anathema.character.model.view.SectionView;
+import net.sf.anathema.character.main.view.SectionView;
 import net.sf.anathema.framework.IApplicationModel;
 import net.sf.anathema.hero.model.Hero;
 import net.sf.anathema.initialization.reflections.Weight;

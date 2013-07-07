@@ -4,7 +4,7 @@ import net.sf.anathema.character.generic.traits.types.OtherTraitType;
 import net.sf.anathema.character.main.model.essencepool.EssencePoolModelFetcher;
 import net.sf.anathema.character.main.model.traits.TraitMap;
 import net.sf.anathema.character.main.model.traits.TraitModelFetcher;
-import net.sf.anathema.character.model.view.AdvantageView;
+import net.sf.anathema.character.main.view.AdvantageView;
 import net.sf.anathema.hero.model.Hero;
 import net.sf.anathema.lib.gui.Presenter;
 import net.sf.anathema.lib.resources.Resources;

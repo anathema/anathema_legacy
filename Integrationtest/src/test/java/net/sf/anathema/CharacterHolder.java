@@ -7,7 +7,7 @@ import net.sf.anathema.character.main.model.concept.HeroConcept;
 import net.sf.anathema.character.main.model.concept.HeroConceptFetcher;
 import net.sf.anathema.character.main.model.traits.TraitMap;
 import net.sf.anathema.character.main.model.traits.TraitModelFetcher;
-import net.sf.anathema.character.model.Character;
+import net.sf.anathema.character.main.Character;
 
 public class CharacterHolder {
   private Character character;

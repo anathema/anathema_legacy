@@ -2,7 +2,7 @@ package net.sf.anathema.character.main.library.trait.view;
 
 import net.sf.anathema.character.generic.type.ICharacterType;
 import net.sf.anathema.character.main.presenter.ExtensibleTraitView;
-import net.sf.anathema.character.model.view.ColumnCount;
+import net.sf.anathema.character.main.view.ColumnCount;
 
 public interface GroupedFavorableTraitConfigurationView {
 

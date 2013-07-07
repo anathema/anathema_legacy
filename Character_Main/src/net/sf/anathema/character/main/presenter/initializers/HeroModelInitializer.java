@@ -1,6 +1,6 @@
 package net.sf.anathema.character.main.presenter.initializers;
 
-import net.sf.anathema.character.model.view.SectionView;
+import net.sf.anathema.character.main.view.SectionView;
 import net.sf.anathema.hero.model.Hero;
 import net.sf.anathema.lib.resources.Resources;
 

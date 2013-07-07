@@ -4,7 +4,7 @@ import net.sf.anathema.character.generic.type.ICharacterType;
 import net.sf.anathema.character.main.library.trait.view.GroupedFavorableTraitConfigurationView;
 import net.sf.anathema.character.main.library.util.CssSkinner;
 import net.sf.anathema.character.main.presenter.ExtensibleTraitView;
-import net.sf.anathema.character.model.view.ColumnCount;
+import net.sf.anathema.character.main.view.ColumnCount;
 import net.sf.anathema.framework.swing.IView;
 import net.sf.anathema.platform.fx.BridgingPanel;
 

@@ -8,7 +8,7 @@ import com.itextpdf.text.pdf.MultiColumnText;
 import com.itextpdf.text.pdf.PdfWriter;
 import net.sf.anathema.character.generic.GenericDescription;
 import net.sf.anathema.character.main.model.description.HeroDescriptionFetcher;
-import net.sf.anathema.character.model.Character;
+import net.sf.anathema.character.main.Character;
 import net.sf.anathema.framework.reporting.ReportException;
 import net.sf.anathema.framework.reporting.pdf.AbstractPdfReport;
 import net.sf.anathema.framework.reporting.pdf.PdfReportUtils;
@@ -68,6 +68,6 @@ public class TextReport extends AbstractPdfReport {
 
   @Override
   public boolean supports(Item item) {
-    return item != null && item.getItemData() instanceof net.sf.anathema.character.model.Character;
+    return item != null && item.getItemData() instanceof Character;
   }
 }

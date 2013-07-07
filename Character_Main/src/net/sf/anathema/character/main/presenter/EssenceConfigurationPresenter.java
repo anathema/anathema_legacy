@@ -5,7 +5,7 @@ import net.sf.anathema.character.main.library.trait.Trait;
 import net.sf.anathema.character.main.library.trait.presenter.TraitPresenter;
 import net.sf.anathema.character.main.model.essencepool.EssencePoolModel;
 import net.sf.anathema.character.main.model.traits.TraitMap;
-import net.sf.anathema.character.model.view.AdvantageView;
+import net.sf.anathema.character.main.view.AdvantageView;
 import net.sf.anathema.framework.value.IIntValueView;
 import net.sf.anathema.lib.control.ChangeListener;
 import net.sf.anathema.lib.gui.Presenter;

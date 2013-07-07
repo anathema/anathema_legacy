@@ -3,7 +3,7 @@ package net.sf.anathema.character.main.library.trait.view.fx;
 import javafx.scene.Node;
 import javafx.scene.control.Label;
 import net.miginfocom.layout.CC;
-import net.sf.anathema.character.model.view.ColumnCount;
+import net.sf.anathema.character.main.view.ColumnCount;
 import net.sf.anathema.lib.gui.layout.LayoutUtils;
 import net.sf.anathema.platform.fx.FxThreading;
 import org.tbee.javafx.scene.layout.MigPane;

@@ -4,7 +4,7 @@ import net.sf.anathema.character.generic.framework.additionaltemplate.model.Trai
 import net.sf.anathema.character.main.library.trait.Trait;
 import net.sf.anathema.character.main.model.traits.DefaultTraitMap;
 import net.sf.anathema.character.main.model.traits.TraitModel;
-import net.sf.anathema.character.model.context.trait.CreationTraitValueStrategy;
+import net.sf.anathema.character.main.traits.context.CreationTraitValueStrategy;
 import net.sf.anathema.hero.change.ChangeAnnouncer;
 import net.sf.anathema.hero.model.Hero;
 import net.sf.anathema.hero.model.HeroModel;

@@ -12,8 +12,8 @@ import net.sf.anathema.character.main.testing.dummy.DummyHero;
 import net.sf.anathema.character.main.testing.dummy.magic.DummyCharmsModel;
 import net.sf.anathema.character.main.testing.dummy.magic.DummySpell;
 import net.sf.anathema.character.main.testing.dummy.magic.DummySpellModel;
-import net.sf.anathema.character.model.context.trait.CreationTraitValueStrategy;
-import net.sf.anathema.character.model.creation.bonus.magic.MagicCostCalculator;
+import net.sf.anathema.character.main.traits.context.CreationTraitValueStrategy;
+import net.sf.anathema.character.main.creation.bonus.magic.MagicCostCalculator;
 import org.junit.Before;
 import org.junit.Test;
 

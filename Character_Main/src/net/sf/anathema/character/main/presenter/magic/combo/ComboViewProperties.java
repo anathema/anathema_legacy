@@ -5,7 +5,7 @@ import net.sf.anathema.character.generic.framework.resources.CharacterUI;
 import net.sf.anathema.character.generic.magic.ICharm;
 import net.sf.anathema.character.generic.magic.description.MagicDescriptionProvider;
 import net.sf.anathema.character.main.model.combos.CombosModel;
-import net.sf.anathema.character.model.view.magic.IComboViewProperties;
+import net.sf.anathema.character.main.view.magic.IComboViewProperties;
 import net.sf.anathema.charmtree.builder.stringbuilder.CharmInfoStringBuilder;
 import net.sf.anathema.charmtree.builder.stringbuilder.ICharmInfoStringBuilder;
 import net.sf.anathema.framework.presenter.resources.BasicUi;
