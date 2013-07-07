@@ -2,7 +2,7 @@ package net.sf.anathema.character.equipment.impl.character.model.stats.modificat
 
 import net.sf.anathema.character.equipment.impl.character.model.stats.modification.BaseMaterial;
 import net.sf.anathema.character.equipment.impl.character.model.stats.modification.StatModifier;
-import net.sf.anathema.character.generic.health.HealthType;
+import net.sf.anathema.character.main.health.HealthType;
 
 public class MaterialSoakModifier implements StatModifier {
   private final BaseMaterial material;

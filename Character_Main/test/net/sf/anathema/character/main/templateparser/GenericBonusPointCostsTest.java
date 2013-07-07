@@ -1,6 +1,6 @@
 package net.sf.anathema.character.main.templateparser;
 
-import net.sf.anathema.character.generic.framework.xml.creation.GenericBonusPointCosts;
+import net.sf.anathema.character.main.xml.creation.GenericBonusPointCosts;
 import net.sf.anathema.lib.testing.clone.AbstractDeepCloneableTest;
 
 public class GenericBonusPointCostsTest extends AbstractDeepCloneableTest {

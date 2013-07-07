@@ -1,7 +1,7 @@
 package net.sf.anathema.character.main.trait;
 
-import net.sf.anathema.character.generic.traits.types.AbilityType;
-import net.sf.anathema.character.generic.traits.types.ValuedTraitType;
+import net.sf.anathema.character.main.traits.types.AbilityType;
+import net.sf.anathema.character.main.traits.types.ValuedTraitType;
 import org.junit.Test;
 
 import static org.junit.Assert.assertFalse;

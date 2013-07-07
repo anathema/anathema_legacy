@@ -1,7 +1,7 @@
 package net.sf.anathema.hero.magic;
 
-import net.sf.anathema.character.generic.magic.IMagic;
-import net.sf.anathema.character.generic.magic.charms.special.IMultiLearnableCharm;
+import net.sf.anathema.character.main.magic.IMagic;
+import net.sf.anathema.character.main.magic.charms.special.IMultiLearnableCharm;
 
 public interface MagicCollection {
 	

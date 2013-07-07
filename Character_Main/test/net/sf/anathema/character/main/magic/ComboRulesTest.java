@@ -1,11 +1,10 @@
 package net.sf.anathema.character.main.magic;
 
-import net.sf.anathema.character.generic.magic.ICharm;
-import net.sf.anathema.character.generic.magic.charms.ComboRestrictions;
-import net.sf.anathema.character.generic.magic.charms.duration.SimpleDuration;
-import net.sf.anathema.character.generic.magic.charms.type.CharmType;
-import net.sf.anathema.character.generic.traits.types.AbilityType;
-import net.sf.anathema.character.generic.traits.types.ValuedTraitType;
+import net.sf.anathema.character.main.magic.charms.ComboRestrictions;
+import net.sf.anathema.character.main.magic.charms.duration.SimpleDuration;
+import net.sf.anathema.character.main.magic.charms.type.CharmType;
+import net.sf.anathema.character.main.traits.types.AbilityType;
+import net.sf.anathema.character.main.traits.types.ValuedTraitType;
 import net.sf.anathema.character.main.dummy.DummyCharm;
 import net.sf.anathema.character.main.dummy.DummyCharmUtilities;
 import net.sf.anathema.character.main.charm.combo.ComboArbitrator;

@@ -1,10 +1,10 @@
 package net.sf.anathema.hero.charms.display;
 
-import net.sf.anathema.character.generic.framework.CharacterGenericsExtractor;
-import net.sf.anathema.character.generic.framework.magic.view.CharmDescriptionProviderExtractor;
-import net.sf.anathema.character.generic.magic.description.MagicDescriptionProvider;
-import net.sf.anathema.character.generic.template.HeroTemplate;
-import net.sf.anathema.character.generic.template.ITemplateRegistry;
+import net.sf.anathema.character.main.framework.CharacterGenericsExtractor;
+import net.sf.anathema.character.main.magic.view.CharmDescriptionProviderExtractor;
+import net.sf.anathema.character.main.magic.description.MagicDescriptionProvider;
+import net.sf.anathema.character.main.template.HeroTemplate;
+import net.sf.anathema.character.main.template.ITemplateRegistry;
 import net.sf.anathema.character.main.charm.options.DefaultCharmTemplateRetriever;
 import net.sf.anathema.character.main.presenter.initializers.HeroModelInitializer;
 import net.sf.anathema.character.main.presenter.initializers.RegisteredInitializer;

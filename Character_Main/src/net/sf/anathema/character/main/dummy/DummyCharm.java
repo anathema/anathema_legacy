@@ -1,22 +1,22 @@
 package net.sf.anathema.character.main.dummy;
 
-import net.sf.anathema.character.generic.impl.magic.CharmAttribute;
-import net.sf.anathema.character.generic.impl.magic.CostList;
-import net.sf.anathema.character.generic.impl.magic.charm.type.CharmTypeModel;
-import net.sf.anathema.character.generic.magic.ICharm;
-import net.sf.anathema.character.generic.magic.IMagicVisitor;
-import net.sf.anathema.character.generic.magic.charms.ComboRestrictions;
-import net.sf.anathema.character.generic.magic.charms.ICharmAttribute;
-import net.sf.anathema.character.generic.magic.charms.ICharmLearnArbitrator;
-import net.sf.anathema.character.generic.magic.charms.IComboRestrictions;
-import net.sf.anathema.character.generic.magic.charms.IndirectCharmRequirement;
-import net.sf.anathema.character.generic.magic.charms.duration.IDuration;
-import net.sf.anathema.character.generic.magic.charms.duration.SimpleDuration;
-import net.sf.anathema.character.generic.magic.charms.type.CharmType;
-import net.sf.anathema.character.generic.rules.IExaltedSourceBook;
-import net.sf.anathema.character.generic.traits.ValuedTraitType;
-import net.sf.anathema.character.generic.traits.TraitType;
-import net.sf.anathema.character.generic.type.ICharacterType;
+import net.sf.anathema.character.main.magic.CharmAttribute;
+import net.sf.anathema.character.main.magic.CostList;
+import net.sf.anathema.character.main.magic.charm.type.CharmTypeModel;
+import net.sf.anathema.character.main.magic.ICharm;
+import net.sf.anathema.character.main.magic.IMagicVisitor;
+import net.sf.anathema.character.main.magic.charms.ComboRestrictions;
+import net.sf.anathema.character.main.magic.charms.ICharmAttribute;
+import net.sf.anathema.character.main.magic.charms.ICharmLearnArbitrator;
+import net.sf.anathema.character.main.magic.charms.IComboRestrictions;
+import net.sf.anathema.character.main.magic.charms.IndirectCharmRequirement;
+import net.sf.anathema.character.main.magic.charms.duration.IDuration;
+import net.sf.anathema.character.main.magic.charms.duration.SimpleDuration;
+import net.sf.anathema.character.main.magic.charms.type.CharmType;
+import net.sf.anathema.character.main.rules.IExaltedSourceBook;
+import net.sf.anathema.character.main.traits.ValuedTraitType;
+import net.sf.anathema.character.main.traits.TraitType;
+import net.sf.anathema.character.main.type.ICharacterType;
 import net.sf.anathema.character.main.model.traits.TraitMap;
 import net.sf.anathema.character.main.model.traits.TraitModelFetcher;
 import net.sf.anathema.hero.magic.MagicCollection;
@@ -249,7 +249,7 @@ public class DummyCharm extends SimpleIdentifier implements ICharm {
     this.duration = duration;
   }
 
-  public void setPrerequisites(net.sf.anathema.character.generic.traits.types.ValuedTraitType[] prerequisites) {
+  public void setPrerequisites(net.sf.anathema.character.main.traits.types.ValuedTraitType[] prerequisites) {
     this.prerequisites = prerequisites;
   }
 

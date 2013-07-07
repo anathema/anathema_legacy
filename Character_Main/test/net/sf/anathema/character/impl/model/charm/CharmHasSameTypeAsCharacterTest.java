@@ -1,6 +1,6 @@
 package net.sf.anathema.character.impl.model.charm;
 
-import net.sf.anathema.character.generic.type.ICharacterType;
+import net.sf.anathema.character.main.type.ICharacterType;
 import net.sf.anathema.character.main.charm.CharmHasSameTypeAsCharacter;
 import net.sf.anathema.character.main.dummy.DummyCharm;
 import net.sf.anathema.character.main.testing.dummy.DummyMundaneCharacterType;

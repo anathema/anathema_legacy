@@ -1,8 +1,8 @@
 package net.sf.anathema.hero.specialties.display.view;
 
 import javafx.scene.Node;
-import net.sf.anathema.character.generic.traits.TraitType;
-import net.sf.anathema.character.generic.type.ICharacterType;
+import net.sf.anathema.character.main.traits.TraitType;
+import net.sf.anathema.character.main.type.ICharacterType;
 import net.sf.anathema.character.main.library.trait.view.fx.FxExtensibleTraitView;
 import net.sf.anathema.character.main.library.trait.view.fx.FxGroupedColumnPanel;
 import net.sf.anathema.character.main.library.trait.view.fx.FxTraitView;

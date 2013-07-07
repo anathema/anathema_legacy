@@ -1,6 +1,6 @@
 package net.sf.anathema.character.main.traits.creation;
 
-import net.sf.anathema.character.generic.traits.TraitType;
+import net.sf.anathema.character.main.traits.TraitType;
 import net.sf.anathema.character.main.library.trait.Trait;
 import net.sf.anathema.character.main.library.trait.favorable.IncrementChecker;
 import net.sf.anathema.character.main.model.traits.TraitMap;

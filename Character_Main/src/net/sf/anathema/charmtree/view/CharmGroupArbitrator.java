@@ -1,7 +1,7 @@
 package net.sf.anathema.charmtree.view;
 
-import net.sf.anathema.character.generic.magic.ICharm;
-import net.sf.anathema.character.generic.magic.charms.ICharmGroup;
+import net.sf.anathema.character.main.magic.ICharm;
+import net.sf.anathema.character.main.magic.charms.ICharmGroup;
 
 public interface CharmGroupArbitrator {
 

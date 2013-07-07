@@ -1,7 +1,7 @@
 package net.sf.anathema.character.main;
 
-import net.sf.anathema.character.generic.framework.ICharacterGenerics;
-import net.sf.anathema.character.generic.template.HeroTemplate;
+import net.sf.anathema.character.main.framework.ICharacterGenerics;
+import net.sf.anathema.character.main.template.HeroTemplate;
 import net.sf.anathema.character.main.model.description.HeroDescription;
 import net.sf.anathema.character.main.model.description.HeroDescriptionFetcher;
 import net.sf.anathema.framework.presenter.itemmanagement.PrintNameAdjuster;

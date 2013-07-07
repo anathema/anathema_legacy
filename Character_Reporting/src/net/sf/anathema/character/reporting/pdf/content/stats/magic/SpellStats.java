@@ -1,8 +1,8 @@
 package net.sf.anathema.character.reporting.pdf.content.stats.magic;
 
 import com.google.common.base.Function;
-import net.sf.anathema.character.generic.magic.IMagicStats;
-import net.sf.anathema.character.generic.magic.ISpell;
+import net.sf.anathema.character.main.magic.IMagicStats;
+import net.sf.anathema.character.main.magic.ISpell;
 import net.sf.anathema.charmtree.builder.stringbuilder.IMagicSourceStringBuilder;
 import net.sf.anathema.charmtree.builder.stringbuilder.source.MagicSourceStringBuilder;
 import net.sf.anathema.lib.resources.Resources;

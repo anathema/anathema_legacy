@@ -1,7 +1,7 @@
 package net.sf.anathema.character.main.testing.dummy;
 
-import net.sf.anathema.character.generic.type.CharacterTypes;
-import net.sf.anathema.character.generic.type.ICharacterType;
+import net.sf.anathema.character.main.type.CharacterTypes;
+import net.sf.anathema.character.main.type.ICharacterType;
 
 public class DummyCharacterTypes implements CharacterTypes {
   private ICharacterType type;

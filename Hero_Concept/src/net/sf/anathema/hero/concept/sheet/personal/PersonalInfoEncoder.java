@@ -1,7 +1,7 @@
 package net.sf.anathema.hero.concept.sheet.personal;
 
-import net.sf.anathema.character.generic.caste.CasteType;
-import net.sf.anathema.character.generic.type.ICharacterType;
+import net.sf.anathema.character.main.caste.CasteType;
+import net.sf.anathema.character.main.type.ICharacterType;
 import net.sf.anathema.character.main.model.concept.HeroConceptFetcher;
 import net.sf.anathema.character.reporting.pdf.content.ReportSession;
 import net.sf.anathema.character.reporting.pdf.rendering.extent.Bounds;

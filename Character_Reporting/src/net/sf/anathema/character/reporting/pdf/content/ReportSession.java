@@ -1,7 +1,7 @@
 package net.sf.anathema.character.reporting.pdf.content;
 
-import net.sf.anathema.character.generic.GenericDescription;
-import net.sf.anathema.character.generic.character.IGenericDescription;
+import net.sf.anathema.character.main.GenericDescription;
+import net.sf.anathema.character.main.IGenericDescription;
 import net.sf.anathema.character.main.model.description.HeroDescriptionFetcher;
 import net.sf.anathema.hero.model.Hero;
 

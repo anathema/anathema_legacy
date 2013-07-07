@@ -1,6 +1,6 @@
 package net.sf.anathema.hero.initialization;
 
-import net.sf.anathema.character.generic.framework.ICharacterGenerics;
+import net.sf.anathema.character.main.framework.ICharacterGenerics;
 import net.sf.anathema.hero.model.HeroModelAutoCollector;
 import net.sf.anathema.hero.model.HeroModelFactory;
 import net.sf.anathema.initialization.ObjectFactory;

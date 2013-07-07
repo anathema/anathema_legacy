@@ -1,8 +1,8 @@
 package net.sf.anathema.charmtree.presenter;
 
-import net.sf.anathema.character.generic.impl.magic.charm.CharmGroup;
-import net.sf.anathema.character.generic.magic.ICharm;
-import net.sf.anathema.character.generic.magic.charms.ICharmGroup;
+import net.sf.anathema.character.main.magic.charm.CharmGroup;
+import net.sf.anathema.character.main.magic.ICharm;
+import net.sf.anathema.character.main.magic.charms.ICharmGroup;
 import net.sf.anathema.character.main.dummy.DummyCharm;
 import net.sf.anathema.character.main.testing.dummy.DummyMundaneCharacterType;
 import net.sf.anathema.character.main.presenter.magic.CharmColoring;

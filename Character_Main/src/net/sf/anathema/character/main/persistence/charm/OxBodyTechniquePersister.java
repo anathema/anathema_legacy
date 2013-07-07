@@ -1,6 +1,6 @@
 package net.sf.anathema.character.main.persistence.charm;
 
-import net.sf.anathema.character.generic.magic.charms.special.ISpecialCharmConfiguration;
+import net.sf.anathema.character.main.magic.charms.special.ISpecialCharmConfiguration;
 import net.sf.anathema.character.main.library.trait.persistence.TraitPersister;
 import net.sf.anathema.character.main.charm.OxBodyCategory;
 import net.sf.anathema.character.main.charm.special.IOxBodyTechniqueConfiguration;

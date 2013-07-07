@@ -1,7 +1,7 @@
 package net.sf.anathema.character.main.model.abilities;
 
-import net.sf.anathema.character.generic.traits.TraitType;
-import net.sf.anathema.character.generic.traits.groups.IIdentifiedTraitTypeGroup;
+import net.sf.anathema.character.main.traits.TraitType;
+import net.sf.anathema.character.main.traits.groups.IIdentifiedTraitTypeGroup;
 import net.sf.anathema.character.main.library.trait.Trait;
 import net.sf.anathema.character.main.model.traits.TraitMap;
 import net.sf.anathema.lib.util.Identifier;

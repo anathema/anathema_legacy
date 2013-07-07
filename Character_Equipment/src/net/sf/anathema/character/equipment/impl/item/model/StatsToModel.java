@@ -9,12 +9,12 @@ import net.sf.anathema.character.equipment.creation.model.stats.IWeaponTagsModel
 import net.sf.anathema.character.equipment.impl.creation.model.EquipmentStatisticsCreationModel;
 import net.sf.anathema.character.equipment.impl.creation.model.WeaponTag;
 import net.sf.anathema.character.equipment.item.model.EquipmentStatisticsType;
-import net.sf.anathema.character.generic.equipment.ArtifactStats;
-import net.sf.anathema.character.generic.equipment.ITraitModifyingStats;
-import net.sf.anathema.character.generic.equipment.weapon.IArmourStats;
-import net.sf.anathema.character.generic.equipment.weapon.IEquipmentStats;
-import net.sf.anathema.character.generic.equipment.weapon.IWeaponStats;
-import net.sf.anathema.character.generic.health.HealthType;
+import net.sf.anathema.character.main.equipment.ArtifactStats;
+import net.sf.anathema.character.main.equipment.ITraitModifyingStats;
+import net.sf.anathema.character.main.equipment.weapon.IArmourStats;
+import net.sf.anathema.character.main.equipment.weapon.IEquipmentStats;
+import net.sf.anathema.character.main.equipment.weapon.IWeaponStats;
+import net.sf.anathema.character.main.health.HealthType;
 import net.sf.anathema.lib.util.Identifier;
 
 import static net.sf.anathema.character.equipment.item.model.EquipmentStatisticsType.Artifact;

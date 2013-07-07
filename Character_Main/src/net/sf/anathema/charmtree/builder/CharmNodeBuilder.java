@@ -1,7 +1,7 @@
 package net.sf.anathema.charmtree.builder;
 
-import net.sf.anathema.character.generic.magic.ICharm;
-import net.sf.anathema.character.generic.magic.charms.IndirectCharmRequirement;
+import net.sf.anathema.character.main.magic.ICharm;
+import net.sf.anathema.character.main.magic.charms.IndirectCharmRequirement;
 import net.sf.anathema.graph.nodes.IIdentifiedRegularNode;
 import net.sf.anathema.graph.nodes.NodeFactory;
 

@@ -1,9 +1,9 @@
 package net.sf.anathema.hero.intimacies.model;
 
-import net.sf.anathema.character.generic.traits.ValuedTraitType;
-import net.sf.anathema.character.generic.traits.ITraitTemplate;
-import net.sf.anathema.character.generic.traits.LowerableState;
-import net.sf.anathema.character.generic.traits.types.VirtueType;
+import net.sf.anathema.character.main.traits.ValuedTraitType;
+import net.sf.anathema.character.main.traits.ITraitTemplate;
+import net.sf.anathema.character.main.traits.LowerableState;
+import net.sf.anathema.character.main.traits.types.VirtueType;
 import net.sf.anathema.character.main.library.trait.DefaultTrait;
 import net.sf.anathema.character.main.library.trait.Trait;
 import net.sf.anathema.character.main.library.trait.ValueChangeChecker;
@@ -14,7 +14,7 @@ import net.sf.anathema.lib.control.GlobalChangeAdapter;
 import net.sf.anathema.lib.control.IBooleanValueChangedListener;
 import org.jmock.example.announcer.Announcer;
 
-import static net.sf.anathema.character.generic.impl.traits.SimpleTraitTemplate.createVirtueLimitedTemplate;
+import static net.sf.anathema.character.main.traits.SimpleTraitTemplate.createVirtueLimitedTemplate;
 
 public class IntimacyImpl implements Intimacy {
 

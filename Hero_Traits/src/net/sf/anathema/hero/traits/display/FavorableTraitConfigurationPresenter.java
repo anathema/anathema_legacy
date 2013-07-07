@@ -1,8 +1,8 @@
 package net.sf.anathema.hero.traits.display;
 
-import net.sf.anathema.character.generic.template.presentation.IPresentationProperties;
-import net.sf.anathema.character.generic.traits.groups.IIdentifiedTraitTypeGroup;
-import net.sf.anathema.character.generic.traits.groups.TraitTypeGroup;
+import net.sf.anathema.character.main.template.presentation.IPresentationProperties;
+import net.sf.anathema.character.main.traits.groups.IIdentifiedTraitTypeGroup;
+import net.sf.anathema.character.main.traits.groups.TraitTypeGroup;
 import net.sf.anathema.character.main.library.ITraitFavorization;
 import net.sf.anathema.character.main.library.trait.Trait;
 import net.sf.anathema.character.main.library.trait.favorable.FavorableState;

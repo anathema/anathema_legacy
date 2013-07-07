@@ -1,6 +1,6 @@
 package net.sf.anathema.hero.othertraits.sheet.willpower.content;
 
-import net.sf.anathema.character.generic.traits.types.OtherTraitType;
+import net.sf.anathema.character.main.traits.types.OtherTraitType;
 import net.sf.anathema.character.main.model.othertraits.OtherTraitModelFetcher;
 import net.sf.anathema.character.reporting.pdf.content.AbstractSubBoxContent;
 import net.sf.anathema.character.reporting.pdf.content.general.BulletList;

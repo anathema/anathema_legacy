@@ -1,7 +1,7 @@
 package net.sf.anathema.character.main.charm;
 
 import com.google.common.base.Predicate;
-import net.sf.anathema.character.generic.magic.ICharm;
+import net.sf.anathema.character.main.magic.ICharm;
 import net.sf.anathema.hero.model.Hero;
 import net.sf.anathema.hero.template.NativeCharacterType;
 

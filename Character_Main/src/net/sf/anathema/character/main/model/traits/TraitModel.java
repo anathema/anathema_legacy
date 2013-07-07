@@ -1,6 +1,6 @@
 package net.sf.anathema.character.main.model.traits;
 
-import net.sf.anathema.character.generic.framework.additionaltemplate.model.TraitValueStrategy;
+import net.sf.anathema.character.main.traits.TraitValueStrategy;
 import net.sf.anathema.character.main.library.trait.Trait;
 import net.sf.anathema.character.main.traits.TraitIterable;
 import net.sf.anathema.lib.util.Identifier;

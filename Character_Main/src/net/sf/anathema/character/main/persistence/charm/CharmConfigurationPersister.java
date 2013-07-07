@@ -1,11 +1,11 @@
 package net.sf.anathema.character.main.persistence.charm;
 
-import net.sf.anathema.character.generic.impl.magic.MartialArtsUtilities;
-import net.sf.anathema.character.generic.magic.ICharm;
-import net.sf.anathema.character.generic.magic.charms.CharmIdMap;
-import net.sf.anathema.character.generic.magic.charms.special.ISpecialCharmConfiguration;
-import net.sf.anathema.character.generic.template.magic.ICharmTemplate;
-import net.sf.anathema.character.generic.traits.LowerableState;
+import net.sf.anathema.character.main.magic.MartialArtsUtilities;
+import net.sf.anathema.character.main.magic.ICharm;
+import net.sf.anathema.character.main.magic.charms.CharmIdMap;
+import net.sf.anathema.character.main.magic.charms.special.ISpecialCharmConfiguration;
+import net.sf.anathema.character.main.template.magic.ICharmTemplate;
+import net.sf.anathema.character.main.traits.LowerableState;
 import net.sf.anathema.character.main.library.trait.DefaultTrait;
 import net.sf.anathema.character.main.library.trait.DefaultTraitType;
 import net.sf.anathema.character.main.library.trait.LimitedTrait;
@@ -27,7 +27,7 @@ import net.sf.anathema.lib.util.Identifier;
 import net.sf.anathema.lib.xml.ElementUtilities;
 import org.dom4j.Element;
 
-import static net.sf.anathema.character.generic.impl.traits.SimpleTraitTemplate.createEssenceLimitedTemplate;
+import static net.sf.anathema.character.main.traits.SimpleTraitTemplate.createEssenceLimitedTemplate;
 import static net.sf.anathema.character.main.persistence.ICharacterXmlConstants.ATTRIB_EXPERIENCE_LEARNED;
 import static net.sf.anathema.character.main.persistence.ICharacterXmlConstants.ATTRIB_NAME;
 import static net.sf.anathema.character.main.persistence.ICharacterXmlConstants.ATTRIB_TYPE;

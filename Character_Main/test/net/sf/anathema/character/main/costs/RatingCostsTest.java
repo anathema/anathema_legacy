@@ -1,6 +1,6 @@
 package net.sf.anathema.character.main.costs;
 
-import net.sf.anathema.character.generic.impl.template.points.MultiplyRatingCosts;
+import net.sf.anathema.character.main.template.points.MultiplyRatingCosts;
 import org.junit.Test;
 
 import static org.junit.Assert.assertEquals;

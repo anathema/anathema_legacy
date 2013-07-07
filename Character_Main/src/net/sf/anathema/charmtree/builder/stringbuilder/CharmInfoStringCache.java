@@ -1,8 +1,8 @@
 package net.sf.anathema.charmtree.builder.stringbuilder;
 
 import com.google.common.collect.Maps;
-import net.sf.anathema.character.generic.magic.ICharm;
-import net.sf.anathema.character.generic.magic.charms.special.ISpecialCharm;
+import net.sf.anathema.character.main.magic.ICharm;
+import net.sf.anathema.character.main.magic.charms.special.ISpecialCharm;
 
 import java.util.Map;
 

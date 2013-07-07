@@ -1,8 +1,8 @@
 package net.sf.anathema.character.main.charm.options;
 
-import net.sf.anathema.character.generic.template.magic.ICharmTemplate;
-import net.sf.anathema.character.generic.type.CharacterTypes;
-import net.sf.anathema.character.generic.type.ICharacterType;
+import net.sf.anathema.character.main.template.magic.ICharmTemplate;
+import net.sf.anathema.character.main.type.CharacterTypes;
+import net.sf.anathema.character.main.type.ICharacterType;
 
 import java.util.ArrayList;
 import java.util.Iterator;

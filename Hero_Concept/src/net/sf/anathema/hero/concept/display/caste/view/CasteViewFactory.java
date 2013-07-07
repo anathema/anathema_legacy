@@ -1,6 +1,6 @@
 package net.sf.anathema.hero.concept.display.caste.view;
 
-import net.sf.anathema.character.generic.type.ICharacterType;
+import net.sf.anathema.character.main.type.ICharacterType;
 import net.sf.anathema.character.main.framework.RegisteredCharacterView;
 import net.sf.anathema.character.main.view.SubViewFactory;
 import net.sf.anathema.hero.concept.display.caste.presenter.CasteView;

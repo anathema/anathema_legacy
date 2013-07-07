@@ -1,9 +1,9 @@
 package net.sf.anathema.character.main.charm.options;
 
-import net.sf.anathema.character.generic.template.HeroTemplate;
-import net.sf.anathema.character.generic.template.ITemplateRegistry;
-import net.sf.anathema.character.generic.template.magic.ICharmTemplate;
-import net.sf.anathema.character.generic.type.ICharacterType;
+import net.sf.anathema.character.main.template.HeroTemplate;
+import net.sf.anathema.character.main.template.ITemplateRegistry;
+import net.sf.anathema.character.main.template.magic.ICharmTemplate;
+import net.sf.anathema.character.main.type.ICharacterType;
 import net.sf.anathema.hero.model.Hero;
 
 public class DefaultCharmTemplateRetriever implements CharmTemplateRetriever {

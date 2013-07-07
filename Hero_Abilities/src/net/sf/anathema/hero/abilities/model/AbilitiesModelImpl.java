@@ -1,10 +1,10 @@
 package net.sf.anathema.hero.abilities.model;
 
-import net.sf.anathema.character.generic.caste.ICasteCollection;
-import net.sf.anathema.character.generic.template.HeroTemplate;
-import net.sf.anathema.character.generic.template.abilities.GroupedTraitType;
-import net.sf.anathema.character.generic.traits.TraitType;
-import net.sf.anathema.character.generic.traits.groups.IIdentifiedCasteTraitTypeGroup;
+import net.sf.anathema.character.main.caste.ICasteCollection;
+import net.sf.anathema.character.main.template.HeroTemplate;
+import net.sf.anathema.character.main.template.abilities.GroupedTraitType;
+import net.sf.anathema.character.main.traits.TraitType;
+import net.sf.anathema.character.main.traits.groups.IIdentifiedCasteTraitTypeGroup;
 import net.sf.anathema.character.main.library.trait.Trait;
 import net.sf.anathema.character.main.library.trait.favorable.IncrementChecker;
 import net.sf.anathema.character.main.model.abilities.AbilitiesModel;

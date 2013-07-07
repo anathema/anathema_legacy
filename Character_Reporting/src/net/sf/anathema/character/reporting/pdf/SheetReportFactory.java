@@ -1,8 +1,8 @@
 package net.sf.anathema.character.reporting.pdf;
 
 import com.google.common.collect.Lists;
-import net.sf.anathema.character.generic.framework.CharacterGenericsExtractor;
-import net.sf.anathema.character.generic.framework.ICharacterGenerics;
+import net.sf.anathema.character.main.framework.CharacterGenericsExtractor;
+import net.sf.anathema.character.main.framework.ICharacterGenerics;
 import net.sf.anathema.framework.IApplicationModel;
 import net.sf.anathema.framework.initialization.IReportFactory;
 import net.sf.anathema.framework.module.preferences.PageSizePreference;

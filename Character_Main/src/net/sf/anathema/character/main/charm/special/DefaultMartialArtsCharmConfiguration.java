@@ -1,7 +1,7 @@
 package net.sf.anathema.character.main.charm.special;
 
-import net.sf.anathema.character.generic.magic.ICharm;
-import net.sf.anathema.character.generic.template.magic.MartialArtsCharmConfiguration;
+import net.sf.anathema.character.main.magic.ICharm;
+import net.sf.anathema.character.main.template.magic.MartialArtsCharmConfiguration;
 import net.sf.anathema.character.main.model.charms.CharmsModel;
 import net.sf.anathema.character.main.model.experience.ExperienceModel;
 import net.sf.anathema.character.main.charm.ILearningCharmGroup;
@@ -10,10 +10,10 @@ import net.sf.anathema.hero.magic.MagicCollection;
 import java.util.HashSet;
 import java.util.Set;
 
-import static net.sf.anathema.character.generic.impl.magic.MartialArtsUtilities.MARTIAL_ARTS;
-import static net.sf.anathema.character.generic.impl.magic.MartialArtsUtilities.hasLevel;
-import static net.sf.anathema.character.generic.magic.ICharmData.NO_STYLE_ATTRIBUTE;
-import static net.sf.anathema.character.generic.magic.charms.MartialArtsLevel.Celestial;
+import static net.sf.anathema.character.main.magic.MartialArtsUtilities.MARTIAL_ARTS;
+import static net.sf.anathema.character.main.magic.MartialArtsUtilities.hasLevel;
+import static net.sf.anathema.character.main.magic.ICharmData.NO_STYLE_ATTRIBUTE;
+import static net.sf.anathema.character.main.magic.charms.MartialArtsLevel.Celestial;
 
 public class DefaultMartialArtsCharmConfiguration implements MartialArtsCharmConfiguration {
   private final CharmsModel configuration;

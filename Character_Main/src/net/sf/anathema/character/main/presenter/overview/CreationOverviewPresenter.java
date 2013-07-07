@@ -1,7 +1,7 @@
 package net.sf.anathema.character.main.presenter.overview;
 
-import net.sf.anathema.character.generic.caste.CasteType;
-import net.sf.anathema.character.generic.template.HeroTemplate;
+import net.sf.anathema.character.main.caste.CasteType;
+import net.sf.anathema.character.main.template.HeroTemplate;
 import net.sf.anathema.character.main.library.overview.IOverviewCategory;
 import net.sf.anathema.character.main.model.concept.HeroConceptFetcher;
 import net.sf.anathema.character.main.creation.IBonusPointManagement;

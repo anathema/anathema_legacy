@@ -1,8 +1,8 @@
 package net.sf.anathema.character.main.library.virtueflaw.model;
 
-import net.sf.anathema.character.generic.traits.ITraitTemplate;
-import net.sf.anathema.character.generic.traits.LowerableState;
-import net.sf.anathema.character.generic.traits.TraitType;
+import net.sf.anathema.character.main.traits.ITraitTemplate;
+import net.sf.anathema.character.main.traits.LowerableState;
+import net.sf.anathema.character.main.traits.TraitType;
 import net.sf.anathema.character.main.library.trait.DefaultTraitType;
 import net.sf.anathema.character.main.library.trait.LimitedTrait;
 import net.sf.anathema.character.main.library.trait.Trait;
@@ -13,7 +13,7 @@ import net.sf.anathema.lib.workflow.textualdescription.ITextualDescription;
 import net.sf.anathema.lib.workflow.textualdescription.SimpleTextualDescription;
 import org.jmock.example.announcer.Announcer;
 
-import static net.sf.anathema.character.generic.impl.traits.SimpleTraitTemplate.createStaticLimitedTemplate;
+import static net.sf.anathema.character.main.traits.SimpleTraitTemplate.createStaticLimitedTemplate;
 
 public class VirtueFlawImpl implements VirtueFlaw {
 

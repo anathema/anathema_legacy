@@ -1,6 +1,6 @@
 package net.sf.anathema.character.main.library.virtueflaw.presenter;
 
-import net.sf.anathema.character.generic.traits.TraitType;
+import net.sf.anathema.character.main.traits.TraitType;
 import net.sf.anathema.framework.value.IIntValueView;
 import net.sf.anathema.lib.gui.AgnosticUIConfiguration;
 import net.sf.anathema.lib.gui.selection.IObjectSelectionView;

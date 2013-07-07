@@ -1,6 +1,6 @@
 package net.sf.anathema.hero.attributes.dummy;
 
-import net.sf.anathema.character.generic.traits.groups.IIdentifiedTraitTypeGroup;
+import net.sf.anathema.character.main.traits.groups.IIdentifiedTraitTypeGroup;
 import net.sf.anathema.character.main.library.trait.TraitGroup;
 import net.sf.anathema.hero.attributes.model.AttributeModel;
 import net.sf.anathema.character.main.model.traits.DefaultTraitMap;

@@ -1,9 +1,9 @@
 package net.sf.anathema.character.main.templateparser;
 
 import junit.framework.TestCase;
-import net.sf.anathema.character.generic.framework.xml.trait.GenericTraitTemplate;
-import net.sf.anathema.character.generic.framework.xml.trait.GenericTraitTemplateFactory;
-import net.sf.anathema.character.generic.impl.traits.limitation.StaticTraitLimitation;
+import net.sf.anathema.character.main.xml.trait.GenericTraitTemplate;
+import net.sf.anathema.character.main.xml.trait.GenericTraitTemplateFactory;
+import net.sf.anathema.character.main.traits.limitation.StaticTraitLimitation;
 
 public class GenericTraitTemplateFactoryTest extends TestCase {
 

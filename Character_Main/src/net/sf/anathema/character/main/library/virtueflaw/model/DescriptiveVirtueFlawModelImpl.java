@@ -1,7 +1,7 @@
 package net.sf.anathema.character.main.library.virtueflaw.model;
 
-import net.sf.anathema.character.generic.traits.TraitType;
-import net.sf.anathema.character.generic.traits.types.VirtueType;
+import net.sf.anathema.character.main.traits.TraitType;
+import net.sf.anathema.character.main.traits.types.VirtueType;
 import net.sf.anathema.character.main.model.traits.TraitChangeFlavor;
 import net.sf.anathema.character.main.model.traits.TraitModel;
 import net.sf.anathema.character.main.model.traits.TraitModelFetcher;

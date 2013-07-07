@@ -1,7 +1,7 @@
 package net.sf.anathema.character.equipment.impl.character.model.print;
 
 import net.sf.anathema.character.equipment.character.model.IEquipmentItem;
-import net.sf.anathema.character.generic.equipment.weapon.IEquipmentStats;
+import net.sf.anathema.character.main.equipment.weapon.IEquipmentStats;
 
 public interface IEquipmentStatsDecorationFactory<K extends IEquipmentStats> {
 

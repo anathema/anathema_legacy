@@ -1,9 +1,9 @@
 package net.sf.anathema.character.main.traits.creation;
 
-import net.sf.anathema.character.generic.caste.CasteType;
-import net.sf.anathema.character.generic.traits.ITraitTemplate;
-import net.sf.anathema.character.generic.traits.TraitType;
-import net.sf.anathema.character.generic.traits.groups.IIdentifiedCasteTraitTypeGroup;
+import net.sf.anathema.character.main.caste.CasteType;
+import net.sf.anathema.character.main.traits.ITraitTemplate;
+import net.sf.anathema.character.main.traits.TraitType;
+import net.sf.anathema.character.main.traits.groups.IIdentifiedCasteTraitTypeGroup;
 import net.sf.anathema.character.main.library.trait.DefaultTrait;
 import net.sf.anathema.character.main.library.trait.FriendlyValueChangeChecker;
 import net.sf.anathema.character.main.library.trait.Trait;

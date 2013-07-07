@@ -1,9 +1,9 @@
 package net.sf.anathema.character.main.library.trait;
 
 import com.google.common.base.Preconditions;
-import net.sf.anathema.character.generic.caste.CasteType;
-import net.sf.anathema.character.generic.framework.additionaltemplate.model.TraitValueStrategy;
-import net.sf.anathema.character.generic.traits.TraitType;
+import net.sf.anathema.character.main.caste.CasteType;
+import net.sf.anathema.character.main.traits.TraitValueStrategy;
+import net.sf.anathema.character.main.traits.TraitType;
 import net.sf.anathema.character.main.library.ITraitFavorization;
 import net.sf.anathema.character.main.library.trait.favorable.IncrementChecker;
 import net.sf.anathema.character.main.library.trait.favorable.NullTraitFavorization;

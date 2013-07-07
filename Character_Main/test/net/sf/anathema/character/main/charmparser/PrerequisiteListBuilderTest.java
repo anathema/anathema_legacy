@@ -1,11 +1,11 @@
 package net.sf.anathema.character.main.charmparser;
 
-import net.sf.anathema.character.generic.impl.magic.ICharmXMLConstants;
-import net.sf.anathema.character.generic.impl.magic.persistence.builder.prerequisite.AttributeRequirementBuilder;
-import net.sf.anathema.character.generic.impl.magic.persistence.builder.prerequisite.CharmPrerequisiteBuilder;
-import net.sf.anathema.character.generic.impl.magic.persistence.builder.prerequisite.PrerequisiteListBuilder;
-import net.sf.anathema.character.generic.impl.magic.persistence.builder.prerequisite.TraitPrerequisitesBuilder;
-import net.sf.anathema.character.generic.impl.magic.persistence.prerequisite.CharmPrerequisiteList;
+import net.sf.anathema.character.main.magic.ICharmXMLConstants;
+import net.sf.anathema.character.main.magic.persistence.builder.prerequisite.AttributeRequirementBuilder;
+import net.sf.anathema.character.main.magic.persistence.builder.prerequisite.CharmPrerequisiteBuilder;
+import net.sf.anathema.character.main.magic.persistence.builder.prerequisite.PrerequisiteListBuilder;
+import net.sf.anathema.character.main.magic.persistence.builder.prerequisite.TraitPrerequisitesBuilder;
+import net.sf.anathema.character.main.magic.persistence.prerequisite.CharmPrerequisiteList;
 import net.sf.anathema.lib.exception.PersistenceException;
 import org.dom4j.DocumentHelper;
 import org.dom4j.Element;

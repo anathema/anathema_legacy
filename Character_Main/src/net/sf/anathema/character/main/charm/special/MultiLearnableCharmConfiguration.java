@@ -1,10 +1,10 @@
 package net.sf.anathema.character.main.charm.special;
 
-import net.sf.anathema.character.generic.magic.ICharm;
-import net.sf.anathema.character.generic.magic.charms.ICharmLearnableArbitrator;
-import net.sf.anathema.character.generic.magic.charms.special.IMultiLearnableCharm;
-import net.sf.anathema.character.generic.magic.charms.special.ISpecialCharmLearnListener;
-import net.sf.anathema.character.generic.magic.charms.special.LearnRangeContext;
+import net.sf.anathema.character.main.magic.ICharm;
+import net.sf.anathema.character.main.magic.charms.ICharmLearnableArbitrator;
+import net.sf.anathema.character.main.magic.charms.special.IMultiLearnableCharm;
+import net.sf.anathema.character.main.magic.charms.special.ISpecialCharmLearnListener;
+import net.sf.anathema.character.main.magic.charms.special.LearnRangeContext;
 import net.sf.anathema.character.main.library.trait.DefaultTraitType;
 import net.sf.anathema.character.main.library.trait.LimitedTrait;
 import net.sf.anathema.character.main.library.trait.Trait;
@@ -23,7 +23,7 @@ import net.sf.anathema.lib.control.IIntValueChangedListener;
 import net.sf.anathema.lib.data.Range;
 import org.jmock.example.announcer.Announcer;
 
-import static net.sf.anathema.character.generic.impl.traits.SimpleTraitTemplate.createStaticLimitedTemplate;
+import static net.sf.anathema.character.main.traits.SimpleTraitTemplate.createStaticLimitedTemplate;
 
 public class MultiLearnableCharmConfiguration implements IMultiLearnableCharmConfiguration {
 

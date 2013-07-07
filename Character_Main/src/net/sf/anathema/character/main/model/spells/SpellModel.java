@@ -1,7 +1,7 @@
 package net.sf.anathema.character.main.model.spells;
 
-import net.sf.anathema.character.generic.magic.ISpell;
-import net.sf.anathema.character.generic.magic.spells.CircleType;
+import net.sf.anathema.character.main.magic.ISpell;
+import net.sf.anathema.character.main.magic.spells.CircleType;
 import net.sf.anathema.character.main.IMagicLearnListener;
 import net.sf.anathema.hero.model.HeroModel;
 import net.sf.anathema.lib.control.ChangeListener;

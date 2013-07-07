@@ -1,7 +1,7 @@
 package net.sf.anathema.charmtree.presenter;
 
-import net.sf.anathema.character.generic.magic.charms.GroupCharmTree;
-import net.sf.anathema.character.generic.magic.charms.ICharmGroup;
+import net.sf.anathema.character.main.magic.charms.GroupCharmTree;
+import net.sf.anathema.character.main.magic.charms.ICharmGroup;
 import net.sf.anathema.charmtree.view.ICascadeSelectionView;
 import net.sf.anathema.charmtree.view.ICharmGroupChangeListener;
 import net.sf.anathema.lib.compare.I18nedIdentificateSorter;

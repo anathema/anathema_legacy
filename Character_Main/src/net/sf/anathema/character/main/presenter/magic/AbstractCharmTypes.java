@@ -6,7 +6,7 @@ import net.sf.anathema.lib.util.Identifier;
 import java.util.ArrayList;
 import java.util.List;
 
-import static net.sf.anathema.character.generic.impl.magic.MartialArtsUtilities.MARTIAL_ARTS;
+import static net.sf.anathema.character.main.magic.MartialArtsUtilities.MARTIAL_ARTS;
 
 public abstract class AbstractCharmTypes implements CharmTypes {
 

@@ -1,22 +1,22 @@
 package net.sf.anathema.character.main.trait;
 
-import net.sf.anathema.character.generic.caste.CasteType;
-import net.sf.anathema.character.generic.caste.ICasteCollection;
-import net.sf.anathema.character.generic.impl.caste.CasteCollection;
-import net.sf.anathema.character.generic.template.abilities.GroupedTraitType;
-import net.sf.anathema.character.generic.traits.TraitType;
-import net.sf.anathema.character.generic.traits.groups.IIdentifiedTraitTypeGroup;
+import net.sf.anathema.character.main.caste.CasteType;
+import net.sf.anathema.character.main.caste.ICasteCollection;
+import net.sf.anathema.character.main.caste.CasteCollection;
+import net.sf.anathema.character.main.template.abilities.GroupedTraitType;
+import net.sf.anathema.character.main.traits.TraitType;
+import net.sf.anathema.character.main.traits.groups.IIdentifiedTraitTypeGroup;
 import net.sf.anathema.character.main.testing.dummy.DummyCasteType;
 import net.sf.anathema.character.main.traits.creation.AbilityTypeGroupFactory;
 import org.junit.Test;
 
 import java.util.Collections;
 
-import static net.sf.anathema.character.generic.template.abilities.AbilityGroupType.Life;
-import static net.sf.anathema.character.generic.template.abilities.AbilityGroupType.War;
-import static net.sf.anathema.character.generic.traits.types.AbilityType.Archery;
-import static net.sf.anathema.character.generic.traits.types.AbilityType.Medicine;
-import static net.sf.anathema.character.generic.traits.types.AbilityType.Melee;
+import static net.sf.anathema.character.main.template.abilities.AbilityGroupType.Life;
+import static net.sf.anathema.character.main.template.abilities.AbilityGroupType.War;
+import static net.sf.anathema.character.main.traits.types.AbilityType.Archery;
+import static net.sf.anathema.character.main.traits.types.AbilityType.Medicine;
+import static net.sf.anathema.character.main.traits.types.AbilityType.Melee;
 import static org.junit.Assert.assertArrayEquals;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertSame;

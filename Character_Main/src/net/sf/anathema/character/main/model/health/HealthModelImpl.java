@@ -1,9 +1,9 @@
 package net.sf.anathema.character.main.model.health;
 
-import net.sf.anathema.character.generic.health.HealthLevelType;
-import net.sf.anathema.character.generic.health.IHealthLevelTypeVisitor;
-import net.sf.anathema.character.generic.template.HeroTemplate;
-import net.sf.anathema.character.generic.traits.types.AttributeType;
+import net.sf.anathema.character.main.health.HealthLevelType;
+import net.sf.anathema.character.main.health.IHealthLevelTypeVisitor;
+import net.sf.anathema.character.main.template.HeroTemplate;
+import net.sf.anathema.character.main.traits.types.AttributeType;
 import net.sf.anathema.character.main.model.traits.TraitMap;
 import net.sf.anathema.character.main.model.traits.TraitModelFetcher;
 import net.sf.anathema.hero.change.ChangeAnnouncer;

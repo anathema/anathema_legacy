@@ -1,8 +1,8 @@
 package net.sf.anathema.character.main.model.traits;
 
-import net.sf.anathema.character.generic.character.IGenericTraitCollection;
-import net.sf.anathema.character.generic.traits.ValuedTraitType;
-import net.sf.anathema.character.generic.traits.TraitType;
+import net.sf.anathema.character.main.IGenericTraitCollection;
+import net.sf.anathema.character.main.traits.ValuedTraitType;
+import net.sf.anathema.character.main.traits.TraitType;
 
 public class GenericTraitCollectionFacade implements IGenericTraitCollection {
 

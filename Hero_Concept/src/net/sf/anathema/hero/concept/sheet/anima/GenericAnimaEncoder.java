@@ -3,7 +3,7 @@ package net.sf.anathema.hero.concept.sheet.anima;
 import com.itextpdf.text.Chunk;
 import com.itextpdf.text.DocumentException;
 import com.itextpdf.text.Phrase;
-import net.sf.anathema.character.generic.type.ICharacterType;
+import net.sf.anathema.character.main.type.ICharacterType;
 import net.sf.anathema.character.main.model.concept.HeroConceptFetcher;
 import net.sf.anathema.character.reporting.pdf.content.ReportSession;
 import net.sf.anathema.character.reporting.pdf.rendering.extent.Bounds;
@@ -17,7 +17,7 @@ import net.sf.anathema.character.reporting.pdf.rendering.page.IVoidStateFormatCo
 import net.sf.anathema.hero.model.Hero;
 import net.sf.anathema.lib.resources.Resources;
 
-import static net.sf.anathema.character.generic.impl.persistence.SecondEdition.SECOND_EDITION;
+import static net.sf.anathema.character.main.persistence.SecondEdition.SECOND_EDITION;
 
 public class GenericAnimaEncoder implements ContentEncoder {
 

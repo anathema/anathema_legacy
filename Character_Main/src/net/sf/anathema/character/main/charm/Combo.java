@@ -1,8 +1,8 @@
 package net.sf.anathema.character.main.charm;
 
 import com.google.common.base.Preconditions;
-import net.sf.anathema.character.generic.magic.ICharm;
-import net.sf.anathema.character.generic.magic.charms.type.CharmType;
+import net.sf.anathema.character.main.magic.ICharm;
+import net.sf.anathema.character.main.magic.charms.type.CharmType;
 import net.sf.anathema.lib.control.ChangeListener;
 import net.sf.anathema.lib.exception.UnreachableCodeReachedException;
 import net.sf.anathema.lib.workflow.textualdescription.ITextualDescription;

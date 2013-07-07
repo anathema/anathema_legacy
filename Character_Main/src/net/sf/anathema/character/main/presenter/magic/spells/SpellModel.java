@@ -1,7 +1,7 @@
 package net.sf.anathema.character.main.presenter.magic.spells;
 
-import net.sf.anathema.character.generic.magic.spells.CircleType;
-import net.sf.anathema.character.generic.template.magic.ISpellMagicTemplate;
+import net.sf.anathema.character.main.magic.spells.CircleType;
+import net.sf.anathema.character.main.template.magic.ISpellMagicTemplate;
 import net.sf.anathema.hero.model.Hero;
 
 public abstract class SpellModel {

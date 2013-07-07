@@ -1,9 +1,9 @@
 package net.sf.anathema.character.main.advance;
 
-import net.sf.anathema.character.generic.magic.ICharm;
-import net.sf.anathema.character.generic.magic.ISpell;
-import net.sf.anathema.character.generic.template.experience.CurrentRatingCosts;
-import net.sf.anathema.character.generic.template.experience.IExperiencePointCosts;
+import net.sf.anathema.character.main.magic.ICharm;
+import net.sf.anathema.character.main.magic.ISpell;
+import net.sf.anathema.character.main.template.experience.CurrentRatingCosts;
+import net.sf.anathema.character.main.template.experience.IExperiencePointCosts;
 import net.sf.anathema.character.main.library.trait.Trait;
 import net.sf.anathema.character.main.library.trait.experience.TraitRatingCostCalculator;
 import net.sf.anathema.character.main.model.traits.GenericTraitCollectionFacade;

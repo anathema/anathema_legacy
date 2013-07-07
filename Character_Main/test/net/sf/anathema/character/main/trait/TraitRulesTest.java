@@ -1,8 +1,8 @@
 package net.sf.anathema.character.main.trait;
 
-import net.sf.anathema.character.generic.template.ITraitLimitation;
-import net.sf.anathema.character.generic.traits.ITraitTemplate;
-import net.sf.anathema.character.generic.traits.types.AbilityType;
+import net.sf.anathema.character.main.template.ITraitLimitation;
+import net.sf.anathema.character.main.traits.ITraitTemplate;
+import net.sf.anathema.character.main.traits.types.AbilityType;
 import net.sf.anathema.character.main.library.trait.rules.TraitRules;
 import net.sf.anathema.character.main.testing.dummy.DummyHero;
 import org.junit.Test;

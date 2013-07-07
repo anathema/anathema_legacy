@@ -1,6 +1,6 @@
 package net.sf.anathema.character.main.presenter.magic.spells;
 
-import net.sf.anathema.character.generic.magic.ISpell;
+import net.sf.anathema.character.main.magic.ISpell;
 import net.sf.anathema.lib.gui.AbstractUIConfiguration;
 import net.sf.anathema.lib.resources.Resources;
 import net.sf.anathema.lib.util.Identifier;

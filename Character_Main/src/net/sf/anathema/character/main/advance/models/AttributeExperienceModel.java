@@ -1,7 +1,7 @@
 package net.sf.anathema.character.main.advance.models;
 
-import net.sf.anathema.character.generic.template.abilities.GroupedTraitType;
-import net.sf.anathema.character.generic.traits.TraitType;
+import net.sf.anathema.character.main.template.abilities.GroupedTraitType;
+import net.sf.anathema.character.main.traits.TraitType;
 import net.sf.anathema.character.main.library.trait.Trait;
 import net.sf.anathema.character.main.model.traits.TraitMap;
 import net.sf.anathema.character.main.advance.IPointCostCalculator;

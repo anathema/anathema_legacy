@@ -1,10 +1,10 @@
 package net.sf.anathema.character.main.model.charms;
 
-import net.sf.anathema.character.generic.magic.ICharm;
-import net.sf.anathema.character.generic.magic.charms.CharmIdMap;
-import net.sf.anathema.character.generic.magic.charms.special.ISpecialCharm;
-import net.sf.anathema.character.generic.magic.charms.special.ISpecialCharmConfiguration;
-import net.sf.anathema.character.generic.type.ICharacterType;
+import net.sf.anathema.character.main.magic.ICharm;
+import net.sf.anathema.character.main.magic.charms.CharmIdMap;
+import net.sf.anathema.character.main.magic.charms.special.ISpecialCharm;
+import net.sf.anathema.character.main.magic.charms.special.ISpecialCharmConfiguration;
+import net.sf.anathema.character.main.type.ICharacterType;
 import net.sf.anathema.character.main.charm.IExtendedCharmLearnableArbitrator;
 import net.sf.anathema.character.main.charm.ILearningCharmGroup;
 import net.sf.anathema.character.main.charm.SpecialCharmLearnArbitrator;

@@ -1,6 +1,6 @@
 package net.sf.anathema.character.main.persistence;
 
-import net.sf.anathema.character.generic.traits.types.OtherTraitType;
+import net.sf.anathema.character.main.traits.types.OtherTraitType;
 import net.sf.anathema.character.main.library.trait.persistence.TraitPersister;
 import net.sf.anathema.character.main.model.traits.TraitMap;
 import net.sf.anathema.lib.exception.PersistenceException;

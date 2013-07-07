@@ -1,6 +1,6 @@
 package net.sf.anathema.hero.attributes.display;
 
-import net.sf.anathema.character.generic.traits.groups.IIdentifiedTraitTypeGroup;
+import net.sf.anathema.character.main.traits.groups.IIdentifiedTraitTypeGroup;
 import net.sf.anathema.character.main.library.trait.view.GroupedFavorableTraitConfigurationView;
 import net.sf.anathema.hero.attributes.model.AttributesModelFetcher;
 import net.sf.anathema.character.main.view.ColumnCount;

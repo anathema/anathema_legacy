@@ -1,8 +1,8 @@
 package net.sf.anathema.character.main.costs;
 
-import net.sf.anathema.character.generic.impl.template.points.DefaultBonusPointCosts;
-import net.sf.anathema.character.generic.template.creation.BonusPointCosts;
-import net.sf.anathema.character.generic.traits.types.VirtueType;
+import net.sf.anathema.character.main.template.points.DefaultBonusPointCosts;
+import net.sf.anathema.character.main.template.creation.BonusPointCosts;
+import net.sf.anathema.character.main.traits.types.VirtueType;
 import net.sf.anathema.character.main.library.trait.Trait;
 import net.sf.anathema.character.main.testing.BasicCharacterTestCase;
 import net.sf.anathema.character.main.testing.dummy.DummyHero;

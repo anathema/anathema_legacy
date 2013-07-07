@@ -1,6 +1,6 @@
 package net.sf.anathema.character.main.view;
 
-import net.sf.anathema.character.generic.type.ICharacterType;
+import net.sf.anathema.character.main.type.ICharacterType;
 import net.sf.anathema.character.main.library.trait.view.GroupedFavorableTraitConfigurationView;
 import net.sf.anathema.character.main.library.trait.view.fx.BridgingTraitConfigurationView;
 import net.sf.anathema.character.main.library.trait.view.fx.FxGroupedTraitConfigurationView;

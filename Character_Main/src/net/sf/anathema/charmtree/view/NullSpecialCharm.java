@@ -1,7 +1,7 @@
 package net.sf.anathema.charmtree.view;
 
-import net.sf.anathema.character.generic.magic.charms.special.ISpecialCharm;
-import net.sf.anathema.character.generic.magic.charms.special.ISpecialCharmVisitor;
+import net.sf.anathema.character.main.magic.charms.special.ISpecialCharm;
+import net.sf.anathema.character.main.magic.charms.special.ISpecialCharmVisitor;
 
 public class NullSpecialCharm implements ISpecialCharm {
   @Override

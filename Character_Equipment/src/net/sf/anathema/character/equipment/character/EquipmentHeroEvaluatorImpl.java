@@ -4,18 +4,18 @@ import net.sf.anathema.character.equipment.MagicalMaterial;
 import net.sf.anathema.character.equipment.MaterialRules;
 import net.sf.anathema.character.equipment.character.model.IEquipmentItem;
 import net.sf.anathema.character.equipment.character.model.IEquipmentStatsOption;
-import net.sf.anathema.character.generic.equipment.ArtifactAttuneType;
-import net.sf.anathema.character.generic.traits.TraitType;
-import net.sf.anathema.character.generic.traits.types.AbilityType;
-import net.sf.anathema.character.generic.type.ICharacterType;
+import net.sf.anathema.character.main.equipment.ArtifactAttuneType;
+import net.sf.anathema.character.main.traits.TraitType;
+import net.sf.anathema.character.main.traits.types.AbilityType;
+import net.sf.anathema.character.main.type.ICharacterType;
 import net.sf.anathema.character.main.library.trait.specialties.Specialty;
 import net.sf.anathema.hero.model.Hero;
 import net.sf.anathema.hero.specialties.model.SpecialtiesCollectionImpl;
 import net.sf.anathema.lib.control.ChangeListener;
 
-import static net.sf.anathema.character.generic.equipment.ArtifactAttuneType.FullyAttuned;
-import static net.sf.anathema.character.generic.equipment.ArtifactAttuneType.Unattuned;
-import static net.sf.anathema.character.generic.equipment.ArtifactAttuneType.UnharmoniouslyAttuned;
+import static net.sf.anathema.character.main.equipment.ArtifactAttuneType.FullyAttuned;
+import static net.sf.anathema.character.main.equipment.ArtifactAttuneType.Unattuned;
+import static net.sf.anathema.character.main.equipment.ArtifactAttuneType.UnharmoniouslyAttuned;
 
 public class EquipmentHeroEvaluatorImpl implements EquipmentHeroEvaluator {
 

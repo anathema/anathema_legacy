@@ -1,9 +1,9 @@
 package net.sf.anathema.character.main.persistence;
 
 import com.google.common.collect.Lists;
-import net.sf.anathema.character.generic.impl.magic.persistence.CharmCache;
-import net.sf.anathema.character.generic.magic.ICharm;
-import net.sf.anathema.character.generic.magic.charms.special.ISpecialCharm;
+import net.sf.anathema.character.main.magic.persistence.CharmCache;
+import net.sf.anathema.character.main.magic.ICharm;
+import net.sf.anathema.character.main.magic.charms.special.ISpecialCharm;
 import net.sf.anathema.character.main.testing.dummy.DummyExaltCharacterType;
 import net.sf.anathema.lib.util.SimpleIdentifier;
 import org.junit.Test;

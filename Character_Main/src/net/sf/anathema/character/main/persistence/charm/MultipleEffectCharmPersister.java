@@ -1,7 +1,7 @@
 package net.sf.anathema.character.main.persistence.charm;
 
-import net.sf.anathema.character.generic.magic.charms.special.ISpecialCharmConfiguration;
-import net.sf.anathema.character.generic.magic.charms.special.ISubeffect;
+import net.sf.anathema.character.main.magic.charms.special.ISpecialCharmConfiguration;
+import net.sf.anathema.character.main.magic.charms.special.ISubeffect;
 import net.sf.anathema.character.main.charm.special.IMultipleEffectCharmConfiguration;
 import net.sf.anathema.lib.exception.PersistenceException;
 import net.sf.anathema.lib.xml.ElementUtilities;

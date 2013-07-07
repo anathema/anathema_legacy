@@ -1,11 +1,11 @@
 package net.sf.anathema.character.main.charmparser;
 
-import net.sf.anathema.character.generic.impl.magic.persistence.builder.DurationBuilder;
-import net.sf.anathema.character.generic.magic.charms.CharmException;
-import net.sf.anathema.character.generic.magic.charms.duration.IDuration;
-import net.sf.anathema.character.generic.magic.charms.duration.QualifiedAmountDuration;
-import net.sf.anathema.character.generic.magic.charms.duration.SimpleDuration;
-import net.sf.anathema.character.generic.magic.charms.duration.UntilEventDuration;
+import net.sf.anathema.character.main.magic.persistence.builder.DurationBuilder;
+import net.sf.anathema.character.main.magic.charms.CharmException;
+import net.sf.anathema.character.main.magic.charms.duration.IDuration;
+import net.sf.anathema.character.main.magic.charms.duration.QualifiedAmountDuration;
+import net.sf.anathema.character.main.magic.charms.duration.SimpleDuration;
+import net.sf.anathema.character.main.magic.charms.duration.UntilEventDuration;
 import net.sf.anathema.lib.exception.PersistenceException;
 import org.dom4j.Element;
 import org.dom4j.tree.DefaultElement;

@@ -1,6 +1,6 @@
 package net.sf.anathema.character.main.testing.dummy.magic;
 
-import net.sf.anathema.character.generic.magic.ICharm;
+import net.sf.anathema.character.main.magic.ICharm;
 import net.sf.anathema.character.main.charm.ICharmLearnListener;
 import net.sf.anathema.character.main.charm.IExtendedCharmLearnableArbitrator;
 import org.apache.commons.lang3.ArrayUtils;

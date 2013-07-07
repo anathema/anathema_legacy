@@ -1,8 +1,8 @@
 package net.sf.anathema.character.platform.module;
 
 import net.sf.anathema.character.main.item.CharacterPrintNameFileScanner;
-import net.sf.anathema.character.generic.framework.resources.CharacterUI;
-import net.sf.anathema.character.generic.type.ICharacterType;
+import net.sf.anathema.character.main.CharacterUI;
+import net.sf.anathema.character.main.type.ICharacterType;
 import net.sf.anathema.framework.view.PrintNameFile;
 import net.sf.anathema.lib.file.RelativePath;
 import net.sf.anathema.lib.gui.AbstractUIConfiguration;

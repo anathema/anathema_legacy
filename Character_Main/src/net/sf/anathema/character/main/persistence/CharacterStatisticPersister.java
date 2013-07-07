@@ -1,15 +1,15 @@
 package net.sf.anathema.character.main.persistence;
 
 import com.google.common.base.Preconditions;
-import net.sf.anathema.character.generic.caste.ICasteCollection;
-import net.sf.anathema.character.generic.framework.ICharacterGenerics;
-import net.sf.anathema.character.generic.impl.magic.SpellException;
-import net.sf.anathema.character.generic.magic.charms.CharmException;
-import net.sf.anathema.character.generic.template.HeroTemplate;
-import net.sf.anathema.character.generic.template.ITemplateType;
-import net.sf.anathema.character.generic.template.TemplateType;
-import net.sf.anathema.character.generic.traits.types.OtherTraitType;
-import net.sf.anathema.character.generic.type.ICharacterType;
+import net.sf.anathema.character.main.caste.ICasteCollection;
+import net.sf.anathema.character.main.framework.ICharacterGenerics;
+import net.sf.anathema.character.main.magic.SpellException;
+import net.sf.anathema.character.main.magic.charms.CharmException;
+import net.sf.anathema.character.main.template.HeroTemplate;
+import net.sf.anathema.character.main.template.ITemplateType;
+import net.sf.anathema.character.main.template.TemplateType;
+import net.sf.anathema.character.main.traits.types.OtherTraitType;
+import net.sf.anathema.character.main.type.ICharacterType;
 import net.sf.anathema.character.main.library.trait.specialties.SpecialtiesModelFetcher;
 import net.sf.anathema.character.main.model.abilities.AbilityModelFetcher;
 import net.sf.anathema.character.main.model.concept.HeroConceptFetcher;

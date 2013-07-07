@@ -1,6 +1,6 @@
 package net.sf.anathema.hero.concept.display.caste.presenter;
 
-import net.sf.anathema.character.generic.type.ICharacterType;
+import net.sf.anathema.character.main.type.ICharacterType;
 import net.sf.anathema.character.main.presenter.initializers.HeroModelInitializer;
 import net.sf.anathema.character.main.presenter.initializers.RegisteredInitializer;
 import net.sf.anathema.character.main.view.SectionView;

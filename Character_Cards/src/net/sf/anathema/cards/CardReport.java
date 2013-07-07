@@ -6,7 +6,7 @@ import com.itextpdf.text.pdf.PdfWriter;
 import net.sf.anathema.cards.data.ICardData;
 import net.sf.anathema.cards.data.providers.ICardDataProvider;
 import net.sf.anathema.cards.layout.ICardLayout;
-import net.sf.anathema.character.generic.magic.ICharm;
+import net.sf.anathema.character.main.magic.ICharm;
 import net.sf.anathema.character.main.model.charms.CharmsModelFetcher;
 import net.sf.anathema.character.main.model.experience.ExperienceModelFetcher;
 import net.sf.anathema.framework.reporting.ReportException;

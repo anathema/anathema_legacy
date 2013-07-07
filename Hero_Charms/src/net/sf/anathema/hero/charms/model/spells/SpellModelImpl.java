@@ -1,9 +1,9 @@
 package net.sf.anathema.hero.charms.model.spells;
 
-import net.sf.anathema.character.generic.magic.ISpell;
-import net.sf.anathema.character.generic.magic.spells.CircleType;
-import net.sf.anathema.character.generic.template.HeroTemplate;
-import net.sf.anathema.character.generic.template.magic.ISpellMagicTemplate;
+import net.sf.anathema.character.main.magic.ISpell;
+import net.sf.anathema.character.main.magic.spells.CircleType;
+import net.sf.anathema.character.main.template.HeroTemplate;
+import net.sf.anathema.character.main.template.magic.ISpellMagicTemplate;
 import net.sf.anathema.character.main.model.charms.CharmsModel;
 import net.sf.anathema.character.main.model.charms.CharmsModelFetcher;
 import net.sf.anathema.character.main.model.experience.ExperienceChange;

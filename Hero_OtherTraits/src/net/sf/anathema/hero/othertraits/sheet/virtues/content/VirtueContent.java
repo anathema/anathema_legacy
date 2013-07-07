@@ -1,7 +1,7 @@
 package net.sf.anathema.hero.othertraits.sheet.virtues.content;
 
-import net.sf.anathema.character.generic.traits.ValuedTraitType;
-import net.sf.anathema.character.generic.traits.types.VirtueType;
+import net.sf.anathema.character.main.traits.ValuedTraitType;
+import net.sf.anathema.character.main.traits.types.VirtueType;
 import net.sf.anathema.character.main.model.othertraits.OtherTraitModelFetcher;
 import net.sf.anathema.character.main.model.traits.TraitMap;
 import net.sf.anathema.character.reporting.pdf.content.AbstractSubBoxContent;

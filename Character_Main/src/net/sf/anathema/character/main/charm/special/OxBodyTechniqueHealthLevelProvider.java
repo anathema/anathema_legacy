@@ -1,6 +1,6 @@
 package net.sf.anathema.character.main.charm.special;
 
-import net.sf.anathema.character.generic.health.HealthLevelType;
+import net.sf.anathema.character.main.health.HealthLevelType;
 import net.sf.anathema.character.main.model.health.IHealthLevelProvider;
 import net.sf.anathema.character.main.charm.OxBodyCategory;
 

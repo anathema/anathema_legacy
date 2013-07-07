@@ -1,8 +1,7 @@
 package net.sf.anathema.character.main.charm;
 
-import net.sf.anathema.character.generic.framework.additionaltemplate.model.IBasicLearnCharmGroup;
-import net.sf.anathema.character.generic.magic.ICharm;
-import net.sf.anathema.character.generic.magic.charms.ICharmGroup;
+import net.sf.anathema.character.main.magic.ICharm;
+import net.sf.anathema.character.main.magic.charms.ICharmGroup;
 
 public interface ILearningCharmGroup extends ICharmGroup, IBasicLearnCharmGroup {
 

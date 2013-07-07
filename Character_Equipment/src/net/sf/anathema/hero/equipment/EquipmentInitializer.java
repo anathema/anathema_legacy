@@ -2,7 +2,7 @@ package net.sf.anathema.hero.equipment;
 
 import net.sf.anathema.character.equipment.character.EquipmentPresenter;
 import net.sf.anathema.character.equipment.character.view.EquipmentView;
-import net.sf.anathema.character.generic.type.ICharacterType;
+import net.sf.anathema.character.main.type.ICharacterType;
 import net.sf.anathema.character.main.presenter.initializers.HeroModelInitializer;
 import net.sf.anathema.character.main.presenter.initializers.RegisteredInitializer;
 import net.sf.anathema.character.main.view.SectionView;

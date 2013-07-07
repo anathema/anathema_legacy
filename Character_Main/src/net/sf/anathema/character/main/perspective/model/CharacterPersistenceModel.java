@@ -1,7 +1,7 @@
 package net.sf.anathema.character.main.perspective.model;
 
-import net.sf.anathema.character.generic.framework.CharacterGenericsExtractor;
-import net.sf.anathema.character.generic.framework.ICharacterGenerics;
+import net.sf.anathema.character.main.framework.CharacterGenericsExtractor;
+import net.sf.anathema.character.main.framework.ICharacterGenerics;
 import net.sf.anathema.character.main.persistence.ExaltedCharacterPersister;
 import net.sf.anathema.framework.IApplicationModel;
 import net.sf.anathema.framework.item.IItemType;

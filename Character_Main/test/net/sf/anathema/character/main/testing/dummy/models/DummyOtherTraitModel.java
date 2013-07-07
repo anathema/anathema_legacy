@@ -1,9 +1,9 @@
 package net.sf.anathema.character.main.testing.dummy.models;
 
-import net.sf.anathema.character.generic.impl.traits.limitation.StaticTraitLimitation;
-import net.sf.anathema.character.generic.template.ITraitLimitation;
-import net.sf.anathema.character.generic.traits.types.OtherTraitType;
-import net.sf.anathema.character.generic.traits.types.VirtueType;
+import net.sf.anathema.character.main.traits.limitation.StaticTraitLimitation;
+import net.sf.anathema.character.main.template.ITraitLimitation;
+import net.sf.anathema.character.main.traits.types.OtherTraitType;
+import net.sf.anathema.character.main.traits.types.VirtueType;
 import net.sf.anathema.character.main.model.othertraits.OtherTraitModel;
 import net.sf.anathema.character.main.model.traits.DefaultTraitMap;
 import net.sf.anathema.character.main.testing.dummy.trait.DummyTrait;

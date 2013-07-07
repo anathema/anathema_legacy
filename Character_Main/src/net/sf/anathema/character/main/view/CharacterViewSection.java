@@ -1,6 +1,6 @@
 package net.sf.anathema.character.main.view;
 
-import net.sf.anathema.character.generic.type.ICharacterType;
+import net.sf.anathema.character.main.type.ICharacterType;
 import net.sf.anathema.framework.presenter.view.MultipleContentView;
 import net.sf.anathema.framework.swing.IView;
 import net.sf.anathema.framework.view.util.ContentProperties;

@@ -1,10 +1,10 @@
 package net.sf.anathema.character.reporting.pdf.content.stats.magic;
 
 import com.google.common.base.Function;
-import net.sf.anathema.character.generic.magic.ICharm;
-import net.sf.anathema.character.generic.magic.IMagicStats;
-import net.sf.anathema.character.generic.magic.charms.ICharmAttribute;
-import net.sf.anathema.character.generic.magic.charms.type.ICharmTypeModel;
+import net.sf.anathema.character.main.magic.ICharm;
+import net.sf.anathema.character.main.magic.IMagicStats;
+import net.sf.anathema.character.main.magic.charms.ICharmAttribute;
+import net.sf.anathema.character.main.magic.charms.type.ICharmTypeModel;
 import net.sf.anathema.charmtree.builder.stringbuilder.IMagicSourceStringBuilder;
 import net.sf.anathema.charmtree.builder.stringbuilder.source.MagicSourceStringBuilder;
 import net.sf.anathema.charmtree.builder.stringbuilder.type.ShortCharmTypeStringBuilder;

@@ -1,7 +1,7 @@
 package net.sf.anathema.character.main.persistence.charm;
 
-import net.sf.anathema.character.generic.magic.ICharm;
-import net.sf.anathema.character.generic.type.ICharacterType;
+import net.sf.anathema.character.main.magic.ICharm;
+import net.sf.anathema.character.main.type.ICharacterType;
 import net.sf.anathema.character.main.charm.ICharmLearnListener;
 import net.sf.anathema.character.main.charm.ILearningCharmGroup;
 

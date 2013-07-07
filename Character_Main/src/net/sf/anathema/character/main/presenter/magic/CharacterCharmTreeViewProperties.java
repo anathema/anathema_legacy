@@ -1,9 +1,9 @@
 package net.sf.anathema.character.main.presenter.magic;
 
-import net.sf.anathema.character.generic.magic.ICharm;
-import net.sf.anathema.character.generic.magic.charms.CharmIdMap;
-import net.sf.anathema.character.generic.magic.charms.special.ISpecialCharm;
-import net.sf.anathema.character.generic.magic.description.MagicDescriptionProvider;
+import net.sf.anathema.character.main.magic.ICharm;
+import net.sf.anathema.character.main.magic.charms.CharmIdMap;
+import net.sf.anathema.character.main.magic.charms.special.ISpecialCharm;
+import net.sf.anathema.character.main.magic.description.MagicDescriptionProvider;
 import net.sf.anathema.character.main.model.charms.CharmsModel;
 import net.sf.anathema.charmtree.view.AbstractCharmTreeViewProperties;
 import net.sf.anathema.charmtree.view.NullSpecialCharm;

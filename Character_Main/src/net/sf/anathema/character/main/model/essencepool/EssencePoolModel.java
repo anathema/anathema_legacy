@@ -1,6 +1,6 @@
 package net.sf.anathema.character.main.model.essencepool;
 
-import net.sf.anathema.character.generic.framework.essence.IEssencePoolModifier;
+import net.sf.anathema.character.main.essence.IEssencePoolModifier;
 import net.sf.anathema.lib.control.ChangeListener;
 import net.sf.anathema.lib.util.IdentifiedInteger;
 import net.sf.anathema.lib.util.Identifier;

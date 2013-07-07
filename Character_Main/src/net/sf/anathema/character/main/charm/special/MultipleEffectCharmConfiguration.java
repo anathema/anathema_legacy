@@ -1,11 +1,11 @@
 package net.sf.anathema.character.main.charm.special;
 
-import net.sf.anathema.character.generic.magic.ICharm;
-import net.sf.anathema.character.generic.magic.charms.ICharmLearnableArbitrator;
-import net.sf.anathema.character.generic.magic.charms.special.IMultipleEffectCharm;
-import net.sf.anathema.character.generic.magic.charms.special.ISpecialCharmLearnListener;
-import net.sf.anathema.character.generic.magic.charms.special.ISubeffect;
-import net.sf.anathema.character.generic.magic.charms.special.SubEffects;
+import net.sf.anathema.character.main.magic.ICharm;
+import net.sf.anathema.character.main.magic.charms.ICharmLearnableArbitrator;
+import net.sf.anathema.character.main.magic.charms.special.IMultipleEffectCharm;
+import net.sf.anathema.character.main.magic.charms.special.ISpecialCharmLearnListener;
+import net.sf.anathema.character.main.magic.charms.special.ISubeffect;
+import net.sf.anathema.character.main.magic.charms.special.SubEffects;
 import net.sf.anathema.character.main.charm.CharmSpecialist;
 import net.sf.anathema.lib.control.ChangeListener;
 import org.jmock.example.announcer.Announcer;

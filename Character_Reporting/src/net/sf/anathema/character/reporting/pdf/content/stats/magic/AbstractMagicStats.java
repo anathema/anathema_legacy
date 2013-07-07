@@ -1,7 +1,7 @@
 package net.sf.anathema.character.reporting.pdf.content.stats.magic;
 
-import net.sf.anathema.character.generic.magic.IMagic;
-import net.sf.anathema.character.generic.magic.IMagicStats;
+import net.sf.anathema.character.main.magic.IMagic;
+import net.sf.anathema.character.main.magic.IMagicStats;
 import net.sf.anathema.charmtree.builder.stringbuilder.CostStringBuilder;
 import net.sf.anathema.charmtree.builder.stringbuilder.HealthCostStringBuilder;
 import net.sf.anathema.charmtree.builder.stringbuilder.MagicInfoStringBuilder;

@@ -1,6 +1,6 @@
 package net.sf.anathema.hero.charms.sheet.content;
 
-import net.sf.anathema.character.generic.magic.IMagicStats;
+import net.sf.anathema.character.main.magic.IMagicStats;
 import net.sf.anathema.character.reporting.pdf.content.ReportSession;
 import net.sf.anathema.character.reporting.pdf.content.magic.AbstractMagicContent;
 import net.sf.anathema.character.reporting.pdf.content.magic.MagicContentHelper;

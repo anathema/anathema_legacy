@@ -1,6 +1,6 @@
 package net.sf.anathema.character.main.model.health;
 
-import net.sf.anathema.character.generic.traits.ValuedTraitType;
+import net.sf.anathema.character.main.traits.ValuedTraitType;
 import net.sf.anathema.character.main.library.trait.Trait;
 import net.sf.anathema.character.main.charm.special.IOxBodyTechniqueConfiguration;
 

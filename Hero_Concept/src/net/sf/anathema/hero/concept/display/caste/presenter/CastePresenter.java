@@ -1,7 +1,7 @@
 package net.sf.anathema.hero.concept.display.caste.presenter;
 
-import net.sf.anathema.character.generic.caste.CasteType;
-import net.sf.anathema.character.generic.template.HeroTemplate;
+import net.sf.anathema.character.main.caste.CasteType;
+import net.sf.anathema.character.main.template.HeroTemplate;
 import net.sf.anathema.character.main.model.concept.HeroConceptFetcher;
 import net.sf.anathema.character.main.model.experience.ExperienceModel;
 import net.sf.anathema.character.main.model.experience.ExperienceModelFetcher;

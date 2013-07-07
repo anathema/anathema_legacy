@@ -1,6 +1,6 @@
 package net.sf.anathema.character.main.testing.dummy.template;
 
-import net.sf.anathema.character.generic.template.points.IAbilityCreationPoints;
+import net.sf.anathema.character.main.template.points.IAbilityCreationPoints;
 
 public class DummyAbilityCreationPoints implements IAbilityCreationPoints {
 

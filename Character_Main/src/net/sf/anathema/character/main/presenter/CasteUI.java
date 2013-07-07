@@ -1,8 +1,8 @@
 package net.sf.anathema.character.main.presenter;
 
-import net.sf.anathema.character.generic.caste.CasteType;
-import net.sf.anathema.character.generic.impl.persistence.SecondEdition;
-import net.sf.anathema.character.generic.template.presentation.IPresentationProperties;
+import net.sf.anathema.character.main.caste.CasteType;
+import net.sf.anathema.character.main.persistence.SecondEdition;
+import net.sf.anathema.character.main.template.presentation.IPresentationProperties;
 import net.sf.anathema.lib.file.RelativePath;
 
 public class CasteUI {

@@ -1,6 +1,6 @@
 package net.sf.anathema.character.main.template;
 
-import net.sf.anathema.character.generic.impl.template.magic.CustomizableFreePicksPredicate;
+import net.sf.anathema.character.main.template.magic.CustomizableFreePicksPredicate;
 import net.sf.anathema.character.main.dummy.DummyCharm;
 import net.sf.anathema.character.main.testing.dummy.magic.DummySpell;
 import org.junit.Assert;

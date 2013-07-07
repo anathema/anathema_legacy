@@ -1,6 +1,6 @@
 package net.sf.anathema.character.main.library.trait.specialties;
 
-import net.sf.anathema.character.generic.traits.TraitType;
+import net.sf.anathema.character.main.traits.TraitType;
 import net.sf.anathema.character.main.library.trait.subtrait.ISubTraitContainer;
 import net.sf.anathema.hero.model.HeroModel;
 import net.sf.anathema.lib.control.ChangeListener;

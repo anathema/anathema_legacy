@@ -1,6 +1,6 @@
 package net.sf.anathema.charmtree.builder.stringbuilder;
 
-import net.sf.anathema.character.generic.magic.charms.type.ICharmTypeModel;
+import net.sf.anathema.character.main.magic.charms.type.ICharmTypeModel;
 
 public interface ICharmTypeStringBuilder {
 

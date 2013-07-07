@@ -1,8 +1,8 @@
 package net.sf.anathema.charmtree.builder;
 
-import net.sf.anathema.character.generic.magic.ICharm;
-import net.sf.anathema.character.generic.magic.IMagic;
-import net.sf.anathema.character.generic.traits.TraitType;
+import net.sf.anathema.character.main.magic.ICharm;
+import net.sf.anathema.character.main.magic.IMagic;
+import net.sf.anathema.character.main.traits.TraitType;
 import net.sf.anathema.lib.resources.Resources;
 import net.sf.anathema.lib.util.Identifier;
 

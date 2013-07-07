@@ -1,12 +1,12 @@
 package net.sf.anathema.character.main.templateparser;
 
-import net.sf.anathema.character.generic.framework.xml.GenericCharacterTemplate;
-import net.sf.anathema.character.generic.framework.xml.presentation.GenericPresentationTemplate;
-import net.sf.anathema.character.generic.framework.xml.presentation.PresentationPropertiesParser;
-import net.sf.anathema.character.generic.impl.persistence.SecondEdition;
-import net.sf.anathema.character.generic.template.TemplateType;
-import net.sf.anathema.character.generic.template.abilities.AbilityGroupType;
-import net.sf.anathema.character.generic.template.presentation.IPresentationProperties;
+import net.sf.anathema.character.main.xml.GenericCharacterTemplate;
+import net.sf.anathema.character.main.xml.presentation.GenericPresentationTemplate;
+import net.sf.anathema.character.main.xml.presentation.PresentationPropertiesParser;
+import net.sf.anathema.character.main.persistence.SecondEdition;
+import net.sf.anathema.character.main.template.TemplateType;
+import net.sf.anathema.character.main.template.abilities.AbilityGroupType;
+import net.sf.anathema.character.main.template.presentation.IPresentationProperties;
 import net.sf.anathema.character.main.testing.dummy.DummyExaltCharacterType;
 import net.sf.anathema.character.main.testing.dummy.template.DummyXmlTemplateRegistry;
 import net.sf.anathema.framework.ui.RGBColor;

@@ -2,8 +2,8 @@ package net.sf.anathema.character.equipment.impl.reporting.content;
 
 import net.sf.anathema.character.equipment.character.model.IEquipmentPrintModel;
 import net.sf.anathema.character.equipment.impl.character.model.stats.CharacterStatsModifiers;
-import net.sf.anathema.character.generic.equipment.ICharacterStatsModifiers;
-import net.sf.anathema.character.generic.equipment.weapon.IEquipmentStats;
+import net.sf.anathema.character.main.equipment.ICharacterStatsModifiers;
+import net.sf.anathema.character.main.equipment.weapon.IEquipmentStats;
 import net.sf.anathema.character.reporting.pdf.content.AbstractSubContent;
 import net.sf.anathema.character.reporting.pdf.content.stats.FixedLineStatsContent;
 import net.sf.anathema.hero.equipment.EquipmentModel;

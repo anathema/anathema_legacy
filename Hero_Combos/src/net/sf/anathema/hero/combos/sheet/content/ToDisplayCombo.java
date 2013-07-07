@@ -2,7 +2,7 @@ package net.sf.anathema.hero.combos.sheet.content;
 
 import com.google.common.base.Function;
 import com.google.common.base.Joiner;
-import net.sf.anathema.character.generic.magic.IGenericCombo;
+import net.sf.anathema.character.main.magic.IGenericCombo;
 import net.sf.anathema.character.reporting.pdf.content.magic.CharmPrintNameTransformer;
 import net.sf.anathema.lib.resources.Resources;
 

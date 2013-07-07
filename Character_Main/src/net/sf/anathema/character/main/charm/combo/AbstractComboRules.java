@@ -1,8 +1,8 @@
 package net.sf.anathema.character.main.charm.combo;
 
-import net.sf.anathema.character.generic.magic.ICharm;
-import net.sf.anathema.character.generic.traits.types.AbilityType;
-import net.sf.anathema.character.generic.traits.types.AttributeType;
+import net.sf.anathema.character.main.magic.ICharm;
+import net.sf.anathema.character.main.traits.types.AbilityType;
+import net.sf.anathema.character.main.traits.types.AttributeType;
 
 public abstract class AbstractComboRules implements IComboRules {
 

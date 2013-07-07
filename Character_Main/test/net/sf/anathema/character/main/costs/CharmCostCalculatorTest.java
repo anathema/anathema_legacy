@@ -1,8 +1,8 @@
 package net.sf.anathema.character.main.costs;
 
-import net.sf.anathema.character.generic.impl.template.points.DefaultBonusPointCosts;
-import net.sf.anathema.character.generic.magic.ISpell;
-import net.sf.anathema.character.generic.traits.types.AbilityType;
+import net.sf.anathema.character.main.template.points.DefaultBonusPointCosts;
+import net.sf.anathema.character.main.magic.ISpell;
+import net.sf.anathema.character.main.traits.types.AbilityType;
 import net.sf.anathema.character.main.library.trait.favorable.FavorableState;
 import net.sf.anathema.character.main.model.spells.SpellModel;
 import net.sf.anathema.character.main.model.traits.TraitModel;

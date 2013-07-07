@@ -1,7 +1,7 @@
 package net.sf.anathema.hero.traits.sheet.encoder;
 
 import com.itextpdf.text.DocumentException;
-import net.sf.anathema.character.generic.traits.types.OtherTraitType;
+import net.sf.anathema.character.main.traits.types.OtherTraitType;
 import net.sf.anathema.character.main.model.traits.TraitModelFetcher;
 import net.sf.anathema.character.reporting.pdf.content.ReportSession;
 import net.sf.anathema.character.reporting.pdf.rendering.extent.Bounds;

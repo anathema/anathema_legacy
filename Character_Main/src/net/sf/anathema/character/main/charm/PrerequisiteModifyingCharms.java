@@ -1,8 +1,8 @@
 package net.sf.anathema.character.main.charm;
 
 import com.google.common.collect.Lists;
-import net.sf.anathema.character.generic.magic.charms.special.IPrerequisiteModifyingCharm;
-import net.sf.anathema.character.generic.magic.charms.special.ISpecialCharm;
+import net.sf.anathema.character.main.magic.charms.special.IPrerequisiteModifyingCharm;
+import net.sf.anathema.character.main.magic.charms.special.ISpecialCharm;
 
 import java.util.List;
 

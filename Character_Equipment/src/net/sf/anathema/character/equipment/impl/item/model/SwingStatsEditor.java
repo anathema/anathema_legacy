@@ -12,7 +12,7 @@ import net.sf.anathema.character.equipment.item.model.StatsEditor;
 import net.sf.anathema.character.equipment.wizard.AnathemaWizardDialog;
 import net.sf.anathema.character.equipment.wizard.IAnathemaWizardPage;
 import net.sf.anathema.character.equipment.wizard.WizardDialog;
-import net.sf.anathema.character.generic.equipment.weapon.IEquipmentStats;
+import net.sf.anathema.character.main.equipment.weapon.IEquipmentStats;
 import net.sf.anathema.framework.view.SwingApplicationFrame;
 import net.sf.anathema.lib.gui.dialog.core.DialogResult;
 import net.sf.anathema.lib.gui.dialog.userdialog.DialogCloseHandler;

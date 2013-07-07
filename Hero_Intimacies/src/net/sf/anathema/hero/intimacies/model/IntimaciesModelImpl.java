@@ -1,10 +1,10 @@
 package net.sf.anathema.hero.intimacies.model;
 
 import com.google.common.base.Strings;
-import net.sf.anathema.character.generic.traits.ValuedTraitType;
-import net.sf.anathema.character.generic.traits.TraitType;
-import net.sf.anathema.character.generic.traits.types.OtherTraitType;
-import net.sf.anathema.character.generic.traits.types.VirtueType;
+import net.sf.anathema.character.main.traits.ValuedTraitType;
+import net.sf.anathema.character.main.traits.TraitType;
+import net.sf.anathema.character.main.traits.types.OtherTraitType;
+import net.sf.anathema.character.main.traits.types.VirtueType;
 import net.sf.anathema.character.main.library.removableentry.model.AbstractRemovableEntryModel;
 import net.sf.anathema.character.main.library.trait.Trait;
 import net.sf.anathema.character.main.model.experience.ExperienceModelFetcher;

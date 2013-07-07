@@ -1,7 +1,7 @@
 package net.sf.anathema.character.main.testing;
 
-import net.sf.anathema.character.generic.framework.additionaltemplate.model.TraitValueStrategy;
-import net.sf.anathema.character.generic.traits.types.OtherTraitType;
+import net.sf.anathema.character.main.traits.TraitValueStrategy;
+import net.sf.anathema.character.main.traits.types.OtherTraitType;
 import net.sf.anathema.character.main.testing.dummy.DummyHero;
 import net.sf.anathema.character.main.testing.dummy.models.DummyHeroConcept;
 import net.sf.anathema.character.main.testing.dummy.models.DummyOtherTraitModel;

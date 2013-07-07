@@ -1,8 +1,8 @@
 package net.sf.anathema.character.main.creation.bonus;
 
-import net.sf.anathema.character.generic.template.creation.BonusPointCosts;
-import net.sf.anathema.character.generic.template.creation.ICreationPoints;
-import net.sf.anathema.character.generic.template.experience.CurrentRatingCosts;
+import net.sf.anathema.character.main.template.creation.BonusPointCosts;
+import net.sf.anathema.character.main.template.creation.ICreationPoints;
+import net.sf.anathema.character.main.template.experience.CurrentRatingCosts;
 import net.sf.anathema.character.main.library.trait.Trait;
 import net.sf.anathema.character.main.library.trait.TraitCollectionUtilities;
 import net.sf.anathema.character.main.library.trait.experience.TraitRatingCostCalculator;

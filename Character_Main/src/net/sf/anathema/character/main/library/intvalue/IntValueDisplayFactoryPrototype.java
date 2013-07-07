@@ -1,6 +1,6 @@
 package net.sf.anathema.character.main.library.intvalue;
 
-import net.sf.anathema.character.generic.type.ICharacterType;
+import net.sf.anathema.character.main.type.ICharacterType;
 import net.sf.anathema.framework.value.IntegerViewFactory;
 import net.sf.anathema.framework.value.MarkerIntValueDisplayFactory;
 

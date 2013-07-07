@@ -4,8 +4,8 @@ import net.sf.anathema.character.equipment.ItemCost;
 import net.sf.anathema.character.equipment.MagicalMaterial;
 import net.sf.anathema.character.equipment.MaterialComposition;
 import net.sf.anathema.character.equipment.template.IEquipmentTemplate;
-import net.sf.anathema.character.generic.equipment.weapon.IEquipmentStats;
-import net.sf.anathema.character.generic.impl.persistence.SecondEdition;
+import net.sf.anathema.character.main.equipment.weapon.IEquipmentStats;
+import net.sf.anathema.character.main.persistence.SecondEdition;
 
 import java.util.ArrayList;
 import java.util.HashMap;

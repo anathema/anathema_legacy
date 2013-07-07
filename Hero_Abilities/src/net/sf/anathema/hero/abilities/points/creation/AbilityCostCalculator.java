@@ -1,7 +1,7 @@
 package net.sf.anathema.hero.abilities.points.creation;
 
-import net.sf.anathema.character.generic.template.experience.AbilityPointCosts;
-import net.sf.anathema.character.generic.template.points.IFavorableTraitCreationPoints;
+import net.sf.anathema.character.main.template.experience.AbilityPointCosts;
+import net.sf.anathema.character.main.template.points.IFavorableTraitCreationPoints;
 import net.sf.anathema.character.main.library.ITraitFavorization;
 import net.sf.anathema.character.main.library.trait.FavorableTraitCost;
 import net.sf.anathema.character.main.library.trait.Trait;

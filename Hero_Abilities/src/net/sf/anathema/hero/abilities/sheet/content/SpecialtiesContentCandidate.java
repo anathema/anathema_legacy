@@ -1,6 +1,6 @@
 package net.sf.anathema.hero.abilities.sheet.content;
 
-import net.sf.anathema.character.generic.traits.TraitType;
+import net.sf.anathema.character.main.traits.TraitType;
 import net.sf.anathema.character.main.library.trait.specialties.SpecialtiesModel;
 import net.sf.anathema.character.main.library.trait.specialties.SpecialtiesModelFetcher;
 import net.sf.anathema.character.main.library.trait.specialties.Specialty;

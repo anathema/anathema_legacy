@@ -3,7 +3,7 @@
  */
 package net.sf.anathema.character.main;
 
-import net.sf.anathema.character.generic.magic.ICharm;
+import net.sf.anathema.character.main.magic.ICharm;
 import net.sf.anathema.character.main.charm.CharmLearnAdapter;
 import net.sf.anathema.hero.change.ChangeAnnouncer;
 import net.sf.anathema.hero.change.ChangeFlavor;

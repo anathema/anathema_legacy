@@ -1,13 +1,13 @@
 package net.sf.anathema.character.main.magic;
 
-import net.sf.anathema.character.generic.caste.CasteType;
-import net.sf.anathema.character.generic.framework.additionaltemplate.model.TraitValueStrategy;
-import net.sf.anathema.character.generic.health.HealthLevelType;
-import net.sf.anathema.character.generic.impl.magic.charm.special.OxBodyTechniqueCharm;
-import net.sf.anathema.character.generic.impl.traits.SimpleTraitTemplate;
-import net.sf.anathema.character.generic.traits.ITraitTemplate;
-import net.sf.anathema.character.generic.traits.TraitType;
-import net.sf.anathema.character.generic.traits.types.AbilityType;
+import net.sf.anathema.character.main.caste.CasteType;
+import net.sf.anathema.character.main.traits.TraitValueStrategy;
+import net.sf.anathema.character.main.health.HealthLevelType;
+import net.sf.anathema.character.main.magic.charm.special.OxBodyTechniqueCharm;
+import net.sf.anathema.character.main.traits.SimpleTraitTemplate;
+import net.sf.anathema.character.main.traits.ITraitTemplate;
+import net.sf.anathema.character.main.traits.TraitType;
+import net.sf.anathema.character.main.traits.types.AbilityType;
 import net.sf.anathema.character.main.library.trait.DefaultTrait;
 import net.sf.anathema.character.main.library.trait.FriendlyValueChangeChecker;
 import net.sf.anathema.character.main.library.trait.Trait;

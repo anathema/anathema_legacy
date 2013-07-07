@@ -1,11 +1,11 @@
 package net.sf.anathema.character.equipment;
 
-import net.sf.anathema.character.generic.equipment.ArtifactAttuneType;
+import net.sf.anathema.character.main.equipment.ArtifactAttuneType;
 
-import static net.sf.anathema.character.generic.equipment.ArtifactAttuneType.FullyAttuned;
-import static net.sf.anathema.character.generic.equipment.ArtifactAttuneType.PartiallyAttuned;
-import static net.sf.anathema.character.generic.equipment.ArtifactAttuneType.Unattuned;
-import static net.sf.anathema.character.generic.equipment.ArtifactAttuneType.UnharmoniouslyAttuned;
+import static net.sf.anathema.character.main.equipment.ArtifactAttuneType.FullyAttuned;
+import static net.sf.anathema.character.main.equipment.ArtifactAttuneType.PartiallyAttuned;
+import static net.sf.anathema.character.main.equipment.ArtifactAttuneType.Unattuned;
+import static net.sf.anathema.character.main.equipment.ArtifactAttuneType.UnharmoniouslyAttuned;
 
 public abstract class SimpleMaterialRules implements CharacterTypeMaterialRules {
 

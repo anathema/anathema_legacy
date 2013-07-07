@@ -1,10 +1,10 @@
 package net.sf.anathema.character.main.testing.dummy.template;
 
-import net.sf.anathema.character.generic.impl.template.points.AbilityCreationPoints;
-import net.sf.anathema.character.generic.impl.template.points.AbstractCreationPoints;
-import net.sf.anathema.character.generic.impl.template.points.AttributeCreationPoints;
-import net.sf.anathema.character.generic.template.points.IAbilityCreationPoints;
-import net.sf.anathema.character.generic.template.points.IAttributeCreationPoints;
+import net.sf.anathema.character.main.template.points.AbilityCreationPoints;
+import net.sf.anathema.character.main.template.points.AbstractCreationPoints;
+import net.sf.anathema.character.main.template.points.AttributeCreationPoints;
+import net.sf.anathema.character.main.template.points.IAbilityCreationPoints;
+import net.sf.anathema.character.main.template.points.IAttributeCreationPoints;
 
 public class TestCreationPoints extends AbstractCreationPoints {
 

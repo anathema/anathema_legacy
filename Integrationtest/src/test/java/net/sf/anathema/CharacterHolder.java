@@ -1,6 +1,6 @@
 package net.sf.anathema;
 
-import net.sf.anathema.character.generic.template.HeroTemplate;
+import net.sf.anathema.character.main.template.HeroTemplate;
 import net.sf.anathema.character.main.model.charms.CharmsModel;
 import net.sf.anathema.character.main.model.charms.CharmsModelFetcher;
 import net.sf.anathema.character.main.model.concept.HeroConcept;

@@ -1,15 +1,15 @@
 package net.sf.anathema.character.main.presenter.magic.charm;
 
-import net.sf.anathema.character.generic.magic.charms.special.IMultiLearnableCharm;
-import net.sf.anathema.character.generic.magic.charms.special.IMultipleEffectCharm;
-import net.sf.anathema.character.generic.magic.charms.special.IOxBodyTechniqueCharm;
-import net.sf.anathema.character.generic.magic.charms.special.IPainToleranceCharm;
-import net.sf.anathema.character.generic.magic.charms.special.IPrerequisiteModifyingCharm;
-import net.sf.anathema.character.generic.magic.charms.special.ISpecialCharm;
-import net.sf.anathema.character.generic.magic.charms.special.ISpecialCharmVisitor;
-import net.sf.anathema.character.generic.magic.charms.special.ISubeffectCharm;
-import net.sf.anathema.character.generic.magic.charms.special.ITraitCapModifyingCharm;
-import net.sf.anathema.character.generic.magic.charms.special.IUpgradableCharm;
+import net.sf.anathema.character.main.magic.charms.special.IMultiLearnableCharm;
+import net.sf.anathema.character.main.magic.charms.special.IMultipleEffectCharm;
+import net.sf.anathema.character.main.magic.charms.special.IOxBodyTechniqueCharm;
+import net.sf.anathema.character.main.magic.charms.special.IPainToleranceCharm;
+import net.sf.anathema.character.main.magic.charms.special.IPrerequisiteModifyingCharm;
+import net.sf.anathema.character.main.magic.charms.special.ISpecialCharm;
+import net.sf.anathema.character.main.magic.charms.special.ISpecialCharmVisitor;
+import net.sf.anathema.character.main.magic.charms.special.ISubeffectCharm;
+import net.sf.anathema.character.main.magic.charms.special.ITraitCapModifyingCharm;
+import net.sf.anathema.character.main.magic.charms.special.IUpgradableCharm;
 import net.sf.anathema.character.main.model.charms.CharmsModel;
 import net.sf.anathema.character.main.charm.special.IMultiLearnableCharmConfiguration;
 import net.sf.anathema.character.main.charm.special.IMultipleEffectCharmConfiguration;

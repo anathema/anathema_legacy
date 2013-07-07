@@ -1,7 +1,7 @@
 package net.sf.anathema.character.main.library.trait.specialties;
 
-import net.sf.anathema.character.generic.impl.traits.SimpleTraitTemplate;
-import net.sf.anathema.character.generic.traits.TraitType;
+import net.sf.anathema.character.main.traits.SimpleTraitTemplate;
+import net.sf.anathema.character.main.traits.TraitType;
 import net.sf.anathema.character.main.library.trait.DefaultTrait;
 import net.sf.anathema.character.main.library.trait.DefaultTraitType;
 import net.sf.anathema.character.main.library.trait.FriendlyValueChangeChecker;

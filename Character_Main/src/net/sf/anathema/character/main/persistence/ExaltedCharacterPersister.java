@@ -1,7 +1,7 @@
 package net.sf.anathema.character.main.persistence;
 
-import net.sf.anathema.character.generic.framework.ICharacterGenerics;
-import net.sf.anathema.character.generic.impl.magic.SpellException;
+import net.sf.anathema.character.main.framework.ICharacterGenerics;
+import net.sf.anathema.character.main.magic.SpellException;
 import net.sf.anathema.character.main.item.DataItem;
 import net.sf.anathema.character.main.model.description.HeroDescriptionFetcher;
 import net.sf.anathema.character.main.CharacterStatisticsConfiguration;

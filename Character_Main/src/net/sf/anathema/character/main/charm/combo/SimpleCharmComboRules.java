@@ -1,8 +1,8 @@
 package net.sf.anathema.character.main.charm.combo;
 
-import net.sf.anathema.character.generic.magic.ICharm;
-import net.sf.anathema.character.generic.magic.charms.ICharmTypeVisitor;
-import net.sf.anathema.character.generic.magic.charms.type.CharmType;
+import net.sf.anathema.character.main.magic.ICharm;
+import net.sf.anathema.character.main.magic.charms.ICharmTypeVisitor;
+import net.sf.anathema.character.main.magic.charms.type.CharmType;
 
 public class SimpleCharmComboRules extends AbstractComboRules {
   private boolean crossPrerequisite;

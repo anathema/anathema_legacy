@@ -4,7 +4,7 @@ import com.google.inject.Inject;
 import cucumber.api.java.en.And;
 import cucumber.api.java.en.Then;
 import cucumber.api.java.en.When;
-import net.sf.anathema.character.generic.traits.types.AttributeType;
+import net.sf.anathema.character.main.traits.types.AttributeType;
 import net.sf.anathema.character.main.library.trait.Trait;
 import net.sf.anathema.character.main.model.traits.TraitMap;
 import net.sf.anathema.character.main.model.traits.TraitModelFetcher;

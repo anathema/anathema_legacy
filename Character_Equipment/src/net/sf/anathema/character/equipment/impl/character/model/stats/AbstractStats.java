@@ -1,6 +1,6 @@
 package net.sf.anathema.character.equipment.impl.character.model.stats;
 
-import net.sf.anathema.character.generic.equipment.weapon.IEquipmentStats;
+import net.sf.anathema.character.main.equipment.weapon.IEquipmentStats;
 import net.sf.anathema.lib.util.Identifier;
 
 public abstract class AbstractStats implements IEquipmentStats {

@@ -1,6 +1,6 @@
 package net.sf.anathema.character.main.traits.context;
 
-import net.sf.anathema.character.generic.framework.additionaltemplate.model.TraitValueStrategy;
+import net.sf.anathema.character.main.traits.TraitValueStrategy;
 import net.sf.anathema.character.main.library.trait.Trait;
 import net.sf.anathema.lib.control.IIntValueChangedListener;
 import org.jmock.example.announcer.Announcer;

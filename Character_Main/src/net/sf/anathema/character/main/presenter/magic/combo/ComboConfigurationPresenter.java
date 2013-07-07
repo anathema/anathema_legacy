@@ -1,7 +1,7 @@
 package net.sf.anathema.character.main.presenter.magic.combo;
 
 import com.google.common.base.Strings;
-import net.sf.anathema.character.generic.magic.ICharm;
+import net.sf.anathema.character.main.magic.ICharm;
 import net.sf.anathema.character.main.model.charms.CharmsModel;
 import net.sf.anathema.character.main.model.combos.CombosModel;
 import net.sf.anathema.character.main.model.concept.ConceptChange;

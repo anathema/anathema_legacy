@@ -1,8 +1,8 @@
 package net.sf.anathema.charmtree.builder.stringbuilder;
 
-import net.sf.anathema.character.generic.magic.IMagic;
-import net.sf.anathema.character.generic.magic.description.MagicDescription;
-import net.sf.anathema.character.generic.magic.description.MagicDescriptionProvider;
+import net.sf.anathema.character.main.magic.IMagic;
+import net.sf.anathema.character.main.magic.description.MagicDescription;
+import net.sf.anathema.character.main.magic.description.MagicDescriptionProvider;
 import net.sf.anathema.lib.gui.TooltipBuilder;
 import net.sf.anathema.lib.resources.Resources;
 

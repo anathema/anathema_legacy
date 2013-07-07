@@ -2,7 +2,7 @@ package net.sf.anathema.character.main.persistence;
 
 import org.dom4j.Element;
 
-import static net.sf.anathema.character.generic.impl.persistence.SecondEdition.SECOND_EDITION;
+import static net.sf.anathema.character.main.persistence.SecondEdition.SECOND_EDITION;
 import static net.sf.anathema.character.main.persistence.ICharacterXmlConstants.ATTRIB_NAME;
 import static net.sf.anathema.character.main.persistence.ICharacterXmlConstants.TAG_RULES;
 import static net.sf.anathema.character.main.persistence.ICharacterXmlConstants.TAG_RULESET;

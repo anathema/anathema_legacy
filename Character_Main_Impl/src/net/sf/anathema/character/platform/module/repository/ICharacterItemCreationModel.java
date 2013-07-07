@@ -1,6 +1,6 @@
 package net.sf.anathema.character.platform.module.repository;
 
-import net.sf.anathema.character.generic.type.ICharacterType;
+import net.sf.anathema.character.main.type.ICharacterType;
 import net.sf.anathema.character.main.view.repository.ITemplateTypeAggregation;
 import net.sf.anathema.lib.control.ChangeListener;
 

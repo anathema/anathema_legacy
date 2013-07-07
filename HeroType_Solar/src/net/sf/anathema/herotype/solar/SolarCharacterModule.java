@@ -1,11 +1,11 @@
 package net.sf.anathema.herotype.solar;
 
-import net.sf.anathema.character.generic.framework.ICharacterGenerics;
-import net.sf.anathema.character.generic.framework.module.CharacterModule;
-import net.sf.anathema.character.generic.framework.module.CharacterTypeModule;
-import net.sf.anathema.character.generic.impl.caste.CasteCollection;
-import net.sf.anathema.character.generic.template.TemplateType;
-import net.sf.anathema.character.generic.type.ICharacterType;
+import net.sf.anathema.character.main.framework.ICharacterGenerics;
+import net.sf.anathema.character.main.framework.module.CharacterModule;
+import net.sf.anathema.character.main.framework.module.CharacterTypeModule;
+import net.sf.anathema.character.main.caste.CasteCollection;
+import net.sf.anathema.character.main.template.TemplateType;
+import net.sf.anathema.character.main.type.ICharacterType;
 import net.sf.anathema.herotype.solar.model.SolarCaste;
 import net.sf.anathema.herotype.solar.model.SolarCharacterType;
 

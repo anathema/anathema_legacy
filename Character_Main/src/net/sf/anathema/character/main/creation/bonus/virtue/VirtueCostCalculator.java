@@ -1,7 +1,7 @@
 package net.sf.anathema.character.main.creation.bonus.virtue;
 
-import net.sf.anathema.character.generic.template.creation.BonusPointCosts;
-import net.sf.anathema.character.generic.traits.TraitType;
+import net.sf.anathema.character.main.template.creation.BonusPointCosts;
+import net.sf.anathema.character.main.traits.TraitType;
 import net.sf.anathema.character.main.library.trait.Trait;
 
 import java.util.HashMap;

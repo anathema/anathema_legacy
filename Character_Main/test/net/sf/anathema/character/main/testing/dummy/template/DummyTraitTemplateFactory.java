@@ -1,12 +1,12 @@
 package net.sf.anathema.character.main.testing.dummy.template;
 
-import net.sf.anathema.character.generic.impl.traits.EssenceTemplate;
-import net.sf.anathema.character.generic.impl.traits.SimpleTraitTemplate;
-import net.sf.anathema.character.generic.template.ITraitTemplateFactory;
-import net.sf.anathema.character.generic.traits.ITraitTemplate;
-import net.sf.anathema.character.generic.traits.types.AbilityType;
-import net.sf.anathema.character.generic.traits.types.AttributeType;
-import net.sf.anathema.character.generic.traits.types.VirtueType;
+import net.sf.anathema.character.main.traits.EssenceTemplate;
+import net.sf.anathema.character.main.traits.SimpleTraitTemplate;
+import net.sf.anathema.character.main.template.ITraitTemplateFactory;
+import net.sf.anathema.character.main.traits.ITraitTemplate;
+import net.sf.anathema.character.main.traits.types.AbilityType;
+import net.sf.anathema.character.main.traits.types.AttributeType;
+import net.sf.anathema.character.main.traits.types.VirtueType;
 
 public class DummyTraitTemplateFactory implements ITraitTemplateFactory {
 

@@ -1,9 +1,9 @@
 package net.sf.anathema.character.reporting.pdf.content.magic;
 
-import net.sf.anathema.character.generic.magic.ICharm;
-import net.sf.anathema.character.generic.magic.IMagicStats;
-import net.sf.anathema.character.generic.magic.IMagicVisitor;
-import net.sf.anathema.character.generic.magic.ISpell;
+import net.sf.anathema.character.main.magic.ICharm;
+import net.sf.anathema.character.main.magic.IMagicStats;
+import net.sf.anathema.character.main.magic.IMagicVisitor;
+import net.sf.anathema.character.main.magic.ISpell;
 import net.sf.anathema.character.reporting.pdf.content.stats.magic.CharmStats;
 import net.sf.anathema.character.reporting.pdf.content.stats.magic.MultipleEffectCharmStats;
 import net.sf.anathema.character.reporting.pdf.content.stats.magic.SpellStats;

@@ -1,7 +1,7 @@
 package net.sf.anathema.character.main.persistence;
 
-import net.sf.anathema.character.generic.traits.TraitType;
-import net.sf.anathema.character.generic.traits.types.AbilityType;
+import net.sf.anathema.character.main.traits.TraitType;
+import net.sf.anathema.character.main.traits.types.AbilityType;
 import net.sf.anathema.character.main.library.trait.Trait;
 import net.sf.anathema.character.main.library.trait.persistence.TraitPersister;
 import net.sf.anathema.character.main.library.trait.specialties.SpecialtiesModel;

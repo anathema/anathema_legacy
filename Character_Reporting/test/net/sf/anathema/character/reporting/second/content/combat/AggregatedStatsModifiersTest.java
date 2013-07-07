@@ -1,6 +1,6 @@
 package net.sf.anathema.character.reporting.second.content.combat;
 
-import net.sf.anathema.character.generic.equipment.ICharacterStatsModifiers;
+import net.sf.anathema.character.main.equipment.ICharacterStatsModifiers;
 import org.junit.Test;
 
 import static org.hamcrest.CoreMatchers.is;

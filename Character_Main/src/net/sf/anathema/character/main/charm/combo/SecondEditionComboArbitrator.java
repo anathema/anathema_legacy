@@ -1,8 +1,8 @@
 package net.sf.anathema.character.main.charm.combo;
 
-import net.sf.anathema.character.generic.magic.ICharm;
-import net.sf.anathema.character.generic.magic.IExtendedCharmData;
-import net.sf.anathema.character.generic.magic.charms.type.CharmType;
+import net.sf.anathema.character.main.magic.ICharm;
+import net.sf.anathema.character.main.magic.IExtendedCharmData;
+import net.sf.anathema.character.main.magic.charms.type.CharmType;
 
 public class SecondEditionComboArbitrator extends ComboArbitrator {
 

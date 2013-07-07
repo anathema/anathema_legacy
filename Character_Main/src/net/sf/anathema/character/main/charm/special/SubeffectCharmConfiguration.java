@@ -1,8 +1,8 @@
 package net.sf.anathema.character.main.charm.special;
 
-import net.sf.anathema.character.generic.magic.ICharm;
-import net.sf.anathema.character.generic.magic.charms.special.ISubeffect;
-import net.sf.anathema.character.generic.magic.charms.special.ISubeffectCharm;
+import net.sf.anathema.character.main.magic.ICharm;
+import net.sf.anathema.character.main.magic.charms.special.ISubeffect;
+import net.sf.anathema.character.main.magic.charms.special.ISubeffectCharm;
 import net.sf.anathema.character.main.charm.CharmSpecialist;
 import net.sf.anathema.character.main.charm.IExtendedCharmLearnableArbitrator;
 

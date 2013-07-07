@@ -4,7 +4,7 @@ import net.sf.anathema.character.equipment.ItemCost;
 import net.sf.anathema.character.equipment.MagicalMaterial;
 import net.sf.anathema.character.equipment.MaterialComposition;
 import net.sf.anathema.character.equipment.template.IEquipmentTemplate;
-import net.sf.anathema.character.generic.equipment.weapon.IEquipmentStats;
+import net.sf.anathema.character.main.equipment.weapon.IEquipmentStats;
 import net.sf.anathema.framework.itemdata.model.IItemDescription;
 import net.sf.anathema.lib.control.ChangeListener;
 

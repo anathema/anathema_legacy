@@ -1,7 +1,7 @@
 package net.sf.anathema.character.main.presenter.initializers;
 
-import net.sf.anathema.character.generic.framework.magic.view.CharmDescriptionProviderExtractor;
-import net.sf.anathema.character.generic.magic.description.MagicDescriptionProvider;
+import net.sf.anathema.character.main.magic.view.CharmDescriptionProviderExtractor;
+import net.sf.anathema.character.main.magic.description.MagicDescriptionProvider;
 import net.sf.anathema.character.main.presenter.magic.spells.SpellModel;
 import net.sf.anathema.character.main.presenter.magic.spells.SpellPresenter;
 import net.sf.anathema.character.main.view.SectionView;

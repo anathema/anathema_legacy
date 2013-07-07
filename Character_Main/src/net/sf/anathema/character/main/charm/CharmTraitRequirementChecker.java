@@ -1,9 +1,9 @@
 package net.sf.anathema.character.main.charm;
 
-import net.sf.anathema.character.generic.magic.ICharm;
-import net.sf.anathema.character.generic.magic.charms.special.IPrerequisiteModifyingCharm;
-import net.sf.anathema.character.generic.magic.charms.special.TraitRequirementChecker;
-import net.sf.anathema.character.generic.traits.ValuedTraitType;
+import net.sf.anathema.character.main.magic.ICharm;
+import net.sf.anathema.character.main.magic.charms.special.IPrerequisiteModifyingCharm;
+import net.sf.anathema.character.main.magic.charms.special.TraitRequirementChecker;
+import net.sf.anathema.character.main.traits.ValuedTraitType;
 import net.sf.anathema.character.main.library.trait.Trait;
 import net.sf.anathema.character.main.model.traits.TraitMap;
 

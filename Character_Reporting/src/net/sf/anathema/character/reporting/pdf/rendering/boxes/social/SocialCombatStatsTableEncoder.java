@@ -1,11 +1,11 @@
 package net.sf.anathema.character.reporting.pdf.rendering.boxes.social;
 
-import net.sf.anathema.character.generic.character.IGenericTraitCollection;
-import net.sf.anathema.character.generic.equipment.ICharacterStatsModifiers;
-import net.sf.anathema.character.generic.impl.social.InvestigationSocialAttack;
-import net.sf.anathema.character.generic.impl.social.PerformanceSocialAttack;
-import net.sf.anathema.character.generic.impl.social.PresenceSocialAttack;
-import net.sf.anathema.character.generic.social.ISocialCombatStats;
+import net.sf.anathema.character.main.IGenericTraitCollection;
+import net.sf.anathema.character.main.equipment.ICharacterStatsModifiers;
+import net.sf.anathema.character.main.social.InvestigationSocialAttack;
+import net.sf.anathema.character.main.social.PerformanceSocialAttack;
+import net.sf.anathema.character.main.social.PresenceSocialAttack;
+import net.sf.anathema.character.main.social.ISocialCombatStats;
 import net.sf.anathema.character.main.model.traits.GenericTraitCollectionFacade;
 import net.sf.anathema.character.main.model.traits.TraitModelFetcher;
 import net.sf.anathema.character.reporting.pdf.content.ReportSession;

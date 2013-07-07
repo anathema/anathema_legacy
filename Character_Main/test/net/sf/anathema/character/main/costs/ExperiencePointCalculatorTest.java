@@ -1,9 +1,9 @@
 package net.sf.anathema.character.main.costs;
 
-import net.sf.anathema.character.generic.impl.template.points.MultiplyRatingCosts;
-import net.sf.anathema.character.generic.template.experience.IExperiencePointCosts;
-import net.sf.anathema.character.generic.traits.types.OtherTraitType;
-import net.sf.anathema.character.generic.traits.types.VirtueType;
+import net.sf.anathema.character.main.template.points.MultiplyRatingCosts;
+import net.sf.anathema.character.main.template.experience.IExperiencePointCosts;
+import net.sf.anathema.character.main.traits.types.OtherTraitType;
+import net.sf.anathema.character.main.traits.types.VirtueType;
 import net.sf.anathema.character.main.testing.dummy.trait.DummyTrait;
 import net.sf.anathema.character.main.advance.ExperiencePointCostCalculator;
 import org.junit.Test;

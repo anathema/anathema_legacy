@@ -1,10 +1,10 @@
 package net.sf.anathema.character.platform.module;
 
 import net.sf.anathema.character.main.item.CharacterPrintNameFileScanner;
-import net.sf.anathema.character.generic.caste.ICasteCollection;
-import net.sf.anathema.character.generic.framework.CharacterGenericsExtractor;
-import net.sf.anathema.character.generic.framework.ICharacterGenerics;
-import net.sf.anathema.character.generic.type.ICharacterType;
+import net.sf.anathema.character.main.caste.ICasteCollection;
+import net.sf.anathema.character.main.framework.CharacterGenericsExtractor;
+import net.sf.anathema.character.main.framework.ICharacterGenerics;
+import net.sf.anathema.character.main.type.ICharacterType;
 import net.sf.anathema.framework.IApplicationModel;
 import net.sf.anathema.framework.module.ItemTypePresentationFactory;
 import net.sf.anathema.framework.presenter.view.IItemTypeViewProperties;

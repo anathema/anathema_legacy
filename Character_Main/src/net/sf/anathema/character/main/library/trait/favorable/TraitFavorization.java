@@ -1,6 +1,6 @@
 package net.sf.anathema.character.main.library.trait.favorable;
 
-import net.sf.anathema.character.generic.caste.CasteType;
+import net.sf.anathema.character.main.caste.CasteType;
 import net.sf.anathema.character.main.library.ITraitFavorization;
 import net.sf.anathema.character.main.library.trait.Trait;
 import net.sf.anathema.character.main.model.concept.HeroConceptFetcher;

@@ -1,8 +1,8 @@
 package net.sf.anathema.charmtree.view;
 
-import net.sf.anathema.character.generic.magic.ICharm;
-import net.sf.anathema.character.generic.magic.charms.ICharmGroup;
-import net.sf.anathema.character.generic.type.ICharacterType;
+import net.sf.anathema.character.main.magic.ICharm;
+import net.sf.anathema.character.main.magic.charms.ICharmGroup;
+import net.sf.anathema.character.main.type.ICharacterType;
 import net.sf.anathema.charmtree.builder.CharmGraphNodeBuilder;
 import net.sf.anathema.graph.nodes.IIdentifiedRegularNode;
 import net.sf.anathema.graph.nodes.IRegularNode;

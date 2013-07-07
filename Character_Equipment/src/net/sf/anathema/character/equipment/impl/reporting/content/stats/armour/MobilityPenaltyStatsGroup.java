@@ -3,7 +3,7 @@ package net.sf.anathema.character.equipment.impl.reporting.content.stats.armour;
 import com.itextpdf.text.Font;
 import com.itextpdf.text.pdf.PdfPTable;
 import net.sf.anathema.character.equipment.impl.reporting.content.stats.AbstractValueEquipmentStatsGroup;
-import net.sf.anathema.character.generic.equipment.weapon.IArmourStats;
+import net.sf.anathema.character.main.equipment.weapon.IArmourStats;
 import net.sf.anathema.lib.resources.Resources;
 
 public class MobilityPenaltyStatsGroup extends AbstractValueEquipmentStatsGroup<IArmourStats> implements IArmourStatsGroup {

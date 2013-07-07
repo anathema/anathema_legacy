@@ -1,10 +1,10 @@
 package net.sf.anathema.hero.magic;
 
-import net.sf.anathema.character.generic.magic.ICharm;
-import net.sf.anathema.character.generic.magic.IMagic;
-import net.sf.anathema.character.generic.magic.IMagicVisitor;
-import net.sf.anathema.character.generic.magic.ISpell;
-import net.sf.anathema.character.generic.magic.charms.special.IMultiLearnableCharm;
+import net.sf.anathema.character.main.magic.ICharm;
+import net.sf.anathema.character.main.magic.IMagic;
+import net.sf.anathema.character.main.magic.IMagicVisitor;
+import net.sf.anathema.character.main.magic.ISpell;
+import net.sf.anathema.character.main.magic.charms.special.IMultiLearnableCharm;
 import net.sf.anathema.character.main.model.charms.CharmsModel;
 import net.sf.anathema.character.main.model.charms.CharmsModelFetcher;
 import net.sf.anathema.character.main.model.spells.SpellsModelFetcher;

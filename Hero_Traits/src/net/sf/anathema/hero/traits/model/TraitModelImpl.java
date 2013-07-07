@@ -1,6 +1,6 @@
 package net.sf.anathema.hero.traits.model;
 
-import net.sf.anathema.character.generic.framework.additionaltemplate.model.TraitValueStrategy;
+import net.sf.anathema.character.main.traits.TraitValueStrategy;
 import net.sf.anathema.character.main.library.trait.Trait;
 import net.sf.anathema.character.main.model.experience.ExperienceChange;
 import net.sf.anathema.character.main.model.experience.ExperienceModel;

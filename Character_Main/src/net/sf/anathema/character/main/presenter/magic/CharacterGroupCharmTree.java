@@ -1,7 +1,7 @@
 package net.sf.anathema.character.main.presenter.magic;
 
-import net.sf.anathema.character.generic.magic.charms.GroupCharmTree;
-import net.sf.anathema.character.generic.magic.charms.ICharmGroup;
+import net.sf.anathema.character.main.magic.charms.GroupCharmTree;
+import net.sf.anathema.character.main.magic.charms.ICharmGroup;
 import net.sf.anathema.lib.util.Identifier;
 
 public final class CharacterGroupCharmTree implements GroupCharmTree {

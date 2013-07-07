@@ -1,8 +1,8 @@
 package net.sf.anathema.character.main.templateparser;
 
-import net.sf.anathema.character.generic.framework.xml.TemplateTypeParser;
-import net.sf.anathema.character.generic.template.ITemplateType;
-import net.sf.anathema.character.generic.template.TemplateType;
+import net.sf.anathema.character.main.xml.TemplateTypeParser;
+import net.sf.anathema.character.main.template.ITemplateType;
+import net.sf.anathema.character.main.template.TemplateType;
 import net.sf.anathema.character.main.testing.dummy.DummyCharacterTypes;
 import net.sf.anathema.character.main.testing.dummy.DummyMundaneCharacterType;
 import net.sf.anathema.lib.xml.DocumentUtilities;

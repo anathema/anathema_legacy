@@ -1,11 +1,11 @@
 package net.sf.anathema.character.main.templateparser;
 
-import net.sf.anathema.character.generic.framework.xml.magic.GenericMagicTemplate;
-import net.sf.anathema.character.generic.framework.xml.magic.GenericMagicTemplateParser;
-import net.sf.anathema.character.generic.impl.template.magic.DefaultMartialArtsRules;
-import net.sf.anathema.character.generic.magic.charms.MartialArtsLevel;
-import net.sf.anathema.character.generic.magic.spells.CircleType;
-import net.sf.anathema.character.generic.template.magic.ICharmTemplate;
+import net.sf.anathema.character.main.xml.magic.GenericMagicTemplate;
+import net.sf.anathema.character.main.xml.magic.GenericMagicTemplateParser;
+import net.sf.anathema.character.main.template.magic.DefaultMartialArtsRules;
+import net.sf.anathema.character.main.magic.charms.MartialArtsLevel;
+import net.sf.anathema.character.main.magic.spells.CircleType;
+import net.sf.anathema.character.main.template.magic.ICharmTemplate;
 import net.sf.anathema.character.main.dummy.DummyCharm;
 import net.sf.anathema.character.main.dummy.DummyCharmUtilities;
 import net.sf.anathema.character.main.testing.dummy.DummyCasteType;

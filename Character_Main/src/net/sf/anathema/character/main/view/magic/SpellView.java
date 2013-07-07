@@ -2,9 +2,9 @@ package net.sf.anathema.character.main.view.magic;
 
 import net.miginfocom.layout.CC;
 import net.miginfocom.swing.MigLayout;
-import net.sf.anathema.character.generic.framework.magic.view.IMagicViewListener;
-import net.sf.anathema.character.generic.framework.magic.view.MagicLearnView;
-import net.sf.anathema.character.generic.magic.spells.CircleType;
+import net.sf.anathema.character.main.magic.view.IMagicViewListener;
+import net.sf.anathema.character.main.magic.view.MagicLearnView;
+import net.sf.anathema.character.main.magic.spells.CircleType;
 import net.sf.anathema.framework.swing.IView;
 import net.sf.anathema.lib.control.ObjectValueListener;
 import net.sf.anathema.lib.gui.ui.ConfigurableListCellRenderer;

@@ -9,7 +9,7 @@ import net.sf.anathema.character.equipment.impl.reporting.content.stats.weapons.
 import net.sf.anathema.character.equipment.impl.reporting.content.stats.weapons.RangeWeaponStatsGroup;
 import net.sf.anathema.character.equipment.impl.reporting.content.stats.weapons.RateWeaponStatsGroup;
 import net.sf.anathema.character.equipment.impl.reporting.content.stats.weapons.TagsStatsGroup;
-import net.sf.anathema.character.generic.equipment.weapon.IWeaponStats;
+import net.sf.anathema.character.main.equipment.weapon.IWeaponStats;
 import net.sf.anathema.character.main.model.traits.TraitMap;
 import net.sf.anathema.character.main.model.traits.TraitModelFetcher;
 import net.sf.anathema.hero.model.Hero;

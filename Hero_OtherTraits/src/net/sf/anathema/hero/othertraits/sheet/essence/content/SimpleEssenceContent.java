@@ -1,6 +1,6 @@
 package net.sf.anathema.hero.othertraits.sheet.essence.content;
 
-import net.sf.anathema.character.generic.traits.types.OtherTraitType;
+import net.sf.anathema.character.main.traits.types.OtherTraitType;
 import net.sf.anathema.character.main.model.essencepool.EssencePoolModelFetcher;
 import net.sf.anathema.character.main.model.othertraits.OtherTraitModelFetcher;
 import net.sf.anathema.character.reporting.pdf.content.AbstractSubBoxContent;

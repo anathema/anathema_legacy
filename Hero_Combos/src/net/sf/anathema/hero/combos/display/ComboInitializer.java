@@ -1,7 +1,7 @@
 package net.sf.anathema.hero.combos.display;
 
-import net.sf.anathema.character.generic.framework.magic.view.CharmDescriptionProviderExtractor;
-import net.sf.anathema.character.generic.magic.description.MagicDescriptionProvider;
+import net.sf.anathema.character.main.magic.view.CharmDescriptionProviderExtractor;
+import net.sf.anathema.character.main.magic.description.MagicDescriptionProvider;
 import net.sf.anathema.character.main.charm.options.DefaultCharmTemplateRetriever;
 import net.sf.anathema.character.main.presenter.initializers.HeroModelInitializer;
 import net.sf.anathema.character.main.presenter.initializers.RegisteredInitializer;

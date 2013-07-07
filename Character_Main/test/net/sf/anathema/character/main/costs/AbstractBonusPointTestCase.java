@@ -1,12 +1,12 @@
 package net.sf.anathema.character.main.costs;
 
-import net.sf.anathema.character.generic.caste.CasteType;
-import net.sf.anathema.character.generic.traits.ITraitTemplate;
-import net.sf.anathema.character.generic.traits.TraitType;
-import net.sf.anathema.character.generic.traits.groups.IIdentifiedCasteTraitTypeGroup;
-import net.sf.anathema.character.generic.traits.groups.IdentifiedCasteTraitTypeGroup;
-import net.sf.anathema.character.generic.traits.types.AbilityType;
-import net.sf.anathema.character.generic.traits.types.OtherTraitType;
+import net.sf.anathema.character.main.caste.CasteType;
+import net.sf.anathema.character.main.traits.ITraitTemplate;
+import net.sf.anathema.character.main.traits.TraitType;
+import net.sf.anathema.character.main.traits.groups.IIdentifiedCasteTraitTypeGroup;
+import net.sf.anathema.character.main.traits.groups.IdentifiedCasteTraitTypeGroup;
+import net.sf.anathema.character.main.traits.types.AbilityType;
+import net.sf.anathema.character.main.traits.types.OtherTraitType;
 import net.sf.anathema.character.main.library.trait.Trait;
 import net.sf.anathema.character.main.library.trait.favorable.FriendlyIncrementChecker;
 import net.sf.anathema.character.main.library.trait.favorable.IncrementChecker;

@@ -1,12 +1,12 @@
 package net.sf.anathema.hero.othertraits.model.pool;
 
-import net.sf.anathema.character.generic.framework.essence.IEssencePoolModifier;
-import net.sf.anathema.character.generic.template.essence.FactorizedTrait;
-import net.sf.anathema.character.generic.template.essence.FactorizedTraitSumCalculator;
-import net.sf.anathema.character.generic.template.essence.IEssenceTemplate;
-import net.sf.anathema.character.generic.traits.ValuedTraitType;
-import net.sf.anathema.character.generic.traits.types.OtherTraitType;
-import net.sf.anathema.character.generic.traits.types.VirtueType;
+import net.sf.anathema.character.main.essence.IEssencePoolModifier;
+import net.sf.anathema.character.main.template.essence.FactorizedTrait;
+import net.sf.anathema.character.main.template.essence.FactorizedTraitSumCalculator;
+import net.sf.anathema.character.main.template.essence.IEssenceTemplate;
+import net.sf.anathema.character.main.traits.ValuedTraitType;
+import net.sf.anathema.character.main.traits.types.OtherTraitType;
+import net.sf.anathema.character.main.traits.types.VirtueType;
 import net.sf.anathema.character.main.model.essencepool.EssencePoolModelFetcher;
 import net.sf.anathema.character.main.model.essencepool.OverdrivePool;
 import net.sf.anathema.character.main.model.traits.TraitMap;

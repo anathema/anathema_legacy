@@ -1,18 +1,18 @@
 package net.sf.anathema.character.main.persistence.charm;
 
-import net.sf.anathema.character.generic.magic.ICharm;
-import net.sf.anathema.character.generic.magic.charms.CharmIdMap;
-import net.sf.anathema.character.generic.magic.charms.special.IMultiLearnableCharm;
-import net.sf.anathema.character.generic.magic.charms.special.IMultipleEffectCharm;
-import net.sf.anathema.character.generic.magic.charms.special.IOxBodyTechniqueCharm;
-import net.sf.anathema.character.generic.magic.charms.special.IPainToleranceCharm;
-import net.sf.anathema.character.generic.magic.charms.special.IPrerequisiteModifyingCharm;
-import net.sf.anathema.character.generic.magic.charms.special.ISpecialCharm;
-import net.sf.anathema.character.generic.magic.charms.special.ISpecialCharmConfiguration;
-import net.sf.anathema.character.generic.magic.charms.special.ISpecialCharmVisitor;
-import net.sf.anathema.character.generic.magic.charms.special.ISubeffectCharm;
-import net.sf.anathema.character.generic.magic.charms.special.ITraitCapModifyingCharm;
-import net.sf.anathema.character.generic.magic.charms.special.IUpgradableCharm;
+import net.sf.anathema.character.main.magic.ICharm;
+import net.sf.anathema.character.main.magic.charms.CharmIdMap;
+import net.sf.anathema.character.main.magic.charms.special.IMultiLearnableCharm;
+import net.sf.anathema.character.main.magic.charms.special.IMultipleEffectCharm;
+import net.sf.anathema.character.main.magic.charms.special.IOxBodyTechniqueCharm;
+import net.sf.anathema.character.main.magic.charms.special.IPainToleranceCharm;
+import net.sf.anathema.character.main.magic.charms.special.IPrerequisiteModifyingCharm;
+import net.sf.anathema.character.main.magic.charms.special.ISpecialCharm;
+import net.sf.anathema.character.main.magic.charms.special.ISpecialCharmConfiguration;
+import net.sf.anathema.character.main.magic.charms.special.ISpecialCharmVisitor;
+import net.sf.anathema.character.main.magic.charms.special.ISubeffectCharm;
+import net.sf.anathema.character.main.magic.charms.special.ITraitCapModifyingCharm;
+import net.sf.anathema.character.main.magic.charms.special.IUpgradableCharm;
 import net.sf.anathema.lib.exception.PersistenceException;
 import org.dom4j.Element;
 

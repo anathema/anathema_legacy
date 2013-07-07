@@ -1,20 +1,20 @@
 package net.sf.anathema.hero.charms.model.charms;
 
 import com.google.common.base.Functions;
-import net.sf.anathema.character.generic.caste.CasteType;
-import net.sf.anathema.character.generic.impl.magic.MartialArtsUtilities;
-import net.sf.anathema.character.generic.impl.template.magic.ICharmProvider;
-import net.sf.anathema.character.generic.magic.ICharm;
-import net.sf.anathema.character.generic.magic.ICharmData;
-import net.sf.anathema.character.generic.magic.charms.CharmIdMap;
-import net.sf.anathema.character.generic.magic.charms.GroupCharmTree;
-import net.sf.anathema.character.generic.magic.charms.ICharmGroup;
-import net.sf.anathema.character.generic.magic.charms.IndirectCharmRequirement;
-import net.sf.anathema.character.generic.magic.charms.special.ISpecialCharm;
-import net.sf.anathema.character.generic.magic.charms.special.ISpecialCharmConfiguration;
-import net.sf.anathema.character.generic.template.HeroTemplate;
-import net.sf.anathema.character.generic.template.magic.MartialArtsCharmConfiguration;
-import net.sf.anathema.character.generic.type.ICharacterType;
+import net.sf.anathema.character.main.caste.CasteType;
+import net.sf.anathema.character.main.magic.MartialArtsUtilities;
+import net.sf.anathema.character.main.template.magic.ICharmProvider;
+import net.sf.anathema.character.main.magic.ICharm;
+import net.sf.anathema.character.main.magic.ICharmData;
+import net.sf.anathema.character.main.magic.charms.CharmIdMap;
+import net.sf.anathema.character.main.magic.charms.GroupCharmTree;
+import net.sf.anathema.character.main.magic.charms.ICharmGroup;
+import net.sf.anathema.character.main.magic.charms.IndirectCharmRequirement;
+import net.sf.anathema.character.main.magic.charms.special.ISpecialCharm;
+import net.sf.anathema.character.main.magic.charms.special.ISpecialCharmConfiguration;
+import net.sf.anathema.character.main.template.HeroTemplate;
+import net.sf.anathema.character.main.template.magic.MartialArtsCharmConfiguration;
+import net.sf.anathema.character.main.type.ICharacterType;
 import net.sf.anathema.character.main.model.charms.CharmsModel;
 import net.sf.anathema.character.main.model.concept.HeroConceptFetcher;
 import net.sf.anathema.character.main.model.essencepool.EssencePoolModelFetcher;
@@ -58,10 +58,10 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-import static net.sf.anathema.character.generic.impl.magic.MartialArtsUtilities.hasLevel;
-import static net.sf.anathema.character.generic.impl.magic.MartialArtsUtilities.isFormCharm;
-import static net.sf.anathema.character.generic.impl.magic.MartialArtsUtilities.isMartialArtsCharm;
-import static net.sf.anathema.character.generic.magic.charms.MartialArtsLevel.Sidereal;
+import static net.sf.anathema.character.main.magic.MartialArtsUtilities.hasLevel;
+import static net.sf.anathema.character.main.magic.MartialArtsUtilities.isFormCharm;
+import static net.sf.anathema.character.main.magic.MartialArtsUtilities.isMartialArtsCharm;
+import static net.sf.anathema.character.main.magic.charms.MartialArtsLevel.Sidereal;
 import static net.sf.anathema.character.main.charm.options.DefaultCharmTemplateRetriever.getNativeTemplate;
 
 public class CharmsModelImpl implements CharmsModel {

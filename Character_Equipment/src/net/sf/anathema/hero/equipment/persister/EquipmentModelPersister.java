@@ -6,7 +6,7 @@ import net.sf.anathema.character.equipment.character.EquipmentHeroEvaluator;
 import net.sf.anathema.character.equipment.character.model.IEquipmentItem;
 import net.sf.anathema.character.equipment.character.model.IEquipmentStatsOption;
 import net.sf.anathema.character.equipment.impl.character.model.MissingMaterialException;
-import net.sf.anathema.character.generic.equipment.weapon.IEquipmentStats;
+import net.sf.anathema.character.main.equipment.weapon.IEquipmentStats;
 import net.sf.anathema.hero.equipment.EquipmentModel;
 import net.sf.anathema.hero.persistence.AbstractModelJsonPersister;
 import net.sf.anathema.hero.persistence.HeroModelPersisterCollected;

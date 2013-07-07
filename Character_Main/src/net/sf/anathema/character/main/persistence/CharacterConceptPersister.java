@@ -1,7 +1,7 @@
 package net.sf.anathema.character.main.persistence;
 
-import net.sf.anathema.character.generic.caste.CasteType;
-import net.sf.anathema.character.generic.caste.ICasteCollection;
+import net.sf.anathema.character.main.caste.CasteType;
+import net.sf.anathema.character.main.caste.ICasteCollection;
 import net.sf.anathema.character.main.model.concept.HeroConcept;
 import net.sf.anathema.character.main.model.description.HeroDescription;
 import net.sf.anathema.character.main.IIntegerDescription;

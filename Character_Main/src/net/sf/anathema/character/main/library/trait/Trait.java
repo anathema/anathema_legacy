@@ -1,6 +1,6 @@
 package net.sf.anathema.character.main.library.trait;
 
-import net.sf.anathema.character.generic.traits.ValuedTraitType;
+import net.sf.anathema.character.main.traits.ValuedTraitType;
 import net.sf.anathema.character.main.library.ITraitFavorization;
 import net.sf.anathema.lib.control.IIntValueChangedListener;
 

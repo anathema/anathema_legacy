@@ -2,9 +2,9 @@ package net.sf.anathema.character.equipment.impl.character.model.natural.seconde
 
 import net.sf.anathema.character.equipment.impl.character.model.natural.AbstractNaturalWeaponStats;
 import net.sf.anathema.character.equipment.impl.creation.model.WeaponTag;
-import net.sf.anathema.character.generic.traits.TraitType;
-import net.sf.anathema.character.generic.traits.types.AbilityType;
-import net.sf.anathema.character.generic.traits.types.AttributeType;
+import net.sf.anathema.character.main.traits.TraitType;
+import net.sf.anathema.character.main.traits.types.AbilityType;
+import net.sf.anathema.character.main.traits.types.AttributeType;
 import net.sf.anathema.lib.util.Identifier;
 import net.sf.anathema.lib.util.SimpleIdentifier;
 

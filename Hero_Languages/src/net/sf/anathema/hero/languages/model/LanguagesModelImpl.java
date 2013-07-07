@@ -4,7 +4,7 @@ import com.google.common.base.Objects;
 import com.google.common.base.Preconditions;
 import com.google.common.base.Predicate;
 import com.google.common.collect.Iterables;
-import net.sf.anathema.character.generic.traits.types.AbilityType;
+import net.sf.anathema.character.main.traits.types.AbilityType;
 import net.sf.anathema.character.main.library.removableentry.model.AbstractRemovableEntryModel;
 import net.sf.anathema.character.main.library.trait.Trait;
 import net.sf.anathema.character.main.model.abilities.AbilityModelFetcher;

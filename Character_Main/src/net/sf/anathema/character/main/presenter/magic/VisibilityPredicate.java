@@ -1,9 +1,9 @@
 package net.sf.anathema.character.main.presenter.magic;
 
 import com.google.common.base.Predicate;
-import net.sf.anathema.character.generic.magic.ICharm;
-import net.sf.anathema.character.generic.magic.charms.CharmIdMap;
-import net.sf.anathema.character.generic.magic.charms.ICharmGroup;
+import net.sf.anathema.character.main.magic.ICharm;
+import net.sf.anathema.character.main.magic.charms.CharmIdMap;
+import net.sf.anathema.character.main.magic.charms.ICharmGroup;
 import net.sf.anathema.charmtree.view.CharmGroupInformer;
 
 public class VisibilityPredicate implements Predicate<String> {

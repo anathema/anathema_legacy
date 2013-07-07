@@ -1,9 +1,7 @@
 package net.sf.anathema.character.main.traits;
 
-import net.sf.anathema.character.generic.template.ITraitTemplateFactory;
-import net.sf.anathema.character.generic.traits.ITraitTemplate;
-import net.sf.anathema.character.generic.traits.TraitType;
-import net.sf.anathema.character.generic.traits.types.VirtueType;
+import net.sf.anathema.character.main.template.ITraitTemplateFactory;
+import net.sf.anathema.character.main.traits.types.VirtueType;
 import net.sf.anathema.character.main.traits.creation.TypedTraitTemplateFactory;
 
 public class VirtueTemplateFactory implements TypedTraitTemplateFactory {

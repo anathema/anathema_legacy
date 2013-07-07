@@ -1,6 +1,6 @@
 package net.sf.anathema.character.main.testing.dummy;
 
-import net.sf.anathema.character.generic.template.HeroTemplate;
+import net.sf.anathema.character.main.template.HeroTemplate;
 import net.sf.anathema.character.main.library.trait.Trait;
 import net.sf.anathema.character.main.testing.dummy.models.DummyTraitModel;
 import net.sf.anathema.character.main.testing.dummy.template.DummyHeroTemplate;

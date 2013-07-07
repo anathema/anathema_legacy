@@ -2,7 +2,7 @@ package net.sf.anathema.hero.charms.sheet.encoder;
 
 import com.google.common.base.Objects;
 import com.itextpdf.text.pdf.PdfPTable;
-import net.sf.anathema.character.generic.magic.IMagicStats;
+import net.sf.anathema.character.main.magic.IMagicStats;
 import net.sf.anathema.character.reporting.pdf.content.ReportSession;
 import net.sf.anathema.character.reporting.pdf.content.magic.AbstractMagicContent;
 import net.sf.anathema.character.reporting.pdf.content.stats.IStatsGroup;

@@ -5,7 +5,7 @@ import net.sf.anathema.initialization.PreferenceElement;
 import net.sf.anathema.initialization.reflections.Weight;
 import net.sf.anathema.lib.util.Identifier;
 
-import static net.sf.anathema.character.generic.framework.configuration.ICharacterPreferencesConstants.PRINT_ZERO_CRAFTS;
+import static net.sf.anathema.character.main.framework.configuration.ICharacterPreferencesConstants.PRINT_ZERO_CRAFTS;
 
 @PreferenceElement
 @Weight(weight = 110)

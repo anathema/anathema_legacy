@@ -1,7 +1,7 @@
 package net.sf.anathema.character.main.trait;
 
-import net.sf.anathema.character.generic.caste.CasteType;
-import net.sf.anathema.character.generic.traits.types.AbilityType;
+import net.sf.anathema.character.main.caste.CasteType;
+import net.sf.anathema.character.main.traits.types.AbilityType;
 import net.sf.anathema.character.main.library.trait.Trait;
 import net.sf.anathema.character.main.library.trait.favorable.FavorableState;
 import net.sf.anathema.character.main.library.trait.favorable.FriendlyIncrementChecker;

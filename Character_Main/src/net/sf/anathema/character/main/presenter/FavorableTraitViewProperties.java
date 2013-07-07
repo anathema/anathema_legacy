@@ -1,7 +1,7 @@
 package net.sf.anathema.character.main.presenter;
 
-import net.sf.anathema.character.generic.framework.resources.CharacterUI;
-import net.sf.anathema.character.generic.template.presentation.IPresentationProperties;
+import net.sf.anathema.character.main.CharacterUI;
+import net.sf.anathema.character.main.template.presentation.IPresentationProperties;
 import net.sf.anathema.character.main.library.intvalue.IIconToggleButtonProperties;
 import net.sf.anathema.character.main.library.trait.Trait;
 import net.sf.anathema.character.main.model.concept.HeroConceptFetcher;

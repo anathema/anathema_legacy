@@ -1,7 +1,7 @@
 package net.sf.anathema.character.equipment.impl.reporting.content.stats.weapons;
 
-import net.sf.anathema.character.generic.equipment.ICharacterStatsModifiers;
-import net.sf.anathema.character.generic.equipment.weapon.IWeaponStats;
+import net.sf.anathema.character.main.equipment.ICharacterStatsModifiers;
+import net.sf.anathema.character.main.equipment.weapon.IWeaponStats;
 import net.sf.anathema.lib.resources.Resources;
 
 public class SecondEditionSpeedWeaponStatsGroup extends AbstractSpeedWeaponStatsGroup {

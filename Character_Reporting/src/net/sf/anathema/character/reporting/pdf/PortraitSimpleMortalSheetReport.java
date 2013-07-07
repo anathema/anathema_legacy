@@ -3,7 +3,7 @@ package net.sf.anathema.character.reporting.pdf;
 import com.itextpdf.text.Document;
 import com.itextpdf.text.pdf.PdfContentByte;
 import com.itextpdf.text.pdf.PdfWriter;
-import net.sf.anathema.character.generic.framework.ICharacterGenerics;
+import net.sf.anathema.character.main.framework.ICharacterGenerics;
 import net.sf.anathema.character.main.Character;
 import net.sf.anathema.character.reporting.CharacterReportingModuleObject;
 import net.sf.anathema.character.reporting.pdf.content.ReportContentRegistry;

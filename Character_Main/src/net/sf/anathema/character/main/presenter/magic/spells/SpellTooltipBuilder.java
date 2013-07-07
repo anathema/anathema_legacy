@@ -1,7 +1,7 @@
 package net.sf.anathema.character.main.presenter.magic.spells;
 
-import net.sf.anathema.character.generic.magic.ISpell;
-import net.sf.anathema.character.generic.magic.description.MagicDescriptionProvider;
+import net.sf.anathema.character.main.magic.ISpell;
+import net.sf.anathema.character.main.magic.description.MagicDescriptionProvider;
 import net.sf.anathema.charmtree.builder.stringbuilder.MagicDescriptionStringBuilder;
 import net.sf.anathema.charmtree.builder.stringbuilder.ScreenDisplayInfoStringBuilder;
 import net.sf.anathema.charmtree.builder.stringbuilder.source.MagicSourceStringBuilder;

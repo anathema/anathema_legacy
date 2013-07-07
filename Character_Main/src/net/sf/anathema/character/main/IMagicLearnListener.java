@@ -1,6 +1,6 @@
 package net.sf.anathema.character.main;
 
-import net.sf.anathema.character.generic.magic.IMagic;
+import net.sf.anathema.character.main.magic.IMagic;
 
 public interface IMagicLearnListener<T extends IMagic> {
 

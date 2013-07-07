@@ -1,7 +1,7 @@
 package net.sf.anathema.character.main.library.trait.view.fx;
 
 import javafx.scene.Node;
-import net.sf.anathema.character.generic.type.ICharacterType;
+import net.sf.anathema.character.main.type.ICharacterType;
 import net.sf.anathema.character.main.library.trait.view.GroupedFavorableTraitConfigurationView;
 import net.sf.anathema.character.main.presenter.ExtensibleTraitView;
 import net.sf.anathema.character.main.view.ColumnCount;

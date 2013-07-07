@@ -1,7 +1,7 @@
 package net.sf.anathema.hero.specialties.model;
 
 import com.google.common.base.Strings;
-import net.sf.anathema.character.generic.traits.TraitType;
+import net.sf.anathema.character.main.traits.TraitType;
 import net.sf.anathema.character.main.library.trait.Trait;
 import net.sf.anathema.character.main.library.trait.specialties.SpecialtiesContainer;
 import net.sf.anathema.character.main.library.trait.specialties.SpecialtiesListener;

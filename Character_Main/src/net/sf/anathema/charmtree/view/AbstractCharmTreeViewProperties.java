@@ -1,9 +1,9 @@
 package net.sf.anathema.charmtree.view;
 
 import com.google.common.base.Preconditions;
-import net.sf.anathema.character.generic.magic.ICharm;
-import net.sf.anathema.character.generic.magic.charms.special.ISpecialCharm;
-import net.sf.anathema.character.generic.magic.description.MagicDescriptionProvider;
+import net.sf.anathema.character.main.magic.ICharm;
+import net.sf.anathema.character.main.magic.charms.special.ISpecialCharm;
+import net.sf.anathema.character.main.magic.description.MagicDescriptionProvider;
 import net.sf.anathema.charmtree.builder.stringbuilder.CharmInfoStringBuilder;
 import net.sf.anathema.charmtree.builder.stringbuilder.ICharmInfoStringBuilder;
 import net.sf.anathema.lib.resources.Resources;

@@ -1,6 +1,6 @@
 package net.sf.anathema.hero.specialties.display.presenter;
 
-import net.sf.anathema.character.generic.type.ICharacterType;
+import net.sf.anathema.character.main.type.ICharacterType;
 import net.sf.anathema.character.main.library.trait.specialties.SpecialtiesModel;
 import net.sf.anathema.character.main.library.trait.specialties.SpecialtiesModelFetcher;
 import net.sf.anathema.character.main.presenter.initializers.HeroModelInitializer;

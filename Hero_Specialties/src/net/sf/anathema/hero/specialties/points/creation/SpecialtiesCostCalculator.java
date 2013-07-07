@@ -1,6 +1,6 @@
 package net.sf.anathema.hero.specialties.points.creation;
 
-import net.sf.anathema.character.generic.template.creation.IGenericSpecialty;
+import net.sf.anathema.character.main.template.creation.IGenericSpecialty;
 import net.sf.anathema.character.main.library.trait.Trait;
 import net.sf.anathema.character.main.library.trait.specialties.SpecialtiesModel;
 import net.sf.anathema.character.main.library.trait.specialties.SpecialtiesModelFetcher;

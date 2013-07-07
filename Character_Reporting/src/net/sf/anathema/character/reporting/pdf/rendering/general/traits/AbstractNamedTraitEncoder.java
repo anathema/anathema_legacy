@@ -2,7 +2,7 @@ package net.sf.anathema.character.reporting.pdf.rendering.general.traits;
 
 import com.itextpdf.text.pdf.PdfContentByte;
 import net.sf.anathema.character.generic.framework.resources.TraitReferenceInternationalizer;
-import net.sf.anathema.character.generic.traits.TraitType;
+import net.sf.anathema.character.main.traits.TraitType;
 import net.sf.anathema.character.main.library.trait.specialties.Specialty;
 import net.sf.anathema.character.reporting.pdf.content.stats.NamedGenericTraitReference;
 import net.sf.anathema.character.reporting.pdf.content.stats.ValuedTraitReference;

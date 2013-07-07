@@ -1,15 +1,15 @@
 package net.sf.anathema.character.main.charm.options;
 
-import net.sf.anathema.character.generic.impl.magic.charm.MartialArtsCharmTree;
-import net.sf.anathema.character.generic.magic.ICharm;
-import net.sf.anathema.character.generic.magic.charms.CharmIdMap;
-import net.sf.anathema.character.generic.magic.charms.ICharmGroup;
-import net.sf.anathema.character.generic.magic.charms.ICharmLearnableArbitrator;
-import net.sf.anathema.character.generic.template.magic.ICharmTemplate;
-import net.sf.anathema.character.generic.template.magic.MartialArtsRules;
+import net.sf.anathema.character.main.magic.charm.MartialArtsCharmTree;
+import net.sf.anathema.character.main.magic.ICharm;
+import net.sf.anathema.character.main.magic.charms.CharmIdMap;
+import net.sf.anathema.character.main.magic.charms.ICharmGroup;
+import net.sf.anathema.character.main.magic.charms.ICharmLearnableArbitrator;
+import net.sf.anathema.character.main.template.magic.ICharmTemplate;
+import net.sf.anathema.character.main.template.magic.MartialArtsRules;
 import net.sf.anathema.hero.model.Hero;
 
-import static net.sf.anathema.character.generic.impl.magic.MartialArtsUtilities.isMartialArtsCharm;
+import static net.sf.anathema.character.main.magic.MartialArtsUtilities.isMartialArtsCharm;
 
 public class MartialArtsOptions implements CharmIdMap, ICharmLearnableArbitrator {
 

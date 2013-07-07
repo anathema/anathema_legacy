@@ -1,6 +1,6 @@
 package net.sf.anathema.character.main.presenter.magic.charm;
 
-import net.sf.anathema.character.generic.magic.charms.GroupCharmTree;
+import net.sf.anathema.character.main.magic.charms.GroupCharmTree;
 import net.sf.anathema.character.main.model.charms.CharmsModel;
 import net.sf.anathema.character.main.presenter.magic.CharacterAlienCharmPresenter;
 import net.sf.anathema.character.main.presenter.magic.CharacterCharmGroupChangeListener;

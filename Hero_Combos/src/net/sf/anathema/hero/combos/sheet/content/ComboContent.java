@@ -1,7 +1,7 @@
 package net.sf.anathema.hero.combos.sheet.content;
 
-import net.sf.anathema.character.generic.GenericCombo;
-import net.sf.anathema.character.generic.magic.IGenericCombo;
+import net.sf.anathema.character.main.GenericCombo;
+import net.sf.anathema.character.main.magic.IGenericCombo;
 import net.sf.anathema.character.main.model.combos.CombosModelFetcher;
 import net.sf.anathema.character.main.charm.ICombo;
 import net.sf.anathema.character.reporting.pdf.content.AbstractSubBoxContent;

@@ -1,8 +1,8 @@
 package net.sf.anathema.magic.description.module;
 
-import net.sf.anathema.character.generic.magic.IMagic;
-import net.sf.anathema.character.generic.magic.description.MagicDescription;
-import net.sf.anathema.character.generic.magic.description.MagicDescriptionProvider;
+import net.sf.anathema.character.main.magic.IMagic;
+import net.sf.anathema.character.main.magic.description.MagicDescription;
+import net.sf.anathema.character.main.magic.description.MagicDescriptionProvider;
 import net.sf.anathema.magic.description.persistence.MagicDescriptionDataBase;
 
 public class RepositoryMagicDescriptionProvider implements MagicDescriptionProvider {

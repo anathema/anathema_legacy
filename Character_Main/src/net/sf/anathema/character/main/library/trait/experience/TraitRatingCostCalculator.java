@@ -1,6 +1,6 @@
 package net.sf.anathema.character.main.library.trait.experience;
 
-import net.sf.anathema.character.generic.template.experience.CurrentRatingCosts;
+import net.sf.anathema.character.main.template.experience.CurrentRatingCosts;
 import net.sf.anathema.character.main.library.trait.Trait;
 
 public class TraitRatingCostCalculator {

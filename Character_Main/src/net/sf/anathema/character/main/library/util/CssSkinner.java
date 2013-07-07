@@ -1,6 +1,6 @@
 package net.sf.anathema.character.main.library.util;
 
-import net.sf.anathema.character.generic.type.ICharacterType;
+import net.sf.anathema.character.main.type.ICharacterType;
 
 import java.util.ArrayList;
 import java.util.List;

@@ -6,7 +6,7 @@ import net.sf.anathema.lib.util.SimpleIdentifier;
 
 import java.util.prefs.Preferences;
 
-import static net.sf.anathema.character.generic.framework.configuration.ICharacterPreferencesConstants.CHARACTER_PREFERENCES_NODE;
+import static net.sf.anathema.character.main.framework.configuration.ICharacterPreferencesConstants.CHARACTER_PREFERENCES_NODE;
 
 public interface ICharacterPreferencesElement extends IPreferencesElement {
 

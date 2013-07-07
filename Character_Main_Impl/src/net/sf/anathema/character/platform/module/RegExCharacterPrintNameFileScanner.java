@@ -1,11 +1,11 @@
 package net.sf.anathema.character.platform.module;
 
 import net.sf.anathema.character.main.item.CharacterPrintNameFileScanner;
-import net.sf.anathema.character.generic.caste.ICasteCollection;
-import net.sf.anathema.character.generic.template.ITemplateType;
-import net.sf.anathema.character.generic.template.TemplateType;
-import net.sf.anathema.character.generic.type.CharacterTypes;
-import net.sf.anathema.character.generic.type.ICharacterType;
+import net.sf.anathema.character.main.caste.ICasteCollection;
+import net.sf.anathema.character.main.template.ITemplateType;
+import net.sf.anathema.character.main.template.TemplateType;
+import net.sf.anathema.character.main.type.CharacterTypes;
+import net.sf.anathema.character.main.type.ICharacterType;
 import net.sf.anathema.framework.repository.IRepositoryFileResolver;
 import net.sf.anathema.framework.view.PrintNameFile;
 import net.sf.anathema.lib.exception.AnathemaException;
@@ -22,8 +22,8 @@ import java.io.IOException;
 import java.util.HashMap;
 import java.util.Map;
 
-import static net.sf.anathema.character.generic.caste.CasteType.NULL_CASTE_TYPE;
-import static net.sf.anathema.character.generic.impl.magic.ICharmXMLConstants.ATTRIB_TYPE;
+import static net.sf.anathema.character.main.caste.CasteType.NULL_CASTE_TYPE;
+import static net.sf.anathema.character.main.magic.ICharmXMLConstants.ATTRIB_TYPE;
 import static net.sf.anathema.character.main.persistence.ICharacterXmlConstants.ATTRIB_SUB_TYPE;
 import static net.sf.anathema.character.main.persistence.ICharacterXmlConstants.TAG_CASTE;
 import static net.sf.anathema.character.main.persistence.ICharacterXmlConstants.TAG_CHARACTER_TYPE;

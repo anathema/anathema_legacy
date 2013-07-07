@@ -1,15 +1,14 @@
 package net.sf.anathema.character.main.social;
 
-import net.sf.anathema.character.generic.character.IGenericTraitCollection;
-import net.sf.anathema.character.generic.equipment.ICharacterStatsModifiers;
-import net.sf.anathema.character.generic.impl.social.InvestigationSocialAttack;
+import net.sf.anathema.character.main.IGenericTraitCollection;
+import net.sf.anathema.character.main.equipment.ICharacterStatsModifiers;
 import net.sf.anathema.character.main.testing.dummy.DummyGenericTrait;
 import org.junit.Before;
 import org.junit.Test;
 
-import static net.sf.anathema.character.generic.traits.types.AbilityType.Investigation;
-import static net.sf.anathema.character.generic.traits.types.AttributeType.Charisma;
-import static net.sf.anathema.character.generic.traits.types.AttributeType.Manipulation;
+import static net.sf.anathema.character.main.traits.types.AbilityType.Investigation;
+import static net.sf.anathema.character.main.traits.types.AttributeType.Charisma;
+import static net.sf.anathema.character.main.traits.types.AttributeType.Manipulation;
 import static org.hamcrest.CoreMatchers.is;
 import static org.junit.Assert.assertThat;
 import static org.mockito.Mockito.mock;

@@ -1,6 +1,6 @@
 package net.sf.anathema.character.main.presenter;
 
-import net.sf.anathema.character.generic.traits.types.VirtueType;
+import net.sf.anathema.character.main.traits.types.VirtueType;
 import net.sf.anathema.character.main.library.trait.Trait;
 import net.sf.anathema.character.main.library.trait.presenter.TraitPresenter;
 import net.sf.anathema.character.main.model.traits.TraitMap;

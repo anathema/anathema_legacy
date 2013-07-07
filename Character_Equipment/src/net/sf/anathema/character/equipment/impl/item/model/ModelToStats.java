@@ -17,8 +17,8 @@ import net.sf.anathema.character.equipment.impl.character.model.stats.ArtifactSt
 import net.sf.anathema.character.equipment.impl.character.model.stats.MeleeWeaponStats;
 import net.sf.anathema.character.equipment.impl.character.model.stats.RangedWeaponStats;
 import net.sf.anathema.character.equipment.impl.character.model.stats.TraitModifyingStats;
-import net.sf.anathema.character.generic.equipment.weapon.IEquipmentStats;
-import net.sf.anathema.character.generic.health.HealthType;
+import net.sf.anathema.character.main.equipment.weapon.IEquipmentStats;
+import net.sf.anathema.character.main.health.HealthType;
 import net.sf.anathema.lib.util.SimpleIdentifier;
 
 public class ModelToStats {

@@ -1,6 +1,6 @@
 package net.sf.anathema.character.main.charm;
 
-import net.sf.anathema.character.generic.magic.ICharm;
+import net.sf.anathema.character.main.magic.ICharm;
 import net.sf.anathema.lib.control.ChangeListener;
 import net.sf.anathema.lib.workflow.textualdescription.ITextualDescription;
 

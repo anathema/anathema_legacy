@@ -1,8 +1,8 @@
 package net.sf.anathema.character.reporting.pdf.content.combat;
 
-import net.sf.anathema.character.generic.character.IGenericTraitCollection;
-import net.sf.anathema.character.generic.impl.CharacterUtilities;
-import net.sf.anathema.character.generic.type.ICharacterType;
+import net.sf.anathema.character.main.IGenericTraitCollection;
+import net.sf.anathema.character.main.util.CharacterUtilities;
+import net.sf.anathema.character.main.type.ICharacterType;
 import net.sf.anathema.character.main.model.traits.GenericTraitCollectionFacade;
 import net.sf.anathema.character.main.model.traits.TraitModelFetcher;
 import net.sf.anathema.character.reporting.pdf.content.AbstractSubBoxContent;

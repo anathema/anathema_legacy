@@ -1,9 +1,9 @@
 package net.sf.anathema.character.main.charmparser;
 
-import net.sf.anathema.character.generic.health.HealthType;
-import net.sf.anathema.character.generic.impl.magic.HealthCost;
-import net.sf.anathema.character.generic.impl.magic.persistence.builder.HealthCostBuilder;
-import net.sf.anathema.character.generic.magic.general.IHealthCost;
+import net.sf.anathema.character.main.health.HealthType;
+import net.sf.anathema.character.main.magic.HealthCost;
+import net.sf.anathema.character.main.magic.persistence.builder.HealthCostBuilder;
+import net.sf.anathema.character.main.magic.general.IHealthCost;
 import net.sf.anathema.lib.exception.PersistenceException;
 import org.dom4j.Element;
 import org.dom4j.tree.DefaultElement;

@@ -1,9 +1,9 @@
 package net.sf.anathema.character.main.charm.combo;
 
-import net.sf.anathema.character.generic.magic.ICharm;
-import net.sf.anathema.character.generic.magic.charms.ICharmTypeVisitor;
-import net.sf.anathema.character.generic.magic.charms.IComboRestrictions;
-import net.sf.anathema.character.generic.magic.charms.type.CharmType;
+import net.sf.anathema.character.main.magic.ICharm;
+import net.sf.anathema.character.main.magic.charms.ICharmTypeVisitor;
+import net.sf.anathema.character.main.magic.charms.IComboRestrictions;
+import net.sf.anathema.character.main.magic.charms.type.CharmType;
 import net.sf.anathema.character.main.charm.ICombo;
 import org.apache.commons.lang3.ArrayUtils;
 
