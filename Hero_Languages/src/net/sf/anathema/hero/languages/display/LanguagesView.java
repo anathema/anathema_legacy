@@ -11,6 +11,4 @@ public interface LanguagesView {
   OverviewCategory addOverview(String border);
 
   RemovableEntryView addEntryView(RelativePath removeIcon, String string);
-
-  void removeEntryView(RemovableEntryView removableView);
 }

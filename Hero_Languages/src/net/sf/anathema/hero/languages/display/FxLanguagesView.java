@@ -52,9 +52,4 @@ public class FxLanguagesView implements LanguagesView, NodeHolder {
     view.addTo(entryPanel);
     return view;
   }
-
-  @Override
-  public void removeEntryView(RemovableEntryView removableView) {
-    removableView.delete();
-  }
 }

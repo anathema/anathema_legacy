@@ -139,7 +139,7 @@ public class LanguagesPresenter {
       @Override
       public void entryRemoved(Identifier entry) {
         RemovableEntryView entryView = viewsByEntry.remove(entry);
-        view.removeEntryView(entryView);
+        entryView.delete();
       }
     });
     for (Identifier language : model.getPredefinedLanguages()) {

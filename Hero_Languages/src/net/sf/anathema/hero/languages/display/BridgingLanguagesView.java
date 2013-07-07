@@ -36,9 +36,4 @@ public class BridgingLanguagesView implements LanguagesView, IView {
   public RemovableEntryView addEntryView(RelativePath removeIcon, String label) {
     return fxView.addEntryView(removeIcon, label);
   }
-
-  @Override
-  public void removeEntryView(RemovableEntryView removableView) {
-    fxView.removeEntryView(removableView);
-  }
 }
