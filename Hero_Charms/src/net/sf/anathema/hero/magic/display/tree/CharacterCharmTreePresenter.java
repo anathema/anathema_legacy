@@ -8,7 +8,7 @@ import net.sf.anathema.hero.magic.display.special.CharacterSpecialCharmPresenter
 import net.sf.anathema.hero.magic.display.special.CommonSpecialCharmList;
 import net.sf.anathema.hero.magic.model.charms.special.SpecialCharmList;
 import net.sf.anathema.hero.magic.display.special.SpecialCharmViewBuilder;
-import net.sf.anathema.character.main.presenter.magic.detail.ShowMagicDetailListener;
+import net.sf.anathema.character.main.magicdescription.presenter.ShowMagicDetailListener;
 import net.sf.anathema.hero.magic.display.coloring.CharacterColoringStrategy;
 import net.sf.anathema.hero.magic.display.coloring.ConfigurableCharmDye;
 import net.sf.anathema.character.main.magic.display.view.charmtree.CharmDisplayPropertiesMap;

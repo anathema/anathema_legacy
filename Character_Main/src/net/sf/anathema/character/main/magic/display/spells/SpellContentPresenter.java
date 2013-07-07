@@ -1,4 +1,4 @@
-package net.sf.anathema.character.main.presenter.magic.spells;
+package net.sf.anathema.character.main.magic.display.spells;
 
 import net.sf.anathema.lib.gui.Presenter;
 

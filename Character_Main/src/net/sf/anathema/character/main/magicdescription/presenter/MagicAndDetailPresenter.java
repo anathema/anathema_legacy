@@ -1,4 +1,4 @@
-package net.sf.anathema.character.main.presenter.magic.detail;
+package net.sf.anathema.character.main.magicdescription.presenter;
 
 import net.sf.anathema.framework.view.CollapsibleView;
 import net.sf.anathema.lib.gui.Presenter;

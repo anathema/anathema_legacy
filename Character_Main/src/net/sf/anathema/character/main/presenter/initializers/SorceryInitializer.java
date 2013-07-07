@@ -1,7 +1,7 @@
 package net.sf.anathema.character.main.presenter.initializers;
 
-import net.sf.anathema.character.main.presenter.magic.spells.SorceryModel;
-import net.sf.anathema.character.main.presenter.magic.spells.SpellModel;
+import net.sf.anathema.character.main.magic.display.spells.SorceryModel;
+import net.sf.anathema.character.main.magic.display.spells.SpellModel;
 import net.sf.anathema.character.main.view.SectionView;
 import net.sf.anathema.framework.IApplicationModel;
 import net.sf.anathema.hero.model.Hero;

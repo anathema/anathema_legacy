@@ -1,4 +1,4 @@
-package net.sf.anathema.character.main.presenter.magic.spells;
+package net.sf.anathema.character.main.magic.display.spells;
 
 import net.sf.anathema.character.main.magic.display.view.magic.IMagicViewListener;
 import net.sf.anathema.character.main.magic.model.spells.ISpell;
@@ -25,13 +25,13 @@ import java.util.List;
 public class SpellPresenter {
 
   private final net.sf.anathema.hero.spells.SpellModel spellConfiguration;
-  private net.sf.anathema.character.main.presenter.magic.spells.SpellModel spellModel;
+  private SpellModel spellModel;
   private final Hero hero;
   private final Resources resources;
   private CircleType circle;
   private final ISpellView view;
 
-  public SpellPresenter(net.sf.anathema.character.main.presenter.magic.spells.SpellModel spellModel, Hero hero, Resources resources, ISpellView view,
+  public SpellPresenter(SpellModel spellModel, Hero hero, Resources resources, ISpellView view,
                         MagicDescriptionProvider magicDescriptionProvider) {
     this.spellModel = spellModel;
     this.hero  = hero;

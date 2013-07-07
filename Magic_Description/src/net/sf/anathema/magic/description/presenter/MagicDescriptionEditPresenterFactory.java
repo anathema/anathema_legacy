@@ -1,8 +1,8 @@
 package net.sf.anathema.magic.description.presenter;
 
-import net.sf.anathema.character.main.presenter.magic.detail.MagicDetailPresenter;
-import net.sf.anathema.character.main.presenter.magic.detail.MagicDetailPresenterFactory;
-import net.sf.anathema.character.main.presenter.magic.detail.RegisteredMagicDetailPresenterFactory;
+import net.sf.anathema.character.main.magicdescription.presenter.MagicDetailPresenter;
+import net.sf.anathema.character.main.magicdescription.presenter.MagicDetailPresenterFactory;
+import net.sf.anathema.character.main.magicdescription.presenter.RegisteredMagicDetailPresenterFactory;
 import net.sf.anathema.framework.IApplicationModel;
 import net.sf.anathema.lib.resources.Resources;
 import net.sf.anathema.magic.description.model.AutoSaveMagicDescriptionEditModel;

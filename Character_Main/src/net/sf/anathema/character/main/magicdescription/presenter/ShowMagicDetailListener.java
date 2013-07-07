@@ -1,4 +1,4 @@
-package net.sf.anathema.character.main.presenter.magic.detail;
+package net.sf.anathema.character.main.magicdescription.presenter;
 
 public interface ShowMagicDetailListener {
 
