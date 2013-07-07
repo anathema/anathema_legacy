@@ -1,6 +1,6 @@
 package net.sf.anathema.hero.magic.display.tree;
 
-import net.sf.anathema.character.main.magic.charms.GroupCharmTree;
+import net.sf.anathema.character.main.magic.model.charmtree.GroupCharmTree;
 import net.sf.anathema.character.main.presenter.magic.charm.ShowDetailInteractionListener;
 import net.sf.anathema.hero.charms.CharmsModel;
 import net.sf.anathema.character.main.presenter.magic.CharacterCharmGroupChangeListener;
@@ -14,12 +14,12 @@ import net.sf.anathema.hero.magic.display.special.CommonSpecialCharmList;
 import net.sf.anathema.character.main.presenter.magic.SpecialCharmList;
 import net.sf.anathema.hero.magic.display.special.SpecialCharmViewBuilder;
 import net.sf.anathema.character.main.presenter.magic.detail.ShowMagicDetailListener;
-import net.sf.anathema.character.main.magic.charmtree.presenter.AbstractCascadePresenter;
+import net.sf.anathema.character.main.magic.display.presenter.AbstractCascadePresenter;
 import net.sf.anathema.hero.magic.display.coloring.CharacterColoringStrategy;
-import net.sf.anathema.character.main.magic.charmtree.presenter.ConfigurableCharmDye;
-import net.sf.anathema.character.main.magic.charmtree.view.CharmDisplayPropertiesMap;
-import net.sf.anathema.character.main.magic.charmtree.view.DefaultNodeProperties;
-import net.sf.anathema.character.main.magic.charmtree.view.ICharmView;
+import net.sf.anathema.character.main.magic.display.presenter.ConfigurableCharmDye;
+import net.sf.anathema.character.main.magic.display.view.charmtree.CharmDisplayPropertiesMap;
+import net.sf.anathema.character.main.magic.display.view.charmtree.DefaultNodeProperties;
+import net.sf.anathema.character.main.magic.display.view.charmtree.ICharmView;
 import net.sf.anathema.hero.magic.display.special.SwingSpecialCharmViewBuilder;
 import net.sf.anathema.lib.resources.Resources;
 import net.sf.anathema.lib.util.Identifier;

@@ -1,8 +1,8 @@
 package net.sf.anathema.character.main.magic.persistence.builder;
 
-import net.sf.anathema.character.main.magic.Cost;
-import net.sf.anathema.character.main.magic.ICharmXMLConstants;
-import net.sf.anathema.character.main.magic.general.ICost;
+import net.sf.anathema.character.main.magic.model.magic.Cost;
+import net.sf.anathema.character.main.magic.model.charm.ICharmXMLConstants;
+import net.sf.anathema.character.main.magic.model.magic.ICost;
 import net.sf.anathema.lib.exception.PersistenceException;
 import net.sf.anathema.lib.xml.ElementUtilities;
 import org.dom4j.Element;

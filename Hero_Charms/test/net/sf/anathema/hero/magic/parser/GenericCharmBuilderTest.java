@@ -1,6 +1,6 @@
 package net.sf.anathema.hero.magic.parser;
 
-import net.sf.anathema.character.main.magic.Charm;
+import net.sf.anathema.character.main.magic.model.charm.Charm;
 import net.sf.anathema.character.main.magic.persistence.GenericCharmBuilder;
 import net.sf.anathema.character.main.magic.persistence.GenericCharmPrerequisiteBuilder;
 import net.sf.anathema.character.main.magic.persistence.builder.GenericComboRulesBuilder;

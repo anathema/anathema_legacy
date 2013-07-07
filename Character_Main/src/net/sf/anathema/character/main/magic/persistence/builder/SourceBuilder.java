@@ -8,8 +8,8 @@ import org.dom4j.Element;
 import java.util.ArrayList;
 import java.util.List;
 
-import static net.sf.anathema.character.main.magic.ICharmXMLConstants.ATTRIB_SOURCE;
-import static net.sf.anathema.character.main.magic.ICharmXMLConstants.TAG_SOURCE;
+import static net.sf.anathema.character.main.magic.model.charm.ICharmXMLConstants.ATTRIB_SOURCE;
+import static net.sf.anathema.character.main.magic.model.charm.ICharmXMLConstants.TAG_SOURCE;
 
 public class SourceBuilder {
 

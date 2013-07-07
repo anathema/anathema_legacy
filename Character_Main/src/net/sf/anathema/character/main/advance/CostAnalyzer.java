@@ -1,9 +1,9 @@
 package net.sf.anathema.character.main.advance;
 
-import net.sf.anathema.character.main.magic.MartialArtsUtilities;
-import net.sf.anathema.character.main.magic.ICharm;
-import net.sf.anathema.character.main.magic.IMagic;
-import net.sf.anathema.character.main.magic.charms.MartialArtsLevel;
+import net.sf.anathema.character.main.magic.model.charms.MartialArtsUtilities;
+import net.sf.anathema.character.main.magic.model.charm.ICharm;
+import net.sf.anathema.character.main.magic.model.magic.IMagic;
+import net.sf.anathema.character.main.magic.model.charm.MartialArtsLevel;
 import net.sf.anathema.character.main.template.experience.ICostAnalyzer;
 import net.sf.anathema.character.main.traits.types.AbilityType;
 import net.sf.anathema.hero.traits.TraitMap;

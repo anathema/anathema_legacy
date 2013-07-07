@@ -1,10 +1,10 @@
 package net.sf.anathema.hero.magic.sheet.content.stats;
 
-import net.sf.anathema.character.main.magic.IMagic;
-import net.sf.anathema.character.main.magic.IMagicStats;
-import net.sf.anathema.character.main.magic.charmtree.builder.stringbuilder.CostStringBuilder;
-import net.sf.anathema.character.main.magic.charmtree.builder.stringbuilder.HealthCostStringBuilder;
-import net.sf.anathema.character.main.magic.charmtree.builder.stringbuilder.MagicInfoStringBuilder;
+import net.sf.anathema.character.main.magic.model.magic.IMagic;
+import net.sf.anathema.character.main.magic.model.magic.IMagicStats;
+import net.sf.anathema.character.main.magic.model.charmtree.builder.stringbuilder.CostStringBuilder;
+import net.sf.anathema.character.main.magic.model.charmtree.builder.stringbuilder.HealthCostStringBuilder;
+import net.sf.anathema.character.main.magic.model.charmtree.builder.stringbuilder.MagicInfoStringBuilder;
 import net.sf.anathema.lib.resources.Resources;
 import net.sf.anathema.lib.util.Identifier;
 import net.sf.anathema.lib.util.SimpleIdentifier;

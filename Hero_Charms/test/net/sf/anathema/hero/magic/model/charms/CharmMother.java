@@ -1,6 +1,6 @@
 package net.sf.anathema.hero.magic.model.charms;
 
-import net.sf.anathema.character.main.magic.ICharm;
+import net.sf.anathema.character.main.magic.model.charm.ICharm;
 import net.sf.anathema.character.main.type.ICharacterType;
 import net.sf.anathema.character.main.dummy.DummyCharm;
 

@@ -1,9 +1,9 @@
 package net.sf.anathema.character.main.persistence.charm;
 
-import net.sf.anathema.character.main.magic.ICharm;
+import net.sf.anathema.character.main.magic.model.charm.ICharm;
 import net.sf.anathema.character.main.type.ICharacterType;
-import net.sf.anathema.character.main.magic.charms.ICharmLearnListener;
-import net.sf.anathema.character.main.magic.charms.ILearningCharmGroup;
+import net.sf.anathema.character.main.magic.model.charm.ICharmLearnListener;
+import net.sf.anathema.character.main.magic.model.charms.ILearningCharmGroup;
 
 public class NullLearningCharmGroup implements ILearningCharmGroup {
   @Override

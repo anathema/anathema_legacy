@@ -1,8 +1,8 @@
 package net.sf.anathema.character.main.template.magic;
 
-import net.sf.anathema.character.main.magic.ICharm;
-import net.sf.anathema.character.main.magic.ISpell;
-import net.sf.anathema.character.main.magic.spells.CircleType;
+import net.sf.anathema.character.main.magic.model.charm.ICharm;
+import net.sf.anathema.character.main.magic.model.spells.ISpell;
+import net.sf.anathema.character.main.magic.model.spells.CircleType;
 
 public interface ISpellMagicTemplate {
 

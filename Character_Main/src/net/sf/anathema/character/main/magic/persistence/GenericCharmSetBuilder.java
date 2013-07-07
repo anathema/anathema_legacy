@@ -1,12 +1,12 @@
 package net.sf.anathema.character.main.magic.persistence;
 
-import net.sf.anathema.character.main.magic.Charm;
+import net.sf.anathema.character.main.magic.model.charm.Charm;
 import net.sf.anathema.character.main.magic.persistence.builder.GenericComboRulesBuilder;
 import net.sf.anathema.character.main.magic.persistence.builder.GenericIdStringBuilder;
 import net.sf.anathema.character.main.magic.persistence.builder.prerequisite.GenericAttributeRequirementBuilder;
 import net.sf.anathema.character.main.magic.persistence.builder.prerequisite.GenericTraitPrerequisitesBuilder;
 import net.sf.anathema.character.main.magic.persistence.builder.special.SpecialCharmBuilder;
-import net.sf.anathema.character.main.magic.charms.special.ISpecialCharm;
+import net.sf.anathema.character.main.magic.model.charm.special.ISpecialCharm;
 import net.sf.anathema.character.main.traits.TraitType;
 import net.sf.anathema.character.main.type.CharacterTypes;
 import net.sf.anathema.lib.exception.PersistenceException;
@@ -16,7 +16,7 @@ import org.dom4j.Element;
 import java.util.Collection;
 import java.util.List;
 
-import static net.sf.anathema.character.main.magic.ICharmXMLConstants.TAG_GENERIC_CHARM;
+import static net.sf.anathema.character.main.magic.model.charm.ICharmXMLConstants.TAG_GENERIC_CHARM;
 
 public class GenericCharmSetBuilder extends AbstractCharmSetBuilder {
   private final GenericCharmBuilder genericsBuilder;

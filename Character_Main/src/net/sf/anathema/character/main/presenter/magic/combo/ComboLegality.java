@@ -1,6 +1,6 @@
 package net.sf.anathema.character.main.presenter.magic.combo;
 
-import net.sf.anathema.character.main.magic.ICharm;
+import net.sf.anathema.character.main.magic.model.charm.ICharm;
 import net.sf.anathema.hero.combos.CombosModel;
 import net.sf.anathema.lib.gui.list.LegalityCheck;
 

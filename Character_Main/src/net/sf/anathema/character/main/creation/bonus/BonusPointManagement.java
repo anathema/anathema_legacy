@@ -9,7 +9,7 @@ import net.sf.anathema.character.main.library.trait.experience.TraitRatingCostCa
 import net.sf.anathema.hero.traits.TraitMap;
 import net.sf.anathema.hero.traits.TraitModelFetcher;
 import net.sf.anathema.character.main.advance.models.AbstractSpendingModel;
-import net.sf.anathema.character.main.magic.charms.options.DefaultCharmTemplateRetriever;
+import net.sf.anathema.character.main.magic.model.charms.options.DefaultCharmTemplateRetriever;
 import net.sf.anathema.character.main.creation.IBonusPointManagement;
 import net.sf.anathema.character.main.magic.advance.DefaultCharmModel;
 import net.sf.anathema.character.main.magic.advance.FavoredCharmModel;

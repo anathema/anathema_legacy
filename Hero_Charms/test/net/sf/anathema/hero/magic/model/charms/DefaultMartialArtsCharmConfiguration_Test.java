@@ -1,9 +1,9 @@
 package net.sf.anathema.hero.magic.model.charms;
 
 import net.sf.anathema.character.main.advance.IExperiencePointConfiguration;
-import net.sf.anathema.character.main.magic.charms.ILearningCharmGroup;
+import net.sf.anathema.character.main.magic.model.charms.ILearningCharmGroup;
 import net.sf.anathema.character.main.dummy.DummyCharm;
-import net.sf.anathema.character.main.magic.ICharm;
+import net.sf.anathema.character.main.magic.model.charm.ICharm;
 import net.sf.anathema.character.main.testing.dummy.magic.DummyCharmsModel;
 import net.sf.anathema.hero.experience.ExperienceModel;
 import net.sf.anathema.hero.magic.MagicCollection;

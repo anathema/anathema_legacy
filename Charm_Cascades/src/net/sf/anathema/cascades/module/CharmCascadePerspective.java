@@ -3,7 +3,7 @@ package net.sf.anathema.cascades.module;
 import net.sf.anathema.cascades.presenter.CascadePresenter;
 import net.sf.anathema.character.main.framework.CharacterGenericsExtractor;
 import net.sf.anathema.character.main.framework.HeroEnvironment;
-import net.sf.anathema.character.main.magic.view.CharmDescriptionProviderExtractor;
+import net.sf.anathema.character.main.magic.display.view.charms.CharmDescriptionProviderExtractor;
 import net.sf.anathema.character.main.magic.description.MagicDescriptionProvider;
 import net.sf.anathema.framework.IApplicationModel;
 import net.sf.anathema.framework.view.perspective.Container;

@@ -4,7 +4,7 @@ import com.google.common.base.Joiner;
 import com.google.common.base.Strings;
 import com.itextpdf.text.Font;
 import com.itextpdf.text.pdf.PdfPTable;
-import net.sf.anathema.character.main.magic.IMagicStats;
+import net.sf.anathema.character.main.magic.model.magic.IMagicStats;
 import net.sf.anathema.hero.sheet.pdf.content.stats.AbstractTextStatsGroup;
 import net.sf.anathema.lib.resources.Resources;
 

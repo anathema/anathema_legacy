@@ -1,9 +1,9 @@
 package net.sf.anathema.character.main.persistence.charm;
 
-import net.sf.anathema.character.main.magic.MartialArtsUtilities;
-import net.sf.anathema.character.main.magic.ICharm;
-import net.sf.anathema.character.main.magic.charms.CharmIdMap;
-import net.sf.anathema.character.main.magic.charms.special.ISpecialCharmConfiguration;
+import net.sf.anathema.character.main.magic.model.charms.MartialArtsUtilities;
+import net.sf.anathema.character.main.magic.model.charm.ICharm;
+import net.sf.anathema.character.main.magic.model.charm.CharmIdMap;
+import net.sf.anathema.character.main.magic.model.charm.special.ISpecialCharmConfiguration;
 import net.sf.anathema.character.main.template.magic.ICharmTemplate;
 import net.sf.anathema.character.main.traits.LowerableState;
 import net.sf.anathema.character.main.library.trait.DefaultTrait;
@@ -14,10 +14,10 @@ import net.sf.anathema.hero.charms.CharmsModel;
 import net.sf.anathema.hero.charms.CharmsModelFetcher;
 import net.sf.anathema.hero.combos.CombosModel;
 import net.sf.anathema.hero.combos.CombosModelFetcher;
-import net.sf.anathema.character.main.magic.charms.ICombo;
-import net.sf.anathema.character.main.magic.charms.ILearningCharmGroup;
-import net.sf.anathema.character.main.magic.charms.options.DefaultCharmTemplateRetriever;
-import net.sf.anathema.character.main.magic.charms.special.IMultiLearnableCharmConfiguration;
+import net.sf.anathema.character.main.magic.model.combos.ICombo;
+import net.sf.anathema.character.main.magic.model.charms.ILearningCharmGroup;
+import net.sf.anathema.character.main.magic.model.charms.options.DefaultCharmTemplateRetriever;
+import net.sf.anathema.character.main.magic.model.charm.special.IMultiLearnableCharmConfiguration;
 import net.sf.anathema.framework.messaging.IMessaging;
 import net.sf.anathema.framework.persistence.TextPersister;
 import net.sf.anathema.hero.model.Hero;

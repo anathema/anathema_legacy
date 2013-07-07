@@ -1,7 +1,7 @@
 package net.sf.anathema.hero.magic.parser;
 
 import net.sf.anathema.character.main.magic.persistence.builder.GroupStringBuilder;
-import net.sf.anathema.character.main.magic.charms.CharmException;
+import net.sf.anathema.character.main.magic.model.charm.CharmException;
 import net.sf.anathema.character.main.traits.types.AttributeType;
 import net.sf.anathema.character.main.traits.types.ValuedTraitType;
 import net.sf.anathema.lib.xml.DocumentUtilities;

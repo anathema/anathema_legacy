@@ -1,12 +1,12 @@
 package net.sf.anathema.hero.magic.parser;
 
 import net.sf.anathema.character.main.magic.persistence.builder.CharmTypeBuilder;
-import net.sf.anathema.character.main.magic.charms.CharmException;
-import net.sf.anathema.character.main.magic.charms.type.CharmType;
-import net.sf.anathema.character.main.magic.charms.type.ICharmTypeModel;
-import net.sf.anathema.character.main.magic.charms.type.IReflexiveSpecialsModel;
-import net.sf.anathema.character.main.magic.charms.type.ISimpleSpecialsModel;
-import net.sf.anathema.character.main.magic.charms.type.TurnType;
+import net.sf.anathema.character.main.magic.model.charm.CharmException;
+import net.sf.anathema.character.main.magic.model.charm.type.CharmType;
+import net.sf.anathema.character.main.magic.model.charm.type.ICharmTypeModel;
+import net.sf.anathema.character.main.magic.model.charm.type.IReflexiveSpecialsModel;
+import net.sf.anathema.character.main.magic.model.charm.type.ISimpleSpecialsModel;
+import net.sf.anathema.character.main.magic.model.charm.type.TurnType;
 import net.sf.anathema.lib.xml.DocumentUtilities;
 import org.dom4j.Element;
 import org.junit.Test;

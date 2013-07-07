@@ -1,12 +1,12 @@
 package net.sf.anathema.character.main.presenter.magic;
 
-import net.sf.anathema.character.main.magic.charmtree.presenter.CharmTypes;
+import net.sf.anathema.character.main.magic.display.presenter.CharmTypes;
 import net.sf.anathema.lib.util.Identifier;
 
 import java.util.ArrayList;
 import java.util.List;
 
-import static net.sf.anathema.character.main.magic.MartialArtsUtilities.MARTIAL_ARTS;
+import static net.sf.anathema.character.main.magic.model.charms.MartialArtsUtilities.MARTIAL_ARTS;
 
 public abstract class AbstractCharmTypes implements CharmTypes {
 

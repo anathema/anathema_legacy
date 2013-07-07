@@ -1,9 +1,9 @@
 package net.sf.anathema.character.main.magic.persistence.builder;
 
-import net.sf.anathema.character.main.magic.CostList;
-import net.sf.anathema.character.main.magic.general.ICost;
-import net.sf.anathema.character.main.magic.general.ICostList;
-import net.sf.anathema.character.main.magic.general.IHealthCost;
+import net.sf.anathema.character.main.magic.model.magic.CostList;
+import net.sf.anathema.character.main.magic.model.magic.ICost;
+import net.sf.anathema.character.main.magic.model.magic.ICostList;
+import net.sf.anathema.character.main.magic.model.magic.IHealthCost;
 import net.sf.anathema.lib.exception.PersistenceException;
 import org.dom4j.Element;
 

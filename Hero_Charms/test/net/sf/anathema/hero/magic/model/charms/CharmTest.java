@@ -1,14 +1,14 @@
 package net.sf.anathema.hero.magic.model.charms;
 
-import net.sf.anathema.character.main.magic.Charm;
-import net.sf.anathema.character.main.magic.CostList;
-import net.sf.anathema.character.main.magic.ICharm;
+import net.sf.anathema.character.main.magic.model.charm.Charm;
+import net.sf.anathema.character.main.magic.model.magic.CostList;
+import net.sf.anathema.character.main.magic.model.charm.ICharm;
 import net.sf.anathema.character.main.dummy.DummyCharm;
-import net.sf.anathema.character.main.magic.charms.ComboRestrictions;
-import net.sf.anathema.character.main.magic.charms.IndirectCharmRequirement;
-import net.sf.anathema.character.main.magic.charms.duration.SimpleDuration;
-import net.sf.anathema.character.main.magic.charms.type.CharmType;
-import net.sf.anathema.character.main.magic.charms.type.CharmTypeModel;
+import net.sf.anathema.character.main.magic.model.combos.ComboRestrictions;
+import net.sf.anathema.character.main.magic.model.charm.IndirectCharmRequirement;
+import net.sf.anathema.character.main.magic.model.charm.duration.SimpleDuration;
+import net.sf.anathema.character.main.magic.model.charm.type.CharmType;
+import net.sf.anathema.character.main.magic.model.charm.type.CharmTypeModel;
 import net.sf.anathema.character.main.magic.persistence.prerequisite.CharmPrerequisiteList;
 import net.sf.anathema.character.main.magic.persistence.prerequisite.SelectiveCharmGroupTemplate;
 import net.sf.anathema.character.main.testing.dummy.DummyCharmData;

@@ -6,12 +6,12 @@ import com.itextpdf.text.Image;
 import com.itextpdf.text.Paragraph;
 import com.itextpdf.text.Phrase;
 import net.sf.anathema.cards.layout.ICardReportResourceProvider;
-import net.sf.anathema.character.main.magic.MartialArtsUtilities;
-import net.sf.anathema.character.main.magic.ICharm;
+import net.sf.anathema.character.main.magic.model.charms.MartialArtsUtilities;
+import net.sf.anathema.character.main.magic.model.charm.ICharm;
 import net.sf.anathema.character.main.magic.description.MagicDescription;
 import net.sf.anathema.character.main.traits.types.AbilityType;
 import net.sf.anathema.hero.magic.sheet.content.stats.CharmStats;
-import net.sf.anathema.character.main.magic.charmtree.builder.stringbuilder.type.VerboseCharmTypeStringBuilder;
+import net.sf.anathema.character.main.magic.model.charmtree.builder.stringbuilder.type.VerboseCharmTypeStringBuilder;
 import net.sf.anathema.lib.resources.Resources;
 
 public class CharmCardData extends AbstractMagicCardData {

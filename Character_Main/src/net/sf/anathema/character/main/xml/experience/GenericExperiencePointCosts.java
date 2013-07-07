@@ -2,10 +2,10 @@ package net.sf.anathema.character.main.xml.experience;
 
 import net.sf.anathema.character.main.IGenericTraitCollection;
 import net.sf.anathema.character.main.template.points.FixedValueRatingCosts;
-import net.sf.anathema.character.main.magic.ICharm;
-import net.sf.anathema.character.main.magic.ISpell;
-import net.sf.anathema.character.main.magic.charms.ICharmAttribute;
-import net.sf.anathema.character.main.magic.charms.MartialArtsLevel;
+import net.sf.anathema.character.main.magic.model.charm.ICharm;
+import net.sf.anathema.character.main.magic.model.spells.ISpell;
+import net.sf.anathema.character.main.magic.model.charm.ICharmAttribute;
+import net.sf.anathema.character.main.magic.model.charm.MartialArtsLevel;
 import net.sf.anathema.character.main.template.experience.CurrentRatingCosts;
 import net.sf.anathema.character.main.template.experience.ICostAnalyzer;
 import net.sf.anathema.character.main.template.experience.IExperiencePointCosts;

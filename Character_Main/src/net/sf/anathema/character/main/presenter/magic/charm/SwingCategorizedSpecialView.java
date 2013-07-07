@@ -1,6 +1,6 @@
 package net.sf.anathema.character.main.presenter.magic.charm;
 
-import net.sf.anathema.character.main.magic.charms.special.ISpecialCharm;
+import net.sf.anathema.character.main.magic.model.charm.special.ISpecialCharm;
 import net.sf.anathema.framework.value.IIntValueView;
 import net.sf.anathema.platform.tree.presenter.view.CategorizedSpecialNodeView;
 import net.sf.anathema.platform.tree.presenter.view.ISpecialNodeView;

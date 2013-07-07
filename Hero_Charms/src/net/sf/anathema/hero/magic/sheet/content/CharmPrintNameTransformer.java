@@ -1,8 +1,8 @@
 package net.sf.anathema.hero.magic.sheet.content;
 
 import com.google.common.base.Function;
-import net.sf.anathema.character.main.magic.ICharm;
-import net.sf.anathema.character.main.magic.charmtree.builder.MagicDisplayLabeler;
+import net.sf.anathema.character.main.magic.model.charm.ICharm;
+import net.sf.anathema.character.main.magic.model.charmtree.builder.MagicDisplayLabeler;
 import net.sf.anathema.lib.resources.Resources;
 
 public class CharmPrintNameTransformer implements Function<ICharm, String> {

@@ -1,7 +1,7 @@
 package net.sf.anathema.character.main.presenter.magic;
 
-import net.sf.anathema.character.main.magic.ICharm;
-import net.sf.anathema.character.main.magic.charms.IndirectCharmRequirement;
+import net.sf.anathema.character.main.magic.model.charm.ICharm;
+import net.sf.anathema.character.main.magic.model.charm.IndirectCharmRequirement;
 
 public interface CharmColoring {
 

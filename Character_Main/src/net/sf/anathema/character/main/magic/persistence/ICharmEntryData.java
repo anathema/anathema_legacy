@@ -1,6 +1,6 @@
 package net.sf.anathema.character.main.magic.persistence;
 
-import net.sf.anathema.character.main.magic.ICharmData;
+import net.sf.anathema.character.main.magic.model.charm.ICharmData;
 
 public interface ICharmEntryData {
 

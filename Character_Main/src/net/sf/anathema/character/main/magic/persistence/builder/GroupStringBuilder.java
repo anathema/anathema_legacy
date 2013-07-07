@@ -1,7 +1,7 @@
 package net.sf.anathema.character.main.magic.persistence.builder;
 
-import net.sf.anathema.character.main.magic.ICharmXMLConstants;
-import net.sf.anathema.character.main.magic.charms.CharmException;
+import net.sf.anathema.character.main.magic.model.charm.ICharmXMLConstants;
+import net.sf.anathema.character.main.magic.model.charm.CharmException;
 import net.sf.anathema.character.main.traits.ValuedTraitType;
 import org.dom4j.Element;
 

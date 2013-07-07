@@ -1,6 +1,6 @@
 package net.sf.anathema.character.main.presenter.magic.spells;
 
-import net.sf.anathema.character.main.magic.ISpell;
+import net.sf.anathema.character.main.magic.model.spells.ISpell;
 import net.sf.anathema.hero.spells.SpellModel;
 import net.sf.anathema.lib.gui.list.LegalityCheck;
 

@@ -1,13 +1,13 @@
 package net.sf.anathema.character.main.magic.persistence;
 
-import net.sf.anathema.character.main.magic.Charm;
+import net.sf.anathema.character.main.magic.model.charm.Charm;
 import net.sf.anathema.character.main.magic.persistence.builder.ComboRulesBuilder;
 import net.sf.anathema.character.main.magic.persistence.builder.IdStringBuilder;
 import net.sf.anathema.character.main.magic.persistence.builder.prerequisite.AttributeRequirementBuilder;
 import net.sf.anathema.character.main.magic.persistence.builder.prerequisite.CharmPrerequisiteBuilder;
 import net.sf.anathema.character.main.magic.persistence.builder.prerequisite.TraitPrerequisitesBuilder;
 import net.sf.anathema.character.main.magic.persistence.builder.special.SpecialCharmBuilder;
-import net.sf.anathema.character.main.magic.charms.special.ISpecialCharm;
+import net.sf.anathema.character.main.magic.model.charm.special.ISpecialCharm;
 import net.sf.anathema.character.main.type.CharacterTypes;
 import net.sf.anathema.lib.exception.PersistenceException;
 import net.sf.anathema.lib.xml.ElementUtilities;
@@ -16,7 +16,7 @@ import org.dom4j.Element;
 import java.util.Collection;
 import java.util.List;
 
-import static net.sf.anathema.character.main.magic.ICharmXMLConstants.TAG_CHARM;
+import static net.sf.anathema.character.main.magic.model.charm.ICharmXMLConstants.TAG_CHARM;
 
 public class CharmSetBuilder extends AbstractCharmSetBuilder {
 

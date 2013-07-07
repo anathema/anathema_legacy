@@ -1,11 +1,11 @@
 package net.sf.anathema.character.main.presenter.initializers;
 
-import net.sf.anathema.character.main.magic.view.CharmDescriptionProviderExtractor;
+import net.sf.anathema.character.main.magic.display.view.charms.CharmDescriptionProviderExtractor;
 import net.sf.anathema.character.main.magic.description.MagicDescriptionProvider;
 import net.sf.anathema.character.main.presenter.magic.spells.SpellModel;
 import net.sf.anathema.character.main.presenter.magic.spells.SpellPresenter;
 import net.sf.anathema.character.main.view.SectionView;
-import net.sf.anathema.character.main.magic.view.ISpellView;
+import net.sf.anathema.character.main.magic.display.view.spells.ISpellView;
 import net.sf.anathema.framework.IApplicationModel;
 import net.sf.anathema.hero.model.Hero;
 import net.sf.anathema.lib.resources.Resources;

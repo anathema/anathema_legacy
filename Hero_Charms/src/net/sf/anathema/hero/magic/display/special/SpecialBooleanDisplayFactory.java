@@ -1,6 +1,6 @@
 package net.sf.anathema.hero.magic.display.special;
 
-import net.sf.anathema.character.main.magic.view.CheckMenuItemView;
+import net.sf.anathema.character.main.magic.display.view.charms.CheckMenuItemView;
 import net.sf.anathema.lib.workflow.booleanvalue.IBooleanValueView;
 import net.sf.anathema.platform.tree.presenter.view.ContentFactory;
 

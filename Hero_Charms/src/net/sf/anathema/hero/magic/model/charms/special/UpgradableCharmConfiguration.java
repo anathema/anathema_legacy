@@ -1,12 +1,12 @@
 package net.sf.anathema.hero.magic.model.charms.special;
 
-import net.sf.anathema.character.main.magic.charms.special.IUpgradableCharmConfiguration;
-import net.sf.anathema.character.main.magic.charms.special.MultipleEffectCharmConfiguration;
-import net.sf.anathema.character.main.magic.charms.special.UpgradableSubEffects;
-import net.sf.anathema.character.main.magic.ICharm;
-import net.sf.anathema.character.main.magic.charms.ICharmLearnableArbitrator;
-import net.sf.anathema.character.main.magic.charms.special.IUpgradableCharm;
-import net.sf.anathema.character.main.magic.charms.CharmSpecialist;
+import net.sf.anathema.character.main.magic.model.charm.special.IUpgradableCharmConfiguration;
+import net.sf.anathema.character.main.magic.model.charm.special.MultipleEffectCharmConfiguration;
+import net.sf.anathema.character.main.magic.model.charm.special.UpgradableSubEffects;
+import net.sf.anathema.character.main.magic.model.charm.ICharm;
+import net.sf.anathema.character.main.magic.model.charmtree.ICharmLearnableArbitrator;
+import net.sf.anathema.character.main.magic.model.charm.special.IUpgradableCharm;
+import net.sf.anathema.character.main.magic.model.charm.CharmSpecialist;
 
 public class UpgradableCharmConfiguration extends MultipleEffectCharmConfiguration implements IUpgradableCharmConfiguration {
 

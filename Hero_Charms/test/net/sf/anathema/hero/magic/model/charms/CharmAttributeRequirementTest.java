@@ -1,8 +1,8 @@
 package net.sf.anathema.hero.magic.model.charms;
 
-import net.sf.anathema.character.main.magic.CharmAttribute;
-import net.sf.anathema.character.main.magic.CharmAttributeRequirement;
-import net.sf.anathema.character.main.magic.ICharm;
+import net.sf.anathema.character.main.magic.model.charm.CharmAttribute;
+import net.sf.anathema.character.main.magic.model.charmtree.CharmAttributeRequirement;
+import net.sf.anathema.character.main.magic.model.charm.ICharm;
 import net.sf.anathema.character.main.dummy.DummyCharm;
 import net.sf.anathema.lib.util.Identifier;
 import org.junit.Assert;

@@ -1,8 +1,8 @@
 package net.sf.anathema.character.main.magic.persistence.builder.prerequisite;
 
-import net.sf.anathema.character.main.magic.ICharmXMLConstants;
-import net.sf.anathema.character.main.magic.charms.CharmException;
-import net.sf.anathema.character.main.magic.charms.IndirectCharmRequirement;
+import net.sf.anathema.character.main.magic.model.charm.ICharmXMLConstants;
+import net.sf.anathema.character.main.magic.model.charm.CharmException;
+import net.sf.anathema.character.main.magic.model.charm.IndirectCharmRequirement;
 import net.sf.anathema.character.main.traits.TraitType;
 import net.sf.anathema.lib.util.Identifier;
 import net.sf.anathema.lib.xml.ElementUtilities;

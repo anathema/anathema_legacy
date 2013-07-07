@@ -1,12 +1,12 @@
 package net.sf.anathema.character.main.xml.creation;
 
 import net.sf.anathema.character.main.template.points.FixedValueRatingCosts;
-import net.sf.anathema.character.main.magic.ICharm;
-import net.sf.anathema.character.main.magic.IMagic;
-import net.sf.anathema.character.main.magic.IMagicVisitor;
-import net.sf.anathema.character.main.magic.ISpell;
-import net.sf.anathema.character.main.magic.charms.ICharmAttribute;
-import net.sf.anathema.character.main.magic.charms.MartialArtsLevel;
+import net.sf.anathema.character.main.magic.model.charm.ICharm;
+import net.sf.anathema.character.main.magic.model.magic.IMagic;
+import net.sf.anathema.character.main.magic.model.magic.IMagicVisitor;
+import net.sf.anathema.character.main.magic.model.spells.ISpell;
+import net.sf.anathema.character.main.magic.model.charm.ICharmAttribute;
+import net.sf.anathema.character.main.magic.model.charm.MartialArtsLevel;
 import net.sf.anathema.character.main.template.creation.BonusPointCosts;
 import net.sf.anathema.character.main.template.experience.CurrentRatingCosts;
 import net.sf.anathema.character.main.template.experience.ICostAnalyzer;

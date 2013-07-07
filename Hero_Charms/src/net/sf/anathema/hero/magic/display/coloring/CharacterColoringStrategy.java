@@ -1,11 +1,11 @@
 package net.sf.anathema.hero.magic.display.coloring;
 
-import net.sf.anathema.character.main.magic.ICharm;
-import net.sf.anathema.character.main.magic.charms.IndirectCharmRequirement;
+import net.sf.anathema.character.main.magic.model.charm.ICharm;
+import net.sf.anathema.character.main.magic.model.charm.IndirectCharmRequirement;
 import net.sf.anathema.hero.charms.CharmsModel;
 import net.sf.anathema.character.main.presenter.magic.CharacterCharmModel;
 import net.sf.anathema.character.main.presenter.magic.CharmColoring;
-import net.sf.anathema.character.main.magic.charmtree.view.ICharmView;
+import net.sf.anathema.character.main.magic.display.view.charmtree.ICharmView;
 import net.sf.anathema.framework.ui.RGBColor;
 
 public class CharacterColoringStrategy implements CharmColoring {

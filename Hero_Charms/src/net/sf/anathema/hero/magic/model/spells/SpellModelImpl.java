@@ -1,7 +1,7 @@
 package net.sf.anathema.hero.magic.model.spells;
 
-import net.sf.anathema.character.main.magic.ISpell;
-import net.sf.anathema.character.main.magic.spells.CircleType;
+import net.sf.anathema.character.main.magic.model.spells.ISpell;
+import net.sf.anathema.character.main.magic.model.spells.CircleType;
 import net.sf.anathema.character.main.template.HeroTemplate;
 import net.sf.anathema.character.main.template.magic.ISpellMagicTemplate;
 import net.sf.anathema.hero.charms.CharmsModel;
@@ -10,9 +10,9 @@ import net.sf.anathema.hero.experience.ExperienceChange;
 import net.sf.anathema.hero.experience.ExperienceModel;
 import net.sf.anathema.hero.experience.ExperienceModelFetcher;
 import net.sf.anathema.hero.spells.SpellModel;
-import net.sf.anathema.character.main.magic.IMagicLearnListener;
-import net.sf.anathema.character.main.magic.spells.ISpellMapper;
-import net.sf.anathema.character.main.magic.spells.SpellMapper;
+import net.sf.anathema.character.main.magic.model.magic.IMagicLearnListener;
+import net.sf.anathema.character.main.magic.model.spells.ISpellMapper;
+import net.sf.anathema.character.main.magic.model.spells.SpellMapper;
 import net.sf.anathema.character.main.UnspecifiedChangeListener;
 import net.sf.anathema.hero.change.ChangeAnnouncer;
 import net.sf.anathema.hero.change.ChangeFlavor;

@@ -1,17 +1,17 @@
 package net.sf.anathema.hero.magic.display;
 
 import net.sf.anathema.character.main.framework.CharacterGenericsExtractor;
-import net.sf.anathema.character.main.magic.view.CharmDescriptionProviderExtractor;
+import net.sf.anathema.character.main.magic.display.view.charms.CharmDescriptionProviderExtractor;
 import net.sf.anathema.character.main.magic.description.MagicDescriptionProvider;
 import net.sf.anathema.character.main.template.HeroTemplate;
 import net.sf.anathema.character.main.template.ITemplateRegistry;
-import net.sf.anathema.character.main.magic.charms.options.DefaultCharmTemplateRetriever;
+import net.sf.anathema.character.main.magic.model.charms.options.DefaultCharmTemplateRetriever;
 import net.sf.anathema.character.main.presenter.initializers.HeroModelInitializer;
 import net.sf.anathema.character.main.presenter.initializers.RegisteredInitializer;
 import net.sf.anathema.character.main.presenter.magic.CharacterCharmModel;
 import net.sf.anathema.character.main.view.SectionView;
-import net.sf.anathema.character.main.magic.charmtree.view.CharmDisplayPropertiesMap;
-import net.sf.anathema.character.main.magic.charmtree.view.ICharmView;
+import net.sf.anathema.character.main.magic.display.view.charmtree.CharmDisplayPropertiesMap;
+import net.sf.anathema.character.main.magic.display.view.charmtree.ICharmView;
 import net.sf.anathema.framework.IApplicationModel;
 import net.sf.anathema.hero.magic.display.tree.CharacterCharmTreePresenter;
 import net.sf.anathema.hero.model.Hero;

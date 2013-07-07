@@ -1,7 +1,7 @@
 package net.sf.anathema.character.main.template.creation;
 
-import net.sf.anathema.character.main.magic.ICharm;
-import net.sf.anathema.character.main.magic.IMagic;
+import net.sf.anathema.character.main.magic.model.charm.ICharm;
+import net.sf.anathema.character.main.magic.model.magic.IMagic;
 import net.sf.anathema.character.main.template.experience.AbilityPointCosts;
 import net.sf.anathema.character.main.template.experience.CurrentRatingCosts;
 import net.sf.anathema.character.main.template.experience.ICostAnalyzer;

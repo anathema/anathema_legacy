@@ -1,8 +1,8 @@
 package net.sf.anathema.cascades.presenter;
 
-import net.sf.anathema.character.main.magic.ICharm;
-import net.sf.anathema.character.main.magic.charms.ICharmGroup;
-import net.sf.anathema.character.main.magic.charmtree.view.CharmGroupArbitrator;
+import net.sf.anathema.character.main.magic.model.charm.ICharm;
+import net.sf.anathema.character.main.magic.model.charm.ICharmGroup;
+import net.sf.anathema.character.main.magic.display.view.charmtree.CharmGroupArbitrator;
 
 public class FriendlyCharmGroupArbitrator implements CharmGroupArbitrator {
 

@@ -2,7 +2,7 @@ package net.sf.anathema.character.main.presenter.magic;
 
 import net.sf.anathema.character.main.library.trait.Trait;
 import net.sf.anathema.character.main.library.trait.presenter.TraitPresenter;
-import net.sf.anathema.character.main.magic.charms.special.IMultiLearnableCharmConfiguration;
+import net.sf.anathema.character.main.magic.model.charm.special.IMultiLearnableCharmConfiguration;
 import net.sf.anathema.framework.value.IIntValueView;
 import net.sf.anathema.lib.gui.Presenter;
 import net.sf.anathema.lib.resources.Resources;

@@ -1,13 +1,13 @@
 package net.sf.anathema.character.main.presenter.magic.spells;
 
-import net.sf.anathema.character.main.magic.view.IMagicViewListener;
-import net.sf.anathema.character.main.magic.ISpell;
+import net.sf.anathema.character.main.magic.display.view.magic.IMagicViewListener;
+import net.sf.anathema.character.main.magic.model.spells.ISpell;
 import net.sf.anathema.character.main.magic.description.MagicDescriptionProvider;
-import net.sf.anathema.character.main.magic.spells.CircleType;
+import net.sf.anathema.character.main.magic.model.spells.CircleType;
 import net.sf.anathema.hero.experience.ExperienceModelFetcher;
 import net.sf.anathema.hero.spells.SpellsModelFetcher;
-import net.sf.anathema.character.main.magic.IMagicLearnListener;
-import net.sf.anathema.character.main.magic.view.ISpellView;
+import net.sf.anathema.character.main.magic.model.magic.IMagicLearnListener;
+import net.sf.anathema.character.main.magic.display.view.spells.ISpellView;
 import net.sf.anathema.hero.model.Hero;
 import net.sf.anathema.lib.compare.I18nedIdentificateComparator;
 import net.sf.anathema.lib.compare.I18nedIdentificateSorter;

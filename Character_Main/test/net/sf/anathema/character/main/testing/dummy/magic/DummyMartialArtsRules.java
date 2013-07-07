@@ -1,7 +1,7 @@
 package net.sf.anathema.character.main.testing.dummy.magic;
 
-import net.sf.anathema.character.main.magic.ICharm;
-import net.sf.anathema.character.main.magic.charms.MartialArtsLevel;
+import net.sf.anathema.character.main.magic.model.charm.ICharm;
+import net.sf.anathema.character.main.magic.model.charm.MartialArtsLevel;
 import net.sf.anathema.character.main.template.magic.MartialArtsCharmConfiguration;
 import net.sf.anathema.character.main.template.magic.MartialArtsRules;
 

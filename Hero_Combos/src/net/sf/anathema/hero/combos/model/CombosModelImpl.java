@@ -1,16 +1,16 @@
 package net.sf.anathema.hero.combos.model;
 
-import net.sf.anathema.character.main.magic.ICharm;
+import net.sf.anathema.character.main.magic.model.charm.ICharm;
 import net.sf.anathema.hero.charms.CharmsModelFetcher;
 import net.sf.anathema.hero.combos.CombosModel;
-import net.sf.anathema.character.main.magic.CharacterChangeComboListener;
-import net.sf.anathema.character.main.magic.charms.CharmLearnAdapter;
-import net.sf.anathema.character.main.magic.charms.Combo;
-import net.sf.anathema.character.main.magic.charms.ComboIdProvider;
-import net.sf.anathema.character.main.magic.charms.ICombo;
-import net.sf.anathema.character.main.magic.charms.IComboConfigurationListener;
-import net.sf.anathema.character.main.magic.charms.combo.IComboArbitrator;
-import net.sf.anathema.character.main.magic.charms.combo.SecondEditionComboArbitrator;
+import net.sf.anathema.character.main.magic.display.view.combos.CharacterChangeComboListener;
+import net.sf.anathema.character.main.magic.model.charm.CharmLearnAdapter;
+import net.sf.anathema.character.main.magic.model.combos.Combo;
+import net.sf.anathema.character.main.magic.model.combos.ComboIdProvider;
+import net.sf.anathema.character.main.magic.model.combos.ICombo;
+import net.sf.anathema.character.main.magic.model.combos.IComboConfigurationListener;
+import net.sf.anathema.character.main.magic.model.combos.IComboArbitrator;
+import net.sf.anathema.character.main.magic.model.combos.SecondEditionComboArbitrator;
 import net.sf.anathema.hero.change.ChangeAnnouncer;
 import net.sf.anathema.hero.model.Hero;
 import net.sf.anathema.hero.model.InitializationContext;

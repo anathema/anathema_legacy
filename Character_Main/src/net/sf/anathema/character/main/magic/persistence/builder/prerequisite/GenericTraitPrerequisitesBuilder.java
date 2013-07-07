@@ -9,7 +9,7 @@ import org.dom4j.Element;
 import java.util.ArrayList;
 import java.util.List;
 
-import static net.sf.anathema.character.main.magic.ICharmXMLConstants.TAG_TRAIT;
+import static net.sf.anathema.character.main.magic.model.charm.ICharmXMLConstants.TAG_TRAIT;
 
 public class GenericTraitPrerequisitesBuilder implements ITraitPrerequisitesBuilder {
 

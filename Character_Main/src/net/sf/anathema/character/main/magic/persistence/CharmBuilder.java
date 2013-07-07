@@ -1,7 +1,7 @@
 package net.sf.anathema.character.main.magic.persistence;
 
-import net.sf.anathema.character.main.magic.Charm;
-import net.sf.anathema.character.main.magic.ICharmXMLConstants;
+import net.sf.anathema.character.main.magic.model.charm.Charm;
+import net.sf.anathema.character.main.magic.model.charm.ICharmXMLConstants;
 import net.sf.anathema.character.main.magic.persistence.builder.CharmAttributeBuilder;
 import net.sf.anathema.character.main.magic.persistence.builder.CharmTypeBuilder;
 import net.sf.anathema.character.main.magic.persistence.builder.CostListBuilder;
@@ -17,14 +17,14 @@ import net.sf.anathema.character.main.magic.persistence.builder.prerequisite.ITr
 import net.sf.anathema.character.main.magic.persistence.builder.prerequisite.PrerequisiteListBuilder;
 import net.sf.anathema.character.main.magic.persistence.builder.special.SpecialCharmBuilder;
 import net.sf.anathema.character.main.magic.persistence.prerequisite.CharmPrerequisiteList;
-import net.sf.anathema.character.main.magic.ICharmData;
-import net.sf.anathema.character.main.magic.charms.CharmException;
-import net.sf.anathema.character.main.magic.charms.ICharmAttribute;
-import net.sf.anathema.character.main.magic.charms.IComboRestrictions;
-import net.sf.anathema.character.main.magic.charms.duration.IDuration;
-import net.sf.anathema.character.main.magic.charms.special.ISpecialCharm;
-import net.sf.anathema.character.main.magic.charms.type.ICharmTypeModel;
-import net.sf.anathema.character.main.magic.general.ICostList;
+import net.sf.anathema.character.main.magic.model.charm.ICharmData;
+import net.sf.anathema.character.main.magic.model.charm.CharmException;
+import net.sf.anathema.character.main.magic.model.charm.ICharmAttribute;
+import net.sf.anathema.character.main.magic.model.combos.IComboRestrictions;
+import net.sf.anathema.character.main.magic.model.charm.duration.IDuration;
+import net.sf.anathema.character.main.magic.model.charm.special.ISpecialCharm;
+import net.sf.anathema.character.main.magic.model.charm.type.ICharmTypeModel;
+import net.sf.anathema.character.main.magic.model.magic.ICostList;
 import net.sf.anathema.character.main.rules.IExaltedSourceBook;
 import net.sf.anathema.character.main.traits.ValuedTraitType;
 import net.sf.anathema.character.main.type.CharacterTypes;
@@ -36,10 +36,10 @@ import org.dom4j.Element;
 import java.util.ArrayList;
 import java.util.List;
 
-import static net.sf.anathema.character.main.magic.ICharmXMLConstants.ATTRIB_EXALT;
-import static net.sf.anathema.character.main.magic.ICharmXMLConstants.TAG_COST;
-import static net.sf.anathema.character.main.magic.ICharmXMLConstants.TAG_DURATION;
-import static net.sf.anathema.character.main.magic.ICharmXMLConstants.TAG_PREREQUISITE_LIST;
+import static net.sf.anathema.character.main.magic.model.charm.ICharmXMLConstants.ATTRIB_EXALT;
+import static net.sf.anathema.character.main.magic.model.charm.ICharmXMLConstants.TAG_COST;
+import static net.sf.anathema.character.main.magic.model.charm.ICharmXMLConstants.TAG_DURATION;
+import static net.sf.anathema.character.main.magic.model.charm.ICharmXMLConstants.TAG_PREREQUISITE_LIST;
 
 public class CharmBuilder implements ICharmBuilder {
 

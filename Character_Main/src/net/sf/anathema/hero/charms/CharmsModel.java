@@ -1,14 +1,14 @@
 package net.sf.anathema.hero.charms;
 
-import net.sf.anathema.character.main.magic.ICharm;
-import net.sf.anathema.character.main.magic.charms.CharmIdMap;
-import net.sf.anathema.character.main.magic.charms.special.ISpecialCharm;
-import net.sf.anathema.character.main.magic.charms.special.ISpecialCharmConfiguration;
+import net.sf.anathema.character.main.magic.model.charm.ICharm;
+import net.sf.anathema.character.main.magic.model.charm.CharmIdMap;
+import net.sf.anathema.character.main.magic.model.charm.special.ISpecialCharm;
+import net.sf.anathema.character.main.magic.model.charm.special.ISpecialCharmConfiguration;
 import net.sf.anathema.character.main.type.ICharacterType;
-import net.sf.anathema.character.main.magic.charms.IExtendedCharmLearnableArbitrator;
-import net.sf.anathema.character.main.magic.charms.ILearningCharmGroup;
-import net.sf.anathema.character.main.magic.charms.SpecialCharmLearnArbitrator;
-import net.sf.anathema.character.main.magic.charmtree.view.CharmGroupArbitrator;
+import net.sf.anathema.character.main.magic.model.charms.IExtendedCharmLearnableArbitrator;
+import net.sf.anathema.character.main.magic.model.charms.ILearningCharmGroup;
+import net.sf.anathema.character.main.magic.model.charmtree.SpecialCharmLearnArbitrator;
+import net.sf.anathema.character.main.magic.display.view.charmtree.CharmGroupArbitrator;
 import net.sf.anathema.hero.model.HeroModel;
 import net.sf.anathema.lib.control.ChangeListener;
 import net.sf.anathema.lib.util.Identifier;

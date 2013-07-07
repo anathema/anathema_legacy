@@ -1,14 +1,14 @@
 package net.sf.anathema.character.main.magic.advance;
 
 import net.sf.anathema.character.main.advance.models.AbstractIntegerValueModel;
-import net.sf.anathema.character.main.magic.ICharm;
-import net.sf.anathema.character.main.magic.charms.special.ISpecialCharmConfiguration;
+import net.sf.anathema.character.main.magic.model.charm.ICharm;
+import net.sf.anathema.character.main.magic.model.charm.special.ISpecialCharmConfiguration;
 import net.sf.anathema.hero.charms.CharmsModel;
 import net.sf.anathema.hero.charms.CharmsModelFetcher;
 import net.sf.anathema.hero.traits.TraitMap;
 import net.sf.anathema.character.main.advance.IPointCostCalculator;
-import net.sf.anathema.character.main.magic.charms.special.ISubeffectCharmConfiguration;
-import net.sf.anathema.character.main.magic.charms.special.IUpgradableCharmConfiguration;
+import net.sf.anathema.character.main.magic.model.charm.special.ISubeffectCharmConfiguration;
+import net.sf.anathema.character.main.magic.model.charm.special.IUpgradableCharmConfiguration;
 import net.sf.anathema.hero.model.Hero;
 
 import java.util.HashSet;

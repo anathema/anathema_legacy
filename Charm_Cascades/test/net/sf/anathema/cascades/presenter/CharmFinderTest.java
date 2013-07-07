@@ -1,14 +1,14 @@
 package net.sf.anathema.cascades.presenter;
 
 import net.sf.anathema.character.main.magic.persistence.ICharmCache;
-import net.sf.anathema.character.main.magic.ICharm;
+import net.sf.anathema.character.main.magic.model.charm.ICharm;
 import net.sf.anathema.character.main.dummy.DummyCharm;
 import net.sf.anathema.character.main.testing.dummy.DummyCharacterTypes;
 import net.sf.anathema.character.main.testing.dummy.DummyExaltCharacterType;
 import org.junit.Before;
 import org.junit.Test;
 
-import static net.sf.anathema.character.main.magic.MartialArtsUtilities.MARTIAL_ARTS;
+import static net.sf.anathema.character.main.magic.model.charms.MartialArtsUtilities.MARTIAL_ARTS;
 import static org.hamcrest.CoreMatchers.is;
 import static org.junit.Assert.assertThat;
 import static org.mockito.Mockito.mock;

@@ -1,6 +1,6 @@
 package net.sf.anathema.hero.magic.model.spells;
 
-import net.sf.anathema.character.main.magic.ISpell;
+import net.sf.anathema.character.main.magic.model.spells.ISpell;
 import net.sf.anathema.hero.spells.SpellModel;
 
 public class ProxySpellLearnStrategy implements ISpellLearnStrategy {

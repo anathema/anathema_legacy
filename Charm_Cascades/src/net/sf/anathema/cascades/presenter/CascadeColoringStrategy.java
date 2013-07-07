@@ -1,8 +1,8 @@
 package net.sf.anathema.cascades.presenter;
 
 import net.sf.anathema.cascades.presenter.view.ICascadeView;
-import net.sf.anathema.character.main.magic.ICharm;
-import net.sf.anathema.character.main.magic.charms.IndirectCharmRequirement;
+import net.sf.anathema.character.main.magic.model.charm.ICharm;
+import net.sf.anathema.character.main.magic.model.charm.IndirectCharmRequirement;
 import net.sf.anathema.character.main.presenter.magic.CharmColoring;
 import net.sf.anathema.framework.ui.RGBColor;
 

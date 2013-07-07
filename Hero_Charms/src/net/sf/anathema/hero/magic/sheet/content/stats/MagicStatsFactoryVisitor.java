@@ -1,9 +1,9 @@
 package net.sf.anathema.hero.magic.sheet.content.stats;
 
-import net.sf.anathema.character.main.magic.ICharm;
-import net.sf.anathema.character.main.magic.IMagicStats;
-import net.sf.anathema.character.main.magic.IMagicVisitor;
-import net.sf.anathema.character.main.magic.ISpell;
+import net.sf.anathema.character.main.magic.model.charm.ICharm;
+import net.sf.anathema.character.main.magic.model.magic.IMagicStats;
+import net.sf.anathema.character.main.magic.model.magic.IMagicVisitor;
+import net.sf.anathema.character.main.magic.model.spells.ISpell;
 import net.sf.anathema.hero.magic.sheet.content.MagicContentHelper;
 import net.sf.anathema.hero.model.Hero;
 

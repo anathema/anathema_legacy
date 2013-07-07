@@ -1,7 +1,7 @@
 package net.sf.anathema.character.main.presenter.magic;
 
 import com.google.common.base.Predicate;
-import net.sf.anathema.character.main.magic.charms.special.ISpecialCharm;
+import net.sf.anathema.character.main.magic.model.charm.special.ISpecialCharm;
 
 public interface SpecialCharmList {
   void add(ISpecialCharm charm);

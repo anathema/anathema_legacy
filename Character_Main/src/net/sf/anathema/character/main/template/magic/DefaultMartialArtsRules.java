@@ -1,8 +1,8 @@
 package net.sf.anathema.character.main.template.magic;
 
-import net.sf.anathema.character.main.magic.MartialArtsUtilities;
-import net.sf.anathema.character.main.magic.ICharm;
-import net.sf.anathema.character.main.magic.charms.MartialArtsLevel;
+import net.sf.anathema.character.main.magic.model.charms.MartialArtsUtilities;
+import net.sf.anathema.character.main.magic.model.charm.ICharm;
+import net.sf.anathema.character.main.magic.model.charm.MartialArtsLevel;
 
 public class DefaultMartialArtsRules implements MartialArtsRules {
 

@@ -1,11 +1,11 @@
 package net.sf.anathema.hero.magic.model.charms;
 
-import net.sf.anathema.character.main.magic.charms.CharmSpecialistImpl;
-import net.sf.anathema.character.main.magic.charms.special.ComplexMultipleEffectCharm;
-import net.sf.anathema.character.main.magic.ICharm;
-import net.sf.anathema.character.main.magic.charms.ICharmLearnableArbitrator;
-import net.sf.anathema.character.main.magic.charms.special.IMultipleEffectCharm;
-import net.sf.anathema.character.main.magic.charms.special.ISubeffect;
+import net.sf.anathema.character.main.magic.model.charm.CharmSpecialistImpl;
+import net.sf.anathema.character.main.magic.model.charm.special.ComplexMultipleEffectCharm;
+import net.sf.anathema.character.main.magic.model.charm.ICharm;
+import net.sf.anathema.character.main.magic.model.charmtree.ICharmLearnableArbitrator;
+import net.sf.anathema.character.main.magic.model.charm.special.IMultipleEffectCharm;
+import net.sf.anathema.character.main.magic.model.charm.special.ISubeffect;
 import net.sf.anathema.character.main.testing.dummy.DummyHero;
 import org.junit.Test;
 

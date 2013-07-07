@@ -1,6 +1,6 @@
 package net.sf.anathema.hero.magic.model.charms;
 
-import net.sf.anathema.character.main.magic.charms.type.CharmType;
+import net.sf.anathema.character.main.magic.model.charm.type.CharmType;
 import org.junit.Test;
 
 import static org.junit.Assert.assertFalse;

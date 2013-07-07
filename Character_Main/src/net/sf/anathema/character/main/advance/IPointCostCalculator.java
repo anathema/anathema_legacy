@@ -1,7 +1,7 @@
 package net.sf.anathema.character.main.advance;
 
-import net.sf.anathema.character.main.magic.ICharm;
-import net.sf.anathema.character.main.magic.ISpell;
+import net.sf.anathema.character.main.magic.model.charm.ICharm;
+import net.sf.anathema.character.main.magic.model.spells.ISpell;
 import net.sf.anathema.character.main.library.trait.Trait;
 import net.sf.anathema.hero.traits.TraitMap;
 import net.sf.anathema.hero.model.Hero;

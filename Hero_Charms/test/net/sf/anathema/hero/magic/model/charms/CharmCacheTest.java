@@ -2,8 +2,8 @@ package net.sf.anathema.hero.magic.model.charms;
 
 import com.google.common.collect.Lists;
 import net.sf.anathema.character.main.magic.persistence.CharmCache;
-import net.sf.anathema.character.main.magic.ICharm;
-import net.sf.anathema.character.main.magic.charms.special.ISpecialCharm;
+import net.sf.anathema.character.main.magic.model.charm.ICharm;
+import net.sf.anathema.character.main.magic.model.charm.special.ISpecialCharm;
 import net.sf.anathema.character.main.testing.dummy.DummyExaltCharacterType;
 import net.sf.anathema.lib.util.SimpleIdentifier;
 import org.junit.Test;

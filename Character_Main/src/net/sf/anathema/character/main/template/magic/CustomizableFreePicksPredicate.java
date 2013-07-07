@@ -1,8 +1,8 @@
 package net.sf.anathema.character.main.template.magic;
 
 import com.google.common.base.Predicate;
-import net.sf.anathema.character.main.magic.ICharm;
-import net.sf.anathema.character.main.magic.IMagic;
+import net.sf.anathema.character.main.magic.model.charm.ICharm;
+import net.sf.anathema.character.main.magic.model.magic.IMagic;
 
 import java.util.ArrayList;
 import java.util.List;

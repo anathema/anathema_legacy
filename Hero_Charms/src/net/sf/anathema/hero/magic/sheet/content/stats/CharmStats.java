@@ -1,6 +1,6 @@
 package net.sf.anathema.hero.magic.sheet.content.stats;
 
-import net.sf.anathema.character.main.magic.ICharm;
+import net.sf.anathema.character.main.magic.model.charm.ICharm;
 import net.sf.anathema.hero.magic.sheet.content.MagicContentHelper;
 import net.sf.anathema.lib.resources.Resources;
 

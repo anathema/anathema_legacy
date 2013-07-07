@@ -1,9 +1,9 @@
 package net.sf.anathema.character.main.testing.dummy.magic;
 
-import net.sf.anathema.character.main.magic.IMagicVisitor;
-import net.sf.anathema.character.main.magic.ISpell;
-import net.sf.anathema.character.main.magic.general.ICostList;
-import net.sf.anathema.character.main.magic.spells.CircleType;
+import net.sf.anathema.character.main.magic.model.magic.IMagicVisitor;
+import net.sf.anathema.character.main.magic.model.spells.ISpell;
+import net.sf.anathema.character.main.magic.model.magic.ICostList;
+import net.sf.anathema.character.main.magic.model.spells.CircleType;
 import net.sf.anathema.character.main.rules.IExaltedSourceBook;
 import net.sf.anathema.character.main.traits.types.AbilityType;
 import net.sf.anathema.hero.traits.TraitModelFetcher;

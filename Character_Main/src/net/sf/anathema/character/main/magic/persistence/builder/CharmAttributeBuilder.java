@@ -1,7 +1,7 @@
 package net.sf.anathema.character.main.magic.persistence.builder;
 
-import net.sf.anathema.character.main.magic.CharmAttribute;
-import net.sf.anathema.character.main.magic.charms.ICharmAttribute;
+import net.sf.anathema.character.main.magic.model.charm.CharmAttribute;
+import net.sf.anathema.character.main.magic.model.charm.ICharmAttribute;
 import net.sf.anathema.character.main.traits.ValuedTraitType;
 import net.sf.anathema.lib.xml.ElementUtilities;
 import org.dom4j.Element;
@@ -9,11 +9,11 @@ import org.dom4j.Element;
 import java.util.ArrayList;
 import java.util.List;
 
-import static net.sf.anathema.character.main.magic.ICharmXMLConstants.ATTRIB_ATTRIBUTE;
-import static net.sf.anathema.character.main.magic.ICharmXMLConstants.ATTRIB_VALUE;
-import static net.sf.anathema.character.main.magic.ICharmXMLConstants.ATTRIB_VISUALIZE;
-import static net.sf.anathema.character.main.magic.ICharmXMLConstants.TAG_ATTRIBUTE;
-import static net.sf.anathema.character.main.magic.ICharmXMLConstants.TAG_GENERIC_ATTRIBUTE;
+import static net.sf.anathema.character.main.magic.model.charm.ICharmXMLConstants.ATTRIB_ATTRIBUTE;
+import static net.sf.anathema.character.main.magic.model.charm.ICharmXMLConstants.ATTRIB_VALUE;
+import static net.sf.anathema.character.main.magic.model.charm.ICharmXMLConstants.ATTRIB_VISUALIZE;
+import static net.sf.anathema.character.main.magic.model.charm.ICharmXMLConstants.TAG_ATTRIBUTE;
+import static net.sf.anathema.character.main.magic.model.charm.ICharmXMLConstants.TAG_GENERIC_ATTRIBUTE;
 
 public class CharmAttributeBuilder {
 

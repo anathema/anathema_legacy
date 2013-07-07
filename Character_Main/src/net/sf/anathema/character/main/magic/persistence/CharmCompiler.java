@@ -2,12 +2,12 @@ package net.sf.anathema.character.main.magic.persistence;
 
 import net.sf.anathema.character.main.framework.data.IExtensibleDataSet;
 import net.sf.anathema.character.main.framework.data.IExtensibleDataSetCompiler;
-import net.sf.anathema.character.main.magic.Charm;
+import net.sf.anathema.character.main.magic.model.charm.Charm;
 import net.sf.anathema.character.main.magic.persistence.builder.special.ReflectionSpecialCharmBuilder;
 import net.sf.anathema.character.main.magic.persistence.builder.special.SpecialCharmBuilder;
-import net.sf.anathema.character.main.magic.ICharm;
-import net.sf.anathema.character.main.magic.charms.CharmException;
-import net.sf.anathema.character.main.magic.charms.special.ISpecialCharm;
+import net.sf.anathema.character.main.magic.model.charm.ICharm;
+import net.sf.anathema.character.main.magic.model.charm.CharmException;
+import net.sf.anathema.character.main.magic.model.charm.special.ISpecialCharm;
 import net.sf.anathema.character.main.traits.TraitType;
 import net.sf.anathema.character.main.type.CharacterTypes;
 import net.sf.anathema.character.main.type.ICharacterType;

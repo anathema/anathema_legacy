@@ -1,10 +1,10 @@
 package net.sf.anathema.character.main.template.magic;
 
 import net.sf.anathema.character.main.magic.persistence.ICharmCache;
-import net.sf.anathema.character.main.magic.ICharm;
+import net.sf.anathema.character.main.magic.model.charm.ICharm;
 import net.sf.anathema.character.main.type.ICharacterType;
 
-import static net.sf.anathema.character.main.magic.MartialArtsUtilities.MARTIAL_ARTS;
+import static net.sf.anathema.character.main.magic.model.charms.MartialArtsUtilities.MARTIAL_ARTS;
 
 public class CharmSet implements ICharmSet {
 

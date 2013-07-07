@@ -1,10 +1,10 @@
 package net.sf.anathema.character.main.magic.advance;
 
-import net.sf.anathema.character.main.magic.ICharm;
-import net.sf.anathema.character.main.magic.IMagic;
-import net.sf.anathema.character.main.magic.IMagicVisitor;
-import net.sf.anathema.character.main.magic.ISpell;
-import net.sf.anathema.character.main.magic.charms.special.ISpecialCharmConfiguration;
+import net.sf.anathema.character.main.magic.model.charm.ICharm;
+import net.sf.anathema.character.main.magic.model.magic.IMagic;
+import net.sf.anathema.character.main.magic.model.magic.IMagicVisitor;
+import net.sf.anathema.character.main.magic.model.spells.ISpell;
+import net.sf.anathema.character.main.magic.model.charm.special.ISpecialCharmConfiguration;
 import net.sf.anathema.character.main.template.creation.BonusPointCosts;
 import net.sf.anathema.character.main.template.magic.IMagicTemplate;
 import net.sf.anathema.hero.charms.CharmsModel;
@@ -12,8 +12,8 @@ import net.sf.anathema.hero.charms.CharmsModelFetcher;
 import net.sf.anathema.hero.spells.SpellModel;
 import net.sf.anathema.hero.spells.SpellsModelFetcher;
 import net.sf.anathema.character.main.advance.CostAnalyzer;
-import net.sf.anathema.character.main.magic.charms.special.ISubeffectCharmConfiguration;
-import net.sf.anathema.character.main.magic.charms.special.IUpgradableCharmConfiguration;
+import net.sf.anathema.character.main.magic.model.charm.special.ISubeffectCharmConfiguration;
+import net.sf.anathema.character.main.magic.model.charm.special.IUpgradableCharmConfiguration;
 import net.sf.anathema.hero.model.Hero;
 
 import java.util.ArrayList;

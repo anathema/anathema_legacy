@@ -1,14 +1,14 @@
 package net.sf.anathema.hero.magic.model.charms;
 
-import net.sf.anathema.character.main.magic.ICharm;
-import net.sf.anathema.character.main.magic.charms.ComboRestrictions;
-import net.sf.anathema.character.main.magic.charms.duration.SimpleDuration;
-import net.sf.anathema.character.main.magic.charms.type.CharmType;
+import net.sf.anathema.character.main.magic.model.charm.ICharm;
+import net.sf.anathema.character.main.magic.model.combos.ComboRestrictions;
+import net.sf.anathema.character.main.magic.model.charm.duration.SimpleDuration;
+import net.sf.anathema.character.main.magic.model.charm.type.CharmType;
 import net.sf.anathema.character.main.traits.types.AbilityType;
 import net.sf.anathema.character.main.traits.types.ValuedTraitType;
 import net.sf.anathema.character.main.dummy.DummyCharm;
 import net.sf.anathema.character.main.dummy.DummyCharmUtilities;
-import net.sf.anathema.character.main.magic.charms.combo.ComboArbitrator;
+import net.sf.anathema.character.main.magic.model.combos.ComboArbitrator;
 import org.junit.Test;
 
 import static org.junit.Assert.assertFalse;

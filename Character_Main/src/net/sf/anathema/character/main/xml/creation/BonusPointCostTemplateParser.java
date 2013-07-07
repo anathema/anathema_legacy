@@ -3,7 +3,7 @@ package net.sf.anathema.character.main.xml.creation;
 import net.sf.anathema.character.main.xml.core.AbstractXmlTemplateParser;
 import net.sf.anathema.character.main.xml.registry.IXmlTemplateRegistry;
 import net.sf.anathema.character.main.xml.util.CostParser;
-import net.sf.anathema.character.main.magic.charms.MartialArtsLevel;
+import net.sf.anathema.character.main.magic.model.charm.MartialArtsLevel;
 import net.sf.anathema.character.main.template.experience.CurrentRatingCosts;
 import net.sf.anathema.lib.exception.PersistenceException;
 import net.sf.anathema.lib.xml.ElementUtilities;

@@ -1,7 +1,7 @@
 package net.sf.anathema.character.main.magic.persistence.builder.special;
 
-import net.sf.anathema.character.main.magic.charms.special.StaticPainToleranceCharm;
-import net.sf.anathema.character.main.magic.charms.special.ISpecialCharm;
+import net.sf.anathema.character.main.magic.model.charm.special.StaticPainToleranceCharm;
+import net.sf.anathema.character.main.magic.model.charm.special.ISpecialCharm;
 import org.dom4j.Element;
 
 import java.util.List;

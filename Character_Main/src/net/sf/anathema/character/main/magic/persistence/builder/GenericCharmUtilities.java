@@ -1,7 +1,7 @@
 package net.sf.anathema.character.main.magic.persistence.builder;
 
 import com.google.common.base.Strings;
-import net.sf.anathema.character.main.magic.charms.CharmException;
+import net.sf.anathema.character.main.magic.model.charm.CharmException;
 import net.sf.anathema.lib.util.Identifier;
 import net.sf.anathema.lib.xml.ElementUtilities;
 import org.dom4j.Element;
@@ -10,8 +10,8 @@ import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
 
-import static net.sf.anathema.character.main.magic.ICharmXMLConstants.ATTRIB_ID;
-import static net.sf.anathema.character.main.magic.ICharmXMLConstants.TAG_GENERIC_CHARM_REFERENCE;
+import static net.sf.anathema.character.main.magic.model.charm.ICharmXMLConstants.ATTRIB_ID;
+import static net.sf.anathema.character.main.magic.model.charm.ICharmXMLConstants.TAG_GENERIC_CHARM_REFERENCE;
 
 public class GenericCharmUtilities {
 

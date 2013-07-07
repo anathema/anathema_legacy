@@ -7,8 +7,8 @@ import org.dom4j.Element;
 import java.util.HashMap;
 import java.util.Map;
 
-import static net.sf.anathema.character.main.magic.ICharmXMLConstants.TAG_RENAME;
-import static net.sf.anathema.character.main.magic.ICharmXMLConstants.TAG_RENAMES;
+import static net.sf.anathema.character.main.magic.model.charm.ICharmXMLConstants.TAG_RENAME;
+import static net.sf.anathema.character.main.magic.model.charm.ICharmXMLConstants.TAG_RENAMES;
 
 public class CharmRenameBuilder {
   private static final String ATTRIB_FROM = "from";

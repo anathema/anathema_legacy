@@ -3,16 +3,16 @@ package net.sf.anathema.hero.magic.parser;
 import org.dom4j.Element;
 import org.dom4j.tree.DefaultElement;
 
-import static net.sf.anathema.character.main.magic.ICharmXMLConstants.ATTRIB_DURATION;
-import static net.sf.anathema.character.main.magic.ICharmXMLConstants.ATTRIB_EXALT;
-import static net.sf.anathema.character.main.magic.ICharmXMLConstants.ATTRIB_GROUP;
-import static net.sf.anathema.character.main.magic.ICharmXMLConstants.ATTRIB_ID;
-import static net.sf.anathema.character.main.magic.ICharmXMLConstants.ATTRIB_TYPE;
-import static net.sf.anathema.character.main.magic.ICharmXMLConstants.TAG_CHARM;
-import static net.sf.anathema.character.main.magic.ICharmXMLConstants.TAG_CHARMTYPE;
-import static net.sf.anathema.character.main.magic.ICharmXMLConstants.TAG_DURATION;
-import static net.sf.anathema.character.main.magic.ICharmXMLConstants.TAG_PREREQUISITE_LIST;
-import static net.sf.anathema.character.main.magic.ICharmXMLConstants.TAG_TRAIT;
+import static net.sf.anathema.character.main.magic.model.charm.ICharmXMLConstants.ATTRIB_DURATION;
+import static net.sf.anathema.character.main.magic.model.charm.ICharmXMLConstants.ATTRIB_EXALT;
+import static net.sf.anathema.character.main.magic.model.charm.ICharmXMLConstants.ATTRIB_GROUP;
+import static net.sf.anathema.character.main.magic.model.charm.ICharmXMLConstants.ATTRIB_ID;
+import static net.sf.anathema.character.main.magic.model.charm.ICharmXMLConstants.ATTRIB_TYPE;
+import static net.sf.anathema.character.main.magic.model.charm.ICharmXMLConstants.TAG_CHARM;
+import static net.sf.anathema.character.main.magic.model.charm.ICharmXMLConstants.TAG_CHARMTYPE;
+import static net.sf.anathema.character.main.magic.model.charm.ICharmXMLConstants.TAG_DURATION;
+import static net.sf.anathema.character.main.magic.model.charm.ICharmXMLConstants.TAG_PREREQUISITE_LIST;
+import static net.sf.anathema.character.main.magic.model.charm.ICharmXMLConstants.TAG_TRAIT;
 
 public class CharmXmlTestUtils {
 

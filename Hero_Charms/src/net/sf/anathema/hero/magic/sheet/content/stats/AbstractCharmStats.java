@@ -1,13 +1,13 @@
 package net.sf.anathema.hero.magic.sheet.content.stats;
 
 import com.google.common.base.Function;
-import net.sf.anathema.character.main.magic.ICharm;
-import net.sf.anathema.character.main.magic.IMagicStats;
-import net.sf.anathema.character.main.magic.charms.ICharmAttribute;
-import net.sf.anathema.character.main.magic.charms.type.ICharmTypeModel;
-import net.sf.anathema.character.main.magic.charmtree.builder.stringbuilder.IMagicSourceStringBuilder;
-import net.sf.anathema.character.main.magic.charmtree.builder.stringbuilder.source.MagicSourceStringBuilder;
-import net.sf.anathema.character.main.magic.charmtree.builder.stringbuilder.type.ShortCharmTypeStringBuilder;
+import net.sf.anathema.character.main.magic.model.charm.ICharm;
+import net.sf.anathema.character.main.magic.model.magic.IMagicStats;
+import net.sf.anathema.character.main.magic.model.charm.ICharmAttribute;
+import net.sf.anathema.character.main.magic.model.charm.type.ICharmTypeModel;
+import net.sf.anathema.character.main.magic.model.charmtree.builder.stringbuilder.IMagicSourceStringBuilder;
+import net.sf.anathema.character.main.magic.model.charmtree.builder.stringbuilder.source.MagicSourceStringBuilder;
+import net.sf.anathema.character.main.magic.model.charmtree.builder.stringbuilder.type.ShortCharmTypeStringBuilder;
 import net.sf.anathema.lib.resources.Resources;
 
 import java.util.ArrayList;

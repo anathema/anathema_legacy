@@ -1,6 +1,6 @@
 package net.sf.anathema.character.main.template.magic;
 
-import net.sf.anathema.character.main.magic.charms.special.ISpecialCharm;
+import net.sf.anathema.character.main.magic.model.charm.special.ISpecialCharm;
 
 import java.util.ArrayList;
 import java.util.Collection;

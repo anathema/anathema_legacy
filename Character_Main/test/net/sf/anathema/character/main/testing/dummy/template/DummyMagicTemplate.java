@@ -1,7 +1,7 @@
 package net.sf.anathema.character.main.testing.dummy.template;
 
 import com.google.common.base.Predicate;
-import net.sf.anathema.character.main.magic.IMagic;
+import net.sf.anathema.character.main.magic.model.magic.IMagic;
 import net.sf.anathema.character.main.template.magic.ICharmTemplate;
 import net.sf.anathema.character.main.template.magic.IMagicTemplate;
 import net.sf.anathema.character.main.template.magic.ISpellMagicTemplate;

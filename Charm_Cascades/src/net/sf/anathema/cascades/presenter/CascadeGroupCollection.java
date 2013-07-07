@@ -1,18 +1,18 @@
 package net.sf.anathema.cascades.presenter;
 
-import net.sf.anathema.character.main.magic.MartialArtsUtilities;
-import net.sf.anathema.character.main.magic.charms.CharmTree;
-import net.sf.anathema.character.main.magic.charms.MartialArtsCharmTree;
-import net.sf.anathema.character.main.magic.charms.ICharmGroup;
-import net.sf.anathema.character.main.magic.charms.ICharmTree;
-import net.sf.anathema.character.main.magic.charms.MartialArtsLevel;
+import net.sf.anathema.character.main.magic.model.charms.MartialArtsUtilities;
+import net.sf.anathema.character.main.magic.model.charmtree.CharmTree;
+import net.sf.anathema.character.main.magic.model.charmtree.MartialArtsCharmTree;
+import net.sf.anathema.character.main.magic.model.charm.ICharmGroup;
+import net.sf.anathema.character.main.magic.model.charmtree.ICharmTree;
+import net.sf.anathema.character.main.magic.model.charm.MartialArtsLevel;
 import net.sf.anathema.character.main.template.HeroTemplate;
 import net.sf.anathema.character.main.template.ITemplateRegistry;
 import net.sf.anathema.character.main.template.magic.ICharmTemplate;
 import net.sf.anathema.character.main.type.CharacterTypes;
 import net.sf.anathema.character.main.type.ICharacterType;
-import net.sf.anathema.character.main.magic.charms.options.DefaultCharmTemplateRetriever;
-import net.sf.anathema.character.main.magic.charmtree.presenter.CharmGroupCollection;
+import net.sf.anathema.character.main.magic.model.charms.options.DefaultCharmTemplateRetriever;
+import net.sf.anathema.character.main.magic.display.presenter.CharmGroupCollection;
 import net.sf.anathema.lib.util.Identifier;
 
 import java.util.ArrayList;

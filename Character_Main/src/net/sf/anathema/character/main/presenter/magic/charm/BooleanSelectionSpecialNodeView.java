@@ -1,6 +1,6 @@
 package net.sf.anathema.character.main.presenter.magic.charm;
 
-import net.sf.anathema.character.main.magic.charms.special.ISpecialCharm;
+import net.sf.anathema.character.main.magic.model.charm.special.ISpecialCharm;
 import net.sf.anathema.character.main.presenter.magic.ToggleButtonSpecialNodeView;
 import net.sf.anathema.lib.workflow.booleanvalue.IBooleanValueView;
 import net.sf.anathema.platform.tree.presenter.view.ISpecialNodeView;

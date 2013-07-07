@@ -23,7 +23,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 import static net.sf.anathema.character.main.caste.CasteType.NULL_CASTE_TYPE;
-import static net.sf.anathema.character.main.magic.ICharmXMLConstants.ATTRIB_TYPE;
+import static net.sf.anathema.character.main.magic.model.charm.ICharmXMLConstants.ATTRIB_TYPE;
 import static net.sf.anathema.character.main.persistence.ICharacterXmlConstants.ATTRIB_SUB_TYPE;
 import static net.sf.anathema.character.main.persistence.ICharacterXmlConstants.TAG_CASTE;
 import static net.sf.anathema.character.main.persistence.ICharacterXmlConstants.TAG_CHARACTER_TYPE;

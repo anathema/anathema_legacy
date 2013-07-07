@@ -6,7 +6,7 @@ import com.itextpdf.text.Image;
 import com.itextpdf.text.Paragraph;
 import com.itextpdf.text.Phrase;
 import net.sf.anathema.cards.layout.ICardReportResourceProvider;
-import net.sf.anathema.character.main.magic.ISpell;
+import net.sf.anathema.character.main.magic.model.spells.ISpell;
 import net.sf.anathema.character.main.magic.description.MagicDescription;
 import net.sf.anathema.hero.magic.sheet.content.stats.SpellStats;
 import net.sf.anathema.lib.resources.Resources;

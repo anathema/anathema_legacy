@@ -2,7 +2,7 @@ package net.sf.anathema.hero.magic.costs;
 
 import net.sf.anathema.character.main.costs.AbstractBonusPointTestCase;
 import net.sf.anathema.character.main.template.points.DefaultBonusPointCosts;
-import net.sf.anathema.character.main.magic.ISpell;
+import net.sf.anathema.character.main.magic.model.spells.ISpell;
 import net.sf.anathema.character.main.traits.types.AbilityType;
 import net.sf.anathema.character.main.library.trait.favorable.FavorableState;
 import net.sf.anathema.hero.spells.SpellModel;

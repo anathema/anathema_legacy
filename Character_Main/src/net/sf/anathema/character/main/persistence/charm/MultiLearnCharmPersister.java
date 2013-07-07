@@ -1,9 +1,9 @@
 package net.sf.anathema.character.main.persistence.charm;
 
-import net.sf.anathema.character.main.magic.charms.special.ISpecialCharmConfiguration;
+import net.sf.anathema.character.main.magic.model.charm.special.ISpecialCharmConfiguration;
 import net.sf.anathema.character.main.library.trait.Trait;
 import net.sf.anathema.character.main.library.trait.persistence.TraitPersister;
-import net.sf.anathema.character.main.magic.charms.special.IMultiLearnableCharmConfiguration;
+import net.sf.anathema.character.main.magic.model.charm.special.IMultiLearnableCharmConfiguration;
 import net.sf.anathema.lib.exception.PersistenceException;
 import org.dom4j.Element;
 

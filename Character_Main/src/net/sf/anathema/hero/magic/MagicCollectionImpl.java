@@ -1,14 +1,14 @@
 package net.sf.anathema.hero.magic;
 
-import net.sf.anathema.character.main.magic.ICharm;
-import net.sf.anathema.character.main.magic.IMagic;
-import net.sf.anathema.character.main.magic.IMagicVisitor;
-import net.sf.anathema.character.main.magic.ISpell;
-import net.sf.anathema.character.main.magic.charms.special.IMultiLearnableCharm;
+import net.sf.anathema.character.main.magic.model.charm.ICharm;
+import net.sf.anathema.character.main.magic.model.magic.IMagic;
+import net.sf.anathema.character.main.magic.model.magic.IMagicVisitor;
+import net.sf.anathema.character.main.magic.model.spells.ISpell;
+import net.sf.anathema.character.main.magic.model.charm.special.IMultiLearnableCharm;
 import net.sf.anathema.hero.charms.CharmsModel;
 import net.sf.anathema.hero.charms.CharmsModelFetcher;
 import net.sf.anathema.hero.spells.SpellsModelFetcher;
-import net.sf.anathema.character.main.magic.charms.special.IMultiLearnableCharmConfiguration;
+import net.sf.anathema.character.main.magic.model.charm.special.IMultiLearnableCharmConfiguration;
 import net.sf.anathema.hero.model.Hero;
 
 public class MagicCollectionImpl implements MagicCollection {

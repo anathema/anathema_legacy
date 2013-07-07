@@ -1,7 +1,7 @@
 package net.sf.anathema.character.main.testing.dummy;
 
-import net.sf.anathema.character.main.magic.IMagic;
-import net.sf.anathema.character.main.magic.charms.special.IMultiLearnableCharm;
+import net.sf.anathema.character.main.magic.model.magic.IMagic;
+import net.sf.anathema.character.main.magic.model.charm.special.IMultiLearnableCharm;
 import net.sf.anathema.hero.magic.MagicCollection;
 
 import java.util.HashMap;

@@ -2,8 +2,8 @@ package net.sf.anathema.character.main.magic.persistence.builder.prerequisite;
 
 import net.sf.anathema.character.main.magic.persistence.prerequisite.CharmPrerequisiteList;
 import net.sf.anathema.character.main.magic.persistence.prerequisite.SelectiveCharmGroupTemplate;
-import net.sf.anathema.character.main.magic.charms.CharmException;
-import net.sf.anathema.character.main.magic.charms.IndirectCharmRequirement;
+import net.sf.anathema.character.main.magic.model.charm.CharmException;
+import net.sf.anathema.character.main.magic.model.charm.IndirectCharmRequirement;
 import net.sf.anathema.character.main.traits.ValuedTraitType;
 import net.sf.anathema.lib.exception.PersistenceException;
 import net.sf.anathema.lib.xml.ElementUtilities;
@@ -11,10 +11,10 @@ import org.dom4j.Element;
 
 import java.util.List;
 
-import static net.sf.anathema.character.main.magic.ICharmXMLConstants.ATTRIB_THRESHOLD;
-import static net.sf.anathema.character.main.magic.ICharmXMLConstants.ATTRIB_VALUE;
-import static net.sf.anathema.character.main.magic.ICharmXMLConstants.TAG_ESSENCE;
-import static net.sf.anathema.character.main.magic.ICharmXMLConstants.TAG_SELECTIVE_CHARM_GROUP;
+import static net.sf.anathema.character.main.magic.model.charm.ICharmXMLConstants.ATTRIB_THRESHOLD;
+import static net.sf.anathema.character.main.magic.model.charm.ICharmXMLConstants.ATTRIB_VALUE;
+import static net.sf.anathema.character.main.magic.model.charm.ICharmXMLConstants.TAG_ESSENCE;
+import static net.sf.anathema.character.main.magic.model.charm.ICharmXMLConstants.TAG_SELECTIVE_CHARM_GROUP;
 import static net.sf.anathema.character.main.traits.types.OtherTraitType.Essence;
 
 public class PrerequisiteListBuilder {

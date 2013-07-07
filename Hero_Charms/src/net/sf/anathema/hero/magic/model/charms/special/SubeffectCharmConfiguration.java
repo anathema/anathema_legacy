@@ -1,12 +1,12 @@
 package net.sf.anathema.hero.magic.model.charms.special;
 
-import net.sf.anathema.character.main.magic.charms.special.ISubeffectCharmConfiguration;
-import net.sf.anathema.character.main.magic.charms.special.MultipleEffectCharmConfiguration;
-import net.sf.anathema.character.main.magic.ICharm;
-import net.sf.anathema.character.main.magic.charms.special.ISubeffect;
-import net.sf.anathema.character.main.magic.charms.special.ISubeffectCharm;
-import net.sf.anathema.character.main.magic.charms.CharmSpecialist;
-import net.sf.anathema.character.main.magic.charms.IExtendedCharmLearnableArbitrator;
+import net.sf.anathema.character.main.magic.model.charm.special.ISubeffectCharmConfiguration;
+import net.sf.anathema.character.main.magic.model.charm.special.MultipleEffectCharmConfiguration;
+import net.sf.anathema.character.main.magic.model.charm.ICharm;
+import net.sf.anathema.character.main.magic.model.charm.special.ISubeffect;
+import net.sf.anathema.character.main.magic.model.charm.special.ISubeffectCharm;
+import net.sf.anathema.character.main.magic.model.charm.CharmSpecialist;
+import net.sf.anathema.character.main.magic.model.charms.IExtendedCharmLearnableArbitrator;
 
 public class SubeffectCharmConfiguration extends MultipleEffectCharmConfiguration implements ISubeffectCharmConfiguration {
 

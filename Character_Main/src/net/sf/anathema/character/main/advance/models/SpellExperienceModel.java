@@ -1,6 +1,6 @@
 package net.sf.anathema.character.main.advance.models;
 
-import net.sf.anathema.character.main.magic.ISpell;
+import net.sf.anathema.character.main.magic.model.spells.ISpell;
 import net.sf.anathema.hero.spells.SpellModel;
 import net.sf.anathema.hero.spells.SpellsModelFetcher;
 import net.sf.anathema.hero.traits.TraitMap;

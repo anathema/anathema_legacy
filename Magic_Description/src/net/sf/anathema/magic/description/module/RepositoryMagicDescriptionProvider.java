@@ -1,6 +1,6 @@
 package net.sf.anathema.magic.description.module;
 
-import net.sf.anathema.character.main.magic.IMagic;
+import net.sf.anathema.character.main.magic.model.magic.IMagic;
 import net.sf.anathema.character.main.magic.description.MagicDescription;
 import net.sf.anathema.character.main.magic.description.MagicDescriptionProvider;
 import net.sf.anathema.magic.description.persistence.MagicDescriptionDataBase;
