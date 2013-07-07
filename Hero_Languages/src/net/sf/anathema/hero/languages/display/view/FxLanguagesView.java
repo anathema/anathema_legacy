@@ -1,10 +1,13 @@
-package net.sf.anathema.hero.languages.display;
+package net.sf.anathema.hero.languages.display.view;
 
 import javafx.scene.Node;
 import javafx.scene.control.ScrollPane;
 import net.miginfocom.layout.CC;
 import net.sf.anathema.character.main.library.overview.OverviewCategory;
-import net.sf.anathema.hero.languages.display.overview.FxOverviewCategory;
+import net.sf.anathema.hero.languages.display.presenter.LanguagesView;
+import net.sf.anathema.hero.languages.display.presenter.ObjectSelectionViewWithTool;
+import net.sf.anathema.hero.languages.display.presenter.RemovableEntryView;
+import net.sf.anathema.hero.languages.display.view.overview.FxOverviewCategory;
 import net.sf.anathema.lib.file.RelativePath;
 import net.sf.anathema.lib.gui.AgnosticUIConfiguration;
 import net.sf.anathema.platform.fx.NodeHolder;

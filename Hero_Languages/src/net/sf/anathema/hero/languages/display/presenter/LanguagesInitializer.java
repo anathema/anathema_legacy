@@ -1,4 +1,4 @@
-package net.sf.anathema.hero.languages.display;
+package net.sf.anathema.hero.languages.display.presenter;
 
 import net.sf.anathema.character.main.presenter.initializers.HeroModelInitializer;
 import net.sf.anathema.character.main.presenter.initializers.RegisteredInitializer;

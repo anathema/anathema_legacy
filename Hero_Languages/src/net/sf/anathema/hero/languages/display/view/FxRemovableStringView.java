@@ -1,7 +1,8 @@
-package net.sf.anathema.hero.languages.display;
+package net.sf.anathema.hero.languages.display.view;
 
 import javafx.scene.control.Label;
 import net.miginfocom.layout.CC;
+import net.sf.anathema.hero.languages.display.presenter.RemovableEntryView;
 import net.sf.anathema.interaction.Command;
 import net.sf.anathema.lib.file.RelativePath;
 import net.sf.anathema.platform.fx.FxThreading;

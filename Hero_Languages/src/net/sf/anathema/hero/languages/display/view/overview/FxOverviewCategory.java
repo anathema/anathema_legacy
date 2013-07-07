@@ -1,4 +1,4 @@
-package net.sf.anathema.hero.languages.display.overview;
+package net.sf.anathema.hero.languages.display.view.overview;
 
 import net.sf.anathema.character.main.library.overview.OverviewCategory;
 import net.sf.anathema.lib.workflow.labelledvalue.ILabelledAlotmentView;

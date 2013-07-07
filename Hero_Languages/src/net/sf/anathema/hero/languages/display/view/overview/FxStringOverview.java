@@ -1,4 +1,4 @@
-package net.sf.anathema.hero.languages.display.overview;
+package net.sf.anathema.hero.languages.display.view.overview;
 
 import javafx.scene.control.Label;
 import net.miginfocom.layout.CC;

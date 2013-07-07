@@ -1,4 +1,4 @@
-package net.sf.anathema.hero.languages.display.overview;
+package net.sf.anathema.hero.languages.display.view.overview;
 
 import com.google.common.base.Joiner;
 import javafx.scene.control.Label;
