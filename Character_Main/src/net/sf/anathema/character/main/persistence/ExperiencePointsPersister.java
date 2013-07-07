@@ -1,7 +1,7 @@
 package net.sf.anathema.character.main.persistence;
 
-import net.sf.anathema.character.model.advance.IExperiencePointConfiguration;
-import net.sf.anathema.character.model.advance.IExperiencePointEntry;
+import net.sf.anathema.character.main.advance.IExperiencePointConfiguration;
+import net.sf.anathema.character.main.advance.IExperiencePointEntry;
 import net.sf.anathema.framework.persistence.TextPersister;
 import net.sf.anathema.lib.exception.PersistenceException;
 import net.sf.anathema.lib.xml.ElementUtilities;

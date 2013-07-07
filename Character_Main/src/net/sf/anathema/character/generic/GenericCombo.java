@@ -2,7 +2,7 @@ package net.sf.anathema.character.generic;
 
 import net.sf.anathema.character.generic.magic.ICharm;
 import net.sf.anathema.character.generic.magic.IGenericCombo;
-import net.sf.anathema.character.model.charm.ICombo;
+import net.sf.anathema.character.main.charm.ICombo;
 
 public class GenericCombo implements IGenericCombo {
 

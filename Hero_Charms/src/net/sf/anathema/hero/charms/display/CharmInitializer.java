@@ -5,7 +5,7 @@ import net.sf.anathema.character.generic.framework.magic.view.CharmDescriptionPr
 import net.sf.anathema.character.generic.magic.description.MagicDescriptionProvider;
 import net.sf.anathema.character.generic.template.HeroTemplate;
 import net.sf.anathema.character.generic.template.ITemplateRegistry;
-import net.sf.anathema.character.model.charm.options.DefaultCharmTemplateRetriever;
+import net.sf.anathema.character.main.charm.options.DefaultCharmTemplateRetriever;
 import net.sf.anathema.character.main.presenter.initializers.HeroModelInitializer;
 import net.sf.anathema.character.main.presenter.initializers.RegisteredInitializer;
 import net.sf.anathema.character.main.presenter.magic.CharacterCharmModel;

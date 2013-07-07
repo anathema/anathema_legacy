@@ -1,8 +1,8 @@
 package net.sf.anathema.swing.character.perspective;
 
 import net.sf.anathema.character.generic.framework.CharacterGenericsExtractor;
-import net.sf.anathema.character.model.advance.ExperiencePointManagement;
-import net.sf.anathema.character.model.advance.IExperiencePointManagement;
+import net.sf.anathema.character.main.advance.ExperiencePointManagement;
+import net.sf.anathema.character.main.advance.IExperiencePointManagement;
 import net.sf.anathema.character.model.creation.IBonusPointManagement;
 import net.sf.anathema.character.model.creation.bonus.BonusPointManagement;
 import net.sf.anathema.character.main.presenter.CharacterPresenter;

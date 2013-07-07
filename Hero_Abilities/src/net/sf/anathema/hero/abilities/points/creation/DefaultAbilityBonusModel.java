@@ -1,7 +1,7 @@
 package net.sf.anathema.hero.abilities.points.creation;
 
 import net.sf.anathema.character.generic.template.creation.ICreationPoints;
-import net.sf.anathema.character.model.advance.models.AbstractSpendingModel;
+import net.sf.anathema.character.main.advance.models.AbstractSpendingModel;
 
 public class DefaultAbilityBonusModel extends AbstractSpendingModel {
   private final IAbilityCostCalculator abilityCalculator;

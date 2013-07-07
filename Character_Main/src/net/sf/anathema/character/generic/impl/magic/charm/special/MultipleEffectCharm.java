@@ -7,7 +7,7 @@ import net.sf.anathema.character.generic.magic.charms.special.IMultipleEffectCha
 import net.sf.anathema.character.generic.magic.charms.special.ISpecialCharmVisitor;
 import net.sf.anathema.character.generic.magic.charms.special.ISubeffect;
 import net.sf.anathema.character.generic.magic.charms.special.SubEffects;
-import net.sf.anathema.character.model.charm.CharmSpecialist;
+import net.sf.anathema.character.main.charm.CharmSpecialist;
 import net.sf.anathema.lib.data.Condition;
 
 import java.util.ArrayList;

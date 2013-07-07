@@ -4,7 +4,7 @@
 package net.sf.anathema.character.model;
 
 import net.sf.anathema.character.generic.magic.ICharm;
-import net.sf.anathema.character.model.charm.CharmLearnAdapter;
+import net.sf.anathema.character.main.charm.CharmLearnAdapter;
 import net.sf.anathema.hero.change.ChangeAnnouncer;
 import net.sf.anathema.hero.change.ChangeFlavor;
 

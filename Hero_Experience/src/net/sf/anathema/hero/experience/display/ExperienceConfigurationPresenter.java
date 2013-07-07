@@ -1,8 +1,8 @@
 package net.sf.anathema.hero.experience.display;
 
-import net.sf.anathema.character.model.advance.ExperiencePointConfigurationListener;
-import net.sf.anathema.character.model.advance.IExperiencePointConfiguration;
-import net.sf.anathema.character.model.advance.IExperiencePointEntry;
+import net.sf.anathema.character.main.advance.ExperiencePointConfigurationListener;
+import net.sf.anathema.character.main.advance.IExperiencePointConfiguration;
+import net.sf.anathema.character.main.advance.IExperiencePointEntry;
 import net.sf.anathema.lib.resources.Resources;
 
 import java.util.HashMap;

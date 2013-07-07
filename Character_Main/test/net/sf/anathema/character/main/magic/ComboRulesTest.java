@@ -8,7 +8,7 @@ import net.sf.anathema.character.generic.traits.types.AbilityType;
 import net.sf.anathema.character.generic.traits.types.ValuedTraitType;
 import net.sf.anathema.character.main.dummy.DummyCharm;
 import net.sf.anathema.character.main.dummy.DummyCharmUtilities;
-import net.sf.anathema.character.model.charm.combo.ComboArbitrator;
+import net.sf.anathema.character.main.charm.combo.ComboArbitrator;
 import org.junit.Test;
 
 import static org.junit.Assert.assertFalse;

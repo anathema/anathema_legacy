@@ -4,7 +4,7 @@ import net.sf.anathema.character.generic.template.HeroTemplate;
 import net.sf.anathema.character.generic.template.ITemplateRegistry;
 import net.sf.anathema.character.generic.type.CharacterTypes;
 import net.sf.anathema.character.generic.type.ICharacterType;
-import net.sf.anathema.character.model.charm.options.DefaultCharmTemplateRetriever;
+import net.sf.anathema.character.main.charm.options.DefaultCharmTemplateRetriever;
 import net.sf.anathema.character.main.presenter.magic.AbstractCharmTypes;
 import net.sf.anathema.lib.util.Identifier;
 

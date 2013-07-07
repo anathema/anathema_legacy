@@ -11,9 +11,9 @@ import net.sf.anathema.character.main.model.charms.CharmsModel;
 import net.sf.anathema.character.main.model.charms.CharmsModelFetcher;
 import net.sf.anathema.character.main.model.spells.SpellModel;
 import net.sf.anathema.character.main.model.spells.SpellsModelFetcher;
-import net.sf.anathema.character.model.advance.CostAnalyzer;
-import net.sf.anathema.character.model.charm.special.ISubeffectCharmConfiguration;
-import net.sf.anathema.character.model.charm.special.IUpgradableCharmConfiguration;
+import net.sf.anathema.character.main.advance.CostAnalyzer;
+import net.sf.anathema.character.main.charm.special.ISubeffectCharmConfiguration;
+import net.sf.anathema.character.main.charm.special.IUpgradableCharmConfiguration;
 import net.sf.anathema.hero.model.Hero;
 
 import java.util.ArrayList;
