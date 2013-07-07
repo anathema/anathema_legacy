@@ -1,7 +1,7 @@
 package net.sf.anathema.character.main.magic.persistence.builder.special;
 
 import net.sf.anathema.hero.health.HealthLevelType;
-import net.sf.anathema.character.main.magic.charm.special.OxBodyTechniqueCharm;
+import net.sf.anathema.character.main.magic.charms.special.OxBodyTechniqueCharm;
 import net.sf.anathema.character.main.magic.persistence.builder.TraitTypeFinder;
 import net.sf.anathema.character.main.magic.charms.special.ISpecialCharm;
 import net.sf.anathema.character.main.traits.TraitType;

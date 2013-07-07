@@ -1,6 +1,6 @@
 package net.sf.anathema.character.main.charm;
 
-import net.sf.anathema.character.main.magic.charm.special.ComplexMultipleEffectCharm;
+import net.sf.anathema.character.main.magic.charms.special.ComplexMultipleEffectCharm;
 import net.sf.anathema.character.main.magic.ICharm;
 import net.sf.anathema.character.main.magic.charms.ICharmLearnableArbitrator;
 import net.sf.anathema.character.main.magic.charms.special.IMultipleEffectCharm;

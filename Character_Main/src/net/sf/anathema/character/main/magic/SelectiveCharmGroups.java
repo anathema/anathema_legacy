@@ -1,6 +1,6 @@
 package net.sf.anathema.character.main.magic;
 
-import net.sf.anathema.character.main.magic.charm.prerequisite.SelectiveCharmGroup;
+import net.sf.anathema.character.main.magic.charms.prerequisite.SelectiveCharmGroup;
 
 import java.util.ArrayList;
 import java.util.Iterator;

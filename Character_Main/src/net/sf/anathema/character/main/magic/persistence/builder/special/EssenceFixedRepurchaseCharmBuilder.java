@@ -1,6 +1,6 @@
 package net.sf.anathema.character.main.magic.persistence.builder.special;
 
-import net.sf.anathema.character.main.magic.charm.special.EssenceFixedMultiLearnableCharm;
+import net.sf.anathema.character.main.magic.charms.special.EssenceFixedMultiLearnableCharm;
 import net.sf.anathema.character.main.traits.EssenceTemplate;
 import net.sf.anathema.character.main.magic.charms.special.ISpecialCharm;
 import org.dom4j.Element;

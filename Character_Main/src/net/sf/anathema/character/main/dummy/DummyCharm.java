@@ -2,7 +2,7 @@ package net.sf.anathema.character.main.dummy;
 
 import net.sf.anathema.character.main.magic.CharmAttribute;
 import net.sf.anathema.character.main.magic.CostList;
-import net.sf.anathema.character.main.magic.charm.type.CharmTypeModel;
+import net.sf.anathema.character.main.magic.charms.type.CharmTypeModel;
 import net.sf.anathema.character.main.magic.ICharm;
 import net.sf.anathema.character.main.magic.IMagicVisitor;
 import net.sf.anathema.character.main.magic.charms.ComboRestrictions;

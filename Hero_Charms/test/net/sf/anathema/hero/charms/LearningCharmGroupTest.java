@@ -1,8 +1,8 @@
 package net.sf.anathema.hero.charms;
 
 import net.sf.anathema.character.main.charm.ICharmLearnStrategy;
-import net.sf.anathema.character.main.magic.charm.CharmGroup;
-import net.sf.anathema.character.main.magic.charm.CharmTree;
+import net.sf.anathema.character.main.magic.charms.CharmGroup;
+import net.sf.anathema.character.main.magic.charms.CharmTree;
 import net.sf.anathema.character.main.magic.ICharm;
 import net.sf.anathema.character.main.magic.charms.ICharmTree;
 import net.sf.anathema.character.main.traits.ValuedTraitType;

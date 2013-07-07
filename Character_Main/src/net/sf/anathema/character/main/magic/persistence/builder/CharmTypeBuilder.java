@@ -1,9 +1,9 @@
 package net.sf.anathema.character.main.magic.persistence.builder;
 
 import com.google.common.base.Strings;
-import net.sf.anathema.character.main.magic.charm.type.CharmTypeModel;
-import net.sf.anathema.character.main.magic.charm.type.ReflexiveSpecialsModel;
-import net.sf.anathema.character.main.magic.charm.type.SimpleSpecialsModel;
+import net.sf.anathema.character.main.magic.charms.type.CharmTypeModel;
+import net.sf.anathema.character.main.magic.charms.type.ReflexiveSpecialsModel;
+import net.sf.anathema.character.main.magic.charms.type.SimpleSpecialsModel;
 import net.sf.anathema.character.main.magic.charms.CharmException;
 import net.sf.anathema.character.main.magic.charms.ICharmTypeVisitor;
 import net.sf.anathema.character.main.magic.charms.type.CharmType;

@@ -1,6 +1,6 @@
 package net.sf.anathema.character.main.magic;
 
-import net.sf.anathema.character.main.magic.charm.type.CharmTypeModel;
+import net.sf.anathema.character.main.magic.charms.type.CharmTypeModel;
 import net.sf.anathema.character.main.magic.persistence.prerequisite.CharmPrerequisiteList;
 import net.sf.anathema.character.main.magic.persistence.prerequisite.SelectiveCharmGroupTemplate;
 import net.sf.anathema.character.main.magic.charms.ComboRestrictions;

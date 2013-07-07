@@ -9,7 +9,6 @@ import net.sf.anathema.character.main.charm.options.DefaultCharmTemplateRetrieve
 import net.sf.anathema.character.main.presenter.initializers.HeroModelInitializer;
 import net.sf.anathema.character.main.presenter.initializers.RegisteredInitializer;
 import net.sf.anathema.character.main.presenter.magic.CharacterCharmModel;
-import net.sf.anathema.character.main.presenter.magic.charm.CharacterCharmTreePresenter;
 import net.sf.anathema.character.main.view.SectionView;
 import net.sf.anathema.character.main.charmtree.view.CharmDisplayPropertiesMap;
 import net.sf.anathema.character.main.charmtree.view.ICharmView;

@@ -1,6 +1,6 @@
 package net.sf.anathema.character.main.magic.persistence.builder.special;
 
-import net.sf.anathema.character.main.magic.charm.special.UpgradableCharm;
+import net.sf.anathema.character.main.magic.charms.special.UpgradableCharm;
 import net.sf.anathema.character.main.magic.persistence.builder.TraitTypeFinder;
 import net.sf.anathema.character.main.magic.charms.special.ISpecialCharm;
 import net.sf.anathema.character.main.traits.TraitType;

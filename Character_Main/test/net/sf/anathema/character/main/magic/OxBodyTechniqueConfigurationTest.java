@@ -3,7 +3,7 @@ package net.sf.anathema.character.main.magic;
 import net.sf.anathema.character.main.caste.CasteType;
 import net.sf.anathema.character.main.traits.TraitValueStrategy;
 import net.sf.anathema.hero.health.HealthLevelType;
-import net.sf.anathema.character.main.magic.charm.special.OxBodyTechniqueCharm;
+import net.sf.anathema.character.main.magic.charms.special.OxBodyTechniqueCharm;
 import net.sf.anathema.character.main.traits.SimpleTraitTemplate;
 import net.sf.anathema.character.main.traits.ITraitTemplate;
 import net.sf.anathema.character.main.traits.TraitType;

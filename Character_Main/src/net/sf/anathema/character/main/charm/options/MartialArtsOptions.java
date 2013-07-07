@@ -1,6 +1,6 @@
 package net.sf.anathema.character.main.charm.options;
 
-import net.sf.anathema.character.main.magic.charm.MartialArtsCharmTree;
+import net.sf.anathema.character.main.magic.charms.MartialArtsCharmTree;
 import net.sf.anathema.character.main.magic.ICharm;
 import net.sf.anathema.character.main.magic.charms.CharmIdMap;
 import net.sf.anathema.character.main.magic.charms.ICharmGroup;

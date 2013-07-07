@@ -1,7 +1,7 @@
 package net.sf.anathema.character.main.charm;
 
 import net.sf.anathema.character.main.magic.CharmAttribute;
-import net.sf.anathema.character.main.magic.charm.MartialArtsCharmTree;
+import net.sf.anathema.character.main.magic.charms.MartialArtsCharmTree;
 import net.sf.anathema.character.main.magic.ICharm;
 import net.sf.anathema.character.main.dummy.DummyCharm;
 import net.sf.anathema.character.main.testing.dummy.template.DummyCharmTemplate;

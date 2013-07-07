@@ -1,6 +1,6 @@
 package net.sf.anathema.character.main.charm;
 
-import net.sf.anathema.character.main.magic.charm.CharmGroup;
+import net.sf.anathema.character.main.magic.charms.CharmGroup;
 import net.sf.anathema.character.main.magic.ICharm;
 import net.sf.anathema.character.main.magic.IExtendedCharmData;
 import net.sf.anathema.character.main.magic.charms.ICharmGroup;

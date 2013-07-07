@@ -1,9 +1,9 @@
 package net.sf.anathema.character.main.magic;
 
 import com.google.common.base.Preconditions;
-import net.sf.anathema.character.main.magic.charm.prerequisite.CompositeLearnWorker;
-import net.sf.anathema.character.main.magic.charm.prerequisite.ICharmLearnWorker;
-import net.sf.anathema.character.main.magic.charm.prerequisite.SelectiveCharmGroup;
+import net.sf.anathema.character.main.magic.charms.prerequisite.CompositeLearnWorker;
+import net.sf.anathema.character.main.magic.charms.prerequisite.ICharmLearnWorker;
+import net.sf.anathema.character.main.magic.charms.prerequisite.SelectiveCharmGroup;
 import net.sf.anathema.character.main.magic.persistence.prerequisite.CharmPrerequisiteList;
 import net.sf.anathema.character.main.magic.persistence.prerequisite.SelectiveCharmGroupTemplate;
 import net.sf.anathema.character.main.magic.charms.ComboRestrictions;

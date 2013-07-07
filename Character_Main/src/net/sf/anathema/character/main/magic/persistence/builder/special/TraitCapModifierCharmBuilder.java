@@ -1,6 +1,6 @@
 package net.sf.anathema.character.main.magic.persistence.builder.special;
 
-import net.sf.anathema.character.main.magic.charm.special.TraitCapModifyingCharm;
+import net.sf.anathema.character.main.magic.charms.special.TraitCapModifyingCharm;
 import net.sf.anathema.character.main.magic.persistence.builder.TraitTypeFinder;
 import net.sf.anathema.character.main.magic.charms.special.ISpecialCharm;
 import net.sf.anathema.character.main.traits.TraitType;
