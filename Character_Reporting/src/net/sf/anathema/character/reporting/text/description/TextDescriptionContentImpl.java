@@ -21,11 +21,6 @@ public class TextDescriptionContentImpl implements TextDescriptionContent {
   }
 
   @Override
-  public String getConceptText() {
-    return description.getConcept().getText();
-  }
-
-  @Override
   public List<String> getDescription() {
     List<String> descriptionParts = new ArrayList<>();
     addNonEmptyText(descriptionParts, description.getCharacterization());

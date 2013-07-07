@@ -6,7 +6,5 @@ public interface TextDescriptionContent {
 
   String getName();
 
-  String getConceptText();
-
   List<String> getDescription();
 }
