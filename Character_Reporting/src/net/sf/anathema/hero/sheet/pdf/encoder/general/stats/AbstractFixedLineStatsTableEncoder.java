@@ -4,7 +4,7 @@ import com.itextpdf.text.pdf.PdfPTable;
 import net.sf.anathema.character.main.util.IStats;
 import net.sf.anathema.hero.sheet.pdf.session.ReportSession;
 import net.sf.anathema.hero.sheet.pdf.content.stats.IStatsGroup;
-import net.sf.anathema.hero.sheet.pdf.encoder.extent.Bounds;
+import net.sf.anathema.hero.sheet.pdf.encoder.Bounds;
 import net.sf.anathema.hero.sheet.pdf.encoder.graphics.SheetGraphics;
 
 public abstract class AbstractFixedLineStatsTableEncoder<T extends IStats> extends AbstractStatsTableEncoder<T, ReportSession> {

@@ -1,7 +1,7 @@
 package net.sf.anathema.hero.traits.sheet.encoder;
 
 import net.sf.anathema.hero.sheet.pdf.session.ReportSession;
-import net.sf.anathema.hero.sheet.pdf.encoder.extent.Position;
+import net.sf.anathema.hero.sheet.pdf.encoder.Position;
 import net.sf.anathema.hero.sheet.pdf.encoder.graphics.SheetGraphics;
 
 public interface INamedTraitEncoder {

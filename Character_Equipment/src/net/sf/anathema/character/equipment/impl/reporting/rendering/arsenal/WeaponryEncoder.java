@@ -3,7 +3,7 @@ package net.sf.anathema.character.equipment.impl.reporting.rendering.arsenal;
 import com.itextpdf.text.DocumentException;
 import net.sf.anathema.hero.sheet.pdf.session.ReportSession;
 import net.sf.anathema.hero.sheet.pdf.content.SubBoxContent;
-import net.sf.anathema.hero.sheet.pdf.encoder.extent.Bounds;
+import net.sf.anathema.hero.sheet.pdf.encoder.Bounds;
 import net.sf.anathema.hero.sheet.pdf.encoder.general.box.AbstractContentEncoder;
 import net.sf.anathema.hero.sheet.pdf.encoder.graphics.SheetGraphics;
 

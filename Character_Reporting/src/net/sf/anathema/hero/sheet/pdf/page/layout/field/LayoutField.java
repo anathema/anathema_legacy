@@ -1,7 +1,7 @@
 package net.sf.anathema.hero.sheet.pdf.page.layout.field;
 
 import net.sf.anathema.hero.sheet.pdf.page.layout.Body;
-import net.sf.anathema.hero.sheet.pdf.encoder.extent.Bounds;
+import net.sf.anathema.hero.sheet.pdf.encoder.Bounds;
 import net.sf.anathema.hero.sheet.pdf.encoder.general.box.BoxBoundsFactory;
 import net.sf.anathema.hero.sheet.pdf.encoder.graphics.GraphicsTemplate;
 import net.sf.anathema.hero.sheet.pdf.encoder.graphics.SheetGraphics;

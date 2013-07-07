@@ -6,8 +6,8 @@ import com.itextpdf.text.Font;
 import com.itextpdf.text.Phrase;
 import net.sf.anathema.hero.sheet.pdf.content.ListSubBoxContent;
 import net.sf.anathema.hero.sheet.pdf.session.ReportSession;
-import net.sf.anathema.hero.sheet.pdf.encoder.extent.Bounds;
-import net.sf.anathema.hero.sheet.pdf.encoder.extent.Position;
+import net.sf.anathema.hero.sheet.pdf.encoder.Bounds;
+import net.sf.anathema.hero.sheet.pdf.encoder.Position;
 import net.sf.anathema.hero.sheet.pdf.encoder.general.box.AbstractContentEncoder;
 import net.sf.anathema.hero.sheet.pdf.encoder.graphics.SheetGraphics;
 

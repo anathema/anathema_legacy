@@ -1,7 +1,7 @@
 package net.sf.anathema.hero.sheet.pdf.encoder.graphics.shape;
 
 import com.itextpdf.text.pdf.PdfContentByte;
-import net.sf.anathema.hero.sheet.pdf.encoder.extent.Position;
+import net.sf.anathema.hero.sheet.pdf.encoder.Position;
 
 public class Dot extends AbstractShape {
 

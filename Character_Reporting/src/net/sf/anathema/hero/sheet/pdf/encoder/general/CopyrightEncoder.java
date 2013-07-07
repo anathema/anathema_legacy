@@ -2,7 +2,7 @@ package net.sf.anathema.hero.sheet.pdf.encoder.general;
 
 import com.itextpdf.text.Anchor;
 import com.itextpdf.text.Font;
-import net.sf.anathema.hero.sheet.pdf.encoder.extent.Bounds;
+import net.sf.anathema.hero.sheet.pdf.encoder.Bounds;
 import net.sf.anathema.hero.sheet.pdf.encoder.graphics.HorizontalAlignment;
 import net.sf.anathema.hero.sheet.pdf.encoder.graphics.SheetGraphics;
 import net.sf.anathema.hero.sheet.pdf.encoder.graphics.SimpleColumnBuilder;

@@ -1,8 +1,8 @@
 package net.sf.anathema.hero.othertraits.sheet.willpower.encoder;
 
 import net.sf.anathema.hero.sheet.pdf.session.ReportSession;
-import net.sf.anathema.hero.sheet.pdf.encoder.extent.Bounds;
-import net.sf.anathema.hero.sheet.pdf.encoder.extent.Position;
+import net.sf.anathema.hero.sheet.pdf.encoder.Bounds;
+import net.sf.anathema.hero.sheet.pdf.encoder.Position;
 import net.sf.anathema.hero.sheet.pdf.encoder.general.box.AbstractContentEncoder;
 import net.sf.anathema.hero.traits.sheet.content.PdfTraitEncoder;
 import net.sf.anathema.hero.sheet.pdf.encoder.graphics.SheetGraphics;

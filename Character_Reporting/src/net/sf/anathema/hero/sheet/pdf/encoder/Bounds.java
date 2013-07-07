@@ -1,4 +1,4 @@
-package net.sf.anathema.hero.sheet.pdf.encoder.extent;
+package net.sf.anathema.hero.sheet.pdf.encoder;
 
 public class Bounds {
 

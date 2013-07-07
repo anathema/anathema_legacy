@@ -1,6 +1,6 @@
 package net.sf.anathema.hero.sheet.pdf.encoder.general.box;
 
-import net.sf.anathema.hero.sheet.pdf.encoder.extent.Bounds;
+import net.sf.anathema.hero.sheet.pdf.encoder.Bounds;
 import net.sf.anathema.hero.sheet.pdf.encoder.graphics.SheetGraphics;
 
 public interface BoundsEncoder {

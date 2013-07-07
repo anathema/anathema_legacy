@@ -9,7 +9,7 @@ import com.itextpdf.text.pdf.PdfPTable;
 import net.sf.anathema.hero.sheet.pdf.session.ReportSession;
 import net.sf.anathema.character.reporting.pdf.content.general.QualifiedText;
 import net.sf.anathema.character.reporting.pdf.content.general.TextType;
-import net.sf.anathema.hero.sheet.pdf.encoder.extent.Bounds;
+import net.sf.anathema.hero.sheet.pdf.encoder.Bounds;
 import net.sf.anathema.hero.sheet.pdf.encoder.general.table.AbstractTableEncoder;
 import net.sf.anathema.hero.sheet.pdf.encoder.graphics.SheetGraphics;
 import net.sf.anathema.hero.sheet.pdf.encoder.graphics.TableCell;

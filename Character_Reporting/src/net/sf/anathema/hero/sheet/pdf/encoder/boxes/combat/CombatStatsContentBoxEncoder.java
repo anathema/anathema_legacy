@@ -2,7 +2,7 @@ package net.sf.anathema.hero.sheet.pdf.encoder.boxes.combat;
 
 import com.itextpdf.text.DocumentException;
 import net.sf.anathema.hero.sheet.pdf.session.ReportSession;
-import net.sf.anathema.hero.sheet.pdf.encoder.extent.Bounds;
+import net.sf.anathema.hero.sheet.pdf.encoder.Bounds;
 import net.sf.anathema.hero.sheet.pdf.encoder.general.box.ContentEncoder;
 import net.sf.anathema.hero.sheet.pdf.encoder.general.box.IContentEncoder;
 import net.sf.anathema.hero.sheet.pdf.encoder.general.table.ITableEncoder;

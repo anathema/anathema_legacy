@@ -1,8 +1,8 @@
 package net.sf.anathema.character.reporting.second.rendering.combat;
 
 import net.sf.anathema.hero.sheet.pdf.session.ReportSession;
-import net.sf.anathema.hero.sheet.pdf.encoder.extent.Bounds;
-import net.sf.anathema.hero.sheet.pdf.encoder.extent.Position;
+import net.sf.anathema.hero.sheet.pdf.encoder.Bounds;
+import net.sf.anathema.hero.sheet.pdf.encoder.Position;
 import net.sf.anathema.hero.sheet.pdf.encoder.general.LabelledValueEncoder;
 import net.sf.anathema.hero.sheet.pdf.encoder.general.box.IContentEncoder;
 import net.sf.anathema.hero.sheet.pdf.encoder.graphics.SheetGraphics;

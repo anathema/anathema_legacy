@@ -2,7 +2,7 @@ package net.sf.anathema.hero.sheet.pdf.encoder.general.table;
 
 import com.itextpdf.text.DocumentException;
 import com.itextpdf.text.pdf.PdfPTable;
-import net.sf.anathema.hero.sheet.pdf.encoder.extent.Bounds;
+import net.sf.anathema.hero.sheet.pdf.encoder.Bounds;
 import net.sf.anathema.hero.sheet.pdf.encoder.graphics.SheetGraphics;
 
 public abstract class AbstractTableEncoder<C> implements ITableEncoder<C> {

@@ -13,8 +13,8 @@ import net.sf.anathema.character.main.library.trait.specialties.HighestSpecialty
 import net.sf.anathema.hero.traits.GenericTraitCollectionFacade;
 import net.sf.anathema.hero.traits.TraitModelFetcher;
 import net.sf.anathema.hero.sheet.pdf.session.ReportSession;
-import net.sf.anathema.hero.sheet.pdf.encoder.extent.Bounds;
-import net.sf.anathema.hero.sheet.pdf.encoder.extent.Position;
+import net.sf.anathema.hero.sheet.pdf.encoder.Bounds;
+import net.sf.anathema.hero.sheet.pdf.encoder.Position;
 import net.sf.anathema.hero.sheet.pdf.encoder.general.LabelledValueEncoder;
 import net.sf.anathema.hero.sheet.pdf.encoder.general.box.ContentEncoder;
 import net.sf.anathema.hero.sheet.pdf.encoder.general.table.ITableEncoder;

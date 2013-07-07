@@ -1,7 +1,7 @@
 package net.sf.anathema.hero.concept.sheet.personal.encoder;
 
-import net.sf.anathema.hero.sheet.pdf.encoder.extent.Bounds;
-import net.sf.anathema.hero.sheet.pdf.encoder.extent.Position;
+import net.sf.anathema.hero.sheet.pdf.encoder.Bounds;
+import net.sf.anathema.hero.sheet.pdf.encoder.Position;
 
 import static net.sf.anathema.hero.sheet.pdf.page.IVoidStateFormatConstants.TEXT_PADDING;
 

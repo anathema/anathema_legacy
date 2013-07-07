@@ -14,7 +14,7 @@ import net.sf.anathema.character.reporting.pdf.content.stats.anima.AnimaUtils;
 import net.sf.anathema.character.reporting.pdf.content.stats.anima.ColumnDescriptor;
 import net.sf.anathema.character.reporting.pdf.content.stats.anima.IAnimaTableRangeProvider;
 import net.sf.anathema.character.reporting.pdf.content.stats.anima.IAnimaTableStealthProvider;
-import net.sf.anathema.hero.sheet.pdf.encoder.extent.Bounds;
+import net.sf.anathema.hero.sheet.pdf.encoder.Bounds;
 import net.sf.anathema.hero.sheet.pdf.encoder.general.table.AbstractTableEncoder;
 import net.sf.anathema.hero.sheet.pdf.encoder.graphics.SheetGraphics;
 import net.sf.anathema.hero.model.Hero;

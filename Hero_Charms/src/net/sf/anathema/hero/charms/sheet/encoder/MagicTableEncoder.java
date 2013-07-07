@@ -6,7 +6,7 @@ import net.sf.anathema.character.main.magic.IMagicStats;
 import net.sf.anathema.hero.sheet.pdf.session.ReportSession;
 import net.sf.anathema.hero.charms.sheet.content.AbstractMagicContent;
 import net.sf.anathema.hero.sheet.pdf.content.stats.IStatsGroup;
-import net.sf.anathema.hero.sheet.pdf.encoder.extent.Bounds;
+import net.sf.anathema.hero.sheet.pdf.encoder.Bounds;
 import net.sf.anathema.hero.sheet.pdf.encoder.general.stats.AbstractStatsTableEncoder;
 import net.sf.anathema.hero.sheet.pdf.encoder.graphics.SheetGraphics;
 
