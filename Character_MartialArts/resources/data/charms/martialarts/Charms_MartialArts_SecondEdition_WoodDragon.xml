@@ -1,18 +1,4 @@
-﻿<?xml version="1.0" encoding="UTF-8"?>
-<!--<?xml-stylesheet type="text/xsl" href="../charmreview.xsl"?>
-<!DOCTYPE charmlist SYSTEM "../charms.dtd">-->
-
-<!--
-
-WoodDragon.xml © Paul R. Adams, 2007
-
-This XML is licensed under the Creative Commons Attribution-Share Alike 3.0 United States 
-License. To view a copy of this license, visit http://creativecommons.org/licenses/by-sa/3.0/us/ 
-or send a letter to Creative Commons, 543 Howard Street, 5th Floor, San Francisco, California, 
-94105, USA.
-
--->
-<charmlist>
+﻿<charmlist>
   <!-- Wood Dragon Style -->
   <charm id="Celestial.EyesOfTheWoodDragon" exalt="Dragon-Blooded" group="WoodDragonStyle">
     <prerequisite>

@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<?xml-stylesheet type="text/xsl" href="../charmreview-xmlns.xsl"?>
 
-<charmlist xmlns="http://anathema.sourceforge.net/charms">
+<charmlist>
     <!-- Solar Hero Style - Scroll of the Monk Add-on charms -->
     <charm id="Solar.PoundingHammerDevastationTechnique" exalt="Solar" group="SolarHeroStyle">
         <prerequisite>
