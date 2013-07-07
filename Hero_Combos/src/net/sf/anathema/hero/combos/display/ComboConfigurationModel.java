@@ -1,4 +1,4 @@
-package net.sf.anathema.character.main.presenter.magic.combo;
+package net.sf.anathema.hero.combos.display;
 
 import net.sf.anathema.character.main.caste.CasteType;
 import net.sf.anathema.character.main.magic.model.charm.ICharm;

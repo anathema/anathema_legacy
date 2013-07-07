@@ -7,7 +7,7 @@ import net.sf.anathema.character.main.template.experience.CurrentRatingCosts;
 import net.sf.anathema.character.main.template.experience.ICostAnalyzer;
 import net.sf.anathema.character.main.traits.ValuedTraitType;
 
-public interface BonusPointCosts extends AbilityPointCosts, BackgroundCreationPointCosts {
+public interface BonusPointCosts extends AbilityPointCosts {
 
   int getCharmCosts(ICharm charm, ICostAnalyzer analyzer);
 

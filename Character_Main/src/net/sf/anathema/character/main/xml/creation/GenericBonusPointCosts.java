@@ -1,15 +1,15 @@
 package net.sf.anathema.character.main.xml.creation;
 
-import net.sf.anathema.character.main.template.points.FixedValueRatingCosts;
 import net.sf.anathema.character.main.magic.model.charm.ICharm;
+import net.sf.anathema.character.main.magic.model.charm.ICharmAttribute;
+import net.sf.anathema.character.main.magic.model.charm.MartialArtsLevel;
 import net.sf.anathema.character.main.magic.model.magic.IMagic;
 import net.sf.anathema.character.main.magic.model.magic.IMagicVisitor;
 import net.sf.anathema.character.main.magic.model.spells.ISpell;
-import net.sf.anathema.character.main.magic.model.charm.ICharmAttribute;
-import net.sf.anathema.character.main.magic.model.charm.MartialArtsLevel;
 import net.sf.anathema.character.main.template.creation.BonusPointCosts;
 import net.sf.anathema.character.main.template.experience.CurrentRatingCosts;
 import net.sf.anathema.character.main.template.experience.ICostAnalyzer;
+import net.sf.anathema.character.main.template.points.FixedValueRatingCosts;
 import net.sf.anathema.character.main.traits.ValuedTraitType;
 import net.sf.anathema.lib.lang.ReflectionEqualsObject;
 import net.sf.anathema.lib.lang.clone.ICloneable;
@@ -38,7 +38,6 @@ public class GenericBonusPointCosts extends ReflectionEqualsObject implements Bo
   private int maximumFreeAbilityRank = 3;
   private Map<String, Integer> generalKeywordCosts;
   private Map<String, Integer> favoredKeywordCosts;
-  private CurrentRatingCosts backgroundCost;
 
   @Override
   public int getCharmCosts(ICharm charm, ICostAnalyzer analyzer) {
@@ -139,11 +138,6 @@ public class GenericBonusPointCosts extends ReflectionEqualsObject implements Bo
     return favoredSpecialtyDotsPerBonusPoint;
   }
 
-  @Override
-  public CurrentRatingCosts getBackgroundBonusPointCost() {
-    return backgroundCost;
-  }
-
   public void setAttributeCost(int generalCost, int favoredCost) {
     this.generalAttributeCost = generalCost;
     this.favoredAttributeCost = favoredCost;
@@ -155,10 +149,6 @@ public class GenericBonusPointCosts extends ReflectionEqualsObject implements Bo
 
   public void setFavoredSpecialtyDots(int favoredDotsPerBonusPoint) {
     this.favoredSpecialtyDotsPerBonusPoint = favoredDotsPerBonusPoint;
-  }
-
-  public void setBackgroundCosts(CurrentRatingCosts cost) {
-    this.backgroundCost = cost;
   }
 
   public void setVirtueCosts(CurrentRatingCosts costs) {

@@ -1,10 +1,10 @@
 package net.sf.anathema.character.main.xml.creation;
 
+import net.sf.anathema.character.main.magic.model.charm.MartialArtsLevel;
+import net.sf.anathema.character.main.template.experience.CurrentRatingCosts;
 import net.sf.anathema.character.main.xml.core.AbstractXmlTemplateParser;
 import net.sf.anathema.character.main.xml.registry.IXmlTemplateRegistry;
 import net.sf.anathema.character.main.xml.util.CostParser;
-import net.sf.anathema.character.main.magic.model.charm.MartialArtsLevel;
-import net.sf.anathema.character.main.template.experience.CurrentRatingCosts;
 import net.sf.anathema.lib.exception.PersistenceException;
 import net.sf.anathema.lib.xml.ElementUtilities;
 import org.dom4j.Element;
@@ -94,7 +94,6 @@ public class BonusPointCostTemplateParser extends AbstractXmlTemplateParser<Gene
     if (advantageElement == null) {
       return;
     }
-    setBackgroundCosts(advantageElement, costs);
     setVirtueCosts(advantageElement, costs);
     setWillpowerCosts(advantageElement, costs);
     setEssenceCosts(advantageElement, costs);
@@ -129,15 +128,6 @@ public class BonusPointCostTemplateParser extends AbstractXmlTemplateParser<Gene
     if (maximumFreeRank != null) {
       costs.setMaximumFreeVirtueRank(ElementUtilities.getRequiredIntAttrib(maximumFreeRank, ATTRIB_RANK));
     }
-  }
-
-  private void setBackgroundCosts(Element element, GenericBonusPointCosts costs) throws PersistenceException {
-    Element backgroundElement = element.element(TAG_BACKGROUNDS);
-    if (backgroundElement == null) {
-      return;
-    }
-    CurrentRatingCosts cost = costParser.getThresholdRatingCosts(backgroundElement);
-    costs.setBackgroundCosts(cost);
   }
 
   private void setSpecialtyDots(Element element, GenericBonusPointCosts costs) throws PersistenceException {

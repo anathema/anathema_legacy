@@ -5,8 +5,6 @@ import net.sf.anathema.character.main.magic.description.MagicDescriptionProvider
 import net.sf.anathema.character.main.magic.model.charms.options.DefaultCharmTemplateRetriever;
 import net.sf.anathema.character.main.presenter.initializers.HeroModelInitializer;
 import net.sf.anathema.character.main.presenter.initializers.RegisteredInitializer;
-import net.sf.anathema.character.main.presenter.magic.combo.ComboConfigurationModel;
-import net.sf.anathema.character.main.presenter.magic.combo.ComboConfigurationPresenter;
 import net.sf.anathema.character.main.view.SectionView;
 import net.sf.anathema.character.main.magic.display.view.combos.IComboConfigurationView;
 import net.sf.anathema.framework.IApplicationModel;

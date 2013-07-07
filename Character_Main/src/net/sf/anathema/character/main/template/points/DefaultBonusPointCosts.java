@@ -77,11 +77,6 @@ public class DefaultBonusPointCosts implements BonusPointCosts {
   }
 
   @Override
-  public CurrentRatingCosts getBackgroundBonusPointCost() {
-    return new ThresholdRatingCosts(1, 2, 3);
-  }
-
-  @Override
   public CurrentRatingCosts getEssenceCost() {
     return new FixedValueRatingCosts(7);
   }
