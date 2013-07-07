@@ -1,6 +1,6 @@
 package net.sf.anathema.character.main.template.magic;
 
-import net.sf.anathema.character.main.magic.parser.ICharmCache;
+import net.sf.anathema.character.main.magic.parser.charms.ICharmCache;
 import net.sf.anathema.character.main.magic.model.charm.ICharm;
 import net.sf.anathema.character.main.magic.model.charm.CharmIdMap;
 import net.sf.anathema.character.main.magic.model.charmtree.ICharmLearnableArbitrator;

@@ -1,6 +1,6 @@
 package net.sf.anathema.cascades.presenter;
 
-import net.sf.anathema.character.main.magic.parser.ICharmCache;
+import net.sf.anathema.character.main.magic.parser.charms.ICharmCache;
 import net.sf.anathema.character.main.magic.model.charm.ICharm;
 import net.sf.anathema.character.main.dummy.DummyCharm;
 import net.sf.anathema.character.main.testing.dummy.DummyCharacterTypes;

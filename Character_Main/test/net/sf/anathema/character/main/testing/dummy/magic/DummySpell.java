@@ -4,7 +4,7 @@ import net.sf.anathema.character.main.magic.model.magic.IMagicVisitor;
 import net.sf.anathema.character.main.magic.model.spells.ISpell;
 import net.sf.anathema.character.main.magic.model.magic.ICostList;
 import net.sf.anathema.character.main.magic.model.spells.CircleType;
-import net.sf.anathema.character.main.rules.IExaltedSourceBook;
+import net.sf.anathema.character.main.magic.parser.magic.IExaltedSourceBook;
 import net.sf.anathema.character.main.traits.types.AbilityType;
 import net.sf.anathema.hero.traits.TraitModelFetcher;
 import net.sf.anathema.hero.model.Hero;

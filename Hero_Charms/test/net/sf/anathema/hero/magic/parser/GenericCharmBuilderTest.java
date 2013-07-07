@@ -1,13 +1,13 @@
 package net.sf.anathema.hero.magic.parser;
 
 import net.sf.anathema.character.main.magic.model.charm.Charm;
-import net.sf.anathema.character.main.magic.parser.GenericCharmBuilder;
-import net.sf.anathema.character.main.magic.parser.GenericCharmPrerequisiteBuilder;
-import net.sf.anathema.character.main.magic.parser.GenericComboRulesBuilder;
-import net.sf.anathema.character.main.magic.parser.GenericIdStringBuilder;
-import net.sf.anathema.character.main.magic.parser.prerequisite.GenericAttributeRequirementBuilder;
-import net.sf.anathema.character.main.magic.parser.prerequisite.GenericTraitPrerequisitesBuilder;
-import net.sf.anathema.character.main.magic.parser.special.SpecialCharmBuilder;
+import net.sf.anathema.character.main.magic.parser.charms.GenericCharmBuilder;
+import net.sf.anathema.character.main.magic.parser.charms.GenericCharmPrerequisiteBuilder;
+import net.sf.anathema.character.main.magic.parser.combos.GenericComboRulesBuilder;
+import net.sf.anathema.character.main.magic.parser.charms.GenericIdStringBuilder;
+import net.sf.anathema.character.main.magic.parser.charms.prerequisite.GenericAttributeRequirementBuilder;
+import net.sf.anathema.character.main.magic.parser.charms.prerequisite.GenericTraitPrerequisitesBuilder;
+import net.sf.anathema.character.main.magic.parser.charms.special.SpecialCharmBuilder;
 import net.sf.anathema.character.main.traits.types.AbilityType;
 import net.sf.anathema.character.main.testing.dummy.DummyCharacterTypes;
 import net.sf.anathema.character.main.testing.dummy.DummyExaltCharacterType;

@@ -9,8 +9,8 @@ import net.sf.anathema.character.main.magic.model.charm.IndirectCharmRequirement
 import net.sf.anathema.character.main.magic.model.charm.duration.SimpleDuration;
 import net.sf.anathema.character.main.magic.model.charm.type.CharmType;
 import net.sf.anathema.character.main.magic.model.charm.type.CharmTypeModel;
-import net.sf.anathema.character.main.magic.parser.CharmPrerequisiteList;
-import net.sf.anathema.character.main.magic.parser.SelectiveCharmGroupTemplate;
+import net.sf.anathema.character.main.magic.parser.charms.CharmPrerequisiteList;
+import net.sf.anathema.character.main.magic.parser.charms.SelectiveCharmGroupTemplate;
 import net.sf.anathema.character.main.testing.dummy.DummyCharmData;
 import net.sf.anathema.character.main.testing.dummy.DummyExaltCharacterType;
 import net.sf.anathema.character.main.traits.ValuedTraitType;

@@ -1,6 +1,6 @@
 package net.sf.anathema.hero.magic.parser;
 
-import net.sf.anathema.character.main.magic.parser.CostListBuilder;
+import net.sf.anathema.character.main.magic.parser.magic.CostListBuilder;
 import net.sf.anathema.character.main.magic.model.magic.ICost;
 import net.sf.anathema.character.main.magic.model.magic.ICostList;
 import net.sf.anathema.lib.exception.PersistenceException;

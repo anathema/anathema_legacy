@@ -2,7 +2,7 @@ package net.sf.anathema.character.main.xml.magic;
 
 import net.sf.anathema.character.main.xml.core.AbstractXmlTemplateParser;
 import net.sf.anathema.character.main.xml.registry.IXmlTemplateRegistry;
-import net.sf.anathema.character.main.magic.parser.ICharmCache;
+import net.sf.anathema.character.main.magic.parser.charms.ICharmCache;
 import net.sf.anathema.character.main.template.magic.CharmSet;
 import net.sf.anathema.character.main.template.magic.CharmTemplate;
 import net.sf.anathema.character.main.template.magic.CustomizableFreePicksPredicate;

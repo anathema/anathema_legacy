@@ -1,6 +1,6 @@
 package net.sf.anathema.character.main.persistence;
 
-import net.sf.anathema.character.main.rules.IExaltedEdition;
+import net.sf.anathema.character.main.magic.parser.magic.IExaltedEdition;
 
 public class SecondEdition implements IExaltedEdition {
   public static final String SECOND_EDITION = "SecondEdition";

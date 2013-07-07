@@ -1,7 +1,7 @@
 package net.sf.anathema.character.main.magic.model.charmtree.builder.stringbuilder.source;
 
 import net.sf.anathema.character.main.magic.model.magic.IMagic;
-import net.sf.anathema.character.main.rules.IExaltedSourceBook;
+import net.sf.anathema.character.main.magic.parser.magic.IExaltedSourceBook;
 import net.sf.anathema.character.main.magic.model.charmtree.builder.stringbuilder.IMagicSourceStringBuilder;
 import net.sf.anathema.character.main.magic.model.charmtree.builder.stringbuilder.IMagicTooltipStringBuilder;
 import net.sf.anathema.lib.gui.TooltipBuilder;

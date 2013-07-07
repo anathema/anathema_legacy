@@ -9,7 +9,7 @@ import net.sf.anathema.character.main.magic.model.charm.duration.SimpleDuration;
 import net.sf.anathema.character.main.magic.model.charm.type.CharmType;
 import net.sf.anathema.character.main.magic.model.charm.type.ICharmTypeModel;
 import net.sf.anathema.character.main.magic.model.magic.ICostList;
-import net.sf.anathema.character.main.rules.IExaltedSourceBook;
+import net.sf.anathema.character.main.magic.parser.magic.IExaltedSourceBook;
 import net.sf.anathema.character.main.traits.ValuedTraitType;
 import net.sf.anathema.character.main.traits.TraitType;
 import net.sf.anathema.character.main.traits.types.AbilityType;

@@ -1,6 +1,6 @@
 package net.sf.anathema.hero.magic.parser;
 
-import net.sf.anathema.character.main.magic.parser.GenericIdStringBuilder;
+import net.sf.anathema.character.main.magic.parser.charms.GenericIdStringBuilder;
 import net.sf.anathema.character.main.traits.types.AbilityType;
 import net.sf.anathema.lib.xml.DocumentUtilities;
 import org.dom4j.Element;

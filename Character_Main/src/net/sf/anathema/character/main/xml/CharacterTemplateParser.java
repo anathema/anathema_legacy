@@ -22,7 +22,7 @@ import net.sf.anathema.character.main.xml.presentation.PresentationPropertiesPar
 import net.sf.anathema.character.main.xml.registry.IXmlTemplateRegistry;
 import net.sf.anathema.character.main.xml.trait.GenericTraitTemplateFactory;
 import net.sf.anathema.character.main.xml.trait.GenericTraitTemplateFactoryParser;
-import net.sf.anathema.character.main.magic.parser.ICharmCache;
+import net.sf.anathema.character.main.magic.parser.charms.ICharmCache;
 import net.sf.anathema.character.main.magic.model.charm.MartialArtsLevel;
 import net.sf.anathema.character.main.template.HeroTemplate;
 import net.sf.anathema.character.main.template.ITemplateType;

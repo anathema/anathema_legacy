@@ -1,7 +1,7 @@
 package net.sf.anathema.hero.magic.model.charms;
 
 import com.google.common.collect.Lists;
-import net.sf.anathema.character.main.magic.parser.CharmCache;
+import net.sf.anathema.character.main.magic.parser.charms.CharmCache;
 import net.sf.anathema.character.main.magic.model.charm.ICharm;
 import net.sf.anathema.character.main.magic.model.charm.special.ISpecialCharm;
 import net.sf.anathema.character.main.testing.dummy.DummyExaltCharacterType;
