@@ -81,6 +81,8 @@ public class ComboBoxSelectionView<V> implements FxObjectSelectionView<V> {
       @Override
       public void run() {
         comboBox.setItems(new ObservableListWrapper<>(Arrays.asList(objects)));
+        comboBox.show();
+        comboBox.hide();
       }
     });
   }
