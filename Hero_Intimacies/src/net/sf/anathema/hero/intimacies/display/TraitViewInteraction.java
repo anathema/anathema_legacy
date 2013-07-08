@@ -1,7 +1,5 @@
 package net.sf.anathema.hero.intimacies.display;
 
-import net.sf.anathema.character.main.library.intvalue.IIconToggleButtonProperties;
-import net.sf.anathema.framework.value.IconToggleButton;
 import net.sf.anathema.interaction.Command;
 import net.sf.anathema.interaction.CommandProxy;
 import net.sf.anathema.interaction.Hotkey;
@@ -14,6 +12,7 @@ import net.sf.anathema.lib.gui.icon.ImageProvider;
 
 import javax.swing.Icon;
 import javax.swing.JComponent;
+import javax.swing.JToggleButton;
 import java.awt.Dimension;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -21,12 +20,11 @@ import java.awt.event.ActionListener;
 public class TraitViewInteraction implements ToggleTool {
 
   private final CommandProxy commandProxy = new CommandProxy();
-  private final IconToggleButton button;
-  private final IIconToggleButtonProperties properties;
+  private final JToggleButton button;
 
-  public TraitViewInteraction(IIconToggleButtonProperties properties) {
-    this.properties = properties;
-    this.button = new IconToggleButton(new EmptyIcon(new Dimension(16, 16)));
+  public TraitViewInteraction() {
+    this.button = new JToggleButton();
+    button.setPreferredSize(new Dimension(20, 20));
     button.addActionListener(new ActionListener() {
       @Override
       public void actionPerformed(ActionEvent e) {
@@ -38,7 +36,7 @@ public class TraitViewInteraction implements ToggleTool {
 
   @Override
   public void setIcon(RelativePath relativePath) {
-    throw new UnsupportedOperationException("currently manages icon via properties");
+    button.setIcon(loadIcon(relativePath));
   }
 
   @Override
@@ -91,11 +89,11 @@ public class TraitViewInteraction implements ToggleTool {
   }
 
   public JComponent getButton() {
-    return button.getComponent();
+    return button;
   }
 
   private void resetIcons() {
-    button.setIconSet(loadIcon(properties.createStandardIcon()), loadIcon(properties.createUnselectedIcon()));
+    //button.setIconSet(loadIcon(properties.createStandardIcon()), loadIcon(properties.createUnselectedIcon()));
   }
 
   private Icon loadIcon(RelativePath path) {

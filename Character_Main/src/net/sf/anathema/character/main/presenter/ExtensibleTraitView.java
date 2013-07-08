@@ -1,6 +1,5 @@
 package net.sf.anathema.character.main.presenter;
 
-import net.sf.anathema.character.main.library.intvalue.IIconToggleButtonProperties;
 import net.sf.anathema.framework.value.IntValueView;
 import net.sf.anathema.interaction.ToggleTool;
 import net.sf.anathema.interaction.Tool;
@@ -10,7 +9,7 @@ public interface ExtensibleTraitView {
 
   ToggleTool addToggleInFront();
 
-  ToggleTool addToggleBehind(IIconToggleButtonProperties properties);
+  ToggleTool addToggleBehind();
 
   Tool addToolBehind();
 

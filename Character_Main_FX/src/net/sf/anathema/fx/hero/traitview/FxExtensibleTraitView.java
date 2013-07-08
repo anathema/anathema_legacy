@@ -1,7 +1,6 @@
 package net.sf.anathema.fx.hero.traitview;
 
 import net.miginfocom.layout.CC;
-import net.sf.anathema.character.main.library.intvalue.IIconToggleButtonProperties;
 import net.sf.anathema.character.main.presenter.ExtensibleTraitView;
 import net.sf.anathema.framework.value.IntValueView;
 import net.sf.anathema.interaction.ToggleTool;
@@ -40,7 +39,7 @@ public class FxExtensibleTraitView implements ExtensibleTraitView {
   }
 
   @Override
-  public ToggleTool addToggleBehind(IIconToggleButtonProperties properties) {
+  public ToggleTool addToggleBehind() {
     FxToggleTool toggleTool = FxToggleTool.create();
     addToPanel(rear, toggleTool);
     return toggleTool;

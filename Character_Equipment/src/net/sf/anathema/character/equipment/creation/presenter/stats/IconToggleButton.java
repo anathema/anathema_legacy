@@ -1,6 +1,6 @@
-package net.sf.anathema.framework.value;
+package net.sf.anathema.character.equipment.creation.presenter.stats;
 
-import net.sf.anathema.framework.swing.IView;
+import net.sf.anathema.framework.value.NoFocusButton;
 
 import javax.swing.Icon;
 import javax.swing.JButton;
@@ -8,7 +8,7 @@ import javax.swing.JComponent;
 import java.awt.Dimension;
 import java.awt.event.ActionListener;
 
-public class IconToggleButton implements IView {
+public class IconToggleButton {
 
   private final JButton button = new NoFocusButton();
   private boolean selected;
@@ -16,15 +16,11 @@ public class IconToggleButton implements IView {
   private Icon unselectedIcon;
 
   public IconToggleButton(Icon activeIcon) {
-    this(activeIcon, null);
+    setIconSet(activeIcon, null);
+    button.setPreferredSize(getPreferredSize(activeIcon));
   }
 
-  public IconToggleButton(Icon selectedIcon, Icon unselectedIcon) {
-    setIconSet(selectedIcon, unselectedIcon);
-    button.setPreferredSize(getPreferredSize(selectedIcon));
-  }
-
-  public void setIconSet(Icon selectedIcon, Icon unselectedIcon) {
+  private void setIconSet(Icon selectedIcon, Icon unselectedIcon) {
     this.selectedIcon = selectedIcon;
     this.unselectedIcon = unselectedIcon;
     button.setIcon(isSelected() ? selectedIcon : unselectedIcon);
@@ -34,7 +30,7 @@ public class IconToggleButton implements IView {
     button.setDisabledSelectedIcon(selectedIcon);
   }
 
-  public static Dimension getPreferredSize(Icon icon) {
+  private Dimension getPreferredSize(Icon icon) {
     return new Dimension(icon.getIconWidth() + 4, icon.getIconHeight() + 4);
   }
 
@@ -48,7 +44,6 @@ public class IconToggleButton implements IView {
     button.setEnabled(enabled);
   }
 
-  @Override
   public JComponent getComponent() {
     return button;
   }
@@ -59,9 +54,5 @@ public class IconToggleButton implements IView {
 
   public boolean isSelected() {
     return selected;
-  }
-
-  public void setToolTipText(String text) {
-    button.setToolTipText(text);
   }
 }

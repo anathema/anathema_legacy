@@ -5,7 +5,6 @@ import net.sf.anathema.character.equipment.creation.model.stats.IArmourStatistic
 import net.sf.anathema.character.equipment.creation.model.stats.IEquipmentStatisticsCreationModel;
 import net.sf.anathema.character.equipment.creation.presenter.stats.properties.ArmourStatisticsProperties;
 import net.sf.anathema.character.main.CharacterUI;
-import net.sf.anathema.framework.value.IconToggleButton;
 import net.sf.anathema.hero.health.HealthType;
 import net.sf.anathema.lib.control.IntValueChangedListener;
 import net.sf.anathema.lib.gui.layout.AdditiveView;

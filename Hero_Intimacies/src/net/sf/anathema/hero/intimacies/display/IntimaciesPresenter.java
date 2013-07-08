@@ -1,6 +1,6 @@
 package net.sf.anathema.hero.intimacies.display;
 
-import net.sf.anathema.character.main.library.intvalue.IIconToggleButtonProperties;
+import net.sf.anathema.character.main.CharacterUI;
 import net.sf.anathema.character.main.library.overview.OverviewCategory;
 import net.sf.anathema.character.main.library.removableentry.RemovableEntryListener;
 import net.sf.anathema.character.main.library.trait.presenter.TraitPresenter;
@@ -28,6 +28,8 @@ import net.sf.anathema.lib.resources.Resources;
 
 import java.util.HashMap;
 import java.util.Map;
+
+import static net.sf.anathema.lib.gui.AgnosticUIConfiguration.NO_ICON;
 
 public class IntimaciesPresenter {
 
@@ -168,8 +170,7 @@ public class IntimaciesPresenter {
   }
 
   private void addLinkToggle(ExtensibleTraitView extensibleTraitView, final Intimacy intimacy) {
-    IIconToggleButtonProperties properties = new IntimaciesProperties(resources);
-    final ToggleTool toggleTool = extensibleTraitView.addToggleBehind(properties);
+    final ToggleTool toggleTool = extensibleTraitView.addToggleBehind();
     toggleTool.setCommand(new Command() {
       @Override
       public void execute() {
@@ -189,8 +190,10 @@ public class IntimaciesPresenter {
   private void setCompletionState(boolean isComplete, ToggleTool toggleTool) {
     if (isComplete) {
       toggleTool.select();
+      toggleTool.setIcon(new CharacterUI().getLinkIconPath());
     } else {
       toggleTool.deselect();
+      toggleTool.setIcon(NO_ICON);
     }
   }
 

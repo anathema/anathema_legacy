@@ -2,7 +2,6 @@ package net.sf.anathema.hero.intimacies.display;
 
 import net.miginfocom.layout.CC;
 import net.miginfocom.swing.MigLayout;
-import net.sf.anathema.character.main.library.intvalue.IIconToggleButtonProperties;
 import net.sf.anathema.character.main.library.trait.view.TraitView;
 import net.sf.anathema.character.main.presenter.ExtensibleTraitView;
 import net.sf.anathema.framework.value.IntValueView;
@@ -38,8 +37,8 @@ public class SwingExtensibleTraitView implements ExtensibleTraitView {
   }
 
   @Override
-  public ToggleTool addToggleBehind(IIconToggleButtonProperties properties) {
-    return addToggle(properties, rear);
+  public ToggleTool addToggleBehind() {
+    return addToggle(rear);
   }
 
   @Override
@@ -62,8 +61,8 @@ public class SwingExtensibleTraitView implements ExtensibleTraitView {
     parent.add(rear);
   }
 
-  private ToggleTool addToggle(IIconToggleButtonProperties properties, JPanel parent) {
-    TraitViewInteraction toggleActionInteraction = new TraitViewInteraction(properties);
+  private ToggleTool addToggle(JPanel parent) {
+    TraitViewInteraction toggleActionInteraction = new TraitViewInteraction();
     JComponent button = toggleActionInteraction.getButton();
     parent.add(button, SwingLayoutUtils.constraintsForImageButton(button));
     return toggleActionInteraction;
