@@ -1,13 +1,13 @@
 package net.sf.anathema.hero.othertraits.display;
 
 import net.miginfocom.swing.MigLayout;
-import net.sf.anathema.character.main.library.overview.LabelledOverviewStringValueView;
 import net.sf.anathema.character.main.library.trait.Trait;
 import net.sf.anathema.character.main.library.trait.view.swing.SimpleTraitView;
+import net.sf.anathema.character.main.view.labelledvalue.IValueView;
 import net.sf.anathema.framework.swing.IView;
 import net.sf.anathema.framework.value.IIntValueView;
 import net.sf.anathema.framework.value.IntegerViewFactory;
-import net.sf.anathema.lib.workflow.labelledvalue.IValueView;
+import net.sf.anathema.swing.hero.overview.LabelledOverviewStringValueView;
 
 import javax.swing.JComponent;
 import javax.swing.JPanel;

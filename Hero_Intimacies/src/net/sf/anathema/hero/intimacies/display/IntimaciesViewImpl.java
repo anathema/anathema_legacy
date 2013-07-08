@@ -3,7 +3,6 @@ package net.sf.anathema.hero.intimacies.display;
 import net.miginfocom.layout.CC;
 import net.miginfocom.swing.MigLayout;
 import net.sf.anathema.character.main.library.overview.OverviewCategory;
-import net.sf.anathema.character.main.library.overview.SwingOverviewCategory;
 import net.sf.anathema.character.main.library.selection.IStringSelectionView;
 import net.sf.anathema.character.main.library.selection.StringSelectionView;
 import net.sf.anathema.character.main.library.trait.view.swing.SimpleTraitView;
@@ -13,6 +12,7 @@ import net.sf.anathema.framework.swing.IView;
 import net.sf.anathema.framework.value.IntegerViewFactory;
 import net.sf.anathema.lib.file.RelativePath;
 import net.sf.anathema.lib.gui.icon.ImageProvider;
+import net.sf.anathema.swing.hero.overview.SwingOverviewCategory;
 
 import javax.swing.ImageIcon;
 import javax.swing.JComponent;

@@ -1,15 +1,15 @@
 package net.sf.anathema.character.main.presenter;
 
-import net.sf.anathema.hero.experience.ExperienceChange;
-import net.sf.anathema.hero.experience.ExperienceModelFetcher;
 import net.sf.anathema.character.main.advance.IExperiencePointManagement;
 import net.sf.anathema.character.main.creation.IBonusPointManagement;
 import net.sf.anathema.character.main.presenter.overview.CreationOverviewPresenter;
 import net.sf.anathema.character.main.presenter.overview.ExperiencedOverviewPresenter;
+import net.sf.anathema.character.main.view.CategorizedOverview;
 import net.sf.anathema.character.main.view.OverviewContainer;
-import net.sf.anathema.character.main.view.overview.CategorizedOverview;
 import net.sf.anathema.hero.change.ChangeFlavor;
 import net.sf.anathema.hero.change.FlavoredChangeListener;
+import net.sf.anathema.hero.experience.ExperienceChange;
+import net.sf.anathema.hero.experience.ExperienceModelFetcher;
 import net.sf.anathema.hero.model.Hero;
 import net.sf.anathema.lib.gui.Presenter;
 import net.sf.anathema.lib.resources.Resources;

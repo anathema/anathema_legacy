@@ -1,11 +1,11 @@
 package net.sf.anathema.character.main.presenter.overview;
 
+import net.sf.anathema.character.main.view.labelledvalue.IStyleableView;
 import net.sf.anathema.hero.points.overview.ISpendingModel;
 import net.sf.anathema.lib.control.legality.FontStyle;
 import net.sf.anathema.lib.control.legality.LegalityColorProvider;
 import net.sf.anathema.lib.control.legality.LegalityFontProvider;
 import net.sf.anathema.lib.control.legality.ValueLegalityState;
-import net.sf.anathema.lib.workflow.labelledvalue.IStyleableView;
 
 public class FontParameterSetter {
 

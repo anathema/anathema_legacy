@@ -1,7 +1,7 @@
 package net.sf.anathema.character.main.library.overview;
 
-import net.sf.anathema.lib.workflow.labelledvalue.ILabelledAlotmentView;
-import net.sf.anathema.lib.workflow.labelledvalue.IValueView;
+import net.sf.anathema.character.main.view.labelledvalue.ILabelledAlotmentView;
+import net.sf.anathema.character.main.view.labelledvalue.IValueView;
 
 public interface OverviewCategory {
 

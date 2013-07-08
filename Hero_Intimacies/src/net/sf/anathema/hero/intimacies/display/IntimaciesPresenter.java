@@ -6,6 +6,8 @@ import net.sf.anathema.character.main.library.removableentry.RemovableEntryListe
 import net.sf.anathema.character.main.library.selection.IStringSelectionView;
 import net.sf.anathema.character.main.library.trait.presenter.TraitPresenter;
 import net.sf.anathema.character.main.presenter.ExtensibleTraitView;
+import net.sf.anathema.character.main.view.labelledvalue.ILabelledAlotmentView;
+import net.sf.anathema.character.main.view.labelledvalue.IValueView;
 import net.sf.anathema.framework.presenter.resources.BasicUi;
 import net.sf.anathema.hero.change.ChangeFlavor;
 import net.sf.anathema.hero.change.FlavoredChangeListener;
@@ -24,8 +26,6 @@ import net.sf.anathema.lib.control.legality.LegalityColorProvider;
 import net.sf.anathema.lib.control.legality.LegalityFontProvider;
 import net.sf.anathema.lib.control.legality.ValueLegalityState;
 import net.sf.anathema.lib.resources.Resources;
-import net.sf.anathema.lib.workflow.labelledvalue.ILabelledAlotmentView;
-import net.sf.anathema.lib.workflow.labelledvalue.IValueView;
 
 import java.util.HashMap;
 import java.util.Map;

@@ -1,8 +1,8 @@
 package net.sf.anathema.hero.othertraits.display;
 
 import net.sf.anathema.character.main.library.trait.Trait;
+import net.sf.anathema.character.main.view.labelledvalue.IValueView;
 import net.sf.anathema.framework.value.IIntValueView;
-import net.sf.anathema.lib.workflow.labelledvalue.IValueView;
 
 public interface AdvantageView {
 

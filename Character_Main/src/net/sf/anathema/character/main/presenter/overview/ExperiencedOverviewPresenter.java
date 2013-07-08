@@ -4,7 +4,9 @@ import net.sf.anathema.character.main.advance.ExperiencePointConfigurationListen
 import net.sf.anathema.character.main.advance.IExperiencePointEntry;
 import net.sf.anathema.character.main.advance.IExperiencePointManagement;
 import net.sf.anathema.character.main.library.overview.OverviewCategory;
-import net.sf.anathema.character.main.view.overview.CategorizedOverview;
+import net.sf.anathema.character.main.view.CategorizedOverview;
+import net.sf.anathema.character.main.view.labelledvalue.ILabelledAlotmentView;
+import net.sf.anathema.character.main.view.labelledvalue.IValueView;
 import net.sf.anathema.hero.change.ChangeFlavor;
 import net.sf.anathema.hero.change.FlavoredChangeListener;
 import net.sf.anathema.hero.experience.ExperienceModelFetcher;
@@ -13,8 +15,6 @@ import net.sf.anathema.hero.points.overview.IValueModel;
 import net.sf.anathema.lib.control.legality.LegalityColorProvider;
 import net.sf.anathema.lib.gui.Presenter;
 import net.sf.anathema.lib.resources.Resources;
-import net.sf.anathema.lib.workflow.labelledvalue.ILabelledAlotmentView;
-import net.sf.anathema.lib.workflow.labelledvalue.IValueView;
 
 import java.util.ArrayList;
 import java.util.List;

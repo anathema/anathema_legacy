@@ -10,7 +10,7 @@ import net.sf.anathema.lib.gui.table.SmartTable;
 import net.sf.anathema.lib.gui.table.columsettings.ITableColumnViewSettings;
 import net.sf.anathema.lib.gui.table.columsettings.IntegerTableColumnSettings;
 import net.sf.anathema.lib.gui.table.columsettings.StringTableColumnSettings;
-import net.sf.anathema.lib.workflow.labelledvalue.view.LabelledIntegerValueView;
+import net.sf.anathema.swing.hero.overview.LabelledIntegerValueView;
 import org.jmock.example.announcer.Announcer;
 
 import javax.swing.Action;
