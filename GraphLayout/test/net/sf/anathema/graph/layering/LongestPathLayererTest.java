@@ -43,15 +43,6 @@ public class LongestPathLayererTest {
     assertEquals(leaf2.getLayer(), 2);
   }
 
-  private void connect(IRegularNode[] acyclicGraph) {
-    for (IRegularNode node : acyclicGraph) {
-      ISimpleNode[] children = node.getChildren();
-      for (ISimpleNode child : children) {
-        child.addParent(node);
-      }
-    }
-  }
-
   @Test
   public void testLayerDualRootTripleChild() throws Exception {
     IRegularNode leaf1 = NodeFactory.createChildlessNode("leaf1");
@@ -68,5 +59,14 @@ public class LongestPathLayererTest {
     assertTrue(leaf1.getLayer() == 2);
     assertTrue(leaf2.getLayer() == 2);
     assertTrue(leaf3.getLayer() == 2);
+  }
+
+  private void connect(IRegularNode[] acyclicGraph) {
+    for (IRegularNode node : acyclicGraph) {
+      ISimpleNode[] children = node.getChildren();
+      for (ISimpleNode child : children) {
+        child.addParent(node);
+      }
+    }
   }
 }
