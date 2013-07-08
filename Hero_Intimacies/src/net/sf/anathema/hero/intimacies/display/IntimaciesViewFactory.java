@@ -7,7 +7,7 @@ import net.sf.anathema.character.main.view.SubViewFactory;
 import net.sf.anathema.framework.value.IntegerViewFactory;
 
 @RegisteredCharacterView(IntimaciesView.class)
-public class IntimaciesSubViewFactory implements SubViewFactory {
+public class IntimaciesViewFactory implements SubViewFactory {
   //TODO (Swing->FX) Needs character type
   @SuppressWarnings("unchecked")
   @Override
