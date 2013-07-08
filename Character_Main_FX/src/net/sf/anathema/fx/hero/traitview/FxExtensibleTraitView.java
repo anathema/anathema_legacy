@@ -1,4 +1,4 @@
-package net.sf.anathema.character.main.library.trait.view.fx;
+package net.sf.anathema.fx.hero.traitview;
 
 import net.miginfocom.layout.CC;
 import net.sf.anathema.character.main.library.intvalue.IIconToggleButtonProperties;

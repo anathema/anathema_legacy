@@ -1,12 +1,12 @@
 package net.sf.anathema.hero.specialties.display.view;
 
 import javafx.scene.Node;
-import net.sf.anathema.character.main.library.trait.view.fx.FxExtensibleTraitView;
-import net.sf.anathema.character.main.library.trait.view.fx.FxGroupedColumnPanel;
-import net.sf.anathema.character.main.library.trait.view.fx.FxTraitView;
 import net.sf.anathema.character.main.presenter.ExtensibleTraitView;
 import net.sf.anathema.character.main.traits.TraitType;
 import net.sf.anathema.character.main.view.ColumnCount;
+import net.sf.anathema.fx.hero.traitview.FxExtensibleTraitView;
+import net.sf.anathema.fx.hero.traitview.FxGroupedColumnPanel;
+import net.sf.anathema.fx.hero.traitview.FxTraitView;
 import net.sf.anathema.hero.specialties.display.presenter.SpecialtiesConfigurationView;
 import net.sf.anathema.hero.specialties.display.presenter.SpecialtyCreationView;
 import net.sf.anathema.lib.file.RelativePath;

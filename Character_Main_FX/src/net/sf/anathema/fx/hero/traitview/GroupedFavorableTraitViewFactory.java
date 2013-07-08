@@ -1,10 +1,9 @@
-package net.sf.anathema.character.main.view;
+package net.sf.anathema.fx.hero.traitview;
 
 import net.sf.anathema.character.main.framework.RegisteredCharacterView;
 import net.sf.anathema.character.main.library.trait.view.GroupedFavorableTraitConfigurationView;
-import net.sf.anathema.character.main.library.trait.view.fx.BridgingTraitConfigurationView;
-import net.sf.anathema.character.main.library.trait.view.fx.FxGroupedTraitConfigurationView;
 import net.sf.anathema.character.main.type.ICharacterType;
+import net.sf.anathema.character.main.view.SubViewFactory;
 
 @RegisteredCharacterView(GroupedFavorableTraitConfigurationView.class)
 public class GroupedFavorableTraitViewFactory implements SubViewFactory {

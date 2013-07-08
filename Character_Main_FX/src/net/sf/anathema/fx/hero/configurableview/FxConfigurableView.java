@@ -2,8 +2,8 @@ package net.sf.anathema.fx.hero.configurableview;
 
 import javafx.scene.Node;
 import net.miginfocom.layout.CC;
-import net.sf.anathema.character.main.library.trait.view.fx.FxTraitView;
 import net.sf.anathema.framework.value.IIntValueView;
+import net.sf.anathema.fx.hero.traitview.FxTraitView;
 import net.sf.anathema.interaction.Tool;
 import net.sf.anathema.lib.gui.AgnosticUIConfiguration;
 import net.sf.anathema.lib.gui.selection.IObjectSelectionView;

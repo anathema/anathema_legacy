@@ -1,4 +1,4 @@
-package net.sf.anathema.character.main.library.trait.view.fx;
+package net.sf.anathema.fx.hero.traitview;
 
 import net.sf.anathema.character.main.library.trait.view.GroupedTraitView;
 import net.sf.anathema.character.main.presenter.ExtensibleTraitView;

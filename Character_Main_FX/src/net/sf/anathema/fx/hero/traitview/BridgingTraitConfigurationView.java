@@ -1,4 +1,4 @@
-package net.sf.anathema.character.main.library.trait.view.fx;
+package net.sf.anathema.fx.hero.traitview;
 
 import net.sf.anathema.character.main.library.trait.view.GroupedFavorableTraitConfigurationView;
 import net.sf.anathema.character.main.library.util.CssSkinner;
