@@ -1,4 +1,4 @@
-package net.sf.anathema.swing.character.perspective;
+package net.sf.anathema.swing.hero.perspective;
 
 import net.sf.anathema.character.main.advance.ExperiencePointManagement;
 import net.sf.anathema.character.main.advance.IExperiencePointManagement;
