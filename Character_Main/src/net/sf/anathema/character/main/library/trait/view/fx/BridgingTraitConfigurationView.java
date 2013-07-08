@@ -1,9 +1,9 @@
 package net.sf.anathema.character.main.library.trait.view.fx;
 
-import net.sf.anathema.character.main.type.ICharacterType;
 import net.sf.anathema.character.main.library.trait.view.GroupedFavorableTraitConfigurationView;
 import net.sf.anathema.character.main.library.util.CssSkinner;
 import net.sf.anathema.character.main.presenter.ExtensibleTraitView;
+import net.sf.anathema.character.main.type.ICharacterType;
 import net.sf.anathema.character.main.view.ColumnCount;
 import net.sf.anathema.framework.swing.IView;
 import net.sf.anathema.platform.fx.BridgingPanel;
@@ -12,16 +12,18 @@ import javax.swing.JComponent;
 
 public class BridgingTraitConfigurationView implements IView, GroupedFavorableTraitConfigurationView {
   private final FxGroupedTraitConfigurationView fxView;
+  private final ICharacterType type;
   private final BridgingPanel panel = new BridgingPanel();
 
-  public BridgingTraitConfigurationView(FxGroupedTraitConfigurationView fxView) {
+  public BridgingTraitConfigurationView(FxGroupedTraitConfigurationView fxView, ICharacterType type) {
     this.fxView = fxView;
+    this.type = type;
   }
 
   @Override
-  public void initGui(ColumnCount columnCount, ICharacterType characterType) {
-    fxView.initGui(columnCount, characterType);
-    String[] skins = new CssSkinner().getSkins(characterType);
+  public void initGui(ColumnCount columnCount) {
+    fxView.initGui(columnCount);
+    String[] skins = new CssSkinner().getSkins(type);
     panel.init(fxView, skins);
   }
 

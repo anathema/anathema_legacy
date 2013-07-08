@@ -1,17 +1,17 @@
 package net.sf.anathema.hero.specialties.display.presenter;
 
 import net.sf.anathema.character.main.TraitTypeInternationalizer;
-import net.sf.anathema.character.main.traits.TraitType;
 import net.sf.anathema.character.main.library.trait.presenter.TraitPresenter;
 import net.sf.anathema.character.main.library.trait.specialties.SpecialtiesModel;
 import net.sf.anathema.character.main.library.trait.specialties.Specialty;
 import net.sf.anathema.character.main.library.trait.subtrait.ISpecialtyListener;
 import net.sf.anathema.character.main.library.trait.subtrait.ISubTraitContainer;
-import net.sf.anathema.hero.experience.ExperienceChange;
 import net.sf.anathema.character.main.presenter.ExtensibleTraitView;
+import net.sf.anathema.character.main.traits.TraitType;
 import net.sf.anathema.framework.presenter.resources.BasicUi;
 import net.sf.anathema.hero.change.ChangeFlavor;
 import net.sf.anathema.hero.change.FlavoredChangeListener;
+import net.sf.anathema.hero.experience.ExperienceChange;
 import net.sf.anathema.hero.model.Hero;
 import net.sf.anathema.interaction.Command;
 import net.sf.anathema.interaction.Tool;
@@ -68,7 +68,6 @@ public class SpecialtiesConfigurationPresenter implements Presenter {
 
   @Override
   public void initPresentation() {
-    configurationView.initGui(hero.getTemplate().getTemplateType().getCharacterType());
     initTraitListening();
     RelativePath addIcon = new BasicUi().getAddIconPath();
     AgnosticUIConfiguration<TraitType> configuration = new AbstractUIConfiguration<TraitType>() {
