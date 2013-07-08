@@ -1,9 +1,8 @@
 package net.sf.anathema.character.platform.module.perspective;
 
+import net.sf.anathema.character.main.framework.CharacterGenericsExtractor;
 import net.sf.anathema.character.main.framework.HeroEnvironment;
 import net.sf.anathema.character.main.framework.item.CharacterPrintNameFileScanner;
-import net.sf.anathema.character.main.framework.CharacterGenericsExtractor;
-import net.sf.anathema.hero.experience.ExperienceModelFetcher;
 import net.sf.anathema.character.main.persistence.ExaltedCharacterPersister;
 import net.sf.anathema.character.main.perspective.PreloadedDescriptiveFeatures;
 import net.sf.anathema.character.main.perspective.model.CharacterIdentifier;
@@ -12,7 +11,6 @@ import net.sf.anathema.character.main.perspective.model.CharacterPersistenceMode
 import net.sf.anathema.character.main.perspective.model.ItemSystemModel;
 import net.sf.anathema.character.main.perspective.model.NewCharacterListener;
 import net.sf.anathema.character.platform.module.RegExCharacterPrintNameFileScanner;
-import net.sf.anathema.character.platform.module.repository.CharacterCreationTemplateFactory;
 import net.sf.anathema.framework.IApplicationModel;
 import net.sf.anathema.framework.item.IItemType;
 import net.sf.anathema.framework.persistence.RepositoryItemPersister;
@@ -23,10 +21,12 @@ import net.sf.anathema.framework.reporting.QuickPrintCommand;
 import net.sf.anathema.framework.repository.IRepositoryFileResolver;
 import net.sf.anathema.framework.repository.Item;
 import net.sf.anathema.framework.view.PrintNameFile;
+import net.sf.anathema.hero.experience.ExperienceModelFetcher;
 import net.sf.anathema.hero.model.Hero;
 import net.sf.anathema.lib.control.ChangeListener;
 import net.sf.anathema.lib.resources.Resources;
 import net.sf.anathema.lib.workflow.wizard.selection.ItemTemplateFactory;
+import net.sf.anathema.swing.hero.creation.CharacterCreationTemplateFactory;
 import org.jmock.example.announcer.Announcer;
 
 import java.io.IOException;

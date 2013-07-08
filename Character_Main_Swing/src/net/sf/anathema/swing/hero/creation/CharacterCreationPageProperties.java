@@ -1,4 +1,4 @@
-package net.sf.anathema.character.platform.module.repository;
+package net.sf.anathema.swing.hero.creation;
 
 import net.sf.anathema.character.main.CharacterUI;
 import net.sf.anathema.character.main.type.ICharacterType;

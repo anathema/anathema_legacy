@@ -1,6 +1,5 @@
-package net.sf.anathema.character.main.overview;
+package net.sf.anathema.swing.hero.overview;
 
-import net.sf.anathema.swing.hero.overview.SwingOverviewCategory;
 import org.junit.Assume;
 import org.junit.Test;
 

@@ -1,4 +1,4 @@
-package net.sf.anathema.character.platform.module;
+package net.sf.anathema.swing.hero.creation;
 
 import net.miginfocom.swing.MigLayout;
 import net.sf.anathema.framework.swing.IView;

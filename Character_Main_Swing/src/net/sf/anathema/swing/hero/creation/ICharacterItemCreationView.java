@@ -1,6 +1,5 @@
-package net.sf.anathema.character.platform.module.repository;
+package net.sf.anathema.swing.hero.creation;
 
-import net.sf.anathema.character.platform.module.IToggleButtonPanel;
 import net.sf.anathema.character.main.view.repository.ITemplateTypeAggregation;
 import net.sf.anathema.lib.gui.dialog.core.IPageContent;
 import net.sf.anathema.lib.gui.selection.IListObjectSelectionView;

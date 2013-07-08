@@ -1,4 +1,4 @@
-package net.sf.anathema.character.platform.module;
+package net.sf.anathema.swing.hero.creation;
 
 import javax.swing.Action;
 import javax.swing.JToggleButton;

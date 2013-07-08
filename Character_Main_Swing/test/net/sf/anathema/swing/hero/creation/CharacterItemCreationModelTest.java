@@ -1,13 +1,13 @@
-package net.sf.anathema.character.platform.module.repository;
+package net.sf.anathema.swing.hero.creation;
 
+import net.sf.anathema.character.main.CharacterStatisticsConfiguration;
 import net.sf.anathema.character.main.framework.HeroEnvironment;
 import net.sf.anathema.character.main.template.ICharacterExternalsTemplate;
 import net.sf.anathema.character.main.template.ITemplateRegistry;
-import net.sf.anathema.character.main.type.ICharacterType;
 import net.sf.anathema.character.main.testing.dummy.DummyCharacterTypes;
 import net.sf.anathema.character.main.testing.dummy.DummyMundaneCharacterType;
 import net.sf.anathema.character.main.testing.dummy.template.SimpleDummyCharacterTemplate;
-import net.sf.anathema.character.main.CharacterStatisticsConfiguration;
+import net.sf.anathema.character.main.type.ICharacterType;
 import net.sf.anathema.lib.control.ChangeListener;
 import org.junit.Test;
 
