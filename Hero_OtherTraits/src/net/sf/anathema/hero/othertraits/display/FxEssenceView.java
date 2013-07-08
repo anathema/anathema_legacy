@@ -16,9 +16,8 @@ public class FxEssenceView {
     return panel;
   }
 
-  public IValueView<String> addPoolView(String labelText, String value) {
+  public IValueView<String> addPoolView(String labelText) {
     FxStringOverview poolView = new FxStringOverview(labelText);
-    poolView.setValue(value);
     poolView.addTo(panel);
     return poolView;
   }

@@ -30,7 +30,7 @@ public class EssenceConfigurationPresenter implements Presenter {
   public void initPresentation() {
     Trait essenceTrait = traitMap.getTrait(OtherTraitType.Essence);
     IIntValueView essenceView =
-            view.addEssenceView(resources.getString("Essence.Name"), essenceTrait.getCurrentValue(), essenceTrait.getMaximalValue(), essenceTrait);
+            view.addEssenceView(resources.getString("Essence.Name"), essenceTrait.getMaximalValue());
     if (essencePool.isEssenceUser()) {
       String key = "EssencePool.Name.Personal";
       String personalPool = essencePool.getPersonalPool();
@@ -63,6 +63,8 @@ public class EssenceConfigurationPresenter implements Presenter {
   }
 
   private IValueView<String> addPool(String labelKey, String pool) {
-    return view.addPoolView(resources.getString(labelKey), pool);
+    IValueView<String> valueView = view.addPoolView(resources.getString(labelKey));
+    valueView.setValue(pool);
+    return valueView;
   }
 }

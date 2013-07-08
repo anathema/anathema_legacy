@@ -24,7 +24,7 @@ public class VirtueConfigurationPresenter implements Presenter {
   public void initPresentation() {
     for (Trait virtue : virtues) {
       String labelText = resources.getString("VirtueType.Name." + virtue.getType().getId());
-      IIntValueView virtueView = view.addVirtue(labelText, virtue.getCurrentValue(), virtue.getMaximalValue());
+      IIntValueView virtueView = view.addVirtue(labelText, virtue.getMaximalValue());
       new TraitPresenter(virtue, virtueView).initPresentation();
     }
   }

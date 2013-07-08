@@ -1,6 +1,5 @@
 package net.sf.anathema.hero.othertraits.display;
 
-import net.sf.anathema.character.main.library.trait.Trait;
 import net.sf.anathema.character.main.library.util.CssSkinner;
 import net.sf.anathema.character.main.type.ICharacterType;
 import net.sf.anathema.character.main.view.labelledvalue.IValueView;
@@ -32,22 +31,22 @@ public class BridgingOtherTraitsView implements IView, AdvantageView {
   }
 
   @Override
-  public IIntValueView addVirtue(String labelText, int value, int maxValue) {
-    return fxView.addVirtue(labelText, value, maxValue);
+  public IIntValueView addVirtue(String labelText, int maxValue) {
+    return fxView.addVirtue(labelText, maxValue);
   }
 
   @Override
-  public IIntValueView addWillpower(String labelText, int value, int maxValue) {
-    return fxView.addWillpower(labelText, value, maxValue);
+  public IIntValueView addWillpower(String labelText, int maxValue) {
+    return fxView.addWillpower(labelText, maxValue);
   }
 
   @Override
-  public IIntValueView addEssenceView(String labelText, int value, int maxValue, Trait trait) {
-    return fxView.addEssenceView(labelText, value, maxValue, trait);
+  public IIntValueView addEssenceView(String labelText, int maxValue) {
+    return fxView.addEssenceView(labelText, maxValue);
   }
 
   @Override
-  public IValueView<String> addPoolView(String labelText, String value) {
-    return fxView.addPoolView(labelText, value);
+  public IValueView<String> addPoolView(String labelText) {
+    return fxView.addPoolView(labelText);
   }
 }

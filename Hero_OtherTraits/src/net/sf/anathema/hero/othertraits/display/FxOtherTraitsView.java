@@ -2,7 +2,6 @@ package net.sf.anathema.hero.othertraits.display;
 
 import javafx.scene.Node;
 import net.miginfocom.layout.CC;
-import net.sf.anathema.character.main.library.trait.Trait;
 import net.sf.anathema.character.main.library.trait.view.fx.FxTraitView;
 import net.sf.anathema.character.main.type.ICharacterType;
 import net.sf.anathema.character.main.view.labelledvalue.IValueView;
@@ -29,27 +28,27 @@ public class FxOtherTraitsView implements AdvantageView, NodeHolder {
   }
 
   @Override
-  public IIntValueView addVirtue(String labelText, int value, int maxValue) {
+  public IIntValueView addVirtue(String labelText, int maxValue) {
     FxTraitView willpowerView = new FxTraitView(labelText, maxValue);
     willpowerView.addTo(virtuePanel);
     return willpowerView;
   }
 
   @Override
-  public IIntValueView addWillpower(String labelText, int value, int maxValue) {
+  public IIntValueView addWillpower(String labelText, int maxValue) {
     FxTraitView willpowerView = new FxTraitView(labelText, maxValue);
     willpowerView.addTo(willpowerPanel);
     return willpowerView;
   }
 
   @Override
-  public IIntValueView addEssenceView(String labelText, int value, int maxValue, Trait trait) {
+  public IIntValueView addEssenceView(String labelText, int maxValue) {
     return essenceView.addEssenceView(labelText, maxValue);
   }
 
   @Override
-  public IValueView<String> addPoolView(String labelText, String value) {
-    return essenceView.addPoolView(labelText, value);
+  public IValueView<String> addPoolView(String labelText) {
+    return essenceView.addPoolView(labelText);
   }
 
   @Override
