@@ -35,9 +35,7 @@ Run ``gradlew test``
 > IntelliJ IDEA users best run this outside of the IDE, else it might not pick up all changes.
 
 1. Run ``gradlew createModule``
-2. In ``settings.gradle``, add your module name.
-4. Regenerate your IDE's workspace as per the "Developing with..." sections above.
-5. [Eclipse Only] Import the project.
+2. Regenerate your IDE's workspace as per the "Developing with..." sections above.
 
 Deployment
 ==========

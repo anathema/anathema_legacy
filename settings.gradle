@@ -1,48 +1,6 @@
-include('Anathema',
-
-        'Platform',
-        'Platform_Swing',
-        'Platform_FX',
-        'GraphLayout',
-        'Platform_TreeFramework',
-        'Platform_SwingTree',
-
-        'Namegenerator',
-
-        'Campaign_Scribe',
-
-        'Hero_Abilities',
-        'Hero_Attributes',
-        'Hero_Charms',
-        'Hero_Combat',
-        'Hero_Combos',
-        'Hero_Concept',
-        'Hero_Experience',
-        'Hero_Health',
-        'Hero_Intimacies',
-        'Hero_Languages',
-        'Hero_OtherTraits',
-        'Hero_Specialties',
-        'Hero_Traits',
-
-        'Hero_Sheet',
-
-        'HeroType_Mortal',
-        'HeroType_Solar',
-
-        'Magic_Description',
-        'Charm_Cascades',
-        'Character_Cards',
-
-        'Engine_Character',
-        'Engine_Exalted',
-
-        'Character_Main',
-        'Character_Main_Impl',
-        'Character_Main_FX',
-        'Character_Main_Swing',
-
-        'Character_Equipment',
-        'Character_MartialArts',
-
-        'Integrationtest')
+rootDir.eachDir { folder ->
+    def buildFile = new File(folder, "build.gradle")
+    if (buildFile.exists()){
+        include folder.getName()
+    }
+}
