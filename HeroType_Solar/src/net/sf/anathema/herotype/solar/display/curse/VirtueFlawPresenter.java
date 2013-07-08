@@ -39,7 +39,6 @@ public class VirtueFlawPresenter implements Presenter {
   public void initPresentation() {
     initBasicPresentation();
     initAdditionalPresentation();
-    initChangeableListening();
     initLimitPresentation(model.getVirtueFlaw());
   }
 
@@ -95,16 +94,6 @@ public class VirtueFlawPresenter implements Presenter {
     ITextView titleView = view.addLineView(resources.getString("VirtueFlaw.Name.Name"));
     new TextualPresentation().initView(titleView, virtueFlaw.getName());
     return titleView;
-  }
-
-  protected void initChangeableListening() {
-//    model.addVirtueFlawChangableListener(new IBooleanValueChangedListener() {
-//      @Override
-//      public void valueChanged(boolean newValue) {
-//        view.setEnabled(newValue);
-//      }
-//    });
-//    view.setEnabled(model.isVirtueFlawChangable());
   }
 
   protected final Resources getResources() {
