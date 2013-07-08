@@ -1,4 +1,4 @@
-package net.sf.anathema.character.platform.bootjob;
+package net.sf.anathema.hero.bootjob;
 
 import net.sf.anathema.ProxySplashscreen;
 import net.sf.anathema.framework.IApplicationModel;

@@ -1,4 +1,4 @@
-package net.sf.anathema.character.platform.module.perspective;
+package net.sf.anathema.hero.perspective;
 
 import net.sf.anathema.interaction.ToggleTool;
 import net.sf.anathema.lib.control.ChangeListener;

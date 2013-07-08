@@ -1,4 +1,4 @@
-package net.sf.anathema.character.platform.bootjob;
+package net.sf.anathema.hero.bootjob;
 
 import net.sf.anathema.framework.Version;
 import net.sf.anathema.framework.repository.Repository;

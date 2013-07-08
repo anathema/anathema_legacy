@@ -1,4 +1,4 @@
-package net.sf.anathema.character.platform.module.perspective;
+package net.sf.anathema.hero.perspective;
 
 import net.sf.anathema.character.main.perspective.CharacterGridPresenter;
 import net.sf.anathema.character.main.perspective.CharacterStackBridge;

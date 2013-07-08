@@ -1,4 +1,4 @@
-package net.sf.anathema.character.platform.module;
+package net.sf.anathema.hero.platform;
 
 import net.sf.anathema.character.main.itemtype.CharacterItemTypeRetrieval;
 import net.sf.anathema.framework.item.IItemType;

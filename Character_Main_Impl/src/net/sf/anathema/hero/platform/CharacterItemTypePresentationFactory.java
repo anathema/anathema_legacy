@@ -1,9 +1,9 @@
-package net.sf.anathema.character.platform.module;
+package net.sf.anathema.hero.platform;
 
-import net.sf.anathema.character.main.framework.HeroEnvironment;
-import net.sf.anathema.character.main.framework.item.CharacterPrintNameFileScanner;
 import net.sf.anathema.character.main.caste.ICasteCollection;
 import net.sf.anathema.character.main.framework.CharacterGenericsExtractor;
+import net.sf.anathema.character.main.framework.HeroEnvironment;
+import net.sf.anathema.character.main.framework.item.CharacterPrintNameFileScanner;
 import net.sf.anathema.character.main.type.ICharacterType;
 import net.sf.anathema.framework.IApplicationModel;
 import net.sf.anathema.framework.module.ItemTypePresentationFactory;

@@ -1,4 +1,4 @@
-package net.sf.anathema.character.platform.module.preferences;
+package net.sf.anathema.hero.preferences;
 
 import net.sf.anathema.framework.module.preferences.AbstractCheckBoxPreferencesElement;
 import net.sf.anathema.initialization.PreferenceElement;

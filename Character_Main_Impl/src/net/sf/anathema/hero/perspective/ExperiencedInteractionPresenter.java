@@ -1,17 +1,17 @@
-package net.sf.anathema.character.platform.module.perspective;
+package net.sf.anathema.hero.perspective;
 
 import net.sf.anathema.character.main.perspective.model.ItemSelectionModel;
 import net.sf.anathema.interaction.Command;
-import net.sf.anathema.interaction.Tool;
+import net.sf.anathema.interaction.ToggleTool;
 import net.sf.anathema.lib.file.RelativePath;
 import net.sf.anathema.lib.resources.Resources;
 
-public class ControlledPrintInteractionPresenter {
+public class ExperiencedInteractionPresenter {
   private ItemSelectionModel model;
-  private Tool interaction;
+  private ToggleTool interaction;
   private Resources resources;
 
-  public ControlledPrintInteractionPresenter(ItemSelectionModel model, Tool interaction, Resources resources) {
+  public ExperiencedInteractionPresenter(ItemSelectionModel model, ToggleTool interaction, Resources resources) {
     this.model = model;
     this.interaction = interaction;
     this.resources = resources;
@@ -20,12 +20,13 @@ public class ControlledPrintInteractionPresenter {
   public void initPresentation() {
     initializeAppearance();
     initializeEnabling();
+    initializeToggling();
     initializeCommand();
   }
 
   private void initializeAppearance() {
-    interaction.setIcon(new RelativePath("icons/TaskBarPDFArrow24.png"));
-    interaction.setTooltip(resources.getString("Anathema.Reporting.Menu.PrintItem.Name"));
+    interaction.setIcon(new RelativePath("icons/ToolXp.png"));
+    interaction.setTooltip(resources.getString("CharacterTool.ToExperienced.Tooltip"));
   }
 
   private void initializeEnabling() {
@@ -33,11 +34,17 @@ public class ControlledPrintInteractionPresenter {
     interaction.disable();
   }
 
+  private void initializeToggling() {
+    model.whenCurrentSelectionBecomesInexperienced(new DeselectInteraction(interaction));
+    model.whenCurrentSelectionBecomesExperienced(new SelectInteraction(interaction));
+  }
+
   private void initializeCommand() {
     interaction.setCommand(new Command() {
       @Override
       public void execute() {
-        model.printCurrentItemControlled(resources);
+        model.convertCurrentToExperienced();
+        interaction.select();
       }
     });
   }

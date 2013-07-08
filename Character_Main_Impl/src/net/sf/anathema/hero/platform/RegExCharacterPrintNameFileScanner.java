@@ -1,7 +1,7 @@
-package net.sf.anathema.character.platform.module;
+package net.sf.anathema.hero.platform;
 
-import net.sf.anathema.character.main.framework.item.CharacterPrintNameFileScanner;
 import net.sf.anathema.character.main.caste.ICasteCollection;
+import net.sf.anathema.character.main.framework.item.CharacterPrintNameFileScanner;
 import net.sf.anathema.character.main.template.ITemplateType;
 import net.sf.anathema.character.main.template.TemplateType;
 import net.sf.anathema.character.main.type.CharacterTypes;

@@ -1,4 +1,4 @@
-package net.sf.anathema.character.platform.module.perspective;
+package net.sf.anathema.hero.perspective;
 
 import net.sf.anathema.character.main.framework.CharacterGenericsExtractor;
 import net.sf.anathema.character.main.framework.HeroEnvironment;
@@ -10,7 +10,6 @@ import net.sf.anathema.character.main.perspective.model.CharacterItemModel;
 import net.sf.anathema.character.main.perspective.model.CharacterPersistenceModel;
 import net.sf.anathema.character.main.perspective.model.ItemSystemModel;
 import net.sf.anathema.character.main.perspective.model.NewCharacterListener;
-import net.sf.anathema.character.platform.module.RegExCharacterPrintNameFileScanner;
 import net.sf.anathema.framework.IApplicationModel;
 import net.sf.anathema.framework.item.IItemType;
 import net.sf.anathema.framework.persistence.RepositoryItemPersister;
@@ -23,6 +22,7 @@ import net.sf.anathema.framework.repository.Item;
 import net.sf.anathema.framework.view.PrintNameFile;
 import net.sf.anathema.hero.experience.ExperienceModelFetcher;
 import net.sf.anathema.hero.model.Hero;
+import net.sf.anathema.hero.platform.RegExCharacterPrintNameFileScanner;
 import net.sf.anathema.lib.control.ChangeListener;
 import net.sf.anathema.lib.resources.Resources;
 import net.sf.anathema.lib.workflow.wizard.selection.ItemTemplateFactory;

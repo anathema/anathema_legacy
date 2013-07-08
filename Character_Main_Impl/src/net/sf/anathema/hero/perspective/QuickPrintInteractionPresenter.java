@@ -1,32 +1,36 @@
-package net.sf.anathema.character.platform.module.perspective;
+package net.sf.anathema.hero.perspective;
 
 import net.sf.anathema.character.main.perspective.model.ItemSelectionModel;
+import net.sf.anathema.framework.reporting.PrintCommand;
 import net.sf.anathema.interaction.Command;
-import net.sf.anathema.interaction.ToggleTool;
+import net.sf.anathema.interaction.Tool;
 import net.sf.anathema.lib.file.RelativePath;
 import net.sf.anathema.lib.resources.Resources;
 
-public class ExperiencedInteractionPresenter {
+public class QuickPrintInteractionPresenter {
+
   private ItemSelectionModel model;
-  private ToggleTool interaction;
+  private Tool interaction;
   private Resources resources;
 
-  public ExperiencedInteractionPresenter(ItemSelectionModel model, ToggleTool interaction, Resources resources) {
+  public QuickPrintInteractionPresenter(ItemSelectionModel model, Tool interaction, Resources resources) {
     this.model = model;
     this.interaction = interaction;
     this.resources = resources;
   }
 
   public void initPresentation() {
+    if (!PrintCommand.isAutoOpenSupported()) {
+      return;
+    }
     initializeAppearance();
     initializeEnabling();
-    initializeToggling();
     initializeCommand();
   }
 
   private void initializeAppearance() {
-    interaction.setIcon(new RelativePath("icons/ToolXp.png"));
-    interaction.setTooltip(resources.getString("CharacterTool.ToExperienced.Tooltip"));
+    interaction.setIcon(new RelativePath("icons/TaskBarPDF24.png"));
+    interaction.setTooltip(resources.getString("Anathema.Reporting.Menu.QuickPrint.Name"));
   }
 
   private void initializeEnabling() {
@@ -34,17 +38,11 @@ public class ExperiencedInteractionPresenter {
     interaction.disable();
   }
 
-  private void initializeToggling() {
-    model.whenCurrentSelectionBecomesInexperienced(new DeselectInteraction(interaction));
-    model.whenCurrentSelectionBecomesExperienced(new SelectInteraction(interaction));
-  }
-
   private void initializeCommand() {
     interaction.setCommand(new Command() {
       @Override
       public void execute() {
-        model.convertCurrentToExperienced();
-        interaction.select();
+        model.printCurrentItemQuickly(resources);
       }
     });
   }
