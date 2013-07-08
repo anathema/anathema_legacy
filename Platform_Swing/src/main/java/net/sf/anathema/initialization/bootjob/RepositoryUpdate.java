@@ -1,4 +1,4 @@
-package net.sf.anathema.hero.bootjob;
+package net.sf.anathema.initialization.bootjob;
 
 import net.sf.anathema.ProxySplashscreen;
 import net.sf.anathema.framework.IApplicationModel;
@@ -25,7 +25,7 @@ public class RepositoryUpdate implements IBootJob {
       createRepositoryAtVersion(resources, model);
       return;
     }
-    ProxySplashscreen.getInstance().displayStatusMessage(resources.getString("Hero.Bootjob.Cleanup.Splashmessage"));
+    ProxySplashscreen.getInstance().displayStatusMessage(resources.getString("Bootjob.UpdateRepository"));
     Version anathemaVersion = new Version(resources);
     RepositoryVersion repositoryVersion = new RepositoryVersion(model.getRepository());
     logger.info(format("Found repository at version {0}.", repositoryVersion.asString()));
