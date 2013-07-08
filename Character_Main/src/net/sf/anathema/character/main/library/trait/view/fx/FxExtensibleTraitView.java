@@ -19,7 +19,7 @@ public class FxExtensibleTraitView implements ExtensibleTraitView {
   private final MigPane center = new MigPane(fillWithoutInsets().wrapAfter(2));
   private final MigPane rear = new MigPane(fillWithoutInsets());
   private FxTraitView view;
-  private FxGroupedColumnPanel parent;
+  private TraitViewPanel parent;
 
   public FxExtensibleTraitView(FxTraitView view) {
     this.view = view;
@@ -65,7 +65,7 @@ public class FxExtensibleTraitView implements ExtensibleTraitView {
     parent.remove(panel);
   }
 
-  public void addTo(FxGroupedColumnPanel panel) {
+  public void addTo(TraitViewPanel panel) {
     this.parent = panel;
     panel.add(front);
     panel.add(center, new CC().growX().pushX());

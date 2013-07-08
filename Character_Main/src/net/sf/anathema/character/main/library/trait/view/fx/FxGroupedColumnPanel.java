@@ -8,7 +8,7 @@ import net.sf.anathema.lib.gui.layout.LayoutUtils;
 import net.sf.anathema.platform.fx.FxThreading;
 import org.tbee.javafx.scene.layout.MigPane;
 
-public class FxGroupedColumnPanel {
+public class FxGroupedColumnPanel implements TraitViewPanel {
   private final MigPane[] columns;
   private int columnIndex = -1;
 
@@ -50,10 +50,12 @@ public class FxGroupedColumnPanel {
     return columns[columnIndex];
   }
 
+  @Override
   public void add(Node node) {
     add(node, new CC());
   }
 
+  @Override
   public void add(final Node node, final CC constraints) {
     FxThreading.runOnCorrectThread(new Runnable() {
       @Override
@@ -63,7 +65,8 @@ public class FxGroupedColumnPanel {
     });
   }
 
-  public void remove(MigPane panel) {
-    getCurrentColumn().getChildren().remove(panel);
+  @Override
+  public void remove(Node node) {
+    getCurrentColumn().getChildren().remove(node);
   }
 }
