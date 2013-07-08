@@ -1,4 +1,4 @@
-package net.sf.anathema.hero.concept.display.description.view;
+package net.sf.anathema.fx.hero.configurableview;
 
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;

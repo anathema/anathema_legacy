@@ -23,7 +23,7 @@ public class FxEssenceView {
   }
 
   public IIntValueView addEssenceView(String labelText, int maxValue) {
-    FxTraitView essenceView = new FxTraitView(labelText, maxValue);
+    FxTraitView essenceView = FxTraitView.WithDefaultLayout(labelText, maxValue);
     essenceView.addTo(panel);
     return essenceView;
   }

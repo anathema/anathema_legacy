@@ -4,6 +4,7 @@ import net.sf.anathema.character.main.presenter.initializers.HeroModelInitialize
 import net.sf.anathema.character.main.presenter.initializers.RegisteredInitializer;
 import net.sf.anathema.character.main.view.SectionView;
 import net.sf.anathema.framework.model.ApplicationModel;
+import net.sf.anathema.fx.hero.configurableview.ConfigurableCharacterView;
 import net.sf.anathema.hero.display.HeroModelGroup;
 import net.sf.anathema.hero.model.Hero;
 import net.sf.anathema.herotype.solar.model.SolarCharacterType;
@@ -27,7 +28,7 @@ public class SolarVirtueFlawInitializer implements HeroModelInitializer {
       return;
     }
     String viewName = resources.getString("AdditionalTemplateView.TabName.SolarVirtueFlaw");
-    DescriptiveVirtueFlawView view = sectionView.addView(viewName, DescriptiveVirtueFlawView.class, hero.getTemplate().getTemplateType().getCharacterType());
+    ConfigurableCharacterView view = sectionView.addView(viewName, ConfigurableCharacterView.class, hero.getTemplate().getTemplateType().getCharacterType());
     DescriptiveVirtueFlawModel virtueFlawModel = (DescriptiveVirtueFlawModel) GreatCurseFetcher.fetch(hero);
     SolarVirtueFlawPresenter presenter = new SolarVirtueFlawPresenter(hero,resources, view, virtueFlawModel);
     presenter.initPresentation();

@@ -1,14 +1,18 @@
-package net.sf.anathema.hero.concept.display.description.view;
+package net.sf.anathema.fx.hero.configurableview;
 
 import javafx.scene.Node;
 import net.miginfocom.layout.CC;
-import net.sf.anathema.hero.concept.display.description.presenter.CharacterDescriptionView;
-import net.sf.anathema.hero.concept.display.description.presenter.MultiComponentLine;
+import net.sf.anathema.character.main.library.trait.view.fx.FxTraitView;
+import net.sf.anathema.framework.value.IIntValueView;
 import net.sf.anathema.interaction.Tool;
+import net.sf.anathema.lib.gui.AgnosticUIConfiguration;
+import net.sf.anathema.lib.gui.selection.IObjectSelectionView;
 import net.sf.anathema.lib.workflow.textualdescription.ITextView;
+import net.sf.anathema.platform.fx.FxObjectSelectionView;
 import net.sf.anathema.platform.fx.FxTextView;
 import net.sf.anathema.platform.fx.FxThreading;
 import net.sf.anathema.platform.fx.NodeHolder;
+import net.sf.anathema.platform.fx.selection.ComboBoxSelectionView;
 import net.sf.anathema.platform.tool.FxButtonTool;
 import org.tbee.javafx.scene.layout.MigPane;
 
@@ -17,7 +21,7 @@ import java.util.List;
 
 import static net.sf.anathema.lib.gui.layout.LayoutUtils.withoutInsets;
 
-public class FxDescriptionView implements CharacterDescriptionView, NodeHolder {
+public class FxConfigurableView implements ConfigurableCharacterView, NodeHolder {
   private MigPane pane = new MigPane(withoutInsets().wrapAfter(2));
   private final List<MigPane> buttonPanels = new ArrayList<>();
 
@@ -58,6 +62,30 @@ public class FxDescriptionView implements CharacterDescriptionView, NodeHolder {
       }
     });
     return interaction;
+  }
+
+  @Override
+  public <T> IObjectSelectionView<T> addSelectionView(AgnosticUIConfiguration<T> uiConfiguration) {
+    final FxObjectSelectionView<T> selectionView = new ComboBoxSelectionView<>("", uiConfiguration);
+    FxThreading.runOnCorrectThread(new Runnable() {
+      @Override
+      public void run() {
+        pane.add(selectionView.getNode(), new CC().growX().wrap());
+      }
+    });
+    return selectionView;
+  }
+
+  @Override
+  public IIntValueView addDotSelector(String label, int maxValue) {
+    final FxTraitView view = FxTraitView.AsSingleNode(label, maxValue);
+    FxThreading.runOnCorrectThread(new Runnable() {
+      @Override
+      public void run() {
+        view.addTo(pane);
+      }
+    });
+    return view;
   }
 
   private void addTextView(final FxTextView view) {

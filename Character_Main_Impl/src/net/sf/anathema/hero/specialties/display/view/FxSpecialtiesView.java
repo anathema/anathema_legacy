@@ -30,7 +30,7 @@ public class FxSpecialtiesView implements SpecialtiesConfigurationView, NodeHold
 
   @Override
   public ExtensibleTraitView addSpecialtyView(String abilityName, String specialtyName, RelativePath deleteIcon, int value, int maxValue) {
-    FxTraitView view = new FxTraitView(abilityName + " - " + specialtyName, maxValue);
+    FxTraitView view = FxTraitView.WithDefaultLayout(abilityName + " - " + specialtyName, maxValue);
     FxExtensibleTraitView extensibleTraitView = new FxExtensibleTraitView(view);
     extensibleTraitView.addTo(columnPanel);
     return extensibleTraitView;

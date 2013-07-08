@@ -6,6 +6,7 @@ import net.sf.anathema.character.main.presenter.SelectIdentifierConfiguration;
 import net.sf.anathema.character.main.traits.TraitType;
 import net.sf.anathema.character.main.traits.types.VirtueType;
 import net.sf.anathema.framework.value.IIntValueView;
+import net.sf.anathema.fx.hero.configurableview.ConfigurableCharacterView;
 import net.sf.anathema.hero.change.ChangeFlavor;
 import net.sf.anathema.hero.change.FlavoredChangeListener;
 import net.sf.anathema.hero.model.Hero;
@@ -13,12 +14,10 @@ import net.sf.anathema.hero.traits.TraitChangeFlavor;
 import net.sf.anathema.herotype.solar.model.curse.VirtueFlaw;
 import net.sf.anathema.herotype.solar.model.curse.VirtueFlawModel;
 import net.sf.anathema.lib.control.ChangeListener;
-import net.sf.anathema.lib.control.IBooleanValueChangedListener;
 import net.sf.anathema.lib.control.ObjectValueListener;
 import net.sf.anathema.lib.gui.Presenter;
 import net.sf.anathema.lib.gui.selection.IObjectSelectionView;
 import net.sf.anathema.lib.resources.Resources;
-import net.sf.anathema.lib.util.Identifier;
 import net.sf.anathema.lib.workflow.textualdescription.ITextView;
 import net.sf.anathema.lib.workflow.textualdescription.TextualPresentation;
 
@@ -26,10 +25,10 @@ public class VirtueFlawPresenter implements Presenter {
 
   private Hero hero;
   private final Resources resources;
-  private final VirtueFlawView view;
+  private final ConfigurableCharacterView view;
   private final VirtueFlawModel model;
 
-  public VirtueFlawPresenter(Hero hero, Resources resources, VirtueFlawView virtueFlawView, VirtueFlawModel model) {
+  public VirtueFlawPresenter(Hero hero, Resources resources, ConfigurableCharacterView virtueFlawView, VirtueFlawModel model) {
     this.hero = hero;
     this.resources = resources;
     this.view = virtueFlawView;
@@ -57,16 +56,12 @@ public class VirtueFlawPresenter implements Presenter {
   protected void initLimitPresentation(VirtueFlaw virtueFlaw) {
     Trait trait = virtueFlaw.getLimitTrait();
     IIntValueView traitView =
-            view.addLimitValueView(getResources().getString(trait.getType().getId()), trait.getCurrentValue(), trait.getMaximalValue());
+            view.addDotSelector(getResources().getString(trait.getType().getId()), trait.getMaximalValue());
     new TraitPresenter(trait, traitView).initPresentation();
   }
 
-  protected void initRootPresentation(VirtueFlaw virtueFlaw) {
-    initRootPresentation(virtueFlaw, "VirtueFlaw.Root.Name");
-  }
-
-  protected void initRootPresentation(final VirtueFlaw virtueFlaw, String nameReference) {
-    final IObjectSelectionView<TraitType> rootView = view.addVirtueFlawRootSelectionView(resources.getString(nameReference), new VirtueTypeConfiguration());
+  protected void initRootPresentation(final VirtueFlaw virtueFlaw) {
+    final IObjectSelectionView<TraitType> rootView = view.addSelectionView(new VirtueTypeConfiguration());
     virtueFlaw.addRootChangeListener(new ChangeListener() {
       @Override
       public void changeOccurred() {
@@ -97,32 +92,32 @@ public class VirtueFlawPresenter implements Presenter {
   }
 
   protected ITextView initNamePresentation(VirtueFlaw virtueFlaw) {
-    ITextView titleView = view.addTextView(resources.getString("VirtueFlaw.Name.Name"), 30);
+    ITextView titleView = view.addLineView(resources.getString("VirtueFlaw.Name.Name"));
     new TextualPresentation().initView(titleView, virtueFlaw.getName());
     return titleView;
   }
 
   protected void initChangeableListening() {
-    model.addVirtueFlawChangableListener(new IBooleanValueChangedListener() {
-      @Override
-      public void valueChanged(boolean newValue) {
-        view.setEnabled(newValue);
-      }
-    });
-    view.setEnabled(model.isVirtueFlawChangable());
+//    model.addVirtueFlawChangableListener(new IBooleanValueChangedListener() {
+//      @Override
+//      public void valueChanged(boolean newValue) {
+//        view.setEnabled(newValue);
+//      }
+//    });
+//    view.setEnabled(model.isVirtueFlawChangable());
   }
 
   protected final Resources getResources() {
     return resources;
   }
 
-  private class VirtueTypeConfiguration extends SelectIdentifierConfiguration {
+  private class VirtueTypeConfiguration extends SelectIdentifierConfiguration<TraitType> {
     public VirtueTypeConfiguration() {
       super(VirtueFlawPresenter.this.resources);
     }
 
     @Override
-    protected String getKeyForObject(Identifier value) {
+    protected String getKeyForObject(TraitType value) {
       return "VirtueType.Name." + value.getId();
     }
   }

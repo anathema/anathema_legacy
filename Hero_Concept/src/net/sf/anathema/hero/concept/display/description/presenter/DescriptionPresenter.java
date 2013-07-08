@@ -1,11 +1,13 @@
 package net.sf.anathema.hero.concept.display.description.presenter;
 
 import net.sf.anathema.character.main.CharacterUI;
-import net.sf.anathema.hero.concept.HeroConcept;
-import net.sf.anathema.hero.description.HeroDescription;
 import net.sf.anathema.character.main.IIntegerDescription;
 import net.sf.anathema.character.main.presenter.DescriptionDetails;
 import net.sf.anathema.character.main.presenter.NameGeneratorCommand;
+import net.sf.anathema.fx.hero.configurableview.ConfigurableCharacterView;
+import net.sf.anathema.fx.hero.configurableview.MultiComponentLine;
+import net.sf.anathema.hero.concept.HeroConcept;
+import net.sf.anathema.hero.description.HeroDescription;
 import net.sf.anathema.interaction.Tool;
 import net.sf.anathema.lib.control.IIntValueChangedListener;
 import net.sf.anathema.lib.gui.widgets.IIntegerView;
@@ -20,11 +22,11 @@ public class DescriptionPresenter {
 
   private final HeroDescription description;
   private final HeroConcept heroConcept;
-  private final CharacterDescriptionView descriptionView;
+  private final ConfigurableCharacterView descriptionView;
   private final boolean hasAnima;
   private final Resources resources;
 
-  public DescriptionPresenter(DescriptionDetails descriptionDetails, Resources resources, CharacterDescriptionView descriptionView) {
+  public DescriptionPresenter(DescriptionDetails descriptionDetails, Resources resources, ConfigurableCharacterView descriptionView) {
     this.resources = resources;
     this.description = descriptionDetails.getDescription();
     this.heroConcept = descriptionDetails.getHeroConcept();

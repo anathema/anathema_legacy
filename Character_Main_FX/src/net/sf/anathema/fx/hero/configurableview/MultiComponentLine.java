@@ -1,4 +1,4 @@
-package net.sf.anathema.hero.concept.display.description.presenter;
+package net.sf.anathema.fx.hero.configurableview;
 
 import net.sf.anathema.character.main.IIntegerDescription;
 import net.sf.anathema.lib.gui.widgets.IIntegerView;

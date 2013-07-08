@@ -1,5 +1,6 @@
 package net.sf.anathema.herotype.solar.display.curse;
 
+import net.sf.anathema.fx.hero.configurableview.ConfigurableCharacterView;
 import net.sf.anathema.hero.model.Hero;
 import net.sf.anathema.herotype.solar.model.curse.DescriptiveVirtueFlaw;
 import net.sf.anathema.herotype.solar.model.curse.DescriptiveVirtueFlawModel;
@@ -9,10 +10,10 @@ import net.sf.anathema.lib.workflow.textualdescription.TextualPresentation;
 
 public class SolarVirtueFlawPresenter extends VirtueFlawPresenter {
 
-  private final DescriptiveVirtueFlawView view;
+  private final ConfigurableCharacterView view;
   private final DescriptiveVirtueFlawModel model;
 
-  public SolarVirtueFlawPresenter(Hero hero, Resources resources, DescriptiveVirtueFlawView view, DescriptiveVirtueFlawModel model) {
+  public SolarVirtueFlawPresenter(Hero hero, Resources resources, ConfigurableCharacterView view, DescriptiveVirtueFlawModel model) {
     super(hero, resources, view, model);
     this.view = view;
     this.model = model;
@@ -27,12 +28,12 @@ public class SolarVirtueFlawPresenter extends VirtueFlawPresenter {
   }
 
   private void initDescriptionPresentation(DescriptiveVirtueFlaw virtueFlaw, TextualPresentation textualPresentation) {
-    ITextView descriptionView = view.addTextView(getResources().getString("VirtueFlaw.Description.Name"), 30, 3);
+    ITextView descriptionView = view.addAreaView(getResources().getString("VirtueFlaw.Description.Name"));
     textualPresentation.initView(descriptionView, virtueFlaw.getDescription());
   }
 
   private void initConditionPresentation(DescriptiveVirtueFlaw virtueFlaw, TextualPresentation textualPresentation) {
-    ITextView conditionView = view.addTextView(getResources().getString("VirtueFlaw.LimitBreakCondition.Name"), 30, 2);
+    ITextView conditionView = view.addAreaView(getResources().getString("VirtueFlaw.LimitBreakCondition.Name"));
     textualPresentation.initView(conditionView, virtueFlaw.getLimitBreak());
   }
 }

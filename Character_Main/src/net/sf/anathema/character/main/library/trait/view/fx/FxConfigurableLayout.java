@@ -7,19 +7,23 @@ import org.tbee.javafx.scene.layout.MigPane;
 
 public class FxConfigurableLayout {
   public static FxConfigurableLayout Right() {
-    return new FxConfigurableLayout(new CC().alignX("right"), new CC().growX().pushX());
+    return new FxConfigurableLayout(new CC().growX().pushX(), new CC().alignX("right"));
+  }
+
+  public static FxConfigurableLayout Single() {
+    return new FxConfigurableLayout(new CC().growX().pushX().split(2), new CC().alignX("right"));
   }
 
   public static FxConfigurableLayout Left() {
-    return new FxConfigurableLayout(new CC().alignX("left"), new CC());
+    return new FxConfigurableLayout(new CC(), new CC().alignX("left"));
   }
-
   private final CC labelAlignment;
   private final CC dotAlignment;
   public Label label;
+
   public Node display;
 
-  public FxConfigurableLayout(CC dotAlignment, CC labelAlignment) {
+  public FxConfigurableLayout(CC labelAlignment, CC dotAlignment) {
     this.labelAlignment = labelAlignment;
     this.dotAlignment = dotAlignment;
   }

@@ -10,13 +10,22 @@ import org.jmock.example.announcer.Announcer;
 import org.tbee.javafx.scene.layout.MigPane;
 
 public class FxTraitView implements IIntValueView {
+  public static FxTraitView WithDefaultLayout(String labelText, int maxValue) {
+    return new FxTraitView(labelText, maxValue, FxConfigurableLayout.Right());
+  }
+
+  public static FxTraitView AsSingleNode(String labelText, int maxValue) {
+    return new FxTraitView(labelText, maxValue, FxConfigurableLayout.Single());
+  }
+
   private final Announcer<IIntValueChangedListener> valueChangeAnnouncer = new Announcer<>(IIntValueChangedListener.class);
   private final DotSelectionSpinner spinner;
   private final Label label;
 
-  private final FxConfigurableLayout layout = FxConfigurableLayout.Right();
+  private final FxConfigurableLayout layout;
 
-  public FxTraitView(String labelText, int maxValue) {
+  private FxTraitView(String labelText, int maxValue, FxConfigurableLayout layout) {
+    this.layout = layout;
     this.label = new Label(labelText);
     this.spinner = new DotSelectionSpinner(0, maxValue);
     initListening();

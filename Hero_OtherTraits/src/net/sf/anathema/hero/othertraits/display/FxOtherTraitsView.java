@@ -30,14 +30,14 @@ public class FxOtherTraitsView implements AdvantageView, NodeHolder {
 
   @Override
   public IIntValueView addVirtue(String labelText, int maxValue) {
-    FxTraitView willpowerView = new FxTraitView(labelText, maxValue);
+    FxTraitView willpowerView = FxTraitView.WithDefaultLayout(labelText, maxValue);
     willpowerView.addTo(virtuePanel);
     return willpowerView;
   }
 
   @Override
   public IIntValueView addWillpower(String labelText, int maxValue) {
-    FxTraitView willpowerView = new FxTraitView(labelText, maxValue);
+    FxTraitView willpowerView = FxTraitView.WithDefaultLayout(labelText, maxValue);
     willpowerView.addTo(willpowerPanel);
     return willpowerView;
   }

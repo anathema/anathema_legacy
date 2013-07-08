@@ -41,6 +41,7 @@ public class DotSelectionSpinner {
   }
 
   public void setValueSilently(int value) {
+    waitForComponent();
     spinner.valueProperty().removeListener(announcingListener);
     setValue(value);
     spinner.valueProperty().addListener(announcingListener);
