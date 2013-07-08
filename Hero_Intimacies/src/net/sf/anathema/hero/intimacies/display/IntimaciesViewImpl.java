@@ -3,8 +3,6 @@ package net.sf.anathema.hero.intimacies.display;
 import net.miginfocom.layout.CC;
 import net.miginfocom.swing.MigLayout;
 import net.sf.anathema.character.main.library.overview.OverviewCategory;
-import net.sf.anathema.character.main.library.selection.IStringSelectionView;
-import net.sf.anathema.character.main.library.selection.StringSelectionView;
 import net.sf.anathema.character.main.library.trait.view.swing.SimpleTraitView;
 import net.sf.anathema.character.main.library.trait.view.swing.SwingExtensibleTraitView;
 import net.sf.anathema.character.main.presenter.ExtensibleTraitView;
@@ -41,9 +39,9 @@ public class IntimaciesViewImpl implements IntimaciesView, IView {
   }
 
   @Override
-  public IStringSelectionView addSelectionView(String labelText, RelativePath addIcon) {
+  public StringEntryView addSelectionView(String labelText, RelativePath addIcon) {
     ImageIcon icon = new ImageProvider().getImageIcon(addIcon);
-    StringSelectionView view = new StringSelectionView(labelText, icon);
+    SwingStringEntryView view = new SwingStringEntryView(labelText, icon);
     mainPanel.add(view.getComponent(), 0);
     return view;
   }

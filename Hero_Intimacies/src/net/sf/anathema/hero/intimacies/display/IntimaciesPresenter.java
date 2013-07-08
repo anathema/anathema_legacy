@@ -3,7 +3,6 @@ package net.sf.anathema.hero.intimacies.display;
 import net.sf.anathema.character.main.library.intvalue.IIconToggleButtonProperties;
 import net.sf.anathema.character.main.library.overview.OverviewCategory;
 import net.sf.anathema.character.main.library.removableentry.RemovableEntryListener;
-import net.sf.anathema.character.main.library.selection.IStringSelectionView;
 import net.sf.anathema.character.main.library.trait.presenter.TraitPresenter;
 import net.sf.anathema.character.main.presenter.ExtensibleTraitView;
 import net.sf.anathema.character.main.view.labelledvalue.ILabelledAlotmentView;
@@ -46,7 +45,7 @@ public class IntimaciesPresenter {
 
   public void initPresentation() {
     String labelText = resources.getString("Intimacies.SelectionLabel");
-    IStringSelectionView selectionView = view.addSelectionView(labelText, new BasicUi().getAddIconPath());
+    StringEntryView selectionView = view.addSelectionView(labelText, new BasicUi().getAddIconPath());
     initSelectionViewListening(selectionView);
     initOverviewView();
     initModelListening(selectionView);
@@ -195,7 +194,7 @@ public class IntimaciesPresenter {
     }
   }
 
-  protected void initModelListening(final IStringSelectionView selectionView) {
+  protected void initModelListening(final StringEntryView selectionView) {
     model.addModelChangeListener(new RemovableEntryListener<Intimacy>() {
       @Override
       public void entryAdded(Intimacy v) {
@@ -216,7 +215,7 @@ public class IntimaciesPresenter {
     });
   }
 
-  protected final void initSelectionViewListening(IStringSelectionView selectionView) {
+  protected final void initSelectionViewListening(StringEntryView selectionView) {
     selectionView.addTextChangeListener(new ObjectValueListener<String>() {
       @Override
       public void valueChanged(String newValue) {
@@ -231,7 +230,7 @@ public class IntimaciesPresenter {
     });
   }
 
-  protected final void reset(IStringSelectionView selectionView) {
+  protected final void reset(StringEntryView selectionView) {
     selectionView.clear();
     model.setCurrentName(null);
   }

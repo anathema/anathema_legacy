@@ -1,4 +1,4 @@
-package net.sf.anathema.character.main.library.selection;
+package net.sf.anathema.hero.intimacies.display;
 
 import net.miginfocom.swing.MigLayout;
 import net.sf.anathema.interaction.Command;
@@ -17,13 +17,13 @@ import java.awt.event.ActionListener;
 import static net.sf.anathema.lib.gui.layout.LayoutUtils.withoutInsets;
 import static net.sf.anathema.lib.gui.layout.SwingLayoutUtils.constraintsForImageButton;
 
-public class StringSelectionView implements IStringSelectionView {
+public class SwingStringEntryView implements StringEntryView {
 
   private final LabelTextView labelTextView;
   private final JButton button;
   private final JPanel content = new JPanel(new MigLayout(withoutInsets()));
 
-  public StringSelectionView(String labelText, Icon addButtonIcon) {
+  public SwingStringEntryView(String labelText, Icon addButtonIcon) {
     LineTextView lineTextView = new LineTextView(45);
     labelTextView = new LabelTextView(labelText, lineTextView);
     this.button = new JButton(addButtonIcon);
