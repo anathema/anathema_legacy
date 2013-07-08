@@ -65,8 +65,8 @@ public class FxConfigurableView implements ConfigurableCharacterView, NodeHolder
   }
 
   @Override
-  public <T> IObjectSelectionView<T> addSelectionView(AgnosticUIConfiguration<T> uiConfiguration) {
-    final FxObjectSelectionView<T> selectionView = new ComboBoxSelectionView<>("", uiConfiguration);
+  public <T> IObjectSelectionView<T> addSelectionView(String label, AgnosticUIConfiguration<T> uiConfiguration) {
+    final FxObjectSelectionView<T> selectionView = new ComboBoxSelectionView<>(label, uiConfiguration);
     FxThreading.runOnCorrectThread(new Runnable() {
       @Override
       public void run() {

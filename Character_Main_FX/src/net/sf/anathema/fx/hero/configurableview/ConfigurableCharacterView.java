@@ -16,7 +16,7 @@ public interface ConfigurableCharacterView {
 
   MultiComponentLine addMultiComponentLine();
 
-  <T> IObjectSelectionView<T> addSelectionView(AgnosticUIConfiguration<T> uiConfiguration);
+  <T> IObjectSelectionView<T> addSelectionView(String label, AgnosticUIConfiguration<T> uiConfiguration);
 
   IIntValueView addDotSelector(String label, int maxValue);
 }

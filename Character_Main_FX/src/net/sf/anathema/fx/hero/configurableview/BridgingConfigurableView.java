@@ -48,8 +48,8 @@ public class BridgingConfigurableView implements ConfigurableCharacterView, IVie
   }
 
   @Override
-  public <T> IObjectSelectionView<T> addSelectionView(AgnosticUIConfiguration<T> uiConfiguration) {
-    return fxView.addSelectionView(uiConfiguration);
+  public <T> IObjectSelectionView<T> addSelectionView(String label, AgnosticUIConfiguration<T> uiConfiguration) {
+    return fxView.addSelectionView(label, uiConfiguration);
   }
 
   @Override

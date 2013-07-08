@@ -61,7 +61,7 @@ public class VirtueFlawPresenter implements Presenter {
   }
 
   protected void initRootPresentation(final VirtueFlaw virtueFlaw) {
-    final IObjectSelectionView<TraitType> rootView = view.addSelectionView(new VirtueTypeConfiguration());
+    final IObjectSelectionView<TraitType> rootView = view.addSelectionView(resources.getString("VirtueFlaw.Root.Name"), new VirtueTypeConfiguration());
     virtueFlaw.addRootChangeListener(new ChangeListener() {
       @Override
       public void changeOccurred() {
