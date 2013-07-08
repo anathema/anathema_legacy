@@ -1,6 +1,7 @@
 package net.sf.anathema.hero.othertraits.display;
 
 import javafx.scene.Node;
+import net.miginfocom.layout.AC;
 import net.miginfocom.layout.CC;
 import net.sf.anathema.character.main.library.trait.view.fx.FxTraitView;
 import net.sf.anathema.character.main.type.ICharacterType;
@@ -18,11 +19,11 @@ public class FxOtherTraitsView implements AdvantageView, NodeHolder {
   private final MigPane virtuePanel = new MigPane(fillWithoutInsets().wrapAfter(2));
   private final MigPane willpowerPanel = new MigPane(fillWithoutInsets().wrapAfter(2));
   private final FxEssenceView essenceView = new FxEssenceView();
-  private final MigPane content = new MigPane(withoutInsets().wrapAfter(2));
+  private final MigPane content = new MigPane(withoutInsets().wrapAfter(2), new AC().index(0).fill().index(1).fill());
 
   @Override
   public void initGui(AdvantageViewProperties properties, ICharacterType characterType) {
-    addTitledPanel(properties.getVirtueTitle(), content, virtuePanel, new CC().spanY(2).growY());
+    addTitledPanel(properties.getVirtueTitle(), content, virtuePanel, new CC().spanY(2).growY().alignY("top"));
     addTitledPanel(properties.getWillpowerTitle(), content, willpowerPanel, new CC().pushX().alignY("top"));
     addTitledPanel(properties.getEssenceTitle(), content, essenceView.getNode(), new CC().pushX().alignY("top"));
   }
