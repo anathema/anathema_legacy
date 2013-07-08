@@ -1,12 +1,12 @@
 package net.sf.anathema.hero.specialties.display.view;
 
 import javafx.scene.Node;
+import net.miginfocom.layout.CC;
 import net.sf.anathema.character.main.presenter.ExtensibleTraitView;
 import net.sf.anathema.character.main.traits.TraitType;
-import net.sf.anathema.character.main.view.ColumnCount;
 import net.sf.anathema.fx.hero.traitview.FxExtensibleTraitView;
-import net.sf.anathema.fx.hero.traitview.FxGroupedColumnPanel;
 import net.sf.anathema.fx.hero.traitview.FxTraitView;
+import net.sf.anathema.fx.hero.traitview.SimpleTraitViewPanel;
 import net.sf.anathema.hero.specialties.display.presenter.SpecialtiesConfigurationView;
 import net.sf.anathema.hero.specialties.display.presenter.SpecialtyCreationView;
 import net.sf.anathema.lib.file.RelativePath;
@@ -18,21 +18,19 @@ import org.tbee.javafx.scene.layout.MigPane;
 
 public class FxSpecialtiesView implements SpecialtiesConfigurationView, NodeHolder {
   private final MigPane pane = new MigPane(LayoutUtils.withoutInsets().wrapAfter(1));
-  private final MigPane existingSpecialtiesPane = new MigPane(LayoutUtils.withoutInsets());
   private final MigPane creationPane = new MigPane(LayoutUtils.withoutInsets());
-  private final FxGroupedColumnPanel columnPanel = new FxGroupedColumnPanel(existingSpecialtiesPane, new ColumnCount(1));
+  private final SimpleTraitViewPanel existingSpecialtiesPane = new SimpleTraitViewPanel();
 
   public FxSpecialtiesView() {
-    columnPanel.startNewGroup(null);
     pane.add(creationPane);
-    pane.add(existingSpecialtiesPane);
+    pane.add(existingSpecialtiesPane.getNode(),  new CC().grow().pushY());
   }
 
   @Override
   public ExtensibleTraitView addSpecialtyView(String abilityName, String specialtyName, RelativePath deleteIcon, int value, int maxValue) {
     FxTraitView view = FxTraitView.WithDefaultLayout(abilityName + " - " + specialtyName, maxValue);
     FxExtensibleTraitView extensibleTraitView = new FxExtensibleTraitView(view);
-    extensibleTraitView.addTo(columnPanel);
+    extensibleTraitView.addTo(existingSpecialtiesPane);
     return extensibleTraitView;
   }
 

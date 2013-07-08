@@ -15,12 +15,14 @@ import net.sf.anathema.platform.fx.selection.ComboBoxSelectionView;
 import net.sf.anathema.platform.tool.FxButtonTool;
 import org.tbee.javafx.scene.layout.MigPane;
 
+import static net.sf.anathema.lib.gui.layout.LayoutUtils.withoutInsets;
+
 public class FxSpecialtyCreationView implements SpecialtyCreationView {
 
   private final ComboBoxSelectionView<TraitType> box;
   private final TextField field = new TextField();
   private final FxButtonTool tool = FxButtonTool.ForToolbar();
-  private final MigPane pane = new MigPane();
+  private final MigPane pane = new MigPane(withoutInsets());
 
   public FxSpecialtyCreationView(AgnosticUIConfiguration<TraitType> configuration, RelativePath addIcon) {
     this.box = new ComboBoxSelectionView<>("", configuration);
