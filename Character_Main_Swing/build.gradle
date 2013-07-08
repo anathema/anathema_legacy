@@ -4,4 +4,5 @@ dependencies {
   compile project(':Platform')
   compile project(':Platform_Swing')
   testCompile parent.ext.testDependencies
+  testCompile project(path: ':Character_Main', configuration: 'tests')
 }
