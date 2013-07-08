@@ -137,18 +137,7 @@ task createModule << {
       mkdir "$moduleName/src/main/resources"
       mkdir "$moduleName/src/test/java"
       mkdir "$moduleName/src/test/resources"
-      new File("$moduleName/build.gradle").withWriter { out ->
-        out.println "dependencies {\n//  Insert your dependencies here like this:\n" +
-                "//  compile project(':Character_Equipment')\n" +
-                "//  compile project(':Character_Equipment_Impl')\n" +
-                "//  testCompile project(path: ':Platform', configuration: 'tests')\n" +
-                "//  testCompile parent.ext.testDependencies //includes JUnit etc.\n"+
-                "\n" +
-                "sourceSets.main.java.setSrcDirs(['src/main/java'])\n" +
-                "sourceSets.main.resources.setSrcDirs(['src/main/resources'])\n" +
-                "sourceSets.test.java.setSrcDirs(['src/test/java'])\n" +
-                "sourceSets.test.resources.setSrcDirs(['src/test/resources'])}"
-      }
+      new File("$moduleName/build.gradle") << new File("gradle/build.gradle.template").text
     }
   }
 }
