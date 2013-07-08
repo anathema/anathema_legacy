@@ -9,8 +9,8 @@ public class MarkerIntValueDisplayFactory implements IntegerViewFactory {
   }
 
   @Override
-  public IIntValueDisplay createIntValueDisplay(int maxValue, int value, TwoUpperBounds bounds) {
-    IIntValueDisplay intValueDisplay = IntValueDisplay.createMarkerDisplay(maxValue, bounds, graphics);
+  public IIntValueDisplay createIntValueDisplay(int maxValue, int value) {
+    IIntValueDisplay intValueDisplay = IntValueDisplay.createMarkerDisplay(maxValue, graphics);
     intValueDisplay.setValue(value);
     return intValueDisplay;
   }

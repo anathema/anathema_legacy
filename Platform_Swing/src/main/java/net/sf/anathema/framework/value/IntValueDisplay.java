@@ -12,8 +12,6 @@ import javax.swing.event.MouseInputAdapter;
 import javax.swing.event.MouseInputListener;
 import java.awt.Dimension;
 import java.awt.Image;
-import java.awt.event.HierarchyEvent;
-import java.awt.event.HierarchyListener;
 import java.awt.event.MouseEvent;
 import java.awt.image.BufferedImage;
 import java.util.ArrayList;
@@ -23,15 +21,13 @@ import static net.sf.anathema.lib.gui.layout.LayoutUtils.withoutInsets;
 
 public class IntValueDisplay implements IIntValueDisplay {
 
-  public static IIntValueDisplay createMarkerDisplay(int maxValue, TwoUpperBounds bounds, IntValueDisplayGraphics graphics) {
-    return new IntValueDisplay(maxValue, new RectangleMarkerPanel(), bounds, graphics);
+  public static IIntValueDisplay createMarkerDisplay(int maxValue, IntValueDisplayGraphics graphics) {
+    return new IntValueDisplay(maxValue, new RectangleMarkerPanel(), graphics);
   }
 
-  private int currentValue;
   private int naturalMaximum;
   private int modifiedMaximum;
   private final Announcer<IntValueChangedListener> valueControl = Announcer.to(IntValueChangedListener.class);
-  private final TwoUpperBounds bounds;
   private final AbstractMarkerPanel panel;
   private final Icon capExceededImage;
   private final Icon activeImage;
@@ -61,15 +57,13 @@ public class IntValueDisplay implements IIntValueDisplay {
     }
   };
 
-  private IntValueDisplay(int maxValue, AbstractMarkerPanel panel, TwoUpperBounds bounds, IntValueDisplayGraphics graphics) {
+  private IntValueDisplay(int maxValue, AbstractMarkerPanel panel, IntValueDisplayGraphics graphics) {
     this.activeImage = graphics.getActiveIcon();
     this.passiveImage = graphics.getPassiveIcon();
     this.blockedImage = graphics.getBlockedIcon();
     this.panel = panel;
     this.naturalMaximum = maxValue;
     this.modifiedMaximum = maxValue;
-    this.currentValue = 0;
-    this.bounds = bounds;
     panel.setLayout(new MigLayout(withoutInsets().wrapAfter(maxValue + maxValue / 5).gridGap("2", "0")));
     initializeLabels(maxValue);
     panel.addMouseListener(mouseListener);
@@ -77,14 +71,6 @@ public class IntValueDisplay implements IIntValueDisplay {
     ImageIcon active = (ImageIcon) activeImage;
     ImageIcon passive = (ImageIcon) passiveImage;
     this.capExceededImage = new ImageIcon(createImage(active.getImage(), passive.getImage()));
-
-    getComponent().addHierarchyListener(new HierarchyListener() {
-      @Override
-      public void hierarchyChanged(HierarchyEvent arg0) {
-        if ((arg0.getChangeFlags() & HierarchyEvent.SHOWING_CHANGED) != 0 && getComponent().isShowing()) refresh();
-      }
-    });
-    refresh();
   }
 
   private Image createImage(Image active, Image passive) {
@@ -162,19 +148,8 @@ public class IntValueDisplay implements IIntValueDisplay {
     return imageList.size();
   }
 
-  private void refresh() {
-    int natural = bounds.getOriginalBound();
-    int modified = bounds.getModifiedBound();
-    if (bounds.haveBoundsChanged(naturalMaximum, modifiedMaximum)) {
-      naturalMaximum = natural;
-      modifiedMaximum = modified;
-      setValue(currentValue);
-    }
-  }
-
   @Override
   public void setValue(int value) {
-    currentValue = value;
     for (int imageIndex = 0; imageIndex < value; imageIndex++) {
       imageList.get(imageIndex).setIcon(imageIndex + 1 > naturalMaximum ? capExceededImage : activeImage);
     }
