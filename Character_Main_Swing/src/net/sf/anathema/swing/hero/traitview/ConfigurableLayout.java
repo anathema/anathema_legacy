@@ -11,10 +11,6 @@ public class ConfigurableLayout {
     return new ConfigurableLayout(new CC().alignX("right"), new CC().growX().pushX());
   }
 
-  public static ConfigurableLayout Left() {
-    return new ConfigurableLayout(new CC().alignX("left"), new CC());
-  }
-
   private final CC labelAlignment;
   private final CC dotAlignment;
   public JLabel label;
