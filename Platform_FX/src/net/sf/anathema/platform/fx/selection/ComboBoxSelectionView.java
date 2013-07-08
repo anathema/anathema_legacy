@@ -12,7 +12,6 @@ import net.sf.anathema.lib.lang.StringUtilities;
 import net.sf.anathema.platform.fx.ConfigurableListCellFactory;
 import net.sf.anathema.platform.fx.FxObjectSelectionView;
 import net.sf.anathema.platform.fx.FxThreading;
-import net.sf.anathema.platform.fx.UITableCell;
 import org.jmock.example.announcer.Announcer;
 import org.tbee.javafx.scene.layout.MigPane;
 
@@ -43,8 +42,9 @@ public class ComboBoxSelectionView<V> implements FxObjectSelectionView<V> {
     FxThreading.runOnCorrectThread(new Runnable() {
       @Override
       public void run() {
-        comboBox.setButtonCell(new UITableCell<>(ui));
-        comboBox.setCellFactory(new ConfigurableListCellFactory<>(ui));
+        ConfigurableListCellFactory<V> factory = new ConfigurableListCellFactory<>(ui);
+        comboBox.setButtonCell(factory.call(null));
+        comboBox.setCellFactory(factory);
         comboBox.getSelectionModel().selectedItemProperty().addListener(new ChangeListener<V>() {
           @Override
           public void changed(ObservableValue<? extends V> observableValue, V v, V newValue) {
