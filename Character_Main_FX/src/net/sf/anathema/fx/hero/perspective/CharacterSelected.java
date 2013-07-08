@@ -1,4 +1,4 @@
-package net.sf.anathema.fx.character.perspective;
+package net.sf.anathema.fx.hero.perspective;
 
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;

@@ -1,4 +1,4 @@
-package net.sf.anathema.fx.character.perspective;
+package net.sf.anathema.fx.hero.perspective;
 
 import javafx.application.Platform;
 import javafx.embed.swing.JFXPanel;
