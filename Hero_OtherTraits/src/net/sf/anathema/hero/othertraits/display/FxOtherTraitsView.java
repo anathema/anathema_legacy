@@ -5,7 +5,7 @@ import net.miginfocom.layout.AC;
 import net.miginfocom.layout.CC;
 import net.sf.anathema.character.main.type.ICharacterType;
 import net.sf.anathema.character.main.view.labelledvalue.IValueView;
-import net.sf.anathema.framework.value.IIntValueView;
+import net.sf.anathema.framework.value.IntValueView;
 import net.sf.anathema.fx.hero.traitview.FxTraitView;
 import net.sf.anathema.platform.fx.NodeHolder;
 import net.sf.anathema.platform.fx.StyledTitledPane;
@@ -29,21 +29,21 @@ public class FxOtherTraitsView implements AdvantageView, NodeHolder {
   }
 
   @Override
-  public IIntValueView addVirtue(String labelText, int maxValue) {
+  public IntValueView addVirtue(String labelText, int maxValue) {
     FxTraitView willpowerView = FxTraitView.WithDefaultLayout(labelText, maxValue);
     willpowerView.addTo(virtuePanel);
     return willpowerView;
   }
 
   @Override
-  public IIntValueView addWillpower(String labelText, int maxValue) {
+  public IntValueView addWillpower(String labelText, int maxValue) {
     FxTraitView willpowerView = FxTraitView.WithDefaultLayout(labelText, maxValue);
     willpowerView.addTo(willpowerPanel);
     return willpowerView;
   }
 
   @Override
-  public IIntValueView addEssenceView(String labelText, int maxValue) {
+  public IntValueView addEssenceView(String labelText, int maxValue) {
     return essenceView.addEssenceView(labelText, maxValue);
   }
 

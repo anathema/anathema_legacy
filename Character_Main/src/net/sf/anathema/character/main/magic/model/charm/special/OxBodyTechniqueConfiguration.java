@@ -1,17 +1,17 @@
 package net.sf.anathema.character.main.magic.model.charm.special;
 
-import net.sf.anathema.hero.health.HealthLevelType;
-import net.sf.anathema.character.main.magic.model.charm.ICharm;
-import net.sf.anathema.character.main.traits.TraitType;
 import net.sf.anathema.character.main.library.trait.Trait;
 import net.sf.anathema.character.main.library.trait.favorable.IncrementChecker;
+import net.sf.anathema.character.main.magic.model.charm.ICharm;
+import net.sf.anathema.character.main.magic.model.charm.OxBodyCategory;
+import net.sf.anathema.character.main.traits.TraitType;
+import net.sf.anathema.hero.health.HealthLevelType;
 import net.sf.anathema.hero.health.IHealthLevelProvider;
 import net.sf.anathema.hero.health.OxBodyTechniqueArbitrator;
+import net.sf.anathema.hero.model.Hero;
 import net.sf.anathema.hero.traits.TraitModel;
 import net.sf.anathema.hero.traits.TraitModelFetcher;
-import net.sf.anathema.character.main.magic.model.charm.OxBodyCategory;
-import net.sf.anathema.hero.model.Hero;
-import net.sf.anathema.lib.control.IIntValueChangedListener;
+import net.sf.anathema.lib.control.IntValueChangedListener;
 import org.jmock.example.announcer.Announcer;
 
 import java.util.ArrayList;
@@ -43,7 +43,7 @@ public class OxBodyTechniqueConfiguration implements IOxBodyTechniqueConfigurati
     };
     categories = createOxBodyCategories(hero, properties);
     for (OxBodyCategory category : categories) {
-      category.addCurrentValueListener(new IIntValueChangedListener() {
+      category.addCurrentValueListener(new IntValueChangedListener() {
         @Override
         public void valueChanged(int newValue) {
           fireLearnCountChanged(getCurrentLearnCount());

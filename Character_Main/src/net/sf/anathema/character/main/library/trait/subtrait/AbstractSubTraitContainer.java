@@ -2,7 +2,7 @@ package net.sf.anathema.character.main.library.trait.subtrait;
 
 import com.google.common.base.Preconditions;
 import net.sf.anathema.character.main.library.trait.specialties.Specialty;
-import net.sf.anathema.lib.control.IIntValueChangedListener;
+import net.sf.anathema.lib.control.IntValueChangedListener;
 import org.jmock.example.announcer.Announcer;
 
 import java.util.ArrayList;
@@ -13,7 +13,7 @@ public abstract class AbstractSubTraitContainer implements ISubTraitContainer {
   private final List<Specialty> unremovableSubTraits = new ArrayList<>();
   private final List<Specialty> subtraits = new ArrayList<>();
   private final Announcer<ISpecialtyListener> subTraitListeners = Announcer.to(ISpecialtyListener.class);
-  private final IIntValueChangedListener subTraitCreationPointListener = new IIntValueChangedListener() {
+  private final IntValueChangedListener subTraitCreationPointListener = new IntValueChangedListener() {
     @Override
     public void valueChanged(int newValue) {
       fireSubTraitValueChangedEvent();

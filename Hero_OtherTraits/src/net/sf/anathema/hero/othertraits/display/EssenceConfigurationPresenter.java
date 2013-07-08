@@ -5,7 +5,7 @@ import net.sf.anathema.character.main.library.trait.presenter.TraitPresenter;
 import net.sf.anathema.character.main.traits.types.OtherTraitType;
 import net.sf.anathema.character.main.view.labelledvalue.IValueView;
 import net.sf.anathema.character.main.view.labelledvalue.NullValueView;
-import net.sf.anathema.framework.value.IIntValueView;
+import net.sf.anathema.framework.value.IntValueView;
 import net.sf.anathema.hero.essencepool.EssencePoolModel;
 import net.sf.anathema.hero.traits.TraitMap;
 import net.sf.anathema.lib.control.ChangeListener;
@@ -29,7 +29,7 @@ public class EssenceConfigurationPresenter implements Presenter {
   @Override
   public void initPresentation() {
     Trait essenceTrait = traitMap.getTrait(OtherTraitType.Essence);
-    IIntValueView essenceView =
+    IntValueView essenceView =
             view.addEssenceView(resources.getString("Essence.Name"), essenceTrait.getMaximalValue());
     if (essencePool.isEssenceUser()) {
       String key = "EssencePool.Name.Personal";

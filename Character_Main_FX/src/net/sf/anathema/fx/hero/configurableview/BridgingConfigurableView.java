@@ -3,7 +3,9 @@ package net.sf.anathema.fx.hero.configurableview;
 import net.sf.anathema.character.main.library.util.CssSkinner;
 import net.sf.anathema.character.main.type.ICharacterType;
 import net.sf.anathema.framework.swing.IView;
-import net.sf.anathema.framework.value.IIntValueView;
+import net.sf.anathema.framework.value.IntValueView;
+import net.sf.anathema.hero.configurableview.ConfigurableCharacterView;
+import net.sf.anathema.hero.configurableview.MultiComponentLine;
 import net.sf.anathema.interaction.Tool;
 import net.sf.anathema.lib.gui.AgnosticUIConfiguration;
 import net.sf.anathema.lib.gui.selection.IObjectSelectionView;
@@ -53,7 +55,7 @@ public class BridgingConfigurableView implements ConfigurableCharacterView, IVie
   }
 
   @Override
-  public IIntValueView addDotSelector(String label, int maxValue) {
+  public IntValueView addDotSelector(String label, int maxValue) {
     return fxView.addDotSelector(label, maxValue);
   }
 }

@@ -1,7 +1,7 @@
 package net.sf.anathema.framework.value;
 
 import net.miginfocom.swing.MigLayout;
-import net.sf.anathema.lib.control.IIntValueChangedListener;
+import net.sf.anathema.lib.control.IntValueChangedListener;
 import org.jmock.example.announcer.Announcer;
 
 import javax.swing.Icon;
@@ -30,7 +30,7 @@ public class IntValueDisplay implements IIntValueDisplay {
   private int currentValue;
   private int naturalMaximum;
   private int modifiedMaximum;
-  private final Announcer<IIntValueChangedListener> valueControl = Announcer.to(IIntValueChangedListener.class);
+  private final Announcer<IntValueChangedListener> valueControl = Announcer.to(IntValueChangedListener.class);
   private final TwoUpperBounds bounds;
   private final AbstractMarkerPanel panel;
   private final Icon capExceededImage;
@@ -132,12 +132,12 @@ public class IntValueDisplay implements IIntValueDisplay {
   }
 
   @Override
-  public void addIntValueChangedListener(IIntValueChangedListener listener) {
+  public void addIntValueChangedListener(IntValueChangedListener listener) {
     valueControl.addListener(listener);
   }
 
   @Override
-  public void removeIntValueChangedListener(IIntValueChangedListener listener) {
+  public void removeIntValueChangedListener(IntValueChangedListener listener) {
     valueControl.removeListener(listener);
   }
 

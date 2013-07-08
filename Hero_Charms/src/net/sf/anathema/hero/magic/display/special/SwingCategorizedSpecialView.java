@@ -1,7 +1,7 @@
 package net.sf.anathema.hero.magic.display.special;
 
 import net.sf.anathema.character.main.magic.model.charm.special.ISpecialCharm;
-import net.sf.anathema.framework.value.IIntValueView;
+import net.sf.anathema.framework.value.IntValueView;
 import net.sf.anathema.platform.tree.presenter.view.CategorizedSpecialNodeView;
 import net.sf.anathema.platform.tree.presenter.view.ISpecialNodeView;
 import net.sf.anathema.platform.tree.presenter.view.SpecialCharmContainer;
@@ -18,7 +18,7 @@ public class SwingCategorizedSpecialView implements CategorizedSpecialNodeView, 
   }
 
   @Override
-  public IIntValueView addCategory(String labelText, int maxValue, int value) {
+  public IntValueView addCategory(String labelText, int maxValue, int value) {
     ProxyIntValueView proxyIntValueView = new ProxyIntValueView(labelText, maxValue, value);
     views.add(proxyIntValueView);
     return proxyIntValueView;
@@ -32,7 +32,7 @@ public class SwingCategorizedSpecialView implements CategorizedSpecialNodeView, 
   @Override
   public void showIn(SpecialCharmContainer container) {
     for (ProxyIntValueView view : views) {
-      IIntValueView actualView = container.add(IIntValueView.class, view.getLabel(), view.getValue(), view.getMaxValue());
+      IntValueView actualView = container.add(IntValueView.class, view.getLabel(), view.getValue(), view.getMaxValue());
       view.setActualView(actualView);
     }
   }

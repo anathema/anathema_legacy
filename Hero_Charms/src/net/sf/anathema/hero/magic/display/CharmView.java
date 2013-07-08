@@ -5,12 +5,12 @@ import net.miginfocom.layout.LC;
 import net.miginfocom.swing.MigLayout;
 import net.sf.anathema.character.main.magic.display.view.charmtree.AbstractCascadeSelectionView;
 import net.sf.anathema.character.main.magic.display.view.charmtree.ICharmView;
-import net.sf.anathema.hero.magic.display.special.SpecialBooleanDisplayFactory;
-import net.sf.anathema.hero.magic.display.special.SpecialIntDisplayFactory;
 import net.sf.anathema.framework.swing.IView;
 import net.sf.anathema.framework.ui.RGBColor;
-import net.sf.anathema.framework.value.IIntValueView;
+import net.sf.anathema.framework.value.IntValueView;
 import net.sf.anathema.framework.value.IntegerViewFactory;
+import net.sf.anathema.hero.magic.display.special.SpecialBooleanDisplayFactory;
+import net.sf.anathema.hero.magic.display.special.SpecialIntDisplayFactory;
 import net.sf.anathema.lib.workflow.booleanvalue.IBooleanValueView;
 import net.sf.anathema.platform.tree.presenter.view.ISpecialNodeView;
 import net.sf.anathema.platform.tree.presenter.view.NodeInteractionListener;
@@ -24,7 +24,7 @@ public class CharmView extends AbstractCascadeSelectionView implements ICharmVie
   private final JPanel content = new JPanel(new MigLayout(new LC().wrapAfter(1).fill()));
 
   public CharmView(IntegerViewFactory integerDisplayFactory) {
-    getCharmTreeView().registerSpecialType(IIntValueView.class, new SpecialIntDisplayFactory(integerDisplayFactory));
+    getCharmTreeView().registerSpecialType(IntValueView.class, new SpecialIntDisplayFactory(integerDisplayFactory));
     getCharmTreeView().registerSpecialType(IBooleanValueView.class, new SpecialBooleanDisplayFactory());
   }
 

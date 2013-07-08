@@ -1,6 +1,6 @@
 package net.sf.anathema.lib.control;
 
-public interface IIntValueChangedListener {
+public interface IntValueChangedListener {
 
   void valueChanged(int newValue);
 }

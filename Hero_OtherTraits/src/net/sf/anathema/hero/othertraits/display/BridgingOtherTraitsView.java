@@ -4,7 +4,7 @@ import net.sf.anathema.character.main.library.util.CssSkinner;
 import net.sf.anathema.character.main.type.ICharacterType;
 import net.sf.anathema.character.main.view.labelledvalue.IValueView;
 import net.sf.anathema.framework.swing.IView;
-import net.sf.anathema.framework.value.IIntValueView;
+import net.sf.anathema.framework.value.IntValueView;
 import net.sf.anathema.platform.fx.BridgingPanel;
 
 import javax.swing.JComponent;
@@ -31,17 +31,17 @@ public class BridgingOtherTraitsView implements IView, AdvantageView {
   }
 
   @Override
-  public IIntValueView addVirtue(String labelText, int maxValue) {
+  public IntValueView addVirtue(String labelText, int maxValue) {
     return fxView.addVirtue(labelText, maxValue);
   }
 
   @Override
-  public IIntValueView addWillpower(String labelText, int maxValue) {
+  public IntValueView addWillpower(String labelText, int maxValue) {
     return fxView.addWillpower(labelText, maxValue);
   }
 
   @Override
-  public IIntValueView addEssenceView(String labelText, int maxValue) {
+  public IntValueView addEssenceView(String labelText, int maxValue) {
     return fxView.addEssenceView(labelText, maxValue);
   }
 

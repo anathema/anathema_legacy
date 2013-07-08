@@ -1,7 +1,7 @@
 package net.sf.anathema.hero.othertraits.model.traits;
 
 import net.sf.anathema.character.main.library.trait.Trait;
-import net.sf.anathema.lib.control.IIntValueChangedListener;
+import net.sf.anathema.lib.control.IntValueChangedListener;
 
 import java.util.Arrays;
 
@@ -9,7 +9,7 @@ public class WillpowerListening {
 
   public void initListening(final Trait willpower, final Trait[] virtues) {
     for (Trait virtue : virtues) {
-      virtue.addCreationPointListener(new IIntValueChangedListener() {
+      virtue.addCreationPointListener(new IntValueChangedListener() {
         @Override
         public void valueChanged(int newValue) {
           updateWillpowerCreationRange(willpower, virtues);

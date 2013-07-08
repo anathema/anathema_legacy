@@ -1,11 +1,11 @@
-package net.sf.anathema.character.main.library.trait.view.swing;
+package net.sf.anathema.hero.intimacies.display;
 
 import net.miginfocom.layout.CC;
 import net.miginfocom.swing.MigLayout;
 import net.sf.anathema.character.main.library.intvalue.IIconToggleButtonProperties;
 import net.sf.anathema.character.main.library.trait.view.TraitView;
 import net.sf.anathema.character.main.presenter.ExtensibleTraitView;
-import net.sf.anathema.framework.value.IIntValueView;
+import net.sf.anathema.framework.value.IntValueView;
 import net.sf.anathema.interaction.ToggleTool;
 import net.sf.anathema.interaction.Tool;
 import net.sf.anathema.lib.gui.layout.SwingLayoutUtils;
@@ -20,7 +20,7 @@ public class SwingExtensibleTraitView implements ExtensibleTraitView {
   private final JPanel front = new JPanel(new MigLayout(fillWithoutInsets()));
   private final JPanel center = new JPanel(new MigLayout(fillWithoutInsets().wrapAfter(2)));
   private final JPanel rear = new JPanel(new MigLayout(fillWithoutInsets()));
-  private final IIntValueView view;
+  private final IntValueView view;
 
   public SwingExtensibleTraitView(TraitView view) {
     this.view = view;
@@ -28,7 +28,7 @@ public class SwingExtensibleTraitView implements ExtensibleTraitView {
   }
 
   @Override
-  public IIntValueView getIntValueView() {
+  public IntValueView getIntValueView() {
     return view;
   }
 

@@ -1,13 +1,13 @@
 package net.sf.anathema.lib.workflow.intvalue;
 
-import net.sf.anathema.lib.control.IIntValueChangedListener;
+import net.sf.anathema.lib.control.IntValueChangedListener;
 import net.sf.anathema.lib.data.Range;
 import org.jmock.example.announcer.Announcer;
 
 public class RangedIntValueModel implements IIntValueModel {
 
   private final Range range;
-  private final Announcer<IIntValueChangedListener> valueControl = Announcer.to(IIntValueChangedListener.class);
+  private final Announcer<IntValueChangedListener> valueControl = Announcer.to(IntValueChangedListener.class);
   private int value;
 
   public RangedIntValueModel(int initialValue) {
@@ -20,7 +20,7 @@ public class RangedIntValueModel implements IIntValueModel {
   }
 
   @Override
-  public final void addIntValueChangeListener(IIntValueChangedListener changeListener) {
+  public final void addIntValueChangeListener(IntValueChangedListener changeListener) {
     valueControl.addListener(changeListener);
   }
 

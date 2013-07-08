@@ -1,15 +1,15 @@
 package net.sf.anathema.character.main.library.trait.presenter;
 
 import net.sf.anathema.character.main.library.trait.Trait;
-import net.sf.anathema.framework.value.IIntValueView;
-import net.sf.anathema.lib.control.IIntValueChangedListener;
+import net.sf.anathema.framework.value.IntValueView;
+import net.sf.anathema.lib.control.IntValueChangedListener;
 
 public class TraitPresenter {
 
   private final Trait trait;
-  private final IIntValueView view;
+  private final IntValueView view;
 
-  public TraitPresenter(Trait trait, IIntValueView view) {
+  public TraitPresenter(Trait trait, IntValueView view) {
     this.trait = trait;
     this.view = view;
   }
@@ -21,7 +21,7 @@ public class TraitPresenter {
   }
 
   private void initModelValueListening() {
-    trait.addCurrentValueListener(new IIntValueChangedListener() {
+    trait.addCurrentValueListener(new IntValueChangedListener() {
       @Override
       public void valueChanged(int newValue) {
         view.setValue(newValue);
@@ -30,7 +30,7 @@ public class TraitPresenter {
   }
 
   private void initViewValueListening() {
-    view.addIntValueChangedListener(new IIntValueChangedListener() {
+    view.addIntValueChangedListener(new IntValueChangedListener() {
       @Override
       public void valueChanged(int newValue) {
         trait.setCurrentValue(newValue);

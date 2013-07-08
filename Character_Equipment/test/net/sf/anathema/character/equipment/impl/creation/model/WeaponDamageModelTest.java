@@ -3,7 +3,7 @@ package net.sf.anathema.character.equipment.impl.creation.model;
 import junit.framework.TestCase;
 import net.sf.anathema.hero.health.HealthType;
 import net.sf.anathema.lib.control.ChangeListener;
-import net.sf.anathema.lib.control.IIntValueChangedListener;
+import net.sf.anathema.lib.control.IntValueChangedListener;
 
 import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.verify;
@@ -31,7 +31,7 @@ public class WeaponDamageModelTest extends TestCase {
   }
 
   public void testEventOnIntValueChange() throws Exception {
-    IIntValueChangedListener changeListener = mock(IIntValueChangedListener.class);
+    IntValueChangedListener changeListener = mock(IntValueChangedListener.class);
     damageModel.getDamageModel().addIntValueChangeListener(changeListener);
     damageModel.getDamageModel().setValue(2);
     verify(changeListener).valueChanged(2);

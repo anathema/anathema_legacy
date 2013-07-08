@@ -3,7 +3,7 @@ package net.sf.anathema.hero.othertraits.display;
 import net.sf.anathema.character.main.library.trait.Trait;
 import net.sf.anathema.character.main.library.trait.presenter.TraitPresenter;
 import net.sf.anathema.character.main.traits.types.VirtueType;
-import net.sf.anathema.framework.value.IIntValueView;
+import net.sf.anathema.framework.value.IntValueView;
 import net.sf.anathema.hero.traits.TraitMap;
 import net.sf.anathema.lib.gui.Presenter;
 import net.sf.anathema.lib.resources.Resources;
@@ -24,7 +24,7 @@ public class VirtueConfigurationPresenter implements Presenter {
   public void initPresentation() {
     for (Trait virtue : virtues) {
       String labelText = resources.getString("VirtueType.Name." + virtue.getType().getId());
-      IIntValueView virtueView = view.addVirtue(labelText, virtue.getMaximalValue());
+      IntValueView virtueView = view.addVirtue(labelText, virtue.getMaximalValue());
       new TraitPresenter(virtue, virtueView).initPresentation();
     }
   }

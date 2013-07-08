@@ -1,8 +1,8 @@
 package net.sf.anathema.character.main.library.trait;
 
-import net.sf.anathema.character.main.traits.ValuedTraitType;
 import net.sf.anathema.character.main.library.ITraitFavorization;
-import net.sf.anathema.lib.control.IIntValueChangedListener;
+import net.sf.anathema.character.main.traits.ValuedTraitType;
+import net.sf.anathema.lib.control.IntValueChangedListener;
 
 public interface Trait extends ValuedTraitType {
 
@@ -36,11 +36,11 @@ public interface Trait extends ValuedTraitType {
 
   int getMaximalValue();
 
-  void addCreationPointListener(IIntValueChangedListener listener);
+  void addCreationPointListener(IntValueChangedListener listener);
 
-  void removeCreationPointListener(IIntValueChangedListener listener);
+  void removeCreationPointListener(IntValueChangedListener listener);
 
-  void addCurrentValueListener(IIntValueChangedListener listener);
+  void addCurrentValueListener(IntValueChangedListener listener);
 
   void applyCapModifier(int modifier);
 

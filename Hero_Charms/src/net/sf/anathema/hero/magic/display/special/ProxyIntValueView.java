@@ -1,15 +1,15 @@
 package net.sf.anathema.hero.magic.display.special;
 
-import net.sf.anathema.framework.value.IIntValueView;
-import net.sf.anathema.lib.control.IIntValueChangedListener;
+import net.sf.anathema.framework.value.IntValueView;
+import net.sf.anathema.lib.control.IntValueChangedListener;
 import org.jmock.example.announcer.Announcer;
 
-public class ProxyIntValueView implements IIntValueView {
+public class ProxyIntValueView implements IntValueView {
   private final String labelText;
   private int maxValue;
-  private final Announcer<IIntValueChangedListener> valueListeners = new Announcer<>(IIntValueChangedListener.class);
+  private final Announcer<IntValueChangedListener> valueListeners = new Announcer<>(IntValueChangedListener.class);
   private int value;
-  private IIntValueView actualView;
+  private IntValueView actualView;
 
   public ProxyIntValueView(String labelText, int maxValue, int value) {
     this.labelText = labelText;
@@ -17,9 +17,9 @@ public class ProxyIntValueView implements IIntValueView {
     this.value = value;
   }
 
-  public void setActualView(IIntValueView actualView) {
+  public void setActualView(IntValueView actualView) {
     this.actualView = actualView;
-    actualView.addIntValueChangedListener(new IIntValueChangedListener() {
+    actualView.addIntValueChangedListener(new IntValueChangedListener() {
       @Override
       public void valueChanged(int newValue) {
         valueListeners.announce().valueChanged(newValue);
@@ -41,7 +41,7 @@ public class ProxyIntValueView implements IIntValueView {
   }
 
   @Override
-  public void addIntValueChangedListener(IIntValueChangedListener listener) {
+  public void addIntValueChangedListener(IntValueChangedListener listener) {
     if (actualView != null) {
       actualView.addIntValueChangedListener(listener);
       return;
@@ -50,7 +50,7 @@ public class ProxyIntValueView implements IIntValueView {
   }
 
   @Override
-  public void removeIntValueChangedListener(IIntValueChangedListener listener) {
+  public void removeIntValueChangedListener(IntValueChangedListener listener) {
     if (actualView != null) {
       actualView.removeIntValueChangedListener(listener);
       return;

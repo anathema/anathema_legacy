@@ -1,4 +1,4 @@
-package net.sf.anathema.character.main.library.trait.view.swing;
+package net.sf.anathema.swing.hero.traitview;
 
 import net.miginfocom.layout.CC;
 

@@ -2,7 +2,7 @@ package net.sf.anathema.hero.othertraits.display;
 
 import net.sf.anathema.character.main.library.trait.Trait;
 import net.sf.anathema.character.main.library.trait.presenter.TraitPresenter;
-import net.sf.anathema.framework.value.IIntValueView;
+import net.sf.anathema.framework.value.IntValueView;
 import net.sf.anathema.lib.gui.Presenter;
 import net.sf.anathema.lib.resources.Resources;
 
@@ -21,7 +21,7 @@ public class WillpowerConfigurationPresenter implements Presenter {
   @Override
   public void initPresentation() {
     String labelText = resources.getString("WillpowerType.Name");
-    IIntValueView willpowerView = view.addWillpower(labelText, willpower.getMaximalValue());
+    IntValueView willpowerView = view.addWillpower(labelText, willpower.getMaximalValue());
     new TraitPresenter(willpower, willpowerView).initPresentation();
   }
 }

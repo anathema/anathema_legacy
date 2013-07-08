@@ -1,6 +1,6 @@
 package net.sf.anathema.lib.workflow.intvalue;
 
-import net.sf.anathema.lib.control.IIntValueChangedListener;
+import net.sf.anathema.lib.control.IntValueChangedListener;
 
 public interface IIntValueModel {
 
@@ -12,5 +12,5 @@ public interface IIntValueModel {
 
   int getValue();
 
-  void addIntValueChangeListener(IIntValueChangedListener changeListener);
+  void addIntValueChangeListener(IntValueChangedListener changeListener);
 }

@@ -1,9 +1,9 @@
 package net.sf.anathema.character.main.traits.context;
 
-import net.sf.anathema.character.main.traits.TraitValueStrategy;
 import net.sf.anathema.character.main.library.trait.Trait;
 import net.sf.anathema.character.main.library.trait.rules.ITraitRules;
-import net.sf.anathema.lib.control.IIntValueChangedListener;
+import net.sf.anathema.character.main.traits.TraitValueStrategy;
+import net.sf.anathema.lib.control.IntValueChangedListener;
 import org.jmock.example.announcer.Announcer;
 
 public class ExperiencedTraitValueStrategy implements TraitValueStrategy {
@@ -27,12 +27,12 @@ public class ExperiencedTraitValueStrategy implements TraitValueStrategy {
   }
 
   @Override
-  public void notifyOnCreationValueChange(int value, Announcer<IIntValueChangedListener> currentValueControl) {
+  public void notifyOnCreationValueChange(int value, Announcer<IntValueChangedListener> currentValueControl) {
     // throw new IllegalStateException("No changes on creation value should occur in experienced mode.");
   }
 
   @Override
-  public void notifyOnLearnedValueChange(int value, Announcer<IIntValueChangedListener> currentValueControl) {
+  public void notifyOnLearnedValueChange(int value, Announcer<IntValueChangedListener> currentValueControl) {
     currentValueControl.announce().valueChanged(value);
   }
 

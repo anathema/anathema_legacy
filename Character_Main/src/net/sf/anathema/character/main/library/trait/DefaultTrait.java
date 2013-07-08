@@ -2,21 +2,21 @@ package net.sf.anathema.character.main.library.trait;
 
 import com.google.common.base.Preconditions;
 import net.sf.anathema.character.main.caste.CasteType;
-import net.sf.anathema.character.main.traits.TraitValueStrategy;
-import net.sf.anathema.character.main.traits.TraitType;
 import net.sf.anathema.character.main.library.ITraitFavorization;
 import net.sf.anathema.character.main.library.trait.favorable.IncrementChecker;
 import net.sf.anathema.character.main.library.trait.favorable.NullTraitFavorization;
 import net.sf.anathema.character.main.library.trait.favorable.TraitFavorization;
 import net.sf.anathema.character.main.library.trait.rules.IFavorableTraitRules;
 import net.sf.anathema.character.main.library.trait.rules.ITraitRules;
-import net.sf.anathema.hero.concept.ConceptChange;
-import net.sf.anathema.hero.traits.TraitModel;
-import net.sf.anathema.hero.traits.TraitModelFetcher;
+import net.sf.anathema.character.main.traits.TraitType;
+import net.sf.anathema.character.main.traits.TraitValueStrategy;
 import net.sf.anathema.hero.change.ChangeFlavor;
 import net.sf.anathema.hero.change.FlavoredChangeListener;
+import net.sf.anathema.hero.concept.ConceptChange;
 import net.sf.anathema.hero.model.Hero;
-import net.sf.anathema.lib.control.IIntValueChangedListener;
+import net.sf.anathema.hero.traits.TraitModel;
+import net.sf.anathema.hero.traits.TraitModelFetcher;
+import net.sf.anathema.lib.control.IntValueChangedListener;
 import net.sf.anathema.lib.data.Range;
 import org.jmock.example.announcer.Announcer;
 
@@ -28,8 +28,8 @@ public class DefaultTrait implements Trait {
   private final ValueChangeChecker checker;
   private ITraitFavorization traitFavorization;
   private final ITraitRules traitRules;
-  private final Announcer<IIntValueChangedListener> creationPointControl = Announcer.to(IIntValueChangedListener.class);
-  private final Announcer<IIntValueChangedListener> currentValueControl = Announcer.to(IIntValueChangedListener.class);
+  private final Announcer<IntValueChangedListener> creationPointControl = Announcer.to(IntValueChangedListener.class);
+  private final Announcer<IntValueChangedListener> currentValueControl = Announcer.to(IntValueChangedListener.class);
   private final TraitValueStrategy valueStrategy;
 
   public DefaultTrait(Hero hero, IFavorableTraitRules traitRules, CasteType[] castes, ValueChangeChecker valueChangeChecker,
@@ -230,17 +230,17 @@ public class DefaultTrait implements Trait {
   }
 
   @Override
-  public final void addCreationPointListener(IIntValueChangedListener listener) {
+  public final void addCreationPointListener(IntValueChangedListener listener) {
     creationPointControl.addListener(listener);
   }
 
   @Override
-  public final void removeCreationPointListener(IIntValueChangedListener listener) {
+  public final void removeCreationPointListener(IntValueChangedListener listener) {
     creationPointControl.removeListener(listener);
   }
 
   @Override
-  public final void addCurrentValueListener(IIntValueChangedListener listener) {
+  public final void addCurrentValueListener(IntValueChangedListener listener) {
     currentValueControl.addListener(listener);
   }
 

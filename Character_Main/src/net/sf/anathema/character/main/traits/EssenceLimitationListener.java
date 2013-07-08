@@ -2,9 +2,9 @@ package net.sf.anathema.character.main.traits;
 
 import net.sf.anathema.character.main.library.trait.Trait;
 import net.sf.anathema.hero.model.Hero;
-import net.sf.anathema.lib.control.IIntValueChangedListener;
+import net.sf.anathema.lib.control.IntValueChangedListener;
 
-public class EssenceLimitationListener implements IIntValueChangedListener {
+public class EssenceLimitationListener implements IntValueChangedListener {
 
   private final TraitIterable traitIterable;
   private Hero hero;

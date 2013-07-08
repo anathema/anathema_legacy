@@ -3,7 +3,7 @@ package net.sf.anathema.framework.module.preferences;
 import net.sf.anathema.framework.presenter.action.preferences.IPreferencesElement;
 import net.sf.anathema.initialization.PreferenceElement;
 import net.sf.anathema.initialization.reflections.Weight;
-import net.sf.anathema.lib.control.IIntValueChangedListener;
+import net.sf.anathema.lib.control.IntValueChangedListener;
 import net.sf.anathema.lib.gui.widgets.IntegerSpinner;
 import net.sf.anathema.lib.resources.Resources;
 import net.sf.anathema.lib.util.Identifier;
@@ -28,7 +28,7 @@ public class ToolTipTimePreferencesElement implements IPreferencesElement {
     spinner.setPreferredWidth(70);
     spinner.setMinimum(0);
     spinner.setMaximum(10);
-    spinner.addChangeListener(new IIntValueChangedListener() {
+    spinner.addChangeListener(new IntValueChangedListener() {
       @Override
       public void valueChanged(int newValue) {
         if (toolTipTime == newValue) {

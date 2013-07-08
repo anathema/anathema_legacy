@@ -2,8 +2,10 @@ package net.sf.anathema.fx.hero.configurableview;
 
 import javafx.scene.Node;
 import net.miginfocom.layout.CC;
-import net.sf.anathema.framework.value.IIntValueView;
+import net.sf.anathema.framework.value.IntValueView;
 import net.sf.anathema.fx.hero.traitview.FxTraitView;
+import net.sf.anathema.hero.configurableview.ConfigurableCharacterView;
+import net.sf.anathema.hero.configurableview.MultiComponentLine;
 import net.sf.anathema.interaction.Tool;
 import net.sf.anathema.lib.gui.AgnosticUIConfiguration;
 import net.sf.anathema.lib.gui.selection.IObjectSelectionView;
@@ -77,7 +79,7 @@ public class FxConfigurableView implements ConfigurableCharacterView, NodeHolder
   }
 
   @Override
-  public IIntValueView addDotSelector(String label, int maxValue) {
+  public IntValueView addDotSelector(String label, int maxValue) {
     final FxTraitView view = FxTraitView.AsSingleNode(label, maxValue);
     FxThreading.runOnCorrectThread(new Runnable() {
       @Override

@@ -4,12 +4,12 @@ import net.sf.anathema.character.main.CharacterUI;
 import net.sf.anathema.character.main.IIntegerDescription;
 import net.sf.anathema.character.main.presenter.DescriptionDetails;
 import net.sf.anathema.character.main.presenter.NameGeneratorCommand;
-import net.sf.anathema.fx.hero.configurableview.ConfigurableCharacterView;
-import net.sf.anathema.fx.hero.configurableview.MultiComponentLine;
 import net.sf.anathema.hero.concept.HeroConcept;
+import net.sf.anathema.hero.configurableview.ConfigurableCharacterView;
+import net.sf.anathema.hero.configurableview.MultiComponentLine;
 import net.sf.anathema.hero.description.HeroDescription;
 import net.sf.anathema.interaction.Tool;
-import net.sf.anathema.lib.control.IIntValueChangedListener;
+import net.sf.anathema.lib.control.IntValueChangedListener;
 import net.sf.anathema.lib.gui.widgets.IIntegerView;
 import net.sf.anathema.lib.resources.Resources;
 import net.sf.anathema.lib.workflow.textualdescription.ITextView;
@@ -81,7 +81,7 @@ public class DescriptionPresenter {
   private void addInteger(MultiComponentLine componentLine, String label, final IIntegerDescription integerDescription) {
     String title = resources.getString(label);
     IIntegerView view = componentLine.addIntegerView(title, integerDescription);
-    view.addChangeListener(new IIntValueChangedListener() {
+    view.addChangeListener(new IntValueChangedListener() {
       @Override
       public void valueChanged(int newValue) {
         integerDescription.setValue(newValue);

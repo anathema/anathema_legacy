@@ -2,8 +2,8 @@ package net.sf.anathema.hero.magic.display.special;
 
 import net.miginfocom.swing.MigLayout;
 import net.sf.anathema.character.main.library.trait.view.TraitView;
-import net.sf.anathema.framework.value.IIntValueView;
-import net.sf.anathema.lib.control.IIntValueChangedListener;
+import net.sf.anathema.framework.value.IntValueView;
+import net.sf.anathema.lib.control.IntValueChangedListener;
 import net.sf.anathema.platform.tree.view.interaction.SpecialContent;
 
 import javax.swing.JComponent;
@@ -11,7 +11,7 @@ import javax.swing.JPanel;
 
 import static net.sf.anathema.lib.gui.layout.LayoutUtils.fillWithoutInsets;
 
-public class SpecialIntValueView implements IIntValueView, SpecialContent {
+public class SpecialIntValueView implements IntValueView, SpecialContent {
   private final TraitView view;
 
   public SpecialIntValueView(TraitView view) {
@@ -24,12 +24,12 @@ public class SpecialIntValueView implements IIntValueView, SpecialContent {
   }
 
   @Override
-  public void addIntValueChangedListener(IIntValueChangedListener listener) {
+  public void addIntValueChangedListener(IntValueChangedListener listener) {
     view.addIntValueChangedListener(listener);
   }
 
   @Override
-  public void removeIntValueChangedListener(IIntValueChangedListener listener) {
+  public void removeIntValueChangedListener(IntValueChangedListener listener) {
     view.removeIntValueChangedListener(listener);
   }
 

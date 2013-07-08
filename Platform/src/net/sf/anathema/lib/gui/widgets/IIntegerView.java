@@ -1,7 +1,7 @@
 package net.sf.anathema.lib.gui.widgets;
 
-import net.sf.anathema.lib.control.IIntValueChangedListener;
+import net.sf.anathema.lib.control.IntValueChangedListener;
 
 public interface IIntegerView {
-  void addChangeListener(IIntValueChangedListener iIntValueChangedListener);
+  void addChangeListener(IntValueChangedListener intValueChangedListener);
 }

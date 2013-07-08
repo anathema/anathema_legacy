@@ -2,7 +2,7 @@ package net.sf.anathema.hero.othertraits.display;
 
 import javafx.scene.Node;
 import net.sf.anathema.character.main.view.labelledvalue.IValueView;
-import net.sf.anathema.framework.value.IIntValueView;
+import net.sf.anathema.framework.value.IntValueView;
 import net.sf.anathema.fx.hero.overview.FxStringOverview;
 import net.sf.anathema.fx.hero.traitview.FxTraitView;
 import org.tbee.javafx.scene.layout.MigPane;
@@ -22,7 +22,7 @@ public class FxEssenceView {
     return poolView;
   }
 
-  public IIntValueView addEssenceView(String labelText, int maxValue) {
+  public IntValueView addEssenceView(String labelText, int maxValue) {
     FxTraitView essenceView = FxTraitView.WithDefaultLayout(labelText, maxValue);
     essenceView.addTo(panel);
     return essenceView;

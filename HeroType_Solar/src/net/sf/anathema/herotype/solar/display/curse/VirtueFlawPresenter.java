@@ -5,10 +5,10 @@ import net.sf.anathema.character.main.library.trait.presenter.TraitPresenter;
 import net.sf.anathema.character.main.presenter.SelectIdentifierConfiguration;
 import net.sf.anathema.character.main.traits.TraitType;
 import net.sf.anathema.character.main.traits.types.VirtueType;
-import net.sf.anathema.framework.value.IIntValueView;
-import net.sf.anathema.fx.hero.configurableview.ConfigurableCharacterView;
+import net.sf.anathema.framework.value.IntValueView;
 import net.sf.anathema.hero.change.ChangeFlavor;
 import net.sf.anathema.hero.change.FlavoredChangeListener;
+import net.sf.anathema.hero.configurableview.ConfigurableCharacterView;
 import net.sf.anathema.hero.model.Hero;
 import net.sf.anathema.hero.traits.TraitChangeFlavor;
 import net.sf.anathema.herotype.solar.model.curse.VirtueFlaw;
@@ -54,7 +54,7 @@ public class VirtueFlawPresenter implements Presenter {
 
   protected void initLimitPresentation(VirtueFlaw virtueFlaw) {
     Trait trait = virtueFlaw.getLimitTrait();
-    IIntValueView traitView =
+    IntValueView traitView =
             view.addDotSelector(getResources().getString(trait.getType().getId()), trait.getMaximalValue());
     new TraitPresenter(trait, traitView).initPresentation();
   }

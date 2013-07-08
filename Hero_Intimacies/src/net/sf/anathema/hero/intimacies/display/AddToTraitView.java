@@ -1,4 +1,4 @@
-package net.sf.anathema.character.main.library.trait.view.swing;
+package net.sf.anathema.hero.intimacies.display;
 
 import net.sf.anathema.framework.view.menu.AddToSwingComponent;
 import net.sf.anathema.lib.gui.layout.SwingLayoutUtils;

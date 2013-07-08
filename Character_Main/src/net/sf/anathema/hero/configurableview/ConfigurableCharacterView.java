@@ -1,6 +1,6 @@
-package net.sf.anathema.fx.hero.configurableview;
+package net.sf.anathema.hero.configurableview;
 
-import net.sf.anathema.framework.value.IIntValueView;
+import net.sf.anathema.framework.value.IntValueView;
 import net.sf.anathema.interaction.Tool;
 import net.sf.anathema.lib.gui.AgnosticUIConfiguration;
 import net.sf.anathema.lib.gui.selection.IObjectSelectionView;
@@ -18,5 +18,5 @@ public interface ConfigurableCharacterView {
 
   <T> IObjectSelectionView<T> addSelectionView(String label, AgnosticUIConfiguration<T> uiConfiguration);
 
-  IIntValueView addDotSelector(String label, int maxValue);
+  IntValueView addDotSelector(String label, int maxValue);
 }

@@ -1,26 +1,26 @@
 package net.sf.anathema.hero.magic.model.charms.special;
 
-import net.sf.anathema.character.main.magic.model.charm.special.IMultiLearnableCharmConfiguration;
-import net.sf.anathema.character.main.magic.model.charm.ICharm;
-import net.sf.anathema.character.main.magic.model.charmtree.ICharmLearnableArbitrator;
-import net.sf.anathema.character.main.magic.model.charm.special.IMultiLearnableCharm;
-import net.sf.anathema.character.main.magic.model.charm.special.ISpecialCharmLearnListener;
-import net.sf.anathema.character.main.magic.model.charm.special.LearnRangeContext;
 import net.sf.anathema.character.main.library.trait.DefaultTraitType;
 import net.sf.anathema.character.main.library.trait.LimitedTrait;
 import net.sf.anathema.character.main.library.trait.Trait;
 import net.sf.anathema.character.main.library.trait.favorable.IncrementChecker;
-import net.sf.anathema.hero.charms.CharmsModel;
-import net.sf.anathema.hero.traits.TraitChangeFlavor;
-import net.sf.anathema.hero.traits.TraitModelFetcher;
 import net.sf.anathema.character.main.magic.model.charm.CharmSpecialist;
 import net.sf.anathema.character.main.magic.model.charm.CharmSpecialistImpl;
-import net.sf.anathema.character.main.magic.model.charmtree.CharmTraitRequirementChecker;
+import net.sf.anathema.character.main.magic.model.charm.ICharm;
 import net.sf.anathema.character.main.magic.model.charm.PrerequisiteModifyingCharms;
+import net.sf.anathema.character.main.magic.model.charm.special.IMultiLearnableCharm;
+import net.sf.anathema.character.main.magic.model.charm.special.IMultiLearnableCharmConfiguration;
+import net.sf.anathema.character.main.magic.model.charm.special.ISpecialCharmLearnListener;
+import net.sf.anathema.character.main.magic.model.charm.special.LearnRangeContext;
+import net.sf.anathema.character.main.magic.model.charmtree.CharmTraitRequirementChecker;
+import net.sf.anathema.character.main.magic.model.charmtree.ICharmLearnableArbitrator;
 import net.sf.anathema.hero.change.ChangeFlavor;
 import net.sf.anathema.hero.change.FlavoredChangeListener;
+import net.sf.anathema.hero.charms.CharmsModel;
 import net.sf.anathema.hero.model.Hero;
-import net.sf.anathema.lib.control.IIntValueChangedListener;
+import net.sf.anathema.hero.traits.TraitChangeFlavor;
+import net.sf.anathema.hero.traits.TraitModelFetcher;
+import net.sf.anathema.lib.control.IntValueChangedListener;
 import net.sf.anathema.lib.data.Range;
 import org.jmock.example.announcer.Announcer;
 
@@ -46,7 +46,7 @@ public class MultiLearnableCharmConfiguration implements IMultiLearnableCharmCon
     this.arbitrator = arbitrator;
     this.trait = new LimitedTrait(hero, new DefaultTraitType(charm.getId()), createStaticLimitedTemplate(0, specialCharm.getAbsoluteLearnLimit()),
             new MultiLearnableIncrementChecker());
-    this.trait.addCurrentValueListener(new IIntValueChangedListener() {
+    this.trait.addCurrentValueListener(new IntValueChangedListener() {
       @Override
       public void valueChanged(int newValue) {
         fireLearnCountChanged(newValue);

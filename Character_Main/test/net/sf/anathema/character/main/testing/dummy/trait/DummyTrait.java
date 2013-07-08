@@ -1,10 +1,10 @@
 package net.sf.anathema.character.main.testing.dummy.trait;
 
-import net.sf.anathema.character.main.traits.TraitType;
 import net.sf.anathema.character.main.library.ITraitFavorization;
 import net.sf.anathema.character.main.library.trait.Trait;
 import net.sf.anathema.character.main.library.trait.favorable.NullTraitFavorization;
-import net.sf.anathema.lib.control.IIntValueChangedListener;
+import net.sf.anathema.character.main.traits.TraitType;
+import net.sf.anathema.lib.control.IntValueChangedListener;
 
 public class DummyTrait implements Trait {
 
@@ -81,12 +81,12 @@ public class DummyTrait implements Trait {
   }
 
   @Override
-  public void addCreationPointListener(IIntValueChangedListener listener) {
+  public void addCreationPointListener(IntValueChangedListener listener) {
     //not yet implemented
   }
 
   @Override
-  public void addCurrentValueListener(IIntValueChangedListener listener) {
+  public void addCurrentValueListener(IntValueChangedListener listener) {
     //not yet implemented
   }
 
@@ -111,7 +111,7 @@ public class DummyTrait implements Trait {
   }
 
   @Override
-  public void removeCreationPointListener(IIntValueChangedListener listener) {
+  public void removeCreationPointListener(IntValueChangedListener listener) {
     //not yet implemented
   }
 

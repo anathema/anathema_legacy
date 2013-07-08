@@ -5,9 +5,9 @@ import net.sf.anathema.character.equipment.creation.model.stats.IArmourStatistic
 import net.sf.anathema.character.equipment.creation.model.stats.IEquipmentStatisticsCreationModel;
 import net.sf.anathema.character.equipment.creation.presenter.stats.properties.ArmourStatisticsProperties;
 import net.sf.anathema.character.main.CharacterUI;
-import net.sf.anathema.hero.health.HealthType;
 import net.sf.anathema.framework.value.IconToggleButton;
-import net.sf.anathema.lib.control.IIntValueChangedListener;
+import net.sf.anathema.hero.health.HealthType;
+import net.sf.anathema.lib.control.IntValueChangedListener;
 import net.sf.anathema.lib.gui.layout.AdditiveView;
 import net.sf.anathema.lib.gui.layout.SwingLayoutUtils;
 import net.sf.anathema.lib.resources.Resources;
@@ -68,7 +68,7 @@ public class ArmourStatisticsPresenterPage extends AbstractEquipmentStatisticsPr
     boolean linked = lethalSoakModel.getValue() == aggravatedSoakModel.getValue();
     linkToggleButton.setSelected(linked);
     aggravatedSoakSpinner.setEnabled(!linked);
-    lethalSoakModel.addIntValueChangeListener(new IIntValueChangedListener() {
+    lethalSoakModel.addIntValueChangeListener(new IntValueChangedListener() {
       @Override
       public void valueChanged(int newValue) {
         if (linkToggleButton.isSelected()) {

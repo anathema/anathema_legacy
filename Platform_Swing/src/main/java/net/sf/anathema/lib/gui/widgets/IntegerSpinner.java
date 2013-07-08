@@ -1,7 +1,7 @@
 package net.sf.anathema.lib.gui.widgets;
 
 import net.sf.anathema.framework.swing.IView;
-import net.sf.anathema.lib.control.IIntValueChangedListener;
+import net.sf.anathema.lib.control.IntValueChangedListener;
 import net.sf.anathema.lib.data.IOverline;
 import net.sf.anathema.lib.data.Range;
 
@@ -21,7 +21,7 @@ import java.util.Map;
 public class IntegerSpinner implements IView, IIntegerView {
 
   private final JSpinner spinner;
-  private final Map<IIntValueChangedListener, ChangeListener> listenerMap = new HashMap<>();
+  private final Map<IntValueChangedListener, ChangeListener> listenerMap = new HashMap<>();
   private final SpinnerNumberModel numberModel;
 
   public IntegerSpinner(int initialValue) {
@@ -43,10 +43,6 @@ public class IntegerSpinner implements IView, IIntegerView {
     getSpinnerModel().setMinimum(minimum);
   }
 
-  public void setStepSize(Integer stepsize) {
-    getSpinnerModel().setStepSize(stepsize);
-  }
-
   private SpinnerNumberModel getSpinnerModel() {
     return (SpinnerNumberModel) spinner.getModel();
   }
@@ -57,7 +53,7 @@ public class IntegerSpinner implements IView, IIntegerView {
   }
 
   @Override
-  public void addChangeListener(final IIntValueChangedListener listener) {
+  public void addChangeListener(final IntValueChangedListener listener) {
     ChangeListener changeListener = new ChangeListener() {
       @Override
       public void stateChanged(ChangeEvent e) {
@@ -129,7 +125,7 @@ public class IntegerSpinner implements IView, IIntegerView {
   }
 
   @SuppressWarnings("UnusedDeclaration")
-  public void removeChangeListener(IIntValueChangedListener listener) {
+  public void removeChangeListener(IntValueChangedListener listener) {
     numberModel.removeChangeListener(listenerMap.get(listener));
   }
 }

@@ -3,7 +3,7 @@ package net.sf.anathema.fx.hero.traitview;
 import net.miginfocom.layout.CC;
 import net.sf.anathema.character.main.library.intvalue.IIconToggleButtonProperties;
 import net.sf.anathema.character.main.presenter.ExtensibleTraitView;
-import net.sf.anathema.framework.value.IIntValueView;
+import net.sf.anathema.framework.value.IntValueView;
 import net.sf.anathema.interaction.ToggleTool;
 import net.sf.anathema.interaction.Tool;
 import net.sf.anathema.platform.fx.FxComponent;
@@ -27,7 +27,7 @@ public class FxExtensibleTraitView implements ExtensibleTraitView {
   }
 
   @Override
-  public IIntValueView getIntValueView() {
+  public IntValueView getIntValueView() {
     return view;
   }
 

@@ -1,10 +1,6 @@
 package net.sf.anthema.hero.traits;
 
 import net.sf.anathema.character.main.caste.CasteType;
-import net.sf.anathema.character.main.traits.SimpleTraitTemplate;
-import net.sf.anathema.character.main.traits.ITraitTemplate;
-import net.sf.anathema.character.main.traits.types.AbilityType;
-import net.sf.anathema.character.main.traits.types.OtherTraitType;
 import net.sf.anathema.character.main.library.trait.DefaultTrait;
 import net.sf.anathema.character.main.library.trait.FriendlyValueChangeChecker;
 import net.sf.anathema.character.main.library.trait.favorable.FavorableState;
@@ -19,11 +15,15 @@ import net.sf.anathema.character.main.testing.dummy.DummyHero;
 import net.sf.anathema.character.main.testing.dummy.models.DummyHeroConcept;
 import net.sf.anathema.character.main.testing.dummy.models.DummyOtherTraitModel;
 import net.sf.anathema.character.main.testing.dummy.models.DummyTraitModel;
+import net.sf.anathema.character.main.traits.ITraitTemplate;
+import net.sf.anathema.character.main.traits.SimpleTraitTemplate;
 import net.sf.anathema.character.main.traits.context.CreationTraitValueStrategy;
 import net.sf.anathema.character.main.traits.context.ExperiencedTraitValueStrategy;
 import net.sf.anathema.character.main.traits.context.ProxyTraitValueStrategy;
+import net.sf.anathema.character.main.traits.types.AbilityType;
+import net.sf.anathema.character.main.traits.types.OtherTraitType;
 import net.sf.anathema.hero.model.Hero;
-import net.sf.anathema.lib.control.IIntValueChangedListener;
+import net.sf.anathema.lib.control.IntValueChangedListener;
 import org.junit.Before;
 import org.junit.Test;
 import org.mockito.Mockito;
@@ -120,7 +120,7 @@ public class FavorableTraitTest {
     valueStrategy.setStrategy(new ExperiencedTraitValueStrategy());
     trait.setCurrentValue(3);
     final int[] holder = new int[1];
-    trait.addCurrentValueListener(new IIntValueChangedListener() {
+    trait.addCurrentValueListener(new IntValueChangedListener() {
       @Override
       public void valueChanged(int newValue) {
         holder[0] = newValue;
