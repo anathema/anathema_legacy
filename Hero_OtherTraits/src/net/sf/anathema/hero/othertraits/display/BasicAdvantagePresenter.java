@@ -29,6 +29,6 @@ public class BasicAdvantagePresenter {
     for (Presenter presenter : subPresenters) {
       presenter.initPresentation();
     }
-    view.initGui(new DefaultAdvantageViewProperties(resources));
+    view.initGui(new DefaultAdvantageViewProperties(resources), null);
   }
 }
