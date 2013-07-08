@@ -86,9 +86,9 @@ public class VirtueFlawPresenter implements Presenter {
   }
 
   private void updateRootView(IObjectSelectionView<TraitType> rootView) {
-    TraitType rootCopy = model.getVirtueFlaw().getRoot();
+    TraitType root = model.getVirtueFlaw().getRoot();
     rootView.setObjects(model.getFlawVirtueTypes());
-    rootView.setSelectedObject(rootCopy);
+    rootView.setSelectedObject(root);
   }
 
   protected ITextView initNamePresentation(VirtueFlaw virtueFlaw) {
