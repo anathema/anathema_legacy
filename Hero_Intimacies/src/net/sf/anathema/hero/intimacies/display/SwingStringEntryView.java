@@ -32,7 +32,7 @@ public class SwingStringEntryView implements StringEntryView {
 
   public Tool addTool() {
     ActionInteraction button = new ActionInteraction();
-    button.addTo(new AddToButtonPanel(buttonPanel));
+    button.addTo(new AddToTraitView(buttonPanel));
     return button;
   }
 
