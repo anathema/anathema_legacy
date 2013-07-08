@@ -47,10 +47,10 @@ public class IntimaciesPresenter {
 
   public void initPresentation() {
     String labelText = resources.getString("Intimacies.SelectionLabel");
-    StringEntryView selectionView = view.addSelectionView(labelText, new BasicUi().getAddIconPath());
-    initSelectionViewListening(selectionView);
+    StringEntryView selectionView = view.addSelectionView(labelText);
+    Tool tool = initSelectionViewListening(selectionView);
     initOverviewView();
-    initModelListening(selectionView);
+    initModelListening(selectionView, tool);
     for (Intimacy intimacy : model.getEntries()) {
       addSubView(intimacy);
     }
@@ -197,7 +197,7 @@ public class IntimaciesPresenter {
     }
   }
 
-  protected void initModelListening(final StringEntryView selectionView) {
+  protected void initModelListening(final StringEntryView selectionView, final Tool tool) {
     model.addModelChangeListener(new RemovableEntryListener<Intimacy>() {
       @Override
       public void entryAdded(Intimacy v) {
@@ -213,24 +213,32 @@ public class IntimaciesPresenter {
 
       @Override
       public void entryAllowed(boolean complete) {
-        selectionView.setAddButtonEnabled(complete);
+        if(complete){
+          tool.enable();
+        }
+        else {
+          tool.disable();
+        }
       }
     });
   }
 
-  protected final void initSelectionViewListening(StringEntryView selectionView) {
+  protected final Tool initSelectionViewListening(StringEntryView selectionView) {
     selectionView.addTextChangeListener(new ObjectValueListener<String>() {
       @Override
       public void valueChanged(String newValue) {
         model.setCurrentName(newValue);
       }
     });
-    selectionView.addAddButtonListener(new Command() {
+    Tool tool = selectionView.addTool();
+    tool.setIcon(new BasicUi().getAddIconPath());
+    tool.setCommand(new Command() {
       @Override
       public void execute() {
         model.commitSelection();
       }
     });
+    return tool;
   }
 
   protected final void reset(StringEntryView selectionView) {

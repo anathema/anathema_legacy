@@ -2,11 +2,10 @@ package net.sf.anathema.hero.intimacies.display;
 
 import net.sf.anathema.character.main.library.overview.OverviewCategory;
 import net.sf.anathema.character.main.presenter.ExtensibleTraitView;
-import net.sf.anathema.lib.file.RelativePath;
 
 public interface IntimaciesView {
 
-  StringEntryView addSelectionView(String labelText, RelativePath addIcon);
+  StringEntryView addSelectionView(String labelText);
 
   OverviewCategory addOverview(String border);
 

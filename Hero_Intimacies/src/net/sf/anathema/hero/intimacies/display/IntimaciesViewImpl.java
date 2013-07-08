@@ -6,12 +6,9 @@ import net.sf.anathema.character.main.library.overview.OverviewCategory;
 import net.sf.anathema.character.main.presenter.ExtensibleTraitView;
 import net.sf.anathema.framework.swing.IView;
 import net.sf.anathema.framework.value.IntegerViewFactory;
-import net.sf.anathema.lib.file.RelativePath;
-import net.sf.anathema.lib.gui.icon.ImageProvider;
 import net.sf.anathema.swing.hero.overview.SwingOverviewCategory;
 import net.sf.anathema.swing.hero.traitview.SimpleTraitView;
 
-import javax.swing.ImageIcon;
 import javax.swing.JComponent;
 import javax.swing.JPanel;
 
@@ -38,9 +35,8 @@ public class IntimaciesViewImpl implements IntimaciesView, IView {
   }
 
   @Override
-  public StringEntryView addSelectionView(String labelText, RelativePath addIcon) {
-    ImageIcon icon = new ImageProvider().getImageIcon(addIcon);
-    SwingStringEntryView view = new SwingStringEntryView(labelText, icon);
+  public StringEntryView addSelectionView(String labelText) {
+    SwingStringEntryView view = new SwingStringEntryView(labelText);
     mainPanel.add(view.getComponent(), 0);
     return view;
   }
