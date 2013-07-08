@@ -1,7 +1,6 @@
 package net.sf.anathema.hero.othertraits.display;
 
 import javafx.scene.Node;
-import javafx.scene.control.TitledPane;
 import net.miginfocom.layout.CC;
 import net.sf.anathema.character.main.library.trait.view.fx.FxTraitView;
 import net.sf.anathema.character.main.type.ICharacterType;
@@ -58,7 +57,7 @@ public class FxOtherTraitsView implements AdvantageView, NodeHolder {
   }
 
   private void addTitledPanel(String title, MigPane parent, Node content, CC constraints) {
-    TitledPane pane = StyledTitledPane.Create(title, content);
+    Node pane = StyledTitledPane.Create(title, content);
     parent.add(pane, constraints);
   }
 }

@@ -2,7 +2,6 @@ package net.sf.anathema.character.equipment.item.view.fx;
 
 import javafx.application.Platform;
 import javafx.scene.Node;
-import javafx.scene.control.TitledPane;
 import net.miginfocom.layout.AC;
 import net.miginfocom.layout.CC;
 import net.sf.anathema.character.equipment.item.view.EquipmentDescriptionPanel;
@@ -43,7 +42,7 @@ public class FxEquipmentDetails implements EquipmentDetails {
       @Override
       public void run() {
         Node node = listView.getNode();
-        TitledPane titledPane = StyledTitledPane.Create(title, node);
+        Node titledPane = StyledTitledPane.Create(title, node);
         outerPane.add(titledPane, new CC().push().grow());
       }
     });
@@ -55,7 +54,7 @@ public class FxEquipmentDetails implements EquipmentDetails {
     Platform.runLater(new Runnable() {
       @Override
       public void run() {
-        TitledPane titledPane = StyledTitledPane.Create(title, descriptionPanel.getNode());
+        Node titledPane = StyledTitledPane.Create(title, descriptionPanel.getNode());
         outerPane.add(titledPane, new CC().grow().push());
       }
     });
