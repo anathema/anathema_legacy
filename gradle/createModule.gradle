@@ -1,0 +1,14 @@
+task createModule << {
+    def newModuleName = usePropertyOrPrompt("moduleName", "\nPlease enter the module's name")
+    if (!newModuleName) {
+        throw new StopExecutionException( "\nPlease specify a module name.\n")
+    }
+    if (new File(moduleName).exists()) {
+        throw new StopExecutionException("Module $moduleName already exists.")
+    }
+    mkdir "$moduleName/src/main/java"
+    mkdir "$moduleName/src/main/resources"
+    mkdir "$moduleName/src/test/java"
+    mkdir "$moduleName/src/test/resources"
+    new File("$moduleName/build.gradle") << new File("gradle/build.gradle.template").text
+}
