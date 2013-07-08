@@ -2,6 +2,7 @@ package net.sf.anathema.character.equipment.item.view.fx;
 
 import javafx.application.Platform;
 import javafx.scene.Node;
+import javafx.scene.control.TitledPane;
 import net.miginfocom.layout.AC;
 import net.miginfocom.layout.CC;
 import net.sf.anathema.character.equipment.item.view.EquipmentDescriptionPanel;
@@ -10,7 +11,7 @@ import net.sf.anathema.character.equipment.item.view.ToolListView;
 import net.sf.anathema.character.main.equipment.weapon.IEquipmentStats;
 import net.sf.anathema.lib.gui.AgnosticUIConfiguration;
 import net.sf.anathema.lib.gui.layout.LayoutUtils;
-import net.sf.anathema.platform.fx.BorderedTitledPane;
+import net.sf.anathema.platform.fx.StyledTitledPane;
 import net.sf.anathema.platform.fx.selection.SelectionViewFactory;
 import org.tbee.javafx.scene.layout.MigPane;
 
@@ -42,7 +43,7 @@ public class FxEquipmentDetails implements EquipmentDetails {
       @Override
       public void run() {
         Node node = listView.getNode();
-        BorderedTitledPane titledPane = BorderedTitledPane.Create(title, node);
+        TitledPane titledPane = StyledTitledPane.Create(title, node);
         outerPane.add(titledPane, new CC().push().grow());
       }
     });
@@ -54,7 +55,7 @@ public class FxEquipmentDetails implements EquipmentDetails {
     Platform.runLater(new Runnable() {
       @Override
       public void run() {
-        BorderedTitledPane titledPane = BorderedTitledPane.Create(title, descriptionPanel.getNode());
+        TitledPane titledPane = StyledTitledPane.Create(title, descriptionPanel.getNode());
         outerPane.add(titledPane, new CC().grow().push());
       }
     });

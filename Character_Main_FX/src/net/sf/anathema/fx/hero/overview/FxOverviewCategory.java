@@ -1,10 +1,11 @@
 package net.sf.anathema.fx.hero.overview;
 
+import javafx.scene.control.TitledPane;
 import net.sf.anathema.character.main.library.overview.OverviewCategory;
 import net.sf.anathema.character.main.view.labelledvalue.ILabelledAlotmentView;
 import net.sf.anathema.character.main.view.labelledvalue.IValueView;
-import net.sf.anathema.platform.fx.BorderedTitledPane;
 import net.sf.anathema.platform.fx.FxThreading;
+import net.sf.anathema.platform.fx.StyledTitledPane;
 import org.tbee.javafx.scene.layout.MigPane;
 
 import static net.sf.anathema.lib.gui.layout.LayoutUtils.withoutInsets;
@@ -16,7 +17,7 @@ public class FxOverviewCategory implements OverviewCategory {
     FxThreading.runOnCorrectThread(new Runnable() {
       @Override
       public void run() {
-        BorderedTitledPane border = BorderedTitledPane.Create(label, panel);
+        TitledPane border = StyledTitledPane.Create(label, panel);
         parent.add(border);
       }
     });

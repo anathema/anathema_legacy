@@ -1,0 +1,5 @@
+.titledsection>.content {
+    -fx-background-color: -fx-box-border, white;
+    -fx-background-insets: 0, 0 1 1 1;
+    -fx-padding: 0.167em;
+}
