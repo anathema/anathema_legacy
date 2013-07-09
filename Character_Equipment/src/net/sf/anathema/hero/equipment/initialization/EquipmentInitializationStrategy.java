@@ -1,4 +1,4 @@
-package net.sf.anathema.character.equipment.module;
+package net.sf.anathema.hero.equipment.initialization;
 
 import net.sf.anathema.character.equipment.item.model.gson.EquipmentGson;
 import net.sf.anathema.character.equipment.item.model.gson.GsonEquipmentDatabase;

@@ -1,9 +1,10 @@
-package net.sf.anathema.character.equipment.module;
+package net.sf.anathema.equipment.editor.perspective;
 
 import net.sf.anathema.character.equipment.item.EquipmentDatabasePresenter;
 import net.sf.anathema.character.equipment.item.model.EquipmentDatabaseManagement;
 import net.sf.anathema.character.equipment.item.model.IEquipmentDatabase;
 import net.sf.anathema.character.equipment.item.model.IEquipmentDatabaseManagement;
+import net.sf.anathema.character.equipment.item.model.gson.GsonEquipmentDatabase;
 import net.sf.anathema.character.equipment.item.view.fx.FxEquipmentDatabaseView;
 import net.sf.anathema.framework.IApplicationModel;
 import net.sf.anathema.framework.view.perspective.Container;
@@ -26,7 +27,7 @@ public class EquipmentPerspective implements Perspective {
 
   @Override
   public void initContent(Container container, IApplicationModel applicationModel, Resources resources) {
-    IEquipmentDatabaseManagement databaseManagement = createDatabaseManagement(applicationModel, resources);
+    IEquipmentDatabaseManagement databaseManagement = createDatabaseManagement(applicationModel);
     initInFx(container, resources, databaseManagement);
   }
 
@@ -36,9 +37,8 @@ public class EquipmentPerspective implements Perspective {
     container.setSwingContent(view.perspectivePane.getComponent());
   }
 
-  private IEquipmentDatabaseManagement createDatabaseManagement(IApplicationModel model, Resources resources) {
-    EquipmentDatabaseActionProperties properties = new EquipmentDatabaseActionProperties(resources, model);
-    IEquipmentDatabase database = properties.createItemData(model.getRepository());
+  private IEquipmentDatabaseManagement createDatabaseManagement(IApplicationModel model) {
+    IEquipmentDatabase database = GsonEquipmentDatabase.CreateFrom(model);
     return new EquipmentDatabaseManagement(database);
   }
 }
