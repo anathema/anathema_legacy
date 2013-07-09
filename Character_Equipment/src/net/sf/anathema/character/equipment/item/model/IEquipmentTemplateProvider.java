@@ -1,6 +1,6 @@
 package net.sf.anathema.character.equipment.item.model;
 
-import net.sf.anathema.character.equipment.template.IEquipmentTemplate;
+import net.sf.anathema.equipment.core.IEquipmentTemplate;
 
 public interface IEquipmentTemplateProvider {
 

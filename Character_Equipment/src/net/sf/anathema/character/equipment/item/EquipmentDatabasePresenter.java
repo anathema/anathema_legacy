@@ -1,13 +1,13 @@
 package net.sf.anathema.character.equipment.item;
 
 import com.google.common.base.Function;
-import net.sf.anathema.character.equipment.ItemCost;
-import net.sf.anathema.character.equipment.MagicalMaterial;
-import net.sf.anathema.character.equipment.MaterialComposition;
 import net.sf.anathema.character.equipment.item.model.IEquipmentDatabaseManagement;
 import net.sf.anathema.character.equipment.item.view.CostSelectionView;
 import net.sf.anathema.character.equipment.item.view.EquipmentDatabaseView;
 import net.sf.anathema.character.equipment.item.view.EquipmentDescriptionPanel;
+import net.sf.anathema.equipment.core.ItemCost;
+import net.sf.anathema.equipment.core.MagicalMaterial;
+import net.sf.anathema.equipment.core.MaterialComposition;
 import net.sf.anathema.lib.control.ChangeListener;
 import net.sf.anathema.lib.control.ObjectValueListener;
 import net.sf.anathema.lib.gui.Presenter;

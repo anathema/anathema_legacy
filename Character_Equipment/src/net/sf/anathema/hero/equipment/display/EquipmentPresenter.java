@@ -1,18 +1,15 @@
 package net.sf.anathema.hero.equipment.display;
 
-import net.sf.anathema.character.equipment.MagicalMaterial;
-import net.sf.anathema.character.equipment.MaterialComposition;
-import net.sf.anathema.character.equipment.character.EquipmentStringBuilder;
 import net.sf.anathema.character.equipment.character.IEquipmentStringBuilder;
-import net.sf.anathema.character.equipment.character.MagicMaterialUIConfiguration;
 import net.sf.anathema.character.equipment.character.model.IEquipmentItem;
-import net.sf.anathema.character.equipment.character.preference.AnathemaEquipmentPreferences;
 import net.sf.anathema.character.equipment.creation.presenter.stats.properties.EquipmentUI;
 import net.sf.anathema.character.equipment.item.EquipmentTemplateNameComparator;
-import net.sf.anathema.character.equipment.item.personalization.EquipmentPersonalizationModel;
 import net.sf.anathema.character.equipment.item.personalization.EquipmentPersonalizationProperties;
+import net.sf.anathema.equipment.core.MagicalMaterial;
+import net.sf.anathema.equipment.core.MaterialComposition;
 import net.sf.anathema.framework.presenter.resources.BasicUi;
 import net.sf.anathema.hero.equipment.EquipmentModel;
+import net.sf.anathema.hero.equipment.model.EquipmentPersonalizationModel;
 import net.sf.anathema.interaction.Command;
 import net.sf.anathema.interaction.Tool;
 import net.sf.anathema.lib.control.ChangeListener;
@@ -169,9 +166,7 @@ public class EquipmentPresenter implements Presenter {
 
   private void enablePersonalization(IEquipmentItem selectedObject, EquipmentObjectPresenter objectPresenter) {
     if (model.canBeRemoved(selectedObject)) {
-      if (AnathemaEquipmentPreferences.getDefaultPreferences().getEnablePersonalization()) {
-        createPersonalizeTool(selectedObject, objectPresenter);
-      }
+      createPersonalizeTool(selectedObject, objectPresenter);
       createRemoveItemTool(selectedObject, objectPresenter);
     }
   }

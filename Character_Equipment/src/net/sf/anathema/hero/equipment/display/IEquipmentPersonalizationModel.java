@@ -1,4 +1,4 @@
-package net.sf.anathema.character.equipment.character.model;
+package net.sf.anathema.hero.equipment.display;
 
 public interface IEquipmentPersonalizationModel {
 	void setTitle(String text);

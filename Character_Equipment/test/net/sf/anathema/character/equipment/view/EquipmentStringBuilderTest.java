@@ -1,10 +1,10 @@
 package net.sf.anathema.character.equipment.view;
 
-import net.sf.anathema.character.equipment.character.EquipmentStringBuilder;
 import net.sf.anathema.character.equipment.character.IEquipmentStringBuilder;
 import net.sf.anathema.character.equipment.dummy.DemoMeleeWeapon;
 import net.sf.anathema.character.equipment.dummy.DemoNaturalArmour;
 import net.sf.anathema.character.equipment.dummy.DemoRangeWeapon;
+import net.sf.anathema.hero.equipment.display.EquipmentStringBuilder;
 import net.sf.anathema.hero.health.HealthType;
 import net.sf.anathema.lib.dummy.DummyResources;
 import net.sf.anathema.lib.util.SimpleIdentifier;

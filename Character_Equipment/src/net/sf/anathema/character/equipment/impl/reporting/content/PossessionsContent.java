@@ -2,18 +2,18 @@ package net.sf.anathema.character.equipment.impl.reporting.content;
 
 import net.sf.anathema.character.equipment.character.model.IEquipmentItem;
 import net.sf.anathema.character.main.equipment.weapon.IEquipmentStats;
-import net.sf.anathema.hero.sheet.pdf.content.AbstractSubBoxContent;
-import net.sf.anathema.hero.sheet.pdf.content.ListSubBoxContent;
 import net.sf.anathema.hero.equipment.EquipmentModel;
 import net.sf.anathema.hero.equipment.EquipmentModelFetcher;
 import net.sf.anathema.hero.model.Hero;
+import net.sf.anathema.hero.sheet.pdf.content.AbstractSubBoxContent;
+import net.sf.anathema.hero.sheet.pdf.content.ListSubBoxContent;
 import net.sf.anathema.lib.resources.Resources;
 
 import java.util.ArrayList;
 import java.util.List;
 
-import static net.sf.anathema.character.equipment.MaterialComposition.Fixed;
-import static net.sf.anathema.character.equipment.MaterialComposition.Variable;
+import static net.sf.anathema.equipment.core.MaterialComposition.Fixed;
+import static net.sf.anathema.equipment.core.MaterialComposition.Variable;
 
 public class PossessionsContent extends AbstractSubBoxContent implements ListSubBoxContent {
 

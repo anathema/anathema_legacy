@@ -1,9 +1,9 @@
 package net.sf.anathema.character.equipment.item;
 
-import net.sf.anathema.character.equipment.MaterialComposition;
 import net.sf.anathema.character.equipment.item.model.EquipmentStatsFactory;
 import net.sf.anathema.character.equipment.item.model.StatsEditor;
 import net.sf.anathema.character.main.equipment.weapon.IEquipmentStats;
+import net.sf.anathema.equipment.core.MaterialComposition;
 import net.sf.anathema.lib.control.ChangeListener;
 
 import java.util.List;

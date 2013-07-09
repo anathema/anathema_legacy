@@ -4,8 +4,8 @@ import net.sf.anathema.character.equipment.impl.character.model.stats.modificati
 import net.sf.anathema.character.equipment.impl.character.model.stats.modification.ReactiveBaseMaterial;
 import org.junit.Test;
 
-import static net.sf.anathema.character.equipment.MagicalMaterial.Adamant;
-import static net.sf.anathema.character.equipment.MagicalMaterial.Moonsilver;
+import static net.sf.anathema.equipment.core.MagicalMaterial.Adamant;
+import static net.sf.anathema.equipment.core.MagicalMaterial.Moonsilver;
 import static org.hamcrest.CoreMatchers.is;
 import static org.junit.Assert.assertThat;
 

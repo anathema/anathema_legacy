@@ -1,6 +1,5 @@
 package net.sf.anathema.character.equipment.modification;
 
-import net.sf.anathema.character.equipment.MagicalMaterial;
 import net.sf.anathema.character.equipment.impl.character.model.stats.modification.AccuracyModification;
 import net.sf.anathema.character.equipment.impl.character.model.stats.modification.DamageModification;
 import net.sf.anathema.character.equipment.impl.character.model.stats.modification.DefenseModification;
@@ -23,6 +22,7 @@ import net.sf.anathema.character.equipment.impl.character.model.stats.modificati
 import net.sf.anathema.character.equipment.impl.character.model.stats.modification.material.MaterialRateModifier;
 import net.sf.anathema.character.equipment.impl.character.model.stats.modification.material.MaterialSoakModifier;
 import net.sf.anathema.character.equipment.impl.character.model.stats.modification.material.MaterialSpeedModifier;
+import net.sf.anathema.equipment.core.MagicalMaterial;
 import net.sf.anathema.hero.health.HealthType;
 import org.junit.Assert;
 

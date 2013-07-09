@@ -1,9 +1,7 @@
 package net.sf.anathema.hero.equipment.display;
 
-import net.sf.anathema.character.equipment.MaterialComposition;
 import net.sf.anathema.character.equipment.character.EquipmentHeroEvaluator;
 import net.sf.anathema.character.equipment.character.EquipmentOptionsProvider;
-import net.sf.anathema.character.equipment.character.EquipmentSpecialtyOption;
 import net.sf.anathema.character.equipment.character.IEquipmentStringBuilder;
 import net.sf.anathema.character.equipment.character.model.IEquipmentItem;
 import net.sf.anathema.character.equipment.character.model.IEquipmentStatsOption;
@@ -12,6 +10,8 @@ import net.sf.anathema.character.main.equipment.ArtifactStats;
 import net.sf.anathema.character.main.equipment.weapon.IEquipmentStats;
 import net.sf.anathema.character.main.equipment.weapon.IWeaponStats;
 import net.sf.anathema.character.main.library.trait.specialties.Specialty;
+import net.sf.anathema.equipment.core.MaterialComposition;
+import net.sf.anathema.hero.equipment.model.EquipmentSpecialtyOption;
 import net.sf.anathema.interaction.Tool;
 import net.sf.anathema.lib.control.ChangeListener;
 import net.sf.anathema.lib.gui.Presenter;

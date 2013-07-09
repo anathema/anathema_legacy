@@ -1,9 +1,9 @@
 package net.sf.anathema.hero.equipment;
 
 import net.sf.anathema.character.equipment.impl.character.model.RegisteredNaturalWeapon;
-import net.sf.anathema.character.equipment.template.IEquipmentTemplate;
 import net.sf.anathema.character.main.type.CharacterTypes;
 import net.sf.anathema.character.main.type.ICharacterType;
+import net.sf.anathema.equipment.core.IEquipmentTemplate;
 import net.sf.anathema.initialization.InitializationException;
 import net.sf.anathema.initialization.ObjectFactory;
 import net.sf.anathema.lib.logging.Logger;

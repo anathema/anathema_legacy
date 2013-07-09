@@ -1,7 +1,7 @@
-package net.sf.anathema.character.equipment.item.personalization;
+package net.sf.anathema.hero.equipment.model;
 
 import net.sf.anathema.character.equipment.character.model.IEquipmentItem;
-import net.sf.anathema.character.equipment.character.model.IEquipmentPersonalizationModel;
+import net.sf.anathema.hero.equipment.display.IEquipmentPersonalizationModel;
 
 public class EquipmentPersonalizationModel implements IEquipmentPersonalizationModel {
 

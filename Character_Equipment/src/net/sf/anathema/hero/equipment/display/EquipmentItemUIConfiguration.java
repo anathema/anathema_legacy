@@ -1,8 +1,7 @@
 package net.sf.anathema.hero.equipment.display;
 
-import net.sf.anathema.character.equipment.character.EquipmentTemplateTooltipBuilder;
 import net.sf.anathema.character.equipment.item.model.IEquipmentTemplateProvider;
-import net.sf.anathema.character.equipment.template.IEquipmentTemplate;
+import net.sf.anathema.equipment.core.IEquipmentTemplate;
 import net.sf.anathema.lib.gui.AbstractUIConfiguration;
 
 public class EquipmentItemUIConfiguration extends AbstractUIConfiguration<String> {

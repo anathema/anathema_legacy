@@ -1,8 +1,8 @@
-package net.sf.anathema.character.equipment.character;
+package net.sf.anathema.hero.equipment.model;
 
 import net.sf.anathema.character.equipment.character.model.IEquipmentStatsOption;
-import net.sf.anathema.character.main.traits.TraitType;
 import net.sf.anathema.character.main.library.trait.specialties.Specialty;
+import net.sf.anathema.character.main.traits.TraitType;
 
 public class EquipmentSpecialtyOption implements IEquipmentStatsOption {
 
@@ -41,10 +41,7 @@ public class EquipmentSpecialtyOption implements IEquipmentStatsOption {
 
   @Override
   public boolean equals(Object obj) {
-    if (obj instanceof EquipmentSpecialtyOption) {
-      return specialty.equals(((EquipmentSpecialtyOption) obj).specialty);
-    }
-    return false;
+    return obj instanceof EquipmentSpecialtyOption && specialty.equals(((EquipmentSpecialtyOption) obj).specialty);
   }
 
 }

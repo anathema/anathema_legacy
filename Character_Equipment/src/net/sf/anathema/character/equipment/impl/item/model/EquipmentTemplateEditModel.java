@@ -2,14 +2,14 @@ package net.sf.anathema.character.equipment.impl.item.model;
 
 import com.google.common.base.Objects;
 import com.google.common.base.Preconditions;
-import net.sf.anathema.character.equipment.ItemCost;
-import net.sf.anathema.character.equipment.MagicalMaterial;
-import net.sf.anathema.character.equipment.MaterialComposition;
 import net.sf.anathema.character.equipment.impl.character.model.EquipmentTemplate;
 import net.sf.anathema.character.equipment.item.model.IEquipmentDatabase;
 import net.sf.anathema.character.equipment.item.model.IEquipmentTemplateEditModel;
-import net.sf.anathema.character.equipment.template.IEquipmentTemplate;
 import net.sf.anathema.character.main.equipment.weapon.IEquipmentStats;
+import net.sf.anathema.equipment.core.IEquipmentTemplate;
+import net.sf.anathema.equipment.core.ItemCost;
+import net.sf.anathema.equipment.core.MagicalMaterial;
+import net.sf.anathema.equipment.core.MaterialComposition;
 import net.sf.anathema.framework.itemdata.model.IItemDescription;
 import net.sf.anathema.framework.itemdata.model.ItemDescription;
 import net.sf.anathema.lib.control.ChangeListener;

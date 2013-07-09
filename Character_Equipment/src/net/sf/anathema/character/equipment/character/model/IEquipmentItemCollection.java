@@ -1,6 +1,6 @@
 package net.sf.anathema.character.equipment.character.model;
 
-import net.sf.anathema.character.equipment.MagicalMaterial;
+import net.sf.anathema.equipment.core.MagicalMaterial;
 import net.sf.anathema.lib.control.ICollectionListener;
 
 public interface IEquipmentItemCollection {

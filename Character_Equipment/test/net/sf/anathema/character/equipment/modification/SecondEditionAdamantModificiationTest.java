@@ -1,6 +1,6 @@
 package net.sf.anathema.character.equipment.modification;
 
-import net.sf.anathema.character.equipment.MagicalMaterial;
+import net.sf.anathema.equipment.core.MagicalMaterial;
 import net.sf.anathema.hero.health.HealthType;
 import org.junit.Test;
 

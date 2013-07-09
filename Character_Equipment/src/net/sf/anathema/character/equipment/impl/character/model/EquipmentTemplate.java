@@ -1,11 +1,11 @@
 package net.sf.anathema.character.equipment.impl.character.model;
 
-import net.sf.anathema.character.equipment.ItemCost;
-import net.sf.anathema.character.equipment.MagicalMaterial;
-import net.sf.anathema.character.equipment.MaterialComposition;
-import net.sf.anathema.character.equipment.template.IEquipmentTemplate;
 import net.sf.anathema.character.main.equipment.weapon.IEquipmentStats;
 import net.sf.anathema.character.main.persistence.SecondEdition;
+import net.sf.anathema.equipment.core.IEquipmentTemplate;
+import net.sf.anathema.equipment.core.ItemCost;
+import net.sf.anathema.equipment.core.MagicalMaterial;
+import net.sf.anathema.equipment.core.MaterialComposition;
 
 import java.util.ArrayList;
 import java.util.HashMap;

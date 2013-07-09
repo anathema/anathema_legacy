@@ -6,12 +6,12 @@ import net.sf.anathema.character.equipment.impl.character.model.stats.ArtifactSt
 import net.sf.anathema.character.equipment.impl.character.model.stats.MeleeWeaponStats;
 import net.sf.anathema.character.equipment.impl.character.model.stats.RangedWeaponStats;
 import net.sf.anathema.character.equipment.impl.character.model.stats.TraitModifyingStats;
-import net.sf.anathema.character.equipment.template.IEquipmentTemplate;
 import net.sf.anathema.character.main.equipment.weapon.IEquipmentStats;
+import net.sf.anathema.equipment.core.IEquipmentTemplate;
 import org.junit.Test;
 
-import static net.sf.anathema.character.equipment.MagicalMaterial.Orichalcum;
-import static net.sf.anathema.character.equipment.MaterialComposition.Fixed;
+import static net.sf.anathema.equipment.core.MagicalMaterial.Orichalcum;
+import static net.sf.anathema.equipment.core.MaterialComposition.Fixed;
 import static org.hamcrest.CoreMatchers.is;
 import static org.junit.Assert.assertThat;
 

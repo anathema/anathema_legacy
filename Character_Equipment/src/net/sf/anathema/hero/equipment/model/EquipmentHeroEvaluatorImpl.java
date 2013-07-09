@@ -1,16 +1,17 @@
-package net.sf.anathema.character.equipment.character;
+package net.sf.anathema.hero.equipment.model;
 
-import net.sf.anathema.character.equipment.MagicalMaterial;
 import net.sf.anathema.character.equipment.MaterialRules;
+import net.sf.anathema.character.equipment.character.EquipmentHeroEvaluator;
 import net.sf.anathema.character.equipment.character.model.IEquipmentItem;
 import net.sf.anathema.character.equipment.character.model.IEquipmentStatsOption;
 import net.sf.anathema.character.main.equipment.ArtifactAttuneType;
+import net.sf.anathema.character.main.library.trait.specialties.Specialty;
 import net.sf.anathema.character.main.traits.TraitType;
 import net.sf.anathema.character.main.traits.types.AbilityType;
 import net.sf.anathema.character.main.type.ICharacterType;
-import net.sf.anathema.character.main.library.trait.specialties.Specialty;
-import net.sf.anathema.hero.model.Hero;
+import net.sf.anathema.equipment.core.MagicalMaterial;
 import net.sf.anathema.hero.equipment.SpecialtiesCollectionImpl;
+import net.sf.anathema.hero.model.Hero;
 import net.sf.anathema.lib.control.ChangeListener;
 
 import static net.sf.anathema.character.main.equipment.ArtifactAttuneType.FullyAttuned;

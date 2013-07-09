@@ -1,6 +1,6 @@
 package net.sf.anathema.character.equipment.impl.character.model.stats.modification;
 
-import net.sf.anathema.character.equipment.MagicalMaterial;
+import net.sf.anathema.equipment.core.MagicalMaterial;
 import org.junit.Test;
 
 import static org.hamcrest.CoreMatchers.is;

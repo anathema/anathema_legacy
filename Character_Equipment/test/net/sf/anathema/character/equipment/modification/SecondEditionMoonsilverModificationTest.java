@@ -1,7 +1,7 @@
 package net.sf.anathema.character.equipment.modification;
 
-import net.sf.anathema.character.equipment.MagicalMaterial;
 import net.sf.anathema.character.equipment.impl.character.model.stats.modification.WeaponStatsType;
+import net.sf.anathema.equipment.core.MagicalMaterial;
 import org.junit.Test;
 
 public class SecondEditionMoonsilverModificationTest extends AbstractEquipmentModificationTest {

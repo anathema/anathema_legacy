@@ -1,10 +1,10 @@
 package net.sf.anathema.character.equipment.character.model;
 
-import net.sf.anathema.character.equipment.ItemCost;
-import net.sf.anathema.character.equipment.MagicalMaterial;
-import net.sf.anathema.character.equipment.MaterialComposition;
 import net.sf.anathema.character.main.equipment.ArtifactAttuneType;
 import net.sf.anathema.character.main.equipment.weapon.IEquipmentStats;
+import net.sf.anathema.equipment.core.ItemCost;
+import net.sf.anathema.equipment.core.MagicalMaterial;
+import net.sf.anathema.equipment.core.MaterialComposition;
 import net.sf.anathema.lib.control.ChangeListener;
 
 public interface IEquipmentItem {

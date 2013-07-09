@@ -3,8 +3,8 @@ package net.sf.anathema.character.equipment.impl.item.model.gson;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import net.sf.anathema.character.equipment.impl.character.model.EquipmentTemplate;
-import net.sf.anathema.character.equipment.template.IEquipmentTemplate;
 import net.sf.anathema.character.main.equipment.weapon.IEquipmentStats;
+import net.sf.anathema.equipment.core.IEquipmentTemplate;
 import net.sf.anathema.lib.util.Identifier;
 
 public class EquipmentGson {

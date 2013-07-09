@@ -1,6 +1,6 @@
 package net.sf.anathema.hero.equipment.display;
 
-import net.sf.anathema.character.equipment.MagicalMaterial;
+import net.sf.anathema.equipment.core.MagicalMaterial;
 import net.sf.anathema.lib.gui.AgnosticUIConfiguration;
 
 public interface IMagicalMaterialView {

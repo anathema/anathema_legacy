@@ -1,6 +1,7 @@
-package net.sf.anathema.character.equipment;
+package net.sf.anathema.hero.equipment.model;
 
 import net.sf.anathema.character.main.equipment.ArtifactAttuneType;
+import net.sf.anathema.equipment.core.MagicalMaterial;
 
 public interface CharacterTypeMaterialRules {
   MagicalMaterial getDefault();

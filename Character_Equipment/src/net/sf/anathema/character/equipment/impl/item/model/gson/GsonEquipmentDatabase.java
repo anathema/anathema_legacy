@@ -2,7 +2,7 @@ package net.sf.anathema.character.equipment.impl.item.model.gson;
 
 import com.google.common.collect.Lists;
 import net.sf.anathema.character.equipment.item.model.IEquipmentDatabase;
-import net.sf.anathema.character.equipment.template.IEquipmentTemplate;
+import net.sf.anathema.equipment.core.IEquipmentTemplate;
 import net.sf.anathema.framework.IApplicationModel;
 import net.sf.anathema.framework.item.IItemType;
 import net.sf.anathema.framework.item.IItemTypeRegistry;

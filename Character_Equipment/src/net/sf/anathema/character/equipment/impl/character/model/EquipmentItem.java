@@ -1,9 +1,6 @@
 package net.sf.anathema.character.equipment.impl.character.model;
 
 import com.google.common.base.Function;
-import net.sf.anathema.character.equipment.ItemCost;
-import net.sf.anathema.character.equipment.MagicalMaterial;
-import net.sf.anathema.character.equipment.MaterialComposition;
 import net.sf.anathema.character.equipment.character.ItemAttunementEvaluator;
 import net.sf.anathema.character.equipment.character.model.IEquipmentItem;
 import net.sf.anathema.character.equipment.impl.character.model.stats.ProxyArmourStats;
@@ -11,13 +8,16 @@ import net.sf.anathema.character.equipment.impl.character.model.stats.ProxyWeapo
 import net.sf.anathema.character.equipment.impl.character.model.stats.modification.BaseMaterial;
 import net.sf.anathema.character.equipment.impl.character.model.stats.modification.InertBaseMaterial;
 import net.sf.anathema.character.equipment.impl.character.model.stats.modification.ReactiveBaseMaterial;
-import net.sf.anathema.character.equipment.template.IEquipmentTemplate;
 import net.sf.anathema.character.main.equipment.ArtifactAttuneType;
 import net.sf.anathema.character.main.equipment.ArtifactStats;
 import net.sf.anathema.character.main.equipment.weapon.IArmourStats;
 import net.sf.anathema.character.main.equipment.weapon.IEquipmentStats;
 import net.sf.anathema.character.main.equipment.weapon.IWeaponStats;
 import net.sf.anathema.character.main.util.IProxy;
+import net.sf.anathema.equipment.core.IEquipmentTemplate;
+import net.sf.anathema.equipment.core.ItemCost;
+import net.sf.anathema.equipment.core.MagicalMaterial;
+import net.sf.anathema.equipment.core.MaterialComposition;
 import net.sf.anathema.lib.control.ChangeListener;
 import org.jmock.example.announcer.Announcer;
 
@@ -27,7 +27,7 @@ import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
-import static net.sf.anathema.character.equipment.MaterialComposition.Variable;
+import static net.sf.anathema.equipment.core.MaterialComposition.Variable;
 import static net.sf.anathema.lib.lang.ArrayUtilities.transform;
 
 public class EquipmentItem implements IEquipmentItem {

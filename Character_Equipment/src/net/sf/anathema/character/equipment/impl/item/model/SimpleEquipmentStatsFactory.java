@@ -1,6 +1,5 @@
 package net.sf.anathema.character.equipment.impl.item.model;
 
-import net.sf.anathema.character.equipment.MaterialComposition;
 import net.sf.anathema.character.equipment.creation.model.stats.IEquipmentStatisticsCreationModel;
 import net.sf.anathema.character.equipment.creation.model.stats.IEquipmentStatisticsModel;
 import net.sf.anathema.character.equipment.impl.creation.model.EquipmentStatisticsCreationModel;
@@ -8,6 +7,7 @@ import net.sf.anathema.character.equipment.impl.creation.model.WeaponTag;
 import net.sf.anathema.character.equipment.item.model.EquipmentStatisticsType;
 import net.sf.anathema.character.equipment.item.model.EquipmentStatsFactory;
 import net.sf.anathema.character.main.equipment.weapon.IEquipmentStats;
+import net.sf.anathema.equipment.core.MaterialComposition;
 
 import static net.sf.anathema.character.equipment.item.model.EquipmentStatisticsType.Artifact;
 

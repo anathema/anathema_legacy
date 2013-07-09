@@ -3,6 +3,9 @@ package net.sf.anathema.character.equipment;
 import com.google.common.base.Functions;
 import net.sf.anathema.character.main.equipment.ArtifactAttuneType;
 import net.sf.anathema.character.main.type.ICharacterType;
+import net.sf.anathema.equipment.core.MagicalMaterial;
+import net.sf.anathema.hero.equipment.model.CharacterTypeMaterialRules;
+import net.sf.anathema.hero.equipment.model.DefaultMaterialRules;
 import net.sf.anathema.initialization.ObjectFactory;
 
 import java.util.Collection;
