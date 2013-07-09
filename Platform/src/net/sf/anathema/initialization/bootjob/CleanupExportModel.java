@@ -7,15 +7,16 @@ import net.sf.anathema.framework.repository.access.IRepositoryFileAccess;
 import net.sf.anathema.framework.repository.tree.ExportModel;
 import net.sf.anathema.framework.repository.tree.RepositoryFileAccessFactory;
 import net.sf.anathema.framework.view.PrintNameFile;
+import net.sf.anathema.initialization.ItemTypeCollection;
 
 import java.util.List;
 
 public class CleanupExportModel implements ExportModel {
-  private IItemType[] allItemTypes;
-  private Repository repository;
-  private RepositoryFileAccessFactory accessFactory;
+  private final ItemTypeCollection allItemTypes;
+  private final Repository repository;
+  private final RepositoryFileAccessFactory accessFactory;
 
-  public CleanupExportModel(IItemType[] allItemTypes, Repository repository) {
+  public CleanupExportModel(ItemTypeCollection allItemTypes, Repository repository) {
     this.allItemTypes = allItemTypes;
     this.repository = repository;
     this.accessFactory = new RepositoryFileAccessFactory(repository);

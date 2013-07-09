@@ -2,7 +2,6 @@ package net.sf.anathema.framework.model;
 
 import net.sf.anathema.framework.IApplicationModel;
 import net.sf.anathema.framework.extension.IAnathemaExtension;
-import net.sf.anathema.framework.item.IItemTypeRegistry;
 import net.sf.anathema.framework.messaging.IMessageContainer;
 import net.sf.anathema.framework.messaging.IMessaging;
 import net.sf.anathema.framework.messaging.Messaging;
@@ -21,7 +20,6 @@ public class ApplicationModel implements IApplicationModel {
 
   private final IRegistry<String, IAnathemaExtension> extensionRegistry = new Registry<>();
   private final IReportRegistry reportRegistry = new ReportRegistry();
-  private final IItemTypeRegistry itemTypes = new ItemTypeRegistry();
   private final FileSystemRepository repository;
   private final Messaging messaging;
   private final ResourceLoader resourceLoader;
@@ -49,11 +47,6 @@ public class ApplicationModel implements IApplicationModel {
   @Override
   public final IRegistry<String, IAnathemaExtension> getExtensionPointRegistry() {
     return extensionRegistry;
-  }
-
-  @Override
-  public IItemTypeRegistry getItemTypeRegistry() {
-    return itemTypes;
   }
 
   @Override
