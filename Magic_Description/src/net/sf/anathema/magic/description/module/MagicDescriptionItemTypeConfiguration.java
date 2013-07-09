@@ -8,7 +8,7 @@ import net.sf.anathema.initialization.ItemTypeConfiguration;
 @ItemTypeConfiguration
 public class MagicDescriptionItemTypeConfiguration implements net.sf.anathema.framework.module.ItemTypeConfiguration {
 
-  public static final String MAGIC_DESCRIPTION_ITEM_TYPE_ID = "MagicDescription";
+  private static final String MAGIC_DESCRIPTION_ITEM_TYPE_ID = "MagicDescription";
   private static final RepositoryConfiguration REPOSITORY_CONFIGURATION = new RepositoryConfiguration(".mdsc", "MagicDescription/");
   private IItemType type;
 

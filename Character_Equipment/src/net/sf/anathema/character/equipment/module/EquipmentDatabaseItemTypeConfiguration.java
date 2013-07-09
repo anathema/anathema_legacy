@@ -8,7 +8,7 @@ import net.sf.anathema.initialization.ItemTypeConfiguration;
 @ItemTypeConfiguration
 public class EquipmentDatabaseItemTypeConfiguration implements net.sf.anathema.framework.module.ItemTypeConfiguration {
 
-  public static final String EQUIPMENT_DATABASE_ITEM_TYPE_ID = "EquipmentDatabase";
+  private static final String EQUIPMENT_DATABASE_ITEM_TYPE_ID = "EquipmentDatabase";
   private static final RepositoryConfiguration REPOSITORY_CONFIGURATION = new RepositoryConfiguration(".item", "equipment/");
   private final IItemType type;
 

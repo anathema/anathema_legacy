@@ -48,14 +48,11 @@ public class ItemType implements IItemType, Identifier {
 
   @Override
   public boolean equals(Object obj) {
-    if (!(obj instanceof ItemType)) {
-      return false;
-    }
-    return super.equals(obj) && ((ItemType) obj).repositoryConfiguration.equals(repositoryConfiguration);
+    return obj instanceof ItemType && ((ItemType) obj).repositoryConfiguration.equals(repositoryConfiguration);
   }
 
   @Override
   public int hashCode() {
-    return super.hashCode() + (repositoryConfiguration != null ? repositoryConfiguration.hashCode() : 0);
+    return repositoryConfiguration != null ? repositoryConfiguration.hashCode() : 0;
   }
 }
