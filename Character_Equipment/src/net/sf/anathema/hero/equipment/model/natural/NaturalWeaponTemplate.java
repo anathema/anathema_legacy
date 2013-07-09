@@ -8,6 +8,7 @@ import net.sf.anathema.equipment.core.MaterialComposition;
 
 public class NaturalWeaponTemplate implements IEquipmentTemplate {
 
+  public static final IEquipmentStats[] SECOND_EDITION_WEAPONS = new IEquipmentStats[]{new Punch(), new Kick(), new Clinch()};
   private static final String NATURAL = "Natural";
 
   @Override
@@ -17,7 +18,7 @@ public class NaturalWeaponTemplate implements IEquipmentTemplate {
 
   @Override
   public IEquipmentStats[] getStats() {
-    return INaturalWeaponConstants.SECOND_EDITION;
+    return SECOND_EDITION_WEAPONS;
   }
 
   @Override
