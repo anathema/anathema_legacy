@@ -1,7 +1,7 @@
 package net.sf.anathema.character.equipment.character.model.stats.modification.equipment;
 
-import net.sf.anathema.character.equipment.IWeaponModifiers;
 import net.sf.anathema.character.equipment.character.model.stats.modification.StatModifier;
+import net.sf.anathema.hero.equipment.model.IWeaponModifiers;
 
 public class EquipmentDefenceModifier implements StatModifier {
 

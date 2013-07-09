@@ -1,8 +1,8 @@
 package net.sf.anathema.character.equipment.impl.character.model.stats.modification.equipment;
 
-import net.sf.anathema.character.equipment.IWeaponModifiers;
 import net.sf.anathema.character.equipment.character.model.stats.modification.WeaponStatsType;
 import net.sf.anathema.character.equipment.character.model.stats.modification.equipment.EquipmentSpeedModifier;
+import net.sf.anathema.hero.equipment.model.IWeaponModifiers;
 import org.junit.Test;
 
 import static org.hamcrest.CoreMatchers.is;

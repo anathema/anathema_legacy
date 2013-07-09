@@ -1,4 +1,4 @@
-package net.sf.anathema.character.equipment;
+package net.sf.anathema.hero.equipment.model;
 
 public interface IWeaponModifiers {
 

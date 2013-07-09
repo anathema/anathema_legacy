@@ -1,10 +1,10 @@
 package net.sf.anathema.character.equipment.impl.character.model.stats;
 
-import net.sf.anathema.character.equipment.character.model.ModifierFactory;
-import net.sf.anathema.character.equipment.character.model.stats.ProxyWeaponStats;
 import net.sf.anathema.character.equipment.character.model.stats.modification.ReactiveBaseMaterial;
 import net.sf.anathema.character.main.equipment.weapon.IWeaponStats;
 import net.sf.anathema.equipment.core.MagicalMaterial;
+import net.sf.anathema.hero.equipment.model.ModifierFactory;
+import net.sf.anathema.hero.equipment.model.ProxyWeaponStats;
 import net.sf.anathema.lib.util.Identifier;
 import net.sf.anathema.lib.util.SimpleIdentifier;
 import org.hamcrest.CoreMatchers;

@@ -1,7 +1,7 @@
-package net.sf.anathema.character.equipment.character.model.stats;
+package net.sf.anathema.hero.equipment.model;
 
 import com.google.common.base.Objects;
-import net.sf.anathema.character.equipment.character.model.ModifierFactory;
+import net.sf.anathema.character.equipment.character.model.stats.AbstractStats;
 import net.sf.anathema.character.equipment.character.model.stats.modification.AccuracyModification;
 import net.sf.anathema.character.equipment.character.model.stats.modification.BaseMaterial;
 import net.sf.anathema.character.equipment.character.model.stats.modification.DamageModification;

@@ -1,9 +1,9 @@
 package net.sf.anathema.character.equipment.character.model.stats.modification;
 
-import net.sf.anathema.character.equipment.IWeaponModifiers;
 import net.sf.anathema.character.equipment.character.model.IEquipmentItem;
 import net.sf.anathema.character.main.equipment.ITraitModifyingStats;
 import net.sf.anathema.character.main.equipment.weapon.IEquipmentStats;
+import net.sf.anathema.hero.equipment.model.IWeaponModifiers;
 
 import java.util.ArrayList;
 import java.util.List;
