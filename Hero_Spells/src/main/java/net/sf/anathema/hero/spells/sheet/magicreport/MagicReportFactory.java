@@ -1,4 +1,4 @@
-package net.sf.anathema.hero.magic.sheet.magicreport;
+package net.sf.anathema.hero.spells.sheet.magicreport;
 
 import net.sf.anathema.framework.IApplicationModel;
 import net.sf.anathema.framework.initialization.IReportFactory;

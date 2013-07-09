@@ -1,4 +1,4 @@
-package net.sf.anathema.hero.magic.sheet.magicreport;
+package net.sf.anathema.hero.spells.sheet.magicreport;
 
 import com.google.common.base.Joiner;
 import com.itextpdf.text.Document;
@@ -6,28 +6,28 @@ import com.itextpdf.text.DocumentException;
 import com.itextpdf.text.pdf.MultiColumnText;
 import com.itextpdf.text.pdf.PdfPTable;
 import com.itextpdf.text.pdf.PdfWriter;
+import net.sf.anathema.character.main.magic.description.MagicDescription;
 import net.sf.anathema.character.main.magic.display.view.charms.CharmDescriptionProviderExtractor;
 import net.sf.anathema.character.main.magic.model.charm.Charm;
-import net.sf.anathema.character.main.magic.model.magic.Magic;
-import net.sf.anathema.character.main.magic.model.spells.ISpell;
-import net.sf.anathema.character.main.magic.description.MagicDescription;
-import net.sf.anathema.hero.charms.CharmsModel;
-import net.sf.anathema.hero.charms.CharmsModelFetcher;
-import net.sf.anathema.hero.experience.ExperienceModelFetcher;
-import net.sf.anathema.hero.spells.SpellsModelFetcher;
-import net.sf.anathema.hero.magic.sheet.content.MagicContentHelper;
-import net.sf.anathema.hero.charms.sheet.content.stats.CharmStats;
-import net.sf.anathema.hero.spells.sheet.content.SpellStats;
 import net.sf.anathema.character.main.magic.model.charmtree.builder.MagicDisplayLabeler;
 import net.sf.anathema.character.main.magic.model.charmtree.builder.stringbuilder.ScreenDisplayInfoStringBuilder;
 import net.sf.anathema.character.main.magic.model.charmtree.builder.stringbuilder.source.MagicSourceStringBuilder;
 import net.sf.anathema.character.main.magic.model.charmtree.builder.stringbuilder.type.VerboseCharmTypeStringBuilder;
+import net.sf.anathema.character.main.magic.model.magic.Magic;
+import net.sf.anathema.character.main.magic.model.spells.ISpell;
 import net.sf.anathema.framework.IApplicationModel;
 import net.sf.anathema.framework.reporting.ReportException;
 import net.sf.anathema.framework.reporting.pdf.AbstractPdfReport;
 import net.sf.anathema.framework.reporting.pdf.PdfReportUtils;
 import net.sf.anathema.framework.repository.Item;
+import net.sf.anathema.hero.charms.CharmsModel;
+import net.sf.anathema.hero.charms.CharmsModelFetcher;
+import net.sf.anathema.hero.charms.sheet.content.CharmContentHelper;
+import net.sf.anathema.hero.charms.sheet.content.stats.CharmStats;
+import net.sf.anathema.hero.experience.ExperienceModelFetcher;
 import net.sf.anathema.hero.model.Hero;
+import net.sf.anathema.hero.spells.SpellsModelFetcher;
+import net.sf.anathema.hero.spells.sheet.content.SpellStats;
 import net.sf.anathema.lib.resources.Resources;
 
 import static java.text.MessageFormat.format;
@@ -156,7 +156,7 @@ public class MagicReport extends AbstractPdfReport {
   }
 
   private CharmStats createCharmStats(Hero hero, Charm charm) {
-    return new CharmStats(charm, new MagicContentHelper(hero));
+    return new CharmStats(charm, new CharmContentHelper(hero));
   }
 
   private SpellStats createSpellStats(ISpell spell) {

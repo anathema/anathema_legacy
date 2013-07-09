@@ -1,7 +1,5 @@
 package net.sf.anathema.hero.magic.model;
 
-import net.sf.anathema.hero.charms.CharmsModel;
-import net.sf.anathema.hero.charms.model.CharmsModelImpl;
 import net.sf.anathema.hero.initialization.SimpleModelTreeEntry;
 import net.sf.anathema.hero.model.HeroModelAutoCollector;
 import net.sf.anathema.hero.model.HeroModelFactory;

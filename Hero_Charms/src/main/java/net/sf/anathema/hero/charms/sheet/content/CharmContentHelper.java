@@ -1,4 +1,4 @@
-package net.sf.anathema.hero.magic.sheet.content;
+package net.sf.anathema.hero.charms.sheet.content;
 
 import com.google.common.base.Optional;
 import com.google.common.base.Predicate;
@@ -12,26 +12,22 @@ import net.sf.anathema.character.main.magic.model.charm.special.ISubeffectCharmC
 import net.sf.anathema.character.main.magic.model.charms.ILearningCharmGroup;
 import net.sf.anathema.character.main.magic.model.magic.IMagicStats;
 import net.sf.anathema.character.main.magic.model.magic.Magic;
-import net.sf.anathema.character.main.magic.model.spells.ISpell;
 import net.sf.anathema.hero.charms.CharmsModel;
 import net.sf.anathema.hero.charms.CharmsModelFetcher;
-import net.sf.anathema.hero.charms.sheet.content.PrintCharmsProvider;
 import net.sf.anathema.hero.charms.sheet.content.stats.GenericCharmStats;
 import net.sf.anathema.hero.experience.ExperienceModelFetcher;
 import net.sf.anathema.hero.model.Hero;
 import net.sf.anathema.hero.sheet.pdf.session.ReportSession;
-import net.sf.anathema.hero.spells.SpellsModelFetcher;
-import net.sf.anathema.hero.spells.model.PrintSpellsProvider;
 
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
-public class MagicContentHelper {
+public class CharmContentHelper {
 
   private final Hero hero;
 
-  public MagicContentHelper(Hero hero) {
+  public CharmContentHelper(Hero hero) {
     this.hero = hero;
   }
 
@@ -39,24 +35,6 @@ public class MagicContentHelper {
     List<IMagicStats> printStats = new ArrayList<>();
     new PrintCharmsProvider(session.getHero()).addPrintMagic(printStats);
     return printStats;
-  }
-
-  public static List<IMagicStats> collectPrintSpells(ReportSession session) {
-    final List<IMagicStats> printStats = new ArrayList<>();
-    new PrintSpellsProvider(session.getHero()).addPrintMagic(printStats);
-    return printStats;
-  }
-
-  public List<ISpell> getAllLearnedSpells() {
-    boolean experienced = ExperienceModelFetcher.fetch(hero).isExperienced();
-    return Arrays.asList(SpellsModelFetcher.fetch(hero).getLearnedSpells(experienced));
-  }
-
-  public List<Magic> getAllLearnedMagic() {
-    List<Magic> magicList = new ArrayList<>();
-    magicList.addAll(getLearnedCharms());
-    magicList.addAll(getAllLearnedSpells());
-    return magicList;
   }
 
   public boolean isMultipleEffectCharm(Charm charm) {

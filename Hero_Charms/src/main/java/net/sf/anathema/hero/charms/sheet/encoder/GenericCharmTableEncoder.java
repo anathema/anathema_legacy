@@ -14,9 +14,9 @@ import com.itextpdf.text.pdf.PdfPTable;
 import com.itextpdf.text.pdf.PdfTemplate;
 import net.sf.anathema.character.main.magic.model.magic.IMagicStats;
 import net.sf.anathema.character.main.traits.TraitType;
+import net.sf.anathema.hero.charms.sheet.content.CharmContentHelper;
 import net.sf.anathema.hero.charms.sheet.content.GenericCharmContent;
 import net.sf.anathema.hero.charms.sheet.content.GenericCharmContentHelper;
-import net.sf.anathema.hero.magic.sheet.content.MagicContentHelper;
 import net.sf.anathema.hero.sheet.pdf.encoder.boxes.EncodingMetrics;
 import net.sf.anathema.hero.sheet.pdf.encoder.general.Bounds;
 import net.sf.anathema.hero.sheet.pdf.encoder.graphics.SheetGraphics;
@@ -54,7 +54,7 @@ public class GenericCharmTableEncoder extends AbstractTableEncoder<ReportSession
   @Override
   protected PdfPTable createTable(SheetGraphics graphics, ReportSession session, Bounds bounds) throws DocumentException {
     PdfContentByte directContent = graphics.getDirectContent();
-    MagicContentHelper helper = new MagicContentHelper(session.getHero());
+    CharmContentHelper helper = new CharmContentHelper(session.getHero());
     List<TraitType> traits = new GenericCharmContentHelper(session.getHero()).getGenericCharmTraits();
     Font font = graphics.createTableFont();
     PdfTemplate learnedTemplate = createCharmDotTemplate(directContent, BaseColor.BLACK);
@@ -91,7 +91,7 @@ public class GenericCharmTableEncoder extends AbstractTableEncoder<ReportSession
     return template;
   }
 
-  private PdfPCell createGenericCell(MagicContentHelper helper, TraitType type, String genericId, PdfTemplate learnedTemplate, PdfTemplate notLearnedTemplate) throws DocumentException {
+  private PdfPCell createGenericCell(CharmContentHelper helper, TraitType type, String genericId, PdfTemplate learnedTemplate, PdfTemplate notLearnedTemplate) throws DocumentException {
     final String charmId = genericId + "." + type.getId();
     boolean isLearned = helper.isGenericCharmLearned(charmId);
     Image image = Image.getInstance(isLearned ? learnedTemplate : notLearnedTemplate);

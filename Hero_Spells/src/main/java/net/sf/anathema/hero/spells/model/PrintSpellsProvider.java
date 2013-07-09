@@ -2,11 +2,13 @@ package net.sf.anathema.hero.spells.model;
 
 import net.sf.anathema.character.main.magic.model.magic.IMagicStats;
 import net.sf.anathema.character.main.magic.model.spells.ISpell;
+import net.sf.anathema.hero.experience.ExperienceModelFetcher;
 import net.sf.anathema.hero.magic.model.PrintMagicProvider;
-import net.sf.anathema.hero.magic.sheet.content.MagicContentHelper;
 import net.sf.anathema.hero.model.Hero;
+import net.sf.anathema.hero.spells.SpellsModelFetcher;
 import net.sf.anathema.hero.spells.sheet.content.SpellStats;
 
+import java.util.Arrays;
 import java.util.List;
 
 public class PrintSpellsProvider implements PrintMagicProvider {
@@ -19,9 +21,13 @@ public class PrintSpellsProvider implements PrintMagicProvider {
 
   @Override
   public void addPrintMagic(List<IMagicStats> printMagic) {
-    MagicContentHelper helper = new MagicContentHelper(hero);
-    for (ISpell spell : helper.getAllLearnedSpells()) {
+    for (ISpell spell : getAllLearnedSpells()) {
       printMagic.add(new SpellStats(spell));
     }
+  }
+
+  private List<ISpell> getAllLearnedSpells() {
+    boolean experienced = ExperienceModelFetcher.fetch(hero).isExperienced();
+    return Arrays.asList(SpellsModelFetcher.fetch(hero).getLearnedSpells(experienced));
   }
 }

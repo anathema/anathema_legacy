@@ -2,7 +2,6 @@ package net.sf.anathema.hero.charms.sheet.content;
 
 import net.sf.anathema.character.main.magic.model.magic.IMagicStats;
 import net.sf.anathema.hero.magic.sheet.content.AbstractMagicContent;
-import net.sf.anathema.hero.magic.sheet.content.MagicContentHelper;
 import net.sf.anathema.hero.sheet.pdf.session.ReportSession;
 import net.sf.anathema.hero.magic.sheet.content.mnemonic.MagicMnemonic;
 import net.sf.anathema.lib.resources.Resources;
@@ -22,7 +21,7 @@ public class CharmsOnlyContent extends AbstractMagicContent {
 
   @Override
   protected MagicMnemonic createMnemonic() {
-    List<IMagicStats> printMagic = MagicContentHelper.collectPrintCharms(session);
+    List<IMagicStats> printMagic = CharmContentHelper.collectPrintCharms(session);
     Collections.sort(printMagic);
     return new CharmsOnlyMnemonic(printMagic);
   }

@@ -5,7 +5,6 @@ import net.sf.anathema.character.main.magic.model.magic.IMagicStats;
 import net.sf.anathema.hero.charms.sheet.content.stats.CharmStats;
 import net.sf.anathema.hero.charms.sheet.content.stats.MultipleEffectCharmStats;
 import net.sf.anathema.hero.magic.model.PrintMagicProvider;
-import net.sf.anathema.hero.magic.sheet.content.MagicContentHelper;
 import net.sf.anathema.hero.model.Hero;
 
 import java.util.List;
@@ -52,7 +51,7 @@ public class PrintCharmsProvider implements PrintMagicProvider {
     }
   }
 
-  private MagicContentHelper createContentHelper() {
-    return new MagicContentHelper(hero);
+  private CharmContentHelper createContentHelper() {
+    return new CharmContentHelper(hero);
   }
 }

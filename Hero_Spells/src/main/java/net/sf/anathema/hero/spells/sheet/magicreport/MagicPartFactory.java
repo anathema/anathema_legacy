@@ -1,4 +1,4 @@
-package net.sf.anathema.hero.magic.sheet.magicreport;
+package net.sf.anathema.hero.spells.sheet.magicreport;
 
 import com.itextpdf.text.Chunk;
 import com.itextpdf.text.Element;

@@ -1,7 +1,7 @@
 package net.sf.anathema.hero.charms.sheet.content.stats;
 
 import net.sf.anathema.character.main.magic.model.charm.Charm;
-import net.sf.anathema.hero.magic.sheet.content.MagicContentHelper;
+import net.sf.anathema.hero.charms.sheet.content.CharmContentHelper;
 import net.sf.anathema.lib.resources.Resources;
 
 import java.util.ArrayList;
@@ -10,9 +10,9 @@ import java.util.List;
 
 public class CharmStats extends AbstractCharmStats {
 
-  protected final MagicContentHelper content;
+  protected final CharmContentHelper content;
 
-  public CharmStats(Charm charm, MagicContentHelper content) {
+  public CharmStats(Charm charm, CharmContentHelper content) {
     super(charm);
     this.content = content;
   }

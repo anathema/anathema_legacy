@@ -9,7 +9,6 @@ import net.sf.anathema.character.main.traits.groups.IIdentifiedTraitTypeGroup;
 import net.sf.anathema.character.main.traits.groups.ITraitTypeGroup;
 import net.sf.anathema.hero.abilities.model.AbilityModelFetcher;
 import net.sf.anathema.hero.attributes.model.AttributesModelFetcher;
-import net.sf.anathema.hero.magic.sheet.content.MagicContentHelper;
 import net.sf.anathema.hero.model.Hero;
 
 import java.util.ArrayList;
@@ -49,7 +48,7 @@ public class GenericCharmContentHelper {
 
   public int getDisplayedGenericCharmCount() {
     int count = 0;
-    MagicContentHelper helper = new MagicContentHelper(hero);
+    CharmContentHelper helper = new CharmContentHelper(hero);
     for (IMagicStats stats : helper.getGenericCharmStats()) {
       if (helper.shouldShowCharm(stats)) {
         count++;
