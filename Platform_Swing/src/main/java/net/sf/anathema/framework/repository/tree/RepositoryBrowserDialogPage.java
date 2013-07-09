@@ -4,6 +4,7 @@ import net.sf.anathema.framework.IApplicationModel;
 import net.sf.anathema.framework.messaging.IMessaging;
 import net.sf.anathema.framework.module.ItemTypePresentationFactory;
 import net.sf.anathema.framework.presenter.view.IItemTypeViewProperties;
+import net.sf.anathema.initialization.ItemTypeCollection;
 import net.sf.anathema.initialization.RegisteredItemTypePresentation;
 import net.sf.anathema.lib.gui.dialog.userdialog.page.AbstractDialogPage;
 import net.sf.anathema.lib.message.BasicMessage;
@@ -27,9 +28,10 @@ public class RepositoryBrowserDialogPage extends AbstractDialogPage {
   @Override
   public JComponent createContent() {
     RepositoryTreeView treeView = new RepositoryTreeView();
-    ItemTypePropertiesMap propertiesMap = registerItemTypePresentations();
+    ItemTypeCollection itemTypeCollection = new ItemTypeCollection(model.getObjectFactory());
+    ItemTypePropertiesMap propertiesMap = registerItemTypePresentations(itemTypeCollection);
     ObjectUiTreeCellRenderer renderer = new ObjectUiTreeCellRenderer(new ItemTypeTreeUi(resources, propertiesMap));
-    RepositoryTreeModel repositoryTreeModel = new RepositoryTreeModel(model.getRepository(), model.getItemTypeRegistry());
+    RepositoryTreeModel repositoryTreeModel = new RepositoryTreeModel(model.getRepository(), itemTypeCollection);
     new RepositoryTreePresenter(resources, repositoryTreeModel, treeView, renderer, "AnathemaCore.Tools.RepositoryView.TreeRoot")
             .initPresentation();
     IMessaging messaging = model.getMessaging();
@@ -43,13 +45,13 @@ public class RepositoryBrowserDialogPage extends AbstractDialogPage {
   }
 
 
-  private ItemTypePropertiesMap registerItemTypePresentations() {
+  private ItemTypePropertiesMap registerItemTypePresentations(ItemTypeCollection itemTypeCollection) {
     Collection<ItemTypePresentationFactory> presentationFactories = model.getObjectFactory().instantiateAll(RegisteredItemTypePresentation.class);
     ItemTypePropertiesMap map = new ItemTypePropertiesMap();
     for (ItemTypePresentationFactory factory : presentationFactories) {
       IItemTypeViewProperties properties = factory.createItemTypeCreationProperties(model, resources);
       String itemType = factory.getClass().getAnnotation(RegisteredItemTypePresentation.class).itemType();
-      map.put(model.getItemTypeRegistry().getById(itemType), properties);
+      map.put(itemTypeCollection.getById(itemType), properties);
     }
     return map;
   }

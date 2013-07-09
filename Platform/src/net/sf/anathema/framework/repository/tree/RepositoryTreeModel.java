@@ -1,13 +1,13 @@
 package net.sf.anathema.framework.repository.tree;
 
 import net.sf.anathema.framework.item.IItemType;
-import net.sf.anathema.framework.item.IItemTypeRegistry;
 import net.sf.anathema.framework.repository.IBasicRepositoryIdData;
 import net.sf.anathema.framework.repository.Repository;
 import net.sf.anathema.framework.repository.RepositoryException;
 import net.sf.anathema.framework.repository.access.IRepositoryFileAccess;
 import net.sf.anathema.framework.repository.access.IRepositoryWriteAccess;
 import net.sf.anathema.framework.view.PrintNameFile;
+import net.sf.anathema.initialization.ItemTypeCollection;
 import net.sf.anathema.lib.control.ChangeListener;
 import org.jmock.example.announcer.Announcer;
 
@@ -21,20 +21,20 @@ public class RepositoryTreeModel implements IRepositoryTreeModel {
   private final Announcer<IRepositoryTreeModelListener> control = Announcer.to(IRepositoryTreeModelListener.class);
   private final Announcer<ChangeListener> changeControl = Announcer.to(ChangeListener.class);
   private final Repository repository;
-  private final IItemTypeRegistry itemTypes;
+  private final ItemTypeCollection itemTypes;
   private Object[] currentlySelectedUserObjects;
   private final RepositoryFileAccessFactory repositoryFileAccessFactory;
 
-  public RepositoryTreeModel(Repository repository, IItemTypeRegistry itemTypes) {
+  public RepositoryTreeModel(Repository repository, ItemTypeCollection itemTypes) {
     this.repository = repository;
     this.itemTypes = itemTypes;
-    this.integratedItemTypes = createIntegratedItemTypes(itemTypes);
+    this.integratedItemTypes = createIntegratedItemTypes();
     this.repositoryFileAccessFactory = new RepositoryFileAccessFactory(repository);
   }
 
-  private IItemType[] createIntegratedItemTypes(IItemTypeRegistry itemTypes) {
+  private IItemType[] createIntegratedItemTypes() {
     List<IItemType> integratedItemTypes = new ArrayList<>();
-    for (IItemType itemType : itemTypes.getAllItemTypes()) {
+    for (IItemType itemType : itemTypes) {
       if (itemType.isIntegrated()) {
         integratedItemTypes.add(itemType);
       }
