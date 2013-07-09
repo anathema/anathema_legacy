@@ -6,7 +6,7 @@ import net.sf.anathema.character.equipment.creation.model.stats.IOffensiveStatis
 import net.sf.anathema.character.equipment.creation.model.stats.IWeaponDamageModel;
 import net.sf.anathema.character.equipment.creation.presenter.stats.properties.OffensiveStatisticsProperties;
 import net.sf.anathema.character.equipment.creation.view.IWeaponDamageView;
-import net.sf.anathema.character.equipment.wizard.CheckInputListener;
+import net.sf.anathema.equipment.editor.wizard.CheckInputListener;
 import net.sf.anathema.lib.data.Condition;
 import net.sf.anathema.lib.resources.Resources;
 

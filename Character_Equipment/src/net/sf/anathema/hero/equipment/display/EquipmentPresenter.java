@@ -4,7 +4,6 @@ import net.sf.anathema.character.equipment.character.IEquipmentStringBuilder;
 import net.sf.anathema.character.equipment.character.model.IEquipmentItem;
 import net.sf.anathema.character.equipment.creation.presenter.stats.properties.EquipmentUI;
 import net.sf.anathema.character.equipment.item.EquipmentTemplateNameComparator;
-import net.sf.anathema.character.equipment.item.personalization.EquipmentPersonalizationProperties;
 import net.sf.anathema.equipment.core.MagicalMaterial;
 import net.sf.anathema.equipment.core.MaterialComposition;
 import net.sf.anathema.framework.presenter.resources.BasicUi;

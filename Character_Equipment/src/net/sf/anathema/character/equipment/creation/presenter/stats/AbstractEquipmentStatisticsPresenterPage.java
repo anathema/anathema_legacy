@@ -6,8 +6,8 @@ import net.sf.anathema.character.equipment.creation.model.stats.IEquipmentStatis
 import net.sf.anathema.character.equipment.creation.model.stats.IEquipmentStatisticsModel;
 import net.sf.anathema.character.equipment.creation.presenter.stats.properties.AbstractEquipmentStatisticsProperties;
 import net.sf.anathema.character.equipment.creation.view.IWeaponStatisticsView;
-import net.sf.anathema.character.equipment.wizard.AbstractAnathemaWizardPage;
-import net.sf.anathema.character.equipment.wizard.CheckInputListener;
+import net.sf.anathema.equipment.editor.wizard.AbstractAnathemaWizardPage;
+import net.sf.anathema.equipment.editor.wizard.CheckInputListener;
 import net.sf.anathema.lib.gui.layout.AdditiveView;
 import net.sf.anathema.lib.gui.widgets.IntegerSpinner;
 import net.sf.anathema.lib.message.IBasicMessage;

@@ -1,4 +1,4 @@
-package net.sf.anathema.character.equipment.wizard;
+package net.sf.anathema.equipment.editor.wizard;
 
 import java.awt.Component;
 

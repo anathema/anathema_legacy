@@ -1,7 +1,5 @@
 package net.sf.anathema.hero.equipment.display;
 
-import net.sf.anathema.character.equipment.item.personalization.EquipmentPersonalizationPresenterPage;
-import net.sf.anathema.character.equipment.item.personalization.EquipmentPersonalizationProperties;
 import net.sf.anathema.framework.view.SwingApplicationFrame;
 import net.sf.anathema.lib.gui.dialog.core.DialogResult;
 import net.sf.anathema.lib.gui.dialog.userdialog.UserDialog;

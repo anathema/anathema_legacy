@@ -1,4 +1,4 @@
-package net.sf.anathema.framework.itemdata.model;
+package net.sf.anathema.equipment.editor.model;
 
 import net.sf.anathema.lib.workflow.textualdescription.ITextualDescription;
 import net.sf.anathema.lib.workflow.textualdescription.SimpleTextualDescription;

@@ -9,10 +9,10 @@ import net.sf.anathema.character.equipment.creation.presenter.stats.RangedCombat
 import net.sf.anathema.character.equipment.creation.presenter.stats.TraitModifyingStatisticsPresenterPage;
 import net.sf.anathema.character.equipment.impl.creation.EquipmentStatisticsCreationViewFactory;
 import net.sf.anathema.character.equipment.item.model.StatsEditor;
-import net.sf.anathema.character.equipment.wizard.AnathemaWizardDialog;
-import net.sf.anathema.character.equipment.wizard.IAnathemaWizardPage;
-import net.sf.anathema.character.equipment.wizard.WizardDialog;
 import net.sf.anathema.character.main.equipment.weapon.IEquipmentStats;
+import net.sf.anathema.equipment.editor.wizard.AnathemaWizardDialog;
+import net.sf.anathema.equipment.editor.wizard.IAnathemaWizardPage;
+import net.sf.anathema.equipment.editor.wizard.WizardDialog;
 import net.sf.anathema.framework.view.SwingApplicationFrame;
 import net.sf.anathema.lib.gui.dialog.core.DialogResult;
 import net.sf.anathema.lib.gui.dialog.userdialog.DialogCloseHandler;
@@ -23,7 +23,7 @@ import javax.swing.SwingUtilities;
 
 public class SwingStatsEditor implements StatsEditor {
 
-  private Closure<IEquipmentStats> whenChangesAreFinished = new NullClosure();
+  private Closure<IEquipmentStats> whenChangesAreFinished = new NullClosure<>();
   private final ModelToStats modelToStats = new ModelToStats();
 
   @Override

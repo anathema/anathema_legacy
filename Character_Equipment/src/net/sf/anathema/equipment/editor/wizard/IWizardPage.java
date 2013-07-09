@@ -1,4 +1,4 @@
-package net.sf.anathema.character.equipment.wizard;
+package net.sf.anathema.equipment.editor.wizard;
 
 import net.sf.anathema.lib.gui.dialog.core.IPage;
 import net.sf.anathema.lib.gui.dialog.core.IPageContent;

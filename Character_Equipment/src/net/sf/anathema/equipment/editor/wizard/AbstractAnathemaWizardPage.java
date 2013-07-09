@@ -1,4 +1,4 @@
-package net.sf.anathema.character.equipment.wizard;
+package net.sf.anathema.equipment.editor.wizard;
 
 import net.sf.anathema.lib.data.Condition;
 import net.sf.anathema.lib.message.BasicMessage;
@@ -32,9 +32,9 @@ public abstract class AbstractAnathemaWizardPage implements IAnathemaWizardPage 
   public final IWizardPage getNextPage() {
     for (Condition condition : followUpPagesByCondition.keySet()) {
       if (condition.isFulfilled()) {
-        IWizardPage page = followUpPagesByCondition.get(condition);
-        if (page instanceof IAnathemaWizardPage) {
-          ((IAnathemaWizardPage) page).setPreviousPage(this);
+        IAnathemaWizardPage page = followUpPagesByCondition.get(condition);
+        if (page != null) {
+          page.setPreviousPage(this);
         }
         return page;
       }

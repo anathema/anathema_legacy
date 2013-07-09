@@ -1,6 +1,5 @@
 package net.sf.anathema.hero.equipment.display;
 
-import net.sf.anathema.character.equipment.item.personalization.EquipmentPersonalizationProperties;
 import net.sf.anathema.interaction.Tool;
 import net.sf.anathema.lib.gui.selection.IListObjectSelectionView;
 

@@ -1,6 +1,5 @@
 package net.sf.anathema.hero.equipment.model;
 
-import net.sf.anathema.character.equipment.MaterialRules;
 import net.sf.anathema.character.equipment.character.EquipmentHeroEvaluator;
 import net.sf.anathema.character.equipment.character.model.IEquipmentItem;
 import net.sf.anathema.character.equipment.character.model.IEquipmentStatsOption;

@@ -10,8 +10,8 @@ import net.sf.anathema.equipment.core.IEquipmentTemplate;
 import net.sf.anathema.equipment.core.ItemCost;
 import net.sf.anathema.equipment.core.MagicalMaterial;
 import net.sf.anathema.equipment.core.MaterialComposition;
-import net.sf.anathema.framework.itemdata.model.IItemDescription;
-import net.sf.anathema.framework.itemdata.model.ItemDescription;
+import net.sf.anathema.equipment.editor.model.IItemDescription;
+import net.sf.anathema.equipment.editor.model.ItemDescription;
 import net.sf.anathema.lib.control.ChangeListener;
 import org.jmock.example.announcer.Announcer;
 
