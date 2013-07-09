@@ -14,7 +14,7 @@ import net.sf.anathema.character.main.testing.dummy.DummyInitializationContext;
 import net.sf.anathema.character.main.testing.dummy.models.DummyHeroConcept;
 import net.sf.anathema.character.main.testing.dummy.models.DummyOtherTraitModel;
 import net.sf.anathema.character.main.testing.dummy.models.DummyTraitModel;
-import net.sf.anathema.hero.abilities.points.creation.AbilityCostCalculator;
+import net.sf.anathema.hero.abilities.points.creation.AbilityCostCalculatorImpl;
 import net.sf.anathema.hero.abilities.model.AbilitiesModelImpl;
 import net.sf.anathema.hero.points.PointModelImpl;
 import org.junit.Before;
@@ -53,7 +53,7 @@ public class AbilityCostCalculatorTest extends AbstractBonusPointTestCase {
     }
   }
 
-  private static void assertEmptyCosts(AbilityCostCalculator calculator, Trait ability) {
+  private static void assertEmptyCosts(AbilityCostCalculatorImpl calculator, Trait ability) {
     FavorableTraitCost[] abilityCost = calculator.getCosts(ability);
     if (ability.getType() == AbilityType.Craft) {
       return;
@@ -93,8 +93,8 @@ public class AbilityCostCalculatorTest extends AbstractBonusPointTestCase {
     costs = new DummyAbilityPointCosts();
   }
 
-  private AbilityCostCalculator startCalculation(IFavorableTraitCreationPoints creationPoints) {
-    AbilityCostCalculator calculator = new AbilityCostCalculator(abilityModel, creationPoints, costs);
+  private AbilityCostCalculatorImpl startCalculation(IFavorableTraitCreationPoints creationPoints) {
+    AbilityCostCalculatorImpl calculator = new AbilityCostCalculatorImpl(abilityModel, creationPoints, costs);
     calculator.recalculate();
     return calculator;
   }
@@ -103,7 +103,7 @@ public class AbilityCostCalculatorTest extends AbstractBonusPointTestCase {
   public void testAllAbilitiesUnlearned() throws Exception {
     AbilityCreationPoints abilityCreationPoints = new AbilityCreationPoints(2, 3, 4);
     initializeModelWith(abilityCreationPoints);
-    AbilityCostCalculator calculator = startCalculation(abilityCreationPoints);
+    AbilityCostCalculatorImpl calculator = startCalculation(abilityCreationPoints);
     assertEquals(0, calculator.getFreePointsSpent(true));
     assertEquals(0, calculator.getFreePointsSpent(false));
     for (Trait ability : getAllAbilities()) {
@@ -127,7 +127,7 @@ public class AbilityCostCalculatorTest extends AbstractBonusPointTestCase {
     Trait firstFavored = setFavoredAbilityTo(AbilityType.Melee, 3);
     Trait secondFavored = setFavoredAbilityTo(AbilityType.Ride, 3);
     Trait unfavoredAbility = setUnfavoredAbilityTo(AbilityType.Archery, 3);
-    AbilityCostCalculator calculator = startCalculation(dummyHero.template.creationPoints.abilityCreationPoints);
+    AbilityCostCalculatorImpl calculator = startCalculation(dummyHero.template.creationPoints.abilityCreationPoints);
     assertEquals(3, calculator.getFreePointsSpent(true));
     assertEquals(2, calculator.getFreePointsSpent(false));
     List<Trait> attributesWithoutCost = getAllAbilities();
@@ -158,7 +158,7 @@ public class AbilityCostCalculatorTest extends AbstractBonusPointTestCase {
     initializeModelWith(abilityCreationPoints);
     Trait firstFavored = setFavoredAbilityTo(AbilityType.Melee, 3);
     Trait secondFavored = setFavoredAbilityTo(AbilityType.Occult, 3);
-    AbilityCostCalculator calculator = startCalculation(abilityCreationPoints);
+    AbilityCostCalculatorImpl calculator = startCalculation(abilityCreationPoints);
     assertEquals(4, calculator.getFreePointsSpent(true));
     assertEquals(2, calculator.getFreePointsSpent(false));
     assertGeneralPointCostsSumUpTo(2, calculator.getCosts(firstFavored)[0], calculator.getCosts(secondFavored)[0]);
@@ -177,7 +177,7 @@ public class AbilityCostCalculatorTest extends AbstractBonusPointTestCase {
     AbilityCreationPoints abilityCreationPoints = new AbilityCreationPoints(2, 3, 4);
     initializeModelWith(abilityCreationPoints);
     Trait favoredAbility = setFavoredAbilityTo(AbilityType.Melee, 3);
-    AbilityCostCalculator calculator = startCalculation(abilityCreationPoints);
+    AbilityCostCalculatorImpl calculator = startCalculation(abilityCreationPoints);
     assertEquals(3, calculator.getFreePointsSpent(true));
     assertEquals(0, calculator.getFreePointsSpent(false));
     for (Trait ability : getAllAbilities()) {
@@ -198,7 +198,7 @@ public class AbilityCostCalculatorTest extends AbstractBonusPointTestCase {
     AbilityCreationPoints abilityCreationPoints = new AbilityCreationPoints(2, 3, 4);
     initializeModelWith(abilityCreationPoints);
     Trait unfavoredAbility = setUnfavoredAbilityTo(AbilityType.Archery, 3);
-    AbilityCostCalculator calculator = startCalculation(abilityCreationPoints);
+    AbilityCostCalculatorImpl calculator = startCalculation(abilityCreationPoints);
     assertEquals(0, calculator.getFreePointsSpent(true));
     assertEquals(3, calculator.getFreePointsSpent(false));
     for (Trait ability : getAllAbilities()) {
@@ -219,7 +219,7 @@ public class AbilityCostCalculatorTest extends AbstractBonusPointTestCase {
     AbilityCreationPoints abilityCreationPoints = new AbilityCreationPoints(2, 3, 4);
     initializeModelWith(abilityCreationPoints);
     Trait favoredAbility = setFavoredAbilityTo(AbilityType.Melee, 4);
-    AbilityCostCalculator calculator = startCalculation(abilityCreationPoints);
+    AbilityCostCalculatorImpl calculator = startCalculation(abilityCreationPoints);
     assertEquals(3, calculator.getFreePointsSpent(true));
     assertEquals(0, calculator.getFreePointsSpent(false));
     for (Trait ability : getAllAbilities()) {
@@ -240,7 +240,7 @@ public class AbilityCostCalculatorTest extends AbstractBonusPointTestCase {
     AbilityCreationPoints abilityCreationPoints = new AbilityCreationPoints(2, 3, 4);
     initializeModelWith(abilityCreationPoints);
     Trait unfavoredAbility = setUnfavoredAbilityTo(AbilityType.Archery, 4);
-    AbilityCostCalculator calculator = startCalculation(abilityCreationPoints);
+    AbilityCostCalculatorImpl calculator = startCalculation(abilityCreationPoints);
     assertEquals(0, calculator.getFreePointsSpent(true));
     assertEquals(3, calculator.getFreePointsSpent(false));
     for (Trait ability : getAllAbilities()) {

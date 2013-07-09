@@ -5,10 +5,10 @@ import net.sf.anathema.character.main.advance.models.AbstractSpendingModel;
 
 public class FavoredAbilityPickModel extends AbstractSpendingModel {
 
-  private final IAbilityCostCalculator abilityCalculator;
+  private final AbilityCostCalculator abilityCalculator;
   private final ICreationPoints creationPoints;
 
-  public FavoredAbilityPickModel(IAbilityCostCalculator abilityCalculator, ICreationPoints creationPoints) {
+  public FavoredAbilityPickModel(AbilityCostCalculator abilityCalculator, ICreationPoints creationPoints) {
     super("Abilities", "FavoredPick");
     this.abilityCalculator = abilityCalculator;
     this.creationPoints = creationPoints;

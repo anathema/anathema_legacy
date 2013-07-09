@@ -4,10 +4,10 @@ import net.sf.anathema.character.main.template.creation.ICreationPoints;
 import net.sf.anathema.character.main.advance.models.AbstractSpendingModel;
 
 public class FavoredAbilityBonusModel extends AbstractSpendingModel {
-  private final IAbilityCostCalculator abilityCalculator;
+  private final AbilityCostCalculator abilityCalculator;
   private final ICreationPoints creationPoints;
 
-  public FavoredAbilityBonusModel(IAbilityCostCalculator abilityCalculator, ICreationPoints creationPoints) {
+  public FavoredAbilityBonusModel(AbilityCostCalculator abilityCalculator, ICreationPoints creationPoints) {
     super("Abilities", "FavoredDot");
     this.abilityCalculator = abilityCalculator;
     this.creationPoints = creationPoints;

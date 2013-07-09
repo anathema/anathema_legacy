@@ -26,17 +26,17 @@ public class AbilitiesPointModel implements HeroModel {
   public void initialize(InitializationContext context, Hero hero) {
     PointsModel pointsModel = PointModelFetcher.fetch(hero);
     pointsModel.addBonusCategory(new WeightedCategory(200, "Abilities"));
-    AbilityCostCalculator abilityCalculator = createCalculator(hero, pointsModel);
+    AbilityCostCalculatorImpl abilityCalculator = createCalculator(hero, pointsModel);
     pointsModel.addBonusPointCalculator(abilityCalculator);
     pointsModel.addToBonusOverview(new DefaultAbilityBonusModel(abilityCalculator, hero.getTemplate().getCreationPoints()));
     pointsModel.addToBonusOverview(new FavoredAbilityBonusModel(abilityCalculator, hero.getTemplate().getCreationPoints()));
     pointsModel.addToBonusOverview(new FavoredAbilityPickModel(abilityCalculator, hero.getTemplate().getCreationPoints()));
   }
 
-  private AbilityCostCalculator createCalculator(Hero hero, PointsModel pointsModel) {
+  private AbilityCostCalculatorImpl createCalculator(Hero hero, PointsModel pointsModel) {
     IAbilityCreationPoints abilityCreationPoints = hero.getTemplate().getCreationPoints().getAbilityCreationPoints();
     BonusPointCosts costs = hero.getTemplate().getBonusPointCosts();
-    return new AbilityCostCalculator(AbilityModelFetcher.fetch(hero), abilityCreationPoints, costs);
+    return new AbilityCostCalculatorImpl(AbilityModelFetcher.fetch(hero), abilityCreationPoints, costs);
   }
 
   @Override
