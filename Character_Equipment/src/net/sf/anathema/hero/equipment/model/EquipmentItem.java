@@ -3,7 +3,6 @@ package net.sf.anathema.hero.equipment.model;
 import com.google.common.base.Function;
 import net.sf.anathema.character.equipment.character.ItemAttunementEvaluator;
 import net.sf.anathema.character.equipment.character.model.IEquipmentItem;
-import net.sf.anathema.character.equipment.character.model.MissingMaterialException;
 import net.sf.anathema.character.equipment.character.model.stats.ProxyArmourStats;
 import net.sf.anathema.character.equipment.character.model.stats.modification.BaseMaterial;
 import net.sf.anathema.character.equipment.character.model.stats.modification.InertBaseMaterial;

@@ -1,6 +1,5 @@
 package net.sf.anathema.hero.equipment;
 
-import net.sf.anathema.character.equipment.character.model.RegisteredNaturalWeapon;
 import net.sf.anathema.character.main.type.CharacterTypes;
 import net.sf.anathema.character.main.type.ICharacterType;
 import net.sf.anathema.equipment.core.IEquipmentTemplate;

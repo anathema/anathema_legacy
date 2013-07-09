@@ -1,4 +1,4 @@
-package net.sf.anathema.character.equipment.character.model;
+package net.sf.anathema.hero.equipment.model;
 
 public class MissingMaterialException extends RuntimeException {
 

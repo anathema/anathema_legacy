@@ -1,6 +1,5 @@
-package net.sf.anathema.character.equipment.character.model.natural.secondedition;
+package net.sf.anathema.hero.equipment.model.natural;
 
-import net.sf.anathema.character.equipment.character.model.natural.AbstractNaturalWeaponStats;
 import net.sf.anathema.character.equipment.creation.model.WeaponTag;
 import net.sf.anathema.character.main.traits.TraitType;
 import net.sf.anathema.character.main.traits.types.AbilityType;

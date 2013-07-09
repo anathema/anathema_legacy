@@ -5,11 +5,7 @@ import com.google.common.collect.Table;
 import net.sf.anathema.character.equipment.character.EquipmentHeroEvaluator;
 import net.sf.anathema.character.equipment.character.EquipmentOptionsProvider;
 import net.sf.anathema.character.equipment.character.model.IEquipmentItem;
-import net.sf.anathema.character.equipment.character.model.IEquipmentPrintModel;
 import net.sf.anathema.character.equipment.character.model.IEquipmentStatsOption;
-import net.sf.anathema.character.equipment.character.model.natural.DefaultNaturalSoak;
-import net.sf.anathema.character.equipment.character.model.natural.NaturalWeaponTemplate;
-import net.sf.anathema.character.equipment.character.model.print.EquipmentPrintModel;
 import net.sf.anathema.character.equipment.item.model.IEquipmentTemplateProvider;
 import net.sf.anathema.character.equipment.item.model.gson.GsonEquipmentDatabase;
 import net.sf.anathema.character.main.UnspecifiedChangeListener;
@@ -33,6 +29,8 @@ import net.sf.anathema.hero.equipment.model.EquipmentHeroEvaluatorImpl;
 import net.sf.anathema.hero.equipment.model.EquipmentItem;
 import net.sf.anathema.hero.equipment.model.MaterialRules;
 import net.sf.anathema.hero.equipment.model.ReflectionMaterialRules;
+import net.sf.anathema.hero.equipment.model.natural.DefaultNaturalSoak;
+import net.sf.anathema.hero.equipment.model.natural.NaturalWeaponTemplate;
 import net.sf.anathema.hero.essencepool.EssencePoolModelFetcher;
 import net.sf.anathema.hero.model.Hero;
 import net.sf.anathema.hero.model.InitializationContext;
@@ -68,7 +66,7 @@ public class EquipmentModelImpl implements EquipmentOptionsProvider, EquipmentMo
   private ICharacterType characterType;
   private MagicalMaterial defaultMaterial;
   private EquipmentHeroEvaluator dataProvider;
-  private IEquipmentPrintModel printModel;
+  private IArmourStats naturalArmor;
 
   @Override
   public Identifier getId() {
@@ -85,9 +83,8 @@ public class EquipmentModelImpl implements EquipmentOptionsProvider, EquipmentMo
     NaturalWeaponsMap naturalWeaponsMap = new NaturalWeaponsMapImpl(context.getCharacterTypes(), context.getObjectFactory());
     ICharacterType characterType = hero.getTemplate().getTemplateType().getCharacterType();
     Trait stamina = TraitModelFetcher.fetch(hero).getTrait(AttributeType.Stamina);
-    IArmourStats naturalArmour = new DefaultNaturalSoak(stamina, characterType);
+    this.naturalArmor = new DefaultNaturalSoak(stamina, characterType);
     EquipmentHeroEvaluatorImpl dataProvider = new EquipmentHeroEvaluatorImpl(hero, materialRules);
-    this.printModel = new EquipmentPrintModel(this, naturalArmour);
     this.characterType = hero.getTemplate().getTemplateType().getCharacterType();
     this.defaultMaterial = evaluateDefaultMaterial(materialRules);
     this.equipmentTemplateProvider = new GsonEquipmentDatabase(access);
@@ -117,6 +114,11 @@ public class EquipmentModelImpl implements EquipmentOptionsProvider, EquipmentMo
   @Override
   public EquipmentOptionsProvider getOptionProvider() {
     return this;
+  }
+
+  @Override
+  public IArmourStats getNaturalArmor() {
+    return naturalArmor;
   }
 
   private MagicalMaterial evaluateDefaultMaterial(MaterialRules materialRules) {
@@ -238,11 +240,6 @@ public class EquipmentModelImpl implements EquipmentOptionsProvider, EquipmentMo
       }
     }
     return transferred;
-  }
-
-  @Override
-  public IEquipmentPrintModel getPrintModel() {
-    return printModel;
   }
 
   @Override

@@ -1,7 +1,8 @@
-package net.sf.anathema.character.equipment.character.model.natural;
+package net.sf.anathema.character.equipment.character.model.print;
 
 import net.sf.anathema.character.equipment.character.model.stats.AbstractCombatStats;
 import net.sf.anathema.character.main.equipment.weapon.IArmourStats;
+import net.sf.anathema.hero.equipment.model.natural.NaturalSoak;
 import net.sf.anathema.hero.health.HealthType;
 import net.sf.anathema.lib.util.Identifier;
 import net.sf.anathema.lib.util.SimpleIdentifier;
