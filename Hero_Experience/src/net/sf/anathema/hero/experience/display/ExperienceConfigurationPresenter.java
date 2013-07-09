@@ -5,14 +5,10 @@ import net.sf.anathema.character.main.advance.IExperiencePointConfiguration;
 import net.sf.anathema.character.main.advance.IExperiencePointEntry;
 import net.sf.anathema.lib.resources.Resources;
 
-import java.util.HashMap;
-import java.util.Map;
-
 public class ExperienceConfigurationPresenter {
 
   private final IExperiencePointConfiguration experiencePoints;
   private final ExperienceView experienceView;
-  private final Map<Integer, IExperiencePointEntry> entriesByIndex = new HashMap<>();
   private final Resources resources;
 
   public ExperienceConfigurationPresenter(Resources resources, IExperiencePointConfiguration experiencePoints,
@@ -25,8 +21,8 @@ public class ExperienceConfigurationPresenter {
   public void initPresentation() {
     experienceView.addExperienceConfigurationViewListener(new ExperienceConfigurationViewListener() {
       @Override
-      public void removeRequested(int index) {
-        experiencePoints.removeEntry(entriesByIndex.get(index));
+      public void removeRequested(IExperiencePointEntry entry) {
+        experiencePoints.removeEntry(entry);
       }
 
       @Override
@@ -35,8 +31,8 @@ public class ExperienceConfigurationPresenter {
       }
 
       @Override
-      public void selectionChanged(int index) {
-        experienceView.setRemoveButtonEnabled(index != -1);
+      public void selectionChanged(IExperiencePointEntry entry) {
+        experienceView.setRemoveButtonEnabled(entry != null);
       }
 
     });
@@ -59,8 +55,7 @@ public class ExperienceConfigurationPresenter {
     experienceView.initGui(new ExperienceViewProperties(resources));
     refreshEntriesInView();
     experienceView.addUpdateListener(new ExperienceUpdateListener() {
-      public void update(int index, int points, String description) {
-        IExperiencePointEntry entry = entriesByIndex.get(index);
+      public void update(IExperiencePointEntry entry, int points, String description) {
         entry.setExperiencePoints(points);
         entry.getTextualDescription().setText(description);
       }
@@ -77,8 +72,7 @@ public class ExperienceConfigurationPresenter {
   }
 
   private void addToView(IExperiencePointEntry entry) {
-    entriesByIndex.put(experienceView.getNumberOfEntriesOnDisplay(), entry);
-    experienceView.addEntry(entry.getExperiencePoints(), entry.getTextualDescription().getText());
+    experienceView.addEntry(entry);
   }
 
   private void updateTotal() {

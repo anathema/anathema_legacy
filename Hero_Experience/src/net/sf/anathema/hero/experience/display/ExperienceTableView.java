@@ -3,6 +3,7 @@ package net.sf.anathema.hero.experience.display;
 import net.miginfocom.layout.CC;
 import net.miginfocom.layout.LC;
 import net.miginfocom.swing.MigLayout;
+import net.sf.anathema.character.main.advance.IExperiencePointEntry;
 import net.sf.anathema.framework.swing.IView;
 import net.sf.anathema.lib.gui.action.SmartAction;
 import net.sf.anathema.lib.gui.icon.ImageProvider;
@@ -27,6 +28,8 @@ import javax.swing.table.TableColumn;
 import java.awt.Color;
 import java.awt.Component;
 import java.awt.Dimension;
+import java.util.HashMap;
+import java.util.Map;
 
 import static net.sf.anathema.lib.gui.layout.LayoutUtils.fillWithoutInsets;
 
@@ -38,6 +41,7 @@ public class ExperienceTableView implements ExperienceView, IView {
   private Action deleteAction;
   private LabelledIntegerValueView labelledIntValueView;
   private JPanel content = new JPanel(new MigLayout(fillWithoutInsets()));
+  private final Map<Integer, IExperiencePointEntry> entriesByIndex = new HashMap<>();
 
   @Override
   public final void initGui(final IExperienceViewProperties properties) {
@@ -88,11 +92,13 @@ public class ExperienceTableView implements ExperienceView, IView {
   }
 
   protected void fireSelectionChanged() {
-    listeners.announce().selectionChanged(smartTable.getSelectedRowIndex());
+    IExperiencePointEntry entry = entriesByIndex.get(smartTable.getSelectedRowIndex());
+    listeners.announce().selectionChanged(entry);
   }
 
   private void fireRemoveRequested() {
-    listeners.announce().removeRequested(smartTable.getSelectedRowIndex());
+    IExperiencePointEntry entry = entriesByIndex.get(smartTable.getSelectedRowIndex());
+    listeners.announce().removeRequested(entry);
   }
 
   private void fireAddRequested() {
@@ -115,11 +121,13 @@ public class ExperienceTableView implements ExperienceView, IView {
   }
 
   @Override
-  public void addEntry(int experiencePoints, String text) {
+  public void addEntry(IExperiencePointEntry entry) {
+    entriesByIndex.put(getNumberOfEntriesOnDisplay(), entry);
     Object[] values = new Object[2];
-    values[ExperienceTableView.VALUE_INDEX] = experiencePoints;
-    values[ExperienceTableView.DESCRIPTION_INDEX] = text;
+    values[ExperienceTableView.VALUE_INDEX] = entry.getExperiencePoints();
+    values[ExperienceTableView.DESCRIPTION_INDEX] = entry.getTextualDescription().getText();
     getTableModel().addRow(values);
+
   }
 
   @Override
@@ -138,7 +146,8 @@ public class ExperienceTableView implements ExperienceView, IView {
         int tableRowIndex = e.getFirstRow();
         Integer experiencePoints = (Integer) getTableModel().getValueAt(tableRowIndex, ExperienceTableView.VALUE_INDEX);
         String description = (String) getTableModel().getValueAt(tableRowIndex, ExperienceTableView.DESCRIPTION_INDEX);
-        experienceUpdateListener.update(tableRowIndex, experiencePoints, description);
+        IExperiencePointEntry entry = entriesByIndex.get(tableRowIndex);
+        experienceUpdateListener.update(entry, experiencePoints, description);
       }
     });
   }

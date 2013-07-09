@@ -1,5 +1,7 @@
 package net.sf.anathema.hero.experience.display;
 
+import net.sf.anathema.character.main.advance.IExperiencePointEntry;
+
 public interface ExperienceView {
 
   void initGui(IExperienceViewProperties properties);
@@ -10,7 +12,7 @@ public interface ExperienceView {
 
   void setTotalValueLabel(int overallExperiencePoints);
 
-  void addEntry(int experiencePoints, String text);
+  void addEntry(IExperiencePointEntry entry);
 
   void clearEntries();
 

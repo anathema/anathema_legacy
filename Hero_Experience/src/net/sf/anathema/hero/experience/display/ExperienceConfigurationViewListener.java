@@ -1,10 +1,12 @@
 package net.sf.anathema.hero.experience.display;
 
+import net.sf.anathema.character.main.advance.IExperiencePointEntry;
+
 public interface ExperienceConfigurationViewListener {
 
   void addRequested();
 
-  void removeRequested(int index);
+  void removeRequested(IExperiencePointEntry entry);
 
-  void selectionChanged(int index);
+  void selectionChanged(IExperiencePointEntry entry);
 }
