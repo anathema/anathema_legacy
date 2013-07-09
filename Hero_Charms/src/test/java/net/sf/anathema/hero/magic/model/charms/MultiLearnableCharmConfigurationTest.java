@@ -13,7 +13,7 @@ import net.sf.anathema.character.main.testing.dummy.magic.DummyLearnableArbitrat
 import net.sf.anathema.character.main.traits.context.CreationTraitValueStrategy;
 import net.sf.anathema.character.main.traits.context.ExperiencedTraitValueStrategy;
 import net.sf.anathema.character.main.traits.context.ProxyTraitValueStrategy;
-import net.sf.anathema.hero.magic.model.charms.special.MultiLearnableCharmConfiguration;
+import net.sf.anathema.hero.charms.model.special.MultiLearnableCharmConfiguration;
 import org.junit.Before;
 import org.junit.Test;
 

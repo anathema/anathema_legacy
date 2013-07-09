@@ -6,6 +6,7 @@ import net.sf.anathema.character.main.magic.model.charm.CharmAttributeList;
 import net.sf.anathema.character.main.magic.model.charms.ILearningCharmGroup;
 import net.sf.anathema.character.main.dummy.DummyCharm;
 import net.sf.anathema.character.main.testing.dummy.magic.DummyCharmsModel;
+import net.sf.anathema.hero.charms.model.DefaultMartialArtsCharmConfiguration;
 import net.sf.anathema.hero.experience.ExperienceModel;
 import net.sf.anathema.hero.magic.MagicCollection;
 import net.sf.anathema.lib.control.ChangeListener;

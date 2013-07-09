@@ -12,7 +12,7 @@ import net.sf.anathema.character.main.template.magic.ICharmTemplate;
 import net.sf.anathema.character.main.type.CharacterTypes;
 import net.sf.anathema.character.main.type.ICharacterType;
 import net.sf.anathema.character.main.magic.model.charms.options.DefaultCharmTemplateRetriever;
-import net.sf.anathema.hero.magic.model.charms.CharmGroupCollection;
+import net.sf.anathema.hero.charms.model.CharmGroupCollection;
 import net.sf.anathema.lib.util.Identifier;
 
 import java.util.ArrayList;
