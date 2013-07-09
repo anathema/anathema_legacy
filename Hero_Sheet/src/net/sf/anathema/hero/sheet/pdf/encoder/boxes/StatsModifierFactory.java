@@ -5,5 +5,5 @@ import net.sf.anathema.hero.model.Hero;
 
 public interface StatsModifierFactory  {
 
-  ICharacterStatsModifiers create(Hero hero);
+  ICharacterStatsModifiers createStatsModifiers(Hero hero);
 }

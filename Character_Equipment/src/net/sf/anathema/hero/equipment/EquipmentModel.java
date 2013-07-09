@@ -6,16 +6,15 @@ import net.sf.anathema.character.equipment.character.model.IEquipmentItem;
 import net.sf.anathema.character.equipment.character.model.IEquipmentItemCollection;
 import net.sf.anathema.character.equipment.character.model.IEquipmentPrintModel;
 import net.sf.anathema.character.equipment.item.model.IEquipmentTemplateProvider;
-import net.sf.anathema.character.main.equipment.ICharacterStatsModifiers;
 import net.sf.anathema.character.main.essence.IEssencePoolModifier;
 import net.sf.anathema.equipment.core.MagicalMaterial;
 import net.sf.anathema.equipment.core.MaterialComposition;
-import net.sf.anathema.hero.model.Hero;
 import net.sf.anathema.hero.model.HeroModel;
+import net.sf.anathema.hero.sheet.pdf.encoder.boxes.StatsModifierFactory;
 import net.sf.anathema.lib.util.Identifier;
 import net.sf.anathema.lib.util.SimpleIdentifier;
 
-public interface EquipmentModel extends HeroModel, IEquipmentItemCollection, IEquipmentTemplateProvider, IEssencePoolModifier {
+public interface EquipmentModel extends HeroModel, IEquipmentItemCollection, IEquipmentTemplateProvider, IEssencePoolModifier, StatsModifierFactory {
 
   Identifier ID = new SimpleIdentifier("Equipment");
 
@@ -34,6 +33,4 @@ public interface EquipmentModel extends HeroModel, IEquipmentItemCollection, IEq
   void refreshItems();
 
   EquipmentOptionsProvider getOptionProvider();
-
-  ICharacterStatsModifiers createStatsModifiers(Hero hero);
 }

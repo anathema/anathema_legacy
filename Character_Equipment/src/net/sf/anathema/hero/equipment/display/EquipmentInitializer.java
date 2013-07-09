@@ -7,6 +7,7 @@ import net.sf.anathema.character.main.view.SectionView;
 import net.sf.anathema.framework.model.ApplicationModel;
 import net.sf.anathema.hero.display.HeroModelGroup;
 import net.sf.anathema.hero.equipment.EquipmentModel;
+import net.sf.anathema.hero.equipment.EquipmentModelFetcher;
 import net.sf.anathema.hero.model.Hero;
 import net.sf.anathema.initialization.reflections.Weight;
 import net.sf.anathema.lib.resources.Resources;
@@ -24,7 +25,7 @@ public class EquipmentInitializer implements HeroModelInitializer {
     String viewName = resources.getString("AdditionalTemplateView.TabName.Equipment");
     ICharacterType characterType = hero.getTemplate().getTemplateType().getCharacterType();
     EquipmentView view = sectionView.addView(viewName, EquipmentView.class, characterType);
-    EquipmentModel equipmentModel = hero.getModel(EquipmentModel.ID);
+    EquipmentModel equipmentModel = EquipmentModelFetcher.fetch(hero);
     new EquipmentPresenter(resources, equipmentModel, view).initPresentation();
   }
 }

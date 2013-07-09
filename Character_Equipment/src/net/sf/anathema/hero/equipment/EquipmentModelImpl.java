@@ -2,7 +2,6 @@ package net.sf.anathema.hero.equipment;
 
 import com.google.common.collect.HashBasedTable;
 import com.google.common.collect.Table;
-import net.sf.anathema.character.equipment.EquipmentDirectAccess;
 import net.sf.anathema.character.equipment.character.EquipmentHeroEvaluator;
 import net.sf.anathema.character.equipment.character.EquipmentOptionsProvider;
 import net.sf.anathema.character.equipment.character.model.EquipmentCollection;
@@ -13,10 +12,8 @@ import net.sf.anathema.character.equipment.character.model.IEquipmentStatsOption
 import net.sf.anathema.character.equipment.character.model.natural.DefaultNaturalSoak;
 import net.sf.anathema.character.equipment.character.model.natural.NaturalWeaponTemplate;
 import net.sf.anathema.character.equipment.character.model.print.EquipmentPrintModel;
-import net.sf.anathema.character.equipment.character.model.stats.CharacterStatsModifiers;
 import net.sf.anathema.character.equipment.item.model.IEquipmentTemplateProvider;
 import net.sf.anathema.character.equipment.item.model.gson.GsonEquipmentDatabase;
-import net.sf.anathema.character.equipment.reporting.EquipmentStatsModifierFactory;
 import net.sf.anathema.character.main.UnspecifiedChangeListener;
 import net.sf.anathema.character.main.equipment.ArtifactStats;
 import net.sf.anathema.character.main.equipment.ICharacterStatsModifiers;
@@ -31,6 +28,8 @@ import net.sf.anathema.equipment.core.IEquipmentTemplate;
 import net.sf.anathema.equipment.core.MagicalMaterial;
 import net.sf.anathema.equipment.core.MaterialComposition;
 import net.sf.anathema.hero.change.ChangeAnnouncer;
+import net.sf.anathema.hero.equipment.model.CharacterStatsModifiers;
+import net.sf.anathema.hero.equipment.model.EquipmentDirectAccess;
 import net.sf.anathema.hero.equipment.model.EquipmentHeroEvaluatorImpl;
 import net.sf.anathema.hero.equipment.model.MaterialRules;
 import net.sf.anathema.hero.equipment.model.ReflectionMaterialRules;
@@ -38,7 +37,6 @@ import net.sf.anathema.hero.essencepool.EssencePoolModelFetcher;
 import net.sf.anathema.hero.model.Hero;
 import net.sf.anathema.hero.model.InitializationContext;
 import net.sf.anathema.hero.sheet.pdf.content.stats.StatsModelFetcher;
-import net.sf.anathema.hero.sheet.pdf.encoder.boxes.StatsModifierFactory;
 import net.sf.anathema.hero.traits.TraitModelFetcher;
 import net.sf.anathema.initialization.ObjectFactory;
 import net.sf.anathema.lib.control.ChangeListener;
@@ -54,7 +52,7 @@ import java.util.List;
 
 import static net.sf.anathema.character.equipment.item.model.gson.GsonEquipmentDatabase.DATABASE_FOLDER;
 
-public class EquipmentModelImpl implements EquipmentOptionsProvider, EquipmentModel, StatsModifierFactory {
+public class EquipmentModelImpl implements EquipmentOptionsProvider, EquipmentModel {
   private final List<IEquipmentItem> naturalWeaponItems = new ArrayList<>();
   private final Table<IEquipmentItem, IEquipmentStats, List<IEquipmentStatsOption>> optionsTable = HashBasedTable.create();
   private final Announcer<ChangeListener> modelChangeControl = Announcer.to(ChangeListener.class);
@@ -119,11 +117,6 @@ public class EquipmentModelImpl implements EquipmentOptionsProvider, EquipmentMo
   @Override
   public EquipmentOptionsProvider getOptionProvider() {
     return this;
-  }
-
-  @Override
-  public ICharacterStatsModifiers createStatsModifiers(Hero hero) {
-    return CharacterStatsModifiers.extractFromCharacter(hero);
   }
 
   private MagicalMaterial evaluateDefaultMaterial(MaterialRules materialRules) {
@@ -361,8 +354,8 @@ public class EquipmentModelImpl implements EquipmentOptionsProvider, EquipmentMo
   }
 
   @Override
-  public ICharacterStatsModifiers create(Hero hero) {
-    return new EquipmentStatsModifierFactory().create(hero);
+  public ICharacterStatsModifiers createStatsModifiers(Hero hero) {
+    return CharacterStatsModifiers.extractFromCharacter(hero);
   }
 
   private class SpecialtyPrintRemover implements ChangeListener {

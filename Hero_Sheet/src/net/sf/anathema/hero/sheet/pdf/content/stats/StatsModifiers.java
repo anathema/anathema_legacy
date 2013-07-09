@@ -9,7 +9,7 @@ public class StatsModifiers {
   public static ICharacterStatsModifiers allStatsModifiers(Hero hero) {
     AggregatedStatsModifiers allModifiers = new AggregatedStatsModifiers();
     for (StatsModifierFactory factory : StatsModelFetcher.fetch(hero).getModifierFactories()) {
-      ICharacterStatsModifiers statsModifiers = factory.create(hero);
+      ICharacterStatsModifiers statsModifiers = factory.createStatsModifiers(hero);
       allModifiers.add(statsModifiers);
     }
     return allModifiers;
