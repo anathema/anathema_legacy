@@ -190,6 +190,7 @@ public class GenericBonusPointCosts extends ReflectionEqualsObject implements Bo
 
   @Override
   public GenericBonusPointCosts clone() {
-    return SerializationUtils.clone(this);
+    GenericBonusPointCosts clone = SerializationUtils.clone(this);
+    return clone;
   }
 }
