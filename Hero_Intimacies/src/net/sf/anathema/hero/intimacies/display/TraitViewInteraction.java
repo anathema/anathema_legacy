@@ -24,7 +24,6 @@ public class TraitViewInteraction implements ToggleTool {
 
   public TraitViewInteraction() {
     this.button = new JToggleButton();
-    button.setPreferredSize(new Dimension(20, 20));
     button.addActionListener(new ActionListener() {
       @Override
       public void actionPerformed(ActionEvent e) {
