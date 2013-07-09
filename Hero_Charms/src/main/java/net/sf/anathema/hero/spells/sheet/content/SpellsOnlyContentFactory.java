@@ -1,4 +1,4 @@
-package net.sf.anathema.hero.magic.sheet.content;
+package net.sf.anathema.hero.spells.sheet.content;
 
 import net.sf.anathema.hero.sheet.pdf.content.RegisteredReportContent;
 import net.sf.anathema.hero.sheet.pdf.content.ReportContentFactory;

@@ -5,7 +5,7 @@ import net.sf.anathema.character.main.traits.ValuedTraitType;
 import net.sf.anathema.character.main.traits.types.AbilityType;
 import net.sf.anathema.character.main.dummy.DummyCharm;
 import net.sf.anathema.character.main.testing.dummy.DummyGenericTrait;
-import net.sf.anathema.hero.magic.sheet.content.CharmPrintNameTransformer;
+import net.sf.anathema.hero.charms.sheet.content.CharmPrintNameTransformer;
 import net.sf.anathema.lib.resources.Resources;
 import org.junit.Before;
 import org.junit.Test;

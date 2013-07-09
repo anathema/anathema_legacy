@@ -1,4 +1,4 @@
-package net.sf.anathema.hero.magic.sheet.encoder;
+package net.sf.anathema.hero.charms.sheet.encoder;
 
 import com.itextpdf.text.DocumentException;
 import net.sf.anathema.hero.sheet.pdf.session.ReportSession;

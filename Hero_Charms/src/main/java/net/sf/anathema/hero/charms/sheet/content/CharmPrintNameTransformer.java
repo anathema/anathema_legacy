@@ -1,4 +1,4 @@
-package net.sf.anathema.hero.magic.sheet.content;
+package net.sf.anathema.hero.charms.sheet.content;
 
 import com.google.common.base.Function;
 import net.sf.anathema.character.main.magic.model.charm.Charm;

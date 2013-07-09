@@ -1,4 +1,4 @@
-package net.sf.anathema.hero.magic.sheet.content.stats;
+package net.sf.anathema.hero.charms.sheet.content.stats;
 
 import net.sf.anathema.character.main.magic.model.charm.Charm;
 import net.sf.anathema.character.main.magic.model.magic.IMagicStats;

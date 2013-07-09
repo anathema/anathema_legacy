@@ -5,6 +5,7 @@ import net.sf.anathema.character.main.magic.model.magic.IMagicStats;
 import java.util.List;
 
 public interface MagicMnemonic {
+
   void removePrintMagic(IMagicStats printMagic);
 
   List<IMagicStats> getRemainingPrintMagic();

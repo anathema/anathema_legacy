@@ -10,7 +10,7 @@ import net.sf.anathema.character.main.magic.model.charm.Charm;
 import net.sf.anathema.character.main.magic.model.charms.MartialArtsUtilities;
 import net.sf.anathema.character.main.magic.description.MagicDescription;
 import net.sf.anathema.character.main.traits.types.AbilityType;
-import net.sf.anathema.hero.magic.sheet.content.stats.CharmStats;
+import net.sf.anathema.hero.charms.sheet.content.stats.CharmStats;
 import net.sf.anathema.character.main.magic.model.charmtree.builder.stringbuilder.type.VerboseCharmTypeStringBuilder;
 import net.sf.anathema.lib.resources.Resources;
 

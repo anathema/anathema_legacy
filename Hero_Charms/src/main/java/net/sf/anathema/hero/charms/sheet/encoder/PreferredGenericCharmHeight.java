@@ -1,7 +1,7 @@
-package net.sf.anathema.hero.magic.sheet.encoder;
+package net.sf.anathema.hero.charms.sheet.encoder;
 
 import net.sf.anathema.hero.sheet.pdf.session.ReportSession;
-import net.sf.anathema.hero.magic.sheet.content.GenericCharmContent;
+import net.sf.anathema.hero.charms.sheet.content.GenericCharmContent;
 import net.sf.anathema.hero.sheet.pdf.encoder.boxes.EncodingMetrics;
 import net.sf.anathema.hero.sheet.pdf.encoder.boxes.PreferredHeight;
 import net.sf.anathema.hero.sheet.pdf.page.IVoidStateFormatConstants;

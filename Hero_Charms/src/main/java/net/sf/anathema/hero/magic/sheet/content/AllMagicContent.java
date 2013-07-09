@@ -3,9 +3,9 @@ package net.sf.anathema.hero.magic.sheet.content;
 import net.sf.anathema.character.main.magic.model.magic.Magic;
 import net.sf.anathema.character.main.magic.model.magic.IMagicStats;
 import net.sf.anathema.character.main.magic.model.magic.IMagicVisitor;
+import net.sf.anathema.hero.magic.sheet.content.mnemonic.AllMagicMnemonic;
 import net.sf.anathema.hero.sheet.pdf.session.PageBreakChecker;
 import net.sf.anathema.hero.sheet.pdf.session.ReportSession;
-import net.sf.anathema.hero.magic.sheet.content.mnemonic.CharmsAndSorceryMnemonic;
 import net.sf.anathema.hero.magic.sheet.content.mnemonic.MagicMnemonic;
 import net.sf.anathema.hero.magic.sheet.content.stats.MagicStatsFactoryVisitor;
 import net.sf.anathema.lib.resources.Resources;
@@ -31,17 +31,17 @@ public class AllMagicContent extends AbstractMagicContent {
   protected MagicMnemonic createMnemonic() {
     List<IMagicStats> printMagic = collectPrintMagic();
     Collections.sort(printMagic);
-    return new CharmsAndSorceryMnemonic(printMagic);
+    return new AllMagicMnemonic(printMagic);
   }
 
   @Override
   protected boolean knowsMnemonic(ReportSession session) {
-    return session.knowsMnemonic(CharmsAndSorceryMnemonic.class);
+    return session.knowsMnemonic(AllMagicMnemonic.class);
   }
 
   @Override
   protected MagicMnemonic getMnemonic() {
-    return session.retrieveMnemonic(CharmsAndSorceryMnemonic.class);
+    return session.retrieveMnemonic(AllMagicMnemonic.class);
   }
 
   @Override

@@ -19,10 +19,10 @@ import net.sf.anathema.character.main.magic.model.charms.ILearningCharmGroup;
 import net.sf.anathema.character.main.magic.model.charm.special.IMultipleEffectCharmConfiguration;
 import net.sf.anathema.character.main.magic.model.charm.special.ISubeffectCharmConfiguration;
 import net.sf.anathema.hero.sheet.pdf.session.ReportSession;
-import net.sf.anathema.hero.magic.sheet.content.stats.CharmStats;
-import net.sf.anathema.hero.magic.sheet.content.stats.GenericCharmStats;
-import net.sf.anathema.hero.magic.sheet.content.stats.MultipleEffectCharmStats;
-import net.sf.anathema.hero.magic.sheet.content.stats.SpellStats;
+import net.sf.anathema.hero.charms.sheet.content.stats.CharmStats;
+import net.sf.anathema.hero.charms.sheet.content.stats.GenericCharmStats;
+import net.sf.anathema.hero.charms.sheet.content.stats.MultipleEffectCharmStats;
+import net.sf.anathema.hero.spells.sheet.content.SpellStats;
 import net.sf.anathema.hero.model.Hero;
 
 import java.util.ArrayList;

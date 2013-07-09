@@ -1,4 +1,4 @@
-package net.sf.anathema.hero.magic.sheet.content.stats;
+package net.sf.anathema.hero.charms.sheet.content.stats;
 
 import com.google.common.base.Function;
 import net.sf.anathema.character.main.magic.model.charm.Charm;
@@ -8,6 +8,7 @@ import net.sf.anathema.character.main.magic.model.charm.type.ICharmTypeModel;
 import net.sf.anathema.character.main.magic.model.charmtree.builder.stringbuilder.IMagicSourceStringBuilder;
 import net.sf.anathema.character.main.magic.model.charmtree.builder.stringbuilder.source.MagicSourceStringBuilder;
 import net.sf.anathema.character.main.magic.model.charmtree.builder.stringbuilder.type.ShortCharmTypeStringBuilder;
+import net.sf.anathema.hero.magic.sheet.content.stats.AbstractMagicStats;
 import net.sf.anathema.lib.resources.Resources;
 
 import java.util.ArrayList;

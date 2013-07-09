@@ -1,4 +1,4 @@
-package net.sf.anathema.hero.magic.sheet.content;
+package net.sf.anathema.hero.charms.sheet.content;
 
 import net.sf.anathema.character.main.traits.TraitType;
 import net.sf.anathema.hero.sheet.pdf.content.SubBoxContent;

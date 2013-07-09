@@ -1,6 +1,8 @@
-package net.sf.anathema.hero.magic.sheet.encoder;
+package net.sf.anathema.hero.spells.sheet.encoder;
 
+import net.sf.anathema.hero.magic.sheet.encoder.ExtendedMagicEncoder;
 import net.sf.anathema.hero.sheet.pdf.content.BasicContent;
+import net.sf.anathema.hero.spells.sheet.content.SpellsOnlyContent;
 import net.sf.anathema.hero.sheet.pdf.encoder.EncoderIds;
 import net.sf.anathema.hero.sheet.pdf.encoder.boxes.AbstractEncoderFactory;
 import net.sf.anathema.hero.sheet.pdf.encoder.boxes.RegisteredEncoderFactory;
@@ -8,16 +10,15 @@ import net.sf.anathema.hero.sheet.pdf.encoder.boxes.ContentEncoder;
 import net.sf.anathema.lib.resources.Resources;
 
 @RegisteredEncoderFactory
-public class GenericCharmEncoderFactory extends AbstractEncoderFactory {
+public class SpellsOnlyEncoderFactory extends AbstractEncoderFactory{
 
-  public GenericCharmEncoderFactory() {
-    super(EncoderIds.GENERIC_CHARMS);
-    setPreferredHeight(new PreferredGenericCharmHeight());
+  public SpellsOnlyEncoderFactory() {
+    super(EncoderIds.SPELLS_ONLY);
   }
 
   @Override
   public ContentEncoder create(Resources resources, BasicContent content) {
-    return new GenericCharmEncoder(resources);
+    return new ExtendedMagicEncoder<>(resources, SpellsOnlyContent.class, false, "Magic");
   }
 
   @Override

@@ -1,4 +1,4 @@
-package net.sf.anathema.hero.magic.sheet.encoder;
+package net.sf.anathema.hero.charms.sheet.encoder;
 
 import com.itextpdf.text.BaseColor;
 import com.itextpdf.text.DocumentException;
@@ -23,8 +23,8 @@ import net.sf.anathema.hero.sheet.pdf.encoder.table.AbstractTableEncoder;
 import net.sf.anathema.hero.sheet.pdf.encoder.graphics.SheetGraphics;
 import net.sf.anathema.hero.sheet.pdf.encoder.graphics.TableCell;
 import net.sf.anathema.hero.sheet.pdf.page.IVoidStateFormatConstants;
-import net.sf.anathema.hero.magic.sheet.content.GenericCharmContent;
-import net.sf.anathema.hero.magic.sheet.content.GenericCharmContentHelper;
+import net.sf.anathema.hero.charms.sheet.content.GenericCharmContent;
+import net.sf.anathema.hero.charms.sheet.content.GenericCharmContentHelper;
 import net.sf.anathema.lib.resources.Resources;
 
 import java.util.Arrays;
