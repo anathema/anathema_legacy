@@ -1,16 +1,16 @@
 package net.sf.anathema.character.main.xml.creation;
 
 import net.sf.anathema.character.main.magic.model.charm.Charm;
-import net.sf.anathema.character.main.magic.model.charm.ICharmAttribute;
 import net.sf.anathema.character.main.magic.model.charm.MartialArtsLevel;
-import net.sf.anathema.character.main.magic.model.magic.Magic;
 import net.sf.anathema.character.main.magic.model.magic.IMagicVisitor;
+import net.sf.anathema.character.main.magic.model.magic.Magic;
 import net.sf.anathema.character.main.magic.model.spells.ISpell;
 import net.sf.anathema.character.main.template.creation.BonusPointCosts;
 import net.sf.anathema.character.main.template.experience.CurrentRatingCosts;
 import net.sf.anathema.character.main.template.experience.ICostAnalyzer;
 import net.sf.anathema.character.main.template.points.FixedValueRatingCosts;
 import net.sf.anathema.character.main.traits.ValuedTraitType;
+import net.sf.anathema.character.main.xml.creation.magic.CharmKeywordCosts;
 import net.sf.anathema.lib.lang.ReflectionEqualsObject;
 import net.sf.anathema.lib.lang.clone.ICloneable;
 import org.apache.commons.lang3.SerializationUtils;
@@ -36,19 +36,30 @@ public class GenericBonusPointCosts extends ReflectionEqualsObject implements Bo
   private int favoredAttributeCost = 0;
   private int maximumFreeVirtueRank = 3;
   private int maximumFreeAbilityRank = 3;
-  private Map<String, Integer> generalKeywordCosts;
-  private Map<String, Integer> favoredKeywordCosts;
+  private CharmKeywordCosts generalKeywordCosts = new CharmKeywordCosts();
+  private CharmKeywordCosts favoredKeywordCosts = new CharmKeywordCosts();
 
   @Override
   public int getCharmCosts(Charm charm, ICostAnalyzer analyzer) {
     boolean favored = analyzer.isMagicFavored(charm);
-    for (ICharmAttribute attribute : charm.getAttributes()) {
-      Map<String, Integer> set = favored ? favoredKeywordCosts : generalKeywordCosts;
-      if (set != null && set.get(attribute.getId()) != null) {
-        return set.get(attribute.getId());
-      }
+    CharmKeywordCosts set = favored ? favoredKeywordCosts : generalKeywordCosts;
+    if (set.hasCostFor(charm.getAttributes())) {
+      return set.getCostFor(charm.getAttributes());
     }
     return getCharmCosts(favored, analyzer.getMartialArtsLevel(charm));
+  }
+
+  @Override
+  public int getSpellCosts(ICostAnalyzer costMapping) {
+    boolean isSorceryFavored = costMapping.isOccultFavored();
+    return getCharmCosts(isSorceryFavored, null);
+  }
+
+  private int getCharmCosts(boolean favored, MartialArtsLevel martialArtsLevel) {
+    if (martialArtsLevel != null && (standardLevel.compareTo(martialArtsLevel) < 0 || martialArtsLevel == MartialArtsLevel.Sidereal)) {
+      return favored ? favoredHighLevelMartialArtsCharmCost : generalHighLevelMartialArtsCharmCost;
+    }
+    return favored ? favoredCharmCost : generalCharmCost;
   }
 
   @Override
@@ -86,19 +97,6 @@ public class GenericBonusPointCosts extends ReflectionEqualsObject implements Bo
   @Override
   public int getWillpowerCosts() {
     return willpowerCost;
-  }
-
-  @Override
-  public int getSpellCosts(ICostAnalyzer costMapping) {
-    boolean isSorceryFavored = costMapping.isOccultFavored();
-    return getCharmCosts(isSorceryFavored, null);
-  }
-
-  private int getCharmCosts(boolean favored, MartialArtsLevel martialArtsLevel) {
-    if (martialArtsLevel != null && (standardLevel.compareTo(martialArtsLevel) < 0 || martialArtsLevel == MartialArtsLevel.Sidereal)) {
-      return favored ? favoredHighLevelMartialArtsCharmCost : generalHighLevelMartialArtsCharmCost;
-    }
-    return favored ? favoredCharmCost : generalCharmCost;
   }
 
   @Override
@@ -169,8 +167,8 @@ public class GenericBonusPointCosts extends ReflectionEqualsObject implements Bo
     this.generalHighLevelMartialArtsCharmCost = generalHighLevelMartialArtsCost;
     this.favoredCharmCost = favoredCharmCost;
     this.favoredHighLevelMartialArtsCharmCost = favoredHighLevelMartialArtsCost;
-    this.generalKeywordCosts = generalKeywordCosts;
-    this.favoredKeywordCosts = favoredKeywordCosts;
+    this.generalKeywordCosts.setKeywordCosts(generalKeywordCosts);
+    this.favoredKeywordCosts.setKeywordCosts(favoredKeywordCosts);
   }
 
   public void setAbilityCosts(int generalCost, int favoredCost) {

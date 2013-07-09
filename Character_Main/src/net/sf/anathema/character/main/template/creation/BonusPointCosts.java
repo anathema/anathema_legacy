@@ -11,6 +11,8 @@ public interface BonusPointCosts extends AbilityPointCosts {
 
   int getCharmCosts(Charm charm, ICostAnalyzer analyzer);
 
+  int getMagicCosts(Magic magic, ICostAnalyzer analyzer);
+
   int getAttributeCosts(ValuedTraitType trait);
 
   CurrentRatingCosts getVirtueCosts();
@@ -20,8 +22,6 @@ public interface BonusPointCosts extends AbilityPointCosts {
   int getSpellCosts(ICostAnalyzer costMapping);
 
   CurrentRatingCosts getEssenceCost();
-
-  int getMagicCosts(Magic magic, ICostAnalyzer analyzer);
 
   int getMaximumFreeVirtueRank();
 }
