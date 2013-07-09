@@ -10,26 +10,21 @@ import net.sf.anathema.character.main.template.experience.CurrentRatingCosts;
 import net.sf.anathema.character.main.template.experience.ICostAnalyzer;
 import net.sf.anathema.character.main.template.points.FixedValueRatingCosts;
 import net.sf.anathema.character.main.traits.ValuedTraitType;
+import net.sf.anathema.character.main.xml.creation.magic.CharmCreationCostsTto;
 import net.sf.anathema.character.main.xml.creation.magic.CharmKeywordCosts;
 import net.sf.anathema.lib.lang.ReflectionEqualsObject;
 import net.sf.anathema.lib.lang.clone.ICloneable;
 import org.apache.commons.lang3.SerializationUtils;
 
 import java.io.Serializable;
-import java.util.Map;
 
 public class GenericBonusPointCosts extends ReflectionEqualsObject implements BonusPointCosts, ICloneable<GenericBonusPointCosts>, Serializable {
 
   private int generalAbilityCost = 0;
   private int favoredAbilityCost = 0;
-  private int generalCharmCost = 0;
-  private int generalHighLevelMartialArtsCharmCost = 0;
-  private int favoredCharmCost = 0;
-  private int favoredHighLevelMartialArtsCharmCost = 0;
-  private MartialArtsLevel standardLevel;
   private CurrentRatingCosts essenceCost = new FixedValueRatingCosts(0);
-  private int willpowerCost = 0;
   private CurrentRatingCosts virtueCost = new FixedValueRatingCosts(0);
+  private int willpowerCost = 0;
   private int favoredSpecialtyDotsPerBonusPoint = 0;
   private int generalSpecialtyDotsPerBonusPoint = 0;
   private int generalAttributeCost = 0;
@@ -38,6 +33,7 @@ public class GenericBonusPointCosts extends ReflectionEqualsObject implements Bo
   private int maximumFreeAbilityRank = 3;
   private CharmKeywordCosts generalKeywordCosts = new CharmKeywordCosts();
   private CharmKeywordCosts favoredKeywordCosts = new CharmKeywordCosts();
+  private CharmCreationCostsTto charmCosts;
 
   @Override
   public int getCharmCosts(Charm charm, ICostAnalyzer analyzer) {
@@ -56,10 +52,10 @@ public class GenericBonusPointCosts extends ReflectionEqualsObject implements Bo
   }
 
   private int getCharmCosts(boolean favored, MartialArtsLevel martialArtsLevel) {
-    if (martialArtsLevel != null && (standardLevel.compareTo(martialArtsLevel) < 0 || martialArtsLevel == MartialArtsLevel.Sidereal)) {
-      return favored ? favoredHighLevelMartialArtsCharmCost : generalHighLevelMartialArtsCharmCost;
+    if (martialArtsLevel != null && (charmCosts.standardMartialArtsLevel.compareTo(martialArtsLevel) < 0 || martialArtsLevel == MartialArtsLevel.Sidereal)) {
+      return favored ? charmCosts.favored.highLevelMartialArtsCharmCost : charmCosts.general.highLevelMartialArtsCharmCost;
     }
-    return favored ? favoredCharmCost : generalCharmCost;
+    return favored ? charmCosts.favored.charmCost : charmCosts.general.charmCost;
   }
 
   @Override
@@ -161,14 +157,10 @@ public class GenericBonusPointCosts extends ReflectionEqualsObject implements Bo
     this.essenceCost = costs;
   }
 
-  public void setCharmCosts(int generalCharmCost, int favoredCharmCost, int generalHighLevelMartialArtsCost, int favoredHighLevelMartialArtsCost,
-                            Map<String, Integer> generalKeywordCosts, Map<String, Integer> favoredKeywordCosts) {
-    this.generalCharmCost = generalCharmCost;
-    this.generalHighLevelMartialArtsCharmCost = generalHighLevelMartialArtsCost;
-    this.favoredCharmCost = favoredCharmCost;
-    this.favoredHighLevelMartialArtsCharmCost = favoredHighLevelMartialArtsCost;
-    this.generalKeywordCosts.setKeywordCosts(generalKeywordCosts);
-    this.favoredKeywordCosts.setKeywordCosts(favoredKeywordCosts);
+  public void setCharmCosts(CharmCreationCostsTto charmCosts) {
+    this.charmCosts = charmCosts;
+    this.generalKeywordCosts.setKeywordCosts(charmCosts.general.keywordCosts);
+    this.favoredKeywordCosts.setKeywordCosts(charmCosts.favored.keywordCosts);
   }
 
   public void setAbilityCosts(int generalCost, int favoredCost) {
@@ -184,13 +176,8 @@ public class GenericBonusPointCosts extends ReflectionEqualsObject implements Bo
     this.maximumFreeAbilityRank = rank;
   }
 
-  public void setStandardMartialArtsLevel(MartialArtsLevel standardMartialArtsLevel) {
-    this.standardLevel = standardMartialArtsLevel;
-  }
-
   @Override
   public GenericBonusPointCosts clone() {
-    GenericBonusPointCosts clone = SerializationUtils.clone(this);
-    return clone;
+    return SerializationUtils.clone(this);
   }
 }

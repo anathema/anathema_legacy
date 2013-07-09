@@ -3,14 +3,12 @@ package net.sf.anathema.character.main.xml.creation;
 import net.sf.anathema.character.main.magic.model.charm.MartialArtsLevel;
 import net.sf.anathema.character.main.template.experience.CurrentRatingCosts;
 import net.sf.anathema.character.main.xml.core.AbstractXmlTemplateParser;
+import net.sf.anathema.character.main.xml.creation.magic.CharmCreationCostsTto;
 import net.sf.anathema.character.main.xml.registry.IXmlTemplateRegistry;
 import net.sf.anathema.character.main.xml.util.CostParser;
 import net.sf.anathema.lib.exception.PersistenceException;
 import net.sf.anathema.lib.xml.ElementUtilities;
 import org.dom4j.Element;
-
-import java.util.HashMap;
-import java.util.Map;
 
 public class BonusPointCostTemplateParser extends AbstractXmlTemplateParser<GenericBonusPointCosts> {
 
@@ -67,26 +65,22 @@ public class BonusPointCostTemplateParser extends AbstractXmlTemplateParser<Gene
     if (charmElement == null) {
       return;
     }
-    int generalCharmCost = costParser.getFixedCostFromRequiredElement(charmElement, TAG_GENERAL_CHARMS);
-    int favoredCharmCost = costParser.getFixedCostFromRequiredElement(charmElement, TAG_FAVORED_CHARMS);
-    int generalHighLevelMartialArtsCharmCost =
-            costParser.getFixedCostFromOptionalElement(charmElement, TAG_GENERAL_MARTIAL_ARTS_CHARMS, generalCharmCost);
-    int favoredHighLevelMartialArtsCharmCost =
-            costParser.getFixedCostFromOptionalElement(charmElement, TAG_FAVORED_MARTIAL_ARTS_CHARMS, favoredCharmCost);
-    Map<String, Integer> keywordGeneralCost = new HashMap<>();
-    Map<String, Integer> keywordFavoredCost = new HashMap<>();
+    CharmCreationCostsTto charmCosts = new CharmCreationCostsTto();
+    charmCosts.general.charmCost = costParser.getFixedCostFromRequiredElement(charmElement, TAG_GENERAL_CHARMS);
+    charmCosts.favored.charmCost = costParser.getFixedCostFromRequiredElement(charmElement, TAG_FAVORED_CHARMS);
+    charmCosts.general.highLevelMartialArtsCharmCost =
+            costParser.getFixedCostFromOptionalElement(charmElement, TAG_GENERAL_MARTIAL_ARTS_CHARMS, charmCosts.general.charmCost);
+    charmCosts.favored.highLevelMartialArtsCharmCost =
+            costParser.getFixedCostFromOptionalElement(charmElement, TAG_FAVORED_MARTIAL_ARTS_CHARMS, charmCosts.favored.charmCost);
     for (Object keywordNode : charmElement.elements(TAG_KEYWORD_CHARMS)) {
       Element keywordClass = (Element) keywordNode;
       String keyword = ElementUtilities.getRequiredAttrib(keywordClass, ATTRIB_KEYWORD);
       int generalCost = ElementUtilities.getRequiredIntAttrib(keywordClass, ATTRIB_GENERAL_COST);
       int favoredCost = ElementUtilities.getRequiredIntAttrib(keywordClass, ATTRIB_FAVORED_COST);
-      keywordGeneralCost.put(keyword, generalCost);
-      keywordFavoredCost.put(keyword, favoredCost);
+      charmCosts.general.keywordCosts.put(keyword, generalCost);
+      charmCosts.favored.keywordCosts.put(keyword, favoredCost);
     }
-
-    costs.setCharmCosts(generalCharmCost, favoredCharmCost, generalHighLevelMartialArtsCharmCost, favoredHighLevelMartialArtsCharmCost,
-            keywordGeneralCost, keywordFavoredCost);
-    costs.setStandardMartialArtsLevel(standardMartialArtsLevel);
+    costs.setCharmCosts(charmCosts);
   }
 
   private void setAdvantageCosts(Element element, GenericBonusPointCosts costs) throws PersistenceException {
