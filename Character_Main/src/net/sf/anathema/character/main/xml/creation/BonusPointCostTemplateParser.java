@@ -3,7 +3,7 @@ package net.sf.anathema.character.main.xml.creation;
 import net.sf.anathema.character.main.magic.model.charm.MartialArtsLevel;
 import net.sf.anathema.character.main.template.experience.CurrentRatingCosts;
 import net.sf.anathema.character.main.xml.core.AbstractXmlTemplateParser;
-import net.sf.anathema.character.main.xml.creation.template.CharmCreationCostsTto;
+import net.sf.anathema.character.main.xml.creation.template.MagicCreationCostsTto;
 import net.sf.anathema.character.main.xml.registry.IXmlTemplateRegistry;
 import net.sf.anathema.character.main.xml.util.CostParser;
 import net.sf.anathema.lib.exception.PersistenceException;
@@ -65,7 +65,7 @@ public class BonusPointCostTemplateParser extends AbstractXmlTemplateParser<Gene
     if (charmElement == null) {
       return;
     }
-    CharmCreationCostsTto charmCosts = new CharmCreationCostsTto();
+    MagicCreationCostsTto charmCosts = new MagicCreationCostsTto();
     charmCosts.general.charmCost = costParser.getFixedCostFromRequiredElement(charmElement, TAG_GENERAL_CHARMS);
     charmCosts.favored.charmCost = costParser.getFixedCostFromRequiredElement(charmElement, TAG_FAVORED_CHARMS);
     charmCosts.general.highLevelMartialArtsCost =

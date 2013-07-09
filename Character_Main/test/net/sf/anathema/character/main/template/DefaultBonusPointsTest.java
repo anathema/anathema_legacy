@@ -1,6 +1,6 @@
 package net.sf.anathema.character.main.template;
 
-import net.sf.anathema.character.main.template.points.DefaultBonusPointCosts;
+import net.sf.anathema.character.main.testing.dummy.DummyBonusPointCosts;
 import net.sf.anathema.character.main.template.points.FixedValueRatingCosts;
 import net.sf.anathema.character.main.template.experience.CurrentRatingCosts;
 import org.junit.Test;
@@ -9,7 +9,7 @@ import static org.junit.Assert.assertEquals;
 
 public class DefaultBonusPointsTest {
 
-  private DefaultBonusPointCosts costs = new DefaultBonusPointCosts();
+  private DummyBonusPointCosts costs = new DummyBonusPointCosts();
 
   @Test
   public void testAbilityCost() throws Exception {

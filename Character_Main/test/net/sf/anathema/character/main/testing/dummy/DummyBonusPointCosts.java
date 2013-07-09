@@ -1,5 +1,6 @@
-package net.sf.anathema.character.main.template.points;
+package net.sf.anathema.character.main.testing.dummy;
 
+import net.sf.anathema.character.main.magic.advance.creation.MagicCosts;
 import net.sf.anathema.character.main.magic.model.charm.Charm;
 import net.sf.anathema.character.main.magic.model.magic.Magic;
 import net.sf.anathema.character.main.magic.model.magic.IMagicVisitor;
@@ -8,9 +9,10 @@ import net.sf.anathema.character.main.magic.model.charm.MartialArtsLevel;
 import net.sf.anathema.character.main.template.creation.BonusPointCosts;
 import net.sf.anathema.character.main.template.experience.CurrentRatingCosts;
 import net.sf.anathema.character.main.template.experience.ICostAnalyzer;
+import net.sf.anathema.character.main.template.points.FixedValueRatingCosts;
 import net.sf.anathema.character.main.traits.ValuedTraitType;
 
-public class DefaultBonusPointCosts implements BonusPointCosts {
+public class DummyBonusPointCosts implements BonusPointCosts, MagicCosts {
 
   @Override
   public int getSpellCosts(ICostAnalyzer costMapping) {
@@ -39,6 +41,11 @@ public class DefaultBonusPointCosts implements BonusPointCosts {
       return new FixedValueRatingCosts(1);
     }
     return new FixedValueRatingCosts(2);
+  }
+
+  @Override
+  public MagicCosts getMagicCosts() {
+    return this;
   }
 
   @Override

@@ -5,7 +5,7 @@ import org.apache.commons.lang3.SerializationUtils;
 import java.io.Serializable;
 import java.util.Map;
 
-public class CharmCreationCostGroupTto implements Serializable {
+public class MagicCreationCostGroupTto implements Serializable {
 
   public int charmCost = 0;
   public int highLevelMartialArtsCost = 0;
@@ -13,7 +13,7 @@ public class CharmCreationCostGroupTto implements Serializable {
 
 
   @Override
-  public CharmCreationCostGroupTto clone() {
+  public MagicCreationCostGroupTto clone() {
     return SerializationUtils.clone(this);
   }
 }

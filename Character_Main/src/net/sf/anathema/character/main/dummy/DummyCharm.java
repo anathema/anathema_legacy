@@ -42,7 +42,7 @@ public class DummyCharm extends SimpleIdentifier implements Charm {
   private ICharacterType characterType;
   private String groupId;
   private CharmTypeModel model = new CharmTypeModel();
-  private List<ICharmAttribute> attributes = new ArrayList<>();
+  public List<ICharmAttribute> attributes = new ArrayList<>();
 
   public void setGeneric(boolean generic) {
     isGeneric = generic;

@@ -5,14 +5,14 @@ import org.apache.commons.lang3.SerializationUtils;
 
 import java.io.Serializable;
 
-public class CharmCreationCostsTto implements Serializable {
+public class MagicCreationCostsTto implements Serializable {
 
-  public CharmCreationCostGroupTto favored = new CharmCreationCostGroupTto();
-  public CharmCreationCostGroupTto general = new CharmCreationCostGroupTto();
+  public MagicCreationCostGroupTto favored = new MagicCreationCostGroupTto();
+  public MagicCreationCostGroupTto general = new MagicCreationCostGroupTto();
   public MartialArtsLevel standardMartialArtsLevel = MartialArtsLevel.Celestial;
 
   @Override
-  public CharmCreationCostsTto clone() {
+  public MagicCreationCostsTto clone() {
     return SerializationUtils.clone(this);
   }
 }

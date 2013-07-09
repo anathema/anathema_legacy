@@ -1,17 +1,16 @@
-package net.sf.anathema.character.main.xml.creation.magic;
+package net.sf.anathema.character.main.magic.advance.creation;
 
 import net.sf.anathema.character.main.magic.model.charm.ICharmAttribute;
-import net.sf.anathema.lib.lang.ReflectionEqualsObject;
 
-import java.io.Serializable;
+import java.util.HashMap;
 import java.util.Map;
 
-public class CharmKeywordCosts extends ReflectionEqualsObject implements Serializable {
+public class CharmKeywordCosts {
 
   private Map<String, Integer> keywordCosts;
 
-  public void setKeywordCosts(Map<String, Integer> keywordCosts) {
-    this.keywordCosts = keywordCosts;
+  public CharmKeywordCosts(Map<String, Integer> keywordCosts) {
+    this.keywordCosts = keywordCosts == null ? new HashMap<String, Integer>() : keywordCosts;
   }
 
   public boolean hasCostFor(ICharmAttribute[] attributes) {
@@ -24,9 +23,6 @@ public class CharmKeywordCosts extends ReflectionEqualsObject implements Seriali
   }
 
   private ICharmAttribute getCostAttribute(ICharmAttribute[] attributes) {
-    if (keywordCosts == null) {
-      return null;
-    }
     for (ICharmAttribute attribute : attributes) {
       if (keywordCosts.containsKey(attribute.getId())) {
         return attribute;

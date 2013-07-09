@@ -4,7 +4,7 @@ import net.sf.anathema.character.main.costs.AbstractBonusPointTestCase;
 import net.sf.anathema.character.main.library.trait.favorable.FavorableState;
 import net.sf.anathema.character.main.magic.advance.MagicCostCalculator;
 import net.sf.anathema.character.main.magic.model.spells.ISpell;
-import net.sf.anathema.character.main.template.points.DefaultBonusPointCosts;
+import net.sf.anathema.character.main.testing.dummy.DummyBonusPointCosts;
 import net.sf.anathema.character.main.testing.BasicCharacterTestCase;
 import net.sf.anathema.character.main.testing.dummy.DummyHero;
 import net.sf.anathema.character.main.testing.dummy.magic.DummyCharmsModel;
@@ -37,7 +37,7 @@ public class CharmCostCalculatorTest extends AbstractBonusPointTestCase {
     addAbilityAndEssence(traitModel, hero);
     hero.template.creationPoints.favoredCreationCharmCount = 2;
     hero.template.creationPoints.defaultCreationCharmCount = 3;
-    calculator = new MagicCostCalculator(hero, new DefaultBonusPointCosts());
+    calculator = new MagicCostCalculator(hero, new DummyBonusPointCosts());
   }
 
   @Test

@@ -36,7 +36,7 @@ public class MagicCostCalculator {
     }
     int[] weights = new int[magicToHandle.size()];
     for (int index = 0; index < weights.length; index++) {
-      weights[index] = costs.getMagicCosts(magicToHandle.get(index), analyzer);
+      weights[index] = costs.getMagicCosts().getMagicCosts(magicToHandle.get(index), analyzer);
     }
     List<Magic> sortedMagicList = new WeightedMagicSorter().sortDescending(magicToHandle.toArray(new Magic[magicToHandle.size()]), weights);
     Set<Magic> handledMagic = new HashSet<>();
@@ -52,7 +52,7 @@ public class MagicCostCalculator {
   }
 
   private void handleMagic(Magic magic, Set<Magic> handledMagic) {
-    int bonusPointFactor = costs.getMagicCosts(magic, analyzer);
+    int bonusPointFactor = costs.getMagicCosts().getMagicCosts(magic, analyzer);
     boolean favored = analyzer.isMagicFavored(magic);
     int learnCount = magicCostEvaluator.getLearnCount(magic, handledMagic);
     for (int timesHandled = 0; timesHandled < learnCount; timesHandled++) {

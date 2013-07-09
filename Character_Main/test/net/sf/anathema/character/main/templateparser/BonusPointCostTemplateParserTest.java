@@ -1,15 +1,17 @@
 package net.sf.anathema.character.main.templateparser;
 
-import net.sf.anathema.character.main.magic.model.charm.Charm;
-import net.sf.anathema.character.main.magic.model.magic.Magic;
-import net.sf.anathema.character.main.xml.creation.BonusPointCostTemplateParser;
-import net.sf.anathema.character.main.xml.creation.GenericBonusPointCosts;
-import net.sf.anathema.character.main.magic.model.charm.MartialArtsLevel;
-import net.sf.anathema.character.main.template.experience.ICostAnalyzer;
-import net.sf.anathema.character.main.traits.types.AttributeType;
 import net.sf.anathema.character.main.dummy.DummyCharm;
+import net.sf.anathema.character.main.magic.model.charm.Charm;
+import net.sf.anathema.character.main.magic.model.charm.CharmAttribute;
+import net.sf.anathema.character.main.magic.model.charm.MartialArtsLevel;
+import net.sf.anathema.character.main.magic.model.magic.Magic;
+import net.sf.anathema.character.main.template.experience.ICostAnalyzer;
 import net.sf.anathema.character.main.testing.dummy.DummyGenericTrait;
 import net.sf.anathema.character.main.testing.dummy.template.DummyXmlTemplateRegistry;
+import net.sf.anathema.character.main.traits.types.AbilityType;
+import net.sf.anathema.character.main.traits.types.AttributeType;
+import net.sf.anathema.character.main.xml.creation.BonusPointCostTemplateParser;
+import net.sf.anathema.character.main.xml.creation.GenericBonusPointCosts;
 import net.sf.anathema.lib.exception.AnathemaException;
 import net.sf.anathema.lib.xml.DocumentUtilities;
 import org.dom4j.Element;
@@ -97,7 +99,7 @@ public class BonusPointCostTemplateParserTest extends BasicTemplateParsingTestCa
     assertCosts5WhenItIsFavored(costs, testCharm);
     assertCosts7WhenItsUnfavoredMartialArts(costs, testCharm);
     assertCosts5WhenItsFavoredMartialArts(costs, testCharm);
-    assertEquals(7, costs.getMagicCosts(testCharm, new ICostAnalyzer() {
+    assertEquals(7, costs.getMagicCosts().getMagicCosts(testCharm, new ICostAnalyzer() {
       @Override
       public MartialArtsLevel getMartialArtsLevel(Charm charm) {
         return MartialArtsLevel.Sidereal;
@@ -113,7 +115,7 @@ public class BonusPointCostTemplateParserTest extends BasicTemplateParsingTestCa
         return false;
       }
     }));
-    assertEquals(5, costs.getMagicCosts(testCharm, new ICostAnalyzer() {
+    assertEquals(5, costs.getMagicCosts().getMagicCosts(testCharm, new ICostAnalyzer() {
       @Override
       public MartialArtsLevel getMartialArtsLevel(Charm charm) {
         return MartialArtsLevel.Sidereal;
@@ -137,7 +139,7 @@ public class BonusPointCostTemplateParserTest extends BasicTemplateParsingTestCa
   }
 
   private void assertCosts5WhenItsFavoredMartialArts(GenericBonusPointCosts costs, DummyCharm testCharm) {
-    assertEquals(5, costs.getMagicCosts(testCharm, new ICostAnalyzer() {
+    assertEquals(5, costs.getMagicCosts().getMagicCosts(testCharm, new ICostAnalyzer() {
       @Override
       public MartialArtsLevel getMartialArtsLevel(Charm charm) {
         return MartialArtsLevel.Celestial;
@@ -156,7 +158,7 @@ public class BonusPointCostTemplateParserTest extends BasicTemplateParsingTestCa
   }
 
   private void assertCosts5WhenItIsFavored(GenericBonusPointCosts costs, DummyCharm testCharm) {
-    assertEquals(5, costs.getMagicCosts(testCharm, new ICostAnalyzer() {
+    assertEquals(5, costs.getMagicCosts().getMagicCosts(testCharm, new ICostAnalyzer() {
       @Override
       public MartialArtsLevel getMartialArtsLevel(Charm charm) {
         return null;
@@ -175,7 +177,7 @@ public class BonusPointCostTemplateParserTest extends BasicTemplateParsingTestCa
   }
 
   private void assertCosts7WhenItsNotFavored(GenericBonusPointCosts costs, DummyCharm testCharm) {
-    assertEquals(7, costs.getMagicCosts(testCharm, new ICostAnalyzer() {
+    assertEquals(7, costs.getMagicCosts().getMagicCosts(testCharm, new ICostAnalyzer() {
       @Override
       public MartialArtsLevel getMartialArtsLevel(Charm charm) {
         return null;
@@ -194,20 +196,17 @@ public class BonusPointCostTemplateParserTest extends BasicTemplateParsingTestCa
   }
 
   @Test
-  public void testBasicCharmCostIsSetAndMartialArtsCostOverrides() throws Exception {
+  public void testBasicCharmCostForHighUnfavoredMartialArts() throws Exception {
     String xml =
             "<root><charms><generalCharms><fixedCost cost=\"7\" /></generalCharms><favoredCharms><fixedCost cost=\"5\" /></favoredCharms><generalHighLevelMartialArtsCharms><fixedCost cost=\"10\"/></generalHighLevelMartialArtsCharms>" +
             "<favoredHighLevelMartialArtsCharms><fixedCost cost=\"7\"/></favoredHighLevelMartialArtsCharms></charms></root>";
     GenericBonusPointCosts costs = parseXmlToCost(xml);
-    DummyCharm testCharm = new DummyCharm("test");
-    assertCosts7WhenItsNotFavored(costs, testCharm);
-    assertCosts5WhenItIsFavored(costs, testCharm);
-    assertCosts7WhenItsUnfavoredMartialArts(costs, testCharm);
-    assertCosts5WhenItsFavoredMartialArts(costs, testCharm);
-    assertEquals(10, costs.getMagicCosts(testCharm, new ICostAnalyzer() {
+    MartialArtsLevel martialArtsLevel = MartialArtsLevel.Sidereal;
+    DummyCharm testCharm = createMartialArtsCharm(martialArtsLevel);
+    assertEquals(10, costs.getMagicCosts().getMagicCosts(testCharm, new ICostAnalyzer() {
       @Override
       public MartialArtsLevel getMartialArtsLevel(Charm charm) {
-        return MartialArtsLevel.Sidereal;
+        throw new UnsupportedOperationException();
       }
 
       @Override
@@ -220,10 +219,20 @@ public class BonusPointCostTemplateParserTest extends BasicTemplateParsingTestCa
         return false;
       }
     }));
-    assertEquals(7, costs.getMagicCosts(testCharm, new ICostAnalyzer() {
+  }
+
+  @Test
+  public void testBasicCharmCostForHighFavoredMartialArts() throws Exception {
+    String xml =
+            "<root><charms><generalCharms><fixedCost cost=\"7\" /></generalCharms><favoredCharms><fixedCost cost=\"5\" /></favoredCharms><generalHighLevelMartialArtsCharms><fixedCost cost=\"10\"/></generalHighLevelMartialArtsCharms>" +
+            "<favoredHighLevelMartialArtsCharms><fixedCost cost=\"7\"/></favoredHighLevelMartialArtsCharms></charms></root>";
+    GenericBonusPointCosts costs = parseXmlToCost(xml);
+    MartialArtsLevel martialArtsLevel = MartialArtsLevel.Sidereal;
+    DummyCharm testCharm = createMartialArtsCharm(martialArtsLevel);
+    assertEquals(7, costs.getMagicCosts().getMagicCosts(testCharm, new ICostAnalyzer() {
       @Override
       public MartialArtsLevel getMartialArtsLevel(Charm charm) {
-        return MartialArtsLevel.Sidereal;
+        throw new UnsupportedOperationException();
       }
 
       @Override
@@ -238,8 +247,28 @@ public class BonusPointCostTemplateParserTest extends BasicTemplateParsingTestCa
     }));
   }
 
+  private DummyCharm createMartialArtsCharm(MartialArtsLevel martialArtsLevel) {
+    DummyCharm testCharm = new DummyCharm("test");
+    testCharm.attributes.add(new CharmAttribute(AbilityType.MartialArts.getId(), false));
+    testCharm.attributes.add(new CharmAttribute(martialArtsLevel.getId(), false));
+    return testCharm;
+  }
+
+  @Test
+  public void testBasicCharmCostIsSetAndMartialArtsCostOverrides() throws Exception {
+    String xml =
+            "<root><charms><generalCharms><fixedCost cost=\"7\" /></generalCharms><favoredCharms><fixedCost cost=\"5\" /></favoredCharms><generalHighLevelMartialArtsCharms><fixedCost cost=\"10\"/></generalHighLevelMartialArtsCharms>" +
+            "<favoredHighLevelMartialArtsCharms><fixedCost cost=\"7\"/></favoredHighLevelMartialArtsCharms></charms></root>";
+    GenericBonusPointCosts costs = parseXmlToCost(xml);
+    DummyCharm testCharm = new DummyCharm("test");
+    assertCosts7WhenItsNotFavored(costs, testCharm);
+    assertCosts5WhenItIsFavored(costs, testCharm);
+    assertCosts7WhenItsUnfavoredMartialArts(costs, testCharm);
+    assertCosts5WhenItsFavoredMartialArts(costs, testCharm);
+  }
+
   private void assertCosts7WhenItsUnfavoredMartialArts(GenericBonusPointCosts costs, DummyCharm testCharm) {
-    assertEquals(7, costs.getMagicCosts(testCharm, new ICostAnalyzer() {
+    assertEquals(7, costs.getMagicCosts().getMagicCosts(testCharm, new ICostAnalyzer() {
       @Override
       public MartialArtsLevel getMartialArtsLevel(Charm charm) {
         return MartialArtsLevel.Celestial;
