@@ -1,4 +1,4 @@
-package net.sf.anathema.character.main.xml.creation.magic;
+package net.sf.anathema.character.main.xml.creation.template;
 
 import net.sf.anathema.character.main.magic.model.charm.MartialArtsLevel;
 import org.apache.commons.lang3.SerializationUtils;

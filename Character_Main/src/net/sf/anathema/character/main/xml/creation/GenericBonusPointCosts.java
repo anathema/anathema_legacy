@@ -10,7 +10,7 @@ import net.sf.anathema.character.main.template.experience.CurrentRatingCosts;
 import net.sf.anathema.character.main.template.experience.ICostAnalyzer;
 import net.sf.anathema.character.main.template.points.FixedValueRatingCosts;
 import net.sf.anathema.character.main.traits.ValuedTraitType;
-import net.sf.anathema.character.main.xml.creation.magic.CharmCreationCostsTto;
+import net.sf.anathema.character.main.xml.creation.template.CharmCreationCostsTto;
 import net.sf.anathema.character.main.xml.creation.magic.CharmKeywordCosts;
 import net.sf.anathema.lib.lang.ReflectionEqualsObject;
 import net.sf.anathema.lib.lang.clone.ICloneable;
@@ -53,7 +53,7 @@ public class GenericBonusPointCosts extends ReflectionEqualsObject implements Bo
 
   private int getCharmCosts(boolean favored, MartialArtsLevel martialArtsLevel) {
     if (martialArtsLevel != null && (charmCosts.standardMartialArtsLevel.compareTo(martialArtsLevel) < 0 || martialArtsLevel == MartialArtsLevel.Sidereal)) {
-      return favored ? charmCosts.favored.highLevelMartialArtsCharmCost : charmCosts.general.highLevelMartialArtsCharmCost;
+      return favored ? charmCosts.favored.highLevelMartialArtsCost : charmCosts.general.highLevelMartialArtsCost;
     }
     return favored ? charmCosts.favored.charmCost : charmCosts.general.charmCost;
   }

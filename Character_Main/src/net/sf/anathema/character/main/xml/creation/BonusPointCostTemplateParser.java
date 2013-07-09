@@ -3,7 +3,7 @@ package net.sf.anathema.character.main.xml.creation;
 import net.sf.anathema.character.main.magic.model.charm.MartialArtsLevel;
 import net.sf.anathema.character.main.template.experience.CurrentRatingCosts;
 import net.sf.anathema.character.main.xml.core.AbstractXmlTemplateParser;
-import net.sf.anathema.character.main.xml.creation.magic.CharmCreationCostsTto;
+import net.sf.anathema.character.main.xml.creation.template.CharmCreationCostsTto;
 import net.sf.anathema.character.main.xml.registry.IXmlTemplateRegistry;
 import net.sf.anathema.character.main.xml.util.CostParser;
 import net.sf.anathema.lib.exception.PersistenceException;
@@ -68,9 +68,9 @@ public class BonusPointCostTemplateParser extends AbstractXmlTemplateParser<Gene
     CharmCreationCostsTto charmCosts = new CharmCreationCostsTto();
     charmCosts.general.charmCost = costParser.getFixedCostFromRequiredElement(charmElement, TAG_GENERAL_CHARMS);
     charmCosts.favored.charmCost = costParser.getFixedCostFromRequiredElement(charmElement, TAG_FAVORED_CHARMS);
-    charmCosts.general.highLevelMartialArtsCharmCost =
+    charmCosts.general.highLevelMartialArtsCost =
             costParser.getFixedCostFromOptionalElement(charmElement, TAG_GENERAL_MARTIAL_ARTS_CHARMS, charmCosts.general.charmCost);
-    charmCosts.favored.highLevelMartialArtsCharmCost =
+    charmCosts.favored.highLevelMartialArtsCost =
             costParser.getFixedCostFromOptionalElement(charmElement, TAG_FAVORED_MARTIAL_ARTS_CHARMS, charmCosts.favored.charmCost);
     for (Object keywordNode : charmElement.elements(TAG_KEYWORD_CHARMS)) {
       Element keywordClass = (Element) keywordNode;
@@ -80,6 +80,7 @@ public class BonusPointCostTemplateParser extends AbstractXmlTemplateParser<Gene
       charmCosts.general.keywordCosts.put(keyword, generalCost);
       charmCosts.favored.keywordCosts.put(keyword, favoredCost);
     }
+    charmCosts.standardMartialArtsLevel = standardMartialArtsLevel;
     costs.setCharmCosts(charmCosts);
   }
 
