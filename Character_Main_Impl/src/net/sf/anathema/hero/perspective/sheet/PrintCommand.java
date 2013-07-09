@@ -1,5 +1,8 @@
-package net.sf.anathema.framework.reporting;
+package net.sf.anathema.hero.perspective.sheet;
 
+import net.sf.anathema.framework.environment.SwingEnvironment;
+import net.sf.anathema.framework.reporting.Report;
+import net.sf.anathema.framework.reporting.ReportException;
 import net.sf.anathema.framework.repository.Item;
 import net.sf.anathema.framework.swing.MessageUtilities;
 import net.sf.anathema.interaction.Command;
@@ -15,8 +18,6 @@ import java.io.OutputStream;
 import java.nio.file.Files;
 import java.nio.file.Path;
 
-import static java.awt.Desktop.isDesktopSupported;
-
 public class PrintCommand implements Command {
 
   public static final String PDF_EXTENSION = ".pdf";
@@ -25,10 +26,6 @@ public class PrintCommand implements Command {
   private final Item item;
   private final Report report;
   private final FileChooser fileChooser;
-
-  public static boolean isAutoOpenSupported() {
-    return isDesktopSupported();
-  }
 
   public PrintCommand(Resources resources, JComponent parent, Item item, Report report, FileChooser fileChooser) {
     this.resources = resources;
@@ -72,7 +69,7 @@ public class PrintCommand implements Command {
   }
 
   private void openFile(Path selectedFile) throws IOException {
-    if (isAutoOpenSupported()) {
+    if (SwingEnvironment.isAutoOpenSupported()) {
       PathUtils.openOnDesktop(selectedFile);
     }
   }

@@ -1,4 +1,4 @@
-package net.sf.anathema.framework.reporting;
+package net.sf.anathema.hero.perspective.sheet;
 
 import net.sf.anathema.framework.repository.Item;
 import net.sf.anathema.lib.gui.file.FileChoosingUtilities;

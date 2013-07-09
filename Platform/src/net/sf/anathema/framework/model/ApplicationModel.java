@@ -5,7 +5,6 @@ import net.sf.anathema.framework.extension.IAnathemaExtension;
 import net.sf.anathema.framework.messaging.IMessageContainer;
 import net.sf.anathema.framework.messaging.IMessaging;
 import net.sf.anathema.framework.messaging.Messaging;
-import net.sf.anathema.framework.reporting.IReportRegistry;
 import net.sf.anathema.framework.repository.FileSystemRepository;
 import net.sf.anathema.framework.repository.Repository;
 import net.sf.anathema.initialization.ObjectFactory;
@@ -19,7 +18,6 @@ import java.io.File;
 public class ApplicationModel implements IApplicationModel {
 
   private final IRegistry<String, IAnathemaExtension> extensionRegistry = new Registry<>();
-  private final IReportRegistry reportRegistry = new ReportRegistry();
   private final FileSystemRepository repository;
   private final Messaging messaging;
   private final ResourceLoader resourceLoader;
@@ -37,11 +35,6 @@ public class ApplicationModel implements IApplicationModel {
   @Override
   public final Repository getRepository() {
     return repository;
-  }
-
-  @Override
-  public final IReportRegistry getReportRegistry() {
-    return reportRegistry;
   }
 
   @Override

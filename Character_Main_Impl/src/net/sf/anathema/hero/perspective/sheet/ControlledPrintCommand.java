@@ -1,8 +1,8 @@
-package net.sf.anathema.framework.reporting;
+package net.sf.anathema.hero.perspective.sheet;
 
-import net.sf.anathema.framework.IApplicationModel;
 import net.sf.anathema.framework.ObjectSelectionDialogPage;
 import net.sf.anathema.framework.module.DefaultObjectSelectionProperties;
+import net.sf.anathema.framework.reporting.Report;
 import net.sf.anathema.framework.repository.IObjectSelectionProperties;
 import net.sf.anathema.framework.repository.Item;
 import net.sf.anathema.interaction.Command;
@@ -13,19 +13,20 @@ import net.sf.anathema.lib.resources.Resources;
 import javax.swing.JComponent;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
+import java.util.List;
 
 public class ControlledPrintCommand implements Command {
 
-  private Resources resources;
-  private IApplicationModel model;
-  private JComponent parent;
-  private Item item;
+  private final Resources resources;
+  private final JComponent parent;
+  private final Item item;
+  private final AllReportFinder reportFinder;
 
-  public ControlledPrintCommand(Resources resources, IApplicationModel model, Item item) {
+  public ControlledPrintCommand(Resources resources, Item item, AllReportFinder finder) {
     this.resources = resources;
-    this.model = model;
     this.parent = (JComponent) ((JFrame) JOptionPane.getRootFrame()).getContentPane();
     this.item = item;
+    this.reportFinder = finder;
   }
 
   @Override
@@ -39,18 +40,18 @@ public class ControlledPrintCommand implements Command {
   }
 
   private Report selectReport(Item item) {
-    IReportRegistry reportRegistry = model.getReportRegistry();
-    Report[] reports = reportRegistry.getReports(item);
-    if (reports.length == 1) {
-      return reports[0];
+    List<Report> reports = reportFinder.getAllReports(item);
+    if (reports.size() == 1) {
+      return reports.get(0);
     }
     return selectReport(reports);
   }
 
-  private Report selectReport(Report[] reports) {
+  private Report selectReport(List<Report> reports) {
     IObjectSelectionProperties properties =
             new DefaultObjectSelectionProperties(resources, "Anathema.Reporting.PrintSelection.Message", "Anathema.Reporting.PrintSelection.Title");
-    ObjectSelectionDialogPage dialogPage = new ObjectSelectionDialogPage(reports, properties);
+    Report[] reportArray = reports.toArray(new Report[reports.size()]);
+    ObjectSelectionDialogPage dialogPage = new ObjectSelectionDialogPage(reportArray, properties);
     UserDialog userDialog = new UserDialog(parent, dialogPage);
     DialogResult result = userDialog.show();
     if (result.isCanceled()) {

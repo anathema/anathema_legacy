@@ -15,13 +15,13 @@ import net.sf.anathema.framework.item.IItemType;
 import net.sf.anathema.framework.persistence.RepositoryItemPersister;
 import net.sf.anathema.framework.presenter.ItemReceiver;
 import net.sf.anathema.framework.presenter.action.NewItemCommand;
-import net.sf.anathema.framework.reporting.ControlledPrintCommand;
-import net.sf.anathema.framework.reporting.QuickPrintCommand;
 import net.sf.anathema.framework.repository.IRepositoryFileResolver;
 import net.sf.anathema.framework.repository.Item;
 import net.sf.anathema.framework.view.PrintNameFile;
 import net.sf.anathema.hero.experience.ExperienceModelFetcher;
 import net.sf.anathema.hero.model.Hero;
+import net.sf.anathema.hero.perspective.sheet.ControlledPrintCommand;
+import net.sf.anathema.hero.perspective.sheet.QuickPrintCommand;
 import net.sf.anathema.hero.platform.RegExCharacterPrintNameFileScanner;
 import net.sf.anathema.lib.control.ChangeListener;
 import net.sf.anathema.lib.resources.Resources;
@@ -138,13 +138,14 @@ public class CharacterSystemModel implements ItemSystemModel {
 
   @Override
   public void printCurrentItemQuickly(Resources resources) {
-    CharacterReportFinder reportFinder = new CharacterReportFinder(model, resources);
+    CharacterReportFinder reportFinder = createReportFinder(resources);
     new QuickPrintCommand(resources, getCurrentItem(), reportFinder).execute();
   }
 
   @Override
   public void printCurrentItemControlled(Resources resources) {
-    new ControlledPrintCommand(resources, model, getCurrentItem()).execute();
+    CharacterReportFinder reportFinder = createReportFinder(resources);
+    new ControlledPrintCommand(resources, getCurrentItem(), reportFinder).execute();
   }
 
   @Override
@@ -227,5 +228,9 @@ public class CharacterSystemModel implements ItemSystemModel {
   private void save(Item item) throws IOException {
     persistenceModel.save(item);
     item.getChangeManagement().setClean();
+  }
+
+  private CharacterReportFinder createReportFinder(Resources resources) {
+    return new CharacterReportFinder(model, resources);
   }
 }

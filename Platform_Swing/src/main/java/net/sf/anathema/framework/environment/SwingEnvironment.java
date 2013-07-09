@@ -4,6 +4,8 @@ import net.sf.anathema.framework.configuration.IInitializationPreferences;
 
 import javax.swing.ToolTipManager;
 
+import static java.awt.Desktop.isDesktopSupported;
+
 public class SwingEnvironment {
 
   public static void initTooltipManager(IInitializationPreferences initializationPreferences) {
@@ -16,5 +18,9 @@ public class SwingEnvironment {
   public static void initLookAndFeel(
           IInitializationPreferences initializationPreferences) throws ClassNotFoundException, InstantiationException, IllegalAccessException {
     new LookAndFeelInitializer(initializationPreferences).initialize();
+  }
+
+  public static boolean isAutoOpenSupported() {
+    return isDesktopSupported();
   }
 }

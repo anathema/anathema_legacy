@@ -1,4 +1,4 @@
-package net.sf.anathema.framework.reporting;
+package net.sf.anathema.hero.perspective.sheet;
 
 import java.nio.file.Path;
 

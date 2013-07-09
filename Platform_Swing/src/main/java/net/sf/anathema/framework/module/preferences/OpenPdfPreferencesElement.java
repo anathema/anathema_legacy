@@ -1,6 +1,6 @@
 package net.sf.anathema.framework.module.preferences;
 
-import net.sf.anathema.framework.reporting.PrintCommand;
+import net.sf.anathema.framework.environment.SwingEnvironment;
 import net.sf.anathema.initialization.PreferenceElement;
 import net.sf.anathema.initialization.reflections.Weight;
 import net.sf.anathema.lib.resources.Resources;
@@ -18,7 +18,7 @@ public class OpenPdfPreferencesElement extends AbstractCheckBoxPreferencesElemen
 
   @Override
   public void addComponent(JPanel panel, Resources resources) {
-    if (PrintCommand.isAutoOpenSupported()) {
+    if (SwingEnvironment.isAutoOpenSupported()) {
       super.addComponent(panel, resources);
     }
   }

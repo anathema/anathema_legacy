@@ -1,7 +1,6 @@
 package net.sf.anathema.initialization;
 
 import net.sf.anathema.framework.IApplicationModel;
-import net.sf.anathema.framework.initialization.IReportFactory;
 import net.sf.anathema.framework.messaging.IMessageContainer;
 import net.sf.anathema.framework.module.PreferencesElementsExtensionPoint;
 import net.sf.anathema.framework.presenter.action.preferences.IPreferencesElement;
@@ -28,12 +27,11 @@ public class AnathemaPresenter {
   public void initPresentation() throws InitializationException {
     initializePreferences();
     runBootJobs();
-    initializeReports();
-    IMessageContainer messageContainer = model.getMessageContainer();
-    init(messageContainer);
+    initMessaging();
   }
 
-  private void init(final IMessageContainer messageContainer) {
+  private void initMessaging() {
+    final IMessageContainer messageContainer = model.getMessageContainer();
     messageContainer.addChangeListener(new ChangeListener() {
       @Override
       public void changeOccurred() {
@@ -60,13 +58,6 @@ public class AnathemaPresenter {
     Collection<IPreferencesElement> elements = objectFactory.instantiateOrdered(PreferenceElement.class);
     for (IPreferencesElement element : elements) {
       extensionPoint.addPreferencesElement(element);
-    }
-  }
-
-  private void initializeReports() throws InitializationException {
-    Collection<IReportFactory> factories = objectFactory.instantiateOrdered(RegisteredReportFactory.class);
-    for (IReportFactory factory : factories) {
-      model.getReportRegistry().addReports(factory.createReport(resources, model));
     }
   }
 }
