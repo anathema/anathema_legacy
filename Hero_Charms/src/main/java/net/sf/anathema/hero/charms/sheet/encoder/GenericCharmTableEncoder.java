@@ -12,19 +12,18 @@ import com.itextpdf.text.pdf.PdfContentByte;
 import com.itextpdf.text.pdf.PdfPCell;
 import com.itextpdf.text.pdf.PdfPTable;
 import com.itextpdf.text.pdf.PdfTemplate;
-import net.sf.anathema.character.main.magic.model.magic.Magic;
 import net.sf.anathema.character.main.magic.model.magic.IMagicStats;
 import net.sf.anathema.character.main.traits.TraitType;
-import net.sf.anathema.hero.sheet.pdf.session.ReportSession;
+import net.sf.anathema.hero.charms.sheet.content.GenericCharmContent;
+import net.sf.anathema.hero.charms.sheet.content.GenericCharmContentHelper;
 import net.sf.anathema.hero.magic.sheet.content.MagicContentHelper;
 import net.sf.anathema.hero.sheet.pdf.encoder.boxes.EncodingMetrics;
 import net.sf.anathema.hero.sheet.pdf.encoder.general.Bounds;
-import net.sf.anathema.hero.sheet.pdf.encoder.table.AbstractTableEncoder;
 import net.sf.anathema.hero.sheet.pdf.encoder.graphics.SheetGraphics;
 import net.sf.anathema.hero.sheet.pdf.encoder.graphics.TableCell;
+import net.sf.anathema.hero.sheet.pdf.encoder.table.AbstractTableEncoder;
 import net.sf.anathema.hero.sheet.pdf.page.IVoidStateFormatConstants;
-import net.sf.anathema.hero.charms.sheet.content.GenericCharmContent;
-import net.sf.anathema.hero.charms.sheet.content.GenericCharmContentHelper;
+import net.sf.anathema.hero.sheet.pdf.session.ReportSession;
 import net.sf.anathema.lib.resources.Resources;
 
 import java.util.Arrays;
@@ -94,8 +93,7 @@ public class GenericCharmTableEncoder extends AbstractTableEncoder<ReportSession
 
   private PdfPCell createGenericCell(MagicContentHelper helper, TraitType type, String genericId, PdfTemplate learnedTemplate, PdfTemplate notLearnedTemplate) throws DocumentException {
     final String charmId = genericId + "." + type.getId();
-    List<Magic> allLearnedMagic = helper.getAllLearnedMagic();
-    boolean isLearned = helper.isCharmLearned(allLearnedMagic, charmId);
+    boolean isLearned = helper.isGenericCharmLearned(charmId);
     Image image = Image.getInstance(isLearned ? learnedTemplate : notLearnedTemplate);
     TableCell tableCell = new TableCell(image);
     tableCell.setPadding(0);

@@ -69,16 +69,16 @@ public class MagicContentHelper {
     return printStats;
   }
 
-  public List<Magic> getAllLearnedMagic() {
-    List<Magic> magicList = new ArrayList<>();
-    magicList.addAll(Arrays.asList(getLearnedCharms()));
-    magicList.addAll(getAllLearnedSpells());
-    return magicList;
-  }
-
   private List<ISpell> getAllLearnedSpells() {
     boolean experienced = ExperienceModelFetcher.fetch(hero).isExperienced();
     return Arrays.asList(SpellsModelFetcher.fetch(hero).getLearnedSpells(experienced));
+  }
+
+  public List<Magic> getAllLearnedMagic() {
+    List<Magic> magicList = new ArrayList<>();
+    magicList.addAll(getLearnedCharms());
+    magicList.addAll(getAllLearnedSpells());
+    return magicList;
   }
 
   public boolean isMultipleEffectCharm(Charm charm) {
@@ -101,7 +101,7 @@ public class MagicContentHelper {
     return learnedEffectIds.toArray(new String[learnedEffectIds.size()]);
   }
 
-  public Charm[] getGenericCharms() {
+  public List<Charm> getGenericCharms() {
     List<Charm> genericCharms = new ArrayList<>();
     for (ILearningCharmGroup group : CharmsModelFetcher.fetch(hero).getAllGroups()) {
       for (Charm charm : group.getAllCharms()) {
@@ -110,15 +110,15 @@ public class MagicContentHelper {
         }
       }
     }
-    return genericCharms.toArray(new Charm[genericCharms.size()]);
+    return genericCharms;
   }
 
-  private Charm[] getLearnedCharms() {
+  private List<Charm> getLearnedCharms() {
     boolean experienced = ExperienceModelFetcher.fetch(hero).isExperienced();
-    return CharmsModelFetcher.fetch(hero).getLearnedCharms(experienced);
+    return Arrays.asList(CharmsModelFetcher.fetch(hero).getLearnedCharms(experienced));
   }
 
-  public boolean isSubeffectCharm(Charm charm) {
+  public boolean isSubEffectCharm(Charm charm) {
     ISpecialCharmConfiguration charmConfiguration = CharmsModelFetcher.fetch(hero).getSpecialCharmConfiguration(charm);
     return charmConfiguration instanceof ISubeffectCharmConfiguration;
   }
@@ -127,19 +127,19 @@ public class MagicContentHelper {
     return getLearnCount(charm, CharmsModelFetcher.fetch(hero));
   }
 
-  private int getLearnCount(Charm charm, CharmsModel configuration) {
-    ISpecialCharmConfiguration specialCharmConfiguration = configuration.getSpecialCharmConfiguration(charm.getId());
+  private int getLearnCount(Charm charm, CharmsModel model) {
+    ISpecialCharmConfiguration specialCharmConfiguration = model.getSpecialCharmConfiguration(charm.getId());
     if (specialCharmConfiguration != null) {
       return specialCharmConfiguration.getCurrentLearnCount();
     }
-    return configuration.isLearned(charm) ? 1 : 0;
+    return model.isLearned(charm) ? 1 : 0;
   }
 
   public boolean shouldShowCharm(IMagicStats stats) {
     if (AnathemaCharacterPreferences.getDefaultPreferences().printAllGenerics()) {
       return true;
     }
-    for (Magic magic : getAllLearnedMagic()) {
+    for (Charm magic : getLearnedCharms()) {
       if (magic.getId().startsWith(stats.getName().getId())) {
         return true;
       }
@@ -169,10 +169,11 @@ public class MagicContentHelper {
     return genericCharmStats.toArray(new IMagicStats[genericCharmStats.size()]);
   }
 
-  public boolean isCharmLearned(List<Magic> allLearnedMagic, final String charmId) {
-    Optional<? extends Magic> optional = Iterables.tryFind(allLearnedMagic, new Predicate<Magic>() {
+  public boolean isGenericCharmLearned(final String charmId) {
+    List<Charm> allLearnedMagic = getLearnedCharms();
+    Optional<? extends Magic> optional = Iterables.tryFind(allLearnedMagic, new Predicate<Charm>() {
       @Override
-      public boolean apply(Magic value) {
+      public boolean apply(Charm value) {
         return charmId.equals(value.getId());
       }
     });
