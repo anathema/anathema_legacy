@@ -5,7 +5,10 @@ import net.sf.anathema.hero.change.ChangeAnnouncer;
 import net.sf.anathema.hero.change.ChangeAnnouncerImpl;
 import net.sf.anathema.lib.util.Identifier;
 
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.Iterator;
+import java.util.List;
 import java.util.Map;
 
 public class DefaultHero implements Hero {
@@ -14,6 +17,7 @@ public class DefaultHero implements Hero {
   private Map<String, HeroModel> modelsById = new HashMap<>();
   private boolean fullyLoaded = false;
   private final HeroTemplate template;
+  private List<HeroModel> orderedModels = new ArrayList<>();
 
   public DefaultHero(HeroTemplate template) {
     this.template = template;
@@ -44,7 +48,12 @@ public class DefaultHero implements Hero {
   }
 
   public void addModel(HeroModel model) {
+    orderedModels.add(model);
     modelsById.put(model.getId().getId(), model);
   }
 
+  @Override
+  public Iterator<HeroModel> iterator() {
+    return orderedModels.iterator();
+  }
 }

@@ -68,16 +68,20 @@ public class CharacterStatisticPersister {
     experiencePersister.save(statisticsElement, ExperienceModelFetcher.fetch(hero).getExperiencePoints());
   }
 
-  public ExaltedCharacter load(Element parent) throws PersistenceException {
+  public ExaltedCharacter loadTemplate(Element parent) {
+    Element statisticsElement = parent.element(TAG_STATISTICS);
+    ITemplateType templateType = loadTemplateType(statisticsElement);
+    HeroTemplate template = generics.getTemplateRegistry().getTemplate(templateType);
+    return new ExaltedCharacter(template, generics);
+  }
+
+  public ExaltedCharacter loadData(ExaltedCharacter character, Element parent) throws PersistenceException {
     try {
       Element statisticsElement = parent.element(TAG_STATISTICS);
-      ITemplateType templateType = loadTemplateType(statisticsElement);
       boolean experienced = ElementUtilities.getBooleanAttribute(statisticsElement, ATTRIB_EXPERIENCED, false);
-      HeroTemplate template = generics.getTemplateRegistry().getTemplate(templateType);
-      ExaltedCharacter character = new ExaltedCharacter(template, generics);
       HeroDescription characterDescription = HeroDescriptionFetcher.fetch(character);
       descriptionPersister.load(parent, characterDescription);
-      ICasteCollection casteCollection = template.getCasteCollection();
+      ICasteCollection casteCollection = character.getTemplate().getCasteCollection();
       characterConceptPersister.load(statisticsElement, HeroConceptFetcher.fetch(character), characterDescription, casteCollection);
       ExperienceModelFetcher.fetch(character).setExperienced(experienced);
       essencePersister.load(statisticsElement, TraitModelFetcher.fetch(character));

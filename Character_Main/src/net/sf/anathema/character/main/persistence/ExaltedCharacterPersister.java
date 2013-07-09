@@ -1,11 +1,10 @@
 package net.sf.anathema.character.main.persistence;
 
-import net.sf.anathema.character.main.framework.HeroEnvironment;
-import net.sf.anathema.character.main.magic.model.spells.SpellException;
-import net.sf.anathema.character.main.framework.item.DataItem;
-import net.sf.anathema.hero.description.HeroDescriptionFetcher;
 import net.sf.anathema.character.main.CharacterStatisticsConfiguration;
 import net.sf.anathema.character.main.ExaltedCharacter;
+import net.sf.anathema.character.main.framework.HeroEnvironment;
+import net.sf.anathema.character.main.framework.item.DataItem;
+import net.sf.anathema.character.main.magic.model.spells.SpellException;
 import net.sf.anathema.framework.item.IItemType;
 import net.sf.anathema.framework.messaging.IMessaging;
 import net.sf.anathema.framework.persistence.ItemMetaDataPersister;
@@ -14,10 +13,10 @@ import net.sf.anathema.framework.repository.Item;
 import net.sf.anathema.framework.repository.RepositoryException;
 import net.sf.anathema.framework.repository.access.IRepositoryReadAccess;
 import net.sf.anathema.framework.repository.access.IRepositoryWriteAccess;
+import net.sf.anathema.hero.description.HeroDescriptionFetcher;
 import net.sf.anathema.hero.model.Hero;
 import net.sf.anathema.hero.model.HeroModel;
 import net.sf.anathema.hero.persistence.HeroModelPersister;
-import net.sf.anathema.hero.persistence.HeroModelPersisterAutoCollector;
 import net.sf.anathema.lib.exception.PersistenceException;
 import net.sf.anathema.lib.message.MessageType;
 import net.sf.anathema.lib.workflow.wizard.selection.IDialogModelTemplate;
@@ -43,14 +42,14 @@ public class ExaltedCharacterPersister implements RepositoryItemPersister {
   private final IItemType characterType;
   private final HeroEnvironment generics;
   private final IMessaging messaging;
-  private final HeroModelPersisterAutoCollector persisterAutoCollector;
+  private final HeroPersisterList persisterList;
 
   public ExaltedCharacterPersister(IItemType characterType, HeroEnvironment generics, IMessaging messaging) {
     this.characterType = characterType;
     this.generics = generics;
     this.messaging = messaging;
     this.statisticsPersister = new CharacterStatisticPersister(generics, messaging);
-    this.persisterAutoCollector = new HeroModelPersisterAutoCollector(generics);
+    this.persisterList = new HeroPersisterList(generics);
   }
 
   @Override
@@ -58,9 +57,13 @@ public class ExaltedCharacterPersister implements RepositoryItemPersister {
     OutputStream stream = null;
     try {
       stream = writeAccess.createMainOutputStream();
-      saveMainFile(stream, item);
+      messaging.addMessage("CharacterPersistence.SavingCharacter", MessageType.INFORMATION, item.getDisplayName());
+      Element rootElement = DocumentHelper.createElement(TAG_EXALTED_CHARACTER_ROOT);
       Hero hero = (Hero) item.getItemData();
+      repositoryItemPerister.save(rootElement, item);
       saveModels(writeAccess, hero);
+      save(rootElement, hero);
+      DocumentUtilities.save(DocumentHelper.createDocument(rootElement), stream);
     }
     finally {
       IOUtils.closeQuietly(stream);
@@ -68,20 +71,12 @@ public class ExaltedCharacterPersister implements RepositoryItemPersister {
   }
 
   private void saveModels(IRepositoryWriteAccess writeAccess, Hero hero) {
-    for (HeroModelPersister persister : persisterAutoCollector.collect()) {
+    for (HeroModelPersister persister : persisterList.iterator(hero)) {
       HeroModel heroModel = hero.getModel(persister.getModelId());
       if (heroModel != null) {
         persister.save(heroModel, new HeroModelSaverImpl(writeAccess));
       }
     }
-  }
-
-  public void saveMainFile(OutputStream stream, Item item) throws IOException {
-    messaging.addMessage("CharacterPersistence.SavingCharacter", MessageType.INFORMATION, item.getDisplayName());
-    Element rootElement = DocumentHelper.createElement(TAG_EXALTED_CHARACTER_ROOT);
-    repositoryItemPerister.save(rootElement, item);
-    save(rootElement, (Hero) item.getItemData());
-    DocumentUtilities.save(DocumentHelper.createDocument(rootElement), stream);
   }
 
   private void save(Element rootElement, Hero hero) {
@@ -99,10 +94,15 @@ public class ExaltedCharacterPersister implements RepositoryItemPersister {
       stream = readAccess.openMainInputStream();
       SAXReader saxReader = new SAXReader();
       Document document = saxReader.read(stream);
-      Item loadedItem = load(document);
-      ExaltedCharacter character = (ExaltedCharacter) loadedItem.getItemData();
+      Element documentRoot = document.getRootElement();
+      ExaltedCharacter character = statisticsPersister.loadTemplate(documentRoot);
       loadModels(readAccess, character);
-      return loadedItem;
+      descriptionPersister.load(documentRoot, HeroDescriptionFetcher.fetch(character));
+      statisticsPersister.loadData(character, documentRoot);
+      markCharacterReadyForWork(character);
+      Item item = createItem(character);
+      repositoryItemPerister.load(documentRoot, item);
+      return item;
     }
     catch (DocumentException e) {
       throw new PersistenceException(e);
@@ -113,22 +113,12 @@ public class ExaltedCharacterPersister implements RepositoryItemPersister {
   }
 
   private void loadModels(IRepositoryReadAccess readAccess, Hero hero) {
-    for (HeroModelPersister persister : persisterAutoCollector.collect()) {
+    for (HeroModelPersister persister : persisterList.iterator(hero)) {
       HeroModel heroModel = hero.getModel(persister.getModelId());
       if (heroModel != null) {
         persister.load(heroModel, new HeroModelLoaderImpl(readAccess));
       }
     }
-  }
-
-  public Item load(Document characterXml) throws PersistenceException {
-    Element documentRoot = characterXml.getRootElement();
-    ExaltedCharacter character = statisticsPersister.load(documentRoot);
-    descriptionPersister.load(documentRoot, HeroDescriptionFetcher.fetch(character));
-    markCharacterReadyForWork(character);
-    Item item = createItem(character);
-    repositoryItemPerister.load(documentRoot, item);
-    return item;
   }
 
   @Override

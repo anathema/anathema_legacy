@@ -15,6 +15,7 @@ import net.sf.anathema.lib.util.Identifier;
 import net.sf.anathema.lib.workflow.textualdescription.ITextualDescription;
 
 import java.lang.*;
+import java.util.Iterator;
 
 public class ExaltedCharacter implements Character {
 
@@ -73,4 +74,8 @@ public class ExaltedCharacter implements Character {
     return hero.isFullyLoaded();
   }
 
+  @Override
+  public Iterator<HeroModel> iterator() {
+    return hero.iterator();
+  }
 }

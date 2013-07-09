@@ -11,6 +11,7 @@ import net.sf.anathema.hero.model.HeroModel;
 import net.sf.anathema.lib.util.Identifier;
 
 import java.util.HashMap;
+import java.util.Iterator;
 import java.util.Map;
 
 public class DummyHero implements Hero {
@@ -51,5 +52,10 @@ public class DummyHero implements Hero {
   @Override
   public boolean isFullyLoaded() {
     return true;
+  }
+
+  @Override
+  public Iterator<HeroModel> iterator() {
+    return modelsById.values().iterator();
   }
 }
