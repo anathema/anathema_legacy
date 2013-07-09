@@ -1,6 +1,5 @@
-package net.sf.anathema.character.equipment.character.model.natural.secondedition;
+package net.sf.anathema.hero.equipment.model.natural;
 
-import net.sf.anathema.character.equipment.character.model.natural.AbstractNaturalWeaponStats;
 import net.sf.anathema.character.equipment.creation.model.WeaponTag;
 import net.sf.anathema.character.main.traits.TraitType;
 import net.sf.anathema.character.main.traits.types.AbilityType;
@@ -8,7 +7,7 @@ import net.sf.anathema.character.main.traits.types.AttributeType;
 import net.sf.anathema.lib.util.Identifier;
 import net.sf.anathema.lib.util.SimpleIdentifier;
 
-public class Kick extends AbstractNaturalWeaponStats {
+public class Clinch extends AbstractNaturalWeaponStats {
 
   @Override
   public int getAccuracy() {
@@ -17,7 +16,12 @@ public class Kick extends AbstractNaturalWeaponStats {
 
   @Override
   public int getDamage() {
-    return 3;
+    return 0;
+  }
+
+  @Override
+  public Integer getDefence() {
+    return 0;
   }
 
   @Override
@@ -26,23 +30,18 @@ public class Kick extends AbstractNaturalWeaponStats {
   }
 
   @Override
-  public Integer getDefence() {
-    return -2;
-  }
-
-  @Override
   public Integer getRate() {
-    return 2;
+    return 1;
   }
 
   @Override
   public int getSpeed() {
-    return 5;
+    return 6;
   }
 
   @Override
   public Identifier[] getTags() {
-    return new Identifier[]{WeaponTag.Natural};
+    return new Identifier[]{WeaponTag.ClinchEnhancer, WeaponTag.Natural, WeaponTag.Piercing};
   }
 
   @Override
@@ -62,6 +61,6 @@ public class Kick extends AbstractNaturalWeaponStats {
 
   @Override
   public Identifier getName() {
-    return new SimpleIdentifier("Kick");
+    return new SimpleIdentifier("Clinch");
   }
 }

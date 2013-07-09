@@ -57,6 +57,6 @@ public class CharacterPersistenceModel {
   }
 
   private IItemType getCharacterItemType() {
-    return retrieveCharacterItemType(model);
+    return retrieveCharacterItemType();
   }
 }

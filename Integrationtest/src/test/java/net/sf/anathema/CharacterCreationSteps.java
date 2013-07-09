@@ -4,15 +4,15 @@ import com.google.inject.Inject;
 import cucumber.api.java.Before;
 import cucumber.api.java.en.Given;
 import cucumber.api.java.en.Then;
+import net.sf.anathema.character.main.Character;
+import net.sf.anathema.character.main.CharacterStatisticsConfiguration;
 import net.sf.anathema.character.main.framework.CharacterGenericsExtractor;
 import net.sf.anathema.character.main.framework.HeroEnvironment;
+import net.sf.anathema.character.main.itemtype.CharacterItemTypeRetrieval;
+import net.sf.anathema.character.main.persistence.ExaltedCharacterPersister;
 import net.sf.anathema.character.main.template.HeroTemplate;
 import net.sf.anathema.character.main.template.TemplateType;
 import net.sf.anathema.character.main.type.CharacterTypes;
-import net.sf.anathema.character.main.itemtype.CharacterItemTypeRetrieval;
-import net.sf.anathema.character.main.Character;
-import net.sf.anathema.character.main.CharacterStatisticsConfiguration;
-import net.sf.anathema.character.main.persistence.ExaltedCharacterPersister;
 import net.sf.anathema.framework.IApplicationModel;
 import net.sf.anathema.framework.item.IItemType;
 import net.sf.anathema.framework.persistence.RepositoryItemPersister;
@@ -97,7 +97,7 @@ public class CharacterCreationSteps {
   private Character createCharacter(HeroTemplate template) {
     CharacterStatisticsConfiguration creationRules = new CharacterStatisticsConfiguration();
     creationRules.setTemplate(template);
-    IItemType characterItemType = CharacterItemTypeRetrieval.retrieveCharacterItemType(model);
+    IItemType characterItemType = CharacterItemTypeRetrieval.retrieveCharacterItemType();
     RepositoryItemPersister itemPersister = new ExaltedCharacterPersister(characterItemType, getCharacterGenerics(), model.getMessaging());
     Item item = itemPersister.createNew(creationRules);
     return (Character) item.getItemData();

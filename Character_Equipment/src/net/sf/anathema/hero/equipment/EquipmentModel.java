@@ -4,8 +4,8 @@ import net.sf.anathema.character.equipment.character.EquipmentHeroEvaluator;
 import net.sf.anathema.character.equipment.character.EquipmentOptionsProvider;
 import net.sf.anathema.character.equipment.character.model.IEquipmentItem;
 import net.sf.anathema.character.equipment.character.model.IEquipmentItemCollection;
-import net.sf.anathema.character.equipment.character.model.IEquipmentPrintModel;
 import net.sf.anathema.character.equipment.item.model.IEquipmentTemplateProvider;
+import net.sf.anathema.character.main.equipment.weapon.IArmourStats;
 import net.sf.anathema.character.main.essence.IEssencePoolModifier;
 import net.sf.anathema.equipment.core.MagicalMaterial;
 import net.sf.anathema.equipment.core.MaterialComposition;
@@ -24,8 +24,6 @@ public interface EquipmentModel extends HeroModel, IEquipmentItemCollection, IEq
 
   MagicalMaterial getMagicalMaterial(String templateId);
 
-  IEquipmentPrintModel getPrintModel();
-
   EquipmentHeroEvaluator getHeroEvaluator();
 
   void updateItem(IEquipmentItem item);
@@ -33,4 +31,6 @@ public interface EquipmentModel extends HeroModel, IEquipmentItemCollection, IEq
   void refreshItems();
 
   EquipmentOptionsProvider getOptionProvider();
+
+  IArmourStats getNaturalArmor();
 }

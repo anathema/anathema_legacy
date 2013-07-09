@@ -1,4 +1,4 @@
-package net.sf.anathema.character.equipment.character.model;
+package net.sf.anathema.hero.equipment;
 
 import java.lang.annotation.ElementType;
 import java.lang.annotation.Retention;

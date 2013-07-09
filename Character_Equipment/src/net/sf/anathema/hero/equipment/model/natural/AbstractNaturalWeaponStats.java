@@ -1,4 +1,4 @@
-package net.sf.anathema.character.equipment.character.model.natural;
+package net.sf.anathema.hero.equipment.model.natural;
 
 import net.sf.anathema.character.equipment.character.model.stats.AbstractCombatStats;
 import net.sf.anathema.character.main.equipment.weapon.IEquipmentStats;

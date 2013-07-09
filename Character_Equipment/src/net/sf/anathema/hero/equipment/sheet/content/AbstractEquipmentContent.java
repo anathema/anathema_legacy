@@ -2,6 +2,7 @@ package net.sf.anathema.hero.equipment.sheet.content;
 
 import net.sf.anathema.character.equipment.character.model.IEquipmentPrintModel;
 import net.sf.anathema.character.main.equipment.ICharacterStatsModifiers;
+import net.sf.anathema.character.main.equipment.weapon.IArmourStats;
 import net.sf.anathema.character.main.equipment.weapon.IEquipmentStats;
 import net.sf.anathema.hero.equipment.EquipmentModel;
 import net.sf.anathema.hero.equipment.EquipmentModelFetcher;
@@ -25,7 +26,8 @@ public abstract class AbstractEquipmentContent<STATS extends IEquipmentStats> ex
 
   protected IEquipmentPrintModel getEquipmentModel() {
     EquipmentModel model = EquipmentModelFetcher.fetch(hero);
-    return model.getPrintModel();
+    IArmourStats naturalArmor = model.getNaturalArmor();
+    return new EquipmentPrintModel(model, naturalArmor);
   }
 
   protected ICharacterStatsModifiers getEquipmentModifiers() {
