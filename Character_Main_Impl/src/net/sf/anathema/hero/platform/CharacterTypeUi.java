@@ -1,6 +1,7 @@
 package net.sf.anathema.hero.platform;
 
 import net.sf.anathema.character.main.CharacterUI;
+import net.sf.anathema.character.main.caste.CasteType;
 import net.sf.anathema.character.main.framework.item.CharacterPrintNameFileScanner;
 import net.sf.anathema.character.main.type.ICharacterType;
 import net.sf.anathema.framework.view.PrintNameFile;
@@ -31,6 +32,9 @@ public class CharacterTypeUi extends AbstractUIConfiguration<PrintNameFile> {
     ICharacterType characterType = scanner.getCharacterType(value);
     String characterString = resources.getString("CharacterGenerator.NewCharacter." + characterType.getId() + ".Name");
     Identifier casteType = scanner.getCasteType(value);
+    if (casteType == CasteType.NULL_CASTE_TYPE) {
+      return resources.getString("LoadCharacter.PrintNameFile.ShortMessage", printName, characterString);
+    }
     String casteTypeString = resources.getString("Caste." + casteType.getId());
     String casteString = resources.getString(characterType.getId() + ".Caste.Label");
     return resources.getString("LoadCharacter.PrintNameFile.Message", printName, characterString, casteTypeString, casteString);
