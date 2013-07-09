@@ -6,7 +6,7 @@ public interface ExperienceConfigurationViewListener {
 
   void addRequested();
 
-  void removeRequested(IExperiencePointEntry entry);
+  void removeRequested();
 
   void selectionChanged(IExperiencePointEntry entry);
 }

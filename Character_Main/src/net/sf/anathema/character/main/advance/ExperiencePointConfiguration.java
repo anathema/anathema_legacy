@@ -8,12 +8,14 @@ import java.util.List;
 
 public class ExperiencePointConfiguration implements IExperiencePointConfiguration {
 
+  public static final IExperiencePointEntry NO_ENTRY = null;
+  private IExperiencePointEntry currentlySelectedEntry = NO_ENTRY;
   private final List<IExperiencePointEntry> entries = new ArrayList<>();
   private final Announcer<ExperiencePointConfigurationListener> control = Announcer.to(ExperiencePointConfigurationListener.class);
   private final ObjectValueListener<IExperiencePointEntry> entryChangeListener = new ObjectValueListener<IExperiencePointEntry>() {
     @Override
     public void valueChanged(IExperiencePointEntry entry) {
-      fireEntryChangedEvent(entry);
+      fireEntryChangedEvent();
     }
   };
 
@@ -30,7 +32,7 @@ public class ExperiencePointConfiguration implements IExperiencePointConfigurati
   }
 
   private void addEntryListeningAndFireEvent(IExperiencePointEntry newEntry) {
-    fireEntryAddedEvent(newEntry);
+    fireEntryAddedEvent();
     newEntry.addChangeListener(entryChangeListener);
   }
 
@@ -41,22 +43,23 @@ public class ExperiencePointConfiguration implements IExperiencePointConfigurati
   }
 
   @Override
-  public void removeEntry(IExperiencePointEntry entry) {
-    entries.remove(entry);
-    entry.removeChangeListener(entryChangeListener);
-    fireEntryRemovedEvent(entry);
+  public void removeEntry() {
+    currentlySelectedEntry.removeChangeListener(entryChangeListener);
+    entries.remove(currentlySelectedEntry);
+    fireEntryRemovedEvent();
+    this.currentlySelectedEntry = NO_ENTRY;
   }
 
-  private void fireEntryRemovedEvent(IExperiencePointEntry entry) {
-    control.announce().entryRemoved(entry);
+  private void fireEntryRemovedEvent() {
+    control.announce().entryRemoved();
   }
 
-  private void fireEntryAddedEvent(IExperiencePointEntry entry) {
-    control.announce().entryAdded(entry);
+  private void fireEntryAddedEvent() {
+    control.announce().entryAdded();
   }
 
-  private void fireEntryChangedEvent(IExperiencePointEntry entry) {
-    control.announce().entryChanged(entry);
+  private void fireEntryChangedEvent() {
+    control.announce().entryChanged();
   }
 
   @Override
@@ -86,4 +89,15 @@ public class ExperiencePointConfiguration implements IExperiencePointConfigurati
     return sum;
   }
 
+  @Override
+  public void selectForChange(IExperiencePointEntry entry) {
+    this.currentlySelectedEntry = entry;
+    control.announce().selectionChanged(entry);
+  }
+
+  @Override
+  public void updateCurrentSelection(String description, int points) {
+    currentlySelectedEntry.getTextualDescription().setText(description);
+    currentlySelectedEntry.setExperiencePoints(points);
+  }
 }

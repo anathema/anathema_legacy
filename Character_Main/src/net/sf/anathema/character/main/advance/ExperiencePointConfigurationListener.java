@@ -2,9 +2,11 @@ package net.sf.anathema.character.main.advance;
 
 public interface ExperiencePointConfigurationListener {
 
-  void entryAdded(IExperiencePointEntry entry);
+  void entryAdded();
 
-  void entryRemoved(IExperiencePointEntry entry);
+  void entryRemoved();
 
-  void entryChanged(IExperiencePointEntry entry);
+  void entryChanged();
+
+  void selectionChanged(IExperiencePointEntry entry);
 }

@@ -19,4 +19,6 @@ public interface ExperienceView {
   void addUpdateListener(ExperienceUpdateListener experienceUpdateListener);
 
   int getNumberOfEntriesOnDisplay();
+
+  void setSelection(IExperiencePointEntry entry);
 }

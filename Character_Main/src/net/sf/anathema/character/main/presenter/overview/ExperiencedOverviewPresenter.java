@@ -60,18 +60,23 @@ public class ExperiencedOverviewPresenter implements Presenter {
     totalView = category.addAlotmentView(getString("Overview.Experience.Total"), 4);
     ExperienceModelFetcher.fetch(hero).getExperiencePoints().addExperiencePointConfigurationListener(new ExperiencePointConfigurationListener() {
       @Override
-      public void entryAdded(IExperiencePointEntry entry) {
+      public void entryAdded() {
         calculateXPCost();
       }
 
       @Override
-      public void entryRemoved(IExperiencePointEntry entry) {
+      public void entryRemoved() {
         calculateXPCost();
       }
 
       @Override
-      public void entryChanged(IExperiencePointEntry entry) {
+      public void entryChanged() {
         calculateXPCost();
+      }
+
+      @Override
+      public void selectionChanged(IExperiencePointEntry entry) {
+        //nothing to do
       }
     });
   }

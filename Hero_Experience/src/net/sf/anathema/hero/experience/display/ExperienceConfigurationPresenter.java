@@ -21,8 +21,8 @@ public class ExperienceConfigurationPresenter {
   public void initPresentation() {
     experienceView.addExperienceConfigurationViewListener(new ExperienceConfigurationViewListener() {
       @Override
-      public void removeRequested(IExperiencePointEntry entry) {
-        experiencePoints.removeEntry(entry);
+      public void removeRequested() {
+        experiencePoints.removeEntry();
       }
 
       @Override
@@ -32,32 +32,36 @@ public class ExperienceConfigurationPresenter {
 
       @Override
       public void selectionChanged(IExperiencePointEntry entry) {
-        experienceView.setRemoveButtonEnabled(entry != null);
+        experiencePoints.selectForChange(entry);
       }
 
     });
     experiencePoints.addExperiencePointConfigurationListener(new ExperiencePointConfigurationListener() {
       @Override
-      public void entryRemoved(IExperiencePointEntry entry) {
+      public void entryRemoved() {
         refreshEntriesInView();
       }
 
       @Override
-      public void entryAdded(IExperiencePointEntry entry) {
+      public void entryAdded() {
         refreshEntriesInView();
       }
 
       @Override
-      public void entryChanged(IExperiencePointEntry entry) {
+      public void entryChanged() {
         refreshEntriesInView();
+      }
+
+      @Override
+      public void selectionChanged(IExperiencePointEntry entry) {
+        experienceView.setSelection(entry);
       }
     });
     experienceView.initGui(new ExperienceViewProperties(resources));
     refreshEntriesInView();
     experienceView.addUpdateListener(new ExperienceUpdateListener() {
-      public void update(IExperiencePointEntry entry, int points, String description) {
-        entry.setExperiencePoints(points);
-        entry.getTextualDescription().setText(description);
+      public void update(int points, String description) {
+        experiencePoints.updateCurrentSelection(description, points);
       }
     });
     updateTotal();

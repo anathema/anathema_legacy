@@ -1,5 +1,7 @@
 package net.sf.anathema.hero.experience.display;
 
+import com.google.common.collect.BiMap;
+import com.google.common.collect.HashBiMap;
 import net.miginfocom.layout.CC;
 import net.miginfocom.layout.LC;
 import net.miginfocom.swing.MigLayout;
@@ -28,8 +30,6 @@ import javax.swing.table.TableColumn;
 import java.awt.Color;
 import java.awt.Component;
 import java.awt.Dimension;
-import java.util.HashMap;
-import java.util.Map;
 
 import static net.sf.anathema.lib.gui.layout.LayoutUtils.fillWithoutInsets;
 
@@ -41,7 +41,7 @@ public class ExperienceTableView implements ExperienceView, IView {
   private Action deleteAction;
   private LabelledIntegerValueView labelledIntValueView;
   private JPanel content = new JPanel(new MigLayout(fillWithoutInsets()));
-  private final Map<Integer, IExperiencePointEntry> entriesByIndex = new HashMap<>();
+  private final BiMap<Integer, IExperiencePointEntry> entriesByIndex = HashBiMap.create();
 
   @Override
   public final void initGui(final IExperienceViewProperties properties) {
@@ -70,7 +70,7 @@ public class ExperienceTableView implements ExperienceView, IView {
     smartTable.getTable().getSelectionModel().addListSelectionListener(new ListSelectionListener() {
       @Override
       public void valueChanged(ListSelectionEvent e) {
-        fireSelectionChanged();
+        fireSelectionChanged(e.getFirstIndex(), e.getLastIndex());
       }
     });
     smartTable.createContent(content);
@@ -91,14 +91,19 @@ public class ExperienceTableView implements ExperienceView, IView {
     return content;
   }
 
-  protected void fireSelectionChanged() {
-    IExperiencePointEntry entry = entriesByIndex.get(smartTable.getSelectedRowIndex());
+  protected void fireSelectionChanged(int firstIndex, int lastIndex) {
+    if (firstIndex != lastIndex) {
+      return;
+    }
+    if (entriesByIndex.isEmpty()) {
+      return;
+    }
+    IExperiencePointEntry entry = entriesByIndex.get(firstIndex);
     listeners.announce().selectionChanged(entry);
   }
 
   private void fireRemoveRequested() {
-    IExperiencePointEntry entry = entriesByIndex.get(smartTable.getSelectedRowIndex());
-    listeners.announce().removeRequested(entry);
+    listeners.announce().removeRequested();
   }
 
   private void fireAddRequested() {
@@ -132,6 +137,7 @@ public class ExperienceTableView implements ExperienceView, IView {
 
   @Override
   public void clearEntries() {
+    entriesByIndex.clear();
     getTableModel().setRowCount(0);
   }
 
@@ -146,8 +152,7 @@ public class ExperienceTableView implements ExperienceView, IView {
         int tableRowIndex = e.getFirstRow();
         Integer experiencePoints = (Integer) getTableModel().getValueAt(tableRowIndex, ExperienceTableView.VALUE_INDEX);
         String description = (String) getTableModel().getValueAt(tableRowIndex, ExperienceTableView.DESCRIPTION_INDEX);
-        IExperiencePointEntry entry = entriesByIndex.get(tableRowIndex);
-        experienceUpdateListener.update(entry, experiencePoints, description);
+        experienceUpdateListener.update(experiencePoints, description);
       }
     });
   }
@@ -155,6 +160,16 @@ public class ExperienceTableView implements ExperienceView, IView {
   @Override
   public int getNumberOfEntriesOnDisplay() {
     return getTableModel().getRowCount();
+  }
+
+  @Override
+  public void setSelection(IExperiencePointEntry entry) {
+    Integer rowIndex = entriesByIndex.inverse().get(entry);
+    if (rowIndex == null) {
+      smartTable.clearSelection();
+    } else {
+      smartTable.selectRow(rowIndex);
+    }
   }
 
   private DefaultTableModel getTableModel() {

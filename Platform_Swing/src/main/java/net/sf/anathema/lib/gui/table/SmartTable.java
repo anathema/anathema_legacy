@@ -1,6 +1,5 @@
 package net.sf.anathema.lib.gui.table;
 
-import com.google.common.base.Preconditions;
 import net.miginfocom.layout.CC;
 import net.sf.anathema.lib.gui.table.columsettings.ITableColumnViewSettings;
 import org.jmock.example.announcer.Announcer;
@@ -26,7 +25,6 @@ public class SmartTable {
 
   private boolean enabled = true;
   private final JTable table;
-  private JPanel content;
   private final Announcer<ActionListener> selectionActionListeners = new Announcer<>(ActionListener.class);
   private final List<Action> actions = new ArrayList<>();
 
@@ -50,7 +48,6 @@ public class SmartTable {
   }
 
   public void addAction(Action action) {
-    Preconditions.checkArgument(content == null, "Adding actions after creating content.");
     actions.add(action);
   }
 
@@ -103,7 +100,11 @@ public class SmartTable {
     }
   }
 
-  public int getSelectedRowIndex() {
-    return table.getSelectedRow();
+  public void selectRow(Integer integer) {
+    table.setRowSelectionInterval(integer, integer);
+  }
+
+  public void clearSelection() {
+    table.clearSelection();
   }
 }

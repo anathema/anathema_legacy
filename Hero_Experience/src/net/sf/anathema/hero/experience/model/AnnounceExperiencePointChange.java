@@ -13,17 +13,22 @@ public class AnnounceExperiencePointChange implements ExperiencePointConfigurati
   }
 
   @Override
-  public void entryAdded(IExperiencePointEntry entry) {
+  public void entryAdded() {
     announcer.announceChangeOf(ChangeFlavor.UNSPECIFIED);
   }
 
   @Override
-  public void entryRemoved(IExperiencePointEntry entry) {
+  public void entryRemoved() {
     announcer.announceChangeOf(ChangeFlavor.UNSPECIFIED);
   }
 
   @Override
-  public void entryChanged(IExperiencePointEntry entry) {
+  public void entryChanged() {
     announcer.announceChangeOf(ChangeFlavor.UNSPECIFIED);
+  }
+
+  @Override
+  public void selectionChanged(IExperiencePointEntry entry) {
+    //nothing to do
   }
 }

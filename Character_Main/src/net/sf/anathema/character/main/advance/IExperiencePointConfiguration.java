@@ -6,11 +6,15 @@ public interface IExperiencePointConfiguration {
 
   IExperiencePointEntry addEntry();
 
-  void removeEntry(IExperiencePointEntry entry);
+  void removeEntry();
 
   int getTotalExperiencePoints();
 
   void addExperiencePointConfigurationListener(ExperiencePointConfigurationListener listener);
 
   int getExtraSpendings();
+
+  void selectForChange(IExperiencePointEntry entry);
+
+  void updateCurrentSelection(String description, int points);
 }
