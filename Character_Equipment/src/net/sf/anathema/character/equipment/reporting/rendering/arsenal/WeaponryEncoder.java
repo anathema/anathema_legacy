@@ -11,11 +11,13 @@ public class WeaponryEncoder<C extends SubBoxContent> extends AbstractContentEnc
 
   private final WeaponryTableEncoder tableEncoder;
 
+  @SuppressWarnings("unchecked")
   public WeaponryEncoder(Class<C> contentClass) {
     super(contentClass);
     this.tableEncoder = new WeaponryTableEncoder(contentClass);
   }
 
+  @SuppressWarnings("unchecked")
   @Override
   public void encode(SheetGraphics graphics, ReportSession session, Bounds bounds) throws DocumentException {
     tableEncoder.encodeTable(graphics, session, bounds);

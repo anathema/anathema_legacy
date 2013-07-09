@@ -16,6 +16,7 @@ public class ArsenalEncoderFactory extends GlobalEncoderFactory {
     setPreferredHeight(new PreferredWeaponryHeight());
   }
 
+  @SuppressWarnings("unchecked")
   @Override
   public ContentEncoder create(Resources resources, BasicContent content) {
     return new WeaponryEncoder(WeaponryContent.class);

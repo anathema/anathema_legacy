@@ -26,6 +26,7 @@ public abstract class AbstractWeaponryContent extends AbstractEquipmentContent<I
     return getEquipmentModel().getPrintWeapons(getResources());
   }
 
+  @SuppressWarnings("unchecked")
   @Override
   public IEquipmentStatsGroup<IWeaponStats>[] createStatsGroups() {
     return new IEquipmentStatsGroup[]{createNameGroup(), createSpeedGroup(), createAccuracyGroup(), createDamageGroup(), createDefenceGroup(),

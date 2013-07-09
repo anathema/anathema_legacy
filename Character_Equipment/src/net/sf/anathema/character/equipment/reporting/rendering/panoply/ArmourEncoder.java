@@ -23,6 +23,7 @@ public class ArmourEncoder implements ContentEncoder {
     return resources.getString("Sheet.Header.ArmourSoak");
   }
 
+  @SuppressWarnings("unchecked")
   @Override
   public void encode(SheetGraphics graphics, ReportSession session, Bounds bounds) throws DocumentException {
     encoder.encodeTable(graphics, session, bounds);

@@ -27,6 +27,7 @@ public class ArmourContent extends AbstractEquipmentContent<IArmourStats> {
     return getEquipmentModel().getPrintArmours();
   }
 
+  @SuppressWarnings("unchecked")
   @Override
   public IStatsGroup<IArmourStats>[] createStatsGroups() {
     return new IEquipmentStatsGroup[]{new EquipmentNameStatsGroup<IArmourStats>(getResources()), new SoakArmourStatsGroup(getResources()),

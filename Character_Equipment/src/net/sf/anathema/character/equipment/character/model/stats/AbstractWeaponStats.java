@@ -22,7 +22,6 @@ public abstract class AbstractWeaponStats extends AbstractCombatStats implements
   private Integer range;
   private Integer rate;
   private int speed;
-  private boolean inflictsNoDamage;
   private final List<String> tags = new ArrayList<>();
   private int minimumDamage;
 
@@ -88,7 +87,7 @@ public abstract class AbstractWeaponStats extends AbstractCombatStats implements
 
   @Override
   public boolean inflictsNoDamage() {
-    return inflictsNoDamage;
+    return false;
   }
 
   public void setAccuracy(int accuracy) {
@@ -109,10 +108,6 @@ public abstract class AbstractWeaponStats extends AbstractCombatStats implements
 
   public void setDefence(Integer defence) {
     this.defence = defence;
-  }
-
-  public void setInflictsNoDamage(boolean inflictsNoDamage) {
-    this.inflictsNoDamage = inflictsNoDamage;
   }
 
   public void setRange(Integer range) {

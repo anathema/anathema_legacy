@@ -6,27 +6,26 @@ import net.sf.anathema.lib.control.IBooleanValueChangedListener;
 import net.sf.anathema.lib.workflow.booleanvalue.BooleanValueModel;
 
 import java.util.ArrayList;
-import java.util.EnumMap;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
 public class WeaponTagsModel implements IWeaponTagsModel {
 
-  private final Map<WeaponTag, BooleanValueModel> enabledMap = new EnumMap<>(WeaponTag.class);
-  private final Map<WeaponTag, BooleanValueModel> selectedMap = new EnumMap<>(WeaponTag.class);
-
-  private final IBooleanValueChangedListener updateRangeEnabledListener = new IBooleanValueChangedListener() {
-    @Override
-    public void valueChanged(boolean newValue) {
-      setTagsRangedCombatStyle();
-    }
-  };
+  private final Map<IWeaponTag, BooleanValueModel> enabledMap = new HashMap<>();
+  private final Map<IWeaponTag, BooleanValueModel> selectedMap = new HashMap<>();
 
   public WeaponTagsModel() {
     for (WeaponTag tag : WeaponTag.values()) {
       selectedMap.put(tag, new BooleanValueModel(false));
       enabledMap.put(tag, new BooleanValueModel(true));
     }
+    IBooleanValueChangedListener updateRangeEnabledListener = new IBooleanValueChangedListener() {
+      @Override
+      public void valueChanged(boolean newValue) {
+        setTagsRangedCombatStyle();
+      }
+    };
     for (WeaponTag rangedTag : WeaponTag.getRangedWeaponTypeTags()) {
       getSelectedModel(rangedTag).addChangeListener(updateRangeEnabledListener);
     }
@@ -50,7 +49,7 @@ public class WeaponTagsModel implements IWeaponTagsModel {
   @Override
   public IWeaponTag[] getSelectedTags() {
     List<IWeaponTag> tags = new ArrayList<>();
-    for (WeaponTag tag : selectedMap.keySet()) {
+    for (IWeaponTag tag : selectedMap.keySet()) {
       if (isSelected(tag)) {
         tags.add(tag);
       }
@@ -58,7 +57,7 @@ public class WeaponTagsModel implements IWeaponTagsModel {
     return tags.toArray(new IWeaponTag[tags.size()]);
   }
 
-  private boolean isSelected(WeaponTag tag) {
+  private boolean isSelected(IWeaponTag tag) {
     return getSelectedModel(tag).getValue();
   }
 
