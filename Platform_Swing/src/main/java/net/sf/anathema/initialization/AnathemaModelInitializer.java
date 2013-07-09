@@ -5,7 +5,6 @@ import net.sf.anathema.framework.configuration.IInitializationPreferences;
 import net.sf.anathema.framework.model.ApplicationModel;
 import net.sf.anathema.framework.module.ItemTypeConfiguration;
 import net.sf.anathema.framework.repository.RepositoryException;
-import net.sf.anathema.initialization.reflections.AnnotationFinder;
 import net.sf.anathema.initialization.reflections.ResourceLoader;
 import net.sf.anathema.initialization.repository.IOFileSystemAbstraction;
 import net.sf.anathema.initialization.repository.RepositoryFolderCreator;
@@ -27,10 +26,10 @@ public class AnathemaModelInitializer {
     this.extensions = extensions;
   }
 
-  public IApplicationModel initializeModel(Resources resources, AnnotationFinder finder, ResourceLoader loader) throws InitializationException {
-    ApplicationModel model = createModel(resources, loader);
+  public IApplicationModel initializeModel(Resources resources, ObjectFactory instantiater, ResourceLoader loader) throws InitializationException {
+    ApplicationModel model = createModel(resources, loader, instantiater);
     for (ExtensionWithId extension : extensions) {
-      extension.register(model, finder, loader);
+      extension.register(model, loader);
     }
     for (ItemTypeConfiguration configuration : itemTypeConfigurations) {
       model.getItemTypeRegistry().registerItemType(configuration.getItemType());
@@ -38,9 +37,9 @@ public class AnathemaModelInitializer {
     return model;
   }
 
-  private ApplicationModel createModel(Resources resources, ResourceLoader resourceLoader) throws InitializationException {
+  private ApplicationModel createModel(Resources resources, ResourceLoader resourceLoader, ObjectFactory instantiater) throws InitializationException {
     try {
-      return new ApplicationModel(createRepositoryFolder(), resources, resourceLoader);
+      return new ApplicationModel(createRepositoryFolder(), resources, resourceLoader, instantiater);
     } catch (RepositoryException e) {
       throw new InitializationException("Failed to create repository folder.\nPlease check read/write permissions.", e);
     }

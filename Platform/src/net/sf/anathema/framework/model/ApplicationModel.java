@@ -9,6 +9,7 @@ import net.sf.anathema.framework.messaging.Messaging;
 import net.sf.anathema.framework.reporting.IReportRegistry;
 import net.sf.anathema.framework.repository.FileSystemRepository;
 import net.sf.anathema.framework.repository.Repository;
+import net.sf.anathema.initialization.ObjectFactory;
 import net.sf.anathema.initialization.reflections.ResourceLoader;
 import net.sf.anathema.lib.registry.IRegistry;
 import net.sf.anathema.lib.registry.Registry;
@@ -24,8 +25,10 @@ public class ApplicationModel implements IApplicationModel {
   private final FileSystemRepository repository;
   private final Messaging messaging;
   private final ResourceLoader resourceLoader;
+  private final ObjectFactory objectFactory;
 
-  public ApplicationModel(File repositoryFolder, Resources resources, ResourceLoader resourceLoader) {
+  public ApplicationModel(File repositoryFolder, Resources resources, ResourceLoader resourceLoader, ObjectFactory objectFactory) {
+    this.objectFactory = objectFactory;
     this.repository = new FileSystemRepository(repositoryFolder);
     this.messaging = new Messaging(resources);
     InformativeMessages informativeMessages = new WordsOfTheWise(resourceLoader);
@@ -66,5 +69,10 @@ public class ApplicationModel implements IApplicationModel {
   @Override
   public ResourceLoader getResourceLoader() {
     return resourceLoader;
+  }
+
+  @Override
+  public ObjectFactory getObjectFactory() {
+    return objectFactory;
   }
 }
