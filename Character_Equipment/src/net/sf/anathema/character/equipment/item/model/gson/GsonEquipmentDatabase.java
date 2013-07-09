@@ -2,10 +2,10 @@ package net.sf.anathema.character.equipment.item.model.gson;
 
 import com.google.common.collect.Lists;
 import net.sf.anathema.character.equipment.item.model.IEquipmentDatabase;
+import net.sf.anathema.character.equipment.module.EquipmentDatabaseItemTypeConfiguration;
 import net.sf.anathema.equipment.core.IEquipmentTemplate;
 import net.sf.anathema.framework.IApplicationModel;
 import net.sf.anathema.framework.item.IItemType;
-import net.sf.anathema.framework.item.IItemTypeRegistry;
 import net.sf.anathema.framework.itemdata.model.ItemData;
 import net.sf.anathema.framework.presenter.itemmanagement.PrintNameAdjuster;
 import net.sf.anathema.framework.repository.ChangeManagement;
@@ -18,20 +18,13 @@ import org.jmock.example.announcer.Announcer;
 import java.nio.file.Path;
 import java.util.List;
 
-import static net.sf.anathema.character.equipment.module.EquipmentDatabaseItemTypeConfiguration.EQUIPMENT_DATABASE_ITEM_TYPE_ID;
-
 public class GsonEquipmentDatabase implements IEquipmentDatabase, ItemData {
   public static final String DATABASE_FOLDER = "equipment";
 
   public static GsonEquipmentDatabase CreateFrom(IApplicationModel anathemaModel) {
     Repository repository = anathemaModel.getRepository();
-    IItemType itemType = getItemType(anathemaModel);
+    IItemType itemType = new EquipmentDatabaseItemTypeConfiguration().getItemType();
     return new GsonEquipmentDatabase(new EquipmentRepositoryAccess(repository, itemType));
-  }
-
-  private static IItemType getItemType(IApplicationModel anathemaModel) {
-    IItemTypeRegistry registry = anathemaModel.getItemTypeRegistry();
-    return registry.getById(EQUIPMENT_DATABASE_ITEM_TYPE_ID);
   }
 
   private final Announcer<ChangeListener> availableTemplatesChangeControl = Announcer.to(ChangeListener.class);
