@@ -3,7 +3,7 @@ package net.sf.anathema.framework.module;
 import net.sf.anathema.framework.extension.IAnathemaExtension;
 import net.sf.anathema.framework.presenter.action.preferences.IPreferencesElement;
 import net.sf.anathema.initialization.Extension;
-import net.sf.anathema.initialization.reflections.AnnotationFinder;
+import net.sf.anathema.initialization.ObjectFactory;
 import net.sf.anathema.initialization.reflections.ResourceLoader;
 import net.sf.anathema.initialization.repository.DataFileProvider;
 
@@ -17,7 +17,7 @@ public class PreferencesElementsExtensionPoint implements IAnathemaExtension {
   private final List<IPreferencesElement> elements = new ArrayList<>();
 
   @Override
-  public void initialize(DataFileProvider dataFileProvider, AnnotationFinder finder, ResourceLoader loader) {
+  public void initialize(DataFileProvider dataFileProvider, ObjectFactory factory, ResourceLoader loader) {
     // nothing to do
   }
 

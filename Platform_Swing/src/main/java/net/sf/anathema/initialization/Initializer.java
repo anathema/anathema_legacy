@@ -59,7 +59,7 @@ public abstract class Initializer {
     displayMessage("Creating Model...");
     Collection<ItemTypeConfiguration> itemTypes = itemTypeCollection.getItemTypes();
     AnathemaModelInitializer modelInitializer = new AnathemaModelInitializer(initializationPreferences, itemTypes, extensionCollection);
-    return modelInitializer.initializeModel(resources, reflections, loader);
+    return modelInitializer.initializeModel(resources, objectFactory, loader);
   }
 
   private LocaleResources initResources(ResourceLoader loader) {

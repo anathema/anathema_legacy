@@ -3,11 +3,8 @@ package net.sf.anathema.initialization;
 import net.sf.anathema.framework.IApplicationModel;
 import net.sf.anathema.framework.initialization.IReportFactory;
 import net.sf.anathema.framework.messaging.IMessageContainer;
-import net.sf.anathema.framework.module.ItemTypePresentationFactory;
 import net.sf.anathema.framework.module.PreferencesElementsExtensionPoint;
 import net.sf.anathema.framework.presenter.action.preferences.IPreferencesElement;
-import net.sf.anathema.framework.presenter.item.ItemTypeCreationViewPropertiesExtensionPoint;
-import net.sf.anathema.framework.presenter.view.IItemTypeViewProperties;
 import net.sf.anathema.framework.view.ApplicationView;
 import net.sf.anathema.lib.control.ChangeListener;
 import net.sf.anathema.lib.resources.Resources;
@@ -29,23 +26,11 @@ public class AnathemaPresenter {
   }
 
   public void initPresentation() throws InitializationException {
-    registerItemTypePresentations();
     initializePreferences();
     runBootJobs();
     initializeReports();
     IMessageContainer messageContainer = model.getMessageContainer();
     init(messageContainer);
-  }
-
-  private void registerItemTypePresentations() {
-    Collection<ItemTypePresentationFactory> presentationFactories = objectFactory.instantiateAll(RegisteredItemTypePresentation.class);
-    for (ItemTypePresentationFactory factory : presentationFactories) {
-      IItemTypeViewProperties properties = factory.createItemTypeCreationProperties(model, resources);
-      ItemTypeCreationViewPropertiesExtensionPoint itemCreationExtensionPoint =
-              (ItemTypeCreationViewPropertiesExtensionPoint) model.getExtensionPointRegistry().get(ItemTypeCreationViewPropertiesExtensionPoint.ID);
-      String itemType = factory.getClass().getAnnotation(RegisteredItemTypePresentation.class).itemType();
-      itemCreationExtensionPoint.register(model.getItemTypeRegistry().getById(itemType), properties);
-    }
   }
 
   private void init(final IMessageContainer messageContainer) {
