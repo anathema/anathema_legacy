@@ -2,18 +2,18 @@ package net.sf.anathema.character.equipment.view;
 
 import junit.framework.TestCase;
 import net.sf.anathema.character.equipment.character.EquipmentHeroEvaluator;
-import net.sf.anathema.character.equipment.character.EquipmentObjectPresenter;
 import net.sf.anathema.character.equipment.character.EquipmentOptionsProvider;
 import net.sf.anathema.character.equipment.character.IEquipmentStringBuilder;
 import net.sf.anathema.character.equipment.character.model.IEquipmentItem;
-import net.sf.anathema.character.equipment.character.view.IEquipmentObjectView;
 import net.sf.anathema.character.equipment.dummy.DemoMeleeWeapon;
 import net.sf.anathema.character.equipment.dummy.DummyEquipmentObject;
 import net.sf.anathema.character.main.equipment.weapon.IEquipmentStats;
-import net.sf.anathema.hero.health.HealthType;
-import net.sf.anathema.character.main.traits.TraitType;
 import net.sf.anathema.character.main.library.trait.specialties.Specialty;
+import net.sf.anathema.character.main.traits.TraitType;
 import net.sf.anathema.framework.resources.LocaleResources;
+import net.sf.anathema.hero.equipment.display.EquipmentObjectPresenter;
+import net.sf.anathema.hero.equipment.display.IEquipmentObjectView;
+import net.sf.anathema.hero.health.HealthType;
 import net.sf.anathema.lib.model.BooleanModel;
 import net.sf.anathema.lib.util.SimpleIdentifier;
 

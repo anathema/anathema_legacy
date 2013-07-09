@@ -1,13 +1,12 @@
-package net.sf.anathema.hero.equipment;
+package net.sf.anathema.hero.equipment.display;
 
-import net.sf.anathema.character.equipment.character.EquipmentPresenter;
-import net.sf.anathema.character.equipment.character.view.EquipmentView;
-import net.sf.anathema.character.main.type.ICharacterType;
 import net.sf.anathema.character.main.presenter.initializers.HeroModelInitializer;
 import net.sf.anathema.character.main.presenter.initializers.RegisteredInitializer;
+import net.sf.anathema.character.main.type.ICharacterType;
 import net.sf.anathema.character.main.view.SectionView;
 import net.sf.anathema.framework.model.ApplicationModel;
 import net.sf.anathema.hero.display.HeroModelGroup;
+import net.sf.anathema.hero.equipment.EquipmentModel;
 import net.sf.anathema.hero.model.Hero;
 import net.sf.anathema.initialization.reflections.Weight;
 import net.sf.anathema.lib.resources.Resources;

@@ -1,4 +1,4 @@
-package net.sf.anathema.character.equipment.character;
+package net.sf.anathema.hero.equipment.display;
 
 import net.sf.anathema.lib.util.Closure;
 

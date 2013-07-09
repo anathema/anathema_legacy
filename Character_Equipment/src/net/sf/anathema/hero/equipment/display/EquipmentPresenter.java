@@ -1,12 +1,12 @@
-package net.sf.anathema.character.equipment.character;
+package net.sf.anathema.hero.equipment.display;
 
 import net.sf.anathema.character.equipment.MagicalMaterial;
 import net.sf.anathema.character.equipment.MaterialComposition;
+import net.sf.anathema.character.equipment.character.EquipmentStringBuilder;
+import net.sf.anathema.character.equipment.character.IEquipmentStringBuilder;
+import net.sf.anathema.character.equipment.character.MagicMaterialUIConfiguration;
 import net.sf.anathema.character.equipment.character.model.IEquipmentItem;
 import net.sf.anathema.character.equipment.character.preference.AnathemaEquipmentPreferences;
-import net.sf.anathema.character.equipment.character.view.EquipmentView;
-import net.sf.anathema.character.equipment.character.view.IEquipmentObjectView;
-import net.sf.anathema.character.equipment.character.view.IMagicalMaterialView;
 import net.sf.anathema.character.equipment.creation.presenter.stats.properties.EquipmentUI;
 import net.sf.anathema.character.equipment.item.EquipmentTemplateNameComparator;
 import net.sf.anathema.character.equipment.item.personalization.EquipmentPersonalizationModel;

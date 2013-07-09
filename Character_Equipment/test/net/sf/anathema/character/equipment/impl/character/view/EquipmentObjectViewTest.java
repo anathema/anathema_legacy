@@ -1,5 +1,6 @@
 package net.sf.anathema.character.equipment.impl.character.view;
 
+import net.sf.anathema.hero.equipment.display.EquipmentObjectView;
 import net.sf.anathema.lib.model.BooleanModel;
 import org.junit.Test;
 
