@@ -159,7 +159,7 @@ public class CharacterSystemModel implements ItemSystemModel {
         characterAddedListener.announce().added(character);
       }
     };
-    IItemType itemType = retrieveCharacterItemType(model);
+    IItemType itemType = retrieveCharacterItemType();
     ItemTemplateFactory factory = new CharacterCreationTemplateFactory(getCharacterGenerics(), resources);
     RepositoryItemPersister persister = new ExaltedCharacterPersister(itemType, getCharacterGenerics(), model.getMessaging());
     new NewItemCommand(factory, resources, receiver, persister).execute();

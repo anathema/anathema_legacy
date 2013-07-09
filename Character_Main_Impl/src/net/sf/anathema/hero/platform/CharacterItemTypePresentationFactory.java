@@ -13,8 +13,8 @@ import net.sf.anathema.initialization.RegisteredItemTypePresentation;
 import net.sf.anathema.lib.registry.IRegistry;
 import net.sf.anathema.lib.resources.Resources;
 
-import static net.sf.anathema.character.main.itemtype.CharacterItemTypeRetrieval.CHARACTER_ITEM_TYPE_ID;
 import static net.sf.anathema.character.main.itemtype.CharacterItemTypeRetrieval.retrieveCharacterItemType;
+import static net.sf.anathema.character.main.itemtype.ExaltedCharacterItemTypeConfiguration.CHARACTER_ITEM_TYPE_ID;
 
 @RegisteredItemTypePresentation(itemType = CHARACTER_ITEM_TYPE_ID)
 public class CharacterItemTypePresentationFactory implements ItemTypePresentationFactory {
@@ -25,6 +25,6 @@ public class CharacterItemTypePresentationFactory implements ItemTypePresentatio
     IRegistry<ICharacterType, ICasteCollection> casteCollectionIRegistry = generics.getCasteCollectionRegistry();
     IRepositoryFileResolver fileResolver = anathemaModel.getRepository().getRepositoryFileResolver();
     CharacterPrintNameFileScanner scanner = new RegExCharacterPrintNameFileScanner(generics.getCharacterTypes(), casteCollectionIRegistry, fileResolver);
-    return new CharacterViewProperties(retrieveCharacterItemType(anathemaModel), resources, scanner);
+    return new CharacterViewProperties(retrieveCharacterItemType(), resources, scanner);
   }
 }
