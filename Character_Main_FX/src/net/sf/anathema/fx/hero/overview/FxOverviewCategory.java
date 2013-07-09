@@ -12,12 +12,13 @@ import static net.sf.anathema.lib.gui.layout.LayoutUtils.withoutInsets;
 
 public class FxOverviewCategory implements OverviewCategory {
   private final MigPane panel = new MigPane(withoutInsets().wrapAfter(4));
+  private Node border;
 
   public FxOverviewCategory(final MigPane parent, final String label) {
     FxThreading.runOnCorrectThread(new Runnable() {
       @Override
       public void run() {
-        Node border = StyledTitledPane.Create(label, panel);
+        border = StyledTitledPane.Create(label, panel);
         parent.add(border);
       }
     });
@@ -42,5 +43,9 @@ public class FxOverviewCategory implements OverviewCategory {
     FxStringOverview view = new FxStringOverview(labelText);
     view.addTo(panel);
     return view;
+  }
+
+  public Node getNode() {
+    return border;
   }
 }

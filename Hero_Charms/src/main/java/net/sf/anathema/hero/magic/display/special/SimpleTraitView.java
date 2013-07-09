@@ -1,9 +1,10 @@
-package net.sf.anathema.swing.hero.traitview;
+package net.sf.anathema.hero.magic.display.special;
 
 import net.sf.anathema.character.main.library.trait.view.TraitView;
 import net.sf.anathema.framework.value.IIntValueDisplay;
 import net.sf.anathema.framework.value.IntegerViewFactory;
 import net.sf.anathema.lib.control.IntValueChangedListener;
+import net.sf.anathema.swing.hero.traitview.ConfigurableLayout;
 
 import javax.swing.JLabel;
 import javax.swing.JPanel;

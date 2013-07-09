@@ -3,7 +3,6 @@ package net.sf.anathema.hero.magic.display.special;
 import net.sf.anathema.framework.value.IntValueView;
 import net.sf.anathema.framework.value.IntegerViewFactory;
 import net.sf.anathema.platform.tree.presenter.view.ContentFactory;
-import net.sf.anathema.swing.hero.traitview.SimpleTraitView;
 
 public class SpecialIntDisplayFactory implements ContentFactory {
   private IntegerViewFactory factory;
