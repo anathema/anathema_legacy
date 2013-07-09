@@ -9,6 +9,8 @@ import net.sf.anathema.hero.charms.CharmsModelFetcher;
 import net.sf.anathema.hero.experience.ExperienceChange;
 import net.sf.anathema.hero.experience.ExperienceModel;
 import net.sf.anathema.hero.experience.ExperienceModelFetcher;
+import net.sf.anathema.hero.magic.model.MagicModel;
+import net.sf.anathema.hero.magic.model.MagicModelFetcher;
 import net.sf.anathema.hero.spells.SpellModel;
 import net.sf.anathema.character.main.magic.model.magic.IMagicLearnListener;
 import net.sf.anathema.character.main.magic.model.spells.ISpellMapper;
@@ -57,6 +59,14 @@ public class SpellModelImpl implements SpellModel {
     for (ISpell spell : context.getSpellCache().getSpells()) {
       spellsByCircle.get(spell.getCircleType()).add(spell);
     }
+  }
+
+  private void addPrintSpells(Hero hero) {
+    MagicModel magicModel = MagicModelFetcher.fetch(hero);
+    if (magicModel == null) {
+      return;
+    }
+    magicModel.addPrintMagicProvider(new PrintSpellsProvider(hero));
   }
 
   @Override

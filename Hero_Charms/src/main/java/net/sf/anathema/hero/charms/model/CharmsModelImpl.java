@@ -1,31 +1,31 @@
 package net.sf.anathema.hero.charms.model;
 
 import com.google.common.base.Functions;
-import net.sf.anathema.character.main.magic.display.view.charms.CharacterChangeCharmListener;
 import net.sf.anathema.character.main.caste.CasteType;
+import net.sf.anathema.character.main.magic.display.view.charms.CharacterChangeCharmListener;
 import net.sf.anathema.character.main.magic.model.charm.Charm;
 import net.sf.anathema.character.main.magic.model.charm.CharmAttributeList;
+import net.sf.anathema.character.main.magic.model.charm.CharmIdMap;
 import net.sf.anathema.character.main.magic.model.charm.CharmLearnAdapter;
 import net.sf.anathema.character.main.magic.model.charm.CharmSpecialistImpl;
-import net.sf.anathema.character.main.magic.model.charmtree.CharmTraitRequirementChecker;
 import net.sf.anathema.character.main.magic.model.charm.GroupedCharmIdMap;
+import net.sf.anathema.character.main.magic.model.charm.ICharmGroup;
 import net.sf.anathema.character.main.magic.model.charm.ICharmLearnListener;
-import net.sf.anathema.character.main.magic.model.charms.ILearningCharmGroup;
-import net.sf.anathema.character.main.magic.model.charms.ILearningCharmGroupContainer;
 import net.sf.anathema.character.main.magic.model.charm.ISpecialCharmManager;
-import net.sf.anathema.character.main.magic.model.charms.LearningCharmGroup;
+import net.sf.anathema.character.main.magic.model.charm.IndirectCharmRequirement;
 import net.sf.anathema.character.main.magic.model.charm.PrerequisiteModifyingCharms;
-import net.sf.anathema.character.main.magic.model.charms.options.MartialArtsOptions;
-import net.sf.anathema.character.main.magic.model.charms.options.NonMartialArtsOptions;
 import net.sf.anathema.character.main.magic.model.charm.special.IMultiLearnableCharmConfiguration;
 import net.sf.anathema.character.main.magic.model.charm.special.IMultipleEffectCharmConfiguration;
-import net.sf.anathema.character.main.magic.model.charms.MartialArtsUtilities;
-import net.sf.anathema.character.main.magic.model.charm.CharmIdMap;
-import net.sf.anathema.character.main.magic.model.charmtree.GroupCharmTree;
-import net.sf.anathema.character.main.magic.model.charm.ICharmGroup;
-import net.sf.anathema.character.main.magic.model.charm.IndirectCharmRequirement;
 import net.sf.anathema.character.main.magic.model.charm.special.ISpecialCharm;
 import net.sf.anathema.character.main.magic.model.charm.special.ISpecialCharmConfiguration;
+import net.sf.anathema.character.main.magic.model.charms.ILearningCharmGroup;
+import net.sf.anathema.character.main.magic.model.charms.ILearningCharmGroupContainer;
+import net.sf.anathema.character.main.magic.model.charms.LearningCharmGroup;
+import net.sf.anathema.character.main.magic.model.charms.MartialArtsUtilities;
+import net.sf.anathema.character.main.magic.model.charms.options.MartialArtsOptions;
+import net.sf.anathema.character.main.magic.model.charms.options.NonMartialArtsOptions;
+import net.sf.anathema.character.main.magic.model.charmtree.CharmTraitRequirementChecker;
+import net.sf.anathema.character.main.magic.model.charmtree.GroupCharmTree;
 import net.sf.anathema.character.main.template.HeroTemplate;
 import net.sf.anathema.character.main.template.magic.ICharmProvider;
 import net.sf.anathema.character.main.template.magic.MartialArtsCharmConfiguration;
@@ -38,12 +38,16 @@ import net.sf.anathema.hero.charms.model.context.CreationCharmLearnStrategy;
 import net.sf.anathema.hero.charms.model.context.ExperiencedCharmLearnStrategy;
 import net.sf.anathema.hero.charms.model.context.ProxyCharmLearnStrategy;
 import net.sf.anathema.hero.charms.model.special.SpecialCharmManager;
+import net.sf.anathema.hero.charms.sheet.content.PrintCharmsProvider;
 import net.sf.anathema.hero.concept.HeroConceptFetcher;
+import net.sf.anathema.hero.essencepool.EssencePoolModel;
 import net.sf.anathema.hero.essencepool.EssencePoolModelFetcher;
 import net.sf.anathema.hero.experience.ExperienceModel;
 import net.sf.anathema.hero.experience.ExperienceModelFetcher;
 import net.sf.anathema.hero.magic.MagicCollection;
 import net.sf.anathema.hero.magic.MagicCollectionImpl;
+import net.sf.anathema.hero.magic.model.MagicModel;
+import net.sf.anathema.hero.magic.model.MagicModelFetcher;
 import net.sf.anathema.hero.model.Hero;
 import net.sf.anathema.hero.model.InitializationContext;
 import net.sf.anathema.hero.traits.TraitModel;
@@ -60,11 +64,11 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-import static net.sf.anathema.character.main.magic.model.charms.options.DefaultCharmTemplateRetriever.getNativeTemplate;
+import static net.sf.anathema.character.main.magic.model.charm.MartialArtsLevel.Sidereal;
 import static net.sf.anathema.character.main.magic.model.charms.MartialArtsUtilities.hasLevel;
 import static net.sf.anathema.character.main.magic.model.charms.MartialArtsUtilities.isFormCharm;
 import static net.sf.anathema.character.main.magic.model.charms.MartialArtsUtilities.isMartialArtsCharm;
-import static net.sf.anathema.character.main.magic.model.charm.MartialArtsLevel.Sidereal;
+import static net.sf.anathema.character.main.magic.model.charms.options.DefaultCharmTemplateRetriever.getNativeTemplate;
 
 public class CharmsModelImpl implements CharmsModel {
 
@@ -106,7 +110,24 @@ public class CharmsModelImpl implements CharmsModel {
     initNonMartialArtsGroups();
     initSpecialCharmConfigurations();
     addCompulsiveCharms(hero.getTemplate());
-    EssencePoolModelFetcher.fetch(hero).addOverdrivePool(new CharmOverdrivePool(this, experience));
+    addOverdrivePools(hero);
+    addPrintMagic(hero);
+  }
+
+  private void addOverdrivePools(Hero hero) {
+    EssencePoolModel poolModel = EssencePoolModelFetcher.fetch(hero);
+    if (poolModel == null) {
+      return;
+    }
+    poolModel.addOverdrivePool(new CharmOverdrivePool(this, experience));
+  }
+
+  private void addPrintMagic(Hero hero) {
+    MagicModel magicModel = MagicModelFetcher.fetch(hero);
+    if (magicModel == null) {
+      return;
+    }
+    magicModel.addPrintMagicProvider(new PrintCharmsProvider(hero));
   }
 
   @Override

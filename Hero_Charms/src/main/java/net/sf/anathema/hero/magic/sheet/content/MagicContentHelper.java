@@ -15,14 +15,13 @@ import net.sf.anathema.character.main.magic.model.magic.Magic;
 import net.sf.anathema.character.main.magic.model.spells.ISpell;
 import net.sf.anathema.hero.charms.CharmsModel;
 import net.sf.anathema.hero.charms.CharmsModelFetcher;
-import net.sf.anathema.hero.charms.sheet.content.stats.CharmStats;
+import net.sf.anathema.hero.charms.sheet.content.PrintCharmsProvider;
 import net.sf.anathema.hero.charms.sheet.content.stats.GenericCharmStats;
-import net.sf.anathema.hero.charms.sheet.content.stats.MultipleEffectCharmStats;
 import net.sf.anathema.hero.experience.ExperienceModelFetcher;
 import net.sf.anathema.hero.model.Hero;
 import net.sf.anathema.hero.sheet.pdf.session.ReportSession;
 import net.sf.anathema.hero.spells.SpellsModelFetcher;
-import net.sf.anathema.hero.spells.sheet.content.SpellStats;
+import net.sf.anathema.hero.spells.model.PrintSpellsProvider;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -37,39 +36,18 @@ public class MagicContentHelper {
   }
 
   public static List<IMagicStats> collectPrintCharms(ReportSession session) {
-    final MagicContentHelper helper = new MagicContentHelper(session.getHero());
-    final List<IMagicStats> printStats = new ArrayList<>();
-    for (IMagicStats stats : helper.getGenericCharmStats()) {
-      if (helper.shouldShowCharm(stats)) {
-        printStats.add(stats);
-      }
-    }
-    for (Charm charm: helper.getLearnedCharms()) {
-      if (helper.isGenericCharmFor(charm)) {
-        continue;
-      }
-      if (helper.isMultipleEffectCharm(charm)) {
-        String[] effects = helper.getLearnedEffects(charm);
-        for (String effect : effects) {
-          printStats.add(new MultipleEffectCharmStats(charm, effect));
-        }
-      } else {
-        printStats.add(new CharmStats(charm, helper));
-      }
-    }
+    List<IMagicStats> printStats = new ArrayList<>();
+    new PrintCharmsProvider(session.getHero()).addPrintMagic(printStats);
     return printStats;
   }
 
   public static List<IMagicStats> collectPrintSpells(ReportSession session) {
     final List<IMagicStats> printStats = new ArrayList<>();
-    final MagicContentHelper helper = new MagicContentHelper(session.getHero());
-    for (ISpell spell : helper.getAllLearnedSpells()) {
-      printStats.add(new SpellStats(spell));
-    }
+    new PrintSpellsProvider(session.getHero()).addPrintMagic(printStats);
     return printStats;
   }
 
-  private List<ISpell> getAllLearnedSpells() {
+  public List<ISpell> getAllLearnedSpells() {
     boolean experienced = ExperienceModelFetcher.fetch(hero).isExperienced();
     return Arrays.asList(SpellsModelFetcher.fetch(hero).getLearnedSpells(experienced));
   }
@@ -113,7 +91,7 @@ public class MagicContentHelper {
     return genericCharms;
   }
 
-  private List<Charm> getLearnedCharms() {
+  public List<Charm> getLearnedCharms() {
     boolean experienced = ExperienceModelFetcher.fetch(hero).isExperienced();
     return Arrays.asList(CharmsModelFetcher.fetch(hero).getLearnedCharms(experienced));
   }

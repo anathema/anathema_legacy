@@ -1,13 +1,11 @@
 package net.sf.anathema.hero.magic.sheet.content;
 
-import net.sf.anathema.character.main.magic.model.magic.Magic;
 import net.sf.anathema.character.main.magic.model.magic.IMagicStats;
-import net.sf.anathema.character.main.magic.model.magic.IMagicVisitor;
+import net.sf.anathema.hero.magic.model.MagicModelFetcher;
 import net.sf.anathema.hero.magic.sheet.content.mnemonic.AllMagicMnemonic;
+import net.sf.anathema.hero.magic.sheet.content.mnemonic.MagicMnemonic;
 import net.sf.anathema.hero.sheet.pdf.session.PageBreakChecker;
 import net.sf.anathema.hero.sheet.pdf.session.ReportSession;
-import net.sf.anathema.hero.magic.sheet.content.mnemonic.MagicMnemonic;
-import net.sf.anathema.hero.magic.sheet.content.stats.MagicStatsFactoryVisitor;
 import net.sf.anathema.lib.resources.Resources;
 
 import java.util.ArrayList;
@@ -16,12 +14,10 @@ import java.util.List;
 
 public class AllMagicContent extends AbstractMagicContent {
 
-  private final MagicContentHelper helper;
   private ReportSession session;
 
   public AllMagicContent(ReportSession session, Resources resources) {
     super(resources);
-    this.helper = new MagicContentHelper(session.getHero());
     this.session = session;
     storeMnemonicIfNecessary(session);
     session.setPageBreakChecker(new AllMagicPageBreakChecker());
@@ -51,24 +47,8 @@ public class AllMagicContent extends AbstractMagicContent {
 
   private List<IMagicStats> collectPrintMagic() {
     List<IMagicStats> printStats = new ArrayList<>();
-    addGenericCharmsForPrint(printStats);
-    addConcreteLearnedMagicForPrint(printStats);
+    MagicModelFetcher.fetch(session.getHero()).addPrintMagic(printStats);
     return printStats;
-  }
-
-  private void addGenericCharmsForPrint(List<IMagicStats> printStats) {
-    for (IMagicStats stats : helper.getGenericCharmStats()) {
-      if (helper.shouldShowCharm(stats)) {
-        printStats.add(stats);
-      }
-    }
-  }
-
-  private void addConcreteLearnedMagicForPrint(List<IMagicStats> printStats) {
-    IMagicVisitor statsCollector = new MagicStatsFactoryVisitor(session.getHero(), printStats);
-    for (Magic magic : helper.getAllLearnedMagic()) {
-      magic.accept(statsCollector);
-    }
   }
 
   private class AllMagicPageBreakChecker implements PageBreakChecker {
