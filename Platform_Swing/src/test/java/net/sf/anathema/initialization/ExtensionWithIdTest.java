@@ -14,7 +14,7 @@ import static org.mockito.Mockito.when;
 public class ExtensionWithIdTest {
 
   ResourceLoader loader = mock(ResourceLoader.class);
-  ObjectFactory finder = mock(ObjectFactory.class);
+  ObjectFactory objectFactory = mock(ObjectFactory.class);
   IApplicationModel model = mock(IApplicationModel.class);
   Repository repository = mock(Repository.class);
   IAnathemaExtension extension = mock(IAnathemaExtension.class);
@@ -22,8 +22,9 @@ public class ExtensionWithIdTest {
   @Test
   public void handsAllParametersToExtension() throws Exception {
     when(model.getRepository()).thenReturn(repository);
+    when(model.getObjectFactory()).thenReturn(objectFactory);
     when(model.getExtensionPointRegistry()).thenReturn(new Registry<String, IAnathemaExtension>());
     new ExtensionWithId("id", extension).register(model, loader);
-    verify(extension).initialize(repository, finder, loader);
+    verify(extension).initialize(repository, objectFactory, loader);
   }
 }
