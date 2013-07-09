@@ -1,4 +1,4 @@
-package net.sf.anathema.character.equipment.character.model.print;
+package net.sf.anathema.hero.equipment.sheet.content;
 
 import net.sf.anathema.character.equipment.character.model.IEquipmentItem;
 import net.sf.anathema.character.equipment.character.model.stats.WeaponStatsDecorator;
