@@ -2,21 +2,21 @@ package net.sf.anathema.hero.equipment;
 
 import com.google.common.collect.HashBasedTable;
 import com.google.common.collect.Table;
+import net.sf.anathema.character.equipment.EquipmentDirectAccess;
 import net.sf.anathema.character.equipment.character.EquipmentHeroEvaluator;
 import net.sf.anathema.character.equipment.character.EquipmentOptionsProvider;
+import net.sf.anathema.character.equipment.character.model.EquipmentCollection;
+import net.sf.anathema.character.equipment.character.model.EquipmentItem;
 import net.sf.anathema.character.equipment.character.model.IEquipmentItem;
 import net.sf.anathema.character.equipment.character.model.IEquipmentPrintModel;
 import net.sf.anathema.character.equipment.character.model.IEquipmentStatsOption;
-import net.sf.anathema.character.equipment.impl.EquipmentDirectAccess;
-import net.sf.anathema.character.equipment.impl.character.model.EquipmentCollection;
-import net.sf.anathema.character.equipment.impl.character.model.EquipmentItem;
-import net.sf.anathema.character.equipment.impl.character.model.natural.DefaultNaturalSoak;
-import net.sf.anathema.character.equipment.impl.character.model.natural.NaturalWeaponTemplate;
-import net.sf.anathema.character.equipment.impl.character.model.print.EquipmentPrintModel;
-import net.sf.anathema.character.equipment.impl.character.model.stats.CharacterStatsModifiers;
-import net.sf.anathema.character.equipment.impl.item.model.gson.GsonEquipmentDatabase;
-import net.sf.anathema.character.equipment.impl.reporting.EquipmentStatsModifierFactory;
+import net.sf.anathema.character.equipment.character.model.natural.DefaultNaturalSoak;
+import net.sf.anathema.character.equipment.character.model.natural.NaturalWeaponTemplate;
+import net.sf.anathema.character.equipment.character.model.print.EquipmentPrintModel;
+import net.sf.anathema.character.equipment.character.model.stats.CharacterStatsModifiers;
 import net.sf.anathema.character.equipment.item.model.IEquipmentTemplateProvider;
+import net.sf.anathema.character.equipment.item.model.gson.GsonEquipmentDatabase;
+import net.sf.anathema.character.equipment.reporting.EquipmentStatsModifierFactory;
 import net.sf.anathema.character.main.UnspecifiedChangeListener;
 import net.sf.anathema.character.main.equipment.ArtifactStats;
 import net.sf.anathema.character.main.equipment.ICharacterStatsModifiers;
@@ -52,7 +52,7 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
-import static net.sf.anathema.character.equipment.impl.item.model.gson.GsonEquipmentDatabase.DATABASE_FOLDER;
+import static net.sf.anathema.character.equipment.item.model.gson.GsonEquipmentDatabase.DATABASE_FOLDER;
 
 public class EquipmentModelImpl implements EquipmentOptionsProvider, EquipmentModel, StatsModifierFactory {
   private final List<IEquipmentItem> naturalWeaponItems = new ArrayList<>();

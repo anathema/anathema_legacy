@@ -1,7 +1,8 @@
 package net.sf.anathema.character.equipment.impl.character.model.stats.modification.material;
 
-import net.sf.anathema.character.equipment.impl.character.model.stats.modification.BaseMaterial;
-import net.sf.anathema.character.equipment.impl.character.model.stats.modification.InertBaseMaterial;
+import net.sf.anathema.character.equipment.character.model.stats.modification.BaseMaterial;
+import net.sf.anathema.character.equipment.character.model.stats.modification.InertBaseMaterial;
+import net.sf.anathema.character.equipment.character.model.stats.modification.material.MaterialSpeedModifier;
 import org.junit.Test;
 
 import static org.hamcrest.CoreMatchers.is;

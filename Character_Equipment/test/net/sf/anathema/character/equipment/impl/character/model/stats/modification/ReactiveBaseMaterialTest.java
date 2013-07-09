@@ -1,5 +1,6 @@
 package net.sf.anathema.character.equipment.impl.character.model.stats.modification;
 
+import net.sf.anathema.character.equipment.character.model.stats.modification.ReactiveBaseMaterial;
 import net.sf.anathema.equipment.core.MagicalMaterial;
 import org.junit.Test;
 

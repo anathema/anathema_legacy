@@ -1,10 +1,10 @@
 package net.sf.anathema.character.equipment.impl.item.model.gson;
 
-import net.sf.anathema.character.equipment.impl.character.model.stats.ArmourStats;
-import net.sf.anathema.character.equipment.impl.character.model.stats.ArtifactStats;
-import net.sf.anathema.character.equipment.impl.character.model.stats.MeleeWeaponStats;
-import net.sf.anathema.character.equipment.impl.character.model.stats.RangedWeaponStats;
-import net.sf.anathema.character.equipment.impl.character.model.stats.TraitModifyingStats;
+import net.sf.anathema.character.equipment.character.model.stats.ArmourStats;
+import net.sf.anathema.character.equipment.character.model.stats.ArtifactStats;
+import net.sf.anathema.character.equipment.character.model.stats.MeleeWeaponStats;
+import net.sf.anathema.character.equipment.character.model.stats.RangedWeaponStats;
+import net.sf.anathema.character.equipment.character.model.stats.TraitModifyingStats;
 import net.sf.anathema.hero.health.HealthType;
 import net.sf.anathema.lib.util.SimpleIdentifier;
 

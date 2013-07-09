@@ -1,7 +1,9 @@
 package net.sf.anathema.character.equipment.impl.character.model.stats;
 
-import net.sf.anathema.character.equipment.impl.character.model.stats.modification.InertBaseMaterial;
-import net.sf.anathema.character.equipment.impl.character.model.stats.modification.ReactiveBaseMaterial;
+import net.sf.anathema.character.equipment.character.model.stats.ArmourStats;
+import net.sf.anathema.character.equipment.character.model.stats.ProxyArmourStats;
+import net.sf.anathema.character.equipment.character.model.stats.modification.InertBaseMaterial;
+import net.sf.anathema.character.equipment.character.model.stats.modification.ReactiveBaseMaterial;
 import org.junit.Test;
 
 import static net.sf.anathema.equipment.core.MagicalMaterial.Adamant;

@@ -1,7 +1,8 @@
 package net.sf.anathema.character.equipment.impl.character.model.stats;
 
-import net.sf.anathema.character.equipment.impl.character.model.ModifierFactory;
-import net.sf.anathema.character.equipment.impl.character.model.stats.modification.ReactiveBaseMaterial;
+import net.sf.anathema.character.equipment.character.model.ModifierFactory;
+import net.sf.anathema.character.equipment.character.model.stats.ProxyWeaponStats;
+import net.sf.anathema.character.equipment.character.model.stats.modification.ReactiveBaseMaterial;
 import net.sf.anathema.character.main.equipment.weapon.IWeaponStats;
 import net.sf.anathema.equipment.core.MagicalMaterial;
 import net.sf.anathema.lib.util.Identifier;
@@ -12,7 +13,7 @@ import org.junit.Test;
 import java.util.Arrays;
 import java.util.List;
 
-import static net.sf.anathema.character.equipment.impl.creation.model.WeaponTag.Piercing;
+import static net.sf.anathema.character.equipment.creation.model.WeaponTag.Piercing;
 import static net.sf.anathema.equipment.core.MagicalMaterial.Adamant;
 import static net.sf.anathema.equipment.core.MagicalMaterial.Orichalcum;
 import static org.hamcrest.CoreMatchers.is;

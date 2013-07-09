@@ -1,11 +1,12 @@
 package net.sf.anathema.character.equipment.impl.item.model.gson;
 
-import net.sf.anathema.character.equipment.impl.character.model.EquipmentTemplate;
-import net.sf.anathema.character.equipment.impl.character.model.stats.ArmourStats;
-import net.sf.anathema.character.equipment.impl.character.model.stats.ArtifactStats;
-import net.sf.anathema.character.equipment.impl.character.model.stats.MeleeWeaponStats;
-import net.sf.anathema.character.equipment.impl.character.model.stats.RangedWeaponStats;
-import net.sf.anathema.character.equipment.impl.character.model.stats.TraitModifyingStats;
+import net.sf.anathema.character.equipment.character.model.EquipmentTemplate;
+import net.sf.anathema.character.equipment.character.model.stats.ArmourStats;
+import net.sf.anathema.character.equipment.character.model.stats.ArtifactStats;
+import net.sf.anathema.character.equipment.character.model.stats.MeleeWeaponStats;
+import net.sf.anathema.character.equipment.character.model.stats.RangedWeaponStats;
+import net.sf.anathema.character.equipment.character.model.stats.TraitModifyingStats;
+import net.sf.anathema.character.equipment.item.model.gson.EquipmentGson;
 import net.sf.anathema.character.main.equipment.weapon.IEquipmentStats;
 import net.sf.anathema.equipment.core.IEquipmentTemplate;
 import org.junit.Test;

@@ -1,6 +1,7 @@
 package net.sf.anathema.character.equipment.impl.character.model.stats.modification.equipment;
 
 import net.sf.anathema.character.equipment.IWeaponModifiers;
+import net.sf.anathema.character.equipment.character.model.stats.modification.equipment.EquipmentDefenceModifier;
 import org.junit.Test;
 
 import static org.hamcrest.CoreMatchers.is;

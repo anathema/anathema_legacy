@@ -1,6 +1,7 @@
 package net.sf.anathema.character.equipment.impl.character.model.stats;
 
-import net.sf.anathema.character.equipment.impl.creation.model.WeaponTag;
+import net.sf.anathema.character.equipment.character.model.stats.RangedWeaponStats;
+import net.sf.anathema.character.equipment.creation.model.WeaponTag;
 import org.junit.Test;
 
 import static org.hamcrest.CoreMatchers.is;

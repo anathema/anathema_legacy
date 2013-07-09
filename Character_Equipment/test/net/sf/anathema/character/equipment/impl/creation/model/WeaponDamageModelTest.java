@@ -1,6 +1,7 @@
 package net.sf.anathema.character.equipment.impl.creation.model;
 
 import junit.framework.TestCase;
+import net.sf.anathema.character.equipment.creation.model.WeaponDamageModel;
 import net.sf.anathema.hero.health.HealthType;
 import net.sf.anathema.lib.control.ChangeListener;
 import net.sf.anathema.lib.control.IntValueChangedListener;

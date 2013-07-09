@@ -1,6 +1,7 @@
 package net.sf.anathema.character.equipment.impl.character.model.stats.modification.modifier;
 
-import net.sf.anathema.character.equipment.impl.character.model.stats.modification.StatModifier;
+import net.sf.anathema.character.equipment.character.model.stats.modification.StatModifier;
+import net.sf.anathema.character.equipment.character.model.stats.modification.modifier.BestModifier;
 import org.junit.Test;
 
 import static org.hamcrest.CoreMatchers.is;
