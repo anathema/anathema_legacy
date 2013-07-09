@@ -1,6 +1,6 @@
 package net.sf.anathema.character.main.template.magic;
 
-import net.sf.anathema.character.main.magic.model.charm.ICharm;
+import net.sf.anathema.character.main.magic.model.charm.Charm;
 import net.sf.anathema.character.main.magic.model.spells.ISpell;
 import net.sf.anathema.character.main.magic.model.spells.CircleType;
 
@@ -16,13 +16,13 @@ public interface ISpellMagicTemplate {
   
   boolean canLearnSpellMagic();
 
-  boolean knowsSorcery(ICharm[] knownCharms);
+  boolean knowsSorcery(Charm[] knownCharms);
 
-  boolean knowsNecromancy(ICharm[] knownCharms);
+  boolean knowsNecromancy(Charm[] knownCharms);
   
-  boolean knowsSpellMagic(ICharm[] knownCharms);
+  boolean knowsSpellMagic(Charm[] knownCharms);
   
-  boolean knowsSpellMagic(ICharm[] knownCharms, CircleType circle);
+  boolean knowsSpellMagic(Charm[] knownCharms, CircleType circle);
   
-  boolean canLearnSpell(ISpell spell, ICharm[] knownCharms);
+  boolean canLearnSpell(ISpell spell, Charm[] knownCharms);
 }

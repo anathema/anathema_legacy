@@ -1,5 +1,6 @@
 package net.sf.anathema.hero.magic.display.tree;
 
+import net.sf.anathema.character.main.magic.display.view.charmtree.CascadeSelectionView;
 import net.sf.anathema.hero.magic.display.coloring.CharmDye;
 import net.sf.anathema.hero.magic.model.charms.CharmTypes;
 import net.sf.anathema.hero.magic.display.special.NullSpecialCharmPresenter;
@@ -7,7 +8,6 @@ import net.sf.anathema.character.main.presenter.SelectIdentifierConfiguration;
 import net.sf.anathema.hero.magic.display.special.SpecialCharmViewPresenter;
 import net.sf.anathema.character.main.magic.model.charmtree.GroupCharmTree;
 import net.sf.anathema.character.main.magic.model.charm.ICharmGroup;
-import net.sf.anathema.character.main.magic.display.view.charmtree.ICascadeSelectionView;
 import net.sf.anathema.character.main.magic.display.view.charmtree.ICharmGroupChangeListener;
 import net.sf.anathema.hero.magic.model.charms.CharmGroupCollection;
 import net.sf.anathema.lib.compare.I18nedIdentificateSorter;
@@ -24,7 +24,7 @@ public abstract class AbstractCascadePresenter implements ICascadeSelectionPrese
 
   private final Resources resources;
   private ICharmGroupChangeListener changeListener;
-  private ICascadeSelectionView view;
+  private CascadeSelectionView view;
   private CharmDye dye;
   private CharmTypes charmTypes;
   protected CharmGroupCollection charmGroups;
@@ -107,7 +107,7 @@ public abstract class AbstractCascadePresenter implements ICascadeSelectionPrese
     this.specialCharmPresenter = presenter;
   }
 
-  protected void setView(ICascadeSelectionView view) {
+  protected void setView(CascadeSelectionView view) {
     this.view = view;
   }
 

@@ -3,7 +3,7 @@ package net.sf.anathema.cards.data.providers;
 import net.sf.anathema.cards.data.CharmCardData;
 import net.sf.anathema.cards.data.ICardData;
 import net.sf.anathema.cards.layout.ICardReportResourceProvider;
-import net.sf.anathema.character.main.magic.model.charm.ICharm;
+import net.sf.anathema.character.main.magic.model.charm.Charm;
 import net.sf.anathema.hero.charms.CharmsModelFetcher;
 import net.sf.anathema.hero.experience.ExperienceModelFetcher;
 import net.sf.anathema.hero.magic.sheet.content.MagicContentHelper;
@@ -24,18 +24,18 @@ public class CharmCardDataProvider extends AbstractMagicCardDataProvider {
   @Override
   public ICardData[] getCards(Hero hero, ICardReportResourceProvider fontProvider) {
     List<ICardData> cards = new ArrayList<>();
-    for (ICharm charm : getCurrentCharms(hero)) {
+    for (Charm charm : getCurrentCharms(hero)) {
       cards.add(new CharmCardData(charm, createCharmStats(hero, charm), getMagicDescription(charm), fontProvider, getResources()));
     }
     return cards.toArray(new ICardData[cards.size()]);
   }
 
-  private ICharm[] getCurrentCharms(Hero hero) {
+  private Charm[] getCurrentCharms(Hero hero) {
     boolean experienced = ExperienceModelFetcher.fetch(hero).isExperienced();
     return CharmsModelFetcher.fetch(hero).getLearnedCharms(experienced);
   }
 
-  private CharmStats createCharmStats(Hero hero, ICharm charm) {
+  private CharmStats createCharmStats(Hero hero, Charm charm) {
     return new CharmStats(charm, new MagicContentHelper(hero));
   }
 }

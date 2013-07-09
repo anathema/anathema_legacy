@@ -1,6 +1,6 @@
 package net.sf.anathema.character.main.magic.model.charm.special;
 
-import net.sf.anathema.character.main.magic.model.charm.ICharm;
+import net.sf.anathema.character.main.magic.model.charm.Charm;
 import net.sf.anathema.character.main.traits.TraitType;
 
 public class PrerequisiteModifyingCharm implements IPrerequisiteModifyingCharm {
@@ -15,7 +15,7 @@ public class PrerequisiteModifyingCharm implements IPrerequisiteModifyingCharm {
   }
 
   @Override
-  public int modifyRequiredValue(ICharm charm, int currentlyRequiredValue) {
+  public int modifyRequiredValue(Charm charm, int currentlyRequiredValue) {
     TraitType mainTrait = charm.getPrimaryTraitType();
     return modifyRequiredValueIfIsApplicableToCandidate(mainTrait, currentlyRequiredValue);
   }

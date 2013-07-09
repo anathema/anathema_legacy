@@ -1,7 +1,7 @@
 package net.sf.anathema.character.main.template.points;
 
-import net.sf.anathema.character.main.magic.model.charm.ICharm;
-import net.sf.anathema.character.main.magic.model.magic.IMagic;
+import net.sf.anathema.character.main.magic.model.charm.Charm;
+import net.sf.anathema.character.main.magic.model.magic.Magic;
 import net.sf.anathema.character.main.magic.model.magic.IMagicVisitor;
 import net.sf.anathema.character.main.magic.model.spells.ISpell;
 import net.sf.anathema.character.main.magic.model.charm.MartialArtsLevel;
@@ -19,7 +19,7 @@ public class DefaultBonusPointCosts implements BonusPointCosts {
   }
 
   @Override
-  public int getCharmCosts(ICharm charm, ICostAnalyzer costMapping) {
+  public int getCharmCosts(Charm charm, ICostAnalyzer costMapping) {
     return getCharmCosts(costMapping.isMagicFavored(charm), costMapping.getMartialArtsLevel(charm));
   }
 
@@ -82,11 +82,11 @@ public class DefaultBonusPointCosts implements BonusPointCosts {
   }
 
   @Override
-  public int getMagicCosts(IMagic magic, final ICostAnalyzer analyzer) {
+  public int getMagicCosts(Magic magic, final ICostAnalyzer analyzer) {
     final int[] cost = new int[1];
     magic.accept(new IMagicVisitor() {
       @Override
-      public void visitCharm(ICharm charm) {
+      public void visitCharm(Charm charm) {
         cost[0] = getCharmCosts(charm, analyzer);
       }
 

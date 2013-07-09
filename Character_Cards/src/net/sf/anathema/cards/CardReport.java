@@ -6,7 +6,7 @@ import com.itextpdf.text.pdf.PdfWriter;
 import net.sf.anathema.cards.data.ICardData;
 import net.sf.anathema.cards.data.providers.ICardDataProvider;
 import net.sf.anathema.cards.layout.ICardLayout;
-import net.sf.anathema.character.main.magic.model.charm.ICharm;
+import net.sf.anathema.character.main.magic.model.charm.Charm;
 import net.sf.anathema.hero.charms.CharmsModelFetcher;
 import net.sf.anathema.hero.experience.ExperienceModelFetcher;
 import net.sf.anathema.framework.reporting.ReportException;
@@ -85,7 +85,7 @@ public class CardReport extends AbstractPdfReport {
     return getCurrentCharms(hero).length > 0;
   }
 
-  private ICharm[] getCurrentCharms(Hero hero) {
+  private Charm[] getCurrentCharms(Hero hero) {
     return CharmsModelFetcher.fetch(hero).getLearnedCharms(ExperienceModelFetcher.fetch(hero).isExperienced());
   }
 }

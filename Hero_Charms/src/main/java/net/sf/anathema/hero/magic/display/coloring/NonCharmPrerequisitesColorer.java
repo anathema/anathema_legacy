@@ -1,6 +1,6 @@
 package net.sf.anathema.hero.magic.display.coloring;
 
-import net.sf.anathema.character.main.magic.model.charm.ICharm;
+import net.sf.anathema.character.main.magic.model.charm.Charm;
 import net.sf.anathema.character.main.magic.model.charm.IndirectCharmRequirement;
 
 public class NonCharmPrerequisitesColorer implements CharmColorer {
@@ -10,7 +10,7 @@ public class NonCharmPrerequisitesColorer implements CharmColorer {
     this.coloring = coloring;
   }
 
-  public void color(ICharm charm) {
+  public void color(Charm charm) {
     for (IndirectCharmRequirement requirement : charm.getIndirectRequirements()) {
       coloring.setPrerequisiteVisuals(requirement);
     }

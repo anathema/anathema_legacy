@@ -1,6 +1,6 @@
 package net.sf.anathema.character.main.magic.model.charmtree.builder.stringbuilder.source;
 
-import net.sf.anathema.character.main.magic.model.magic.IMagic;
+import net.sf.anathema.character.main.magic.model.magic.Magic;
 import net.sf.anathema.character.main.magic.parser.magic.IExaltedSourceBook;
 import net.sf.anathema.character.main.magic.model.charmtree.builder.stringbuilder.IMagicSourceStringBuilder;
 import net.sf.anathema.character.main.magic.model.charmtree.builder.stringbuilder.IMagicTooltipStringBuilder;
@@ -10,7 +10,7 @@ import net.sf.anathema.lib.resources.Resources;
 
 import static net.sf.anathema.lib.lang.StringUtilities.createFixedWidthParagraph;
 
-public class MagicSourceStringBuilder<T extends IMagic> implements IMagicSourceStringBuilder<T>, IMagicTooltipStringBuilder {
+public class MagicSourceStringBuilder<T extends Magic> implements IMagicSourceStringBuilder<T>, IMagicTooltipStringBuilder {
 
   private final Resources resources;
 
@@ -24,7 +24,7 @@ public class MagicSourceStringBuilder<T extends IMagic> implements IMagicSourceS
 
   @SuppressWarnings("unchecked")
   @Override
-  public void buildStringForMagic(StringBuilder builder, IMagic magic, Object specialDetails) {
+  public void buildStringForMagic(StringBuilder builder, Magic magic, Object specialDetails) {
     String descriptionString = resources.getString("CharmTreeView.ToolTip.Source");
     descriptionString += TooltipBuilder.ColonSpace;
     descriptionString += createSourceString((T) magic);

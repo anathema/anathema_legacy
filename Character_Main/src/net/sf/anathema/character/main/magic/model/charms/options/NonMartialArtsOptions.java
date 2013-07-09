@@ -1,7 +1,7 @@
 package net.sf.anathema.character.main.magic.model.charms.options;
 
+import net.sf.anathema.character.main.magic.model.charm.Charm;
 import net.sf.anathema.character.main.magic.model.charmtree.CharmTree;
-import net.sf.anathema.character.main.magic.model.charm.ICharm;
 import net.sf.anathema.character.main.magic.model.charm.CharmIdMap;
 import net.sf.anathema.character.main.magic.model.charm.ICharmGroup;
 import net.sf.anathema.character.main.magic.model.charmtree.ICharmTree;
@@ -51,23 +51,23 @@ public class NonMartialArtsOptions implements CharmIdMap, CharmGroupArbitrator {
   }
 
   @Override
-  public ICharm getCharmById(String charmId) {
+  public Charm getCharmById(String charmId) {
     GroupedCharmIdMap aggregatedTrees = new GroupedCharmIdMap(treesByType.values());
     return aggregatedTrees.getCharmById(charmId);
   }
 
   @Override
-  public ICharm[] getCharms(ICharmGroup charmGroup) {
-    ICharm[] allCharms = charmGroup.getAllCharms();
+  public Charm[] getCharms(ICharmGroup charmGroup) {
+    Charm[] allCharms = charmGroup.getAllCharms();
     if (characterMayLearnAlienCharms()) {
       return allCharms;
     }
     return charmsThatAreNativeOrNotExclusive(allCharms);
   }
 
-  private ICharm[] charmsThatAreNativeOrNotExclusive(ICharm[] allCharms) {
-    List<ICharm> charms = new ArrayList<>();
-    for (ICharm charm : allCharms) {
+  private Charm[] charmsThatAreNativeOrNotExclusive(Charm[] allCharms) {
+    List<Charm> charms = new ArrayList<>();
+    for (Charm charm : allCharms) {
       if (!charm.hasAttribute(EXCLUSIVE_ATTRIBUTE)) {
         charms.add(charm);
       }
@@ -75,10 +75,10 @@ public class NonMartialArtsOptions implements CharmIdMap, CharmGroupArbitrator {
         charms.add(charm);
       }
     }
-    return charms.toArray(new ICharm[charms.size()]);
+    return charms.toArray(new Charm[charms.size()]);
   }
 
-  private boolean isNativeCharm(ICharm charm) {
+  private boolean isNativeCharm(Charm charm) {
     return new CharmHasSameTypeAsCharacter(hero).apply(charm);
   }
 

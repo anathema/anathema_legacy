@@ -2,7 +2,7 @@ package net.sf.anathema.hero.magic.model.charms;
 
 import net.sf.anathema.character.main.dummy.DummyCharm;
 import net.sf.anathema.character.main.dummy.DummyCharmUtilities;
-import net.sf.anathema.character.main.magic.model.charm.ICharm;
+import net.sf.anathema.character.main.magic.model.charm.Charm;
 import net.sf.anathema.character.main.magic.model.charm.duration.SimpleDuration;
 import net.sf.anathema.character.main.magic.model.charm.type.CharmType;
 import net.sf.anathema.character.main.magic.model.combos.ComboArbitrator;
@@ -18,7 +18,7 @@ public class ComboRulesTest extends AbstractComboRulesTestCase {
 
   private ComboArbitrator rules = new ComboArbitrator() {
     @Override
-    protected boolean isCharmLegalByRules(ICharm charm) {
+    protected boolean isCharmLegalByRules(Charm charm) {
       return true;
     }
   };
@@ -32,7 +32,7 @@ public class ComboRulesTest extends AbstractComboRulesTestCase {
   public void illegalCharmIsRejected() throws Exception {
     rules = new ComboArbitrator() {
       @Override
-      protected boolean isCharmLegalByRules(ICharm charm) {
+      protected boolean isCharmLegalByRules(Charm charm) {
         return false;
       }
     };
@@ -43,8 +43,8 @@ public class ComboRulesTest extends AbstractComboRulesTestCase {
   public void testRestrictionByCharmType() throws Exception {
     ComboRestrictions restrictions = new ComboRestrictions();
     restrictions.addRestrictedCharmType(CharmType.ExtraAction);
-    ICharm charm1 = DummyCharmUtilities.createCharm(CharmType.Supplemental, restrictions, new ValuedTraitType(AbilityType.Archery, 3));
-    ICharm charm2 = DummyCharmUtilities.createCharm(CharmType.ExtraAction, new ValuedTraitType(AbilityType.Archery, 3));
+    Charm charm1 = DummyCharmUtilities.createCharm(CharmType.Supplemental, restrictions, new ValuedTraitType(AbilityType.Archery, 3));
+    Charm charm2 = DummyCharmUtilities.createCharm(CharmType.ExtraAction, new ValuedTraitType(AbilityType.Archery, 3));
     assertFalse(rules.isComboLegal(charm1, charm2));
   }
 
@@ -53,7 +53,7 @@ public class ComboRulesTest extends AbstractComboRulesTestCase {
     ComboRestrictions restrictions = new ComboRestrictions();
     String forbiddenId = "DummyCharm";
     restrictions.addRestrictedCharmId(forbiddenId);
-    ICharm charm1 = DummyCharmUtilities.createCharm(CharmType.Supplemental, restrictions, new ValuedTraitType(AbilityType.Archery, 3));
+    Charm charm1 = DummyCharmUtilities.createCharm(CharmType.Supplemental, restrictions, new ValuedTraitType(AbilityType.Archery, 3));
     DummyCharm charm2 = new DummyCharm(forbiddenId);
     charm2.setDuration(SimpleDuration.INSTANT_DURATION);
     charm2.setCharmType(CharmType.ExtraAction);
@@ -65,14 +65,14 @@ public class ComboRulesTest extends AbstractComboRulesTestCase {
   public void testRestrictionByPrerequisite() throws Exception {
     ComboRestrictions restrictions = new ComboRestrictions();
     restrictions.addRestrictedTraitType(AbilityType.Awareness);
-    ICharm charm1 = DummyCharmUtilities.createCharm(CharmType.Reflexive, restrictions, new ValuedTraitType(AbilityType.Archery, 3));
-    ICharm charm2 = DummyCharmUtilities.createCharm(CharmType.ExtraAction, new ValuedTraitType(AbilityType.Awareness, 3));
+    Charm charm1 = DummyCharmUtilities.createCharm(CharmType.Reflexive, restrictions, new ValuedTraitType(AbilityType.Archery, 3));
+    Charm charm2 = DummyCharmUtilities.createCharm(CharmType.ExtraAction, new ValuedTraitType(AbilityType.Awareness, 3));
     assertFalse(rules.isComboLegal(charm1, charm2));
   }
 
   @Test
   public void testCharmComboSelf() throws Exception {
-    ICharm charm1 = DummyCharmUtilities.createCharm(CharmType.Reflexive);
+    Charm charm1 = DummyCharmUtilities.createCharm(CharmType.Reflexive);
     assertFalse(rules.isComboLegal(charm1, charm1));
   }
 }

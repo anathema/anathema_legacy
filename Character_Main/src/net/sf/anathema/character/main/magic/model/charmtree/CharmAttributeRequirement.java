@@ -1,8 +1,8 @@
 package net.sf.anathema.character.main.magic.model.charmtree;
 
+import net.sf.anathema.character.main.magic.model.charm.Charm;
 import net.sf.anathema.character.main.magic.model.charm.ICharmAttribute;
 import net.sf.anathema.character.main.magic.model.charm.IndirectCharmRequirement;
-import net.sf.anathema.character.main.magic.model.charm.ICharm;
 import net.sf.anathema.lib.lang.ReflectionEqualsObject;
 
 public class CharmAttributeRequirement extends ReflectionEqualsObject implements IndirectCharmRequirement {
@@ -26,9 +26,9 @@ public class CharmAttributeRequirement extends ReflectionEqualsObject implements
   }
 
   @Override
-  public boolean isFulfilled(ICharm[] learnedCharms) {
+  public boolean isFulfilled(Charm[] learnedCharms) {
     int amount = 0;
-    for (ICharm charm : learnedCharms) {
+    for (Charm charm : learnedCharms) {
       if (charm.hasAttribute(attribute)) {
         amount++;
       }

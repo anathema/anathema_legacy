@@ -1,6 +1,6 @@
 package net.sf.anathema.character.main.magic.model.magic;
 
-public interface IMagicLearnListener<T extends IMagic> {
+public interface IMagicLearnListener<T extends Magic> {
 
   void magicLearned(T[] magic);
 

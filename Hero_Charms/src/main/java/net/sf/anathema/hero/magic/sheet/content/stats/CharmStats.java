@@ -1,6 +1,6 @@
 package net.sf.anathema.hero.magic.sheet.content.stats;
 
-import net.sf.anathema.character.main.magic.model.charm.ICharm;
+import net.sf.anathema.character.main.magic.model.charm.Charm;
 import net.sf.anathema.hero.magic.sheet.content.MagicContentHelper;
 import net.sf.anathema.lib.resources.Resources;
 
@@ -12,7 +12,7 @@ public class CharmStats extends AbstractCharmStats {
 
   protected final MagicContentHelper content;
 
-  public CharmStats(ICharm charm, MagicContentHelper content) {
+  public CharmStats(Charm charm, MagicContentHelper content) {
     super(charm);
     this.content = content;
   }

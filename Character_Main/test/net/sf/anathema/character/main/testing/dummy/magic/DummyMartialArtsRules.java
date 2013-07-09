@@ -1,6 +1,6 @@
 package net.sf.anathema.character.main.testing.dummy.magic;
 
-import net.sf.anathema.character.main.magic.model.charm.ICharm;
+import net.sf.anathema.character.main.magic.model.charm.Charm;
 import net.sf.anathema.character.main.magic.model.charm.MartialArtsLevel;
 import net.sf.anathema.character.main.template.magic.MartialArtsCharmConfiguration;
 import net.sf.anathema.character.main.template.magic.MartialArtsRules;
@@ -8,7 +8,7 @@ import net.sf.anathema.character.main.template.magic.MartialArtsRules;
 public class DummyMartialArtsRules implements MartialArtsRules {
 
   @Override
-  public boolean isCharmAllowed(ICharm martialArtsCharm, MartialArtsCharmConfiguration charmConfiguration, boolean isExperienced) {
+  public boolean isCharmAllowed(Charm martialArtsCharm, MartialArtsCharmConfiguration charmConfiguration, boolean isExperienced) {
     return false;
   }
 

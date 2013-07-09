@@ -1,9 +1,9 @@
 package net.sf.anathema.character.main.xml.creation;
 
-import net.sf.anathema.character.main.magic.model.charm.ICharm;
+import net.sf.anathema.character.main.magic.model.charm.Charm;
 import net.sf.anathema.character.main.magic.model.charm.ICharmAttribute;
 import net.sf.anathema.character.main.magic.model.charm.MartialArtsLevel;
-import net.sf.anathema.character.main.magic.model.magic.IMagic;
+import net.sf.anathema.character.main.magic.model.magic.Magic;
 import net.sf.anathema.character.main.magic.model.magic.IMagicVisitor;
 import net.sf.anathema.character.main.magic.model.spells.ISpell;
 import net.sf.anathema.character.main.template.creation.BonusPointCosts;
@@ -40,7 +40,7 @@ public class GenericBonusPointCosts extends ReflectionEqualsObject implements Bo
   private Map<String, Integer> favoredKeywordCosts;
 
   @Override
-  public int getCharmCosts(ICharm charm, ICostAnalyzer analyzer) {
+  public int getCharmCosts(Charm charm, ICostAnalyzer analyzer) {
     boolean favored = analyzer.isMagicFavored(charm);
     for (ICharmAttribute attribute : charm.getAttributes()) {
       Map<String, Integer> set = favored ? favoredKeywordCosts : generalKeywordCosts;
@@ -107,11 +107,11 @@ public class GenericBonusPointCosts extends ReflectionEqualsObject implements Bo
   }
 
   @Override
-  public int getMagicCosts(IMagic magic, final ICostAnalyzer analyzer) {
+  public int getMagicCosts(Magic magic, final ICostAnalyzer analyzer) {
     final int[] cost = new int[1];
     magic.accept(new IMagicVisitor() {
       @Override
-      public void visitCharm(ICharm charm) {
+      public void visitCharm(Charm charm) {
         cost[0] = getCharmCosts(charm, analyzer);
       }
 

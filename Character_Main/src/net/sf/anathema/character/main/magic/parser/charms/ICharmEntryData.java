@@ -1,10 +1,10 @@
 package net.sf.anathema.character.main.magic.parser.charms;
 
-import net.sf.anathema.character.main.magic.model.charm.ICharmData;
+import net.sf.anathema.character.main.magic.model.charm.CharmData;
 
 public interface ICharmEntryData {
 
-  ICharmData getCoreData();
+  CharmData getCoreData();
 
   String getName();
 

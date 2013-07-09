@@ -1,6 +1,6 @@
 package net.sf.anathema.hero.magic.sheet.content.stats;
 
-import net.sf.anathema.character.main.magic.model.charm.ICharm;
+import net.sf.anathema.character.main.magic.model.charm.Charm;
 import net.sf.anathema.character.main.magic.model.magic.IMagicStats;
 import net.sf.anathema.lib.resources.Resources;
 
@@ -8,7 +8,7 @@ public class MultipleEffectCharmStats extends AbstractCharmStats implements IMag
 
   private final String effect;
 
-  public MultipleEffectCharmStats(ICharm charm, String effect) {
+  public MultipleEffectCharmStats(Charm charm, String effect) {
     super(charm);
     this.effect = effect;
   }

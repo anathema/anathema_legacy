@@ -1,6 +1,6 @@
 package net.sf.anathema.hero.magic.sheet;
 
-import net.sf.anathema.character.main.magic.model.charm.ICharm;
+import net.sf.anathema.character.main.magic.model.charm.Charm;
 import net.sf.anathema.character.main.traits.ValuedTraitType;
 import net.sf.anathema.character.main.traits.types.AbilityType;
 import net.sf.anathema.character.main.dummy.DummyCharm;
@@ -17,7 +17,7 @@ import static org.mockito.Mockito.when;
 
 public class CharmPrintNameTransformerTest {
   Resources resources = mock(Resources.class);
-  DummyCharm charm = new DummyCharm("Abyssal.SecondExcellency.Archery", new ICharm[0],
+  DummyCharm charm = new DummyCharm("Abyssal.SecondExcellency.Archery", new Charm[0],
           new ValuedTraitType[]{new DummyGenericTrait(AbilityType.Archery, 5)});
 
   @Before

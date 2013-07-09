@@ -1,6 +1,6 @@
 package net.sf.anathema.hero.combos.display;
 
-import net.sf.anathema.character.main.magic.model.charm.ICharm;
+import net.sf.anathema.character.main.magic.model.charm.Charm;
 import net.sf.anathema.character.main.magic.model.charmtree.builder.MagicDisplayLabeler;
 import net.sf.anathema.character.main.magic.model.charmtree.builder.stringbuilder.ICharmInfoStringBuilder;
 import net.sf.anathema.lib.gui.AbstractUIConfiguration;
@@ -18,11 +18,11 @@ public class CharmUIConfiguration extends AbstractUIConfiguration<Identifier> {
 
   @Override
   public String getLabel(Identifier value) {
-    return new MagicDisplayLabeler(resources).getLabelForMagic((ICharm) value);
+    return new MagicDisplayLabeler(resources).getLabelForMagic((Charm) value);
   }
 
   @Override
   public String getToolTipText(Identifier value) {
-    return charmInfoStringProvider.getInfoString((ICharm) value, null);
+    return charmInfoStringProvider.getInfoString((Charm) value, null);
   }
 }

@@ -1,7 +1,7 @@
 package net.sf.anathema.character.main.template.magic;
 
 import net.sf.anathema.character.main.caste.CasteType;
-import net.sf.anathema.character.main.magic.model.charm.ICharm;
+import net.sf.anathema.character.main.magic.model.charm.Charm;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -18,12 +18,12 @@ public class CharmTemplate implements ICharmTemplate {
   }
 
   @Override
-  public final ICharm[] getCharms() {
+  public final Charm[] getCharms() {
     return charmSet.getCharms();
   }
 
   @Override
-  public final ICharm[] getMartialArtsCharms() {
+  public final Charm[] getMartialArtsCharms() {
     return charmSet.getMartialArtsCharms();
   }
 

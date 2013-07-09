@@ -1,6 +1,6 @@
 package net.sf.anathema.hero.magic.display.tree;
 
-import net.sf.anathema.character.main.magic.model.charm.ICharm;
+import net.sf.anathema.character.main.magic.model.charm.Charm;
 import net.sf.anathema.character.main.magic.model.charm.CharmLearnAdapter;
 import net.sf.anathema.hero.magic.display.coloring.CharmDye;
 
@@ -14,22 +14,22 @@ public final class CharmLearnVisualizer extends CharmLearnAdapter {
   }
 
   @Override
-  public void charmLearned(ICharm charm) {
+  public void charmLearned(Charm charm) {
     dye.colorCharm(charm);
   }
 
   @Override
-  public void charmForgotten(ICharm charm) {
+  public void charmForgotten(Charm charm) {
     dye.colorCharm(charm);
   }
 
   @Override
-  public void charmNotLearnable(ICharm charm) {
+  public void charmNotLearnable(Charm charm) {
     Toolkit.getDefaultToolkit().beep();
   }
 
   @Override
-  public void charmNotUnlearnable(ICharm charm) {
+  public void charmNotUnlearnable(Charm charm) {
     Toolkit.getDefaultToolkit().beep();
   }
 }

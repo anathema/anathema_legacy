@@ -2,7 +2,7 @@ package net.sf.anathema.hero.combos.display;
 
 import net.sf.anathema.character.main.magic.display.view.magic.AbstractMagicLearnProperties;
 import net.sf.anathema.character.main.CharacterUI;
-import net.sf.anathema.character.main.magic.model.charm.ICharm;
+import net.sf.anathema.character.main.magic.model.charm.Charm;
 import net.sf.anathema.character.main.magic.description.MagicDescriptionProvider;
 import net.sf.anathema.hero.combos.CombosModel;
 import net.sf.anathema.character.main.magic.display.view.combos.IComboViewProperties;
@@ -44,7 +44,7 @@ public class ComboViewProperties extends AbstractMagicLearnProperties implements
 
   @Override
   public boolean isMagicSelectionAvailable(Object object) {
-    return object != null && comboConfiguration.isComboLegal((ICharm) object);
+    return object != null && comboConfiguration.isComboLegal((Charm) object);
   }
 
   @Override

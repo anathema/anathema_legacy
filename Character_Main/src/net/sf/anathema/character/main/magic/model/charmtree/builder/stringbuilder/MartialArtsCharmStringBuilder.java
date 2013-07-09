@@ -1,8 +1,8 @@
 package net.sf.anathema.character.main.magic.model.charmtree.builder.stringbuilder;
 
+import net.sf.anathema.character.main.magic.model.charm.Charm;
 import net.sf.anathema.character.main.magic.model.charms.MartialArtsUtilities;
-import net.sf.anathema.character.main.magic.model.charm.ICharm;
-import net.sf.anathema.character.main.magic.model.magic.IMagic;
+import net.sf.anathema.character.main.magic.model.magic.Magic;
 import net.sf.anathema.character.main.magic.model.charm.MartialArtsLevel;
 import net.sf.anathema.lib.gui.TooltipBuilder;
 import net.sf.anathema.lib.resources.Resources;
@@ -15,9 +15,9 @@ public class MartialArtsCharmStringBuilder implements IMagicTooltipStringBuilder
   }
 
   @Override
-  public void buildStringForMagic(StringBuilder builder, IMagic magic, Object details) {
-    if (magic instanceof ICharm && MartialArtsUtilities.isMartialArtsCharm((ICharm) magic)) {
-      MartialArtsLevel level = MartialArtsUtilities.getLevel((ICharm) magic);
+  public void buildStringForMagic(StringBuilder builder, Magic magic, Object details) {
+    if (magic instanceof Charm && MartialArtsUtilities.isMartialArtsCharm((Charm) magic)) {
+      MartialArtsLevel level = MartialArtsUtilities.getLevel((Charm) magic);
       builder.append(resources.getString("CharmTreeView.ToolTip.MartialArtsLevel"));
       builder.append(TooltipBuilder.ColonSpace);
       builder.append(resources.getString(level.getId()));

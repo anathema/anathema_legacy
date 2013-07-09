@@ -1,20 +1,20 @@
 package net.sf.anathema.character.main.magic.advance;
 
-import net.sf.anathema.character.main.magic.model.magic.IMagic;
+import net.sf.anathema.character.main.magic.model.magic.Magic;
 import net.sf.anathema.lib.compare.WeightedObject;
 import net.sf.anathema.lib.compare.WeightedObjectSorter;
 
 import java.util.Collection;
 
-public class WeightedMagicSorter extends WeightedObjectSorter<IMagic> {
+public class WeightedMagicSorter extends WeightedObjectSorter<Magic> {
 
   @Override
-  public WeightedObject<IMagic> createWeightedObject(IMagic magic, int weight) {
+  public WeightedObject<Magic> createWeightedObject(Magic magic, int weight) {
     return new WeightedMagic(magic, weight);
   }
 
   @Override
-  public WeightedObject<IMagic>[] convertToArray(Collection<WeightedObject<IMagic>> collection) {
+  public WeightedObject<Magic>[] convertToArray(Collection<WeightedObject<Magic>> collection) {
     return collection.toArray(new WeightedMagic[collection.size()]);
   }
 }

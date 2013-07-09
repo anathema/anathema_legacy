@@ -1,6 +1,6 @@
 package net.sf.anathema.hero.magic.sheet.content.stats;
 
-import net.sf.anathema.character.main.magic.model.magic.IMagic;
+import net.sf.anathema.character.main.magic.model.magic.Magic;
 import net.sf.anathema.character.main.magic.model.magic.IMagicStats;
 import net.sf.anathema.character.main.magic.model.charmtree.builder.stringbuilder.CostStringBuilder;
 import net.sf.anathema.character.main.magic.model.charmtree.builder.stringbuilder.HealthCostStringBuilder;
@@ -9,7 +9,7 @@ import net.sf.anathema.lib.resources.Resources;
 import net.sf.anathema.lib.util.Identifier;
 import net.sf.anathema.lib.util.SimpleIdentifier;
 
-public abstract class AbstractMagicStats<T extends IMagic> implements IMagicStats {
+public abstract class AbstractMagicStats<T extends Magic> implements IMagicStats {
 
   public static MagicInfoStringBuilder createMagicInfoStringBuilder(Resources resources) {
     CostStringBuilder essenceBuilder = new CostStringBuilder(resources, "CharacterSheet.Charm.Mote");

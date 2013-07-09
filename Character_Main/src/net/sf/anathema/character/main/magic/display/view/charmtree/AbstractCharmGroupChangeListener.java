@@ -1,6 +1,6 @@
 package net.sf.anathema.character.main.magic.display.view.charmtree;
 
-import net.sf.anathema.character.main.magic.model.charm.ICharm;
+import net.sf.anathema.character.main.magic.model.charm.Charm;
 import net.sf.anathema.character.main.magic.model.charm.ICharmGroup;
 import net.sf.anathema.character.main.type.ICharacterType;
 import net.sf.anathema.character.main.magic.model.charmtree.builder.CharmGraphNodeBuilder;
@@ -46,13 +46,13 @@ public abstract class AbstractCharmGroupChangeListener implements ICharmGroupCha
       charmTreeRenderer.clearView();
     } else {
       ITreePresentationProperties presentationProperties = getDisplayProperties(charmGroup);
-      Set<ICharm> charms = getDisplayCharms(charmGroup);
+      Set<Charm> charms = getDisplayCharms(charmGroup);
       IRegularNode[] nodesToShow = prepareNodes(charms);
       charmTreeRenderer.renderTree(resetView, presentationProperties, nodesToShow);
     }
   }
 
-  private IRegularNode[] prepareNodes(Set<ICharm> charms) {
+  private IRegularNode[] prepareNodes(Set<Charm> charms) {
     Collection<IIdentifiedRegularNode> nodes = CharmGraphNodeBuilder.createNodesFromCharms(charms);
     List<IIdentifiedRegularNode> sortedNodes = new ArrayList<>(nodes);
     Collections.sort(sortedNodes, new Comparator<IIdentifiedRegularNode>() {
@@ -64,11 +64,11 @@ public abstract class AbstractCharmGroupChangeListener implements ICharmGroupCha
     return sortedNodes.toArray(new IRegularNode[sortedNodes.size()]);
   }
 
-  private Set<ICharm> getDisplayCharms(ICharmGroup charmGroup) {
-    Set<ICharm> charmsToDisplay = new LinkedHashSet<>();
-    for (ICharm charm : arbitrator.getCharms(charmGroup)) {
+  private Set<Charm> getDisplayCharms(ICharmGroup charmGroup) {
+    Set<Charm> charmsToDisplay = new LinkedHashSet<>();
+    for (Charm charm : arbitrator.getCharms(charmGroup)) {
       charmsToDisplay.add(charm);
-      for (ICharm prerequisite : charm.getRenderingPrerequisiteCharms()) {
+      for (Charm prerequisite : charm.getRenderingPrerequisiteCharms()) {
         if (charmGroup.getId().equals(prerequisite.getGroupId())) {
           charmsToDisplay.add(prerequisite);
         }

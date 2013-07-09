@@ -1,6 +1,6 @@
 package net.sf.anathema.character.main.persistence.charm;
 
-import net.sf.anathema.character.main.magic.model.charm.ICharm;
+import net.sf.anathema.character.main.magic.model.charm.Charm;
 import net.sf.anathema.character.main.magic.model.charm.special.ISpecialCharmConfiguration;
 import net.sf.anathema.hero.charms.CharmsModel;
 import net.sf.anathema.character.main.magic.model.charms.ILearningCharmGroup;
@@ -49,22 +49,22 @@ public class CharmSaver {
     groupElement.addAttribute(ATTRIB_NAME, group.getId());
     groupElement.addAttribute(ATTRIB_TYPE, group.getCharacterType().getId());
     HashMap<String, Boolean> isExperiencedLearned = new HashMap<>();
-    List<ICharm> charms = new ArrayList<>();
-    for (ICharm charm : group.getCreationLearnedCharms()) {
+    List<Charm> charms = new ArrayList<>();
+    for (Charm charm : group.getCreationLearnedCharms()) {
       isExperiencedLearned.put(charm.getId(), false);
       charms.add(charm);
     }
-    for (ICharm charm : group.getExperienceLearnedCharms()) {
+    for (Charm charm : group.getExperienceLearnedCharms()) {
       isExperiencedLearned.put(charm.getId(), true);
       charms.add(charm);
     }
     Collections.sort(charms, new IdentifiedComparator());
-    for(ICharm charm : charms) {
+    for(Charm charm : charms) {
       saveCharm(charmConfiguration, specialPersister, groupElement, charm, isExperiencedLearned.get(charm.getId()));
     }
   }
 
-  private void saveCharm(CharmsModel charmConfiguration, ISpecialCharmPersister specialPersister, Element groupElement, ICharm charm,
+  private void saveCharm(CharmsModel charmConfiguration, ISpecialCharmPersister specialPersister, Element groupElement, Charm charm,
                          boolean experienceLearned) {
     Element charmElement = groupElement.addElement(TAG_CHARM);
     charmElement.addAttribute(ATTRIB_NAME, charm.getId());

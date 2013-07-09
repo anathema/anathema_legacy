@@ -1,6 +1,6 @@
 package net.sf.anathema.character.main.testing.dummy.magic;
 
-import net.sf.anathema.character.main.magic.model.charm.ICharm;
+import net.sf.anathema.character.main.magic.model.charm.Charm;
 import net.sf.anathema.character.main.magic.model.charm.CharmIdMap;
 import net.sf.anathema.character.main.magic.model.charm.ICharmGroup;
 import net.sf.anathema.character.main.magic.model.charm.special.ISpecialCharm;
@@ -18,7 +18,7 @@ import net.sf.anathema.lib.util.Identifier;
 
 public class DummyCharmsModel implements CharmsModel {
 
-  private ICharm[] charms = new ICharm[0];
+  private Charm[] charms = new Charm[0];
 
   private ILearningCharmGroup[] groups;
 
@@ -28,12 +28,12 @@ public class DummyCharmsModel implements CharmsModel {
   }
 
   @Override
-  public boolean isLearned(ICharm charm) {
+  public boolean isLearned(Charm charm) {
     throw new NotYetImplementedException();
   }
 
   @Override
-  public ICharm[] getCreationLearnedCharms() {
+  public Charm[] getCreationLearnedCharms() {
     return charms;
   }
 
@@ -58,22 +58,22 @@ public class DummyCharmsModel implements CharmsModel {
   }
 
   @Override
-  public ICharm[] getLearnedCharms(boolean experienced) {
+  public Charm[] getLearnedCharms(boolean experienced) {
     return charms;
   }
 
   @Override
-  public boolean isLearnable(ICharm charm) {
+  public boolean isLearnable(Charm charm) {
     throw new NotYetImplementedException();
   }
 
   @Override
-  public ICharm getCharmById(String charmId) {
+  public Charm getCharmById(String charmId) {
     throw new NotYetImplementedException();
   }
 
   @Override
-  public boolean isCompulsiveCharm(ICharm charm) {
+  public boolean isCompulsiveCharm(Charm charm) {
     return false;
   }
 
@@ -88,8 +88,8 @@ public class DummyCharmsModel implements CharmsModel {
   }
 
   @Override
-  public boolean isAlienCharm(ICharm charm) {
-    for (ICharm currentCharm : charms) {
+  public boolean isAlienCharm(Charm charm) {
+    for (Charm currentCharm : charms) {
       if (charm == currentCharm) {
         return true;
       }
@@ -98,12 +98,12 @@ public class DummyCharmsModel implements CharmsModel {
   }
 
   @Override
-  public ISpecialCharmConfiguration getSpecialCharmConfiguration(ICharm charm) {
+  public ISpecialCharmConfiguration getSpecialCharmConfiguration(Charm charm) {
     return null;
   }
 
   @Override
-  public ILearningCharmGroup getGroup(ICharm charm) {
+  public ILearningCharmGroup getGroup(Charm charm) {
     throw new NotYetImplementedException();
   }
 
@@ -118,7 +118,7 @@ public class DummyCharmsModel implements CharmsModel {
   }
 
   @Override
-  public ICharm[] getCharms(ICharmGroup charmGroup) {
+  public Charm[] getCharms(ICharmGroup charmGroup) {
     return charmGroup.getAllCharms();
   }
 

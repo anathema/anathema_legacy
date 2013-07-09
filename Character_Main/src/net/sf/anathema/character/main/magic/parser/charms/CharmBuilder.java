@@ -1,6 +1,7 @@
 package net.sf.anathema.character.main.magic.parser.charms;
 
-import net.sf.anathema.character.main.magic.model.charm.Charm;
+import net.sf.anathema.character.main.magic.model.charm.CharmImpl;
+import net.sf.anathema.character.main.magic.model.charm.CharmData;
 import net.sf.anathema.character.main.magic.model.charm.ICharmXMLConstants;
 import net.sf.anathema.character.main.magic.parser.combos.IComboRulesBuilder;
 import net.sf.anathema.character.main.magic.parser.magic.CostListBuilder;
@@ -11,7 +12,6 @@ import net.sf.anathema.character.main.magic.parser.charms.prerequisite.ICharmPre
 import net.sf.anathema.character.main.magic.parser.charms.prerequisite.ITraitPrerequisitesBuilder;
 import net.sf.anathema.character.main.magic.parser.charms.prerequisite.PrerequisiteListBuilder;
 import net.sf.anathema.character.main.magic.parser.charms.special.SpecialCharmBuilder;
-import net.sf.anathema.character.main.magic.model.charm.ICharmData;
 import net.sf.anathema.character.main.magic.model.charm.CharmException;
 import net.sf.anathema.character.main.magic.model.charm.ICharmAttribute;
 import net.sf.anathema.character.main.magic.model.combos.IComboRestrictions;
@@ -64,12 +64,12 @@ public class CharmBuilder implements ICharmBuilder {
   }
 
   @Override
-  public Charm buildCharm(Element charmElement) throws PersistenceException {
+  public CharmImpl buildCharm(Element charmElement) throws PersistenceException {
     return buildCharm(charmElement, new ArrayList<ISpecialCharm>());
   }
 
   @Override
-  public Charm buildCharm(Element charmElement, List<ISpecialCharm> specialCharms) throws PersistenceException {
+  public CharmImpl buildCharm(Element charmElement, List<ISpecialCharm> specialCharms) throws PersistenceException {
     String id = idBuilder.build(charmElement);
     try {
       ICharacterType characterType = getCharacterType(charmElement);
@@ -87,8 +87,8 @@ public class CharmBuilder implements ICharmBuilder {
       ValuedTraitType[] prerequisites = prerequisiteList.getPrerequisites();
       ValuedTraitType primaryPrerequisite = prerequisites.length != 0 ? prerequisites[0] : null;
       String group = groupBuilder.build(charmElement, primaryPrerequisite);
-      Charm charm =
-              new Charm(characterType, id, group, isBuildingGenericCharms(), prerequisiteList, temporaryCost, comboRules, duration, charmTypeModel,
+      CharmImpl charm =
+              new CharmImpl(characterType, id, group, isBuildingGenericCharms(), prerequisiteList, temporaryCost, comboRules, duration, charmTypeModel,
                       sources);
       for (ICharmAttribute attribute : attributeBuilder.buildCharmAttributes(charmElement, primaryPrerequisite)) {
         charm.addCharmAttribute(attribute);
@@ -136,10 +136,10 @@ public class CharmBuilder implements ICharmBuilder {
     return characterType;
   }
 
-  private void loadSpecialLearning(Element charmElement, Charm charm) {
+  private void loadSpecialLearning(Element charmElement, CharmImpl charm) {
     for (ICharmAttribute attribute : charm.getAttributes()) {
-      if (attribute.getId().startsWith(ICharmData.FAVORED_CASTE_PREFIX)) {
-        String casteId = attribute.getId().substring(ICharmData.FAVORED_CASTE_PREFIX.length());
+      if (attribute.getId().startsWith(CharmData.FAVORED_CASTE_PREFIX)) {
+        String casteId = attribute.getId().substring(CharmData.FAVORED_CASTE_PREFIX.length());
         charm.addFavoredCasteId(casteId);
       }
     }

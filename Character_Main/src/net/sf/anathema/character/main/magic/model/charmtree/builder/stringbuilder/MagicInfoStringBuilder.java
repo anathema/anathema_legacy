@@ -1,6 +1,6 @@
 package net.sf.anathema.character.main.magic.model.charmtree.builder.stringbuilder;
 
-import net.sf.anathema.character.main.magic.model.magic.IMagic;
+import net.sf.anathema.character.main.magic.model.magic.Magic;
 import net.sf.anathema.character.main.magic.model.magic.ICost;
 import net.sf.anathema.character.main.magic.model.magic.ICostList;
 import net.sf.anathema.character.main.magic.model.magic.IHealthCost;
@@ -24,7 +24,7 @@ public class MagicInfoStringBuilder implements IMagicInfoStringBuilder {
   }
 
   @Override
-  public String createCostString(IMagic magic) {
+  public String createCostString(Magic magic) {
     ICostList temporaryCost = magic.getTemporaryCost();
     String essenceCost = essenceBuilder.getCostString(temporaryCost.getEssenceCost());
     String willpowerCost = willpowerBuilder.getCostString(temporaryCost.getWillpowerCost());

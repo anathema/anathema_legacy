@@ -1,6 +1,6 @@
 package net.sf.anathema.character.main.magic.model.charm.special;
 
-import net.sf.anathema.character.main.magic.model.charm.ICharm;
+import net.sf.anathema.character.main.magic.model.charm.Charm;
 import net.sf.anathema.character.main.magic.model.charmtree.ICharmLearnableArbitrator;
 import net.sf.anathema.character.main.traits.TraitType;
 import net.sf.anathema.character.main.traits.types.OtherTraitType;
@@ -10,14 +10,14 @@ import net.sf.anathema.lib.data.Condition;
 
 public class UpgradeCondition implements Condition {
   private final ICharmLearnableArbitrator arbitrator;
-  private final ICharm charm;
+  private final Charm charm;
   private final boolean bpUpgradeAllowed;
   private CharmSpecialist specialist;
   private final Integer essenceMin;
   private final Integer traitMin;
   private final TraitType trait;
 
-  public UpgradeCondition(ICharmLearnableArbitrator arbitrator, ICharm charm, boolean bpUpgradeAllowed, CharmSpecialist specialist,
+  public UpgradeCondition(ICharmLearnableArbitrator arbitrator, Charm charm, boolean bpUpgradeAllowed, CharmSpecialist specialist,
                           Integer essenceMin, Integer traitMin, TraitType trait) {
     this.arbitrator = arbitrator;
     this.charm = charm;

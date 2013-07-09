@@ -1,16 +1,16 @@
 package net.sf.anathema.character.main.magic.model.charm.special;
 
-import net.sf.anathema.character.main.magic.model.charm.ICharm;
+import net.sf.anathema.character.main.magic.model.charm.Charm;
 import net.sf.anathema.character.main.magic.model.charmtree.ICharmLearnableArbitrator;
 import net.sf.anathema.lib.data.Condition;
 
 class PrerequisiteLearnCondition implements Condition {
   private final SubEffects allEffects;
   private final ICharmLearnableArbitrator arbitrator;
-  private final ICharm charm;
+  private final Charm charm;
   private final String prereqEffect;
 
-  public PrerequisiteLearnCondition(SubEffects allEffects, ICharmLearnableArbitrator arbitrator, ICharm charm, String prereqEffect) {
+  public PrerequisiteLearnCondition(SubEffects allEffects, ICharmLearnableArbitrator arbitrator, Charm charm, String prereqEffect) {
     this.allEffects = allEffects;
     this.arbitrator = arbitrator;
     this.charm = charm;

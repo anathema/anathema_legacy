@@ -1,6 +1,6 @@
 package net.sf.anathema.character.main.magic.model.combos;
 
-import net.sf.anathema.character.main.magic.model.charm.ICharm;
+import net.sf.anathema.character.main.magic.model.charm.Charm;
 import net.sf.anathema.character.main.magic.model.charm.ICharmTypeVisitor;
 import net.sf.anathema.character.main.magic.model.charm.type.CharmType;
 
@@ -13,7 +13,7 @@ public class SimpleCharmComboRules extends AbstractComboRules {
   }
 
   @Override
-  public boolean isComboLegal(final ICharm simpleCharm, final ICharm otherCharm) {
+  public boolean isComboLegal(final Charm simpleCharm, final Charm otherCharm) {
     final boolean[] legal = new boolean[1];
     otherCharm.getCharmTypeModel().getCharmType().accept(new ICharmTypeVisitor() {
       @Override

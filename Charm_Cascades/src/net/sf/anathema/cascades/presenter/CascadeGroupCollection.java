@@ -22,11 +22,11 @@ import java.util.List;
 public class CascadeGroupCollection implements CharmGroupCollection {
   private final CharacterTypes characterTypes;
   private ITemplateRegistry templateRegistry;
-  private CharmTreeIdentificateMap treeIdentificateMap;
+  private CharmTreeIdentifierMap treeIdentifierMap;
 
-  public CascadeGroupCollection(CharacterTypes characterTypes, ITemplateRegistry templateRegistry, CharmTreeIdentificateMap treeIdentificateMap) {
+  public CascadeGroupCollection(CharacterTypes characterTypes, ITemplateRegistry templateRegistry, CharmTreeIdentifierMap treeIdentifierMap) {
     this.templateRegistry = templateRegistry;
-    this.treeIdentificateMap = treeIdentificateMap;
+    this.treeIdentifierMap = treeIdentifierMap;
     this.characterTypes = characterTypes;
   }
 
@@ -54,7 +54,7 @@ public class CascadeGroupCollection implements CharmGroupCollection {
   private void initMartialArtsCharms(List<ICharmGroup> allCharmGroups) {
     ICharmTemplate charmTemplate = findCharmTemplateOfCharacterTypeMostProficientWithMartialArts();
     ICharmTree martialArtsTree = new MartialArtsCharmTree(charmTemplate);
-    treeIdentificateMap.put(MartialArtsUtilities.MARTIAL_ARTS, martialArtsTree);
+    treeIdentifierMap.put(MartialArtsUtilities.MARTIAL_ARTS, martialArtsTree);
     allCharmGroups.addAll(Arrays.asList(martialArtsTree.getAllCharmGroups()));
   }
 
@@ -83,7 +83,7 @@ public class CascadeGroupCollection implements CharmGroupCollection {
   private void registerGroups(List<ICharmGroup> allCharmGroups, Identifier typeId, ICharmTree charmTree) {
     ICharmGroup[] groups = charmTree.getAllCharmGroups();
     if (groups.length != 0) {
-      treeIdentificateMap.put(typeId, charmTree);
+      treeIdentifierMap.put(typeId, charmTree);
       allCharmGroups.addAll(Arrays.asList(groups));
     }
   }

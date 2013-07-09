@@ -3,7 +3,7 @@ package net.sf.anathema.character.main.magic.parser.charms;
 import com.google.common.base.Preconditions;
 import com.google.common.base.Predicate;
 import net.sf.anathema.character.main.magic.model.charm.Charm;
-import net.sf.anathema.character.main.magic.model.charm.ICharm;
+import net.sf.anathema.character.main.magic.model.charm.CharmImpl;
 import net.sf.anathema.lib.xml.ElementUtilities;
 import org.dom4j.Document;
 import org.dom4j.Element;
@@ -20,12 +20,12 @@ import static net.sf.anathema.lib.lang.ArrayUtilities.getFirst;
 
 public class CharmAlternativeBuilder {
 
-  public void buildAlternatives(Document charmDoc, ICharm[] charms) {
+  public void buildAlternatives(Document charmDoc, Charm[] charms) {
     Element charmListElement = charmDoc.getRootElement();
     readAlternatives(charmListElement, charms);
   }
 
-  private void readAlternatives(Element charmListElement, ICharm[] charms) {
+  private void readAlternatives(Element charmListElement, Charm[] charms) {
     Element alternativesElement = charmListElement.element(TAG_ALTERNATIVES);
     if (alternativesElement == null) {
       return;
@@ -35,22 +35,22 @@ public class CharmAlternativeBuilder {
     }
   }
 
-  private void readAlternative(Element alternativeElement, ICharm[] existingCharms) {
+  private void readAlternative(Element alternativeElement, Charm[] existingCharms) {
     List<Element> charmReferences = ElementUtilities.elements(alternativeElement, TAG_CHARM_REFERENCE);
-    Set<ICharm> charms = new HashSet<>(charmReferences.size());
+    Set<Charm> charms = new HashSet<>(charmReferences.size());
     for (Element charmReference : charmReferences) {
       final String charmId = charmReference.attributeValue(ATTRIB_ID);
-      ICharm charm = getFirst(existingCharms, new Predicate<ICharm>() {
+      Charm charm = getFirst(existingCharms, new Predicate<Charm>() {
         @Override
-        public boolean apply(ICharm candidate) {
+        public boolean apply(Charm candidate) {
           return candidate.getId().equals(charmId);
         }
       });
       Preconditions.checkNotNull(charm, "Charm not found " + charmId);
       charms.add(charm);
     }
-    for (ICharm charm : charms) {
-      ((Charm) charm).addAlternative(charms);
+    for (Charm charm : charms) {
+      ((CharmImpl) charm).addAlternative(charms);
     }
   }
 }

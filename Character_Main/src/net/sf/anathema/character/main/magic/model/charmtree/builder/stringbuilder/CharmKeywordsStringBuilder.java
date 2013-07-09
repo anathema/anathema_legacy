@@ -1,7 +1,7 @@
 package net.sf.anathema.character.main.magic.model.charmtree.builder.stringbuilder;
 
-import net.sf.anathema.character.main.magic.model.charm.ICharm;
-import net.sf.anathema.character.main.magic.model.magic.IMagic;
+import net.sf.anathema.character.main.magic.model.charm.Charm;
+import net.sf.anathema.character.main.magic.model.magic.Magic;
 import net.sf.anathema.character.main.magic.model.charm.ICharmAttribute;
 import net.sf.anathema.lib.gui.TooltipBuilder;
 import net.sf.anathema.lib.resources.Resources;
@@ -14,9 +14,9 @@ public class CharmKeywordsStringBuilder implements IMagicTooltipStringBuilder {
   }
 
   @Override
-  public void buildStringForMagic(StringBuilder builder, IMagic magic, Object details) {
-    if (magic instanceof ICharm) {
-      ICharm charm = (ICharm) magic;
+  public void buildStringForMagic(StringBuilder builder, Magic magic, Object details) {
+    if (magic instanceof Charm) {
+      Charm charm = (Charm) magic;
       StringBuilder listBuilder = new StringBuilder();
       for (ICharmAttribute attribute : charm.getAttributes()) {
         if (attribute.isVisualized()) {

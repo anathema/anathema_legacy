@@ -7,7 +7,7 @@ import net.sf.anathema.platform.tree.presenter.view.CascadeLoadedListener;
 import net.sf.anathema.platform.tree.presenter.view.NodeProperties;
 import net.sf.anathema.platform.tree.presenter.view.ToolTipProperties;
 
-public interface ICascadeSelectionView {
+public interface CascadeSelectionView {
 
   CharmTreeRenderer getCharmTreeRenderer();
 

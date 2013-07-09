@@ -1,17 +1,17 @@
 package net.sf.anathema.character.main.magic.model.charm.special;
 
-import net.sf.anathema.character.main.magic.model.charm.ICharm;
+import net.sf.anathema.character.main.magic.model.charm.Charm;
 import net.sf.anathema.character.main.magic.model.charmtree.ICharmLearnableArbitrator;
 import net.sf.anathema.character.main.magic.model.charm.CharmSpecialist;
 import net.sf.anathema.lib.control.ChangeListener;
 import org.jmock.example.announcer.Announcer;
 
 public class MultipleEffectCharmConfiguration implements IMultipleEffectCharmConfiguration {
-  private final ICharm charm;
+  private final Charm charm;
   private final SubEffects subeffects;
   private final Announcer<ISpecialCharmLearnListener> control = Announcer.to(ISpecialCharmLearnListener.class);
 
-  public MultipleEffectCharmConfiguration(CharmSpecialist specialist, ICharm charm, IMultipleEffectCharm visited,
+  public MultipleEffectCharmConfiguration(CharmSpecialist specialist, Charm charm, IMultipleEffectCharm visited,
                                           ICharmLearnableArbitrator arbitrator) {
     this.charm = charm;
     this.subeffects = visited.buildSubeffects(specialist, arbitrator, charm);
@@ -52,7 +52,7 @@ public class MultipleEffectCharmConfiguration implements IMultipleEffectCharmCon
   }
 
   @Override
-  public ICharm getCharm() {
+  public Charm getCharm() {
     return charm;
   }
 

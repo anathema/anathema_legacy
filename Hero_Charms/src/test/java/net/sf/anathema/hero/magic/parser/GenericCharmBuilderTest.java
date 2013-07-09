@@ -1,6 +1,6 @@
 package net.sf.anathema.hero.magic.parser;
 
-import net.sf.anathema.character.main.magic.model.charm.Charm;
+import net.sf.anathema.character.main.magic.model.charm.CharmImpl;
 import net.sf.anathema.character.main.magic.parser.charms.GenericCharmBuilder;
 import net.sf.anathema.character.main.magic.parser.charms.GenericCharmPrerequisiteBuilder;
 import net.sf.anathema.character.main.magic.parser.combos.GenericComboRulesBuilder;
@@ -34,7 +34,7 @@ public class GenericCharmBuilderTest {
   public void testReadGenericCharmId() throws Exception {
     Element xml = CharmXmlTestUtils.createCharmElement("Dummy.Generic");
     builder.setType(AbilityType.Archery);
-    Charm charm = builder.buildCharm(xml);
+    CharmImpl charm = builder.buildCharm(xml);
     assertEquals("Dummy.Generic.Archery", charm.getId());
   }
 
@@ -47,7 +47,7 @@ public class GenericCharmBuilderTest {
     Element xml = CharmXmlTestUtils.createCharmElement("Dummy.Generic");
     builder.setType(AbilityType.Archery);
     removeAttribute(xml, "group");
-    Charm charm = builder.buildCharm(xml);
+    CharmImpl charm = builder.buildCharm(xml);
     assertEquals("Archery", charm.getGroupId());
   }
 
@@ -57,7 +57,7 @@ public class GenericCharmBuilderTest {
     builder.setType(AbilityType.Archery);
     Element prerequisites = xml.element("prerequisite");
     removeAttribute(prerequisites.element("trait"), "id");
-    Charm charm = builder.buildCharm(xml);
+    CharmImpl charm = builder.buildCharm(xml);
     assertEquals(AbilityType.Archery, charm.getPrimaryTraitType());
   }
 
@@ -67,7 +67,7 @@ public class GenericCharmBuilderTest {
     builder.setType(AbilityType.Athletics);
     Element prerequisites = xml.element("prerequisite");
     removeAttribute(prerequisites.element("trait"), "id");
-    Charm charm = builder.buildCharm(xml);
+    CharmImpl charm = builder.buildCharm(xml);
     assertEquals(AbilityType.Athletics, charm.getPrimaryTraitType());
   }
 
@@ -77,7 +77,7 @@ public class GenericCharmBuilderTest {
     builder.setType(AbilityType.Archery);
     Element prerequisites = xml.element("prerequisite");
     prerequisites.element("trait").addAttribute("value", "3");
-    Charm charm = builder.buildCharm(xml);
+    CharmImpl charm = builder.buildCharm(xml);
     assertEquals(3, charm.getPrerequisites()[0].getCurrentValue());
   }
 }

@@ -1,7 +1,7 @@
 package net.sf.anathema.hero.magic.sheet.content.stats;
 
 import com.google.common.base.Function;
-import net.sf.anathema.character.main.magic.model.charm.ICharm;
+import net.sf.anathema.character.main.magic.model.charm.Charm;
 import net.sf.anathema.character.main.magic.model.magic.IMagicStats;
 import net.sf.anathema.character.main.magic.model.charm.ICharmAttribute;
 import net.sf.anathema.character.main.magic.model.charm.type.ICharmTypeModel;
@@ -15,9 +15,9 @@ import java.util.List;
 
 import static net.sf.anathema.lib.lang.ArrayUtilities.transform;
 
-public abstract class AbstractCharmStats extends AbstractMagicStats<ICharm> {
+public abstract class AbstractCharmStats extends AbstractMagicStats<Charm> {
 
-  public AbstractCharmStats(ICharm magic) {
+  public AbstractCharmStats(Charm magic) {
     super(magic);
   }
 
@@ -39,7 +39,7 @@ public abstract class AbstractCharmStats extends AbstractMagicStats<ICharm> {
 
   @Override
   public String getSourceString(Resources resources) {
-    IMagicSourceStringBuilder<ICharm> stringBuilder = new MagicSourceStringBuilder<>(resources);
+    IMagicSourceStringBuilder<Charm> stringBuilder = new MagicSourceStringBuilder<>(resources);
     return stringBuilder.createShortSourceString(getMagic());
   }
 

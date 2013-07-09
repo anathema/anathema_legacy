@@ -2,8 +2,8 @@ package net.sf.anathema.character.main.magic.model.charm.prerequisite;
 
 import com.google.common.base.Preconditions;
 import net.sf.anathema.character.main.magic.model.charm.Charm;
+import net.sf.anathema.character.main.magic.model.charm.CharmImpl;
 import net.sf.anathema.character.main.magic.parser.charms.SelectiveCharmGroupTemplate;
-import net.sf.anathema.character.main.magic.model.charm.ICharm;
 import net.sf.anathema.character.main.magic.model.charmtree.ICharmLearnArbitrator;
 import net.sf.anathema.lib.logging.Logger;
 
@@ -16,7 +16,7 @@ import java.util.Set;
 public class SelectiveCharmGroup {
 
   private final SelectiveCharmGroupTemplate template;
-  private final List<Charm> charms = new ArrayList<>();
+  private final List<CharmImpl> charms = new ArrayList<>();
   private final Logger logger = Logger.getLogger(SelectiveCharmGroup.class);
 
   public SelectiveCharmGroup(SelectiveCharmGroupTemplate template) {
@@ -24,9 +24,9 @@ public class SelectiveCharmGroup {
     this.template = template;
   }
 
-  public void extractCharms(Map<String, ? extends Charm> charmsById, Charm child) {
+  public void extractCharms(Map<String, ? extends CharmImpl> charmsById, CharmImpl child) {
     for (String charmId : template.getGroupCharmIds()) {
-      Charm groupCharm = charmsById.get(charmId);
+      CharmImpl groupCharm = charmsById.get(charmId);
       if (groupCharm == null) {
         logger.warn("Selective parent " + charmId + " not found for id " + charmId);
         continue;
@@ -36,19 +36,19 @@ public class SelectiveCharmGroup {
     }
   }
 
-  public Set<ICharm> getLearnPrerequisitesCharms(ICharmLearnArbitrator learnArbitrator) {
-    Set<ICharm> prerequisiteCharms = new LinkedHashSet<>();
-    List<Charm> charmsToLearn = selectCharmsToLearn(learnArbitrator);
-    for (Charm learnCharm : charmsToLearn) {
+  public Set<Charm> getLearnPrerequisitesCharms(ICharmLearnArbitrator learnArbitrator) {
+    Set<Charm> prerequisiteCharms = new LinkedHashSet<>();
+    List<CharmImpl> charmsToLearn = selectCharmsToLearn(learnArbitrator);
+    for (CharmImpl learnCharm : charmsToLearn) {
       prerequisiteCharms.addAll(learnCharm.getLearnPrerequisitesCharms(learnArbitrator));
       prerequisiteCharms.add(learnCharm);
     }
     return prerequisiteCharms;
   }
 
-  private List<Charm> selectCharmsToLearn(ICharmLearnArbitrator learnArbitrator) {
-    List<Charm> charmsToLearn = new ArrayList<>();
-    for (Charm charm : charms) {
+  private List<CharmImpl> selectCharmsToLearn(ICharmLearnArbitrator learnArbitrator) {
+    List<CharmImpl> charmsToLearn = new ArrayList<>();
+    for (CharmImpl charm : charms) {
       if (charmsToLearn.size() >= template.getThreshold()) {
         return charmsToLearn;
       }
@@ -56,7 +56,7 @@ public class SelectiveCharmGroup {
         charmsToLearn.add(charm);
       }
     }
-    for (Charm charm : charms) {
+    for (CharmImpl charm : charms) {
       if (charmsToLearn.size() >= template.getThreshold()) {
         return charmsToLearn;
       }
@@ -69,7 +69,7 @@ public class SelectiveCharmGroup {
 
   public boolean holdsThreshold(ICharmLearnArbitrator learnArbitrator) {
     int learnedCharms = 0;
-    for (Charm charm : charms) {
+    for (CharmImpl charm : charms) {
       if (learnArbitrator.isLearned(charm)) {
         learnedCharms++;
       }
@@ -81,7 +81,7 @@ public class SelectiveCharmGroup {
     return template.getLabel() != null ? "Requirement." + template.getLabel() + "." + template.getThreshold() : null;
   }
 
-  public ICharm[] getAllGroupCharms() {
-    return charms.toArray(new ICharm[charms.size()]);
+  public Charm[] getAllGroupCharms() {
+    return charms.toArray(new Charm[charms.size()]);
   }
 }

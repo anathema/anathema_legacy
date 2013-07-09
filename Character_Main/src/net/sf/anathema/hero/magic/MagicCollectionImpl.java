@@ -1,7 +1,7 @@
 package net.sf.anathema.hero.magic;
 
-import net.sf.anathema.character.main.magic.model.charm.ICharm;
-import net.sf.anathema.character.main.magic.model.magic.IMagic;
+import net.sf.anathema.character.main.magic.model.charm.Charm;
+import net.sf.anathema.character.main.magic.model.magic.Magic;
 import net.sf.anathema.character.main.magic.model.magic.IMagicVisitor;
 import net.sf.anathema.character.main.magic.model.spells.ISpell;
 import net.sf.anathema.character.main.magic.model.charm.special.IMultiLearnableCharm;
@@ -48,7 +48,7 @@ public class MagicCollectionImpl implements MagicCollection {
   }
 
   @Override
-  public boolean isLearned(IMagic magic) {
+  public boolean isLearned(Magic magic) {
     final boolean[] isLearned = new boolean[1];
     magic.accept(new IMagicVisitor() {
       @Override
@@ -57,7 +57,7 @@ public class MagicCollectionImpl implements MagicCollection {
       }
 
       @Override
-      public void visitCharm(ICharm charm) {
+      public void visitCharm(Charm charm) {
         isLearned[0] = CharmsModelFetcher.fetch(hero).isLearned(charm);
       }
     });

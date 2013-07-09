@@ -11,7 +11,7 @@ import net.sf.anathema.character.main.type.ICharacterType;
 import java.util.List;
 import java.util.Set;
 
-public interface ICharmData extends IMagicData {
+public interface CharmData extends IMagicData {
 
   String FAVORED_CASTE_PREFIX = "FavoredCaste.";
 
@@ -33,7 +33,7 @@ public interface ICharmData extends IMagicData {
 
   IndirectCharmRequirement[] getAttributeRequirements();
 
-  Set<ICharm> getParentCharms();
+  Set<Charm> getParentCharms();
   
   List<String> getParentSubEffects();
 

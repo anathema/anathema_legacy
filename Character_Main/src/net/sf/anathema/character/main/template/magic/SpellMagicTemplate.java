@@ -1,6 +1,6 @@
 package net.sf.anathema.character.main.template.magic;
 
-import net.sf.anathema.character.main.magic.model.charm.ICharm;
+import net.sf.anathema.character.main.magic.model.charm.Charm;
 import net.sf.anathema.character.main.magic.model.spells.ISpell;
 import net.sf.anathema.character.main.magic.model.spells.CircleType;
 import net.sf.anathema.character.main.magic.model.spells.ICircleTypeVisitor;
@@ -43,8 +43,8 @@ public class SpellMagicTemplate implements ISpellMagicTemplate {
     return canLearnSorcery() || canLearnNecromancy();
   }
 
-  protected boolean knowsCharm(String charm, ICharm[] knownCharms) {
-    for (ICharm knownCharm : knownCharms) {
+  protected boolean knowsCharm(String charm, Charm[] knownCharms) {
+    for (Charm knownCharm : knownCharms) {
       if (charm.equals(knownCharm.getId())) {
         return true;
       }
@@ -53,7 +53,7 @@ public class SpellMagicTemplate implements ISpellMagicTemplate {
   }
 
   @Override
-  public boolean knowsSorcery(ICharm[] knownCharms) {
+  public boolean knowsSorcery(Charm[] knownCharms) {
     for (CircleType circle : sorceryCircles) {
       if (knowsSpellMagic(knownCharms, circle)) {
         return true;
@@ -63,7 +63,7 @@ public class SpellMagicTemplate implements ISpellMagicTemplate {
   }
 
   @Override
-  public boolean knowsNecromancy(ICharm[] knownCharms) {
+  public boolean knowsNecromancy(Charm[] knownCharms) {
     for (CircleType circle : necromancyCircles) {
       if (knowsSpellMagic(knownCharms, circle)) {
         return true;
@@ -73,17 +73,17 @@ public class SpellMagicTemplate implements ISpellMagicTemplate {
   }
 
   @Override
-  public boolean knowsSpellMagic(ICharm[] knownCharms) {
+  public boolean knowsSpellMagic(Charm[] knownCharms) {
     return knowsSorcery(knownCharms) || knowsNecromancy(knownCharms);
   }
 
   @Override
-  public boolean knowsSpellMagic(ICharm[] knownCharms, CircleType circle) {
+  public boolean knowsSpellMagic(Charm[] knownCharms, CircleType circle) {
     return knowsCharm(getInitiation(circle), knownCharms);
   }
 
   @Override
-  public boolean canLearnSpell(ISpell spell, ICharm[] knownCharms) {
+  public boolean canLearnSpell(ISpell spell, Charm[] knownCharms) {
     return knowsCharm(getInitiation(spell.getCircleType()), knownCharms);
   }
 

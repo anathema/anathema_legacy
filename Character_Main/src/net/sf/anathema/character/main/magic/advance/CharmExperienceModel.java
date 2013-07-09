@@ -1,7 +1,7 @@
 package net.sf.anathema.character.main.magic.advance;
 
 import net.sf.anathema.character.main.advance.models.AbstractIntegerValueModel;
-import net.sf.anathema.character.main.magic.model.charm.ICharm;
+import net.sf.anathema.character.main.magic.model.charm.Charm;
 import net.sf.anathema.character.main.magic.model.charm.special.ISpecialCharmConfiguration;
 import net.sf.anathema.hero.charms.CharmsModel;
 import net.sf.anathema.hero.charms.CharmsModelFetcher;
@@ -34,8 +34,8 @@ public class CharmExperienceModel extends AbstractIntegerValueModel {
   private int getCharmCosts() {
     int experienceCosts = 0;
     CharmsModel charmConfiguration = CharmsModelFetcher.fetch(hero);
-    Set<ICharm> charmsCalculated = new HashSet<>();
-    for (ICharm charm : charmConfiguration.getLearnedCharms(true)) {
+    Set<Charm> charmsCalculated = new HashSet<>();
+    for (Charm charm : charmConfiguration.getLearnedCharms(true)) {
       int charmCosts = calculateCharmCost(charmConfiguration, charm, charmsCalculated);
       if (charmConfiguration.isAlienCharm(charm)) {
         charmCosts *= 2;
@@ -46,7 +46,7 @@ public class CharmExperienceModel extends AbstractIntegerValueModel {
     return experienceCosts;
   }
 
-  private int calculateCharmCost(CharmsModel charmConfiguration, ICharm charm, Set<ICharm> charmsCalculated) {
+  private int calculateCharmCost(CharmsModel charmConfiguration, Charm charm, Set<Charm> charmsCalculated) {
     ISpecialCharmConfiguration specialCharm = charmConfiguration.getSpecialCharmConfiguration(charm);
     int charmCost = calculator.getCharmCosts(hero, charm, traitConfiguration);
     if (specialCharm != null) {
@@ -68,9 +68,9 @@ public class CharmExperienceModel extends AbstractIntegerValueModel {
     return costsExperience(charmConfiguration, charm, charmsCalculated) ? charmCost : 0;
   }
 
-  private boolean costsExperience(CharmsModel charmConfiguration, ICharm charm, Set<ICharm> charmsCalculated) {
+  private boolean costsExperience(CharmsModel charmConfiguration, Charm charm, Set<Charm> charmsCalculated) {
     if (charmConfiguration.getGroup(charm).isLearned(charm, true)) {
-      for (ICharm mergedCharm : charm.getMergedCharms()) {
+      for (Charm mergedCharm : charm.getMergedCharms()) {
         if (charmsCalculated.contains(mergedCharm) && !isSpecialCharm(charm)) {
           return false;
         }
@@ -80,7 +80,7 @@ public class CharmExperienceModel extends AbstractIntegerValueModel {
     return false;
   }
 
-  private boolean isSpecialCharm(ICharm charm) {
+  private boolean isSpecialCharm(Charm charm) {
     return CharmsModelFetcher.fetch(hero).getSpecialCharmConfiguration(charm) != null;
   }
 }

@@ -3,12 +3,12 @@ package net.sf.anathema.character.main.testing.dummy.template;
 import net.sf.anathema.character.main.caste.CasteType;
 import net.sf.anathema.character.main.caste.ICasteCollection;
 import net.sf.anathema.character.main.caste.CasteCollection;
+import net.sf.anathema.character.main.magic.model.magic.Magic;
 import net.sf.anathema.character.main.template.essence.NullEssenceTemplate;
 import net.sf.anathema.character.main.template.magic.CharmTemplate;
 import net.sf.anathema.character.main.template.magic.DefaultMartialArtsRules;
 import net.sf.anathema.character.main.template.magic.NullCharmSet;
 import net.sf.anathema.character.main.traits.TraitTemplateCollection;
-import net.sf.anathema.character.main.magic.model.magic.IMagic;
 import net.sf.anathema.character.main.magic.model.charm.MartialArtsLevel;
 import net.sf.anathema.character.main.template.ConfiguredModel;
 import net.sf.anathema.character.main.template.HeroTemplate;
@@ -142,7 +142,7 @@ public class DummyHeroTemplate implements HeroTemplate {
 
   private static class DummyMagicTemplate implements IMagicTemplate {
     @Override
-    public boolean canBuyFromFreePicks(IMagic magic) {
+    public boolean canBuyFromFreePicks(Magic magic) {
       return true;
     }
 

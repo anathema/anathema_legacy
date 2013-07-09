@@ -1,13 +1,13 @@
 package net.sf.anathema.character.main.persistence.charm;
 
-import net.sf.anathema.character.main.magic.model.charm.ICharm;
+import net.sf.anathema.character.main.magic.model.charm.Charm;
 import net.sf.anathema.character.main.type.ICharacterType;
 import net.sf.anathema.character.main.magic.model.charm.ICharmLearnListener;
 import net.sf.anathema.character.main.magic.model.charms.ILearningCharmGroup;
 
 public class NullLearningCharmGroup implements ILearningCharmGroup {
   @Override
-  public void toggleLearned(ICharm charm) {
+  public void toggleLearned(Charm charm) {
     //nothing to do
   }
 
@@ -17,37 +17,37 @@ public class NullLearningCharmGroup implements ILearningCharmGroup {
   }
 
   @Override
-  public ICharm[] getCreationLearnedCharms() {
-    return new ICharm[0];
+  public Charm[] getCreationLearnedCharms() {
+    return new Charm[0];
   }
 
   @Override
-  public void learnCharm(ICharm charm, boolean experienced) {
+  public void learnCharm(Charm charm, boolean experienced) {
     //nothing to do
   }
 
   @Override
-  public void learnCharmNoParents(ICharm charm, boolean experienced, boolean announce) {
+  public void learnCharmNoParents(Charm charm, boolean experienced, boolean announce) {
     //nothing to do
   }
 
   @Override
-  public boolean isUnlearnable(ICharm charm) {
+  public boolean isUnlearnable(Charm charm) {
     return false;
   }
 
   @Override
-  public boolean isUnlearnableWithoutConsequences(ICharm charm) {
+  public boolean isUnlearnableWithoutConsequences(Charm charm) {
     return false;
   }
 
   @Override
-  public ICharm[] getExperienceLearnedCharms() {
-    return new ICharm[0];
+  public Charm[] getExperienceLearnedCharms() {
+    return new Charm[0];
   }
 
   @Override
-  public void forgetCharm(ICharm child, boolean experienced) {
+  public void forgetCharm(Charm child, boolean experienced) {
     //nothing to do
   }
 
@@ -62,8 +62,8 @@ public class NullLearningCharmGroup implements ILearningCharmGroup {
   }
 
   @Override
-  public ICharm[] getCoreCharms() {
-    return new ICharm[0];
+  public Charm[] getCoreCharms() {
+    return new Charm[0];
   }
 
   @Override
@@ -77,28 +77,28 @@ public class NullLearningCharmGroup implements ILearningCharmGroup {
   }
 
   @Override
-  public boolean isLearned(ICharm charm) {
+  public boolean isLearned(Charm charm) {
     return false;
   }
 
   @Override
-  public boolean isLearned(ICharm charm, boolean experienced) {
+  public boolean isLearned(Charm charm, boolean experienced) {
     return false;
   }
 
   @Override
-  public void toggleLearnedOnCreation(ICharm charm) {
+  public void toggleLearnedOnCreation(Charm charm) {
     //nothing to do
   }
 
   @Override
-  public void toggleExperienceLearnedCharm(ICharm charm) {
+  public void toggleExperienceLearnedCharm(Charm charm) {
     //nothing to do
   }
 
   @Override
-  public ICharm[] getAllCharms() {
-    return new ICharm[0];
+  public Charm[] getAllCharms() {
+    return new Charm[0];
   }
 
   @Override
@@ -112,7 +112,7 @@ public class NullLearningCharmGroup implements ILearningCharmGroup {
   }
 
   @Override
-  public boolean isCharmFromGroup(ICharm charm) {
+  public boolean isCharmFromGroup(Charm charm) {
     return false;
   }
 

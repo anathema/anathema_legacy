@@ -1,7 +1,7 @@
 package net.sf.anathema.hero.magic.model.charms;
 
 import net.sf.anathema.character.main.dummy.DummyCharmUtilities;
-import net.sf.anathema.character.main.magic.model.charm.ICharm;
+import net.sf.anathema.character.main.magic.model.charm.Charm;
 import net.sf.anathema.character.main.magic.model.charm.duration.SimpleDuration;
 import net.sf.anathema.character.main.magic.model.charm.type.CharmType;
 import net.sf.anathema.character.main.magic.model.combos.Combo;
@@ -24,12 +24,12 @@ public class ComboTest {
   private ComboArbitrator comboRules = new ComboArbitrator() {
 
     @Override
-    protected boolean isCharmLegalByRules(ICharm charm) {
+    protected boolean isCharmLegalByRules(Charm charm) {
       return charm.getDuration() == SimpleDuration.INSTANT_DURATION;
     }
   };
 
-  protected final void addCharm(ICharm charm) {
+  protected final void addCharm(Charm charm) {
     if (comboRules.canBeAddedToCombo(combo, charm)) {
       combo.addCharm(charm, false);
     } else {
@@ -37,15 +37,15 @@ public class ComboTest {
     }
   }
 
-  protected static ICharm createCharm(CharmType charmType, IComboRestrictions restrictions) {
+  protected static Charm createCharm(CharmType charmType, IComboRestrictions restrictions) {
     return DummyCharmUtilities.createCharm(charmType, restrictions);
   }
 
-  protected static ICharm createCharm(String duration, IComboRestrictions restrictions) {
+  protected static Charm createCharm(String duration, IComboRestrictions restrictions) {
     return DummyCharmUtilities.createCharm(duration, restrictions);
   }
 
-  protected static ICharm createCharm(IComboRestrictions restrictions) {
+  protected static Charm createCharm(IComboRestrictions restrictions) {
     return createCharm(CharmType.Reflexive, restrictions);
   }
 
@@ -58,22 +58,22 @@ public class ComboTest {
 
   @Test
   public void testAddedCharmIsIllegal() throws Exception {
-    ICharm charm = DummyCharmUtilities.createCharm(CharmType.Reflexive);
+    Charm charm = DummyCharmUtilities.createCharm(CharmType.Reflexive);
     addCharm(charm);
     assertFalse(comboRules.canBeAddedToCombo(combo, charm));
   }
 
   @Test
   public void testOnlyInstantDurationCombos() throws Exception {
-    final ICharm dummy1 = DummyCharmUtilities.createCharm(CharmType.Reflexive);
+    final Charm dummy1 = DummyCharmUtilities.createCharm(CharmType.Reflexive);
     assertTrue(comboRules.canBeAddedToCombo(combo, dummy1));
-    final ICharm dummy2 = DummyCharmUtilities.createCharm("Other", new ComboRestrictions());
+    final Charm dummy2 = DummyCharmUtilities.createCharm("Other", new ComboRestrictions());
     assertFalse(comboRules.canBeAddedToCombo(combo, dummy2));
   }
 
   @Test
   public void testOnlyOneExtraActionCharm() {
-    ICharm extraActionCharm = DummyCharmUtilities.createCharm(CharmType.ExtraAction, new ValuedTraitType(AbilityType.Archery, 3));
+    Charm extraActionCharm = DummyCharmUtilities.createCharm(CharmType.ExtraAction, new ValuedTraitType(AbilityType.Archery, 3));
     assertTrue(comboRules.canBeAddedToCombo(combo, extraActionCharm));
     addCharm(extraActionCharm);
     assertFalse(
@@ -82,7 +82,7 @@ public class ComboTest {
 
   @Test
   public void testOnlyOneSimpleCharm() {
-    ICharm simpleCharm = DummyCharmUtilities.createCharm(CharmType.Simple, new ValuedTraitType(AbilityType.Archery, 3));
+    Charm simpleCharm = DummyCharmUtilities.createCharm(CharmType.Simple, new ValuedTraitType(AbilityType.Archery, 3));
     assertTrue(comboRules.canBeAddedToCombo(combo, simpleCharm));
     addCharm(simpleCharm);
     assertFalse(comboRules.canBeAddedToCombo(combo, DummyCharmUtilities.createCharm(CharmType.Simple, new ValuedTraitType(AbilityType.Archery, 3))));

@@ -1,8 +1,8 @@
 package net.sf.anathema.character.main.magic.model.charms;
 
-import net.sf.anathema.character.main.magic.model.charm.ICharm;
+import net.sf.anathema.character.main.magic.model.charm.Charm;
 
 public interface ILearningCharmGroupContainer {
 
-  ILearningCharmGroup getLearningCharmGroup(ICharm charm);
+  ILearningCharmGroup getLearningCharmGroup(Charm charm);
 }

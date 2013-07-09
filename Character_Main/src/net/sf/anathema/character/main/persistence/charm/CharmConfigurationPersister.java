@@ -1,7 +1,7 @@
 package net.sf.anathema.character.main.persistence.charm;
 
+import net.sf.anathema.character.main.magic.model.charm.Charm;
 import net.sf.anathema.character.main.magic.model.charms.MartialArtsUtilities;
-import net.sf.anathema.character.main.magic.model.charm.ICharm;
 import net.sf.anathema.character.main.magic.model.charm.CharmIdMap;
 import net.sf.anathema.character.main.magic.model.charm.special.ISpecialCharmConfiguration;
 import net.sf.anathema.character.main.template.magic.ICharmTemplate;
@@ -85,12 +85,12 @@ public class CharmConfigurationPersister {
       Element comboElement = combosElement.addElement(TAG_COMBO);
       textPersister.saveTextualDescription(comboElement, TAG_NAME, combo.getName());
       textPersister.saveTextualDescription(comboElement, TAG_DESCRIPTION, combo.getDescription());
-      for (ICharm charm : combo.getCreationCharms()) {
+      for (Charm charm : combo.getCreationCharms()) {
         Element charmElement = comboElement.addElement(TAG_CHARM);
         charmElement.addAttribute(ATTRIB_NAME, charm.getId());
         charmElement.addAttribute(ATTRIB_TYPE, charm.getCharacterType().getId());
       }
-      for (ICharm charm : combo.getExperiencedCharms()) {
+      for (Charm charm : combo.getExperiencedCharms()) {
         Element charmElement = comboElement.addElement(TAG_CHARM);
         charmElement.addAttribute(ATTRIB_NAME, charm.getId());
         charmElement.addAttribute(ATTRIB_TYPE, charm.getCharacterType().getId());
@@ -143,7 +143,7 @@ public class CharmConfigurationPersister {
   private void learnCharm(CharmsModel charmConfiguration, ISpecialCharmPersister specialPersister, ILearningCharmGroup group, Element charmElement,
                           String charmId) {
     try {
-      ICharm charm = charmConfiguration.getCharmById(charmId);
+      Charm charm = charmConfiguration.getCharmById(charmId);
       if (!group.isLearned(charm, false)) {
         group.learnCharmNoParents(charm, isExperienceLearned(charmElement), false);
       }
@@ -219,7 +219,7 @@ public class CharmConfigurationPersister {
         boolean charmExperiencedLearned = isExperienceLearned(charmElement);
         String charmId = charmElement.attributeValue(ATTRIB_NAME);
         try {
-          ICharm comboCharm = charms.getCharmById(charmId);
+          Charm comboCharm = charms.getCharmById(charmId);
           comboConfiguration.addCharmToCombo(comboCharm, charmExperiencedLearned);
         } catch (IllegalArgumentException e) {
           messageIndicator.addMessage("CharmPersistence.NoCharmFound", MessageType.WARNING, charmId);

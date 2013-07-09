@@ -12,7 +12,7 @@ import com.itextpdf.text.pdf.PdfContentByte;
 import com.itextpdf.text.pdf.PdfPCell;
 import com.itextpdf.text.pdf.PdfPTable;
 import com.itextpdf.text.pdf.PdfTemplate;
-import net.sf.anathema.character.main.magic.model.magic.IMagic;
+import net.sf.anathema.character.main.magic.model.magic.Magic;
 import net.sf.anathema.character.main.magic.model.magic.IMagicStats;
 import net.sf.anathema.character.main.traits.TraitType;
 import net.sf.anathema.hero.sheet.pdf.session.ReportSession;
@@ -94,7 +94,7 @@ public class GenericCharmTableEncoder extends AbstractTableEncoder<ReportSession
 
   private PdfPCell createGenericCell(MagicContentHelper helper, TraitType type, String genericId, PdfTemplate learnedTemplate, PdfTemplate notLearnedTemplate) throws DocumentException {
     final String charmId = genericId + "." + type.getId();
-    List<IMagic> allLearnedMagic = helper.getAllLearnedMagic();
+    List<Magic> allLearnedMagic = helper.getAllLearnedMagic();
     boolean isLearned = helper.isCharmLearned(allLearnedMagic, charmId);
     Image image = Image.getInstance(isLearned ? learnedTemplate : notLearnedTemplate);
     TableCell tableCell = new TableCell(image);

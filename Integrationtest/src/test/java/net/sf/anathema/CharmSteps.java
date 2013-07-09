@@ -3,7 +3,7 @@ package net.sf.anathema;
 import com.google.inject.Inject;
 import cucumber.api.java.en.And;
 import cucumber.api.java.en.Then;
-import net.sf.anathema.character.main.magic.model.charm.ICharm;
+import net.sf.anathema.character.main.magic.model.charm.Charm;
 import net.sf.anathema.hero.charms.CharmsModel;
 import net.sf.anathema.character.main.magic.model.charm.special.IMultipleEffectCharmConfiguration;
 
@@ -21,20 +21,20 @@ public class CharmSteps {
 
   @And("^she learns the Charm (.*)$")
   public void she_learns_the_Charm(String id) throws Throwable {
-    ICharm charm = character.getCharms().getCharmById(id);
+    Charm charm = character.getCharms().getCharmById(id);
     character.getCharms().getGroup(charm).toggleLearned(charm);
   }
 
   @Then("^she can learn the Charm (.*)$")
   public void she_can_learn_the_Charm(String id) throws Throwable {
-    ICharm charm = character.getCharms().getCharmById(id);
+    Charm charm = character.getCharms().getCharmById(id);
     boolean learnable = character.getCharms().isLearnable(charm);
     assertThat(learnable, is(true));
   }
 
   @Then("^she can not learn the Charm (.*)$")
   public void she_can_not_learn_the_Charm(String id) throws Throwable {
-    ICharm charm = character.getCharms().getCharmById(id);
+    Charm charm = character.getCharms().getCharmById(id);
     boolean learnable = character.getCharms().isLearnable(charm);
     assertThat(learnable, is(false));
   }

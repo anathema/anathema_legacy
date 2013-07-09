@@ -1,8 +1,8 @@
 package net.sf.anathema.hero.magic.model.charms;
 
+import net.sf.anathema.character.main.magic.model.charm.Charm;
 import net.sf.anathema.character.main.magic.model.charm.CharmSpecialistImpl;
 import net.sf.anathema.character.main.magic.model.charm.special.ComplexMultipleEffectCharm;
-import net.sf.anathema.character.main.magic.model.charm.ICharm;
 import net.sf.anathema.character.main.magic.model.charmtree.ICharmLearnableArbitrator;
 import net.sf.anathema.character.main.magic.model.charm.special.IMultipleEffectCharm;
 import net.sf.anathema.character.main.magic.model.charm.special.ISubeffect;
@@ -18,7 +18,7 @@ import static org.mockito.Mockito.mock;
 public class ComplexMultipleEffectCharmTest {
   private CharmSpecialistImpl specialist = new CharmSpecialistImpl(new DummyHero());
   private ICharmLearnableArbitrator arbitrator = mock(ICharmLearnableArbitrator.class);
-  private ICharm baseCharm = mock(ICharm.class);
+  private Charm baseCharm = mock(Charm.class);
   private IMultipleEffectCharm charmWithThreeEffects =
           new ComplexMultipleEffectCharm("Solar.TestCharm", new String[]{"A", "B", "C"}, new HashMap<String, String>());
 

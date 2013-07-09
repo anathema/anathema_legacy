@@ -3,22 +3,22 @@ package net.sf.anathema.character.main.magic.model.charm;
 public class CharmLearnAdapter implements ICharmLearnListener {
 
   @Override
-  public void charmLearned(ICharm charm) {
+  public void charmLearned(Charm charm) {
     // Nothing to do
   }
 
   @Override
-  public void charmForgotten(ICharm charm) {
+  public void charmForgotten(Charm charm) {
     // Nothing to do
   }
 
   @Override
-  public void charmNotLearnable(ICharm charm) {
+  public void charmNotLearnable(Charm charm) {
     // Nothing to do
   }
 
   @Override
-  public void charmNotUnlearnable(ICharm charm) {
+  public void charmNotUnlearnable(Charm charm) {
     // Nothing to do
   }
 

@@ -3,9 +3,9 @@ package net.sf.anathema.character.main.magic.parser.charms;
 import net.sf.anathema.character.main.framework.data.IExtensibleDataSet;
 import net.sf.anathema.character.main.framework.data.IExtensibleDataSetCompiler;
 import net.sf.anathema.character.main.magic.model.charm.Charm;
+import net.sf.anathema.character.main.magic.model.charm.CharmImpl;
 import net.sf.anathema.character.main.magic.parser.charms.special.ReflectionSpecialCharmBuilder;
 import net.sf.anathema.character.main.magic.parser.charms.special.SpecialCharmBuilder;
-import net.sf.anathema.character.main.magic.model.charm.ICharm;
 import net.sf.anathema.character.main.magic.model.charm.CharmException;
 import net.sf.anathema.character.main.magic.model.charm.special.ISpecialCharm;
 import net.sf.anathema.character.main.traits.TraitType;
@@ -150,19 +150,19 @@ public class CharmCompiler implements IExtensibleDataSetCompiler {
 
   private void buildTypeCharms(Identifier type, Document charmDocument, ICharmSetBuilder builder) throws PersistenceException {
     List<ISpecialCharm> specialCharms = new ArrayList<>();
-    ICharm[] charmArray = builder.buildCharms(charmDocument, specialCharms);
-    for (ICharm charm : charmArray) {
+    Charm[] charmArray = builder.buildCharms(charmDocument, specialCharms);
+    for (Charm charm : charmArray) {
       charmCache.addCharm(type, charm);
     }
     charmCache.addSpecialCharmData(type, specialCharms);
   }
 
-  private void extractParents(Iterable<ICharm> charms) {
-    Map<String, Charm> charmsById = new HashMap<>();
-    for (ICharm charm : charms) {
-      charmsById.put(charm.getId(), (Charm) charm);
+  private void extractParents(Iterable<Charm> charms) {
+    Map<String, CharmImpl> charmsById = new HashMap<>();
+    for (Charm charm : charms) {
+      charmsById.put(charm.getId(), (CharmImpl) charm);
     }
-    for (Charm charm : charmsById.values()) {
+    for (CharmImpl charm : charmsById.values()) {
       charm.extractParentCharms(charmsById);
     }
   }

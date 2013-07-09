@@ -7,8 +7,8 @@ import com.itextpdf.text.pdf.MultiColumnText;
 import com.itextpdf.text.pdf.PdfPTable;
 import com.itextpdf.text.pdf.PdfWriter;
 import net.sf.anathema.character.main.magic.display.view.charms.CharmDescriptionProviderExtractor;
-import net.sf.anathema.character.main.magic.model.charm.ICharm;
-import net.sf.anathema.character.main.magic.model.magic.IMagic;
+import net.sf.anathema.character.main.magic.model.charm.Charm;
+import net.sf.anathema.character.main.magic.model.magic.Magic;
 import net.sf.anathema.character.main.magic.model.spells.ISpell;
 import net.sf.anathema.character.main.magic.description.MagicDescription;
 import net.sf.anathema.hero.charms.CharmsModel;
@@ -81,7 +81,7 @@ public class MagicReport extends AbstractPdfReport {
 
   public void printCharms(MultiColumnText columnText, Hero hero) throws DocumentException {
     String currentGroup = "";
-    for (ICharm charm : getCurrentCharms(hero)) {
+    for (Charm charm : getCurrentCharms(hero)) {
       CharmStats charmStats = createCharmStats(hero, charm);
       if (!currentGroup.equals(charmStats.getGroupName(resources))) {
         currentGroup = charmStats.getGroupName(resources);
@@ -105,12 +105,12 @@ public class MagicReport extends AbstractPdfReport {
     columnText.addElement(partFactory.createDataPhrase(targetLabel, target));
   }
 
-  private void addMagicName(IMagic magic, MultiColumnText columnText) throws DocumentException {
+  private void addMagicName(Magic magic, MultiColumnText columnText) throws DocumentException {
     String charmName = new MagicDisplayLabeler(resources).getLabelForMagic(magic);
     columnText.addElement(partFactory.createCharmTitle(charmName));
   }
 
-  private void addCharmData(CharmStats charmStats, ICharm charm, MultiColumnText columnText) throws DocumentException {
+  private void addCharmData(CharmStats charmStats, Charm charm, MultiColumnText columnText) throws DocumentException {
     PdfPTable table = partFactory.createDataTable();
     addCostsCell(charm, table);
     addTypeCell(charm, table);
@@ -119,13 +119,13 @@ public class MagicReport extends AbstractPdfReport {
     columnText.addElement(table);
   }
 
-  private void addCostsCell(ICharm charm, PdfPTable table) {
+  private void addCostsCell(Charm charm, PdfPTable table) {
     String costsLabel = resources.getString("MagicReport.Costs.Label") + ": ";
     String costsValue = new ScreenDisplayInfoStringBuilder(resources).createCostString(charm);
     table.addCell(partFactory.createDataCell(costsLabel, costsValue));
   }
 
-  private void addTypeCell(ICharm charm, PdfPTable table) {
+  private void addTypeCell(Charm charm, PdfPTable table) {
     String typeLabel = resources.getString("MagicReport.Type.Label") + ": ";
     String typeValue = new VerboseCharmTypeStringBuilder(resources).createTypeString(charm.getCharmTypeModel());
     table.addCell(partFactory.createDataCell(typeLabel, typeValue));
@@ -143,7 +143,7 @@ public class MagicReport extends AbstractPdfReport {
     table.addCell(partFactory.createDoubleDataCell(durationLabel, durationString));
   }
 
-  private void addCharmDescription(IMagic magic, MultiColumnText columnText) throws DocumentException {
+  private void addCharmDescription(Magic magic, MultiColumnText columnText) throws DocumentException {
     MagicDescription charmDescription = getCharmDescription(magic);
     if (charmDescription.isEmpty()) {
       String sourceString = new MagicSourceStringBuilder<>(resources).createSourceString(magic);
@@ -155,7 +155,7 @@ public class MagicReport extends AbstractPdfReport {
     }
   }
 
-  private CharmStats createCharmStats(Hero hero, ICharm charm) {
+  private CharmStats createCharmStats(Hero hero, Charm charm) {
     return new CharmStats(charm, new MagicContentHelper(hero));
   }
 
@@ -163,7 +163,7 @@ public class MagicReport extends AbstractPdfReport {
     return new SpellStats(spell);
   }
 
-  private MagicDescription getCharmDescription(IMagic magic) {
+  private MagicDescription getCharmDescription(Magic magic) {
     return CharmDescriptionProviderExtractor.CreateFor(model, resources).getCharmDescription(magic);
   }
 
@@ -188,7 +188,7 @@ public class MagicReport extends AbstractPdfReport {
     return SpellsModelFetcher.fetch(hero).getLearnedSpells(experienced);
   }
 
-  private ICharm[] getCurrentCharms(Hero hero) {
+  private Charm[] getCurrentCharms(Hero hero) {
     boolean experienced = ExperienceModelFetcher.fetch(hero).isExperienced();
     CharmsModel charmsModel = CharmsModelFetcher.fetch(hero);
     return charmsModel.getLearnedCharms(experienced);

@@ -1,6 +1,6 @@
 package net.sf.anathema.hero.magic;
 
-import net.sf.anathema.character.main.magic.model.magic.IMagic;
+import net.sf.anathema.character.main.magic.model.magic.Magic;
 import net.sf.anathema.character.main.magic.model.charm.special.IMultiLearnableCharm;
 
 public interface MagicCollection {
@@ -9,7 +9,7 @@ public interface MagicCollection {
 
   int getLearnCount(IMultiLearnableCharm multiLearnableCharm);
 
-  boolean isLearned(IMagic magic);
+  boolean isLearned(Magic magic);
   
   void setLearnCount(String charmName, int newValue);
 

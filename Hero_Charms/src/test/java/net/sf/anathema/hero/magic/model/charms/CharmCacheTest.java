@@ -1,8 +1,8 @@
 package net.sf.anathema.hero.magic.model.charms;
 
 import com.google.common.collect.Lists;
+import net.sf.anathema.character.main.magic.model.charm.Charm;
 import net.sf.anathema.character.main.magic.parser.charms.CharmCache;
-import net.sf.anathema.character.main.magic.model.charm.ICharm;
 import net.sf.anathema.character.main.magic.model.charm.special.ISpecialCharm;
 import net.sf.anathema.character.main.testing.dummy.DummyExaltCharacterType;
 import net.sf.anathema.lib.util.SimpleIdentifier;
@@ -29,10 +29,10 @@ public class CharmCacheTest {
 
   @Test
   public void matchesCharacterTypesToIdentificatesForCharmLookup() throws Exception {
-    ICharm charm = Mockito.mock(ICharm.class);
+    Charm charm = Mockito.mock(Charm.class);
     SimpleIdentifier solar = new SimpleIdentifier("Dummy");
     cache.addCharm(solar, charm);
-    ICharm[] charmData = cache.getCharms(new DummyExaltCharacterType());
+    Charm[] charmData = cache.getCharms(new DummyExaltCharacterType());
     assertThat(charmData[0], is(charm));
   }
 

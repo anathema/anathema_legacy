@@ -31,7 +31,7 @@ import java.awt.event.MouseEvent;
 import static net.sf.anathema.lib.gui.layout.LayoutUtils.withoutInsets;
 import static net.sf.anathema.lib.gui.swing.GuiUtilities.calculateComboBoxSize;
 
-public abstract class AbstractCascadeSelectionView implements ICascadeSelectionView {
+public abstract class AbstractCascadeSelectionView implements CascadeSelectionView {
 
   private final JPanel selectionPanel = new JPanel(new MigLayout(withoutInsets().wrapAfter(4).fillX()));
   private IChangeableJComboBox<Identifier> groupComboBox;

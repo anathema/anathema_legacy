@@ -2,7 +2,7 @@ package net.sf.anathema.character.main.magic.model.charm.special;
 
 import net.sf.anathema.character.main.library.trait.Trait;
 import net.sf.anathema.character.main.library.trait.favorable.IncrementChecker;
-import net.sf.anathema.character.main.magic.model.charm.ICharm;
+import net.sf.anathema.character.main.magic.model.charm.Charm;
 import net.sf.anathema.character.main.magic.model.charm.OxBodyCategory;
 import net.sf.anathema.character.main.traits.TraitType;
 import net.sf.anathema.hero.health.HealthLevelType;
@@ -23,10 +23,10 @@ public class OxBodyTechniqueConfiguration implements IOxBodyTechniqueConfigurati
   private final Announcer<ISpecialCharmLearnListener> control = Announcer.to(ISpecialCharmLearnListener.class);
   private final IncrementChecker incrementChecker;
   private final OxBodyCategory[] categories;
-  private final ICharm oxBodyTechnique;
+  private final Charm oxBodyTechnique;
   private final IHealthLevelProvider healthLevelProvider;
 
-  public OxBodyTechniqueConfiguration(final Hero hero, ICharm oxBodyTechnique, final TraitType[] relevantTraits,
+  public OxBodyTechniqueConfiguration(final Hero hero, Charm oxBodyTechnique, final TraitType[] relevantTraits,
                                       final OxBodyTechniqueArbitrator arbitrator, IOxBodyTechniqueCharm properties) {
     this.oxBodyTechnique = oxBodyTechnique;
     incrementChecker = new IncrementChecker() {
@@ -114,7 +114,7 @@ public class OxBodyTechniqueConfiguration implements IOxBodyTechniqueConfigurati
   }
 
   @Override
-  public ICharm getCharm() {
+  public Charm getCharm() {
     return oxBodyTechnique;
   }
 

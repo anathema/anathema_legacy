@@ -1,8 +1,8 @@
 package net.sf.anathema.hero.magic.presenter;
 
+import net.sf.anathema.character.main.magic.model.charm.Charm;
 import net.sf.anathema.hero.magic.display.coloring.ExternalPrerequisitesColorer;
 import net.sf.anathema.character.main.magic.model.charm.CharmGroup;
-import net.sf.anathema.character.main.magic.model.charm.ICharm;
 import net.sf.anathema.character.main.magic.model.charm.ICharmGroup;
 import net.sf.anathema.character.main.dummy.DummyCharm;
 import net.sf.anathema.character.main.testing.dummy.DummyMundaneCharacterType;
@@ -22,14 +22,14 @@ public class ExternalPrerequisitesColorerTest {
   @Test
   public void doesNotColorParentCharmFromCurrentGroup() throws Exception {
     DummyCharm parent = createParentCharmFromGroup("CurrentGroup");
-    ICharm child = createChildCharm(parent);
+    Charm child = createChildCharm(parent);
     ICharmGroup currentGroup = createGroupWithCharms(parent, child);
     selectGroup(currentGroup);
     colorAllPrerequisitesOfChild(child);
     verifyZeroInteractions(coloring);
   }
 
-  private void colorAllPrerequisitesOfChild(ICharm child) {
+  private void colorAllPrerequisitesOfChild(Charm child) {
     ExternalPrerequisitesColorer colorer = new ExternalPrerequisitesColorer(informer, coloring);
     colorer.color(child);
   }
@@ -38,8 +38,8 @@ public class ExternalPrerequisitesColorerTest {
     when(informer.getCurrentGroup()).thenReturn(currentGroup);
   }
 
-  private ICharmGroup createGroupWithCharms(DummyCharm parent, ICharm child) {
-    return new CharmGroup(new DummyMundaneCharacterType(), "CurrentGroup", new ICharm[]{parent, child}, false);
+  private ICharmGroup createGroupWithCharms(DummyCharm parent, Charm child) {
+    return new CharmGroup(new DummyMundaneCharacterType(), "CurrentGroup", new Charm[]{parent, child}, false);
   }
 
   private DummyCharm createParentCharmFromGroup(String group) {
@@ -49,7 +49,7 @@ public class ExternalPrerequisitesColorerTest {
     return parent;
   }
 
-  private ICharm createChildCharm(DummyCharm parent) {
+  private Charm createChildCharm(DummyCharm parent) {
     return new DummyCharm("child", parent);
   }
 }

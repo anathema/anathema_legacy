@@ -1,6 +1,6 @@
 package net.sf.anathema.hero.combos.model;
 
-import net.sf.anathema.character.main.magic.model.charm.ICharm;
+import net.sf.anathema.character.main.magic.model.charm.Charm;
 import net.sf.anathema.hero.charms.CharmsModelFetcher;
 import net.sf.anathema.hero.combos.CombosModel;
 import net.sf.anathema.character.main.magic.display.view.combos.CharacterChangeComboListener;
@@ -44,7 +44,7 @@ public class CombosModelImpl implements CombosModel {
   public void initializeListening(ChangeAnnouncer announcer) {
     CharmsModelFetcher.fetch(hero).addCharmLearnListener(new CharmLearnAdapter() {
       @Override
-      public void charmForgotten(ICharm charm) {
+      public void charmForgotten(Charm charm) {
         checkCombos(charm);
       }
     });
@@ -56,11 +56,11 @@ public class CombosModelImpl implements CombosModel {
     rules.setCrossPrerequisiteTypeComboAllowed(allowed);
   }
 
-  private void checkCombos(ICharm charm) {
+  private void checkCombos(Charm charm) {
     List<ICombo> deletionList = new ArrayList<>();
     for (ICombo combo : comboList) {
       if (combo.contains(charm)) {
-        combo.removeCharms(new ICharm[]{charm});
+        combo.removeCharms(new Charm[]{charm});
         if (combo.getCharms().length < 2) {
           deletionList.add(combo);
         }
@@ -68,7 +68,7 @@ public class CombosModelImpl implements CombosModel {
       }
     }
     if (editCombo.contains(charm)) {
-      removeCharmsFromCombo(new ICharm[]{charm});
+      removeCharmsFromCombo(new Charm[]{charm});
     }
     for (ICombo combo : deletionList) {
       deleteCombo(combo);
@@ -76,7 +76,7 @@ public class CombosModelImpl implements CombosModel {
   }
 
   @Override
-  public void addCharmToCombo(ICharm charm, boolean experienced) {
+  public void addCharmToCombo(Charm charm, boolean experienced) {
     if (rules.canBeAddedToCombo(getEditCombo(), charm)) {
       getEditCombo().addCharm(charm, experienced);
     } else {
@@ -90,7 +90,7 @@ public class CombosModelImpl implements CombosModel {
   }
 
   @Override
-  public void removeCharmsFromCombo(ICharm[] charms) {
+  public void removeCharmsFromCombo(Charm[] charms) {
     editCombo.removeCharms(charms);
   }
 
@@ -155,7 +155,7 @@ public class CombosModelImpl implements CombosModel {
   }
 
   @Override
-  public boolean isComboLegal(ICharm charm) {
+  public boolean isComboLegal(Charm charm) {
     return rules.canBeAddedToCombo(getEditCombo(), charm);
   }
 

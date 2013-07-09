@@ -1,14 +1,14 @@
 package net.sf.anathema.character.main.magic.model.charms;
 
-import net.sf.anathema.character.main.magic.model.charm.ICharm;
+import net.sf.anathema.character.main.magic.model.charm.Charm;
 
 public interface IBasicLearnCharmGroup {
 
-  boolean isLearned(ICharm charm);
+  boolean isLearned(Charm charm);
 
-  boolean isLearned(ICharm charm, boolean experienced);
+  boolean isLearned(Charm charm, boolean experienced);
 
-  void toggleLearnedOnCreation(ICharm charm);
+  void toggleLearnedOnCreation(Charm charm);
 
-  void toggleExperienceLearnedCharm(ICharm charm);
+  void toggleExperienceLearnedCharm(Charm charm);
 }

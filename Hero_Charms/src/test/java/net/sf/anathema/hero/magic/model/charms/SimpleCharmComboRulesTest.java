@@ -1,6 +1,6 @@
 package net.sf.anathema.hero.magic.model.charms;
 
-import net.sf.anathema.character.main.magic.model.charm.ICharm;
+import net.sf.anathema.character.main.magic.model.charm.Charm;
 import net.sf.anathema.character.main.magic.model.charm.type.CharmType;
 import net.sf.anathema.character.main.dummy.DummyCharmUtilities;
 import net.sf.anathema.character.main.magic.model.combos.IComboRules;
@@ -16,15 +16,15 @@ public class SimpleCharmComboRulesTest extends AbstractComboRulesTestCase {
 
   @Test
   public void testCharmComboTwoSimple() {
-    ICharm charm1 = DummyCharmUtilities.createCharm(CharmType.Simple);
-    ICharm charm2 = DummyCharmUtilities.createCharm(CharmType.Simple);
+    Charm charm1 = DummyCharmUtilities.createCharm(CharmType.Simple);
+    Charm charm2 = DummyCharmUtilities.createCharm(CharmType.Simple);
     assertFalse(rules.isComboLegal(charm1, charm2));
   }
 
   @Test
   public void testCharmComboSimpleReflexive() throws Exception {
-    ICharm charm1 = DummyCharmUtilities.createCharm(CharmType.Simple);
-    ICharm charm2 = DummyCharmUtilities.createCharm(CharmType.Reflexive);
+    Charm charm1 = DummyCharmUtilities.createCharm(CharmType.Simple);
+    Charm charm2 = DummyCharmUtilities.createCharm(CharmType.Reflexive);
     assertTrue(rules.isComboLegal(charm1, charm2));
   }
 

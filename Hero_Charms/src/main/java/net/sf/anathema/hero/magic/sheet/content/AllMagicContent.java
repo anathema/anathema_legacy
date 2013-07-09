@@ -1,6 +1,6 @@
 package net.sf.anathema.hero.magic.sheet.content;
 
-import net.sf.anathema.character.main.magic.model.magic.IMagic;
+import net.sf.anathema.character.main.magic.model.magic.Magic;
 import net.sf.anathema.character.main.magic.model.magic.IMagicStats;
 import net.sf.anathema.character.main.magic.model.magic.IMagicVisitor;
 import net.sf.anathema.hero.sheet.pdf.session.PageBreakChecker;
@@ -66,7 +66,7 @@ public class AllMagicContent extends AbstractMagicContent {
 
   private void addConcreteLearnedMagicForPrint(List<IMagicStats> printStats) {
     IMagicVisitor statsCollector = new MagicStatsFactoryVisitor(session.getHero(), printStats);
-    for (IMagic magic : helper.getAllLearnedMagic()) {
+    for (Magic magic : helper.getAllLearnedMagic()) {
       magic.accept(statsCollector);
     }
   }

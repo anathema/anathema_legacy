@@ -1,8 +1,8 @@
 package net.sf.anathema.hero.magic.model.charms.special;
 
+import net.sf.anathema.character.main.magic.model.charm.Charm;
 import net.sf.anathema.character.main.magic.model.charm.special.ISubeffectCharmConfiguration;
 import net.sf.anathema.character.main.magic.model.charm.special.MultipleEffectCharmConfiguration;
-import net.sf.anathema.character.main.magic.model.charm.ICharm;
 import net.sf.anathema.character.main.magic.model.charm.special.ISubeffect;
 import net.sf.anathema.character.main.magic.model.charm.special.ISubeffectCharm;
 import net.sf.anathema.character.main.magic.model.charm.CharmSpecialist;
@@ -12,7 +12,7 @@ public class SubeffectCharmConfiguration extends MultipleEffectCharmConfiguratio
 
   private final double pointCost;
 
-  public SubeffectCharmConfiguration(CharmSpecialist specialist, ICharm charm, ISubeffectCharm visited,
+  public SubeffectCharmConfiguration(CharmSpecialist specialist, Charm charm, ISubeffectCharm visited,
                                      IExtendedCharmLearnableArbitrator arbitrator) {
     super(specialist, charm, visited, arbitrator);
     this.pointCost = visited.getPointCost();

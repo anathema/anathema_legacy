@@ -1,6 +1,6 @@
 package net.sf.anathema.character.main.magic.model.charmtree.builder;
 
-import net.sf.anathema.character.main.magic.model.charm.ICharm;
+import net.sf.anathema.character.main.magic.model.charm.Charm;
 import net.sf.anathema.character.main.magic.model.charm.IndirectCharmRequirement;
 import net.sf.anathema.graph.nodes.IIdentifiedRegularNode;
 
@@ -9,10 +9,10 @@ import java.util.Map;
 
 public class CharmNodeConnector {
 
-  public static void connectNodes(Collection<ICharm> groupCharms, Map<String, IIdentifiedRegularNode> charmNodesById) {
-    for (ICharm charm : groupCharms) {
+  public static void connectNodes(Collection<Charm> groupCharms, Map<String, IIdentifiedRegularNode> charmNodesById) {
+    for (Charm charm : groupCharms) {
       IIdentifiedRegularNode childNode = charmNodesById.get(charm.getId());
-      for (ICharm parentCharm : charm.getRenderingPrerequisiteCharms()) {
+      for (Charm parentCharm : charm.getRenderingPrerequisiteCharms()) {
         IIdentifiedRegularNode parentNode = charmNodesById.get(parentCharm.getId());
         connectNodes(childNode, parentNode);
       }

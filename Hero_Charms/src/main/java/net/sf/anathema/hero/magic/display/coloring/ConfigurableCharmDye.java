@@ -1,6 +1,6 @@
 package net.sf.anathema.hero.magic.display.coloring;
 
-import net.sf.anathema.character.main.magic.model.charm.ICharm;
+import net.sf.anathema.character.main.magic.model.charm.Charm;
 import net.sf.anathema.character.main.magic.display.view.charmtree.CharmGroupInformer;
 
 import java.util.ArrayList;
@@ -20,7 +20,7 @@ public class ConfigurableCharmDye implements CharmDye {
     colorers.add(new NonCharmPrerequisitesColorer(coloring));
   }
 
-  public void colorCharm(ICharm charm) {
+  public void colorCharm(Charm charm) {
     coloring.colorCharm(charm);
   }
 
@@ -28,14 +28,14 @@ public class ConfigurableCharmDye implements CharmDye {
     if (!groupInformer.hasGroupSelected()) {
       return;
     }
-    for (ICharm charm : getAllCharmsFromCurrentGroup()) {
+    for (Charm charm : getAllCharmsFromCurrentGroup()) {
       for (CharmColorer colorer : colorers) {
         colorer.color(charm);
       }
     }
   }
 
-  private ICharm[] getAllCharmsFromCurrentGroup() {
+  private Charm[] getAllCharmsFromCurrentGroup() {
     return groupInformer.getCurrentGroup().getAllCharms();
   }
 }

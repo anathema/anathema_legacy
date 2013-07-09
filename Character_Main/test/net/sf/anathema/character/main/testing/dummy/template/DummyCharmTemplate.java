@@ -1,8 +1,8 @@
 package net.sf.anathema.character.main.testing.dummy.template;
 
 import net.sf.anathema.character.main.caste.CasteType;
+import net.sf.anathema.character.main.magic.model.charm.Charm;
 import net.sf.anathema.character.main.template.magic.DefaultMartialArtsRules;
-import net.sf.anathema.character.main.magic.model.charm.ICharm;
 import net.sf.anathema.character.main.magic.model.charm.MartialArtsLevel;
 import net.sf.anathema.character.main.template.magic.ICharmTemplate;
 import net.sf.anathema.character.main.template.magic.MartialArtsRules;
@@ -10,13 +10,13 @@ import net.sf.anathema.character.main.template.magic.MartialArtsRules;
 public class DummyCharmTemplate implements ICharmTemplate {
 
   @Override
-  public ICharm[] getCharms() {
-    return new ICharm[0];
+  public Charm[] getCharms() {
+    return new Charm[0];
   }
 
   @Override
-  public ICharm[] getMartialArtsCharms() {
-    return new ICharm[0];
+  public Charm[] getMartialArtsCharms() {
+    return new Charm[0];
   }
 
   @Override

@@ -5,7 +5,7 @@ import com.itextpdf.text.Phrase;
 import net.sf.anathema.cards.layout.ICardReportResourceProvider;
 import net.sf.anathema.character.main.magic.model.magic.Cost;
 import net.sf.anathema.character.main.magic.model.magic.HealthCost;
-import net.sf.anathema.character.main.magic.model.magic.IMagic;
+import net.sf.anathema.character.main.magic.model.magic.Magic;
 import net.sf.anathema.character.main.magic.description.MagicDescription;
 import net.sf.anathema.character.main.magic.model.charmtree.builder.stringbuilder.ScreenDisplayInfoStringBuilder;
 import net.sf.anathema.character.main.magic.model.charmtree.builder.stringbuilder.source.MagicSourceStringBuilder;
@@ -13,12 +13,12 @@ import net.sf.anathema.lib.resources.Resources;
 
 public abstract class AbstractMagicCardData implements ICardData {
 
-  private IMagic magic;
+  private Magic magic;
   private Resources resources;
   private MagicDescription description;
   private ICardReportResourceProvider resourceProvider;
 
-  public AbstractMagicCardData(IMagic magic, MagicDescription description, ICardReportResourceProvider resourceProvider, Resources resources) {
+  public AbstractMagicCardData(Magic magic, MagicDescription description, ICardReportResourceProvider resourceProvider, Resources resources) {
     this.magic = magic;
     this.resources = resources;
     this.resourceProvider = resourceProvider;
@@ -40,7 +40,7 @@ public abstract class AbstractMagicCardData implements ICardData {
 
   @Override
   public String getSource() {
-    String source = new MagicSourceStringBuilder<IMagic>(resources).createSourceString(magic);
+    String source = new MagicSourceStringBuilder<Magic>(resources).createSourceString(magic);
     source = source.replaceAll(resources.getString("CardsReport.MoEP.Long"), resources.getString("CardsReport.MoEP.Short"));
     return source;
   }
@@ -60,7 +60,7 @@ public abstract class AbstractMagicCardData implements ICardData {
     }
   }
 
-  protected boolean hasCost(IMagic magic) {
+  protected boolean hasCost(Magic magic) {
     return magic.getTemporaryCost().getEssenceCost() != Cost.NULL_COST ||
            magic.getTemporaryCost().getWillpowerCost() != Cost.NULL_COST ||
            magic.getTemporaryCost().getHealthCost() != HealthCost.NULL_HEALTH_COST ||

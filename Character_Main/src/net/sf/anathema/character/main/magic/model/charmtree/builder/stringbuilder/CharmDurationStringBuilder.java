@@ -1,7 +1,7 @@
 package net.sf.anathema.character.main.magic.model.charmtree.builder.stringbuilder;
 
-import net.sf.anathema.character.main.magic.model.charm.ICharm;
-import net.sf.anathema.character.main.magic.model.magic.IMagic;
+import net.sf.anathema.character.main.magic.model.charm.Charm;
+import net.sf.anathema.character.main.magic.model.magic.Magic;
 import net.sf.anathema.lib.gui.TooltipBuilder;
 import net.sf.anathema.lib.resources.Resources;
 
@@ -13,11 +13,11 @@ public class CharmDurationStringBuilder implements IMagicTooltipStringBuilder {
   }
 
   @Override
-  public void buildStringForMagic(StringBuilder builder, IMagic magic, Object details) {
-    if (magic instanceof ICharm) {
+  public void buildStringForMagic(StringBuilder builder, Magic magic, Object details) {
+    if (magic instanceof Charm) {
       builder.append(resources.getString("CharmTreeView.ToolTip.Duration"));
       builder.append(TooltipBuilder.ColonSpace);
-      builder.append(((ICharm) magic).getDuration().getText(resources));
+      builder.append(((Charm) magic).getDuration().getText(resources));
       builder.append(TooltipBuilder.HtmlLineBreak);
     }
   }

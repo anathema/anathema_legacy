@@ -1,9 +1,9 @@
 package net.sf.anathema.character.main.magic.model.charmtree;
 
+import net.sf.anathema.character.main.magic.model.charm.Charm;
 import net.sf.anathema.character.main.magic.model.charm.CharmGroup;
 import net.sf.anathema.character.main.magic.model.charm.ICharmGroup;
 import net.sf.anathema.character.main.magic.model.charms.MartialArtsUtilities;
-import net.sf.anathema.character.main.magic.model.charm.ICharm;
 import net.sf.anathema.character.main.template.magic.ICharmTemplate;
 
 import java.util.ArrayList;
@@ -16,37 +16,37 @@ import java.util.Set;
 
 public class CharmTree implements ICharmTree {
 
-  private final Map<String, ICharm> charmById = new HashMap<>();
-  private ICharm[] allCharms;
+  private final Map<String, Charm> charmById = new HashMap<>();
+  private Charm[] allCharms;
 
   public CharmTree(ICharmTemplate charmTemplate) {
     this(charmTemplate.getCharms());
   }
 
-  public CharmTree(ICharm[] charms) {
+  public CharmTree(Charm[] charms) {
     this.allCharms = charms;
-    for (ICharm charm : allCharms) {
+    for (Charm charm : allCharms) {
       charmById.put(charm.getId(), charm);
     }
   }
 
   @Override
-  public ICharm getCharmById(String charmID) {
+  public Charm getCharmById(String charmID) {
     return charmById.get(charmID);
   }
 
   @Override
-  public ICharm[] getAllCharms() {
+  public Charm[] getAllCharms() {
     return allCharms;
   }
 
-  private void addCharmGroupsFor(Collection<String> groupIds, List<ICharmGroup> charmGroups, ICharm[] charms) {
-    for (ICharm charm : charms) {
+  private void addCharmGroupsFor(Collection<String> groupIds, List<ICharmGroup> charmGroups, Charm[] charms) {
+    for (Charm charm : charms) {
       String groupId = charm.getGroupId();
       if (!groupIds.contains(groupId) && isLearnable(charm)) {
         groupIds.add(groupId);
-        List<ICharm> groupCharms = getAllCharmsForGroup(groupId);
-        charmGroups.add(new CharmGroup(charm.getCharacterType(), groupId, groupCharms.toArray(new ICharm[groupCharms.size()]),
+        List<Charm> groupCharms = getAllCharmsForGroup(groupId);
+        charmGroups.add(new CharmGroup(charm.getCharacterType(), groupId, groupCharms.toArray(new Charm[groupCharms.size()]),
                 MartialArtsUtilities.isMartialArtsCharm(charm)));
       }
     }
@@ -61,9 +61,9 @@ public class CharmTree implements ICharmTree {
   }
 
   @Override
-  public final List<ICharm> getAllCharmsForGroup(String id) {
-    List<ICharm> groupCharms = new ArrayList<>();
-    for (ICharm charm : getAllCharms()) {
+  public final List<Charm> getAllCharmsForGroup(String id) {
+    List<Charm> groupCharms = new ArrayList<>();
+    for (Charm charm : getAllCharms()) {
       if (charm.getGroupId().equals(id)) {
         groupCharms.add(charm);
       }
@@ -72,7 +72,7 @@ public class CharmTree implements ICharmTree {
   }
 
   @Override
-  public boolean isLearnable(ICharm charm) {
+  public boolean isLearnable(Charm charm) {
     return true;
   }
 }

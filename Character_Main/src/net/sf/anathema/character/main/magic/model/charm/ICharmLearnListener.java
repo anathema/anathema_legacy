@@ -1,16 +1,14 @@
 package net.sf.anathema.character.main.magic.model.charm;
 
-import net.sf.anathema.character.main.magic.model.charm.ICharm;
-
 public interface ICharmLearnListener {
 
-  void charmLearned(ICharm charm);
+  void charmLearned(Charm charm);
 
-  void charmForgotten(ICharm charm);
+  void charmForgotten(Charm charm);
 
-  void charmNotLearnable(ICharm charm);
+  void charmNotLearnable(Charm charm);
 
-  void charmNotUnlearnable(ICharm charm);
+  void charmNotUnlearnable(Charm charm);
 
   void recalculateRequested();
 }

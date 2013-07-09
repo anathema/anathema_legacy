@@ -1,6 +1,6 @@
 package net.sf.anathema.character.main.magic.model.charmtree.builder.stringbuilder;
 
-import net.sf.anathema.character.main.magic.model.magic.IMagic;
+import net.sf.anathema.character.main.magic.model.magic.Magic;
 import net.sf.anathema.character.main.magic.description.MagicDescription;
 import net.sf.anathema.character.main.magic.description.MagicDescriptionProvider;
 import net.sf.anathema.lib.gui.TooltipBuilder;
@@ -18,13 +18,13 @@ public class MagicDescriptionStringBuilder implements IMagicTooltipStringBuilder
   }
 
   @Override
-  public void buildStringForMagic(StringBuilder builder, IMagic magic, Object specialDetails) {
+  public void buildStringForMagic(StringBuilder builder, Magic magic, Object specialDetails) {
     TooltipBuilder tooltipBuilder = new TooltipBuilder();
     tooltipBuilder.appendParagraphs(getDisplayParagraphs(magic));
     builder.append(tooltipBuilder.build());
   }
 
-  public String[] getDisplayParagraphs(IMagic magic) {
+  public String[] getDisplayParagraphs(Magic magic) {
     MagicDescription charmDescription = magicDescriptionProvider.getCharmDescription(magic);
     if (charmDescription.isEmpty()) {
       return new String[0];

@@ -4,5 +4,5 @@ public interface IndirectCharmRequirement {
 
   String getStringRepresentation();
 
-  boolean isFulfilled(ICharm[] learnedCharms);
+  boolean isFulfilled(Charm[] learnedCharms);
 }

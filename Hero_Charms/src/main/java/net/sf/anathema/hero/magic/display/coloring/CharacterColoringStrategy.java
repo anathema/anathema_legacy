@@ -1,10 +1,10 @@
 package net.sf.anathema.hero.magic.display.coloring;
 
-import net.sf.anathema.character.main.magic.model.charm.ICharm;
+import net.sf.anathema.character.main.magic.display.view.charmtree.CharmView;
+import net.sf.anathema.character.main.magic.model.charm.Charm;
 import net.sf.anathema.character.main.magic.model.charm.IndirectCharmRequirement;
 import net.sf.anathema.hero.charms.CharmsModel;
 import net.sf.anathema.hero.magic.model.CharacterCharmModel;
-import net.sf.anathema.character.main.magic.display.view.charmtree.ICharmView;
 import net.sf.anathema.framework.ui.RGBColor;
 
 public class CharacterColoringStrategy implements CharmColoring {
@@ -15,17 +15,17 @@ public class CharacterColoringStrategy implements CharmColoring {
   private static final RGBColor UNSELECTED_COLOR = RGBColor.White;
 
   private final RGBColor characterColor;
-  private final ICharmView view;
+  private final CharmView view;
   private final CharacterCharmModel model;
 
-  public CharacterColoringStrategy(RGBColor characterColor, ICharmView view, CharacterCharmModel model) {
+  public CharacterColoringStrategy(RGBColor characterColor, CharmView view, CharacterCharmModel model) {
     this.characterColor = characterColor;
     this.view = view;
     this.model = model;
   }
 
   @Override
-  public void colorCharm(ICharm charm) {
+  public void colorCharm(Charm charm) {
     String id = charm.getId();
     RGBColor fillColor = getCharmConfiguration().isLearned(charm) ? characterColor : UNSELECTED_COLOR;
     int opacity = getCharmConfiguration().isLearnable(charm) ? MAXIMUM_OPACITY : REDUCED_OPACITY;

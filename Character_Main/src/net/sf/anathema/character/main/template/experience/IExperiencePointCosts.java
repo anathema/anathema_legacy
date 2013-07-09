@@ -1,7 +1,7 @@
 package net.sf.anathema.character.main.template.experience;
 
 import net.sf.anathema.character.main.IGenericTraitCollection;
-import net.sf.anathema.character.main.magic.model.charm.ICharm;
+import net.sf.anathema.character.main.magic.model.charm.Charm;
 import net.sf.anathema.character.main.magic.model.spells.ISpell;
 import net.sf.anathema.hero.model.Hero;
 
@@ -11,7 +11,7 @@ public interface IExperiencePointCosts {
 
   CurrentRatingCosts getAttributeCosts(boolean favored);
 
-  int getCharmCosts(ICharm charm, ICostAnalyzer costMapping);
+  int getCharmCosts(Charm charm, ICostAnalyzer costMapping);
 
   CurrentRatingCosts getEssenceCosts();
 

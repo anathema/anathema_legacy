@@ -1,6 +1,6 @@
 package net.sf.anathema.hero.combos;
 
-import net.sf.anathema.character.main.magic.model.charm.ICharm;
+import net.sf.anathema.character.main.magic.model.charm.Charm;
 import net.sf.anathema.character.main.magic.model.combos.ICombo;
 import net.sf.anathema.character.main.magic.model.combos.IComboConfigurationListener;
 import net.sf.anathema.hero.model.HeroModel;
@@ -12,11 +12,11 @@ public interface CombosModel extends HeroModel {
 
   Identifier ID = new SimpleIdentifier("Combos");
 
-  void addCharmToCombo(ICharm charm, boolean experienced);
+  void addCharmToCombo(Charm charm, boolean experienced);
 
   void addComboModelListener(ChangeListener listener);
 
-  void removeCharmsFromCombo(ICharm[] charms);
+  void removeCharmsFromCombo(Charm[] charms);
 
   void finalizeCombo();
 
@@ -24,7 +24,7 @@ public interface CombosModel extends HeroModel {
 
   void addComboConfigurationListener(IComboConfigurationListener listener);
 
-  boolean isComboLegal(ICharm charm);
+  boolean isComboLegal(Charm charm);
 
   void deleteCombo(ICombo combo);
 

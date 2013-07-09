@@ -1,8 +1,8 @@
 package net.sf.anathema.hero.magic.model.charms;
 
 import net.sf.anathema.character.main.magic.model.charm.Charm;
+import net.sf.anathema.character.main.magic.model.charm.CharmImpl;
 import net.sf.anathema.character.main.magic.model.magic.CostList;
-import net.sf.anathema.character.main.magic.model.charm.ICharm;
 import net.sf.anathema.character.main.dummy.DummyCharm;
 import net.sf.anathema.character.main.magic.model.combos.ComboRestrictions;
 import net.sf.anathema.character.main.magic.model.charm.IndirectCharmRequirement;
@@ -29,11 +29,11 @@ public class CharmTest {
   public void testParentCharmsNotOverwritten() throws Exception {
     DummyCharmData data = new DummyCharmData();
     DummyCharm dummy = new DummyCharm("OtherDummy");
-    data.setParentCharms(new ICharm[]{dummy});
-    Charm charm = new Charm(data);
-    charm.extractParentCharms(new HashMap<String, Charm>());
+    data.setParentCharms(new Charm[]{dummy});
+    CharmImpl charm = new CharmImpl(data);
+    charm.extractParentCharms(new HashMap<String, CharmImpl>());
     assertEquals(1, charm.getParentCharms().size());
-    assertEquals(dummy, charm.getParentCharms().toArray(new ICharm[1])[0]);
+    assertEquals(dummy, charm.getParentCharms().toArray(new Charm[1])[0]);
   }
 
   @Test
@@ -45,7 +45,7 @@ public class CharmTest {
     CharmTypeModel model = new CharmTypeModel();
     model.setCharmType(CharmType.Simple);
     try {
-      new Charm(new DummyExaltCharacterType(), "ATTRIBUTES",
+      new CharmImpl(new DummyExaltCharacterType(), "ATTRIBUTES",
               "Group",
               false, prerequisiteList, new CostList(null, null, null, null), new ComboRestrictions(), SimpleDuration.getDuration("Duration"),
 

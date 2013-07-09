@@ -1,7 +1,7 @@
 package net.sf.anathema.character.main.magic.description;
 
-import net.sf.anathema.character.main.magic.model.charm.ICharm;
-import net.sf.anathema.character.main.magic.model.magic.IMagic;
+import net.sf.anathema.character.main.magic.model.charm.Charm;
+import net.sf.anathema.character.main.magic.model.magic.Magic;
 import net.sf.anathema.lib.resources.Resources;
 import org.apache.commons.lang3.StringUtils;
 
@@ -16,7 +16,7 @@ public class ShortMagicDescriptionProvider implements MagicDescriptionProvider {
   }
 
   @Override
-  public MagicDescription getCharmDescription(final IMagic magic) {
+  public MagicDescription getCharmDescription(final Magic magic) {
     return new MagicDescription() {
       @Override
       public boolean isEmpty() {
@@ -29,12 +29,12 @@ public class ShortMagicDescriptionProvider implements MagicDescriptionProvider {
         return StringUtils.isEmpty(descriptionString) ? new String[0] : new String[]{descriptionString};
       }
 
-      private String getDescriptionString(IMagic magic) {
+      private String getDescriptionString(Magic magic) {
         String id = magic.getId();
         String genericId = id.substring(0, id.lastIndexOf('.'));
         String description = getDescriptionPattern(id, genericId);
-        if (magic instanceof ICharm) {
-          String traitId = ((ICharm) magic).getPrimaryTraitType().getId();
+        if (magic instanceof Charm) {
+          String traitId = ((Charm) magic).getPrimaryTraitType().getId();
           description = MessageFormat.format(description, resources.getString(traitId));
         }
         return description;

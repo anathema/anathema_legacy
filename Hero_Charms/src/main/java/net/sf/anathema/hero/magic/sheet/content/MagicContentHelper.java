@@ -4,8 +4,8 @@ import com.google.common.base.Optional;
 import com.google.common.base.Predicate;
 import com.google.common.collect.Iterables;
 import net.sf.anathema.character.main.framework.configuration.AnathemaCharacterPreferences;
-import net.sf.anathema.character.main.magic.model.charm.ICharm;
-import net.sf.anathema.character.main.magic.model.magic.IMagic;
+import net.sf.anathema.character.main.magic.model.charm.Charm;
+import net.sf.anathema.character.main.magic.model.magic.Magic;
 import net.sf.anathema.character.main.magic.model.magic.IMagicStats;
 import net.sf.anathema.character.main.magic.model.magic.IMagicVisitor;
 import net.sf.anathema.character.main.magic.model.spells.ISpell;
@@ -50,7 +50,7 @@ public class MagicContentHelper {
 
     IMagicVisitor statsCollector = new IMagicVisitor() {
       @Override
-      public void visitCharm(ICharm charm) {
+      public void visitCharm(Charm charm) {
         if (!includeCharms) {
           return;
         }
@@ -74,7 +74,7 @@ public class MagicContentHelper {
         }
       }
     };
-    for (IMagic magic : helper.getAllLearnedMagic()) {
+    for (Magic magic : helper.getAllLearnedMagic()) {
       magic.accept(statsCollector);
     }
     return printStats;
@@ -88,20 +88,20 @@ public class MagicContentHelper {
     return collectPrintMagic(session.getHero(), true, false);
   }
 
-  public List<IMagic> getAllLearnedMagic() {
-    List<IMagic> magicList = new ArrayList<>();
+  public List<Magic> getAllLearnedMagic() {
+    List<Magic> magicList = new ArrayList<>();
     magicList.addAll(Arrays.asList(getLearnedCharms()));
     boolean experienced = ExperienceModelFetcher.fetch(hero).isExperienced();
     magicList.addAll(Arrays.asList(SpellsModelFetcher.fetch(hero).getLearnedSpells(experienced)));
     return magicList;
   }
 
-  public boolean isMultipleEffectCharm(ICharm charm) {
+  public boolean isMultipleEffectCharm(Charm charm) {
     ISpecialCharmConfiguration charmConfiguration = CharmsModelFetcher.fetch(hero).getSpecialCharmConfiguration(charm);
     return charmConfiguration instanceof IMultipleEffectCharmConfiguration && !(charmConfiguration instanceof ISubeffectCharmConfiguration);
   }
 
-  public String[] getLearnedEffects(ICharm charm) {
+  public String[] getLearnedEffects(Charm charm) {
     ISpecialCharmConfiguration charmConfiguration = CharmsModelFetcher.fetch(hero).getSpecialCharmConfiguration(charm);
     if (!(charmConfiguration instanceof IMultipleEffectCharmConfiguration)) {
       return new String[0];
@@ -116,34 +116,34 @@ public class MagicContentHelper {
     return learnedEffectIds.toArray(new String[learnedEffectIds.size()]);
   }
 
-  public ICharm[] getGenericCharms() {
-    List<ICharm> genericCharms = new ArrayList<>();
+  public Charm[] getGenericCharms() {
+    List<Charm> genericCharms = new ArrayList<>();
     for (ILearningCharmGroup group : CharmsModelFetcher.fetch(hero).getAllGroups()) {
-      for (ICharm charm : group.getAllCharms()) {
+      for (Charm charm : group.getAllCharms()) {
         if (charm.isInstanceOfGenericCharm() &&
             charm.getCharacterType().equals(hero.getTemplate().getTemplateType().getCharacterType())) {
           genericCharms.add(charm);
         }
       }
     }
-    return genericCharms.toArray(new ICharm[genericCharms.size()]);
+    return genericCharms.toArray(new Charm[genericCharms.size()]);
   }
 
-  private ICharm[] getLearnedCharms() {
+  private Charm[] getLearnedCharms() {
     boolean experienced = ExperienceModelFetcher.fetch(hero).isExperienced();
     return CharmsModelFetcher.fetch(hero).getLearnedCharms(experienced);
   }
 
-  public boolean isSubeffectCharm(ICharm charm) {
+  public boolean isSubeffectCharm(Charm charm) {
     ISpecialCharmConfiguration charmConfiguration = CharmsModelFetcher.fetch(hero).getSpecialCharmConfiguration(charm);
     return charmConfiguration instanceof ISubeffectCharmConfiguration;
   }
 
-  public int getLearnCount(ICharm charm) {
+  public int getLearnCount(Charm charm) {
     return getLearnCount(charm, CharmsModelFetcher.fetch(hero));
   }
 
-  private int getLearnCount(ICharm charm, CharmsModel configuration) {
+  private int getLearnCount(Charm charm, CharmsModel configuration) {
     ISpecialCharmConfiguration specialCharmConfiguration = configuration.getSpecialCharmConfiguration(charm.getId());
     if (specialCharmConfiguration != null) {
       return specialCharmConfiguration.getCurrentLearnCount();
@@ -155,13 +155,13 @@ public class MagicContentHelper {
     if (AnathemaCharacterPreferences.getDefaultPreferences().printAllGenerics()) {
       return true;
     }
-    for (IMagic magic : getAllLearnedMagic()) {
+    for (Magic magic : getAllLearnedMagic()) {
       if (magic.getId().startsWith(stats.getName().getId())) return true;
     }
     return false;
   }
 
-  public boolean isGenericCharmFor(ICharm charm) {
+  public boolean isGenericCharmFor(Charm charm) {
     IMagicStats[] genericCharmStats = getGenericCharmStats();
     String charmId = charm.getId();
     for (IMagicStats stat : genericCharmStats) {
@@ -174,17 +174,17 @@ public class MagicContentHelper {
 
   public IMagicStats[] getGenericCharmStats() {
     List<IMagicStats> genericCharmStats = new ArrayList<>();
-    for (ICharm charm : getGenericCharms()) {
+    for (Charm charm : getGenericCharms()) {
       IMagicStats stats = new GenericCharmStats(charm, hero);
       if (!genericCharmStats.contains(stats)) genericCharmStats.add(stats);
     }
     return genericCharmStats.toArray(new IMagicStats[genericCharmStats.size()]);
   }
 
-  public boolean isCharmLearned(List<IMagic> allLearnedMagic, final String charmId) {
-    Optional<? extends IMagic> optional = Iterables.tryFind(allLearnedMagic, new Predicate<IMagic>() {
+  public boolean isCharmLearned(List<Magic> allLearnedMagic, final String charmId) {
+    Optional<? extends Magic> optional = Iterables.tryFind(allLearnedMagic, new Predicate<Magic>() {
       @Override
-      public boolean apply(IMagic value) {
+      public boolean apply(Magic value) {
         return charmId.equals(value.getId());
       }
     });

@@ -1,6 +1,6 @@
 package net.sf.anathema.hero.magic.sheet.content.stats;
 
-import net.sf.anathema.character.main.magic.model.charm.ICharm;
+import net.sf.anathema.character.main.magic.model.charm.Charm;
 import net.sf.anathema.character.main.magic.model.magic.IMagicStats;
 import net.sf.anathema.hero.magic.sheet.content.MagicContentHelper;
 import net.sf.anathema.character.main.magic.model.charmtree.builder.MagicDisplayLabeler;
@@ -13,7 +13,7 @@ public class GenericCharmStats extends CharmStats {
 
   private final String genericId;
 
-  public GenericCharmStats(ICharm charm, Hero hero) {
+  public GenericCharmStats(Charm charm, Hero hero) {
     super(charm, new MagicContentHelper(hero));
     String charmId = charm.getId();
     genericId = charmId.substring(0, charmId.lastIndexOf('.'));

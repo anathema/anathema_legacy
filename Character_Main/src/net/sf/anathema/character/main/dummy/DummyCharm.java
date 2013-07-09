@@ -1,9 +1,9 @@
 package net.sf.anathema.character.main.dummy;
 
+import net.sf.anathema.character.main.magic.model.charm.Charm;
 import net.sf.anathema.character.main.magic.model.charm.CharmAttribute;
 import net.sf.anathema.character.main.magic.model.magic.CostList;
 import net.sf.anathema.character.main.magic.model.charm.type.CharmTypeModel;
-import net.sf.anathema.character.main.magic.model.charm.ICharm;
 import net.sf.anathema.character.main.magic.model.magic.IMagicVisitor;
 import net.sf.anathema.character.main.magic.model.combos.ComboRestrictions;
 import net.sf.anathema.character.main.magic.model.charm.ICharmAttribute;
@@ -31,13 +31,13 @@ import java.util.LinkedHashSet;
 import java.util.List;
 import java.util.Set;
 
-public class DummyCharm extends SimpleIdentifier implements ICharm {
+public class DummyCharm extends SimpleIdentifier implements Charm {
 
   private IDuration duration;
   private IComboRestrictions comboRestrictions = new ComboRestrictions();
   private ValuedTraitType[] prerequisites;
-  private Set<ICharm> parentCharms;
-  private Set<ICharm> learnFollowUpCharms = new HashSet<>();
+  private Set<Charm> parentCharms;
+  private Set<Charm> learnFollowUpCharms = new HashSet<>();
   private List<IndirectCharmRequirement> requirements = new ArrayList<>();
   private ICharacterType characterType;
   private String groupId;
@@ -63,14 +63,14 @@ public class DummyCharm extends SimpleIdentifier implements ICharm {
   }
 
   public DummyCharm(String id) {
-    this(id, new ICharm[0]);
+    this(id, new Charm[0]);
   }
 
-  public DummyCharm(String id, ICharm... parents) {
+  public DummyCharm(String id, Charm... parents) {
     this(id, parents, new ValuedTraitType[0]);
   }
 
-  public DummyCharm(String id, ICharm[] parents, ValuedTraitType[] prerequisites) {
+  public DummyCharm(String id, Charm[] parents, ValuedTraitType[] prerequisites) {
     super(id);
     this.parentCharms = new LinkedHashSet<>();
     Collections.addAll(parentCharms, parents);
@@ -87,7 +87,7 @@ public class DummyCharm extends SimpleIdentifier implements ICharm {
     requirements.add(requirement);
   }
 
-  public void addLearnFollowUpCharm(ICharm charm) {
+  public void addLearnFollowUpCharm(Charm charm) {
     learnFollowUpCharms.add(charm);
   }
 
@@ -136,22 +136,22 @@ public class DummyCharm extends SimpleIdentifier implements ICharm {
   }
 
   @Override
-  public Set<ICharm> getLearnFollowUpCharms(ICharmLearnArbitrator learnArbitrator) {
+  public Set<Charm> getLearnFollowUpCharms(ICharmLearnArbitrator learnArbitrator) {
     return learnFollowUpCharms;
   }
 
   @Override
-  public Set<ICharm> getLearnPrerequisitesCharms(ICharmLearnArbitrator learnArbitrator) {
+  public Set<Charm> getLearnPrerequisitesCharms(ICharmLearnArbitrator learnArbitrator) {
     return parentCharms;
   }
 
   @Override
-  public Set<ICharm> getLearnChildCharms() {
+  public Set<Charm> getLearnChildCharms() {
     return learnFollowUpCharms;
   }
 
   @Override
-  public Set<ICharm> getParentCharms() {
+  public Set<Charm> getParentCharms() {
     return parentCharms;
   }
 
@@ -166,7 +166,7 @@ public class DummyCharm extends SimpleIdentifier implements ICharm {
   }
 
   @Override
-  public Set<ICharm> getRenderingPrerequisiteCharms() {
+  public Set<Charm> getRenderingPrerequisiteCharms() {
     return parentCharms;
   }
 
@@ -203,7 +203,7 @@ public class DummyCharm extends SimpleIdentifier implements ICharm {
   }
 
   @Override
-  public Set<ICharm> getMergedCharms() {
+  public Set<Charm> getMergedCharms() {
     return new HashSet<>();
   }
 

@@ -1,7 +1,7 @@
 package net.sf.anathema.character.main.template.magic;
 
+import net.sf.anathema.character.main.magic.model.charm.Charm;
 import net.sf.anathema.character.main.magic.parser.charms.ICharmCache;
-import net.sf.anathema.character.main.magic.model.charm.ICharm;
 import net.sf.anathema.character.main.magic.model.charm.CharmIdMap;
 import net.sf.anathema.character.main.magic.model.charmtree.ICharmLearnableArbitrator;
 import net.sf.anathema.character.main.magic.model.charm.special.ISpecialCharm;
@@ -30,7 +30,7 @@ public class CharmProvider implements ICharmProvider {
     List<ISpecialCharm> relevantCharms = new ArrayList<>();
     ISpecialCharm[] allSpecialCharms = getAllSpecialCharms(preferredType);
     for (ISpecialCharm specialCharm : allSpecialCharms) {
-      ICharm charm = map.getCharmById(specialCharm.getCharmId());
+      Charm charm = map.getCharmById(specialCharm.getCharmId());
       if (charm != null && arbitrator.isLearnable(charm)) {
         relevantCharms.add(specialCharm);
       }

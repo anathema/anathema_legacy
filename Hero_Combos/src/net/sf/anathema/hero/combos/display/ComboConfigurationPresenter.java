@@ -1,7 +1,7 @@
 package net.sf.anathema.hero.combos.display;
 
 import com.google.common.base.Strings;
-import net.sf.anathema.character.main.magic.model.charm.ICharm;
+import net.sf.anathema.character.main.magic.model.charm.Charm;
 import net.sf.anathema.hero.charms.CharmsModel;
 import net.sf.anathema.hero.combos.CombosModel;
 import net.sf.anathema.hero.concept.ConceptChange;
@@ -131,12 +131,12 @@ public class ComboConfigurationPresenter {
   private void initCharmLearnListening(final IComboConfigurationView comboView) {
     ICharmLearnListener charmLearnListener = new CharmLearnAdapter() {
       @Override
-      public void charmLearned(ICharm charm) {
+      public void charmLearned(Charm charm) {
         updateCharmListsInView(comboView);
       }
 
       @Override
-      public void charmForgotten(ICharm charm) {
+      public void charmForgotten(Charm charm) {
         updateCharmListsInView(comboView);
       }
     };
@@ -171,9 +171,9 @@ public class ComboConfigurationPresenter {
 
   private String convertToHtml(ICombo combo) {
     String text = combo.getDescription().getText();
-    ICharm[] charms = combo.getCharms();
+    Charm[] charms = combo.getCharms();
     String charmList = "<b>";
-    Iterator<ICharm> charmIterator = Arrays.asList(charms).iterator();
+    Iterator<Charm> charmIterator = Arrays.asList(charms).iterator();
     if (charmIterator.hasNext()) {
       charmList = charmList.concat(labeler.getLabelForMagic(charmIterator.next()));
     }
@@ -194,7 +194,7 @@ public class ComboConfigurationPresenter {
 
   private void updateCharmListsInView(IComboConfigurationView comboView) {
     comboView.setComboCharms(comboConfiguration.getEditCombo().getCharms());
-    ICharm[] learnedCharms = comboModel.getLearnedCharms();
+    Charm[] learnedCharms = comboModel.getLearnedCharms();
     Arrays.sort(learnedCharms, new I18nedIdentificateComparator(resources));
     comboView.setAllCharms(learnedCharms);
   }
@@ -212,16 +212,16 @@ public class ComboConfigurationPresenter {
     comboView.addComboViewListener(new IComboViewListener() {
       @Override
       public void charmAdded(Object addedCharm) {
-        comboConfiguration.addCharmToCombo((ICharm) addedCharm, comboModel.isExperienced());
+        comboConfiguration.addCharmToCombo((Charm) addedCharm, comboModel.isExperienced());
       }
 
       @Override
       public void charmRemoved(Object[] removedCharms) {
-        List<ICharm> removedCharmList = new ArrayList<>();
+        List<Charm> removedCharmList = new ArrayList<>();
         for (Object charmObject : removedCharms) {
-          removedCharmList.add((ICharm) charmObject);
+          removedCharmList.add((Charm) charmObject);
         }
-        comboConfiguration.removeCharmsFromCombo(removedCharmList.toArray(new ICharm[removedCharmList.size()]));
+        comboConfiguration.removeCharmsFromCombo(removedCharmList.toArray(new Charm[removedCharmList.size()]));
       }
 
       @Override

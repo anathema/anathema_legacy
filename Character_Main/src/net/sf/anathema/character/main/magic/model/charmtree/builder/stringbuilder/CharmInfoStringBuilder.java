@@ -1,7 +1,7 @@
 package net.sf.anathema.character.main.magic.model.charmtree.builder.stringbuilder;
 
 import com.google.common.base.Preconditions;
-import net.sf.anathema.character.main.magic.model.charm.ICharm;
+import net.sf.anathema.character.main.magic.model.charm.Charm;
 import net.sf.anathema.character.main.magic.model.charm.special.ISpecialCharm;
 import net.sf.anathema.character.main.magic.description.MagicDescriptionProvider;
 import net.sf.anathema.character.main.magic.model.charmtree.builder.stringbuilder.source.MagicSourceStringBuilder;
@@ -23,12 +23,12 @@ public class CharmInfoStringBuilder implements ICharmInfoStringBuilder {
     builders.add(new CharmKeywordsStringBuilder(resources));
     builders.add(new CharmPrerequisitesStringBuilder(resources));
     builders.add(new SpecialCharmStringBuilder(resources));
-    builders.add(new MagicSourceStringBuilder<ICharm>(resources));
+    builders.add(new MagicSourceStringBuilder<Charm>(resources));
     builders.add(new MagicDescriptionStringBuilder(resources, magicDescriptionProvider));
   }
 
   @Override
-  public final String getInfoString(ICharm charm, ISpecialCharm specialDetails) {
+  public final String getInfoString(Charm charm, ISpecialCharm specialDetails) {
     Preconditions.checkNotNull(charm);
     StringBuilder builder = new StringBuilder();
     builder.append("<html><body>");

@@ -1,7 +1,7 @@
 package net.sf.anathema.character.main.xml.magic;
 
 import com.google.common.base.Predicate;
-import net.sf.anathema.character.main.magic.model.magic.IMagic;
+import net.sf.anathema.character.main.magic.model.magic.Magic;
 import net.sf.anathema.character.main.template.magic.ICharmTemplate;
 import net.sf.anathema.character.main.template.magic.IMagicTemplate;
 import net.sf.anathema.character.main.template.magic.ISpellMagicTemplate;
@@ -9,12 +9,12 @@ import net.sf.anathema.lib.lang.clone.ReflectionCloneableObject;
 
 public class GenericMagicTemplate extends ReflectionCloneableObject<GenericMagicTemplate> implements IMagicTemplate {
 
-  private Predicate<IMagic> predicate;
+  private Predicate<Magic> predicate;
   private ICharmTemplate charmTemplate;
   private ISpellMagicTemplate spellTemplate;
 
   @Override
-  public boolean canBuyFromFreePicks(IMagic magic) {
+  public boolean canBuyFromFreePicks(Magic magic) {
     return predicate.apply(magic);
   }
 
@@ -28,7 +28,7 @@ public class GenericMagicTemplate extends ReflectionCloneableObject<GenericMagic
     return charmTemplate;
   }
 
-  public void setFreePicksPredicate(Predicate<IMagic> predicate) {
+  public void setFreePicksPredicate(Predicate<Magic> predicate) {
     this.predicate = predicate;
   }
 

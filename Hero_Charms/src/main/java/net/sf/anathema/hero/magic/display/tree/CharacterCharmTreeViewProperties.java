@@ -1,6 +1,6 @@
 package net.sf.anathema.hero.magic.display.tree;
 
-import net.sf.anathema.character.main.magic.model.charm.ICharm;
+import net.sf.anathema.character.main.magic.model.charm.Charm;
 import net.sf.anathema.character.main.magic.model.charm.CharmIdMap;
 import net.sf.anathema.character.main.magic.model.charm.special.ISpecialCharm;
 import net.sf.anathema.character.main.magic.description.MagicDescriptionProvider;
@@ -19,7 +19,7 @@ public class CharacterCharmTreeViewProperties extends AbstractCharmTreeViewPrope
   }
 
   @Override
-  public ICharm getCharmById(String id) {
+  public Charm getCharmById(String id) {
     if (isRequirementNode(id)) {
       return null;
     }

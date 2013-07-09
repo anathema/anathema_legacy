@@ -1,7 +1,7 @@
 package net.sf.anathema.character.main.magic.display.view.charmtree;
 
 import com.google.common.base.Preconditions;
-import net.sf.anathema.character.main.magic.model.charm.ICharm;
+import net.sf.anathema.character.main.magic.model.charm.Charm;
 import net.sf.anathema.character.main.magic.model.charm.CharmIdMap;
 import net.sf.anathema.character.main.magic.model.charmtree.builder.MagicDisplayLabeler;
 import net.sf.anathema.lib.logging.Logger;
@@ -31,7 +31,7 @@ public class DefaultNodeProperties implements NodeProperties {
     if (properties.isRequirementNode(nodeId)) {
       return textForRequirementNode(nodeId);
     }
-    ICharm charm = findNonNullCharm(nodeId);
+    Charm charm = findNonNullCharm(nodeId);
     String name = getNodeName(charm);
     if (charm.isTreeRoot()) {
       return name.toUpperCase();
@@ -48,7 +48,7 @@ public class DefaultNodeProperties implements NodeProperties {
     return resources.getString("Requirement.Message", requirementCount, requirementName, charmString);
   }
 
-  private String getNodeName(ICharm charm) {
+  private String getNodeName(Charm charm) {
     if (charmLabeler.supportsMagic(charm)) {
       return charmLabeler.getLabelForMagic(charm);
     }
@@ -56,8 +56,8 @@ public class DefaultNodeProperties implements NodeProperties {
     return resources.getString(charm.getId());
   }
 
-  private ICharm findNonNullCharm(final String charmId) {
-    ICharm charm = map.getCharmById(charmId);
+  private Charm findNonNullCharm(final String charmId) {
+    Charm charm = map.getCharmById(charmId);
     Preconditions.checkNotNull(charm, format("No Charm with id ''{0}'' found.", charmId));
     return charm;
   }

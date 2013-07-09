@@ -1,6 +1,6 @@
 package net.sf.anathema.character.main.magic.parser.charms;
 
-import net.sf.anathema.character.main.magic.model.charm.Charm;
+import net.sf.anathema.character.main.magic.model.charm.CharmImpl;
 import net.sf.anathema.character.main.magic.parser.combos.ComboRulesBuilder;
 import net.sf.anathema.character.main.magic.parser.charms.prerequisite.AttributeRequirementBuilder;
 import net.sf.anathema.character.main.magic.parser.charms.prerequisite.CharmPrerequisiteBuilder;
@@ -28,7 +28,7 @@ public class CharmSetBuilder extends AbstractCharmSetBuilder {
   }
 
   @Override
-  protected void buildCharms(Collection<Charm> allCharms, List<ISpecialCharm> specialCharms, Element charmListElement) throws PersistenceException {
+  protected void buildCharms(Collection<CharmImpl> allCharms, List<ISpecialCharm> specialCharms, Element charmListElement) throws PersistenceException {
     for (Element charmElementObject : ElementUtilities.elements(charmListElement, TAG_CHARM)) {
       createCharm(allCharms, specialCharms, builder, charmElementObject);
     }

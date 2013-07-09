@@ -1,8 +1,8 @@
 package net.sf.anathema.character.main.magic.model.charmtree;
 
+import net.sf.anathema.character.main.magic.model.charm.Charm;
 import net.sf.anathema.character.main.magic.model.charm.MartialArtsLevel;
 import net.sf.anathema.character.main.magic.model.charms.MartialArtsUtilities;
-import net.sf.anathema.character.main.magic.model.charm.ICharm;
 import net.sf.anathema.character.main.template.magic.ICharmTemplate;
 
 import java.text.MessageFormat;
@@ -17,7 +17,7 @@ public class MartialArtsCharmTree extends CharmTree {
   }
 
   @Override
-  public boolean isLearnable(ICharm charm) {
+  public boolean isLearnable(Charm charm) {
     MartialArtsLevel level = MartialArtsUtilities.getLevel(charm);
     if (level == null) {
       String format = MessageFormat

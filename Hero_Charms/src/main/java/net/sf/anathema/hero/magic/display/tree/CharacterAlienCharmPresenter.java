@@ -1,18 +1,18 @@
 package net.sf.anathema.hero.magic.display.tree;
 
+import net.sf.anathema.character.main.magic.display.view.charmtree.CharmView;
 import net.sf.anathema.hero.magic.model.CharacterCharmModel;
 import net.sf.anathema.hero.magic.model.charms.CharacterCharmTypes;
 import net.sf.anathema.hero.charms.CharmsModel;
-import net.sf.anathema.character.main.magic.display.view.charmtree.ICharmView;
 import net.sf.anathema.lib.control.ChangeListener;
 import net.sf.anathema.lib.util.Identifier;
 
 public class CharacterAlienCharmPresenter implements AlienCharmPresenter {
 
-  private ICharmView view;
+  private CharmView view;
   private CharacterCharmModel model;
 
-  public CharacterAlienCharmPresenter(CharacterCharmModel model, ICharmView view) {
+  public CharacterAlienCharmPresenter(CharacterCharmModel model, CharmView view) {
     this.model = model;
     this.view = view;
   }

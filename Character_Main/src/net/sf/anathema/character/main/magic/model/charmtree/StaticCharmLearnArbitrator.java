@@ -1,20 +1,20 @@
 package net.sf.anathema.character.main.magic.model.charmtree;
 
 import com.google.common.collect.Lists;
-import net.sf.anathema.character.main.magic.model.charm.ICharm;
+import net.sf.anathema.character.main.magic.model.charm.Charm;
 
 import java.util.Collections;
 import java.util.List;
 
 public class StaticCharmLearnArbitrator implements ICharmLearnArbitrator {
-  private final List<ICharm> learnedCharms = Lists.newArrayList();
+  private final List<Charm> learnedCharms = Lists.newArrayList();
 
-  public StaticCharmLearnArbitrator(ICharm[] learnedCharms) {
+  public StaticCharmLearnArbitrator(Charm[] learnedCharms) {
     Collections.addAll(this.learnedCharms, learnedCharms);
   }
 
   @Override
-  public boolean isLearned(ICharm charm) {
+  public boolean isLearned(Charm charm) {
     return learnedCharms.contains(charm);
   }
 }

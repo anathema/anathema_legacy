@@ -1,6 +1,6 @@
 package net.sf.anathema.character.main.magic.model.combos;
 
-import net.sf.anathema.character.main.magic.model.charm.ICharm;
+import net.sf.anathema.character.main.magic.model.charm.Charm;
 
 public class GenericCombo implements IGenericCombo {
 
@@ -16,7 +16,7 @@ public class GenericCombo implements IGenericCombo {
   }
 
   @Override
-  public ICharm[] getCharms() {
+  public Charm[] getCharms() {
     return combo.getCharms();
   }
 }

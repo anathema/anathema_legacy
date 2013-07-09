@@ -1,10 +1,10 @@
 package net.sf.anathema.hero.magic.model.charms;
 
 import net.sf.anathema.character.main.advance.IExperiencePointConfiguration;
+import net.sf.anathema.character.main.magic.model.charm.Charm;
 import net.sf.anathema.character.main.magic.model.charm.CharmAttributeList;
 import net.sf.anathema.character.main.magic.model.charms.ILearningCharmGroup;
 import net.sf.anathema.character.main.dummy.DummyCharm;
-import net.sf.anathema.character.main.magic.model.charm.ICharm;
 import net.sf.anathema.character.main.testing.dummy.magic.DummyCharmsModel;
 import net.sf.anathema.hero.experience.ExperienceModel;
 import net.sf.anathema.hero.magic.MagicCollection;
@@ -53,7 +53,7 @@ public class DefaultMartialArtsCharmConfiguration_Test {
   }
 
   private void expectCoreCharmsCall(ILearningCharmGroup group) {
-    Mockito.when(group.getCoreCharms()).thenReturn(new ICharm[]{new DummyCharm() {
+    Mockito.when(group.getCoreCharms()).thenReturn(new Charm[]{new DummyCharm() {
       @Override
       public boolean isBlockedByAlternative(MagicCollection magicCollection) {
         return true;

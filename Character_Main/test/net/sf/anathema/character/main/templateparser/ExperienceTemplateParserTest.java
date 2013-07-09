@@ -1,10 +1,10 @@
 package net.sf.anathema.character.main.templateparser;
 
+import net.sf.anathema.character.main.magic.model.charm.Charm;
+import net.sf.anathema.character.main.magic.model.magic.Magic;
 import net.sf.anathema.character.main.xml.experience.ExperienceTemplateParser;
 import net.sf.anathema.character.main.xml.experience.GenericExperiencePointCosts;
 import net.sf.anathema.character.main.template.points.MultiplyRatingCosts;
-import net.sf.anathema.character.main.magic.model.charm.ICharm;
-import net.sf.anathema.character.main.magic.model.magic.IMagic;
 import net.sf.anathema.character.main.magic.model.charm.MartialArtsLevel;
 import net.sf.anathema.character.main.template.experience.ICostAnalyzer;
 import net.sf.anathema.character.main.dummy.DummyCharm;
@@ -101,12 +101,12 @@ public class ExperienceTemplateParserTest {
       }
 
       @Override
-      public MartialArtsLevel getMartialArtsLevel(ICharm charm) {
+      public MartialArtsLevel getMartialArtsLevel(Charm charm) {
         return null;
       }
 
       @Override
-      public boolean isMagicFavored(IMagic magic) {
+      public boolean isMagicFavored(Magic magic) {
         return false;
       }
     }));
@@ -123,12 +123,12 @@ public class ExperienceTemplateParserTest {
       }
 
       @Override
-      public MartialArtsLevel getMartialArtsLevel(ICharm charm) {
+      public MartialArtsLevel getMartialArtsLevel(Charm charm) {
         return null;
       }
 
       @Override
-      public boolean isMagicFavored(IMagic magic) {
+      public boolean isMagicFavored(Magic magic) {
         return true;
       }
     }));
@@ -145,12 +145,12 @@ public class ExperienceTemplateParserTest {
       }
 
       @Override
-      public MartialArtsLevel getMartialArtsLevel(ICharm charm) {
+      public MartialArtsLevel getMartialArtsLevel(Charm charm) {
         return MartialArtsLevel.Celestial;
       }
 
       @Override
-      public boolean isMagicFavored(IMagic magic) {
+      public boolean isMagicFavored(Magic magic) {
         return false;
       }
     }));
@@ -167,12 +167,12 @@ public class ExperienceTemplateParserTest {
       }
 
       @Override
-      public MartialArtsLevel getMartialArtsLevel(ICharm charm) {
+      public MartialArtsLevel getMartialArtsLevel(Charm charm) {
         return MartialArtsLevel.Sidereal;
       }
 
       @Override
-      public boolean isMagicFavored(IMagic magic) {
+      public boolean isMagicFavored(Magic magic) {
         return false;
       }
     }));
@@ -189,12 +189,12 @@ public class ExperienceTemplateParserTest {
       }
 
       @Override
-      public MartialArtsLevel getMartialArtsLevel(ICharm charm) {
+      public MartialArtsLevel getMartialArtsLevel(Charm charm) {
         return MartialArtsLevel.Sidereal;
       }
 
       @Override
-      public boolean isMagicFavored(IMagic magic) {
+      public boolean isMagicFavored(Magic magic) {
         return true;
       }
     }));

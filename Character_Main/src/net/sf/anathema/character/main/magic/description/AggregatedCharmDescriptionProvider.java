@@ -1,7 +1,7 @@
 package net.sf.anathema.character.main.magic.description;
 
 import com.google.common.base.Function;
-import net.sf.anathema.character.main.magic.model.magic.IMagic;
+import net.sf.anathema.character.main.magic.model.magic.Magic;
 import net.sf.anathema.lib.resources.Resources;
 
 import java.util.ArrayList;
@@ -22,15 +22,15 @@ public class AggregatedCharmDescriptionProvider implements MagicDescriptionProvi
   }
 
   @Override
-  public MagicDescription getCharmDescription(IMagic magic) {
+  public MagicDescription getCharmDescription(Magic magic) {
     List<MagicDescription> descriptions = transform(providerList, new ToDescription(magic));
     return new AggregatedMagicDescription(descriptions);
   }
 
   private static class ToDescription implements Function<MagicDescriptionProvider, MagicDescription> {
-    private final IMagic magic;
+    private final Magic magic;
 
-    public ToDescription(IMagic magic) {
+    public ToDescription(Magic magic) {
       this.magic = magic;
     }
 

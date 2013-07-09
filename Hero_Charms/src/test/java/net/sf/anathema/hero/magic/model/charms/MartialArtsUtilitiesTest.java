@@ -1,7 +1,7 @@
 package net.sf.anathema.hero.magic.model.charms;
 
+import net.sf.anathema.character.main.magic.model.charm.Charm;
 import net.sf.anathema.character.main.magic.model.charms.MartialArtsUtilities;
-import net.sf.anathema.character.main.magic.model.charm.ICharm;
 import net.sf.anathema.character.main.magic.model.charm.MartialArtsLevel;
 import net.sf.anathema.character.main.dummy.DummyCharm;
 import net.sf.anathema.lib.util.Identifier;
@@ -14,7 +14,7 @@ public class MartialArtsUtilitiesTest {
 
   @Test
   public void testIsMartialArtsCharm() {
-    ICharm charm = new DummyCharm("Dummy") {
+    Charm charm = new DummyCharm("Dummy") {
       @Override
       public boolean hasAttribute(Identifier attribute) {
         return attribute.getId().equals("MartialArts");
@@ -25,7 +25,7 @@ public class MartialArtsUtilitiesTest {
 
   @Test
   public void testIsFormCharm() throws Exception {
-    ICharm charm = new DummyCharm("Dummy") {
+    Charm charm = new DummyCharm("Dummy") {
       @Override
       public boolean hasAttribute(Identifier attribute) {
         return attribute.getId().equals("Form");

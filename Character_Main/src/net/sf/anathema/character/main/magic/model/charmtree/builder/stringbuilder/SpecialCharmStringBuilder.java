@@ -1,13 +1,13 @@
 package net.sf.anathema.character.main.magic.model.charmtree.builder.stringbuilder;
 
+import net.sf.anathema.character.main.magic.model.charm.Charm;
 import net.sf.anathema.character.main.magic.model.charm.special.AbstractMultiLearnableCharm;
 import net.sf.anathema.character.main.magic.model.charm.special.CharmTier;
 import net.sf.anathema.character.main.magic.model.charm.special.EssenceFixedMultiLearnableCharm;
 import net.sf.anathema.character.main.magic.model.charm.special.StaticMultiLearnableCharm;
 import net.sf.anathema.character.main.magic.model.charm.special.TieredMultiLearnableCharm;
 import net.sf.anathema.character.main.magic.model.charm.special.TraitDependentMultiLearnableCharm;
-import net.sf.anathema.character.main.magic.model.charm.ICharm;
-import net.sf.anathema.character.main.magic.model.magic.IMagic;
+import net.sf.anathema.character.main.magic.model.magic.Magic;
 import net.sf.anathema.character.main.magic.model.charm.special.ISpecialCharm;
 import net.sf.anathema.character.main.traits.types.OtherTraitType;
 import net.sf.anathema.lib.gui.TooltipBuilder;
@@ -22,9 +22,9 @@ public class SpecialCharmStringBuilder implements IMagicTooltipStringBuilder {
   }
 
   @Override
-  public void buildStringForMagic(StringBuilder builder, IMagic magic, Object specialDetails) {
-    if (magic instanceof ICharm && specialDetails instanceof ISpecialCharm) {
-      ICharm charm = (ICharm) magic;
+  public void buildStringForMagic(StringBuilder builder, Magic magic, Object specialDetails) {
+    if (magic instanceof Charm && specialDetails instanceof ISpecialCharm) {
+      Charm charm = (Charm) magic;
       ISpecialCharm details = (ISpecialCharm) specialDetails;
       StringBuilder specialCharmBuilder = new StringBuilder();
       if (details instanceof AbstractMultiLearnableCharm) {
@@ -48,7 +48,7 @@ public class SpecialCharmStringBuilder implements IMagicTooltipStringBuilder {
     }
   }
 
-  private void printTieredLimit(StringBuilder builder, ICharm charm, TieredMultiLearnableCharm details) {
+  private void printTieredLimit(StringBuilder builder, Charm charm, TieredMultiLearnableCharm details) {
     CharmTier[] tiers = details.getTiers();
     CharmTier first = tiers[0], second = tiers[1], last = tiers[tiers.length - 1];
     for (CharmTier tier : tiers) {

@@ -1,6 +1,6 @@
 package net.sf.anathema.character.main.advance;
 
-import net.sf.anathema.character.main.magic.model.charm.ICharm;
+import net.sf.anathema.character.main.magic.model.charm.Charm;
 import net.sf.anathema.character.main.magic.model.spells.ISpell;
 import net.sf.anathema.character.main.template.experience.CurrentRatingCosts;
 import net.sf.anathema.character.main.template.experience.IExperiencePointCosts;
@@ -58,7 +58,7 @@ public class ExperiencePointCostCalculator implements IPointCostCalculator {
   }
 
   @Override
-  public int getCharmCosts(Hero hero, ICharm charm, TraitMap traitMap) {
+  public int getCharmCosts(Hero hero, Charm charm, TraitMap traitMap) {
     return costs.getCharmCosts(charm, new CostAnalyzer(hero));
   }
 }

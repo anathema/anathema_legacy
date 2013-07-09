@@ -3,6 +3,7 @@ package net.sf.anathema.hero.magic.model.charms;
 import com.google.common.base.Functions;
 import net.sf.anathema.character.main.magic.display.view.charms.CharacterChangeCharmListener;
 import net.sf.anathema.character.main.caste.CasteType;
+import net.sf.anathema.character.main.magic.model.charm.Charm;
 import net.sf.anathema.character.main.magic.model.charm.CharmAttributeList;
 import net.sf.anathema.character.main.magic.model.charm.CharmLearnAdapter;
 import net.sf.anathema.character.main.magic.model.charm.CharmSpecialistImpl;
@@ -18,7 +19,6 @@ import net.sf.anathema.character.main.magic.model.charms.options.MartialArtsOpti
 import net.sf.anathema.character.main.magic.model.charms.options.NonMartialArtsOptions;
 import net.sf.anathema.character.main.magic.model.charm.special.IMultiLearnableCharmConfiguration;
 import net.sf.anathema.character.main.magic.model.charm.special.IMultipleEffectCharmConfiguration;
-import net.sf.anathema.character.main.magic.model.charm.ICharm;
 import net.sf.anathema.character.main.magic.model.charms.MartialArtsUtilities;
 import net.sf.anathema.character.main.magic.model.charm.CharmIdMap;
 import net.sf.anathema.character.main.magic.model.charmtree.GroupCharmTree;
@@ -71,7 +71,7 @@ public class CharmsModelImpl implements CharmsModel {
   private ISpecialCharmManager manager;
   private ILearningCharmGroupContainer learningCharmGroupContainer = new ILearningCharmGroupContainer() {
     @Override
-    public ILearningCharmGroup getLearningCharmGroup(ICharm charm) {
+    public ILearningCharmGroup getLearningCharmGroup(Charm charm) {
       return getGroup(charm);
     }
   };
@@ -113,12 +113,12 @@ public class CharmsModelImpl implements CharmsModel {
     for (ILearningCharmGroup group : getAllGroups()) {
       group.addCharmLearnListener(new CharmLearnAdapter() {
         @Override
-        public void charmForgotten(ICharm charm) {
+        public void charmForgotten(Charm charm) {
           control.announce().changeOccurred();
         }
 
         @Override
-        public void charmLearned(ICharm charm) {
+        public void charmLearned(Charm charm) {
           control.announce().changeOccurred();
         }
       });
@@ -147,7 +147,7 @@ public class CharmsModelImpl implements CharmsModel {
     String[] compulsiveCharms = getCompulsiveCharmIds();
 
     for (String charmId : compulsiveCharms) {
-      ICharm charm = getCharmById(charmId);
+      Charm charm = getCharmById(charmId);
       getGroup(charm).learnCharm(charm, false);
     }
   }
@@ -183,7 +183,7 @@ public class CharmsModelImpl implements CharmsModel {
     CharmIdMap charmIdMap = getCharmIdMap();
     ISpecialCharm[] specialCharms = getSpecialCharms();
     for (ISpecialCharm specialCharm : specialCharms) {
-      ICharm charm = charmIdMap.getCharmById(specialCharm.getCharmId());
+      Charm charm = charmIdMap.getCharmById(specialCharm.getCharmId());
       if (charm == null) {
         continue;
       }
@@ -196,15 +196,15 @@ public class CharmsModelImpl implements CharmsModel {
     List<ILearningCharmGroup> newGroups = new ArrayList<>();
     ICharmLearnListener mergedListener = new CharmLearnAdapter() {
       @Override
-      public void charmLearned(ICharm charm) {
+      public void charmLearned(Charm charm) {
         learnOtherCharmsFromMerge(charm);
         learnDirectChildrenActivatedViaThereMerge(charm);
       }
 
-      private void learnDirectChildrenActivatedViaThereMerge(ICharm charm) {
-        for (ICharm child : charm.getLearnChildCharms()) {
+      private void learnDirectChildrenActivatedViaThereMerge(Charm charm) {
+        for (Charm child : charm.getLearnChildCharms()) {
           boolean learnedMerged = false;
-          for (ICharm mergedCharm : child.getMergedCharms()) {
+          for (Charm mergedCharm : child.getMergedCharms()) {
             learnedMerged = learnedMerged || isLearned(mergedCharm);
           }
           if (learnedMerged && isLearnable(child)) {
@@ -213,8 +213,8 @@ public class CharmsModelImpl implements CharmsModel {
         }
       }
 
-      private void learnOtherCharmsFromMerge(ICharm charm) {
-        for (ICharm mergedCharm : charm.getMergedCharms()) {
+      private void learnOtherCharmsFromMerge(Charm charm) {
+        for (Charm mergedCharm : charm.getMergedCharms()) {
           if (!isLearned(mergedCharm) && isLearnableWithoutPrerequisites(mergedCharm) &&
                   CharmsModelImpl.this.getSpecialCharmConfiguration(mergedCharm) == null) {
             getGroup(mergedCharm).learnCharm(mergedCharm, isExperienced());
@@ -223,8 +223,8 @@ public class CharmsModelImpl implements CharmsModel {
       }
 
       @Override
-      public void charmForgotten(ICharm charm) {
-        for (ICharm mergedCharm : charm.getMergedCharms()) {
+      public void charmForgotten(Charm charm) {
+        for (Charm mergedCharm : charm.getMergedCharms()) {
           if (isLearned(mergedCharm)) {
             getGroup(mergedCharm).forgetCharm(mergedCharm, isExperienced());
           }
@@ -235,9 +235,9 @@ public class CharmsModelImpl implements CharmsModel {
 
       @Override
       public void recalculateRequested() {
-        for (ICharm charm : getLearnedCharms(true)) {
+        for (Charm charm : getLearnedCharms(true)) {
           boolean prereqsMet = true;
-          for (ICharm parent : charm.getParentCharms()) {
+          for (Charm parent : charm.getParentCharms()) {
             for (String subeffectRequirement : charm.getParentSubEffects()) {
               if (getSubeffectParent(subeffectRequirement).equals(parent.getId())) {
                 ISpecialCharmConfiguration config = getSpecialCharmConfiguration(getSubeffectParent(subeffectRequirement));
@@ -294,9 +294,9 @@ public class CharmsModelImpl implements CharmsModel {
   }
 
   @Override
-  public ICharm getCharmById(String charmId) {
+  public Charm getCharmById(String charmId) {
     String trueCharmId = getCharmTrueName(charmId);
-    ICharm charm = getCharmIdMap().getCharmById(trueCharmId);
+    Charm charm = getCharmIdMap().getCharmById(trueCharmId);
     if (charm != null) {
       return charm;
     }
@@ -304,12 +304,12 @@ public class CharmsModelImpl implements CharmsModel {
   }
 
   @Override
-  public ICharm[] getCreationLearnedCharms() {
-    List<ICharm> allLearnedCharms = new ArrayList<>();
+  public Charm[] getCreationLearnedCharms() {
+    List<Charm> allLearnedCharms = new ArrayList<>();
     for (ILearningCharmGroup group : getAllGroups()) {
       Collections.addAll(allLearnedCharms, group.getCreationLearnedCharms());
     }
-    return allLearnedCharms.toArray(new ICharm[allLearnedCharms.size()]);
+    return allLearnedCharms.toArray(new Charm[allLearnedCharms.size()]);
   }
 
   @Override
@@ -325,19 +325,19 @@ public class CharmsModelImpl implements CharmsModel {
   }
 
   @Override
-  public ICharm[] getLearnedCharms(boolean experienced) {
-    List<ICharm> allLearnedCharms = new ArrayList<>();
+  public Charm[] getLearnedCharms(boolean experienced) {
+    List<Charm> allLearnedCharms = new ArrayList<>();
     for (ILearningCharmGroup group : getAllGroups()) {
       Collections.addAll(allLearnedCharms, group.getCreationLearnedCharms());
       if (experienced) {
         Collections.addAll(allLearnedCharms, group.getExperienceLearnedCharms());
       }
     }
-    return allLearnedCharms.toArray(new ICharm[allLearnedCharms.size()]);
+    return allLearnedCharms.toArray(new Charm[allLearnedCharms.size()]);
   }
 
   @Override
-  public ISpecialCharmConfiguration getSpecialCharmConfiguration(ICharm charm) {
+  public ISpecialCharmConfiguration getSpecialCharmConfiguration(Charm charm) {
     return manager.getSpecialCharmConfiguration(charm);
   }
 
@@ -377,15 +377,15 @@ public class CharmsModelImpl implements CharmsModel {
     if (!hero.isFullyLoaded()) {
       return;
     }
-    List<ICharm> charmsToUnlearn = new ArrayList<>();
-    for (ICharm charm : this.getLearnedCharms(true)) {
+    List<Charm> charmsToUnlearn = new ArrayList<>();
+    for (Charm charm : this.getLearnedCharms(true)) {
       boolean prerequisitesForCharmAreNoLongerMet = !isLearnable(charm);
       boolean charmCanBeUnlearned = isUnlearnable(charm);
       if (prerequisitesForCharmAreNoLongerMet && charmCanBeUnlearned) {
         charmsToUnlearn.add(charm);
       }
     }
-    for (ICharm charm : charmsToUnlearn) {
+    for (Charm charm : charmsToUnlearn) {
       ILearningCharmGroup group = learningCharmGroupContainer.getLearningCharmGroup(charm);
       boolean learnedAtCreation = group.isLearned(charm, false);
       boolean learnedWithExperience = !learnedAtCreation;
@@ -399,7 +399,7 @@ public class CharmsModelImpl implements CharmsModel {
   }
 
   @Override
-  public final boolean isLearnable(ICharm charm) {
+  public final boolean isLearnable(Charm charm) {
     if (isAlienCharm(charm)) {
       CasteType casteType = HeroConceptFetcher.fetch(hero).getCaste().getType();
       if (!(getNativeTemplate(hero).isAllowedAlienCharms(casteType))) {
@@ -423,7 +423,7 @@ public class CharmsModelImpl implements CharmsModel {
         return false;
       }
     }
-    ICharm[] learnedCharms = getLearnedCharms(true);
+    Charm[] learnedCharms = getLearnedCharms(true);
     for (IndirectCharmRequirement requirement : charm.getAttributeRequirements()) {
       if (!requirement.isFulfilled(learnedCharms)) {
         return false;
@@ -432,7 +432,7 @@ public class CharmsModelImpl implements CharmsModel {
     if (!(new CharmTraitRequirementChecker(getPrerequisiteModifyingCharms(), traits, this).areTraitMinimumsSatisfied(charm))) {
       return false;
     }
-    for (ICharm parentCharm : charm.getLearnPrerequisitesCharms(this)) {
+    for (Charm parentCharm : charm.getLearnPrerequisitesCharms(this)) {
       if (!isLearnable(parentCharm)) {
         return false;
       }
@@ -451,11 +451,11 @@ public class CharmsModelImpl implements CharmsModel {
     return prerequisiteModifyingCharms;
   }
 
-  private boolean isLearnableWithoutPrerequisites(ICharm charm) {
+  private boolean isLearnableWithoutPrerequisites(Charm charm) {
     if (!isLearnable(charm)) {
       return false;
     }
-    for (ICharm parentCharm : charm.getLearnPrerequisitesCharms(this)) {
+    for (Charm parentCharm : charm.getLearnPrerequisitesCharms(this)) {
       if (!isLearned(parentCharm)) {
         return false;
       }
@@ -465,17 +465,17 @@ public class CharmsModelImpl implements CharmsModel {
 
   @Override
   public boolean isLearned(String charmId) {
-    ICharm charm = getCharmById(charmId);
+    Charm charm = getCharmById(charmId);
     return charm != null && isLearned(charm);
   }
 
-  public final boolean isUnlearnable(ICharm charm) {
+  public final boolean isUnlearnable(Charm charm) {
     ILearningCharmGroup group = getGroup(charm);
     return group.isUnlearnable(charm);
   }
 
   @Override
-  public boolean isAlienCharm(ICharm charm) {
+  public boolean isAlienCharm(Charm charm) {
     boolean isNotMartialArts = !isMartialArtsCharm(charm);
     boolean isOfAlienType = nonMartialArtsOptions.isAlienType(charm.getCharacterType());
     return isNotMartialArts && isOfAlienType;
@@ -483,18 +483,18 @@ public class CharmsModelImpl implements CharmsModel {
 
   @Override
   public ISpecialCharmConfiguration getSpecialCharmConfiguration(String charmId) {
-    ICharm charm = getCharmById(charmId);
+    Charm charm = getCharmById(charmId);
     return getSpecialCharmConfiguration(charm);
   }
 
   @Override
-  public final boolean isCompulsiveCharm(ICharm charm) {
+  public final boolean isCompulsiveCharm(Charm charm) {
     String[] compulsiveCharmIDs = getCompulsiveCharmIds();
     return ArrayUtils.contains(compulsiveCharmIDs, charm.getId());
   }
 
   @Override
-  public final boolean isLearned(ICharm charm) {
+  public final boolean isLearned(Charm charm) {
     ILearningCharmGroup group = getGroup(charm);
     return group != null && group.isLearned(charm);
   }
@@ -512,12 +512,12 @@ public class CharmsModelImpl implements CharmsModel {
   }
 
   @Override
-  public final ILearningCharmGroup getGroup(ICharm charm) {
+  public final ILearningCharmGroup getGroup(Charm charm) {
     return getGroupById(charm.getCharacterType(), charm.getGroupId());
   }
 
   @Override
-  public ICharm[] getCharms(ICharmGroup charmGroup) {
+  public Charm[] getCharms(ICharmGroup charmGroup) {
     return nonMartialArtsOptions.getCharms(charmGroup);
   }
 

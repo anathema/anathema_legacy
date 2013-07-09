@@ -1,7 +1,7 @@
 package net.sf.anathema.cards.data.providers;
 
 import net.sf.anathema.character.main.magic.display.view.charms.CharmDescriptionProviderExtractor;
-import net.sf.anathema.character.main.magic.model.magic.IMagic;
+import net.sf.anathema.character.main.magic.model.magic.Magic;
 import net.sf.anathema.character.main.magic.description.MagicDescription;
 import net.sf.anathema.framework.IApplicationModel;
 import net.sf.anathema.lib.resources.Resources;
@@ -20,7 +20,7 @@ public abstract class AbstractMagicCardDataProvider implements ICardDataProvider
     return resources;
   }
 
-  protected MagicDescription getMagicDescription(IMagic magic) {
+  protected MagicDescription getMagicDescription(Magic magic) {
     return CharmDescriptionProviderExtractor.CreateFor(model, resources).getCharmDescription(magic);
   }
 }

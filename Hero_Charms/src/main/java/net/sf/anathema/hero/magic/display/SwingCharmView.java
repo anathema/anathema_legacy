@@ -4,7 +4,7 @@ import net.miginfocom.layout.CC;
 import net.miginfocom.layout.LC;
 import net.miginfocom.swing.MigLayout;
 import net.sf.anathema.character.main.magic.display.view.charmtree.AbstractCascadeSelectionView;
-import net.sf.anathema.character.main.magic.display.view.charmtree.ICharmView;
+import net.sf.anathema.character.main.magic.display.view.charmtree.CharmView;
 import net.sf.anathema.framework.swing.IView;
 import net.sf.anathema.framework.ui.RGBColor;
 import net.sf.anathema.framework.value.IntValueView;
@@ -20,10 +20,10 @@ import net.sf.anathema.platform.tree.presenter.view.ToolTipProperties;
 import javax.swing.JComponent;
 import javax.swing.JPanel;
 
-public class CharmView extends AbstractCascadeSelectionView implements ICharmView, IView {
+public class SwingCharmView extends AbstractCascadeSelectionView implements CharmView, IView {
   private final JPanel content = new JPanel(new MigLayout(new LC().wrapAfter(1).fill()));
 
-  public CharmView(IntegerViewFactory integerDisplayFactory) {
+  public SwingCharmView(IntegerViewFactory integerDisplayFactory) {
     getCharmTreeView().registerSpecialType(IntValueView.class, new SpecialIntDisplayFactory(integerDisplayFactory));
     getCharmTreeView().registerSpecialType(IBooleanValueView.class, new SpecialBooleanDisplayFactory());
   }

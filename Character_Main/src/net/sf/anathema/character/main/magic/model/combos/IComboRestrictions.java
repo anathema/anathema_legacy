@@ -1,6 +1,6 @@
 package net.sf.anathema.character.main.magic.model.combos;
 
-import net.sf.anathema.character.main.magic.model.charm.ICharm;
+import net.sf.anathema.character.main.magic.model.charm.Charm;
 import net.sf.anathema.character.main.traits.TraitType;
 import net.sf.anathema.character.main.traits.types.AbilityType;
 
@@ -10,7 +10,7 @@ public interface IComboRestrictions {
   
   boolean combosSelectAbility(AbilityType type);
 
-  boolean isRestrictedCharm(ICharm charm);
+  boolean isRestrictedCharm(Charm charm);
 
   TraitType[] getRestrictedTraitTypes();
 }

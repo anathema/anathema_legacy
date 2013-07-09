@@ -1,10 +1,10 @@
 package net.sf.anathema.character.main.template.magic;
 
-import net.sf.anathema.character.main.magic.model.charm.ICharm;
+import net.sf.anathema.character.main.magic.model.charm.Charm;
 
 public interface ICharmSet {
 
-  ICharm[] getCharms();
+  Charm[] getCharms();
 
-  ICharm[] getMartialArtsCharms();
+  Charm[] getMartialArtsCharms();
 }

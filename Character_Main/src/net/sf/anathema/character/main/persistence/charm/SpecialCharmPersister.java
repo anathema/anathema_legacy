@@ -1,6 +1,6 @@
 package net.sf.anathema.character.main.persistence.charm;
 
-import net.sf.anathema.character.main.magic.model.charm.ICharm;
+import net.sf.anathema.character.main.magic.model.charm.Charm;
 import net.sf.anathema.character.main.magic.model.charm.CharmIdMap;
 import net.sf.anathema.character.main.magic.model.charm.special.IMultiLearnableCharm;
 import net.sf.anathema.character.main.magic.model.charm.special.IMultipleEffectCharm;
@@ -21,7 +21,7 @@ import java.util.Map;
 
 public class SpecialCharmPersister implements ISpecialCharmPersister {
 
-  private final Map<ICharm, ISpecialCharmPersister> persisterByCharm = new HashMap<>();
+  private final Map<Charm, ISpecialCharmPersister> persisterByCharm = new HashMap<>();
 
   public SpecialCharmPersister(ISpecialCharm[] charms, final CharmIdMap charmTree) {
     for (ISpecialCharm specialCharm : charms) {
@@ -69,7 +69,7 @@ public class SpecialCharmPersister implements ISpecialCharmPersister {
     }
   }
 
-  private ICharm getCharm(String charmId, CharmIdMap charmTree) {
+  private Charm getCharm(String charmId, CharmIdMap charmTree) {
     return charmTree.getCharmById(charmId);
   }
 

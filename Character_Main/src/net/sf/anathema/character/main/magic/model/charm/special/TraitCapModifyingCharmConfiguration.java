@@ -1,6 +1,6 @@
 package net.sf.anathema.character.main.magic.model.charm.special;
 
-import net.sf.anathema.character.main.magic.model.charm.ICharm;
+import net.sf.anathema.character.main.magic.model.charm.Charm;
 import net.sf.anathema.character.main.library.trait.DefaultTrait;
 import net.sf.anathema.hero.charms.CharmsModel;
 import net.sf.anathema.character.main.magic.model.charm.CharmSpecialist;
@@ -9,9 +9,9 @@ public class TraitCapModifyingCharmConfiguration implements ITraitCapModifyingCh
   private CharmSpecialist specialist;
   private final ITraitCapModifyingCharm specialCharm;
   private final CharmsModel config;
-  private final ICharm charm;
+  private final Charm charm;
 
-  public TraitCapModifyingCharmConfiguration(CharmSpecialist specialist, CharmsModel config, ICharm charm,
+  public TraitCapModifyingCharmConfiguration(CharmSpecialist specialist, CharmsModel config, Charm charm,
                                              ITraitCapModifyingCharm specialCharm) {
     this.specialist = specialist;
     this.specialCharm = specialCharm;
@@ -41,7 +41,7 @@ public class TraitCapModifyingCharmConfiguration implements ITraitCapModifyingCh
   }
 
   @Override
-  public ICharm getCharm() {
+  public Charm getCharm() {
     return charm;
   }
 

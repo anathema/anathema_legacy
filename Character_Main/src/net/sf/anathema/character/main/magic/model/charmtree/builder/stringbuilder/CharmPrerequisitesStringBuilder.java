@@ -1,7 +1,7 @@
 package net.sf.anathema.character.main.magic.model.charmtree.builder.stringbuilder;
 
-import net.sf.anathema.character.main.magic.model.charm.ICharm;
-import net.sf.anathema.character.main.magic.model.magic.IMagic;
+import net.sf.anathema.character.main.magic.model.charm.Charm;
+import net.sf.anathema.character.main.magic.model.magic.Magic;
 import net.sf.anathema.character.main.traits.ValuedTraitType;
 import net.sf.anathema.lib.gui.TooltipBuilder;
 import net.sf.anathema.lib.resources.Resources;
@@ -14,10 +14,10 @@ public class CharmPrerequisitesStringBuilder implements IMagicTooltipStringBuild
   }
 
   @Override
-  public void buildStringForMagic(StringBuilder builder, IMagic magic, Object details) {
-    if (magic instanceof ICharm) {
-      createPrerequisiteLines(builder, ((ICharm) magic).getPrerequisites());
-      createPrerequisiteLines(builder, new ValuedTraitType[]{((ICharm) magic).getEssence()});
+  public void buildStringForMagic(StringBuilder builder, Magic magic, Object details) {
+    if (magic instanceof Charm) {
+      createPrerequisiteLines(builder, ((Charm) magic).getPrerequisites());
+      createPrerequisiteLines(builder, new ValuedTraitType[]{((Charm) magic).getEssence()});
     }
   }
 

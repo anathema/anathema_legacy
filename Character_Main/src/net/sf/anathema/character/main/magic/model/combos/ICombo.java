@@ -1,6 +1,6 @@
 package net.sf.anathema.character.main.magic.model.combos;
 
-import net.sf.anathema.character.main.magic.model.charm.ICharm;
+import net.sf.anathema.character.main.magic.model.charm.Charm;
 import net.sf.anathema.lib.control.ChangeListener;
 import net.sf.anathema.lib.workflow.textualdescription.ITextualDescription;
 
@@ -8,7 +8,7 @@ public interface ICombo extends Cloneable {
 
   void addComboModelListener(ChangeListener listener);
 
-  void removeCharms(ICharm[] charm);
+  void removeCharms(Charm[] charm);
 
   ICombo clone();
 
@@ -18,13 +18,13 @@ public interface ICombo extends Cloneable {
 
   ITextualDescription getDescription();
 
-  ICharm[] getCharms();
+  Charm[] getCharms();
 
-  ICharm[] getCreationCharms();
+  Charm[] getCreationCharms();
 
-  ICharm[] getExperiencedCharms();
+  Charm[] getExperiencedCharms();
 
-  boolean contains(ICharm charm);
+  boolean contains(Charm charm);
 
   Integer getId();
 
@@ -32,5 +32,5 @@ public interface ICombo extends Cloneable {
 
   void getValuesFrom(ICombo combo);
 
-  void addCharm(ICharm charm, boolean experienced);
+  void addCharm(Charm charm, boolean experienced);
 }

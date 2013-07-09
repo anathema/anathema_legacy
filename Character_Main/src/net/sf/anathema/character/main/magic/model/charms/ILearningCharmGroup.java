@@ -1,34 +1,34 @@
 package net.sf.anathema.character.main.magic.model.charms;
 
+import net.sf.anathema.character.main.magic.model.charm.Charm;
 import net.sf.anathema.character.main.magic.model.charm.ICharmGroup;
 import net.sf.anathema.character.main.magic.model.charm.ICharmLearnListener;
-import net.sf.anathema.character.main.magic.model.charm.ICharm;
 
 public interface ILearningCharmGroup extends ICharmGroup, IBasicLearnCharmGroup {
 
-  void toggleLearned(ICharm charm);
+  void toggleLearned(Charm charm);
 
   void addCharmLearnListener(ICharmLearnListener listener);
 
-  ICharm[] getCreationLearnedCharms();
+  Charm[] getCreationLearnedCharms();
 
-  void learnCharm(ICharm charm, boolean experienced);
+  void learnCharm(Charm charm, boolean experienced);
 
-  void learnCharmNoParents(ICharm charm, boolean experienced, boolean announce);
+  void learnCharmNoParents(Charm charm, boolean experienced, boolean announce);
 
-  boolean isUnlearnable(ICharm charm);
+  boolean isUnlearnable(Charm charm);
 
-  boolean isUnlearnableWithoutConsequences(ICharm charm);
+  boolean isUnlearnableWithoutConsequences(Charm charm);
 
-  ICharm[] getExperienceLearnedCharms();
+  Charm[] getExperienceLearnedCharms();
 
-  void forgetCharm(ICharm child, boolean experienced);
+  void forgetCharm(Charm child, boolean experienced);
 
   void forgetAll();
 
   boolean hasLearnedCharms();
 
-  ICharm[] getCoreCharms();
+  Charm[] getCoreCharms();
 
   void unlearnExclusives();
 

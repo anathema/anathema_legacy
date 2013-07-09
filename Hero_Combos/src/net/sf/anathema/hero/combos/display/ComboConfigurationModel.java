@@ -1,7 +1,7 @@
 package net.sf.anathema.hero.combos.display;
 
 import net.sf.anathema.character.main.caste.CasteType;
-import net.sf.anathema.character.main.magic.model.charm.ICharm;
+import net.sf.anathema.character.main.magic.model.charm.Charm;
 import net.sf.anathema.character.main.magic.description.MagicDescriptionProvider;
 import net.sf.anathema.hero.charms.CharmsModel;
 import net.sf.anathema.hero.charms.CharmsModelFetcher;
@@ -39,7 +39,7 @@ public class ComboConfigurationModel {
     return magicDescriptionProvider;
   }
 
-  public ICharm[] getLearnedCharms() {
+  public Charm[] getLearnedCharms() {
     return CharmsModelFetcher.fetch(hero).getLearnedCharms(isExperienced());
   }
 

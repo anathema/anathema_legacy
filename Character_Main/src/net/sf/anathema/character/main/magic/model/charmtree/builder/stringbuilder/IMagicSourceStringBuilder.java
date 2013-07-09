@@ -1,8 +1,8 @@
 package net.sf.anathema.character.main.magic.model.charmtree.builder.stringbuilder;
 
-import net.sf.anathema.character.main.magic.model.magic.IMagic;
+import net.sf.anathema.character.main.magic.model.magic.Magic;
 
-public interface IMagicSourceStringBuilder<T extends IMagic> {
+public interface IMagicSourceStringBuilder<T extends Magic> {
 
   String createSourceString(T magic);
 

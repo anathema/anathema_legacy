@@ -1,5 +1,6 @@
 package net.sf.anathema.hero.magic.display.tree;
 
+import net.sf.anathema.character.main.magic.display.view.charmtree.CharmView;
 import net.sf.anathema.character.main.magic.model.charmtree.GroupCharmTree;
 import net.sf.anathema.hero.charms.CharmsModel;
 import net.sf.anathema.hero.magic.model.CharacterCharmModel;
@@ -13,7 +14,6 @@ import net.sf.anathema.hero.magic.display.coloring.CharacterColoringStrategy;
 import net.sf.anathema.hero.magic.display.coloring.ConfigurableCharmDye;
 import net.sf.anathema.character.main.magic.display.view.charmtree.CharmDisplayPropertiesMap;
 import net.sf.anathema.character.main.magic.display.view.charmtree.DefaultNodeProperties;
-import net.sf.anathema.character.main.magic.display.view.charmtree.ICharmView;
 import net.sf.anathema.hero.magic.display.special.SwingSpecialCharmViewBuilder;
 import net.sf.anathema.hero.magic.model.charms.CharacterGroupCollection;
 import net.sf.anathema.lib.resources.Resources;
@@ -22,10 +22,10 @@ import net.sf.anathema.platform.tree.document.visualizer.ITreePresentationProper
 
 public class CharacterCharmTreePresenter extends AbstractCascadePresenter {
 
-  private final ICharmView view;
+  private final CharmView view;
   private final CharacterCharmModel model;
 
-  public CharacterCharmTreePresenter(Resources resources, ICharmView view, CharacterCharmModel charmModel,
+  public CharacterCharmTreePresenter(Resources resources, CharmView view, CharacterCharmModel charmModel,
                                      ITreePresentationProperties presentationProperties, CharmDisplayPropertiesMap displayPropertiesMap) {
     super(resources);
     this.model = charmModel;

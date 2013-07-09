@@ -1,8 +1,8 @@
 package net.sf.anathema.cascades.presenter;
 
 import net.sf.anathema.character.main.framework.HeroEnvironment;
+import net.sf.anathema.character.main.magic.model.charm.Charm;
 import net.sf.anathema.character.main.magic.parser.charms.ICharmCache;
-import net.sf.anathema.character.main.magic.model.charm.ICharm;
 import net.sf.anathema.character.main.magic.model.charm.CharmIdMap;
 import net.sf.anathema.character.main.magic.model.charm.special.ISpecialCharm;
 import net.sf.anathema.character.main.magic.description.MagicDescriptionProvider;
@@ -14,12 +14,12 @@ import net.sf.anathema.lib.util.Identifier;
 public class CascadeCharmTreeViewProperties extends AbstractCharmTreeViewProperties implements CharmIdMap {
 
   private Identifier type;
-  private CharmTreeIdentificateMap treeIdentificateMap;
+  private CharmTreeIdentifierMap treeIdentificateMap;
   private final ICharmCache cache;
   private final HeroEnvironment generics;
 
   public CascadeCharmTreeViewProperties(Resources resources, MagicDescriptionProvider magicDescriptionProvider, HeroEnvironment generics,
-                                        ICharmCache cache, CharmTreeIdentificateMap treeIdentificateMap) {
+                                        ICharmCache cache, CharmTreeIdentifierMap treeIdentificateMap) {
     super(resources, magicDescriptionProvider);
     this.generics = generics;
     this.cache = cache;
@@ -27,8 +27,8 @@ public class CascadeCharmTreeViewProperties extends AbstractCharmTreeViewPropert
   }
 
   @Override
-  public ICharm getCharmById(String id) {
-    ICharm charm = treeIdentificateMap.get(type).getCharmById(id);
+  public Charm getCharmById(String id) {
+    Charm charm = treeIdentificateMap.get(type).getCharmById(id);
     if (charm == null) {
       CharmFinder charmFinder = new CharmFinder(generics.getCharacterTypes(), cache, id);
       charm = charmFinder.find();

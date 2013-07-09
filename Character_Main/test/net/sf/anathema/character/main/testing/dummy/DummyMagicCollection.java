@@ -1,6 +1,6 @@
 package net.sf.anathema.character.main.testing.dummy;
 
-import net.sf.anathema.character.main.magic.model.magic.IMagic;
+import net.sf.anathema.character.main.magic.model.magic.Magic;
 import net.sf.anathema.character.main.magic.model.charm.special.IMultiLearnableCharm;
 import net.sf.anathema.hero.magic.MagicCollection;
 
@@ -17,7 +17,7 @@ public class DummyMagicCollection implements MagicCollection {
   }
 
   @Override
-  public boolean isLearned(IMagic magic) {
+  public boolean isLearned(Magic magic) {
     return false;
   }
 

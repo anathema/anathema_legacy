@@ -1,8 +1,8 @@
 package net.sf.anathema.cascades.presenter;
 
 import com.google.common.base.Predicate;
+import net.sf.anathema.character.main.magic.model.charm.Charm;
 import net.sf.anathema.character.main.magic.parser.charms.ICharmCache;
-import net.sf.anathema.character.main.magic.model.charm.ICharm;
 import net.sf.anathema.character.main.type.CharacterTypes;
 import net.sf.anathema.character.main.type.ICharacterType;
 import net.sf.anathema.lib.lang.ArrayUtilities;
@@ -22,15 +22,15 @@ public class CharmFinder {
     this.id = id;
   }
 
-  public ICharm find() {
-    ICharm charm = searchCharmByCharacterType();
+  public Charm find() {
+    Charm charm = searchCharmByCharacterType();
     if (charm != null) {
       return charm;
     }
     return searchCharmFromMartialArts();
   }
 
-  private ICharm searchCharmByCharacterType() {
+  private Charm searchCharmByCharacterType() {
     String[] idParts = id.split("\\.");
     try {
     	ICharacterType characterTypeId = characterTypes.findById(idParts[0]);
@@ -41,15 +41,15 @@ public class CharmFinder {
     }
   }
 
-  private ICharm searchCharmFromMartialArts() {
+  private Charm searchCharmFromMartialArts() {
     return findCharm(MARTIAL_ARTS);
   }
 
-  private ICharm findCharm(Identifier treeType) {
-    ICharm[] charms = cache.getCharms(treeType);
-    return ArrayUtilities.find(new Predicate<ICharm>() {
+  private Charm findCharm(Identifier treeType) {
+    Charm[] charms = cache.getCharms(treeType);
+    return ArrayUtilities.find(new Predicate<Charm>() {
       @Override
-      public boolean apply(ICharm candidate) {
+      public boolean apply(Charm candidate) {
         return candidate.getId().equals(id);
       }
     }, charms);

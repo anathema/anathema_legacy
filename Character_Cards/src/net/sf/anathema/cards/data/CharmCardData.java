@@ -6,8 +6,8 @@ import com.itextpdf.text.Image;
 import com.itextpdf.text.Paragraph;
 import com.itextpdf.text.Phrase;
 import net.sf.anathema.cards.layout.ICardReportResourceProvider;
+import net.sf.anathema.character.main.magic.model.charm.Charm;
 import net.sf.anathema.character.main.magic.model.charms.MartialArtsUtilities;
-import net.sf.anathema.character.main.magic.model.charm.ICharm;
 import net.sf.anathema.character.main.magic.description.MagicDescription;
 import net.sf.anathema.character.main.traits.types.AbilityType;
 import net.sf.anathema.hero.magic.sheet.content.stats.CharmStats;
@@ -15,10 +15,10 @@ import net.sf.anathema.character.main.magic.model.charmtree.builder.stringbuilde
 import net.sf.anathema.lib.resources.Resources;
 
 public class CharmCardData extends AbstractMagicCardData {
-  private ICharm charm;
+  private Charm charm;
   private CharmStats stats;
 
-  public CharmCardData(ICharm charm, CharmStats stats, MagicDescription description, ICardReportResourceProvider fontProvider, Resources resources) {
+  public CharmCardData(Charm charm, CharmStats stats, MagicDescription description, ICardReportResourceProvider fontProvider, Resources resources) {
     super(charm, description, fontProvider, resources);
     this.charm = charm;
     this.stats = stats;
@@ -65,12 +65,12 @@ public class CharmCardData extends AbstractMagicCardData {
     return new Element[]{phrases};
   }
 
-  private Phrase getCharmType(ICharm charm) {
+  private Phrase getCharmType(Charm charm) {
     String type = new VerboseCharmTypeStringBuilder(getResources()).createTypeString(charm.getCharmTypeModel());
     return new Phrase(8, type, getResourceProvider().getBoldFont());
   }
 
-  private Phrase getCharmDuration(ICharm charm) {
+  private Phrase getCharmDuration(Charm charm) {
     String duration = charm.getDuration().getText(getResources());
     return new Phrase(duration, getResourceProvider().getNormalFont());
   }

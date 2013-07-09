@@ -1,7 +1,7 @@
 package net.sf.anathema.character.main.testing.dummy;
 
-import net.sf.anathema.character.main.magic.model.charm.ICharm;
-import net.sf.anathema.character.main.magic.model.charm.ICharmData;
+import net.sf.anathema.character.main.magic.model.charm.Charm;
+import net.sf.anathema.character.main.magic.model.charm.CharmData;
 import net.sf.anathema.character.main.magic.model.charm.ICharmAttribute;
 import net.sf.anathema.character.main.magic.model.combos.IComboRestrictions;
 import net.sf.anathema.character.main.magic.model.charm.IndirectCharmRequirement;
@@ -21,8 +21,8 @@ import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
-public class DummyCharmData implements ICharmData {
-  private final Set<ICharm> parents = new HashSet<>();
+public class DummyCharmData implements CharmData {
+  private final Set<Charm> parents = new HashSet<>();
 
   @Override
   public ICharacterType getCharacterType() {
@@ -73,12 +73,12 @@ public class DummyCharmData implements ICharmData {
     return null;
   }
 
-  public void setParentCharms(ICharm[] parentcharms) {
+  public void setParentCharms(Charm[] parentcharms) {
     Collections.addAll(this.parents, parentcharms);
   }
 
   @Override
-  public Set<ICharm> getParentCharms() {
+  public Set<Charm> getParentCharms() {
     return parents;
   }
 

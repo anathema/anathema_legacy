@@ -1,6 +1,6 @@
 package net.sf.anathema.hero.magic.sheet.content.stats;
 
-import net.sf.anathema.character.main.magic.model.charm.ICharm;
+import net.sf.anathema.character.main.magic.model.charm.Charm;
 import net.sf.anathema.character.main.magic.model.magic.IMagicStats;
 import net.sf.anathema.character.main.magic.model.magic.IMagicVisitor;
 import net.sf.anathema.character.main.magic.model.spells.ISpell;
@@ -21,7 +21,7 @@ public class MagicStatsFactoryVisitor implements IMagicVisitor {
   }
 
   @Override
-  public void visitCharm(ICharm charm) {
+  public void visitCharm(Charm charm) {
     if (content.isGenericCharmFor(charm)) {
       return;
     }

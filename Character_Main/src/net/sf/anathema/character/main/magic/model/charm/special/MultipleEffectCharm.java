@@ -1,7 +1,7 @@
 package net.sf.anathema.character.main.magic.model.charm.special;
 
 import com.google.common.base.Objects;
-import net.sf.anathema.character.main.magic.model.charm.ICharm;
+import net.sf.anathema.character.main.magic.model.charm.Charm;
 import net.sf.anathema.character.main.magic.model.charmtree.ICharmLearnableArbitrator;
 import net.sf.anathema.character.main.magic.model.charm.CharmSpecialist;
 import net.sf.anathema.lib.data.Condition;
@@ -30,7 +30,7 @@ public class MultipleEffectCharm implements IMultipleEffectCharm {
   }
 
   @Override
-  public SubEffects buildSubeffects(CharmSpecialist specialist, ICharmLearnableArbitrator arbitrator, ICharm charm) {
+  public SubEffects buildSubeffects(CharmSpecialist specialist, ICharmLearnableArbitrator arbitrator, Charm charm) {
     List<ISubeffect> effectList = new ArrayList<>();
     for (String id : effectIds) {
       effectList.add(new Subeffect(id, specialist.getExperience(), buildLearnCondition(arbitrator, charm)));
@@ -38,7 +38,7 @@ public class MultipleEffectCharm implements IMultipleEffectCharm {
     return new ArraySubEffects(effectList.toArray(new ISubeffect[effectList.size()]));
   }
 
-  private Condition buildLearnCondition(ICharmLearnableArbitrator arbitrator, ICharm charm) {
+  private Condition buildLearnCondition(ICharmLearnableArbitrator arbitrator, Charm charm) {
     return new ArbitratorLearnCondition(arbitrator, charm);
   }
 

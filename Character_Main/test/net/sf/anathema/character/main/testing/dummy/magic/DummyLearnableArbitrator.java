@@ -1,6 +1,6 @@
 package net.sf.anathema.character.main.testing.dummy.magic;
 
-import net.sf.anathema.character.main.magic.model.charm.ICharm;
+import net.sf.anathema.character.main.magic.model.charm.Charm;
 import net.sf.anathema.character.main.magic.model.charm.ICharmLearnListener;
 import net.sf.anathema.character.main.magic.model.charms.IExtendedCharmLearnableArbitrator;
 import org.apache.commons.lang3.ArrayUtils;
@@ -14,7 +14,7 @@ public class DummyLearnableArbitrator implements IExtendedCharmLearnableArbitrat
   }
 
   @Override
-  public boolean isLearnable(ICharm charm) {
+  public boolean isLearnable(Charm charm) {
     return ArrayUtils.contains(learnableCharmIds, charm.getId());
   }
 
@@ -24,12 +24,12 @@ public class DummyLearnableArbitrator implements IExtendedCharmLearnableArbitrat
   }
 
   @Override
-  public boolean isLearned(ICharm charm) {
+  public boolean isLearned(Charm charm) {
     return false;
   }
 
   @Override
-  public boolean isCompulsiveCharm(ICharm charm) {
+  public boolean isCompulsiveCharm(Charm charm) {
     return false;
   }
 }

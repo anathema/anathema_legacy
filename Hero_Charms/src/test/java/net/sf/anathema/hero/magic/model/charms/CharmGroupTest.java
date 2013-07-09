@@ -1,6 +1,6 @@
 package net.sf.anathema.hero.magic.model.charms;
 
-import net.sf.anathema.character.main.magic.model.charm.ICharm;
+import net.sf.anathema.character.main.magic.model.charm.Charm;
 import net.sf.anathema.character.main.magic.model.charm.CharmGroup;
 import net.sf.anathema.character.main.testing.dummy.DummyExaltCharacterType;
 import org.junit.Test;
@@ -28,7 +28,7 @@ public class CharmGroupTest {
   @Test
   public void identifiesContainedCharm() throws Exception {
     CharmGroup group = createGroupWithCharacterType(new DummyExaltCharacterType());
-    ICharm charm = CharmMother.createCharmForCharacterTypeFromGroup(new DummyExaltCharacterType(), Default_Group_Id);
+    Charm charm = CharmMother.createCharmForCharacterTypeFromGroup(new DummyExaltCharacterType(), Default_Group_Id);
     assertThat(group.isCharmFromGroup(charm), is(true));
 
   }
@@ -38,6 +38,6 @@ public class CharmGroupTest {
   }
 
   private CharmGroup createGroupWithCharacterType(DummyExaltCharacterType type) {
-    return new CharmGroup(type, Default_Group_Id, new ICharm[0], false);
+    return new CharmGroup(type, Default_Group_Id, new Charm[0], false);
   }
 }

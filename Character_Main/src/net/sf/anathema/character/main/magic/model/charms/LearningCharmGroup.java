@@ -1,11 +1,11 @@
 package net.sf.anathema.character.main.magic.model.charms;
 
+import net.sf.anathema.character.main.magic.model.charm.Charm;
 import net.sf.anathema.character.main.magic.model.charm.CharmAttributeList;
 import net.sf.anathema.character.main.magic.model.charm.CharmGroup;
 import net.sf.anathema.character.main.magic.model.charm.ICharmGroup;
 import net.sf.anathema.character.main.magic.model.charm.ICharmLearnListener;
 import net.sf.anathema.character.main.magic.model.charm.ICharmLearnStrategy;
-import net.sf.anathema.character.main.magic.model.charm.ICharm;
 import net.sf.anathema.character.main.magic.model.charm.special.ISpecialCharmConfiguration;
 import net.sf.anathema.hero.charms.CharmsModel;
 import net.sf.anathema.character.main.magic.model.charm.special.IMultiLearnableCharmConfiguration;
@@ -21,8 +21,8 @@ import java.util.Set;
 
 public class LearningCharmGroup extends CharmGroup implements ILearningCharmGroup {
 
-  private final Set<ICharm> charmsLearnedOnCreation = new HashSet<>();
-  private final Set<ICharm> charmsLearnedWithExperience = new HashSet<>();
+  private final Set<Charm> charmsLearnedOnCreation = new HashSet<>();
+  private final Set<Charm> charmsLearnedWithExperience = new HashSet<>();
   private final Announcer<ICharmLearnListener> control = Announcer.to(ICharmLearnListener.class);
   private final IExtendedCharmLearnableArbitrator learnArbitrator;
   private final ICharmLearnStrategy learnStrategy;
@@ -44,19 +44,19 @@ public class LearningCharmGroup extends CharmGroup implements ILearningCharmGrou
   }
 
   @Override
-  public void toggleLearned(ICharm charm) {
+  public void toggleLearned(Charm charm) {
     learnStrategy.toggleLearned(this, charm);
   }
 
   @Override
-  public void toggleLearnedOnCreation(ICharm charm) {
+  public void toggleLearnedOnCreation(Charm charm) {
     if (charmsLearnedOnCreation.contains(charm)) {
       forgetCharm(charm, false);
       return;
     }
     if (!learnArbitrator.isLearnable(charm)) {
       boolean mergedLearned = false;
-      for (ICharm merged : charm.getMergedCharms()) {
+      for (Charm merged : charm.getMergedCharms()) {
         mergedLearned = mergedLearned || learnArbitrator.isLearned(merged);
       }
       if (!mergedLearned) {
@@ -68,7 +68,7 @@ public class LearningCharmGroup extends CharmGroup implements ILearningCharmGrou
   }
 
   @Override
-  public void toggleExperienceLearnedCharm(ICharm charm) {
+  public void toggleExperienceLearnedCharm(Charm charm) {
     if (charmsLearnedOnCreation.contains(charm)) {
       fireNotUnlearnableEvent(charm);
       return;
@@ -85,7 +85,7 @@ public class LearningCharmGroup extends CharmGroup implements ILearningCharmGrou
   }
 
   @Override
-  public void forgetCharm(ICharm charm, boolean experienced) {
+  public void forgetCharm(Charm charm, boolean experienced) {
     if (isUnlearnable(charm)) {
       if (experienced) {
         charmsLearnedWithExperience.remove(charm);
@@ -98,13 +98,13 @@ public class LearningCharmGroup extends CharmGroup implements ILearningCharmGrou
   }
 
   @Override
-  public void learnCharm(ICharm charm, boolean experienced) {
+  public void learnCharm(Charm charm, boolean experienced) {
     learnParents(charm, experienced);
     learnCharmNoParents(charm, experienced, true);
   }
 
   @Override
-  public void learnCharmNoParents(ICharm charm, boolean experienced, boolean announce) {
+  public void learnCharmNoParents(Charm charm, boolean experienced, boolean announce) {
     if (experienced) {
       charmsLearnedWithExperience.add(charm);
     } else {
@@ -115,15 +115,15 @@ public class LearningCharmGroup extends CharmGroup implements ILearningCharmGrou
     }
   }
 
-  private void forgetChildren(ICharm charm, boolean experienced) {
-    for (ICharm child : charm.getLearnFollowUpCharms(learnArbitrator)) {
+  private void forgetChildren(Charm charm, boolean experienced) {
+    for (Charm child : charm.getLearnFollowUpCharms(learnArbitrator)) {
       ILearningCharmGroup childGroup = charmGroupContainer.getLearningCharmGroup(child);
       childGroup.forgetCharm(child, experienced);
     }
   }
 
-  private void learnParents(ICharm charm, boolean experienced) {
-    for (ICharm parent : charm.getLearnPrerequisitesCharms(learnArbitrator)) {
+  private void learnParents(Charm charm, boolean experienced) {
+    for (Charm parent : charm.getLearnPrerequisitesCharms(learnArbitrator)) {
       ILearningCharmGroup parentGroup = charmGroupContainer.getLearningCharmGroup(parent);
       boolean subeffectHandled = false;
       for (String subeffectRequirement : charm.getParentSubEffects()) {
@@ -160,19 +160,19 @@ public class LearningCharmGroup extends CharmGroup implements ILearningCharmGrou
     return subeffect.split("\\.")[3];
   }
 
-  private void fireCharmLearned(ICharm charm) {
+  private void fireCharmLearned(Charm charm) {
     control.announce().charmLearned(charm);
   }
 
-  private void fireCharmForgotten(ICharm charm) {
+  private void fireCharmForgotten(Charm charm) {
     control.announce().charmForgotten(charm);
   }
 
-  private void fireNotLearnableEvent(ICharm charm) {
+  private void fireNotLearnableEvent(Charm charm) {
     control.announce().charmNotLearnable(charm);
   }
 
-  private void fireNotUnlearnableEvent(ICharm charm) {
+  private void fireNotUnlearnableEvent(Charm charm) {
     control.announce().charmNotUnlearnable(charm);
   }
 
@@ -187,17 +187,17 @@ public class LearningCharmGroup extends CharmGroup implements ILearningCharmGrou
   }
 
   @Override
-  public ICharm[] getCreationLearnedCharms() {
-    return charmsLearnedOnCreation.toArray(new ICharm[charmsLearnedOnCreation.size()]);
+  public Charm[] getCreationLearnedCharms() {
+    return charmsLearnedOnCreation.toArray(new Charm[charmsLearnedOnCreation.size()]);
   }
 
   @Override
-  public ICharm[] getExperienceLearnedCharms() {
-    return charmsLearnedWithExperience.toArray(new ICharm[charmsLearnedWithExperience.size()]);
+  public Charm[] getExperienceLearnedCharms() {
+    return charmsLearnedWithExperience.toArray(new Charm[charmsLearnedWithExperience.size()]);
   }
 
   @Override
-  public boolean isLearned(ICharm charm) {
+  public boolean isLearned(Charm charm) {
     return learnStrategy.isLearned(this, charm);
   }
 
@@ -206,7 +206,7 @@ public class LearningCharmGroup extends CharmGroup implements ILearningCharmGrou
    *                    learning.
    */
   @Override
-  public boolean isLearned(ICharm charm, boolean experienced) {
+  public boolean isLearned(Charm charm, boolean experienced) {
     if (experienced) {
       return charmsLearnedWithExperience.contains(charm);
     }
@@ -214,16 +214,16 @@ public class LearningCharmGroup extends CharmGroup implements ILearningCharmGrou
   }
 
   @Override
-  public boolean isUnlearnable(ICharm charm) {
+  public boolean isUnlearnable(Charm charm) {
     return !learnArbitrator.isCompulsiveCharm(charm) && learnStrategy.isUnlearnable(this, charm);
   }
 
   @Override
-  public boolean isUnlearnableWithoutConsequences(ICharm charm) {
+  public boolean isUnlearnableWithoutConsequences(Charm charm) {
     if (!isUnlearnable(charm)) {
       return false;
     }
-    for (ICharm child : charm.getLearnFollowUpCharms(learnArbitrator)) {
+    for (Charm child : charm.getLearnFollowUpCharms(learnArbitrator)) {
       ILearningCharmGroup childGroup = charmGroupContainer.getLearningCharmGroup(child);
       if (childGroup.isLearned(child)) {
         return false;
@@ -234,12 +234,12 @@ public class LearningCharmGroup extends CharmGroup implements ILearningCharmGrou
 
   @Override
   public void forgetAll() {
-    Set<ICharm> forgetCloneCharms = new HashSet<>(charmsLearnedWithExperience);
-    for (ICharm charm : forgetCloneCharms) {
+    Set<Charm> forgetCloneCharms = new HashSet<>(charmsLearnedWithExperience);
+    for (Charm charm : forgetCloneCharms) {
       forgetCharm(charm, true);
     }
     forgetCloneCharms = new HashSet<>(charmsLearnedOnCreation);
-    for (ICharm charm : forgetCloneCharms) {
+    for (Charm charm : forgetCloneCharms) {
       forgetCharm(charm, false);
     }
   }
@@ -250,23 +250,23 @@ public class LearningCharmGroup extends CharmGroup implements ILearningCharmGrou
   }
 
   @Override
-  public ICharm[] getCoreCharms() {
-    ICharm[] allCharms = getAllCharms();
-    List<ICharm> charms = new ArrayList<>();
-    for (ICharm charm : allCharms) {
+  public Charm[] getCoreCharms() {
+    Charm[] allCharms = getAllCharms();
+    List<Charm> charms = new ArrayList<>();
+    for (Charm charm : allCharms) {
       if (!charm.hasAttribute(CharmAttributeList.EXCLUSIVE_ATTRIBUTE)) {
         charms.add(charm);
       }
     }
-    return charms.toArray(new ICharm[charms.size()]);
+    return charms.toArray(new Charm[charms.size()]);
   }
 
   @Override
   public void unlearnExclusives() {
-    List<ICharm> exclusiveCharms = new ArrayList<>();
+    List<Charm> exclusiveCharms = new ArrayList<>();
     Collections.addAll(exclusiveCharms, getAllCharms());
     exclusiveCharms.removeAll(Arrays.asList(getCoreCharms()));
-    for (ICharm charm : exclusiveCharms) {
+    for (Charm charm : exclusiveCharms) {
       forgetCharm(charm, isLearned(charm, true));
     }
   }

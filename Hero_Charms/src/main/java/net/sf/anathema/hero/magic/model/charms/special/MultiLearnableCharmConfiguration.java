@@ -4,9 +4,9 @@ import net.sf.anathema.character.main.library.trait.DefaultTraitType;
 import net.sf.anathema.character.main.library.trait.LimitedTrait;
 import net.sf.anathema.character.main.library.trait.Trait;
 import net.sf.anathema.character.main.library.trait.favorable.IncrementChecker;
+import net.sf.anathema.character.main.magic.model.charm.Charm;
 import net.sf.anathema.character.main.magic.model.charm.CharmSpecialist;
 import net.sf.anathema.character.main.magic.model.charm.CharmSpecialistImpl;
-import net.sf.anathema.character.main.magic.model.charm.ICharm;
 import net.sf.anathema.character.main.magic.model.charm.PrerequisiteModifyingCharms;
 import net.sf.anathema.character.main.magic.model.charm.special.IMultiLearnableCharm;
 import net.sf.anathema.character.main.magic.model.charm.special.IMultiLearnableCharmConfiguration;
@@ -31,13 +31,13 @@ public class MultiLearnableCharmConfiguration implements IMultiLearnableCharmCon
   private final Announcer<ISpecialCharmLearnListener> control = Announcer.to(ISpecialCharmLearnListener.class);
   private final Trait trait;
   private CharmsModel config;
-  private ICharm charm;
+  private Charm charm;
   private IMultiLearnableCharm specialCharm;
   private CharmSpecialist specialist;
   private ICharmLearnableArbitrator arbitrator;
   private Hero hero;
 
-  public MultiLearnableCharmConfiguration(Hero hero, CharmsModel config, ICharm charm, IMultiLearnableCharm specialCharm, ICharmLearnableArbitrator arbitrator) {
+  public MultiLearnableCharmConfiguration(Hero hero, CharmsModel config, Charm charm, IMultiLearnableCharm specialCharm, ICharmLearnableArbitrator arbitrator) {
     this.hero = hero;
     this.specialist = new CharmSpecialistImpl(hero);
     this.config = config;
@@ -94,7 +94,7 @@ public class MultiLearnableCharmConfiguration implements IMultiLearnableCharmCon
   }
 
   @Override
-  public ICharm getCharm() {
+  public Charm getCharm() {
     return charm;
   }
 
@@ -141,7 +141,7 @@ public class MultiLearnableCharmConfiguration implements IMultiLearnableCharmCon
 
   private int getMergedDots() {
     int dots = 0;
-    for (ICharm mergedCharm : charm.getMergedCharms()) {
+    for (Charm mergedCharm : charm.getMergedCharms()) {
       dots += mergedCharm == charm ? 0 : config.getSpecialCharmConfiguration(mergedCharm).getCurrentLearnCount();
     }
     return dots;

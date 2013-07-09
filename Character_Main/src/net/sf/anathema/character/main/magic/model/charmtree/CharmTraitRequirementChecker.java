@@ -1,7 +1,7 @@
 package net.sf.anathema.character.main.magic.model.charmtree;
 
+import net.sf.anathema.character.main.magic.model.charm.Charm;
 import net.sf.anathema.character.main.magic.model.charm.PrerequisiteModifyingCharms;
-import net.sf.anathema.character.main.magic.model.charm.ICharm;
 import net.sf.anathema.character.main.magic.model.charm.special.IPrerequisiteModifyingCharm;
 import net.sf.anathema.character.main.magic.model.charm.special.TraitRequirementChecker;
 import net.sf.anathema.character.main.traits.ValuedTraitType;
@@ -21,7 +21,7 @@ public class CharmTraitRequirementChecker implements TraitRequirementChecker {
   }
 
   @SuppressWarnings("RedundantIfStatement")
-  public boolean areTraitMinimumsSatisfied(ICharm charm) {
+  public boolean areTraitMinimumsSatisfied(Charm charm) {
     for (ValuedTraitType prerequisite : charm.getPrerequisites()) {
       if (!isMinimumSatisfied(charm, prerequisite)) {
         return false;
@@ -34,7 +34,7 @@ public class CharmTraitRequirementChecker implements TraitRequirementChecker {
   }
 
   @Override
-  public boolean isMinimumSatisfied(ICharm charm, ValuedTraitType prerequisite) {
+  public boolean isMinimumSatisfied(Charm charm, ValuedTraitType prerequisite) {
     Trait actualTrait = traitMap.getTrait(prerequisite.getType());
     if (actualTrait == null) {
       return false;

@@ -1,6 +1,6 @@
 package net.sf.anathema.hero.magic.model;
 
-import net.sf.anathema.character.main.magic.model.charm.ICharm;
+import net.sf.anathema.character.main.magic.model.charm.Charm;
 import net.sf.anathema.character.main.magic.description.MagicDescriptionProvider;
 import net.sf.anathema.character.main.template.magic.ICharmTemplate;
 import net.sf.anathema.hero.charms.CharmsModel;
@@ -46,7 +46,7 @@ public class CharacterCharmModel {
 
   private ILearningCharmGroup getCharmGroupByCharmId(String charmId) {
     CharmsModel charms = getCharmConfiguration();
-    ICharm charm = charms.getCharmById(charmId);
+    Charm charm = charms.getCharmById(charmId);
     return charms.getGroup(charm);
   }
 

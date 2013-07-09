@@ -2,8 +2,8 @@ package net.sf.anathema.hero.magic.display.special;
 
 import com.google.common.base.Predicate;
 import com.google.common.base.Predicates;
+import net.sf.anathema.character.main.magic.display.view.charmtree.SpecialCharmViewContainer;
 import net.sf.anathema.character.main.magic.model.charm.special.ISpecialCharm;
-import net.sf.anathema.character.main.magic.display.view.charmtree.ISpecialCharmViewContainer;
 import net.sf.anathema.hero.magic.model.charms.special.SpecialCharmList;
 import net.sf.anathema.platform.tree.presenter.view.ISpecialNodeView;
 
@@ -12,11 +12,11 @@ import java.util.List;
 
 public class CommonSpecialCharmList implements SpecialCharmList {
   private final List<ISpecialNodeView> specialCharmViews = new ArrayList<>();
-  private final ISpecialCharmViewContainer container;
+  private final SpecialCharmViewContainer container;
   private final SpecialCharmViewBuilder builder;
   private Predicate<String> visibilityPredicate = Predicates.alwaysFalse();
 
-  public CommonSpecialCharmList(ISpecialCharmViewContainer container, SpecialCharmViewBuilder specialViewBuilder) {
+  public CommonSpecialCharmList(SpecialCharmViewContainer container, SpecialCharmViewBuilder specialViewBuilder) {
     this.container = container;
     this.builder = specialViewBuilder;
   }

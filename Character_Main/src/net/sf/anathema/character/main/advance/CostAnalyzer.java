@@ -1,8 +1,8 @@
 package net.sf.anathema.character.main.advance;
 
+import net.sf.anathema.character.main.magic.model.charm.Charm;
 import net.sf.anathema.character.main.magic.model.charms.MartialArtsUtilities;
-import net.sf.anathema.character.main.magic.model.charm.ICharm;
-import net.sf.anathema.character.main.magic.model.magic.IMagic;
+import net.sf.anathema.character.main.magic.model.magic.Magic;
 import net.sf.anathema.character.main.magic.model.charm.MartialArtsLevel;
 import net.sf.anathema.character.main.template.experience.ICostAnalyzer;
 import net.sf.anathema.character.main.traits.types.AbilityType;
@@ -26,12 +26,12 @@ public class CostAnalyzer implements ICostAnalyzer {
   }
 
   @Override
-  public final boolean isMagicFavored(IMagic magic) {
+  public final boolean isMagicFavored(Magic magic) {
     return magic.isFavored(hero);
   }
 
   @Override
-  public MartialArtsLevel getMartialArtsLevel(ICharm charm) {
+  public MartialArtsLevel getMartialArtsLevel(Charm charm) {
     return MartialArtsUtilities.getLevel(charm);
   }
 }

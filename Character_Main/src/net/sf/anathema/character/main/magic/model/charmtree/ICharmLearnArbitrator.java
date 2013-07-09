@@ -1,8 +1,8 @@
 package net.sf.anathema.character.main.magic.model.charmtree;
 
-import net.sf.anathema.character.main.magic.model.charm.ICharm;
+import net.sf.anathema.character.main.magic.model.charm.Charm;
 
 public interface ICharmLearnArbitrator {
 
-  boolean isLearned(ICharm charm);
+  boolean isLearned(Charm charm);
 }

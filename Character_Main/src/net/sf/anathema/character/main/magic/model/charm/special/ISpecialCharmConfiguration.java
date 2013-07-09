@@ -1,13 +1,13 @@
 package net.sf.anathema.character.main.magic.model.charm.special;
 
-import net.sf.anathema.character.main.magic.model.charm.ICharm;
+import net.sf.anathema.character.main.magic.model.charm.Charm;
 
 public interface ISpecialCharmConfiguration {
   int getCreationLearnCount();
 
   void addSpecialCharmLearnListener(ISpecialCharmLearnListener listener);
 
-  ICharm getCharm();
+  Charm getCharm();
 
   int getCurrentLearnCount();
 

@@ -1,6 +1,6 @@
 package net.sf.anathema.character.main.magic.parser.charms;
 
-import net.sf.anathema.character.main.magic.model.charm.ICharm;
+import net.sf.anathema.character.main.magic.model.charm.Charm;
 import net.sf.anathema.character.main.magic.model.charm.special.ISpecialCharm;
 import net.sf.anathema.lib.collection.MultiEntryMap;
 import net.sf.anathema.lib.util.Identifier;
@@ -13,18 +13,18 @@ import java.util.Map;
 
 public class CharmCache implements ICharmCache {
 
-  MultiEntryMap<Identifier, ICharm> charmSets = new MultiEntryMap<>();
+  MultiEntryMap<Identifier, Charm> charmSets = new MultiEntryMap<>();
   Map<String, String> renameData = new HashMap<>();
   Map<Identifier, List<ISpecialCharm>> specialCharms = new HashMap<>();
 
   @Override
-  public ICharm[] getCharms(Identifier type) {
+  public Charm[] getCharms(Identifier type) {
     type = new SimpleIdentifier(type.getId());
-    List<ICharm> charmList = charmSets.get(type);
-    return charmList.toArray(new ICharm[charmList.size()]);
+    List<Charm> charmList = charmSets.get(type);
+    return charmList.toArray(new Charm[charmList.size()]);
   }
 
-  public void addCharm(Identifier type, ICharm charm) {
+  public void addCharm(Identifier type, Charm charm) {
     type = new SimpleIdentifier(type.getId());
     charmSets.replace(type, charm, charm);
   }
@@ -33,10 +33,10 @@ public class CharmCache implements ICharmCache {
     return charmSets.keySet().isEmpty();
   }
 
-  public Iterable<ICharm> getCharms() {
-    List<ICharm> allCharms = new ArrayList<>();
+  public Iterable<Charm> getCharms() {
+    List<Charm> allCharms = new ArrayList<>();
     for (Identifier type : charmSets.keySet()) {
-      for (ICharm charm : charmSets.get(type)) {
+      for (Charm charm : charmSets.get(type)) {
         allCharms.add(charm);
       }
     }

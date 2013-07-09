@@ -1,7 +1,7 @@
 package net.sf.anathema.character.main.magic.model.charms.options;
 
+import net.sf.anathema.character.main.magic.model.charm.Charm;
 import net.sf.anathema.character.main.magic.model.charmtree.MartialArtsCharmTree;
-import net.sf.anathema.character.main.magic.model.charm.ICharm;
 import net.sf.anathema.character.main.magic.model.charm.CharmIdMap;
 import net.sf.anathema.character.main.magic.model.charm.ICharmGroup;
 import net.sf.anathema.character.main.magic.model.charmtree.ICharmLearnableArbitrator;
@@ -26,7 +26,7 @@ public class MartialArtsOptions implements CharmIdMap, ICharmLearnableArbitrator
   }
 
   @Override
-  public ICharm getCharmById(String charmId) {
+  public Charm getCharmById(String charmId) {
     return martialArtsCharmTree.getCharmById(charmId);
   }
 
@@ -35,7 +35,7 @@ public class MartialArtsOptions implements CharmIdMap, ICharmLearnableArbitrator
   }
 
   @Override
-  public boolean isLearnable(ICharm charm) {
+  public boolean isLearnable(Charm charm) {
     return !isMartialArtsCharm(charm) || martialArtsCharmTree.isLearnable(charm);
   }
 

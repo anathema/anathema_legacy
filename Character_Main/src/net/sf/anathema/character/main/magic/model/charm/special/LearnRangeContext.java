@@ -1,7 +1,7 @@
 package net.sf.anathema.character.main.magic.model.charm.special;
 
 import net.sf.anathema.character.main.GenericTraitProvider;
-import net.sf.anathema.character.main.magic.model.charm.ICharm;
+import net.sf.anathema.character.main.magic.model.charm.Charm;
 import net.sf.anathema.character.main.traits.ValuedTraitType;
 import net.sf.anathema.character.main.traits.TraitType;
 import net.sf.anathema.hero.traits.TraitMap;
@@ -9,9 +9,9 @@ import net.sf.anathema.hero.traits.TraitMap;
 public class LearnRangeContext implements GenericTraitProvider {
   private final TraitMap traitCollection;
   private final TraitRequirementChecker requirementChecker;
-  private final ICharm charm;
+  private final Charm charm;
 
-  public LearnRangeContext(TraitMap traitCollection, TraitRequirementChecker requirementChecker, ICharm charm) {
+  public LearnRangeContext(TraitMap traitCollection, TraitRequirementChecker requirementChecker, Charm charm) {
     this.traitCollection = traitCollection;
     this.requirementChecker = requirementChecker;
     this.charm = charm;

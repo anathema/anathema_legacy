@@ -1,8 +1,8 @@
 package net.sf.anathema.character.main.xml.experience;
 
 import net.sf.anathema.character.main.IGenericTraitCollection;
+import net.sf.anathema.character.main.magic.model.charm.Charm;
 import net.sf.anathema.character.main.template.points.FixedValueRatingCosts;
-import net.sf.anathema.character.main.magic.model.charm.ICharm;
 import net.sf.anathema.character.main.magic.model.spells.ISpell;
 import net.sf.anathema.character.main.magic.model.charm.ICharmAttribute;
 import net.sf.anathema.character.main.magic.model.charm.MartialArtsLevel;
@@ -50,7 +50,7 @@ public class GenericExperiencePointCosts extends ReflectionCloneableObject<Gener
   }
 
   @Override
-  public int getCharmCosts(ICharm charm, ICostAnalyzer costMapping) {
+  public int getCharmCosts(Charm charm, ICostAnalyzer costMapping) {
     boolean favored = costMapping.isMagicFavored(charm);
     for (ICharmAttribute attribute : charm.getAttributes()) {
       Map<String, Integer> set = favored ? keywordFavoredCosts : keywordGeneralCosts;

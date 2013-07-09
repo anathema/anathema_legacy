@@ -1,6 +1,6 @@
 package net.sf.anathema.character.main.advance;
 
-import net.sf.anathema.character.main.magic.model.charm.ICharm;
+import net.sf.anathema.character.main.magic.model.charm.Charm;
 import net.sf.anathema.character.main.magic.model.spells.ISpell;
 import net.sf.anathema.character.main.library.trait.Trait;
 import net.sf.anathema.hero.traits.TraitMap;
@@ -22,5 +22,5 @@ public interface IPointCostCalculator {
 
   int getSpellCosts(Hero hero, ISpell spell, TraitMap traitMap);
 
-  int getCharmCosts(Hero hero, ICharm charm, TraitMap traitMap);
+  int getCharmCosts(Hero hero, Charm charm, TraitMap traitMap);
 }

@@ -6,11 +6,11 @@ import net.sf.anathema.lib.util.Identifier;
 public class CharmGroup implements ICharmGroup, Identifier {
 
   private final String id;
-  private final ICharm[] charms;
+  private final Charm[] charms;
   private final ICharacterType type;
   private final boolean isMartialArtsGroup;
 
-  public CharmGroup(ICharacterType type, String id, ICharm[] charms, boolean isMartialArtsGroup) {
+  public CharmGroup(ICharacterType type, String id, Charm[] charms, boolean isMartialArtsGroup) {
     this.id = id;
     this.type = type;
     this.charms = charms;
@@ -28,7 +28,7 @@ public class CharmGroup implements ICharmGroup, Identifier {
   }
 
   @Override
-  public ICharm[] getAllCharms() {
+  public Charm[] getAllCharms() {
     return charms;
   }
 
@@ -43,7 +43,7 @@ public class CharmGroup implements ICharmGroup, Identifier {
   }
 
   @Override
-  public boolean isCharmFromGroup(ICharm charm) {
+  public boolean isCharmFromGroup(Charm charm) {
     boolean isOfGroupType =  charm.getCharacterType().equals(type);
     boolean isFromGroupWithId = charm.getGroupId().equals(id);
     return isOfGroupType && isFromGroupWithId;

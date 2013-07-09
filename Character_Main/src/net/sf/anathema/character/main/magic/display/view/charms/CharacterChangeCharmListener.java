@@ -3,7 +3,7 @@
  */
 package net.sf.anathema.character.main.magic.display.view.charms;
 
-import net.sf.anathema.character.main.magic.model.charm.ICharm;
+import net.sf.anathema.character.main.magic.model.charm.Charm;
 import net.sf.anathema.character.main.magic.model.charm.CharmLearnAdapter;
 import net.sf.anathema.hero.change.ChangeAnnouncer;
 import net.sf.anathema.hero.change.ChangeFlavor;
@@ -17,12 +17,12 @@ public final class CharacterChangeCharmListener extends CharmLearnAdapter {
   }
 
   @Override
-  public void charmForgotten(ICharm charm) {
+  public void charmForgotten(Charm charm) {
     announcer.announceChangeOf(ChangeFlavor.UNSPECIFIED);
   }
 
   @Override
-  public void charmLearned(ICharm charm) {
+  public void charmLearned(Charm charm) {
     announcer.announceChangeOf(ChangeFlavor.UNSPECIFIED);
   }
 

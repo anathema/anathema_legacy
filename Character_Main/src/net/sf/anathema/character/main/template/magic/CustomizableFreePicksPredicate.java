@@ -1,13 +1,13 @@
 package net.sf.anathema.character.main.template.magic;
 
 import com.google.common.base.Predicate;
-import net.sf.anathema.character.main.magic.model.charm.ICharm;
-import net.sf.anathema.character.main.magic.model.magic.IMagic;
+import net.sf.anathema.character.main.magic.model.charm.Charm;
+import net.sf.anathema.character.main.magic.model.magic.Magic;
 
 import java.util.ArrayList;
 import java.util.List;
 
-public class CustomizableFreePicksPredicate implements Predicate<IMagic> {
+public class CustomizableFreePicksPredicate implements Predicate<Magic> {
 
   private final boolean defaultResponse;
   private final List<String> exceptionMagicIds = new ArrayList<>();
@@ -18,11 +18,11 @@ public class CustomizableFreePicksPredicate implements Predicate<IMagic> {
   }
 
   @Override
-  public boolean apply(IMagic magic) {
+  public boolean apply(Magic magic) {
     if (exceptionMagicIds.contains(magic.getId())) {
       return !defaultResponse;
     }
-    if (magic instanceof ICharm && exceptionGroupIds.contains(((ICharm) magic).getGroupId())) {
+    if (magic instanceof Charm && exceptionGroupIds.contains(((Charm) magic).getGroupId())) {
       return !defaultResponse;
     }
     return defaultResponse;

@@ -1,6 +1,6 @@
 package net.sf.anathema.character.main.magic.model.charm.special;
 
-import net.sf.anathema.character.main.magic.model.charm.ICharm;
+import net.sf.anathema.character.main.magic.model.charm.Charm;
 import net.sf.anathema.character.main.magic.model.charmtree.ICharmLearnableArbitrator;
 import net.sf.anathema.character.main.magic.model.charm.CharmSpecialist;
 import net.sf.anathema.lib.data.Condition;
@@ -16,7 +16,7 @@ public class ComplexMultipleEffectCharm extends MultipleEffectCharm {
   }
 
   @Override
-  public SubEffects buildSubeffects(CharmSpecialist specialist, ICharmLearnableArbitrator arbitrator, ICharm charm) {
+  public SubEffects buildSubeffects(CharmSpecialist specialist, ICharmLearnableArbitrator arbitrator, Charm charm) {
     CollectionSubEffects subEffects = new CollectionSubEffects();
     for (String id : effectIds) {
       String prerequisiteEffect = prereqEffectMap.get(id);
@@ -26,7 +26,7 @@ public class ComplexMultipleEffectCharm extends MultipleEffectCharm {
     return subEffects;
   }
 
-  private Condition buildLearnCondition(ICharmLearnableArbitrator arbitrator, ICharm charm, String prereqEffect, CollectionSubEffects subEffects) {
+  private Condition buildLearnCondition(ICharmLearnableArbitrator arbitrator, Charm charm, String prereqEffect, CollectionSubEffects subEffects) {
     return new PrerequisiteLearnCondition(subEffects, arbitrator, charm, prereqEffect);
   }
 }

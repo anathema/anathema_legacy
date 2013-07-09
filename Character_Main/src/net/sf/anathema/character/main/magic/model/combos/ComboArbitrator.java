@@ -1,6 +1,6 @@
 package net.sf.anathema.character.main.magic.model.combos;
 
-import net.sf.anathema.character.main.magic.model.charm.ICharm;
+import net.sf.anathema.character.main.magic.model.charm.Charm;
 import net.sf.anathema.character.main.magic.model.charm.ICharmTypeVisitor;
 import net.sf.anathema.character.main.magic.model.charm.type.CharmType;
 import org.apache.commons.lang3.ArrayUtils;
@@ -20,23 +20,23 @@ public abstract class ComboArbitrator implements IComboArbitrator {
     reflexiveCharmRules.setCrossPrerequisiteTypeComboAllowed(allowed);
   }
 
-  public boolean isCharmComboLegal(ICharm charm) {
+  public boolean isCharmComboLegal(Charm charm) {
     return isCharmLegalByRules(charm);
   }
 
-  protected abstract boolean isCharmLegalByRules(ICharm charm);
+  protected abstract boolean isCharmLegalByRules(Charm charm);
 
   @Override
-  public boolean canBeAddedToCombo(ICombo combo, ICharm charm) {
+  public boolean canBeAddedToCombo(ICombo combo, Charm charm) {
     boolean legal = isCharmComboLegal(charm);
-    for (ICharm comboCharm : combo.getCharms()) {
+    for (Charm comboCharm : combo.getCharms()) {
       legal = legal && isComboLegal(comboCharm, charm);
     }
     return legal;
   }
 
   @Override
-  public boolean isComboLegal(ICharm charm1, ICharm charm2) {
+  public boolean isComboLegal(Charm charm1, Charm charm2) {
     if (charm1 == charm2) {
       return false;
     }
@@ -49,13 +49,13 @@ public abstract class ComboArbitrator implements IComboArbitrator {
     return handleComboRules(charm1, charm2) && handleComboRules(charm2, charm1);
   }
 
-  protected boolean specialRestrictionsApply(ICharm charm1, ICharm charm2) {
+  protected boolean specialRestrictionsApply(Charm charm1, Charm charm2) {
     IComboRestrictions comboRules = charm1.getComboRules();
     return comboRules.isRestrictedCharm(charm2) || ArrayUtils.contains(comboRules.getRestrictedTraitTypes(),
             charm2.getPrimaryTraitType());
   }
 
-  private boolean handleComboRules(final ICharm charm1, final ICharm charm2) {
+  private boolean handleComboRules(final Charm charm1, final Charm charm2) {
     final boolean[] legal = new boolean[1];
     charm1.getCharmTypeModel().getCharmType().accept(new ICharmTypeVisitor() {
       @Override

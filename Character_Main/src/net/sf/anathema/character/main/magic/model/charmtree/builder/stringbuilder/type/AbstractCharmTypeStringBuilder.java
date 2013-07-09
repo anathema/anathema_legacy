@@ -1,7 +1,7 @@
 package net.sf.anathema.character.main.magic.model.charmtree.builder.stringbuilder.type;
 
-import net.sf.anathema.character.main.magic.model.charm.ICharm;
-import net.sf.anathema.character.main.magic.model.magic.IMagic;
+import net.sf.anathema.character.main.magic.model.charm.Charm;
+import net.sf.anathema.character.main.magic.model.magic.Magic;
 import net.sf.anathema.character.main.magic.model.charm.ICharmTypeVisitor;
 import net.sf.anathema.character.main.magic.model.charm.type.CharmType;
 import net.sf.anathema.character.main.magic.model.charm.type.ICharmTypeModel;
@@ -26,11 +26,11 @@ public abstract class AbstractCharmTypeStringBuilder implements ICharmTypeString
   }
 
   @Override
-  public void buildStringForMagic(StringBuilder builder, IMagic magic, Object details) {
-    if (magic instanceof ICharm) {
+  public void buildStringForMagic(StringBuilder builder, Magic magic, Object details) {
+    if (magic instanceof Charm) {
       builder.append(resources.getString("CharmTreeView.ToolTip.Type"));
       builder.append(TooltipBuilder.ColonSpace);
-      builder.append(createTypeString(((ICharm) magic).getCharmTypeModel()));
+      builder.append(createTypeString(((Charm) magic).getCharmTypeModel()));
       builder.append(TooltipBuilder.HtmlLineBreak);
     }
   }

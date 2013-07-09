@@ -1,9 +1,8 @@
 package net.sf.anathema.character.main.magic.model.spells;
 
-import net.sf.anathema.character.main.magic.model.magic.IMagic;
-import net.sf.anathema.character.main.magic.model.spells.CircleType;
+import net.sf.anathema.character.main.magic.model.magic.Magic;
 
-public interface ISpell extends IMagic {
+public interface ISpell extends Magic {
 
   CircleType getCircleType();
 

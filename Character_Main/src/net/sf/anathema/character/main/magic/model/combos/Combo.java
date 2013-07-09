@@ -1,7 +1,7 @@
 package net.sf.anathema.character.main.magic.model.combos;
 
 import com.google.common.base.Preconditions;
-import net.sf.anathema.character.main.magic.model.charm.ICharm;
+import net.sf.anathema.character.main.magic.model.charm.Charm;
 import net.sf.anathema.character.main.magic.model.charm.type.CharmType;
 import net.sf.anathema.lib.control.ChangeListener;
 import net.sf.anathema.lib.exception.UnreachableCodeReachedException;
@@ -16,35 +16,35 @@ import java.util.List;
 public class Combo implements ICombo {
 
   private volatile Announcer<ChangeListener> control = Announcer.to(ChangeListener.class);
-  private volatile List<ICharm> creationCharmList = new ArrayList<>();
-  private volatile List<ICharm> experiencedCharmList = new ArrayList<>();
-  private ICharm extraActionCharm = null;
-  private ICharm simpleCharm = null;
+  private volatile List<Charm> creationCharmList = new ArrayList<>();
+  private volatile List<Charm> experiencedCharmList = new ArrayList<>();
+  private Charm extraActionCharm = null;
+  private Charm simpleCharm = null;
   private volatile ITextualDescription name = new SimpleTextualDescription();
   private volatile ITextualDescription description = new SimpleTextualDescription();
   private Integer id = null;
 
   @Override
-  public ICharm[] getCharms() {
-    ArrayList<ICharm> charms = new ArrayList<>();
+  public Charm[] getCharms() {
+    ArrayList<Charm> charms = new ArrayList<>();
     charms.addAll(creationCharmList);
     charms.addAll(experiencedCharmList);
-    return charms.toArray(new ICharm[charms.size()]);
+    return charms.toArray(new Charm[charms.size()]);
   }
 
   @Override
-  public ICharm[] getCreationCharms() {
-    return creationCharmList.toArray(new ICharm[creationCharmList.size()]);
+  public Charm[] getCreationCharms() {
+    return creationCharmList.toArray(new Charm[creationCharmList.size()]);
   }
 
   @Override
-  public ICharm[] getExperiencedCharms() {
-    return experiencedCharmList.toArray(new ICharm[experiencedCharmList.size()]);
+  public Charm[] getExperiencedCharms() {
+    return experiencedCharmList.toArray(new Charm[experiencedCharmList.size()]);
   }
 
   @Override
-  public void addCharm(ICharm charm, boolean experienced) {
-    List<ICharm> targetList = experienced ? experiencedCharmList : creationCharmList;
+  public void addCharm(Charm charm, boolean experienced) {
+    List<Charm> targetList = experienced ? experiencedCharmList : creationCharmList;
     targetList.add(charm);
     if (charm.getCharmTypeModel().getCharmType() == CharmType.Simple) {
       simpleCharm = charm;
@@ -65,8 +65,8 @@ public class Combo implements ICombo {
   }
 
   @Override
-  public void removeCharms(ICharm[] charms) {
-    List<ICharm> removal = Arrays.asList(charms);
+  public void removeCharms(Charm[] charms) {
+    List<Charm> removal = Arrays.asList(charms);
     creationCharmList.removeAll(removal);
     experiencedCharmList.removeAll(removal);
     if (simpleCharm != null && removal.contains(simpleCharm)) {
@@ -103,10 +103,10 @@ public class Combo implements ICombo {
   }
 
   private void copyCombo(ICombo source, Combo destination) {
-    for (ICharm charm : source.getCreationCharms()) {
+    for (Charm charm : source.getCreationCharms()) {
       destination.addCharm(charm, false);
     }
-    for (ICharm charm : source.getExperiencedCharms()) {
+    for (Charm charm : source.getExperiencedCharms()) {
       destination.addCharm(charm, true);
     }
     if (source.getId() != null) {
@@ -121,8 +121,8 @@ public class Combo implements ICombo {
     id = null;
     name.setText("");
     description.setText("");
-    removeCharms(creationCharmList.toArray(new ICharm[creationCharmList.size()]));
-    removeCharms(experiencedCharmList.toArray(new ICharm[experiencedCharmList.size()]));
+    removeCharms(creationCharmList.toArray(new Charm[creationCharmList.size()]));
+    removeCharms(experiencedCharmList.toArray(new Charm[experiencedCharmList.size()]));
   }
 
   @Override
@@ -136,7 +136,7 @@ public class Combo implements ICombo {
   }
 
   @Override
-  public boolean contains(ICharm charm) {
+  public boolean contains(Charm charm) {
     return creationCharmList.contains(charm) || experiencedCharmList.contains(charm);
   }
 

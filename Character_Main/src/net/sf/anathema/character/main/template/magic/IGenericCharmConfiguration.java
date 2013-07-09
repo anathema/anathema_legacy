@@ -1,8 +1,8 @@
 package net.sf.anathema.character.main.template.magic;
 
-import net.sf.anathema.character.main.magic.model.charm.ICharm;
+import net.sf.anathema.character.main.magic.model.charm.Charm;
 
 public interface IGenericCharmConfiguration {
 
-  ICharm[] getLearnedCharms();
+  Charm[] getLearnedCharms();
 }

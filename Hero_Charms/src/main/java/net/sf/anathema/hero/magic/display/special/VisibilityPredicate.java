@@ -1,7 +1,7 @@
 package net.sf.anathema.hero.magic.display.special;
 
 import com.google.common.base.Predicate;
-import net.sf.anathema.character.main.magic.model.charm.ICharm;
+import net.sf.anathema.character.main.magic.model.charm.Charm;
 import net.sf.anathema.character.main.magic.model.charm.CharmIdMap;
 import net.sf.anathema.character.main.magic.model.charm.ICharmGroup;
 import net.sf.anathema.character.main.magic.display.view.charmtree.CharmGroupInformer;
@@ -18,11 +18,11 @@ public class VisibilityPredicate implements Predicate<String> {
 
   @Override
   public boolean apply(String charmId) {
-    ICharm charm = charmMap.getCharmById(charmId);
+    Charm charm = charmMap.getCharmById(charmId);
     return isVisible(charm);
   }
 
-  private boolean isVisible(ICharm charm) {
+  private boolean isVisible(Charm charm) {
     if (!charmGroupInformer.hasGroupSelected()) {
       return false;
     }

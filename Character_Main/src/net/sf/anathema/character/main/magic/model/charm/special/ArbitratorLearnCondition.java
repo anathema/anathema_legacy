@@ -1,14 +1,14 @@
 package net.sf.anathema.character.main.magic.model.charm.special;
 
-import net.sf.anathema.character.main.magic.model.charm.ICharm;
+import net.sf.anathema.character.main.magic.model.charm.Charm;
 import net.sf.anathema.character.main.magic.model.charmtree.ICharmLearnableArbitrator;
 import net.sf.anathema.lib.data.Condition;
 
 class ArbitratorLearnCondition implements Condition {
   private final ICharmLearnableArbitrator arbitrator;
-  private final ICharm charm;
+  private final Charm charm;
 
-  public ArbitratorLearnCondition(ICharmLearnableArbitrator arbitrator, ICharm charm) {
+  public ArbitratorLearnCondition(ICharmLearnableArbitrator arbitrator, Charm charm) {
     this.arbitrator = arbitrator;
     this.charm = charm;
   }

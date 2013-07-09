@@ -1,6 +1,6 @@
 package net.sf.anathema.character.main.magic.model.combos;
 
-import net.sf.anathema.character.main.magic.model.charm.ICharm;
+import net.sf.anathema.character.main.magic.model.charm.Charm;
 import net.sf.anathema.character.main.magic.model.charm.type.CharmType;
 import net.sf.anathema.character.main.traits.TraitType;
 import net.sf.anathema.character.main.traits.types.AbilityType;
@@ -55,7 +55,7 @@ public class ComboRestrictions implements IComboRestrictions {
   }
 
   @Override
-  public boolean isRestrictedCharm(ICharm charm) {
+  public boolean isRestrictedCharm(Charm charm) {
     if (restrictedCharmTypes.contains(charm.getCharmTypeModel().getCharmType())) {
       return true;
     }

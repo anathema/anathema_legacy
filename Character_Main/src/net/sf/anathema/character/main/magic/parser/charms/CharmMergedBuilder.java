@@ -2,7 +2,7 @@ package net.sf.anathema.character.main.magic.parser.charms;
 
 import com.google.common.base.Predicate;
 import net.sf.anathema.character.main.magic.model.charm.Charm;
-import net.sf.anathema.character.main.magic.model.charm.ICharm;
+import net.sf.anathema.character.main.magic.model.charm.CharmImpl;
 import net.sf.anathema.lib.logging.Logger;
 import net.sf.anathema.lib.xml.ElementUtilities;
 import org.dom4j.Document;
@@ -22,12 +22,12 @@ public class CharmMergedBuilder {
 
   private final Logger logger = Logger.getLogger(CharmMergedBuilder.class);
 
-  public void buildMerges(Document charmDoc, ICharm[] charms) {
+  public void buildMerges(Document charmDoc, Charm[] charms) {
     Element charmListElement = charmDoc.getRootElement();
     readMerges(charmListElement, charms);
   }
 
-  private void readMerges(Element charmListElement, ICharm[] charms) {
+  private void readMerges(Element charmListElement, Charm[] charms) {
     Element mergesElement = charmListElement.element(TAG_MERGES);
     if (mergesElement == null) {
       return;
@@ -37,14 +37,14 @@ public class CharmMergedBuilder {
     }
   }
 
-  private void readMerged(Element mergedElement, ICharm[] existingCharms) {
+  private void readMerged(Element mergedElement, Charm[] existingCharms) {
     List<Element> charmReferences = ElementUtilities.elements(mergedElement, TAG_CHARM_REFERENCE);
-    Set<ICharm> charms = new HashSet<>(charmReferences.size());
+    Set<Charm> charms = new HashSet<>(charmReferences.size());
     for (Element charmReference : charmReferences) {
       final String charmId = charmReference.attributeValue(ATTRIB_ID);
-      ICharm charm = getFirst(existingCharms, new Predicate<ICharm>() {
+      Charm charm = getFirst(existingCharms, new Predicate<Charm>() {
         @Override
-        public boolean apply(ICharm candidate) {
+        public boolean apply(Charm candidate) {
           return candidate.getId().equals(charmId);
         }
       });
@@ -54,8 +54,8 @@ public class CharmMergedBuilder {
       }
       charms.add(charm);
     }
-    for (ICharm charm : charms) {
-      ((Charm) charm).addMerged(charms);
+    for (Charm charm : charms) {
+      ((CharmImpl) charm).addMerged(charms);
     }
   }
 }

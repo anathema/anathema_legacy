@@ -1,6 +1,6 @@
 package net.sf.anathema.character.main.magic.parser.charms;
 
-import net.sf.anathema.character.main.magic.model.charm.Charm;
+import net.sf.anathema.character.main.magic.model.charm.CharmImpl;
 import net.sf.anathema.character.main.magic.parser.combos.GenericComboRulesBuilder;
 import net.sf.anathema.character.main.magic.parser.charms.prerequisite.GenericAttributeRequirementBuilder;
 import net.sf.anathema.character.main.magic.parser.charms.prerequisite.GenericTraitPrerequisitesBuilder;
@@ -28,7 +28,7 @@ public class GenericCharmSetBuilder extends AbstractCharmSetBuilder {
   }
 
   @Override
-  protected void buildCharms(Collection<Charm> allCharms, List<ISpecialCharm> specialCharms, Element charmListElement) throws PersistenceException {
+  protected void buildCharms(Collection<CharmImpl> allCharms, List<ISpecialCharm> specialCharms, Element charmListElement) throws PersistenceException {
     List<Element> elements = ElementUtilities.elements(charmListElement, TAG_GENERIC_CHARM);
     for (TraitType type : types) {
       genericsBuilder.setType(type);
