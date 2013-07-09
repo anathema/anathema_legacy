@@ -15,7 +15,7 @@ public interface ICreationPoints {
 
   IAttributeCreationPoints getAttributeCreationPoints();
 
-  int getFavoredCreationCharmCount();
+  int getFavoredCreationMagicCount();
 
-  int getDefaultCreationCharmCount();
+  int getDefaultCreationMagicCount();
 }

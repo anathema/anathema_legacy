@@ -1,20 +1,20 @@
 package net.sf.anathema.hero.magic.costs;
 
 import net.sf.anathema.character.main.costs.AbstractBonusPointTestCase;
-import net.sf.anathema.character.main.template.points.DefaultBonusPointCosts;
-import net.sf.anathema.character.main.magic.model.spells.ISpell;
-import net.sf.anathema.character.main.traits.types.AbilityType;
 import net.sf.anathema.character.main.library.trait.favorable.FavorableState;
-import net.sf.anathema.hero.spells.SpellModel;
-import net.sf.anathema.hero.traits.TraitModel;
-import net.sf.anathema.hero.traits.TraitModelFetcher;
+import net.sf.anathema.character.main.magic.advance.MagicCostCalculator;
+import net.sf.anathema.character.main.magic.model.spells.ISpell;
+import net.sf.anathema.character.main.template.points.DefaultBonusPointCosts;
 import net.sf.anathema.character.main.testing.BasicCharacterTestCase;
 import net.sf.anathema.character.main.testing.dummy.DummyHero;
 import net.sf.anathema.character.main.testing.dummy.magic.DummyCharmsModel;
 import net.sf.anathema.character.main.testing.dummy.magic.DummySpell;
 import net.sf.anathema.character.main.testing.dummy.magic.DummySpellModel;
 import net.sf.anathema.character.main.traits.context.CreationTraitValueStrategy;
-import net.sf.anathema.character.main.magic.advance.MagicCostCalculator;
+import net.sf.anathema.character.main.traits.types.AbilityType;
+import net.sf.anathema.hero.spells.SpellModel;
+import net.sf.anathema.hero.traits.TraitModel;
+import net.sf.anathema.hero.traits.TraitModelFetcher;
 import org.junit.Before;
 import org.junit.Test;
 
@@ -44,8 +44,7 @@ public class CharmCostCalculatorTest extends AbstractBonusPointTestCase {
   public void testNoSpellsLearned() {
     assertEquals(0, calculator.getGeneralCharmPicksSpent());
     assertEquals(0, calculator.getFavoredCharmPicksSpent());
-    assertEquals(0, calculator.getBonusPointsSpentForCharms());
-    assertEquals(0, calculator.getBonusPointsSpentForSpells());
+    assertEquals(0, calculator.getBonusPointsSpent());
   }
 
   @Test
@@ -54,8 +53,7 @@ public class CharmCostCalculatorTest extends AbstractBonusPointTestCase {
     calculator.calculateMagicCosts();
     assertEquals(1, calculator.getGeneralCharmPicksSpent());
     assertEquals(0, calculator.getFavoredCharmPicksSpent());
-    assertEquals(0, calculator.getBonusPointsSpentForCharms());
-    assertEquals(0, calculator.getBonusPointsSpentForSpells());
+    assertEquals(0, calculator.getBonusPointsSpent());
   }
 
   @Test
@@ -65,8 +63,7 @@ public class CharmCostCalculatorTest extends AbstractBonusPointTestCase {
     calculator.calculateMagicCosts();
     assertEquals(0, calculator.getGeneralCharmPicksSpent());
     assertEquals(1, calculator.getFavoredCharmPicksSpent());
-    assertEquals(0, calculator.getBonusPointsSpentForCharms());
-    assertEquals(0, calculator.getBonusPointsSpentForSpells());
+    assertEquals(0, calculator.getBonusPointsSpent());
   }
 
   private void setOccultFavored() {
@@ -80,8 +77,7 @@ public class CharmCostCalculatorTest extends AbstractBonusPointTestCase {
     calculator.calculateMagicCosts();
     assertEquals(3, calculator.getGeneralCharmPicksSpent());
     assertEquals(0, calculator.getFavoredCharmPicksSpent());
-    assertEquals(0, calculator.getBonusPointsSpentForCharms());
-    assertEquals(5, calculator.getBonusPointsSpentForSpells());
+    assertEquals(5, calculator.getBonusPointsSpent());
   }
 
   @Test
@@ -92,12 +88,11 @@ public class CharmCostCalculatorTest extends AbstractBonusPointTestCase {
     calculator.calculateMagicCosts();
     assertEquals(3, calculator.getGeneralCharmPicksSpent());
     assertEquals(0, calculator.getFavoredCharmPicksSpent());
-    assertEquals(0, calculator.getBonusPointsSpentForCharms());
-    assertEquals(5, calculator.getBonusPointsSpentForSpells());
+    assertEquals(5, calculator.getBonusPointsSpent());
     spells.removeSpells(new ISpell[]{dummySpellToRemove}, false);
     calculator.calculateMagicCosts();
     assertEquals(3, calculator.getGeneralCharmPicksSpent());
-    assertEquals(0, calculator.getBonusPointsSpentForSpells());
+    assertEquals(0, calculator.getBonusPointsSpent());
   }
 
   @Test
@@ -108,7 +103,6 @@ public class CharmCostCalculatorTest extends AbstractBonusPointTestCase {
     calculator.calculateMagicCosts();
     assertEquals(3, calculator.getGeneralCharmPicksSpent());
     assertEquals(2, calculator.getFavoredCharmPicksSpent());
-    assertEquals(0, calculator.getBonusPointsSpentForCharms());
-    assertEquals(4, calculator.getBonusPointsSpentForSpells());
+    assertEquals(4, calculator.getBonusPointsSpent());
   }
 }

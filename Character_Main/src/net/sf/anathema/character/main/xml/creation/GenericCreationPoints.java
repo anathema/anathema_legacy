@@ -34,12 +34,12 @@ public class GenericCreationPoints extends ReflectionCloneableObject<GenericCrea
   }
 
   @Override
-  public int getDefaultCreationCharmCount() {
+  public int getDefaultCreationMagicCount() {
     return defaultCreationCharmCount;
   }
 
   @Override
-  public int getFavoredCreationCharmCount() {
+  public int getFavoredCreationMagicCount() {
     return favoredCreationCharmCount;
   }
 

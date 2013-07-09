@@ -37,12 +37,12 @@ public class DummyCreationPoints implements ICreationPoints {
   }
 
   @Override
-  public int getFavoredCreationCharmCount() {
+  public int getFavoredCreationMagicCount() {
     return favoredCreationCharmCount;
   }
 
   @Override
-  public int getDefaultCreationCharmCount() {
+  public int getDefaultCreationMagicCount() {
     return defaultCreationCharmCount;
   }
 }

@@ -1,54 +1,36 @@
 package net.sf.anathema.character.main.magic.advance;
 
-import net.sf.anathema.character.main.magic.model.charm.Charm;
-import net.sf.anathema.character.main.magic.model.magic.Magic;
-import net.sf.anathema.character.main.magic.model.magic.IMagicVisitor;
-import net.sf.anathema.character.main.magic.model.spells.ISpell;
-import net.sf.anathema.character.main.magic.model.charm.special.ISpecialCharmConfiguration;
-import net.sf.anathema.character.main.template.creation.BonusPointCosts;
-import net.sf.anathema.character.main.template.magic.IMagicTemplate;
-import net.sf.anathema.hero.charms.CharmsModel;
-import net.sf.anathema.hero.charms.CharmsModelFetcher;
-import net.sf.anathema.hero.spells.SpellModel;
-import net.sf.anathema.hero.spells.SpellsModelFetcher;
 import net.sf.anathema.character.main.advance.CostAnalyzer;
-import net.sf.anathema.character.main.magic.model.charm.special.ISubeffectCharmConfiguration;
-import net.sf.anathema.character.main.magic.model.charm.special.IUpgradableCharmConfiguration;
+import net.sf.anathema.character.main.magic.model.magic.Magic;
+import net.sf.anathema.character.main.template.creation.BonusPointCosts;
 import net.sf.anathema.hero.model.Hero;
 
-import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
 public class MagicCostCalculator {
 
-  private final CharmsModel charms;
-  private final SpellModel spells;
-  private final int favoredCreationCharmCount;
-  private final int defaultCreationCharmCount;
+  private final int favoredCreationMagicCount;
+  private final int defaultCreationMagicCount;
+  private final MagicCostEvaluator magicCostEvaluator;
+  private final BonusPointCosts costs;
+  private final CostAnalyzer analyzer;
   private int generalPicksSpent = 0;
   private int favoredPicksSpent = 0;
-  private int bonusPointsSpentForCharms = 0;
-  private final BonusPointCosts costs;
-  private CostAnalyzer analyzer;
-  protected int bonusPointsSpentForSpells;
-  private final IMagicTemplate magicTemplate;
+  protected int bonusPointsSpent = 0;
 
   public MagicCostCalculator(Hero hero, BonusPointCosts costs) {
-    this.magicTemplate = hero.getTemplate().getMagicTemplate();
-    this.charms = CharmsModelFetcher.fetch(hero);
-    this.spells = SpellsModelFetcher.fetch(hero);
-    this.favoredCreationCharmCount = hero.getTemplate().getCreationPoints().getFavoredCreationCharmCount();
-    this.defaultCreationCharmCount = hero.getTemplate().getCreationPoints().getDefaultCreationCharmCount();
+    this.magicCostEvaluator = new MagicCostEvaluator(hero);
+    this.favoredCreationMagicCount = hero.getTemplate().getCreationPoints().getFavoredCreationMagicCount();
+    this.defaultCreationMagicCount = hero.getTemplate().getCreationPoints().getDefaultCreationMagicCount();
     this.costs = costs;
     this.analyzer = new CostAnalyzer(hero);
   }
 
   public void calculateMagicCosts() {
     clear();
-    List<Magic> magicToHandle = compileCompleteMagicList();
+    List<Magic> magicToHandle = magicCostEvaluator.compileCompleteMagicList();
     if (magicToHandle == null || magicToHandle.size() == 0) {
       return;
     }
@@ -63,134 +45,45 @@ public class MagicCostCalculator {
     }
   }
 
-  private class CountVisitor implements IMagicVisitor {
-    int learnCount;
-    Set<Magic> handledMagic;
-
-    public CountVisitor(Set<Magic> handledMagic) {
-      this.learnCount = 0;
-      this.handledMagic = handledMagic;
-    }
-
-    @Override
-    public void visitCharm(Charm charm) {
-      learnCount = determineLearnCount(charm, handledMagic);
-    }
-
-    @Override
-    public void visitSpell(ISpell spell) {
-      learnCount = 1;
-    }
-
-    public int getLearnCount() {
-      return learnCount;
-    }
+  private void clear() {
+    generalPicksSpent = 0;
+    favoredPicksSpent = 0;
+    bonusPointsSpent = 0;
   }
 
   private void handleMagic(Magic magic, Set<Magic> handledMagic) {
     int bonusPointFactor = costs.getMagicCosts(magic, analyzer);
-    CountVisitor visitor = new CountVisitor(handledMagic);
-    magic.accept(visitor);
     boolean favored = analyzer.isMagicFavored(magic);
-    for (int timesHandled = 0; timesHandled < visitor.getLearnCount(); timesHandled++) {
+    int learnCount = magicCostEvaluator.getLearnCount(magic, handledMagic);
+    for (int timesHandled = 0; timesHandled < learnCount; timesHandled++) {
       if (favored) {
-        handleFavoredMagic(bonusPointFactor, magic);
+        handleFavoredMagic(bonusPointFactor);
       } else {
-        handleGeneralMagic(bonusPointFactor, magic);
+        handleGeneralMagic(bonusPointFactor);
       }
     }
-    handleSubeffectCharm(magic);
-
+    bonusPointsSpent += magicCostEvaluator.getAdditionalBonusPoints(magic);
     handledMagic.add(magic);
   }
 
-  private void handleSubeffectCharm(Magic magic) {
-    if (!(magic instanceof Charm)) {
-      return;
-    }
-    ISpecialCharmConfiguration specialCharmConfiguration = charms.getSpecialCharmConfiguration((Charm) magic);
-    if (specialCharmConfiguration instanceof IUpgradableCharmConfiguration) {
-      bonusPointsSpentForCharms += ((IUpgradableCharmConfiguration) specialCharmConfiguration).getUpgradeBPCost();
-    }
-    if (!(specialCharmConfiguration instanceof ISubeffectCharmConfiguration)) {
-      return;
-    }
-    ISubeffectCharmConfiguration configuration = (ISubeffectCharmConfiguration) specialCharmConfiguration;
-    int count = Math.max(0, (configuration.getCreationLearnedSubeffectCount() - 1));
-    int cost = (int) Math.ceil(count * configuration.getPointCostPerEffect());
-    bonusPointsSpentForCharms += cost;
-  }
-
-  private List<Magic> compileCompleteMagicList() {
-    List<Magic> completeList = new ArrayList<>();
-    completeList.addAll(Arrays.asList(charms.getCreationLearnedCharms()));
-    completeList.addAll(Arrays.asList(spells.getLearnedSpells(false)));
-    return completeList;
-  }
-
-  private void clear() {
-    generalPicksSpent = 0;
-    favoredPicksSpent = 0;
-    bonusPointsSpentForCharms = 0;
-    bonusPointsSpentForSpells = 0;
-  }
-
-  private int determineLearnCount(Charm charm, Set<Magic> handledMagic) {
-    int learnCount = handleSpecialCharm(charm);
-    if (charms.isAlienCharm(charm)) {
-      learnCount *= 2;
-    }
-    for (Charm mergedCharm : charm.getMergedCharms()) {
-      if (handledMagic.contains(mergedCharm) && !isSpecialCharm(charm)) {
-        return 0;
-      }
-    }
-    return learnCount;
-  }
-
-  private boolean isSpecialCharm(Charm charm) {
-    return charms.getSpecialCharmConfiguration(charm) != null;
-  }
-
-  private int handleSpecialCharm(Charm charm) {
-    ISpecialCharmConfiguration specialCharmConfiguration = charms.getSpecialCharmConfiguration(charm);
-    if (specialCharmConfiguration != null) {
-      if (specialCharmConfiguration instanceof IUpgradableCharmConfiguration) {
-        return 1;
-      }
-      return specialCharmConfiguration.getCreationLearnCount();
-    }
-    return 1;
-  }
-
-  private void handleFavoredMagic(int bonusPointFactor, Magic magic) {
-    if (canBuyFromFreePicks(magic) && favoredPicksSpent < favoredCreationCharmCount) {
+  private void handleFavoredMagic(int bonusPointFactor) {
+    if (favoredPicksSpent < favoredCreationMagicCount) {
       favoredPicksSpent++;
     } else {
-      handleGeneralMagic(bonusPointFactor, magic);
+      handleGeneralMagic(bonusPointFactor);
     }
   }
 
-  private boolean canBuyFromFreePicks(Magic magic) {
-    return magicTemplate.canBuyFromFreePicks(magic);
-  }
-
-  private void handleGeneralMagic(final int bonusPointFactor, Magic magic) {
-    if (canBuyFromFreePicks(magic) && generalPicksSpent < defaultCreationCharmCount) {
+  private void handleGeneralMagic(final int bonusPointFactor) {
+    if (generalPicksSpent < defaultCreationMagicCount) {
       generalPicksSpent++;
     } else {
-      magic.accept(new IMagicVisitor() {
-        @Override
-        public void visitCharm(Charm charm) {
-          bonusPointsSpentForCharms += bonusPointFactor;
-        }
-
-        @Override
-        public void visitSpell(ISpell spell) {
-          bonusPointsSpentForSpells += bonusPointFactor;
-        }
-      });
+      bonusPointsSpent += bonusPointFactor;
     }
+  }
+
+  public int getBonusPointsSpent() {
+    return bonusPointsSpent;
   }
 
   public int getFavoredCharmPicksSpent() {
@@ -199,13 +92,5 @@ public class MagicCostCalculator {
 
   public int getGeneralCharmPicksSpent() {
     return generalPicksSpent;
-  }
-
-  public int getBonusPointsSpentForCharms() {
-    return bonusPointsSpentForCharms;
-  }
-
-  public int getBonusPointsSpentForSpells() {
-    return bonusPointsSpentForSpells;
   }
 }

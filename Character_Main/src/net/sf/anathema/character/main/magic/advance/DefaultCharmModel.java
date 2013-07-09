@@ -16,7 +16,10 @@ public class DefaultCharmModel extends AbstractSpendingModel {
 
   @Override
   public int getSpentBonusPoints() {
-    return getCharmBonusPointsSpent() + getSpellBonusPointsSpent();
+    if (magicCalculator == null) {
+      return 0;
+    }
+    return magicCalculator.getBonusPointsSpent();
   }
 
   @Override
@@ -24,22 +27,8 @@ public class DefaultCharmModel extends AbstractSpendingModel {
     return magicCalculator.getGeneralCharmPicksSpent();
   }
 
-  private int getCharmBonusPointsSpent() {
-    if (magicCalculator == null) {
-      return 0;
-    }
-    return magicCalculator.getBonusPointsSpentForCharms();
-  }
-
-  private int getSpellBonusPointsSpent() {
-    if (magicCalculator == null) {
-      return 0;
-    }
-    return magicCalculator.getBonusPointsSpentForSpells();
-  }
-
   @Override
   public int getAllotment() {
-    return creationPoints.getDefaultCreationCharmCount();
+    return creationPoints.getDefaultCreationMagicCount();
   }
 }

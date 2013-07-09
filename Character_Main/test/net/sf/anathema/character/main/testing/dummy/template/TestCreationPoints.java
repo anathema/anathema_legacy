@@ -29,12 +29,12 @@ public class TestCreationPoints extends AbstractCreationPoints {
   }
 
   @Override
-  public int getFavoredCreationCharmCount() {
+  public int getFavoredCreationMagicCount() {
     return 5;
   }
 
   @Override
-  public int getDefaultCreationCharmCount() {
+  public int getDefaultCreationMagicCount() {
     return 5;
   }
 }
