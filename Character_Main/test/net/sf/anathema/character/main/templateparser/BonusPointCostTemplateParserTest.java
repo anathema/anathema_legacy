@@ -2,13 +2,11 @@ package net.sf.anathema.character.main.templateparser;
 
 import net.sf.anathema.character.main.dummy.DummyCharm;
 import net.sf.anathema.character.main.magic.model.charm.Charm;
-import net.sf.anathema.character.main.magic.model.charm.CharmAttribute;
 import net.sf.anathema.character.main.magic.model.charm.MartialArtsLevel;
 import net.sf.anathema.character.main.magic.model.magic.Magic;
 import net.sf.anathema.character.main.template.experience.ICostAnalyzer;
 import net.sf.anathema.character.main.testing.dummy.DummyGenericTrait;
 import net.sf.anathema.character.main.testing.dummy.template.DummyXmlTemplateRegistry;
-import net.sf.anathema.character.main.traits.types.AbilityType;
 import net.sf.anathema.character.main.traits.types.AttributeType;
 import net.sf.anathema.character.main.xml.creation.BonusPointCostTemplateParser;
 import net.sf.anathema.character.main.xml.creation.GenericBonusPointCosts;
@@ -18,7 +16,9 @@ import org.dom4j.Element;
 import org.junit.Before;
 import org.junit.Test;
 
+import static org.hamcrest.CoreMatchers.is;
 import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertThat;
 
 public class BonusPointCostTemplateParserTest extends BasicTemplateParsingTestCase {
 
@@ -97,7 +97,6 @@ public class BonusPointCostTemplateParserTest extends BasicTemplateParsingTestCa
     DummyCharm testCharm = new DummyCharm("test");
     assertCosts7WhenItsNotFavored(costs, testCharm);
     assertCosts5WhenItIsFavored(costs, testCharm);
-    assertCosts7WhenItsUnfavoredMartialArts(costs, testCharm);
     assertCosts5WhenItsFavoredMartialArts(costs, testCharm);
     assertEquals(7, costs.getMagicCosts().getMagicCosts(testCharm, new ICostAnalyzer() {
       @Override
@@ -196,62 +195,30 @@ public class BonusPointCostTemplateParserTest extends BasicTemplateParsingTestCa
   }
 
   @Test
-  public void testBasicCharmCostForHighUnfavoredMartialArts() throws Exception {
+  public void parsesGeneralHighLevelMartialArtsCosts() throws Exception {
     String xml =
             "<root><charms><generalCharms><fixedCost cost=\"7\" /></generalCharms><favoredCharms><fixedCost cost=\"5\" /></favoredCharms><generalHighLevelMartialArtsCharms><fixedCost cost=\"10\"/></generalHighLevelMartialArtsCharms>" +
             "<favoredHighLevelMartialArtsCharms><fixedCost cost=\"7\"/></favoredHighLevelMartialArtsCharms></charms></root>";
     GenericBonusPointCosts costs = parseXmlToCost(xml);
-    MartialArtsLevel martialArtsLevel = MartialArtsLevel.Sidereal;
-    DummyCharm testCharm = createMartialArtsCharm(martialArtsLevel);
-    assertEquals(10, costs.getMagicCosts().getMagicCosts(testCharm, new ICostAnalyzer() {
-      @Override
-      public MartialArtsLevel getMartialArtsLevel(Charm charm) {
-        throw new UnsupportedOperationException();
-      }
-
-      @Override
-      public boolean isMagicFavored(Magic magic) {
-        return false;
-      }
-
-      @Override
-      public boolean isOccultFavored() {
-        return false;
-      }
-    }));
+    assertThat(10, is(costs.charmCosts.general.highLevelMartialArtsCost));
   }
 
   @Test
-  public void testBasicCharmCostForHighFavoredMartialArts() throws Exception {
+  public void parsesFavoredHighLevelMartialArtsCosts() throws Exception {
     String xml =
             "<root><charms><generalCharms><fixedCost cost=\"7\" /></generalCharms><favoredCharms><fixedCost cost=\"5\" /></favoredCharms><generalHighLevelMartialArtsCharms><fixedCost cost=\"10\"/></generalHighLevelMartialArtsCharms>" +
-            "<favoredHighLevelMartialArtsCharms><fixedCost cost=\"7\"/></favoredHighLevelMartialArtsCharms></charms></root>";
+            "<favoredHighLevelMartialArtsCharms><fixedCost cost=\"8\"/></favoredHighLevelMartialArtsCharms></charms></root>";
     GenericBonusPointCosts costs = parseXmlToCost(xml);
-    MartialArtsLevel martialArtsLevel = MartialArtsLevel.Sidereal;
-    DummyCharm testCharm = createMartialArtsCharm(martialArtsLevel);
-    assertEquals(7, costs.getMagicCosts().getMagicCosts(testCharm, new ICostAnalyzer() {
-      @Override
-      public MartialArtsLevel getMartialArtsLevel(Charm charm) {
-        throw new UnsupportedOperationException();
-      }
-
-      @Override
-      public boolean isMagicFavored(Magic magic) {
-        return true;
-      }
-
-      @Override
-      public boolean isOccultFavored() {
-        return false;
-      }
-    }));
+    assertThat(8, is(costs.charmCosts.favored.highLevelMartialArtsCost));
   }
 
-  private DummyCharm createMartialArtsCharm(MartialArtsLevel martialArtsLevel) {
-    DummyCharm testCharm = new DummyCharm("test");
-    testCharm.attributes.add(new CharmAttribute(AbilityType.MartialArts.getId(), false));
-    testCharm.attributes.add(new CharmAttribute(martialArtsLevel.getId(), false));
-    return testCharm;
+  @Test
+  public void parsesFavoredCharmCosts() throws Exception {
+    String xml =
+            "<root><charms><generalCharms><fixedCost cost=\"7\" /></generalCharms><favoredCharms><fixedCost cost=\"5\" /></favoredCharms><generalHighLevelMartialArtsCharms><fixedCost cost=\"10\"/></generalHighLevelMartialArtsCharms>" +
+            "<favoredHighLevelMartialArtsCharms><fixedCost cost=\"8\"/></favoredHighLevelMartialArtsCharms></charms></root>";
+    GenericBonusPointCosts costs = parseXmlToCost(xml);
+    assertThat(5, is(costs.charmCosts.favored.charmCost));
   }
 
   @Test
@@ -263,26 +230,6 @@ public class BonusPointCostTemplateParserTest extends BasicTemplateParsingTestCa
     DummyCharm testCharm = new DummyCharm("test");
     assertCosts7WhenItsNotFavored(costs, testCharm);
     assertCosts5WhenItIsFavored(costs, testCharm);
-    assertCosts7WhenItsUnfavoredMartialArts(costs, testCharm);
     assertCosts5WhenItsFavoredMartialArts(costs, testCharm);
-  }
-
-  private void assertCosts7WhenItsUnfavoredMartialArts(GenericBonusPointCosts costs, DummyCharm testCharm) {
-    assertEquals(7, costs.getMagicCosts().getMagicCosts(testCharm, new ICostAnalyzer() {
-      @Override
-      public MartialArtsLevel getMartialArtsLevel(Charm charm) {
-        return MartialArtsLevel.Celestial;
-      }
-
-      @Override
-      public boolean isMagicFavored(Magic magic) {
-        return false;
-      }
-
-      @Override
-      public boolean isOccultFavored() {
-        return false;
-      }
-    }));
   }
 }

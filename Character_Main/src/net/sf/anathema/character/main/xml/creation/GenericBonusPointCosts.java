@@ -26,7 +26,7 @@ public class GenericBonusPointCosts extends ReflectionEqualsObject implements Bo
   private int favoredAttributeCost = 0;
   private int maximumFreeVirtueRank = 3;
   private int maximumFreeAbilityRank = 3;
-  private MagicCreationCostsTto charmCosts;
+  public MagicCreationCostsTto charmCosts;
 
   @Override
   public MagicCosts getMagicCosts() {
