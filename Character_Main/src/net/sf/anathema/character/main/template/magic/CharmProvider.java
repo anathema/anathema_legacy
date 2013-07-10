@@ -1,10 +1,10 @@
 package net.sf.anathema.character.main.template.magic;
 
 import net.sf.anathema.character.main.magic.model.charm.Charm;
-import net.sf.anathema.character.main.magic.parser.charms.ICharmCache;
 import net.sf.anathema.character.main.magic.model.charm.CharmIdMap;
-import net.sf.anathema.character.main.magic.model.charmtree.ICharmLearnableArbitrator;
 import net.sf.anathema.character.main.magic.model.charm.special.ISpecialCharm;
+import net.sf.anathema.character.main.magic.model.charmtree.ICharmLearnableArbitrator;
+import net.sf.anathema.character.main.magic.parser.charms.ICharmCache;
 import net.sf.anathema.lib.util.Identifier;
 import net.sf.anathema.lib.util.SimpleIdentifier;
 
@@ -16,10 +16,8 @@ import java.util.Map;
 public class CharmProvider implements ICharmProvider {
 
   private final Map<Identifier, ISpecialCharm[]> charmsByType = new HashMap<>();
-  private final ICharmCache cache;
 
   public CharmProvider(ICharmCache cache) {
-    this.cache = cache;
     for (Identifier type : cache.getCharmTypes()) {
       charmsByType.put(type, cache.getSpecialCharmData(type));
     }
@@ -56,10 +54,5 @@ public class CharmProvider implements ICharmProvider {
       set.add(preferredCharm);
     }
     return set.toArray(new ISpecialCharm[set.size()]);
-  }
-
-  @Override
-  public String getCharmRename(String name) {
-    return cache.getCharmRename(name);
   }
 }

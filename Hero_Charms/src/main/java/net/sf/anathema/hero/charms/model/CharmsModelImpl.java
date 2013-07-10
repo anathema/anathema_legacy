@@ -165,6 +165,7 @@ public class CharmsModelImpl implements CharmsModel {
     addCharmLearnListener(new CharacterChangeCharmListener(announcer));
   }
 
+  @SuppressWarnings("UnusedParameters")
   private void addCompulsiveCharms(HeroTemplate template) {
     String[] compulsiveCharms = getCompulsiveCharmIds();
 
@@ -311,14 +312,8 @@ public class CharmsModelImpl implements CharmsModel {
   }
 
   @Override
-  public String getCharmTrueName(String charmId) {
-    return provider.getCharmRename(charmId);
-  }
-
-  @Override
   public Charm getCharmById(String charmId) {
-    String trueCharmId = getCharmTrueName(charmId);
-    Charm charm = getCharmIdMap().getCharmById(trueCharmId);
+    Charm charm = getCharmIdMap().getCharmById(charmId);
     if (charm != null) {
       return charm;
     }

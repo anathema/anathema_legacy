@@ -1,25 +1,25 @@
 package net.sf.anathema.character.main.persistence.charm;
 
-import net.sf.anathema.character.main.magic.model.charm.Charm;
-import net.sf.anathema.character.main.magic.model.charms.MartialArtsUtilities;
-import net.sf.anathema.character.main.magic.model.charm.CharmIdMap;
-import net.sf.anathema.character.main.magic.model.charm.special.ISpecialCharmConfiguration;
-import net.sf.anathema.character.main.template.magic.ICharmTemplate;
-import net.sf.anathema.character.main.traits.LowerableState;
 import net.sf.anathema.character.main.library.trait.DefaultTrait;
 import net.sf.anathema.character.main.library.trait.DefaultTraitType;
 import net.sf.anathema.character.main.library.trait.LimitedTrait;
 import net.sf.anathema.character.main.library.trait.persistence.TraitPersister;
+import net.sf.anathema.character.main.magic.model.charm.Charm;
+import net.sf.anathema.character.main.magic.model.charm.CharmIdMap;
+import net.sf.anathema.character.main.magic.model.charm.special.IMultiLearnableCharmConfiguration;
+import net.sf.anathema.character.main.magic.model.charm.special.ISpecialCharmConfiguration;
+import net.sf.anathema.character.main.magic.model.charms.ILearningCharmGroup;
+import net.sf.anathema.character.main.magic.model.charms.MartialArtsUtilities;
+import net.sf.anathema.character.main.magic.model.charms.options.DefaultCharmTemplateRetriever;
+import net.sf.anathema.character.main.magic.model.combos.ICombo;
+import net.sf.anathema.character.main.template.magic.ICharmTemplate;
+import net.sf.anathema.character.main.traits.LowerableState;
+import net.sf.anathema.framework.messaging.IMessaging;
+import net.sf.anathema.framework.persistence.TextPersister;
 import net.sf.anathema.hero.charms.CharmsModel;
 import net.sf.anathema.hero.charms.CharmsModelFetcher;
 import net.sf.anathema.hero.combos.CombosModel;
 import net.sf.anathema.hero.combos.CombosModelFetcher;
-import net.sf.anathema.character.main.magic.model.combos.ICombo;
-import net.sf.anathema.character.main.magic.model.charms.ILearningCharmGroup;
-import net.sf.anathema.character.main.magic.model.charms.options.DefaultCharmTemplateRetriever;
-import net.sf.anathema.character.main.magic.model.charm.special.IMultiLearnableCharmConfiguration;
-import net.sf.anathema.framework.messaging.IMessaging;
-import net.sf.anathema.framework.persistence.TextPersister;
 import net.sf.anathema.hero.model.Hero;
 import net.sf.anathema.lib.exception.PersistenceException;
 import net.sf.anathema.lib.message.MessageType;
@@ -27,7 +27,6 @@ import net.sf.anathema.lib.util.Identifier;
 import net.sf.anathema.lib.xml.ElementUtilities;
 import org.dom4j.Element;
 
-import static net.sf.anathema.character.main.traits.SimpleTraitTemplate.createEssenceLimitedTemplate;
 import static net.sf.anathema.character.main.persistence.ICharacterXmlConstants.ATTRIB_EXPERIENCE_LEARNED;
 import static net.sf.anathema.character.main.persistence.ICharacterXmlConstants.ATTRIB_NAME;
 import static net.sf.anathema.character.main.persistence.ICharacterXmlConstants.ATTRIB_TYPE;
@@ -39,6 +38,7 @@ import static net.sf.anathema.character.main.persistence.ICharacterXmlConstants.
 import static net.sf.anathema.character.main.persistence.ICharacterXmlConstants.TAG_DESCRIPTION;
 import static net.sf.anathema.character.main.persistence.ICharacterXmlConstants.TAG_NAME;
 import static net.sf.anathema.character.main.persistence.ICharacterXmlConstants.TAG_SPECIAL;
+import static net.sf.anathema.character.main.traits.SimpleTraitTemplate.createEssenceLimitedTemplate;
 
 public class CharmConfigurationPersister {
 
@@ -124,9 +124,8 @@ public class CharmConfigurationPersister {
 
       Element charmElement = (Element) charmObjectElement;
       String charmId = charmElement.attributeValue(ATTRIB_NAME);
-      String charmTrueName = charmConfiguration.getCharmTrueName(charmId);
 
-      charmId = parseTrueName(hero, charmElement, charmTrueName, charmConfiguration, isExperienceLearned(charmElement));
+      charmId = parseTrueName(hero, charmElement, charmId, charmConfiguration, isExperienceLearned(charmElement));
       learnCharm(charmConfiguration, specialPersister, group, charmElement, charmId);
     }
   }

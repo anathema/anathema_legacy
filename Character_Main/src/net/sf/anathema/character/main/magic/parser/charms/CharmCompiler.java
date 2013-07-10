@@ -39,7 +39,6 @@ public class CharmCompiler implements IExtensibleDataSetCompiler {
   private final IIdentificateRegistry<Identifier> registry = new IdentificateRegistry<>();
   private final CharmAlternativeBuilder alternativeBuilder = new CharmAlternativeBuilder();
   private final CharmMergedBuilder mergedBuilder = new CharmMergedBuilder();
-  private final CharmRenameBuilder renameBuilder = new CharmRenameBuilder();
   private final SAXReader reader = new SAXReader();
   private final CharmCache charmCache = new CharmCache();
   private final CharacterTypes characterTypes;
@@ -91,7 +90,6 @@ public class CharmCompiler implements IExtensibleDataSetCompiler {
       buildGenericCharms(type);
       buildCharmAlternatives(type);
       buildCharmMerges(type);
-      buildCharmRenames(type);
     }
     extractParents(charmCache.getCharms());
 
@@ -125,14 +123,6 @@ public class CharmCompiler implements IExtensibleDataSetCompiler {
     if (charmFileTable.containsKey(type)) {
       for (Document charmDocument : charmFileTable.get(type)) {
         mergedBuilder.buildMerges(charmDocument, charmCache.getCharms(type));
-      }
-    }
-  }
-
-  private void buildCharmRenames(Identifier type) {
-    if (charmFileTable.containsKey(type)) {
-      for (Document charmDocument : charmFileTable.get(type)) {
-        charmCache.addCharmRenames(renameBuilder.buildRenames(charmDocument));
       }
     }
   }

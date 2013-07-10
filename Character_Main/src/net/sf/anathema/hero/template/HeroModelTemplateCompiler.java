@@ -6,15 +6,12 @@ import net.sf.anathema.initialization.ExtensibleDataSetCompiler;
 import net.sf.anathema.initialization.ObjectFactory;
 import net.sf.anathema.lib.resources.ResourceFile;
 
-import java.util.ArrayList;
-import java.util.List;
-
 @ExtensibleDataSetCompiler
 public class HeroModelTemplateCompiler implements IExtensibleDataSetCompiler {
 
   private static final String TEMPLATE_FILE_RECOGNITION_PATTERN = "(.+?)\\.template";
+  private HeroModelTemplateCache templates = new HeroModelTemplateCache();
 
-  private final List<ResourceFile> templateResources = new ArrayList<>();
 
   @SuppressWarnings("UnusedParameters")
   public HeroModelTemplateCompiler(ObjectFactory objectFactory) {
@@ -33,11 +30,11 @@ public class HeroModelTemplateCompiler implements IExtensibleDataSetCompiler {
 
   @Override
   public void registerFile(ResourceFile resource) throws Exception {
-    templateResources.add(resource);
+    templates.add(resource);
   }
 
   @Override
   public IExtensibleDataSet build() {
-    return new HeroModelTemplateCache(templateResources);
+    return templates;
   }
 }

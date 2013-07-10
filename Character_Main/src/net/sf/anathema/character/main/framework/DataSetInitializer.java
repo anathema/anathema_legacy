@@ -34,21 +34,8 @@ public class DataSetInitializer {
         getDataFilesFromReflection(compiler);
         manager.addDataSet(compiler.build());
       } catch (Exception e) {
-        StringBuilder message = new StringBuilder("Could not compile ");
-        message.append(compiler.getName());
-        Throwable cause = e.getCause();
-        while (cause != null) {
-          message.append(":");
-          message.append("\n");
-          String messagePart = cause.getMessage();
-          if (messagePart.contains("Nested")) {
-            int nested = messagePart.indexOf("Nested");
-            messagePart = messagePart.substring(0, nested);
-          }
-          message.append(messagePart);
-          cause = cause.getCause();
-        }
-        throw new InitializationException(message.toString(), e);
+        String message = handleCompilationException(compiler, e);
+        throw new InitializationException(message, e);
       }
     }
     return manager;
@@ -60,5 +47,23 @@ public class DataSetInitializer {
     for (ResourceFile file : files) {
       compiler.registerFile(file);
     }
+  }
+
+  private String handleCompilationException(IExtensibleDataSetCompiler compiler, Exception e) {
+    StringBuilder message = new StringBuilder("Could not compile ");
+    message.append(compiler.getName());
+    Throwable cause = e.getCause();
+    while (cause != null) {
+      message.append(":");
+      message.append("\n");
+      String messagePart = cause.getMessage();
+      if (messagePart.contains("Nested")) {
+        int nested = messagePart.indexOf("Nested");
+        messagePart = messagePart.substring(0, nested);
+      }
+      message.append(messagePart);
+      cause = cause.getCause();
+    }
+    return message.toString();
   }
 }

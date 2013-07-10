@@ -34,8 +34,6 @@ public interface ICharmXMLConstants {
   String TAG_ALTERNATIVES = "alternatives";
   String TAG_MERGED = "merged";
   String TAG_MERGES = "merges";
-  String TAG_RENAMES = "renames";
-  String TAG_RENAME = "rename";
   String TAG_ATTRIBUTE = "charmAttribute";
   String TAG_GENERIC_ATTRIBUTE = "genericCharmAttribute";
   String TAG_CASTE = "caste";

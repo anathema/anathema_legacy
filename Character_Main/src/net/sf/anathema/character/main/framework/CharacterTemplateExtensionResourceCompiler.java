@@ -13,7 +13,6 @@ import java.util.List;
 public class CharacterTemplateExtensionResourceCompiler implements IExtensibleDataSetCompiler {
 
   private static final String TEMPLATE_FILE_RECOGNITION_PATTERN = "(.+?)\\.template";
-
   private final List<ResourceFile> templateResources = new ArrayList<>();
 
   @SuppressWarnings("UnusedParameters")
