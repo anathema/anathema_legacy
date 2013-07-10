@@ -1,18 +1,18 @@
 package net.sf.anathema.character.main.advance.models;
 
+import net.sf.anathema.character.main.advance.PointCostCalculator;
 import net.sf.anathema.character.main.magic.model.spells.ISpell;
+import net.sf.anathema.hero.model.Hero;
 import net.sf.anathema.hero.spells.SpellModel;
 import net.sf.anathema.hero.spells.SpellsModelFetcher;
 import net.sf.anathema.hero.traits.TraitMap;
-import net.sf.anathema.character.main.advance.IPointCostCalculator;
-import net.sf.anathema.hero.model.Hero;
 
 public class SpellExperienceModel extends AbstractIntegerValueModel {
   private final Hero hero;
-  private final IPointCostCalculator calculator;
+  private final PointCostCalculator calculator;
   private final TraitMap traitConfiguration;
 
-  public SpellExperienceModel(Hero hero, IPointCostCalculator calculator, TraitMap traitConfiguration) {
+  public SpellExperienceModel(Hero hero, PointCostCalculator calculator, TraitMap traitConfiguration) {
     super("Experience", "Spells");
     this.hero = hero;
     this.calculator = calculator;

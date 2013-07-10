@@ -1,28 +1,12 @@
 package net.sf.anathema.character.main.advance;
 
 import net.sf.anathema.lib.workflow.textualdescription.ITextualDescription;
-import net.sf.anathema.lib.workflow.textualdescription.SimpleTextualDescription;
 
-public class ExperiencePointEntry implements IExperiencePointEntry {
+public interface ExperiencePointEntry {
 
-  private final ITextualDescription description = new SimpleTextualDescription("");
-  private int experiencePoints = 0;
+  int getExperiencePoints();
 
-  @Override
-  public int getExperiencePoints() {
-    return experiencePoints;
-  }
+  void setExperiencePoints(int points);
 
-  @Override
-  public void setExperiencePoints(int value) {
-    if (experiencePoints == value) {
-      return;
-    }
-    this.experiencePoints = value;
-  }
-
-  @Override
-  public ITextualDescription getTextualDescription() {
-    return description;
-  }
+  ITextualDescription getTextualDescription();
 }

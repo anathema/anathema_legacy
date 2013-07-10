@@ -1,9 +1,9 @@
 package net.sf.anathema.hero.experience.display;
 
+import net.sf.anathema.character.main.advance.ExperiencePointConfiguration;
 import net.sf.anathema.character.main.advance.ExperiencePointConfigurationListener;
+import net.sf.anathema.character.main.advance.ExperiencePointEntry;
 import net.sf.anathema.character.main.advance.ExperienceSelectionListener;
-import net.sf.anathema.character.main.advance.IExperiencePointConfiguration;
-import net.sf.anathema.character.main.advance.IExperiencePointEntry;
 import net.sf.anathema.framework.presenter.resources.BasicUi;
 import net.sf.anathema.interaction.Command;
 import net.sf.anathema.interaction.Tool;
@@ -11,11 +11,11 @@ import net.sf.anathema.lib.resources.Resources;
 
 public class ExperienceConfigurationPresenter {
 
-  private final IExperiencePointConfiguration experiencePoints;
+  private final ExperiencePointConfiguration experiencePoints;
   private final ExperienceView experienceView;
   private final Resources resources;
 
-  public ExperienceConfigurationPresenter(Resources resources, IExperiencePointConfiguration experiencePoints,
+  public ExperienceConfigurationPresenter(Resources resources, ExperiencePointConfiguration experiencePoints,
                                           ExperienceView experienceView) {
     this.resources = resources;
     this.experiencePoints = experiencePoints;
@@ -25,7 +25,7 @@ public class ExperienceConfigurationPresenter {
   public void initPresentation() {
     experienceView.addSelectionListener(new ExperienceSelectionListener() {
       @Override
-      public void selectionChanged(IExperiencePointEntry entry) {
+      public void selectionChanged(ExperiencePointEntry entry) {
         experiencePoints.selectForChange(entry);
       }
     });
@@ -39,7 +39,7 @@ public class ExperienceConfigurationPresenter {
     });
     experiencePoints.addEntrySelectionListener(new ExperienceSelectionListener() {
       @Override
-      public void selectionChanged(IExperiencePointEntry entry) {
+      public void selectionChanged(ExperiencePointEntry entry) {
         updateSelectionInView(entry);
       }
     });
@@ -76,7 +76,7 @@ public class ExperienceConfigurationPresenter {
     });
     experiencePoints.addEntrySelectionListener(new ExperienceSelectionListener() {
       @Override
-      public void selectionChanged(IExperiencePointEntry entry) {
+      public void selectionChanged(ExperiencePointEntry entry) {
         if (entry != null) {
           tool.enable();
         } else {
@@ -86,7 +86,7 @@ public class ExperienceConfigurationPresenter {
     });
   }
 
-  private void updateSelectionInView(IExperiencePointEntry entry) {
+  private void updateSelectionInView(ExperiencePointEntry entry) {
     experienceView.setSelection(entry);
   }
 

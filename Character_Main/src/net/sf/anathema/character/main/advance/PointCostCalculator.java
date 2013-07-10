@@ -1,12 +1,12 @@
 package net.sf.anathema.character.main.advance;
 
+import net.sf.anathema.character.main.library.trait.Trait;
 import net.sf.anathema.character.main.magic.model.charm.Charm;
 import net.sf.anathema.character.main.magic.model.spells.ISpell;
-import net.sf.anathema.character.main.library.trait.Trait;
-import net.sf.anathema.hero.traits.TraitMap;
 import net.sf.anathema.hero.model.Hero;
+import net.sf.anathema.hero.traits.TraitMap;
 
-public interface IPointCostCalculator {
+public interface PointCostCalculator {
 
   int getAbilityCosts(Trait ability, boolean favored);
 

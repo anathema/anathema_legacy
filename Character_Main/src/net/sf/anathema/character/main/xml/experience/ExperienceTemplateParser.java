@@ -1,10 +1,10 @@
 package net.sf.anathema.character.main.xml.experience;
 
+import net.sf.anathema.character.main.magic.model.charm.MartialArtsLevel;
+import net.sf.anathema.character.main.template.experience.CurrentRatingCosts;
 import net.sf.anathema.character.main.xml.core.AbstractXmlTemplateParser;
 import net.sf.anathema.character.main.xml.registry.IXmlTemplateRegistry;
 import net.sf.anathema.character.main.xml.util.CostParser;
-import net.sf.anathema.character.main.magic.model.charm.MartialArtsLevel;
-import net.sf.anathema.character.main.template.experience.CurrentRatingCosts;
 import net.sf.anathema.lib.exception.PersistenceException;
 import net.sf.anathema.lib.xml.ElementUtilities;
 import org.dom4j.Element;
@@ -33,7 +33,6 @@ public class ExperienceTemplateParser extends AbstractXmlTemplateParser<GenericE
   private static final String TAG_SPELLS = "spells";
   private static final String TAG_KEYWORD_CHARMS = "keywordCharms";
   private static final String TAG_MARTIAL_ARTS = "highLevelMartialArts";
-  private static final String TAG_BACKGROUNDS = "backgrounds";
   private final CostParser costParser = new CostParser();
   private final MartialArtsLevel standardLevel;
 

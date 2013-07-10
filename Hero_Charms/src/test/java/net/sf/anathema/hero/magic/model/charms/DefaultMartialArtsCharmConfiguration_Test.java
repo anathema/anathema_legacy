@@ -1,10 +1,10 @@
 package net.sf.anathema.hero.magic.model.charms;
 
-import net.sf.anathema.character.main.advance.IExperiencePointConfiguration;
+import net.sf.anathema.character.main.advance.ExperiencePointConfiguration;
+import net.sf.anathema.character.main.dummy.DummyCharm;
 import net.sf.anathema.character.main.magic.model.charm.Charm;
 import net.sf.anathema.character.main.magic.model.charm.CharmAttributeList;
 import net.sf.anathema.character.main.magic.model.charms.ILearningCharmGroup;
-import net.sf.anathema.character.main.dummy.DummyCharm;
 import net.sf.anathema.character.main.testing.dummy.magic.DummyCharmsModel;
 import net.sf.anathema.hero.charms.model.DefaultMartialArtsCharmConfiguration;
 import net.sf.anathema.hero.experience.ExperienceModel;
@@ -29,7 +29,7 @@ public class DefaultMartialArtsCharmConfiguration_Test {
       public boolean experienced;
 
       @Override
-      public IExperiencePointConfiguration getExperiencePoints() {
+      public ExperiencePointConfiguration getExperiencePoints() {
         throw new UnsupportedOperationException();
       }
 

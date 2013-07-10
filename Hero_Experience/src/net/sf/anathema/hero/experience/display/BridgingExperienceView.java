@@ -1,7 +1,7 @@
 package net.sf.anathema.hero.experience.display;
 
+import net.sf.anathema.character.main.advance.ExperiencePointEntry;
 import net.sf.anathema.character.main.advance.ExperienceSelectionListener;
-import net.sf.anathema.character.main.advance.IExperiencePointEntry;
 import net.sf.anathema.framework.swing.IView;
 import net.sf.anathema.interaction.Tool;
 import net.sf.anathema.platform.fx.BridgingPanel;
@@ -42,12 +42,12 @@ public class BridgingExperienceView implements ExperienceView, IView {
   }
 
   @Override
-  public void setSelection(IExperiencePointEntry entry) {
+  public void setSelection(ExperiencePointEntry entry) {
     fxView.setSelection(entry);
   }
 
   @Override
-  public void setEntries(IExperiencePointEntry... allEntries) {
+  public void setEntries(ExperiencePointEntry... allEntries) {
     fxView.setEntries(allEntries);
   }
 

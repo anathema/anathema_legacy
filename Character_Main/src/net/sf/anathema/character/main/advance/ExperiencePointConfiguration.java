@@ -1,94 +1,24 @@
 package net.sf.anathema.character.main.advance;
 
-import org.jmock.example.announcer.Announcer;
+public interface ExperiencePointConfiguration {
 
-import java.util.ArrayList;
-import java.util.List;
+  ExperiencePointEntry[] getAllEntries();
 
-public class ExperiencePointConfiguration implements IExperiencePointConfiguration {
+  ExperiencePointEntry addEntry();
 
-  public static final IExperiencePointEntry NO_ENTRY = null;
-  private IExperiencePointEntry currentlySelectedEntry = NO_ENTRY;
-  private final List<IExperiencePointEntry> entries = new ArrayList<>();
-  private final Announcer<ExperiencePointConfigurationListener> control = Announcer.to(ExperiencePointConfigurationListener.class);
-  private final Announcer<ExperienceSelectionListener> selectionAnnouncer = Announcer.to(ExperienceSelectionListener.class);
+  void removeEntry();
 
-  @Override
-  public IExperiencePointEntry[] getAllEntries() {
-    return entries.toArray(new IExperiencePointEntry[entries.size()]);
-  }
+  int getTotalExperiencePoints();
 
-  @Override
-  public IExperiencePointEntry addEntry() {
-    IExperiencePointEntry newEntry = addEntryWithoutEvent();
-    fireChangeEvent();
-    return newEntry;
-  }
+  void addExperiencePointConfigurationListener(ExperiencePointConfigurationListener listener);
 
-  private IExperiencePointEntry addEntryWithoutEvent() {
-    IExperiencePointEntry newEntry = new ExperiencePointEntry();
-    entries.add(newEntry);
-    return newEntry;
-  }
+  void addEntrySelectionListener(ExperienceSelectionListener listener);
 
-  @Override
-  public void removeEntry() {
-    entries.remove(currentlySelectedEntry);
-    fireChangeEvent();
-    selectForChange(NO_ENTRY);
-  }
+  int getExtraSpendings();
 
-  private void fireChangeEvent() {
-    control.announce().entriesAddedRemovedOrChanged();
-  }
+  void selectForChange(ExperiencePointEntry entry);
 
-  @Override
-  public void addExperiencePointConfigurationListener(ExperiencePointConfigurationListener listener) {
-    control.addListener(listener);
-  }
+  void updateCurrentSelection(String description, int points);
 
-  @Override
-  public void addEntrySelectionListener(ExperienceSelectionListener listener) {
-    selectionAnnouncer.addListener(listener);
-  }
-
-  @Override
-  public int getTotalExperiencePoints() {
-    int sum = 0;
-    for (IExperiencePointEntry entry : getAllEntries()) {
-      if (entry.getExperiencePoints() > 0) {
-        sum += entry.getExperiencePoints();
-      }
-    }
-    return sum;
-  }
-
-  @Override
-  public int getExtraSpendings() {
-    int sum = 0;
-    for (IExperiencePointEntry entry : getAllEntries()) {
-      if (entry.getExperiencePoints() < 0) {
-        sum -= entry.getExperiencePoints();
-      }
-    }
-    return sum;
-  }
-
-  @Override
-  public void selectForChange(IExperiencePointEntry entry) {
-    this.currentlySelectedEntry = entry;
-    selectionAnnouncer.announce().selectionChanged(entry);
-  }
-
-  @Override
-  public void updateCurrentSelection(String description, int points) {
-    currentlySelectedEntry.getTextualDescription().setText(description);
-    currentlySelectedEntry.setExperiencePoints(points);
-    fireChangeEvent();
-  }
-
-  @Override
-  public IExperiencePointEntry getCurrentSelection() {
-    return currentlySelectedEntry;
-  }
+  ExperiencePointEntry getCurrentSelection();
 }

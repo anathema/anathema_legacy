@@ -1,11 +1,10 @@
 package net.sf.anathema.hero.experience.model;
 
-import net.sf.anathema.hero.experience.ExperienceChange;
-import net.sf.anathema.hero.experience.ExperienceModel;
 import net.sf.anathema.character.main.advance.ExperiencePointConfiguration;
-import net.sf.anathema.character.main.advance.IExperiencePointConfiguration;
 import net.sf.anathema.hero.change.AnnounceChangeListener;
 import net.sf.anathema.hero.change.ChangeAnnouncer;
+import net.sf.anathema.hero.experience.ExperienceChange;
+import net.sf.anathema.hero.experience.ExperienceModel;
 import net.sf.anathema.hero.model.Hero;
 import net.sf.anathema.hero.model.HeroModel;
 import net.sf.anathema.hero.model.InitializationContext;
@@ -14,7 +13,7 @@ import net.sf.anathema.lib.util.Identifier;
 import org.jmock.example.announcer.Announcer;
 
 public class ExperienceModelImpl implements ExperienceModel, HeroModel {
-  private final IExperiencePointConfiguration experiencePoints = new ExperiencePointConfiguration();
+  private final ExperiencePointConfiguration experiencePoints = new DefaultExperiencePointConfiguration();
   private final Announcer<ChangeListener> stateAnnouncer = new Announcer<>(ChangeListener.class);
   private boolean experienced = false;
 
@@ -40,7 +39,7 @@ public class ExperienceModelImpl implements ExperienceModel, HeroModel {
   }
 
   @Override
-  public IExperiencePointConfiguration getExperiencePoints() {
+  public ExperiencePointConfiguration getExperiencePoints() {
     return experiencePoints;
   }
 

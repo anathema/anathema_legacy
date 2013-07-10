@@ -1,7 +1,7 @@
 package net.sf.anathema.character.main.presenter.overview;
 
 import net.sf.anathema.character.main.advance.ExperiencePointConfigurationListener;
-import net.sf.anathema.character.main.advance.IExperiencePointManagement;
+import net.sf.anathema.character.main.advance.ExperiencePointManagement;
 import net.sf.anathema.character.main.library.overview.OverviewCategory;
 import net.sf.anathema.character.main.view.CategorizedOverview;
 import net.sf.anathema.character.main.view.labelledvalue.ILabelledAlotmentView;
@@ -20,7 +20,7 @@ import java.util.List;
 
 public class ExperiencedOverviewPresenter implements Presenter {
 
-  private final IExperiencePointManagement management;
+  private final ExperiencePointManagement management;
   private final CategorizedOverview view;
   private final Hero hero;
   private final Resources resources;
@@ -29,7 +29,7 @@ public class ExperiencedOverviewPresenter implements Presenter {
   private ILabelledAlotmentView totalView;
 
   public ExperiencedOverviewPresenter(Resources resources, final Hero hero, CategorizedOverview overview,
-                                      IExperiencePointManagement experiencePoints) {
+                                      ExperiencePointManagement experiencePoints) {
     this.resources = resources;
     this.hero = hero;
     hero.getChangeAnnouncer().addListener(new FlavoredChangeListener() {

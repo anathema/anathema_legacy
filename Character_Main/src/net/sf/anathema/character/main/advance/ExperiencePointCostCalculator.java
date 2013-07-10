@@ -1,16 +1,16 @@
 package net.sf.anathema.character.main.advance;
 
+import net.sf.anathema.character.main.library.trait.Trait;
+import net.sf.anathema.character.main.library.trait.experience.TraitRatingCostCalculator;
 import net.sf.anathema.character.main.magic.model.charm.Charm;
 import net.sf.anathema.character.main.magic.model.spells.ISpell;
 import net.sf.anathema.character.main.template.experience.CurrentRatingCosts;
 import net.sf.anathema.character.main.template.experience.IExperiencePointCosts;
-import net.sf.anathema.character.main.library.trait.Trait;
-import net.sf.anathema.character.main.library.trait.experience.TraitRatingCostCalculator;
+import net.sf.anathema.hero.model.Hero;
 import net.sf.anathema.hero.traits.GenericTraitCollectionFacade;
 import net.sf.anathema.hero.traits.TraitMap;
-import net.sf.anathema.hero.model.Hero;
 
-public class ExperiencePointCostCalculator implements IPointCostCalculator {
+public class ExperiencePointCostCalculator implements PointCostCalculator {
 
   private final IExperiencePointCosts costs;
 

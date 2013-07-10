@@ -13,8 +13,8 @@ import javafx.scene.control.cell.TextFieldTableCell;
 import javafx.util.Callback;
 import net.miginfocom.layout.CC;
 import net.miginfocom.layout.LC;
+import net.sf.anathema.character.main.advance.ExperiencePointEntry;
 import net.sf.anathema.character.main.advance.ExperienceSelectionListener;
-import net.sf.anathema.character.main.advance.IExperiencePointEntry;
 import net.sf.anathema.interaction.Tool;
 import net.sf.anathema.lib.gui.layout.LayoutUtils;
 import net.sf.anathema.platform.fx.NodeHolder;
@@ -24,7 +24,7 @@ import org.tbee.javafx.scene.layout.MigPane;
 
 public class FxExperienceView implements ExperienceView, NodeHolder {
   private final MigPane content = new MigPane(new LC().wrapAfter(1).fill());
-  private final TableView<IExperiencePointEntry> table = new TableView<>();
+  private final TableView<ExperiencePointEntry> table = new TableView<>();
   private final Announcer<ExperienceUpdateListener> updateAnnouncer = new Announcer<>(ExperienceUpdateListener.class);
   private final Announcer<ExperienceSelectionListener> entryAnnouncer = new Announcer<>(ExperienceSelectionListener.class);
   private final MigPane buttonPanel = new MigPane();
@@ -32,13 +32,13 @@ public class FxExperienceView implements ExperienceView, NodeHolder {
 
   @Override
   public void initGui(ExperienceViewProperties properties) {
-    TableColumn<IExperiencePointEntry, String> pointsColumn = createPointsColumn(properties);
-    TableColumn<IExperiencePointEntry, String> descriptionColumn = createDescriptionColumn(properties);
+    TableColumn<ExperiencePointEntry, String> pointsColumn = createPointsColumn(properties);
+    TableColumn<ExperiencePointEntry, String> descriptionColumn = createDescriptionColumn(properties);
     table.setEditable(true);
     table.getColumns().addAll(descriptionColumn, pointsColumn);
-    table.getSelectionModel().selectedItemProperty().addListener(new ChangeListener<IExperiencePointEntry>() {
+    table.getSelectionModel().selectedItemProperty().addListener(new ChangeListener<ExperiencePointEntry>() {
       @Override
-      public void changed(ObservableValue observableValue, IExperiencePointEntry o, IExperiencePointEntry newValue) {
+      public void changed(ObservableValue observableValue, ExperiencePointEntry o, ExperiencePointEntry newValue) {
         entryAnnouncer.announce().selectionChanged(newValue);
       }
     });
@@ -78,12 +78,12 @@ public class FxExperienceView implements ExperienceView, NodeHolder {
   }
 
   @Override
-  public void setSelection(IExperiencePointEntry entry) {
+  public void setSelection(ExperiencePointEntry entry) {
     table.getSelectionModel().select(entry);
   }
 
   @Override
-  public void setEntries(IExperiencePointEntry... allEntries) {
+  public void setEntries(ExperiencePointEntry... allEntries) {
     clearEntries();
     addEntries(allEntries);
     forceTableRefresh();
@@ -94,22 +94,22 @@ public class FxExperienceView implements ExperienceView, NodeHolder {
     return content;
   }
 
-  private TableColumn<IExperiencePointEntry, String> createPointsColumn(ExperienceViewProperties properties) {
-    TableColumn<IExperiencePointEntry, String> pointColumn = new TableColumn<>(properties.getPointHeader());
+  private TableColumn<ExperiencePointEntry, String> createPointsColumn(ExperienceViewProperties properties) {
+    TableColumn<ExperiencePointEntry, String> pointColumn = new TableColumn<>(properties.getPointHeader());
     pointColumn.prefWidthProperty().bind(table.widthProperty().divide(4));
-    Callback<TableColumn<IExperiencePointEntry, String>, TableCell<IExperiencePointEntry, String>> cellCallback = TextFieldTableCell.forTableColumn();
-    pointColumn.setCellValueFactory(new Callback<TableColumn.CellDataFeatures<IExperiencePointEntry, String>, ObservableValue<String>>() {
+    Callback<TableColumn<ExperiencePointEntry, String>, TableCell<ExperiencePointEntry, String>> cellCallback = TextFieldTableCell.forTableColumn();
+    pointColumn.setCellValueFactory(new Callback<TableColumn.CellDataFeatures<ExperiencePointEntry, String>, ObservableValue<String>>() {
       @Override
-      public ObservableValue<String> call(TableColumn.CellDataFeatures<IExperiencePointEntry, String> features) {
+      public ObservableValue<String> call(TableColumn.CellDataFeatures<ExperiencePointEntry, String> features) {
         return new SimpleStringProperty(String.valueOf(features.getValue().getExperiencePoints()));
       }
     });
     pointColumn.setCellFactory(cellCallback);
     pointColumn.setOnEditCommit(
-            new EventHandler<TableColumn.CellEditEvent<IExperiencePointEntry, String>>() {
+            new EventHandler<TableColumn.CellEditEvent<ExperiencePointEntry, String>>() {
               @Override
-              public void handle(TableColumn.CellEditEvent<IExperiencePointEntry, String> event) {
-                IExperiencePointEntry experienceEntry = event.getRowValue();
+              public void handle(TableColumn.CellEditEvent<ExperiencePointEntry, String> event) {
+                ExperiencePointEntry experienceEntry = event.getRowValue();
                 Integer experiencePoints = getChangedPointValue(event, experienceEntry);
                 String description = experienceEntry.getTextualDescription().getText();
                 updateAnnouncer.announce().update(experiencePoints, description);
@@ -119,7 +119,7 @@ public class FxExperienceView implements ExperienceView, NodeHolder {
     return pointColumn;
   }
 
-  private Integer getChangedPointValue(TableColumn.CellEditEvent<IExperiencePointEntry, String> event, IExperiencePointEntry experienceEntry) {
+  private Integer getChangedPointValue(TableColumn.CellEditEvent<ExperiencePointEntry, String> event, ExperiencePointEntry experienceEntry) {
     try {
       return Integer.valueOf(event.getNewValue());
     } catch (NumberFormatException e) {
@@ -127,22 +127,22 @@ public class FxExperienceView implements ExperienceView, NodeHolder {
     }
   }
 
-  private TableColumn<IExperiencePointEntry, String> createDescriptionColumn(ExperienceViewProperties properties) {
-    TableColumn<IExperiencePointEntry, String> descriptionColumn = new TableColumn<>(properties.getDescriptionHeader());
+  private TableColumn<ExperiencePointEntry, String> createDescriptionColumn(ExperienceViewProperties properties) {
+    TableColumn<ExperiencePointEntry, String> descriptionColumn = new TableColumn<>(properties.getDescriptionHeader());
     descriptionColumn.prefWidthProperty().bind(table.widthProperty().multiply(3).divide(4).subtract(5));
-    Callback<TableColumn<IExperiencePointEntry, String>, TableCell<IExperiencePointEntry, String>> cellCallback = TextFieldTableCell.forTableColumn();
-    descriptionColumn.setCellValueFactory(new Callback<TableColumn.CellDataFeatures<IExperiencePointEntry, String>, ObservableValue<String>>() {
+    Callback<TableColumn<ExperiencePointEntry, String>, TableCell<ExperiencePointEntry, String>> cellCallback = TextFieldTableCell.forTableColumn();
+    descriptionColumn.setCellValueFactory(new Callback<TableColumn.CellDataFeatures<ExperiencePointEntry, String>, ObservableValue<String>>() {
       @Override
-      public ObservableValue<String> call(TableColumn.CellDataFeatures<IExperiencePointEntry, String> features) {
+      public ObservableValue<String> call(TableColumn.CellDataFeatures<ExperiencePointEntry, String> features) {
         return new SimpleStringProperty(features.getValue().getTextualDescription().getText());
       }
     });
     descriptionColumn.setCellFactory(cellCallback);
     descriptionColumn.setOnEditCommit(
-            new EventHandler<TableColumn.CellEditEvent<IExperiencePointEntry, String>>() {
+            new EventHandler<TableColumn.CellEditEvent<ExperiencePointEntry, String>>() {
               @Override
-              public void handle(TableColumn.CellEditEvent<IExperiencePointEntry, String> event) {
-                IExperiencePointEntry experienceEntry = event.getRowValue();
+              public void handle(TableColumn.CellEditEvent<ExperiencePointEntry, String> event) {
+                ExperiencePointEntry experienceEntry = event.getRowValue();
                 Integer experiencePoints = experienceEntry.getExperiencePoints();
                 String description = event.getNewValue();
                 updateAnnouncer.announce().update(experiencePoints, description);
@@ -156,8 +156,8 @@ public class FxExperienceView implements ExperienceView, NodeHolder {
     table.getItems().removeAll(table.getItems());
   }
 
-  private void addEntries(IExperiencePointEntry[] allEntries) {
-    for (IExperiencePointEntry entry : allEntries) {
+  private void addEntries(ExperiencePointEntry[] allEntries) {
+    for (ExperiencePointEntry entry : allEntries) {
       table.getItems().add(entry);
     }
   }

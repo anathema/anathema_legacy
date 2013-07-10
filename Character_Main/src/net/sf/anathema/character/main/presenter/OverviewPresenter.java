@@ -1,6 +1,6 @@
 package net.sf.anathema.character.main.presenter;
 
-import net.sf.anathema.character.main.advance.IExperiencePointManagement;
+import net.sf.anathema.character.main.advance.ExperiencePointManagement;
 import net.sf.anathema.character.main.creation.IBonusPointManagement;
 import net.sf.anathema.character.main.presenter.overview.CreationOverviewPresenter;
 import net.sf.anathema.character.main.presenter.overview.ExperiencedOverviewPresenter;
@@ -20,10 +20,10 @@ public class OverviewPresenter implements Presenter {
   private Hero hero;
   private OverviewContainer container;
   private IBonusPointManagement bonusPoints;
-  private IExperiencePointManagement experiencePoints;
+  private ExperiencePointManagement experiencePoints;
 
   public OverviewPresenter(Resources resources, Hero hero, OverviewContainer container, IBonusPointManagement bonusPoints,
-                           IExperiencePointManagement experiencePoints) {
+                           ExperiencePointManagement experiencePoints) {
     this.resources = resources;
     this.hero = hero;
     this.container = container;

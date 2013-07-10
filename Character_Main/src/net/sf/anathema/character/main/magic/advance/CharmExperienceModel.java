@@ -1,25 +1,25 @@
 package net.sf.anathema.character.main.magic.advance;
 
+import net.sf.anathema.character.main.advance.PointCostCalculator;
 import net.sf.anathema.character.main.advance.models.AbstractIntegerValueModel;
 import net.sf.anathema.character.main.magic.model.charm.Charm;
 import net.sf.anathema.character.main.magic.model.charm.special.ISpecialCharmConfiguration;
-import net.sf.anathema.hero.charms.CharmsModel;
-import net.sf.anathema.hero.charms.CharmsModelFetcher;
-import net.sf.anathema.hero.traits.TraitMap;
-import net.sf.anathema.character.main.advance.IPointCostCalculator;
 import net.sf.anathema.character.main.magic.model.charm.special.ISubeffectCharmConfiguration;
 import net.sf.anathema.character.main.magic.model.charm.special.IUpgradableCharmConfiguration;
+import net.sf.anathema.hero.charms.CharmsModel;
+import net.sf.anathema.hero.charms.CharmsModelFetcher;
 import net.sf.anathema.hero.model.Hero;
+import net.sf.anathema.hero.traits.TraitMap;
 
 import java.util.HashSet;
 import java.util.Set;
 
 public class CharmExperienceModel extends AbstractIntegerValueModel {
   private final TraitMap traitConfiguration;
-  private final IPointCostCalculator calculator;
+  private final PointCostCalculator calculator;
   private final Hero hero;
 
-  public CharmExperienceModel(TraitMap traitConfiguration, IPointCostCalculator calculator, Hero hero) {
+  public CharmExperienceModel(TraitMap traitConfiguration, PointCostCalculator calculator, Hero hero) {
     super("Experience", "Charms");
     this.traitConfiguration = traitConfiguration;
     this.calculator = calculator;
