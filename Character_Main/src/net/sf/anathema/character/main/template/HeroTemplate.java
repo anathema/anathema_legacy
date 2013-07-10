@@ -6,11 +6,16 @@ import net.sf.anathema.character.main.template.creation.ICreationPoints;
 import net.sf.anathema.character.main.template.essence.IEssenceTemplate;
 import net.sf.anathema.character.main.template.experience.IExperiencePointCosts;
 import net.sf.anathema.character.main.template.magic.IMagicTemplate;
+import net.sf.anathema.character.main.template.presentation.IPresentationProperties;
 import net.sf.anathema.character.main.traits.TraitType;
 
 import java.util.List;
 
-public interface HeroTemplate extends ICharacterExternalsTemplate {
+public interface HeroTemplate {
+
+  ITemplateType getTemplateType();
+
+  IPresentationProperties getPresentationProperties();
 
   GroupedTraitType[] getAbilityGroups();
 

@@ -43,7 +43,7 @@ public class TemplateRegistryTest {
     HeroTemplate otherTemplate = new SimpleDummyCharacterTemplate(characterType, "Second");
     registry.register(defaultTemplate);
     registry.register(otherTemplate);
-    ICharacterExternalsTemplate[] allSupportedTemplates = registry.getAllSupportedTemplates(characterType);
+    HeroTemplate[] allSupportedTemplates = registry.getAllSupportedTemplates(characterType);
     assertTrue(ArrayUtils.contains(allSupportedTemplates, defaultTemplate));
     assertTrue(ArrayUtils.contains(allSupportedTemplates, otherTemplate));
   }

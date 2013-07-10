@@ -2,7 +2,7 @@ package net.sf.anathema.swing.hero.creation;
 
 import net.sf.anathema.character.main.CharacterStatisticsConfiguration;
 import net.sf.anathema.character.main.framework.HeroEnvironment;
-import net.sf.anathema.character.main.template.ICharacterExternalsTemplate;
+import net.sf.anathema.character.main.template.HeroTemplate;
 import net.sf.anathema.character.main.template.ITemplateRegistry;
 import net.sf.anathema.character.main.testing.dummy.DummyCharacterTypes;
 import net.sf.anathema.character.main.testing.dummy.DummyMundaneCharacterType;
@@ -37,7 +37,7 @@ public class CharacterItemCreationModelTest {
     SimpleDummyCharacterTemplate characterTemplate = new SimpleDummyCharacterTemplate(characterType, null);
     when(registry.getDefaultTemplate(characterType)).thenReturn(characterTemplate);
     when(registry.getAllSupportedTemplates(characterType)).thenReturn(
-            new ICharacterExternalsTemplate[]{characterTemplate});
+            new HeroTemplate[]{characterTemplate});
     when(generics.getTemplateRegistry()).thenReturn(registry);
     return generics;
   }

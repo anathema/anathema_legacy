@@ -11,7 +11,7 @@ public class TemplateRegistry implements ITemplateRegistry {
   private final HashMap<ITemplateType, HeroTemplate> templatesByType = new HashMap<>();
 
   @Override
-  public ICharacterExternalsTemplate[] getAllSupportedTemplates(ICharacterType type) {
+  public HeroTemplate[] getAllSupportedTemplates(ICharacterType type) {
     List<HeroTemplate> typeTemplates = new ArrayList<>();
     for (ITemplateType templateType : templatesByType.keySet()) {
       if (templateType.getCharacterType().equals(type)) {
@@ -28,11 +28,6 @@ public class TemplateRegistry implements ITemplateRegistry {
   public HeroTemplate getDefaultTemplate(ICharacterType type) {
     ITemplateType templateType = new TemplateType(type);
     return getTemplate(templateType);
-  }
-
-  @Override
-  public HeroTemplate getTemplate(ICharacterExternalsTemplate template) {
-    return templatesByType.get(template.getTemplateType());
   }
 
   @Override

@@ -4,13 +4,11 @@ import net.sf.anathema.character.main.type.ICharacterType;
 
 public interface ITemplateRegistry {
 
-  ICharacterExternalsTemplate[] getAllSupportedTemplates(ICharacterType type);
+  HeroTemplate[] getAllSupportedTemplates(ICharacterType type);
 
   void register(HeroTemplate template);
 
   HeroTemplate getDefaultTemplate(ICharacterType type);
 
   HeroTemplate getTemplate(ITemplateType type);
-
-  HeroTemplate getTemplate(ICharacterExternalsTemplate template);
 }
