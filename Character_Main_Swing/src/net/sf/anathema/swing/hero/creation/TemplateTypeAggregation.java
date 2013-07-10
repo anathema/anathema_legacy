@@ -2,15 +2,15 @@ package net.sf.anathema.swing.hero.creation;
 
 import net.sf.anathema.character.main.template.HeroTemplate;
 import net.sf.anathema.character.main.template.ITemplateType;
-import net.sf.anathema.character.main.template.presentation.ICommonPresentationProperties;
+import net.sf.anathema.character.main.template.presentation.IPresentationProperties;
 import net.sf.anathema.character.main.view.repository.ITemplateTypeAggregation;
 
 public class TemplateTypeAggregation implements ITemplateTypeAggregation {
 
   private final ITemplateType templateType;
-  private final ICommonPresentationProperties properties;
+  private final IPresentationProperties properties;
 
-  public TemplateTypeAggregation(ITemplateType templateType, ICommonPresentationProperties properties) {
+  public TemplateTypeAggregation(ITemplateType templateType, IPresentationProperties properties) {
     this.templateType = templateType;
     this.properties = properties;
   }
@@ -26,7 +26,7 @@ public class TemplateTypeAggregation implements ITemplateTypeAggregation {
   }
 
   @Override
-  public ICommonPresentationProperties getPresentationProperties() {
+  public IPresentationProperties getPresentationProperties() {
     return properties;
   }
 }
