@@ -21,4 +21,6 @@ public interface ExperienceView {
   int getNumberOfEntriesOnDisplay();
 
   void setSelection(IExperiencePointEntry entry);
+
+  void addAllEntries(IExperiencePointEntry... allEntries);
 }

@@ -60,6 +60,11 @@ public class BridgingExperienceView implements ExperienceView, IView {
   }
 
   @Override
+  public void addAllEntries(IExperiencePointEntry... allEntries) {
+    fxView.addAllEntries(allEntries);
+  }
+
+  @Override
   public JComponent getComponent() {
     return panel.getComponent();
   }

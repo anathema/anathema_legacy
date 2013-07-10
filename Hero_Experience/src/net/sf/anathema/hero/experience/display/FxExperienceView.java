@@ -45,14 +45,14 @@ public class FxExperienceView implements ExperienceView, NodeHolder {
     MigPane totalPanel = createTotalPanel(properties);
     content.add(buttonPanel);
     content.add(table, new CC().push().grow().span());
-    content.add(totalPanel);
+    content.add(totalPanel, new CC().pushX().growX().spanX());
   }
 
   private MigPane createTotalPanel(IExperienceViewProperties properties) {
-    MigPane migPane = new MigPane(LayoutUtils.withoutInsets());
+    MigPane migPane = new MigPane(LayoutUtils.withoutInsets().fill());
     migPane.add(new Label(properties.getTotalString()));
     this.totalLabel = new Label();
-    migPane.add(totalLabel);
+    migPane.add(totalLabel, new CC().alignX("right"));
     return migPane;
   }
 
@@ -114,7 +114,7 @@ public class FxExperienceView implements ExperienceView, NodeHolder {
 
   @Override
   public void clearEntries() {
-    table.getItems().clear();
+    table.getItems().removeAll(table.getItems());
   }
 
   @Override
@@ -130,6 +130,16 @@ public class FxExperienceView implements ExperienceView, NodeHolder {
   @Override
   public void setSelection(IExperiencePointEntry entry) {
     table.getSelectionModel().select(entry);
+  }
+
+  @Override
+  public void addAllEntries(IExperiencePointEntry... allEntries) {
+    clearEntries();
+    for (IExperiencePointEntry entry : allEntries) {
+      addEntry(entry);
+    }
+    table.getColumns().get(0).setVisible(false);
+    table.getColumns().get(0).setVisible(true);
   }
 
   @Override
@@ -153,7 +163,7 @@ public class FxExperienceView implements ExperienceView, NodeHolder {
               @Override
               public void handle(TableColumn.CellEditEvent<IExperiencePointEntry, String> event) {
                 IExperiencePointEntry experienceEntry = event.getRowValue();
-                Integer experiencePoints = getChangedPointValue(event);
+                Integer experiencePoints = getChangedPointValue(event, experienceEntry);
                 String description = experienceEntry.getTextualDescription().getText();
                 updateAnnouncer.announce().update(experiencePoints, description);
               }
@@ -162,11 +172,11 @@ public class FxExperienceView implements ExperienceView, NodeHolder {
     return pointColumn;
   }
 
-  private Integer getChangedPointValue(TableColumn.CellEditEvent<IExperiencePointEntry, String> event) {
+  private Integer getChangedPointValue(TableColumn.CellEditEvent<IExperiencePointEntry, String> event, IExperiencePointEntry experienceEntry) {
     try {
       return Integer.valueOf(event.getNewValue());
     } catch (NumberFormatException e) {
-      return Integer.valueOf(event.getOldValue());
+      return experienceEntry.getExperiencePoints();
     }
   }
 

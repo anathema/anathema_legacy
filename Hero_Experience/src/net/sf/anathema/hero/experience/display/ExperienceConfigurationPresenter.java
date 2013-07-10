@@ -74,15 +74,9 @@ public class ExperienceConfigurationPresenter {
 
   private void refreshEntriesInView() {
     experienceView.clearEntries();
-    for (IExperiencePointEntry entry : experiencePoints.getAllEntries()) {
-      addToView(entry);
-    }
+    experienceView.addAllEntries(experiencePoints.getAllEntries());
     updateSelectionInView(experiencePoints.getCurrentSelection());
     updateTotal();
-  }
-
-  private void addToView(IExperiencePointEntry entry) {
-    experienceView.addEntry(entry);
   }
 
   private void updateTotal() {
