@@ -1,7 +1,6 @@
 package net.sf.anathema.character.main.framework;
 
 import net.sf.anathema.character.main.framework.data.IExtensibleDataSetProvider;
-import net.sf.anathema.character.main.type.ICharacterType;
 import net.sf.anathema.initialization.InitializationException;
 import net.sf.anathema.initialization.ObjectFactory;
 import net.sf.anathema.initialization.reflections.ResourceLoader;
@@ -19,7 +18,7 @@ public class HeroEnvironmentInitializer {
 
   public HeroEnvironment initEnvironmnent(DataFileProvider dataFileProvider) throws InitializationException {
     HeroEnvironment environment = createEnvironment(dataFileProvider);
-    addCharacterTemplates(environment);
+    new CharacterTemplateInitializer(environment).addCharacterTemplates();
     return environment;
   }
 
@@ -31,12 +30,5 @@ public class HeroEnvironmentInitializer {
   private IExtensibleDataSetProvider loadExtensibleResources() {
     DataSetInitializer dataSetInitializer = new DataSetInitializer(resourceLoader, objectFactory);
     return dataSetInitializer.initializeExtensibleResources();
-  }
-
-  private void addCharacterTemplates(HeroEnvironment environment) {
-    CharacterTemplateInitializer initializer = new CharacterTemplateInitializer(environment);
-    for (ICharacterType type : environment.getCharacterTypes().findAll()) {
-      initializer.addCharacterTemplates(type);
-    }
   }
 }

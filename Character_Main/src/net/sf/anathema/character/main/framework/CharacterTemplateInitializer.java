@@ -1,7 +1,6 @@
 package net.sf.anathema.character.main.framework;
 
 import net.sf.anathema.character.main.magic.parser.charms.ICharmCache;
-import net.sf.anathema.character.main.type.ICharacterType;
 import net.sf.anathema.character.main.xml.CharacterTemplateParser;
 import net.sf.anathema.character.main.xml.GenericCharacterTemplate;
 import net.sf.anathema.lib.exception.PersistenceException;
@@ -16,9 +15,9 @@ public class CharacterTemplateInitializer {
     this.environment = environment;
   }
 
-  public void addCharacterTemplates(ICharacterType type) {
+  public void addCharacterTemplates() {
     ICharacterTemplateResourceCache cache = environment.getDataSet(ICharacterTemplateResourceCache.class);
-    for (ResourceFile templateResource : cache.getTemplateResourcesForType(type.getId())) {
+    for (ResourceFile templateResource : cache.getTemplateResourcesForType()) {
       registerParsedTemplate(environment, templateResource);
     }
   }
