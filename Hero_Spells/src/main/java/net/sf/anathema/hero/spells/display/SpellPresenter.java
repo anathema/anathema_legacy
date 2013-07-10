@@ -1,14 +1,14 @@
-package net.sf.anathema.character.main.magic.display.spells;
+package net.sf.anathema.hero.spells.display;
 
-import net.sf.anathema.character.main.magic.display.view.magic.IMagicViewListener;
-import net.sf.anathema.character.main.magic.model.spells.ISpell;
 import net.sf.anathema.character.main.magic.description.MagicDescriptionProvider;
-import net.sf.anathema.character.main.magic.model.spells.CircleType;
-import net.sf.anathema.hero.experience.ExperienceModelFetcher;
-import net.sf.anathema.hero.spells.SpellsModelFetcher;
+import net.sf.anathema.character.main.magic.display.view.magic.IMagicViewListener;
 import net.sf.anathema.character.main.magic.model.magic.IMagicLearnListener;
-import net.sf.anathema.character.main.magic.display.view.spells.ISpellView;
+import net.sf.anathema.character.main.magic.model.spells.CircleType;
+import net.sf.anathema.character.main.magic.model.spells.ISpell;
+import net.sf.anathema.hero.experience.ExperienceModelFetcher;
 import net.sf.anathema.hero.model.Hero;
+import net.sf.anathema.hero.spells.SpellsModelFetcher;
+import net.sf.anathema.hero.spells.model.CircleModel;
 import net.sf.anathema.lib.compare.I18nedIdentificateComparator;
 import net.sf.anathema.lib.compare.I18nedIdentificateSorter;
 import net.sf.anathema.lib.control.ChangeListener;
@@ -25,26 +25,26 @@ import java.util.List;
 public class SpellPresenter {
 
   private final net.sf.anathema.hero.spells.SpellModel spellConfiguration;
-  private SpellModel spellModel;
+  private CircleModel circleModel;
   private final Hero hero;
   private final Resources resources;
   private CircleType circle;
   private final ISpellView view;
 
-  public SpellPresenter(SpellModel spellModel, Hero hero, Resources resources, ISpellView view,
+  public SpellPresenter(CircleModel circleModel, Hero hero, Resources resources, ISpellView view,
                         MagicDescriptionProvider magicDescriptionProvider) {
-    this.spellModel = spellModel;
+    this.circleModel = circleModel;
     this.hero  = hero;
     SpellViewProperties properties = new SpellViewProperties(resources, hero, magicDescriptionProvider);
     this.resources = resources;
     this.spellConfiguration = SpellsModelFetcher.fetch(hero);
     this.view = view;
     view.prepare(properties);
-    circle = spellModel.getCircles()[0];
+    circle = circleModel.getCircles()[0];
   }
 
   public void initPresentation() {
-    Identifier[] allowedCircles = spellModel.getCircles();
+    Identifier[] allowedCircles = circleModel.getCircles();
     view.initGui(allowedCircles);
     view.addMagicViewListener(new IMagicViewListener() {
       @Override
@@ -135,7 +135,7 @@ public class SpellPresenter {
   private ISpell[] getCircleFilteredSpellList(ISpell[] spells) {
     List<ISpell> spellList = new ArrayList<>();
     for (ISpell spell : spells) {
-      if (ArrayUtils.contains(spellModel.getCircles(), spell.getCircleType())) {
+      if (ArrayUtils.contains(circleModel.getCircles(), spell.getCircleType())) {
         spellList.add(spell);
       }
     }

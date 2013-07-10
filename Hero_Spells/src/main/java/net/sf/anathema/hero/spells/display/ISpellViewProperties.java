@@ -1,4 +1,4 @@
-package net.sf.anathema.character.main.magic.display.view.spells;
+package net.sf.anathema.hero.spells.display;
 
 import net.sf.anathema.character.main.magic.display.view.magic.IMagicLearnProperties;
 import net.sf.anathema.lib.gui.AgnosticUIConfiguration;

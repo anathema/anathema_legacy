@@ -1,7 +1,7 @@
-package net.sf.anathema.character.main.magic.display.view.spells;
+package net.sf.anathema.hero.spells.display;
 
-import net.sf.anathema.character.main.magic.model.spells.CircleType;
 import net.sf.anathema.character.main.magic.display.view.magic.IMagicLearnView;
+import net.sf.anathema.character.main.magic.model.spells.CircleType;
 import net.sf.anathema.lib.control.ObjectValueListener;
 import net.sf.anathema.lib.util.Identifier;
 

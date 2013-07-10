@@ -1,10 +1,12 @@
-package net.sf.anathema.character.main.presenter.initializers;
+package net.sf.anathema.hero.spells.display;
 
-import net.sf.anathema.character.main.magic.display.spells.SorceryModel;
-import net.sf.anathema.character.main.magic.display.spells.SpellModel;
+import net.sf.anathema.character.main.presenter.initializers.HeroModelInitializer;
+import net.sf.anathema.character.main.presenter.initializers.RegisteredInitializer;
 import net.sf.anathema.character.main.view.SectionView;
 import net.sf.anathema.framework.IApplicationModel;
 import net.sf.anathema.hero.model.Hero;
+import net.sf.anathema.hero.spells.model.CircleModel;
+import net.sf.anathema.hero.spells.model.SorceryModel;
 import net.sf.anathema.initialization.reflections.Weight;
 import net.sf.anathema.lib.resources.Resources;
 
@@ -24,8 +26,8 @@ public class SorceryInitializer implements HeroModelInitializer {
     boolean canLeanSorcery = hero.getTemplate().getMagicTemplate().getSpellMagic().canLearnSorcery();
     if (canLeanSorcery) {
       String titleKey = "CardView.CharmConfiguration.Spells.Title";
-      SpellModel spellModel = new SorceryModel(hero);
-      new SpellInitializer(model, titleKey, spellModel).initialize(sectionView, hero, resources);
+      CircleModel circleModel = new SorceryModel(hero);
+      new SpellInitializer(model, titleKey, circleModel).initialize(sectionView, hero, resources);
     }
   }
 }

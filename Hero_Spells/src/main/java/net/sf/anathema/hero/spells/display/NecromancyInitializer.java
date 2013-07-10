@@ -1,10 +1,12 @@
-package net.sf.anathema.character.main.presenter.initializers;
+package net.sf.anathema.hero.spells.display;
 
-import net.sf.anathema.character.main.magic.display.spells.NecromancyModel;
-import net.sf.anathema.character.main.magic.display.spells.SpellModel;
+import net.sf.anathema.character.main.presenter.initializers.HeroModelInitializer;
+import net.sf.anathema.character.main.presenter.initializers.RegisteredInitializer;
 import net.sf.anathema.character.main.view.SectionView;
 import net.sf.anathema.framework.IApplicationModel;
 import net.sf.anathema.hero.model.Hero;
+import net.sf.anathema.hero.spells.model.CircleModel;
+import net.sf.anathema.hero.spells.model.NecromancyModel;
 import net.sf.anathema.initialization.reflections.Weight;
 import net.sf.anathema.lib.resources.Resources;
 
@@ -25,8 +27,8 @@ public class NecromancyInitializer implements HeroModelInitializer {
     boolean canLeanNecromancy = hero.getTemplate().getMagicTemplate().getSpellMagic().canLearnNecromancy();
     if (canLeanNecromancy) {
       String titleKey = "CardView.CharmConfiguration.Necromancy.Title";
-      SpellModel spellModel = new NecromancyModel(hero);
-      new SpellInitializer(applicationModel, titleKey, spellModel).initialize(sectionView, hero, resources);
+      CircleModel circleModel = new NecromancyModel(hero);
+      new SpellInitializer(applicationModel, titleKey, circleModel).initialize(sectionView, hero, resources);
     }
   }
 }

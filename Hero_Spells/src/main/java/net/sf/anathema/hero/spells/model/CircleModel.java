@@ -1,14 +1,14 @@
-package net.sf.anathema.character.main.magic.display.spells;
+package net.sf.anathema.hero.spells.model;
 
 import net.sf.anathema.character.main.magic.model.spells.CircleType;
 import net.sf.anathema.character.main.template.magic.ISpellMagicTemplate;
 import net.sf.anathema.hero.model.Hero;
 
-public abstract class SpellModel {
+public abstract class CircleModel {
 
   private Hero hero;
 
-  protected SpellModel(Hero hero) {
+  protected CircleModel(Hero hero) {
     this.hero = hero;
   }
 

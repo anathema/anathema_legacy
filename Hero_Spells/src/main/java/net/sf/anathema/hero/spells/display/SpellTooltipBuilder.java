@@ -1,10 +1,10 @@
-package net.sf.anathema.character.main.magic.display.spells;
+package net.sf.anathema.hero.spells.display;
 
-import net.sf.anathema.character.main.magic.model.spells.ISpell;
 import net.sf.anathema.character.main.magic.description.MagicDescriptionProvider;
 import net.sf.anathema.character.main.magic.model.charmtree.builder.stringbuilder.MagicDescriptionStringBuilder;
 import net.sf.anathema.character.main.magic.model.charmtree.builder.stringbuilder.ScreenDisplayInfoStringBuilder;
 import net.sf.anathema.character.main.magic.model.charmtree.builder.stringbuilder.source.MagicSourceStringBuilder;
+import net.sf.anathema.character.main.magic.model.spells.ISpell;
 import net.sf.anathema.lib.gui.TooltipBuilder;
 import net.sf.anathema.lib.resources.Resources;
 

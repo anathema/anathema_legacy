@@ -1,4 +1,4 @@
-package net.sf.anathema.character.main.magic.display.spells;
+package net.sf.anathema.hero.spells.display;
 
 import net.sf.anathema.character.main.magic.model.spells.ISpell;
 import net.sf.anathema.lib.gui.AbstractUIConfiguration;

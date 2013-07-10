@@ -1,10 +1,10 @@
-package net.sf.anathema.character.main.magic.display.view.spells;
+package net.sf.anathema.hero.spells.display;
 
 import net.miginfocom.layout.CC;
 import net.miginfocom.swing.MigLayout;
-import net.sf.anathema.character.main.magic.model.spells.CircleType;
-import net.sf.anathema.character.main.magic.display.view.magic.MagicLearnView;
 import net.sf.anathema.character.main.magic.display.view.magic.IMagicViewListener;
+import net.sf.anathema.character.main.magic.display.view.magic.MagicLearnView;
+import net.sf.anathema.character.main.magic.model.spells.CircleType;
 import net.sf.anathema.framework.swing.IView;
 import net.sf.anathema.lib.control.ObjectValueListener;
 import net.sf.anathema.lib.gui.ui.ConfigurableListCellRenderer;
@@ -45,6 +45,7 @@ public class SpellView implements ISpellView, IView {
     box.setRenderer(new ConfigurableListCellRenderer(properties.getCircleSelectionRenderer()));
     content.add(box, new CC().wrap());
     box.addActionListener(new ActionListener() {
+      @SuppressWarnings("unchecked")
       @Override
       public void actionPerformed(ActionEvent e) {
         circleControl.announce().valueChanged(box.getSelectedItem());
