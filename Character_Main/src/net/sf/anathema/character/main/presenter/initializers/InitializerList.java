@@ -1,6 +1,5 @@
 package net.sf.anathema.character.main.presenter.initializers;
 
-import net.sf.anathema.character.main.framework.CharacterGenericsExtractor;
 import net.sf.anathema.framework.IApplicationModel;
 import net.sf.anathema.hero.display.HeroModelGroup;
 import net.sf.anathema.initialization.ObjectFactory;
@@ -15,7 +14,7 @@ public class InitializerList {
   private final ObjectFactory objectFactory;
 
   public InitializerList(IApplicationModel applicationModel) {
-    this.objectFactory = CharacterGenericsExtractor.getGenerics(applicationModel).getObjectFactory();
+    this.objectFactory = applicationModel.getObjectFactory();
     this.applicationModel = applicationModel;
   }
 

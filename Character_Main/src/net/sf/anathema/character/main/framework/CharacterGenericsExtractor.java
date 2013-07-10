@@ -8,7 +8,7 @@ public class CharacterGenericsExtractor {
 
   public static HeroEnvironment getGenerics(IApplicationModel model) {
     IRegistry<String, IAnathemaExtension> registry = model.getExtensionPointRegistry();
-    ICharacterGenericsExtension genericsExtension = (ICharacterGenericsExtension) registry.get(ICharacterGenericsExtension.ID);
-    return genericsExtension.getCharacterGenerics();
+    HeroEnvironmentExtension genericsExtension = (HeroEnvironmentExtension) registry.get(HeroEnvironmentExtension.ID);
+    return genericsExtension.getEnvironment();
   }
 }

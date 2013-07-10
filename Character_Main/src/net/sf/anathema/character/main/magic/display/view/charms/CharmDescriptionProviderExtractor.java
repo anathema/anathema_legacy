@@ -1,6 +1,5 @@
 package net.sf.anathema.character.main.magic.display.view.charms;
 
-import net.sf.anathema.character.main.framework.CharacterGenericsExtractor;
 import net.sf.anathema.character.main.magic.description.AggregatedCharmDescriptionProvider;
 import net.sf.anathema.character.main.magic.description.MagicDescriptionProvider;
 import net.sf.anathema.character.main.magic.description.MagicDescriptionProviderFactory;
@@ -23,7 +22,7 @@ public class CharmDescriptionProviderExtractor {
   }
 
   private static Collection<MagicDescriptionProviderFactory> findFactories(IApplicationModel model) {
-    ObjectFactory objectFactory = CharacterGenericsExtractor.getGenerics(model).getObjectFactory();
+    ObjectFactory objectFactory = model.getObjectFactory();
     return objectFactory.instantiateAll(RegisteredMagicDescriptionProviderFactory.class);
   }
 

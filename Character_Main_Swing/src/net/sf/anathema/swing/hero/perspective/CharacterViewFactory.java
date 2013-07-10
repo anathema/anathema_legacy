@@ -4,7 +4,6 @@ import net.sf.anathema.character.main.advance.ExperiencePointManagement;
 import net.sf.anathema.character.main.advance.IExperiencePointManagement;
 import net.sf.anathema.character.main.creation.IBonusPointManagement;
 import net.sf.anathema.character.main.creation.bonus.BonusPointManagement;
-import net.sf.anathema.character.main.framework.CharacterGenericsExtractor;
 import net.sf.anathema.character.main.presenter.CharacterPresenter;
 import net.sf.anathema.character.main.presenter.OverviewPresenter;
 import net.sf.anathema.character.main.view.CharacterView;
@@ -28,7 +27,7 @@ public class CharacterViewFactory {
 
   public IView createView(Item item) {
     Hero hero = (Hero) item.getItemData();
-    SubViewRegistry viewFactory = new SubViewMap(CharacterGenericsExtractor.getGenerics(model).getObjectFactory());
+    SubViewRegistry viewFactory = new SubViewMap(model.getObjectFactory());
     CharacterView characterView = new TaskedCharacterView(viewFactory);
     new CharacterPresenter(hero, characterView, resources, model).initPresentation();
     initOverviewPresentation(hero, characterView, resources);

@@ -16,6 +16,9 @@ public class CharacterTemplateResourceCache implements ICharacterTemplateResourc
 
   @Override
   public ResourceFile[] getTemplateResourcesForType(String type) {
+    if (!templateResources.containsKey(type)) {
+      return new ResourceFile[0];
+    }
     List<ResourceFile> resourceFiles = templateResources.get(type);
     return resourceFiles.toArray(new ResourceFile[resourceFiles.size()]);
   }
