@@ -1,18 +1,8 @@
 package net.sf.anathema.character.main.xml;
 
-import net.sf.anathema.character.main.caste.CasteType;
-import net.sf.anathema.character.main.caste.ICasteCollection;
-import net.sf.anathema.character.main.xml.creation.GenericBonusPointCosts;
-import net.sf.anathema.character.main.xml.creation.GenericCreationPoints;
-import net.sf.anathema.character.main.xml.essence.GenericEssenceTemplate;
-import net.sf.anathema.character.main.xml.experience.GenericExperiencePointCosts;
-import net.sf.anathema.character.main.xml.health.GenericHealthTemplate;
-import net.sf.anathema.character.main.xml.health.IHealthTemplate;
-import net.sf.anathema.character.main.xml.magic.GenericMagicTemplate;
-import net.sf.anathema.character.main.xml.presentation.GenericPresentationTemplate;
-import net.sf.anathema.character.main.xml.trait.GenericTraitTemplateFactory;
 import net.sf.anathema.character.main.caste.CasteCollection;
-import net.sf.anathema.character.main.traits.TraitTemplateCollection;
+import net.sf.anathema.character.main.caste.CasteType;
+import net.sf.anathema.character.main.caste.ConfigurableCasteCollection;
 import net.sf.anathema.character.main.template.ConfiguredModel;
 import net.sf.anathema.character.main.template.HeroTemplate;
 import net.sf.anathema.character.main.template.ITemplateType;
@@ -24,7 +14,17 @@ import net.sf.anathema.character.main.template.essence.IEssenceTemplate;
 import net.sf.anathema.character.main.template.experience.IExperiencePointCosts;
 import net.sf.anathema.character.main.template.magic.IMagicTemplate;
 import net.sf.anathema.character.main.template.presentation.IPresentationProperties;
+import net.sf.anathema.character.main.traits.TraitTemplateCollection;
 import net.sf.anathema.character.main.traits.TraitType;
+import net.sf.anathema.character.main.xml.creation.GenericBonusPointCosts;
+import net.sf.anathema.character.main.xml.creation.GenericCreationPoints;
+import net.sf.anathema.character.main.xml.essence.GenericEssenceTemplate;
+import net.sf.anathema.character.main.xml.experience.GenericExperiencePointCosts;
+import net.sf.anathema.character.main.xml.health.GenericHealthTemplate;
+import net.sf.anathema.character.main.xml.health.IHealthTemplate;
+import net.sf.anathema.character.main.xml.magic.GenericMagicTemplate;
+import net.sf.anathema.character.main.xml.presentation.GenericPresentationTemplate;
+import net.sf.anathema.character.main.xml.trait.GenericTraitTemplateFactory;
 import net.sf.anathema.lib.exception.UnreachableCodeReachedException;
 import net.sf.anathema.lib.lang.clone.ICloneable;
 
@@ -43,7 +43,7 @@ public class GenericCharacterTemplate implements HeroTemplate, ICloneable<Generi
   private GroupedTraitType[] abilityGroups;
   private GroupedTraitType[] attributeGroups;
   private GenericPresentationTemplate presentationTemplate;
-  private ICasteCollection casteCollection = new CasteCollection(new CasteType[0]);
+  private CasteCollection casteCollection = new ConfigurableCasteCollection(new CasteType[0]);
   // This is volatile instead of final to allow clone to be implemented
   private IHealthTemplate healthTemplate = new GenericHealthTemplate();
   private boolean isCustomTemplate;
@@ -60,11 +60,11 @@ public class GenericCharacterTemplate implements HeroTemplate, ICloneable<Generi
   }
 
   @Override
-  public ICasteCollection getCasteCollection() {
+  public CasteCollection getCasteCollection() {
     return casteCollection;
   }
 
-  public void setCasteCollection(ICasteCollection casteCollection) {
+  public void setCasteCollection(CasteCollection casteCollection) {
     this.casteCollection = casteCollection;
   }
 
@@ -166,7 +166,7 @@ public class GenericCharacterTemplate implements HeroTemplate, ICloneable<Generi
     } catch (CloneNotSupportedException e) {
       throw new UnreachableCodeReachedException(e);
     }
-    clone.casteCollection = new CasteCollection(new CasteType[0]);
+    clone.casteCollection = new ConfigurableCasteCollection(new CasteType[0]);
     clone.healthTemplate = new GenericHealthTemplate();
     if (bonusPointCosts != null) {
       clone.bonusPointCosts = bonusPointCosts.clone();

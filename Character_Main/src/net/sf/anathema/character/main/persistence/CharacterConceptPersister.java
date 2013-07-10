@@ -1,12 +1,12 @@
 package net.sf.anathema.character.main.persistence;
 
-import net.sf.anathema.character.main.caste.CasteType;
-import net.sf.anathema.character.main.caste.ICasteCollection;
-import net.sf.anathema.hero.concept.HeroConcept;
-import net.sf.anathema.hero.description.HeroDescription;
 import net.sf.anathema.character.main.IIntegerDescription;
+import net.sf.anathema.character.main.caste.CasteCollection;
+import net.sf.anathema.character.main.caste.CasteType;
 import net.sf.anathema.framework.persistence.TextPersister;
 import net.sf.anathema.hero.concept.CasteSelection;
+import net.sf.anathema.hero.concept.HeroConcept;
+import net.sf.anathema.hero.description.HeroDescription;
 import net.sf.anathema.lib.exception.PersistenceException;
 import net.sf.anathema.lib.xml.ElementUtilities;
 import org.dom4j.Element;
@@ -39,7 +39,7 @@ public class CharacterConceptPersister {
     parent.addAttribute(ATTRIB_AGE, Integer.toString(age.getValue()));
   }
 
-  public void load(Element parent, HeroConcept heroConcept, HeroDescription description, ICasteCollection casteCollection) throws
+  public void load(Element parent, HeroConcept heroConcept, HeroDescription description, CasteCollection casteCollection) throws
           PersistenceException {
     Element conceptElement = parent.element(TAG_CHARACTER_CONCEPT);
     loadCaste(conceptElement, heroConcept, casteCollection);
@@ -47,7 +47,7 @@ public class CharacterConceptPersister {
     textPersister.restoreTextualDescription(conceptElement, TAG_CONCEPT, description.getConcept());
   }
 
-  private void loadCaste(Element parent, HeroConcept heroConcept, ICasteCollection casteCollection) throws PersistenceException {
+  private void loadCaste(Element parent, HeroConcept heroConcept, CasteCollection casteCollection) throws PersistenceException {
     Element casteElement = parent.element(TAG_CASTE);
     if (casteElement == null) {
       return;

@@ -1,7 +1,6 @@
 package net.sf.anathema.character.main.testing.dummy.template;
 
-import net.sf.anathema.character.main.caste.ICasteCollection;
-import net.sf.anathema.character.main.template.essence.NullEssenceTemplate;
+import net.sf.anathema.character.main.caste.CasteCollection;
 import net.sf.anathema.character.main.template.ConfiguredModel;
 import net.sf.anathema.character.main.template.HeroTemplate;
 import net.sf.anathema.character.main.template.ITemplateType;
@@ -11,6 +10,7 @@ import net.sf.anathema.character.main.template.abilities.GroupedTraitType;
 import net.sf.anathema.character.main.template.creation.BonusPointCosts;
 import net.sf.anathema.character.main.template.creation.ICreationPoints;
 import net.sf.anathema.character.main.template.essence.IEssenceTemplate;
+import net.sf.anathema.character.main.template.essence.NullEssenceTemplate;
 import net.sf.anathema.character.main.template.experience.IExperiencePointCosts;
 import net.sf.anathema.character.main.template.magic.ICharmTemplate;
 import net.sf.anathema.character.main.template.magic.IMagicTemplate;
@@ -48,7 +48,7 @@ public class SimpleDummyCharacterTemplate implements HeroTemplate {
   }
 
   @Override
-  public ICasteCollection getCasteCollection() {
+  public CasteCollection getCasteCollection() {
     return null;
   }
 

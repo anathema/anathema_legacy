@@ -1,6 +1,6 @@
 package net.sf.anathema.hero.platform;
 
-import net.sf.anathema.character.main.caste.ICasteCollection;
+import net.sf.anathema.character.main.caste.CasteCollection;
 import net.sf.anathema.character.main.framework.CharacterGenericsExtractor;
 import net.sf.anathema.character.main.framework.HeroEnvironment;
 import net.sf.anathema.character.main.framework.item.CharacterPrintNameFileScanner;
@@ -22,7 +22,7 @@ public class CharacterItemTypePresentationFactory implements ItemTypePresentatio
   @Override
   public IItemTypeViewProperties createItemTypeCreationProperties(IApplicationModel anathemaModel, Resources resources) {
     HeroEnvironment generics = CharacterGenericsExtractor.getGenerics(anathemaModel);
-    IRegistry<ICharacterType, ICasteCollection> casteCollectionIRegistry = generics.getCasteCollectionRegistry();
+    IRegistry<ICharacterType, CasteCollection> casteCollectionIRegistry = generics.getCasteCollectionRegistry();
     IRepositoryFileResolver fileResolver = anathemaModel.getRepository().getRepositoryFileResolver();
     CharacterPrintNameFileScanner scanner = new RegExCharacterPrintNameFileScanner(generics.getCharacterTypes(), casteCollectionIRegistry, fileResolver);
     return new CharacterViewProperties(retrieveCharacterItemType(), resources, scanner);

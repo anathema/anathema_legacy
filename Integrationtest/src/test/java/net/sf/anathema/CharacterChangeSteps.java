@@ -4,12 +4,12 @@ import com.google.inject.Inject;
 import cucumber.api.java.en.Given;
 import cucumber.api.java.en.Then;
 import cucumber.api.java.en.When;
+import net.sf.anathema.character.main.caste.CasteCollection;
 import net.sf.anathema.character.main.caste.CasteType;
-import net.sf.anathema.character.main.caste.ICasteCollection;
-import net.sf.anathema.character.main.traits.TraitTypeUtils;
-import net.sf.anathema.character.main.traits.TraitType;
-import net.sf.anathema.character.main.traits.types.AbilityType;
 import net.sf.anathema.character.main.library.trait.Trait;
+import net.sf.anathema.character.main.traits.TraitType;
+import net.sf.anathema.character.main.traits.TraitTypeUtils;
+import net.sf.anathema.character.main.traits.types.AbilityType;
 import net.sf.anathema.hero.experience.ExperienceModelFetcher;
 import net.sf.anathema.hero.intimacies.model.IntimaciesModel;
 import net.sf.anathema.hero.intimacies.model.IntimaciesModelFetcher;
@@ -39,7 +39,7 @@ public class CharacterChangeSteps {
 
   @When("^I set her Caste to (.*)$")
   public void I_set_her_Caste(String casteName) throws Throwable {
-    ICasteCollection casteCollection = character.getCharacterTemplate().getCasteCollection();
+    CasteCollection casteCollection = character.getCharacterTemplate().getCasteCollection();
     CasteType caste = casteCollection.getById(casteName);
     character.getCharacterConcept().getCaste().setType(caste);
   }

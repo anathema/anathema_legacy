@@ -1,6 +1,6 @@
 package net.sf.anathema.herotype.solar;
 
-import net.sf.anathema.character.main.caste.CasteCollection;
+import net.sf.anathema.character.main.caste.ConfigurableCasteCollection;
 import net.sf.anathema.character.main.framework.HeroEnvironment;
 import net.sf.anathema.character.main.framework.module.CharacterModule;
 import net.sf.anathema.character.main.framework.module.CharacterTypeModule;
@@ -19,6 +19,6 @@ public class SolarCharacterModule extends CharacterTypeModule {
 
   @Override
   public void registerCommonData(HeroEnvironment characterGenerics) {
-    characterGenerics.getCasteCollectionRegistry().register(type, new CasteCollection(SolarCaste.values()));
+    characterGenerics.getCasteCollectionRegistry().register(type, new ConfigurableCasteCollection(SolarCaste.values()));
   }
 }

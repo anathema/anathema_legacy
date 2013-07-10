@@ -1,25 +1,25 @@
 package net.sf.anathema.hero.abilities.model;
 
-import net.sf.anathema.character.main.caste.ICasteCollection;
-import net.sf.anathema.character.main.template.HeroTemplate;
-import net.sf.anathema.character.main.template.abilities.GroupedTraitType;
-import net.sf.anathema.character.main.traits.TraitType;
-import net.sf.anathema.character.main.traits.groups.IIdentifiedCasteTraitTypeGroup;
+import net.sf.anathema.character.main.caste.CasteCollection;
 import net.sf.anathema.character.main.library.trait.Trait;
 import net.sf.anathema.character.main.library.trait.favorable.IncrementChecker;
-import net.sf.anathema.hero.traits.DefaultTraitMap;
-import net.sf.anathema.hero.traits.TraitMap;
-import net.sf.anathema.hero.traits.TraitModel;
-import net.sf.anathema.hero.traits.TraitModelFetcher;
+import net.sf.anathema.character.main.template.HeroTemplate;
+import net.sf.anathema.character.main.template.abilities.GroupedTraitType;
 import net.sf.anathema.character.main.traits.AbilityTemplateFactory;
+import net.sf.anathema.character.main.traits.TraitType;
 import net.sf.anathema.character.main.traits.creation.AbilityTypeGroupFactory;
 import net.sf.anathema.character.main.traits.creation.FavorableTraitFactory;
 import net.sf.anathema.character.main.traits.creation.FavoredIncrementChecker;
 import net.sf.anathema.character.main.traits.creation.TypedTraitTemplateFactory;
+import net.sf.anathema.character.main.traits.groups.IIdentifiedCasteTraitTypeGroup;
 import net.sf.anathema.hero.change.ChangeAnnouncer;
 import net.sf.anathema.hero.model.Hero;
 import net.sf.anathema.hero.model.HeroModel;
 import net.sf.anathema.hero.model.InitializationContext;
+import net.sf.anathema.hero.traits.DefaultTraitMap;
+import net.sf.anathema.hero.traits.TraitMap;
+import net.sf.anathema.hero.traits.TraitModel;
+import net.sf.anathema.hero.traits.TraitModelFetcher;
 import net.sf.anathema.hero.traits.model.event.FavoredChangedListener;
 import net.sf.anathema.hero.traits.model.event.TraitValueChangedListener;
 import net.sf.anathema.lib.util.Identifier;
@@ -41,7 +41,7 @@ public class AbilitiesModelImpl extends DefaultTraitMap implements AbilitiesMode
   public void initialize(InitializationContext context, Hero hero) {
     this.hero = hero;
     HeroTemplate template = hero.getTemplate();
-    ICasteCollection casteCollection = template.getCasteCollection();
+    CasteCollection casteCollection = template.getCasteCollection();
     this.abilityTraitGroups = new AbilityTypeGroupFactory().createTraitGroups(casteCollection, template.getAbilityGroups());
     IncrementChecker incrementChecker = createFavoredAbilityIncrementChecker(template, this);
     addFavorableTraits(incrementChecker, new AbilityTemplateFactory(template.getTraitTemplateCollection().getTraitTemplateFactory()));

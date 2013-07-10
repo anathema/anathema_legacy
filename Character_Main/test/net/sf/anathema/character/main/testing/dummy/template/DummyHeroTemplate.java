@@ -1,15 +1,10 @@
 package net.sf.anathema.character.main.testing.dummy.template;
 
-import net.sf.anathema.character.main.caste.CasteType;
-import net.sf.anathema.character.main.caste.ICasteCollection;
 import net.sf.anathema.character.main.caste.CasteCollection;
-import net.sf.anathema.character.main.magic.model.magic.Magic;
-import net.sf.anathema.character.main.template.essence.NullEssenceTemplate;
-import net.sf.anathema.character.main.template.magic.CharmTemplate;
-import net.sf.anathema.character.main.template.magic.DefaultMartialArtsRules;
-import net.sf.anathema.character.main.template.magic.NullCharmSet;
-import net.sf.anathema.character.main.traits.TraitTemplateCollection;
+import net.sf.anathema.character.main.caste.CasteType;
+import net.sf.anathema.character.main.caste.ConfigurableCasteCollection;
 import net.sf.anathema.character.main.magic.model.charm.MartialArtsLevel;
+import net.sf.anathema.character.main.magic.model.magic.Magic;
 import net.sf.anathema.character.main.template.ConfiguredModel;
 import net.sf.anathema.character.main.template.HeroTemplate;
 import net.sf.anathema.character.main.template.ITemplateType;
@@ -20,17 +15,22 @@ import net.sf.anathema.character.main.template.abilities.GroupedTraitType;
 import net.sf.anathema.character.main.template.creation.BonusPointCosts;
 import net.sf.anathema.character.main.template.creation.ICreationPoints;
 import net.sf.anathema.character.main.template.essence.IEssenceTemplate;
+import net.sf.anathema.character.main.template.essence.NullEssenceTemplate;
 import net.sf.anathema.character.main.template.experience.IExperiencePointCosts;
+import net.sf.anathema.character.main.template.magic.CharmTemplate;
+import net.sf.anathema.character.main.template.magic.DefaultMartialArtsRules;
 import net.sf.anathema.character.main.template.magic.ICharmTemplate;
 import net.sf.anathema.character.main.template.magic.IMagicTemplate;
 import net.sf.anathema.character.main.template.magic.ISpellMagicTemplate;
+import net.sf.anathema.character.main.template.magic.NullCharmSet;
 import net.sf.anathema.character.main.template.presentation.IPresentationProperties;
+import net.sf.anathema.character.main.testing.dummy.DummyMundaneCharacterType;
+import net.sf.anathema.character.main.traits.TraitTemplateCollection;
 import net.sf.anathema.character.main.traits.TraitType;
 import net.sf.anathema.character.main.traits.types.AbilityType;
 import net.sf.anathema.character.main.traits.types.AttributeGroupType;
 import net.sf.anathema.character.main.traits.types.AttributeType;
 import net.sf.anathema.character.main.type.ICharacterType;
-import net.sf.anathema.character.main.testing.dummy.DummyMundaneCharacterType;
 import net.sf.anathema.lib.exception.NotYetImplementedException;
 
 import java.util.ArrayList;
@@ -43,10 +43,6 @@ public class DummyHeroTemplate implements HeroTemplate {
   public IEssenceTemplate essenceTemplate = new NullEssenceTemplate();
   public DummyCreationPoints creationPoints = new DummyCreationPoints();
   public DummyMagicTemplate magicTemplate = new DummyMagicTemplate();
-
-  public void setEssenceTemplate(IEssenceTemplate essenceTemplate) {
-    this.essenceTemplate = essenceTemplate;
-  }
 
   @Override
   public BonusPointCosts getBonusPointCosts() {
@@ -89,8 +85,8 @@ public class DummyHeroTemplate implements HeroTemplate {
   }
 
   @Override
-  public ICasteCollection getCasteCollection() {
-    return new CasteCollection(new CasteType[0]);
+  public CasteCollection getCasteCollection() {
+    return new ConfigurableCasteCollection(new CasteType[0]);
   }
 
   @Override

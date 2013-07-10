@@ -1,7 +1,7 @@
 package net.sf.anathema.character.main.traits.creation;
 
+import net.sf.anathema.character.main.caste.CasteCollection;
 import net.sf.anathema.character.main.caste.CasteType;
-import net.sf.anathema.character.main.caste.ICasteCollection;
 import net.sf.anathema.character.main.template.abilities.GroupedTraitType;
 import net.sf.anathema.character.main.traits.TraitType;
 import net.sf.anathema.character.main.traits.groups.IIdentifiedCasteTraitTypeGroup;
@@ -16,9 +16,9 @@ import java.util.Set;
 
 public abstract class AbstractTraitTypeGroupFactory {
 
-  protected abstract Identifier getGroupIdentifier(ICasteCollection casteCollection, String groupId);
+  protected abstract Identifier getGroupIdentifier(CasteCollection casteCollection, String groupId);
 
-  public IIdentifiedCasteTraitTypeGroup[] createTraitGroups(ICasteCollection casteCollection, GroupedTraitType[] traitTypes) {
+  public IIdentifiedCasteTraitTypeGroup[] createTraitGroups(CasteCollection casteCollection, GroupedTraitType[] traitTypes) {
     Set<String> groupIds = new LinkedHashSet<>();
     MultiEntryMap<String, TraitType> traitTypesByGroupId = new MultiEntryMap<>();
     for (GroupedTraitType type : traitTypes) {

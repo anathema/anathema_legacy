@@ -1,6 +1,6 @@
 package net.sf.anathema.hero.platform;
 
-import net.sf.anathema.character.main.caste.ICasteCollection;
+import net.sf.anathema.character.main.caste.CasteCollection;
 import net.sf.anathema.character.main.framework.item.CharacterPrintNameFileScanner;
 import net.sf.anathema.character.main.template.ITemplateType;
 import net.sf.anathema.character.main.template.TemplateType;
@@ -35,11 +35,11 @@ public class RegExCharacterPrintNameFileScanner implements CharacterPrintNameFil
   private static final String CASTE_ELEMENT_TYPE_ATTR = ATTRIB_TYPE;
   private final Map<PrintNameFile, ITemplateType> typesByFile = new HashMap<>();
   private final Map<PrintNameFile, Identifier> castesByFile = new HashMap<>();
-  private final IRegistry<ICharacterType, ICasteCollection> registry;
+  private final IRegistry<ICharacterType, CasteCollection> registry;
   private final IRepositoryFileResolver resolver;
   private final CharacterTypes characterTypes;
 
-  public RegExCharacterPrintNameFileScanner(CharacterTypes characterTypes, IRegistry<ICharacterType, ICasteCollection> registry,
+  public RegExCharacterPrintNameFileScanner(CharacterTypes characterTypes, IRegistry<ICharacterType, CasteCollection> registry,
                                             IRepositoryFileResolver repositoryFileResolver) {
     this.characterTypes = characterTypes;
     this.registry = registry;

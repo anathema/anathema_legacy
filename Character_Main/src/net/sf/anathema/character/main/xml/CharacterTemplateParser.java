@@ -1,7 +1,16 @@
 package net.sf.anathema.character.main.xml;
 
-import net.sf.anathema.character.main.caste.ICasteCollection;
+import net.sf.anathema.character.main.caste.CasteCollection;
 import net.sf.anathema.character.main.framework.ICharacterTemplateRegistryCollection;
+import net.sf.anathema.character.main.magic.model.charm.MartialArtsLevel;
+import net.sf.anathema.character.main.magic.model.charms.options.DefaultCharmTemplateRetriever;
+import net.sf.anathema.character.main.magic.parser.charms.ICharmCache;
+import net.sf.anathema.character.main.template.HeroTemplate;
+import net.sf.anathema.character.main.template.ITemplateType;
+import net.sf.anathema.character.main.traits.groups.AllAbilityTraitTypeGroup;
+import net.sf.anathema.character.main.traits.groups.AllAttributeTraitTypeGroup;
+import net.sf.anathema.character.main.type.CharacterTypes;
+import net.sf.anathema.character.main.type.ICharacterType;
 import net.sf.anathema.character.main.xml.abilitygroup.GenericGroupedTraitTypeProvider;
 import net.sf.anathema.character.main.xml.abilitygroup.TraitTypeGroupTemplateParser;
 import net.sf.anathema.character.main.xml.core.AbstractXmlTemplateParser;
@@ -22,15 +31,6 @@ import net.sf.anathema.character.main.xml.presentation.PresentationPropertiesPar
 import net.sf.anathema.character.main.xml.registry.IXmlTemplateRegistry;
 import net.sf.anathema.character.main.xml.trait.GenericTraitTemplateFactory;
 import net.sf.anathema.character.main.xml.trait.GenericTraitTemplateFactoryParser;
-import net.sf.anathema.character.main.magic.parser.charms.ICharmCache;
-import net.sf.anathema.character.main.magic.model.charm.MartialArtsLevel;
-import net.sf.anathema.character.main.template.HeroTemplate;
-import net.sf.anathema.character.main.template.ITemplateType;
-import net.sf.anathema.character.main.traits.groups.AllAbilityTraitTypeGroup;
-import net.sf.anathema.character.main.traits.groups.AllAttributeTraitTypeGroup;
-import net.sf.anathema.character.main.type.CharacterTypes;
-import net.sf.anathema.character.main.type.ICharacterType;
-import net.sf.anathema.character.main.magic.model.charms.options.DefaultCharmTemplateRetriever;
 import net.sf.anathema.lib.exception.PersistenceException;
 import net.sf.anathema.lib.registry.IRegistry;
 import org.dom4j.Element;
@@ -53,11 +53,11 @@ public class CharacterTemplateParser extends AbstractXmlTemplateParser<GenericCh
 
   private CharacterTypes characterTypes;
   private final ICharacterTemplateRegistryCollection registryCollection;
-  private final IRegistry<ICharacterType, ICasteCollection> casteCollectionRegistry;
+  private final IRegistry<ICharacterType, CasteCollection> casteCollectionRegistry;
   private final ICharmCache cache;
 
   public CharacterTemplateParser(CharacterTypes characterTypes, ICharacterTemplateRegistryCollection registryCollection,
-                                 IRegistry<ICharacterType, ICasteCollection> casteCollectionRegistry, ICharmCache cache) {
+                                 IRegistry<ICharacterType, CasteCollection> casteCollectionRegistry, ICharmCache cache) {
     super(registryCollection.getCharacterTemplateRegistry());
     this.characterTypes = characterTypes;
     this.registryCollection = registryCollection;
@@ -102,7 +102,7 @@ public class CharacterTemplateParser extends AbstractXmlTemplateParser<GenericCh
     ITemplateType templateType = new TemplateTypeParser(characterTypes).parse(element);
     characterTemplate.setTemplateType(templateType);
 
-    ICasteCollection casteCollection = casteCollectionRegistry.get(templateType.getCharacterType());
+    CasteCollection casteCollection = casteCollectionRegistry.get(templateType.getCharacterType());
     if (casteCollection != null) {
       characterTemplate.setCasteCollection(casteCollection);
     }

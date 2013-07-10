@@ -1,13 +1,13 @@
 package net.sf.anathema.character.main.trait;
 
-import net.sf.anathema.character.main.caste.CasteType;
-import net.sf.anathema.character.main.caste.ICasteCollection;
 import net.sf.anathema.character.main.caste.CasteCollection;
+import net.sf.anathema.character.main.caste.CasteType;
+import net.sf.anathema.character.main.caste.ConfigurableCasteCollection;
 import net.sf.anathema.character.main.template.abilities.GroupedTraitType;
-import net.sf.anathema.character.main.traits.TraitType;
-import net.sf.anathema.character.main.traits.groups.IIdentifiedTraitTypeGroup;
 import net.sf.anathema.character.main.testing.dummy.DummyCasteType;
+import net.sf.anathema.character.main.traits.TraitType;
 import net.sf.anathema.character.main.traits.creation.AbilityTypeGroupFactory;
+import net.sf.anathema.character.main.traits.groups.IIdentifiedTraitTypeGroup;
 import org.junit.Test;
 
 import java.util.Collections;
@@ -27,7 +27,7 @@ public class AbilityTraitTypeGroupFactoryTest {
 
   @Test
   public void testOneGroup() throws Exception {
-    ICasteCollection casteCollection = new CasteCollection(new CasteType[0]);
+    CasteCollection casteCollection = new ConfigurableCasteCollection(new CasteType[0]);
     GroupedTraitType[] abilityTypes = new GroupedTraitType[]{
             new GroupedTraitType(Archery, "War", Collections.<String>emptyList()),
             new GroupedTraitType(Melee, "War", Collections.<String>emptyList())
@@ -40,7 +40,7 @@ public class AbilityTraitTypeGroupFactoryTest {
 
   @Test
   public void testDifferentGroups() throws Exception {
-    ICasteCollection casteCollection = new CasteCollection(new CasteType[0]);
+    CasteCollection casteCollection = new ConfigurableCasteCollection(new CasteType[0]);
     GroupedTraitType[] abilityTypes = new GroupedTraitType[]{
             new GroupedTraitType(Archery, "War", Collections.<String>emptyList()),
             new GroupedTraitType(Medicine, "Life", Collections.<String>emptyList())
@@ -56,7 +56,7 @@ public class AbilityTraitTypeGroupFactoryTest {
   @Test
   public void testCasteAsGroupIdentificate() throws Exception {
     DummyCasteType caste = new DummyCasteType("Caste");
-    ICasteCollection casteCollection = new CasteCollection(new CasteType[]{caste});
+    CasteCollection casteCollection = new ConfigurableCasteCollection(new CasteType[]{caste});
     GroupedTraitType[] abilityTypes = new GroupedTraitType[]{
             new GroupedTraitType(Archery, caste.getId(), Collections.singletonList(caste.getId())),
             new GroupedTraitType(Melee, caste.getId(), Collections.singletonList(caste.getId()))};
