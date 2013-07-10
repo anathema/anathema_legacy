@@ -15,6 +15,7 @@ import javax.swing.JComponent;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.OutputStream;
+import java.nio.file.AccessDeniedException;
 import java.nio.file.Files;
 import java.nio.file.Path;
 
@@ -44,8 +45,10 @@ public class PrintCommand implements Command {
       }
       performPrint(item, report, selectedFile);
       openFile(selectedFile);
-    }catch (FileNotFoundException e) {
+    } catch (FileNotFoundException e) {
       handleAlreadyOpenException(e);
+    } catch (AccessDeniedException e) {
+      handleForbiddenLocation(e);
     } catch (IOException e) {
       handleFailedToOpenException(e);
     } catch (Exception e) {
@@ -72,6 +75,10 @@ public class PrintCommand implements Command {
     if (SwingEnvironment.isAutoOpenSupported()) {
       PathUtils.openOnDesktop(selectedFile);
     }
+  }
+
+  private void handleForbiddenLocation(AccessDeniedException e) {
+    showMessage(e, "Anathema.Reporting.Message.PrintError.ForbiddenLocation");
   }
 
   private void handleAlreadyOpenException(FileNotFoundException e) {
