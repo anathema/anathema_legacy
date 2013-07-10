@@ -1,6 +1,5 @@
 package net.sf.anathema.character.main.advance;
 
-import net.sf.anathema.lib.control.ObjectValueListener;
 import org.jmock.example.announcer.Announcer;
 
 import java.util.ArrayList;
@@ -12,12 +11,6 @@ public class ExperiencePointConfiguration implements IExperiencePointConfigurati
   private IExperiencePointEntry currentlySelectedEntry = NO_ENTRY;
   private final List<IExperiencePointEntry> entries = new ArrayList<>();
   private final Announcer<ExperiencePointConfigurationListener> control = Announcer.to(ExperiencePointConfigurationListener.class);
-  private final ObjectValueListener<IExperiencePointEntry> entryChangeListener = new ObjectValueListener<IExperiencePointEntry>() {
-    @Override
-    public void valueChanged(IExperiencePointEntry entry) {
-      fireEntryChangedEvent();
-    }
-  };
 
   @Override
   public IExperiencePointEntry[] getAllEntries() {
@@ -27,13 +20,8 @@ public class ExperiencePointConfiguration implements IExperiencePointConfigurati
   @Override
   public IExperiencePointEntry addEntry() {
     IExperiencePointEntry newEntry = addEntryWithoutEvent();
-    addEntryListeningAndFireEvent(newEntry);
-    return newEntry;
-  }
-
-  private void addEntryListeningAndFireEvent(IExperiencePointEntry newEntry) {
     fireEntryAddedEvent();
-    newEntry.addChangeListener(entryChangeListener);
+    return newEntry;
   }
 
   private IExperiencePointEntry addEntryWithoutEvent() {
@@ -44,7 +32,6 @@ public class ExperiencePointConfiguration implements IExperiencePointConfigurati
 
   @Override
   public void removeEntry() {
-    currentlySelectedEntry.removeChangeListener(entryChangeListener);
     entries.remove(currentlySelectedEntry);
     fireEntryRemovedEvent();
     this.currentlySelectedEntry = NO_ENTRY;
@@ -99,5 +86,6 @@ public class ExperiencePointConfiguration implements IExperiencePointConfigurati
   public void updateCurrentSelection(String description, int points) {
     currentlySelectedEntry.getTextualDescription().setText(description);
     currentlySelectedEntry.setExperiencePoints(points);
+    fireEntryChangedEvent();
   }
 }
