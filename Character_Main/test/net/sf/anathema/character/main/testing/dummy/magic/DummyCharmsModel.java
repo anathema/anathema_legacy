@@ -3,13 +3,13 @@ package net.sf.anathema.character.main.testing.dummy.magic;
 import net.sf.anathema.character.main.magic.model.charm.Charm;
 import net.sf.anathema.character.main.magic.model.charm.CharmIdMap;
 import net.sf.anathema.character.main.magic.model.charm.ICharmGroup;
+import net.sf.anathema.character.main.magic.model.charm.ICharmLearnListener;
 import net.sf.anathema.character.main.magic.model.charm.special.ISpecialCharm;
 import net.sf.anathema.character.main.magic.model.charm.special.ISpecialCharmConfiguration;
-import net.sf.anathema.character.main.type.ICharacterType;
-import net.sf.anathema.hero.charms.CharmsModel;
-import net.sf.anathema.character.main.magic.model.charm.ICharmLearnListener;
 import net.sf.anathema.character.main.magic.model.charms.ILearningCharmGroup;
+import net.sf.anathema.character.main.type.ICharacterType;
 import net.sf.anathema.hero.change.ChangeAnnouncer;
+import net.sf.anathema.hero.charms.CharmsModel;
 import net.sf.anathema.hero.model.Hero;
 import net.sf.anathema.hero.model.InitializationContext;
 import net.sf.anathema.lib.control.ChangeListener;
@@ -130,12 +130,6 @@ public class DummyCharmsModel implements CharmsModel {
   @Override
   public ISpecialCharm[] getSpecialCharms() {
     return new ISpecialCharm[0];
-  }
-
-  @Override
-  public String getCharmTrueName(String charmName) {
-    // Nothing to do
-    return null;
   }
 
   public void setGroups(ILearningCharmGroup... groups) {
