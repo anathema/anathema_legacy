@@ -18,7 +18,7 @@
     <models>
         <model id="Description"/>
         <model id="Points"/>
-        <model id="Concept"/>
+        <model id="Concept" template="SolarCastes"/>
         <model id="OtherTraits" template="ExaltOtherTraits"/>
         <model id="Abilities"/>
         <model id="AbilitiesPoints"/>

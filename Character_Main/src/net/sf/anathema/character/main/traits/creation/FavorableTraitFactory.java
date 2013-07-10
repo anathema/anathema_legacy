@@ -1,15 +1,15 @@
 package net.sf.anathema.character.main.traits.creation;
 
-import net.sf.anathema.character.main.caste.CasteType;
-import net.sf.anathema.character.main.traits.ITraitTemplate;
-import net.sf.anathema.character.main.traits.TraitType;
-import net.sf.anathema.character.main.traits.groups.IIdentifiedCasteTraitTypeGroup;
 import net.sf.anathema.character.main.library.trait.DefaultTrait;
 import net.sf.anathema.character.main.library.trait.FriendlyValueChangeChecker;
 import net.sf.anathema.character.main.library.trait.Trait;
 import net.sf.anathema.character.main.library.trait.ValueChangeChecker;
 import net.sf.anathema.character.main.library.trait.favorable.IncrementChecker;
 import net.sf.anathema.character.main.library.trait.rules.FavorableTraitRules;
+import net.sf.anathema.character.main.traits.ITraitTemplate;
+import net.sf.anathema.character.main.traits.TraitType;
+import net.sf.anathema.character.main.traits.groups.IIdentifiedCasteTraitTypeGroup;
+import net.sf.anathema.hero.concept.CasteType;
 import net.sf.anathema.hero.model.Hero;
 
 import java.util.ArrayList;

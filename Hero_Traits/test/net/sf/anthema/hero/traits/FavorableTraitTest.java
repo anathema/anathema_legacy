@@ -1,6 +1,5 @@
 package net.sf.anthema.hero.traits;
 
-import net.sf.anathema.character.main.caste.CasteType;
 import net.sf.anathema.character.main.library.trait.DefaultTrait;
 import net.sf.anathema.character.main.library.trait.FriendlyValueChangeChecker;
 import net.sf.anathema.character.main.library.trait.favorable.FavorableState;
@@ -22,6 +21,7 @@ import net.sf.anathema.character.main.traits.context.ExperiencedTraitValueStrate
 import net.sf.anathema.character.main.traits.context.ProxyTraitValueStrategy;
 import net.sf.anathema.character.main.traits.types.AbilityType;
 import net.sf.anathema.character.main.traits.types.OtherTraitType;
+import net.sf.anathema.hero.concept.CasteType;
 import net.sf.anathema.hero.model.Hero;
 import net.sf.anathema.lib.control.IntValueChangedListener;
 import org.junit.Before;

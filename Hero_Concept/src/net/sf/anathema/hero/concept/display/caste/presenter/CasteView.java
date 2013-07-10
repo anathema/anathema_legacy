@@ -1,6 +1,6 @@
 package net.sf.anathema.hero.concept.display.caste.presenter;
 
-import net.sf.anathema.character.main.caste.CasteType;
+import net.sf.anathema.hero.concept.CasteType;
 import net.sf.anathema.lib.gui.AgnosticUIConfiguration;
 import net.sf.anathema.lib.gui.selection.IObjectSelectionView;
 

@@ -1,8 +1,5 @@
 package net.sf.anathema.character.main.testing.dummy.template;
 
-import net.sf.anathema.character.main.caste.CasteCollection;
-import net.sf.anathema.character.main.caste.CasteType;
-import net.sf.anathema.character.main.caste.ConfigurableCasteCollection;
 import net.sf.anathema.character.main.magic.model.charm.MartialArtsLevel;
 import net.sf.anathema.character.main.magic.model.magic.Magic;
 import net.sf.anathema.character.main.template.ConfiguredModel;
@@ -82,11 +79,6 @@ public class DummyHeroTemplate implements HeroTemplate {
   @Override
   public IEssenceTemplate getEssenceTemplate() {
     return essenceTemplate;
-  }
-
-  @Override
-  public CasteCollection getCasteCollection() {
-    return new ConfigurableCasteCollection(new CasteType[0]);
   }
 
   @Override

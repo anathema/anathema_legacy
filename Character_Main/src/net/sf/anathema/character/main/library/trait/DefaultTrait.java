@@ -1,7 +1,6 @@
 package net.sf.anathema.character.main.library.trait;
 
 import com.google.common.base.Preconditions;
-import net.sf.anathema.character.main.caste.CasteType;
 import net.sf.anathema.character.main.library.ITraitFavorization;
 import net.sf.anathema.character.main.library.trait.favorable.IncrementChecker;
 import net.sf.anathema.character.main.library.trait.favorable.NullTraitFavorization;
@@ -12,6 +11,7 @@ import net.sf.anathema.character.main.traits.TraitType;
 import net.sf.anathema.character.main.traits.TraitValueStrategy;
 import net.sf.anathema.hero.change.ChangeFlavor;
 import net.sf.anathema.hero.change.FlavoredChangeListener;
+import net.sf.anathema.hero.concept.CasteType;
 import net.sf.anathema.hero.concept.ConceptChange;
 import net.sf.anathema.hero.model.Hero;
 import net.sf.anathema.hero.traits.TraitModel;

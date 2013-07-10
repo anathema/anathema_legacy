@@ -1,10 +1,11 @@
 package net.sf.anathema.hero.concept.display.caste.presenter;
 
-import net.sf.anathema.character.main.type.ICharacterType;
 import net.sf.anathema.character.main.presenter.initializers.HeroModelInitializer;
 import net.sf.anathema.character.main.presenter.initializers.RegisteredInitializer;
+import net.sf.anathema.character.main.type.ICharacterType;
 import net.sf.anathema.character.main.view.SectionView;
 import net.sf.anathema.framework.IApplicationModel;
+import net.sf.anathema.hero.concept.HeroConceptFetcher;
 import net.sf.anathema.hero.model.Hero;
 import net.sf.anathema.initialization.reflections.Weight;
 import net.sf.anathema.lib.resources.Resources;
@@ -22,7 +23,7 @@ public class CasteInitializer implements HeroModelInitializer {
 
   @Override
   public void initialize(SectionView sectionView, Hero hero, Resources resources) {
-    if (hero.getTemplate().getCasteCollection().isEmpty()){
+    if (HeroConceptFetcher.fetch(hero).getCasteCollection().isEmpty()){
       return;
     }
     String conceptHeader = resources.getString("CardView.CharacterConcept.Title");

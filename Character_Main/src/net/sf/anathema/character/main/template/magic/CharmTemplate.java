@@ -1,7 +1,7 @@
 package net.sf.anathema.character.main.template.magic;
 
-import net.sf.anathema.character.main.caste.CasteType;
 import net.sf.anathema.character.main.magic.model.charm.Charm;
+import net.sf.anathema.hero.concept.CasteType;
 
 import java.util.ArrayList;
 import java.util.List;

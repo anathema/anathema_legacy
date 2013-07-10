@@ -1,7 +1,6 @@
 package net.sf.anathema.hero.charms.model;
 
 import com.google.common.base.Functions;
-import net.sf.anathema.character.main.caste.CasteType;
 import net.sf.anathema.character.main.magic.display.view.charms.CharacterChangeCharmListener;
 import net.sf.anathema.character.main.magic.model.charm.Charm;
 import net.sf.anathema.character.main.magic.model.charm.CharmAttributeList;
@@ -39,6 +38,7 @@ import net.sf.anathema.hero.charms.model.context.ExperiencedCharmLearnStrategy;
 import net.sf.anathema.hero.charms.model.context.ProxyCharmLearnStrategy;
 import net.sf.anathema.hero.charms.model.special.SpecialCharmManager;
 import net.sf.anathema.hero.charms.sheet.content.PrintCharmsProvider;
+import net.sf.anathema.hero.concept.CasteType;
 import net.sf.anathema.hero.concept.HeroConceptFetcher;
 import net.sf.anathema.hero.essencepool.EssencePoolModel;
 import net.sf.anathema.hero.essencepool.EssencePoolModelFetcher;

@@ -1,12 +1,12 @@
 package net.sf.anathema.hero.traits.sheet.content;
 
 import net.sf.anathema.character.main.IGenericTraitCollection;
-import net.sf.anathema.character.main.caste.CasteType;
 import net.sf.anathema.character.main.traits.ITraitTemplate;
 import net.sf.anathema.character.main.traits.TraitType;
 import net.sf.anathema.character.main.traits.groups.IIdentifiedTraitTypeGroup;
-import net.sf.anathema.hero.sheet.pdf.content.AbstractSubBoxContent;
+import net.sf.anathema.hero.concept.CasteType;
 import net.sf.anathema.hero.model.Hero;
+import net.sf.anathema.hero.sheet.pdf.content.AbstractSubBoxContent;
 import net.sf.anathema.lib.resources.Resources;
 import net.sf.anathema.lib.util.Identifier;
 

@@ -1,10 +1,10 @@
 package net.sf.anathema.hero.platform;
 
 import net.sf.anathema.character.main.CharacterUI;
-import net.sf.anathema.character.main.caste.CasteType;
 import net.sf.anathema.character.main.framework.item.CharacterPrintNameFileScanner;
 import net.sf.anathema.character.main.type.ICharacterType;
 import net.sf.anathema.framework.view.PrintNameFile;
+import net.sf.anathema.hero.concept.CasteType;
 import net.sf.anathema.lib.file.RelativePath;
 import net.sf.anathema.lib.gui.AbstractUIConfiguration;
 import net.sf.anathema.lib.resources.Resources;

@@ -1,9 +1,9 @@
 package net.sf.anathema.character.main.traits.groups;
 
-import net.sf.anathema.character.main.caste.CasteType;
 import net.sf.anathema.character.main.traits.TraitType;
 import net.sf.anathema.character.main.traits.types.AttributeGroupType;
 import net.sf.anathema.character.main.traits.types.AttributeType;
+import net.sf.anathema.hero.concept.CasteType;
 
 public class IdentifiedAttributeTypeGroup extends TraitTypeGroup implements IIdentifiedCasteTraitTypeGroup {
 

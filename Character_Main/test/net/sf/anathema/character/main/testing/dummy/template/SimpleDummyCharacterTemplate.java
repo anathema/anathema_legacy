@@ -1,6 +1,5 @@
 package net.sf.anathema.character.main.testing.dummy.template;
 
-import net.sf.anathema.character.main.caste.CasteCollection;
 import net.sf.anathema.character.main.template.ConfiguredModel;
 import net.sf.anathema.character.main.template.HeroTemplate;
 import net.sf.anathema.character.main.template.ITemplateType;
@@ -44,11 +43,6 @@ public class SimpleDummyCharacterTemplate implements HeroTemplate {
 
   @Override
   public BonusPointCosts getBonusPointCosts() {
-    return null;
-  }
-
-  @Override
-  public CasteCollection getCasteCollection() {
     return null;
   }
 

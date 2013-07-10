@@ -6,7 +6,7 @@ import net.sf.anathema.character.main.framework.module.CharacterTypeModule;
 @CharacterModule
 public class MortalCharacterModule extends CharacterTypeModule {
 
-  protected MortalCharacterModule() {
+  public MortalCharacterModule() {
     super(new MortalCharacterType());
   }
 }

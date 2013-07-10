@@ -1,6 +1,5 @@
 package net.sf.anathema.character.main.xml;
 
-import net.sf.anathema.character.main.caste.CasteCollection;
 import net.sf.anathema.character.main.framework.ICharacterTemplateRegistryCollection;
 import net.sf.anathema.character.main.magic.model.charm.MartialArtsLevel;
 import net.sf.anathema.character.main.magic.model.charms.options.DefaultCharmTemplateRetriever;
@@ -10,7 +9,6 @@ import net.sf.anathema.character.main.template.ITemplateType;
 import net.sf.anathema.character.main.traits.groups.AllAbilityTraitTypeGroup;
 import net.sf.anathema.character.main.traits.groups.AllAttributeTraitTypeGroup;
 import net.sf.anathema.character.main.type.CharacterTypes;
-import net.sf.anathema.character.main.type.ICharacterType;
 import net.sf.anathema.character.main.xml.abilitygroup.GenericGroupedTraitTypeProvider;
 import net.sf.anathema.character.main.xml.abilitygroup.TraitTypeGroupTemplateParser;
 import net.sf.anathema.character.main.xml.core.AbstractXmlTemplateParser;
@@ -32,7 +30,6 @@ import net.sf.anathema.character.main.xml.registry.IXmlTemplateRegistry;
 import net.sf.anathema.character.main.xml.trait.GenericTraitTemplateFactory;
 import net.sf.anathema.character.main.xml.trait.GenericTraitTemplateFactoryParser;
 import net.sf.anathema.lib.exception.PersistenceException;
-import net.sf.anathema.lib.registry.IRegistry;
 import org.dom4j.Element;
 
 public class CharacterTemplateParser extends AbstractXmlTemplateParser<GenericCharacterTemplate> {
@@ -53,15 +50,12 @@ public class CharacterTemplateParser extends AbstractXmlTemplateParser<GenericCh
 
   private CharacterTypes characterTypes;
   private final ICharacterTemplateRegistryCollection registryCollection;
-  private final IRegistry<ICharacterType, CasteCollection> casteCollectionRegistry;
   private final ICharmCache cache;
 
-  public CharacterTemplateParser(CharacterTypes characterTypes, ICharacterTemplateRegistryCollection registryCollection,
-                                 IRegistry<ICharacterType, CasteCollection> casteCollectionRegistry, ICharmCache cache) {
+  public CharacterTemplateParser(CharacterTypes characterTypes, ICharacterTemplateRegistryCollection registryCollection, ICharmCache cache) {
     super(registryCollection.getCharacterTemplateRegistry());
     this.characterTypes = characterTypes;
     this.registryCollection = registryCollection;
-    this.casteCollectionRegistry = casteCollectionRegistry;
     this.cache = cache;
   }
 
@@ -101,11 +95,6 @@ public class CharacterTemplateParser extends AbstractXmlTemplateParser<GenericCh
   private void updateTemplateType(Element element, GenericCharacterTemplate characterTemplate) throws PersistenceException {
     ITemplateType templateType = new TemplateTypeParser(characterTypes).parse(element);
     characterTemplate.setTemplateType(templateType);
-
-    CasteCollection casteCollection = casteCollectionRegistry.get(templateType.getCharacterType());
-    if (casteCollection != null) {
-      characterTemplate.setCasteCollection(casteCollection);
-    }
   }
 
   private void setAbilityGroups(Element generalElement, GenericCharacterTemplate characterTemplate) throws PersistenceException {

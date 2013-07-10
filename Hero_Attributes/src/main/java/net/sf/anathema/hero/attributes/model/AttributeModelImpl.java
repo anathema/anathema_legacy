@@ -13,6 +13,8 @@ import net.sf.anathema.character.main.traits.groups.IIdentifiedCasteTraitTypeGro
 import net.sf.anathema.character.main.traits.groups.IIdentifiedTraitTypeGroup;
 import net.sf.anathema.character.main.traits.types.AttributeGroupType;
 import net.sf.anathema.hero.change.ChangeAnnouncer;
+import net.sf.anathema.hero.concept.CasteCollection;
+import net.sf.anathema.hero.concept.HeroConceptFetcher;
 import net.sf.anathema.hero.model.Hero;
 import net.sf.anathema.hero.model.HeroModel;
 import net.sf.anathema.hero.model.InitializationContext;
@@ -38,7 +40,8 @@ public class AttributeModelImpl extends DefaultTraitMap implements AttributeMode
   public void initialize(InitializationContext context, Hero hero) {
     this.hero = hero;
     this.template = hero.getTemplate();
-    this.attributeTraitGroups = new AttributeTypeGroupFactory().createTraitGroups(template.getCasteCollection(), template.getAttributeGroups());
+    CasteCollection casteCollection = HeroConceptFetcher.fetch(hero).getCasteCollection();
+    this.attributeTraitGroups = new AttributeTypeGroupFactory().createTraitGroups(casteCollection, template.getAttributeGroups());
     addAttributes();
     TraitModel traitModel = TraitModelFetcher.fetch(hero);
     traitModel.addTraits(getAll());

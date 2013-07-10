@@ -1,6 +1,6 @@
 package net.sf.anathema.character.main.traits.caste;
 
-import net.sf.anathema.character.main.caste.CasteType;
+import net.sf.anathema.hero.concept.CasteType;
 import net.sf.anathema.hero.model.Hero;
 
 public class StaticCasteMinimum implements ICasteTraitMinimum {

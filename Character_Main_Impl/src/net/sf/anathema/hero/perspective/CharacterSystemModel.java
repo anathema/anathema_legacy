@@ -83,7 +83,7 @@ public class CharacterSystemModel implements ItemSystemModel {
   private CharacterPrintNameFileScanner createFileScanner() {
     HeroEnvironment generics = getCharacterGenerics();
     IRepositoryFileResolver repositoryFileResolver = model.getRepository().getRepositoryFileResolver();
-    return new RegExCharacterPrintNameFileScanner(generics.getCharacterTypes(), generics.getCasteCollectionRegistry(), repositoryFileResolver);
+    return new RegExCharacterPrintNameFileScanner(generics.getCharacterTypes(), repositoryFileResolver);
   }
 
   private HeroEnvironment getCharacterGenerics() {

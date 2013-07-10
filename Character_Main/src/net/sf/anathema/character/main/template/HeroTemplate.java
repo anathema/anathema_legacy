@@ -1,6 +1,5 @@
 package net.sf.anathema.character.main.template;
 
-import net.sf.anathema.character.main.caste.CasteCollection;
 import net.sf.anathema.character.main.template.abilities.GroupedTraitType;
 import net.sf.anathema.character.main.template.creation.BonusPointCosts;
 import net.sf.anathema.character.main.template.creation.ICreationPoints;
@@ -18,8 +17,6 @@ public interface HeroTemplate extends ICharacterExternalsTemplate {
   GroupedTraitType[] getAttributeGroups();
 
   BonusPointCosts getBonusPointCosts();
-
-  CasteCollection getCasteCollection();
 
   ICreationPoints getCreationPoints();
 

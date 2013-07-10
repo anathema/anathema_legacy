@@ -2,7 +2,6 @@ package net.sf.anathema.character.main.persistence;
 
 import com.google.common.base.Preconditions;
 import net.sf.anathema.character.main.ExaltedCharacter;
-import net.sf.anathema.character.main.caste.CasteCollection;
 import net.sf.anathema.character.main.framework.HeroEnvironment;
 import net.sf.anathema.character.main.magic.model.charm.CharmException;
 import net.sf.anathema.character.main.magic.model.spells.SpellException;
@@ -13,6 +12,7 @@ import net.sf.anathema.character.main.template.TemplateType;
 import net.sf.anathema.character.main.traits.types.OtherTraitType;
 import net.sf.anathema.character.main.type.ICharacterType;
 import net.sf.anathema.framework.messaging.IMessaging;
+import net.sf.anathema.hero.concept.HeroConcept;
 import net.sf.anathema.hero.concept.HeroConceptFetcher;
 import net.sf.anathema.hero.description.HeroDescription;
 import net.sf.anathema.hero.description.HeroDescriptionFetcher;
@@ -81,8 +81,8 @@ public class CharacterStatisticPersister {
       boolean experienced = ElementUtilities.getBooleanAttribute(statisticsElement, ATTRIB_EXPERIENCED, false);
       HeroDescription characterDescription = HeroDescriptionFetcher.fetch(character);
       descriptionPersister.load(parent, characterDescription);
-      CasteCollection casteCollection = character.getTemplate().getCasteCollection();
-      characterConceptPersister.load(statisticsElement, HeroConceptFetcher.fetch(character), characterDescription, casteCollection);
+      HeroConcept concept = HeroConceptFetcher.fetch(character);
+      characterConceptPersister.load(statisticsElement, concept, characterDescription);
       ExperienceModelFetcher.fetch(character).setExperienced(experienced);
       essencePersister.load(statisticsElement, TraitModelFetcher.fetch(character));
       virtuePersister.load(statisticsElement, TraitModelFetcher.fetch(character));

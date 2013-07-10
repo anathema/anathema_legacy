@@ -1,10 +1,5 @@
 package net.sf.anthema.hero.traits;
 
-import net.sf.anathema.character.main.caste.CasteType;
-import net.sf.anathema.character.main.traits.SimpleTraitTemplate;
-import net.sf.anathema.character.main.traits.ITraitTemplate;
-import net.sf.anathema.character.main.traits.types.AbilityType;
-import net.sf.anathema.character.main.traits.types.OtherTraitType;
 import net.sf.anathema.character.main.library.trait.DefaultTrait;
 import net.sf.anathema.character.main.library.trait.FriendlyValueChangeChecker;
 import net.sf.anathema.character.main.library.trait.favorable.IncrementChecker;
@@ -14,9 +9,14 @@ import net.sf.anathema.character.main.testing.dummy.DummyHero;
 import net.sf.anathema.character.main.testing.dummy.models.DummyHeroConcept;
 import net.sf.anathema.character.main.testing.dummy.models.DummyOtherTraitModel;
 import net.sf.anathema.character.main.testing.dummy.models.DummyTraitModel;
+import net.sf.anathema.character.main.traits.ITraitTemplate;
+import net.sf.anathema.character.main.traits.SimpleTraitTemplate;
 import net.sf.anathema.character.main.traits.context.CreationTraitValueStrategy;
 import net.sf.anathema.character.main.traits.context.ExperiencedTraitValueStrategy;
 import net.sf.anathema.character.main.traits.context.ProxyTraitValueStrategy;
+import net.sf.anathema.character.main.traits.types.AbilityType;
+import net.sf.anathema.character.main.traits.types.OtherTraitType;
+import net.sf.anathema.hero.concept.CasteType;
 import net.sf.anathema.hero.model.Hero;
 import org.junit.Before;
 import org.junit.Test;

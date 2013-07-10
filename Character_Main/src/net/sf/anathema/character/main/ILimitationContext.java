@@ -1,7 +1,7 @@
 package net.sf.anathema.character.main;
 
-import net.sf.anathema.character.main.caste.CasteType;
 import net.sf.anathema.character.main.template.ITraitLimitation;
+import net.sf.anathema.hero.concept.CasteType;
 
 public interface ILimitationContext {
 

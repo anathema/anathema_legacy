@@ -43,7 +43,7 @@ public abstract class CharacterTypeModule implements ICharacterModule {
 
   protected final GenericCharacterTemplate registerParsedTemplate(HeroEnvironment generics, ResourceFile resource) {
     ICharacterTemplateRegistryCollection characterTemplateRegistries = generics.getCharacterTemplateRegistries();
-    new net.sf.anathema.character.main.xml.CharacterTemplateParser(generics.getCharacterTypes(), characterTemplateRegistries, generics.getCasteCollectionRegistry(), generics.getDataSet(ICharmCache.class));
+    new net.sf.anathema.character.main.xml.CharacterTemplateParser(generics.getCharacterTypes(), characterTemplateRegistries, generics.getDataSet(ICharmCache.class));
     try {
       GenericCharacterTemplate template = characterTemplateRegistries.getCharacterTemplateRegistry().get(resource);
       generics.getTemplateRegistry().register(template);

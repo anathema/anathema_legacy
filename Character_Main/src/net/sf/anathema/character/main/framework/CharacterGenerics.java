@@ -1,6 +1,5 @@
 package net.sf.anathema.character.main.framework;
 
-import net.sf.anathema.character.main.caste.CasteCollection;
 import net.sf.anathema.character.main.framework.data.IExtensibleDataSet;
 import net.sf.anathema.character.main.framework.data.IExtensibleDataSetProvider;
 import net.sf.anathema.character.main.magic.parser.charms.ICharmCache;
@@ -9,19 +8,15 @@ import net.sf.anathema.character.main.template.TemplateRegistry;
 import net.sf.anathema.character.main.template.magic.CharmProvider;
 import net.sf.anathema.character.main.template.magic.ICharmProvider;
 import net.sf.anathema.character.main.type.CharacterTypes;
-import net.sf.anathema.character.main.type.ICharacterType;
 import net.sf.anathema.character.main.type.ReflectionCharacterTypes;
 import net.sf.anathema.character.main.xml.registry.CharacterTemplateRegistryCollection;
 import net.sf.anathema.initialization.ObjectFactory;
 import net.sf.anathema.initialization.repository.DataFileProvider;
-import net.sf.anathema.lib.registry.IRegistry;
-import net.sf.anathema.lib.registry.Registry;
 
 public class CharacterGenerics implements HeroEnvironment {
 
   private final ITemplateRegistry templateRegistry = new TemplateRegistry();
   private final ICharacterTemplateRegistryCollection templateRegistries;
-  private final IRegistry<ICharacterType, CasteCollection> casteCollectionRegistry = new Registry<>();
   private final ICharmProvider charmProvider;
   private final DataFileProvider dataFileProvider;
   private final IExtensibleDataSetProvider dataSetProvider;
@@ -45,11 +40,6 @@ public class CharacterGenerics implements HeroEnvironment {
   @Override
   public ICharacterTemplateRegistryCollection getCharacterTemplateRegistries() {
     return templateRegistries;
-  }
-
-  @Override
-  public IRegistry<ICharacterType, CasteCollection> getCasteCollectionRegistry() {
-    return casteCollectionRegistry;
   }
 
   @Override

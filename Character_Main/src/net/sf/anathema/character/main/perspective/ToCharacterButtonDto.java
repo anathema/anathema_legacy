@@ -2,15 +2,15 @@ package net.sf.anathema.character.main.perspective;
 
 import com.google.common.base.Function;
 import net.sf.anathema.character.main.CharacterUI;
-import net.sf.anathema.character.main.xml.presentation.GenericPresentationTemplate;
-import net.sf.anathema.character.main.template.ITemplateType;
 import net.sf.anathema.character.main.perspective.model.CharacterIdentifier;
+import net.sf.anathema.character.main.template.ITemplateType;
+import net.sf.anathema.character.main.xml.presentation.GenericPresentationTemplate;
 import net.sf.anathema.lib.file.RelativePath;
 import net.sf.anathema.lib.resources.Resources;
 import net.sf.anathema.lib.util.Identifier;
 
-import static net.sf.anathema.character.main.caste.CasteType.NULL_CASTE_TYPE;
 import static net.sf.anathema.character.main.persistence.SecondEdition.SECOND_EDITION;
+import static net.sf.anathema.hero.concept.CasteType.NULL_CASTE_TYPE;
 
 public class ToCharacterButtonDto implements Function<DescriptiveFeatures, CharacterButtonDto> {
   private final Resources resources;

@@ -1,6 +1,5 @@
 package net.sf.anathema.hero.platform;
 
-import net.sf.anathema.character.main.caste.CasteCollection;
 import net.sf.anathema.character.main.framework.item.CharacterPrintNameFileScanner;
 import net.sf.anathema.character.main.template.ITemplateType;
 import net.sf.anathema.character.main.template.TemplateType;
@@ -9,11 +8,9 @@ import net.sf.anathema.character.main.type.ICharacterType;
 import net.sf.anathema.framework.repository.IRepositoryFileResolver;
 import net.sf.anathema.framework.view.PrintNameFile;
 import net.sf.anathema.lib.exception.AnathemaException;
-import net.sf.anathema.lib.registry.IRegistry;
 import net.sf.anathema.lib.util.Identifier;
 import net.sf.anathema.lib.util.SimpleIdentifier;
 import net.sf.anathema.lib.xml.DocumentUtilities;
-import org.dom4j.Attribute;
 import org.dom4j.Document;
 import org.dom4j.Element;
 
@@ -22,27 +19,20 @@ import java.io.IOException;
 import java.util.HashMap;
 import java.util.Map;
 
-import static net.sf.anathema.character.main.caste.CasteType.NULL_CASTE_TYPE;
-import static net.sf.anathema.character.main.magic.model.charm.ICharmXMLConstants.ATTRIB_TYPE;
 import static net.sf.anathema.character.main.persistence.ICharacterXmlConstants.ATTRIB_SUB_TYPE;
-import static net.sf.anathema.character.main.persistence.ICharacterXmlConstants.TAG_CASTE;
 import static net.sf.anathema.character.main.persistence.ICharacterXmlConstants.TAG_CHARACTER_TYPE;
+import static net.sf.anathema.hero.concept.CasteType.NULL_CASTE_TYPE;
 
 public class RegExCharacterPrintNameFileScanner implements CharacterPrintNameFileScanner {
 
   private static final String TYPE_ELEMENT_NAME = TAG_CHARACTER_TYPE;
-  private static final String CASTE_ELEMENT_NAME = TAG_CASTE;
-  private static final String CASTE_ELEMENT_TYPE_ATTR = ATTRIB_TYPE;
   private final Map<PrintNameFile, ITemplateType> typesByFile = new HashMap<>();
   private final Map<PrintNameFile, Identifier> castesByFile = new HashMap<>();
-  private final IRegistry<ICharacterType, CasteCollection> registry;
   private final IRepositoryFileResolver resolver;
   private final CharacterTypes characterTypes;
 
-  public RegExCharacterPrintNameFileScanner(CharacterTypes characterTypes, IRegistry<ICharacterType, CasteCollection> registry,
-                                            IRepositoryFileResolver repositoryFileResolver) {
+  public RegExCharacterPrintNameFileScanner(CharacterTypes characterTypes, IRepositoryFileResolver repositoryFileResolver) {
     this.characterTypes = characterTypes;
-    this.registry = registry;
     this.resolver = repositoryFileResolver;
   }
 
@@ -56,13 +46,8 @@ public class RegExCharacterPrintNameFileScanner implements CharacterPrintNameFil
     }
 
     Element typeElement = DocumentUtilities.findElement(document, TYPE_ELEMENT_NAME);
-    Element casteElement = DocumentUtilities.findElement(document, CASTE_ELEMENT_NAME);
 
     String typeString = typeElement != null ? typeElement.getText() : null;
-
-    Attribute casteTypeAttr = casteElement != null ? casteElement.attribute(CASTE_ELEMENT_TYPE_ATTR) : null;
-
-    String casteTypeStr = casteTypeAttr != null ? casteTypeAttr.getValue() : null;
 
     if (typeString == null) {
       throw new IllegalStateException("Missing Hero type in " + file);
@@ -71,14 +56,7 @@ public class RegExCharacterPrintNameFileScanner implements CharacterPrintNameFil
     ICharacterType characterType = characterTypes.findById(typeString);
     SimpleIdentifier subType = new SimpleIdentifier(typeElement.attributeValue(ATTRIB_SUB_TYPE));
     typesByFile.put(file, new TemplateType(characterType, subType));
-
-    if (casteTypeStr == null) {
-      castesByFile.put(file, NULL_CASTE_TYPE);
-      return;
-    }
-
-    Identifier casteType = registry.get(characterType).getById(casteTypeStr);
-    castesByFile.put(file, casteType);
+    castesByFile.put(file, NULL_CASTE_TYPE);
   }
 
   @Override

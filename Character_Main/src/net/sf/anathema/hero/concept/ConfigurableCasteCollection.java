@@ -1,12 +1,22 @@
-package net.sf.anathema.character.main.caste;
+package net.sf.anathema.hero.concept;
 
 import net.sf.anathema.character.main.template.ITemplateType;
 
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.List;
+
 public class ConfigurableCasteCollection implements CasteCollection {
-  private final CasteType[] allTypes;
+  private final List<CasteType> allTypes = new ArrayList<>();
 
   public ConfigurableCasteCollection(CasteType[] allTypes) {
-    this.allTypes = allTypes;
+    Collections.addAll(this.allTypes, allTypes);
+  }
+
+  public ConfigurableCasteCollection(CasteTemplate template) {
+    for (String caste : template.castes) {
+      allTypes.add(new ConfigurableCasteType(caste));
+    }
   }
 
   @Override
@@ -21,7 +31,7 @@ public class ConfigurableCasteCollection implements CasteCollection {
 
   @Override
   public boolean isEmpty() {
-    return allTypes.length <= 0;
+    return allTypes.isEmpty();
   }
 
   @Override
@@ -36,6 +46,6 @@ public class ConfigurableCasteCollection implements CasteCollection {
 
   @Override
   public CasteType[] getAllCasteTypes(ITemplateType template) {
-    return allTypes;
+    return allTypes.toArray(new CasteType[allTypes.size()]);
   }
 }

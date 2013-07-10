@@ -1,11 +1,11 @@
 package net.sf.anathema.character.main.traits.creation;
 
-import net.sf.anathema.character.main.caste.CasteCollection;
-import net.sf.anathema.character.main.caste.CasteType;
 import net.sf.anathema.character.main.template.abilities.GroupedTraitType;
 import net.sf.anathema.character.main.traits.TraitType;
 import net.sf.anathema.character.main.traits.groups.IIdentifiedCasteTraitTypeGroup;
 import net.sf.anathema.character.main.traits.groups.IdentifiedCasteTraitTypeGroup;
+import net.sf.anathema.hero.concept.CasteCollection;
+import net.sf.anathema.hero.concept.CasteType;
 import net.sf.anathema.lib.collection.MultiEntryMap;
 import net.sf.anathema.lib.util.Identifier;
 

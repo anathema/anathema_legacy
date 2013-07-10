@@ -1,9 +1,9 @@
 package net.sf.anathema.hero.concept.display.caste.presenter;
 
-import net.sf.anathema.character.main.caste.CasteType;
-import net.sf.anathema.character.main.template.presentation.IPresentationProperties;
 import net.sf.anathema.character.main.presenter.CasteUI;
 import net.sf.anathema.character.main.presenter.SelectIdentifierConfiguration;
+import net.sf.anathema.character.main.template.presentation.IPresentationProperties;
+import net.sf.anathema.hero.concept.CasteType;
 import net.sf.anathema.lib.file.RelativePath;
 import net.sf.anathema.lib.resources.Resources;
 

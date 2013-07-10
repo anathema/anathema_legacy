@@ -1,6 +1,5 @@
 package net.sf.anathema.hero.abilities.model;
 
-import net.sf.anathema.character.main.caste.CasteCollection;
 import net.sf.anathema.character.main.library.trait.Trait;
 import net.sf.anathema.character.main.library.trait.favorable.IncrementChecker;
 import net.sf.anathema.character.main.template.HeroTemplate;
@@ -11,6 +10,9 @@ import net.sf.anathema.character.main.traits.creation.FavorableTraitFactory;
 import net.sf.anathema.character.main.traits.creation.TypedTraitTemplateFactory;
 import net.sf.anathema.character.main.traits.groups.IIdentifiedCasteTraitTypeGroup;
 import net.sf.anathema.hero.change.ChangeAnnouncer;
+import net.sf.anathema.hero.concept.CasteCollection;
+import net.sf.anathema.hero.concept.HeroConcept;
+import net.sf.anathema.hero.concept.HeroConceptFetcher;
 import net.sf.anathema.hero.model.Hero;
 import net.sf.anathema.hero.model.HeroModel;
 import net.sf.anathema.hero.model.InitializationContext;
@@ -38,8 +40,9 @@ public class AbilitiesModelImpl extends DefaultTraitMap implements AbilitiesMode
   @Override
   public void initialize(InitializationContext context, Hero hero) {
     this.hero = hero;
+    HeroConcept concept = HeroConceptFetcher.fetch(hero);
     HeroTemplate template = hero.getTemplate();
-    CasteCollection casteCollection = template.getCasteCollection();
+    CasteCollection casteCollection = concept.getCasteCollection();
     this.abilityTraitGroups = new AbilityTypeGroupFactory().createTraitGroups(casteCollection, template.getAbilityGroups());
     IncrementChecker incrementChecker = createFavoredAbilityIncrementChecker(template, this);
     addFavorableTraits(incrementChecker, new AbilityTemplateFactory(template.getTraitTemplateCollection().getTraitTemplateFactory()));

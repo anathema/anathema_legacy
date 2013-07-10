@@ -1,7 +1,7 @@
 package net.sf.anathema.character.main.traits.groups;
 
-import net.sf.anathema.character.main.caste.CasteType;
 import net.sf.anathema.character.main.traits.TraitType;
+import net.sf.anathema.hero.concept.CasteType;
 import net.sf.anathema.lib.collection.MultiEntryMap;
 import net.sf.anathema.lib.util.Identifier;
 

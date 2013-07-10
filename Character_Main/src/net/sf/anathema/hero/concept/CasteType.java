@@ -1,4 +1,4 @@
-package net.sf.anathema.character.main.caste;
+package net.sf.anathema.hero.concept;
 
 import net.sf.anathema.lib.util.Identifier;
 

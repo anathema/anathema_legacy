@@ -1,8 +1,5 @@
 package net.sf.anathema.character.main.xml;
 
-import net.sf.anathema.character.main.caste.CasteCollection;
-import net.sf.anathema.character.main.caste.CasteType;
-import net.sf.anathema.character.main.caste.ConfigurableCasteCollection;
 import net.sf.anathema.character.main.template.ConfiguredModel;
 import net.sf.anathema.character.main.template.HeroTemplate;
 import net.sf.anathema.character.main.template.ITemplateType;
@@ -43,8 +40,6 @@ public class GenericCharacterTemplate implements HeroTemplate, ICloneable<Generi
   private GroupedTraitType[] abilityGroups;
   private GroupedTraitType[] attributeGroups;
   private GenericPresentationTemplate presentationTemplate;
-  private CasteCollection casteCollection = new ConfigurableCasteCollection(new CasteType[0]);
-  // This is volatile instead of final to allow clone to be implemented
   private IHealthTemplate healthTemplate = new GenericHealthTemplate();
   private boolean isCustomTemplate;
   private final List<ConfiguredModel> models = new ArrayList<>();
@@ -57,15 +52,6 @@ public class GenericCharacterTemplate implements HeroTemplate, ICloneable<Generi
   @Override
   public BonusPointCosts getBonusPointCosts() {
     return bonusPointCosts;
-  }
-
-  @Override
-  public CasteCollection getCasteCollection() {
-    return casteCollection;
-  }
-
-  public void setCasteCollection(CasteCollection casteCollection) {
-    this.casteCollection = casteCollection;
   }
 
   @Override
@@ -166,7 +152,6 @@ public class GenericCharacterTemplate implements HeroTemplate, ICloneable<Generi
     } catch (CloneNotSupportedException e) {
       throw new UnreachableCodeReachedException(e);
     }
-    clone.casteCollection = new ConfigurableCasteCollection(new CasteType[0]);
     clone.healthTemplate = new GenericHealthTemplate();
     if (bonusPointCosts != null) {
       clone.bonusPointCosts = bonusPointCosts.clone();
