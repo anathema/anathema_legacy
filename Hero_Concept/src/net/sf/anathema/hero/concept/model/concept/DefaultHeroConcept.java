@@ -7,7 +7,6 @@ import net.sf.anathema.hero.change.ChangeAnnouncer;
 import net.sf.anathema.hero.concept.CasteCollection;
 import net.sf.anathema.hero.concept.CasteSelection;
 import net.sf.anathema.hero.concept.ConceptChange;
-import net.sf.anathema.hero.concept.DefaultCasteModel;
 import net.sf.anathema.hero.concept.HeroConcept;
 import net.sf.anathema.hero.model.Hero;
 import net.sf.anathema.hero.model.HeroModel;

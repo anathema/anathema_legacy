@@ -1,11 +1,8 @@
 package net.sf.anathema.hero.concept.model.concept;
 
 import com.google.common.base.Preconditions;
-import net.sf.anathema.hero.concept.CasteTemplate;
-import net.sf.anathema.hero.concept.ConfigurableCasteCollection;
-import net.sf.anathema.hero.concept.DefaultCasteModel;
-import net.sf.anathema.hero.concept.DefaultCasteSelection;
 import net.sf.anathema.hero.concept.HeroConcept;
+import net.sf.anathema.hero.concept.template.caste.CasteTemplate;
 import net.sf.anathema.hero.concept.template.caste.CasteTemplateLoader;
 import net.sf.anathema.hero.experience.ExperienceModel;
 import net.sf.anathema.hero.initialization.SimpleModelTreeEntry;

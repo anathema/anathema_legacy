@@ -5,9 +5,6 @@ import net.sf.anathema.character.main.IntegerDescription;
 import net.sf.anathema.hero.change.ChangeAnnouncer;
 import net.sf.anathema.hero.concept.CasteCollection;
 import net.sf.anathema.hero.concept.CasteSelection;
-import net.sf.anathema.hero.concept.CasteType;
-import net.sf.anathema.hero.concept.ConfigurableCasteCollection;
-import net.sf.anathema.hero.concept.DefaultCasteSelection;
 import net.sf.anathema.hero.concept.HeroConcept;
 import net.sf.anathema.hero.model.Hero;
 import net.sf.anathema.hero.model.InitializationContext;
@@ -15,9 +12,9 @@ import net.sf.anathema.lib.util.Identifier;
 
 public class DummyHeroConcept implements HeroConcept {
 
-  public CasteSelection caste = new DefaultCasteSelection();
+  public NullCasteSelection caste = new NullCasteSelection();
   private IIntegerDescription age = new IntegerDescription(0);
-  private ConfigurableCasteCollection casteCollection = new ConfigurableCasteCollection(new CasteType[0]);
+  private NullCasteCollection casteCollection = new NullCasteCollection();
 
   @Override
   public CasteSelection getCaste() {

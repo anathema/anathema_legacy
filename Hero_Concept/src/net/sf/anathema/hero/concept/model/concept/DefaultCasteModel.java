@@ -1,4 +1,7 @@
-package net.sf.anathema.hero.concept;
+package net.sf.anathema.hero.concept.model.concept;
+
+import net.sf.anathema.hero.concept.CasteCollection;
+import net.sf.anathema.hero.concept.CasteSelection;
 
 public class DefaultCasteModel {
 

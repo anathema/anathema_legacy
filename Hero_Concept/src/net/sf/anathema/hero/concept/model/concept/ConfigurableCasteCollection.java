@@ -1,17 +1,15 @@
-package net.sf.anathema.hero.concept;
+package net.sf.anathema.hero.concept.model.concept;
 
 import net.sf.anathema.character.main.template.ITemplateType;
+import net.sf.anathema.hero.concept.CasteCollection;
+import net.sf.anathema.hero.concept.CasteType;
+import net.sf.anathema.hero.concept.template.caste.CasteTemplate;
 
 import java.util.ArrayList;
-import java.util.Collections;
 import java.util.List;
 
 public class ConfigurableCasteCollection implements CasteCollection {
   private final List<CasteType> allTypes = new ArrayList<>();
-
-  public ConfigurableCasteCollection(CasteType[] allTypes) {
-    Collections.addAll(this.allTypes, allTypes);
-  }
 
   public ConfigurableCasteCollection(CasteTemplate template) {
     for (String caste : template.castes) {

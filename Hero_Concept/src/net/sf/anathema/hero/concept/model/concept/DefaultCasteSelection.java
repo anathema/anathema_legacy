@@ -1,6 +1,8 @@
-package net.sf.anathema.hero.concept;
+package net.sf.anathema.hero.concept.model.concept;
 
 import com.google.common.base.Preconditions;
+import net.sf.anathema.hero.concept.CasteSelection;
+import net.sf.anathema.hero.concept.CasteType;
 import net.sf.anathema.lib.control.ChangeListener;
 import org.jmock.example.announcer.Announcer;
 

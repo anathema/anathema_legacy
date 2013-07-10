@@ -1,13 +1,13 @@
 package net.sf.anathema.character.main.trait;
 
 import net.sf.anathema.character.main.template.abilities.GroupedTraitType;
-import net.sf.anathema.character.main.testing.dummy.DummyCasteType;
+import net.sf.anathema.character.main.testing.dummy.models.NullCasteCollection;
 import net.sf.anathema.character.main.traits.TraitType;
 import net.sf.anathema.character.main.traits.groups.IIdentifiedTraitTypeGroup;
 import net.sf.anathema.hero.abilities.model.AbilityTypeGroupFactory;
 import net.sf.anathema.hero.concept.CasteCollection;
-import net.sf.anathema.hero.concept.CasteType;
-import net.sf.anathema.hero.concept.ConfigurableCasteCollection;
+import net.sf.anathema.hero.concept.model.concept.ConfigurableCasteCollection;
+import net.sf.anathema.hero.concept.template.caste.CasteTemplate;
 import org.junit.Test;
 
 import java.util.Collections;
@@ -23,11 +23,12 @@ import static org.junit.Assert.assertSame;
 
 public class AbilityTraitTypeGroupFactoryTest {
 
+  private static final String TEST_CASTE_ID = "Caste";
   private AbilityTypeGroupFactory factory = new AbilityTypeGroupFactory();
 
   @Test
   public void testOneGroup() throws Exception {
-    CasteCollection casteCollection = new ConfigurableCasteCollection(new CasteType[0]);
+    CasteCollection casteCollection = new NullCasteCollection();
     GroupedTraitType[] abilityTypes = new GroupedTraitType[]{
             new GroupedTraitType(Archery, "War", Collections.<String>emptyList()),
             new GroupedTraitType(Melee, "War", Collections.<String>emptyList())
@@ -40,7 +41,7 @@ public class AbilityTraitTypeGroupFactoryTest {
 
   @Test
   public void testDifferentGroups() throws Exception {
-    CasteCollection casteCollection = new ConfigurableCasteCollection(new CasteType[0]);
+    CasteCollection casteCollection = new NullCasteCollection();
     GroupedTraitType[] abilityTypes = new GroupedTraitType[]{
             new GroupedTraitType(Archery, "War", Collections.<String>emptyList()),
             new GroupedTraitType(Medicine, "Life", Collections.<String>emptyList())
@@ -54,15 +55,16 @@ public class AbilityTraitTypeGroupFactoryTest {
   }
 
   @Test
-  public void testCasteAsGroupIdentificate() throws Exception {
-    DummyCasteType caste = new DummyCasteType("Caste");
-    CasteCollection casteCollection = new ConfigurableCasteCollection(new CasteType[]{caste});
+  public void usesCasteAsGroupIdentificate() throws Exception {
+    CasteTemplate template = new CasteTemplate();
+    template.castes.add(TEST_CASTE_ID);
+    CasteCollection casteCollection = new ConfigurableCasteCollection(template);
     GroupedTraitType[] abilityTypes = new GroupedTraitType[]{
-            new GroupedTraitType(Archery, caste.getId(), Collections.singletonList(caste.getId())),
-            new GroupedTraitType(Melee, caste.getId(), Collections.singletonList(caste.getId()))};
+            new GroupedTraitType(Archery, TEST_CASTE_ID, Collections.singletonList(TEST_CASTE_ID)),
+            new GroupedTraitType(Melee, TEST_CASTE_ID, Collections.singletonList(TEST_CASTE_ID))};
     IIdentifiedTraitTypeGroup[] typeGroups = factory.createTraitGroups(casteCollection, abilityTypes);
     assertEquals(1, typeGroups.length);
     assertArrayEquals(new TraitType[]{Archery, Melee}, typeGroups[0].getAllGroupTypes());
-    assertSame(caste, typeGroups[0].getGroupId());
+    assertSame(casteCollection.getById(TEST_CASTE_ID), typeGroups[0].getGroupId());
   }
 }
