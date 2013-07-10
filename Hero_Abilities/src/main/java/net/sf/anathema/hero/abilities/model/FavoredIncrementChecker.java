@@ -1,8 +1,8 @@
-package net.sf.anathema.character.main.traits.creation;
+package net.sf.anathema.hero.abilities.model;
 
-import net.sf.anathema.character.main.traits.TraitType;
 import net.sf.anathema.character.main.library.trait.Trait;
 import net.sf.anathema.character.main.library.trait.favorable.IncrementChecker;
+import net.sf.anathema.character.main.traits.TraitType;
 import net.sf.anathema.hero.traits.TraitMap;
 
 public class FavoredIncrementChecker implements IncrementChecker {

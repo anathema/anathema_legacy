@@ -1,26 +1,25 @@
 package net.sf.anathema.hero.attributes.model;
 
-import net.sf.anathema.character.main.template.HeroTemplate;
-import net.sf.anathema.character.main.template.ITraitTemplateFactory;
-import net.sf.anathema.character.main.traits.groups.IIdentifiedCasteTraitTypeGroup;
-import net.sf.anathema.character.main.traits.groups.IIdentifiedTraitTypeGroup;
-import net.sf.anathema.character.main.traits.types.AttributeGroupType;
 import net.sf.anathema.character.main.library.trait.Trait;
 import net.sf.anathema.character.main.library.trait.TraitGroup;
 import net.sf.anathema.character.main.library.trait.favorable.GrumpyIncrementChecker;
 import net.sf.anathema.character.main.library.trait.favorable.IncrementChecker;
-import net.sf.anathema.hero.traits.DefaultTraitMap;
-import net.sf.anathema.hero.traits.MappedTraitGroup;
-import net.sf.anathema.hero.traits.TraitModel;
-import net.sf.anathema.hero.traits.TraitModelFetcher;
+import net.sf.anathema.character.main.template.HeroTemplate;
+import net.sf.anathema.character.main.template.ITraitTemplateFactory;
 import net.sf.anathema.character.main.traits.AttributeTemplateFactory;
-import net.sf.anathema.character.main.traits.creation.AttributeTypeGroupFactory;
 import net.sf.anathema.character.main.traits.creation.FavorableTraitFactory;
 import net.sf.anathema.character.main.traits.creation.TypedTraitTemplateFactory;
+import net.sf.anathema.character.main.traits.groups.IIdentifiedCasteTraitTypeGroup;
+import net.sf.anathema.character.main.traits.groups.IIdentifiedTraitTypeGroup;
+import net.sf.anathema.character.main.traits.types.AttributeGroupType;
 import net.sf.anathema.hero.change.ChangeAnnouncer;
 import net.sf.anathema.hero.model.Hero;
 import net.sf.anathema.hero.model.HeroModel;
 import net.sf.anathema.hero.model.InitializationContext;
+import net.sf.anathema.hero.traits.DefaultTraitMap;
+import net.sf.anathema.hero.traits.MappedTraitGroup;
+import net.sf.anathema.hero.traits.TraitModel;
+import net.sf.anathema.hero.traits.TraitModelFetcher;
 import net.sf.anathema.hero.traits.model.event.TraitValueChangedListener;
 import net.sf.anathema.lib.util.Identifier;
 
