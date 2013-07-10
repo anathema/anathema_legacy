@@ -8,7 +8,6 @@ import java.util.Map;
 public class CharacterTemplateResourceCache implements ICharacterTemplateResourceCache {
 
   private final Map<String, List<ResourceFile>> templateResources;
-  private final static String CUSTOM_PATH = "repository/custom";
 
   public CharacterTemplateResourceCache(Map<String, List<ResourceFile>> templateResources) {
     this.templateResources = templateResources;
@@ -21,11 +20,5 @@ public class CharacterTemplateResourceCache implements ICharacterTemplateResourc
     }
     List<ResourceFile> resourceFiles = templateResources.get(type);
     return resourceFiles.toArray(new ResourceFile[resourceFiles.size()]);
-  }
-
-  @Override
-  public boolean isCustomTemplate(ResourceFile resource) {
-    //TODO: Search for a safer means to evaluate custom content
-    return resource.getURL().toString().contains(CUSTOM_PATH);
   }
 }
