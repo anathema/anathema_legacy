@@ -41,7 +41,6 @@ public class GenericCharacterTemplate implements HeroTemplate, ICloneable<Generi
   private GroupedTraitType[] attributeGroups;
   private GenericPresentationTemplate presentationTemplate;
   private IHealthTemplate healthTemplate = new GenericHealthTemplate();
-  private boolean isCustomTemplate;
   private final List<ConfiguredModel> models = new ArrayList<>();
 
   @Override
@@ -185,15 +184,6 @@ public class GenericCharacterTemplate implements HeroTemplate, ICloneable<Generi
 
   public void setHealthTemplate(IHealthTemplate template) {
     this.healthTemplate = template;
-  }
-
-  @Override
-  public boolean isCustomTemplate() {
-    return isCustomTemplate;
-  }
-
-  public void setCustomTemplate(boolean custom) {
-    isCustomTemplate = custom;
   }
 
   public void addModel(String modelId, String templateId) {

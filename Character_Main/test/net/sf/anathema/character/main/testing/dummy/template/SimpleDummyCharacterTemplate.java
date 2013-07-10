@@ -100,8 +100,4 @@ public class SimpleDummyCharacterTemplate implements HeroTemplate {
     return new String[0];
   }
 
-  @Override
-  public boolean isCustomTemplate() {
-    return false;
-  }
 }

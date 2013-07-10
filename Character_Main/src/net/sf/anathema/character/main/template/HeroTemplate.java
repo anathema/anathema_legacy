@@ -33,6 +33,4 @@ public interface HeroTemplate extends ICharacterExternalsTemplate {
   List<ConfiguredModel> getModels();
 
   IMagicTemplate getMagicTemplate();
-
-  boolean isCustomTemplate();
 }
