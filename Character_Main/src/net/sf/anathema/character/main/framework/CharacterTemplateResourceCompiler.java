@@ -11,7 +11,7 @@ public class CharacterTemplateResourceCompiler implements IExtensibleDataSetComp
 
   private static final String CHARACTER_FILE_RECOGNITION_PATTERN = "Character_(.+?)_(.+?)\\.xml";
 
-  private final CharacterTemplateResourceCache templateResources = new CharacterTemplateResourceCache();
+  private final SimpleCharacterTemplateCache templateResources = new SimpleCharacterTemplateCache();
 
   @SuppressWarnings("UnusedParameters")
   public CharacterTemplateResourceCompiler(ObjectFactory objectFactory) {

@@ -16,8 +16,8 @@ public class CharacterTemplateInitializer {
   }
 
   public void addCharacterTemplates() {
-    ICharacterTemplateResourceCache cache = environment.getDataSet(ICharacterTemplateResourceCache.class);
-    for (ResourceFile templateResource : cache.getTemplateResourcesForType()) {
+    CharacterTemplateResources templateResources = environment.getDataSet(CharacterTemplateResources.class);
+    for (ResourceFile templateResource : templateResources) {
       registerParsedTemplate(environment, templateResource);
     }
   }
