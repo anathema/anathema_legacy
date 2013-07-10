@@ -9,7 +9,7 @@ import net.sf.anathema.initialization.ObjectFactory;
 import net.sf.anathema.initialization.reflections.ResourceLoader;
 import net.sf.anathema.initialization.repository.DataFileProvider;
 
-@Extension(id = "CharacterGenericsExtension")
+@Extension(id = HeroEnvironmentExtension.ID)
 public class CharacterGenericsExtension implements HeroEnvironmentExtension, IAnathemaExtension {
 
   private HeroEnvironment environment;
