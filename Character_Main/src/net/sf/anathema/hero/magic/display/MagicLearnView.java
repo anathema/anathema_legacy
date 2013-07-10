@@ -1,4 +1,4 @@
-package net.sf.anathema.character.main.magic.display.view.magic;
+package net.sf.anathema.hero.magic.display;
 
 import net.miginfocom.layout.CC;
 import net.sf.anathema.interaction.Command;
@@ -183,6 +183,7 @@ public class MagicLearnView implements IMagicLearnView {
     }
   }
 
+  @SuppressWarnings("ConstantConditions")
   @Override
   public void addMagicOptions(Identifier[] magics, Comparator<Identifier> comparator) {
     DefaultListModel listModel = (DefaultListModel) learnOptionsList.getModel();

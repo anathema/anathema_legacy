@@ -1,10 +1,10 @@
 package net.sf.anathema.hero.spells.display;
 
 import net.sf.anathema.character.main.magic.description.MagicDescriptionProvider;
-import net.sf.anathema.character.main.magic.display.view.magic.AbstractMagicLearnProperties;
 import net.sf.anathema.character.main.magic.model.spells.ISpell;
 import net.sf.anathema.framework.ui.IdentifierConfiguration;
 import net.sf.anathema.hero.experience.ExperienceModelFetcher;
+import net.sf.anathema.hero.magic.display.AbstractMagicLearnProperties;
 import net.sf.anathema.hero.model.Hero;
 import net.sf.anathema.hero.spells.SpellsModelFetcher;
 import net.sf.anathema.hero.spells.model.SpellLegality;

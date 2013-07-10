@@ -1,4 +1,4 @@
-package net.sf.anathema.character.main.magic.display.view.magic;
+package net.sf.anathema.hero.magic.display;
 
 import net.sf.anathema.framework.presenter.resources.BasicUi;
 import net.sf.anathema.framework.ui.IdentifierConfiguration;

@@ -1,4 +1,4 @@
-package net.sf.anathema.character.main.magic.display.view.magic;
+package net.sf.anathema.hero.magic.display;
 
 import net.sf.anathema.lib.file.RelativePath;
 import net.sf.anathema.lib.gui.AgnosticUIConfiguration;
