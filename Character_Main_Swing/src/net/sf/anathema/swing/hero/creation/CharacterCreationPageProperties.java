@@ -31,7 +31,7 @@ public class CharacterCreationPageProperties {
   }
 
   public String getTypeString(ICharacterType type) {
-    return resources.getString("CharacterGenerator.NewCharacter." + type.getId() + ".Name");
+    return new CharacterTypeUi(resources).getLabel(type);
   }
 
   public Icon getTypeIcon(ICharacterType type) {

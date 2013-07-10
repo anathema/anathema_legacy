@@ -9,6 +9,6 @@ import net.sf.anathema.lib.resources.Resources;
 public class CharacterViewProperties extends AbstractItemTypeViewProperties {
 
   public CharacterViewProperties(IItemType type, Resources resources, CharacterPrintNameFileScanner scanner) {
-    super(type, new CharacterUI().getCharacterDescriptionTabIcon(), new CharacterTypeUi(resources, scanner));
+    super(type, new CharacterUI().getCharacterDescriptionTabIcon(), new CharacterFileUi(resources, scanner));
   }
 }
