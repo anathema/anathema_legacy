@@ -16,7 +16,7 @@ public class BridgingExperienceView implements ExperienceView, IView {
     this.fxView = fxView;
   }
   @Override
-  public void initGui(IExperienceViewProperties properties) {
+  public void initGui(ExperienceViewProperties properties) {
     fxView.initGui(properties);
     panel.init(fxView);
   }

@@ -43,7 +43,7 @@ public class ExperienceConfigurationPresenter {
         updateSelectionInView(entry);
       }
     });
-    experienceView.initGui(new ExperienceViewProperties(resources));
+    experienceView.initGui(new DefaultExperienceProperties(resources));
     refreshEntriesInView();
     experienceView.addUpdateListener(new ExperienceUpdateListener() {
       public void update(int points, String description) {

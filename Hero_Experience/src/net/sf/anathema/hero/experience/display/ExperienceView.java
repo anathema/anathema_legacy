@@ -6,7 +6,7 @@ import net.sf.anathema.interaction.Tool;
 
 public interface ExperienceView {
 
-  void initGui(IExperienceViewProperties properties);
+  void initGui(ExperienceViewProperties properties);
 
   Tool addTool();
 

@@ -1,27 +1,10 @@
 package net.sf.anathema.hero.experience.display;
 
-import net.sf.anathema.lib.resources.Resources;
+public interface ExperienceViewProperties {
 
-public class ExperienceViewProperties implements IExperienceViewProperties {
+  String getTotalString();
 
-  private Resources resources;
+  String getPointHeader();
 
-  public ExperienceViewProperties(Resources resources) {
-    this.resources = resources;
-  }
-
-  @Override
-  public String getTotalString() {
-    return resources.getString("CardView.Experience.Total");
-  }
-
-  @Override
-  public String getPointHeader() {
-    return resources.getString("CardView.Experience.ExperiencePoints");
-  }
-
-  @Override
-  public String getDescriptionHeader() {
-    return resources.getString("CardView.Experience.Description");
-  }
+  String getDescriptionHeader();
 }

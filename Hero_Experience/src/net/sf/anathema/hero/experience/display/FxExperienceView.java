@@ -31,7 +31,7 @@ public class FxExperienceView implements ExperienceView, NodeHolder {
   private final Label totalLabel = new Label();
 
   @Override
-  public void initGui(IExperienceViewProperties properties) {
+  public void initGui(ExperienceViewProperties properties) {
     TableColumn<IExperiencePointEntry, String> pointsColumn = createPointsColumn(properties);
     TableColumn<IExperiencePointEntry, String> descriptionColumn = createDescriptionColumn(properties);
     table.setEditable(true);
@@ -55,7 +55,7 @@ public class FxExperienceView implements ExperienceView, NodeHolder {
     return tool;
   }
 
-  private MigPane createTotalPanel(IExperienceViewProperties properties) {
+  private MigPane createTotalPanel(ExperienceViewProperties properties) {
     MigPane migPane = new MigPane(LayoutUtils.withoutInsets().fill());
     migPane.add(new Label(properties.getTotalString()));
     migPane.add(totalLabel, new CC().alignX("right"));
@@ -94,7 +94,7 @@ public class FxExperienceView implements ExperienceView, NodeHolder {
     return content;
   }
 
-  private TableColumn<IExperiencePointEntry, String> createPointsColumn(IExperienceViewProperties properties) {
+  private TableColumn<IExperiencePointEntry, String> createPointsColumn(ExperienceViewProperties properties) {
     TableColumn<IExperiencePointEntry, String> pointColumn = new TableColumn<>(properties.getPointHeader());
     pointColumn.prefWidthProperty().bind(table.widthProperty().divide(4));
     Callback<TableColumn<IExperiencePointEntry, String>, TableCell<IExperiencePointEntry, String>> cellCallback = TextFieldTableCell.forTableColumn();
@@ -127,7 +127,7 @@ public class FxExperienceView implements ExperienceView, NodeHolder {
     }
   }
 
-  private TableColumn<IExperiencePointEntry, String> createDescriptionColumn(IExperienceViewProperties properties) {
+  private TableColumn<IExperiencePointEntry, String> createDescriptionColumn(ExperienceViewProperties properties) {
     TableColumn<IExperiencePointEntry, String> descriptionColumn = new TableColumn<>(properties.getDescriptionHeader());
     descriptionColumn.prefWidthProperty().bind(table.widthProperty().multiply(3).divide(4).subtract(5));
     Callback<TableColumn<IExperiencePointEntry, String>, TableCell<IExperiencePointEntry, String>> cellCallback = TextFieldTableCell.forTableColumn();
