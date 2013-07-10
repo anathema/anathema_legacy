@@ -1,4 +1,4 @@
-package net.sf.anathema.lib.registry;
+package net.sf.anathema.character.main.magic.parser.charms;
 
 import net.sf.anathema.lib.util.Identifier;
 
