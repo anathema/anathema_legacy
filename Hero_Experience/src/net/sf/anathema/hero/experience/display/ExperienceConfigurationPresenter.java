@@ -54,7 +54,7 @@ public class ExperienceConfigurationPresenter {
 
       @Override
       public void selectionChanged(IExperiencePointEntry entry) {
-        experienceView.setSelection(entry);
+        updateSelectionInView(entry);
       }
     });
     experienceView.initGui(new ExperienceViewProperties(resources));
@@ -67,11 +67,17 @@ public class ExperienceConfigurationPresenter {
     updateTotal();
   }
 
+  private void updateSelectionInView(IExperiencePointEntry entry) {
+    experienceView.setSelection(entry);
+    experienceView.setRemoveButtonEnabled(entry != null);
+  }
+
   private void refreshEntriesInView() {
     experienceView.clearEntries();
     for (IExperiencePointEntry entry : experiencePoints.getAllEntries()) {
       addToView(entry);
     }
+    updateSelectionInView(experiencePoints.getCurrentSelection());
     updateTotal();
   }
 

@@ -17,4 +17,6 @@ public interface IExperiencePointConfiguration {
   void selectForChange(IExperiencePointEntry entry);
 
   void updateCurrentSelection(String description, int points);
+
+  IExperiencePointEntry getCurrentSelection();
 }

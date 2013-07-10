@@ -34,7 +34,7 @@ public class ExperiencePointConfiguration implements IExperiencePointConfigurati
   public void removeEntry() {
     entries.remove(currentlySelectedEntry);
     fireEntryRemovedEvent();
-    this.currentlySelectedEntry = NO_ENTRY;
+    selectForChange(NO_ENTRY);
   }
 
   private void fireEntryRemovedEvent() {
@@ -87,5 +87,10 @@ public class ExperiencePointConfiguration implements IExperiencePointConfigurati
     currentlySelectedEntry.getTextualDescription().setText(description);
     currentlySelectedEntry.setExperiencePoints(points);
     fireEntryChangedEvent();
+  }
+
+  @Override
+  public IExperiencePointEntry getCurrentSelection() {
+    return currentlySelectedEntry;
   }
 }
