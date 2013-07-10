@@ -13,8 +13,9 @@ import javafx.scene.control.cell.TextFieldTableCell;
 import javafx.util.Callback;
 import net.miginfocom.layout.CC;
 import net.miginfocom.layout.LC;
+import net.sf.anathema.character.main.advance.ExperienceSelectionListener;
 import net.sf.anathema.character.main.advance.IExperiencePointEntry;
-import net.sf.anathema.interaction.Command;
+import net.sf.anathema.interaction.Tool;
 import net.sf.anathema.lib.gui.layout.LayoutUtils;
 import net.sf.anathema.platform.fx.NodeHolder;
 import net.sf.anathema.platform.tool.FxButtonTool;
@@ -25,9 +26,9 @@ public class FxExperienceView implements ExperienceView, NodeHolder {
   private final MigPane content = new MigPane(new LC().wrapAfter(1).fill());
   private final TableView<IExperiencePointEntry> table = new TableView<>();
   private final Announcer<ExperienceUpdateListener> updateAnnouncer = new Announcer<>(ExperienceUpdateListener.class);
-  private final Announcer<ExperienceConfigurationViewListener> entryAnnouncer = new Announcer<>(ExperienceConfigurationViewListener.class);
-  private FxButtonTool removeTool;
-  private Label totalLabel;
+  private final Announcer<ExperienceSelectionListener> entryAnnouncer = new Announcer<>(ExperienceSelectionListener.class);
+  private final MigPane buttonPanel = new MigPane();
+  private final Label totalLabel = new Label();
 
   @Override
   public void initGui(IExperienceViewProperties properties) {
@@ -41,65 +42,29 @@ public class FxExperienceView implements ExperienceView, NodeHolder {
         entryAnnouncer.announce().selectionChanged(newValue);
       }
     });
-    MigPane buttonPanel = createButtonPanel(properties);
     MigPane totalPanel = createTotalPanel(properties);
     content.add(buttonPanel);
     content.add(table, new CC().push().grow().span());
     content.add(totalPanel, new CC().pushX().growX().spanX());
   }
 
+  @Override
+  public Tool addTool() {
+    FxButtonTool tool = FxButtonTool.ForAnyPurpose();
+    buttonPanel.add(tool.getNode());
+    return tool;
+  }
+
   private MigPane createTotalPanel(IExperienceViewProperties properties) {
     MigPane migPane = new MigPane(LayoutUtils.withoutInsets().fill());
     migPane.add(new Label(properties.getTotalString()));
-    this.totalLabel = new Label();
     migPane.add(totalLabel, new CC().alignX("right"));
     return migPane;
   }
 
-  private MigPane createButtonPanel(IExperienceViewProperties properties) {
-    MigPane buttonPanel = new MigPane();
-    addAddButton(properties, buttonPanel);
-    addRemoveButton(properties, buttonPanel);
-    return buttonPanel;
-  }
-
-  private void addAddButton(IExperienceViewProperties properties, MigPane buttonPanel) {
-    FxButtonTool tool = FxButtonTool.ForAnyPurpose();
-    tool.setIcon(properties.getAddIcon());
-    tool.setCommand(new Command() {
-      @Override
-      public void execute() {
-        entryAnnouncer.announce().addRequested();
-      }
-    });
-    buttonPanel.add(tool.getNode());
-  }
-
-  private void addRemoveButton(IExperienceViewProperties properties, MigPane buttonPanel) {
-    this.removeTool = FxButtonTool.ForAnyPurpose();
-    removeTool.setIcon(properties.getDeleteIcon());
-    removeTool.setCommand(new Command() {
-      @Override
-      public void execute() {
-        entryAnnouncer.announce().removeRequested();
-      }
-    });
-    buttonPanel.add(removeTool.getNode());
-  }
-
-
   @Override
-  public void addExperienceConfigurationViewListener(ExperienceConfigurationViewListener listener) {
+  public void addSelectionListener(ExperienceSelectionListener listener) {
     entryAnnouncer.addListener(listener);
-  }
-
-  @Override
-  public void setRemoveButtonEnabled(boolean enabled) {
-    if (enabled) {
-      removeTool.enable();
-    } else {
-      removeTool.disable();
-    }
   }
 
   @Override
@@ -108,23 +73,8 @@ public class FxExperienceView implements ExperienceView, NodeHolder {
   }
 
   @Override
-  public void addEntry(IExperiencePointEntry entry) {
-    table.getItems().add(entry);
-  }
-
-  @Override
-  public void clearEntries() {
-    table.getItems().removeAll(table.getItems());
-  }
-
-  @Override
   public void addUpdateListener(ExperienceUpdateListener experienceUpdateListener) {
     updateAnnouncer.addListener(experienceUpdateListener);
-  }
-
-  @Override
-  public int getNumberOfEntriesOnDisplay() {
-    return table.getItems().size();
   }
 
   @Override
@@ -133,13 +83,10 @@ public class FxExperienceView implements ExperienceView, NodeHolder {
   }
 
   @Override
-  public void addAllEntries(IExperiencePointEntry... allEntries) {
+  public void setEntries(IExperiencePointEntry... allEntries) {
     clearEntries();
-    for (IExperiencePointEntry entry : allEntries) {
-      addEntry(entry);
-    }
-    table.getColumns().get(0).setVisible(false);
-    table.getColumns().get(0).setVisible(true);
+    addEntries(allEntries);
+    forceTableRefresh();
   }
 
   @Override
@@ -203,5 +150,20 @@ public class FxExperienceView implements ExperienceView, NodeHolder {
             }
     );
     return descriptionColumn;
+  }
+
+  private void clearEntries() {
+    table.getItems().removeAll(table.getItems());
+  }
+
+  private void addEntries(IExperiencePointEntry[] allEntries) {
+    for (IExperiencePointEntry entry : allEntries) {
+      table.getItems().add(entry);
+    }
+  }
+
+  private void forceTableRefresh() {
+    table.getColumns().get(0).setVisible(false);
+    table.getColumns().get(0).setVisible(true);
   }
 }

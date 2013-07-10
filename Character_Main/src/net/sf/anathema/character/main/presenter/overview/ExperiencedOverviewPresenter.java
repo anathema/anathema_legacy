@@ -1,7 +1,6 @@
 package net.sf.anathema.character.main.presenter.overview;
 
 import net.sf.anathema.character.main.advance.ExperiencePointConfigurationListener;
-import net.sf.anathema.character.main.advance.IExperiencePointEntry;
 import net.sf.anathema.character.main.advance.IExperiencePointManagement;
 import net.sf.anathema.character.main.library.overview.OverviewCategory;
 import net.sf.anathema.character.main.view.CategorizedOverview;
@@ -60,23 +59,8 @@ public class ExperiencedOverviewPresenter implements Presenter {
     totalView = category.addAlotmentView(getString("Overview.Experience.Total"), 4);
     ExperienceModelFetcher.fetch(hero).getExperiencePoints().addExperiencePointConfigurationListener(new ExperiencePointConfigurationListener() {
       @Override
-      public void entryAdded() {
+      public void entriesAddedRemovedOrChanged() {
         calculateXPCost();
-      }
-
-      @Override
-      public void entryRemoved() {
-        calculateXPCost();
-      }
-
-      @Override
-      public void entryChanged() {
-        calculateXPCost();
-      }
-
-      @Override
-      public void selectionChanged(IExperiencePointEntry entry) {
-        //nothing to do
       }
     });
   }

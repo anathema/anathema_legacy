@@ -1,7 +1,9 @@
 package net.sf.anathema.hero.experience.display;
 
+import net.sf.anathema.character.main.advance.ExperienceSelectionListener;
 import net.sf.anathema.character.main.advance.IExperiencePointEntry;
 import net.sf.anathema.framework.swing.IView;
+import net.sf.anathema.interaction.Tool;
 import net.sf.anathema.platform.fx.BridgingPanel;
 
 import javax.swing.JComponent;
@@ -20,13 +22,13 @@ public class BridgingExperienceView implements ExperienceView, IView {
   }
 
   @Override
-  public void addExperienceConfigurationViewListener(ExperienceConfigurationViewListener listener) {
-    fxView.addExperienceConfigurationViewListener(listener);
+  public Tool addTool() {
+    return fxView.addTool();
   }
 
   @Override
-  public void setRemoveButtonEnabled(boolean enabled) {
-    fxView.setRemoveButtonEnabled(enabled);
+  public void addSelectionListener(ExperienceSelectionListener listener) {
+    fxView.addSelectionListener(listener);
   }
 
   @Override
@@ -35,23 +37,8 @@ public class BridgingExperienceView implements ExperienceView, IView {
   }
 
   @Override
-  public void addEntry(IExperiencePointEntry entry) {
-    fxView.addEntry(entry);
-  }
-
-  @Override
-  public void clearEntries() {
-    fxView.clearEntries();
-  }
-
-  @Override
   public void addUpdateListener(ExperienceUpdateListener experienceUpdateListener) {
     fxView.addUpdateListener(experienceUpdateListener);
-  }
-
-  @Override
-  public int getNumberOfEntriesOnDisplay() {
-    return fxView.getNumberOfEntriesOnDisplay();
   }
 
   @Override
@@ -60,8 +47,8 @@ public class BridgingExperienceView implements ExperienceView, IView {
   }
 
   @Override
-  public void addAllEntries(IExperiencePointEntry... allEntries) {
-    fxView.addAllEntries(allEntries);
+  public void setEntries(IExperiencePointEntry... allEntries) {
+    fxView.setEntries(allEntries);
   }
 
   @Override

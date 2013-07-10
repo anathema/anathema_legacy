@@ -11,6 +11,7 @@ public class ExperiencePointConfiguration implements IExperiencePointConfigurati
   private IExperiencePointEntry currentlySelectedEntry = NO_ENTRY;
   private final List<IExperiencePointEntry> entries = new ArrayList<>();
   private final Announcer<ExperiencePointConfigurationListener> control = Announcer.to(ExperiencePointConfigurationListener.class);
+  private final Announcer<ExperienceSelectionListener> selectionAnnouncer = Announcer.to(ExperienceSelectionListener.class);
 
   @Override
   public IExperiencePointEntry[] getAllEntries() {
@@ -20,7 +21,7 @@ public class ExperiencePointConfiguration implements IExperiencePointConfigurati
   @Override
   public IExperiencePointEntry addEntry() {
     IExperiencePointEntry newEntry = addEntryWithoutEvent();
-    fireEntryAddedEvent();
+    fireChangeEvent();
     return newEntry;
   }
 
@@ -33,25 +34,22 @@ public class ExperiencePointConfiguration implements IExperiencePointConfigurati
   @Override
   public void removeEntry() {
     entries.remove(currentlySelectedEntry);
-    fireEntryRemovedEvent();
+    fireChangeEvent();
     selectForChange(NO_ENTRY);
   }
 
-  private void fireEntryRemovedEvent() {
-    control.announce().entryRemoved();
-  }
-
-  private void fireEntryAddedEvent() {
-    control.announce().entryAdded();
-  }
-
-  private void fireEntryChangedEvent() {
-    control.announce().entryChanged();
+  private void fireChangeEvent() {
+    control.announce().entriesAddedRemovedOrChanged();
   }
 
   @Override
   public void addExperiencePointConfigurationListener(ExperiencePointConfigurationListener listener) {
     control.addListener(listener);
+  }
+
+  @Override
+  public void addEntrySelectionListener(ExperienceSelectionListener listener) {
+    selectionAnnouncer.addListener(listener);
   }
 
   @Override
@@ -79,14 +77,14 @@ public class ExperiencePointConfiguration implements IExperiencePointConfigurati
   @Override
   public void selectForChange(IExperiencePointEntry entry) {
     this.currentlySelectedEntry = entry;
-    control.announce().selectionChanged(entry);
+    selectionAnnouncer.announce().selectionChanged(entry);
   }
 
   @Override
   public void updateCurrentSelection(String description, int points) {
     currentlySelectedEntry.getTextualDescription().setText(description);
     currentlySelectedEntry.setExperiencePoints(points);
-    fireEntryChangedEvent();
+    fireChangeEvent();
   }
 
   @Override

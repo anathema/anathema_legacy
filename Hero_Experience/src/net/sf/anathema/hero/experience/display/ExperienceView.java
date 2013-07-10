@@ -1,26 +1,22 @@
 package net.sf.anathema.hero.experience.display;
 
+import net.sf.anathema.character.main.advance.ExperienceSelectionListener;
 import net.sf.anathema.character.main.advance.IExperiencePointEntry;
+import net.sf.anathema.interaction.Tool;
 
 public interface ExperienceView {
 
   void initGui(IExperienceViewProperties properties);
 
-  void addExperienceConfigurationViewListener(ExperienceConfigurationViewListener listener);
+  Tool addTool();
 
-  void setRemoveButtonEnabled(boolean enabled);
-
-  void setTotalValueLabel(int overallExperiencePoints);
-
-  void addEntry(IExperiencePointEntry entry);
-
-  void clearEntries();
+  void addSelectionListener(ExperienceSelectionListener listener);
 
   void addUpdateListener(ExperienceUpdateListener experienceUpdateListener);
 
-  int getNumberOfEntriesOnDisplay();
+  void setEntries(IExperiencePointEntry... allEntries);
+
+  void setTotalValueLabel(int overallExperiencePoints);
 
   void setSelection(IExperiencePointEntry entry);
-
-  void addAllEntries(IExperiencePointEntry... allEntries);
 }

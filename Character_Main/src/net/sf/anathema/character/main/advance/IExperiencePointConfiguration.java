@@ -12,6 +12,8 @@ public interface IExperiencePointConfiguration {
 
   void addExperiencePointConfigurationListener(ExperiencePointConfigurationListener listener);
 
+  void addEntrySelectionListener(ExperienceSelectionListener listener);
+
   int getExtraSpendings();
 
   void selectForChange(IExperiencePointEntry entry);
