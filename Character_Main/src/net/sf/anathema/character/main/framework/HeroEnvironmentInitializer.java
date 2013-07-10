@@ -34,8 +34,9 @@ public class HeroEnvironmentInitializer {
   }
 
   private void addCharacterTemplates(HeroEnvironment environment) {
+    CharacterTemplateInitializer initializer = new CharacterTemplateInitializer(environment);
     for (ICharacterType type : environment.getCharacterTypes().findAll()) {
-      new CharacterTemplateInitializer(type).addCharacterTemplates(environment);
+      initializer.addCharacterTemplates(type);
     }
   }
 }

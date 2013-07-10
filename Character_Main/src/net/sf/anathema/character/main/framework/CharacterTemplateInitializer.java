@@ -10,25 +10,25 @@ import net.sf.anathema.lib.resources.ResourceFile;
 
 public class CharacterTemplateInitializer {
 
-  private ICharacterType type;
+  private HeroEnvironment environment;
 
-  public CharacterTemplateInitializer(ICharacterType type) {
-    this.type = type;
+  public CharacterTemplateInitializer(HeroEnvironment environment) {
+    this.environment = environment;
   }
 
-  public void addCharacterTemplates(HeroEnvironment characterGenerics) {
-    ICharacterTemplateResourceCache cache = characterGenerics.getDataSet(ICharacterTemplateResourceCache.class);
+  public void addCharacterTemplates(ICharacterType type) {
+    ICharacterTemplateResourceCache cache = environment.getDataSet(ICharacterTemplateResourceCache.class);
     for (ResourceFile templateResource : cache.getTemplateResourcesForType(type.getId())) {
-      registerParsedTemplate(characterGenerics, templateResource);
+      registerParsedTemplate(environment, templateResource);
     }
   }
 
-  private void registerParsedTemplate(HeroEnvironment generics, ResourceFile resource) {
-    ICharacterTemplateRegistryCollection characterTemplateRegistries = generics.getCharacterTemplateRegistries();
-    new CharacterTemplateParser(generics.getCharacterTypes(), characterTemplateRegistries, generics.getDataSet(ICharmCache.class));
+  private void registerParsedTemplate(HeroEnvironment environment, ResourceFile resource) {
+    ICharacterTemplateRegistryCollection characterTemplateRegistries = environment.getCharacterTemplateRegistries();
+    new CharacterTemplateParser(environment.getCharacterTypes(), characterTemplateRegistries, environment.getDataSet(ICharmCache.class));
     try {
       GenericCharacterTemplate template = characterTemplateRegistries.getCharacterTemplateRegistry().get(resource);
-      generics.getTemplateRegistry().register(template);
+      environment.getTemplateRegistry().register(template);
     } catch (PersistenceException e) {
       Logger.getLogger(CharacterTemplateInitializer.class).error(resource.getFileName(), e);
     }
