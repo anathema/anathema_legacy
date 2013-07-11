@@ -24,7 +24,6 @@ import static net.sf.anathema.character.main.persistence.ICharacterXmlConstants.
 public class CharacterStatisticPersister {
 
   private final CharacterConceptPersister characterConceptPersister = new CharacterConceptPersister();
-  private final ExperiencePointsPersister experiencePersister = new ExperiencePointsPersister();
   private final RulesPersister rulesPersister = new RulesPersister();
   private final HeroEnvironment generics;
 
@@ -42,7 +41,6 @@ public class CharacterStatisticPersister {
     characterTypeElement.addAttribute(ATTRIB_SUB_TYPE, template.getTemplateType().getSubType().getId());
     characterTypeElement.addText(template.getTemplateType().getCharacterType().getId());
     characterConceptPersister.save(statisticsElement, HeroConceptFetcher.fetch(hero));
-    experiencePersister.save(statisticsElement, ExperienceModelFetcher.fetch(hero).getExperiencePoints());
   }
 
   public ExaltedCharacter loadTemplate(Element parent) {
@@ -54,10 +52,7 @@ public class CharacterStatisticPersister {
 
   public ExaltedCharacter loadData(ExaltedCharacter character, Element parent) throws PersistenceException {
     Element statisticsElement = parent.element(TAG_STATISTICS);
-    boolean experienced = ElementUtilities.getBooleanAttribute(statisticsElement, ATTRIB_EXPERIENCED, false);
     characterConceptPersister.load(statisticsElement, HeroConceptFetcher.fetch(character));
-    ExperienceModelFetcher.fetch(character).setExperienced(experienced);
-    experiencePersister.load(statisticsElement, ExperienceModelFetcher.fetch(character).getExperiencePoints());
     return character;
   }
 
