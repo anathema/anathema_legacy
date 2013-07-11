@@ -159,9 +159,11 @@ public class CharmConfigurationPersister {
   }
 
   private String parseTrueName(Hero hero, Element element, String name, CharmsModel config, boolean isExperienceLearned) {
-    StringBuilder baseCharmName = new StringBuilder();
     String[] components = name.split("\\.");
-    if (components.length > 3) {
+    if (components.length <= 3) {
+      return name;
+    } else {
+      StringBuilder baseCharmName = new StringBuilder();
       for (int i = 0; i != components.length - 2; i++) {
         baseCharmName.append(components[i]);
         baseCharmName.append(i == components.length - 3 ? "" : ".");
@@ -193,10 +195,8 @@ public class CharmConfigurationPersister {
         newElement.addAttribute(ATTRIB_CREATION_LEARNED, "" + creationLearned);
         newElement.addAttribute(ATTRIB_EXPERIENCE_LEARNED, "" + true);
       }
-    } else {
-      baseCharmName.append(name);
+      return baseCharmName.toString();
     }
-    return baseCharmName.toString();
   }
 
   private boolean isExperienceLearned(Element charmElement) {
