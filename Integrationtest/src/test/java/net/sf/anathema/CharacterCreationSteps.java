@@ -9,7 +9,7 @@ import net.sf.anathema.character.main.CharacterStatisticsConfiguration;
 import net.sf.anathema.character.main.framework.CharacterGenericsExtractor;
 import net.sf.anathema.character.main.framework.HeroEnvironment;
 import net.sf.anathema.character.main.itemtype.CharacterItemTypeRetrieval;
-import net.sf.anathema.character.main.persistence.ExaltedCharacterPersister;
+import net.sf.anathema.character.main.persistence.HeroItemPersister;
 import net.sf.anathema.character.main.template.HeroTemplate;
 import net.sf.anathema.character.main.template.TemplateType;
 import net.sf.anathema.character.main.type.CharacterTypes;
@@ -98,7 +98,7 @@ public class CharacterCreationSteps {
     CharacterStatisticsConfiguration creationRules = new CharacterStatisticsConfiguration();
     creationRules.setTemplate(template);
     IItemType characterItemType = CharacterItemTypeRetrieval.retrieveCharacterItemType();
-    RepositoryItemPersister itemPersister = new ExaltedCharacterPersister(characterItemType, getCharacterGenerics(), model.getMessaging());
+    RepositoryItemPersister itemPersister = new HeroItemPersister(characterItemType, getCharacterGenerics(), model.getMessaging());
     Item item = itemPersister.createNew(creationRules);
     return (Character) item.getItemData();
   }

@@ -3,7 +3,7 @@ package net.sf.anathema.hero.perspective;
 import net.sf.anathema.character.main.framework.CharacterGenericsExtractor;
 import net.sf.anathema.character.main.framework.HeroEnvironment;
 import net.sf.anathema.character.main.framework.item.CharacterPrintNameFileScanner;
-import net.sf.anathema.character.main.persistence.ExaltedCharacterPersister;
+import net.sf.anathema.character.main.persistence.HeroItemPersister;
 import net.sf.anathema.character.main.perspective.PreloadedDescriptiveFeatures;
 import net.sf.anathema.character.main.perspective.model.CharacterIdentifier;
 import net.sf.anathema.character.main.perspective.model.CharacterItemModel;
@@ -162,7 +162,7 @@ public class CharacterSystemModel implements ItemSystemModel {
     };
     IItemType itemType = retrieveCharacterItemType();
     ItemTemplateFactory factory = new CharacterCreationTemplateFactory(getCharacterGenerics(), resources);
-    RepositoryItemPersister persister = new ExaltedCharacterPersister(itemType, getCharacterGenerics(), model.getMessaging());
+    RepositoryItemPersister persister = new HeroItemPersister(itemType, getCharacterGenerics(), model.getMessaging());
     new NewItemCommand(factory, resources, receiver, persister).execute();
   }
 

@@ -31,22 +31,22 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
 
-import static net.sf.anathema.character.main.persistence.ICharacterXmlConstants.TAG_EXALTED_CHARACTER_ROOT;
+public class HeroItemPersister implements RepositoryItemPersister {
 
-public class ExaltedCharacterPersister implements RepositoryItemPersister {
+  private static final String TAG_EXALTED_CHARACTER_ROOT = "ExaltedCharacter";
 
   private final ItemMetaDataPersister repositoryItemPersister = new ItemMetaDataPersister();
-  private final CharacterStatisticPersister statisticsPersister;
+  private final HeroTemplatePersister templatePersister;
   private final IItemType characterType;
   private final HeroEnvironment generics;
   private final IMessaging messaging;
   private final HeroPersisterList persisterList;
 
-  public ExaltedCharacterPersister(IItemType characterType, HeroEnvironment generics, IMessaging messaging) {
+  public HeroItemPersister(IItemType characterType, HeroEnvironment generics, IMessaging messaging) {
     this.characterType = characterType;
     this.generics = generics;
     this.messaging = messaging;
-    this.statisticsPersister = new CharacterStatisticPersister(generics);
+    this.templatePersister = new HeroTemplatePersister(generics);
     this.persisterList = new HeroPersisterList(generics);
   }
 
@@ -60,7 +60,7 @@ public class ExaltedCharacterPersister implements RepositoryItemPersister {
       Hero hero = (Hero) item.getItemData();
       repositoryItemPersister.save(rootElement, item);
       saveModels(writeAccess, hero);
-      statisticsPersister.save(rootElement, hero);
+      templatePersister.saveTemplate(rootElement, hero);
       DocumentUtilities.save(DocumentHelper.createDocument(rootElement), stream);
     }
     finally {
@@ -89,7 +89,7 @@ public class ExaltedCharacterPersister implements RepositoryItemPersister {
       SAXReader saxReader = new SAXReader();
       Document document = saxReader.read(stream);
       Element documentRoot = document.getRootElement();
-      ExaltedCharacter character = statisticsPersister.loadTemplate(documentRoot);
+      ExaltedCharacter character = templatePersister.loadTemplate(documentRoot);
       loadModels(readAccess, character);
       markCharacterReadyForWork(character);
       Item item = createItem(character);
@@ -116,9 +116,6 @@ public class ExaltedCharacterPersister implements RepositoryItemPersister {
 
   @Override
   public Item createNew(IDialogModelTemplate template) throws PersistenceException {
-    if (!(template instanceof CharacterStatisticsConfiguration)) {
-      throw new IllegalArgumentException("Bad template type for character creation.");
-    }
     CharacterStatisticsConfiguration configuration = (CharacterStatisticsConfiguration) template;
     try {
       ExaltedCharacter character = new ExaltedCharacter(configuration.getTemplate(), generics);
@@ -136,5 +133,4 @@ public class ExaltedCharacterPersister implements RepositoryItemPersister {
   private void markCharacterReadyForWork(ExaltedCharacter character) {
     character.setFullyLoaded(true);
   }
-
 }

@@ -23,7 +23,7 @@ import static org.junit.Assert.assertThat;
 import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.when;
 
-public class ExaltedCharacterPersisterTest {
+public class HeroItemPersisterTest {
   private IMessaging messaging = mock(IMessaging.class);
   private IItemType type;
   private SimpleDummyCharacterTemplate template;
@@ -45,7 +45,7 @@ public class ExaltedCharacterPersisterTest {
   @Test
   public void createsFullyLoadedCharacter() throws Exception {
     HeroEnvironment generics = createCharacterGenerics();
-    ExaltedCharacterPersister persister = new ExaltedCharacterPersister(type, generics, messaging);
+    HeroItemPersister persister = new HeroItemPersister(type, generics, messaging);
     Character character = createNewCharacter(persister);
     assertThat(character.isFullyLoaded(), is(true));
   }
@@ -59,7 +59,7 @@ public class ExaltedCharacterPersisterTest {
     return generics;
   }
 
-  private Character createNewCharacter(ExaltedCharacterPersister persister) throws PersistenceException {
+  private Character createNewCharacter(HeroItemPersister persister) throws PersistenceException {
     Item item = persister.createNew(configuration);
     return (Character) item.getItemData();
   }

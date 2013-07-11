@@ -14,39 +14,29 @@ import net.sf.anathema.lib.util.SimpleIdentifier;
 import net.sf.anathema.lib.xml.ElementUtilities;
 import org.dom4j.Element;
 
-import static net.sf.anathema.character.main.persistence.ICharacterXmlConstants.ATTRIB_SUB_TYPE;
-import static net.sf.anathema.character.main.persistence.ICharacterXmlConstants.TAG_CHARACTER_TYPE;
-import static net.sf.anathema.character.main.persistence.ICharacterXmlConstants.TAG_STATISTICS;
+public class HeroTemplatePersister {
 
-public class CharacterStatisticPersister {
+  private static final String ATTRIB_SUB_TYPE = "subtype";
+  private static final String TAG_CHARACTER_TYPE = "CharacterType";
 
-  private final RulesPersister rulesPersister = new RulesPersister();
   private final HeroEnvironment generics;
 
-  public CharacterStatisticPersister(HeroEnvironment generics) {
+  public HeroTemplatePersister(HeroEnvironment generics) {
     this.generics = generics;
   }
 
-  public void save(Element parent, Hero hero) {
+  public void saveTemplate(Element parent, Hero hero) {
     Preconditions.checkNotNull(hero);
-    Element statisticsElement = parent.addElement(TAG_STATISTICS);
-    rulesPersister.save(statisticsElement);
     HeroTemplate template = hero.getTemplate();
-    Element characterTypeElement = statisticsElement.addElement(TAG_CHARACTER_TYPE);
+    Element characterTypeElement = parent.addElement(TAG_CHARACTER_TYPE);
     characterTypeElement.addAttribute(ATTRIB_SUB_TYPE, template.getTemplateType().getSubType().getId());
     characterTypeElement.addText(template.getTemplateType().getCharacterType().getId());
   }
 
   public ExaltedCharacter loadTemplate(Element parent) {
-    Element statisticsElement = parent.element(TAG_STATISTICS);
-    ITemplateType templateType = loadTemplateType(statisticsElement);
+    ITemplateType templateType = loadTemplateType(parent);
     HeroTemplate template = generics.getTemplateRegistry().getTemplate(templateType);
     return new ExaltedCharacter(template, generics);
-  }
-
-  public ExaltedCharacter loadData(ExaltedCharacter character, Element parent) throws PersistenceException {
-    Element statisticsElement = parent.element(TAG_STATISTICS);
-    return character;
   }
 
   private ITemplateType loadTemplateType(Element parent) throws PersistenceException {

@@ -2,7 +2,7 @@ package net.sf.anathema.character.main.perspective.model;
 
 import net.sf.anathema.character.main.framework.CharacterGenericsExtractor;
 import net.sf.anathema.character.main.framework.HeroEnvironment;
-import net.sf.anathema.character.main.persistence.ExaltedCharacterPersister;
+import net.sf.anathema.character.main.persistence.HeroItemPersister;
 import net.sf.anathema.framework.IApplicationModel;
 import net.sf.anathema.framework.item.IItemType;
 import net.sf.anathema.framework.persistence.RepositoryItemPersister;
@@ -48,7 +48,7 @@ public class CharacterPersistenceModel {
   private RepositoryItemPersister findPersister() {
     HeroEnvironment generics = CharacterGenericsExtractor.getGenerics(model);
     IItemType itemType = getCharacterItemType();
-    return new ExaltedCharacterPersister(itemType, generics, model.getMessaging());
+    return new HeroItemPersister(itemType, generics, model.getMessaging());
   }
 
   private IRepositoryReadAccess createReadAccess(String repositoryId) {
