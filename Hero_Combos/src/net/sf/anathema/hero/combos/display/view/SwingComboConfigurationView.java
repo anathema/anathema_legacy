@@ -20,7 +20,6 @@ import net.sf.anathema.lib.workflow.textualdescription.ITextView;
 import net.sf.anathema.lib.workflow.textualdescription.SwingTextView;
 import net.sf.anathema.lib.workflow.textualdescription.view.AreaTextView;
 import net.sf.anathema.lib.workflow.textualdescription.view.LineTextView;
-import org.jdesktop.swingx.JXTaskPaneContainer;
 import org.jmock.example.announcer.Announcer;
 
 import javax.swing.JComponent;
@@ -28,8 +27,6 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import java.util.Arrays;
-
-import static net.sf.anathema.lib.gui.swing.GuiUtilities.revalidate;
 
 public class SwingComboConfigurationView implements ComboConfigurationView, IView {
   private static final int TEXT_COLUMNS = 20;
@@ -42,8 +39,7 @@ public class SwingComboConfigurationView implements ComboConfigurationView, IVie
   private Tool finalizeButton;
   private boolean isNameEntered;
   private boolean isDescriptionEntered;
-  private final JXTaskPaneContainer comboPane = new JXTaskPaneContainer();
-  private JScrollPane comboScrollPane;
+  private final SwingComboContainer container = new SwingComboContainer();
   private ComboViewProperties properties;
   private MagicLearnPresenter magicLearnPresenter;
 
@@ -70,55 +66,8 @@ public class SwingComboConfigurationView implements ComboConfigurationView, IVie
     viewPort.add(new JLabel());
     viewPort.add(namePanel, new CC().spanY(2).alignY("top"));
     magicLearnView.addTo(viewPort);
-    comboPane.setBackground(viewPort.getBackground());
-    comboScrollPane = new JScrollPane(comboPane);
-    viewPort.add(comboScrollPane, new CC().spanX().grow().push());
-  }
-
-  private void enableOrDisableFinalizeButton() {
-    if (magicLearnView.hasMoreThanOneElementLearned()) {
-      finalizeButton.enable();
-    } else {
-      finalizeButton.disable();
-    }
-  }
-
-  private Tool createClearTool(ComboViewProperties viewProperties) {
-    Command command = new Command() {
-      @Override
-      public void execute() {
-        fireComboCleared();
-      }
-    };
-    Tool tool = magicLearnView.addAdditionalTool();
-    tool.disable();
-    tool.setCommand(command);
-    tool.setIcon(viewProperties.getClearButtonIcon());
-    tool.setTooltip(viewProperties.getClearButtonToolTip());
-    return tool;
-  }
-
-  private void fireComboCleared() {
-    comboViewListeners.announce().comboCleared();
-  }
-
-  private Tool createFinalizeComboButton(ComboViewProperties viewProperties) {
-    Command command = new Command() {
-      @Override
-      public void execute() {
-        fireComboFinalized();
-      }
-    };
-    Tool tool = magicLearnView.addAdditionalTool();
-    tool.disable();
-    tool.setCommand(command);
-    tool.setIcon(viewProperties.getFinalizeButtonIcon());
-    tool.setTooltip(viewProperties.getFinalizeButtonToolTip());
-    return tool;
-  }
-
-  private void fireComboFinalized() {
-    comboViewListeners.announce().comboFinalized();
+    container.adjustBackgroundColor(viewPort.getBackground());
+    viewPort.add(container.getComponent(), new CC().spanX().grow().push());
   }
 
   @Override
@@ -167,26 +116,6 @@ public class SwingComboConfigurationView implements ComboConfigurationView, IVie
   }
 
   @Override
-  public ComboView addComboView(String name, String description) {
-    SwingComboView comboView = new SwingComboView();
-    comboView.initGui(name, description);
-    comboPane.add(comboView.getTaskGroup());
-    revalidateView();
-    return comboView;
-  }
-
-  private void revalidateView() {
-    revalidate(comboPane);
-    revalidate(comboScrollPane);
-  }
-
-  private ITextView addTextView(String viewTitle, SwingTextView textView) {
-    namePanel.add(new JLabel(viewTitle));
-    namePanel.add(textView.getComponent(), new CC().growX());
-    return textView;
-  }
-
-  @Override
   public ITextView addComboDescriptionView(String viewTitle) {
     AreaTextView textView = new AreaTextView(5, TEXT_COLUMNS);
     textView.addTextChangedListener(new ObjectValueListener<String>() {
@@ -200,10 +129,13 @@ public class SwingComboConfigurationView implements ComboConfigurationView, IVie
   }
 
   @Override
+  public ComboView addComboView(String name, String description) {
+    return container.addView(name, description);
+  }
+
+  @Override
   public void deleteView(ComboView view) {
-    SwingComboView comboView = (SwingComboView) view;
-    comboPane.remove(comboView.getTaskGroup());
-    revalidateView();
+    container.remove(view);
   }
 
   @Override
@@ -212,6 +144,50 @@ public class SwingComboConfigurationView implements ComboConfigurationView, IVie
     clearButton.setTooltip(editing ? properties.getCancelButtonEditToolTip() : properties.getClearButtonToolTip());
     finalizeButton.setTooltip(
             editing ? properties.getFinalizeButtonEditToolTip() : properties.getFinalizeButtonToolTip());
+  }
+
+  private ITextView addTextView(String viewTitle, SwingTextView textView) {
+    namePanel.add(new JLabel(viewTitle));
+    namePanel.add(textView.getComponent(), new CC().growX());
+    return textView;
+  }
+
+  private Tool createFinalizeComboButton(ComboViewProperties viewProperties) {
+    Command command = new Command() {
+      @Override
+      public void execute() {
+        fireComboFinalized();
+      }
+    };
+    Tool tool = magicLearnView.addAdditionalTool();
+    tool.disable();
+    tool.setCommand(command);
+    tool.setIcon(viewProperties.getFinalizeButtonIcon());
+    tool.setTooltip(viewProperties.getFinalizeButtonToolTip());
+    return tool;
+  }
+
+  private Tool createClearTool(ComboViewProperties viewProperties) {
+    Command command = new Command() {
+      @Override
+      public void execute() {
+        fireComboCleared();
+      }
+    };
+    Tool tool = magicLearnView.addAdditionalTool();
+    tool.disable();
+    tool.setCommand(command);
+    tool.setIcon(viewProperties.getClearButtonIcon());
+    tool.setTooltip(viewProperties.getClearButtonToolTip());
+    return tool;
+  }
+
+  private void enableOrDisableFinalizeButton() {
+    if (magicLearnView.hasMoreThanOneElementLearned()) {
+      finalizeButton.enable();
+    } else {
+      finalizeButton.disable();
+    }
   }
 
   private void enableOrDisableClearButton() {
@@ -224,5 +200,13 @@ public class SwingComboConfigurationView implements ComboConfigurationView, IVie
 
   private boolean canEnableClearButton() {
     return isDescriptionEntered || isNameEntered || magicLearnView.hasAnyElementLearned();
+  }
+
+  private void fireComboFinalized() {
+    comboViewListeners.announce().comboFinalized();
+  }
+
+  private void fireComboCleared() {
+    comboViewListeners.announce().comboCleared();
   }
 }
