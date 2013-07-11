@@ -1,4 +1,4 @@
-package net.sf.anathema.character.main.magic.display.view.combos;
+package net.sf.anathema.hero.combos.display;
 
 import com.google.common.base.Preconditions;
 import net.miginfocom.layout.CC;

@@ -2,7 +2,6 @@ package net.sf.anathema.hero.combos.display;
 
 import net.sf.anathema.character.main.CharacterUI;
 import net.sf.anathema.character.main.magic.description.MagicDescriptionProvider;
-import net.sf.anathema.character.main.magic.display.view.combos.ComboViewProperties;
 import net.sf.anathema.character.main.magic.model.charm.Charm;
 import net.sf.anathema.character.main.magic.model.charmtree.builder.stringbuilder.CharmInfoStringBuilder;
 import net.sf.anathema.character.main.magic.model.charmtree.builder.stringbuilder.ICharmInfoStringBuilder;

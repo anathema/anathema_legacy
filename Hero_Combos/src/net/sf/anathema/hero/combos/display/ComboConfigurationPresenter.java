@@ -1,9 +1,6 @@
 package net.sf.anathema.hero.combos.display;
 
 import com.google.common.base.Strings;
-import net.sf.anathema.character.main.magic.display.view.combos.ComboConfigurationView;
-import net.sf.anathema.character.main.magic.display.view.combos.ComboView;
-import net.sf.anathema.character.main.magic.display.view.combos.ComboViewListener;
 import net.sf.anathema.character.main.magic.model.charm.Charm;
 import net.sf.anathema.hero.charms.model.CharmsModel;
 import net.sf.anathema.hero.combos.model.CombosModel;
