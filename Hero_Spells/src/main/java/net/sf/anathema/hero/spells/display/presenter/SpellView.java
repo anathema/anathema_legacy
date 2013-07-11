@@ -1,4 +1,4 @@
-package net.sf.anathema.hero.spells.display;
+package net.sf.anathema.hero.spells.display.presenter;
 
 import net.sf.anathema.character.main.magic.model.spells.CircleType;
 import net.sf.anathema.hero.magic.display.MagicLearnProperties;

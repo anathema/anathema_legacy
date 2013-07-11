@@ -1,4 +1,4 @@
-package net.sf.anathema.hero.spells.display;
+package net.sf.anathema.hero.spells.display.view;
 
 import net.miginfocom.layout.CC;
 import net.miginfocom.swing.MigLayout;
@@ -7,6 +7,8 @@ import net.sf.anathema.framework.swing.IView;
 import net.sf.anathema.hero.magic.display.MagicLearnProperties;
 import net.sf.anathema.hero.magic.display.MagicLearnView;
 import net.sf.anathema.hero.magic.display.SwingMagicLearnView;
+import net.sf.anathema.hero.spells.display.presenter.ISpellViewProperties;
+import net.sf.anathema.hero.spells.display.presenter.SpellView;
 import net.sf.anathema.lib.control.ObjectValueListener;
 import net.sf.anathema.lib.gui.ui.ConfigurableListCellRenderer;
 import net.sf.anathema.lib.util.Identifier;

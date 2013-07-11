@@ -1,4 +1,4 @@
-package net.sf.anathema.hero.spells.display;
+package net.sf.anathema.hero.spells.display.presenter;
 
 import net.sf.anathema.character.main.magic.description.MagicDescriptionProvider;
 import net.sf.anathema.character.main.magic.display.view.charms.CharmDescriptionProviderExtractor;
