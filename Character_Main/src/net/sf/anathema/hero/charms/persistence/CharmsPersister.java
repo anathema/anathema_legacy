@@ -41,46 +41,51 @@ public class CharmsPersister extends AbstractModelJsonPersister<CharmListPto, Ch
   protected CharmListPto saveModelToPto(CharmsModel model) {
     CharmListPto pto = new CharmListPto();
     for (ILearningCharmGroup group : model.getAllGroups()) {
-      saveLearnGroup(model, group, pto);
+      saveGroupCharms(group, pto);
+      saveGroupCharmSpecials(model, group, pto);
     }
     return pto;
   }
 
-  private void saveLearnGroup(CharmsModel charmsModel, ILearningCharmGroup group, CharmListPto pto) {
+  private void saveGroupCharms(ILearningCharmGroup group, CharmListPto pto) {
     if (!group.hasLearnedCharms()) {
       return;
     }
-    CharmGroupPto groupPto = createGroupPto(charmsModel, group);
-    pto.groups.add(groupPto);
+    pto.groups.add(createGroupPto(group));
   }
 
-  private CharmGroupPto createGroupPto(CharmsModel charmsModel, ILearningCharmGroup group) {
+  private CharmGroupPto createGroupPto(ILearningCharmGroup group) {
     CharmGroupPto groupPto = new CharmGroupPto();
     groupPto.name = group.getId();
     groupPto.type = group.getCharacterType().getId();
-    saveCharms(charmsModel, group, groupPto);
+    saveCharms(group, groupPto);
     return groupPto;
   }
 
-  private void saveCharms(CharmsModel charmsModel, ILearningCharmGroup group, CharmGroupPto groupPto) {
+  private void saveCharms(ILearningCharmGroup group, CharmGroupPto groupPto) {
     Map<String, Boolean> isExperiencedLearned = getExperiencedLearnedMap(group);
     List<Charm> sortedCharmList = getSortedCharmList(group);
     for (Charm charm : sortedCharmList) {
-      saveCharm(charmsModel, charm, isExperiencedLearned.get(charm.getId()), groupPto);
+      saveCharm(charm, isExperiencedLearned.get(charm.getId()), groupPto);
     }
   }
 
-  private void saveCharm(CharmsModel charmsModel, Charm charm, boolean isExperienceLearned, CharmGroupPto groupPto) {
+  private void saveCharm(Charm charm, boolean isExperienceLearned, CharmGroupPto groupPto) {
     CharmPto charmPto = new CharmPto();
     charmPto.name = charm.getId();
     charmPto.isExperienceLearned = isExperienceLearned;
     groupPto.charms.add(charmPto);
-    saveCharmSpecials(charmsModel, charm, charmPto);
   }
 
-  private void saveCharmSpecials(CharmsModel charmsModel, Charm charm, CharmPto charmPto) {
+  private void saveGroupCharmSpecials(CharmsModel model, ILearningCharmGroup group, CharmListPto pto) {
+    for (Charm charm : getSortedCharmList(group)) {
+      saveCharmSpecials(model, charm, pto);
+    }
+  }
+
+  private void saveCharmSpecials(CharmsModel charmsModel, Charm charm, CharmListPto charmListPto) {
     SpecialCharmListPersister persister = new SpecialCharmListPersister(charmsModel);
-    persister.saveCharmSpecials(charmsModel, charm, charmPto);
+    persister.saveCharmSpecials(charmsModel, charm, charmListPto);
   }
 
   private List<Charm> getSortedCharmList(ILearningCharmGroup group) {

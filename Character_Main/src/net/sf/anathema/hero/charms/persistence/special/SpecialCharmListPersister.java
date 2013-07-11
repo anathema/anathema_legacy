@@ -14,6 +14,7 @@ import net.sf.anathema.character.main.magic.model.charm.special.ISubEffectCharm;
 import net.sf.anathema.character.main.magic.model.charm.special.ITraitCapModifyingCharm;
 import net.sf.anathema.character.main.magic.model.charm.special.IUpgradableCharm;
 import net.sf.anathema.hero.charms.model.CharmsModel;
+import net.sf.anathema.hero.charms.persistence.CharmListPto;
 import net.sf.anathema.hero.charms.persistence.CharmPto;
 import net.sf.anathema.hero.charms.persistence.special.effect.MultipleEffectCharmPersister;
 import net.sf.anathema.hero.charms.persistence.special.learn.MultiLearnCharmPersister;
@@ -78,13 +79,15 @@ public class SpecialCharmListPersister {
     return charmTree.getCharmById(charmId);
   }
 
-  public void saveCharmSpecials(CharmsModel charmsModel, Charm charm, CharmPto charmPto) {
+  public void saveCharmSpecials(CharmsModel charmsModel, Charm charm, CharmListPto charmPto) {
     CharmSpecialsModel charmSpecials = charmsModel.getCharmSpecialsModel(charm);
     SpecialCharmPersister specialCharmPersister = persisterByCharm.get(charm);
     if (charmSpecials == null || specialCharmPersister == null) {
       return;
     }
-    charmPto.special = new SpecialCharmPto();
-    specialCharmPersister.saveCharmSpecials(charmSpecials, charmPto.special);
+    SpecialCharmPto specialPto = new SpecialCharmPto();
+    specialPto.charmId = charm.getId();
+    specialCharmPersister.saveCharmSpecials(charmSpecials, specialPto);
+    charmPto.charmSpecials.add(specialPto);
   }
 }

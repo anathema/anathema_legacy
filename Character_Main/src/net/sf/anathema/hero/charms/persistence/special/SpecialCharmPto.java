@@ -6,6 +6,7 @@ import net.sf.anathema.hero.charms.persistence.special.oxbody.OxBodyTechniquePto
 
 public class SpecialCharmPto {
 
+  public String charmId;
   public MultiLearnPto multiLearn;
   public SubEffectListPto subEffects;
   public OxBodyTechniquePto oxBodyTechnique;
