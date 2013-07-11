@@ -10,7 +10,7 @@ public class MultipleEffectCharmPersister implements SpecialCharmPersister {
 
   @Override
   public void saveCharmSpecials(CharmSpecialsModel charmSpecials, SpecialCharmPto charmPto) {
-    MultipleEffectCharmSpecials multipleEffects = (MultipleEffectCharmSpecials) charmPto;
+    MultipleEffectCharmSpecials multipleEffects = (MultipleEffectCharmSpecials) charmSpecials;
     SubEffectListPto subEffectsList = createPto(multipleEffects);
     charmPto.subEffects = subEffectsList;
   }

@@ -7,10 +7,11 @@ import net.sf.anathema.hero.charms.model.CharmsModelFetcher;
 import net.sf.anathema.hero.combos.model.CombosModel;
 import net.sf.anathema.hero.model.Hero;
 import net.sf.anathema.hero.persistence.AbstractModelJsonPersister;
+import net.sf.anathema.hero.persistence.HeroModelPersisterCollected;
 import net.sf.anathema.lib.message.MessageType;
 import net.sf.anathema.lib.util.Identifier;
 
-//@HeroModelPersisterCollected
+@HeroModelPersisterCollected
 public class CombosPersister extends AbstractModelJsonPersister<ComboListPto, CombosModel> {
 
   public CombosPersister() {

@@ -5,5 +5,5 @@ import java.util.List;
 
 public class CharmListPto {
 
-  public List<CharmGroupPto> combos = new ArrayList<>();
+  public List<CharmGroupPto> groups = new ArrayList<>();
 }

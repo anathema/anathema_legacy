@@ -8,6 +8,7 @@ import net.sf.anathema.hero.charms.model.CharmsModelFetcher;
 import net.sf.anathema.hero.charms.persistence.special.SpecialCharmListPersister;
 import net.sf.anathema.hero.model.Hero;
 import net.sf.anathema.hero.persistence.AbstractModelJsonPersister;
+import net.sf.anathema.hero.persistence.HeroModelPersisterCollected;
 import net.sf.anathema.lib.util.Identifier;
 
 import java.util.ArrayList;
@@ -16,7 +17,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-//@HeroModelPersisterCollected
+@HeroModelPersisterCollected
 public class CharmsPersister extends AbstractModelJsonPersister<CharmListPto, CharmsModel> {
 
   public CharmsPersister() {
@@ -40,19 +41,25 @@ public class CharmsPersister extends AbstractModelJsonPersister<CharmListPto, Ch
   protected CharmListPto saveModelToPto(CharmsModel model) {
     CharmListPto pto = new CharmListPto();
     for (ILearningCharmGroup group : model.getAllGroups()) {
-      saveLearnGroup(model, group);
+      saveLearnGroup(model, group, pto);
     }
     return pto;
   }
 
-  private void saveLearnGroup(CharmsModel charmsModel, ILearningCharmGroup group) {
+  private void saveLearnGroup(CharmsModel charmsModel, ILearningCharmGroup group, CharmListPto pto) {
     if (!group.hasLearnedCharms()) {
       return;
     }
+    CharmGroupPto groupPto = createGroupPto(charmsModel, group);
+    pto.groups.add(groupPto);
+  }
+
+  private CharmGroupPto createGroupPto(CharmsModel charmsModel, ILearningCharmGroup group) {
     CharmGroupPto groupPto = new CharmGroupPto();
     groupPto.name = group.getId();
     groupPto.type = group.getCharacterType().getId();
     saveCharms(charmsModel, group, groupPto);
+    return groupPto;
   }
 
   private void saveCharms(CharmsModel charmsModel, ILearningCharmGroup group, CharmGroupPto groupPto) {
