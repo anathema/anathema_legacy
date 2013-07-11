@@ -32,7 +32,6 @@ import net.sf.anathema.character.main.type.ICharacterType;
 import net.sf.anathema.hero.change.ChangeAnnouncer;
 import net.sf.anathema.hero.change.ChangeFlavor;
 import net.sf.anathema.hero.change.FlavoredChangeListener;
-import net.sf.anathema.hero.charms.CharmsModel;
 import net.sf.anathema.hero.charms.model.context.CreationCharmLearnStrategy;
 import net.sf.anathema.hero.charms.model.context.ExperiencedCharmLearnStrategy;
 import net.sf.anathema.hero.charms.model.context.ProxyCharmLearnStrategy;

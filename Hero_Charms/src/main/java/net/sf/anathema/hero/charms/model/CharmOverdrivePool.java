@@ -2,7 +2,6 @@ package net.sf.anathema.hero.charms.model;
 
 import net.sf.anathema.character.main.magic.model.charm.Charm;
 import net.sf.anathema.character.main.magic.model.charm.CharmAttributeList;
-import net.sf.anathema.hero.charms.CharmsModel;
 import net.sf.anathema.hero.essencepool.OverdrivePool;
 import net.sf.anathema.hero.experience.ExperienceModel;
 

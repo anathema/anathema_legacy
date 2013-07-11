@@ -2,8 +2,8 @@ package net.sf.anathema.hero.combos.display;
 
 import com.google.common.base.Strings;
 import net.sf.anathema.character.main.magic.model.charm.Charm;
-import net.sf.anathema.hero.charms.CharmsModel;
-import net.sf.anathema.hero.combos.CombosModel;
+import net.sf.anathema.hero.charms.model.CharmsModel;
+import net.sf.anathema.hero.combos.model.CombosModel;
 import net.sf.anathema.hero.concept.ConceptChange;
 import net.sf.anathema.character.main.magic.model.charm.CharmLearnAdapter;
 import net.sf.anathema.character.main.magic.model.charm.ICharmLearnListener;

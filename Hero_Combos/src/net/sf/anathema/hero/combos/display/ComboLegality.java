@@ -1,7 +1,7 @@
 package net.sf.anathema.hero.combos.display;
 
 import net.sf.anathema.character.main.magic.model.charm.Charm;
-import net.sf.anathema.hero.combos.CombosModel;
+import net.sf.anathema.hero.combos.model.CombosModel;
 import net.sf.anathema.lib.gui.list.LegalityCheck;
 
 public class ComboLegality implements LegalityCheck {

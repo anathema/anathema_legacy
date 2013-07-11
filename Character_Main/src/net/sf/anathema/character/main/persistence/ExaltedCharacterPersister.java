@@ -74,6 +74,7 @@ public class ExaltedCharacterPersister implements RepositoryItemPersister {
     for (HeroModelPersister persister : persisterList.iterator(hero)) {
       HeroModel heroModel = hero.getModel(persister.getModelId());
       if (heroModel != null) {
+        persister.setMessaging(messaging);
         persister.save(heroModel, new HeroModelSaverImpl(writeAccess));
       }
     }
@@ -116,7 +117,8 @@ public class ExaltedCharacterPersister implements RepositoryItemPersister {
     for (HeroModelPersister persister : persisterList.iterator(hero)) {
       HeroModel heroModel = hero.getModel(persister.getModelId());
       if (heroModel != null) {
-        persister.load(heroModel, new HeroModelLoaderImpl(readAccess));
+        persister.setMessaging(messaging);
+        persister.load(hero, heroModel, new HeroModelLoaderImpl(readAccess));
       }
     }
   }

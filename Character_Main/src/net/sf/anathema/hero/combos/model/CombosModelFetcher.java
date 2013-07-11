@@ -1,4 +1,4 @@
-package net.sf.anathema.hero.combos;
+package net.sf.anathema.hero.combos.model;
 
 import net.sf.anathema.hero.model.Hero;
 

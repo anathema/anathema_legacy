@@ -2,6 +2,7 @@ package net.sf.anathema.herotype.solar.persistence.curse;
 
 import net.sf.anathema.character.main.library.trait.Trait;
 import net.sf.anathema.character.main.traits.types.VirtueType;
+import net.sf.anathema.hero.model.Hero;
 import net.sf.anathema.hero.persistence.AbstractModelJsonPersister;
 import net.sf.anathema.hero.persistence.HeroModelPersisterCollected;
 import net.sf.anathema.herotype.solar.model.curse.DescriptiveVirtueFlaw;
@@ -16,7 +17,7 @@ public class GreatCursePersister extends AbstractModelJsonPersister<VirtueFlawPt
   }
 
   @Override
-  protected void fillModel(VirtueFlawModel model, VirtueFlawPto pto) {
+  protected void loadModelFromPto(Hero hero, VirtueFlawModel model, VirtueFlawPto pto) {
     Trait limitTrait = model.getVirtueFlaw().getLimitTrait();
     limitTrait.setUncheckedCreationValue(pto.limit.creationValue);
     if (pto.limit.experienceValue != null) {
@@ -34,7 +35,7 @@ public class GreatCursePersister extends AbstractModelJsonPersister<VirtueFlawPt
   }
 
   @Override
-  protected VirtueFlawPto createPto(VirtueFlawModel heroModel) {
+  protected VirtueFlawPto saveModelToPto(VirtueFlawModel heroModel) {
     VirtueFlawPto pto = new VirtueFlawPto();
     pto.name = heroModel.getVirtueFlaw().getName().getText();
     pto.limit.creationValue = heroModel.getVirtueFlaw().getLimitTrait().getCreationValue();

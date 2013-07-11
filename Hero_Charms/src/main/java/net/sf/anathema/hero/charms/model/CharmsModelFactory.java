@@ -2,7 +2,6 @@ package net.sf.anathema.hero.charms.model;
 
 import net.sf.anathema.hero.abilities.model.AbilitiesModel;
 import net.sf.anathema.hero.attributes.model.AttributeModel;
-import net.sf.anathema.hero.charms.CharmsModel;
 import net.sf.anathema.hero.concept.HeroConcept;
 import net.sf.anathema.hero.essencepool.EssencePoolModel;
 import net.sf.anathema.hero.experience.ExperienceModel;

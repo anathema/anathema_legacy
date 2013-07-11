@@ -2,6 +2,9 @@ package net.sf.anathema.hero.persistence;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
+import net.sf.anathema.framework.messaging.IMessaging;
+import net.sf.anathema.framework.messaging.NullMessaging;
+import net.sf.anathema.hero.model.Hero;
 import net.sf.anathema.hero.model.HeroModel;
 import net.sf.anathema.lib.exception.AnathemaException;
 import net.sf.anathema.lib.exception.PersistenceException;
@@ -14,6 +17,7 @@ import java.io.OutputStream;
 
 public abstract class AbstractModelJsonPersister<P, M extends HeroModel> implements HeroModelPersister {
 
+  protected IMessaging messaging = new NullMessaging();
   private final String persistenceId;
   private final Gson gson;
   private Class<P> ptoClass;
@@ -27,12 +31,17 @@ public abstract class AbstractModelJsonPersister<P, M extends HeroModel> impleme
   }
 
   @Override
-  public final void load(HeroModel model, HeroModelLoader loader) throws PersistenceException {
+  public void setMessaging(IMessaging messaging) {
+    this.messaging = messaging;
+  }
+
+  @Override
+  public final void load(Hero hero, HeroModel model, HeroModelLoader loader) throws PersistenceException {
     P pto = loadPto(loader);
     if (pto == null) {
       return;
     }
-    fillModel((M) model, pto);
+    loadModelFromPto(hero, (M) model, pto);
   }
 
   private P loadPto(HeroModelLoader loader) {
@@ -57,16 +66,16 @@ public abstract class AbstractModelJsonPersister<P, M extends HeroModel> impleme
     return gson.fromJson(json, ptoClass);
   }
 
-  protected abstract void fillModel(M model, P pto);
+  protected abstract void loadModelFromPto(Hero hero, M model, P pto);
 
   @Override
   public final void save(HeroModel heroModel, HeroModelSaver saver) {
-    P pto = createPto((M) heroModel);
+    P pto = saveModelToPto((M) heroModel);
     String json = gson.toJson(pto);
     writePersistence(saver, json);
   }
 
-  protected abstract P createPto(M heroModel);
+  protected abstract P saveModelToPto(M heroModel);
 
   private void writePersistence(HeroModelSaver persistence, String json) {
     OutputStream outputStream = null;

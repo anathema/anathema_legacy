@@ -12,8 +12,8 @@ import net.sf.anathema.character.main.magic.model.charm.special.ISubeffectCharmC
 import net.sf.anathema.character.main.magic.model.charms.ILearningCharmGroup;
 import net.sf.anathema.character.main.magic.model.magic.IMagicStats;
 import net.sf.anathema.character.main.magic.model.magic.Magic;
-import net.sf.anathema.hero.charms.CharmsModel;
-import net.sf.anathema.hero.charms.CharmsModelFetcher;
+import net.sf.anathema.hero.charms.model.CharmsModel;
+import net.sf.anathema.hero.charms.model.CharmsModelFetcher;
 import net.sf.anathema.hero.charms.sheet.content.stats.GenericCharmStats;
 import net.sf.anathema.hero.experience.ExperienceModelFetcher;
 import net.sf.anathema.hero.model.Hero;

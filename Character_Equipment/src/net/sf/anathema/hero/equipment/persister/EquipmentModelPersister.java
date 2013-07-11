@@ -8,6 +8,7 @@ import net.sf.anathema.equipment.core.MagicalMaterial;
 import net.sf.anathema.equipment.core.MaterialComposition;
 import net.sf.anathema.hero.equipment.EquipmentModel;
 import net.sf.anathema.hero.equipment.model.MissingMaterialException;
+import net.sf.anathema.hero.model.Hero;
 import net.sf.anathema.hero.persistence.AbstractModelJsonPersister;
 import net.sf.anathema.hero.persistence.HeroModelPersisterCollected;
 import net.sf.anathema.lib.logging.Logger;
@@ -23,7 +24,7 @@ public class EquipmentModelPersister extends AbstractModelJsonPersister<Equipmen
   }
 
   @Override
-  protected void fillModel(EquipmentModel model, EquipmentListPto pto) {
+  protected void loadModelFromPto(Hero hero, EquipmentModel model, EquipmentListPto pto) {
     for (EquipmentPto equipment : pto.equipments) {
       fillEquipment(model, equipment);
     }
@@ -67,7 +68,7 @@ public class EquipmentModelPersister extends AbstractModelJsonPersister<Equipmen
   }
 
   @Override
-  protected EquipmentListPto createPto(EquipmentModel heroModel) {
+  protected EquipmentListPto saveModelToPto(EquipmentModel heroModel) {
     EquipmentListPto pto = new EquipmentListPto();
     for (IEquipmentItem item : heroModel.getNaturalWeapons()) {
       pto.equipments.add(createPto(item, heroModel));

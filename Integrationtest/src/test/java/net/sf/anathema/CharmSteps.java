@@ -4,7 +4,7 @@ import com.google.inject.Inject;
 import cucumber.api.java.en.And;
 import cucumber.api.java.en.Then;
 import net.sf.anathema.character.main.magic.model.charm.Charm;
-import net.sf.anathema.hero.charms.CharmsModel;
+import net.sf.anathema.hero.charms.model.CharmsModel;
 import net.sf.anathema.character.main.magic.model.charm.special.IMultipleEffectCharmConfiguration;
 
 import static org.hamcrest.CoreMatchers.is;

@@ -1,8 +1,8 @@
 package net.sf.anathema;
 
 import net.sf.anathema.character.main.template.HeroTemplate;
-import net.sf.anathema.hero.charms.CharmsModel;
-import net.sf.anathema.hero.charms.CharmsModelFetcher;
+import net.sf.anathema.hero.charms.model.CharmsModel;
+import net.sf.anathema.hero.charms.model.CharmsModelFetcher;
 import net.sf.anathema.hero.concept.HeroConcept;
 import net.sf.anathema.hero.concept.HeroConceptFetcher;
 import net.sf.anathema.hero.traits.TraitMap;

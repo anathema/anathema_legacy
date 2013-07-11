@@ -2,6 +2,7 @@ package net.sf.anathema.hero.intimacies.persistence;
 
 import net.sf.anathema.hero.intimacies.model.IntimaciesModel;
 import net.sf.anathema.hero.intimacies.model.Intimacy;
+import net.sf.anathema.hero.model.Hero;
 import net.sf.anathema.hero.persistence.AbstractModelJsonPersister;
 import net.sf.anathema.hero.persistence.HeroModelPersisterCollected;
 import net.sf.anathema.lib.util.Identifier;
@@ -14,7 +15,7 @@ public class IntimaciesPersister extends AbstractModelJsonPersister<IntimaciesPt
   }
 
   @Override
-  protected void fillModel(IntimaciesModel model, IntimaciesPto pto) {
+  protected void loadModelFromPto(Hero hero, IntimaciesModel model, IntimaciesPto pto) {
     for (IntimacyPto intimacyPto : pto.intimacies) {
       model.setCurrentName(intimacyPto.name);
       Intimacy intimacy = model.commitSelection();
@@ -27,7 +28,7 @@ public class IntimaciesPersister extends AbstractModelJsonPersister<IntimaciesPt
   }
 
   @Override
-  protected IntimaciesPto createPto(IntimaciesModel heroModel) {
+  protected IntimaciesPto saveModelToPto(IntimaciesModel heroModel) {
     IntimaciesPto intimaciesList = new IntimaciesPto();
     for (Intimacy intimacy : heroModel.getEntries()) {
       intimaciesList.intimacies.add(createIntimacyPto(intimacy));

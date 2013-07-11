@@ -1,4 +1,4 @@
-package net.sf.anathema.hero.charms;
+package net.sf.anathema.hero.charms.model;
 
 import net.sf.anathema.character.main.magic.display.view.charmtree.CharmGroupArbitrator;
 import net.sf.anathema.character.main.magic.model.charm.Charm;

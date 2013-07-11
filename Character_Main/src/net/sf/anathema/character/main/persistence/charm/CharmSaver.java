@@ -2,7 +2,7 @@ package net.sf.anathema.character.main.persistence.charm;
 
 import net.sf.anathema.character.main.magic.model.charm.Charm;
 import net.sf.anathema.character.main.magic.model.charm.special.ISpecialCharmConfiguration;
-import net.sf.anathema.hero.charms.CharmsModel;
+import net.sf.anathema.hero.charms.model.CharmsModel;
 import net.sf.anathema.character.main.magic.model.charms.ILearningCharmGroup;
 import net.sf.anathema.lib.util.Identifier;
 import org.dom4j.Element;

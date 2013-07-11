@@ -3,8 +3,6 @@ package net.sf.anathema.hero.charms.model;
 import net.sf.anathema.character.main.magic.model.charm.Charm;
 import net.sf.anathema.character.main.magic.description.MagicDescriptionProvider;
 import net.sf.anathema.character.main.template.magic.ICharmTemplate;
-import net.sf.anathema.hero.charms.CharmsModel;
-import net.sf.anathema.hero.charms.CharmsModelFetcher;
 import net.sf.anathema.hero.concept.HeroConceptFetcher;
 import net.sf.anathema.character.main.magic.model.charms.ILearningCharmGroup;
 import net.sf.anathema.character.main.magic.model.charms.options.DefaultCharmTemplateRetriever;

@@ -3,6 +3,7 @@ package net.sf.anathema.hero.abilities.persistence;
 import net.sf.anathema.character.main.library.trait.Trait;
 import net.sf.anathema.character.main.traits.types.AbilityType;
 import net.sf.anathema.hero.abilities.model.AbilitiesModel;
+import net.sf.anathema.hero.model.Hero;
 import net.sf.anathema.hero.persistence.AbstractModelJsonPersister;
 import net.sf.anathema.hero.persistence.HeroModelPersisterCollected;
 import net.sf.anathema.hero.traits.persistence.TraitPersister;
@@ -24,7 +25,7 @@ public class AbilitiesPersister extends AbstractModelJsonPersister<AbilitiesPto,
   }
 
   @Override
-  protected void fillModel(AbilitiesModel model, AbilitiesPto pto) {
+  protected void loadModelFromPto(Hero hero, AbilitiesModel model, AbilitiesPto pto) {
     for (TraitPto traitPto : pto.traits) {
       Trait trait = model.getTrait(AbilityType.valueOf(traitPto.name));
       traitPersister.load(trait, traitPto);
@@ -32,7 +33,7 @@ public class AbilitiesPersister extends AbstractModelJsonPersister<AbilitiesPto,
   }
 
   @Override
-  protected AbilitiesPto createPto(AbilitiesModel model) {
+  protected AbilitiesPto saveModelToPto(AbilitiesModel model) {
     AbilitiesPto pto = new AbilitiesPto();
     for(Trait trait : model.getAll()) {
       TraitPto traitPto = new TraitPto();

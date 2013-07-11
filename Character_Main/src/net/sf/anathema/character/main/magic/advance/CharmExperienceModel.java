@@ -6,8 +6,8 @@ import net.sf.anathema.character.main.magic.model.charm.Charm;
 import net.sf.anathema.character.main.magic.model.charm.special.ISpecialCharmConfiguration;
 import net.sf.anathema.character.main.magic.model.charm.special.ISubeffectCharmConfiguration;
 import net.sf.anathema.character.main.magic.model.charm.special.IUpgradableCharmConfiguration;
-import net.sf.anathema.hero.charms.CharmsModel;
-import net.sf.anathema.hero.charms.CharmsModelFetcher;
+import net.sf.anathema.hero.charms.model.CharmsModel;
+import net.sf.anathema.hero.charms.model.CharmsModelFetcher;
 import net.sf.anathema.hero.model.Hero;
 import net.sf.anathema.hero.traits.TraitMap;
 

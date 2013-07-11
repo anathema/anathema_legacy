@@ -7,7 +7,7 @@ import net.sf.anathema.character.main.magic.model.charm.ICharmGroup;
 import net.sf.anathema.character.main.magic.model.charm.ICharmLearnListener;
 import net.sf.anathema.character.main.magic.model.charm.ICharmLearnStrategy;
 import net.sf.anathema.character.main.magic.model.charm.special.ISpecialCharmConfiguration;
-import net.sf.anathema.hero.charms.CharmsModel;
+import net.sf.anathema.hero.charms.model.CharmsModel;
 import net.sf.anathema.character.main.magic.model.charm.special.IMultiLearnableCharmConfiguration;
 import net.sf.anathema.character.main.magic.model.charm.special.IMultipleEffectCharmConfiguration;
 import org.jmock.example.announcer.Announcer;
