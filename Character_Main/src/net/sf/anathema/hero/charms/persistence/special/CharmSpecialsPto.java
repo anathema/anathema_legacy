@@ -4,7 +4,7 @@ import net.sf.anathema.hero.charms.persistence.special.effect.SubEffectListPto;
 import net.sf.anathema.hero.charms.persistence.special.learn.MultiLearnPto;
 import net.sf.anathema.hero.charms.persistence.special.oxbody.OxBodyTechniquePto;
 
-public class SpecialCharmPto {
+public class CharmSpecialsPto {
 
   public String charmId;
   public MultiLearnPto multiLearn;

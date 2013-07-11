@@ -13,9 +13,9 @@ import net.sf.anathema.character.main.magic.model.charm.special.ISpecialCharmVis
 import net.sf.anathema.character.main.magic.model.charm.special.ISubEffectCharm;
 import net.sf.anathema.character.main.magic.model.charm.special.ITraitCapModifyingCharm;
 import net.sf.anathema.character.main.magic.model.charm.special.IUpgradableCharm;
+import net.sf.anathema.character.main.magic.model.charm.special.MultiLearnCharmSpecials;
 import net.sf.anathema.hero.charms.model.CharmsModel;
 import net.sf.anathema.hero.charms.persistence.CharmListPto;
-import net.sf.anathema.hero.charms.persistence.CharmPto;
 import net.sf.anathema.hero.charms.persistence.special.effect.MultipleEffectCharmPersister;
 import net.sf.anathema.hero.charms.persistence.special.learn.MultiLearnCharmPersister;
 import net.sf.anathema.hero.charms.persistence.special.oxbody.OxBodyTechniquePersister;
@@ -85,9 +85,29 @@ public class SpecialCharmListPersister {
     if (charmSpecials == null || specialCharmPersister == null) {
       return;
     }
-    SpecialCharmPto specialPto = new SpecialCharmPto();
+    CharmSpecialsPto specialPto = new CharmSpecialsPto();
     specialPto.charmId = charm.getId();
     specialCharmPersister.saveCharmSpecials(charmSpecials, specialPto);
     charmPto.charmSpecials.add(specialPto);
+  }
+
+  public void loadSpecials(CharmsModel model, Charm charm, CharmListPto pto, boolean isExperienceLearned) {
+    SpecialCharmPersister specialPersister = persisterByCharm.get(charm);
+    CharmSpecialsModel charmSpecials = model.getSpecialCharmConfiguration(charm.getId());
+    CharmSpecialsPto charmSpecialsPto = getSpecialCharmPto(charm.getId(), pto);
+    if (charmSpecialsPto != null && charmSpecials != null) {
+      specialPersister.loadCharmSpecials(charmSpecials, charmSpecialsPto);
+    } else if (charmSpecials instanceof MultiLearnCharmSpecials) {
+      charmSpecials.learn(isExperienceLearned);
+    }
+  }
+
+  private CharmSpecialsPto getSpecialCharmPto(String charmId, CharmListPto pto) {
+    for (CharmSpecialsPto specialsPto : pto.charmSpecials) {
+      if (specialsPto.charmId.equals(charmId)) {
+        return specialsPto;
+      }
+    }
+    return null;
   }
 }

@@ -5,7 +5,6 @@ import net.sf.anathema.character.main.ExaltedCharacter;
 import net.sf.anathema.character.main.framework.HeroEnvironment;
 import net.sf.anathema.character.main.magic.model.charm.CharmException;
 import net.sf.anathema.character.main.magic.model.spells.SpellException;
-import net.sf.anathema.character.main.persistence.charm.CharmConfigurationPersister;
 import net.sf.anathema.character.main.template.HeroTemplate;
 import net.sf.anathema.character.main.template.ITemplateType;
 import net.sf.anathema.character.main.template.TemplateType;
@@ -37,16 +36,14 @@ public class CharacterStatisticPersister {
   private final EssenceConfigurationPersister essencePersister = new EssenceConfigurationPersister();
   private final VirtueConfigurationPersister virtuePersister = new VirtueConfigurationPersister();
   private final WillpowerConfigurationPersister willpowerPersister = new WillpowerConfigurationPersister();
-  private final CharmConfigurationPersister charmPersister;
   private final SpellConfigurationPersister spellPersister = new SpellConfigurationPersister();
   private final ExperiencePointsPersister experiencePersister = new ExperiencePointsPersister();
   private final RulesPersister rulesPersister = new RulesPersister();
   private final HeroEnvironment generics;
   private final CharacterDescriptionPersister descriptionPersister = new CharacterDescriptionPersister();
 
-  public CharacterStatisticPersister(HeroEnvironment generics, IMessaging messaging) {
+  public CharacterStatisticPersister(HeroEnvironment generics) {
     this.generics = generics;
-    this.charmPersister = new CharmConfigurationPersister(messaging);
   }
 
   public void save(Element parent, Hero hero) {
@@ -63,7 +60,6 @@ public class CharacterStatisticPersister {
     essencePersister.save(statisticsElement, TraitModelFetcher.fetch(hero));
     willpowerPersister.save(statisticsElement, TraitModelFetcher.fetch(hero).getTrait(OtherTraitType.Willpower));
     virtuePersister.save(statisticsElement, TraitModelFetcher.fetch(hero));
-    charmPersister.save(statisticsElement, hero);
     spellPersister.save(statisticsElement, SpellsModelFetcher.fetch(hero));
     experiencePersister.save(statisticsElement, ExperienceModelFetcher.fetch(hero).getExperiencePoints());
   }
@@ -86,7 +82,6 @@ public class CharacterStatisticPersister {
       ExperienceModelFetcher.fetch(character).setExperienced(experienced);
       essencePersister.load(statisticsElement, TraitModelFetcher.fetch(character));
       virtuePersister.load(statisticsElement, TraitModelFetcher.fetch(character));
-      charmPersister.load(statisticsElement, character);
       spellPersister.load(statisticsElement, SpellsModelFetcher.fetch(character));
       experiencePersister.load(statisticsElement, ExperienceModelFetcher.fetch(character).getExperiencePoints());
       willpowerPersister.load(statisticsElement, TraitModelFetcher.fetch(character).getTrait(OtherTraitType.Willpower));

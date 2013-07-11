@@ -1,4 +1,4 @@
-package net.sf.anathema.character.main.persistence.charm;
+package net.sf.anathema.hero.charms.persistence;
 
 import net.sf.anathema.lib.util.Identifier;
 

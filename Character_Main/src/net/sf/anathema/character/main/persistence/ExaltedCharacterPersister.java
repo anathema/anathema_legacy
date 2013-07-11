@@ -48,7 +48,7 @@ public class ExaltedCharacterPersister implements RepositoryItemPersister {
     this.characterType = characterType;
     this.generics = generics;
     this.messaging = messaging;
-    this.statisticsPersister = new CharacterStatisticPersister(generics, messaging);
+    this.statisticsPersister = new CharacterStatisticPersister(generics);
     this.persisterList = new HeroPersisterList(generics);
   }
 

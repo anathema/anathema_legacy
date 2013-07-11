@@ -3,15 +3,15 @@ package net.sf.anathema.hero.charms.persistence.special.oxbody;
 import net.sf.anathema.character.main.magic.model.charm.OxBodyCategory;
 import net.sf.anathema.character.main.magic.model.charm.special.CharmSpecialsModel;
 import net.sf.anathema.character.main.magic.model.charm.special.OxBodyTechniqueSpecials;
+import net.sf.anathema.hero.charms.persistence.special.CharmSpecialsPto;
 import net.sf.anathema.hero.charms.persistence.special.SpecialCharmPersister;
-import net.sf.anathema.hero.charms.persistence.special.SpecialCharmPto;
 
 public class OxBodyTechniquePersister implements SpecialCharmPersister {
   @Override
-  public void saveCharmSpecials(CharmSpecialsModel charmSpecials, SpecialCharmPto charmPto) {
+  public void saveCharmSpecials(CharmSpecialsModel charmSpecials, CharmSpecialsPto specialsPto) {
     OxBodyTechniqueSpecials configuration = (OxBodyTechniqueSpecials) charmSpecials;
     OxBodyTechniquePto oxBodyTechniquePto = createPto(configuration);
-    charmPto.oxBodyTechnique = oxBodyTechniquePto;
+    specialsPto.oxBodyTechnique = oxBodyTechniquePto;
   }
 
   private OxBodyTechniquePto createPto(OxBodyTechniqueSpecials configuration) {
@@ -31,5 +31,24 @@ public class OxBodyTechniquePersister implements SpecialCharmPersister {
       pto.experienceValue = category.getExperiencedValue();
     }
     return pto;
+  }
+
+  @Override
+  public void loadCharmSpecials(CharmSpecialsModel charmSpecials, CharmSpecialsPto specialsPto) {
+    OxBodyTechniqueSpecials oxBodyTechniqueSpecials = (OxBodyTechniqueSpecials) charmSpecials;
+    if (specialsPto.oxBodyTechnique == null) {
+      return;
+    }
+    for (OxBodyTechniqueCategoryPto categoryPto : specialsPto.oxBodyTechnique.categories) {
+      loadCategory(oxBodyTechniqueSpecials, categoryPto);
+    }
+  }
+
+  private void loadCategory(OxBodyTechniqueSpecials oxBodyTechniqueSpecials, OxBodyTechniqueCategoryPto categoryPto) {
+    OxBodyCategory category = oxBodyTechniqueSpecials.getCategoryById(categoryPto.id);
+    category.setUncheckedCreationValue(categoryPto.creationValue);
+    if (categoryPto.experienceValue != null) {
+      category.setUncheckedExperiencedValue(categoryPto.experienceValue);
+    }
   }
 }

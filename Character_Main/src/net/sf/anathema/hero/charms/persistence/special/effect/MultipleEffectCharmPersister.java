@@ -3,16 +3,18 @@ package net.sf.anathema.hero.charms.persistence.special.effect;
 import net.sf.anathema.character.main.magic.model.charm.special.CharmSpecialsModel;
 import net.sf.anathema.character.main.magic.model.charm.special.MultipleEffectCharmSpecials;
 import net.sf.anathema.character.main.magic.model.charm.special.SubEffect;
+import net.sf.anathema.hero.charms.persistence.special.CharmSpecialsPto;
 import net.sf.anathema.hero.charms.persistence.special.SpecialCharmPersister;
-import net.sf.anathema.hero.charms.persistence.special.SpecialCharmPto;
+import net.sf.anathema.lib.xml.ElementUtilities;
+import org.dom4j.Element;
 
 public class MultipleEffectCharmPersister implements SpecialCharmPersister {
 
   @Override
-  public void saveCharmSpecials(CharmSpecialsModel charmSpecials, SpecialCharmPto charmPto) {
+  public void saveCharmSpecials(CharmSpecialsModel charmSpecials, CharmSpecialsPto specialsPto) {
     MultipleEffectCharmSpecials multipleEffects = (MultipleEffectCharmSpecials) charmSpecials;
     SubEffectListPto subEffectsList = createPto(multipleEffects);
-    charmPto.subEffects = subEffectsList;
+    specialsPto.subEffects = subEffectsList;
   }
 
   private SubEffectListPto createPto(MultipleEffectCharmSpecials multipleEffects) {
@@ -30,5 +32,18 @@ public class MultipleEffectCharmPersister implements SpecialCharmPersister {
     pto.creationLearned = effect.isCreationLearned();
     pto.experienceLearned = effect.isCreationLearned() || effect.isLearned();
     return pto;
+  }
+
+  @Override
+  public void loadCharmSpecials(CharmSpecialsModel charmSpecials, CharmSpecialsPto specialsPto) {
+    if (specialsPto.subEffects == null) {
+      return;
+    }
+    MultipleEffectCharmSpecials configuration = (MultipleEffectCharmSpecials) charmSpecials;
+    for (SubEffectPto effectPto : specialsPto.subEffects.subEffects) {
+      SubEffect effect = configuration.getEffectById(effectPto.id);
+      effect.setCreationLearned(effectPto.creationLearned);
+      effect.setExperienceLearned(effectPto.experienceLearned);
+    }
   }
 }

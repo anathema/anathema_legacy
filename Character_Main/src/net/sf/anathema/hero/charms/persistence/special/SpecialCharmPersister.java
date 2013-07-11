@@ -4,5 +4,7 @@ import net.sf.anathema.character.main.magic.model.charm.special.CharmSpecialsMod
 
 public interface SpecialCharmPersister {
 
-  void saveCharmSpecials(CharmSpecialsModel charmSpecials, SpecialCharmPto charmPto);
+  void saveCharmSpecials(CharmSpecialsModel charmSpecials, CharmSpecialsPto specialsPto);
+
+  void loadCharmSpecials(CharmSpecialsModel charmSpecials, CharmSpecialsPto specialsPto);
 }

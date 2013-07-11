@@ -1,16 +1,17 @@
 package net.sf.anathema.hero.charms.persistence.special.learn;
 
+import net.sf.anathema.character.main.library.trait.Trait;
 import net.sf.anathema.character.main.magic.model.charm.special.CharmSpecialsModel;
 import net.sf.anathema.character.main.magic.model.charm.special.MultiLearnCharmSpecials;
+import net.sf.anathema.hero.charms.persistence.special.CharmSpecialsPto;
 import net.sf.anathema.hero.charms.persistence.special.SpecialCharmPersister;
-import net.sf.anathema.hero.charms.persistence.special.SpecialCharmPto;
 
 public class MultiLearnCharmPersister implements SpecialCharmPersister {
 
   @Override
-  public void saveCharmSpecials(CharmSpecialsModel charmSpecials, SpecialCharmPto charmPto) {
+  public void saveCharmSpecials(CharmSpecialsModel charmSpecials, CharmSpecialsPto specialsPto) {
     MultiLearnCharmSpecials multiLearn = (MultiLearnCharmSpecials) charmSpecials;
-    charmPto.multiLearn = createMultiLearnPto(multiLearn);
+    specialsPto.multiLearn = createMultiLearnPto(multiLearn);
   }
 
   private MultiLearnPto createMultiLearnPto(MultiLearnCharmSpecials multiLearn) {
@@ -20,5 +21,23 @@ public class MultiLearnCharmPersister implements SpecialCharmPersister {
       multiLearnPto.learnCount.experienceValue = multiLearn.getCategory().getExperiencedValue();
     }
     return multiLearnPto;
+  }
+
+  @Override
+  public void loadCharmSpecials(CharmSpecialsModel charmSpecials, CharmSpecialsPto specialsPto) {
+    MultiLearnCharmSpecials configuration = (MultiLearnCharmSpecials) charmSpecials;
+    if (specialsPto.multiLearn == null) {
+      return;
+    }
+    restoreLearnCount(specialsPto, configuration);
+  }
+
+  private void restoreLearnCount(CharmSpecialsPto specialsPto, MultiLearnCharmSpecials configuration) {
+    Trait category = configuration.getCategory();
+    LearnCountPto learnCount = specialsPto.multiLearn.learnCount;
+    category.setUncheckedCreationValue(learnCount.creationValue);
+    if (learnCount.experienceValue != null) {
+      category.setUncheckedExperiencedValue(learnCount.experienceValue);
+    }
   }
 }
