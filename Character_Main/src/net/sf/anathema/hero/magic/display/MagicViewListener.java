@@ -1,6 +1,6 @@
 package net.sf.anathema.hero.magic.display;
 
-public interface IMagicViewListener {
+public interface MagicViewListener {
 
   void magicRemoved(Object[] removedMagic);
 

@@ -7,7 +7,7 @@ import net.sf.anathema.lib.gui.AgnosticUIConfiguration;
 import net.sf.anathema.lib.resources.Resources;
 import net.sf.anathema.lib.util.Identifier;
 
-public abstract class AbstractMagicLearnProperties implements IMagicLearnProperties {
+public abstract class AbstractMagicLearnProperties implements MagicLearnProperties {
 
   private final Resources resources;
 

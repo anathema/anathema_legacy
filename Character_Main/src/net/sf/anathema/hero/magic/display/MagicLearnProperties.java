@@ -7,7 +7,7 @@ import net.sf.anathema.lib.util.Identifier;
 
 import java.util.List;
 
-public interface IMagicLearnProperties {
+public interface MagicLearnProperties {
 
   RelativePath getAddButtonIcon();
 

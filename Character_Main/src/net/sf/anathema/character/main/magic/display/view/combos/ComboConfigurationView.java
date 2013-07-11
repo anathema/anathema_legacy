@@ -5,8 +5,8 @@ import net.miginfocom.layout.CC;
 import net.miginfocom.layout.LC;
 import net.miginfocom.swing.MigLayout;
 import net.sf.anathema.framework.swing.IView;
-import net.sf.anathema.hero.magic.display.IMagicViewListener;
-import net.sf.anathema.hero.magic.display.MagicLearnView;
+import net.sf.anathema.hero.magic.display.MagicViewListener;
+import net.sf.anathema.hero.magic.display.SwingMagicLearnView;
 import net.sf.anathema.interaction.Command;
 import net.sf.anathema.interaction.Tool;
 import net.sf.anathema.lib.control.ObjectValueListener;
@@ -30,7 +30,7 @@ import static net.sf.anathema.lib.gui.swing.GuiUtilities.revalidate;
 
 public class ComboConfigurationView implements IComboConfigurationView, IView {
   private static final int TEXT_COLUMNS = 20;
-  private MagicLearnView magicLearnView = new MagicLearnView();
+  private SwingMagicLearnView magicLearnView = new SwingMagicLearnView();
   private final JPanel viewPort = new JPanel(new MigLayout(new LC().insets("6").fill().wrapAfter(5)));
   private final JComponent content = new JScrollPane(viewPort);
   private final Announcer<IComboViewListener> comboViewListeners = Announcer.to(IComboViewListener.class);
@@ -47,7 +47,7 @@ public class ComboConfigurationView implements IComboConfigurationView, IView {
   @Override
   public void initGui(final IComboViewProperties viewProperties) {
     this.properties = viewProperties;
-    this.magicLearnView = new MagicLearnView();
+    this.magicLearnView = new SwingMagicLearnView();
     magicLearnView.init(viewProperties);
 
     finalizeButton = createFinalizeComboButton(viewProperties);
@@ -144,7 +144,7 @@ public class ComboConfigurationView implements IComboConfigurationView, IView {
 
   @Override
   public void addComboViewListener(final IComboViewListener listener) {
-    magicLearnView.addMagicViewListener(new IMagicViewListener() {
+    magicLearnView.addMagicViewListener(new MagicViewListener() {
       @Override
       public void magicRemoved(Object[] removedMagic) {
         listener.charmRemoved(removedMagic);

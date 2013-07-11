@@ -23,7 +23,7 @@ public class SpellInitializer implements HeroModelInitializer {
   @Override
   public void initialize(SectionView sectionView, Hero hero, Resources resources) {
     String header = resources.getString(titleKey);
-    ISpellView view = sectionView.addView(header, ISpellView.class, hero.getTemplate().getTemplateType().getCharacterType());
+    SpellView view = sectionView.addView(header, SpellView.class, hero.getTemplate().getTemplateType().getCharacterType());
     MagicDescriptionProvider magicDescriptionProvider = CharmDescriptionProviderExtractor.CreateFor(applicationModel, resources);
     new SpellPresenter(circleModel, hero, resources, view, magicDescriptionProvider).initPresentation();
   }

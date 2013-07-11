@@ -5,7 +5,7 @@ import net.sf.anathema.character.main.magic.model.magic.IMagicLearnListener;
 import net.sf.anathema.character.main.magic.model.spells.CircleType;
 import net.sf.anathema.character.main.magic.model.spells.ISpell;
 import net.sf.anathema.hero.experience.ExperienceModelFetcher;
-import net.sf.anathema.hero.magic.display.IMagicViewListener;
+import net.sf.anathema.hero.magic.display.MagicViewListener;
 import net.sf.anathema.hero.model.Hero;
 import net.sf.anathema.hero.spells.SpellsModelFetcher;
 import net.sf.anathema.hero.spells.model.CircleModel;
@@ -29,9 +29,9 @@ public class SpellPresenter {
   private final Hero hero;
   private final Resources resources;
   private CircleType circle;
-  private final ISpellView view;
+  private final SpellView view;
 
-  public SpellPresenter(CircleModel circleModel, Hero hero, Resources resources, ISpellView view,
+  public SpellPresenter(CircleModel circleModel, Hero hero, Resources resources, SpellView view,
                         MagicDescriptionProvider magicDescriptionProvider) {
     this.circleModel = circleModel;
     this.hero  = hero;
@@ -46,7 +46,7 @@ public class SpellPresenter {
   public void initPresentation() {
     Identifier[] allowedCircles = circleModel.getCircles();
     view.initGui(allowedCircles);
-    view.addMagicViewListener(new IMagicViewListener() {
+    view.addMagicViewListener(new MagicViewListener() {
       @Override
       public void magicRemoved(Object[] removedSpells) {
         List<ISpell> spellList = new ArrayList<>();
@@ -94,18 +94,18 @@ public class SpellPresenter {
     });
    }
 
-  private void initSpellListsInView(ISpellView spellView) {
+  private void initSpellListsInView(SpellView spellView) {
     spellView.setLearnedMagic(getCircleFilteredSpellList(spellConfiguration.getLearnedSpells()));
     spellView.setMagicOptions(getSpellsToShow());
   }
 
-  private void forgetSpellListsInView(ISpellView spellView, ISpell[] spells) {
+  private void forgetSpellListsInView(SpellView spellView, ISpell[] spells) {
     spellView.removeLearnedMagic(spells);
     ISpell[] supportedSpells = getSpellsOfCurrentCircle(spells);
     spellView.addMagicOptions(supportedSpells, new I18nedIdentificateComparator(resources));
   }
 
-  private void learnSpellListsInView(ISpellView spellView, ISpell[] spells) {
+  private void learnSpellListsInView(SpellView spellView, ISpell[] spells) {
     ISpell[] supportedSpells = getSpellsOfCurrentCircle(spells);
     spellView.addLearnedMagic(supportedSpells);
     spellView.removeMagicOptions(supportedSpells);
