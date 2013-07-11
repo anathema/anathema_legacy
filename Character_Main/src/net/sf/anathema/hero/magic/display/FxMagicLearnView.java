@@ -62,22 +62,31 @@ public class FxMagicLearnView implements MagicLearnView {
 
   @Override
   public List getSelectedLearnedValues() {
-    return null;  //To change body of implemented methods use File | Settings | File Templates.
+    return learnedMagicList.getSelectionModel().getSelectedItems();
   }
 
   @Override
   public List getSelectedAvailableValues() {
-    return null;  //To change body of implemented methods use File | Settings | File Templates.
+    return availableMagicList.getSelectionModel().getSelectedItems();
   }
 
   @Override
-  public void addAvailableMagicSelectedListener(ChangeListener changeListener) {
-    //To change body of implemented methods use File | Settings | File Templates.
+  public void addAvailableMagicSelectedListener(final ChangeListener changeListener) {
+    addChangeListener(changeListener, availableMagicList);
   }
 
   @Override
-  public void addLearnedMagicSelectedListener(ChangeListener changeListener) {
-    //To change body of implemented methods use File | Settings | File Templates.
+  public void addLearnedMagicSelectedListener(final ChangeListener changeListener) {
+    addChangeListener(changeListener, availableMagicList);
+  }
+
+  private void addChangeListener(final ChangeListener changeListener, ListView list) {
+    list.getSelectionModel().selectedItemProperty().addListener(new javafx.beans.value.ChangeListener() {
+      @Override
+      public void changed(ObservableValue observableValue, Object o, Object o2) {
+        changeListener.changeOccurred();
+      }
+    });
   }
 
   private Tool addToolTo(MigPane target) {
