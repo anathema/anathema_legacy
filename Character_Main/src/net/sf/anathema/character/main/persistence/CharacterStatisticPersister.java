@@ -3,13 +3,10 @@ package net.sf.anathema.character.main.persistence;
 import com.google.common.base.Preconditions;
 import net.sf.anathema.character.main.ExaltedCharacter;
 import net.sf.anathema.character.main.framework.HeroEnvironment;
-import net.sf.anathema.character.main.magic.model.charm.CharmException;
-import net.sf.anathema.character.main.magic.model.spells.SpellException;
 import net.sf.anathema.character.main.template.HeroTemplate;
 import net.sf.anathema.character.main.template.ITemplateType;
 import net.sf.anathema.character.main.template.TemplateType;
 import net.sf.anathema.character.main.type.ICharacterType;
-import net.sf.anathema.hero.concept.HeroConcept;
 import net.sf.anathema.hero.concept.HeroConceptFetcher;
 import net.sf.anathema.hero.description.HeroDescription;
 import net.sf.anathema.hero.description.HeroDescriptionFetcher;
@@ -60,19 +57,14 @@ public class CharacterStatisticPersister {
   }
 
   public ExaltedCharacter loadData(ExaltedCharacter character, Element parent) throws PersistenceException {
-    try {
-      Element statisticsElement = parent.element(TAG_STATISTICS);
-      boolean experienced = ElementUtilities.getBooleanAttribute(statisticsElement, ATTRIB_EXPERIENCED, false);
-      HeroDescription characterDescription = HeroDescriptionFetcher.fetch(character);
-      descriptionPersister.load(parent, characterDescription);
-      HeroConcept concept = HeroConceptFetcher.fetch(character);
-      characterConceptPersister.load(statisticsElement, concept, characterDescription);
-      ExperienceModelFetcher.fetch(character).setExperienced(experienced);
-      experiencePersister.load(statisticsElement, ExperienceModelFetcher.fetch(character).getExperiencePoints());
-      return character;
-    } catch (CharmException | SpellException e) {
-      throw new PersistenceException(e);
-    }
+    Element statisticsElement = parent.element(TAG_STATISTICS);
+    boolean experienced = ElementUtilities.getBooleanAttribute(statisticsElement, ATTRIB_EXPERIENCED, false);
+    HeroDescription characterDescription = HeroDescriptionFetcher.fetch(character);
+    descriptionPersister.load(parent, characterDescription);
+    characterConceptPersister.load(statisticsElement, HeroConceptFetcher.fetch(character));
+    ExperienceModelFetcher.fetch(character).setExperienced(experienced);
+    experiencePersister.load(statisticsElement, ExperienceModelFetcher.fetch(character).getExperiencePoints());
+    return character;
   }
 
   private ITemplateType loadTemplateType(Element parent) throws PersistenceException {
