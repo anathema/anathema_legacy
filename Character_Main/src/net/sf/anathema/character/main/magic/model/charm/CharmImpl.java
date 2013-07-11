@@ -11,7 +11,6 @@ import net.sf.anathema.character.main.magic.model.charmtree.ICharmLearnArbitrato
 import net.sf.anathema.character.main.magic.model.combos.ComboRestrictions;
 import net.sf.anathema.character.main.magic.model.combos.IComboRestrictions;
 import net.sf.anathema.character.main.magic.model.magic.ICostList;
-import net.sf.anathema.character.main.magic.model.magic.IMagicVisitor;
 import net.sf.anathema.character.main.magic.parser.charms.CharmPrerequisiteList;
 import net.sf.anathema.character.main.magic.parser.charms.SelectiveCharmGroupTemplate;
 import net.sf.anathema.character.main.magic.parser.magic.IExaltedSourceBook;
@@ -161,11 +160,6 @@ public class CharmImpl extends SimpleIdentifier implements Charm {
   @Override
   public IComboRestrictions getComboRules() {
     return comboRules;
-  }
-
-  @Override
-  public void accept(IMagicVisitor visitor) {
-    visitor.visitCharm(this);
   }
 
   public void addAlternative(Set<Charm> alternative) {

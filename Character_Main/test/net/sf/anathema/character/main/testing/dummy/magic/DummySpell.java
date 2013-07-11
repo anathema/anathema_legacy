@@ -1,13 +1,12 @@
 package net.sf.anathema.character.main.testing.dummy.magic;
 
-import net.sf.anathema.character.main.magic.model.magic.IMagicVisitor;
-import net.sf.anathema.character.main.magic.model.spells.ISpell;
 import net.sf.anathema.character.main.magic.model.magic.ICostList;
 import net.sf.anathema.character.main.magic.model.spells.CircleType;
+import net.sf.anathema.character.main.magic.model.spells.ISpell;
 import net.sf.anathema.character.main.magic.parser.magic.IExaltedSourceBook;
 import net.sf.anathema.character.main.traits.types.AbilityType;
-import net.sf.anathema.hero.traits.TraitModelFetcher;
 import net.sf.anathema.hero.model.Hero;
+import net.sf.anathema.hero.traits.TraitModelFetcher;
 import net.sf.anathema.lib.exception.NotYetImplementedException;
 
 public class DummySpell implements ISpell {
@@ -38,11 +37,6 @@ public class DummySpell implements ISpell {
   @Override
   public ICostList getTemporaryCost() {
     throw new NotYetImplementedException();
-  }
-
-  @Override
-  public void accept(IMagicVisitor visitor) {
-    visitor.visitSpell(this);
   }
 
   @Override

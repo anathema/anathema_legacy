@@ -12,7 +12,6 @@ import net.sf.anathema.character.main.magic.model.charmtree.ICharmLearnArbitrato
 import net.sf.anathema.character.main.magic.model.combos.ComboRestrictions;
 import net.sf.anathema.character.main.magic.model.combos.IComboRestrictions;
 import net.sf.anathema.character.main.magic.model.magic.CostList;
-import net.sf.anathema.character.main.magic.model.magic.IMagicVisitor;
 import net.sf.anathema.character.main.magic.parser.magic.IExaltedSourceBook;
 import net.sf.anathema.character.main.traits.TraitType;
 import net.sf.anathema.character.main.traits.ValuedTraitType;
@@ -74,11 +73,6 @@ public class DummyCharm extends SimpleIdentifier implements Charm {
     this.parentCharms = new LinkedHashSet<>();
     Collections.addAll(parentCharms, parents);
     this.prerequisites = prerequisites;
-  }
-
-  @Override
-  public void accept(IMagicVisitor visitor) {
-    visitor.visitCharm(this);
   }
 
   @SuppressWarnings("UnusedDeclaration")
