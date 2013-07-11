@@ -3,7 +3,7 @@ package net.sf.anathema.hero.combos.display.presenter;
 import net.sf.anathema.hero.change.ChangeAnnouncer;
 import net.sf.anathema.hero.change.ChangeFlavor;
 
-public class CharacterChangeComboListener implements IComboConfigurationListener {
+public class CharacterChangeComboListener implements ComboConfigurationListener {
 
   private ChangeAnnouncer announcer;
 
@@ -17,22 +17,22 @@ public class CharacterChangeComboListener implements IComboConfigurationListener
   }
 
   @Override
-  public void editBegun(ICombo combo) {
+  public void editBegun(Combo combo) {
     // Nothing to do
   }
 
   @Override
-  public void comboDeleted(ICombo combo) {
+  public void comboDeleted(Combo combo) {
     announcer.announceChangeOf(ChangeFlavor.UNSPECIFIED);
   }
 
   @Override
-  public void comboChanged(ICombo combo) {
+  public void comboChanged(Combo combo) {
     announcer.announceChangeOf(ChangeFlavor.UNSPECIFIED);
   }
 
   @Override
-  public void comboAdded(ICombo combo) {
+  public void comboAdded(Combo combo) {
     announcer.announceChangeOf(ChangeFlavor.UNSPECIFIED);
   }
 }

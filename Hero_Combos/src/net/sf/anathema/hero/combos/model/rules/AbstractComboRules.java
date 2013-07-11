@@ -1,11 +1,11 @@
 package net.sf.anathema.hero.combos.model.rules;
 
 import net.sf.anathema.character.main.magic.model.charm.Charm;
-import net.sf.anathema.hero.combos.model.IComboRules;
 import net.sf.anathema.character.main.traits.types.AbilityType;
 import net.sf.anathema.character.main.traits.types.AttributeType;
+import net.sf.anathema.hero.combos.model.ComboRules;
 
-public abstract class AbstractComboRules implements IComboRules {
+public abstract class AbstractComboRules implements ComboRules {
 
   protected final boolean haveSamePrerequisite(Charm charm1, Charm charm2) {
     return charm1.getPrimaryTraitType() == charm2.getPrimaryTraitType();

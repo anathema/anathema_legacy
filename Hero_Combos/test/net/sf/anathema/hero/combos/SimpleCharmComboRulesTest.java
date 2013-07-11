@@ -1,9 +1,9 @@
 package net.sf.anathema.hero.combos;
 
+import net.sf.anathema.character.main.dummy.DummyCharmUtilities;
 import net.sf.anathema.character.main.magic.model.charm.Charm;
 import net.sf.anathema.character.main.magic.model.charm.type.CharmType;
-import net.sf.anathema.character.main.dummy.DummyCharmUtilities;
-import net.sf.anathema.hero.combos.model.IComboRules;
+import net.sf.anathema.hero.combos.model.ComboRules;
 import net.sf.anathema.hero.combos.model.rules.SimpleCharmComboRules;
 import org.junit.Test;
 
@@ -12,7 +12,7 @@ import static org.junit.Assert.assertTrue;
 
 public class SimpleCharmComboRulesTest extends AbstractComboRulesTestCase {
 
-  private IComboRules rules = new SimpleCharmComboRules();
+  private ComboRules rules = new SimpleCharmComboRules();
 
   @Test
   public void testCharmComboTwoSimple() {

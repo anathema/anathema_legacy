@@ -1,9 +1,9 @@
 package net.sf.anathema.hero.combos.persistence;
 
 import net.sf.anathema.character.main.magic.model.charm.Charm;
-import net.sf.anathema.hero.combos.display.presenter.ICombo;
 import net.sf.anathema.hero.charms.model.CharmsModel;
 import net.sf.anathema.hero.charms.model.CharmsModelFetcher;
+import net.sf.anathema.hero.combos.display.presenter.Combo;
 import net.sf.anathema.hero.combos.display.presenter.CombosModel;
 import net.sf.anathema.hero.model.Hero;
 import net.sf.anathema.hero.persistence.AbstractModelJsonPersister;
@@ -32,7 +32,7 @@ public class CombosPersister extends AbstractModelJsonPersister<ComboListPto, Co
   }
 
   private void loadCombo(CharmsModel charms, CombosModel model, ComboPto comboPto) {
-    ICombo combo = model.getEditCombo();
+    Combo combo = model.getEditCombo();
     combo.getName().setText(comboPto.name);
     combo.getDescription().setText(comboPto.description);
     loadCharms(charms, model, comboPto);
@@ -53,7 +53,7 @@ public class CombosPersister extends AbstractModelJsonPersister<ComboListPto, Co
   @Override
   protected ComboListPto saveModelToPto(CombosModel model) {
     ComboListPto pto = new ComboListPto();
-    for (ICombo combo : model.getAllCombos()) {
+    for (Combo combo : model.getAllCombos()) {
       ComboPto comboPto = new ComboPto();
       saveCombo(combo, comboPto);
       pto.combos.add(comboPto);
@@ -61,7 +61,7 @@ public class CombosPersister extends AbstractModelJsonPersister<ComboListPto, Co
     return pto;
   }
 
-  private void saveCombo(ICombo combo, ComboPto pto) {
+  private void saveCombo(Combo combo, ComboPto pto) {
     pto.name = combo.getName().getText();
     pto.description = combo.getDescription().getText();
     saveCharms(pto, combo.getCreationCharms(), false);

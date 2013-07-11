@@ -1,10 +1,10 @@
 package net.sf.anathema.hero.combos;
 
+import net.sf.anathema.character.main.dummy.DummyCharmUtilities;
 import net.sf.anathema.character.main.magic.model.charm.Charm;
 import net.sf.anathema.character.main.magic.model.charm.type.CharmType;
-import net.sf.anathema.character.main.dummy.DummyCharmUtilities;
+import net.sf.anathema.hero.combos.model.ComboRules;
 import net.sf.anathema.hero.combos.model.rules.ExtraActionCharmComboRules;
-import net.sf.anathema.hero.combos.model.IComboRules;
 import org.junit.Test;
 
 import static org.junit.Assert.assertFalse;
@@ -12,7 +12,7 @@ import static org.junit.Assert.assertTrue;
 
 public class ExtraActionCharmComboRulesTest extends AbstractComboRulesTestCase {
 
-  private IComboRules rules = new ExtraActionCharmComboRules();
+  private ComboRules rules = new ExtraActionCharmComboRules();
 
   @Test
   public void testCharmComboTwoExtraAction() throws Exception {

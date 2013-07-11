@@ -32,8 +32,8 @@ public class ComboConfigurationPresenter {
 
   private final CharmsModel charmConfiguration;
   private final CombosModel comboConfiguration;
-  private final Map<ICombo, ComboView> viewsByCombo = new HashMap<>();
-  private final Map<ICombo, Tool> toolsByCombo = new HashMap<>();
+  private final Map<Combo, ComboView> viewsByCombo = new HashMap<>();
+  private final Map<Combo, Tool> toolsByCombo = new HashMap<>();
   private final ComboConfigurationModel comboModel;
   private Hero hero;
   private final Resources resources;
@@ -54,7 +54,7 @@ public class ComboConfigurationPresenter {
     view.initGui(new CombinedComboViewAndMagicProperties(resources, comboConfiguration, comboModel.getMagicDescriptionProvider()));
     initCharmLearnListening(view);
     ITextView nameView = view.addComboNameView(resources.getString("CardView.CharmConfiguration.ComboCreation.NameLabel"));
-    ICombo editCombo = comboConfiguration.getEditCombo();
+    Combo editCombo = comboConfiguration.getEditCombo();
     TextualPresentation textualPresentation = new TextualPresentation();
     textualPresentation.initView(nameView, editCombo.getName());
     ITextView descriptionView = view.addComboDescriptionView(resources.getString("CardView.CharmConfiguration.ComboCreation.DescriptionLabel"));
@@ -80,24 +80,24 @@ public class ComboConfigurationPresenter {
   }
 
   private void initComboConfigurationListening(final ComboConfigurationView comboView) {
-    comboConfiguration.addComboConfigurationListener(new IComboConfigurationListener() {
+    comboConfiguration.addComboConfigurationListener(new ComboConfigurationListener() {
       @Override
-      public void comboAdded(ICombo combo) {
+      public void comboAdded(Combo combo) {
         addComboToView(comboView, combo);
       }
 
       @Override
-      public void comboChanged(ICombo combo) {
+      public void comboChanged(Combo combo) {
         viewsByCombo.get(combo).updateCombo(createComboNameString(combo), convertToHtml(combo));
       }
 
       @Override
-      public void comboDeleted(ICombo combo) {
+      public void comboDeleted(Combo combo) {
         view.deleteView(viewsByCombo.get(combo));
       }
 
       @Override
-      public void editBegun(ICombo combo) {
+      public void editBegun(Combo combo) {
         setViewsToNotEditing();
         setViewToEditing(combo);
         comboView.setEditState(true);
@@ -110,12 +110,12 @@ public class ComboConfigurationPresenter {
       }
 
     });
-    for (ICombo combo : comboConfiguration.getAllCombos()) {
+    for (Combo combo : comboConfiguration.getAllCombos()) {
       addComboToView(comboView, combo);
     }
   }
 
-  private String createComboNameString(ICombo combo) {
+  private String createComboNameString(Combo combo) {
     String comboName = combo.getName().getText();
     if (Strings.isNullOrEmpty(comboName)) {
       comboName = resources.getString("CardView.CharmConfiguration.ComboCreation.UnnamedCombo");
@@ -140,7 +140,7 @@ public class ComboConfigurationPresenter {
     }
   }
 
-  private void addComboToView(ComboConfigurationView comboConfigurationView, final ICombo combo) {
+  private void addComboToView(ComboConfigurationView comboConfigurationView, final Combo combo) {
     ComboView comboView = comboConfigurationView.addComboView(createComboNameString(combo), convertToHtml(combo));
     Tool editTool = comboView.addTool();
     editTool.setIcon(new BasicUi().getEditIconPath());
@@ -164,7 +164,7 @@ public class ComboConfigurationPresenter {
     toolsByCombo.put(combo, editTool);
   }
 
-  private String convertToHtml(ICombo combo) {
+  private String convertToHtml(Combo combo) {
     String text = combo.getDescription().getText();
     Charm[] charms = combo.getCharms();
     String charmList = "<b>";
@@ -231,7 +231,7 @@ public class ComboConfigurationPresenter {
     });
   }
 
-  private void setViewToEditing(ICombo combo) {
+  private void setViewToEditing(Combo combo) {
     ComboView comboView = viewsByCombo.get(combo);
     createComboNameString(combo);
     comboView.updateCombo(createComboNameString(combo) + " (" + resources.getString("CardView.CharmConfiguration.ComboCreation.EditingLabel") + ")",
@@ -240,7 +240,7 @@ public class ComboConfigurationPresenter {
   }
 
   private void setViewsToNotEditing() {
-    for (ICombo currentCombo : viewsByCombo.keySet()) {
+    for (Combo currentCombo : viewsByCombo.keySet()) {
       ComboView comboView = viewsByCombo.get(currentCombo);
       comboView.updateCombo(createComboNameString(currentCombo), convertToHtml(currentCombo));
       toolsByCombo.get(currentCombo).setText(resources.getString("CardView.CharmConfiguration.ComboCreation.EditLabel"));

@@ -1,19 +1,19 @@
 package net.sf.anathema.hero.combos;
 
+import net.sf.anathema.character.main.dummy.DummyCharmUtilities;
 import net.sf.anathema.character.main.magic.model.charm.Charm;
-import net.sf.anathema.character.main.magic.model.combos.ComboRestrictions;
 import net.sf.anathema.character.main.magic.model.charm.duration.SimpleDuration;
 import net.sf.anathema.character.main.magic.model.charm.type.CharmType;
+import net.sf.anathema.character.main.magic.model.combos.ComboRestrictions;
 import net.sf.anathema.character.main.traits.types.AbilityType;
 import net.sf.anathema.character.main.traits.types.AttributeType;
 import net.sf.anathema.character.main.traits.types.ValuedTraitType;
-import net.sf.anathema.character.main.dummy.DummyCharmUtilities;
-import net.sf.anathema.hero.combos.model.rules.ComboArbitrator;
-import net.sf.anathema.hero.combos.model.IComboRules;
+import net.sf.anathema.hero.combos.model.ComboRules;
+import net.sf.anathema.hero.combos.model.rules.AbstractComboArbitrator;
 
 public abstract class AbstractComboRulesTestCase {
 
-  private IComboRules rules = new ComboArbitrator() {
+  private ComboRules rules = new AbstractComboArbitrator() {
 
     @Override
     protected boolean isCharmLegalByRules(Charm charm) {
@@ -21,7 +21,7 @@ public abstract class AbstractComboRulesTestCase {
     }
   };
 
-  protected IComboRules getRules() {
+  protected ComboRules getRules() {
     return rules;
   }
 

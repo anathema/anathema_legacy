@@ -18,19 +18,19 @@ public interface CombosModel extends HeroModel {
 
   void finalizeCombo();
 
-  ICombo getEditCombo();
+  Combo getEditCombo();
 
-  void addComboConfigurationListener(IComboConfigurationListener listener);
+  void addComboConfigurationListener(ComboConfigurationListener listener);
 
   boolean isComboLegal(Charm charm);
 
-  void deleteCombo(ICombo combo);
+  void deleteCombo(Combo combo);
 
   void clearCombo();
 
-  void beginComboEdit(ICombo combo);
+  void beginComboEdit(Combo combo);
 
-  ICombo[] getAllCombos();
+  Combo[] getAllCombos();
 
   void setCrossPrerequisiteTypeComboAllowed(boolean allowed);
 }

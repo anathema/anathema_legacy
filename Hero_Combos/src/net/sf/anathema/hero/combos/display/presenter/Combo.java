@@ -4,13 +4,14 @@ import net.sf.anathema.character.main.magic.model.charm.Charm;
 import net.sf.anathema.lib.control.ChangeListener;
 import net.sf.anathema.lib.workflow.textualdescription.ITextualDescription;
 
-public interface ICombo extends Cloneable {
+public interface Combo extends Cloneable {
 
   void addComboModelListener(ChangeListener listener);
 
   void removeCharms(Charm[] charm);
 
-  ICombo clone();
+  @SuppressWarnings("CloneDoesntDeclareCloneNotSupportedException")
+  Combo clone();
 
   void clear();
 
@@ -30,7 +31,7 @@ public interface ICombo extends Cloneable {
 
   void setId(Integer id);
 
-  void getValuesFrom(ICombo combo);
+  void getValuesFrom(Combo combo);
 
   void addCharm(Charm charm, boolean experienced);
 }

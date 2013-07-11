@@ -3,7 +3,7 @@ package net.sf.anathema.hero.combos.model;
 import com.google.common.base.Preconditions;
 import net.sf.anathema.character.main.magic.model.charm.Charm;
 import net.sf.anathema.character.main.magic.model.charm.type.CharmType;
-import net.sf.anathema.hero.combos.display.presenter.ICombo;
+import net.sf.anathema.hero.combos.display.presenter.Combo;
 import net.sf.anathema.lib.control.ChangeListener;
 import net.sf.anathema.lib.exception.UnreachableCodeReachedException;
 import net.sf.anathema.lib.workflow.textualdescription.ITextualDescription;
@@ -14,7 +14,7 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
-public class Combo implements ICombo {
+public class ComboImpl implements Combo {
 
   private volatile Announcer<ChangeListener> control = Announcer.to(ChangeListener.class);
   private volatile List<Charm> creationCharmList = new ArrayList<>();
@@ -81,10 +81,10 @@ public class Combo implements ICombo {
 
   @SuppressWarnings("CloneDoesntDeclareCloneNotSupportedException")
   @Override
-  public Combo clone() {
-    Combo clone;
+  public ComboImpl clone() {
+    ComboImpl clone;
     try {
-      clone = (Combo) super.clone();
+      clone = (ComboImpl) super.clone();
     } catch (CloneNotSupportedException e) {
       throw new UnreachableCodeReachedException(e);
     }
@@ -98,12 +98,12 @@ public class Combo implements ICombo {
   }
 
   @Override
-  public void getValuesFrom(ICombo combo) {
+  public void getValuesFrom(Combo combo) {
     this.clear();
     copyCombo(combo, this);
   }
 
-  private void copyCombo(ICombo source, Combo destination) {
+  private void copyCombo(Combo source, ComboImpl destination) {
     for (Charm charm : source.getCreationCharms()) {
       destination.addCharm(charm, false);
     }

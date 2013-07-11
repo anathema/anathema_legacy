@@ -4,7 +4,7 @@ import net.sf.anathema.character.main.magic.model.charm.Charm;
 import net.sf.anathema.character.main.magic.model.charm.CharmAttributeList;
 import net.sf.anathema.character.main.magic.model.charm.type.CharmType;
 
-public class SecondEditionComboArbitrator extends ComboArbitrator {
+public class SecondEditionComboArbitrator extends AbstractComboArbitrator {
 
   @Override
   protected boolean isCharmLegalByRules(Charm charm) {
@@ -13,6 +13,7 @@ public class SecondEditionComboArbitrator extends ComboArbitrator {
     return comboBasic || comboOk;
   }
 
+  @SuppressWarnings("SimplifiableIfStatement")
   @Override
   protected boolean specialRestrictionsApply(Charm charm1, Charm charm2) {
     if (isComboBasic(charm1) && charm2.getCharmTypeModel().getCharmType() != CharmType.Reflexive) {

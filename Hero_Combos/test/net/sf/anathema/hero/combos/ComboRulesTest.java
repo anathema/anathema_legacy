@@ -5,10 +5,10 @@ import net.sf.anathema.character.main.dummy.DummyCharmUtilities;
 import net.sf.anathema.character.main.magic.model.charm.Charm;
 import net.sf.anathema.character.main.magic.model.charm.duration.SimpleDuration;
 import net.sf.anathema.character.main.magic.model.charm.type.CharmType;
-import net.sf.anathema.hero.combos.model.rules.ComboArbitrator;
 import net.sf.anathema.character.main.magic.model.combos.ComboRestrictions;
 import net.sf.anathema.character.main.traits.types.AbilityType;
 import net.sf.anathema.character.main.traits.types.ValuedTraitType;
+import net.sf.anathema.hero.combos.model.rules.AbstractComboArbitrator;
 import org.junit.Test;
 
 import static org.junit.Assert.assertFalse;
@@ -16,7 +16,7 @@ import static org.junit.Assert.assertTrue;
 
 public class ComboRulesTest extends AbstractComboRulesTestCase {
 
-  private ComboArbitrator rules = new ComboArbitrator() {
+  private AbstractComboArbitrator rules = new AbstractComboArbitrator() {
     @Override
     protected boolean isCharmLegalByRules(Charm charm) {
       return true;
@@ -30,7 +30,7 @@ public class ComboRulesTest extends AbstractComboRulesTestCase {
 
   @Test
   public void illegalCharmIsRejected() throws Exception {
-    rules = new ComboArbitrator() {
+    rules = new AbstractComboArbitrator() {
       @Override
       protected boolean isCharmLegalByRules(Charm charm) {
         return false;

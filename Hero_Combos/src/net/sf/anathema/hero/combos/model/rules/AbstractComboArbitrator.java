@@ -3,18 +3,17 @@ package net.sf.anathema.hero.combos.model.rules;
 import net.sf.anathema.character.main.magic.model.charm.Charm;
 import net.sf.anathema.character.main.magic.model.charm.ICharmTypeVisitor;
 import net.sf.anathema.character.main.magic.model.charm.type.CharmType;
-import net.sf.anathema.hero.combos.display.presenter.ICombo;
-import net.sf.anathema.hero.combos.model.IComboArbitrator;
 import net.sf.anathema.character.main.magic.model.combos.IComboRestrictions;
-import net.sf.anathema.hero.combos.model.IComboRules;
+import net.sf.anathema.hero.combos.display.presenter.Combo;
+import net.sf.anathema.hero.combos.model.ComboRules;
 import org.apache.commons.lang3.ArrayUtils;
 
-public abstract class ComboArbitrator implements IComboArbitrator {
+public abstract class AbstractComboArbitrator implements net.sf.anathema.hero.combos.model.ComboArbitrator {
 
-  private final IComboRules simpleCharmRules = new SimpleCharmComboRules();
-  private final IComboRules extraActionCharmRules = new ExtraActionCharmComboRules();
-  private final IComboRules supplementalCharmRules = new SupplementalCharmComboRules();
-  private final IComboRules reflexiveCharmRules = new ReflexiveCharmComboRules();
+  private final ComboRules simpleCharmRules = new SimpleCharmComboRules();
+  private final ComboRules extraActionCharmRules = new ExtraActionCharmComboRules();
+  private final ComboRules supplementalCharmRules = new SupplementalCharmComboRules();
+  private final ComboRules reflexiveCharmRules = new ReflexiveCharmComboRules();
 
   @Override
   public void setCrossPrerequisiteTypeComboAllowed(boolean allowed) {
@@ -31,7 +30,7 @@ public abstract class ComboArbitrator implements IComboArbitrator {
   protected abstract boolean isCharmLegalByRules(Charm charm);
 
   @Override
-  public boolean canBeAddedToCombo(ICombo combo, Charm charm) {
+  public boolean canBeAddedToCombo(Combo combo, Charm charm) {
     boolean legal = isCharmComboLegal(charm);
     for (Charm comboCharm : combo.getCharms()) {
       legal = legal && isComboLegal(comboCharm, charm);
@@ -39,6 +38,7 @@ public abstract class ComboArbitrator implements IComboArbitrator {
     return legal;
   }
 
+  @SuppressWarnings("SimplifiableIfStatement")
   @Override
   public boolean isComboLegal(Charm charm1, Charm charm2) {
     if (charm1 == charm2) {

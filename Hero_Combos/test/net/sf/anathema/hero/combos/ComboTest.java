@@ -4,13 +4,13 @@ import net.sf.anathema.character.main.dummy.DummyCharmUtilities;
 import net.sf.anathema.character.main.magic.model.charm.Charm;
 import net.sf.anathema.character.main.magic.model.charm.duration.SimpleDuration;
 import net.sf.anathema.character.main.magic.model.charm.type.CharmType;
-import net.sf.anathema.hero.combos.model.Combo;
-import net.sf.anathema.hero.combos.model.rules.ComboArbitrator;
 import net.sf.anathema.character.main.magic.model.combos.ComboRestrictions;
 import net.sf.anathema.character.main.magic.model.combos.IComboRestrictions;
 import net.sf.anathema.character.main.traits.types.AbilityType;
 import net.sf.anathema.character.main.traits.types.AttributeType;
 import net.sf.anathema.character.main.traits.types.ValuedTraitType;
+import net.sf.anathema.hero.combos.model.ComboImpl;
+import net.sf.anathema.hero.combos.model.rules.AbstractComboArbitrator;
 import org.junit.Test;
 
 import static org.junit.Assert.assertEquals;
@@ -20,8 +20,8 @@ import static org.junit.Assert.assertTrue;
 
 public class ComboTest {
 
-  private Combo combo = new Combo();
-  private ComboArbitrator comboRules = new ComboArbitrator() {
+  private ComboImpl combo = new ComboImpl();
+  private AbstractComboArbitrator comboRules = new AbstractComboArbitrator() {
 
     @Override
     protected boolean isCharmLegalByRules(Charm charm) {
@@ -39,10 +39,6 @@ public class ComboTest {
 
   protected static Charm createCharm(CharmType charmType, IComboRestrictions restrictions) {
     return DummyCharmUtilities.createCharm(charmType, restrictions);
-  }
-
-  protected static Charm createCharm(String duration, IComboRestrictions restrictions) {
-    return DummyCharmUtilities.createCharm(duration, restrictions);
   }
 
   protected static Charm createCharm(IComboRestrictions restrictions) {

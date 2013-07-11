@@ -2,13 +2,13 @@ package net.sf.anathema.hero.combos.model;
 
 import net.sf.anathema.character.main.magic.model.charm.Charm;
 import net.sf.anathema.character.main.magic.model.charm.CharmLearnAdapter;
-import net.sf.anathema.hero.combos.display.presenter.ICombo;
-import net.sf.anathema.hero.combos.display.presenter.CombosModel;
-import net.sf.anathema.hero.combos.display.presenter.IComboConfigurationListener;
-import net.sf.anathema.hero.combos.model.rules.SecondEditionComboArbitrator;
 import net.sf.anathema.hero.change.ChangeAnnouncer;
 import net.sf.anathema.hero.charms.model.CharmsModelFetcher;
 import net.sf.anathema.hero.combos.display.presenter.CharacterChangeComboListener;
+import net.sf.anathema.hero.combos.display.presenter.Combo;
+import net.sf.anathema.hero.combos.display.presenter.ComboConfigurationListener;
+import net.sf.anathema.hero.combos.display.presenter.CombosModel;
+import net.sf.anathema.hero.combos.model.rules.SecondEditionComboArbitrator;
 import net.sf.anathema.hero.model.Hero;
 import net.sf.anathema.hero.model.InitializationContext;
 import net.sf.anathema.lib.control.ChangeListener;
@@ -20,10 +20,10 @@ import java.util.List;
 
 public class CombosModelImpl implements CombosModel {
 
-  private final List<ICombo> comboList = new ArrayList<>();
-  private final IComboArbitrator rules =  new SecondEditionComboArbitrator();
-  private final ICombo editCombo = new Combo();
-  private final Announcer<IComboConfigurationListener> control = Announcer.to(IComboConfigurationListener.class);
+  private final List<Combo> comboList = new ArrayList<>();
+  private final ComboArbitrator rules =  new SecondEditionComboArbitrator();
+  private final Combo editCombo = new ComboImpl();
+  private final Announcer<ComboConfigurationListener> control = Announcer.to(ComboConfigurationListener.class);
   private final ComboIdProvider idProvider = new ComboIdProvider();
   private Hero hero;
 
@@ -54,8 +54,8 @@ public class CombosModelImpl implements CombosModel {
   }
 
   private void checkCombos(Charm charm) {
-    List<ICombo> deletionList = new ArrayList<>();
-    for (ICombo combo : comboList) {
+    List<Combo> deletionList = new ArrayList<>();
+    for (Combo combo : comboList) {
       if (combo.contains(charm)) {
         combo.removeCharms(new Charm[]{charm});
         if (combo.getCharms().length < 2) {
@@ -67,7 +67,7 @@ public class CombosModelImpl implements CombosModel {
     if (editCombo.contains(charm)) {
       removeCharmsFromCombo(new Charm[]{charm});
     }
-    for (ICombo combo : deletionList) {
+    for (Combo combo : deletionList) {
       deleteCombo(combo);
     }
   }
@@ -93,13 +93,13 @@ public class CombosModelImpl implements CombosModel {
 
   @Override
   public void finalizeCombo() {
-    ICombo combo = editCombo.clone();
+    Combo combo = editCombo.clone();
     if (combo.getId() == null) {
       combo.setId(idProvider.createId());
       comboList.add(combo);
       fireComboAdded(combo);
     } else {
-      ICombo editedCombo = getComboById(combo.getId());
+      Combo editedCombo = getComboById(combo.getId());
       editedCombo.getValuesFrom(combo);
       fireComboChanged(editedCombo);
       fireEndEditEvent();
@@ -108,12 +108,12 @@ public class CombosModelImpl implements CombosModel {
   }
 
   @Override
-  public ICombo getEditCombo() {
+  public Combo getEditCombo() {
     return editCombo;
   }
 
-  private ICombo getComboById(int id) {
-    for (ICombo combo : getAllCombos()) {
+  private Combo getComboById(int id) {
+    for (Combo combo : getAllCombos()) {
       if (combo.getId() == id) {
         return combo;
       }
@@ -122,23 +122,23 @@ public class CombosModelImpl implements CombosModel {
   }
 
   @Override
-  public void addComboConfigurationListener(IComboConfigurationListener listener) {
+  public void addComboConfigurationListener(ComboConfigurationListener listener) {
     control.addListener(listener);
   }
 
-  private void fireComboAdded(ICombo combo) {
+  private void fireComboAdded(Combo combo) {
     control.announce().comboAdded(combo);
   }
 
-  private void fireComboDeleted(ICombo combo) {
+  private void fireComboDeleted(Combo combo) {
     control.announce().comboDeleted(combo);
   }
 
-  private void fireComboChanged(ICombo combo) {
+  private void fireComboChanged(Combo combo) {
     control.announce().comboChanged(combo);
   }
 
-  private void fireBeginEditEvent(ICombo combo) {
+  private void fireBeginEditEvent(Combo combo) {
     control.announce().editBegun(combo);
   }
 
@@ -147,8 +147,8 @@ public class CombosModelImpl implements CombosModel {
   }
 
   @Override
-  public ICombo[] getAllCombos() {
-    return comboList.toArray(new ICombo[comboList.size()]);
+  public Combo[] getAllCombos() {
+    return comboList.toArray(new Combo[comboList.size()]);
   }
 
   @Override
@@ -157,7 +157,7 @@ public class CombosModelImpl implements CombosModel {
   }
 
   @Override
-  public void deleteCombo(ICombo combo) {
+  public void deleteCombo(Combo combo) {
     comboList.remove(combo);
     fireComboDeleted(combo);
     if (combo.getId().equals(editCombo.getId())) {
@@ -172,7 +172,7 @@ public class CombosModelImpl implements CombosModel {
   }
 
   @Override
-  public void beginComboEdit(ICombo combo) {
+  public void beginComboEdit(Combo combo) {
     editCombo.clear();
     editCombo.getValuesFrom(combo);
     fireBeginEditEvent(combo);
