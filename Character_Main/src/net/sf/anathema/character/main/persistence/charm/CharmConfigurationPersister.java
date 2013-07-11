@@ -44,11 +44,6 @@ public class CharmConfigurationPersister {
 
   private final TextPersister textPersister = new TextPersister();
   private final TraitPersister traitPersister = new TraitPersister();
-  private static final String TAG_LEARN_COUNT = "LearnCount";
-  private static final String ATTRIB_CREATION_LEARNED = "creationlearned";
-  private static final String ATTRIB_ID = "id";
-  private static final String TAG_SUBEFFECTS = "Subeffects";
-  private static final String TAG_SUBEFFECT = "Subeffect";
   private IMessaging messageIndicator;
 
   public CharmConfigurationPersister(IMessaging messageIndicator) {
@@ -168,11 +163,14 @@ public class CharmConfigurationPersister {
         baseCharmName.append(components[i]);
         baseCharmName.append(i == components.length - 3 ? "" : ".");
       }
-      if (components[components.length - 1].startsWith("Repurchase")) {
+      boolean isRepurchaseInfo = components[components.length - 1].startsWith("Repurchase");
+      //This adapts the Charm from an old format to repurchase configurations, modifying only the in-memory representation.
+      //TODO (Sandra) still wants to understand this
+      if (isRepurchaseInfo) {
         int count = Integer.parseInt(components[components.length - 1].replace("Repurchase", ""));
         Element specialCharmElement = element.addElement(TAG_SPECIAL);
         DefaultTrait trait =
-                new LimitedTrait(hero, new DefaultTraitType(TAG_LEARN_COUNT), createEssenceLimitedTemplate(0, 0, LowerableState.Default), null);
+                new LimitedTrait(hero, new DefaultTraitType(MultiLearnCharmPersister.TAG_LEARN_COUNT), createEssenceLimitedTemplate(0, 0, LowerableState.Default), null);
         ISpecialCharmConfiguration specialConfiguration = config.getSpecialCharmConfiguration(baseCharmName.toString());
         if (specialConfiguration instanceof IMultiLearnableCharmConfiguration) {
           IMultiLearnableCharmConfiguration multiConfig = (IMultiLearnableCharmConfiguration) specialConfiguration;
@@ -186,14 +184,17 @@ public class CharmConfigurationPersister {
             trait.setUncheckedCreationValue(count);
           }
         }
-        traitPersister.saveTrait(specialCharmElement, TAG_LEARN_COUNT, trait);
+        traitPersister.saveTrait(specialCharmElement, MultiLearnCharmPersister.TAG_LEARN_COUNT, trait);
       }
-      if (components[components.length - 2].startsWith("Subeffect")) {
-        Element newElement = element.addElement(TAG_SPECIAL).addElement(TAG_SUBEFFECTS).addElement(TAG_SUBEFFECT);
+      //This adapts the Charm from an old format to subeffect configurations, modifying only the in-memory representation.
+      //TODO (Sandra) still wants to understand this
+      boolean isSubeffectCharm = components[components.length - 2].startsWith("Subeffect");
+      if (isSubeffectCharm) {
+        Element newElement = element.addElement(TAG_SPECIAL).addElement(MultipleEffectCharmPersister.TAG_SUBEFFECTS).addElement(MultipleEffectCharmPersister.TAG_SUBEFFECT);
         boolean creationLearned = !ElementUtilities.getBooleanAttribute(element, ATTRIB_EXPERIENCE_LEARNED, true);
-        newElement.addAttribute(ATTRIB_ID, components[components.length - 1]);
-        newElement.addAttribute(ATTRIB_CREATION_LEARNED, "" + creationLearned);
-        newElement.addAttribute(ATTRIB_EXPERIENCE_LEARNED, "" + true);
+        newElement.addAttribute(MultipleEffectCharmPersister.ATTRIB_ID, components[components.length - 1]);
+        newElement.addAttribute(MultipleEffectCharmPersister.ATTRIB_CREATION_LEARNED, "" + creationLearned);
+        newElement.addAttribute(MultipleEffectCharmPersister.ATTRIB_EXPERIENCE_LEARNED, "" + true);
       }
       return baseCharmName.toString();
     }

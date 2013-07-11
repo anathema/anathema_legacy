@@ -9,11 +9,11 @@ import org.dom4j.Element;
 
 public class MultipleEffectCharmPersister implements ISpecialCharmPersister {
 
-  private static final String TAG_SUBEFFECTS = "Subeffects";
-  private static final String TAG_SUBEFFECT = "Subeffect";
-  private static final String ATTRIB_ID = "id";
-  private static final String ATTRIB_CREATION_LEARNED = "creationlearned";
-  private static final String ATTRIB_EXPERIENCE_LEARNED = "experiencelearned";
+  public static final String TAG_SUBEFFECTS = "Subeffects";
+  public static final String TAG_SUBEFFECT = "Subeffect";
+  public static final String ATTRIB_ID = "id";
+  public static final String ATTRIB_CREATION_LEARNED = "creationlearned";
+  public static final String ATTRIB_EXPERIENCE_LEARNED = "experiencelearned";
 
   @Override
   public void loadConfiguration(Element specialElement, ISpecialCharmConfiguration specialCharmConfiguration) throws PersistenceException {

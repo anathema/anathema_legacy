@@ -9,7 +9,7 @@ import org.dom4j.Element;
 
 public class MultiLearnCharmPersister implements ISpecialCharmPersister {
 
-  private static final String TAG_LEARN_COUNT = "LearnCount";
+  public static final String TAG_LEARN_COUNT = "LearnCount";
   private final TraitPersister traitPersister = new TraitPersister();
 
   @Override

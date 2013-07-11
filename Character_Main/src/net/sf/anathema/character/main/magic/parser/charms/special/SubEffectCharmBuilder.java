@@ -2,6 +2,7 @@ package net.sf.anathema.character.main.magic.parser.charms.special;
 
 import net.sf.anathema.character.main.magic.model.charm.special.SubeffectCharm;
 import net.sf.anathema.character.main.magic.model.charm.special.ISpecialCharm;
+import net.sf.anathema.character.main.persistence.charm.MultipleEffectCharmPersister;
 import org.dom4j.Element;
 
 import java.util.ArrayList;
@@ -10,8 +11,8 @@ import java.util.List;
 @SpecialCharmParser
 public class SubEffectCharmBuilder implements SpecialCharmBuilder {
 
-  private static final String TAG_SUBEFFECTS = "subeffects";
-  private static final String TAG_SUBEFFECT = "subeffect";
+  private static final String TAG_SUBEFFECTS = MultipleEffectCharmPersister.TAG_SUBEFFECTS;
+  private static final String TAG_SUBEFFECT = MultipleEffectCharmPersister.TAG_SUBEFFECT;
   private static final String TAG_BP_COST = "bpCost";
 
   @Override
