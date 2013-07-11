@@ -135,7 +135,7 @@ public class ComboConfigurationView implements IComboConfigurationView, IView {
 
   @Override
   public void setAllCharms(Object[] charms) {
-    magicLearnView.setMagicOptions(Arrays.asList(charms));
+    magicLearnView.setAvailableMagic(Arrays.asList(charms));
   }
 
   @Override
@@ -162,7 +162,7 @@ public class ComboConfigurationView implements IComboConfigurationView, IView {
 
   @Override
   public void setComboCharms(Object[] charms) {
-    magicLearnView.setLearnedMagic(charms);
+    magicLearnView.setLearnedMagic(Arrays.asList(charms));
   }
 
   @Override

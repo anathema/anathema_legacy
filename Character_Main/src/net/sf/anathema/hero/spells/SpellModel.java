@@ -1,12 +1,14 @@
 package net.sf.anathema.hero.spells;
 
-import net.sf.anathema.character.main.magic.model.spells.ISpell;
-import net.sf.anathema.character.main.magic.model.spells.CircleType;
 import net.sf.anathema.character.main.magic.model.magic.IMagicLearnListener;
+import net.sf.anathema.character.main.magic.model.spells.CircleType;
+import net.sf.anathema.character.main.magic.model.spells.ISpell;
 import net.sf.anathema.hero.model.HeroModel;
 import net.sf.anathema.lib.control.ChangeListener;
 import net.sf.anathema.lib.util.Identifier;
 import net.sf.anathema.lib.util.SimpleIdentifier;
+
+import java.util.List;
 
 public interface SpellModel extends HeroModel {
 
@@ -41,4 +43,8 @@ public interface SpellModel extends HeroModel {
   boolean isLearned(ISpell spell);
 
   boolean isLearnedOnCreationOrExperience(ISpell spell);
+
+  List<ISpell> getAvailableSpellsInCircle(CircleType circle);
+
+  List<ISpell> getLearnedSpellsInCircles(CircleType[] eligibleCircles);
 }

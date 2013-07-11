@@ -1,18 +1,20 @@
 package net.sf.anathema.character.main.testing.dummy.magic;
 
-import net.sf.anathema.character.main.magic.model.spells.ISpell;
-import net.sf.anathema.character.main.magic.model.spells.CircleType;
-import net.sf.anathema.hero.spells.SpellModel;
 import net.sf.anathema.character.main.magic.model.magic.IMagicLearnListener;
+import net.sf.anathema.character.main.magic.model.spells.CircleType;
+import net.sf.anathema.character.main.magic.model.spells.ISpell;
 import net.sf.anathema.hero.change.ChangeAnnouncer;
 import net.sf.anathema.hero.model.Hero;
 import net.sf.anathema.hero.model.InitializationContext;
+import net.sf.anathema.hero.spells.SpellModel;
 import net.sf.anathema.lib.control.ChangeListener;
 import net.sf.anathema.lib.exception.NotYetImplementedException;
 import net.sf.anathema.lib.util.Identifier;
+import org.apache.commons.lang3.ArrayUtils;
 
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Collections;
 import java.util.List;
 
 public class DummySpellModel implements SpellModel {
@@ -113,5 +115,24 @@ public class DummySpellModel implements SpellModel {
   @Override
   public void addMagicLearnListener(IMagicLearnListener<ISpell> listener) {
     throw new NotYetImplementedException();
+  }
+
+  @Override
+  public List<ISpell> getAvailableSpellsInCircle(CircleType circle) {
+    List<ISpell> showSpells = new ArrayList<>();
+    Collections.addAll(showSpells, getSpellsByCircle(circle));
+    showSpells.removeAll(Arrays.asList(getLearnedSpells()));
+    return showSpells;
+  }
+
+  @Override
+  public List<ISpell> getLearnedSpellsInCircles(CircleType[] eligibleCircles) {
+    List<ISpell> spellList = new ArrayList<>();
+    for (ISpell spell : getLearnedSpells()) {
+      if (ArrayUtils.contains(eligibleCircles, spell.getCircleType())) {
+        spellList.add(spell);
+      }
+    }
+    return spellList;
   }
 }

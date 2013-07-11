@@ -15,11 +15,8 @@ import net.sf.anathema.lib.control.ChangeListener;
 import net.sf.anathema.lib.control.ObjectValueListener;
 import net.sf.anathema.lib.resources.Resources;
 import net.sf.anathema.lib.util.Identifier;
-import org.apache.commons.lang3.ArrayUtils;
 
 import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Collections;
 import java.util.List;
 
 public class SpellPresenter {
@@ -71,7 +68,8 @@ public class SpellPresenter {
       @Override
       public void valueChanged(CircleType circleType) {
         circle = circleType;
-        view.setMagicOptions(getSpellsToShow());
+        List<ISpell> available = spellConfiguration.getAvailableSpellsInCircle(circle);
+        view.setAvailableMagic(new I18nedIdentificateSorter<ISpell>().sortAscending(available, resources));
       }
     });
     spellConfiguration.addMagicLearnListener(new IMagicLearnListener<ISpell>() {
@@ -95,8 +93,8 @@ public class SpellPresenter {
   }
 
   private void initSpellListsInView(SpellView spellView) {
-    spellView.setLearnedMagic(getCircleFilteredSpellList(spellConfiguration.getLearnedSpells()));
-    spellView.setMagicOptions(getSpellsToShow());
+    showLearnedSpells(spellView);
+    showAvailableSpells(spellView);
   }
 
   private void forgetSpellListsInView(SpellView spellView, ISpell[] spells) {
@@ -121,20 +119,14 @@ public class SpellPresenter {
     return supportedSpells;
   }
 
-  private List<ISpell> getSpellsToShow() {
-    List<ISpell> showSpells = new ArrayList<>();
-    Collections.addAll(showSpells, spellConfiguration.getSpellsByCircle(circle));
-    showSpells.removeAll(Arrays.asList(spellConfiguration.getLearnedSpells()));
-    return new I18nedIdentificateSorter<ISpell>().sortAscending(showSpells, resources);
+  private void showAvailableSpells(SpellView spellView) {
+    List<ISpell> availableSpells = spellConfiguration.getAvailableSpellsInCircle(circle);
+    List<ISpell> sortedSpells = new I18nedIdentificateSorter<ISpell>().sortAscending(availableSpells, resources);
+    spellView.setAvailableMagic(sortedSpells);
   }
 
-  private ISpell[] getCircleFilteredSpellList(ISpell[] spells) {
-    List<ISpell> spellList = new ArrayList<>();
-    for (ISpell spell : spells) {
-      if (ArrayUtils.contains(circleModel.getCircles(), spell.getCircleType())) {
-        spellList.add(spell);
-      }
-    }
-    return spellList.toArray(new ISpell[spellList.size()]);
+  private void showLearnedSpells(SpellView spellView) {
+    List<ISpell> learnedSpells = spellConfiguration.getLearnedSpellsInCircles(circleModel.getCircles());
+    spellView.setLearnedMagic(learnedSpells);
   }
 }

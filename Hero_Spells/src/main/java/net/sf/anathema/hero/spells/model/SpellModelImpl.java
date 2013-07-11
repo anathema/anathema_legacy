@@ -1,9 +1,16 @@
 package net.sf.anathema.hero.spells.model;
 
-import net.sf.anathema.character.main.magic.model.spells.ISpell;
+import net.sf.anathema.character.main.UnspecifiedChangeListener;
+import net.sf.anathema.character.main.magic.model.magic.IMagicLearnListener;
 import net.sf.anathema.character.main.magic.model.spells.CircleType;
+import net.sf.anathema.character.main.magic.model.spells.ISpell;
+import net.sf.anathema.character.main.magic.model.spells.ISpellMapper;
+import net.sf.anathema.character.main.magic.model.spells.SpellMapper;
 import net.sf.anathema.character.main.template.HeroTemplate;
 import net.sf.anathema.character.main.template.magic.ISpellMagicTemplate;
+import net.sf.anathema.hero.change.ChangeAnnouncer;
+import net.sf.anathema.hero.change.ChangeFlavor;
+import net.sf.anathema.hero.change.FlavoredChangeListener;
 import net.sf.anathema.hero.charms.CharmsModel;
 import net.sf.anathema.hero.charms.CharmsModelFetcher;
 import net.sf.anathema.hero.experience.ExperienceChange;
@@ -11,21 +18,17 @@ import net.sf.anathema.hero.experience.ExperienceModel;
 import net.sf.anathema.hero.experience.ExperienceModelFetcher;
 import net.sf.anathema.hero.magic.model.MagicModel;
 import net.sf.anathema.hero.magic.model.MagicModelFetcher;
-import net.sf.anathema.hero.spells.SpellModel;
-import net.sf.anathema.character.main.magic.model.magic.IMagicLearnListener;
-import net.sf.anathema.character.main.magic.model.spells.ISpellMapper;
-import net.sf.anathema.character.main.magic.model.spells.SpellMapper;
-import net.sf.anathema.character.main.UnspecifiedChangeListener;
-import net.sf.anathema.hero.change.ChangeAnnouncer;
-import net.sf.anathema.hero.change.ChangeFlavor;
-import net.sf.anathema.hero.change.FlavoredChangeListener;
 import net.sf.anathema.hero.model.Hero;
 import net.sf.anathema.hero.model.InitializationContext;
+import net.sf.anathema.hero.spells.SpellModel;
 import net.sf.anathema.lib.control.ChangeListener;
 import net.sf.anathema.lib.util.Identifier;
+import org.apache.commons.lang3.ArrayUtils;
 import org.jmock.example.announcer.Announcer;
 
 import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Collections;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -61,6 +64,8 @@ public class SpellModelImpl implements SpellModel {
     }
   }
 
+  //TODO (Sandra) will investigate if we still need this
+  @SuppressWarnings("UnusedDeclaration")
   private void addPrintSpells(Hero hero) {
     MagicModel magicModel = MagicModelFetcher.fetch(hero);
     if (magicModel == null) {
@@ -221,5 +226,24 @@ public class SpellModelImpl implements SpellModel {
   @Override
   public boolean isLearned(ISpell spell) {
     return strategy.isLearned(this, spell);
+  }
+
+  @Override
+  public List<ISpell> getAvailableSpellsInCircle(CircleType circle) {
+    List<ISpell> showSpells = new ArrayList<>();
+    Collections.addAll(showSpells, getSpellsByCircle(circle));
+    showSpells.removeAll(Arrays.asList(getLearnedSpells()));
+    return showSpells;
+  }
+
+  @Override
+  public List<ISpell> getLearnedSpellsInCircles(CircleType[] eligibleCircles) {
+    List<ISpell> spellList = new ArrayList<>();
+    for (ISpell spell : getLearnedSpells()) {
+      if (ArrayUtils.contains(eligibleCircles, spell.getCircleType())) {
+        spellList.add(spell);
+      }
+    }
+    return spellList;
   }
 }
