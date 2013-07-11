@@ -7,8 +7,8 @@ import net.sf.anathema.framework.swing.IView;
 import net.sf.anathema.hero.magic.display.MagicLearnProperties;
 import net.sf.anathema.hero.magic.display.MagicLearnView;
 import net.sf.anathema.hero.magic.display.SwingMagicLearnView;
-import net.sf.anathema.hero.spells.display.presenter.ISpellViewProperties;
 import net.sf.anathema.hero.spells.display.presenter.SpellView;
+import net.sf.anathema.hero.spells.display.presenter.SpellViewProperties;
 import net.sf.anathema.lib.control.ObjectValueListener;
 import net.sf.anathema.lib.gui.ui.ConfigurableListCellRenderer;
 import net.sf.anathema.lib.util.Identifier;
@@ -33,7 +33,7 @@ public class SwingSpellView implements SpellView, IView {
   }
 
   @Override
-  public void initGui(Identifier[] circles, ISpellViewProperties properties) {
+  public void initGui(Identifier[] circles, SpellViewProperties properties) {
     content.add(new JLabel(properties.getCircleLabel()), new CC().split(2));
     final JComboBox<Identifier> box = new JComboBox<>(circles);
     box.setRenderer(new ConfigurableListCellRenderer(properties.getCircleSelectionRenderer()));

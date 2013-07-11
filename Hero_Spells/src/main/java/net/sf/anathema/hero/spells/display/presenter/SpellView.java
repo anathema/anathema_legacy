@@ -8,7 +8,7 @@ import net.sf.anathema.lib.util.Identifier;
 
 public interface SpellView {
 
-  void initGui(Identifier[] circles, ISpellViewProperties properties);
+  void initGui(Identifier[] circles, SpellViewProperties properties);
 
   MagicLearnView addMagicLearnView(MagicLearnProperties properties);
 

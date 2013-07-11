@@ -19,7 +19,7 @@ import java.util.List;
 public class SpellPresenter {
 
   private final net.sf.anathema.hero.spells.SpellModel spellConfiguration;
-  private final SpellViewProperties properties;
+  private final CombinedSpellAndMagicProperties properties;
   private final CircleModel circleModel;
   private final Resources resources;
   private final SpellView view;
@@ -28,7 +28,7 @@ public class SpellPresenter {
                         MagicDescriptionProvider magicDescriptionProvider, ExperienceModel experienceModel, SpellModel spellModel) {
     this.circleModel = circleModel;
     this.spellConfiguration = spellModel;
-    this.properties = new SpellViewProperties(resources, magicDescriptionProvider, spellConfiguration, experienceModel);
+    this.properties = new CombinedSpellAndMagicProperties(resources, magicDescriptionProvider, spellConfiguration, experienceModel);
     this.resources = resources;
     this.view = view;
   }
