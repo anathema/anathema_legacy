@@ -5,10 +5,10 @@ import net.sf.anathema.character.main.dummy.DummyCharm;
 import net.sf.anathema.character.main.magic.model.charm.Charm;
 import net.sf.anathema.character.main.magic.model.charm.CharmAttributeList;
 import net.sf.anathema.character.main.magic.model.charms.ILearningCharmGroup;
+import net.sf.anathema.character.main.magic.model.charmtree.ICharmLearnArbitrator;
 import net.sf.anathema.character.main.testing.dummy.magic.DummyCharmsModel;
 import net.sf.anathema.hero.charms.model.DefaultMartialArtsCharmConfiguration;
 import net.sf.anathema.hero.experience.ExperienceModel;
-import net.sf.anathema.hero.magic.MagicCollection;
 import net.sf.anathema.lib.control.ChangeListener;
 import net.sf.anathema.lib.util.Identifier;
 import org.junit.Assert;
@@ -19,7 +19,6 @@ public class DefaultMartialArtsCharmConfiguration_Test {
 
   @Test
   public void testAlternativesDontBlockCompletion() throws Exception {
-    MagicCollection collection = Mockito.mock(MagicCollection.class);
     ILearningCharmGroup group = Mockito.mock(ILearningCharmGroup.class);
     expectCoreCharmsCall(group);
     expectCoreCharmsCall(group);
@@ -48,7 +47,7 @@ public class DefaultMartialArtsCharmConfiguration_Test {
         // nothing to do
       }
     };
-    DefaultMartialArtsCharmConfiguration configuration = new DefaultMartialArtsCharmConfiguration(dummyConfig, collection, experienceModel);
+    DefaultMartialArtsCharmConfiguration configuration = new DefaultMartialArtsCharmConfiguration(dummyConfig, experienceModel);
     boolean celestialMartialArtsGroupCompleted = configuration.isAnyCelestialStyleCompleted();
     Assert.assertTrue(celestialMartialArtsGroupCompleted);
   }
@@ -56,7 +55,7 @@ public class DefaultMartialArtsCharmConfiguration_Test {
   private void expectCoreCharmsCall(ILearningCharmGroup group) {
     Mockito.when(group.getCoreCharms()).thenReturn(new Charm[]{new DummyCharm() {
       @Override
-      public boolean isBlockedByAlternative(MagicCollection magicCollection) {
+      public boolean isBlockedByAlternative(ICharmLearnArbitrator learnArbitrator) {
         return true;
       }
 

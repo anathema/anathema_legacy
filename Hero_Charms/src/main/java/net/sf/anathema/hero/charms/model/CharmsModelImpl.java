@@ -44,8 +44,6 @@ import net.sf.anathema.hero.essencepool.EssencePoolModel;
 import net.sf.anathema.hero.essencepool.EssencePoolModelFetcher;
 import net.sf.anathema.hero.experience.ExperienceModel;
 import net.sf.anathema.hero.experience.ExperienceModelFetcher;
-import net.sf.anathema.hero.magic.MagicCollection;
-import net.sf.anathema.hero.magic.MagicCollectionImpl;
 import net.sf.anathema.hero.magic.model.MagicModel;
 import net.sf.anathema.hero.magic.model.MagicModelFetcher;
 import net.sf.anathema.hero.model.Hero;
@@ -426,13 +424,12 @@ public class CharmsModelImpl implements CharmsModel {
         return false;
       }
     }
-    MagicCollection magicCollection = new MagicCollectionImpl(hero);
-    if (charm.isBlockedByAlternative(magicCollection)) {
+    if (charm.isBlockedByAlternative(this)) {
       return false;
     }
     if (isMartialArtsCharm(charm)) {
       boolean isSiderealFormCharm = isFormCharm(charm) && hasLevel(Sidereal, charm);
-      MartialArtsCharmConfiguration martialArtsConfiguration = new DefaultMartialArtsCharmConfiguration(this, magicCollection, experience);
+      MartialArtsCharmConfiguration martialArtsConfiguration = new DefaultMartialArtsCharmConfiguration(this, experience);
       if (isSiderealFormCharm && !martialArtsConfiguration.isAnyCelestialStyleCompleted()) {
         return false;
       }

@@ -1,30 +1,29 @@
 package net.sf.anathema.character.main.magic.model.charm;
 
 import com.google.common.base.Preconditions;
-import net.sf.anathema.character.main.magic.model.charmtree.GroupedCharmRequirement;
-import net.sf.anathema.character.main.magic.model.magic.IMagicVisitor;
+import net.sf.anathema.character.main.magic.model.charm.duration.IDuration;
 import net.sf.anathema.character.main.magic.model.charm.prerequisite.CompositeLearnWorker;
 import net.sf.anathema.character.main.magic.model.charm.prerequisite.ICharmLearnWorker;
 import net.sf.anathema.character.main.magic.model.charm.prerequisite.SelectiveCharmGroup;
+import net.sf.anathema.character.main.magic.model.charm.type.ICharmTypeModel;
+import net.sf.anathema.character.main.magic.model.charmtree.GroupedCharmRequirement;
+import net.sf.anathema.character.main.magic.model.charmtree.ICharmLearnArbitrator;
+import net.sf.anathema.character.main.magic.model.combos.ComboRestrictions;
+import net.sf.anathema.character.main.magic.model.combos.IComboRestrictions;
+import net.sf.anathema.character.main.magic.model.magic.ICostList;
+import net.sf.anathema.character.main.magic.model.magic.IMagicVisitor;
 import net.sf.anathema.character.main.magic.parser.charms.CharmPrerequisiteList;
 import net.sf.anathema.character.main.magic.parser.charms.SelectiveCharmGroupTemplate;
-import net.sf.anathema.character.main.magic.model.combos.ComboRestrictions;
-import net.sf.anathema.character.main.magic.model.charmtree.ICharmLearnArbitrator;
-import net.sf.anathema.character.main.magic.model.combos.IComboRestrictions;
-import net.sf.anathema.character.main.magic.model.charm.duration.IDuration;
-import net.sf.anathema.character.main.magic.model.charm.type.ICharmTypeModel;
-import net.sf.anathema.character.main.magic.model.magic.ICostList;
 import net.sf.anathema.character.main.magic.parser.magic.IExaltedSourceBook;
-import net.sf.anathema.character.main.traits.ValuedTraitType;
 import net.sf.anathema.character.main.traits.TraitType;
+import net.sf.anathema.character.main.traits.ValuedTraitType;
 import net.sf.anathema.character.main.traits.types.OtherTraitType;
 import net.sf.anathema.character.main.type.ICharacterType;
 import net.sf.anathema.hero.concept.HeroConcept;
 import net.sf.anathema.hero.concept.HeroConceptFetcher;
+import net.sf.anathema.hero.model.Hero;
 import net.sf.anathema.hero.traits.TraitMap;
 import net.sf.anathema.hero.traits.TraitModelFetcher;
-import net.sf.anathema.hero.magic.MagicCollection;
-import net.sf.anathema.hero.model.Hero;
 import net.sf.anathema.lib.util.Identifier;
 import net.sf.anathema.lib.util.SimpleIdentifier;
 
@@ -174,11 +173,11 @@ public class CharmImpl extends SimpleIdentifier implements Charm {
   }
 
   @Override
-  public boolean isBlockedByAlternative(MagicCollection magicCollection) {
+  public boolean isBlockedByAlternative(ICharmLearnArbitrator learnArbitrator) {
     for (Set<Charm> alternative : alternatives) {
       for (Charm charm : alternative) {
         boolean isThis = charm.getId().equals(getId());
-        if (!isThis && magicCollection.isLearned(charm)) {
+        if (!isThis && learnArbitrator.isLearned(charm)) {
           return true;
         }
       }

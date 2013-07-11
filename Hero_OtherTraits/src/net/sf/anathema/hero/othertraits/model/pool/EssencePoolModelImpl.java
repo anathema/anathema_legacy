@@ -9,7 +9,6 @@ import net.sf.anathema.hero.essencepool.OverdrivePool;
 import net.sf.anathema.hero.traits.TraitMap;
 import net.sf.anathema.hero.traits.TraitModelFetcher;
 import net.sf.anathema.hero.change.ChangeAnnouncer;
-import net.sf.anathema.hero.magic.MagicCollectionImpl;
 import net.sf.anathema.hero.model.Hero;
 import net.sf.anathema.hero.model.HeroModel;
 import net.sf.anathema.hero.model.InitializationContext;
@@ -40,7 +39,7 @@ public class EssencePoolModelImpl implements EssencePoolModel, HeroModel {
       return;
     }
     TraitMap traitMap = TraitModelFetcher.fetch(hero);
-    poolStrategy = new EssencePoolStrategyImpl(hero, essenceTemplate, traitMap, new MagicCollectionImpl(hero), overdrivePool);
+    poolStrategy = new EssencePoolStrategyImpl(hero, essenceTemplate, traitMap, overdrivePool);
   }
 
   @Override

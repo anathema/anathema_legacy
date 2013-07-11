@@ -2,25 +2,24 @@ package net.sf.anathema.character.main.dummy;
 
 import net.sf.anathema.character.main.magic.model.charm.Charm;
 import net.sf.anathema.character.main.magic.model.charm.CharmAttribute;
-import net.sf.anathema.character.main.magic.model.magic.CostList;
-import net.sf.anathema.character.main.magic.model.charm.type.CharmTypeModel;
-import net.sf.anathema.character.main.magic.model.magic.IMagicVisitor;
-import net.sf.anathema.character.main.magic.model.combos.ComboRestrictions;
 import net.sf.anathema.character.main.magic.model.charm.ICharmAttribute;
-import net.sf.anathema.character.main.magic.model.charmtree.ICharmLearnArbitrator;
-import net.sf.anathema.character.main.magic.model.combos.IComboRestrictions;
 import net.sf.anathema.character.main.magic.model.charm.IndirectCharmRequirement;
 import net.sf.anathema.character.main.magic.model.charm.duration.IDuration;
 import net.sf.anathema.character.main.magic.model.charm.duration.SimpleDuration;
 import net.sf.anathema.character.main.magic.model.charm.type.CharmType;
+import net.sf.anathema.character.main.magic.model.charm.type.CharmTypeModel;
+import net.sf.anathema.character.main.magic.model.charmtree.ICharmLearnArbitrator;
+import net.sf.anathema.character.main.magic.model.combos.ComboRestrictions;
+import net.sf.anathema.character.main.magic.model.combos.IComboRestrictions;
+import net.sf.anathema.character.main.magic.model.magic.CostList;
+import net.sf.anathema.character.main.magic.model.magic.IMagicVisitor;
 import net.sf.anathema.character.main.magic.parser.magic.IExaltedSourceBook;
-import net.sf.anathema.character.main.traits.ValuedTraitType;
 import net.sf.anathema.character.main.traits.TraitType;
+import net.sf.anathema.character.main.traits.ValuedTraitType;
 import net.sf.anathema.character.main.type.ICharacterType;
+import net.sf.anathema.hero.model.Hero;
 import net.sf.anathema.hero.traits.TraitMap;
 import net.sf.anathema.hero.traits.TraitModelFetcher;
-import net.sf.anathema.hero.magic.MagicCollection;
-import net.sf.anathema.hero.model.Hero;
 import net.sf.anathema.lib.util.Identifier;
 import net.sf.anathema.lib.util.SimpleIdentifier;
 
@@ -198,7 +197,7 @@ public class DummyCharm extends SimpleIdentifier implements Charm {
   }
 
   @Override
-  public boolean isBlockedByAlternative(MagicCollection magicCollection) {
+  public boolean isBlockedByAlternative(ICharmLearnArbitrator learnArbitrator) {
     return false;
   }
 

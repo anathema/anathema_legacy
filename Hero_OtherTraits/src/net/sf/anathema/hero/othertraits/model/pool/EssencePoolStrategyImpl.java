@@ -7,13 +7,12 @@ import net.sf.anathema.character.main.template.essence.IEssenceTemplate;
 import net.sf.anathema.character.main.traits.ValuedTraitType;
 import net.sf.anathema.character.main.traits.types.OtherTraitType;
 import net.sf.anathema.character.main.traits.types.VirtueType;
-import net.sf.anathema.hero.essencepool.EssencePoolModelFetcher;
-import net.sf.anathema.hero.essencepool.OverdrivePool;
-import net.sf.anathema.hero.traits.TraitMap;
 import net.sf.anathema.hero.change.ChangeFlavor;
 import net.sf.anathema.hero.change.FlavoredChangeListener;
-import net.sf.anathema.hero.magic.MagicCollection;
+import net.sf.anathema.hero.essencepool.EssencePoolModelFetcher;
+import net.sf.anathema.hero.essencepool.OverdrivePool;
 import net.sf.anathema.hero.model.Hero;
+import net.sf.anathema.hero.traits.TraitMap;
 import net.sf.anathema.lib.control.ChangeListener;
 import net.sf.anathema.lib.util.IdentifiedInteger;
 import org.jmock.example.announcer.Announcer;
@@ -25,12 +24,10 @@ public class EssencePoolStrategyImpl implements EssencePoolStrategy {
   private OverdrivePool overdrivePool;
   private Hero hero;
   private final TraitMap traitMap;
-  private final MagicCollection magicCollection;
 
-  public EssencePoolStrategyImpl(Hero hero, IEssenceTemplate essenceTemplate, TraitMap traitMap, MagicCollection magicCollection, OverdrivePool overdrivePool) {
+  public EssencePoolStrategyImpl(Hero hero, IEssenceTemplate essenceTemplate, TraitMap traitMap, OverdrivePool overdrivePool) {
     this.hero = hero;
     this.traitMap = traitMap;
-    this.magicCollection = magicCollection;
     this.overdrivePool = overdrivePool;
     hero.getChangeAnnouncer().addListener(new FlavoredChangeListener() {
       @Override

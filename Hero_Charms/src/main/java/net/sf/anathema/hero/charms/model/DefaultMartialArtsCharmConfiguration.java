@@ -1,34 +1,31 @@
 package net.sf.anathema.hero.charms.model;
 
 import net.sf.anathema.character.main.magic.model.charm.Charm;
+import net.sf.anathema.character.main.magic.model.charms.ILearningCharmGroup;
 import net.sf.anathema.character.main.template.magic.MartialArtsCharmConfiguration;
 import net.sf.anathema.hero.charms.CharmsModel;
 import net.sf.anathema.hero.experience.ExperienceModel;
-import net.sf.anathema.character.main.magic.model.charms.ILearningCharmGroup;
-import net.sf.anathema.hero.magic.MagicCollection;
 
 import java.util.HashSet;
 import java.util.Set;
 
-import static net.sf.anathema.character.main.magic.model.charms.MartialArtsUtilities.MARTIAL_ARTS;
-import static net.sf.anathema.character.main.magic.model.charms.MartialArtsUtilities.hasLevel;
 import static net.sf.anathema.character.main.magic.model.charm.CharmAttributeList.NO_STYLE_ATTRIBUTE;
 import static net.sf.anathema.character.main.magic.model.charm.MartialArtsLevel.Celestial;
+import static net.sf.anathema.character.main.magic.model.charms.MartialArtsUtilities.MARTIAL_ARTS;
+import static net.sf.anathema.character.main.magic.model.charms.MartialArtsUtilities.hasLevel;
 
 public class DefaultMartialArtsCharmConfiguration implements MartialArtsCharmConfiguration {
-  private final CharmsModel configuration;
-  private final MagicCollection collection;
+  private final CharmsModel charmModel;
   private ExperienceModel experience;
 
-  public DefaultMartialArtsCharmConfiguration(CharmsModel configuration, MagicCollection collection, ExperienceModel experience) {
-    this.configuration = configuration;
-    this.collection = collection;
+  public DefaultMartialArtsCharmConfiguration(CharmsModel charmModel, ExperienceModel experience) {
+    this.charmModel = charmModel;
     this.experience = experience;
   }
 
   @Override
   public Charm[] getLearnedCharms() {
-    return configuration.getLearnedCharms(experience.isExperienced());
+    return charmModel.getLearnedCharms(experience.isExperienced());
   }
 
   @Override
@@ -92,7 +89,7 @@ public class DefaultMartialArtsCharmConfiguration implements MartialArtsCharmCon
 
   private boolean isCompleted(ILearningCharmGroup group) {
     for (Charm charm : group.getCoreCharms()) {
-      if (!group.isLearned(charm) && !charm.isBlockedByAlternative(collection)) {
+      if (!group.isLearned(charm) && !charm.isBlockedByAlternative(charmModel)) {
         return false;
       }
     }
@@ -100,6 +97,6 @@ public class DefaultMartialArtsCharmConfiguration implements MartialArtsCharmCon
   }
 
   private ILearningCharmGroup[] getMartialArtsGroups() {
-    return configuration.getCharmGroups(MARTIAL_ARTS);
+    return charmModel.getCharmGroups(MARTIAL_ARTS);
   }
 }
