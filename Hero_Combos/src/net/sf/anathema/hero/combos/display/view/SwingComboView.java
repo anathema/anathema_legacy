@@ -1,6 +1,7 @@
-package net.sf.anathema.hero.combos.display;
+package net.sf.anathema.hero.combos.display.view;
 
 import net.sf.anathema.character.main.view.AddToTaskPane;
+import net.sf.anathema.hero.combos.display.presenter.ComboView;
 import net.sf.anathema.interaction.Tool;
 import net.sf.anathema.lib.gui.swing.GuiUtilities;
 import net.sf.anathema.swing.interaction.ActionInteraction;

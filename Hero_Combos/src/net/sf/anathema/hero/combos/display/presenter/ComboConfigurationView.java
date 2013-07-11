@@ -1,4 +1,4 @@
-package net.sf.anathema.hero.combos.display;
+package net.sf.anathema.hero.combos.display.presenter;
 
 import net.sf.anathema.lib.workflow.textualdescription.ITextView;
 

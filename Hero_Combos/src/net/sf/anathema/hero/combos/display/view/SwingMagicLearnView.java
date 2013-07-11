@@ -1,4 +1,4 @@
-package net.sf.anathema.hero.combos.display;
+package net.sf.anathema.hero.combos.display.view;
 
 import net.miginfocom.layout.CC;
 import net.sf.anathema.hero.magic.display.MagicLearnProperties;
