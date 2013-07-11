@@ -108,11 +108,6 @@ public class BonusPointCostTemplateParserTest extends BasicTemplateParsingTestCa
       public boolean isMagicFavored(Magic magic) {
         return false;
       }
-
-      @Override
-      public boolean isOccultFavored() {
-        return false;
-      }
     }));
     assertEquals(5, costs.getMagicCosts().getMagicCosts(testCharm, new ICostAnalyzer() {
       @Override
@@ -123,11 +118,6 @@ public class BonusPointCostTemplateParserTest extends BasicTemplateParsingTestCa
       @Override
       public boolean isMagicFavored(Magic magic) {
         return true;
-      }
-
-      @Override
-      public boolean isOccultFavored() {
-        return false;
       }
     }));
   }
@@ -148,11 +138,6 @@ public class BonusPointCostTemplateParserTest extends BasicTemplateParsingTestCa
       public boolean isMagicFavored(Magic magic) {
         return true;
       }
-
-      @Override
-      public boolean isOccultFavored() {
-        return false;
-      }
     }));
   }
 
@@ -167,11 +152,6 @@ public class BonusPointCostTemplateParserTest extends BasicTemplateParsingTestCa
       public boolean isMagicFavored(Magic magic) {
         return true;
       }
-
-      @Override
-      public boolean isOccultFavored() {
-        return false;
-      }
     }));
   }
 
@@ -184,11 +164,6 @@ public class BonusPointCostTemplateParserTest extends BasicTemplateParsingTestCa
 
       @Override
       public boolean isMagicFavored(Magic magic) {
-        return false;
-      }
-
-      @Override
-      public boolean isOccultFavored() {
         return false;
       }
     }));

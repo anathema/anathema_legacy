@@ -22,9 +22,9 @@ public class MagicCostsImpl implements MagicCosts {
     return strategyByFavored.get(favored).getCharmCosts(charm);
   }
 
-  private int getSpellCosts(ICostAnalyzer costMapping) {
-    boolean isSorceryFavored = costMapping.isOccultFavored();
-    return strategyByFavored.get(isSorceryFavored).getSpellCosts();
+  private int getSpellCosts(Magic spell, ICostAnalyzer analyzer) {
+    boolean favored = analyzer.isMagicFavored(spell);
+    return strategyByFavored.get(favored).getSpellCosts();
   }
 
   @Override
@@ -32,6 +32,6 @@ public class MagicCostsImpl implements MagicCosts {
     if (magic instanceof Charm) {
       return getCharmCosts((Charm) magic, analyzer);
     }
-    return getSpellCosts(analyzer);
+    return getSpellCosts(magic, analyzer);
   }
 }

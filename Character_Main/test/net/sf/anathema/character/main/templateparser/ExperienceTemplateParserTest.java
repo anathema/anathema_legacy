@@ -96,11 +96,6 @@ public class ExperienceTemplateParserTest {
     GenericExperiencePointCosts costs = parser.parseTemplate(element);
     assertEquals(10, costs.getCharmCosts(new DummyCharm("Charm"), new ICostAnalyzer() {
       @Override
-      public boolean isOccultFavored() {
-        return false;
-      }
-
-      @Override
       public MartialArtsLevel getMartialArtsLevel(Charm charm) {
         return null;
       }
@@ -117,11 +112,6 @@ public class ExperienceTemplateParserTest {
     Element element = createElement();
     GenericExperiencePointCosts costs = parser.parseTemplate(element);
     assertEquals(8, costs.getCharmCosts(new DummyCharm("Charm"), new ICostAnalyzer() {
-      @Override
-      public boolean isOccultFavored() {
-        return true;
-      }
-
       @Override
       public MartialArtsLevel getMartialArtsLevel(Charm charm) {
         return null;
@@ -140,11 +130,6 @@ public class ExperienceTemplateParserTest {
     GenericExperiencePointCosts costs = parser.parseTemplate(element);
     assertEquals(10, costs.getCharmCosts(new DummyCharm("Charm"), new ICostAnalyzer() {
       @Override
-      public boolean isOccultFavored() {
-        return true;
-      }
-
-      @Override
       public MartialArtsLevel getMartialArtsLevel(Charm charm) {
         return MartialArtsLevel.Celestial;
       }
@@ -162,11 +147,6 @@ public class ExperienceTemplateParserTest {
     GenericExperiencePointCosts costs = parser.parseTemplate(element);
     assertEquals(15, costs.getCharmCosts(new DummyCharm("Charm"), new ICostAnalyzer() {
       @Override
-      public boolean isOccultFavored() {
-        return true;
-      }
-
-      @Override
       public MartialArtsLevel getMartialArtsLevel(Charm charm) {
         return MartialArtsLevel.Sidereal;
       }
@@ -183,11 +163,6 @@ public class ExperienceTemplateParserTest {
     Element element = createElement();
     GenericExperiencePointCosts costs = parser.parseTemplate(element);
     assertEquals(13, costs.getCharmCosts(new DummyCharm("Charm"), new ICostAnalyzer() {
-      @Override
-      public boolean isOccultFavored() {
-        return true;
-      }
-
       @Override
       public MartialArtsLevel getMartialArtsLevel(Charm charm) {
         return MartialArtsLevel.Sidereal;

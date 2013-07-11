@@ -12,11 +12,6 @@ import net.sf.anathema.character.main.traits.ValuedTraitType;
 
 public class DummyBonusPointCosts implements BonusPointCosts, MagicCosts {
 
-  private int getSpellCosts(ICostAnalyzer costMapping) {
-    boolean isSorceryFavored = costMapping.isOccultFavored();
-    return getCharmCosts(isSorceryFavored, null);
-  }
-
   private int getCharmCosts(Charm charm, ICostAnalyzer costMapping) {
     return getCharmCosts(costMapping.isMagicFavored(charm), costMapping.getMartialArtsLevel(charm));
   }
@@ -89,6 +84,6 @@ public class DummyBonusPointCosts implements BonusPointCosts, MagicCosts {
     if (magic instanceof Charm) {
       return getCharmCosts((Charm) magic, analyzer);
     }
-    return getSpellCosts(analyzer);
+    return getCharmCosts(analyzer.isMagicFavored(magic), null);
   }
 }
