@@ -8,8 +8,6 @@ import net.sf.anathema.character.main.template.ITemplateType;
 import net.sf.anathema.character.main.template.TemplateType;
 import net.sf.anathema.character.main.type.ICharacterType;
 import net.sf.anathema.hero.concept.HeroConceptFetcher;
-import net.sf.anathema.hero.description.HeroDescription;
-import net.sf.anathema.hero.description.HeroDescriptionFetcher;
 import net.sf.anathema.hero.experience.ExperienceModelFetcher;
 import net.sf.anathema.hero.model.Hero;
 import net.sf.anathema.lib.exception.PersistenceException;
@@ -29,7 +27,6 @@ public class CharacterStatisticPersister {
   private final ExperiencePointsPersister experiencePersister = new ExperiencePointsPersister();
   private final RulesPersister rulesPersister = new RulesPersister();
   private final HeroEnvironment generics;
-  private final CharacterDescriptionPersister descriptionPersister = new CharacterDescriptionPersister();
 
   public CharacterStatisticPersister(HeroEnvironment generics) {
     this.generics = generics;
@@ -37,7 +34,6 @@ public class CharacterStatisticPersister {
 
   public void save(Element parent, Hero hero) {
     Preconditions.checkNotNull(hero);
-    descriptionPersister.save(parent, HeroDescriptionFetcher.fetch(hero));
     Element statisticsElement = parent.addElement(TAG_STATISTICS);
     rulesPersister.save(statisticsElement);
     statisticsElement.addAttribute(ATTRIB_EXPERIENCED, String.valueOf(ExperienceModelFetcher.fetch(hero).isExperienced()));
@@ -59,8 +55,6 @@ public class CharacterStatisticPersister {
   public ExaltedCharacter loadData(ExaltedCharacter character, Element parent) throws PersistenceException {
     Element statisticsElement = parent.element(TAG_STATISTICS);
     boolean experienced = ElementUtilities.getBooleanAttribute(statisticsElement, ATTRIB_EXPERIENCED, false);
-    HeroDescription characterDescription = HeroDescriptionFetcher.fetch(character);
-    descriptionPersister.load(parent, characterDescription);
     characterConceptPersister.load(statisticsElement, HeroConceptFetcher.fetch(character));
     ExperienceModelFetcher.fetch(character).setExperienced(experienced);
     experiencePersister.load(statisticsElement, ExperienceModelFetcher.fetch(character).getExperiencePoints());

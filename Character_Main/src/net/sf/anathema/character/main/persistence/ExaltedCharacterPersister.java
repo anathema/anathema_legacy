@@ -13,7 +13,6 @@ import net.sf.anathema.framework.repository.Item;
 import net.sf.anathema.framework.repository.RepositoryException;
 import net.sf.anathema.framework.repository.access.IRepositoryReadAccess;
 import net.sf.anathema.framework.repository.access.IRepositoryWriteAccess;
-import net.sf.anathema.hero.description.HeroDescriptionFetcher;
 import net.sf.anathema.hero.model.Hero;
 import net.sf.anathema.hero.model.HeroModel;
 import net.sf.anathema.hero.persistence.HeroModelPersister;
@@ -36,8 +35,7 @@ import static net.sf.anathema.character.main.persistence.ICharacterXmlConstants.
 
 public class ExaltedCharacterPersister implements RepositoryItemPersister {
 
-  private final ItemMetaDataPersister repositoryItemPerister = new ItemMetaDataPersister();
-  private final CharacterDescriptionPersister descriptionPersister = new CharacterDescriptionPersister();
+  private final ItemMetaDataPersister repositoryItemPersister = new ItemMetaDataPersister();
   private final CharacterStatisticPersister statisticsPersister;
   private final IItemType characterType;
   private final HeroEnvironment generics;
@@ -60,9 +58,9 @@ public class ExaltedCharacterPersister implements RepositoryItemPersister {
       messaging.addMessage("CharacterPersistence.SavingCharacter", MessageType.INFORMATION, item.getDisplayName());
       Element rootElement = DocumentHelper.createElement(TAG_EXALTED_CHARACTER_ROOT);
       Hero hero = (Hero) item.getItemData();
-      repositoryItemPerister.save(rootElement, item);
+      repositoryItemPersister.save(rootElement, item);
       saveModels(writeAccess, hero);
-      save(rootElement, hero);
+      statisticsPersister.save(rootElement, hero);
       DocumentUtilities.save(DocumentHelper.createDocument(rootElement), stream);
     }
     finally {
@@ -80,11 +78,6 @@ public class ExaltedCharacterPersister implements RepositoryItemPersister {
     }
   }
 
-  private void save(Element rootElement, Hero hero) {
-    descriptionPersister.save(rootElement, HeroDescriptionFetcher.fetch(hero));
-    statisticsPersister.save(rootElement, hero);
-  }
-
   @Override
   public Item load(IRepositoryReadAccess readAccess) throws PersistenceException, RepositoryException {
     InputStream stream = null;
@@ -98,11 +91,10 @@ public class ExaltedCharacterPersister implements RepositoryItemPersister {
       Element documentRoot = document.getRootElement();
       ExaltedCharacter character = statisticsPersister.loadTemplate(documentRoot);
       loadModels(readAccess, character);
-      descriptionPersister.load(documentRoot, HeroDescriptionFetcher.fetch(character));
       statisticsPersister.loadData(character, documentRoot);
       markCharacterReadyForWork(character);
       Item item = createItem(character);
-      repositoryItemPerister.load(documentRoot, item);
+      repositoryItemPersister.load(documentRoot, item);
       return item;
     }
     catch (DocumentException e) {
