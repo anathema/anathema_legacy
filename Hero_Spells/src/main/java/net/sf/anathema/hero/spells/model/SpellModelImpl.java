@@ -1,7 +1,6 @@
 package net.sf.anathema.hero.spells.model;
 
 import net.sf.anathema.character.main.UnspecifiedChangeListener;
-import net.sf.anathema.character.main.magic.model.magic.IMagicLearnListener;
 import net.sf.anathema.character.main.magic.model.spells.CircleType;
 import net.sf.anathema.character.main.magic.model.spells.ISpell;
 import net.sf.anathema.character.main.magic.model.spells.ISpellMapper;
@@ -39,7 +38,6 @@ public class SpellModelImpl implements SpellModel {
   private final List<ISpell> creationLearnedList = new ArrayList<>();
   private final List<ISpell> experiencedLearnedList = new ArrayList<>();
   private final Announcer<ChangeListener> changeControl = Announcer.to(ChangeListener.class);
-  private final Announcer<IMagicLearnListener> magicLearnControl = Announcer.to(IMagicLearnListener.class);
   private final Map<CircleType, List<ISpell>> spellsByCircle = new HashMap<>();
   private final ISpellMapper spellMapper = new SpellMapper();
   private CharmsModel charms;
@@ -97,12 +95,12 @@ public class SpellModelImpl implements SpellModel {
   }
 
   @Override
-  public void removeSpells(ISpell[] removedSpells) {
+  public void removeSpells(List<ISpell> removedSpells) {
     strategy.removeSpells(this, removedSpells);
   }
 
   @Override
-  public void removeSpells(ISpell[] removedSpells, boolean experienced) {
+  public void removeSpells(List<ISpell> removedSpells, boolean experienced) {
     for (ISpell spell : removedSpells) {
       if (experienced) {
         experiencedLearnedList.remove(spell);
@@ -110,16 +108,22 @@ public class SpellModelImpl implements SpellModel {
         creationLearnedList.remove(spell);
       }
     }
-    fireSpellsForgottenEvent(removedSpells);
+    fireChangeEvent();
   }
 
   @Override
-  public void addSpells(ISpell[] addedSpells) {
-    strategy.addSpells(this, addedSpells);
+  public void addSpells(List<ISpell> addedSpells) {
+    List<ISpell> allowedSpells = new ArrayList<>();
+    for (ISpell spell : addedSpells) {
+      if (isSpellAllowed(spell)) {
+        allowedSpells.add(spell);
+      }
+    }
+    strategy.addSpells(this, allowedSpells);
   }
 
   @Override
-  public void addSpells(ISpell[] addedSpells, boolean experienced) {
+  public void addSpells(List<ISpell> addedSpells, boolean experienced) {
     for (ISpell spell : addedSpells) {
       if (isSpellAllowed(spell, experienced)) {
         if (experienced) {
@@ -131,18 +135,10 @@ public class SpellModelImpl implements SpellModel {
         throw new IllegalArgumentException("Cannot learn Spell: " + spell);
       }
     }
-    fireSpellsAddedEvent(addedSpells);
+    fireChangeEvent();
   }
 
-  @SuppressWarnings("unchecked")
-  private void fireSpellsAddedEvent(ISpell[] addedSpells) {
-    magicLearnControl.announce().magicLearned(addedSpells);
-    changeControl.announce().changeOccurred();
-  }
-
-  @SuppressWarnings("unchecked")
-  private void fireSpellsForgottenEvent(ISpell[] removedSpells) {
-    magicLearnControl.announce().magicForgotten(removedSpells);
+  private void fireChangeEvent() {
     changeControl.announce().changeOccurred();
   }
 
@@ -178,11 +174,6 @@ public class SpellModelImpl implements SpellModel {
   @Override
   public void addChangeListener(ChangeListener listener) {
     changeControl.addListener(listener);
-  }
-
-  @Override
-  public void addMagicLearnListener(IMagicLearnListener<ISpell> listener) {
-    magicLearnControl.addListener(listener);
   }
 
   @Override

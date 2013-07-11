@@ -96,9 +96,4 @@ public class SwingSpellView implements SpellView, IView {
   public void removeMagicOptions(List magics) {
     magicLearnView.removeMagicOptions(magics);
   }
-
-  @Override
-  public void clearSelection() {
-    magicLearnView.clearSelection();
-  }
 }

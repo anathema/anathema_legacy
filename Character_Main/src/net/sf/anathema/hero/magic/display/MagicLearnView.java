@@ -19,7 +19,5 @@ public interface MagicLearnView {
 
   void removeLearnedMagic(Object[] magics);
 
-  void clearSelection();
-
   void addMagicViewListener(MagicViewListener listener);
 }

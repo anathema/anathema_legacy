@@ -1,6 +1,5 @@
 package net.sf.anathema.character.main.testing.dummy.magic;
 
-import net.sf.anathema.character.main.magic.model.magic.IMagicLearnListener;
 import net.sf.anathema.character.main.magic.model.spells.CircleType;
 import net.sf.anathema.character.main.magic.model.spells.ISpell;
 import net.sf.anathema.hero.change.ChangeAnnouncer;
@@ -37,13 +36,13 @@ public class DummySpellModel implements SpellModel {
   }
 
   @Override
-  public void removeSpells(ISpell[] removedSpells) {
+  public void removeSpells(List<ISpell> removedSpells) {
     throw new NotYetImplementedException();
   }
 
   @Override
-  public void addSpells(ISpell[] addedSpells) {
-    spells.addAll(Arrays.asList(addedSpells));
+  public void addSpells(List<ISpell> addedSpells) {
+    spells.addAll(addedSpells);
   }
 
   @Override
@@ -85,12 +84,12 @@ public class DummySpellModel implements SpellModel {
   }
 
   @Override
-  public void addSpells(ISpell[] addedSpells, boolean experienced) {
+  public void addSpells(List<ISpell> addedSpells, boolean experienced) {
     throw new NotYetImplementedException();
   }
 
   @Override
-  public void removeSpells(ISpell[] removedSpells, boolean experienced) {
+  public void removeSpells(List<ISpell> removedSpells, boolean experienced) {
     if (experienced) {
       throw new IllegalArgumentException("Not implemented");
     }
@@ -110,11 +109,6 @@ public class DummySpellModel implements SpellModel {
   @Override
   public boolean isLearnedOnCreationOrExperience(ISpell spell) {
     return false;
-  }
-
-  @Override
-  public void addMagicLearnListener(IMagicLearnListener<ISpell> listener) {
-    throw new NotYetImplementedException();
   }
 
   @Override
