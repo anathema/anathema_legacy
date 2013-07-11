@@ -7,8 +7,6 @@ import net.sf.anathema.character.main.template.HeroTemplate;
 import net.sf.anathema.character.main.template.ITemplateType;
 import net.sf.anathema.character.main.template.TemplateType;
 import net.sf.anathema.character.main.type.ICharacterType;
-import net.sf.anathema.hero.concept.HeroConceptFetcher;
-import net.sf.anathema.hero.experience.ExperienceModelFetcher;
 import net.sf.anathema.hero.model.Hero;
 import net.sf.anathema.lib.exception.PersistenceException;
 import net.sf.anathema.lib.util.Identifier;
@@ -16,14 +14,12 @@ import net.sf.anathema.lib.util.SimpleIdentifier;
 import net.sf.anathema.lib.xml.ElementUtilities;
 import org.dom4j.Element;
 
-import static net.sf.anathema.character.main.persistence.ICharacterXmlConstants.ATTRIB_EXPERIENCED;
 import static net.sf.anathema.character.main.persistence.ICharacterXmlConstants.ATTRIB_SUB_TYPE;
 import static net.sf.anathema.character.main.persistence.ICharacterXmlConstants.TAG_CHARACTER_TYPE;
 import static net.sf.anathema.character.main.persistence.ICharacterXmlConstants.TAG_STATISTICS;
 
 public class CharacterStatisticPersister {
 
-  private final CharacterConceptPersister characterConceptPersister = new CharacterConceptPersister();
   private final RulesPersister rulesPersister = new RulesPersister();
   private final HeroEnvironment generics;
 
@@ -35,12 +31,10 @@ public class CharacterStatisticPersister {
     Preconditions.checkNotNull(hero);
     Element statisticsElement = parent.addElement(TAG_STATISTICS);
     rulesPersister.save(statisticsElement);
-    statisticsElement.addAttribute(ATTRIB_EXPERIENCED, String.valueOf(ExperienceModelFetcher.fetch(hero).isExperienced()));
     HeroTemplate template = hero.getTemplate();
     Element characterTypeElement = statisticsElement.addElement(TAG_CHARACTER_TYPE);
     characterTypeElement.addAttribute(ATTRIB_SUB_TYPE, template.getTemplateType().getSubType().getId());
     characterTypeElement.addText(template.getTemplateType().getCharacterType().getId());
-    characterConceptPersister.save(statisticsElement, HeroConceptFetcher.fetch(hero));
   }
 
   public ExaltedCharacter loadTemplate(Element parent) {
@@ -52,7 +46,6 @@ public class CharacterStatisticPersister {
 
   public ExaltedCharacter loadData(ExaltedCharacter character, Element parent) throws PersistenceException {
     Element statisticsElement = parent.element(TAG_STATISTICS);
-    characterConceptPersister.load(statisticsElement, HeroConceptFetcher.fetch(character));
     return character;
   }
 

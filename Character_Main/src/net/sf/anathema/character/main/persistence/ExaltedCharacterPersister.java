@@ -91,7 +91,6 @@ public class ExaltedCharacterPersister implements RepositoryItemPersister {
       Element documentRoot = document.getRootElement();
       ExaltedCharacter character = statisticsPersister.loadTemplate(documentRoot);
       loadModels(readAccess, character);
-      statisticsPersister.loadData(character, documentRoot);
       markCharacterReadyForWork(character);
       Item item = createItem(character);
       repositoryItemPersister.load(documentRoot, item);
