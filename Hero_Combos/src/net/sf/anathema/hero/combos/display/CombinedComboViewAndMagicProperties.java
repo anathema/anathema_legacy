@@ -2,7 +2,7 @@ package net.sf.anathema.hero.combos.display;
 
 import net.sf.anathema.character.main.CharacterUI;
 import net.sf.anathema.character.main.magic.description.MagicDescriptionProvider;
-import net.sf.anathema.character.main.magic.display.view.combos.IComboViewProperties;
+import net.sf.anathema.character.main.magic.display.view.combos.ComboViewProperties;
 import net.sf.anathema.character.main.magic.model.charm.Charm;
 import net.sf.anathema.character.main.magic.model.charmtree.builder.stringbuilder.CharmInfoStringBuilder;
 import net.sf.anathema.character.main.magic.model.charmtree.builder.stringbuilder.ICharmInfoStringBuilder;
@@ -17,11 +17,11 @@ import net.sf.anathema.lib.util.Identifier;
 
 import java.util.List;
 
-public class ComboViewProperties extends AbstractMagicLearnProperties implements IComboViewProperties {
+public class CombinedComboViewAndMagicProperties extends AbstractMagicLearnProperties implements ComboViewProperties {
   private final CombosModel comboConfiguration;
   private final ICharmInfoStringBuilder charmInfoStringProvider;
 
-  ComboViewProperties(Resources resources, CombosModel comboConfiguration, MagicDescriptionProvider magicDescriptionProvider) {
+  CombinedComboViewAndMagicProperties(Resources resources, CombosModel comboConfiguration, MagicDescriptionProvider magicDescriptionProvider) {
     super(resources);
     this.charmInfoStringProvider = new CharmInfoStringBuilder(getResources(), magicDescriptionProvider);
     this.comboConfiguration = comboConfiguration;

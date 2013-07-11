@@ -3,7 +3,7 @@ package net.sf.anathema.character.main.magic.display.view.combos;
 import net.sf.anathema.hero.magic.display.MagicLearnProperties;
 import net.sf.anathema.lib.file.RelativePath;
 
-public interface IComboViewProperties extends MagicLearnProperties {
+public interface ComboViewProperties extends MagicLearnProperties {
 
   RelativePath getFinalizeButtonIcon();
 

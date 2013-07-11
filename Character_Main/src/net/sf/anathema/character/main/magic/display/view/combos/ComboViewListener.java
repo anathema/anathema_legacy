@@ -1,6 +1,6 @@
 package net.sf.anathema.character.main.magic.display.view.combos;
 
-public interface IComboViewListener {
+public interface ComboViewListener {
 
   void charmAdded(Object addedCharm);
 
