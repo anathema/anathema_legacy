@@ -17,7 +17,6 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.util.Comparator;
 import java.util.List;
 
 import static net.sf.anathema.lib.gui.layout.LayoutUtils.fillWithoutInsets;
@@ -77,23 +76,4 @@ public class SwingSpellView implements SpellView, IView {
     magicLearnView.setAvailableMagic(spells);
   }
 
-  @Override
-  public void addLearnedMagic(List magics) {
-    magicLearnView.addLearnedMagic(magics);
-  }
-
-  @Override
-  public void addMagicOptions(List<Identifier> magics, Comparator<Identifier> comparator) {
-    magicLearnView.addMagicOptions(magics, comparator);
-  }
-
-  @Override
-  public void removeLearnedMagic(Object[] magics) {
-    magicLearnView.removeLearnedMagic(magics);
-  }
-
-  @Override
-  public void removeMagicOptions(List magics) {
-    magicLearnView.removeMagicOptions(magics);
-  }
 }

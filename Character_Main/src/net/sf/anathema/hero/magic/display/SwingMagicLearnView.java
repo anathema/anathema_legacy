@@ -5,7 +5,6 @@ import net.sf.anathema.interaction.Command;
 import net.sf.anathema.interaction.Tool;
 import net.sf.anathema.lib.file.RelativePath;
 import net.sf.anathema.lib.gui.ui.ConfigurableListCellRenderer;
-import net.sf.anathema.lib.util.Identifier;
 import net.sf.anathema.swing.interaction.ActionInteraction;
 import org.jmock.example.announcer.Announcer;
 
@@ -19,7 +18,6 @@ import javax.swing.event.ListSelectionEvent;
 import javax.swing.event.ListSelectionListener;
 import java.awt.Dimension;
 import java.awt.GridLayout;
-import java.util.Comparator;
 import java.util.List;
 
 import static javax.swing.ListSelectionModel.SINGLE_SELECTION;
@@ -162,50 +160,4 @@ public class SwingMagicLearnView implements MagicLearnView {
     learnOptionsList.addListSelectionListener(listener);
   }
 
-  @Override
-  public void addLearnedMagic(List magics) {
-    DefaultListModel listModel = (DefaultListModel) learnedList.getModel();
-    for (Object spell : magics) {
-      listModel.addElement(spell);
-    }
-  }
-
-  @SuppressWarnings("ConstantConditions")
-  @Override
-  public void addMagicOptions(List<Identifier> magics, Comparator<Identifier> comparator) {
-    DefaultListModel listModel = (DefaultListModel) learnOptionsList.getModel();
-    for (Identifier spell : magics) {
-      boolean isInserted = false;
-      for (int index = 0; index < listModel.getSize(); index++) {
-        if (isInserted) {
-          break;
-        }
-        Identifier magicOption = (Identifier) listModel.get(index);
-        if (comparator.compare(spell, magicOption) < 0) {
-          listModel.add(index, spell);
-          isInserted = true;
-          break;
-        }
-      }
-      if (!isInserted) {
-        listModel.addElement(spell);
-      }
-    }
-  }
-
-  @Override
-  public void removeLearnedMagic(Object[] magics) {
-    DefaultListModel listModel = (DefaultListModel) learnedList.getModel();
-    for (Object spell : magics) {
-      listModel.removeElement(spell);
-    }
-  }
-
-  @Override
-  public void removeMagicOptions(List magics) {
-    DefaultListModel listModel = (DefaultListModel) learnOptionsList.getModel();
-    for (Object spell : magics) {
-      listModel.removeElement(spell);
-    }
-  }
 }
