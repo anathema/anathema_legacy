@@ -1,6 +1,7 @@
 package net.sf.anathema.hero.platform;
 
 import net.sf.anathema.character.main.framework.item.CharacterPrintNameFileScanner;
+import net.sf.anathema.character.main.persistence.HeroTemplatePersister;
 import net.sf.anathema.character.main.template.ITemplateType;
 import net.sf.anathema.character.main.template.TemplateType;
 import net.sf.anathema.character.main.type.CharacterTypes;
@@ -19,13 +20,11 @@ import java.io.IOException;
 import java.util.HashMap;
 import java.util.Map;
 
-import static net.sf.anathema.character.main.persistence.ICharacterXmlConstants.ATTRIB_SUB_TYPE;
-import static net.sf.anathema.character.main.persistence.ICharacterXmlConstants.TAG_CHARACTER_TYPE;
 import static net.sf.anathema.hero.concept.CasteType.NULL_CASTE_TYPE;
 
 public class RegExCharacterPrintNameFileScanner implements CharacterPrintNameFileScanner {
 
-  private static final String TYPE_ELEMENT_NAME = TAG_CHARACTER_TYPE;
+  private static final String TYPE_ELEMENT_NAME = HeroTemplatePersister.TAG_CHARACTER_TYPE;
   private final Map<PrintNameFile, ITemplateType> typesByFile = new HashMap<>();
   private final Map<PrintNameFile, Identifier> castesByFile = new HashMap<>();
   private final IRepositoryFileResolver resolver;
@@ -54,7 +53,7 @@ public class RegExCharacterPrintNameFileScanner implements CharacterPrintNameFil
     }
 
     ICharacterType characterType = characterTypes.findById(typeString);
-    SimpleIdentifier subType = new SimpleIdentifier(typeElement.attributeValue(ATTRIB_SUB_TYPE));
+    SimpleIdentifier subType = new SimpleIdentifier(typeElement.attributeValue(HeroTemplatePersister.ATTRIB_SUB_TYPE));
     typesByFile.put(file, new TemplateType(characterType, subType));
     castesByFile.put(file, NULL_CASTE_TYPE);
   }

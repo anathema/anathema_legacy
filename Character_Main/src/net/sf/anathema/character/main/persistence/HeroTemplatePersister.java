@@ -16,8 +16,8 @@ import org.dom4j.Element;
 
 public class HeroTemplatePersister {
 
-  private static final String ATTRIB_SUB_TYPE = "subtype";
-  private static final String TAG_CHARACTER_TYPE = "CharacterType";
+  public static final String ATTRIB_SUB_TYPE = "subtype";
+  public static final String TAG_CHARACTER_TYPE = "CharacterType";
 
   private final HeroEnvironment generics;
 
