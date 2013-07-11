@@ -1,6 +1,7 @@
 package net.sf.anathema.hero.charms.model.special;
 
 import net.sf.anathema.character.main.magic.model.charm.Charm;
+import net.sf.anathema.character.main.magic.model.charm.special.ISubEffectCharm;
 import net.sf.anathema.character.main.magic.model.charm.special.MultipleEffectCharmConfiguration;
 import net.sf.anathema.character.main.magic.model.charm.special.OxBodyTechniqueConfiguration;
 import net.sf.anathema.character.main.magic.model.charm.special.TraitCapModifyingCharmConfiguration;
@@ -13,7 +14,6 @@ import net.sf.anathema.character.main.magic.model.charm.special.ISpecialCharm;
 import net.sf.anathema.character.main.magic.model.charm.special.ISpecialCharmConfiguration;
 import net.sf.anathema.character.main.magic.model.charm.special.ISpecialCharmLearnListener;
 import net.sf.anathema.character.main.magic.model.charm.special.ISpecialCharmVisitor;
-import net.sf.anathema.character.main.magic.model.charm.special.ISubeffectCharm;
 import net.sf.anathema.character.main.magic.model.charm.special.ITraitCapModifyingCharm;
 import net.sf.anathema.character.main.magic.model.charm.special.IUpgradableCharm;
 import net.sf.anathema.hero.charms.model.CharmsModel;
@@ -67,7 +67,7 @@ public class SpecialCharmManager implements ISpecialCharmManager {
       }
 
       @Override
-      public void visitSubeffectCharm(ISubeffectCharm visitedCharm) {
+      public void visitSubEffectCharm(ISubEffectCharm visitedCharm) {
         registerSubeffectCharm(visitedCharm, charm, group);
       }
 
@@ -134,7 +134,7 @@ public class SpecialCharmManager implements ISpecialCharmManager {
     specialist.getHealth().addPainToleranceProvider(painToleranceProvider);
   }
 
-  private void registerSubeffectCharm(ISubeffectCharm visited, Charm charm, ILearningCharmGroup group) {
+  private void registerSubeffectCharm(ISubEffectCharm visited, Charm charm, ILearningCharmGroup group) {
     SubeffectCharmConfiguration configuration = new SubeffectCharmConfiguration(specialist, charm, visited, arbitrator);
     addSpecialCharmConfiguration(charm, group, configuration, true, true);
   }

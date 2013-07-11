@@ -2,8 +2,8 @@ package net.sf.anathema.character.main.persistence.charm;
 
 import net.sf.anathema.character.main.magic.model.charm.Charm;
 import net.sf.anathema.character.main.magic.model.charm.special.ISpecialCharmConfiguration;
-import net.sf.anathema.hero.charms.model.CharmsModel;
 import net.sf.anathema.character.main.magic.model.charms.ILearningCharmGroup;
+import net.sf.anathema.hero.charms.model.CharmsModel;
 import net.sf.anathema.lib.util.Identifier;
 import org.dom4j.Element;
 
@@ -12,6 +12,7 @@ import java.util.Arrays;
 import java.util.Collections;
 import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import static net.sf.anathema.character.main.persistence.ICharacterXmlConstants.ATTRIB_EXPERIENCE_LEARNED;
 import static net.sf.anathema.character.main.persistence.ICharacterXmlConstants.ATTRIB_NAME;
@@ -48,20 +49,34 @@ public class CharmSaver {
     Element groupElement = charmsElement.addElement(TAG_CHARMGROUP);
     groupElement.addAttribute(ATTRIB_NAME, group.getId());
     groupElement.addAttribute(ATTRIB_TYPE, group.getCharacterType().getId());
-    HashMap<String, Boolean> isExperiencedLearned = new HashMap<>();
-    List<Charm> charms = new ArrayList<>();
-    for (Charm charm : group.getCreationLearnedCharms()) {
-      isExperiencedLearned.put(charm.getId(), false);
-      charms.add(charm);
-    }
-    for (Charm charm : group.getExperienceLearnedCharms()) {
-      isExperiencedLearned.put(charm.getId(), true);
-      charms.add(charm);
-    }
-    Collections.sort(charms, new IdentifiedComparator());
+    Map<String, Boolean> isExperiencedLearned = getExperiencedLearnedMap(group);
+    List<Charm> charms = getSortedCharmList(group);
     for(Charm charm : charms) {
       saveCharm(charmConfiguration, specialPersister, groupElement, charm, isExperiencedLearned.get(charm.getId()));
     }
+  }
+
+  private List<Charm> getSortedCharmList(ILearningCharmGroup group) {
+    List<Charm> charms = new ArrayList<>();
+    for (Charm charm : group.getCreationLearnedCharms()) {
+      charms.add(charm);
+    }
+    for (Charm charm : group.getExperienceLearnedCharms()) {
+      charms.add(charm);
+    }
+    Collections.sort(charms, new IdentifiedComparator());
+    return charms;
+  }
+
+  private Map<String, Boolean> getExperiencedLearnedMap(ILearningCharmGroup group) {
+    HashMap<String, Boolean> isExperiencedLearned = new HashMap<>();
+    for (Charm charm : group.getCreationLearnedCharms()) {
+      isExperiencedLearned.put(charm.getId(), false);
+    }
+    for (Charm charm : group.getExperienceLearnedCharms()) {
+      isExperiencedLearned.put(charm.getId(), true);
+    }
+    return isExperiencedLearned;
   }
 
   private void saveCharm(CharmsModel charmConfiguration, ISpecialCharmPersister specialPersister, Element groupElement, Charm charm,

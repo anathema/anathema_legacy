@@ -1,6 +1,6 @@
 package net.sf.anathema.character.main.magic.parser.charms.special;
 
-import net.sf.anathema.character.main.magic.model.charm.special.SubeffectCharm;
+import net.sf.anathema.character.main.magic.model.charm.special.SubEffectCharm;
 import net.sf.anathema.character.main.magic.model.charm.special.ISpecialCharm;
 import net.sf.anathema.character.main.persistence.charm.MultipleEffectCharmPersister;
 import org.dom4j.Element;
@@ -27,7 +27,7 @@ public class SubEffectCharmBuilder implements SpecialCharmBuilder {
     }
     String[] effects = new String[subeffects.size()];
     subeffects.toArray(effects);
-    return new SubeffectCharm(id, effects, cost);
+    return new SubEffectCharm(id, effects, cost);
   }
 
   @Override

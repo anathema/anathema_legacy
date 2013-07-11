@@ -1,11 +1,11 @@
 package net.sf.anathema.character.main.magic.model.charm.special;
 
-public class SubeffectCharm extends MultipleEffectCharm implements ISubeffectCharm {
+public class SubEffectCharm extends MultipleEffectCharm implements ISubEffectCharm {
 
   private final double pointCost;
 
-  public SubeffectCharm(String charmId, String[] subeffectIds, double pointCost) {
-    super(charmId, subeffectIds);
+  public SubEffectCharm(String charmId, String[] subEffectIds, double pointCost) {
+    super(charmId, subEffectIds);
     this.pointCost = pointCost;
   }
 
@@ -16,6 +16,6 @@ public class SubeffectCharm extends MultipleEffectCharm implements ISubeffectCha
 
   @Override
   public void accept(ISpecialCharmVisitor visitor) {
-    visitor.visitSubeffectCharm(this);
+    visitor.visitSubEffectCharm(this);
   }
 }

@@ -16,5 +16,4 @@ public class TraitCapModifyingCharmPersister implements ISpecialCharmPersister {
   public void saveConfiguration(Element specialElement, ISpecialCharmConfiguration specialCharmConfiguration) {
     // nothing to do
   }
-
 }

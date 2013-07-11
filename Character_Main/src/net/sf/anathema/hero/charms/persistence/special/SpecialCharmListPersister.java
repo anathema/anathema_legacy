@@ -1,4 +1,4 @@
-package net.sf.anathema.character.main.persistence.charm;
+package net.sf.anathema.hero.charms.persistence.special;
 
 import net.sf.anathema.character.main.magic.model.charm.Charm;
 import net.sf.anathema.character.main.magic.model.charm.CharmIdMap;
@@ -13,18 +13,19 @@ import net.sf.anathema.character.main.magic.model.charm.special.ISpecialCharmVis
 import net.sf.anathema.character.main.magic.model.charm.special.ISubEffectCharm;
 import net.sf.anathema.character.main.magic.model.charm.special.ITraitCapModifyingCharm;
 import net.sf.anathema.character.main.magic.model.charm.special.IUpgradableCharm;
-import net.sf.anathema.lib.exception.PersistenceException;
-import org.dom4j.Element;
+import net.sf.anathema.hero.charms.model.CharmsModel;
+import net.sf.anathema.hero.charms.persistence.CharmPto;
 
 import java.util.HashMap;
 import java.util.Map;
 
-public class SpecialCharmPersister implements ISpecialCharmPersister {
+public class SpecialCharmListPersister {
 
-  private final Map<Charm, ISpecialCharmPersister> persisterByCharm = new HashMap<>();
+  private final Map<Charm, SpecialCharmPersister> persisterByCharm = new HashMap<>();
 
-  public SpecialCharmPersister(ISpecialCharm[] charms, final CharmIdMap charmTree) {
-    for (ISpecialCharm specialCharm : charms) {
+  public SpecialCharmListPersister(CharmsModel model) {
+    final CharmIdMap charmTree = model.getCharmIdMap();
+    for (ISpecialCharm specialCharm : model.getSpecialCharms()) {
       specialCharm.accept(new ISpecialCharmVisitor() {
         @Override
         public void visitMultiLearnableCharm(IMultiLearnableCharm charm) {
@@ -73,19 +74,13 @@ public class SpecialCharmPersister implements ISpecialCharmPersister {
     return charmTree.getCharmById(charmId);
   }
 
-  @Override
-  public void saveConfiguration(Element specialElement, ISpecialCharmConfiguration specialCharmConfiguration) {
-    ISpecialCharmPersister persister = persisterByCharm.get(specialCharmConfiguration.getCharm());
-    if (persister != null) {
-      persister.saveConfiguration(specialElement, specialCharmConfiguration);
+  public void saveCharmSpecials(CharmsModel charmsModel, Charm charm, CharmPto charmPto) {
+    ISpecialCharmConfiguration specialCharms = charmsModel.getSpecialCharmConfiguration(charm);
+    SpecialCharmPersister specialCharmPersister = persisterByCharm.get(charm);
+    if (specialCharms == null || specialCharmPersister == null) {
+      return;
     }
-  }
-
-  @Override
-  public void loadConfiguration(Element specialElement, ISpecialCharmConfiguration specialCharmConfiguration) throws PersistenceException {
-    ISpecialCharmPersister persister = persisterByCharm.get(specialCharmConfiguration.getCharm());
-    if (persister != null) {
-      persister.loadConfiguration(specialElement, specialCharmConfiguration);
-    }
+    charmPto.special = new SpecialCharmPto();
+    specialCharmPersister.saveCharmSpecials(charmsModel, charm, charmPto.special);
   }
 }
