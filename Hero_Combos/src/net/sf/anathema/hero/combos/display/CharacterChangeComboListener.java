@@ -1,11 +1,11 @@
-package net.sf.anathema.character.main.magic.display.view.combos;
+package net.sf.anathema.hero.combos.display;
 
 import net.sf.anathema.character.main.magic.model.combos.ICombo;
 import net.sf.anathema.character.main.magic.model.combos.IComboConfigurationListener;
 import net.sf.anathema.hero.change.ChangeAnnouncer;
 import net.sf.anathema.hero.change.ChangeFlavor;
 
-public final class CharacterChangeComboListener implements IComboConfigurationListener {
+public class CharacterChangeComboListener implements IComboConfigurationListener {
 
   private ChangeAnnouncer announcer;
 

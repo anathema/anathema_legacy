@@ -2,7 +2,7 @@ package net.sf.anathema.hero.combos.model;
 
 import net.sf.anathema.character.main.magic.model.charm.Charm;
 import net.sf.anathema.hero.charms.model.CharmsModelFetcher;
-import net.sf.anathema.character.main.magic.display.view.combos.CharacterChangeComboListener;
+import net.sf.anathema.hero.combos.display.CharacterChangeComboListener;
 import net.sf.anathema.character.main.magic.model.charm.CharmLearnAdapter;
 import net.sf.anathema.character.main.magic.model.combos.Combo;
 import net.sf.anathema.character.main.magic.model.combos.ComboIdProvider;
