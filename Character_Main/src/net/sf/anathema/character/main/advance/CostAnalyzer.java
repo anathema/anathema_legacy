@@ -21,7 +21,10 @@ public class CostAnalyzer implements ICostAnalyzer {
   }
 
   @Override
-  public MartialArtsLevel getMartialArtsLevel(Charm charm) {
-    return MartialArtsUtilities.getLevel(charm);
+  public MartialArtsLevel getMartialArtsLevel(Magic magic) {
+    if (!(magic instanceof Charm)) {
+      return null;
+    }
+    return MartialArtsUtilities.getLevel((Charm) magic);
   }
 }

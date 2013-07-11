@@ -1,7 +1,6 @@
 package net.sf.anathema.character.main.templateparser;
 
 import net.sf.anathema.character.main.dummy.DummyCharm;
-import net.sf.anathema.character.main.magic.model.charm.Charm;
 import net.sf.anathema.character.main.magic.model.charm.MartialArtsLevel;
 import net.sf.anathema.character.main.magic.model.magic.Magic;
 import net.sf.anathema.character.main.template.experience.ICostAnalyzer;
@@ -100,7 +99,7 @@ public class BonusPointCostTemplateParserTest extends BasicTemplateParsingTestCa
     assertCosts5WhenItsFavoredMartialArts(costs, testCharm);
     assertEquals(7, costs.getMagicCosts().getMagicCosts(testCharm, new ICostAnalyzer() {
       @Override
-      public MartialArtsLevel getMartialArtsLevel(Charm charm) {
+      public MartialArtsLevel getMartialArtsLevel(Magic magic) {
         return MartialArtsLevel.Sidereal;
       }
 
@@ -111,7 +110,7 @@ public class BonusPointCostTemplateParserTest extends BasicTemplateParsingTestCa
     }));
     assertEquals(5, costs.getMagicCosts().getMagicCosts(testCharm, new ICostAnalyzer() {
       @Override
-      public MartialArtsLevel getMartialArtsLevel(Charm charm) {
+      public MartialArtsLevel getMartialArtsLevel(Magic magic) {
         return MartialArtsLevel.Sidereal;
       }
 
@@ -130,7 +129,7 @@ public class BonusPointCostTemplateParserTest extends BasicTemplateParsingTestCa
   private void assertCosts5WhenItsFavoredMartialArts(GenericBonusPointCosts costs, DummyCharm testCharm) {
     assertEquals(5, costs.getMagicCosts().getMagicCosts(testCharm, new ICostAnalyzer() {
       @Override
-      public MartialArtsLevel getMartialArtsLevel(Charm charm) {
+      public MartialArtsLevel getMartialArtsLevel(Magic magic) {
         return MartialArtsLevel.Celestial;
       }
 
@@ -144,7 +143,7 @@ public class BonusPointCostTemplateParserTest extends BasicTemplateParsingTestCa
   private void assertCosts5WhenItIsFavored(GenericBonusPointCosts costs, DummyCharm testCharm) {
     assertEquals(5, costs.getMagicCosts().getMagicCosts(testCharm, new ICostAnalyzer() {
       @Override
-      public MartialArtsLevel getMartialArtsLevel(Charm charm) {
+      public MartialArtsLevel getMartialArtsLevel(Magic magic) {
         return null;
       }
 
@@ -158,7 +157,7 @@ public class BonusPointCostTemplateParserTest extends BasicTemplateParsingTestCa
   private void assertCosts7WhenItsNotFavored(GenericBonusPointCosts costs, DummyCharm testCharm) {
     assertEquals(7, costs.getMagicCosts().getMagicCosts(testCharm, new ICostAnalyzer() {
       @Override
-      public MartialArtsLevel getMartialArtsLevel(Charm charm) {
+      public MartialArtsLevel getMartialArtsLevel(Magic magic) {
         return null;
       }
 

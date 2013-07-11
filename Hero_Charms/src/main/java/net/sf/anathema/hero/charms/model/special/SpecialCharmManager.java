@@ -135,7 +135,7 @@ public class SpecialCharmManager implements ISpecialCharmManager {
   }
 
   private void registerSubeffectCharm(ISubEffectCharm visited, Charm charm, ILearningCharmGroup group) {
-    SubeffectCharmConfiguration configuration = new SubeffectCharmConfiguration(specialist, charm, visited, arbitrator);
+    SubEffectCharmSpecialsImpl configuration = new SubEffectCharmSpecialsImpl(specialist, charm, visited, arbitrator);
     addSpecialCharmConfiguration(charm, group, configuration, true, true);
   }
 

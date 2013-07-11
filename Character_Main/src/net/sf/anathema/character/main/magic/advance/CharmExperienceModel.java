@@ -4,7 +4,7 @@ import net.sf.anathema.character.main.advance.PointCostCalculator;
 import net.sf.anathema.character.main.advance.models.AbstractIntegerValueModel;
 import net.sf.anathema.character.main.magic.model.charm.Charm;
 import net.sf.anathema.character.main.magic.model.charm.special.CharmSpecialsModel;
-import net.sf.anathema.character.main.magic.model.charm.special.ISubeffectCharmConfiguration;
+import net.sf.anathema.character.main.magic.model.charm.special.SubEffectCharmSpecials;
 import net.sf.anathema.character.main.magic.model.charm.special.IUpgradableCharmConfiguration;
 import net.sf.anathema.hero.charms.model.CharmsModel;
 import net.sf.anathema.hero.charms.model.CharmsModelFetcher;
@@ -56,12 +56,12 @@ public class CharmExperienceModel extends AbstractIntegerValueModel {
         return (costsExperience(charmConfiguration, charm, charmsCalculated) ? charmCost : 0) +
                ((IUpgradableCharmConfiguration) specialCharm).getUpgradeXPCost();
       }
-      if (!(specialCharm instanceof ISubeffectCharmConfiguration)) {
+      if (!(specialCharm instanceof SubEffectCharmSpecials)) {
         return specialCharmCost;
       }
-      ISubeffectCharmConfiguration subeffectCharmConfiguration = (ISubeffectCharmConfiguration) specialCharm;
-      int count = Math.max(0, (subeffectCharmConfiguration.getExperienceLearnedSubeffectCount() -
-                               (subeffectCharmConfiguration.getCreationLearnedSubeffectCount() == 0 ? 1 : 0)));
+      SubEffectCharmSpecials subeffectCharmConfiguration = (SubEffectCharmSpecials) specialCharm;
+      int count = Math.max(0, (subeffectCharmConfiguration.getExperienceLearnedSubEffectCount() -
+                               (subeffectCharmConfiguration.getCreationLearnedSubEffectCount() == 0 ? 1 : 0)));
       int subeffectCost = (int) Math.ceil(count * subeffectCharmConfiguration.getPointCostPerEffect() * 2);
       return subeffectCost + specialCharmCost;
     }

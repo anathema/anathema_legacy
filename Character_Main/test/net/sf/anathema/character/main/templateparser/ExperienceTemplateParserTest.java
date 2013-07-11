@@ -1,14 +1,13 @@
 package net.sf.anathema.character.main.templateparser;
 
-import net.sf.anathema.character.main.magic.model.charm.Charm;
+import net.sf.anathema.character.main.dummy.DummyCharm;
+import net.sf.anathema.character.main.magic.model.charm.MartialArtsLevel;
 import net.sf.anathema.character.main.magic.model.magic.Magic;
+import net.sf.anathema.character.main.template.experience.ICostAnalyzer;
+import net.sf.anathema.character.main.template.points.MultiplyRatingCosts;
+import net.sf.anathema.character.main.testing.dummy.template.DummyXmlTemplateRegistry;
 import net.sf.anathema.character.main.xml.experience.ExperienceTemplateParser;
 import net.sf.anathema.character.main.xml.experience.GenericExperiencePointCosts;
-import net.sf.anathema.character.main.template.points.MultiplyRatingCosts;
-import net.sf.anathema.character.main.magic.model.charm.MartialArtsLevel;
-import net.sf.anathema.character.main.template.experience.ICostAnalyzer;
-import net.sf.anathema.character.main.dummy.DummyCharm;
-import net.sf.anathema.character.main.testing.dummy.template.DummyXmlTemplateRegistry;
 import net.sf.anathema.lib.exception.AnathemaException;
 import net.sf.anathema.lib.xml.DocumentUtilities;
 import org.dom4j.Element;
@@ -96,7 +95,7 @@ public class ExperienceTemplateParserTest {
     GenericExperiencePointCosts costs = parser.parseTemplate(element);
     assertEquals(10, costs.getCharmCosts(new DummyCharm("Charm"), new ICostAnalyzer() {
       @Override
-      public MartialArtsLevel getMartialArtsLevel(Charm charm) {
+      public MartialArtsLevel getMartialArtsLevel(Magic magic) {
         return null;
       }
 
@@ -113,7 +112,7 @@ public class ExperienceTemplateParserTest {
     GenericExperiencePointCosts costs = parser.parseTemplate(element);
     assertEquals(8, costs.getCharmCosts(new DummyCharm("Charm"), new ICostAnalyzer() {
       @Override
-      public MartialArtsLevel getMartialArtsLevel(Charm charm) {
+      public MartialArtsLevel getMartialArtsLevel(Magic magic) {
         return null;
       }
 
@@ -130,7 +129,7 @@ public class ExperienceTemplateParserTest {
     GenericExperiencePointCosts costs = parser.parseTemplate(element);
     assertEquals(10, costs.getCharmCosts(new DummyCharm("Charm"), new ICostAnalyzer() {
       @Override
-      public MartialArtsLevel getMartialArtsLevel(Charm charm) {
+      public MartialArtsLevel getMartialArtsLevel(Magic magic) {
         return MartialArtsLevel.Celestial;
       }
 
@@ -147,7 +146,7 @@ public class ExperienceTemplateParserTest {
     GenericExperiencePointCosts costs = parser.parseTemplate(element);
     assertEquals(15, costs.getCharmCosts(new DummyCharm("Charm"), new ICostAnalyzer() {
       @Override
-      public MartialArtsLevel getMartialArtsLevel(Charm charm) {
+      public MartialArtsLevel getMartialArtsLevel(Magic magic) {
         return MartialArtsLevel.Sidereal;
       }
 
@@ -164,7 +163,7 @@ public class ExperienceTemplateParserTest {
     GenericExperiencePointCosts costs = parser.parseTemplate(element);
     assertEquals(13, costs.getCharmCosts(new DummyCharm("Charm"), new ICostAnalyzer() {
       @Override
-      public MartialArtsLevel getMartialArtsLevel(Charm charm) {
+      public MartialArtsLevel getMartialArtsLevel(Magic magic) {
         return MartialArtsLevel.Sidereal;
       }
 

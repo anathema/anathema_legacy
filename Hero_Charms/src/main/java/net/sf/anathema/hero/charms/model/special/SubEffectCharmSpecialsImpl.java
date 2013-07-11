@@ -2,18 +2,17 @@ package net.sf.anathema.hero.charms.model.special;
 
 import net.sf.anathema.character.main.magic.model.charm.Charm;
 import net.sf.anathema.character.main.magic.model.charm.special.ISubEffectCharm;
-import net.sf.anathema.character.main.magic.model.charm.special.ISubeffectCharmConfiguration;
+import net.sf.anathema.character.main.magic.model.charm.special.SubEffectCharmSpecials;
 import net.sf.anathema.character.main.magic.model.charm.special.MultipleEffectCharmConfiguration;
 import net.sf.anathema.character.main.magic.model.charm.special.SubEffect;
 import net.sf.anathema.character.main.magic.model.charm.CharmSpecialist;
 import net.sf.anathema.character.main.magic.model.charms.IExtendedCharmLearnableArbitrator;
 
-public class SubeffectCharmConfiguration extends MultipleEffectCharmConfiguration implements ISubeffectCharmConfiguration {
+public class SubEffectCharmSpecialsImpl extends MultipleEffectCharmConfiguration implements SubEffectCharmSpecials {
 
   private final double pointCost;
 
-  public SubeffectCharmConfiguration(CharmSpecialist specialist, Charm charm, ISubEffectCharm visited,
-                                     IExtendedCharmLearnableArbitrator arbitrator) {
+  public SubEffectCharmSpecialsImpl(CharmSpecialist specialist, Charm charm, ISubEffectCharm visited, IExtendedCharmLearnableArbitrator arbitrator) {
     super(specialist, charm, visited, arbitrator);
     this.pointCost = visited.getPointCost();
   }
@@ -29,7 +28,7 @@ public class SubeffectCharmConfiguration extends MultipleEffectCharmConfiguratio
   }
 
   @Override
-  public int getCreationLearnedSubeffectCount() {
+  public int getCreationLearnedSubEffectCount() {
     int count = 0;
     for (SubEffect subeffect : getEffects()) {
       if (subeffect.isCreationLearned()) {
@@ -40,7 +39,7 @@ public class SubeffectCharmConfiguration extends MultipleEffectCharmConfiguratio
   }
 
   @Override
-  public int getExperienceLearnedSubeffectCount() {
+  public int getExperienceLearnedSubEffectCount() {
     int count = 0;
     for (SubEffect subeffect : getEffects()) {
       if (subeffect.isLearned() && !subeffect.isCreationLearned()) {

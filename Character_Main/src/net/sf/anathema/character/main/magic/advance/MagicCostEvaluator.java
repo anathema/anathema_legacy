@@ -2,7 +2,7 @@ package net.sf.anathema.character.main.magic.advance;
 
 import net.sf.anathema.character.main.magic.model.charm.Charm;
 import net.sf.anathema.character.main.magic.model.charm.special.CharmSpecialsModel;
-import net.sf.anathema.character.main.magic.model.charm.special.ISubeffectCharmConfiguration;
+import net.sf.anathema.character.main.magic.model.charm.special.SubEffectCharmSpecials;
 import net.sf.anathema.character.main.magic.model.charm.special.IUpgradableCharmConfiguration;
 import net.sf.anathema.character.main.magic.model.magic.Magic;
 import net.sf.anathema.hero.charms.model.CharmsModel;
@@ -73,11 +73,11 @@ public class MagicCostEvaluator {
     if (specialCharmConfiguration instanceof IUpgradableCharmConfiguration) {
       return ((IUpgradableCharmConfiguration) specialCharmConfiguration).getUpgradeBPCost();
     }
-    if (!(specialCharmConfiguration instanceof ISubeffectCharmConfiguration)) {
+    if (!(specialCharmConfiguration instanceof SubEffectCharmSpecials)) {
       return 0;
     }
-    ISubeffectCharmConfiguration configuration = (ISubeffectCharmConfiguration) specialCharmConfiguration;
-    int count = Math.max(0, (configuration.getCreationLearnedSubeffectCount() - 1));
+    SubEffectCharmSpecials configuration = (SubEffectCharmSpecials) specialCharmConfiguration;
+    int count = Math.max(0, (configuration.getCreationLearnedSubEffectCount() - 1));
     return (int) Math.ceil(count * configuration.getPointCostPerEffect());
   }
 }

@@ -8,7 +8,7 @@ import net.sf.anathema.character.main.magic.model.charm.Charm;
 import net.sf.anathema.character.main.magic.model.charm.special.CharmSpecialsModel;
 import net.sf.anathema.character.main.magic.model.charm.special.MultipleEffectCharmSpecials;
 import net.sf.anathema.character.main.magic.model.charm.special.SubEffect;
-import net.sf.anathema.character.main.magic.model.charm.special.ISubeffectCharmConfiguration;
+import net.sf.anathema.character.main.magic.model.charm.special.SubEffectCharmSpecials;
 import net.sf.anathema.character.main.magic.model.charms.ILearningCharmGroup;
 import net.sf.anathema.character.main.magic.model.magic.IMagicStats;
 import net.sf.anathema.character.main.magic.model.magic.Magic;
@@ -39,7 +39,7 @@ public class CharmContentHelper {
 
   public boolean isMultipleEffectCharm(Charm charm) {
     CharmSpecialsModel charmConfiguration = CharmsModelFetcher.fetch(hero).getCharmSpecialsModel(charm);
-    return charmConfiguration instanceof MultipleEffectCharmSpecials && !(charmConfiguration instanceof ISubeffectCharmConfiguration);
+    return charmConfiguration instanceof MultipleEffectCharmSpecials && !(charmConfiguration instanceof SubEffectCharmSpecials);
   }
 
   public String[] getLearnedEffects(Charm charm) {
@@ -76,7 +76,7 @@ public class CharmContentHelper {
 
   public boolean isSubEffectCharm(Charm charm) {
     CharmSpecialsModel charmConfiguration = CharmsModelFetcher.fetch(hero).getCharmSpecialsModel(charm);
-    return charmConfiguration instanceof ISubeffectCharmConfiguration;
+    return charmConfiguration instanceof SubEffectCharmSpecials;
   }
 
   public int getLearnCount(Charm charm) {
