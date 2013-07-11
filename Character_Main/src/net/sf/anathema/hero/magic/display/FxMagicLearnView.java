@@ -1,48 +1,88 @@
 package net.sf.anathema.hero.magic.display;
 
+import com.sun.javafx.collections.ObservableListWrapper;
+import javafx.beans.value.ObservableValue;
+import javafx.scene.control.ListView;
+import net.sf.anathema.interaction.Tool;
 import net.sf.anathema.lib.control.ChangeListener;
+import net.sf.anathema.platform.tool.FxButtonTool;
 import org.jmock.example.announcer.Announcer;
+import org.tbee.javafx.scene.layout.MigPane;
 
-import javax.swing.DefaultListModel;
-import javax.swing.JList;
-import javax.swing.JPanel;
-import java.awt.GridLayout;
 import java.util.List;
+
+import static net.sf.anathema.lib.gui.layout.LayoutUtils.withoutInsets;
 
 public class FxMagicLearnView implements MagicLearnView {
   private final Announcer<MagicViewListener> control = Announcer.to(MagicViewListener.class);
-  private final JList availableMagicList = new JList(new DefaultListModel());
-  private final JList learnedMagicList = new JList(new DefaultListModel());
-  private final JPanel centerButtons = new JPanel(new GridLayout(0, 1));
-  private final JPanel endButtons = new JPanel(new GridLayout(0, 1));
+  private final ListView availableMagicList = new ListView();
+  private final ListView learnedMagicList = new ListView();
+  private final MigPane centerButtons = new MigPane(withoutInsets().wrapAfter(1));
+  private final MigPane endButtons = new MigPane(withoutInsets().wrapAfter(1));
 
   @Override
   public void setAvailableMagic(List magics) {
-    //To change body of implemented methods use File | Settings | File Templates.
+    availableMagicList.setItems(new ObservableListWrapper(magics));
   }
 
   @Override
   public void setLearnedMagic(List magics) {
-    //To change body of implemented methods use File | Settings | File Templates.
-  }
-
-  @Override
-  public void addMagicViewListener(MagicViewListener listener) {
-    //To change body of implemented methods use File | Settings | File Templates.
+    learnedMagicList.setItems(new ObservableListWrapper(magics));
   }
 
   @Override
   public boolean hasMoreThanOneElementLearned() {
-    return false;  //To change body of implemented methods use File | Settings | File Templates.
+    return learnedMagicList.getItems().size() > 1;
   }
 
   @Override
   public boolean hasAnyElementLearned() {
-    return false;  //To change body of implemented methods use File | Settings | File Templates.
+    return learnedMagicList.getItems().size() > 0;
   }
 
   @Override
-  public void addLearnedListListener(ChangeListener changeListener) {
+  public void addLearnedListListener(final ChangeListener changeListener) {
+    learnedMagicList.itemsProperty().addListener(new javafx.beans.value.ChangeListener() {
+      @Override
+      public void changed(ObservableValue observableValue, Object o, Object o2) {
+        changeListener.changeOccurred();
+      }
+    });
+  }
+
+  @Override
+  public Tool addAdditionalTool() {
+    return addToolTo(endButtons);
+  }
+
+  @Override
+  public Tool addMainTool() {
+    return addToolTo(centerButtons);
+  }
+
+  @Override
+  public List getSelectedLearnedValues() {
+    return null;  //To change body of implemented methods use File | Settings | File Templates.
+  }
+
+  @Override
+  public List getSelectedAvailableValues() {
+    return null;  //To change body of implemented methods use File | Settings | File Templates.
+  }
+
+  @Override
+  public void addAvailableMagicSelectedListener(ChangeListener changeListener) {
     //To change body of implemented methods use File | Settings | File Templates.
+  }
+
+  @Override
+  public void addLearnedMagicSelectedListener(ChangeListener changeListener) {
+    //To change body of implemented methods use File | Settings | File Templates.
+  }
+
+  private Tool addToolTo(MigPane target) {
+    FxButtonTool tool = FxButtonTool.ForAnyPurpose();
+    target.add(tool.getNode());
+    return tool;
   }
 }

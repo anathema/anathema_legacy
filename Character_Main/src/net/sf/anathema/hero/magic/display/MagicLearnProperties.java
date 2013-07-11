@@ -19,7 +19,7 @@ public interface MagicLearnProperties {
 
   AgnosticUIConfiguration<Identifier> getLearnedMagicRenderer();
 
-  boolean isMagicSelectionAvailable(Object selectedValue);
+  boolean isMagicSelectionAvailable(List selectedValue);
 
   AgnosticUIConfiguration getAvailableMagicRenderer();
 

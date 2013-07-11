@@ -46,7 +46,7 @@ public class SpellPresenter {
 
   private void addMagicLearnView(SpellView view) {
     final MagicLearnView magicLearnView = view.addMagicLearnView(properties);
-    magicLearnView.addMagicViewListener(new MagicViewListener() {
+    view.addMagicViewListener(new MagicViewListener() {
       @Override
       public void magicRemoved(Object[] removedSpells) {
         List<ISpell> spellList = convertToList(removedSpells);
