@@ -14,6 +14,4 @@ public interface SpellView {
   MagicLearnView addMagicLearnView(MagicLearnProperties properties);
 
   void addCircleSelectionListener(ObjectValueListener<CircleType> listener);
-
-  void addMagicViewListener(MagicViewListener magicViewListener);
 }

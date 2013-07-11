@@ -5,7 +5,6 @@ import net.sf.anathema.interaction.Tool;
 import net.sf.anathema.lib.control.ChangeListener;
 import net.sf.anathema.lib.gui.ui.ConfigurableListCellRenderer;
 import net.sf.anathema.swing.interaction.ActionInteraction;
-import org.jmock.example.announcer.Announcer;
 
 import javax.swing.DefaultListModel;
 import javax.swing.JList;

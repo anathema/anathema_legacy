@@ -36,15 +36,10 @@ public class MagicLearnPresenter {
     view.addLearnedMagicSelectedListener(new ChangeListener() {
       @Override
       public void changeOccurred() {
-        List selectedValues = view.getSelectedLearnedValues();
-        boolean allowed = properties.isRemoveAllowed(selectedValues);
-        if (allowed) {
-          tool.enable();
-        } else {
-          tool.disable();
-        }
+        updateRemoveButton(properties, tool);
       }
     });
+    updateRemoveButton(properties, tool);
   }
 
   private void createAddMagicButton(RelativePath icon, String tooltip, final MagicLearnProperties properties) {
@@ -61,14 +56,10 @@ public class MagicLearnPresenter {
     view.addAvailableMagicSelectedListener(new ChangeListener() {
       @Override
       public void changeOccurred() {
-        boolean available = properties.isMagicSelectionAvailable(view.getSelectedAvailableValues());
-        if (available) {
-          tool.enable();
-        } else {
-          tool.disable();
-        }
+        updateAddButton(properties, tool);
       }
     });
+    updateAddButton(properties, tool);
   }
 
   private void fireRemoveRequested(List<Object> removedMagics) {
@@ -79,6 +70,25 @@ public class MagicLearnPresenter {
   private void fireAddRequested(List<Object> addedMagics) {
     Object[] objects = addedMagics.toArray(new Object[addedMagics.size()]);
     control.announce().magicAdded(objects);
+  }
+
+  private void updateRemoveButton(MagicLearnProperties properties, Tool tool) {
+    List selectedValues = view.getSelectedLearnedValues();
+    boolean allowed = properties.isRemoveAllowed(selectedValues);
+    if (allowed) {
+      tool.enable();
+    } else {
+      tool.disable();
+    }
+  }
+
+  private void updateAddButton(MagicLearnProperties properties, Tool tool) {
+    boolean available = properties.isMagicSelectionAvailable(view.getSelectedAvailableValues());
+    if (available) {
+      tool.enable();
+    } else {
+      tool.disable();
+    }
   }
 
   public void addChangeListener(MagicViewListener listener) {
