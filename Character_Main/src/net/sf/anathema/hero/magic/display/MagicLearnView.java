@@ -8,11 +8,9 @@ import net.sf.anathema.lib.gui.list.LegalityCheckListCellRenderer;
 import net.sf.anathema.lib.gui.ui.ConfigurableListCellRenderer;
 import net.sf.anathema.lib.util.Identifier;
 import net.sf.anathema.swing.interaction.ActionInteraction;
-import net.sf.anathema.view.interaction.AddToButton;
 import org.jmock.example.announcer.Announcer;
 
 import javax.swing.DefaultListModel;
-import javax.swing.JButton;
 import javax.swing.JList;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
@@ -22,7 +20,6 @@ import javax.swing.event.ListSelectionEvent;
 import javax.swing.event.ListSelectionListener;
 import java.awt.Dimension;
 import java.awt.GridLayout;
-import java.util.ArrayList;
 import java.util.Comparator;
 import java.util.List;
 
@@ -33,67 +30,74 @@ public class MagicLearnView implements IMagicLearnView {
   private final Announcer<IMagicViewListener> control = Announcer.to(IMagicViewListener.class);
   private final JList learnOptionsList = new JList(new DefaultListModel());
   private final JList learnedList = new JList(new DefaultListModel());
-  private final List<JButton> centerButtons = new ArrayList<>();
-  private final List<JButton> endButtons = new ArrayList<>();
+  private final JPanel centerButtons = new JPanel(new GridLayout(0, 1));
+  private final JPanel endButtons = new JPanel(new GridLayout(0, 1));
 
   public void init(final IMagicLearnProperties properties) {
     learnOptionsList.setCellRenderer(new LegalityCheckListCellRenderer(properties.getLegalityCheck(), properties.getAvailableMagicRenderer()));
     learnOptionsList.setSelectionMode(SINGLE_SELECTION);
     ListCellRenderer renderer = new ConfigurableListCellRenderer(properties.getLearnedMagicRenderer());
     learnedList.setCellRenderer(renderer);
-    final JButton addButton = createAddMagicButton(properties.getAddButtonIcon(), properties.getAddButtonToolTip());
-    addOptionListListener(new ListSelectionListener() {
-      @Override
-      public void valueChanged(ListSelectionEvent e) {
-        addButton.setEnabled(properties.isMagicSelectionAvailable(learnOptionsList.getSelectedValue()));
-      }
-    });
-    final JButton removeButton = createRemoveMagicButton(properties.getRemoveButtonIcon(),
-            properties.getRemoveButtonToolTip());
-    centerButtons.add(addButton);
-    centerButtons.add(removeButton);
-    addSelectionListListener(new ListSelectionListener() {
-      @Override
-      public void valueChanged(ListSelectionEvent e) {
-        List selectedValues = learnedList.getSelectedValuesList();
-        removeButton.setEnabled(properties.isRemoveAllowed(selectedValues));
-      }
-    });
+    createAddMagicButton(properties.getAddButtonIcon(), properties.getAddButtonToolTip(), properties);
+    createRemoveMagicButton(properties.getRemoveButtonIcon(), properties.getRemoveButtonToolTip(), properties);
   }
 
-  private JButton createAddMagicButton(RelativePath icon, String tooltip) {
+  private void createAddMagicButton(RelativePath icon, String tooltip, final IMagicLearnProperties properties) {
     Command command = new Command() {
       @Override
       public void execute() {
         fireMagicAdded(learnOptionsList.getSelectedValuesList());
       }
     };
-    return createButtonFromInteraction(icon, tooltip, command);
+    final Tool tool = createButtonFromInteraction(icon, tooltip, command);
+    addOptionListListener(new ListSelectionListener() {
+      @Override
+      public void valueChanged(ListSelectionEvent e) {
+        boolean available = properties.isMagicSelectionAvailable(learnOptionsList.getSelectedValue());
+        if (available) {
+          tool.enable();
+        } else {
+          tool.disable();
+        }
+      }
+    });
   }
 
-  private JButton createRemoveMagicButton(RelativePath icon, String tooltip) {
+  private void createRemoveMagicButton(RelativePath icon, String tooltip, final IMagicLearnProperties properties) {
     Command command = new Command() {
       @Override
       public void execute() {
         fireMagicRemoved(learnedList.getSelectedValuesList());
       }
     };
-    return createButtonFromInteraction(icon, tooltip, command);
+    final Tool tool = createButtonFromInteraction(icon, tooltip, command);
+    addSelectionListListener(new ListSelectionListener() {
+      @Override
+      public void valueChanged(ListSelectionEvent e) {
+        List selectedValues = learnedList.getSelectedValuesList();
+        boolean allowed = properties.isRemoveAllowed(selectedValues);
+        if (allowed) {
+          tool.enable();
+        } else {
+          tool.disable();
+        }
+      }
+    });
+
   }
 
-  private JButton createButtonFromInteraction(RelativePath icon, String tooltip, Command command) {
-    ActionInteraction interaction = new ActionInteraction();
+  private Tool createButtonFromInteraction(RelativePath icon, String tooltip, Command command) {
+    Tool interaction = addCenterTool();
     interaction.setIcon(icon);
     interaction.setTooltip(tooltip);
     interaction.setCommand(command);
-    return createButton(interaction);
+    return interaction;
   }
 
-  private JButton createButton(ActionInteraction tool) {
-    tool.disable();
-    JButton jButton = new JButton();
-    tool.addTo(new AddToButton(jButton));
-    return jButton;
+  public Tool addCenterTool() {
+    ActionInteraction interaction = new ActionInteraction();
+    interaction.addTo(new AddToButtonPanel(centerButtons));
+    return interaction;
   }
 
   private void fireMagicRemoved(List<Object> removedMagics) {
@@ -130,26 +134,15 @@ public class MagicLearnView implements IMagicLearnView {
 
   public Tool addAdditionalTool() {
     ActionInteraction interaction = new ActionInteraction();
-    JButton button = new JButton();
-    endButtons.add(button);
-    interaction.addTo(new AddToButton(button));
+    interaction.addTo(new AddToButtonPanel(endButtons));
     return interaction;
   }
 
   public void addTo(JPanel panel) {
     panel.add(createScrollPane(learnOptionsList), new CC().grow().push());
-    addButtonPanel(panel, centerButtons);
+    panel.add(centerButtons);
     panel.add(createScrollPane(learnedList), new CC().grow().push());
-    List<JButton> buttons = endButtons;
-    addButtonPanel(panel, buttons);
-  }
-
-  private void addButtonPanel(JPanel panel, List<JButton> buttons) {
-    JPanel buttonPanel = new JPanel(new GridLayout(0, 1));
-    for (JButton button : buttons) {
-      buttonPanel.add(button);
-    }
-    panel.add(buttonPanel);
+    panel.add(endButtons);
   }
 
   private JScrollPane createScrollPane(JList list) {

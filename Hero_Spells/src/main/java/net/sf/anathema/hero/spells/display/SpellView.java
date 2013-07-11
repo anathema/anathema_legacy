@@ -55,6 +55,7 @@ public class SpellView implements ISpellView, IView {
     magicLearnView.addTo(content);
   }
 
+
   @Override
   public void addMagicViewListener(IMagicViewListener listener) {
     magicLearnView.addMagicViewListener(listener);
