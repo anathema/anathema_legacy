@@ -4,8 +4,8 @@ import net.sf.anathema.character.main.magic.model.charm.Charm;
 import net.sf.anathema.character.main.magic.model.charm.CharmIdMap;
 import net.sf.anathema.character.main.magic.model.charm.ICharmGroup;
 import net.sf.anathema.character.main.magic.model.charm.ICharmLearnListener;
+import net.sf.anathema.character.main.magic.model.charm.special.CharmSpecialsModel;
 import net.sf.anathema.character.main.magic.model.charm.special.ISpecialCharm;
-import net.sf.anathema.character.main.magic.model.charm.special.ISpecialCharmConfiguration;
 import net.sf.anathema.character.main.magic.model.charms.ILearningCharmGroup;
 import net.sf.anathema.character.main.type.ICharacterType;
 import net.sf.anathema.hero.change.ChangeAnnouncer;
@@ -48,7 +48,7 @@ public class DummyCharmsModel implements CharmsModel {
   }
 
   @Override
-  public ISpecialCharmConfiguration getSpecialCharmConfiguration(String charmId) {
+  public CharmSpecialsModel getSpecialCharmConfiguration(String charmId) {
     return null;
   }
 
@@ -98,7 +98,7 @@ public class DummyCharmsModel implements CharmsModel {
   }
 
   @Override
-  public ISpecialCharmConfiguration getSpecialCharmConfiguration(Charm charm) {
+  public CharmSpecialsModel getCharmSpecialsModel(Charm charm) {
     return null;
   }
 

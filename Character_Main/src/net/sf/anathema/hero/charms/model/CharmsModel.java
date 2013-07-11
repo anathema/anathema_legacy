@@ -3,8 +3,8 @@ package net.sf.anathema.hero.charms.model;
 import net.sf.anathema.character.main.magic.display.view.charmtree.CharmGroupArbitrator;
 import net.sf.anathema.character.main.magic.model.charm.Charm;
 import net.sf.anathema.character.main.magic.model.charm.CharmIdMap;
+import net.sf.anathema.character.main.magic.model.charm.special.CharmSpecialsModel;
 import net.sf.anathema.character.main.magic.model.charm.special.ISpecialCharm;
-import net.sf.anathema.character.main.magic.model.charm.special.ISpecialCharmConfiguration;
 import net.sf.anathema.character.main.magic.model.charms.IExtendedCharmLearnableArbitrator;
 import net.sf.anathema.character.main.magic.model.charms.ILearningCharmGroup;
 import net.sf.anathema.character.main.magic.model.charmtree.SpecialCharmLearnArbitrator;
@@ -33,13 +33,13 @@ public interface CharmsModel extends HeroModel, IExtendedCharmLearnableArbitrato
 
   Charm[] getLearnedCharms(boolean experienced);
 
-  ISpecialCharmConfiguration getSpecialCharmConfiguration(String charmId);
+  CharmSpecialsModel getSpecialCharmConfiguration(String charmId);
 
   void unlearnAllAlienCharms();
 
   boolean isAlienCharm(Charm charm);
 
-  ISpecialCharmConfiguration getSpecialCharmConfiguration(Charm charm);
+  CharmSpecialsModel getCharmSpecialsModel(Charm charm);
 
   ILearningCharmGroup getGroup(Charm charm);
 

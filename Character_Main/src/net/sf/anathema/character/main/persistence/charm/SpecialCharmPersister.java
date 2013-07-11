@@ -2,13 +2,13 @@ package net.sf.anathema.character.main.persistence.charm;
 
 import net.sf.anathema.character.main.magic.model.charm.Charm;
 import net.sf.anathema.character.main.magic.model.charm.CharmIdMap;
+import net.sf.anathema.character.main.magic.model.charm.special.CharmSpecialsModel;
 import net.sf.anathema.character.main.magic.model.charm.special.IMultiLearnableCharm;
 import net.sf.anathema.character.main.magic.model.charm.special.IMultipleEffectCharm;
 import net.sf.anathema.character.main.magic.model.charm.special.IOxBodyTechniqueCharm;
 import net.sf.anathema.character.main.magic.model.charm.special.IPainToleranceCharm;
 import net.sf.anathema.character.main.magic.model.charm.special.IPrerequisiteModifyingCharm;
 import net.sf.anathema.character.main.magic.model.charm.special.ISpecialCharm;
-import net.sf.anathema.character.main.magic.model.charm.special.ISpecialCharmConfiguration;
 import net.sf.anathema.character.main.magic.model.charm.special.ISpecialCharmVisitor;
 import net.sf.anathema.character.main.magic.model.charm.special.ISubEffectCharm;
 import net.sf.anathema.character.main.magic.model.charm.special.ITraitCapModifyingCharm;
@@ -74,7 +74,7 @@ public class SpecialCharmPersister implements ISpecialCharmPersister {
   }
 
   @Override
-  public void saveConfiguration(Element specialElement, ISpecialCharmConfiguration specialCharmConfiguration) {
+  public void saveConfiguration(Element specialElement, CharmSpecialsModel specialCharmConfiguration) {
     ISpecialCharmPersister persister = persisterByCharm.get(specialCharmConfiguration.getCharm());
     if (persister != null) {
       persister.saveConfiguration(specialElement, specialCharmConfiguration);
@@ -82,7 +82,7 @@ public class SpecialCharmPersister implements ISpecialCharmPersister {
   }
 
   @Override
-  public void loadConfiguration(Element specialElement, ISpecialCharmConfiguration specialCharmConfiguration) throws PersistenceException {
+  public void loadConfiguration(Element specialElement, CharmSpecialsModel specialCharmConfiguration) throws PersistenceException {
     ISpecialCharmPersister persister = persisterByCharm.get(specialCharmConfiguration.getCharm());
     if (persister != null) {
       persister.loadConfiguration(specialElement, specialCharmConfiguration);

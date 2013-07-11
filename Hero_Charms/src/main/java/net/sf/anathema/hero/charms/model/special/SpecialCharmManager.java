@@ -1,6 +1,7 @@
 package net.sf.anathema.hero.charms.model.special;
 
 import net.sf.anathema.character.main.magic.model.charm.Charm;
+import net.sf.anathema.character.main.magic.model.charm.special.CharmSpecialsModel;
 import net.sf.anathema.character.main.magic.model.charm.special.ISubEffectCharm;
 import net.sf.anathema.character.main.magic.model.charm.special.MultipleEffectCharmConfiguration;
 import net.sf.anathema.character.main.magic.model.charm.special.OxBodyTechniqueConfiguration;
@@ -11,7 +12,6 @@ import net.sf.anathema.character.main.magic.model.charm.special.IOxBodyTechnique
 import net.sf.anathema.character.main.magic.model.charm.special.IPainToleranceCharm;
 import net.sf.anathema.character.main.magic.model.charm.special.IPrerequisiteModifyingCharm;
 import net.sf.anathema.character.main.magic.model.charm.special.ISpecialCharm;
-import net.sf.anathema.character.main.magic.model.charm.special.ISpecialCharmConfiguration;
 import net.sf.anathema.character.main.magic.model.charm.special.ISpecialCharmLearnListener;
 import net.sf.anathema.character.main.magic.model.charm.special.ISpecialCharmVisitor;
 import net.sf.anathema.character.main.magic.model.charm.special.ITraitCapModifyingCharm;
@@ -30,7 +30,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class SpecialCharmManager implements ISpecialCharmManager {
-  private final Map<Charm, ISpecialCharmConfiguration> specialConfigurationsByCharm = new HashMap<>();
+  private final Map<Charm, CharmSpecialsModel> specialConfigurationsByCharm = new HashMap<>();
   private final IExtendedCharmLearnableArbitrator arbitrator;
   private CharmSpecialistImpl specialist;
   private Hero hero;
@@ -89,7 +89,7 @@ public class SpecialCharmManager implements ISpecialCharmManager {
   }
 
   @Override
-  public ISpecialCharmConfiguration getSpecialCharmConfiguration(Charm charm) {
+  public CharmSpecialsModel getSpecialCharmConfiguration(Charm charm) {
     return specialConfigurationsByCharm.get(charm);
   }
 
@@ -123,7 +123,7 @@ public class SpecialCharmManager implements ISpecialCharmManager {
   }
 
   private void registerPainToleranceCharm(final IPainToleranceCharm visitedCharm, Charm charm) {
-    final ISpecialCharmConfiguration specialCharmConfiguration = getSpecialCharmConfiguration(charm);
+    final CharmSpecialsModel specialCharmConfiguration = getSpecialCharmConfiguration(charm);
     IPainToleranceProvider painToleranceProvider = new IPainToleranceProvider() {
       @Override
       public int getPainToleranceLevel() {
@@ -139,7 +139,7 @@ public class SpecialCharmManager implements ISpecialCharmManager {
     addSpecialCharmConfiguration(charm, group, configuration, true, true);
   }
 
-  private void addSpecialCharmConfiguration(final Charm charm, final ILearningCharmGroup group, final ISpecialCharmConfiguration configuration,
+  private void addSpecialCharmConfiguration(final Charm charm, final ILearningCharmGroup group, final CharmSpecialsModel configuration,
                                             boolean learnListener, final boolean forgetAtZero) {
     if (specialConfigurationsByCharm.containsKey(charm)) {
       throw new IllegalArgumentException("Special configuration already defined for charm " + charm.getId());

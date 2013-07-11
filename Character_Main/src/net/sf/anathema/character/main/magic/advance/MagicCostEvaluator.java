@@ -1,7 +1,7 @@
 package net.sf.anathema.character.main.magic.advance;
 
 import net.sf.anathema.character.main.magic.model.charm.Charm;
-import net.sf.anathema.character.main.magic.model.charm.special.ISpecialCharmConfiguration;
+import net.sf.anathema.character.main.magic.model.charm.special.CharmSpecialsModel;
 import net.sf.anathema.character.main.magic.model.charm.special.ISubeffectCharmConfiguration;
 import net.sf.anathema.character.main.magic.model.charm.special.IUpgradableCharmConfiguration;
 import net.sf.anathema.character.main.magic.model.magic.Magic;
@@ -51,7 +51,7 @@ public class MagicCostEvaluator {
   }
 
   private int handleSpecialCharm(Charm charm) {
-    ISpecialCharmConfiguration specialCharmConfiguration = charms.getSpecialCharmConfiguration(charm);
+    CharmSpecialsModel specialCharmConfiguration = charms.getCharmSpecialsModel(charm);
     if (specialCharmConfiguration != null) {
       if (specialCharmConfiguration instanceof IUpgradableCharmConfiguration) {
         return 1;
@@ -62,14 +62,14 @@ public class MagicCostEvaluator {
   }
 
   private boolean isSpecialCharm(Charm charm) {
-    return charms.getSpecialCharmConfiguration(charm) != null;
+    return charms.getCharmSpecialsModel(charm) != null;
   }
 
   public int getAdditionalBonusPoints(Magic magic) {
     if (!(magic instanceof Charm)) {
       return 0;
     }
-    ISpecialCharmConfiguration specialCharmConfiguration = charms.getSpecialCharmConfiguration((Charm) magic);
+    CharmSpecialsModel specialCharmConfiguration = charms.getCharmSpecialsModel((Charm) magic);
     if (specialCharmConfiguration instanceof IUpgradableCharmConfiguration) {
       return ((IUpgradableCharmConfiguration) specialCharmConfiguration).getUpgradeBPCost();
     }

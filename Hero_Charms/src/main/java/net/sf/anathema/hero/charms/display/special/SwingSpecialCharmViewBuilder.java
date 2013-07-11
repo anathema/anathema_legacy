@@ -3,6 +3,7 @@ package net.sf.anathema.hero.charms.display.special;
 import net.sf.anathema.character.main.magic.model.charm.special.IMultiLearnableCharm;
 import net.sf.anathema.character.main.magic.model.charm.special.IMultipleEffectCharm;
 import net.sf.anathema.character.main.magic.model.charm.special.IOxBodyTechniqueCharm;
+import net.sf.anathema.character.main.magic.model.charm.special.OxBodyTechniqueSpecials;
 import net.sf.anathema.character.main.magic.model.charm.special.IPainToleranceCharm;
 import net.sf.anathema.character.main.magic.model.charm.special.IPrerequisiteModifyingCharm;
 import net.sf.anathema.character.main.magic.model.charm.special.ISpecialCharm;
@@ -10,10 +11,9 @@ import net.sf.anathema.character.main.magic.model.charm.special.ISpecialCharmVis
 import net.sf.anathema.character.main.magic.model.charm.special.ISubEffectCharm;
 import net.sf.anathema.character.main.magic.model.charm.special.ITraitCapModifyingCharm;
 import net.sf.anathema.character.main.magic.model.charm.special.IUpgradableCharm;
+import net.sf.anathema.character.main.magic.model.charm.special.MultiLearnCharmSpecials;
+import net.sf.anathema.character.main.magic.model.charm.special.MultipleEffectCharmSpecials;
 import net.sf.anathema.hero.charms.model.CharmsModel;
-import net.sf.anathema.character.main.magic.model.charm.special.IMultiLearnableCharmConfiguration;
-import net.sf.anathema.character.main.magic.model.charm.special.IMultipleEffectCharmConfiguration;
-import net.sf.anathema.character.main.magic.model.charm.special.IOxBodyTechniqueConfiguration;
 import net.sf.anathema.lib.resources.Resources;
 import net.sf.anathema.platform.tree.presenter.view.ISpecialNodeView;
 
@@ -53,7 +53,7 @@ public class SwingSpecialCharmViewBuilder implements SpecialCharmViewBuilder {
     @Override
     public void visitMultiLearnableCharm(IMultiLearnableCharm visitedCharm) {
       SwingCategorizedSpecialView view = new SwingCategorizedSpecialView(visitedCharm);
-      IMultiLearnableCharmConfiguration model = getModelFromCharm(visitedCharm);
+      MultiLearnCharmSpecials model = getModelFromCharm(visitedCharm);
       new MultiLearnableCharmPresenter(resources, view, model).initPresentation();
       result = view;
     }
@@ -61,7 +61,7 @@ public class SwingSpecialCharmViewBuilder implements SpecialCharmViewBuilder {
     @Override
     public void visitOxBodyTechnique(IOxBodyTechniqueCharm visitedCharm) {
       SwingCategorizedSpecialView view = new SwingCategorizedSpecialView(visitedCharm);
-      IOxBodyTechniqueConfiguration model = getModelFromCharm(visitedCharm);
+      OxBodyTechniqueSpecials model = getModelFromCharm(visitedCharm);
       new OxBodyTechniquePresenter(resources, view, model).initPresentation();
       result = view;
     }
@@ -83,7 +83,7 @@ public class SwingSpecialCharmViewBuilder implements SpecialCharmViewBuilder {
 
     private void createMultipleEffectCharmView(IMultipleEffectCharm visitedCharm) {
       BooleanSelectionSpecialNodeView view = new BooleanSelectionSpecialNodeView(visitedCharm);
-      IMultipleEffectCharmConfiguration model = getModelFromCharm(visitedCharm);
+      MultipleEffectCharmSpecials model = getModelFromCharm(visitedCharm);
       new MultipleEffectCharmPresenter(resources, view, model).initPresentation();
       result = view;
     }

@@ -18,7 +18,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Set;
 
-public class OxBodyTechniqueConfiguration implements IOxBodyTechniqueConfiguration {
+public class OxBodyTechniqueConfiguration implements OxBodyTechniqueSpecials {
 
   private final Announcer<ISpecialCharmLearnListener> control = Announcer.to(ISpecialCharmLearnListener.class);
   private final IncrementChecker incrementChecker;

@@ -1,14 +1,14 @@
 package net.sf.anathema.hero.health;
 
+import net.sf.anathema.character.main.magic.model.charm.special.OxBodyTechniqueSpecials;
 import net.sf.anathema.character.main.traits.ValuedTraitType;
 import net.sf.anathema.character.main.library.trait.Trait;
-import net.sf.anathema.character.main.magic.model.charm.special.IOxBodyTechniqueConfiguration;
 
 import java.util.ArrayList;
 import java.util.List;
 
 public class OxBodyTechniqueArbitratorImpl implements OxBodyTechniqueArbitrator {
-  private final List<IOxBodyTechniqueConfiguration> oxBodyList = new ArrayList<>();
+  private final List<OxBodyTechniqueSpecials> oxBodyList = new ArrayList<>();
   private final Trait[] controllingTraits;
 
   public OxBodyTechniqueArbitratorImpl(Trait[] toughnessControllingTraits) {
@@ -16,7 +16,7 @@ public class OxBodyTechniqueArbitratorImpl implements OxBodyTechniqueArbitrator 
   }
 
   @Override
-  public void addOxBodyTechniqueConfiguration(IOxBodyTechniqueConfiguration oxBodyTechniqueConfiguration) {
+  public void addOxBodyTechniqueConfiguration(OxBodyTechniqueSpecials oxBodyTechniqueConfiguration) {
     oxBodyList.add(oxBodyTechniqueConfiguration);
   }
 
@@ -27,7 +27,7 @@ public class OxBodyTechniqueArbitratorImpl implements OxBodyTechniqueArbitrator 
     for (ValuedTraitType trait : controllingTraits) {
       maxCount = Math.min(maxCount, trait.getCurrentValue());
     }
-    for (IOxBodyTechniqueConfiguration configuration : oxBodyList) {
+    for (OxBodyTechniqueSpecials configuration : oxBodyList) {
       oxBodyCount += configuration.getCurrentLearnCount();
     }
     return oxBodyCount + increment <= maxCount;

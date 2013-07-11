@@ -8,29 +8,29 @@ import java.util.Iterator;
 import static net.sf.anathema.lib.lang.ArrayUtilities.getFirst;
 
 public class ArraySubEffects implements SubEffects {
-  private final ISubeffect[] subeffects;
+  private final SubEffect2[] subeffects;
 
-  public ArraySubEffects(ISubeffect[] subeffects) {
+  public ArraySubEffects(SubEffect2[] subeffects) {
     this.subeffects = subeffects;
   }
 
   @Override
-  public ISubeffect[] getEffects() {
+  public SubEffect2[] getEffects() {
     return subeffects;
   }
 
   @Override
-  public ISubeffect getById(final String id) {
-    return getFirst(subeffects, new Predicate<ISubeffect>() {
+  public SubEffect2 getById(final String id) {
+    return getFirst(subeffects, new Predicate<SubEffect2>() {
       @Override
-      public boolean apply(ISubeffect input) {
+      public boolean apply(SubEffect2 input) {
         return input.getId().equals(id);
       }
     });
   }
 
   @Override
-  public Iterator<ISubeffect> iterator() {
+  public Iterator<SubEffect2> iterator() {
     return Lists.newArrayList(subeffects).iterator();
   }
 }

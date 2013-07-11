@@ -31,11 +31,11 @@ public class MultipleEffectCharm implements IMultipleEffectCharm {
 
   @Override
   public SubEffects buildSubeffects(CharmSpecialist specialist, ICharmLearnableArbitrator arbitrator, Charm charm) {
-    List<ISubeffect> effectList = new ArrayList<>();
+    List<SubEffect2> effectList = new ArrayList<>();
     for (String id : effectIds) {
-      effectList.add(new Subeffect(id, specialist.getExperience(), buildLearnCondition(arbitrator, charm)));
+      effectList.add(new SubEffectImpl(id, specialist.getExperience(), buildLearnCondition(arbitrator, charm)));
     }
-    return new ArraySubEffects(effectList.toArray(new ISubeffect[effectList.size()]));
+    return new ArraySubEffects(effectList.toArray(new SubEffect2[effectList.size()]));
   }
 
   private Condition buildLearnCondition(ICharmLearnableArbitrator arbitrator, Charm charm) {

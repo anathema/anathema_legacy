@@ -3,10 +3,10 @@ package net.sf.anathema.hero.magic.model.charms;
 import net.sf.anathema.character.main.magic.model.charm.Charm;
 import net.sf.anathema.character.main.magic.model.charm.CharmSpecialist;
 import net.sf.anathema.character.main.magic.model.charm.special.ArraySubEffects;
-import net.sf.anathema.character.main.magic.model.charm.special.Subeffect;
+import net.sf.anathema.character.main.magic.model.charm.special.SubEffect2;
+import net.sf.anathema.character.main.magic.model.charm.special.SubEffectImpl;
 import net.sf.anathema.character.main.magic.model.charmtree.ICharmLearnableArbitrator;
 import net.sf.anathema.character.main.magic.model.charm.special.IMultipleEffectCharm;
-import net.sf.anathema.character.main.magic.model.charm.special.ISubeffect;
 import net.sf.anathema.hero.experience.ExperienceModel;
 import net.sf.anathema.character.main.testing.dummy.DummyCondition;
 import net.sf.anathema.character.main.magic.model.charm.special.MultipleEffectCharmConfiguration;
@@ -25,7 +25,7 @@ public class MultipleEffectCharmConfigurationTest {
   public void learnsEffects() throws Exception {
     CharmSpecialist specialist = createExperiencedSpecialist();
     DummyCondition condition = createCondition();
-    Subeffect effect = new Subeffect("id", specialist.getExperience(), condition);
+    SubEffectImpl effect = new SubEffectImpl("id", specialist.getExperience(), condition);
     IMultipleEffectCharm charm = createCharm(effect);
     MultipleEffectCharmConfiguration configuration = new MultipleEffectCharmConfiguration(specialist, null, charm, null);
     effect.setExperienceLearned(true);
@@ -34,10 +34,10 @@ public class MultipleEffectCharmConfigurationTest {
     assertFalse(effect.isCreationLearned());
   }
 
-  private IMultipleEffectCharm createCharm(Subeffect effect) {
+  private IMultipleEffectCharm createCharm(SubEffectImpl effect) {
     IMultipleEffectCharm charm = mock(IMultipleEffectCharm.class);
     when(charm.buildSubeffects(isA(CharmSpecialist.class), (ICharmLearnableArbitrator) isNull(), (Charm) isNull()))
-            .thenReturn(new ArraySubEffects(new ISubeffect[]{effect}));
+            .thenReturn(new ArraySubEffects(new SubEffect2[]{effect}));
     return charm;
   }
 

@@ -2,8 +2,8 @@ package net.sf.anathema.character.main.persistence.charm;
 
 import net.sf.anathema.character.main.magic.model.charm.Charm;
 import net.sf.anathema.character.main.magic.model.charm.CharmIdMap;
-import net.sf.anathema.character.main.magic.model.charm.special.IMultiLearnableCharmConfiguration;
-import net.sf.anathema.character.main.magic.model.charm.special.ISpecialCharmConfiguration;
+import net.sf.anathema.character.main.magic.model.charm.special.CharmSpecialsModel;
+import net.sf.anathema.character.main.magic.model.charm.special.MultiLearnCharmSpecials;
 import net.sf.anathema.character.main.magic.model.charms.ILearningCharmGroup;
 import net.sf.anathema.character.main.magic.model.charms.MartialArtsUtilities;
 import net.sf.anathema.character.main.magic.model.charms.options.DefaultCharmTemplateRetriever;
@@ -134,10 +134,10 @@ public class CharmConfigurationPersister {
         group.learnCharmNoParents(charm, isExperienceLearned(charmElement), false);
       }
       Element specialElement = charmElement.element(TAG_SPECIAL);
-      ISpecialCharmConfiguration specialConfiguration = charmConfiguration.getSpecialCharmConfiguration(charmId);
+      CharmSpecialsModel specialConfiguration = charmConfiguration.getSpecialCharmConfiguration(charmId);
       if (specialElement != null && specialConfiguration != null) {
         specialPersister.loadConfiguration(specialElement, specialConfiguration);
-      } else if (specialConfiguration instanceof IMultiLearnableCharmConfiguration) {
+      } else if (specialConfiguration instanceof MultiLearnCharmSpecials) {
         specialConfiguration.learn(isExperienceLearned(charmElement));
       }
     } catch (IllegalArgumentException e) {

@@ -6,7 +6,7 @@ import net.sf.anathema.character.main.library.trait.Trait;
 import net.sf.anathema.character.main.library.trait.favorable.FriendlyIncrementChecker;
 import net.sf.anathema.character.main.library.trait.rules.FavorableTraitRules;
 import net.sf.anathema.character.main.magic.model.charm.OxBodyCategory;
-import net.sf.anathema.character.main.magic.model.charm.special.IOxBodyTechniqueConfiguration;
+import net.sf.anathema.character.main.magic.model.charm.special.OxBodyTechniqueSpecials;
 import net.sf.anathema.character.main.magic.model.charm.special.OxBodyTechniqueCharm;
 import net.sf.anathema.character.main.magic.model.charm.special.OxBodyTechniqueConfiguration;
 import net.sf.anathema.character.main.testing.BasicCharacterTestCase;
@@ -34,7 +34,7 @@ import static org.junit.Assert.assertEquals;
 public class OxBodyTechniqueConfigurationTest {
 
   private Trait resistance;
-  private IOxBodyTechniqueConfiguration configuration;
+  private OxBodyTechniqueSpecials configuration;
   private HealthModelImpl health;
   private DummyHero hero;
 

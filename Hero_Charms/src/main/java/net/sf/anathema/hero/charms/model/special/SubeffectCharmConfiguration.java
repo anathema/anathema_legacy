@@ -4,7 +4,7 @@ import net.sf.anathema.character.main.magic.model.charm.Charm;
 import net.sf.anathema.character.main.magic.model.charm.special.ISubEffectCharm;
 import net.sf.anathema.character.main.magic.model.charm.special.ISubeffectCharmConfiguration;
 import net.sf.anathema.character.main.magic.model.charm.special.MultipleEffectCharmConfiguration;
-import net.sf.anathema.character.main.magic.model.charm.special.ISubeffect;
+import net.sf.anathema.character.main.magic.model.charm.special.SubEffect2;
 import net.sf.anathema.character.main.magic.model.charm.CharmSpecialist;
 import net.sf.anathema.character.main.magic.model.charms.IExtendedCharmLearnableArbitrator;
 
@@ -31,7 +31,7 @@ public class SubeffectCharmConfiguration extends MultipleEffectCharmConfiguratio
   @Override
   public int getCreationLearnedSubeffectCount() {
     int count = 0;
-    for (ISubeffect subeffect : getEffects()) {
+    for (SubEffect2 subeffect : getEffects()) {
       if (subeffect.isCreationLearned()) {
         count++;
       }
@@ -42,7 +42,7 @@ public class SubeffectCharmConfiguration extends MultipleEffectCharmConfiguratio
   @Override
   public int getExperienceLearnedSubeffectCount() {
     int count = 0;
-    for (ISubeffect subeffect : getEffects()) {
+    for (SubEffect2 subeffect : getEffects()) {
       if (subeffect.isLearned() && !subeffect.isCreationLearned()) {
         count++;
       }

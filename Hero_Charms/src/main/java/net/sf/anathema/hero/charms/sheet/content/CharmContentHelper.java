@@ -5,9 +5,9 @@ import com.google.common.base.Predicate;
 import com.google.common.collect.Iterables;
 import net.sf.anathema.character.main.framework.configuration.AnathemaCharacterPreferences;
 import net.sf.anathema.character.main.magic.model.charm.Charm;
-import net.sf.anathema.character.main.magic.model.charm.special.IMultipleEffectCharmConfiguration;
-import net.sf.anathema.character.main.magic.model.charm.special.ISpecialCharmConfiguration;
-import net.sf.anathema.character.main.magic.model.charm.special.ISubeffect;
+import net.sf.anathema.character.main.magic.model.charm.special.CharmSpecialsModel;
+import net.sf.anathema.character.main.magic.model.charm.special.MultipleEffectCharmSpecials;
+import net.sf.anathema.character.main.magic.model.charm.special.SubEffect2;
 import net.sf.anathema.character.main.magic.model.charm.special.ISubeffectCharmConfiguration;
 import net.sf.anathema.character.main.magic.model.charms.ILearningCharmGroup;
 import net.sf.anathema.character.main.magic.model.magic.IMagicStats;
@@ -38,18 +38,18 @@ public class CharmContentHelper {
   }
 
   public boolean isMultipleEffectCharm(Charm charm) {
-    ISpecialCharmConfiguration charmConfiguration = CharmsModelFetcher.fetch(hero).getSpecialCharmConfiguration(charm);
-    return charmConfiguration instanceof IMultipleEffectCharmConfiguration && !(charmConfiguration instanceof ISubeffectCharmConfiguration);
+    CharmSpecialsModel charmConfiguration = CharmsModelFetcher.fetch(hero).getCharmSpecialsModel(charm);
+    return charmConfiguration instanceof MultipleEffectCharmSpecials && !(charmConfiguration instanceof ISubeffectCharmConfiguration);
   }
 
   public String[] getLearnedEffects(Charm charm) {
-    ISpecialCharmConfiguration charmConfiguration = CharmsModelFetcher.fetch(hero).getSpecialCharmConfiguration(charm);
-    if (!(charmConfiguration instanceof IMultipleEffectCharmConfiguration)) {
+    CharmSpecialsModel charmConfiguration = CharmsModelFetcher.fetch(hero).getCharmSpecialsModel(charm);
+    if (!(charmConfiguration instanceof MultipleEffectCharmSpecials)) {
       return new String[0];
     }
-    IMultipleEffectCharmConfiguration configuration = (IMultipleEffectCharmConfiguration) charmConfiguration;
+    MultipleEffectCharmSpecials configuration = (MultipleEffectCharmSpecials) charmConfiguration;
     List<String> learnedEffectIds = new ArrayList<>();
-    for (ISubeffect effect : configuration.getEffects()) {
+    for (SubEffect2 effect : configuration.getEffects()) {
       if (effect.isLearned()) {
         learnedEffectIds.add(effect.getId());
       }
@@ -75,7 +75,7 @@ public class CharmContentHelper {
   }
 
   public boolean isSubEffectCharm(Charm charm) {
-    ISpecialCharmConfiguration charmConfiguration = CharmsModelFetcher.fetch(hero).getSpecialCharmConfiguration(charm);
+    CharmSpecialsModel charmConfiguration = CharmsModelFetcher.fetch(hero).getCharmSpecialsModel(charm);
     return charmConfiguration instanceof ISubeffectCharmConfiguration;
   }
 
@@ -84,7 +84,7 @@ public class CharmContentHelper {
   }
 
   private int getLearnCount(Charm charm, CharmsModel model) {
-    ISpecialCharmConfiguration specialCharmConfiguration = model.getSpecialCharmConfiguration(charm.getId());
+    CharmSpecialsModel specialCharmConfiguration = model.getSpecialCharmConfiguration(charm.getId());
     if (specialCharmConfiguration != null) {
       return specialCharmConfiguration.getCurrentLearnCount();
     }

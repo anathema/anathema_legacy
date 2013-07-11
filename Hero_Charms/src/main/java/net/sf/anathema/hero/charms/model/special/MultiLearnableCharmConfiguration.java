@@ -9,7 +9,7 @@ import net.sf.anathema.character.main.magic.model.charm.CharmSpecialist;
 import net.sf.anathema.character.main.magic.model.charm.CharmSpecialistImpl;
 import net.sf.anathema.character.main.magic.model.charm.PrerequisiteModifyingCharms;
 import net.sf.anathema.character.main.magic.model.charm.special.IMultiLearnableCharm;
-import net.sf.anathema.character.main.magic.model.charm.special.IMultiLearnableCharmConfiguration;
+import net.sf.anathema.character.main.magic.model.charm.special.MultiLearnCharmSpecials;
 import net.sf.anathema.character.main.magic.model.charm.special.ISpecialCharmLearnListener;
 import net.sf.anathema.character.main.magic.model.charm.special.LearnRangeContext;
 import net.sf.anathema.character.main.magic.model.charmtree.CharmTraitRequirementChecker;
@@ -26,7 +26,7 @@ import org.jmock.example.announcer.Announcer;
 
 import static net.sf.anathema.character.main.traits.SimpleTraitTemplate.createStaticLimitedTemplate;
 
-public class MultiLearnableCharmConfiguration implements IMultiLearnableCharmConfiguration {
+public class MultiLearnableCharmConfiguration implements MultiLearnCharmSpecials {
 
   private final Announcer<ISpecialCharmLearnListener> control = Announcer.to(ISpecialCharmLearnListener.class);
   private final Trait trait;
@@ -142,7 +142,7 @@ public class MultiLearnableCharmConfiguration implements IMultiLearnableCharmCon
   private int getMergedDots() {
     int dots = 0;
     for (Charm mergedCharm : charm.getMergedCharms()) {
-      dots += mergedCharm == charm ? 0 : config.getSpecialCharmConfiguration(mergedCharm).getCurrentLearnCount();
+      dots += mergedCharm == charm ? 0 : config.getCharmSpecialsModel(mergedCharm).getCurrentLearnCount();
     }
     return dots;
   }

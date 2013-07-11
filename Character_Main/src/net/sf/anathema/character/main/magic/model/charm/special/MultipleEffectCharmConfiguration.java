@@ -6,7 +6,7 @@ import net.sf.anathema.character.main.magic.model.charm.CharmSpecialist;
 import net.sf.anathema.lib.control.ChangeListener;
 import org.jmock.example.announcer.Announcer;
 
-public class MultipleEffectCharmConfiguration implements IMultipleEffectCharmConfiguration {
+public class MultipleEffectCharmConfiguration implements MultipleEffectCharmSpecials {
   private final Charm charm;
   private final SubEffects subeffects;
   private final Announcer<ISpecialCharmLearnListener> control = Announcer.to(ISpecialCharmLearnListener.class);
@@ -15,7 +15,7 @@ public class MultipleEffectCharmConfiguration implements IMultipleEffectCharmCon
                                           ICharmLearnableArbitrator arbitrator) {
     this.charm = charm;
     this.subeffects = visited.buildSubeffects(specialist, arbitrator, charm);
-    for (ISubeffect subeffect : subeffects) {
+    for (SubEffect2 subeffect : subeffects) {
       subeffect.addChangeListener(new ChangeListener() {
         @Override
         public void changeOccurred() {
@@ -27,14 +27,14 @@ public class MultipleEffectCharmConfiguration implements IMultipleEffectCharmCon
 
   @Override
   public void forget() {
-    for (ISubeffect effect : subeffects) {
+    for (SubEffect2 effect : subeffects) {
       effect.setLearned(false);
     }
   }
 
   @Override
   public void learn(boolean experienced) {
-    ISubeffect firstEffect = subeffects.getEffects()[0];
+    SubEffect2 firstEffect = subeffects.getEffects()[0];
     if (experienced && getCurrentLearnCount() == 0) {
       firstEffect.setExperienceLearned(true);
     } else if (!experienced && getCreationLearnCount() == 0) {
@@ -57,19 +57,19 @@ public class MultipleEffectCharmConfiguration implements IMultipleEffectCharmCon
   }
 
   @Override
-  public ISubeffect[] getEffects() {
+  public SubEffect2[] getEffects() {
     return subeffects.getEffects();
   }
 
   @Override
-  public ISubeffect getEffectById(final String id) {
+  public SubEffect2 getEffectById(final String id) {
     return subeffects.getById(id);
   }
 
   @Override
   public int getCreationLearnCount() {
     int sum = 0;
-    for (ISubeffect subeffect : subeffects) {
+    for (SubEffect2 subeffect : subeffects) {
       if (subeffect.isCreationLearned()) {
         sum++;
       }
@@ -80,7 +80,7 @@ public class MultipleEffectCharmConfiguration implements IMultipleEffectCharmCon
   @Override
   public int getCurrentLearnCount() {
     int sum = 0;
-    for (ISubeffect subeffect : subeffects) {
+    for (SubEffect2 subeffect : subeffects) {
       if (subeffect.isLearned()) {
         sum++;
       }

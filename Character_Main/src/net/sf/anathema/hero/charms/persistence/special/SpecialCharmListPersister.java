@@ -2,19 +2,23 @@ package net.sf.anathema.hero.charms.persistence.special;
 
 import net.sf.anathema.character.main.magic.model.charm.Charm;
 import net.sf.anathema.character.main.magic.model.charm.CharmIdMap;
+import net.sf.anathema.character.main.magic.model.charm.special.CharmSpecialsModel;
 import net.sf.anathema.character.main.magic.model.charm.special.IMultiLearnableCharm;
 import net.sf.anathema.character.main.magic.model.charm.special.IMultipleEffectCharm;
 import net.sf.anathema.character.main.magic.model.charm.special.IOxBodyTechniqueCharm;
 import net.sf.anathema.character.main.magic.model.charm.special.IPainToleranceCharm;
 import net.sf.anathema.character.main.magic.model.charm.special.IPrerequisiteModifyingCharm;
 import net.sf.anathema.character.main.magic.model.charm.special.ISpecialCharm;
-import net.sf.anathema.character.main.magic.model.charm.special.ISpecialCharmConfiguration;
 import net.sf.anathema.character.main.magic.model.charm.special.ISpecialCharmVisitor;
 import net.sf.anathema.character.main.magic.model.charm.special.ISubEffectCharm;
 import net.sf.anathema.character.main.magic.model.charm.special.ITraitCapModifyingCharm;
 import net.sf.anathema.character.main.magic.model.charm.special.IUpgradableCharm;
 import net.sf.anathema.hero.charms.model.CharmsModel;
 import net.sf.anathema.hero.charms.persistence.CharmPto;
+import net.sf.anathema.hero.charms.persistence.special.effect.MultipleEffectCharmPersister;
+import net.sf.anathema.hero.charms.persistence.special.learn.MultiLearnCharmPersister;
+import net.sf.anathema.hero.charms.persistence.special.oxbody.OxBodyTechniquePersister;
+import net.sf.anathema.hero.charms.persistence.special.traitcap.TraitCapModifyingCharmPersister;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -75,12 +79,12 @@ public class SpecialCharmListPersister {
   }
 
   public void saveCharmSpecials(CharmsModel charmsModel, Charm charm, CharmPto charmPto) {
-    ISpecialCharmConfiguration specialCharms = charmsModel.getSpecialCharmConfiguration(charm);
+    CharmSpecialsModel charmSpecials = charmsModel.getCharmSpecialsModel(charm);
     SpecialCharmPersister specialCharmPersister = persisterByCharm.get(charm);
-    if (specialCharms == null || specialCharmPersister == null) {
+    if (charmSpecials == null || specialCharmPersister == null) {
       return;
     }
     charmPto.special = new SpecialCharmPto();
-    specialCharmPersister.saveCharmSpecials(charmsModel, charm, charmPto.special);
+    specialCharmPersister.saveCharmSpecials(charmSpecials, charmPto.special);
   }
 }

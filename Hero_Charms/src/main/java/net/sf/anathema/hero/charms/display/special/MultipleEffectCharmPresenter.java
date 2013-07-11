@@ -1,7 +1,7 @@
 package net.sf.anathema.hero.charms.display.special;
 
-import net.sf.anathema.character.main.magic.model.charm.special.ISubeffect;
-import net.sf.anathema.character.main.magic.model.charm.special.IMultipleEffectCharmConfiguration;
+import net.sf.anathema.character.main.magic.model.charm.special.SubEffect2;
+import net.sf.anathema.character.main.magic.model.charm.special.MultipleEffectCharmSpecials;
 import net.sf.anathema.lib.control.ChangeListener;
 import net.sf.anathema.lib.control.IBooleanValueChangedListener;
 import net.sf.anathema.lib.gui.Presenter;
@@ -12,9 +12,9 @@ public class MultipleEffectCharmPresenter implements Presenter {
 
   private final Resources resources;
   private final ToggleButtonSpecialNodeView view;
-  private final IMultipleEffectCharmConfiguration model;
+  private final MultipleEffectCharmSpecials model;
 
-  public MultipleEffectCharmPresenter(Resources resources, ToggleButtonSpecialNodeView subeffectView, IMultipleEffectCharmConfiguration model) {
+  public MultipleEffectCharmPresenter(Resources resources, ToggleButtonSpecialNodeView subeffectView, MultipleEffectCharmSpecials model) {
     this.resources = resources;
     this.view = subeffectView;
     this.model = model;
@@ -22,7 +22,7 @@ public class MultipleEffectCharmPresenter implements Presenter {
 
   @Override
   public void initPresentation() {
-    for (final ISubeffect subeffect : model.getEffects()) {
+    for (final SubEffect2 subeffect : model.getEffects()) {
       String key = model.getCharm().getId() + ".Subeffects." + subeffect.getId();
       String label = resources.getString(key);
       final IBooleanValueView display = view.addSubeffect(label);

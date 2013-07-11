@@ -1,6 +1,6 @@
 package net.sf.anathema.character.main.magic.model.charm.special;
 
-public interface ISubeffectCharmConfiguration extends IMultipleEffectCharmConfiguration {
+public interface ISubeffectCharmConfiguration extends MultipleEffectCharmSpecials {
 
   int getCreationLearnedSubeffectCount();
 

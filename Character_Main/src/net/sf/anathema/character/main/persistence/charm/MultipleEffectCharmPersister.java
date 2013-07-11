@@ -1,8 +1,8 @@
 package net.sf.anathema.character.main.persistence.charm;
 
-import net.sf.anathema.character.main.magic.model.charm.special.ISpecialCharmConfiguration;
-import net.sf.anathema.character.main.magic.model.charm.special.ISubeffect;
-import net.sf.anathema.character.main.magic.model.charm.special.IMultipleEffectCharmConfiguration;
+import net.sf.anathema.character.main.magic.model.charm.special.CharmSpecialsModel;
+import net.sf.anathema.character.main.magic.model.charm.special.SubEffect2;
+import net.sf.anathema.character.main.magic.model.charm.special.MultipleEffectCharmSpecials;
 import net.sf.anathema.lib.exception.PersistenceException;
 import net.sf.anathema.lib.xml.ElementUtilities;
 import org.dom4j.Element;
@@ -16,27 +16,27 @@ public class MultipleEffectCharmPersister implements ISpecialCharmPersister {
   public static final String ATTRIB_EXPERIENCE_LEARNED = "experiencelearned";
 
   @Override
-  public void loadConfiguration(Element specialElement, ISpecialCharmConfiguration specialCharmConfiguration) throws PersistenceException {
+  public void loadConfiguration(Element specialElement, CharmSpecialsModel specialCharmConfiguration) throws PersistenceException {
     Element subeffectsElement = specialElement.element(TAG_SUBEFFECTS);
     if (subeffectsElement == null) {
       return;
     }
-    IMultipleEffectCharmConfiguration configuration = (IMultipleEffectCharmConfiguration) specialCharmConfiguration;
+    MultipleEffectCharmSpecials configuration = (MultipleEffectCharmSpecials) specialCharmConfiguration;
     for (Element element : ElementUtilities.elements(subeffectsElement, TAG_SUBEFFECT)) {
       String id = ElementUtilities.getRequiredAttrib(element, ATTRIB_ID);
       boolean creationLearned = ElementUtilities.getBooleanAttribute(element, ATTRIB_CREATION_LEARNED, false);
       boolean experienceLearned = ElementUtilities.getBooleanAttribute(element, ATTRIB_EXPERIENCE_LEARNED, false);
-      ISubeffect effect = configuration.getEffectById(id);
+      SubEffect2 effect = configuration.getEffectById(id);
       effect.setCreationLearned(creationLearned);
       effect.setExperienceLearned(experienceLearned);
     }
   }
 
   @Override
-  public void saveConfiguration(Element specialElement, ISpecialCharmConfiguration specialCharmConfiguration) {
-    IMultipleEffectCharmConfiguration configuration = (IMultipleEffectCharmConfiguration) specialCharmConfiguration;
+  public void saveConfiguration(Element specialElement, CharmSpecialsModel specialCharmConfiguration) {
+    MultipleEffectCharmSpecials configuration = (MultipleEffectCharmSpecials) specialCharmConfiguration;
     Element subeffectsElement = specialElement.addElement(TAG_SUBEFFECTS);
-    for (ISubeffect effect : configuration.getEffects()) {
+    for (SubEffect2 effect : configuration.getEffects()) {
       Element effectElement = subeffectsElement.addElement(TAG_SUBEFFECT);
       effectElement.addAttribute(ATTRIB_ID, effect.getId());
       ElementUtilities.addAttribute(effectElement, ATTRIB_CREATION_LEARNED, effect.isCreationLearned());

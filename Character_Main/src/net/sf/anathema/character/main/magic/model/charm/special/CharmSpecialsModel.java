@@ -2,7 +2,7 @@ package net.sf.anathema.character.main.magic.model.charm.special;
 
 import net.sf.anathema.character.main.magic.model.charm.Charm;
 
-public interface ISpecialCharmConfiguration {
+public interface CharmSpecialsModel {
   int getCreationLearnCount();
 
   void addSpecialCharmLearnListener(ISpecialCharmLearnListener listener);

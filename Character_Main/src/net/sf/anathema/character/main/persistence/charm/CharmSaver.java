@@ -1,7 +1,7 @@
 package net.sf.anathema.character.main.persistence.charm;
 
 import net.sf.anathema.character.main.magic.model.charm.Charm;
-import net.sf.anathema.character.main.magic.model.charm.special.ISpecialCharmConfiguration;
+import net.sf.anathema.character.main.magic.model.charm.special.CharmSpecialsModel;
 import net.sf.anathema.character.main.magic.model.charms.ILearningCharmGroup;
 import net.sf.anathema.hero.charms.model.CharmsModel;
 import net.sf.anathema.lib.util.Identifier;
@@ -84,7 +84,7 @@ public class CharmSaver {
     Element charmElement = groupElement.addElement(TAG_CHARM);
     charmElement.addAttribute(ATTRIB_NAME, charm.getId());
     charmElement.addAttribute(ATTRIB_EXPERIENCE_LEARNED, String.valueOf(experienceLearned));
-    ISpecialCharmConfiguration specialCharmConfiguration = charmConfiguration.getSpecialCharmConfiguration(charm);
+    CharmSpecialsModel specialCharmConfiguration = charmConfiguration.getCharmSpecialsModel(charm);
     if (specialCharmConfiguration != null) {
       Element specialElement = charmElement.addElement(TAG_SPECIAL);
       specialPersister.saveConfiguration(specialElement, specialCharmConfiguration);

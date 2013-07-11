@@ -3,7 +3,7 @@ package net.sf.anathema.character.main.magic.advance;
 import net.sf.anathema.character.main.advance.PointCostCalculator;
 import net.sf.anathema.character.main.advance.models.AbstractIntegerValueModel;
 import net.sf.anathema.character.main.magic.model.charm.Charm;
-import net.sf.anathema.character.main.magic.model.charm.special.ISpecialCharmConfiguration;
+import net.sf.anathema.character.main.magic.model.charm.special.CharmSpecialsModel;
 import net.sf.anathema.character.main.magic.model.charm.special.ISubeffectCharmConfiguration;
 import net.sf.anathema.character.main.magic.model.charm.special.IUpgradableCharmConfiguration;
 import net.sf.anathema.hero.charms.model.CharmsModel;
@@ -47,7 +47,7 @@ public class CharmExperienceModel extends AbstractIntegerValueModel {
   }
 
   private int calculateCharmCost(CharmsModel charmConfiguration, Charm charm, Set<Charm> charmsCalculated) {
-    ISpecialCharmConfiguration specialCharm = charmConfiguration.getSpecialCharmConfiguration(charm);
+    CharmSpecialsModel specialCharm = charmConfiguration.getCharmSpecialsModel(charm);
     int charmCost = calculator.getCharmCosts(hero, charm, traitConfiguration);
     if (specialCharm != null) {
       int timesLearnedWithExperience = specialCharm.getCurrentLearnCount() - specialCharm.getCreationLearnCount();
@@ -81,6 +81,6 @@ public class CharmExperienceModel extends AbstractIntegerValueModel {
   }
 
   private boolean isSpecialCharm(Charm charm) {
-    return CharmsModelFetcher.fetch(hero).getSpecialCharmConfiguration(charm) != null;
+    return CharmsModelFetcher.fetch(hero).getCharmSpecialsModel(charm) != null;
   }
 }

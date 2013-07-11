@@ -3,7 +3,7 @@ package net.sf.anathema.character.main.magic.model.charm.special;
 import net.sf.anathema.hero.experience.ExperienceModel;
 import net.sf.anathema.lib.data.Condition;
 
-public class Upgrade extends Subeffect {
+public class Upgrade extends SubEffectImpl {
   private int bpCost;
   private int xpCost;
 

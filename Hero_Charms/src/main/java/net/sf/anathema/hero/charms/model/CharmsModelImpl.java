@@ -13,10 +13,10 @@ import net.sf.anathema.character.main.magic.model.charm.ICharmLearnListener;
 import net.sf.anathema.character.main.magic.model.charm.ISpecialCharmManager;
 import net.sf.anathema.character.main.magic.model.charm.IndirectCharmRequirement;
 import net.sf.anathema.character.main.magic.model.charm.PrerequisiteModifyingCharms;
-import net.sf.anathema.character.main.magic.model.charm.special.IMultiLearnableCharmConfiguration;
-import net.sf.anathema.character.main.magic.model.charm.special.IMultipleEffectCharmConfiguration;
+import net.sf.anathema.character.main.magic.model.charm.special.CharmSpecialsModel;
+import net.sf.anathema.character.main.magic.model.charm.special.MultiLearnCharmSpecials;
+import net.sf.anathema.character.main.magic.model.charm.special.MultipleEffectCharmSpecials;
 import net.sf.anathema.character.main.magic.model.charm.special.ISpecialCharm;
-import net.sf.anathema.character.main.magic.model.charm.special.ISpecialCharmConfiguration;
 import net.sf.anathema.character.main.magic.model.charms.ILearningCharmGroup;
 import net.sf.anathema.character.main.magic.model.charms.ILearningCharmGroupContainer;
 import net.sf.anathema.character.main.magic.model.charms.LearningCharmGroup;
@@ -236,7 +236,7 @@ public class CharmsModelImpl implements CharmsModel {
       private void learnOtherCharmsFromMerge(Charm charm) {
         for (Charm mergedCharm : charm.getMergedCharms()) {
           if (!isLearned(mergedCharm) && isLearnableWithoutPrerequisites(mergedCharm) &&
-                  CharmsModelImpl.this.getSpecialCharmConfiguration(mergedCharm) == null) {
+                  CharmsModelImpl.this.getCharmSpecialsModel(mergedCharm) == null) {
             getGroup(mergedCharm).learnCharm(mergedCharm, isExperienced());
           }
         }
@@ -260,13 +260,13 @@ public class CharmsModelImpl implements CharmsModel {
           for (Charm parent : charm.getParentCharms()) {
             for (String subeffectRequirement : charm.getParentSubEffects()) {
               if (getSubeffectParent(subeffectRequirement).equals(parent.getId())) {
-                ISpecialCharmConfiguration config = getSpecialCharmConfiguration(getSubeffectParent(subeffectRequirement));
-                if (config instanceof IMultipleEffectCharmConfiguration) {
-                  IMultipleEffectCharmConfiguration mConfig = (IMultipleEffectCharmConfiguration) config;
+                CharmSpecialsModel config = getSpecialCharmConfiguration(getSubeffectParent(subeffectRequirement));
+                if (config instanceof MultipleEffectCharmSpecials) {
+                  MultipleEffectCharmSpecials mConfig = (MultipleEffectCharmSpecials) config;
                   prereqsMet = prereqsMet && mConfig.getEffectById(getSubeffect(subeffectRequirement)).isLearned();
                 }
-                if (config instanceof IMultiLearnableCharmConfiguration) {
-                  IMultiLearnableCharmConfiguration mConfig = (IMultiLearnableCharmConfiguration) config;
+                if (config instanceof MultiLearnCharmSpecials) {
+                  MultiLearnCharmSpecials mConfig = (MultiLearnCharmSpecials) config;
                   String effect = getSubeffect(subeffectRequirement);
                   int requiredCount = Integer.parseInt(effect.replace("Repurchase", ""));
                   prereqsMet = mConfig.getCurrentLearnCount() >= requiredCount;
@@ -351,7 +351,7 @@ public class CharmsModelImpl implements CharmsModel {
   }
 
   @Override
-  public ISpecialCharmConfiguration getSpecialCharmConfiguration(Charm charm) {
+  public CharmSpecialsModel getCharmSpecialsModel(Charm charm) {
     return manager.getSpecialCharmConfiguration(charm);
   }
 
@@ -495,9 +495,9 @@ public class CharmsModelImpl implements CharmsModel {
   }
 
   @Override
-  public ISpecialCharmConfiguration getSpecialCharmConfiguration(String charmId) {
+  public CharmSpecialsModel getSpecialCharmConfiguration(String charmId) {
     Charm charm = getCharmById(charmId);
-    return getSpecialCharmConfiguration(charm);
+    return getCharmSpecialsModel(charm);
   }
 
   @Override

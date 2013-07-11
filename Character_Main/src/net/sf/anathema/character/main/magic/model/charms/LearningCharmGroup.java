@@ -6,10 +6,10 @@ import net.sf.anathema.character.main.magic.model.charm.CharmGroup;
 import net.sf.anathema.character.main.magic.model.charm.ICharmGroup;
 import net.sf.anathema.character.main.magic.model.charm.ICharmLearnListener;
 import net.sf.anathema.character.main.magic.model.charm.ICharmLearnStrategy;
-import net.sf.anathema.character.main.magic.model.charm.special.ISpecialCharmConfiguration;
+import net.sf.anathema.character.main.magic.model.charm.special.CharmSpecialsModel;
+import net.sf.anathema.character.main.magic.model.charm.special.MultiLearnCharmSpecials;
+import net.sf.anathema.character.main.magic.model.charm.special.MultipleEffectCharmSpecials;
 import net.sf.anathema.hero.charms.model.CharmsModel;
-import net.sf.anathema.character.main.magic.model.charm.special.IMultiLearnableCharmConfiguration;
-import net.sf.anathema.character.main.magic.model.charm.special.IMultipleEffectCharmConfiguration;
 import org.jmock.example.announcer.Announcer;
 
 import java.util.ArrayList;
@@ -128,15 +128,15 @@ public class LearningCharmGroup extends CharmGroup implements ILearningCharmGrou
       boolean subeffectHandled = false;
       for (String subeffectRequirement : charm.getParentSubEffects()) {
         if (getSubeffectParent(subeffectRequirement).equals(parent.getId())) {
-          ISpecialCharmConfiguration config = charmConfig.getSpecialCharmConfiguration(getSubeffectParent(subeffectRequirement));
-          if (config instanceof IMultipleEffectCharmConfiguration) {
+          CharmSpecialsModel config = charmConfig.getSpecialCharmConfiguration(getSubeffectParent(subeffectRequirement));
+          if (config instanceof MultipleEffectCharmSpecials) {
             subeffectHandled = true;
-            IMultipleEffectCharmConfiguration mConfig = (IMultipleEffectCharmConfiguration) config;
+            MultipleEffectCharmSpecials mConfig = (MultipleEffectCharmSpecials) config;
             mConfig.getEffectById(getSubeffect(subeffectRequirement)).setLearned(true);
           }
-          if (config instanceof IMultiLearnableCharmConfiguration) {
+          if (config instanceof MultiLearnCharmSpecials) {
             subeffectHandled = true;
-            IMultiLearnableCharmConfiguration mConfig = (IMultiLearnableCharmConfiguration) config;
+            MultiLearnCharmSpecials mConfig = (MultiLearnCharmSpecials) config;
             String effect = getSubeffect(subeffectRequirement);
             int requiredCount = Integer.parseInt(effect.replace("Repurchase", ""));
             if (mConfig.getCurrentLearnCount() < requiredCount) {
