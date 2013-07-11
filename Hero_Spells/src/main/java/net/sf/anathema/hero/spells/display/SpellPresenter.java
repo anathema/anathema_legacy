@@ -3,9 +3,9 @@ package net.sf.anathema.hero.spells.display;
 import net.sf.anathema.character.main.magic.description.MagicDescriptionProvider;
 import net.sf.anathema.character.main.magic.model.spells.CircleType;
 import net.sf.anathema.character.main.magic.model.spells.ISpell;
+import net.sf.anathema.hero.experience.ExperienceModel;
 import net.sf.anathema.hero.magic.display.MagicViewListener;
-import net.sf.anathema.hero.model.Hero;
-import net.sf.anathema.hero.spells.SpellsModelFetcher;
+import net.sf.anathema.hero.spells.SpellModel;
 import net.sf.anathema.hero.spells.model.CircleModel;
 import net.sf.anathema.lib.compare.I18nedIdentificateSorter;
 import net.sf.anathema.lib.control.ChangeListener;
@@ -19,23 +19,23 @@ import java.util.List;
 public class SpellPresenter {
 
   private final net.sf.anathema.hero.spells.SpellModel spellConfiguration;
-  private CircleModel circleModel;
+  private final SpellViewProperties properties;
+  private final CircleModel circleModel;
   private final Resources resources;
   private final SpellView view;
 
-  public SpellPresenter(CircleModel circleModel, Hero hero, Resources resources, SpellView view,
-                        MagicDescriptionProvider magicDescriptionProvider) {
+  public SpellPresenter(CircleModel circleModel, Resources resources, SpellView view,
+                        MagicDescriptionProvider magicDescriptionProvider, ExperienceModel experienceModel, SpellModel spellModel) {
     this.circleModel = circleModel;
-    SpellViewProperties properties = new SpellViewProperties(resources, hero, magicDescriptionProvider);
+    this.spellConfiguration = spellModel;
+    this.properties = new SpellViewProperties(resources, magicDescriptionProvider, spellConfiguration, experienceModel);
     this.resources = resources;
-    this.spellConfiguration = SpellsModelFetcher.fetch(hero);
     this.view = view;
-    view.prepare(properties);
   }
 
   public void initPresentation() {
     Identifier[] allowedCircles = circleModel.getCircles();
-    view.initGui(allowedCircles);
+    view.initGui(allowedCircles, properties);
     view.addMagicViewListener(new MagicViewListener() {
       @Override
       public void magicRemoved(Object[] removedSpells) {
