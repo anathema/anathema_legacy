@@ -32,7 +32,7 @@ public class SwingComboConfigurationView implements ComboConfigurationView, IVie
   private SwingMagicLearnView magicLearnView = new SwingMagicLearnView();
   private final JPanel viewPort = new JPanel(new MigLayout(new LC().insets("6").fill().wrapAfter(5)));
   private final JComponent content = new JScrollPane(viewPort);
-  private final Announcer<IComboViewListener> comboViewListeners = Announcer.to(IComboViewListener.class);
+  private final Announcer<ComboViewListener> comboViewListeners = Announcer.to(ComboViewListener.class);
   private final JPanel namePanel = new JPanel(new MigLayout(LayoutUtils.withoutInsets().wrapAfter(1)));
   private Tool clearButton;
   private Tool finalizeButton;
@@ -40,10 +40,10 @@ public class SwingComboConfigurationView implements ComboConfigurationView, IVie
   private boolean isDescriptionEntered;
   private final JXTaskPaneContainer comboPane = new JXTaskPaneContainer();
   private JScrollPane comboScrollPane;
-  private IComboViewProperties properties;
+  private ComboViewProperties properties;
 
   @Override
-  public void initGui(final IComboViewProperties viewProperties) {
+  public void initGui(final ComboViewProperties viewProperties) {
     this.properties = viewProperties;
     this.magicLearnView = new SwingMagicLearnView();
     magicLearnView.init(viewProperties);
@@ -77,7 +77,7 @@ public class SwingComboConfigurationView implements ComboConfigurationView, IVie
     }
   }
 
-  private Tool createClearTool(IComboViewProperties viewProperties) {
+  private Tool createClearTool(ComboViewProperties viewProperties) {
     Command command = new Command() {
       @Override
       public void execute() {
@@ -96,7 +96,7 @@ public class SwingComboConfigurationView implements ComboConfigurationView, IVie
     comboViewListeners.announce().comboCleared();
   }
 
-  private Tool createFinalizeComboButton(IComboViewProperties viewProperties) {
+  private Tool createFinalizeComboButton(ComboViewProperties viewProperties) {
     Command command = new Command() {
       @Override
       public void execute() {
@@ -126,7 +126,7 @@ public class SwingComboConfigurationView implements ComboConfigurationView, IVie
   }
 
   @Override
-  public void addComboViewListener(final IComboViewListener listener) {
+  public void addComboViewListener(final ComboViewListener listener) {
     magicLearnView.addMagicViewListener(new MagicViewListener() {
       @Override
       public void magicRemoved(Object[] removedMagic) {
@@ -161,8 +161,8 @@ public class SwingComboConfigurationView implements ComboConfigurationView, IVie
   }
 
   @Override
-  public IComboView addComboView(String name, String description) {
-    ComboView comboView = new ComboView();
+  public ComboView addComboView(String name, String description) {
+    SwingComboView comboView = new SwingComboView();
     comboView.initGui(name, description);
     comboPane.add(comboView.getTaskGroup());
     revalidateView();
@@ -194,8 +194,8 @@ public class SwingComboConfigurationView implements ComboConfigurationView, IVie
   }
 
   @Override
-  public void deleteView(IComboView view) {
-    ComboView comboView = (ComboView) view;
+  public void deleteView(ComboView view) {
+    SwingComboView comboView = (SwingComboView) view;
     comboPane.remove(comboView.getTaskGroup());
     revalidateView();
   }

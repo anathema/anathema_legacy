@@ -4,11 +4,11 @@ import net.sf.anathema.lib.workflow.textualdescription.ITextView;
 
 public interface ComboConfigurationView {
 
-  void initGui(IComboViewProperties properties);
+  void initGui(ComboViewProperties properties);
 
   void setAllCharms(Object[] charms);
 
-  void addComboViewListener(IComboViewListener listener);
+  void addComboViewListener(ComboViewListener listener);
 
   void setComboCharms(Object[] charms);
 
@@ -16,9 +16,9 @@ public interface ComboConfigurationView {
 
   ITextView addComboDescriptionView(String viewTitle);
 
-  IComboView addComboView(String name, String description);
+  ComboView addComboView(String name, String description);
 
-  void deleteView(IComboView view);
+  void deleteView(ComboView view);
 
   void setEditState(boolean editing);
 }
