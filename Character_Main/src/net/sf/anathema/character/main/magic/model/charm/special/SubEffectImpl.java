@@ -6,7 +6,7 @@ import net.sf.anathema.lib.data.Condition;
 import net.sf.anathema.lib.util.SimpleIdentifier;
 import org.jmock.example.announcer.Announcer;
 
-public class SubEffectImpl extends SimpleIdentifier implements SubEffect2 {
+public class SubEffectImpl extends SimpleIdentifier implements SubEffect {
 
   private final Announcer<ChangeListener> control = Announcer.to(ChangeListener.class);
   private boolean learned = false;

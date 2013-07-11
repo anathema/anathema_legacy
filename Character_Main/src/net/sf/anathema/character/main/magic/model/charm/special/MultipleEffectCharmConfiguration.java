@@ -15,7 +15,7 @@ public class MultipleEffectCharmConfiguration implements MultipleEffectCharmSpec
                                           ICharmLearnableArbitrator arbitrator) {
     this.charm = charm;
     this.subeffects = visited.buildSubeffects(specialist, arbitrator, charm);
-    for (SubEffect2 subeffect : subeffects) {
+    for (SubEffect subeffect : subeffects) {
       subeffect.addChangeListener(new ChangeListener() {
         @Override
         public void changeOccurred() {
@@ -27,14 +27,14 @@ public class MultipleEffectCharmConfiguration implements MultipleEffectCharmSpec
 
   @Override
   public void forget() {
-    for (SubEffect2 effect : subeffects) {
+    for (SubEffect effect : subeffects) {
       effect.setLearned(false);
     }
   }
 
   @Override
   public void learn(boolean experienced) {
-    SubEffect2 firstEffect = subeffects.getEffects()[0];
+    SubEffect firstEffect = subeffects.getEffects()[0];
     if (experienced && getCurrentLearnCount() == 0) {
       firstEffect.setExperienceLearned(true);
     } else if (!experienced && getCreationLearnCount() == 0) {
@@ -57,19 +57,19 @@ public class MultipleEffectCharmConfiguration implements MultipleEffectCharmSpec
   }
 
   @Override
-  public SubEffect2[] getEffects() {
+  public SubEffect[] getEffects() {
     return subeffects.getEffects();
   }
 
   @Override
-  public SubEffect2 getEffectById(final String id) {
+  public SubEffect getEffectById(final String id) {
     return subeffects.getById(id);
   }
 
   @Override
   public int getCreationLearnCount() {
     int sum = 0;
-    for (SubEffect2 subeffect : subeffects) {
+    for (SubEffect subeffect : subeffects) {
       if (subeffect.isCreationLearned()) {
         sum++;
       }
@@ -80,7 +80,7 @@ public class MultipleEffectCharmConfiguration implements MultipleEffectCharmSpec
   @Override
   public int getCurrentLearnCount() {
     int sum = 0;
-    for (SubEffect2 subeffect : subeffects) {
+    for (SubEffect subeffect : subeffects) {
       if (subeffect.isLearned()) {
         sum++;
       }

@@ -1,6 +1,6 @@
 package net.sf.anathema.hero.charms.display.special;
 
-import net.sf.anathema.character.main.magic.model.charm.special.SubEffect2;
+import net.sf.anathema.character.main.magic.model.charm.special.SubEffect;
 import net.sf.anathema.character.main.magic.model.charm.special.MultipleEffectCharmSpecials;
 import net.sf.anathema.lib.control.ChangeListener;
 import net.sf.anathema.lib.control.IBooleanValueChangedListener;
@@ -22,7 +22,7 @@ public class MultipleEffectCharmPresenter implements Presenter {
 
   @Override
   public void initPresentation() {
-    for (final SubEffect2 subeffect : model.getEffects()) {
+    for (final SubEffect subeffect : model.getEffects()) {
       String key = model.getCharm().getId() + ".Subeffects." + subeffect.getId();
       String label = resources.getString(key);
       final IBooleanValueView display = view.addSubeffect(label);

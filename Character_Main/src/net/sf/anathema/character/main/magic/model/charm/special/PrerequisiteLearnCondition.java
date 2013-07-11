@@ -25,7 +25,7 @@ class PrerequisiteLearnCondition implements Condition {
     if (prereqEffect == null) {
       return true;
     }
-    for (SubEffect2 effect : allEffects) {
+    for (SubEffect effect : allEffects) {
       if (effect.getId().equals(prereqEffect) && effect.isLearned()) {
         return true;
       }

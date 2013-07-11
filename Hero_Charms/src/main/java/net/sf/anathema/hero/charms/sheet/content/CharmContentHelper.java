@@ -7,7 +7,7 @@ import net.sf.anathema.character.main.framework.configuration.AnathemaCharacterP
 import net.sf.anathema.character.main.magic.model.charm.Charm;
 import net.sf.anathema.character.main.magic.model.charm.special.CharmSpecialsModel;
 import net.sf.anathema.character.main.magic.model.charm.special.MultipleEffectCharmSpecials;
-import net.sf.anathema.character.main.magic.model.charm.special.SubEffect2;
+import net.sf.anathema.character.main.magic.model.charm.special.SubEffect;
 import net.sf.anathema.character.main.magic.model.charm.special.ISubeffectCharmConfiguration;
 import net.sf.anathema.character.main.magic.model.charms.ILearningCharmGroup;
 import net.sf.anathema.character.main.magic.model.magic.IMagicStats;
@@ -49,7 +49,7 @@ public class CharmContentHelper {
     }
     MultipleEffectCharmSpecials configuration = (MultipleEffectCharmSpecials) charmConfiguration;
     List<String> learnedEffectIds = new ArrayList<>();
-    for (SubEffect2 effect : configuration.getEffects()) {
+    for (SubEffect effect : configuration.getEffects()) {
       if (effect.isLearned()) {
         learnedEffectIds.add(effect.getId());
       }

@@ -9,29 +9,29 @@ import java.util.List;
 
 public class CollectionSubEffects implements SubEffects {
 
-  private final List<SubEffect2> effects = new ArrayList<>();
+  private final List<SubEffect> effects = new ArrayList<>();
 
-  public void add(SubEffect2 effect) {
+  public void add(SubEffect effect) {
     effects.add(effect);
   }
 
   @Override
-  public SubEffect2[] getEffects() {
-    return effects.toArray(new SubEffect2[effects.size()]);
+  public SubEffect[] getEffects() {
+    return effects.toArray(new SubEffect[effects.size()]);
   }
 
   @Override
-  public SubEffect2 getById(final String id) {
-    return Iterables.find(effects, new Predicate<SubEffect2>() {
+  public SubEffect getById(final String id) {
+    return Iterables.find(effects, new Predicate<SubEffect>() {
       @Override
-      public boolean apply(SubEffect2 input) {
+      public boolean apply(SubEffect input) {
         return input.getId().equals(id);
       }
     });
   }
 
   @Override
-  public Iterator<SubEffect2> iterator() {
+  public Iterator<SubEffect> iterator() {
     return effects.iterator();
   }
 }

@@ -3,7 +3,7 @@ package net.sf.anathema.character.main.magic.model.charm.special;
 import net.sf.anathema.lib.control.ChangeListener;
 import net.sf.anathema.lib.util.Identifier;
 
-public interface SubEffect2 extends Identifier {
+public interface SubEffect extends Identifier {
 
   boolean isLearned();
 

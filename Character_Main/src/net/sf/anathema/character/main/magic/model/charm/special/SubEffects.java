@@ -1,7 +1,7 @@
 package net.sf.anathema.character.main.magic.model.charm.special;
 
-public interface SubEffects extends Iterable<SubEffect2> {
-  SubEffect2[] getEffects();
+public interface SubEffects extends Iterable<SubEffect> {
+  SubEffect[] getEffects();
 
-  SubEffect2 getById(String id);
+  SubEffect getById(String id);
 }

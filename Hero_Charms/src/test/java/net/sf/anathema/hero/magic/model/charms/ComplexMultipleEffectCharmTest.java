@@ -3,7 +3,7 @@ package net.sf.anathema.hero.magic.model.charms;
 import net.sf.anathema.character.main.magic.model.charm.Charm;
 import net.sf.anathema.character.main.magic.model.charm.CharmSpecialistImpl;
 import net.sf.anathema.character.main.magic.model.charm.special.ComplexMultipleEffectCharm;
-import net.sf.anathema.character.main.magic.model.charm.special.SubEffect2;
+import net.sf.anathema.character.main.magic.model.charm.special.SubEffect;
 import net.sf.anathema.character.main.magic.model.charmtree.ICharmLearnableArbitrator;
 import net.sf.anathema.character.main.magic.model.charm.special.IMultipleEffectCharm;
 import net.sf.anathema.character.main.testing.dummy.DummyHero;
@@ -24,14 +24,14 @@ public class ComplexMultipleEffectCharmTest {
 
   @Test
   public void instantiatesSubeffects() throws Exception {
-    SubEffect2[] subeffects = charmWithThreeEffects.buildSubeffects(specialist, arbitrator, baseCharm).getEffects();
+    SubEffect[] subeffects = charmWithThreeEffects.buildSubeffects(specialist, arbitrator, baseCharm).getEffects();
     assertThat(subeffects.length, is(3));
   }
 
   @Test
   public void instantiatesSubeffectsOnlyOnce() throws Exception {
     charmWithThreeEffects.buildSubeffects(specialist, arbitrator, baseCharm);
-    SubEffect2[] subeffectsAgain = charmWithThreeEffects.buildSubeffects(specialist, arbitrator, baseCharm).getEffects();
+    SubEffect[] subeffectsAgain = charmWithThreeEffects.buildSubeffects(specialist, arbitrator, baseCharm).getEffects();
     assertThat(subeffectsAgain.length, is(3));
   }
 }

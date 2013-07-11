@@ -1,7 +1,7 @@
 package net.sf.anathema.character.main.persistence.charm;
 
 import net.sf.anathema.character.main.magic.model.charm.special.CharmSpecialsModel;
-import net.sf.anathema.character.main.magic.model.charm.special.SubEffect2;
+import net.sf.anathema.character.main.magic.model.charm.special.SubEffect;
 import net.sf.anathema.character.main.magic.model.charm.special.MultipleEffectCharmSpecials;
 import net.sf.anathema.lib.exception.PersistenceException;
 import net.sf.anathema.lib.xml.ElementUtilities;
@@ -26,7 +26,7 @@ public class MultipleEffectCharmPersister implements ISpecialCharmPersister {
       String id = ElementUtilities.getRequiredAttrib(element, ATTRIB_ID);
       boolean creationLearned = ElementUtilities.getBooleanAttribute(element, ATTRIB_CREATION_LEARNED, false);
       boolean experienceLearned = ElementUtilities.getBooleanAttribute(element, ATTRIB_EXPERIENCE_LEARNED, false);
-      SubEffect2 effect = configuration.getEffectById(id);
+      SubEffect effect = configuration.getEffectById(id);
       effect.setCreationLearned(creationLearned);
       effect.setExperienceLearned(experienceLearned);
     }
@@ -36,7 +36,7 @@ public class MultipleEffectCharmPersister implements ISpecialCharmPersister {
   public void saveConfiguration(Element specialElement, CharmSpecialsModel specialCharmConfiguration) {
     MultipleEffectCharmSpecials configuration = (MultipleEffectCharmSpecials) specialCharmConfiguration;
     Element subeffectsElement = specialElement.addElement(TAG_SUBEFFECTS);
-    for (SubEffect2 effect : configuration.getEffects()) {
+    for (SubEffect effect : configuration.getEffects()) {
       Element effectElement = subeffectsElement.addElement(TAG_SUBEFFECT);
       effectElement.addAttribute(ATTRIB_ID, effect.getId());
       ElementUtilities.addAttribute(effectElement, ATTRIB_CREATION_LEARNED, effect.isCreationLearned());

@@ -2,7 +2,7 @@ package net.sf.anathema.hero.charms.persistence.special.effect;
 
 import net.sf.anathema.character.main.magic.model.charm.special.CharmSpecialsModel;
 import net.sf.anathema.character.main.magic.model.charm.special.MultipleEffectCharmSpecials;
-import net.sf.anathema.character.main.magic.model.charm.special.SubEffect2;
+import net.sf.anathema.character.main.magic.model.charm.special.SubEffect;
 import net.sf.anathema.hero.charms.persistence.special.SpecialCharmPersister;
 import net.sf.anathema.hero.charms.persistence.special.SpecialCharmPto;
 
@@ -17,14 +17,14 @@ public class MultipleEffectCharmPersister implements SpecialCharmPersister {
 
   private SubEffectListPto createPto(MultipleEffectCharmSpecials multipleEffects) {
     SubEffectListPto subEffectsList = new SubEffectListPto();
-    for (SubEffect2 effect : multipleEffects.getEffects()) {
+    for (SubEffect effect : multipleEffects.getEffects()) {
       SubEffectPto pto = createSubEffectPto(effect);
       subEffectsList.subEffects.add(pto);
     }
     return subEffectsList;
   }
 
-  private SubEffectPto createSubEffectPto(SubEffect2 effect) {
+  private SubEffectPto createSubEffectPto(SubEffect effect) {
     SubEffectPto pto = new SubEffectPto();
     pto.id = effect.getId();
     pto.creationLearned = effect.isCreationLearned();
