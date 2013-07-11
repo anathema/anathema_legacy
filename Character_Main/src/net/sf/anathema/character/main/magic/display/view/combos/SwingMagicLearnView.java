@@ -1,8 +1,6 @@
 package net.sf.anathema.character.main.magic.display.view.combos;
 
 import net.miginfocom.layout.CC;
-import net.sf.anathema.hero.magic.display.AddToButtonPanel;
-import net.sf.anathema.hero.magic.display.LegalityCheckListCellRenderer;
 import net.sf.anathema.hero.magic.display.MagicLearnProperties;
 import net.sf.anathema.hero.magic.display.MagicLearnView;
 import net.sf.anathema.interaction.Tool;
