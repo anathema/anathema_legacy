@@ -21,10 +21,12 @@ import static net.sf.anathema.lib.gui.layout.LayoutUtils.fillWithoutInsets;
 public class FxSpellView implements SpellView, NodeHolder {
   private final MigPane content = new MigPane(fillWithoutInsets());
   private final Announcer<ObjectValueListener> circleControl = Announcer.to(ObjectValueListener.class);
+  private ComboBoxSelectionView<Identifier> selectionView;
 
   @Override
   public void addCircleSelection(Identifier[] circles, SpellViewProperties properties) {
-    final ComboBoxSelectionView<Identifier> selectionView = new ComboBoxSelectionView<>(properties.getCircleLabel(), properties.getCircleSelectionRenderer());
+    this.selectionView = new ComboBoxSelectionView<>(properties.getCircleLabel(), properties.getCircleSelectionRenderer());
+    selectionView.setObjects(circles);
     FxThreading.runOnCorrectThread(new Runnable() {
       @Override
       public void run() {
@@ -37,6 +39,11 @@ public class FxSpellView implements SpellView, NodeHolder {
         circleControl.announce().valueChanged(newValue);
       }
     });
+  }
+
+  @Override
+  public void showSelectedCircle(CircleType newValue) {
+    selectionView.setSelectedObject(newValue);
   }
 
   @Override

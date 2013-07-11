@@ -11,6 +11,8 @@ public interface SpellView {
 
   void addCircleSelection(Identifier[] circles, SpellViewProperties properties);
 
+  void showSelectedCircle(CircleType newValue);
+
   MagicLearnView addMagicLearnView(MagicLearnProperties properties);
 
   void addCircleSelectionListener(ObjectValueListener<CircleType> listener);

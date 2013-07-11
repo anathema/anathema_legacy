@@ -45,7 +45,7 @@ public class SpellPresenter {
     });
   }
 
-  private void addMagicLearnView(SpellView view) {
+  private void addMagicLearnView(final SpellView view) {
     final MagicLearnView magicLearnView = view.addMagicLearnView(properties);
     MagicLearnPresenter learnPresenter = new MagicLearnPresenter(magicLearnView);
     learnPresenter.initPresentation(properties);
@@ -66,6 +66,7 @@ public class SpellPresenter {
       @Override
       public void valueChanged(CircleType newValue) {
         showAvailableSpells(magicLearnView);
+        updateCircleInView(newValue, view);
       }
     });
     spellConfiguration.addChangeListener(new ChangeListener() {
@@ -75,6 +76,11 @@ public class SpellPresenter {
       }
     });
     refreshSpellListsInView(magicLearnView);
+    updateCircleInView(circleModel.getSelectedCircle(), view);
+  }
+
+  private void updateCircleInView(CircleType newValue, SpellView view) {
+    view.showSelectedCircle(newValue);
   }
 
   private List<ISpell> convertToList(Object[] addedSpells) {

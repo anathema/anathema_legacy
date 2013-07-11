@@ -32,6 +32,11 @@ public class BridgingSpellView implements IView, SpellView {
   }
 
   @Override
+  public void showSelectedCircle(CircleType newValue) {
+    fxView.showSelectedCircle(newValue);
+  }
+
+  @Override
   public MagicLearnView addMagicLearnView(MagicLearnProperties properties) {
     return fxView.addMagicLearnView(properties);
   }

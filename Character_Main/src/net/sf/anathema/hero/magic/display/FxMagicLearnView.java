@@ -11,7 +11,6 @@ import net.sf.anathema.lib.control.ChangeListener;
 import net.sf.anathema.platform.fx.ConfigurableListCellFactory;
 import net.sf.anathema.platform.fx.FxThreading;
 import net.sf.anathema.platform.tool.FxButtonTool;
-import org.jmock.example.announcer.Announcer;
 import org.tbee.javafx.scene.layout.MigPane;
 
 import java.util.List;
