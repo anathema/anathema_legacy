@@ -5,6 +5,7 @@ import net.miginfocom.layout.CC;
 import net.miginfocom.layout.LC;
 import net.miginfocom.swing.MigLayout;
 import net.sf.anathema.framework.swing.IView;
+import net.sf.anathema.hero.magic.display.MagicLearnPresenter;
 import net.sf.anathema.hero.magic.display.MagicViewListener;
 import net.sf.anathema.hero.magic.display.SwingMagicLearnView;
 import net.sf.anathema.interaction.Command;
@@ -41,12 +42,15 @@ public class SwingComboConfigurationView implements ComboConfigurationView, IVie
   private final JXTaskPaneContainer comboPane = new JXTaskPaneContainer();
   private JScrollPane comboScrollPane;
   private ComboViewProperties properties;
+  private MagicLearnPresenter magicLearnPresenter;
 
   @Override
   public void initGui(final ComboViewProperties viewProperties) {
     this.properties = viewProperties;
     this.magicLearnView = new SwingMagicLearnView();
     magicLearnView.init(viewProperties);
+    this.magicLearnPresenter = new MagicLearnPresenter(magicLearnView);
+    magicLearnPresenter.initPresentation(properties);
 
     finalizeButton = createFinalizeComboButton(viewProperties);
     clearButton = createClearTool(viewProperties);
@@ -127,7 +131,7 @@ public class SwingComboConfigurationView implements ComboConfigurationView, IVie
 
   @Override
   public void addComboViewListener(final ComboViewListener listener) {
-    magicLearnView.addMagicViewListener(new MagicViewListener() {
+    magicLearnPresenter.addChangeListener(new MagicViewListener() {
       @Override
       public void magicRemoved(Object[] removedMagic) {
         listener.charmRemoved(removedMagic);

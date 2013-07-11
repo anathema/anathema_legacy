@@ -43,8 +43,8 @@ public class CombinedComboViewAndMagicProperties extends AbstractMagicLearnPrope
   }
 
   @Override
-  public boolean isMagicSelectionAvailable(Object object) {
-    return object != null && comboConfiguration.isComboLegal((Charm) object);
+  public boolean isMagicSelectionAvailable(List list) {
+    return !list.isEmpty() && comboConfiguration.isComboLegal((Charm) list.get(0));
   }
 
   @Override

@@ -4,6 +4,7 @@ import net.sf.anathema.character.main.magic.description.MagicDescriptionProvider
 import net.sf.anathema.character.main.magic.model.spells.CircleType;
 import net.sf.anathema.character.main.magic.model.spells.ISpell;
 import net.sf.anathema.hero.experience.ExperienceModel;
+import net.sf.anathema.hero.magic.display.MagicLearnPresenter;
 import net.sf.anathema.hero.magic.display.MagicLearnView;
 import net.sf.anathema.hero.magic.display.MagicViewListener;
 import net.sf.anathema.hero.spells.SpellModel;
@@ -46,7 +47,9 @@ public class SpellPresenter {
 
   private void addMagicLearnView(SpellView view) {
     final MagicLearnView magicLearnView = view.addMagicLearnView(properties);
-    magicLearnView.addMagicViewListener(new MagicViewListener() {
+    MagicLearnPresenter learnPresenter = new MagicLearnPresenter(magicLearnView);
+    learnPresenter.initPresentation(properties);
+    learnPresenter.addChangeListener(new MagicViewListener() {
       @Override
       public void magicRemoved(Object[] removedSpells) {
         List<ISpell> spellList = convertToList(removedSpells);

@@ -49,8 +49,8 @@ public class CombinedSpellAndMagicProperties extends AbstractMagicLearnPropertie
   }
 
   @Override
-  public boolean isMagicSelectionAvailable(Object selection) {
-    return selection != null && spellConfiguration.isSpellAllowed((ISpell) selection);
+  public boolean isMagicSelectionAvailable(List selection) {
+    return !selection.isEmpty() && spellConfiguration.isSpellAllowed((ISpell) selection.get(0));
   }
 
   @Override
