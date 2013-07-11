@@ -1,22 +1,28 @@
 package net.sf.anathema.hero.attributes.persistence;
 
+import net.sf.anathema.character.main.traits.TraitType;
 import net.sf.anathema.character.main.traits.types.AttributeType;
-import net.sf.anathema.character.main.library.trait.Trait;
 import net.sf.anathema.hero.attributes.model.AttributeModel;
 import net.sf.anathema.hero.model.Hero;
 import net.sf.anathema.hero.persistence.AbstractModelJsonPersister;
 import net.sf.anathema.hero.persistence.RegisteredHeroModelPersister;
-import net.sf.anathema.hero.traits.persistence.TraitPersister;
-import net.sf.anathema.hero.traits.persistence.TraitPto;
+import net.sf.anathema.hero.traits.persistence.TraitListPto;
+import net.sf.anathema.hero.traits.persistence.TraitMapPersister;
+import net.sf.anathema.hero.traits.persistence.TraitTypeMap;
 import net.sf.anathema.lib.util.Identifier;
 
 @RegisteredHeroModelPersister
-public class AttributesPersister extends AbstractModelJsonPersister<AttributesPto, AttributeModel> {
+public class AttributesPersister extends AbstractModelJsonPersister<TraitListPto, AttributeModel> {
 
-  private final TraitPersister traitPersister = new TraitPersister();
+  private final TraitMapPersister traitMapPersister = new TraitMapPersister(new TraitTypeMap() {
+    @Override
+    public TraitType get(String id) {
+      return AttributeType.valueOf(id);
+    }
+  });
 
   public AttributesPersister() {
-    super("attributes", AttributesPto.class);
+    super("attributes", TraitListPto.class);
   }
 
   @Override
@@ -25,21 +31,13 @@ public class AttributesPersister extends AbstractModelJsonPersister<AttributesPt
   }
 
   @Override
-  protected void loadModelFromPto(Hero hero, AttributeModel model, AttributesPto pto) {
-    for (TraitPto traitPto : pto.traits) {
-      Trait trait = model.getTrait(AttributeType.valueOf(traitPto.name));
-      traitPersister.load(trait, traitPto);
-    }
+  protected void loadModelFromPto(Hero hero, AttributeModel model, TraitListPto pto) {
+    traitMapPersister.loadTraitMap(model, pto);
   }
 
   @Override
-  protected AttributesPto saveModelToPto(AttributeModel model) {
-    AttributesPto pto = new AttributesPto();
-    for(Trait trait : model.getAll()) {
-      TraitPto traitPto = new TraitPto();
-      traitPersister.save(trait, traitPto);
-      pto.traits.add(traitPto);
-    }
-    return pto;
+  protected TraitListPto saveModelToPto(AttributeModel model) {
+    return traitMapPersister.saveTraitMap(model);
   }
+
 }

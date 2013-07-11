@@ -8,7 +8,6 @@ import net.sf.anathema.character.main.magic.model.spells.SpellException;
 import net.sf.anathema.character.main.template.HeroTemplate;
 import net.sf.anathema.character.main.template.ITemplateType;
 import net.sf.anathema.character.main.template.TemplateType;
-import net.sf.anathema.character.main.traits.types.OtherTraitType;
 import net.sf.anathema.character.main.type.ICharacterType;
 import net.sf.anathema.hero.concept.HeroConcept;
 import net.sf.anathema.hero.concept.HeroConceptFetcher;
@@ -16,7 +15,6 @@ import net.sf.anathema.hero.description.HeroDescription;
 import net.sf.anathema.hero.description.HeroDescriptionFetcher;
 import net.sf.anathema.hero.experience.ExperienceModelFetcher;
 import net.sf.anathema.hero.model.Hero;
-import net.sf.anathema.hero.traits.TraitModelFetcher;
 import net.sf.anathema.lib.exception.PersistenceException;
 import net.sf.anathema.lib.util.Identifier;
 import net.sf.anathema.lib.util.SimpleIdentifier;
@@ -31,9 +29,6 @@ import static net.sf.anathema.character.main.persistence.ICharacterXmlConstants.
 public class CharacterStatisticPersister {
 
   private final CharacterConceptPersister characterConceptPersister = new CharacterConceptPersister();
-  private final EssenceConfigurationPersister essencePersister = new EssenceConfigurationPersister();
-  private final VirtueConfigurationPersister virtuePersister = new VirtueConfigurationPersister();
-  private final WillpowerConfigurationPersister willpowerPersister = new WillpowerConfigurationPersister();
   private final ExperiencePointsPersister experiencePersister = new ExperiencePointsPersister();
   private final RulesPersister rulesPersister = new RulesPersister();
   private final HeroEnvironment generics;
@@ -54,9 +49,6 @@ public class CharacterStatisticPersister {
     characterTypeElement.addAttribute(ATTRIB_SUB_TYPE, template.getTemplateType().getSubType().getId());
     characterTypeElement.addText(template.getTemplateType().getCharacterType().getId());
     characterConceptPersister.save(statisticsElement, HeroConceptFetcher.fetch(hero));
-    essencePersister.save(statisticsElement, TraitModelFetcher.fetch(hero));
-    willpowerPersister.save(statisticsElement, TraitModelFetcher.fetch(hero).getTrait(OtherTraitType.Willpower));
-    virtuePersister.save(statisticsElement, TraitModelFetcher.fetch(hero));
     experiencePersister.save(statisticsElement, ExperienceModelFetcher.fetch(hero).getExperiencePoints());
   }
 
@@ -76,10 +68,7 @@ public class CharacterStatisticPersister {
       HeroConcept concept = HeroConceptFetcher.fetch(character);
       characterConceptPersister.load(statisticsElement, concept, characterDescription);
       ExperienceModelFetcher.fetch(character).setExperienced(experienced);
-      essencePersister.load(statisticsElement, TraitModelFetcher.fetch(character));
-      virtuePersister.load(statisticsElement, TraitModelFetcher.fetch(character));
       experiencePersister.load(statisticsElement, ExperienceModelFetcher.fetch(character).getExperiencePoints());
-      willpowerPersister.load(statisticsElement, TraitModelFetcher.fetch(character).getTrait(OtherTraitType.Willpower));
       return character;
     } catch (CharmException | SpellException e) {
       throw new PersistenceException(e);
