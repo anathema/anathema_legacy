@@ -4,7 +4,8 @@ import net.miginfocom.layout.CC;
 import net.miginfocom.swing.MigLayout;
 import net.sf.anathema.character.main.magic.model.spells.CircleType;
 import net.sf.anathema.framework.swing.IView;
-import net.sf.anathema.hero.magic.display.MagicViewListener;
+import net.sf.anathema.hero.magic.display.MagicLearnProperties;
+import net.sf.anathema.hero.magic.display.MagicLearnView;
 import net.sf.anathema.hero.magic.display.SwingMagicLearnView;
 import net.sf.anathema.lib.control.ObjectValueListener;
 import net.sf.anathema.lib.gui.ui.ConfigurableListCellRenderer;
@@ -17,12 +18,10 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.util.List;
 
 import static net.sf.anathema.lib.gui.layout.LayoutUtils.fillWithoutInsets;
 
 public class SwingSpellView implements SpellView, IView {
-  private final SwingMagicLearnView magicLearnView = new SwingMagicLearnView();
   private final JPanel content = new JPanel(new MigLayout(fillWithoutInsets()));
   private final Announcer<ObjectValueListener> circleControl = Announcer.to(ObjectValueListener.class);
 
@@ -44,28 +43,17 @@ public class SwingSpellView implements SpellView, IView {
         circleControl.announce().valueChanged(box.getSelectedItem());
       }
     });
-    magicLearnView.init(properties);
-    magicLearnView.addTo(content);
   }
 
-
-  @Override
-  public void addMagicViewListener(MagicViewListener listener) {
-    magicLearnView.addMagicViewListener(listener);
+  public MagicLearnView addMagicLearnView(MagicLearnProperties properties) {
+    SwingMagicLearnView magicLearnView = new SwingMagicLearnView();
+    magicLearnView.init(properties);
+    magicLearnView.addTo(content);
+    return magicLearnView;
   }
 
   @Override
   public void addCircleSelectionListener(ObjectValueListener<CircleType> listener) {
     circleControl.addListener(listener);
-  }
-
-  @Override
-  public void setLearnedMagic(List spells) {
-    magicLearnView.setLearnedMagic(spells);
-  }
-
-  @Override
-  public void setAvailableMagic(List spells) {
-    magicLearnView.setAvailableMagic(spells);
   }
 }
