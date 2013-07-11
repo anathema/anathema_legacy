@@ -3,6 +3,7 @@ package net.sf.anathema.hero.magic.display;
 import net.miginfocom.layout.CC;
 import net.sf.anathema.interaction.Command;
 import net.sf.anathema.interaction.Tool;
+import net.sf.anathema.lib.control.ChangeListener;
 import net.sf.anathema.lib.file.RelativePath;
 import net.sf.anathema.lib.gui.ui.ConfigurableListCellRenderer;
 import net.sf.anathema.swing.interaction.ActionInteraction;
@@ -13,7 +14,8 @@ import javax.swing.JList;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.ListCellRenderer;
-import javax.swing.ListModel;
+import javax.swing.event.ListDataEvent;
+import javax.swing.event.ListDataListener;
 import javax.swing.event.ListSelectionEvent;
 import javax.swing.event.ListSelectionListener;
 import java.awt.Dimension;
@@ -25,62 +27,18 @@ import static javax.swing.ListSelectionModel.SINGLE_SELECTION;
 public class SwingMagicLearnView implements MagicLearnView {
 
   private final Announcer<MagicViewListener> control = Announcer.to(MagicViewListener.class);
-  private final JList learnOptionsList = new JList(new DefaultListModel());
-  private final JList learnedList = new JList(new DefaultListModel());
+  private final JList availableMagicList = new JList(new DefaultListModel());
+  private final JList learnedMagicList = new JList(new DefaultListModel());
   private final JPanel centerButtons = new JPanel(new GridLayout(0, 1));
   private final JPanel endButtons = new JPanel(new GridLayout(0, 1));
 
   public void init(final MagicLearnProperties properties) {
-    learnOptionsList.setCellRenderer(new LegalityCheckListCellRenderer(properties.getLegalityCheck(), properties.getAvailableMagicRenderer()));
-    learnOptionsList.setSelectionMode(SINGLE_SELECTION);
+    availableMagicList.setCellRenderer(new LegalityCheckListCellRenderer(properties.getLegalityCheck(), properties.getAvailableMagicRenderer()));
+    availableMagicList.setSelectionMode(SINGLE_SELECTION);
     ListCellRenderer renderer = new ConfigurableListCellRenderer(properties.getLearnedMagicRenderer());
-    learnedList.setCellRenderer(renderer);
+    learnedMagicList.setCellRenderer(renderer);
     createAddMagicButton(properties.getAddButtonIcon(), properties.getAddButtonToolTip(), properties);
     createRemoveMagicButton(properties.getRemoveButtonIcon(), properties.getRemoveButtonToolTip(), properties);
-  }
-
-  private void createAddMagicButton(RelativePath icon, String tooltip, final MagicLearnProperties properties) {
-    Command command = new Command() {
-      @Override
-      public void execute() {
-        fireMagicAdded(learnOptionsList.getSelectedValuesList());
-      }
-    };
-    final Tool tool = createButtonFromInteraction(icon, tooltip, command);
-    addOptionListListener(new ListSelectionListener() {
-      @Override
-      public void valueChanged(ListSelectionEvent e) {
-        boolean available = properties.isMagicSelectionAvailable(learnOptionsList.getSelectedValue());
-        if (available) {
-          tool.enable();
-        } else {
-          tool.disable();
-        }
-      }
-    });
-  }
-
-  private void createRemoveMagicButton(RelativePath icon, String tooltip, final MagicLearnProperties properties) {
-    Command command = new Command() {
-      @Override
-      public void execute() {
-        fireMagicRemoved(learnedList.getSelectedValuesList());
-      }
-    };
-    final Tool tool = createButtonFromInteraction(icon, tooltip, command);
-    addSelectionListListener(new ListSelectionListener() {
-      @Override
-      public void valueChanged(ListSelectionEvent e) {
-        List selectedValues = learnedList.getSelectedValuesList();
-        boolean allowed = properties.isRemoveAllowed(selectedValues);
-        if (allowed) {
-          tool.enable();
-        } else {
-          tool.disable();
-        }
-      }
-    });
-
   }
 
   private Tool createButtonFromInteraction(RelativePath icon, String tooltip, Command command) {
@@ -97,36 +55,49 @@ public class SwingMagicLearnView implements MagicLearnView {
     return interaction;
   }
 
-  private void fireMagicRemoved(List<Object> removedMagics) {
-    Object[] objects = removedMagics.toArray(new Object[removedMagics.size()]);
-    control.announce().magicRemoved(objects);
-  }
-
-  private void fireMagicAdded(List<Object> addedMagics) {
-    Object[] objects = addedMagics.toArray(new Object[addedMagics.size()]);
-    control.announce().magicAdded(objects);
-  }
-
   @Override
   public void setAvailableMagic(List magics) {
-    exchangeObjects((DefaultListModel) learnOptionsList.getModel(), magics.toArray(new Object[magics.size()]));
-  }
-
-  private void exchangeObjects(DefaultListModel listModel, Object[] magic) {
-    listModel.clear();
-    for (Object spell : magic) {
-      listModel.addElement(spell);
-    }
+    exchangeObjects((DefaultListModel) availableMagicList.getModel(), magics.toArray(new Object[magics.size()]));
   }
 
   @Override
   public void setLearnedMagic(List magics) {
-    exchangeObjects((DefaultListModel) learnedList.getModel(), magics.toArray(new Object[magics.size()]));
+    exchangeObjects((DefaultListModel) learnedMagicList.getModel(), magics.toArray(new Object[magics.size()]));
   }
 
   @Override
   public void addMagicViewListener(MagicViewListener listener) {
     control.addListener(listener);
+  }
+
+  @Override
+  public boolean hasMoreThanOneElementLearned() {
+    return hasAtLeastElementsLearned(2);
+  }
+
+  @Override
+  public boolean hasAnyElementLearned() {
+    return hasAtLeastElementsLearned(1);
+  }
+
+  @Override
+  public void addLearnedListListener(final ChangeListener changeListener) {
+    learnedMagicList.getModel().addListDataListener(new ListDataListener() {
+      @Override
+      public void intervalAdded(ListDataEvent e) {
+        changeListener.changeOccurred();
+      }
+
+      @Override
+      public void intervalRemoved(ListDataEvent e) {
+        changeListener.changeOccurred();
+      }
+
+      @Override
+      public void contentsChanged(ListDataEvent e) {
+        changeListener.changeOccurred();
+      }
+    });
   }
 
   public Tool addAdditionalTool() {
@@ -136,9 +107,9 @@ public class SwingMagicLearnView implements MagicLearnView {
   }
 
   public void addTo(JPanel panel) {
-    panel.add(createScrollPane(learnOptionsList), new CC().grow().push());
+    panel.add(createScrollPane(availableMagicList), new CC().grow().push());
     panel.add(centerButtons);
-    panel.add(createScrollPane(learnedList), new CC().grow().push());
+    panel.add(createScrollPane(learnedMagicList), new CC().grow().push());
     panel.add(endButtons);
   }
 
@@ -148,16 +119,69 @@ public class SwingMagicLearnView implements MagicLearnView {
     return scrollPane;
   }
 
-  public ListModel getLearnedListModel() {
-    return learnedList.getModel();
+  private void exchangeObjects(DefaultListModel listModel, Object[] magic) {
+    listModel.clear();
+    for (Object spell : magic) {
+      listModel.addElement(spell);
+    }
   }
 
-  public void addSelectionListListener(ListSelectionListener listener) {
-    learnedList.addListSelectionListener(listener);
+  private void createRemoveMagicButton(RelativePath icon, String tooltip, final MagicLearnProperties properties) {
+    Command command = new Command() {
+      @Override
+      public void execute() {
+        fireMagicRemoved(learnedMagicList.getSelectedValuesList());
+      }
+    };
+    final Tool tool = createButtonFromInteraction(icon, tooltip, command);
+    learnedMagicList.addListSelectionListener(new ListSelectionListener() {
+      @Override
+      public void valueChanged(ListSelectionEvent e) {
+        List selectedValues = learnedMagicList.getSelectedValuesList();
+        boolean allowed = properties.isRemoveAllowed(selectedValues);
+        if (allowed) {
+          tool.enable();
+        } else {
+          tool.disable();
+        }
+      }
+    });
+
   }
 
-  public void addOptionListListener(ListSelectionListener listener) {
-    learnOptionsList.addListSelectionListener(listener);
+  private void fireMagicRemoved(List<Object> removedMagics) {
+    Object[] objects = removedMagics.toArray(new Object[removedMagics.size()]);
+    control.announce().magicRemoved(objects);
+  }
+
+  private void createAddMagicButton(RelativePath icon, String tooltip, final MagicLearnProperties properties) {
+    Command command = new Command() {
+      @Override
+      public void execute() {
+        fireMagicAdded(availableMagicList.getSelectedValuesList());
+      }
+    };
+    final Tool tool = createButtonFromInteraction(icon, tooltip, command);
+    availableMagicList.addListSelectionListener(new ListSelectionListener() {
+      @Override
+      public void valueChanged(ListSelectionEvent e) {
+        boolean available = properties.isMagicSelectionAvailable(availableMagicList.getSelectedValue());
+        if (available) {
+          tool.enable();
+        } else {
+          tool.disable();
+        }
+      }
+    });
+  }
+
+  private void fireMagicAdded(List<Object> addedMagics) {
+    Object[] objects = addedMagics.toArray(new Object[addedMagics.size()]);
+    control.announce().magicAdded(objects);
+  }
+
+  private boolean hasAtLeastElementsLearned(int amount) {
+    return learnedMagicList.getModel().getSize() >= amount;
   }
 
 }
