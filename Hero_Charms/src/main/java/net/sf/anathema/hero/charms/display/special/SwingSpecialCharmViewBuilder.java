@@ -7,7 +7,7 @@ import net.sf.anathema.character.main.magic.model.charm.special.IPainToleranceCh
 import net.sf.anathema.character.main.magic.model.charm.special.IPrerequisiteModifyingCharm;
 import net.sf.anathema.character.main.magic.model.charm.special.ISpecialCharm;
 import net.sf.anathema.character.main.magic.model.charm.special.ISpecialCharmVisitor;
-import net.sf.anathema.character.main.magic.model.charm.special.ISubEffectCharm;
+import net.sf.anathema.character.main.magic.model.charm.special.ISubEffectCharm2;
 import net.sf.anathema.character.main.magic.model.charm.special.ITraitCapModifyingCharm;
 import net.sf.anathema.character.main.magic.model.charm.special.IUpgradableCharm;
 import net.sf.anathema.hero.charms.model.CharmsModel;
@@ -67,7 +67,7 @@ public class SwingSpecialCharmViewBuilder implements SpecialCharmViewBuilder {
     }
 
     @Override
-    public void visitSubEffectCharm(ISubEffectCharm visited) {
+    public void visitSubEffectCharm(ISubEffectCharm2 visited) {
       createMultipleEffectCharmView(visited);
     }
 

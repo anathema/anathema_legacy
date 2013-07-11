@@ -10,7 +10,7 @@ import net.sf.anathema.character.main.magic.model.charm.special.IPrerequisiteMod
 import net.sf.anathema.character.main.magic.model.charm.special.ISpecialCharm;
 import net.sf.anathema.character.main.magic.model.charm.special.ISpecialCharmConfiguration;
 import net.sf.anathema.character.main.magic.model.charm.special.ISpecialCharmVisitor;
-import net.sf.anathema.character.main.magic.model.charm.special.ISubEffectCharm;
+import net.sf.anathema.character.main.magic.model.charm.special.ISubEffectCharm2;
 import net.sf.anathema.character.main.magic.model.charm.special.ITraitCapModifyingCharm;
 import net.sf.anathema.character.main.magic.model.charm.special.IUpgradableCharm;
 import net.sf.anathema.hero.charms.model.CharmsModel;
@@ -43,7 +43,7 @@ public class SpecialCharmListPersister {
         }
 
         @Override
-        public void visitSubEffectCharm(ISubEffectCharm charm) {
+        public void visitSubEffectCharm(ISubEffectCharm2 charm) {
           persisterByCharm.put(getCharm(charm.getCharmId(), charmTree), new MultipleEffectCharmPersister());
         }
 

@@ -8,7 +8,7 @@ public interface ISpecialCharmVisitor {
 
   void visitPainToleranceCharm(IPainToleranceCharm charm);
 
-  void visitSubEffectCharm(ISubEffectCharm charm);
+  void visitSubEffectCharm(ISubEffectCharm2 charm);
   
   void visitUpgradableCharm(IUpgradableCharm charm);
 
