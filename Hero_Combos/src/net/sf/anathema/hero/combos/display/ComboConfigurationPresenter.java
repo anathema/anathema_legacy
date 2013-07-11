@@ -1,6 +1,7 @@
 package net.sf.anathema.hero.combos.display;
 
 import com.google.common.base.Strings;
+import net.sf.anathema.character.main.magic.display.view.combos.ComboConfigurationView;
 import net.sf.anathema.character.main.magic.model.charm.Charm;
 import net.sf.anathema.hero.charms.model.CharmsModel;
 import net.sf.anathema.hero.combos.model.CombosModel;
@@ -10,7 +11,6 @@ import net.sf.anathema.character.main.magic.model.charm.ICharmLearnListener;
 import net.sf.anathema.character.main.magic.model.combos.ICombo;
 import net.sf.anathema.character.main.magic.model.combos.IComboConfigurationListener;
 import net.sf.anathema.character.main.magic.model.charms.ILearningCharmGroup;
-import net.sf.anathema.character.main.magic.display.view.combos.IComboConfigurationView;
 import net.sf.anathema.character.main.magic.display.view.combos.IComboView;
 import net.sf.anathema.character.main.magic.display.view.combos.IComboViewListener;
 import net.sf.anathema.character.main.magic.model.charmtree.builder.MagicDisplayLabeler;
@@ -42,10 +42,10 @@ public class ComboConfigurationPresenter {
   private final ComboConfigurationModel comboModel;
   private Hero hero;
   private final Resources resources;
-  private final IComboConfigurationView view;
+  private final ComboConfigurationView view;
   private final MagicDisplayLabeler labeler;
 
-  public ComboConfigurationPresenter(Hero hero, Resources resources, ComboConfigurationModel comboModel, IComboConfigurationView view) {
+  public ComboConfigurationPresenter(Hero hero, Resources resources, ComboConfigurationModel comboModel, ComboConfigurationView view) {
     this.hero = hero;
     this.resources = resources;
     this.comboModel = comboModel;
@@ -84,7 +84,7 @@ public class ComboConfigurationPresenter {
     comboConfiguration.setCrossPrerequisiteTypeComboAllowed(alienCharms);
   }
 
-  private void initComboConfigurationListening(final IComboConfigurationView comboView) {
+  private void initComboConfigurationListening(final ComboConfigurationView comboView) {
     comboConfiguration.addComboConfigurationListener(new IComboConfigurationListener() {
       @Override
       public void comboAdded(ICombo combo) {
@@ -128,7 +128,7 @@ public class ComboConfigurationPresenter {
     return comboName;
   }
 
-  private void initCharmLearnListening(final IComboConfigurationView comboView) {
+  private void initCharmLearnListening(final ComboConfigurationView comboView) {
     ICharmLearnListener charmLearnListener = new CharmLearnAdapter() {
       @Override
       public void charmLearned(Charm charm) {
@@ -145,7 +145,7 @@ public class ComboConfigurationPresenter {
     }
   }
 
-  private void addComboToView(IComboConfigurationView comboConfigurationView, final ICombo combo) {
+  private void addComboToView(ComboConfigurationView comboConfigurationView, final ICombo combo) {
     IComboView comboView = comboConfigurationView.addComboView(createComboNameString(combo), convertToHtml(combo));
     Tool editTool = comboView.addTool();
     editTool.setIcon(new BasicUi().getEditIconPath());
@@ -192,14 +192,14 @@ public class ComboConfigurationPresenter {
     return "<html><body>" + text + "</body></html>";
   }
 
-  private void updateCharmListsInView(IComboConfigurationView comboView) {
+  private void updateCharmListsInView(ComboConfigurationView comboView) {
     comboView.setComboCharms(comboConfiguration.getEditCombo().getCharms());
     Charm[] learnedCharms = comboModel.getLearnedCharms();
     Arrays.sort(learnedCharms, new I18nedIdentificateComparator(resources));
     comboView.setAllCharms(learnedCharms);
   }
 
-  private void initComboModelListening(final IComboConfigurationView comboView) {
+  private void initComboModelListening(final ComboConfigurationView comboView) {
     comboConfiguration.addComboModelListener(new ChangeListener() {
       @Override
       public void changeOccurred() {
@@ -208,7 +208,7 @@ public class ComboConfigurationPresenter {
     });
   }
 
-  private void initViewListening(IComboConfigurationView comboView) {
+  private void initViewListening(ComboConfigurationView comboView) {
     comboView.addComboViewListener(new IComboViewListener() {
       @Override
       public void charmAdded(Object addedCharm) {

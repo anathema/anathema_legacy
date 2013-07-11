@@ -2,11 +2,11 @@ package net.sf.anathema.hero.combos.display;
 
 import net.sf.anathema.character.main.magic.display.view.charms.CharmDescriptionProviderExtractor;
 import net.sf.anathema.character.main.magic.description.MagicDescriptionProvider;
+import net.sf.anathema.character.main.magic.display.view.combos.ComboConfigurationView;
 import net.sf.anathema.character.main.magic.model.charms.options.DefaultCharmTemplateRetriever;
 import net.sf.anathema.character.main.presenter.initializers.HeroModelInitializer;
 import net.sf.anathema.character.main.presenter.initializers.RegisteredInitializer;
 import net.sf.anathema.character.main.view.SectionView;
-import net.sf.anathema.character.main.magic.display.view.combos.IComboConfigurationView;
 import net.sf.anathema.framework.IApplicationModel;
 import net.sf.anathema.hero.model.Hero;
 import net.sf.anathema.initialization.reflections.Weight;
@@ -31,7 +31,7 @@ public class ComboInitializer implements HeroModelInitializer {
       return;
     }
     String header = resources.getString("CardView.CharmConfiguration.ComboCreation.Title");
-    IComboConfigurationView comboView = sectionView.addView(header, IComboConfigurationView.class, hero.getTemplate().getTemplateType().getCharacterType());
+    ComboConfigurationView comboView = sectionView.addView(header, ComboConfigurationView.class, hero.getTemplate().getTemplateType().getCharacterType());
     MagicDescriptionProvider magicDescriptionProvider = CharmDescriptionProviderExtractor.CreateFor(model, resources);
     ComboConfigurationModel comboModel = new ComboConfigurationModel(hero, magicDescriptionProvider);
     new ComboConfigurationPresenter(hero, resources, comboModel, comboView).initPresentation();
