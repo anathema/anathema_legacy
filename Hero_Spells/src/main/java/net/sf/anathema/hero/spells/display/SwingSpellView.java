@@ -22,7 +22,7 @@ import java.util.List;
 import static net.sf.anathema.lib.gui.layout.LayoutUtils.fillWithoutInsets;
 
 public class SwingSpellView implements SpellView, IView {
-  private SwingMagicLearnView magicLearnView;
+  private final SwingMagicLearnView magicLearnView = new SwingMagicLearnView();
   private final JPanel content = new JPanel(new MigLayout(fillWithoutInsets()));
   private final Announcer<ObjectValueListener> circleControl = Announcer.to(ObjectValueListener.class);
 
@@ -33,7 +33,6 @@ public class SwingSpellView implements SpellView, IView {
 
   @Override
   public void initGui(Identifier[] circles, ISpellViewProperties properties) {
-    this.magicLearnView = new SwingMagicLearnView();
     content.add(new JLabel(properties.getCircleLabel()), new CC().split(2));
     final JComboBox<Identifier> box = new JComboBox<>(circles);
     box.setRenderer(new ConfigurableListCellRenderer(properties.getCircleSelectionRenderer()));
