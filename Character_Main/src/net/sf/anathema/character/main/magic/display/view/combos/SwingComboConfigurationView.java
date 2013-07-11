@@ -133,12 +133,12 @@ public class SwingComboConfigurationView implements ComboConfigurationView, IVie
   public void addComboViewListener(final ComboViewListener listener) {
     magicLearnPresenter.addChangeListener(new MagicViewListener() {
       @Override
-      public void magicRemoved(Object[] removedMagic) {
+      public void removeMagicRequested(Object[] removedMagic) {
         listener.charmRemoved(removedMagic);
       }
 
       @Override
-      public void magicAdded(Object[] addedMagic) {
+      public void addMagicRequested(Object[] addedMagic) {
         Preconditions.checkArgument(addedMagic.length == 1, "Only one charm may be added.");
         listener.charmAdded(addedMagic[0]);
       }

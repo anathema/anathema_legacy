@@ -51,13 +51,13 @@ public class SpellPresenter {
     learnPresenter.initPresentation(properties);
     learnPresenter.addChangeListener(new MagicViewListener() {
       @Override
-      public void magicRemoved(Object[] removedSpells) {
+      public void removeMagicRequested(Object[] removedSpells) {
         List<ISpell> spellList = convertToList(removedSpells);
         spellConfiguration.removeSpells(spellList);
       }
 
       @Override
-      public void magicAdded(Object[] addedSpells) {
+      public void addMagicRequested(Object[] addedSpells) {
         List<ISpell> spellList = convertToList(addedSpells);
         spellConfiguration.addSpells(spellList);
       }

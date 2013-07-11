@@ -64,12 +64,12 @@ public class MagicLearnPresenter {
 
   private void fireRemoveRequested(List<Object> removedMagics) {
     Object[] objects = removedMagics.toArray(new Object[removedMagics.size()]);
-    control.announce().magicRemoved(objects);
+    control.announce().removeMagicRequested(objects);
   }
 
   private void fireAddRequested(List<Object> addedMagics) {
     Object[] objects = addedMagics.toArray(new Object[addedMagics.size()]);
-    control.announce().magicAdded(objects);
+    control.announce().addMagicRequested(objects);
   }
 
   private void updateRemoveButton(MagicLearnProperties properties, Tool tool) {
