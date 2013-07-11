@@ -168,7 +168,7 @@ public class SwingMagicLearnView implements MagicLearnView {
   }
 
   @Override
-  public void addLearnedMagic(Object[] magics) {
+  public void addLearnedMagic(List magics) {
     DefaultListModel listModel = (DefaultListModel) learnedList.getModel();
     for (Object spell : magics) {
       listModel.addElement(spell);
@@ -177,7 +177,7 @@ public class SwingMagicLearnView implements MagicLearnView {
 
   @SuppressWarnings("ConstantConditions")
   @Override
-  public void addMagicOptions(Identifier[] magics, Comparator<Identifier> comparator) {
+  public void addMagicOptions(List<Identifier> magics, Comparator<Identifier> comparator) {
     DefaultListModel listModel = (DefaultListModel) learnOptionsList.getModel();
     for (Identifier spell : magics) {
       boolean isInserted = false;
@@ -207,7 +207,7 @@ public class SwingMagicLearnView implements MagicLearnView {
   }
 
   @Override
-  public void removeMagicOptions(Object[] magics) {
+  public void removeMagicOptions(List magics) {
     DefaultListModel listModel = (DefaultListModel) learnOptionsList.getModel();
     for (Object spell : magics) {
       listModel.removeElement(spell);

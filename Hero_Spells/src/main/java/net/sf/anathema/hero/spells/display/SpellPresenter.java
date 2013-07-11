@@ -101,24 +101,24 @@ public class SpellPresenter {
 
   private void forgetSpellListsInView(SpellView spellView, ISpell[] spells) {
     spellView.removeLearnedMagic(spells);
-    ISpell[] supportedSpells = getSpellsOfCurrentCircle(spells);
+    List<Identifier> supportedSpells = getSpellsOfCurrentCircle(spells);
     spellView.addMagicOptions(supportedSpells, new I18nedIdentificateComparator(resources));
   }
 
   private void learnSpellListsInView(SpellView spellView, ISpell[] spells) {
-    ISpell[] supportedSpells = getSpellsOfCurrentCircle(spells);
+    List<Identifier> supportedSpells = getSpellsOfCurrentCircle(spells);
     spellView.addLearnedMagic(supportedSpells);
     spellView.removeMagicOptions(supportedSpells);
   }
 
-  private ISpell[] getSpellsOfCurrentCircle(ISpell[] spells) {
-    List<ISpell> supportedSpells = new ArrayList<>();
+  private List<Identifier> getSpellsOfCurrentCircle(ISpell[] spells) {
+    List<Identifier> supportedSpells = new ArrayList<>();
     for (ISpell spell : spells) {
       if (circle == spell.getCircleType()) {
         supportedSpells.add(spell);
       }
     }
-    return supportedSpells.toArray(new ISpell[supportedSpells.size()]);
+    return supportedSpells;
   }
 
   private ISpell[] getSpellsToShow() {
