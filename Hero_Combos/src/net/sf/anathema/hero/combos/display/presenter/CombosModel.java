@@ -1,8 +1,6 @@
-package net.sf.anathema.hero.combos.model;
+package net.sf.anathema.hero.combos.display.presenter;
 
 import net.sf.anathema.character.main.magic.model.charm.Charm;
-import net.sf.anathema.character.main.magic.model.combos.ICombo;
-import net.sf.anathema.character.main.magic.model.combos.IComboConfigurationListener;
 import net.sf.anathema.hero.model.HeroModel;
 import net.sf.anathema.lib.control.ChangeListener;
 import net.sf.anathema.lib.util.Identifier;

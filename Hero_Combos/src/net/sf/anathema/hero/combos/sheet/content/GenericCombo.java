@@ -1,6 +1,7 @@
-package net.sf.anathema.character.main.magic.model.combos;
+package net.sf.anathema.hero.combos.sheet.content;
 
 import net.sf.anathema.character.main.magic.model.charm.Charm;
+import net.sf.anathema.hero.combos.display.presenter.ICombo;
 
 public class GenericCombo implements IGenericCombo {
 

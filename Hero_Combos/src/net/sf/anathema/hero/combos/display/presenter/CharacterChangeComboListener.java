@@ -1,7 +1,5 @@
 package net.sf.anathema.hero.combos.display.presenter;
 
-import net.sf.anathema.character.main.magic.model.combos.ICombo;
-import net.sf.anathema.character.main.magic.model.combos.IComboConfigurationListener;
 import net.sf.anathema.hero.change.ChangeAnnouncer;
 import net.sf.anathema.hero.change.ChangeFlavor;
 

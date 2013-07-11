@@ -1,4 +1,4 @@
-package net.sf.anathema.hero.magic.model.charms;
+package net.sf.anathema.hero.combos;
 
 import net.sf.anathema.character.main.magic.model.charm.Charm;
 import net.sf.anathema.character.main.magic.model.combos.ComboRestrictions;
@@ -8,8 +8,8 @@ import net.sf.anathema.character.main.traits.types.AbilityType;
 import net.sf.anathema.character.main.traits.types.AttributeType;
 import net.sf.anathema.character.main.traits.types.ValuedTraitType;
 import net.sf.anathema.character.main.dummy.DummyCharmUtilities;
-import net.sf.anathema.character.main.magic.model.combos.ComboArbitrator;
-import net.sf.anathema.character.main.magic.model.combos.IComboRules;
+import net.sf.anathema.hero.combos.model.rules.ComboArbitrator;
+import net.sf.anathema.hero.combos.model.IComboRules;
 
 public abstract class AbstractComboRulesTestCase {
 

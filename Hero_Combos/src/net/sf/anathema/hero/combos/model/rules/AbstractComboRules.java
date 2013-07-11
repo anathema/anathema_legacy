@@ -1,6 +1,7 @@
-package net.sf.anathema.character.main.magic.model.combos;
+package net.sf.anathema.hero.combos.model.rules;
 
 import net.sf.anathema.character.main.magic.model.charm.Charm;
+import net.sf.anathema.hero.combos.model.IComboRules;
 import net.sf.anathema.character.main.traits.types.AbilityType;
 import net.sf.anathema.character.main.traits.types.AttributeType;
 

@@ -1,10 +1,10 @@
 package net.sf.anathema.hero.combos.persistence;
 
 import net.sf.anathema.character.main.magic.model.charm.Charm;
-import net.sf.anathema.character.main.magic.model.combos.ICombo;
+import net.sf.anathema.hero.combos.display.presenter.ICombo;
 import net.sf.anathema.hero.charms.model.CharmsModel;
 import net.sf.anathema.hero.charms.model.CharmsModelFetcher;
-import net.sf.anathema.hero.combos.model.CombosModel;
+import net.sf.anathema.hero.combos.display.presenter.CombosModel;
 import net.sf.anathema.hero.model.Hero;
 import net.sf.anathema.hero.persistence.AbstractModelJsonPersister;
 import net.sf.anathema.hero.persistence.RegisteredHeroModelPersister;

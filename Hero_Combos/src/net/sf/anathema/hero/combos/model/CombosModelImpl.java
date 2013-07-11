@@ -2,12 +2,10 @@ package net.sf.anathema.hero.combos.model;
 
 import net.sf.anathema.character.main.magic.model.charm.Charm;
 import net.sf.anathema.character.main.magic.model.charm.CharmLearnAdapter;
-import net.sf.anathema.character.main.magic.model.combos.Combo;
-import net.sf.anathema.character.main.magic.model.combos.ComboIdProvider;
-import net.sf.anathema.character.main.magic.model.combos.ICombo;
-import net.sf.anathema.character.main.magic.model.combos.IComboArbitrator;
-import net.sf.anathema.character.main.magic.model.combos.IComboConfigurationListener;
-import net.sf.anathema.character.main.magic.model.combos.SecondEditionComboArbitrator;
+import net.sf.anathema.hero.combos.display.presenter.ICombo;
+import net.sf.anathema.hero.combos.display.presenter.CombosModel;
+import net.sf.anathema.hero.combos.display.presenter.IComboConfigurationListener;
+import net.sf.anathema.hero.combos.model.rules.SecondEditionComboArbitrator;
 import net.sf.anathema.hero.change.ChangeAnnouncer;
 import net.sf.anathema.hero.charms.model.CharmsModelFetcher;
 import net.sf.anathema.hero.combos.display.presenter.CharacterChangeComboListener;

@@ -1,4 +1,4 @@
-package net.sf.anathema.character.main.magic.model.combos;
+package net.sf.anathema.hero.combos.model;
 
 import net.sf.anathema.character.main.magic.model.charm.Charm;
 

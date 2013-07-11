@@ -1,10 +1,10 @@
-package net.sf.anathema.hero.magic.model.charms;
+package net.sf.anathema.hero.combos;
 
 import net.sf.anathema.character.main.magic.model.charm.Charm;
 import net.sf.anathema.character.main.magic.model.charm.type.CharmType;
 import net.sf.anathema.character.main.dummy.DummyCharmUtilities;
-import net.sf.anathema.character.main.magic.model.combos.IComboRules;
-import net.sf.anathema.character.main.magic.model.combos.SimpleCharmComboRules;
+import net.sf.anathema.hero.combos.model.IComboRules;
+import net.sf.anathema.hero.combos.model.rules.SimpleCharmComboRules;
 import org.junit.Test;
 
 import static org.junit.Assert.assertFalse;

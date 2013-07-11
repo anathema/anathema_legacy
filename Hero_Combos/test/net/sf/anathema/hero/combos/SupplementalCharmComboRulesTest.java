@@ -1,4 +1,4 @@
-package net.sf.anathema.hero.magic.model.charms;
+package net.sf.anathema.hero.combos;
 
 import net.sf.anathema.character.main.magic.model.charm.type.CharmType;
 import org.junit.Test;

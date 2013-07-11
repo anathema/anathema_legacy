@@ -1,8 +1,12 @@
-package net.sf.anathema.character.main.magic.model.combos;
+package net.sf.anathema.hero.combos.model.rules;
 
 import net.sf.anathema.character.main.magic.model.charm.Charm;
 import net.sf.anathema.character.main.magic.model.charm.ICharmTypeVisitor;
 import net.sf.anathema.character.main.magic.model.charm.type.CharmType;
+import net.sf.anathema.hero.combos.display.presenter.ICombo;
+import net.sf.anathema.hero.combos.model.IComboArbitrator;
+import net.sf.anathema.character.main.magic.model.combos.IComboRestrictions;
+import net.sf.anathema.hero.combos.model.IComboRules;
 import org.apache.commons.lang3.ArrayUtils;
 
 public abstract class ComboArbitrator implements IComboArbitrator {
