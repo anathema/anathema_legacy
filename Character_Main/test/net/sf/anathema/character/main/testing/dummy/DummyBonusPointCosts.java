@@ -12,14 +12,12 @@ import net.sf.anathema.character.main.traits.ValuedTraitType;
 
 public class DummyBonusPointCosts implements BonusPointCosts, MagicCosts {
 
-  @Override
-  public int getSpellCosts(ICostAnalyzer costMapping) {
+  private int getSpellCosts(ICostAnalyzer costMapping) {
     boolean isSorceryFavored = costMapping.isOccultFavored();
     return getCharmCosts(isSorceryFavored, null);
   }
 
-  @Override
-  public int getCharmCosts(Charm charm, ICostAnalyzer costMapping) {
+  private int getCharmCosts(Charm charm, ICostAnalyzer costMapping) {
     return getCharmCosts(costMapping.isMagicFavored(charm), costMapping.getMartialArtsLevel(charm));
   }
 

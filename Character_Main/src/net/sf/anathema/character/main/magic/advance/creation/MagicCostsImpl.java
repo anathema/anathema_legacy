@@ -17,14 +17,12 @@ public class MagicCostsImpl implements MagicCosts {
     strategyByFavored.put(false, new MagicCostStrategy(tto.general, tto.standardMartialArtsLevel));
   }
 
-  @Override
-  public int getCharmCosts(Charm charm, ICostAnalyzer analyzer) {
+  private int getCharmCosts(Charm charm, ICostAnalyzer analyzer) {
     boolean favored = analyzer.isMagicFavored(charm);
     return strategyByFavored.get(favored).getCharmCosts(charm);
   }
 
-  @Override
-  public int getSpellCosts(ICostAnalyzer costMapping) {
+  private int getSpellCosts(ICostAnalyzer costMapping) {
     boolean isSorceryFavored = costMapping.isOccultFavored();
     return strategyByFavored.get(isSorceryFavored).getSpellCosts();
   }
