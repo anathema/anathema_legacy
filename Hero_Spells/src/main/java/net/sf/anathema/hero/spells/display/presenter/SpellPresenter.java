@@ -34,7 +34,7 @@ public class SpellPresenter {
   }
 
   public void initPresentation() {
-    view.initGui(circleModel.getCircles(), properties);
+    view.addCircleSelection(circleModel.getCircles(), properties);
     addMagicLearnView(view);
     view.addCircleSelectionListener(new ObjectValueListener<CircleType>() {
       @Override

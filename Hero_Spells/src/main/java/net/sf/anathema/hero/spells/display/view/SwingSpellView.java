@@ -33,7 +33,7 @@ public class SwingSpellView implements SpellView, IView {
   }
 
   @Override
-  public void initGui(Identifier[] circles, SpellViewProperties properties) {
+  public void addCircleSelection(Identifier[] circles, SpellViewProperties properties) {
     content.add(new JLabel(properties.getCircleLabel()), new CC().split(2));
     final JComboBox<Identifier> box = new JComboBox<>(circles);
     box.setRenderer(new ConfigurableListCellRenderer(properties.getCircleSelectionRenderer()));
