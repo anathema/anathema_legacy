@@ -8,8 +8,8 @@ import net.sf.anathema.framework.IApplicationModel;
 import net.sf.anathema.hero.experience.ExperienceModel;
 import net.sf.anathema.hero.experience.ExperienceModelFetcher;
 import net.sf.anathema.hero.model.Hero;
-import net.sf.anathema.hero.spells.SpellModel;
-import net.sf.anathema.hero.spells.SpellsModelFetcher;
+import net.sf.anathema.hero.spells.model.SpellModel;
+import net.sf.anathema.hero.spells.model.SpellsModelFetcher;
 import net.sf.anathema.hero.spells.model.CircleModel;
 import net.sf.anathema.lib.resources.Resources;
 

@@ -5,7 +5,7 @@ import net.sf.anathema.cards.data.SpellCardData;
 import net.sf.anathema.cards.layout.ICardReportResourceProvider;
 import net.sf.anathema.character.main.magic.model.spells.ISpell;
 import net.sf.anathema.hero.experience.ExperienceModelFetcher;
-import net.sf.anathema.hero.spells.SpellsModelFetcher;
+import net.sf.anathema.hero.spells.model.SpellsModelFetcher;
 import net.sf.anathema.hero.spells.sheet.content.SpellStats;
 import net.sf.anathema.framework.IApplicationModel;
 import net.sf.anathema.hero.model.Hero;

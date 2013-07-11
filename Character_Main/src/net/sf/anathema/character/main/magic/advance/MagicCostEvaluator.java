@@ -8,8 +8,8 @@ import net.sf.anathema.character.main.magic.model.magic.Magic;
 import net.sf.anathema.hero.charms.model.CharmsModel;
 import net.sf.anathema.hero.charms.model.CharmsModelFetcher;
 import net.sf.anathema.hero.model.Hero;
-import net.sf.anathema.hero.spells.SpellModel;
-import net.sf.anathema.hero.spells.SpellsModelFetcher;
+import net.sf.anathema.hero.spells.model.SpellModel;
+import net.sf.anathema.hero.spells.model.SpellsModelFetcher;
 
 import java.util.ArrayList;
 import java.util.Arrays;

@@ -3,10 +3,10 @@ package net.sf.anathema.hero.languages.persistence;
 import net.sf.anathema.hero.languages.model.LanguagesModel;
 import net.sf.anathema.hero.model.Hero;
 import net.sf.anathema.hero.persistence.AbstractModelJsonPersister;
-import net.sf.anathema.hero.persistence.HeroModelPersisterCollected;
+import net.sf.anathema.hero.persistence.RegisteredHeroModelPersister;
 import net.sf.anathema.lib.util.Identifier;
 
-@HeroModelPersisterCollected
+@RegisteredHeroModelPersister
 public class LanguagesPersister extends AbstractModelJsonPersister<LanguagesPto, LanguagesModel> {
 
   public LanguagesPersister() {

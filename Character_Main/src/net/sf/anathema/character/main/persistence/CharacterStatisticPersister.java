@@ -10,14 +10,12 @@ import net.sf.anathema.character.main.template.ITemplateType;
 import net.sf.anathema.character.main.template.TemplateType;
 import net.sf.anathema.character.main.traits.types.OtherTraitType;
 import net.sf.anathema.character.main.type.ICharacterType;
-import net.sf.anathema.framework.messaging.IMessaging;
 import net.sf.anathema.hero.concept.HeroConcept;
 import net.sf.anathema.hero.concept.HeroConceptFetcher;
 import net.sf.anathema.hero.description.HeroDescription;
 import net.sf.anathema.hero.description.HeroDescriptionFetcher;
 import net.sf.anathema.hero.experience.ExperienceModelFetcher;
 import net.sf.anathema.hero.model.Hero;
-import net.sf.anathema.hero.spells.SpellsModelFetcher;
 import net.sf.anathema.hero.traits.TraitModelFetcher;
 import net.sf.anathema.lib.exception.PersistenceException;
 import net.sf.anathema.lib.util.Identifier;
@@ -36,7 +34,6 @@ public class CharacterStatisticPersister {
   private final EssenceConfigurationPersister essencePersister = new EssenceConfigurationPersister();
   private final VirtueConfigurationPersister virtuePersister = new VirtueConfigurationPersister();
   private final WillpowerConfigurationPersister willpowerPersister = new WillpowerConfigurationPersister();
-  private final SpellConfigurationPersister spellPersister = new SpellConfigurationPersister();
   private final ExperiencePointsPersister experiencePersister = new ExperiencePointsPersister();
   private final RulesPersister rulesPersister = new RulesPersister();
   private final HeroEnvironment generics;
@@ -60,7 +57,6 @@ public class CharacterStatisticPersister {
     essencePersister.save(statisticsElement, TraitModelFetcher.fetch(hero));
     willpowerPersister.save(statisticsElement, TraitModelFetcher.fetch(hero).getTrait(OtherTraitType.Willpower));
     virtuePersister.save(statisticsElement, TraitModelFetcher.fetch(hero));
-    spellPersister.save(statisticsElement, SpellsModelFetcher.fetch(hero));
     experiencePersister.save(statisticsElement, ExperienceModelFetcher.fetch(hero).getExperiencePoints());
   }
 
@@ -82,7 +78,6 @@ public class CharacterStatisticPersister {
       ExperienceModelFetcher.fetch(character).setExperienced(experienced);
       essencePersister.load(statisticsElement, TraitModelFetcher.fetch(character));
       virtuePersister.load(statisticsElement, TraitModelFetcher.fetch(character));
-      spellPersister.load(statisticsElement, SpellsModelFetcher.fetch(character));
       experiencePersister.load(statisticsElement, ExperienceModelFetcher.fetch(character).getExperiencePoints());
       willpowerPersister.load(statisticsElement, TraitModelFetcher.fetch(character).getTrait(OtherTraitType.Willpower));
       return character;

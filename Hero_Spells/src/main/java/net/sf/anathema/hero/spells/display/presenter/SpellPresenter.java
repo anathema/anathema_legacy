@@ -7,7 +7,7 @@ import net.sf.anathema.hero.experience.ExperienceModel;
 import net.sf.anathema.hero.magic.display.MagicLearnPresenter;
 import net.sf.anathema.hero.magic.display.MagicLearnView;
 import net.sf.anathema.hero.magic.display.MagicViewListener;
-import net.sf.anathema.hero.spells.SpellModel;
+import net.sf.anathema.hero.spells.model.SpellModel;
 import net.sf.anathema.hero.spells.model.CircleModel;
 import net.sf.anathema.lib.compare.I18nedIdentificateSorter;
 import net.sf.anathema.lib.control.ChangeListener;
@@ -19,7 +19,7 @@ import java.util.List;
 
 public class SpellPresenter {
 
-  private final net.sf.anathema.hero.spells.SpellModel spellConfiguration;
+  private final SpellModel spellConfiguration;
   private final CombinedSpellAndMagicProperties properties;
   private final CircleModel circleModel;
   private final Resources resources;

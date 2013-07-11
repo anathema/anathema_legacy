@@ -10,11 +10,11 @@ import net.sf.anathema.hero.equipment.EquipmentModel;
 import net.sf.anathema.hero.equipment.model.MissingMaterialException;
 import net.sf.anathema.hero.model.Hero;
 import net.sf.anathema.hero.persistence.AbstractModelJsonPersister;
-import net.sf.anathema.hero.persistence.HeroModelPersisterCollected;
+import net.sf.anathema.hero.persistence.RegisteredHeroModelPersister;
 import net.sf.anathema.lib.logging.Logger;
 import net.sf.anathema.lib.util.Identifier;
 
-@HeroModelPersisterCollected
+@RegisteredHeroModelPersister
 public class EquipmentModelPersister extends AbstractModelJsonPersister<EquipmentListPto, EquipmentModel> {
 
    private final Logger logger = Logger.getLogger(EquipmentModelPersister.class);

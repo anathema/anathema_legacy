@@ -6,7 +6,7 @@ import net.sf.anathema.hero.charms.model.CharmsModel;
 import net.sf.anathema.hero.charms.persistence.special.SpecialCharmListPersister;
 import net.sf.anathema.hero.model.Hero;
 import net.sf.anathema.hero.persistence.AbstractModelJsonPersister;
-import net.sf.anathema.hero.persistence.HeroModelPersisterCollected;
+import net.sf.anathema.hero.persistence.RegisteredHeroModelPersister;
 import net.sf.anathema.lib.message.MessageType;
 import net.sf.anathema.lib.util.Identifier;
 
@@ -16,7 +16,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-@HeroModelPersisterCollected
+@RegisteredHeroModelPersister
 public class CharmsPersister extends AbstractModelJsonPersister<CharmListPto, CharmsModel> {
 
   public CharmsPersister() {

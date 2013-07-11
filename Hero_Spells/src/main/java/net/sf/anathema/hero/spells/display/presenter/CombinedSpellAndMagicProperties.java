@@ -5,7 +5,7 @@ import net.sf.anathema.character.main.magic.model.spells.ISpell;
 import net.sf.anathema.framework.ui.IdentifierConfiguration;
 import net.sf.anathema.hero.experience.ExperienceModel;
 import net.sf.anathema.hero.magic.display.AbstractMagicLearnProperties;
-import net.sf.anathema.hero.spells.SpellModel;
+import net.sf.anathema.hero.spells.model.SpellModel;
 import net.sf.anathema.hero.spells.model.SpellLegality;
 import net.sf.anathema.lib.gui.AgnosticUIConfiguration;
 import net.sf.anathema.lib.gui.list.LegalityCheck;
@@ -16,7 +16,7 @@ import java.util.List;
 
 public class CombinedSpellAndMagicProperties extends AbstractMagicLearnProperties implements SpellViewProperties {
 
-  private final net.sf.anathema.hero.spells.SpellModel spellConfiguration;
+  private final SpellModel spellConfiguration;
   private final SpellTooltipBuilder tooltipBuilder;
   private final ExperienceModel experienceModel;
 

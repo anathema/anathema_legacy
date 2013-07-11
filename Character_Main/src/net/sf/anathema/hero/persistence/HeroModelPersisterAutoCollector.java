@@ -15,6 +15,6 @@ public class HeroModelPersisterAutoCollector {
 
   public Collection<HeroModelPersister> collect() {
     ObjectFactory objectFactory = generics.getObjectFactory();
-    return objectFactory.instantiateAll(HeroModelPersisterCollected.class);
+    return objectFactory.instantiateAll(RegisteredHeroModelPersister.class);
   }
 }

@@ -6,12 +6,12 @@ import net.sf.anathema.character.main.library.trait.subtrait.ISubTraitContainer;
 import net.sf.anathema.character.main.traits.types.AbilityType;
 import net.sf.anathema.hero.model.Hero;
 import net.sf.anathema.hero.persistence.AbstractModelJsonPersister;
-import net.sf.anathema.hero.persistence.HeroModelPersisterCollected;
+import net.sf.anathema.hero.persistence.RegisteredHeroModelPersister;
 import net.sf.anathema.hero.traits.persistence.TraitPersister;
 import net.sf.anathema.hero.traits.persistence.TraitPto;
 import net.sf.anathema.lib.util.Identifier;
 
-@HeroModelPersisterCollected
+@RegisteredHeroModelPersister
 public class SpecialtiesPersister extends AbstractModelJsonPersister<SpecialtiesPto, SpecialtiesModel> {
 
   private final TraitPersister traitPersister = new TraitPersister();

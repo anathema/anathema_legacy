@@ -3,8 +3,8 @@ package net.sf.anathema.character.main.advance.models;
 import net.sf.anathema.character.main.advance.PointCostCalculator;
 import net.sf.anathema.character.main.magic.model.spells.ISpell;
 import net.sf.anathema.hero.model.Hero;
-import net.sf.anathema.hero.spells.SpellModel;
-import net.sf.anathema.hero.spells.SpellsModelFetcher;
+import net.sf.anathema.hero.spells.model.SpellModel;
+import net.sf.anathema.hero.spells.model.SpellsModelFetcher;
 import net.sf.anathema.hero.traits.TraitMap;
 
 public class SpellExperienceModel extends AbstractIntegerValueModel {

@@ -13,7 +13,7 @@ import net.sf.anathema.character.main.testing.dummy.magic.DummySpell;
 import net.sf.anathema.character.main.testing.dummy.magic.DummySpellModel;
 import net.sf.anathema.character.main.traits.context.CreationTraitValueStrategy;
 import net.sf.anathema.character.main.traits.types.AbilityType;
-import net.sf.anathema.hero.spells.SpellModel;
+import net.sf.anathema.hero.spells.model.SpellModel;
 import net.sf.anathema.hero.traits.TraitModel;
 import net.sf.anathema.hero.traits.TraitModelFetcher;
 import org.junit.Before;

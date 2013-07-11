@@ -26,7 +26,7 @@ import net.sf.anathema.hero.charms.sheet.content.CharmContentHelper;
 import net.sf.anathema.hero.charms.sheet.content.stats.CharmStats;
 import net.sf.anathema.hero.experience.ExperienceModelFetcher;
 import net.sf.anathema.hero.model.Hero;
-import net.sf.anathema.hero.spells.SpellsModelFetcher;
+import net.sf.anathema.hero.spells.model.SpellsModelFetcher;
 import net.sf.anathema.hero.spells.sheet.content.SpellStats;
 import net.sf.anathema.lib.resources.Resources;
 

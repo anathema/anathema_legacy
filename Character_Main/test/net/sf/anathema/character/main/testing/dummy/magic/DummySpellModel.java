@@ -5,7 +5,7 @@ import net.sf.anathema.character.main.magic.model.spells.ISpell;
 import net.sf.anathema.hero.change.ChangeAnnouncer;
 import net.sf.anathema.hero.model.Hero;
 import net.sf.anathema.hero.model.InitializationContext;
-import net.sf.anathema.hero.spells.SpellModel;
+import net.sf.anathema.hero.spells.model.SpellModel;
 import net.sf.anathema.lib.control.ChangeListener;
 import net.sf.anathema.lib.exception.NotYetImplementedException;
 import net.sf.anathema.lib.util.Identifier;
