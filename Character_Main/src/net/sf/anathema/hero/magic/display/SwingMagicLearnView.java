@@ -154,11 +154,6 @@ public class SwingMagicLearnView implements MagicLearnView {
     return learnedList.getModel();
   }
 
-  @Override
-  public void clearSelection() {
-    learnedList.clearSelection();
-  }
-
   public void addSelectionListListener(ListSelectionListener listener) {
     learnedList.addListSelectionListener(listener);
   }

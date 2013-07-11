@@ -85,7 +85,10 @@ public class DummySpellModel implements SpellModel {
 
   @Override
   public void addSpells(List<ISpell> addedSpells, boolean experienced) {
-    throw new NotYetImplementedException();
+    if (experienced) {
+      throw new IllegalArgumentException("Not implemented");
+    }
+    spells.addAll(addedSpells);
   }
 
   @Override
@@ -93,7 +96,7 @@ public class DummySpellModel implements SpellModel {
     if (experienced) {
       throw new IllegalArgumentException("Not implemented");
     }
-    spells.removeAll(Arrays.asList(removedSpells));
+    spells.removeAll(removedSpells);
   }
 
   @Override
