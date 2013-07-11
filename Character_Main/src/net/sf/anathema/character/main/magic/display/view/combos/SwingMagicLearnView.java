@@ -1,6 +1,10 @@
-package net.sf.anathema.hero.magic.display;
+package net.sf.anathema.character.main.magic.display.view.combos;
 
 import net.miginfocom.layout.CC;
+import net.sf.anathema.hero.magic.display.AddToButtonPanel;
+import net.sf.anathema.hero.magic.display.LegalityCheckListCellRenderer;
+import net.sf.anathema.hero.magic.display.MagicLearnProperties;
+import net.sf.anathema.hero.magic.display.MagicLearnView;
 import net.sf.anathema.interaction.Tool;
 import net.sf.anathema.lib.control.ChangeListener;
 import net.sf.anathema.lib.gui.ui.ConfigurableListCellRenderer;
@@ -28,7 +32,7 @@ public class SwingMagicLearnView implements MagicLearnView {
   private final JPanel centerButtons = new JPanel(new GridLayout(0, 1));
   private final JPanel endButtons = new JPanel(new GridLayout(0, 1));
 
-  public void init(final MagicLearnProperties properties) {
+  public SwingMagicLearnView(final MagicLearnProperties properties) {
     availableMagicList.setCellRenderer(new LegalityCheckListCellRenderer(properties.getLegalityCheck(), properties.getAvailableMagicRenderer()));
     availableMagicList.setSelectionMode(SINGLE_SELECTION);
     ListCellRenderer renderer = new ConfigurableListCellRenderer(properties.getLearnedMagicRenderer());

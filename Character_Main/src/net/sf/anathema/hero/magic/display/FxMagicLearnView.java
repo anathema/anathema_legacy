@@ -2,9 +2,14 @@ package net.sf.anathema.hero.magic.display;
 
 import com.sun.javafx.collections.ObservableListWrapper;
 import javafx.beans.value.ObservableValue;
+import javafx.scene.Node;
 import javafx.scene.control.ListView;
+import javafx.scene.control.SelectionMode;
+import net.miginfocom.layout.CC;
 import net.sf.anathema.interaction.Tool;
 import net.sf.anathema.lib.control.ChangeListener;
+import net.sf.anathema.platform.fx.ConfigurableListCellFactory;
+import net.sf.anathema.platform.fx.FxThreading;
 import net.sf.anathema.platform.tool.FxButtonTool;
 import org.jmock.example.announcer.Announcer;
 import org.tbee.javafx.scene.layout.MigPane;
@@ -14,15 +19,31 @@ import java.util.List;
 import static net.sf.anathema.lib.gui.layout.LayoutUtils.withoutInsets;
 
 public class FxMagicLearnView implements MagicLearnView {
-  private final Announcer<MagicViewListener> control = Announcer.to(MagicViewListener.class);
   private final ListView availableMagicList = new ListView();
   private final ListView learnedMagicList = new ListView();
   private final MigPane centerButtons = new MigPane(withoutInsets().wrapAfter(1));
   private final MigPane endButtons = new MigPane(withoutInsets().wrapAfter(1));
+  private final MigPane content = new MigPane(withoutInsets().fill());
+
+
+  public FxMagicLearnView(MagicLearnProperties properties) {
+    availableMagicList.setCellFactory(new ConfigurableListCellFactory(properties.getAvailableMagicRenderer()));
+    availableMagicList.getSelectionModel().setSelectionMode(SelectionMode.SINGLE);
+    learnedMagicList.setCellFactory(new ConfigurableListCellFactory(properties.getAvailableMagicRenderer()));
+    content.add(availableMagicList, new CC().grow().push());
+    content.add(centerButtons);
+    content.add(learnedMagicList, new CC().grow().push());
+    content.add(endButtons);
+  }
 
   @Override
-  public void setAvailableMagic(List magics) {
-    availableMagicList.setItems(new ObservableListWrapper(magics));
+  public void setAvailableMagic(final List magics) {
+    FxThreading.runOnCorrectThread(new Runnable() {
+      @Override
+      public void run() {
+        availableMagicList.setItems(new ObservableListWrapper(magics));
+      }
+    });
   }
 
   @Override
@@ -77,7 +98,7 @@ public class FxMagicLearnView implements MagicLearnView {
 
   @Override
   public void addLearnedMagicSelectedListener(final ChangeListener changeListener) {
-    addChangeListener(changeListener, availableMagicList);
+    addChangeListener(changeListener, learnedMagicList);
   }
 
   private void addChangeListener(final ChangeListener changeListener, ListView list) {
@@ -89,9 +110,18 @@ public class FxMagicLearnView implements MagicLearnView {
     });
   }
 
-  private Tool addToolTo(MigPane target) {
-    FxButtonTool tool = FxButtonTool.ForAnyPurpose();
-    target.add(tool.getNode());
+  private Tool addToolTo(final MigPane target) {
+    final FxButtonTool tool = FxButtonTool.ForAnyPurpose();
+    FxThreading.runOnCorrectThread(new Runnable() {
+      @Override
+      public void run() {
+        target.add(tool.getNode());
+      }
+    });
     return tool;
+  }
+
+  public Node getNode() {
+    return content;
   }
 }

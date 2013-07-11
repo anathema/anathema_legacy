@@ -10,6 +10,7 @@ public class SpellViewFactory implements SubViewFactory {
   @SuppressWarnings("unchecked")
   @Override
   public <T> T create(ICharacterType type) {
-    return (T) new SwingSpellView();
+    FxSpellView fxView = new FxSpellView();
+    return (T) new BridgingSpellView(fxView);
   }
 }

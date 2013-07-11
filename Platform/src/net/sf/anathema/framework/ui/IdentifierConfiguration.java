@@ -12,12 +12,12 @@ public class IdentifierConfiguration extends AbstractUIConfiguration<Identifier>
   }
 
   @Override
-  public String getLabel(Identifier value) {
+  protected String tooltipForExistingValue(Identifier value) {
     return resources.getString(value.getId());
   }
 
   @Override
-  public String getToolTipText(Identifier value) {
+  protected String labelForExistingValue(Identifier value) {
     return getLabel(value);
   }
 }
