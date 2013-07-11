@@ -1,10 +1,14 @@
-package net.sf.anathema.hero.combos.display;
+package net.sf.anathema.hero.combos.display.view;
 
 import com.google.common.base.Preconditions;
 import net.miginfocom.layout.CC;
 import net.miginfocom.layout.LC;
 import net.miginfocom.swing.MigLayout;
 import net.sf.anathema.framework.swing.IView;
+import net.sf.anathema.hero.combos.display.presenter.ComboConfigurationView;
+import net.sf.anathema.hero.combos.display.presenter.ComboView;
+import net.sf.anathema.hero.combos.display.presenter.ComboViewListener;
+import net.sf.anathema.hero.combos.display.presenter.ComboViewProperties;
 import net.sf.anathema.hero.magic.display.MagicLearnPresenter;
 import net.sf.anathema.hero.magic.display.MagicViewListener;
 import net.sf.anathema.interaction.Command;
