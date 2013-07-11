@@ -110,8 +110,8 @@ public class SwingMagicLearnView implements MagicLearnView {
   }
 
   @Override
-  public void setMagicOptions(Object[] magics) {
-    exchangeObjects((DefaultListModel) learnOptionsList.getModel(), magics);
+  public void setMagicOptions(List magics) {
+    exchangeObjects((DefaultListModel) learnOptionsList.getModel(), magics.toArray(new Object[magics.size()]));
   }
 
   private void exchangeObjects(DefaultListModel listModel, Object[] magic) {

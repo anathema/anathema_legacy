@@ -9,7 +9,7 @@ public interface MagicLearnView {
 
   void addMagicOptions(List<Identifier> magics, Comparator<Identifier> comparator);
 
-  void setMagicOptions(Object[] magics);
+  void setMagicOptions(List magics);
 
   void removeMagicOptions(List magics);
 

@@ -34,7 +34,7 @@ public class SpellPresenter {
   public SpellPresenter(CircleModel circleModel, Hero hero, Resources resources, SpellView view,
                         MagicDescriptionProvider magicDescriptionProvider) {
     this.circleModel = circleModel;
-    this.hero  = hero;
+    this.hero = hero;
     SpellViewProperties properties = new SpellViewProperties(resources, hero, magicDescriptionProvider);
     this.resources = resources;
     this.spellConfiguration = SpellsModelFetcher.fetch(hero);
@@ -92,7 +92,7 @@ public class SpellPresenter {
         view.clearSelection();
       }
     });
-   }
+  }
 
   private void initSpellListsInView(SpellView spellView) {
     spellView.setLearnedMagic(getCircleFilteredSpellList(spellConfiguration.getLearnedSpells()));
@@ -121,15 +121,11 @@ public class SpellPresenter {
     return supportedSpells;
   }
 
-  private ISpell[] getSpellsToShow() {
+  private List<ISpell> getSpellsToShow() {
     List<ISpell> showSpells = new ArrayList<>();
     Collections.addAll(showSpells, spellConfiguration.getSpellsByCircle(circle));
     showSpells.removeAll(Arrays.asList(spellConfiguration.getLearnedSpells()));
-    int count = showSpells.size();
-    ISpell[] sortedSpells = new ISpell[count];
-    sortedSpells = new I18nedIdentificateSorter<ISpell>().sortAscending(showSpells.toArray(new ISpell[count]),
-            sortedSpells, resources);
-    return sortedSpells;
+    return new I18nedIdentificateSorter<ISpell>().sortAscending(showSpells, resources);
   }
 
   private ISpell[] getCircleFilteredSpellList(ISpell[] spells) {

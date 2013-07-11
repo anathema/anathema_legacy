@@ -1,15 +1,15 @@
 package net.sf.anathema.hero.charms.display.tree;
 
 import net.sf.anathema.character.main.magic.display.view.charmtree.CascadeSelectionView;
-import net.sf.anathema.hero.charms.display.coloring.CharmDye;
-import net.sf.anathema.hero.charms.model.CharmTypes;
-import net.sf.anathema.hero.charms.display.special.NullSpecialCharmPresenter;
-import net.sf.anathema.character.main.presenter.SelectIdentifierConfiguration;
-import net.sf.anathema.hero.charms.display.special.SpecialCharmViewPresenter;
-import net.sf.anathema.character.main.magic.model.charmtree.GroupCharmTree;
-import net.sf.anathema.character.main.magic.model.charm.ICharmGroup;
 import net.sf.anathema.character.main.magic.display.view.charmtree.ICharmGroupChangeListener;
+import net.sf.anathema.character.main.magic.model.charm.ICharmGroup;
+import net.sf.anathema.character.main.magic.model.charmtree.GroupCharmTree;
+import net.sf.anathema.character.main.presenter.SelectIdentifierConfiguration;
+import net.sf.anathema.hero.charms.display.coloring.CharmDye;
+import net.sf.anathema.hero.charms.display.special.NullSpecialCharmPresenter;
+import net.sf.anathema.hero.charms.display.special.SpecialCharmViewPresenter;
 import net.sf.anathema.hero.charms.model.CharmGroupCollection;
+import net.sf.anathema.hero.charms.model.CharmTypes;
 import net.sf.anathema.lib.compare.I18nedIdentificateSorter;
 import net.sf.anathema.lib.control.ObjectValueListener;
 import net.sf.anathema.lib.gui.AgnosticUIConfiguration;
@@ -19,6 +19,7 @@ import net.sf.anathema.platform.tree.presenter.view.CascadeLoadedListener;
 
 import java.util.ArrayList;
 import java.util.Collections;
+import java.util.List;
 
 public abstract class AbstractCascadePresenter implements ICascadeSelectionPresenter {
 
@@ -92,15 +93,10 @@ public abstract class AbstractCascadePresenter implements ICascadeSelectionPrese
     view.addCharmCascadeHelp(resources.getString("CharmTreeView.GUI.HelpText"));
   }
 
-  private ICharmGroup[] sortCharmGroups(ICharmGroup[] originalGroups) {
+  private List<ICharmGroup> sortCharmGroups(ICharmGroup[] originalGroups) {
     ArrayList<ICharmGroup> filteredGroups = new ArrayList<>();
     Collections.addAll(filteredGroups, originalGroups);
-    ICharmGroup[] filteredGroupArray = filteredGroups.toArray(new ICharmGroup[filteredGroups.size()]);
-    if (!filteredGroups.isEmpty()) {
-      I18nedIdentificateSorter<ICharmGroup> sorter = new I18nedIdentificateSorter<>();
-      return sorter.sortAscending(filteredGroupArray, new ICharmGroup[filteredGroups.size()], resources);
-    }
-    return filteredGroupArray;
+    return new I18nedIdentificateSorter<ICharmGroup>().sortAscending(filteredGroups, resources);
   }
 
   protected void setSpecialPresenter(SpecialCharmViewPresenter presenter) {
@@ -134,8 +130,8 @@ public abstract class AbstractCascadePresenter implements ICascadeSelectionPrese
       return;
     }
     ICharmGroup[] allCharmGroups = charmTree.getAllCharmGroups();
-    ICharmGroup[] sortedCharmGroups = sortCharmGroups(allCharmGroups);
-    view.fillCharmGroupBox(sortedCharmGroups);
+    List<ICharmGroup> sortedGroups = sortCharmGroups(allCharmGroups);
+    view.fillCharmGroupBox(sortedGroups.toArray(new ICharmGroup[sortedGroups.size()]));
     specialCharmPresenter.showSpecialViews();
   }
 

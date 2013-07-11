@@ -1,29 +1,29 @@
 package net.sf.anathema.lib.compare;
 
-import com.google.common.base.Preconditions;
 import net.sf.anathema.lib.resources.Resources;
 import net.sf.anathema.lib.util.Identifier;
 
-import java.util.Arrays;
+import java.util.ArrayList;
+import java.util.Collections;
 import java.util.Comparator;
+import java.util.List;
 
 public class I18nedIdentificateSorter<T extends Identifier> {
 
-  public T[] sortAscending(T[] originalGroup, T[] emptyArray, final Resources resources) {
-    Preconditions.checkState(originalGroup.length == emptyArray.length, "Arrays must be of equal length");
-    System.arraycopy(originalGroup, 0, emptyArray, 0, emptyArray.length);
-    Arrays.sort(emptyArray, new Comparator<T>() {
+  public List<T> sortAscending(List<T> originalGroup, final Resources resources) {
+    ArrayList<T> listCopy = new ArrayList<>(originalGroup);
+    Collections.sort(listCopy, new Comparator<T>() {
       @Override
-      public int compare(T group1, T group2) {
-        String firstGroupName = getString(resources, group1);
-        String secondGroupName = getString(resources, group2);
+      public int compare(T id1, T id2) {
+        String firstGroupName = getString(resources, id1);
+        String secondGroupName = getString(resources, id2);
         return firstGroupName.compareToIgnoreCase(secondGroupName);
       }
     });
-    return emptyArray;
+    return listCopy;
   }
 
-  protected String getString(Resources resources, T group1) {
-    return resources.getString(group1.getId());
+  private String getString(Resources resources, T identifier) {
+    return resources.getString(identifier.getId());
   }
 }

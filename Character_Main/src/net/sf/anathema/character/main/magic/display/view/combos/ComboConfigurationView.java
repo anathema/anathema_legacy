@@ -25,6 +25,7 @@ import javax.swing.JScrollPane;
 import javax.swing.ListModel;
 import javax.swing.event.ListDataEvent;
 import javax.swing.event.ListDataListener;
+import java.util.Arrays;
 
 import static net.sf.anathema.lib.gui.swing.GuiUtilities.revalidate;
 
@@ -134,7 +135,7 @@ public class ComboConfigurationView implements IComboConfigurationView, IView {
 
   @Override
   public void setAllCharms(Object[] charms) {
-    magicLearnView.setMagicOptions(charms);
+    magicLearnView.setMagicOptions(Arrays.asList(charms));
   }
 
   @Override

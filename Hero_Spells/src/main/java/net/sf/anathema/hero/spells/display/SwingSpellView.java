@@ -73,7 +73,7 @@ public class SwingSpellView implements SpellView, IView {
   }
 
   @Override
-  public void setMagicOptions(Object[] spells) {
+  public void setMagicOptions(List spells) {
     magicLearnView.setMagicOptions(spells);
   }
 
