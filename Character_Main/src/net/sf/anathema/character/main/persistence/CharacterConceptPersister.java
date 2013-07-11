@@ -1,12 +1,10 @@
 package net.sf.anathema.character.main.persistence;
 
 import net.sf.anathema.character.main.IIntegerDescription;
-import net.sf.anathema.framework.persistence.TextPersister;
 import net.sf.anathema.hero.concept.CasteCollection;
 import net.sf.anathema.hero.concept.CasteSelection;
 import net.sf.anathema.hero.concept.CasteType;
 import net.sf.anathema.hero.concept.HeroConcept;
-import net.sf.anathema.hero.description.HeroDescription;
 import net.sf.anathema.lib.exception.PersistenceException;
 import net.sf.anathema.lib.xml.ElementUtilities;
 import org.dom4j.Element;
@@ -15,11 +13,9 @@ import static net.sf.anathema.character.main.persistence.ICharacterXmlConstants.
 import static net.sf.anathema.character.main.persistence.ICharacterXmlConstants.ATTRIB_TYPE;
 import static net.sf.anathema.character.main.persistence.ICharacterXmlConstants.TAG_CASTE;
 import static net.sf.anathema.character.main.persistence.ICharacterXmlConstants.TAG_CHARACTER_CONCEPT;
-import static net.sf.anathema.character.main.persistence.ICharacterXmlConstants.TAG_CONCEPT;
 
 public class CharacterConceptPersister {
 
-  private final TextPersister textPersister = new TextPersister();
 
   public void save(Element parent, HeroConcept heroConcept) {
     Element characterConceptElement = parent.addElement(TAG_CHARACTER_CONCEPT);
@@ -39,12 +35,10 @@ public class CharacterConceptPersister {
     parent.addAttribute(ATTRIB_AGE, Integer.toString(age.getValue()));
   }
 
-  public void load(Element parent, HeroConcept heroConcept, HeroDescription description) throws
-          PersistenceException {
+  public void load(Element parent, HeroConcept heroConcept) throws PersistenceException {
     Element conceptElement = parent.element(TAG_CHARACTER_CONCEPT);
     loadCaste(conceptElement, heroConcept, heroConcept.getCasteCollection());
     loadAge(conceptElement, heroConcept);
-    textPersister.restoreTextualDescription(conceptElement, TAG_CONCEPT, description.getConcept());
   }
 
   private void loadCaste(Element parent, HeroConcept heroConcept, CasteCollection casteCollection) throws PersistenceException {
