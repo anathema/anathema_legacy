@@ -2,7 +2,7 @@ package net.sf.anathema.hero.magic.display;
 
 public interface MagicViewListener {
 
-  void magicRemoved(Object[] removedMagic);
+  void removeMagicRequested(Object[] removedMagic);
 
-  void magicAdded(Object[] addedMagic);
+  void addMagicRequested(Object[] addedMagic);
 }
