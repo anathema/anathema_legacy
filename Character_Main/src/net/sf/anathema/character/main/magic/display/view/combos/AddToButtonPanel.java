@@ -1,4 +1,4 @@
-package net.sf.anathema.hero.magic.display;
+package net.sf.anathema.character.main.magic.display.view.combos;
 
 import net.sf.anathema.framework.view.menu.AddToSwingComponent;
 

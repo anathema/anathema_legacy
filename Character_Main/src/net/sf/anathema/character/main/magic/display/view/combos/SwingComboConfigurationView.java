@@ -7,7 +7,6 @@ import net.miginfocom.swing.MigLayout;
 import net.sf.anathema.framework.swing.IView;
 import net.sf.anathema.hero.magic.display.MagicLearnPresenter;
 import net.sf.anathema.hero.magic.display.MagicViewListener;
-import net.sf.anathema.hero.magic.display.SwingMagicLearnView;
 import net.sf.anathema.interaction.Command;
 import net.sf.anathema.interaction.Tool;
 import net.sf.anathema.lib.control.ChangeListener;
@@ -30,7 +29,7 @@ import static net.sf.anathema.lib.gui.swing.GuiUtilities.revalidate;
 
 public class SwingComboConfigurationView implements ComboConfigurationView, IView {
   private static final int TEXT_COLUMNS = 20;
-  private SwingMagicLearnView magicLearnView = new SwingMagicLearnView();
+  private SwingMagicLearnView magicLearnView;
   private final JPanel viewPort = new JPanel(new MigLayout(new LC().insets("6").fill().wrapAfter(5)));
   private final JComponent content = new JScrollPane(viewPort);
   private final Announcer<ComboViewListener> comboViewListeners = Announcer.to(ComboViewListener.class);
@@ -47,8 +46,7 @@ public class SwingComboConfigurationView implements ComboConfigurationView, IVie
   @Override
   public void initGui(final ComboViewProperties viewProperties) {
     this.properties = viewProperties;
-    this.magicLearnView = new SwingMagicLearnView();
-    magicLearnView.init(viewProperties);
+    this.magicLearnView = new SwingMagicLearnView(viewProperties);
     this.magicLearnPresenter = new MagicLearnPresenter(magicLearnView);
     magicLearnPresenter.initPresentation(properties);
 

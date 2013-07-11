@@ -16,12 +16,12 @@ public class SpellUiConfiguration extends AbstractUIConfiguration {
   }
 
   @Override
-  public String getLabel(Object value) {
+  protected String labelForExistingValue(Object value) {
     return resources.getString(((Identifier) value).getId());
   }
 
   @Override
-  public String getToolTipText(Object value) {
+  protected String tooltipForExistingValue(Object value) {
     return tooltipBuilder.createTooltip((ISpell) value);
   }
 }
