@@ -9,7 +9,6 @@ import net.sf.anathema.hero.magic.display.MagicViewListener;
 import net.sf.anathema.hero.model.Hero;
 import net.sf.anathema.hero.spells.SpellsModelFetcher;
 import net.sf.anathema.hero.spells.model.CircleModel;
-import net.sf.anathema.lib.compare.I18nedIdentificateComparator;
 import net.sf.anathema.lib.compare.I18nedIdentificateSorter;
 import net.sf.anathema.lib.control.ChangeListener;
 import net.sf.anathema.lib.control.ObjectValueListener;
@@ -75,15 +74,15 @@ public class SpellPresenter {
     spellConfiguration.addMagicLearnListener(new IMagicLearnListener<ISpell>() {
       @Override
       public void magicForgotten(ISpell[] magic) {
-        forgetSpellListsInView(view, magic);
+        refreshSpellListsInView(view);
       }
 
       @Override
       public void magicLearned(ISpell[] magic) {
-        learnSpellListsInView(view, magic);
+        refreshSpellListsInView(view);
       }
     });
-    initSpellListsInView(view);
+    refreshSpellListsInView(view);
     ExperienceModelFetcher.fetch(hero).addStateChangeListener(new ChangeListener() {
       @Override
       public void changeOccurred() {
@@ -92,31 +91,9 @@ public class SpellPresenter {
     });
   }
 
-  private void initSpellListsInView(SpellView spellView) {
+  private void refreshSpellListsInView(SpellView spellView) {
     showLearnedSpells(spellView);
     showAvailableSpells(spellView);
-  }
-
-  private void forgetSpellListsInView(SpellView spellView, ISpell[] spells) {
-    spellView.removeLearnedMagic(spells);
-    List<Identifier> supportedSpells = getSpellsOfCurrentCircle(spells);
-    spellView.addMagicOptions(supportedSpells, new I18nedIdentificateComparator(resources));
-  }
-
-  private void learnSpellListsInView(SpellView spellView, ISpell[] spells) {
-    List<Identifier> supportedSpells = getSpellsOfCurrentCircle(spells);
-    spellView.addLearnedMagic(supportedSpells);
-    spellView.removeMagicOptions(supportedSpells);
-  }
-
-  private List<Identifier> getSpellsOfCurrentCircle(ISpell[] spells) {
-    List<Identifier> supportedSpells = new ArrayList<>();
-    for (ISpell spell : spells) {
-      if (circle == spell.getCircleType()) {
-        supportedSpells.add(spell);
-      }
-    }
-    return supportedSpells;
   }
 
   private void showAvailableSpells(SpellView spellView) {
