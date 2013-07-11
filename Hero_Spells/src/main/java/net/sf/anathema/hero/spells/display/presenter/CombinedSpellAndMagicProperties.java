@@ -1,12 +1,11 @@
-package net.sf.anathema.hero.spells.display;
+package net.sf.anathema.hero.spells.display.presenter;
 
 import net.sf.anathema.character.main.magic.description.MagicDescriptionProvider;
 import net.sf.anathema.character.main.magic.model.spells.ISpell;
 import net.sf.anathema.framework.ui.IdentifierConfiguration;
-import net.sf.anathema.hero.experience.ExperienceModelFetcher;
+import net.sf.anathema.hero.experience.ExperienceModel;
 import net.sf.anathema.hero.magic.display.AbstractMagicLearnProperties;
-import net.sf.anathema.hero.model.Hero;
-import net.sf.anathema.hero.spells.SpellsModelFetcher;
+import net.sf.anathema.hero.spells.SpellModel;
 import net.sf.anathema.hero.spells.model.SpellLegality;
 import net.sf.anathema.lib.gui.AgnosticUIConfiguration;
 import net.sf.anathema.lib.gui.list.LegalityCheck;
@@ -15,18 +14,18 @@ import net.sf.anathema.lib.util.Identifier;
 
 import java.util.List;
 
-public class SpellViewProperties extends AbstractMagicLearnProperties implements ISpellViewProperties {
+public class CombinedSpellAndMagicProperties extends AbstractMagicLearnProperties implements SpellViewProperties {
 
   private final net.sf.anathema.hero.spells.SpellModel spellConfiguration;
-  private final Hero hero;
   private final SpellTooltipBuilder tooltipBuilder;
+  private final ExperienceModel experienceModel;
 
-  public SpellViewProperties(Resources resources, Hero hero,
-                             MagicDescriptionProvider magicDescriptionProvider) {
+  public CombinedSpellAndMagicProperties(Resources resources,
+                                         MagicDescriptionProvider magicDescriptionProvider, SpellModel spellConfiguration, ExperienceModel experience) {
     super(resources);
-    this.hero = hero;
-    this.spellConfiguration = SpellsModelFetcher.fetch(hero);
+    this.spellConfiguration = spellConfiguration;
     this.tooltipBuilder = new SpellTooltipBuilder(resources, this, magicDescriptionProvider);
+    this.experienceModel = experience;
   }
 
   @Override
@@ -67,7 +66,7 @@ public class SpellViewProperties extends AbstractMagicLearnProperties implements
   @Override
   public boolean isRemoveAllowed(List list) {
     boolean enabled = !list.isEmpty();
-    if (enabled && ExperienceModelFetcher.fetch(hero).isExperienced()) {
+    if (enabled && experienceModel.isExperienced()) {
       for (Object spellObject : list) {
         ISpell spell = (ISpell) spellObject;
         if (spellConfiguration.isLearnedOnCreation(spell)) {

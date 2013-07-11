@@ -1,4 +1,4 @@
-package net.sf.anathema.hero.spells.display;
+package net.sf.anathema.hero.spells.display.presenter;
 
 import net.sf.anathema.character.main.magic.description.MagicDescriptionProvider;
 import net.sf.anathema.character.main.magic.model.charmtree.builder.stringbuilder.MagicDescriptionStringBuilder;
@@ -11,10 +11,10 @@ import net.sf.anathema.lib.resources.Resources;
 public class SpellTooltipBuilder {
 
   private final Resources resources;
-  private final SpellViewProperties properties;
+  private final CombinedSpellAndMagicProperties properties;
   private MagicDescriptionProvider magicDescriptionProvider;
 
-  public SpellTooltipBuilder(Resources resources, SpellViewProperties properties, MagicDescriptionProvider magicDescriptionProvider) {
+  public SpellTooltipBuilder(Resources resources, CombinedSpellAndMagicProperties properties, MagicDescriptionProvider magicDescriptionProvider) {
     this.resources = resources;
     this.properties = properties;
     this.magicDescriptionProvider = magicDescriptionProvider;

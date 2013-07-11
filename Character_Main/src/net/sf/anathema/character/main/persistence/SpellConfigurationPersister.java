@@ -40,7 +40,7 @@ public class SpellConfigurationPersister {
         creationSpellList.add(spells.getSpellById(spellElement.attributeValue(ATTRIB_NAME)));
       }
     }
-    spells.addSpells(creationSpellList.toArray(new ISpell[creationSpellList.size()]), false);
-    spells.addSpells(experienceSpellList.toArray(new ISpell[experienceSpellList.size()]), true);
+    spells.addSpells(creationSpellList, false);
+    spells.addSpells(experienceSpellList, true);
   }
 }

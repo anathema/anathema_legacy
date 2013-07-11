@@ -1,6 +1,5 @@
 package net.sf.anathema.hero.spells;
 
-import net.sf.anathema.character.main.magic.model.magic.IMagicLearnListener;
 import net.sf.anathema.character.main.magic.model.spells.CircleType;
 import net.sf.anathema.character.main.magic.model.spells.ISpell;
 import net.sf.anathema.hero.model.HeroModel;
@@ -14,15 +13,13 @@ public interface SpellModel extends HeroModel {
 
   Identifier ID = new SimpleIdentifier("Spells");
 
-  void removeSpells(ISpell[] removedSpells);
+  void removeSpells(List<ISpell> removedSpells);
 
-  void addSpells(ISpell[] addedSpells);
+  void addSpells(List<ISpell> addedSpells);
 
   ISpell[] getLearnedSpells();
 
   void addChangeListener(ChangeListener listener);
-
-  void addMagicLearnListener(IMagicLearnListener<ISpell> listener);
 
   boolean isSpellAllowed(ISpell spell);
 
@@ -34,9 +31,9 @@ public interface SpellModel extends HeroModel {
 
   ISpell[] getLearnedSpells(boolean experienced);
 
-  void addSpells(ISpell[] addedSpells, boolean experienced);
+  void addSpells(List<ISpell> addedSpells, boolean experienced);
 
-  void removeSpells(ISpell[] removedSpells, boolean experienced);
+  void removeSpells(List<ISpell> removedSpells, boolean experienced);
 
   boolean isSpellAllowed(ISpell spell, boolean experienced);
 
