@@ -1,15 +1,15 @@
-package net.sf.anathema.hero.attributes.points;
+package net.sf.anathema.hero.attributes.advance.creation;
 
 import net.sf.anathema.character.main.template.creation.ICreationPoints;
 import net.sf.anathema.character.main.template.points.AttributeGroupPriority;
 import net.sf.anathema.character.main.advance.models.AbstractSpendingModel;
 
 public class AttributeBonusModel extends AbstractSpendingModel {
-  private final AttributeCostCalculator attributeCalculator;
+  private final AttributeBonusPointCalculator attributeCalculator;
   private final AttributeGroupPriority priority;
   private final ICreationPoints creationPoints;
 
-  public AttributeBonusModel(AttributeCostCalculator attributeCalculator, AttributeGroupPriority priority, ICreationPoints creationPoints) {
+  public AttributeBonusModel(AttributeBonusPointCalculator attributeCalculator, AttributeGroupPriority priority, ICreationPoints creationPoints) {
     super("Attributes", priority.getId());
     this.attributeCalculator = attributeCalculator;
     this.priority = priority;

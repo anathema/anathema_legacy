@@ -9,7 +9,7 @@ import net.sf.anathema.character.main.testing.dummy.DummyHero;
 import net.sf.anathema.character.main.testing.dummy.models.DummyHeroConcept;
 import net.sf.anathema.character.main.testing.dummy.models.DummyOtherTraitModel;
 import net.sf.anathema.character.main.testing.dummy.models.DummyTraitModel;
-import net.sf.anathema.hero.attributes.points.AttributeCostCalculator;
+import net.sf.anathema.hero.attributes.advance.creation.AttributeBonusPointCalculator;
 import net.sf.anathema.character.main.creation.bonus.trait.TraitGroupCost;
 import net.sf.anathema.hero.attributes.model.AttributeModelImpl;
 import org.junit.Before;
@@ -74,7 +74,7 @@ public class AttributeCostCalculatorTest {
   }
 
   private IAttributeCreationPoints creationPoint;
-  private AttributeCostCalculator calculator;
+  private AttributeBonusPointCalculator calculator;
   private AttributeModelImpl attributeModel = new AttributeModelImpl();
   private DummyHero dummyHero = new DummyHero();
 
@@ -87,7 +87,7 @@ public class AttributeCostCalculatorTest {
     attributeModel.initialize(null, dummyHero);
     this.creationPoint = new AttributeCreationPoints(6, 4, 2);
     DummyBonusPointCosts cost = new DummyBonusPointCosts();
-    this.calculator = new AttributeCostCalculator(attributeModel, creationPoint, cost);
+    this.calculator = new AttributeBonusPointCalculator(attributeModel, creationPoint, cost);
   }
 
   @Test

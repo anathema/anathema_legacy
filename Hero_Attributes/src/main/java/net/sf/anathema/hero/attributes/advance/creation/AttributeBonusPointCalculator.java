@@ -1,4 +1,4 @@
-package net.sf.anathema.hero.attributes.points;
+package net.sf.anathema.hero.attributes.advance.creation;
 
 import net.sf.anathema.character.main.template.creation.BonusPointCosts;
 import net.sf.anathema.character.main.template.points.AttributeGroupPriority;
@@ -23,7 +23,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-public class AttributeCostCalculator implements HeroBonusPointCalculator {
+public class AttributeBonusPointCalculator implements HeroBonusPointCalculator {
 
   private static final int SORTING_BONUS_COST_SCALE_FACTOR = 1000;
   private final Map<Trait, ElementCreationCost> costsByAttribute = new HashMap<>();
@@ -34,7 +34,7 @@ public class AttributeCostCalculator implements HeroBonusPointCalculator {
   protected final IFavorableTraitCreationPoints points;
   private final Map<Trait, FavorableTraitCost[]> costsByTrait = new HashMap<>();
 
-  public AttributeCostCalculator(AttributeModel attributes, IAttributeCreationPoints points, BonusPointCosts costs) {
+  public AttributeBonusPointCalculator(AttributeModel attributes, IAttributeCreationPoints points, BonusPointCosts costs) {
     this.points = points;
     this.traitGroups = attributes.getTraitGroups();
     this.costs = costs;

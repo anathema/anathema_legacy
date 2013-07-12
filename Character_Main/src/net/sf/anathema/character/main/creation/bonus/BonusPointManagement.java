@@ -88,7 +88,7 @@ public class BonusPointManagement implements IBonusPointManagement {
     return new FavoredMagicModel(magicCalculator, creationPoints);
   }
 
-  private ISpendingModel getDefaultCharmModel() {
+  public ISpendingModel getDefaultCharmModel() {
     return new DefaultMagicModel(magicCalculator, creationPoints);
   }
 

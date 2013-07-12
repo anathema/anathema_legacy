@@ -1,4 +1,4 @@
-package net.sf.anathema.hero.attributes.points;
+package net.sf.anathema.hero.attributes.advance;
 
 import net.sf.anathema.hero.attributes.model.AttributeModel;
 import net.sf.anathema.hero.initialization.SimpleModelTreeEntry;
