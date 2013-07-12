@@ -3,7 +3,7 @@ dependencies {
     compile project(':Hero_Abilities')
     compile project(':Hero_Attributes')
     compile project(':Hero_Concept')
-    compile project(':Hero_OtherTraits')
+    compile project(':Hero_Spiritual')
     compile project(':Hero_Magic')
     compile project(':Hero_Traits')
     compile project(':Hero_Sheet')
@@ -12,7 +12,7 @@ dependencies {
     testCompile project(path: ':Character_Main', configuration: 'tests')
     testCompile project(path: ':Hero_Concept', configuration: 'tests')
     testCompile project(path: ':Hero_Traits', configuration: 'tests')
-    testCompile project(path: ':Hero_OtherTraits', configuration: 'tests')
+    testCompile project(path: ':Hero_Spiritual', configuration: 'tests')
     testCompile project(path: ':Hero_Abilities', configuration: 'tests')
     testCompile project(path: ':Hero_Attributes', configuration: 'tests')
 }

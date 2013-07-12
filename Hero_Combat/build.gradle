@@ -4,7 +4,7 @@ dependencies {
     compile project(':Hero_Attributes')
     compile project(':Hero_Charms')
     compile project(':Hero_Concept')
-    compile project(':Hero_OtherTraits')
+    compile project(':Hero_Spiritual')
     compile project(':Hero_Sheet')
     compile project(':Hero_Traits')
     testCompile parent.ext.testDependencies
@@ -15,7 +15,7 @@ dependencies {
     testCompile project(path: ':Hero_Charms', configuration: 'tests')
     testCompile project(path: ':Hero_Concept', configuration: 'tests')
     testCompile project(path: ':Hero_Traits', configuration: 'tests')
-    testCompile project(path: ':Hero_OtherTraits', configuration: 'tests')
+    testCompile project(path: ':Hero_Spiritual', configuration: 'tests')
 }
 
 configurations {
