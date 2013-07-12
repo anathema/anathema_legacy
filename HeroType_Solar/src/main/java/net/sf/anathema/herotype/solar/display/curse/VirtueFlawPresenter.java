@@ -16,7 +16,7 @@ import net.sf.anathema.herotype.solar.model.curse.VirtueFlawModel;
 import net.sf.anathema.lib.control.ChangeListener;
 import net.sf.anathema.lib.control.ObjectValueListener;
 import net.sf.anathema.lib.gui.Presenter;
-import net.sf.anathema.lib.gui.selection.IObjectSelectionView;
+import net.sf.anathema.lib.gui.selection.ObjectSelectionView;
 import net.sf.anathema.lib.resources.Resources;
 import net.sf.anathema.lib.workflow.textualdescription.ITextView;
 import net.sf.anathema.lib.workflow.textualdescription.TextualPresentation;
@@ -60,7 +60,7 @@ public class VirtueFlawPresenter implements Presenter {
   }
 
   protected void initRootPresentation(final VirtueFlaw virtueFlaw) {
-    final IObjectSelectionView<TraitType> rootView = view.addSelectionView(resources.getString("VirtueFlaw.Root.Name"), new VirtueTypeConfiguration());
+    final ObjectSelectionView<TraitType> rootView = view.addSelectionView(resources.getString("VirtueFlaw.Root.Name"), new VirtueTypeConfiguration());
     virtueFlaw.addRootChangeListener(new ChangeListener() {
       @Override
       public void changeOccurred() {
@@ -84,7 +84,7 @@ public class VirtueFlawPresenter implements Presenter {
      updateRootView(rootView);
   }
 
-  private void updateRootView(IObjectSelectionView<TraitType> rootView) {
+  private void updateRootView(ObjectSelectionView<TraitType> rootView) {
     TraitType root = model.getVirtueFlaw().getRoot();
     rootView.setObjects(model.getFlawVirtueTypes());
     rootView.setSelectedObject(root);

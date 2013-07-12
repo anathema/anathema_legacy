@@ -5,7 +5,7 @@ import net.sf.anathema.character.equipment.creation.model.stats.IEquipmentStatis
 import net.sf.anathema.character.equipment.creation.model.stats.IOffensiveStatisticsModel;
 import net.sf.anathema.character.equipment.creation.model.stats.IWeaponDamageModel;
 import net.sf.anathema.character.equipment.creation.presenter.stats.properties.OffensiveStatisticsProperties;
-import net.sf.anathema.character.equipment.creation.view.IWeaponDamageView;
+import net.sf.anathema.character.equipment.creation.view.WeaponDamageView;
 import net.sf.anathema.equipment.editor.wizard.CheckInputListener;
 import net.sf.anathema.lib.data.Condition;
 import net.sf.anathema.lib.resources.Resources;
@@ -51,7 +51,7 @@ public abstract class AbstractOffensiveStatisticsPresenterPage<O extends IOffens
   }
 
   private void initWeaponDamageRow(IWeaponDamageModel damageModel) {
-    IWeaponDamageView damageView = getViewFactory().createWeaponDamageView();
+    WeaponDamageView damageView = getViewFactory().createWeaponDamageView();
     new WeaponDamagePresenter(getResources(), damageModel, damageView).initPresentation();
     getPageContent().addView(damageView, new CC());
   }

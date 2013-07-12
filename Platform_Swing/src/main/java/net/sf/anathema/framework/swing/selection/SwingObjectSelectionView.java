@@ -3,7 +3,7 @@ package net.sf.anathema.framework.swing.selection;
 import net.miginfocom.layout.CC;
 import net.sf.anathema.lib.control.ObjectValueListener;
 import net.sf.anathema.lib.gui.layout.AdditiveView;
-import net.sf.anathema.lib.gui.selection.IObjectSelectionView;
+import net.sf.anathema.lib.gui.selection.ObjectSelectionView;
 import net.sf.anathema.lib.gui.widgets.ChangeableJComboBox;
 import net.sf.anathema.lib.gui.widgets.IChangeableJComboBox;
 
@@ -13,13 +13,13 @@ import javax.swing.ListCellRenderer;
 import java.awt.Color;
 import java.awt.SystemColor;
 
-public class ObjectSelectionView<V> implements IObjectSelectionView<V>, AdditiveView {
+public class SwingObjectSelectionView<V> implements ObjectSelectionView<V>, AdditiveView {
 
   private final IChangeableJComboBox<V> comboBox;
   private final JLabel label;
   private Color disabledLabelColor = SystemColor.textInactiveText;
 
-  public ObjectSelectionView(String labelString, ListCellRenderer renderer) {
+  public SwingObjectSelectionView(String labelString, ListCellRenderer renderer) {
     this.label = new JLabel(labelString);
     this.comboBox = new ChangeableJComboBox<>();
     setCellRenderer(renderer);

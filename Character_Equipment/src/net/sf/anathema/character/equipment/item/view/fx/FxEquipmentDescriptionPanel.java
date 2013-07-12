@@ -10,7 +10,7 @@ import net.sf.anathema.character.equipment.item.view.EquipmentDescriptionPanel;
 import net.sf.anathema.equipment.core.MagicalMaterial;
 import net.sf.anathema.equipment.core.MaterialComposition;
 import net.sf.anathema.lib.gui.AgnosticUIConfiguration;
-import net.sf.anathema.lib.gui.selection.IObjectSelectionView;
+import net.sf.anathema.lib.gui.selection.ObjectSelectionView;
 import net.sf.anathema.lib.workflow.textualdescription.ITextView;
 import net.sf.anathema.platform.fx.FxObjectSelectionView;
 import net.sf.anathema.platform.fx.FxTextView;
@@ -57,7 +57,7 @@ public class FxEquipmentDescriptionPanel implements EquipmentDescriptionPanel {
   }
 
   @Override
-  public IObjectSelectionView<MaterialComposition> addCompositionView(String label,
+  public ObjectSelectionView<MaterialComposition> addCompositionView(String label,
                                                                       AgnosticUIConfiguration<MaterialComposition> ui) {
     final FxObjectSelectionView<MaterialComposition> selectionView = selectionViewFactory.create(label, ui);
     Platform.runLater(new Runnable() {
@@ -70,7 +70,7 @@ public class FxEquipmentDescriptionPanel implements EquipmentDescriptionPanel {
   }
 
   @Override
-  public IObjectSelectionView<MagicalMaterial> addMaterialView(String label,
+  public ObjectSelectionView<MagicalMaterial> addMaterialView(String label,
                                                                AgnosticUIConfiguration<MagicalMaterial> ui) {
     final FxObjectSelectionView<MagicalMaterial> selectionView = selectionViewFactory.create(label, ui);
     Platform.runLater(new Runnable() {

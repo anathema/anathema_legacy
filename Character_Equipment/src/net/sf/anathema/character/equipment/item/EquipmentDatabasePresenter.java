@@ -11,7 +11,7 @@ import net.sf.anathema.equipment.core.MaterialComposition;
 import net.sf.anathema.lib.control.ChangeListener;
 import net.sf.anathema.lib.control.ObjectValueListener;
 import net.sf.anathema.lib.gui.Presenter;
-import net.sf.anathema.lib.gui.selection.IObjectSelectionView;
+import net.sf.anathema.lib.gui.selection.ObjectSelectionView;
 import net.sf.anathema.lib.gui.selection.ISelectionIntValueChangedListener;
 import net.sf.anathema.lib.resources.Resources;
 import net.sf.anathema.lib.workflow.textualdescription.ITextView;
@@ -58,9 +58,9 @@ public class EquipmentDatabasePresenter implements Presenter {
     new TextualPresentation().initView(nameView, model.getTemplateEditModel().getDescription().getName());
     ITextView descriptionView = descriptionPanel.addDescriptionView(getColonString("Equipment.Creation.Basics.Description"));
     new TextualPresentation().initView(descriptionView, model.getTemplateEditModel().getDescription().getContent());
-    final IObjectSelectionView<MaterialComposition> compositionView = descriptionPanel.addCompositionView(getColonString("Equipment.Creation.Basics.Composition"), new CompositionUi(resources));
+    final ObjectSelectionView<MaterialComposition> compositionView = descriptionPanel.addCompositionView(getColonString("Equipment.Creation.Basics.Composition"), new CompositionUi(resources));
     compositionView.setObjects(MaterialComposition.values());
-    final IObjectSelectionView<MagicalMaterial> materialView = descriptionPanel.addMaterialView(getColonString("Equipment.Creation.Basics.Material"), new MaterialUi(resources));
+    final ObjectSelectionView<MagicalMaterial> materialView = descriptionPanel.addMaterialView(getColonString("Equipment.Creation.Basics.Material"), new MaterialUi(resources));
     materialView.setObjects(MagicalMaterial.values());
     String[] backgrounds = transform(defaultCostBackgrounds, String.class, new Function<String, String>() {
       @Override

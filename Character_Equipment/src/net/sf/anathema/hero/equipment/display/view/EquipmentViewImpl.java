@@ -12,7 +12,7 @@ import net.sf.anathema.hero.equipment.display.presenter.MagicalMaterialView;
 import net.sf.anathema.hero.equipment.display.presenter.PersonalizationEditView;
 import net.sf.anathema.hero.equipment.display.view.personalization.DialogPersonalizationEditView;
 import net.sf.anathema.interaction.Tool;
-import net.sf.anathema.lib.gui.selection.IVetoableObjectSelectionView;
+import net.sf.anathema.lib.gui.selection.VetoableObjectSelectionView;
 import net.sf.anathema.swing.interaction.ActionInteraction;
 import net.sf.anathema.view.interaction.AddToComponent;
 
@@ -80,7 +80,7 @@ public class EquipmentViewImpl implements EquipmentView, IView {
   }
 
   @Override
-  public IVetoableObjectSelectionView<String> getEquipmentTemplatePickList() {
+  public VetoableObjectSelectionView<String> getEquipmentTemplatePickList() {
     return equipmentPickList;
   }
 

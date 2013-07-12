@@ -8,7 +8,7 @@ import net.sf.anathema.hero.display.configurableview.ConfigurableCharacterView;
 import net.sf.anathema.hero.display.configurableview.MultiComponentLine;
 import net.sf.anathema.interaction.Tool;
 import net.sf.anathema.lib.gui.AgnosticUIConfiguration;
-import net.sf.anathema.lib.gui.selection.IObjectSelectionView;
+import net.sf.anathema.lib.gui.selection.ObjectSelectionView;
 import net.sf.anathema.lib.workflow.textualdescription.ITextView;
 import net.sf.anathema.platform.fx.FxObjectSelectionView;
 import net.sf.anathema.platform.fx.FxTextView;
@@ -67,7 +67,7 @@ public class FxConfigurableView implements ConfigurableCharacterView, NodeHolder
   }
 
   @Override
-  public <T> IObjectSelectionView<T> addSelectionView(String label, AgnosticUIConfiguration<T> uiConfiguration) {
+  public <T> ObjectSelectionView<T> addSelectionView(String label, AgnosticUIConfiguration<T> uiConfiguration) {
     final FxObjectSelectionView<T> selectionView = new ComboBoxSelectionView<>(label, uiConfiguration);
     FxThreading.runOnCorrectThread(new Runnable() {
       @Override

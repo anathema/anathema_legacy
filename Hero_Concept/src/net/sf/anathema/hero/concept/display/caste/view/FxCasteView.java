@@ -5,7 +5,7 @@ import net.miginfocom.layout.CC;
 import net.sf.anathema.hero.concept.CasteType;
 import net.sf.anathema.hero.concept.display.caste.presenter.CasteView;
 import net.sf.anathema.lib.gui.AgnosticUIConfiguration;
-import net.sf.anathema.lib.gui.selection.IObjectSelectionView;
+import net.sf.anathema.lib.gui.selection.ObjectSelectionView;
 import net.sf.anathema.platform.fx.FxThreading;
 import net.sf.anathema.platform.fx.NodeHolder;
 import net.sf.anathema.platform.fx.selection.ComboBoxSelectionView;
@@ -17,7 +17,7 @@ public class FxCasteView implements CasteView, NodeHolder {
   private MigPane node = new MigPane(withoutInsets().wrapAfter(2));
 
   @Override
-  public IObjectSelectionView<CasteType> addObjectSelectionView(String labelText, AgnosticUIConfiguration<CasteType> configuration) {
+  public ObjectSelectionView<CasteType> addObjectSelectionView(String labelText, AgnosticUIConfiguration<CasteType> configuration) {
     final ComboBoxSelectionView<CasteType> view = new ComboBoxSelectionView<>(labelText, configuration);
     view.setStyleClass("casteselection");
     FxThreading.runOnCorrectThread(new Runnable() {

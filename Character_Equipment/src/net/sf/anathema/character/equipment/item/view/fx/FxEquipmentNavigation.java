@@ -3,7 +3,7 @@ package net.sf.anathema.character.equipment.item.view.fx;
 import javafx.application.Platform;
 import net.sf.anathema.character.equipment.item.view.EquipmentNavigation;
 import net.sf.anathema.interaction.Tool;
-import net.sf.anathema.lib.gui.selection.IVetoableObjectSelectionView;
+import net.sf.anathema.lib.gui.selection.VetoableObjectSelectionView;
 import net.sf.anathema.platform.fx.ListSelectionView;
 import net.sf.anathema.platform.fx.Navigation;
 
@@ -22,7 +22,7 @@ public class FxEquipmentNavigation extends Navigation implements EquipmentNaviga
   }
 
   @Override
-  public IVetoableObjectSelectionView<String> getTemplateListView() {
+  public VetoableObjectSelectionView<String> getTemplateListView() {
     waitForListView();
     return listView;
   }

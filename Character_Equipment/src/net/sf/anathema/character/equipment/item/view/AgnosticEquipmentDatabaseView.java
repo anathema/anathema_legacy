@@ -3,7 +3,7 @@ package net.sf.anathema.character.equipment.item.view;
 import net.sf.anathema.character.main.equipment.weapon.IEquipmentStats;
 import net.sf.anathema.interaction.Tool;
 import net.sf.anathema.lib.gui.AgnosticUIConfiguration;
-import net.sf.anathema.lib.gui.selection.IVetoableObjectSelectionView;
+import net.sf.anathema.lib.gui.selection.VetoableObjectSelectionView;
 
 public class AgnosticEquipmentDatabaseView implements EquipmentDatabaseView {
 
@@ -27,7 +27,7 @@ public class AgnosticEquipmentDatabaseView implements EquipmentDatabaseView {
   }
 
   @Override
-  public IVetoableObjectSelectionView<String> getTemplateListView() {
+  public VetoableObjectSelectionView<String> getTemplateListView() {
     return navigation.getTemplateListView();
   }
 

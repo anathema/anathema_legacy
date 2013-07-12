@@ -8,7 +8,7 @@ import net.sf.anathema.hero.display.configurableview.ConfigurableCharacterView;
 import net.sf.anathema.hero.display.configurableview.MultiComponentLine;
 import net.sf.anathema.interaction.Tool;
 import net.sf.anathema.lib.gui.AgnosticUIConfiguration;
-import net.sf.anathema.lib.gui.selection.IObjectSelectionView;
+import net.sf.anathema.lib.gui.selection.ObjectSelectionView;
 import net.sf.anathema.lib.workflow.textualdescription.ITextView;
 import net.sf.anathema.platform.fx.BridgingPanel;
 
@@ -50,7 +50,7 @@ public class BridgingConfigurableView implements ConfigurableCharacterView, IVie
   }
 
   @Override
-  public <T> IObjectSelectionView<T> addSelectionView(String label, AgnosticUIConfiguration<T> uiConfiguration) {
+  public <T> ObjectSelectionView<T> addSelectionView(String label, AgnosticUIConfiguration<T> uiConfiguration) {
     return fxView.addSelectionView(label, uiConfiguration);
   }
 

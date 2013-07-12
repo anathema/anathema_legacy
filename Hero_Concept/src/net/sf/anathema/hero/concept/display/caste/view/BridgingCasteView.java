@@ -4,7 +4,7 @@ import net.sf.anathema.framework.swing.IView;
 import net.sf.anathema.hero.concept.CasteType;
 import net.sf.anathema.hero.concept.display.caste.presenter.CasteView;
 import net.sf.anathema.lib.gui.AgnosticUIConfiguration;
-import net.sf.anathema.lib.gui.selection.IObjectSelectionView;
+import net.sf.anathema.lib.gui.selection.ObjectSelectionView;
 import net.sf.anathema.platform.fx.BridgingPanel;
 
 import javax.swing.JComponent;
@@ -24,7 +24,7 @@ public class BridgingCasteView implements CasteView, IView {
   }
 
   @Override
-  public IObjectSelectionView<CasteType> addObjectSelectionView(String labelText, AgnosticUIConfiguration<CasteType> renderer) {
+  public ObjectSelectionView<CasteType> addObjectSelectionView(String labelText, AgnosticUIConfiguration<CasteType> renderer) {
     return fxView.addObjectSelectionView(labelText, renderer);
   }
 

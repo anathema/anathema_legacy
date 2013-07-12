@@ -1,11 +1,11 @@
 package net.sf.anathema.hero.equipment.display.presenter;
 
 import net.sf.anathema.interaction.Tool;
-import net.sf.anathema.lib.gui.selection.IVetoableObjectSelectionView;
+import net.sf.anathema.lib.gui.selection.VetoableObjectSelectionView;
 
 public interface EquipmentView {
 
-  IVetoableObjectSelectionView<String> getEquipmentTemplatePickList();
+  VetoableObjectSelectionView<String> getEquipmentTemplatePickList();
 
   EquipmentObjectView addEquipmentObjectView();
 

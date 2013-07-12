@@ -11,7 +11,6 @@ import org.tbee.javafx.scene.layout.MigPane;
 public class FxEquipmentItemView implements EquipmentObjectView {
   private final TitledPane border = new TitledPane();
   private final MigPane body = new MigPane();
-  private final Label descriptionLabel = new Label();
 
   public FxEquipmentItemView() {
     border.setContent(body);

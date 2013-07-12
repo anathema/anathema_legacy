@@ -5,7 +5,7 @@ import net.miginfocom.swing.MigLayout;
 import net.sf.anathema.character.main.view.repository.ITemplateTypeAggregation;
 import net.sf.anathema.framework.swing.selection.ListObjectSelectionView;
 import net.sf.anathema.lib.gui.layout.LayoutUtils;
-import net.sf.anathema.lib.gui.selection.IVetoableObjectSelectionView;
+import net.sf.anathema.lib.gui.selection.VetoableObjectSelectionView;
 
 import javax.swing.JComponent;
 import javax.swing.JPanel;
@@ -37,7 +37,7 @@ public class CharacterItemCreationView implements ICharacterItemCreationView {
   }
 
   @Override
-  public IVetoableObjectSelectionView<ITemplateTypeAggregation> addObjectSelectionList() {
+  public VetoableObjectSelectionView<ITemplateTypeAggregation> addObjectSelectionList() {
     ListObjectSelectionView<ITemplateTypeAggregation> view = new ListObjectSelectionView<>(ITemplateTypeAggregation.class);
     JScrollPane scrollPane = new JScrollPane(view.getComponent());
     component.add(scrollPane, new CC().grow().push());

@@ -16,7 +16,7 @@ import net.sf.anathema.lib.control.ICollectionListener;
 import net.sf.anathema.lib.control.ObjectValueListener;
 import net.sf.anathema.lib.gui.AgnosticUIConfiguration;
 import net.sf.anathema.lib.gui.Presenter;
-import net.sf.anathema.lib.gui.selection.IVetoableObjectSelectionView;
+import net.sf.anathema.lib.gui.selection.VetoableObjectSelectionView;
 import net.sf.anathema.lib.resources.Resources;
 import net.sf.anathema.lib.util.Closure;
 
@@ -58,7 +58,7 @@ public class EquipmentPresenter implements Presenter {
     for (IEquipmentItem item : model.getEquipmentItems()) {
       initEquipmentObjectPresentation(item);
     }
-    IVetoableObjectSelectionView<String> equipmentTemplatePickList = view.getEquipmentTemplatePickList();
+    VetoableObjectSelectionView<String> equipmentTemplatePickList = view.getEquipmentTemplatePickList();
     model.addEquipmentObjectListener(new ICollectionListener<IEquipmentItem>() {
       @Override
       public void itemAdded(IEquipmentItem item) {
@@ -100,7 +100,7 @@ public class EquipmentPresenter implements Presenter {
     magicMaterialView.initView(label, renderer, MagicalMaterial.values());
   }
 
-  private void createRefreshAction(final IVetoableObjectSelectionView<String> equipmentTemplatePickList,
+  private void createRefreshAction(final VetoableObjectSelectionView<String> equipmentTemplatePickList,
                                    Tool refreshTool) {
     refreshTool.setTooltip(resources.getString("AdditionalTemplateView.RefreshDatabase.Action.Tooltip"));
     refreshTool.setIcon(new EquipmentUI().getRefreshIconPath());
@@ -113,13 +113,13 @@ public class EquipmentPresenter implements Presenter {
     });
   }
 
-  private void setObjects(IVetoableObjectSelectionView<String> equipmentTemplatePickList) {
+  private void setObjects(VetoableObjectSelectionView<String> equipmentTemplatePickList) {
     String[] templates = model.getAvailableTemplateIds();
     Arrays.sort(templates, new EquipmentTemplateNameComparator());
     equipmentTemplatePickList.setObjects(templates);
   }
 
-  private void createTemplateAddAction(final IVetoableObjectSelectionView<String> equipmentTemplatePickList,
+  private void createTemplateAddAction(final VetoableObjectSelectionView<String> equipmentTemplatePickList,
                                        final MagicalMaterialView materialView, final Tool selectTool) {
     selectTool.setIcon(new BasicUi().getRightArrowIconPath());
     selectTool.setTooltip(resources.getString("AdditionalTemplateView.AddTemplate.Action.Tooltip"));
@@ -138,7 +138,7 @@ public class EquipmentPresenter implements Presenter {
     setEnabled(equipmentTemplatePickList, selectTool);
   }
 
-  private void setEnabled(IVetoableObjectSelectionView<String> equipmentTemplatePickList, Tool selectTool) {
+  private void setEnabled(VetoableObjectSelectionView<String> equipmentTemplatePickList, Tool selectTool) {
     if (equipmentTemplatePickList.isObjectSelected()) {
       selectTool.enable();
     } else {

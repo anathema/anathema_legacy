@@ -10,7 +10,7 @@ import net.sf.anathema.hero.model.Hero;
 import net.sf.anathema.lib.control.ChangeListener;
 import net.sf.anathema.lib.control.ObjectValueListener;
 import net.sf.anathema.lib.gui.AgnosticUIConfiguration;
-import net.sf.anathema.lib.gui.selection.IObjectSelectionView;
+import net.sf.anathema.lib.gui.selection.ObjectSelectionView;
 import net.sf.anathema.lib.resources.Resources;
 
 public class CastePresenter {
@@ -30,7 +30,7 @@ public class CastePresenter {
     String casteLabelResourceKey = template.getPresentationProperties().getCasteLabelResource();
     CasteType[] casteTypes = HeroConceptFetcher.fetch(hero).getCasteCollection().getAllCasteTypes(hero.getTemplate().getTemplateType());
     AgnosticUIConfiguration<CasteType> casteUi = new AgnosticCasteUi(resources, template.getPresentationProperties());
-    final IObjectSelectionView<CasteType> casteView = view.addObjectSelectionView(resources.getString(casteLabelResourceKey), casteUi);
+    final ObjectSelectionView<CasteType> casteView = view.addObjectSelectionView(resources.getString(casteLabelResourceKey), casteUi);
     casteView.setObjects(casteTypes);
     final CasteSelection caste = HeroConceptFetcher.fetch(hero).getCaste();
     if (caste.isNotSelected()) {
@@ -52,7 +52,7 @@ public class CastePresenter {
     initExperienceListening(casteView);
   }
 
-  private void initExperienceListening(final IObjectSelectionView<CasteType> casteView) {
+  private void initExperienceListening(final ObjectSelectionView<CasteType> casteView) {
     final ExperienceModel experienceModel = ExperienceModelFetcher.fetch(hero);
     experienceModel.addStateChangeListener(new ChangeListener() {
       @Override

@@ -6,7 +6,7 @@ import net.sf.anathema.lib.control.ChangeListener;
 import net.sf.anathema.lib.control.ObjectValueListener;
 import net.sf.anathema.lib.gui.action.SmartAction;
 import net.sf.anathema.lib.gui.dialog.userdialog.page.AbstractDialogPage;
-import net.sf.anathema.lib.gui.selection.IVetoableObjectSelectionView;
+import net.sf.anathema.lib.gui.selection.VetoableObjectSelectionView;
 import net.sf.anathema.lib.message.IBasicMessage;
 
 import javax.swing.JComponent;
@@ -32,7 +32,7 @@ public class CharacterCreationDialogPage extends AbstractDialogPage {
     model.addListener(inputValidListener);
   }
 
-  protected void refreshList(IVetoableObjectSelectionView<ITemplateTypeAggregation> list) {
+  protected void refreshList(VetoableObjectSelectionView<ITemplateTypeAggregation> list) {
     ITemplateTypeAggregation[] availableTemplates = model.getAvailableTemplates();
     Arrays.sort(availableTemplates, new Comparator<ITemplateTypeAggregation>() {
       @Override
@@ -80,7 +80,7 @@ public class CharacterCreationDialogPage extends AbstractDialogPage {
       }, properties.getTypeString(type));
       button.setSelected(type.equals(model.getSelectedTemplate().getTemplateType().getCharacterType()));
     }
-    final IVetoableObjectSelectionView<ITemplateTypeAggregation> list = view.addObjectSelectionList();
+    final VetoableObjectSelectionView<ITemplateTypeAggregation> list = view.addObjectSelectionList();
     list.addObjectSelectionChangedListener(new ObjectValueListener<ITemplateTypeAggregation>() {
       @Override
       public void valueChanged(ITemplateTypeAggregation newValue) {
