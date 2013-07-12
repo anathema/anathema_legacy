@@ -14,7 +14,7 @@ import org.tbee.javafx.scene.layout.MigPane;
 import static net.sf.anathema.lib.gui.layout.LayoutUtils.fillWithoutInsets;
 import static net.sf.anathema.lib.gui.layout.LayoutUtils.withoutInsets;
 
-public class FxSpiritualTraitsView implements AdvantageView, NodeHolder {
+public class FxSpiritualTraitsView implements SpiritualTraitsView, NodeHolder {
 
   private final MigPane virtuePanel = new MigPane(fillWithoutInsets().wrapAfter(2));
   private final MigPane willpowerPanel = new MigPane(fillWithoutInsets().wrapAfter(2));
@@ -22,7 +22,7 @@ public class FxSpiritualTraitsView implements AdvantageView, NodeHolder {
   private final MigPane content = new MigPane(withoutInsets().wrapAfter(2), new AC().index(0).fill().index(1).fill());
 
   @Override
-  public void initGui(AdvantageViewProperties properties, ICharacterType characterType) {
+  public void initGui(SpiritualTraitsViewProperties properties, ICharacterType characterType) {
     addTitledPanel(properties.getVirtueTitle(), content, virtuePanel, new CC().spanY(2).growY().alignY("top"));
     addTitledPanel(properties.getWillpowerTitle(), content, willpowerPanel, new CC().pushX().alignY("top"));
     addTitledPanel(properties.getEssenceTitle(), content, essenceView.getNode(), new CC().pushX().alignY("top"));

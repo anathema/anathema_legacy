@@ -14,12 +14,12 @@ import net.sf.anathema.lib.resources.Resources;
 
 public class EssenceConfigurationPresenter implements Presenter {
 
-  private final AdvantageView view;
+  private final SpiritualTraitsView view;
   private final EssencePoolModel essencePool;
   private final Resources resources;
   private final TraitMap traitMap;
 
-  public EssenceConfigurationPresenter(Resources resources, EssencePoolModel essencePool, TraitMap traitMap, AdvantageView view) {
+  public EssenceConfigurationPresenter(Resources resources, EssencePoolModel essencePool, TraitMap traitMap, SpiritualTraitsView view) {
     this.resources = resources;
     this.essencePool = essencePool;
     this.traitMap = traitMap;

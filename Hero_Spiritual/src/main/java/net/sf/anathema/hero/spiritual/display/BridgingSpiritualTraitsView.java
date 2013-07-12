@@ -9,7 +9,7 @@ import net.sf.anathema.platform.fx.BridgingPanel;
 
 import javax.swing.JComponent;
 
-public class BridgingSpiritualTraitsView implements IView, AdvantageView {
+public class BridgingSpiritualTraitsView implements IView, SpiritualTraitsView {
   private final FxSpiritualTraitsView fxView;
   private final BridgingPanel panel = new BridgingPanel();
 
@@ -18,7 +18,7 @@ public class BridgingSpiritualTraitsView implements IView, AdvantageView {
   }
 
   @Override
-  public void initGui(AdvantageViewProperties properties, ICharacterType characterType) {
+  public void initGui(SpiritualTraitsViewProperties properties, ICharacterType characterType) {
     fxView.initGui(properties, characterType);
     CssSkinner cssSkinner = new CssSkinner();
     String[] skins = cssSkinner.getSkins(characterType);

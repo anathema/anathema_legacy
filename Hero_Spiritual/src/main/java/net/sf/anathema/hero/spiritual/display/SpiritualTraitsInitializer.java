@@ -12,16 +12,16 @@ import static net.sf.anathema.hero.display.HeroModelGroup.SpiritualTraits;
 
 @RegisteredInitializer(SpiritualTraits)
 @Weight(weight = 0)
-public class AdvantagesInitializer implements HeroModelInitializer {
+public class SpiritualTraitsInitializer implements HeroModelInitializer {
   @SuppressWarnings("UnusedParameters")
-  public AdvantagesInitializer(IApplicationModel applicationModel) {
+  public SpiritualTraitsInitializer(IApplicationModel applicationModel) {
     //nothing to do
   }
 
   @Override
   public void initialize(SectionView sectionView, Hero hero, Resources resources) {
-    String header = new DefaultAdvantageViewProperties(resources).getOverallHeader();
-    AdvantageView view = sectionView.addView(header, AdvantageView.class, hero.getTemplate().getTemplateType().getCharacterType());
-    new BasicAdvantagePresenter(resources, hero, view).initPresentation();
+    String header = new DefaultSpiritualTraitsViewProperties(resources).getOverallHeader();
+    SpiritualTraitsView view = sectionView.addView(header, SpiritualTraitsView.class, hero.getTemplate().getTemplateType().getCharacterType());
+    new BasicSpiritualTraitsPresenter(resources, hero, view).initPresentation();
   }
 }

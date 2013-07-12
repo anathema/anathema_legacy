@@ -1,6 +1,6 @@
 package net.sf.anathema.hero.spiritual.display;
 
-public interface AdvantageViewProperties {
+public interface SpiritualTraitsViewProperties {
 
   String getVirtueTitle();
 

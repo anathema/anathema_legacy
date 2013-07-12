@@ -11,10 +11,10 @@ import net.sf.anathema.lib.resources.Resources;
 public class VirtueConfigurationPresenter implements Presenter {
 
   private final Trait[] virtues;
-  private final AdvantageView view;
+  private final SpiritualTraitsView view;
   private final Resources resources;
 
-  public VirtueConfigurationPresenter(Resources resources, TraitMap traits, AdvantageView view) {
+  public VirtueConfigurationPresenter(Resources resources, TraitMap traits, SpiritualTraitsView view) {
     this.resources = resources;
     this.virtues = traits.getTraits(VirtueType.values());
     this.view = view;

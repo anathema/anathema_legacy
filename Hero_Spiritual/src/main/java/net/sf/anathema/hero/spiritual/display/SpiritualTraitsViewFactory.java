@@ -4,8 +4,8 @@ import net.sf.anathema.character.main.framework.RegisteredCharacterView;
 import net.sf.anathema.character.main.type.ICharacterType;
 import net.sf.anathema.character.main.view.SubViewFactory;
 
-@RegisteredCharacterView(AdvantageView.class)
-public class AdvantageViewFactory implements SubViewFactory {
+@RegisteredCharacterView(SpiritualTraitsView.class)
+public class SpiritualTraitsViewFactory implements SubViewFactory {
 
   @SuppressWarnings("unchecked")
   @Override

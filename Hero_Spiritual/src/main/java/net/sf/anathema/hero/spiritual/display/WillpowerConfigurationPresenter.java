@@ -9,10 +9,10 @@ import net.sf.anathema.lib.resources.Resources;
 public class WillpowerConfigurationPresenter implements Presenter {
 
   private final Trait willpower;
-  private final AdvantageView view;
+  private final SpiritualTraitsView view;
   private final Resources resources;
 
-  public WillpowerConfigurationPresenter(Resources resources, Trait willpower, AdvantageView view) {
+  public WillpowerConfigurationPresenter(Resources resources, Trait willpower, SpiritualTraitsView view) {
     this.resources = resources;
     this.willpower = willpower;
     this.view = view;

@@ -4,9 +4,9 @@ import net.sf.anathema.character.main.type.ICharacterType;
 import net.sf.anathema.character.main.view.labelledvalue.IValueView;
 import net.sf.anathema.framework.value.IntValueView;
 
-public interface AdvantageView {
+public interface SpiritualTraitsView {
 
-  void initGui(AdvantageViewProperties properties, ICharacterType characterType);
+  void initGui(SpiritualTraitsViewProperties properties, ICharacterType characterType);
 
   IntValueView addVirtue(String labelText, int maxValue);
 

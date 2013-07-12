@@ -2,10 +2,10 @@ package net.sf.anathema.hero.spiritual.display;
 
 import net.sf.anathema.lib.resources.Resources;
 
-public class DefaultAdvantageViewProperties implements AdvantageViewProperties {
+public class DefaultSpiritualTraitsViewProperties implements SpiritualTraitsViewProperties {
   private Resources resources;
 
-  public DefaultAdvantageViewProperties(Resources resources) {
+  public DefaultSpiritualTraitsViewProperties(Resources resources) {
     this.resources = resources;
   }
 

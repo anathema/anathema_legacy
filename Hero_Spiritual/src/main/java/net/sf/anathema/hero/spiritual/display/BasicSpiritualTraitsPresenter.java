@@ -1,8 +1,8 @@
 package net.sf.anathema.hero.spiritual.display;
 
 import net.sf.anathema.character.main.traits.types.OtherTraitType;
-import net.sf.anathema.hero.spiritual.model.pool.EssencePoolModelFetcher;
 import net.sf.anathema.hero.model.Hero;
+import net.sf.anathema.hero.spiritual.model.pool.EssencePoolModelFetcher;
 import net.sf.anathema.hero.traits.TraitMap;
 import net.sf.anathema.hero.traits.TraitModelFetcher;
 import net.sf.anathema.lib.gui.Presenter;
@@ -11,12 +11,12 @@ import net.sf.anathema.lib.resources.Resources;
 import java.util.ArrayList;
 import java.util.List;
 
-public class BasicAdvantagePresenter {
+public class BasicSpiritualTraitsPresenter {
   private final List<Presenter> subPresenters = new ArrayList<>();
-  private final AdvantageView view;
+  private final SpiritualTraitsView view;
   private final Resources resources;
 
-  public BasicAdvantagePresenter(Resources resources, Hero hero, AdvantageView view) {
+  public BasicSpiritualTraitsPresenter(Resources resources, Hero hero, SpiritualTraitsView view) {
     this.resources = resources;
     this.view = view;
     TraitMap traitMap = TraitModelFetcher.fetch(hero);
@@ -29,6 +29,6 @@ public class BasicAdvantagePresenter {
     for (Presenter presenter : subPresenters) {
       presenter.initPresentation();
     }
-    view.initGui(new DefaultAdvantageViewProperties(resources), null);
+    view.initGui(new DefaultSpiritualTraitsViewProperties(resources), null);
   }
 }
