@@ -29,9 +29,6 @@ import net.sf.anathema.character.main.template.experience.IExperiencePointCosts;
 import net.sf.anathema.character.main.template.magic.ICharmProvider;
 import net.sf.anathema.character.main.template.magic.MartialArtsCharmConfiguration;
 import net.sf.anathema.character.main.type.ICharacterType;
-import net.sf.anathema.hero.model.change.ChangeAnnouncer;
-import net.sf.anathema.hero.model.change.ChangeFlavor;
-import net.sf.anathema.hero.model.change.FlavoredChangeListener;
 import net.sf.anathema.hero.charms.advance.CharmExperienceModel;
 import net.sf.anathema.hero.charms.advance.CharmPointCostCalculator;
 import net.sf.anathema.hero.charms.model.context.CreationCharmLearnStrategy;
@@ -48,6 +45,9 @@ import net.sf.anathema.hero.magic.model.MagicModelFetcher;
 import net.sf.anathema.hero.magic.model.martial.MartialArtsUtilities;
 import net.sf.anathema.hero.model.Hero;
 import net.sf.anathema.hero.model.InitializationContext;
+import net.sf.anathema.hero.model.change.ChangeAnnouncer;
+import net.sf.anathema.hero.model.change.ChangeFlavor;
+import net.sf.anathema.hero.model.change.FlavoredChangeListener;
 import net.sf.anathema.hero.points.PointModelFetcher;
 import net.sf.anathema.hero.points.PointsModel;
 import net.sf.anathema.hero.spiritual.model.pool.EssencePoolModel;
@@ -332,15 +332,6 @@ public class CharmsModelImpl implements CharmsModel {
   }
 
   @Override
-  public Charm[] getCreationLearnedCharms() {
-    List<Charm> allLearnedCharms = new ArrayList<>();
-    for (ILearningCharmGroup group : getAllGroups()) {
-      Collections.addAll(allLearnedCharms, group.getCreationLearnedCharms());
-    }
-    return allLearnedCharms.toArray(new Charm[allLearnedCharms.size()]);
-  }
-
-  @Override
   public ILearningCharmGroup[] getCharmGroups(Identifier type) {
     if (MartialArtsUtilities.MARTIAL_ARTS.equals(type)) {
       return martialArtsGroups;
@@ -390,15 +381,8 @@ public class CharmsModelImpl implements CharmsModel {
   }
 
   @Override
-  public ILearningCharmGroup getGroup(String characterTypeId, String groupName) {
-    ICharacterType characterType = nonMartialArtsOptions.getCharacterType(characterTypeId);
-    return getGroupById(characterType, groupName);
-  }
-
-  @Override
   public ICharacterType[] getCharacterTypes(boolean includeAlienTypes) {
     return nonMartialArtsOptions.getCharacterTypes(includeAlienTypes);
-
   }
 
   private void verifyCharms() {
