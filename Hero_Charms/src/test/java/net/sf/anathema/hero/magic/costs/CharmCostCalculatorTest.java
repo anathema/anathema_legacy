@@ -12,7 +12,7 @@ import net.sf.anathema.character.main.testing.dummy.DummyBonusPointCosts;
 import net.sf.anathema.character.main.testing.dummy.DummyHero;
 import net.sf.anathema.character.main.testing.dummy.magic.DummyCharmsModel;
 import net.sf.anathema.character.main.testing.dummy.magic.DummySpell;
-import net.sf.anathema.character.main.testing.dummy.magic.DummySpellsModel;
+import net.sf.anathema.hero.magic.testing.DummySpellsModel;
 import net.sf.anathema.character.main.traits.context.CreationTraitValueStrategy;
 import net.sf.anathema.character.main.traits.types.AbilityType;
 import net.sf.anathema.hero.magic.model.MagicModel;

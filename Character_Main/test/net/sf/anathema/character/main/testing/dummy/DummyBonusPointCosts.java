@@ -1,17 +1,15 @@
 package net.sf.anathema.character.main.testing.dummy;
 
-import net.sf.anathema.character.main.template.experience.CostAnalyzer;
-import net.sf.anathema.character.main.xml.creation.template.MagicCreationCostsTto;
-import net.sf.anathema.hero.magic.advance.creation.MagicCosts;
 import net.sf.anathema.character.main.magic.model.charm.Charm;
-import net.sf.anathema.hero.magic.model.martial.MartialArtsLevel;
-import net.sf.anathema.character.main.magic.model.magic.Magic;
 import net.sf.anathema.character.main.template.creation.BonusPointCosts;
+import net.sf.anathema.character.main.template.experience.CostAnalyzer;
 import net.sf.anathema.character.main.template.experience.CurrentRatingCosts;
 import net.sf.anathema.character.main.template.points.FixedValueRatingCosts;
 import net.sf.anathema.character.main.traits.ValuedTraitType;
+import net.sf.anathema.character.main.xml.creation.template.MagicCreationCostsTto;
+import net.sf.anathema.hero.magic.model.martial.MartialArtsLevel;
 
-public class DummyBonusPointCosts implements BonusPointCosts, MagicCosts {
+public class DummyBonusPointCosts implements BonusPointCosts {
 
   public MagicCreationCostsTto magicCostsTto = new MagicCreationCostsTto();
 
@@ -80,13 +78,5 @@ public class DummyBonusPointCosts implements BonusPointCosts, MagicCosts {
   @Override
   public CurrentRatingCosts getEssenceCost() {
     return new FixedValueRatingCosts(7);
-  }
-
-  @Override
-  public int getMagicCosts(Magic magic, final CostAnalyzer analyzer) {
-    if (magic instanceof Charm) {
-      return getCharmCosts((Charm) magic, analyzer);
-    }
-    return getCharmCosts(analyzer.isMagicFavored(magic), null);
   }
 }
