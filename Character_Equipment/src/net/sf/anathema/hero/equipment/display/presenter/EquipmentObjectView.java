@@ -1,7 +1,7 @@
 package net.sf.anathema.hero.equipment.display.presenter;
 
 import net.sf.anathema.interaction.Tool;
-import net.sf.anathema.lib.model.BooleanModel;
+import net.sf.anathema.lib.model.IModifiableBooleanModel;
 
 public interface EquipmentObjectView {
 
@@ -10,12 +10,12 @@ public interface EquipmentObjectView {
   void setItemDescription(String text);
   
   void clear();
-  
-  BooleanModel addStats(String description);
-  
-  BooleanModel addOptionFlag(BooleanModel base, String description);
 
-  void setEnabled(BooleanModel model, boolean enabled);
+  IModifiableBooleanModel addStats(String description);
+
+  IModifiableBooleanModel addOptionFlag(IModifiableBooleanModel base, String description);
+
+  void setEnabled(IModifiableBooleanModel model, boolean enabled);
 
   Tool addAction();
 }

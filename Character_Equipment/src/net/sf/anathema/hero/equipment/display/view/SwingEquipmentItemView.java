@@ -8,6 +8,7 @@ import net.sf.anathema.lib.gui.action.ActionWidgetFactory;
 import net.sf.anathema.lib.gui.action.SmartToggleAction;
 import net.sf.anathema.lib.gui.layout.LayoutUtils;
 import net.sf.anathema.lib.model.BooleanModel;
+import net.sf.anathema.lib.model.IModifiableBooleanModel;
 import net.sf.anathema.swing.interaction.ActionInteraction;
 import org.jdesktop.swingx.JXTaskPane;
 
@@ -20,8 +21,8 @@ import java.util.Map;
 public class SwingEquipmentItemView implements net.sf.anathema.hero.equipment.display.presenter.EquipmentObjectView, ITaskPaneGroupView {
   private final JXTaskPane taskGroup = new JXTaskPane();
   private final JLabel descriptionLabel = new JLabel();
-  private final Map<BooleanModel, JCheckBox> boxes = new HashMap<>();
-  private final Map<BooleanModel, JPanel> boxPanels = new HashMap<>();
+  private final Map<IModifiableBooleanModel, JCheckBox> boxes = new HashMap<>();
+  private final Map<IModifiableBooleanModel, JPanel> boxPanels = new HashMap<>();
 
   public SwingEquipmentItemView() {
     taskGroup.add(descriptionLabel);
@@ -47,7 +48,7 @@ public class SwingEquipmentItemView implements net.sf.anathema.hero.equipment.di
   }
 
   @Override
-  public BooleanModel addStats(String description) {
+  public IModifiableBooleanModel addStats(String description) {
     BooleanModel isSelectedModel = new BooleanModel();
     JCheckBox box = createCheckBox(isSelectedModel, description);
     boxes.put(isSelectedModel, box);
@@ -59,7 +60,7 @@ public class SwingEquipmentItemView implements net.sf.anathema.hero.equipment.di
   }
 
   @Override
-  public BooleanModel addOptionFlag(BooleanModel base, String description) {
+  public IModifiableBooleanModel addOptionFlag(IModifiableBooleanModel base, String description) {
     BooleanModel isSelectedModel = new BooleanModel();
     JPanel basePanel = boxPanels.get(base);
     if (basePanel != null) {
@@ -74,7 +75,7 @@ public class SwingEquipmentItemView implements net.sf.anathema.hero.equipment.di
   }
 
   @Override
-  public void setEnabled(BooleanModel model, boolean enabled) {
+  public void setEnabled(IModifiableBooleanModel model, boolean enabled) {
     boxes.get(model).setEnabled(enabled);
   }
 

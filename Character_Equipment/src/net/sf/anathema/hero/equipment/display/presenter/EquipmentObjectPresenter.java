@@ -14,7 +14,7 @@ import net.sf.anathema.hero.equipment.model.EquipmentItemPresentationModel;
 import net.sf.anathema.hero.equipment.model.EquipmentSpecialtyOption;
 import net.sf.anathema.interaction.Tool;
 import net.sf.anathema.lib.control.ChangeListener;
-import net.sf.anathema.lib.model.BooleanModel;
+import net.sf.anathema.lib.model.IModifiableBooleanModel;
 import net.sf.anathema.lib.resources.Resources;
 
 import java.text.MessageFormat;
@@ -83,7 +83,7 @@ public class EquipmentObjectPresenter {
       if (!strategy.shouldStatsBeShown()) {
         continue;
       }
-      final BooleanModel statsView = view.addStats(createEquipmentDescription(model, stats));
+      final IModifiableBooleanModel statsView = view.addStats(createEquipmentDescription(model, stats));
       statsView.setValue(model.isPrintEnabled(stats));
       statsView.addChangeListener(new ChangeListener() {
         @Override
@@ -120,7 +120,7 @@ public class EquipmentObjectPresenter {
     boolean isAttunementRequired = isAttunementRequired();
     boolean isCurrentlyAttuned = isCurrentlyAttuned();
     if (isAttunementRequired && !isCurrentlyAttuned) {
-      for (BooleanModel bool : presentationModel.getDefaultStatViews()) {
+      for (IModifiableBooleanModel bool : presentationModel.getDefaultStatViews()) {
         view.setEnabled(bool, false);
         bool.setValue(false);
       }
@@ -157,18 +157,18 @@ public class EquipmentObjectPresenter {
     }
   }
 
-  private void showEligibleSpecialties(IEquipmentStats equipment, BooleanModel booleanModel) {
+  private void showEligibleSpecialties(IEquipmentStats equipment, IModifiableBooleanModel booleanModel) {
     if (!(equipment instanceof IWeaponStats)) {
       return;
     }
     addSpecialtiesForWeaponStats(booleanModel, (IWeaponStats) equipment);
   }
 
-  private void addSpecialtiesForWeaponStats(BooleanModel baseModel, IWeaponStats weaponStats) {
+  private void addSpecialtiesForWeaponStats(IModifiableBooleanModel baseModel, IWeaponStats weaponStats) {
     Specialty[] specialties = dataProvider.getSpecialties(weaponStats.getTraitType());
     for (Specialty specialty : specialties) {
       String label = MessageFormat.format(resources.getString("Equipment.Specialty"), specialty.getName());
-      final BooleanModel booleanModel = view.addOptionFlag(baseModel, label);
+      final IModifiableBooleanModel booleanModel = view.addOptionFlag(baseModel, label);
       final IEquipmentStatsOption specialtyOption = new EquipmentSpecialtyOption(specialty, weaponStats.getTraitType());
       final IEquipmentStats baseStat = model.getStat(weaponStats.getId());
       booleanModel.setValue(characterOptionProvider.isStatOptionEnabled(model, baseStat, specialtyOption));
