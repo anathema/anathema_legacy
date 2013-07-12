@@ -3,11 +3,11 @@ package net.sf.anathema.hero.magic.advance.creation;
 import net.sf.anathema.character.main.template.creation.ICreationPoints;
 import net.sf.anathema.character.main.advance.models.AbstractSpendingModel;
 
-public class FavoredCharmModel extends AbstractSpendingModel {
+public class FavoredMagicModel extends AbstractSpendingModel {
   private final MagicCreationCostCalculator magicCalculator;
   private final ICreationPoints creationPoints;
 
-  public FavoredCharmModel(MagicCreationCostCalculator magicCalculator, ICreationPoints creationPoints) {
+  public FavoredMagicModel(MagicCreationCostCalculator magicCalculator, ICreationPoints creationPoints) {
     super("Charms", "Favored");
     this.magicCalculator = magicCalculator;
     this.creationPoints = creationPoints;

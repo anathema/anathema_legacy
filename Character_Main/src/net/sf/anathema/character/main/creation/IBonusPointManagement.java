@@ -7,10 +7,6 @@ public interface IBonusPointManagement {
 
   void recalculate();
 
-  ISpendingModel getFavoredCharmModel();
-
-  ISpendingModel getDefaultCharmModel();
-
   ISpendingModel getTotalModel();
 
   IOverviewModel[] getAllModels();

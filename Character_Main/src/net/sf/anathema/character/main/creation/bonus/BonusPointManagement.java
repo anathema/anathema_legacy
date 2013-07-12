@@ -6,14 +6,14 @@ import net.sf.anathema.character.main.template.experience.CurrentRatingCosts;
 import net.sf.anathema.character.main.library.trait.Trait;
 import net.sf.anathema.character.main.library.trait.TraitCollectionUtilities;
 import net.sf.anathema.character.main.library.trait.experience.TraitRatingCostCalculator;
+import net.sf.anathema.hero.magic.advance.creation.DefaultMagicModel;
+import net.sf.anathema.hero.magic.advance.creation.FavoredMagicModel;
 import net.sf.anathema.hero.magic.advance.creation.MagicCreationCostCalculator;
 import net.sf.anathema.hero.traits.TraitMap;
 import net.sf.anathema.hero.traits.TraitModelFetcher;
 import net.sf.anathema.character.main.advance.models.AbstractSpendingModel;
 import net.sf.anathema.character.main.magic.model.charms.options.DefaultCharmTemplateRetriever;
 import net.sf.anathema.character.main.creation.IBonusPointManagement;
-import net.sf.anathema.hero.magic.advance.creation.DefaultCharmModel;
-import net.sf.anathema.hero.magic.advance.creation.FavoredCharmModel;
 import net.sf.anathema.character.main.creation.bonus.virtue.VirtueBonusModel;
 import net.sf.anathema.character.main.creation.bonus.virtue.VirtueCostCalculator;
 import net.sf.anathema.hero.model.Hero;
@@ -84,14 +84,12 @@ public class BonusPointManagement implements IBonusPointManagement {
     return new VirtueBonusModel(virtueCalculator, creationPoints);
   }
 
-  @Override
-  public ISpendingModel getFavoredCharmModel() {
-    return new FavoredCharmModel(magicCalculator, creationPoints);
+  private ISpendingModel getFavoredCharmModel() {
+    return new FavoredMagicModel(magicCalculator, creationPoints);
   }
 
-  @Override
-  public ISpendingModel getDefaultCharmModel() {
-    return new DefaultCharmModel(magicCalculator, creationPoints);
+  private ISpendingModel getDefaultCharmModel() {
+    return new DefaultMagicModel(magicCalculator, creationPoints);
   }
 
   @Override
