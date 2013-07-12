@@ -9,7 +9,6 @@ import net.sf.anathema.character.main.magic.model.spells.CircleType;
 import net.sf.anathema.character.main.dummy.DummyCharm;
 import net.sf.anathema.character.main.dummy.DummyCharmUtilities;
 import net.sf.anathema.character.main.testing.dummy.DummyCasteType;
-import net.sf.anathema.character.main.testing.dummy.DummyCharacterTypes;
 import net.sf.anathema.character.main.testing.dummy.magic.DummyMartialArtsRules;
 import net.sf.anathema.character.main.testing.dummy.template.DummyXmlTemplateRegistry;
 import net.sf.anathema.lib.util.Identifier;
@@ -34,7 +33,7 @@ public class MagicTemplateParserTest {
   @Before
   public void setUp() throws Exception {
     DummyXmlTemplateRegistry<GenericMagicTemplate> templateRegistry = new DummyXmlTemplateRegistry<>();
-    parser = new GenericMagicTemplateParser(templateRegistry, null, null, new DummyCharacterTypes());
+    parser = new GenericMagicTemplateParser(templateRegistry, null);
   }
 
   @Test

@@ -1,23 +1,12 @@
 package net.sf.anathema.character.main.testing.dummy.template;
 
-import net.sf.anathema.character.main.magic.model.charm.Charm;
 import net.sf.anathema.character.main.template.magic.CharmTemplate;
-import net.sf.anathema.hero.magic.model.martial.MartialArtsLevel;
 import net.sf.anathema.character.main.template.magic.DefaultMartialArtsRules;
 import net.sf.anathema.character.main.template.magic.MartialArtsRules;
 import net.sf.anathema.hero.concept.CasteType;
+import net.sf.anathema.hero.magic.model.martial.MartialArtsLevel;
 
 public class DummyCharmTemplate implements CharmTemplate {
-
-  @Override
-  public Charm[] getCharms() {
-    return new Charm[0];
-  }
-
-  @Override
-  public Charm[] getMartialArtsCharms() {
-    return new Charm[0];
-  }
 
   @Override
   public boolean canLearnCharms() {

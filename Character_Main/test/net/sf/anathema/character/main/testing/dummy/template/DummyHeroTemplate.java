@@ -20,7 +20,6 @@ import net.sf.anathema.character.main.template.experience.IExperiencePointCosts;
 import net.sf.anathema.character.main.template.magic.DefaultMartialArtsRules;
 import net.sf.anathema.character.main.template.magic.IMagicTemplate;
 import net.sf.anathema.character.main.template.magic.ISpellMagicTemplate;
-import net.sf.anathema.character.main.template.magic.NullCharmSet;
 import net.sf.anathema.character.main.template.presentation.IPresentationProperties;
 import net.sf.anathema.character.main.testing.dummy.DummyMundaneCharacterType;
 import net.sf.anathema.character.main.traits.TraitTemplateCollection;
@@ -136,7 +135,7 @@ public class DummyHeroTemplate implements HeroTemplate {
 
     @Override
     public CharmTemplate getCharmTemplate() {
-      return new CharmTemplateImpl(new DefaultMartialArtsRules(MartialArtsLevel.Mortal), new NullCharmSet(), false);
+      return new CharmTemplateImpl(new DefaultMartialArtsRules(MartialArtsLevel.Mortal), false);
     }
   }
 

@@ -1,18 +1,13 @@
 package net.sf.anathema.character.main.xml.magic;
 
 import net.sf.anathema.character.main.magic.model.spells.CircleType;
-import net.sf.anathema.character.main.magic.parser.charms.CharmCache;
 import net.sf.anathema.character.main.template.HeroTemplate;
-import net.sf.anathema.character.main.template.magic.CharmSet;
-import net.sf.anathema.character.main.template.magic.CharmSetImpl;
 import net.sf.anathema.character.main.template.magic.CharmTemplateImpl;
 import net.sf.anathema.character.main.template.magic.CustomizableFreePicksPredicate;
 import net.sf.anathema.character.main.template.magic.DefaultMartialArtsRules;
 import net.sf.anathema.character.main.template.magic.ISpellMagicTemplate;
 import net.sf.anathema.character.main.template.magic.MartialArtsRules;
-import net.sf.anathema.character.main.template.magic.NullCharmSet;
 import net.sf.anathema.character.main.template.magic.SpellMagicTemplate;
-import net.sf.anathema.character.main.type.CharacterTypes;
 import net.sf.anathema.character.main.xml.core.AbstractXmlTemplateParser;
 import net.sf.anathema.character.main.xml.registry.IXmlTemplateRegistry;
 import net.sf.anathema.hero.magic.model.martial.MartialArtsLevel;
@@ -46,15 +41,10 @@ public class GenericMagicTemplateParser extends AbstractXmlTemplateParser<Generi
   private static final String TAG_GROUP_EXCEPTION = "groupException";
   private static final String ATTRIB_SUB_TEMPLATE = "subTemplate";
   private final HeroTemplate hostTemplate;
-  private final CharmCache cache;
-  private final CharacterTypes characterTypes;
 
-  public GenericMagicTemplateParser(IXmlTemplateRegistry<GenericMagicTemplate> templateRegistry, HeroTemplate template, CharmCache cache,
-                                    CharacterTypes characterTypes) {
+  public GenericMagicTemplateParser(IXmlTemplateRegistry<GenericMagicTemplate> templateRegistry, HeroTemplate template) {
     super(templateRegistry);
     this.hostTemplate = template;
-    this.cache = cache;
-    this.characterTypes = characterTypes;
   }
 
   @Override
@@ -116,13 +106,7 @@ public class GenericMagicTemplateParser extends AbstractXmlTemplateParser<Generi
     }
     String charmType = ElementUtilities.getRequiredAttrib(charmTemplateElement, ATTRIB_CHARM_TYPE);
     boolean canLearnCharms = !charmType.equals(VALUE_NONE);
-    CharmSet charmSet;
-    if (charmType.equals(VALUE_NONE)) {
-      charmSet = new NullCharmSet();
-    } else {
-      charmSet = CharmSetImpl.createRegularCharmSet(cache, characterTypes.findById(charmType));
-    }
-    CharmTemplateImpl charmTemplate = new CharmTemplateImpl(createMartialArtsRules(charmTemplateElement), charmSet, canLearnCharms);
+    CharmTemplateImpl charmTemplate = new CharmTemplateImpl(createMartialArtsRules(charmTemplateElement), canLearnCharms);
     setAlienAllowedCastes(charmTemplate, charmTemplateElement);
     basicTemplate.setCharmTemplate(charmTemplate);
   }

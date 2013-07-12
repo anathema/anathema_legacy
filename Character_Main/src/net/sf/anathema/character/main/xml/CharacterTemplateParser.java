@@ -1,8 +1,6 @@
 package net.sf.anathema.character.main.xml;
 
 import net.sf.anathema.character.main.framework.ICharacterTemplateRegistryCollection;
-import net.sf.anathema.character.main.magic.parser.charms.CharmCache;
-import net.sf.anathema.hero.magic.model.martial.MartialArtsLevel;
 import net.sf.anathema.character.main.magic.model.charms.options.DefaultCharmTemplateRetriever;
 import net.sf.anathema.character.main.template.HeroTemplate;
 import net.sf.anathema.character.main.template.ITemplateType;
@@ -29,6 +27,7 @@ import net.sf.anathema.character.main.xml.presentation.PresentationPropertiesPar
 import net.sf.anathema.character.main.xml.registry.IXmlTemplateRegistry;
 import net.sf.anathema.character.main.xml.trait.GenericTraitTemplateFactory;
 import net.sf.anathema.character.main.xml.trait.GenericTraitTemplateFactoryParser;
+import net.sf.anathema.hero.magic.model.martial.MartialArtsLevel;
 import net.sf.anathema.lib.exception.PersistenceException;
 import org.dom4j.Element;
 
@@ -50,13 +49,11 @@ public class CharacterTemplateParser extends AbstractXmlTemplateParser<GenericCh
 
   private CharacterTypes characterTypes;
   private final ICharacterTemplateRegistryCollection registryCollection;
-  private final CharmCache cache;
 
-  public CharacterTemplateParser(CharacterTypes characterTypes, ICharacterTemplateRegistryCollection registryCollection, CharmCache cache) {
+  public CharacterTemplateParser(CharacterTypes characterTypes, ICharacterTemplateRegistryCollection registryCollection) {
     super(registryCollection.getCharacterTemplateRegistry());
     this.characterTypes = characterTypes;
     this.registryCollection = registryCollection;
-    this.cache = cache;
   }
 
   @Override
@@ -221,7 +218,7 @@ public class CharacterTemplateParser extends AbstractXmlTemplateParser<GenericCh
       return;
     }
     GenericMagicTemplateParser parser =
-            new GenericMagicTemplateParser(registryCollection.getMagicTemplateRegistry(), characterTemplate, cache, characterTypes);
+            new GenericMagicTemplateParser(registryCollection.getMagicTemplateRegistry(), characterTemplate);
     GenericMagicTemplate template = parser.parseTemplate(magicTemplateElement);
     characterTemplate.setMagicTemplate(template);
   }

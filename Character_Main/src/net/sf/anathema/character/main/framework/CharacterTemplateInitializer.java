@@ -1,6 +1,5 @@
 package net.sf.anathema.character.main.framework;
 
-import net.sf.anathema.character.main.magic.parser.charms.CharmCache;
 import net.sf.anathema.character.main.xml.CharacterTemplateParser;
 import net.sf.anathema.character.main.xml.GenericCharacterTemplate;
 import net.sf.anathema.hero.framework.HeroEnvironment;
@@ -25,7 +24,7 @@ public class CharacterTemplateInitializer {
 
   private void registerParsedTemplate(HeroEnvironment environment, ResourceFile resource) {
     ICharacterTemplateRegistryCollection characterTemplateRegistries = environment.getCharacterTemplateRegistries();
-    new CharacterTemplateParser(environment.getCharacterTypes(), characterTemplateRegistries, environment.getDataSet(CharmCache.class));
+    new CharacterTemplateParser(environment.getCharacterTypes(), characterTemplateRegistries);
     try {
       GenericCharacterTemplate template = characterTemplateRegistries.getCharacterTemplateRegistry().get(resource);
       environment.getTemplateRegistry().register(template);
