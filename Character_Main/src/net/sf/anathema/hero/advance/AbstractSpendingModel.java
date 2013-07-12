@@ -1,4 +1,4 @@
-package net.sf.anathema.hero.advance.experience.models;
+package net.sf.anathema.hero.advance;
 
 import net.sf.anathema.hero.points.overview.IOverviewModelVisitor;
 import net.sf.anathema.hero.points.overview.SpendingModel;

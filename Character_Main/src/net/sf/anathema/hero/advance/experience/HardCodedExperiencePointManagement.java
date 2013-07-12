@@ -1,13 +1,11 @@
 package net.sf.anathema.hero.advance.experience;
 
-import net.sf.anathema.hero.advance.experience.models.AbilityExperienceModel;
-import net.sf.anathema.hero.advance.experience.models.AttributeExperienceModel;
 import net.sf.anathema.hero.advance.experience.models.EssenceExperienceModel;
 import net.sf.anathema.hero.advance.experience.models.MiscellaneousExperienceModel;
-import net.sf.anathema.hero.magic.advance.experience.SpellExperienceModel;
 import net.sf.anathema.hero.advance.experience.models.VirtueExperienceModel;
 import net.sf.anathema.hero.advance.experience.models.WillpowerExperienceModel;
 import net.sf.anathema.hero.magic.advance.experience.CharmExperienceModel;
+import net.sf.anathema.hero.magic.advance.experience.SpellExperienceModel;
 import net.sf.anathema.hero.model.Hero;
 import net.sf.anathema.hero.points.HeroModelExperienceCalculator;
 import net.sf.anathema.hero.points.PointModelFetcher;
@@ -31,30 +29,21 @@ public class HardCodedExperiencePointManagement implements ExperiencePointManage
     this.calculator = new ExperiencePointCostCalculator(hero.getTemplate().getExperienceCost());
   }
 
-  private IValueModel<Integer> getAbilityModel() {
-    return new AbilityExperienceModel(traitMap, calculator, hero);
-  }
-
   @Override
   public List<IValueModel<Integer>> getAllModels() {
     final List<IValueModel<Integer>> allModels = new ArrayList<>();
     // todo (sandra): Sorting
-    allModels.add(getAbilityModel());
-    allModels.add(getAttributeModel());
     allModels.add(getCharmModel());
     allModels.add(getEssenceModel());
     allModels.add(getSpellModel());
     allModels.add(getVirtueModel());
     allModels.add(getWillpowerModel());
     allModels.add(getMiscModel());
-    for (IValueModel<Integer>  model : PointModelFetcher.fetch(hero).getExperienceOverviewModels()) {
+    PointsModel pointsModel = PointModelFetcher.fetch(hero);
+    for (IValueModel<Integer>  model : pointsModel.getExperienceOverviewModels()) {
       allModels.add(model);
     }
     return allModels;
-  }
-
-  private IValueModel<Integer> getAttributeModel() {
-    return new AttributeExperienceModel(traitMap, calculator, hero);
   }
 
   private IValueModel<Integer> getCharmModel() {

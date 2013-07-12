@@ -2,10 +2,13 @@ package net.sf.anathema.hero.attributes.advance;
 
 import net.sf.anathema.character.main.template.HeroTemplate;
 import net.sf.anathema.character.main.template.creation.BonusPointCosts;
+import net.sf.anathema.character.main.template.experience.IExperiencePointCosts;
 import net.sf.anathema.character.main.template.points.AttributeGroupPriority;
 import net.sf.anathema.character.main.template.points.IAttributeCreationPoints;
 import net.sf.anathema.hero.attributes.advance.creation.AttributeBonusModel;
 import net.sf.anathema.hero.attributes.advance.creation.AttributeBonusPointCalculator;
+import net.sf.anathema.hero.attributes.advance.experience.AttributesExperienceCalculator;
+import net.sf.anathema.hero.attributes.advance.experience.AttributesExperienceModel;
 import net.sf.anathema.hero.attributes.model.AttributeModel;
 import net.sf.anathema.hero.attributes.model.AttributesModelFetcher;
 import net.sf.anathema.hero.change.ChangeAnnouncer;
@@ -13,6 +16,7 @@ import net.sf.anathema.hero.model.Hero;
 import net.sf.anathema.hero.model.HeroModel;
 import net.sf.anathema.hero.model.InitializationContext;
 import net.sf.anathema.hero.points.PointModelFetcher;
+import net.sf.anathema.hero.points.PointsModel;
 import net.sf.anathema.hero.points.overview.SpendingModel;
 import net.sf.anathema.hero.points.overview.WeightedCategory;
 import net.sf.anathema.lib.util.Identifier;
@@ -30,11 +34,11 @@ public class AttributePointsModel implements HeroModel {
   @Override
   public void initialize(InitializationContext context, Hero hero) {
     initializeBonusPoints(hero);
+    initializeExperience(hero);
   }
-
   @Override
   public void initializeListening(ChangeAnnouncer announcer) {
-    // nothing to do, until bonus points are created the way, they should be
+    // nothing to do
   }
 
   private void initializeBonusPoints(Hero hero) {
@@ -63,5 +67,13 @@ public class AttributePointsModel implements HeroModel {
 
   public SpendingModel createOverviewModel(AttributeBonusPointCalculator calculator, AttributeGroupPriority priority, HeroTemplate template) {
     return new AttributeBonusModel(calculator, priority, template.getCreationPoints());
+  }
+
+  private void initializeExperience(Hero hero) {
+    PointsModel pointsModel = PointModelFetcher.fetch(hero);
+    AttributeModel model = AttributesModelFetcher.fetch(hero);
+    IExperiencePointCosts experienceCost = hero.getTemplate().getExperienceCost();
+    AttributesExperienceCalculator calculator = new AttributesExperienceCalculator(experienceCost);
+    pointsModel.addToExperienceOverview(new AttributesExperienceModel(model, calculator));
   }
 }

@@ -1,5 +1,6 @@
 package net.sf.anathema.hero.advance.experience.models;
 
+import net.sf.anathema.hero.advance.AbstractIntegerValueModel;
 import net.sf.anathema.hero.points.HeroModelExperienceCalculator;
 import net.sf.anathema.hero.experience.ExperienceModelFetcher;
 import net.sf.anathema.hero.model.Hero;

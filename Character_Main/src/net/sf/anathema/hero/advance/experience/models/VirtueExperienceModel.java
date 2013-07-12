@@ -1,5 +1,6 @@
 package net.sf.anathema.hero.advance.experience.models;
 
+import net.sf.anathema.hero.advance.AbstractIntegerValueModel;
 import net.sf.anathema.hero.advance.experience.PointCostCalculator;
 import net.sf.anathema.character.main.library.trait.Trait;
 import net.sf.anathema.character.main.library.trait.TraitCollectionUtilities;

@@ -1,7 +1,7 @@
 package net.sf.anathema.hero.spiritual.advance.creation;
 
 import net.sf.anathema.character.main.template.creation.ICreationPoints;
-import net.sf.anathema.hero.advance.experience.models.AbstractSpendingModel;
+import net.sf.anathema.hero.advance.AbstractSpendingModel;
 
 public class VirtueBonusModel extends AbstractSpendingModel {
   private final VirtueCostCalculator virtueCalculator;

@@ -6,7 +6,7 @@ import net.sf.anathema.character.main.library.trait.specialties.SpecialtiesModel
 import net.sf.anathema.character.main.library.trait.specialties.SpecialtiesModelFetcher;
 import net.sf.anathema.character.main.library.trait.subtrait.ISubTraitContainer;
 import net.sf.anathema.hero.abilities.model.AbilityModelFetcher;
-import net.sf.anathema.hero.advance.experience.models.AbstractIntegerValueModel;
+import net.sf.anathema.hero.advance.AbstractIntegerValueModel;
 import net.sf.anathema.hero.model.Hero;
 
 public class SpecialtyExperienceModel extends AbstractIntegerValueModel {

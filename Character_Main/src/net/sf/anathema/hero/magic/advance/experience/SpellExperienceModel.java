@@ -1,7 +1,7 @@
 package net.sf.anathema.hero.magic.advance.experience;
 
 import net.sf.anathema.hero.advance.experience.PointCostCalculator;
-import net.sf.anathema.hero.advance.experience.models.AbstractIntegerValueModel;
+import net.sf.anathema.hero.advance.AbstractIntegerValueModel;
 import net.sf.anathema.character.main.magic.model.spells.Spell;
 import net.sf.anathema.hero.model.Hero;
 import net.sf.anathema.hero.spells.model.SpellsModel;
