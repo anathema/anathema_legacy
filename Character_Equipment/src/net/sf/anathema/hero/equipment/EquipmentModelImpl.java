@@ -8,7 +8,7 @@ import net.sf.anathema.character.equipment.character.model.IEquipmentItem;
 import net.sf.anathema.character.equipment.character.model.IEquipmentStatsOption;
 import net.sf.anathema.character.equipment.item.model.IEquipmentTemplateProvider;
 import net.sf.anathema.character.equipment.item.model.gson.GsonEquipmentDatabase;
-import net.sf.anathema.character.main.UnspecifiedChangeListener;
+import net.sf.anathema.hero.model.change.UnspecifiedChangeListener;
 import net.sf.anathema.character.main.equipment.ArtifactStats;
 import net.sf.anathema.character.main.equipment.ICharacterStatsModifiers;
 import net.sf.anathema.character.main.equipment.weapon.IArmourStats;

@@ -1,7 +1,7 @@
 package net.sf.anathema.hero.intimacies.model;
 
 import com.google.common.base.Strings;
-import net.sf.anathema.character.main.UnspecifiedChangeListener;
+import net.sf.anathema.hero.model.change.UnspecifiedChangeListener;
 import net.sf.anathema.character.main.library.removableentry.AbstractRemovableEntryModel;
 import net.sf.anathema.character.main.library.trait.Trait;
 import net.sf.anathema.character.main.traits.TraitType;

@@ -1,6 +1,6 @@
 package net.sf.anathema.hero.spells.model;
 
-import net.sf.anathema.character.main.UnspecifiedChangeListener;
+import net.sf.anathema.hero.model.change.UnspecifiedChangeListener;
 import net.sf.anathema.character.main.magic.model.spells.CircleType;
 import net.sf.anathema.character.main.magic.model.spells.ISpellMapper;
 import net.sf.anathema.character.main.magic.model.spells.Spell;
