@@ -1,7 +1,7 @@
 package net.sf.anathema.hero.equipment;
 
+import net.sf.anathema.character.main.type.CharacterType;
 import net.sf.anathema.character.main.type.CharacterTypes;
-import net.sf.anathema.character.main.type.ICharacterType;
 import net.sf.anathema.equipment.core.IEquipmentTemplate;
 import net.sf.anathema.initialization.InitializationException;
 import net.sf.anathema.initialization.ObjectFactory;
@@ -21,7 +21,7 @@ public class NaturalWeaponsMapImpl implements NaturalWeaponsMap {
   }
 
   @Override
-  public IEquipmentTemplate getNaturalWeaponTemplate(ICharacterType characterType) {
+  public IEquipmentTemplate getNaturalWeaponTemplate(CharacterType characterType) {
     Collection<IEquipmentTemplate> templates = gatherTemplates();
     for (IEquipmentTemplate template : templates) {
       String applicableType = template.getClass().getAnnotation(RegisteredNaturalWeapon.class).characterType();

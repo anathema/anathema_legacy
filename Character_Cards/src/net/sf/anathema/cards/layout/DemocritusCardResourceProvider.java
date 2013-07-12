@@ -4,10 +4,10 @@ import com.itextpdf.text.BadElementException;
 import com.itextpdf.text.BaseColor;
 import com.itextpdf.text.Font;
 import com.itextpdf.text.Image;
+import net.sf.anathema.character.main.type.CharacterType;
 import net.sf.anathema.hero.magic.model.martial.MartialArtsLevel;
 import net.sf.anathema.character.main.magic.model.spells.CircleType;
 import net.sf.anathema.character.main.traits.TraitType;
-import net.sf.anathema.character.main.type.ICharacterType;
 import net.sf.anathema.lib.file.RelativePath;
 import net.sf.anathema.lib.gui.icon.ImageLoadingException;
 import net.sf.anathema.lib.gui.icon.ImageProvider;
@@ -66,7 +66,7 @@ public class DemocritusCardResourceProvider implements ICardReportResourceProvid
   }
 
   @Override
-  public Image getCharacterIcon(ICharacterType type) {
+  public Image getCharacterIcon(CharacterType type) {
     return getImage("icons/character/" + type.getId() + ".png");
   }
 

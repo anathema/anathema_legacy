@@ -2,11 +2,11 @@ package net.sf.anathema.character.main.persistence;
 
 import com.google.common.base.Preconditions;
 import net.sf.anathema.character.main.ExaltedCharacter;
+import net.sf.anathema.character.main.type.CharacterType;
 import net.sf.anathema.hero.framework.HeroEnvironment;
 import net.sf.anathema.character.main.template.HeroTemplate;
 import net.sf.anathema.character.main.template.ITemplateType;
 import net.sf.anathema.character.main.template.TemplateType;
-import net.sf.anathema.character.main.type.ICharacterType;
 import net.sf.anathema.hero.model.Hero;
 import net.sf.anathema.lib.exception.PersistenceException;
 import net.sf.anathema.lib.util.Identifier;
@@ -41,7 +41,7 @@ public class HeroTemplatePersister {
 
   private ITemplateType loadTemplateType(Element parent) throws PersistenceException {
     String typeId = ElementUtilities.getRequiredText(parent, TAG_CHARACTER_TYPE);
-    ICharacterType characterType = generics.getCharacterTypes().findById(typeId);
+    CharacterType characterType = generics.getCharacterTypes().findById(typeId);
     String subTypeValue = parent.element(TAG_CHARACTER_TYPE).attributeValue(ATTRIB_SUB_TYPE);
     Identifier subtype = subTypeValue == null ? TemplateType.DEFAULT_SUB_TYPE : new SimpleIdentifier(subTypeValue);
     return new TemplateType(characterType, subtype);

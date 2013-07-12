@@ -1,5 +1,6 @@
 package net.sf.anathema.character.main.testing.dummy.template;
 
+import net.sf.anathema.character.main.type.CharacterType;
 import net.sf.anathema.hero.magic.model.martial.MartialArtsLevel;
 import net.sf.anathema.character.main.magic.model.magic.Magic;
 import net.sf.anathema.character.main.template.ConfiguredModel;
@@ -27,7 +28,6 @@ import net.sf.anathema.character.main.traits.TraitType;
 import net.sf.anathema.character.main.traits.types.AbilityType;
 import net.sf.anathema.character.main.traits.types.AttributeGroupType;
 import net.sf.anathema.character.main.traits.types.AttributeType;
-import net.sf.anathema.character.main.type.ICharacterType;
 import net.sf.anathema.lib.exception.NotYetImplementedException;
 
 import java.util.ArrayList;
@@ -119,7 +119,7 @@ public class DummyHeroTemplate implements HeroTemplate {
     return new String[0];
   }
 
-  public void setCharacterType(ICharacterType characterType) {
+  public void setCharacterType(CharacterType characterType) {
     this.type = new TemplateType(characterType);
   }
 

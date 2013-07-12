@@ -2,11 +2,11 @@ package net.sf.anathema.swing.hero.creation;
 
 import com.google.common.base.Objects;
 import net.sf.anathema.character.main.CharacterStatisticsConfiguration;
+import net.sf.anathema.character.main.type.CharacterType;
 import net.sf.anathema.hero.framework.HeroEnvironment;
 import net.sf.anathema.character.main.template.HeroTemplate;
 import net.sf.anathema.character.main.template.ITemplateRegistry;
 import net.sf.anathema.character.main.type.CharacterTypes;
-import net.sf.anathema.character.main.type.ICharacterType;
 import net.sf.anathema.character.main.view.repository.ITemplateTypeAggregation;
 import net.sf.anathema.lib.collection.MultiEntryMap;
 import net.sf.anathema.lib.control.ChangeListener;
@@ -18,13 +18,13 @@ import java.util.List;
 public class CharacterItemCreationModel implements ICharacterItemCreationModel {
 
   private final CharacterTypes characterTypes;
-  private ICharacterType selectedType;
+  private CharacterType selectedType;
   private final Announcer<ChangeListener> control = Announcer.to(ChangeListener.class);
   private ITemplateTypeAggregation selectedTemplate;
-  private final MultiEntryMap<ICharacterType, ITemplateTypeAggregation> aggregationsByType = new MultiEntryMap<>();
+  private final MultiEntryMap<CharacterType, ITemplateTypeAggregation> aggregationsByType = new MultiEntryMap<>();
   private final CharacterStatisticsConfiguration configuration;
   private final HeroEnvironment generics;
-  private final ICharacterType[] types;
+  private final CharacterType[] types;
 
   public CharacterItemCreationModel(HeroEnvironment generics, CharacterStatisticsConfiguration configuration) {
     this.generics = generics;
@@ -35,19 +35,19 @@ public class CharacterItemCreationModel implements ICharacterItemCreationModel {
     setCharacterType(characterTypes.findAll()[0]);
   }
 
-  private ICharacterType[] collectCharacterTypes(ITemplateRegistry registry) {
-    List<ICharacterType> availableTypes = new ArrayList<>();
-    for (ICharacterType type : characterTypes.findAll()) {
+  private CharacterType[] collectCharacterTypes(ITemplateRegistry registry) {
+    List<CharacterType> availableTypes = new ArrayList<>();
+    for (CharacterType type : characterTypes.findAll()) {
       if (registry.getAllSupportedTemplates(type).length > 0) {
         availableTypes.add(type);
       }
     }
-    return availableTypes.toArray(new ICharacterType[availableTypes.size()]);
+    return availableTypes.toArray(new CharacterType[availableTypes.size()]);
   }
 
   private void aggregateTemplates() {
     TemplateTypeAggregator aggregator = new TemplateTypeAggregator(generics.getTemplateRegistry());
-    for (ICharacterType type : characterTypes.findAll()) {
+    for (CharacterType type : characterTypes.findAll()) {
       ITemplateTypeAggregation[] aggregations = aggregator.aggregateTemplates(type);
       if (aggregations.length == 0) {
         continue;
@@ -62,12 +62,12 @@ public class CharacterItemCreationModel implements ICharacterItemCreationModel {
   }
 
   @Override
-  public ICharacterType[] getAvailableCharacterTypes() {
+  public CharacterType[] getAvailableCharacterTypes() {
     return types;
   }
 
   @Override
-  public void setCharacterType(ICharacterType type) {
+  public void setCharacterType(CharacterType type) {
     if (Objects.equal(selectedType, type)) {
       return;
     }

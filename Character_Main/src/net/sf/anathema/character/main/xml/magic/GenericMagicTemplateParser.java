@@ -1,21 +1,21 @@
 package net.sf.anathema.character.main.xml.magic;
 
+import net.sf.anathema.character.main.magic.model.spells.CircleType;
 import net.sf.anathema.character.main.magic.parser.charms.CharmCache;
-import net.sf.anathema.character.main.xml.core.AbstractXmlTemplateParser;
-import net.sf.anathema.character.main.xml.registry.IXmlTemplateRegistry;
+import net.sf.anathema.character.main.template.HeroTemplate;
 import net.sf.anathema.character.main.template.magic.CharmSet;
+import net.sf.anathema.character.main.template.magic.CharmSetImpl;
 import net.sf.anathema.character.main.template.magic.CharmTemplate;
 import net.sf.anathema.character.main.template.magic.CustomizableFreePicksPredicate;
 import net.sf.anathema.character.main.template.magic.DefaultMartialArtsRules;
-import net.sf.anathema.character.main.template.magic.NullCharmSet;
-import net.sf.anathema.character.main.template.magic.SpellMagicTemplate;
-import net.sf.anathema.hero.magic.model.martial.MartialArtsLevel;
-import net.sf.anathema.character.main.magic.model.spells.CircleType;
-import net.sf.anathema.character.main.template.HeroTemplate;
-import net.sf.anathema.character.main.template.magic.ICharmSet;
 import net.sf.anathema.character.main.template.magic.ISpellMagicTemplate;
 import net.sf.anathema.character.main.template.magic.MartialArtsRules;
+import net.sf.anathema.character.main.template.magic.NullCharmSet;
+import net.sf.anathema.character.main.template.magic.SpellMagicTemplate;
 import net.sf.anathema.character.main.type.CharacterTypes;
+import net.sf.anathema.character.main.xml.core.AbstractXmlTemplateParser;
+import net.sf.anathema.character.main.xml.registry.IXmlTemplateRegistry;
+import net.sf.anathema.hero.magic.model.martial.MartialArtsLevel;
 import net.sf.anathema.lib.exception.PersistenceException;
 import net.sf.anathema.lib.xml.ElementUtilities;
 import org.dom4j.Element;
@@ -28,8 +28,6 @@ public class GenericMagicTemplateParser extends AbstractXmlTemplateParser<Generi
 
   private static final String TAG_FREE_PICKS_PREDICATE = "freePicksPredicate";
   private static final String ATTRIB_TYPE = "type";
-  private static final String ATTRIB_LABEL = "label";
-  private static final String ATTRIB_KEYWORD = "keyword";
   private static final String TAG_CHARM_TEMPLATE = "charmTemplate";
   private static final String ATTRIB_MARTIAL_ARTS_LEVEL = "level";
   private static final String ATTRIB_HIGH_LEVEL_MARTIAL_ARTS = "highLevel";
@@ -117,11 +115,11 @@ public class GenericMagicTemplateParser extends AbstractXmlTemplateParser<Generi
       return;
     }
     String charmType = ElementUtilities.getRequiredAttrib(charmTemplateElement, ATTRIB_CHARM_TYPE);
-    ICharmSet charmSet;
+    CharmSet charmSet;
     if (charmType.equals(VALUE_NONE)) {
       charmSet = new NullCharmSet();
     } else {
-      charmSet = CharmSet.createRegularCharmSet(cache, characterTypes.findById(charmType));
+      charmSet = CharmSetImpl.createRegularCharmSet(cache, characterTypes.findById(charmType));
     }
     CharmTemplate charmTemplate = new CharmTemplate(createMartialArtsRules(charmTemplateElement), charmSet);
     setAlienAllowedCastes(charmTemplate, charmTemplateElement);

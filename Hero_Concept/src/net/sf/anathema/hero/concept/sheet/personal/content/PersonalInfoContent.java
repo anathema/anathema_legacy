@@ -1,6 +1,6 @@
 package net.sf.anathema.hero.concept.sheet.personal.content;
 
-import net.sf.anathema.character.main.type.ICharacterType;
+import net.sf.anathema.character.main.type.CharacterType;
 import net.sf.anathema.hero.concept.CasteType;
 import net.sf.anathema.hero.concept.HeroConceptFetcher;
 import net.sf.anathema.hero.description.HeroDescription;
@@ -34,7 +34,7 @@ public class PersonalInfoContent extends AbstractSubContent implements SubBoxCon
   }
 
   private PersonalInfoRow createFirstRow() {
-    ICharacterType characterType = getCharacterType();
+    CharacterType characterType = getCharacterType();
     if (!characterType.isExaltType()) {
       TitledInfo conceptInfo = new TitledInfo(getLabel("Concept"), description.getConcept().getText(), 3);
       return new PersonalInfoRow(conceptInfo);
@@ -66,7 +66,7 @@ public class PersonalInfoContent extends AbstractSubContent implements SubBoxCon
     return String.valueOf(HeroConceptFetcher.fetch(hero).getAge().getValue());
   }
 
-  private ICharacterType getCharacterType() {
+  private CharacterType getCharacterType() {
     return hero.getTemplate().getTemplateType().getCharacterType();
   }
 

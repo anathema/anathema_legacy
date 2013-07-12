@@ -1,7 +1,7 @@
 package net.sf.anathema.hero.spells.display.view;
 
 import net.sf.anathema.character.main.framework.RegisteredCharacterView;
-import net.sf.anathema.character.main.type.ICharacterType;
+import net.sf.anathema.character.main.type.CharacterType;
 import net.sf.anathema.character.main.view.SubViewFactory;
 import net.sf.anathema.hero.spells.display.presenter.SpellView;
 
@@ -9,7 +9,7 @@ import net.sf.anathema.hero.spells.display.presenter.SpellView;
 public class SpellViewFactory implements SubViewFactory {
   @SuppressWarnings("unchecked")
   @Override
-  public <T> T create(ICharacterType type) {
+  public <T> T create(CharacterType type) {
     FxSpellView fxView = new FxSpellView();
     return (T) new BridgingSpellView(fxView);
   }

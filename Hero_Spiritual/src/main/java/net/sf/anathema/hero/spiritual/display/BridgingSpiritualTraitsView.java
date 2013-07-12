@@ -1,7 +1,7 @@
 package net.sf.anathema.hero.spiritual.display;
 
 import net.sf.anathema.character.main.library.util.CssSkinner;
-import net.sf.anathema.character.main.type.ICharacterType;
+import net.sf.anathema.character.main.type.CharacterType;
 import net.sf.anathema.character.main.view.labelledvalue.IValueView;
 import net.sf.anathema.framework.swing.IView;
 import net.sf.anathema.framework.value.IntValueView;
@@ -18,7 +18,7 @@ public class BridgingSpiritualTraitsView implements IView, SpiritualTraitsView {
   }
 
   @Override
-  public void initGui(SpiritualTraitsViewProperties properties, ICharacterType characterType) {
+  public void initGui(SpiritualTraitsViewProperties properties, CharacterType characterType) {
     fxView.initGui(properties, characterType);
     CssSkinner cssSkinner = new CssSkinner();
     String[] skins = cssSkinner.getSkins(characterType);

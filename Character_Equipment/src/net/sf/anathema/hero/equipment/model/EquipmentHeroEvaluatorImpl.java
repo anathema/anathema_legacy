@@ -7,7 +7,7 @@ import net.sf.anathema.character.main.equipment.ArtifactAttuneType;
 import net.sf.anathema.character.main.library.trait.specialties.Specialty;
 import net.sf.anathema.character.main.traits.TraitType;
 import net.sf.anathema.character.main.traits.types.AbilityType;
-import net.sf.anathema.character.main.type.ICharacterType;
+import net.sf.anathema.character.main.type.CharacterType;
 import net.sf.anathema.equipment.core.MagicalMaterial;
 import net.sf.anathema.hero.equipment.SpecialtiesCollectionImpl;
 import net.sf.anathema.hero.model.Hero;
@@ -73,7 +73,7 @@ public class EquipmentHeroEvaluatorImpl implements EquipmentHeroEvaluator {
     new SpecialtiesCollectionImpl(hero).addSpecialtyListChangeListener(listener);
   }
 
-  private ICharacterType getCharacterType() {
+  private CharacterType getCharacterType() {
     return hero.getTemplate().getTemplateType().getCharacterType();
   }
 }

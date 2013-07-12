@@ -3,12 +3,12 @@ package net.sf.anathema.herotype.mortal;
 import net.sf.anathema.character.main.template.magic.AbilityFavoringType;
 import net.sf.anathema.character.main.template.magic.FavoringTraitType;
 import net.sf.anathema.character.main.type.CharacterType;
-import net.sf.anathema.character.main.type.ICharacterType;
+import net.sf.anathema.character.main.type.RegisteredCharacterType;
 import net.sf.anathema.initialization.reflections.Weight;
 
-@CharacterType
+@RegisteredCharacterType
 @Weight(weight = 9)
-public class MortalCharacterType implements ICharacterType {
+public class MortalCharacterType implements CharacterType {
 
   @Override
   public boolean isExaltType() {

@@ -21,8 +21,8 @@ import net.sf.anathema.character.main.magic.parser.magic.ICostListBuilder;
 import net.sf.anathema.character.main.magic.parser.magic.IExaltedSourceBook;
 import net.sf.anathema.character.main.magic.parser.magic.SourceBuilder;
 import net.sf.anathema.character.main.traits.ValuedTraitType;
+import net.sf.anathema.character.main.type.CharacterType;
 import net.sf.anathema.character.main.type.CharacterTypes;
-import net.sf.anathema.character.main.type.ICharacterType;
 import net.sf.anathema.lib.exception.PersistenceException;
 import net.sf.anathema.lib.xml.ElementUtilities;
 import org.dom4j.Element;
@@ -72,7 +72,7 @@ public class CharmBuilder implements ICharmBuilder {
   public CharmImpl buildCharm(Element charmElement, List<ISpecialCharm> specialCharms) throws PersistenceException {
     String id = idBuilder.build(charmElement);
     try {
-      ICharacterType characterType = getCharacterType(charmElement);
+      CharacterType characterType = getCharacterType(charmElement);
       ICostList temporaryCost;
       try {
         temporaryCost = costListBuilder.buildCostList(charmElement.element(TAG_COST));
@@ -125,9 +125,9 @@ public class CharmBuilder implements ICharmBuilder {
     }
   }
 
-  private ICharacterType getCharacterType(Element charmElement) throws CharmException {
+  private CharacterType getCharacterType(Element charmElement) throws CharmException {
     String typeAttribute = charmElement.attributeValue(ATTRIB_EXALT);
-    ICharacterType characterType;
+    CharacterType characterType;
     try {
       characterType = characterTypes.findById(typeAttribute);
     } catch (IllegalArgumentException e) {

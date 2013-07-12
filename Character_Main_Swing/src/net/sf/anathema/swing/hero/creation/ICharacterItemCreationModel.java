@@ -1,14 +1,14 @@
 package net.sf.anathema.swing.hero.creation;
 
-import net.sf.anathema.character.main.type.ICharacterType;
+import net.sf.anathema.character.main.type.CharacterType;
 import net.sf.anathema.character.main.view.repository.ITemplateTypeAggregation;
 import net.sf.anathema.lib.control.ChangeListener;
 
 public interface ICharacterItemCreationModel {
 
-  ICharacterType[] getAvailableCharacterTypes();
+  CharacterType[] getAvailableCharacterTypes();
 
-  void setCharacterType(ICharacterType type);
+  void setCharacterType(CharacterType type);
 
   void addListener(ChangeListener listener);
 

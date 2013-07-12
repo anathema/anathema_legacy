@@ -1,6 +1,6 @@
 package net.sf.anathema.hero.template;
 
-import net.sf.anathema.character.main.type.ICharacterType;
+import net.sf.anathema.character.main.type.CharacterType;
 import net.sf.anathema.character.main.testing.dummy.DummyMundaneCharacterType;
 import net.sf.anathema.character.main.testing.dummy.template.DummyHeroTemplate;
 import net.sf.anathema.hero.model.Hero;
@@ -15,10 +15,10 @@ public class NativeCharacterTypeTest {
 
   @Test
   public void returnsNativeTypeFromTemplate() throws Exception {
-    ICharacterType expectedType = new DummyMundaneCharacterType();
+    CharacterType expectedType = new DummyMundaneCharacterType();
     Hero hero = mock(Hero.class);
     when(hero.getTemplate()).thenReturn(new DummyHeroTemplate());
-    ICharacterType type = NativeCharacterType.get(hero);
+    CharacterType type = NativeCharacterType.get(hero);
     assertThat(type, is(expectedType));
 
   }

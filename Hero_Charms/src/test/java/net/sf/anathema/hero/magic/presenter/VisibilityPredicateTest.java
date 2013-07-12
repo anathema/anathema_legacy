@@ -3,7 +3,7 @@ package net.sf.anathema.hero.magic.presenter;
 import net.sf.anathema.character.main.magic.model.charm.Charm;
 import net.sf.anathema.character.main.magic.model.charm.CharmIdMap;
 import net.sf.anathema.character.main.magic.model.charm.ICharmGroup;
-import net.sf.anathema.character.main.type.ICharacterType;
+import net.sf.anathema.character.main.type.CharacterType;
 import net.sf.anathema.hero.charms.display.special.VisibilityPredicate;
 import net.sf.anathema.character.main.testing.dummy.DummyExaltCharacterType;
 import net.sf.anathema.character.main.magic.display.view.charmtree.CharmGroupInformer;
@@ -21,7 +21,7 @@ public class VisibilityPredicateTest {
 
   @Test
   public void charmIsVisibleIfCharacterTypesMatchButAreNotIdentical() throws Exception {
-    ICharacterType characterTypeForCharm = new DummyExaltCharacterType();
+    CharacterType characterTypeForCharm = new DummyExaltCharacterType();
     Charm charm = createCharmForCharacterTypeFromGroup(characterTypeForCharm, ANY_ID);
     CharmIdMap map = createMapWithCharm(charm);
     ICharmGroup charmGroup = createACharmGroupThatContainsTheCharm(charm);

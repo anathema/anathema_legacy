@@ -2,7 +2,7 @@ package net.sf.anathema.character.main.template.magic;
 
 import net.sf.anathema.character.main.magic.model.charm.Charm;
 
-public class NullCharmSet implements ICharmSet {
+public class NullCharmSet implements CharmSet {
 
   @Override
   public Charm[] getCharms() {

@@ -1,13 +1,13 @@
 package net.sf.anathema.character.main.library.util;
 
-import net.sf.anathema.character.main.type.ICharacterType;
+import net.sf.anathema.character.main.type.CharacterType;
 
 import java.util.ArrayList;
 import java.util.List;
 
 public class CssSkinner {
 
-  public String[] getSkins(ICharacterType characterType) {
+  public String[] getSkins(CharacterType characterType) {
     List<String> skins = new ArrayList<>();
     skins.add("skin/platform/dotselector.css");
     skins.add("skin/traits/favorable.css");
@@ -15,7 +15,7 @@ public class CssSkinner {
     return skins.toArray(new String[skins.size()]);
   }
 
-  private String chooseSkinForCharacterType(ICharacterType characterType) {
+  private String chooseSkinForCharacterType(CharacterType characterType) {
     if (characterType == null) {
       return "skin/traits/trait.css";
     }

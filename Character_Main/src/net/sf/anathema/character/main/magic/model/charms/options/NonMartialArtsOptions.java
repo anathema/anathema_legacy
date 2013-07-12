@@ -6,8 +6,8 @@ import net.sf.anathema.character.main.magic.model.charm.CharmIdMap;
 import net.sf.anathema.character.main.magic.model.charm.ICharmGroup;
 import net.sf.anathema.character.main.magic.model.charmtree.ICharmTree;
 import net.sf.anathema.character.main.template.magic.ICharmTemplate;
+import net.sf.anathema.character.main.type.CharacterType;
 import net.sf.anathema.character.main.type.CharacterTypes;
-import net.sf.anathema.character.main.type.ICharacterType;
 import net.sf.anathema.character.main.magic.model.charm.CharmHasSameTypeAsCharacter;
 import net.sf.anathema.hero.concept.HeroConcept;
 import net.sf.anathema.hero.concept.HeroConceptFetcher;
@@ -42,11 +42,11 @@ public class NonMartialArtsOptions implements CharmIdMap, CharmGroupArbitrator {
     initCharmTreesForAvailableTypes();
   }
 
-  public ICharmTree getCharmTrees(ICharacterType type) {
+  public ICharmTree getCharmTrees(CharacterType type) {
     return treesByType.get(type);
   }
 
-  public Iterable<ICharacterType> getAvailableCharacterTypes() {
+  public Iterable<CharacterType> getAvailableCharacterTypes() {
     return availableTypes;
   }
 
@@ -87,12 +87,12 @@ public class NonMartialArtsOptions implements CharmIdMap, CharmGroupArbitrator {
     return getNativeTemplate(hero).isAllowedAlienCharms(concept.getCaste().getType());
   }
 
-  public ICharacterType getNativeCharacterType() {
+  public CharacterType getNativeCharacterType() {
     return NativeCharacterType.get(hero);
   }
 
   private void initCharmTreesForAvailableTypes() {
-    for (ICharacterType type : availableTypes) {
+    for (CharacterType type : availableTypes) {
       ICharmTemplate charmTemplate = templateRetriever.getCharmTemplate(type);
       if (charmTemplate != null && type == getNativeCharacterType()) {
         treesByType.put(type, new CharmTree(charmTemplate));
@@ -102,22 +102,22 @@ public class NonMartialArtsOptions implements CharmIdMap, CharmGroupArbitrator {
     }
   }
 
-  public ICharacterType getCharacterType(String characterTypeId) {
+  public CharacterType getCharacterType(String characterTypeId) {
     if (characterTypeId == null) {
       return getNativeCharacterType();
     }
     return characterTypes.findById(characterTypeId);
   }
 
-  public ICharacterType[] getCharacterTypes(boolean includeAlienTypes) {
+  public CharacterType[] getCharacterTypes(boolean includeAlienTypes) {
     if (!includeAlienTypes) {
-      return new ICharacterType[]{getNativeCharacterType()};
+      return new CharacterType[]{getNativeCharacterType()};
     }
     return availableTypes.asArray();
   }
 
-  public boolean isAlienType(ICharacterType characterType) {
-    ICharacterType nativeType = getNativeCharacterType();
+  public boolean isAlienType(CharacterType characterType) {
+    CharacterType nativeType = getNativeCharacterType();
     return !characterType.equals(nativeType);
   }
 }

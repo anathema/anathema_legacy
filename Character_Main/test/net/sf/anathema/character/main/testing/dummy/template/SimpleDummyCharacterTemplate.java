@@ -15,7 +15,7 @@ import net.sf.anathema.character.main.template.magic.ICharmTemplate;
 import net.sf.anathema.character.main.template.magic.IMagicTemplate;
 import net.sf.anathema.character.main.template.presentation.IPresentationProperties;
 import net.sf.anathema.character.main.traits.TraitType;
-import net.sf.anathema.character.main.type.ICharacterType;
+import net.sf.anathema.character.main.type.CharacterType;
 import net.sf.anathema.lib.util.SimpleIdentifier;
 
 import java.util.ArrayList;
@@ -24,9 +24,9 @@ import java.util.List;
 public class SimpleDummyCharacterTemplate implements HeroTemplate {
 
   private final String subtype;
-  private final ICharacterType type;
+  private final CharacterType type;
 
-  public SimpleDummyCharacterTemplate(ICharacterType type, String subtype) {
+  public SimpleDummyCharacterTemplate(CharacterType type, String subtype) {
     this.type = type;
     this.subtype = subtype;
   }

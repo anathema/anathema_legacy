@@ -1,12 +1,13 @@
 package net.sf.anathema.character.main.type;
 
-import java.lang.annotation.ElementType;
-import java.lang.annotation.Retention;
-import java.lang.annotation.RetentionPolicy;
-import java.lang.annotation.Target;
+import net.sf.anathema.character.main.template.magic.FavoringTraitType;
+import net.sf.anathema.lib.util.Identifier;
 
-@Retention(RetentionPolicy.RUNTIME)
-@Target(ElementType.TYPE)
-public @interface CharacterType {
-  //nothing to do
+public interface CharacterType extends Identifier {
+
+  boolean isExaltType();
+
+  boolean isEssenceUser();
+
+  FavoringTraitType getFavoringTraitType();
 }

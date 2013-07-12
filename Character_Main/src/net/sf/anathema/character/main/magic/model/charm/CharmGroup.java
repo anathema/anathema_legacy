@@ -1,16 +1,16 @@
 package net.sf.anathema.character.main.magic.model.charm;
 
-import net.sf.anathema.character.main.type.ICharacterType;
+import net.sf.anathema.character.main.type.CharacterType;
 import net.sf.anathema.lib.util.Identifier;
 
 public class CharmGroup implements ICharmGroup, Identifier {
 
   private final String id;
   private final Charm[] charms;
-  private final ICharacterType type;
+  private final CharacterType type;
   private final boolean isMartialArtsGroup;
 
-  public CharmGroup(ICharacterType type, String id, Charm[] charms, boolean isMartialArtsGroup) {
+  public CharmGroup(CharacterType type, String id, Charm[] charms, boolean isMartialArtsGroup) {
     this.id = id;
     this.type = type;
     this.charms = charms;
@@ -33,7 +33,7 @@ public class CharmGroup implements ICharmGroup, Identifier {
   }
 
   @Override
-  public ICharacterType getCharacterType() {
+  public CharacterType getCharacterType() {
     return type;
   }
 

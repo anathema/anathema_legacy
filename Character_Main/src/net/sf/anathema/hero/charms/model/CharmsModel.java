@@ -8,7 +8,7 @@ import net.sf.anathema.character.main.magic.model.charm.special.ISpecialCharm;
 import net.sf.anathema.character.main.magic.model.charms.IExtendedCharmLearnableArbitrator;
 import net.sf.anathema.character.main.magic.model.charms.ILearningCharmGroup;
 import net.sf.anathema.character.main.magic.model.charmtree.SpecialCharmLearnArbitrator;
-import net.sf.anathema.character.main.type.ICharacterType;
+import net.sf.anathema.character.main.type.CharacterType;
 import net.sf.anathema.hero.model.HeroModel;
 import net.sf.anathema.lib.control.ChangeListener;
 import net.sf.anathema.lib.util.Identifier;
@@ -23,7 +23,7 @@ public interface CharmsModel extends HeroModel, IExtendedCharmLearnableArbitrato
 
   ILearningCharmGroup[] getAllGroups();
 
-  ICharacterType[] getCharacterTypes(boolean includeAlienTypes);
+  CharacterType[] getCharacterTypes(boolean includeAlienTypes);
 
   CharmIdMap getCharmIdMap();
 

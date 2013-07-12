@@ -4,8 +4,8 @@ import net.sf.anathema.character.main.framework.item.CharacterPrintNameFileScann
 import net.sf.anathema.character.main.persistence.HeroTemplatePersister;
 import net.sf.anathema.character.main.template.ITemplateType;
 import net.sf.anathema.character.main.template.TemplateType;
+import net.sf.anathema.character.main.type.CharacterType;
 import net.sf.anathema.character.main.type.CharacterTypes;
-import net.sf.anathema.character.main.type.ICharacterType;
 import net.sf.anathema.framework.repository.IRepositoryFileResolver;
 import net.sf.anathema.framework.view.PrintNameFile;
 import net.sf.anathema.lib.exception.AnathemaException;
@@ -52,14 +52,14 @@ public class RegExCharacterPrintNameFileScanner implements CharacterPrintNameFil
       throw new IllegalStateException("Missing Hero type in " + file);
     }
 
-    ICharacterType characterType = characterTypes.findById(typeString);
+    CharacterType characterType = characterTypes.findById(typeString);
     SimpleIdentifier subType = new SimpleIdentifier(typeElement.attributeValue(HeroTemplatePersister.ATTRIB_SUB_TYPE));
     typesByFile.put(file, new TemplateType(characterType, subType));
     castesByFile.put(file, NULL_CASTE_TYPE);
   }
 
   @Override
-  public ICharacterType getCharacterType(PrintNameFile file) {
+  public CharacterType getCharacterType(PrintNameFile file) {
     ITemplateType templateType = getTemplateType(file);
     if (templateType == null) {
       return null;

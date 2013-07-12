@@ -1,5 +1,6 @@
 package net.sf.anathema.cascades.presenter;
 
+import net.sf.anathema.character.main.type.CharacterType;
 import net.sf.anathema.hero.magic.model.martial.MartialArtsUtilities;
 import net.sf.anathema.character.main.magic.model.charmtree.CharmTree;
 import net.sf.anathema.character.main.magic.model.charmtree.MartialArtsCharmTree;
@@ -10,7 +11,6 @@ import net.sf.anathema.character.main.template.HeroTemplate;
 import net.sf.anathema.character.main.template.ITemplateRegistry;
 import net.sf.anathema.character.main.template.magic.ICharmTemplate;
 import net.sf.anathema.character.main.type.CharacterTypes;
-import net.sf.anathema.character.main.type.ICharacterType;
 import net.sf.anathema.character.main.magic.model.charms.options.DefaultCharmTemplateRetriever;
 import net.sf.anathema.hero.charms.model.CharmGroupCollection;
 import net.sf.anathema.lib.util.Identifier;
@@ -39,7 +39,7 @@ public class CascadeGroupCollection implements CharmGroupCollection {
   }
 
   private void initCharacterTypeCharms(List<ICharmGroup> allCharmGroups) {
-    for (ICharacterType type : characterTypes.findAll()) {
+    for (CharacterType type : characterTypes.findAll()) {
       HeroTemplate template = templateRegistry.getDefaultTemplate(type);
       if (template == null) {
         continue;
@@ -60,7 +60,7 @@ public class CascadeGroupCollection implements CharmGroupCollection {
 
   private ICharmTemplate findCharmTemplateOfCharacterTypeMostProficientWithMartialArts() {
     ICharmTemplate currentFavoriteTemplate = new NullCharmTemplate();
-    for (ICharacterType type : characterTypes.findAll()) {
+    for (CharacterType type : characterTypes.findAll()) {
       HeroTemplate defaultTemplate = templateRegistry.getDefaultTemplate(type);
       if (defaultTemplate == null) {
         continue;
@@ -75,7 +75,7 @@ public class CascadeGroupCollection implements CharmGroupCollection {
     return currentFavoriteTemplate;
   }
 
-  private void registerTypeCharms(List<ICharmGroup> allCharmGroups, ICharacterType type, HeroTemplate defaultTemplate) {
+  private void registerTypeCharms(List<ICharmGroup> allCharmGroups, CharacterType type, HeroTemplate defaultTemplate) {
     ICharmTree typeTree = new CharmTree(DefaultCharmTemplateRetriever.getCharmTemplate(defaultTemplate));
     registerGroups(allCharmGroups, type, typeTree);
   }

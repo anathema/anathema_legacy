@@ -1,6 +1,6 @@
 package net.sf.anathema.hero.intimacies.display;
 
-import net.sf.anathema.character.main.type.ICharacterType;
+import net.sf.anathema.character.main.type.CharacterType;
 import net.sf.anathema.hero.display.presenter.HeroModelInitializer;
 import net.sf.anathema.hero.display.presenter.RegisteredInitializer;
 import net.sf.anathema.character.main.view.SectionView;
@@ -24,7 +24,7 @@ public class IntimaciesInitializer implements HeroModelInitializer {
   @Override
   public void initialize(SectionView sectionView, Hero hero, final Resources resources) {
     String viewName = resources.getString("AdditionalTemplateView.TabName.Intimacies");
-    ICharacterType characterType = hero.getTemplate().getTemplateType().getCharacterType();
+    CharacterType characterType = hero.getTemplate().getTemplateType().getCharacterType();
     IntimaciesView view = sectionView.addView(viewName, IntimaciesView.class, characterType);
     IntimaciesModel intimaciesModel = IntimaciesModelFetcher.fetch(hero);
     new IntimaciesPresenter(intimaciesModel, view, resources).initPresentation();

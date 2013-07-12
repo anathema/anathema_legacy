@@ -15,7 +15,7 @@ import net.sf.anathema.character.main.magic.model.magic.cost.CostList;
 import net.sf.anathema.character.main.magic.parser.magic.IExaltedSourceBook;
 import net.sf.anathema.character.main.traits.TraitType;
 import net.sf.anathema.character.main.traits.ValuedTraitType;
-import net.sf.anathema.character.main.type.ICharacterType;
+import net.sf.anathema.character.main.type.CharacterType;
 import net.sf.anathema.hero.model.Hero;
 import net.sf.anathema.hero.traits.TraitMap;
 import net.sf.anathema.hero.traits.TraitModelFetcher;
@@ -37,7 +37,7 @@ public class DummyCharm extends SimpleIdentifier implements Charm {
   private Set<Charm> parentCharms;
   private Set<Charm> learnFollowUpCharms = new HashSet<>();
   private List<IndirectCharmRequirement> requirements = new ArrayList<>();
-  private ICharacterType characterType;
+  private CharacterType characterType;
   private String groupId;
   private CharmTypeModel model = new CharmTypeModel();
   public List<MagicAttribute> attributes = new ArrayList<>();
@@ -90,11 +90,11 @@ public class DummyCharm extends SimpleIdentifier implements Charm {
   }
 
   @Override
-  public ICharacterType getCharacterType() {
+  public CharacterType getCharacterType() {
     return characterType;
   }
 
-  public void setCharacterType(ICharacterType type) {
+  public void setCharacterType(CharacterType type) {
     characterType = type;
   }
 

@@ -1,6 +1,6 @@
 package net.sf.anathema.swing.hero.creation;
 
-import net.sf.anathema.character.main.type.ICharacterType;
+import net.sf.anathema.character.main.type.CharacterType;
 import net.sf.anathema.lib.resources.Resources;
 
 public class CharacterTypeUi {
@@ -11,7 +11,7 @@ public class CharacterTypeUi {
     this.resources = resources;
   }
 
-  public String getLabel(ICharacterType type) {
+  public String getLabel(CharacterType type) {
     return resources.getString("CharacterGenerator.NewCharacter." + type.getId() + ".Name");
   }
 }

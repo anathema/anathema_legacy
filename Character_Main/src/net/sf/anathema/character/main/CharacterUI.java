@@ -1,6 +1,6 @@
 package net.sf.anathema.character.main;
 
-import net.sf.anathema.character.main.type.ICharacterType;
+import net.sf.anathema.character.main.type.CharacterType;
 import net.sf.anathema.lib.file.RelativePath;
 import net.sf.anathema.lib.gui.ui.AbstractUI;
 
@@ -24,23 +24,23 @@ public class CharacterUI extends AbstractUI {
     return new RelativePath("icons/ButtonRandomNameB16.png");
   }
 
-  public Icon getSmallTypeIcon(ICharacterType characterType) {
+  public Icon getSmallTypeIcon(CharacterType characterType) {
     return getIcon(getSmallTypeIconPath(characterType));
   }
 
-  public RelativePath getSmallTypeIconPath(ICharacterType characterType) {
+  public RelativePath getSmallTypeIconPath(CharacterType characterType) {
     return new RelativePath("icons/" + characterType.getId() + "Icon16.png");
   }
 
-  public RelativePath getLargeTypeIconPath(ICharacterType characterType) {
+  public RelativePath getLargeTypeIconPath(CharacterType characterType) {
     return new RelativePath("icons/" + characterType.getId() + "Icon100.png");
   }
 
-  public Icon getMediumBallResource(ICharacterType characterType) {
+  public Icon getMediumBallResource(CharacterType characterType) {
     return getIcon(getMediumBallPath(characterType));
   }
 
-  public RelativePath getMediumBallPath(ICharacterType characterType) {
+  public RelativePath getMediumBallPath(CharacterType characterType) {
     return new RelativePath("icons/Border" + characterType.getId() + "Button16.png");
   }
 

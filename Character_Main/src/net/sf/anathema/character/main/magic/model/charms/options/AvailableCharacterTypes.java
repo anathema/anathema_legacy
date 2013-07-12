@@ -1,23 +1,23 @@
 package net.sf.anathema.character.main.magic.model.charms.options;
 
 import net.sf.anathema.character.main.template.magic.ICharmTemplate;
+import net.sf.anathema.character.main.type.CharacterType;
 import net.sf.anathema.character.main.type.CharacterTypes;
-import net.sf.anathema.character.main.type.ICharacterType;
 
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 
-public class AvailableCharacterTypes implements Iterable<ICharacterType> {
-  private final List<ICharacterType> availableTypes = new ArrayList<>();
+public class AvailableCharacterTypes implements Iterable<CharacterType> {
+  private final List<CharacterType> availableTypes = new ArrayList<>();
   private final CharmTemplateRetriever retriever;
 
   public AvailableCharacterTypes(CharmTemplateRetriever retriever) {
     this.retriever = retriever;
   }
 
-  public void collectAvailableTypes(ICharacterType nativeCharacterType, CharacterTypes characterTypes) {
-    for (ICharacterType type : characterTypes.findAll()) {
+  public void collectAvailableTypes(CharacterType nativeCharacterType, CharacterTypes characterTypes) {
+    for (CharacterType type : characterTypes.findAll()) {
       ICharmTemplate charmTemplate = retriever.getCharmTemplate(type);
       if (charmTemplate != null && charmTemplate.canLearnCharms()) {
         availableTypes.add(type);
@@ -28,11 +28,11 @@ public class AvailableCharacterTypes implements Iterable<ICharacterType> {
   }
 
   @Override
-  public Iterator<ICharacterType> iterator() {
+  public Iterator<CharacterType> iterator() {
     return availableTypes.iterator();
   }
 
-  public ICharacterType[] asArray() {
-    return availableTypes.toArray(new ICharacterType[availableTypes.size()]);
+  public CharacterType[] asArray() {
+    return availableTypes.toArray(new CharacterType[availableTypes.size()]);
   }
 }

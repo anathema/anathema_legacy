@@ -1,7 +1,7 @@
 package net.sf.anathema.character.main.view;
 
-import net.sf.anathema.character.main.type.ICharacterType;
+import net.sf.anathema.character.main.type.CharacterType;
 
 public interface SubViewFactory {
-  <T> T create(ICharacterType type);
+  <T> T create(CharacterType type);
 }
