@@ -1,6 +1,6 @@
 package net.sf.anathema.character.main.templateparser;
 
-import net.sf.anathema.character.main.template.experience.CostAnalyzer;
+import net.sf.anathema.hero.advance.CostAnalyzer;
 import net.sf.anathema.character.main.testing.dummy.DummyGenericTrait;
 import net.sf.anathema.character.main.testing.dummy.template.DummyXmlTemplateRegistry;
 import net.sf.anathema.character.main.traits.types.AttributeType;

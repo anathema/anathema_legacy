@@ -1,6 +1,6 @@
 package net.sf.anathema.hero.magic.advance;
 
-import net.sf.anathema.hero.advance.experience.CostAnalyzerImpl;
+import net.sf.anathema.hero.advance.CostAnalyzerImpl;
 import net.sf.anathema.character.main.template.creation.BonusPointCosts;
 import net.sf.anathema.character.main.template.creation.ICreationPoints;
 import net.sf.anathema.hero.change.ChangeAnnouncer;

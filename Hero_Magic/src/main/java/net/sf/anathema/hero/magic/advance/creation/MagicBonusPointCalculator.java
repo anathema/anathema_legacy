@@ -3,7 +3,7 @@ package net.sf.anathema.hero.magic.advance.creation;
 import net.sf.anathema.character.main.magic.model.magic.Magic;
 import net.sf.anathema.character.main.template.creation.BonusPointCosts;
 import net.sf.anathema.character.main.template.creation.ICreationPoints;
-import net.sf.anathema.character.main.template.experience.CostAnalyzer;
+import net.sf.anathema.hero.advance.CostAnalyzer;
 import net.sf.anathema.character.main.xml.creation.template.MagicCreationCostsTto;
 import net.sf.anathema.hero.magic.model.MagicModel;
 import net.sf.anathema.hero.magic.model.WeightedMagicSorter;

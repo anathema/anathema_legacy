@@ -11,6 +11,7 @@ import net.sf.anathema.hero.magic.advance.experience.CharmExperienceModel;
 import net.sf.anathema.hero.model.Hero;
 import net.sf.anathema.hero.points.HeroModelExperienceCalculator;
 import net.sf.anathema.hero.points.PointModelFetcher;
+import net.sf.anathema.hero.points.PointsModel;
 import net.sf.anathema.hero.points.overview.IValueModel;
 import net.sf.anathema.hero.traits.TraitMap;
 import net.sf.anathema.hero.traits.TraitModelFetcher;
@@ -67,7 +68,8 @@ public class HardCodedExperiencePointManagement implements ExperiencePointManage
   @Override
   public int getMiscGain() {
     int total = 0;
-    for (HeroModelExperienceCalculator experienceCalculator : PointModelFetcher.fetch(hero).getExperienceCalculators()) {
+    PointsModel pointsModel = PointModelFetcher.fetch(hero);
+    for (HeroModelExperienceCalculator experienceCalculator : pointsModel.getExperienceCalculators()) {
       total += experienceCalculator.calculateGain();
     }
     return total;

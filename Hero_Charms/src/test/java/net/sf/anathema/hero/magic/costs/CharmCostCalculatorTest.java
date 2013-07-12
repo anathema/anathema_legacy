@@ -1,7 +1,7 @@
 package net.sf.anathema.hero.magic.costs;
 
 import com.google.common.collect.ImmutableList;
-import net.sf.anathema.hero.advance.experience.CostAnalyzerImpl;
+import net.sf.anathema.hero.advance.CostAnalyzerImpl;
 import net.sf.anathema.character.main.costs.AbstractBonusPointTestCase;
 import net.sf.anathema.character.main.library.trait.favorable.FavorableState;
 import net.sf.anathema.character.main.magic.model.spells.Spell;

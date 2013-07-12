@@ -2,7 +2,7 @@ package net.sf.anathema.character.main.testing.dummy;
 
 import net.sf.anathema.character.main.magic.model.charm.Charm;
 import net.sf.anathema.character.main.template.creation.BonusPointCosts;
-import net.sf.anathema.character.main.template.experience.CostAnalyzer;
+import net.sf.anathema.hero.advance.CostAnalyzer;
 import net.sf.anathema.character.main.template.experience.CurrentRatingCosts;
 import net.sf.anathema.character.main.template.points.FixedValueRatingCosts;
 import net.sf.anathema.character.main.traits.ValuedTraitType;

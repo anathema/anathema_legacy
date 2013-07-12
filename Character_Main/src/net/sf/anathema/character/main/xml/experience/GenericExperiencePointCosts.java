@@ -4,7 +4,7 @@ import net.sf.anathema.character.main.IGenericTraitCollection;
 import net.sf.anathema.character.main.magic.model.charm.Charm;
 import net.sf.anathema.character.main.magic.model.magic.attribute.MagicAttribute;
 import net.sf.anathema.character.main.magic.model.spells.Spell;
-import net.sf.anathema.character.main.template.experience.CostAnalyzer;
+import net.sf.anathema.hero.advance.CostAnalyzer;
 import net.sf.anathema.character.main.template.points.FixedValueRatingCosts;
 import net.sf.anathema.hero.magic.model.martial.MartialArtsLevel;
 import net.sf.anathema.character.main.template.experience.CurrentRatingCosts;

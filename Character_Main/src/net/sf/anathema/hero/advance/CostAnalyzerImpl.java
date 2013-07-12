@@ -1,7 +1,7 @@
-package net.sf.anathema.hero.advance.experience;
+package net.sf.anathema.hero.advance;
 
 import net.sf.anathema.character.main.magic.model.magic.Magic;
-import net.sf.anathema.character.main.template.experience.CostAnalyzer;
+import net.sf.anathema.hero.advance.CostAnalyzer;
 import net.sf.anathema.hero.magic.model.martial.MartialArtsLevel;
 import net.sf.anathema.hero.magic.model.martial.MartialArtsUtilities;
 import net.sf.anathema.hero.model.Hero;

@@ -6,6 +6,7 @@ import net.sf.anathema.character.main.magic.model.charm.Charm;
 import net.sf.anathema.character.main.magic.model.spells.Spell;
 import net.sf.anathema.character.main.template.experience.CurrentRatingCosts;
 import net.sf.anathema.character.main.template.experience.IExperiencePointCosts;
+import net.sf.anathema.hero.advance.CostAnalyzerImpl;
 import net.sf.anathema.hero.model.Hero;
 import net.sf.anathema.hero.traits.GenericTraitCollectionFacade;
 import net.sf.anathema.hero.traits.TraitMap;

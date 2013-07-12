@@ -3,6 +3,7 @@ package net.sf.anathema.character.main.template.experience;
 import net.sf.anathema.character.main.IGenericTraitCollection;
 import net.sf.anathema.character.main.magic.model.charm.Charm;
 import net.sf.anathema.character.main.magic.model.spells.Spell;
+import net.sf.anathema.hero.advance.CostAnalyzer;
 import net.sf.anathema.hero.model.Hero;
 
 public interface IExperiencePointCosts {
