@@ -44,26 +44,26 @@ public class CharmExperienceModel extends AbstractIntegerValueModel {
     return experienceCosts;
   }
 
-  private int calculateCharmCost(CharmsModel charmConfiguration, Charm charm, Set<Charm> charmsCalculated) {
-    CharmSpecialsModel specialCharm = charmConfiguration.getCharmSpecialsModel(charm);
+  private int calculateCharmCost(CharmsModel charms, Charm charm, Set<Charm> charmsCalculated) {
+    CharmSpecialsModel specialCharm = charms.getCharmSpecialsModel(charm);
     int charmCost = calculator.getCharmCosts(hero, charm);
     if (specialCharm != null) {
       int timesLearnedWithExperience = specialCharm.getCurrentLearnCount() - specialCharm.getCreationLearnCount();
       int specialCharmCost = timesLearnedWithExperience * charmCost;
       if (specialCharm instanceof IUpgradableCharmConfiguration) {
-        return (costsExperience(charmConfiguration, charm, charmsCalculated) ? charmCost : 0) +
+        return (costsExperience(charms, charm, charmsCalculated) ? charmCost : 0) +
                ((IUpgradableCharmConfiguration) specialCharm).getUpgradeXPCost();
       }
       if (!(specialCharm instanceof SubEffectCharmSpecials)) {
         return specialCharmCost;
       }
-      SubEffectCharmSpecials subeffectCharmConfiguration = (SubEffectCharmSpecials) specialCharm;
-      int count = Math.max(0, (subeffectCharmConfiguration.getExperienceLearnedSubEffectCount() -
-                               (subeffectCharmConfiguration.getCreationLearnedSubEffectCount() == 0 ? 1 : 0)));
-      int subeffectCost = (int) Math.ceil(count * subeffectCharmConfiguration.getPointCostPerEffect() * 2);
-      return subeffectCost + specialCharmCost;
+      SubEffectCharmSpecials subEffectCharmConfiguration = (SubEffectCharmSpecials) specialCharm;
+      int count = Math.max(0, (subEffectCharmConfiguration.getExperienceLearnedSubEffectCount() -
+                               (subEffectCharmConfiguration.getCreationLearnedSubEffectCount() == 0 ? 1 : 0)));
+      int subEffectCost = (int) Math.ceil(count * subEffectCharmConfiguration.getPointCostPerEffect() * 2);
+      return subEffectCost + specialCharmCost;
     }
-    return costsExperience(charmConfiguration, charm, charmsCalculated) ? charmCost : 0;
+    return costsExperience(charms, charm, charmsCalculated) ? charmCost : 0;
   }
 
   private boolean costsExperience(CharmsModel charmConfiguration, Charm charm, Set<Charm> charmsCalculated) {
