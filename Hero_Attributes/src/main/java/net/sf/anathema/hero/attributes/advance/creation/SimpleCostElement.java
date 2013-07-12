@@ -1,4 +1,4 @@
-package net.sf.anathema.hero.advance.creation.basic;
+package net.sf.anathema.hero.attributes.advance.creation;
 
 public class SimpleCostElement implements ICostElement {
 

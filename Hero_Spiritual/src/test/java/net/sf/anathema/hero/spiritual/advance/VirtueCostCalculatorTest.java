@@ -8,7 +8,7 @@ import net.sf.anathema.character.main.testing.BasicCharacterTestCase;
 import net.sf.anathema.character.main.testing.dummy.DummyHero;
 import net.sf.anathema.character.main.testing.dummy.template.DummyTraitTemplateFactory;
 import net.sf.anathema.character.main.traits.context.CreationTraitValueStrategy;
-import net.sf.anathema.hero.advance.creation.virtue.VirtueCostCalculator;
+import net.sf.anathema.hero.spiritual.advance.creation.VirtueCostCalculator;
 import net.sf.anathema.character.main.traits.VirtueTemplateFactory;
 import net.sf.anathema.character.main.traits.creation.DefaultTraitFactory;
 import org.junit.Before;

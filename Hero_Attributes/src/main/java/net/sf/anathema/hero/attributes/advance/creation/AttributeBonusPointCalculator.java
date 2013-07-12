@@ -10,12 +10,6 @@ import net.sf.anathema.character.main.library.trait.FavorableTraitCost;
 import net.sf.anathema.character.main.library.trait.Trait;
 import net.sf.anathema.character.main.library.trait.TraitGroup;
 import net.sf.anathema.hero.attributes.model.AttributeModel;
-import net.sf.anathema.hero.advance.creation.basic.ElementCreationCost;
-import net.sf.anathema.hero.advance.creation.basic.ElementCreationCostCalculator;
-import net.sf.anathema.hero.advance.creation.basic.ICostElement;
-import net.sf.anathema.hero.advance.creation.trait.TraitCostElement;
-import net.sf.anathema.hero.advance.creation.trait.TraitGroupCost;
-import net.sf.anathema.hero.advance.creation.trait.TraitSorter;
 import net.sf.anathema.hero.points.HeroBonusPointCalculator;
 
 import java.util.ArrayList;

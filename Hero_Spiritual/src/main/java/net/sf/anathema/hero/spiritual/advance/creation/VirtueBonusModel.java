@@ -1,4 +1,4 @@
-package net.sf.anathema.hero.advance.creation.virtue;
+package net.sf.anathema.hero.spiritual.advance.creation;
 
 import net.sf.anathema.character.main.template.creation.ICreationPoints;
 import net.sf.anathema.hero.advance.experience.models.AbstractSpendingModel;

@@ -1,4 +1,4 @@
-package net.sf.anathema.hero.advance.creation.virtue;
+package net.sf.anathema.hero.spiritual.advance.creation;
 
 public interface IVirtueCost {
 

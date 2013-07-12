@@ -1,8 +1,5 @@
-package net.sf.anathema.character.main.costs;
+package net.sf.anathema.hero.attributes.advance.creation;
 
-import net.sf.anathema.hero.advance.creation.basic.ElementCreationCost;
-import net.sf.anathema.hero.advance.creation.basic.ElementCreationCostCalculator;
-import net.sf.anathema.hero.advance.creation.basic.SimpleCostElement;
 import org.junit.Test;
 
 import static org.junit.Assert.assertEquals;

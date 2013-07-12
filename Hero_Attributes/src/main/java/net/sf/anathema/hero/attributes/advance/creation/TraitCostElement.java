@@ -1,7 +1,6 @@
-package net.sf.anathema.hero.advance.creation.trait;
+package net.sf.anathema.hero.attributes.advance.creation;
 
 import net.sf.anathema.character.main.library.trait.Trait;
-import net.sf.anathema.hero.advance.creation.basic.ICostElement;
 
 public class TraitCostElement implements ICostElement {
 

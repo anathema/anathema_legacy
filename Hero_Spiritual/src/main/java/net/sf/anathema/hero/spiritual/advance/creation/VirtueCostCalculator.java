@@ -1,4 +1,4 @@
-package net.sf.anathema.hero.advance.creation.virtue;
+package net.sf.anathema.hero.spiritual.advance.creation;
 
 import net.sf.anathema.character.main.template.creation.BonusPointCosts;
 import net.sf.anathema.character.main.traits.TraitType;

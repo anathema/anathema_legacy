@@ -6,7 +6,6 @@ import net.sf.anathema.character.main.library.trait.experience.TraitRatingCostCa
 import net.sf.anathema.character.main.template.creation.BonusPointCosts;
 import net.sf.anathema.character.main.template.creation.ICreationPoints;
 import net.sf.anathema.character.main.template.experience.CurrentRatingCosts;
-import net.sf.anathema.hero.advance.creation.virtue.VirtueCostCalculator;
 import net.sf.anathema.hero.points.HeroBonusPointCalculator;
 import net.sf.anathema.hero.spiritual.SpiritualTraitModel;
 
