@@ -1,50 +1,38 @@
 package net.sf.anathema.hero.magic.advance.creation;
 
-import net.sf.anathema.character.main.advance.CostAnalyzerImpl;
 import net.sf.anathema.character.main.magic.model.magic.Magic;
 import net.sf.anathema.character.main.template.creation.BonusPointCosts;
+import net.sf.anathema.character.main.template.creation.ICreationPoints;
+import net.sf.anathema.character.main.template.experience.CostAnalyzer;
+import net.sf.anathema.hero.magic.model.MagicModel;
 import net.sf.anathema.hero.magic.model.WeightedMagicSorter;
-import net.sf.anathema.hero.magic.model.MagicModelFetcher;
-import net.sf.anathema.hero.model.Hero;
+import net.sf.anathema.hero.points.HeroBonusPointCalculator;
 
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
-public class MagicCreationCostCalculator {
+public class MagicBonusPointCalculator implements HeroBonusPointCalculator {
 
   private final int favoredCreationMagicCount;
   private final int defaultCreationMagicCount;
   private final MagicCreationCostEvaluator magicCreationCostEvaluator;
   private final BonusPointCosts costs;
-  private final CostAnalyzerImpl analyzer;
+  private final CostAnalyzer analyzer;
   private int generalPicksSpent = 0;
   private int favoredPicksSpent = 0;
   protected int bonusPointsSpent = 0;
 
-  public MagicCreationCostCalculator(Hero hero, BonusPointCosts costs) {
-    this.magicCreationCostEvaluator = MagicModelFetcher.fetch(hero).getMagicCostEvaluator();
-    this.favoredCreationMagicCount = hero.getTemplate().getCreationPoints().getFavoredCreationMagicCount();
-    this.defaultCreationMagicCount = hero.getTemplate().getCreationPoints().getDefaultCreationMagicCount();
+  public MagicBonusPointCalculator(MagicModel model, ICreationPoints creationPoints, BonusPointCosts costs, CostAnalyzer analyzer) {
+    this.magicCreationCostEvaluator = model.getMagicCostEvaluator();
+    this.favoredCreationMagicCount = creationPoints.getFavoredCreationMagicCount();
+    this.defaultCreationMagicCount = creationPoints.getDefaultCreationMagicCount();
     this.costs = costs;
-    this.analyzer = new CostAnalyzerImpl(hero);
+    this.analyzer = analyzer;
   }
 
   public void calculateMagicCosts() {
-    clear();
-    List<Magic> magicToHandle = magicCreationCostEvaluator.compileCompleteMagicList();
-    if (magicToHandle == null || magicToHandle.size() == 0) {
-      return;
-    }
-    int[] weights = new int[magicToHandle.size()];
-    for (int index = 0; index < weights.length; index++) {
-      weights[index] = costs.getMagicCosts().getMagicCosts(magicToHandle.get(index), analyzer);
-    }
-    List<Magic> sortedMagicList = new WeightedMagicSorter().sortDescending(magicToHandle.toArray(new Magic[magicToHandle.size()]), weights);
-    Set<Magic> handledMagic = new HashSet<>();
-    for (Magic magic : sortedMagicList) {
-      handleMagic(magic, handledMagic);
-    }
+    recalculate();
   }
 
   private void clear() {
@@ -84,8 +72,32 @@ public class MagicCreationCostCalculator {
     }
   }
 
-  public int getBonusPointsSpent() {
+  @Override
+  public void recalculate() {
+    clear();
+    List<Magic> magicToHandle = magicCreationCostEvaluator.compileCompleteMagicList();
+    if (magicToHandle == null || magicToHandle.size() == 0) {
+      return;
+    }
+    int[] weights = new int[magicToHandle.size()];
+    for (int index = 0; index < weights.length; index++) {
+      weights[index] = costs.getMagicCosts().getMagicCosts(magicToHandle.get(index), analyzer);
+    }
+    List<Magic> sortedMagicList = new WeightedMagicSorter().sortDescending(magicToHandle.toArray(new Magic[magicToHandle.size()]), weights);
+    Set<Magic> handledMagic = new HashSet<>();
+    for (Magic magic : sortedMagicList) {
+      handleMagic(magic, handledMagic);
+    }
+  }
+
+  @Override
+  public int getBonusPointCost() {
     return bonusPointsSpent;
+  }
+
+  @Override
+  public int getBonusPointsGranted() {
+    return 0;
   }
 
   public int getFavoredCharmPicksSpent() {

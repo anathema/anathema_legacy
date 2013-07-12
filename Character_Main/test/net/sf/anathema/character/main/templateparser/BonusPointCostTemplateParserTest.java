@@ -1,7 +1,6 @@
 package net.sf.anathema.character.main.templateparser;
 
 import net.sf.anathema.character.main.dummy.DummyCharm;
-import net.sf.anathema.hero.magic.model.martial.MartialArtsLevel;
 import net.sf.anathema.character.main.magic.model.magic.Magic;
 import net.sf.anathema.character.main.template.experience.CostAnalyzer;
 import net.sf.anathema.character.main.testing.dummy.DummyGenericTrait;
@@ -9,6 +8,7 @@ import net.sf.anathema.character.main.testing.dummy.template.DummyXmlTemplateReg
 import net.sf.anathema.character.main.traits.types.AttributeType;
 import net.sf.anathema.character.main.xml.creation.BonusPointCostTemplateParser;
 import net.sf.anathema.character.main.xml.creation.GenericBonusPointCosts;
+import net.sf.anathema.hero.magic.model.martial.MartialArtsLevel;
 import net.sf.anathema.lib.exception.AnathemaException;
 import net.sf.anathema.lib.xml.DocumentUtilities;
 import org.dom4j.Element;
@@ -18,12 +18,16 @@ import org.junit.Test;
 import static org.hamcrest.CoreMatchers.is;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertThat;
+import static org.mockito.Matchers.any;
+import static org.mockito.Mockito.mock;
+import static org.mockito.Mockito.when;
 
 public class BonusPointCostTemplateParserTest extends BasicTemplateParsingTestCase {
 
   private static final String ORIGINAL_TEMPLATE_ID = "original";
   private BonusPointCostTemplateParser parser;
   private GenericBonusPointCosts originalTemplate;
+  private CostAnalyzer costAnalyzerMock = mock(CostAnalyzer.class);
 
   @Before
   public void setUp() throws Exception {
@@ -97,28 +101,12 @@ public class BonusPointCostTemplateParserTest extends BasicTemplateParsingTestCa
     assertCosts7WhenItsNotFavored(costs, testCharm);
     assertCosts5WhenItIsFavored(costs, testCharm);
     assertCosts5WhenItsFavoredMartialArts(costs, testCharm);
-    assertEquals(7, costs.getMagicCosts().getMagicCosts(testCharm, new CostAnalyzer() {
-      @Override
-      public MartialArtsLevel getMartialArtsLevel(Magic magic) {
-        return MartialArtsLevel.Sidereal;
-      }
 
-      @Override
-      public boolean isMagicFavored(Magic magic) {
-        return false;
-      }
-    }));
-    assertEquals(5, costs.getMagicCosts().getMagicCosts(testCharm, new CostAnalyzer() {
-      @Override
-      public MartialArtsLevel getMartialArtsLevel(Magic magic) {
-        return MartialArtsLevel.Sidereal;
-      }
+    configureCostAnalyzer(MartialArtsLevel.Sidereal, false);
+    assertEquals(7, costs.getMagicCosts().getMagicCosts(testCharm, costAnalyzerMock));
 
-      @Override
-      public boolean isMagicFavored(Magic magic) {
-        return true;
-      }
-    }));
+    configureCostAnalyzer(MartialArtsLevel.Sidereal, true);
+    assertEquals(5, costs.getMagicCosts().getMagicCosts(testCharm, costAnalyzerMock));
   }
 
   private GenericBonusPointCosts parseXmlToCost(String xml) throws AnathemaException {
@@ -127,45 +115,18 @@ public class BonusPointCostTemplateParserTest extends BasicTemplateParsingTestCa
   }
 
   private void assertCosts5WhenItsFavoredMartialArts(GenericBonusPointCosts costs, DummyCharm testCharm) {
-    assertEquals(5, costs.getMagicCosts().getMagicCosts(testCharm, new CostAnalyzer() {
-      @Override
-      public MartialArtsLevel getMartialArtsLevel(Magic magic) {
-        return MartialArtsLevel.Celestial;
-      }
-
-      @Override
-      public boolean isMagicFavored(Magic magic) {
-        return true;
-      }
-    }));
+    configureCostAnalyzer(MartialArtsLevel.Celestial, true);
+    assertEquals(5, costs.getMagicCosts().getMagicCosts(testCharm, costAnalyzerMock));
   }
 
   private void assertCosts5WhenItIsFavored(GenericBonusPointCosts costs, DummyCharm testCharm) {
-    assertEquals(5, costs.getMagicCosts().getMagicCosts(testCharm, new CostAnalyzer() {
-      @Override
-      public MartialArtsLevel getMartialArtsLevel(Magic magic) {
-        return null;
-      }
-
-      @Override
-      public boolean isMagicFavored(Magic magic) {
-        return true;
-      }
-    }));
+    configureCostAnalyzer(null, true);
+    assertEquals(5, costs.getMagicCosts().getMagicCosts(testCharm, costAnalyzerMock));
   }
 
   private void assertCosts7WhenItsNotFavored(GenericBonusPointCosts costs, DummyCharm testCharm) {
-    assertEquals(7, costs.getMagicCosts().getMagicCosts(testCharm, new CostAnalyzer() {
-      @Override
-      public MartialArtsLevel getMartialArtsLevel(Magic magic) {
-        return null;
-      }
-
-      @Override
-      public boolean isMagicFavored(Magic magic) {
-        return false;
-      }
-    }));
+    configureCostAnalyzer(null, false);
+    assertEquals(7, costs.getMagicCosts().getMagicCosts(testCharm, costAnalyzerMock));
   }
 
   @Test
@@ -205,5 +166,10 @@ public class BonusPointCostTemplateParserTest extends BasicTemplateParsingTestCa
     assertCosts7WhenItsNotFavored(costs, testCharm);
     assertCosts5WhenItIsFavored(costs, testCharm);
     assertCosts5WhenItsFavoredMartialArts(costs, testCharm);
+  }
+
+  private void configureCostAnalyzer(MartialArtsLevel level, boolean favored) {
+    when(costAnalyzerMock.getMartialArtsLevel((Magic) any())).thenReturn(level);
+    when(costAnalyzerMock.isMagicFavored((Magic) any())).thenReturn(favored);
   }
 }

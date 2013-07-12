@@ -5,10 +5,10 @@ import net.sf.anathema.character.main.advance.models.AbstractSpendingModel;
 
 public class DefaultMagicModel extends AbstractSpendingModel {
 
-  private final MagicCreationCostCalculator magicCalculator;
+  private final MagicBonusPointCalculator magicCalculator;
   private final ICreationPoints creationPoints;
 
-  public DefaultMagicModel(MagicCreationCostCalculator magicCalculator, ICreationPoints creationPoints) {
+  public DefaultMagicModel(MagicBonusPointCalculator magicCalculator, ICreationPoints creationPoints) {
     super("Charms", "General");
     this.magicCalculator = magicCalculator;
     this.creationPoints = creationPoints;
@@ -19,7 +19,7 @@ public class DefaultMagicModel extends AbstractSpendingModel {
     if (magicCalculator == null) {
       return 0;
     }
-    return magicCalculator.getBonusPointsSpent();
+    return magicCalculator.getBonusPointCost();
   }
 
   @Override

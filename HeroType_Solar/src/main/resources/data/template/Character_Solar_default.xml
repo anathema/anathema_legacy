@@ -29,6 +29,7 @@
         <model id="Charms"/>
         <model id="Combos"/>
         <model id="Spells"/>
+        <model id="MagicPoints"/>
         <model id="Languages"/>
         <model id="Intimacies"/>
         <model id="Specialties"/>

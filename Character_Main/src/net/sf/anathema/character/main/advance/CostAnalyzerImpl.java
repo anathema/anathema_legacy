@@ -1,10 +1,9 @@
 package net.sf.anathema.character.main.advance;
 
-import net.sf.anathema.character.main.magic.model.charm.Charm;
-import net.sf.anathema.hero.magic.model.martial.MartialArtsLevel;
-import net.sf.anathema.hero.magic.model.martial.MartialArtsUtilities;
 import net.sf.anathema.character.main.magic.model.magic.Magic;
 import net.sf.anathema.character.main.template.experience.CostAnalyzer;
+import net.sf.anathema.hero.magic.model.martial.MartialArtsLevel;
+import net.sf.anathema.hero.magic.model.martial.MartialArtsUtilities;
 import net.sf.anathema.hero.model.Hero;
 
 public class CostAnalyzerImpl implements CostAnalyzer {
@@ -22,9 +21,6 @@ public class CostAnalyzerImpl implements CostAnalyzer {
 
   @Override
   public MartialArtsLevel getMartialArtsLevel(Magic magic) {
-    if (!(magic instanceof Charm)) {
-      return null;
-    }
-    return MartialArtsUtilities.getLevel((Charm) magic);
+    return MartialArtsUtilities.getLevel(magic);
   }
 }

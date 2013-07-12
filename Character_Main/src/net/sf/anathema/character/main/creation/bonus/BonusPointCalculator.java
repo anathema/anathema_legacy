@@ -1,7 +1,6 @@
 package net.sf.anathema.character.main.creation.bonus;
 
 import net.sf.anathema.hero.points.HeroBonusPointCalculator;
-import net.sf.anathema.hero.points.overview.IValueModel;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -28,7 +27,11 @@ public class BonusPointCalculator {
     return additionalGranted;
   }
 
-  public IValueModel<Integer> getMiscellaneousModel() {
-    return new MiscBonusModel(allCalculators);
+  public int getTotalValue() {
+    int pointsSpent = 0;
+    for (HeroBonusPointCalculator calculator : allCalculators) {
+      pointsSpent += calculator.getBonusPointCost();
+    }
+    return pointsSpent;
   }
 }
