@@ -1,6 +1,6 @@
 package net.sf.anathema.character.main.magic.parser.spells;
 
-import net.sf.anathema.character.main.framework.data.IExtensibleDataSet;
+import net.sf.anathema.character.main.framework.data.ExtensibleDataSet;
 import net.sf.anathema.character.main.framework.data.IExtensibleDataSetCompiler;
 import net.sf.anathema.character.main.magic.model.spells.Spell;
 import net.sf.anathema.character.main.magic.model.spells.SpellException;
@@ -38,7 +38,7 @@ public class SpellCompiler implements IExtensibleDataSetCompiler {
   }
 
   @Override
-  public IExtensibleDataSet build() {
+  public ExtensibleDataSet build() {
     for (Document document : spellFileList) {
       Spell[] spells = builder.buildSpells(document);
       for (Spell spell : spells) {

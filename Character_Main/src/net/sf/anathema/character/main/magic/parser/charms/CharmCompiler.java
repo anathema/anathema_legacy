@@ -1,6 +1,6 @@
 package net.sf.anathema.character.main.magic.parser.charms;
 
-import net.sf.anathema.character.main.framework.data.IExtensibleDataSet;
+import net.sf.anathema.character.main.framework.data.ExtensibleDataSet;
 import net.sf.anathema.character.main.framework.data.IExtensibleDataSetCompiler;
 import net.sf.anathema.character.main.magic.model.charm.Charm;
 import net.sf.anathema.character.main.magic.model.charm.CharmException;
@@ -40,7 +40,7 @@ public class CharmCompiler implements IExtensibleDataSetCompiler {
   private final CharmAlternativeBuilder alternativeBuilder = new CharmAlternativeBuilder();
   private final CharmMergedBuilder mergedBuilder = new CharmMergedBuilder();
   private final SAXReader reader = new SAXReader();
-  private final CharmCache charmCache = new CharmCache();
+  private final CharmCacheImpl charmCache = new CharmCacheImpl();
   private final CharacterTypes characterTypes;
   private final CharmSetBuilder setBuilder;
   private final GenericCharmSetBuilder genericBuilder;
@@ -84,7 +84,7 @@ public class CharmCompiler implements IExtensibleDataSetCompiler {
   }
 
   @Override
-  public IExtensibleDataSet build() throws PersistenceException {
+  public ExtensibleDataSet build() throws PersistenceException {
     for (Identifier type : registry.getAll()) {
       buildStandardCharms(type);
       buildGenericCharms(type);

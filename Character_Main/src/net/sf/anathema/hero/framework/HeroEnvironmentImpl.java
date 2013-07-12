@@ -2,9 +2,9 @@ package net.sf.anathema.hero.framework;
 
 import net.sf.anathema.character.main.framework.ICharacterTemplateExtensionResourceCache;
 import net.sf.anathema.character.main.framework.ICharacterTemplateRegistryCollection;
-import net.sf.anathema.character.main.framework.data.IExtensibleDataSet;
+import net.sf.anathema.character.main.framework.data.ExtensibleDataSet;
 import net.sf.anathema.character.main.framework.data.IExtensibleDataSetProvider;
-import net.sf.anathema.character.main.magic.parser.charms.ICharmCache;
+import net.sf.anathema.character.main.magic.parser.charms.CharmCache;
 import net.sf.anathema.character.main.template.ITemplateRegistry;
 import net.sf.anathema.character.main.template.TemplateRegistry;
 import net.sf.anathema.character.main.template.magic.CharmProvider;
@@ -29,7 +29,7 @@ public class HeroEnvironmentImpl implements HeroEnvironment {
     this.objectFactory = objectFactory;
     this.dataFileProvider = dataFileProvider;
     this.dataSetProvider = dataSetProvider;
-    this.charmProvider = new CharmProvider(getDataSet(ICharmCache.class));
+    this.charmProvider = new CharmProvider(getDataSet(CharmCache.class));
     this.templateRegistries = new CharacterTemplateRegistryCollection(dataSetProvider.getDataSet(ICharacterTemplateExtensionResourceCache.class));
     this.characterTypes = new ReflectionCharacterTypes(objectFactory);
   }
@@ -65,7 +65,7 @@ public class HeroEnvironmentImpl implements HeroEnvironment {
   }
 
   @Override
-  public <T extends IExtensibleDataSet> T getDataSet(Class<T> set) {
+  public <T extends ExtensibleDataSet> T getDataSet(Class<T> set) {
     return dataSetProvider.getDataSet(set);
   }
 }

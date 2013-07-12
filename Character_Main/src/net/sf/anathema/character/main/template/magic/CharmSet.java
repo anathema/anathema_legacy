@@ -1,7 +1,7 @@
 package net.sf.anathema.character.main.template.magic;
 
 import net.sf.anathema.character.main.magic.model.charm.Charm;
-import net.sf.anathema.character.main.magic.parser.charms.ICharmCache;
+import net.sf.anathema.character.main.magic.parser.charms.CharmCache;
 import net.sf.anathema.character.main.type.ICharacterType;
 
 import static net.sf.anathema.hero.magic.model.martial.MartialArtsUtilities.MARTIAL_ARTS;
@@ -11,7 +11,7 @@ public class CharmSet implements ICharmSet {
   private final Charm[] charms;
   private final Charm[] martialArtsCharms;
 
-  public static ICharmSet createRegularCharmSet(ICharmCache charmProvider, ICharacterType characterType) {
+  public static ICharmSet createRegularCharmSet(CharmCache charmProvider, ICharacterType characterType) {
     Charm[] charms = charmProvider.getCharms(characterType);
     Charm[] martialArtsCharms = charmProvider.getCharms(MARTIAL_ARTS);
     return new CharmSet(charms, martialArtsCharms);

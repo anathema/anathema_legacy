@@ -2,7 +2,7 @@ package net.sf.anathema.hero.magic.model.charms;
 
 import com.google.common.collect.Lists;
 import net.sf.anathema.character.main.magic.model.charm.Charm;
-import net.sf.anathema.character.main.magic.parser.charms.CharmCache;
+import net.sf.anathema.character.main.magic.parser.charms.CharmCacheImpl;
 import net.sf.anathema.character.main.magic.model.charm.special.ISpecialCharm;
 import net.sf.anathema.character.main.testing.dummy.DummyExaltCharacterType;
 import net.sf.anathema.lib.util.SimpleIdentifier;
@@ -16,7 +16,7 @@ import static org.junit.Assert.assertThat;
 
 public class CharmCacheTest {
 
-  private CharmCache cache = new CharmCache();
+  private CharmCacheImpl cache = new CharmCacheImpl();
 
   @Test
   public void matchesCharacterTypesToIdentificatesForSpecialCharmLookup() throws Exception {

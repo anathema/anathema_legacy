@@ -1,9 +1,9 @@
 package net.sf.anathema.character.main.xml;
 
 import net.sf.anathema.character.main.framework.ICharacterTemplateRegistryCollection;
+import net.sf.anathema.character.main.magic.parser.charms.CharmCache;
 import net.sf.anathema.hero.magic.model.martial.MartialArtsLevel;
 import net.sf.anathema.character.main.magic.model.charms.options.DefaultCharmTemplateRetriever;
-import net.sf.anathema.character.main.magic.parser.charms.ICharmCache;
 import net.sf.anathema.character.main.template.HeroTemplate;
 import net.sf.anathema.character.main.template.ITemplateType;
 import net.sf.anathema.character.main.traits.groups.AllAbilityTraitTypeGroup;
@@ -50,9 +50,9 @@ public class CharacterTemplateParser extends AbstractXmlTemplateParser<GenericCh
 
   private CharacterTypes characterTypes;
   private final ICharacterTemplateRegistryCollection registryCollection;
-  private final ICharmCache cache;
+  private final CharmCache cache;
 
-  public CharacterTemplateParser(CharacterTypes characterTypes, ICharacterTemplateRegistryCollection registryCollection, ICharmCache cache) {
+  public CharacterTemplateParser(CharacterTypes characterTypes, ICharacterTemplateRegistryCollection registryCollection, CharmCache cache) {
     super(registryCollection.getCharacterTemplateRegistry());
     this.characterTypes = characterTypes;
     this.registryCollection = registryCollection;

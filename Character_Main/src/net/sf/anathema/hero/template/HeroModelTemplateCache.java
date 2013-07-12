@@ -1,6 +1,6 @@
 package net.sf.anathema.hero.template;
 
-import net.sf.anathema.character.main.framework.data.IExtensibleDataSet;
+import net.sf.anathema.character.main.framework.data.ExtensibleDataSet;
 import net.sf.anathema.lib.exception.AnathemaException;
 import net.sf.anathema.lib.resources.ResourceFile;
 import net.sf.anathema.lib.util.Identifier;
@@ -13,7 +13,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-public class HeroModelTemplateCache implements IExtensibleDataSet {
+public class HeroModelTemplateCache implements ExtensibleDataSet {
 
   private final List<ResourceFile> templateResources = new ArrayList<>();
   private Map<Identifier, Object> templateById = new HashMap<>();

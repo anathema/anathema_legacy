@@ -1,5 +1,5 @@
 package net.sf.anathema.character.main.framework.data;
 
-public interface IExtensibleDataSet {
+public interface ExtensibleDataSet {
 	// nothing to do
 }

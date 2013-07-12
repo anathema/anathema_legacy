@@ -1,7 +1,7 @@
 package net.sf.anathema.cascades.presenter;
 
 import net.sf.anathema.character.main.magic.model.charm.Charm;
-import net.sf.anathema.character.main.magic.parser.charms.ICharmCache;
+import net.sf.anathema.character.main.magic.parser.charms.CharmCache;
 import net.sf.anathema.character.main.dummy.DummyCharm;
 import net.sf.anathema.character.main.testing.dummy.DummyCharacterTypes;
 import net.sf.anathema.character.main.testing.dummy.DummyExaltCharacterType;
@@ -19,7 +19,7 @@ import static org.mockito.Mockito.when;
 public class CharmFinderTest {
 
   private DummyExaltCharacterType type = new DummyExaltCharacterType();
-  private ICharmCache cache = mock(ICharmCache.class);
+  private CharmCache cache = mock(CharmCache.class);
   private String id = "Dummy.Test";
   private Charm sampleCharm = new DummyCharm(id);
   private DummyCharacterTypes characterTypes = new DummyCharacterTypes();

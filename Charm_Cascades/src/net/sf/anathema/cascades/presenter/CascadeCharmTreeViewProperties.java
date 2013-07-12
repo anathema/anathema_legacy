@@ -1,8 +1,8 @@
 package net.sf.anathema.cascades.presenter;
 
+import net.sf.anathema.character.main.magic.parser.charms.CharmCache;
 import net.sf.anathema.hero.framework.HeroEnvironment;
 import net.sf.anathema.character.main.magic.model.charm.Charm;
-import net.sf.anathema.character.main.magic.parser.charms.ICharmCache;
 import net.sf.anathema.character.main.magic.model.charm.CharmIdMap;
 import net.sf.anathema.character.main.magic.model.charm.special.ISpecialCharm;
 import net.sf.anathema.character.main.magic.description.MagicDescriptionProvider;
@@ -15,11 +15,11 @@ public class CascadeCharmTreeViewProperties extends AbstractCharmTreeViewPropert
 
   private Identifier type;
   private CharmTreeIdentifierMap treeIdentificateMap;
-  private final ICharmCache cache;
+  private final CharmCache cache;
   private final HeroEnvironment generics;
 
   public CascadeCharmTreeViewProperties(Resources resources, MagicDescriptionProvider magicDescriptionProvider, HeroEnvironment generics,
-                                        ICharmCache cache, CharmTreeIdentifierMap treeIdentificateMap) {
+                                        CharmCache cache, CharmTreeIdentifierMap treeIdentificateMap) {
     super(resources, magicDescriptionProvider);
     this.generics = generics;
     this.cache = cache;

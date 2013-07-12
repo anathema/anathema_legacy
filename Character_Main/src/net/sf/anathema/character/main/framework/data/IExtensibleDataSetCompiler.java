@@ -9,5 +9,5 @@ public interface IExtensibleDataSetCompiler {
 	
 	void registerFile(ResourceFile resource) throws Exception;
 	
-	IExtensibleDataSet build();
+	ExtensibleDataSet build();
 }

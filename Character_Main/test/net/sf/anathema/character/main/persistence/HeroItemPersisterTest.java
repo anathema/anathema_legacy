@@ -1,10 +1,10 @@
 package net.sf.anathema.character.main.persistence;
 
+import net.sf.anathema.character.main.magic.parser.charms.CharmCache;
+import net.sf.anathema.character.main.magic.parser.charms.CharmCacheImpl;
 import net.sf.anathema.hero.framework.HeroEnvironmentImpl;
 import net.sf.anathema.character.main.framework.data.IExtensibleDataSetProvider;
 import net.sf.anathema.hero.framework.HeroEnvironment;
-import net.sf.anathema.character.main.magic.parser.charms.CharmCache;
-import net.sf.anathema.character.main.magic.parser.charms.ICharmCache;
 import net.sf.anathema.character.main.magic.parser.spells.ISpellCache;
 import net.sf.anathema.character.main.magic.parser.spells.SpellCache;
 import net.sf.anathema.character.main.testing.dummy.DummyExaltCharacterType;
@@ -52,7 +52,7 @@ public class HeroItemPersisterTest {
 
   private HeroEnvironment createCharacterGenerics() {
     IExtensibleDataSetProvider dataSetProvider = mock(IExtensibleDataSetProvider.class);
-    when(dataSetProvider.getDataSet(ICharmCache.class)).thenReturn(new CharmCache());
+    when(dataSetProvider.getDataSet(CharmCache.class)).thenReturn(new CharmCacheImpl());
     when(dataSetProvider.getDataSet(ISpellCache.class)).thenReturn(new SpellCache());
     HeroEnvironment generics = new HeroEnvironmentImpl(null, new DummyObjectFactory(), dataSetProvider);
     generics.getTemplateRegistry().register(template);

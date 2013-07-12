@@ -1,7 +1,7 @@
 package net.sf.anathema.hero.framework;
 
 import net.sf.anathema.character.main.framework.ICharacterTemplateRegistryCollection;
-import net.sf.anathema.character.main.framework.data.IExtensibleDataSet;
+import net.sf.anathema.character.main.framework.data.ExtensibleDataSet;
 import net.sf.anathema.character.main.template.ITemplateRegistry;
 import net.sf.anathema.character.main.template.magic.ICharmProvider;
 import net.sf.anathema.character.main.type.CharacterTypes;
@@ -18,7 +18,7 @@ public interface HeroEnvironment {
 
   DataFileProvider getDataFileProvider();
 
-  <T extends IExtensibleDataSet> T getDataSet(Class<T> set);
+  <T extends ExtensibleDataSet> T getDataSet(Class<T> set);
 
   ObjectFactory getObjectFactory();
 

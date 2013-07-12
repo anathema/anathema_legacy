@@ -1,8 +1,8 @@
 package net.sf.anathema.character.main.xml.magic;
 
+import net.sf.anathema.character.main.magic.parser.charms.CharmCache;
 import net.sf.anathema.character.main.xml.core.AbstractXmlTemplateParser;
 import net.sf.anathema.character.main.xml.registry.IXmlTemplateRegistry;
-import net.sf.anathema.character.main.magic.parser.charms.ICharmCache;
 import net.sf.anathema.character.main.template.magic.CharmSet;
 import net.sf.anathema.character.main.template.magic.CharmTemplate;
 import net.sf.anathema.character.main.template.magic.CustomizableFreePicksPredicate;
@@ -48,10 +48,10 @@ public class GenericMagicTemplateParser extends AbstractXmlTemplateParser<Generi
   private static final String TAG_GROUP_EXCEPTION = "groupException";
   private static final String ATTRIB_SUB_TEMPLATE = "subTemplate";
   private final HeroTemplate hostTemplate;
-  private final ICharmCache cache;
+  private final CharmCache cache;
   private final CharacterTypes characterTypes;
 
-  public GenericMagicTemplateParser(IXmlTemplateRegistry<GenericMagicTemplate> templateRegistry, HeroTemplate template, ICharmCache cache,
+  public GenericMagicTemplateParser(IXmlTemplateRegistry<GenericMagicTemplate> templateRegistry, HeroTemplate template, CharmCache cache,
                                     CharacterTypes characterTypes) {
     super(templateRegistry);
     this.hostTemplate = template;
