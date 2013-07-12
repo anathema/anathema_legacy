@@ -5,12 +5,12 @@ import net.sf.anathema.character.equipment.character.EquipmentOptionsProvider;
 import net.sf.anathema.character.equipment.character.IEquipmentStringBuilder;
 import net.sf.anathema.character.equipment.character.model.IEquipmentItem;
 import net.sf.anathema.character.equipment.character.model.IEquipmentStatsOption;
-import net.sf.anathema.character.main.equipment.ArtifactAttuneType;
 import net.sf.anathema.character.main.equipment.ArtifactStats;
 import net.sf.anathema.character.main.equipment.weapon.IEquipmentStats;
 import net.sf.anathema.character.main.equipment.weapon.IWeaponStats;
 import net.sf.anathema.character.main.library.trait.specialties.Specialty;
 import net.sf.anathema.equipment.core.MaterialComposition;
+import net.sf.anathema.hero.equipment.model.EquipmentItemPresentationModel;
 import net.sf.anathema.hero.equipment.model.EquipmentSpecialtyOption;
 import net.sf.anathema.interaction.Tool;
 import net.sf.anathema.lib.control.ChangeListener;
@@ -18,15 +18,12 @@ import net.sf.anathema.lib.model.BooleanModel;
 import net.sf.anathema.lib.resources.Resources;
 
 import java.text.MessageFormat;
-import java.util.HashMap;
-import java.util.Map;
 
 public class EquipmentObjectPresenter {
 
   public static final String EQUIPMENT_NAME_PREFIX = "Equipment.Name.";
   private static final String DESCRIPTION_PREFIX = "Equipment.Description.";
-  private final Map<IEquipmentStats, BooleanModel> attuneStatFlags = new HashMap<>();
-  private final Map<IEquipmentStats, BooleanModel> otherStatFlags = new HashMap<>();
+  private final EquipmentItemPresentationModel presentationModel = new EquipmentItemPresentationModel();
   private final IEquipmentItem model;
   private final EquipmentObjectView view;
   private final IEquipmentStringBuilder stringBuilder;
@@ -79,24 +76,19 @@ public class EquipmentObjectPresenter {
   }
 
   private void prepareContents() {
-    view.clearContents();
-    attuneStatFlags.clear();
-    otherStatFlags.clear();
+    view.clear();
+    presentationModel.clear();
 
-    boolean isRequireAttuneArtifact = false;
-    boolean isAttuned = false;
     for (final IEquipmentStats equipment : model.getStats()) {
-      if (equipment instanceof ArtifactStats)
-        isRequireAttuneArtifact = isRequireAttuneArtifact || ((ArtifactStats) equipment).requireAttunementToUse();
-      if (!viewFilter(equipment)) continue;
+      StatsPresentationStrategy strategy = choosePresentationStrategy(equipment);
+      if (!strategy.shouldStatsBeShown()) {
+        continue;
+      }
       final BooleanModel booleanModel = view.addStats(createEquipmentDescription(model, equipment));
       if (equipment instanceof ArtifactStats) {
-        attuneStatFlags.put(equipment, booleanModel);
-        if (model.isPrintEnabled(equipment)) {
-          isAttuned = true;
-        }
+        presentationModel.registerViewForAttunementStats(equipment, booleanModel);
       } else {
-        otherStatFlags.put(equipment, booleanModel);
+        presentationModel.registerViewForDefaultStats(equipment, booleanModel);
       }
       booleanModel.setValue(model.isPrintEnabled(equipment));
       booleanModel.addChangeListener(new ChangeListener() {
@@ -107,7 +99,7 @@ public class EquipmentObjectPresenter {
             // if we are enabling an attunement stats ...
             if (booleanModel.getValue()) {
               // disable all other attunement stats
-              for (IEquipmentStats stats : attuneStatFlags.keySet()) {
+              for (IEquipmentStats stats : presentationModel.getAttunementStats()) {
                 if (!equipment.equals(stats) && model.isPrintEnabled(stats)) {
                   model.setPrintEnabled(stats, false);
                 }
@@ -117,18 +109,49 @@ public class EquipmentObjectPresenter {
           }
         }
       });
-
       addOptionalModels(booleanModel, equipment);
     }
-    disableAllStatsIfAttunementRequiredButNotGiven(isRequireAttuneArtifact, isAttuned);
+    disableAllStatsIfAttunementRequiredButNotGiven();
   }
 
-  private void disableAllStatsIfAttunementRequiredButNotGiven(boolean requireAttuneArtifact, boolean attuned) {
-    if (requireAttuneArtifact && !attuned) {
-      for (BooleanModel bool : otherStatFlags.values()) {
+  private void disableAllStatsIfAttunementRequiredButNotGiven() {
+    boolean isAttunementRequired = isAttunementRequired();
+    boolean isCurrentlyAttuned = isCurrentlyAttuned();
+    if (isAttunementRequired && !isCurrentlyAttuned) {
+      for (BooleanModel bool : presentationModel.getDefaultStatViews()) {
         view.setEnabled(bool, false);
         bool.setValue(false);
       }
+    }
+  }
+
+  private boolean isCurrentlyAttuned() {
+    for (IEquipmentStats stats : model.getStats()) {
+      if (stats instanceof ArtifactStats) {
+        if (model.isPrintEnabled(stats)) {
+          return true;
+        }
+      }
+    }
+    return false;
+  }
+
+  private boolean isAttunementRequired() {
+    for (IEquipmentStats stats : model.getStats()) {
+      if (stats instanceof ArtifactStats) {
+        if (((ArtifactStats) stats).requireAttunementToUse()) {
+          return true;
+        }
+      }
+    }
+    return false;
+  }
+
+  private StatsPresentationStrategy choosePresentationStrategy(IEquipmentStats equipment) {
+    if (equipment instanceof ArtifactStats) {
+      return new ArtifactPresentationStrategy((ArtifactStats) equipment, dataProvider, model);
+    } else {
+      return new DefaultPresentationStrategy(equipment);
     }
   }
 
@@ -152,18 +175,6 @@ public class EquipmentObjectPresenter {
         });
       }
     }
-  }
-
-  private boolean viewFilter(IEquipmentStats equipment) {
-    boolean match;
-    if (equipment instanceof ArtifactStats) {
-      ArtifactStats stats = (ArtifactStats) equipment;
-      match = false;
-      if (dataProvider.getAttuneTypes(model) != null) for (ArtifactAttuneType type : dataProvider.getAttuneTypes(model))
-        if (stats.getAttuneType() == type) match = true;
-      if (!match) return false;
-    }
-    return true;
   }
 
   private String createEquipmentDescription(IEquipmentItem item, IEquipmentStats equipment) {

@@ -39,7 +39,7 @@ public class SwingEquipmentItemView implements net.sf.anathema.hero.equipment.di
   }
 
   @Override
-  public void clearContents() {
+  public void clear() {
     taskGroup.removeAll();
     boxes.clear();
     boxPanels.clear();

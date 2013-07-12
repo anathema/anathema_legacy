@@ -9,7 +9,7 @@ public interface EquipmentObjectView {
 
   void setItemDescription(String text);
   
-  void clearContents();
+  void clear();
   
   BooleanModel addStats(String description);
   
