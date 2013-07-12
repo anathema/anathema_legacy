@@ -17,13 +17,9 @@ public interface PointsModel extends HeroModel {
 
   void addToBonusOverview(IOverviewModel bonusPointModel);
 
-  void addExperienceCalculator(HeroModelExperienceCalculator bonusPointCalculator);
-
   void addToExperienceOverview(IValueModel<Integer> model);
 
   Iterable<HeroBonusPointCalculator> getBonusPointCalculators();
-
-  Iterable<HeroModelExperienceCalculator> getExperienceCalculators();
 
   Iterable<IValueModel<Integer>> getExperienceOverviewModels();
 

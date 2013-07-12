@@ -1,11 +1,11 @@
 package net.sf.anathema.character.main.presenter.overview;
 
-import net.sf.anathema.character.main.view.labelledvalue.LabelledAllotmentView;
-import net.sf.anathema.hero.advance.experience.ExperiencePointConfigurationListener;
-import net.sf.anathema.hero.advance.experience.ExperiencePointManagement;
 import net.sf.anathema.character.main.library.overview.OverviewCategory;
 import net.sf.anathema.character.main.view.CategorizedOverview;
 import net.sf.anathema.character.main.view.labelledvalue.IValueView;
+import net.sf.anathema.character.main.view.labelledvalue.LabelledAllotmentView;
+import net.sf.anathema.hero.advance.experience.ExperiencePointConfigurationListener;
+import net.sf.anathema.hero.advance.experience.ExperiencePointManagement;
 import net.sf.anathema.hero.change.ChangeFlavor;
 import net.sf.anathema.hero.change.FlavoredChangeListener;
 import net.sf.anathema.hero.experience.ExperienceModelFetcher;
@@ -81,7 +81,7 @@ public class ExperiencedOverviewPresenter implements Presenter {
   }
 
   private int getTotalXP() {
-    return ExperienceModelFetcher.fetch(hero).getExperiencePoints().getTotalExperiencePoints() + management.getMiscGain();
+    return ExperienceModelFetcher.fetch(hero).getExperiencePoints().getTotalExperiencePoints();
   }
 
   private String getString(String string) {

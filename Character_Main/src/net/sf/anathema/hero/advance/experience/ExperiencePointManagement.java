@@ -6,8 +6,6 @@ import java.util.List;
 
 public interface ExperiencePointManagement {
 
-  int getMiscGain();
-
   int getTotalCosts();
 
   List<IValueModel<Integer>> getAllModels();

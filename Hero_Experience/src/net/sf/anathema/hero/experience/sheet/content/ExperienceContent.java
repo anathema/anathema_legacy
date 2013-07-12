@@ -1,6 +1,6 @@
 package net.sf.anathema.hero.experience.sheet.content;
 
-import net.sf.anathema.hero.advance.experience.HardCodedExperiencePointManagement;
+import net.sf.anathema.hero.advance.experience.ExperiencePointManagementImpl;
 import net.sf.anathema.hero.experience.ExperienceModelFetcher;
 import net.sf.anathema.hero.model.Hero;
 import net.sf.anathema.hero.sheet.pdf.content.AbstractSubBoxContent;
@@ -19,7 +19,7 @@ public class ExperienceContent extends AbstractSubBoxContent {
 
   public String getExperienceText() {
     int totalPoints = ExperienceModelFetcher.fetch(hero).getExperiencePoints().getTotalExperiencePoints();
-    int spentPoints = new HardCodedExperiencePointManagement(hero).getTotalCosts();
+    int spentPoints = new ExperiencePointManagementImpl(hero).getTotalCosts();
     String experienceMessage = getResources().getString("Sheet.Experience.MessageFormat");
     return MessageFormat.format(experienceMessage, totalPoints, spentPoints, totalPoints - spentPoints);
   }

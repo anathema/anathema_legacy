@@ -1,7 +1,7 @@
 package net.sf.anathema.swing.hero.perspective;
 
 import net.sf.anathema.hero.advance.experience.ExperiencePointManagement;
-import net.sf.anathema.hero.advance.experience.HardCodedExperiencePointManagement;
+import net.sf.anathema.hero.advance.experience.ExperiencePointManagementImpl;
 import net.sf.anathema.hero.advance.creation.IBonusPointManagement;
 import net.sf.anathema.hero.advance.creation.BonusPointManagement;
 import net.sf.anathema.character.main.presenter.CharacterPresenter;
@@ -37,7 +37,7 @@ public class CharacterViewFactory {
 
   private void initOverviewPresentation(Hero hero, OverviewContainer container, Resources resources) {
     IBonusPointManagement bonusPointManagement = new BonusPointManagement(hero);
-    ExperiencePointManagement experiencePointManagement = new HardCodedExperiencePointManagement(hero);
+    ExperiencePointManagement experiencePointManagement = new ExperiencePointManagementImpl(hero);
     new OverviewPresenter(resources, hero, container, bonusPointManagement, experiencePointManagement).initPresentation();
   }
 }

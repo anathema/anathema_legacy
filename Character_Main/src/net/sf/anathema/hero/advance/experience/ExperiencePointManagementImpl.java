@@ -1,8 +1,6 @@
 package net.sf.anathema.hero.advance.experience;
 
-import net.sf.anathema.hero.advance.experience.models.MiscellaneousExperienceModel;
 import net.sf.anathema.hero.model.Hero;
-import net.sf.anathema.hero.points.HeroModelExperienceCalculator;
 import net.sf.anathema.hero.points.PointModelFetcher;
 import net.sf.anathema.hero.points.PointsModel;
 import net.sf.anathema.hero.points.overview.IValueModel;
@@ -10,11 +8,11 @@ import net.sf.anathema.hero.points.overview.IValueModel;
 import java.util.ArrayList;
 import java.util.List;
 
-public class HardCodedExperiencePointManagement implements ExperiencePointManagement {
+public class ExperiencePointManagementImpl implements ExperiencePointManagement {
 
   private final Hero hero;
 
-  public HardCodedExperiencePointManagement(Hero hero) {
+  public ExperiencePointManagementImpl(Hero hero) {
     this.hero = hero;
   }
 
@@ -22,26 +20,11 @@ public class HardCodedExperiencePointManagement implements ExperiencePointManage
   public List<IValueModel<Integer>> getAllModels() {
     final List<IValueModel<Integer>> allModels = new ArrayList<>();
     // todo (sandra): Sorting
-    allModels.add(getMiscModel());
     PointsModel pointsModel = PointModelFetcher.fetch(hero);
     for (IValueModel<Integer>  model : pointsModel.getExperienceOverviewModels()) {
       allModels.add(model);
     }
     return allModels;
-  }
-
-  @Override
-  public int getMiscGain() {
-    int total = 0;
-    PointsModel pointsModel = PointModelFetcher.fetch(hero);
-    for (HeroModelExperienceCalculator experienceCalculator : pointsModel.getExperienceCalculators()) {
-      total += experienceCalculator.calculateGain();
-    }
-    return total;
-  }
-
-  private IValueModel<Integer> getMiscModel() {
-    return new MiscellaneousExperienceModel(hero);
   }
 
   @Override
