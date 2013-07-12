@@ -1,11 +1,11 @@
 package net.sf.anathema.character.main.presenter.overview;
 
-import net.sf.anathema.hero.advance.creation.IBonusPointManagement;
 import net.sf.anathema.character.main.library.overview.OverviewCategory;
 import net.sf.anathema.character.main.template.HeroTemplate;
 import net.sf.anathema.character.main.view.CategorizedOverview;
 import net.sf.anathema.character.main.view.labelledvalue.ILabelledAlotmentView;
 import net.sf.anathema.character.main.view.labelledvalue.IValueView;
+import net.sf.anathema.hero.advance.creation.IBonusPointManagement;
 import net.sf.anathema.hero.change.ChangeFlavor;
 import net.sf.anathema.hero.change.FlavoredChangeListener;
 import net.sf.anathema.hero.concept.CasteType;
@@ -14,13 +14,14 @@ import net.sf.anathema.hero.model.Hero;
 import net.sf.anathema.hero.points.PointModelFetcher;
 import net.sf.anathema.hero.points.overview.IOverviewModel;
 import net.sf.anathema.hero.points.overview.IOverviewModelVisitor;
-import net.sf.anathema.hero.points.overview.ISpendingModel;
+import net.sf.anathema.hero.points.overview.SpendingModel;
 import net.sf.anathema.hero.points.overview.IValueModel;
 import net.sf.anathema.hero.points.overview.WeightedCategory;
 import net.sf.anathema.lib.gui.Presenter;
 import net.sf.anathema.lib.resources.Resources;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
@@ -52,28 +53,19 @@ public class CreationOverviewPresenter implements Presenter {
   @Override
   public void initPresentation() {
     this.management.recalculate();
-    IOverviewModel[] allModels = management.getAllModels();
+    initCategory(management.getSummaryCategory());
     initConcept();
     initCategories(PointModelFetcher.fetch(hero).getBonusCategories());
-    initCategories(allModels);
     for (IOverviewModel model : PointModelFetcher.fetch(hero).getBonusOverviewModels()) {
       model.accept(new InitPresentationVisitor());
     }
-    for (IOverviewModel model : allModels) {
-      model.accept(new InitPresentationVisitor());
-    }
+    management.getTotalModel().accept(new InitPresentationVisitor());
     updateOverview();
   }
 
   private void initCategories(Iterable<WeightedCategory> bonusCategories) {
     for (WeightedCategory category : bonusCategories) {
       initCategory(category.getId());
-    }
-  }
-
-  private void initCategories(IOverviewModel[] allModels) {
-    for (IOverviewModel model : allModels) {
-      initCategory(model.getCategoryId());
     }
   }
 
@@ -148,7 +140,7 @@ public class CreationOverviewPresenter implements Presenter {
     }
 
     @Override
-    public void visitAllotmentModel(ISpendingModel visitedModel) {
+    public void visitAllotmentModel(SpendingModel visitedModel) {
       ILabelledAlotmentView valueView = categoriesById.get(visitedModel.getCategoryId()).addAlotmentView(getLabelString(visitedModel), 2);
       presenters.add(new AlotmentSubPresenter(visitedModel, valueView));
     }

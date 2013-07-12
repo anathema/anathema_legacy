@@ -20,6 +20,7 @@
         <model id="Points"/>
         <model id="Concept" template="SolarCastes"/>
         <model id="SpiritualTraits" template="ExaltSpiritualTraits"/>
+        <model id="SpiritualPoints"/>
         <model id="Abilities"/>
         <model id="AbilitiesPoints"/>
         <model id="Attributes"/>

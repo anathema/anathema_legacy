@@ -8,7 +8,7 @@ public class VirtueBonusModel extends AbstractSpendingModel {
   private final ICreationPoints creationPoints;
 
   public VirtueBonusModel(VirtueCostCalculator virtueCalculator, ICreationPoints creationPoints) {
-    super("Advantages", "Virtues");
+    super("Spiritual", "Virtues");
     this.virtueCalculator = virtueCalculator;
     this.creationPoints = creationPoints;
   }

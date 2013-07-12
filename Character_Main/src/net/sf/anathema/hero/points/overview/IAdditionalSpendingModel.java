@@ -1,6 +1,6 @@
 package net.sf.anathema.hero.points.overview;
 
-public interface IAdditionalSpendingModel extends ISpendingModel {
+public interface IAdditionalSpendingModel extends SpendingModel {
 
   int getAdditionalValue();
 

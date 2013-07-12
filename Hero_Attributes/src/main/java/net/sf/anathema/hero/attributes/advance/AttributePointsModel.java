@@ -13,7 +13,7 @@ import net.sf.anathema.hero.model.Hero;
 import net.sf.anathema.hero.model.HeroModel;
 import net.sf.anathema.hero.model.InitializationContext;
 import net.sf.anathema.hero.points.PointModelFetcher;
-import net.sf.anathema.hero.points.overview.ISpendingModel;
+import net.sf.anathema.hero.points.overview.SpendingModel;
 import net.sf.anathema.hero.points.overview.WeightedCategory;
 import net.sf.anathema.lib.util.Identifier;
 import net.sf.anathema.lib.util.SimpleIdentifier;
@@ -61,7 +61,7 @@ public class AttributePointsModel implements HeroModel {
     return new AttributeBonusPointCalculator(attributes, creationPoints, costs);
   }
 
-  public ISpendingModel createOverviewModel(AttributeBonusPointCalculator calculator, AttributeGroupPriority priority, HeroTemplate template) {
+  public SpendingModel createOverviewModel(AttributeBonusPointCalculator calculator, AttributeGroupPriority priority, HeroTemplate template) {
     return new AttributeBonusModel(calculator, priority, template.getCreationPoints());
   }
 }

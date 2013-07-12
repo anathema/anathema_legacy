@@ -1,13 +1,13 @@
 package net.sf.anathema.hero.advance.creation;
 
-import net.sf.anathema.hero.points.overview.IOverviewModel;
-import net.sf.anathema.hero.points.overview.ISpendingModel;
+import net.sf.anathema.hero.points.overview.SpendingModel;
+import net.sf.anathema.hero.points.overview.WeightedCategory;
 
 public interface IBonusPointManagement {
 
   void recalculate();
 
-  ISpendingModel getTotalModel();
+  String getSummaryCategory();
 
-  IOverviewModel[] getAllModels();
+  SpendingModel getTotalModel();
 }

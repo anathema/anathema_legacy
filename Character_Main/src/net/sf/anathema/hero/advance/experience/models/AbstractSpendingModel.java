@@ -1,9 +1,9 @@
 package net.sf.anathema.hero.advance.experience.models;
 
 import net.sf.anathema.hero.points.overview.IOverviewModelVisitor;
-import net.sf.anathema.hero.points.overview.ISpendingModel;
+import net.sf.anathema.hero.points.overview.SpendingModel;
 
-public abstract class AbstractSpendingModel extends AbstractOverviewModel implements ISpendingModel {
+public abstract class AbstractSpendingModel extends AbstractOverviewModel implements SpendingModel {
 
   public AbstractSpendingModel(String categoryId, String id) {
     super(categoryId, id);

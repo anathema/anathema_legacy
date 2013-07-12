@@ -16,6 +16,7 @@
         <model id="Points"/>
         <model id="Concept" template="NoCastes"/>
         <model id="SpiritualTraits" template="MortalSpiritualTraits"/>
+        <model id="SpiritualPoints"/>
         <model id="Abilities"/>
         <model id="AbilitiesPoints"/>
         <model id="Attributes"/>
