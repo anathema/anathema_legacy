@@ -8,16 +8,16 @@ import java.util.List;
 
 public class ReflectionCharacterTypes implements CharacterTypes {
 
-  private final List<ICharacterType> types = new ArrayList<>();
+  private final List<CharacterType> types = new ArrayList<>();
 
   public ReflectionCharacterTypes(ObjectFactory objectFactory) {
-    Collection<ICharacterType> types = objectFactory.instantiateOrdered(CharacterType.class);
+    Collection<CharacterType> types = objectFactory.instantiateOrdered(RegisteredCharacterType.class);
     this.types.addAll(types);
   }
 
   @Override
-  public ICharacterType findById(String id) {
-    for (ICharacterType type : types) {
+  public CharacterType findById(String id) {
+    for (CharacterType type : types) {
       if (type.getId().equals(id)) {
         return type;
       }
@@ -26,7 +26,7 @@ public class ReflectionCharacterTypes implements CharacterTypes {
   }
 
   @Override
-  public ICharacterType[] findAll() {
-    return types.toArray(new ICharacterType[types.size()]);
+  public CharacterType[] findAll() {
+    return types.toArray(new CharacterType[types.size()]);
   }
 }

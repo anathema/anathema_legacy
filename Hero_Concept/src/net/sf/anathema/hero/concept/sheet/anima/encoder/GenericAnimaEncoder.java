@@ -3,7 +3,7 @@ package net.sf.anathema.hero.concept.sheet.anima.encoder;
 import com.itextpdf.text.Chunk;
 import com.itextpdf.text.DocumentException;
 import com.itextpdf.text.Phrase;
-import net.sf.anathema.character.main.type.ICharacterType;
+import net.sf.anathema.character.main.type.CharacterType;
 import net.sf.anathema.hero.concept.HeroConceptFetcher;
 import net.sf.anathema.hero.sheet.pdf.session.ReportSession;
 import net.sf.anathema.hero.sheet.pdf.encoder.general.Bounds;
@@ -47,7 +47,7 @@ public class GenericAnimaEncoder implements ContentEncoder {
     Phrase phrase = new Phrase("", graphics.createFont(fontSize));
     // Add standard powers for character type
     Chunk symbolChunk = graphics.createSymbolChunk();
-    ICharacterType characterType = hero.getTemplate().getTemplateType().getCharacterType();
+    CharacterType characterType = hero.getTemplate().getTemplateType().getCharacterType();
     ListUtils.addBulletedListText(resources, symbolChunk, "Sheet.AnimaPower." + characterType.getId(), phrase, false);
     String casteResourceKey = "Sheet.AnimaPower." + HeroConceptFetcher.fetch(hero).getCaste().getType().getId() + "." + SECOND_EDITION;
     if (resources.supportsKey(casteResourceKey)) {

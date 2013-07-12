@@ -3,7 +3,7 @@ package net.sf.anathema.character.main.magic.model.charms.options;
 import net.sf.anathema.character.main.template.HeroTemplate;
 import net.sf.anathema.character.main.template.ITemplateRegistry;
 import net.sf.anathema.character.main.template.magic.ICharmTemplate;
-import net.sf.anathema.character.main.type.ICharacterType;
+import net.sf.anathema.character.main.type.CharacterType;
 import net.sf.anathema.hero.model.Hero;
 
 public class DefaultCharmTemplateRetriever implements CharmTemplateRetriever {
@@ -14,7 +14,7 @@ public class DefaultCharmTemplateRetriever implements CharmTemplateRetriever {
     this.registry = registry;
   }
 
-  public ICharmTemplate getCharmTemplate(ICharacterType type) {
+  public ICharmTemplate getCharmTemplate(CharacterType type) {
     HeroTemplate defaultTemplate = registry.getDefaultTemplate(type);
     if (defaultTemplate == null) {
       return null;

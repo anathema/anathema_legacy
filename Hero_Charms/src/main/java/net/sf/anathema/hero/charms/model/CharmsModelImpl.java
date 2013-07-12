@@ -28,7 +28,7 @@ import net.sf.anathema.character.main.template.HeroTemplate;
 import net.sf.anathema.character.main.template.experience.IExperiencePointCosts;
 import net.sf.anathema.character.main.template.magic.ICharmProvider;
 import net.sf.anathema.character.main.template.magic.MartialArtsCharmConfiguration;
-import net.sf.anathema.character.main.type.ICharacterType;
+import net.sf.anathema.character.main.type.CharacterType;
 import net.sf.anathema.hero.charms.advance.CharmExperienceModel;
 import net.sf.anathema.hero.charms.advance.CharmPointCostCalculator;
 import net.sf.anathema.hero.charms.model.context.CreationCharmLearnStrategy;
@@ -187,8 +187,8 @@ public class CharmsModelImpl implements CharmsModel {
   }
 
   private void initNonMartialArtsGroups() {
-    Iterable<ICharacterType> availableCharacterTypes = nonMartialArtsOptions.getAvailableCharacterTypes();
-    for (ICharacterType characterType : availableCharacterTypes) {
+    Iterable<CharacterType> availableCharacterTypes = nonMartialArtsOptions.getAvailableCharacterTypes();
+    for (CharacterType characterType : availableCharacterTypes) {
       initLearnGroupForCharacterType(characterType, nonMartialArtsOptions.getCharmTrees(characterType));
     }
   }
@@ -360,7 +360,7 @@ public class CharmsModelImpl implements CharmsModel {
     return manager.getSpecialCharmConfiguration(charm);
   }
 
-  private void initLearnGroupForCharacterType(ICharacterType type, GroupCharmTree charmTree) {
+  private void initLearnGroupForCharacterType(CharacterType type, GroupCharmTree charmTree) {
     ICharmGroup[] treeGroups = charmTree.getAllCharmGroups();
     ILearningCharmGroup[] groups = createGroups(treeGroups);
     nonMartialArtsGroupsByType.put(type, groups);
@@ -381,7 +381,7 @@ public class CharmsModelImpl implements CharmsModel {
   }
 
   @Override
-  public ICharacterType[] getCharacterTypes(boolean includeAlienTypes) {
+  public CharacterType[] getCharacterTypes(boolean includeAlienTypes) {
     return nonMartialArtsOptions.getCharacterTypes(includeAlienTypes);
   }
 
@@ -510,7 +510,7 @@ public class CharmsModelImpl implements CharmsModel {
     return group != null && group.isLearned(charm);
   }
 
-  private ILearningCharmGroup getGroupById(ICharacterType characterType, String groupId) {
+  private ILearningCharmGroup getGroupById(CharacterType characterType, String groupId) {
     List<ILearningCharmGroup> candidateGroups = new ArrayList<>();
     Collections.addAll(candidateGroups, getCharmGroups(characterType));
     Collections.addAll(candidateGroups, getMartialArtsGroups());

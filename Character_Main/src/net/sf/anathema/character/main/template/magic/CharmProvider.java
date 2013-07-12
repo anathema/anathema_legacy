@@ -5,6 +5,7 @@ import net.sf.anathema.character.main.magic.model.charm.CharmIdMap;
 import net.sf.anathema.character.main.magic.model.charm.special.ISpecialCharm;
 import net.sf.anathema.character.main.magic.model.charmtree.ICharmLearnableArbitrator;
 import net.sf.anathema.character.main.magic.parser.charms.CharmCache;
+import net.sf.anathema.character.main.type.CharacterType;
 import net.sf.anathema.lib.util.Identifier;
 import net.sf.anathema.lib.util.SimpleIdentifier;
 
@@ -16,11 +17,18 @@ import java.util.Map;
 public class CharmProvider implements ICharmProvider {
 
   private final Map<Identifier, ISpecialCharm[]> charmsByType = new HashMap<>();
+  private CharmCache cache;
 
   public CharmProvider(CharmCache cache) {
+    this.cache = cache;
     for (Identifier type : cache.getCharmTypes()) {
       charmsByType.put(type, cache.getSpecialCharmData(type));
     }
+  }
+
+  @Override
+  public CharmSet getCharmSet(CharacterType characterType) {
+    return CharmSetImpl.createRegularCharmSet(cache, characterType);
   }
 
   @Override

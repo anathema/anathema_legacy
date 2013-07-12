@@ -5,7 +5,7 @@ import com.itextpdf.text.Chunk;
 import com.itextpdf.text.DocumentException;
 import com.itextpdf.text.Phrase;
 import com.itextpdf.text.pdf.MultiColumnText;
-import net.sf.anathema.character.main.type.ICharacterType;
+import net.sf.anathema.character.main.type.CharacterType;
 import net.sf.anathema.framework.reporting.pdf.PdfReportUtils;
 import net.sf.anathema.hero.concept.CasteType;
 import net.sf.anathema.hero.concept.HeroConceptFetcher;
@@ -32,7 +32,7 @@ public class ConceptTextEncoder implements HeroTextEncoder {
 
   private void createCasteParagraph(MultiColumnText columnText, Hero hero) throws DocumentException {
     CasteType casteType = HeroConceptFetcher.fetch(hero).getCaste().getType();
-    ICharacterType characterType = hero.getTemplate().getTemplateType().getCharacterType();
+    CharacterType characterType = hero.getTemplate().getTemplateType().getCharacterType();
     String labelKey = "Sheet.Label.Caste." + characterType.getId();
     addLabeledText(columnText, labelKey, casteType.getId());
   }

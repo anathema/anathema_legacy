@@ -1,7 +1,7 @@
 package net.sf.anathema.cascades.presenter;
 
 import net.sf.anathema.cascades.presenter.view.CascadeView;
-import net.sf.anathema.character.main.type.ICharacterType;
+import net.sf.anathema.character.main.type.CharacterType;
 import net.sf.anathema.character.main.magic.display.view.charmtree.AbstractCharmGroupChangeListener;
 import net.sf.anathema.character.main.magic.display.view.charmtree.CharmDisplayPropertiesMap;
 import net.sf.anathema.framework.ui.RGBColor;
@@ -27,8 +27,8 @@ public class CascadeCharmGroupChangeListener extends AbstractCharmGroupChangeLis
   }
 
   private RGBColor findColor(Identifier type) {
-    if (type instanceof ICharacterType) {
-      ITreePresentationProperties displayProperties = getDisplayProperties((ICharacterType) type);
+    if (type instanceof CharacterType) {
+      ITreePresentationProperties displayProperties = getDisplayProperties((CharacterType) type);
       return displayProperties.getColor();
     } else {
       return RGBColor.White;

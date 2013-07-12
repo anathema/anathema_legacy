@@ -7,7 +7,7 @@ import net.sf.anathema.character.main.magic.model.charm.ICharmLearnListener;
 import net.sf.anathema.character.main.magic.model.charm.special.CharmSpecialsModel;
 import net.sf.anathema.character.main.magic.model.charm.special.ISpecialCharm;
 import net.sf.anathema.character.main.magic.model.charms.ILearningCharmGroup;
-import net.sf.anathema.character.main.type.ICharacterType;
+import net.sf.anathema.character.main.type.CharacterType;
 import net.sf.anathema.hero.charms.model.CharmsModel;
 import net.sf.anathema.hero.model.Hero;
 import net.sf.anathema.hero.model.InitializationContext;
@@ -103,7 +103,7 @@ public class DummyCharmsModel implements CharmsModel {
   }
 
   @Override
-  public ICharacterType[] getCharacterTypes(boolean includeAlienTypes) {
+  public CharacterType[] getCharacterTypes(boolean includeAlienTypes) {
     throw new NotYetImplementedException();
   }
 

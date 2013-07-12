@@ -1,6 +1,6 @@
 package net.sf.anathema.hero.sheet.pdf.content;
 
-import net.sf.anathema.character.main.type.ICharacterType;
+import net.sf.anathema.character.main.type.CharacterType;
 import net.sf.anathema.hero.model.Hero;
 
 public class BasicContent implements SubContent {
@@ -15,11 +15,11 @@ public class BasicContent implements SubContent {
     return getCharacterType().isEssenceUser();
   }
 
-  private ICharacterType getCharacterType() {
+  private CharacterType getCharacterType() {
     return hero.getTemplate().getTemplateType().getCharacterType();
   }
 
-  public boolean isOfType(ICharacterType type) {
+  public boolean isOfType(CharacterType type) {
     return getCharacterType().equals(type);
   }
 

@@ -1,7 +1,7 @@
 package net.sf.anathema.character.main.library.intvalue;
 
 import net.sf.anathema.character.main.CharacterUI;
-import net.sf.anathema.character.main.type.ICharacterType;
+import net.sf.anathema.character.main.type.CharacterType;
 import net.sf.anathema.framework.value.IntValueDisplayGraphics;
 
 import javax.swing.Icon;
@@ -9,9 +9,9 @@ import javax.swing.Icon;
 public class CharacterIntValueGraphics implements IntValueDisplayGraphics {
 
   private final CharacterUI ui = new CharacterUI();
-  private final ICharacterType type;
+  private final CharacterType type;
 
-  public CharacterIntValueGraphics(ICharacterType type) {
+  public CharacterIntValueGraphics(CharacterType type) {
     this.type = type;
   }
 

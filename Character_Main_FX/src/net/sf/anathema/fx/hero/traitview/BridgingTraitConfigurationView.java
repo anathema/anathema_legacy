@@ -2,8 +2,8 @@ package net.sf.anathema.fx.hero.traitview;
 
 import net.sf.anathema.character.main.library.trait.view.GroupedFavorableTraitConfigurationView;
 import net.sf.anathema.character.main.library.util.CssSkinner;
+import net.sf.anathema.character.main.type.CharacterType;
 import net.sf.anathema.hero.display.ExtensibleTraitView;
-import net.sf.anathema.character.main.type.ICharacterType;
 import net.sf.anathema.character.main.view.ColumnCount;
 import net.sf.anathema.framework.swing.IView;
 import net.sf.anathema.platform.fx.BridgingPanel;
@@ -12,10 +12,10 @@ import javax.swing.JComponent;
 
 public class BridgingTraitConfigurationView implements IView, GroupedFavorableTraitConfigurationView {
   private final FxGroupedTraitConfigurationView fxView;
-  private final ICharacterType type;
+  private final CharacterType type;
   private final BridgingPanel panel = new BridgingPanel();
 
-  public BridgingTraitConfigurationView(FxGroupedTraitConfigurationView fxView, ICharacterType type) {
+  public BridgingTraitConfigurationView(FxGroupedTraitConfigurationView fxView, CharacterType type) {
     this.fxView = fxView;
     this.type = type;
   }

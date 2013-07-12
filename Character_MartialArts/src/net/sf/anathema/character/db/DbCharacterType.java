@@ -3,12 +3,12 @@ package net.sf.anathema.character.db;
 import net.sf.anathema.character.main.template.magic.AbilityFavoringType;
 import net.sf.anathema.character.main.template.magic.FavoringTraitType;
 import net.sf.anathema.character.main.type.CharacterType;
-import net.sf.anathema.character.main.type.ICharacterType;
+import net.sf.anathema.character.main.type.RegisteredCharacterType;
 import net.sf.anathema.initialization.reflections.Weight;
 
-@CharacterType
+@RegisteredCharacterType
 @Weight(weight = 2)
-public class DbCharacterType implements ICharacterType {
+public class DbCharacterType implements CharacterType {
 
   @Override
   public boolean isExaltType() {

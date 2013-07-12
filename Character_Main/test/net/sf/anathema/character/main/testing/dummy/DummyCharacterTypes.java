@@ -1,13 +1,13 @@
 package net.sf.anathema.character.main.testing.dummy;
 
+import net.sf.anathema.character.main.type.CharacterType;
 import net.sf.anathema.character.main.type.CharacterTypes;
-import net.sf.anathema.character.main.type.ICharacterType;
 
 public class DummyCharacterTypes implements CharacterTypes {
-  private ICharacterType type;
+  private CharacterType type;
 
   @Override
-  public ICharacterType findById(String id) {
+  public CharacterType findById(String id) {
     if (type.getId().equals(id)) {
       return type;
     }
@@ -15,11 +15,11 @@ public class DummyCharacterTypes implements CharacterTypes {
   }
 
   @Override
-  public ICharacterType[] findAll() {
-    return new ICharacterType[]{type};
+  public CharacterType[] findAll() {
+    return new CharacterType[]{type};
   }
 
-  public void add(ICharacterType type) {
+  public void add(CharacterType type) {
     this.type = type;
   }
 }

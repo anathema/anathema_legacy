@@ -1,7 +1,7 @@
 package net.sf.anathema.fx.hero.configurableview;
 
 import net.sf.anathema.character.main.library.util.CssSkinner;
-import net.sf.anathema.character.main.type.ICharacterType;
+import net.sf.anathema.character.main.type.CharacterType;
 import net.sf.anathema.framework.swing.IView;
 import net.sf.anathema.framework.value.IntValueView;
 import net.sf.anathema.hero.display.configurableview.ConfigurableCharacterView;
@@ -18,7 +18,7 @@ public class BridgingConfigurableView implements ConfigurableCharacterView, IVie
   private final FxConfigurableView fxView;
   private final BridgingPanel panel = new BridgingPanel();
 
-  public BridgingConfigurableView(FxConfigurableView fxView, ICharacterType type) {
+  public BridgingConfigurableView(FxConfigurableView fxView, CharacterType type) {
     this.fxView = fxView;
     String[] skins = new CssSkinner().getSkins(type);
     panel.init(fxView, skins);

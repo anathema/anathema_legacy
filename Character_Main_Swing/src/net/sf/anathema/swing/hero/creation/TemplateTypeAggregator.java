@@ -3,7 +3,7 @@ package net.sf.anathema.swing.hero.creation;
 import net.sf.anathema.character.main.template.HeroTemplate;
 import net.sf.anathema.character.main.template.ITemplateRegistry;
 import net.sf.anathema.character.main.template.ITemplateType;
-import net.sf.anathema.character.main.type.ICharacterType;
+import net.sf.anathema.character.main.type.CharacterType;
 import net.sf.anathema.character.main.view.repository.ITemplateTypeAggregation;
 
 import java.util.Collection;
@@ -18,7 +18,7 @@ public class TemplateTypeAggregator {
     this.characterTemplateRegistry = characterTemplateRegistry;
   }
 
-  public ITemplateTypeAggregation[] aggregateTemplates(ICharacterType type) {
+  public ITemplateTypeAggregation[] aggregateTemplates(CharacterType type) {
     Map<ITemplateType, TemplateTypeAggregation> aggregations = new LinkedHashMap<>();
     for (HeroTemplate template : characterTemplateRegistry.getAllSupportedTemplates(type)) {
       TemplateTypeAggregation aggregation = aggregations.get(template.getTemplateType());

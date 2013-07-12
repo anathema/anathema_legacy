@@ -1,7 +1,7 @@
 package net.sf.anathema.swing.hero.creation;
 
 import net.sf.anathema.character.main.CharacterUI;
-import net.sf.anathema.character.main.type.ICharacterType;
+import net.sf.anathema.character.main.type.CharacterType;
 import net.sf.anathema.character.main.view.repository.ITemplateTypeAggregation;
 import net.sf.anathema.lib.gui.AbstractUIConfiguration;
 import net.sf.anathema.lib.gui.AgnosticUIConfiguration;
@@ -30,11 +30,11 @@ public class CharacterCreationPageProperties {
     return new BasicMessage(resources.getString("CharacterDialog.Message.Confirm"), MessageType.NORMAL);
   }
 
-  public String getTypeString(ICharacterType type) {
+  public String getTypeString(CharacterType type) {
     return new CharacterTypeUi(resources).getLabel(type);
   }
 
-  public Icon getTypeIcon(ICharacterType type) {
+  public Icon getTypeIcon(CharacterType type) {
     return iconProvider.getSmallTypeIcon(type);
   }
 

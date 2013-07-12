@@ -3,7 +3,7 @@ package net.sf.anathema.hero.spiritual.display;
 import javafx.scene.Node;
 import net.miginfocom.layout.AC;
 import net.miginfocom.layout.CC;
-import net.sf.anathema.character.main.type.ICharacterType;
+import net.sf.anathema.character.main.type.CharacterType;
 import net.sf.anathema.character.main.view.labelledvalue.IValueView;
 import net.sf.anathema.framework.value.IntValueView;
 import net.sf.anathema.fx.hero.traitview.FxTraitView;
@@ -22,7 +22,7 @@ public class FxSpiritualTraitsView implements SpiritualTraitsView, NodeHolder {
   private final MigPane content = new MigPane(withoutInsets().wrapAfter(2), new AC().index(0).fill().index(1).fill());
 
   @Override
-  public void initGui(SpiritualTraitsViewProperties properties, ICharacterType characterType) {
+  public void initGui(SpiritualTraitsViewProperties properties, CharacterType characterType) {
     addTitledPanel(properties.getVirtueTitle(), content, virtuePanel, new CC().spanY(2).growY().alignY("top"));
     addTitledPanel(properties.getWillpowerTitle(), content, willpowerPanel, new CC().pushX().alignY("top"));
     addTitledPanel(properties.getEssenceTitle(), content, essenceView.getNode(), new CC().pushX().alignY("top"));

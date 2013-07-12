@@ -1,6 +1,6 @@
 package net.sf.anathema.hero.magic.model.charms;
 
-import net.sf.anathema.character.main.type.ICharacterType;
+import net.sf.anathema.character.main.type.CharacterType;
 import net.sf.anathema.character.main.magic.model.charm.CharmHasSameTypeAsCharacter;
 import net.sf.anathema.character.main.dummy.DummyCharm;
 import net.sf.anathema.character.main.testing.dummy.DummyMundaneCharacterType;
@@ -23,7 +23,7 @@ public class CharmHasSameTypeAsCharacterTest {
     assertThat(predicate.apply(charm), is(true));
   }
 
-  private Hero createHeroWithType(ICharacterType characterType) {
+  private Hero createHeroWithType(CharacterType characterType) {
     Hero hero = mock(Hero.class);
     DummyHeroTemplate template = new DummyHeroTemplate();
     template.setCharacterType(characterType);
@@ -31,7 +31,7 @@ public class CharmHasSameTypeAsCharacterTest {
     return hero;
   }
 
-  private DummyCharm createCharmForCharacterType(ICharacterType characterTypeForCharm) {
+  private DummyCharm createCharmForCharacterType(CharacterType characterTypeForCharm) {
     DummyCharm charm = new DummyCharm();
     charm.setCharacterType(characterTypeForCharm);
     return charm;

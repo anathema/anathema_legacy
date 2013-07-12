@@ -2,7 +2,7 @@ package net.sf.anathema.hero.equipment.model;
 
 import com.google.common.base.Functions;
 import net.sf.anathema.character.main.equipment.ArtifactAttuneType;
-import net.sf.anathema.character.main.type.ICharacterType;
+import net.sf.anathema.character.main.type.CharacterType;
 import net.sf.anathema.equipment.core.MagicalMaterial;
 import net.sf.anathema.initialization.ObjectFactory;
 
@@ -22,23 +22,23 @@ public class ReflectionMaterialRules implements MaterialRules {
     }
   }
 
-  public MagicalMaterial getDefault(ICharacterType characterType) {
+  public MagicalMaterial getDefault(CharacterType characterType) {
     CharacterTypeMaterialRules rules = getRulesForCharacter(characterType);
     return rules.getDefault();
   }
 
-  public ArtifactAttuneType[] getAttunementTypes(ICharacterType characterType,
+  public ArtifactAttuneType[] getAttunementTypes(CharacterType characterType,
                                                  MagicalMaterial material) {
     CharacterTypeMaterialRules rules = getRulesForCharacter(characterType);
     return rules.getAttunementTypes(material);
   }
 
-  public boolean canAttuneToMalfeanMaterials(ICharacterType characterType) {
+  public boolean canAttuneToMalfeanMaterials(CharacterType characterType) {
     CharacterTypeMaterialRules rules = getRulesForCharacter(characterType);
     return rules.canAttuneToMalfeanMaterials();
   }
 
-  private CharacterTypeMaterialRules getRulesForCharacter(ICharacterType type) {
+  private CharacterTypeMaterialRules getRulesForCharacter(CharacterType type) {
     return Functions.forMap(rulesByCharacterType, new DefaultMaterialRules()).apply(type.getId());
   }
 }

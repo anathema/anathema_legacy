@@ -2,9 +2,9 @@ package net.sf.anathema.hero.traits.display;
 
 import net.sf.anathema.character.main.CharacterUI;
 import net.sf.anathema.character.main.library.trait.favorable.FavorableState;
+import net.sf.anathema.character.main.type.CharacterType;
 import net.sf.anathema.hero.concept.display.caste.presenter.CasteUI;
 import net.sf.anathema.character.main.template.presentation.IPresentationProperties;
-import net.sf.anathema.character.main.type.ICharacterType;
 import net.sf.anathema.hero.concept.CasteType;
 import net.sf.anathema.hero.concept.HeroConceptFetcher;
 import net.sf.anathema.hero.model.Hero;
@@ -33,7 +33,7 @@ public class FavoredIconSelector {
       return new CasteUI(presentationProperties).getSmallCasteIconPath(casteType);
     }
     if (state == FavorableState.Favored) {
-      ICharacterType characterType = hero.getTemplate().getTemplateType().getCharacterType();
+      CharacterType characterType = hero.getTemplate().getTemplateType().getCharacterType();
       return new CharacterUI().getMediumBallPath(characterType);
     }
     return AgnosticUIConfiguration.NO_ICON;

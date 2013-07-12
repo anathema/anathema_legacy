@@ -3,12 +3,12 @@ package net.sf.anathema.herotype.solar.model;
 import net.sf.anathema.character.main.template.magic.AbilityFavoringType;
 import net.sf.anathema.character.main.template.magic.FavoringTraitType;
 import net.sf.anathema.character.main.type.CharacterType;
-import net.sf.anathema.character.main.type.ICharacterType;
+import net.sf.anathema.character.main.type.RegisteredCharacterType;
 import net.sf.anathema.initialization.reflections.Weight;
 
-@CharacterType
+@RegisteredCharacterType
 @Weight(weight = 1)
-public class SolarCharacterType implements ICharacterType {
+public class SolarCharacterType implements CharacterType {
 
   @Override
   public boolean isExaltType() {

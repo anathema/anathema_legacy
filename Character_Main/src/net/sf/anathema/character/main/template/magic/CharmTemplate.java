@@ -8,11 +8,11 @@ import java.util.List;
 
 public class CharmTemplate implements ICharmTemplate {
 
-  private final ICharmSet charmSet;
+  private final CharmSet charmSet;
   private final List<String> alienAllowedCastes = new ArrayList<>();
   private final MartialArtsRules martialArtsRules;
 
-  public CharmTemplate(MartialArtsRules rules, ICharmSet charmSet) {
+  public CharmTemplate(MartialArtsRules rules, CharmSet charmSet) {
     this.martialArtsRules = rules;
     this.charmSet = charmSet;
   }

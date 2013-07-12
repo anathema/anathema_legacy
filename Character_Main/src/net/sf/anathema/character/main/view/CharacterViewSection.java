@@ -1,6 +1,6 @@
 package net.sf.anathema.character.main.view;
 
-import net.sf.anathema.character.main.type.ICharacterType;
+import net.sf.anathema.character.main.type.CharacterType;
 import net.sf.anathema.framework.presenter.view.MultipleContentView;
 import net.sf.anathema.framework.swing.IView;
 import net.sf.anathema.framework.view.util.ContentProperties;
@@ -16,7 +16,7 @@ public class CharacterViewSection implements SectionView {
   }
 
   @Override
-  public <T> T addView(String title, Class<T> viewClass, ICharacterType type) {
+  public <T> T addView(String title, Class<T> viewClass, CharacterType type) {
     T newView = subViewFactory.get(viewClass, type);
     IView viewToAdd = (IView) newView;
     view.addView(viewToAdd, new ContentProperties(title));

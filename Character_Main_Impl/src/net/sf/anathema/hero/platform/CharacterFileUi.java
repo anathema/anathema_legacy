@@ -2,7 +2,7 @@ package net.sf.anathema.hero.platform;
 
 import net.sf.anathema.character.main.CharacterUI;
 import net.sf.anathema.character.main.framework.item.CharacterPrintNameFileScanner;
-import net.sf.anathema.character.main.type.ICharacterType;
+import net.sf.anathema.character.main.type.CharacterType;
 import net.sf.anathema.framework.view.PrintNameFile;
 import net.sf.anathema.hero.concept.CasteType;
 import net.sf.anathema.lib.file.RelativePath;
@@ -23,14 +23,14 @@ public class CharacterFileUi extends AbstractUIConfiguration<PrintNameFile> {
 
   @Override
   public RelativePath getIconsRelativePath(PrintNameFile value) {
-    ICharacterType characterType = scanner.getCharacterType(value);
+    CharacterType characterType = scanner.getCharacterType(value);
     return new CharacterUI().getSmallTypeIconPath(characterType);
   }
 
   @Override
   public String getLabel(PrintNameFile value) {
     String printName = value.getPrintName();
-    ICharacterType characterType = scanner.getCharacterType(value);
+    CharacterType characterType = scanner.getCharacterType(value);
     String characterString = new CharacterTypeUi(resources).getLabel(characterType);
     Identifier casteType = scanner.getCasteType(value);
     if (casteType == CasteType.NULL_CASTE_TYPE) {

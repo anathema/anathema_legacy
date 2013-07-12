@@ -1,14 +1,14 @@
 package net.sf.anathema.hero.equipment.model;
 
 import net.sf.anathema.character.main.equipment.ArtifactAttuneType;
-import net.sf.anathema.character.main.type.ICharacterType;
+import net.sf.anathema.character.main.type.CharacterType;
 import net.sf.anathema.equipment.core.MagicalMaterial;
 
 public interface MaterialRules {
-  MagicalMaterial getDefault(ICharacterType characterType);
+  MagicalMaterial getDefault(CharacterType characterType);
 
-  ArtifactAttuneType[] getAttunementTypes(ICharacterType characterType,
+  ArtifactAttuneType[] getAttunementTypes(CharacterType characterType,
                                           MagicalMaterial material);
 
-  boolean canAttuneToMalfeanMaterials(ICharacterType characterType);
+  boolean canAttuneToMalfeanMaterials(CharacterType characterType);
 }

@@ -6,7 +6,7 @@ import com.itextpdf.text.Phrase;
 import com.itextpdf.text.Rectangle;
 import com.itextpdf.text.pdf.PdfPCell;
 import com.itextpdf.text.pdf.PdfPTable;
-import net.sf.anathema.character.main.type.ICharacterType;
+import net.sf.anathema.character.main.type.CharacterType;
 import net.sf.anathema.hero.sheet.pdf.session.ReportSession;
 import net.sf.anathema.hero.concept.sheet.anima.content.AnimaTableRangeProvider;
 import net.sf.anathema.hero.concept.sheet.anima.content.AnimaTableStealthProvider;
@@ -48,7 +48,7 @@ public class AnimaTableEncoder extends AbstractTableEncoder<ReportSession> {
     for (ColumnDescriptor column : columns) {
       table.addCell(createHeaderCell(graphics, getString(column.getHeaderKey())));
     }
-    ICharacterType type = session.getHero().getTemplate().getTemplateType().getCharacterType();
+    CharacterType type = session.getHero().getTemplate().getTemplateType().getCharacterType();
     String descriptionPrefix = "Sheet.AnimaTable.Description." + type.getId();
     for (int index = 0; index < 5; index++) {
       addAnimaRow(graphics, table, index, session, descriptionPrefix);

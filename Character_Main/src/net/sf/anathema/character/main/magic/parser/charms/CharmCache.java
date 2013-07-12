@@ -6,6 +6,7 @@ import net.sf.anathema.character.main.magic.model.charm.special.ISpecialCharm;
 import net.sf.anathema.lib.util.Identifier;
 
 public interface CharmCache extends ExtensibleDataSet {
+
   Charm[] getCharms(Identifier type);
 
   Identifier[] getCharmTypes();

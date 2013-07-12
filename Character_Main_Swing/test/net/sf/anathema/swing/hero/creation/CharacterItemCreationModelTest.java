@@ -1,13 +1,13 @@
 package net.sf.anathema.swing.hero.creation;
 
 import net.sf.anathema.character.main.CharacterStatisticsConfiguration;
+import net.sf.anathema.character.main.type.CharacterType;
 import net.sf.anathema.hero.framework.HeroEnvironment;
 import net.sf.anathema.character.main.template.HeroTemplate;
 import net.sf.anathema.character.main.template.ITemplateRegistry;
 import net.sf.anathema.character.main.testing.dummy.DummyCharacterTypes;
 import net.sf.anathema.character.main.testing.dummy.DummyMundaneCharacterType;
 import net.sf.anathema.character.main.testing.dummy.template.SimpleDummyCharacterTemplate;
-import net.sf.anathema.character.main.type.ICharacterType;
 import net.sf.anathema.lib.control.ChangeListener;
 import org.junit.Test;
 
@@ -28,7 +28,7 @@ public class CharacterItemCreationModelTest {
     verifyZeroInteractions(listener);
   }
 
-  private HeroEnvironment createGenericsWithCharacterType(ICharacterType characterType) {
+  private HeroEnvironment createGenericsWithCharacterType(CharacterType characterType) {
     HeroEnvironment generics = mock(HeroEnvironment.class);
     DummyCharacterTypes characterTypes = new DummyCharacterTypes();
     characterTypes.add(characterType);

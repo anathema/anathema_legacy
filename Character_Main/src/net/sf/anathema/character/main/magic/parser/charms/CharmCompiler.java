@@ -9,8 +9,8 @@ import net.sf.anathema.character.main.magic.model.charm.special.ISpecialCharm;
 import net.sf.anathema.character.main.magic.parser.charms.special.ReflectionSpecialCharmBuilder;
 import net.sf.anathema.character.main.magic.parser.charms.special.SpecialCharmBuilder;
 import net.sf.anathema.character.main.traits.TraitType;
+import net.sf.anathema.character.main.type.CharacterType;
 import net.sf.anathema.character.main.type.CharacterTypes;
-import net.sf.anathema.character.main.type.ICharacterType;
 import net.sf.anathema.character.main.type.ReflectionCharacterTypes;
 import net.sf.anathema.initialization.ExtensibleDataSetCompiler;
 import net.sf.anathema.initialization.ObjectFactory;
@@ -102,7 +102,7 @@ public class CharmCompiler implements IExtensibleDataSetCompiler {
 
   private void buildGenericCharms(Identifier type) throws PersistenceException {
     try {
-      ICharacterType characterType = characterTypes.findById(type.getId());
+      CharacterType characterType = characterTypes.findById(type.getId());
       TraitType[] primaryTypes = characterType.getFavoringTraitType().getTraitTypesForGenericCharms();
       genericBuilder.setTypes(primaryTypes);
       buildCharms(type, genericBuilder);

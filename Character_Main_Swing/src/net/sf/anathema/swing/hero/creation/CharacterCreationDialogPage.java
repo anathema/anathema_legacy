@@ -1,6 +1,6 @@
 package net.sf.anathema.swing.hero.creation;
 
-import net.sf.anathema.character.main.type.ICharacterType;
+import net.sf.anathema.character.main.type.CharacterType;
 import net.sf.anathema.character.main.view.repository.ITemplateTypeAggregation;
 import net.sf.anathema.lib.control.ChangeListener;
 import net.sf.anathema.lib.control.ObjectValueListener;
@@ -71,7 +71,7 @@ public class CharacterCreationDialogPage extends AbstractDialogPage {
   @Override
   public JComponent createContent() {
     IToggleButtonPanel panel = view.addToggleButtonPanel();
-    for (final ICharacterType type : model.getAvailableCharacterTypes()) {
+    for (final CharacterType type : model.getAvailableCharacterTypes()) {
       JToggleButton button = panel.addButton(new SmartAction(properties.getTypeIcon(type)) {
         @Override
         protected void execute(Component parentComponent) {

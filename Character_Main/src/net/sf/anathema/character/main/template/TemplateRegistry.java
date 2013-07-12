@@ -1,6 +1,6 @@
 package net.sf.anathema.character.main.template;
 
-import net.sf.anathema.character.main.type.ICharacterType;
+import net.sf.anathema.character.main.type.CharacterType;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -11,7 +11,7 @@ public class TemplateRegistry implements ITemplateRegistry {
   private final HashMap<ITemplateType, HeroTemplate> templatesByType = new HashMap<>();
 
   @Override
-  public HeroTemplate[] getAllSupportedTemplates(ICharacterType type) {
+  public HeroTemplate[] getAllSupportedTemplates(CharacterType type) {
     List<HeroTemplate> typeTemplates = new ArrayList<>();
     for (ITemplateType templateType : templatesByType.keySet()) {
       if (templateType.getCharacterType().equals(type)) {
@@ -25,7 +25,7 @@ public class TemplateRegistry implements ITemplateRegistry {
   }
 
   @Override
-  public HeroTemplate getDefaultTemplate(ICharacterType type) {
+  public HeroTemplate getDefaultTemplate(CharacterType type) {
     ITemplateType templateType = new TemplateType(type);
     return getTemplate(templateType);
   }

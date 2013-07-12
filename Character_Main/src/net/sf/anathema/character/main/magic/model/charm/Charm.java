@@ -7,7 +7,7 @@ import net.sf.anathema.character.main.magic.model.combos.IComboRestrictions;
 import net.sf.anathema.character.main.magic.model.magic.Magic;
 import net.sf.anathema.character.main.traits.TraitType;
 import net.sf.anathema.character.main.traits.ValuedTraitType;
-import net.sf.anathema.character.main.type.ICharacterType;
+import net.sf.anathema.character.main.type.CharacterType;
 
 import java.util.List;
 import java.util.Set;
@@ -16,7 +16,7 @@ public interface Charm extends Magic {
 
   String FAVORED_CASTE_PREFIX = "FavoredCaste.";
 
-  ICharacterType getCharacterType();
+  CharacterType getCharacterType();
 
   IDuration getDuration();
 

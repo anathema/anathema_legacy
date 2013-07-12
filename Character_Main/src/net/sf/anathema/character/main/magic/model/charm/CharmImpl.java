@@ -18,7 +18,7 @@ import net.sf.anathema.character.main.magic.parser.magic.IExaltedSourceBook;
 import net.sf.anathema.character.main.traits.TraitType;
 import net.sf.anathema.character.main.traits.ValuedTraitType;
 import net.sf.anathema.character.main.traits.types.OtherTraitType;
-import net.sf.anathema.character.main.type.ICharacterType;
+import net.sf.anathema.character.main.type.CharacterType;
 import net.sf.anathema.hero.concept.HeroConcept;
 import net.sf.anathema.hero.concept.HeroConceptFetcher;
 import net.sf.anathema.hero.model.Hero;
@@ -40,7 +40,7 @@ public class CharmImpl extends AbstractMagic implements Charm {
 
   private final CharmPrerequisiteList prerequisisteList;
 
-  private final ICharacterType characterType;
+  private final CharacterType characterType;
   private final IComboRestrictions comboRules;
   private final IDuration duration;
   private final String group;
@@ -59,7 +59,7 @@ public class CharmImpl extends AbstractMagic implements Charm {
 
   private final ICharmTypeModel typeModel;
 
-  public CharmImpl(ICharacterType characterType, String id, String group, boolean isGeneric, CharmPrerequisiteList prerequisiteList,
+  public CharmImpl(CharacterType characterType, String id, String group, boolean isGeneric, CharmPrerequisiteList prerequisiteList,
                    ICostList temporaryCost, IComboRestrictions comboRules, IDuration duration, ICharmTypeModel charmTypeModel,
                    IExaltedSourceBook[] sources) {
     super(id);
@@ -92,7 +92,7 @@ public class CharmImpl extends AbstractMagic implements Charm {
   }
 
   @Override
-  public ICharacterType getCharacterType() {
+  public CharacterType getCharacterType() {
     return characterType;
   }
 

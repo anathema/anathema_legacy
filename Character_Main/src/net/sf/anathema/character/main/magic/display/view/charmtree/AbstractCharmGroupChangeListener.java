@@ -2,7 +2,7 @@ package net.sf.anathema.character.main.magic.display.view.charmtree;
 
 import net.sf.anathema.character.main.magic.model.charm.Charm;
 import net.sf.anathema.character.main.magic.model.charm.ICharmGroup;
-import net.sf.anathema.character.main.type.ICharacterType;
+import net.sf.anathema.character.main.type.CharacterType;
 import net.sf.anathema.character.main.magic.model.charmtree.builder.CharmGraphNodeBuilder;
 import net.sf.anathema.graph.nodes.IIdentifiedRegularNode;
 import net.sf.anathema.graph.nodes.IRegularNode;
@@ -78,11 +78,11 @@ public abstract class AbstractCharmGroupChangeListener implements ICharmGroupCha
   }
 
   private ITreePresentationProperties getDisplayProperties(ICharmGroup charmGroup) {
-    ICharacterType characterType = charmGroup.getCharacterType();
+    CharacterType characterType = charmGroup.getCharacterType();
     return getDisplayProperties(characterType);
   }
 
-  protected ITreePresentationProperties getDisplayProperties(ICharacterType characterType) {
+  protected ITreePresentationProperties getDisplayProperties(CharacterType characterType) {
     return displayPropertiesMap.getDisplayProperties(characterType);
   }
 

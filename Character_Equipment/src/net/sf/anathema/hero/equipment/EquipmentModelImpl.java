@@ -9,6 +9,7 @@ import net.sf.anathema.character.equipment.character.model.IEquipmentStatsOption
 import net.sf.anathema.character.equipment.item.model.IEquipmentTemplateProvider;
 import net.sf.anathema.character.equipment.item.model.gson.GsonEquipmentDatabase;
 import net.sf.anathema.character.main.equipment.HeroStatsModifiers;
+import net.sf.anathema.character.main.type.CharacterType;
 import net.sf.anathema.hero.model.change.UnspecifiedChangeListener;
 import net.sf.anathema.character.main.equipment.ArtifactStats;
 import net.sf.anathema.character.main.equipment.weapon.IArmourStats;
@@ -17,7 +18,6 @@ import net.sf.anathema.character.main.library.trait.Trait;
 import net.sf.anathema.character.main.library.trait.specialties.Specialty;
 import net.sf.anathema.character.main.traits.types.AbilityType;
 import net.sf.anathema.character.main.traits.types.AttributeType;
-import net.sf.anathema.character.main.type.ICharacterType;
 import net.sf.anathema.equipment.core.IEquipmentTemplate;
 import net.sf.anathema.equipment.core.MagicalMaterial;
 import net.sf.anathema.equipment.core.MaterialComposition;
@@ -63,7 +63,7 @@ public class EquipmentModelImpl implements EquipmentOptionsProvider, EquipmentMo
       fireModelChanged();
     }
   };
-  private ICharacterType characterType;
+  private CharacterType characterType;
   private MagicalMaterial defaultMaterial;
   private EquipmentHeroEvaluator dataProvider;
   private IArmourStats naturalArmor;
@@ -81,7 +81,7 @@ public class EquipmentModelImpl implements EquipmentOptionsProvider, EquipmentMo
     ObjectFactory objectFactory = context.getObjectFactory();
     MaterialRules materialRules = new ReflectionMaterialRules(objectFactory);
     NaturalWeaponsMap naturalWeaponsMap = new NaturalWeaponsMapImpl(context.getCharacterTypes(), context.getObjectFactory());
-    ICharacterType characterType = hero.getTemplate().getTemplateType().getCharacterType();
+    CharacterType characterType = hero.getTemplate().getTemplateType().getCharacterType();
     Trait stamina = TraitModelFetcher.fetch(hero).getTrait(AttributeType.Stamina);
     this.naturalArmor = new DefaultNaturalSoak(stamina, characterType);
     EquipmentHeroEvaluatorImpl dataProvider = new EquipmentHeroEvaluatorImpl(hero, materialRules);
