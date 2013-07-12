@@ -6,7 +6,7 @@ import net.sf.anathema.lib.gui.AgnosticUIConfiguration;
 import net.sf.anathema.lib.gui.list.SmartJList;
 import net.sf.anathema.lib.gui.list.VetoableListSelectionModel;
 import net.sf.anathema.lib.gui.list.veto.Vetor;
-import net.sf.anathema.lib.gui.selection.IListObjectSelectionView;
+import net.sf.anathema.lib.gui.selection.IVetoableObjectSelectionView;
 import net.sf.anathema.lib.gui.ui.ConfigurableListCellRenderer;
 
 import javax.swing.JComponent;
@@ -15,7 +15,7 @@ import javax.swing.event.ListSelectionListener;
 
 import static net.sf.anathema.lib.gui.list.ListSelectionMode.SingleSelection;
 
-public class ListObjectSelectionView<V> implements IListObjectSelectionView<V> {
+public class ListObjectSelectionView<V> implements IVetoableObjectSelectionView<V> {
 
   private final SmartJList<V> smartList;
   private final VetoableListSelectionModel selectionModel;

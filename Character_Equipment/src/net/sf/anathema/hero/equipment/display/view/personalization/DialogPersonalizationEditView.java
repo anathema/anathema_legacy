@@ -1,4 +1,4 @@
-package net.sf.anathema.hero.equipment.display.view;
+package net.sf.anathema.hero.equipment.display.view.personalization;
 
 import net.sf.anathema.framework.view.SwingApplicationFrame;
 import net.sf.anathema.hero.equipment.display.presenter.EquipmentPersonalizationProperties;

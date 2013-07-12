@@ -10,8 +10,9 @@ import net.sf.anathema.hero.equipment.display.presenter.EquipmentPersonalization
 import net.sf.anathema.hero.equipment.display.presenter.EquipmentView;
 import net.sf.anathema.hero.equipment.display.presenter.MagicalMaterialView;
 import net.sf.anathema.hero.equipment.display.presenter.PersonalizationEditView;
+import net.sf.anathema.hero.equipment.display.view.personalization.DialogPersonalizationEditView;
 import net.sf.anathema.interaction.Tool;
-import net.sf.anathema.lib.gui.selection.IListObjectSelectionView;
+import net.sf.anathema.lib.gui.selection.IVetoableObjectSelectionView;
 import net.sf.anathema.swing.interaction.ActionInteraction;
 import net.sf.anathema.view.interaction.AddToComponent;
 
@@ -79,7 +80,7 @@ public class EquipmentViewImpl implements EquipmentView, IView {
   }
 
   @Override
-  public IListObjectSelectionView<String> getEquipmentTemplatePickList() {
+  public IVetoableObjectSelectionView<String> getEquipmentTemplatePickList() {
     return equipmentPickList;
   }
 

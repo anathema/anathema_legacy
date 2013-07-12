@@ -1,4 +1,4 @@
-package net.sf.anathema.hero.equipment.display.view;
+package net.sf.anathema.hero.equipment.display.view.personalization;
 
 import net.miginfocom.swing.MigLayout;
 import net.sf.anathema.hero.equipment.display.presenter.EquipmentPersonalizationView;
