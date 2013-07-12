@@ -2,7 +2,7 @@ package net.sf.anathema.character.main.presenter.overview;
 
 import net.sf.anathema.character.main.library.overview.OverviewCategory;
 import net.sf.anathema.character.main.view.CategorizedOverview;
-import net.sf.anathema.character.main.view.labelledvalue.ILabelledAllotmentView;
+import net.sf.anathema.character.main.view.labelledvalue.LabelledAllotmentView;
 import net.sf.anathema.character.main.view.labelledvalue.IValueView;
 import net.sf.anathema.hero.advance.creation.IBonusPointManagement;
 import net.sf.anathema.hero.change.ChangeFlavor;
@@ -110,7 +110,7 @@ public class CreationOverviewPresenter implements Presenter {
     @Override
     public void visitAllotmentModel(SpendingModel visitedModel) {
       OverviewCategory overviewCategory = categoriesById.get(visitedModel.getCategoryId());
-      ILabelledAllotmentView valueView = overviewCategory.addAlotmentView(getLabelString(visitedModel), 2);
+      LabelledAllotmentView valueView = overviewCategory.addAlotmentView(getLabelString(visitedModel), 2);
       presenters.add(new AllotmentSubPresenter(visitedModel, valueView));
     }
   }

@@ -1,6 +1,6 @@
 package net.sf.anathema.character.main.presenter.overview;
 
-import net.sf.anathema.character.main.view.labelledvalue.ILabelledAllotmentView;
+import net.sf.anathema.character.main.view.labelledvalue.LabelledAllotmentView;
 import net.sf.anathema.hero.advance.experience.ExperiencePointConfigurationListener;
 import net.sf.anathema.hero.advance.experience.ExperiencePointManagement;
 import net.sf.anathema.character.main.library.overview.OverviewCategory;
@@ -26,7 +26,7 @@ public class ExperiencedOverviewPresenter implements Presenter {
   private final Resources resources;
   private final List<IOverviewSubPresenter> presenters = new ArrayList<>();
 
-  private ILabelledAllotmentView totalView;
+  private LabelledAllotmentView totalView;
 
   public ExperiencedOverviewPresenter(Resources resources, final Hero hero, CategorizedOverview overview,
                                       ExperiencePointManagement experiencePoints) {
@@ -69,7 +69,7 @@ public class ExperiencedOverviewPresenter implements Presenter {
     for (IOverviewSubPresenter presenter : presenters) {
       presenter.update();
     }
-    totalView.setAlotment(getTotalXP());
+    totalView.setAllotment(getTotalXP());
     setTotalViewColor();
     totalView.setValue(management.getTotalCosts());
     setTotalViewColor();

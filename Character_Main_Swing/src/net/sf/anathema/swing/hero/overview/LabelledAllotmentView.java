@@ -1,7 +1,6 @@
 package net.sf.anathema.swing.hero.overview;
 
 import net.miginfocom.layout.CC;
-import net.sf.anathema.character.main.view.labelledvalue.ILabelledAllotmentView;
 
 import javax.swing.JComponent;
 import javax.swing.JLabel;
@@ -9,7 +8,8 @@ import javax.swing.JPanel;
 import javax.swing.SwingConstants;
 import java.util.Collection;
 
-public class LabelledAllotmentView extends AbstractLabelledIntegerValueView implements ILabelledAllotmentView {
+public class LabelledAllotmentView extends AbstractLabelledIntegerValueView implements
+        net.sf.anathema.character.main.view.labelledvalue.LabelledAllotmentView {
 
   private final JLabel seperatorLabel;
   protected final JLabel maxPointLabel;
@@ -40,7 +40,7 @@ public class LabelledAllotmentView extends AbstractLabelledIntegerValueView impl
   }
 
   @Override
-  public void setAlotment(int value) {
+  public void setAllotment(int value) {
     maxPointLabel.setText(String.valueOf(value));
   }
 }

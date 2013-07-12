@@ -2,7 +2,7 @@ package net.sf.anathema.fx.hero.overview;
 
 import javafx.scene.Node;
 import net.sf.anathema.character.main.library.overview.OverviewCategory;
-import net.sf.anathema.character.main.view.labelledvalue.ILabelledAllotmentView;
+import net.sf.anathema.character.main.view.labelledvalue.LabelledAllotmentView;
 import net.sf.anathema.character.main.view.labelledvalue.IValueView;
 import net.sf.anathema.platform.fx.FxThreading;
 import net.sf.anathema.platform.fx.StyledTitledPane;
@@ -25,7 +25,7 @@ public class FxOverviewCategory implements OverviewCategory {
   }
 
   @Override
-  public ILabelledAllotmentView addAlotmentView(String labelText, int maxValueLength) {
+  public LabelledAllotmentView addAlotmentView(String labelText, int maxValueLength) {
     FxAllotmentOverview view = new FxAllotmentOverview(labelText);
     view.addTo(panel);
     return view;
