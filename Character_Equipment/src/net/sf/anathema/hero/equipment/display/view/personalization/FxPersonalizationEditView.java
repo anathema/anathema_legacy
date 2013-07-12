@@ -1,9 +1,14 @@
 package net.sf.anathema.hero.equipment.display.view.personalization;
 
+import net.sf.anathema.hero.equipment.display.presenter.EquipmentPersonalizationProperties;
 import net.sf.anathema.hero.equipment.display.presenter.PersonalizationEditView;
 import net.sf.anathema.lib.util.Closure;
 
 public class FxPersonalizationEditView implements PersonalizationEditView{
+  public FxPersonalizationEditView(EquipmentPersonalizationProperties properties) {
+    //To change body of created methods use File | Settings | File Templates.
+  }
+
   @Override
   public void show() {
     //To change body of implemented methods use File | Settings | File Templates.

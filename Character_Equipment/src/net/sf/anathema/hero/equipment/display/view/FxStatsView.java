@@ -17,6 +17,7 @@ public class FxStatsView implements StatsView {
   public FxStatsView(String description) {
     this.isSelectedModel = new BooleanModel();
     this.box = createCheckBox(isSelectedModel, description);
+    panel.add(box);
   }
 
   @Override

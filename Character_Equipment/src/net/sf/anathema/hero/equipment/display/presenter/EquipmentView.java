@@ -1,6 +1,8 @@
 package net.sf.anathema.hero.equipment.display.presenter;
 
+import net.sf.anathema.equipment.core.MagicalMaterial;
 import net.sf.anathema.interaction.Tool;
+import net.sf.anathema.lib.gui.AgnosticUIConfiguration;
 import net.sf.anathema.lib.gui.selection.VetoableObjectSelectionView;
 
 public interface EquipmentView {
@@ -13,7 +15,7 @@ public interface EquipmentView {
 
   Tool addToolButton();
 
-  MagicalMaterialView getMagicMaterialView();
+  MagicalMaterialView addMagicMaterialView(String label, AgnosticUIConfiguration<MagicalMaterial> renderer);
 
   void revalidateEquipmentViews();
 

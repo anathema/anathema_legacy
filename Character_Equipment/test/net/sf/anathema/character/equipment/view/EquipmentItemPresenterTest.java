@@ -14,7 +14,6 @@ import net.sf.anathema.framework.resources.LocaleResources;
 import net.sf.anathema.hero.equipment.display.presenter.EquipmentObjectPresenter;
 import net.sf.anathema.hero.equipment.display.presenter.EquipmentObjectView;
 import net.sf.anathema.hero.equipment.display.presenter.StatsView;
-import net.sf.anathema.hero.equipment.display.view.CheckBoxStatsView;
 import net.sf.anathema.hero.health.HealthType;
 import net.sf.anathema.lib.util.SimpleIdentifier;
 

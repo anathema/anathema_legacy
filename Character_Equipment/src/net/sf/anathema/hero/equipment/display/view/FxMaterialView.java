@@ -1,5 +1,6 @@
 package net.sf.anathema.hero.equipment.display.view;
 
+import javafx.scene.Node;
 import net.sf.anathema.equipment.core.MagicalMaterial;
 import net.sf.anathema.hero.equipment.display.presenter.MagicalMaterialView;
 import net.sf.anathema.lib.gui.AgnosticUIConfiguration;
@@ -9,9 +10,12 @@ public class FxMaterialView implements MagicalMaterialView {
 
   private ComboBoxSelectionView<MagicalMaterial> materialCombo;
 
-  @Override
-  public void initView(String label, AgnosticUIConfiguration<MagicalMaterial> renderer, MagicalMaterial[] materials) {
+  public FxMaterialView(String label, AgnosticUIConfiguration<MagicalMaterial> renderer) {
     materialCombo = new ComboBoxSelectionView<>(label, renderer);
+  }
+
+  @Override
+  public void setMaterials(MagicalMaterial[] materials) {
     materialCombo.setObjects(materials);
   }
 
@@ -24,5 +28,9 @@ public class FxMaterialView implements MagicalMaterialView {
   @Override
   public MagicalMaterial getSelectedMaterial() {
     return materialCombo.getSelectedObject();
+  }
+
+  public Node getNode() {
+    return materialCombo.getNode();
   }
 }

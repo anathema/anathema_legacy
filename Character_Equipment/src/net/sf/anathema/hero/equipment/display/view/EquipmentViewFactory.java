@@ -10,6 +10,7 @@ public class EquipmentViewFactory implements SubViewFactory {
   @SuppressWarnings("unchecked")
   @Override
   public <T> T create(CharacterType type) {
-    return (T) new EquipmentViewImpl();
+    FxEquipmentView fxView = new FxEquipmentView();
+    return (T) new BridgingEquipmentView(fxView);
   }
 }

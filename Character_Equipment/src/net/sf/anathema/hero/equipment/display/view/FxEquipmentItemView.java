@@ -1,16 +1,22 @@
 package net.sf.anathema.hero.equipment.display.view;
 
+import javafx.scene.Node;
 import javafx.scene.control.Label;
 import javafx.scene.control.TitledPane;
 import net.sf.anathema.hero.equipment.display.presenter.EquipmentObjectView;
 import net.sf.anathema.hero.equipment.display.presenter.StatsView;
 import net.sf.anathema.interaction.Tool;
+import net.sf.anathema.lib.gui.layout.LayoutUtils;
+import net.sf.anathema.platform.fx.FxThreading;
 import net.sf.anathema.platform.tool.FxButtonTool;
 import org.tbee.javafx.scene.layout.MigPane;
 
 public class FxEquipmentItemView implements EquipmentObjectView {
   private final TitledPane border = new TitledPane();
-  private final MigPane body = new MigPane();
+  private final MigPane body = new MigPane(LayoutUtils.fillWithoutInsets().wrapAfter(1));
+  private final Label descriptionLabel = new Label();
+  private final MigPane elementPane = new MigPane(LayoutUtils.fillWithoutInsets().wrapAfter(1));
+  private final MigPane buttonPane = new MigPane(LayoutUtils.fillWithoutInsets());
 
   public FxEquipmentItemView() {
     border.setContent(body);
@@ -23,26 +29,37 @@ public class FxEquipmentItemView implements EquipmentObjectView {
 
   @Override
   public void setItemDescription(String text) {
-    body.add(new Label(text));
+    descriptionLabel.setText(text);
   }
 
   @Override
   public void clear() {
-    setItemTitle("");
     body.getChildren().removeAll();
+    body.add(descriptionLabel);
+    body.add(elementPane);
+    body.add(buttonPane);
   }
 
   @Override
   public StatsView addStats(String description) {
-    FxStatsView statsView = new FxStatsView(description);
-    body.add(statsView.getNode());
+    final FxStatsView statsView = new FxStatsView(description);
+    FxThreading.runOnCorrectThread(new Runnable() {
+      @Override
+      public void run() {
+        elementPane.add(statsView.getNode());
+      }
+    });
     return statsView;
   }
 
   @Override
   public Tool addAction() {
     FxButtonTool tool = FxButtonTool.ForToolbar();
-    body.add(tool.getNode());
+    buttonPane.add(tool.getNode());
     return tool;
+  }
+
+  public Node getNode() {
+    return border;
   }
 }

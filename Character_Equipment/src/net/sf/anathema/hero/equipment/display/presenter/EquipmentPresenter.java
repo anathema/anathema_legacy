@@ -24,6 +24,8 @@ import java.util.Arrays;
 import java.util.HashMap;
 import java.util.Map;
 
+import static net.sf.anathema.lib.lang.StringUtilities.isNullOrTrimmedEmpty;
+
 public class EquipmentPresenter implements Presenter {
 
   private final Resources resources;
@@ -70,12 +72,11 @@ public class EquipmentPresenter implements Presenter {
         removeItemView(item);
       }
     });
-    MagicalMaterialView magicMaterialView = view.getMagicMaterialView();
-    initMaterialView(magicMaterialView);
+    final MagicalMaterialView magicalMaterialView = initMaterialView();
     equipmentTemplatePickList.setCellRenderer(new EquipmentItemUIConfiguration(model));
     setObjects(equipmentTemplatePickList);
     Tool addTool = view.addToolButton();
-    createTemplateAddAction(equipmentTemplatePickList, magicMaterialView, addTool);
+    createTemplateAddAction(equipmentTemplatePickList, magicalMaterialView, addTool);
     Tool refreshTool = view.addToolButton();
     createRefreshAction(equipmentTemplatePickList, refreshTool);
     equipmentTemplatePickList.addObjectSelectionChangedListener(new ObjectValueListener<String>() {
@@ -89,15 +90,17 @@ public class EquipmentPresenter implements Presenter {
         } else if (composition == MaterialComposition.Fixed) {
           magicMaterial = model.getMagicalMaterial(templateId);
         }
-        view.getMagicMaterialView().setSelectedMaterial(magicMaterial, composition == MaterialComposition.Variable);
+        magicalMaterialView.setSelectedMaterial(magicMaterial, composition == MaterialComposition.Variable);
       }
     });
   }
 
-  private void initMaterialView(MagicalMaterialView magicMaterialView) {
+  private MagicalMaterialView initMaterialView() {
     String label = resources.getString("MagicMaterial.Label") + ":";
     AgnosticUIConfiguration<MagicalMaterial> renderer = new MagicMaterialUIConfiguration(resources);
-    magicMaterialView.initView(label, renderer, MagicalMaterial.values());
+    MagicalMaterialView magicMaterialView = view.addMagicMaterialView(label, renderer);
+    magicMaterialView.setMaterials(MagicalMaterial.values());
+    return magicMaterialView;
   }
 
   private void createRefreshAction(final VetoableObjectSelectionView<String> equipmentTemplatePickList,
@@ -132,17 +135,17 @@ public class EquipmentPresenter implements Presenter {
     equipmentTemplatePickList.addObjectSelectionChangedListener(new ObjectValueListener<String>() {
       @Override
       public void valueChanged(String newValue) {
-        setEnabled(equipmentTemplatePickList, selectTool);
+        setEnabled(newValue, selectTool);
       }
     });
-    setEnabled(equipmentTemplatePickList, selectTool);
+    setEnabled(equipmentTemplatePickList.getSelectedObject(), selectTool);
   }
 
-  private void setEnabled(VetoableObjectSelectionView<String> equipmentTemplatePickList, Tool selectTool) {
-    if (equipmentTemplatePickList.isObjectSelected()) {
-      selectTool.enable();
-    } else {
+  private void setEnabled(String newValue, Tool selectTool) {
+    if (isNullOrTrimmedEmpty(newValue)) {
       selectTool.disable();
+    } else {
+      selectTool.enable();
     }
   }
 

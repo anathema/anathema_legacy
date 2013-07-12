@@ -15,12 +15,12 @@ public class EquipmentItemUIConfiguration extends AbstractUIConfiguration<String
   }
 
   @Override
-  public String getLabel(String value) {
+  protected String labelForExistingValue(String value) {
     return value;
   }
 
   @Override
-  public String getToolTipText(String value) {
+  protected String tooltipForExistingValue(String value) {
     IEquipmentTemplate template = templateProvider.loadTemplate(value);
     if (template != null) {
       return tooltipBuilder.getTooltipDescription(template);
