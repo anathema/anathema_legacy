@@ -10,11 +10,11 @@ import java.util.Collection;
 public class DummyObjectFactory implements ObjectFactory {
   @Override
   public <T> Collection<T> instantiateOrdered(Class<? extends Annotation> annotation, Object... parameter) throws InitializationException {
-    return new ArrayList<T>();
+    return new ArrayList<>();
   }
 
   @Override
   public <T> Collection<T> instantiateAll(Class<? extends Annotation> annotation, Object... parameter) throws InitializationException {
-    return new ArrayList<T>();
+    return new ArrayList<>();
   }
 }
