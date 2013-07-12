@@ -11,6 +11,4 @@ public interface ICharmCache extends IExtensibleDataSet {
   Identifier[] getCharmTypes();
 
   ISpecialCharm[] getSpecialCharmData(Identifier type);
-
-  String getCharmRename(String name);
 }

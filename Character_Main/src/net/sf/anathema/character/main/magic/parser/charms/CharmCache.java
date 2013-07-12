@@ -14,7 +14,6 @@ import java.util.Map;
 public class CharmCache implements ICharmCache {
 
   MultiEntryMap<Identifier, Charm> charmSets = new MultiEntryMap<>();
-  Map<String, String> renameData = new HashMap<>();
   Map<Identifier, List<ISpecialCharm>> specialCharms = new HashMap<>();
 
   @Override
@@ -66,23 +65,6 @@ public class CharmCache implements ICharmCache {
     }
     List<ISpecialCharm> list = getSpecialCharmList(type);
     list.addAll(data);
-  }
-
-  public void addCharmRenames(Map<String, String> mappings) {
-    if (mappings == null) {
-      return;
-    }
-    renameData.putAll(mappings);
-  }
-
-  @Override
-  public String getCharmRename(String id) {
-    String newId = id;
-    do {
-      id = newId;
-      newId = renameData.get(id);
-    } while (newId != null);
-    return id;
   }
 
   @Override
