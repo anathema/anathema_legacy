@@ -1,7 +1,7 @@
 package net.sf.anathema.hero.spiritual.display;
 
-import net.sf.anathema.character.main.presenter.initializers.HeroModelInitializer;
-import net.sf.anathema.character.main.presenter.initializers.RegisteredInitializer;
+import net.sf.anathema.hero.display.presenter.HeroModelInitializer;
+import net.sf.anathema.hero.display.presenter.RegisteredInitializer;
 import net.sf.anathema.character.main.view.SectionView;
 import net.sf.anathema.framework.IApplicationModel;
 import net.sf.anathema.hero.model.Hero;

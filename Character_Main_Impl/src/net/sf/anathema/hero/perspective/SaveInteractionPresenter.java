@@ -1,6 +1,6 @@
 package net.sf.anathema.hero.perspective;
 
-import net.sf.anathema.character.main.perspective.model.ItemSelectionModel;
+import net.sf.anathema.hero.perspective.model.ItemSelectionModel;
 import net.sf.anathema.interaction.Command;
 import net.sf.anathema.interaction.Hotkey;
 import net.sf.anathema.interaction.Tool;

@@ -1,7 +1,7 @@
 package net.sf.anathema.fx.hero.traitview;
 
 import net.miginfocom.layout.CC;
-import net.sf.anathema.character.main.presenter.ExtensibleTraitView;
+import net.sf.anathema.hero.display.ExtensibleTraitView;
 import net.sf.anathema.framework.value.IntValueView;
 import net.sf.anathema.interaction.ToggleTool;
 import net.sf.anathema.interaction.Tool;

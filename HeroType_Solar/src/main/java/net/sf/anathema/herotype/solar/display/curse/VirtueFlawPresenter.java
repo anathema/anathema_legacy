@@ -2,13 +2,13 @@ package net.sf.anathema.herotype.solar.display.curse;
 
 import net.sf.anathema.character.main.library.trait.Trait;
 import net.sf.anathema.character.main.library.trait.presenter.TraitPresenter;
-import net.sf.anathema.character.main.presenter.SelectIdentifierConfiguration;
+import net.sf.anathema.hero.advance.overview.presenter.SelectIdentifierConfiguration;
 import net.sf.anathema.character.main.traits.TraitType;
 import net.sf.anathema.character.main.traits.types.VirtueType;
 import net.sf.anathema.framework.value.IntValueView;
 import net.sf.anathema.hero.change.ChangeFlavor;
 import net.sf.anathema.hero.change.FlavoredChangeListener;
-import net.sf.anathema.hero.configurableview.ConfigurableCharacterView;
+import net.sf.anathema.hero.display.configurableview.ConfigurableCharacterView;
 import net.sf.anathema.hero.model.Hero;
 import net.sf.anathema.hero.traits.TraitChangeFlavor;
 import net.sf.anathema.herotype.solar.model.curse.VirtueFlaw;

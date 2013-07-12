@@ -2,7 +2,7 @@ package net.sf.anathema.hero.specialties.display.view;
 
 import javafx.scene.Node;
 import net.miginfocom.layout.CC;
-import net.sf.anathema.character.main.presenter.ExtensibleTraitView;
+import net.sf.anathema.hero.display.ExtensibleTraitView;
 import net.sf.anathema.character.main.traits.TraitType;
 import net.sf.anathema.fx.hero.traitview.FxExtensibleTraitView;
 import net.sf.anathema.fx.hero.traitview.FxTraitView;

@@ -14,7 +14,6 @@ import java.util.List;
 
 public class PointModelImpl implements PointsModel {
 
-  private final List<HeroModelExperienceCalculator> experienceCalculators = new ArrayList<>();
   private final List<IValueModel<Integer>> experienceOverviewModels = new ArrayList<>();
   private final List<HeroBonusPointCalculator> bonusPointCalculators = new ArrayList<>();
   private final List<IOverviewModel> bonusOverviewModels = new ArrayList<>();
@@ -52,18 +51,8 @@ public class PointModelImpl implements PointsModel {
   }
 
   @Override
-  public void addExperienceCalculator(HeroModelExperienceCalculator calculator) {
-    experienceCalculators.add(calculator);
-  }
-
-  @Override
   public Iterable<HeroBonusPointCalculator> getBonusPointCalculators() {
     return bonusPointCalculators;
-  }
-
-  @Override
-  public Iterable<HeroModelExperienceCalculator> getExperienceCalculators() {
-    return experienceCalculators;
   }
 
   @Override

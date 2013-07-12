@@ -1,7 +1,7 @@
 package net.sf.anathema.hero.intimacies.display;
 
 import net.sf.anathema.character.main.library.overview.OverviewCategory;
-import net.sf.anathema.character.main.presenter.ExtensibleTraitView;
+import net.sf.anathema.hero.display.ExtensibleTraitView;
 
 public interface IntimaciesView {
 

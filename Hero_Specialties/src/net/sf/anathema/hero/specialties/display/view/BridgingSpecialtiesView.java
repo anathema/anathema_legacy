@@ -1,7 +1,7 @@
 package net.sf.anathema.hero.specialties.display.view;
 
 import net.sf.anathema.character.main.library.util.CssSkinner;
-import net.sf.anathema.character.main.presenter.ExtensibleTraitView;
+import net.sf.anathema.hero.display.ExtensibleTraitView;
 import net.sf.anathema.character.main.traits.TraitType;
 import net.sf.anathema.character.main.type.ICharacterType;
 import net.sf.anathema.framework.swing.IView;

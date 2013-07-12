@@ -1,6 +1,6 @@
 package net.sf.anathema.herotype.solar.display.curse;
 
-import net.sf.anathema.hero.configurableview.ConfigurableCharacterView;
+import net.sf.anathema.hero.display.configurableview.ConfigurableCharacterView;
 import net.sf.anathema.hero.model.Hero;
 import net.sf.anathema.herotype.solar.model.curse.DescriptiveVirtueFlaw;
 import net.sf.anathema.herotype.solar.model.curse.DescriptiveVirtueFlawModel;

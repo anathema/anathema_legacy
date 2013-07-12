@@ -1,7 +1,7 @@
 package net.sf.anathema.hero.spiritual.advance.experience;
 
 import net.sf.anathema.character.main.traits.types.OtherTraitType;
-import net.sf.anathema.hero.advance.AbstractIntegerValueModel;
+import net.sf.anathema.hero.advance.overview.model.AbstractIntegerValueModel;
 import net.sf.anathema.hero.spiritual.SpiritualTraitModel;
 
 public class EssenceExperienceModel extends AbstractIntegerValueModel {

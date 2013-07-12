@@ -2,7 +2,7 @@ package net.sf.anathema.hero.traits.display;
 
 import net.sf.anathema.character.main.CharacterUI;
 import net.sf.anathema.character.main.library.trait.favorable.FavorableState;
-import net.sf.anathema.character.main.presenter.CasteUI;
+import net.sf.anathema.hero.concept.display.caste.presenter.CasteUI;
 import net.sf.anathema.character.main.template.presentation.IPresentationProperties;
 import net.sf.anathema.character.main.type.ICharacterType;
 import net.sf.anathema.hero.concept.CasteType;
