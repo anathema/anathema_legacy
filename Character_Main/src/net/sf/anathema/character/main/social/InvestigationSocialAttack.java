@@ -1,12 +1,12 @@
 package net.sf.anathema.character.main.social;
 
-import net.sf.anathema.character.main.IGenericTraitCollection;
-import net.sf.anathema.character.main.equipment.ICharacterStatsModifiers;
+import net.sf.anathema.character.main.equipment.HeroStatsModifiers;
 import net.sf.anathema.character.main.traits.types.AbilityType;
+import net.sf.anathema.hero.traits.TraitMap;
 
 public class InvestigationSocialAttack extends AbstractSocialAttack {
 
-  public InvestigationSocialAttack(IGenericTraitCollection collection, ICharacterStatsModifiers equipmentModifiers) {
+  public InvestigationSocialAttack(TraitMap collection, HeroStatsModifiers equipmentModifiers) {
     super(collection, equipmentModifiers);
   }
 

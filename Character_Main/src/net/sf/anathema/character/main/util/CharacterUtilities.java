@@ -1,32 +1,30 @@
 package net.sf.anathema.character.main.util;
 
-import net.sf.anathema.character.main.IGenericTraitCollection;
-import net.sf.anathema.character.main.equipment.ICharacterStatsModifiers;
+import net.sf.anathema.character.main.equipment.HeroStatsModifiers;
 import net.sf.anathema.character.main.traits.TraitType;
 import net.sf.anathema.character.main.traits.types.AbilityType;
 import net.sf.anathema.character.main.traits.types.AttributeType;
 import net.sf.anathema.character.main.traits.types.OtherTraitType;
 import net.sf.anathema.character.main.type.ICharacterType;
-import net.sf.anathema.hero.traits.GenericTraitCollectionFacade;
-import net.sf.anathema.hero.traits.TraitModelFetcher;
 import net.sf.anathema.hero.model.Hero;
+import net.sf.anathema.hero.traits.TraitMap;
+import net.sf.anathema.hero.traits.TraitModelFetcher;
 
 public class CharacterUtilities {
 
-  public static int getDodgeMdv(IGenericTraitCollection traitCollection, ICharacterStatsModifiers equipment) {
-    return getDodgeMdvWithSpecialty(traitCollection, equipment, 0);
+  public static int getDodgeMdv(TraitMap traitMap, HeroStatsModifiers equipment) {
+    return getDodgeMdvWithSpecialty(traitMap, equipment, 0);
   }
 
-  public static int getDodgeMdvWithSpecialty(IGenericTraitCollection traitCollection, ICharacterStatsModifiers equipment, int specialty) {
-    int dvPool = getTotalValue(traitCollection, OtherTraitType.Willpower, AbilityType.Integrity, OtherTraitType.Essence) +
+  public static int getDodgeMdvWithSpecialty(TraitMap traitMap, HeroStatsModifiers equipment, int specialty) {
+    int dvPool = getTotalValue(traitMap, OtherTraitType.Willpower, AbilityType.Integrity, OtherTraitType.Essence) +
                  specialty + equipment.getMDDVPoolMod();
     int dv = getRoundDownDv(dvPool);
-
     return Math.max(dv, 0);
   }
 
-  public static int getParryMdv(IGenericTraitCollection traitCollection, ICharacterStatsModifiers equipment, TraitType... types) {
-    int dvPool = getTotalValue(traitCollection, types) + equipment.getMPDVPoolMod();
+  public static int getParryMdv(TraitMap traitMap, HeroStatsModifiers equipment, TraitType... types) {
+    int dvPool = getTotalValue(traitMap, types) + equipment.getMPDVPoolMod();
     int dv = getRoundUpDv(dvPool);
 
     return Math.max(dv, 0);
@@ -40,65 +38,65 @@ public class CharacterUtilities {
     return (int) Math.ceil(dvPool * 0.5);
   }
 
-  public static int getSocialAttackValue(IGenericTraitCollection traitCollection, TraitType... types) {
-    return getTotalValue(traitCollection, types);
+  public static int getSocialAttackValue(TraitMap traitMap, TraitType... types) {
+    return getTotalValue(traitMap, types);
   }
 
-  public static int getJoinBattle(IGenericTraitCollection traitCollection, ICharacterStatsModifiers equipment) {
-    int baseValue = getTotalValue(traitCollection, AttributeType.Wits, AbilityType.Awareness);
+  public static int getJoinBattle(TraitMap traitMap, HeroStatsModifiers equipment) {
+    int baseValue = getTotalValue(traitMap, AttributeType.Wits, AbilityType.Awareness);
     baseValue += equipment.getJoinBattleMod();
     return Math.max(baseValue, 1);
   }
 
-  public static int getJoinBattleWithSpecialty(IGenericTraitCollection traitCollection, ICharacterStatsModifiers equipment, int awarenessSpecialty) {
-    int baseValue = getJoinBattle(traitCollection, equipment);
+  public static int getJoinBattleWithSpecialty(TraitMap traitMap, HeroStatsModifiers equipment, int awarenessSpecialty) {
+    int baseValue = getJoinBattle(traitMap, equipment);
     baseValue += awarenessSpecialty;
     return Math.max(baseValue, 1);
   }
 
-  public static int getJoinDebate(IGenericTraitCollection traitCollection, ICharacterStatsModifiers equipment) {
-    int baseValue = getTotalValue(traitCollection, AttributeType.Wits, AbilityType.Awareness);
+  public static int getJoinDebate(TraitMap traitMap, HeroStatsModifiers equipment) {
+    int baseValue = getTotalValue(traitMap, AttributeType.Wits, AbilityType.Awareness);
     baseValue += equipment.getJoinDebateMod();
     return Math.max(baseValue, 1);
   }
 
-  public static int getJoinDebateWithSpecialty(IGenericTraitCollection traitCollection, ICharacterStatsModifiers equipment, int awarenessSpecialty) {
-    int baseValue = getJoinDebate(traitCollection, equipment);
+  public static int getJoinDebateWithSpecialty(TraitMap traitMap, HeroStatsModifiers equipment, int awarenessSpecialty) {
+    int baseValue = getJoinDebate(traitMap, equipment);
     baseValue += awarenessSpecialty;
     return Math.max(baseValue, 1);
   }
 
-  public static int getKnockdownThreshold(IGenericTraitCollection traitCollection) {
-    int baseValue = getTotalValue(traitCollection, AttributeType.Stamina, AbilityType.Resistance);
+  public static int getKnockdownThreshold(TraitMap traitMap) {
+    int baseValue = getTotalValue(traitMap, AttributeType.Stamina, AbilityType.Resistance);
     return Math.max(baseValue, 0);
   }
 
   public static int getKnockdownPool(Hero hero) {
-    return getKnockdownPool(new GenericTraitCollectionFacade(TraitModelFetcher.fetch(hero)));
+    return getKnockdownPool(TraitModelFetcher.fetch(hero));
   }
 
-  public static int getKnockdownPool(IGenericTraitCollection traitCollection) {
-    int attribute = getMaxValue(traitCollection, AttributeType.Dexterity, AttributeType.Stamina);
-    int ability = getMaxValue(traitCollection, AbilityType.Athletics, AbilityType.Resistance);
+  public static int getKnockdownPool(TraitMap traitMap) {
+    int attribute = getMaxValue(traitMap, AttributeType.Dexterity, AttributeType.Stamina);
+    int ability = getMaxValue(traitMap, AbilityType.Athletics, AbilityType.Resistance);
     int pool = attribute + ability;
     return Math.max(pool, 0);
   }
 
-  public static int getStunningThreshold(IGenericTraitCollection traitCollection) {
-    int baseValue = getTotalValue(traitCollection, AttributeType.Stamina);
+  public static int getStunningThreshold(TraitMap traitMap) {
+    int baseValue = getTotalValue(traitMap, AttributeType.Stamina);
     return Math.max(baseValue, 0);
   }
 
-  public static int getStunningPool(IGenericTraitCollection traitCollection) {
-    int baseValue = getTotalValue(traitCollection, AttributeType.Stamina, AbilityType.Resistance);
+  public static int getStunningPool(TraitMap traitMap) {
+    int baseValue = getTotalValue(traitMap, AttributeType.Stamina, AbilityType.Resistance);
     return Math.max(baseValue, 0);
   }
 
-  private static int getMaxValue(IGenericTraitCollection traitCollection, TraitType second, TraitType first) {
-    return Math.max(traitCollection.getTrait(first).getCurrentValue(), traitCollection.getTrait(second).getCurrentValue());
+  private static int getMaxValue(TraitMap traitMap, TraitType second, TraitType first) {
+    return Math.max(traitMap.getTrait(first).getCurrentValue(), traitMap.getTrait(second).getCurrentValue());
   }
 
-  private static int getTotalValue(IGenericTraitCollection traitCollection, TraitType... types) {
+  private static int getTotalValue(TraitMap traitCollection, TraitType... types) {
     int sum = 0;
     for (TraitType type : types) {
       sum += traitCollection.getTrait(type).getCurrentValue();
@@ -106,7 +104,7 @@ public class CharacterUtilities {
     return sum;
   }
 
-  private static int getDodgeDvPool(IGenericTraitCollection traitCollection) {
+  private static int getDodgeDvPool(TraitMap traitCollection) {
     int essence = traitCollection.getTrait(OtherTraitType.Essence).getCurrentValue();
     int dvPool = getTotalValue(traitCollection, AttributeType.Dexterity, AbilityType.Dodge);
     if (essence >= 2) {
@@ -125,16 +123,13 @@ public class CharacterUtilities {
     return dv;
   }
 
-  public static int getDodgeDv(ICharacterType characterType, IGenericTraitCollection traitCollection, ICharacterStatsModifiers equipment) {
-    return getDodgeDvWithSpecialty(characterType, traitCollection, equipment, 0);
+  public static int getDodgeDv(ICharacterType characterType, TraitMap traitMap, HeroStatsModifiers modifiers) {
+    return getDodgeDvWithSpecialty(characterType, traitMap, modifiers, 0);
   }
 
-  public static int getDodgeDvWithSpecialty(ICharacterType characterType, IGenericTraitCollection traitCollection, ICharacterStatsModifiers equipment,
-                                            int specialty) {
-    int dvPool = getDodgeDvPool(traitCollection) + specialty + equipment.getDDVPoolMod();
+  public static int getDodgeDvWithSpecialty(ICharacterType characterType, TraitMap traitMap, HeroStatsModifiers equipment, int specialty) {
+    int dvPool = getDodgeDvPool(traitMap) + specialty + equipment.getDDVPoolMod();
     int dv = getRoundedDodgeDv(characterType, dvPool) + equipment.getMobilityPenalty();
-
     return Math.max(dv, 0);
   }
-
 }

@@ -1,7 +1,6 @@
 package net.sf.anathema.hero.sheet.pdf.content.stats;
 
-import net.sf.anathema.character.main.equipment.ICharacterStatsModifiers;
-import net.sf.anathema.hero.sheet.pdf.content.stats.AggregatedStatsModifiers;
+import net.sf.anathema.character.main.equipment.HeroStatsModifiers;
 import org.junit.Test;
 
 import static org.hamcrest.CoreMatchers.is;
@@ -12,7 +11,7 @@ import static org.mockito.Mockito.when;
 public class AggregatedStatsModifiersTest {
 
   private final AggregatedStatsModifiers modifiers = new AggregatedStatsModifiers();
-  private final ICharacterStatsModifiers part = mock(ICharacterStatsModifiers.class);
+  private final HeroStatsModifiers part = mock(HeroStatsModifiers.class);
 
   @Test
   public void DdvDefaultsToZero() throws Exception {

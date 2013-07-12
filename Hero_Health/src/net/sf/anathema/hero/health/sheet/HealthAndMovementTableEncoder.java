@@ -3,14 +3,14 @@ package net.sf.anathema.hero.health.sheet;
 import com.itextpdf.text.DocumentException;
 import com.itextpdf.text.Phrase;
 import com.itextpdf.text.pdf.PdfPTable;
-import net.sf.anathema.character.main.IGenericTraitCollection;
-import net.sf.anathema.hero.health.model.HealthLevelType;
 import net.sf.anathema.character.main.traits.types.AbilityType;
 import net.sf.anathema.character.main.traits.types.AttributeType;
-import net.sf.anathema.hero.sheet.pdf.session.ReportSession;
+import net.sf.anathema.hero.health.model.HealthLevelType;
+import net.sf.anathema.hero.sheet.pdf.content.stats.StatsModifiers;
 import net.sf.anathema.hero.sheet.pdf.encoder.general.Bounds;
 import net.sf.anathema.hero.sheet.pdf.encoder.graphics.SheetGraphics;
-import net.sf.anathema.hero.sheet.pdf.content.stats.StatsModifiers;
+import net.sf.anathema.hero.sheet.pdf.session.ReportSession;
+import net.sf.anathema.hero.traits.TraitMap;
 import net.sf.anathema.lib.resources.Resources;
 
 public class HealthAndMovementTableEncoder extends AbstractHealthAndMovementTableEncoder {
@@ -45,9 +45,7 @@ public class HealthAndMovementTableEncoder extends AbstractHealthAndMovementTabl
   }
 
   @Override
-  protected final void addMovementCells(SheetGraphics graphics, PdfPTable table, HealthLevelType level, int painTolerance,
-                                        IGenericTraitCollection collection) {
-
+  protected final void addMovementCells(SheetGraphics graphics, PdfPTable table, HealthLevelType level, int painTolerance, TraitMap collection) {
     int woundPenalty = getPenalty(level, painTolerance);
     int dex = collection.getTrait(AttributeType.Dexterity).getCurrentValue();
     int str = collection.getTrait(AttributeType.Strength).getCurrentValue();

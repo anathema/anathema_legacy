@@ -11,18 +11,17 @@ import com.itextpdf.text.Rectangle;
 import com.itextpdf.text.pdf.PdfContentByte;
 import com.itextpdf.text.pdf.PdfPCell;
 import com.itextpdf.text.pdf.PdfPTable;
-import net.sf.anathema.character.main.IGenericTraitCollection;
-import net.sf.anathema.hero.health.model.HealthLevelType;
 import net.sf.anathema.hero.health.HealthModelFetcher;
-import net.sf.anathema.hero.traits.GenericTraitCollectionFacade;
-import net.sf.anathema.hero.traits.TraitModelFetcher;
-import net.sf.anathema.hero.sheet.pdf.session.ReportSession;
+import net.sf.anathema.hero.health.model.HealthLevelType;
+import net.sf.anathema.hero.model.Hero;
 import net.sf.anathema.hero.sheet.pdf.encoder.general.Bounds;
-import net.sf.anathema.hero.sheet.pdf.encoder.table.ITableEncoder;
-import net.sf.anathema.hero.sheet.pdf.encoder.table.TableEncodingUtilities;
 import net.sf.anathema.hero.sheet.pdf.encoder.graphics.SheetGraphics;
 import net.sf.anathema.hero.sheet.pdf.encoder.graphics.TableCell;
-import net.sf.anathema.hero.model.Hero;
+import net.sf.anathema.hero.sheet.pdf.encoder.table.ITableEncoder;
+import net.sf.anathema.hero.sheet.pdf.encoder.table.TableEncodingUtilities;
+import net.sf.anathema.hero.sheet.pdf.session.ReportSession;
+import net.sf.anathema.hero.traits.TraitMap;
+import net.sf.anathema.hero.traits.TraitModelFetcher;
 import net.sf.anathema.lib.resources.Resources;
 import org.apache.commons.lang3.ArrayUtils;
 
@@ -48,8 +47,8 @@ public abstract class AbstractHealthAndMovementTableEncoder implements ITableEnc
     return table.getTotalHeight();
   }
 
-  protected IGenericTraitCollection getTraits(Hero hero) {
-    return new GenericTraitCollectionFacade(TraitModelFetcher.fetch(hero));
+  protected TraitMap getTraits(Hero hero) {
+    return TraitModelFetcher.fetch(hero);
   }
 
   private int getRowCount(HealthLevelType type) {
@@ -134,7 +133,7 @@ public abstract class AbstractHealthAndMovementTableEncoder implements ITableEnc
 
   protected abstract void addMovementHeader(SheetGraphics graphics, PdfPTable table);
 
-  protected abstract void addMovementCells(SheetGraphics graphics, PdfPTable table, HealthLevelType level, int painTolerance, IGenericTraitCollection collection);
+  protected abstract void addMovementCells(SheetGraphics graphics, PdfPTable table, HealthLevelType level, int painTolerance, TraitMap collection);
 
   protected final PdfPCell createMovementCell(SheetGraphics graphics, int value, int minValue) {
     Font font = createDefaultFont(graphics);

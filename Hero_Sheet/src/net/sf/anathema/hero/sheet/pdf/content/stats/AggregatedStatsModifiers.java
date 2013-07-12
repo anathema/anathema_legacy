@@ -1,17 +1,17 @@
 package net.sf.anathema.hero.sheet.pdf.content.stats;
 
-import net.sf.anathema.character.main.equipment.ICharacterStatsModifiers;
+import net.sf.anathema.character.main.equipment.HeroStatsModifiers;
 
 import java.util.ArrayList;
 import java.util.List;
 
-public class AggregatedStatsModifiers implements ICharacterStatsModifiers {
-  private final List<ICharacterStatsModifiers> modifiers = new ArrayList<>();
+public class AggregatedStatsModifiers implements HeroStatsModifiers {
+  private final List<HeroStatsModifiers> modifiers = new ArrayList<>();
 
   @Override
   public int getMobilityPenalty() {
     int mod = 0;
-    for (ICharacterStatsModifiers modifier : modifiers) {
+    for (HeroStatsModifiers modifier : modifiers) {
       mod += modifier.getMobilityPenalty();
     }
     return mod;
@@ -20,7 +20,7 @@ public class AggregatedStatsModifiers implements ICharacterStatsModifiers {
   @Override
   public int getDDVPoolMod() {
     int mod = 0;
-    for (ICharacterStatsModifiers modifier : modifiers) {
+    for (HeroStatsModifiers modifier : modifiers) {
       mod += modifier.getDDVPoolMod();
     }
     return mod;
@@ -29,7 +29,7 @@ public class AggregatedStatsModifiers implements ICharacterStatsModifiers {
   @Override
   public int getMDDVPoolMod() {
     int mod = 0;
-    for (ICharacterStatsModifiers modifier : modifiers) {
+    for (HeroStatsModifiers modifier : modifiers) {
       mod += modifier.getMDDVPoolMod();
     }
     return mod;
@@ -38,7 +38,7 @@ public class AggregatedStatsModifiers implements ICharacterStatsModifiers {
   @Override
   public int getMPDVPoolMod() {
     int mod = 0;
-    for (ICharacterStatsModifiers modifier : modifiers) {
+    for (HeroStatsModifiers modifier : modifiers) {
       mod += modifier.getMPDVPoolMod();
     }
     return mod;
@@ -47,7 +47,7 @@ public class AggregatedStatsModifiers implements ICharacterStatsModifiers {
   @Override
   public int getJoinBattleMod() {
     int mod = 0;
-    for (ICharacterStatsModifiers modifier : modifiers) {
+    for (HeroStatsModifiers modifier : modifiers) {
       mod += modifier.getJoinBattleMod();
     }
     return mod;
@@ -56,7 +56,7 @@ public class AggregatedStatsModifiers implements ICharacterStatsModifiers {
   @Override
   public int getJoinDebateMod() {
     int mod = 0;
-    for (ICharacterStatsModifiers modifier : modifiers) {
+    for (HeroStatsModifiers modifier : modifiers) {
       mod += modifier.getJoinDebateMod();
     }
     return mod;
@@ -65,13 +65,13 @@ public class AggregatedStatsModifiers implements ICharacterStatsModifiers {
   @Override
   public int getJoinWarMod() {
     int mod = 0;
-    for (ICharacterStatsModifiers modifier : modifiers) {
+    for (HeroStatsModifiers modifier : modifiers) {
       mod += modifier.getJoinWarMod();
     }
     return mod;
   }
 
-  public void add(ICharacterStatsModifiers statsModifiers) {
+  public void add(HeroStatsModifiers statsModifiers) {
     modifiers.add(statsModifiers);
   }
 }

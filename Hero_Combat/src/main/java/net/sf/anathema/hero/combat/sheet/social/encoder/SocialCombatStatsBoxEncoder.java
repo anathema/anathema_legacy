@@ -5,23 +5,22 @@ import com.itextpdf.text.Font;
 import com.itextpdf.text.Phrase;
 import com.itextpdf.text.Rectangle;
 import com.itextpdf.text.pdf.PdfPTable;
-import net.sf.anathema.character.main.IGenericTraitCollection;
-import net.sf.anathema.character.main.equipment.ICharacterStatsModifiers;
-import net.sf.anathema.character.main.util.CharacterUtilities;
-import net.sf.anathema.character.main.traits.types.AbilityType;
+import net.sf.anathema.character.main.equipment.HeroStatsModifiers;
 import net.sf.anathema.character.main.library.trait.specialties.HighestSpecialty;
-import net.sf.anathema.hero.traits.GenericTraitCollectionFacade;
-import net.sf.anathema.hero.traits.TraitModelFetcher;
-import net.sf.anathema.hero.sheet.pdf.session.ReportSession;
+import net.sf.anathema.character.main.traits.types.AbilityType;
+import net.sf.anathema.character.main.util.CharacterUtilities;
+import net.sf.anathema.hero.model.Hero;
+import net.sf.anathema.hero.sheet.pdf.content.stats.StatsModifiers;
+import net.sf.anathema.hero.sheet.pdf.encoder.boxes.ContentEncoder;
+import net.sf.anathema.hero.sheet.pdf.encoder.boxes.LabelledValueEncoder;
 import net.sf.anathema.hero.sheet.pdf.encoder.general.Bounds;
 import net.sf.anathema.hero.sheet.pdf.encoder.general.Position;
-import net.sf.anathema.hero.sheet.pdf.encoder.boxes.LabelledValueEncoder;
-import net.sf.anathema.hero.sheet.pdf.encoder.boxes.ContentEncoder;
-import net.sf.anathema.hero.sheet.pdf.encoder.table.ITableEncoder;
 import net.sf.anathema.hero.sheet.pdf.encoder.graphics.SheetGraphics;
 import net.sf.anathema.hero.sheet.pdf.encoder.graphics.TableCell;
-import net.sf.anathema.hero.sheet.pdf.content.stats.StatsModifiers;
-import net.sf.anathema.hero.model.Hero;
+import net.sf.anathema.hero.sheet.pdf.encoder.table.ITableEncoder;
+import net.sf.anathema.hero.sheet.pdf.session.ReportSession;
+import net.sf.anathema.hero.traits.TraitMap;
+import net.sf.anathema.hero.traits.TraitModelFetcher;
 import net.sf.anathema.lib.resources.Resources;
 
 import static net.sf.anathema.hero.sheet.pdf.page.IVoidStateFormatConstants.COMMENT_FONT_SIZE;
@@ -37,7 +36,7 @@ public class SocialCombatStatsBoxEncoder implements ContentEncoder {
   @SuppressWarnings("unchecked")
   @Override
   public void encode(SheetGraphics graphics, ReportSession reportSession, Bounds bounds) throws DocumentException {
-    ICharacterStatsModifiers modifiers = StatsModifiers.allStatsModifiers(reportSession.getHero());
+    HeroStatsModifiers modifiers = StatsModifiers.allStatsModifiers(reportSession.getHero());
     float valueWidth = bounds.width;
     Bounds valueBounds = new Bounds(bounds.x, bounds.y + 3, valueWidth, bounds.height);
     float valueHeight = encodeValues(graphics, valueBounds, reportSession.getHero(), modifiers) - 5;
@@ -131,8 +130,8 @@ public class SocialCombatStatsBoxEncoder implements ContentEncoder {
     return cell;
   }
 
-  private float encodeValues(SheetGraphics graphics, Bounds bounds, Hero hero, ICharacterStatsModifiers equipment) {
-    IGenericTraitCollection traitCollection = new GenericTraitCollectionFacade(TraitModelFetcher.fetch(hero));
+  private float encodeValues(SheetGraphics graphics, Bounds bounds, Hero hero, HeroStatsModifiers equipment) {
+    TraitMap traitCollection = TraitModelFetcher.fetch(hero);
     HighestSpecialty awarenessSpecialty = new HighestSpecialty(hero, AbilityType.Awareness);
     HighestSpecialty integritySpecialty = new HighestSpecialty(hero, AbilityType.Integrity);
     String joinLabel = resources.getString("Sheet.SocialCombat.JoinDebateBattle");

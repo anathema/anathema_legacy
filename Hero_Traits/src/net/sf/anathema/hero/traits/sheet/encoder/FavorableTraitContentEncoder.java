@@ -1,18 +1,18 @@
 package net.sf.anathema.hero.traits.sheet.encoder;
 
 import com.itextpdf.text.pdf.PdfContentByte;
-import net.sf.anathema.character.main.IGenericTraitCollection;
 import net.sf.anathema.character.main.traits.TraitType;
 import net.sf.anathema.character.main.traits.ValuedTraitType;
 import net.sf.anathema.character.main.traits.groups.IIdentifiedTraitTypeGroup;
-import net.sf.anathema.hero.sheet.pdf.session.ReportSession;
+import net.sf.anathema.hero.sheet.pdf.encoder.boxes.AbstractContentEncoder;
 import net.sf.anathema.hero.sheet.pdf.encoder.general.Bounds;
 import net.sf.anathema.hero.sheet.pdf.encoder.general.Position;
-import net.sf.anathema.hero.sheet.pdf.encoder.boxes.AbstractContentEncoder;
-import net.sf.anathema.hero.traits.sheet.content.PdfTraitEncoder;
 import net.sf.anathema.hero.sheet.pdf.encoder.graphics.SheetGraphics;
 import net.sf.anathema.hero.sheet.pdf.page.IVoidStateFormatConstants;
+import net.sf.anathema.hero.sheet.pdf.session.ReportSession;
+import net.sf.anathema.hero.traits.TraitMap;
 import net.sf.anathema.hero.traits.sheet.content.FavorableTraitContent;
+import net.sf.anathema.hero.traits.sheet.content.PdfTraitEncoder;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -77,8 +77,8 @@ public class FavorableTraitContentEncoder<C extends FavorableTraitContent> exten
       if (content.getMarkedTraitTypes().contains(traitType)) {
         encodeMarker(graphics, new Position(markerX, yPosition + 1));
       }
-      IGenericTraitCollection traitCollection = content.getTraitCollection();
-      ValuedTraitType trait = traitCollection.getTrait(traitType);
+      TraitMap traitMap = content.getTraitMap();
+      ValuedTraitType trait = traitMap.getTrait(traitType);
       String label = content.getTraitLabel(traitType);
       height += encodeFavorableTrait(graphics, content, label, trait, new Position(traitX, yPosition), width - groupLabelWidth);
     }

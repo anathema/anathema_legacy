@@ -1,12 +1,11 @@
 package net.sf.anathema.hero.abilities.sheet.content;
 
-import net.sf.anathema.character.main.IGenericTraitCollection;
 import net.sf.anathema.character.main.traits.TraitType;
 import net.sf.anathema.character.main.traits.groups.IIdentifiedTraitTypeGroup;
 import net.sf.anathema.character.main.traits.types.AbilityType;
 import net.sf.anathema.hero.abilities.model.AbilityModelFetcher;
 import net.sf.anathema.hero.model.Hero;
-import net.sf.anathema.hero.traits.GenericTraitCollectionFacade;
+import net.sf.anathema.hero.traits.TraitMap;
 import net.sf.anathema.hero.traits.TraitModelFetcher;
 import net.sf.anathema.hero.traits.sheet.content.FavorableTraitContent;
 import net.sf.anathema.lib.resources.Resources;
@@ -34,8 +33,8 @@ public class AbilitiesContent extends FavorableTraitContent {
   }
 
   @Override
-  public IGenericTraitCollection getTraitCollection() {
-    return new GenericTraitCollectionFacade(TraitModelFetcher.fetch(hero));
+  public TraitMap getTraitMap() {
+    return TraitModelFetcher.fetch(hero);
   }
 
   @Override

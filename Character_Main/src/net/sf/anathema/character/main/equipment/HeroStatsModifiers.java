@@ -1,6 +1,6 @@
 package net.sf.anathema.character.main.equipment;
 
-public interface ICharacterStatsModifiers {
+public interface HeroStatsModifiers {
 
   int getMobilityPenalty();
 

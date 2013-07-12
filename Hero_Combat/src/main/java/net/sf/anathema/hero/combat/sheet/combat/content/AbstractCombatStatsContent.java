@@ -1,12 +1,11 @@
 package net.sf.anathema.hero.combat.sheet.combat.content;
 
-import net.sf.anathema.character.main.IGenericTraitCollection;
-import net.sf.anathema.character.main.util.CharacterUtilities;
 import net.sf.anathema.character.main.type.ICharacterType;
-import net.sf.anathema.hero.traits.GenericTraitCollectionFacade;
-import net.sf.anathema.hero.traits.TraitModelFetcher;
-import net.sf.anathema.hero.sheet.pdf.content.AbstractSubBoxContent;
+import net.sf.anathema.character.main.util.CharacterUtilities;
 import net.sf.anathema.hero.model.Hero;
+import net.sf.anathema.hero.sheet.pdf.content.AbstractSubBoxContent;
+import net.sf.anathema.hero.traits.TraitMap;
+import net.sf.anathema.hero.traits.TraitModelFetcher;
 import net.sf.anathema.lib.resources.Resources;
 
 public abstract class AbstractCombatStatsContent extends AbstractSubBoxContent {
@@ -23,15 +22,15 @@ public abstract class AbstractCombatStatsContent extends AbstractSubBoxContent {
   }
 
   public int getStunningThreshold() {
-    return CharacterUtilities.getStunningThreshold(getTraitCollection());
+    return CharacterUtilities.getStunningThreshold(getTraits());
   }
 
   public int getKnockdownThreshold() {
-    return CharacterUtilities.getKnockdownThreshold(getTraitCollection());
+    return CharacterUtilities.getKnockdownThreshold(getTraits());
   }
 
   public int getStunningPool() {
-    return CharacterUtilities.getStunningPool(getTraitCollection());
+    return CharacterUtilities.getStunningPool(getTraits());
   }
 
   public String getKnockdownLabel() {
@@ -60,7 +59,7 @@ public abstract class AbstractCombatStatsContent extends AbstractSubBoxContent {
     return hero.getTemplate().getTemplateType().getCharacterType();
   }
 
-  protected IGenericTraitCollection getTraitCollection() {
-    return new GenericTraitCollectionFacade(TraitModelFetcher.fetch(hero));
+  protected TraitMap getTraits() {
+    return TraitModelFetcher.fetch(hero);
   }
 }

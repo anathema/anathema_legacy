@@ -1,6 +1,6 @@
 package net.sf.anathema.hero.combat.sheet.combat.content;
 
-import net.sf.anathema.character.main.equipment.ICharacterStatsModifiers;
+import net.sf.anathema.character.main.equipment.HeroStatsModifiers;
 import net.sf.anathema.character.main.util.CharacterUtilities;
 import net.sf.anathema.character.main.traits.types.AbilityType;
 import net.sf.anathema.character.main.library.trait.specialties.HighestSpecialty;
@@ -12,7 +12,7 @@ public class CombatStatsContent extends AbstractCombatStatsContent {
 
   private final HighestSpecialty dodgeSpecialty;
   private final HighestSpecialty awarenessSpecialty;
-  private final ICharacterStatsModifiers modifiers;
+  private final HeroStatsModifiers modifiers;
 
   protected CombatStatsContent(Hero hero, Resources resources) {
     super(resources, hero);
@@ -38,19 +38,19 @@ public class CombatStatsContent extends AbstractCombatStatsContent {
   }
 
   public int getJoinBattle() {
-    return CharacterUtilities.getJoinBattle(getTraitCollection(), modifiers);
+    return CharacterUtilities.getJoinBattle(getTraits(), modifiers);
   }
 
   public int getJoinBattleWithSpecialty() {
-    return CharacterUtilities.getJoinBattleWithSpecialty(getTraitCollection(), modifiers, awarenessSpecialty.getValue());
+    return CharacterUtilities.getJoinBattleWithSpecialty(getTraits(), modifiers, awarenessSpecialty.getValue());
   }
 
   public int getDodgeDv() {
-    return CharacterUtilities.getDodgeDv(getCharacterType(), getTraitCollection(), modifiers);
+    return CharacterUtilities.getDodgeDv(getCharacterType(), getTraits(), modifiers);
   }
 
   public int getDodgeDvWithSpecialty() {
-    return CharacterUtilities.getDodgeDvWithSpecialty(getCharacterType(), getTraitCollection(), modifiers, dodgeSpecialty.getValue());
+    return CharacterUtilities.getDodgeDvWithSpecialty(getCharacterType(), getTraits(), modifiers, dodgeSpecialty.getValue());
   }
 
   public String[] getAttacks() {

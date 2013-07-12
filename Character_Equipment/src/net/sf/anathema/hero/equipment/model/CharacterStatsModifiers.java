@@ -1,7 +1,7 @@
 package net.sf.anathema.hero.equipment.model;
 
 import net.sf.anathema.character.equipment.character.model.IEquipmentItem;
-import net.sf.anathema.character.main.equipment.ICharacterStatsModifiers;
+import net.sf.anathema.character.main.equipment.HeroStatsModifiers;
 import net.sf.anathema.character.main.equipment.ITraitModifyingStats;
 import net.sf.anathema.character.main.equipment.weapon.IArmourStats;
 import net.sf.anathema.character.main.equipment.weapon.IEquipmentStats;
@@ -15,7 +15,7 @@ import java.util.List;
 
 import static com.google.common.collect.Lists.newArrayList;
 
-public class CharacterStatsModifiers implements ICharacterStatsModifiers {
+public class CharacterStatsModifiers implements HeroStatsModifiers {
   private final List<ITraitModifyingStats> stats = new ArrayList<>();
   private int mobilityPenalty;
 

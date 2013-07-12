@@ -1,17 +1,17 @@
 package net.sf.anathema.character.main.social;
 
-import net.sf.anathema.character.main.IGenericTraitCollection;
-import net.sf.anathema.character.main.equipment.ICharacterStatsModifiers;
-import net.sf.anathema.character.main.util.CharacterUtilities;
+import net.sf.anathema.character.main.equipment.HeroStatsModifiers;
 import net.sf.anathema.character.main.traits.TraitType;
 import net.sf.anathema.character.main.traits.types.AttributeType;
+import net.sf.anathema.character.main.util.CharacterUtilities;
+import net.sf.anathema.hero.traits.TraitMap;
 
 public abstract class AbstractSocialAttack implements ISocialCombatStats {
 
-  private final IGenericTraitCollection collection;
-  private ICharacterStatsModifiers equipmentModifiers;
+  private final TraitMap collection;
+  private HeroStatsModifiers equipmentModifiers;
 
-  public AbstractSocialAttack(IGenericTraitCollection collection, ICharacterStatsModifiers equipmentModifiers) {
+  public AbstractSocialAttack(TraitMap collection, HeroStatsModifiers equipmentModifiers) {
     this.collection = collection;
     this.equipmentModifiers = equipmentModifiers;
   }

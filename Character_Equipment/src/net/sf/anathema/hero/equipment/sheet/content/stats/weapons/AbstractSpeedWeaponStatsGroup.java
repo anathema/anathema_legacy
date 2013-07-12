@@ -2,16 +2,16 @@ package net.sf.anathema.hero.equipment.sheet.content.stats.weapons;
 
 import com.itextpdf.text.Font;
 import com.itextpdf.text.pdf.PdfPTable;
-import net.sf.anathema.character.main.equipment.ICharacterStatsModifiers;
+import net.sf.anathema.character.main.equipment.HeroStatsModifiers;
 import net.sf.anathema.character.main.equipment.weapon.IWeaponStats;
 import net.sf.anathema.hero.equipment.sheet.content.stats.AbstractValueEquipmentStatsGroup;
 import net.sf.anathema.lib.resources.Resources;
 
 public abstract class AbstractSpeedWeaponStatsGroup extends AbstractValueEquipmentStatsGroup<IWeaponStats> {
 
-  private final ICharacterStatsModifiers equipment;
+  private final HeroStatsModifiers equipment;
 
-  public AbstractSpeedWeaponStatsGroup(Resources resources, ICharacterStatsModifiers equipment) {
+  public AbstractSpeedWeaponStatsGroup(Resources resources, HeroStatsModifiers equipment) {
     super(resources, "Speed");
     this.equipment = equipment;
   }
@@ -30,5 +30,5 @@ public abstract class AbstractSpeedWeaponStatsGroup extends AbstractValueEquipme
     }
   }
 
-  protected abstract int getSpeedValue(IWeaponStats weapon, ICharacterStatsModifiers equipment);
+  protected abstract int getSpeedValue(IWeaponStats weapon, HeroStatsModifiers equipment);
 }

@@ -1,8 +1,8 @@
 package net.sf.anathema.character.main.social;
 
-import net.sf.anathema.character.main.IGenericTraitCollection;
-import net.sf.anathema.character.main.equipment.ICharacterStatsModifiers;
-import net.sf.anathema.character.main.testing.dummy.DummyGenericTrait;
+import net.sf.anathema.character.main.equipment.HeroStatsModifiers;
+import net.sf.anathema.character.main.testing.dummy.trait.DummyTrait;
+import net.sf.anathema.hero.traits.TraitMap;
 import org.junit.Before;
 import org.junit.Test;
 
@@ -16,15 +16,15 @@ import static org.mockito.Mockito.when;
 
 public class InvestigationSocialAttackTest {
 
-  IGenericTraitCollection collection = mock(IGenericTraitCollection.class);
-  ICharacterStatsModifiers equipment = mock(ICharacterStatsModifiers.class);
+  TraitMap collection = mock(TraitMap.class);
+  HeroStatsModifiers equipment = mock(HeroStatsModifiers.class);
   private InvestigationSocialAttack socialAttack = new InvestigationSocialAttack(collection, equipment);
 
   @Before
   public void setUp() throws Exception {
-    when(collection.getTrait(Investigation)).thenReturn(new DummyGenericTrait(Investigation, 0));
-    when(collection.getTrait(Manipulation)).thenReturn(new DummyGenericTrait(Manipulation, 0));
-    when(collection.getTrait(Charisma)).thenReturn(new DummyGenericTrait(Charisma, 0));
+    when(collection.getTrait(Investigation)).thenReturn(new DummyTrait(Investigation, 0));
+    when(collection.getTrait(Manipulation)).thenReturn(new DummyTrait(Manipulation, 0));
+    when(collection.getTrait(Charisma)).thenReturn(new DummyTrait(Charisma, 0));
   }
 
   @Test
