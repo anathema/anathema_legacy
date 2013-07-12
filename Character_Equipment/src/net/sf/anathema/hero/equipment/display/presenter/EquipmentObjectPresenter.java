@@ -14,7 +14,6 @@ import net.sf.anathema.hero.equipment.model.EquipmentItemPresentationModel;
 import net.sf.anathema.hero.equipment.model.EquipmentSpecialtyOption;
 import net.sf.anathema.interaction.Tool;
 import net.sf.anathema.lib.control.ChangeListener;
-import net.sf.anathema.lib.model.IModifiableBooleanModel;
 import net.sf.anathema.lib.resources.Resources;
 
 import java.text.MessageFormat;
@@ -83,14 +82,14 @@ public class EquipmentObjectPresenter {
       if (!strategy.shouldStatsBeShown()) {
         continue;
       }
-      final IModifiableBooleanModel statsView = view.addStats(createEquipmentDescription(model, stats));
-      statsView.setValue(model.isPrintEnabled(stats));
+      final StatsView statsView = view.addStats(createEquipmentDescription(model, stats));
+      statsView.setSelected(model.isPrintEnabled(stats));
       statsView.addChangeListener(new ChangeListener() {
         @Override
         public void changeOccurred() {
-          model.setPrintEnabled(stats, statsView.getValue());
+          model.setPrintEnabled(stats, statsView.getSelected());
           if (stats instanceof ArtifactStats) {
-            boolean userHasEnabledAttunementStats = statsView.getValue();
+            boolean userHasEnabledAttunementStats = statsView.getSelected();
             if (userHasEnabledAttunementStats) {
               disableAllOtherAttunementStats(stats);
             }
@@ -120,9 +119,9 @@ public class EquipmentObjectPresenter {
     boolean isAttunementRequired = isAttunementRequired();
     boolean isCurrentlyAttuned = isCurrentlyAttuned();
     if (isAttunementRequired && !isCurrentlyAttuned) {
-      for (IModifiableBooleanModel bool : presentationModel.getDefaultStatViews()) {
-        view.setEnabled(bool, false);
-        bool.setValue(false);
+      for (StatsView statsView : presentationModel.getDefaultStatViews()) {
+        statsView.disable();
+        statsView.setSelected(false);
       }
     }
   }
@@ -157,25 +156,25 @@ public class EquipmentObjectPresenter {
     }
   }
 
-  private void showEligibleSpecialties(IEquipmentStats equipment, IModifiableBooleanModel booleanModel) {
+  private void showEligibleSpecialties(IEquipmentStats equipment, StatsView statsView) {
     if (!(equipment instanceof IWeaponStats)) {
       return;
     }
-    addSpecialtiesForWeaponStats(booleanModel, (IWeaponStats) equipment);
+    addSpecialtiesForWeaponStats(statsView, (IWeaponStats) equipment);
   }
 
-  private void addSpecialtiesForWeaponStats(IModifiableBooleanModel baseModel, IWeaponStats weaponStats) {
+  private void addSpecialtiesForWeaponStats(StatsView baseView, IWeaponStats weaponStats) {
     Specialty[] specialties = dataProvider.getSpecialties(weaponStats.getTraitType());
     for (Specialty specialty : specialties) {
       String label = MessageFormat.format(resources.getString("Equipment.Specialty"), specialty.getName());
-      final IModifiableBooleanModel booleanModel = view.addOptionFlag(baseModel, label);
+      final StatsView statsView = baseView.addOptionFlag(label);
       final IEquipmentStatsOption specialtyOption = new EquipmentSpecialtyOption(specialty, weaponStats.getTraitType());
       final IEquipmentStats baseStat = model.getStat(weaponStats.getId());
-      booleanModel.setValue(characterOptionProvider.isStatOptionEnabled(model, baseStat, specialtyOption));
-      booleanModel.addChangeListener(new ChangeListener() {
+      statsView.setSelected(characterOptionProvider.isStatOptionEnabled(model, baseStat, specialtyOption));
+      statsView.addChangeListener(new ChangeListener() {
         @Override
         public void changeOccurred() {
-          if (booleanModel.getValue()) characterOptionProvider.enableStatOption(model, baseStat, specialtyOption);
+          if (statsView.getSelected()) characterOptionProvider.enableStatOption(model, baseStat, specialtyOption);
           else characterOptionProvider.disableStatOption(model, baseStat, specialtyOption);
         }
       });

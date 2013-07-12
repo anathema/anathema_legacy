@@ -13,8 +13,9 @@ import net.sf.anathema.character.main.traits.TraitType;
 import net.sf.anathema.framework.resources.LocaleResources;
 import net.sf.anathema.hero.equipment.display.presenter.EquipmentObjectPresenter;
 import net.sf.anathema.hero.equipment.display.presenter.EquipmentObjectView;
+import net.sf.anathema.hero.equipment.display.presenter.StatsView;
+import net.sf.anathema.hero.equipment.display.view.CheckBoxStatsView;
 import net.sf.anathema.hero.health.HealthType;
-import net.sf.anathema.lib.model.BooleanModel;
 import net.sf.anathema.lib.util.SimpleIdentifier;
 
 import static org.mockito.Matchers.isA;
@@ -59,7 +60,7 @@ public class EquipmentItemPresenterTest extends TestCase {
   public void testEquipmentWithCloseCombatStats() throws Exception {
     EquipmentObjectView view = mock(EquipmentObjectView.class);
     view.setItemTitle("Title");
-    BooleanModel isPrintSelectedModel = new BooleanModel();
+    StatsView isPrintSelectedModel = new CheckBoxStatsView("");
     when(view.addStats("Passt!")).thenReturn(isPrintSelectedModel);
     DummyEquipmentObject model = new DummyEquipmentObject("Title", null);
     model.addEquipment(new DemoMeleeWeapon(new SimpleIdentifier("Sword"), 5, 2, 7, 1, HealthType.Lethal, -1, 0, 2));
@@ -69,11 +70,11 @@ public class EquipmentItemPresenterTest extends TestCase {
   public void testPrintModelInitialization() throws Exception {
     EquipmentObjectView view = mock(EquipmentObjectView.class);
     view.setItemTitle("Title");
-    BooleanModel isPrintSelectedModel = new BooleanModel();
+    StatsView isPrintSelectedModel = new CheckBoxStatsView("");
     when(view.addStats("Passt!")).thenReturn(isPrintSelectedModel);
     DummyEquipmentObject model = new DummyEquipmentObject("Title", null);
     model.addEquipment(new DemoMeleeWeapon(new SimpleIdentifier("Sword"), 5, 2, 7, 1, HealthType.Lethal, -1, 0, 2));
     initPresentation(model, view);
-    assertFalse(isPrintSelectedModel.getValue());
+    assertFalse(isPrintSelectedModel.getSelected());
   }
 }

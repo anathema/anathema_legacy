@@ -1,26 +1,26 @@
 package net.sf.anathema.hero.equipment.model;
 
 import net.sf.anathema.character.main.equipment.weapon.IEquipmentStats;
-import net.sf.anathema.lib.model.IModifiableBooleanModel;
+import net.sf.anathema.hero.equipment.display.presenter.StatsView;
 
 import java.util.HashMap;
 import java.util.Map;
 
 public class EquipmentItemPresentationModel {
 
-  private final Map<IEquipmentStats, IModifiableBooleanModel> attuneStatFlags = new HashMap<>();
-  private final Map<IEquipmentStats, IModifiableBooleanModel> otherStatFlags = new HashMap<>();
+  private final Map<IEquipmentStats, StatsView> attuneStatFlags = new HashMap<>();
+  private final Map<IEquipmentStats, StatsView> otherStatFlags = new HashMap<>();
 
   public void clear() {
     attuneStatFlags.clear();
     otherStatFlags.clear();
   }
 
-  public void registerViewForAttunementStats(IEquipmentStats equipment, IModifiableBooleanModel booleanModel) {
+  public void registerViewForAttunementStats(IEquipmentStats equipment, StatsView booleanModel) {
     attuneStatFlags.put(equipment, booleanModel);
   }
 
-  public void registerViewForDefaultStats(IEquipmentStats equipment, IModifiableBooleanModel booleanModel) {
+  public void registerViewForDefaultStats(IEquipmentStats equipment, StatsView booleanModel) {
     otherStatFlags.put(equipment, booleanModel);
   }
 
@@ -28,7 +28,7 @@ public class EquipmentItemPresentationModel {
     return attuneStatFlags.keySet();
   }
 
-  public Iterable<IModifiableBooleanModel> getDefaultStatViews() {
+  public Iterable<StatsView> getDefaultStatViews() {
     return otherStatFlags.values();
   }
 }

@@ -1,7 +1,7 @@
 package net.sf.anathema.character.equipment.impl.character.view;
 
+import net.sf.anathema.hero.equipment.display.presenter.StatsView;
 import net.sf.anathema.hero.equipment.display.view.SwingEquipmentItemView;
-import net.sf.anathema.lib.model.IModifiableBooleanModel;
 import org.junit.Test;
 
 import static org.hamcrest.CoreMatchers.is;
@@ -14,8 +14,8 @@ public class EquipmentObjectViewTest {
   @Test
   public void supportsAmpersandInSpecialtyNames() throws Exception {
     SwingEquipmentItemView view = new SwingEquipmentItemView();
-    IModifiableBooleanModel model = view.addStats("Setup");
-    IModifiableBooleanModel optionModel = view.addOptionFlag(model, "Test & Success");
+    StatsView statsView = view.addStats("Setup");
+    StatsView optionModel = statsView.addOptionFlag("Test & Success");
     assertThat(optionModel, is(not(nullValue())));
   }
 }
