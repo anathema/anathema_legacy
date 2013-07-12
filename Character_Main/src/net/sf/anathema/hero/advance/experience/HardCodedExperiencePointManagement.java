@@ -41,7 +41,7 @@ public class HardCodedExperiencePointManagement implements ExperiencePointManage
   }
 
   private IValueModel<Integer> getCharmModel() {
-    return new CharmExperienceModel(traitMap, calculator, hero);
+    return new CharmExperienceModel(calculator, hero);
   }
 
   @Override
@@ -59,7 +59,7 @@ public class HardCodedExperiencePointManagement implements ExperiencePointManage
   }
 
   private IValueModel<Integer> getSpellModel() {
-    return new SpellExperienceModel(hero, calculator, traitMap);
+    return new SpellExperienceModel(hero, calculator);
   }
 
   @Override

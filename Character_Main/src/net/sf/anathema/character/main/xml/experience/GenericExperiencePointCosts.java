@@ -1,15 +1,13 @@
 package net.sf.anathema.character.main.xml.experience;
 
-import net.sf.anathema.character.main.IGenericTraitCollection;
 import net.sf.anathema.character.main.magic.model.charm.Charm;
 import net.sf.anathema.character.main.magic.model.magic.attribute.MagicAttribute;
 import net.sf.anathema.character.main.magic.model.spells.Spell;
-import net.sf.anathema.hero.advance.CostAnalyzer;
-import net.sf.anathema.character.main.template.points.FixedValueRatingCosts;
-import net.sf.anathema.hero.magic.model.martial.MartialArtsLevel;
 import net.sf.anathema.character.main.template.experience.CurrentRatingCosts;
 import net.sf.anathema.character.main.template.experience.IExperiencePointCosts;
-import net.sf.anathema.hero.model.Hero;
+import net.sf.anathema.character.main.template.points.FixedValueRatingCosts;
+import net.sf.anathema.hero.advance.CostAnalyzer;
+import net.sf.anathema.hero.magic.model.martial.MartialArtsLevel;
 import net.sf.anathema.lib.lang.clone.ReflectionCloneableObject;
 
 import java.util.HashMap;
@@ -45,20 +43,21 @@ public class GenericExperiencePointCosts extends ReflectionCloneableObject<Gener
   }
 
   @Override
-  public int getSpellCosts(Spell spell, Hero hero, IGenericTraitCollection traitCollection) {
-    return spellCost != 0 ? spellCost : getCharmCosts(spell.isFavored(hero), null);
+  public int getSpellCosts(Spell spell, CostAnalyzer costAnalyzer) {
+    boolean favored = costAnalyzer.isMagicFavored(spell);
+    return spellCost != 0 ? spellCost : getCharmCosts(favored, null);
   }
 
   @Override
-  public int getCharmCosts(Charm charm, CostAnalyzer costMapping) {
-    boolean favored = costMapping.isMagicFavored(charm);
+  public int getCharmCosts(Charm charm, CostAnalyzer costAnalyzer) {
+    boolean favored = costAnalyzer.isMagicFavored(charm);
     for (MagicAttribute attribute : charm.getAttributes()) {
       Map<String, Integer> set = favored ? keywordFavoredCosts : keywordGeneralCosts;
       if (set.containsKey(attribute.getId())) {
         return set.get(attribute.getId());
       }
     }
-    return getCharmCosts(favored, costMapping.getMartialArtsLevel(charm));
+    return getCharmCosts(favored, costAnalyzer.getMartialArtsLevel(charm));
   }
 
   private int getCharmCosts(boolean favored, MartialArtsLevel level) {
