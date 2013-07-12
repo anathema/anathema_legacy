@@ -13,7 +13,7 @@ import static net.sf.anathema.character.main.library.trait.TraitCollectionUtilit
 
 public class SpiritualBonusPointsCalculator implements HeroBonusPointCalculator{
 
-  private final VirtueCostCalculator virtueCalculator;
+  private final VirtueBonusCostCalculator virtueCalculator;
   private final Trait willpower;
   private final Trait essence;
   private int essenceBonusPoints;
@@ -22,7 +22,7 @@ public class SpiritualBonusPointsCalculator implements HeroBonusPointCalculator{
 
   public SpiritualBonusPointsCalculator(SpiritualTraitModel spiritualTraits, ICreationPoints creationPoints, BonusPointCosts costs) {
     this.costs = costs;
-    this.virtueCalculator = new VirtueCostCalculator(getVirtues(spiritualTraits), creationPoints.getVirtueCreationPoints(), costs);
+    this.virtueCalculator = new VirtueBonusCostCalculator(getVirtues(spiritualTraits), creationPoints.getVirtueCreationPoints(), costs);
     this.willpower = TraitCollectionUtilities.getWillpower(spiritualTraits);
     this.essence = TraitCollectionUtilities.getEssence(spiritualTraits);
   }
@@ -53,7 +53,7 @@ public class SpiritualBonusPointsCalculator implements HeroBonusPointCalculator{
     return (willpower.getCreationValue() - willpower.getMinimalValue()) * costs.getWillpowerCosts();
   }
 
-  public VirtueCostCalculator getVirtueBonusPointCalculator() {
+  public VirtueBonusCostCalculator getVirtueBonusPointCalculator() {
     return virtueCalculator;
   }
 }

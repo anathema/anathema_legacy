@@ -1,21 +1,21 @@
-package net.sf.anathema.character.main.costs;
+package net.sf.anathema.hero.spiritual.advance;
 
-import net.sf.anathema.character.main.template.points.MultiplyRatingCosts;
 import net.sf.anathema.character.main.template.experience.IExperiencePointCosts;
+import net.sf.anathema.character.main.template.points.MultiplyRatingCosts;
+import net.sf.anathema.character.main.testing.dummy.trait.DummyTrait;
 import net.sf.anathema.character.main.traits.types.OtherTraitType;
 import net.sf.anathema.character.main.traits.types.VirtueType;
-import net.sf.anathema.character.main.testing.dummy.trait.DummyTrait;
-import net.sf.anathema.hero.advance.experience.ExperiencePointCostCalculator;
+import net.sf.anathema.hero.spiritual.advance.experience.SpiritualExperienceCalculator;
 import org.junit.Test;
 
 import static org.junit.Assert.assertEquals;
 import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.when;
 
-public class ExperiencePointCalculatorTest {
+public class SpiritualExperienceCalculatorTest {
 
   private IExperiencePointCosts experienceCosts = mock(IExperiencePointCosts.class);
-  private ExperiencePointCostCalculator calculator = new ExperiencePointCostCalculator(experienceCosts);
+  private SpiritualExperienceCalculator calculator = new SpiritualExperienceCalculator(experienceCosts);
 
   @Test
   public void testEssenceCosts() throws Exception {

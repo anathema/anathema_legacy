@@ -1,24 +1,24 @@
 package net.sf.anathema.hero.spiritual.advance;
 
-import net.sf.anathema.character.main.testing.dummy.DummyBonusPointCosts;
-import net.sf.anathema.character.main.template.creation.BonusPointCosts;
-import net.sf.anathema.character.main.traits.types.VirtueType;
 import net.sf.anathema.character.main.library.trait.Trait;
+import net.sf.anathema.character.main.template.creation.BonusPointCosts;
 import net.sf.anathema.character.main.testing.BasicCharacterTestCase;
+import net.sf.anathema.character.main.testing.dummy.DummyBonusPointCosts;
 import net.sf.anathema.character.main.testing.dummy.DummyHero;
 import net.sf.anathema.character.main.testing.dummy.template.DummyTraitTemplateFactory;
-import net.sf.anathema.character.main.traits.context.CreationTraitValueStrategy;
-import net.sf.anathema.hero.spiritual.advance.creation.VirtueCostCalculator;
 import net.sf.anathema.character.main.traits.VirtueTemplateFactory;
+import net.sf.anathema.character.main.traits.context.CreationTraitValueStrategy;
 import net.sf.anathema.character.main.traits.creation.DefaultTraitFactory;
+import net.sf.anathema.character.main.traits.types.VirtueType;
+import net.sf.anathema.hero.spiritual.advance.creation.VirtueBonusCostCalculator;
 import org.junit.Before;
 import org.junit.Test;
 
 import static org.junit.Assert.assertEquals;
 
-public class VirtueCostCalculatorTest {
+public class VirtueBonusCostCalculatorTest {
 
-  private VirtueCostCalculator calculator;
+  private VirtueBonusCostCalculator calculator;
   private Trait[] virtues;
 
   @Before
@@ -26,7 +26,7 @@ public class VirtueCostCalculatorTest {
     BonusPointCosts cost = new DummyBonusPointCosts();
     DummyHero hero = new BasicCharacterTestCase().createModelContextWithEssence2(new CreationTraitValueStrategy());
     this.virtues = new DefaultTraitFactory(hero, new VirtueTemplateFactory(new DummyTraitTemplateFactory())).createTraits(VirtueType.values());
-    this.calculator = new VirtueCostCalculator(virtues, 5, cost);
+    this.calculator = new VirtueBonusCostCalculator(virtues, 5, cost);
   }
 
   @Test

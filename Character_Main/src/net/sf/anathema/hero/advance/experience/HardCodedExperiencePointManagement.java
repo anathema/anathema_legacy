@@ -1,8 +1,8 @@
 package net.sf.anathema.hero.advance.experience;
 
 import net.sf.anathema.hero.advance.experience.models.MiscellaneousExperienceModel;
-import net.sf.anathema.hero.magic.advance.experience.CharmExperienceModel;
-import net.sf.anathema.hero.magic.advance.experience.SpellExperienceModel;
+import net.sf.anathema.hero.advance.experience.models.CharmExperienceModel;
+import net.sf.anathema.hero.advance.experience.models.SpellExperienceModel;
 import net.sf.anathema.hero.model.Hero;
 import net.sf.anathema.hero.points.HeroModelExperienceCalculator;
 import net.sf.anathema.hero.points.PointModelFetcher;

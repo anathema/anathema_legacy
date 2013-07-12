@@ -1,10 +1,7 @@
 package net.sf.anathema.hero.advance.experience;
 
-import net.sf.anathema.character.main.library.trait.Trait;
-import net.sf.anathema.character.main.library.trait.experience.TraitRatingCostCalculator;
 import net.sf.anathema.character.main.magic.model.charm.Charm;
 import net.sf.anathema.character.main.magic.model.spells.Spell;
-import net.sf.anathema.character.main.template.experience.CurrentRatingCosts;
 import net.sf.anathema.character.main.template.experience.IExperiencePointCosts;
 import net.sf.anathema.hero.advance.CostAnalyzerImpl;
 import net.sf.anathema.hero.model.Hero;
@@ -17,30 +14,6 @@ public class ExperiencePointCostCalculator implements PointCostCalculator {
 
   public ExperiencePointCostCalculator(IExperiencePointCosts costs) {
     this.costs = costs;
-  }
-
-  protected int getTraitRatingCosts(Trait trait, CurrentRatingCosts ratingCosts) {
-    return TraitRatingCostCalculator.getTraitRatingCosts(trait, ratingCosts);
-  }
-
-  @Override
-  public int getEssenceCosts(Trait essence) {
-    return getTraitRatingCosts(essence, costs.getEssenceCosts());
-  }
-
-  @Override
-  public int getVirtueCosts(Trait virtue) {
-    return getTraitRatingCosts(virtue, costs.getVirtueCosts());
-  }
-
-  @Override
-  public int getWillpowerCosts(Trait willpower) {
-    return getTraitRatingCosts(willpower, costs.getWillpowerCosts());
-  }
-
-  @Override
-  public double getSpecialtyCosts(boolean favored) {
-    return costs.getSpecialtyCosts(favored);
   }
 
   @Override

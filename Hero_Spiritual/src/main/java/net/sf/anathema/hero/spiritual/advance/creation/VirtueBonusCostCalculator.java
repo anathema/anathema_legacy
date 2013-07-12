@@ -7,7 +7,7 @@ import net.sf.anathema.character.main.library.trait.Trait;
 import java.util.HashMap;
 import java.util.Map;
 
-public class VirtueCostCalculator {
+public class VirtueBonusCostCalculator {
 
   private int dotsSpent;
   private final int maxVirtuePoints;
@@ -15,7 +15,7 @@ public class VirtueCostCalculator {
   private final Map<TraitType, IVirtueCost> costsByVirtue = new HashMap<>();
   private final Trait[] virtues;
 
-  public VirtueCostCalculator(Trait[] virtues, int maxVirtuePoints, BonusPointCosts costs) {
+  public VirtueBonusCostCalculator(Trait[] virtues, int maxVirtuePoints, BonusPointCosts costs) {
     this.virtues = virtues;
     this.maxVirtuePoints = maxVirtuePoints;
     this.costs = costs;
