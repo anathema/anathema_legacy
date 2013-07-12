@@ -7,8 +7,10 @@ import net.sf.anathema.hero.combos.display.presenter.ComboConfigurationView;
 
 @RegisteredCharacterView(ComboConfigurationView.class)
 public class ComboViewFactory implements SubViewFactory {
+  @SuppressWarnings("unchecked")
   @Override
   public <T> T create(ICharacterType type) {
-    return (T) new SwingComboConfigurationView();
+    FxComboConfigurationView fxView = new FxComboConfigurationView();
+    return (T) new BridgingComboConfigurationView(fxView);
   }
 }

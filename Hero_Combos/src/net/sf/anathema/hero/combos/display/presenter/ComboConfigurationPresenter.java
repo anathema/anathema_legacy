@@ -63,8 +63,8 @@ public class ComboConfigurationPresenter {
   }
 
   public void initPresentation() {
-    view.initGui(properties);
     initMagicLearnView(properties);
+    view.addComboEditor(properties);
     initCharmLearnListening();
     ITextView nameView = view.addComboNameView(resources.getString("CardView.CharmConfiguration.ComboCreation.NameLabel"));
     nameView.addTextChangedListener(new ObjectValueListener<String>() {
@@ -87,7 +87,6 @@ public class ComboConfigurationPresenter {
     });
     textualPresentation.initView(descriptionView, editCombo.getDescription());
     updateCharmListsInView();
-    initViewListening();
     initComboModelListening();
     initComboConfigurationListening();
     hero.getChangeAnnouncer().addListener(new FlavoredChangeListener() {
@@ -313,34 +312,6 @@ public class ComboConfigurationPresenter {
       @Override
       public void changeOccurred() {
         updateCharmListsInView();
-      }
-    });
-  }
-
-  private void initViewListening() {
-    view.addComboViewListener(new ComboViewListener() {
-      @Override
-      public void charmAdded(Object addedCharm) {
-        comboConfiguration.addCharmToCombo((Charm) addedCharm, comboModel.isExperienced());
-      }
-
-      @Override
-      public void charmRemoved(Object[] removedCharms) {
-        List<Charm> removedCharmList = new ArrayList<>();
-        for (Object charmObject : removedCharms) {
-          removedCharmList.add((Charm) charmObject);
-        }
-        comboConfiguration.removeCharmsFromCombo(removedCharmList.toArray(new Charm[removedCharmList.size()]));
-      }
-
-      @Override
-      public void comboFinalized() {
-        comboConfiguration.finalizeCombo();
-      }
-
-      @Override
-      public void comboCleared() {
-        comboConfiguration.clearCombo();
       }
     });
   }

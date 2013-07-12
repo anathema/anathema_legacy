@@ -17,12 +17,12 @@ public class CharmUIConfiguration extends AbstractUIConfiguration<Identifier> {
   }
 
   @Override
-  public String getLabel(Identifier value) {
+  protected String labelForExistingValue(Identifier value) {
     return new MagicDisplayLabeler(resources).getLabelForMagic((Charm) value);
   }
 
   @Override
-  public String getToolTipText(Identifier value) {
+  protected String tooltipForExistingValue(Identifier value) {
     return charmInfoStringProvider.getInfoString((Charm) value, null);
   }
 }

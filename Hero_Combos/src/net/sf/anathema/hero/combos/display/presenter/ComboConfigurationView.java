@@ -6,13 +6,11 @@ import net.sf.anathema.lib.workflow.textualdescription.ITextView;
 
 public interface ComboConfigurationView {
 
-  void initGui(ComboViewProperties properties);
+  void addComboEditor(ComboViewProperties properties);
 
   MagicLearnView addMagicLearnView(MagicLearnProperties viewProperties);
 
   ComboContainer addComboContainer();
-
-  void addComboViewListener(ComboViewListener listener);
 
   ITextView addComboNameView(String viewTitle);
 
