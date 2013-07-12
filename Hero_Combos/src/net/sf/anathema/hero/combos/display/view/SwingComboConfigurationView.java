@@ -6,7 +6,6 @@ import net.miginfocom.layout.LC;
 import net.miginfocom.swing.MigLayout;
 import net.sf.anathema.framework.swing.IView;
 import net.sf.anathema.hero.combos.display.presenter.ComboConfigurationView;
-import net.sf.anathema.hero.combos.display.presenter.ComboView;
 import net.sf.anathema.hero.combos.display.presenter.ComboViewListener;
 import net.sf.anathema.hero.combos.display.presenter.ComboViewProperties;
 import net.sf.anathema.hero.magic.display.MagicLearnPresenter;
@@ -39,7 +38,6 @@ public class SwingComboConfigurationView implements ComboConfigurationView, IVie
   private Tool finalizeButton;
   private boolean isNameEntered;
   private boolean isDescriptionEntered;
-  private final SwingComboContainer container = new SwingComboContainer();
   private ComboViewProperties properties;
   private MagicLearnPresenter magicLearnPresenter;
 
@@ -66,8 +64,14 @@ public class SwingComboConfigurationView implements ComboConfigurationView, IVie
     viewPort.add(new JLabel());
     viewPort.add(namePanel, new CC().spanY(2).alignY("top"));
     magicLearnView.addTo(viewPort);
+  }
+
+  @Override
+  public ComboContainer addComboContainer() {
+    SwingComboContainer container = new SwingComboContainer();
     container.adjustBackgroundColor(viewPort.getBackground());
     viewPort.add(container.getComponent(), new CC().spanX().grow().push());
+    return container;
   }
 
   @Override
@@ -126,11 +130,6 @@ public class SwingComboConfigurationView implements ComboConfigurationView, IVie
       }
     });
     return addTextView(viewTitle, textView);
-  }
-
-  @Override
-  public ComboView addComboView(String name, String description) {
-    return container.addView(name, description);
   }
 
   @Override

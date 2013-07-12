@@ -1,5 +1,6 @@
 package net.sf.anathema.hero.combos.display.presenter;
 
+import net.sf.anathema.hero.combos.display.view.ComboContainer;
 import net.sf.anathema.lib.workflow.textualdescription.ITextView;
 
 public interface ComboConfigurationView {
@@ -16,7 +17,7 @@ public interface ComboConfigurationView {
 
   ITextView addComboDescriptionView(String viewTitle);
 
-  ComboView addComboView(String name, String description);
-
   void setEditState(boolean editing);
+
+  ComboContainer addComboContainer();
 }

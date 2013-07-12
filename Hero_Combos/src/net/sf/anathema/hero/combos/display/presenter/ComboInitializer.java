@@ -1,4 +1,4 @@
-package net.sf.anathema.hero.combos.display.view;
+package net.sf.anathema.hero.combos.display.presenter;
 
 import net.sf.anathema.character.main.magic.description.MagicDescriptionProvider;
 import net.sf.anathema.character.main.magic.display.view.charms.CharmDescriptionProviderExtractor;
@@ -7,8 +7,6 @@ import net.sf.anathema.character.main.presenter.initializers.HeroModelInitialize
 import net.sf.anathema.character.main.presenter.initializers.RegisteredInitializer;
 import net.sf.anathema.character.main.view.SectionView;
 import net.sf.anathema.framework.IApplicationModel;
-import net.sf.anathema.hero.combos.display.presenter.ComboConfigurationPresenter;
-import net.sf.anathema.hero.combos.display.presenter.ComboConfigurationView;
 import net.sf.anathema.hero.combos.model.ComboConfigurationModel;
 import net.sf.anathema.hero.model.Hero;
 import net.sf.anathema.initialization.reflections.Weight;
