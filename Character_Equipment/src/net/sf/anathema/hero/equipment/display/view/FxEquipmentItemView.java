@@ -13,12 +13,15 @@ import org.tbee.javafx.scene.layout.MigPane;
 
 public class FxEquipmentItemView implements EquipmentObjectView {
   private final TitledPane border = new TitledPane();
-  private final MigPane body = new MigPane(LayoutUtils.fillWithoutInsets().wrapAfter(1));
   private final Label descriptionLabel = new Label();
   private final MigPane elementPane = new MigPane(LayoutUtils.fillWithoutInsets().wrapAfter(1));
   private final MigPane buttonPane = new MigPane(LayoutUtils.fillWithoutInsets());
 
   public FxEquipmentItemView() {
+    MigPane body = new MigPane(LayoutUtils.fillWithoutInsets().wrapAfter(1));
+    body.add(descriptionLabel);
+    body.add(elementPane);
+    body.add(buttonPane);
     border.setContent(body);
   }
 
@@ -34,10 +37,8 @@ public class FxEquipmentItemView implements EquipmentObjectView {
 
   @Override
   public void clear() {
-    body.getChildren().removeAll();
-    body.add(descriptionLabel);
-    body.add(elementPane);
-    body.add(buttonPane);
+    elementPane.getChildren().clear();
+    buttonPane.getChildren().clear();
   }
 
   @Override
