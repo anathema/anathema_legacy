@@ -1,25 +1,25 @@
 package net.sf.anathema.character.main.magic.parser.charms;
 
+import net.sf.anathema.character.main.magic.model.charm.Charm;
+import net.sf.anathema.character.main.magic.model.charm.CharmException;
 import net.sf.anathema.character.main.magic.model.charm.CharmImpl;
-import net.sf.anathema.character.main.magic.model.charm.CharmData;
 import net.sf.anathema.character.main.magic.model.charm.ICharmXMLConstants;
+import net.sf.anathema.character.main.magic.model.charm.duration.IDuration;
+import net.sf.anathema.character.main.magic.model.charm.special.ISpecialCharm;
+import net.sf.anathema.character.main.magic.model.charm.type.ICharmTypeModel;
+import net.sf.anathema.character.main.magic.model.combos.IComboRestrictions;
 import net.sf.anathema.character.main.magic.model.magic.attribute.MagicAttribute;
-import net.sf.anathema.character.main.magic.parser.combos.IComboRulesBuilder;
-import net.sf.anathema.character.main.magic.parser.magic.CostListBuilder;
-import net.sf.anathema.character.main.magic.parser.magic.ICostListBuilder;
-import net.sf.anathema.character.main.magic.parser.magic.SourceBuilder;
+import net.sf.anathema.character.main.magic.model.magic.cost.ICostList;
 import net.sf.anathema.character.main.magic.parser.charms.prerequisite.IAttributeRequirementBuilder;
 import net.sf.anathema.character.main.magic.parser.charms.prerequisite.ICharmPrerequisiteBuilder;
 import net.sf.anathema.character.main.magic.parser.charms.prerequisite.ITraitPrerequisitesBuilder;
 import net.sf.anathema.character.main.magic.parser.charms.prerequisite.PrerequisiteListBuilder;
 import net.sf.anathema.character.main.magic.parser.charms.special.SpecialCharmBuilder;
-import net.sf.anathema.character.main.magic.model.charm.CharmException;
-import net.sf.anathema.character.main.magic.model.combos.IComboRestrictions;
-import net.sf.anathema.character.main.magic.model.charm.duration.IDuration;
-import net.sf.anathema.character.main.magic.model.charm.special.ISpecialCharm;
-import net.sf.anathema.character.main.magic.model.charm.type.ICharmTypeModel;
-import net.sf.anathema.character.main.magic.model.magic.cost.ICostList;
+import net.sf.anathema.character.main.magic.parser.combos.IComboRulesBuilder;
+import net.sf.anathema.character.main.magic.parser.magic.CostListBuilder;
+import net.sf.anathema.character.main.magic.parser.magic.ICostListBuilder;
 import net.sf.anathema.character.main.magic.parser.magic.IExaltedSourceBook;
+import net.sf.anathema.character.main.magic.parser.magic.SourceBuilder;
 import net.sf.anathema.character.main.traits.ValuedTraitType;
 import net.sf.anathema.character.main.type.CharacterTypes;
 import net.sf.anathema.character.main.type.ICharacterType;
@@ -138,8 +138,8 @@ public class CharmBuilder implements ICharmBuilder {
 
   private void loadSpecialLearning(Element charmElement, CharmImpl charm) {
     for (MagicAttribute attribute : charm.getAttributes()) {
-      if (attribute.getId().startsWith(CharmData.FAVORED_CASTE_PREFIX)) {
-        String casteId = attribute.getId().substring(CharmData.FAVORED_CASTE_PREFIX.length());
+      if (attribute.getId().startsWith(Charm.FAVORED_CASTE_PREFIX)) {
+        String casteId = attribute.getId().substring(Charm.FAVORED_CASTE_PREFIX.length());
         charm.addFavoredCasteId(casteId);
       }
     }

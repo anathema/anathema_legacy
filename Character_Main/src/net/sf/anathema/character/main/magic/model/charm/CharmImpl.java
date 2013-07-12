@@ -8,11 +8,10 @@ import net.sf.anathema.character.main.magic.model.charm.prerequisite.SelectiveCh
 import net.sf.anathema.character.main.magic.model.charm.type.ICharmTypeModel;
 import net.sf.anathema.character.main.magic.model.charmtree.GroupedCharmRequirement;
 import net.sf.anathema.character.main.magic.model.charmtree.ICharmLearnArbitrator;
-import net.sf.anathema.character.main.magic.model.combos.ComboRestrictions;
 import net.sf.anathema.character.main.magic.model.combos.IComboRestrictions;
 import net.sf.anathema.character.main.magic.model.magic.AbstractMagic;
-import net.sf.anathema.character.main.magic.model.magic.cost.ICostList;
 import net.sf.anathema.character.main.magic.model.magic.attribute.MagicAttributeImpl;
+import net.sf.anathema.character.main.magic.model.magic.cost.ICostList;
 import net.sf.anathema.character.main.magic.parser.charms.CharmPrerequisiteList;
 import net.sf.anathema.character.main.magic.parser.charms.SelectiveCharmGroupTemplate;
 import net.sf.anathema.character.main.magic.parser.magic.IExaltedSourceBook;
@@ -52,7 +51,7 @@ public class CharmImpl extends AbstractMagic implements Charm {
 
   private final List<Set<Charm>> alternatives = new ArrayList<>();
   private final List<Set<Charm>> merges = new ArrayList<>();
-  private final List<String> requiredSubeffects = new ArrayList<>();
+  private final List<String> requiredSubEffects = new ArrayList<>();
   private final List<Charm> parentCharms = new ArrayList<>();
   private final List<CharmImpl> children = new ArrayList<>();
   private final SelectiveCharmGroups selectiveCharmGroups = new SelectiveCharmGroups();
@@ -85,22 +84,6 @@ public class CharmImpl extends AbstractMagic implements Charm {
     for (SelectiveCharmGroupTemplate template : prerequisiteList.getSelectiveCharmGroups()) {
       selectiveCharmGroups.add(new SelectiveCharmGroup(template));
     }
-  }
-
-  public CharmImpl(CharmData charmData) {
-    super(charmData.getId());
-    this.characterType = charmData.getCharacterType();
-    this.isGeneric = charmData.isInstanceOfGenericCharm();
-    this.group = charmData.getGroupId();
-    this.temporaryCost = charmData.getTemporaryCost();
-    this.comboRules = new ComboRestrictions();
-    this.duration = charmData.getDuration();
-    this.sources = charmData.getSources();
-    this.prerequisisteList =
-            new CharmPrerequisiteList(charmData.getPrerequisites(), charmData.getEssence(), new String[0], new SelectiveCharmGroupTemplate[0],
-                    new IndirectCharmRequirement[0]);
-    parentCharms.addAll(charmData.getParentCharms());
-    this.typeModel = charmData.getCharmTypeModel();
   }
 
   @Override
@@ -216,12 +199,12 @@ public class CharmImpl extends AbstractMagic implements Charm {
       if (isSubeffectReference(parentId)) {
         String[] split = parentId.split("\\.");
         id = split[0] + "." + split[1];
-        requiredSubeffects.add(parentId);
+        requiredSubEffects.add(parentId);
       }
       if (isGenericSubeffectReference(parentId)) {
         String[] split = parentId.split("\\.");
         id = split[0] + "." + split[1] + "." + split[4];
-        requiredSubeffects.add(parentId);
+        requiredSubEffects.add(parentId);
       }
       CharmImpl parentCharm = charmsById.get(id);
       Preconditions.checkNotNull(parentCharm, "Parent Charm " + id + " not defined for " + getId());
@@ -239,7 +222,7 @@ public class CharmImpl extends AbstractMagic implements Charm {
 
   @Override
   public List<String> getParentSubEffects() {
-    return requiredSubeffects;
+    return requiredSubEffects;
   }
 
   @Override
@@ -350,5 +333,9 @@ public class CharmImpl extends AbstractMagic implements Charm {
   @Override
   public TraitType getPrimaryTraitType() {
     return getPrerequisites().length == 0 ? OtherTraitType.Essence : getPrerequisites()[0].getType();
+  }
+
+  public void addParentCharms(Charm... parent) {
+    parentCharms.addAll(Arrays.asList(parent));
   }
 }
