@@ -1,6 +1,5 @@
 package net.sf.anathema.hero.combos.display.presenter;
 
-import net.sf.anathema.hero.combos.display.view.ComboContainer;
 import net.sf.anathema.lib.workflow.textualdescription.ITextView;
 
 public interface ComboConfigurationView {

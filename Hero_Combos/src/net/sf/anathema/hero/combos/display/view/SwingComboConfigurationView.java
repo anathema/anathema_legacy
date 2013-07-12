@@ -6,6 +6,7 @@ import net.miginfocom.layout.LC;
 import net.miginfocom.swing.MigLayout;
 import net.sf.anathema.framework.swing.IView;
 import net.sf.anathema.hero.combos.display.presenter.ComboConfigurationView;
+import net.sf.anathema.hero.combos.display.presenter.ComboContainer;
 import net.sf.anathema.hero.combos.display.presenter.ComboViewListener;
 import net.sf.anathema.hero.combos.display.presenter.ComboViewProperties;
 import net.sf.anathema.hero.magic.display.MagicLearnPresenter;

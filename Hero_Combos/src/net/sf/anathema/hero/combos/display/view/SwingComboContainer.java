@@ -1,5 +1,6 @@
 package net.sf.anathema.hero.combos.display.view;
 
+import net.sf.anathema.hero.combos.display.presenter.ComboContainer;
 import net.sf.anathema.hero.combos.display.presenter.ComboView;
 import org.jdesktop.swingx.JXTaskPaneContainer;
 

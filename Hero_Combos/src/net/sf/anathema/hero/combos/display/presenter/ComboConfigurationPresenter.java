@@ -10,7 +10,6 @@ import net.sf.anathema.framework.presenter.resources.BasicUi;
 import net.sf.anathema.hero.change.ChangeFlavor;
 import net.sf.anathema.hero.change.FlavoredChangeListener;
 import net.sf.anathema.hero.charms.model.CharmsModel;
-import net.sf.anathema.hero.combos.display.view.ComboContainer;
 import net.sf.anathema.hero.combos.model.ComboConfigurationModel;
 import net.sf.anathema.hero.concept.ConceptChange;
 import net.sf.anathema.hero.model.Hero;
