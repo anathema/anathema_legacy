@@ -4,7 +4,7 @@ import net.sf.anathema.character.main.magic.model.magic.Magic;
 import net.sf.anathema.character.main.magic.model.spells.CircleType;
 import net.sf.anathema.character.main.magic.model.spells.ISpell;
 import net.sf.anathema.hero.change.ChangeAnnouncer;
-import net.sf.anathema.hero.magic.model.MagicLearner;
+import net.sf.anathema.hero.magic.advance.creation.MagicLearner;
 import net.sf.anathema.hero.magic.model.MagicModel;
 import net.sf.anathema.hero.model.Hero;
 import net.sf.anathema.hero.model.InitializationContext;

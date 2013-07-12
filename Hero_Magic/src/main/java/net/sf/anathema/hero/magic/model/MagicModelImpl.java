@@ -1,8 +1,9 @@
 package net.sf.anathema.hero.magic.model;
 
-import net.sf.anathema.hero.magic.advance.MagicCostEvaluator;
+import net.sf.anathema.hero.magic.advance.creation.MagicCreationCostEvaluator;
 import net.sf.anathema.character.main.magic.model.magic.IMagicStats;
 import net.sf.anathema.hero.change.ChangeAnnouncer;
+import net.sf.anathema.hero.magic.advance.creation.MagicLearner;
 import net.sf.anathema.hero.model.Hero;
 import net.sf.anathema.hero.model.InitializationContext;
 import net.sf.anathema.lib.util.Identifier;
@@ -41,8 +42,8 @@ public class MagicModelImpl implements MagicModel {
   }
 
   @Override
-  public MagicCostEvaluator getMagicCostEvaluator() {
-    return new MagicCostEvaluator(magicLearners);
+  public MagicCreationCostEvaluator getMagicCostEvaluator() {
+    return new MagicCreationCostEvaluator(magicLearners);
   }
 
   @Override

@@ -1,17 +1,16 @@
-package net.sf.anathema.hero.magic.advance;
+package net.sf.anathema.hero.magic.advance.creation;
 
 import net.sf.anathema.character.main.magic.model.magic.Magic;
-import net.sf.anathema.hero.magic.model.MagicLearner;
 
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Set;
 
-public class MagicCostEvaluator {
+public class MagicCreationCostEvaluator {
 
   private List<MagicLearner> magicLearners;
 
-  public MagicCostEvaluator(List<MagicLearner> magicLearners) {
+  public MagicCreationCostEvaluator(List<MagicLearner> magicLearners) {
     this.magicLearners = magicLearners;
   }
 

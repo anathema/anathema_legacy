@@ -1,4 +1,4 @@
-package net.sf.anathema.hero.magic.model;
+package net.sf.anathema.hero.magic.advance.creation;
 
 import net.sf.anathema.character.main.magic.model.magic.Magic;
 

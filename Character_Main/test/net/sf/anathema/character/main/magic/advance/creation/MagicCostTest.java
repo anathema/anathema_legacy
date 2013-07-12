@@ -3,7 +3,7 @@ package net.sf.anathema.character.main.magic.advance.creation;
 import net.sf.anathema.character.main.dummy.DummyCharm;
 import net.sf.anathema.character.main.magic.model.charm.CharmAttribute;
 import net.sf.anathema.character.main.magic.model.charm.MartialArtsLevel;
-import net.sf.anathema.character.main.template.experience.ICostAnalyzer;
+import net.sf.anathema.character.main.template.experience.CostAnalyzer;
 import net.sf.anathema.character.main.traits.types.AbilityType;
 import net.sf.anathema.character.main.xml.creation.template.MagicCreationCostsTto;
 import net.sf.anathema.hero.magic.advance.creation.MagicCostsImpl;
@@ -18,7 +18,7 @@ public class MagicCostTest {
 
   private MagicCreationCostsTto tto = new MagicCreationCostsTto();
   private DummyCharm charm = new DummyCharm("test");
-  private ICostAnalyzer costAnalyzer = mock(ICostAnalyzer.class);
+  private CostAnalyzer costAnalyzer = mock(CostAnalyzer.class);
 
   @Test
   public void calculatesHighCostsForUnfavoredMartialArtsCharmHigherThanStandardLevel() throws Exception {

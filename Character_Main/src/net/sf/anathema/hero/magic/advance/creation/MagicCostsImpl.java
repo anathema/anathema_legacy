@@ -2,7 +2,7 @@ package net.sf.anathema.hero.magic.advance.creation;
 
 import net.sf.anathema.character.main.magic.model.charm.Charm;
 import net.sf.anathema.character.main.magic.model.magic.Magic;
-import net.sf.anathema.character.main.template.experience.ICostAnalyzer;
+import net.sf.anathema.character.main.template.experience.CostAnalyzer;
 import net.sf.anathema.character.main.xml.creation.template.MagicCreationCostsTto;
 
 import java.util.HashMap;
@@ -17,18 +17,18 @@ public class MagicCostsImpl implements MagicCosts {
     strategyByFavored.put(false, new MagicCostStrategy(tto.general, tto.standardMartialArtsLevel));
   }
 
-  private int getCharmCosts(Charm charm, ICostAnalyzer analyzer) {
+  private int getCharmCosts(Charm charm, CostAnalyzer analyzer) {
     boolean favored = analyzer.isMagicFavored(charm);
     return strategyByFavored.get(favored).getCharmCosts(charm);
   }
 
-  private int getSpellCosts(Magic spell, ICostAnalyzer analyzer) {
+  private int getSpellCosts(Magic spell, CostAnalyzer analyzer) {
     boolean favored = analyzer.isMagicFavored(spell);
     return strategyByFavored.get(favored).getSpellCosts();
   }
 
   @Override
-  public int getMagicCosts(Magic magic, final ICostAnalyzer analyzer) {
+  public int getMagicCosts(Magic magic, final CostAnalyzer analyzer) {
     if (magic instanceof Charm) {
       return getCharmCosts((Charm) magic, analyzer);
     }
