@@ -9,12 +9,14 @@ import java.util.List;
 public class CharmTemplateImpl implements CharmTemplate {
 
   private final CharmSet charmSet;
+  private boolean canLearnCharms;
   private final List<String> alienAllowedCastes = new ArrayList<>();
   private final MartialArtsRules martialArtsRules;
 
-  public CharmTemplateImpl(MartialArtsRules rules, CharmSet charmSet) {
+  public CharmTemplateImpl(MartialArtsRules rules, CharmSet charmSet, boolean canLearnCharms) {
     this.martialArtsRules = rules;
     this.charmSet = charmSet;
+    this.canLearnCharms = canLearnCharms;
   }
 
   @Override
@@ -34,7 +36,7 @@ public class CharmTemplateImpl implements CharmTemplate {
 
   @Override
   public boolean canLearnCharms() {
-    return charmSet.getCharms().length > 0 || charmSet.getMartialArtsCharms().length > 0;
+    return canLearnCharms;
   }
 
   @Override

@@ -136,7 +136,7 @@ public class DummyHeroTemplate implements HeroTemplate {
 
     @Override
     public CharmTemplate getCharmTemplate() {
-      return new CharmTemplateImpl(new DefaultMartialArtsRules(MartialArtsLevel.Mortal), new NullCharmSet());
+      return new CharmTemplateImpl(new DefaultMartialArtsRules(MartialArtsLevel.Mortal), new NullCharmSet(), false);
     }
   }
 

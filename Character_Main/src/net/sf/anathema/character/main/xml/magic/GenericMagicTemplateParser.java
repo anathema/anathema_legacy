@@ -115,13 +115,14 @@ public class GenericMagicTemplateParser extends AbstractXmlTemplateParser<Generi
       return;
     }
     String charmType = ElementUtilities.getRequiredAttrib(charmTemplateElement, ATTRIB_CHARM_TYPE);
+    boolean canLearnCharms = !charmType.equals(VALUE_NONE);
     CharmSet charmSet;
     if (charmType.equals(VALUE_NONE)) {
       charmSet = new NullCharmSet();
     } else {
       charmSet = CharmSetImpl.createRegularCharmSet(cache, characterTypes.findById(charmType));
     }
-    CharmTemplateImpl charmTemplate = new CharmTemplateImpl(createMartialArtsRules(charmTemplateElement), charmSet);
+    CharmTemplateImpl charmTemplate = new CharmTemplateImpl(createMartialArtsRules(charmTemplateElement), charmSet, canLearnCharms);
     setAlienAllowedCastes(charmTemplate, charmTemplateElement);
     basicTemplate.setCharmTemplate(charmTemplate);
   }
