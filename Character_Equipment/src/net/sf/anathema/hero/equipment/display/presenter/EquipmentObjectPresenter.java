@@ -14,7 +14,6 @@ import net.sf.anathema.equipment.core.MaterialComposition;
 import net.sf.anathema.hero.equipment.model.EquipmentSpecialtyOption;
 import net.sf.anathema.interaction.Tool;
 import net.sf.anathema.lib.control.ChangeListener;
-import net.sf.anathema.lib.gui.Presenter;
 import net.sf.anathema.lib.model.BooleanModel;
 import net.sf.anathema.lib.resources.Resources;
 
@@ -22,7 +21,7 @@ import java.text.MessageFormat;
 import java.util.HashMap;
 import java.util.Map;
 
-public class EquipmentObjectPresenter implements Presenter {
+public class EquipmentObjectPresenter {
 
   public static final String EQUIPMENT_NAME_PREFIX = "Equipment.Name.";
   private static final String DESCRIPTION_PREFIX = "Equipment.Description.";
@@ -46,8 +45,17 @@ public class EquipmentObjectPresenter implements Presenter {
     this.dataProvider = dataProvider;
   }
 
-  @Override
+  public Tool addContextTool() {
+    return view.addAction();
+  }
+
   public void initPresentation() {
+    showItemTitle();
+    showItemDescription();
+    prepareContents();
+  }
+
+  private void showItemTitle() {
     String itemTitle = model.getTitle();
     boolean customTitle = !model.getTemplateId().equals(itemTitle);
     if (resources.supportsKey(EQUIPMENT_NAME_PREFIX + itemTitle)) {
@@ -58,6 +66,9 @@ public class EquipmentObjectPresenter implements Presenter {
       itemTitle += " (" + materialString + ")";
     }
     view.setItemTitle(itemTitle);
+  }
+
+  private void showItemDescription() {
     String description = model.getDescription();
     if (resources.supportsKey(DESCRIPTION_PREFIX + description)) {
       description = resources.getString(DESCRIPTION_PREFIX + description);
@@ -65,8 +76,6 @@ public class EquipmentObjectPresenter implements Presenter {
     if (description != null) {
       view.setItemDescription(description);
     }
-
-    prepareContents();
   }
 
   private void prepareContents() {
@@ -159,9 +168,5 @@ public class EquipmentObjectPresenter implements Presenter {
 
   private String createEquipmentDescription(IEquipmentItem item, IEquipmentStats equipment) {
     return stringBuilder.createString(item, equipment);
-  }
-
-  public Tool addContextTool() {
-    return view.addAction();
   }
 }
