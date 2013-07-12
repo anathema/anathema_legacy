@@ -27,8 +27,6 @@ public interface CharmsModel extends HeroModel, IExtendedCharmLearnableArbitrato
 
   CharmIdMap getCharmIdMap();
 
-  Charm[] getCreationLearnedCharms();
-
   ILearningCharmGroup[] getCharmGroups(Identifier type);
 
   Charm[] getLearnedCharms(boolean experienced);
@@ -42,8 +40,6 @@ public interface CharmsModel extends HeroModel, IExtendedCharmLearnableArbitrato
   CharmSpecialsModel getCharmSpecialsModel(Charm charm);
 
   ILearningCharmGroup getGroup(Charm charm);
-
-  ILearningCharmGroup getGroup(String characterType, String groupName);
 
   ISpecialCharm[] getSpecialCharms();
 }

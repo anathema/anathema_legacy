@@ -8,10 +8,10 @@ import net.sf.anathema.character.main.magic.model.charm.special.CharmSpecialsMod
 import net.sf.anathema.character.main.magic.model.charm.special.ISpecialCharm;
 import net.sf.anathema.character.main.magic.model.charms.ILearningCharmGroup;
 import net.sf.anathema.character.main.type.ICharacterType;
-import net.sf.anathema.hero.model.change.ChangeAnnouncer;
 import net.sf.anathema.hero.charms.model.CharmsModel;
 import net.sf.anathema.hero.model.Hero;
 import net.sf.anathema.hero.model.InitializationContext;
+import net.sf.anathema.hero.model.change.ChangeAnnouncer;
 import net.sf.anathema.lib.control.ChangeListener;
 import net.sf.anathema.lib.exception.NotYetImplementedException;
 import net.sf.anathema.lib.util.Identifier;
@@ -30,11 +30,6 @@ public class DummyCharmsModel implements CharmsModel {
   @Override
   public boolean isLearned(Charm charm) {
     throw new NotYetImplementedException();
-  }
-
-  @Override
-  public Charm[] getCreationLearnedCharms() {
-    return charms;
   }
 
   @Override
@@ -109,11 +104,6 @@ public class DummyCharmsModel implements CharmsModel {
 
   @Override
   public ICharacterType[] getCharacterTypes(boolean includeAlienTypes) {
-    throw new NotYetImplementedException();
-  }
-
-  @Override
-  public ILearningCharmGroup getGroup(String characterType, String groupName) {
     throw new NotYetImplementedException();
   }
 
