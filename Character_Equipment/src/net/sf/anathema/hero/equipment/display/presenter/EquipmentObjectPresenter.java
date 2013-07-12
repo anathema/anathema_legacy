@@ -78,7 +78,6 @@ public class EquipmentObjectPresenter {
   private void prepareContents() {
     view.clear();
     presentationModel.clear();
-
     for (final IEquipmentStats equipment : model.getStats()) {
       StatsPresentationStrategy strategy = choosePresentationStrategy(equipment);
       if (!strategy.shouldStatsBeShown()) {
@@ -109,7 +108,7 @@ public class EquipmentObjectPresenter {
           }
         }
       });
-      addOptionalModels(booleanModel, equipment);
+      showEligibleSpecialties(equipment, booleanModel);
     }
     disableAllStatsIfAttunementRequiredButNotGiven();
   }
@@ -155,25 +154,28 @@ public class EquipmentObjectPresenter {
     }
   }
 
-  private void addOptionalModels(BooleanModel baseModel, IEquipmentStats stats) {
-    if (stats instanceof IWeaponStats) {
-      IWeaponStats weaponStats = (IWeaponStats) stats;
-      Specialty[] specialties = dataProvider.getSpecialties(((IWeaponStats) stats).getTraitType());
-      for (Specialty specialty : specialties) {
-        String label = MessageFormat.format(resources.getString("Equipment.Specialty"), specialty.getName());
-        final BooleanModel booleanModel = view.addOptionFlag(baseModel, label);
-        final IEquipmentStatsOption specialtyOption = new EquipmentSpecialtyOption(specialty,
-                weaponStats.getTraitType());
-        final IEquipmentStats baseStat = model.getStat(stats.getId());
-        booleanModel.setValue(characterOptionProvider.isStatOptionEnabled(model, baseStat, specialtyOption));
-        booleanModel.addChangeListener(new ChangeListener() {
-          @Override
-          public void changeOccurred() {
-            if (booleanModel.getValue()) characterOptionProvider.enableStatOption(model, baseStat, specialtyOption);
-            else characterOptionProvider.disableStatOption(model, baseStat, specialtyOption);
-          }
-        });
-      }
+  private void showEligibleSpecialties(IEquipmentStats equipment, BooleanModel booleanModel) {
+    if (!(equipment instanceof IWeaponStats)) {
+      return;
+    }
+    addSpecialtiesForWeaponStats(booleanModel, (IWeaponStats) equipment);
+  }
+
+  private void addSpecialtiesForWeaponStats(BooleanModel baseModel, IWeaponStats weaponStats) {
+    Specialty[] specialties = dataProvider.getSpecialties(weaponStats.getTraitType());
+    for (Specialty specialty : specialties) {
+      String label = MessageFormat.format(resources.getString("Equipment.Specialty"), specialty.getName());
+      final BooleanModel booleanModel = view.addOptionFlag(baseModel, label);
+      final IEquipmentStatsOption specialtyOption = new EquipmentSpecialtyOption(specialty, weaponStats.getTraitType());
+      final IEquipmentStats baseStat = model.getStat(weaponStats.getId());
+      booleanModel.setValue(characterOptionProvider.isStatOptionEnabled(model, baseStat, specialtyOption));
+      booleanModel.addChangeListener(new ChangeListener() {
+        @Override
+        public void changeOccurred() {
+          if (booleanModel.getValue()) characterOptionProvider.enableStatOption(model, baseStat, specialtyOption);
+          else characterOptionProvider.disableStatOption(model, baseStat, specialtyOption);
+        }
+      });
     }
   }
 
