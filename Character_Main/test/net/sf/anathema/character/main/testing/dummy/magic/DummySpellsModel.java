@@ -151,7 +151,7 @@ public class DummySpellsModel implements SpellsModel {
       }
 
       @Override
-      public int getLearnCount(Magic magic, Set<Magic> alreadyHandledMagic) {
+      public int getCreationLearnCount(Magic magic, Set<Magic> alreadyHandledMagic) {
         return 1;
       }
 

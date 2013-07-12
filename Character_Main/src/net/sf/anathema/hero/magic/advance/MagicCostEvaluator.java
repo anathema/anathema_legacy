@@ -26,7 +26,7 @@ public class MagicCostEvaluator {
 
   public int getLearnCount(Magic magic, Set<Magic> alreadyHandledMagic) {
     MagicLearner learner = getLearnerFor(magic);
-    return learner.getLearnCount(magic, alreadyHandledMagic);
+    return learner.getCreationLearnCount(magic, alreadyHandledMagic);
   }
 
   public int getAdditionalBonusPoints(Magic magic) {

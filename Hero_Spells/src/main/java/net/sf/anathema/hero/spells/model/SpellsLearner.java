@@ -26,7 +26,7 @@ public class SpellsLearner implements MagicLearner {
   }
 
   @Override
-  public int getLearnCount(Magic magic, Set<Magic> alreadyHandledMagic) {
+  public int getCreationLearnCount(Magic magic, Set<Magic> alreadyHandledMagic) {
     return 1;
   }
 

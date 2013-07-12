@@ -39,7 +39,7 @@ public class CharmLearner implements MagicLearner {
   }
 
   @Override
-  public int getLearnCount(Magic magic, Set<Magic> alreadyHandledMagic) {
+  public int getCreationLearnCount(Magic magic, Set<Magic> alreadyHandledMagic) {
     Charm charm = (Charm) magic;
     int learnCount = handleSpecialCharm(charm);
     if (charms.isAlienCharm(charm)) {

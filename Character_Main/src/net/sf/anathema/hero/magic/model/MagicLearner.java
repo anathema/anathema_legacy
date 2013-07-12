@@ -11,7 +11,7 @@ public interface MagicLearner {
 
   int getAdditionalBonusPoints(Magic magic);
 
-  int getLearnCount(Magic magic, Set<Magic> alreadyHandledMagic);
+  int getCreationLearnCount(Magic magic, Set<Magic> alreadyHandledMagic);
 
   Collection<? extends Magic > getLearnedMagic(boolean experienced);
 }
