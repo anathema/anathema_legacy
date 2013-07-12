@@ -1,7 +1,6 @@
 package net.sf.anathema.hero.combos.display.view;
 
 import javafx.scene.Node;
-import javafx.scene.control.ScrollPane;
 import net.miginfocom.layout.CC;
 import net.sf.anathema.hero.combos.display.presenter.ComboConfigurationView;
 import net.sf.anathema.hero.combos.display.presenter.ComboContainer;
@@ -19,12 +18,12 @@ import org.tbee.javafx.scene.layout.MigPane;
 import static net.sf.anathema.lib.gui.layout.LayoutUtils.fillWithoutInsets;
 
 public class FxComboConfigurationView implements ComboConfigurationView, NodeHolder {
-  private final MigPane editPane = new MigPane(fillWithoutInsets().wrapAfter(2));
-  private final ScrollPane content = new ScrollPane();
+  private final MigPane editPane = new MigPane(fillWithoutInsets());
+  private final MigPane content = new MigPane(fillWithoutInsets());
   private final MigPane namePanel = new MigPane(LayoutUtils.withoutInsets().wrapAfter(1));
 
   public FxComboConfigurationView() {
-    content.setContent(editPane);
+    content.add(editPane, new CC().wrap());
   }
 
   @Override
@@ -55,7 +54,7 @@ public class FxComboConfigurationView implements ComboConfigurationView, NodeHol
     FxThreading.runOnCorrectThread(new Runnable() {
       @Override
       public void run() {
-        editPane.add(container.getNode(), new CC().spanX().grow().push());
+        content.add(container.getNode(), new CC().spanX().grow().push());
       }
     });
     return container;
