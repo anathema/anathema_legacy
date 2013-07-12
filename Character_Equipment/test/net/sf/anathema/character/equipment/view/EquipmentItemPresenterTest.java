@@ -12,7 +12,7 @@ import net.sf.anathema.character.main.library.trait.specialties.Specialty;
 import net.sf.anathema.character.main.traits.TraitType;
 import net.sf.anathema.framework.resources.LocaleResources;
 import net.sf.anathema.hero.equipment.display.presenter.EquipmentObjectPresenter;
-import net.sf.anathema.hero.equipment.display.presenter.IEquipmentObjectView;
+import net.sf.anathema.hero.equipment.display.presenter.EquipmentObjectView;
 import net.sf.anathema.hero.health.HealthType;
 import net.sf.anathema.lib.model.BooleanModel;
 import net.sf.anathema.lib.util.SimpleIdentifier;
@@ -36,12 +36,12 @@ public class EquipmentItemPresenterTest extends TestCase {
 
   public void testNameOnlyEquipment() throws Exception {
     IEquipmentItem model = new DummyEquipmentObject("First and Forsaken Weapon", null);
-    IEquipmentObjectView view = mock(IEquipmentObjectView.class);
+    EquipmentObjectView view = mock(EquipmentObjectView.class);
     initPresentation(model, view);
     verify(view).setItemTitle("First and Forsaken Weapon");
   }
 
-  private void initPresentation(IEquipmentItem model, IEquipmentObjectView view) {
+  private void initPresentation(IEquipmentItem model, EquipmentObjectView view) {
     EquipmentHeroEvaluator dataProvider = mock(EquipmentHeroEvaluator.class);
     EquipmentOptionsProvider optionProvider = mock(EquipmentOptionsProvider.class);
     when(dataProvider.getSpecialties(isA(TraitType.class))).thenReturn(new Specialty[0]);
@@ -49,7 +49,7 @@ public class EquipmentItemPresenterTest extends TestCase {
   }
 
   public void testEquipmentWithoutStats() throws Exception {
-    IEquipmentObjectView view = mock(IEquipmentObjectView.class);
+    EquipmentObjectView view = mock(EquipmentObjectView.class);
     DummyEquipmentObject model = new DummyEquipmentObject("First and Forsaken Weapon", "Abyssal-Weapon mit Bums");
     initPresentation(model, view);
     verify(view).setItemTitle("First and Forsaken Weapon");
@@ -57,7 +57,7 @@ public class EquipmentItemPresenterTest extends TestCase {
   }
 
   public void testEquipmentWithCloseCombatStats() throws Exception {
-    IEquipmentObjectView view = mock(IEquipmentObjectView.class);
+    EquipmentObjectView view = mock(EquipmentObjectView.class);
     view.setItemTitle("Title");
     BooleanModel isPrintSelectedModel = new BooleanModel();
     when(view.addStats("Passt!")).thenReturn(isPrintSelectedModel);
@@ -67,7 +67,7 @@ public class EquipmentItemPresenterTest extends TestCase {
   }
 
   public void testPrintModelInitialization() throws Exception {
-    IEquipmentObjectView view = mock(IEquipmentObjectView.class);
+    EquipmentObjectView view = mock(EquipmentObjectView.class);
     view.setItemTitle("Title");
     BooleanModel isPrintSelectedModel = new BooleanModel();
     when(view.addStats("Passt!")).thenReturn(isPrintSelectedModel);

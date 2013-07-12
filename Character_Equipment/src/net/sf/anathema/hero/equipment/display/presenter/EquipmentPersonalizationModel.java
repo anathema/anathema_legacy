@@ -1,6 +1,6 @@
 package net.sf.anathema.hero.equipment.display.presenter;
 
-public interface IEquipmentPersonalizationModel {
+public interface EquipmentPersonalizationModel {
 	void setTitle(String text);
 	
 	void setDescription(String text);

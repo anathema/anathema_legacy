@@ -1,7 +1,7 @@
 package net.sf.anathema.hero.equipment.display.view;
 
 import net.miginfocom.swing.MigLayout;
-import net.sf.anathema.hero.equipment.display.presenter.IEquipmentPersonalizationView;
+import net.sf.anathema.hero.equipment.display.presenter.EquipmentPersonalizationView;
 import net.sf.anathema.lib.gui.dialog.core.IPageContent;
 import net.sf.anathema.lib.workflow.textualdescription.ITextView;
 import net.sf.anathema.lib.workflow.textualdescription.view.LabelTextView;
@@ -12,7 +12,7 @@ import javax.swing.JPanel;
 
 import static net.sf.anathema.lib.gui.layout.LayoutUtils.fillWithoutInsets;
 
-public class EquipmentPersonalizationView implements IPageContent, IEquipmentPersonalizationView {
+public class SwingDialogPersonalizationView implements IPageContent, EquipmentPersonalizationView {
   private final JPanel content = new JPanel(new MigLayout(fillWithoutInsets().wrapAfter(2)));
 
   @Override

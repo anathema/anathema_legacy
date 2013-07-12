@@ -1,6 +1,6 @@
 package net.sf.anathema.character.equipment.impl.character.view;
 
-import net.sf.anathema.hero.equipment.display.view.EquipmentObjectView;
+import net.sf.anathema.hero.equipment.display.view.SwingEquipmentItemView;
 import net.sf.anathema.lib.model.BooleanModel;
 import org.junit.Test;
 
@@ -13,7 +13,7 @@ public class EquipmentObjectViewTest {
 
   @Test
   public void supportsAmpersandInSpecialtyNames() throws Exception {
-    EquipmentObjectView view = new EquipmentObjectView();
+    SwingEquipmentItemView view = new SwingEquipmentItemView();
     BooleanModel model = view.addStats("Setup");
     BooleanModel optionModel = view.addOptionFlag(model, "Test & Success");
     assertThat(optionModel, is(not(nullValue())));

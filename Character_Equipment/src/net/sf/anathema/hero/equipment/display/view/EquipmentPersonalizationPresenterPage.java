@@ -13,7 +13,7 @@ import javax.swing.JComponent;
 public class EquipmentPersonalizationPresenterPage extends AbstractDialogPage {
 
   private final EquipmentPersonalizationProperties properties;
-  private final EquipmentPersonalizationView view = new EquipmentPersonalizationView();
+  private final SwingDialogPersonalizationView view = new SwingDialogPersonalizationView();
   private final ITextView description;
   private final ITextView title;
   private ProxyClosure<String> onTitleChange = new ProxyClosure<>();

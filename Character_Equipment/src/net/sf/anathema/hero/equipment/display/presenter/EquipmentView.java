@@ -7,13 +7,13 @@ public interface EquipmentView {
 
   IListObjectSelectionView<String> getEquipmentTemplatePickList();
 
-  IEquipmentObjectView addEquipmentObjectView();
+  EquipmentObjectView addEquipmentObjectView();
 
-  void removeEquipmentObjectView(IEquipmentObjectView objectView);
+  void removeEquipmentObjectView(EquipmentObjectView objectView);
 
   Tool addToolButton();
 
-  IMagicalMaterialView getMagicMaterialView();
+  MagicalMaterialView getMagicMaterialView();
 
   void revalidateEquipmentViews();
 

@@ -29,13 +29,13 @@ public class EquipmentObjectPresenter implements Presenter {
   private final Map<IEquipmentStats, BooleanModel> attuneStatFlags = new HashMap<>();
   private final Map<IEquipmentStats, BooleanModel> otherStatFlags = new HashMap<>();
   private final IEquipmentItem model;
-  private final IEquipmentObjectView view;
+  private final EquipmentObjectView view;
   private final IEquipmentStringBuilder stringBuilder;
   private final EquipmentOptionsProvider characterOptionProvider;
   private final EquipmentHeroEvaluator dataProvider;
   private final Resources resources;
 
-  public EquipmentObjectPresenter(IEquipmentItem model, IEquipmentObjectView view,
+  public EquipmentObjectPresenter(IEquipmentItem model, EquipmentObjectView view,
                                   IEquipmentStringBuilder stringBuilder, EquipmentHeroEvaluator dataProvider,
                                   EquipmentOptionsProvider characterOptionProvider, Resources resources) {
     this.model = model;

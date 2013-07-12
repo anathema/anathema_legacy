@@ -8,8 +8,7 @@ import net.sf.anathema.framework.swing.IView;
 import net.sf.anathema.framework.swing.selection.ListObjectSelectionView;
 import net.sf.anathema.hero.equipment.display.presenter.EquipmentPersonalizationProperties;
 import net.sf.anathema.hero.equipment.display.presenter.EquipmentView;
-import net.sf.anathema.hero.equipment.display.presenter.IEquipmentObjectView;
-import net.sf.anathema.hero.equipment.display.presenter.IMagicalMaterialView;
+import net.sf.anathema.hero.equipment.display.presenter.MagicalMaterialView;
 import net.sf.anathema.hero.equipment.display.presenter.PersonalizationEditView;
 import net.sf.anathema.interaction.Tool;
 import net.sf.anathema.lib.gui.selection.IListObjectSelectionView;
@@ -27,13 +26,13 @@ public class EquipmentViewImpl implements EquipmentView, IView {
   private final ListObjectSelectionView<String> equipmentPickList = new ListObjectSelectionView<>(String.class);
   private final JPanel panel = new JPanel(new MigLayout(withoutInsets()));
   private final JPanel buttonPanel = new JPanel(new MigLayout(withoutInsets().wrapAfter(1)));
-  private final TaskPaneView<EquipmentObjectView> taskPaneView = new TaskPaneView<>(new ITaskPaneGroupViewFactory<EquipmentObjectView>() {
+  private final TaskPaneView<SwingEquipmentItemView> taskPaneView = new TaskPaneView<>(new ITaskPaneGroupViewFactory<SwingEquipmentItemView>() {
     @Override
-    public EquipmentObjectView createView() {
-      return new EquipmentObjectView();
+    public SwingEquipmentItemView createView() {
+      return new SwingEquipmentItemView();
     }
   });
-  private final MagicMaterialView magicMaterialView = new MagicMaterialView();
+  private final SwingMagicMaterialView magicMaterialView = new SwingMagicMaterialView();
 
   public EquipmentViewImpl() {
     JScrollPane itemScrollpane = new JScrollPane(equipmentPickList.getComponent());
@@ -53,13 +52,13 @@ public class EquipmentViewImpl implements EquipmentView, IView {
   }
 
   @Override
-  public IEquipmentObjectView addEquipmentObjectView() {
+  public net.sf.anathema.hero.equipment.display.presenter.EquipmentObjectView addEquipmentObjectView() {
     return taskPaneView.addEquipmentObjectView();
   }
 
   @Override
-  public void removeEquipmentObjectView(IEquipmentObjectView objectView) {
-    taskPaneView.removeEquipmentObjectView((EquipmentObjectView) objectView);
+  public void removeEquipmentObjectView(net.sf.anathema.hero.equipment.display.presenter.EquipmentObjectView objectView) {
+    taskPaneView.removeEquipmentObjectView((SwingEquipmentItemView) objectView);
   }
 
   @Override
@@ -85,7 +84,7 @@ public class EquipmentViewImpl implements EquipmentView, IView {
   }
 
   @Override
-  public IMagicalMaterialView getMagicMaterialView() {
+  public MagicalMaterialView getMagicMaterialView() {
     return magicMaterialView;
   }
 }

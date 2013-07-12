@@ -3,7 +3,6 @@ package net.sf.anathema.hero.equipment.display.view;
 import net.miginfocom.swing.MigLayout;
 import net.sf.anathema.character.main.library.taskpane.ITaskPaneGroupView;
 import net.sf.anathema.character.main.view.AddToTaskPane;
-import net.sf.anathema.hero.equipment.display.presenter.IEquipmentObjectView;
 import net.sf.anathema.interaction.Tool;
 import net.sf.anathema.lib.gui.action.ActionWidgetFactory;
 import net.sf.anathema.lib.gui.action.SmartToggleAction;
@@ -18,13 +17,13 @@ import javax.swing.JPanel;
 import java.util.HashMap;
 import java.util.Map;
 
-public class EquipmentObjectView implements IEquipmentObjectView, ITaskPaneGroupView {
+public class SwingEquipmentItemView implements net.sf.anathema.hero.equipment.display.presenter.EquipmentObjectView, ITaskPaneGroupView {
   private final JXTaskPane taskGroup = new JXTaskPane();
   private final JLabel descriptionLabel = new JLabel();
   private final Map<BooleanModel, JCheckBox> boxes = new HashMap<>();
   private final Map<BooleanModel, JPanel> boxPanels = new HashMap<>();
 
-  public EquipmentObjectView() {
+  public SwingEquipmentItemView() {
     taskGroup.add(descriptionLabel);
   }
 

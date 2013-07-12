@@ -1,9 +1,8 @@
 package net.sf.anathema.hero.equipment.model;
 
 import net.sf.anathema.character.equipment.character.model.IEquipmentItem;
-import net.sf.anathema.hero.equipment.display.presenter.IEquipmentPersonalizationModel;
 
-public class EquipmentPersonalizationModel implements IEquipmentPersonalizationModel {
+public class EquipmentPersonalizationModel implements net.sf.anathema.hero.equipment.display.presenter.EquipmentPersonalizationModel {
 
 	private String title;
 	private String description;

@@ -29,7 +29,7 @@ public class EquipmentPresenter implements Presenter {
   private final Resources resources;
   private final EquipmentModel model;
   private final EquipmentView view;
-  private final Map<IEquipmentItem, IEquipmentObjectView> viewsByItem = new HashMap<>();
+  private final Map<IEquipmentItem, EquipmentObjectView> viewsByItem = new HashMap<>();
 
   public EquipmentPresenter(Resources resources, final EquipmentModel model, EquipmentView view) {
     this.resources = resources;
@@ -70,7 +70,7 @@ public class EquipmentPresenter implements Presenter {
         removeItemView(item);
       }
     });
-    IMagicalMaterialView magicMaterialView = view.getMagicMaterialView();
+    MagicalMaterialView magicMaterialView = view.getMagicMaterialView();
     initMaterialView(magicMaterialView);
     equipmentTemplatePickList.setCellRenderer(new EquipmentItemUIConfiguration(model));
     setObjects(equipmentTemplatePickList);
@@ -94,7 +94,7 @@ public class EquipmentPresenter implements Presenter {
     });
   }
 
-  private void initMaterialView(IMagicalMaterialView magicMaterialView) {
+  private void initMaterialView(MagicalMaterialView magicMaterialView) {
     String label = resources.getString("MagicMaterial.Label") + ":";
     AgnosticUIConfiguration<MagicalMaterial> renderer = new MagicMaterialUIConfiguration(resources);
     magicMaterialView.initView(label, renderer, MagicalMaterial.values());
@@ -120,7 +120,7 @@ public class EquipmentPresenter implements Presenter {
   }
 
   private void createTemplateAddAction(final IListObjectSelectionView<String> equipmentTemplatePickList,
-                                       final IMagicalMaterialView materialView, final Tool selectTool) {
+                                       final MagicalMaterialView materialView, final Tool selectTool) {
     selectTool.setIcon(new BasicUi().getRightArrowIconPath());
     selectTool.setTooltip(resources.getString("AdditionalTemplateView.AddTemplate.Action.Tooltip"));
     selectTool.setCommand(new Command() {
@@ -147,12 +147,12 @@ public class EquipmentPresenter implements Presenter {
   }
 
   private void removeItemView(IEquipmentItem item) {
-    IEquipmentObjectView objectView = viewsByItem.remove(item);
+    EquipmentObjectView objectView = viewsByItem.remove(item);
     view.removeEquipmentObjectView(objectView);
   }
 
   private void initEquipmentObjectPresentation(final IEquipmentItem selectedObject) {
-    IEquipmentObjectView objectView = viewsByItem.get(selectedObject);
+    EquipmentObjectView objectView = viewsByItem.get(selectedObject);
     objectView = objectView == null ? view.addEquipmentObjectView() : objectView;
     IEquipmentStringBuilder resourceBuilder = new EquipmentStringBuilder(resources);
     viewsByItem.put(selectedObject, objectView);

@@ -3,7 +3,7 @@ package net.sf.anathema.hero.equipment.display.view;
 import net.miginfocom.layout.CC;
 import net.miginfocom.swing.MigLayout;
 import net.sf.anathema.equipment.core.MagicalMaterial;
-import net.sf.anathema.hero.equipment.display.presenter.IMagicalMaterialView;
+import net.sf.anathema.hero.equipment.display.presenter.MagicalMaterialView;
 import net.sf.anathema.lib.gui.AgnosticUIConfiguration;
 import net.sf.anathema.lib.gui.ui.ConfigurableListCellRenderer;
 import net.sf.anathema.lib.gui.widgets.ChangeableJComboBox;
@@ -14,10 +14,9 @@ import javax.swing.JPanel;
 
 import static net.sf.anathema.lib.gui.layout.LayoutUtils.fillWithoutInsets;
 
-public class MagicMaterialView implements IMagicalMaterialView {
+public class SwingMagicMaterialView implements MagicalMaterialView {
 
-  private final ChangeableJComboBox<MagicalMaterial> materialCombo = new ChangeableJComboBox<>(new MagicalMaterial[0]
-  );
+  private final ChangeableJComboBox<MagicalMaterial> materialCombo = new ChangeableJComboBox<>(new MagicalMaterial[0]);
   private final JLabel label = new JLabel();
   private JPanel content;
 

@@ -3,7 +3,7 @@ package net.sf.anathema.hero.equipment.display.presenter;
 import net.sf.anathema.interaction.Tool;
 import net.sf.anathema.lib.model.BooleanModel;
 
-public interface IEquipmentObjectView {
+public interface EquipmentObjectView {
 
   void setItemTitle(String title);
 
