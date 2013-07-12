@@ -5,7 +5,7 @@ import net.sf.anathema.character.main.template.experience.IExperiencePointCosts;
 import net.sf.anathema.character.main.traits.types.OtherTraitType;
 import net.sf.anathema.character.main.traits.types.VirtueType;
 import net.sf.anathema.character.main.testing.dummy.trait.DummyTrait;
-import net.sf.anathema.character.main.advance.ExperiencePointCostCalculator;
+import net.sf.anathema.hero.advance.experience.ExperiencePointCostCalculator;
 import org.junit.Test;
 
 import static org.junit.Assert.assertEquals;

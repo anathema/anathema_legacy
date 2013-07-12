@@ -2,7 +2,7 @@ package net.sf.anathema;
 
 import com.google.inject.Inject;
 import cucumber.api.java.en.Then;
-import net.sf.anathema.character.main.advance.HardCodedExperiencePointManagement;
+import net.sf.anathema.hero.advance.experience.HardCodedExperiencePointManagement;
 
 import static org.hamcrest.CoreMatchers.is;
 import static org.hamcrest.MatcherAssert.assertThat;

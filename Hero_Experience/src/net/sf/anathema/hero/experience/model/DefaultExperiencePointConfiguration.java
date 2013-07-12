@@ -1,9 +1,9 @@
 package net.sf.anathema.hero.experience.model;
 
-import net.sf.anathema.character.main.advance.ExperiencePointConfiguration;
-import net.sf.anathema.character.main.advance.ExperiencePointConfigurationListener;
-import net.sf.anathema.character.main.advance.ExperiencePointEntry;
-import net.sf.anathema.character.main.advance.ExperienceSelectionListener;
+import net.sf.anathema.hero.advance.experience.ExperiencePointConfiguration;
+import net.sf.anathema.hero.advance.experience.ExperiencePointConfigurationListener;
+import net.sf.anathema.hero.advance.experience.ExperiencePointEntry;
+import net.sf.anathema.hero.advance.experience.ExperienceSelectionListener;
 import org.jmock.example.announcer.Announcer;
 
 import java.util.ArrayList;

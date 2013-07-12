@@ -1,7 +1,7 @@
 package net.sf.anathema.character.main.presenter.overview;
 
-import net.sf.anathema.character.main.advance.ExperiencePointConfigurationListener;
-import net.sf.anathema.character.main.advance.ExperiencePointManagement;
+import net.sf.anathema.hero.advance.experience.ExperiencePointConfigurationListener;
+import net.sf.anathema.hero.advance.experience.ExperiencePointManagement;
 import net.sf.anathema.character.main.library.overview.OverviewCategory;
 import net.sf.anathema.character.main.view.CategorizedOverview;
 import net.sf.anathema.character.main.view.labelledvalue.ILabelledAlotmentView;

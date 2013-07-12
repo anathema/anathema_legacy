@@ -1,6 +1,6 @@
 package net.sf.anathema.character.main.presenter.overview;
 
-import net.sf.anathema.character.main.creation.IBonusPointManagement;
+import net.sf.anathema.hero.advance.creation.IBonusPointManagement;
 import net.sf.anathema.character.main.library.overview.OverviewCategory;
 import net.sf.anathema.character.main.template.HeroTemplate;
 import net.sf.anathema.character.main.view.CategorizedOverview;

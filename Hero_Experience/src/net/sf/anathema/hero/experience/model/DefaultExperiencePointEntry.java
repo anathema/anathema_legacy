@@ -1,6 +1,6 @@
 package net.sf.anathema.hero.experience.model;
 
-import net.sf.anathema.character.main.advance.ExperiencePointEntry;
+import net.sf.anathema.hero.advance.experience.ExperiencePointEntry;
 import net.sf.anathema.lib.workflow.textualdescription.ITextualDescription;
 import net.sf.anathema.lib.workflow.textualdescription.SimpleTextualDescription;
 

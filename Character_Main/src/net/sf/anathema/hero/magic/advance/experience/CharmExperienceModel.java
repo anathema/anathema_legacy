@@ -1,7 +1,7 @@
 package net.sf.anathema.hero.magic.advance.experience;
 
-import net.sf.anathema.character.main.advance.PointCostCalculator;
-import net.sf.anathema.character.main.advance.models.AbstractIntegerValueModel;
+import net.sf.anathema.hero.advance.experience.PointCostCalculator;
+import net.sf.anathema.hero.advance.experience.models.AbstractIntegerValueModel;
 import net.sf.anathema.character.main.magic.model.charm.Charm;
 import net.sf.anathema.character.main.magic.model.charm.special.CharmSpecialsModel;
 import net.sf.anathema.character.main.magic.model.charm.special.SubEffectCharmSpecials;

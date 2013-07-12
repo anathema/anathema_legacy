@@ -1,9 +1,9 @@
 package net.sf.anathema.swing.hero.perspective;
 
-import net.sf.anathema.character.main.advance.ExperiencePointManagement;
-import net.sf.anathema.character.main.advance.HardCodedExperiencePointManagement;
-import net.sf.anathema.character.main.creation.IBonusPointManagement;
-import net.sf.anathema.character.main.creation.bonus.BonusPointManagement;
+import net.sf.anathema.hero.advance.experience.ExperiencePointManagement;
+import net.sf.anathema.hero.advance.experience.HardCodedExperiencePointManagement;
+import net.sf.anathema.hero.advance.creation.IBonusPointManagement;
+import net.sf.anathema.hero.advance.creation.BonusPointManagement;
 import net.sf.anathema.character.main.presenter.CharacterPresenter;
 import net.sf.anathema.character.main.presenter.OverviewPresenter;
 import net.sf.anathema.character.main.view.CharacterView;
