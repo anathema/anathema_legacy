@@ -1,14 +1,10 @@
 package net.sf.anathema.cascades.presenter;
 
 import net.sf.anathema.character.main.magic.model.charm.ICharmGroup;
-import net.sf.anathema.character.main.magic.model.charms.options.DefaultCharmTemplateRetriever;
 import net.sf.anathema.character.main.magic.model.charmtree.CharmTree;
 import net.sf.anathema.character.main.magic.model.charmtree.ICharmTree;
 import net.sf.anathema.character.main.magic.model.charmtree.MartialArtsCharmTree;
-import net.sf.anathema.character.main.template.HeroTemplate;
-import net.sf.anathema.character.main.template.ITemplateRegistry;
 import net.sf.anathema.character.main.template.magic.CharmProvider;
-import net.sf.anathema.character.main.template.magic.CharmTemplate;
 import net.sf.anathema.character.main.type.CharacterType;
 import net.sf.anathema.character.main.type.CharacterTypes;
 import net.sf.anathema.hero.charms.model.CharmGroupCollection;
@@ -23,13 +19,10 @@ import java.util.List;
 public class CascadeGroupCollection implements CharmGroupCollection {
   private final CharacterTypes characterTypes;
   private CharmProvider charmProvider;
-  private ITemplateRegistry templateRegistry;
   private CharmTreeIdentifierMap treeIdentifierMap;
 
-  public CascadeGroupCollection(CharmProvider charmProvider, CharacterTypes characterTypes, ITemplateRegistry templateRegistry,
-                                CharmTreeIdentifierMap treeIdentifierMap) {
+  public CascadeGroupCollection(CharmProvider charmProvider, CharacterTypes characterTypes, CharmTreeIdentifierMap treeIdentifierMap) {
     this.charmProvider = charmProvider;
-    this.templateRegistry = templateRegistry;
     this.treeIdentifierMap = treeIdentifierMap;
     this.characterTypes = characterTypes;
   }
@@ -44,13 +37,8 @@ public class CascadeGroupCollection implements CharmGroupCollection {
 
   private void initCharacterTypeCharms(List<ICharmGroup> allCharmGroups) {
     for (CharacterType type : characterTypes.findAll()) {
-      HeroTemplate template = templateRegistry.getDefaultTemplate(type);
-      if (template == null) {
-        continue;
-      }
-      CharmTemplate charmTemplate = DefaultCharmTemplateRetriever.getCharmTemplate(template);
-      if (charmTemplate.canLearnCharms()) {
-        registerTypeCharms(allCharmGroups, type, template);
+       if (charmProvider.getCharms(type).length > 0) {
+        registerTypeCharms(allCharmGroups, type);
       }
     }
   }
@@ -61,8 +49,8 @@ public class CascadeGroupCollection implements CharmGroupCollection {
     allCharmGroups.addAll(Arrays.asList(martialArtsTree.getAllCharmGroups()));
   }
 
-  private void registerTypeCharms(List<ICharmGroup> allCharmGroups, CharacterType type, HeroTemplate defaultTemplate) {
-    ICharmTree typeTree = new CharmTree(DefaultCharmTemplateRetriever.getCharmTemplate(defaultTemplate));
+  private void registerTypeCharms(List<ICharmGroup> allCharmGroups, CharacterType type) {
+    ICharmTree typeTree = new CharmTree(charmProvider.getCharms(type));
     registerGroups(allCharmGroups, type, typeTree);
   }
 

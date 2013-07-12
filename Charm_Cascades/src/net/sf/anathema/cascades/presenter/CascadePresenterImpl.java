@@ -33,12 +33,12 @@ public class CascadePresenterImpl extends AbstractCascadePresenter implements Ca
     CascadeCharmGroupChangeListener selectionListener =
             new CascadeCharmGroupChangeListener(view, viewProperties, new CharmDisplayPropertiesMap(templateRegistry));
     CharacterTypes characterTypes = generics.getCharacterTypes();
-    setCharmTypes(new CascadeCharmTypes(characterTypes, templateRegistry));
+    setCharmTypes(new CascadeCharmTypes(characterTypes, generics.getCharmProvider()));
     setChangeListener(selectionListener);
     setView(view);
     CharmDye dye = new ConfigurableCharmDye(selectionListener, new CascadeColoringStrategy(view));
     setCharmDye(dye);
-    setCharmGroups(new CascadeGroupCollection(generics.getCharmProvider(), characterTypes, templateRegistry, treeIdentifierMap));
+    setCharmGroups(new CascadeGroupCollection(generics.getCharmProvider(), characterTypes, treeIdentifierMap));
   }
 
   @Override
