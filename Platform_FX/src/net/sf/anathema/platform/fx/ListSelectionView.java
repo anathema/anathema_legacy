@@ -7,6 +7,7 @@ import javafx.scene.Node;
 import javafx.scene.control.ListView;
 import javafx.scene.control.SelectionMode;
 import net.sf.anathema.lib.control.ObjectValueListener;
+import net.sf.anathema.lib.gui.AgnosticUIConfiguration;
 import net.sf.anathema.lib.gui.list.veto.Vetor;
 import net.sf.anathema.lib.gui.selection.VetoableObjectSelectionView;
 import org.jmock.example.announcer.Announcer;
@@ -37,6 +38,11 @@ public class ListSelectionView<T> implements VetoableObjectSelectionView<T> {
   @Override
   public void removeSelectionVetor(Vetor vetor) {
     //To change body of implemented methods use File | Settings | File Templates.
+  }
+
+  @Override
+  public void setCellRenderer(AgnosticUIConfiguration<T> renderer) {
+    view.setCellFactory(new ConfigurableListCellFactory<T>(renderer));
   }
 
   @Override
