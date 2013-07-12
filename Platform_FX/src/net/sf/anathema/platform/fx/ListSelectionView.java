@@ -42,7 +42,7 @@ public class ListSelectionView<T> implements VetoableObjectSelectionView<T> {
 
   @Override
   public void setCellRenderer(AgnosticUIConfiguration<T> renderer) {
-    view.setCellFactory(new ConfigurableListCellFactory<T>(renderer));
+    view.setCellFactory(new ConfigurableListCellFactory<>(renderer));
   }
 
   @Override
