@@ -1,4 +1,4 @@
-package net.sf.anathema.hero.abilities.points.creation;
+package net.sf.anathema.hero.abilities.advance.creation;
 
 import net.sf.anathema.character.main.template.creation.ICreationPoints;
 import net.sf.anathema.hero.advance.experience.models.AbstractSpendingModel;

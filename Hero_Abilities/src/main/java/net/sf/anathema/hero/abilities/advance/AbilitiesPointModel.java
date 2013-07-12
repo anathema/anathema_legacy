@@ -1,8 +1,12 @@
-package net.sf.anathema.hero.abilities.points.creation;
+package net.sf.anathema.hero.abilities.advance;
 
 import net.sf.anathema.character.main.template.creation.BonusPointCosts;
 import net.sf.anathema.character.main.template.points.IAbilityCreationPoints;
 import net.sf.anathema.hero.abilities.model.AbilityModelFetcher;
+import net.sf.anathema.hero.abilities.advance.creation.AbilityCostCalculatorImpl;
+import net.sf.anathema.hero.abilities.advance.creation.DefaultAbilityBonusModel;
+import net.sf.anathema.hero.abilities.advance.creation.FavoredAbilityBonusModel;
+import net.sf.anathema.hero.abilities.advance.creation.FavoredAbilityPickModel;
 import net.sf.anathema.hero.change.ChangeAnnouncer;
 import net.sf.anathema.hero.model.Hero;
 import net.sf.anathema.hero.model.HeroModel;
