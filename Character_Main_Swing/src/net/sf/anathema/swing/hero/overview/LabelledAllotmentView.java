@@ -11,7 +11,7 @@ import java.util.Collection;
 public class LabelledAllotmentView extends AbstractLabelledIntegerValueView implements
         net.sf.anathema.character.main.view.labelledvalue.LabelledAllotmentView {
 
-  private final JLabel seperatorLabel;
+  private final JLabel separatorLabel;
   protected final JLabel maxPointLabel;
 
   public LabelledAllotmentView(String labelText, int currentPoints, int maxPoints, int maxValueLength) {
@@ -21,20 +21,20 @@ public class LabelledAllotmentView extends AbstractLabelledIntegerValueView impl
         createLengthString(maxValueLength),
         SwingConstants.RIGHT,
         true);
-    this.seperatorLabel = createLabel("/", "/", SwingConstants.CENTER, true);
+    this.separatorLabel = createLabel("/", "/", SwingConstants.CENTER, true);
   }
 
   public void addTo(JPanel panel) {
     panel.add(titleLabel, new CC().growX().pushX());
     panel.add(valueLabel, new CC().growX());
-    panel.add(seperatorLabel, new CC().alignX("right"));
+    panel.add(separatorLabel, new CC().alignX("right"));
     panel.add(maxPointLabel, new CC().alignX("right"));
   }
 
   @Override
   protected Collection<JComponent> getComponents() {
     Collection<JComponent> collection = super.getComponents();
-    collection.add(seperatorLabel);
+    collection.add(separatorLabel);
     collection.add(maxPointLabel);
     return collection;
   }
