@@ -8,27 +8,23 @@ import net.sf.anathema.swing.interaction.ActionInteraction;
 import org.jdesktop.swingx.JXTaskPane;
 import org.jdesktop.swingx.JXTaskPaneContainer;
 
+import javax.swing.JComponent;
 import javax.swing.JLabel;
 
 public class SwingComboView implements ComboView {
 
   private final JXTaskPane taskPaneGroup = new JXTaskPane();
   private final JXTaskPaneContainer parent;
-  private JLabel label;
+  private JLabel label = new JLabel();
 
-  public SwingComboView(JXTaskPaneContainer parent) {
+  public SwingComboView(JXTaskPaneContainer parent, String name, String description) {
     this.parent = parent;
-  }
-
-  public JXTaskPane getTaskGroup() {
-    return taskPaneGroup;
-  }
-
-  @Override
-  public void initGui(String name, String description) {
-    label = new JLabel(description);
     taskPaneGroup.add(label);
-    taskPaneGroup.setTitle(name);
+    updateCombo(name, description);
+  }
+
+  public JComponent getComponent() {
+    return taskPaneGroup;
   }
 
   @Override

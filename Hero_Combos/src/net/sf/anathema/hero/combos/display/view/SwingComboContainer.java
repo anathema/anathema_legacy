@@ -21,9 +21,8 @@ public class SwingComboContainer implements ComboContainer {
 
   @Override
   public ComboView addView(String name, String description) {
-    SwingComboView comboView = new SwingComboView(comboPane);
-    comboView.initGui(name, description);
-    comboPane.add(comboView.getTaskGroup());
+    SwingComboView comboView = new SwingComboView(comboPane, name, description);
+    comboPane.add(comboView.getComponent());
     return comboView;
   }
 }
