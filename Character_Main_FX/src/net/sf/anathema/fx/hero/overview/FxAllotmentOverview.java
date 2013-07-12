@@ -2,13 +2,13 @@ package net.sf.anathema.fx.hero.overview;
 
 import javafx.scene.control.Label;
 import net.miginfocom.layout.CC;
-import net.sf.anathema.character.main.view.labelledvalue.ILabelledAlotmentView;
+import net.sf.anathema.character.main.view.labelledvalue.ILabelledAllotmentView;
 import net.sf.anathema.framework.ui.RGBColor;
 import net.sf.anathema.lib.control.legality.FontStyle;
 import net.sf.anathema.platform.fx.FxThreading;
 import org.tbee.javafx.scene.layout.MigPane;
 
-public class FxAlotmentOverview implements ILabelledAlotmentView {
+public class FxAllotmentOverview implements ILabelledAllotmentView {
 
 
   private final Label titleLabel = new Label();
@@ -17,7 +17,7 @@ public class FxAlotmentOverview implements ILabelledAlotmentView {
   private final Label alotmentLabel = new Label();
   private final FontStyler styler = new FontStyler(titleLabel, valueLabel, separatorLabel, alotmentLabel);
 
-  public FxAlotmentOverview(String labelText) {
+  public FxAllotmentOverview(String labelText) {
     titleLabel.setText(labelText);
     separatorLabel.setText("/");
   }

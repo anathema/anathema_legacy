@@ -1,15 +1,15 @@
 package net.sf.anathema.character.main.presenter.overview;
 
-import net.sf.anathema.character.main.view.labelledvalue.ILabelledAlotmentView;
+import net.sf.anathema.character.main.view.labelledvalue.ILabelledAllotmentView;
 import net.sf.anathema.hero.points.overview.SpendingModel;
 
-public class AlotmentSubPresenter implements IOverviewSubPresenter {
+public class AllotmentSubPresenter implements IOverviewSubPresenter {
 
-  private final ILabelledAlotmentView view;
+  private final ILabelledAllotmentView view;
   private final SpendingModel model;
   private final FontParameterSetter setter;
 
-  public AlotmentSubPresenter(SpendingModel model, ILabelledAlotmentView view) {
+  public AllotmentSubPresenter(SpendingModel model, ILabelledAllotmentView view) {
     this.model = model;
     this.view = view;
     this.setter = new FontParameterSetter(model, view);

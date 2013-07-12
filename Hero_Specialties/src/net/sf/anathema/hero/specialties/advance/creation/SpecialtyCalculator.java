@@ -1,4 +1,4 @@
-package net.sf.anathema.hero.specialties.points.creation;
+package net.sf.anathema.hero.specialties.advance.creation;
 
 import net.sf.anathema.character.main.template.creation.IGenericSpecialty;
 import net.sf.anathema.character.main.template.experience.AbilityPointCosts;

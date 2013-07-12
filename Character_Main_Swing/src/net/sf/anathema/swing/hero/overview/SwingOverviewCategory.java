@@ -2,7 +2,7 @@ package net.sf.anathema.swing.hero.overview;
 
 import net.miginfocom.swing.MigLayout;
 import net.sf.anathema.character.main.library.overview.OverviewCategory;
-import net.sf.anathema.character.main.view.labelledvalue.ILabelledAlotmentView;
+import net.sf.anathema.character.main.view.labelledvalue.ILabelledAllotmentView;
 import net.sf.anathema.character.main.view.labelledvalue.IValueView;
 import net.sf.anathema.framework.swing.IView;
 
@@ -33,8 +33,8 @@ public class SwingOverviewCategory implements OverviewCategory, IView {
   }
 
   @Override
-  public ILabelledAlotmentView addAlotmentView(String labelText, int maxValueLength) {
-    LabelledAlotmentView view = new LabelledAlotmentView(labelText, 0, 0, maxValueLength);
+  public ILabelledAllotmentView addAlotmentView(String labelText, int maxValueLength) {
+    LabelledAllotmentView view = new LabelledAllotmentView(labelText, 0, 0, maxValueLength);
     view.addTo(panel);
     return view;
   }

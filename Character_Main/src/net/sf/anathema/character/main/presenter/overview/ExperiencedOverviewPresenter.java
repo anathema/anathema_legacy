@@ -1,10 +1,10 @@
 package net.sf.anathema.character.main.presenter.overview;
 
+import net.sf.anathema.character.main.view.labelledvalue.ILabelledAllotmentView;
 import net.sf.anathema.hero.advance.experience.ExperiencePointConfigurationListener;
 import net.sf.anathema.hero.advance.experience.ExperiencePointManagement;
 import net.sf.anathema.character.main.library.overview.OverviewCategory;
 import net.sf.anathema.character.main.view.CategorizedOverview;
-import net.sf.anathema.character.main.view.labelledvalue.ILabelledAlotmentView;
 import net.sf.anathema.character.main.view.labelledvalue.IValueView;
 import net.sf.anathema.hero.change.ChangeFlavor;
 import net.sf.anathema.hero.change.FlavoredChangeListener;
@@ -26,7 +26,7 @@ public class ExperiencedOverviewPresenter implements Presenter {
   private final Resources resources;
   private final List<IOverviewSubPresenter> presenters = new ArrayList<>();
 
-  private ILabelledAlotmentView totalView;
+  private ILabelledAllotmentView totalView;
 
   public ExperiencedOverviewPresenter(Resources resources, final Hero hero, CategorizedOverview overview,
                                       ExperiencePointManagement experiencePoints) {

@@ -5,7 +5,7 @@ import net.sf.anathema.character.main.library.overview.OverviewCategory;
 import net.sf.anathema.character.main.library.removableentry.RemovableEntryListener;
 import net.sf.anathema.character.main.library.trait.presenter.TraitPresenter;
 import net.sf.anathema.character.main.presenter.ExtensibleTraitView;
-import net.sf.anathema.character.main.view.labelledvalue.ILabelledAlotmentView;
+import net.sf.anathema.character.main.view.labelledvalue.ILabelledAllotmentView;
 import net.sf.anathema.character.main.view.labelledvalue.IValueView;
 import net.sf.anathema.framework.presenter.resources.BasicUi;
 import net.sf.anathema.hero.change.ChangeFlavor;
@@ -60,15 +60,15 @@ public class IntimaciesPresenter {
   private void initOverviewView() {
     final OverviewCategory creationOverview = view.addOverview(
             resources.getString("Intimacies.Overview.BorderLabel"));
-    final ILabelledAlotmentView freeIntimaciesView = creationOverview.addAlotmentView(
+    final ILabelledAllotmentView freeIntimaciesView = creationOverview.addAlotmentView(
             resources.getString("Intimacies.Overview.Free"), 2);
-    final ILabelledAlotmentView totalIntimaciesView = creationOverview.addAlotmentView(
+    final ILabelledAllotmentView totalIntimaciesView = creationOverview.addAlotmentView(
             resources.getString("Intimacies.Overview.Maximum"), 2);
     final IValueView<Integer> bonusPointsView = creationOverview.addIntegerValueView(
             resources.getString("Intimacies.Overview.BonusPoints"), 2);
     final OverviewCategory experienceOverview = view.addOverview(
             resources.getString("Intimacies.Overview.BorderLabel"));
-    final ILabelledAlotmentView experienceMaximumView = experienceOverview.addAlotmentView(
+    final ILabelledAllotmentView experienceMaximumView = experienceOverview.addAlotmentView(
             resources.getString("Intimacies.Overview.Maximum"), 2);
     model.addModelChangeListener(new ChangeListener() {
       @Override
@@ -114,8 +114,8 @@ public class IntimaciesPresenter {
     }
   }
 
-  private void recalculateOverview(ILabelledAlotmentView freeIntimaciesView, ILabelledAlotmentView totalIntimaciesView,
-                                   IValueView<Integer> bonusPointsView, ILabelledAlotmentView experienceMaximumView) {
+  private void recalculateOverview(ILabelledAllotmentView freeIntimaciesView, ILabelledAllotmentView totalIntimaciesView,
+                                   IValueView<Integer> bonusPointsView, ILabelledAllotmentView experienceMaximumView) {
     adjustBonusPointsOverview(freeIntimaciesView, model.getEntries().size(), model.getFreeIntimacies());
     adjustTotalOverview(totalIntimaciesView, model.getEntries().size(), model.getIntimaciesLimit());
     adjustTotalOverview(experienceMaximumView, model.getEntries().size(), model.getIntimaciesLimit());
@@ -128,14 +128,14 @@ public class IntimaciesPresenter {
     valueView.setValue(bonusPointCalculator.getBonusPointCost());
   }
 
-  private void adjustTotalOverview(ILabelledAlotmentView alotmentView, int currentValue, int maxValue) {
+  private void adjustTotalOverview(ILabelledAllotmentView alotmentView, int currentValue, int maxValue) {
     alotmentView.setValue(currentValue);
     alotmentView.setAlotment(maxValue);
     ValueLegalityState state = currentValue > maxValue ? ValueLegalityState.High : ValueLegalityState.Okay;
     alotmentView.setTextColor(new LegalityColorProvider().getTextColor(state));
   }
 
-  private void adjustBonusPointsOverview(ILabelledAlotmentView alotmentView, int currentValue, int maxValue) {
+  private void adjustBonusPointsOverview(ILabelledAllotmentView alotmentView, int currentValue, int maxValue) {
     alotmentView.setValue(Math.min(currentValue, maxValue));
     alotmentView.setAlotment(maxValue);
     ValueLegalityState state = currentValue > maxValue ? ValueLegalityState.Increased : ValueLegalityState.Okay;

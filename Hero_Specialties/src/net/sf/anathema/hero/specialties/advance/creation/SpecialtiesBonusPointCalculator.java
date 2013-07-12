@@ -1,4 +1,4 @@
-package net.sf.anathema.hero.specialties.points.creation;
+package net.sf.anathema.hero.specialties.advance.creation;
 
 import net.sf.anathema.character.main.template.creation.IGenericSpecialty;
 import net.sf.anathema.character.main.library.trait.Trait;
@@ -13,7 +13,7 @@ import net.sf.anathema.hero.points.HeroBonusPointCalculator;
 import java.util.ArrayList;
 import java.util.List;
 
-public class SpecialtiesCostCalculator implements HeroBonusPointCalculator {
+public class SpecialtiesBonusPointCalculator implements HeroBonusPointCalculator {
 
   private SpecialtyCalculator specialtyCalculator;
   private Hero hero;
@@ -21,7 +21,7 @@ public class SpecialtiesCostCalculator implements HeroBonusPointCalculator {
   private int specialtyBonusPointCosts;
   private int specialtyDotSum;
 
-  public SpecialtiesCostCalculator(Hero hero, TraitMap traitMap, int specialtyPoints) {
+  public SpecialtiesBonusPointCalculator(Hero hero, TraitMap traitMap, int specialtyPoints) {
     this.hero = hero;
     this.traitMap = traitMap;
     this.specialtyCalculator = new SpecialtyCalculator(traitMap, specialtyPoints);

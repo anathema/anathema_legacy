@@ -2,7 +2,7 @@ package net.sf.anathema.hero.languages.display.presenter;
 
 import net.sf.anathema.character.main.library.overview.OverviewCategory;
 import net.sf.anathema.character.main.library.removableentry.RemovableEntryListener;
-import net.sf.anathema.character.main.view.labelledvalue.ILabelledAlotmentView;
+import net.sf.anathema.character.main.view.labelledvalue.ILabelledAllotmentView;
 import net.sf.anathema.character.main.view.labelledvalue.IValueView;
 import net.sf.anathema.framework.presenter.resources.BasicUi;
 import net.sf.anathema.hero.languages.model.LanguagesModel;
@@ -45,7 +45,7 @@ public class LanguagesPresenter {
             resources.getString("Linguistics.Overview.Families"), 1);
     final IValueView<Integer> barbarianView = overview.addIntegerValueView(
             resources.getString("Linguistics.Overview.Barbarian"), 2);
-    final ILabelledAlotmentView totalView = overview.addAlotmentView(
+    final ILabelledAllotmentView totalView = overview.addAlotmentView(
             resources.getString("Linguistics.Overview.Total"), 2);
     model.addModelChangeListener(new RemovableEntryListener<Identifier>() {
       @Override
@@ -74,7 +74,7 @@ public class LanguagesPresenter {
 
   private void updateOverview(
           IValueView<Integer> familyView,
-          ILabelledAlotmentView totalView,
+          ILabelledAllotmentView totalView,
           IValueView<Integer> barbarianView) {
     familyView.setValue(model.getPredefinedLanguageCount());
     barbarianView.setValue(model.getBarbarianLanguageCount());

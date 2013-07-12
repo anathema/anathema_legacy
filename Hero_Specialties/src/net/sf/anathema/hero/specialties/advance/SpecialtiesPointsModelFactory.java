@@ -1,4 +1,4 @@
-package net.sf.anathema.hero.specialties.points.creation;
+package net.sf.anathema.hero.specialties.advance;
 
 import net.sf.anathema.hero.abilities.model.AbilitiesModel;
 import net.sf.anathema.hero.attributes.model.AttributeModel;

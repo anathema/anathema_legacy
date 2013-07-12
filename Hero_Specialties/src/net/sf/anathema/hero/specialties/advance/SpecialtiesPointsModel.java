@@ -1,7 +1,9 @@
-package net.sf.anathema.hero.specialties.points.creation;
+package net.sf.anathema.hero.specialties.advance;
 
 import net.sf.anathema.character.main.template.creation.ICreationPoints;
 import net.sf.anathema.hero.abilities.model.AbilityModelFetcher;
+import net.sf.anathema.hero.specialties.advance.creation.SpecialtiesBonusPointCalculator;
+import net.sf.anathema.hero.specialties.advance.creation.SpecialtyBonusModel;
 import net.sf.anathema.hero.traits.TraitMap;
 import net.sf.anathema.hero.change.ChangeAnnouncer;
 import net.sf.anathema.hero.model.Hero;
@@ -27,9 +29,9 @@ public class SpecialtiesPointsModel implements HeroModel {
     PointsModel pointsModel = PointModelFetcher.fetch(hero);
     TraitMap traitMap = AbilityModelFetcher.fetch(hero);
     int specialtyCreationPoints = creationPoints.getSpecialtyCreationPoints();
-    SpecialtiesCostCalculator specialtiesCostCalculator = new SpecialtiesCostCalculator(hero, traitMap, specialtyCreationPoints);
-    pointsModel.addBonusPointCalculator(specialtiesCostCalculator);
-    pointsModel.addToBonusOverview(new SpecialtyBonusModel(specialtiesCostCalculator, creationPoints));
+    SpecialtiesBonusPointCalculator specialtiesBonusPointCalculator = new SpecialtiesBonusPointCalculator(hero, traitMap, specialtyCreationPoints);
+    pointsModel.addBonusPointCalculator(specialtiesBonusPointCalculator);
+    pointsModel.addToBonusOverview(new SpecialtyBonusModel(specialtiesBonusPointCalculator, creationPoints));
   }
 
   @Override

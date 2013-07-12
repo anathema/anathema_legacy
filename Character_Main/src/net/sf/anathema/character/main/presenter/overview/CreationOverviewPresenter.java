@@ -2,7 +2,7 @@ package net.sf.anathema.character.main.presenter.overview;
 
 import net.sf.anathema.character.main.library.overview.OverviewCategory;
 import net.sf.anathema.character.main.view.CategorizedOverview;
-import net.sf.anathema.character.main.view.labelledvalue.ILabelledAlotmentView;
+import net.sf.anathema.character.main.view.labelledvalue.ILabelledAllotmentView;
 import net.sf.anathema.character.main.view.labelledvalue.IValueView;
 import net.sf.anathema.hero.advance.creation.IBonusPointManagement;
 import net.sf.anathema.hero.change.ChangeFlavor;
@@ -46,14 +46,14 @@ public class CreationOverviewPresenter implements Presenter {
 
   @Override
   public void initPresentation() {
-    this.management.recalculate();
+    initCategories();
+    initModels();
+    updateOverview();
+  }
+
+  private void initCategories() {
     initCategory(management.getSummaryCategory());
     initCategories(PointModelFetcher.fetch(hero).getBonusCategories());
-    for (IOverviewModel model : PointModelFetcher.fetch(hero).getBonusOverviewModels()) {
-      model.accept(new InitPresentationVisitor());
-    }
-    management.getTotalModel().accept(new InitPresentationVisitor());
-    updateOverview();
   }
 
   private void initCategories(Iterable<WeightedCategory> bonusCategories) {
@@ -68,6 +68,13 @@ public class CreationOverviewPresenter implements Presenter {
       category = view.addOverviewCategory(getString("Overview.Creation.Category." + categoryId));
       categoriesById.put(categoryId, category);
     }
+  }
+
+  private void initModels() {
+    for (IOverviewModel model : PointModelFetcher.fetch(hero).getBonusOverviewModels()) {
+      model.accept(new InitPresentationVisitor());
+    }
+    management.getTotalModel().accept(new InitPresentationVisitor());
   }
 
   private void updateOverview() {
@@ -103,8 +110,8 @@ public class CreationOverviewPresenter implements Presenter {
     @Override
     public void visitAllotmentModel(SpendingModel visitedModel) {
       OverviewCategory overviewCategory = categoriesById.get(visitedModel.getCategoryId());
-      ILabelledAlotmentView valueView = overviewCategory.addAlotmentView(getLabelString(visitedModel), 2);
-      presenters.add(new AlotmentSubPresenter(visitedModel, valueView));
+      ILabelledAllotmentView valueView = overviewCategory.addAlotmentView(getLabelString(visitedModel), 2);
+      presenters.add(new AllotmentSubPresenter(visitedModel, valueView));
     }
   }
 }
