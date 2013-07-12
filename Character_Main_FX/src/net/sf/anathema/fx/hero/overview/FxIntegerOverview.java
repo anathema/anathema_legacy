@@ -28,8 +28,13 @@ public class FxIntegerOverview implements IValueView<Integer> {
   }
 
   @Override
-  public void setValue(Integer value) {
-    valueLabel.setText(String.valueOf(value));
+  public void setValue(final Integer value) {
+    FxThreading.runOnCorrectThread(new Runnable() {
+      @Override
+      public void run() {
+        valueLabel.setText(String.valueOf(value));
+      }
+    });
   }
 
   @Override
