@@ -8,6 +8,7 @@ import net.sf.anathema.hero.concept.CasteCollection;
 import net.sf.anathema.hero.concept.CasteSelection;
 import net.sf.anathema.hero.concept.ConceptChange;
 import net.sf.anathema.hero.concept.HeroConcept;
+import net.sf.anathema.hero.concept.advance.CreationOverviewInitializer;
 import net.sf.anathema.hero.model.Hero;
 import net.sf.anathema.hero.model.HeroModel;
 import net.sf.anathema.hero.model.InitializationContext;
@@ -29,7 +30,7 @@ public class DefaultHeroConcept implements HeroConcept, HeroModel {
 
   @Override
   public void initialize(InitializationContext context, Hero hero) {
-    // nothing to do
+    new CreationOverviewInitializer().initialize(hero, this);
   }
 
   @Override
