@@ -1,7 +1,7 @@
 package net.sf.anathema.hero.spells.model;
 
 import net.sf.anathema.character.main.magic.model.magic.Magic;
-import net.sf.anathema.character.main.magic.model.spells.Spell;
+import net.sf.anathema.character.main.magic.model.spells.SpellImpl;
 import net.sf.anathema.hero.magic.advance.creation.MagicLearner;
 
 import java.util.Arrays;
@@ -17,7 +17,7 @@ public class SpellsLearner implements MagicLearner {
 
   @Override
   public boolean handlesMagic(Magic magic) {
-    return magic instanceof Spell;
+    return magic instanceof SpellImpl;
   }
 
   @Override

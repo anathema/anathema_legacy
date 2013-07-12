@@ -1,17 +1,17 @@
-package net.sf.anathema.character.main.magic.model.charm;
+package net.sf.anathema.character.main.magic.model.magic.attribute;
 
 import net.sf.anathema.lib.util.SimpleIdentifier;
 
-public class CharmAttribute extends SimpleIdentifier implements ICharmAttribute {
+public class MagicAttributeImpl extends SimpleIdentifier implements MagicAttribute {
 
   private final boolean visualized;
   private final String value;
 
-  public CharmAttribute(String id, boolean visualized) {
+  public MagicAttributeImpl(String id, boolean visualized) {
     this(id, visualized, null);
   }
 
-  public CharmAttribute(String id, boolean visualized, String value) {
+  public MagicAttributeImpl(String id, boolean visualized, String value) {
     super(id);
     this.visualized = visualized;
     this.value = value;

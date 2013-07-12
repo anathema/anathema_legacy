@@ -1,6 +1,6 @@
 package net.sf.anathema.character.main.magic.model.charmtree.builder.stringbuilder;
 
-import net.sf.anathema.character.main.magic.model.magic.ICost;
+import net.sf.anathema.character.main.magic.model.magic.cost.ICost;
 import net.sf.anathema.lib.gui.TooltipBuilder;
 import net.sf.anathema.lib.lang.StringUtilities;
 import net.sf.anathema.lib.resources.Resources;

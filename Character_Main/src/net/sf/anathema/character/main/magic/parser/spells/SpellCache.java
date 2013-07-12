@@ -1,19 +1,19 @@
 package net.sf.anathema.character.main.magic.parser.spells;
 
-import net.sf.anathema.character.main.magic.model.spells.ISpell;
+import net.sf.anathema.character.main.magic.model.spells.Spell;
 
 import java.util.ArrayList;
 import java.util.List;
 
 public class SpellCache implements ISpellCache {
-  private List<ISpell> spellList = new ArrayList<>();
+  private List<Spell> spellList = new ArrayList<>();
 
-  public void addSpell(ISpell spell) {
+  public void addSpell(Spell spell) {
     spellList.add(spell);
   }
 
   @Override
-  public ISpell[] getSpells() {
-    return spellList.toArray(new ISpell[0]);
+  public Spell[] getSpells() {
+    return spellList.toArray(new Spell[0]);
   }
 }

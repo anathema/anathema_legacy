@@ -2,7 +2,7 @@ package net.sf.anathema.hero.spells.model;
 
 import net.sf.anathema.character.main.UnspecifiedChangeListener;
 import net.sf.anathema.character.main.magic.model.spells.CircleType;
-import net.sf.anathema.character.main.magic.model.spells.ISpell;
+import net.sf.anathema.character.main.magic.model.spells.Spell;
 import net.sf.anathema.character.main.magic.model.spells.ISpellMapper;
 import net.sf.anathema.character.main.magic.model.spells.SpellMapper;
 import net.sf.anathema.character.main.template.HeroTemplate;
@@ -35,10 +35,10 @@ import java.util.Map;
 public class SpellsModelImpl implements SpellsModel {
 
   private final ProxySpellLearnStrategy strategy = new ProxySpellLearnStrategy(new CreationSpellLearnStrategy());
-  private final List<ISpell> creationLearnedList = new ArrayList<>();
-  private final List<ISpell> experiencedLearnedList = new ArrayList<>();
+  private final List<Spell> creationLearnedList = new ArrayList<>();
+  private final List<Spell> experiencedLearnedList = new ArrayList<>();
   private final Announcer<ChangeListener> changeControl = Announcer.to(ChangeListener.class);
-  private final Map<CircleType, List<ISpell>> spellsByCircle = new HashMap<>();
+  private final Map<CircleType, List<Spell>> spellsByCircle = new HashMap<>();
   private final ISpellMapper spellMapper = new SpellMapper();
   private CharmsModel charms;
   private HeroTemplate heroTemplate;
@@ -60,9 +60,9 @@ public class SpellsModelImpl implements SpellsModel {
 
   private void initializeSpellsByCircle(InitializationContext context) {
     for (CircleType type : CircleType.values()) {
-      spellsByCircle.put(type, new ArrayList<ISpell>());
+      spellsByCircle.put(type, new ArrayList<Spell>());
     }
-    for (ISpell spell : context.getSpellCache().getSpells()) {
+    for (Spell spell : context.getSpellCache().getSpells()) {
       spellsByCircle.get(spell.getCircleType()).add(spell);
     }
   }
@@ -99,13 +99,13 @@ public class SpellsModelImpl implements SpellsModel {
   }
 
   @Override
-  public void removeSpells(List<ISpell> removedSpells) {
+  public void removeSpells(List<Spell> removedSpells) {
     strategy.removeSpells(this, removedSpells);
   }
 
   @Override
-  public void removeSpells(List<ISpell> removedSpells, boolean experienced) {
-    for (ISpell spell : removedSpells) {
+  public void removeSpells(List<Spell> removedSpells, boolean experienced) {
+    for (Spell spell : removedSpells) {
       if (experienced) {
         experiencedLearnedList.remove(spell);
       } else {
@@ -116,9 +116,9 @@ public class SpellsModelImpl implements SpellsModel {
   }
 
   @Override
-  public void addSpells(List<ISpell> addedSpells) {
-    List<ISpell> allowedSpells = new ArrayList<>();
-    for (ISpell spell : addedSpells) {
+  public void addSpells(List<Spell> addedSpells) {
+    List<Spell> allowedSpells = new ArrayList<>();
+    for (Spell spell : addedSpells) {
       if (isSpellAllowed(spell)) {
         allowedSpells.add(spell);
       }
@@ -127,8 +127,8 @@ public class SpellsModelImpl implements SpellsModel {
   }
 
   @Override
-  public void addSpells(List<ISpell> addedSpells, boolean experienced) {
-    for (ISpell spell : addedSpells) {
+  public void addSpells(List<Spell> addedSpells, boolean experienced) {
+    for (Spell spell : addedSpells) {
       if (isSpellAllowed(spell, experienced)) {
         if (experienced) {
           experiencedLearnedList.add(spell);
@@ -147,12 +147,12 @@ public class SpellsModelImpl implements SpellsModel {
   }
 
   @Override
-  public boolean isSpellAllowed(ISpell spell) {
+  public boolean isSpellAllowed(Spell spell) {
     return strategy.isSpellAllowed(this, spell);
   }
 
   @Override
-  public boolean isSpellAllowed(ISpell spell, boolean experienced) {
+  public boolean isSpellAllowed(Spell spell, boolean experienced) {
     if (creationLearnedList.contains(spell) || (experienced && experiencedLearnedList.contains(spell))) {
       return false;
     }
@@ -161,18 +161,18 @@ public class SpellsModelImpl implements SpellsModel {
   }
 
   @Override
-  public ISpell[] getLearnedSpells() {
+  public Spell[] getLearnedSpells() {
     return strategy.getLearnedSpells(this);
   }
 
   @Override
-  public ISpell[] getLearnedSpells(boolean experienced) {
-    List<ISpell> list = new ArrayList<>();
+  public Spell[] getLearnedSpells(boolean experienced) {
+    List<Spell> list = new ArrayList<>();
     list.addAll(creationLearnedList);
     if (experienced) {
       list.addAll(experiencedLearnedList);
     }
-    return list.toArray(new ISpell[list.size()]);
+    return list.toArray(new Spell[list.size()]);
   }
 
   @Override
@@ -181,18 +181,18 @@ public class SpellsModelImpl implements SpellsModel {
   }
 
   @Override
-  public ISpell[] getSpellsByCircle(CircleType circle) {
-    List<ISpell> spells = spellsByCircle.get(circle);
+  public Spell[] getSpellsByCircle(CircleType circle) {
+    List<Spell> spells = spellsByCircle.get(circle);
     if (spells != null) {
-      return spells.toArray(new ISpell[spells.size()]);
+      return spells.toArray(new Spell[spells.size()]);
     }
-    return new ISpell[0];
+    return new Spell[0];
   }
 
   @Override
-  public ISpell getSpellById(String id) {
+  public Spell getSpellById(String id) {
     String correctedId = spellMapper.getId(id);
-    for (ISpell spell : getAllSpells()) {
+    for (Spell spell : getAllSpells()) {
       if (spell.getId().equals(correctedId)) {
         return spell;
       }
@@ -200,41 +200,41 @@ public class SpellsModelImpl implements SpellsModel {
     throw new IllegalArgumentException("No Spell for id: " + id);
   }
 
-  private Iterable<ISpell> getAllSpells() {
-    List<ISpell> allSpells = new ArrayList<>();
-    for (List<ISpell> circleSpells : spellsByCircle.values()) {
+  private Iterable<Spell> getAllSpells() {
+    List<Spell> allSpells = new ArrayList<>();
+    for (List<Spell> circleSpells : spellsByCircle.values()) {
       allSpells.addAll(circleSpells);
     }
     return allSpells;
   }
 
   @Override
-  public boolean isLearnedOnCreation(ISpell spell) {
+  public boolean isLearnedOnCreation(Spell spell) {
     return creationLearnedList.contains(spell);
   }
 
   @Override
-  public boolean isLearnedOnCreationOrExperience(ISpell spell) {
+  public boolean isLearnedOnCreationOrExperience(Spell spell) {
     return experiencedLearnedList.contains(spell) || isLearnedOnCreation(spell);
   }
 
   @Override
-  public boolean isLearned(ISpell spell) {
+  public boolean isLearned(Spell spell) {
     return strategy.isLearned(this, spell);
   }
 
   @Override
-  public List<ISpell> getAvailableSpellsInCircle(CircleType circle) {
-    List<ISpell> showSpells = new ArrayList<>();
+  public List<Spell> getAvailableSpellsInCircle(CircleType circle) {
+    List<Spell> showSpells = new ArrayList<>();
     Collections.addAll(showSpells, getSpellsByCircle(circle));
     showSpells.removeAll(Arrays.asList(getLearnedSpells()));
     return showSpells;
   }
 
   @Override
-  public List<ISpell> getLearnedSpellsInCircles(CircleType[] eligibleCircles) {
-    List<ISpell> spellList = new ArrayList<>();
-    for (ISpell spell : getLearnedSpells()) {
+  public List<Spell> getLearnedSpellsInCircles(CircleType[] eligibleCircles) {
+    List<Spell> spellList = new ArrayList<>();
+    for (Spell spell : getLearnedSpells()) {
       if (ArrayUtils.contains(eligibleCircles, spell.getCircleType())) {
         spellList.add(spell);
       }

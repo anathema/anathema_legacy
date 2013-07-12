@@ -2,7 +2,7 @@ package net.sf.anathema.character.main.template.experience;
 
 import net.sf.anathema.character.main.IGenericTraitCollection;
 import net.sf.anathema.character.main.magic.model.charm.Charm;
-import net.sf.anathema.character.main.magic.model.spells.ISpell;
+import net.sf.anathema.character.main.magic.model.spells.Spell;
 import net.sf.anathema.hero.model.Hero;
 
 public interface IExperiencePointCosts {
@@ -21,5 +21,5 @@ public interface IExperiencePointCosts {
 
   CurrentRatingCosts getWillpowerCosts();
 
-  int getSpellCosts(ISpell spell, Hero hero, IGenericTraitCollection traitCollection);
+  int getSpellCosts(Spell spell, Hero hero, IGenericTraitCollection traitCollection);
 }

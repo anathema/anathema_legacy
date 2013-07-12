@@ -2,7 +2,7 @@ package net.sf.anathema.hero.charms.sheet.content.stats;
 
 import net.sf.anathema.character.main.magic.model.charm.Charm;
 import net.sf.anathema.character.main.magic.model.charmtree.builder.MagicDisplayLabeler;
-import net.sf.anathema.character.main.magic.model.magic.IMagicStats;
+import net.sf.anathema.character.main.magic.sheet.content.IMagicStats;
 import net.sf.anathema.hero.charms.sheet.content.CharmContentHelper;
 import net.sf.anathema.hero.model.Hero;
 import net.sf.anathema.lib.resources.Resources;

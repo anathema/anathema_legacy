@@ -14,7 +14,7 @@ import net.sf.anathema.character.main.magic.model.charmtree.builder.stringbuilde
 import net.sf.anathema.character.main.magic.model.charmtree.builder.stringbuilder.source.MagicSourceStringBuilder;
 import net.sf.anathema.character.main.magic.model.charmtree.builder.stringbuilder.type.VerboseCharmTypeStringBuilder;
 import net.sf.anathema.character.main.magic.model.magic.Magic;
-import net.sf.anathema.character.main.magic.model.spells.ISpell;
+import net.sf.anathema.character.main.magic.model.spells.Spell;
 import net.sf.anathema.framework.IApplicationModel;
 import net.sf.anathema.framework.reporting.ReportException;
 import net.sf.anathema.framework.reporting.pdf.AbstractPdfReport;
@@ -65,7 +65,7 @@ public class MagicReport extends AbstractPdfReport {
 
   private void printSpells(MultiColumnText columnText, Hero hero) throws DocumentException {
     String currentGroup = "";
-    for (ISpell spell : getCurrentSpells(hero)) {
+    for (Spell spell : getCurrentSpells(hero)) {
       SpellStats spellStats = createSpellStats(spell);
       String nextGroupName = format("{0} {1}", spellStats.getType(resources), spellStats.getGroupName(resources));
       if (!currentGroup.equals(nextGroupName)) {
@@ -93,7 +93,7 @@ public class MagicReport extends AbstractPdfReport {
     }
   }
 
-  private void addSpellCost(ISpell charm, MultiColumnText columnText) throws DocumentException {
+  private void addSpellCost(Spell charm, MultiColumnText columnText) throws DocumentException {
     String costsLabel = resources.getString("MagicReport.Costs.Label") + ": ";
     String costsValue = new ScreenDisplayInfoStringBuilder(resources).createCostString(charm);
     columnText.addElement(partFactory.createDataPhrase(costsLabel, costsValue));
@@ -159,7 +159,7 @@ public class MagicReport extends AbstractPdfReport {
     return new CharmStats(charm, new CharmContentHelper(hero));
   }
 
-  private SpellStats createSpellStats(ISpell spell) {
+  private SpellStats createSpellStats(Spell spell) {
     return new SpellStats(spell);
   }
 
@@ -183,7 +183,7 @@ public class MagicReport extends AbstractPdfReport {
     return getCurrentCharms(hero).length > 0;
   }
 
-  private ISpell[] getCurrentSpells(Hero hero) {
+  private Spell[] getCurrentSpells(Hero hero) {
     boolean experienced = ExperienceModelFetcher.fetch(hero).isExperienced();
     return SpellsModelFetcher.fetch(hero).getLearnedSpells(experienced);
   }

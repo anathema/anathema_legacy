@@ -1,6 +1,6 @@
 package net.sf.anathema.hero.magic.sheet.content.mnemonic;
 
-import net.sf.anathema.character.main.magic.model.magic.IMagicStats;
+import net.sf.anathema.character.main.magic.sheet.content.IMagicStats;
 
 import java.util.ArrayList;
 import java.util.List;

@@ -1,4 +1,4 @@
-package net.sf.anathema.character.main.magic.model.magic;
+package net.sf.anathema.character.main.magic.sheet.content;
 
 import net.sf.anathema.character.main.util.IStats;
 import net.sf.anathema.lib.resources.Resources;

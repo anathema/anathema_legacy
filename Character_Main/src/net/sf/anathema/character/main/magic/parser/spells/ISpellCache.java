@@ -1,8 +1,8 @@
 package net.sf.anathema.character.main.magic.parser.spells;
 
 import net.sf.anathema.character.main.framework.data.IExtensibleDataSet;
-import net.sf.anathema.character.main.magic.model.spells.ISpell;
+import net.sf.anathema.character.main.magic.model.spells.Spell;
 
 public interface ISpellCache extends IExtensibleDataSet {
-  ISpell[] getSpells();
+  Spell[] getSpells();
 }

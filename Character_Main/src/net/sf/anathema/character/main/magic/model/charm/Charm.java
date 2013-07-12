@@ -1,8 +1,7 @@
 package net.sf.anathema.character.main.magic.model.charm;
 
-import net.sf.anathema.character.main.magic.model.magic.Magic;
 import net.sf.anathema.character.main.magic.model.charmtree.ICharmLearnArbitrator;
-import net.sf.anathema.lib.util.Identifier;
+import net.sf.anathema.character.main.magic.model.magic.Magic;
 
 import java.util.Set;
 
@@ -23,8 +22,4 @@ public interface Charm extends CharmData, Magic {
   Set<Charm> getRenderingPrerequisiteCharms();
   
   Set<IndirectCharmRequirement> getIndirectRequirements();
-
-  boolean hasAttribute(Identifier attribute);
-  
-  String getAttributeValue(Identifier attribute);
 }

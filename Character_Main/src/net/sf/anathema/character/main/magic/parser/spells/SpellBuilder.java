@@ -1,13 +1,13 @@
 package net.sf.anathema.character.main.magic.parser.spells;
 
-import net.sf.anathema.character.main.magic.model.magic.SourceList;
+import net.sf.anathema.character.main.magic.model.magic.source.SourceList;
 import net.sf.anathema.character.main.magic.model.spells.Spell;
+import net.sf.anathema.character.main.magic.model.spells.SpellImpl;
 import net.sf.anathema.character.main.magic.parser.magic.CostListBuilder;
 import net.sf.anathema.character.main.magic.parser.magic.ICostListBuilder;
 import net.sf.anathema.character.main.magic.parser.magic.SourceBuilder;
-import net.sf.anathema.character.main.magic.model.spells.ISpell;
-import net.sf.anathema.character.main.magic.model.magic.ICostList;
-import net.sf.anathema.character.main.magic.model.magic.ISourceList;
+import net.sf.anathema.character.main.magic.model.magic.cost.ICostList;
+import net.sf.anathema.character.main.magic.model.magic.source.ISourceList;
 import net.sf.anathema.character.main.magic.model.spells.CircleType;
 import net.sf.anathema.character.main.magic.parser.magic.IExaltedSourceBook;
 import net.sf.anathema.lib.exception.PersistenceException;
@@ -21,17 +21,17 @@ public class SpellBuilder {
   private final ICostListBuilder costListBuilder = new CostListBuilder();
   private final SourceBuilder sourceBuilder = new SourceBuilder();
 
-  public ISpell[] buildSpells(Document spellDocument) throws PersistenceException {
+  public Spell[] buildSpells(Document spellDocument) throws PersistenceException {
     Element spellListElement = spellDocument.getRootElement();
-    List<ISpell> spellList = new ArrayList<>();
+    List<Spell> spellList = new ArrayList<>();
     for (Object spellObject : spellListElement.elements("spell")) {
       Element spellElement = (Element) spellObject;
       buildSpell(spellElement, spellList);
     }
-    return spellList.toArray(new ISpell[spellList.size()]);
+    return spellList.toArray(new Spell[spellList.size()]);
   }
 
-  private void buildSpell(Element spellElement, List<ISpell> spellList) throws PersistenceException {
+  private void buildSpell(Element spellElement, List<Spell> spellList) throws PersistenceException {
     String id = spellElement.attributeValue("id");
     String circleId = spellElement.attributeValue("circle");
     ICostList temporaryCost = costListBuilder.buildCostList(spellElement.element("cost"));
@@ -44,7 +44,7 @@ public class SpellBuilder {
     if (sourceList.isEmpty()) {
       return;
     }
-    spellList.add(new Spell(id, CircleType.valueOf(circleId), temporaryCost, sourceList, target));
+    spellList.add(new SpellImpl(id, CircleType.valueOf(circleId), temporaryCost, sourceList, target));
   }
 
   private ISourceList buildSource(Element spellElement) {

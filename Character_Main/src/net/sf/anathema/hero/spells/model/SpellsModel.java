@@ -1,7 +1,7 @@
 package net.sf.anathema.hero.spells.model;
 
 import net.sf.anathema.character.main.magic.model.spells.CircleType;
-import net.sf.anathema.character.main.magic.model.spells.ISpell;
+import net.sf.anathema.character.main.magic.model.spells.Spell;
 import net.sf.anathema.hero.model.HeroModel;
 import net.sf.anathema.lib.control.ChangeListener;
 import net.sf.anathema.lib.util.Identifier;
@@ -13,35 +13,35 @@ public interface SpellsModel extends HeroModel {
 
   Identifier ID = new SimpleIdentifier("Spells");
 
-  void removeSpells(List<ISpell> removedSpells);
+  void removeSpells(List<Spell> removedSpells);
 
-  void addSpells(List<ISpell> addedSpells);
+  void addSpells(List<Spell> addedSpells);
 
-  ISpell[] getLearnedSpells();
+  Spell[] getLearnedSpells();
 
   void addChangeListener(ChangeListener listener);
 
-  boolean isSpellAllowed(ISpell spell);
+  boolean isSpellAllowed(Spell spell);
 
-  ISpell[] getSpellsByCircle(CircleType circle);
+  Spell[] getSpellsByCircle(CircleType circle);
 
-  ISpell getSpellById(String string);
+  Spell getSpellById(String string);
 
-  boolean isLearnedOnCreation(ISpell spell);
+  boolean isLearnedOnCreation(Spell spell);
 
-  ISpell[] getLearnedSpells(boolean experienced);
+  Spell[] getLearnedSpells(boolean experienced);
 
-  void addSpells(List<ISpell> addedSpells, boolean experienced);
+  void addSpells(List<Spell> addedSpells, boolean experienced);
 
-  void removeSpells(List<ISpell> removedSpells, boolean experienced);
+  void removeSpells(List<Spell> removedSpells, boolean experienced);
 
-  boolean isSpellAllowed(ISpell spell, boolean experienced);
+  boolean isSpellAllowed(Spell spell, boolean experienced);
 
-  boolean isLearned(ISpell spell);
+  boolean isLearned(Spell spell);
 
-  boolean isLearnedOnCreationOrExperience(ISpell spell);
+  boolean isLearnedOnCreationOrExperience(Spell spell);
 
-  List<ISpell> getAvailableSpellsInCircle(CircleType circle);
+  List<Spell> getAvailableSpellsInCircle(CircleType circle);
 
-  List<ISpell> getLearnedSpellsInCircles(CircleType[] eligibleCircles);
+  List<Spell> getLearnedSpellsInCircles(CircleType[] eligibleCircles);
 }

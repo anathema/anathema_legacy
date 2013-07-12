@@ -1,6 +1,6 @@
 package net.sf.anathema.hero.charms.sheet.content;
 
-import net.sf.anathema.character.main.magic.model.magic.IMagicStats;
+import net.sf.anathema.character.main.magic.sheet.content.IMagicStats;
 import net.sf.anathema.character.main.template.magic.AbilityFavoringType;
 import net.sf.anathema.character.main.template.magic.AttributeFavoringType;
 import net.sf.anathema.character.main.template.magic.FavoringTraitType;

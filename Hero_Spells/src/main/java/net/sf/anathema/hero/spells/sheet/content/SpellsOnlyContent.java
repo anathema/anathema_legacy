@@ -1,6 +1,6 @@
 package net.sf.anathema.hero.spells.sheet.content;
 
-import net.sf.anathema.character.main.magic.model.magic.IMagicStats;
+import net.sf.anathema.character.main.magic.sheet.content.IMagicStats;
 import net.sf.anathema.hero.magic.sheet.content.AbstractMagicContent;
 import net.sf.anathema.hero.magic.sheet.content.mnemonic.MagicMnemonic;
 import net.sf.anathema.hero.sheet.pdf.session.ReportSession;

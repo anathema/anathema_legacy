@@ -7,7 +7,7 @@ import net.sf.anathema.cards.data.LegendEntry;
 import net.sf.anathema.cards.layout.ICardReportResourceProvider;
 import net.sf.anathema.character.main.magic.model.charm.Charm;
 import net.sf.anathema.character.main.magic.model.charms.MartialArtsUtilities;
-import net.sf.anathema.character.main.magic.model.spells.ISpell;
+import net.sf.anathema.character.main.magic.model.spells.Spell;
 import net.sf.anathema.hero.charms.model.CharmsModelFetcher;
 import net.sf.anathema.hero.experience.ExperienceModelFetcher;
 import net.sf.anathema.hero.spells.model.SpellsModelFetcher;
@@ -129,8 +129,8 @@ public class LegendCardDataProvider implements ICardDataProvider {
     }
   }
 
-  private void buildSpellEntries(ICardReportResourceProvider resourceProvider, ISpell[] spells) {
-    for (ISpell spell : spells) {
+  private void buildSpellEntries(ICardReportResourceProvider resourceProvider, Spell[] spells) {
+    for (Spell spell : spells) {
 
       String circleString;
       String circleFullString = spell.getCircleType().isSorceryCircle() ? resources.getString("CardsReport.Legend.Sorcery") :
@@ -164,7 +164,7 @@ public class LegendCardDataProvider implements ICardDataProvider {
     return CharmsModelFetcher.fetch(hero).getLearnedCharms(experienced);
   }
 
-  private ISpell[] getCurrentSpells(Hero hero) {
+  private Spell[] getCurrentSpells(Hero hero) {
     boolean experienced = ExperienceModelFetcher.fetch(hero).isExperienced();
     return SpellsModelFetcher.fetch(hero).getLearnedSpells(experienced);
   }

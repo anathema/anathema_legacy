@@ -6,16 +6,16 @@ import com.itextpdf.text.Image;
 import com.itextpdf.text.Paragraph;
 import com.itextpdf.text.Phrase;
 import net.sf.anathema.cards.layout.ICardReportResourceProvider;
-import net.sf.anathema.character.main.magic.model.spells.ISpell;
+import net.sf.anathema.character.main.magic.model.spells.Spell;
 import net.sf.anathema.character.main.magic.description.MagicDescription;
 import net.sf.anathema.hero.spells.sheet.content.SpellStats;
 import net.sf.anathema.lib.resources.Resources;
 
 public class SpellCardData extends AbstractMagicCardData {
-	private ISpell spell;
+	private Spell spell;
 	private SpellStats spellStats;
 	
-	public SpellCardData(ISpell spell, SpellStats stats, MagicDescription description,
+	public SpellCardData(Spell spell, SpellStats stats, MagicDescription description,
 			ICardReportResourceProvider properties, Resources resources) {
 		super(spell, description, properties, resources);
 		this.spell = spell;

@@ -1,7 +1,7 @@
 package net.sf.anathema.hero.spells.display.presenter;
 
 import net.sf.anathema.character.main.magic.description.MagicDescriptionProvider;
-import net.sf.anathema.character.main.magic.model.spells.ISpell;
+import net.sf.anathema.character.main.magic.model.spells.Spell;
 import net.sf.anathema.framework.ui.IdentifierConfiguration;
 import net.sf.anathema.hero.experience.ExperienceModel;
 import net.sf.anathema.hero.magic.display.AbstractMagicLearnProperties;
@@ -50,7 +50,7 @@ public class CombinedSpellAndMagicProperties extends AbstractMagicLearnPropertie
 
   @Override
   public boolean isMagicSelectionAvailable(List selection) {
-    return !selection.isEmpty() && spellConfiguration.isSpellAllowed((ISpell) selection.get(0));
+    return !selection.isEmpty() && spellConfiguration.isSpellAllowed((Spell) selection.get(0));
   }
 
   @Override
@@ -68,7 +68,7 @@ public class CombinedSpellAndMagicProperties extends AbstractMagicLearnPropertie
     boolean enabled = !list.isEmpty();
     if (enabled && experienceModel.isExperienced()) {
       for (Object spellObject : list) {
-        ISpell spell = (ISpell) spellObject;
+        Spell spell = (Spell) spellObject;
         if (spellConfiguration.isLearnedOnCreation(spell)) {
           enabled = false;
           break;

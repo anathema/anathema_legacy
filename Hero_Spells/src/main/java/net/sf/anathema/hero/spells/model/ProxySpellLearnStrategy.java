@@ -1,6 +1,6 @@
 package net.sf.anathema.hero.spells.model;
 
-import net.sf.anathema.character.main.magic.model.spells.ISpell;
+import net.sf.anathema.character.main.magic.model.spells.Spell;
 
 import java.util.List;
 
@@ -17,27 +17,27 @@ public class ProxySpellLearnStrategy implements ISpellLearnStrategy {
   }
 
   @Override
-  public void addSpells(SpellsModel configuration, List<ISpell> addedSpells) {
+  public void addSpells(SpellsModel configuration, List<Spell> addedSpells) {
     strategy.addSpells(configuration, addedSpells);
   }
 
   @Override
-  public void removeSpells(SpellsModel configuration, List<ISpell> removedSpells) {
+  public void removeSpells(SpellsModel configuration, List<Spell> removedSpells) {
     strategy.removeSpells(configuration, removedSpells);
   }
 
   @Override
-  public boolean isSpellAllowed(SpellsModel configuration, ISpell spell) {
+  public boolean isSpellAllowed(SpellsModel configuration, Spell spell) {
     return strategy.isSpellAllowed(configuration, spell);
   }
 
   @Override
-  public ISpell[] getLearnedSpells(SpellsModel configuration) {
+  public Spell[] getLearnedSpells(SpellsModel configuration) {
     return strategy.getLearnedSpells(configuration);
   }
 
   @Override
-  public boolean isLearned(SpellsModel configuration, ISpell spell) {
+  public boolean isLearned(SpellsModel configuration, Spell spell) {
     return strategy.isLearned(configuration, spell);
   }
 }

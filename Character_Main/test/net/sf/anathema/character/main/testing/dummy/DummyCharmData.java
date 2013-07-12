@@ -2,13 +2,13 @@ package net.sf.anathema.character.main.testing.dummy;
 
 import net.sf.anathema.character.main.magic.model.charm.Charm;
 import net.sf.anathema.character.main.magic.model.charm.CharmData;
-import net.sf.anathema.character.main.magic.model.charm.ICharmAttribute;
+import net.sf.anathema.character.main.magic.model.magic.attribute.MagicAttribute;
 import net.sf.anathema.character.main.magic.model.combos.IComboRestrictions;
 import net.sf.anathema.character.main.magic.model.charm.IndirectCharmRequirement;
 import net.sf.anathema.character.main.magic.model.charm.duration.SimpleDuration;
 import net.sf.anathema.character.main.magic.model.charm.type.CharmType;
 import net.sf.anathema.character.main.magic.model.charm.type.ICharmTypeModel;
-import net.sf.anathema.character.main.magic.model.magic.ICostList;
+import net.sf.anathema.character.main.magic.model.magic.cost.ICostList;
 import net.sf.anathema.character.main.magic.parser.magic.IExaltedSourceBook;
 import net.sf.anathema.character.main.traits.ValuedTraitType;
 import net.sf.anathema.character.main.traits.TraitType;
@@ -108,8 +108,8 @@ public class DummyCharmData implements CharmData {
   }
 
   @Override
-  public ICharmAttribute[] getAttributes() {
-    return new ICharmAttribute[0];
+  public MagicAttribute[] getAttributes() {
+    return new MagicAttribute[0];
   }
 
   @Override

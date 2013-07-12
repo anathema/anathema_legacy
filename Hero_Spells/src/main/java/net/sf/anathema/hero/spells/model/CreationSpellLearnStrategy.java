@@ -1,33 +1,33 @@
 package net.sf.anathema.hero.spells.model;
 
-import net.sf.anathema.character.main.magic.model.spells.ISpell;
+import net.sf.anathema.character.main.magic.model.spells.Spell;
 
 import java.util.List;
 
 public class CreationSpellLearnStrategy implements ISpellLearnStrategy {
 
   @Override
-  public void addSpells(SpellsModel configuration, List<ISpell> addedSpells) {
+  public void addSpells(SpellsModel configuration, List<Spell> addedSpells) {
     configuration.addSpells(addedSpells, false);
   }
 
   @Override
-  public void removeSpells(SpellsModel configuration, List<ISpell> removedSpells) {
+  public void removeSpells(SpellsModel configuration, List<Spell> removedSpells) {
     configuration.removeSpells(removedSpells, false);
   }
 
   @Override
-  public boolean isSpellAllowed(SpellsModel configuration, ISpell spell) {
+  public boolean isSpellAllowed(SpellsModel configuration, Spell spell) {
     return configuration.isSpellAllowed(spell, false);
   }
 
   @Override
-  public ISpell[] getLearnedSpells(SpellsModel configuration) {
+  public Spell[] getLearnedSpells(SpellsModel configuration) {
     return configuration.getLearnedSpells(false);
   }
 
   @Override
-  public boolean isLearned(SpellsModel configuration, ISpell spell) {
+  public boolean isLearned(SpellsModel configuration, Spell spell) {
     return configuration.isLearnedOnCreation(spell);
   }
 }

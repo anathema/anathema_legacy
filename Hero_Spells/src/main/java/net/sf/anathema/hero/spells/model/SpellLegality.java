@@ -1,6 +1,6 @@
 package net.sf.anathema.hero.spells.model;
 
-import net.sf.anathema.character.main.magic.model.spells.ISpell;
+import net.sf.anathema.character.main.magic.model.spells.Spell;
 import net.sf.anathema.lib.gui.list.LegalityCheck;
 
 public class SpellLegality implements LegalityCheck {
@@ -12,6 +12,6 @@ public class SpellLegality implements LegalityCheck {
 
   @Override
   public boolean isLegal(Object object) {
-    return spellConfiguration.isSpellAllowed((ISpell) object);
+    return spellConfiguration.isSpellAllowed((Spell) object);
   }
 }

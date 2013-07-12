@@ -1,7 +1,7 @@
 package net.sf.anathema.hero.magic.model.charms;
 
 import net.sf.anathema.character.main.magic.model.charm.Charm;
-import net.sf.anathema.character.main.magic.model.charm.CharmAttribute;
+import net.sf.anathema.character.main.magic.model.magic.attribute.MagicAttributeImpl;
 import net.sf.anathema.character.main.magic.model.charmtree.CharmAttributeRequirement;
 import net.sf.anathema.character.main.dummy.DummyCharm;
 import net.sf.anathema.lib.util.Identifier;
@@ -11,11 +11,11 @@ import org.junit.Test;
 
 public class CharmAttributeRequirementTest {
 
-  private CharmAttribute attribute;
+  private MagicAttributeImpl attribute;
 
   @Before
   public void createAttribute() {
-    this.attribute = new CharmAttribute("Expected", false);
+    this.attribute = new MagicAttributeImpl("Expected", false);
   }
 
   @Test

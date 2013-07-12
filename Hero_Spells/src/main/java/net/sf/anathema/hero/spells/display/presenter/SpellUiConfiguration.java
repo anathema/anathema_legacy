@@ -1,6 +1,6 @@
 package net.sf.anathema.hero.spells.display.presenter;
 
-import net.sf.anathema.character.main.magic.model.spells.ISpell;
+import net.sf.anathema.character.main.magic.model.spells.Spell;
 import net.sf.anathema.lib.gui.AbstractUIConfiguration;
 import net.sf.anathema.lib.resources.Resources;
 import net.sf.anathema.lib.util.Identifier;
@@ -22,6 +22,6 @@ public class SpellUiConfiguration extends AbstractUIConfiguration {
 
   @Override
   protected String tooltipForExistingValue(Object value) {
-    return tooltipBuilder.createTooltip((ISpell) value);
+    return tooltipBuilder.createTooltip((Spell) value);
   }
 }

@@ -1,9 +1,9 @@
 package net.sf.anathema.character.main.magic.model.charmtree.builder.stringbuilder;
 
 import net.sf.anathema.character.main.magic.model.magic.Magic;
-import net.sf.anathema.character.main.magic.model.magic.ICost;
-import net.sf.anathema.character.main.magic.model.magic.ICostList;
-import net.sf.anathema.character.main.magic.model.magic.IHealthCost;
+import net.sf.anathema.character.main.magic.model.magic.cost.ICost;
+import net.sf.anathema.character.main.magic.model.magic.cost.ICostList;
+import net.sf.anathema.character.main.magic.model.magic.cost.IHealthCost;
 import net.sf.anathema.lib.resources.Resources;
 
 public class MagicInfoStringBuilder implements IMagicInfoStringBuilder {

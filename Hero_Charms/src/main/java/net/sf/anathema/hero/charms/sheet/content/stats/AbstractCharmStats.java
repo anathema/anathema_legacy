@@ -2,8 +2,8 @@ package net.sf.anathema.hero.charms.sheet.content.stats;
 
 import com.google.common.base.Function;
 import net.sf.anathema.character.main.magic.model.charm.Charm;
-import net.sf.anathema.character.main.magic.model.magic.IMagicStats;
-import net.sf.anathema.character.main.magic.model.charm.ICharmAttribute;
+import net.sf.anathema.character.main.magic.model.magic.attribute.MagicAttribute;
+import net.sf.anathema.character.main.magic.sheet.content.IMagicStats;
 import net.sf.anathema.character.main.magic.model.charm.type.ICharmTypeModel;
 import net.sf.anathema.character.main.magic.model.charmtree.builder.stringbuilder.IMagicSourceStringBuilder;
 import net.sf.anathema.character.main.magic.model.charmtree.builder.stringbuilder.source.MagicSourceStringBuilder;
@@ -46,7 +46,7 @@ public abstract class AbstractCharmStats extends AbstractMagicStats<Charm> {
 
   protected String[] getDetailKeys() {
     List<String> details = new ArrayList<>();
-    for (ICharmAttribute attribute : getMagic().getAttributes()) {
+    for (MagicAttribute attribute : getMagic().getAttributes()) {
       String attributeId = attribute.getId();
       if (attribute.isVisualized()) {
         details.add("Keyword." + attributeId);

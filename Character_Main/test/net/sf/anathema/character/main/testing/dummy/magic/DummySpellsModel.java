@@ -2,7 +2,7 @@ package net.sf.anathema.character.main.testing.dummy.magic;
 
 import net.sf.anathema.character.main.magic.model.magic.Magic;
 import net.sf.anathema.character.main.magic.model.spells.CircleType;
-import net.sf.anathema.character.main.magic.model.spells.ISpell;
+import net.sf.anathema.character.main.magic.model.spells.Spell;
 import net.sf.anathema.hero.change.ChangeAnnouncer;
 import net.sf.anathema.hero.magic.advance.creation.MagicLearner;
 import net.sf.anathema.hero.magic.model.MagicModel;
@@ -23,7 +23,7 @@ import java.util.Set;
 
 public class DummySpellsModel implements SpellsModel {
 
-  private List<ISpell> spells = new ArrayList<>();
+  private List<Spell> spells = new ArrayList<>();
 
   @Override
   public Identifier getId() {
@@ -41,17 +41,17 @@ public class DummySpellsModel implements SpellsModel {
   }
 
   @Override
-  public void removeSpells(List<ISpell> removedSpells) {
+  public void removeSpells(List<Spell> removedSpells) {
     throw new NotYetImplementedException();
   }
 
   @Override
-  public void addSpells(List<ISpell> addedSpells) {
+  public void addSpells(List<Spell> addedSpells) {
     spells.addAll(addedSpells);
   }
 
   @Override
-  public ISpell[] getLearnedSpells() {
+  public Spell[] getLearnedSpells() {
     throw new NotYetImplementedException();
   }
 
@@ -61,35 +61,35 @@ public class DummySpellsModel implements SpellsModel {
   }
 
   @Override
-  public boolean isSpellAllowed(ISpell spell) {
+  public boolean isSpellAllowed(Spell spell) {
     throw new NotYetImplementedException();
   }
 
   @Override
-  public ISpell[] getSpellsByCircle(CircleType circle) {
+  public Spell[] getSpellsByCircle(CircleType circle) {
     throw new NotYetImplementedException();
   }
 
   @Override
-  public ISpell getSpellById(String string) {
+  public Spell getSpellById(String string) {
     throw new NotYetImplementedException();
   }
 
   @Override
-  public boolean isLearnedOnCreation(ISpell spell) {
+  public boolean isLearnedOnCreation(Spell spell) {
     throw new NotYetImplementedException();
   }
 
   @Override
-  public ISpell[] getLearnedSpells(boolean experienced) {
+  public Spell[] getLearnedSpells(boolean experienced) {
     if (experienced) {
       throw new IllegalArgumentException("Not implemented");
     }
-    return spells.toArray(new ISpell[spells.size()]);
+    return spells.toArray(new Spell[spells.size()]);
   }
 
   @Override
-  public void addSpells(List<ISpell> addedSpells, boolean experienced) {
+  public void addSpells(List<Spell> addedSpells, boolean experienced) {
     if (experienced) {
       throw new IllegalArgumentException("Not implemented");
     }
@@ -97,7 +97,7 @@ public class DummySpellsModel implements SpellsModel {
   }
 
   @Override
-  public void removeSpells(List<ISpell> removedSpells, boolean experienced) {
+  public void removeSpells(List<Spell> removedSpells, boolean experienced) {
     if (experienced) {
       throw new IllegalArgumentException("Not implemented");
     }
@@ -105,32 +105,32 @@ public class DummySpellsModel implements SpellsModel {
   }
 
   @Override
-  public boolean isSpellAllowed(ISpell spell, boolean experienced) {
+  public boolean isSpellAllowed(Spell spell, boolean experienced) {
     throw new NotYetImplementedException();
   }
 
   @Override
-  public boolean isLearned(ISpell spell) {
+  public boolean isLearned(Spell spell) {
     return false;
   }
 
   @Override
-  public boolean isLearnedOnCreationOrExperience(ISpell spell) {
+  public boolean isLearnedOnCreationOrExperience(Spell spell) {
     return false;
   }
 
   @Override
-  public List<ISpell> getAvailableSpellsInCircle(CircleType circle) {
-    List<ISpell> showSpells = new ArrayList<>();
+  public List<Spell> getAvailableSpellsInCircle(CircleType circle) {
+    List<Spell> showSpells = new ArrayList<>();
     Collections.addAll(showSpells, getSpellsByCircle(circle));
     showSpells.removeAll(Arrays.asList(getLearnedSpells()));
     return showSpells;
   }
 
   @Override
-  public List<ISpell> getLearnedSpellsInCircles(CircleType[] eligibleCircles) {
-    List<ISpell> spellList = new ArrayList<>();
-    for (ISpell spell : getLearnedSpells()) {
+  public List<Spell> getLearnedSpellsInCircles(CircleType[] eligibleCircles) {
+    List<Spell> spellList = new ArrayList<>();
+    for (Spell spell : getLearnedSpells()) {
       if (ArrayUtils.contains(eligibleCircles, spell.getCircleType())) {
         spellList.add(spell);
       }
@@ -142,7 +142,7 @@ public class DummySpellsModel implements SpellsModel {
     magicModel.addLearnProvider(new MagicLearner() {
       @Override
       public boolean handlesMagic(Magic magic) {
-        return magic instanceof ISpell;
+        return magic instanceof Spell;
       }
 
       @Override

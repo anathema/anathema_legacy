@@ -1,18 +1,18 @@
 package net.sf.anathema.hero.spells.model;
 
-import net.sf.anathema.character.main.magic.model.spells.ISpell;
+import net.sf.anathema.character.main.magic.model.spells.Spell;
 
 import java.util.List;
 
 public interface ISpellLearnStrategy {
 
-  void addSpells(SpellsModel configuration, List<ISpell> addedSpells);
+  void addSpells(SpellsModel configuration, List<Spell> addedSpells);
 
-  void removeSpells(SpellsModel configuration, List<ISpell> removedSpells);
+  void removeSpells(SpellsModel configuration, List<Spell> removedSpells);
 
-  boolean isSpellAllowed(SpellsModel configuration, ISpell spell);
+  boolean isSpellAllowed(SpellsModel configuration, Spell spell);
 
-  ISpell[] getLearnedSpells(SpellsModel configuration);
+  Spell[] getLearnedSpells(SpellsModel configuration);
 
-  boolean isLearned(SpellsModel configuration, ISpell spell);
+  boolean isLearned(SpellsModel configuration, Spell spell);
 }

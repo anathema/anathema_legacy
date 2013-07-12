@@ -2,7 +2,7 @@ package net.sf.anathema.hero.spells.display.presenter;
 
 import net.sf.anathema.character.main.magic.description.MagicDescriptionProvider;
 import net.sf.anathema.character.main.magic.model.spells.CircleType;
-import net.sf.anathema.character.main.magic.model.spells.ISpell;
+import net.sf.anathema.character.main.magic.model.spells.Spell;
 import net.sf.anathema.hero.experience.ExperienceModel;
 import net.sf.anathema.hero.magic.display.MagicLearnPresenter;
 import net.sf.anathema.hero.magic.display.MagicLearnView;
@@ -52,13 +52,13 @@ public class SpellPresenter {
     learnPresenter.addChangeListener(new MagicViewListener() {
       @Override
       public void removeMagicRequested(Object[] removedSpells) {
-        List<ISpell> spellList = convertToList(removedSpells);
+        List<Spell> spellList = convertToList(removedSpells);
         spellConfiguration.removeSpells(spellList);
       }
 
       @Override
       public void addMagicRequested(Object[] addedSpells) {
-        List<ISpell> spellList = convertToList(addedSpells);
+        List<Spell> spellList = convertToList(addedSpells);
         spellConfiguration.addSpells(spellList);
       }
     });
@@ -83,10 +83,10 @@ public class SpellPresenter {
     view.showSelectedCircle(newValue);
   }
 
-  private List<ISpell> convertToList(Object[] addedSpells) {
-    List<ISpell> spellList = new ArrayList<>();
+  private List<Spell> convertToList(Object[] addedSpells) {
+    List<Spell> spellList = new ArrayList<>();
     for (Object spellObject : addedSpells) {
-      spellList.add((ISpell) spellObject);
+      spellList.add((Spell) spellObject);
     }
     return spellList;
   }
@@ -97,13 +97,13 @@ public class SpellPresenter {
   }
 
   private void showAvailableSpells(MagicLearnView magicLearnView) {
-    List<ISpell> availableSpells = spellConfiguration.getAvailableSpellsInCircle(circleModel.getSelectedCircle());
-    List<ISpell> sortedSpells = new I18nedIdentificateSorter<ISpell>().sortAscending(availableSpells, resources);
+    List<Spell> availableSpells = spellConfiguration.getAvailableSpellsInCircle(circleModel.getSelectedCircle());
+    List<Spell> sortedSpells = new I18nedIdentificateSorter<Spell>().sortAscending(availableSpells, resources);
     magicLearnView.setAvailableMagic(sortedSpells);
   }
 
   private void showLearnedSpells(MagicLearnView magicLearnView) {
-    List<ISpell> learnedSpells = spellConfiguration.getLearnedSpellsInCircles(circleModel.getCircles());
+    List<Spell> learnedSpells = spellConfiguration.getLearnedSpellsInCircles(circleModel.getCircles());
     magicLearnView.setLearnedMagic(learnedSpells);
   }
 }

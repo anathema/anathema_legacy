@@ -1,7 +1,7 @@
 package net.sf.anathema.character.main.template.magic;
 
 import net.sf.anathema.character.main.magic.model.charm.Charm;
-import net.sf.anathema.character.main.magic.model.spells.ISpell;
+import net.sf.anathema.character.main.magic.model.spells.Spell;
 import net.sf.anathema.character.main.magic.model.spells.CircleType;
 import net.sf.anathema.character.main.magic.model.spells.ICircleTypeVisitor;
 import net.sf.anathema.character.main.template.HeroTemplate;
@@ -83,7 +83,7 @@ public class SpellMagicTemplate implements ISpellMagicTemplate {
   }
 
   @Override
-  public boolean canLearnSpell(ISpell spell, Charm[] knownCharms) {
+  public boolean canLearnSpell(Spell spell, Charm[] knownCharms) {
     return knowsCharm(getInitiation(spell.getCircleType()), knownCharms);
   }
 

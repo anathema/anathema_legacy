@@ -1,8 +1,8 @@
 package net.sf.anathema.hero.spells.sheet.content;
 
 import com.google.common.base.Function;
-import net.sf.anathema.character.main.magic.model.magic.IMagicStats;
-import net.sf.anathema.character.main.magic.model.spells.ISpell;
+import net.sf.anathema.character.main.magic.sheet.content.IMagicStats;
+import net.sf.anathema.character.main.magic.model.spells.Spell;
 import net.sf.anathema.character.main.magic.model.charmtree.builder.stringbuilder.IMagicSourceStringBuilder;
 import net.sf.anathema.character.main.magic.model.charmtree.builder.stringbuilder.source.MagicSourceStringBuilder;
 import net.sf.anathema.hero.charms.sheet.content.stats.AbstractCharmStats;
@@ -12,9 +12,9 @@ import org.apache.commons.lang3.builder.HashCodeBuilder;
 
 import static net.sf.anathema.lib.lang.ArrayUtilities.transform;
 
-public class SpellStats extends AbstractMagicStats<ISpell> {
+public class SpellStats extends AbstractMagicStats<Spell> {
 
-  public SpellStats(ISpell spell) {
+  public SpellStats(Spell spell) {
     super(spell);
   }
 
@@ -35,7 +35,7 @@ public class SpellStats extends AbstractMagicStats<ISpell> {
 
   @Override
   public String getSourceString(Resources resources) {
-    IMagicSourceStringBuilder<ISpell> stringBuilder = new MagicSourceStringBuilder<>(resources);
+    IMagicSourceStringBuilder<Spell> stringBuilder = new MagicSourceStringBuilder<>(resources);
     return stringBuilder.createShortSourceString(getMagic());
   }
 

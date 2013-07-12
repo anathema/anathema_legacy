@@ -1,8 +1,8 @@
 package net.sf.anathema.character.main.magic.parser.magic;
 
-import net.sf.anathema.character.main.magic.model.magic.Cost;
+import net.sf.anathema.character.main.magic.model.magic.cost.Cost;
 import net.sf.anathema.character.main.magic.model.charm.ICharmXMLConstants;
-import net.sf.anathema.character.main.magic.model.magic.ICost;
+import net.sf.anathema.character.main.magic.model.magic.cost.ICost;
 import net.sf.anathema.lib.exception.PersistenceException;
 import net.sf.anathema.lib.xml.ElementUtilities;
 import org.dom4j.Element;

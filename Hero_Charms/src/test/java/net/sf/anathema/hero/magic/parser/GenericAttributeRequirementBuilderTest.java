@@ -1,6 +1,6 @@
 package net.sf.anathema.hero.magic.parser;
 
-import net.sf.anathema.character.main.magic.model.charm.CharmAttribute;
+import net.sf.anathema.character.main.magic.model.magic.attribute.MagicAttributeImpl;
 import net.sf.anathema.character.main.magic.model.charmtree.CharmAttributeRequirement;
 import net.sf.anathema.character.main.magic.parser.charms.prerequisite.GenericAttributeRequirementBuilder;
 import net.sf.anathema.character.main.magic.model.charm.IndirectCharmRequirement;
@@ -21,6 +21,6 @@ public class GenericAttributeRequirementBuilderTest {
     GenericAttributeRequirementBuilder builder = new GenericAttributeRequirementBuilder();
     builder.setType(AbilityType.Investigation);
     IndirectCharmRequirement[] indirectRequirements = builder.getCharmAttributeRequirements(rootElement);
-    assertTrue(ArrayUtils.contains(indirectRequirements, new CharmAttributeRequirement(new CharmAttribute("genericInvestigation", false), 1)));
+    assertTrue(ArrayUtils.contains(indirectRequirements, new CharmAttributeRequirement(new MagicAttributeImpl("genericInvestigation", false), 1)));
   }
 }

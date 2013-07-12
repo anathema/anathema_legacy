@@ -3,7 +3,7 @@ package net.sf.anathema.character.main.advance;
 import net.sf.anathema.character.main.library.trait.Trait;
 import net.sf.anathema.character.main.library.trait.experience.TraitRatingCostCalculator;
 import net.sf.anathema.character.main.magic.model.charm.Charm;
-import net.sf.anathema.character.main.magic.model.spells.ISpell;
+import net.sf.anathema.character.main.magic.model.spells.Spell;
 import net.sf.anathema.character.main.template.experience.CurrentRatingCosts;
 import net.sf.anathema.character.main.template.experience.IExperiencePointCosts;
 import net.sf.anathema.hero.model.Hero;
@@ -53,7 +53,7 @@ public class ExperiencePointCostCalculator implements PointCostCalculator {
   }
 
   @Override
-  public int getSpellCosts(Hero hero, ISpell spell, TraitMap traitMap) {
+  public int getSpellCosts(Hero hero, Spell spell, TraitMap traitMap) {
     return costs.getSpellCosts(spell, hero, new GenericTraitCollectionFacade(traitMap));
   }
 

@@ -1,16 +1,16 @@
 package net.sf.anathema.character.main.magic.model.charmtree;
 
 import net.sf.anathema.character.main.magic.model.charm.Charm;
-import net.sf.anathema.character.main.magic.model.charm.ICharmAttribute;
+import net.sf.anathema.character.main.magic.model.magic.attribute.MagicAttribute;
 import net.sf.anathema.character.main.magic.model.charm.IndirectCharmRequirement;
 import net.sf.anathema.lib.lang.ReflectionEqualsObject;
 
 public class CharmAttributeRequirement extends ReflectionEqualsObject implements IndirectCharmRequirement {
 
-  private final ICharmAttribute attribute;
+  private final MagicAttribute attribute;
   private final int count;
 
-  public CharmAttributeRequirement(ICharmAttribute attribute, int count) {
+  public CharmAttributeRequirement(MagicAttribute attribute, int count) {
     this.attribute = attribute;
     this.count = count;
   }

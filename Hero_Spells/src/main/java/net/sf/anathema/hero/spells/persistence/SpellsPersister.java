@@ -1,7 +1,7 @@
 package net.sf.anathema.hero.spells.persistence;
 
 import com.google.common.base.Predicate;
-import net.sf.anathema.character.main.magic.model.spells.ISpell;
+import net.sf.anathema.character.main.magic.model.spells.Spell;
 import net.sf.anathema.hero.model.Hero;
 import net.sf.anathema.hero.persistence.AbstractModelJsonPersister;
 import net.sf.anathema.hero.persistence.RegisteredHeroModelPersister;
@@ -28,21 +28,21 @@ public class SpellsPersister extends AbstractModelJsonPersister<SpellListPto, Sp
 
   @Override
   protected void loadModelFromPto(Hero hero, SpellsModel model, SpellListPto pto) {
-    List<ISpell> creationSpellList = collectSpells(model, pto, new CreationLearned());
+    List<Spell> creationSpellList = collectSpells(model, pto, new CreationLearned());
     model.addSpells(creationSpellList, false);
-    List<ISpell> experienceSpellList = collectSpells(model, pto, new ExperienceLearned());
+    List<Spell> experienceSpellList = collectSpells(model, pto, new ExperienceLearned());
     model.addSpells(experienceSpellList, true);
   }
 
-  private List<ISpell> collectSpells(SpellsModel model, SpellListPto pto, Predicate<AttributedPto> predicate) {
+  private List<Spell> collectSpells(SpellsModel model, SpellListPto pto, Predicate<AttributedPto> predicate) {
     Collection<AttributedPto> creationLearned = filter(pto.spells, predicate);
     return collectSpells(model, creationLearned);
   }
 
-  private List<ISpell> collectSpells(SpellsModel model, Iterable<AttributedPto> matchingPtoList) {
-    List<ISpell> found = new ArrayList<>();
+  private List<Spell> collectSpells(SpellsModel model, Iterable<AttributedPto> matchingPtoList) {
+    List<Spell> found = new ArrayList<>();
     for (AttributedPto spellPto : matchingPtoList) {
-      ISpell spell = model.getSpellById(spellPto.id);
+      Spell spell = model.getSpellById(spellPto.id);
       found.add(spell);
     }
     return found;
@@ -51,14 +51,14 @@ public class SpellsPersister extends AbstractModelJsonPersister<SpellListPto, Sp
   @Override
   protected SpellListPto saveModelToPto(SpellsModel model) {
     SpellListPto pto = new SpellListPto();
-    for (ISpell spell : model.getLearnedSpells()) {
+    for (Spell spell : model.getLearnedSpells()) {
       AttributedPto spellPto = createSpellPto(model, spell);
       pto.spells.add(spellPto);
     }
     return pto;
   }
 
-  private AttributedPto createSpellPto(SpellsModel model, ISpell spell) {
+  private AttributedPto createSpellPto(SpellsModel model, Spell spell) {
     AttributedPto spellPto = new AttributedPto();
     spellPto.id = spell.getId();
     spellPto.isExperienceLearned = !model.isLearnedOnCreation(spell);

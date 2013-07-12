@@ -1,6 +1,6 @@
 package net.sf.anathema.character.main.magic.parser.charms.prerequisite;
 
-import net.sf.anathema.character.main.magic.model.charm.CharmAttribute;
+import net.sf.anathema.character.main.magic.model.magic.attribute.MagicAttributeImpl;
 import net.sf.anathema.character.main.magic.model.charmtree.CharmAttributeRequirement;
 import net.sf.anathema.character.main.magic.model.charm.CharmException;
 import net.sf.anathema.character.main.magic.model.charm.IndirectCharmRequirement;
@@ -29,7 +29,7 @@ public class AttributeRequirementBuilder implements IAttributeRequirementBuilder
   protected final IndirectCharmRequirement buildRequirement(Element attributeRequirementElement) throws CharmException {
     String attributeId = buildId(attributeRequirementElement);
     int requiredCount = buildRequirementCount(attributeRequirementElement);
-    return new CharmAttributeRequirement(new CharmAttribute(attributeId, false), requiredCount);
+    return new CharmAttributeRequirement(new MagicAttributeImpl(attributeId, false), requiredCount);
   }
 
   protected String buildId(Element attributeRequirementElement) {

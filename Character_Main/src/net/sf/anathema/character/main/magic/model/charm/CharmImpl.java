@@ -10,7 +10,9 @@ import net.sf.anathema.character.main.magic.model.charmtree.GroupedCharmRequirem
 import net.sf.anathema.character.main.magic.model.charmtree.ICharmLearnArbitrator;
 import net.sf.anathema.character.main.magic.model.combos.ComboRestrictions;
 import net.sf.anathema.character.main.magic.model.combos.IComboRestrictions;
-import net.sf.anathema.character.main.magic.model.magic.ICostList;
+import net.sf.anathema.character.main.magic.model.magic.AbstractMagic;
+import net.sf.anathema.character.main.magic.model.magic.cost.ICostList;
+import net.sf.anathema.character.main.magic.model.magic.attribute.MagicAttributeImpl;
 import net.sf.anathema.character.main.magic.parser.charms.CharmPrerequisiteList;
 import net.sf.anathema.character.main.magic.parser.charms.SelectiveCharmGroupTemplate;
 import net.sf.anathema.character.main.magic.parser.magic.IExaltedSourceBook;
@@ -23,7 +25,6 @@ import net.sf.anathema.hero.concept.HeroConceptFetcher;
 import net.sf.anathema.hero.model.Hero;
 import net.sf.anathema.hero.traits.TraitMap;
 import net.sf.anathema.hero.traits.TraitModelFetcher;
-import net.sf.anathema.lib.util.Identifier;
 import net.sf.anathema.lib.util.SimpleIdentifier;
 
 import java.util.ArrayList;
@@ -36,7 +37,7 @@ import java.util.Set;
 
 import static net.sf.anathema.character.main.traits.types.AbilityType.MartialArts;
 
-public class CharmImpl extends SimpleIdentifier implements Charm {
+public class CharmImpl extends AbstractMagic implements Charm {
 
   private final CharmPrerequisiteList prerequisisteList;
 
@@ -55,7 +56,6 @@ public class CharmImpl extends SimpleIdentifier implements Charm {
   private final List<Charm> parentCharms = new ArrayList<>();
   private final List<CharmImpl> children = new ArrayList<>();
   private final SelectiveCharmGroups selectiveCharmGroups = new SelectiveCharmGroups();
-  private final List<ICharmAttribute> charmAttributes = new ArrayList<>();
   private final Set<String> favoredCasteIds = new HashSet<>();
 
   private final ICharmTypeModel typeModel;
@@ -101,10 +101,6 @@ public class CharmImpl extends SimpleIdentifier implements Charm {
                     new IndirectCharmRequirement[0]);
     parentCharms.addAll(charmData.getParentCharms());
     this.typeModel = charmData.getCharmTypeModel();
-  }
-
-  public void addCharmAttribute(ICharmAttribute attribute) {
-    charmAttributes.add(attribute);
   }
 
   @Override
@@ -183,7 +179,7 @@ public class CharmImpl extends SimpleIdentifier implements Charm {
     if (!merged.isEmpty()) {
       merges.add(merged);
       if (!hasAttribute(CharmAttributeList.MERGED_ATTRIBUTE)) {
-        addCharmAttribute(new CharmAttribute(CharmAttributeList.MERGED_ATTRIBUTE.getId(), true));
+        addMagicAttribute(new MagicAttributeImpl(CharmAttributeList.MERGED_ATTRIBUTE.getId(), true));
       }
     }
   }
@@ -321,26 +317,6 @@ public class CharmImpl extends SimpleIdentifier implements Charm {
       }
     }
     return true;
-  }
-
-  @Override
-  public ICharmAttribute[] getAttributes() {
-    return charmAttributes.toArray(new ICharmAttribute[charmAttributes.size()]);
-  }
-
-  @Override
-  public boolean hasAttribute(Identifier attribute) {
-    return charmAttributes.contains(attribute);
-  }
-
-  @Override
-  public String getAttributeValue(Identifier attribute) {
-    int index = charmAttributes.indexOf(attribute);
-    if (index < 0) {
-      return null;
-    } else {
-      return charmAttributes.get(index).getValue();
-    }
   }
 
   @Override

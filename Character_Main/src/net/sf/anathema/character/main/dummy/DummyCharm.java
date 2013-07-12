@@ -1,8 +1,8 @@
 package net.sf.anathema.character.main.dummy;
 
 import net.sf.anathema.character.main.magic.model.charm.Charm;
-import net.sf.anathema.character.main.magic.model.charm.CharmAttribute;
-import net.sf.anathema.character.main.magic.model.charm.ICharmAttribute;
+import net.sf.anathema.character.main.magic.model.magic.attribute.MagicAttributeImpl;
+import net.sf.anathema.character.main.magic.model.magic.attribute.MagicAttribute;
 import net.sf.anathema.character.main.magic.model.charm.IndirectCharmRequirement;
 import net.sf.anathema.character.main.magic.model.charm.duration.IDuration;
 import net.sf.anathema.character.main.magic.model.charm.duration.SimpleDuration;
@@ -11,7 +11,7 @@ import net.sf.anathema.character.main.magic.model.charm.type.CharmTypeModel;
 import net.sf.anathema.character.main.magic.model.charmtree.ICharmLearnArbitrator;
 import net.sf.anathema.character.main.magic.model.combos.ComboRestrictions;
 import net.sf.anathema.character.main.magic.model.combos.IComboRestrictions;
-import net.sf.anathema.character.main.magic.model.magic.CostList;
+import net.sf.anathema.character.main.magic.model.magic.cost.CostList;
 import net.sf.anathema.character.main.magic.parser.magic.IExaltedSourceBook;
 import net.sf.anathema.character.main.traits.TraitType;
 import net.sf.anathema.character.main.traits.ValuedTraitType;
@@ -40,7 +40,7 @@ public class DummyCharm extends SimpleIdentifier implements Charm {
   private ICharacterType characterType;
   private String groupId;
   private CharmTypeModel model = new CharmTypeModel();
-  public List<ICharmAttribute> attributes = new ArrayList<>();
+  public List<MagicAttribute> attributes = new ArrayList<>();
 
   public void setGeneric(boolean generic) {
     isGeneric = generic;
@@ -177,8 +177,8 @@ public class DummyCharm extends SimpleIdentifier implements Charm {
 
   @Override
   public boolean hasAttribute(Identifier attribute) {
-    for (ICharmAttribute iCharmAttribute : attributes) {
-      if (iCharmAttribute.getId().equals(attribute.getId())) {
+    for (MagicAttribute magicAttribute : attributes) {
+      if (magicAttribute.getId().equals(attribute.getId())) {
         return true;
       }
     }
@@ -252,11 +252,11 @@ public class DummyCharm extends SimpleIdentifier implements Charm {
   }
 
   @Override
-  public ICharmAttribute[] getAttributes() {
-    return attributes.toArray(new ICharmAttribute[attributes.size()]);
+  public MagicAttribute[] getAttributes() {
+    return attributes.toArray(new MagicAttribute[attributes.size()]);
   }
 
-  public void addKeyword(CharmAttribute attribute) {
+  public void addKeyword(MagicAttributeImpl attribute) {
     this.attributes.add(attribute);
   }
 }

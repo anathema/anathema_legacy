@@ -3,8 +3,8 @@ package net.sf.anathema.hero.magic.costs;
 import com.google.common.collect.ImmutableList;
 import net.sf.anathema.character.main.costs.AbstractBonusPointTestCase;
 import net.sf.anathema.character.main.library.trait.favorable.FavorableState;
+import net.sf.anathema.character.main.magic.model.spells.Spell;
 import net.sf.anathema.hero.magic.advance.creation.MagicCreationCostCalculator;
-import net.sf.anathema.character.main.magic.model.spells.ISpell;
 import net.sf.anathema.character.main.testing.BasicCharacterTestCase;
 import net.sf.anathema.character.main.testing.dummy.DummyBonusPointCosts;
 import net.sf.anathema.character.main.testing.dummy.DummyHero;
@@ -57,7 +57,7 @@ public class CharmCostCalculatorTest extends AbstractBonusPointTestCase {
 
   @Test
   public void testOneSpellLearnedOccultUnfavored() {
-    spells.addSpells(Collections.<ISpell>singletonList(new DummySpell()));
+    spells.addSpells(Collections.<Spell>singletonList(new DummySpell()));
     calculator.calculateMagicCosts();
     assertEquals(1, calculator.getGeneralCharmPicksSpent());
     assertEquals(0, calculator.getFavoredCharmPicksSpent());
@@ -67,7 +67,7 @@ public class CharmCostCalculatorTest extends AbstractBonusPointTestCase {
   @Test
   public void testOneSpellLearnedOccultFavored() {
     setOccultFavored();
-    spells.addSpells(Collections.<ISpell>singletonList(new DummySpell()));
+    spells.addSpells(Collections.<Spell>singletonList(new DummySpell()));
     calculator.calculateMagicCosts();
     assertEquals(0, calculator.getGeneralCharmPicksSpent());
     assertEquals(1, calculator.getFavoredCharmPicksSpent());
@@ -81,7 +81,7 @@ public class CharmCostCalculatorTest extends AbstractBonusPointTestCase {
   @Test
   public void testUnfavoredSpellsOverflowToBonus() {
     DummySpell dummySpell = new DummySpell();
-    spells.addSpells(ImmutableList.<ISpell>of(dummySpell, dummySpell, dummySpell, dummySpell));
+    spells.addSpells(ImmutableList.<Spell>of(dummySpell, dummySpell, dummySpell, dummySpell));
     calculator.calculateMagicCosts();
     assertEquals(3, calculator.getGeneralCharmPicksSpent());
     assertEquals(0, calculator.getFavoredCharmPicksSpent());
@@ -92,12 +92,12 @@ public class CharmCostCalculatorTest extends AbstractBonusPointTestCase {
   public void testUnfavoredSpellsOverflowToBonusAndAreReset() {
     DummySpell dummySpell = new DummySpell();
     DummySpell dummySpellToRemove = new DummySpell();
-    spells.addSpells(ImmutableList.<ISpell>of(dummySpell, dummySpell, dummySpell, dummySpellToRemove));
+    spells.addSpells(ImmutableList.<Spell>of(dummySpell, dummySpell, dummySpell, dummySpellToRemove));
     calculator.calculateMagicCosts();
     assertEquals(3, calculator.getGeneralCharmPicksSpent());
     assertEquals(0, calculator.getFavoredCharmPicksSpent());
     assertEquals(5, calculator.getBonusPointsSpent());
-    spells.removeSpells(Collections.<ISpell>singletonList(dummySpellToRemove), false);
+    spells.removeSpells(Collections.<Spell>singletonList(dummySpellToRemove), false);
     calculator.calculateMagicCosts();
     assertEquals(3, calculator.getGeneralCharmPicksSpent());
   }
@@ -106,8 +106,8 @@ public class CharmCostCalculatorTest extends AbstractBonusPointTestCase {
   public void removalRemovesBonusPointCost() {
     DummySpell dummySpell = new DummySpell();
     DummySpell dummySpellToRemove = new DummySpell();
-    spells.addSpells(ImmutableList.<ISpell>of(dummySpell, dummySpell, dummySpell, dummySpellToRemove), false);
-    spells.removeSpells(Collections.<ISpell>singletonList(dummySpellToRemove), false);
+    spells.addSpells(ImmutableList.<Spell>of(dummySpell, dummySpell, dummySpell, dummySpellToRemove), false);
+    spells.removeSpells(Collections.<Spell>singletonList(dummySpellToRemove), false);
     calculator.calculateMagicCosts();
     assertThat(calculator.getBonusPointsSpent(), is(0));
   }
@@ -116,7 +116,7 @@ public class CharmCostCalculatorTest extends AbstractBonusPointTestCase {
   public void testFavoredSpellsOverflowToGeneralAndBonus() {
     setOccultFavored();
     DummySpell dummySpell = new DummySpell();
-    spells.addSpells(ImmutableList.<ISpell>of(dummySpell, dummySpell, dummySpell, dummySpell, dummySpell, dummySpell));
+    spells.addSpells(ImmutableList.<Spell>of(dummySpell, dummySpell, dummySpell, dummySpell, dummySpell, dummySpell));
     calculator.calculateMagicCosts();
     assertEquals(3, calculator.getGeneralCharmPicksSpent());
     assertEquals(2, calculator.getFavoredCharmPicksSpent());

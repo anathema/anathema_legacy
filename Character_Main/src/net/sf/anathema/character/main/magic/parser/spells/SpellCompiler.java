@@ -2,8 +2,8 @@ package net.sf.anathema.character.main.magic.parser.spells;
 
 import net.sf.anathema.character.main.framework.data.IExtensibleDataSet;
 import net.sf.anathema.character.main.framework.data.IExtensibleDataSetCompiler;
+import net.sf.anathema.character.main.magic.model.spells.Spell;
 import net.sf.anathema.character.main.magic.model.spells.SpellException;
-import net.sf.anathema.character.main.magic.model.spells.ISpell;
 import net.sf.anathema.initialization.ExtensibleDataSetCompiler;
 import net.sf.anathema.initialization.ObjectFactory;
 import net.sf.anathema.lib.resources.ResourceFile;
@@ -40,8 +40,8 @@ public class SpellCompiler implements IExtensibleDataSetCompiler {
   @Override
   public IExtensibleDataSet build() {
     for (Document document : spellFileList) {
-      ISpell[] spells = builder.buildSpells(document);
-      for (ISpell spell : spells) {
+      Spell[] spells = builder.buildSpells(document);
+      for (Spell spell : spells) {
         cache.addSpell(spell);
       }
     }

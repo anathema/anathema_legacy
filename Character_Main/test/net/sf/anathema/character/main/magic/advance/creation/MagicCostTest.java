@@ -1,7 +1,7 @@
 package net.sf.anathema.character.main.magic.advance.creation;
 
 import net.sf.anathema.character.main.dummy.DummyCharm;
-import net.sf.anathema.character.main.magic.model.charm.CharmAttribute;
+import net.sf.anathema.character.main.magic.model.magic.attribute.MagicAttributeImpl;
 import net.sf.anathema.character.main.magic.model.charm.MartialArtsLevel;
 import net.sf.anathema.character.main.template.experience.CostAnalyzer;
 import net.sf.anathema.character.main.traits.types.AbilityType;
@@ -62,7 +62,7 @@ public class MagicCostTest {
   }
 
   private void makeMartialArtsCharmOfLevel(MartialArtsLevel martialArtsLevel) {
-    charm.attributes.add(new CharmAttribute(AbilityType.MartialArts.getId(), false));
-    charm.attributes.add(new CharmAttribute(martialArtsLevel.getId(), false));
+    charm.attributes.add(new MagicAttributeImpl(AbilityType.MartialArts.getId(), false));
+    charm.attributes.add(new MagicAttributeImpl(martialArtsLevel.getId(), false));
   }
 }

@@ -29,8 +29,6 @@ public interface CharmData extends IMagicData {
 
   IComboRestrictions getComboRules();
 
-  ICharmAttribute[] getAttributes();
-
   IndirectCharmRequirement[] getAttributeRequirements();
 
   Set<Charm> getParentCharms();
