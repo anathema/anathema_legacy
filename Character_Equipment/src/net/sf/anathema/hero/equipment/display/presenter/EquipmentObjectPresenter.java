@@ -49,7 +49,7 @@ public class EquipmentObjectPresenter {
   public void initPresentation() {
     showItemTitle();
     showItemDescription();
-    prepareContents();
+    refreshView();
   }
 
   private void showItemTitle() {
@@ -75,42 +75,45 @@ public class EquipmentObjectPresenter {
     }
   }
 
-  private void prepareContents() {
+  private void refreshView() {
     view.clear();
     presentationModel.clear();
-    for (final IEquipmentStats equipment : model.getStats()) {
-      StatsPresentationStrategy strategy = choosePresentationStrategy(equipment);
+    for (final IEquipmentStats stats : model.getStats()) {
+      StatsPresentationStrategy strategy = choosePresentationStrategy(stats);
       if (!strategy.shouldStatsBeShown()) {
         continue;
       }
-      final BooleanModel booleanModel = view.addStats(createEquipmentDescription(model, equipment));
-      if (equipment instanceof ArtifactStats) {
-        presentationModel.registerViewForAttunementStats(equipment, booleanModel);
-      } else {
-        presentationModel.registerViewForDefaultStats(equipment, booleanModel);
-      }
-      booleanModel.setValue(model.isPrintEnabled(equipment));
-      booleanModel.addChangeListener(new ChangeListener() {
+      final BooleanModel statsView = view.addStats(createEquipmentDescription(model, stats));
+      statsView.setValue(model.isPrintEnabled(stats));
+      statsView.addChangeListener(new ChangeListener() {
         @Override
         public void changeOccurred() {
-          model.setPrintEnabled(equipment, booleanModel.getValue());
-          if (equipment instanceof ArtifactStats) {
-            // if we are enabling an attunement stats ...
-            if (booleanModel.getValue()) {
-              // disable all other attunement stats
-              for (IEquipmentStats stats : presentationModel.getAttunementStats()) {
-                if (!equipment.equals(stats) && model.isPrintEnabled(stats)) {
-                  model.setPrintEnabled(stats, false);
-                }
-              }
+          model.setPrintEnabled(stats, statsView.getValue());
+          if (stats instanceof ArtifactStats) {
+            boolean userHasEnabledAttunementStats = statsView.getValue();
+            if (userHasEnabledAttunementStats) {
+              disableAllOtherAttunementStats(stats);
             }
-            prepareContents();
+            refreshView();
           }
         }
       });
-      showEligibleSpecialties(equipment, booleanModel);
+      if (stats instanceof ArtifactStats) {
+        presentationModel.registerViewForAttunementStats(stats, statsView);
+      } else {
+        presentationModel.registerViewForDefaultStats(stats, statsView);
+      }
+      showEligibleSpecialties(stats, statsView);
     }
     disableAllStatsIfAttunementRequiredButNotGiven();
+  }
+
+  private void disableAllOtherAttunementStats(IEquipmentStats equipment) {
+    for (IEquipmentStats stats : presentationModel.getAttunementStats()) {
+      if (!equipment.equals(stats) && model.isPrintEnabled(stats)) {
+        model.setPrintEnabled(stats, false);
+      }
+    }
   }
 
   private void disableAllStatsIfAttunementRequiredButNotGiven() {
