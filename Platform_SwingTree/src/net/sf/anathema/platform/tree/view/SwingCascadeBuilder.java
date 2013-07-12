@@ -10,18 +10,8 @@ public class SwingCascadeBuilder implements CascadeBuilder<ContainerCascade, Cas
   private final AggregatedCascade aggregatedCascade = new AggregatedCascade();
 
   @Override
-  public void initialize() {
-    //nothing to do
-  }
-
-  @Override
   public void add(ContainerCascade cascade) {
     aggregatedCascade.add(cascade);
-  }
-
-  @Override
-  public void applyFinalTouch(double currentWidth, double maximumHeight) {
-    //nothing to do
   }
 
   @Override

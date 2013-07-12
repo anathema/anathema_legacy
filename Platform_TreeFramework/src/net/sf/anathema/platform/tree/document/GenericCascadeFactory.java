@@ -27,7 +27,6 @@ public class GenericCascadeFactory<CASCADE> implements CascadeFactory<CASCADE> {
 
   private CASCADE buildCascadeObject(ITreePresentationProperties properties, List<IVisualizedGraph> visualizedGraphs) {
     CascadeBuilder<?, CASCADE> cascadeBuilder = creationStrategy.createCascadeBuilder(properties);
-    cascadeBuilder.initialize();
     double firstRowWidth = 0;
     double firstRowHeight = 0;
     for (IVisualizedGraph graph : visualizedGraphs) {
@@ -51,8 +50,6 @@ public class GenericCascadeFactory<CASCADE> implements CascadeFactory<CASCADE> {
       }
     }
     maximumHeight += firstRowHeight;
-    currentWidth = Math.max(currentWidth, firstRowWidth);
-    cascadeBuilder.applyFinalTouch(currentWidth, maximumHeight);
     return cascadeBuilder.create();
   }
 
