@@ -2,10 +2,11 @@ package net.sf.anathema.hero.spells.model;
 
 import net.sf.anathema.character.main.UnspecifiedChangeListener;
 import net.sf.anathema.character.main.magic.model.spells.CircleType;
-import net.sf.anathema.character.main.magic.model.spells.Spell;
 import net.sf.anathema.character.main.magic.model.spells.ISpellMapper;
+import net.sf.anathema.character.main.magic.model.spells.Spell;
 import net.sf.anathema.character.main.magic.model.spells.SpellMapper;
 import net.sf.anathema.character.main.template.HeroTemplate;
+import net.sf.anathema.character.main.template.experience.IExperiencePointCosts;
 import net.sf.anathema.character.main.template.magic.ISpellMagicTemplate;
 import net.sf.anathema.hero.change.ChangeAnnouncer;
 import net.sf.anathema.hero.change.ChangeFlavor;
@@ -19,6 +20,10 @@ import net.sf.anathema.hero.magic.model.MagicModel;
 import net.sf.anathema.hero.magic.model.MagicModelFetcher;
 import net.sf.anathema.hero.model.Hero;
 import net.sf.anathema.hero.model.InitializationContext;
+import net.sf.anathema.hero.points.PointModelFetcher;
+import net.sf.anathema.hero.points.PointsModel;
+import net.sf.anathema.hero.spells.advance.SpellExperienceCostCalculator;
+import net.sf.anathema.hero.spells.advance.SpellExperienceModel;
 import net.sf.anathema.hero.spells.sheet.content.PrintSpellsProvider;
 import net.sf.anathema.lib.control.ChangeListener;
 import net.sf.anathema.lib.util.Identifier;
@@ -56,6 +61,14 @@ public class SpellsModelImpl implements SpellsModel {
     this.heroTemplate = hero.getTemplate();
     initializeSpellsByCircle(context);
     initializeMagicModel(hero);
+    initializeExperience(hero);
+  }
+
+  private void initializeExperience(Hero hero) {
+    PointsModel pointsModel = PointModelFetcher.fetch(hero);
+    IExperiencePointCosts experienceCost = hero.getTemplate().getExperienceCost();
+    SpellExperienceCostCalculator calculator = new SpellExperienceCostCalculator(experienceCost);
+    pointsModel.addToExperienceOverview(new SpellExperienceModel(hero, calculator));
   }
 
   private void initializeSpellsByCircle(InitializationContext context) {

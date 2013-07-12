@@ -14,24 +14,26 @@ import net.sf.anathema.character.main.magic.model.charm.ISpecialCharmManager;
 import net.sf.anathema.character.main.magic.model.charm.IndirectCharmRequirement;
 import net.sf.anathema.character.main.magic.model.charm.PrerequisiteModifyingCharms;
 import net.sf.anathema.character.main.magic.model.charm.special.CharmSpecialsModel;
+import net.sf.anathema.character.main.magic.model.charm.special.ISpecialCharm;
 import net.sf.anathema.character.main.magic.model.charm.special.MultiLearnCharmSpecials;
 import net.sf.anathema.character.main.magic.model.charm.special.MultipleEffectCharmSpecials;
-import net.sf.anathema.character.main.magic.model.charm.special.ISpecialCharm;
 import net.sf.anathema.character.main.magic.model.charms.ILearningCharmGroup;
 import net.sf.anathema.character.main.magic.model.charms.ILearningCharmGroupContainer;
 import net.sf.anathema.character.main.magic.model.charms.LearningCharmGroup;
-import net.sf.anathema.hero.magic.model.martial.MartialArtsUtilities;
 import net.sf.anathema.character.main.magic.model.charms.options.MartialArtsOptions;
 import net.sf.anathema.character.main.magic.model.charms.options.NonMartialArtsOptions;
 import net.sf.anathema.character.main.magic.model.charmtree.CharmTraitRequirementChecker;
 import net.sf.anathema.character.main.magic.model.charmtree.GroupCharmTree;
 import net.sf.anathema.character.main.template.HeroTemplate;
+import net.sf.anathema.character.main.template.experience.IExperiencePointCosts;
 import net.sf.anathema.character.main.template.magic.ICharmProvider;
 import net.sf.anathema.character.main.template.magic.MartialArtsCharmConfiguration;
 import net.sf.anathema.character.main.type.ICharacterType;
 import net.sf.anathema.hero.change.ChangeAnnouncer;
 import net.sf.anathema.hero.change.ChangeFlavor;
 import net.sf.anathema.hero.change.FlavoredChangeListener;
+import net.sf.anathema.hero.charms.advance.CharmExperienceModel;
+import net.sf.anathema.hero.charms.advance.CharmPointCostCalculator;
 import net.sf.anathema.hero.charms.model.context.CreationCharmLearnStrategy;
 import net.sf.anathema.hero.charms.model.context.ExperiencedCharmLearnStrategy;
 import net.sf.anathema.hero.charms.model.context.ProxyCharmLearnStrategy;
@@ -39,14 +41,17 @@ import net.sf.anathema.hero.charms.model.special.SpecialCharmManager;
 import net.sf.anathema.hero.charms.sheet.content.PrintCharmsProvider;
 import net.sf.anathema.hero.concept.CasteType;
 import net.sf.anathema.hero.concept.HeroConceptFetcher;
-import net.sf.anathema.hero.spiritual.model.pool.EssencePoolModel;
-import net.sf.anathema.hero.spiritual.model.pool.EssencePoolModelFetcher;
 import net.sf.anathema.hero.experience.ExperienceModel;
 import net.sf.anathema.hero.experience.ExperienceModelFetcher;
 import net.sf.anathema.hero.magic.model.MagicModel;
 import net.sf.anathema.hero.magic.model.MagicModelFetcher;
+import net.sf.anathema.hero.magic.model.martial.MartialArtsUtilities;
 import net.sf.anathema.hero.model.Hero;
 import net.sf.anathema.hero.model.InitializationContext;
+import net.sf.anathema.hero.points.PointModelFetcher;
+import net.sf.anathema.hero.points.PointsModel;
+import net.sf.anathema.hero.spiritual.model.pool.EssencePoolModel;
+import net.sf.anathema.hero.spiritual.model.pool.EssencePoolModelFetcher;
 import net.sf.anathema.hero.traits.TraitModel;
 import net.sf.anathema.hero.traits.TraitModelFetcher;
 import net.sf.anathema.lib.control.ChangeListener;
@@ -61,11 +66,11 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import static net.sf.anathema.character.main.magic.model.charms.options.DefaultCharmTemplateRetriever.getNativeTemplate;
 import static net.sf.anathema.hero.magic.model.martial.MartialArtsLevel.Sidereal;
 import static net.sf.anathema.hero.magic.model.martial.MartialArtsUtilities.hasLevel;
 import static net.sf.anathema.hero.magic.model.martial.MartialArtsUtilities.isFormMagic;
 import static net.sf.anathema.hero.magic.model.martial.MartialArtsUtilities.isMartialArts;
-import static net.sf.anathema.character.main.magic.model.charms.options.DefaultCharmTemplateRetriever.getNativeTemplate;
 
 public class CharmsModelImpl implements CharmsModel {
 
@@ -109,6 +114,14 @@ public class CharmsModelImpl implements CharmsModel {
     addCompulsiveCharms(hero.getTemplate());
     addOverdrivePools(hero);
     initializeMagicModel(hero);
+    initializeExperience(hero);
+  }
+
+  private void initializeExperience(Hero hero) {
+    PointsModel pointsModel = PointModelFetcher.fetch(hero);
+    IExperiencePointCosts experienceCost = hero.getTemplate().getExperienceCost();
+    CharmPointCostCalculator calculator = new CharmPointCostCalculator(experienceCost);
+    pointsModel.addToExperienceOverview(new CharmExperienceModel(calculator, hero));
   }
 
   private void addOverdrivePools(Hero hero) {

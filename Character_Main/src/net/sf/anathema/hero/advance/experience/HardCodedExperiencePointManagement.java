@@ -1,8 +1,6 @@
 package net.sf.anathema.hero.advance.experience;
 
-import net.sf.anathema.hero.advance.experience.models.CharmExperienceModel;
 import net.sf.anathema.hero.advance.experience.models.MiscellaneousExperienceModel;
-import net.sf.anathema.hero.advance.experience.models.SpellExperienceModel;
 import net.sf.anathema.hero.model.Hero;
 import net.sf.anathema.hero.points.HeroModelExperienceCalculator;
 import net.sf.anathema.hero.points.PointModelFetcher;
@@ -14,30 +12,22 @@ import java.util.List;
 
 public class HardCodedExperiencePointManagement implements ExperiencePointManagement {
 
-  private final PointCostCalculator calculator;
   private final Hero hero;
 
   public HardCodedExperiencePointManagement(Hero hero) {
     this.hero = hero;
-    this.calculator = new ExperiencePointCostCalculator(hero.getTemplate().getExperienceCost());
   }
 
   @Override
   public List<IValueModel<Integer>> getAllModels() {
     final List<IValueModel<Integer>> allModels = new ArrayList<>();
     // todo (sandra): Sorting
-    allModels.add(getCharmModel());
-    allModels.add(getSpellModel());
     allModels.add(getMiscModel());
     PointsModel pointsModel = PointModelFetcher.fetch(hero);
     for (IValueModel<Integer>  model : pointsModel.getExperienceOverviewModels()) {
       allModels.add(model);
     }
     return allModels;
-  }
-
-  private IValueModel<Integer> getCharmModel() {
-    return new CharmExperienceModel(calculator, hero);
   }
 
   @Override
@@ -52,10 +42,6 @@ public class HardCodedExperiencePointManagement implements ExperiencePointManage
 
   private IValueModel<Integer> getMiscModel() {
     return new MiscellaneousExperienceModel(hero);
-  }
-
-  private IValueModel<Integer> getSpellModel() {
-    return new SpellExperienceModel(hero, calculator);
   }
 
   @Override

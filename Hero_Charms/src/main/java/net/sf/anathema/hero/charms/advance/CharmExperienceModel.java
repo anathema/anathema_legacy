@@ -1,11 +1,10 @@
-package net.sf.anathema.hero.advance.experience.models;
+package net.sf.anathema.hero.charms.advance;
 
 import net.sf.anathema.character.main.magic.model.charm.Charm;
 import net.sf.anathema.character.main.magic.model.charm.special.CharmSpecialsModel;
 import net.sf.anathema.character.main.magic.model.charm.special.IUpgradableCharmConfiguration;
 import net.sf.anathema.character.main.magic.model.charm.special.SubEffectCharmSpecials;
 import net.sf.anathema.hero.advance.AbstractIntegerValueModel;
-import net.sf.anathema.hero.advance.experience.PointCostCalculator;
 import net.sf.anathema.hero.charms.model.CharmsModel;
 import net.sf.anathema.hero.charms.model.CharmsModelFetcher;
 import net.sf.anathema.hero.model.Hero;
@@ -15,10 +14,10 @@ import java.util.Set;
 
 public class CharmExperienceModel extends AbstractIntegerValueModel {
 
-  private final PointCostCalculator calculator;
+  private final CharmPointCostCalculator calculator;
   private final Hero hero;
 
-  public CharmExperienceModel(PointCostCalculator calculator, Hero hero) {
+  public CharmExperienceModel(CharmPointCostCalculator calculator, Hero hero) {
     super("Experience", "Charms");
     this.calculator = calculator;
     this.hero = hero;
