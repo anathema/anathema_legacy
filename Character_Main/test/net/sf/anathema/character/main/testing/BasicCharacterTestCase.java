@@ -1,10 +1,10 @@
 package net.sf.anathema.character.main.testing;
 
+import net.sf.anathema.character.main.testing.dummy.models.DummySpiritualTraitModel;
 import net.sf.anathema.character.main.traits.TraitValueStrategy;
 import net.sf.anathema.character.main.traits.types.OtherTraitType;
 import net.sf.anathema.character.main.testing.dummy.DummyHero;
 import net.sf.anathema.character.main.testing.dummy.models.DummyHeroConcept;
-import net.sf.anathema.character.main.testing.dummy.models.DummyOtherTraitModel;
 import net.sf.anathema.character.main.testing.dummy.models.DummyTraitModel;
 
 public class BasicCharacterTestCase {
@@ -19,7 +19,7 @@ public class BasicCharacterTestCase {
 
   private DummyHero createCharacterWithEssence(TraitValueStrategy valueStrategy, int currentValue) {
     DummyHero hero = new DummyHero();
-    DummyOtherTraitModel otherTraitModel = new DummyOtherTraitModel();
+    DummySpiritualTraitModel otherTraitModel = new DummySpiritualTraitModel();
     hero.addModel(otherTraitModel);
     hero.addModel(new DummyHeroConcept());
     hero.addModel(createTraits(valueStrategy));

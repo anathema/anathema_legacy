@@ -5,6 +5,7 @@ import net.sf.anathema.character.main.template.points.FixedValueRatingCosts;
 import net.sf.anathema.character.main.template.experience.AbilityPointCosts;
 import net.sf.anathema.character.main.template.experience.CurrentRatingCosts;
 import net.sf.anathema.character.main.template.points.IFavorableTraitCreationPoints;
+import net.sf.anathema.character.main.testing.dummy.models.DummySpiritualTraitModel;
 import net.sf.anathema.character.main.traits.types.AbilityType;
 import net.sf.anathema.character.main.library.trait.FavorableTraitCost;
 import net.sf.anathema.character.main.library.trait.Trait;
@@ -12,7 +13,6 @@ import net.sf.anathema.character.main.costs.AbstractBonusPointTestCase;
 import net.sf.anathema.character.main.testing.dummy.DummyHero;
 import net.sf.anathema.character.main.testing.dummy.DummyInitializationContext;
 import net.sf.anathema.character.main.testing.dummy.models.DummyHeroConcept;
-import net.sf.anathema.character.main.testing.dummy.models.DummyOtherTraitModel;
 import net.sf.anathema.character.main.testing.dummy.models.DummyTraitModel;
 import net.sf.anathema.hero.abilities.points.creation.AbilityCostCalculatorImpl;
 import net.sf.anathema.hero.abilities.model.AbilitiesModelImpl;
@@ -89,7 +89,7 @@ public class AbilityCostCalculatorTest extends AbstractBonusPointTestCase {
     dummyHero.addModel(abilityModel);
     dummyHero.addModel(new DummyTraitModel());
     dummyHero.addModel(new DummyHeroConcept());
-    dummyHero.addModel(new DummyOtherTraitModel());
+    dummyHero.addModel(new DummySpiritualTraitModel());
     costs = new DummyAbilityPointCosts();
   }
 

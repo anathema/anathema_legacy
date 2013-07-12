@@ -12,7 +12,7 @@ import net.sf.anathema.character.main.library.trait.subtrait.ISubTraitContainer;
 import net.sf.anathema.character.main.testing.dummy.DummyCasteType;
 import net.sf.anathema.character.main.testing.dummy.DummyHero;
 import net.sf.anathema.character.main.testing.dummy.models.DummyHeroConcept;
-import net.sf.anathema.character.main.testing.dummy.models.DummyOtherTraitModel;
+import net.sf.anathema.character.main.testing.dummy.models.DummySpiritualTraitModel;
 import net.sf.anathema.character.main.testing.dummy.models.DummyTraitModel;
 import net.sf.anathema.character.main.traits.ITraitTemplate;
 import net.sf.anathema.character.main.traits.SimpleTraitTemplate;
@@ -48,7 +48,7 @@ public class FavorableTraitTest {
     this.valueStrategy = new ProxyTraitValueStrategy(new CreationTraitValueStrategy());
     DummyTraitModel traits = new DummyTraitModel();
     traits.valueStrategy = valueStrategy;
-    DummyOtherTraitModel otherTraitModel = new DummyOtherTraitModel();
+    DummySpiritualTraitModel otherTraitModel = new DummySpiritualTraitModel();
     dummyHero.addModel(otherTraitModel);
     dummyHero.addModel(new DummyHeroConcept());
     dummyHero.addModel(traits);

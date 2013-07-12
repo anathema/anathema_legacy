@@ -31,7 +31,7 @@ import net.sf.anathema.hero.equipment.model.MaterialRules;
 import net.sf.anathema.hero.equipment.model.ReflectionMaterialRules;
 import net.sf.anathema.hero.equipment.model.natural.DefaultNaturalSoak;
 import net.sf.anathema.hero.equipment.model.natural.NaturalWeaponTemplate;
-import net.sf.anathema.hero.othertraits.model.pool.EssencePoolModelFetcher;
+import net.sf.anathema.hero.spiritual.model.pool.EssencePoolModelFetcher;
 import net.sf.anathema.hero.model.Hero;
 import net.sf.anathema.hero.model.InitializationContext;
 import net.sf.anathema.hero.sheet.pdf.content.stats.StatsModelFetcher;
