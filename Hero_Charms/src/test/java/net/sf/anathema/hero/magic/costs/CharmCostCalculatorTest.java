@@ -3,17 +3,19 @@ package net.sf.anathema.hero.magic.costs;
 import com.google.common.collect.ImmutableList;
 import net.sf.anathema.character.main.costs.AbstractBonusPointTestCase;
 import net.sf.anathema.character.main.library.trait.favorable.FavorableState;
-import net.sf.anathema.character.main.magic.advance.MagicCostCalculator;
+import net.sf.anathema.hero.magic.advance.MagicCostCalculator;
 import net.sf.anathema.character.main.magic.model.spells.ISpell;
 import net.sf.anathema.character.main.testing.BasicCharacterTestCase;
 import net.sf.anathema.character.main.testing.dummy.DummyBonusPointCosts;
 import net.sf.anathema.character.main.testing.dummy.DummyHero;
 import net.sf.anathema.character.main.testing.dummy.magic.DummyCharmsModel;
 import net.sf.anathema.character.main.testing.dummy.magic.DummySpell;
-import net.sf.anathema.character.main.testing.dummy.magic.DummySpellModel;
+import net.sf.anathema.character.main.testing.dummy.magic.DummySpellsModel;
 import net.sf.anathema.character.main.traits.context.CreationTraitValueStrategy;
 import net.sf.anathema.character.main.traits.types.AbilityType;
-import net.sf.anathema.hero.spells.model.SpellModel;
+import net.sf.anathema.hero.magic.model.MagicModel;
+import net.sf.anathema.hero.magic.model.MagicModelImpl;
+import net.sf.anathema.hero.spells.model.SpellsModel;
 import net.sf.anathema.hero.traits.TraitModel;
 import net.sf.anathema.hero.traits.TraitModelFetcher;
 import org.junit.Before;
@@ -28,18 +30,20 @@ import static org.junit.Assert.assertThat;
 public class CharmCostCalculatorTest extends AbstractBonusPointTestCase {
 
   private MagicCostCalculator calculator;
-  private SpellModel spells;
+  private DummySpellsModel spells = new DummySpellsModel();
+  private DummyCharmsModel charms = new DummyCharmsModel();
   private TraitModel traitModel;
 
   @Before
   public void setUp() throws Exception {
-    DummyCharmsModel charms = new DummyCharmsModel();
-    spells = new DummySpellModel();
+    MagicModel magicModel = new MagicModelImpl();
+    spells.initializeMagicModel(magicModel);
     DummyHero hero = new BasicCharacterTestCase().createModelContextWithEssence2(new CreationTraitValueStrategy());
-    hero.addModel(charms);
-    hero.addModel(spells);
     traitModel = TraitModelFetcher.fetch(hero);
     addAbilityAndEssence(traitModel, hero);
+    hero.addModel(magicModel);
+    hero.addModel(charms);
+    hero.addModel(spells);
     hero.template.creationPoints.favoredCreationCharmCount = 2;
     hero.template.creationPoints.defaultCreationCharmCount = 3;
     calculator = new MagicCostCalculator(hero, new DummyBonusPointCosts());

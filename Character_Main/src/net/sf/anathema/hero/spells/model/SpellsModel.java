@@ -9,7 +9,7 @@ import net.sf.anathema.lib.util.SimpleIdentifier;
 
 import java.util.List;
 
-public interface SpellModel extends HeroModel {
+public interface SpellsModel extends HeroModel {
 
   Identifier ID = new SimpleIdentifier("Spells");
 

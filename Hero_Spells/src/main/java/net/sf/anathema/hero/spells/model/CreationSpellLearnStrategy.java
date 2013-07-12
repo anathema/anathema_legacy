@@ -7,27 +7,27 @@ import java.util.List;
 public class CreationSpellLearnStrategy implements ISpellLearnStrategy {
 
   @Override
-  public void addSpells(SpellModel configuration, List<ISpell> addedSpells) {
+  public void addSpells(SpellsModel configuration, List<ISpell> addedSpells) {
     configuration.addSpells(addedSpells, false);
   }
 
   @Override
-  public void removeSpells(SpellModel configuration, List<ISpell> removedSpells) {
+  public void removeSpells(SpellsModel configuration, List<ISpell> removedSpells) {
     configuration.removeSpells(removedSpells, false);
   }
 
   @Override
-  public boolean isSpellAllowed(SpellModel configuration, ISpell spell) {
+  public boolean isSpellAllowed(SpellsModel configuration, ISpell spell) {
     return configuration.isSpellAllowed(spell, false);
   }
 
   @Override
-  public ISpell[] getLearnedSpells(SpellModel configuration) {
+  public ISpell[] getLearnedSpells(SpellsModel configuration) {
     return configuration.getLearnedSpells(false);
   }
 
   @Override
-  public boolean isLearned(SpellModel configuration, ISpell spell) {
+  public boolean isLearned(SpellsModel configuration, ISpell spell) {
     return configuration.isLearnedOnCreation(spell);
   }
 }

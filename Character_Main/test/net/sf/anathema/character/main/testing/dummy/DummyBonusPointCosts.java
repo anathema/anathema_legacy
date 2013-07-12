@@ -1,6 +1,6 @@
 package net.sf.anathema.character.main.testing.dummy;
 
-import net.sf.anathema.character.main.magic.advance.creation.MagicCosts;
+import net.sf.anathema.hero.magic.advance.creation.MagicCosts;
 import net.sf.anathema.character.main.magic.model.charm.Charm;
 import net.sf.anathema.character.main.magic.model.charm.MartialArtsLevel;
 import net.sf.anathema.character.main.magic.model.magic.Magic;

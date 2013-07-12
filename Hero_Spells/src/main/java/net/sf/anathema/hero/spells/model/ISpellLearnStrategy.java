@@ -6,13 +6,13 @@ import java.util.List;
 
 public interface ISpellLearnStrategy {
 
-  void addSpells(SpellModel configuration, List<ISpell> addedSpells);
+  void addSpells(SpellsModel configuration, List<ISpell> addedSpells);
 
-  void removeSpells(SpellModel configuration, List<ISpell> removedSpells);
+  void removeSpells(SpellsModel configuration, List<ISpell> removedSpells);
 
-  boolean isSpellAllowed(SpellModel configuration, ISpell spell);
+  boolean isSpellAllowed(SpellsModel configuration, ISpell spell);
 
-  ISpell[] getLearnedSpells(SpellModel configuration);
+  ISpell[] getLearnedSpells(SpellsModel configuration);
 
-  boolean isLearned(SpellModel configuration, ISpell spell);
+  boolean isLearned(SpellsModel configuration, ISpell spell);
 }

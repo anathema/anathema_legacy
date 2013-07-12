@@ -8,7 +8,7 @@ import net.sf.anathema.framework.IApplicationModel;
 import net.sf.anathema.hero.experience.ExperienceModel;
 import net.sf.anathema.hero.experience.ExperienceModelFetcher;
 import net.sf.anathema.hero.model.Hero;
-import net.sf.anathema.hero.spells.model.SpellModel;
+import net.sf.anathema.hero.spells.model.SpellsModel;
 import net.sf.anathema.hero.spells.model.SpellsModelFetcher;
 import net.sf.anathema.hero.spells.model.CircleModel;
 import net.sf.anathema.lib.resources.Resources;
@@ -30,7 +30,7 @@ public class SpellInitializer implements HeroModelInitializer {
     SpellView view = sectionView.addView(header, SpellView.class, hero.getTemplate().getTemplateType().getCharacterType());
     MagicDescriptionProvider magicDescriptionProvider = CharmDescriptionProviderExtractor.CreateFor(applicationModel, resources);
     ExperienceModel experienceModel = ExperienceModelFetcher.fetch(hero);
-    SpellModel spellModel = SpellsModelFetcher.fetch(hero);
-    new SpellPresenter(circleModel, resources, view, magicDescriptionProvider, experienceModel, spellModel).initPresentation();
+    SpellsModel spellsModel = SpellsModelFetcher.fetch(hero);
+    new SpellPresenter(circleModel, resources, view, magicDescriptionProvider, experienceModel, spellsModel).initPresentation();
   }
 }

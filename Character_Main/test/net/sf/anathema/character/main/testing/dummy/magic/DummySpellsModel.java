@@ -1,11 +1,14 @@
 package net.sf.anathema.character.main.testing.dummy.magic;
 
+import net.sf.anathema.character.main.magic.model.magic.Magic;
 import net.sf.anathema.character.main.magic.model.spells.CircleType;
 import net.sf.anathema.character.main.magic.model.spells.ISpell;
 import net.sf.anathema.hero.change.ChangeAnnouncer;
+import net.sf.anathema.hero.magic.model.MagicLearner;
+import net.sf.anathema.hero.magic.model.MagicModel;
 import net.sf.anathema.hero.model.Hero;
 import net.sf.anathema.hero.model.InitializationContext;
-import net.sf.anathema.hero.spells.model.SpellModel;
+import net.sf.anathema.hero.spells.model.SpellsModel;
 import net.sf.anathema.lib.control.ChangeListener;
 import net.sf.anathema.lib.exception.NotYetImplementedException;
 import net.sf.anathema.lib.util.Identifier;
@@ -13,10 +16,12 @@ import org.apache.commons.lang3.ArrayUtils;
 
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Collection;
 import java.util.Collections;
 import java.util.List;
+import java.util.Set;
 
-public class DummySpellModel implements SpellModel {
+public class DummySpellsModel implements SpellsModel {
 
   private List<ISpell> spells = new ArrayList<>();
 
@@ -131,5 +136,29 @@ public class DummySpellModel implements SpellModel {
       }
     }
     return spellList;
+  }
+
+  public void initializeMagicModel(MagicModel magicModel) {
+    magicModel.addLearnProvider(new MagicLearner() {
+      @Override
+      public boolean handlesMagic(Magic magic) {
+        return magic instanceof ISpell;
+      }
+
+      @Override
+      public int getAdditionalBonusPoints(Magic magic) {
+        return 0;
+      }
+
+      @Override
+      public int getLearnCount(Magic magic, Set<Magic> alreadyHandledMagic) {
+        return 1;
+      }
+
+      @Override
+      public Collection<? extends Magic> getLearnedMagic(boolean experienced) {
+        return Arrays.asList(getLearnedSpells(experienced));
+      }
+    });
   }
 }

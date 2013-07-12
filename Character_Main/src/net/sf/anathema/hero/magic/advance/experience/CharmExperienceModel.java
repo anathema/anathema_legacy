@@ -1,4 +1,4 @@
-package net.sf.anathema.character.main.magic.advance;
+package net.sf.anathema.hero.magic.advance.experience;
 
 import net.sf.anathema.character.main.advance.PointCostCalculator;
 import net.sf.anathema.character.main.advance.models.AbstractIntegerValueModel;

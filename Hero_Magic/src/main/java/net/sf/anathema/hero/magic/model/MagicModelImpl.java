@@ -1,5 +1,6 @@
 package net.sf.anathema.hero.magic.model;
 
+import net.sf.anathema.hero.magic.advance.MagicCostEvaluator;
 import net.sf.anathema.character.main.magic.model.magic.IMagicStats;
 import net.sf.anathema.hero.change.ChangeAnnouncer;
 import net.sf.anathema.hero.model.Hero;
@@ -12,6 +13,7 @@ import java.util.List;
 public class MagicModelImpl implements MagicModel {
 
   private final List<PrintMagicProvider> printMagicProviders = new ArrayList<>();
+  private final List<MagicLearner> magicLearners = new ArrayList<>();
 
   @Override
   public Identifier getId() {
@@ -29,8 +31,18 @@ public class MagicModelImpl implements MagicModel {
   }
 
   @Override
-  public void addPrintMagicProvider(PrintMagicProvider provider) {
+  public void addPrintProvider(PrintMagicProvider provider) {
     printMagicProviders.add(provider);
+  }
+
+  @Override
+  public void addLearnProvider(MagicLearner provider) {
+    magicLearners.add(provider);
+  }
+
+  @Override
+  public MagicCostEvaluator getMagicCostEvaluator() {
+    return new MagicCostEvaluator(magicLearners);
   }
 
   @Override

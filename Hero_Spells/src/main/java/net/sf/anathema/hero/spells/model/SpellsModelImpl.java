@@ -19,6 +19,7 @@ import net.sf.anathema.hero.magic.model.MagicModel;
 import net.sf.anathema.hero.magic.model.MagicModelFetcher;
 import net.sf.anathema.hero.model.Hero;
 import net.sf.anathema.hero.model.InitializationContext;
+import net.sf.anathema.hero.spells.sheet.content.PrintSpellsProvider;
 import net.sf.anathema.lib.control.ChangeListener;
 import net.sf.anathema.lib.util.Identifier;
 import org.apache.commons.lang3.ArrayUtils;
@@ -31,7 +32,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-public class SpellModelImpl implements SpellModel {
+public class SpellsModelImpl implements SpellsModel {
 
   private final ProxySpellLearnStrategy strategy = new ProxySpellLearnStrategy(new CreationSpellLearnStrategy());
   private final List<ISpell> creationLearnedList = new ArrayList<>();
@@ -53,6 +54,11 @@ public class SpellModelImpl implements SpellModel {
     this.charms = CharmsModelFetcher.fetch(hero);
     this.experience = ExperienceModelFetcher.fetch(hero);
     this.heroTemplate = hero.getTemplate();
+    initializeSpellsByCircle(context);
+    initializeMagicModel(hero);
+  }
+
+  private void initializeSpellsByCircle(InitializationContext context) {
     for (CircleType type : CircleType.values()) {
       spellsByCircle.put(type, new ArrayList<ISpell>());
     }
@@ -61,14 +67,13 @@ public class SpellModelImpl implements SpellModel {
     }
   }
 
-  //TODO (Sandra) will investigate if we still need this
-  @SuppressWarnings("UnusedDeclaration")
-  private void addPrintSpells(Hero hero) {
+  private void initializeMagicModel(Hero hero) {
     MagicModel magicModel = MagicModelFetcher.fetch(hero);
     if (magicModel == null) {
       return;
     }
-    magicModel.addPrintMagicProvider(new PrintSpellsProvider(hero));
+    magicModel.addPrintProvider(new PrintSpellsProvider(hero));
+    magicModel.addLearnProvider(new SpellsLearner(this));
   }
 
   @Override
@@ -236,4 +241,5 @@ public class SpellModelImpl implements SpellModel {
     }
     return spellList;
   }
+
 }

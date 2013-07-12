@@ -17,27 +17,27 @@ public class ProxySpellLearnStrategy implements ISpellLearnStrategy {
   }
 
   @Override
-  public void addSpells(SpellModel configuration, List<ISpell> addedSpells) {
+  public void addSpells(SpellsModel configuration, List<ISpell> addedSpells) {
     strategy.addSpells(configuration, addedSpells);
   }
 
   @Override
-  public void removeSpells(SpellModel configuration, List<ISpell> removedSpells) {
+  public void removeSpells(SpellsModel configuration, List<ISpell> removedSpells) {
     strategy.removeSpells(configuration, removedSpells);
   }
 
   @Override
-  public boolean isSpellAllowed(SpellModel configuration, ISpell spell) {
+  public boolean isSpellAllowed(SpellsModel configuration, ISpell spell) {
     return strategy.isSpellAllowed(configuration, spell);
   }
 
   @Override
-  public ISpell[] getLearnedSpells(SpellModel configuration) {
+  public ISpell[] getLearnedSpells(SpellsModel configuration) {
     return strategy.getLearnedSpells(configuration);
   }
 
   @Override
-  public boolean isLearned(SpellModel configuration, ISpell spell) {
+  public boolean isLearned(SpellsModel configuration, ISpell spell) {
     return strategy.isLearned(configuration, spell);
   }
 }

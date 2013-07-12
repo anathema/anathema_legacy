@@ -4,9 +4,9 @@ import net.sf.anathema.character.main.magic.model.spells.ISpell;
 import net.sf.anathema.lib.gui.list.LegalityCheck;
 
 public class SpellLegality implements LegalityCheck {
-  private final SpellModel spellConfiguration;
+  private final SpellsModel spellConfiguration;
 
-  public SpellLegality(SpellModel spellConfiguration) {
+  public SpellLegality(SpellsModel spellConfiguration) {
     this.spellConfiguration = spellConfiguration;
   }
 

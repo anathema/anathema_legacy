@@ -1,4 +1,4 @@
-package net.sf.anathema.character.main.magic.advance;
+package net.sf.anathema.hero.magic.advance;
 
 import net.sf.anathema.character.main.magic.model.magic.Magic;
 import net.sf.anathema.lib.compare.WeightedObject;

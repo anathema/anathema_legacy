@@ -1,9 +1,10 @@
-package net.sf.anathema.character.main.advance.models;
+package net.sf.anathema.hero.magic.advance.experience;
 
 import net.sf.anathema.character.main.advance.PointCostCalculator;
+import net.sf.anathema.character.main.advance.models.AbstractIntegerValueModel;
 import net.sf.anathema.character.main.magic.model.spells.ISpell;
 import net.sf.anathema.hero.model.Hero;
-import net.sf.anathema.hero.spells.model.SpellModel;
+import net.sf.anathema.hero.spells.model.SpellsModel;
 import net.sf.anathema.hero.spells.model.SpellsModelFetcher;
 import net.sf.anathema.hero.traits.TraitMap;
 
@@ -26,9 +27,9 @@ public class SpellExperienceModel extends AbstractIntegerValueModel {
 
   private int getSpellCosts() {
     int experienceCosts = 0;
-    SpellModel spellModel = SpellsModelFetcher.fetch(hero);
-    for (ISpell spell : spellModel.getLearnedSpells(true)) {
-      if (!spellModel.isLearnedOnCreation(spell)) {
+    SpellsModel spellsModel = SpellsModelFetcher.fetch(hero);
+    for (ISpell spell : spellsModel.getLearnedSpells(true)) {
+      if (!spellsModel.isLearnedOnCreation(spell)) {
         experienceCosts += calculator.getSpellCosts(hero, spell, traitConfiguration);
       }
     }

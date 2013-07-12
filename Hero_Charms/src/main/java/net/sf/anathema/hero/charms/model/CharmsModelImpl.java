@@ -108,7 +108,7 @@ public class CharmsModelImpl implements CharmsModel {
     initSpecialCharmConfigurations();
     addCompulsiveCharms(hero.getTemplate());
     addOverdrivePools(hero);
-    addPrintMagic(hero);
+    initializeMagicModel(hero);
   }
 
   private void addOverdrivePools(Hero hero) {
@@ -119,12 +119,13 @@ public class CharmsModelImpl implements CharmsModel {
     poolModel.addOverdrivePool(new CharmOverdrivePool(this, experience));
   }
 
-  private void addPrintMagic(Hero hero) {
+  private void initializeMagicModel(Hero hero) {
     MagicModel magicModel = MagicModelFetcher.fetch(hero);
     if (magicModel == null) {
       return;
     }
-    magicModel.addPrintMagicProvider(new PrintCharmsProvider(hero));
+    magicModel.addPrintProvider(new PrintCharmsProvider(hero));
+    magicModel.addLearnProvider(new CharmLearner(this));
   }
 
   @Override
@@ -538,4 +539,5 @@ public class CharmsModelImpl implements CharmsModel {
     // todo (sandra): compulsive charms
     return new String[0];
   }
+
 }

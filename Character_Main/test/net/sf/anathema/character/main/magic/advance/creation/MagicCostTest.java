@@ -6,6 +6,7 @@ import net.sf.anathema.character.main.magic.model.charm.MartialArtsLevel;
 import net.sf.anathema.character.main.template.experience.ICostAnalyzer;
 import net.sf.anathema.character.main.traits.types.AbilityType;
 import net.sf.anathema.character.main.xml.creation.template.MagicCreationCostsTto;
+import net.sf.anathema.hero.magic.advance.creation.MagicCostsImpl;
 import org.junit.Test;
 
 import static org.hamcrest.CoreMatchers.is;

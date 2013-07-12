@@ -4,7 +4,6 @@ import net.sf.anathema.character.main.magic.model.magic.IMagicStats;
 import net.sf.anathema.hero.magic.sheet.content.AbstractMagicContent;
 import net.sf.anathema.hero.magic.sheet.content.mnemonic.MagicMnemonic;
 import net.sf.anathema.hero.sheet.pdf.session.ReportSession;
-import net.sf.anathema.hero.spells.model.PrintSpellsProvider;
 import net.sf.anathema.lib.resources.Resources;
 
 import java.util.ArrayList;

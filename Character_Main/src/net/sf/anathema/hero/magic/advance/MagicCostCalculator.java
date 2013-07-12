@@ -1,8 +1,9 @@
-package net.sf.anathema.character.main.magic.advance;
+package net.sf.anathema.hero.magic.advance;
 
 import net.sf.anathema.character.main.advance.CostAnalyzer;
 import net.sf.anathema.character.main.magic.model.magic.Magic;
 import net.sf.anathema.character.main.template.creation.BonusPointCosts;
+import net.sf.anathema.hero.magic.model.MagicModelFetcher;
 import net.sf.anathema.hero.model.Hero;
 
 import java.util.HashSet;
@@ -21,7 +22,7 @@ public class MagicCostCalculator {
   protected int bonusPointsSpent = 0;
 
   public MagicCostCalculator(Hero hero, BonusPointCosts costs) {
-    this.magicCostEvaluator = new MagicCostEvaluator(hero);
+    this.magicCostEvaluator = MagicModelFetcher.fetch(hero).getMagicCostEvaluator();
     this.favoredCreationMagicCount = hero.getTemplate().getCreationPoints().getFavoredCreationMagicCount();
     this.defaultCreationMagicCount = hero.getTemplate().getCreationPoints().getDefaultCreationMagicCount();
     this.costs = costs;

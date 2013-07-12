@@ -1,10 +1,11 @@
-package net.sf.anathema.hero.spells.model;
+package net.sf.anathema.hero.spells.sheet.content;
 
 import net.sf.anathema.character.main.magic.model.magic.IMagicStats;
 import net.sf.anathema.character.main.magic.model.spells.ISpell;
 import net.sf.anathema.hero.experience.ExperienceModelFetcher;
 import net.sf.anathema.hero.magic.model.PrintMagicProvider;
 import net.sf.anathema.hero.model.Hero;
+import net.sf.anathema.hero.spells.model.SpellsModelFetcher;
 import net.sf.anathema.hero.spells.sheet.content.SpellStats;
 
 import java.util.Arrays;
