@@ -18,7 +18,5 @@ public interface ComboConfigurationView {
 
   ComboView addComboView(String name, String description);
 
-  void deleteView(ComboView view);
-
   void setEditState(boolean editing);
 }

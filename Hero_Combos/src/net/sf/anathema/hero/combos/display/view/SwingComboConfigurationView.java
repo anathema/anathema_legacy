@@ -134,11 +134,6 @@ public class SwingComboConfigurationView implements ComboConfigurationView, IVie
   }
 
   @Override
-  public void deleteView(ComboView view) {
-    container.remove(view);
-  }
-
-  @Override
   public void setEditState(boolean editing) {
     clearButton.setIcon(editing ? properties.getCancelEditButtonIcon() : properties.getClearButtonIcon());
     clearButton.setTooltip(editing ? properties.getCancelButtonEditToolTip() : properties.getClearButtonToolTip());

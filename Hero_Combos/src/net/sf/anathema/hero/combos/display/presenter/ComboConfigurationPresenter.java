@@ -93,7 +93,7 @@ public class ComboConfigurationPresenter {
 
       @Override
       public void comboDeleted(Combo combo) {
-        view.deleteView(viewsByCombo.get(combo));
+        viewsByCombo.get(combo).remove();
       }
 
       @Override

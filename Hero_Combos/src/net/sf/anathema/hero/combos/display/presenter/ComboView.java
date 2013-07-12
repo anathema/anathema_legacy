@@ -9,4 +9,6 @@ public interface ComboView {
   void updateCombo(String name, String description);
 
   Tool addTool();
+
+  void remove();
 }
