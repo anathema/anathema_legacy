@@ -5,7 +5,7 @@ import net.sf.anathema.character.main.equipment.ITraitModifyingStats;
 import net.sf.anathema.character.main.equipment.weapon.IArmourStats;
 import net.sf.anathema.character.main.equipment.weapon.IEquipmentStats;
 import net.sf.anathema.character.main.equipment.weapon.IWeaponStats;
-import net.sf.anathema.hero.equipment.display.EquipmentStringBuilder;
+import net.sf.anathema.hero.equipment.display.presenter.EquipmentStringBuilder;
 import net.sf.anathema.lib.exception.UnreachableCodeReachedException;
 import net.sf.anathema.lib.file.RelativePath;
 import net.sf.anathema.lib.gui.AbstractUIConfiguration;

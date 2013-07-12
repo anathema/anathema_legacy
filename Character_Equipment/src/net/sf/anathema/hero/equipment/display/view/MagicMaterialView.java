@@ -1,8 +1,9 @@
-package net.sf.anathema.hero.equipment.display;
+package net.sf.anathema.hero.equipment.display.view;
 
 import net.miginfocom.layout.CC;
 import net.miginfocom.swing.MigLayout;
 import net.sf.anathema.equipment.core.MagicalMaterial;
+import net.sf.anathema.hero.equipment.display.presenter.IMagicalMaterialView;
 import net.sf.anathema.lib.gui.AgnosticUIConfiguration;
 import net.sf.anathema.lib.gui.ui.ConfigurableListCellRenderer;
 import net.sf.anathema.lib.gui.widgets.ChangeableJComboBox;

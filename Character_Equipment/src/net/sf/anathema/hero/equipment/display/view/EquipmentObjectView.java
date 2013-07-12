@@ -1,8 +1,9 @@
-package net.sf.anathema.hero.equipment.display;
+package net.sf.anathema.hero.equipment.display.view;
 
 import net.miginfocom.swing.MigLayout;
 import net.sf.anathema.character.main.library.taskpane.ITaskPaneGroupView;
 import net.sf.anathema.character.main.view.AddToTaskPane;
+import net.sf.anathema.hero.equipment.display.presenter.IEquipmentObjectView;
 import net.sf.anathema.interaction.Tool;
 import net.sf.anathema.lib.gui.action.ActionWidgetFactory;
 import net.sf.anathema.lib.gui.action.SmartToggleAction;

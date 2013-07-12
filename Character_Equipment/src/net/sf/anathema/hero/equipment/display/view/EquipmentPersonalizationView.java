@@ -1,6 +1,7 @@
-package net.sf.anathema.hero.equipment.display;
+package net.sf.anathema.hero.equipment.display.view;
 
 import net.miginfocom.swing.MigLayout;
+import net.sf.anathema.hero.equipment.display.presenter.IEquipmentPersonalizationView;
 import net.sf.anathema.lib.gui.dialog.core.IPageContent;
 import net.sf.anathema.lib.workflow.textualdescription.ITextView;
 import net.sf.anathema.lib.workflow.textualdescription.view.LabelTextView;

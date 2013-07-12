@@ -1,4 +1,4 @@
-package net.sf.anathema.hero.equipment.display;
+package net.sf.anathema.hero.equipment.display.presenter;
 
 import net.sf.anathema.lib.resources.Resources;
 

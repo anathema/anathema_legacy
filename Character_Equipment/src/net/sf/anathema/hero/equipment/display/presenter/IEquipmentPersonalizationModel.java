@@ -1,4 +1,4 @@
-package net.sf.anathema.hero.equipment.display;
+package net.sf.anathema.hero.equipment.display.presenter;
 
 public interface IEquipmentPersonalizationModel {
 	void setTitle(String text);

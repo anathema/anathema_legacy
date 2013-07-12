@@ -1,5 +1,7 @@
-package net.sf.anathema.hero.equipment.display;
+package net.sf.anathema.hero.equipment.display.view;
 
+import net.sf.anathema.hero.equipment.display.presenter.EquipmentPersonalizationProperties;
+import net.sf.anathema.hero.equipment.display.presenter.ProxyClosure;
 import net.sf.anathema.lib.control.ObjectValueListener;
 import net.sf.anathema.lib.gui.dialog.userdialog.page.AbstractDialogPage;
 import net.sf.anathema.lib.message.IBasicMessage;

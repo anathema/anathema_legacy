@@ -13,7 +13,7 @@ import net.sf.anathema.character.main.equipment.weapon.IEquipmentStats;
 import net.sf.anathema.equipment.core.MaterialComposition;
 import net.sf.anathema.hero.equipment.EquipmentModel;
 import net.sf.anathema.hero.equipment.EquipmentModelFetcher;
-import net.sf.anathema.hero.equipment.display.EquipmentStringBuilder;
+import net.sf.anathema.hero.equipment.display.presenter.EquipmentStringBuilder;
 import net.sf.anathema.hero.model.Hero;
 import net.sf.anathema.lib.resources.Resources;
 

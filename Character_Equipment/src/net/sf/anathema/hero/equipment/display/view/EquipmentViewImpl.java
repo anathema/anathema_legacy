@@ -1,4 +1,4 @@
-package net.sf.anathema.hero.equipment.display;
+package net.sf.anathema.hero.equipment.display.view;
 
 import net.miginfocom.layout.CC;
 import net.miginfocom.swing.MigLayout;
@@ -6,6 +6,11 @@ import net.sf.anathema.character.main.library.taskpane.ITaskPaneGroupViewFactory
 import net.sf.anathema.character.main.library.taskpane.TaskPaneView;
 import net.sf.anathema.framework.swing.IView;
 import net.sf.anathema.framework.swing.selection.ListObjectSelectionView;
+import net.sf.anathema.hero.equipment.display.presenter.EquipmentPersonalizationProperties;
+import net.sf.anathema.hero.equipment.display.presenter.EquipmentView;
+import net.sf.anathema.hero.equipment.display.presenter.IEquipmentObjectView;
+import net.sf.anathema.hero.equipment.display.presenter.IMagicalMaterialView;
+import net.sf.anathema.hero.equipment.display.presenter.PersonalizationEditView;
 import net.sf.anathema.interaction.Tool;
 import net.sf.anathema.lib.gui.selection.IListObjectSelectionView;
 import net.sf.anathema.swing.interaction.ActionInteraction;
