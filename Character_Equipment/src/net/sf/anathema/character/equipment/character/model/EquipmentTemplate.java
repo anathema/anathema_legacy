@@ -41,7 +41,7 @@ public class EquipmentTemplate implements IEquipmentTemplate {
 
   @Override
   public IEquipmentStats[] getStats() {
-    List<IEquipmentStats> relevantStats = statsByRuleSet.get(new SecondEdition().getId());
+    List<IEquipmentStats> relevantStats = statsByRuleSet.get(SecondEdition.SECOND_EDITION);
     if (relevantStats == null) {
       return new IEquipmentStats[0];
     }
@@ -49,10 +49,10 @@ public class EquipmentTemplate implements IEquipmentTemplate {
   }
 
   public synchronized void addStats(IEquipmentStats stats) {
-    List<IEquipmentStats> statList = statsByRuleSet.get(new SecondEdition().getId());
+    List<IEquipmentStats> statList = statsByRuleSet.get(SecondEdition.SECOND_EDITION);
     if (statList == null) {
       statList = new ArrayList<>();
-      statsByRuleSet.put(new SecondEdition().getId(), statList);
+      statsByRuleSet.put(SecondEdition.SECOND_EDITION, statList);
     }
     statList.add(stats);
   }

@@ -1,22 +1,5 @@
 package net.sf.anathema.character.main.persistence;
 
-import net.sf.anathema.character.main.magic.parser.magic.IExaltedEdition;
-
-public class SecondEdition implements IExaltedEdition {
+public class SecondEdition  {
   public static final String SECOND_EDITION = "SecondEdition";
-
-  @Override
-  public String getId() {
-    return SECOND_EDITION;
-  }
-
-  @Override
-  public boolean equals(Object obj) {
-    return obj instanceof SecondEdition;
-  }
-
-  @Override
-  public int hashCode() {
-    return 19;
-  }
 }
