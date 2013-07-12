@@ -6,6 +6,7 @@ import net.sf.anathema.lib.control.ChangeListener;
 import net.sf.anathema.lib.gui.action.ActionWidgetFactory;
 import net.sf.anathema.lib.gui.action.SmartToggleAction;
 import net.sf.anathema.lib.gui.layout.LayoutUtils;
+import net.sf.anathema.lib.gui.swing.GuiUtilities;
 import net.sf.anathema.lib.model.BooleanModel;
 
 import javax.swing.JCheckBox;
@@ -22,15 +23,6 @@ public class CheckBoxStatsView implements StatsView {
     this.box = createCheckBox(isSelectedModel, description);
   }
 
-  public JComponent getComponent() {
-    panel.add(box);
-    return panel;
-  }
-
-  private JCheckBox createCheckBox(BooleanModel selectedModel, String description) {
-    return ActionWidgetFactory.createCheckBox(new SmartToggleAction(selectedModel, description.replaceAll("&", "&&")));
-  }
-
   @Override
   public void setSelected(boolean selected) {
     isSelectedModel.setValue(selected);
@@ -43,7 +35,7 @@ public class CheckBoxStatsView implements StatsView {
 
   @Override
   public void disable() {
-    panel.setEnabled(false);
+    GuiUtilities.setEnabled(panel, false);
   }
 
   @Override
@@ -56,5 +48,14 @@ public class CheckBoxStatsView implements StatsView {
     CheckBoxStatsView checkBoxStatsView = new CheckBoxStatsView("   ..." + label);
     panel.add(checkBoxStatsView.getComponent());
     return checkBoxStatsView;
+  }
+
+  private JCheckBox createCheckBox(BooleanModel selectedModel, String description) {
+    return ActionWidgetFactory.createCheckBox(new SmartToggleAction(selectedModel, description.replaceAll("&", "&&")));
+  }
+
+  public JComponent getComponent() {
+    panel.add(box);
+    return panel;
   }
 }
