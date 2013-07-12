@@ -17,7 +17,7 @@ public class BridgingComboConfigurationView implements ComboConfigurationView, I
 
   public BridgingComboConfigurationView(FxComboConfigurationView fxView) {
     this.fxView = fxView;
-    panel.init(fxView);
+    panel.init(fxView,"skin/combos/combos.css");
   }
 
   @Override

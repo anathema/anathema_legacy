@@ -31,16 +31,6 @@ public class CombinedComboViewAndMagicProperties extends AbstractMagicLearnPrope
   }
 
   @Override
-  public String getAvailableComboCharmsLabel() {
-    return getResources().getString("CardView.CharmConfiguration.ComboCreation.AvailableLabel");
-  }
-
-  @Override
-  public String getComboedCharmsLabel() {
-    return getResources().getString("CardView.CharmConfiguration.ComboCreation.SelectedLabel");
-  }
-
-  @Override
   public boolean isMagicSelectionAvailable(List list) {
     return !list.isEmpty() && comboConfiguration.isComboLegal((Charm) list.get(0));
   }

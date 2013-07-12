@@ -4,9 +4,13 @@ import net.sf.anathema.interaction.Tool;
 
 public interface ComboView {
 
-  void updateCombo(String name, String description);
+  void displayComboName(String name);
 
   Tool addTool();
 
   void remove();
+
+  void displayCharmNames(String commaSeparatedCharms);
+
+  void displayDescription(String text);
 }

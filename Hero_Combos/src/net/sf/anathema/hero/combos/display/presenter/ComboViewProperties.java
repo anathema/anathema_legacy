@@ -9,10 +9,6 @@ public interface ComboViewProperties extends MagicLearnProperties {
 
   String getFinalizeButtonToolTip();
 
-  String getAvailableComboCharmsLabel();
-
-  String getComboedCharmsLabel();
-
   RelativePath getClearButtonIcon();
 
   String getClearButtonToolTip();

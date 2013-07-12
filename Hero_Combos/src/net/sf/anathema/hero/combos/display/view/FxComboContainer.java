@@ -20,8 +20,8 @@ public class FxComboContainer implements ComboContainer {
   }
 
   @Override
-  public ComboView addView(String name, String description) {
-    FxComboView comboView = new FxComboView(comboPane, name, description);
+  public ComboView addView(String name) {
+    FxComboView comboView = new FxComboView(comboPane, name);
     comboPane.add(comboView.getNode());
     return comboView;
   }
