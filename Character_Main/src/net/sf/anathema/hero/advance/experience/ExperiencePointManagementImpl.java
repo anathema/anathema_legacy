@@ -19,7 +19,7 @@ public class ExperiencePointManagementImpl implements ExperiencePointManagement 
   @Override
   public List<IValueModel<Integer>> getAllModels() {
     final List<IValueModel<Integer>> allModels = new ArrayList<>();
-    // todo (sandra): Sorting
+    // todo (sandra): Sorting mechanism for the value models
     PointsModel pointsModel = PointModelFetcher.fetch(hero);
     for (IValueModel<Integer>  model : pointsModel.getExperienceOverviewModels()) {
       allModels.add(model);
