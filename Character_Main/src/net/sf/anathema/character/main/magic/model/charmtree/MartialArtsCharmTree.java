@@ -1,7 +1,7 @@
 package net.sf.anathema.character.main.magic.model.charmtree;
 
 import net.sf.anathema.character.main.magic.model.charm.Charm;
-import net.sf.anathema.character.main.template.magic.CharmTemplate;
+import net.sf.anathema.character.main.template.magic.CharmProvider;
 import net.sf.anathema.hero.magic.model.martial.MartialArtsLevel;
 import net.sf.anathema.hero.magic.model.martial.MartialArtsUtilities;
 
@@ -11,9 +11,9 @@ public class MartialArtsCharmTree extends CharmTree {
 
   private final MartialArtsLevel standardLevel;
 
-  public MartialArtsCharmTree(CharmTemplate charmTemplate) {
-    super(charmTemplate.getMartialArtsCharms());
-    this.standardLevel = charmTemplate.getMartialArtsRules().getStandardLevel();
+  public MartialArtsCharmTree(CharmProvider charmProvider, MartialArtsLevel standardLevel) {
+    super(charmProvider.getMartialArtsCharms());
+    this.standardLevel = standardLevel;
   }
 
   @Override

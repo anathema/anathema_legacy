@@ -104,7 +104,7 @@ public class CharmsModelImpl implements CharmsModel {
     this.experience = ExperienceModelFetcher.fetch(hero);
     this.traits = TraitModelFetcher.fetch(hero);
     this.hero = hero;
-    this.martialArtsOptions = new MartialArtsOptions(hero);
+    this.martialArtsOptions = new MartialArtsOptions(hero, context.getCharmProvider());
     this.nonMartialArtsOptions = new NonMartialArtsOptions(hero, context.getCharacterTypes(), context.getCharmTemplateRetriever());
     this.manager = new SpecialCharmManager(specialist, hero, this);
     this.provider = context.getCharmProvider();
