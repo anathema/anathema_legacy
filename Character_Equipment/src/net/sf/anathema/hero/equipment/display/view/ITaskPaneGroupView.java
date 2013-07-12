@@ -1,4 +1,4 @@
-package net.sf.anathema.character.main.library.taskpane;
+package net.sf.anathema.hero.equipment.display.view;
 
 import org.jdesktop.swingx.JXTaskPane;
 

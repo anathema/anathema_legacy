@@ -1,4 +1,4 @@
-package net.sf.anathema.character.main.library.taskpane;
+package net.sf.anathema.hero.equipment.display.view;
 
 import com.google.common.base.Preconditions;
 import org.jdesktop.swingx.JXTaskPaneContainer;

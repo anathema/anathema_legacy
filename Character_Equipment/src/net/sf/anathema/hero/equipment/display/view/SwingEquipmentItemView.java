@@ -1,6 +1,5 @@
 package net.sf.anathema.hero.equipment.display.view;
 
-import net.sf.anathema.character.main.library.taskpane.ITaskPaneGroupView;
 import net.sf.anathema.character.main.view.AddToTaskPane;
 import net.sf.anathema.hero.equipment.display.presenter.StatsView;
 import net.sf.anathema.interaction.Tool;

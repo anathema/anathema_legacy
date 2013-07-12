@@ -2,10 +2,9 @@ package net.sf.anathema.hero.equipment.display.view;
 
 import net.miginfocom.layout.CC;
 import net.miginfocom.swing.MigLayout;
-import net.sf.anathema.character.main.library.taskpane.ITaskPaneGroupViewFactory;
-import net.sf.anathema.character.main.library.taskpane.TaskPaneView;
 import net.sf.anathema.framework.swing.IView;
 import net.sf.anathema.framework.swing.selection.ListObjectSelectionView;
+import net.sf.anathema.hero.equipment.display.presenter.EquipmentObjectView;
 import net.sf.anathema.hero.equipment.display.presenter.EquipmentPersonalizationProperties;
 import net.sf.anathema.hero.equipment.display.presenter.EquipmentView;
 import net.sf.anathema.hero.equipment.display.presenter.MagicalMaterialView;
@@ -53,12 +52,12 @@ public class EquipmentViewImpl implements EquipmentView, IView {
   }
 
   @Override
-  public net.sf.anathema.hero.equipment.display.presenter.EquipmentObjectView addEquipmentObjectView() {
+  public EquipmentObjectView addEquipmentObjectView() {
     return taskPaneView.addEquipmentObjectView();
   }
 
   @Override
-  public void removeEquipmentObjectView(net.sf.anathema.hero.equipment.display.presenter.EquipmentObjectView objectView) {
+  public void removeEquipmentObjectView(EquipmentObjectView objectView) {
     taskPaneView.removeEquipmentObjectView((SwingEquipmentItemView) objectView);
   }
 
