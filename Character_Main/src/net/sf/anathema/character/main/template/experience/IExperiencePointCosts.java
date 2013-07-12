@@ -11,7 +11,7 @@ public interface IExperiencePointCosts {
 
   CurrentRatingCosts getAttributeCosts(boolean favored);
 
-  int getCharmCosts(Charm charm, ICostAnalyzer costMapping);
+  int getCharmCosts(Charm charm, CostAnalyzer costMapping);
 
   CurrentRatingCosts getEssenceCosts();
 

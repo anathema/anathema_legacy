@@ -6,6 +6,7 @@ import net.sf.anathema.character.main.template.experience.CurrentRatingCosts;
 import net.sf.anathema.character.main.library.trait.Trait;
 import net.sf.anathema.character.main.library.trait.TraitCollectionUtilities;
 import net.sf.anathema.character.main.library.trait.experience.TraitRatingCostCalculator;
+import net.sf.anathema.hero.magic.advance.creation.MagicCreationCostCalculator;
 import net.sf.anathema.hero.traits.TraitMap;
 import net.sf.anathema.hero.traits.TraitModelFetcher;
 import net.sf.anathema.character.main.advance.models.AbstractSpendingModel;
@@ -13,7 +14,6 @@ import net.sf.anathema.character.main.magic.model.charms.options.DefaultCharmTem
 import net.sf.anathema.character.main.creation.IBonusPointManagement;
 import net.sf.anathema.hero.magic.advance.creation.DefaultCharmModel;
 import net.sf.anathema.hero.magic.advance.creation.FavoredCharmModel;
-import net.sf.anathema.hero.magic.advance.MagicCostCalculator;
 import net.sf.anathema.character.main.creation.bonus.virtue.VirtueBonusModel;
 import net.sf.anathema.character.main.creation.bonus.virtue.VirtueCostCalculator;
 import net.sf.anathema.hero.model.Hero;
@@ -28,7 +28,7 @@ import java.util.List;
 public class BonusPointManagement implements IBonusPointManagement {
 
   private final VirtueCostCalculator virtueCalculator;
-  private final MagicCostCalculator magicCalculator;
+  private final MagicCreationCostCalculator magicCalculator;
   private final Trait willpower;
   private final BonusPointCosts cost;
   private final Trait essence;
@@ -48,7 +48,7 @@ public class BonusPointManagement implements IBonusPointManagement {
     TraitMap traitMap = TraitModelFetcher.fetch(hero);
     Trait[] virtues = TraitCollectionUtilities.getVirtues(traitMap);
     this.virtueCalculator = new VirtueCostCalculator(virtues, creationPoints.getVirtueCreationPoints(), cost);
-    this.magicCalculator = new MagicCostCalculator(hero, cost);
+    this.magicCalculator = new MagicCreationCostCalculator(hero, cost);
     this.willpower = TraitCollectionUtilities.getWillpower(traitMap);
     this.essence = TraitCollectionUtilities.getEssence(traitMap);
   }

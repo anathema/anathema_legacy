@@ -2,14 +2,13 @@ package net.sf.anathema.hero.magic.advance.creation;
 
 import net.sf.anathema.character.main.template.creation.ICreationPoints;
 import net.sf.anathema.character.main.advance.models.AbstractSpendingModel;
-import net.sf.anathema.hero.magic.advance.MagicCostCalculator;
 
 public class DefaultCharmModel extends AbstractSpendingModel {
 
-  private final MagicCostCalculator magicCalculator;
+  private final MagicCreationCostCalculator magicCalculator;
   private final ICreationPoints creationPoints;
 
-  public DefaultCharmModel(MagicCostCalculator magicCalculator, ICreationPoints creationPoints) {
+  public DefaultCharmModel(MagicCreationCostCalculator magicCalculator, ICreationPoints creationPoints) {
     super("Charms", "General");
     this.magicCalculator = magicCalculator;
     this.creationPoints = creationPoints;
