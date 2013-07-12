@@ -18,7 +18,7 @@ public class BridgingExperienceView implements ExperienceView, IView {
   @Override
   public void initGui(ExperienceViewProperties properties) {
     fxView.initGui(properties);
-    panel.init(fxView);
+    panel.init(fxView, "skin/experience/experience.css");
   }
 
   @Override
