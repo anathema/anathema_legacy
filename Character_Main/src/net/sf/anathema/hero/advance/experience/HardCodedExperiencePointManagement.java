@@ -1,15 +1,13 @@
 package net.sf.anathema.hero.advance.experience;
 
-import net.sf.anathema.hero.advance.experience.models.MiscellaneousExperienceModel;
 import net.sf.anathema.hero.advance.experience.models.CharmExperienceModel;
+import net.sf.anathema.hero.advance.experience.models.MiscellaneousExperienceModel;
 import net.sf.anathema.hero.advance.experience.models.SpellExperienceModel;
 import net.sf.anathema.hero.model.Hero;
 import net.sf.anathema.hero.points.HeroModelExperienceCalculator;
 import net.sf.anathema.hero.points.PointModelFetcher;
 import net.sf.anathema.hero.points.PointsModel;
 import net.sf.anathema.hero.points.overview.IValueModel;
-import net.sf.anathema.hero.traits.TraitMap;
-import net.sf.anathema.hero.traits.TraitModelFetcher;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -18,11 +16,9 @@ public class HardCodedExperiencePointManagement implements ExperiencePointManage
 
   private final PointCostCalculator calculator;
   private final Hero hero;
-  private final TraitMap traitMap;
 
   public HardCodedExperiencePointManagement(Hero hero) {
     this.hero = hero;
-    this.traitMap = TraitModelFetcher.fetch(hero);
     this.calculator = new ExperiencePointCostCalculator(hero.getTemplate().getExperienceCost());
   }
 
