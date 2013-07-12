@@ -1,7 +1,7 @@
 package net.sf.anathema.character.main.xml;
 
 import net.sf.anathema.character.main.framework.ICharacterTemplateRegistryCollection;
-import net.sf.anathema.character.main.magic.model.charm.MartialArtsLevel;
+import net.sf.anathema.hero.magic.model.martial.MartialArtsLevel;
 import net.sf.anathema.character.main.magic.model.charms.options.DefaultCharmTemplateRetriever;
 import net.sf.anathema.character.main.magic.parser.charms.ICharmCache;
 import net.sf.anathema.character.main.template.HeroTemplate;

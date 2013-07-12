@@ -1,7 +1,7 @@
-package net.sf.anathema.character.main.magic.model.charms;
+package net.sf.anathema.hero.magic.model.martial;
 
 import net.sf.anathema.character.main.magic.model.charm.Charm;
-import net.sf.anathema.character.main.magic.model.charm.MartialArtsLevel;
+import net.sf.anathema.character.main.magic.model.magic.Magic;
 import net.sf.anathema.character.main.traits.types.AbilityType;
 import net.sf.anathema.lib.util.SimpleIdentifier;
 
@@ -13,16 +13,16 @@ public class MartialArtsUtilities {
 
   public static final SimpleIdentifier MARTIAL_ARTS = new SimpleIdentifier(AbilityType.MartialArts.name());
 
-  public static boolean isMartialArtsCharm(Charm charm) {
+  public static boolean isMartialArts(Magic charm) {
     return charm.hasAttribute(MARTIAL_ARTS);
   }
 
-  public static boolean isFormCharm(Charm charm) {
+  public static boolean isFormMagic(Magic charm) {
     return charm.hasAttribute(FORM_ATTRIBUTE);
   }
 
-  public static MartialArtsLevel getLevel(Charm charm) {
-    if (!isMartialArtsCharm(charm)) {
+  public static MartialArtsLevel getLevel(Magic charm) {
+    if (!isMartialArts(charm)) {
       return null;
     }
     for (MartialArtsLevel level : MartialArtsLevel.values()) {

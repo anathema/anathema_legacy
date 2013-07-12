@@ -4,7 +4,7 @@ import com.itextpdf.text.BadElementException;
 import com.itextpdf.text.BaseColor;
 import com.itextpdf.text.Font;
 import com.itextpdf.text.Image;
-import net.sf.anathema.character.main.magic.model.charm.MartialArtsLevel;
+import net.sf.anathema.hero.magic.model.martial.MartialArtsLevel;
 import net.sf.anathema.character.main.magic.model.spells.CircleType;
 import net.sf.anathema.character.main.traits.TraitType;
 import net.sf.anathema.character.main.type.ICharacterType;

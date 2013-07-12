@@ -4,7 +4,7 @@ import net.sf.anathema.character.main.magic.model.charm.Charm;
 import net.sf.anathema.character.main.magic.parser.charms.ICharmCache;
 import net.sf.anathema.character.main.type.ICharacterType;
 
-import static net.sf.anathema.character.main.magic.model.charms.MartialArtsUtilities.MARTIAL_ARTS;
+import static net.sf.anathema.hero.magic.model.martial.MartialArtsUtilities.MARTIAL_ARTS;
 
 public class CharmSet implements ICharmSet {
 

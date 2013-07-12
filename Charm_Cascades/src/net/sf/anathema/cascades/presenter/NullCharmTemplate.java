@@ -1,6 +1,6 @@
 package net.sf.anathema.cascades.presenter;
 
-import net.sf.anathema.character.main.magic.model.charm.MartialArtsLevel;
+import net.sf.anathema.hero.magic.model.martial.MartialArtsLevel;
 import net.sf.anathema.character.main.template.magic.DefaultMartialArtsRules;
 import net.sf.anathema.character.main.template.magic.ICharmTemplate;
 import net.sf.anathema.character.main.template.magic.MartialArtsRules;

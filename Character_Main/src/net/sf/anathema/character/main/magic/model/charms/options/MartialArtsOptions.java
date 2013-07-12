@@ -9,7 +9,7 @@ import net.sf.anathema.character.main.template.magic.ICharmTemplate;
 import net.sf.anathema.character.main.template.magic.MartialArtsRules;
 import net.sf.anathema.hero.model.Hero;
 
-import static net.sf.anathema.character.main.magic.model.charms.MartialArtsUtilities.isMartialArtsCharm;
+import static net.sf.anathema.hero.magic.model.martial.MartialArtsUtilities.isMartialArts;
 
 public class MartialArtsOptions implements CharmIdMap, ICharmLearnableArbitrator {
 
@@ -36,7 +36,7 @@ public class MartialArtsOptions implements CharmIdMap, ICharmLearnableArbitrator
 
   @Override
   public boolean isLearnable(Charm charm) {
-    return !isMartialArtsCharm(charm) || martialArtsCharmTree.isLearnable(charm);
+    return !isMartialArts(charm) || martialArtsCharmTree.isLearnable(charm);
   }
 
   public MartialArtsRules getMartialArtsRulesForCharacterType() {

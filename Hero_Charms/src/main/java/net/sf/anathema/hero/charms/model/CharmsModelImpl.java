@@ -20,7 +20,7 @@ import net.sf.anathema.character.main.magic.model.charm.special.ISpecialCharm;
 import net.sf.anathema.character.main.magic.model.charms.ILearningCharmGroup;
 import net.sf.anathema.character.main.magic.model.charms.ILearningCharmGroupContainer;
 import net.sf.anathema.character.main.magic.model.charms.LearningCharmGroup;
-import net.sf.anathema.character.main.magic.model.charms.MartialArtsUtilities;
+import net.sf.anathema.hero.magic.model.martial.MartialArtsUtilities;
 import net.sf.anathema.character.main.magic.model.charms.options.MartialArtsOptions;
 import net.sf.anathema.character.main.magic.model.charms.options.NonMartialArtsOptions;
 import net.sf.anathema.character.main.magic.model.charmtree.CharmTraitRequirementChecker;
@@ -61,10 +61,10 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-import static net.sf.anathema.character.main.magic.model.charm.MartialArtsLevel.Sidereal;
-import static net.sf.anathema.character.main.magic.model.charms.MartialArtsUtilities.hasLevel;
-import static net.sf.anathema.character.main.magic.model.charms.MartialArtsUtilities.isFormCharm;
-import static net.sf.anathema.character.main.magic.model.charms.MartialArtsUtilities.isMartialArtsCharm;
+import static net.sf.anathema.hero.magic.model.martial.MartialArtsLevel.Sidereal;
+import static net.sf.anathema.hero.magic.model.martial.MartialArtsUtilities.hasLevel;
+import static net.sf.anathema.hero.magic.model.martial.MartialArtsUtilities.isFormMagic;
+import static net.sf.anathema.hero.magic.model.martial.MartialArtsUtilities.isMartialArts;
 import static net.sf.anathema.character.main.magic.model.charms.options.DefaultCharmTemplateRetriever.getNativeTemplate;
 
 public class CharmsModelImpl implements CharmsModel {
@@ -427,8 +427,8 @@ public class CharmsModelImpl implements CharmsModel {
     if (charm.isBlockedByAlternative(this)) {
       return false;
     }
-    if (isMartialArtsCharm(charm)) {
-      boolean isSiderealFormCharm = isFormCharm(charm) && hasLevel(Sidereal, charm);
+    if (isMartialArts(charm)) {
+      boolean isSiderealFormCharm = isFormMagic(charm) && hasLevel(Sidereal, charm);
       MartialArtsCharmConfiguration martialArtsConfiguration = new DefaultMartialArtsCharmConfiguration(this, experience);
       if (isSiderealFormCharm && !martialArtsConfiguration.isAnyCelestialStyleCompleted()) {
         return false;
@@ -490,7 +490,7 @@ public class CharmsModelImpl implements CharmsModel {
 
   @Override
   public boolean isAlienCharm(Charm charm) {
-    boolean isNotMartialArts = !isMartialArtsCharm(charm);
+    boolean isNotMartialArts = !isMartialArts(charm);
     boolean isOfAlienType = nonMartialArtsOptions.isAlienType(charm.getCharacterType());
     return isNotMartialArts && isOfAlienType;
   }

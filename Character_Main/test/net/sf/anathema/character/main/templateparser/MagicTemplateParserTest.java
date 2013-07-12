@@ -3,7 +3,7 @@ package net.sf.anathema.character.main.templateparser;
 import net.sf.anathema.character.main.xml.magic.GenericMagicTemplate;
 import net.sf.anathema.character.main.xml.magic.GenericMagicTemplateParser;
 import net.sf.anathema.character.main.template.magic.DefaultMartialArtsRules;
-import net.sf.anathema.character.main.magic.model.charm.MartialArtsLevel;
+import net.sf.anathema.hero.magic.model.martial.MartialArtsLevel;
 import net.sf.anathema.character.main.magic.model.spells.CircleType;
 import net.sf.anathema.character.main.template.magic.ICharmTemplate;
 import net.sf.anathema.character.main.dummy.DummyCharm;

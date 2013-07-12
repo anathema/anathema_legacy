@@ -7,7 +7,7 @@ import com.itextpdf.text.Paragraph;
 import com.itextpdf.text.Phrase;
 import net.sf.anathema.cards.layout.ICardReportResourceProvider;
 import net.sf.anathema.character.main.magic.model.charm.Charm;
-import net.sf.anathema.character.main.magic.model.charms.MartialArtsUtilities;
+import net.sf.anathema.hero.magic.model.martial.MartialArtsUtilities;
 import net.sf.anathema.character.main.magic.description.MagicDescription;
 import net.sf.anathema.character.main.traits.types.AbilityType;
 import net.sf.anathema.hero.charms.sheet.content.stats.CharmStats;
@@ -26,7 +26,7 @@ public class CharmCardData extends AbstractMagicCardData {
 
   @Override
   public Image getPrimaryIcon() {
-    if (MartialArtsUtilities.isMartialArtsCharm(charm) && !charm.isInstanceOfGenericCharm()) {
+    if (MartialArtsUtilities.isMartialArts(charm) && !charm.isInstanceOfGenericCharm()) {
       Image image = getResourceProvider().getMartialArtIcon(charm.getGroupId());
       return image != null ? image : getResourceProvider().getTraitIcon(AbilityType.MartialArts);
     } else {
@@ -37,7 +37,7 @@ public class CharmCardData extends AbstractMagicCardData {
 
   @Override
   public Image getSecondaryIcon() {
-    if (MartialArtsUtilities.isMartialArtsCharm(charm) && !charm.isInstanceOfGenericCharm()) {
+    if (MartialArtsUtilities.isMartialArts(charm) && !charm.isInstanceOfGenericCharm()) {
       return getResourceProvider().getMartialArtLevelIcon(MartialArtsUtilities.getLevel(charm));
     } else {
       return getResourceProvider().getCharacterIcon(charm.getCharacterType());

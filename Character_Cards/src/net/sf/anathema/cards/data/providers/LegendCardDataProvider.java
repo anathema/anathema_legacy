@@ -6,7 +6,7 @@ import net.sf.anathema.cards.data.LegendCardData;
 import net.sf.anathema.cards.data.LegendEntry;
 import net.sf.anathema.cards.layout.ICardReportResourceProvider;
 import net.sf.anathema.character.main.magic.model.charm.Charm;
-import net.sf.anathema.character.main.magic.model.charms.MartialArtsUtilities;
+import net.sf.anathema.hero.magic.model.martial.MartialArtsUtilities;
 import net.sf.anathema.character.main.magic.model.spells.Spell;
 import net.sf.anathema.hero.charms.model.CharmsModelFetcher;
 import net.sf.anathema.hero.experience.ExperienceModelFetcher;
@@ -91,7 +91,7 @@ public class LegendCardDataProvider implements ICardDataProvider {
 
   private void buildCharmEntries(ICardReportResourceProvider resourceProvider, Charm[] charms) {
     for (Charm charm : charms) {
-      if (!MartialArtsUtilities.isMartialArtsCharm(charm) || charm.isInstanceOfGenericCharm()) {
+      if (!MartialArtsUtilities.isMartialArts(charm) || charm.isInstanceOfGenericCharm()) {
         LegendEntry trait =
                 new LegendEntry(resourceProvider.getTraitIcon(charm.getPrimaryTraitType()), resources.getString(charm.getPrimaryTraitType().getId()));
         LegendEntry character =

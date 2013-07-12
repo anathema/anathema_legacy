@@ -8,7 +8,7 @@ import net.sf.anathema.character.main.type.ICharacterType;
 import net.sf.anathema.lib.lang.ArrayUtilities;
 import net.sf.anathema.lib.util.Identifier;
 
-import static net.sf.anathema.character.main.magic.model.charms.MartialArtsUtilities.MARTIAL_ARTS;
+import static net.sf.anathema.hero.magic.model.martial.MartialArtsUtilities.MARTIAL_ARTS;
 
 public class CharmFinder {
 

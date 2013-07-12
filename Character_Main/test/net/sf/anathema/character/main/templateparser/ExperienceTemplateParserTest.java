@@ -1,7 +1,7 @@
 package net.sf.anathema.character.main.templateparser;
 
 import net.sf.anathema.character.main.dummy.DummyCharm;
-import net.sf.anathema.character.main.magic.model.charm.MartialArtsLevel;
+import net.sf.anathema.hero.magic.model.martial.MartialArtsLevel;
 import net.sf.anathema.character.main.magic.model.magic.Magic;
 import net.sf.anathema.character.main.template.experience.CostAnalyzer;
 import net.sf.anathema.character.main.template.points.MultiplyRatingCosts;

@@ -1,6 +1,6 @@
 package net.sf.anathema.character.main.xml.creation;
 
-import net.sf.anathema.character.main.magic.model.charm.MartialArtsLevel;
+import net.sf.anathema.hero.magic.model.martial.MartialArtsLevel;
 import net.sf.anathema.character.main.template.experience.CurrentRatingCosts;
 import net.sf.anathema.character.main.xml.core.AbstractXmlTemplateParser;
 import net.sf.anathema.character.main.xml.creation.template.MagicCreationCostsTto;

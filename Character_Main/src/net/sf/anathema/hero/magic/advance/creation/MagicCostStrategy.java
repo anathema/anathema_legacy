@@ -1,8 +1,8 @@
 package net.sf.anathema.hero.magic.advance.creation;
 
-import net.sf.anathema.character.main.magic.model.charm.Charm;
-import net.sf.anathema.character.main.magic.model.charm.MartialArtsLevel;
-import net.sf.anathema.character.main.magic.model.charms.MartialArtsUtilities;
+import net.sf.anathema.hero.magic.model.martial.MartialArtsLevel;
+import net.sf.anathema.hero.magic.model.martial.MartialArtsUtilities;
+import net.sf.anathema.character.main.magic.model.magic.Magic;
 import net.sf.anathema.character.main.xml.creation.template.MagicCreationCostGroupTto;
 
 public class MagicCostStrategy {
@@ -15,16 +15,12 @@ public class MagicCostStrategy {
     this.standardMartialArtsLevel = standardMartialArtsLevel;
   }
 
-  public int getCharmCosts(Charm charm) {
-    CharmKeywordCosts set = new CharmKeywordCosts(tto.keywordCosts);
-    if (set.hasCostFor(charm.getAttributes())) {
-      return set.getCostFor(charm.getAttributes());
+  public int getMagicCosts(Magic magic) {
+    MagicKeywordCosts set = new MagicKeywordCosts(tto.keywordCosts);
+    if (set.hasCostFor(magic.getAttributes())) {
+      return set.getCostFor(magic.getAttributes());
     }
-    return getCharmCosts(MartialArtsUtilities.getLevel(charm));
-  }
-
-  public int getSpellCosts() {
-    return tto.charmCost;
+    return getCharmCosts(MartialArtsUtilities.getLevel(magic));
   }
 
   private int getCharmCosts(MartialArtsLevel martialArtsLevel) {

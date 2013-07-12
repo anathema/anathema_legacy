@@ -5,11 +5,11 @@ import net.sf.anathema.character.main.magic.model.magic.attribute.MagicAttribute
 import java.util.HashMap;
 import java.util.Map;
 
-public class CharmKeywordCosts {
+public class MagicKeywordCosts {
 
   private Map<String, Integer> keywordCosts;
 
-  public CharmKeywordCosts(Map<String, Integer> keywordCosts) {
+  public MagicKeywordCosts(Map<String, Integer> keywordCosts) {
     this.keywordCosts = keywordCosts == null ? new HashMap<String, Integer>() : keywordCosts;
   }
 

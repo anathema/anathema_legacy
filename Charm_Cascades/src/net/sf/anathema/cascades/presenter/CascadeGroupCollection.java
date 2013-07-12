@@ -1,11 +1,11 @@
 package net.sf.anathema.cascades.presenter;
 
-import net.sf.anathema.character.main.magic.model.charms.MartialArtsUtilities;
+import net.sf.anathema.hero.magic.model.martial.MartialArtsUtilities;
 import net.sf.anathema.character.main.magic.model.charmtree.CharmTree;
 import net.sf.anathema.character.main.magic.model.charmtree.MartialArtsCharmTree;
 import net.sf.anathema.character.main.magic.model.charm.ICharmGroup;
 import net.sf.anathema.character.main.magic.model.charmtree.ICharmTree;
-import net.sf.anathema.character.main.magic.model.charm.MartialArtsLevel;
+import net.sf.anathema.hero.magic.model.martial.MartialArtsLevel;
 import net.sf.anathema.character.main.template.HeroTemplate;
 import net.sf.anathema.character.main.template.ITemplateRegistry;
 import net.sf.anathema.character.main.template.magic.ICharmTemplate;

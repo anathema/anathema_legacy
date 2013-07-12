@@ -9,9 +9,9 @@ import java.util.HashSet;
 import java.util.Set;
 
 import static net.sf.anathema.character.main.magic.model.charm.CharmAttributeList.NO_STYLE_ATTRIBUTE;
-import static net.sf.anathema.character.main.magic.model.charm.MartialArtsLevel.Celestial;
-import static net.sf.anathema.character.main.magic.model.charms.MartialArtsUtilities.MARTIAL_ARTS;
-import static net.sf.anathema.character.main.magic.model.charms.MartialArtsUtilities.hasLevel;
+import static net.sf.anathema.hero.magic.model.martial.MartialArtsLevel.Celestial;
+import static net.sf.anathema.hero.magic.model.martial.MartialArtsUtilities.MARTIAL_ARTS;
+import static net.sf.anathema.hero.magic.model.martial.MartialArtsUtilities.hasLevel;
 
 public class DefaultMartialArtsCharmConfiguration implements MartialArtsCharmConfiguration {
   private final CharmsModel charmModel;
