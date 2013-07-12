@@ -1,6 +1,7 @@
 package net.sf.anathema.character.main.testing.dummy;
 
 import net.sf.anathema.character.main.template.experience.CostAnalyzer;
+import net.sf.anathema.character.main.xml.creation.template.MagicCreationCostsTto;
 import net.sf.anathema.hero.magic.advance.creation.MagicCosts;
 import net.sf.anathema.character.main.magic.model.charm.Charm;
 import net.sf.anathema.hero.magic.model.martial.MartialArtsLevel;
@@ -11,6 +12,8 @@ import net.sf.anathema.character.main.template.points.FixedValueRatingCosts;
 import net.sf.anathema.character.main.traits.ValuedTraitType;
 
 public class DummyBonusPointCosts implements BonusPointCosts, MagicCosts {
+
+  public MagicCreationCostsTto magicCostsTto = new MagicCreationCostsTto();
 
   private int getCharmCosts(Charm charm, CostAnalyzer costMapping) {
     return getCharmCosts(costMapping.isMagicFavored(charm), costMapping.getMartialArtsLevel(charm));
@@ -35,8 +38,8 @@ public class DummyBonusPointCosts implements BonusPointCosts, MagicCosts {
   }
 
   @Override
-  public MagicCosts getMagicCosts() {
-    return this;
+  public MagicCreationCostsTto getMagicCosts() {
+    return magicCostsTto;
   }
 
   @Override

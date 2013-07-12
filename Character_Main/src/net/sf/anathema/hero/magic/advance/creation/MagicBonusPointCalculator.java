@@ -4,6 +4,7 @@ import net.sf.anathema.character.main.magic.model.magic.Magic;
 import net.sf.anathema.character.main.template.creation.BonusPointCosts;
 import net.sf.anathema.character.main.template.creation.ICreationPoints;
 import net.sf.anathema.character.main.template.experience.CostAnalyzer;
+import net.sf.anathema.character.main.xml.creation.template.MagicCreationCostsTto;
 import net.sf.anathema.hero.magic.model.MagicModel;
 import net.sf.anathema.hero.magic.model.WeightedMagicSorter;
 import net.sf.anathema.hero.points.HeroBonusPointCalculator;
@@ -42,7 +43,7 @@ public class MagicBonusPointCalculator implements HeroBonusPointCalculator {
   }
 
   private void handleMagic(Magic magic, Set<Magic> handledMagic) {
-    int bonusPointFactor = costs.getMagicCosts().getMagicCosts(magic, analyzer);
+    int bonusPointFactor = getMagicCosts(magic);
     boolean favored = analyzer.isMagicFavored(magic);
     int learnCount = magicCreationCostEvaluator.getLearnCount(magic, handledMagic);
     for (int timesHandled = 0; timesHandled < learnCount; timesHandled++) {
@@ -81,7 +82,7 @@ public class MagicBonusPointCalculator implements HeroBonusPointCalculator {
     }
     int[] weights = new int[magicToHandle.size()];
     for (int index = 0; index < weights.length; index++) {
-      weights[index] = costs.getMagicCosts().getMagicCosts(magicToHandle.get(index), analyzer);
+      weights[index] = getMagicCosts(magicToHandle.get(index));
     }
     List<Magic> sortedMagicList = new WeightedMagicSorter().sortDescending(magicToHandle.toArray(new Magic[magicToHandle.size()]), weights);
     Set<Magic> handledMagic = new HashSet<>();
@@ -106,5 +107,11 @@ public class MagicBonusPointCalculator implements HeroBonusPointCalculator {
 
   public int getGeneralCharmPicksSpent() {
     return generalPicksSpent;
+  }
+
+  private int getMagicCosts(Magic magic) {
+    MagicCreationCostsTto costDto = costs.getMagicCosts();
+    MagicCosts magicCosts = new MagicCostsImpl(costDto);
+    return magicCosts.getMagicCosts(magic, analyzer);
   }
 }

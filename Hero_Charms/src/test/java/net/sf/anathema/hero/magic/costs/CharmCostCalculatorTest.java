@@ -48,7 +48,10 @@ public class CharmCostCalculatorTest extends AbstractBonusPointTestCase {
     hero.template.creationPoints.favoredCreationCharmCount = 2;
     hero.template.creationPoints.defaultCreationCharmCount = 3;
     ICreationPoints creationPoints = hero.getTemplate().getCreationPoints();
-    calculator = new MagicBonusPointCalculator(magicModel, creationPoints, new DummyBonusPointCosts(), new CostAnalyzerImpl(hero));
+    DummyBonusPointCosts costs = new DummyBonusPointCosts();
+    costs.magicCostsTto.general.charmCost = 5;
+    costs.magicCostsTto.favored.charmCost = 4;
+    calculator = new MagicBonusPointCalculator(magicModel, creationPoints, costs, new CostAnalyzerImpl(hero));
   }
 
   @Test

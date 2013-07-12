@@ -17,8 +17,8 @@ public class MagicCostsImpl implements MagicCosts {
   }
 
   @Override
-  public int getMagicCosts(Magic magic, final CostAnalyzer analyzer) {
+  public int getMagicCosts(Magic magic, CostAnalyzer analyzer) {
     boolean favored = analyzer.isMagicFavored(magic);
-    return strategyByFavored.get(favored).getMagicCosts(magic);
+    return strategyByFavored.get(favored).getMagicCosts(magic, analyzer);
   }
 }

@@ -8,7 +8,7 @@ import java.io.Serializable;
 public class MagicCreationCostsTto implements Serializable {
 
   public MagicCreationCostGroupTto favored = new MagicCreationCostGroupTto();
-  public MagicCreationCostGroupTto general = new MagicCreationCostGroupTto();
+  public MagicCreationCostGroupTto  general = new MagicCreationCostGroupTto();
   public MartialArtsLevel standardMartialArtsLevel = MartialArtsLevel.Celestial;
 
   @Override

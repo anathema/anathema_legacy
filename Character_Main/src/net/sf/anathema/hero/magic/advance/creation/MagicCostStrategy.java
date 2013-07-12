@@ -1,9 +1,9 @@
 package net.sf.anathema.hero.magic.advance.creation;
 
-import net.sf.anathema.hero.magic.model.martial.MartialArtsLevel;
-import net.sf.anathema.hero.magic.model.martial.MartialArtsUtilities;
 import net.sf.anathema.character.main.magic.model.magic.Magic;
+import net.sf.anathema.character.main.template.experience.CostAnalyzer;
 import net.sf.anathema.character.main.xml.creation.template.MagicCreationCostGroupTto;
+import net.sf.anathema.hero.magic.model.martial.MartialArtsLevel;
 
 public class MagicCostStrategy {
 
@@ -15,16 +15,16 @@ public class MagicCostStrategy {
     this.standardMartialArtsLevel = standardMartialArtsLevel;
   }
 
-  public int getMagicCosts(Magic magic) {
+  public int getMagicCosts(Magic magic, CostAnalyzer analyzer) {
     MagicKeywordCosts set = new MagicKeywordCosts(tto.keywordCosts);
     if (set.hasCostFor(magic.getAttributes())) {
       return set.getCostFor(magic.getAttributes());
     }
-    return getCharmCosts(MartialArtsUtilities.getLevel(magic));
+    return getCharmCosts(analyzer.getMartialArtsLevel(magic));
   }
 
-  private int getCharmCosts(MartialArtsLevel martialArtsLevel) {
-    return isHighLevelMartialArts(martialArtsLevel) ? tto.highLevelMartialArtsCost : tto.charmCost;
+  private int getCharmCosts(MartialArtsLevel level) {
+    return isHighLevelMartialArts(level) ? tto.highLevelMartialArtsCost : tto.charmCost;
   }
 
   private boolean isHighLevelMartialArts(MartialArtsLevel martialArtsLevel) {
