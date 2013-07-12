@@ -1,18 +1,18 @@
 package net.sf.anathema.character.main.magic.model.charms.options;
 
+import net.sf.anathema.character.main.magic.display.view.charmtree.CharmGroupArbitrator;
 import net.sf.anathema.character.main.magic.model.charm.Charm;
-import net.sf.anathema.character.main.magic.model.charmtree.CharmTree;
+import net.sf.anathema.character.main.magic.model.charm.CharmHasSameTypeAsCharacter;
 import net.sf.anathema.character.main.magic.model.charm.CharmIdMap;
+import net.sf.anathema.character.main.magic.model.charm.GroupedCharmIdMap;
 import net.sf.anathema.character.main.magic.model.charm.ICharmGroup;
+import net.sf.anathema.character.main.magic.model.charmtree.CharmTree;
 import net.sf.anathema.character.main.magic.model.charmtree.ICharmTree;
-import net.sf.anathema.character.main.template.magic.CharmTemplate;
+import net.sf.anathema.character.main.template.magic.CharmProvider;
 import net.sf.anathema.character.main.type.CharacterType;
 import net.sf.anathema.character.main.type.CharacterTypes;
-import net.sf.anathema.character.main.magic.model.charm.CharmHasSameTypeAsCharacter;
 import net.sf.anathema.hero.concept.HeroConcept;
 import net.sf.anathema.hero.concept.HeroConceptFetcher;
-import net.sf.anathema.character.main.magic.model.charm.GroupedCharmIdMap;
-import net.sf.anathema.character.main.magic.display.view.charmtree.CharmGroupArbitrator;
 import net.sf.anathema.hero.model.Hero;
 import net.sf.anathema.hero.template.NativeCharacterType;
 import net.sf.anathema.lib.util.Identifier;
@@ -28,16 +28,16 @@ import static net.sf.anathema.character.main.magic.model.charms.options.DefaultC
 public class NonMartialArtsOptions implements CharmIdMap, CharmGroupArbitrator {
 
   private final CharacterTypes characterTypes;
-  private final AvailableCharacterTypes availableTypes;
+  private CharmProvider charmProvider;
+  private final CharacterTypeList availableTypes;
   private final Map<Identifier, ICharmTree> treesByType = new HashMap<>();
-  private final CharmTemplateRetriever templateRetriever;
   private Hero hero;
 
-  public NonMartialArtsOptions(Hero hero, CharacterTypes characterTypes, CharmTemplateRetriever charmTemplateRetriever) {
+  public NonMartialArtsOptions(Hero hero, CharacterTypes characterTypes, CharmProvider charmProvider) {
     this.hero = hero;
     this.characterTypes = characterTypes;
-    this.templateRetriever = charmTemplateRetriever;
-    this.availableTypes = new AvailableCharacterTypes(templateRetriever);
+    this.charmProvider = charmProvider;
+    this.availableTypes = new CharacterTypeList(charmProvider);
     availableTypes.collectAvailableTypes(getNativeCharacterType(), characterTypes);
     initCharmTreesForAvailableTypes();
   }
@@ -93,12 +93,8 @@ public class NonMartialArtsOptions implements CharmIdMap, CharmGroupArbitrator {
 
   private void initCharmTreesForAvailableTypes() {
     for (CharacterType type : availableTypes) {
-      CharmTemplate charmTemplate = templateRetriever.getCharmTemplate(type);
-      if (charmTemplate != null && type == getNativeCharacterType()) {
-        treesByType.put(type, new CharmTree(charmTemplate));
-      } else if (charmTemplate != null && charmTemplate.canLearnCharms()) {
-        treesByType.put(type, new CharmTree(charmTemplate));
-      }
+      Charm[] charms = charmProvider.getCharms(type);
+      treesByType.put(type, new CharmTree(charms));
     }
   }
 
