@@ -1,9 +1,6 @@
 package net.sf.anathema.hero.advance.experience;
 
-import net.sf.anathema.hero.advance.experience.models.EssenceExperienceModel;
 import net.sf.anathema.hero.advance.experience.models.MiscellaneousExperienceModel;
-import net.sf.anathema.hero.advance.experience.models.VirtueExperienceModel;
-import net.sf.anathema.hero.advance.experience.models.WillpowerExperienceModel;
 import net.sf.anathema.hero.magic.advance.experience.CharmExperienceModel;
 import net.sf.anathema.hero.magic.advance.experience.SpellExperienceModel;
 import net.sf.anathema.hero.model.Hero;
@@ -34,10 +31,7 @@ public class HardCodedExperiencePointManagement implements ExperiencePointManage
     final List<IValueModel<Integer>> allModels = new ArrayList<>();
     // todo (sandra): Sorting
     allModels.add(getCharmModel());
-    allModels.add(getEssenceModel());
     allModels.add(getSpellModel());
-    allModels.add(getVirtueModel());
-    allModels.add(getWillpowerModel());
     allModels.add(getMiscModel());
     PointsModel pointsModel = PointModelFetcher.fetch(hero);
     for (IValueModel<Integer>  model : pointsModel.getExperienceOverviewModels()) {
@@ -48,10 +42,6 @@ public class HardCodedExperiencePointManagement implements ExperiencePointManage
 
   private IValueModel<Integer> getCharmModel() {
     return new CharmExperienceModel(traitMap, calculator, hero);
-  }
-
-  private IValueModel<Integer> getEssenceModel() {
-    return new EssenceExperienceModel(traitMap, calculator);
   }
 
   @Override
@@ -79,14 +69,6 @@ public class HardCodedExperiencePointManagement implements ExperiencePointManage
       experienceCosts += model.getValue();
     }
     return experienceCosts;
-  }
-
-  private IValueModel<Integer> getVirtueModel() {
-    return new VirtueExperienceModel(traitMap, calculator);
-  }
-
-  private IValueModel<Integer> getWillpowerModel() {
-    return new WillpowerExperienceModel(traitMap, calculator);
   }
 
   @Override

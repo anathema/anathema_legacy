@@ -8,10 +8,6 @@ import net.sf.anathema.hero.traits.TraitMap;
 
 public interface PointCostCalculator {
 
-  int getAbilityCosts(Trait ability, boolean favored);
-
-  int getAttributeCosts(Trait attribute, boolean favored);
-
   int getEssenceCosts(Trait essence);
 
   int getVirtueCosts(Trait virtue);

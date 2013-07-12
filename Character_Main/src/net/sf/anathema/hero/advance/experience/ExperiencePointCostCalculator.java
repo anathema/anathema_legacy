@@ -24,16 +24,6 @@ public class ExperiencePointCostCalculator implements PointCostCalculator {
   }
 
   @Override
-  public int getAbilityCosts(Trait ability, final boolean favored) {
-     return getTraitRatingCosts(ability, costs.getAbilityCosts(favored));
-  }
-
-  @Override
-  public int getAttributeCosts(Trait attribute, boolean favored) {
-    return getTraitRatingCosts(attribute, costs.getAttributeCosts(favored));
-  }
-
-  @Override
   public int getEssenceCosts(Trait essence) {
     return getTraitRatingCosts(essence, costs.getEssenceCosts());
   }
