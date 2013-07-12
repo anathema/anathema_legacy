@@ -1,12 +1,12 @@
 package net.sf.anathema.character.main;
 
-import net.sf.anathema.character.main.framework.HeroEnvironment;
+import net.sf.anathema.hero.framework.HeroEnvironment;
 import net.sf.anathema.character.main.template.HeroTemplate;
 import net.sf.anathema.hero.description.HeroDescription;
 import net.sf.anathema.hero.description.HeroDescriptionFetcher;
 import net.sf.anathema.framework.presenter.itemmanagement.PrintNameAdjuster;
 import net.sf.anathema.framework.repository.ChangeManagement;
-import net.sf.anathema.hero.change.ChangeAnnouncer;
+import net.sf.anathema.hero.model.change.ChangeAnnouncer;
 import net.sf.anathema.hero.initialization.HeroModelInitializer;
 import net.sf.anathema.hero.model.DefaultHero;
 import net.sf.anathema.hero.model.HeroModel;

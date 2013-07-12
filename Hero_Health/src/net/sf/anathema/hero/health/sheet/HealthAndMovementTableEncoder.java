@@ -4,7 +4,7 @@ import com.itextpdf.text.DocumentException;
 import com.itextpdf.text.Phrase;
 import com.itextpdf.text.pdf.PdfPTable;
 import net.sf.anathema.character.main.IGenericTraitCollection;
-import net.sf.anathema.hero.health.HealthLevelType;
+import net.sf.anathema.hero.health.model.HealthLevelType;
 import net.sf.anathema.character.main.traits.types.AbilityType;
 import net.sf.anathema.character.main.traits.types.AttributeType;
 import net.sf.anathema.hero.sheet.pdf.session.ReportSession;

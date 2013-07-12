@@ -1,6 +1,6 @@
 package net.sf.anathema.hero.charms.display;
 
-import net.sf.anathema.character.main.framework.CharacterGenericsExtractor;
+import net.sf.anathema.hero.framework.HeroEnvironmentExtractor;
 import net.sf.anathema.character.main.magic.display.view.charms.CharmDescriptionProviderExtractor;
 import net.sf.anathema.character.main.magic.description.MagicDescriptionProvider;
 import net.sf.anathema.character.main.magic.display.view.charmtree.CharmView;
@@ -36,7 +36,7 @@ public class CharmInitializer implements HeroModelInitializer {
     if (!canLearnCharms) {
       return;
     }
-    ITemplateRegistry templateRegistry = CharacterGenericsExtractor.getGenerics(applicationModel).getTemplateRegistry();
+    ITemplateRegistry templateRegistry = HeroEnvironmentExtractor.getGenerics(applicationModel).getTemplateRegistry();
     MagicDescriptionProvider provider = CharmDescriptionProviderExtractor.CreateFor(applicationModel, resources);
     CharacterCharmModel model = new CharacterCharmModel(hero, provider);
     HeroTemplate characterTemplate = hero.getTemplate();

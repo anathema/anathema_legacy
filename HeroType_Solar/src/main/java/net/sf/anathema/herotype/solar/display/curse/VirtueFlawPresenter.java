@@ -6,8 +6,8 @@ import net.sf.anathema.hero.advance.overview.presenter.SelectIdentifierConfigura
 import net.sf.anathema.character.main.traits.TraitType;
 import net.sf.anathema.character.main.traits.types.VirtueType;
 import net.sf.anathema.framework.value.IntValueView;
-import net.sf.anathema.hero.change.ChangeFlavor;
-import net.sf.anathema.hero.change.FlavoredChangeListener;
+import net.sf.anathema.hero.model.change.ChangeFlavor;
+import net.sf.anathema.hero.model.change.FlavoredChangeListener;
 import net.sf.anathema.hero.display.configurableview.ConfigurableCharacterView;
 import net.sf.anathema.hero.model.Hero;
 import net.sf.anathema.hero.traits.TraitChangeFlavor;

@@ -11,7 +11,7 @@ import net.sf.anathema.hero.attributes.advance.experience.AttributesExperienceCa
 import net.sf.anathema.hero.attributes.advance.experience.AttributesExperienceModel;
 import net.sf.anathema.hero.attributes.model.AttributeModel;
 import net.sf.anathema.hero.attributes.model.AttributesModelFetcher;
-import net.sf.anathema.hero.change.ChangeAnnouncer;
+import net.sf.anathema.hero.model.change.ChangeAnnouncer;
 import net.sf.anathema.hero.model.Hero;
 import net.sf.anathema.hero.model.HeroModel;
 import net.sf.anathema.hero.model.InitializationContext;

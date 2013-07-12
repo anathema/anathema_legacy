@@ -8,7 +8,7 @@ import net.sf.anathema.character.main.magic.model.charm.special.CharmSpecialsMod
 import net.sf.anathema.character.main.magic.model.charm.special.ISpecialCharm;
 import net.sf.anathema.character.main.magic.model.charms.ILearningCharmGroup;
 import net.sf.anathema.character.main.type.ICharacterType;
-import net.sf.anathema.hero.change.ChangeAnnouncer;
+import net.sf.anathema.hero.model.change.ChangeAnnouncer;
 import net.sf.anathema.hero.charms.model.CharmsModel;
 import net.sf.anathema.hero.model.Hero;
 import net.sf.anathema.hero.model.InitializationContext;

@@ -21,7 +21,7 @@ import net.sf.anathema.character.main.type.ICharacterType;
 import net.sf.anathema.equipment.core.IEquipmentTemplate;
 import net.sf.anathema.equipment.core.MagicalMaterial;
 import net.sf.anathema.equipment.core.MaterialComposition;
-import net.sf.anathema.hero.change.ChangeAnnouncer;
+import net.sf.anathema.hero.model.change.ChangeAnnouncer;
 import net.sf.anathema.hero.equipment.model.CharacterStatsModifiers;
 import net.sf.anathema.hero.equipment.model.EquipmentCollection;
 import net.sf.anathema.hero.equipment.model.EquipmentDirectAccess;

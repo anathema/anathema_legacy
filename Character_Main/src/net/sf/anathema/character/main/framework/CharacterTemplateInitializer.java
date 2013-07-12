@@ -3,6 +3,7 @@ package net.sf.anathema.character.main.framework;
 import net.sf.anathema.character.main.magic.parser.charms.ICharmCache;
 import net.sf.anathema.character.main.xml.CharacterTemplateParser;
 import net.sf.anathema.character.main.xml.GenericCharacterTemplate;
+import net.sf.anathema.hero.framework.HeroEnvironment;
 import net.sf.anathema.lib.exception.PersistenceException;
 import net.sf.anathema.lib.logging.Logger;
 import net.sf.anathema.lib.resources.ResourceFile;

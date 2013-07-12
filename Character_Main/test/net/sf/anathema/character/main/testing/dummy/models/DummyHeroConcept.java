@@ -2,7 +2,7 @@ package net.sf.anathema.character.main.testing.dummy.models;
 
 import net.sf.anathema.character.main.IIntegerDescription;
 import net.sf.anathema.character.main.IntegerDescription;
-import net.sf.anathema.hero.change.ChangeAnnouncer;
+import net.sf.anathema.hero.model.change.ChangeAnnouncer;
 import net.sf.anathema.hero.concept.CasteCollection;
 import net.sf.anathema.hero.concept.CasteSelection;
 import net.sf.anathema.hero.concept.HeroConcept;

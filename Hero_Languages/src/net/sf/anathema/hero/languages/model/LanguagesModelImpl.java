@@ -8,10 +8,10 @@ import net.sf.anathema.character.main.library.removableentry.AbstractRemovableEn
 import net.sf.anathema.character.main.library.trait.Trait;
 import net.sf.anathema.character.main.traits.types.AbilityType;
 import net.sf.anathema.hero.abilities.model.AbilityModelFetcher;
-import net.sf.anathema.hero.change.ChangeAnnouncer;
-import net.sf.anathema.hero.change.ChangeFlavor;
-import net.sf.anathema.hero.change.FlavoredChangeListener;
-import net.sf.anathema.hero.change.RemovableEntryChangeAdapter;
+import net.sf.anathema.hero.model.change.ChangeAnnouncer;
+import net.sf.anathema.hero.model.change.ChangeFlavor;
+import net.sf.anathema.hero.model.change.FlavoredChangeListener;
+import net.sf.anathema.hero.model.change.RemovableEntryChangeAdapter;
 import net.sf.anathema.hero.model.Hero;
 import net.sf.anathema.hero.model.InitializationContext;
 import net.sf.anathema.hero.traits.TraitChangeFlavor;

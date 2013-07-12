@@ -1,7 +1,7 @@
 package net.sf.anathema.hero.sheet.pdf.content.stats;
 
 import net.sf.anathema.hero.sheet.pdf.encoder.boxes.StatsModifierFactory;
-import net.sf.anathema.hero.change.ChangeAnnouncer;
+import net.sf.anathema.hero.model.change.ChangeAnnouncer;
 import net.sf.anathema.hero.model.Hero;
 import net.sf.anathema.hero.model.InitializationContext;
 import net.sf.anathema.lib.util.Identifier;

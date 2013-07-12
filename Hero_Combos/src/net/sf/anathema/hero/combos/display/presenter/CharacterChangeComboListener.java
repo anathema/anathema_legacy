@@ -1,7 +1,7 @@
 package net.sf.anathema.hero.combos.display.presenter;
 
-import net.sf.anathema.hero.change.ChangeAnnouncer;
-import net.sf.anathema.hero.change.ChangeFlavor;
+import net.sf.anathema.hero.model.change.ChangeAnnouncer;
+import net.sf.anathema.hero.model.change.ChangeFlavor;
 
 public class CharacterChangeComboListener implements ComboConfigurationListener {
 

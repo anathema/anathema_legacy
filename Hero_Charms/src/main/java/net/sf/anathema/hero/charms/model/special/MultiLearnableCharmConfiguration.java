@@ -14,8 +14,8 @@ import net.sf.anathema.character.main.magic.model.charm.special.ISpecialCharmLea
 import net.sf.anathema.character.main.magic.model.charm.special.LearnRangeContext;
 import net.sf.anathema.character.main.magic.model.charmtree.CharmTraitRequirementChecker;
 import net.sf.anathema.character.main.magic.model.charmtree.ICharmLearnableArbitrator;
-import net.sf.anathema.hero.change.ChangeFlavor;
-import net.sf.anathema.hero.change.FlavoredChangeListener;
+import net.sf.anathema.hero.model.change.ChangeFlavor;
+import net.sf.anathema.hero.model.change.FlavoredChangeListener;
 import net.sf.anathema.hero.charms.model.CharmsModel;
 import net.sf.anathema.hero.model.Hero;
 import net.sf.anathema.hero.traits.TraitChangeFlavor;

@@ -2,8 +2,8 @@ package net.sf.anathema.hero.traits.model.event;
 
 import net.sf.anathema.character.main.library.trait.favorable.FavorableState;
 import net.sf.anathema.character.main.library.trait.favorable.IFavorableStateChangedListener;
-import net.sf.anathema.hero.change.ChangeAnnouncer;
-import net.sf.anathema.hero.change.ChangeFlavor;
+import net.sf.anathema.hero.model.change.ChangeAnnouncer;
+import net.sf.anathema.hero.model.change.ChangeFlavor;
 
 public class FavoredChangedListener implements IFavorableStateChangedListener {
   private final ChangeAnnouncer changeAnnouncer;

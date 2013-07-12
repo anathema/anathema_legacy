@@ -1,8 +1,8 @@
 package net.sf.anathema.hero.sheet.pdf;
 
 import com.google.common.collect.Lists;
-import net.sf.anathema.character.main.framework.CharacterGenericsExtractor;
-import net.sf.anathema.character.main.framework.HeroEnvironment;
+import net.sf.anathema.hero.framework.HeroEnvironmentExtractor;
+import net.sf.anathema.hero.framework.HeroEnvironment;
 import net.sf.anathema.framework.IApplicationModel;
 import net.sf.anathema.framework.initialization.IReportFactory;
 import net.sf.anathema.framework.module.preferences.PageSizePreference;
@@ -20,7 +20,7 @@ public class SheetReportFactory implements IReportFactory {
 
   @Override
   public Report[] createReport(Resources resources, IApplicationModel model) {
-    HeroEnvironment characterGenerics = CharacterGenericsExtractor.getGenerics(model);
+    HeroEnvironment characterGenerics = HeroEnvironmentExtractor.getGenerics(model);
     PageSizePreference pageSizePreference = new PageSizePreference();
     List<AbstractPdfReport> reports = Lists.newArrayList(new PortraitSimpleExaltSheetReport(resources, characterGenerics, pageSizePreference),
             new PortraitSimpleMortalSheetReport(resources, characterGenerics, pageSizePreference),

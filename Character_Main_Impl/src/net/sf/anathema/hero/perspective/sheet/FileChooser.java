@@ -1,8 +1,0 @@
-package net.sf.anathema.hero.perspective.sheet;
-
-import java.nio.file.Path;
-
-public interface FileChooser {
-
-  Path getPrintFile();
-}

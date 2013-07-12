@@ -3,7 +3,7 @@ package net.sf.anathema.hero.magic.advance;
 import net.sf.anathema.hero.advance.CostAnalyzerImpl;
 import net.sf.anathema.character.main.template.creation.BonusPointCosts;
 import net.sf.anathema.character.main.template.creation.ICreationPoints;
-import net.sf.anathema.hero.change.ChangeAnnouncer;
+import net.sf.anathema.hero.model.change.ChangeAnnouncer;
 import net.sf.anathema.hero.magic.advance.creation.DefaultMagicModel;
 import net.sf.anathema.hero.magic.advance.creation.FavoredMagicModel;
 import net.sf.anathema.hero.magic.advance.creation.MagicBonusPointCalculator;

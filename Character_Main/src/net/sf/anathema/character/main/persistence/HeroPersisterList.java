@@ -2,7 +2,7 @@ package net.sf.anathema.character.main.persistence;
 
 import com.google.common.base.Predicate;
 import com.google.common.collect.Collections2;
-import net.sf.anathema.character.main.framework.HeroEnvironment;
+import net.sf.anathema.hero.framework.HeroEnvironment;
 import net.sf.anathema.hero.model.Hero;
 import net.sf.anathema.hero.model.HeroModel;
 import net.sf.anathema.hero.persistence.HeroModelPersister;

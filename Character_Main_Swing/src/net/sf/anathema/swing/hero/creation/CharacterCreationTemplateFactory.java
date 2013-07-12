@@ -1,7 +1,7 @@
 package net.sf.anathema.swing.hero.creation;
 
 import net.sf.anathema.character.main.CharacterStatisticsConfiguration;
-import net.sf.anathema.character.main.framework.HeroEnvironment;
+import net.sf.anathema.hero.framework.HeroEnvironment;
 import net.sf.anathema.framework.view.SwingApplicationFrame;
 import net.sf.anathema.lib.gui.dialog.core.DialogResult;
 import net.sf.anathema.lib.gui.dialog.core.ISwingFrameOrDialog;

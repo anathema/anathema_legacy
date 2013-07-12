@@ -1,8 +1,8 @@
 package net.sf.anathema.hero.platform;
 
-import net.sf.anathema.character.main.framework.HeroEnvironment;
-import net.sf.anathema.character.main.framework.HeroEnvironmentExtension;
-import net.sf.anathema.character.main.framework.HeroEnvironmentInitializer;
+import net.sf.anathema.hero.framework.HeroEnvironment;
+import net.sf.anathema.hero.framework.HeroEnvironmentExtension;
+import net.sf.anathema.hero.framework.HeroEnvironmentInitializer;
 import net.sf.anathema.framework.extension.IAnathemaExtension;
 import net.sf.anathema.initialization.Extension;
 import net.sf.anathema.initialization.ObjectFactory;

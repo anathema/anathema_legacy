@@ -2,7 +2,7 @@ package net.sf.anathema.hero.magic.model;
 
 import net.sf.anathema.hero.magic.advance.creation.MagicCreationCostEvaluator;
 import net.sf.anathema.character.main.magic.sheet.content.IMagicStats;
-import net.sf.anathema.hero.change.ChangeAnnouncer;
+import net.sf.anathema.hero.model.change.ChangeAnnouncer;
 import net.sf.anathema.hero.magic.advance.creation.MagicLearner;
 import net.sf.anathema.hero.model.Hero;
 import net.sf.anathema.hero.model.InitializationContext;

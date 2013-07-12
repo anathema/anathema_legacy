@@ -2,7 +2,7 @@ package net.sf.anathema.cascades.presenter;
 
 import net.sf.anathema.cascades.module.CascadeViewFactory;
 import net.sf.anathema.cascades.presenter.view.CascadeView;
-import net.sf.anathema.character.main.framework.HeroEnvironment;
+import net.sf.anathema.hero.framework.HeroEnvironment;
 import net.sf.anathema.character.main.magic.parser.charms.ICharmCache;
 import net.sf.anathema.character.main.magic.model.charmtree.GroupCharmTree;
 import net.sf.anathema.character.main.magic.description.MagicDescriptionProvider;

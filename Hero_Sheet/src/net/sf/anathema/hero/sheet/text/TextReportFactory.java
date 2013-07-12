@@ -1,7 +1,7 @@
 package net.sf.anathema.hero.sheet.text;
 
-import net.sf.anathema.character.main.framework.CharacterGenericsExtractor;
-import net.sf.anathema.character.main.framework.HeroEnvironment;
+import net.sf.anathema.hero.framework.HeroEnvironmentExtractor;
+import net.sf.anathema.hero.framework.HeroEnvironment;
 import net.sf.anathema.framework.IApplicationModel;
 import net.sf.anathema.framework.initialization.IReportFactory;
 import net.sf.anathema.framework.reporting.Report;
@@ -15,7 +15,7 @@ public class TextReportFactory implements IReportFactory {
 
   @Override
   public Report[] createReport(Resources resources, IApplicationModel model) {
-    HeroEnvironment characterGenerics = CharacterGenericsExtractor.getGenerics(model);
+    HeroEnvironment characterGenerics = HeroEnvironmentExtractor.getGenerics(model);
     return new Report[]{new TextReport(resources, characterGenerics)};
   }
 }

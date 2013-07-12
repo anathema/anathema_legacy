@@ -17,7 +17,7 @@ import net.sf.anathema.character.main.traits.VirtueTemplateFactory;
 import net.sf.anathema.character.main.traits.WillpowerTemplateFactory;
 import net.sf.anathema.character.main.traits.creation.DefaultTraitFactory;
 import net.sf.anathema.character.main.traits.creation.TypedTraitTemplateFactory;
-import net.sf.anathema.hero.change.ChangeAnnouncer;
+import net.sf.anathema.hero.model.change.ChangeAnnouncer;
 import net.sf.anathema.hero.model.Hero;
 import net.sf.anathema.hero.model.HeroModel;
 import net.sf.anathema.hero.model.InitializationContext;

@@ -2,12 +2,10 @@ package net.sf.anathema.hero.advance.overview.presenter;
 
 import net.sf.anathema.hero.advance.experience.ExperiencePointManagement;
 import net.sf.anathema.hero.advance.creation.IBonusPointManagement;
-import net.sf.anathema.hero.advance.overview.presenter.CreationOverviewPresenter;
-import net.sf.anathema.hero.advance.overview.presenter.ExperiencedOverviewPresenter;
 import net.sf.anathema.character.main.view.CategorizedOverview;
 import net.sf.anathema.character.main.view.OverviewContainer;
-import net.sf.anathema.hero.change.ChangeFlavor;
-import net.sf.anathema.hero.change.FlavoredChangeListener;
+import net.sf.anathema.hero.model.change.ChangeFlavor;
+import net.sf.anathema.hero.model.change.FlavoredChangeListener;
 import net.sf.anathema.hero.experience.ExperienceChange;
 import net.sf.anathema.hero.experience.ExperienceModelFetcher;
 import net.sf.anathema.hero.model.Hero;

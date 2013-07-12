@@ -6,8 +6,8 @@ import cucumber.api.java.en.Given;
 import cucumber.api.java.en.Then;
 import net.sf.anathema.character.main.Character;
 import net.sf.anathema.character.main.CharacterStatisticsConfiguration;
-import net.sf.anathema.character.main.framework.CharacterGenericsExtractor;
-import net.sf.anathema.character.main.framework.HeroEnvironment;
+import net.sf.anathema.hero.framework.HeroEnvironmentExtractor;
+import net.sf.anathema.hero.framework.HeroEnvironment;
 import net.sf.anathema.character.main.itemtype.CharacterItemTypeRetrieval;
 import net.sf.anathema.character.main.persistence.HeroItemPersister;
 import net.sf.anathema.character.main.template.HeroTemplate;
@@ -33,7 +33,7 @@ public class CharacterCreationSteps {
   public void startAnathema() {
     TestInitializer initializer = new TestInitializer();
     this.model = initializer.initialize();
-    this.characterTypes = CharacterGenericsExtractor.getGenerics(model).getCharacterTypes();
+    this.characterTypes = HeroEnvironmentExtractor.getGenerics(model).getCharacterTypes();
   }
 
   @Given("Anathema is running")
@@ -104,6 +104,6 @@ public class CharacterCreationSteps {
   }
 
   private HeroEnvironment getCharacterGenerics() {
-    return CharacterGenericsExtractor.getGenerics(model);
+    return HeroEnvironmentExtractor.getGenerics(model);
   }
 }

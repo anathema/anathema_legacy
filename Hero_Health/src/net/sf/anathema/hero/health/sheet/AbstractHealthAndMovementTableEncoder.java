@@ -12,7 +12,7 @@ import com.itextpdf.text.pdf.PdfContentByte;
 import com.itextpdf.text.pdf.PdfPCell;
 import com.itextpdf.text.pdf.PdfPTable;
 import net.sf.anathema.character.main.IGenericTraitCollection;
-import net.sf.anathema.hero.health.HealthLevelType;
+import net.sf.anathema.hero.health.model.HealthLevelType;
 import net.sf.anathema.hero.health.HealthModelFetcher;
 import net.sf.anathema.hero.traits.GenericTraitCollectionFacade;
 import net.sf.anathema.hero.traits.TraitModelFetcher;

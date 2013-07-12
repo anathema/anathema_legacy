@@ -12,7 +12,7 @@ import net.sf.anathema.hero.abilities.advance.experience.AbilityExperienceCalcul
 import net.sf.anathema.hero.abilities.advance.experience.AbilityExperienceModel;
 import net.sf.anathema.hero.abilities.model.AbilitiesModel;
 import net.sf.anathema.hero.abilities.model.AbilityModelFetcher;
-import net.sf.anathema.hero.change.ChangeAnnouncer;
+import net.sf.anathema.hero.model.change.ChangeAnnouncer;
 import net.sf.anathema.hero.model.Hero;
 import net.sf.anathema.hero.model.HeroModel;
 import net.sf.anathema.hero.model.InitializationContext;

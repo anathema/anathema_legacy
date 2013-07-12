@@ -1,6 +1,6 @@
 package net.sf.anathema.hero.points;
 
-import net.sf.anathema.hero.change.ChangeAnnouncer;
+import net.sf.anathema.hero.model.change.ChangeAnnouncer;
 import net.sf.anathema.hero.model.Hero;
 import net.sf.anathema.hero.model.InitializationContext;
 import net.sf.anathema.hero.points.overview.IOverviewModel;

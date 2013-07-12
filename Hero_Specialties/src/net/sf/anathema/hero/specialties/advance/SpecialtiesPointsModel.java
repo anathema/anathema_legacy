@@ -5,7 +5,7 @@ import net.sf.anathema.hero.abilities.model.AbilityModelFetcher;
 import net.sf.anathema.hero.specialties.advance.creation.SpecialtiesBonusPointCalculator;
 import net.sf.anathema.hero.specialties.advance.creation.SpecialtyBonusModel;
 import net.sf.anathema.hero.traits.TraitMap;
-import net.sf.anathema.hero.change.ChangeAnnouncer;
+import net.sf.anathema.hero.model.change.ChangeAnnouncer;
 import net.sf.anathema.hero.model.Hero;
 import net.sf.anathema.hero.model.HeroModel;
 import net.sf.anathema.hero.model.InitializationContext;

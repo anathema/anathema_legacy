@@ -4,7 +4,7 @@ import net.sf.anathema.character.main.traits.groups.IIdentifiedTraitTypeGroup;
 import net.sf.anathema.character.main.library.trait.TraitGroup;
 import net.sf.anathema.hero.attributes.model.AttributeModel;
 import net.sf.anathema.hero.traits.DefaultTraitMap;
-import net.sf.anathema.hero.change.ChangeAnnouncer;
+import net.sf.anathema.hero.model.change.ChangeAnnouncer;
 import net.sf.anathema.hero.model.Hero;
 import net.sf.anathema.hero.model.InitializationContext;
 import net.sf.anathema.lib.util.Identifier;

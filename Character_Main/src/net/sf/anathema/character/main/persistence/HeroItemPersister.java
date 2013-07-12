@@ -2,7 +2,7 @@ package net.sf.anathema.character.main.persistence;
 
 import net.sf.anathema.character.main.CharacterStatisticsConfiguration;
 import net.sf.anathema.character.main.ExaltedCharacter;
-import net.sf.anathema.character.main.framework.HeroEnvironment;
+import net.sf.anathema.hero.framework.HeroEnvironment;
 import net.sf.anathema.character.main.framework.item.DataItem;
 import net.sf.anathema.character.main.magic.model.spells.SpellException;
 import net.sf.anathema.framework.item.IItemType;

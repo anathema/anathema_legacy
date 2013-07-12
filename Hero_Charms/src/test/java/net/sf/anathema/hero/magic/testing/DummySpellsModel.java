@@ -3,7 +3,7 @@ package net.sf.anathema.hero.magic.testing;
 import net.sf.anathema.character.main.magic.model.magic.Magic;
 import net.sf.anathema.character.main.magic.model.spells.CircleType;
 import net.sf.anathema.character.main.magic.model.spells.Spell;
-import net.sf.anathema.hero.change.ChangeAnnouncer;
+import net.sf.anathema.hero.model.change.ChangeAnnouncer;
 import net.sf.anathema.hero.magic.advance.creation.MagicLearner;
 import net.sf.anathema.hero.magic.model.MagicModel;
 import net.sf.anathema.hero.model.Hero;

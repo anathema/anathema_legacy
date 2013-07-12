@@ -1,5 +1,6 @@
 package net.sf.anathema.hero.health;
 
+import net.sf.anathema.hero.health.model.HealthLevelType;
 import net.sf.anathema.lib.util.Identifier;
 import net.sf.anathema.lib.util.SimpleIdentifier;
 
