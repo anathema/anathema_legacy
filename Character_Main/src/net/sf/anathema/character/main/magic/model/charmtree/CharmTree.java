@@ -3,8 +3,8 @@ package net.sf.anathema.character.main.magic.model.charmtree;
 import net.sf.anathema.character.main.magic.model.charm.Charm;
 import net.sf.anathema.character.main.magic.model.charm.CharmGroup;
 import net.sf.anathema.character.main.magic.model.charm.ICharmGroup;
+import net.sf.anathema.character.main.template.magic.CharmTemplate;
 import net.sf.anathema.hero.magic.model.martial.MartialArtsUtilities;
-import net.sf.anathema.character.main.template.magic.ICharmTemplate;
 
 import java.util.ArrayList;
 import java.util.Collection;
@@ -19,7 +19,7 @@ public class CharmTree implements ICharmTree {
   private final Map<String, Charm> charmById = new HashMap<>();
   private Charm[] allCharms;
 
-  public CharmTree(ICharmTemplate charmTemplate) {
+  public CharmTree(CharmTemplate charmTemplate) {
     this(charmTemplate.getCharms());
   }
 

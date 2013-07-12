@@ -5,7 +5,7 @@ import net.sf.anathema.character.main.magic.parser.charms.CharmCache;
 import net.sf.anathema.character.main.template.HeroTemplate;
 import net.sf.anathema.character.main.template.magic.CharmSet;
 import net.sf.anathema.character.main.template.magic.CharmSetImpl;
-import net.sf.anathema.character.main.template.magic.CharmTemplate;
+import net.sf.anathema.character.main.template.magic.CharmTemplateImpl;
 import net.sf.anathema.character.main.template.magic.CustomizableFreePicksPredicate;
 import net.sf.anathema.character.main.template.magic.DefaultMartialArtsRules;
 import net.sf.anathema.character.main.template.magic.ISpellMagicTemplate;
@@ -121,7 +121,7 @@ public class GenericMagicTemplateParser extends AbstractXmlTemplateParser<Generi
     } else {
       charmSet = CharmSetImpl.createRegularCharmSet(cache, characterTypes.findById(charmType));
     }
-    CharmTemplate charmTemplate = new CharmTemplate(createMartialArtsRules(charmTemplateElement), charmSet);
+    CharmTemplateImpl charmTemplate = new CharmTemplateImpl(createMartialArtsRules(charmTemplateElement), charmSet);
     setAlienAllowedCastes(charmTemplate, charmTemplateElement);
     basicTemplate.setCharmTemplate(charmTemplate);
   }
@@ -150,7 +150,7 @@ public class GenericMagicTemplateParser extends AbstractXmlTemplateParser<Generi
     return MartialArtsLevel.valueOf(martialArtsLevelId);
   }
 
-  private void setAlienAllowedCastes(CharmTemplate charmTemplate, Element charmTemplateElement) throws PersistenceException {
+  private void setAlienAllowedCastes(CharmTemplateImpl charmTemplate, Element charmTemplateElement) throws PersistenceException {
     Element alienCharmsElement = charmTemplateElement.element(TAG_ALIEN_CHARMS);
     if (alienCharmsElement == null) {
       return;

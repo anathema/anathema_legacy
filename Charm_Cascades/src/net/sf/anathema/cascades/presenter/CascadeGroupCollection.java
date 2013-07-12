@@ -1,5 +1,6 @@
 package net.sf.anathema.cascades.presenter;
 
+import net.sf.anathema.character.main.template.magic.CharmTemplate;
 import net.sf.anathema.character.main.type.CharacterType;
 import net.sf.anathema.hero.magic.model.martial.MartialArtsUtilities;
 import net.sf.anathema.character.main.magic.model.charmtree.CharmTree;
@@ -9,7 +10,6 @@ import net.sf.anathema.character.main.magic.model.charmtree.ICharmTree;
 import net.sf.anathema.hero.magic.model.martial.MartialArtsLevel;
 import net.sf.anathema.character.main.template.HeroTemplate;
 import net.sf.anathema.character.main.template.ITemplateRegistry;
-import net.sf.anathema.character.main.template.magic.ICharmTemplate;
 import net.sf.anathema.character.main.type.CharacterTypes;
 import net.sf.anathema.character.main.magic.model.charms.options.DefaultCharmTemplateRetriever;
 import net.sf.anathema.hero.charms.model.CharmGroupCollection;
@@ -44,7 +44,7 @@ public class CascadeGroupCollection implements CharmGroupCollection {
       if (template == null) {
         continue;
       }
-      ICharmTemplate charmTemplate = DefaultCharmTemplateRetriever.getCharmTemplate(template);
+      CharmTemplate charmTemplate = DefaultCharmTemplateRetriever.getCharmTemplate(template);
       if (charmTemplate.canLearnCharms()) {
         registerTypeCharms(allCharmGroups, type, template);
       }
@@ -52,20 +52,20 @@ public class CascadeGroupCollection implements CharmGroupCollection {
   }
 
   private void initMartialArtsCharms(List<ICharmGroup> allCharmGroups) {
-    ICharmTemplate charmTemplate = findCharmTemplateOfCharacterTypeMostProficientWithMartialArts();
+    CharmTemplate charmTemplate = findCharmTemplateOfCharacterTypeMostProficientWithMartialArts();
     ICharmTree martialArtsTree = new MartialArtsCharmTree(charmTemplate);
     treeIdentifierMap.put(MartialArtsUtilities.MARTIAL_ARTS, martialArtsTree);
     allCharmGroups.addAll(Arrays.asList(martialArtsTree.getAllCharmGroups()));
   }
 
-  private ICharmTemplate findCharmTemplateOfCharacterTypeMostProficientWithMartialArts() {
-    ICharmTemplate currentFavoriteTemplate = new NullCharmTemplate();
+  private CharmTemplate findCharmTemplateOfCharacterTypeMostProficientWithMartialArts() {
+    CharmTemplate currentFavoriteTemplate = new NullCharmTemplate();
     for (CharacterType type : characterTypes.findAll()) {
       HeroTemplate defaultTemplate = templateRegistry.getDefaultTemplate(type);
       if (defaultTemplate == null) {
         continue;
       }
-      ICharmTemplate charmTemplate = DefaultCharmTemplateRetriever.getCharmTemplate(defaultTemplate);
+      CharmTemplate charmTemplate = DefaultCharmTemplateRetriever.getCharmTemplate(defaultTemplate);
       MartialArtsLevel martialArtsLevel = charmTemplate.getMartialArtsRules().getStandardLevel();
       MartialArtsLevel highestLevelSoFar = currentFavoriteTemplate.getMartialArtsRules().getStandardLevel();
       if (martialArtsLevel.compareTo(highestLevelSoFar) > 0) {

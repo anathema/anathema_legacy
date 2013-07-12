@@ -5,7 +5,7 @@ import net.sf.anathema.character.main.magic.model.charmtree.CharmTree;
 import net.sf.anathema.character.main.magic.model.charm.CharmIdMap;
 import net.sf.anathema.character.main.magic.model.charm.ICharmGroup;
 import net.sf.anathema.character.main.magic.model.charmtree.ICharmTree;
-import net.sf.anathema.character.main.template.magic.ICharmTemplate;
+import net.sf.anathema.character.main.template.magic.CharmTemplate;
 import net.sf.anathema.character.main.type.CharacterType;
 import net.sf.anathema.character.main.type.CharacterTypes;
 import net.sf.anathema.character.main.magic.model.charm.CharmHasSameTypeAsCharacter;
@@ -93,7 +93,7 @@ public class NonMartialArtsOptions implements CharmIdMap, CharmGroupArbitrator {
 
   private void initCharmTreesForAvailableTypes() {
     for (CharacterType type : availableTypes) {
-      ICharmTemplate charmTemplate = templateRetriever.getCharmTemplate(type);
+      CharmTemplate charmTemplate = templateRetriever.getCharmTemplate(type);
       if (charmTemplate != null && type == getNativeCharacterType()) {
         treesByType.put(type, new CharmTree(charmTemplate));
       } else if (charmTemplate != null && charmTemplate.canLearnCharms()) {

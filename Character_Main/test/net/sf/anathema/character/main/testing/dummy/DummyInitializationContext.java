@@ -1,7 +1,7 @@
 package net.sf.anathema.character.main.testing.dummy;
 
 import net.sf.anathema.character.main.magic.parser.spells.ISpellCache;
-import net.sf.anathema.character.main.template.magic.ICharmProvider;
+import net.sf.anathema.character.main.template.magic.CharmProvider;
 import net.sf.anathema.character.main.type.CharacterTypes;
 import net.sf.anathema.character.main.magic.model.charms.options.CharmTemplateRetriever;
 import net.sf.anathema.hero.model.InitializationContext;
@@ -30,7 +30,7 @@ public class DummyInitializationContext implements InitializationContext {
   }
 
   @Override
-  public ICharmProvider getCharmProvider() {
+  public CharmProvider getCharmProvider() {
     throw new UnsupportedOperationException();
   }
 

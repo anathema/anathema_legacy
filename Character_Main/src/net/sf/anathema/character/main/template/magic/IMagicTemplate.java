@@ -8,5 +8,5 @@ public interface IMagicTemplate {
 
   ISpellMagicTemplate getSpellMagic();
 
-  ICharmTemplate getCharmTemplate();
+  CharmTemplate getCharmTemplate();
 }

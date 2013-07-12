@@ -2,7 +2,7 @@ package net.sf.anathema.hero.charms.model;
 
 import net.sf.anathema.character.main.magic.model.charm.Charm;
 import net.sf.anathema.character.main.magic.description.MagicDescriptionProvider;
-import net.sf.anathema.character.main.template.magic.ICharmTemplate;
+import net.sf.anathema.character.main.template.magic.CharmTemplate;
 import net.sf.anathema.hero.concept.HeroConceptFetcher;
 import net.sf.anathema.character.main.magic.model.charms.ILearningCharmGroup;
 import net.sf.anathema.character.main.magic.model.charms.options.DefaultCharmTemplateRetriever;
@@ -20,7 +20,7 @@ public class CharacterCharmModel {
   }
 
   public boolean isAllowedAlienCharms() {
-    ICharmTemplate charmTemplate = DefaultCharmTemplateRetriever.getNativeTemplate(hero);
+    CharmTemplate charmTemplate = DefaultCharmTemplateRetriever.getNativeTemplate(hero);
     return charmTemplate.isAllowedAlienCharms(getCaste().getType());
   }
 

@@ -5,7 +5,7 @@ import net.sf.anathema.character.main.magic.model.charmtree.MartialArtsCharmTree
 import net.sf.anathema.character.main.magic.model.charm.CharmIdMap;
 import net.sf.anathema.character.main.magic.model.charm.ICharmGroup;
 import net.sf.anathema.character.main.magic.model.charmtree.ICharmLearnableArbitrator;
-import net.sf.anathema.character.main.template.magic.ICharmTemplate;
+import net.sf.anathema.character.main.template.magic.CharmTemplate;
 import net.sf.anathema.character.main.template.magic.MartialArtsRules;
 import net.sf.anathema.hero.model.Hero;
 
@@ -21,7 +21,7 @@ public class MartialArtsOptions implements CharmIdMap, ICharmLearnableArbitrator
     this.martialArtsCharmTree = new MartialArtsCharmTree(getNativeCharmTemplate());
   }
 
-  private ICharmTemplate getNativeCharmTemplate() {
+  private CharmTemplate getNativeCharmTemplate() {
     return DefaultCharmTemplateRetriever.getNativeTemplate(hero);
   }
 

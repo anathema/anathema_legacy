@@ -26,7 +26,7 @@ import net.sf.anathema.character.main.magic.model.charmtree.CharmTraitRequiremen
 import net.sf.anathema.character.main.magic.model.charmtree.GroupCharmTree;
 import net.sf.anathema.character.main.template.HeroTemplate;
 import net.sf.anathema.character.main.template.experience.IExperiencePointCosts;
-import net.sf.anathema.character.main.template.magic.ICharmProvider;
+import net.sf.anathema.character.main.template.magic.CharmProvider;
 import net.sf.anathema.character.main.template.magic.MartialArtsCharmConfiguration;
 import net.sf.anathema.character.main.type.CharacterType;
 import net.sf.anathema.hero.charms.advance.CharmExperienceModel;
@@ -85,7 +85,7 @@ public class CharmsModelImpl implements CharmsModel {
   private ILearningCharmGroup[] martialArtsGroups;
   private final Map<Identifier, ILearningCharmGroup[]> nonMartialArtsGroupsByType = new HashMap<>();
   private final Announcer<ChangeListener> control = Announcer.to(ChangeListener.class);
-  private ICharmProvider provider;
+  private CharmProvider provider;
   private ExperienceModel experience;
   private TraitModel traits;
   private PrerequisiteModifyingCharms prerequisiteModifyingCharms;

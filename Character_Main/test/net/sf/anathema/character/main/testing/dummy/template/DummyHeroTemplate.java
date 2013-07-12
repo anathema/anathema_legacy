@@ -1,5 +1,7 @@
 package net.sf.anathema.character.main.testing.dummy.template;
 
+import net.sf.anathema.character.main.template.magic.CharmTemplate;
+import net.sf.anathema.character.main.template.magic.CharmTemplateImpl;
 import net.sf.anathema.character.main.type.CharacterType;
 import net.sf.anathema.hero.magic.model.martial.MartialArtsLevel;
 import net.sf.anathema.character.main.magic.model.magic.Magic;
@@ -15,9 +17,7 @@ import net.sf.anathema.character.main.template.creation.ICreationPoints;
 import net.sf.anathema.character.main.template.essence.IEssenceTemplate;
 import net.sf.anathema.character.main.template.essence.NullEssenceTemplate;
 import net.sf.anathema.character.main.template.experience.IExperiencePointCosts;
-import net.sf.anathema.character.main.template.magic.CharmTemplate;
 import net.sf.anathema.character.main.template.magic.DefaultMartialArtsRules;
-import net.sf.anathema.character.main.template.magic.ICharmTemplate;
 import net.sf.anathema.character.main.template.magic.IMagicTemplate;
 import net.sf.anathema.character.main.template.magic.ISpellMagicTemplate;
 import net.sf.anathema.character.main.template.magic.NullCharmSet;
@@ -135,8 +135,8 @@ public class DummyHeroTemplate implements HeroTemplate {
     }
 
     @Override
-    public ICharmTemplate getCharmTemplate() {
-      return new CharmTemplate(new DefaultMartialArtsRules(MartialArtsLevel.Mortal), new NullCharmSet());
+    public CharmTemplate getCharmTemplate() {
+      return new CharmTemplateImpl(new DefaultMartialArtsRules(MartialArtsLevel.Mortal), new NullCharmSet());
     }
   }
 

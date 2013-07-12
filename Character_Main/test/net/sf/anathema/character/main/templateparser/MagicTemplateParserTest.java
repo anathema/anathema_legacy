@@ -1,11 +1,11 @@
 package net.sf.anathema.character.main.templateparser;
 
+import net.sf.anathema.character.main.template.magic.CharmTemplate;
 import net.sf.anathema.character.main.xml.magic.GenericMagicTemplate;
 import net.sf.anathema.character.main.xml.magic.GenericMagicTemplateParser;
 import net.sf.anathema.character.main.template.magic.DefaultMartialArtsRules;
 import net.sf.anathema.hero.magic.model.martial.MartialArtsLevel;
 import net.sf.anathema.character.main.magic.model.spells.CircleType;
-import net.sf.anathema.character.main.template.magic.ICharmTemplate;
 import net.sf.anathema.character.main.dummy.DummyCharm;
 import net.sf.anathema.character.main.dummy.DummyCharmUtilities;
 import net.sf.anathema.character.main.testing.dummy.DummyCasteType;
@@ -81,7 +81,7 @@ public class MagicTemplateParserTest {
   public void testMortalCharmTemplate() throws Exception {
     Element templateElement = DocumentUtilities.read(xml).getRootElement();
     GenericMagicTemplate template = parser.parseTemplate(templateElement);
-    ICharmTemplate charmTemplate = template.getCharmTemplate();
+    CharmTemplate charmTemplate = template.getCharmTemplate();
     assertEquals(MartialArtsLevel.Mortal, charmTemplate.getMartialArtsRules().getStandardLevel());
     assertFalse(charmTemplate.canLearnCharms());
   }

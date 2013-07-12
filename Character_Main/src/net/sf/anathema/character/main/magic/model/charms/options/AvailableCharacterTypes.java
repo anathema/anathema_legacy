@@ -1,6 +1,6 @@
 package net.sf.anathema.character.main.magic.model.charms.options;
 
-import net.sf.anathema.character.main.template.magic.ICharmTemplate;
+import net.sf.anathema.character.main.template.magic.CharmTemplate;
 import net.sf.anathema.character.main.type.CharacterType;
 import net.sf.anathema.character.main.type.CharacterTypes;
 
@@ -18,7 +18,7 @@ public class AvailableCharacterTypes implements Iterable<CharacterType> {
 
   public void collectAvailableTypes(CharacterType nativeCharacterType, CharacterTypes characterTypes) {
     for (CharacterType type : characterTypes.findAll()) {
-      ICharmTemplate charmTemplate = retriever.getCharmTemplate(type);
+      CharmTemplate charmTemplate = retriever.getCharmTemplate(type);
       if (charmTemplate != null && charmTemplate.canLearnCharms()) {
         availableTypes.add(type);
       }
