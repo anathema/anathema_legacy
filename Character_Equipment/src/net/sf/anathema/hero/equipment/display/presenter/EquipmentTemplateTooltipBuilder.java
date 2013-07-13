@@ -1,31 +1,65 @@
 package net.sf.anathema.hero.equipment.display.presenter;
 
+import com.google.common.base.Joiner;
+import com.google.common.base.Strings;
 import net.sf.anathema.character.main.equipment.weapon.IEquipmentStats;
 import net.sf.anathema.equipment.core.IEquipmentTemplate;
-import net.sf.anathema.lib.lang.StringUtilities;
+import net.sf.anathema.lib.exception.UnreachableCodeReachedException;
+import net.sf.anathema.lib.gui.ConfigurableTooltip;
+import net.sf.anathema.lib.resources.Resources;
+
+import java.util.ArrayList;
+import java.util.List;
 
 public class EquipmentTemplateTooltipBuilder {
-  private static final String UNICODE_DOT = "\u25CF";
-  private static final String BREAKPOINT = "<br>";
+  private final Resources resources;
 
-  public String getTooltipDescription(IEquipmentTemplate template) {
-    StringBuilder builder = new StringBuilder();
-    builder.append("<html>");
-    builder.append("<b>").append(template.getName()).append("</b>");
+  public EquipmentTemplateTooltipBuilder(Resources resources) {
+    this.resources = resources;
+  }
+
+  public void configureTooltip(IEquipmentTemplate template, ConfigurableTooltip tooltip) {
+    tooltip.appendTitleLine(template.getName());
     if (template.getCost() != null) {
-      String templateCost = template.getCost().toString().replace("*", UNICODE_DOT);
-      builder.append(" (").append(templateCost).append(")");
+      int value = template.getCost().getValue();
+      String valueRepresentation = getStringRepresentationForValue(value);
+      String type = template.getCost().getType();
+      String typeLabel = getStringRepresentationForType(type);
+      tooltip.appendLine(typeLabel, valueRepresentation);
     }
-    builder.append(BREAKPOINT);
     IEquipmentStats[] statsSet = template.getStats();
+    List<String> statsIds = new ArrayList<>();
     for (IEquipmentStats stats : statsSet) {
-      builder.append(stats != statsSet[0] ? ", " : "").append(stats.getId());
+      statsIds.add(stats.getId());
     }
-    builder.append(BREAKPOINT);
+    String stats = Joiner.on(", ").join(statsIds);
+    tooltip.appendLine(stats);
     if (!template.getDescription().isEmpty()) {
-      builder.append("<i>").append(StringUtilities.createFixedWidthParagraph(template.getDescription(), BREAKPOINT, 80)).append("</i>");
+      tooltip.appendDescriptiveLine(template.getDescription());
     }
-    builder.append("</html>");
-    return builder.toString();
+  }
+
+  private String getStringRepresentationForType(String type) {
+    switch (type) {
+      case "Resources":
+        return resources.getString("Equipment.Cost.Type.Resources");
+      case "Artifact":
+        return resources.getString("Equipment.Cost.Type.Artifact");
+      case "Manse":
+        return resources.getString("Equipment.Cost.Type.Manse");
+      default:
+        throw new UnreachableCodeReachedException("Unknown Cost type: " + type);
+    }
+  }
+
+  private String getStringRepresentationForValue(int value) {
+    if (value == 0) {
+      return resources.getString("Equipment.Cost.Value.None");
+    }
+    if (value == 6) {
+      return resources.getString("Equipment.Cost.Value.NotApplicable");
+    }
+    String dot = resources.getString("Equipment.Cost.Value.Dot");
+    return Strings.repeat(dot, value);
   }
 }

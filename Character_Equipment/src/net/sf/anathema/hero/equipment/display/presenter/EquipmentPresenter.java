@@ -73,7 +73,7 @@ public class EquipmentPresenter implements Presenter {
       }
     });
     final MagicalMaterialView magicalMaterialView = initMaterialView();
-    equipmentTemplatePickList.setCellRenderer(new EquipmentItemUIConfiguration(model));
+    equipmentTemplatePickList.setCellRenderer(new EquipmentItemUIConfiguration(model, resources));
     setObjects(equipmentTemplatePickList);
     Tool addTool = view.addToolButton();
     createTemplateAddAction(equipmentTemplatePickList, magicalMaterialView, addTool);

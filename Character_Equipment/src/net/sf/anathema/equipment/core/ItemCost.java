@@ -24,19 +24,4 @@ public class ItemCost {
 		}
 		return false;
 	}
-	
-	public String toString() {
-		if (costType == null || costValue == 0) {
-			return "";
-		}
-		String base = costType + " ";
-		if (costValue == 6) {
-			base += "N/A";
-		} else {
-			for (int i = 0; i != costValue; i++) {
-				base += '*';
-			}
-		}
-		return base;
-	}
 }

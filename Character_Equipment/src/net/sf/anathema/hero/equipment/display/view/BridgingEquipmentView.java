@@ -21,7 +21,7 @@ public class BridgingEquipmentView implements EquipmentView, IView {
 
   public BridgingEquipmentView(FxEquipmentView fxView) {
     this.fxView = fxView;
-    panel.init(fxView);
+    panel.init(fxView, "skin/platform/tooltip.css");
   }
 
   @Override

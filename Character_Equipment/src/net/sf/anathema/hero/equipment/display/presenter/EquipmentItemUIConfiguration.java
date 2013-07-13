@@ -4,15 +4,18 @@ import net.sf.anathema.character.equipment.item.model.IEquipmentTemplateProvider
 import net.sf.anathema.equipment.core.IEquipmentTemplate;
 import net.sf.anathema.lib.gui.AbstractUIConfiguration;
 import net.sf.anathema.lib.gui.ConfigurableTooltip;
+import net.sf.anathema.lib.resources.Resources;
 
 public class EquipmentItemUIConfiguration extends AbstractUIConfiguration<String> {
 
   private final IEquipmentTemplateProvider templateProvider;
+  private Resources resources;
   private final EquipmentTemplateTooltipBuilder tooltipBuilder;
 
-  public EquipmentItemUIConfiguration(IEquipmentTemplateProvider provider) {
+  public EquipmentItemUIConfiguration(IEquipmentTemplateProvider provider, Resources resources) {
     templateProvider = provider;
-    tooltipBuilder = new EquipmentTemplateTooltipBuilder();
+    this.resources = resources;
+    tooltipBuilder = new EquipmentTemplateTooltipBuilder(resources);
   }
 
   @Override
@@ -26,7 +29,7 @@ public class EquipmentItemUIConfiguration extends AbstractUIConfiguration<String
     if (template == null) {
       configurableTooltip.showNoTooltip();
     } else {
-      configurableTooltip.appendLine(tooltipBuilder.getTooltipDescription(template));
+      tooltipBuilder.configureTooltip(template, configurableTooltip);
     }
   }
 }

@@ -24,8 +24,8 @@ public class ConfigurableFxTooltip implements ConfigurableTooltip {
   }
 
   @Override
-  public void appendTitleLine(String text) {
-    Label label = new Label(text);
+  public void appendTitleLine(String title) {
+    Label label = new Label(title);
     label.getStyleClass().add("boldText");
     addAsLine(label);
   }
@@ -44,6 +44,13 @@ public class ConfigurableFxTooltip implements ConfigurableTooltip {
     for (String paragraph : paragraphs) {
       appendLine(paragraph);
     }
+  }
+
+  @Override
+  public void appendDescriptiveLine(String description) {
+    Label label = new Label(description);
+    label.getStyleClass().add("italicText");
+    addAsLine(label);
   }
 
   public void configure(Control control) {
