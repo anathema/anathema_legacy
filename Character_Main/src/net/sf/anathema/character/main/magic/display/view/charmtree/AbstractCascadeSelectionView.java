@@ -62,7 +62,7 @@ public abstract class AbstractCascadeSelectionView implements CascadeSelectionVi
     ListCellRenderer renderer = new ConfigurableListCellRenderer(uiConfig);
     typeComboBox.setRenderer(renderer);
     panel.add(typeComboBox.getComponent(), BorderLayout.CENTER);
-    getSelectionComponent().add(panel);
+    selectionPanel.add(panel);
   }
 
   @Override
@@ -99,13 +99,13 @@ public abstract class AbstractCascadeSelectionView implements CascadeSelectionVi
       }
     });
     panel.add(groupComboBox.getComponent(), BorderLayout.CENTER);
-    getSelectionComponent().add(panel);
+    selectionPanel.add(panel);
   }
 
   @Override
   public void addCharmCascadeHelp(String helpText) {
     JLabel help = new JLabel(helpText);
-    getSelectionComponent().add(help, new CC().growX().pushX());
+    selectionPanel.add(help, new CC().growX().pushX());
   }
 
   protected final JComponent getSelectionComponent() {
