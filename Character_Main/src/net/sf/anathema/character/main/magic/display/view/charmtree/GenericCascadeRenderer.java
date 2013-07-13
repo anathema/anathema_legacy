@@ -1,6 +1,5 @@
-package net.sf.anathema.character.main.magic.display.view.charmtree.svg;
+package net.sf.anathema.character.main.magic.display.view.charmtree;
 
-import net.sf.anathema.character.main.magic.display.view.charmtree.CharmTreeRenderer;
 import net.sf.anathema.graph.nodes.IRegularNode;
 import net.sf.anathema.lib.logging.Logger;
 import net.sf.anathema.platform.tree.document.CascadeFactory;
