@@ -1,6 +1,6 @@
 package net.sf.anathema.platform.tree.view;
 
-import net.sf.anathema.platform.tree.presenter.view.NodeInteractionListener;
+import net.sf.anathema.platform.tree.display.NodeInteractionListener;
 import net.sf.anathema.platform.tree.view.container.Cascade;
 import net.sf.anathema.platform.tree.view.interaction.CtrlLeftClickDetailsRequester;
 import net.sf.anathema.platform.tree.view.interaction.CursorChanger;

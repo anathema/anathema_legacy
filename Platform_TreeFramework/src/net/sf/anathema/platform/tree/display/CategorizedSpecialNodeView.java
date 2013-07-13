@@ -1,4 +1,4 @@
-package net.sf.anathema.platform.tree.presenter.view;
+package net.sf.anathema.platform.tree.display;
 
 import net.sf.anathema.framework.value.IntValueView;
 

@@ -8,11 +8,13 @@ import net.sf.anathema.lib.gui.ui.ConfigurableListCellRenderer;
 import net.sf.anathema.lib.gui.widgets.ChangeableJComboBox;
 import net.sf.anathema.lib.gui.widgets.IChangeableJComboBox;
 import net.sf.anathema.lib.util.Identifier;
+import net.sf.anathema.platform.tree.display.CascadeLoadedListener;
+import net.sf.anathema.platform.tree.display.GenericCascadeRenderer;
+import net.sf.anathema.platform.tree.display.ITreeView;
+import net.sf.anathema.platform.tree.display.NodeProperties;
+import net.sf.anathema.platform.tree.display.ToolTipProperties;
+import net.sf.anathema.platform.tree.display.TreeRenderer;
 import net.sf.anathema.platform.tree.document.GenericCascadeFactory;
-import net.sf.anathema.platform.tree.presenter.view.CascadeLoadedListener;
-import net.sf.anathema.platform.tree.presenter.view.ITreeView;
-import net.sf.anathema.platform.tree.presenter.view.NodeProperties;
-import net.sf.anathema.platform.tree.presenter.view.ToolTipProperties;
 import net.sf.anathema.platform.tree.view.SwingCascadeStrategy;
 import net.sf.anathema.platform.tree.view.SwingTreeView;
 
@@ -117,7 +119,7 @@ public abstract class AbstractCascadeSelectionView implements CascadeSelectionVi
 
   @SuppressWarnings("unchecked")
   @Override
-  public CharmTreeRenderer getCharmTreeRenderer() {
+  public TreeRenderer getCharmTreeRenderer() {
     return GenericCascadeRenderer.CreateFor(swingTreeView, new GenericCascadeFactory(new SwingCascadeStrategy()));
   }
 

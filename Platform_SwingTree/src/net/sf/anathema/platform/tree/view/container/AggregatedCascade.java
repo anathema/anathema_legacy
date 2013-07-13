@@ -2,7 +2,7 @@ package net.sf.anathema.platform.tree.view.container;
 
 import com.google.common.collect.Lists;
 import net.sf.anathema.framework.ui.RGBColor;
-import net.sf.anathema.platform.tree.presenter.view.NodeProperties;
+import net.sf.anathema.platform.tree.display.NodeProperties;
 import net.sf.anathema.platform.tree.view.PolygonPanel;
 import net.sf.anathema.platform.tree.view.interaction.SpecialControl;
 

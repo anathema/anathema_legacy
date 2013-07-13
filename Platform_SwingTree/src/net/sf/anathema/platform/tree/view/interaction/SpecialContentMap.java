@@ -1,6 +1,6 @@
 package net.sf.anathema.platform.tree.view.interaction;
 
-import net.sf.anathema.platform.tree.presenter.view.ContentFactory;
+import net.sf.anathema.platform.tree.display.ContentFactory;
 
 import java.util.HashMap;
 import java.util.Map;

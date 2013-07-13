@@ -6,8 +6,8 @@ import net.sf.anathema.cascades.presenter.view.CascadeView;
 import net.sf.anathema.character.main.magic.display.view.charmtree.AbstractCascadeSelectionView;
 import net.sf.anathema.framework.swing.IView;
 import net.sf.anathema.framework.ui.RGBColor;
-import net.sf.anathema.platform.tree.presenter.view.NodeProperties;
-import net.sf.anathema.platform.tree.presenter.view.ToolTipProperties;
+import net.sf.anathema.platform.tree.display.NodeProperties;
+import net.sf.anathema.platform.tree.display.ToolTipProperties;
 
 import javax.swing.JComponent;
 import javax.swing.JPanel;

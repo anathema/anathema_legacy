@@ -1,7 +1,7 @@
 package net.sf.anathema.hero.charms.display.special;
 
 import net.sf.anathema.character.main.magic.model.charm.special.ISpecialCharm;
-import net.sf.anathema.platform.tree.presenter.view.ISpecialNodeView;
+import net.sf.anathema.platform.tree.display.ISpecialNodeView;
 
 public interface SpecialCharmViewBuilder {
 

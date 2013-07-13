@@ -1,6 +1,6 @@
 package net.sf.anathema.character.main.magic.display.view.charmtree;
 
-import net.sf.anathema.platform.tree.presenter.view.ToolTipProperties;
+import net.sf.anathema.platform.tree.display.ToolTipProperties;
 
 public interface ICharmTreeViewProperties extends ToolTipProperties {
 

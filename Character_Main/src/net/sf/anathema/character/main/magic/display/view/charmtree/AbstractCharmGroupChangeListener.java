@@ -2,11 +2,12 @@ package net.sf.anathema.character.main.magic.display.view.charmtree;
 
 import net.sf.anathema.character.main.magic.model.charm.Charm;
 import net.sf.anathema.character.main.magic.model.charm.ICharmGroup;
-import net.sf.anathema.character.main.type.CharacterType;
 import net.sf.anathema.character.main.magic.model.charmtree.builder.CharmGraphNodeBuilder;
+import net.sf.anathema.character.main.type.CharacterType;
 import net.sf.anathema.graph.nodes.IIdentifiedRegularNode;
 import net.sf.anathema.graph.nodes.IRegularNode;
 import net.sf.anathema.lib.util.Identifier;
+import net.sf.anathema.platform.tree.display.TreeRenderer;
 import net.sf.anathema.platform.tree.document.visualizer.ITreePresentationProperties;
 
 import java.util.ArrayList;
@@ -20,14 +21,14 @@ import java.util.Set;
 public abstract class AbstractCharmGroupChangeListener implements ICharmGroupChangeListener, CharmGroupInformer {
 
   private final CharmGroupArbitrator arbitrator;
-  private final CharmTreeRenderer charmTreeRenderer;
+  private final TreeRenderer treeRenderer;
   private ICharmGroup currentGroup;
   private Identifier currentType;
   private final CharmDisplayPropertiesMap displayPropertiesMap;
 
-  public AbstractCharmGroupChangeListener(CharmGroupArbitrator arbitrator, CharmTreeRenderer treeRenderer,
+  public AbstractCharmGroupChangeListener(CharmGroupArbitrator arbitrator, TreeRenderer treeRenderer,
                                           CharmDisplayPropertiesMap charmDisplayPropertiesMap) {
-    this.charmTreeRenderer = treeRenderer;
+    this.treeRenderer = treeRenderer;
     this.arbitrator = arbitrator;
     this.displayPropertiesMap = charmDisplayPropertiesMap;
   }
@@ -43,12 +44,12 @@ public abstract class AbstractCharmGroupChangeListener implements ICharmGroupCha
     this.currentType = type;
     modifyCharmVisuals(type);
     if (charmGroup == null) {
-      charmTreeRenderer.clearView();
+      treeRenderer.clearView();
     } else {
       ITreePresentationProperties presentationProperties = getDisplayProperties(charmGroup);
       Set<Charm> charms = getDisplayCharms(charmGroup);
       IRegularNode[] nodesToShow = prepareNodes(charms);
-      charmTreeRenderer.renderTree(resetView, presentationProperties, nodesToShow);
+      treeRenderer.renderTree(resetView, presentationProperties, nodesToShow);
     }
   }
 

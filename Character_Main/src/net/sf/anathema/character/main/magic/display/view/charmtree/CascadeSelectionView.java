@@ -3,13 +3,14 @@ package net.sf.anathema.character.main.magic.display.view.charmtree;
 import net.sf.anathema.lib.control.ObjectValueListener;
 import net.sf.anathema.lib.gui.AgnosticUIConfiguration;
 import net.sf.anathema.lib.util.Identifier;
-import net.sf.anathema.platform.tree.presenter.view.CascadeLoadedListener;
-import net.sf.anathema.platform.tree.presenter.view.NodeProperties;
-import net.sf.anathema.platform.tree.presenter.view.ToolTipProperties;
+import net.sf.anathema.platform.tree.display.CascadeLoadedListener;
+import net.sf.anathema.platform.tree.display.NodeProperties;
+import net.sf.anathema.platform.tree.display.ToolTipProperties;
+import net.sf.anathema.platform.tree.display.TreeRenderer;
 
 public interface CascadeSelectionView {
 
-  CharmTreeRenderer getCharmTreeRenderer();
+  TreeRenderer getCharmTreeRenderer();
 
   void addCascadeLoadedListener(CascadeLoadedListener listener);
 

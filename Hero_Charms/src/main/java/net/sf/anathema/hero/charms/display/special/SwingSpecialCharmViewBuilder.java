@@ -3,7 +3,6 @@ package net.sf.anathema.hero.charms.display.special;
 import net.sf.anathema.character.main.magic.model.charm.special.IMultiLearnableCharm;
 import net.sf.anathema.character.main.magic.model.charm.special.IMultipleEffectCharm;
 import net.sf.anathema.character.main.magic.model.charm.special.IOxBodyTechniqueCharm;
-import net.sf.anathema.character.main.magic.model.charm.special.OxBodyTechniqueSpecials;
 import net.sf.anathema.character.main.magic.model.charm.special.IPainToleranceCharm;
 import net.sf.anathema.character.main.magic.model.charm.special.IPrerequisiteModifyingCharm;
 import net.sf.anathema.character.main.magic.model.charm.special.ISpecialCharm;
@@ -13,9 +12,10 @@ import net.sf.anathema.character.main.magic.model.charm.special.ITraitCapModifyi
 import net.sf.anathema.character.main.magic.model.charm.special.IUpgradableCharm;
 import net.sf.anathema.character.main.magic.model.charm.special.MultiLearnCharmSpecials;
 import net.sf.anathema.character.main.magic.model.charm.special.MultipleEffectCharmSpecials;
+import net.sf.anathema.character.main.magic.model.charm.special.OxBodyTechniqueSpecials;
 import net.sf.anathema.hero.charms.model.CharmsModel;
 import net.sf.anathema.lib.resources.Resources;
-import net.sf.anathema.platform.tree.presenter.view.ISpecialNodeView;
+import net.sf.anathema.platform.tree.display.ISpecialNodeView;
 
 public class SwingSpecialCharmViewBuilder implements SpecialCharmViewBuilder {
 

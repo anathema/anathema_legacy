@@ -2,9 +2,9 @@ package net.sf.anathema.hero.charms.display.special;
 
 import net.sf.anathema.character.main.magic.model.charm.special.ISpecialCharm;
 import net.sf.anathema.framework.value.IntValueView;
-import net.sf.anathema.platform.tree.presenter.view.CategorizedSpecialNodeView;
-import net.sf.anathema.platform.tree.presenter.view.ISpecialNodeView;
-import net.sf.anathema.platform.tree.presenter.view.SpecialCharmContainer;
+import net.sf.anathema.platform.tree.display.CategorizedSpecialNodeView;
+import net.sf.anathema.platform.tree.display.ISpecialNodeView;
+import net.sf.anathema.platform.tree.display.SpecialCharmContainer;
 
 import java.util.ArrayList;
 import java.util.List;

@@ -12,10 +12,10 @@ import net.sf.anathema.framework.value.IntegerViewFactory;
 import net.sf.anathema.hero.charms.display.special.SpecialBooleanDisplayFactory;
 import net.sf.anathema.hero.charms.display.special.SpecialIntDisplayFactory;
 import net.sf.anathema.lib.workflow.booleanvalue.IBooleanValueView;
-import net.sf.anathema.platform.tree.presenter.view.ISpecialNodeView;
-import net.sf.anathema.platform.tree.presenter.view.NodeInteractionListener;
-import net.sf.anathema.platform.tree.presenter.view.NodeProperties;
-import net.sf.anathema.platform.tree.presenter.view.ToolTipProperties;
+import net.sf.anathema.platform.tree.display.ISpecialNodeView;
+import net.sf.anathema.platform.tree.display.NodeInteractionListener;
+import net.sf.anathema.platform.tree.display.NodeProperties;
+import net.sf.anathema.platform.tree.display.ToolTipProperties;
 
 import javax.swing.JComponent;
 import javax.swing.JPanel;

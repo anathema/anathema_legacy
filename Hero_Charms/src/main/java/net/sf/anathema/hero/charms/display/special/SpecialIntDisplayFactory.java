@@ -2,7 +2,7 @@ package net.sf.anathema.hero.charms.display.special;
 
 import net.sf.anathema.framework.value.IntValueView;
 import net.sf.anathema.framework.value.IntegerViewFactory;
-import net.sf.anathema.platform.tree.presenter.view.ContentFactory;
+import net.sf.anathema.platform.tree.display.ContentFactory;
 
 public class SpecialIntDisplayFactory implements ContentFactory {
   private IntegerViewFactory factory;
