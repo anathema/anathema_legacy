@@ -48,8 +48,13 @@ public class FxEquipmentView implements EquipmentView, NodeHolder {
 
   @Override
   public EquipmentObjectView addEquipmentObjectView() {
-    FxEquipmentItemView itemView = new FxEquipmentItemView();
-    itemPane.add(itemView.getNode());
+    final FxEquipmentItemView itemView = new FxEquipmentItemView();
+    FxThreading.runOnCorrectThread(new Runnable() {
+      @Override
+      public void run() {
+        itemPane.add(itemView.getNode());
+      }
+    });
     return itemView;
   }
 

@@ -9,6 +9,7 @@ import net.sf.anathema.hero.equipment.display.presenter.EquipmentStringBuilder;
 import net.sf.anathema.lib.exception.UnreachableCodeReachedException;
 import net.sf.anathema.lib.file.RelativePath;
 import net.sf.anathema.lib.gui.AbstractUIConfiguration;
+import net.sf.anathema.lib.gui.ConfigurableTooltip;
 import net.sf.anathema.lib.resources.Resources;
 
 public class EquipmentStatsUIConfiguration extends AbstractUIConfiguration<IEquipmentStats> {
@@ -43,8 +44,9 @@ public class EquipmentStatsUIConfiguration extends AbstractUIConfiguration<IEqui
     return value.getName().getId();
   }
 
+
   @Override
-  protected String tooltipForExistingValue(IEquipmentStats value) {
-    return tooltipFactory.createString(null, value);
+  protected void configureTooltipForExistingValue(IEquipmentStats value, ConfigurableTooltip configurableTooltip) {
+    configurableTooltip.appendLine(tooltipFactory.createString(null, value));
   }
 }

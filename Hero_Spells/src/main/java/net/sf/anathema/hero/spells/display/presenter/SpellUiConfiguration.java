@@ -2,10 +2,10 @@ package net.sf.anathema.hero.spells.display.presenter;
 
 import net.sf.anathema.character.main.magic.model.spells.Spell;
 import net.sf.anathema.lib.gui.AbstractUIConfiguration;
+import net.sf.anathema.lib.gui.ConfigurableTooltip;
 import net.sf.anathema.lib.resources.Resources;
-import net.sf.anathema.lib.util.Identifier;
 
-public class SpellUiConfiguration extends AbstractUIConfiguration {
+public class SpellUiConfiguration extends AbstractUIConfiguration<Spell> {
 
   private final Resources resources;
   private final SpellTooltipBuilder tooltipBuilder;
@@ -16,12 +16,12 @@ public class SpellUiConfiguration extends AbstractUIConfiguration {
   }
 
   @Override
-  protected String labelForExistingValue(Object value) {
-    return resources.getString(((Identifier) value).getId());
+  protected String labelForExistingValue(Spell value) {
+    return resources.getString(value.getId());
   }
 
   @Override
-  protected String tooltipForExistingValue(Object value) {
-    return tooltipBuilder.createTooltip((Spell) value);
+  protected void configureTooltipForExistingValue(Spell value, ConfigurableTooltip configurableTooltip) {
+    tooltipBuilder.createTooltip(value, configurableTooltip);
   }
 }

@@ -18,7 +18,7 @@ public class BridgingSpellView implements IView, SpellView {
 
   public BridgingSpellView(FxSpellView fxView) {
     this.fxView = fxView;
-    panel.init(fxView);
+    panel.init(fxView,"skin/platform/text.css");
   }
 
   @Override

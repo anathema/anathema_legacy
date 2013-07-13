@@ -1,0 +1,7 @@
+.boldText {
+    -fx-font-weight: bold;
+}
+
+.italicText {
+    -fx-font-style: italic;
+}

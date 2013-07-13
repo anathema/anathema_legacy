@@ -5,7 +5,7 @@ import net.sf.anathema.character.main.magic.model.charmtree.builder.stringbuilde
 import net.sf.anathema.character.main.magic.model.charmtree.builder.stringbuilder.ScreenDisplayInfoStringBuilder;
 import net.sf.anathema.character.main.magic.model.charmtree.builder.stringbuilder.source.MagicSourceStringBuilder;
 import net.sf.anathema.character.main.magic.model.spells.Spell;
-import net.sf.anathema.lib.gui.TooltipBuilder;
+import net.sf.anathema.lib.gui.ConfigurableTooltip;
 import net.sf.anathema.lib.resources.Resources;
 
 public class SpellTooltipBuilder {
@@ -20,15 +20,13 @@ public class SpellTooltipBuilder {
     this.magicDescriptionProvider = magicDescriptionProvider;
   }
 
-  public String createTooltip(Spell spell) {
-    TooltipBuilder builder = new TooltipBuilder();
-    builder.appendTitleLine(resources.getString(spell.getId()));
-    builder.appendLine(properties.getCircleLabel(), getCircleValue(spell));
-    builder.appendLine(getCostLabel(), getCostValue(spell));
-    builder.appendLine(getTargetLabel(), getTargetValue(spell));
-    builder.appendLine(getSourceLabel(), getSourceValue(spell));
-    builder.appendParagraphs(getDescriptionParagraphs(spell));
-    return builder.build();
+  public void createTooltip(Spell spell, ConfigurableTooltip tooltip) {
+    tooltip.appendTitleLine(resources.getString(spell.getId()));
+    tooltip.appendLine(properties.getCircleLabel(), getCircleValue(spell));
+    tooltip.appendLine(getCostLabel(), getCostValue(spell));
+    tooltip.appendLine(getTargetLabel(), getTargetValue(spell));
+    tooltip.appendLine(getSourceLabel(), getSourceValue(spell));
+    tooltip.appendParagraphs(getDescriptionParagraphs(spell));
   }
 
   private String[] getDescriptionParagraphs(Spell spell) {
