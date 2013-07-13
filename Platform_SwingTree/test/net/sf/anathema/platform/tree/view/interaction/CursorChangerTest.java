@@ -1,6 +1,6 @@
 package net.sf.anathema.platform.tree.view.interaction;
 
-import net.sf.anathema.platform.tree.view.PolygonPanel;
+import net.sf.anathema.platform.tree.view.SwingPolygonPanel;
 import org.junit.Test;
 
 import java.awt.event.MouseEvent;
@@ -13,7 +13,7 @@ import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
 
 public class CursorChangerTest {
-  PolygonPanel panel = mock(PolygonPanel.class);
+  SwingPolygonPanel panel = mock(SwingPolygonPanel.class);
   MouseEvent event = mock(MouseEvent.class);
 
   @Test

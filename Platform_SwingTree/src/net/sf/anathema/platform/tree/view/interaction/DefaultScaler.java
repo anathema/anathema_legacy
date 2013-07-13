@@ -2,8 +2,6 @@ package net.sf.anathema.platform.tree.view.interaction;
 
 import net.sf.anathema.platform.tree.view.PolygonPanel;
 
-import static net.sf.anathema.platform.tree.view.PolygonPanel.RECOMMENDED_DEFAULT_SCALE;
-
 public class DefaultScaler {
   private final PolygonPanel polygonPanel;
 
@@ -12,7 +10,7 @@ public class DefaultScaler {
   }
 
   public void scale() {
-    polygonPanel.scale(RECOMMENDED_DEFAULT_SCALE);
+    polygonPanel.scale(PolygonPanel.RECOMMENDED_DEFAULT_SCALE);
     polygonPanel.revalidate();
   }
 }

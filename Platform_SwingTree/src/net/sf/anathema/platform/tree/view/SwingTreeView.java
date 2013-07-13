@@ -19,21 +19,19 @@ import org.jmock.example.announcer.Announcer;
 
 import javax.swing.JComponent;
 
-import static net.sf.anathema.lib.gui.swing.ColorUtilities.toAwtColor;
-
 public class SwingTreeView implements ITreeView<Cascade> {
 
-  private final PolygonPanel polygonPanel;
+  private final SwingPolygonPanel polygonPanel;
   private final Announcer<CascadeLoadedListener> loadListeners = Announcer.to(CascadeLoadedListener.class);
   private final AggregatingInteractionListener allInteractionListeners = new AggregatingInteractionListener();
   private final ProxyCascade cascade = new ProxyCascade();
   private final SpecialContentMap specialContent = new SpecialContentMap();
 
   public SwingTreeView() {
-    this(new PolygonPanel());
+    this(new SwingPolygonPanel());
   }
 
-  public SwingTreeView(PolygonPanel polygonPanel) {
+  public SwingTreeView(SwingPolygonPanel polygonPanel) {
     this.polygonPanel = polygonPanel;
     new InteractionTreeListening(cascade, polygonPanel, allInteractionListeners).initialize();
   }
@@ -62,7 +60,7 @@ public class SwingTreeView implements ITreeView<Cascade> {
 
   @Override
   public void setCanvasBackground(RGBColor color) {
-    polygonPanel.setBackground(toAwtColor(color));
+    polygonPanel.setBackground(color);
   }
 
   @Override

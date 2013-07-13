@@ -1,6 +1,6 @@
 package net.sf.anathema.platform.tree.view.interaction;
 
-import net.sf.anathema.platform.tree.view.PolygonPanel;
+import net.sf.anathema.platform.tree.view.SwingPolygonPanel;
 import org.junit.Before;
 import org.junit.Test;
 import org.mockito.InOrder;
@@ -17,7 +17,7 @@ import static org.mockito.Mockito.when;
 
 public class WheelScalerTest {
 
-  PolygonPanel panel = mock(PolygonPanel.class);
+  SwingPolygonPanel panel = mock(SwingPolygonPanel.class);
   MouseWheelEvent event = mock(MouseWheelEvent.class);
 
   @Before

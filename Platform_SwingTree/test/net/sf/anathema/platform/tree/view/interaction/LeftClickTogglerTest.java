@@ -1,7 +1,7 @@
 package net.sf.anathema.platform.tree.view.interaction;
 
 import net.sf.anathema.platform.tree.display.NodeInteractionListener;
-import net.sf.anathema.platform.tree.view.PolygonPanel;
+import net.sf.anathema.platform.tree.view.SwingPolygonPanel;
 import net.sf.anathema.platform.tree.view.container.Cascade;
 import net.sf.anathema.platform.tree.view.container.DefaultContainerCascade;
 import net.sf.anathema.platform.tree.view.draw.InteractiveGraphicsElement;
@@ -21,7 +21,7 @@ public class LeftClickTogglerTest {
   public static final Point AnyPoint = new Point(1, 2);
 
   private InteractiveGraphicsElement element = mock(InteractiveGraphicsElement.class);
-  private PolygonPanel panel = mock(PolygonPanel.class);
+  private SwingPolygonPanel panel = mock(SwingPolygonPanel.class);
   private MouseEvent event = mock(MouseEvent.class);
   private NodeInteractionListener listener = mock(NodeInteractionListener.class);
   private Cascade cascade = new DefaultContainerCascade();

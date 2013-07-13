@@ -28,14 +28,14 @@ import static org.mockito.Mockito.verifyZeroInteractions;
 
 public class SwingTreeViewTest {
 
-  private final PolygonPanel panel = mock(PolygonPanel.class);
+  private final SwingPolygonPanel panel = mock(SwingPolygonPanel.class);
   private final SwingTreeView swingTreeView = new SwingTreeView(panel);
   Cascade cascade = mock(Cascade.class);
 
   @Test
   public void hasPolygonPanelAsComponent() throws Exception {
     JComponent component = swingTreeView.getComponent();
-    assertThat(component, is(instanceOf(PolygonPanel.class)));
+    assertThat(component, is(instanceOf(SwingPolygonPanel.class)));
   }
 
   @Test

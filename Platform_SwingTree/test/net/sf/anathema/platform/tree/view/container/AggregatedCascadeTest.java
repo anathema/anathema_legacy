@@ -3,6 +3,7 @@ package net.sf.anathema.platform.tree.view.container;
 import net.sf.anathema.framework.ui.RGBColor;
 import net.sf.anathema.platform.tree.display.NodeProperties;
 import net.sf.anathema.platform.tree.view.PolygonPanel;
+import net.sf.anathema.platform.tree.view.SwingPolygonPanel;
 import org.junit.Before;
 import org.junit.Test;
 
@@ -23,7 +24,7 @@ public class AggregatedCascadeTest {
 
   @Test
   public void addsAllChildrenToPanel() throws Exception {
-    PolygonPanel panel = mock(PolygonPanel.class);
+    PolygonPanel panel = mock(SwingPolygonPanel.class);
     cascade.addTo(panel);
     verify(child).addTo(panel);
   }

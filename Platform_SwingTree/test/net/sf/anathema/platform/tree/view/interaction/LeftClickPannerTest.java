@@ -1,6 +1,6 @@
 package net.sf.anathema.platform.tree.view.interaction;
 
-import net.sf.anathema.platform.tree.view.PolygonPanel;
+import net.sf.anathema.platform.tree.view.SwingPolygonPanel;
 import org.junit.Before;
 import org.junit.Test;
 
@@ -15,7 +15,7 @@ import static org.mockito.Mockito.when;
 
 public class LeftClickPannerTest {
 
-  PolygonPanel panel = mock(PolygonPanel.class);
+  SwingPolygonPanel panel = mock(SwingPolygonPanel.class);
   MouseEvent pressEvent = mock(MouseEvent.class);
   MouseEvent dragEvent = mock(MouseEvent.class);
   LeftClickPanner panner = new LeftClickPanner(panel);

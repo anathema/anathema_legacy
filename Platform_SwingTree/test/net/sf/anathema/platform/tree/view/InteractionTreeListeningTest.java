@@ -19,7 +19,7 @@ import static org.mockito.Mockito.verify;
 
 public class InteractionTreeListeningTest {
 
-  PolygonPanel panel = mock(PolygonPanel.class);
+  SwingPolygonPanel panel = mock(SwingPolygonPanel.class);
   private Cascade cascade = mock(Cascade.class);
   private NodeInteractionListener interactionListener = mock(NodeInteractionListener.class);
   InteractionTreeListening listening = new InteractionTreeListening(cascade, panel, interactionListener);

@@ -22,7 +22,7 @@ import static org.mockito.Mockito.when;
 
 public class PolygonPanelTest {
 
-  private PolygonPanel polygonPanel = new PolygonPanel();
+  private SwingPolygonPanel polygonPanel = new SwingPolygonPanel();
   private Graphics2D graphics = mock(Graphics2D.class);
 
   @Before
