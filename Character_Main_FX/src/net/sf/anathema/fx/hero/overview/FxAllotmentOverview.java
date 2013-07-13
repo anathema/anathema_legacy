@@ -10,7 +10,6 @@ import org.tbee.javafx.scene.layout.MigPane;
 
 public class FxAllotmentOverview implements LabelledAllotmentView {
 
-
   private final Label titleLabel = new Label();
   private final Label valueLabel = new Label();
   private final Label separatorLabel = new Label();
@@ -35,8 +34,13 @@ public class FxAllotmentOverview implements LabelledAllotmentView {
   }
 
   @Override
-  public void setAllotment(int value) {
-    alotmentLabel.setText(String.valueOf(value));
+  public void setAllotment(final int value) {
+    FxThreading.runOnCorrectThread(new Runnable() {
+      @Override
+      public void run() {
+        alotmentLabel.setText(String.valueOf(value));
+      }
+    });
   }
 
   @Override
