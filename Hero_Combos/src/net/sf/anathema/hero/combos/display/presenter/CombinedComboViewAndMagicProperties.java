@@ -9,9 +9,7 @@ import net.sf.anathema.framework.presenter.resources.BasicUi;
 import net.sf.anathema.hero.magic.display.AbstractMagicLearnProperties;
 import net.sf.anathema.lib.file.RelativePath;
 import net.sf.anathema.lib.gui.AgnosticUIConfiguration;
-import net.sf.anathema.lib.gui.list.LegalityCheck;
 import net.sf.anathema.lib.resources.Resources;
-import net.sf.anathema.lib.util.Identifier;
 
 import java.util.List;
 
@@ -41,18 +39,8 @@ public class CombinedComboViewAndMagicProperties extends AbstractMagicLearnPrope
   }
 
   @Override
-  public AgnosticUIConfiguration<Identifier> getLearnedMagicRenderer() {
+  public AgnosticUIConfiguration getMagicRenderer() {
     return new CharmUIConfiguration(getResources(), charmInfoStringProvider);
-  }
-
-  @Override
-  public AgnosticUIConfiguration getAvailableMagicRenderer() {
-    return new CharmUIConfiguration(getResources(), charmInfoStringProvider);
-  }
-
-  @Override
-  public LegalityCheck getLegalityCheck() {
-    return new ComboLegality(comboConfiguration);
   }
 
   @Override

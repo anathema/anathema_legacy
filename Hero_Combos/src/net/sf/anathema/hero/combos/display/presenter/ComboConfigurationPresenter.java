@@ -11,8 +11,6 @@ import net.sf.anathema.character.main.magic.model.charm.ICharmLearnListener;
 import net.sf.anathema.character.main.magic.model.charms.ILearningCharmGroup;
 import net.sf.anathema.character.main.magic.model.charmtree.builder.MagicDisplayLabeler;
 import net.sf.anathema.framework.presenter.resources.BasicUi;
-import net.sf.anathema.hero.model.change.ChangeFlavor;
-import net.sf.anathema.hero.model.change.FlavoredChangeListener;
 import net.sf.anathema.hero.charms.model.CharmsModel;
 import net.sf.anathema.hero.combos.model.ComboConfigurationModel;
 import net.sf.anathema.hero.concept.ConceptChange;
@@ -20,6 +18,8 @@ import net.sf.anathema.hero.magic.display.MagicLearnPresenter;
 import net.sf.anathema.hero.magic.display.MagicLearnView;
 import net.sf.anathema.hero.magic.display.MagicViewListener;
 import net.sf.anathema.hero.model.Hero;
+import net.sf.anathema.hero.model.change.ChangeFlavor;
+import net.sf.anathema.hero.model.change.FlavoredChangeListener;
 import net.sf.anathema.interaction.Command;
 import net.sf.anathema.interaction.Tool;
 import net.sf.anathema.lib.compare.I18nedIdentificateComparator;
@@ -31,6 +31,7 @@ import net.sf.anathema.lib.workflow.textualdescription.TextualPresentation;
 
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Collections;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -65,7 +66,7 @@ public class ComboConfigurationPresenter {
   }
 
   public void initPresentation() {
-    initMagicLearnView(properties);
+    initMagicLearnView();
     view.addComboEditor(properties);
     initCharmLearnListening();
     ITextView nameView = view.addComboNameView(resources.getString("CardView.CharmConfiguration.ComboCreation.NameLabel"));
@@ -102,7 +103,7 @@ public class ComboConfigurationPresenter {
     enableCrossPrerequisiteTypeCombos();
   }
 
-  private void initMagicLearnView(CombinedComboViewAndMagicProperties properties) {
+  private void initMagicLearnView() {
     this.learnView = view.addMagicLearnView(properties);
     MagicLearnPresenter magicLearnPresenter = new MagicLearnPresenter(learnView);
     magicLearnPresenter.initPresentation(properties);
@@ -290,10 +291,19 @@ public class ComboConfigurationPresenter {
   }
 
   private void updateCharmListsInView() {
-    learnView.setLearnedMagic(Arrays.asList(comboConfiguration.getEditCombo().getCharms()));
-    Charm[] learnedCharms = comboModel.getLearnedCharms();
-    Arrays.sort(learnedCharms, new I18nedIdentificateComparator(resources));
-    learnView.setAvailableMagic(Arrays.asList(learnedCharms));
+    showEligibleCharms();
+    showCharmsInCombo();
+  }
+
+  private void showEligibleCharms() {
+    List<Charm> eligibleCharms = comboModel.getEligibleCharms();
+    Collections.sort(eligibleCharms, new I18nedIdentificateComparator(resources));
+    learnView.setAvailableMagic(eligibleCharms);
+  }
+
+  private void showCharmsInCombo() {
+    List<Charm> charmsInCombo = Arrays.asList(comboConfiguration.getEditCombo().getCharms());
+    learnView.setLearnedMagic(charmsInCombo);
   }
 
   private void initComboModelListening() {

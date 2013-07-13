@@ -11,6 +11,9 @@ import net.sf.anathema.hero.concept.HeroConceptFetcher;
 import net.sf.anathema.hero.experience.ExperienceModelFetcher;
 import net.sf.anathema.hero.model.Hero;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class ComboConfigurationModel {
 
   private final Hero hero;
@@ -38,8 +41,15 @@ public class ComboConfigurationModel {
     return magicDescriptionProvider;
   }
 
-  public Charm[] getLearnedCharms() {
-    return CharmsModelFetcher.fetch(hero).getLearnedCharms(isExperienced());
+  public List<Charm> getEligibleCharms() {
+    Charm[] learnedCharms = CharmsModelFetcher.fetch(hero).getLearnedCharms(isExperienced());
+    ArrayList<Charm> eligibleCharms = new ArrayList<>();
+    for (Charm charm : learnedCharms) {
+      if (getCombos().isComboLegal(charm)) {
+        eligibleCharms.add(charm);
+      }
+    }
+    return eligibleCharms;
   }
 
   public boolean isExperienced() {

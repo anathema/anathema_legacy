@@ -1,11 +1,8 @@
 package net.sf.anathema.hero.magic.display;
 
 import net.sf.anathema.framework.presenter.resources.BasicUi;
-import net.sf.anathema.framework.ui.IdentifierConfiguration;
 import net.sf.anathema.lib.file.RelativePath;
-import net.sf.anathema.lib.gui.AgnosticUIConfiguration;
 import net.sf.anathema.lib.resources.Resources;
-import net.sf.anathema.lib.util.Identifier;
 
 public abstract class AbstractMagicLearnProperties implements MagicLearnProperties {
 
@@ -27,10 +24,5 @@ public abstract class AbstractMagicLearnProperties implements MagicLearnProperti
 
   protected final Resources getResources() {
     return resources;
-  }
-
-  @Override
-  public AgnosticUIConfiguration<Identifier> getLearnedMagicRenderer() {
-    return new IdentifierConfiguration(resources);
   }
 }

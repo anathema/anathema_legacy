@@ -26,9 +26,9 @@ public class FxMagicLearnView implements MagicLearnView {
 
 
   public FxMagicLearnView(MagicLearnProperties properties) {
-    availableMagicList.setCellFactory(new ConfigurableListCellFactory(properties.getAvailableMagicRenderer()));
+    availableMagicList.setCellFactory(new ConfigurableListCellFactory(properties.getMagicRenderer()));
     availableMagicList.getSelectionModel().setSelectionMode(SelectionMode.SINGLE);
-    learnedMagicList.setCellFactory(new ConfigurableListCellFactory(properties.getAvailableMagicRenderer()));
+    learnedMagicList.setCellFactory(new ConfigurableListCellFactory(properties.getMagicRenderer()));
     content.add(availableMagicList, new CC().grow().push());
     content.add(centerButtons);
     content.add(learnedMagicList, new CC().grow().push());

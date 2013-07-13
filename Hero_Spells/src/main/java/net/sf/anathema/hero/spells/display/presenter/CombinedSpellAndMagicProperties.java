@@ -6,9 +6,7 @@ import net.sf.anathema.framework.ui.IdentifierConfiguration;
 import net.sf.anathema.hero.experience.ExperienceModel;
 import net.sf.anathema.hero.magic.display.AbstractMagicLearnProperties;
 import net.sf.anathema.hero.spells.model.SpellsModel;
-import net.sf.anathema.hero.spells.model.SpellLegality;
 import net.sf.anathema.lib.gui.AgnosticUIConfiguration;
-import net.sf.anathema.lib.gui.list.LegalityCheck;
 import net.sf.anathema.lib.resources.Resources;
 import net.sf.anathema.lib.util.Identifier;
 
@@ -34,13 +32,8 @@ public class CombinedSpellAndMagicProperties extends AbstractMagicLearnPropertie
   }
 
   @Override
-  public AgnosticUIConfiguration getAvailableMagicRenderer() {
+  public AgnosticUIConfiguration getMagicRenderer() {
     return new SpellUiConfiguration(getResources(), tooltipBuilder);
-  }
-
-  @Override
-  public LegalityCheck getLegalityCheck() {
-    return new SpellLegality(spellConfiguration);
   }
 
   @Override
