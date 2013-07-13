@@ -1,9 +1,9 @@
 package net.sf.anathema.hero.spells.display.presenter;
 
 import net.sf.anathema.character.main.magic.description.MagicDescriptionProvider;
-import net.sf.anathema.character.main.magic.model.charmtree.builder.stringbuilder.MagicDescriptionStringBuilder;
-import net.sf.anathema.character.main.magic.model.charmtree.builder.stringbuilder.ScreenDisplayInfoStringBuilder;
-import net.sf.anathema.character.main.magic.model.charmtree.builder.stringbuilder.source.MagicSourceStringBuilder;
+import net.sf.anathema.character.main.magic.model.charmtree.builder.stringbuilder.MagicDescriptionContributor;
+import net.sf.anathema.character.main.magic.model.charmtree.builder.stringbuilder.ScreenDisplayInfoContributor;
+import net.sf.anathema.character.main.magic.model.charmtree.builder.stringbuilder.source.MagicSourceContributor;
 import net.sf.anathema.character.main.magic.model.spells.Spell;
 import net.sf.anathema.lib.gui.ConfigurableTooltip;
 import net.sf.anathema.lib.resources.Resources;
@@ -26,11 +26,7 @@ public class SpellTooltipBuilder {
     tooltip.appendLine(getCostLabel(), getCostValue(spell));
     tooltip.appendLine(getTargetLabel(), getTargetValue(spell));
     tooltip.appendLine(getSourceLabel(), getSourceValue(spell));
-    tooltip.appendParagraphs(getDescriptionParagraphs(spell));
-  }
-
-  private String[] getDescriptionParagraphs(Spell spell) {
-    return new MagicDescriptionStringBuilder(resources, magicDescriptionProvider).getDisplayParagraphs(spell);
+    new MagicDescriptionContributor(resources, magicDescriptionProvider).buildStringForMagicWithoutSpecials(tooltip, spell);
   }
 
   private String getCircleValue(Spell spell) {
@@ -38,7 +34,7 @@ public class SpellTooltipBuilder {
   }
 
   private String getCostValue(Spell spell) {
-    return new ScreenDisplayInfoStringBuilder(resources).createCostString(spell);
+    return new ScreenDisplayInfoContributor(resources).createCostString(spell);
   }
 
   private String getTargetValue(Spell spell) {
@@ -49,7 +45,7 @@ public class SpellTooltipBuilder {
   }
 
   private String getSourceValue(Spell spell) {
-    return new MagicSourceStringBuilder<Spell>(resources).createSourceString(spell);
+    return new MagicSourceContributor<Spell>(resources).createSourceString(spell);
   }
 
   public String getUndefinedString() {

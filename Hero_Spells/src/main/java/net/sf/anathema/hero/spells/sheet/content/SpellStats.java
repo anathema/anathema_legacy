@@ -1,10 +1,10 @@
 package net.sf.anathema.hero.spells.sheet.content;
 
 import com.google.common.base.Function;
-import net.sf.anathema.character.main.magic.sheet.content.IMagicStats;
-import net.sf.anathema.character.main.magic.model.spells.Spell;
 import net.sf.anathema.character.main.magic.model.charmtree.builder.stringbuilder.IMagicSourceStringBuilder;
-import net.sf.anathema.character.main.magic.model.charmtree.builder.stringbuilder.source.MagicSourceStringBuilder;
+import net.sf.anathema.character.main.magic.model.charmtree.builder.stringbuilder.source.MagicSourceContributor;
+import net.sf.anathema.character.main.magic.model.spells.Spell;
+import net.sf.anathema.character.main.magic.sheet.content.IMagicStats;
 import net.sf.anathema.hero.charms.sheet.content.stats.AbstractCharmStats;
 import net.sf.anathema.hero.magic.sheet.content.stats.AbstractMagicStats;
 import net.sf.anathema.lib.resources.Resources;
@@ -35,7 +35,7 @@ public class SpellStats extends AbstractMagicStats<Spell> {
 
   @Override
   public String getSourceString(Resources resources) {
-    IMagicSourceStringBuilder<Spell> stringBuilder = new MagicSourceStringBuilder<>(resources);
+    IMagicSourceStringBuilder<Spell> stringBuilder = new MagicSourceContributor<>(resources);
     return stringBuilder.createShortSourceString(getMagic());
   }
 

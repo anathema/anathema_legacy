@@ -1,19 +1,20 @@
 package net.sf.anathema.character.main.magic.display.view.charmtree;
 
 import com.google.common.base.Preconditions;
+import net.sf.anathema.character.main.magic.description.MagicDescriptionProvider;
 import net.sf.anathema.character.main.magic.model.charm.Charm;
 import net.sf.anathema.character.main.magic.model.charm.special.ISpecialCharm;
-import net.sf.anathema.character.main.magic.description.MagicDescriptionProvider;
-import net.sf.anathema.character.main.magic.model.charmtree.builder.stringbuilder.CharmInfoStringBuilder;
-import net.sf.anathema.character.main.magic.model.charmtree.builder.stringbuilder.ICharmInfoStringBuilder;
+import net.sf.anathema.character.main.magic.model.charmtree.builder.stringbuilder.CharmTooltipBuilder;
+import net.sf.anathema.character.main.magic.model.charmtree.builder.stringbuilder.CharmTooltipBuilderImpl;
+import net.sf.anathema.lib.gui.TooltipBuilder;
 import net.sf.anathema.lib.resources.Resources;
 
 public abstract class AbstractCharmTreeViewProperties implements ICharmTreeViewProperties {
 
-  private final ICharmInfoStringBuilder tooltipTextProvider;
+  private final CharmTooltipBuilder tooltipTextProvider;
 
   public AbstractCharmTreeViewProperties(Resources resources, MagicDescriptionProvider magicDescriptionProvider) {
-    this.tooltipTextProvider = new CharmInfoStringBuilder(resources, magicDescriptionProvider);
+    this.tooltipTextProvider = new CharmTooltipBuilderImpl(resources, magicDescriptionProvider);
   }
 
   @Override
@@ -28,7 +29,9 @@ public abstract class AbstractCharmTreeViewProperties implements ICharmTreeViewP
     }
     Charm charm = findNonNullCharm(charmId);
     ISpecialCharm specialCharm = getSpecialCharm(charmId);
-    return tooltipTextProvider.getInfoString(charm, specialCharm);
+    TooltipBuilder tooltipBuilder = new TooltipBuilder();
+    tooltipTextProvider.configureTooltipWithSpecials(charm, specialCharm, tooltipBuilder);
+    return tooltipBuilder.build();
   }
 
   private Charm findNonNullCharm(final String charmId) {

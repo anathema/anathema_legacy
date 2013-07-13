@@ -2,12 +2,12 @@ package net.sf.anathema.hero.charms.sheet.content.stats;
 
 import com.google.common.base.Function;
 import net.sf.anathema.character.main.magic.model.charm.Charm;
-import net.sf.anathema.character.main.magic.model.magic.attribute.MagicAttribute;
-import net.sf.anathema.character.main.magic.sheet.content.IMagicStats;
 import net.sf.anathema.character.main.magic.model.charm.type.ICharmTypeModel;
 import net.sf.anathema.character.main.magic.model.charmtree.builder.stringbuilder.IMagicSourceStringBuilder;
-import net.sf.anathema.character.main.magic.model.charmtree.builder.stringbuilder.source.MagicSourceStringBuilder;
-import net.sf.anathema.character.main.magic.model.charmtree.builder.stringbuilder.type.ShortCharmTypeStringBuilder;
+import net.sf.anathema.character.main.magic.model.charmtree.builder.stringbuilder.source.MagicSourceContributor;
+import net.sf.anathema.character.main.magic.model.charmtree.builder.stringbuilder.type.ShortCharmTypeContributor;
+import net.sf.anathema.character.main.magic.model.magic.attribute.MagicAttribute;
+import net.sf.anathema.character.main.magic.sheet.content.IMagicStats;
 import net.sf.anathema.hero.magic.sheet.content.stats.AbstractMagicStats;
 import net.sf.anathema.lib.resources.Resources;
 
@@ -30,7 +30,7 @@ public abstract class AbstractCharmStats extends AbstractMagicStats<Charm> {
   @Override
   public String getType(Resources resources) {
     ICharmTypeModel model = getMagic().getCharmTypeModel();
-    return new ShortCharmTypeStringBuilder(resources).createTypeString(model);
+    return new ShortCharmTypeContributor(resources).createTypeString(model);
   }
 
   @Override
@@ -40,7 +40,7 @@ public abstract class AbstractCharmStats extends AbstractMagicStats<Charm> {
 
   @Override
   public String getSourceString(Resources resources) {
-    IMagicSourceStringBuilder<Charm> stringBuilder = new MagicSourceStringBuilder<>(resources);
+    IMagicSourceStringBuilder<Charm> stringBuilder = new MagicSourceContributor<>(resources);
     return stringBuilder.createShortSourceString(getMagic());
   }
 

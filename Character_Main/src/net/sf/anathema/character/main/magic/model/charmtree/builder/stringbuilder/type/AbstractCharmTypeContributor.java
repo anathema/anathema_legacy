@@ -1,7 +1,6 @@
 package net.sf.anathema.character.main.magic.model.charmtree.builder.stringbuilder.type;
 
 import net.sf.anathema.character.main.magic.model.charm.Charm;
-import net.sf.anathema.character.main.magic.model.magic.Magic;
 import net.sf.anathema.character.main.magic.model.charm.ICharmTypeVisitor;
 import net.sf.anathema.character.main.magic.model.charm.type.CharmType;
 import net.sf.anathema.character.main.magic.model.charm.type.ICharmTypeModel;
@@ -9,29 +8,30 @@ import net.sf.anathema.character.main.magic.model.charm.type.IReflexiveSpecialsM
 import net.sf.anathema.character.main.magic.model.charm.type.ISimpleSpecialsModel;
 import net.sf.anathema.character.main.magic.model.charm.type.TurnType;
 import net.sf.anathema.character.main.magic.model.charmtree.builder.stringbuilder.ICharmTypeStringBuilder;
-import net.sf.anathema.character.main.magic.model.charmtree.builder.stringbuilder.IMagicTooltipStringBuilder;
+import net.sf.anathema.character.main.magic.model.charmtree.builder.stringbuilder.MagicTooltipContributor;
+import net.sf.anathema.character.main.magic.model.magic.Magic;
+import net.sf.anathema.lib.gui.ConfigurableTooltip;
 import net.sf.anathema.lib.gui.TooltipBuilder;
 import net.sf.anathema.lib.resources.Resources;
 
 import java.text.MessageFormat;
 
-public abstract class AbstractCharmTypeStringBuilder implements ICharmTypeStringBuilder, IMagicTooltipStringBuilder {
+public abstract class AbstractCharmTypeContributor implements ICharmTypeStringBuilder, MagicTooltipContributor {
 
   private final boolean displayDefaultValues;
   private final Resources resources;
 
-  public AbstractCharmTypeStringBuilder(Resources resources, boolean displayDefaultValues) {
+  public AbstractCharmTypeContributor(Resources resources, boolean displayDefaultValues) {
     this.resources = resources;
     this.displayDefaultValues = displayDefaultValues;
   }
 
   @Override
-  public void buildStringForMagic(StringBuilder builder, Magic magic, Object details) {
+  public void buildStringForMagic(ConfigurableTooltip tooltip, Magic magic, Object details) {
     if (magic instanceof Charm) {
-      builder.append(resources.getString("CharmTreeView.ToolTip.Type"));
-      builder.append(TooltipBuilder.ColonSpace);
-      builder.append(createTypeString(((Charm) magic).getCharmTypeModel()));
-      builder.append(TooltipBuilder.HtmlLineBreak);
+      String label = resources.getString("CharmTreeView.ToolTip.Type");
+      String text = createTypeString(((Charm) magic).getCharmTypeModel());
+      tooltip.appendLine(label, text);
     }
   }
 
@@ -141,5 +141,4 @@ public abstract class AbstractCharmTypeStringBuilder implements ICharmTypeString
   protected Resources getResources() {
     return resources;
   }
-
 }

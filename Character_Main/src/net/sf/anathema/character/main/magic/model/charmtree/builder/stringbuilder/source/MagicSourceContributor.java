@@ -1,20 +1,19 @@
 package net.sf.anathema.character.main.magic.model.charmtree.builder.stringbuilder.source;
 
+import net.sf.anathema.character.main.magic.model.charmtree.builder.stringbuilder.IMagicSourceStringBuilder;
+import net.sf.anathema.character.main.magic.model.charmtree.builder.stringbuilder.MagicTooltipContributor;
 import net.sf.anathema.character.main.magic.model.magic.Magic;
 import net.sf.anathema.character.main.magic.parser.magic.IExaltedSourceBook;
-import net.sf.anathema.character.main.magic.model.charmtree.builder.stringbuilder.IMagicSourceStringBuilder;
-import net.sf.anathema.character.main.magic.model.charmtree.builder.stringbuilder.IMagicTooltipStringBuilder;
+import net.sf.anathema.lib.gui.ConfigurableTooltip;
 import net.sf.anathema.lib.gui.TooltipBuilder;
 import net.sf.anathema.lib.lang.StringUtilities;
 import net.sf.anathema.lib.resources.Resources;
 
-import static net.sf.anathema.lib.lang.StringUtilities.createFixedWidthParagraph;
-
-public class MagicSourceStringBuilder<T extends Magic> implements IMagicSourceStringBuilder<T>, IMagicTooltipStringBuilder {
+public class MagicSourceContributor<T extends Magic> implements IMagicSourceStringBuilder<T>, MagicTooltipContributor {
 
   private final Resources resources;
 
-  public MagicSourceStringBuilder(Resources resources) {
+  public MagicSourceContributor(Resources resources) {
     this.resources = resources;
   }
 
@@ -24,13 +23,10 @@ public class MagicSourceStringBuilder<T extends Magic> implements IMagicSourceSt
 
   @SuppressWarnings("unchecked")
   @Override
-  public void buildStringForMagic(StringBuilder builder, Magic magic, Object specialDetails) {
-    String descriptionString = resources.getString("CharmTreeView.ToolTip.Source");
-    descriptionString += TooltipBuilder.ColonSpace;
-    descriptionString += createSourceString((T) magic);
-    descriptionString = createFixedWidthParagraph(descriptionString, TooltipBuilder.HtmlLineBreak, TooltipBuilder.DEFAULT_TOOLTIP_WIDTH);
-    builder.append(descriptionString);
-    builder.append(TooltipBuilder.HtmlLineBreak);
+  public void buildStringForMagic(ConfigurableTooltip tooltip, Magic magic, Object specialDetails) {
+    String descriptionLabel = resources.getString("CharmTreeView.ToolTip.Source");
+    String descriptionText = createSourceString((T) magic);
+    tooltip.appendLine(descriptionLabel, descriptionText);
   }
 
   @Override

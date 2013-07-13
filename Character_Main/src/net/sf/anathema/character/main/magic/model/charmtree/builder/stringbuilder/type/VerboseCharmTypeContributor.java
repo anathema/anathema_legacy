@@ -5,9 +5,9 @@ import net.sf.anathema.character.main.magic.model.charm.type.TurnType;
 import net.sf.anathema.lib.gui.TooltipBuilder;
 import net.sf.anathema.lib.resources.Resources;
 
-public class VerboseCharmTypeStringBuilder extends AbstractCharmTypeStringBuilder {
+public class VerboseCharmTypeContributor extends AbstractCharmTypeContributor {
 
-  public VerboseCharmTypeStringBuilder(Resources resources) {
+  public VerboseCharmTypeContributor(Resources resources) {
     super(resources, false);
   }
 

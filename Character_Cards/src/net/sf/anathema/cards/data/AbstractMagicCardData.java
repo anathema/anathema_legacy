@@ -3,12 +3,12 @@ package net.sf.anathema.cards.data;
 import com.itextpdf.text.Paragraph;
 import com.itextpdf.text.Phrase;
 import net.sf.anathema.cards.layout.ICardReportResourceProvider;
+import net.sf.anathema.character.main.magic.description.MagicDescription;
+import net.sf.anathema.character.main.magic.model.charmtree.builder.stringbuilder.ScreenDisplayInfoContributor;
+import net.sf.anathema.character.main.magic.model.charmtree.builder.stringbuilder.source.MagicSourceContributor;
+import net.sf.anathema.character.main.magic.model.magic.Magic;
 import net.sf.anathema.character.main.magic.model.magic.cost.Cost;
 import net.sf.anathema.character.main.magic.model.magic.cost.HealthCost;
-import net.sf.anathema.character.main.magic.model.magic.Magic;
-import net.sf.anathema.character.main.magic.description.MagicDescription;
-import net.sf.anathema.character.main.magic.model.charmtree.builder.stringbuilder.ScreenDisplayInfoStringBuilder;
-import net.sf.anathema.character.main.magic.model.charmtree.builder.stringbuilder.source.MagicSourceStringBuilder;
 import net.sf.anathema.lib.resources.Resources;
 
 public abstract class AbstractMagicCardData implements ICardData {
@@ -40,13 +40,13 @@ public abstract class AbstractMagicCardData implements ICardData {
 
   @Override
   public String getSource() {
-    String source = new MagicSourceStringBuilder<Magic>(resources).createSourceString(magic);
+    String source = new MagicSourceContributor<>(resources).createSourceString(magic);
     source = source.replaceAll(resources.getString("CardsReport.MoEP.Long"), resources.getString("CardsReport.MoEP.Short"));
     return source;
   }
 
   protected Phrase getCostPhrase(boolean semicolon) {
-    String cost = new ScreenDisplayInfoStringBuilder(resources).createCostString(magic);
+    String cost = new ScreenDisplayInfoContributor(resources).createCostString(magic);
     return new Phrase(cost + (semicolon ? ": " : ""), resourceProvider.getBoldFont());
   }
 

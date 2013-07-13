@@ -3,8 +3,8 @@ package net.sf.anathema.hero.combos.display.presenter;
 import net.sf.anathema.character.main.CharacterUI;
 import net.sf.anathema.character.main.magic.description.MagicDescriptionProvider;
 import net.sf.anathema.character.main.magic.model.charm.Charm;
-import net.sf.anathema.character.main.magic.model.charmtree.builder.stringbuilder.CharmInfoStringBuilder;
-import net.sf.anathema.character.main.magic.model.charmtree.builder.stringbuilder.ICharmInfoStringBuilder;
+import net.sf.anathema.character.main.magic.model.charmtree.builder.stringbuilder.CharmTooltipBuilder;
+import net.sf.anathema.character.main.magic.model.charmtree.builder.stringbuilder.CharmTooltipBuilderImpl;
 import net.sf.anathema.framework.presenter.resources.BasicUi;
 import net.sf.anathema.hero.magic.display.AbstractMagicLearnProperties;
 import net.sf.anathema.lib.file.RelativePath;
@@ -15,11 +15,11 @@ import java.util.List;
 
 public class CombinedComboViewAndMagicProperties extends AbstractMagicLearnProperties implements ComboViewProperties {
   private final CombosModel comboConfiguration;
-  private final ICharmInfoStringBuilder charmInfoStringProvider;
+  private final CharmTooltipBuilder charmInfoStringProvider;
 
   CombinedComboViewAndMagicProperties(Resources resources, CombosModel comboConfiguration, MagicDescriptionProvider magicDescriptionProvider) {
     super(resources);
-    this.charmInfoStringProvider = new CharmInfoStringBuilder(getResources(), magicDescriptionProvider);
+    this.charmInfoStringProvider = new CharmTooltipBuilderImpl(getResources(), magicDescriptionProvider);
     this.comboConfiguration = comboConfiguration;
   }
 
@@ -40,7 +40,7 @@ public class CombinedComboViewAndMagicProperties extends AbstractMagicLearnPrope
 
   @Override
   public AgnosticUIConfiguration getMagicRenderer() {
-    return new CharmUIConfiguration(getResources(), charmInfoStringProvider);
+    return new CharmUiConfigurationWithoutSpecials(getResources(), charmInfoStringProvider);
   }
 
   @Override

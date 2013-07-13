@@ -10,9 +10,9 @@ import net.sf.anathema.character.main.magic.description.MagicDescription;
 import net.sf.anathema.character.main.magic.display.view.charms.CharmDescriptionProviderExtractor;
 import net.sf.anathema.character.main.magic.model.charm.Charm;
 import net.sf.anathema.character.main.magic.model.charmtree.builder.MagicDisplayLabeler;
-import net.sf.anathema.character.main.magic.model.charmtree.builder.stringbuilder.ScreenDisplayInfoStringBuilder;
-import net.sf.anathema.character.main.magic.model.charmtree.builder.stringbuilder.source.MagicSourceStringBuilder;
-import net.sf.anathema.character.main.magic.model.charmtree.builder.stringbuilder.type.VerboseCharmTypeStringBuilder;
+import net.sf.anathema.character.main.magic.model.charmtree.builder.stringbuilder.ScreenDisplayInfoContributor;
+import net.sf.anathema.character.main.magic.model.charmtree.builder.stringbuilder.source.MagicSourceContributor;
+import net.sf.anathema.character.main.magic.model.charmtree.builder.stringbuilder.type.VerboseCharmTypeContributor;
 import net.sf.anathema.character.main.magic.model.magic.Magic;
 import net.sf.anathema.character.main.magic.model.spells.Spell;
 import net.sf.anathema.framework.IApplicationModel;
@@ -95,7 +95,7 @@ public class MagicReport extends AbstractPdfReport {
 
   private void addSpellCost(Spell charm, MultiColumnText columnText) throws DocumentException {
     String costsLabel = resources.getString("MagicReport.Costs.Label") + ": ";
-    String costsValue = new ScreenDisplayInfoStringBuilder(resources).createCostString(charm);
+    String costsValue = new ScreenDisplayInfoContributor(resources).createCostString(charm);
     columnText.addElement(partFactory.createDataPhrase(costsLabel, costsValue));
   }
 
@@ -121,13 +121,13 @@ public class MagicReport extends AbstractPdfReport {
 
   private void addCostsCell(Charm charm, PdfPTable table) {
     String costsLabel = resources.getString("MagicReport.Costs.Label") + ": ";
-    String costsValue = new ScreenDisplayInfoStringBuilder(resources).createCostString(charm);
+    String costsValue = new ScreenDisplayInfoContributor(resources).createCostString(charm);
     table.addCell(partFactory.createDataCell(costsLabel, costsValue));
   }
 
   private void addTypeCell(Charm charm, PdfPTable table) {
     String typeLabel = resources.getString("MagicReport.Type.Label") + ": ";
-    String typeValue = new VerboseCharmTypeStringBuilder(resources).createTypeString(charm.getCharmTypeModel());
+    String typeValue = new VerboseCharmTypeContributor(resources).createTypeString(charm.getCharmTypeModel());
     table.addCell(partFactory.createDataCell(typeLabel, typeValue));
   }
 
@@ -146,7 +146,7 @@ public class MagicReport extends AbstractPdfReport {
   private void addCharmDescription(Magic magic, MultiColumnText columnText) throws DocumentException {
     MagicDescription charmDescription = getCharmDescription(magic);
     if (charmDescription.isEmpty()) {
-      String sourceString = new MagicSourceStringBuilder<>(resources).createSourceString(magic);
+      String sourceString = new MagicSourceContributor<>(resources).createSourceString(magic);
       String sourceReference = resources.getString("MagicReport.See.Source", sourceString);
       columnText.addElement(partFactory.createDescriptionParagraph(sourceReference));
     }

@@ -5,9 +5,9 @@ import net.sf.anathema.character.main.magic.model.charm.type.TurnType;
 import net.sf.anathema.lib.gui.TooltipBuilder;
 import net.sf.anathema.lib.resources.Resources;
 
-public class ShortCharmTypeStringBuilder extends AbstractCharmTypeStringBuilder {
+public class ShortCharmTypeContributor extends AbstractCharmTypeContributor {
 
-  public ShortCharmTypeStringBuilder(Resources resources) {
+  public ShortCharmTypeContributor(Resources resources) {
     super(resources, true);
   }
 

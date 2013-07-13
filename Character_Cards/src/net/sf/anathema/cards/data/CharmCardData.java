@@ -6,12 +6,12 @@ import com.itextpdf.text.Image;
 import com.itextpdf.text.Paragraph;
 import com.itextpdf.text.Phrase;
 import net.sf.anathema.cards.layout.ICardReportResourceProvider;
-import net.sf.anathema.character.main.magic.model.charm.Charm;
-import net.sf.anathema.hero.magic.model.martial.MartialArtsUtilities;
 import net.sf.anathema.character.main.magic.description.MagicDescription;
+import net.sf.anathema.character.main.magic.model.charm.Charm;
+import net.sf.anathema.character.main.magic.model.charmtree.builder.stringbuilder.type.VerboseCharmTypeContributor;
 import net.sf.anathema.character.main.traits.types.AbilityType;
 import net.sf.anathema.hero.charms.sheet.content.stats.CharmStats;
-import net.sf.anathema.character.main.magic.model.charmtree.builder.stringbuilder.type.VerboseCharmTypeStringBuilder;
+import net.sf.anathema.hero.magic.model.martial.MartialArtsUtilities;
 import net.sf.anathema.lib.resources.Resources;
 
 public class CharmCardData extends AbstractMagicCardData {
@@ -66,7 +66,7 @@ public class CharmCardData extends AbstractMagicCardData {
   }
 
   private Phrase getCharmType(Charm charm) {
-    String type = new VerboseCharmTypeStringBuilder(getResources()).createTypeString(charm.getCharmTypeModel());
+    String type = new VerboseCharmTypeContributor(getResources()).createTypeString(charm.getCharmTypeModel());
     return new Phrase(8, type, getResourceProvider().getBoldFont());
   }
 

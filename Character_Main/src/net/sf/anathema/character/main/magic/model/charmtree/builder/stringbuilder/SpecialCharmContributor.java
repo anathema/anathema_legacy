@@ -4,25 +4,26 @@ import net.sf.anathema.character.main.magic.model.charm.Charm;
 import net.sf.anathema.character.main.magic.model.charm.special.AbstractMultiLearnableCharm;
 import net.sf.anathema.character.main.magic.model.charm.special.CharmTier;
 import net.sf.anathema.character.main.magic.model.charm.special.EssenceFixedMultiLearnableCharm;
+import net.sf.anathema.character.main.magic.model.charm.special.ISpecialCharm;
 import net.sf.anathema.character.main.magic.model.charm.special.StaticMultiLearnableCharm;
 import net.sf.anathema.character.main.magic.model.charm.special.TieredMultiLearnableCharm;
 import net.sf.anathema.character.main.magic.model.charm.special.TraitDependentMultiLearnableCharm;
 import net.sf.anathema.character.main.magic.model.magic.Magic;
-import net.sf.anathema.character.main.magic.model.charm.special.ISpecialCharm;
 import net.sf.anathema.character.main.traits.types.OtherTraitType;
+import net.sf.anathema.lib.gui.ConfigurableTooltip;
 import net.sf.anathema.lib.gui.TooltipBuilder;
 import net.sf.anathema.lib.resources.Resources;
 
-public class SpecialCharmStringBuilder implements IMagicTooltipStringBuilder {
+public class SpecialCharmContributor implements MagicTooltipContributor {
   private static final String HtmlLineBreak = "<br>";
   private Resources resources;
 
-  public SpecialCharmStringBuilder(Resources resources) {
+  public SpecialCharmContributor(Resources resources) {
     this.resources = resources;
   }
 
   @Override
-  public void buildStringForMagic(StringBuilder builder, Magic magic, Object specialDetails) {
+  public void buildStringForMagic(ConfigurableTooltip tooltip, Magic magic, Object specialDetails) {
     if (magic instanceof Charm && specialDetails instanceof ISpecialCharm) {
       Charm charm = (Charm) magic;
       ISpecialCharm details = (ISpecialCharm) specialDetails;
@@ -44,7 +45,7 @@ public class SpecialCharmStringBuilder implements IMagicTooltipStringBuilder {
         }
         specialCharmBuilder.append(HtmlLineBreak);
       }
-      builder.append(specialCharmBuilder);
+      tooltip.appendLine(specialCharmBuilder.toString());
     }
   }
 
