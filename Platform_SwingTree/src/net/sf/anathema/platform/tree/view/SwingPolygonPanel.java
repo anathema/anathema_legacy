@@ -8,6 +8,7 @@ import net.sf.anathema.platform.tree.view.interaction.ElementContainer;
 import net.sf.anathema.platform.tree.view.interaction.Executor;
 import net.sf.anathema.platform.tree.view.interaction.SpecialControl;
 
+import javax.swing.JComponent;
 import javax.swing.JPanel;
 import java.awt.Color;
 import java.awt.Cursor;
@@ -52,6 +53,13 @@ public class SwingPolygonPanel extends JPanel implements PolygonPanel {
     }
   }
 
+  @Override
+  public void refresh() {
+    this.revalidate();
+    super.repaint();
+  }
+
+  @SuppressWarnings("ConstantConditions") //Is null during superclass initialization
   @Override
   public void revalidate() {
     if (specialControls != null) {
@@ -166,6 +174,10 @@ public class SwingPolygonPanel extends JPanel implements PolygonPanel {
     if (maxZoomOutDeterminant <= determinant && determinant <= maxZoomInDeterminant) {
       transform.preConcatenate(scaleInstance);
     }
+  }
+
+  public JComponent getComponent() {
+    return this;
   }
 
   private class SetDefaultCursor implements Runnable {

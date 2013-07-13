@@ -11,6 +11,6 @@ public class DefaultScaler {
 
   public void scale() {
     polygonPanel.scale(PolygonPanel.RECOMMENDED_DEFAULT_SCALE);
-    polygonPanel.revalidate();
+    polygonPanel.refresh();
   }
 }

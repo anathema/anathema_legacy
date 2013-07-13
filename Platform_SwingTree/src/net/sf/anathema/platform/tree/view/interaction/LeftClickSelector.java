@@ -27,6 +27,6 @@ public class LeftClickSelector extends MouseAdapter {
     }
     Point point = e.getPoint();
     polygonPanel.onElementAtPoint(point).perform(new NodeSelectionTrigger(cascade, interactionListener));
-    polygonPanel.repaint();
+    polygonPanel.refresh();
   }
 }

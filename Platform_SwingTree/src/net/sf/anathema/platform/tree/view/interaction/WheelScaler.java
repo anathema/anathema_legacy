@@ -17,8 +17,7 @@ public class WheelScaler implements MouseWheelListener {
   @Override
   public void mouseWheelMoved(MouseWheelEvent e) {
     polygonPanel.scaleToPoint(calculateScale(e), e.getX(), e.getY());
-    polygonPanel.revalidate();
-    polygonPanel.repaint();
+    polygonPanel.refresh();
   }
 
   private double calculateScale(MouseWheelEvent event) {

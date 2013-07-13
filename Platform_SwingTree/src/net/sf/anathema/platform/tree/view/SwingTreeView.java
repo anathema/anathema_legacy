@@ -44,13 +44,13 @@ public class SwingTreeView implements ITreeView<Cascade> {
   @Override
   public void setNodeBackgroundColor(String nodeId, RGBColor color) {
     cascade.colorNode(nodeId, color);
-    polygonPanel.repaint();
+    polygonPanel.refresh();
   }
 
   @Override
   public void setNodeAlpha(String nodeId, int alpha) {
     cascade.setNodeAlpha(nodeId, alpha);
-    polygonPanel.repaint();
+    polygonPanel.refresh();
   }
 
   @Override
@@ -83,7 +83,7 @@ public class SwingTreeView implements ITreeView<Cascade> {
   @Override
   public void initNodeNames(NodeProperties properties) {
     cascade.initNodeNames(properties);
-    polygonPanel.repaint();
+    polygonPanel.refresh();
   }
 
   public void initToolTips(ToolTipProperties properties) {
@@ -103,6 +103,6 @@ public class SwingTreeView implements ITreeView<Cascade> {
   }
 
   public JComponent getComponent() {
-    return polygonPanel;
+    return polygonPanel.getComponent();
   }
 }

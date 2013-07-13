@@ -15,9 +15,7 @@ import java.awt.event.MouseWheelListener;
 public interface PolygonPanel {
   double RECOMMENDED_DEFAULT_SCALE = 0.75d;
 
-  void revalidate();
-
-  void repaint();
+  void refresh();
 
   void add(SpecialControl control);
 

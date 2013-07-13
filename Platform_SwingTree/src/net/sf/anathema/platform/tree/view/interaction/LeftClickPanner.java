@@ -31,8 +31,7 @@ public class LeftClickPanner extends MouseAdapter {
     int deltaX = dragPoint.x - this.start.x;
     int deltaY = dragPoint.y - this.start.y;
     panel.translateRelativeToScale(deltaX, deltaY);
-    panel.revalidate();
-    panel.repaint();
+    panel.refresh();
     this.start = dragPoint;
   }
 }
