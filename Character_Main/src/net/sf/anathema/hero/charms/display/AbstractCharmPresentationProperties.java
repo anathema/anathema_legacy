@@ -3,7 +3,7 @@ package net.sf.anathema.hero.charms.display;
 import net.sf.anathema.framework.ui.Area;
 import net.sf.anathema.framework.ui.RGBColor;
 
-public abstract class AbstractCharmPresentationProperties implements CharmPresentationProperti2 {
+public abstract class AbstractCharmPresentationProperties implements CharmPresentationProperties {
 
   private RGBColor color;
 

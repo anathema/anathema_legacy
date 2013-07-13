@@ -2,7 +2,7 @@ package net.sf.anathema.character.main.magic.display.view.charmtree;
 
 import net.sf.anathema.character.main.type.CharacterType;
 import net.sf.anathema.hero.charms.display.AbstractCharmPresentationProperties;
-import net.sf.anathema.hero.charms.display.CharmPresentationProperti2;
+import net.sf.anathema.hero.charms.display.CharmPresentationProperties;
 import net.sf.anathema.hero.charms.display.RegisteredCharmPresentationProperties;
 import net.sf.anathema.initialization.ObjectFactory;
 import net.sf.anathema.platform.tree.document.visualizer.TreePresentationProperties;
@@ -17,8 +17,8 @@ public class CharmDisplayPropertiesMap {
   }
 
   public TreePresentationProperties getDisplayProperties(CharacterType characterType) {
-    Collection<CharmPresentationProperti2> allObjects = objectFactory.instantiateAll(RegisteredCharmPresentationProperties.class);
-    for (CharmPresentationProperti2 properties : allObjects) {
+    Collection<CharmPresentationProperties> allObjects = objectFactory.instantiateAll(RegisteredCharmPresentationProperties.class);
+    for (CharmPresentationProperties properties : allObjects) {
       if (properties.supportsCharacterType(characterType)) {
         return properties;
       }
