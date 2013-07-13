@@ -1,6 +1,7 @@
 package net.sf.anathema.framework.ui;
 
 import net.sf.anathema.lib.gui.AbstractUIConfiguration;
+import net.sf.anathema.lib.gui.ConfigurableTooltip;
 import net.sf.anathema.lib.resources.Resources;
 import net.sf.anathema.lib.util.Identifier;
 
@@ -12,8 +13,8 @@ public class IdentifierConfiguration extends AbstractUIConfiguration<Identifier>
   }
 
   @Override
-  protected String tooltipForExistingValue(Identifier value) {
-    return getLabel(value);
+  protected void configureTooltipForExistingValue(Identifier value, ConfigurableTooltip configurableTooltip) {
+    configurableTooltip.appendLine(getLabel(value));
   }
 
   @Override

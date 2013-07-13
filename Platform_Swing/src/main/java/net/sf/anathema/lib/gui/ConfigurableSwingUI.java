@@ -31,6 +31,8 @@ public class ConfigurableSwingUI<T> implements ObjectUi<T> {
 
   @Override
   public String getToolTipText(T value) {
-    return configuration.getToolTipText(value);
+    TooltipBuilder tooltip = new TooltipBuilder();
+    configuration.configureTooltip(value, tooltip);
+    return tooltip.build();
   }
 }

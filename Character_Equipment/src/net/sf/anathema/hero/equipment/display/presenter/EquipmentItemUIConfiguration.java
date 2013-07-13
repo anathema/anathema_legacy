@@ -3,6 +3,7 @@ package net.sf.anathema.hero.equipment.display.presenter;
 import net.sf.anathema.character.equipment.item.model.IEquipmentTemplateProvider;
 import net.sf.anathema.equipment.core.IEquipmentTemplate;
 import net.sf.anathema.lib.gui.AbstractUIConfiguration;
+import net.sf.anathema.lib.gui.ConfigurableTooltip;
 
 public class EquipmentItemUIConfiguration extends AbstractUIConfiguration<String> {
 
@@ -20,11 +21,12 @@ public class EquipmentItemUIConfiguration extends AbstractUIConfiguration<String
   }
 
   @Override
-  protected String tooltipForExistingValue(String value) {
+  protected void configureTooltipForExistingValue(String value, ConfigurableTooltip configurableTooltip) {
     IEquipmentTemplate template = templateProvider.loadTemplate(value);
-    if (template != null) {
-      return tooltipBuilder.getTooltipDescription(template);
+    if (template == null) {
+      configurableTooltip.showNoTooltip();
+    } else {
+      configurableTooltip.appendLine(tooltipBuilder.getTooltipDescription(template));
     }
-    return NO_TOOLTIP;
   }
 }

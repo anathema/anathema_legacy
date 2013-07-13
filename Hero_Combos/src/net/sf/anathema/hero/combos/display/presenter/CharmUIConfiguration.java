@@ -4,6 +4,7 @@ import net.sf.anathema.character.main.magic.model.charm.Charm;
 import net.sf.anathema.character.main.magic.model.charmtree.builder.MagicDisplayLabeler;
 import net.sf.anathema.character.main.magic.model.charmtree.builder.stringbuilder.ICharmInfoStringBuilder;
 import net.sf.anathema.lib.gui.AbstractUIConfiguration;
+import net.sf.anathema.lib.gui.ConfigurableTooltip;
 import net.sf.anathema.lib.resources.Resources;
 import net.sf.anathema.lib.util.Identifier;
 
@@ -22,7 +23,8 @@ public class CharmUIConfiguration extends AbstractUIConfiguration<Identifier> {
   }
 
   @Override
-  protected String tooltipForExistingValue(Identifier value) {
-    return charmInfoStringProvider.getInfoString((Charm) value, null);
+  protected void configureTooltipForExistingValue(Identifier value, ConfigurableTooltip configurableTooltip) {
+    String infoString = charmInfoStringProvider.getInfoString((Charm) value, null);
+    configurableTooltip.appendLine(infoString);
   }
 }

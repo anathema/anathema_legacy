@@ -6,20 +6,19 @@ import net.sf.anathema.character.main.library.trait.specialties.SpecialtiesModel
 import net.sf.anathema.character.main.library.trait.specialties.Specialty;
 import net.sf.anathema.character.main.library.trait.subtrait.ISpecialtyListener;
 import net.sf.anathema.character.main.library.trait.subtrait.ISubTraitContainer;
-import net.sf.anathema.hero.display.ExtensibleTraitView;
 import net.sf.anathema.character.main.traits.TraitType;
 import net.sf.anathema.framework.presenter.resources.BasicUi;
-import net.sf.anathema.hero.model.change.ChangeFlavor;
-import net.sf.anathema.hero.model.change.FlavoredChangeListener;
+import net.sf.anathema.hero.display.ExtensibleTraitView;
 import net.sf.anathema.hero.experience.ExperienceChange;
 import net.sf.anathema.hero.model.Hero;
+import net.sf.anathema.hero.model.change.ChangeFlavor;
+import net.sf.anathema.hero.model.change.FlavoredChangeListener;
 import net.sf.anathema.interaction.Command;
 import net.sf.anathema.interaction.Tool;
 import net.sf.anathema.lib.collection.IdentityMapping;
 import net.sf.anathema.lib.control.ChangeListener;
 import net.sf.anathema.lib.control.ObjectValueListener;
 import net.sf.anathema.lib.file.RelativePath;
-import net.sf.anathema.lib.gui.AbstractUIConfiguration;
 import net.sf.anathema.lib.gui.AgnosticUIConfiguration;
 import net.sf.anathema.lib.gui.Presenter;
 import net.sf.anathema.lib.resources.Resources;
@@ -70,12 +69,7 @@ public class SpecialtiesConfigurationPresenter implements Presenter {
   public void initPresentation() {
     initTraitListening();
     RelativePath addIcon = new BasicUi().getAddIconPath();
-    AgnosticUIConfiguration<TraitType> configuration = new AbstractUIConfiguration<TraitType>() {
-      @Override
-      protected String labelForExistingValue(TraitType value) {
-        return i18ner.getScreenName(value);
-      }
-    };
+    AgnosticUIConfiguration<TraitType> configuration = new TraitTypeUiConfiguration(i18ner);
     final SpecialtyCreationView creationView = configurationView.addSpecialtyCreationView(configuration, addIcon);
     setObjects(creationView);
     creationView.addSelectionChangedListener(new ObjectValueListener<TraitType>() {
@@ -197,4 +191,5 @@ public class SpecialtiesConfigurationPresenter implements Presenter {
   private ISubTraitContainer getSpecialtyContainer(TraitType type) {
     return specialtyManagement.getSpecialtiesContainer(type);
   }
+
 }

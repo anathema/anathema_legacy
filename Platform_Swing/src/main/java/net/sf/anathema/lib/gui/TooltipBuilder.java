@@ -2,7 +2,7 @@ package net.sf.anathema.lib.gui;
 
 import static net.sf.anathema.lib.lang.StringUtilities.createFixedWidthParagraph;
 
-public class TooltipBuilder {
+public class TooltipBuilder implements ConfigurableTooltip{
 
   public static final String HtmlLineBreak = "<br>";
   public static final String CommaSpace = ", ";
@@ -11,9 +11,21 @@ public class TooltipBuilder {
   public static final int DEFAULT_TOOLTIP_WIDTH = 80;
 
   private final StringBuilder builder = new StringBuilder();
+  private boolean showNoTooltip = false;
 
   public TooltipBuilder() {
     builder.append("<html>");
+  }
+
+  @Override
+  public void showNoTooltip() {
+    this.showNoTooltip = true;
+  }
+
+  @Override
+  public void appendLine(String text) {
+    builder.append(text);
+    appendLineBreak();
   }
 
   public void appendTitleLine(String title) {

@@ -3,7 +3,6 @@ package net.sf.anathema.swing.hero.creation;
 import net.sf.anathema.character.main.CharacterUI;
 import net.sf.anathema.character.main.type.CharacterType;
 import net.sf.anathema.character.main.view.repository.ITemplateTypeAggregation;
-import net.sf.anathema.lib.gui.AbstractUIConfiguration;
 import net.sf.anathema.lib.gui.AgnosticUIConfiguration;
 import net.sf.anathema.lib.message.BasicMessage;
 import net.sf.anathema.lib.message.IBasicMessage;
@@ -39,11 +38,7 @@ public class CharacterCreationPageProperties {
   }
 
   public AgnosticUIConfiguration<ITemplateTypeAggregation> getTemplateUI() {
-    return new AbstractUIConfiguration<ITemplateTypeAggregation>() {
-      @Override
-      public String getLabel(ITemplateTypeAggregation value) {
-        return resources.getString(value.getPresentationProperties().getNewActionResource());
-      }
-    };
+    return new TemplateTypeUiConfiguration(resources);
   }
+
 }

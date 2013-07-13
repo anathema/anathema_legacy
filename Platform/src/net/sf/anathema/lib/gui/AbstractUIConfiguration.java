@@ -19,16 +19,6 @@ public class AbstractUIConfiguration<T> implements AgnosticUIConfiguration<T> {
     return labelForExistingValue(value);
   }
 
-  //*This will go away when Swing replaced. Replaced by "configureTooltip" below.*/
-  @Deprecated
-  @Override
-  public String getToolTipText(T value) {
-    if (value == null) {
-      return NO_TOOLTIP;
-    }
-    return tooltipForExistingValue(value);
-  }
-
   @Override
   public void configureTooltip(T value, ConfigurableTooltip configurableTooltip) {
     if (value == null){
@@ -39,15 +29,9 @@ public class AbstractUIConfiguration<T> implements AgnosticUIConfiguration<T> {
     }
   }
 
-  //*This will go away when Swing replaced. Replaced by "configureTooltipForExistingValue" below.*/
-  @Deprecated
-  protected String tooltipForExistingValue(T value) {
-    return NO_TOOLTIP;
-  }
-
+  /**Subclasses must never call this method via "super", lest they get no tooltip at all.*/
   protected void configureTooltipForExistingValue(T value, ConfigurableTooltip configurableTooltip) {
-    String text = tooltipForExistingValue(value);
-    configurableTooltip.appendLine(text);
+    configurableTooltip.showNoTooltip();
   }
 
   protected String labelForExistingValue(T value) {
