@@ -12,4 +12,6 @@ public interface AgnosticUIConfiguration<T> {
   String getLabel(T value);
 
   String getToolTipText(T value);
+
+  void configureTooltip(T item, ConfigurableTooltip configurableTooltip);
 }

@@ -1,7 +1,6 @@
 package net.sf.anathema.platform.fx;
 
 import javafx.scene.control.ListCell;
-import javafx.scene.control.Tooltip;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import net.sf.anathema.lib.file.RelativePath;
@@ -27,7 +26,9 @@ public class UITableCell<T> extends ListCell<T> {
 
   private void setTooltip(T item) {
     if (FxUtilities.systemSupportsPopUpsWhileEmbeddingFxIntoSwing()) {
-      setTooltip(new Tooltip(configuration.getToolTipText(item)));
+      ConfigurableFxTooltip configurableTooltip = new ConfigurableFxTooltip();
+      configuration.configureTooltip(item, configurableTooltip);
+      configurableTooltip.configure(this);
     }
   }
 
