@@ -2,7 +2,7 @@ package net.sf.anathema.swing.hero.creation;
 
 import net.miginfocom.swing.MigLayout;
 import net.sf.anathema.framework.swing.IView;
-import net.sf.anathema.hero.languages.display.ToolbarUtilities;
+import net.sf.anathema.framework.view.toolbar.ToolbarUtilities;
 
 import javax.swing.Action;
 import javax.swing.ButtonGroup;

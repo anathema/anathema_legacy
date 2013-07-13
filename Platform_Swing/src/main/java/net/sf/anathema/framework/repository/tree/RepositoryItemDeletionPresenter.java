@@ -1,6 +1,5 @@
 package net.sf.anathema.framework.repository.tree;
 
-import net.sf.anathema.framework.presenter.resources.FileUi;
 import net.sf.anathema.framework.repository.RepositoryException;
 import net.sf.anathema.interaction.Command;
 import net.sf.anathema.lib.control.ChangeListener;

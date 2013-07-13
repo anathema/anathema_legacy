@@ -1,4 +1,4 @@
-package net.sf.anathema.framework.presenter.resources;
+package net.sf.anathema.framework.repository.tree;
 
 import net.sf.anathema.lib.file.RelativePath;
 import net.sf.anathema.lib.gui.ui.AbstractUI;

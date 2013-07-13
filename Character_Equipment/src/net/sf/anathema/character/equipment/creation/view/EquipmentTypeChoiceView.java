@@ -2,7 +2,7 @@ package net.sf.anathema.character.equipment.creation.view;
 
 import net.miginfocom.layout.CC;
 import net.miginfocom.swing.MigLayout;
-import net.sf.anathema.hero.languages.display.ToolbarUtilities;
+import net.sf.anathema.framework.view.toolbar.ToolbarUtilities;
 import net.sf.anathema.lib.gui.dialog.core.IPageContent;
 import net.sf.anathema.lib.gui.layout.LayoutUtils;
 import net.sf.anathema.lib.gui.widgets.HorizontalLine;

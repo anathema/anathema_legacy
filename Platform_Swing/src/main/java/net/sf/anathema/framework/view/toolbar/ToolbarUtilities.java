@@ -1,4 +1,4 @@
-package net.sf.anathema.hero.languages.display;
+package net.sf.anathema.framework.view.toolbar;
 
 import javax.swing.AbstractButton;
 import java.awt.Insets;

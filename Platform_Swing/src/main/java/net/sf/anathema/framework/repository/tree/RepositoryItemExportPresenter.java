@@ -1,6 +1,5 @@
 package net.sf.anathema.framework.repository.tree;
 
-import net.sf.anathema.framework.presenter.resources.FileUi;
 import net.sf.anathema.framework.view.PrintNameFile;
 import net.sf.anathema.lib.control.ChangeListener;
 import net.sf.anathema.lib.gui.Presenter;

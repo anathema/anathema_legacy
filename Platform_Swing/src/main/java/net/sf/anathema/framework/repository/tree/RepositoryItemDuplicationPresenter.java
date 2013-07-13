@@ -2,7 +2,6 @@ package net.sf.anathema.framework.repository.tree;
 
 import net.sf.anathema.framework.item.IItemType;
 import net.sf.anathema.framework.messaging.IMessaging;
-import net.sf.anathema.framework.presenter.resources.FileUi;
 import net.sf.anathema.framework.repository.RepositoryException;
 import net.sf.anathema.framework.repository.access.IRepositoryFileAccess;
 import net.sf.anathema.framework.view.PrintNameFile;

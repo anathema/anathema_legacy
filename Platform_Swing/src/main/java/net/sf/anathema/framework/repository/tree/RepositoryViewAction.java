@@ -7,7 +7,7 @@ import net.sf.anathema.lib.gui.dialog.userdialog.DefaultDialogConfiguration;
 import net.sf.anathema.lib.gui.dialog.userdialog.UserDialog;
 import net.sf.anathema.lib.resources.Resources;
 
-public final class RepositoryViewAction implements Command {
+public class RepositoryViewAction implements Command {
   private final IApplicationModel model;
   private final Resources resources;
 
@@ -19,7 +19,7 @@ public final class RepositoryViewAction implements Command {
   @Override
   public void execute() {
     RepositoryBrowserDialogPage page = new RepositoryBrowserDialogPage(resources, model);
-    DefaultDialogConfiguration dialogConfiguration = DefaultDialogConfiguration.createWithOkOnly(page);
+    DefaultDialogConfiguration<RepositoryBrowserDialogPage> dialogConfiguration = DefaultDialogConfiguration.createWithOkOnly(page);
     UserDialog userDialog = new UserDialog(SwingApplicationFrame.getParentComponent(), dialogConfiguration);
     userDialog.getDialog().setModal(true);
     userDialog.getDialog().setResizable(false);
