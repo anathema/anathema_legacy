@@ -25,7 +25,7 @@ public class CharmTooltipBuilderImpl implements CharmTooltipBuilder {
     builders.add(new CharmPrerequisitesContributor(resources));
     builders.add(new SpecialCharmContributor(resources));
     builders.add(new MagicSourceContributor<Charm>(resources));
-    builders.add(new MagicDescriptionContributor(resources, magicDescriptionProvider));
+    builders.add(new MagicDescriptionContributor(magicDescriptionProvider));
   }
 
   @Override

@@ -71,19 +71,16 @@ public class StringUtilities {
     return lineBreaks;
   }
 
-  public static String createFixedWidthParagraph(String textString, String breakPoint, int maxLength) {
-    //Linebreak the description at regular intervals;
-    //seems like there should be an existing way to do this,
-    //but I could not find anything.
+  public static String insertLineBreakEveryXCharacters(String textString, String lineBreak, int numberOfCharacters) {
     List<String> lines = new ArrayList<>();
     while (textString.length() > 0) {
       int lineLength = 0;
-      if (textString.length() < maxLength) {
+      if (textString.length() < numberOfCharacters) {
         lineLength = textString.length();
       } else {
         String[] words = textString.split(" ");
         for (int i = 0; i != words.length; i++) {
-          if (lineLength + words[i].length() + 1 > maxLength) {
+          if (lineLength + words[i].length() + 1 > numberOfCharacters) {
             break;
           } else {
             lineLength += words[i].length() + 1;
@@ -93,8 +90,7 @@ public class StringUtilities {
       lines.add(textString.substring(0, lineLength));
       textString = textString.substring(lineLength);
     }
-    //assemble the lines with linebreak delimiters
-    return Joiner.on(breakPoint).join(lines);
+    return Joiner.on(lineBreak).join(lines);
   }
 
   public static String joinStringsWithDelimiter(String[] stringsToJoin, String delimiter) {

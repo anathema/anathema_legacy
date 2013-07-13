@@ -15,7 +15,6 @@ import net.sf.anathema.lib.gui.TooltipBuilder;
 import net.sf.anathema.lib.resources.Resources;
 
 public class SpecialCharmContributor implements MagicTooltipContributor {
-  private static final String HtmlLineBreak = "<br>";
   private Resources resources;
 
   public SpecialCharmContributor(Resources resources) {
@@ -27,29 +26,28 @@ public class SpecialCharmContributor implements MagicTooltipContributor {
     if (magic instanceof Charm && specialDetails instanceof ISpecialCharm) {
       Charm charm = (Charm) magic;
       ISpecialCharm details = (ISpecialCharm) specialDetails;
-      StringBuilder specialCharmBuilder = new StringBuilder();
       if (details instanceof AbstractMultiLearnableCharm) {
-        specialCharmBuilder.append(resources.getString("CharmTreeView.ToolTip.Repurchases"));
-        specialCharmBuilder.append(TooltipBuilder.ColonSpace);
+        String label = resources.getString("CharmTreeView.ToolTip.Repurchases");
+        String repurchaseInfo = null;
         if (details instanceof StaticMultiLearnableCharm) {
-          printStaticLimit(specialCharmBuilder, (StaticMultiLearnableCharm) details);
+          repurchaseInfo = printStaticLimit((StaticMultiLearnableCharm) details);
         }
         if (details instanceof EssenceFixedMultiLearnableCharm) {
           return;
         }
         if (details instanceof TraitDependentMultiLearnableCharm) {
-          printTraitLimit(specialCharmBuilder, (TraitDependentMultiLearnableCharm) details);
+          repurchaseInfo = printTraitLimit((TraitDependentMultiLearnableCharm) details);
         }
         if (details instanceof TieredMultiLearnableCharm) {
-          printTieredLimit(specialCharmBuilder, charm, (TieredMultiLearnableCharm) details);
+          repurchaseInfo = printTieredLimit(charm, (TieredMultiLearnableCharm) details);
         }
-        specialCharmBuilder.append(HtmlLineBreak);
+        tooltip.appendLine(label, repurchaseInfo);
       }
-      tooltip.appendLine(specialCharmBuilder.toString());
     }
   }
 
-  private void printTieredLimit(StringBuilder builder, Charm charm, TieredMultiLearnableCharm details) {
+  private String printTieredLimit(Charm charm, TieredMultiLearnableCharm details) {
+    StringBuilder builder = new StringBuilder();
     CharmTier[] tiers = details.getTiers();
     CharmTier first = tiers[0], second = tiers[1], last = tiers[tiers.length - 1];
     for (CharmTier tier : tiers) {
@@ -79,9 +77,11 @@ public class SpecialCharmContributor implements MagicTooltipContributor {
         builder.append(TooltipBuilder.CommaSpace);
       }
     }
+    return builder.toString();
   }
 
-  private void printTraitLimit(StringBuilder builder, TraitDependentMultiLearnableCharm details) {
+  private String printTraitLimit(TraitDependentMultiLearnableCharm details) {
+    StringBuilder builder = new StringBuilder();
     builder.append("(");
     builder.append(resources.getString(details.getTraitType().getId()));
     if (details.getModifier() != 0) {
@@ -90,9 +90,12 @@ public class SpecialCharmContributor implements MagicTooltipContributor {
     builder.append(")");
     builder.append(TooltipBuilder.Space);
     builder.append(resources.getString("CharmTreeView.ToolTip.Repurchases.Times"));
+    return builder.toString();
   }
 
-  private void printStaticLimit(StringBuilder builder, StaticMultiLearnableCharm details) {
+  private String printStaticLimit(StaticMultiLearnableCharm details) {
+    StringBuilder builder = new StringBuilder();
     builder.append(resources.getString("CharmTreeView.ToolTip.Repurchases.Static" + details.getAbsoluteLearnLimit()));
+    return builder.toString();
   }
 }

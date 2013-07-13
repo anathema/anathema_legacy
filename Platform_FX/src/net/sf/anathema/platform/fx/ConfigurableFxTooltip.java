@@ -9,8 +9,11 @@ import net.sf.anathema.lib.gui.ConfigurableTooltip;
 import net.sf.anathema.lib.gui.layout.LayoutUtils;
 import org.tbee.javafx.scene.layout.MigPane;
 
+import static net.sf.anathema.lib.lang.StringUtilities.insertLineBreakEveryXCharacters;
+
 public class ConfigurableFxTooltip implements ConfigurableTooltip {
   private final MigPane body = new MigPane(LayoutUtils.withoutInsets().wrapAfter(2));
+  public static final int DEFAULT_TOOLTIP_WIDTH = 80;
   private boolean tooltipEnabled = true;
 
   @Override
@@ -40,15 +43,9 @@ public class ConfigurableFxTooltip implements ConfigurableTooltip {
   }
 
   @Override
-  public void appendParagraphs(String... paragraphs) {
-    for (String paragraph : paragraphs) {
-      appendLine(paragraph);
-    }
-  }
-
-  @Override
   public void appendDescriptiveLine(String description) {
-    Label label = new Label(description);
+    String descriptionWithLineBreaks = insertLineBreakEveryXCharacters(description, "\n", DEFAULT_TOOLTIP_WIDTH);
+    Label label = new Label(descriptionWithLineBreaks);
     label.getStyleClass().add("italicText");
     addAsLine(label);
   }

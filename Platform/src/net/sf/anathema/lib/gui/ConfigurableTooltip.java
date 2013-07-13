@@ -9,7 +9,5 @@ public interface ConfigurableTooltip {
 
   void appendLine(String label, String value);
 
-  void appendParagraphs(String... paragraphs);
-
   void appendDescriptiveLine(String description);
 }

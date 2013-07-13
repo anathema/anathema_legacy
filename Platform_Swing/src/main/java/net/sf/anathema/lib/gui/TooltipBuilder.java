@@ -1,7 +1,5 @@
 package net.sf.anathema.lib.gui;
 
-import static net.sf.anathema.lib.lang.StringUtilities.createFixedWidthParagraph;
-
 public class TooltipBuilder implements ConfigurableTooltip {
 
   public static final String HtmlLineBreak = "<br>";
@@ -38,14 +36,6 @@ public class TooltipBuilder implements ConfigurableTooltip {
     builder.append(ColonSpace);
     builder.append(value);
     appendLineBreak();
-  }
-
-  public void appendParagraphs(String[] paragraphs) {
-    for (String paragraph : paragraphs) {
-      builder.append(TooltipBuilder.HtmlLineBreak);
-      String shortedParagraph = createFixedWidthParagraph(paragraph, TooltipBuilder.HtmlLineBreak, DEFAULT_TOOLTIP_WIDTH);
-      builder.append(shortedParagraph);
-    }
   }
 
   @Override

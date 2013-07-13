@@ -26,7 +26,7 @@ public class SpellTooltipBuilder {
     tooltip.appendLine(getCostLabel(), getCostValue(spell));
     tooltip.appendLine(getTargetLabel(), getTargetValue(spell));
     tooltip.appendLine(getSourceLabel(), getSourceValue(spell));
-    new MagicDescriptionContributor(resources, magicDescriptionProvider).buildStringForMagicWithoutSpecials(tooltip, spell);
+    new MagicDescriptionContributor(magicDescriptionProvider).buildStringForMagicWithoutSpecials(tooltip, spell);
   }
 
   private String getCircleValue(Spell spell) {
