@@ -2,6 +2,7 @@ package net.sf.anathema.character.main.magic.parser.charms;
 
 import net.sf.anathema.character.main.framework.data.ExtensibleDataSet;
 import net.sf.anathema.character.main.framework.data.IExtensibleDataSetCompiler;
+import net.sf.anathema.character.main.magic.cache.CharmCacheImpl;
 import net.sf.anathema.character.main.magic.model.charm.Charm;
 import net.sf.anathema.character.main.magic.model.charm.CharmException;
 import net.sf.anathema.character.main.magic.model.charm.CharmImpl;

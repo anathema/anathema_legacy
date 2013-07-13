@@ -1,4 +1,4 @@
-package net.sf.anathema.character.main.magic.parser.charms;
+package net.sf.anathema.character.main.magic.cache;
 
 import net.sf.anathema.character.main.magic.model.charm.Charm;
 import net.sf.anathema.character.main.magic.model.charm.special.ISpecialCharm;
@@ -11,10 +11,23 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import static net.sf.anathema.hero.magic.model.martial.MartialArtsUtilities.MARTIAL_ARTS;
+
 public class CharmCacheImpl implements CharmCache {
 
-  MultiEntryMap<Identifier, Charm> charmSets = new MultiEntryMap<>();
-  Map<Identifier, List<ISpecialCharm>> specialCharms = new HashMap<>();
+  private MultiEntryMap<Identifier, Charm> charmSets = new MultiEntryMap<>();
+  private Map<Identifier, List<ISpecialCharm>> specialCharmsByType = new HashMap<>();
+  private Map<String, Charm> charmsById = new HashMap<>();
+
+  @Override
+  public Charm getCharm(String charmId) {
+    return charmsById.get(charmId);
+  }
+
+  @Override
+  public Charm[] getMartialArtsCharms() {
+    return getCharms(MARTIAL_ARTS);
+  }
 
   @Override
   public Charm[] getCharms(Identifier type) {
@@ -26,6 +39,7 @@ public class CharmCacheImpl implements CharmCache {
   public void addCharm(Identifier type, Charm charm) {
     type = new SimpleIdentifier(type.getId());
     charmSets.replace(type, charm, charm);
+    charmsById.put(charm.getId(), charm);
   }
 
   public boolean isEmpty() {
@@ -43,7 +57,7 @@ public class CharmCacheImpl implements CharmCache {
   }
 
   private List<ISpecialCharm> getSpecialCharmList(Identifier type) {
-    Map<Identifier, List<ISpecialCharm>> map = specialCharms;
+    Map<Identifier, List<ISpecialCharm>> map = specialCharmsByType;
     type = new SimpleIdentifier(type.getId());
     List<ISpecialCharm> list = map.get(type);
     if (list == null) {

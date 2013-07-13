@@ -6,7 +6,7 @@ import net.sf.anathema.character.main.magic.description.MagicDescriptionProvider
 import net.sf.anathema.character.main.magic.display.view.charmtree.CharmDisplayPropertiesMap;
 import net.sf.anathema.character.main.magic.display.view.charmtree.DefaultNodeProperties;
 import net.sf.anathema.character.main.magic.model.charmtree.GroupCharmTree;
-import net.sf.anathema.character.main.magic.parser.charms.CharmCache;
+import net.sf.anathema.character.main.magic.cache.CharmCache;
 import net.sf.anathema.character.main.template.ITemplateRegistry;
 import net.sf.anathema.character.main.type.CharacterTypes;
 import net.sf.anathema.hero.charms.display.coloring.CharmDye;
@@ -25,7 +25,7 @@ public class CascadePresenterImpl extends AbstractCascadePresenter implements Ca
     super(resources);
     CharmCache cache = generics.getDataSet(CharmCache.class);
     CascadeCharmTreeViewProperties viewProperties =
-            new CascadeCharmTreeViewProperties(resources, magicDescriptionProvider, generics, cache, treeIdentifierMap);
+            new CascadeCharmTreeViewProperties(resources, magicDescriptionProvider, generics, cache);
     DefaultNodeProperties nodeProperties = new DefaultNodeProperties(resources, viewProperties, viewProperties);
     CascadeView view = factory.createCascadeView(viewProperties, nodeProperties);
     view.initGui(viewProperties, nodeProperties);

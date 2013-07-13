@@ -1,7 +1,7 @@
 package net.sf.anathema.character.main.persistence;
 
-import net.sf.anathema.character.main.magic.parser.charms.CharmCache;
-import net.sf.anathema.character.main.magic.parser.charms.CharmCacheImpl;
+import net.sf.anathema.character.main.magic.cache.CharmCache;
+import net.sf.anathema.character.main.magic.cache.CharmCacheImpl;
 import net.sf.anathema.hero.framework.HeroEnvironmentImpl;
 import net.sf.anathema.character.main.framework.data.IExtensibleDataSetProvider;
 import net.sf.anathema.hero.framework.HeroEnvironment;

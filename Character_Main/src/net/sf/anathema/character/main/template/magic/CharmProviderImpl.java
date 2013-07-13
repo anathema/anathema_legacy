@@ -4,7 +4,7 @@ import net.sf.anathema.character.main.magic.model.charm.Charm;
 import net.sf.anathema.character.main.magic.model.charm.CharmIdMap;
 import net.sf.anathema.character.main.magic.model.charm.special.ISpecialCharm;
 import net.sf.anathema.character.main.magic.model.charmtree.ICharmLearnableArbitrator;
-import net.sf.anathema.character.main.magic.parser.charms.CharmCache;
+import net.sf.anathema.character.main.magic.cache.CharmCache;
 import net.sf.anathema.character.main.type.CharacterType;
 import net.sf.anathema.lib.util.Identifier;
 
