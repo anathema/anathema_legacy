@@ -56,7 +56,7 @@ public class LeftClickPannerTest {
     panner.mousePressed(pressEvent);
     panner.mouseDragged(dragEvent);
     verify(panel).translateRelativeToScale(anyInt(), anyInt());
-    verify(panel).repaint();
+    verify(panel).refresh();
   }
 
   private void verifyTranslation(int x, int y) {

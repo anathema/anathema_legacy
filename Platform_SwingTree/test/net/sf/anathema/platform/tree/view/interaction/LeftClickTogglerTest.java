@@ -38,7 +38,7 @@ public class LeftClickTogglerTest {
     when(event.getModifiers()).thenReturn(MouseEvent.BUTTON1_MASK);
     selector.mouseClicked(event);
     verify(element).toggle();
-    verify(panel).repaint();
+    verify(panel).refresh();
   }
 
   @Test

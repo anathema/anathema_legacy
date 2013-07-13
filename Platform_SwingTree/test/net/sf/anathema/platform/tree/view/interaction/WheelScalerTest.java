@@ -62,7 +62,7 @@ public class WheelScalerTest {
     new WheelScaler(panel).mouseWheelMoved(event);
     InOrder inOrder = inOrder(panel);
     inOrder.verify(panel).scaleToPoint(anyDouble(), anyInt(), anyInt());
-    inOrder.verify(panel).repaint();
+    inOrder.verify(panel).refresh();
   }
 
   private void scalesToAnyPoint(double scale) {

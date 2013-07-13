@@ -11,12 +11,6 @@ import org.junit.Test;
 import org.mockito.InOrder;
 import org.mockito.Matchers;
 
-import javax.swing.JComponent;
-import java.awt.Color;
-
-import static org.hamcrest.CoreMatchers.instanceOf;
-import static org.hamcrest.CoreMatchers.is;
-import static org.junit.Assert.assertThat;
 import static org.mockito.Matchers.anyInt;
 import static org.mockito.Matchers.anyString;
 import static org.mockito.Matchers.isA;
@@ -34,8 +28,8 @@ public class SwingTreeViewTest {
 
   @Test
   public void hasPolygonPanelAsComponent() throws Exception {
-    JComponent component = swingTreeView.getComponent();
-    assertThat(component, is(instanceOf(SwingPolygonPanel.class)));
+    swingTreeView.getComponent();
+    verify(panel).getComponent();
   }
 
   @Test
@@ -51,13 +45,13 @@ public class SwingTreeViewTest {
     swingTreeView.setNodeBackgroundColor("ID", RGBColor.White);
     InOrder inOrder = inOrder(cascade, panel);
     inOrder.verify(cascade).colorNode(anyString(), Matchers.any(RGBColor.class));
-    inOrder.verify(panel).repaint();
+    inOrder.verify(panel).refresh();
   }
 
   @Test
   public void setsBackgroundFillOnPolygonPanel() throws Exception {
     swingTreeView.setCanvasBackground(RGBColor.Red);
-    verify(panel).setBackground(Color.RED);
+    verify(panel).setBackground(RGBColor.Red);
   }
 
   @Test
@@ -73,7 +67,7 @@ public class SwingTreeViewTest {
     swingTreeView.setNodeAlpha("ID", 100);
     InOrder inOrder = inOrder(cascade, panel);
     inOrder.verify(cascade).setNodeAlpha(anyString(), anyInt());
-    inOrder.verify(panel).repaint();
+    inOrder.verify(panel).refresh();
   }
 
   @Test
@@ -136,7 +130,7 @@ public class SwingTreeViewTest {
     swingTreeView.initNodeNames(properties);
     InOrder inOrder = inOrder(cascade, panel);
     inOrder.verify(cascade).initNodeNames(properties);
-    inOrder.verify(panel).repaint();
+    inOrder.verify(panel).refresh();
   }
 
   @Test
