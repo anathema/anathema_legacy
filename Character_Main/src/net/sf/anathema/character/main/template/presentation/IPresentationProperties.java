@@ -1,7 +1,6 @@
 package net.sf.anathema.character.main.template.presentation;
 
 import net.sf.anathema.lib.file.RelativePath;
-import net.sf.anathema.platform.tree.document.visualizer.ITreePresentationProperties;
 
 public interface IPresentationProperties {
   String getNewActionResource();
@@ -11,6 +10,4 @@ public interface IPresentationProperties {
   RelativePath getLargeCasteIconResource(String casteId, String editionId);
 
   String getCasteLabelResource();
-
-  ITreePresentationProperties getCharmPresentationProperties();
 }

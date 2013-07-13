@@ -3,7 +3,7 @@ package net.sf.anathema.platform.tree.view.visualizer;
 import net.sf.anathema.framework.ui.Area;
 import net.sf.anathema.platform.tree.document.components.ILayer;
 import net.sf.anathema.platform.tree.document.components.IVisualizableNode;
-import net.sf.anathema.platform.tree.document.visualizer.ITreePresentationProperties;
+import net.sf.anathema.platform.tree.document.visualizer.TreePresentationProperties;
 import org.junit.Before;
 import org.junit.Test;
 
@@ -16,7 +16,7 @@ import static org.mockito.Mockito.when;
 
 public class SwingGraphFactoryTest {
 
-  private final ITreePresentationProperties properties = mock(ITreePresentationProperties.class);
+  private final TreePresentationProperties properties = mock(TreePresentationProperties.class);
   private final ILayer layer = mock(ILayer.class);
   private final SwingGraphFactory factory = new SwingGraphFactory(properties);
 

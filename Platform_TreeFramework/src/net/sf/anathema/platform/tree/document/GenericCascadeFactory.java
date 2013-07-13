@@ -3,7 +3,7 @@ package net.sf.anathema.platform.tree.document;
 import net.sf.anathema.graph.SugiyamaLayout;
 import net.sf.anathema.graph.graph.IProperHierarchicalGraph;
 import net.sf.anathema.graph.nodes.IRegularNode;
-import net.sf.anathema.platform.tree.document.visualizer.ITreePresentationProperties;
+import net.sf.anathema.platform.tree.document.visualizer.TreePresentationProperties;
 import net.sf.anathema.platform.tree.document.visualizer.IVisualizedGraph;
 import net.sf.anathema.platform.tree.document.visualizer.VisualizedGraphFactory;
 
@@ -19,13 +19,13 @@ public class GenericCascadeFactory<CASCADE> implements CascadeFactory<CASCADE> {
   }
 
   @Override
-  public CASCADE createCascade(IRegularNode[] nodes, ITreePresentationProperties properties) {
+  public CASCADE createCascade(IRegularNode[] nodes, TreePresentationProperties properties) {
     IProperHierarchicalGraph[] graphs = createHierarchicalGraphs(nodes);
     List<IVisualizedGraph> visualizedGraphs = visualizeGraphs(properties, graphs);
     return buildCascadeObject(properties, visualizedGraphs);
   }
 
-  private CASCADE buildCascadeObject(ITreePresentationProperties properties, List<IVisualizedGraph> visualizedGraphs) {
+  private CASCADE buildCascadeObject(TreePresentationProperties properties, List<IVisualizedGraph> visualizedGraphs) {
     CascadeBuilder<?, CASCADE> cascadeBuilder = creationStrategy.createCascadeBuilder(properties);
     double firstRowWidth = 0;
     double firstRowHeight = 0;
@@ -53,7 +53,7 @@ public class GenericCascadeFactory<CASCADE> implements CascadeFactory<CASCADE> {
     return cascadeBuilder.create();
   }
 
-  private List<IVisualizedGraph> visualizeGraphs(ITreePresentationProperties properties,
+  private List<IVisualizedGraph> visualizeGraphs(TreePresentationProperties properties,
                                                  IProperHierarchicalGraph[] graphs) {
     HierarchicalGraphVisualizer hierarchicalGraphVisualizer = createNodeToGraphConverter(properties);
     return hierarchicalGraphVisualizer.visualizeGraphs(graphs);
@@ -63,7 +63,7 @@ public class GenericCascadeFactory<CASCADE> implements CascadeFactory<CASCADE> {
     return layout.createProperHierarchicalGraphs(nodes);
   }
 
-  private HierarchicalGraphVisualizer createNodeToGraphConverter(ITreePresentationProperties properties) {
+  private HierarchicalGraphVisualizer createNodeToGraphConverter(TreePresentationProperties properties) {
     PositionerFactory positionerFactory = new PositionerFactory(properties);
     VisualizedGraphFactory factoryForVisualizedGraphs = creationStrategy.getFactoryForVisualizedGraphs(properties);
     return new HierarchicalGraphVisualizer(positionerFactory, factoryForVisualizedGraphs);

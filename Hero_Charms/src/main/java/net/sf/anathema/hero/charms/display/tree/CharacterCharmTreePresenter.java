@@ -18,7 +18,7 @@ import net.sf.anathema.hero.charms.display.special.SwingSpecialCharmViewBuilder;
 import net.sf.anathema.hero.charms.model.CharacterGroupCollection;
 import net.sf.anathema.lib.resources.Resources;
 import net.sf.anathema.lib.util.Identifier;
-import net.sf.anathema.platform.tree.document.visualizer.ITreePresentationProperties;
+import net.sf.anathema.platform.tree.document.visualizer.TreePresentationProperties;
 
 public class CharacterCharmTreePresenter extends AbstractCascadePresenter {
 
@@ -26,7 +26,7 @@ public class CharacterCharmTreePresenter extends AbstractCascadePresenter {
   private final CharacterCharmModel model;
 
   public CharacterCharmTreePresenter(Resources resources, CharmView view, CharacterCharmModel charmModel,
-                                     ITreePresentationProperties presentationProperties, CharmDisplayPropertiesMap displayPropertiesMap) {
+                                     TreePresentationProperties presentationProperties, CharmDisplayPropertiesMap displayPropertiesMap) {
     super(resources);
     this.model = charmModel;
     CharmsModel charmConfiguration = model.getCharmConfiguration();

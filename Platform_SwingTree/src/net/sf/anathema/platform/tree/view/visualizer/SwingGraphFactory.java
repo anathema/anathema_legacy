@@ -2,7 +2,7 @@ package net.sf.anathema.platform.tree.view.visualizer;
 
 import net.sf.anathema.framework.ui.Area;
 import net.sf.anathema.platform.tree.document.components.ILayer;
-import net.sf.anathema.platform.tree.document.visualizer.ITreePresentationProperties;
+import net.sf.anathema.platform.tree.document.visualizer.TreePresentationProperties;
 import net.sf.anathema.platform.tree.document.visualizer.IVisualizedGraph;
 import net.sf.anathema.platform.tree.document.visualizer.TreeDimensionCalculator;
 import net.sf.anathema.platform.tree.document.visualizer.VisualizedGraphFactory;
@@ -10,9 +10,9 @@ import net.sf.anathema.platform.tree.view.container.DefaultContainerCascade;
 
 public class SwingGraphFactory implements VisualizedGraphFactory {
   private TreeDimensionCalculator calculator;
-  private final ITreePresentationProperties properties;
+  private final TreePresentationProperties properties;
 
-  public SwingGraphFactory(ITreePresentationProperties properties) {
+  public SwingGraphFactory(TreePresentationProperties properties) {
     this.properties = properties;
     this.calculator = new TreeDimensionCalculator(properties);
   }

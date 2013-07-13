@@ -6,7 +6,7 @@ import net.sf.anathema.character.main.magic.display.view.charmtree.AbstractCharm
 import net.sf.anathema.character.main.magic.display.view.charmtree.CharmDisplayPropertiesMap;
 import net.sf.anathema.framework.ui.RGBColor;
 import net.sf.anathema.lib.util.Identifier;
-import net.sf.anathema.platform.tree.document.visualizer.ITreePresentationProperties;
+import net.sf.anathema.platform.tree.document.visualizer.TreePresentationProperties;
 
 public class CascadeCharmGroupChangeListener extends AbstractCharmGroupChangeListener {
 
@@ -28,7 +28,7 @@ public class CascadeCharmGroupChangeListener extends AbstractCharmGroupChangeLis
 
   private RGBColor findColor(Identifier type) {
     if (type instanceof CharacterType) {
-      ITreePresentationProperties displayProperties = getDisplayProperties((CharacterType) type);
+      TreePresentationProperties displayProperties = getDisplayProperties((CharacterType) type);
       return displayProperties.getColor();
     } else {
       return RGBColor.White;

@@ -7,18 +7,18 @@ import net.sf.anathema.platform.tree.document.components.VisualizableDummyNode;
 import net.sf.anathema.platform.tree.document.components.VisualizableNode;
 
 public class CreateElementForNode<PARENT> implements IVisualizableNodeVisitor {
-  public static <PARENT> CreateElementForNode<PARENT> create(ILayer layer, ITreePresentationProperties properties,
+  public static <PARENT> CreateElementForNode<PARENT> create(ILayer layer, TreePresentationProperties properties,
                                                              PARENT cascadeElement, NodeAdderFactory<PARENT> factory) {
     return new CreateElementForNode<>(layer, properties, cascadeElement, factory);
   }
 
   private final ILayer layer;
   private final PARENT parent;
-  private final ITreePresentationProperties properties;
+  private final TreePresentationProperties properties;
 
   private final NodeAdderFactory<PARENT> adderFactory;
 
-  private CreateElementForNode(ILayer layer, ITreePresentationProperties properties, PARENT parent,
+  private CreateElementForNode(ILayer layer, TreePresentationProperties properties, PARENT parent,
                                NodeAdderFactory<PARENT> factory) {
     this.layer = layer;
     this.parent = parent;

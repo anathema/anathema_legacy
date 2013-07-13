@@ -2,11 +2,11 @@ package net.sf.anathema.cascades.presenter;
 
 import net.sf.anathema.cascades.module.CascadeViewFactory;
 import net.sf.anathema.cascades.presenter.view.CascadeView;
+import net.sf.anathema.character.main.magic.cache.CharmCache;
 import net.sf.anathema.character.main.magic.description.MagicDescriptionProvider;
 import net.sf.anathema.character.main.magic.display.view.charmtree.CharmDisplayPropertiesMap;
 import net.sf.anathema.character.main.magic.display.view.charmtree.DefaultNodeProperties;
 import net.sf.anathema.character.main.magic.model.charmtree.GroupCharmTree;
-import net.sf.anathema.character.main.magic.cache.CharmCache;
 import net.sf.anathema.character.main.template.ITemplateRegistry;
 import net.sf.anathema.character.main.type.CharacterTypes;
 import net.sf.anathema.hero.charms.display.coloring.CharmDye;
@@ -24,14 +24,12 @@ public class CascadePresenterImpl extends AbstractCascadePresenter implements Ca
                               MagicDescriptionProvider magicDescriptionProvider) {
     super(resources);
     CharmCache cache = generics.getDataSet(CharmCache.class);
-    CascadeCharmTreeViewProperties viewProperties =
-            new CascadeCharmTreeViewProperties(resources, magicDescriptionProvider, generics, cache);
+    CascadeCharmTreeViewProperties viewProperties = new CascadeCharmTreeViewProperties(resources, magicDescriptionProvider, generics, cache);
     DefaultNodeProperties nodeProperties = new DefaultNodeProperties(resources, viewProperties, viewProperties);
     CascadeView view = factory.createCascadeView(viewProperties, nodeProperties);
     view.initGui(viewProperties, nodeProperties);
-    ITemplateRegistry templateRegistry = generics.getTemplateRegistry();
-    CascadeCharmGroupChangeListener selectionListener =
-            new CascadeCharmGroupChangeListener(view, viewProperties, new CharmDisplayPropertiesMap(templateRegistry));
+    CharmDisplayPropertiesMap charmDisplayPropertiesMap = new CharmDisplayPropertiesMap(generics.getObjectFactory());
+    CascadeCharmGroupChangeListener selectionListener = new CascadeCharmGroupChangeListener(view, viewProperties, charmDisplayPropertiesMap);
     CharacterTypes characterTypes = generics.getCharacterTypes();
     setCharmTypes(new CascadeCharmTypes(characterTypes, generics.getCharmProvider()));
     setChangeListener(selectionListener);

@@ -8,7 +8,7 @@ import net.sf.anathema.platform.tree.document.components.Layer;
 
 public class SingleNodePositioner extends AbstractCascadeVisualizer {
 
-  public SingleNodePositioner(LayeredGraph graph, ITreePresentationProperties properties) {
+  public SingleNodePositioner(LayeredGraph graph, TreePresentationProperties properties) {
     super(properties, graph);
   }
 

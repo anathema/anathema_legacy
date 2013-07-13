@@ -70,7 +70,7 @@ public class BottomUpGraphPositioner extends AbstractCascadeVisualizer {
   // to each other as possible without overlapping their edges
   // Instead of giving the entire map as argument, just give the relevant leaves?
 
-  public BottomUpGraphPositioner(LayeredGraph graph, ITreePresentationProperties properties) {
+  public BottomUpGraphPositioner(LayeredGraph graph, TreePresentationProperties properties) {
     super(properties, graph);
   }
 

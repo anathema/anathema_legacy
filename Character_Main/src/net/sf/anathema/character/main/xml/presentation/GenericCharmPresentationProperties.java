@@ -3,10 +3,10 @@ package net.sf.anathema.character.main.xml.presentation;
 import net.sf.anathema.framework.ui.Area;
 import net.sf.anathema.framework.ui.RGBColor;
 import net.sf.anathema.lib.lang.clone.ReflectionCloneableObject;
-import net.sf.anathema.platform.tree.document.visualizer.ITreePresentationProperties;
+import net.sf.anathema.platform.tree.document.visualizer.TreePresentationProperties;
 
 public class GenericCharmPresentationProperties extends ReflectionCloneableObject<GenericCharmPresentationProperties> implements
-        ITreePresentationProperties {
+        TreePresentationProperties {
 
   private RGBColor color = RGBColor.White;
 

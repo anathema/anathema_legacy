@@ -5,9 +5,9 @@ import net.sf.anathema.platform.tree.document.components.ILayer;
 
 public class TreeDimensionCalculator {
 
-  private final ITreePresentationProperties properties;
+  private final TreePresentationProperties properties;
 
-  public TreeDimensionCalculator(ITreePresentationProperties properties) {
+  public TreeDimensionCalculator(TreePresentationProperties properties) {
     this.properties = properties;
   }
 

@@ -8,7 +8,7 @@ import net.sf.anathema.graph.nodes.IIdentifiedRegularNode;
 import net.sf.anathema.graph.nodes.IRegularNode;
 import net.sf.anathema.lib.util.Identifier;
 import net.sf.anathema.platform.tree.display.TreeRenderer;
-import net.sf.anathema.platform.tree.document.visualizer.ITreePresentationProperties;
+import net.sf.anathema.platform.tree.document.visualizer.TreePresentationProperties;
 
 import java.util.ArrayList;
 import java.util.Collection;
@@ -46,7 +46,7 @@ public abstract class AbstractCharmGroupChangeListener implements ICharmGroupCha
     if (charmGroup == null) {
       treeRenderer.clearView();
     } else {
-      ITreePresentationProperties presentationProperties = getDisplayProperties(charmGroup);
+      TreePresentationProperties presentationProperties = getDisplayProperties(charmGroup);
       Set<Charm> charms = getDisplayCharms(charmGroup);
       IRegularNode[] nodesToShow = prepareNodes(charms);
       treeRenderer.renderTree(resetView, presentationProperties, nodesToShow);
@@ -78,12 +78,12 @@ public abstract class AbstractCharmGroupChangeListener implements ICharmGroupCha
     return charmsToDisplay;
   }
 
-  private ITreePresentationProperties getDisplayProperties(ICharmGroup charmGroup) {
+  private TreePresentationProperties getDisplayProperties(ICharmGroup charmGroup) {
     CharacterType characterType = charmGroup.getCharacterType();
     return getDisplayProperties(characterType);
   }
 
-  protected ITreePresentationProperties getDisplayProperties(CharacterType characterType) {
+  protected TreePresentationProperties getDisplayProperties(CharacterType characterType) {
     return displayPropertiesMap.getDisplayProperties(characterType);
   }
 

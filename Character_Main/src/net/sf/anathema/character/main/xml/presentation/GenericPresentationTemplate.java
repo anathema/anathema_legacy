@@ -8,7 +8,6 @@ import net.sf.anathema.lib.lang.clone.ReflectionCloneableObject;
 
 public class GenericPresentationTemplate extends ReflectionCloneableObject<GenericPresentationTemplate> implements IPresentationProperties {
 
-  private GenericCharmPresentationProperties charmPresentationProperties = new GenericCharmPresentationProperties();
   private ITemplateType templateType;
 
   @Override
@@ -29,20 +28,6 @@ public class GenericPresentationTemplate extends ReflectionCloneableObject<Gener
   @Override
   public String getCasteLabelResource() {
     return getCharacterTypeId() + ".Caste.Label";
-  }
-
-  @Override
-  public GenericCharmPresentationProperties getCharmPresentationProperties() {
-    return charmPresentationProperties;
-  }
-
-  @Override
-  public GenericPresentationTemplate clone() {
-    GenericPresentationTemplate clone = super.clone();
-    if (clone.charmPresentationProperties != null) {
-      clone.charmPresentationProperties = clone.charmPresentationProperties.clone();
-    }
-    return clone;
   }
 
   public void setParentTemplate(ITemplateType templateType) {

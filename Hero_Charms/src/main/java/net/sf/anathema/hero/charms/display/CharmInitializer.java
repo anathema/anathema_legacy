@@ -1,23 +1,21 @@
 package net.sf.anathema.hero.charms.display;
 
-import net.sf.anathema.hero.framework.HeroEnvironmentExtractor;
-import net.sf.anathema.character.main.magic.display.view.charms.CharmDescriptionProviderExtractor;
 import net.sf.anathema.character.main.magic.description.MagicDescriptionProvider;
-import net.sf.anathema.character.main.magic.display.view.charmtree.CharmView;
-import net.sf.anathema.character.main.template.HeroTemplate;
-import net.sf.anathema.character.main.template.ITemplateRegistry;
-import net.sf.anathema.character.main.magic.model.charms.options.DefaultCharmTemplateRetriever;
-import net.sf.anathema.hero.display.presenter.HeroModelInitializer;
-import net.sf.anathema.hero.display.presenter.RegisteredInitializer;
-import net.sf.anathema.hero.charms.model.CharacterCharmModel;
-import net.sf.anathema.character.main.view.SectionView;
+import net.sf.anathema.character.main.magic.display.view.charms.CharmDescriptionProviderExtractor;
 import net.sf.anathema.character.main.magic.display.view.charmtree.CharmDisplayPropertiesMap;
+import net.sf.anathema.character.main.magic.display.view.charmtree.CharmView;
+import net.sf.anathema.character.main.magic.model.charms.options.DefaultCharmTemplateRetriever;
+import net.sf.anathema.character.main.type.CharacterType;
+import net.sf.anathema.character.main.view.SectionView;
 import net.sf.anathema.framework.IApplicationModel;
 import net.sf.anathema.hero.charms.display.tree.CharacterCharmTreePresenter;
+import net.sf.anathema.hero.charms.model.CharacterCharmModel;
+import net.sf.anathema.hero.display.presenter.HeroModelInitializer;
+import net.sf.anathema.hero.display.presenter.RegisteredInitializer;
 import net.sf.anathema.hero.model.Hero;
 import net.sf.anathema.initialization.reflections.Weight;
 import net.sf.anathema.lib.resources.Resources;
-import net.sf.anathema.platform.tree.document.visualizer.ITreePresentationProperties;
+import net.sf.anathema.platform.tree.document.visualizer.TreePresentationProperties;
 
 import static net.sf.anathema.hero.display.HeroModelGroup.Magic;
 
@@ -36,15 +34,13 @@ public class CharmInitializer implements HeroModelInitializer {
     if (!canLearnCharms) {
       return;
     }
-    ITemplateRegistry templateRegistry = HeroEnvironmentExtractor.getGenerics(applicationModel).getTemplateRegistry();
     MagicDescriptionProvider provider = CharmDescriptionProviderExtractor.CreateFor(applicationModel, resources);
     CharacterCharmModel model = new CharacterCharmModel(hero, provider);
-    HeroTemplate characterTemplate = hero.getTemplate();
-    ITreePresentationProperties presentationProperties =
-            characterTemplate.getPresentationProperties().getCharmPresentationProperties();
-    CharmDisplayPropertiesMap propertiesMap = new CharmDisplayPropertiesMap(templateRegistry);
+    CharacterType characterType = hero.getTemplate().getTemplateType().getCharacterType();
+    CharmDisplayPropertiesMap propertiesMap = new CharmDisplayPropertiesMap(applicationModel.getObjectFactory());
+    TreePresentationProperties presentationProperties = propertiesMap.getDisplayProperties(characterType);
     String header = resources.getString("CardView.CharmConfiguration.CharmSelection.Title");
-    CharmView charmView = sectionView.addView(header, CharmView.class, hero.getTemplate().getTemplateType().getCharacterType());
+    CharmView charmView = sectionView.addView(header, CharmView.class, characterType);
     CharacterCharmTreePresenter treePresenter = new CharacterCharmTreePresenter(resources, charmView, model, presentationProperties, propertiesMap);
     treePresenter.initPresentation();
     //MagicDetailPresenter detailPresenter = createMagicDetailPresenter();

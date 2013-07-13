@@ -13,7 +13,7 @@ import java.util.Set;
 
 public class SimplifiedBottomUpGraphVisualizer extends AbstractCascadeVisualizer {
 
-  public SimplifiedBottomUpGraphVisualizer(LayeredGraph graph, ITreePresentationProperties properties) {
+  public SimplifiedBottomUpGraphVisualizer(LayeredGraph graph, TreePresentationProperties properties) {
     super(new WideDummyTreePresentationProperties(properties), graph);
   }
 
@@ -72,10 +72,10 @@ public class SimplifiedBottomUpGraphVisualizer extends AbstractCascadeVisualizer
     }
   }
 
-  private static class WideDummyTreePresentationProperties implements ITreePresentationProperties {
-    private final ITreePresentationProperties properties;
+  private static class WideDummyTreePresentationProperties implements TreePresentationProperties {
+    private final TreePresentationProperties properties;
 
-    public WideDummyTreePresentationProperties(ITreePresentationProperties properties) {
+    public WideDummyTreePresentationProperties(TreePresentationProperties properties) {
       this.properties = properties;
     }
 
