@@ -8,9 +8,10 @@ import net.sf.anathema.lib.util.SimpleIdentifier;
 
 public class CharmTemplateLoader {
 
-  public static CharmTto loadTemplate(TemplateFactory templateFactory, String templateName) {
+  public static CharmRules loadTemplate(TemplateFactory templateFactory, String templateName) {
     Identifier templateId = new SimpleIdentifier(templateName);
     TemplateLoader<CharmTto> loader = new ConfigurableTemplateLoader<>(CharmTto.class);
-    return templateFactory.loadModelTemplate(templateId, loader);
+    CharmTto charmTto = templateFactory.loadModelTemplate(templateId, loader);
+    return new CharmRulesImpl(charmTto) ;
   }
 }

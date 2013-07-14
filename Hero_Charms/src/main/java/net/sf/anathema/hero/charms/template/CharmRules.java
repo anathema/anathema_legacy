@@ -1,8 +1,8 @@
-package net.sf.anathema.character.main.template.magic;
+package net.sf.anathema.hero.charms.template;
 
 import net.sf.anathema.hero.concept.CasteType;
 
-public interface CharmTemplate {
+public interface CharmRules {
 
   boolean canLearnCharms();
 

@@ -1,4 +1,4 @@
-package net.sf.anathema.character.main.template.magic;
+package net.sf.anathema.hero.charms.template;
 
 import net.sf.anathema.character.main.magic.model.charm.Charm;
 import net.sf.anathema.hero.magic.model.martial.MartialArtsLevel;
@@ -6,32 +6,27 @@ import net.sf.anathema.hero.magic.model.martial.MartialArtsUtilities;
 
 public class MartialArtsRulesImpl implements MartialArtsRules {
 
-  private boolean highLevelAtCreation = false;
-  private final MartialArtsLevel level;
+  private MartialArtsTto tto;
 
-  public MartialArtsRulesImpl(MartialArtsLevel level) {
-    this.level = level;
-  }
-
-  @Override
-  public void setHighLevelAtCreation(boolean highLevelAtCreation) {
-    this.highLevelAtCreation = highLevelAtCreation;
+  public MartialArtsRulesImpl(MartialArtsTto tto) {
+    this.tto = tto;
   }
 
   @Override
   public boolean isCharmAllowed(Charm martialArtsCharm, boolean isExperienced) {
-    int comparedLevel = MartialArtsUtilities.getLevel(martialArtsCharm).compareTo(level);
+    MartialArtsLevel charmLevel = MartialArtsUtilities.getLevel(martialArtsCharm);
+    int comparedLevel = charmLevel.compareTo(getStandardLevel());
     if (comparedLevel <= 0) {
       return true;
     }
     if (comparedLevel == 1) {
-      return isExperienced || highLevelAtCreation;
+      return isExperienced || tto.highLevelAtCreation;
     }
     return false;
   }
 
   @Override
   public MartialArtsLevel getStandardLevel() {
-    return level;
+    return MartialArtsLevel.valueOf(tto.level);
   }
 }
