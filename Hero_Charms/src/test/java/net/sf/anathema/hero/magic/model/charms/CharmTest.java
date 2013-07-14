@@ -12,7 +12,7 @@ import net.sf.anathema.character.main.magic.model.magic.cost.CostList;
 import net.sf.anathema.character.main.magic.parser.charms.CharmPrerequisiteList;
 import net.sf.anathema.character.main.magic.parser.charms.SelectiveCharmGroupTemplate;
 import net.sf.anathema.character.main.magic.parser.magic.IExaltedSourceBook;
-import net.sf.anathema.character.main.testing.dummy.DummyExaltCharacterType;
+import net.sf.anathema.hero.dummy.DummyExaltCharacterType;
 import net.sf.anathema.character.main.traits.ValuedTraitType;
 import net.sf.anathema.character.main.traits.types.AbilityType;
 import net.sf.anathema.character.main.traits.types.OtherTraitType;

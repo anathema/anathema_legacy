@@ -1,15 +1,15 @@
 package net.sf.anathema.hero.magic.costs;
 
 import com.google.common.collect.ImmutableList;
-import net.sf.anathema.character.main.costs.AbstractBonusPointTestCase;
+import net.sf.anathema.hero.advance.AbstractBonusPointTestCase;
 import net.sf.anathema.character.main.library.trait.favorable.FavorableState;
 import net.sf.anathema.character.main.magic.model.spells.Spell;
 import net.sf.anathema.character.main.template.creation.ICreationPoints;
-import net.sf.anathema.character.main.testing.BasicCharacterTestCase;
-import net.sf.anathema.character.main.testing.dummy.DummyBonusPointCosts;
-import net.sf.anathema.character.main.testing.dummy.DummyHero;
-import net.sf.anathema.character.main.testing.dummy.magic.DummyCharmsModel;
-import net.sf.anathema.character.main.testing.dummy.magic.DummySpell;
+import net.sf.anathema.hero.BasicCharacterTestCase;
+import net.sf.anathema.hero.dummy.DummyBonusPointCosts;
+import net.sf.anathema.hero.dummy.DummyHero;
+import net.sf.anathema.hero.dummy.magic.DummyCharmsModel;
+import net.sf.anathema.hero.dummy.magic.DummySpell;
 import net.sf.anathema.character.main.traits.context.CreationTraitValueStrategy;
 import net.sf.anathema.character.main.traits.types.AbilityType;
 import net.sf.anathema.hero.advance.CostAnalyzerImpl;

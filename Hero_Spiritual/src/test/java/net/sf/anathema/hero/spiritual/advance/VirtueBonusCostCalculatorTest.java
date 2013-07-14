@@ -2,10 +2,10 @@ package net.sf.anathema.hero.spiritual.advance;
 
 import net.sf.anathema.character.main.library.trait.Trait;
 import net.sf.anathema.character.main.template.creation.BonusPointCosts;
-import net.sf.anathema.character.main.testing.BasicCharacterTestCase;
-import net.sf.anathema.character.main.testing.dummy.DummyBonusPointCosts;
-import net.sf.anathema.character.main.testing.dummy.DummyHero;
-import net.sf.anathema.character.main.testing.dummy.template.DummyTraitTemplateFactory;
+import net.sf.anathema.hero.BasicCharacterTestCase;
+import net.sf.anathema.hero.dummy.DummyBonusPointCosts;
+import net.sf.anathema.hero.dummy.DummyHero;
+import net.sf.anathema.hero.dummy.template.DummyTraitTemplateFactory;
 import net.sf.anathema.character.main.traits.VirtueTemplateFactory;
 import net.sf.anathema.character.main.traits.context.CreationTraitValueStrategy;
 import net.sf.anathema.character.main.traits.creation.DefaultTraitFactory;

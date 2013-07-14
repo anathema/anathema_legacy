@@ -8,8 +8,8 @@ import net.sf.anathema.character.main.magic.parser.charms.prerequisite.GenericAt
 import net.sf.anathema.character.main.magic.parser.charms.prerequisite.GenericTraitPrerequisitesBuilder;
 import net.sf.anathema.character.main.magic.parser.charms.special.SpecialCharmBuilder;
 import net.sf.anathema.character.main.magic.parser.combos.GenericComboRulesBuilder;
-import net.sf.anathema.character.main.testing.dummy.DummyCharacterTypes;
-import net.sf.anathema.character.main.testing.dummy.DummyExaltCharacterType;
+import net.sf.anathema.hero.dummy.DummyCharacterTypes;
+import net.sf.anathema.hero.dummy.DummyExaltCharacterType;
 import net.sf.anathema.character.main.traits.types.AbilityType;
 import org.dom4j.Element;
 import org.junit.Before;

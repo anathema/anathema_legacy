@@ -2,9 +2,9 @@ package net.sf.anathema.character.equipment.impl.character.model;
 
 import net.sf.anathema.character.equipment.dummy.DummyEquipmentObject;
 import net.sf.anathema.character.main.equipment.weapon.IEquipmentStats;
-import net.sf.anathema.character.main.testing.BasicCharacterTestCase;
-import net.sf.anathema.character.main.testing.dummy.DummyHero;
-import net.sf.anathema.character.main.testing.dummy.DummyHeroEnvironment;
+import net.sf.anathema.hero.BasicCharacterTestCase;
+import net.sf.anathema.hero.dummy.DummyHero;
+import net.sf.anathema.hero.dummy.DummyHeroEnvironment;
 import net.sf.anathema.character.main.traits.context.CreationTraitValueStrategy;
 import net.sf.anathema.hero.abilities.model.AbilitiesModelImpl;
 import net.sf.anathema.hero.attributes.model.AttributeModel;

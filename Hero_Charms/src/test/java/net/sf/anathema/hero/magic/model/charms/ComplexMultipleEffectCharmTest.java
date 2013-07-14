@@ -6,7 +6,7 @@ import net.sf.anathema.character.main.magic.model.charm.special.ComplexMultipleE
 import net.sf.anathema.character.main.magic.model.charm.special.IMultipleEffectCharm;
 import net.sf.anathema.character.main.magic.model.charm.special.SubEffect;
 import net.sf.anathema.character.main.magic.model.charmtree.ICharmLearnableArbitrator;
-import net.sf.anathema.character.main.testing.dummy.DummyHero;
+import net.sf.anathema.hero.dummy.DummyHero;
 import org.junit.Test;
 
 import java.util.HashMap;

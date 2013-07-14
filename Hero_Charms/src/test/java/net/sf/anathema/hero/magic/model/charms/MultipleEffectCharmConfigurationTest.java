@@ -8,7 +8,7 @@ import net.sf.anathema.character.main.magic.model.charm.special.MultipleEffectCh
 import net.sf.anathema.character.main.magic.model.charm.special.SubEffect;
 import net.sf.anathema.character.main.magic.model.charm.special.SubEffectImpl;
 import net.sf.anathema.character.main.magic.model.charmtree.ICharmLearnableArbitrator;
-import net.sf.anathema.character.main.testing.dummy.DummyCondition;
+import net.sf.anathema.hero.dummy.DummyCondition;
 import net.sf.anathema.hero.experience.ExperienceModel;
 import org.junit.Test;
 

@@ -1,7 +1,7 @@
 package net.sf.anathema.character.main.trait;
 
 import net.sf.anathema.character.main.template.abilities.GroupedTraitType;
-import net.sf.anathema.character.main.testing.dummy.models.NullCasteCollection;
+import net.sf.anathema.hero.dummy.models.NullCasteCollection;
 import net.sf.anathema.character.main.traits.TraitType;
 import net.sf.anathema.character.main.traits.groups.IIdentifiedTraitTypeGroup;
 import net.sf.anathema.hero.abilities.model.AbilityTypeGroupFactory;

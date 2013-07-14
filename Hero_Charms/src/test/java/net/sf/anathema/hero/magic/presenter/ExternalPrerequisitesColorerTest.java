@@ -5,7 +5,7 @@ import net.sf.anathema.hero.charms.display.presenter.CharmGroupInformer;
 import net.sf.anathema.character.main.magic.model.charm.Charm;
 import net.sf.anathema.character.main.magic.model.charm.CharmGroup;
 import net.sf.anathema.character.main.magic.model.charm.ICharmGroup;
-import net.sf.anathema.character.main.testing.dummy.DummyMundaneCharacterType;
+import net.sf.anathema.hero.dummy.DummyMundaneCharacterType;
 import net.sf.anathema.hero.charms.display.coloring.CharmColoring;
 import net.sf.anathema.hero.charms.display.coloring.ExternalPrerequisitesColorer;
 import org.junit.Test;

@@ -2,7 +2,7 @@ package net.sf.anathema.hero.magic.model.charms;
 
 import net.sf.anathema.character.main.magic.model.charm.Charm;
 import net.sf.anathema.character.main.magic.model.charm.CharmGroup;
-import net.sf.anathema.character.main.testing.dummy.DummyExaltCharacterType;
+import net.sf.anathema.hero.dummy.DummyExaltCharacterType;
 import org.junit.Test;
 
 import static org.hamcrest.CoreMatchers.is;

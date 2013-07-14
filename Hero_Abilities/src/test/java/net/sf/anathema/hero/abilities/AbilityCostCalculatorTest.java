@@ -1,6 +1,6 @@
 package net.sf.anathema.hero.abilities;
 
-import net.sf.anathema.character.main.costs.AbstractBonusPointTestCase;
+import net.sf.anathema.hero.advance.AbstractBonusPointTestCase;
 import net.sf.anathema.character.main.library.trait.FavorableTraitCost;
 import net.sf.anathema.character.main.library.trait.Trait;
 import net.sf.anathema.character.main.template.experience.AbilityPointCosts;
@@ -8,11 +8,11 @@ import net.sf.anathema.character.main.template.experience.CurrentRatingCosts;
 import net.sf.anathema.character.main.template.points.AbilityCreationPoints;
 import net.sf.anathema.character.main.template.points.FixedValueRatingCosts;
 import net.sf.anathema.character.main.template.points.IFavorableTraitCreationPoints;
-import net.sf.anathema.character.main.testing.dummy.DummyHero;
-import net.sf.anathema.character.main.testing.dummy.DummyHeroEnvironment;
-import net.sf.anathema.character.main.testing.dummy.models.DummyHeroConcept;
-import net.sf.anathema.character.main.testing.dummy.models.DummySpiritualTraitModel;
-import net.sf.anathema.character.main.testing.dummy.models.DummyTraitModel;
+import net.sf.anathema.hero.dummy.DummyHero;
+import net.sf.anathema.hero.dummy.DummyHeroEnvironment;
+import net.sf.anathema.hero.dummy.models.DummyHeroConcept;
+import net.sf.anathema.hero.dummy.models.DummySpiritualTraitModel;
+import net.sf.anathema.hero.dummy.models.DummyTraitModel;
 import net.sf.anathema.character.main.traits.types.AbilityType;
 import net.sf.anathema.hero.abilities.advance.creation.AbilityCostCalculatorImpl;
 import net.sf.anathema.hero.abilities.model.AbilitiesModelImpl;
