@@ -1,4 +1,4 @@
-package net.sf.anathema.character.main.magicdescription.presenter;
+package net.sf.anathema.magic.description.display;
 
 public class NullMagicDetailModel implements MagicDetailModel {
   @Override

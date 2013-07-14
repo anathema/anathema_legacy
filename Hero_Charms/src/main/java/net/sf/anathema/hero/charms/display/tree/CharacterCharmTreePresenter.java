@@ -4,7 +4,7 @@ import net.sf.anathema.character.main.magic.display.view.charmtree.CharmDisplayP
 import net.sf.anathema.character.main.magic.display.view.charmtree.CharmView;
 import net.sf.anathema.character.main.magic.display.view.charmtree.DefaultNodeProperties;
 import net.sf.anathema.character.main.magic.model.charmtree.GroupCharmTree;
-import net.sf.anathema.character.main.magicdescription.presenter.ShowMagicDetailListener;
+import net.sf.anathema.magic.description.display.ShowMagicDetailListener;
 import net.sf.anathema.hero.charms.display.coloring.CharacterColoringStrategy;
 import net.sf.anathema.hero.charms.display.coloring.ConfigurableCharmDye;
 import net.sf.anathema.hero.charms.display.special.CharacterSpecialCharmPresenter;

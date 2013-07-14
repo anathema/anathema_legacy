@@ -1,4 +1,4 @@
-package net.sf.anathema.character.main.magicdescription.presenter;
+package net.sf.anathema.magic.description.display;
 
 import net.sf.anathema.framework.IApplicationModel;
 import net.sf.anathema.lib.resources.Resources;

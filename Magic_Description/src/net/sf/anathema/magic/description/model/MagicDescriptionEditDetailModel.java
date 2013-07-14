@@ -1,6 +1,6 @@
 package net.sf.anathema.magic.description.model;
 
-import net.sf.anathema.character.main.magicdescription.presenter.MagicDetailModel;
+import net.sf.anathema.magic.description.display.MagicDetailModel;
 
 public class MagicDescriptionEditDetailModel implements MagicDetailModel {
 

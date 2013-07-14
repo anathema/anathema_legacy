@@ -1,4 +1,4 @@
-package net.sf.anathema.character.main.magicdescription.presenter;
+package net.sf.anathema.magic.description.display;
 
 import java.lang.annotation.Retention;
 import java.lang.annotation.RetentionPolicy;

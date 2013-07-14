@@ -1,6 +1,6 @@
 package net.sf.anathema.hero.charms.display.tree;
 
-import net.sf.anathema.character.main.magicdescription.presenter.ShowMagicDetailListener;
+import net.sf.anathema.magic.description.display.ShowMagicDetailListener;
 import net.sf.anathema.platform.tree.display.NodeInteractionListener;
 
 public class ShowDetailInteractionListener implements NodeInteractionListener {
