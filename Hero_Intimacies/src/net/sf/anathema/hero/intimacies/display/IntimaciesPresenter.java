@@ -4,16 +4,16 @@ import net.sf.anathema.character.main.CharacterUI;
 import net.sf.anathema.character.main.library.overview.OverviewCategory;
 import net.sf.anathema.character.main.library.removableentry.RemovableEntryListener;
 import net.sf.anathema.character.main.library.trait.presenter.TraitPresenter;
-import net.sf.anathema.hero.display.ExtensibleTraitView;
-import net.sf.anathema.character.main.view.labelledvalue.LabelledAllotmentView;
 import net.sf.anathema.character.main.view.labelledvalue.IValueView;
+import net.sf.anathema.character.main.view.labelledvalue.LabelledAllotmentView;
 import net.sf.anathema.framework.presenter.resources.BasicUi;
-import net.sf.anathema.hero.model.change.ChangeFlavor;
-import net.sf.anathema.hero.model.change.FlavoredChangeListener;
+import net.sf.anathema.hero.display.ExtensibleTraitView;
 import net.sf.anathema.hero.experience.ExperienceChange;
 import net.sf.anathema.hero.intimacies.model.IntimaciesModel;
 import net.sf.anathema.hero.intimacies.model.Intimacy;
 import net.sf.anathema.hero.intimacies.points.IntimaciesBonusPointCalculator;
+import net.sf.anathema.hero.model.change.ChangeFlavor;
+import net.sf.anathema.hero.model.change.FlavoredChangeListener;
 import net.sf.anathema.hero.points.HeroBonusPointCalculator;
 import net.sf.anathema.interaction.Command;
 import net.sf.anathema.interaction.ToggleTool;
@@ -142,12 +142,12 @@ public class IntimaciesPresenter {
     alotmentView.setFontStyle(new LegalityFontProvider().getFontStyle(state));
   }
 
-  protected final void addSubView(Intimacy v) {
+  private void addSubView(Intimacy v) {
     ExtensibleTraitView subView = createSubView(v);
     viewsByEntry.put(v, subView);
   }
 
-  protected ExtensibleTraitView createSubView(final Intimacy intimacy) {
+  private ExtensibleTraitView createSubView(final Intimacy intimacy) {
     int maximalValue = model.getCompletionValue();
     int currentValue = intimacy.getTrait().getCurrentValue();
     String name = intimacy.getName();

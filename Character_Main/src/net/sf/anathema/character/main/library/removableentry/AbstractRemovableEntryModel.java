@@ -27,6 +27,7 @@ public abstract class AbstractRemovableEntryModel<E> implements RemovableEntryMo
   public void removeEntry(E entry) {
     entries.remove(entry);
     control.announce().entryRemoved(entry);
+    fireEntryChanged();
   }
 
   @Override
