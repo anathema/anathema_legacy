@@ -1,4 +1,4 @@
-package net.sf.anathema.hero.charms.template;
+package net.sf.anathema.hero.charms.template.model;
 
 import java.util.ArrayList;
 import java.util.List;

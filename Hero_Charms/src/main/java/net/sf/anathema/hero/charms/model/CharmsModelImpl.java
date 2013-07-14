@@ -116,14 +116,6 @@ public class CharmsModelImpl implements CharmsModel {
     addOverdrivePools(hero);
     addPrintProvider(new PrintCharmsProvider(hero));
     addLearnProvider(new CharmLearner(this));
-    initializeExperience(hero);
-  }
-
-  private void initializeExperience(Hero hero) {
-    PointsModel pointsModel = PointModelFetcher.fetch(hero);
-    IExperiencePointCosts experienceCost = hero.getTemplate().getExperienceCost();
-    CharmPointCostCalculator calculator = new CharmPointCostCalculator(experienceCost);
-    pointsModel.addToExperienceOverview(new CharmExperienceModel(calculator, hero));
   }
 
   private void addOverdrivePools(Hero hero) {

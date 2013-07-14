@@ -1,4 +1,4 @@
-package net.sf.anathema.hero.charms.template;
+package net.sf.anathema.hero.charms.template.model;
 
 import net.sf.anathema.character.main.magic.model.charm.Charm;
 import net.sf.anathema.hero.magic.model.martial.MartialArtsLevel;

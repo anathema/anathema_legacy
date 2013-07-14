@@ -2,6 +2,7 @@ package net.sf.anathema.hero.charms.advance;
 
 import net.sf.anathema.character.main.template.creation.BonusPointCosts;
 import net.sf.anathema.character.main.template.creation.ICreationPoints;
+import net.sf.anathema.character.main.template.experience.IExperiencePointCosts;
 import net.sf.anathema.hero.advance.CostAnalyzerImpl;
 import net.sf.anathema.hero.charms.advance.creation.DefaultMagicModel;
 import net.sf.anathema.hero.charms.advance.creation.FavoredMagicModel;
@@ -16,6 +17,7 @@ import net.sf.anathema.hero.model.Hero;
 import net.sf.anathema.hero.model.HeroModel;
 import net.sf.anathema.hero.model.change.ChangeAnnouncer;
 import net.sf.anathema.hero.points.PointModelFetcher;
+import net.sf.anathema.hero.points.PointsModel;
 import net.sf.anathema.hero.points.overview.SpendingModel;
 import net.sf.anathema.hero.points.overview.WeightedCategory;
 import net.sf.anathema.lib.util.Identifier;
@@ -54,6 +56,16 @@ public class MagicPointsModel implements HeroModel {
   }
 
   private void initializeBonusPoints(Hero hero) {
+    initCreation(hero);
+    initializeExperience(hero);
+  }
+
+  private void initializeExperience(Hero hero) {
+    CharmPointCostCalculator calculator = createExperienceCalculator(hero);
+    initExperienceOverview(hero, calculator);
+  }
+
+  private void initCreation(Hero hero) {
     MagicBonusPointCalculator calculator = createBonusCalculator(hero);
     initBonusCalculation(hero, calculator);
     initBonusOverview(hero, calculator);
@@ -78,5 +90,15 @@ public class MagicPointsModel implements HeroModel {
     CharmsModel model = CharmsModelFetcher.fetch(hero);
     BonusPointCosts costs = hero.getTemplate().getBonusPointCosts();
     return new MagicBonusPointCalculator(model.getMagicCostEvaluator(), creationPoints, costs, new CostAnalyzerImpl(hero));
+  }
+
+  private CharmPointCostCalculator createExperienceCalculator(Hero hero) {
+    IExperiencePointCosts experienceCost = hero.getTemplate().getExperienceCost();
+    return new CharmPointCostCalculator(experienceCost);
+  }
+
+  private void initExperienceOverview(Hero hero, CharmPointCostCalculator calculator) {
+    PointsModel pointsModel = PointModelFetcher.fetch(hero);
+    pointsModel.addToExperienceOverview(new CharmExperienceModel(calculator, hero));
   }
 }
