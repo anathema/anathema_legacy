@@ -7,8 +7,10 @@ import net.sf.anathema.hero.framework.HeroEnvironment;
 import net.sf.anathema.hero.magic.advance.creation.DefaultMagicModel;
 import net.sf.anathema.hero.magic.advance.creation.FavoredMagicModel;
 import net.sf.anathema.hero.magic.advance.creation.MagicBonusPointCalculator;
+import net.sf.anathema.hero.magic.advance.experience.MagicExperienceCosts;
 import net.sf.anathema.hero.magic.model.MagicModel;
 import net.sf.anathema.hero.magic.model.MagicModelFetcher;
+import net.sf.anathema.hero.magic.model.martial.MartialArtsLevel;
 import net.sf.anathema.hero.magic.template.advance.MagicPointsTemplate;
 import net.sf.anathema.hero.model.Hero;
 import net.sf.anathema.hero.model.HeroModel;
@@ -45,6 +47,10 @@ public class MagicPointsModel implements HeroModel {
   @Override
   public void initializeListening(ChangeAnnouncer announcer) {
     // nothing to do, until bonus points are created the way, they should be
+  }
+
+  public MagicExperienceCosts getExperienceCost(MartialArtsLevel standardMartialArtsLevel) {
+    return new MagicExperienceCosts(template, standardMartialArtsLevel);
   }
 
   private void initializeBonusPoints(Hero hero) {
