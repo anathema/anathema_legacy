@@ -1,12 +1,13 @@
-package net.sf.anathema.hero.charms.template.model;
+package net.sf.anathema.hero.charms.model.rules;
 
+import net.sf.anathema.hero.charms.template.model.CharmsTemplate;
 import net.sf.anathema.hero.concept.CasteType;
 
-public class CharmRulesImpl implements CharmRules {
+public class CharmsRulesImpl implements CharmsRules {
 
-  private CharmTto tto;
+  private CharmsTemplate tto;
 
-  public CharmRulesImpl(CharmTto tto) {
+  public CharmsRulesImpl(CharmsTemplate tto) {
     this.tto = tto;
   }
 

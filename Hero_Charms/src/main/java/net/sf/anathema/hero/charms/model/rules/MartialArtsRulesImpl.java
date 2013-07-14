@@ -1,14 +1,15 @@
-package net.sf.anathema.hero.charms.template.model;
+package net.sf.anathema.hero.charms.model.rules;
 
 import net.sf.anathema.character.main.magic.model.charm.Charm;
+import net.sf.anathema.hero.charms.template.model.MartialArtsTemplate;
 import net.sf.anathema.hero.magic.model.martial.MartialArtsLevel;
 import net.sf.anathema.hero.magic.model.martial.MartialArtsUtilities;
 
 public class MartialArtsRulesImpl implements MartialArtsRules {
 
-  private MartialArtsTto tto;
+  private MartialArtsTemplate tto;
 
-  public MartialArtsRulesImpl(MartialArtsTto tto) {
+  public MartialArtsRulesImpl(MartialArtsTemplate tto) {
     this.tto = tto;
   }
 
@@ -27,6 +28,6 @@ public class MartialArtsRulesImpl implements MartialArtsRules {
 
   @Override
   public MartialArtsLevel getStandardLevel() {
-    return MartialArtsLevel.valueOf(tto.level);
+    return MartialArtsLevel.valueOf(tto.standardLevel);
   }
 }

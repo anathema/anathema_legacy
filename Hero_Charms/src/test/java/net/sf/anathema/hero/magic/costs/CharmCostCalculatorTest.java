@@ -12,6 +12,7 @@ import net.sf.anathema.hero.advance.CostAnalyzerImpl;
 import net.sf.anathema.hero.charms.advance.creation.MagicBonusPointCalculator;
 import net.sf.anathema.hero.charms.model.CharmsModel;
 import net.sf.anathema.hero.charms.model.CharmsModelImpl;
+import net.sf.anathema.hero.charms.template.model.CharmsTemplate;
 import net.sf.anathema.hero.dummy.DummyBonusPointCosts;
 import net.sf.anathema.hero.dummy.DummyHero;
 import net.sf.anathema.hero.dummy.magic.DummyCharmsModel;
@@ -37,7 +38,7 @@ public class CharmCostCalculatorTest extends AbstractBonusPointTestCase {
 
   @Before
   public void setUp() throws Exception {
-    CharmsModel charmModel = new CharmsModelImpl();
+    CharmsModel charmModel = new CharmsModelImpl(new CharmsTemplate());
     spells.initializeMagicModel(charmModel);
     DummyHero hero = new BasicCharacterTestCase().createModelContextWithEssence2(new CreationTraitValueStrategy());
     traitModel = TraitModelFetcher.fetch(hero);

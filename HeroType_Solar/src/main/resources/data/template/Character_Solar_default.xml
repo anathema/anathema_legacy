@@ -27,7 +27,7 @@
         <model id="AttributePoints"/>
         <model id="EssencePool"/>
         <model id="Health"/>
-        <model id="Charms"/>
+        <model id="Charms" template="SolarCharms"/>
         <model id="Combos"/>
         <model id="Spells"/>
         <model id="MagicPoints" template="SolarMagicPoints"/>

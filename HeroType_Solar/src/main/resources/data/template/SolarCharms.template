@@ -1,0 +1,10 @@
+{
+    "charmType": "Solar",
+    "martialArts": {
+       "standardLevel": Celestial,
+        "highLevelAtCreation": false,
+    }
+    "alienCharmCastes":  [
+        "Eclipse"
+    ]
+}

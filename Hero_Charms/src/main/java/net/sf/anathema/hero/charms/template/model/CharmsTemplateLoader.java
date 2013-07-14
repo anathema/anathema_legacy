@@ -6,12 +6,11 @@ import net.sf.anathema.hero.template.TemplateLoader;
 import net.sf.anathema.lib.util.Identifier;
 import net.sf.anathema.lib.util.SimpleIdentifier;
 
-public class CharmTemplateLoader {
+public class CharmsTemplateLoader {
 
-  public static CharmRules loadTemplate(TemplateFactory templateFactory, String templateName) {
+  public static CharmsTemplate loadTemplate(TemplateFactory templateFactory, String templateName) {
     Identifier templateId = new SimpleIdentifier(templateName);
-    TemplateLoader<CharmTto> loader = new ConfigurableTemplateLoader<>(CharmTto.class);
-    CharmTto charmTto = templateFactory.loadModelTemplate(templateId, loader);
-    return new CharmRulesImpl(charmTto) ;
+    TemplateLoader<CharmsTemplate> loader = new ConfigurableTemplateLoader<>(CharmsTemplate.class);
+    return templateFactory.loadModelTemplate(templateId, loader);
   }
 }

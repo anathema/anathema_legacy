@@ -14,6 +14,7 @@ import net.sf.anathema.hero.charms.model.MagicCreationCostEvaluator;
 import net.sf.anathema.hero.charms.model.MagicLearner;
 import net.sf.anathema.hero.charms.model.PrintMagicProvider;
 import net.sf.anathema.hero.framework.HeroEnvironment;
+import net.sf.anathema.hero.magic.model.martial.MartialArtsLevel;
 import net.sf.anathema.hero.model.Hero;
 import net.sf.anathema.hero.model.change.ChangeAnnouncer;
 import net.sf.anathema.lib.control.ChangeListener;
@@ -141,6 +142,11 @@ public class DummyCharmsModel implements CharmsModel {
   @Override
   public MagicCreationCostEvaluator getMagicCostEvaluator() {
     return null;
+  }
+
+  @Override
+  public MartialArtsLevel getStandardMartialArtsLevel() {
+    return MartialArtsLevel.Mortal;
   }
 
   public void setGroups(ILearningCharmGroup... groups) {

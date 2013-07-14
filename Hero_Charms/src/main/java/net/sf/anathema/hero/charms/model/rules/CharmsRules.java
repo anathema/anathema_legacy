@@ -1,8 +1,8 @@
-package net.sf.anathema.hero.charms.template.model;
+package net.sf.anathema.hero.charms.model.rules;
 
 import net.sf.anathema.hero.concept.CasteType;
 
-public interface CharmRules {
+public interface CharmsRules {
 
   boolean canLearnCharms();
 

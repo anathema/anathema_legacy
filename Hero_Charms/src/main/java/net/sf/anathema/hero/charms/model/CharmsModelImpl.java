@@ -3,8 +3,6 @@ package net.sf.anathema.hero.charms.model;
 import com.google.common.base.Functions;
 import net.sf.anathema.character.main.magic.cache.CharmCache;
 import net.sf.anathema.character.main.magic.cache.CharmProvider;
-import net.sf.anathema.character.main.magic.sheet.content.IMagicStats;
-import net.sf.anathema.hero.charms.display.presenter.CharacterChangeCharmListener;
 import net.sf.anathema.character.main.magic.model.charm.Charm;
 import net.sf.anathema.character.main.magic.model.charm.CharmAttributeList;
 import net.sf.anathema.character.main.magic.model.charm.CharmIdMap;
@@ -23,32 +21,33 @@ import net.sf.anathema.character.main.magic.model.charm.special.MultipleEffectCh
 import net.sf.anathema.character.main.magic.model.charms.ILearningCharmGroup;
 import net.sf.anathema.character.main.magic.model.charms.ILearningCharmGroupContainer;
 import net.sf.anathema.character.main.magic.model.charms.LearningCharmGroup;
-import net.sf.anathema.hero.charms.model.options.MartialArtsOptions;
-import net.sf.anathema.hero.charms.model.options.NonMartialArtsOptions;
 import net.sf.anathema.character.main.magic.model.charmtree.CharmTraitRequirementChecker;
 import net.sf.anathema.character.main.magic.model.charmtree.GroupCharmTree;
+import net.sf.anathema.character.main.magic.sheet.content.IMagicStats;
 import net.sf.anathema.character.main.template.HeroTemplate;
-import net.sf.anathema.character.main.template.experience.IExperiencePointCosts;
 import net.sf.anathema.character.main.type.CharacterType;
-import net.sf.anathema.hero.charms.advance.CharmExperienceModel;
-import net.sf.anathema.hero.charms.advance.CharmPointCostCalculator;
+import net.sf.anathema.hero.charms.display.presenter.CharacterChangeCharmListener;
 import net.sf.anathema.hero.charms.model.context.CreationCharmLearnStrategy;
 import net.sf.anathema.hero.charms.model.context.ExperiencedCharmLearnStrategy;
 import net.sf.anathema.hero.charms.model.context.ProxyCharmLearnStrategy;
+import net.sf.anathema.hero.charms.model.options.MartialArtsOptions;
+import net.sf.anathema.hero.charms.model.options.NonMartialArtsOptions;
+import net.sf.anathema.hero.charms.model.rules.CharmsRules;
+import net.sf.anathema.hero.charms.model.rules.CharmsRulesImpl;
 import net.sf.anathema.hero.charms.model.special.SpecialCharmManager;
 import net.sf.anathema.hero.charms.sheet.content.PrintCharmsProvider;
+import net.sf.anathema.hero.charms.template.model.CharmsTemplate;
 import net.sf.anathema.hero.concept.CasteType;
 import net.sf.anathema.hero.concept.HeroConceptFetcher;
 import net.sf.anathema.hero.experience.ExperienceModel;
 import net.sf.anathema.hero.experience.ExperienceModelFetcher;
 import net.sf.anathema.hero.framework.HeroEnvironment;
+import net.sf.anathema.hero.magic.model.martial.MartialArtsLevel;
 import net.sf.anathema.hero.magic.model.martial.MartialArtsUtilities;
 import net.sf.anathema.hero.model.Hero;
 import net.sf.anathema.hero.model.change.ChangeAnnouncer;
 import net.sf.anathema.hero.model.change.ChangeFlavor;
 import net.sf.anathema.hero.model.change.FlavoredChangeListener;
-import net.sf.anathema.hero.points.PointModelFetcher;
-import net.sf.anathema.hero.points.PointsModel;
 import net.sf.anathema.hero.spiritual.model.pool.EssencePoolModel;
 import net.sf.anathema.hero.spiritual.model.pool.EssencePoolModelFetcher;
 import net.sf.anathema.hero.traits.TraitModel;
@@ -73,6 +72,7 @@ import static net.sf.anathema.hero.magic.model.martial.MartialArtsUtilities.isMa
 public class CharmsModelImpl implements CharmsModel {
 
   private final ProxyCharmLearnStrategy charmLearnStrategy = new ProxyCharmLearnStrategy(new CreationCharmLearnStrategy());
+  private final CharmsRules charmsRules;
   private ISpecialCharmManager manager;
   private ILearningCharmGroupContainer learningCharmGroupContainer = new ILearningCharmGroupContainer() {
     @Override
@@ -93,6 +93,9 @@ public class CharmsModelImpl implements CharmsModel {
   private final List<PrintMagicProvider> printMagicProviders = new ArrayList<>();
   private final List<MagicLearner> magicLearners = new ArrayList<>();
 
+  public CharmsModelImpl(CharmsTemplate charmsTemplate) {
+    this.charmsRules = new CharmsRulesImpl(charmsTemplate);
+  }
 
   @Override
   public Identifier getId() {
@@ -543,5 +546,9 @@ public class CharmsModelImpl implements CharmsModel {
     for (PrintMagicProvider provider : printMagicProviders) {
       provider.addPrintMagic(printMagic);
     }
+  }
+
+  public MartialArtsLevel getStandardMartialArtsLevel() {
+    return charmsRules.getMartialArtsRules().getStandardLevel();
   }
 }

@@ -1,7 +1,7 @@
 package net.sf.anathema.hero.charms.template.model;
 
-public class MartialArtsTto {
+public class MartialArtsTemplate {
 
-  public String level;
+  public String standardLevel;
   public boolean highLevelAtCreation = false;
 }
