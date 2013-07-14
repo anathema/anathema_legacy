@@ -4,7 +4,7 @@ import net.sf.anathema.character.main.magic.model.spells.CircleType;
 import net.sf.anathema.character.main.template.HeroTemplate;
 import net.sf.anathema.character.main.template.magic.CharmTemplateImpl;
 import net.sf.anathema.character.main.template.magic.CustomizableFreePicksPredicate;
-import net.sf.anathema.character.main.template.magic.DefaultMartialArtsRules;
+import net.sf.anathema.character.main.template.magic.MartialArtsRulesImpl;
 import net.sf.anathema.character.main.template.magic.ISpellMagicTemplate;
 import net.sf.anathema.character.main.template.magic.MartialArtsRules;
 import net.sf.anathema.character.main.template.magic.SpellMagicTemplate;
@@ -117,7 +117,7 @@ public class GenericMagicTemplateParser extends AbstractXmlTemplateParser<Generi
     String rulesClassName = martialArtsElement.attributeValue(ATTRIB_RULES_CLASS);
     MartialArtsRules rules;
     if (rulesClassName == null) {
-      rules = new DefaultMartialArtsRules(level);
+      rules = new MartialArtsRulesImpl(level);
     } else {
       try {
         rules = (MartialArtsRules) Class.forName(rulesClassName).newInstance();

@@ -4,7 +4,7 @@ import net.sf.anathema.character.main.dummy.DummyCharm;
 import net.sf.anathema.character.main.dummy.DummyCharmUtilities;
 import net.sf.anathema.character.main.magic.model.spells.CircleType;
 import net.sf.anathema.character.main.template.magic.CharmTemplate;
-import net.sf.anathema.character.main.template.magic.DefaultMartialArtsRules;
+import net.sf.anathema.character.main.template.magic.MartialArtsRulesImpl;
 import net.sf.anathema.hero.dummy.DummyCasteType;
 import net.sf.anathema.hero.dummy.magic.DummyMartialArtsRules;
 import net.sf.anathema.hero.dummy.template.DummyXmlTemplateRegistry;
@@ -115,7 +115,7 @@ public class MagicTemplateParserTest {
         return attribute.getId().equals("MartialArts") || attribute.getId().equals("Celestial");
       }
     };
-    assertFalse(template.getCharmTemplate().getMartialArtsRules().isCharmAllowed(dummyMartialArtsCharm, null, false));
+    assertFalse(template.getCharmTemplate().getMartialArtsRules().isCharmAllowed(dummyMartialArtsCharm, false));
   }
 
   @Test
@@ -131,7 +131,7 @@ public class MagicTemplateParserTest {
         return attribute.getId().equals("MartialArts") || attribute.getId().equals("Celestial");
       }
     };
-    assertTrue(template.getCharmTemplate().getMartialArtsRules().isCharmAllowed(dummyMartialArtsCharm, null, false));
+    assertTrue(template.getCharmTemplate().getMartialArtsRules().isCharmAllowed(dummyMartialArtsCharm, false));
   }
 
   @Test
@@ -140,7 +140,7 @@ public class MagicTemplateParserTest {
                           "<charmTemplate charmType=\"None\" ><martialArts level=\"Terrestrial\" /></charmTemplate>" + "</magicTemplate>";
     Element templateElement = DocumentUtilities.read(celestialXml).getRootElement();
     GenericMagicTemplate template = parser.parseTemplate(templateElement);
-    Assert.assertTrue(template.getCharmTemplate().getMartialArtsRules() instanceof DefaultMartialArtsRules);
+    Assert.assertTrue(template.getCharmTemplate().getMartialArtsRules() instanceof MartialArtsRulesImpl);
   }
 
   @Test

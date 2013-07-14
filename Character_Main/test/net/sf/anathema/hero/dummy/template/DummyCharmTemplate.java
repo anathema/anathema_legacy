@@ -1,7 +1,7 @@
 package net.sf.anathema.hero.dummy.template;
 
 import net.sf.anathema.character.main.template.magic.CharmTemplate;
-import net.sf.anathema.character.main.template.magic.DefaultMartialArtsRules;
+import net.sf.anathema.character.main.template.magic.MartialArtsRulesImpl;
 import net.sf.anathema.character.main.template.magic.MartialArtsRules;
 import net.sf.anathema.hero.concept.CasteType;
 import net.sf.anathema.hero.magic.model.martial.MartialArtsLevel;
@@ -15,7 +15,7 @@ public class DummyCharmTemplate implements CharmTemplate {
 
   @Override
   public MartialArtsRules getMartialArtsRules() {
-    DefaultMartialArtsRules defaultMartialArtsRules = new DefaultMartialArtsRules(MartialArtsLevel.Mortal);
+    MartialArtsRulesImpl defaultMartialArtsRules = new MartialArtsRulesImpl(MartialArtsLevel.Mortal);
     defaultMartialArtsRules.setHighLevelAtCreation(true);
     return defaultMartialArtsRules;
   }

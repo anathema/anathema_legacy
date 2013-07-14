@@ -28,7 +28,6 @@ import net.sf.anathema.character.main.magic.model.charmtree.CharmTraitRequiremen
 import net.sf.anathema.character.main.magic.model.charmtree.GroupCharmTree;
 import net.sf.anathema.character.main.template.HeroTemplate;
 import net.sf.anathema.character.main.template.experience.IExperiencePointCosts;
-import net.sf.anathema.character.main.template.magic.MartialArtsCharmConfiguration;
 import net.sf.anathema.character.main.type.CharacterType;
 import net.sf.anathema.hero.charms.advance.CharmExperienceModel;
 import net.sf.anathema.hero.charms.advance.CharmPointCostCalculator;
@@ -430,7 +429,7 @@ public class CharmsModelImpl implements CharmsModel {
       if (isSiderealFormCharm && !martialArtsConfiguration.isAnyCelestialStyleCompleted()) {
         return false;
       }
-      if (!martialArtsOptions.getMartialArtsRulesForCharacterType().isCharmAllowed(charm, martialArtsConfiguration, isExperienced())) {
+      if (!martialArtsOptions.getMartialArtsRulesForCharacterType().isCharmAllowed(charm, isExperienced())) {
         return false;
       }
     }

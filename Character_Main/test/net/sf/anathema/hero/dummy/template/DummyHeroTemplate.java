@@ -15,7 +15,7 @@ import net.sf.anathema.character.main.template.essence.NullEssenceTemplate;
 import net.sf.anathema.character.main.template.experience.IExperiencePointCosts;
 import net.sf.anathema.character.main.template.magic.CharmTemplate;
 import net.sf.anathema.character.main.template.magic.CharmTemplateImpl;
-import net.sf.anathema.character.main.template.magic.DefaultMartialArtsRules;
+import net.sf.anathema.character.main.template.magic.MartialArtsRulesImpl;
 import net.sf.anathema.character.main.template.magic.IMagicTemplate;
 import net.sf.anathema.character.main.template.magic.ISpellMagicTemplate;
 import net.sf.anathema.character.main.template.presentation.IPresentationProperties;
@@ -135,7 +135,7 @@ public class DummyHeroTemplate implements HeroTemplate {
 
     @Override
     public CharmTemplate getCharmTemplate() {
-      return new CharmTemplateImpl(new DefaultMartialArtsRules(MartialArtsLevel.Mortal), false);
+      return new CharmTemplateImpl(new MartialArtsRulesImpl(MartialArtsLevel.Mortal), false);
     }
   }
 

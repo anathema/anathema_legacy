@@ -4,12 +4,12 @@ import net.sf.anathema.character.main.magic.model.charm.Charm;
 import net.sf.anathema.hero.magic.model.martial.MartialArtsLevel;
 import net.sf.anathema.hero.magic.model.martial.MartialArtsUtilities;
 
-public class DefaultMartialArtsRules implements MartialArtsRules {
+public class MartialArtsRulesImpl implements MartialArtsRules {
 
   private boolean highLevelAtCreation = false;
   private final MartialArtsLevel level;
 
-  public DefaultMartialArtsRules(MartialArtsLevel level) {
+  public MartialArtsRulesImpl(MartialArtsLevel level) {
     this.level = level;
   }
 
@@ -19,7 +19,7 @@ public class DefaultMartialArtsRules implements MartialArtsRules {
   }
 
   @Override
-  public boolean isCharmAllowed(Charm martialArtsCharm, MartialArtsCharmConfiguration charmConfiguration, boolean isExperienced) {
+  public boolean isCharmAllowed(Charm martialArtsCharm, boolean isExperienced) {
     int comparedLevel = MartialArtsUtilities.getLevel(martialArtsCharm).compareTo(level);
     if (comparedLevel <= 0) {
       return true;
