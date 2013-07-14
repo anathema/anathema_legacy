@@ -51,11 +51,6 @@ public class HeroEnvironmentImpl implements HeroEnvironment {
   }
 
   @Override
-  public CharmCache getCharmCache() {
-    return getDataSet(CharmCache.class);
-  }
-
-  @Override
   public DataFileProvider getDataFileProvider() {
     return dataFileProvider;
   }

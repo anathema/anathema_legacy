@@ -19,23 +19,23 @@ public class CascadePresenterImpl extends AbstractCascadePresenter implements Ca
 
   private final CharmTreeIdentifierMap treeIdentifierMap = new CharmTreeIdentifierMap();
 
-  public CascadePresenterImpl(Resources resources, HeroEnvironment generics, CascadeViewFactory factory,
+  public CascadePresenterImpl(Resources resources, HeroEnvironment environment, CascadeViewFactory factory,
                               MagicDescriptionProvider magicDescriptionProvider) {
     super(resources);
-    CharmCache cache = generics.getDataSet(CharmCache.class);
-    CascadeCharmTreeViewProperties viewProperties = new CascadeCharmTreeViewProperties(resources, magicDescriptionProvider, generics, cache);
+    CharmCache cache = environment.getDataSet(CharmCache.class);
+    CascadeCharmTreeViewProperties viewProperties = new CascadeCharmTreeViewProperties(resources, magicDescriptionProvider, cache);
     DefaultNodeProperties nodeProperties = new DefaultNodeProperties(resources, viewProperties, viewProperties);
     CascadeView view = factory.createCascadeView(viewProperties, nodeProperties);
     view.initGui(viewProperties, nodeProperties);
-    CharmDisplayPropertiesMap charmDisplayPropertiesMap = new CharmDisplayPropertiesMap(generics.getObjectFactory());
+    CharmDisplayPropertiesMap charmDisplayPropertiesMap = new CharmDisplayPropertiesMap(environment.getObjectFactory());
     CascadeCharmGroupChangeListener selectionListener = new CascadeCharmGroupChangeListener(view, viewProperties, charmDisplayPropertiesMap);
-    CharacterTypes characterTypes = generics.getCharacterTypes();
-    setCharmTypes(new CascadeCharmTypes(characterTypes, generics.getCharmCache().getCharmProvider()));
+    CharacterTypes characterTypes = environment.getCharacterTypes();
+    setCharmTypes(new CascadeCharmTypes(characterTypes, cache.getCharmProvider()));
     setChangeListener(selectionListener);
     setView(view);
     CharmDye dye = new ConfigurableCharmDye(selectionListener, new CascadeColoringStrategy(view));
     setCharmDye(dye);
-    setCharmGroups(new CascadeGroupCollection(generics.getCharmCache().getCharmProvider(), characterTypes, treeIdentifierMap));
+    setCharmGroups(new CascadeGroupCollection(cache.getCharmProvider(), characterTypes, treeIdentifierMap));
   }
 
   @Override

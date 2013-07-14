@@ -1,5 +1,6 @@
 package net.sf.anathema.hero.model;
 
+import net.sf.anathema.character.main.magic.cache.CharmCache;
 import net.sf.anathema.character.main.magic.cache.CharmProvider;
 import net.sf.anathema.character.main.magic.model.charms.options.CharmTemplateRetriever;
 import net.sf.anathema.character.main.magic.model.charms.options.DefaultCharmTemplateRetriever;
@@ -46,6 +47,6 @@ public class ModelInitializationContext implements InitializationContext {
 
   @Override
   public CharmProvider getCharmProvider() {
-    return generics.getCharmCache().getCharmProvider();
+    return generics.getDataSet(CharmCache.class).getCharmProvider();
   }
 }

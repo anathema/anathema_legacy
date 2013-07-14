@@ -2,7 +2,6 @@ package net.sf.anathema.hero.framework;
 
 import net.sf.anathema.character.main.framework.ICharacterTemplateRegistryCollection;
 import net.sf.anathema.character.main.framework.data.ExtensibleDataSet;
-import net.sf.anathema.character.main.magic.cache.CharmCache;
 import net.sf.anathema.character.main.template.ITemplateRegistry;
 import net.sf.anathema.character.main.type.CharacterTypes;
 import net.sf.anathema.initialization.ObjectFactory;
@@ -13,8 +12,6 @@ public interface HeroEnvironment {
   ITemplateRegistry getTemplateRegistry();
 
   ICharacterTemplateRegistryCollection getCharacterTemplateRegistries();
-
-  CharmCache getCharmCache();
 
   DataFileProvider getDataFileProvider();
 
