@@ -1,4 +1,4 @@
-package net.sf.anathema.character.main.view;
+package net.sf.anathema.hero.advance.overview.view;
 
 import javax.swing.JComponent;
 

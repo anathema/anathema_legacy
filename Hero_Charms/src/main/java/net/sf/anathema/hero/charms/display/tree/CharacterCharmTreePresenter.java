@@ -1,8 +1,8 @@
 package net.sf.anathema.hero.charms.display.tree;
 
-import net.sf.anathema.character.main.magic.display.view.charmtree.CharmDisplayPropertiesMap;
-import net.sf.anathema.character.main.magic.display.view.charmtree.CharmView;
-import net.sf.anathema.character.main.magic.display.view.charmtree.DefaultNodeProperties;
+import net.sf.anathema.hero.charms.display.CharmDisplayPropertiesMap;
+import net.sf.anathema.hero.charms.display.view.CharmView;
+import net.sf.anathema.hero.charms.display.view.DefaultNodeProperties;
 import net.sf.anathema.character.main.magic.model.charmtree.GroupCharmTree;
 import net.sf.anathema.magic.description.display.ShowMagicDetailListener;
 import net.sf.anathema.hero.charms.display.coloring.CharacterColoringStrategy;

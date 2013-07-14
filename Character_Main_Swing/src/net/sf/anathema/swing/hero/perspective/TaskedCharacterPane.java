@@ -1,7 +1,7 @@
 package net.sf.anathema.swing.hero.perspective;
 
 import net.sf.anathema.character.main.view.CharacterPane;
-import net.sf.anathema.character.main.view.OverviewDisplay;
+import net.sf.anathema.hero.advance.overview.view.OverviewDisplay;
 import net.sf.anathema.framework.presenter.view.MultipleContentView;
 import net.sf.anathema.framework.swing.IView;
 import net.sf.anathema.framework.view.util.ContentProperties;

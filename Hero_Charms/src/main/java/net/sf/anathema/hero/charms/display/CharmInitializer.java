@@ -1,9 +1,8 @@
 package net.sf.anathema.hero.charms.display;
 
 import net.sf.anathema.character.main.magic.description.MagicDescriptionProvider;
-import net.sf.anathema.character.main.magic.display.view.charms.CharmDescriptionProviderExtractor;
-import net.sf.anathema.character.main.magic.display.view.charmtree.CharmDisplayPropertiesMap;
-import net.sf.anathema.character.main.magic.display.view.charmtree.CharmView;
+import net.sf.anathema.hero.charms.display.presenter.CharmDescriptionProviderExtractor;
+import net.sf.anathema.hero.charms.display.view.CharmView;
 import net.sf.anathema.character.main.type.CharacterType;
 import net.sf.anathema.character.main.view.SectionView;
 import net.sf.anathema.framework.IApplicationModel;

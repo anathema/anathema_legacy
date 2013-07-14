@@ -1,4 +1,4 @@
-package net.sf.anathema.character.main.magic.display.view.charms;
+package net.sf.anathema.hero.charms.display.presenter;
 
 import net.sf.anathema.character.main.magic.description.AggregatedCharmDescriptionProvider;
 import net.sf.anathema.character.main.magic.description.MagicDescriptionProvider;

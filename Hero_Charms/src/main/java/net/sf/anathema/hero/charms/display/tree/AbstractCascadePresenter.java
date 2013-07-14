@@ -1,7 +1,7 @@
 package net.sf.anathema.hero.charms.display.tree;
 
-import net.sf.anathema.character.main.magic.display.view.charmtree.CascadeSelectionView;
-import net.sf.anathema.character.main.magic.display.view.charmtree.ICharmGroupChangeListener;
+import net.sf.anathema.hero.charms.display.view.CascadeSelectionView;
+import net.sf.anathema.hero.charms.display.presenter.ICharmGroupChangeListener;
 import net.sf.anathema.character.main.magic.model.charm.ICharmGroup;
 import net.sf.anathema.character.main.magic.model.charmtree.GroupCharmTree;
 import net.sf.anathema.hero.advance.overview.presenter.SelectIdentifierConfiguration;

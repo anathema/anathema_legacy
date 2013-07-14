@@ -1,6 +1,6 @@
 package net.sf.anathema.hero.charms.display.coloring;
 
-import net.sf.anathema.character.main.magic.display.view.charmtree.CharmGroupInformer;
+import net.sf.anathema.hero.charms.display.presenter.CharmGroupInformer;
 import net.sf.anathema.character.main.magic.model.charm.Charm;
 
 import java.util.ArrayList;

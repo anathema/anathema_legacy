@@ -1,8 +1,8 @@
 package net.sf.anathema.swing.hero.overview;
 
 import net.sf.anathema.character.main.library.overview.OverviewCategory;
-import net.sf.anathema.character.main.view.CategorizedOverview;
-import net.sf.anathema.character.main.view.OverviewDisplay;
+import net.sf.anathema.hero.advance.overview.view.CategorizedOverview;
+import net.sf.anathema.hero.advance.overview.view.OverviewDisplay;
 
 import javax.swing.Box;
 import javax.swing.BoxLayout;

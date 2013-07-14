@@ -1,4 +1,4 @@
-package net.sf.anathema.character.main.magic.display.view.charmtree;
+package net.sf.anathema.hero.charms.display;
 
 import net.sf.anathema.character.main.type.CharacterType;
 import net.sf.anathema.hero.charms.display.AbstractCharmPresentationProperties;

@@ -1,7 +1,7 @@
 package net.sf.anathema.swing.hero.perspective;
 
 import net.sf.anathema.character.main.view.CharacterView;
-import net.sf.anathema.character.main.view.OverviewContainer;
+import net.sf.anathema.hero.advance.overview.view.OverviewContainer;
 import net.sf.anathema.character.main.view.SubViewMap;
 import net.sf.anathema.character.main.view.SubViewRegistry;
 import net.sf.anathema.framework.IApplicationModel;

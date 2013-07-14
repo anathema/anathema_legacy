@@ -1,4 +1,4 @@
-package net.sf.anathema.character.main.magic.display.view.charmtree;
+package net.sf.anathema.hero.charms.display.view;
 
 import net.sf.anathema.platform.tree.display.ISpecialNodeView;
 

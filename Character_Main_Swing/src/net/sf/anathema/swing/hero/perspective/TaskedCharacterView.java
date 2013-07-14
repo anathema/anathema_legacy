@@ -1,6 +1,6 @@
 package net.sf.anathema.swing.hero.perspective;
 
-import net.sf.anathema.character.main.view.CategorizedOverview;
+import net.sf.anathema.hero.advance.overview.view.CategorizedOverview;
 import net.sf.anathema.character.main.view.CharacterView;
 import net.sf.anathema.character.main.view.CharacterViewSection;
 import net.sf.anathema.character.main.view.SectionView;

@@ -1,7 +1,7 @@
 package net.sf.anathema.hero.advance.overview.presenter;
 
 import net.sf.anathema.character.main.library.overview.OverviewCategory;
-import net.sf.anathema.character.main.view.CategorizedOverview;
+import net.sf.anathema.hero.advance.overview.view.CategorizedOverview;
 import net.sf.anathema.character.main.view.labelledvalue.IValueView;
 import net.sf.anathema.character.main.view.labelledvalue.LabelledAllotmentView;
 import net.sf.anathema.hero.advance.creation.IBonusPointManagement;

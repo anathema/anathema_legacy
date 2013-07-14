@@ -7,7 +7,7 @@ import com.itextpdf.text.pdf.MultiColumnText;
 import com.itextpdf.text.pdf.PdfPTable;
 import com.itextpdf.text.pdf.PdfWriter;
 import net.sf.anathema.character.main.magic.description.MagicDescription;
-import net.sf.anathema.character.main.magic.display.view.charms.CharmDescriptionProviderExtractor;
+import net.sf.anathema.hero.charms.display.presenter.CharmDescriptionProviderExtractor;
 import net.sf.anathema.character.main.magic.model.charm.Charm;
 import net.sf.anathema.character.main.magic.model.charmtree.builder.MagicDisplayLabeler;
 import net.sf.anathema.character.main.magic.model.charmtree.builder.stringbuilder.ScreenDisplayInfoContributor;

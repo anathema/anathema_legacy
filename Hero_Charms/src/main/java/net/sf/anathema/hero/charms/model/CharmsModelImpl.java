@@ -3,7 +3,7 @@ package net.sf.anathema.hero.charms.model;
 import com.google.common.base.Functions;
 import net.sf.anathema.character.main.magic.cache.CharmCache;
 import net.sf.anathema.character.main.magic.cache.CharmProvider;
-import net.sf.anathema.character.main.magic.display.view.charms.CharacterChangeCharmListener;
+import net.sf.anathema.hero.charms.display.presenter.CharacterChangeCharmListener;
 import net.sf.anathema.character.main.magic.model.charm.Charm;
 import net.sf.anathema.character.main.magic.model.charm.CharmAttributeList;
 import net.sf.anathema.character.main.magic.model.charm.CharmIdMap;

@@ -1,7 +1,7 @@
 package net.sf.anathema.hero.advance.overview.presenter;
 
-import net.sf.anathema.character.main.view.CategorizedOverview;
-import net.sf.anathema.character.main.view.OverviewContainer;
+import net.sf.anathema.hero.advance.overview.view.CategorizedOverview;
+import net.sf.anathema.hero.advance.overview.view.OverviewContainer;
 import net.sf.anathema.hero.advance.creation.IBonusPointManagement;
 import net.sf.anathema.hero.advance.experience.ExperiencePointManagement;
 import net.sf.anathema.hero.experience.ExperienceChange;

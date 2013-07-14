@@ -1,7 +1,7 @@
 package net.sf.anathema.hero.magic.presenter;
 
 import net.sf.anathema.character.main.dummy.DummyCharm;
-import net.sf.anathema.character.main.magic.display.view.charmtree.CharmGroupInformer;
+import net.sf.anathema.hero.charms.display.presenter.CharmGroupInformer;
 import net.sf.anathema.character.main.magic.model.charm.Charm;
 import net.sf.anathema.character.main.magic.model.charm.CharmGroup;
 import net.sf.anathema.character.main.magic.model.charm.ICharmGroup;
