@@ -82,13 +82,6 @@ public class ExperienceTemplateParser extends AbstractXmlTemplateParser<GenericE
     int favoredMartialArtsCost = ElementUtilities.getRequiredIntAttrib(martialArts, ATTRIB_FAVORED);
     int generalMartialArtsCost = ElementUtilities.getRequiredIntAttrib(martialArts, ATTRIB_GENERAL);
     costs.setMartialArtsCosts(favoredMartialArtsCost, generalMartialArtsCost);
-
-    Element spells = magic.element(TAG_SPELLS);
-    if (spells != null) {
-      int cost = ElementUtilities.getIntAttrib(spells, ATTRIB_COST, 0);
-      costs.setSpellCost(cost);
-    }
-
   }
 
   private void setAdvantageCosts(Element element, GenericExperiencePointCosts costs) throws PersistenceException {

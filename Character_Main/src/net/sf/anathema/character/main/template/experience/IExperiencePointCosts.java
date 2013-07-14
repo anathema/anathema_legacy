@@ -1,7 +1,6 @@
 package net.sf.anathema.character.main.template.experience;
 
 import net.sf.anathema.character.main.magic.model.charm.Charm;
-import net.sf.anathema.character.main.magic.model.spells.Spell;
 import net.sf.anathema.hero.advance.CostAnalyzer;
 
 public interface IExperiencePointCosts {
@@ -19,6 +18,4 @@ public interface IExperiencePointCosts {
   CurrentRatingCosts getWillpowerCosts();
 
   int getCharmCosts(Charm charm, CostAnalyzer costAnalyzer);
-
-  int getSpellCosts(Spell spell, CostAnalyzer costAnalyzer);
 }

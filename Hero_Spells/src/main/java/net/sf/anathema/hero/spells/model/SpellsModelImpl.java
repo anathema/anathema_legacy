@@ -6,8 +6,9 @@ import net.sf.anathema.character.main.magic.model.spells.Spell;
 import net.sf.anathema.character.main.magic.model.spells.SpellMapper;
 import net.sf.anathema.character.main.magic.parser.spells.ISpellCache;
 import net.sf.anathema.character.main.template.HeroTemplate;
-import net.sf.anathema.character.main.template.experience.IExperiencePointCosts;
 import net.sf.anathema.character.main.template.magic.ISpellMagicTemplate;
+import net.sf.anathema.hero.charms.advance.MagicPointsModelFetcher;
+import net.sf.anathema.hero.charms.advance.experience.MagicExperienceCosts;
 import net.sf.anathema.hero.charms.model.CharmsModel;
 import net.sf.anathema.hero.charms.model.CharmsModelFetcher;
 import net.sf.anathema.hero.experience.ExperienceChange;
@@ -20,7 +21,6 @@ import net.sf.anathema.hero.model.change.ChangeFlavor;
 import net.sf.anathema.hero.model.change.FlavoredChangeListener;
 import net.sf.anathema.hero.model.change.UnspecifiedChangeListener;
 import net.sf.anathema.hero.points.PointModelFetcher;
-import net.sf.anathema.hero.points.PointsModel;
 import net.sf.anathema.hero.spells.advance.SpellExperienceCostCalculator;
 import net.sf.anathema.hero.spells.advance.SpellExperienceModel;
 import net.sf.anathema.hero.spells.sheet.content.PrintSpellsProvider;
@@ -64,10 +64,9 @@ public class SpellsModelImpl implements SpellsModel {
   }
 
   private void initializeExperience(Hero hero) {
-    PointsModel pointsModel = PointModelFetcher.fetch(hero);
-    IExperiencePointCosts experienceCost = hero.getTemplate().getExperienceCost();
+    MagicExperienceCosts experienceCost = MagicPointsModelFetcher.fetch(hero).getExperienceCost();
     SpellExperienceCostCalculator calculator = new SpellExperienceCostCalculator(experienceCost);
-    pointsModel.addToExperienceOverview(new SpellExperienceModel(hero, calculator));
+    PointModelFetcher.fetch(hero).addToExperienceOverview(new SpellExperienceModel(hero, calculator));
   }
 
   private void initializeSpellsByCircle(HeroEnvironment environment) {

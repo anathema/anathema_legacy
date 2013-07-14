@@ -2,7 +2,6 @@ package net.sf.anathema.character.main.xml.experience;
 
 import net.sf.anathema.character.main.magic.model.charm.Charm;
 import net.sf.anathema.character.main.magic.model.magic.attribute.MagicAttribute;
-import net.sf.anathema.character.main.magic.model.spells.Spell;
 import net.sf.anathema.character.main.template.experience.CurrentRatingCosts;
 import net.sf.anathema.character.main.template.experience.IExperiencePointCosts;
 import net.sf.anathema.character.main.template.points.FixedValueRatingCosts;
@@ -27,7 +26,6 @@ public class GenericExperiencePointCosts extends ReflectionCloneableObject<Gener
   private int favoredCharmCost = 0;
   private int generalHighLevelCharmCost = 0;
   private int favoredHighLevelCharmCost = 0;
-  private int spellCost = 0;
   private MartialArtsLevel standardMartialArtsLevel = MartialArtsLevel.Terrestrial;
   private Map<String, Integer> keywordGeneralCosts = new HashMap<>();
   private Map<String, Integer> keywordFavoredCosts = new HashMap<>();
@@ -40,12 +38,6 @@ public class GenericExperiencePointCosts extends ReflectionCloneableObject<Gener
   @Override
   public CurrentRatingCosts getAttributeCosts(boolean favored) {
     return favored ? favoredAttributeCost : generalAttributeCost;
-  }
-
-  @Override
-  public int getSpellCosts(Spell spell, CostAnalyzer costAnalyzer) {
-    boolean favored = costAnalyzer.isMagicFavored(spell);
-    return spellCost != 0 ? spellCost : getCharmCosts(favored, null);
   }
 
   @Override
@@ -125,10 +117,6 @@ public class GenericExperiencePointCosts extends ReflectionCloneableObject<Gener
     this.generalCharmCost = generalCharmCost;
     this.keywordFavoredCosts = keywordFavoredCost;
     this.keywordGeneralCosts = keywordGeneralCost;
-  }
-
-  public void setSpellCost(int spellCost) {
-    this.spellCost = spellCost;
   }
 
   public void setMartialArtsCosts(int favoredMartialArtsCost, int generalMartialArtsCost) {
