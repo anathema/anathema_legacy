@@ -1,12 +1,12 @@
-package net.sf.anathema.character.main.social;
+package net.sf.anathema.hero.combat.model.social;
 
 import net.sf.anathema.character.main.equipment.HeroStatsModifiers;
 import net.sf.anathema.character.main.traits.types.AbilityType;
 import net.sf.anathema.hero.traits.TraitMap;
 
-public class PresenceSocialAttack extends AbstractSocialAttack {
+public class InvestigationSocialAttack extends AbstractSocialAttack {
 
-  public PresenceSocialAttack(TraitMap collection, HeroStatsModifiers equipmentModifiers) {
+  public InvestigationSocialAttack(TraitMap collection, HeroStatsModifiers equipmentModifiers) {
     super(collection, equipmentModifiers);
   }
 
@@ -17,11 +17,11 @@ public class PresenceSocialAttack extends AbstractSocialAttack {
 
   @Override
   public int getSpeed() {
-    return 4;
+    return 5;
   }
 
   @Override
   public AbilityType getName() {
-    return AbilityType.Presence;
+    return AbilityType.Investigation;
   }
 }

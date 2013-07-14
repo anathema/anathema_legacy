@@ -2,7 +2,7 @@ package net.sf.anathema.hero.combat.sheet.social.stats;
 
 import com.itextpdf.text.Font;
 import com.itextpdf.text.pdf.PdfPTable;
-import net.sf.anathema.character.main.social.ISocialCombatStats;
+import net.sf.anathema.hero.combat.model.social.ISocialCombatStats;
 import net.sf.anathema.lib.resources.Resources;
 
 public class SocialRateStatsGroup extends AbstractSocialCombatsValueStatsGroup {

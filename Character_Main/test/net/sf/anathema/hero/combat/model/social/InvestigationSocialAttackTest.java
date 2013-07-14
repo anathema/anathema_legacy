@@ -1,4 +1,4 @@
-package net.sf.anathema.character.main.social;
+package net.sf.anathema.hero.combat.model.social;
 
 import net.sf.anathema.character.main.equipment.HeroStatsModifiers;
 import net.sf.anathema.character.main.testing.dummy.trait.DummyTrait;

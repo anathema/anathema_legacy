@@ -1,10 +1,10 @@
 package net.sf.anathema.hero.combat.sheet.social.encoder;
 
 import net.sf.anathema.character.main.equipment.HeroStatsModifiers;
-import net.sf.anathema.character.main.social.ISocialCombatStats;
-import net.sf.anathema.character.main.social.InvestigationSocialAttack;
-import net.sf.anathema.character.main.social.PerformanceSocialAttack;
-import net.sf.anathema.character.main.social.PresenceSocialAttack;
+import net.sf.anathema.hero.combat.model.social.ISocialCombatStats;
+import net.sf.anathema.hero.combat.model.social.InvestigationSocialAttack;
+import net.sf.anathema.hero.combat.model.social.PerformanceSocialAttack;
+import net.sf.anathema.hero.combat.model.social.PresenceSocialAttack;
 import net.sf.anathema.hero.combat.sheet.social.stats.DeceptionStatsGroup;
 import net.sf.anathema.hero.combat.sheet.social.stats.HonestyStatsGroup;
 import net.sf.anathema.hero.combat.sheet.social.stats.SocialCombatNameStatsGroup;

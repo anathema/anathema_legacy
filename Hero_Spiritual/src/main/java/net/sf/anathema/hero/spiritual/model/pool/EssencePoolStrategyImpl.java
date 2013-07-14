@@ -1,6 +1,5 @@
 package net.sf.anathema.hero.spiritual.model.pool;
 
-import net.sf.anathema.character.main.essence.IEssencePoolModifier;
 import net.sf.anathema.character.main.template.essence.FactorizedTrait;
 import net.sf.anathema.character.main.template.essence.FactorizedTraitSumCalculator;
 import net.sf.anathema.character.main.template.essence.IEssenceTemplate;

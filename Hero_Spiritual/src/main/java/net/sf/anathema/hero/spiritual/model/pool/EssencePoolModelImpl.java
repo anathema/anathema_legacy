@@ -1,7 +1,6 @@
 package net.sf.anathema.hero.spiritual.model.pool;
 
 import com.google.common.base.Preconditions;
-import net.sf.anathema.character.main.essence.IEssencePoolModifier;
 import net.sf.anathema.character.main.template.HeroTemplate;
 import net.sf.anathema.character.main.template.essence.IEssenceTemplate;
 import net.sf.anathema.hero.framework.HeroEnvironment;
