@@ -1,7 +1,6 @@
 package net.sf.anathema.hero.spiritual.display;
 
 import javafx.scene.Node;
-import net.miginfocom.layout.AC;
 import net.miginfocom.layout.CC;
 import net.sf.anathema.character.main.type.CharacterType;
 import net.sf.anathema.character.main.view.labelledvalue.IValueView;
@@ -19,13 +18,13 @@ public class FxSpiritualTraitsView implements SpiritualTraitsView, NodeHolder {
   private final MigPane virtuePanel = new MigPane(fillWithoutInsets().wrapAfter(2));
   private final MigPane willpowerPanel = new MigPane(fillWithoutInsets().wrapAfter(2));
   private final FxEssenceView essenceView = new FxEssenceView();
-  private final MigPane content = new MigPane(withoutInsets().wrapAfter(2), new AC().index(0).fill().index(1).fill());
+  private final MigPane content = new MigPane(withoutInsets().wrapAfter(2).debug(1));
 
   @Override
   public void initGui(SpiritualTraitsViewProperties properties, CharacterType characterType) {
-    addTitledPanel(properties.getVirtueTitle(), content, virtuePanel, new CC().spanY(2).growY().alignY("top"));
-    addTitledPanel(properties.getWillpowerTitle(), content, willpowerPanel, new CC().pushX().alignY("top"));
-    addTitledPanel(properties.getEssenceTitle(), content, essenceView.getNode(), new CC().pushX().alignY("top"));
+    addTitledPanel(properties.getVirtueTitle(), content, virtuePanel, new CC().spanY().growY().alignY("top"));
+    addTitledPanel(properties.getWillpowerTitle(), content, willpowerPanel, new CC().alignY("top").growX());
+    addTitledPanel(properties.getEssenceTitle(), content, essenceView.getNode(), new CC().alignY("top"));
   }
 
   @Override
