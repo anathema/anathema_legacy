@@ -2,7 +2,6 @@ package net.sf.anathema.hero.combos.model;
 
 import net.sf.anathema.character.main.magic.description.MagicDescriptionProvider;
 import net.sf.anathema.character.main.magic.model.charm.Charm;
-import net.sf.anathema.character.main.magic.model.charms.options.DefaultCharmTemplateRetriever;
 import net.sf.anathema.hero.charms.model.CharmsModel;
 import net.sf.anathema.hero.charms.model.CharmsModelFetcher;
 import net.sf.anathema.hero.combos.display.presenter.CombosModel;
@@ -26,7 +25,7 @@ public class ComboConfigurationModel {
 
   public boolean isAlienCharmsAllowed() {
     CasteType caste = HeroConceptFetcher.fetch(hero).getCaste().getType();
-    return DefaultCharmTemplateRetriever.getNativeTemplate(hero).isAllowedAlienCharms(caste);
+    return hero.getTemplate().getMagicTemplate().getCharmTemplate().isAllowedAlienCharms(caste);
   }
 
   public CharmsModel getCharmConfiguration() {

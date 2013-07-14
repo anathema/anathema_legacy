@@ -1,4 +1,4 @@
-package net.sf.anathema.character.main.magic.model.charms.options;
+package net.sf.anathema.hero.charms.model.options;
 
 import net.sf.anathema.character.main.magic.cache.CharmProvider;
 import net.sf.anathema.character.main.magic.display.view.charmtree.CharmGroupArbitrator;
@@ -23,7 +23,6 @@ import java.util.List;
 import java.util.Map;
 
 import static net.sf.anathema.character.main.magic.model.charm.CharmAttributeList.EXCLUSIVE_ATTRIBUTE;
-import static net.sf.anathema.character.main.magic.model.charms.options.DefaultCharmTemplateRetriever.getNativeTemplate;
 
 public class NonMartialArtsOptions implements CharmIdMap, CharmGroupArbitrator {
 
@@ -84,7 +83,7 @@ public class NonMartialArtsOptions implements CharmIdMap, CharmGroupArbitrator {
 
   private boolean characterMayLearnAlienCharms() {
     HeroConcept concept = HeroConceptFetcher.fetch(hero);
-    return getNativeTemplate(hero).isAllowedAlienCharms(concept.getCaste().getType());
+    return hero.getTemplate().getMagicTemplate().getCharmTemplate().isAllowedAlienCharms(concept.getCaste().getType());
   }
 
   public CharacterType getNativeCharacterType() {

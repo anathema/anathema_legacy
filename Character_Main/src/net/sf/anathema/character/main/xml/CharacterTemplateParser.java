@@ -1,7 +1,6 @@
 package net.sf.anathema.character.main.xml;
 
 import net.sf.anathema.character.main.framework.ICharacterTemplateRegistryCollection;
-import net.sf.anathema.character.main.magic.model.charms.options.DefaultCharmTemplateRetriever;
 import net.sf.anathema.character.main.template.HeroTemplate;
 import net.sf.anathema.character.main.template.ITemplateType;
 import net.sf.anathema.character.main.traits.groups.AllAbilityTraitTypeGroup;
@@ -128,7 +127,7 @@ public class CharacterTemplateParser extends AbstractXmlTemplateParser<GenericCh
   }
 
   private MartialArtsLevel getMartialArtsStandardLevel(HeroTemplate heroTemplate) {
-    return DefaultCharmTemplateRetriever.getCharmTemplate(heroTemplate).getMartialArtsRules().getStandardLevel();
+    return heroTemplate.getMagicTemplate().getCharmTemplate().getMartialArtsRules().getStandardLevel();
   }
 
   private void setCreationPoints(GenericCharacterTemplate characterTemplate, Element creationElement) throws PersistenceException {

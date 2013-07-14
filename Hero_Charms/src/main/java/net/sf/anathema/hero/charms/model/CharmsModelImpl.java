@@ -22,8 +22,8 @@ import net.sf.anathema.character.main.magic.model.charm.special.MultipleEffectCh
 import net.sf.anathema.character.main.magic.model.charms.ILearningCharmGroup;
 import net.sf.anathema.character.main.magic.model.charms.ILearningCharmGroupContainer;
 import net.sf.anathema.character.main.magic.model.charms.LearningCharmGroup;
-import net.sf.anathema.character.main.magic.model.charms.options.MartialArtsOptions;
-import net.sf.anathema.character.main.magic.model.charms.options.NonMartialArtsOptions;
+import net.sf.anathema.hero.charms.model.options.MartialArtsOptions;
+import net.sf.anathema.hero.charms.model.options.NonMartialArtsOptions;
 import net.sf.anathema.character.main.magic.model.charmtree.CharmTraitRequirementChecker;
 import net.sf.anathema.character.main.magic.model.charmtree.GroupCharmTree;
 import net.sf.anathema.character.main.template.HeroTemplate;
@@ -67,7 +67,6 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-import static net.sf.anathema.character.main.magic.model.charms.options.DefaultCharmTemplateRetriever.getNativeTemplate;
 import static net.sf.anathema.hero.magic.model.martial.MartialArtsLevel.Sidereal;
 import static net.sf.anathema.hero.magic.model.martial.MartialArtsUtilities.hasLevel;
 import static net.sf.anathema.hero.magic.model.martial.MartialArtsUtilities.isFormMagic;
@@ -415,7 +414,7 @@ public class CharmsModelImpl implements CharmsModel {
   public final boolean isLearnable(Charm charm) {
     if (isAlienCharm(charm)) {
       CasteType casteType = HeroConceptFetcher.fetch(hero).getCaste().getType();
-      if (!(getNativeTemplate(hero).isAllowedAlienCharms(casteType))) {
+      if (!(hero.getTemplate().getMagicTemplate().getCharmTemplate().isAllowedAlienCharms(casteType))) {
         return false;
       }
       if (charm.hasAttribute(CharmAttributeList.NATIVE)) {

@@ -1,4 +1,4 @@
-package net.sf.anathema.character.main.magic.model.charms.options;
+package net.sf.anathema.hero.charms.model.options;
 
 import net.sf.anathema.character.main.magic.cache.CharmProvider;
 import net.sf.anathema.character.main.magic.model.charm.Charm;
@@ -25,7 +25,7 @@ public class MartialArtsOptions implements CharmIdMap, ICharmLearnableArbitrator
   }
 
   private CharmTemplate getNativeCharmTemplate() {
-    return DefaultCharmTemplateRetriever.getNativeTemplate(hero);
+    return hero.getTemplate().getMagicTemplate().getCharmTemplate();
   }
 
   @Override
