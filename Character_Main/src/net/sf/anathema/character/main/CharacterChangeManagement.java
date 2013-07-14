@@ -1,9 +1,9 @@
 package net.sf.anathema.character.main;
 
 import net.sf.anathema.framework.repository.ChangeManagement;
+import net.sf.anathema.hero.model.Hero;
 import net.sf.anathema.hero.model.change.ChangeFlavor;
 import net.sf.anathema.hero.model.change.FlavoredChangeListener;
-import net.sf.anathema.hero.model.Hero;
 import net.sf.anathema.lib.control.ChangeListener;
 import org.jmock.example.announcer.Announcer;
 

@@ -1,12 +1,12 @@
 package net.sf.anathema.hero.attributes.dummy;
 
-import net.sf.anathema.character.main.traits.groups.IIdentifiedTraitTypeGroup;
 import net.sf.anathema.character.main.library.trait.TraitGroup;
+import net.sf.anathema.character.main.traits.groups.IIdentifiedTraitTypeGroup;
 import net.sf.anathema.hero.attributes.model.AttributeModel;
-import net.sf.anathema.hero.traits.DefaultTraitMap;
-import net.sf.anathema.hero.model.change.ChangeAnnouncer;
+import net.sf.anathema.hero.framework.HeroEnvironment;
 import net.sf.anathema.hero.model.Hero;
-import net.sf.anathema.hero.model.InitializationContext;
+import net.sf.anathema.hero.model.change.ChangeAnnouncer;
+import net.sf.anathema.hero.traits.DefaultTraitMap;
 import net.sf.anathema.lib.util.Identifier;
 
 public class DummyAttributeModel extends DefaultTraitMap implements AttributeModel {
@@ -26,7 +26,7 @@ public class DummyAttributeModel extends DefaultTraitMap implements AttributeMod
   }
 
   @Override
-  public void initialize(InitializationContext context, Hero hero) {
+  public void initialize(HeroEnvironment environment, Hero hero) {
     // nothing to do
   }
 

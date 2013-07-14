@@ -1,10 +1,10 @@
 package net.sf.anathema.character.main.magic.parser.charms.special;
 
-import net.sf.anathema.hero.health.model.HealthLevelType;
+import net.sf.anathema.character.main.magic.model.charm.special.ISpecialCharm;
 import net.sf.anathema.character.main.magic.model.charm.special.OxBodyTechniqueCharm;
 import net.sf.anathema.character.main.magic.parser.charms.TraitTypeFinder;
-import net.sf.anathema.character.main.magic.model.charm.special.ISpecialCharm;
 import net.sf.anathema.character.main.traits.TraitType;
+import net.sf.anathema.hero.health.model.HealthLevelType;
 import org.dom4j.Element;
 
 import java.util.ArrayList;

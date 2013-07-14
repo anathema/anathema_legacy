@@ -1,8 +1,8 @@
 package net.sf.anathema.hero.magic.advance.creation;
 
 import net.sf.anathema.character.main.magic.model.magic.Magic;
-import net.sf.anathema.hero.advance.CostAnalyzer;
 import net.sf.anathema.character.main.xml.creation.template.MagicCreationCostGroupTto;
+import net.sf.anathema.hero.advance.CostAnalyzer;
 import net.sf.anathema.hero.magic.model.martial.MartialArtsLevel;
 
 public class MagicCostStrategy {

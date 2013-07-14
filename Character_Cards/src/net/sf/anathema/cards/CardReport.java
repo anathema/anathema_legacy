@@ -7,11 +7,11 @@ import net.sf.anathema.cards.data.ICardData;
 import net.sf.anathema.cards.data.providers.ICardDataProvider;
 import net.sf.anathema.cards.layout.ICardLayout;
 import net.sf.anathema.character.main.magic.model.charm.Charm;
-import net.sf.anathema.hero.charms.model.CharmsModelFetcher;
-import net.sf.anathema.hero.experience.ExperienceModelFetcher;
 import net.sf.anathema.framework.reporting.ReportException;
 import net.sf.anathema.framework.reporting.pdf.AbstractPdfReport;
 import net.sf.anathema.framework.repository.Item;
+import net.sf.anathema.hero.charms.model.CharmsModelFetcher;
+import net.sf.anathema.hero.experience.ExperienceModelFetcher;
 import net.sf.anathema.hero.model.Hero;
 import net.sf.anathema.lib.resources.Resources;
 

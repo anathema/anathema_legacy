@@ -1,17 +1,17 @@
 package net.sf.anathema.hero.magic.model.charms;
 
-import net.sf.anathema.hero.advance.experience.ExperiencePointConfiguration;
 import net.sf.anathema.character.main.dummy.DummyCharm;
 import net.sf.anathema.character.main.magic.model.charm.Charm;
 import net.sf.anathema.character.main.magic.model.charm.CharmAttributeList;
 import net.sf.anathema.character.main.magic.model.charms.ILearningCharmGroup;
 import net.sf.anathema.character.main.magic.model.charmtree.ICharmLearnArbitrator;
 import net.sf.anathema.character.main.testing.dummy.magic.DummyCharmsModel;
-import net.sf.anathema.hero.model.change.ChangeAnnouncer;
+import net.sf.anathema.hero.advance.experience.ExperiencePointConfiguration;
 import net.sf.anathema.hero.charms.model.DefaultMartialArtsCharmConfiguration;
 import net.sf.anathema.hero.experience.ExperienceModel;
+import net.sf.anathema.hero.framework.HeroEnvironment;
 import net.sf.anathema.hero.model.Hero;
-import net.sf.anathema.hero.model.InitializationContext;
+import net.sf.anathema.hero.model.change.ChangeAnnouncer;
 import net.sf.anathema.lib.control.ChangeListener;
 import net.sf.anathema.lib.util.Identifier;
 import org.junit.Assert;
@@ -56,7 +56,7 @@ public class DefaultMartialArtsCharmConfiguration_Test {
       }
 
       @Override
-      public void initialize(InitializationContext context, Hero hero) {
+      public void initialize(HeroEnvironment environment, Hero hero) {
         // nothing to do
       }
 

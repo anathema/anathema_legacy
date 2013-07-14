@@ -1,8 +1,8 @@
 package net.sf.anathema.hero.magic.parser;
 
 import net.sf.anathema.character.main.magic.model.magic.cost.Cost;
-import net.sf.anathema.character.main.magic.parser.magic.CostBuilder;
 import net.sf.anathema.character.main.magic.model.magic.cost.ICost;
+import net.sf.anathema.character.main.magic.parser.magic.CostBuilder;
 import net.sf.anathema.lib.exception.PersistenceException;
 import org.dom4j.Element;
 import org.dom4j.tree.DefaultElement;

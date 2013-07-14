@@ -12,12 +12,12 @@ import net.sf.anathema.character.main.traits.creation.TypedTraitTemplateFactory;
 import net.sf.anathema.character.main.traits.groups.IIdentifiedCasteTraitTypeGroup;
 import net.sf.anathema.character.main.traits.groups.IIdentifiedTraitTypeGroup;
 import net.sf.anathema.character.main.traits.types.AttributeGroupType;
-import net.sf.anathema.hero.model.change.ChangeAnnouncer;
 import net.sf.anathema.hero.concept.CasteCollection;
 import net.sf.anathema.hero.concept.HeroConceptFetcher;
+import net.sf.anathema.hero.framework.HeroEnvironment;
 import net.sf.anathema.hero.model.Hero;
 import net.sf.anathema.hero.model.HeroModel;
-import net.sf.anathema.hero.model.InitializationContext;
+import net.sf.anathema.hero.model.change.ChangeAnnouncer;
 import net.sf.anathema.hero.traits.DefaultTraitMap;
 import net.sf.anathema.hero.traits.MappedTraitGroup;
 import net.sf.anathema.hero.traits.TraitModel;
@@ -37,7 +37,7 @@ public class AttributeModelImpl extends DefaultTraitMap implements AttributeMode
   }
 
   @Override
-  public void initialize(InitializationContext context, Hero hero) {
+  public void initialize(HeroEnvironment environment, Hero hero) {
     this.hero = hero;
     this.template = hero.getTemplate();
     CasteCollection casteCollection = HeroConceptFetcher.fetch(hero).getCasteCollection();

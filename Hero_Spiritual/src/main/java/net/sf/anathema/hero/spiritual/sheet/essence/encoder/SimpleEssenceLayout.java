@@ -2,8 +2,8 @@ package net.sf.anathema.hero.spiritual.sheet.essence.encoder;
 
 import net.sf.anathema.hero.sheet.pdf.encoder.general.Bounds;
 import net.sf.anathema.hero.sheet.pdf.encoder.general.Position;
-import net.sf.anathema.hero.traits.sheet.content.PdfTraitEncoder;
 import net.sf.anathema.hero.sheet.pdf.encoder.graphics.TextMetrics;
+import net.sf.anathema.hero.traits.sheet.content.PdfTraitEncoder;
 
 import static net.sf.anathema.hero.sheet.pdf.page.IVoidStateFormatConstants.TEXT_PADDING;
 

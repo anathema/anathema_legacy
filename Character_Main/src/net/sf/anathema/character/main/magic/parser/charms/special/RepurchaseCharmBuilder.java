@@ -1,13 +1,13 @@
 package net.sf.anathema.character.main.magic.parser.charms.special;
 
 import net.sf.anathema.character.main.magic.model.charm.special.CharmTier;
+import net.sf.anathema.character.main.magic.model.charm.special.ISpecialCharm;
 import net.sf.anathema.character.main.magic.model.charm.special.StaticMultiLearnableCharm;
 import net.sf.anathema.character.main.magic.model.charm.special.TieredMultiLearnableCharm;
 import net.sf.anathema.character.main.magic.model.charm.special.TraitCharmTier;
 import net.sf.anathema.character.main.magic.model.charm.special.TraitDependentMultiLearnableCharm;
 import net.sf.anathema.character.main.magic.parser.charms.TraitTypeFinder;
 import net.sf.anathema.character.main.traits.EssenceTemplate;
-import net.sf.anathema.character.main.magic.model.charm.special.ISpecialCharm;
 import net.sf.anathema.character.main.traits.TraitType;
 import net.sf.anathema.character.main.traits.types.ValuedTraitType;
 import net.sf.anathema.lib.xml.ElementUtilities;

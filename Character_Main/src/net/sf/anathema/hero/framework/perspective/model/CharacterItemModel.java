@@ -1,10 +1,10 @@
 package net.sf.anathema.hero.framework.perspective.model;
 
+import net.sf.anathema.framework.repository.Item;
 import net.sf.anathema.hero.concept.HeroConceptFetcher;
 import net.sf.anathema.hero.description.HeroDescriptionFetcher;
 import net.sf.anathema.hero.framework.perspective.DescriptiveFeatures;
 import net.sf.anathema.hero.framework.perspective.LoadedDescriptiveFeatures;
-import net.sf.anathema.framework.repository.Item;
 import net.sf.anathema.hero.model.Hero;
 import net.sf.anathema.lib.control.ChangeListener;
 import net.sf.anathema.lib.control.ObjectValueListener;

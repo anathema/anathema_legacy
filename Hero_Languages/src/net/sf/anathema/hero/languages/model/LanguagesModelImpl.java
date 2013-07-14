@@ -8,12 +8,12 @@ import net.sf.anathema.character.main.library.removableentry.AbstractRemovableEn
 import net.sf.anathema.character.main.library.trait.Trait;
 import net.sf.anathema.character.main.traits.types.AbilityType;
 import net.sf.anathema.hero.abilities.model.AbilityModelFetcher;
+import net.sf.anathema.hero.framework.HeroEnvironment;
+import net.sf.anathema.hero.model.Hero;
 import net.sf.anathema.hero.model.change.ChangeAnnouncer;
 import net.sf.anathema.hero.model.change.ChangeFlavor;
 import net.sf.anathema.hero.model.change.FlavoredChangeListener;
 import net.sf.anathema.hero.model.change.RemovableEntryChangeAdapter;
-import net.sf.anathema.hero.model.Hero;
-import net.sf.anathema.hero.model.InitializationContext;
 import net.sf.anathema.hero.traits.TraitChangeFlavor;
 import net.sf.anathema.lib.control.ChangeListener;
 import net.sf.anathema.lib.lang.StringUtilities;
@@ -44,7 +44,7 @@ public class LanguagesModelImpl extends AbstractRemovableEntryModel<Identifier> 
   }
 
   @Override
-  public void initialize(InitializationContext context, Hero hero) {
+  public void initialize(HeroEnvironment environment, Hero hero) {
     this.hero = hero;
     updateLanguagePointAllowance();
   }

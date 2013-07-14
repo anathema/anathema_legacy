@@ -2,8 +2,8 @@ package net.sf.anathema.character.main.magic.model.charm.special;
 
 import net.sf.anathema.character.main.GenericTraitProvider;
 import net.sf.anathema.character.main.magic.model.charm.Charm;
-import net.sf.anathema.character.main.traits.ValuedTraitType;
 import net.sf.anathema.character.main.traits.TraitType;
+import net.sf.anathema.character.main.traits.ValuedTraitType;
 import net.sf.anathema.hero.traits.TraitMap;
 
 public class LearnRangeContext implements GenericTraitProvider {

@@ -1,9 +1,9 @@
 package net.sf.anathema.character.main.testing.dummy.template;
 
-import net.sf.anathema.character.main.traits.EssenceTemplate;
-import net.sf.anathema.character.main.traits.SimpleTraitTemplate;
 import net.sf.anathema.character.main.template.ITraitTemplateFactory;
+import net.sf.anathema.character.main.traits.EssenceTemplate;
 import net.sf.anathema.character.main.traits.ITraitTemplate;
+import net.sf.anathema.character.main.traits.SimpleTraitTemplate;
 import net.sf.anathema.character.main.traits.types.AbilityType;
 import net.sf.anathema.character.main.traits.types.AttributeType;
 import net.sf.anathema.character.main.traits.types.VirtueType;

@@ -1,7 +1,7 @@
 package net.sf.anathema.character.main.equipment.weapon;
 
-import net.sf.anathema.hero.health.HealthType;
 import net.sf.anathema.character.main.traits.TraitType;
+import net.sf.anathema.hero.health.HealthType;
 import net.sf.anathema.lib.util.Identifier;
 
 public interface IWeaponStats extends IEquipmentStats {

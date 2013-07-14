@@ -1,11 +1,11 @@
 package net.sf.anathema.hero.sheet.pdf.page.layout;
 
+import net.sf.anathema.hero.sheet.pdf.encoder.boxes.EncodingMetrics;
+import net.sf.anathema.hero.sheet.pdf.encoder.graphics.SheetGraphics;
 import net.sf.anathema.hero.sheet.pdf.page.layout.field.FieldEncoder;
 import net.sf.anathema.hero.sheet.pdf.page.layout.field.LayoutField;
 import net.sf.anathema.hero.sheet.pdf.page.layout.field.LayoutFieldBuilder;
 import net.sf.anathema.hero.sheet.pdf.page.layout.field.Placement;
-import net.sf.anathema.hero.sheet.pdf.encoder.boxes.EncodingMetrics;
-import net.sf.anathema.hero.sheet.pdf.encoder.graphics.SheetGraphics;
 
 public class SheetPage {
 

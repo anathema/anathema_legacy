@@ -1,14 +1,14 @@
 package net.sf.anathema.hero.concept.display.description;
 
-import net.sf.anathema.hero.display.presenter.HeroModelInitializer;
-import net.sf.anathema.hero.display.presenter.RegisteredInitializer;
 import net.sf.anathema.character.main.view.SectionView;
 import net.sf.anathema.framework.IApplicationModel;
 import net.sf.anathema.hero.concept.HeroConcept;
 import net.sf.anathema.hero.concept.HeroConceptFetcher;
-import net.sf.anathema.hero.display.configurableview.ConfigurableCharacterView;
 import net.sf.anathema.hero.description.HeroDescription;
 import net.sf.anathema.hero.description.HeroDescriptionFetcher;
+import net.sf.anathema.hero.display.configurableview.ConfigurableCharacterView;
+import net.sf.anathema.hero.display.presenter.HeroModelInitializer;
+import net.sf.anathema.hero.display.presenter.RegisteredInitializer;
 import net.sf.anathema.hero.model.Hero;
 import net.sf.anathema.initialization.reflections.Weight;
 import net.sf.anathema.lib.resources.Resources;

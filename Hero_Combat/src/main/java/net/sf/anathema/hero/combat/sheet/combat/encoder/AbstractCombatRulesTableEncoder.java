@@ -6,13 +6,13 @@ import com.itextpdf.text.Phrase;
 import com.itextpdf.text.Rectangle;
 import com.itextpdf.text.pdf.PdfPCell;
 import com.itextpdf.text.pdf.PdfPTable;
-import net.sf.anathema.hero.sheet.pdf.session.ReportSession;
 import net.sf.anathema.hero.combat.sheet.combat.content.QualifiedText;
 import net.sf.anathema.hero.combat.sheet.combat.content.TextType;
 import net.sf.anathema.hero.sheet.pdf.encoder.general.Bounds;
-import net.sf.anathema.hero.sheet.pdf.encoder.table.AbstractTableEncoder;
 import net.sf.anathema.hero.sheet.pdf.encoder.graphics.SheetGraphics;
 import net.sf.anathema.hero.sheet.pdf.encoder.graphics.TableCell;
+import net.sf.anathema.hero.sheet.pdf.encoder.table.AbstractTableEncoder;
+import net.sf.anathema.hero.sheet.pdf.session.ReportSession;
 
 public abstract class AbstractCombatRulesTableEncoder extends AbstractTableEncoder<ReportSession> {
 

@@ -1,9 +1,9 @@
 package net.sf.anathema.character.main.magic.parser.charms;
 
-import net.sf.anathema.hero.health.HealthType;
-import net.sf.anathema.character.main.magic.model.magic.cost.HealthCost;
 import net.sf.anathema.character.main.magic.model.charm.ICharmXMLConstants;
+import net.sf.anathema.character.main.magic.model.magic.cost.HealthCost;
 import net.sf.anathema.character.main.magic.model.magic.cost.IHealthCost;
+import net.sf.anathema.hero.health.HealthType;
 import net.sf.anathema.lib.exception.PersistenceException;
 import net.sf.anathema.lib.xml.ElementUtilities;
 import org.dom4j.Element;

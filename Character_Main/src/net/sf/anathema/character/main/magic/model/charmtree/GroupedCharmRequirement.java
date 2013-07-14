@@ -1,8 +1,8 @@
 package net.sf.anathema.character.main.magic.model.charmtree;
 
 import net.sf.anathema.character.main.magic.model.charm.Charm;
-import net.sf.anathema.character.main.magic.model.charm.prerequisite.SelectiveCharmGroup;
 import net.sf.anathema.character.main.magic.model.charm.IndirectCharmRequirement;
+import net.sf.anathema.character.main.magic.model.charm.prerequisite.SelectiveCharmGroup;
 
 public class GroupedCharmRequirement implements IndirectCharmRequirement {
   private final SelectiveCharmGroup charmGroup;

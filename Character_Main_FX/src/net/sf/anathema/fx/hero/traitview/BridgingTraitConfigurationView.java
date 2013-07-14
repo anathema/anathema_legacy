@@ -3,9 +3,9 @@ package net.sf.anathema.fx.hero.traitview;
 import net.sf.anathema.character.main.library.trait.view.GroupedFavorableTraitConfigurationView;
 import net.sf.anathema.character.main.library.util.CssSkinner;
 import net.sf.anathema.character.main.type.CharacterType;
-import net.sf.anathema.hero.display.ExtensibleTraitView;
 import net.sf.anathema.character.main.view.ColumnCount;
 import net.sf.anathema.framework.swing.IView;
+import net.sf.anathema.hero.display.ExtensibleTraitView;
 import net.sf.anathema.platform.fx.BridgingPanel;
 
 import javax.swing.JComponent;

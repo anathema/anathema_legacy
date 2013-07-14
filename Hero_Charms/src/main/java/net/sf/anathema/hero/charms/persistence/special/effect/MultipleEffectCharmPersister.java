@@ -5,8 +5,6 @@ import net.sf.anathema.character.main.magic.model.charm.special.MultipleEffectCh
 import net.sf.anathema.character.main.magic.model.charm.special.SubEffect;
 import net.sf.anathema.hero.charms.persistence.special.CharmSpecialsPto;
 import net.sf.anathema.hero.charms.persistence.special.SpecialCharmPersister;
-import net.sf.anathema.lib.xml.ElementUtilities;
-import org.dom4j.Element;
 
 public class MultipleEffectCharmPersister implements SpecialCharmPersister {
 

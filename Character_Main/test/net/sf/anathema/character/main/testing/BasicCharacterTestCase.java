@@ -1,11 +1,11 @@
 package net.sf.anathema.character.main.testing;
 
-import net.sf.anathema.character.main.testing.dummy.models.DummySpiritualTraitModel;
-import net.sf.anathema.character.main.traits.TraitValueStrategy;
-import net.sf.anathema.character.main.traits.types.OtherTraitType;
 import net.sf.anathema.character.main.testing.dummy.DummyHero;
 import net.sf.anathema.character.main.testing.dummy.models.DummyHeroConcept;
+import net.sf.anathema.character.main.testing.dummy.models.DummySpiritualTraitModel;
 import net.sf.anathema.character.main.testing.dummy.models.DummyTraitModel;
+import net.sf.anathema.character.main.traits.TraitValueStrategy;
+import net.sf.anathema.character.main.traits.types.OtherTraitType;
 
 public class BasicCharacterTestCase {
 

@@ -1,9 +1,9 @@
 package net.sf.anathema.character.main.xml.health;
 
+import net.sf.anathema.character.main.traits.TraitType;
+import net.sf.anathema.character.main.traits.TraitTypeUtils;
 import net.sf.anathema.character.main.xml.core.AbstractXmlTemplateParser;
 import net.sf.anathema.character.main.xml.registry.IXmlTemplateRegistry;
-import net.sf.anathema.character.main.traits.TraitTypeUtils;
-import net.sf.anathema.character.main.traits.TraitType;
 import net.sf.anathema.lib.exception.PersistenceException;
 import net.sf.anathema.lib.xml.ElementUtilities;
 import org.dom4j.Element;

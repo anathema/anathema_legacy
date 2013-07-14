@@ -12,10 +12,10 @@ import net.sf.anathema.hero.abilities.advance.experience.AbilityExperienceCalcul
 import net.sf.anathema.hero.abilities.advance.experience.AbilityExperienceModel;
 import net.sf.anathema.hero.abilities.model.AbilitiesModel;
 import net.sf.anathema.hero.abilities.model.AbilityModelFetcher;
-import net.sf.anathema.hero.model.change.ChangeAnnouncer;
+import net.sf.anathema.hero.framework.HeroEnvironment;
 import net.sf.anathema.hero.model.Hero;
 import net.sf.anathema.hero.model.HeroModel;
-import net.sf.anathema.hero.model.InitializationContext;
+import net.sf.anathema.hero.model.change.ChangeAnnouncer;
 import net.sf.anathema.hero.points.PointModelFetcher;
 import net.sf.anathema.hero.points.PointsModel;
 import net.sf.anathema.hero.points.overview.WeightedCategory;
@@ -32,7 +32,7 @@ public class AbilitiesPointModel implements HeroModel {
   }
 
   @Override
-  public void initialize(InitializationContext context, Hero hero) {
+  public void initialize(HeroEnvironment environment, Hero hero) {
     initializeBonusPoints(hero);
     initializeExperiencePoints(hero);
   }

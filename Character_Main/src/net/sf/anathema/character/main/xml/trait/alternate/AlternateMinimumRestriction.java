@@ -1,10 +1,10 @@
 package net.sf.anathema.character.main.xml.trait.alternate;
 
-import net.sf.anathema.character.main.xml.trait.IMinimumRestriction;
 import net.sf.anathema.character.main.traits.TraitType;
+import net.sf.anathema.character.main.xml.trait.IMinimumRestriction;
+import net.sf.anathema.hero.model.Hero;
 import net.sf.anathema.hero.traits.TraitModel;
 import net.sf.anathema.hero.traits.TraitModelFetcher;
-import net.sf.anathema.hero.model.Hero;
 import net.sf.anathema.lib.lang.ReflectionEqualsObject;
 
 import java.util.ArrayList;

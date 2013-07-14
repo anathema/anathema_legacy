@@ -1,10 +1,10 @@
 package net.sf.anathema.character.main.xml.trait.types;
 
+import net.sf.anathema.character.main.traits.groups.AllAttributeTraitTypeGroup;
+import net.sf.anathema.character.main.traits.groups.TraitTypeGroup;
 import net.sf.anathema.character.main.xml.registry.IXmlTemplateRegistry;
 import net.sf.anathema.character.main.xml.trait.GenericTraitTemplateFactory;
 import net.sf.anathema.character.main.xml.trait.pool.GenericTraitTemplatePool;
-import net.sf.anathema.character.main.traits.groups.AllAttributeTraitTypeGroup;
-import net.sf.anathema.character.main.traits.groups.TraitTypeGroup;
 
 public class AttributePoolParser extends AbstractPoolTemplateParser {
 

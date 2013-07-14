@@ -1,11 +1,11 @@
 package net.sf.anathema.character.main.magic.model.charmtree;
 
+import net.sf.anathema.character.main.library.trait.Trait;
 import net.sf.anathema.character.main.magic.model.charm.Charm;
 import net.sf.anathema.character.main.magic.model.charm.PrerequisiteModifyingCharms;
 import net.sf.anathema.character.main.magic.model.charm.special.IPrerequisiteModifyingCharm;
 import net.sf.anathema.character.main.magic.model.charm.special.TraitRequirementChecker;
 import net.sf.anathema.character.main.traits.ValuedTraitType;
-import net.sf.anathema.character.main.library.trait.Trait;
 import net.sf.anathema.hero.traits.TraitMap;
 
 public class CharmTraitRequirementChecker implements TraitRequirementChecker {

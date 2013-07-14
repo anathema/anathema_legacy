@@ -1,14 +1,14 @@
 package net.sf.anathema.hero.specialties.advance.creation;
 
-import net.sf.anathema.character.main.template.creation.IGenericSpecialty;
 import net.sf.anathema.character.main.library.trait.Trait;
 import net.sf.anathema.character.main.library.trait.specialties.SpecialtiesModel;
 import net.sf.anathema.character.main.library.trait.specialties.SpecialtiesModelFetcher;
 import net.sf.anathema.character.main.library.trait.specialties.Specialty;
 import net.sf.anathema.character.main.library.trait.subtrait.ISubTraitContainer;
-import net.sf.anathema.hero.traits.TraitMap;
+import net.sf.anathema.character.main.template.creation.IGenericSpecialty;
 import net.sf.anathema.hero.model.Hero;
 import net.sf.anathema.hero.points.HeroBonusPointCalculator;
+import net.sf.anathema.hero.traits.TraitMap;
 
 import java.util.ArrayList;
 import java.util.List;

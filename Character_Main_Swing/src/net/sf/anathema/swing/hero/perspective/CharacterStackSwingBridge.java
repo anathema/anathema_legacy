@@ -1,9 +1,9 @@
 package net.sf.anathema.swing.hero.perspective;
 
-import net.sf.anathema.hero.framework.perspective.CharacterStackBridge;
-import net.sf.anathema.hero.framework.perspective.model.CharacterIdentifier;
 import net.sf.anathema.framework.repository.Item;
 import net.sf.anathema.framework.swing.IView;
+import net.sf.anathema.hero.framework.perspective.CharacterStackBridge;
+import net.sf.anathema.hero.framework.perspective.model.CharacterIdentifier;
 
 import javax.swing.JComponent;
 

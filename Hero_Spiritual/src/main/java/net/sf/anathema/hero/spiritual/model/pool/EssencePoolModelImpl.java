@@ -4,12 +4,12 @@ import com.google.common.base.Preconditions;
 import net.sf.anathema.character.main.essence.IEssencePoolModifier;
 import net.sf.anathema.character.main.template.HeroTemplate;
 import net.sf.anathema.character.main.template.essence.IEssenceTemplate;
-import net.sf.anathema.hero.traits.TraitMap;
-import net.sf.anathema.hero.traits.TraitModelFetcher;
-import net.sf.anathema.hero.model.change.ChangeAnnouncer;
+import net.sf.anathema.hero.framework.HeroEnvironment;
 import net.sf.anathema.hero.model.Hero;
 import net.sf.anathema.hero.model.HeroModel;
-import net.sf.anathema.hero.model.InitializationContext;
+import net.sf.anathema.hero.model.change.ChangeAnnouncer;
+import net.sf.anathema.hero.traits.TraitMap;
+import net.sf.anathema.hero.traits.TraitModelFetcher;
 import net.sf.anathema.lib.control.ChangeListener;
 import net.sf.anathema.lib.util.IdentifiedInteger;
 import net.sf.anathema.lib.util.Identifier;
@@ -30,7 +30,7 @@ public class EssencePoolModelImpl implements EssencePoolModel, HeroModel {
   }
 
   @Override
-  public void initialize(InitializationContext context, Hero hero) {
+  public void initialize(HeroEnvironment environment, Hero hero) {
     HeroTemplate template = hero.getTemplate();
     this.essenceTemplate = template.getEssenceTemplate();
     if (!isEssenceUser()) {

@@ -1,21 +1,21 @@
 package net.sf.anathema.hero.intimacies.model;
 
 import com.google.common.base.Strings;
-import net.sf.anathema.hero.model.change.UnspecifiedChangeListener;
 import net.sf.anathema.character.main.library.removableentry.AbstractRemovableEntryModel;
 import net.sf.anathema.character.main.library.trait.Trait;
 import net.sf.anathema.character.main.traits.TraitType;
 import net.sf.anathema.character.main.traits.ValuedTraitType;
 import net.sf.anathema.character.main.traits.types.OtherTraitType;
 import net.sf.anathema.character.main.traits.types.VirtueType;
+import net.sf.anathema.hero.experience.ExperienceModelFetcher;
+import net.sf.anathema.hero.framework.HeroEnvironment;
+import net.sf.anathema.hero.intimacies.points.IntimaciesBonusPointCalculator;
+import net.sf.anathema.hero.model.Hero;
 import net.sf.anathema.hero.model.change.ChangeAnnouncer;
 import net.sf.anathema.hero.model.change.ChangeFlavor;
 import net.sf.anathema.hero.model.change.FlavoredChangeListener;
 import net.sf.anathema.hero.model.change.RemovableEntryChangeAdapter;
-import net.sf.anathema.hero.experience.ExperienceModelFetcher;
-import net.sf.anathema.hero.intimacies.points.IntimaciesBonusPointCalculator;
-import net.sf.anathema.hero.model.Hero;
-import net.sf.anathema.hero.model.InitializationContext;
+import net.sf.anathema.hero.model.change.UnspecifiedChangeListener;
 import net.sf.anathema.hero.points.PointModelFetcher;
 import net.sf.anathema.hero.traits.TraitChangeFlavor;
 import net.sf.anathema.hero.traits.TraitModelFetcher;
@@ -35,7 +35,7 @@ public class IntimaciesModelImpl extends AbstractRemovableEntryModel<Intimacy> i
   }
 
   @Override
-  public void initialize(InitializationContext context, Hero hero) {
+  public void initialize(HeroEnvironment environment, Hero hero) {
     this.hero = hero;
     PointModelFetcher.fetch(hero).addBonusPointCalculator(new IntimaciesBonusPointCalculator(this));
   }

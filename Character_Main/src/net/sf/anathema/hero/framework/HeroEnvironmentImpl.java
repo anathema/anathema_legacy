@@ -4,7 +4,6 @@ import net.sf.anathema.character.main.framework.ICharacterTemplateExtensionResou
 import net.sf.anathema.character.main.framework.ICharacterTemplateRegistryCollection;
 import net.sf.anathema.character.main.framework.data.ExtensibleDataSet;
 import net.sf.anathema.character.main.framework.data.IExtensibleDataSetProvider;
-import net.sf.anathema.character.main.magic.cache.CharmCache;
 import net.sf.anathema.character.main.template.ITemplateRegistry;
 import net.sf.anathema.character.main.template.TemplateRegistry;
 import net.sf.anathema.character.main.type.CharacterTypes;

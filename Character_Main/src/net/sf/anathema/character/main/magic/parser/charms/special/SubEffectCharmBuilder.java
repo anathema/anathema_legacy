@@ -1,7 +1,7 @@
 package net.sf.anathema.character.main.magic.parser.charms.special;
 
-import net.sf.anathema.character.main.magic.model.charm.special.SubEffectCharm;
 import net.sf.anathema.character.main.magic.model.charm.special.ISpecialCharm;
+import net.sf.anathema.character.main.magic.model.charm.special.SubEffectCharm;
 import org.dom4j.Element;
 
 import java.util.ArrayList;

@@ -1,9 +1,9 @@
 package net.sf.anathema.character.main.xml.trait.pool;
 
-import net.sf.anathema.character.main.xml.trait.GenericTraitTemplate;
-import net.sf.anathema.character.main.xml.trait.IClonableTraitTemplate;
 import net.sf.anathema.character.main.traits.ITraitTemplate;
 import net.sf.anathema.character.main.traits.TraitType;
+import net.sf.anathema.character.main.xml.trait.GenericTraitTemplate;
+import net.sf.anathema.character.main.xml.trait.IClonableTraitTemplate;
 import net.sf.anathema.lib.exception.UnreachableCodeReachedException;
 import net.sf.anathema.lib.lang.clone.ICloneable;
 

@@ -1,12 +1,12 @@
 package net.sf.anathema.character.main.library.trait.specialties;
 
-import net.sf.anathema.character.main.traits.SimpleTraitTemplate;
-import net.sf.anathema.character.main.traits.TraitType;
 import net.sf.anathema.character.main.library.trait.DefaultTrait;
 import net.sf.anathema.character.main.library.trait.DefaultTraitType;
 import net.sf.anathema.character.main.library.trait.FriendlyValueChangeChecker;
 import net.sf.anathema.character.main.library.trait.rules.TraitRules;
 import net.sf.anathema.character.main.library.trait.subtrait.AbstractSubTraitContainer;
+import net.sf.anathema.character.main.traits.SimpleTraitTemplate;
+import net.sf.anathema.character.main.traits.TraitType;
 import net.sf.anathema.hero.model.Hero;
 
 public class DefaultSpecialty extends DefaultTrait implements Specialty {

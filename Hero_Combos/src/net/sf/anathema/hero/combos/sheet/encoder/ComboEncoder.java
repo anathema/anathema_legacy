@@ -3,13 +3,13 @@ package net.sf.anathema.hero.combos.sheet.encoder;
 import com.itextpdf.text.Chunk;
 import com.itextpdf.text.DocumentException;
 import com.itextpdf.text.Phrase;
-import net.sf.anathema.hero.sheet.pdf.session.ReportSession;
-import net.sf.anathema.hero.sheet.pdf.encoder.general.Bounds;
-import net.sf.anathema.hero.sheet.pdf.encoder.boxes.AbstractContentEncoder;
-import net.sf.anathema.hero.sheet.pdf.encoder.graphics.SheetGraphics;
-import net.sf.anathema.hero.sheet.pdf.encoder.graphics.SimpleColumn;
 import net.sf.anathema.hero.combos.sheet.content.ComboContent;
 import net.sf.anathema.hero.combos.sheet.content.DisplayCombo;
+import net.sf.anathema.hero.sheet.pdf.encoder.boxes.AbstractContentEncoder;
+import net.sf.anathema.hero.sheet.pdf.encoder.general.Bounds;
+import net.sf.anathema.hero.sheet.pdf.encoder.graphics.SheetGraphics;
+import net.sf.anathema.hero.sheet.pdf.encoder.graphics.SimpleColumn;
+import net.sf.anathema.hero.sheet.pdf.session.ReportSession;
 
 import java.util.List;
 

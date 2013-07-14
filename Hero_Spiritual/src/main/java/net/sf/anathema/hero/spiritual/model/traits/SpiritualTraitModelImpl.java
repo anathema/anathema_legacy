@@ -1,26 +1,26 @@
 package net.sf.anathema.hero.spiritual.model.traits;
 
+import net.sf.anathema.character.main.library.trait.Trait;
 import net.sf.anathema.character.main.template.HeroTemplate;
 import net.sf.anathema.character.main.template.ITraitLimitation;
 import net.sf.anathema.character.main.template.ITraitTemplateCollection;
-import net.sf.anathema.character.main.traits.types.OtherTraitType;
-import net.sf.anathema.character.main.traits.types.VirtueType;
-import net.sf.anathema.character.main.library.trait.Trait;
-import net.sf.anathema.hero.spiritual.SpiritualTraitModel;
-import net.sf.anathema.hero.spiritual.template.SpiritualTraitsTemplate;
-import net.sf.anathema.hero.traits.DefaultTraitMap;
-import net.sf.anathema.hero.traits.TraitModel;
-import net.sf.anathema.hero.traits.TraitModelFetcher;
 import net.sf.anathema.character.main.traits.EssenceLimitationListener;
 import net.sf.anathema.character.main.traits.EssenceTemplateFactory;
 import net.sf.anathema.character.main.traits.VirtueTemplateFactory;
 import net.sf.anathema.character.main.traits.WillpowerTemplateFactory;
 import net.sf.anathema.character.main.traits.creation.DefaultTraitFactory;
 import net.sf.anathema.character.main.traits.creation.TypedTraitTemplateFactory;
-import net.sf.anathema.hero.model.change.ChangeAnnouncer;
+import net.sf.anathema.character.main.traits.types.OtherTraitType;
+import net.sf.anathema.character.main.traits.types.VirtueType;
+import net.sf.anathema.hero.framework.HeroEnvironment;
 import net.sf.anathema.hero.model.Hero;
 import net.sf.anathema.hero.model.HeroModel;
-import net.sf.anathema.hero.model.InitializationContext;
+import net.sf.anathema.hero.model.change.ChangeAnnouncer;
+import net.sf.anathema.hero.spiritual.SpiritualTraitModel;
+import net.sf.anathema.hero.spiritual.template.SpiritualTraitsTemplate;
+import net.sf.anathema.hero.traits.DefaultTraitMap;
+import net.sf.anathema.hero.traits.TraitModel;
+import net.sf.anathema.hero.traits.TraitModelFetcher;
 import net.sf.anathema.hero.traits.model.event.TraitValueChangedListener;
 import net.sf.anathema.lib.util.Identifier;
 
@@ -39,7 +39,7 @@ public class SpiritualTraitModelImpl extends DefaultTraitMap implements Spiritua
   }
 
   @Override
-  public void initialize(InitializationContext context, Hero hero) {
+  public void initialize(HeroEnvironment environment, Hero hero) {
     this.heroTemplate = hero.getTemplate();
     addEssence(hero);
     addVirtues(hero);

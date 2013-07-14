@@ -1,9 +1,9 @@
 package net.sf.anathema.hero.combat.sheet.combat.content;
 
 import net.sf.anathema.character.main.equipment.HeroStatsModifiers;
-import net.sf.anathema.character.main.util.CharacterUtilities;
-import net.sf.anathema.character.main.traits.types.AbilityType;
 import net.sf.anathema.character.main.library.trait.specialties.HighestSpecialty;
+import net.sf.anathema.character.main.traits.types.AbilityType;
+import net.sf.anathema.character.main.util.CharacterUtilities;
 import net.sf.anathema.hero.model.Hero;
 import net.sf.anathema.hero.sheet.pdf.content.stats.StatsModifiers;
 import net.sf.anathema.lib.resources.Resources;

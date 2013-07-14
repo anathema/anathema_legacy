@@ -2,15 +2,15 @@ package net.sf.anathema.hero.spells.display.presenter;
 
 import net.sf.anathema.character.main.magic.description.MagicDescriptionProvider;
 import net.sf.anathema.character.main.magic.display.view.charms.CharmDescriptionProviderExtractor;
-import net.sf.anathema.hero.display.presenter.HeroModelInitializer;
 import net.sf.anathema.character.main.view.SectionView;
 import net.sf.anathema.framework.IApplicationModel;
+import net.sf.anathema.hero.display.presenter.HeroModelInitializer;
 import net.sf.anathema.hero.experience.ExperienceModel;
 import net.sf.anathema.hero.experience.ExperienceModelFetcher;
 import net.sf.anathema.hero.model.Hero;
+import net.sf.anathema.hero.spells.model.CircleModel;
 import net.sf.anathema.hero.spells.model.SpellsModel;
 import net.sf.anathema.hero.spells.model.SpellsModelFetcher;
-import net.sf.anathema.hero.spells.model.CircleModel;
 import net.sf.anathema.lib.resources.Resources;
 
 public class SpellInitializer implements HeroModelInitializer {

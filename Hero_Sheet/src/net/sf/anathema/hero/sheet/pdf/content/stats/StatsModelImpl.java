@@ -1,9 +1,9 @@
 package net.sf.anathema.hero.sheet.pdf.content.stats;
 
-import net.sf.anathema.hero.sheet.pdf.encoder.boxes.StatsModifierFactory;
-import net.sf.anathema.hero.model.change.ChangeAnnouncer;
+import net.sf.anathema.hero.framework.HeroEnvironment;
 import net.sf.anathema.hero.model.Hero;
-import net.sf.anathema.hero.model.InitializationContext;
+import net.sf.anathema.hero.model.change.ChangeAnnouncer;
+import net.sf.anathema.hero.sheet.pdf.encoder.boxes.StatsModifierFactory;
 import net.sf.anathema.lib.util.Identifier;
 
 import java.util.ArrayList;
@@ -29,7 +29,7 @@ public class StatsModelImpl implements StatsModel {
   }
 
   @Override
-  public void initialize(InitializationContext context, Hero hero) {
+  public void initialize(HeroEnvironment environment, Hero hero) {
   }
 
   @Override

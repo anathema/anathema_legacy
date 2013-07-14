@@ -1,22 +1,22 @@
 package net.sf.anathema.hero.specialties.model;
 
 import com.google.common.base.Strings;
-import net.sf.anathema.character.main.traits.TraitType;
 import net.sf.anathema.character.main.library.trait.Trait;
 import net.sf.anathema.character.main.library.trait.specialties.SpecialtiesContainer;
 import net.sf.anathema.character.main.library.trait.specialties.SpecialtiesListener;
 import net.sf.anathema.character.main.library.trait.specialties.SpecialtiesModel;
 import net.sf.anathema.character.main.library.trait.specialties.Specialty;
 import net.sf.anathema.character.main.library.trait.subtrait.ISubTraitContainer;
+import net.sf.anathema.character.main.traits.TraitType;
 import net.sf.anathema.hero.abilities.model.AbilityModelFetcher;
 import net.sf.anathema.hero.experience.ExperienceModelFetcher;
-import net.sf.anathema.hero.specialties.advance.experience.SpecialtyExperienceModel;
-import net.sf.anathema.hero.model.change.ChangeAnnouncer;
+import net.sf.anathema.hero.framework.HeroEnvironment;
 import net.sf.anathema.hero.model.Hero;
 import net.sf.anathema.hero.model.HeroModel;
-import net.sf.anathema.hero.model.InitializationContext;
+import net.sf.anathema.hero.model.change.ChangeAnnouncer;
 import net.sf.anathema.hero.points.PointModelFetcher;
 import net.sf.anathema.hero.points.PointsModel;
+import net.sf.anathema.hero.specialties.advance.experience.SpecialtyExperienceModel;
 import net.sf.anathema.lib.control.ChangeListener;
 import net.sf.anathema.lib.util.Identifier;
 import org.jmock.example.announcer.Announcer;
@@ -37,7 +37,7 @@ public class SpecialtiesModelImpl implements SpecialtiesModel, HeroModel {
   private TraitType currentType;
 
   @Override
-  public void initialize(InitializationContext context, Hero hero) {
+  public void initialize(HeroEnvironment environment, Hero hero) {
     this.hero = hero;
     for (Trait trait : AbilityModelFetcher.fetch(hero).getAll()) {
       SpecialtiesContainer specialtiesContainer = new SpecialtiesContainer(trait.getType(), hero);

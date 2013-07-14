@@ -3,8 +3,8 @@ package net.sf.anathema.hero.intimacies.display;
 import net.sf.anathema.character.main.library.overview.OverviewCategory;
 import net.sf.anathema.character.main.library.util.CssSkinner;
 import net.sf.anathema.character.main.type.CharacterType;
-import net.sf.anathema.hero.display.ExtensibleTraitView;
 import net.sf.anathema.framework.swing.IView;
+import net.sf.anathema.hero.display.ExtensibleTraitView;
 import net.sf.anathema.platform.fx.BridgingPanel;
 
 import javax.swing.JComponent;

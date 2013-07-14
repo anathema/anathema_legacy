@@ -1,25 +1,26 @@
 package net.sf.anathema.hero.spells.model;
 
-import net.sf.anathema.hero.model.change.UnspecifiedChangeListener;
 import net.sf.anathema.character.main.magic.model.spells.CircleType;
 import net.sf.anathema.character.main.magic.model.spells.ISpellMapper;
 import net.sf.anathema.character.main.magic.model.spells.Spell;
 import net.sf.anathema.character.main.magic.model.spells.SpellMapper;
+import net.sf.anathema.character.main.magic.parser.spells.ISpellCache;
 import net.sf.anathema.character.main.template.HeroTemplate;
 import net.sf.anathema.character.main.template.experience.IExperiencePointCosts;
 import net.sf.anathema.character.main.template.magic.ISpellMagicTemplate;
-import net.sf.anathema.hero.model.change.ChangeAnnouncer;
-import net.sf.anathema.hero.model.change.ChangeFlavor;
-import net.sf.anathema.hero.model.change.FlavoredChangeListener;
 import net.sf.anathema.hero.charms.model.CharmsModel;
 import net.sf.anathema.hero.charms.model.CharmsModelFetcher;
 import net.sf.anathema.hero.experience.ExperienceChange;
 import net.sf.anathema.hero.experience.ExperienceModel;
 import net.sf.anathema.hero.experience.ExperienceModelFetcher;
+import net.sf.anathema.hero.framework.HeroEnvironment;
 import net.sf.anathema.hero.magic.model.MagicModel;
 import net.sf.anathema.hero.magic.model.MagicModelFetcher;
 import net.sf.anathema.hero.model.Hero;
-import net.sf.anathema.hero.model.InitializationContext;
+import net.sf.anathema.hero.model.change.ChangeAnnouncer;
+import net.sf.anathema.hero.model.change.ChangeFlavor;
+import net.sf.anathema.hero.model.change.FlavoredChangeListener;
+import net.sf.anathema.hero.model.change.UnspecifiedChangeListener;
 import net.sf.anathema.hero.points.PointModelFetcher;
 import net.sf.anathema.hero.points.PointsModel;
 import net.sf.anathema.hero.spells.advance.SpellExperienceCostCalculator;
@@ -55,11 +56,11 @@ public class SpellsModelImpl implements SpellsModel {
   }
 
   @Override
-  public void initialize(InitializationContext context, Hero hero) {
+  public void initialize(HeroEnvironment environment, Hero hero) {
     this.charms = CharmsModelFetcher.fetch(hero);
     this.experience = ExperienceModelFetcher.fetch(hero);
     this.heroTemplate = hero.getTemplate();
-    initializeSpellsByCircle(context);
+    initializeSpellsByCircle(environment);
     initializeMagicModel(hero);
     initializeExperience(hero);
   }
@@ -71,11 +72,11 @@ public class SpellsModelImpl implements SpellsModel {
     pointsModel.addToExperienceOverview(new SpellExperienceModel(hero, calculator));
   }
 
-  private void initializeSpellsByCircle(InitializationContext context) {
+  private void initializeSpellsByCircle(HeroEnvironment environment) {
     for (CircleType type : CircleType.values()) {
       spellsByCircle.put(type, new ArrayList<Spell>());
     }
-    for (Spell spell : context.getSpellCache().getSpells()) {
+    for (Spell spell : environment.getDataSet(ISpellCache.class).getSpells()) {
       spellsByCircle.get(spell.getCircleType()).add(spell);
     }
   }

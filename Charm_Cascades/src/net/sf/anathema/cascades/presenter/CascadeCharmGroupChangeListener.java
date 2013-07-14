@@ -1,9 +1,9 @@
 package net.sf.anathema.cascades.presenter;
 
 import net.sf.anathema.cascades.presenter.view.CascadeView;
-import net.sf.anathema.character.main.type.CharacterType;
 import net.sf.anathema.character.main.magic.display.view.charmtree.AbstractCharmGroupChangeListener;
 import net.sf.anathema.character.main.magic.display.view.charmtree.CharmDisplayPropertiesMap;
+import net.sf.anathema.character.main.type.CharacterType;
 import net.sf.anathema.framework.ui.RGBColor;
 import net.sf.anathema.lib.util.Identifier;
 import net.sf.anathema.platform.tree.document.visualizer.TreePresentationProperties;

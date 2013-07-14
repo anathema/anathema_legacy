@@ -1,6 +1,8 @@
 package net.sf.anathema.hero.charms.model;
 
 import com.google.common.base.Functions;
+import net.sf.anathema.character.main.magic.cache.CharmCache;
+import net.sf.anathema.character.main.magic.cache.CharmProvider;
 import net.sf.anathema.character.main.magic.display.view.charms.CharacterChangeCharmListener;
 import net.sf.anathema.character.main.magic.model.charm.Charm;
 import net.sf.anathema.character.main.magic.model.charm.CharmAttributeList;
@@ -26,7 +28,6 @@ import net.sf.anathema.character.main.magic.model.charmtree.CharmTraitRequiremen
 import net.sf.anathema.character.main.magic.model.charmtree.GroupCharmTree;
 import net.sf.anathema.character.main.template.HeroTemplate;
 import net.sf.anathema.character.main.template.experience.IExperiencePointCosts;
-import net.sf.anathema.character.main.magic.cache.CharmProvider;
 import net.sf.anathema.character.main.template.magic.MartialArtsCharmConfiguration;
 import net.sf.anathema.character.main.type.CharacterType;
 import net.sf.anathema.hero.charms.advance.CharmExperienceModel;
@@ -40,11 +41,11 @@ import net.sf.anathema.hero.concept.CasteType;
 import net.sf.anathema.hero.concept.HeroConceptFetcher;
 import net.sf.anathema.hero.experience.ExperienceModel;
 import net.sf.anathema.hero.experience.ExperienceModelFetcher;
+import net.sf.anathema.hero.framework.HeroEnvironment;
 import net.sf.anathema.hero.magic.model.MagicModel;
 import net.sf.anathema.hero.magic.model.MagicModelFetcher;
 import net.sf.anathema.hero.magic.model.martial.MartialArtsUtilities;
 import net.sf.anathema.hero.model.Hero;
-import net.sf.anathema.hero.model.InitializationContext;
 import net.sf.anathema.hero.model.change.ChangeAnnouncer;
 import net.sf.anathema.hero.model.change.ChangeFlavor;
 import net.sf.anathema.hero.model.change.FlavoredChangeListener;
@@ -99,15 +100,15 @@ public class CharmsModelImpl implements CharmsModel {
   }
 
   @Override
-  public void initialize(InitializationContext context, Hero hero) {
+  public void initialize(HeroEnvironment environment, Hero hero) {
     CharmSpecialistImpl specialist = new CharmSpecialistImpl(hero);
     this.experience = ExperienceModelFetcher.fetch(hero);
     this.traits = TraitModelFetcher.fetch(hero);
     this.hero = hero;
-    this.martialArtsOptions = new MartialArtsOptions(hero, context.getCharmProvider());
-    this.nonMartialArtsOptions = new NonMartialArtsOptions(hero, context.getCharacterTypes(), context.getCharmProvider());
+    this.provider = environment.getDataSet(CharmCache.class).getCharmProvider();
+    this.martialArtsOptions = new MartialArtsOptions(hero, provider);
+    this.nonMartialArtsOptions = new NonMartialArtsOptions(hero, environment.getCharacterTypes(), provider);
     this.manager = new SpecialCharmManager(specialist, hero, this);
-    this.provider = context.getCharmProvider();
     this.martialArtsGroups = createGroups(martialArtsOptions.getAllCharmGroups());
     initNonMartialArtsGroups();
     initSpecialCharmConfigurations();

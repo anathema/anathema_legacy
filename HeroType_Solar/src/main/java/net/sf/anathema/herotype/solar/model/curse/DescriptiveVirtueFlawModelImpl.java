@@ -1,13 +1,13 @@
 package net.sf.anathema.herotype.solar.model.curse;
 
-import net.sf.anathema.hero.model.change.UnspecifiedChangeListener;
 import net.sf.anathema.character.main.traits.TraitType;
 import net.sf.anathema.character.main.traits.types.VirtueType;
+import net.sf.anathema.hero.framework.HeroEnvironment;
+import net.sf.anathema.hero.model.Hero;
 import net.sf.anathema.hero.model.change.ChangeAnnouncer;
 import net.sf.anathema.hero.model.change.ChangeFlavor;
 import net.sf.anathema.hero.model.change.FlavoredChangeListener;
-import net.sf.anathema.hero.model.Hero;
-import net.sf.anathema.hero.model.InitializationContext;
+import net.sf.anathema.hero.model.change.UnspecifiedChangeListener;
 import net.sf.anathema.hero.traits.TraitChangeFlavor;
 import net.sf.anathema.hero.traits.TraitModel;
 import net.sf.anathema.hero.traits.TraitModelFetcher;
@@ -29,8 +29,8 @@ public class DescriptiveVirtueFlawModelImpl extends AbstractVirtueFlawModel impl
   }
 
   @Override
-  public void initialize(InitializationContext context, Hero hero) {
-    super.initialize(context, hero);
+  public void initialize(HeroEnvironment environment, Hero hero) {
+    super.initialize(environment, hero);
     this.traitModel = TraitModelFetcher.fetch(hero);
     virtueFlaw = new DescriptiveVirtueFlawImpl(hero);
   }

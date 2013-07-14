@@ -1,8 +1,8 @@
 package net.sf.anathema.hero.health;
 
+import net.sf.anathema.character.main.library.trait.Trait;
 import net.sf.anathema.character.main.magic.model.charm.special.OxBodyTechniqueSpecials;
 import net.sf.anathema.character.main.traits.ValuedTraitType;
-import net.sf.anathema.character.main.library.trait.Trait;
 
 import java.util.ArrayList;
 import java.util.List;

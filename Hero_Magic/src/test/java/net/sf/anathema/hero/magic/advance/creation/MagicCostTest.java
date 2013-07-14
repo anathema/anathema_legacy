@@ -2,8 +2,8 @@ package net.sf.anathema.hero.magic.advance.creation;
 
 import net.sf.anathema.character.main.dummy.DummyCharm;
 import net.sf.anathema.character.main.magic.model.magic.Magic;
-import net.sf.anathema.hero.advance.CostAnalyzer;
 import net.sf.anathema.character.main.xml.creation.template.MagicCreationCostsTto;
+import net.sf.anathema.hero.advance.CostAnalyzer;
 import net.sf.anathema.hero.magic.model.martial.MartialArtsLevel;
 import org.junit.Test;
 

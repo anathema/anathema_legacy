@@ -1,10 +1,10 @@
 package net.sf.anathema.hero.specialties.display.view;
 
 import net.sf.anathema.character.main.library.util.CssSkinner;
-import net.sf.anathema.character.main.type.CharacterType;
-import net.sf.anathema.hero.display.ExtensibleTraitView;
 import net.sf.anathema.character.main.traits.TraitType;
+import net.sf.anathema.character.main.type.CharacterType;
 import net.sf.anathema.framework.swing.IView;
+import net.sf.anathema.hero.display.ExtensibleTraitView;
 import net.sf.anathema.hero.specialties.display.presenter.SpecialtiesConfigurationView;
 import net.sf.anathema.hero.specialties.display.presenter.SpecialtyCreationView;
 import net.sf.anathema.lib.file.RelativePath;

@@ -1,5 +1,6 @@
 package net.sf.anathema.character.main.magic.model.charms.options;
 
+import net.sf.anathema.character.main.magic.cache.CharmProvider;
 import net.sf.anathema.character.main.magic.display.view.charmtree.CharmGroupArbitrator;
 import net.sf.anathema.character.main.magic.model.charm.Charm;
 import net.sf.anathema.character.main.magic.model.charm.CharmHasSameTypeAsCharacter;
@@ -8,7 +9,6 @@ import net.sf.anathema.character.main.magic.model.charm.GroupedCharmIdMap;
 import net.sf.anathema.character.main.magic.model.charm.ICharmGroup;
 import net.sf.anathema.character.main.magic.model.charmtree.CharmTree;
 import net.sf.anathema.character.main.magic.model.charmtree.ICharmTree;
-import net.sf.anathema.character.main.magic.cache.CharmProvider;
 import net.sf.anathema.character.main.type.CharacterType;
 import net.sf.anathema.character.main.type.CharacterTypes;
 import net.sf.anathema.hero.concept.HeroConcept;

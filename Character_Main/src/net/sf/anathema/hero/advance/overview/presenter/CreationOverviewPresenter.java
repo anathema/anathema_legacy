@@ -2,12 +2,12 @@ package net.sf.anathema.hero.advance.overview.presenter;
 
 import net.sf.anathema.character.main.library.overview.OverviewCategory;
 import net.sf.anathema.character.main.view.CategorizedOverview;
-import net.sf.anathema.character.main.view.labelledvalue.LabelledAllotmentView;
 import net.sf.anathema.character.main.view.labelledvalue.IValueView;
+import net.sf.anathema.character.main.view.labelledvalue.LabelledAllotmentView;
 import net.sf.anathema.hero.advance.creation.IBonusPointManagement;
+import net.sf.anathema.hero.model.Hero;
 import net.sf.anathema.hero.model.change.ChangeFlavor;
 import net.sf.anathema.hero.model.change.FlavoredChangeListener;
-import net.sf.anathema.hero.model.Hero;
 import net.sf.anathema.hero.points.PointModelFetcher;
 import net.sf.anathema.hero.points.overview.IOverviewModel;
 import net.sf.anathema.hero.points.overview.IOverviewModelVisitor;

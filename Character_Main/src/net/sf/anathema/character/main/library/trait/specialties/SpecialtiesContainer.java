@@ -1,7 +1,7 @@
 package net.sf.anathema.character.main.library.trait.specialties;
 
-import net.sf.anathema.character.main.traits.TraitType;
 import net.sf.anathema.character.main.library.trait.subtrait.AbstractSubTraitContainer;
+import net.sf.anathema.character.main.traits.TraitType;
 import net.sf.anathema.hero.model.Hero;
 
 public class SpecialtiesContainer extends AbstractSubTraitContainer {

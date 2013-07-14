@@ -1,11 +1,11 @@
 package net.sf.anathema.herotype.solar.display.curse;
 
-import net.sf.anathema.hero.display.presenter.HeroModelInitializer;
-import net.sf.anathema.hero.display.presenter.RegisteredInitializer;
 import net.sf.anathema.character.main.view.SectionView;
 import net.sf.anathema.framework.model.ApplicationModel;
-import net.sf.anathema.hero.display.configurableview.ConfigurableCharacterView;
 import net.sf.anathema.hero.display.HeroModelGroup;
+import net.sf.anathema.hero.display.configurableview.ConfigurableCharacterView;
+import net.sf.anathema.hero.display.presenter.HeroModelInitializer;
+import net.sf.anathema.hero.display.presenter.RegisteredInitializer;
 import net.sf.anathema.hero.model.Hero;
 import net.sf.anathema.herotype.solar.model.SolarCharacterType;
 import net.sf.anathema.herotype.solar.model.curse.DescriptiveVirtueFlawModel;

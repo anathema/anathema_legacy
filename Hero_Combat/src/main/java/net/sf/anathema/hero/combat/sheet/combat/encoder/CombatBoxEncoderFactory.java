@@ -3,9 +3,9 @@ package net.sf.anathema.hero.combat.sheet.combat.encoder;
 import net.sf.anathema.hero.sheet.pdf.content.BasicContent;
 import net.sf.anathema.hero.sheet.pdf.encoder.EncoderIds;
 import net.sf.anathema.hero.sheet.pdf.encoder.boxes.AbstractEncoderFactory;
-import net.sf.anathema.hero.sheet.pdf.encoder.boxes.RegisteredEncoderFactory;
 import net.sf.anathema.hero.sheet.pdf.encoder.boxes.ContentEncoder;
 import net.sf.anathema.hero.sheet.pdf.encoder.boxes.IContentEncoder;
+import net.sf.anathema.hero.sheet.pdf.encoder.boxes.RegisteredEncoderFactory;
 import net.sf.anathema.hero.sheet.pdf.encoder.table.ITableEncoder;
 import net.sf.anathema.lib.resources.Resources;
 

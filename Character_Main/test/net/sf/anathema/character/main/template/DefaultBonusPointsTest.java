@@ -1,8 +1,8 @@
 package net.sf.anathema.character.main.template;
 
-import net.sf.anathema.character.main.testing.dummy.DummyBonusPointCosts;
-import net.sf.anathema.character.main.template.points.FixedValueRatingCosts;
 import net.sf.anathema.character.main.template.experience.CurrentRatingCosts;
+import net.sf.anathema.character.main.template.points.FixedValueRatingCosts;
+import net.sf.anathema.character.main.testing.dummy.DummyBonusPointCosts;
 import org.junit.Test;
 
 import static org.junit.Assert.assertEquals;

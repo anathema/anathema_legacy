@@ -2,12 +2,12 @@ package net.sf.anathema.hero.spiritual.sheet.virtues.content;
 
 import net.sf.anathema.character.main.traits.ValuedTraitType;
 import net.sf.anathema.character.main.traits.types.VirtueType;
+import net.sf.anathema.hero.model.Hero;
+import net.sf.anathema.hero.sheet.pdf.content.AbstractSubBoxContent;
 import net.sf.anathema.hero.spiritual.SpiritualTraitModelFetcher;
 import net.sf.anathema.hero.traits.TraitMap;
-import net.sf.anathema.hero.sheet.pdf.content.AbstractSubBoxContent;
 import net.sf.anathema.hero.traits.sheet.content.NamedValue;
 import net.sf.anathema.hero.traits.sheet.content.PrintTrait;
-import net.sf.anathema.hero.model.Hero;
 import net.sf.anathema.lib.resources.Resources;
 
 public class VirtueContent extends AbstractSubBoxContent {

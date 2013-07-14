@@ -2,11 +2,11 @@ package net.sf.anathema.character.main.persistence;
 
 import com.google.common.base.Preconditions;
 import net.sf.anathema.character.main.ExaltedCharacter;
-import net.sf.anathema.character.main.type.CharacterType;
-import net.sf.anathema.hero.framework.HeroEnvironment;
 import net.sf.anathema.character.main.template.HeroTemplate;
 import net.sf.anathema.character.main.template.ITemplateType;
 import net.sf.anathema.character.main.template.TemplateType;
+import net.sf.anathema.character.main.type.CharacterType;
+import net.sf.anathema.hero.framework.HeroEnvironment;
 import net.sf.anathema.hero.model.Hero;
 import net.sf.anathema.lib.exception.PersistenceException;
 import net.sf.anathema.lib.util.Identifier;

@@ -1,7 +1,7 @@
 package net.sf.anathema.character.main.magic.parser.charms;
 
-import net.sf.anathema.character.main.magic.model.charm.ICharmXMLConstants;
 import net.sf.anathema.character.main.magic.model.charm.CharmException;
+import net.sf.anathema.character.main.magic.model.charm.ICharmXMLConstants;
 import net.sf.anathema.character.main.magic.model.charm.duration.IDuration;
 import net.sf.anathema.character.main.magic.model.charm.duration.QualifiedAmountDuration;
 import net.sf.anathema.character.main.magic.model.charm.duration.SimpleDuration;

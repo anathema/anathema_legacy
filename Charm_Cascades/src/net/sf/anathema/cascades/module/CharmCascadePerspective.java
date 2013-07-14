@@ -1,15 +1,15 @@
 package net.sf.anathema.cascades.module;
 
 import net.sf.anathema.cascades.presenter.CascadePresenterImpl;
-import net.sf.anathema.hero.framework.HeroEnvironmentExtractor;
-import net.sf.anathema.hero.framework.HeroEnvironment;
-import net.sf.anathema.character.main.magic.display.view.charms.CharmDescriptionProviderExtractor;
 import net.sf.anathema.character.main.magic.description.MagicDescriptionProvider;
+import net.sf.anathema.character.main.magic.display.view.charms.CharmDescriptionProviderExtractor;
 import net.sf.anathema.framework.IApplicationModel;
 import net.sf.anathema.framework.view.perspective.Container;
 import net.sf.anathema.framework.view.perspective.Perspective;
 import net.sf.anathema.framework.view.perspective.PerspectiveAutoCollector;
 import net.sf.anathema.framework.view.perspective.PerspectiveToggle;
+import net.sf.anathema.hero.framework.HeroEnvironment;
+import net.sf.anathema.hero.framework.HeroEnvironmentExtractor;
 import net.sf.anathema.initialization.reflections.Weight;
 import net.sf.anathema.lib.file.RelativePath;
 import net.sf.anathema.lib.resources.Resources;

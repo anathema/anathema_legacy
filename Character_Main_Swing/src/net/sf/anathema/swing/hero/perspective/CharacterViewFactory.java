@@ -1,11 +1,5 @@
 package net.sf.anathema.swing.hero.perspective;
 
-import net.sf.anathema.hero.advance.experience.ExperiencePointManagement;
-import net.sf.anathema.hero.advance.experience.ExperiencePointManagementImpl;
-import net.sf.anathema.hero.advance.creation.IBonusPointManagement;
-import net.sf.anathema.hero.advance.creation.BonusPointManagement;
-import net.sf.anathema.hero.display.presenter.CharacterPresenter;
-import net.sf.anathema.hero.advance.overview.presenter.OverviewPresenter;
 import net.sf.anathema.character.main.view.CharacterView;
 import net.sf.anathema.character.main.view.OverviewContainer;
 import net.sf.anathema.character.main.view.SubViewMap;
@@ -13,6 +7,12 @@ import net.sf.anathema.character.main.view.SubViewRegistry;
 import net.sf.anathema.framework.IApplicationModel;
 import net.sf.anathema.framework.repository.Item;
 import net.sf.anathema.framework.swing.IView;
+import net.sf.anathema.hero.advance.creation.BonusPointManagement;
+import net.sf.anathema.hero.advance.creation.IBonusPointManagement;
+import net.sf.anathema.hero.advance.experience.ExperiencePointManagement;
+import net.sf.anathema.hero.advance.experience.ExperiencePointManagementImpl;
+import net.sf.anathema.hero.advance.overview.presenter.OverviewPresenter;
+import net.sf.anathema.hero.display.presenter.CharacterPresenter;
 import net.sf.anathema.hero.model.Hero;
 import net.sf.anathema.lib.resources.Resources;
 

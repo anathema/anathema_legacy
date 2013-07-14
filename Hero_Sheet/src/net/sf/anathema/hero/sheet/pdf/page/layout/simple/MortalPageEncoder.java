@@ -1,13 +1,13 @@
 package net.sf.anathema.hero.sheet.pdf.page.layout.simple;
 
-import net.sf.anathema.hero.sheet.pdf.session.ReportSession;
-import net.sf.anathema.hero.sheet.pdf.page.layout.Sheet;
-import net.sf.anathema.hero.sheet.pdf.page.layout.SheetPage;
-import net.sf.anathema.hero.sheet.pdf.page.layout.field.LayoutField;
 import net.sf.anathema.hero.sheet.pdf.encoder.CopyrightEncoder;
 import net.sf.anathema.hero.sheet.pdf.encoder.graphics.SheetGraphics;
 import net.sf.anathema.hero.sheet.pdf.page.PageConfiguration;
 import net.sf.anathema.hero.sheet.pdf.page.PageEncoder;
+import net.sf.anathema.hero.sheet.pdf.page.layout.Sheet;
+import net.sf.anathema.hero.sheet.pdf.page.layout.SheetPage;
+import net.sf.anathema.hero.sheet.pdf.page.layout.field.LayoutField;
+import net.sf.anathema.hero.sheet.pdf.session.ReportSession;
 
 import static net.sf.anathema.hero.sheet.pdf.encoder.EncoderIds.ABILITIES_WITH_SPECIALTIES;
 import static net.sf.anathema.hero.sheet.pdf.encoder.EncoderIds.ARSENAL;

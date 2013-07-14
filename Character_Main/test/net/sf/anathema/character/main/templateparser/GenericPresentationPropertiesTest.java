@@ -1,9 +1,9 @@
 package net.sf.anathema.character.main.templateparser;
 
-import net.sf.anathema.character.main.xml.GenericCharacterTemplate;
-import net.sf.anathema.character.main.xml.presentation.GenericPresentationTemplate;
 import net.sf.anathema.character.main.template.TemplateType;
 import net.sf.anathema.character.main.testing.dummy.DummyMundaneCharacterType;
+import net.sf.anathema.character.main.xml.GenericCharacterTemplate;
+import net.sf.anathema.character.main.xml.presentation.GenericPresentationTemplate;
 import net.sf.anathema.lib.util.SimpleIdentifier;
 import org.junit.Assert;
 import org.junit.Test;

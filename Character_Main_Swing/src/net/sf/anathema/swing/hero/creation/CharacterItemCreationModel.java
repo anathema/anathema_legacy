@@ -2,12 +2,12 @@ package net.sf.anathema.swing.hero.creation;
 
 import com.google.common.base.Objects;
 import net.sf.anathema.character.main.CharacterStatisticsConfiguration;
-import net.sf.anathema.character.main.type.CharacterType;
-import net.sf.anathema.hero.framework.HeroEnvironment;
 import net.sf.anathema.character.main.template.HeroTemplate;
 import net.sf.anathema.character.main.template.ITemplateRegistry;
+import net.sf.anathema.character.main.type.CharacterType;
 import net.sf.anathema.character.main.type.CharacterTypes;
 import net.sf.anathema.character.main.view.repository.ITemplateTypeAggregation;
+import net.sf.anathema.hero.framework.HeroEnvironment;
 import net.sf.anathema.lib.collection.MultiEntryMap;
 import net.sf.anathema.lib.control.ChangeListener;
 import org.jmock.example.announcer.Announcer;

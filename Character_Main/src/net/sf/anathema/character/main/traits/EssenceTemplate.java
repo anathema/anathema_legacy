@@ -1,7 +1,7 @@
 package net.sf.anathema.character.main.traits;
 
-import net.sf.anathema.character.main.traits.limitation.StaticTraitLimitation;
 import net.sf.anathema.character.main.template.ITraitLimitation;
+import net.sf.anathema.character.main.traits.limitation.StaticTraitLimitation;
 import net.sf.anathema.hero.model.Hero;
 
 public class EssenceTemplate extends AbstractTraitTemplate {

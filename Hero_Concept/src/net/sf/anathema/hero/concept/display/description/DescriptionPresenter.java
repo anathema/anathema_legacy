@@ -2,11 +2,11 @@ package net.sf.anathema.hero.concept.display.description;
 
 import net.sf.anathema.character.main.CharacterUI;
 import net.sf.anathema.character.main.IIntegerDescription;
-import net.sf.anathema.hero.concept.display.caste.presenter.NameGeneratorCommand;
 import net.sf.anathema.hero.concept.HeroConcept;
+import net.sf.anathema.hero.concept.display.caste.presenter.NameGeneratorCommand;
+import net.sf.anathema.hero.description.HeroDescription;
 import net.sf.anathema.hero.display.configurableview.ConfigurableCharacterView;
 import net.sf.anathema.hero.display.configurableview.MultiComponentLine;
-import net.sf.anathema.hero.description.HeroDescription;
 import net.sf.anathema.interaction.Tool;
 import net.sf.anathema.lib.control.IntValueChangedListener;
 import net.sf.anathema.lib.gui.widgets.IIntegerView;

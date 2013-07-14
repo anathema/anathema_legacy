@@ -1,12 +1,12 @@
 package net.sf.anathema.hero.platform;
 
-import net.sf.anathema.hero.framework.HeroEnvironmentExtractor;
-import net.sf.anathema.hero.framework.HeroEnvironment;
 import net.sf.anathema.character.main.framework.item.CharacterPrintNameFileScanner;
 import net.sf.anathema.framework.IApplicationModel;
 import net.sf.anathema.framework.module.ItemTypePresentationFactory;
 import net.sf.anathema.framework.presenter.view.IItemTypeViewProperties;
 import net.sf.anathema.framework.repository.IRepositoryFileResolver;
+import net.sf.anathema.hero.framework.HeroEnvironment;
+import net.sf.anathema.hero.framework.HeroEnvironmentExtractor;
 import net.sf.anathema.initialization.RegisteredItemTypePresentation;
 import net.sf.anathema.lib.resources.Resources;
 

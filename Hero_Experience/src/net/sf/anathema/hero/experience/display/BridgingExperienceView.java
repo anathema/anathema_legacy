@@ -1,8 +1,8 @@
 package net.sf.anathema.hero.experience.display;
 
+import net.sf.anathema.framework.swing.IView;
 import net.sf.anathema.hero.advance.experience.ExperiencePointEntry;
 import net.sf.anathema.hero.advance.experience.ExperienceSelectionListener;
-import net.sf.anathema.framework.swing.IView;
 import net.sf.anathema.interaction.Tool;
 import net.sf.anathema.platform.fx.BridgingPanel;
 

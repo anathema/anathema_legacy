@@ -11,10 +11,10 @@ import net.sf.anathema.hero.attributes.advance.experience.AttributesExperienceCa
 import net.sf.anathema.hero.attributes.advance.experience.AttributesExperienceModel;
 import net.sf.anathema.hero.attributes.model.AttributeModel;
 import net.sf.anathema.hero.attributes.model.AttributesModelFetcher;
-import net.sf.anathema.hero.model.change.ChangeAnnouncer;
+import net.sf.anathema.hero.framework.HeroEnvironment;
 import net.sf.anathema.hero.model.Hero;
 import net.sf.anathema.hero.model.HeroModel;
-import net.sf.anathema.hero.model.InitializationContext;
+import net.sf.anathema.hero.model.change.ChangeAnnouncer;
 import net.sf.anathema.hero.points.PointModelFetcher;
 import net.sf.anathema.hero.points.PointsModel;
 import net.sf.anathema.hero.points.overview.SpendingModel;
@@ -32,7 +32,7 @@ public class AttributePointsModel implements HeroModel {
   }
 
   @Override
-  public void initialize(InitializationContext context, Hero hero) {
+  public void initialize(HeroEnvironment environment, Hero hero) {
     initializeBonusPoints(hero);
     initializeExperience(hero);
   }

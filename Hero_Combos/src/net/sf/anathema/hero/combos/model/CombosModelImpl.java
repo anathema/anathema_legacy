@@ -2,15 +2,15 @@ package net.sf.anathema.hero.combos.model;
 
 import net.sf.anathema.character.main.magic.model.charm.Charm;
 import net.sf.anathema.character.main.magic.model.charm.CharmLearnAdapter;
-import net.sf.anathema.hero.model.change.ChangeAnnouncer;
 import net.sf.anathema.hero.charms.model.CharmsModelFetcher;
 import net.sf.anathema.hero.combos.display.presenter.CharacterChangeComboListener;
 import net.sf.anathema.hero.combos.display.presenter.Combo;
 import net.sf.anathema.hero.combos.display.presenter.ComboConfigurationListener;
 import net.sf.anathema.hero.combos.display.presenter.CombosModel;
 import net.sf.anathema.hero.combos.model.rules.SecondEditionComboArbitrator;
+import net.sf.anathema.hero.framework.HeroEnvironment;
 import net.sf.anathema.hero.model.Hero;
-import net.sf.anathema.hero.model.InitializationContext;
+import net.sf.anathema.hero.model.change.ChangeAnnouncer;
 import net.sf.anathema.lib.control.ChangeListener;
 import net.sf.anathema.lib.util.Identifier;
 import org.jmock.example.announcer.Announcer;
@@ -33,7 +33,7 @@ public class CombosModelImpl implements CombosModel {
   }
 
   @Override
-  public void initialize(InitializationContext context, Hero hero) {
+  public void initialize(HeroEnvironment environment, Hero hero) {
     this.hero = hero;
   }
 

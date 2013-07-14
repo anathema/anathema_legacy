@@ -2,12 +2,12 @@ package net.sf.anathema.character.main.testing.dummy.models;
 
 import net.sf.anathema.character.main.IIntegerDescription;
 import net.sf.anathema.character.main.IntegerDescription;
-import net.sf.anathema.hero.model.change.ChangeAnnouncer;
 import net.sf.anathema.hero.concept.CasteCollection;
 import net.sf.anathema.hero.concept.CasteSelection;
 import net.sf.anathema.hero.concept.HeroConcept;
+import net.sf.anathema.hero.framework.HeroEnvironment;
 import net.sf.anathema.hero.model.Hero;
-import net.sf.anathema.hero.model.InitializationContext;
+import net.sf.anathema.hero.model.change.ChangeAnnouncer;
 import net.sf.anathema.lib.util.Identifier;
 
 public class DummyHeroConcept implements HeroConcept {
@@ -37,7 +37,7 @@ public class DummyHeroConcept implements HeroConcept {
   }
 
   @Override
-  public void initialize(InitializationContext context, Hero hero) {
+  public void initialize(HeroEnvironment environment, Hero hero) {
     // nothing to do
   }
 

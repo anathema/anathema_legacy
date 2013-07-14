@@ -2,15 +2,15 @@ package net.sf.anathema.hero.spiritual.sheet.virtues.encoder;
 
 import com.itextpdf.text.DocumentException;
 import com.itextpdf.text.pdf.PdfContentByte;
-import net.sf.anathema.hero.sheet.pdf.session.ReportSession;
-import net.sf.anathema.hero.traits.sheet.content.NamedValue;
+import net.sf.anathema.hero.sheet.pdf.encoder.boxes.AbstractContentEncoder;
 import net.sf.anathema.hero.sheet.pdf.encoder.general.Bounds;
 import net.sf.anathema.hero.sheet.pdf.encoder.general.Position;
-import net.sf.anathema.hero.sheet.pdf.encoder.boxes.AbstractContentEncoder;
-import net.sf.anathema.hero.traits.sheet.content.PdfTraitEncoder;
 import net.sf.anathema.hero.sheet.pdf.encoder.graphics.SheetGraphics;
 import net.sf.anathema.hero.sheet.pdf.page.IVoidStateFormatConstants;
+import net.sf.anathema.hero.sheet.pdf.session.ReportSession;
 import net.sf.anathema.hero.spiritual.sheet.virtues.content.VirtueContent;
+import net.sf.anathema.hero.traits.sheet.content.NamedValue;
+import net.sf.anathema.hero.traits.sheet.content.PdfTraitEncoder;
 
 public class VirtueEncoder extends AbstractContentEncoder<VirtueContent> {
 

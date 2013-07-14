@@ -1,9 +1,9 @@
 package net.sf.anathema.character.main.magic.parser.charms.prerequisite;
 
-import net.sf.anathema.character.main.magic.model.magic.attribute.MagicAttributeImpl;
-import net.sf.anathema.character.main.magic.model.charmtree.CharmAttributeRequirement;
 import net.sf.anathema.character.main.magic.model.charm.CharmException;
 import net.sf.anathema.character.main.magic.model.charm.IndirectCharmRequirement;
+import net.sf.anathema.character.main.magic.model.charmtree.CharmAttributeRequirement;
+import net.sf.anathema.character.main.magic.model.magic.attribute.MagicAttributeImpl;
 import net.sf.anathema.lib.exception.PersistenceException;
 import net.sf.anathema.lib.xml.ElementUtilities;
 import org.dom4j.Element;

@@ -1,9 +1,5 @@
 package net.sf.anathema.character.main.testing.dummy.template;
 
-import net.sf.anathema.character.main.template.magic.CharmTemplate;
-import net.sf.anathema.character.main.template.magic.CharmTemplateImpl;
-import net.sf.anathema.character.main.type.CharacterType;
-import net.sf.anathema.hero.magic.model.martial.MartialArtsLevel;
 import net.sf.anathema.character.main.magic.model.magic.Magic;
 import net.sf.anathema.character.main.template.ConfiguredModel;
 import net.sf.anathema.character.main.template.HeroTemplate;
@@ -17,6 +13,8 @@ import net.sf.anathema.character.main.template.creation.ICreationPoints;
 import net.sf.anathema.character.main.template.essence.IEssenceTemplate;
 import net.sf.anathema.character.main.template.essence.NullEssenceTemplate;
 import net.sf.anathema.character.main.template.experience.IExperiencePointCosts;
+import net.sf.anathema.character.main.template.magic.CharmTemplate;
+import net.sf.anathema.character.main.template.magic.CharmTemplateImpl;
 import net.sf.anathema.character.main.template.magic.DefaultMartialArtsRules;
 import net.sf.anathema.character.main.template.magic.IMagicTemplate;
 import net.sf.anathema.character.main.template.magic.ISpellMagicTemplate;
@@ -27,6 +25,8 @@ import net.sf.anathema.character.main.traits.TraitType;
 import net.sf.anathema.character.main.traits.types.AbilityType;
 import net.sf.anathema.character.main.traits.types.AttributeGroupType;
 import net.sf.anathema.character.main.traits.types.AttributeType;
+import net.sf.anathema.character.main.type.CharacterType;
+import net.sf.anathema.hero.magic.model.martial.MartialArtsLevel;
 import net.sf.anathema.lib.exception.NotYetImplementedException;
 
 import java.util.ArrayList;

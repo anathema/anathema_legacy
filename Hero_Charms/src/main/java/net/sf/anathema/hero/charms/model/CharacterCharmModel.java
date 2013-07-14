@@ -1,12 +1,12 @@
 package net.sf.anathema.hero.charms.model;
 
-import net.sf.anathema.character.main.magic.model.charm.Charm;
 import net.sf.anathema.character.main.magic.description.MagicDescriptionProvider;
-import net.sf.anathema.character.main.template.magic.CharmTemplate;
-import net.sf.anathema.hero.concept.HeroConceptFetcher;
+import net.sf.anathema.character.main.magic.model.charm.Charm;
 import net.sf.anathema.character.main.magic.model.charms.ILearningCharmGroup;
 import net.sf.anathema.character.main.magic.model.charms.options.DefaultCharmTemplateRetriever;
+import net.sf.anathema.character.main.template.magic.CharmTemplate;
 import net.sf.anathema.hero.concept.CasteSelection;
+import net.sf.anathema.hero.concept.HeroConceptFetcher;
 import net.sf.anathema.hero.model.Hero;
 import net.sf.anathema.lib.control.ChangeListener;
 

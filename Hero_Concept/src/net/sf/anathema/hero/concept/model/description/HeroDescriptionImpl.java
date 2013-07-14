@@ -1,11 +1,11 @@
 package net.sf.anathema.hero.concept.model.description;
 
 import net.sf.anathema.hero.description.HeroDescription;
-import net.sf.anathema.hero.model.change.AnnounceChangeValueListener;
-import net.sf.anathema.hero.model.change.ChangeAnnouncer;
+import net.sf.anathema.hero.framework.HeroEnvironment;
 import net.sf.anathema.hero.model.Hero;
 import net.sf.anathema.hero.model.HeroModel;
-import net.sf.anathema.hero.model.InitializationContext;
+import net.sf.anathema.hero.model.change.AnnounceChangeValueListener;
+import net.sf.anathema.hero.model.change.ChangeAnnouncer;
 import net.sf.anathema.lib.control.ObjectValueListener;
 import net.sf.anathema.lib.util.Identifier;
 import net.sf.anathema.lib.workflow.textualdescription.ITextualDescription;
@@ -33,7 +33,7 @@ public class HeroDescriptionImpl implements HeroDescription, HeroModel {
   }
 
   @Override
-  public void initialize(InitializationContext context, Hero hero) {
+  public void initialize(HeroEnvironment environment, Hero hero) {
     // nothing to do
   }
 

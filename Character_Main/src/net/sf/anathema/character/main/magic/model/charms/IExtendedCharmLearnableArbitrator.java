@@ -2,8 +2,8 @@ package net.sf.anathema.character.main.magic.model.charms;
 
 import net.sf.anathema.character.main.magic.model.charm.Charm;
 import net.sf.anathema.character.main.magic.model.charm.ICharmLearnListener;
-import net.sf.anathema.character.main.magic.model.charmtree.ICharmLearnableArbitrator;
 import net.sf.anathema.character.main.magic.model.charmtree.ICharmLearnArbitrator;
+import net.sf.anathema.character.main.magic.model.charmtree.ICharmLearnableArbitrator;
 
 public interface IExtendedCharmLearnableArbitrator extends ICharmLearnArbitrator, ICharmLearnableArbitrator {
 

@@ -1,8 +1,8 @@
 package net.sf.anathema.swing.hero.perspective;
 
-import net.sf.anathema.hero.framework.perspective.CharacterGridView;
 import net.sf.anathema.framework.perspective.SwingPerspectivePane;
 import net.sf.anathema.fx.hero.perspective.CharacterGridFxView;
+import net.sf.anathema.hero.framework.perspective.CharacterGridView;
 import net.sf.anathema.platform.fx.InteractionView;
 
 import javax.swing.JComponent;

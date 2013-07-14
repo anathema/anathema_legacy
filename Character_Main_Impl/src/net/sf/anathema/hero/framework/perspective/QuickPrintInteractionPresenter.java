@@ -1,7 +1,7 @@
 package net.sf.anathema.hero.framework.perspective;
 
-import net.sf.anathema.hero.framework.perspective.model.ItemSelectionModel;
 import net.sf.anathema.framework.environment.SwingEnvironment;
+import net.sf.anathema.hero.framework.perspective.model.ItemSelectionModel;
 import net.sf.anathema.interaction.Command;
 import net.sf.anathema.interaction.Tool;
 import net.sf.anathema.lib.file.RelativePath;

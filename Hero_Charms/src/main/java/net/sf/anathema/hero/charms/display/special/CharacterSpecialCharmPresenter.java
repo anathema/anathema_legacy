@@ -1,10 +1,10 @@
 package net.sf.anathema.hero.charms.display.special;
 
+import net.sf.anathema.character.main.magic.display.view.charmtree.CharmGroupInformer;
 import net.sf.anathema.character.main.magic.model.charm.special.ISpecialCharm;
 import net.sf.anathema.hero.charms.model.CharacterCharmModel;
-import net.sf.anathema.hero.charms.model.special.SpecialCharmList;
 import net.sf.anathema.hero.charms.model.CharmsModel;
-import net.sf.anathema.character.main.magic.display.view.charmtree.CharmGroupInformer;
+import net.sf.anathema.hero.charms.model.special.SpecialCharmList;
 
 public class CharacterSpecialCharmPresenter implements SpecialCharmViewPresenter {
   private final SpecialCharmList list;

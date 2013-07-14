@@ -1,15 +1,15 @@
 package net.sf.anathema.character.main.magic.parser.charms;
 
 import com.google.common.base.Strings;
-import net.sf.anathema.character.main.magic.model.charm.type.CharmTypeModel;
-import net.sf.anathema.character.main.magic.model.charm.type.ReflexiveSpecialsModel;
-import net.sf.anathema.character.main.magic.model.charm.type.SimpleSpecialsModel;
 import net.sf.anathema.character.main.magic.model.charm.CharmException;
 import net.sf.anathema.character.main.magic.model.charm.ICharmTypeVisitor;
 import net.sf.anathema.character.main.magic.model.charm.type.CharmType;
+import net.sf.anathema.character.main.magic.model.charm.type.CharmTypeModel;
 import net.sf.anathema.character.main.magic.model.charm.type.ICharmTypeModel;
 import net.sf.anathema.character.main.magic.model.charm.type.ISimpleSpecialsModel;
 import net.sf.anathema.character.main.magic.model.charm.type.ITypeSpecialsModel;
+import net.sf.anathema.character.main.magic.model.charm.type.ReflexiveSpecialsModel;
+import net.sf.anathema.character.main.magic.model.charm.type.SimpleSpecialsModel;
 import net.sf.anathema.character.main.magic.model.charm.type.TurnType;
 import net.sf.anathema.lib.exception.PersistenceException;
 import net.sf.anathema.lib.xml.ElementUtilities;

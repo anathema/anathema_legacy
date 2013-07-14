@@ -3,9 +3,9 @@ package net.sf.anathema.character.main.traits.limitation;
 import net.sf.anathema.character.main.template.ITraitLimitation;
 import net.sf.anathema.character.main.traits.ValuedTraitType;
 import net.sf.anathema.character.main.traits.types.OtherTraitType;
+import net.sf.anathema.hero.model.Hero;
 import net.sf.anathema.hero.spiritual.SpiritualTraitModel;
 import net.sf.anathema.hero.spiritual.SpiritualTraitModelFetcher;
-import net.sf.anathema.hero.model.Hero;
 import net.sf.anathema.lib.exception.UnreachableCodeReachedException;
 
 public class EssenceBasedLimitation implements ITraitLimitation {

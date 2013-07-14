@@ -1,7 +1,7 @@
 package net.sf.anathema.hero.sheet.pdf.encoder.boxes;
 
-import net.sf.anathema.hero.sheet.pdf.session.ReportSession;
 import net.sf.anathema.hero.sheet.pdf.content.SubBoxContent;
+import net.sf.anathema.hero.sheet.pdf.session.ReportSession;
 
 public abstract class AbstractContentEncoder<C extends SubBoxContent> implements ContentEncoder {
 

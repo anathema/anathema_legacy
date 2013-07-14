@@ -1,7 +1,7 @@
 package net.sf.anathema.character.main.view;
 
-import net.sf.anathema.character.main.type.CharacterType;
 import net.sf.anathema.character.main.framework.RegisteredCharacterView;
+import net.sf.anathema.character.main.type.CharacterType;
 import net.sf.anathema.initialization.ObjectFactory;
 
 import java.util.Collection;

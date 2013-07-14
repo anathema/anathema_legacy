@@ -1,9 +1,9 @@
 package net.sf.anathema.character.main.testing.dummy.magic;
 
 import net.sf.anathema.character.main.magic.model.charm.Charm;
-import net.sf.anathema.hero.magic.model.martial.MartialArtsLevel;
 import net.sf.anathema.character.main.template.magic.MartialArtsCharmConfiguration;
 import net.sf.anathema.character.main.template.magic.MartialArtsRules;
+import net.sf.anathema.hero.magic.model.martial.MartialArtsLevel;
 
 public class DummyMartialArtsRules implements MartialArtsRules {
 

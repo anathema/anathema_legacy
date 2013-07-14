@@ -1,15 +1,15 @@
 package net.sf.anathema.hero.attributes.sheet.encoder;
 
 import com.itextpdf.text.DocumentException;
-import net.sf.anathema.hero.sheet.pdf.session.ReportSession;
-import net.sf.anathema.hero.sheet.pdf.encoder.general.Bounds;
-import net.sf.anathema.hero.sheet.pdf.encoder.general.Position;
-import net.sf.anathema.hero.sheet.pdf.encoder.boxes.AbstractContentEncoder;
-import net.sf.anathema.hero.traits.sheet.content.PdfTraitEncoder;
-import net.sf.anathema.hero.sheet.pdf.encoder.graphics.SheetGraphics;
 import net.sf.anathema.hero.attributes.sheet.content.AttributesContent;
 import net.sf.anathema.hero.attributes.sheet.content.PrintAttribute;
 import net.sf.anathema.hero.attributes.sheet.content.PrintAttributeGroup;
+import net.sf.anathema.hero.sheet.pdf.encoder.boxes.AbstractContentEncoder;
+import net.sf.anathema.hero.sheet.pdf.encoder.general.Bounds;
+import net.sf.anathema.hero.sheet.pdf.encoder.general.Position;
+import net.sf.anathema.hero.sheet.pdf.encoder.graphics.SheetGraphics;
+import net.sf.anathema.hero.sheet.pdf.session.ReportSession;
+import net.sf.anathema.hero.traits.sheet.content.PdfTraitEncoder;
 
 import java.util.List;
 

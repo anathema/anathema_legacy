@@ -1,8 +1,8 @@
 package net.sf.anathema.character.main.magic.model.charm.special;
 
 import com.google.common.collect.Lists;
-import net.sf.anathema.character.main.traits.ValuedTraitType;
 import net.sf.anathema.character.main.traits.TraitType;
+import net.sf.anathema.character.main.traits.ValuedTraitType;
 
 import java.util.List;
 

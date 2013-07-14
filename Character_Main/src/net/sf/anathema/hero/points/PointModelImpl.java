@@ -1,8 +1,8 @@
 package net.sf.anathema.hero.points;
 
-import net.sf.anathema.hero.model.change.ChangeAnnouncer;
+import net.sf.anathema.hero.framework.HeroEnvironment;
 import net.sf.anathema.hero.model.Hero;
-import net.sf.anathema.hero.model.InitializationContext;
+import net.sf.anathema.hero.model.change.ChangeAnnouncer;
 import net.sf.anathema.hero.points.overview.IOverviewModel;
 import net.sf.anathema.hero.points.overview.IValueModel;
 import net.sf.anathema.hero.points.overview.WeightedCategory;
@@ -20,7 +20,7 @@ public class PointModelImpl implements PointsModel {
   private final List<WeightedCategory> bonusCategories = new ArrayList<>();
 
   @Override
-  public void initialize(InitializationContext context, Hero hero) {
+  public void initialize(HeroEnvironment environment, Hero hero) {
     // nothing to do
   }
 

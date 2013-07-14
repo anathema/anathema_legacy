@@ -1,9 +1,9 @@
 package net.sf.anathema.hero.magic.advance;
 
-import net.sf.anathema.hero.advance.CostAnalyzerImpl;
 import net.sf.anathema.character.main.template.creation.BonusPointCosts;
 import net.sf.anathema.character.main.template.creation.ICreationPoints;
-import net.sf.anathema.hero.model.change.ChangeAnnouncer;
+import net.sf.anathema.hero.advance.CostAnalyzerImpl;
+import net.sf.anathema.hero.framework.HeroEnvironment;
 import net.sf.anathema.hero.magic.advance.creation.DefaultMagicModel;
 import net.sf.anathema.hero.magic.advance.creation.FavoredMagicModel;
 import net.sf.anathema.hero.magic.advance.creation.MagicBonusPointCalculator;
@@ -11,7 +11,7 @@ import net.sf.anathema.hero.magic.model.MagicModel;
 import net.sf.anathema.hero.magic.model.MagicModelFetcher;
 import net.sf.anathema.hero.model.Hero;
 import net.sf.anathema.hero.model.HeroModel;
-import net.sf.anathema.hero.model.InitializationContext;
+import net.sf.anathema.hero.model.change.ChangeAnnouncer;
 import net.sf.anathema.hero.points.PointModelFetcher;
 import net.sf.anathema.hero.points.overview.SpendingModel;
 import net.sf.anathema.hero.points.overview.WeightedCategory;
@@ -28,7 +28,7 @@ public class MagicPointsModel implements HeroModel {
   }
 
   @Override
-  public void initialize(InitializationContext context, Hero hero) {
+  public void initialize(HeroEnvironment environment, Hero hero) {
     initializeBonusPoints(hero);
   }
 

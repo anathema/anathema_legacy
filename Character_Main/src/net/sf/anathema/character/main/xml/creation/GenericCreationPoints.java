@@ -1,9 +1,9 @@
 package net.sf.anathema.character.main.xml.creation;
 
 import com.google.common.base.Preconditions;
+import net.sf.anathema.character.main.template.creation.ICreationPoints;
 import net.sf.anathema.character.main.template.points.AbilityCreationPoints;
 import net.sf.anathema.character.main.template.points.AttributeCreationPoints;
-import net.sf.anathema.character.main.template.creation.ICreationPoints;
 import net.sf.anathema.character.main.template.points.IAbilityCreationPoints;
 import net.sf.anathema.character.main.template.points.IAttributeCreationPoints;
 import net.sf.anathema.lib.lang.clone.ReflectionCloneableObject;

@@ -1,15 +1,15 @@
 package net.sf.anathema.character.main.magic.parser.spells;
 
+import net.sf.anathema.character.main.magic.model.magic.cost.ICostList;
+import net.sf.anathema.character.main.magic.model.magic.source.ISourceList;
 import net.sf.anathema.character.main.magic.model.magic.source.SourceList;
+import net.sf.anathema.character.main.magic.model.spells.CircleType;
 import net.sf.anathema.character.main.magic.model.spells.Spell;
 import net.sf.anathema.character.main.magic.model.spells.SpellImpl;
 import net.sf.anathema.character.main.magic.parser.magic.CostListBuilder;
 import net.sf.anathema.character.main.magic.parser.magic.ICostListBuilder;
-import net.sf.anathema.character.main.magic.parser.magic.SourceBuilder;
-import net.sf.anathema.character.main.magic.model.magic.cost.ICostList;
-import net.sf.anathema.character.main.magic.model.magic.source.ISourceList;
-import net.sf.anathema.character.main.magic.model.spells.CircleType;
 import net.sf.anathema.character.main.magic.parser.magic.IExaltedSourceBook;
+import net.sf.anathema.character.main.magic.parser.magic.SourceBuilder;
 import net.sf.anathema.lib.exception.PersistenceException;
 import org.dom4j.Document;
 import org.dom4j.Element;

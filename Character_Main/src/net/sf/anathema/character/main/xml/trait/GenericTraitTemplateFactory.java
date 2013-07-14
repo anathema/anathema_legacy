@@ -1,11 +1,11 @@
 package net.sf.anathema.character.main.xml.trait;
 
-import net.sf.anathema.character.main.xml.trait.pool.GenericTraitTemplatePool;
 import net.sf.anathema.character.main.template.ITraitTemplateFactory;
 import net.sf.anathema.character.main.traits.ITraitTemplate;
 import net.sf.anathema.character.main.traits.types.AbilityType;
 import net.sf.anathema.character.main.traits.types.AttributeType;
 import net.sf.anathema.character.main.traits.types.VirtueType;
+import net.sf.anathema.character.main.xml.trait.pool.GenericTraitTemplatePool;
 import net.sf.anathema.lib.exception.UnreachableCodeReachedException;
 import net.sf.anathema.lib.lang.clone.ICloneable;
 

@@ -1,11 +1,11 @@
 package net.sf.anathema.character.main.templateparser;
 
 import junit.framework.TestCase;
-import net.sf.anathema.character.main.xml.trait.alternate.AlternateMinimumRestriction;
-import net.sf.anathema.character.main.traits.types.AbilityType;
 import net.sf.anathema.character.main.library.trait.Trait;
 import net.sf.anathema.character.main.testing.dummy.DummyHero;
 import net.sf.anathema.character.main.testing.dummy.trait.DummyTrait;
+import net.sf.anathema.character.main.traits.types.AbilityType;
+import net.sf.anathema.character.main.xml.trait.alternate.AlternateMinimumRestriction;
 
 public class AlternateMinimumRestrictionTest extends TestCase {
 

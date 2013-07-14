@@ -1,12 +1,11 @@
 package net.sf.anathema.hero.initialization;
 
-import net.sf.anathema.hero.framework.HeroEnvironment;
 import net.sf.anathema.character.main.template.ConfiguredModel;
 import net.sf.anathema.character.main.template.HeroTemplate;
+import net.sf.anathema.hero.framework.HeroEnvironment;
 import net.sf.anathema.hero.model.DefaultHero;
 import net.sf.anathema.hero.model.HeroModelAutoCollector;
 import net.sf.anathema.hero.model.HeroModelFactory;
-import net.sf.anathema.hero.model.InitializationContext;
 import net.sf.anathema.initialization.ObjectFactory;
 import net.sf.anathema.lib.util.SimpleIdentifier;
 import org.junit.Test;
@@ -29,7 +28,7 @@ public class HeroModelInitializerTest {
 
   private final List<ConfiguredModel> configuredModels = new ArrayList<>();
   private final List availableModels = new ArrayList<>();
-  private final InitializationContext context = mock(InitializationContext.class);
+  private final HeroEnvironment context = mock(HeroEnvironment.class);
   private final HeroTemplate template = createTemplate();
   private final HeroModelInitializer initializer = new HeroModelInitializer(context, template);
 

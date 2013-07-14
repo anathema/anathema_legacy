@@ -1,7 +1,7 @@
 package net.sf.anathema.swing.hero.perspective;
 
-import net.sf.anathema.hero.framework.perspective.model.CharacterIdentifier;
 import net.sf.anathema.framework.swing.IView;
+import net.sf.anathema.hero.framework.perspective.model.CharacterIdentifier;
 
 import javax.swing.JComponent;
 import javax.swing.JPanel;

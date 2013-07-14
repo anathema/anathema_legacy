@@ -1,8 +1,8 @@
 package net.sf.anathema.character.main.templateparser;
 
 import junit.framework.TestCase;
-import net.sf.anathema.character.main.xml.health.GenericHealthTemplate;
 import net.sf.anathema.character.main.traits.types.AbilityType;
+import net.sf.anathema.character.main.xml.health.GenericHealthTemplate;
 
 public class HealthTemplateTest extends TestCase {
 

@@ -1,11 +1,11 @@
 package net.sf.anathema.hero.equipment.display.presenter;
 
 import net.sf.anathema.character.main.type.CharacterType;
-import net.sf.anathema.hero.display.presenter.HeroModelInitializer;
-import net.sf.anathema.hero.display.presenter.RegisteredInitializer;
 import net.sf.anathema.character.main.view.SectionView;
 import net.sf.anathema.framework.model.ApplicationModel;
 import net.sf.anathema.hero.display.HeroModelGroup;
+import net.sf.anathema.hero.display.presenter.HeroModelInitializer;
+import net.sf.anathema.hero.display.presenter.RegisteredInitializer;
 import net.sf.anathema.hero.equipment.EquipmentModel;
 import net.sf.anathema.hero.equipment.EquipmentModelFetcher;
 import net.sf.anathema.hero.model.Hero;

@@ -1,12 +1,11 @@
 package net.sf.anathema.hero.initialization;
 
-import net.sf.anathema.hero.framework.HeroEnvironment;
 import net.sf.anathema.character.main.template.ConfiguredModel;
 import net.sf.anathema.character.main.template.HeroTemplate;
+import net.sf.anathema.hero.framework.HeroEnvironment;
 import net.sf.anathema.hero.model.DefaultHero;
 import net.sf.anathema.hero.model.HeroModel;
 import net.sf.anathema.hero.model.HeroModelFactory;
-import net.sf.anathema.hero.model.InitializationContext;
 import net.sf.anathema.hero.template.DefaultTemplateFactory;
 import net.sf.anathema.hero.template.TemplateFactory;
 
@@ -15,11 +14,11 @@ import java.util.List;
 
 public class HeroModelInitializer {
 
-  private InitializationContext context;
+  private HeroEnvironment environment;
   private HeroTemplate template;
 
-  public HeroModelInitializer(InitializationContext context, HeroTemplate template) {
-    this.context = context;
+  public HeroModelInitializer(HeroEnvironment environment, HeroTemplate template) {
+    this.environment = environment;
     this.template = template;
   }
 
@@ -48,7 +47,7 @@ public class HeroModelInitializer {
 
   private void initializeModelsInOrder(DefaultHero hero, Iterable<HeroModel> modelList) {
     for (HeroModel model : modelList) {
-      model.initialize(context, hero);
+      model.initialize(environment, hero);
       model.initializeListening(hero.getChangeAnnouncer());
       hero.addModel(model);
     }

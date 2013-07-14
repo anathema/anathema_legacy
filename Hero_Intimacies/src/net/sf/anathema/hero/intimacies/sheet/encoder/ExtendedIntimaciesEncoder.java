@@ -1,14 +1,14 @@
 package net.sf.anathema.hero.intimacies.sheet.encoder;
 
 import com.itextpdf.text.DocumentException;
-import net.sf.anathema.hero.sheet.pdf.session.ReportSession;
-import net.sf.anathema.hero.traits.sheet.content.NamedValue;
+import net.sf.anathema.hero.intimacies.sheet.content.ExtendedIntimaciesContent;
+import net.sf.anathema.hero.sheet.pdf.encoder.boxes.AbstractContentEncoder;
 import net.sf.anathema.hero.sheet.pdf.encoder.general.Bounds;
 import net.sf.anathema.hero.sheet.pdf.encoder.general.Position;
-import net.sf.anathema.hero.sheet.pdf.encoder.boxes.AbstractContentEncoder;
-import net.sf.anathema.hero.traits.sheet.content.PdfTraitEncoder;
 import net.sf.anathema.hero.sheet.pdf.encoder.graphics.SheetGraphics;
-import net.sf.anathema.hero.intimacies.sheet.content.ExtendedIntimaciesContent;
+import net.sf.anathema.hero.sheet.pdf.session.ReportSession;
+import net.sf.anathema.hero.traits.sheet.content.NamedValue;
+import net.sf.anathema.hero.traits.sheet.content.PdfTraitEncoder;
 
 import static net.sf.anathema.hero.sheet.pdf.page.IVoidStateFormatConstants.LINE_HEIGHT;
 

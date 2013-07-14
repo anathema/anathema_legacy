@@ -1,12 +1,12 @@
 package net.sf.anathema.character.main.xml.trait.caste;
 
+import net.sf.anathema.character.main.traits.groups.ITraitTypeGroup;
 import net.sf.anathema.character.main.xml.trait.GenericRestrictedTraitTemplate;
 import net.sf.anathema.character.main.xml.trait.GenericTraitTemplate;
 import net.sf.anathema.character.main.xml.trait.GenericTraitTemplateParser;
 import net.sf.anathema.character.main.xml.trait.allocation.AllocationMinimumRestriction;
 import net.sf.anathema.character.main.xml.trait.allocation.AllocationMinimumTraitTemplateParser;
 import net.sf.anathema.character.main.xml.trait.alternate.AlternateMinimumTraitTemplateParser;
-import net.sf.anathema.character.main.traits.groups.ITraitTypeGroup;
 import net.sf.anathema.lib.exception.PersistenceException;
 import net.sf.anathema.lib.xml.ElementUtilities;
 import org.dom4j.Element;

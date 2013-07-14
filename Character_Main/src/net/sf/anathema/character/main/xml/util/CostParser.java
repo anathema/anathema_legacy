@@ -1,9 +1,9 @@
 package net.sf.anathema.character.main.xml.util;
 
+import net.sf.anathema.character.main.template.experience.CurrentRatingCosts;
 import net.sf.anathema.character.main.template.points.FixedValueRatingCosts;
 import net.sf.anathema.character.main.template.points.MultiplyRatingCosts;
 import net.sf.anathema.character.main.template.points.ThresholdRatingCosts;
-import net.sf.anathema.character.main.template.experience.CurrentRatingCosts;
 import net.sf.anathema.lib.exception.PersistenceException;
 import net.sf.anathema.lib.xml.ElementUtilities;
 import org.dom4j.Element;

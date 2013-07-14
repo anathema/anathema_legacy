@@ -1,10 +1,10 @@
 package net.sf.anathema.hero.abilities.display;
 
 import net.sf.anathema.character.main.library.trait.view.GroupedFavorableTraitConfigurationView;
-import net.sf.anathema.hero.display.presenter.HeroModelInitializer;
-import net.sf.anathema.hero.display.presenter.RegisteredInitializer;
 import net.sf.anathema.character.main.view.SectionView;
 import net.sf.anathema.framework.IApplicationModel;
+import net.sf.anathema.hero.display.presenter.HeroModelInitializer;
+import net.sf.anathema.hero.display.presenter.RegisteredInitializer;
 import net.sf.anathema.hero.model.Hero;
 import net.sf.anathema.initialization.reflections.Weight;
 import net.sf.anathema.lib.resources.Resources;

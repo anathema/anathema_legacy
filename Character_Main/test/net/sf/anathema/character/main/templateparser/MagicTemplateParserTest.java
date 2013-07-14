@@ -1,16 +1,16 @@
 package net.sf.anathema.character.main.templateparser;
 
-import net.sf.anathema.character.main.template.magic.CharmTemplate;
-import net.sf.anathema.character.main.xml.magic.GenericMagicTemplate;
-import net.sf.anathema.character.main.xml.magic.GenericMagicTemplateParser;
-import net.sf.anathema.character.main.template.magic.DefaultMartialArtsRules;
-import net.sf.anathema.hero.magic.model.martial.MartialArtsLevel;
-import net.sf.anathema.character.main.magic.model.spells.CircleType;
 import net.sf.anathema.character.main.dummy.DummyCharm;
 import net.sf.anathema.character.main.dummy.DummyCharmUtilities;
+import net.sf.anathema.character.main.magic.model.spells.CircleType;
+import net.sf.anathema.character.main.template.magic.CharmTemplate;
+import net.sf.anathema.character.main.template.magic.DefaultMartialArtsRules;
 import net.sf.anathema.character.main.testing.dummy.DummyCasteType;
 import net.sf.anathema.character.main.testing.dummy.magic.DummyMartialArtsRules;
 import net.sf.anathema.character.main.testing.dummy.template.DummyXmlTemplateRegistry;
+import net.sf.anathema.character.main.xml.magic.GenericMagicTemplate;
+import net.sf.anathema.character.main.xml.magic.GenericMagicTemplateParser;
+import net.sf.anathema.hero.magic.model.martial.MartialArtsLevel;
 import net.sf.anathema.lib.util.Identifier;
 import net.sf.anathema.lib.xml.DocumentUtilities;
 import org.apache.commons.lang3.ArrayUtils;

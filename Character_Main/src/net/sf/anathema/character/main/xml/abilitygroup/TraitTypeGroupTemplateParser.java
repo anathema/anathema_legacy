@@ -1,8 +1,8 @@
 package net.sf.anathema.character.main.xml.abilitygroup;
 
+import net.sf.anathema.character.main.traits.groups.ITraitTypeGroup;
 import net.sf.anathema.character.main.xml.core.AbstractXmlTemplateParser;
 import net.sf.anathema.character.main.xml.registry.IXmlTemplateRegistry;
-import net.sf.anathema.character.main.traits.groups.ITraitTypeGroup;
 import net.sf.anathema.lib.exception.PersistenceException;
 import net.sf.anathema.lib.xml.ElementUtilities;
 import org.dom4j.Element;

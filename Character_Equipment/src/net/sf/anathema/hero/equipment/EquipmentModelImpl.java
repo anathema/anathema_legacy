@@ -8,20 +8,18 @@ import net.sf.anathema.character.equipment.character.model.IEquipmentItem;
 import net.sf.anathema.character.equipment.character.model.IEquipmentStatsOption;
 import net.sf.anathema.character.equipment.item.model.IEquipmentTemplateProvider;
 import net.sf.anathema.character.equipment.item.model.gson.GsonEquipmentDatabase;
-import net.sf.anathema.character.main.equipment.HeroStatsModifiers;
-import net.sf.anathema.character.main.type.CharacterType;
-import net.sf.anathema.hero.model.change.UnspecifiedChangeListener;
 import net.sf.anathema.character.main.equipment.ArtifactStats;
+import net.sf.anathema.character.main.equipment.HeroStatsModifiers;
 import net.sf.anathema.character.main.equipment.weapon.IArmourStats;
 import net.sf.anathema.character.main.equipment.weapon.IEquipmentStats;
 import net.sf.anathema.character.main.library.trait.Trait;
 import net.sf.anathema.character.main.library.trait.specialties.Specialty;
 import net.sf.anathema.character.main.traits.types.AbilityType;
 import net.sf.anathema.character.main.traits.types.AttributeType;
+import net.sf.anathema.character.main.type.CharacterType;
 import net.sf.anathema.equipment.core.IEquipmentTemplate;
 import net.sf.anathema.equipment.core.MagicalMaterial;
 import net.sf.anathema.equipment.core.MaterialComposition;
-import net.sf.anathema.hero.model.change.ChangeAnnouncer;
 import net.sf.anathema.hero.equipment.model.CharacterStatsModifiers;
 import net.sf.anathema.hero.equipment.model.EquipmentCollection;
 import net.sf.anathema.hero.equipment.model.EquipmentDirectAccess;
@@ -31,10 +29,12 @@ import net.sf.anathema.hero.equipment.model.MaterialRules;
 import net.sf.anathema.hero.equipment.model.ReflectionMaterialRules;
 import net.sf.anathema.hero.equipment.model.natural.DefaultNaturalSoak;
 import net.sf.anathema.hero.equipment.model.natural.NaturalWeaponTemplate;
-import net.sf.anathema.hero.spiritual.model.pool.EssencePoolModelFetcher;
+import net.sf.anathema.hero.framework.HeroEnvironment;
 import net.sf.anathema.hero.model.Hero;
-import net.sf.anathema.hero.model.InitializationContext;
+import net.sf.anathema.hero.model.change.ChangeAnnouncer;
+import net.sf.anathema.hero.model.change.UnspecifiedChangeListener;
 import net.sf.anathema.hero.sheet.pdf.content.stats.StatsModelFetcher;
+import net.sf.anathema.hero.spiritual.model.pool.EssencePoolModelFetcher;
 import net.sf.anathema.hero.traits.TraitModelFetcher;
 import net.sf.anathema.initialization.ObjectFactory;
 import net.sf.anathema.lib.control.ChangeListener;
@@ -74,13 +74,13 @@ public class EquipmentModelImpl implements EquipmentOptionsProvider, EquipmentMo
   }
 
   @Override
-  public void initialize(InitializationContext context, Hero hero) {
+  public void initialize(HeroEnvironment environment, Hero hero) {
     StatsModelFetcher.fetch(hero).addModifierFactory(this);
-    Path dataBaseDirectory = context.getDataFileProvider().getDataBaseDirectory(DATABASE_FOLDER);
+    Path dataBaseDirectory = environment.getDataFileProvider().getDataBaseDirectory(DATABASE_FOLDER);
     EquipmentDirectAccess access = new EquipmentDirectAccess(dataBaseDirectory);
-    ObjectFactory objectFactory = context.getObjectFactory();
+    ObjectFactory objectFactory = environment.getObjectFactory();
     MaterialRules materialRules = new ReflectionMaterialRules(objectFactory);
-    NaturalWeaponsMap naturalWeaponsMap = new NaturalWeaponsMapImpl(context.getCharacterTypes(), context.getObjectFactory());
+    NaturalWeaponsMap naturalWeaponsMap = new NaturalWeaponsMapImpl(environment.getCharacterTypes(), environment.getObjectFactory());
     CharacterType characterType = hero.getTemplate().getTemplateType().getCharacterType();
     Trait stamina = TraitModelFetcher.fetch(hero).getTrait(AttributeType.Stamina);
     this.naturalArmor = new DefaultNaturalSoak(stamina, characterType);

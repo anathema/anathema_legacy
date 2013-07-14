@@ -1,10 +1,10 @@
 package net.sf.anathema.character.main.templateparser;
 
 import junit.framework.TestCase;
-import net.sf.anathema.character.main.xml.trait.GenericRestrictedTraitTemplate;
-import net.sf.anathema.character.main.xml.trait.alternate.AlternateMinimumTraitTemplateParser;
 import net.sf.anathema.character.main.traits.groups.AllAbilityTraitTypeGroup;
 import net.sf.anathema.character.main.traits.types.AbilityType;
+import net.sf.anathema.character.main.xml.trait.GenericRestrictedTraitTemplate;
+import net.sf.anathema.character.main.xml.trait.alternate.AlternateMinimumTraitTemplateParser;
 import net.sf.anathema.lib.xml.DocumentUtilities;
 
 public class AlternateMinimumTraitTemplateParserTest extends TestCase {

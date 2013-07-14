@@ -3,8 +3,8 @@ package net.sf.anathema.platform.tree.document;
 import net.sf.anathema.graph.SugiyamaLayout;
 import net.sf.anathema.graph.graph.IProperHierarchicalGraph;
 import net.sf.anathema.graph.nodes.IRegularNode;
-import net.sf.anathema.platform.tree.document.visualizer.TreePresentationProperties;
 import net.sf.anathema.platform.tree.document.visualizer.IVisualizedGraph;
+import net.sf.anathema.platform.tree.document.visualizer.TreePresentationProperties;
 import net.sf.anathema.platform.tree.document.visualizer.VisualizedGraphFactory;
 
 import java.util.List;

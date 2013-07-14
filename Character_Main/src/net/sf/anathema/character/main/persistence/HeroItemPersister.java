@@ -2,7 +2,6 @@ package net.sf.anathema.character.main.persistence;
 
 import net.sf.anathema.character.main.CharacterStatisticsConfiguration;
 import net.sf.anathema.character.main.ExaltedCharacter;
-import net.sf.anathema.hero.framework.HeroEnvironment;
 import net.sf.anathema.character.main.framework.item.DataItem;
 import net.sf.anathema.character.main.magic.model.spells.SpellException;
 import net.sf.anathema.framework.item.IItemType;
@@ -13,6 +12,7 @@ import net.sf.anathema.framework.repository.Item;
 import net.sf.anathema.framework.repository.RepositoryException;
 import net.sf.anathema.framework.repository.access.IRepositoryReadAccess;
 import net.sf.anathema.framework.repository.access.IRepositoryWriteAccess;
+import net.sf.anathema.hero.framework.HeroEnvironment;
 import net.sf.anathema.hero.model.Hero;
 import net.sf.anathema.hero.model.HeroModel;
 import net.sf.anathema.hero.persistence.HeroModelPersister;

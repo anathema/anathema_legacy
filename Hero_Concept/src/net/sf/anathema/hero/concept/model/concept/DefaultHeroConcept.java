@@ -2,16 +2,16 @@ package net.sf.anathema.hero.concept.model.concept;
 
 import net.sf.anathema.character.main.IIntegerDescription;
 import net.sf.anathema.character.main.IntegerDescription;
-import net.sf.anathema.hero.model.change.AnnounceChangeListener;
-import net.sf.anathema.hero.model.change.ChangeAnnouncer;
 import net.sf.anathema.hero.concept.CasteCollection;
 import net.sf.anathema.hero.concept.CasteSelection;
 import net.sf.anathema.hero.concept.ConceptChange;
 import net.sf.anathema.hero.concept.HeroConcept;
 import net.sf.anathema.hero.concept.advance.CreationOverviewInitializer;
+import net.sf.anathema.hero.framework.HeroEnvironment;
 import net.sf.anathema.hero.model.Hero;
 import net.sf.anathema.hero.model.HeroModel;
-import net.sf.anathema.hero.model.InitializationContext;
+import net.sf.anathema.hero.model.change.AnnounceChangeListener;
+import net.sf.anathema.hero.model.change.ChangeAnnouncer;
 import net.sf.anathema.lib.util.Identifier;
 
 public class DefaultHeroConcept implements HeroConcept, HeroModel {
@@ -29,7 +29,7 @@ public class DefaultHeroConcept implements HeroConcept, HeroModel {
   }
 
   @Override
-  public void initialize(InitializationContext context, Hero hero) {
+  public void initialize(HeroEnvironment environment, Hero hero) {
     new CreationOverviewInitializer().initialize(hero, this);
   }
 

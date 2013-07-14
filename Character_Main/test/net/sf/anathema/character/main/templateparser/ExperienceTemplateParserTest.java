@@ -1,13 +1,13 @@
 package net.sf.anathema.character.main.templateparser;
 
 import net.sf.anathema.character.main.dummy.DummyCharm;
-import net.sf.anathema.hero.magic.model.martial.MartialArtsLevel;
 import net.sf.anathema.character.main.magic.model.magic.Magic;
-import net.sf.anathema.hero.advance.CostAnalyzer;
 import net.sf.anathema.character.main.template.points.MultiplyRatingCosts;
 import net.sf.anathema.character.main.testing.dummy.template.DummyXmlTemplateRegistry;
 import net.sf.anathema.character.main.xml.experience.ExperienceTemplateParser;
 import net.sf.anathema.character.main.xml.experience.GenericExperiencePointCosts;
+import net.sf.anathema.hero.advance.CostAnalyzer;
+import net.sf.anathema.hero.magic.model.martial.MartialArtsLevel;
 import net.sf.anathema.lib.exception.AnathemaException;
 import net.sf.anathema.lib.xml.DocumentUtilities;
 import org.dom4j.Element;

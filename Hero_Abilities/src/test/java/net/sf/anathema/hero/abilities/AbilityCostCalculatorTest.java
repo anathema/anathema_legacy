@@ -1,19 +1,19 @@
 package net.sf.anathema.hero.abilities;
 
-import net.sf.anathema.character.main.template.points.AbilityCreationPoints;
-import net.sf.anathema.character.main.template.points.FixedValueRatingCosts;
-import net.sf.anathema.character.main.template.experience.AbilityPointCosts;
-import net.sf.anathema.character.main.template.experience.CurrentRatingCosts;
-import net.sf.anathema.character.main.template.points.IFavorableTraitCreationPoints;
-import net.sf.anathema.character.main.testing.dummy.models.DummySpiritualTraitModel;
-import net.sf.anathema.character.main.traits.types.AbilityType;
+import net.sf.anathema.character.main.costs.AbstractBonusPointTestCase;
 import net.sf.anathema.character.main.library.trait.FavorableTraitCost;
 import net.sf.anathema.character.main.library.trait.Trait;
-import net.sf.anathema.character.main.costs.AbstractBonusPointTestCase;
+import net.sf.anathema.character.main.template.experience.AbilityPointCosts;
+import net.sf.anathema.character.main.template.experience.CurrentRatingCosts;
+import net.sf.anathema.character.main.template.points.AbilityCreationPoints;
+import net.sf.anathema.character.main.template.points.FixedValueRatingCosts;
+import net.sf.anathema.character.main.template.points.IFavorableTraitCreationPoints;
 import net.sf.anathema.character.main.testing.dummy.DummyHero;
-import net.sf.anathema.character.main.testing.dummy.DummyInitializationContext;
+import net.sf.anathema.character.main.testing.dummy.DummyHeroEnvironment;
 import net.sf.anathema.character.main.testing.dummy.models.DummyHeroConcept;
+import net.sf.anathema.character.main.testing.dummy.models.DummySpiritualTraitModel;
 import net.sf.anathema.character.main.testing.dummy.models.DummyTraitModel;
+import net.sf.anathema.character.main.traits.types.AbilityType;
 import net.sf.anathema.hero.abilities.advance.creation.AbilityCostCalculatorImpl;
 import net.sf.anathema.hero.abilities.model.AbilitiesModelImpl;
 import net.sf.anathema.hero.points.PointModelImpl;
@@ -259,8 +259,7 @@ public class AbilityCostCalculatorTest extends AbstractBonusPointTestCase {
   private void initializeModelWith(AbilityCreationPoints abilityCreationPoints) {
     dummyHero.template.creationPoints.abilityCreationPoints = abilityCreationPoints;
     dummyHero.addModel(new PointModelImpl());
-    DummyInitializationContext context = new DummyInitializationContext();
-    abilityModel.initialize(context, dummyHero);
+    abilityModel.initialize(new DummyHeroEnvironment(), dummyHero);
   }
 
   private void assertBonusPointCostsSumUpTo(int value, FavorableTraitCost... costs) {

@@ -1,8 +1,8 @@
 package net.sf.anathema.character.main.templateparser;
 
+import net.sf.anathema.character.main.traits.ITraitTemplate;
 import net.sf.anathema.character.main.traits.limitation.EssenceBasedLimitation;
 import net.sf.anathema.character.main.traits.limitation.StaticTraitLimitation;
-import net.sf.anathema.character.main.traits.ITraitTemplate;
 import org.junit.Assert;
 
 public class AnathemaCharacterAssert {

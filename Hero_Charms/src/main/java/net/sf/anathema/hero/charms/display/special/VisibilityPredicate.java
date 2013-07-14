@@ -1,10 +1,10 @@
 package net.sf.anathema.hero.charms.display.special;
 
 import com.google.common.base.Predicate;
+import net.sf.anathema.character.main.magic.display.view.charmtree.CharmGroupInformer;
 import net.sf.anathema.character.main.magic.model.charm.Charm;
 import net.sf.anathema.character.main.magic.model.charm.CharmIdMap;
 import net.sf.anathema.character.main.magic.model.charm.ICharmGroup;
-import net.sf.anathema.character.main.magic.display.view.charmtree.CharmGroupInformer;
 
 public class VisibilityPredicate implements Predicate<String> {
 

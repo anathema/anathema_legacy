@@ -1,8 +1,8 @@
 package net.sf.anathema.hero.framework.perspective;
 
+import net.sf.anathema.framework.repository.Item;
 import net.sf.anathema.hero.framework.perspective.model.CharacterIdentifier;
 import net.sf.anathema.hero.framework.perspective.model.ItemSystemModel;
-import net.sf.anathema.framework.repository.Item;
 
 import java.util.ArrayList;
 import java.util.List;

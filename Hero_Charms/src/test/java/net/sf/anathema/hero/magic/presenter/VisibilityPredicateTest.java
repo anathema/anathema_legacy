@@ -1,12 +1,12 @@
 package net.sf.anathema.hero.magic.presenter;
 
+import net.sf.anathema.character.main.magic.display.view.charmtree.CharmGroupInformer;
 import net.sf.anathema.character.main.magic.model.charm.Charm;
 import net.sf.anathema.character.main.magic.model.charm.CharmIdMap;
 import net.sf.anathema.character.main.magic.model.charm.ICharmGroup;
+import net.sf.anathema.character.main.testing.dummy.DummyExaltCharacterType;
 import net.sf.anathema.character.main.type.CharacterType;
 import net.sf.anathema.hero.charms.display.special.VisibilityPredicate;
-import net.sf.anathema.character.main.testing.dummy.DummyExaltCharacterType;
-import net.sf.anathema.character.main.magic.display.view.charmtree.CharmGroupInformer;
 import org.junit.Test;
 
 import static net.sf.anathema.hero.magic.model.charms.CharmMother.createCharmForCharacterTypeFromGroup;

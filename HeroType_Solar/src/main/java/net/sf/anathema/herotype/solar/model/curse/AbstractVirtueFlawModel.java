@@ -1,11 +1,11 @@
 package net.sf.anathema.herotype.solar.model.curse;
 
-import net.sf.anathema.hero.model.change.ChangeFlavor;
-import net.sf.anathema.hero.model.change.FlavoredChangeListener;
 import net.sf.anathema.hero.experience.ExperienceChange;
 import net.sf.anathema.hero.experience.ExperienceModelFetcher;
+import net.sf.anathema.hero.framework.HeroEnvironment;
 import net.sf.anathema.hero.model.Hero;
-import net.sf.anathema.hero.model.InitializationContext;
+import net.sf.anathema.hero.model.change.ChangeFlavor;
+import net.sf.anathema.hero.model.change.FlavoredChangeListener;
 import net.sf.anathema.lib.control.ChangeListener;
 import net.sf.anathema.lib.control.GlobalChangeAdapter;
 import net.sf.anathema.lib.control.IBooleanValueChangedListener;
@@ -15,7 +15,7 @@ public abstract class AbstractVirtueFlawModel implements VirtueFlawModel {
   private Hero hero;
 
   @Override
-  public void initialize(InitializationContext context, Hero hero) {
+  public void initialize(HeroEnvironment environment, Hero hero) {
     this.hero = hero;
   }
 

@@ -1,11 +1,11 @@
 package net.sf.anathema.character.main.xml.trait;
 
-import net.sf.anathema.character.main.traits.limitation.AgeBasedLimitation;
-import net.sf.anathema.character.main.traits.limitation.EssenceBasedLimitation;
-import net.sf.anathema.character.main.traits.limitation.StaticTraitLimitation;
 import net.sf.anathema.character.main.template.ITraitLimitation;
 import net.sf.anathema.character.main.traits.LowerableState;
 import net.sf.anathema.character.main.traits.TraitType;
+import net.sf.anathema.character.main.traits.limitation.AgeBasedLimitation;
+import net.sf.anathema.character.main.traits.limitation.EssenceBasedLimitation;
+import net.sf.anathema.character.main.traits.limitation.StaticTraitLimitation;
 import net.sf.anathema.lib.exception.PersistenceException;
 import net.sf.anathema.lib.xml.ElementUtilities;
 import org.dom4j.Element;

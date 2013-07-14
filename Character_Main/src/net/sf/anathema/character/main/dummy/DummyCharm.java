@@ -1,8 +1,6 @@
 package net.sf.anathema.character.main.dummy;
 
 import net.sf.anathema.character.main.magic.model.charm.Charm;
-import net.sf.anathema.character.main.magic.model.magic.attribute.MagicAttributeImpl;
-import net.sf.anathema.character.main.magic.model.magic.attribute.MagicAttribute;
 import net.sf.anathema.character.main.magic.model.charm.IndirectCharmRequirement;
 import net.sf.anathema.character.main.magic.model.charm.duration.IDuration;
 import net.sf.anathema.character.main.magic.model.charm.duration.SimpleDuration;
@@ -11,6 +9,8 @@ import net.sf.anathema.character.main.magic.model.charm.type.CharmTypeModel;
 import net.sf.anathema.character.main.magic.model.charmtree.ICharmLearnArbitrator;
 import net.sf.anathema.character.main.magic.model.combos.ComboRestrictions;
 import net.sf.anathema.character.main.magic.model.combos.IComboRestrictions;
+import net.sf.anathema.character.main.magic.model.magic.attribute.MagicAttribute;
+import net.sf.anathema.character.main.magic.model.magic.attribute.MagicAttributeImpl;
 import net.sf.anathema.character.main.magic.model.magic.cost.CostList;
 import net.sf.anathema.character.main.magic.parser.magic.IExaltedSourceBook;
 import net.sf.anathema.character.main.traits.TraitType;

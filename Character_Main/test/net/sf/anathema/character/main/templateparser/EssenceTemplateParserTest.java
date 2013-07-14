@@ -1,15 +1,15 @@
 package net.sf.anathema.character.main.templateparser;
 
 import junit.framework.TestCase;
-import net.sf.anathema.character.main.xml.essence.EssenceTemplateParser;
-import net.sf.anathema.character.main.xml.essence.GenericEssenceTemplate;
 import net.sf.anathema.character.main.template.essence.FactorizedTrait;
 import net.sf.anathema.character.main.template.essence.IEssenceTemplate;
+import net.sf.anathema.character.main.testing.dummy.DummyGenericTrait;
+import net.sf.anathema.character.main.testing.dummy.template.DummyXmlTemplateRegistry;
 import net.sf.anathema.character.main.traits.ValuedTraitType;
 import net.sf.anathema.character.main.traits.types.OtherTraitType;
 import net.sf.anathema.character.main.traits.types.VirtueType;
-import net.sf.anathema.character.main.testing.dummy.DummyGenericTrait;
-import net.sf.anathema.character.main.testing.dummy.template.DummyXmlTemplateRegistry;
+import net.sf.anathema.character.main.xml.essence.EssenceTemplateParser;
+import net.sf.anathema.character.main.xml.essence.GenericEssenceTemplate;
 import net.sf.anathema.lib.exception.AnathemaException;
 import net.sf.anathema.lib.xml.DocumentUtilities;
 import org.dom4j.Document;

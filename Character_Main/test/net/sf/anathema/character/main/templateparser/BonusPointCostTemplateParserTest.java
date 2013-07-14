@@ -1,11 +1,11 @@
 package net.sf.anathema.character.main.templateparser;
 
-import net.sf.anathema.hero.advance.CostAnalyzer;
 import net.sf.anathema.character.main.testing.dummy.DummyGenericTrait;
 import net.sf.anathema.character.main.testing.dummy.template.DummyXmlTemplateRegistry;
 import net.sf.anathema.character.main.traits.types.AttributeType;
 import net.sf.anathema.character.main.xml.creation.BonusPointCostTemplateParser;
 import net.sf.anathema.character.main.xml.creation.GenericBonusPointCosts;
+import net.sf.anathema.hero.advance.CostAnalyzer;
 import net.sf.anathema.hero.magic.model.martial.MartialArtsLevel;
 import net.sf.anathema.lib.exception.AnathemaException;
 import net.sf.anathema.lib.xml.DocumentUtilities;

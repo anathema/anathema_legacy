@@ -1,7 +1,7 @@
 package net.sf.anathema.character.main.library.overview;
 
-import net.sf.anathema.character.main.view.labelledvalue.LabelledAllotmentView;
 import net.sf.anathema.character.main.view.labelledvalue.IValueView;
+import net.sf.anathema.character.main.view.labelledvalue.LabelledAllotmentView;
 
 public interface OverviewCategory {
 

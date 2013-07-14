@@ -1,11 +1,11 @@
 package net.sf.anathema.hero.equipment;
 
-import net.sf.anathema.character.main.traits.SpecialtiesCollection;
-import net.sf.anathema.character.main.traits.TraitType;
 import net.sf.anathema.character.main.library.trait.specialties.SpecialtiesModel;
 import net.sf.anathema.character.main.library.trait.specialties.SpecialtiesModelFetcher;
 import net.sf.anathema.character.main.library.trait.specialties.Specialty;
 import net.sf.anathema.character.main.library.trait.subtrait.ISpecialtyListener;
+import net.sf.anathema.character.main.traits.SpecialtiesCollection;
+import net.sf.anathema.character.main.traits.TraitType;
 import net.sf.anathema.hero.model.Hero;
 import net.sf.anathema.lib.control.ChangeListener;
 

@@ -1,11 +1,10 @@
 package net.sf.anathema.hero.charms.model.special;
 
 import net.sf.anathema.character.main.magic.model.charm.Charm;
+import net.sf.anathema.character.main.magic.model.charm.CharmLearnAdapter;
+import net.sf.anathema.character.main.magic.model.charm.CharmSpecialistImpl;
+import net.sf.anathema.character.main.magic.model.charm.ISpecialCharmManager;
 import net.sf.anathema.character.main.magic.model.charm.special.CharmSpecialsModel;
-import net.sf.anathema.character.main.magic.model.charm.special.ISubEffectCharm;
-import net.sf.anathema.character.main.magic.model.charm.special.MultipleEffectCharmConfiguration;
-import net.sf.anathema.character.main.magic.model.charm.special.OxBodyTechniqueConfiguration;
-import net.sf.anathema.character.main.magic.model.charm.special.TraitCapModifyingCharmConfiguration;
 import net.sf.anathema.character.main.magic.model.charm.special.IMultiLearnableCharm;
 import net.sf.anathema.character.main.magic.model.charm.special.IMultipleEffectCharm;
 import net.sf.anathema.character.main.magic.model.charm.special.IOxBodyTechniqueCharm;
@@ -14,16 +13,17 @@ import net.sf.anathema.character.main.magic.model.charm.special.IPrerequisiteMod
 import net.sf.anathema.character.main.magic.model.charm.special.ISpecialCharm;
 import net.sf.anathema.character.main.magic.model.charm.special.ISpecialCharmLearnListener;
 import net.sf.anathema.character.main.magic.model.charm.special.ISpecialCharmVisitor;
+import net.sf.anathema.character.main.magic.model.charm.special.ISubEffectCharm;
 import net.sf.anathema.character.main.magic.model.charm.special.ITraitCapModifyingCharm;
 import net.sf.anathema.character.main.magic.model.charm.special.IUpgradableCharm;
+import net.sf.anathema.character.main.magic.model.charm.special.MultipleEffectCharmConfiguration;
+import net.sf.anathema.character.main.magic.model.charm.special.OxBodyTechniqueConfiguration;
+import net.sf.anathema.character.main.magic.model.charm.special.TraitCapModifyingCharmConfiguration;
+import net.sf.anathema.character.main.magic.model.charms.IExtendedCharmLearnableArbitrator;
+import net.sf.anathema.character.main.magic.model.charms.ILearningCharmGroup;
 import net.sf.anathema.hero.charms.model.CharmsModel;
 import net.sf.anathema.hero.health.HealthModel;
 import net.sf.anathema.hero.health.IPainToleranceProvider;
-import net.sf.anathema.character.main.magic.model.charm.CharmLearnAdapter;
-import net.sf.anathema.character.main.magic.model.charm.CharmSpecialistImpl;
-import net.sf.anathema.character.main.magic.model.charms.IExtendedCharmLearnableArbitrator;
-import net.sf.anathema.character.main.magic.model.charms.ILearningCharmGroup;
-import net.sf.anathema.character.main.magic.model.charm.ISpecialCharmManager;
 import net.sf.anathema.hero.model.Hero;
 
 import java.util.HashMap;

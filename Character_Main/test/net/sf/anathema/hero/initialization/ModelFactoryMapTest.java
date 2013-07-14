@@ -1,9 +1,5 @@
 package net.sf.anathema.hero.initialization;
 
-import net.sf.anathema.hero.initialization.DummyFactoryCollector;
-import net.sf.anathema.hero.initialization.DummyModelFactory;
-import net.sf.anathema.hero.initialization.ModelFactoryMap;
-import net.sf.anathema.hero.initialization.ModelTreeEntry;
 import net.sf.anathema.lib.util.SimpleIdentifier;
 import org.hamcrest.Description;
 import org.hamcrest.TypeSafeMatcher;

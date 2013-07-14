@@ -1,7 +1,5 @@
 package net.sf.anathema.hero.framework.perspective.model;
 
-import net.sf.anathema.hero.framework.HeroEnvironmentExtractor;
-import net.sf.anathema.hero.framework.HeroEnvironment;
 import net.sf.anathema.character.main.persistence.HeroItemPersister;
 import net.sf.anathema.framework.IApplicationModel;
 import net.sf.anathema.framework.item.IItemType;
@@ -12,6 +10,8 @@ import net.sf.anathema.framework.repository.access.IRepositoryReadAccess;
 import net.sf.anathema.framework.repository.access.IRepositoryWriteAccess;
 import net.sf.anathema.framework.repository.access.printname.IPrintNameFileAccess;
 import net.sf.anathema.framework.view.PrintNameFile;
+import net.sf.anathema.hero.framework.HeroEnvironment;
+import net.sf.anathema.hero.framework.HeroEnvironmentExtractor;
 
 import java.io.IOException;
 import java.util.Collection;

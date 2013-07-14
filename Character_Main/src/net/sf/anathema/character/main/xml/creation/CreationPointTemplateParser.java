@@ -1,9 +1,9 @@
 package net.sf.anathema.character.main.xml.creation;
 
-import net.sf.anathema.character.main.xml.core.AbstractXmlTemplateParser;
-import net.sf.anathema.character.main.xml.registry.IXmlTemplateRegistry;
 import net.sf.anathema.character.main.template.points.AbilityCreationPoints;
 import net.sf.anathema.character.main.template.points.AttributeCreationPoints;
+import net.sf.anathema.character.main.xml.core.AbstractXmlTemplateParser;
+import net.sf.anathema.character.main.xml.registry.IXmlTemplateRegistry;
 import net.sf.anathema.lib.exception.PersistenceException;
 import net.sf.anathema.lib.xml.ElementUtilities;
 import org.dom4j.Element;

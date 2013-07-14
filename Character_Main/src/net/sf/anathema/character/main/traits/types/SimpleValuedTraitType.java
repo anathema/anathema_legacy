@@ -1,6 +1,6 @@
 package net.sf.anathema.character.main.traits.types;
 
-import net.sf.anathema.character.main.traits.*;
+import net.sf.anathema.character.main.traits.TraitType;
 
 public class SimpleValuedTraitType implements net.sf.anathema.character.main.traits.ValuedTraitType {
 

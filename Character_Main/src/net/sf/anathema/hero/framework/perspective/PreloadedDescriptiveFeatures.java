@@ -2,8 +2,8 @@ package net.sf.anathema.hero.framework.perspective;
 
 import net.sf.anathema.character.main.framework.item.CharacterPrintNameFileScanner;
 import net.sf.anathema.character.main.template.ITemplateType;
-import net.sf.anathema.hero.framework.perspective.model.CharacterIdentifier;
 import net.sf.anathema.framework.view.PrintNameFile;
+import net.sf.anathema.hero.framework.perspective.model.CharacterIdentifier;
 import net.sf.anathema.lib.util.Identifier;
 
 public class PreloadedDescriptiveFeatures implements DescriptiveFeatures {
