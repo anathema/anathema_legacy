@@ -7,7 +7,6 @@ import net.sf.anathema.character.main.magic.description.MagicDescriptionProvider
 import net.sf.anathema.character.main.magic.display.view.charmtree.CharmDisplayPropertiesMap;
 import net.sf.anathema.character.main.magic.display.view.charmtree.DefaultNodeProperties;
 import net.sf.anathema.character.main.magic.model.charmtree.GroupCharmTree;
-import net.sf.anathema.character.main.template.ITemplateRegistry;
 import net.sf.anathema.character.main.type.CharacterTypes;
 import net.sf.anathema.hero.charms.display.coloring.CharmDye;
 import net.sf.anathema.hero.charms.display.coloring.ConfigurableCharmDye;
@@ -31,12 +30,12 @@ public class CascadePresenterImpl extends AbstractCascadePresenter implements Ca
     CharmDisplayPropertiesMap charmDisplayPropertiesMap = new CharmDisplayPropertiesMap(generics.getObjectFactory());
     CascadeCharmGroupChangeListener selectionListener = new CascadeCharmGroupChangeListener(view, viewProperties, charmDisplayPropertiesMap);
     CharacterTypes characterTypes = generics.getCharacterTypes();
-    setCharmTypes(new CascadeCharmTypes(characterTypes, generics.getCharmProvider()));
+    setCharmTypes(new CascadeCharmTypes(characterTypes, generics.getCharmCache().getCharmProvider()));
     setChangeListener(selectionListener);
     setView(view);
     CharmDye dye = new ConfigurableCharmDye(selectionListener, new CascadeColoringStrategy(view));
     setCharmDye(dye);
-    setCharmGroups(new CascadeGroupCollection(generics.getCharmProvider(), characterTypes, treeIdentifierMap));
+    setCharmGroups(new CascadeGroupCollection(generics.getCharmCache().getCharmProvider(), characterTypes, treeIdentifierMap));
   }
 
   @Override

@@ -1,4 +1,4 @@
-package net.sf.anathema.character.main.template.magic;
+package net.sf.anathema.character.main.magic.cache;
 
 import net.sf.anathema.character.main.magic.model.charm.Charm;
 import net.sf.anathema.character.main.magic.model.charm.CharmIdMap;

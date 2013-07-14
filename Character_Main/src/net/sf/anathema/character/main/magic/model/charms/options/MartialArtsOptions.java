@@ -5,7 +5,7 @@ import net.sf.anathema.character.main.magic.model.charm.CharmIdMap;
 import net.sf.anathema.character.main.magic.model.charm.ICharmGroup;
 import net.sf.anathema.character.main.magic.model.charmtree.ICharmLearnableArbitrator;
 import net.sf.anathema.character.main.magic.model.charmtree.MartialArtsCharmTree;
-import net.sf.anathema.character.main.template.magic.CharmProvider;
+import net.sf.anathema.character.main.magic.cache.CharmProvider;
 import net.sf.anathema.character.main.template.magic.CharmTemplate;
 import net.sf.anathema.character.main.template.magic.MartialArtsRules;
 import net.sf.anathema.hero.magic.model.martial.MartialArtsLevel;

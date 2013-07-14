@@ -1,9 +1,9 @@
 package net.sf.anathema.hero.model;
 
-import net.sf.anathema.character.main.magic.parser.spells.ISpellCache;
-import net.sf.anathema.character.main.template.magic.CharmProvider;
-import net.sf.anathema.character.main.type.CharacterTypes;
+import net.sf.anathema.character.main.magic.cache.CharmProvider;
 import net.sf.anathema.character.main.magic.model.charms.options.CharmTemplateRetriever;
+import net.sf.anathema.character.main.magic.parser.spells.ISpellCache;
+import net.sf.anathema.character.main.type.CharacterTypes;
 import net.sf.anathema.initialization.ObjectFactory;
 import net.sf.anathema.initialization.repository.DataFileProvider;
 

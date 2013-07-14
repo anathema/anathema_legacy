@@ -1,6 +1,6 @@
 package net.sf.anathema.cascades.presenter;
 
-import net.sf.anathema.character.main.template.magic.CharmProvider;
+import net.sf.anathema.character.main.magic.cache.CharmProvider;
 import net.sf.anathema.character.main.type.CharacterType;
 import net.sf.anathema.character.main.type.CharacterTypes;
 import net.sf.anathema.hero.charms.model.AbstractCharmTypes;

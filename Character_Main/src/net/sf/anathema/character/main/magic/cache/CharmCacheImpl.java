@@ -18,6 +18,7 @@ public class CharmCacheImpl implements CharmCache {
   private MultiEntryMap<Identifier, Charm> charmSets = new MultiEntryMap<>();
   private Map<Identifier, List<ISpecialCharm>> specialCharmsByType = new HashMap<>();
   private Map<String, Charm> charmsById = new HashMap<>();
+  private CharmProvider charmProvider;
 
   @Override
   public Charm getCharm(String charmId) {
@@ -36,10 +37,21 @@ public class CharmCacheImpl implements CharmCache {
     return charmList.toArray(new Charm[charmList.size()]);
   }
 
+  @Override
+  public CharmProvider getCharmProvider() {
+    if (charmProvider == null) {
+      charmProvider = new CharmProviderImpl(this);
+    }
+    return charmProvider;
+  }
+
   public void addCharm(Identifier type, Charm charm) {
     type = new SimpleIdentifier(type.getId());
     charmSets.replace(type, charm, charm);
     charmsById.put(charm.getId(), charm);
+    if (charmProvider != null) {
+      throw new IllegalStateException("Charms worked before compilation is complete.");
+    }
   }
 
   public boolean isEmpty() {

@@ -1,12 +1,12 @@
 package net.sf.anathema.cascades.presenter;
 
+import net.sf.anathema.character.main.magic.cache.CharmCache;
 import net.sf.anathema.character.main.magic.description.MagicDescriptionProvider;
 import net.sf.anathema.character.main.magic.display.view.charmtree.AbstractCharmTreeViewProperties;
 import net.sf.anathema.character.main.magic.display.view.charmtree.NullSpecialCharm;
 import net.sf.anathema.character.main.magic.model.charm.Charm;
 import net.sf.anathema.character.main.magic.model.charm.CharmIdMap;
 import net.sf.anathema.character.main.magic.model.charm.special.ISpecialCharm;
-import net.sf.anathema.character.main.magic.cache.CharmCache;
 import net.sf.anathema.hero.framework.HeroEnvironment;
 import net.sf.anathema.lib.resources.Resources;
 import net.sf.anathema.lib.util.Identifier;
@@ -43,6 +43,6 @@ public class CascadeCharmTreeViewProperties extends AbstractCharmTreeViewPropert
   }
 
   private ISpecialCharm[] getSpecialCharmSet() {
-    return generics.getCharmProvider().getSpecialCharms(type);
+    return generics.getCharmCache().getCharmProvider().getSpecialCharms(type);
   }
 }

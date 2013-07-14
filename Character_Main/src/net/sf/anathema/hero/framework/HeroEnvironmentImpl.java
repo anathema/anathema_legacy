@@ -7,8 +7,6 @@ import net.sf.anathema.character.main.framework.data.IExtensibleDataSetProvider;
 import net.sf.anathema.character.main.magic.cache.CharmCache;
 import net.sf.anathema.character.main.template.ITemplateRegistry;
 import net.sf.anathema.character.main.template.TemplateRegistry;
-import net.sf.anathema.character.main.template.magic.CharmProvider;
-import net.sf.anathema.character.main.template.magic.CharmProviderImpl;
 import net.sf.anathema.character.main.type.CharacterTypes;
 import net.sf.anathema.character.main.type.ReflectionCharacterTypes;
 import net.sf.anathema.character.main.xml.registry.CharacterTemplateRegistryCollection;
@@ -19,7 +17,6 @@ public class HeroEnvironmentImpl implements HeroEnvironment {
 
   private final ITemplateRegistry templateRegistry = new TemplateRegistry();
   private final ICharacterTemplateRegistryCollection templateRegistries;
-  private final CharmProvider charmProvider;
   private final DataFileProvider dataFileProvider;
   private final IExtensibleDataSetProvider dataSetProvider;
   private final ObjectFactory objectFactory;
@@ -29,8 +26,7 @@ public class HeroEnvironmentImpl implements HeroEnvironment {
     this.objectFactory = objectFactory;
     this.dataFileProvider = dataFileProvider;
     this.dataSetProvider = dataSetProvider;
-    this.charmProvider = new CharmProviderImpl(getDataSet(CharmCache.class));
-    this.templateRegistries = new CharacterTemplateRegistryCollection(dataSetProvider.getDataSet(ICharacterTemplateExtensionResourceCache.class));
+    this.templateRegistries = new CharacterTemplateRegistryCollection(getDataSet(ICharacterTemplateExtensionResourceCache.class));
     this.characterTypes = new ReflectionCharacterTypes(objectFactory);
   }
 
@@ -55,8 +51,8 @@ public class HeroEnvironmentImpl implements HeroEnvironment {
   }
 
   @Override
-  public CharmProvider getCharmProvider() {
-    return charmProvider;
+  public CharmCache getCharmCache() {
+    return getDataSet(CharmCache.class);
   }
 
   @Override
