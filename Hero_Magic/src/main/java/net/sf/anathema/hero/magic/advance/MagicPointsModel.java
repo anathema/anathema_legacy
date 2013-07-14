@@ -9,6 +9,7 @@ import net.sf.anathema.hero.magic.advance.creation.FavoredMagicModel;
 import net.sf.anathema.hero.magic.advance.creation.MagicBonusPointCalculator;
 import net.sf.anathema.hero.magic.model.MagicModel;
 import net.sf.anathema.hero.magic.model.MagicModelFetcher;
+import net.sf.anathema.hero.magic.template.advance.MagicPointsTemplate;
 import net.sf.anathema.hero.model.Hero;
 import net.sf.anathema.hero.model.HeroModel;
 import net.sf.anathema.hero.model.change.ChangeAnnouncer;
@@ -21,6 +22,15 @@ import net.sf.anathema.lib.util.SimpleIdentifier;
 public class MagicPointsModel implements HeroModel {
 
   public static final SimpleIdentifier ID = new SimpleIdentifier("MagicPoints");
+  private MagicPointsTemplate template;
+
+  public MagicPointsModel(MagicPointsTemplate template) {
+    this.template = template;
+  }
+
+  public MagicPointsTemplate getTemplate() {
+    return template;
+  }
 
   @Override
   public Identifier getId() {

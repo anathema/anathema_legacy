@@ -1,0 +1,18 @@
+{
+    "freePicks": {
+      "general": 0,
+      "favored": 10
+    },
+    "bonusCosts": {
+        "general": 3,
+        "favored": 4
+    },
+    "experienceCosts": {
+        "general": 8,
+        "favored": 10
+    },
+    "highMartialArtsExperience": {
+        "general": 12,
+        "favored": 15
+    }
+}

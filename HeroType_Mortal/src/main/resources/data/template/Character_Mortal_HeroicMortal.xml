@@ -26,7 +26,7 @@
         <model id="Charms"/>
         <model id="Combos"/>
         <model id="Spells"/>
-        <model id="MagicPoints"/>
+        <model id="MagicPoints" template="MortalMagicPoints"/>
         <model id="Specialties"/>
         <model id="SpecialtiesPoints"/>
         <model id="Languages"/>
