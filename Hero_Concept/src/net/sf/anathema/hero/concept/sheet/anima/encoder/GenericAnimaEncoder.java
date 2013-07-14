@@ -17,8 +17,6 @@ import net.sf.anathema.hero.sheet.pdf.page.IVoidStateFormatConstants;
 import net.sf.anathema.hero.sheet.pdf.session.ReportSession;
 import net.sf.anathema.lib.resources.Resources;
 
-import static net.sf.anathema.character.main.persistence.SecondEdition.SECOND_EDITION;
-
 public class GenericAnimaEncoder implements ContentEncoder {
 
   private final float fontSize;
@@ -49,7 +47,7 @@ public class GenericAnimaEncoder implements ContentEncoder {
     Chunk symbolChunk = graphics.createSymbolChunk();
     CharacterType characterType = hero.getTemplate().getTemplateType().getCharacterType();
     ListUtils.addBulletedListText(resources, symbolChunk, "Sheet.AnimaPower." + characterType.getId(), phrase, false);
-    String casteResourceKey = "Sheet.AnimaPower." + HeroConceptFetcher.fetch(hero).getCaste().getType().getId() + "." + SECOND_EDITION;
+    String casteResourceKey = "Sheet.AnimaPower." + HeroConceptFetcher.fetch(hero).getCaste().getType().getId() + ".SecondEdition";
     if (resources.supportsKey(casteResourceKey)) {
       phrase.add(symbolChunk);
       phrase.add(resources.getString(casteResourceKey) + "\n");

@@ -53,7 +53,7 @@ public class EquipmentTemplateEditModel implements IEquipmentTemplateEditModel {
     setMaterial(editedTemplate.getComposition(), editedTemplate.getMaterial());
     setCost(editedTemplate.getCost());
     statses.clear();
-    addAll(statses, editedTemplate.getStats());
+    addAll(statses, editedTemplate.getStatsList());
     fireStatsChangedEvent();
   }
 
@@ -105,7 +105,7 @@ public class EquipmentTemplateEditModel implements IEquipmentTemplateEditModel {
   private List<IEquipmentStats> getAllPreviousStats() {
     List<IEquipmentStats> allStats = new ArrayList<>();
     if (editedTemplate != null) {
-      addAll(allStats, editedTemplate.getStats());
+      addAll(allStats, editedTemplate.getStatsList());
     }
     return allStats;
   }

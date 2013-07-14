@@ -1,4 +1,4 @@
-package net.sf.anathema.hero.combat.model.social;
+package net.sf.anathema.hero.combat.sheet.social.stats;
 
 import net.sf.anathema.character.main.util.IStats;
 

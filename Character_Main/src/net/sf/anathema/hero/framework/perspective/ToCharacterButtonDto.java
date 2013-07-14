@@ -9,7 +9,6 @@ import net.sf.anathema.lib.file.RelativePath;
 import net.sf.anathema.lib.resources.Resources;
 import net.sf.anathema.lib.util.Identifier;
 
-import static net.sf.anathema.character.main.persistence.SecondEdition.SECOND_EDITION;
 import static net.sf.anathema.hero.concept.CasteType.NULL_CASTE_TYPE;
 
 public class ToCharacterButtonDto implements Function<DescriptiveFeatures, CharacterButtonDto> {
@@ -43,7 +42,7 @@ public class ToCharacterButtonDto implements Function<DescriptiveFeatures, Chara
     } else {
       GenericPresentationTemplate presentationTemplate = new GenericPresentationTemplate();
       presentationTemplate.setParentTemplate(templateType);
-      return presentationTemplate.getLargeCasteIconResource(casteType.getId(), SECOND_EDITION);
+      return presentationTemplate.getLargeCasteIconResource(casteType.getId());
     }
   }
 }

@@ -49,7 +49,7 @@ public class EquipmentItem implements IEquipmentItem {
     this.material = material != null ? material : template.getMaterial();
     this.customTitle = title;
     this.customDescription = description;
-    Collections.addAll(printedStats, template.getStats());
+    Collections.addAll(printedStats, template.getStatsList());
     initPrintStats(provider);
   }
 
@@ -86,7 +86,7 @@ public class EquipmentItem implements IEquipmentItem {
   }
 
   private IEquipmentStats[] getViews() {
-    IEquipmentStats[] statsArray = template.getStats();
+    IEquipmentStats[] statsArray = template.getStatsList();
     List<IEquipmentStats> views = new ArrayList<>();
     for (IEquipmentStats stats : statsArray) {
       if (stats instanceof IWeaponStats) {

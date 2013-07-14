@@ -11,13 +11,13 @@ public class GenericPresentationTemplate extends ReflectionCloneableObject<Gener
   private ITemplateType templateType;
 
   @Override
-  public RelativePath getSmallCasteIconResource(String casteId, String editionId) {
-    return new RelativePath("icons/" + getCharacterTypeId() + "Button" + casteId + editionId + "16.png");
+  public RelativePath getSmallCasteIconResource(String casteId) {
+    return new RelativePath("icons/" + getCharacterTypeId() + "Button" + casteId + "SecondEdition16.png");
   }
 
   @Override
-  public RelativePath getLargeCasteIconResource(String casteId, String editionId) {
-    return new RelativePath("icons/" + getCharacterTypeId() + "Button" + casteId + editionId + "100.png");
+  public RelativePath getLargeCasteIconResource(String casteId) {
+    return new RelativePath("icons/" + getCharacterTypeId() + "Button" + casteId + "SecondEdition100.png");
   }
 
   @Override

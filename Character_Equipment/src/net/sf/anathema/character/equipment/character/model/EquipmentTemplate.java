@@ -1,20 +1,17 @@
 package net.sf.anathema.character.equipment.character.model;
 
 import net.sf.anathema.character.main.equipment.weapon.IEquipmentStats;
-import net.sf.anathema.character.main.persistence.SecondEdition;
 import net.sf.anathema.equipment.core.IEquipmentTemplate;
 import net.sf.anathema.equipment.core.ItemCost;
 import net.sf.anathema.equipment.core.MagicalMaterial;
 import net.sf.anathema.equipment.core.MaterialComposition;
 
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 
 public class EquipmentTemplate implements IEquipmentTemplate {
 
-  private final Map<String, List<IEquipmentStats>> statsByRuleSet;
+  private final List<IEquipmentStats> statsList = new ArrayList<>();
   private final String description;
   private final String name;
   private final String material;
@@ -30,7 +27,6 @@ public class EquipmentTemplate implements IEquipmentTemplate {
     } else {
       this.material = material.getId();
     }
-    this.statsByRuleSet = new HashMap<>();
     this.cost = cost;
   }
 
@@ -40,21 +36,12 @@ public class EquipmentTemplate implements IEquipmentTemplate {
   }
 
   @Override
-  public IEquipmentStats[] getStats() {
-    List<IEquipmentStats> relevantStats = statsByRuleSet.get(SecondEdition.SECOND_EDITION);
-    if (relevantStats == null) {
-      return new IEquipmentStats[0];
-    }
-    return relevantStats.toArray(new IEquipmentStats[relevantStats.size()]);
+  public IEquipmentStats[] getStatsList() {
+    return statsList.toArray(new IEquipmentStats[statsList.size()]);
   }
 
   public synchronized void addStats(IEquipmentStats stats) {
-    List<IEquipmentStats> statList = statsByRuleSet.get(SecondEdition.SECOND_EDITION);
-    if (statList == null) {
-      statList = new ArrayList<>();
-      statsByRuleSet.put(SecondEdition.SECOND_EDITION, statList);
-    }
-    statList.add(stats);
+    this.statsList.add(stats);
   }
 
   @Override

@@ -4,6 +4,7 @@ import net.sf.anathema.character.main.equipment.HeroStatsModifiers;
 import net.sf.anathema.character.main.traits.TraitType;
 import net.sf.anathema.character.main.traits.types.AttributeType;
 import net.sf.anathema.character.main.util.CharacterUtilities;
+import net.sf.anathema.hero.combat.sheet.social.stats.ISocialCombatStats;
 import net.sf.anathema.hero.traits.TraitMap;
 
 public abstract class AbstractSocialAttack implements ISocialCombatStats {

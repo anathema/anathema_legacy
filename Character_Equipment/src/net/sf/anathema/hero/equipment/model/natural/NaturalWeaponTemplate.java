@@ -17,7 +17,7 @@ public class NaturalWeaponTemplate implements IEquipmentTemplate {
   }
 
   @Override
-  public IEquipmentStats[] getStats() {
+  public IEquipmentStats[] getStatsList() {
     return SECOND_EDITION_WEAPONS;
   }
 

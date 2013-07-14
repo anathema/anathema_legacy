@@ -27,7 +27,7 @@ public class EquipmentTemplateTooltipBuilder {
       String typeLabel = getStringRepresentationForType(type);
       tooltip.appendLine(typeLabel, valueRepresentation);
     }
-    IEquipmentStats[] statsSet = template.getStats();
+    IEquipmentStats[] statsSet = template.getStatsList();
     List<String> statsIds = new ArrayList<>();
     for (IEquipmentStats stats : statsSet) {
       statsIds.add(stats.getId());

@@ -8,7 +8,7 @@ public interface IEquipmentTemplate {
 
   String getDescription();
 
-  IEquipmentStats[] getStats();
+  IEquipmentStats[] getStatsList();
 
   MaterialComposition getComposition();
 

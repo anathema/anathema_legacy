@@ -1,6 +1,5 @@
 package net.sf.anathema.hero.combat.sheet.social.stats;
 
-import net.sf.anathema.hero.combat.model.social.ISocialCombatStats;
 import net.sf.anathema.hero.sheet.pdf.content.stats.AbstractNameStatsGroup;
 import net.sf.anathema.lib.resources.Resources;
 
