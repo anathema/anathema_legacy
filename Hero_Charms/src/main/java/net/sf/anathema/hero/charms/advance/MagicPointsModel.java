@@ -27,6 +27,7 @@ public class MagicPointsModel implements HeroModel {
 
   public static final SimpleIdentifier ID = new SimpleIdentifier("MagicPoints");
   private MagicPointsTemplate template;
+  private MartialArtsLevel standardMartialArtsLevel;
 
   public MagicPointsModel(MagicPointsTemplate template) {
     this.template = template;
@@ -43,6 +44,7 @@ public class MagicPointsModel implements HeroModel {
 
   @Override
   public void initialize(HeroEnvironment environment, Hero hero) {
+    this.standardMartialArtsLevel = CharmsModelFetcher.fetch(hero).getStandardMartialArtsLevel();
     initializeBonusPoints(hero);
   }
 
@@ -51,7 +53,7 @@ public class MagicPointsModel implements HeroModel {
     // nothing to do, until bonus points are created the way, they should be
   }
 
-  public MagicExperienceCosts getExperienceCost(MartialArtsLevel standardMartialArtsLevel) {
+  public MagicExperienceCosts getExperienceCost() {
     return new MagicExperienceCosts(template, standardMartialArtsLevel);
   }
 
@@ -93,8 +95,7 @@ public class MagicPointsModel implements HeroModel {
   }
 
   private CharmPointCostCalculator createExperienceCalculator(Hero hero) {
-    IExperiencePointCosts experienceCost = hero.getTemplate().getExperienceCost();
-    return new CharmPointCostCalculator(experienceCost);
+    return new CharmPointCostCalculator(getExperienceCost());
   }
 
   private void initExperienceOverview(Hero hero, CharmPointCostCalculator calculator) {
