@@ -23,10 +23,6 @@
         <model id="AttributePoints"/>
         <model id="EssencePool"/>
         <model id="Health"/>
-        <model id="Charms"/>
-        <model id="Combos"/>
-        <model id="Spells"/>
-        <model id="MagicPoints" template="MortalMagicPoints"/>
         <model id="Specialties"/>
         <model id="SpecialtiesPoints"/>
         <model id="Languages"/>
