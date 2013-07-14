@@ -1,18 +1,14 @@
 {
-    "freePicks": {
-      "general": 0,
-      "favored": 10
+    "generalPoints": {
+        "freePicks": 0,
+        "bonusCosts": 3,
+        "experienceCosts": 8,
+        "highMartialArtsExperience": 12
     },
-    "bonusCosts": {
-        "general": 3,
-        "favored": 4
-    },
-    "experienceCosts": {
-        "general": 8,
-        "favored": 10
-    },
-    "highMartialArtsExperience": {
-        "general": 12,
-        "favored": 15
+    "favoredPoints": {
+        "freePicks": 10,
+        "bonusCosts": 4,
+        "experienceCosts": 10,
+        "highMartialArtsExperience": 15
     }
 }
