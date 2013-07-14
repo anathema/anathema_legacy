@@ -3,6 +3,7 @@ package net.sf.anathema.hero.charms.model;
 import com.google.common.base.Functions;
 import net.sf.anathema.character.main.magic.cache.CharmCache;
 import net.sf.anathema.character.main.magic.cache.CharmProvider;
+import net.sf.anathema.character.main.magic.sheet.content.IMagicStats;
 import net.sf.anathema.hero.charms.display.presenter.CharacterChangeCharmListener;
 import net.sf.anathema.character.main.magic.model.charm.Charm;
 import net.sf.anathema.character.main.magic.model.charm.CharmAttributeList;
@@ -89,6 +90,9 @@ public class CharmsModelImpl implements CharmsModel {
   private MartialArtsOptions martialArtsOptions;
   private NonMartialArtsOptions nonMartialArtsOptions;
   private Hero hero;
+  private final List<PrintMagicProvider> printMagicProviders = new ArrayList<>();
+  private final List<MagicLearner> magicLearners = new ArrayList<>();
+
 
   @Override
   public Identifier getId() {
@@ -110,7 +114,8 @@ public class CharmsModelImpl implements CharmsModel {
     initSpecialCharmConfigurations();
     addCompulsiveCharms(hero.getTemplate());
     addOverdrivePools(hero);
-    initializeMagicModel(hero);
+    addPrintProvider(new PrintCharmsProvider(hero));
+    addLearnProvider(new CharmLearner(this));
     initializeExperience(hero);
   }
 
@@ -127,15 +132,6 @@ public class CharmsModelImpl implements CharmsModel {
       return;
     }
     poolModel.addOverdrivePool(new CharmOverdrivePool(this, experience));
-  }
-
-  private void initializeMagicModel(Hero hero) {
-    MagicModel magicModel = MagicModelFetcher.fetch(hero);
-    if (magicModel == null) {
-      return;
-    }
-    magicModel.addPrintProvider(new PrintCharmsProvider(hero));
-    magicModel.addLearnProvider(new CharmLearner(this));
   }
 
   @Override
@@ -534,4 +530,26 @@ public class CharmsModelImpl implements CharmsModel {
     return new String[0];
   }
 
+
+  @Override
+  public void addPrintProvider(PrintMagicProvider provider) {
+    printMagicProviders.add(provider);
+  }
+
+  @Override
+  public void addLearnProvider(MagicLearner provider) {
+    magicLearners.add(provider);
+  }
+
+  @Override
+  public MagicCreationCostEvaluator getMagicCostEvaluator() {
+    return new MagicCreationCostEvaluator(magicLearners);
+  }
+
+  @Override
+  public void addPrintMagic(List<IMagicStats> printMagic) {
+    for (PrintMagicProvider provider : printMagicProviders) {
+      provider.addPrintMagic(printMagic);
+    }
+  }
 }

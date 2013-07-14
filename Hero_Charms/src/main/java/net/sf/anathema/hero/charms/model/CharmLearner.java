@@ -5,7 +5,6 @@ import net.sf.anathema.character.main.magic.model.charm.special.CharmSpecialsMod
 import net.sf.anathema.character.main.magic.model.charm.special.IUpgradableCharmConfiguration;
 import net.sf.anathema.character.main.magic.model.charm.special.SubEffectCharmSpecials;
 import net.sf.anathema.character.main.magic.model.magic.Magic;
-import net.sf.anathema.hero.charms.advance.creation.MagicLearner;
 
 import java.util.Arrays;
 import java.util.Collection;

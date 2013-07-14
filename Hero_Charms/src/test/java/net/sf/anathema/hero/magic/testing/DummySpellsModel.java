@@ -3,9 +3,9 @@ package net.sf.anathema.hero.magic.testing;
 import net.sf.anathema.character.main.magic.model.magic.Magic;
 import net.sf.anathema.character.main.magic.model.spells.CircleType;
 import net.sf.anathema.character.main.magic.model.spells.Spell;
+import net.sf.anathema.hero.charms.model.CharmsModel;
+import net.sf.anathema.hero.charms.model.MagicLearner;
 import net.sf.anathema.hero.framework.HeroEnvironment;
-import net.sf.anathema.hero.charms.advance.creation.MagicLearner;
-import net.sf.anathema.hero.charms.model.MagicModel;
 import net.sf.anathema.hero.model.Hero;
 import net.sf.anathema.hero.model.change.ChangeAnnouncer;
 import net.sf.anathema.hero.spells.model.SpellsModel;
@@ -138,8 +138,8 @@ public class DummySpellsModel implements SpellsModel {
     return spellList;
   }
 
-  public void initializeMagicModel(MagicModel magicModel) {
-    magicModel.addLearnProvider(new MagicLearner() {
+  public void initializeMagicModel(CharmsModel charmsModel) {
+    charmsModel.addLearnProvider(new MagicLearner() {
       @Override
       public boolean handlesMagic(Magic magic) {
         return magic instanceof Spell;

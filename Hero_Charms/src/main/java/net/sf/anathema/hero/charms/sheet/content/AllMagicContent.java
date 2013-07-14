@@ -1,7 +1,7 @@
 package net.sf.anathema.hero.charms.sheet.content;
 
 import net.sf.anathema.character.main.magic.sheet.content.IMagicStats;
-import net.sf.anathema.hero.charms.model.MagicModelFetcher;
+import net.sf.anathema.hero.charms.model.CharmsModelFetcher;
 import net.sf.anathema.hero.charms.sheet.content.mnemonic.AllMagicMnemonic;
 import net.sf.anathema.hero.charms.sheet.content.mnemonic.MagicMnemonic;
 import net.sf.anathema.hero.sheet.pdf.session.PageBreakChecker;
@@ -47,7 +47,7 @@ public class AllMagicContent extends AbstractMagicContent {
 
   private List<IMagicStats> collectPrintMagic() {
     List<IMagicStats> printStats = new ArrayList<>();
-    MagicModelFetcher.fetch(session.getHero()).addPrintMagic(printStats);
+    CharmsModelFetcher.fetch(session.getHero()).addPrintMagic(printStats);
     return printStats;
   }
 

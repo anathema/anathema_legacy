@@ -5,7 +5,7 @@ import net.sf.anathema.character.main.template.creation.BonusPointCosts;
 import net.sf.anathema.character.main.template.creation.ICreationPoints;
 import net.sf.anathema.character.main.xml.creation.template.MagicCreationCostsTto;
 import net.sf.anathema.hero.advance.CostAnalyzer;
-import net.sf.anathema.hero.charms.model.MagicModel;
+import net.sf.anathema.hero.charms.model.MagicCreationCostEvaluator;
 import net.sf.anathema.hero.charms.model.WeightedMagicSorter;
 import net.sf.anathema.hero.points.HeroBonusPointCalculator;
 
@@ -24,8 +24,9 @@ public class MagicBonusPointCalculator implements HeroBonusPointCalculator {
   private int favoredPicksSpent = 0;
   protected int bonusPointsSpent = 0;
 
-  public MagicBonusPointCalculator(MagicModel model, ICreationPoints creationPoints, BonusPointCosts costs, CostAnalyzer analyzer) {
-    this.magicCreationCostEvaluator = model.getMagicCostEvaluator();
+  public MagicBonusPointCalculator(MagicCreationCostEvaluator costEvaluator, ICreationPoints creationPoints, BonusPointCosts costs,
+                                   CostAnalyzer analyzer) {
+    this.magicCreationCostEvaluator = costEvaluator;
     this.favoredCreationMagicCount = creationPoints.getFavoredCreationMagicCount();
     this.defaultCreationMagicCount = creationPoints.getDefaultCreationMagicCount();
     this.costs = costs;

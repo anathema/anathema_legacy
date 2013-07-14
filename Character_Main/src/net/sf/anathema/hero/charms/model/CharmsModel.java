@@ -15,7 +15,7 @@ import net.sf.anathema.lib.util.Identifier;
 import net.sf.anathema.lib.util.SimpleIdentifier;
 
 public interface CharmsModel extends HeroModel, IExtendedCharmLearnableArbitrator, CharmGroupArbitrator, CharmIdMap,
-        SpecialCharmLearnArbitrator {
+        SpecialCharmLearnArbitrator, PrintMagicProvider {
 
   Identifier ID = new SimpleIdentifier("Charms");
 
@@ -42,4 +42,10 @@ public interface CharmsModel extends HeroModel, IExtendedCharmLearnableArbitrato
   ILearningCharmGroup getGroup(Charm charm);
 
   ISpecialCharm[] getSpecialCharms();
+
+  void addPrintProvider(PrintMagicProvider provider);
+
+  void addLearnProvider(MagicLearner provider);
+
+  MagicCreationCostEvaluator getMagicCostEvaluator();
 }

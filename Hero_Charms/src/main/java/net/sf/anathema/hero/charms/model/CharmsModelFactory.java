@@ -18,8 +18,8 @@ import net.sf.anathema.hero.traits.TraitModel;
 public class CharmsModelFactory extends SimpleModelTreeEntry implements HeroModelFactory {
 
   public CharmsModelFactory() {
-    super(CharmsModel.ID, MagicModel.ID, EssencePoolModel.ID, AttributeModel.ID, AbilitiesModel.ID, SpiritualTraitModel.ID, TraitModel.ID,
-            ExperienceModel.ID, HeroConcept.ID, HealthModel.ID, PointsModel.ID);
+    super(CharmsModel.ID, EssencePoolModel.ID, AttributeModel.ID, AbilitiesModel.ID, SpiritualTraitModel.ID, TraitModel.ID, ExperienceModel.ID,
+            HeroConcept.ID, HealthModel.ID, PointsModel.ID);
   }
 
   @Override

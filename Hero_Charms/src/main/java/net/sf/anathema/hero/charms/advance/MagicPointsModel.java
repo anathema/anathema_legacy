@@ -3,15 +3,15 @@ package net.sf.anathema.hero.charms.advance;
 import net.sf.anathema.character.main.template.creation.BonusPointCosts;
 import net.sf.anathema.character.main.template.creation.ICreationPoints;
 import net.sf.anathema.hero.advance.CostAnalyzerImpl;
-import net.sf.anathema.hero.framework.HeroEnvironment;
 import net.sf.anathema.hero.charms.advance.creation.DefaultMagicModel;
 import net.sf.anathema.hero.charms.advance.creation.FavoredMagicModel;
 import net.sf.anathema.hero.charms.advance.creation.MagicBonusPointCalculator;
 import net.sf.anathema.hero.charms.advance.experience.MagicExperienceCosts;
-import net.sf.anathema.hero.charms.model.MagicModel;
-import net.sf.anathema.hero.charms.model.MagicModelFetcher;
-import net.sf.anathema.hero.magic.model.martial.MartialArtsLevel;
+import net.sf.anathema.hero.charms.model.CharmsModel;
+import net.sf.anathema.hero.charms.model.CharmsModelFetcher;
 import net.sf.anathema.hero.charms.template.advance.MagicPointsTemplate;
+import net.sf.anathema.hero.framework.HeroEnvironment;
+import net.sf.anathema.hero.magic.model.martial.MartialArtsLevel;
 import net.sf.anathema.hero.model.Hero;
 import net.sf.anathema.hero.model.HeroModel;
 import net.sf.anathema.hero.model.change.ChangeAnnouncer;
@@ -75,8 +75,8 @@ public class MagicPointsModel implements HeroModel {
 
   private MagicBonusPointCalculator createBonusCalculator(Hero hero) {
     ICreationPoints creationPoints = hero.getTemplate().getCreationPoints();
-    MagicModel model = MagicModelFetcher.fetch(hero);
+    CharmsModel model = CharmsModelFetcher.fetch(hero);
     BonusPointCosts costs = hero.getTemplate().getBonusPointCosts();
-    return new MagicBonusPointCalculator(model, creationPoints, costs, new CostAnalyzerImpl(hero));
+    return new MagicBonusPointCalculator(model.getMagicCostEvaluator(), creationPoints, costs, new CostAnalyzerImpl(hero));
   }
 }

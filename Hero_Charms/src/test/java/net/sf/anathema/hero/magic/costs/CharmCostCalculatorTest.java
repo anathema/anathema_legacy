@@ -1,21 +1,21 @@
 package net.sf.anathema.hero.magic.costs;
 
 import com.google.common.collect.ImmutableList;
-import net.sf.anathema.hero.advance.AbstractBonusPointTestCase;
 import net.sf.anathema.character.main.library.trait.favorable.FavorableState;
 import net.sf.anathema.character.main.magic.model.spells.Spell;
 import net.sf.anathema.character.main.template.creation.ICreationPoints;
+import net.sf.anathema.character.main.traits.context.CreationTraitValueStrategy;
+import net.sf.anathema.character.main.traits.types.AbilityType;
 import net.sf.anathema.hero.BasicCharacterTestCase;
+import net.sf.anathema.hero.advance.AbstractBonusPointTestCase;
+import net.sf.anathema.hero.advance.CostAnalyzerImpl;
+import net.sf.anathema.hero.charms.advance.creation.MagicBonusPointCalculator;
+import net.sf.anathema.hero.charms.model.CharmsModel;
+import net.sf.anathema.hero.charms.model.CharmsModelImpl;
 import net.sf.anathema.hero.dummy.DummyBonusPointCosts;
 import net.sf.anathema.hero.dummy.DummyHero;
 import net.sf.anathema.hero.dummy.magic.DummyCharmsModel;
 import net.sf.anathema.hero.dummy.magic.DummySpell;
-import net.sf.anathema.character.main.traits.context.CreationTraitValueStrategy;
-import net.sf.anathema.character.main.traits.types.AbilityType;
-import net.sf.anathema.hero.advance.CostAnalyzerImpl;
-import net.sf.anathema.hero.charms.advance.creation.MagicBonusPointCalculator;
-import net.sf.anathema.hero.charms.model.MagicModel;
-import net.sf.anathema.hero.charms.model.MagicModelImpl;
 import net.sf.anathema.hero.magic.testing.DummySpellsModel;
 import net.sf.anathema.hero.traits.TraitModel;
 import net.sf.anathema.hero.traits.TraitModelFetcher;
@@ -37,12 +37,12 @@ public class CharmCostCalculatorTest extends AbstractBonusPointTestCase {
 
   @Before
   public void setUp() throws Exception {
-    MagicModel magicModel = new MagicModelImpl();
-    spells.initializeMagicModel(magicModel);
+    CharmsModel charmModel = new CharmsModelImpl();
+    spells.initializeMagicModel(charmModel);
     DummyHero hero = new BasicCharacterTestCase().createModelContextWithEssence2(new CreationTraitValueStrategy());
     traitModel = TraitModelFetcher.fetch(hero);
     addAbilityAndEssence(traitModel, hero);
-    hero.addModel(magicModel);
+    hero.addModel(charmModel);
     hero.addModel(charms);
     hero.addModel(spells);
     hero.template.creationPoints.favoredCreationCharmCount = 2;
@@ -51,7 +51,7 @@ public class CharmCostCalculatorTest extends AbstractBonusPointTestCase {
     DummyBonusPointCosts costs = new DummyBonusPointCosts();
     costs.magicCostsTto.general.charmCost = 5;
     costs.magicCostsTto.favored.charmCost = 4;
-    calculator = new MagicBonusPointCalculator(magicModel, creationPoints, costs, new CostAnalyzerImpl(hero));
+    calculator = new MagicBonusPointCalculator(charmModel.getMagicCostEvaluator(), creationPoints, costs, new CostAnalyzerImpl(hero));
   }
 
   @Test

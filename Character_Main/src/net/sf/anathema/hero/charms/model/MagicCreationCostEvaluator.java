@@ -1,6 +1,7 @@
-package net.sf.anathema.hero.charms.advance.creation;
+package net.sf.anathema.hero.charms.model;
 
 import net.sf.anathema.character.main.magic.model.magic.Magic;
+import net.sf.anathema.hero.charms.model.MagicLearner;
 
 import java.util.ArrayList;
 import java.util.List;

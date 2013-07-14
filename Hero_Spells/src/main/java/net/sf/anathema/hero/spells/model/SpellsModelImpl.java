@@ -14,8 +14,6 @@ import net.sf.anathema.hero.experience.ExperienceChange;
 import net.sf.anathema.hero.experience.ExperienceModel;
 import net.sf.anathema.hero.experience.ExperienceModelFetcher;
 import net.sf.anathema.hero.framework.HeroEnvironment;
-import net.sf.anathema.hero.charms.model.MagicModel;
-import net.sf.anathema.hero.charms.model.MagicModelFetcher;
 import net.sf.anathema.hero.model.Hero;
 import net.sf.anathema.hero.model.change.ChangeAnnouncer;
 import net.sf.anathema.hero.model.change.ChangeFlavor;
@@ -61,7 +59,7 @@ public class SpellsModelImpl implements SpellsModel {
     this.experience = ExperienceModelFetcher.fetch(hero);
     this.heroTemplate = hero.getTemplate();
     initializeSpellsByCircle(environment);
-    initializeMagicModel(hero);
+    initializeCharmsModel(hero);
     initializeExperience(hero);
   }
 
@@ -81,13 +79,13 @@ public class SpellsModelImpl implements SpellsModel {
     }
   }
 
-  private void initializeMagicModel(Hero hero) {
-    MagicModel magicModel = MagicModelFetcher.fetch(hero);
-    if (magicModel == null) {
+  private void initializeCharmsModel(Hero hero) {
+    CharmsModel charmsModel = CharmsModelFetcher.fetch(hero);
+    if (charmsModel == null) {
       return;
     }
-    magicModel.addPrintProvider(new PrintSpellsProvider(hero));
-    magicModel.addLearnProvider(new SpellsLearner(this));
+    charmsModel.addPrintProvider(new PrintSpellsProvider(hero));
+    charmsModel.addLearnProvider(new SpellsLearner(this));
   }
 
   @Override
