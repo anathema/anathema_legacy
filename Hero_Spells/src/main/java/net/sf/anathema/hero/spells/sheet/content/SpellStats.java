@@ -6,7 +6,7 @@ import net.sf.anathema.character.main.magic.model.charmtree.builder.stringbuilde
 import net.sf.anathema.character.main.magic.model.spells.Spell;
 import net.sf.anathema.character.main.magic.sheet.content.IMagicStats;
 import net.sf.anathema.hero.charms.sheet.content.stats.AbstractCharmStats;
-import net.sf.anathema.hero.magic.sheet.content.stats.AbstractMagicStats;
+import net.sf.anathema.hero.charms.sheet.content.stats.AbstractMagicStats;
 import net.sf.anathema.lib.resources.Resources;
 import org.apache.commons.lang3.builder.HashCodeBuilder;
 

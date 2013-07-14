@@ -8,7 +8,6 @@ import net.sf.anathema.character.main.magic.model.charmtree.builder.stringbuilde
 import net.sf.anathema.character.main.magic.model.charmtree.builder.stringbuilder.type.ShortCharmTypeContributor;
 import net.sf.anathema.character.main.magic.model.magic.attribute.MagicAttribute;
 import net.sf.anathema.character.main.magic.sheet.content.IMagicStats;
-import net.sf.anathema.hero.magic.sheet.content.stats.AbstractMagicStats;
 import net.sf.anathema.lib.resources.Resources;
 
 import java.util.ArrayList;

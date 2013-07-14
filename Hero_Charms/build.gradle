@@ -4,7 +4,6 @@ dependencies {
     compile project(':Hero_Attributes')
     compile project(':Hero_Concept')
     compile project(':Hero_Spiritual')
-    compile project(':Hero_Magic')
     compile project(':Hero_Traits')
     compile project(':Hero_Sheet')
     compile project(':Magic_Description')

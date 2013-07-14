@@ -4,7 +4,7 @@ import net.sf.anathema.character.main.magic.model.charm.Charm;
 import net.sf.anathema.character.main.magic.sheet.content.IMagicStats;
 import net.sf.anathema.hero.charms.sheet.content.stats.CharmStats;
 import net.sf.anathema.hero.charms.sheet.content.stats.MultipleEffectCharmStats;
-import net.sf.anathema.hero.magic.model.PrintMagicProvider;
+import net.sf.anathema.hero.charms.model.PrintMagicProvider;
 import net.sf.anathema.hero.model.Hero;
 
 import java.util.List;

@@ -1,7 +1,7 @@
 package net.sf.anathema.hero.spells.sheet.content;
 
 import net.sf.anathema.character.main.magic.sheet.content.IMagicStats;
-import net.sf.anathema.hero.magic.sheet.content.mnemonic.AbstractMagicMnemonic;
+import net.sf.anathema.hero.charms.sheet.content.mnemonic.AbstractMagicMnemonic;
 
 import java.util.List;
 

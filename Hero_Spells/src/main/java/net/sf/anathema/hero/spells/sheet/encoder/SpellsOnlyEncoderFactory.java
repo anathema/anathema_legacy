@@ -1,6 +1,6 @@
 package net.sf.anathema.hero.spells.sheet.encoder;
 
-import net.sf.anathema.hero.magic.sheet.encoder.ExtendedMagicEncoder;
+import net.sf.anathema.hero.charms.sheet.encoder.ExtendedMagicEncoder;
 import net.sf.anathema.hero.sheet.pdf.content.BasicContent;
 import net.sf.anathema.hero.sheet.pdf.encoder.EncoderIds;
 import net.sf.anathema.hero.sheet.pdf.encoder.boxes.AbstractEncoderFactory;

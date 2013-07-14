@@ -3,7 +3,7 @@ package net.sf.anathema.hero.spells.sheet.content;
 import net.sf.anathema.character.main.magic.model.spells.Spell;
 import net.sf.anathema.character.main.magic.sheet.content.IMagicStats;
 import net.sf.anathema.hero.experience.ExperienceModelFetcher;
-import net.sf.anathema.hero.magic.model.PrintMagicProvider;
+import net.sf.anathema.hero.charms.model.PrintMagicProvider;
 import net.sf.anathema.hero.model.Hero;
 import net.sf.anathema.hero.spells.model.SpellsModelFetcher;
 

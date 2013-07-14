@@ -41,8 +41,6 @@ import net.sf.anathema.hero.concept.HeroConceptFetcher;
 import net.sf.anathema.hero.experience.ExperienceModel;
 import net.sf.anathema.hero.experience.ExperienceModelFetcher;
 import net.sf.anathema.hero.framework.HeroEnvironment;
-import net.sf.anathema.hero.magic.model.MagicModel;
-import net.sf.anathema.hero.magic.model.MagicModelFetcher;
 import net.sf.anathema.hero.magic.model.martial.MartialArtsUtilities;
 import net.sf.anathema.hero.model.Hero;
 import net.sf.anathema.hero.model.change.ChangeAnnouncer;
