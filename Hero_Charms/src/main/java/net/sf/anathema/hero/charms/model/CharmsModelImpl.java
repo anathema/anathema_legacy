@@ -20,7 +20,6 @@ import net.sf.anathema.character.main.magic.model.charm.special.MultiLearnCharmS
 import net.sf.anathema.character.main.magic.model.charm.special.MultipleEffectCharmSpecials;
 import net.sf.anathema.character.main.magic.model.charm.ILearningCharmGroup;
 import net.sf.anathema.character.main.magic.model.charm.ILearningCharmGroupContainer;
-import net.sf.anathema.character.main.magic.model.charm.LearningCharmGroup;
 import net.sf.anathema.character.main.magic.model.charmtree.CharmTraitRequirementChecker;
 import net.sf.anathema.character.main.magic.model.charmtree.GroupCharmTree;
 import net.sf.anathema.character.main.magic.sheet.content.IMagicStats;

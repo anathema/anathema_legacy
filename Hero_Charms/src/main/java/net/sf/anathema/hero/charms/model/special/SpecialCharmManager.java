@@ -18,7 +18,6 @@ import net.sf.anathema.character.main.magic.model.charm.special.ITraitCapModifyi
 import net.sf.anathema.character.main.magic.model.charm.special.IUpgradableCharm;
 import net.sf.anathema.character.main.magic.model.charm.special.MultipleEffectCharmConfiguration;
 import net.sf.anathema.character.main.magic.model.charm.special.OxBodyTechniqueConfiguration;
-import net.sf.anathema.character.main.magic.model.charm.special.TraitCapModifyingCharmConfiguration;
 import net.sf.anathema.character.main.magic.model.charm.IExtendedCharmLearnableArbitrator;
 import net.sf.anathema.character.main.magic.model.charm.ILearningCharmGroup;
 import net.sf.anathema.hero.charms.model.CharmsModel;

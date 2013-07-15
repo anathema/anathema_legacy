@@ -15,7 +15,7 @@ import net.sf.anathema.hero.charms.model.MagicCreationCostEvaluator;
 import net.sf.anathema.hero.charms.template.advance.MagicPointsTemplate;
 import net.sf.anathema.hero.charms.template.model.CharmsTemplate;
 import net.sf.anathema.hero.dummy.DummyHero;
-import net.sf.anathema.hero.dummy.magic.DummyCharmsModel;
+import net.sf.anathema.hero.magic.dummy.DummyCharmsModel;
 import net.sf.anathema.hero.dummy.magic.DummySpell;
 import net.sf.anathema.hero.magic.model.martial.MartialArtsLevel;
 import net.sf.anathema.hero.magic.testing.DummySpellsModel;
