@@ -5,6 +5,7 @@ import net.sf.anathema.character.main.template.creation.BonusPointCosts;
 import net.sf.anathema.character.main.template.creation.ICreationPoints;
 import net.sf.anathema.character.main.xml.creation.template.MagicCreationCostsTto;
 import net.sf.anathema.hero.advance.CostAnalyzer;
+import net.sf.anathema.hero.charms.advance.costs.MagicCosts;
 import net.sf.anathema.hero.charms.model.MagicCreationCostEvaluator;
 import net.sf.anathema.hero.charms.model.WeightedMagicSorter;
 import net.sf.anathema.hero.points.HeroBonusPointCalculator;
@@ -13,7 +14,7 @@ import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
-public class MagicBonusPointCalculator implements HeroBonusPointCalculator {
+public class MagicCreationCostCalculator implements HeroBonusPointCalculator {
 
   private final int favoredCreationMagicCount;
   private final int defaultCreationMagicCount;
@@ -24,8 +25,8 @@ public class MagicBonusPointCalculator implements HeroBonusPointCalculator {
   private int favoredPicksSpent = 0;
   protected int bonusPointsSpent = 0;
 
-  public MagicBonusPointCalculator(MagicCreationCostEvaluator costEvaluator, ICreationPoints creationPoints, BonusPointCosts costs,
-                                   CostAnalyzer analyzer) {
+  public MagicCreationCostCalculator(MagicCreationCostEvaluator costEvaluator, ICreationPoints creationPoints, BonusPointCosts costs,
+                                     CostAnalyzer analyzer) {
     this.magicCreationCostEvaluator = costEvaluator;
     this.favoredCreationMagicCount = creationPoints.getFavoredCreationMagicCount();
     this.defaultCreationMagicCount = creationPoints.getDefaultCreationMagicCount();
@@ -112,7 +113,7 @@ public class MagicBonusPointCalculator implements HeroBonusPointCalculator {
 
   private int getMagicCosts(Magic magic) {
     MagicCreationCostsTto costDto = costs.getMagicCosts();
-    MagicCosts magicCosts = new MagicCostsImpl(costDto);
+    MagicCosts magicCosts = new MagicCreationCosts(costDto);
     return magicCosts.getMagicCosts(magic, analyzer);
   }
 }

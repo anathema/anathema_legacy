@@ -1,15 +1,15 @@
-package net.sf.anathema.hero.charms.advance;
+package net.sf.anathema.hero.charms.advance.experience;
 
 import net.sf.anathema.character.main.magic.model.charm.Charm;
 import net.sf.anathema.hero.advance.CostAnalyzerImpl;
 import net.sf.anathema.hero.charms.advance.experience.MagicExperienceCosts;
 import net.sf.anathema.hero.model.Hero;
 
-public class CharmPointCostCalculator {
+public class CharmExperienceCostCalculator {
 
   private final MagicExperienceCosts costs;
 
-  public CharmPointCostCalculator(MagicExperienceCosts costs) {
+  public CharmExperienceCostCalculator(MagicExperienceCosts costs) {
     this.costs = costs;
   }
 

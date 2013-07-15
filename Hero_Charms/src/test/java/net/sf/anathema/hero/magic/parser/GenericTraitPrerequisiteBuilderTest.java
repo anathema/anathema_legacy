@@ -13,7 +13,7 @@ public class GenericTraitPrerequisiteBuilderTest {
 
   @Test
   public void testTraitPrerequisiteBuilder() throws Exception {
-    String xml = "<trait  value=\"3\"/>";
+    String xml = "<trait  bonusPoints=\"3\"/>";
     Element rootElement = DocumentUtilities.read(xml).getRootElement();
     GenericTraitPrerequisiteBuilder builder = new GenericTraitPrerequisiteBuilder();
     builder.setType(AbilityType.Larceny);

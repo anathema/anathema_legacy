@@ -24,7 +24,7 @@ public class EquipmentCardDataProvider implements ICardDataProvider {
 
   private final Resources resources;
   private final IEquipmentStringBuilder stringBuilder;
-  // value of black circle character in standard symbol font
+  // bonusPoints of black circle character in standard symbol font
   private final static char SYMBOL_BLACK_CIRCLE = (char) 183;
 
   public EquipmentCardDataProvider(Resources resources) {

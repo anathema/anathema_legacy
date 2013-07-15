@@ -1,4 +1,4 @@
-package net.sf.anathema.hero.charms.advance;
+package net.sf.anathema.hero.charms.advance.experience;
 
 import net.sf.anathema.character.main.magic.model.charm.Charm;
 import net.sf.anathema.character.main.magic.model.charm.special.CharmSpecialsModel;
@@ -14,10 +14,10 @@ import java.util.Set;
 
 public class CharmExperienceModel extends AbstractIntegerValueModel {
 
-  private final CharmPointCostCalculator calculator;
+  private final CharmExperienceCostCalculator calculator;
   private final Hero hero;
 
-  public CharmExperienceModel(CharmPointCostCalculator calculator, Hero hero) {
+  public CharmExperienceModel(CharmExperienceCostCalculator calculator, Hero hero) {
     super("Experience", "Charms");
     this.calculator = calculator;
     this.hero = hero;

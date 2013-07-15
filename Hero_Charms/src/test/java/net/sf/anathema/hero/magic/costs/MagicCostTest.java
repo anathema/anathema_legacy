@@ -4,7 +4,7 @@ import net.sf.anathema.character.main.dummy.DummyCharm;
 import net.sf.anathema.character.main.magic.model.magic.Magic;
 import net.sf.anathema.character.main.xml.creation.template.MagicCreationCostsTto;
 import net.sf.anathema.hero.advance.CostAnalyzer;
-import net.sf.anathema.hero.charms.advance.creation.MagicCostsImpl;
+import net.sf.anathema.hero.charms.advance.creation.MagicCreationCosts;
 import net.sf.anathema.hero.magic.model.martial.MartialArtsLevel;
 import org.junit.Test;
 
@@ -61,7 +61,7 @@ public class MagicCostTest {
   }
 
   private void assertCharmCosts(int expectedValue) {
-    MagicCostsImpl magicCosts = new MagicCostsImpl(tto);
+    MagicCreationCosts magicCosts = new MagicCreationCosts(tto);
     int charmCost = magicCosts.getMagicCosts(charm, costAnalyzerMock);
     assertThat(expectedValue, is(charmCost));
   }

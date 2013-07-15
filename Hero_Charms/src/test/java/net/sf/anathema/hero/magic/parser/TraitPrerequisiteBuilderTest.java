@@ -17,7 +17,7 @@ public class TraitPrerequisiteBuilderTest {
 
   @Test
   public void testTraitPrerequisiteBuilder() throws Exception {
-    String xml = "<trait id=\"Larceny\" value=\"3\"/>";
+    String xml = "<trait id=\"Larceny\" bonusPoints=\"3\"/>";
     Element rootElement = DocumentUtilities.read(xml).getRootElement();
     ValuedTraitType trait = builder.build(rootElement);
     assertEquals(AbilityType.Larceny, trait.getType());

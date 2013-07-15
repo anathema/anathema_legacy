@@ -1,4 +1,4 @@
-package net.sf.anathema.hero.charms.advance.creation;
+package net.sf.anathema.hero.charms.advance.costs;
 
 import net.sf.anathema.character.main.magic.model.magic.Magic;
 import net.sf.anathema.hero.advance.CostAnalyzer;

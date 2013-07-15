@@ -26,7 +26,7 @@ public class CharmOverdrivePool implements OverdrivePool {
           try {
             pool = Integer.valueOf(value);
           } catch (NumberFormatException e) {
-            System.err.println("WARNING: could not parse Overdrive value for charm " + charm.getId() + "; ignoring keyword");
+            System.err.println("WARNING: could not parse Overdrive bonusPoints for charm " + charm.getId() + "; ignoring keyword");
             continue;
           }
         }

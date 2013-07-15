@@ -2,7 +2,8 @@ package net.sf.anathema.hero.charms.advance.experience;
 
 import net.sf.anathema.character.main.magic.model.magic.Magic;
 import net.sf.anathema.hero.advance.CostAnalyzer;
-import net.sf.anathema.hero.charms.advance.MagicKeywordCosts;
+import net.sf.anathema.hero.charms.advance.costs.MagicKeywordCosts;
+import net.sf.anathema.hero.charms.advance.costs.MagicCosts;
 import net.sf.anathema.hero.magic.model.martial.MartialArtsLevel;
 import net.sf.anathema.hero.charms.template.advance.KeywordMagicTemplate;
 import net.sf.anathema.hero.charms.template.advance.MagicPointsCategoryTemplate;
@@ -11,7 +12,7 @@ import net.sf.anathema.hero.charms.template.advance.MagicPointsTemplate;
 import java.util.HashMap;
 import java.util.Map;
 
-public class MagicExperienceCosts {
+public class MagicExperienceCosts implements MagicCosts {
 
   private MagicPointsTemplate template;
   private MartialArtsLevel standardMartialArtsLevel;
@@ -41,7 +42,7 @@ public class MagicExperienceCosts {
   private MagicKeywordCosts createFavoredKeywordCosts(boolean favored) {
     Map<String, Integer> keywordFavoredCosts = new HashMap<>();
     for (KeywordMagicTemplate keywordMagic : getTemplate(favored).keywordMagic) {
-      keywordFavoredCosts.put(keywordMagic.keyword, keywordMagic.value);
+      keywordFavoredCosts.put(keywordMagic.keyword, keywordMagic.experiencePoints);
     }
     return new MagicKeywordCosts(keywordFavoredCosts);
   }

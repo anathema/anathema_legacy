@@ -31,7 +31,7 @@ public class CharmXmlTestUtils {
   public static void fillBasicPrerequisites(Element prerequisiteListElement) {
     Element prerequisiteElement = prerequisiteListElement.addElement(TAG_TRAIT);
     prerequisiteElement.addAttribute("id", "Archery");
-    prerequisiteElement.addAttribute("value", "4");
-    prerequisiteListElement.addElement("essence").addAttribute("value", "3");
+    prerequisiteElement.addAttribute("bonusPoints", "4");
+    prerequisiteListElement.addElement("essence").addAttribute("bonusPoints", "3");
   }
 }

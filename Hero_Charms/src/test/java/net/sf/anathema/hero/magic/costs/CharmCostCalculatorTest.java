@@ -9,7 +9,7 @@ import net.sf.anathema.character.main.traits.types.AbilityType;
 import net.sf.anathema.hero.BasicCharacterTestCase;
 import net.sf.anathema.hero.advance.AbstractBonusPointTestCase;
 import net.sf.anathema.hero.advance.CostAnalyzerImpl;
-import net.sf.anathema.hero.charms.advance.creation.MagicBonusPointCalculator;
+import net.sf.anathema.hero.charms.advance.creation.MagicCreationCostCalculator;
 import net.sf.anathema.hero.charms.model.CharmsModel;
 import net.sf.anathema.hero.charms.model.CharmsModelImpl;
 import net.sf.anathema.hero.charms.template.model.CharmsTemplate;
@@ -31,7 +31,7 @@ import static org.junit.Assert.assertThat;
 
 public class CharmCostCalculatorTest extends AbstractBonusPointTestCase {
 
-  private MagicBonusPointCalculator calculator;
+  private MagicCreationCostCalculator calculator;
   private DummySpellsModel spells = new DummySpellsModel();
   private DummyCharmsModel charms = new DummyCharmsModel();
   private TraitModel traitModel;
@@ -52,7 +52,7 @@ public class CharmCostCalculatorTest extends AbstractBonusPointTestCase {
     DummyBonusPointCosts costs = new DummyBonusPointCosts();
     costs.magicCostsTto.general.charmCost = 5;
     costs.magicCostsTto.favored.charmCost = 4;
-    calculator = new MagicBonusPointCalculator(charmModel.getMagicCostEvaluator(), creationPoints, costs, new CostAnalyzerImpl(hero));
+    calculator = new MagicCreationCostCalculator(charmModel.getMagicCostEvaluator(), creationPoints, costs, new CostAnalyzerImpl(hero));
   }
 
   @Test

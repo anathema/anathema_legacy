@@ -3,15 +3,15 @@ package net.sf.anathema.hero.charms.advance.creation;
 import net.sf.anathema.character.main.magic.model.magic.Magic;
 import net.sf.anathema.character.main.xml.creation.template.MagicCreationCostGroupTto;
 import net.sf.anathema.hero.advance.CostAnalyzer;
-import net.sf.anathema.hero.charms.advance.MagicKeywordCosts;
+import net.sf.anathema.hero.charms.advance.costs.MagicKeywordCosts;
 import net.sf.anathema.hero.magic.model.martial.MartialArtsLevel;
 
-public class MagicCostStrategy {
+public class MagicBonusPointsStrategy {
 
   private MagicCreationCostGroupTto tto;
   private MartialArtsLevel standardMartialArtsLevel;
 
-  public MagicCostStrategy(MagicCreationCostGroupTto tto, MartialArtsLevel standardMartialArtsLevel) {
+  public MagicBonusPointsStrategy(MagicCreationCostGroupTto tto, MartialArtsLevel standardMartialArtsLevel) {
     this.tto = tto;
     this.standardMartialArtsLevel = standardMartialArtsLevel;
   }

@@ -76,7 +76,7 @@ public class GenericCharmBuilderTest {
     Element xml = CharmXmlTestUtils.createCharmElement("Dummy.Generic");
     builder.setType(AbilityType.Archery);
     Element prerequisites = xml.element("prerequisite");
-    prerequisites.element("trait").addAttribute("value", "3");
+    prerequisites.element("trait").addAttribute("bonusPoints", "3");
     CharmImpl charm = builder.buildCharm(xml);
     assertEquals(3, charm.getPrerequisites()[0].getCurrentValue());
   }

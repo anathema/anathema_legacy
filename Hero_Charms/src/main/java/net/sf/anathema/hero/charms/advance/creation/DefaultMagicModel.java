@@ -5,10 +5,10 @@ import net.sf.anathema.hero.advance.overview.model.AbstractSpendingModel;
 
 public class DefaultMagicModel extends AbstractSpendingModel {
 
-  private final MagicBonusPointCalculator magicCalculator;
+  private final MagicCreationCostCalculator magicCalculator;
   private final ICreationPoints creationPoints;
 
-  public DefaultMagicModel(MagicBonusPointCalculator magicCalculator, ICreationPoints creationPoints) {
+  public DefaultMagicModel(MagicCreationCostCalculator magicCalculator, ICreationPoints creationPoints) {
     super("Charms", "General");
     this.magicCalculator = magicCalculator;
     this.creationPoints = creationPoints;
