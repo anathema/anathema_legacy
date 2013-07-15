@@ -1,0 +1,27 @@
+apply plugin: 'java'
+apply plugin: 'idea'
+apply plugin: 'eclipse'
+
+sourceCompatibility = 1.7
+
+repositories {
+  mavenCentral()
+}
+
+configurations.all {
+  resolutionStrategy {
+    force 'commons-io:commons-io:2.4'
+  }
+}
+
+task collectTransitiveDependencies() << {
+  copy {
+    from configurations.compile.findAll { File dependency -> (!dependency.absolutePath.contains('jfxrt.jar')) }
+    into parent.ext.dependenciesDir
+  }
+}
+
+task testJar(type: Jar, dependsOn: testClasses) {
+  baseName = "test-${project.archivesBaseName}"
+  from sourceSets.test.output
+}

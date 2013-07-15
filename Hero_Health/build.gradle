@@ -17,8 +17,3 @@ configurations {
 artifacts {
     tests testJar
 }
-
-sourceSets.main.java.setSrcDirs(['src/main/java'])
-sourceSets.main.resources.setSrcDirs(['src/main/resources'])
-sourceSets.test.java.setSrcDirs(['src/test/java'])
-sourceSets.test.resources.setSrcDirs(['src/test/resources'])
