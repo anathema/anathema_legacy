@@ -22,6 +22,7 @@ import net.sf.anathema.character.main.traits.types.AbilityType;
 import net.sf.anathema.hero.concept.CasteType;
 import net.sf.anathema.hero.health.HealthModelImpl;
 import net.sf.anathema.health.HealthLevelType;
+import net.sf.anathema.hero.health.OxBodyTechniqueArbitratorImpl;
 import net.sf.anathema.hero.traits.TraitModel;
 import net.sf.anathema.hero.traits.TraitModelFetcher;
 import org.junit.Before;
@@ -35,8 +36,8 @@ public class OxBodyTechniqueConfigurationTest {
 
   private Trait resistance;
   private OxBodyTechniqueSpecials configuration;
-  private HealthModelImpl health;
   private DummyHero hero;
+  private OxBodyTechniqueArbitratorImpl arbitrator;
 
   @SuppressWarnings("serial")
   @Before
@@ -44,14 +45,11 @@ public class OxBodyTechniqueConfigurationTest {
     TraitValueStrategy strategy = new CreationTraitValueStrategy();
     hero = new BasicCharacterTestCase().createModelContextWithEssence2(strategy);
     resistance = createResistance(hero);
+    this.arbitrator = new OxBodyTechniqueArbitratorImpl(new Trait[]{resistance});
     TraitModel traitModel = TraitModelFetcher.fetch(hero);
     traitModel.addTraits(resistance);
-    health = new HealthModelImpl();
-    health.initialize(new DummyHeroEnvironment(), hero);
-    configuration =
-            new OxBodyTechniqueConfiguration(hero, null, new TraitType[]{resistance.getType()}, health.getOxBodyLearnArbitrator(), createObtCharm());
-    health.getOxBodyLearnArbitrator().addOxBodyTechniqueConfiguration(configuration);
-    health.addHealthLevelProvider(configuration.getHealthLevelProvider());
+    configuration = new OxBodyTechniqueConfiguration(hero, null, new TraitType[]{resistance.getType()}, arbitrator, createObtCharm());
+    arbitrator.addOxBodyTechniqueConfiguration(configuration);
   }
 
   private DefaultTrait createResistance(DummyHero hero) {
@@ -81,9 +79,8 @@ public class OxBodyTechniqueConfigurationTest {
   @Test
   public void testTwoOxBodyTechniques() {
     @SuppressWarnings("serial") OxBodyTechniqueConfiguration secondConfiguration =
-            new OxBodyTechniqueConfiguration(hero, null, new TraitType[]{resistance.getType()}, health.getOxBodyLearnArbitrator(), createObtCharm());
-    health.getOxBodyLearnArbitrator().addOxBodyTechniqueConfiguration(secondConfiguration);
-    health.addHealthLevelProvider(secondConfiguration.getHealthLevelProvider());
+            new OxBodyTechniqueConfiguration(hero, null, new TraitType[]{resistance.getType()}, arbitrator, createObtCharm());
+    arbitrator.addOxBodyTechniqueConfiguration(secondConfiguration);
     resistance.setCurrentValue(2);
     configuration.getCategories()[0].setCurrentValue(2);
     assertEquals(2, configuration.getCategories()[0].getCreationValue());
