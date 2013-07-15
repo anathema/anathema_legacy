@@ -1,6 +1,5 @@
 package net.sf.anathema.hero.charms.advance;
 
-import net.sf.anathema.character.main.template.creation.BonusPointCosts;
 import net.sf.anathema.character.main.template.creation.ICreationPoints;
 import net.sf.anathema.hero.advance.CostAnalyzerImpl;
 import net.sf.anathema.hero.charms.advance.creation.DefaultMagicModel;
@@ -64,7 +63,7 @@ public class MagicPointsModel implements HeroModel {
   }
 
   private void initializeExperience(Hero hero) {
-    CharmExperienceCostCalculator calculator = createExperienceCalculator(hero);
+    CharmExperienceCostCalculator calculator = createExperienceCalculator();
     initExperienceOverview(hero, calculator);
   }
 
@@ -89,13 +88,11 @@ public class MagicPointsModel implements HeroModel {
   }
 
   private MagicCreationCostCalculator createBonusCalculator(Hero hero) {
-    ICreationPoints creationPoints = hero.getTemplate().getCreationPoints();
     CharmsModel model = CharmsModelFetcher.fetch(hero);
-    BonusPointCosts costs = hero.getTemplate().getBonusPointCosts();
-    return new MagicCreationCostCalculator(model.getMagicCostEvaluator(), creationPoints, costs, new CostAnalyzerImpl(hero));
+    return new MagicCreationCostCalculator(model.getMagicCostEvaluator(), template, standardMartialArtsLevel, new CostAnalyzerImpl(hero));
   }
 
-  private CharmExperienceCostCalculator createExperienceCalculator(Hero hero) {
+  private CharmExperienceCostCalculator createExperienceCalculator() {
     return new CharmExperienceCostCalculator(getExperienceCost());
   }
 

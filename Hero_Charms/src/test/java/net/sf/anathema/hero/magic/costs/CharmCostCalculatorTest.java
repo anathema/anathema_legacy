@@ -3,7 +3,6 @@ package net.sf.anathema.hero.magic.costs;
 import com.google.common.collect.ImmutableList;
 import net.sf.anathema.character.main.library.trait.favorable.FavorableState;
 import net.sf.anathema.character.main.magic.model.spells.Spell;
-import net.sf.anathema.character.main.template.creation.ICreationPoints;
 import net.sf.anathema.character.main.traits.context.CreationTraitValueStrategy;
 import net.sf.anathema.character.main.traits.types.AbilityType;
 import net.sf.anathema.hero.BasicCharacterTestCase;
@@ -12,11 +11,13 @@ import net.sf.anathema.hero.advance.CostAnalyzerImpl;
 import net.sf.anathema.hero.charms.advance.creation.MagicCreationCostCalculator;
 import net.sf.anathema.hero.charms.model.CharmsModel;
 import net.sf.anathema.hero.charms.model.CharmsModelImpl;
+import net.sf.anathema.hero.charms.model.MagicCreationCostEvaluator;
+import net.sf.anathema.hero.charms.template.advance.MagicPointsTemplate;
 import net.sf.anathema.hero.charms.template.model.CharmsTemplate;
-import net.sf.anathema.hero.dummy.DummyBonusPointCosts;
 import net.sf.anathema.hero.dummy.DummyHero;
 import net.sf.anathema.hero.dummy.magic.DummyCharmsModel;
 import net.sf.anathema.hero.dummy.magic.DummySpell;
+import net.sf.anathema.hero.magic.model.martial.MartialArtsLevel;
 import net.sf.anathema.hero.magic.testing.DummySpellsModel;
 import net.sf.anathema.hero.traits.TraitModel;
 import net.sf.anathema.hero.traits.TraitModelFetcher;
@@ -46,13 +47,13 @@ public class CharmCostCalculatorTest extends AbstractBonusPointTestCase {
     hero.addModel(charmModel);
     hero.addModel(charms);
     hero.addModel(spells);
-    hero.template.creationPoints.favoredCreationCharmCount = 2;
-    hero.template.creationPoints.defaultCreationCharmCount = 3;
-    ICreationPoints creationPoints = hero.getTemplate().getCreationPoints();
-    DummyBonusPointCosts costs = new DummyBonusPointCosts();
-    costs.magicCostsTto.general.charmCost = 5;
-    costs.magicCostsTto.favored.charmCost = 4;
-    calculator = new MagicCreationCostCalculator(charmModel.getMagicCostEvaluator(), creationPoints, costs, new CostAnalyzerImpl(hero));
+    MagicPointsTemplate template = new MagicPointsTemplate();
+    template.generalCreationPoints.freePicks = 3;
+    template.generalCreationPoints.costs = 5;
+    template.favoredCreationPoints.freePicks = 2;
+    template.favoredCreationPoints.costs = 4;
+    MagicCreationCostEvaluator magicCostEvaluator = charmModel.getMagicCostEvaluator();
+    calculator = new MagicCreationCostCalculator(magicCostEvaluator, template, MartialArtsLevel.Celestial, new CostAnalyzerImpl(hero));
   }
 
   @Test

@@ -26,42 +26,42 @@ public class MagicExperienceCostTest {
 
   @Test
   public void calculatesCostsForGeneralCharm() throws Exception {
-    pointsTemplate.generalPoints.experienceCosts = 10;
+    pointsTemplate.generalExperiencePoints.costs = 10;
     configureCostAnalyzer(null, false);
     assertThat(experienceCosts.getMagicCosts(charm, costAnalyzerMock), is(10));
   }
 
   @Test
   public void calculatesCostsForFavoredCharm() throws Exception {
-    pointsTemplate.favoredPoints.experienceCosts = 8;
+    pointsTemplate.favoredExperiencePoints.costs = 8;
     configureCostAnalyzer(null, true);
     assertThat(experienceCosts.getMagicCosts(charm, costAnalyzerMock), is(8));
   }
 
   @Test
   public void calculatesGeneralCostsForUnfavoredMartialArtsCharmAtStandardLevel() throws Exception {
-    pointsTemplate.generalPoints.experienceCosts = 9;
+    pointsTemplate.generalExperiencePoints.costs = 9;
     configureCostAnalyzer(MartialArtsLevel.Celestial, false);
     assertThat(experienceCosts.getMagicCosts(charm, costAnalyzerMock), is(9));
   }
 
   @Test
   public void calculatesGeneralCostsForFavoredMartialArtsCharmAtStandardLevel() throws Exception {
-    pointsTemplate.favoredPoints.experienceCosts = 11;
+    pointsTemplate.favoredExperiencePoints.costs = 11;
     configureCostAnalyzer(MartialArtsLevel.Celestial, true);
     assertThat(experienceCosts.getMagicCosts(charm, costAnalyzerMock), is(11));
   }
 
   @Test
   public void calculatesCostsForUnfavoredHighMartialArts() throws Exception {
-    pointsTemplate.generalPoints.highMartialArtsExperience = 15;
+    pointsTemplate.generalExperiencePoints.highMartialArtsCosts = 15;
     configureCostAnalyzer(MartialArtsLevel.Sidereal, false);
     assertThat(experienceCosts.getMagicCosts(charm, costAnalyzerMock), is(15));
    }
 
   @Test
   public void calculatesCostsForFavoredHighMartialArts() throws Exception {
-    pointsTemplate.favoredPoints.highMartialArtsExperience = 13;
+    pointsTemplate.favoredExperiencePoints.highMartialArtsCosts = 13;
     configureCostAnalyzer(MartialArtsLevel.Sidereal, true);
     assertThat(experienceCosts.getMagicCosts(charm, costAnalyzerMock), is(13));
   }
