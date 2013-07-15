@@ -3,11 +3,3 @@ dependencies {
   compile project(':Platform_Swing')
   testCompile testDependencies
 }
-
-sourceSets {
-  test {
-    java {
-      srcDir 'test'
-    }
-  }
-}

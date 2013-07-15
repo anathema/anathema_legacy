@@ -16,11 +16,3 @@ dependencies {
     testCompile project(path: ':Hero_Abilities', configuration: 'tests')
     testCompile project(path: ':Hero_Attributes', configuration: 'tests')
 }
-
-configurations {
-    tests
-}
-
-artifacts {
-    tests testJar
-}

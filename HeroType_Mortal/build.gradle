@@ -2,11 +2,3 @@ dependencies {
     compile project(':Hero_Sheet')
     compile project(':Hero_Charms')
 }
-
-configurations {
-    tests
-}
-
-artifacts {
-    tests testJar
-}

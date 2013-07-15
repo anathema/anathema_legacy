@@ -9,11 +9,3 @@ dependencies {
     testCompile project(path: ':Platform', configuration: 'tests')
     testCompile project(path: ':Character_Main', configuration: 'tests')
 }
-
-configurations {
-    tests
-}
-
-artifacts {
-    tests testJar
-}

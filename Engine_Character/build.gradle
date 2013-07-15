@@ -4,11 +4,3 @@ dependencies {
     testCompile parent.ext.testDependencies
     testCompile parent.ext.integrationTestDependencies
 }
-
-configurations {
-  tests
-}
-
-artifacts {
-  tests testJar
-}

@@ -10,11 +10,3 @@ dependencies {
     testCompile project(path: ':Character_Equipment', configuration: 'tests')
     testCompile project(path: ':Hero_Sheet', configuration: 'tests')
 }
-
-configurations {
-    tests
-}
-
-artifacts {
-    tests testJar
-}

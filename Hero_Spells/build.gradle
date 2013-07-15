@@ -1,14 +1,4 @@
 dependencies {
-//  Insert your dependencies here like this:
   compile project(':Hero_Charms')
   testCompile parent.ext.testDependencies //includes JUnit etc.
-//  testCompile project(path: ':Platform', configuration: 'tests')
-}
-
-configurations {
-    tests
-}
-
-artifacts {
-    tests testJar
 }

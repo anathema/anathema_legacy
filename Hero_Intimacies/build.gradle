@@ -5,11 +5,3 @@ dependencies {
     compile project(':Hero_Sheet')
     testCompile parent.ext.testDependencies
 }
-
-configurations {
-    tests
-}
-
-artifacts {
-    tests testJar
-}

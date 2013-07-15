@@ -14,14 +14,22 @@ configurations.all {
   }
 }
 
+task testJar(type: Jar, dependsOn: testClasses) {
+  baseName = "test-${project.archivesBaseName}"
+  from sourceSets.test.output
+}
+
+configurations {
+  tests
+}
+
+artifacts {
+  tests testJar
+}
+
 task collectTransitiveDependencies() << {
   copy {
     from configurations.compile.findAll { File dependency -> (!dependency.absolutePath.contains('jfxrt.jar')) }
     into parent.ext.dependenciesDir
   }
-}
-
-task testJar(type: Jar, dependsOn: testClasses) {
-  baseName = "test-${project.archivesBaseName}"
-  from sourceSets.test.output
 }

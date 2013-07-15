@@ -26,11 +26,3 @@ processResources {
         exclude '**/*.properties'
     }
 }
-
-configurations {
-  tests
-}
-
-artifacts {
-  tests testJar
-}

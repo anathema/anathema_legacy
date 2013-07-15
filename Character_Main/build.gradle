@@ -7,11 +7,3 @@ dependencies {
     testCompile parent.ext.testDependencies
     testCompile project(path: ':Platform', configuration: 'tests')
 }
-
-configurations {
-    tests
-}
-
-artifacts {
-    tests testJar
-}
