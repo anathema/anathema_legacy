@@ -16,7 +16,7 @@ public class ComplexMultipleEffectCharm extends MultipleEffectCharm {
   }
 
   @Override
-  public SubEffects buildSubeffects(CharmSpecialist specialist, ICharmLearnableArbitrator arbitrator, Charm charm) {
+  public SubEffects buildSubEffects(CharmSpecialist specialist, ICharmLearnableArbitrator arbitrator, Charm charm) {
     CollectionSubEffects subEffects = new CollectionSubEffects();
     for (String id : effectIds) {
       String prerequisiteEffect = prereqEffectMap.get(id);

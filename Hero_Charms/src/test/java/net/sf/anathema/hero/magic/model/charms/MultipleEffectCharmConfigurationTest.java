@@ -36,7 +36,7 @@ public class MultipleEffectCharmConfigurationTest {
 
   private IMultipleEffectCharm createCharm(SubEffectImpl effect) {
     IMultipleEffectCharm charm = mock(IMultipleEffectCharm.class);
-    when(charm.buildSubeffects(isA(CharmSpecialist.class), (ICharmLearnableArbitrator) isNull(), (Charm) isNull()))
+    when(charm.buildSubEffects(isA(CharmSpecialist.class), (ICharmLearnableArbitrator) isNull(), (Charm) isNull()))
             .thenReturn(new ArraySubEffects(new SubEffect[]{effect}));
     return charm;
   }
