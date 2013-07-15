@@ -18,10 +18,6 @@ public class EasyLoader extends URLClassLoader {
     super(concat(getURLs(path), additionalURLs));
   }
 
-  public EasyLoader(URL... URLs) {
-    super(URLs);
-  }
-
   private static URL[] concat(URL[] urls1, URL[] urls2) {
     URL[] result = Arrays.copyOf(urls1, urls1.length + urls2.length);
     System.arraycopy(urls2, 0, result, urls1.length, urls2.length);
