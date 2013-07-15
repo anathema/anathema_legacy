@@ -3,3 +3,8 @@ dependencies {
     compile project(':Character_Main_Impl')
     testCompile parent.ext.testDependencies
 }
+
+sourceSets.main.java.setSrcDirs(['src/main/java'])
+sourceSets.main.resources.setSrcDirs(['src/main/resources'])
+sourceSets.test.java.setSrcDirs(['src/test/java'])
+sourceSets.test.resources.setSrcDirs(['src/test/resources'])
