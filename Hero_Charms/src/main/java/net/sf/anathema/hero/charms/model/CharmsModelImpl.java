@@ -414,7 +414,7 @@ public class CharmsModelImpl implements CharmsModel {
     }
     if (isMartialArts(charm)) {
       boolean isSiderealFormCharm = isFormMagic(charm) && hasLevel(Sidereal, charm);
-      MartialArtsCharmConfiguration martialArtsConfiguration = new DefaultMartialArtsCharmConfiguration(this, experience);
+      MartialArtsLearnModel martialArtsConfiguration = new MartialArtsLearnModelImpl(this, experience);
       if (isSiderealFormCharm && !martialArtsConfiguration.isAnyCelestialStyleCompleted()) {
         return false;
       }

@@ -4,6 +4,7 @@ import net.sf.anathema.hero.charms.display.CharmDisplayPropertiesMap;
 import net.sf.anathema.hero.charms.display.view.CharmView;
 import net.sf.anathema.hero.charms.display.view.DefaultNodeProperties;
 import net.sf.anathema.character.main.magic.model.charmtree.GroupCharmTree;
+import net.sf.anathema.hero.charms.display.model.CharmDisplayModel;
 import net.sf.anathema.magic.description.display.ShowMagicDetailListener;
 import net.sf.anathema.hero.charms.display.coloring.CharacterColoringStrategy;
 import net.sf.anathema.hero.charms.display.coloring.ConfigurableCharmDye;
@@ -11,9 +12,8 @@ import net.sf.anathema.hero.charms.display.special.CharacterSpecialCharmPresente
 import net.sf.anathema.hero.charms.display.special.CommonSpecialCharmList;
 import net.sf.anathema.hero.charms.display.special.SpecialCharmViewBuilder;
 import net.sf.anathema.hero.charms.display.special.SwingSpecialCharmViewBuilder;
-import net.sf.anathema.hero.charms.model.CharacterCharmModel;
-import net.sf.anathema.hero.charms.model.CharacterCharmTypes;
-import net.sf.anathema.hero.charms.model.CharacterGroupCollection;
+import net.sf.anathema.hero.charms.display.model.CharacterCharmTypes;
+import net.sf.anathema.hero.charms.display.model.CharacterGroupCollection;
 import net.sf.anathema.hero.charms.model.CharmsModel;
 import net.sf.anathema.hero.charms.model.special.SpecialCharmList;
 import net.sf.anathema.lib.resources.Resources;
@@ -23,9 +23,9 @@ import net.sf.anathema.platform.tree.document.visualizer.TreePresentationPropert
 public class CharacterCharmTreePresenter extends AbstractCascadePresenter {
 
   private final CharmView view;
-  private final CharacterCharmModel model;
+  private final CharmDisplayModel model;
 
-  public CharacterCharmTreePresenter(Resources resources, CharmView view, CharacterCharmModel charmModel,
+  public CharacterCharmTreePresenter(Resources resources, CharmView view, CharmDisplayModel charmModel,
                                      TreePresentationProperties presentationProperties, CharmDisplayPropertiesMap displayPropertiesMap) {
     super(resources);
     this.model = charmModel;

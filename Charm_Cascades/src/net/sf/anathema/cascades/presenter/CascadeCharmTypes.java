@@ -3,7 +3,7 @@ package net.sf.anathema.cascades.presenter;
 import net.sf.anathema.character.main.magic.cache.CharmProvider;
 import net.sf.anathema.character.main.type.CharacterType;
 import net.sf.anathema.character.main.type.CharacterTypes;
-import net.sf.anathema.hero.charms.model.AbstractCharmTypes;
+import net.sf.anathema.hero.charms.display.model.AbstractCharmTypes;
 import net.sf.anathema.lib.util.Identifier;
 
 import java.util.ArrayList;

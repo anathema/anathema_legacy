@@ -1,4 +1,4 @@
-package net.sf.anathema.hero.charms.model;
+package net.sf.anathema.hero.charms.display.model;
 
 import com.google.common.collect.Lists;
 import net.sf.anathema.character.main.type.CharacterType;
@@ -8,9 +8,9 @@ import java.util.List;
 
 public class CharacterCharmTypes extends AbstractCharmTypes {
 
-  private CharacterCharmModel model;
+  private CharmDisplayModel model;
 
-  public CharacterCharmTypes(CharacterCharmModel model) {
+  public CharacterCharmTypes(CharmDisplayModel model) {
     this.model = model;
   }
 

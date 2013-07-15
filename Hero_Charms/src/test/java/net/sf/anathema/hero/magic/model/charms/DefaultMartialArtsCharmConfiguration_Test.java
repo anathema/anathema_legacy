@@ -5,9 +5,9 @@ import net.sf.anathema.character.main.magic.model.charm.Charm;
 import net.sf.anathema.character.main.magic.model.charm.CharmAttributeList;
 import net.sf.anathema.character.main.magic.model.charms.ILearningCharmGroup;
 import net.sf.anathema.character.main.magic.model.charmtree.ICharmLearnArbitrator;
+import net.sf.anathema.hero.charms.model.MartialArtsLearnModelImpl;
 import net.sf.anathema.hero.dummy.magic.DummyCharmsModel;
 import net.sf.anathema.hero.advance.experience.ExperiencePointConfiguration;
-import net.sf.anathema.hero.charms.model.DefaultMartialArtsCharmConfiguration;
 import net.sf.anathema.hero.experience.ExperienceModel;
 import net.sf.anathema.hero.framework.HeroEnvironment;
 import net.sf.anathema.hero.model.Hero;
@@ -65,7 +65,7 @@ public class DefaultMartialArtsCharmConfiguration_Test {
         // nothing to do
       }
     };
-    DefaultMartialArtsCharmConfiguration configuration = new DefaultMartialArtsCharmConfiguration(dummyConfig, experienceModel);
+    MartialArtsLearnModelImpl configuration = new MartialArtsLearnModelImpl(dummyConfig, experienceModel);
     boolean celestialMartialArtsGroupCompleted = configuration.isAnyCelestialStyleCompleted();
     Assert.assertTrue(celestialMartialArtsGroupCompleted);
   }

@@ -9,7 +9,7 @@ import net.sf.anathema.hero.charms.display.coloring.CharmDye;
 import net.sf.anathema.hero.charms.display.special.NullSpecialCharmPresenter;
 import net.sf.anathema.hero.charms.display.special.SpecialCharmViewPresenter;
 import net.sf.anathema.hero.charms.model.CharmGroupCollection;
-import net.sf.anathema.hero.charms.model.CharmTypes;
+import net.sf.anathema.hero.charms.display.model.CharmTypes;
 import net.sf.anathema.lib.compare.I18nedIdentificateSorter;
 import net.sf.anathema.lib.control.ObjectValueListener;
 import net.sf.anathema.lib.gui.AgnosticUIConfiguration;

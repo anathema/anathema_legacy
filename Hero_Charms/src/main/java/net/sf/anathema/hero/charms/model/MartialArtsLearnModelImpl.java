@@ -12,11 +12,11 @@ import static net.sf.anathema.hero.magic.model.martial.MartialArtsLevel.Celestia
 import static net.sf.anathema.hero.magic.model.martial.MartialArtsUtilities.MARTIAL_ARTS;
 import static net.sf.anathema.hero.magic.model.martial.MartialArtsUtilities.hasLevel;
 
-public class DefaultMartialArtsCharmConfiguration implements MartialArtsCharmConfiguration {
+public class MartialArtsLearnModelImpl implements MartialArtsLearnModel {
   private final CharmsModel charmModel;
   private ExperienceModel experience;
 
-  public DefaultMartialArtsCharmConfiguration(CharmsModel charmModel, ExperienceModel experience) {
+  public MartialArtsLearnModelImpl(CharmsModel charmModel, ExperienceModel experience) {
     this.charmModel = charmModel;
     this.experience = experience;
   }

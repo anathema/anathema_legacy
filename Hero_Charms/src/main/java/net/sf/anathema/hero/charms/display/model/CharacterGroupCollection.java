@@ -1,11 +1,12 @@
-package net.sf.anathema.hero.charms.model;
+package net.sf.anathema.hero.charms.display.model;
 
 import net.sf.anathema.character.main.magic.model.charm.ICharmGroup;
+import net.sf.anathema.hero.charms.model.CharmGroupCollection;
 
 public class CharacterGroupCollection implements CharmGroupCollection {
-  private CharacterCharmModel model;
+  private CharmDisplayModel model;
 
-  public CharacterGroupCollection(CharacterCharmModel model) {
+  public CharacterGroupCollection(CharmDisplayModel model) {
     this.model = model;
   }
 

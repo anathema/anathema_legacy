@@ -1,19 +1,21 @@
-package net.sf.anathema.hero.charms.model;
+package net.sf.anathema.hero.charms.display.model;
 
 import net.sf.anathema.character.main.magic.description.MagicDescriptionProvider;
 import net.sf.anathema.character.main.magic.model.charm.Charm;
 import net.sf.anathema.character.main.magic.model.charms.ILearningCharmGroup;
 import net.sf.anathema.character.main.template.magic.CharmTemplate;
+import net.sf.anathema.hero.charms.model.CharmsModel;
+import net.sf.anathema.hero.charms.model.CharmsModelFetcher;
 import net.sf.anathema.hero.concept.CasteSelection;
 import net.sf.anathema.hero.concept.HeroConceptFetcher;
 import net.sf.anathema.hero.model.Hero;
 import net.sf.anathema.lib.control.ChangeListener;
 
-public class CharacterCharmModel {
+public class CharmDisplayModel {
   private Hero hero;
   private MagicDescriptionProvider magicDescriptionProvider;
 
-  public CharacterCharmModel(Hero hero, MagicDescriptionProvider magicDescriptionProvider) {
+  public CharmDisplayModel(Hero hero, MagicDescriptionProvider magicDescriptionProvider) {
     this.hero = hero;
     this.magicDescriptionProvider = magicDescriptionProvider;
   }

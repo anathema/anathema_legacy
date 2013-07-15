@@ -7,7 +7,7 @@ import net.sf.anathema.character.main.type.CharacterType;
 import net.sf.anathema.character.main.view.SectionView;
 import net.sf.anathema.framework.IApplicationModel;
 import net.sf.anathema.hero.charms.display.tree.CharacterCharmTreePresenter;
-import net.sf.anathema.hero.charms.model.CharacterCharmModel;
+import net.sf.anathema.hero.charms.display.model.CharmDisplayModel;
 import net.sf.anathema.hero.display.presenter.HeroModelInitializer;
 import net.sf.anathema.hero.display.presenter.RegisteredInitializer;
 import net.sf.anathema.hero.model.Hero;
@@ -33,7 +33,7 @@ public class CharmInitializer implements HeroModelInitializer {
       return;
     }
     MagicDescriptionProvider provider = CharmDescriptionProviderExtractor.CreateFor(applicationModel, resources);
-    CharacterCharmModel model = new CharacterCharmModel(hero, provider);
+    CharmDisplayModel model = new CharmDisplayModel(hero, provider);
     CharacterType characterType = hero.getTemplate().getTemplateType().getCharacterType();
     CharmDisplayPropertiesMap propertiesMap = new CharmDisplayPropertiesMap(applicationModel.getObjectFactory());
     TreePresentationProperties presentationProperties = propertiesMap.getDisplayProperties(characterType);

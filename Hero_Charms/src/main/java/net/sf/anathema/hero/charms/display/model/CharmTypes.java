@@ -1,4 +1,4 @@
-package net.sf.anathema.hero.charms.model;
+package net.sf.anathema.hero.charms.display.model;
 
 import net.sf.anathema.lib.util.Identifier;
 

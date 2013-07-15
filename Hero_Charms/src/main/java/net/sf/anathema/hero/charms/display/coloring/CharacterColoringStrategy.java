@@ -4,7 +4,7 @@ import net.sf.anathema.hero.charms.display.view.CharmView;
 import net.sf.anathema.character.main.magic.model.charm.Charm;
 import net.sf.anathema.character.main.magic.model.charm.IndirectCharmRequirement;
 import net.sf.anathema.framework.ui.RGBColor;
-import net.sf.anathema.hero.charms.model.CharacterCharmModel;
+import net.sf.anathema.hero.charms.display.model.CharmDisplayModel;
 import net.sf.anathema.hero.charms.model.CharmsModel;
 
 public class CharacterColoringStrategy implements CharmColoring {
@@ -16,9 +16,9 @@ public class CharacterColoringStrategy implements CharmColoring {
 
   private final RGBColor characterColor;
   private final CharmView view;
-  private final CharacterCharmModel model;
+  private final CharmDisplayModel model;
 
-  public CharacterColoringStrategy(RGBColor characterColor, CharmView view, CharacterCharmModel model) {
+  public CharacterColoringStrategy(RGBColor characterColor, CharmView view, CharmDisplayModel model) {
     this.characterColor = characterColor;
     this.view = view;
     this.model = model;
