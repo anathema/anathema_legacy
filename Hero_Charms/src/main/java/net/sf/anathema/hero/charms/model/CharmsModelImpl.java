@@ -109,7 +109,7 @@ public class CharmsModelImpl implements CharmsModel {
     this.traits = TraitModelFetcher.fetch(hero);
     this.hero = hero;
     this.provider = environment.getDataSet(CharmCache.class).getCharmProvider();
-    this.martialArtsOptions = new MartialArtsOptions(hero, provider);
+    this.martialArtsOptions = new MartialArtsOptions(provider, charmsRules);
     this.nonMartialArtsOptions = new NonMartialArtsOptions(hero, environment.getCharacterTypes(), provider);
     this.manager = new SpecialCharmManager(specialist, hero, this);
     this.martialArtsGroups = createGroups(martialArtsOptions.getAllCharmGroups());

@@ -1,12 +1,10 @@
 package net.sf.anathema.hero.template.parser;
 
-import net.sf.anathema.hero.dummy.DummyGenericTrait;
-import net.sf.anathema.hero.dummy.template.DummyXmlTemplateRegistry;
 import net.sf.anathema.character.main.traits.types.AttributeType;
 import net.sf.anathema.character.main.xml.creation.BonusPointCostTemplateParser;
 import net.sf.anathema.character.main.xml.creation.GenericBonusPointCosts;
-import net.sf.anathema.hero.advance.CostAnalyzer;
-import net.sf.anathema.hero.magic.model.martial.MartialArtsLevel;
+import net.sf.anathema.hero.dummy.DummyGenericTrait;
+import net.sf.anathema.hero.dummy.template.DummyXmlTemplateRegistry;
 import net.sf.anathema.lib.exception.AnathemaException;
 import net.sf.anathema.lib.xml.DocumentUtilities;
 import org.dom4j.Element;
@@ -16,19 +14,17 @@ import org.junit.Test;
 import static org.hamcrest.CoreMatchers.is;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertThat;
-import static org.mockito.Mockito.mock;
 
 public class BonusPointCostTemplateParserTest extends BasicTemplateParsingTestCase {
 
   private static final String ORIGINAL_TEMPLATE_ID = "original";
   private BonusPointCostTemplateParser parser;
   private GenericBonusPointCosts originalTemplate;
-  private CostAnalyzer costAnalyzerMock = mock(CostAnalyzer.class);
 
   @Before
   public void setUp() throws Exception {
     DummyXmlTemplateRegistry<GenericBonusPointCosts> registry = new DummyXmlTemplateRegistry<>();
-    this.parser = new BonusPointCostTemplateParser(registry, MartialArtsLevel.Celestial);
+    this.parser = new BonusPointCostTemplateParser(registry);
     originalTemplate = new GenericBonusPointCosts();
     registry.register(ORIGINAL_TEMPLATE_ID, originalTemplate);
   }

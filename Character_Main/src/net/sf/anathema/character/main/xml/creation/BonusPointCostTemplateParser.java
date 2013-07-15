@@ -2,10 +2,8 @@ package net.sf.anathema.character.main.xml.creation;
 
 import net.sf.anathema.character.main.template.experience.CurrentRatingCosts;
 import net.sf.anathema.character.main.xml.core.AbstractXmlTemplateParser;
-import net.sf.anathema.character.main.xml.creation.template.MagicCreationCostsTto;
 import net.sf.anathema.character.main.xml.registry.IXmlTemplateRegistry;
 import net.sf.anathema.character.main.xml.util.CostParser;
-import net.sf.anathema.hero.magic.model.martial.MartialArtsLevel;
 import net.sf.anathema.lib.exception.PersistenceException;
 import net.sf.anathema.lib.xml.ElementUtilities;
 import org.dom4j.Element;
@@ -14,9 +12,6 @@ public class BonusPointCostTemplateParser extends AbstractXmlTemplateParser<Gene
 
   private static final String ATTRIB_DOTS = "dots";
   private static final String ATTRIB_RANK = "rank";
-  private static final String ATTRIB_KEYWORD = "keyword";
-  private static final String ATTRIB_GENERAL_COST = "generalCost";
-  private static final String ATTRIB_FAVORED_COST = "favoredCost";
 
   private static final String TAG_ATTRIBUTES = "attributes";
   private static final String TAG_GENERAL_ATTRIBUTE = "generalAttribute";
@@ -28,25 +23,16 @@ public class BonusPointCostTemplateParser extends AbstractXmlTemplateParser<Gene
   private static final String TAG_GENERAL_DOTS_PER_POINT = "generalDotsPerPoint";
   private static final String TAG_FAVORED_DOTS_PER_POINT = "favoredDotsPerPoint";
   private static final String TAG_ADVANTAGES = "advantages";
-  private static final String TAG_BACKGROUNDS = "backgrounds";
   private static final String TAG_VIRTUES = "virtues";
   private static final String TAG_WILLPOWER = "willpower";
   private static final String TAG_ESSENCE = "essence";
-  private static final String TAG_CHARMS = "charms";
-  private static final String TAG_GENERAL_CHARMS = "generalCharms";
-  private static final String TAG_FAVORED_CHARMS = "favoredCharms";
-  private static final String TAG_KEYWORD_CHARMS = "keywordCharms";
   private static final String TAG_MAXIMUM_FREE_ABILITY_RANK = "maximumFreeAbilityRank";
   private static final String TAG_MAXIMUM_FREE_VIRTUE_RANK = "maximumFreeVirtueRank";
-  private static final String TAG_GENERAL_MARTIAL_ARTS_CHARMS = "generalHighLevelMartialArtsCharms";
-  private static final String TAG_FAVORED_MARTIAL_ARTS_CHARMS = "favoredHighLevelMartialArtsCharms";
 
   private final CostParser costParser = new CostParser();
-  private final MartialArtsLevel standardMartialArtsLevel;
 
-  public BonusPointCostTemplateParser(IXmlTemplateRegistry<GenericBonusPointCosts> registry, MartialArtsLevel martialArtsLevel) {
+  public BonusPointCostTemplateParser(IXmlTemplateRegistry<GenericBonusPointCosts> registry) {
     super(registry);
-    this.standardMartialArtsLevel = martialArtsLevel;
   }
 
   @Override
@@ -55,33 +41,8 @@ public class BonusPointCostTemplateParser extends AbstractXmlTemplateParser<Gene
     setAttributeCost(element, costs);
     setAbilityCosts(element, costs);
     setAdvantageCosts(element, costs);
-    setCharmCosts(element, costs);
     return costs;
 
-  }
-
-  private void setCharmCosts(Element element, GenericBonusPointCosts costs) throws PersistenceException {
-    Element charmElement = element.element(TAG_CHARMS);
-    if (charmElement == null) {
-      return;
-    }
-    MagicCreationCostsTto charmCosts = new MagicCreationCostsTto();
-    charmCosts.general.charmCost = costParser.getFixedCostFromRequiredElement(charmElement, TAG_GENERAL_CHARMS);
-    charmCosts.favored.charmCost = costParser.getFixedCostFromRequiredElement(charmElement, TAG_FAVORED_CHARMS);
-    charmCosts.general.highLevelMartialArtsCost =
-            costParser.getFixedCostFromOptionalElement(charmElement, TAG_GENERAL_MARTIAL_ARTS_CHARMS, charmCosts.general.charmCost);
-    charmCosts.favored.highLevelMartialArtsCost =
-            costParser.getFixedCostFromOptionalElement(charmElement, TAG_FAVORED_MARTIAL_ARTS_CHARMS, charmCosts.favored.charmCost);
-    for (Object keywordNode : charmElement.elements(TAG_KEYWORD_CHARMS)) {
-      Element keywordClass = (Element) keywordNode;
-      String keyword = ElementUtilities.getRequiredAttrib(keywordClass, ATTRIB_KEYWORD);
-      int generalCost = ElementUtilities.getRequiredIntAttrib(keywordClass, ATTRIB_GENERAL_COST);
-      int favoredCost = ElementUtilities.getRequiredIntAttrib(keywordClass, ATTRIB_FAVORED_COST);
-      charmCosts.general.keywordCosts.put(keyword, generalCost);
-      charmCosts.favored.keywordCosts.put(keyword, favoredCost);
-    }
-    charmCosts.standardMartialArtsLevel = standardMartialArtsLevel;
-    costs.setCharmCosts(charmCosts);
   }
 
   private void setAdvantageCosts(Element element, GenericBonusPointCosts costs) throws PersistenceException {

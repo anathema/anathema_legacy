@@ -118,8 +118,7 @@ public class CharacterTemplateParser extends AbstractXmlTemplateParser<GenericCh
     if (bonusPointsElement == null) {
       return;
     }
-    BonusPointCostTemplateParser parser = new BonusPointCostTemplateParser(registryCollection.getBonusPointTemplateRegistry(),
-            characterTemplate.getMagicTemplate().getCharmTemplate().getMartialArtsRules().getStandardLevel());
+    BonusPointCostTemplateParser parser = new BonusPointCostTemplateParser(registryCollection.getBonusPointTemplateRegistry());
     GenericBonusPointCosts bonusPoints = parser.parseTemplate(bonusPointsElement);
     characterTemplate.setBonusPointCosts(bonusPoints);
   }
