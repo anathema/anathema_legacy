@@ -30,7 +30,7 @@ import java.util.LinkedHashMap;
 
 import static org.junit.Assert.assertEquals;
 
-public class OxBodyTechniqueConfigurationTest {
+public class OxBodyTechniqueSpecialsTest {
 
   private Trait resistance;
   private OxBodyTechniqueSpecials specials;
