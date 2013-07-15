@@ -7,7 +7,7 @@ import net.sf.anathema.character.main.magic.model.charm.Charm;
 import net.sf.anathema.character.main.magic.model.charm.CharmAttributeList;
 import net.sf.anathema.character.main.magic.model.charm.CharmIdMap;
 import net.sf.anathema.character.main.magic.model.charm.CharmLearnAdapter;
-import net.sf.anathema.character.main.magic.model.charm.CharmSpecialistImpl;
+import net.sf.anathema.hero.charms.display.special.CharmSpecialistImpl;
 import net.sf.anathema.character.main.magic.model.charm.GroupedCharmIdMap;
 import net.sf.anathema.character.main.magic.model.charm.ICharmGroup;
 import net.sf.anathema.character.main.magic.model.charm.ICharmLearnListener;

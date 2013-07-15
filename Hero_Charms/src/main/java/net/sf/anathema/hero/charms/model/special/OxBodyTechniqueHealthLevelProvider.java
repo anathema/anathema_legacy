@@ -1,4 +1,4 @@
-package net.sf.anathema.character.main.magic.model.charm.special;
+package net.sf.anathema.hero.charms.model.special;
 
 import net.sf.anathema.character.main.magic.model.charm.OxBodyCategory;
 import net.sf.anathema.hero.health.IHealthLevelProvider;

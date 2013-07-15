@@ -1,9 +1,12 @@
-package net.sf.anathema.character.main.magic.model.charm.special;
+package net.sf.anathema.hero.charms.model.special;
 
 import net.sf.anathema.character.main.library.trait.Trait;
 import net.sf.anathema.character.main.library.trait.favorable.IncrementChecker;
 import net.sf.anathema.character.main.magic.model.charm.Charm;
 import net.sf.anathema.character.main.magic.model.charm.OxBodyCategory;
+import net.sf.anathema.character.main.magic.model.charm.special.IOxBodyTechniqueCharm;
+import net.sf.anathema.character.main.magic.model.charm.special.ISpecialCharmLearnListener;
+import net.sf.anathema.character.main.magic.model.charm.special.OxBodyTechniqueSpecials;
 import net.sf.anathema.character.main.traits.TraitType;
 import net.sf.anathema.hero.health.IHealthLevelProvider;
 import net.sf.anathema.hero.health.OxBodyTechniqueArbitrator;

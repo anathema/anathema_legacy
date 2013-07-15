@@ -16,8 +16,8 @@ public class OxBodyTechniqueArbitratorImpl implements OxBodyTechniqueArbitrator 
   }
 
   @Override
-  public void addOxBodyTechniqueConfiguration(OxBodyTechniqueSpecials oxBodyTechniqueConfiguration) {
-    oxBodyList.add(oxBodyTechniqueConfiguration);
+  public void addOxBodyTechniqueConfiguration(OxBodyTechniqueSpecials oxBodyTechniqueSpecials) {
+    oxBodyList.add(oxBodyTechniqueSpecials);
   }
 
   @Override
