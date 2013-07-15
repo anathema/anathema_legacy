@@ -4,7 +4,7 @@ import net.sf.anathema.cascades.module.CascadeViewFactory;
 import net.sf.anathema.cascades.presenter.view.CascadeView;
 import net.sf.anathema.character.main.magic.cache.CharmCache;
 import net.sf.anathema.character.main.magic.description.MagicDescriptionProvider;
-import net.sf.anathema.hero.charms.display.CharmDisplayPropertiesMap;
+import net.sf.anathema.hero.charms.display.presenter.CharmDisplayPropertiesMap;
 import net.sf.anathema.hero.charms.display.view.DefaultNodeProperties;
 import net.sf.anathema.character.main.magic.model.charmtree.GroupCharmTree;
 import net.sf.anathema.character.main.type.CharacterTypes;

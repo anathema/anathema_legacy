@@ -2,7 +2,7 @@ package net.sf.anathema.cascades.presenter;
 
 import net.sf.anathema.cascades.presenter.view.CascadeView;
 import net.sf.anathema.hero.charms.display.presenter.AbstractCharmGroupChangeListener;
-import net.sf.anathema.hero.charms.display.CharmDisplayPropertiesMap;
+import net.sf.anathema.hero.charms.display.presenter.CharmDisplayPropertiesMap;
 import net.sf.anathema.character.main.type.CharacterType;
 import net.sf.anathema.framework.ui.RGBColor;
 import net.sf.anathema.lib.util.Identifier;

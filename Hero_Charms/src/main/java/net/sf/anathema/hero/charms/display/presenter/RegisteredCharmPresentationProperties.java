@@ -1,4 +1,4 @@
-package net.sf.anathema.hero.charms.display;
+package net.sf.anathema.hero.charms.display.presenter;
 
 import java.lang.annotation.ElementType;
 import java.lang.annotation.Retention;
