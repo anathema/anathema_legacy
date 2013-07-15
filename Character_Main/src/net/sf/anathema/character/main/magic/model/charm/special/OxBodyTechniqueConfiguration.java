@@ -7,7 +7,7 @@ import net.sf.anathema.character.main.magic.model.charm.OxBodyCategory;
 import net.sf.anathema.character.main.traits.TraitType;
 import net.sf.anathema.hero.health.IHealthLevelProvider;
 import net.sf.anathema.hero.health.OxBodyTechniqueArbitrator;
-import net.sf.anathema.hero.health.model.HealthLevelType;
+import net.sf.anathema.health.HealthLevelType;
 import net.sf.anathema.hero.model.Hero;
 import net.sf.anathema.hero.traits.TraitModel;
 import net.sf.anathema.hero.traits.TraitModelFetcher;

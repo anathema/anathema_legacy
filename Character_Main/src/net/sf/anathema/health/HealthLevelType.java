@@ -1,4 +1,4 @@
-package net.sf.anathema.hero.health.model;
+package net.sf.anathema.health;
 
 import net.sf.anathema.lib.util.Identifier;
 

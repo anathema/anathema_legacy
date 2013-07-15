@@ -12,7 +12,7 @@ import com.itextpdf.text.pdf.PdfContentByte;
 import com.itextpdf.text.pdf.PdfPCell;
 import com.itextpdf.text.pdf.PdfPTable;
 import net.sf.anathema.hero.health.HealthModelFetcher;
-import net.sf.anathema.hero.health.model.HealthLevelType;
+import net.sf.anathema.health.HealthLevelType;
 import net.sf.anathema.hero.model.Hero;
 import net.sf.anathema.hero.sheet.pdf.encoder.general.Bounds;
 import net.sf.anathema.hero.sheet.pdf.encoder.graphics.SheetGraphics;

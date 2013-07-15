@@ -3,7 +3,7 @@ package net.sf.anathema.character.main.magic.model.charm;
 import net.sf.anathema.character.main.library.trait.DefaultTraitType;
 import net.sf.anathema.character.main.library.trait.LimitedTrait;
 import net.sf.anathema.character.main.library.trait.favorable.IncrementChecker;
-import net.sf.anathema.hero.health.model.HealthLevelType;
+import net.sf.anathema.health.HealthLevelType;
 import net.sf.anathema.hero.model.Hero;
 
 import static net.sf.anathema.character.main.traits.SimpleTraitTemplate.createEssenceLimitedTemplate;
