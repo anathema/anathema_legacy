@@ -4,13 +4,8 @@ import net.sf.anathema.character.main.template.experience.CurrentRatingCosts;
 import net.sf.anathema.character.main.xml.core.AbstractXmlTemplateParser;
 import net.sf.anathema.character.main.xml.registry.IXmlTemplateRegistry;
 import net.sf.anathema.character.main.xml.util.CostParser;
-import net.sf.anathema.hero.magic.model.martial.MartialArtsLevel;
 import net.sf.anathema.lib.exception.PersistenceException;
-import net.sf.anathema.lib.xml.ElementUtilities;
 import org.dom4j.Element;
-
-import java.util.HashMap;
-import java.util.Map;
 
 public class ExperienceTemplateParser extends AbstractXmlTemplateParser<GenericExperiencePointCosts> {
 
@@ -28,17 +23,10 @@ public class ExperienceTemplateParser extends AbstractXmlTemplateParser<GenericE
   private static final String TAG_WILLPOWER = "willpower";
   private static final String TAG_VIRTUE = "virtues";
   private static final String TAG_ESSENCE = "essence";
-  private static final String TAG_MAGIC = "magic";
-  private static final String TAG_CHARMS = "charms";
-  private static final String TAG_SPELLS = "spells";
-  private static final String TAG_KEYWORD_CHARMS = "keywordCharms";
-  private static final String TAG_MARTIAL_ARTS = "highLevelMartialArts";
   private final CostParser costParser = new CostParser();
-  private final MartialArtsLevel standardLevel;
 
-  public ExperienceTemplateParser(IXmlTemplateRegistry<GenericExperiencePointCosts> templateRegistry, MartialArtsLevel standardLevel) {
+  public ExperienceTemplateParser(IXmlTemplateRegistry<GenericExperiencePointCosts> templateRegistry) {
     super(templateRegistry);
-    this.standardLevel = standardLevel;
   }
 
   @Override
@@ -49,39 +37,10 @@ public class ExperienceTemplateParser extends AbstractXmlTemplateParser<GenericE
   @Override
   public GenericExperiencePointCosts parseTemplate(Element element) throws PersistenceException {
     GenericExperiencePointCosts costs = getBasicTemplate(element);
-    costs.setStandardMartialArtsLevel(standardLevel);
     setAttributeCosts(element, costs);
     setAbilityCosts(element, costs);
     setAdvantageCosts(element, costs);
-    setMagicCosts(element, costs);
     return costs;
-  }
-
-  private void setMagicCosts(Element element, GenericExperiencePointCosts costs) throws PersistenceException {
-    Element magic = element.element(TAG_MAGIC);
-    if (magic == null) {
-      return;
-    }
-    Element charms = magic.element(TAG_CHARMS);
-    int favoredCost = ElementUtilities.getRequiredIntAttrib(charms, ATTRIB_FAVORED);
-    int generalCost = ElementUtilities.getRequiredIntAttrib(charms, ATTRIB_GENERAL);
-    Map<String, Integer> keywordGeneralCost = new HashMap<>();
-    Map<String, Integer> keywordFavoredCost = new HashMap<>();
-
-    for (Object node : charms.elements(TAG_KEYWORD_CHARMS)) {
-      Element keywordClass = (Element) node;
-      String keyword = ElementUtilities.getRequiredAttrib(keywordClass, ATTRIB_KEYWORD);
-      int gCost = ElementUtilities.getRequiredIntAttrib(keywordClass, ATTRIB_GENERAL);
-      int fCost = ElementUtilities.getRequiredIntAttrib(keywordClass, ATTRIB_FAVORED);
-      keywordGeneralCost.put(keyword, gCost);
-      keywordFavoredCost.put(keyword, fCost);
-    }
-
-    costs.setCharmCosts(favoredCost, generalCost, keywordGeneralCost, keywordFavoredCost);
-    Element martialArts = charms.element(TAG_MARTIAL_ARTS);
-    int favoredMartialArtsCost = ElementUtilities.getRequiredIntAttrib(martialArts, ATTRIB_FAVORED);
-    int generalMartialArtsCost = ElementUtilities.getRequiredIntAttrib(martialArts, ATTRIB_GENERAL);
-    costs.setMartialArtsCosts(favoredMartialArtsCost, generalMartialArtsCost);
   }
 
   private void setAdvantageCosts(Element element, GenericExperiencePointCosts costs) throws PersistenceException {

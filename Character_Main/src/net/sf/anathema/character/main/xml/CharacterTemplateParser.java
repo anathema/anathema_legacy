@@ -153,8 +153,7 @@ public class CharacterTemplateParser extends AbstractXmlTemplateParser<GenericCh
     if (experiencePointsElement == null) {
       return;
     }
-    ExperienceTemplateParser parser = new ExperienceTemplateParser(registryCollection.getExperienceTemplateRegistry(),
-            characterTemplate.getMagicTemplate().getCharmTemplate().getMartialArtsRules().getStandardLevel());
+    ExperienceTemplateParser parser = new ExperienceTemplateParser(registryCollection.getExperienceTemplateRegistry());
     GenericExperiencePointCosts experienceTemplate = parser.parseTemplate(experiencePointsElement);
     characterTemplate.setExperiencePointCosts(experienceTemplate);
   }

@@ -1,13 +1,9 @@
 package net.sf.anathema.hero.template.parser;
 
-import net.sf.anathema.character.main.dummy.DummyCharm;
-import net.sf.anathema.character.main.magic.model.magic.Magic;
 import net.sf.anathema.character.main.template.points.MultiplyRatingCosts;
-import net.sf.anathema.hero.dummy.template.DummyXmlTemplateRegistry;
 import net.sf.anathema.character.main.xml.experience.ExperienceTemplateParser;
 import net.sf.anathema.character.main.xml.experience.GenericExperiencePointCosts;
-import net.sf.anathema.hero.advance.CostAnalyzer;
-import net.sf.anathema.hero.magic.model.martial.MartialArtsLevel;
+import net.sf.anathema.hero.dummy.template.DummyXmlTemplateRegistry;
 import net.sf.anathema.lib.exception.AnathemaException;
 import net.sf.anathema.lib.xml.DocumentUtilities;
 import org.dom4j.Element;
@@ -33,7 +29,7 @@ public class ExperienceTemplateParserTest {
   @Before
   public void setUp() throws Exception {
     templateRegistry = new DummyXmlTemplateRegistry<>();
-    parser = new ExperienceTemplateParser(templateRegistry, MartialArtsLevel.Celestial);
+    parser = new ExperienceTemplateParser(templateRegistry);
   }
 
   private Element createElement() throws AnathemaException {
@@ -87,90 +83,5 @@ public class ExperienceTemplateParserTest {
     Element element = createElement();
     GenericExperiencePointCosts costs = parser.parseTemplate(element);
     assertEquals(new MultiplyRatingCosts(8), costs.getEssenceCosts());
-  }
-
-  @Test
-  public void testGeneralMagicCosts() throws Exception {
-    Element element = createElement();
-    GenericExperiencePointCosts costs = parser.parseTemplate(element);
-    assertEquals(10, costs.getCharmCosts(new DummyCharm("Charm"), new CostAnalyzer() {
-      @Override
-      public MartialArtsLevel getMartialArtsLevel(Magic magic) {
-        return null;
-      }
-
-      @Override
-      public boolean isMagicFavored(Magic magic) {
-        return false;
-      }
-    }));
-  }
-
-  @Test
-  public void testFavoredMagicCosts() throws Exception {
-    Element element = createElement();
-    GenericExperiencePointCosts costs = parser.parseTemplate(element);
-    assertEquals(8, costs.getCharmCosts(new DummyCharm("Charm"), new CostAnalyzer() {
-      @Override
-      public MartialArtsLevel getMartialArtsLevel(Magic magic) {
-        return null;
-      }
-
-      @Override
-      public boolean isMagicFavored(Magic magic) {
-        return true;
-      }
-    }));
-  }
-
-  @Test
-  public void testCelestialMartialArtsCost() throws Exception {
-    Element element = createElement();
-    GenericExperiencePointCosts costs = parser.parseTemplate(element);
-    assertEquals(10, costs.getCharmCosts(new DummyCharm("Charm"), new CostAnalyzer() {
-      @Override
-      public MartialArtsLevel getMartialArtsLevel(Magic magic) {
-        return MartialArtsLevel.Celestial;
-      }
-
-      @Override
-      public boolean isMagicFavored(Magic magic) {
-        return false;
-      }
-    }));
-  }
-
-  @Test
-  public void testUnfavoredHighLevelMartialArtsCost() throws Exception {
-    Element element = createElement();
-    GenericExperiencePointCosts costs = parser.parseTemplate(element);
-    assertEquals(15, costs.getCharmCosts(new DummyCharm("Charm"), new CostAnalyzer() {
-      @Override
-      public MartialArtsLevel getMartialArtsLevel(Magic magic) {
-        return MartialArtsLevel.Sidereal;
-      }
-
-      @Override
-      public boolean isMagicFavored(Magic magic) {
-        return false;
-      }
-    }));
-  }
-
-  @Test
-  public void testFavoredHighLevelMartialArtsCost() throws Exception {
-    Element element = createElement();
-    GenericExperiencePointCosts costs = parser.parseTemplate(element);
-    assertEquals(13, costs.getCharmCosts(new DummyCharm("Charm"), new CostAnalyzer() {
-      @Override
-      public MartialArtsLevel getMartialArtsLevel(Magic magic) {
-        return MartialArtsLevel.Sidereal;
-      }
-
-      @Override
-      public boolean isMagicFavored(Magic magic) {
-        return true;
-      }
-    }));
   }
 }
