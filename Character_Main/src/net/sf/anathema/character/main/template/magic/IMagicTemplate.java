@@ -7,6 +7,4 @@ public interface IMagicTemplate {
   boolean canBuyFromFreePicks(Magic magic);
 
   ISpellMagicTemplate getSpellMagic();
-
-  CharmTemplate getCharmTemplate();
 }

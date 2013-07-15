@@ -41,6 +41,6 @@ public class CharacterColoringStrategy implements CharmColoring {
   }
 
   private CharmsModel getCharmConfiguration() {
-    return model.getCharmConfiguration();
+    return model.getCharmModel();
   }
 }

@@ -15,7 +15,7 @@ public class CharacterSpecialCharmPresenter implements SpecialCharmViewPresenter
     this.charmGroupInformer = informer;
     this.charmModel = charmModel;
     this.list = specialCharmList;
-    VisibilityPredicate predicate = new VisibilityPredicate(charmModel.getCharmConfiguration(), informer);
+    VisibilityPredicate predicate = new VisibilityPredicate(charmModel.getCharmModel(), informer);
     list.setVisibilityPredicate(predicate);
   }
 
@@ -35,6 +35,6 @@ public class CharacterSpecialCharmPresenter implements SpecialCharmViewPresenter
   }
 
   private CharmsModel getCharmConfiguration() {
-    return charmModel.getCharmConfiguration();
+    return charmModel.getCharmModel();
   }
 }

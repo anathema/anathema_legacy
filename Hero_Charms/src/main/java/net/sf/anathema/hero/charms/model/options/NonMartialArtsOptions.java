@@ -1,7 +1,6 @@
 package net.sf.anathema.hero.charms.model.options;
 
 import net.sf.anathema.character.main.magic.cache.CharmProvider;
-import net.sf.anathema.hero.charms.display.presenter.CharmGroupArbitrator;
 import net.sf.anathema.character.main.magic.model.charm.Charm;
 import net.sf.anathema.character.main.magic.model.charm.CharmHasSameTypeAsCharacter;
 import net.sf.anathema.character.main.magic.model.charm.CharmIdMap;
@@ -11,6 +10,8 @@ import net.sf.anathema.character.main.magic.model.charmtree.CharmTree;
 import net.sf.anathema.character.main.magic.model.charmtree.ICharmTree;
 import net.sf.anathema.character.main.type.CharacterType;
 import net.sf.anathema.character.main.type.CharacterTypes;
+import net.sf.anathema.hero.charms.display.presenter.CharmGroupArbitrator;
+import net.sf.anathema.hero.charms.model.rules.CharmsRules;
 import net.sf.anathema.hero.concept.HeroConcept;
 import net.sf.anathema.hero.concept.HeroConceptFetcher;
 import net.sf.anathema.hero.model.Hero;
@@ -28,14 +29,16 @@ public class NonMartialArtsOptions implements CharmIdMap, CharmGroupArbitrator {
 
   private final CharacterTypes characterTypes;
   private CharmProvider charmProvider;
+  private CharmsRules charmsRules;
   private final CharacterTypeList availableTypes;
   private final Map<Identifier, ICharmTree> treesByType = new HashMap<>();
   private Hero hero;
 
-  public NonMartialArtsOptions(Hero hero, CharacterTypes characterTypes, CharmProvider charmProvider) {
+  public NonMartialArtsOptions(Hero hero, CharacterTypes characterTypes, CharmProvider charmProvider, CharmsRules charmsRules) {
     this.hero = hero;
     this.characterTypes = characterTypes;
     this.charmProvider = charmProvider;
+    this.charmsRules = charmsRules;
     this.availableTypes = new CharacterTypeList(charmProvider);
     availableTypes.collectAvailableTypes(getNativeCharacterType(), characterTypes);
     initCharmTreesForAvailableTypes();
@@ -83,7 +86,7 @@ public class NonMartialArtsOptions implements CharmIdMap, CharmGroupArbitrator {
 
   private boolean characterMayLearnAlienCharms() {
     HeroConcept concept = HeroConceptFetcher.fetch(hero);
-    return hero.getTemplate().getMagicTemplate().getCharmTemplate().isAllowedAlienCharms(concept.getCaste().getType());
+    return charmsRules.isAllowedAlienCharms(concept.getCaste().getType());
   }
 
   public CharacterType getNativeCharacterType() {

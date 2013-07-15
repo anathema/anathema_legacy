@@ -29,7 +29,7 @@ public class CharacterCharmTreePresenter extends AbstractCascadePresenter {
                                      TreePresentationProperties presentationProperties, CharmDisplayPropertiesMap displayPropertiesMap) {
     super(resources);
     this.model = charmModel;
-    CharmsModel charmConfiguration = model.getCharmConfiguration();
+    CharmsModel charmConfiguration = model.getCharmModel();
     CharacterCharmTreeViewProperties viewProperties =
             new CharacterCharmTreeViewProperties(resources, charmConfiguration, model.getMagicDescriptionProvider());
     DefaultNodeProperties nodeProperties = new DefaultNodeProperties(resources, viewProperties, viewProperties);

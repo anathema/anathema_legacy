@@ -17,7 +17,7 @@ public class CharacterCharmTypes extends AbstractCharmTypes {
   @Override
   protected List<Identifier> getCurrentCharacterTypes() {
     boolean alienCharms = model.isAllowedAlienCharms();
-    CharacterType[] characterTypes = model.getCharmConfiguration().getCharacterTypes(alienCharms);
+    CharacterType[] characterTypes = model.getCharmModel().getCharacterTypes(alienCharms);
     return Lists.<Identifier>newArrayList(characterTypes);
   }
 }

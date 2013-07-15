@@ -110,7 +110,7 @@ public class CharmsModelImpl implements CharmsModel {
     this.hero = hero;
     this.provider = environment.getDataSet(CharmCache.class).getCharmProvider();
     this.martialArtsOptions = new MartialArtsOptions(provider, charmsRules);
-    this.nonMartialArtsOptions = new NonMartialArtsOptions(hero, environment.getCharacterTypes(), provider);
+    this.nonMartialArtsOptions = new NonMartialArtsOptions(hero, environment.getCharacterTypes(), provider, charmsRules);
     this.manager = new SpecialCharmManager(specialist, hero, this);
     this.martialArtsGroups = createGroups(martialArtsOptions.getAllCharmGroups());
     initNonMartialArtsGroups();
@@ -402,7 +402,7 @@ public class CharmsModelImpl implements CharmsModel {
   public final boolean isLearnable(Charm charm) {
     if (isAlienCharm(charm)) {
       CasteType casteType = HeroConceptFetcher.fetch(hero).getCaste().getType();
-      if (!(hero.getTemplate().getMagicTemplate().getCharmTemplate().isAllowedAlienCharms(casteType))) {
+      if (!(charmsRules.isAllowedAlienCharms(casteType))) {
         return false;
       }
       if (charm.hasAttribute(CharmAttributeList.NATIVE)) {
@@ -550,5 +550,11 @@ public class CharmsModelImpl implements CharmsModel {
 
   public MartialArtsLevel getStandardMartialArtsLevel() {
     return charmsRules.getMartialArtsRules().getStandardLevel();
+  }
+
+  @Override
+  public boolean isAlienCharmAllowed() {
+    CasteType caste = HeroConceptFetcher.fetch(hero).getCaste().getType();
+    return charmsRules.isAllowedAlienCharms(caste);
   }
 }

@@ -51,4 +51,6 @@ public interface CharmsModel extends HeroModel, IExtendedCharmLearnableArbitrato
   MagicCreationCostEvaluator getMagicCostEvaluator();
 
   MartialArtsLevel getStandardMartialArtsLevel();
+
+  boolean isAlienCharmAllowed();
 }

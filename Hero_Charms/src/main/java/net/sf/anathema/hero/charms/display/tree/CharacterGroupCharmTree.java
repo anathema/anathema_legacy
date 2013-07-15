@@ -16,6 +16,6 @@ public final class CharacterGroupCharmTree implements GroupCharmTree {
 
   @Override
   public ICharmGroup[] getAllCharmGroups() {
-    return model.getCharmConfiguration().getCharmGroups(cascadeType);
+    return model.getCharmModel().getCharmGroups(cascadeType);
   }
 }

@@ -23,7 +23,7 @@ public class CharacterAlienCharmPresenter implements AlienCharmPresenter {
       @Override
       public void changeOccurred() {
         boolean alienCharms = model.isAllowedAlienCharms();
-        CharmsModel charmConfiguration = model.getCharmConfiguration();
+        CharmsModel charmConfiguration = model.getCharmModel();
         if (!alienCharms) {
           charmConfiguration.unlearnAllAlienCharms();
         }

@@ -26,7 +26,7 @@ public class LearnInteractionPresenter implements CharmInteractionPresenter {
 
   @Override
   public void initPresentation() {
-    CharmsModel charms = model.getCharmConfiguration();
+    CharmsModel charms = model.getCharmModel();
     view.addCharmInteractionListener(new NodeInteractionListener() {
       @Override
       public void nodeSelected(String charmId) {

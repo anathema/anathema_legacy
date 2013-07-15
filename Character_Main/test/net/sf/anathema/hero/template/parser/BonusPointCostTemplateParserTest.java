@@ -11,9 +11,7 @@ import org.dom4j.Element;
 import org.junit.Before;
 import org.junit.Test;
 
-import static org.hamcrest.CoreMatchers.is;
 import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertThat;
 
 public class BonusPointCostTemplateParserTest extends BasicTemplateParsingTestCase {
 
@@ -93,54 +91,6 @@ public class BonusPointCostTemplateParserTest extends BasicTemplateParsingTestCa
     GenericBonusPointCosts costs = parseXmlToCost(xml);
     assertEquals(3, costs.getVirtueCosts().getRatingCosts(1));
     assertEquals(4, costs.getMaximumFreeVirtueRank());
-  }
-
-  @Test
-  public void parsesGeneralCharmCosts() throws Exception {
-    String xml = "<root><charms>" +
-                 "<generalCharms><fixedCost cost=\"7\" /></generalCharms>" +
-                 "<favoredCharms><fixedCost cost=\"5\" /></favoredCharms>" +
-                 "<generalHighLevelMartialArtsCharms><fixedCost cost=\"10\"/></generalHighLevelMartialArtsCharms>" +
-                 "<favoredHighLevelMartialArtsCharms><fixedCost cost=\"8\"/></favoredHighLevelMartialArtsCharms>" +
-                 "</charms></root>";
-    GenericBonusPointCosts costs = parseXmlToCost(xml);
-    assertThat(7, is(costs.charmCosts.general.charmCost));
-  }
-
-  @Test
-  public void parsesFavoredCharmCosts() throws Exception {
-    String xml = "<root><charms>" +
-                 "<generalCharms><fixedCost cost=\"7\" /></generalCharms>" +
-                 "<favoredCharms><fixedCost cost=\"5\" /></favoredCharms>" +
-                 "<generalHighLevelMartialArtsCharms><fixedCost cost=\"10\"/></generalHighLevelMartialArtsCharms>" +
-                 "<favoredHighLevelMartialArtsCharms><fixedCost cost=\"8\"/></favoredHighLevelMartialArtsCharms>" +
-                 "</charms></root>";
-    GenericBonusPointCosts costs = parseXmlToCost(xml);
-    assertThat(5, is(costs.charmCosts.favored.charmCost));
-  }
-
-  @Test
-  public void parsesGeneralHighMartialArtsCosts() throws Exception {
-    String xml = "<root><charms>" +
-                 "<generalCharms><fixedCost cost=\"7\" /></generalCharms>" +
-                 "<favoredCharms><fixedCost cost=\"5\" /></favoredCharms>" +
-                 "<generalHighLevelMartialArtsCharms><fixedCost cost=\"10\"/></generalHighLevelMartialArtsCharms>" +
-                 "<favoredHighLevelMartialArtsCharms><fixedCost cost=\"8\"/></favoredHighLevelMartialArtsCharms>" +
-                 "</charms></root>";
-    GenericBonusPointCosts costs = parseXmlToCost(xml);
-    assertEquals(10, costs.getMagicCosts().general.highLevelMartialArtsCost);
-  }
-
-  @Test
-  public void parsesFavoredHighMartialArtsCosts() throws Exception {
-    String xml = "<root><charms>" +
-                 "<generalCharms><fixedCost cost=\"7\" /></generalCharms>" +
-                 "<favoredCharms><fixedCost cost=\"5\" /></favoredCharms>" +
-                 "<generalHighLevelMartialArtsCharms><fixedCost cost=\"10\"/></generalHighLevelMartialArtsCharms>" +
-                 "<favoredHighLevelMartialArtsCharms><fixedCost cost=\"8\"/></favoredHighLevelMartialArtsCharms>" +
-                 "</charms></root>";
-    GenericBonusPointCosts costs = parseXmlToCost(xml);
-    assertEquals(8, costs.getMagicCosts().favored.highLevelMartialArtsCost);
   }
 
   private GenericBonusPointCosts parseXmlToCost(String xml) throws AnathemaException {

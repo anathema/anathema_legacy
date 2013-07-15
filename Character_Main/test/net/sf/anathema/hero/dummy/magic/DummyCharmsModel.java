@@ -149,6 +149,11 @@ public class DummyCharmsModel implements CharmsModel {
     return MartialArtsLevel.Mortal;
   }
 
+  @Override
+  public boolean isAlienCharmAllowed() {
+    return false;
+  }
+
   public void setGroups(ILearningCharmGroup... groups) {
     this.groups = groups;
   }

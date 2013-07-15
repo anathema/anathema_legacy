@@ -12,6 +12,6 @@ public class CharacterGroupCollection implements CharmGroupCollection {
 
   @Override
   public ICharmGroup[] getCharmGroups() {
-    return model.getCharmConfiguration().getAllGroups();
+    return model.getCharmModel().getAllGroups();
   }
 }

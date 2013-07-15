@@ -1,13 +1,14 @@
 package net.sf.anathema.hero.charms.display;
 
 import net.sf.anathema.character.main.magic.description.MagicDescriptionProvider;
-import net.sf.anathema.hero.charms.display.presenter.CharmDescriptionProviderExtractor;
-import net.sf.anathema.hero.charms.display.view.CharmView;
 import net.sf.anathema.character.main.type.CharacterType;
 import net.sf.anathema.character.main.view.SectionView;
 import net.sf.anathema.framework.IApplicationModel;
-import net.sf.anathema.hero.charms.display.tree.CharacterCharmTreePresenter;
 import net.sf.anathema.hero.charms.display.model.CharmDisplayModel;
+import net.sf.anathema.hero.charms.display.presenter.CharmDescriptionProviderExtractor;
+import net.sf.anathema.hero.charms.display.tree.CharacterCharmTreePresenter;
+import net.sf.anathema.hero.charms.display.view.CharmView;
+import net.sf.anathema.hero.charms.model.CharmsModelFetcher;
 import net.sf.anathema.hero.display.presenter.HeroModelInitializer;
 import net.sf.anathema.hero.display.presenter.RegisteredInitializer;
 import net.sf.anathema.hero.model.Hero;
@@ -28,7 +29,7 @@ public class CharmInitializer implements HeroModelInitializer {
 
   @Override
   public void initialize(SectionView sectionView, Hero hero, Resources resources) {
-    boolean canLearnCharms = hero.getTemplate().getMagicTemplate().getCharmTemplate().canLearnCharms();
+    boolean canLearnCharms = CharmsModelFetcher.fetch(hero) != null;
     if (!canLearnCharms) {
       return;
     }

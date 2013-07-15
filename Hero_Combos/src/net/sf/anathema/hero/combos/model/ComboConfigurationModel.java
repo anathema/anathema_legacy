@@ -5,8 +5,6 @@ import net.sf.anathema.character.main.magic.model.charm.Charm;
 import net.sf.anathema.hero.charms.model.CharmsModel;
 import net.sf.anathema.hero.charms.model.CharmsModelFetcher;
 import net.sf.anathema.hero.combos.display.presenter.CombosModel;
-import net.sf.anathema.hero.concept.CasteType;
-import net.sf.anathema.hero.concept.HeroConceptFetcher;
 import net.sf.anathema.hero.experience.ExperienceModelFetcher;
 import net.sf.anathema.hero.model.Hero;
 
@@ -24,8 +22,7 @@ public class ComboConfigurationModel {
   }
 
   public boolean isAlienCharmsAllowed() {
-    CasteType caste = HeroConceptFetcher.fetch(hero).getCaste().getType();
-    return hero.getTemplate().getMagicTemplate().getCharmTemplate().isAllowedAlienCharms(caste);
+    return getCharmConfiguration().isAlienCharmAllowed();
   }
 
   public CharmsModel getCharmConfiguration() {

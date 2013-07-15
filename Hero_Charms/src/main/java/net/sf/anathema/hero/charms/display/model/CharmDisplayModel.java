@@ -3,7 +3,6 @@ package net.sf.anathema.hero.charms.display.model;
 import net.sf.anathema.character.main.magic.description.MagicDescriptionProvider;
 import net.sf.anathema.character.main.magic.model.charm.Charm;
 import net.sf.anathema.character.main.magic.model.charms.ILearningCharmGroup;
-import net.sf.anathema.character.main.template.magic.CharmTemplate;
 import net.sf.anathema.hero.charms.model.CharmsModel;
 import net.sf.anathema.hero.charms.model.CharmsModelFetcher;
 import net.sf.anathema.hero.concept.CasteSelection;
@@ -21,15 +20,14 @@ public class CharmDisplayModel {
   }
 
   public boolean isAllowedAlienCharms() {
-    CharmTemplate charmTemplate = hero.getTemplate().getMagicTemplate().getCharmTemplate();
-    return charmTemplate.isAllowedAlienCharms(getCaste().getType());
+    return getCharmModel().isAlienCharmAllowed();
   }
 
   public void addCasteChangeListener(ChangeListener listener) {
     getCaste().addChangeListener(listener);
   }
 
-  public CharmsModel getCharmConfiguration() {
+  public CharmsModel getCharmModel() {
     return CharmsModelFetcher.fetch(hero);
   }
 
@@ -38,13 +36,13 @@ public class CharmDisplayModel {
   }
 
   public void toggleLearned(String charmId) {
-    CharmsModel charms = getCharmConfiguration();
+    CharmsModel charms = getCharmModel();
     ILearningCharmGroup charmGroup = getCharmGroupByCharmId(charmId);
     charmGroup.toggleLearned(charms.getCharmById(charmId));
   }
 
   private ILearningCharmGroup getCharmGroupByCharmId(String charmId) {
-    CharmsModel charms = getCharmConfiguration();
+    CharmsModel charms = getCharmModel();
     Charm charm = charms.getCharmById(charmId);
     return charms.getGroup(charm);
   }

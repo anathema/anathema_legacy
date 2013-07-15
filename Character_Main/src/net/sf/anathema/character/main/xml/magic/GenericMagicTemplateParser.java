@@ -2,39 +2,25 @@ package net.sf.anathema.character.main.xml.magic;
 
 import net.sf.anathema.character.main.magic.model.spells.CircleType;
 import net.sf.anathema.character.main.template.HeroTemplate;
-import net.sf.anathema.character.main.template.magic.CharmTemplateImpl;
 import net.sf.anathema.character.main.template.magic.CustomizableFreePicksPredicate;
-import net.sf.anathema.character.main.template.magic.MartialArtsRulesImpl;
 import net.sf.anathema.character.main.template.magic.ISpellMagicTemplate;
-import net.sf.anathema.character.main.template.magic.MartialArtsRules;
 import net.sf.anathema.character.main.template.magic.SpellMagicTemplate;
 import net.sf.anathema.character.main.xml.core.AbstractXmlTemplateParser;
 import net.sf.anathema.character.main.xml.registry.IXmlTemplateRegistry;
-import net.sf.anathema.hero.magic.model.martial.MartialArtsLevel;
 import net.sf.anathema.lib.exception.PersistenceException;
 import net.sf.anathema.lib.xml.ElementUtilities;
 import org.dom4j.Element;
 
 import java.lang.reflect.Constructor;
 import java.lang.reflect.InvocationTargetException;
-import java.util.List;
 
 public class GenericMagicTemplateParser extends AbstractXmlTemplateParser<GenericMagicTemplate> {
 
   private static final String TAG_FREE_PICKS_PREDICATE = "freePicksPredicate";
-  private static final String ATTRIB_TYPE = "type";
-  private static final String TAG_CHARM_TEMPLATE = "charmTemplate";
-  private static final String ATTRIB_MARTIAL_ARTS_LEVEL = "level";
-  private static final String ATTRIB_HIGH_LEVEL_MARTIAL_ARTS = "highLevel";
-  private static final String ATTRIB_CHARM_TYPE = "charmType";
   private static final Object VALUE_NONE = "None";
   private static final String TAG_SPELL_TEMPLATE = "spellTemplate";
   private static final String ATTRIB_MAXIMUM_SORCERY_CIRCLE = "maximumSorceryCircle";
   private static final String ATTRIB_MAXIMUM_NECROMANCY_CIRCLE = "maximumNecromancyCircle";
-  private static final String TAG_CASTE = "caste";
-  private static final String TAG_ALIEN_CHARMS = "alienCharms";
-  private static final String TAG_MARTIAL_ARTS = "martialArts";
-  private static final String ATTRIB_RULES_CLASS = "rulesClass";
   private static final String ATTRIB_DEFAULT_RESPONSE = "defaultResponse";
   private static final String TAG_ID_EXCEPTION = "idException";
   private static final String ATTRIB_ID = "id";
@@ -56,7 +42,6 @@ public class GenericMagicTemplateParser extends AbstractXmlTemplateParser<Generi
   public GenericMagicTemplate parseTemplate(Element element) throws PersistenceException {
     GenericMagicTemplate basicTemplate = getBasicTemplate(element);
     setFreePicksPredicate(basicTemplate, element);
-    setCharmTemplate(basicTemplate, element);
     setSpellTemplate(basicTemplate, element);
     return basicTemplate;
   }
@@ -97,53 +82,6 @@ public class GenericMagicTemplateParser extends AbstractXmlTemplateParser<Generi
       e.printStackTrace();
     }
     basicTemplate.setSpellTemplate(template);
-  }
-
-  private void setCharmTemplate(GenericMagicTemplate basicTemplate, Element element) throws PersistenceException {
-    Element charmTemplateElement = element.element(TAG_CHARM_TEMPLATE);
-    if (charmTemplateElement == null) {
-      return;
-    }
-    String charmType = ElementUtilities.getRequiredAttrib(charmTemplateElement, ATTRIB_CHARM_TYPE);
-    boolean canLearnCharms = !charmType.equals(VALUE_NONE);
-    CharmTemplateImpl charmTemplate = new CharmTemplateImpl(createMartialArtsRules(charmTemplateElement), canLearnCharms);
-    setAlienAllowedCastes(charmTemplate, charmTemplateElement);
-    basicTemplate.setCharmTemplate(charmTemplate);
-  }
-
-  private MartialArtsRules createMartialArtsRules(Element parent) throws PersistenceException {
-    Element martialArtsElement = ElementUtilities.getRequiredElement(parent, TAG_MARTIAL_ARTS);
-    MartialArtsLevel level = getMartialArtsLevel(martialArtsElement);
-    String rulesClassName = martialArtsElement.attributeValue(ATTRIB_RULES_CLASS);
-    MartialArtsRules rules;
-    if (rulesClassName == null) {
-      rules = new MartialArtsRulesImpl(level);
-    } else {
-      try {
-        rules = (MartialArtsRules) Class.forName(rulesClassName).newInstance();
-      } catch (Exception e) {
-        throw new PersistenceException(e);
-      }
-    }
-    boolean highLevelAtCreation = ElementUtilities.getBooleanAttribute(martialArtsElement, ATTRIB_HIGH_LEVEL_MARTIAL_ARTS, false);
-    rules.setHighLevelAtCreation(highLevelAtCreation);
-    return rules;
-  }
-
-  private MartialArtsLevel getMartialArtsLevel(Element martialArtsElement) throws PersistenceException {
-    String martialArtsLevelId = ElementUtilities.getRequiredAttrib(martialArtsElement, ATTRIB_MARTIAL_ARTS_LEVEL);
-    return MartialArtsLevel.valueOf(martialArtsLevelId);
-  }
-
-  private void setAlienAllowedCastes(CharmTemplateImpl charmTemplate, Element charmTemplateElement) throws PersistenceException {
-    Element alienCharmsElement = charmTemplateElement.element(TAG_ALIEN_CHARMS);
-    if (alienCharmsElement == null) {
-      return;
-    }
-    List<Element> casteElements = ElementUtilities.elements(alienCharmsElement, TAG_CASTE);
-    for (Element casteElement : casteElements) {
-      charmTemplate.setCasteAlienAllowed(ElementUtilities.getRequiredAttrib(casteElement, ATTRIB_TYPE));
-    }
   }
 
   private void setFreePicksPredicate(GenericMagicTemplate basicTemplate, Element element) {
