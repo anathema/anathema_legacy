@@ -1,31 +1,11 @@
 package net.sf.anathema.hero.dummy;
 
-import net.sf.anathema.character.main.magic.model.charm.Charm;
 import net.sf.anathema.character.main.template.creation.BonusPointCosts;
 import net.sf.anathema.character.main.template.experience.CurrentRatingCosts;
 import net.sf.anathema.character.main.template.points.FixedValueRatingCosts;
 import net.sf.anathema.character.main.traits.ValuedTraitType;
-import net.sf.anathema.character.main.xml.creation.template.MagicCreationCostsTto;
-import net.sf.anathema.hero.advance.CostAnalyzer;
-import net.sf.anathema.hero.magic.model.martial.MartialArtsLevel;
 
 public class DummyBonusPointCosts implements BonusPointCosts {
-
-  public MagicCreationCostsTto magicCostsTto = new MagicCreationCostsTto();
-
-  private int getCharmCosts(Charm charm, CostAnalyzer costMapping) {
-    return getCharmCosts(costMapping.isMagicFavored(charm), costMapping.getMartialArtsLevel(charm));
-  }
-
-  protected int getCharmCosts(boolean favored, MartialArtsLevel martialArtsLevel) {
-    if (martialArtsLevel == null) {
-      return favored ? 4 : 5;
-    }
-    if (martialArtsLevel.compareTo(MartialArtsLevel.Sidereal) < 0) {
-      return favored ? 4 : 5;
-    }
-    throw new IllegalArgumentException("Sidereal Martial Arts shan't be learned at Hero Creation!");
-  }
 
   @Override
   public CurrentRatingCosts getAbilityCosts(boolean favored) {
@@ -33,11 +13,6 @@ public class DummyBonusPointCosts implements BonusPointCosts {
       return new FixedValueRatingCosts(1);
     }
     return new FixedValueRatingCosts(2);
-  }
-
-  @Override
-  public MagicCreationCostsTto getMagicCosts() {
-    return magicCostsTto;
   }
 
   @Override

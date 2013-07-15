@@ -4,7 +4,6 @@ import net.sf.anathema.character.main.template.creation.BonusPointCosts;
 import net.sf.anathema.character.main.template.experience.CurrentRatingCosts;
 import net.sf.anathema.character.main.template.points.FixedValueRatingCosts;
 import net.sf.anathema.character.main.traits.ValuedTraitType;
-import net.sf.anathema.character.main.xml.creation.template.MagicCreationCostsTto;
 import net.sf.anathema.lib.lang.ReflectionEqualsObject;
 import net.sf.anathema.lib.lang.clone.ICloneable;
 import org.apache.commons.lang3.SerializationUtils;
@@ -24,12 +23,6 @@ public class GenericBonusPointCosts extends ReflectionEqualsObject implements Bo
   private int favoredAttributeCost = 0;
   private int maximumFreeVirtueRank = 3;
   private int maximumFreeAbilityRank = 3;
-  public MagicCreationCostsTto charmCosts;
-
-  @Override
-  public MagicCreationCostsTto getMagicCosts() {
-    return charmCosts;
-  }
 
   @Override
   public int getAttributeCosts(ValuedTraitType trait) {
@@ -111,10 +104,6 @@ public class GenericBonusPointCosts extends ReflectionEqualsObject implements Bo
 
   public void setEssenceCosts(CurrentRatingCosts costs) {
     this.essenceCost = costs;
-  }
-
-  public void setCharmCosts(MagicCreationCostsTto charmCosts) {
-    this.charmCosts = charmCosts;
   }
 
   public void setAbilityCosts(int generalCost, int favoredCost) {
