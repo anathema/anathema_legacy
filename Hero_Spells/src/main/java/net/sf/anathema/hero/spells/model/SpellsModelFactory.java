@@ -2,6 +2,7 @@ package net.sf.anathema.hero.spells.model;
 
 import net.sf.anathema.hero.abilities.model.AbilitiesModel;
 import net.sf.anathema.hero.attributes.model.AttributeModel;
+import net.sf.anathema.hero.charms.advance.MagicPointsModel;
 import net.sf.anathema.hero.charms.model.CharmsModel;
 import net.sf.anathema.hero.concept.HeroConcept;
 import net.sf.anathema.hero.experience.ExperienceModel;
@@ -18,7 +19,7 @@ public class SpellsModelFactory extends SimpleModelTreeEntry implements HeroMode
 
   public SpellsModelFactory() {
     super(SpellsModel.ID, CharmsModel.ID, AttributeModel.ID, AbilitiesModel.ID, SpiritualTraitModel.ID, TraitModel.ID, ExperienceModel.ID,
-            HeroConcept.ID, HealthModel.ID);
+            HeroConcept.ID, HealthModel.ID, MagicPointsModel.ID);
   }
 
   @Override
