@@ -6,7 +6,7 @@ import net.sf.anathema.character.main.library.trait.Trait;
 import net.sf.anathema.character.main.library.trait.favorable.IncrementChecker;
 import net.sf.anathema.character.main.magic.model.charm.Charm;
 import net.sf.anathema.character.main.magic.model.charm.CharmSpecialist;
-import net.sf.anathema.character.main.magic.model.charm.CharmSpecialistImpl;
+import net.sf.anathema.hero.charms.display.special.CharmSpecialistImpl;
 import net.sf.anathema.character.main.magic.model.charm.PrerequisiteModifyingCharms;
 import net.sf.anathema.character.main.magic.model.charm.special.IMultiLearnableCharm;
 import net.sf.anathema.character.main.magic.model.charm.special.ISpecialCharmLearnListener;

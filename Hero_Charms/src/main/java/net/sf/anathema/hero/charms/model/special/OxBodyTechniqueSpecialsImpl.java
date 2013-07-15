@@ -1,13 +1,16 @@
-package net.sf.anathema.character.main.magic.model.charm.special;
+package net.sf.anathema.hero.charms.model.special;
 
 import net.sf.anathema.character.main.library.trait.Trait;
 import net.sf.anathema.character.main.library.trait.favorable.IncrementChecker;
 import net.sf.anathema.character.main.magic.model.charm.Charm;
 import net.sf.anathema.character.main.magic.model.charm.OxBodyCategory;
+import net.sf.anathema.character.main.magic.model.charm.special.IOxBodyTechniqueCharm;
+import net.sf.anathema.character.main.magic.model.charm.special.ISpecialCharmLearnListener;
+import net.sf.anathema.character.main.magic.model.charm.special.OxBodyTechniqueSpecials;
 import net.sf.anathema.character.main.traits.TraitType;
-import net.sf.anathema.health.HealthLevelType;
 import net.sf.anathema.hero.health.IHealthLevelProvider;
 import net.sf.anathema.hero.health.OxBodyTechniqueArbitrator;
+import net.sf.anathema.health.HealthLevelType;
 import net.sf.anathema.hero.model.Hero;
 import net.sf.anathema.hero.traits.TraitModel;
 import net.sf.anathema.hero.traits.TraitModelFetcher;
@@ -18,7 +21,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Set;
 
-public class OxBodyTechniqueConfiguration implements OxBodyTechniqueSpecials {
+public class OxBodyTechniqueSpecialsImpl implements OxBodyTechniqueSpecials {
 
   private final Announcer<ISpecialCharmLearnListener> control = Announcer.to(ISpecialCharmLearnListener.class);
   private final IncrementChecker incrementChecker;
@@ -26,8 +29,8 @@ public class OxBodyTechniqueConfiguration implements OxBodyTechniqueSpecials {
   private final Charm oxBodyTechnique;
   private final IHealthLevelProvider healthLevelProvider;
 
-  public OxBodyTechniqueConfiguration(final Hero hero, Charm oxBodyTechnique, final TraitType[] relevantTraits,
-                                      final OxBodyTechniqueArbitrator arbitrator, IOxBodyTechniqueCharm properties) {
+  public OxBodyTechniqueSpecialsImpl(final Hero hero, Charm oxBodyTechnique, final TraitType[] relevantTraits,
+                                     final OxBodyTechniqueArbitrator arbitrator, IOxBodyTechniqueCharm properties) {
     this.oxBodyTechnique = oxBodyTechnique;
     incrementChecker = new IncrementChecker() {
       @Override
