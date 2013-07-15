@@ -2,7 +2,6 @@ package net.sf.anathema.hero.charms.display.view;
 
 import net.miginfocom.layout.CC;
 import net.miginfocom.swing.MigLayout;
-import net.sf.anathema.hero.charms.display.presenter.ICharmGroupChangeListener;
 import net.sf.anathema.lib.control.ObjectValueListener;
 import net.sf.anathema.lib.gui.AgnosticUIConfiguration;
 import net.sf.anathema.lib.gui.ui.ConfigurableListCellRenderer;

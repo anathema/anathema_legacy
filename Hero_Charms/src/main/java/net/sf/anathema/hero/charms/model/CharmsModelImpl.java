@@ -26,7 +26,6 @@ import net.sf.anathema.character.main.magic.sheet.content.IMagicStats;
 import net.sf.anathema.character.main.template.HeroTemplate;
 import net.sf.anathema.character.main.type.CharacterType;
 import net.sf.anathema.hero.charms.advance.creation.MagicCreationCostEvaluator;
-import net.sf.anathema.hero.charms.display.presenter.CharacterChangeCharmListener;
 import net.sf.anathema.hero.charms.model.context.CreationCharmLearnStrategy;
 import net.sf.anathema.hero.charms.model.context.ExperiencedCharmLearnStrategy;
 import net.sf.anathema.hero.charms.model.context.ProxyCharmLearnStrategy;

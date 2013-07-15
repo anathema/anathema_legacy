@@ -1,4 +1,4 @@
-package net.sf.anathema.hero.charms.display.presenter;
+package net.sf.anathema.hero.charms.display.view;
 
 public interface ICharmGroupChangeListener {
 

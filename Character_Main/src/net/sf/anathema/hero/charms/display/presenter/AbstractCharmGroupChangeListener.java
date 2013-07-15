@@ -7,6 +7,7 @@ import net.sf.anathema.character.main.type.CharacterType;
 import net.sf.anathema.graph.nodes.IIdentifiedRegularNode;
 import net.sf.anathema.graph.nodes.IRegularNode;
 import net.sf.anathema.hero.charms.display.CharmDisplayPropertiesMap;
+import net.sf.anathema.hero.charms.display.view.ICharmGroupChangeListener;
 import net.sf.anathema.lib.util.Identifier;
 import net.sf.anathema.platform.tree.display.TreeRenderer;
 import net.sf.anathema.platform.tree.document.visualizer.TreePresentationProperties;
