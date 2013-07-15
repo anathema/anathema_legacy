@@ -1,4 +1,4 @@
-package net.sf.anathema.hero.charms.model.special;
+package net.sf.anathema.hero.charms.model.special.oxbody;
 
 import net.sf.anathema.character.main.library.trait.Trait;
 import net.sf.anathema.character.main.library.trait.favorable.IncrementChecker;
@@ -9,7 +9,6 @@ import net.sf.anathema.character.main.magic.model.charm.special.ISpecialCharmLea
 import net.sf.anathema.character.main.magic.model.charm.special.OxBodyTechniqueSpecials;
 import net.sf.anathema.character.main.traits.TraitType;
 import net.sf.anathema.hero.health.IHealthLevelProvider;
-import net.sf.anathema.hero.health.OxBodyTechniqueArbitrator;
 import net.sf.anathema.health.HealthLevelType;
 import net.sf.anathema.hero.model.Hero;
 import net.sf.anathema.hero.traits.TraitModel;

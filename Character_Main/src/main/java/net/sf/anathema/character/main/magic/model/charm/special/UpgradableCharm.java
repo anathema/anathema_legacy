@@ -35,7 +35,7 @@ public class UpgradableCharm extends MultipleEffectCharm implements IUpgradableC
   }
 
   @Override
-  public SubEffects buildSubeffects(CharmSpecialist specialist, ICharmLearnableArbitrator arbitrator, Charm charm) {
+  public SubEffects buildSubEffects(CharmSpecialist specialist, ICharmLearnableArbitrator arbitrator, Charm charm) {
     UpgradableSubEffects subEffects = new UpgradableSubEffects();
     for (String id : effectIds) {
       Integer bpCost = bpCosts.get(id);

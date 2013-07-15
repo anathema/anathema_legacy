@@ -1,4 +1,4 @@
-package net.sf.anathema.hero.charms.model.special;
+package net.sf.anathema.hero.charms.model.special.traitcap;
 
 import net.sf.anathema.character.main.library.trait.DefaultTrait;
 import net.sf.anathema.character.main.magic.model.charm.Charm;

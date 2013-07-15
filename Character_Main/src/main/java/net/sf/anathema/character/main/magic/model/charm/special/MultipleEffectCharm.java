@@ -30,7 +30,7 @@ public class MultipleEffectCharm implements IMultipleEffectCharm {
   }
 
   @Override
-  public SubEffects buildSubeffects(CharmSpecialist specialist, ICharmLearnableArbitrator arbitrator, Charm charm) {
+  public SubEffects buildSubEffects(CharmSpecialist specialist, ICharmLearnableArbitrator arbitrator, Charm charm) {
     List<SubEffect> effectList = new ArrayList<>();
     for (String id : effectIds) {
       effectList.add(new SubEffectImpl(id, specialist.getExperience(), buildLearnCondition(arbitrator, charm)));

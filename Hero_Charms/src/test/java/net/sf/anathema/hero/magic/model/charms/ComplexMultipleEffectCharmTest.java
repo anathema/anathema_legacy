@@ -24,14 +24,14 @@ public class ComplexMultipleEffectCharmTest {
 
   @Test
   public void instantiatesSubeffects() throws Exception {
-    SubEffect[] subeffects = charmWithThreeEffects.buildSubeffects(specialist, arbitrator, baseCharm).getEffects();
+    SubEffect[] subeffects = charmWithThreeEffects.buildSubEffects(specialist, arbitrator, baseCharm).getEffects();
     assertThat(subeffects.length, is(3));
   }
 
   @Test
   public void instantiatesSubeffectsOnlyOnce() throws Exception {
-    charmWithThreeEffects.buildSubeffects(specialist, arbitrator, baseCharm);
-    SubEffect[] subeffectsAgain = charmWithThreeEffects.buildSubeffects(specialist, arbitrator, baseCharm).getEffects();
+    charmWithThreeEffects.buildSubEffects(specialist, arbitrator, baseCharm);
+    SubEffect[] subeffectsAgain = charmWithThreeEffects.buildSubEffects(specialist, arbitrator, baseCharm).getEffects();
     assertThat(subeffectsAgain.length, is(3));
   }
 }

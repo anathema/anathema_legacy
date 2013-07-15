@@ -1,4 +1,4 @@
-package net.sf.anathema.hero.charms.model.special;
+package net.sf.anathema.hero.charms.model.special.subeffects;
 
 import net.sf.anathema.character.main.magic.model.charm.Charm;
 import net.sf.anathema.character.main.magic.model.charm.CharmSpecialist;

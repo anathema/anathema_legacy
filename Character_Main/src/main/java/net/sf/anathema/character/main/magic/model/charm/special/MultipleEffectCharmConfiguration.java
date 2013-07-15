@@ -14,7 +14,7 @@ public class MultipleEffectCharmConfiguration implements MultipleEffectCharmSpec
   public MultipleEffectCharmConfiguration(CharmSpecialist specialist, Charm charm, IMultipleEffectCharm visited,
                                           ICharmLearnableArbitrator arbitrator) {
     this.charm = charm;
-    this.subeffects = visited.buildSubeffects(specialist, arbitrator, charm);
+    this.subeffects = visited.buildSubEffects(specialist, arbitrator, charm);
     for (SubEffect subeffect : subeffects) {
       subeffect.addChangeListener(new ChangeListener() {
         @Override

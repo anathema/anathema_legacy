@@ -13,7 +13,7 @@ import net.sf.anathema.character.main.traits.context.CreationTraitValueStrategy;
 import net.sf.anathema.character.main.traits.context.ExperiencedTraitValueStrategy;
 import net.sf.anathema.character.main.traits.context.ProxyTraitValueStrategy;
 import net.sf.anathema.hero.charms.model.CharmsModel;
-import net.sf.anathema.hero.charms.model.special.MultiLearnableCharmConfiguration;
+import net.sf.anathema.hero.charms.model.special.multilearn.MultiLearnableCharmConfiguration;
 import org.junit.Before;
 import org.junit.Test;
 

@@ -21,9 +21,14 @@ import net.sf.anathema.character.main.magic.model.charm.special.MultipleEffectCh
 import net.sf.anathema.character.main.traits.TraitType;
 import net.sf.anathema.hero.charms.display.special.CharmSpecialistImpl;
 import net.sf.anathema.hero.charms.model.CharmsModel;
+import net.sf.anathema.hero.charms.model.special.multilearn.MultiLearnableCharmConfiguration;
+import net.sf.anathema.hero.charms.model.special.oxbody.OxBodyTechniqueSpecialsImpl;
+import net.sf.anathema.hero.charms.model.special.subeffects.SubEffectCharmSpecialsImpl;
+import net.sf.anathema.hero.charms.model.special.traitcap.TraitCapModifyingCharmConfiguration;
+import net.sf.anathema.hero.charms.model.special.upgradable.UpgradableCharmConfiguration;
 import net.sf.anathema.hero.health.HealthModel;
 import net.sf.anathema.hero.health.IPainToleranceProvider;
-import net.sf.anathema.hero.health.OxBodyTechniqueArbitratorImpl;
+import net.sf.anathema.hero.charms.model.special.oxbody.OxBodyTechniqueArbitratorImpl;
 import net.sf.anathema.hero.model.Hero;
 import net.sf.anathema.hero.traits.TraitModelFetcher;
 

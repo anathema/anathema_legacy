@@ -6,5 +6,5 @@ import net.sf.anathema.character.main.magic.model.charmtree.ICharmLearnableArbit
 
 public interface IMultipleEffectCharm extends ISpecialCharm {
 
-  SubEffects buildSubeffects(CharmSpecialist specialist, ICharmLearnableArbitrator arbitrator, Charm charm);
+  SubEffects buildSubEffects(CharmSpecialist specialist, ICharmLearnableArbitrator arbitrator, Charm charm);
 }
