@@ -418,7 +418,7 @@ public class CharmsModelImpl implements CharmsModel {
       if (isSiderealFormCharm && !martialArtsConfiguration.isAnyCelestialStyleCompleted()) {
         return false;
       }
-      if (!martialArtsOptions.getMartialArtsRulesForCharacterType().isCharmAllowed(charm, isExperienced())) {
+      if (!charmsRules.getMartialArtsRules().isCharmAllowed(charm, isExperienced())) {
         return false;
       }
     }
